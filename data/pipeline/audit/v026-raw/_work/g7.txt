@@ -1,0 +1,318 @@
+### A1-07  [arts/L2:design-photo/사진가·유명 사진]  method=가 pairedWith=#2813
+Q: 뉴스위크의 찰리 콜은 이 장면을 찍은 사진으로 1990년 세계보도사진상 올해의 사진을 받았습니다. 같은 발코니에 있던 스튜어트 프랭클린의 필름은 한 프랑스 학생이 찻상자에 숨겨 나라 밖으로 빼냈는데, 이 사진을 흔히 무엇이라 부를까요?
+A: 탱크맨
+E: 콜은 공안의 수색에 대비해 이 장면을 담은 필름을 호텔 화장실에 숨겨 두었습니다.
+H: 1998년 미국 잡지 '타임'은 이 사진 속 남자를 20세기의 가장 중요한 인물 100명에 넣었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Tank_Man   hintNote: In April 1998, Time magazine included "The Unknown Rebel" in its list of the 100 most influential people of the 20th century.
+REWRITE(고친 질문): before Q: 뉴스위크의 찰리 콜은 공안의 수색에 대비해 이 장면을 담은 필름을 호텔 화장실에 숨겼고, 그 사진으로 1990년 세계보도사진상 올해의 사진을 받았습니다. 매그넘의 스튜어트 프랭클린의 필름은 한 프랑스 학생이 찻상자에 숨겨 나라 밖으로 빼냈는데, 이 사진을 흔히 무엇이라 부를까요? | before E: AP의 제프 와이드너가 필름이 떨어지자, 미국 교환학생 커크 마첸이 필름을 구해 와 그의 필름을 호텔 밖으로 빼냈습니다. | addedCue(GEN): 프랭클린이 콜과 같은 발코니에 있었음
+facts: [e] 찰리 콜 — 호텔 화장실에 필름 숨김 <https://en.wikipedia.org/wiki/Tank_Man> «Charlie Cole "hid his roll of film containing Tank Man in a Beijing Hotel toilet"»  ||  [q] 콜 — 1990 세계보도사진 올해의 사진 <https://en.wikipedia.org/wiki/Tank_Man> «"He was awarded the 1990 World Press Photo of the Year."»  ||  [q] 프랭클린 필름 — 프랑스 학생이 차 상자에 숨겨 반출 <https://en.wikipedia.org/wiki/Tank_Man> «Franklin: "his film was smuggled out of the country by a French student, concealed in a box of tea."»  ||  [q] 프랭클린은 콜과 같은 발코니에 있었음 <https://en.wikipedia.org/wiki/Tank_Man> «He was on the same balcony as Charlie Cole, and his film was smuggled out of the country by a French student, concealed in a box of tea.»
+dbCheck(GEN): pair-or-different #2813 — (가) 2회차   pairCheck(GEN): 1회차 질문(1989 톈안먼·탱크 행렬)·해설(신원 미상)·힌트(호텔 위층·와이드너)와 겹치지 않음 — 콜·프랭클린은 힌트에 없는 다른 사진가
+  1회차 #2813: Q: 1989년 6월 베이징 톈안먼 광장 근처에서 한 남자가 홀로 탱크 행렬 앞을 막아선 모습을 찍은 사진, 또는 그 남자를 흔히 무엇이라 부릅니까? | E: 그 남자의 이름과 이후의 행방은 지금도 확인되지 않았습니다. | H: 근처 호텔 위층에서 찍은 여러 장 가운데 제프 와이드너의 사진이 가장 널리 퍼졌다.
+  sameAnswerActive #2813: Q: 1989년 6월 베이징 톈안먼 광장 근처에서 한 남자가 홀로 탱크 행렬 앞을 막아선 모습을 찍은 사진, 또는 그 남자를 흔히 무엇이라 부릅니까? | E: 그 남자의 이름과 이후의 행방은 지금도 확인되지 않았습니다. | H: 근처 호텔 위층에서 찍은 여러 장 가운데 제프 와이드너의 사진이 가장 널리 퍼졌다.
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### A1-19  [arts/L2:theatre/무용·발레]  method=나
+Q: 독일 황제 빌헬름 2세와 바이에른 왕은 군복을 입은 장교들이 이 춤을 추지 못하게 했고, 교황 비오 10세도 이 춤을 죄스럽다며 신자들에게 금했습니다. 무용수 카시미로 아인이 교황을 설득해 금지령을 거두게 했다는 이야기가 전하는 이 춤은?
+A: 탱고
+E: 2009년 아르헨티나와 우루과이가 함께 신청해 유네스코 인류무형문화유산에 올랐습니다.
+H: 20세기 초 유럽의 첫 열풍은 파리에서 일어나 런던·베를린으로 번졌다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Tango   hintNote: the first European tango craze took place in Paris, soon followed by London, Berlin, and other capitals.
+REWRITE(고친 질문): before Q: 독일 황제 빌헬름 2세와 바이에른 왕은 군복을 입은 장교들이 이 춤을 추지 못하게 했고, 교황 비오 10세도 이 춤을 죄스럽다며 신자들에게 금했다고 전합니다. 2009년 두 나라가 함께 신청해 유네스코 인류무형문화유산에 오른 이 춤은 무엇일까요? | before E: 교황의 금지령은 무용수 카시미로 아인이 교황을 설득해 거둬들이게 했다는 이야기가 전합니다. | addedCue(GEN): 카시미로 아인이 교황을 설득해 금지령을 거두게 함
+facts: [q] 빌헬름 2세·바이에른 왕 — 군복 장교 금지 <https://de.wikipedia.org/wiki/Tango_Argentino> «„Ebenso verboten Kaiser Wilhelm II., der König von Bayern ihren Offizieren in Uniform den Tanz“»  ||  [q] 비오 10세가 죄스럽다며 신자에게 금함 <https://de.wikipedia.org/wiki/Tango_Argentino> «„Papst Pius X. hatte eingegriffen und den Tango als sündhaft bezeichnet und den Gläubigen verboten.“»  ||  [e] 2009 아르헨티나·우루과이 공동 유네스코 등재 <https://en.wikipedia.org/wiki/Tango> «"UNESCO approved a joint proposal by Argentina and Uruguay to include the tango" in its heritage lists, on August 31, 2009»  ||  [q] 카시미로 아인이 교황을 설득해 금지 철회 <https://de.wikipedia.org/wiki/Tango_Argentino> «Casimiro Aín ... „den Papst zur Rücknahme des Dekrets zu bewegen“»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### C1-11  [science/L2:math/유명한 수·정리]  method=나
+Q: 1801년 1월 피아치가 찾았다가 햇빛 속에 놓친 케레스는, 24살 수학자가 새 궤도 계산법으로 예측한 자리 근처에서 그해 12월 31일 다시 발견되었습니다. 2013년에는 보존되어 온 그의 뇌가 일찍이 다른 의사의 뇌와 뒤바뀌었다는 것이 밝혀졌는데, 이 수학자는?
+A: 가우스
+E: 가우스는 완성되지 않은 연구는 발표하지 않는 버릇이 있어, 그의 여러 발견이 늦게 알려졌습니다.
+H: 그가 대중을 위해 쓴 몇 안 되는 글 가운데 하나는 부활절 날짜를 셈하는 법이었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss   hintNote: His only attempts at popularization were his works on the date of Easter (1800/1802) and the essay Erdmagnetismus und Magnetometer of 1836.
+facts: [q] 1801년 1월 1일 피아치가 케레스 발견, 햇빛에 가려 놓침 <https://en.wikipedia.org/wiki/Ceres_(dwarf_planet)> «"Piazzi discovered Ceres on 1 January 1801." ... "was too close to the Sun's glare for other astronomers to confirm Piazzi's observations"»  ||  [q] 24살 가우스의 궤도 결정법 · 12월 31일 재발견 <https://en.wikipedia.org/wiki/Ceres_(dwarf_planet)> «Gauss, then 24, "developed an efficient method of orbit determination" ... Recovery (31 December 1801): "von Zach and fellow celestial policeman Heinr»  ||  [q] 2013년 — 보존된 뇌가 의사 콘라트 하인리히 푹스의 뇌와 뒤바뀜 <https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss> «"the day after Gauss's death his brain was removed, preserved, and studied by Rudolf Wagner." In 2013, a neurobiologist found that "Gauss's brain had »  ||  [e] 미완성 연구를 발표하지 않음 <https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss> «"He is known for not publishing incomplete work," and "this practice delayed the dissemination of many of his discoveries."»
+dbCheck(GEN): 가우스 new — 인물이지만 수학 분야 소분류(15 M8)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### C1-23  [science/L2:biology/세포·유전]  method=나
+Q: 이 암양은 1998년 4월 첫 새끼 '보니'를 낳는 등 모두 여섯 마리의 새끼를 낳았습니다. 같은 품종의 기대 수명은 11~12년이지만 이 양은 6년 반을 살고 2003년 2월 안락사되었는데, 이 양의 이름은 무엇일까요?
+A: 돌리   변형: 복제양 돌리   variantCheck(GEN): 언론에서 '복제양 돌리'를 한 덩어리 이름처럼 씀
+E: 젖샘 세포로 복제했다는 데서, 연구자 이언 윌머트는 가수 돌리 파턴의 이름을 땄다고 말했습니다.
+H: (힌트 없음)
+REWRITE(고친 질문): before Q: 핀도셋 품종의 이 암양은 스코틀랜드 미들로디언의 한 연구소에서 평생을 살았습니다. 2003년 2월 폐 질환과 심한 관절염으로 안락사된 뒤 몸이 보존되어 스코틀랜드 국립 박물관에 전시되어 온 이 양의 이름은? | before E:  | addedCue(GEN): 첫 새끼 보니 · 같은 품종 기대 수명의 절반쯤 산 일
+facts: [q] 2003년 2월 14일 폐 질환·심한 관절염으로 안락사 <https://en.wikipedia.org/wiki/Dolly_(sheep)> «She was euthanised on 14 February 2003 because of a progressive lung disease and severe arthritis»  ||  [e] 젖샘 세포 · 돌리 파턴 <https://en.wikipedia.org/wiki/Dolly_(sheep)> «cloned ... "from a cell taken from a mammary gland." / "we couldn't think of a more impressive pair of glands than Dolly Parton's."»  ||  [q] 웨일스 마운틴 숫양과 짝지어 새끼 여섯, 첫 새끼 보니 1998년 4월 <https://en.wikipedia.org/wiki/Dolly_(sheep)> «There she was bred with a Welsh Mountain ram and produced six lambs in total. Her first lamb, named Bonnie, was born in April 1998.»  ||  [q] 같은 품종 기대 수명 11~12년, 돌리는 6.5년 <https://en.wikipedia.org/wiki/Dolly_(sheep)> «A Finn Dorset such as Dolly has a life expectancy of around 11 to 12 years, but Dolly lived 6.5 years.»
+dbCheck(GEN): 돌리 new
+warn: assert=[모두] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 모두, 고친 질문(새 단서 사실))
+
+### C2-10  [science/L2:computer/하드웨어]  method=가 pairedWith=#3235
+Q: 1971년 IBM 제품의 한 부품으로 처음 나온 이 저장 매체는 처음엔 마이크로코드를 불러 넣는 읽기 전용 장치였습니다. 2016년 미국 회계감사원은 미국 핵전력 운용에 아직 이 매체의 8인치판을 쓰는 옛 IBM 컴퓨터가 있다고 보고했는데, 이 매체는?
+A: 플로피 디스크   변형: 디스켓   variantCheck(GEN): 디스켓 — 한국에서 같은 매체를 흔히 부르는 이름(표준국어대사전 '디스켓' = 플로피 디스크)
+E: 소니는 2011년 3월 일본 안에서 이 매체의 판매를 끝냈습니다.
+H: 일본 정부의 행정 업무에서 이것을 쓰던 일은 2024년에야 끝났다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Floppy_disk   hintNote: Use in Japan's government ended in 2024.
+REWRITE(고친 질문): before Q: 1971년 IBM이 자사 제품의 한 부품으로 처음 내놓은 이 저장 매체는 처음엔 읽기만 되는 장치로, 기계에 마이크로코드를 불러 넣는 데 쓰였습니다. 소니가 2011년 3월 일본 안에서 판매를 끝낸 이 매체는 무엇일까요? | before E: 1960년대 말에 개발된 첫 상용 제품은 지름이 8인치(200mm)였습니다. | addedCue(GEN): 2016년 미국 회계감사원 보고서 — 핵전력 운용 컴퓨터가 8인치판 사용
+facts: [q] 1971년 IBM 제품의 부품으로 상용화 <https://en.wikipedia.org/wiki/Floppy_disk> «The first floppy disks, invented and made by IBM in 1971 · became commercially available in 1971 as a component of IBM products»  ||  [q] 읽기 전용, 마이크로코드를 불러들이는 용도 <https://en.wikipedia.org/wiki/Floppy_disk> «It was a read-only device used by IBM as a way of loading microcode.»  ||  [e] 소니 2011년 3월 국내 판매 종료 <https://en.wikipedia.org/wiki/Floppy_disk> «Sony, who had been in the floppy disk business since 1983, ended domestic sales of its 3½-inch models in March 2011»  ||  [q] 2016년 5월 미국 회계감사원 보고서 — 핵전력 운용에 8인치판을 쓰는 옛 IBM Series/1 <https://en.wikipedia.org/wiki/Floppy_disk> «In May 2016, the United States Government Accountability Office released a report ... old IBM Series/1 minicomputers running on 8-inch floppy disks ar»
+dbCheck(GEN): answercheck pair-or-different — 3235 와 같은 답, (가) 2회차   pairCheck(GEN): 1회차 3235 질문(저장 아이콘 모양)·해설(실물 본 적 없는 세대)·힌트(없음)와 겹치지 않음 — IBM 기원·마이크로코드·소니는 새 사실
+  1회차 #3235: Q: 많은 프로그램의 '저장' 아이콘은 이제 거의 쓰지 않는 어떤 저장 매체의 모양을 본뜬 것입니까? | E: 실물을 본 적 없는 세대도 이 모양을 저장 표시로 알아봅니다. | H: (없음)
+  sameAnswerActive #3235: Q: 많은 프로그램의 '저장' 아이콘은 이제 거의 쓰지 않는 어떤 저장 매체의 모양을 본뜬 것입니까? | E: 실물을 본 적 없는 세대도 이 모양을 저장 표시로 알아봅니다. | H: (없음)
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### C2-22  [science/L2:invention/20세기 이후 발명]  method=나
+Q: 1960년 5월 16일 미국 휴스 연구소의 시어도어 메이먼은 섬광등으로 인공 루비 결정을 비춰 694나노미터 파장의 붉은 빛을 얻었습니다. 그의 논문은 '피지컬 리뷰 레터스'에서 두 번 거절당한 뒤 '네이처'에 실렸는데, 그가 처음 작동시킨 이 장치는?
+A: 레이저
+E: 메이먼이 이 결과를 네이처에 실은 날은 1960년 8월 6일이었습니다.
+H: 그보다 앞서 마이크로파로 같은 원리를 구현한 찰스 타운스는 1964년 바소프·프로호로프와 노벨 물리학상을 나눴다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Charles_H._Townes   hintNote: For his creation of the maser, Townes along with Nikolay Basov and Alexander Prokhorov received the 1964 Nobel Prize in Physics.
+facts: [q] 1960년 5월 16일 휴스 연구소에서 첫 레이저 작동 <https://en.wikipedia.org/wiki/Laser> «On May 16, 1960, Theodore H. Maiman operated the first functioning laser at Hughes Research Laboratories, Malibu, California»  ||  [q] 섬광등·인공 루비·694nm 붉은 빛 <https://en.wikipedia.org/wiki/Laser> «Maiman's functional laser used a flashlamp-pumped synthetic ruby crystal to produce red laser light at 694 nanometers wavelength.»  ||  [q] PRL 두 번 거절 뒤 네이처, 1960년 8월 6일 <https://en.wikipedia.org/wiki/Theodore_Maiman> «documented his invention in Nature on August 6, 1960 · after two rejections by Samuel A. Goudsmit at Physical Review Letters»
+dbCheck(GEN): answercheck new
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### H1-09  [history/L2:world-history-east/중동·이슬람 세계]  method=나
+Q: 1964년 튀르키예 부르사에서 망명을 시작해, 14년 넘는 망명 기간 대부분을 이라크의 성지 나자프에서 보낸 인물입니다. 1978년 10월에는 관광 비자로 파리 근교 노플르샤토에 머물기 시작했는데, 이 인물은 누구일까요?
+A: 호메이니   변형: 루홀라 호메이니   variantCheck(GEN): ko.wikipedia 문서 제목 '루홀라 호메이니', '호메이니'에서 넘어옴
+E: 1979년 2월 기자 120명과 함께 에어프랑스 전세기로 돌아가며, 기분을 묻자 '아무 느낌 없다'고 답했습니다.
+H: 미국 시사 잡지 '타임'은 1979년 그를 올해의 인물로 뽑았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Ruhollah_Khomeini   hintNote: Khomeini was Time magazine's Man of the Year in 1979 for his international influence
+REWRITE(고친 질문): before Q: 1978년 10월 관광 비자로 파리 근교 노플르샤토에 머물기 시작한 이 인물은, 이듬해 2월 기자 120명과 함께 에어프랑스 전세기로 돌아갔습니다. 비행기 안에서 돌아가는 기분을 묻자 '아무 느낌 없다'고 했다는 이 인물은? | before E: 그의 망명은 1964년 튀르키예 부르사에서 시작되었고, 14년 넘는 대부분을 이라크의 성지 나자프에서 보냈습니다. | addedCue(GEN): 부르사에서 시작해 대부분 나자프에서 보낸 망명(해설에서 옮김)
+facts: [q] 부르사에서 망명 시작 · 대부분 나자프 <https://en.wikipedia.org/wiki/Ruhollah_Khomeini> «he was sent to Turkey on 4 November 1964 where he stayed in Bursa … Khomeini spent more than 14 years in exile, mostly in the holy Iraqi city of Najaf»  ||  [q] 1978년 10월 6일 관광 비자로 노플르샤토 <https://en.wikipedia.org/wiki/Ruhollah_Khomeini> «Khomeini visited Neauphle-le-Château, a suburb of Paris, France, on a tourist visa on 6 October 1978.»  ||  [e] 에어프랑스 전세기 · 기자 120명 <https://en.wikipedia.org/wiki/Ruhollah_Khomeini> «On his chartered Air France flight back to Tehran, he was accompanied by 120 journalists»  ||  [e] 1979년 2월 1일 귀국 <https://en.wikipedia.org/wiki/Ruhollah_Khomeini> «came back on 1 February 1979 … returned in triumph to Iran»  ||  [e] 기분을 묻자 'Hichi(아무것도)' <https://en.wikipedia.org/wiki/Ruhollah_Khomeini> «When asked how he felt about being back, he answered through an aide with "Hichi" (Nothing).»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[explain]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### H1-21  [history/L2:world-geo/대륙·바다]  method=나
+Q: 깊은 곳 물의 90% 넘게 산소가 없어 옛 난파선이 잘 남아 있는 바다입니다. 이 깊은 물은 100~200m 깊이의 경계층 아래에서 위쪽 물과 섞이지 않는데, 이 바다는 어디일까요?
+A: 흑해
+E: 고대 그리스 사람들은 이 바다를 '손님을 반기지 않는 바다'라 불렀다가, 불길하다 하여 정반대 뜻의 이름으로 바꿔 불렀습니다.
+H: 이 바다는 북쪽으로 케르치 해협을 지나 아조프해와 이어진다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Black_Sea   hintNote: To the north, the Black Sea is connected to the Sea of Azov by the Kerch Strait.
+REWRITE(고친 질문): before Q: 고대 그리스 사람들은 이 바다를 '손님을 반기지 않는 바다'라 불렀다가, 불길하다 하여 정반대 뜻의 이름으로 바꿔 불렀습니다. 깊은 곳 물의 90% 넘게 산소가 없어 옛 난파선이 잘 남아 있는 이 바다는? | before E: 깊은 물은 100~200m 깊이의 경계층 아래에서 위쪽의 산소 많은 물과 섞이지 않습니다. | addedCue(GEN): 100~200m 경계층
+facts: [e] 폰토스 악세이노스(손님을 반기지 않는 바다) → 에욱세이노스로 바꿈 <https://en.wikipedia.org/wiki/Black_Sea> «Póntos Áxeinos ('Inhospitable Sea') was considered an ill omen and was euphemized to its opposite, Eúxeinos Póntos ('Hospitable Sea').»  ||  [q] 깊은 곳 90% 넘게 무산소 · 난파선 보존 <https://en.wikipedia.org/wiki/Black_Sea> «over 90% of the deeper Black Sea volume is anoxic water … This anoxic layer is responsible for the preservation of ancient shipwrecks»  ||  [q] 경계층 100~200m <https://en.wikipedia.org/wiki/Black_Sea> «the pycnocline, the boundary that isolates the deep water, at about 100–200 m.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### H1-33  [history/L2:war-history/제2차 세계대전]  method=나
+Q: 1940년 폴란드 장교 비톨트 필레츠키는 일부러 독일군에게 붙잡혀 이 수용소에 들어가 지하 조직을 꾸렸고, 1943년 4월 탈출했습니다. 정문 위 철제 글씨는 대장장이 얀 리바치 등 수감자들이 만들었는데, 이 수용소는?
+A: 아우슈비츠   변형: 아우슈비츠 수용소 | 아우슈비츠 강제 수용소   variantCheck(GEN): ko.wikipedia 문서 제목 '아우슈비츠 강제 수용소', '아우슈비츠'에서 넘어옴
+E: 필레츠키는 전쟁 뒤 공산 당국에 붙잡혀 1948년 5월 사형을 선고받았고, 그가 묻힌 곳은 끝내 찾지 못했습니다.
+H: 1947년 7월 2일 폴란드 의회의 법으로 이곳에 국립 박물관이 세워졌다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Auschwitz-Birkenau_State_Museum   hintNote: It was formally founded on July 2, 1947, by an act of the Polish parliament.
+REWRITE(고친 질문): before Q: 1940년 폴란드 장교 비톨트 필레츠키는 일부러 독일군에게 붙잡혀 이 수용소에 들어가 지하 조직을 꾸렸고, 1943년 4월 탈출했습니다. 2009년 12월 정문 위 철제 글씨를 도둑맞았다가 세 조각으로 되찾은 이 수용소는? | before E: 정문 글씨는 대장장이 얀 리바치를 비롯한 수감자들이 만들었는데, 'B'가 거꾸로 달린 것을 수감자들의 저항으로 보는 해석이 있습니다. | addedCue(GEN): 정문 글씨를 대장장이 얀 리바치 등 수감자들이 만듦(해설에서 옮김)
+facts: [q] 1940년 필레츠키가 일부러 붙잡혀 들어감 · 지하 조직 <https://en.wikipedia.org/wiki/Witold_Pilecki> «In 1940, Pilecki let himself be captured … organized an underground Military Organization Union»  ||  [q] 1943년 4월 탈출 <https://en.wikipedia.org/wiki/Witold_Pilecki> «After escaping from Auschwitz in April 1943»  ||  [q] 얀 리바치 등 수감자가 제작 · 거꾸로 된 B <https://en.wikipedia.org/wiki/Arbeit_macht_frei> «The Auschwitz I sign was made by prisoner-laborers including master blacksmith Jan Liwacz … features an upside-down 'B', which has been interpreted as»  ||  [e] 1947년 공산 당국에 체포, 1948년 5월 15일 사형 선고 <https://en.wikipedia.org/wiki/Witold_Pilecki> «Arrested on 8 May 1947 by the communist authorities ... He was sentenced to death on 15 May with three of his comrades.»  ||  [e] 묻힌 곳을 찾지 못함 <https://en.wikipedia.org/wiki/Witold_Pilecki> «Pilecki's burial place has never been found, though it is thought to be in Warsaw's Powązki Cemetery.»
+dbCheck(GEN): answercheck new — 홀로코스트(#1280)와 정답 다름
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### H2-05  [history/L2:philosophy/동양 사상]  method=나
+Q: 『사기』에 따르면 이 사상가는 일찍이 몽 땅 칠원의 관리를 지냈지만 살림은 몹시 가난했습니다. 그의 이름이 붙은 책의 마지막 33편은 제자백가의 여러 흐름을 훑으며 혜시의 철학을 비중 있게 다루는데, 이 사상가는?
+A: 장자   변형: 장주   variantCheck(GEN): ko.wikipedia '장자' 문서 — 본명 장주(莊周)로도 부름(en 문서 제목 Zhuang Zhou)
+E: 초나라 위왕이 벼슬을 주겠다고 했으나, 얽매이지 않는 삶을 아껴 거절했다고 전합니다.
+H: 그는 혜시의 무덤을 지나며, 코끝에 묻은 흙을 도끼로 깎아 낸 장석 이야기로 맞수를 잃은 슬픔을 말했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Hui_Shi   hintNote: Chuang Tzu was accompanying a funeral when he passed by the grave of Hui Tzu … a plasterer who, if he got a speck of mud on the tip of his nose … would get his friend Carpenter Shih to slice it off for him.
+REWRITE(고친 질문): before Q: 『사기』에 따르면 이 사상가는 일찍이 몽 땅 칠원의 관리를 지냈지만 살림은 몹시 가난했습니다. 초나라 위왕이 벼슬을 주겠다고 했으나 얽매이지 않는 삶을 아껴 거절했다고 하는데, 이 사상가는 누구일까요? | before E: 벗 혜자(혜시)와 자주 어울렸고, 그의 이름이 붙은 책의 33편은 혜시의 철학을 다룹니다. | addedCue(GEN): 책의 마지막 33편이 혜시 철학을 다룸
+facts: [q] 사기: 몽 칠원의 관리, 매우 가난 <https://ko.wikipedia.org/wiki/장자> «《사기》에 따르면, 장자는 일찍이 몽(蒙) 칠원(漆園)의 관리가 되었으나, 생활은 매우 가난했다.»  ||  [e] 초 위왕의 벼슬 제안을 자유를 아껴 거절 <https://en.wikipedia.org/wiki/Zhuang_Zhou> «he turned down a job offer from King Wei of Chu, because he valued his personal freedom.»  ||  [q] 현재 33편 · 33편은 제자백가의 주요 흐름을 훑으며 혜시 철학을 강조 <https://en.wikipedia.org/wiki/Zhuang_Zhou> «This work, in its current shape consisting of 33 chapters … chapter 33 has been often considered as intrusive, being a survey of the major movements d»
+dbCheck(GEN): answercheck new (호접지몽 활성은 다른 정답)
+warn: assert=[마지막] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 마지막, 고친 질문(새 단서 사실))
+
+### H2-17  [history/L2:politics/선거·의회]  method=나 defForm(GEN)=true
+Q: 1892년 '오마하 강령'을 내건 미국의 한 정당은, 그해 대선 후보 제임스 위버가 남북 전쟁 뒤 제3당 후보로는 처음 선거인단 표를 얻었습니다. 기자들이 이 당을 부르던 별명에서 퍼진 정치 용어는 무엇일까요?
+A: 포퓰리즘
+E: 1896년 민주당과 손잡고 브라이언을 후보로 밀었지만, 이 연합은 당에 큰 재앙이 되었습니다.
+H: 로키산맥 일대에서 이 당을 찍은 사람들은 은화 자유 주조를 바랐다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Populist_Party_(United_States)   hintNote: In the Rocky Mountains, Populist voters were motivated by support for free silver (bimetallism)
+facts: [q] 1892 오마하 강령 <https://en.wikipedia.org/wiki/People%27s_Party_(United_States)> «the 1892 convention agreed to a party platform known as the Omaha Platform.»  ||  [q] 위버는 남북 전쟁 뒤 선거인단 표를 얻은 첫 제3당 후보 <https://en.wikipedia.org/wiki/People%27s_Party_(United_States)> «He was the first third-party candidate since the Civil War to win electoral votes.»  ||  [q] 기자들이 Populist Party 라 부르며 퍼짐 <https://en.wikipedia.org/wiki/People%27s_Party_(United_States)> «Journalists covering the fledgling party began referring to it as the 'Populist Party,' and that term quickly became widely popular.»  ||  [e] 1896 민주당과 연합, 브라이언, 재앙 <https://en.wikipedia.org/wiki/People%27s_Party_(United_States)> «Bryan, the chosen candidate resulting from the fusion of the Democrats and the People's Party … national fusion with the Democrats proved disastrous t»
+dbCheck(GEN): answercheck new
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### H2-29  [history/L2:religion/종교 의식·상징]  method=나
+Q: 1442년·1510년·1514년 검은머리 형제단은 지금의 탈린과 리가의 길드 회관에 이것을 세우고, 축제 마지막 밤엔 시청 광장으로 옮겨 그 둘레에서 춤을 췄습니다. 독일 출신 샬럿 왕비가 1800년 영국에 들여온 이것은?
+A: 크리스마스트리
+E: 1840년대 빅토리아 여왕과 앨버트 공을 담은 판화가 영국에 이것을 들이는 유행을 일으켰습니다.
+H: 1947년부터 노르웨이는 해마다 런던 트래펄가 광장에 이것을 보내 전쟁 때의 도움에 고마움을 전한다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Trafalgar_Square_Christmas_tree   hintNote: Since 1947, Norway has gifted a Christmas tree for Trafalgar Square as a token of gratitude for British support to Norway during the Second World War.
+REWRITE(고친 질문): before Q: 독일 출신 샬럿 왕비는 1800년 아이들을 위한 파티에 이것을 들여왔습니다. 1850년 미국 잡지 『고디스 레이디스 북』은 영국 왕실 가족이 이것을 둘러싼 판화를 옮겨 실으며 여왕의 왕관과 앨버트 공의 콧수염만 지웠는데, 이것은? | before E:  | addedCue(GEN): 검은머리 형제단의 탈린·리가 기록
+facts: [q] 샬럿 왕비 1800 아이들 파티에 도입 <https://en.wikipedia.org/wiki/Christmas_tree> «The German-born Queen Charlotte introduced a Christmas tree at a party she gave for children in 1800.»  ||  [e] 1840년대 판화가 유행을 일으킴 <https://en.wikipedia.org/wiki/Christmas_tree> «An engraving published in the 1840s of Queen Victoria and Prince Albert created a craze for Christmas trees.»  ||  [q] 1442·1510·1514년 검은머리 형제단이 탈린·리가 길드 회관에 세우고 시청 광장에서 둘레를 돌며 춤 <https://en.wikipedia.org/wiki/Christmas_tree> «In 1442, 1510, and 1514, the Brotherhood of Blackheads erected a tree for the holidays in their guild houses in Reval (now Tallinn) and Riga. On the l»
+dbCheck(GEN): answercheck new
+warn: assert=[마지막] assertHint=[] frag=[] hint=[explain]
+webOpen: TRUE (단정어 마지막, 고친 질문(새 단서 사실))
+
+### K1-11  [korea/L2:kr-geo/섬·해안]  method=나
+Q: 1908년 철근 없이 벽돌로만 쌓은 이곳의 8각형 등대는 각 층 천장마다 대한제국의 오얏꽃 문장이 새겨져 있고, '대보등대'라는 다른 이름으로도 불립니다. 이 등대가 선 곶은 어디일까요?
+A: 호미곶
+E: 2001년 12월 공식 지명이 바뀌기 전까지는 '장기곶'으로 불렸습니다.
+H: 이곳의 해안단구는 약 90만 년 전에 만들어져 경북동해안 국가지질공원의 지질유산이 되었다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%ED%98%B8%EB%AF%B8%EA%B3%B6   hintNote: 호미곶 해안단구는 경북동해안 국가지질공원의 지질유산으로 약 90만 년 전에 만들어졌다.
+REWRITE(고친 질문): before Q: 2001년 12월 공식 지명이 바뀌기 전까지 '장기곶'으로 불렸던 곳입니다. 1908년 철근 없이 벽돌로만 쌓은 이곳 8각형 등대의 각 층 천장에는 대한제국의 오얏꽃 문장이 새겨져 있습니다. 이곳은? | before E: 이곳 등대는 높이 26.4m에 내부가 6층이며, 1982년 경상북도 기념물로 지정되었습니다. | addedCue(GEN): 등대의 다른 이름 '대보등대'
+facts: [q] 1908년 건립, 철근 없이 벽돌로만 쌓은 8각형, 각 층 천장에 오얏꽃 문장 <https://ko.wikipedia.org/wiki/호미곶등대> «1908년에 건립 … 8각형 탑 형식 … 철근을 사용하지 않고 벽돌로만 쌓아올려 … 각 층 천장에는 대한제국의 상징인 오얏꽃모양의 문장(紋章)이 조각»  ||  [e] 과거 장기곶으로 불림, 2001년 12월 공식 지명 변경 <https://ko.wikipedia.org/wiki/호미곶> «과거 장기곶(長鬐串), 장기갑(長鬐岬) 등의 명칭으로 불렸으며 … 2001년 12월 공식 지명이 장기곶에서 호미곶으로 변경되었다»  ||  [q] 이 등대는 일명 대보등대 <https://ko.wikipedia.org/wiki/호미곶_등대> «이곳을 '호미곶' 혹은 '동외곶'이라고 하는데, 서쪽으로는 영일만, 동쪽으로는 동해와 만나고 있어 일명 대보등대(大甫燈臺)라고도 한다.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### K1-23  [korea/L2:kr-language/사자성어]  method=나
+Q: 서진의 두예가 오나라를 칠 때, 장수들은 더위와 장마, 돌림병을 들어 겨울까지 기다리자고 했습니다. 두예가 '군의 위세가 이미 떨쳤다'며 한 비유를 들고 곧장 진격하자 지나는 성읍마다 항복했다는 데서 나온 사자성어는?
+A: 파죽지세
+E: 두예는 몇 마디만 쪼개고 나면 나머지는 칼날을 맞아 저절로 갈라진다고 했습니다.
+H: 그 비유를 든 장수는 『춘추좌씨전』을 몹시 좋아해 '좌전벽'이 있다는 말을 들었다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/두예   hintNote: 두예는 《춘추좌씨전》을 무척 좋아하여 좌전벽(左傳癖)으로 불렸는데, 춘추좌씨전의 가장 오래된 주석서인 《춘추좌전집해》(春秋左傳集解)를 저술하였다.
+REWRITE(고치지 않음): 사자성어는 유래 고사가 곧 교과서(고교 한문) 단서 — 두예의 진격 고사를 빼면 정답이 하나로 좁혀지지 않음
+facts: [q] 장수들이 더위·장마·돌림병을 들어 겨울을 기다리자고 함 <https://zh.wikisource.org/wiki/晉書/卷034> «今向暑，水潦方降，疾疫將起，宜俟來冬，更為大舉。»  ||  [q] 두예: 지금 군의 위세가 이미 떨쳤으니 대나무를 쪼개는 것과 같다 <https://zh.wikisource.org/wiki/晉書/卷034> «今兵威已振，譬如破竹，數節之後，皆迎刃而解，無復著手處也。»  ||  [q] 곧장 진격하자 지나는 성읍이 모두 항복 <https://zh.wikisource.org/wiki/晉書/卷034> «(요약) 장수들에게 지시를 내려 곧장 건업(秣陵)으로 진격했고, 지나는 성읍들은 모두 항복했습니다»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### K2-10  [korea/L2:kr-history/개항기·일제강점기]  method=나
+Q: 1908년 무렵 최진동이 청나라 지방 관청에서 땅을 사들여 개간하면서 생긴 만주의 한인 마을이 있습니다. 이 마을 골짜기에서 독립군 연합부대가 일본군과 맞붙은 싸움은 무엇일까요?
+A: 봉오동 전투
+E: 일본군이 상동 남쪽 갈림길까지 들어오자 홍범도가 신호탄을 올렸고, 이를 신호로 고지 위의 독립군이 사격을 퍼부었습니다.
+H: 이 싸움 직전 최진동의 군무도독부는 다른 독립군들과 뭉쳐 대한북로독군부를 꾸렸다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/봉오동_전투   hintNote: 1920년 5월 28일 대한독립군과 국민회의 국민군 및 군무도독부(軍務都督府)가 연합하여 하나의 독립군단인 대한군북로독군부(大韓軍北路督軍府)를 조직하고
+REWRITE(고친 질문): before Q: 1908년 무렵 최진동이 청나라 지방 관청에서 땅을 사들여 개간하면서 생긴 만주의 한인 마을이 있습니다. 이 마을 골짜기에서 독립군 연합부대가 일본군 '월강추격대'를 끌어들여 무찌른 싸움은 무엇일까요? | before E:  | addedCue(GEN): 없음(쉬운 단서만 뺌 — 최진동의 마을 개간 내력이 남음)
+facts: [q] 최진동이 1908년 청나라 지린성 지방관청에서 토지를 사들여 개간하며 마을 형성 <https://ko.wikipedia.org/wiki/봉오동_전투> «봉오동은 최진동이 1900년대 초 건너와 정착하여 개척한 마을로 1908년(융희 2년) 최진동이 당시 청나라 지린성의 지방관청으로부터 이곳의 토지를 사들여 개간하면서부터 점차 마을이 형성되기 시작하였다.»  ||  [q] 독립군 연합부대가 일본군 제19사단 월강추격대와 싸움 · 일본군을 유인 <https://ko.wikipedia.org/wiki/봉오동_전투> «독립군 연합부대와 … 연합, 중국 지린성 화룡현 봉오동에서 일본군 제19사단 월강추격대, 남양수비대 예하 1개 중대와 싸운 전투이다. … 제3소대 분대장 이화일을 시켜 일본군을 유인해 오도록 하였다.»  ||  [e] 일본군이 갈림길까지 들어오자 홍범도가 신호탄 <https://ko.wikipedia.org/wiki/봉오동_전투> «6월 7일 오후 1시쯤, 일본군이 봉오동 상동(上洞) 남쪽 300m 지점 갈림길까지 들어오자 홍범도는 신호탄을 올렸다. … 고지 꼭대기까지 올라간 홍범도 부대는 이를 내려다보고 남은 일본군에게 사격을 가했다.»
+dbCheck(GEN): answercheck new — 활성 청산리 대첩(2건)과 정답·지식이 다름
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### K2-22  [korea/L2:kr-food/향토 음식]  method=나
+Q: 재료가 되는 동물은 턱뼈가 없어 물고기가 아닌 원구류로 분류되며, 생김새 때문에 예전에는 먹지 않고 주로 가죽 제품 재료로 썼습니다. 부산에서는 자갈치 시장과 온천장 일대에 가게가 몰려 있는 이 구이는 무엇일까요?
+A: 곰장어구이   변형: 꼼장어구이 | 곰장어 | 꼼장어 | 먹장어구이   variantCheck(GEN): 한국향토문화전자대전(부산) '곰장어구이' — '곰장어는 먹장어의 방언이며, 꼼장어라고도 불린다' · 재료 이름만 치는 사람도 같은 대상
+E: 6·25 전쟁 피난 시절 부산의 피난민들이 배고픔을 면하려고 본격적으로 먹기 시작한 것으로 알려져 있습니다.
+H: 이 동물은 쫓기면 피부의 샘에서 끈적한 점액을 잔뜩 내뿜어 몸을 지킨다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Hagfish   hintNote: can defend themselves against other larger predators by releasing copious amounts of slime from mucous glands in their skin.
+REWRITE(고친 질문): before Q: 재료가 되는 동물은 턱뼈가 없어 물고기가 아닌 원구류로 분류되며, 생김새 때문에 예전에는 먹지 않고 주로 가죽 제품 재료로 썼습니다. 6·25 전쟁 피난 시절 피난민들이 배고픔을 면하려고 먹기 시작했다고 알려진 이 구이는? | before E: 기장 지역에서는 볏짚에 불을 피워 산 채로 구운 뒤 검게 탄 껍질을 벗겨 내고 먹는 '짚불' 방식도 전합니다. | addedCue(GEN): 자갈치 시장과 온천장 일대
+facts: [q] 먹장어는 어류가 아닌 원구류(턱뼈가 없어 입이 둥근 부류) <https://www.grandculture.net/busan/toc/GC04210091> «갯장어·붕장어·뱀장어 등이 어류에 속하는 반면, 먹장어는 어류가 아닌 원구류[턱뼈가 없어 입이 둥근 부류]에 속하는 척추동물이다.»  ||  [q] 흉물스러워 예전엔 먹지 않고 가죽 제품 재료로 씀 <https://www.grandculture.net/busan/toc/GC04210091> «곰장어는 흉물스럽게 생겼다고 해서 예전에는 먹지 않고 주로 가죽 제품 재료로 사용되었다. 6·25 전쟁 피난 시절, 부산 지역에서 피난민들이 배고픔을 면하기 위해 본격적으로 곰장어를 먹기 시작한 것으로 알려진다.»  ||  [e] 6·25 피난 시절 부산 피난민이 먹기 시작 <https://www.grandculture.net/busan/toc/GC04210091> «6·25 전쟁 피난 시절, 부산 지역에서 피난민들이 배고픔을 면하기 위해 본격적으로 곰장어를 먹기 시작한 것으로 알려진다.»  ||  [q] 자갈치 시장과 온천장 일대에 음식점이 몰림 <https://www.grandculture.net/busan/toc/GC04210091> «부산 전역에서 맛볼 수 있으며, 특히 자갈치 시장과 온천장 일대에 음식점이 몰려 관광객이 많이 찾는다(문서 요지).»
+dbCheck(GEN): answercheck new(곰장어구이·곰장어·꼼장어) — 활성·초안에 없음
+warn: assert=[] assertHint=[] frag=[구이] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### L1-08  [life/L2:daily-rule/생활 법규]  method=나
+Q: 1894년 뉴질랜드에서 처음 시행된 것으로 꼽히고, 미국은 1938년, 프랑스는 1950년에 들인 제도입니다. 이 제도는 무엇일까요?
+A: 최저임금   변형: 최저임금제   variantCheck(GEN): ko.wikipedia — '최저임금제' 가 '최저임금' 문서로 넘겨주기(API redirects 확인) · 질문이 '제도' 를 물어 두 꼴 다 자연스러움
+E: 한국은 1986년 12월 31일 법을 만들어 1988년 1월 1일부터 시행했는데, 그해 정한 금액은 실제 노동자 임금의 30%에도 미치지 못했다는 평가를 받았습니다.
+H: 독일은 2015년 1월에야 이것을 업종을 가리지 않는 법으로 처음 들였다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Minimum_wage_in_Germany   hintNote: The legislation ... was introduced on 1 January 2015 ... Previously, Germany had minimum wages only in specific sectors
+REWRITE(고친 질문): before Q: 1894년 뉴질랜드에서 처음 시행된 것으로 꼽히고, 미국은 1938년, 프랑스는 1950년에 들인 제도입니다. 한국에서는 1986년 12월 31일 법이 만들어져 1988년 1월 1일부터 시행되었는데, 이 제도는 무엇일까요? | before E: 1988년 당시 정해진 금액은 실제 노동자 임금의 30%에도 미치지 못했다는 평가를 받았습니다. | addedCue(GEN): 없음(쉬운 단서를 해설로 내림 — 나라별 도입 연도가 남음)
+facts: [q] 1894년 뉴질랜드 최초, 미국 1938년, 프랑스 1950년 <https://ko.wikipedia.org/wiki/최저임금> «최초의 최저임금 제도는 1894년 뉴질랜드 정부에 의해 시행되었고 미국이 1938년, 프랑스가 1950년, 대한민국은 1986년 12월 31일에 도입하여 시행하였다.»  ||  [e] 한국은 1986년 12월 31일 법 제정, 1988년 1월 1일 시행 <https://ko.wikipedia.org/wiki/최저임금> «대한민국 정부는 1986년 12월 31일에 최저임금법을 제정하였고 1988년 1월 1일부터 최저임금제를 시행하였다.»  ||  [e] 1988년 정부가 정한 최저임금은 실제 임금의 30%에도 못 미쳤다 <https://ko.wikipedia.org/wiki/최저임금> «하지만, 경제 대호황이었던 1988년 당시 정부가 정한 최저임금은 실제 노동자들의 임금의 30%에도 미치지 못했다.»
+dbCheck(GEN): 활성 3219(복지·의료 제도 — 정의 꼴, e '최저임금위원회 심의')와 답만 같고 지식이 다름(도입 연혁)
+  sameAnswerActive #3219: Q: 법으로 정해 사용자가 근로자에게 그보다 적게 줄 수 없게 한 임금의 하한은? | E: 해마다 최저임금위원회가 심의해 정합니다. | H: (없음)
+warn: assert=[처음] assertHint=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음,처음, 같은 정답 활성, 고친 질문(새 단서 사실))
+
+### L1-20  [life/L2:fashion/복식사]  method=나
+Q: 1882년 빅토리앵 사르두가 사라 베르나르를 위해 쓴 희곡의 여주인공 이름에서 온 모자입니다. 1924년 영국 왕세자 에드워드가 즐겨 쓰기 시작하면서 남성들 사이에 널리 퍼진 이 모자는 무엇일까요?
+A: 페도라   변형: 중절모 | 중절모자   variantCheck(GEN): ko.wikipedia — '페도라' 가 '중절모자' 문서로 넘겨주기(API redirects 확인) · 같은 대상의 한국어 이름이라 B1
+E: 극 중 베르나르가 가운데가 접힌 챙 넓은 부드러운 모자를 썼고, 이 이름은 1891년 무렵부터 쓰였습니다.
+H: 1960년대 다른 정장 남성 모자들과 함께 유행에서 밀려났다가 21세기에 남녀 모두에게서 다시 살아났다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Fedora   hintNote: Despite falling out of fashion with other formal men's hats during the 1960s, the hat has seen some resurgence during the 21st century amongst men and women alike
+facts: [q] 이름은 사르두가 사라 베르나르를 위해 쓴 1882년 희곡 '페도라'에서 왔고 베르나르는 여주인공 페도라 로마조프 공주를 연기 <https://en.wikipedia.org/wiki/Fedora> «The word fedora comes from the title of an 1882 play by dramatist Victorien Sardou, Fédora, which was written for Sarah Bernhardt. Bernhardt played Pr»  ||  [q] 1924년 영국 왕세자 에드워드가 쓰기 시작한 뒤 남성들 사이에 유행 <https://en.wikipedia.org/wiki/Fedora> «After Edward, Prince of Wales (later the Duke of Windsor) started to wear them in 1924, it became popular among men for its stylishness»  ||  [e] 베르나르가 극 중 가운데가 접힌 부드러운 챙 모자를 썼고 이 말은 1891년부터 쓰였다 <https://en.wikipedia.org/wiki/Fedora> «During the play, Bernhardt—a noted cross-dresser—wore a center-creased, soft brimmed hat. … The term fedora was in use as early as 1891.»
+dbCheck(GEN): new (페도라 · 중절모 · 중절모자)
+warn: assert=[] assertHint=[모두] frag=[] hint=[]
+webOpen: TRUE (단정어 모두)
+
+### L2-07  [life/L2:brands/로고·상징]  method=나 hobby=자동차
+Q: 1870년대 쾰른 도이츠의 엔진 회사에서 일하던 한 기술자는 아내에게 보낸 엽서에 자기 집을 표시한 그림을 그리고 '언젠가 이것이 우리 공장 위에서 빛날 것'이라고 적었습니다. 1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림을 지금 로고로 쓰는 자동차 상표는?
+A: 벤츠   변형: 메르세데스벤츠   variantCheck(GEN): ko.wikipedia 문서 제목 '메르세데스-벤츠' · 일상 표기 '벤츠' — 같은 상표
+E: 엽서 속 그림은 세 꼭지 별이었고, 세 꼭지는 땅·바다·하늘에서 쓸 엔진을 만든다는 뜻을 담았다고 합니다.
+H: 오스트리아 사업가 에밀 옐리네크는 1901년 이 회사의 차에 자기 딸의 이름을 붙였다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Mercedes-Benz   hintNote: Emil Jellinek, an Austrian automobile entrepreneur who worked with DMG, registered the trademark in 1902, naming the 1901 Mercedes 35 hp after his daughter Mercédès Jellinek.
+facts: [q] 1870년대 도이츠(쾰른)에서 일하던 다임러가 아내에게 집을 표시한 엽서 <https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft> «In the 1870s, while working for Otto at Deutz AG in Cologne, Daimler sent his wife Emma Kunz a postcard with a three-pointed star marking his home, wr»  ||  [q] 아들 파울·아돌프 제안, 1909년 6월 채택 <https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft> «Paul and Adolf Daimler, the sons of Gottlieb ... The board accepted the proposal in June 1909»  ||  [e] 땅·바다·하늘의 뜻 <https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft> «suitable for use on land, sea, and in the air, with each of the three points representing one of those domains»
+dbCheck(GEN): answercheck 벤츠 pair-or-different — 3250(카를 벤츠의 1886 특허 차)과 지식이 다름 · 메르세데스벤츠 new
+  sameAnswerActive #3250: Q: 1886년 휘발유 엔진으로 달리는 세 바퀴 자동차로 특허를 받아, 최초의 가솔린 자동차를 만든 사람으로 꼽히는 독일 기술자는? | E: 그의 아내 베르타가 이 차로 장거리를 몰아 가능성을 보여 준 일화도 유명합니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성)
+
+### L2-21  [life/L2:board-game/화투·카드]  method=나 hobby=보드게임
+Q: 20세기 초 롭스타운에서 생겼다고 그 주 의회가 공식으로 인정한 카드 게임입니다. 1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽에 처음 들여왔고, 몇 해 동안은 골든 너겟 카지노만 이 게임을 열었습니다. 이 게임은?
+A: 텍사스 홀덤   변형: 홀덤   variantCheck(GEN): ko.wikipedia '텍사스 홀덤' 문서 · 국내 언론의 '홀덤' 줄임 표기 — 같은 게임
+E: 1967년에는 크랜델 애딩턴·도일 브런슨·아마릴로 슬림 같은 고향 출신 도박사들이 라스베이거스에서 이 게임을 즐기며 퍼뜨렸습니다.
+H: 2006년 영화 '카지노 로얄'에서 르 시프르가 몬테네그로의 카지노에서 연 대회의 종목이다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Casino_Royale_(2006_film)   hintNote: To recoup his clients' money, Le Chiffre organises a Texas hold 'em tournament at the Casino Royale in Montenegro.
+facts: [q] 주 의회가 롭스타운을 발상지로 공식 인정, 20세기 초 <https://en.wikipedia.org/wiki/Texas_hold_%27em> «the Texas Legislature officially recognizes Robstown, Texas, as the game's birthplace (early 20th century)»  ||  [q] 1963년 코키 매코쿼데일이 캘리포니아 클럽에 들여옴 <https://en.wikipedia.org/wiki/Texas_hold_%27em> «Corky McCorquodale introduced the game to Las Vegas in 1963 at the California Club»  ||  [q] 몇 해 동안 골든 너겟만 <https://en.wikipedia.org/wiki/Texas_hold_%27em> «For several years, the Golden Nugget was the only Las Vegas casino offering it.»  ||  [e] 1967년 애딩턴·브런슨·아마릴로 슬림 <https://en.wikipedia.org/wiki/Texas_hold_%27em> «the 1967 Texan group, including Crandell Addington, Doyle Brunson, and Amarillo Slim, playing in Las Vegas that year»
+dbCheck(GEN): answercheck new (5728 포커·5726 바카라와 다른 정답)
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### M1-10  [media/L2:kr-tv/라디오 방송]  method=나 layer=팬 세부 work=여성시대
+Q: 방송 내용을 모은 월간 책자를 매달 전국 중소기업은행 지점에서 무료로 나눠 주는 MBC 표준FM 프로그램입니다. 목요일에는 남자 진행자 중심으로 이름을 바꿔 방송하고 시그널 음악도 바뀌는데, 이 프로그램은?
+A: 여성시대
+E: 1975년 아나운서 임국희의 이름을 단 'MBC여성살롱 임국희예요'로 시작해 1988년 4월 지금 이름이 되었습니다.
+H: 1999년 6월부터 가수 양희은이 진행을 맡아 왔다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)   hintNote: 양희은 (1999년 6월 7일 ~ 현재)
+REWRITE(고친 질문): before Q: 1975년 아나운서 임국희의 이름을 단 프로그램으로 시작해 1988년 4월 지금 이름이 된 MBC 표준FM 아침 프로그램입니다. 방송 내용을 모은 월간 책자를 기업은행 지점에서 나눠 주는 이 프로그램은? | before E: 목요일에는 '남성시대'라는 이름으로 남자 진행자 중심으로 방송하고, 시그널 음악도 바뀝니다. | addedCue(GEN): 목요일에는 남자 진행자 중심으로 이름을 바꿔 방송(해설에서 옮김)
+facts: [q] MBC 표준FM 아침 9시 <https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)> «여성시대(女性時代)는 대한민국의 라디오 채널 MBC 표준FM(수도권 기준 FM 95.9MHz)에서 매일 오전 9시 5분부터 오전 11시까지 방송되는»  ||  [q] 월간 책자 기업은행 배포 <https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)> «방송 내용 등을 모은 월간 여성시대 책자를 매달 10일에 전국 중소기업은행 지점에서 무료로 배포하고 있다.»  ||  [q] 목요일 남성시대 · 시그널 변경 <https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)> «목요일에는 남성시대 타이틀로 남자 진행자 중심으로 방송을 진행하며, 시그널 음악도 변경된다.»  ||  [e] 1975년 임국희 이름 프로그램 → 1988년 4월 1일 개칭 <https://ko.wikipedia.org/wiki/여성시대_(라디오_프로그램)> «1975년에 《MBC여성살롱 임국희예요》로 첫방송된 이후, 1988년 4월 1일에 프로그램 명칭이 "여성시대"로 변경된 이후 현재까지 방송 중인»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### M1-22  [media/L2:kr-music/트로트·포크]  method=나 layer=팬 세부 work=김민기
+Q: 서울대 미대에 다니던 시절 '도비두'라는 그룹을 만들어 노래를 시작했습니다. 동일방직 노조 문제를 다룬 노래굿 '공장의 불빛'을 발표한 이 사람은 누구일까요?
+A: 김민기
+E: 록뮤지컬 '지하철 1호선'을 번안·연출했고, 2002년 고별 음반 '김민기 전집'을 낸 뒤 뮤지컬 제작에만 힘쓰다 2024년 7월 세상을 떠났습니다.
+H: 그 그룹을 함께 만든 고교·대학 동창 김영세는 뒷날 이노디자인을 이끈 산업 디자이너가 되었다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/김민기_(가수) ; https://ko.wikipedia.org/wiki/김영세_(1950년)   hintNote: 1969년 서울대학교 회화과 재학 시절 고교 동창이자 대학 동창인 김영세와 '도비두(도깨비두마리)'라는 포크 밴드를 결성 / 김영세(金暎世, 1950년 12월 18일 ~ )는 대한민국의 산업디자이너이다. 현재 이노디자인의 대표이사이다.
+REWRITE(고친 질문): before Q: 서울대 미대에 다니던 시절 '도비두'라는 그룹을 만들어 노래를 시작했습니다. 동일방직 노조 문제를 다룬 노래굿 '공장의 불빛'을 발표했고, 뒤에 록뮤지컬 '지하철 1호선'을 번안·연출한 이 사람은? | before E: 2002년 고별 음반 '김민기 전집'을 낸 뒤 가수 활동을 접고 뮤지컬 제작에만 힘썼으며, 2024년 7월 세상을 떠났습니다. | addedCue(GEN): (뺌만 — 남은 단서: 도비두 · 공장의 불빛)
+facts: [q] 서울대 미대 재학 중 도비두 결성 <https://ko.wikipedia.org/wiki/김민기_(가수)> «서울대학교 미술대학에 재학 중 ‘도비두’라는 그룹을 결성하여, 노래 활동을 시작했다.»  ||  [q] 노래굿 공장의 불빛 (동일방직 노조) <https://ko.wikipedia.org/wiki/김민기_(가수)> «동일방직 노조 문제를 다룬 노래굿 〈공장의 불빛〉을 발표했다.»  ||  [e] 지하철 1호선 번안·연출 <https://ko.wikipedia.org/wiki/김민기_(가수)> «록뮤지컬 <지하철 1호선> 번안, 연출 (94-08/18-19)»  ||  [e] 2002 고별 음반 · 뮤지컬 전념 · 2024년 7월 21일 사망 <https://ko.wikipedia.org/wiki/김민기_(가수)> «2002년에 고별 음반 《김민기 전집》을 발표한 후 가수 활동을 접고 뮤지컬 제작에만 전념했다. / 7월 21일 김민기가 사망하였다.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### M2-04  [media/L2:popular-music/1960~70년대]  method=나 layer=팬 세부 work=토요일 밤의 열기
+Q: 드러머 데니스 브라이언이 어머니를 여의어 녹음에서 일찍 빠지자, 제작진은 먼저 녹음한 'Night Fever'의 드럼에서 두 마디를 떼어 반복 테이프로 만들었습니다. 드러머를 'Bernard Lupe'라는 가짜 이름으로 적어 둔 이 비지스 곡은 무엇일까요?
+A: 스테잉 얼라이브   변형: Stayin' Alive | 스테이잉 얼라이브   originalTitle: Stayin' Alive   variantCheck(GEN): ko.wikipedia 문서 제목 '스테잉 얼라이브' 확인 · 스테이잉은 음차 갈림
+E: 분당 약 103박자라, 영국의학저널(BMJ)은 이 곡이 심폐소생술 가슴 압박 속도를 맞추는 메트로놈 노릇을 한다고 소개했습니다.
+H: 1978년 2월 빌보드 핫 100 1위에 올라 4주를 지켰고, 그 자리를 막내 동생 앤디 깁의 노래가 이어받았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Stayin'_Alive   hintNote: hit the number one spot on the US Billboard Hot 100 the week of 4 February 1978, remaining there for four consecutive weeks. … was replaced at number one with the group's younger brother Andy Gibb's single
+facts: [q] 브라이언이 어머니를 여의어 일찍 빠짐 <https://en.wikipedia.org/wiki/Stayin%27_Alive> «Bryon left the recording sessions early as his mother died»  ||  [q] Night Fever 드럼 두 마디를 반복 테이프로 <https://en.wikipedia.org/wiki/Stayin%27_Alive> «took two bars from that track, rerecorded them as a recurrent loop on a separate tape»  ||  [q] Bernard Lupe 가짜 이름 <https://en.wikipedia.org/wiki/Stayin%27_Alive> «jokingly listed the drummer as 'Bernard Lupe' (a takeoff on session drummer Bernard Purdie)»  ||  [e] BMJ · 분당 103박자 · 심폐소생술 <https://en.wikipedia.org/wiki/Stayin%27_Alive> «doubles as a metronome for correct cardiac compression rate ... the song has around 103 beats per minute»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[] assertHint=[] frag=[라이] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### M2-16  [media/L2:animation/일본 애니메이션]  method=나 layer=팬 세부 work=은하철도 999
+Q: 1977년부터 1981년까지 쇼넨가호샤의 잡지 '소년 킹'에 연재된 만화가 원작입니다. 여주인공은 기계화 제국을 다스리는 프로메슘 여왕의 딸로 설정되어 있는데, 이 작품은 무엇일까요?
+A: 은하철도 999
+E: 미야자와 겐지의 소설 '은하철도의 밤'에서 별 사이를 달리는 기차라는 착상을 얻었고, 1979년 린타로 감독의 극장판도 나왔습니다.
+H: 1979년 극장판 주제가는 밴드 고다이고가 불렀다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Godiego   hintNote: Godiego are also known for performing the theme song "The Galaxy Express 999" for the film Galaxy Express 999
+REWRITE(고친 질문): before Q: 1977년부터 1981년까지 쇼넨가호샤의 잡지 '소년 킹'에 연재된 만화가 원작이고, 미야자와 겐지의 한 소설에서 출발한 착상이 담긴 작품입니다. 1979년 린타로 감독의 극장판 애니메이션으로도 만들어진 이 작품은 무엇일까요? | before E: 여주인공 메텔은 기계화 제국을 다스리는 프로메슘 여왕의 딸로 설정되어 있습니다. | addedCue(GEN): 여주인공이 프로메슘 여왕의 딸이라는 설정(해설에서 옮김)
+facts: [q] 소년 킹 연재 1977~1981 <https://en.wikipedia.org/wiki/Galaxy_Express_999> «serialized in Shōnen King (Shōnen Gahosha) from 1977 to 1981»  ||  [q] 메텔은 프로메슘 여왕의 딸 <https://en.wikipedia.org/wiki/Galaxy_Express_999> «she is the daughter of Queen Promethium, ruler of the Mechanization Empire»  ||  [e] 미야자와 겐지 소설에서 착상 <https://en.wikipedia.org/wiki/Galaxy_Express_999> «inspired by the idea of a steam train running through the stars in Kenji Miyazawa's novel Night on the Galactic Railroad»  ||  [e] 1979년 린타로 극장판 <https://en.wikipedia.org/wiki/Galaxy_Express_999> «The film version of Galaxy Express 999 was released in 1979 (director Rintaro)»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[] assertHint=[] frag=[] hint=[explain]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### M2-28  [media/L2:world-cinema/감독]  method=나 layer=팬 세부 work=제임스 카메론
+Q: 1977년 '스타워즈'를 보고 들뜬 나머지 트럭 운전 일을 그만두고 영화계에 뛰어든 감독입니다. 1978년 치과 의사들에게 돈을 빌려 친구와 단편 '제노제네시스'를 찍었고, '피라냐 2'에는 시각 효과 감독으로 들어갔는데, 이 감독은?
+A: 제임스 카메론   변형: 제임스 캐머런   variantCheck(GEN): ko.wikipedia 제임스 캐머런 → 제임스 카메론 넘겨주기
+E: '터미네이터'는 미래에서 자신을 죽이러 온 무적의 로봇 암살자가 나오는 악몽에서 착상을 얻었다고 합니다.
+H: 2012년 잠수정 딥시 챌린저를 몰고 마리아나 해구 바닥까지 혼자 내려갔다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/James_Cameron   hintNote: In 2012, he became the first person to complete a solo descent to the bottom of the Mariana Trench … in the Deepsea Challenger submersible.
+REWRITE(고친 질문): before Q: 1977년 '스타워즈'를 보고 들뜬 나머지 트럭 운전 일을 그만두고 영화계에 뛰어든 감독입니다. 로저 코먼의 스튜디오에서 미니어처 모형 제작자로 일을 시작했고, '피라냐 2'에는 시각 효과 감독으로 들어갔는데, 이 감독은 누구일까요? | before E:  | addedCue(GEN): 치과 의사들에게 빌린 돈으로 찍은 단편 제노제네시스
+facts: [q] 트럭 운전사 · 스타워즈 보고 그만둠 <https://en.wikipedia.org/wiki/James_Cameron> «After the excitement of seeing Star Wars in 1977, Cameron quit his job as a truck driver to enter the film industry.»  ||  [q] 피라냐 2 시각 효과 감독으로 고용 <https://en.wikipedia.org/wiki/James_Cameron> «Cameron was hired as visual effects director for the sequel (Piranha II)»  ||  [e] 터미네이터 악몽 <https://en.wikipedia.org/wiki/James_Cameron> «a nightmare about an invincible robot hit-man sent from the future to assassinate him»  ||  [q] 1978년 치과 의사들에게 돈을 빌려 친구와 단편 제노제네시스 <https://en.wikipedia.org/wiki/James_Cameron> «His career began with the short film Xenogenesis in 1978, which he made with a friend after borrowing money from a group of dentists.»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### S1-11  [sports/L2:baseball/MLB]  method=나
+Q: 어머니는 고교 시절 전국 대회급 배드민턴 선수였습니다. 고교 감독 사사키 히로시는 겸손을 가르치려고 그에게 화장실 청소를 맡겼다고 하는데, 이 일본 야구 선수는 누구일까요?
+A: 오타니   변형: 오타니 쇼헤이   variantCheck(GEN): ko.wikipedia '오타니 쇼헤이' 문서 제목 · 한국 중계·기사는 '오타니' 단독 호칭이 흔함
+E: 존경하던 투수 기쿠치 유세이와 같은 하나마키히가시 고교를 골랐고, 프로에 들어가며 다르빗슈 유가 달던 11번을 물려받았습니다.
+H: 그의 개 데코핀은 도쿄의 미국 대사관에서 명예 비자를 받았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Shohei_Ohtani   hintNote: Ohtani has a Kooikerhondje dog named Dekopin, also known as Decoy. The dog received an honorary visa from the Embassy of the United States, Tokyo.
+REWRITE(고친 질문): before Q: 어머니는 고교 시절 전국 대회급 배드민턴 선수였고, 그는 존경하던 투수 기쿠치 유세이와 같은 고교를 골랐습니다. 프로에 들어가며 다르빗슈 유가 달던 11번을 물려받은 이 선수는 누구일까요? | before E: 고교 감독 사사키 히로시는 겸손을 가르치려고 그에게 화장실 청소를 맡겼다고 합니다. | addedCue(GEN): 고교 감독 사사키 히로시의 화장실 청소(해설에서 올림)
+facts: [q] 어머니가 고교 시절 전국 수준 배드민턴 선수 <https://en.wikipedia.org/wiki/Shohei_Ohtani> «His mother Kayoko was a national-level badminton player in high school»  ||  [e] 존경하던 기쿠치 유세이와 같은 고교(하나마키히가시) 선택 <https://en.wikipedia.org/wiki/Shohei_Ohtani> «he opted to stay local, selecting Hanamaki Higashi High School in Iwate Prefecture, the same high school as pitcher Yusei Kikuchi, whom he admired»  ||  [e] 입단 때 다르빗슈가 달던 11번 <https://en.wikipedia.org/wiki/Shohei_Ohtani> «Upon joining the Fighters, Ohtani was assigned the No. 11 jersey, which had previously been worn by pitcher Yu Darvish.»  ||  [q] 사사키 감독이 겸손을 가르치려 화장실 청소를 맡김 <https://en.wikipedia.org/wiki/Shohei_Ohtani> «Sasaki would assign toilet cleaning chores to Ohtani, to teach him humility.»
+dbCheck(GEN): 오타니 · 오타니 쇼헤이 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### S1-24  [sports/L2:football/축구 역사·클럽]  method=나
+Q: 창립 당시 스페인은 아직 축구협회가 없어 마드리드의 한 클럽이 대신 창립 회원으로 나섰고, 독일 축구협회는 창립 당일 전보로 가입 뜻을 알렸습니다. 이 국제 단체는 무엇일까요?
+A: FIFA   변형: 국제축구연맹 | 피파   variantCheck(GEN): ko.wikipedia '국제 축구 연맹' 문서(띄어쓰기만 다름) · '피파' 문서 · 한국 보도는 'FIFA' 표기가 가장 흔함(A4)
+E: 1904년 5월 21일 파리 생토노레 거리의 프랑스 체육 단체 연합(USFSA) 본부 뒤편에서 세워졌고, 첫 회장은 프랑스의 로베르 게랭이었습니다.
+H: (힌트 없음)
+REWRITE(고친 질문): before Q: 1904년 5월 파리 생토노레 거리의 프랑스 체육 단체 연합(USFSA) 본부 뒤편에서 세워졌습니다. 스페인은 아직 축구협회가 없어 마드리드의 한 클럽이 대신 창립 회원으로 나선 이 단체는 무엇일까요? | before E: 첫 회장은 프랑스의 로베르 게랭이었고, 1906년 잉글랜드의 대니얼 울폴이 뒤를 이었습니다. | addedCue(GEN): 독일 축구협회가 창립 당일 전보로 가입 뜻을 알림
+facts: [e] 1904년 5월 21일 파리 생토노레 거리 229번지 USFSA 본부 뒤편에서 창립 <https://en.wikipedia.org/wiki/FIFA> «FIFA was founded in the rear of the headquarters of the Union des Sociétés Françaises de Sports Athlétiques (USFSA) at the Rue Saint Honoré 229 in Par»  ||  [q] 스페인은 협회가 없어 지금의 레알 마드리드가 대신 <https://en.wikipedia.org/wiki/FIFA> «Spain (represented by then-Real Madrid CF; the Royal Spanish Football Federation was not created until 1913)»  ||  [e] 첫 회장 게랭, 1906년 울폴 <https://en.wikipedia.org/wiki/FIFA> «The first president of FIFA was Robert Guérin. Guérin was replaced in 1906 by Daniel Burley Woolfall from England»  ||  [q] 독일 축구협회는 창립 당일 전보로 가입 의사를 밝힘 <https://en.wikipedia.org/wiki/FIFA> «On the same day, the German Football Association declared through a telegram its intention to affiliate.»
+dbCheck(GEN): FIFA · 국제축구연맹 new (활성 '국제축구평의회' 와 다른 대상)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### S2-11  [sports/L2:olympic/종목·규정]  method=가 pairedWith=#5545 hobby=기록 뒷이야기
+Q: 1920년 안트베르펜 대회의 이 종목에는 '움직이는 새' 표적을 맞히는 세부 경기가 있었고, 두 나라만 나와 동메달을 주지 않은 경기도 있었습니다. 그 뒤 반세기 넘게 빠졌다가 1972년 대회부터 지금의 꼴로 돌아온 이 종목은?
+A: 양궁
+E: 단체전은 1988년 서울 대회에서 더해졌습니다.
+H: 1984년 LA 대회에서 고교생 서향순이 이 종목에서 한국 여자 선수 첫 올림픽 금메달을 땄다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EC%84%9C%ED%96%A5%EC%88%9C   hintNote: 서향순이 선배 김진호를 꺾고 대한민국 여자 선수로는 최초로 올림픽 금메달을 획득하는 돌풍을 일으켰다.
+facts: [q] 1920 '움직이는 새' 세부 경기 <https://en.wikipedia.org/wiki/Archery_at_the_Summer_Olympics> «bird-shooting events for 1920, such as Individual moving bird, 50 metres»  ||  [q] 두 나라만 나와 동메달 없음 <https://en.wikipedia.org/wiki/Archery_at_the_Summer_Olympics> «In some events in Antwerp (1920) bronze medals were not awarded as only two nations competed.»  ||  [q] 1920~1972 빠짐 · 1972 현대 양궁 시작 <https://en.wikipedia.org/wiki/Archery_at_the_Summer_Olympics> «between 1920 and 1972 it was not included in the program ... 1972 marked the beginning of the modern archery competition at the Olympic Games.»  ||  [e] 1988 단체전 <https://en.wikipedia.org/wiki/Archery_at_the_Summer_Olympics> «team competition was added (1988) and the Grand FITA Round format was used.»
+dbCheck(GEN): 양궁 pair-or-different — #5545(상징·의례)와 지식 다름(2회차)   pairCheck(GEN): 1회차 #5545 는 레보요 불화살 점화(질문·해설) · 점화 역 선정(힌트) — 1920 경기와 1972 복귀와 겹치지 않음
+  1회차 #5545: Q: 1992년 바르셀로나 대회 개회식에서 성화대에 불을 붙인 스페인의 안토니오 레보요는 생후 8개월에 소아마비를 앓았고, 1984·1988·1992년 패럴림픽에서 메달을 땄습니다. 그가 메달을 딴 종목은 무엇일까요? | E: 그는 멀리서 불화살을 성화대 위로 쏘아 올려 그 위의 가스에 불을 붙였습니다. | H: 개회식에서 점화 역으로 뽑힌 것은 행사가 열리기 두 시간 전이었다.
+  sameAnswerActive #5545: Q: 1992년 바르셀로나 대회 개회식에서 성화대에 불을 붙인 스페인의 안토니오 레보요는 생후 8개월에 소아마비를 앓았고, 1984·1988·1992년 패럴림픽에서 메달을 땄습니다. 그가 메달을 딴 종목은 무엇일까요? | E: 그는 멀리서 불화살을 성화대 위로 쏘아 올려 그 위의 가스에 불을 붙였습니다. | H: 개회식에서 점화 역으로 뽑힌 것은 행사가 열리기 두 시간 전이었다.
+warn: assert=[] assertHint=[] frag=[] hint=[explain]
+webOpen: TRUE (같은 정답 활성, 2회차)
+
+### S2-23  [sports/L2:combat-athletics/동계 종목]  method=나
+Q: 세 살부터 아홉 살까지 발레를 배우다 두 살 위 언니를 따라 피겨로 옮긴 일본 선수입니다. 네슬레 초콜릿 이름을 딴 애완 푸들 '에어로'를 갈라 프로그램에 함께 내보내기도 한 이 선수는 누구일까요?
+A: 아사다 마오
+E: 2017년 은퇴한 뒤 2024년 11월 도쿄 다치카와에 자기 이름을 내건 링크를 열었고, 이름은 배우 다이치 마오에서 따왔습니다.
+H: 2010년 동계 올림픽 때 밴쿠버의 일본식 핫도그 노점 재파독은 그의 이름을 딴 핫도그를 내놓았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Mao_Asada   hintNote: During the 2010 Winter Olympics, a popular Vancouver Japanese street food vendor, Japadog, named a hot dog after Asada called the Mao Dog.
+REWRITE(고친 질문): before Q: 세 살부터 아홉 살까지 발레를 배우다 두 살 위 언니를 따라 피겨로 옮긴 이 일본 선수는, 2017년 은퇴한 뒤 2024년 11월 도쿄 다치카와에 자기 이름을 내건 링크를 열었습니다. 이 선수는 누구일까요? | before E: 그의 이름은 일본 배우 다이치 마오의 이름을 따서 지은 것입니다. | addedCue(GEN): 푸들 '에어로'를 갈라 프로그램에 내보냄
+facts: [q] 3~9세 발레 · 언니 따라 피겨 <https://en.wikipedia.org/wiki/Mao_Asada> «Mao Asada studied classical ballet from the age of three to nine, but followed her sister in switching to figure skating.»  ||  [q] 언니 두 살 위 <https://en.wikipedia.org/wiki/Mao_Asada> «Her sister Mai Asada (two years older) is also a figure skater.»  ||  [e] 2017 은퇴 · 2024년 11월 다치카와 MAO RINK <https://en.wikipedia.org/wiki/Mao_Asada> «She announced her retirement from competition in 2017, and in November 2024 she opened a rink in Tachikawa, Tokyo ... MAO RINK»  ||  [e] 이름 다이치 마오에서 <https://en.wikipedia.org/wiki/Mao_Asada> «She was named after the Japanese actress Mao Daichi.»  ||  [q] 네슬레 초콜릿 이름을 딴 푸들 에어로를 갈라 프로그램에 등장시킴 <https://en.wikipedia.org/wiki/Mao_Asada> «Asada owned a miniature poodle named Aero, who is named after the chocolate confection made by Nestlé. She has included Aero in exhibition programs.»
+dbCheck(GEN): 아사다 마오 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))

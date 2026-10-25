@@ -1,0 +1,302 @@
+### A1-06  [arts/L2:design-photo/사진가·유명 사진]  method=나
+Q: 사진기자 아서 사스가 1951년 찍은 이 과학자의 사진은 본인이 무척 마음에 들어 해 개인용으로 아홉 장을 인화해 달라고 했고, 원본은 경매에서 7만 2300달러에 팔렸습니다. 이 과학자는 누구일까요?
+A: 아인슈타인   변형: 알베르트 아인슈타인   variantCheck(GEN): ko.wikipedia 문서 제목 '알베르트 아인슈타인' — 성만 부르는 '아인슈타인' 이 가장 흔함(A3)
+E: 이 사진은 1951년 3월 14일 그의 72번째 생일 축하 자리가 끝난 뒤 찍혔습니다.
+H: 1952년 이스라엘 대통령 바이츠만이 숨지자 벤구리온 총리가 그에게 대통령 자리를 제안했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Albert_Einstein   hintNote: Upon the death of Israeli president Weizmann in November 1952, Prime Minister David Ben-Gurion offered Einstein the largely ceremonial position of President of Israel
+REWRITE(고친 질문): before Q: 1951년 72번째 생일 축하 자리를 마치고 차에 오른 이 과학자를 사진기자 아서 사스가 찍었습니다. 본인이 그 사진을 무척 마음에 들어 해 개인용으로 아홉 장을 인화해 달라고 했던 이 과학자는 누구일까요? | before E: 이 사진의 원본은 경매에서 7만 2300달러에 팔려, 아인슈타인 사진 가운데 가장 비싸게 팔린 것으로 꼽힙니다. | addedCue(GEN): 원본 경매가 7만 2300달러
+facts: [e] 1951년 72번째 생일 축하 뒤 · 아서 사스 <https://en.wikipedia.org/wiki/Arthur_Sasse> «The photo "was taken on March 14, 1951, after Einstein's 72nd birthday celebration"»  ||  [q] 개인용으로 아홉 장 인화 요청 <https://en.wikipedia.org/wiki/Arthur_Sasse> «Einstein liked it enough to have "requested nine prints for his personal use."»  ||  [q] 원본 경매가 72,300달러 — 가장 비싼 아인슈타인 사진 <https://en.wikipedia.org/wiki/Arthur_Sasse> «"The original picture was auctioned off for $72,300," the most expensive Einstein photograph ever sold.»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### A1-18  [arts/L2:theatre/무용·발레]  method=가 pairedWith=#2534
+Q: 1894년 2월 한 작곡가를 추모하는 공연에서 레프 이바노프가 이 발레의 2막을 새로 안무해 올렸습니다. 이듬해 마린스키 극장 재공연 때는 리카르도 드리고가 작곡가의 동생 모데스트의 승낙을 받아 악보를 고쳤는데, 이 발레는 무엇일까요?
+A: 백조의 호수
+E: 이 재공연에서 모데스트는 대본도 고쳐, 끝을 두 주인공이 함께 죽은 뒤 승천하는 장면으로 바꿨습니다.
+H: 1877년 모스크바 볼쇼이 극장 초연은 율리우스 라이징거가 안무했고 처음에는 실패작으로 여겨졌다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Swan_Lake   hintNote: premiered by the Bolshoi Ballet on 4 March 1877 … The choreographer of this original production was Julius Reisinger … Despite its initial failure
+facts: [q] 1894년 2월 추모 공연 — 이바노프 안무 2막 <https://en.wikipedia.org/wiki/Swan_Lake> «memorial concert held in February 1894: "The production included the second act of Swan Lake, choreographed by Lev Ivanov."»  ||  [q] 1895 마린스키 재공연 · 드리고가 모데스트 승낙 받아 악보 수정 <https://en.wikipedia.org/wiki/Swan_Lake> «"first staged for the Imperial Ballet on 15 January 1895, at the Mariinsky Theatre" / "Riccardo Drigo revised the score, after receiving approval from»  ||  [e] 모데스트 대본 수정 — 함께 죽고 승천하는 결말 <https://en.wikipedia.org/wiki/Swan_Lake> «"Modest Tchaikovsky was called upon to make changes to the ballet's libretto" — changing the ending to a double death followed by an apotheosis»
+dbCheck(GEN): pair-or-different #2534 — (가) 2회차   pairCheck(GEN): 1회차 질문(흑백 백조 한 무용수)·해설(두 배역 난도)·힌트(없음)와 겹치지 않음 — 레냐니의 오데트·오딜 겸역은 1회차와 겹쳐 뺌
+  1회차 #2534: Q: 한 무용수가 흰 백조와 검은 백조를 함께 맡곤 하는, 차이콥스키가 음악을 쓴 발레는? | E: 두 배역의 성격이 정반대라 난도가 높습니다. | H: (없음)
+  sameAnswerActive #2534: Q: 한 무용수가 흰 백조와 검은 백조를 함께 맡곤 하는, 차이콥스키가 음악을 쓴 발레는? | E: 두 배역의 성격이 정반대라 난도가 높습니다. | H: (없음)
+warn: assert=[] assertHint=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 같은 정답 활성, 2회차)
+
+### C1-10  [science/L2:math/수학 기호·용어]  method=나
+Q: 이 셈을 가리키는 낱말은 1690년 야코프 베르누이의 글에서 처음 라틴어로 인쇄되었습니다. 뉴턴은 이 셈을 변수 위에 작은 세로 막대를 긋거나 변수를 네모 안에 넣어 나타냈지만 그 표기는 널리 쓰이지 않았는데, 이 셈은 무엇일까요?
+A: 적분
+E: 오늘날 쓰는 기호는 라이프니츠가 1675년 개인 메모에서 '합'을 뜻하는 라틴어 summa 의 긴 s 를 본떠 만든 것입니다.
+H: 1854년 베른하르트 리만이 괴팅겐 대학에 낸 글에서 이 셈의 엄밀한 정의를 내놓았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Riemann_integral   hintNote: Bernhard Riemann introduced the integral in work presented to the faculty at the University of Göttingen in 1854 and published in 1868.
+facts: [q] 1690년 야코프 베르누이가 'integral' 낱말을 처음 라틴어로 인쇄 <https://en.wikipedia.org/wiki/Integral> «"The term was first printed in Latin by Jacob Bernoulli in 1690: 'Ergo et horum Integralia aequantur'."»  ||  [q] 뉴턴의 표기 — 변수 위 작은 세로 막대·네모, 널리 쓰이지 않음 <https://en.wikipedia.org/wiki/Integral> «Newton used a small vertical bar above a variable, or the variable inside a box, but these were not widely adopted»  ||  [e] 라이프니츠 1675년, 긴 s(summa) <https://en.wikipedia.org/wiki/Integral_symbol> «introduced by Gottfried Wilhelm Leibniz "in 1675 in his private writings" ... "based on the ſ (long s) character" / Integral: "standing for summa (wri»
+dbCheck(GEN): 적분 new
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### C1-22  [science/L2:biology/세포·유전]  method=나 defForm(GEN)=true
+Q: 1869년 튀빙겐 대학 호페자일러의 실험실에서 근처 병원 붕대의 고름 속 백혈구로 이 물질을 처음 분리한 과학자는, 뒤에 바젤 대학에서 연어 정자를 분석하다 프로타민도 찾아냈습니다. 오늘날 이 물질을 영문 약자로 부르는 이름은?
+A: DNA   변형: 디엔에이   variantCheck(GEN): 질문이 영문 약자를 요구(B2) — '디엔에이'는 같은 약자의 한글 음차로 언론에서 씀
+E: 그 과학자는 스위스의 프리드리히 미셔로, 그는 이 물질을 '뉴클레인'이라 불렀고 1871년 처음 발표했지만 그 중요성은 곧바로 알려지지 않았습니다.
+H: 1952년 레이먼드 고슬링이 찍은 '사진 51'은 이 물질의 섬유를 X선으로 찍은 회절 사진이다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Photo_51   hintNote: Photo 51 is a 1952 X-ray based fiber diffraction image of a paracrystalline gel composed of DNA fiber taken by Rosalind Franklin's PhD student Raymond Gosling
+REWRITE(고친 질문): before Q: 1869년 스위스 의사 프리드리히 미셔는 튀빙겐 대학 호페자일러의 실험실에서, 근처 병원 붕대의 고름 속 백혈구로 '뉴클레인'이라 이름 붙인 물질을 처음 분리했습니다. 오늘날 이 물질을 영문 약자로 부르는 이름은? | before E: 미셔의 발견은 1871년 처음 발표되었지만 그 중요성은 곧바로 알려지지 않았습니다. | addedCue(GEN): 같은 과학자가 바젤에서 연어 정자로 프로타민을 찾아냄
+facts: [q] 튀빙겐 대학 호페자일러 실험실 <https://en.wikipedia.org/wiki/Friedrich_Miescher> «"Felix Hoppe-Seyler's laboratory at the University of Tübingen"»  ||  [q] 근처 병원 붕대에서 백혈구(호중구) <https://en.wikipedia.org/wiki/Friedrich_Miescher> «Neutrophils "could be obtained from bandages at the nearby hospital"»  ||  [e] 1869년 핵산을 처음 분리, 뉴클레인 → 뒤에 DNA <https://en.wikipedia.org/wiki/Friedrich_Miescher> «"He was the first scientist to isolate nucleic acid in 1869." The article calls the substance "nuclein," which it later identifies as DNA»  ||  [e] 1871년 발표, 중요성은 곧바로 알려지지 않음 <https://en.wikipedia.org/wiki/Friedrich_Miescher> «"The significance of the discovery, first published in 1871, was not at first apparent."»  ||  [q] 바젤 대학에서 연어 정자를 분석하다 프로타민 발견 <https://en.wikipedia.org/wiki/Friedrich_Miescher> «Miescher then went on to study physiology at Leipzig ... before being appointed professor of physiology at the University of Basel. While analyzing th»
+dbCheck(GEN): DNA · 디엔에이 new (활성 '이중나선'·'사진 51' 과 정답·지식 다름)
+warn: assert=[처음,처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음,처음, 고친 질문(새 단서 사실))
+
+### C2-09  [science/L2:aerospace/인공위성·탐사선]  method=나
+Q: 1995년 8월 5일 미국 케이프커내버럴에서 델타 2 로켓에 실려 오른 이 한국 위성은, 6번 보조 연료통의 점화 퓨즈가 고장 나 제때 떨어져 나가지 못하는 사고를 겪었습니다. 그 탓에 10년 예정이던 수명이 4년 4개월로 줄어든 이 위성은 무엇일까요?
+A: 무궁화 1호   변형: 무궁화위성 1호   variantCheck(GEN): 무궁화위성 1호 — 언론·KT 자료에서 함께 쓰는 이름(ko.wikipedia 문서 제목 '무궁화 1호')
+E: 이 사고로 뒤를 이을 위성들의 개발이 앞당겨졌습니다.
+H: 한국통신이 광복 50주년을 기념하는 뜻으로 추진한 위성 사업이었다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/무궁화_1호   hintNote: 1995년 한국통신(현 KT)이 광복 50주년을 기념하기 위한 차원에서 진행된 위성 사업이다.
+facts: [q] 1995년 8월 5일 케이프커내버럴에서 델타 2 로 발사 <https://ko.wikipedia.org/wiki/무궁화_1호> «1995년 8월 5일에 미국 케이프커내버럴 공군 기지에서 발사했다. (발사체 델타 2호 계열 7925형)»  ||  [q] 6번 연료통 점화 퓨즈 고장으로 분리 실패 <https://ko.wikipedia.org/wiki/무궁화_1호> «6번 연료통 점화 퓨즈가 고장나서 위성과 분리되지 못하는 사고가 나»  ||  [q] 수명 10년 → 4년 4개월 <https://ko.wikipedia.org/wiki/무궁화_1호> «10년 예정이던 수명이 4년 4개월로 단축되었다»  ||  [e] 무궁화 2·3호 개발이 앞당겨짐 <https://ko.wikipedia.org/wiki/무궁화_1호> «이에 무궁화 2호와 무궁화 3호의 개발이 앞당겨졌다.»
+dbCheck(GEN): answercheck new · 천리안·우리별 1호(활성)는 다른 위성
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### C2-21  [science/L2:invention/20세기 이후 발명]  method=나
+Q: 1902년 미국 브루클린의 새킷-빌헬름스 석판 인쇄·출판사에서는 습기 탓에 종이 크기와 색 인쇄 잉크의 맞춤이 흐트러졌고, 한 젊은 기술자가 이를 잡으려고 이 장치를 설계했습니다. 1906년 섬유 공장 주인 스튜어트 크레이머가 영어 이름을 붙인 이 장치는?
+A: 에어컨   변형: 에어컨디셔너 | 냉방기   variantCheck(GEN): 에어컨디셔너 · 냉방기 — 표준국어대사전 '에어컨'(=에어컨디셔너) 풀이와 일상 표현
+E: 크레이머는 이 말로 가습 · 공기 정화 · 난방 · 환기를 함께 아울렀습니다.
+H: 그 젊은 기술자는 1915년 자기 이름을 내건 회사를 세웠고, 그 회사는 지금도 냉난방 분야의 큰 회사다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Willis_Carrier   hintNote: In 1915, he founded Carrier Corporation ... The Carrier Corporation remains a world leader in commercial and residential HVAC and refrigeration.
+facts: [q] 1902년 새킷-빌헬름스 석판 인쇄·출판사에 설계 <https://en.wikipedia.org/wiki/Air_conditioning> «Willis Carrier designed what is widely regarded as the first modern electrical air-conditioning system for the Sackett-Wilhelms Lithographing & Publis»  ||  [q] 종이 크기·잉크 맞춤을 안정시키려 함 <https://en.wikipedia.org/wiki/Air_conditioning> «helped stabilize paper dimensions and the alignment of inks during color printing»  ||  [q] 1906년 크레이머가 이름 지음 <https://en.wikipedia.org/wiki/Air_conditioning> «Stuart W. Cramer, a Charlotte, North Carolina engineer and textile-mill owner, coined the term "air conditioning" in 1906.»  ||  [e] 가습·정화·난방·환기를 아우름 <https://en.wikipedia.org/wiki/Air_conditioning> «He used it to cover humidifying, air cleaning, heating, and ventilation.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### H1-08  [history/L2:world-history-east/중동·이슬람 세계]  method=나
+Q: 1881년 이 인물이 태어난 집은 오늘날 그리스 테살로니키에서 박물관으로 쓰입니다. 그가 1938년 숨진 이스탄불의 궁전에서는 모든 시계를 그가 숨진 오전 9시 5분에 멈춰 맞췄다는데, 이 인물은 누구일까요?
+A: 아타튀르크   변형: 무스타파 케말 | 무스타파 케말 아타튀르크 | 케말 파샤   variantCheck(GEN): ko.wikipedia 문서 제목 '무스타파 케말 아타튀르크', '케말 파샤'에서 넘어옴
+E: '케말'이라는 이름은 어린 시절 그의 수학 선생님이 지어 준 것이라고 합니다.
+H: 그가 입양한 아홉 아이 가운데 하나인 사비하 괵첸은 세계 첫 여성 전투기 조종사가 되었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Sabiha_G%C3%B6k%C3%A7en   hintNote: She became the world's first female fighter pilot, at age 23. As an orphan, she was one of the nine children adopted by Mustafa Kemal Atatürk.
+facts: [q] 1881년 셀라닉(지금의 테살로니키) 출생 <https://ko.wikipedia.org/wiki/무스타파_케말_아타튀르크> «1881년 당시 오스만 제국의 지배 하에 있던 셀라닉주(지금의 그리스 테살로니키)에서 국경세무관리의 아들로 태어났다.»  ||  [q] 생가는 박물관 <https://en.wikipedia.org/wiki/Mustafa_Kemal_Atatürk> «The house where Atatürk was born in the Ottoman city of Salonica, now a museum.»  ||  [q] 1938년 돌마바흐체 궁전 오전 9시 5분 사망 · 시계를 9:05에 맞춤 <https://en.wikipedia.org/wiki/Dolmabahçe_Palace> «He died at 9:05 A.M. on November 10, 1938 … All the clocks in the palace were stopped and set to 9:05 after his death.»  ||  [e] 케말이라는 이름은 수학 선생님이 지어 줌 <https://ko.wikipedia.org/wiki/무스타파_케말_아타튀르크> «어린 시절 이름은 무스타파였고, 케말이라는 이름은 수학 선생님이 지어 주었다고 한다.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### H1-20  [history/L2:world-history-west/근대 유럽·혁명]  method=나
+Q: 마르티니크의 사탕수수 농장 집안에서 태어난 이 인물은 원래 '로즈'라 불렸는데, 두 번째 남편이 다른 이름으로 부르기를 좋아했습니다. 공포 정치 때 카르메 감옥에 갇혔다가 첫 남편이 처형되고 닷새 뒤에 풀려난 이 인물은?
+A: 조제핀   변형: 조세핀 | 조제핀 드 보아르네   variantCheck(GEN): ko.wikipedia 문서 제목 '조제핀 드 보아르네' · '조제핀'은 '조세핀' 문서로 넘어감(API 넘겨주기 확인)
+E: 그가 살던 말메종 성은 그가 손수 꼼꼼히 돌본 장미 정원으로 이름났습니다.
+H: 딸 오르탕스는 뒷날 나폴레옹 3세의 어머니가 되었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Hortense_de_Beauharnais   hintNote: She and Louis had three sons: Napoléon-Charles Bonaparte; Napoleon III, Emperor of the French; and Napoléon Louis Bonaparte
+facts: [q] 마르티니크 레트루아질레 사탕수수 농장 <https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais> «Les Trois-Îlets, Martinique, where the family home was a sugar plantation.»  ||  [q] 원래 로즈 · 나폴레옹이 조제핀이라 부르기를 좋아함 <https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais> «born Marie Josèphe Rose Tascher de La Pagerie and went by Rose until she met Napoleon, who preferred to call her Joséphine.»  ||  [q] 첫 남편 공포 정치 때 처형 · 카르메 감옥 · 닷새 뒤 석방 <https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais> «Alexandre de Beauharnais was guillotined during the Reign of Terror … held in the Carmes prison until five days after his execution.»  ||  [e] 말메종 장미 정원 <https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais> «The Château de Malmaison was noted for its rose garden, which she supervised closely.»
+dbCheck(GEN): answercheck new (조제핀 · 조세핀)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### H1-32  [history/L2:war-history/고대·중세 전쟁]  method=나
+Q: 1218년 오트라르의 총독 이날추크는 이 인물이 보낸 대상을 첩자라며 처형하고 물건을 빼앗았고, 샤 무함마드 2세는 따지러 온 사신 하나를 죽였습니다. 이 일을 빌미로 군대를 일으킨 인물은?
+A: 칭기즈 칸   변형: 칭기스 칸 | 테무친   variantCheck(GEN): ko.wikipedia 문서 제목 '칭기즈 칸' — '칭기스 칸' · '테무친' 모두 넘어옴
+E: 쫓기던 무함마드 2세는 카스피해의 한 섬에서 빈털터리로 숨졌습니다.
+H: 1227년 반란을 일으킨 서하를 치던 중 숨졌다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Genghis_Khan   hintNote: In 1227, Genghis died while subduing the rebellious Western Xia.
+REWRITE(고친 질문): before Q: 1218년 오트라르의 총독 이날추크는 이 인물이 보낸 대상을 첩자라며 처형하고 물건을 빼앗았고, 호라즘의 샤 무함마드 2세는 따지러 온 사신 하나를 죽였습니다. 이 일을 빌미로 호라즘 원정에 나선 인물은? | before E:  | addedCue(GEN): 없음(쉬운 단서만 뺌 — 오트라르 사건이 남음)
+facts: [q] 1218년 오트라르 총독이 대상을 첩자 혐의로 처형·약탈 <https://en.wikipedia.org/wiki/Mongol_invasion_of_the_Khwarazmian_Empire> «(1218) the Otrar governor seized the caravan's goods and executed its members on charges of espionage.»  ||  [q] 샤가 사신 하나를 죽이고 둘을 모욕 <https://en.wikipedia.org/wiki/Mongol_invasion_of_the_Khwarazmian_Empire> «The Shah went so far as to kill one Mongol envoy and humiliate the other two.»  ||  [e] 무함마드 2세 카스피해 섬에서 빈털터리로 사망 <https://en.wikipedia.org/wiki/Mongol_invasion_of_the_Khwarazmian_Empire> «died destitute on an island in the Caspian Sea.»
+dbCheck(GEN): answercheck new (칭기즈 칸 · 칭기스 칸 · 테무친)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### H2-04  [history/L2:philosophy/동양 사상]  method=나
+Q: 이 사상가는 세 살 때 아버지를 여의었고, 젊은 시절 회계 출납을 맡은 관리와 양·말을 돌보는 일로 벼슬살이를 시작했습니다. 말년에는 쉰 살이던 아들을 먼저 떠나보냈는데, 이 사상가는 누구일까요?
+A: 공자
+E: 아들뿐 아니라 가장 아끼던 제자들까지 먼저 잃어 말년이 무거웠다고 전합니다.
+H: 노나라 무관 숙량흘의 둘째 아들로 태어났다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/공자   hintNote: 춘추시대에 서주의 제후국인 노나라의 무관인 숙량흘의 둘째 아들이자, 서자로 태어났었다.
+facts: [q] 세 살 때 아버지 사망 <https://ko.wikipedia.org/wiki/공자> «3살 때 아버지가 죽었고»  ||  [q] 회계 출납직 위리, 목장 일로 관리 생활 시작 <https://ko.wikipedia.org/wiki/공자> «회계 출납직인 위리(委吏)를 거쳐 목장 경영직인 사직(司直) 등으로 관리 생활을 시작하였다.»  ||  [q] 양과 말을 돌보는 일 <https://en.wikipedia.org/wiki/Confucius> «as a bookkeeper and a caretaker of sheep and horses»  ||  [q] 아들 백어가 50세로 먼저 죽음 <https://ko.wikipedia.org/wiki/공자> «(아들 백어가) 50세의 나이로 죽었다»  ||  [e] 아들과 아끼던 제자들을 잃음 <https://en.wikipedia.org/wiki/Confucius> «Burdened by the loss of both his son and his favorite disciples»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### H2-16  [history/L2:society/사회학 개념]  method=나
+Q: 1965년 9월 5일 샌프란시스코 이그재미너에 실린 마이클 팰런의 기사가 미국 서부에서 이 말을 처음 썼습니다. 맬컴 X는 자서전에서 1940년대 할렘에서는 이 말이 '흑인보다 더 흑인처럼 구는 백인'을 가리켰다고 적었는데, 이 말은?
+A: 히피
+E: 1967년 샌프란시스코의 디거스는 행진을 벌여 이들의 '죽음'을 선언하고 이들을 본뜬 인형을 땅에 묻었습니다.
+H: 1966~67년 샌프란시스코의 한 동네 가게 '사이키델릭 숍'은 이들의 비공식 사랑방 노릇을 했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Haight-Ashbury   hintNote: the Psychedelic Shop quickly became one of the unofficial community centers for the growing numbers of hippies migrating to the neighborhood in 1966–67.
+facts: [q] 1965.9.5 팰런의 이그재미너 기사, 서부 첫 사용 <https://en.wikipedia.org/wiki/Hippie> «Fallon's piece … San Francisco Examiner … 'A New Paradise for Beatniks' … September 5, 1965 … first use of the term on the West Coast»  ||  [q] 맬컴 X 자서전, 1940년대 할렘의 뜻 <https://en.wikipedia.org/wiki/Hippie> «(his 1964 autobiography) in 1940s Harlem, 'hippie' described a white man who 'acted more Negro than Negroes.'»  ||  [e] 1967 디거스의 히피의 죽음 행진·인형 매장 <https://en.wikipedia.org/wiki/Hippie> «the Diggers declare[d] the 'death' of the hippie with a parade … buried an effigy of a hippie in the Panhandle (사진 설명 October 6, 1967)»
+dbCheck(GEN): answercheck new
+warn: assert=[처음] assertHint=[] frag=[] hint=[explain]
+webOpen: TRUE (단정어 처음)
+
+### H2-28  [history/L2:religion/고대·소수 종교]  method=나
+Q: 1941년 가톨릭 교회가 뒷받침한 '정화 작전'으로 이 종교의 사원이 여럿 부서졌습니다. 2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로 인정했는데, 이 종교는 무엇일까요?
+A: 부두교   변형: 부두   variantCheck(GEN): ko.wikipedia 문서 제목 '부두교' · 일상에서 '부두'만으로도 씀(부두 인형 등)
+E: 1791년 부아카이망에서 열린 이 종교 의식이 아이티 혁명의 불씨가 되었다는 전설이 있지만, 역사가들 사이에 논란이 있습니다.
+H: 이 종교에서는 남자 사제를 '웅간', 여자 사제를 '만보'라 부른다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Haitian_Vodou   hintNote: Male priests are referred to as an oungan, alternatively spelled houngan … manbo (priestess), through which group ceremonies are conducted.
+facts: [q] 1941 교회가 뒷받침한 정화 작전, 사원 파괴 <https://en.wikipedia.org/wiki/Haitian_Vodou> «Operation Nettoyage (Operation Cleanup), a Church-backed campaign to destroy many ounfòs … (1941)»  ||  [q] 2003 아리스티드 공식 인정 <https://en.wikipedia.org/wiki/Haitian_Vodou> «President Jean-Bertrand Aristide granted Vodou official recognition in 2003.»  ||  [e] 1791 부아카이망 의식 전설·논란 <https://en.wikipedia.org/wiki/Haitian_Vodou> «According to legend, the Revolution was sparked by a 1791 Vodou ritual at Bois-Caïman … Although historians debate the veracity of such claims»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### K1-10  [korea/L2:kr-geo/섬·해안]  method=나
+Q: 신라 말의 한 문인은 고향으로 돌아가던 길에 이곳 경치에 감탄해 바닷가 바위에 글자를 새겼다고 전합니다. 그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳은 어디일까요?
+A: 해운대
+E: 그 석각은 섬 전체를 붉게 물들이는 동백나무에서 이름이 온 동백섬에 남아 있습니다.
+H: 그 문인은 황소의 난 때 반란군 지도자를 꾸짖는 격문을 지어 당나라에 이름을 떨쳤다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%B9%98%EC%9B%90   hintNote: 황소의 난이 일어나자 절도사 고병의 막하에서 《토황소격문(討黃巢檄文)》을 지어 당 전역에 문장으로 이름을 떨쳤고
+REWRITE(고치지 않음): 지명의 유래(최치원의 자 '해운')가 곧 묻는 사실이라, 그 단서를 빼면 남는 단서(동백섬·석각·누리마루)가 오히려 더 쉬워 고치지 않음
+facts: [q] 해운대는 최치원의 자 해운에서 비롯된 지명 <https://ko.wikipedia.org/wiki/해운대> «해운대는 고운 최치원의 자인 해운(海雲)에서 비롯된 지명이다.»  ||  [q] 최치원이 낙향하는 길에 지나며 아름다움에 감탄해 글자를 새겼다 <https://ko.wikipedia.org/wiki/해운대> «최치원이 낙향하는 길에 이곳을 지나며 아름다움에 감탄해 글자를 새겼다고 전합니다»  ||  [e] 동백섬 이름은 동백나무에서, 해운대석각이 동백섬에 있다 <https://ko.wikipedia.org/wiki/해운대> «섬 이름은 섬 전체를 붉게 물들이는 동백나무에서 왔습니다 … 해운대석각은 동백섬 곳곳에 있는 볼거리 중 하나»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### K1-22  [korea/L2:kr-language/사자성어]  method=나
+Q: 죽림칠현 혜강의 아들 혜소가 처음 낙양에 들어오자, 누군가 왕융에게 어제 사람들 틈에서 혜소를 처음 보았다며 한 비유를 들었습니다. 왕융이 '그대는 아직 그 아버지를 보지 못했을 뿐'이라고 답했다는 데서 나온 사자성어는?
+A: 군계일학
+E: 『진서』 혜소전의 원문은 혜소가 '들학이 닭 무리 속에 있는 것 같다'고 했습니다.
+H: 그 비유에 답한 왕융 역시 죽림칠현의 한 사람이었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Wang_Rong_(Jin_dynasty)   hintNote: He was also one of the Seven Sages of the Bamboo Grove.
+REWRITE(고치지 않음): 사자성어는 유래 고사가 곧 교과서(고교 한문) 단서 — 혜소·왕융 고사를 빼면 정답이 하나로 좁혀지지 않고, 다른 세부(혜소의 최후)도 혜소를 알면 바로 풀림
+facts: [q] 혜소는 위나라 중산대부 혜강의 아들 <https://zh.wikisource.org/wiki/晉書/卷089> «嵇紹，字延祖，魏中散大夫康之子也。»  ||  [q] 혜소가 처음 낙양에 들어오자 누군가 왕융에게 어제 사람들 틈에서 처음 보았다며 비유, 왕융은 '그대는 그 아버지를 보지 못했을 뿐' <https://zh.wikisource.org/wiki/晉書/卷089> «紹始入洛，或謂王戎曰：「昨于稠人中始見嵇紹，昂昂然如野鶴之在雞群。」戎曰：「君復未見其父耳。」»  ||  [e] 들학이 닭 무리 속에 있는 것 같다 <https://zh.wikisource.org/wiki/晉書/卷089> «昂昂然如野鶴之在雞群»
+dbCheck(GEN): answercheck new
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### K2-09  [korea/L2:kr-history/개항기·일제강점기]  method=나
+Q: 이 사건 때의 싸움에서 공을 세운 미국 수병 9명과 해병 6명은 명예 훈장을 받았는데, 외국에서 벌어진 싸움으로 이 훈장을 받은 첫 사례였습니다. 이때 빼앗긴 조선 지휘관의 '수(帥)'자 깃발이 2007년 10월 장기 임대로 돌아온 이 사건은?
+A: 신미양요
+E: 광성보 싸움에서 조선군은 지휘관 어재연 등 240여 명이 전사하고 100여 명이 바다로 뛰어들었습니다.
+H: 기함 콜로라도호에는 존 로저스 제독과 청나라 주재 미국 공사 프레더릭 로가 타고 있었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/United_States_expedition_to_Korea   hintNote: Embarked aboard Colorado was Rear Admiral John Rodgers, and Frederick F. Low ... Frederick Low, the American ambassador to China, sent the mission
+REWRITE(고친 질문): before Q: 이 사건 때 빼앗긴 조선 지휘관의 '수(帥)'자 깃발은 2007년 10월 장기 임대 형식으로 돌아와, 지금은 강화의 박물관에 전시되어 있습니다. 조선군 240여 명이 전사하고 100여 명이 바다로 뛰어든 싸움이 벌어진 이 사건은 무엇일까요? | before E: 광성보에서 전사한 지휘관 어재연은 뒤에 병조판서로 추증되었습니다. | addedCue(GEN): 미군 15명의 명예 훈장 — 외국 분쟁 첫 수여
+facts: [q] 어재연 장군기(수자기)는 미국 해군사관학교 박물관에 있다가 2007년 10월 18일 장기임대로 반환, 강화박물관 전시 <https://ko.wikipedia.org/wiki/신미양요> «어재연 장군기(帥자기)는 전리품으로 강탈된 후 미국 애나폴리스에 있는 해군사관학교 박물관에 소장되어 있었으나, 2007년 10월 18일 한국에 장기임대 형태로 반환되어 국립고궁박물관에서 전시를 거쳐, 현재는 강화박물관에서 장기 전시되고 있다.»  ||  [e] 조선측 240여 명 전사, 100여 명 바다로 뛰어듦 <https://ko.wikipedia.org/wiki/신미양요> «8시간가량 치러진 이 전투에서 조선측은 어재연 등 240여 명이 전사하고 100여 명이 바다로 뛰어들어 자살하였으며, 20여 명이 포로로 잡혔다.»  ||  [q] 수병 9명·해병 6명 명예 훈장 — 외국 분쟁으로는 첫 수여 <https://en.wikipedia.org/wiki/United_States_expedition_to_Korea> «Nine sailors (Chief Quartermaster Grace, ...) and six Marines (Corporal Brown and Privates ...) were awarded the Medal of Honor, the first for actions»
+dbCheck(GEN): answercheck new — 활성 제너럴셔먼호 사건 문항과 정답·지식이 다름
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### K2-21  [korea/L2:kr-food/향토 음식]  method=나
+Q: 1970년대 초 계곡 옆 평상에서 주머니가 가벼운 군인들을 상대로 푸짐하게 내놓은 데서 시작되었다고 합니다. 1986년 아시안 게임과 1988년 올림픽 무렵 근처 국망봉에 오른 산악회 회원들이 들렀다가 맛이 알려졌다는 이 갈비는?
+A: 이동갈비   변형: 포천 이동갈비   variantCheck(GEN): 한국향토문화전자대전(포천) '이동 갈비' — '포천 이동 갈비촌'으로 함께 부름
+E: 조각 갈비 열 대를 1인분으로 냈고, 갈비와 나머지 살을 이쑤시개로 꽂아 이어 붙이는 방식을 가리키기도 합니다.
+H: 이 갈비로 이름난 면은 광복 직후 대부분이 38선 북쪽에 들어 소련 군정 아래 놓였다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/포천시 ; https://ko.wikipedia.org/wiki/이동면_(포천시)   hintNote: 38선 이북인 영북면 전부와 이동면 대부분 … 이 소련군정 관할 아래 들어갔다. / 이동막걸리와 이동갈비로 유명하다.
+REWRITE(고친 질문): before Q: 1970년대 초 백운 계곡 옆에 평상을 놓고, 주머니가 가벼운 군인들을 상대로 조각 갈비 열 대를 1인분으로 푸짐하게 내놓은 데서 시작되었다고 합니다. 갈비와 나머지 살을 이쑤시개로 꽂아 이어 붙이는 방식을 가리키기도 하는 이 갈비는? | before E: 1986년 아시안 게임과 1988년 올림픽 무렵, 근처 국망봉에 오른 산악회 회원들이 들렀다가 맛이 알려져 전국으로 퍼졌다고 합니다. | addedCue(GEN): 국망봉 산악회 회원들로 알려짐(해설에서 올림)
+facts: [q] 1970년대 초 백운 계곡 옆 평상에서 돈 없는 군인을 상대로 조각 갈비 열 대를 1인분으로 판 것이 시초 <https://www.grandculture.net/pocheon/toc/GC05001851> «1970년대 초부터 백운 계곡 골짜기 옆에다 평상을 놓고 돈 없는 군인을 상대로 조각 갈비 열 대를 일인분으로 하여 푸짐하게 보이도록 박리다매로 판매한 것이 시초이다.»  ||  [e] 갈비와 나머지 살을 이쑤시개에 꽂아 연결하는 방식을 뜻하기도 함 <https://www.grandculture.net/pocheon/toc/GC05001851> «지명을 따서 이동 갈비 라고 불리지만 이동 갈비 는 갈비와 갈비의 나머지 살을 이쑤시개에 꼽아서 연결시켜 만드는 방식을 뜻하기도 한다.»  ||  [q] 1986 아시안 게임·1988 올림픽 즈음 국망봉 등반 산악회 회원들로 전국에 퍼짐 <https://www.grandculture.net/pocheon/toc/GC05001851> «1986년 서울 아시안 게임과 1988년 서울 올림픽 즈음 국망봉 을 등반한 산악회 회원들이 식사를 하러 들렀다가 그 맛이 알려져 전국적으로 널리 퍼지게 되면서»
+dbCheck(GEN): answercheck new — 활성 수원갈비·LA갈비와 정답·지식이 다름
+warn: assert=[] assertHint=[] frag=[갈비] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### L1-07  [life/L2:daily-rule/생활 법규]  method=가 pairedWith=#4357 hobby=자동차 defForm(GEN)=true
+Q: 코네티컷주 하원의원 존 우드콕 3세가 이끌어 낸 법이 미국에서 처음 이 이름으로 불린 주법으로 꼽힙니다. 필리핀도 2014년 공화국법 제10642호로 같은 이름의 법을 만들었는데, 이 법을 흔히 무엇이라 할까요?
+A: 레몬법
+E: 미국에는 1975년 만들어진 연방법 '매그너슨-모스 보증법'도 있어 모든 주의 시민을 보호합니다.
+H: 캘리포니아주의 이 법인 송-베벌리 소비자 보증법은 차뿐 아니라 보트·전자 제품·가전까지 다룬다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Lemon_law   hintNote: California has a broad lemon law, the Song-Beverly Consumer Warranty Act, which covers a wide range of products, including vehicles, boats, electronics, and appliances.
+REWRITE(고친 질문): before Q: 미국에는 1975년 만들어진 연방법인 '매그너슨-모스 보증법'이 있지만, 이 이름으로 불리는 주법은 코네티컷주 하원의원 존 우드콕 3세가 이끌어 낸 것이 미국 처음이었습니다. 이 법을 흔히 무엇이라 할까요? | before E: 필리핀도 2014년 새 차에만 적용되는 같은 이름의 법을 만들었습니다. | addedCue(GEN): 필리핀 공화국법 제10642호(해설에서 옮김 — '새 차에만'은 1회차 정의라 뺌)
+facts: [q] 코네티컷주 하원의원 존 J. 우드콕 3세가 미국 첫 레몬법을 이끌었다 <https://en.wikipedia.org/wiki/Lemon_law> «Interview with John J. Woodcock III of West Hartford, Connecticut. Woodcock, as a Connecticut State Representative from South Windsor, was the propone»  ||  [q] 필리핀 레몬법은 2014년 통과, 새 차에만 적용 <https://en.wikipedia.org/wiki/Lemon_law> «as passed in 2014. The Lemon Law covers only new vehicles. … Republic Act No. 10642, the "Philippine Lemon Law"»  ||  [e] 매그너슨-모스 보증법은 1975년 연방법 <https://en.wikipedia.org/wiki/Lemon_law> «The Magnuson-Moss Warranty Act was enacted as a federal law in 1975, and protects citizens of all states»
+dbCheck(GEN): pair-or-different — 활성 4357 의 (가) 2회차   pairCheck(GEN): 1회차 4357 은 속어 '레몬'·애커로프 논문·한국 2019 시행·결함 차 정의(q), 1960 폭스바겐 광고·BMW 화재(e), 힌트 없음 — 2회차는 매그너슨-모스·코네티컷 첫 주법만 쓰고 결함 차 정의(범주 단서)를 넣지 않음
+  1회차 #4357: Q: 미국 속어에서 결함 있는 차를 가리키는 말이 이름에 들어 있고, 경제학자 애커로프가 정보 비대칭을 다룬 1970년 논문 제목에도 같은 말이 쓰였습니다. 반복해서 고장 나는 새 차를 교환·환불받게 하는 제도로, 한국에서는 2019년부터 시행된 것을 흔히 무엇이라 할까요? | E: 이 말이 결함 차를 가리키는 뜻으로 처음 쓰인 것은 1960년 폭스바겐 광고로 알려져 있고, 한국 도입은 BMW 차량 연쇄 화재가 계기가 되었습니다. | H: (없음)
+  sameAnswerActive #4357: Q: 미국 속어에서 결함 있는 차를 가리키는 말이 이름에 들어 있고, 경제학자 애커로프가 정보 비대칭을 다룬 1970년 논문 제목에도 같은 말이 쓰였습니다. 반복해서 고장 나는 새 차를 교환·환불받게 하는 제도로, 한국에서는 2019년부터 시행된 것을 흔히 무엇이라 할까요? | E: 이 말이 결함 차를 가리키는 뜻으로 처음 쓰인 것은 1960년 폭스바겐 광고로 알려져 있고, 한국 도입은 BMW 차량 연쇄 화재가 계기가 되었습니다. | H: (없음)
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### L1-19  [life/L2:fashion/복식사]  method=나
+Q: 1917년 미국 광고 회사 N. W. 에이어 앤드 선의 광고인 헨리 넬슨 매킨리가 처음 썼다고 흔히 알려진 신발 이름입니다. 하지만 이 말은 이미 1887년 '보스턴 저널'에 남자아이들이 쓰는 이름으로 실렸는데, 이 신발 이름은 무엇일까요?
+A: 스니커즈   변형: 스니커   variantCheck(GEN): ko.wikipedia — '스니커' 가 '스니커즈' 문서로 넘겨주기(API redirects 확인)
+E: 고무 밑창이라 걸을 때 소리가 나지 않는다는 데서 붙은 이름으로, 딱딱한 가죽 밑창 구두와 대비되었습니다.
+H: 20세기 중반 소년들은 농구 선수 척 테일러가 광고한 컨버스 올스타를 사려고 줄을 섰다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Sneakers   hintNote: market for sneakers grew steadily as young boys lined up to buy Converse All Stars sneakers endorsed by basketball player Chuck Taylor.
+facts: [q] 'sneaker' 는 흔히 N. W. 에이어 앤드 선의 광고인 매킨리가 1917년 쓴 것으로 알려져 있다 <https://en.wikipedia.org/wiki/Sneakers> «The word "sneaker" is often attributed to American Henry Nelson McKinney, who was an advertising agent for N. W. Ayer & Son. In 1917, he used the term»  ||  [q] 1887년 보스턴 저널에 '남자아이들이 테니스화에 붙인 이름' 으로 실렸다 <https://en.wikipedia.org/wiki/Sneakers> «The word was already in use at least as early as 1887, when the Boston Journal made reference to "sneakers" as "the name boys give to tennis shoes."»  ||  [e] 고무 밑창이 조용하다는 데서 온 이름, 가죽 밑창 구두와 대비 <https://en.wikipedia.org/wiki/Sneakers> «The name "sneakers" originally referred to how quiet the rubber soles were on the ground, in contrast to noisy standard hard leather sole dress shoes.»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### L2-06  [life/L2:calendar/달력·역법]  method=나 defForm(GEN)=true
+Q: 1948년 7월 국회가 의결한 법률 제4호는 이것을 대한민국의 공용 연호로 정했습니다. 그러나 5·16 군사 정부가 1961년 12월 법률 제775호로 바꾸면서 1962년 1월 1일부터 쓰지 않게 되었는데, 이 연호를 줄여 부르는 말은?
+A: 단기   변형: 단군기원   variantCheck(GEN): ko.wikipedia '단군기원' 문서: '단군기원(檀君紀元) 또는 단기(檀紀)'
+E: 《동국통감》을 따라 기원전 2333년을 원년으로 삼지만, 《삼국유사》 주석대로 계산하면 기원전 2284년이 됩니다.
+H: 2012년 법제처는 이것을 서기와 함께 쓰면 불기(佛紀)도 문제가 될 수 있다며 공용 연호로 쓸 수 없다고 밝혔다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/단군기원   hintNote: 법제처는 2012년 7월 8일 "대한민국의 공용연호는 서기이며, 단기를 함께 쓸 경우 불기(佛紀)도 문제될 수 있으므로 혼란이 커질 것"이라는 이유로 단기연호를 공용연호로 쓸 수 없음을 발표하였다.
+REWRITE(고치지 않음): '1962년부터 쓰지 않게 된 공용 연호' 자체가 관심층 단서 — 1948년 법률을 빼도 1961년 법률이 같은 단계로 남고, 남는 깊은 세부(국회 찬성 표수)는 수치라 알 가치가 떨어짐
+facts: [q] 1948년 7월 국회 의결 법률 제4호 「연호에 관한 법률」로 공용 연호 <https://ko.wikipedia.org/wiki/단군기원> «1948년 7월 11일 국회에서 「연호에 관한 법률」(법률 제4호)이 의결되어 ... "대한민국의 공용 연호는 단군기원(檀君紀元)으로 한다."»  ||  [q] 1961년 12월 법률 제775호, 1962년 1월 1일 폐지 <https://ko.wikipedia.org/wiki/단군기원> «5.16 군사정부가 1961년 12월 2일 법률 제775호로 공용 연호를 서력기원으로 바꾸었고, 이에 따라 1962년 1월 1일부터 단군기원이 폐지되었습니다.»  ||  [e] 동국통감 기원전 2333년, 삼국유사 주석 기원전 2284년 <https://ko.wikipedia.org/wiki/단군기원> «《동국통감》은 단군이 당요 무진년(기원전 2333년)에 나라를 세웠다고 서술 / 《삼국유사》의 주석에 따르면 해당 연도는 정사년으로, 기원전 2284년에 해당»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### L2-20  [life/L2:board-game/화투·카드]  method=나 hobby=보드게임
+Q: 1971년 미국 오하이오주 신시내티 근교 레딩에서 멀 로빈스가 만든 카드 게임입니다. 그는 뒤에 로버트 테작이 이끄는 친구들에게 이 게임의 권리를 팔았는데, 이 카드 게임은 무엇일까요?
+A: 우노
+E: 이 게임을 내던 인터내셔널 게임스는 1992년 마텔 계열 회사가 되었습니다.
+H: 멀 로빈스는 처음에 자기 이발소에서 이 게임을 팔았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Uno_(card_game)   hintNote: He sold it from his barbershop at first, and local businesses began to sell it as well.
+facts: [q] 1971년 멀 로빈스, 신시내티 근교 레딩 <https://en.wikipedia.org/wiki/Uno_(card_game)> «The game was originally developed in 1971 by Merle Robbins in Reading, Ohio, a suburb of Cincinnati.»  ||  [q] 로버트 테작이 이끄는 친구들에게 권리 매각 <https://en.wikipedia.org/wiki/Uno_(card_game)> «Robbins later sold the rights to Uno to a group of friends headed by Robert Tezak»  ||  [e] 1992년 인터내셔널 게임스가 마텔 계열 <https://en.wikipedia.org/wiki/Uno_(card_game)> «In 1992, International Games became part of the Mattel family of companies.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[처음] frag=[] hint=[explain]
+webOpen: TRUE (단정어 처음)
+
+### M1-09  [media/L2:kr-tv/라디오 방송]  method=나 layer=팬 세부 work=동양방송
+Q: 1964년 '라디오 서울'로 개국했고, 1966년 8월 15일에는 한국에서 처음으로 FM 라디오를 시작했습니다. TV 개국 때 서울 본사를 신세계백화점 본점 안에 두었던 이 민영 방송사는?
+A: 동양방송   변형: TBC   originalTitle: TBC   variantCheck(GEN): ko.wikipedia '동양방송' 첫 줄 · 본문이 'TBC 동양방송' 으로 함께 씀 — 두 이름 다 흔함(B1)
+E: 중앙일보는 2009년 신문·방송 겸영이 허용되자 종합편성채널 사업자가 되어 2011년 JTBC를 개국했습니다.
+H: 1980년 12월 이 방송사의 서울 TV 채널 번호 7번은 KBS 2TV가 이어받았다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/동양방송   hintNote: 채널 번호는 VHF-HIGH 대역으로 서울 7번 … 이 번호는 1980년 12월 1일 언론통폐합으로 … KBS 2TV 채널 번호로 승계되었다.
+facts: [q] 1964년 5월 9일 라디오 서울로 개국 <https://ko.wikipedia.org/wiki/동양방송> «1964년 5월 9일 라디오 서울(RSB)로 최초 개국했으며, 같은 해 12월 7일 동양텔레비전(DTV)을 개국하였다.»  ||  [q] 1966년 8월 15일 한국 최초 FM <https://ko.wikipedia.org/wiki/동양방송> «1966년 8월 15일, 한국 사상 최초로 FM 방송을 개국하였는데»  ||  [q] 서울 본사 신세계백화점 본점 <https://ko.wikipedia.org/wiki/동양방송> «당시 동양텔레비전(동양TV, DTV)의 서울 본사는 신세계백화점 본점에 있던 방송국 시설에 자리하였다.»  ||  [e] 중앙일보 2011년 JTBC <https://ko.wikipedia.org/wiki/동양방송> «그 후 중앙일보는 2009년 미디어법 개정으로 신문-방송 겸영이 허용되면서 종합편성채널 사업자로 선정되어 2011년 JTBC를 개국하였다.»
+dbCheck(GEN): answercheck new (TBC 도 new)
+warn: assert=[처음] assertHint=[] frag=[방송] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### M1-21  [media/L2:kr-music/트로트·포크]  method=나 layer=팬 세부 work=동물원
+Q: 1988년 산울림의 김창완이 세운 음반 기획사의 첫 기획으로 데뷔 음반을 냈습니다. 고교·대학 친구들이 취미로 시작한 그룹으로, 히트곡을 많이 쓴 김창기는 뒤에 정신과 의사가 되었는데, 이 그룹은?
+A: 동물원
+E: 김광석도 2집까지 함께했고, 그가 솔로로 나선 뒤인 1990년 3집에서는 '시청앞 지하철 역에서'가 히트했습니다.
+H: 멤버 박기영은 뒤에 대학 실용음악과 교수가 되어 2019년부터 홍익대에서 가르쳤다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/동물원_(밴드)   hintNote: 박기영은 … 가톨릭관동대학교 실용음악학과에서 주임교수로 일하다가 2019년부터 홍익대학교 실용음악과에서 주임교수로 이적하였다.
+facts: [q] 김창완 기획사 첫 기획 1988년 음반 <https://ko.wikipedia.org/wiki/동물원_(밴드)> «1987년에 산울림의 김창완이 본인의 음반및 기획사를 만들어서 그 첫번째 기획으로 1988년에 동물원 음반을 제작하였다.»  ||  [q] 친구들이 취미로 시작 <https://ko.wikipedia.org/wiki/동물원_(밴드)> «고등학교 친구들, 대학 동기들이 취미로 음악을 만들어 연주하기 시작한 것이 동물원의 출발점이 되었다.»  ||  [q] 김창기 히트곡 · 정신과 개업 <https://ko.wikipedia.org/wiki/동물원_(밴드)> «동물원과 김광석의 히트곡을 담당했던 김창기는 … 현재는 개인병원(정신과)을 운영하고 있다.»  ||  [e] 김광석 2집 이후 솔로 · 1990 3집 시청앞 지하철 역에서 <https://ko.wikipedia.org/wiki/동물원_(밴드)> «김광석이 솔로로 활동을 시작한 이후 동물원은 1990년에 김창기, 박경찬, 박기영, 유준열 4인의 멤버로 동물원 3집을 발표하여 "시청앞 지하철 역에서"를 히트 시키며»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### M2-03  [media/L2:popular-music/1960~70년대]  method=나 layer=팬 세부 work=아바
+Q: 데모 때 이름은 'Boogaloo'였고, 조지 매크레이의 'Rock Your Baby'에서 곡의 스타일에 영감을 얻었다고 합니다. 1976년 6월 18일 스웨덴 국왕 칼 16세 구스타프와 약혼녀 실비아를 기리는 갈라에서 처음 불린 이 곡은 무엇일까요?
+A: 댄싱 퀸   변형: Dancing Queen   originalTitle: Dancing Queen   variantCheck(GEN): ko.wikipedia 문서 Dancing Queen · 댄싱 퀸 둘 다 있음(한국어 표기 확인)
+E: 1993년 실비아 왕비의 50세 생일 무대에서는 아니프리드 륑스타드가 보컬 그룹 리얼 그룹과 함께 아카펠라로 이 곡을 불렀습니다.
+H: 매니저 스티그 안데르손은 이 곡보다 '페르난도'를 먼저 싱글로 내자고 고집했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Dancing_Queen   hintNote: their manager, Stig Anderson, insisted that the more sedate and folksy "Fernando" should be first
+facts: [q] 데모 이름 Boogaloo <https://en.wikipedia.org/wiki/Dancing_Queen> «The demo was called "Boogaloo"»  ||  [q] Rock Your Baby 영감 <https://en.wikipedia.org/wiki/Dancing_Queen> «Andersson and Ulvaeus have cited George McCrae's "Rock Your Baby" as a source of inspiration for the style of the song.»  ||  [q] 1976년 6월 18일 국왕 칼 16세 구스타프(Carl XVI Gustaf)와 약혼녀를 기리는 갈라에서 첫 공연 <https://en.wikipedia.org/wiki/Dancing_Queen> «first live and domestic performance on 18 June 1976 ... in honour of King Carl XVI Gustaf and his bride-to-be, Silvia Sommerlath»  ||  [e] 1993년 실비아 50세 생일 아카펠라 <https://en.wikipedia.org/wiki/Dancing_Queen> «a 1993 performance, held for Queen Silvia's 50th birthday, where Anni-Frid Lyngstad performed "Dancing Queen" with the Real Group in an a cappella ver»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### M2-15  [media/L2:esports/PC·온라인 게임]  method=나 layer=팬 세부 work=마비노기
+Q: 웨일스에서 전해 내려오던 이야기들에서 이름을 땄지만, 배경은 아일랜드 신화에 가까운 온라인 게임입니다. 자체 엔진 플레이오네로 만들어 2004년 6월 22일 정식 서비스를 시작한 이 게임은 무엇일까요?
+A: 마비노기   변형: Mabinogi   originalTitle: Mabinogi   variantCheck(GEN): ko.wikipedia 문서 제목 마비노기 · 영문 원제 B10
+E: MML 코드로 곡을 써서 게임 속 악기로 연주할 수 있어, 이용자들이 만든 연주곡이 많이 퍼졌습니다.
+H: 넥슨 안의 데브캣 스튜디오가 만들었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Mabinogi_(video_game)   hintNote: Mabinogi … is a massively multiplayer online role-playing game released by Nexon, and developed by devCAT studio.
+facts: [q] 웨일스 이야기들에서 이름 · 아일랜드 신화 배경 <https://ko.wikipedia.org/wiki/마비노기> «마비노기는 원래 웨일스에서 전해 내려오던 이야기들을 일컫는 말이다 … 배경은 아일랜드 신화에 가깝다»  ||  [q] 플레이오네 엔진 <https://ko.wikipedia.org/wiki/마비노기> «데브켓 자체 개발 엔진인 플레이오네 엔진을 이용한 실시간 3D 게임이다»  ||  [q] 2004년 6월 22일 정식 서비스 <https://ko.wikipedia.org/wiki/마비노기> «2004년 6월 22일 정식 서비스를 시작»  ||  [e] MML 작곡 · 연주 <https://ko.wikipedia.org/wiki/마비노기> «작곡은 기본적으로 MML 코드를 사용 … 마법 악보와 마법 음악»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### M2-27  [media/L2:world-cinema/현대 할리우드]  method=나 layer=팬 세부 work=다이 하드
+Q: 로더릭 소프의 1979년 소설 'Nothing Lasts Forever'가 원작입니다. 이 소설은 영화사가 이미 영화로 만든 1966년 소설의 속편이라, 영화사는 계약에 따라 주인공 역을 먼저 프랭크 시나트라에게 제안해야 했습니다. 이 영화는 무엇일까요?
+A: 다이 하드   변형: Die Hard   originalTitle: Die Hard   variantCheck(GEN): ko.wikipedia 다이 하드 → 다이하드 넘겨주기(띄어쓰기만 다름) · 원제 B10
+E: 영화 속 나카토미 플라자로는 로스앤젤레스 센추리시티의 실제 건물 폭스 플라자가 쓰였습니다.
+H: 음악을 맡은 마이클 케이먼은 주로 악당 장면에 베토벤 교향곡 9번 '환희의 송가' 선율을 섞었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Die_Hard   hintNote: He mixed the melodies of "Ode to Joy", "Winter Wonderland", and "Singin' in the Rain" into his score, mainly to underscore the villains.
+facts: [q] 로더릭 소프 1979 소설 Nothing Lasts Forever <https://en.wikipedia.org/wiki/Die_Hard> «an adaptation of the 1979 novel Nothing Lasts Forever written by former private investigator Roderick Thorp»  ||  [q] 1966년 소설의 속편 · 영화사가 이미 영화화 <https://en.wikipedia.org/wiki/Die_Hard> «a sequel to Thorp's 1966 novel, which Fox had already adapted (The Detective)»  ||  [q] 시나트라에게 제안할 계약 의무 <https://en.wikipedia.org/wiki/Die_Hard> «the studio was contractually obliged to offer Frank Sinatra the role of John McClane»  ||  [e] 폭스 플라자 = 나카토미 플라자 <https://en.wikipedia.org/wiki/Die_Hard> «Fox Plaza in Century City, Los Angeles, served as the setting for Nakatomi Plaza.»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### S1-10  [sports/L2:ball-sports/테니스]  method=나
+Q: 2008년 12월 에디 허 인터내셔널과 주니어 오렌지볼의 12세 이하 남자 단식을 잇달아 우승한 뒤, 형과 함께 플로리다의 닉 볼리티에리 아카데미와 계약했습니다. 2013년 윔블던 주니어 남자 단식 준우승을 거둔 이 한국 선수는?
+A: 정현
+E: 어릴 때 안경을 써야 할 만큼 눈이 나빠, 시력을 지키는 데 도움이 되리라 여겨 테니스를 시작했다고 합니다.
+H: 2017년 넥스트 제너레이션 ATP 파이널스에서 우승했다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/정현_(테니스_선수)   hintNote: 2017년 넥스트 제너레이션 ATP 파이널 챔피언을 거머쥐었다.
+facts: [q] 2008년 12월 에디 허·주니어 오렌지볼 12세 이하 우승, 형 정홍과 볼리티에리 아카데미 계약 <https://en.wikipedia.org/wiki/Chung_Hyeon> «He won the Eddie Herr International and Junior Orange Bowl Boys under-12s titles in December 2008, and was subsequently signed, along with his brother»  ||  [q] 2013년 윔블던 주니어 남자 단식 준우승 <https://en.wikipedia.org/wiki/Chung_Hyeon> «was runner-up in the 2013 Wimbledon Boys' Singles»  ||  [e] 시력을 지키려 테니스를 시작 <https://en.wikipedia.org/wiki/Chung_Hyeon> «Chung took up tennis as a way to try to help maintain his eyesight after requiring glasses at a young age.»
+dbCheck(GEN): 정현 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### S1-23  [sports/L2:football/축구 역사·클럽]  method=나 hobby=구단 역사
+Q: 1900년 2월 한 체조 클럽(MTV 1879)이 축구부의 독일축구협회 가입을 막자, 축구부원 11명이 그날 저녁 따로 나와 이 구단을 세웠습니다. 히틀러 집권 뒤 유대인 회장 쿠르트 란다우어가 나라를 떠나고 '유대인 클럽'이라 조롱받은 이 구단은?
+A: 바이에른 뮌헨   변형: FC 바이에른 뮌헨 | 바이에른   variantCheck(GEN): ko.wikipedia 'FC 바이에른 뮌헨' 문서 · '바이에른 뮌헨' 넘겨주기 · 한국 보도에서 '바이에른' 단독 표기 흔함
+E: 란다우어는 1947년 망명에서 돌아와 다시 회장을 맡았고, 회장 재임 기간을 합치면 구단에서 가장 길다고 합니다.
+H: 2005-06 시즌부터 외벽 전체의 색이 바뀌는 세계 첫 경기장인 알리안츠 아레나를 홈으로 쓴다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Allianz_Arena   hintNote: it is the first stadium in the world with a full colour changing exterior. ... Bayern Munich have played their home games at the Allianz Arena since the start of the 2005–06 season.
+facts: [q] 1900년 2월 27일 MTV 1879 가 축구부의 DFB 가입을 막자 축구부원 11명이 그날 저녁 창단 <https://en.wikipedia.org/wiki/FC_Bayern_Munich> «When a congregation of members of MTV 1879 decided on 27 February 1900 that the footballers of the club would not be allowed to join the German Footba»  ||  [q] 히틀러 집권 뒤 유대인 회장 란다우어가 떠나고 '유대인 클럽'이라 조롱 <https://en.wikipedia.org/wiki/FC_Bayern_Munich> «The rise of Adolf Hitler to power put an abrupt end to Bayern's development. Club president Kurt Landauer and the coach, both of whom were Jewish, lef»  ||  [e] 1947년 귀국 뒤 회장, 누적 재임 최장 <https://en.wikipedia.org/wiki/FC_Bayern_Munich> «Landauer returned from exile in 1947, and was once again appointed club president, the tenure lasted until 1951. He remains as the club's president wi»
+dbCheck(GEN): 바이에른 뮌헨 new (활성 도르트문트 문항도 창단 일화 꼴 — 정답·사실이 다름)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### S2-10  [sports/L2:olympic/종목·규정]  method=나 hobby=장비
+Q: 펜싱의 이 종목 칼은 18세기 신사들이 허리에 차던 스몰소드의 연습용 칼에서 나왔습니다. 1956년 올림픽부터 전기 회로로 찌르기를 가려 점수를 매기기 시작했고, 이듬해 그 장치의 규칙이 정해진 이 종목은?
+A: 플뢰레   변형: 포일   variantCheck(GEN): ko.wikipedia 문서 '플뢰레(Fleuret, 영미권에서는 포일)' — 같은 대상의 한국어 다른 이름
+E: 선수가 입는 금속 조끼 '라메'가 칼끝이 유효면에 닿았는지 가려 줍니다.
+H: 2008년 베이징에서 남현희가 이 종목 여자 개인전 은메달로 한국 여자 펜싱의 첫 올림픽 메달을 땄다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/%EB%82%A8%ED%98%84%ED%9D%AC   hintNote: 2008년 하계 올림픽 개인전에서 은메달을 획득해 대한민국 여자 선수로는 최초로 올림픽 펜싱 메달을 획득했다.
+facts: [q] 스몰소드 연습용 칼에서 나옴 <https://en.wikipedia.org/wiki/Foil_(fencing)> «The modern foil is the training weapon for the small-sword, the common sidearm of 18th century gentleman.»  ||  [q] 1956 올림픽 전기 채점 · 1957 규칙 <https://en.wikipedia.org/wiki/Foil_(fencing)> «Electric scoring began at the 1956 Olympics. The rules governing the use of electrical judging apparatus were adopted in 1957.»  ||  [e] 라메 조끼 <https://en.wikipedia.org/wiki/Foil_(fencing)> «a metallic foil vest, or lamé, verifies that the touch is on valid target.»
+dbCheck(GEN): 플뢰레 new · 같은 소분류 에페(#6016 1933 전기 채점)와 해가 달라 갈린다
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### S2-22  [sports/L2:combat-athletics/동계 종목]  method=나 hobby=장비
+Q: 1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인은, 빙판을 고르려면 일꾼 서너 명이 손으로 긁고 씻어 내야 하는 것이 불만이었습니다. 1947년 군용 지프 차대에 얹은 시제품을 거쳐 1949년 그가 완성한 이 기계는?
+A: 정빙기   변형: 잠보니   variantCheck(GEN): ko.wikipedia '정빙기(…) 또는 빙판포장차, 빙포차' · en.wikipedia 'often referred to as a Zamboni as a genericized trademark' — 같은 기계를 부르는 다른 이름
+E: 만든 사람 프랭크 잠보니의 이름이 이 기계를 가리키는 보통 이름처럼 쓰이게 되었습니다.
+H: 피겨 스타 소냐 헤니가 그의 링크를 다녀간 뒤 이 기계를 두 대 주문했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Frank_Zamboni   hintNote: he expanded the operation when he received two orders from figure skater Sonja Henie after she visited his rink
+facts: [q] 1939 파라마운트 링크 · 일꾼 서너 명 손작업 <https://en.wikipedia.org/wiki/Ice_resurfacer> «The Iceland rink he built in 1939 was in Paramount, California ... he needed three or four workers to scrape, wash, and squeegee the ice by hand.»  ||  [q] 얼음 공장(냉동업) 주인 <https://en.wikipedia.org/wiki/Ice_resurfacer> «Zamboni was originally in the refrigeration business, making ice blocks.»  ||  [q] 1947 지프 차대 시제품 · 1949 완성 <https://en.wikipedia.org/wiki/Ice_resurfacer> «His 1947 prototype was mounted on an army surplus Willys jeep chassis ... The Model A followed in 1949»  ||  [e] 잠보니 보통 이름화 <https://en.wikipedia.org/wiki/Ice_resurfacer> «often referred to as a "Zamboni" as a genericized trademark»
+dbCheck(GEN): 정빙기 · 잠보니 new
+warn: assert=[] assertHint=[] frag=[] hint=[explain]
+webOpen: false (재채점 결과 4~5 면 TRUE)

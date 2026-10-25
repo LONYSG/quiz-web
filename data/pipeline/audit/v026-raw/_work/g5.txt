@@ -1,0 +1,314 @@
+### A1-05  [arts/L2:architecture/유명 건축물]  method=나
+Q: 이 건물은 1948년 무너질 위험이 크다는 판정을 받아, 안쪽을 모두 뜯어내고 새 철골 구조 안에 원래 방들을 다시 짓는 공사를 거쳤습니다. 설계자가 더블린의 레인스터 하우스를 본떠 지은 이 건물은 무엇일까요?
+A: 백악관   변형: 화이트 하우스   variantCheck(GEN): ko.wikipedia '백악관' 문서 — 영어 이름 White House 를 그대로 옮긴 '화이트 하우스' 도 언론에서 흔히 씀
+E: 설계자는 아일랜드에서 태어난 제임스 호번이고, '화이트 하우스'라는 공식 이름은 1901년 시어도어 루스벨트의 행정 명령으로 정해졌습니다.
+H: 1792년 설계 공모에는 아홉 개의 안이 들어왔다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/White_House   hintNote: Nine proposals were submitted for the new presidential residence / On July 16, 1792, the president met with the commissioners … in the architectural competition.
+REWRITE(고친 질문): before Q: 아일랜드에서 태어나 더블린에서 건축을 익힌 제임스 호번이 설계한 건물입니다. 그는 오늘날 아일랜드 의회가 쓰는 더블린의 레인스터 하우스를 본떠 이 건물을 지었는데, 이 건물은 무엇일까요? | before E: '화이트 하우스' 라는 공식 이름은 1901년 시어도어 루스벨트의 행정 명령으로 정해졌습니다. | addedCue(GEN): 1948년 붕괴 위험 판정과 내부 전면 재건
+facts: [q] 레인스터 하우스를 본뜸 · 오늘날 아일랜드 의회 <https://en.wikipedia.org/wiki/White_House> «"Hoban modeled the building on Leinster House in Dublin, a building which today houses the Oireachtas, the Irish legislature."»  ||  [e] 호번 — 아일랜드 출생, 더블린에서 수련 <https://en.wikipedia.org/wiki/White_House> «"Hoban was born in Ireland and trained at the Dublin Society of Arts."»  ||  [e] 1901년 루스벨트 행정 명령으로 공식 이름 <https://en.wikipedia.org/wiki/White_House> «"Theodore Roosevelt established "The White House" as its formal name in 1901 via Executive Order."»  ||  [q] 1948년 붕괴 위험 판정 <https://en.wikipedia.org/wiki/White_House> «By 1948, the house was declared to be in imminent danger of collapse, forcing President Truman to commission a reconstruction and to live across the s»  ||  [q] 안쪽을 모두 해체하고 새 철골 구조 안에 원래 방들을 다시 지음 <https://en.wikipedia.org/wiki/White_House> «The work ... required the complete dismantling of the interior spaces, construction of a new load-bearing internal steel frame, and the reconstruction»
+dbCheck(GEN): 백악관 · 화이트 하우스 new(초안은 자기 문항뿐)
+warn: assert=[모두] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 모두, 고친 질문(새 단서 사실))
+
+### A1-17  [arts/L2:theatre/뮤지컬 작품]  method=나
+Q: 리카르도 코치안테가 곡을, 뤽 플라모동이 노랫말을 쓴 프랑스 뮤지컬입니다. 1997년 콘셉트 앨범이 먼저 나온 뒤 1998년 9월 무대에 올랐고, 기네스북은 이 작품을 첫해 성적이 가장 좋았던 뮤지컬로 꼽았습니다. 이 뮤지컬은 무엇일까요?
+A: 노트르담 드 파리
+E: 2000년에는 영어판이 런던에서 17개월 동안 공연되었습니다.
+H: 초연 무대에서는 캐나다 가수 가루가 종지기 역을 맡았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Notre-Dame_de_Paris_(musical)   hintNote: Garou: Quasimodo (original cast list) ... Garou (singer) as Quasimodo
+facts: [q] 코치안테 작곡 · 플라모동 작사 <https://en.wikipedia.org/wiki/Notre-Dame_de_Paris_(musical)> «"The music was composed by Riccardo Cocciante (also known as Richard Cocciante) and the lyrics are by Luc Plamondon."»  ||  [q] 1997 콘셉트 앨범 · 1998년 9월 16일 초연 <https://en.wikipedia.org/wiki/Notre-Dame_de_Paris_(musical)> «The "original French concept album" came out in 1997 · The show "debuted on 16 September 1998 in Paris."»  ||  [q] 기네스북 — 첫해 가장 성공한 뮤지컬 <https://en.wikipedia.org/wiki/Notre-Dame_de_Paris_(musical)> «"Notre-Dame de Paris, according to the Guinness Book of Records, had the most successful first year of any musical ever."»  ||  [e] 런던 영어판 17개월 <https://en.wikipedia.org/wiki/Notre-Dame_de_Paris_(musical)> «A "full-length London production, also in English, ran for seventeen months." (2000)»
+dbCheck(GEN): new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### C1-09  [science/L2:math/수학 기호·용어]  method=나 defForm(GEN)=true
+Q: 인도 수학에서 '활시위'를 뜻하던 산스크리트어 용어가 아랍어로 소리 나는 대로 옮겨졌는데, 그 글자가 '가슴·주머니'를 뜻하는 낱말로 읽혔습니다. 12세기 크레모나의 제라르도가 이를 라틴어로 옮긴 말에서 온 이 삼각함수의 이름은?
+A: 사인   변형: 사인 함수   variantCheck(GEN): 고교 수학 교과서 '사인함수' 표기
+E: 아랍어 표기는 모음 없이 jb 로만 적혀, 본래의 jība 가 '주름·품'을 뜻하는 jayb 로 읽혔고 라틴어 sinus 가 되었습니다.
+H: 1620년 에드먼드 건터의 책에서 '여각의 이 함수'를 줄인 말이 짝 함수의 이름이 되었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Sine_and_cosine   hintNote: The word cosine derives from an abbreviation of the Latin complementi sinus 'sine of the complementary angle' as cosinus in Edmund Gunter's Canon triangulorum (1620)
+facts: [q] 산스크리트어 jyā '활시위'에서 <https://en.wikipedia.org/wiki/Sine_and_cosine> «The word is "derived, indirectly, from the Sanskrit word jyā 'bow-string'."»  ||  [q] 아랍어 음차 jība, jb 로 적힘, jayb('가슴·주머니·주름')로 해석 <https://en.wikipedia.org/wiki/Sine_and_cosine> «"This was transliterated in Arabic as jība, which is meaningless in that language and written as jb." ... "was interpreted as the homograph jayb, whic»  ||  [q] 12세기 크레모나의 제라르도가 라틴어 sinus 로 <https://en.wikipedia.org/wiki/Sine_and_cosine> «Gerard of Cremona "used the Latin equivalent sinus" ... "translated into Medieval Latin in the 12th century by Gerard of Cremona"»
+dbCheck(GEN): 사인 · 사인 함수 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### C1-21  [science/L2:animals/파충류·양서류]  method=나
+Q: 1481년 영국의 인쇄업자 윌리엄 캑스턴은 이 동물이 털을 지녀 그것으로 불에 타지 않는 옷감과 띠를 짠다고 썼지만, 마르코 폴로는 그 옷감이 땅에서 캐낸 광물임을 알아보았습니다. 첼리니가 어린 시절 불 속에서 보았다고 자서전에 적은 이 동물은?
+A: 도롱뇽   변형: 샐러맨더   variantCheck(GEN): 전설 속 '불도마뱀'을 국내 게임·판타지에서 '샐러맨더'로 흔히 씀 — 같은 대상(salamander)의 음차
+E: 토머스 불핀치는 겁먹은 이 동물이 내는 젖빛 분비물이 잠시 불을 견디게 해 이런 이야기가 생겼을 것이라고 보았습니다.
+H: 16세기 파라켈수스는 이 동물을 네 원소 가운데 불의 정령으로 보았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Salamanders_in_folklore   hintNote: Paracelsus (1493–1541) suggested that salamanders were the elementals of fire
+facts: [q] 1481년 캑스턴 — 털로 불에 타지 않는 옷감·띠 <https://en.wikipedia.org/wiki/Salamanders_in_folklore> «William Caxton wrote in 1481: "This Salemandre berithe wulle, of which is made cloth and gyrdles that may not brenne in the fyre."»  ||  [q] 마르코 폴로 — 생물이 아니라 땅에서 캔 물질 <https://en.wikipedia.org/wiki/Salamanders_in_folklore> «he "recognized this was no creature, but rather an incombustible substance mined from earth."»  ||  [q] 첼리니가 어린 시절 불 속에서 보았다고 자서전에 <https://en.wikipedia.org/wiki/Salamanders_in_folklore> «Cellini claimed that, as a child, he saw a salamander appear from a fire ... he "famously recalled witnessing just such an appearance as a child in hi»  ||  [e] 불핀치의 설명 <https://en.wikipedia.org/wiki/Salamanders_in_folklore> «Thomas Bulfinch later suggested that a frightened salamander could release a milky substance that might protect it long enough to escape the flames»
+dbCheck(GEN): 도롱뇽 · 샐러맨더 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### C2-08  [science/L2:aerospace/인공위성·탐사선]  method=가 pairedWith=#1451
+Q: 실제로 우주에 오른 이 망원경의 주거울은 퍼킨엘머가 만들었습니다. 미 항공우주국의 요구로 코닥이 따로 만든 예비 거울은 끝내 우주에 오르지 못하고 국립 항공우주 박물관에 늘 전시되어 있는데, 이 망원경은?
+A: 허블 우주 망원경   변형: 허블 | 허블 망원경   variantCheck(GEN): 허블 · 허블 망원경 — ko.wikipedia '허블 우주 망원경' 문서와 언론이 흔히 줄여 부르는 꼴
+E: 1990년 4월 24일 우주왕복선 디스커버리호가 STS-31 임무로 궤도에 올렸습니다.
+H: 1983년 이 망원경에는 우주가 팽창한다는 사실을 확인한 천문학자의 이름이 붙었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Hubble_Space_Telescope   hintNote: In 1983, the telescope was named after Edwin Hubble, who confirmed ... that the universe is expanding.
+REWRITE(고친 질문): before Q: 이 우주 망원경을 위해 코닥이 만든 주거울은 끝내 우주에 오르지 못하고, 지금 미국 국립 항공우주 박물관에 늘 전시되어 있습니다. 우주왕복선 디스커버리호가 STS-31 임무로 궤도에 올린 이 망원경은 무엇일까요? | before E: 실제로 오른 거울의 흠은, 시험 장비의 렌즈 하나가 1.3mm 어긋나게 조립된 탓으로 밝혀졌습니다. | addedCue(GEN): 주거울 제작사 퍼킨엘머 · 예비 거울은 코닥
+facts: [q] 코닥이 만든 거울은 국립 항공우주 박물관에 상설 전시 <https://en.wikipedia.org/wiki/Hubble_Space_Telescope> «The Kodak mirror is now on permanent display at the National Air and Space Museum.»  ||  [e] 디스커버리호 STS-31 로 발사 <https://en.wikipedia.org/wiki/Hubble_Space_Telescope> «Space Shuttle Discovery successfully launched Hubble on April 24, 1990, as part of the STS-31 mission.»  ||  [q] 주거울은 퍼킨엘머, 미 항공우주국 요구로 코닥이 예비 거울 <https://en.wikipedia.org/wiki/Hubble_Space_Telescope> «Perkin-Elmer (PE) intended to use custom-built and extremely sophisticated computer-controlled polishing machines to grind the mirror ... NASA demande»
+dbCheck(GEN): answercheck pair-or-different — 1451 과 같은 답, (가) 2회차   pairCheck(GEN): 1회차 1451 질문(1990 발사·대기 흔들림 회피)·해설(거울 결함과 보정)·힌트(없음)와 겹치지 않음 — 코닥 예비 거울·발사 왕복선 이름은 새 사실. 해설의 1.3mm 는 1회차 해설 결함의 원인 세부라 질문에는 쓰지 않음
+  1회차 #1451: Q: 지구 대기의 흔들림을 피하려고 1990년에 궤도에 올려 선명한 사진을 보내 준 우주망원경은? | E: 처음에는 거울에 결함이 있어 흐릿하게 보였고, 우주에서 보정 장치를 달아 고쳤습니다. | H: (없음)
+  sameAnswerActive #1451: Q: 지구 대기의 흔들림을 피하려고 1990년에 궤도에 올려 선명한 사진을 보내 준 우주망원경은? | E: 처음에는 거울에 결함이 있어 흐릿하게 보였고, 우주에서 보정 장치를 달아 고쳤습니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[망원경,우주] hint=[]
+webOpen: TRUE (같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### C2-20  [science/L2:physics/열·에너지]  method=가 pairedWith=#155
+Q: 1893년 프랑스 화학자 앙리 무아상은 애리조나 캐니언디아블로 근처 운석 구덩이의 돌에서 찾은 결정을 처음에 이 보석으로 잘못 알았다가, 1904년에야 탄화규소임을 밝혔습니다. 이 보석은 무엇일까요?
+A: 다이아몬드   변형: 금강석   variantCheck(GEN): 금강석 — 다이아몬드의 한국어 이름(표준국어대사전)
+E: 탄화규소는 열 전도율을 재는 감별기에서 이 보석과 비슷하게 읽혀, 전기 전도도 시험으로 가리는 편이 실용적이라고 합니다.
+H: 무아상은 자신이 발전시킨 전기 아크로로 이 보석을 인공으로 만들어 보려 했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Henri_Moissan   hintNote: Moissan contributed to the development of the electric arc furnace … and attempted to use pressure to produce synthetic diamonds from the more common form of carbon
+REWRITE(고친 질문): before Q: 보석상이 쓰는 감별기 가운데에는 돌이 열을 얼마나 잘 전하는지를 재어 진짜를 가리는 것이 있습니다. 1893년 애리조나 운석 구덩이의 돌에서 나온 탄화규소 결정은 열 전도율이 비슷해 이 감별기를 속이기 쉬운데, 처음 발견됐을 때도 이 보석으로 잘못 알려졌습니다. 이 보석은? | before E: 그래서 전기가 얼마나 잘 통하는지 재는 시험으로 둘을 가리는 편이 실용적이라고 합니다. | addedCue(GEN): 없음(쉬운 단서를 해설로 내림 — 무아상의 1893년 오인·1904년 확인이 남음)
+facts: [q] 1893년 메테오 크레이터 돌에서 발견, 처음엔 다이아몬드로 오인, 1904년 탄화규소로 확인 <https://en.wikipedia.org/wiki/Moissanite> «discovered by Henri Moissan while examining rock samples from what is now called Meteor Crater near Canyon Diablo, Arizona, in 1893 · He first misiden»  ||  [e] 열 전도율 감별기는 모이사나이트를 이 보석과 비슷하게 읽음 <https://en.wikipedia.org/wiki/Moissanite> «Testing equipment based on measuring thermal conductivity in particular may give results similar to diamond.»  ||  [e] 전기 전도 시험이 더 실용적 <https://en.wikipedia.org/wiki/Moissanite> «a more practical test is electrical conductivity, which gives higher values for moissanite»  ||  [q] 무아상은 프랑스 화학자 <https://en.wikipedia.org/wiki/Moissanite> «It has the chemical formula SiC and is a rare mineral, discovered by the French chemist Henri Moissan in 1893.»
+dbCheck(GEN): answercheck pair-or-different — 155 와 같은 답, (가) 2회차   pairCheck(GEN): 1회차 155 질문(모스 굳기 10)·해설(굳기 10, 금강석)·힌트(없음)와 겹치지 않음 — 열 전도 감별·모이사나이트는 새 사실
+  1회차 #155: Q: 광물의 굳기를 비교하는 '모스 굳기계'에서 가장 단단한 굳기 10에 해당하는 광물은? | E: 모스 굳기계에서 굳기 10으로 가장 단단한 광물은 다이아몬드(금강석)이다. | H: (없음)
+  sameAnswerActive #155: Q: 광물의 굳기를 비교하는 '모스 굳기계'에서 가장 단단한 굳기 10에 해당하는 광물은? | E: 모스 굳기계에서 굳기 10으로 가장 단단한 광물은 다이아몬드(금강석)이다. | H: (없음)
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### H1-07  [history/L2:world-history-east/중동·이슬람 세계]  method=나
+Q: 8세기 후반에 지은 이 도시의 옛 중심은 반지름 약 1km의 둥근 성이었고, 쿠파·바스라·호라산·샴으로 가는 네 문을 두었습니다. 설계에는 페르시아 출신 유대인 점성가 마샬라 이븐 아타리도 참여했는데, 이 도시는?
+A: 바그다드
+E: 이 둥근 도시의 공식 이름은 '평화의 도시(마디나트 앗살람)'였습니다.
+H: 762년 7월 30일 칼리프 알만수르가 이란계 바르마크 가문의 도움을 받아 짓게 했다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Baghdad   hintNote: On 30 July 762, the Caliph Al-Mansur commissioned Baghdad's construction, guided by the Iranian Barmakids.
+REWRITE(고친 질문): before Q: 8세기 후반에 지은 이 도시의 옛 중심은 반지름 약 1km의 둥근 성이었고, 쿠파·바스라·호라산·샴으로 가는 네 문을 두었습니다. 공식 이름이 '평화의 도시'였던 이 도시는 어디일까요? | before E: 이 둥근 도시의 설계에는 페르시아 출신 유대인 점성가이자 천문학자 마샬라 이븐 아타리도 참여했습니다. | addedCue(GEN): 설계자 마샬라 이븐 아타리(해설에서 옮김)
+facts: [q] 762~766년 건설(8세기 후반) <https://en.wikipedia.org/wiki/Round_city_of_Baghdad> «built by the Abbasid Caliph al-Mansur in 762–766 AD.»  ||  [q] 반지름 약 1km 원 <https://en.wikipedia.org/wiki/Round_city_of_Baghdad> «designed as a circle about 1 km (0.62 mi) in radius»  ||  [q] 네 문 — 쿠파·샴·호라산·바스라 <https://en.wikipedia.org/wiki/Round_city_of_Baghdad> «Bab al-Kufa, Bab al-Sham (gate of al-Sham or Damascus), Bab al-Khorasan, Bab al-Basra»  ||  [q] 마샬라 이븐 아타리 설계 참여 <https://en.wikipedia.org/wiki/Round_city_of_Baghdad> «Mashallah ibn Athari, a Persian Jewish astrologer/astronomer, as one of two designers hired to plan the city.»  ||  [e] 평화의 도시 마디나트 앗살람 <https://en.wikipedia.org/wiki/Round_city_of_Baghdad> «"City of Peace" (Arabic: مدينة السلام, Madīnat as-Salām)»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### H1-19  [history/L2:world-history-west/근대 유럽·혁명]  method=나
+Q: 1697년 네덜란드에서 기형 태아 표본 등을 사들였던 이 인물은 1714년 여름 궁전에서 자기 수집품을 처음 공개해 쿤스트카메라를 열었습니다. 영국에 머물 때 그의 일행이 존 이블린의 집과 정원을 크게 망가뜨린 이 인물은?
+A: 표트르 대제   변형: 표트르 1세   variantCheck(GEN): ko.wikipedia 문서 제목 '표트르 1세', '표트르 대제'에서 넘어옴
+E: 서유럽 사절단에 '미하일로프'라는 성을 쓴 가명으로 끼어 가, 네덜란드에서 배 만드는 일꾼으로 일하기도 했습니다.
+H: 턱수염을 지키려는 귀족에게는 해마다 100루블의 수염세를 물렸다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Peter_the_Great   hintNote: Boyars who sought to retain their beards were required to pay an annual beard tax of one hundred rubles.
+REWRITE(고친 질문): before Q: 서유럽으로 큰 사절단을 보낼 때 이 인물은 '미하일로프'라는 성을 쓴 가명으로 신분을 숨기고 함께 가, 네덜란드에서 배 만드는 일꾼으로 일했습니다. 1714년 기형 태아 표본 등을 모은 쿤스트카메라를 처음 연 이 인물은? | before E: 1717년에는 네덜란드 해부학자 프레데릭 라위스의 표본을 대량으로 사들였고, 영국에 머물 때는 그의 일행이 존 이블린의 집과 정원을 크게 망가뜨렸습니다. | addedCue(GEN): 1697년 표본 구입 · 이블린 저택 훼손(해설에서 옮김)
+facts: [q] 세이스 코트 — 이블린의 집과 정원 망가뜨림 <https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great> «The Russian party did great harm to both house and grounds … The garden which was Evelyn's pride was ruined.»  ||  [e] 대사절단 · 미하일로프 가명 · 네덜란드에서 조선공으로 일함 <https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great> «Peter traveled incognito under the name of Peter Mikhailov … worked incognito as a shipbuilder from 1 September (after arriving in the Dutch Republic)»  ||  [q] 1697년 라위스와 빈센트에게서 기형 태아 표본 등을 사들임 <https://en.wikipedia.org/wiki/Kunstkamera> «A major component of the original collection was a large assortment of human and animal fetuses with various birth defects, many of which Peter had ac»  ||  [q] 1714년 여름 궁전에서 수집품을 처음 공개 <https://en.wikipedia.org/wiki/Kunstkamera> «Peter's personal collection was first exhibited to the public at the Summer Palace in 1714»
+dbCheck(GEN): answercheck new
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 고친 질문(새 단서 사실))
+
+### H1-31  [history/L2:war-history/고대·중세 전쟁]  method=나
+Q: 452년 이 인물은 만토바 근처 민초강 가에서 교황 레오 1세를 만난 뒤 이탈리아에서 물러났습니다. 이듬해 일디코와의 혼인 잔치 도중 피를 쏟고 숨졌다고 전하는 이 인물은 누구일까요?
+A: 아틸라
+E: 요르다네스는 그의 관을 금·은·쇠로 세 겹 씌웠고, 보물을 숨기려고 묻는 일을 맡은 사람들을 죽였다고 전합니다.
+H: 435년부터 형 블레다와 함께 다스리다 445년 블레다가 죽은 뒤 홀로 왕이 되었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Attila   hintNote: Attila and his elder brother Bleda succeeded him to the throne in 435, ruling jointly until the death of Bleda in 445.
+facts: [q] 452년 만토바 근처 민초에서 레오 1세와 만남 · 이탈리아에서 물러남 <https://en.wikipedia.org/wiki/Attila> «Leo met Attila at Mincio in the vicinity of Mantua … secured Attila's agreement to leave Italy»  ||  [q] 453년 일디코와의 혼인 잔치 중 피를 쏟고 사망 <https://en.wikipedia.org/wiki/Attila> «Attila died during celebrations for his latest marriage, to Ildico … In the midst of the revels, however, he suffered severe bleeding and died.»  ||  [e] 금·은·쇠 세 겹 관 · 일꾼 살해 <https://en.wikipedia.org/wiki/Attila> «They bound his coffins, the first with gold, the second with silver and the third with the strength of iron … they slew those appointed to the work.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### H2-03  [history/L2:philosophy/현대 철학]  method=나
+Q: 이 영국 철학자는 1916년 국토방위법 위반으로 유죄 판결을 받은 뒤 케임브리지 트리니티 칼리지에서 쫓겨났습니다. 1918년에는 브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』을 썼는데, 이 철학자는 누구일까요?
+A: 러셀   변형: 버트런드 러셀   variantCheck(GEN): ko.wikipedia 문서 제목 '버트런드 러셀' · '러셀의 역설' 등 성만 흔히 씀
+E: 1940년에는 뉴욕 시립대학 교수로 임명됐지만, 결혼과 성 도덕에 관한 그의 견해를 문제 삼은 법원 판결로 임명이 취소되었습니다.
+H: 1950년 인도주의와 사상의 자유를 옹호한 글들로 노벨 문학상을 받았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Bertrand_Russell   hintNote: In 1950, Russell was awarded the Nobel Prize in Literature "in recognition of his varied and significant writings in which he champions humanitarian ideals and freedom of thought".
+facts: [q] 1916년 국토방위법 유죄 뒤 트리니티 칼리지 해임 <https://en.wikipedia.org/wiki/Bertrand_Russell> «he was dismissed from Trinity College following his conviction under the Defence of the Realm Act 1914.»  ||  [q] 1918년 브릭스턴 6개월 수감, 수리철학 입문 집필 <https://en.wikipedia.org/wiki/Bertrand_Russell> «resulted in six months' imprisonment in Brixton Prison … wrote Introduction to Mathematical Philosophy»  ||  [e] 1940 CCNY 임명이 법원 판결로 취소, 결혼과 도덕의 견해 <https://en.wikipedia.org/wiki/Bertrand_Russell> «the appointment was annulled by a court judgment … 'morally unfit' … citing his views on sexual morality in Marriage and Morals»
+dbCheck(GEN): answercheck new (러셀의 역설 활성은 다른 정답·다른 지식)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### H2-15  [history/L2:society/사회학 개념]  method=나
+Q: 사진가 로버트 카파는 제2차 세계대전 직후 자란 젊은이들을 담은 사진 에세이에 이 이름을 붙였습니다. 1964년에는 영국 젊은이를 다룬 같은 제목의 책이 나왔고, 빌리 아이돌은 이 이름을 자기 펑크 록 밴드 이름으로 썼습니다. 이 말은?
+A: X세대
+E: 오늘날의 뜻은 1991년 캐나다 작가 더글러스 쿠플랜드의 소설이 나온 뒤에 퍼졌습니다.
+H: 카파의 사진 에세이 출간을 알린 잡지 '홀리데이' 1952년 12월호에 이 말이 처음 인쇄됐다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/X세대   hintNote: 이 용어는 카파의 포토 에세이 출간을 알리는 홀리데이(Holiday) 잡지의 1952년 12월호에 처음으로 인쇄되었다.
+facts: [q] 카파가 제2차 세계대전 직후 젊은이 사진 에세이 제목으로 처음 사용 <https://en.wikipedia.org/wiki/Generation_X> «Robert Capa first used Generation X as the title for a photo-essay about young men and women growing up immediately after World War II.»  ||  [q] 1964년 영국 젊은이 책 <https://en.wikipedia.org/wiki/Generation_X> «(Jane Deverson and Charles Hamblett, 1964) published the book Generation X, about British youth»  ||  [q] 빌리 아이돌 펑크 록 밴드 이름 <https://en.wikipedia.org/wiki/Generation_X> «Billy Idol used the term as the name of his punk rock band»  ||  [e] 1991 쿠플랜드 소설 뒤 현대적 뜻 <https://en.wikipedia.org/wiki/Generation_X> «The term gained a modern application after the release of Canadian author Douglas Coupland's 1991 novel»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[처음] frag=[] hint=[]
+webOpen: TRUE (단정어 처음)
+
+### H2-27  [history/L2:religion/힌두교·유대교]  method=나
+Q: 무슬림은 이곳을 무함마드가 밤 여행 때 날개 달린 탈것 부라크를 매어 둔 자리로 여겨 다른 이름으로 부릅니다. 윌슨의 아치 조금 북쪽에는 길이 13.55m, 무게 250~300t에 이르는 돌이 박혀 있는데, 이곳은?
+A: 통곡의 벽   변형: 서벽 | 코텔   variantCheck(GEN): ko.wikipedia '통곡의 벽' 첫 문장 — '통곡의 벽, 서벽, 또는 코텔'
+E: 1967년 6월 이스라엘 당국은 바로 앞의 모로코인 구역을 불도저로 밀어 지금의 광장을 만들었습니다.
+H: 1930년 국제연맹의 승인을 받은 위원회가 이곳을 둘러싼 무슬림과 유대인의 권리를 따졌다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Western_Wall   hintNote: In 1930, in response to the 1929 riots, the British Government appointed a commission "to determine the rights and claims of Muslims and Jews in connection with the Western or Wailing Wall" … The League of Nations approved the commission on condition that the members were not British.
+REWRITE(고친 질문): before Q: 무슬림은 이곳을 무함마드가 밤 여행 때 날개 달린 탈것 부라크를 매어 둔 자리로 여겨 다른 이름으로 부릅니다. 1967년 6월 이스라엘 당국은 바로 앞의 모로코인 구역을 불도저로 밀어 지금의 광장을 만들었는데, 이곳은? | before E: '통곡'을 붙인 이름은 19세기 영어 글에 자주 나왔고, 유대인보다는 주로 기독교인이 써 왔습니다. | addedCue(GEN): 윌슨의 아치 북쪽의 거대한 돌
+facts: [q] 무함마드가 부라크를 맨 곳 — 알부라크 벽 <https://en.wikipedia.org/wiki/Western_Wall> «the site where the Islamic Prophet Muhammad tied his winged steed, the Burāq (Al-Buraq Wall name)»  ||  [e] 1967년 모로코인 구역을 불도저로 밀어 광장 <https://en.wikipedia.org/wiki/Western_Wall> «the Moroccan Quarter was bulldozed by Israeli authorities to create space for what is now the Western Wall plaza (June 1967)»  ||  [q] 윌슨의 아치 북쪽의 13.55m · 250~300t 돌 <https://en.wikipedia.org/wiki/Western_Wall> «Others weigh even more, with one extraordinary stone located slightly north of Wilson's Arch measuring 13.55 metres (44.5 ft) long, 3.3 metres (11 ft)»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### K1-09  [korea/L2:kr-geo/섬·해안]  method=나
+Q: 조선 전기부터 나라가 관리하는 짐승을 기르는 목축지로 쓰인 섬입니다. 1968년 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방을 쌓았고, 섬 안에는 본래 '양말산'이라는 산이 있었는데, 이 섬은?
+A: 여의도
+E: 1916년 비행장이 들어서 1971년까지 공군기지로 쓰였고, 양말산 자리에는 오늘날 국회의사당이 들어섰습니다.
+H: 1971년 박정희 대통령의 지시로 이곳 가운데에 넓은 '5·16 광장'이 닦였다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/여의도공원   hintNote: 박정희 대통령의 지시로 기존의 활주로 자리를 유사시에도 쓸 수 있도록 5·16 광장이라는 형태로 남겨 놓았다. 5.16 광장은 1971년 2월 착공해, 같은 해 9월에 완공됐다.
+REWRITE(고친 질문): before Q: 조선 전기부터 나라가 관리하는 짐승을 기르는 목축지로 쓰인 섬입니다. 1916년 비행장이 들어서 1971년까지 공군기지로 쓰였고, 1968년에는 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방을 쌓았습니다. 이 섬은? | before E: 지금의 국회의사당 자리에는 본래 '양말산'이라는 산이 있었습니다. | addedCue(GEN): 섬 안의 옛 '양말산'
+facts: [q] 조선 전기 이래 국가가 관리하는 짐승을 기르는 목축 공간 <https://ko.wikipedia.org/wiki/여의도> «조선 전기 이래 주로 국가가 관리하는 짐승을 기르는 목축의 공간으로 이용되었다.»  ||  [e] 1916년 비행장 건립, 1971년까지 공군기지 <https://ko.wikipedia.org/wiki/여의도> «일제강점기인 1916년에 비행장이 건립되어 해방 후에도 여의도공항으로 쓰였고, 1971년까지 공군기지로 사용되었다.»  ||  [q] 1968년 밤섬을 폭파해 얻은 골재로 제방(윤중제) <https://ko.wikipedia.org/wiki/여의도> «1968년 밤섬을 폭파해 얻은 골재로 여의도의 제방(윤중제)을 쌓았다.»  ||  [q] 국회의사당 자리에 양말산 <https://ko.wikipedia.org/wiki/여의도> «현재의 국회의사당 자리에는 양말산이라는 산이 있었고»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[explain]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### K1-21  [korea/L2:kr-language/사자성어]  method=나
+Q: 『손자병법』 구지편은 머리를 치면 꼬리가, 꼬리를 치면 머리가 덤비는 상산의 뱀 '솔연'처럼 군사를 부릴 수 있느냐는 물음에 '할 수 있다'고 답하며 한 비유를 듭니다. 이 비유에서 나온 사자성어는?
+A: 오월동주
+E: 원문은 서로 미워하는 두 나라 사람도 한배를 타고 건너다 바람을 만나면 좌우의 손처럼 서로 돕는다고 했습니다.
+H: 이 비유가 실린 편은 지형의 이용과 주도권 쟁취, 기동의 신속성을 강조한다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/손자병법   hintNote: 구지편(九地篇) The nine terrains : 지형의 이용, 적의 취약점 조성과 주도권 쟁취, 기동의 신속성을 강조하고 있다.
+facts: [q] 솔연은 상산의 뱀, 머리를 치면 꼬리가 오고 꼬리를 치면 머리가 온다; 솔연처럼 할 수 있느냐는 물음에 '可' <https://zh.wikisource.org/wiki/孫子兵法> «故善用兵者，譬如率然。率然者，常山之蛇也。擊其首則尾至，擊其尾則首至 … 敢問︰「兵可使如率然乎？」曰︰「可。」»  ||  [q] 구지편 단락 <https://zh.wikisource.org/wiki/孫子兵法> «九地第十一 편의 같은 단락»  ||  [e] 오나라와 월나라 사람은 서로 미워하나 한배로 건너다 바람을 만나면 좌우 손처럼 돕는다 <https://zh.wikisource.org/wiki/孫子兵法> «夫吳人與越人相惡也，當其同舟而濟。遇風，其相救也，如左右手。»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### K2-08  [korea/L2:kr-history/조선 후기]  method=나
+Q: 1596년 왕명을 받아 여러 의원이 함께 편찬을 시작했지만, 이듬해 정유재란으로 일이 멈춘 의학서입니다. 1724년 일본 교토에서, 1763년 중국에서 처음 간행된 이 책은 무엇일까요?
+A: 동의보감
+E: 2009년 7월 유네스코 세계기록유산에 등재되었습니다.
+H: 편찬을 함께 시작한 의원 가운데에는 정작·양예수·김응탁·정예남이 있었다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/동의보감   hintNote: 궁중 내의였던 허준은 1596년(선조 29) 왕명을 받아 정작, 양예수(楊禮壽), 김응탁(金應鐸), 정예남(鄭禮男) 등 여러 명과 함께 편찬에 착수하기 시작했다.
+REWRITE(고친 질문): before Q: 1596년 왕명을 받아 여러 의원이 함께 편찬을 시작했지만 이듬해 정유재란으로 일이 멈췄고, 전쟁이 끝난 뒤 한 사람이 혼자 이어 1610년에 완성했습니다. 1724년 일본 교토에서도 간행된 이 책은 무엇일까요? | before E: 2009년 7월 유네스코 세계기록유산에 등재되었고, 중국에서도 1763년에 처음 간행되었습니다. | addedCue(GEN): 1763년 중국 초간본
+facts: [q] 1596년 왕명으로 정작·양예수 등 여러 명과 편찬 착수, 1년 뒤 정유재란으로 중단, 전쟁 뒤 허준 혼자 편찬 <https://ko.wikipedia.org/wiki/동의보감> «궁중 내의였던 허준은 1596년(선조 29) 왕명을 받아 정작(鄭碏), 이명원(李命源), 양예수(楊禮壽), 김응탁(金應鐸), 정예남(鄭禮男) 등 여러 명과 함께 편찬에 착수하기 시작했다. 하지만 1년뒤 정유재란으로 편찬이 중단, 전쟁이 끝나고 허준 혼자 편찬을 했다.»  ||  [q] 일본 간본 초간본 1724년 교토 <https://ko.wikipedia.org/wiki/동의보감> «일본 간본 … 《동의보감》 초간본(梱井藤兵衛, 京都書林, 1724)»  ||  [e] 2009년 7월 31일 유네스코 세계기록유산, 중국 초간본 1763 <https://ko.wikipedia.org/wiki/동의보감> «2009년 7월 31일 유네스코 세계기록유산으로 등록되었다. … 중국 간본 《동의보감》 초간본(1763)»  ||  [q] 중국 간본 초간본 1763 <https://ko.wikipedia.org/wiki/동의보감> «중국 간본 《동의보감》 초간본(1763)»
+dbCheck(GEN): answercheck new(동의보감·허준) — 활성·초안에 없음
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 고친 질문(새 단서 사실))
+
+### K2-20  [korea/L2:kr-food/향토 음식]  method=나
+Q: 찹쌀과 멥쌀을 갈아 만든 쌀가루 반죽을 질게 얹어 부치고, 해산물 맛을 살리려 간장 대신 초고추장을 곁들여 먹는 향토 음식입니다. 원로 소설가 최해군은 고관을 접대하던 술상의 안주에서 발달했다고 보았는데, 이 음식은?
+A: 동래파전
+E: 조선 시대 이 고장이 대일 외교와 군사의 요지인 도호부여서 고관의 왕래가 잦았다는 데서 나온 설명이고, 구청은 2004년 연구회를 만들어 브랜드화를 해 왔습니다.
+H: 조선 시대에 임금에게 올리는 선물로 꼽혔다고 전한다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/파전   hintNote: 조선 시대에 처음 만들어진 이 요리는 왕을 위한 선물로 분류되어 있었다.
+REWRITE(고친 질문): before Q: 찹쌀과 멥쌀을 갈아 만든 쌀가루 반죽을 질게 얹어 부치고, 간장 대신 초고추장을 곁들여 먹는 향토 음식입니다. 조선 시대 대일 외교의 요지였던 한 도호부에서 고관을 접대하던 술상의 안주로 발달했다는 설이 있는 이 음식은? | before E: 이 고장 구청은 2004년 연구회를 만들고, 2007년부터 특허청 상표 등록 등 브랜드화 사업을 벌여 왔습니다. | addedCue(GEN): 없음(쉬운 단서를 해설로 내림 — 반죽·초고추장·최해군의 설이 남음)
+facts: [q] 찹쌀·멥쌀을 간 쌀가루 반죽을 질게 얹어 부침 <https://www.grandculture.net/busan/toc/GC04210117> «동래 파전은 … 조선 쪽파와 쇠고기, 해물 등을 얹은 다음 찹쌀과 멥쌀을 갈아서 만든 쌀가루 반죽을 얹어 좀 질게 하여 차진 맛과 깊은 맛을 낸다.»  ||  [q] 간장이 아닌 초고추장을 곁들임 <https://www.grandculture.net/busan/toc/GC04210117> «동래 파전은 다른 지역의 전과 달리 해산물이 풍부하게 들어가기 때문에 해산물의 맛을 살리기 위해서 주로 간장이 아닌 초고추장을 곁들여 먹는다.»  ||  [q] 도호부 시절 대일 외교·군사 요지로 고관 접대 술자리 안주에서 발달했다는 설 <https://www.grandculture.net/busan/toc/GC04210117> «원로 소설가 최해군은 “동래가 조선 시대 도호부일 때 대일 외교와 군사상의 요지로 조정 고관들의 왕래가 잦아 그들을 접대하기 위한 술자리에서 안주로 내던 파전이 점차 발달해 지금의 동래 파전으로 정착된 것이 아닐까 한다”라고 설명하였다. … 고급 안주용에서 유래하였다는»  ||  [e] 2004년 동래파전연구회 발족, 2007년부터 상표 등록 등 브랜드화 <https://www.grandculture.net/busan/toc/GC04210117> «부산광역시 동래구에서는 동래 파전을 연구·발전시키기 위해 2004년 ‘동래파전연구회’를 발족시켜 … 또 2007년부터 특허청에 상표 등록 등 ‘동래 파전 브랜드화 사업’을 통해»
+dbCheck(GEN): answercheck new(동래파전·파전) — 활성·초안에 없음
+warn: assert=[] assertHint=[] frag=[] hint=[explain]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### L1-06  [life/L2:daily-rule/생활 법규]  method=나
+Q: 1988년 귀갓길에 골목으로 끌려가 강제로 입맞춤을 당하던 32살 주부가 남자의 혀를 깨물어 잘랐습니다. 1심은 그녀에게 징역 6개월에 집행유예를 선고했지만 항소심과 대법원은 판단을 뒤집었는데, 대법원이 그녀의 행위에 인정한 것은 무엇일까요?
+A: 정당방위
+E: 검찰은 과잉방위라며 징역 1년을 구형했었고, 이 변월수 사건은 영화 '단지 그대가 여자라는 이유만으로'로도 만들어졌습니다.
+H: 1964년 같은 일로 중상해죄 판결을 받은 최말자 씨는 2025년 재심에서 이것을 인정받아 무죄가 되었다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/최말자_사건   hintNote: 1965년 1월 부산지방법원 형사부는 최말자에게 '중상해죄'를 인정하여 … 같은 해(2025) 부산지방법원 형사5부는 재심에서 중상해 등 혐의에 대해 "정당방위라고 인정된다"며 무죄를 선고하였다.
+REWRITE(고치지 않음): 쉬운 단서를 빼면 유일하지 않음 — 정답이 법 개념이라 사건을 어떻게 고쳐 써도 '대법원이 인정한 것' 이 1회차(3158) 정의만으로 풀리고, 사건 세부(혀 절단)를 빼면 무엇을 인정했는지 넓어짐
+facts: [q] 1988년 9월 10일 당시 32세 주부 변월수가 귀가 중 골목으로 끌고 가 강제로 키스하는 남성의 혀를 깨물어 절단 <https://ko.wikipedia.org/wiki/변월수_사건> «변월수 사건(卞月洙事件)은 1988년 9월 10일 가정 주부 변월수(卞月洙, 여성, 당시 32세)가 귀가를 하던 도중 자신을 골목길로 끌고가 강제로 키스하는 남성의 혀를 깨물어 절단한 사건이다.»  ||  [q] 1심은 징역 6개월 집행유예 1년 <https://ko.wikipedia.org/wiki/변월수_사건> «제1심 재판부인 대구지방법원 안동지원은 갑과 을의 주장을 인정하여 변월수에게 징역 6개월 집행유예 1년을 선고하였다.»  ||  [q] 항소심이 원심 파기, 대법원이 정당방위 인정 <https://ko.wikipedia.org/wiki/변월수_사건> «항소심 재판부인 대구고등법원은 … 원심을 파기하고 … 대법원도 변월수의 정당방위를 인정하여 검사와 을의 상고를 기각하였다.»  ||  [e] 검찰은 과잉방위로 1년 구형 <https://ko.wikipedia.org/wiki/변월수_사건> «검찰은 과잉방위는 이유로 1년을 구형하였다.»  ||  [e] 영화 '단지 그대가 여자라는 이유만으로'로 제작 <https://ko.wikipedia.org/wiki/변월수_사건> «이 사건은 《단지 그대가 여자라는 이유만으로》라는 영화로 제작되었다.»
+dbCheck(GEN): 활성 3158(법률 용어 — 정의 꼴)과 답만 같고 지식이 다름(판례). 활성 2221 상당성은 다른 답
+  sameAnswerActive #3158: Q: 자기나 남에 대한 현재의 부당한 침해를 막으려고 한 행위로, 상당한 이유가 있으면 처벌하지 않는 것은? | E: 지나친 방어는 과잉방위가 되어 처벌받을 수 있습니다. | H: (없음)
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (같은 정답 활성)
+
+### L1-18  [life/L2:fashion/복식사]  method=나
+Q: 1914년 11월 3일 미국 특허청에 새로 생긴 이 물건의 분류에서 첫 특허를 받은 사람은 뉴욕의 메리 펠프스 제이컵이었습니다. 뒷날 출판인 '카레스 크로스비'라는 이름으로 더 알려진 그녀가 특허를 낸 이 옷은 무엇일까요?
+A: 브래지어   변형: 브라   variantCheck(GEN): ko.wikipedia — '브라' 가 '브래지어' 문서로 넘겨주기(API redirects 확인)
+E: 그녀는 보스턴에서 잠깐 두 사람짜리 공장을 꾸렸다가 특허를 워너 브러더스 코르셋 회사에 팔았고, 이 회사가 대량 생산에 나섰습니다.
+H: 그녀는 하녀에게 손수건 두 장과 분홍 리본을 가져오게 해 첫 시제품을 만들었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Caresse_Crosby   hintNote: She told her, "Bring me two of my pocket handkerchiefs and some pink ribbon …" She fashioned the handkerchiefs and ribbon into a simple bra.
+facts: [q] 1914년 11월 3일 새로 생긴 'brassieres' 특허 분류의 첫 특허가 메리 펠프스 제이컵에게(뒷날 카레스 크로스비) <https://en.wikipedia.org/wiki/Bra> «On 3 November 1914, the newly formed US patent category for "brassieres" was inaugurated with the first patent issued to Mary Phelps Jacob, later and »  ||  [q] 카레스 크로스비는 뉴욕의 출판인 <https://en.wikipedia.org/wiki/Bra> «In 1914, the first modern bra was patented by New York publisher, activist, and socialite Caresse Crosby (born Mary Phelps Jacob).»  ||  [e] 보스턴의 두 사람 공장에서 잠깐 만들다 워너 브러더스 코르셋 회사에 특허를 팔았다 <https://en.wikipedia.org/wiki/Bra> «After patenting her design in 1914, she briefly manufactured bras at a two-woman factory in Boston, before selling her patent to the Warner Brothers C»
+dbCheck(GEN): new — 활성 1636 코르셋은 다른 답
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### L2-05  [life/L2:calendar/달력·역법]  method=나
+Q: 한 해 끝의 닷새 '와예브'를 위험한 때로 여겼고, 기념비에는 기원전 3114년 8월 11일로 보는 신화 속 창조일부터 센 날수를 새겼습니다. 이 고대 문명의 달력은 무엇일까요?
+A: 마야력   변형: 마야 달력   variantCheck(GEN): ko.wikipedia '마야력' 문서 제목·본문의 '마야 달력' 표기 확인
+E: 장기 계산법의 13번째 박툰이 끝나고 14번째 박툰이 시작된 날은 2012년 12월 21일이었습니다.
+H: 1562년 7월 12일 에스파냐 수사 디에고 데 란다가 이 문명의 책들을 불태웠다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Diego_de_Landa   hintNote: During the ceremony on July 12, 1562, a disputed number of Maya codices (according to Landa, 27 books) … were burned.
+REWRITE(고친 질문): before Q: 260일 주기와 365일 주기를 맞물려 52년마다 한 바퀴 도는 날짜를 썼고, 기념비에는 기원전 3114년 8월 11일로 보는 신화 속 창조일부터 센 날수를 새겼습니다. 이 고대 문명의 달력은 무엇일까요? | before E:  | addedCue(GEN): 불길한 닷새 '와예브'
+facts: [q] 기원전 3114년 8월 11일 창조일부터 세는 장기 계산법, 기념비에 새김 <https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar> «a mythical creation date that corresponds to August 11, 3114 BCE in the proleptic Gregorian calendar ... it is often known as the Maya Long Count cale»  ||  [q] 기념비에 날짜 새김 <https://en.wikipedia.org/wiki/Maya_calendar> «It was used for longer spans and for inscribing dates on monuments.»  ||  [e] 14번째 박툰 시작 2012년 12월 21일 <https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar> «the start of the 14th bʼakʼtun, 13.0.0.0.0, on December 21, 2012.»  ||  [q] 하브는 20일짜리 18달 + 닷새 <https://en.wikipedia.org/wiki/Maya_calendar> «The Haabʼ was made up of eighteen months of twenty days each plus a period of five days.»  ||  [q] 와예브 닷새는 위험한 때 <https://en.wikipedia.org/wiki/Maya_calendar> «Wayebʼ: thought to be a dangerous time.»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### L2-19  [life/L2:board-game/체스]  method=가 pairedWith=#353 hobby=보드게임
+Q: 1914년 상트페테르부르크 대회 결승에 오른 라스커·카파블랑카·알레힌·타라시·마셜에게 니콜라이 2세가 이 칭호를 주었다는 이야기는 1940년대 글에서야 나와 의심받습니다. 이 체스 칭호는 무엇일까요?
+A: 그랜드마스터
+E: 국제체스연맹은 1950년 27명에게 처음 이 칭호를 주었고, 같은 해 인터내셔널 마스터 칭호도 함께 만들었습니다.
+H: (힌트 없음)
+REWRITE(고친 질문): before Q: 1914년 상트페테르부르크 대회 결승에 오른 라스커·카파블랑카·알레힌·타라시·마셜에게 니콜라이 2세가 이 칭호를 주었다는 이야기는 1940년대 글에서야 나와 의심받습니다. 국제체스연맹이 1950년 27명에게 처음 준 이 칭호는? | before E: 국제체스연맹은 같은 1950년 인터내셔널 마스터 칭호도 함께 만들었습니다. | addedCue(GEN): 없음(쉬운 단서를 해설로 내림 — 니콜라이 2세 전설과 그 의심이 남음)
+facts: [q] 1914 상트페테르부르크, 니콜라이 2세가 다섯 결승 진출자에게 줬다는 이야기 <https://en.wikipedia.org/wiki/Grandmaster_(chess)> «the title Grandmaster was formally conferred by Russian Tsar Nicholas II ... five finalists: Lasker, Capablanca, Alekhine, Tarrasch, and Marshall.»  ||  [q] 근거는 1940년 뉴요커 글·1942 마셜 자서전 — 의문 제기 <https://en.wikipedia.org/wiki/Grandmaster_(chess)> «Edward Winter has questioned this, noting the earliest known supporting sources are a 1940 New Yorker article and Marshall's 1942 autobiography.»  ||  [e] 1950년 27명에게 처음 <https://en.wikipedia.org/wiki/Grandmaster_(chess)> «FIDE first awarded the Grandmaster title in 1950 to 27 players.»  ||  [e] 1950년 IM 도 함께 만듦 <https://en.wikipedia.org/wiki/Grandmaster_(chess)> «In 1950 FIDE created the titles of Grandmaster (GM), International Master (IM) and Woman Master»
+dbCheck(GEN): answercheck pair-or-different — 353 과 지식이 다른 2회차   pairCheck(GEN): 1회차 353 질문(최고 등급·평생 유지)·해설(기준 성적·평점 요건)·힌트(피셔 1958 최연소)와 겹치지 않음 — 1914 전설과 1950 첫 수여라는 다른 속성
+  1회차 #353: Q: 국제체스연맹이 주는 칭호 가운데 선수가 받을 수 있는 가장 높은 등급으로, 한 번 얻으면 실력이 떨어져도 평생 유지되는 것은? | E: 정해진 수준의 대회에서 기준 성적을 여러 차례 내고 평점 요건을 채워야 얻습니다. | H: 보비 피셔는 1958년 열다섯 살에 이 칭호를 따 당시 최연소 기록을 세웠다.
+  sameAnswerActive #353: Q: 국제체스연맹이 주는 칭호 가운데 선수가 받을 수 있는 가장 높은 등급으로, 한 번 얻으면 실력이 떨어져도 평생 유지되는 것은? | E: 정해진 수준의 대회에서 기준 성적을 여러 차례 내고 평점 요건을 채워야 얻습니다. | H: 보비 피셔는 1958년 열다섯 살에 이 칭호를 따 당시 최연소 기록을 세웠다.
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 같은 정답 활성, 2회차, 고친 질문(새 단서 사실))
+
+### M1-08  [media/L2:kr-tv/라디오 방송]  method=나 layer=팬 세부 work=밤을 잊은 그대에게
+Q: 1980년 11월 30일, 언론 통폐합으로 한 민영 방송사가 문을 닫기 직전 마지막으로 전파를 탄 프로그램입니다. 진행자 황인용은 끝을 5분 남기고 '남은 5분이 너무 야속합니다'라며 울먹였는데, 이 심야 라디오는?
+A: 밤을 잊은 그대에게
+E: 1991년 5월 송승환이 진행하던 중 한 번 폐지됐다가, 1992년 가을 노영심의 진행으로 다시 시작했습니다.
+H: 1972년부터 1974년까지는 가수 양희은이 이 프로그램을 진행했다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/밤을_잊은_그대에게   hintNote: DJ: 이성화(1964~1972) 양희은(1972~1974) 서유석(1974~1975) 황인용(1975~1981)
+facts: [q] TBC 마지막 방송 · 황인용 진행 · 5분 남기고 울먹임 <https://ko.wikipedia.org/wiki/밤을_잊은_그대에게> «1980년 11월 30일에 언론통폐합으로 인하여 TBC가 KBS로 넘어가기 직전에 마지막으로 했던 방송이 이 프로그램이었다. 당시 진행자는 황인용 아나운서였는데 자정이 다가오고 프로그램 종료 5분을 남겨두고 울먹이면서 아래와 같이 고별인사를 하였다.»  ||  [q] 고별인사 문장 <https://ko.wikipedia.org/wiki/밤을_잊은_그대에게> «남은 5분이 남은 5분이… 남은 5분이 너무 야속합니다. 10분이었으면 좋겠습니다.»  ||  [e] 1991년 5월 폐지 · 1992년 노영심 부활 <https://ko.wikipedia.org/wiki/밤을_잊은_그대에게> «이 프로그램은 1991년 5월 5일 자로 폐지되었다. 당시 진행은 송승환이 맡았는데 … 1992년 KBS의 가을 개편에 따라 노영심이 진행하는 것으로 다시 시작을 하였다.»
+dbCheck(GEN): answercheck new
+warn: assert=[마지막] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 마지막)
+
+### M1-20  [media/L2:kr-music/트로트·포크]  method=나 layer=대중 work=김연자
+Q: 2013년 5월 나온 트로트로, 윤일상이 곡을 썼습니다. 인생을 찬미하는 발라드를 바랐던 가수는 빠른 템포의 곡을 받고, 가사가 많고 숨이 가빠 성인가요에 맞지 않는다며 일찍 활동을 접었다고 밝혔는데, 이 노래는?
+A: 아모르 파티
+E: 2016년 7월 KBS '열린음악회'에서 EXO 다음 순서로 부른 무대가 이듬해 3월 SNS로 퍼지면서 뒤늦게 크게 사랑받았습니다.
+H: 이 노래의 가사는 신철과 이건우가 함께 썼다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/아모르_파티_(노래)   hintNote: 신철과 이건우가 작사를, 윤일상이 작곡을 맡았다.
+REWRITE(고친 질문): before Q: 2013년 5월 나온 트로트로, 윤일상이 곡을 썼습니다. 2016년 7월 KBS '열린음악회'에서 EXO 다음 순서로 부른 무대가 이듬해 3월 SNS로 퍼지면서 뒤늦게 크게 사랑받은 이 노래는 무엇일까요? | before E: 제목은 니체 사상의 '운명에 대한 사랑'에서 왔고, 트로트에 일렉트로닉 댄스 음악을 섞었습니다. | addedCue(GEN): 가수가 밝힌 곡 비화(발라드를 원했는데 빠른 곡 · 일찍 접음)
+facts: [q] 2013년 5월 23일 발표 · 윤일상 작곡 <https://ko.wikipedia.org/wiki/아모르_파티_(노래)> «〈아모르 파티〉(Amor fati)는 2013년 5월 23일에 김연자가 발표한 싱글 음반이다. 신철과 이건우가 작사를, 윤일상이 작곡을 맡았다.»  ||  [e] 2016년 7월 10일 열린음악회 EXO 뒤 · 2017년 3월 트윗 확산 <https://ko.wikipedia.org/wiki/아모르_파티_(노래)> «김연자는 2016년 7월 10일에 방송된 KBS 1TV 《열린음악회》에 출연하여 보이 밴드 EXO의 뒤를 이어 노래 〈아모르 파티〉를 불렀다. 열린음악회 방송 이후에 계속 잠잠하다가 다음 해인 2017년 3월에서야 추천 트윗이 올라왔고 이게 여기저기 퍼지며 폭발적 반응»  ||  [q] 김연자는 인생 찬미 발라드를 원했으나 빠른 EDM을 받았고 가사 많고 숨 가쁘며 성인가요에 맞지 않아 일찍 접음(2017 아침마당) <https://ko.wikipedia.org/wiki/아모르_파티_(노래)> «인생을 찬미하는 발라드를 원했지만 윤일상이 보낸 곡은 빠른 템포의 EDM이었다. 가사가 많고 숨이 가쁘며 성인가요에 맞지 않는다는 이유로 일찍 접었다(문서 요지 — 2017년 9월 5일 아침마당 발언).»
+dbCheck(GEN): answercheck new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### M2-02  [media/L2:popular-music/1960~70년대]  method=나 layer=팬 세부 work=비틀스
+Q: 1968년 소울 가수 윌슨 피킷이 젊은 기타리스트 듀안 올맨의 권유로 이 곡을 녹음해 빌보드 핫 100 23위에 올렸습니다. 비틀스가 트라이던트 스튜디오에서 마스터를 녹음한 이 곡은 그들이 8트랙 장비로 녹음한 첫 노래였는데, 이 곡은?
+A: Hey Jude   변형: 헤이 주드   originalTitle: Hey Jude   variantCheck(GEN): ko.wikipedia 헤이 주드 → Hey Jude 넘겨주기 확인
+E: 처음 제목은 'Hey Jules'로, 부모의 이혼을 겪던 존 레넌의 아들 줄리언을 달래려던 곡이었습니다.
+H: 7분이 넘어, 그때까지 영국 차트 1위에 오른 싱글 가운데 가장 길었다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Hey_Jude   hintNote: At over seven minutes in length, "Hey Jude" was the longest single to top the British charts up to the time.
+REWRITE(고친 질문): before Q: 1968년 비틀스가 세운 음반사의 데뷔작으로 크게 성공한 싱글입니다. 같은 해 소울 가수 윌슨 피킷이 젊은 기타리스트 듀안 올맨의 권유로 이 곡을 녹음해 빌보드 핫 100 23위에 올렸는데, 이 곡은 무엇일까요? | before E:  | addedCue(GEN): 트라이던트 · 첫 8트랙 녹음
+facts: [q] 윌슨 피킷 1968년 커버 · 듀안 올맨 권유 · 23위 <https://en.wikipedia.org/wiki/Hey_Jude> «Pickett's 1968 version ... a guitar part played by a young Duane Allman, who recommended the song to Pickett ... number 23 on the Hot 100»  ||  [e] 원래 제목 Hey Jules · 줄리언 <https://en.wikipedia.org/wiki/Hey_Jude> «The song's original title was "Hey Jules" — intended to help Julian cope with his parents' separation»  ||  [q] 트라이던트에서 마스터 녹음 · 비틀스 첫 8트랙 녹음 <https://en.wikipedia.org/wiki/Hey_Jude> «The Beatles recorded the master track for "Hey Jude" at Trident. / "Hey Jude" was the first Beatles song to be recorded on eight-track equipment.»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[처음] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (단정어 처음, 고친 질문(새 단서 사실))
+
+### M2-14  [media/L2:esports/PC·온라인 게임]  method=나 layer=팬 세부 work=라그나로크 온라인
+Q: 원작 만화보다 약 100년 앞선 시대가 무대라고 개발사가 밝힌 온라인 게임입니다. 한국 서비스에서는 계정을 만들 때 쓴 주민등록번호에 따라 캐릭터의 성별이 정해졌는데, 이 게임은 무엇일까요?
+A: 라그나로크 온라인   변형: 라그나로크 | Ragnarok Online   originalTitle: Ragnarok Online   variantCheck(GEN): ko.wikipedia 문서 제목 라그나로크 온라인 · 흔히 라그나로크로 줄여 부름 · 영문 원제 B10
+E: 이명진의 만화를 바탕으로 했고, SoundTeMP가 만든 배경 음악이 MP3 파일로 클라이언트에 담겨 있었습니다.
+H: 그라비티가 만들어 2002년 8월 한국에서 정식으로 내놓았다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Ragnarok_Online   hintNote: created by Gravity … Ragnarok Online was launched in South Korea in August 2002.
+REWRITE(고친 질문): before Q: 이명진의 만화를 바탕으로 하되, 원작보다 약 100년 앞선 시대가 무대라고 개발사가 밝힌 온라인 게임입니다. 사운드템프(SoundTeMP)가 만든 배경 음악이 MP3 파일로 클라이언트에 들어 있던 이 게임은 무엇일까요? | before E: 2001년 11월부터 약 9개월 동안 베타테스트를 거쳐 2002년 8월 상용화했고, 2010년 11월 부분 유료화로 바뀌었습니다. | addedCue(GEN): 주민등록번호로 캐릭터 성별이 정해진 한국 서비스
+facts: [q] 이명진 만화 기반 · 원작 약 100년 전이 무대 <https://ko.wikipedia.org/wiki/라그나로크_온라인> «이명진의 만화 "라그나로크"를 기반 … 원작의 약 100년 전이 게임의 무대라고 그라비티가 밝힌 적이 있다»  ||  [e] SoundTeMP 음악 MP3 <https://ko.wikipedia.org/wiki/라그나로크_온라인> «SoundTeMP라는 팀이 만든 음악이 MP3 형식으로 클라이언트 안에 담겨 있었다»  ||  [q] 한국에서는 주민등록번호로 캐릭터 성별이 정해짐 <https://ko.wikipedia.org/wiki/라그나로크_온라인> «대한민국에서는 계정 생성시의 주민등록번호를 통해 계정을 가진 사람과 캐릭터의 성별이 일치하는 시스템이 있었다.»  ||  [e] 이명진의 만화 라그나로크를 바탕 <https://ko.wikipedia.org/wiki/라그나로크_온라인> «라그나로크 온라인(Ragnarok Online)은 이명진의 만화 라그나로크를 기반으로 그라비티에서 만든 MMORPG이다.»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[] assertHint=[] frag=[온라인] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### M2-26  [media/L2:world-cinema/현대 할리우드]  method=나 layer=팬 세부 work=매트릭스
+Q: 1999년 한 할리우드 SF 영화의 화면 글자를 디자인한 사이먼 화이틀리는 2017년 인터뷰에서 그 디자인을 일본 출신 아내 덕으로 돌렸습니다. 그는 이 영화의 그 글자들이 일본 초밥 요리법으로 이루어졌다고 말하곤 한다고 했는데, 이 영화는?
+A: 매트릭스   변형: 더 매트릭스 | The Matrix   originalTitle: The Matrix   variantCheck(GEN): ko.wikipedia 문서 제목 매트릭스 (영화) · 원제 The Matrix B10
+E: 일본 애니메이션 '공각기동대'가 이 영화에 큰 영향을 주었는데, 그 오프닝 크레디트도 비슷하게 글자가 흘러내립니다.
+H: (힌트 없음)
+REWRITE(고친 질문): before Q: 1999년 한 할리우드 SF 영화를 위해 사이먼 화이틀리가 만든 서체에는, 일본어 반각 가나와 라틴 문자·숫자를 거울에 비춘 글자가 들어 있습니다. 화이틀리는 사람들에게 이 영화의 그 글자들이 일본 초밥 요리법으로 이루어졌다고 말하곤 했는데, 이 영화는 무엇일까요? | before E:  | addedCue(GEN): 2017년 인터뷰 — 일본 출신 아내 덕
+facts: [q] 1999년 영화 매트릭스용 사이먼 화이틀리의 서체 <https://en.wikipedia.org/wiki/Matrix_digital_rain> «This code uses a custom typeface designed by Simon Whiteley.»  ||  [q] 초밥 요리법이라는 말 <https://en.wikipedia.org/wiki/Matrix_digital_rain> «I like to tell everybody that The Matrix's code is made out of Japanese sushi recipes.»  ||  [e] 공각기동대 영향 · 오프닝 크레디트 <https://en.wikipedia.org/wiki/Matrix_digital_rain> «a strong influence on The Matrix ... its opening credits are similar to the digital rain»  ||  [q] 2017년 CNET 인터뷰에서 디자인을 일본 출신 아내 덕으로 돌림 <https://en.wikipedia.org/wiki/Matrix_digital_rain> «In a 2017 interview at CNET, he attributed the design to his wife, who comes from Japan, and added, "I like to tell everybody that The Matrix's code i»
+dbCheck(GEN): answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### S1-09  [sports/L2:ball-sports/테니스]  method=나
+Q: 소치에서 자라며 아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓을 받았습니다. 여섯 살 때 모스크바 강습회에서 마르티나 나브라틸로바가 미국 훈련을 권했고, 아버지와 모은 돈 700달러만 들고 플로리다로 건너간 이 테니스 선수는?
+A: 샤라포바   변형: 마리아 샤라포바 | 마리야 샤라포바   variantCheck(GEN): ko.wikipedia '마리야 샤라포바' 문서 제목 · '마리아 샤라포바' · '샤라포바' 넘겨주기 문서 있음
+E: 비자 문제로 어머니는 2년 동안 미국에 오지 못했고, 아버지는 여러 허드렛일로 딸의 레슨비를 댔습니다.
+H: 2016년 호주 오픈 도핑 검사에서 멜도니움 양성 반응이 나왔다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Maria_Sharapova   hintNote: Sharapova failed a drug test at the 2016 Australian Open, testing positive for meldonium
+facts: [q] 세 살 때 소치로 이사, 카펠니코프(아버지 친구)가 첫 라켓을 줌 <https://en.wikipedia.org/wiki/Maria_Sharapova> «In 1990, when Sharapova was three, the family moved to Sochi, Russia. Her father, Yuri, befriended Aleksandr Kafelnikov ... Aleksandr gave Sharapova h»  ||  [q] 여섯 살 때 모스크바 강습회에서 나브라틸로바가 미국(볼리티에리) 훈련을 권함 <https://en.wikipedia.org/wiki/Maria_Sharapova> «In 1993, at the age of six, Sharapova attended a tennis clinic in Moscow run by Martina Navratilova, who recommended professional training with Nick B»  ||  [q] 700달러를 들고 플로리다로 <https://en.wikipedia.org/wiki/Maria_Sharapova> «Arriving in Florida with savings of US$700, Sharapova's father took various low-paying jobs to fund her lessons»  ||  [e] 비자 문제로 어머니 2년간 합류 못 함 <https://en.wikipedia.org/wiki/Maria_Sharapova> «Visa restrictions prevented Sharapova's mother from joining them for two years.»
+dbCheck(GEN): 샤라포바 · 마리아 샤라포바 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### S1-22  [sports/L2:football/유럽 리그]  method=나
+Q: FC 서울 유소년 시절인 2008년 서울 홈경기에서 볼보이를 했던 선수입니다. 에이전트는 그가 유럽에서 성공하려고 '네모바지 스펀지밥'을 보며 독일어를 익혔다고 전했는데, 이 선수는 누구일까요?
+A: 손흥민
+E: 2010년 쾰른전 골로 만프레트 칼츠가 갖고 있던 함부르크 구단 최연소 분데스리가 득점 기록을 깼습니다.
+H: (힌트 없음)
+REWRITE(고친 질문): before Q: FC 서울 유소년 시절인 2008년 서울 홈경기에서 볼보이를 했고, 에이전트는 그가 '네모바지 스펀지밥'을 보며 독일어를 익혔다고 전했습니다. 2010년 쾰른전 골로 만프레트 칼츠가 갖고 있던 구단 최연소 분데스리가 득점 기록을 깬 선수는? | before E: 2008년 8월 대한축구협회의 유망주 해외 유학 사업으로 열여섯 살에 함부르크 유소년팀에 들어갔습니다. | addedCue(GEN): (뺌만 — 남은 단서: 서울 볼보이 · 스펀지밥 독일어)
+facts: [q] 2008년 FC 서울 유소년 시절 홈경기 볼보이 <https://en.wikipedia.org/wiki/Son_Heung-min> «Son was a ball boy in an FC Seoul home match in 2008 when he was a FC Seoul youth player.»  ||  [q] 에이전트 — 스펀지밥을 보며 독일어를 배움 <https://en.wikipedia.org/wiki/Son_Heung-min> «His agent Thies Bliemeister said Son was so determined to succeed in Europe that he learned German by watching episodes of SpongeBob SquarePants.»  ||  [e] 2010년 쾰른전 골, 칼츠의 함부르크 최연소 분데스리가 득점 기록 깸 <https://en.wikipedia.org/wiki/Son_Heung-min> «He returned on 30 October 2010 to score his first league goal, against 1. FC Köln in the 24th minute. The goal made Son the youngest Hamburg player to»
+dbCheck(GEN): 손흥민 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
+
+### S2-09  [sports/L2:olympic/종목·규정]  method=나
+Q: 1932년 세워진 소련의 한 학교가 노베르·델사르트의 움직임 이론을 엮어 키운 이 종목은 1939년 레닌그라드에서 첫 대회가 열렸습니다. 1984년 로스앤젤레스 대회에서 동구권 불참 속에 캐나다의 로리 펑이 첫 올림픽 금메달을 딴 이 종목은?
+A: 리듬체조
+E: 단체전은 1996년 애틀랜타 대회에서 더해졌습니다.
+H: 2014년 아시안 게임에서 손연재가 이 종목 한국 첫 개인전 금메달을 땄다.   hintBasis=web   hintSources: https://ko.wikipedia.org/wiki/손연재   hintNote: 또한 2014년 아시안게임에서 대한민국 최초로 개인전 금메달과 단체전 은메달을 획득하였다.
+facts: [q] 노베르·델사르트 등의 이론 · 1932 소련 학교 · 1939 레닌그라드 첫 대회 <https://en.wikipedia.org/wiki/Rhythmic_gymnastics> «Rhythmic gymnastics grew out of the ideas of Noverre, Delsarte, and Bode ... A Soviet school founded in 1932 combined these teachings, and the first c»  ||  [q] 1984 LA 첫 올림픽 · 로리 펑 첫 금 · 동구권 보이콧 <https://en.wikipedia.org/wiki/Lori_Fung> «the first gymnast to win an Olympic gold medal in rhythmic gymnastics ... the Eastern-led boycott meant the top gymnasts were absent from the competit»  ||  [e] 1996 단체전 <https://en.wikipedia.org/wiki/Rhythmic_gymnastics> «The group competition was added to the 1996 Summer Olympics in Atlanta.»
+dbCheck(GEN): 리듬체조 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: false (재채점 결과 4~5 면 TRUE)
+
+### S2-21  [sports/L2:combat-athletics/동계 종목]  method=나 hobby=장비
+Q: 1913년 노르웨이의 페테르 외스트뷔는 끈적한 '클리스터'로 특허를 냈습니다. 국제스키연맹은 환경에 오래 남는 과불화화합물 때문에 불소가 든 이것을 대회에서 쓰지 못하게 했는데, 이것은?
+A: 왁스   변형: 스키 왁스   variantCheck(GEN): en.wikipedia 'Ski wax' · 한국 스키 용품 표기 '스키 왁스'(질문의 '스키'와 겹치지만 같은 대상의 흔한 이름)
+E: 1673년 요하네스 셰퍼의 책은 스키에 송진 피치와 로진을 바르라고 적어, 이것을 다룬 가장 오랜 기록으로 꼽힙니다.
+H: 1946년 스웨덴에서 세워진 스윅스는 이것을 종류마다 색으로 나눠 팔았고, 그 방식을 업계 전체가 따랐다.   hintBasis=web   hintSources: https://en.wikipedia.org/wiki/Swix   hintNote: The company was founded in Sweden in 1946 by Börje Gabrielsson ... The wax was colour-coded according to type, a practice that has since been adopted by the entire ski wax industry.
+REWRITE(고친 질문): before Q: 1673년 요하네스 셰퍼의 책은 스키에 송진 피치와 로진을 바르라고 적어, 이것을 다룬 가장 오랜 기록으로 꼽힙니다. 국제스키연맹은 환경에 오래 남는 과불화화합물 때문에 불소가 든 이것을 대회에서 쓰지 못하게 했는데, 이것은? | before E: 1913년 노르웨이의 페테르 외스트뷔는 끈적한 '클리스터'로 특허를 냈습니다. | addedCue(GEN): 1913년 외스트뷔의 '클리스터' 특허
+facts: [e] 1673 셰퍼 · 송진 피치와 로진 <https://en.wikipedia.org/wiki/Ski_wax> «Johannes Scheffer's 1673 book as likely the first recorded ski-wax instructions. He advised skiers to use pine tar pitch and rosin.»  ||  [q] FIS 불소 왁스 금지 · PFAS 환경 잔류 <https://en.wikipedia.org/wiki/Ski_wax> «the FIS ban applies in all competitive ski disciplines ... PFASs in ski wax are heat resistant, chemically and biologically stable, and thus environme»  ||  [q] 1913 외스트뷔 클리스터 특허 <https://en.wikipedia.org/wiki/Ski_wax> «Norwegian Peter Østbye patented klister in 1913.»
+dbCheck(GEN): 왁스 · 스키 왁스 new
+warn: assert=[] assertHint=[] frag=[] hint=[]
+webOpen: TRUE (고친 질문(새 단서 사실))
