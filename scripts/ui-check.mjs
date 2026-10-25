@@ -3852,6 +3852,76 @@ async function r067TypingFlow(browser) {
     H.close();
   }
 }
+/** ★ R067 C — 소리 기록: 미니게임이 시작될 때 배경음악이 바로 미니게임 곡으로 바뀌나(연습 1판 · 미니게임만 첫 판 · 퀴즈 판 첫 미니게임) */
+const R067_SOUND = (since) => `JSON.stringify((window.__qwSoundLog ?? []).filter((e) => e.t >= ${since} && /^(music|bgm):/.test(e.id)).map((e) => ({ t: e.t - ${since}, id: e.id, state: e.state })))`;
+async function r067BgmAt(H, label) {
+  // 시작 직전 기준 시각 · intro 가 보인 뒤 1초까지의 음악 기록
+  const t0 = await H.evaluate('Math.round(performance.now())');
+  const seen = await H.waitFor("document.querySelector('.mg-card') !== null", 240000).catch(() => false);
+  const tIntro = await H.evaluate('Math.round(performance.now())');
+  const phase = await H.evaluate("document.querySelector('.mg-card')?.dataset.phase ?? ''");
+  await sleep(1000);
+  const log = JSON.parse(await H.evaluate(R067_SOUND(t0)));
+  const audio = await H.evaluate('document.documentElement.dataset.audio ?? "none"');
+  const tail = JSON.parse(await H.evaluate("JSON.stringify((window.__qwSoundLog ?? []).filter((e) => /^(music|bgm):/.test(e.id)).slice(-6).map((e) => e.id + '@' + e.t))"));
+  const row = { label, seen, phase, introAt: tIntro - t0, audio, log, tail };
+  r067BgmFlow.rows.push(row);
+  const first = log.find((e) => e.id === 'bgm:minigame');
+  record(`★★★ R067 C BGM ${label} — 미니게임 화면이 뜬 뒤 1초 안에 bgm:minigame(실제로 튼다)`, seen && !!first && first.t <= tIntro - t0 + 1000, JSON.stringify(row));
+}
+async function r067BgmFlow(browser) {
+  r067BgmFlow.rows = [];
+  // ① 연습 1판(로비)
+  const H = await newPage(browser, 'U-bgm', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'ubg', '소리방장');
+  await createRoom(H, 'R067 소리');
+  await realClick(H, '.stage');
+  await sleep(1500);
+  await realClick(H, '#minigame-pick-btn');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 3000);
+  const startP = r067BgmAt(H, '① 연습 1판');
+  await pickCard(H, 'tap');
+  await startP;
+  await H.waitFor("document.querySelector('.mg-card') === null", 240000).catch(() => false);
+  await sleep(1500);
+  // ② 미니게임만 첫 판
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(300);
+  await selectMinigames(H, ['tap', 'typing']);
+  await sleep(300);
+  const p2 = r067BgmAt(H, '② 미니게임만 첫 판');
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await p2;
+  H.close();
+  // ③ 퀴즈 판 첫 미니게임(5문제 → 3번 뒤) — 방장이 문제를 넘겨 빨리
+  const Q = await newPage(browser, 'U-bgm3', true);
+  await Q.setViewport(1536, 864);
+  await signUp(Q, 'ubq', '소리퀴즈');
+  await createRoom(Q, 'R067 소리 퀴즈');
+  await realClick(Q, '.stage');
+  await setQuestionCount(Q, 5);
+  await Q.evaluate("(() => { const c = document.querySelector('.mg-check input'); if (c && !c.checked) c.click(); })()");
+  await sleep(500);
+  await selectMinigames(Q, ['tap']);
+  await sleep(300);
+  const p3 = r067BgmAt(Q, '③ 퀴즈 판 첫 미니게임');
+  await Q.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  for (let i = 0; i < 3; i += 1) {
+    const ok = await Q.waitFor("[...document.querySelectorAll('.host-tools button')].some((b) => b.innerText.includes('방장'))", 60000).catch(() => false);
+    if (!ok) break;
+    await sleep(400);
+    await Q.evaluate("[...document.querySelectorAll('.host-tools button')].find((b) => b.innerText.includes('방장'))?.click()");
+    await sleep(400);
+    await Q.evaluate("[...document.querySelectorAll('button')].filter((b) => !b.classList.contains('skip-btn') && b.innerText.trim() === '넘기기').pop()?.click()");
+    await Q.waitFor("![...document.querySelectorAll('.host-tools button')].some((b) => b.innerText.includes('방장'))", 20000).catch(() => false);
+  }
+  await p3;
+  Q.close();
+  writeFileSync(path.join(ROOT, 'docs', 'design', 'r067', 'bgm-log.json'), JSON.stringify(r067BgmFlow.rows, null, 1));
+}
 function v067NoDots(all) {
   return Object.values(all).every((rows) => Object.values(rows).every((x) => x.dots === 0));
 }
@@ -3861,6 +3931,7 @@ async function r067Flow(browser) {
   await signUp(L, 'ul', '실험실');
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'cake') await r067CakeFlow(L);
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'typing') await r067TypingFlow(browser);
+  if (!process.env.R067_ONLY || process.env.R067_ONLY === 'bgm') await r067BgmFlow(browser);
   await touchDevice(L, 1536, 864, false);
   await L.setViewport(1536, 864);
 }

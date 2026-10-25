@@ -631,13 +631,25 @@ const MINIGAME_TRACK: Track = {
 };
 export type MusicMode = 'normal' | 'minigame' | 'quiet';
 let musicMode: MusicMode = 'normal';
-/** 미니게임이 부른다 — 바뀔 때만 다시 튼다 */
+/**
+ * 미니게임이 부른다 — 바뀔 때만 다시 튼다.
+ * ★ R067 (D-298 · 찬종 "연습 때 시작 브금이 바로 안 바뀌어") — 오디오가 잠들어 있으면(suspended — 탭 복귀 · 다른 앱 소리 뒤 등)
+ *   옛 코드는 옛 곡만 멈추고 새 곡을 못 틀어 **다음 손짓까지 조용**했다 → 깨워 본 뒤(사용자 동작 뒤라 허용) 새 곡을 튼다.
+ */
 export function setMusicMode(mode: MusicMode): void {
   if (musicMode === mode) return;
   musicMode = mode;
-  logSound(`music:${mode}`, true);
+  logSound(`music:${mode}`, true, ctx?.state ?? 'none');
   stopBgm();
-  if (prefs.bgmOn) startBgm();
+  if (!prefs.bgmOn) return;
+  if (ctx && ctx.state !== 'running') {
+    void ctx.resume().then(
+      () => startBgm(),
+      () => undefined,
+    );
+    return;
+  }
+  startBgm();
 }
 function trackOf(id: string): Track {
   return id === 'minigame' ? MINIGAME_TRACK : TRACKS[id as BgmId] ?? TRACKS.bounce;

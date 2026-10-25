@@ -138,7 +138,15 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         break;
     }
   }, [phaseKey, view.phase, view.key]);
-  useEffect(() => () => setMusicMode('normal'), []);
+  // ★ R067 (D-298) — 떼어질 때 원래 음악으로 · 단계 기억도 지운다(다시 붙으면 지금 단계의 음악을 다시 건다 —
+  //   옛 코드는 기억이 남아 다시 붙어도 건너뛰어 'normal' 인 채였다: 개발 모드 StrictMode 의 붙였다 떼기가 바로 그 꼴)
+  useEffect(
+    () => () => {
+      lastPhase.current = null;
+      setMusicMode('normal');
+    },
+    [],
+  );
 
   const nameOf = (id: string) => view.participants.find((p) => p.accountId === id) ?? players.find((p) => p.accountId === id);
   const roundNo = view.roundIndex + 1;
