@@ -1,0 +1,2377 @@
+{
+ "round": "G020",
+ "at": "2026-10-25T06:04:21.412Z",
+ "note": "G020 A 되돌리기 파일 — rows[].before 가 쓰기 전 값(맨 위 머리글 참고) · notTaken 은 받지 않은 제안과 사유 · reports 는 note 에 \"G020 고침\" 을 덧붙인 app_reports.id(되돌리기 = 그 꼬리 지우기)",
+ "counts": {
+  "decisions": 133,
+  "todo": 126,
+  "deactivate": 4,
+  "done": 0,
+  "skipped": 1,
+  "rows": 174,
+  "notTaken": 12,
+  "reports": 4
+ },
+ "byField": {
+  "CV-62": {
+   "question_text": 2,
+   "explanation": 1,
+   "general_hint": 1
+  },
+  "제보#24": {
+   "question_text": 1
+  },
+  "제보#20": {
+   "question_text": 1
+  },
+  "CV-60": {
+   "question_text": 12,
+   "explanation": 2,
+   "general_hint": 1
+  },
+  "CV-66": {
+   "general_hint": 1,
+   "variant-remove": 1
+  },
+  "제보#23": {
+   "question_text": 1
+  },
+  "CV-65": {
+   "general_hint": 3
+  },
+  "제보#2": {
+   "question_text": 1,
+   "display_answer": 1,
+   "variant-remove": 2,
+   "variant-add": 1
+  },
+  "CV-64": {
+   "variant-add": 59,
+   "general_hint": 47,
+   "question_text": 14,
+   "deactivate": 2,
+   "explanation": 3
+  },
+  "CV-61": {
+   "general_hint": 5,
+   "deactivate": 2,
+   "variant-add": 8
+  },
+  "CV-60 + CV-64": {
+   "question_text": 1,
+   "general_hint": 1
+  }
+ },
+ "reports": [
+  24,
+  20,
+  23,
+  2
+ ],
+ "skipped": [
+  "5240: 반영할 제안 없음(proposal 비어 있음 · 변형은 이미 있음)"
+ ],
+ "rows": [
+  {
+   "id": 666,
+   "cv": "CV-62",
+   "field": "question_text",
+   "before": "교통 표지판은 대부분 원이나 삼각형, 사각형인데 우리나라에서는 딱 하나만 팔각형입니다. 뒤쪽에서 보거나 어두울 때도 모양만으로 알아보도록 만든 이 표지는?",
+   "after": "교통 표지판은 대개 원이나 삼각형, 사각형인데 이 표지는 팔각형입니다. 뒤쪽에서 보거나 어두울 때도 모양만으로 알아보도록 만든 이 표지는?",
+   "why": "CV-62 V020 unverified soften — 정지 표지가 팔각형인 것은 확인, '딱 하나만'은 법령(별표 6)을 못 열어 단정 불가 — 낮추면 안전",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/교통_표지",
+    "https://en.wikipedia.org/wiki/Stop_sign",
+    "https://en.wikipedia.org/wiki/Road_signs_in_South_Korea"
+   ]
+  },
+  {
+   "id": 841,
+   "cv": "제보#24",
+   "field": "question_text",
+   "before": "금속이 전자를 내주고 비금속이 그것을 받아 서로 반대 전하를 띠면서 끌어당기는 결합으로, 소금이 대표적인 것은?",
+   "after": "금속 원자는 전자를 내주고, 비금속 원자는 그 전자를 받습니다. 그러면 둘은 서로 반대 전하를 띠어 끌어당깁니다. 소금(염화나트륨)이 대표인 이 결합은?",
+   "why": "찬종 제보 #24(주어 둘) — 19 §8-3 고침 그대로",
+   "sources": null
+  },
+  {
+   "id": 1036,
+   "cv": "CV-62",
+   "field": "question_text",
+   "before": "일이 잇달아 거듭 일어나거나 물건이 겹겹이 쌓이는 모양을 가리키는 순우리말 부사로, '경사가 ○○○○ 겹쳤다'처럼 쓰는 것은?",
+   "after": "일이 잇달아 거듭 일어나거나 물건이 겹겹이 쌓이는 모양을 가리키는 순우리말 부사는?",
+   "why": "CV-62 V020 unverified drop-sentence — 뜻풀이는 표준국어대사전과 일치하나 '경사가 ○○○○ 겹쳤다' 용례는 사전 용례가 아니라 두 번째 출처로 못 닫음",
+   "sources": [
+    "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=곰비임비",
+    "https://opendict.korean.go.kr/dictionary/view?sense_no=0&query=곰비임비"
+   ]
+  },
+  {
+   "id": 1531,
+   "cv": "제보#20",
+   "field": "question_text",
+   "before": "앞선 성부가 낸 선율을 뒤의 성부가 시차를 두고 그대로 따라가는 형식으로, 돌림노래도 여기에 속하는 것은?",
+   "after": "한 성부가 먼저 선율을 시작합니다. 조금 뒤 다른 성부가 같은 선율을 그대로 따라 부릅니다. 돌림노래도 여기에 속하는 이 음악 형식은?",
+   "why": "찬종 제보 #20(주어 둘) — 19 §8-2 ②③ 한 문장에 정보 하나",
+   "sources": null
+  },
+  {
+   "id": 1819,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "전라남도의 한 섬에서 내려온 우리나라 고유 품종으로, 천연기념물로 지정돼 보호받는 개는?",
+   "after": "남서해안의 한 섬에서 내려온 우리나라 고유 품종으로, 천연기념물로 지정돼 보호받는 개는?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 2051,
+   "cv": "CV-66",
+   "field": "general_hint",
+   "before": null,
+   "after": "우주왕복선은 이 열을 견디려고 기체 아래쪽에 검은 단열 타일을 붙였다.",
+   "beforeVersion": null,
+   "why": "CV-66 판정자 제안 힌트(문서 확인: HRSI 검은 타일 · 기체 아래쪽) · 변형 압축열 빼기(질문이 압축을 말해 쉬운 단서) · 난이도 그대로(v2)",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Space_Shuttle_thermal_protection_system"
+   ]
+  },
+  {
+   "id": 2051,
+   "cv": "CV-66",
+   "field": "question_answers",
+   "before": "압축열",
+   "after": null,
+   "why": "CV-66 판정자 제안 힌트(문서 확인: HRSI 검은 타일 · 기체 아래쪽) · 변형 압축열 빼기(질문이 압축을 말해 쉬운 단서) · 난이도 그대로(v2)"
+  },
+  {
+   "id": 2122,
+   "cv": "제보#23",
+   "field": "question_text",
+   "before": "한 생태계에 사는 생물 종류가 얼마나 다양한지를 가리키는 말로, 높을수록 교란에 잘 버틴다고 보는 것은?",
+   "after": "한 숲이나 바다에 얼마나 여러 종류의 생물이 사는지를 나타내는 말이 있습니다. 이 값이 높은 생태계일수록 가뭄이나 병 같은 충격에 잘 버틴다고 봅니다. 이 말은?",
+   "why": "찬종 제보 #23(불친절함) — 19 §8-3 고침 그대로",
+   "sources": null
+  },
+  {
+   "id": 2137,
+   "cv": "CV-62",
+   "field": "explanation",
+   "before": "광 패에는 헤이안 시대의 서예가 오노노 미치카제가 그려져 있습니다.",
+   "after": "비광 패에는 헤이안 시대의 서예가 오노노 미치카제(오노노 도후)가 그려져 있습니다.",
+   "why": "CV-62 V020 unverified fix-sentence — 세 출처가 비광 인물=헤이안 서예가 오노노 미치카제(도후)로 일치, 한국 화투는 갓 모양만 바꿨다고 해 '광 패'를 '비광'으로 정확히 하면 안전",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hanafuda",
+    "https://maily.so/pepper.note/posts/8do7pdqpogq",
+    "https://sateconomy.co.kr/news/view/179586774498984"
+   ]
+  },
+  {
+   "id": 2228,
+   "cv": "CV-65",
+   "field": "general_hint",
+   "before": "1767년 프리스틀리가 양조장 발효 통 위의 기체를 물에 녹이는 법을 우연히 알아냈다.",
+   "after": null,
+   "beforeVersion": "hint-v5",
+   "why": "CV-65 (a) H9 ① 정답 뜻풀이(발효 통 위 기체를 물에 녹임 = 탄산) · 대체 사실 없음 → 비움(찬종 결정)",
+   "sources": null
+  },
+  {
+   "id": 2347,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "갈대밭과 철새로 알려져 람사르 습지로 등록된, 전라남도의 연안 습지는?",
+   "after": "갈대밭과 철새로 알려져 람사르 습지로 등록된, 남해안의 연안 습지는?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 2411,
+   "cv": "제보#2",
+   "field": "question_text",
+   "before": "다리 상판에 일부러 틈을 두고 톱니 모양 장치를 넣는 것은, 온도에 따라 구조물이 어떻게 되기 때문입니까?",
+   "after": "다리 상판에는 일부러 틈을 두고 톱니 모양 이음 장치를 넣습니다. 여름 더위에 다리가 늘어나도 서로 밀어 뒤틀리지 않게 하려는 것입니다. 온도가 오르면 물체의 길이나 부피가 커지는 이 현상은?",
+   "why": "찬종 제보 #2(정답이 단답이 아님) — 단답 꼴로(…현상은? · 열팽창)",
+   "sources": null
+  },
+  {
+   "id": 2411,
+   "cv": "제보#2",
+   "field": "display_answer",
+   "before": "늘어나고 줄어든다",
+   "after": "열팽창",
+   "why": "찬종 제보 #2(정답이 단답이 아님) — 단답 꼴로(…현상은? · 열팽창)",
+   "sources": null
+  },
+  {
+   "id": 2411,
+   "cv": "제보#2",
+   "field": "question_answers",
+   "before": "팽창과 수축",
+   "after": null,
+   "why": "찬종 제보 #2(정답이 단답이 아님) — 단답 꼴로(…현상은? · 열팽창)"
+  },
+  {
+   "id": 2411,
+   "cv": "제보#2",
+   "field": "question_answers",
+   "before": "열팽창",
+   "after": null,
+   "why": "찬종 제보 #2(정답이 단답이 아님) — 단답 꼴로(…현상은? · 열팽창)"
+  },
+  {
+   "id": 2411,
+   "cv": "제보#2",
+   "field": "question_answers",
+   "before": null,
+   "after": "열팽창 현상",
+   "why": "찬종 제보 #2(정답이 단답이 아님) — 단답 꼴로(…현상은? · 열팽창)",
+   "sources": null
+  },
+  {
+   "id": 2953,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "조기를 소금에 절여 말린 것으로, 전남 영광 법성포의 것이 이름난 특산물은?",
+   "after": "조기를 소금에 절여 말린 것으로, 영광 법성포의 것이 이름난 특산물은?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 2954,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "산비탈에 계단처럼 층층이 차밭이 펼쳐져 있는, 녹차로 이름난 전라남도의 군은?",
+   "after": "산비탈에 계단처럼 층층이 차밭이 펼쳐져 있는, 녹차로 이름난 남해안의 군은?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 3685,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "전라남도 보성의 벌교를 주요 무대로 삼은 대하소설은?",
+   "after": "보성의 벌교를 주요 무대로 삼은 대하소설은?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 3811,
+   "cv": "CV-62",
+   "field": "general_hint",
+   "before": "피고 진 뒤에는 물뿌리개 꼭지처럼 생긴 송이에 씨가 10~30개쯤 박힌다.",
+   "after": "피고 진 뒤에는 열매인 연밥이 맺히는데, 씨껍질이 매우 단단해 수백 년 뒤에야 싹이 트기도 한다.",
+   "beforeVersion": "hint-v3+v006",
+   "why": "CV-62 V020 unverified drop-sentence — 연밥당 씨 10~30개는 연 문서 어디에도 없음 · 열매 이름과 단단한 껍질만 확인",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/아라홍련",
+    "https://ko.wikipedia.org/wiki/연꽃"
+   ]
+  },
+  {
+   "id": 3866,
+   "cv": "CV-65",
+   "field": "general_hint",
+   "before": "흠 없는 한 살배기 수컷 어린양을 골라 나흘쯤 두었다가 잡는 것이 출애굽기의 규정이다.",
+   "after": "이스라엘에서는 이레 동안 지키지만, 이스라엘 밖의 유대인들은 여드레 동안 지킨다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-65 (a) H9 ② 대표 의례(흠 없는 어린양 규정) → 두 번째 줄 사실(지키는 날 수)",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Passover"
+   ]
+  },
+  {
+   "id": 3871,
+   "cv": "CV-60",
+   "field": "explanation",
+   "before": "소태산 박중빈이 전남 영광에서 깨달음을 얻고 연 종교로, 전북 익산에 중앙총부가 있습니다.",
+   "after": "소태산 박중빈이 영광에서 깨달음을 얻고 연 종교로, 익산에 중앙총부가 있습니다.",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 4039,
+   "cv": "CV-65",
+   "field": "general_hint",
+   "before": "처음에는 '아'와 '에' 소리밖에 못 내지만, 요괴를 삼키면 그 목소리로 말하게 된다.",
+   "after": "처음에는 온천장 입구에 서 있는 엑스트라에 가까운 인물이었으나, 존재감이 커져 후반부 이야기가 다시 짜였다고 한다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-65 (a) H9 ② 대표 특징(아·에 소리 · 삼킨 목소리) → 판정자 제안 두 번째 줄 사실",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/가오나시"
+   ]
+  },
+  {
+   "id": 4755,
+   "cv": "CV-60",
+   "field": "explanation",
+   "before": "전남 완도에서 태어났으며, 2002년 뉴올리언스 콤팩 클래식에서 한국인으로는 처음 PGA 투어 정상에 올랐습니다.",
+   "after": "당시 전남 완도에서 태어났으며, 2002년 뉴올리언스 콤팩 클래식에서 한국인으로는 처음 PGA 투어 정상에 올랐습니다.",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 날짜 한정어(당시)",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 4832,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "전라남도 해남 출신의 이 수영 선수는 1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승했습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈는데, 이 선수는 누구일까요?",
+   "after": "옛 전라남도 해남 출신의 이 수영 선수는 1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승했습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈는데, 이 선수는 누구일까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 날짜 한정어(옛)",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 4926,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "경기도와 강원도에서는 '뜨데기', 전라남도에서는 '떠넌죽', 여수와 봉화에서는 '다부렁죽'이라고도 불러 온 밀가루 음식입니다. 표준어로는 무엇이라 할까요?",
+   "after": "경기도와 강원도에서는 '뜨데기', 옛 전라남도 지역에서는 '떠넌죽', 여수와 봉화에서는 '다부렁죽'이라고도 불러 온 밀가루 음식입니다. 표준어로는 무엇이라 할까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 날짜 한정어(옛 · 방언권)",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 4930,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "조선 초 문신 송희경(1376~1446)이 전했다는 이야기가 있는 전라남도의 고기 요리입니다. 이 지역에서는 유배 온 양반들이 요리법을 전했다고 하며, 지금 이름은 1960년대 후반부터 쓰이기 시작했습니다. 이 요리는 무엇일까요?",
+   "after": "조선 초 문신 송희경(1376~1446)이 전했다는 이야기가 있는 호남의 고기 요리입니다. 이 지역에서는 유배 온 양반들이 요리법을 전했다고 하며, 지금 이름은 1960년대 후반부터 쓰이기 시작했습니다. 이 요리는 무엇일까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기(호남)",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 4951,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "1946년 호남에서는 처음으로 이 섬에 염전이 조성되었고, 1948년에는 주민들이 힘을 모아 대동염전을 만들었습니다. 이웃한 도초도와 다리로 이어진 전라남도 신안군의 이 섬은 어디일까요?",
+   "after": "1946년 호남에서는 처음으로 이 섬에 염전이 조성되었고, 1948년에는 주민들이 힘을 모아 대동염전을 만들었습니다. 이웃한 도초도와 다리로 이어진 신안군의 이 섬은 어디일까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 5201,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "올드린",
+   "why": "CV-64 V021 g009a/C2-22 — variants: 질문·해설·힌트 사실은 문서와 일치(어머니 Moon · Dr. Rendezvous · 2002 72세 시브럴 · buzzer→Buzz · 1988 법적 이름 · 제미니 12 수중 훈련을 흔히 올드린 공으로). 다만 인명 답 '버즈 올드린' 에 한국에서 짧게 '올드린' 만 치는 경우가 흔",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+    "https://en.wikipedia.org/wiki/Buzz_Aldrin",
+    "https://en.wikipedia.org/wiki/Buzz_Aldrin"
+   ]
+  },
+  {
+   "id": 5227,
+   "cv": "CV-61",
+   "field": "general_hint",
+   "before": "2016년과 2020년 올림픽에서는 한국 여자 골프 대표팀의 감독을 맡았다.",
+   "after": "스물아홉 살이던 2007년 6월 골프 명예의 전당 입회 자격을 채웠다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-61 V020 g009a/S2-09 — famous-one: 질문 사실(블랙울프 런·아마추어라 일요일 우승 상금·월요일 연장·일곱 주 앞서 LPGA 챔피언십)과 해설(92번째 홀=20번째 연장 홀 버디·가장 어린 두 메이저)은 1998 US Women's Open 문서 true(버디 '퍼트' 는 문서에 없어 unverified). 힌트 '2016",
+   "sources": [
+    "https://en.wikipedia.org/wiki/1998_U.S._Women%27s_Open",
+    "https://en.wikipedia.org/wiki/1998_U.S._Women%27s_Open",
+    "https://en.wikipedia.org/wiki/1998_U.S._Women%27s_Open"
+   ]
+  },
+  {
+   "id": 5229,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "거타퍼차",
+   "why": "CV-64 V021 g009a/S2-11 — variants: 질문은 치과 신경치료 재료를 쓰는데 한국 치과에서는 '거타퍼차'로 부르는 것이 학술지(대한치과의사협회지)에서 확인됨 — 변형 누락. 사실(팔라퀴움속 · 구티 골프공 · 해저 케이블 절연 · 근관 충전 · 힌트 브룩스의 구타페르카 지팡이)은 en 위키로 true.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Gutta-percha",
+    "https://en.wikipedia.org/wiki/Gutta-percha",
+    "https://en.wikipedia.org/wiki/Gutta-percha"
+   ]
+  },
+  {
+   "id": 5237,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "운동을 시작한 목적은 살을 빼기 위한 것이었으나, 중학교 3학년이던 2003년 역대 최연소로 국가대표 상비군에 뽑힌 배드민턴 선수입니다. 전남 화순공설운동장에 그의 이름을 딴 체육관이 있는 이 선수는 누구일까요?",
+   "after": "운동을 시작한 목적은 살을 빼기 위한 것이었으나, 중학교 3학년이던 2003년 역대 최연소로 국가대표 상비군에 뽑힌 배드민턴 선수입니다. 화순공설운동장에 그의 이름을 딴 체육관이 있는 이 선수는 누구일까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 5242,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "머드",
+   "why": "CV-64 V021 g009a/S1-06 — variants: 질문이 재료를 묻고 정답 '진흙'은 한국어 번역인데 실제로 야구 팬이 치는 '러빙 머드'·'머드'가 변형에 없다(영문 Rubbing Mud 의 한국 쓰임). 사실(1938 블랙번 · 담뱃물·구두약 · 10파운드 · 델라웨어강 뉴저지 쪽 · 회사)은 en 위키로 true.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+    "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+    "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud"
+   ]
+  },
+  {
+   "id": 5242,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "러빙 머드",
+   "why": "CV-64 V021 g009a/S1-06 — variants: 질문이 재료를 묻고 정답 '진흙'은 한국어 번역인데 실제로 야구 팬이 치는 '러빙 머드'·'머드'가 변형에 없다(영문 Rubbing Mud 의 한국 쓰임). 사실(1938 블랙번 · 담뱃물·구두약 · 10파운드 · 델라웨어강 뉴저지 쪽 · 회사)은 en 위키로 true.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+    "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud",
+    "https://en.wikipedia.org/wiki/Lena_Blackburne_Baseball_Rubbing_Mud"
+   ]
+  },
+  {
+   "id": 5255,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1984년 여름 스승의 집에 내제자로 들어가 1991년 고등학교에 들어갈 때까지 함께 살았다.",
+   "after": "1994년 병역법 시행령이 고쳐진 뒤, 국회의원 105명이 이 기사의 후원회를 만들었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/L2-04 — famous-one: 힌트 '1984년 여름 스승의 집에 내제자로 들어가 1991년까지 함께 살았다' 는 이창호의 가장 유명한 이야기(조훈현 내제자 — 드라마·보도로 널리 알려짐, CV-37 대표 일화)로 질문 없이도 이창호가 바로 나옴(H9 ②). 사실은 ko 문서 원문과 일치. 두 번째 줄 사실(병역법 ",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/이창호_(바둑_기사)",
+    "https://ko.wikipedia.org/wiki/이창호_(바둑_기사)",
+    "https://ko.wikipedia.org/wiki/이창호_(바둑_기사)"
+   ]
+  },
+  {
+   "id": 5259,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "제대로 된 문제가 되려면 처음 주어지는 숫자가 적어도 17개는 있어야 한다고 밝혀졌다.",
+   "after": "2008년 호주에서는 배심원 몇 명이 이 퍼즐을 하느라 증언을 듣지 않아, 100만 호주 달러가 넘게 든 마약 재판이 중단되었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/L2-10 — famous-one: 힌트 '처음 주어지는 숫자가 적어도 17개' 는 스도쿠의 유명한 정리(최소 힌트 17)이면서 '숫자 퍼즐' 범주를 드러내 질문의 '퍼즐 책' 과 엮으면 3-3 범주 단서로 바로 풀림(H9, 15 §3-3) — 힌트만으로도 스도쿠가 떠오르는 대표 사실. 질문의 새 사실(굴드·타임스 200",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sudoku",
+    "https://en.wikipedia.org/wiki/Sudoku",
+    "https://en.wikipedia.org/wiki/Sudoku"
+   ]
+  },
+  {
+   "id": 5269,
+   "cv": "CV-61",
+   "field": "is_active",
+   "before": true,
+   "after": false,
+   "why": "G020 CV-61 — V020 drop — pair-3-3 (g009a/L2-31)"
+  },
+  {
+   "id": 5276,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1874년 소설가 만초니의 1주기에 밀라노 대성당에서 자신의 레퀴엠을 처음 올렸고, 같은 해 상원 의원에 임명되었다.",
+   "after": "1874년 소설가 만초니의 1주기에 자신의 레퀴엠을 처음 올렸고, 같은 해 상원 의원에 임명되었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/A2-02 — h-error: 힌트 '밀라노 대성당에서 레퀴엠을 처음 올렸다' — Verdi 문서는 cathedral 이라 적었으나 Requiem(Verdi) 문서는 '1874-05-22 밀라노 산 마르코 성당'. 장소가 틀려 h-error. 장소를 빼면 성립. 질문(1832 낙방·요양원·묘소)·해설(생전 거절) 문",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Milan_Conservatory",
+    "https://en.wikipedia.org/wiki/Giuseppe_Verdi",
+    "https://en.wikipedia.org/wiki/Milan_Conservatory"
+   ]
+  },
+  {
+   "id": 5277,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "아버지가 여관 주인과 치터 연주자, 정육점 주인으로 일했던 체코 작곡가가 있습니다. 1862년부터 1871년까지 프라하 임시 극장 오케스트라에서 비올라 수석으로 일했는데, 1866년부터 그 오케스트라의 수석 지휘자는 스메타나였습니다. 이 작곡가는 누구일까요?",
+   "after": "아버지가 여관 주인과 치터 연주자, 정육점 주인으로 일했던 체코 작곡가가 있습니다. 1862년부터 1871년까지 프라하 임시 극장 오케스트라에서 비올라 연주자로 일했는데, 1866년부터 그 오케스트라의 수석 지휘자는 스메타나였습니다. 이 작곡가는 누구일까요?",
+   "why": "CV-64 V021 g009a/A2-03 — assertive: 질문 '비올라 수석으로 일했는데' — Dvořák 문서는 'played viola in the orchestra beginning in 1862' 까지만 있고 수석(principal)은 없음(3-2 단정 직책). '비올라 연주자' 로 낮추면 성립. 나머지(아버지 직업·1866 스메타나 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Anton%C3%ADn_Dvo%C5%99%C3%A1k",
+    "https://en.wikipedia.org/wiki/Anton%C3%ADn_Dvo%C5%99%C3%A1k",
+    "https://en.wikipedia.org/wiki/Anton%C3%ADn_Dvo%C5%99%C3%A1k"
+   ]
+  },
+  {
+   "id": 5278,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "한 작곡가는 학생 시절, 세상을 떠난 뱃사람 삼촌의 명함에서 영감을 얻어 자기 이름을 프랑스식으로 쓰기 시작했습니다. 여러 해 동안 매달린 여덟 번째 교향곡을 끝내 불태워 버린 이 작곡가는 누구일까요?",
+   "after": "한 작곡가는 학생 시절, 세상을 떠난 뱃사람 삼촌의 명함에서 영감을 얻어 자기 이름을 프랑스식으로 쓰기 시작했습니다. 여러 해 동안 매달린 여덟 번째 교향곡을 끝내 불태웠다고 전해지는 이 작곡가는 누구일까요?",
+   "why": "CV-64 V021 g009a/A2-04 — assertive: 질문 '여덟 번째 교향곡을 끝내 불태워 버린' — Sibelius 문서는 '원고가 남지 않았고 1945년쯤 파기했을 가능성이 크다' 수준(probably). 3-2 단정어: 소각을 사실로 단정하지 말고 '불태웠다고 전해지는' 으로. 나머지(삼촌 명함 Jean · 1904 아이놀라 · 예",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jean_Sibelius",
+    "https://en.wikipedia.org/wiki/Jean_Sibelius",
+    "https://en.wikipedia.org/wiki/Jean_Sibelius"
+   ]
+  },
+  {
+   "id": 5298,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "수영 고글",
+   "why": "CV-64 V021 g009a/S3-39 — variants: 질문·해설·힌트 사실은 Goggles 문서로 확인(웹 1875 따개비·수압·Troppman 1916 은 검색으로 확인)하나, 수영 장비를 한국에서 '수영 고글/수영안경'으로도 일상으로 치는데 변형이 수경뿐이라 누락(§2 B1).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Goggles",
+    "https://en.wikipedia.org/wiki/Goggles",
+    "https://loneswimmer.com/2013/07/01/the-history-of-swimming-goggles/"
+   ]
+  },
+  {
+   "id": 5298,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "수영안경",
+   "why": "CV-64 V021 g009a/S3-39 — variants: 질문·해설·힌트 사실은 Goggles 문서로 확인(웹 1875 따개비·수압·Troppman 1916 은 검색으로 확인)하나, 수영 장비를 한국에서 '수영 고글/수영안경'으로도 일상으로 치는데 변형이 수경뿐이라 누락(§2 B1).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Goggles",
+    "https://en.wikipedia.org/wiki/Goggles",
+    "https://loneswimmer.com/2013/07/01/the-history-of-swimming-goggles/"
+   ]
+  },
+  {
+   "id": 5299,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1912년 스톡홀름 대회 남자 자유형 100m 금메달리스트인 하와이의 듀크 카하나모쿠는 1914년 12월 24일 시드니 프레시워터 해변에서 시범을 보여, 오스트레일리아에 이 스포츠가 자리 잡는 큰 계기를 만들었습니다. 이 스포츠는 무엇일까요?",
+   "after": "1912년 스톡홀름 대회 남자 자유형 100m 금메달리스트인 하와이의 듀크 카하나모쿠는 1914년 12월 24일 시드니 프레시워터 해변에서 시범을 보였습니다. 수영이 아닌 이 스포츠가 오스트레일리아에 자리 잡는 큰 계기가 되었는데, 이 스포츠는 무엇일까요?",
+   "why": "CV-64 V021 g009a/S3-40 — not-unique: 질문에 자유형 금메달리스트라는 수영 단서가 먼저 나오고 묻는 문장은 '이 스포츠는 무엇일까요?' 뿐이라, 묻는 문장만 읽으면 수영을 칠 사람이 있다(3-1 판정 문장). 프레시워터 시범은 서핑 문서로 확인되나 수영이 아님을 한정어로 둬야 한다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Duke_Kahanamoku",
+    "https://en.wikipedia.org/wiki/Duke_Kahanamoku"
+   ]
+  },
+  {
+   "id": 5299,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "서프",
+   "why": "CV-64 V021 g009a/S3-40 — not-unique: 질문에 자유형 금메달리스트라는 수영 단서가 먼저 나오고 묻는 문장은 '이 스포츠는 무엇일까요?' 뿐이라, 묻는 문장만 읽으면 수영을 칠 사람이 있다(3-1 판정 문장). 프레시워터 시범은 서핑 문서로 확인되나 수영이 아님을 한정어로 둬야 한다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Duke_Kahanamoku",
+    "https://en.wikipedia.org/wiki/Duke_Kahanamoku"
+   ]
+  },
+  {
+   "id": 5309,
+   "cv": "CV-61",
+   "field": "general_hint",
+   "before": "1973년 버전 4에서 핵심을 C 언어로 다시 썼고, 지금 그 상표는 표준 단체 오픈 그룹이 갖고 있다.",
+   "after": "초기에 문서 작성 기능이 붙은 데는 이 연구소 특허 부서의 필요가 있었다고 한다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-61 V020 g009a/C2-14 — famous-one: 질문·해설 사실은 문서와 일치(멀틱스 1969 철수, PDP-7 스페이스 트래블, 커니핸 주장, 1970 PDP-11). 힌트 '1973 버전 4 에서 C 로 다시 썼다'는 유닉스의 가장 유명한 사실 하나(CV-05 ②)라 질문 없이도 답이 나옴 → fix. 오픈 그룹 상표 소유는 문서",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Multics",
+    "https://en.wikipedia.org/wiki/History_of_Unix",
+    "https://en.wikipedia.org/wiki/History_of_Unix"
+   ]
+  },
+  {
+   "id": 5313,
+   "cv": "CV-64",
+   "field": "is_active",
+   "before": true,
+   "after": false,
+   "why": "G020 CV-64 — V021 drop — variants (g009a/L1-28)"
+  },
+  {
+   "id": 5318,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "이 번호는 1976년 유럽 우편전기통신 주관청 회의(CEPT)의 권고로 처음 유럽 공통 번호로 표준화되었다.",
+   "after": "나라에 따라 이 번호로 건 전화는 이동통신망이 그 나라의 긴급 번호로 돌려 연결해 주기도 한다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/L1-33 — famous-one·question-repeat: 힌트 '1976 CEPT 권고로 처음 유럽 공통 번호로 표준화' 는 질문의 '유럽 공통 긴급 전화번호가 된 번호' 를 연도만 바꿔 되풀이(H3)하고, 유럽 공통 긴급번호라는 정체 자체라 힌트만 읽고 112 가 나옴(H9/CV-11). en 112 문서로 사실은 true. 새 사실로 교체",
+   "sources": [
+    "https://en.wikipedia.org/wiki/112_(emergency_telephone_number)",
+    "https://en.wikipedia.org/wiki/112_(emergency_telephone_number)",
+    "https://en.wikipedia.org/wiki/112_(emergency_telephone_number)"
+   ]
+  },
+  {
+   "id": 5323,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1957년 한 마을의 마지막 양조장 '톰신'이 문을 닫자, 그 옆에서 자라 가끔 양조를 돕던 우유 배달부 피에르 셀리스가 자기 집 건초 다락에 '드 클라위스' 양조장을 차렸습니다. 1985년 양조장에 불이 나자 벨기에에서 가장 큰 양조 회사 인터브루가 재건 자금을 빌려주었는데, 셀리스가 되살린 이 맥주는 무엇일까요?",
+   "after": "1957년 한 마을의 마지막 양조장 '톰신'이 문을 닫았습니다. 1967년 그 옆에서 자라 가끔 양조를 돕던 우유 배달부 피에르 셀리스가 자기 집 건초 다락에 '드 클라위스' 양조장을 차렸습니다. 1985년 양조장에 불이 나자 벨기에에서 가장 큰 양조 회사 인터브루가 재건 자금을 빌려주었는데, 셀리스가 되살린 이 맥주는 무엇일까요?",
+   "why": "CV-64 V021 g009a/L1-35 — fact-error·assertive: en Hoegaarden 원문: 톰신 폐업은 1957, 우유 배달부 셀리스가 드 클라위스를 연 것은 1967 — 질문은 '1957년 … 톰신이 문을 닫자 … 차렸습니다' 로 이어 붙여 10년 간격을 지운다(3-2 사실의 단정). 두 연도를 나눠 적는 것으로 해결(길이 186자, 200 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hoegaarden_Brewery",
+    "https://en.wikipedia.org/wiki/Hoegaarden_Brewery",
+    "https://en.wikipedia.org/wiki/Hoegaarden_Brewery"
+   ]
+  },
+  {
+   "id": 5330,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "NYSE",
+   "why": "CV-64 V021 g009a/H2-21 — variants: 사실은 NYSE en 문서와 일치(1914.7.31 휴장·12.12 주식 완전 재개·1863 이름·1903 18 Broad St·1792 버튼우드·1971 비영리·2007 유로넥스트 합병). 그러나 한국에서 흔히 치는 약칭 NYSE 가 변형에 없음(A4).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/New_York_Stock_Exchange",
+    "https://en.wikipedia.org/wiki/New_York_Stock_Exchange",
+    "https://en.wikipedia.org/wiki/New_York_Stock_Exchange"
+   ]
+  },
+  {
+   "id": 5336,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "2004년 Evo의 '스트리트 파이터 III 서드 스트라이크' 준결승에서 켄을 고른 한 일본 선수는 체력이 한 칸 남은 채, 저스틴 웡의 춘리가 쏟아붓는 슈퍼 아츠 15타를 하나도 빠짐없이 받아쳐 내고 역전했습니다. 'Evo Moment #37'로 불리는 이 장면의 주인공은 누구일까요?",
+   "after": "2004년 Evo의 '스트리트 파이터 III 서드 스트라이크' 경기에서 켄을 고른 한 일본 선수는 체력이 한 칸 남은 채, 저스틴 웡의 춘리가 쏟아붓는 슈퍼 아츠 15타를 하나도 빠짐없이 받아쳐 내고 역전했습니다. 'Evo Moment #37'로 불리는 이 장면의 주인공은 누구일까요?",
+   "why": "CV-64 V021 g009a/M2-13 — fact-error: 질문의 '준결승' 이 근거 문서 안에서 갈린다(Evo Moment #37 리드 'semifinal' · 같은 문서 배경과 EVO 2004 · 저스틴 웡 · Liquipedia 는 loser's finals). 라운드 이름은 확신 없는 서술이라 3-2 Q3 로 질문에서 뺀다. 나머지 사실",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Evo_Moment_37",
+    "https://en.wikipedia.org/wiki/Evo_Moment_37",
+    "https://en.wikipedia.org/wiki/Evo_Moment_37"
+   ]
+  },
+  {
+   "id": 5336,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "우메하라",
+   "why": "CV-64 V021 g009a/M2-13 — fact-error: 질문의 '준결승' 이 근거 문서 안에서 갈린다(Evo Moment #37 리드 'semifinal' · 같은 문서 배경과 EVO 2004 · 저스틴 웡 · Liquipedia 는 loser's finals). 라운드 이름은 확신 없는 서술이라 3-2 Q3 로 질문에서 뺀다. 나머지 사실",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Evo_Moment_37",
+    "https://en.wikipedia.org/wiki/Evo_Moment_37",
+    "https://en.wikipedia.org/wiki/Evo_Moment_37"
+   ]
+  },
+  {
+   "id": 5342,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1984년 옵서버지는 기차역 승강장에서 지나가는 열차를 적던 '트레인스포터'들이 흔히 입던 이 옷을 그런 무리의 대명사로 썼다.",
+   "after": "영국에서는 철도 애호가를 '트레인스포터' 또는 이 옷 이름으로 부르기도 한다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/L2-21 — h-error: 질문·해설은 en Anorak 원문과 일치(annoraaq, 1924 영어, 1959 보그, 영국 속어, 카리부·물범 가죽, 물고기 기름 정기 도포). 그러나 힌트 '1984년 옵서버가 트레인스포터들이 입던 이 옷을 그런 무리의 대명사로 썼다' 는 Anorak 문서가 '1984 옵서버가",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Anorak",
+    "https://en.wikipedia.org/wiki/Anorak",
+    "https://en.wikipedia.org/wiki/Anorak"
+   ]
+  },
+  {
+   "id": 5347,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "메리노 양모",
+   "why": "CV-64 V021 g009a/L2-26 — variants: 변형 누락 — 질문이 '털'을 묻는데 한국에서 이 털은 '메리노 울'과 함께 '메리노 양모'로도 흔히 불린다(양모 = 울의 우리말). 변형에 양모 표기가 없어 억울한 오답이 생긴다. 질문·해설·힌트 사실은 en Merino 원문과 일치(루이 16세 1786 366마리 열 곳 카냐다 랑부",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Merino",
+    "https://en.wikipedia.org/wiki/Merino",
+    "https://en.wikipedia.org/wiki/Merino"
+   ]
+  },
+  {
+   "id": 5367,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1990년 술집 영업이 자정까지로 묶이자, 치킨과 함께 밤참 배달 음식으로 크게 퍼졌다.",
+   "after": "1968년 정부가 양돈을 축산장려정책에 넣어 돼지 부산물이 늘면서 값싼 재료로 대중화되었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K2-25 — h-error·variants: 힌트의 '치킨과 함께' 가 문서에 없음 — ko 족발(요리)는 1990 심야 영업 자정 제한으로 족발 전문점이 번성·1990년대 배달 전문점 호황만 적음(en 은 아예 없음). 또 한국에서 흔히 치는 '돼지족발' 이 변형에 없음.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jokbal",
+    "https://en.wikipedia.org/wiki/Jokbal",
+    "https://en.wikipedia.org/wiki/Jokbal"
+   ]
+  },
+  {
+   "id": 5367,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "돼지족발",
+   "why": "CV-64 V021 g009a/K2-25 — h-error·variants: 힌트의 '치킨과 함께' 가 문서에 없음 — ko 족발(요리)는 1990 심야 영업 자정 제한으로 족발 전문점이 번성·1990년대 배달 전문점 호황만 적음(en 은 아예 없음). 또 한국에서 흔히 치는 '돼지족발' 이 변형에 없음.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jokbal",
+    "https://en.wikipedia.org/wiki/Jokbal",
+    "https://en.wikipedia.org/wiki/Jokbal"
+   ]
+  },
+  {
+   "id": 5368,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "양념에 배나 키위, 양파를 갈아 넣어 고기를 연하게 만들기도 한다.",
+   "after": "19세기 『동국세시기』는 10월부터 서울에서 석쇠를 올린 화로에 둘러앉아 구워 먹는 난로회를 소개한다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K2-26 — famous-one: 힌트 '양념에 배·키위·양파를 갈아 넣어 고기를 연하게' 는 불고기의 대표 조리법(정체 꼴)이라 질문 없이도 불고기로 닿음(H9 ② 대표 쓰임). 3-3 경계: 질문의 '한국 고기 요리' 가 1회차 #4924 의 '오늘날의 고기 요리' 와 같은 갈래 단서이나, 방언 유래·1961 영어 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Bulgogi",
+    "https://en.wikipedia.org/wiki/Bulgogi",
+    "https://en.wikipedia.org/wiki/Bulgogi"
+   ]
+  },
+  {
+   "id": 5370,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "고추가 들어오기 전에는 초피 · 산초 · 호초 같은 다른 향신료로 담근 것만 기록에 보인다.",
+   "after": "2001년 국제식품규격위원회(코덱스)에 국제 식품으로 등재되었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K2-28 — famous-one: 힌트 '고추가 들어오기 전에는 초피·산초·호초 같은 다른 향신료로 담근 것만 기록에 보인다' 는 김치 역사의 대표 사실이라 질문 없이도 김치로 닿음(H9 ② 정체). 사실은 ko 김치 문서와 일치(원문: 고추가 전래되기 전의 김치는 천초, 산초, 호초에 담그거나).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/김치",
+    "https://ko.wikipedia.org/wiki/김치",
+    "https://ko.wikipedia.org/wiki/김치"
+   ]
+  },
+  {
+   "id": 5371,
+   "cv": "CV-61",
+   "field": "general_hint",
+   "before": "흉년에는 세도가에서 이것을 만들어 남대문 밖에 모인 유랑민들에게 '적선이오' 하며 던져 주었다고 전한다.",
+   "after": "흉년에는 세도가에서 도성 남쪽 성문 밖에 모인 유랑민들에게 이것을 던져 주었다는 이야기가 전한다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-61 V020 g009a/K2-29 — h-error: 질문·해설 사실은 ko 빈대떡 문서 true(역어유해 빙쟈, 영접도감의궤 1634 녹두병, 광복 직후 흔한 길거리 음식, 평안도 3배, 정동 빈대골). 힌트는 문서가 '세도가' 가 남대문 밖 유랑민에게 던져 줬다고 쓰는데 '부잣집' 으로 바꿔 씀 → 사실 어긋남(H5).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/빈대떡",
+    "https://ko.wikipedia.org/wiki/빈대떡",
+    "https://ko.wikipedia.org/wiki/빈대떡"
+   ]
+  },
+  {
+   "id": 5374,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "쥐치포",
+   "why": "CV-64 V021 g009a/K2-33 — variants: ko 쥐포 문서: 1960년대 부산에서 시작해 삼천포·여수로 전파 추정, 1960년대 말 대중화, 남해안 쥐치 대량 어획 — Q·E 일치. 그러나 한국에서 흔히 치는 '쥐치포' 가 변형에 없음.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/쥐포",
+    "https://ko.wikipedia.org/wiki/쥐포"
+   ]
+  },
+  {
+   "id": 5381,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "2000년 개통한 서해대교가 이 시의 포승읍과 충남 당진시 송악읍을 잇는다.",
+   "after": "신라 경덕왕 때 부산현은 진위현으로, 하팔현은 팽성현으로 이름이 바뀌었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K2-02 — famous-one: 힌트 '서해대교가 이 시의 포승읍과 당진 송악읍을 잇는다' 는 평택의 대표 구조물이라 질문 없이도 평택으로 닿음(CV-11 대표 소재 · H9 ②). 사실은 맞음(ko 서해대교: 2000.11.10 개통, 송악읍–포승읍).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/평택시",
+    "https://ko.wikipedia.org/wiki/오산_공군_기지",
+    "https://ko.wikipedia.org/wiki/서해대교"
+   ]
+  },
+  {
+   "id": 5386,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "한국도로공사 등이 옮겨 오면서 남면·농소면 일부가 율곡동으로 갈라져 혁신도시가 들어섰다.",
+   "after": "경부선에서 경북선이 갈라지는 철도 분기점으로, 경북선은 1924년에 개통했다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K2-09 — famous-one: 힌트 '한국도로공사 등이 옮겨 오면서 ... 혁신도시' 는 CV-11 의 '대표 소재 기업' 꼴 — 한국도로공사 본사 이전 혁신도시는 김천으로 바로 닿음. 율곡동 분리 세부가 있어도 앞 절이 정체 역할을 함.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/김천시",
+    "https://ko.wikipedia.org/wiki/김천시",
+    "https://ko.wikipedia.org/wiki/김천시"
+   ]
+  },
+  {
+   "id": 5391,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1592년 순변사 이일은 이곳 북천 강변에서 군사를 조련하다 고니시 유키나가의 군대에 크게 졌다.",
+   "after": "1592년 순변사 이일은 이곳 북천 강변에서 군사를 조련하다 일본군에게 크게 졌다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K2-15 — h-error: 힌트의 '고니시 유키나가의 군대' 를 문서로 닫지 못함(en/ko 상주 전투 요약에 일본군으로만 나옴 — 이일 북천 조련·패배는 확인). 확인 못 한 지휘관 이름을 빼고 일본군으로 고친다. 상주 전투는 대표 사건 경계(CV-11)라 VERIFY 가 한 번 더 볼 것.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/낙동강",
+    "https://ko.wikipedia.org/wiki/상주_상무_축구단",
+    "https://ko.wikipedia.org/wiki/상주시"
+   ]
+  },
+  {
+   "id": 5396,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "1896년 영암·강진·해남·장흥 네 군에 속했던 섬들을 묶어 새로 생긴 이 전남의 군은, 2007년 딸린 섬 하나가 아시아 처음의 슬로시티 인증을 받은 곳 가운데 하나가 되었습니다. 이 군은 어디일까요?",
+   "after": "1896년 영암·강진·해남·장흥 네 군에 속했던 섬들을 묶어 새로 생긴 이 군은, 2007년 딸린 섬 하나가 아시아 처음의 슬로시티 인증을 받은 곳 가운데 하나가 되었습니다. 이 군은 어디일까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 5412,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "실록청 당상관이던 한 대신은 한 사관이 낸 사초에서, 자신이 정희왕후의 상중에 기생을 가까이하고 뇌물을 받았다는 기록을 보았습니다. 이 사초가 문제가 되어 영남 사림이 크게 화를 입은 사화는 무엇일까요?",
+   "after": "실록청 당상관이던 한 대신은 한 사관이 낸 사초에서, 자신이 정희왕후의 상중에 기생을 가까이했다는 기록을 보았습니다. 이 사초가 문제가 되어 영남 사림이 크게 화를 입은 사화는 무엇일까요?",
+   "why": "CV-64 V021 g009a/K1-16 — assertive·fact-error: Q 의 '뇌물을 받았다는 기록' 을 문서로 확인하지 못함 — ko 이극돈 문서는 사초에 적으려 한 것이 정희왕후 국상 중 장흥 기생과 어울렸다는 소문이며 뇌물은 언급하지 않음(Q3 확신 없는 서술은 뺀다).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/이극돈",
+    "https://ko.wikipedia.org/wiki/무오사화",
+    "https://ko.wikipedia.org/wiki/유자광"
+   ]
+  },
+  {
+   "id": 5428,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "조선 때 스님은 신분이 아주 낮아, 어느 쪽 스님이 되든 인생의 끝이라 이런 뜻이 붙었다는 풀이가 있다.",
+   "after": "조선 때 승려들이 두 갈래로 갈려 서로 맞섰고 그 극단적인 모습에서 지금의 뜻이 나왔다는 풀이도 있다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K1-32 — famous-one: 힌트 '스님 신분이 낮아 어느 쪽 스님이 되든 인생의 끝이라 이런 뜻이 붙었다' 는 이판사판의 대표 민간어원이라 질문 없이도 이판사판으로 닿음(H9 ② 대표 일화). 문서(국립국어원 글)도 이 설을 '쉽게 믿기지 않는다' 고 평가해 해설의 '단정할 수 없다' 와 결이 어긋남.",
+   "sources": [
+    "https://www.korean.go.kr/nkview/nknews/200004/21_4.htm",
+    "https://www.korean.go.kr/nkview/nknews/200004/21_4.htm",
+    "https://www.korean.go.kr/nkview/nknews/200004/21_4.htm"
+   ]
+  },
+  {
+   "id": 5429,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1995년 사천군과 합쳐질 때 이 시의 이름을 새 시 이름으로 하자는 의견도 있었지만, 새 이름은 사천시가 되었습니다. 2011년 SBS는 이 지명이 들어간 관용 표현을 방송에 세 차례 썼다가 시민 항의로 사과했는데, 이 옛 시 이름은 무엇일까요?",
+   "after": "1995년 사천군과 합쳐져 지금의 사천시가 되기 전까지 시였던 곳입니다. 2011년 SBS는 이 지명이 들어간 관용 표현을 방송에 썼다가 시민 항의로 사과했는데, 이 옛 시 이름은 무엇일까요?",
+   "why": "CV-64 V021 g009a/K1-33 — assertive: Q 의 '새 시 이름으로 하자는 의견도 있었다' 와 'SBS 가 세 차례 썼다' 를 문서로 확인하지 못함 — ko 삼천포 문서는 SBS 가 2011년 이 표현을 사용했다 사과했다고만 적고 횟수·통합 때 이름 논의는 없음(Q3). 핵심(2011 SBS 사과·1995 통합)은 맞으므로 확인",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/삼천포",
+    "https://ko.wikipedia.org/wiki/삼천포",
+    "https://ko.wikipedia.org/wiki/삼천포"
+   ]
+  },
+  {
+   "id": 5431,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "이 대답을 한 장수는 처형을 앞두고 '토끼를 잡으면 사냥개는 삶아진다'고 한탄했다.",
+   "after": "이 대답을 한 장수는 처형 직전 괴통의 계책을 따르지 않은 것을 후회했다고 『사기』는 전한다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K1-35 — h-error: 힌트 '처형을 앞두고 토끼를 잡으면 사냥개는 삶아진다고 한탄' 은 사기 회음후열전과 어긋남 — 狡兔死良狗亨 은 진(陳)에서 체포될 때 한 말이고(Q 가 말하는 회음후 강등 이전), 처형 직전에는 괴통의 계책을 쓰지 않은 것을 후회했다(吾悔不用蒯通之計).",
+   "sources": [
+    "https://zh.wikisource.org/wiki/史記/卷092",
+    "https://zh.wikisource.org/wiki/史記/卷092",
+    "https://zh.wikisource.org/wiki/史記/卷092"
+   ]
+  },
+  {
+   "id": 5433,
+   "cv": "CV-61",
+   "field": "general_hint",
+   "before": "장해가 홍농의 산속에 숨어 살자 배우려는 이들이 몰려 마을을 이루었고, 사람들은 그의 자를 따 그곳을 '공초시'라 불렀다.",
+   "after": "장해가 홍농의 산속에 숨어 살자 배우려는 이들이 몰려 사는 곳이 장터를 이루었고, 사람들은 그의 자를 따 그곳을 '공초시'라 불렀다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-61 V020 g009a/K1-37 — h-error: 질문(5리 안개 대신 '이것'·배우 도래·피함)과 해설(여러 차례 부름에도 병으로 사양)은 후한서 권36 원문과 일치. 힌트의 '마을을 이루었고' 는 원문 '所居成市'(사는 곳이 시장·장터를 이룸)와 어긋남 → 힌트 사실 정정.",
+   "sources": [
+    "https://zh.wikisource.org/wiki/後漢書/卷36",
+    "https://zh.wikisource.org/wiki/後漢書/卷36",
+    "https://zh.wikisource.org/wiki/後漢書/卷36"
+   ]
+  },
+  {
+   "id": 5435,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "삼인성시호",
+   "why": "CV-64 V021 g009a/K1-39 — variants: 사실은 문서와 일치(방총 한단 인질·전국책 위책·태자 풀려난 뒤 왕을 못 만남). 그러나 같은 고사의 원래 형태 '삼인성시호' 가 변형에 없고 한국 사전·문서가 다른 표기로 올림.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/삼인성호",
+    "https://ko.wikipedia.org/wiki/삼인성호",
+    "https://ko.wikipedia.org/wiki/삼인성호"
+   ]
+  },
+  {
+   "id": 5461,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "이 시를 쓴 시인은 1936년 1월 첫 시집 『사슴』을 자가본으로 펴냈다.",
+   "after": "이 시를 쓴 시인은 1936년 첫 시집 『사슴』을 자가본으로 펴냈다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K3-24 — h-error: 질문·해설은 문서와 일치(ko 길상사: 김영한은 백석이 자야라는 애칭을 붙여 준 인물, 대원각을 법정 스님께 시주; ko 백석: 1938 나와 나타샤와 흰 당나귀). 그러나 힌트의 '1936년 1월'은 열람한 ko 백석 문서가 1936 사슴 자가본까지만 적고 월은 없어 unverifie",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/길상사_(서울)",
+    "https://ko.wikipedia.org/wiki/백석",
+    "https://ko.wikipedia.org/wiki/백석"
+   ]
+  },
+  {
+   "id": 5469,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "뮤직비디오는 공개 하루도 안 돼 조회 수 100만 회를 넘었다.",
+   "after": "가온 디지털 차트에 1위로 데뷔해 3주 동안 1위(연속은 아님)를 했고, 그해 국내 성적이 가장 좋은 싱글이 됐다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/M1-20 — variants·weak: 이 곡은 한국에서 '치어업'으로 치는 사람이 많은데 변형이 없다(영문 곡명이라 B10 로 CHEER UP 만 있음) — 변형 누락. 또 blind 재채점 3 인데 힌트가 없어 H0 로 힌트를 붙여야 한다. 사실(2016.4.25 JYP · Page Two 리드 · 블랙아이드필승 · 멜론",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cheer_Up_(song)",
+    "https://en.wikipedia.org/wiki/Cheer_Up_(song)",
+    "https://en.wikipedia.org/wiki/Cheer_Up_(song)"
+   ]
+  },
+  {
+   "id": 5469,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "치어업",
+   "why": "CV-64 V021 g009a/M1-20 — variants·weak: 이 곡은 한국에서 '치어업'으로 치는 사람이 많은데 변형이 없다(영문 곡명이라 B10 로 CHEER UP 만 있음) — 변형 누락. 또 blind 재채점 3 인데 힌트가 없어 H0 로 힌트를 붙여야 한다. 사실(2016.4.25 JYP · Page Two 리드 · 블랙아이드필승 · 멜론",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cheer_Up_(song)",
+    "https://en.wikipedia.org/wiki/Cheer_Up_(song)",
+    "https://en.wikipedia.org/wiki/Cheer_Up_(song)"
+   ]
+  },
+  {
+   "id": 5480,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "감투",
+   "why": "CV-64 V021 g009a/K3-27 — variants: encykorea 탕건 원문: '탕건은 속칭 감투라고도 하여 …' — 같은 대상의 속칭인데 변형이 비어 있어 '감투'를 친 사람이 오답이 된다(변형 누락, 3-2 별칭은 변형). 질문·해설·힌트 사실은 모두 원문 대조 true(힌트는 jnuri 기사 '이수여 명예 보유자는 처음엔 망건과",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0058851",
+    "https://encykorea.aks.ac.kr/Article/E0058851",
+    "https://www.jnuri.net/mobile/article.html?no=65373"
+   ]
+  },
+  {
+   "id": 5481,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "얼마 전까지도 이 옷을 지니고 입학시험을 보러 가면 합격한다고 해서, 실제로 시험장에 챙겨 가는 사람이 있었습니다. 등에 솔기를 하지 않고 소매를 길게 해 손을 덮도록 지은 이 저고리는 무엇일까요?",
+   "after": "얼마 전까지도 이 옷을 지니고 입학시험을 보러 가면 합격한다고 해서, 실제로 시험장에 챙겨 가는 사람이 있었습니다. 등에 솔기를 하지 않고 소매를 길게 해 손을 덮도록 지은 이 옷은 무엇일까요?",
+   "why": "CV-64 V021 g009a/K3-28 — expose·variants: 질문 끝에 '이 저고리는' 이라고 써 정답 조각 '저고리'(배냇저고리)를 그대로 건넨다(3-2 정답 조각 노출) — 앞 문장에 이미 '이 옷'을 쓰고 있어 '이 옷은'으로 바꿔도 단서는 그대로(입학시험 습속·등 솔기·소매). 변형도 흔한 '배내저고리' 가 빠져 있다. 사실은 encyko",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0021853",
+    "https://encykorea.aks.ac.kr/Article/E0021853",
+    "https://encykorea.aks.ac.kr/Article/E0021853"
+   ]
+  },
+  {
+   "id": 5481,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "배내저고리",
+   "why": "CV-64 V021 g009a/K3-28 — expose·variants: 질문 끝에 '이 저고리는' 이라고 써 정답 조각 '저고리'(배냇저고리)를 그대로 건넨다(3-2 정답 조각 노출) — 앞 문장에 이미 '이 옷'을 쓰고 있어 '이 옷은'으로 바꿔도 단서는 그대로(입학시험 습속·등 솔기·소매). 변형도 흔한 '배내저고리' 가 빠져 있다. 사실은 encyko",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0021853",
+    "https://encykorea.aks.ac.kr/Article/E0021853",
+    "https://encykorea.aks.ac.kr/Article/E0021853"
+   ]
+  },
+  {
+   "id": 5487,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "647년 비담의 난 때 김유신은 허수아비를 달아 띄워, 떨어진 큰 별이 다시 하늘로 오르는 것처럼 꾸몄다고 한다.",
+   "after": "모양과 색깔, 붙인 색종이 무늬에 따라 이름이 백여 가지로 갈린다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/K3-34 — famous-one: 힌트 '647 비담의 난 때 김유신이 허수아비를 달아 띄웠다' 는 연의 가장 유명한 일화(삼국사기 기록 · 한국사 교과) — ko 연날리기 문서 '김유신이 허수아비를 연에 달아 하늘로 오르는 것처럼 보이게' 로 사실은 맞으나 CV-37 대표 일화로 힌트만 읽고 연날리기가 바로 나옴(H9",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0036725",
+    "https://encykorea.aks.ac.kr/Article/E0036725",
+    "https://ko.wikipedia.org/wiki/연날리기"
+   ]
+  },
+  {
+   "id": 5504,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "파인애플 맛과 깔라만시 맛으로도 나온다.",
+   "after": "동아오츠카가 만들며 과즙을 1%만 넣은 과일향 청량음료다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/M1-11 — h-error: 힌트 '파인애플 맛과 깔라만시 맛으로도 나온다' 는 ko 위키(옛 서술)에는 있으나 나무위키에 칼라만시맛은 2021 키위맛 추가 때 단종(4년 만)이라 현재 사실이 아님 — H5 h-error(시간 의존). 질문 사실(1971 · 최초 모델 윤여정 · 1977 윤형주 CM송)은 true",
+   "sources": [
+    "https://namu.wiki/w/오란씨",
+    "https://ko.wikipedia.org/wiki/오란씨",
+    "https://namu.wiki/w/오란씨"
+   ]
+  },
+  {
+   "id": 5529,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "에릭 리델",
+   "why": "CV-64 V021 g009a/S3-04 — variants: 영화 '불의 전차'와 한국 자료에서 이 인물을 '에릭 리델'로도 흔히 적는데 변형은 '리들'뿐이다(한국 쓰임은 이 조각에서 문서로 못 열어 확인은 안 됨 — 검색 요약에 리델 표기가 인용으로 나올 뿐). 사실(톈진 출생 · 1922~23 럭비 7경기 · 1945 산둥 수용소 사망 · 1",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Eric_Liddell",
+    "https://en.wikipedia.org/wiki/Eric_Liddell",
+    "https://en.wikipedia.org/wiki/Eric_Liddell"
+   ]
+  },
+  {
+   "id": 5529,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "리델",
+   "why": "CV-64 V021 g009a/S3-04 — variants: 영화 '불의 전차'와 한국 자료에서 이 인물을 '에릭 리델'로도 흔히 적는데 변형은 '리들'뿐이다(한국 쓰임은 이 조각에서 문서로 못 열어 확인은 안 됨 — 검색 요약에 리델 표기가 인용으로 나올 뿐). 사실(톈진 출생 · 1922~23 럭비 7경기 · 1945 산둥 수용소 사망 · 1",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Eric_Liddell",
+    "https://en.wikipedia.org/wiki/Eric_Liddell",
+    "https://en.wikipedia.org/wiki/Eric_Liddell"
+   ]
+  },
+  {
+   "id": 5530,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "투포환",
+   "why": "CV-64 V021 g009a/S3-05 — variants: 종목 이름을 묻는데 한국에서 일상으로 쓰는 '투포환'이 변형에 없다(포환던지기·포환 던지기는 정규화로 닿음). 사실(2004.8.18 올림피아 고대 경기장 · 원반던지기를 계획했다가 좁고 위험해 변경 · 포환은 고대 올림픽에 없음)은 en 위키로 true.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Athletics_at_the_2004_Summer_Olympics_%E2%80%93_Men%27s_shot_put",
+    "https://en.wikipedia.org/wiki/Athletics_at_the_2004_Summer_Olympics_%E2%80%93_Men%27s_shot_put",
+    "https://en.wikipedia.org/wiki/Athletics_at_the_2004_Summer_Olympics_%E2%80%93_Men%27s_shot_put"
+   ]
+  },
+  {
+   "id": 5561,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "라플라스 악마",
+   "why": "CV-64 V021 g009a/H2-17 — variants: 사실은 ko/en 문서와 일치(나폴레옹 일화는 apocryphal 가능성 문서가 적고 질문이 '전한다' 로 단서 달음). 그러나 정답 '라플라스의 악마' 변형이 비어 있어 '라플라스 악마'(의 뺀 표기)·'라플라스의 도깨비' 를 치면 정규화(공백만 제거)로 오답 — 한국에서 흔한 표기 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Pierre-Simon_Laplace",
+    "https://en.wikipedia.org/wiki/Laplace%27s_demon",
+    "https://en.wikipedia.org/wiki/Laplace%27s_demon"
+   ]
+  },
+  {
+   "id": 5561,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "라플라스의 도깨비",
+   "why": "CV-64 V021 g009a/H2-17 — variants: 사실은 ko/en 문서와 일치(나폴레옹 일화는 apocryphal 가능성 문서가 적고 질문이 '전한다' 로 단서 달음). 그러나 정답 '라플라스의 악마' 변형이 비어 있어 '라플라스 악마'(의 뺀 표기)·'라플라스의 도깨비' 를 치면 정규화(공백만 제거)로 오답 — 한국에서 흔한 표기 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Pierre-Simon_Laplace",
+    "https://en.wikipedia.org/wiki/Laplace%27s_demon",
+    "https://en.wikipedia.org/wiki/Laplace%27s_demon"
+   ]
+  },
+  {
+   "id": 5562,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "러셀 역설",
+   "why": "CV-64 V021 g009a/H2-18 — variants: 사실은 en 문서와 일치(1902 편지·프레게 부록·체르멜로 독립 발견·비트겐슈타인 3.333). 그러나 변형이 비어 '러셀 역설'(의 뺀 표기)·'러셀의 패러독스' 가 오답 처리됨 — 한국에서 흔한 표기 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox",
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox",
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox"
+   ]
+  },
+  {
+   "id": 5562,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "러셀의 패러독스",
+   "why": "CV-64 V021 g009a/H2-18 — variants: 사실은 en 문서와 일치(1902 편지·프레게 부록·체르멜로 독립 발견·비트겐슈타인 3.333). 그러나 변형이 비어 '러셀 역설'(의 뺀 표기)·'러셀의 패러독스' 가 오답 처리됨 — 한국에서 흔한 표기 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox",
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox",
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox"
+   ]
+  },
+  {
+   "id": 5562,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "러셀 패러독스",
+   "why": "CV-64 V021 g009a/H2-18 — variants: 사실은 en 문서와 일치(1902 편지·프레게 부록·체르멜로 독립 발견·비트겐슈타인 3.333). 그러나 변형이 비어 '러셀 역설'(의 뺀 표기)·'러셀의 패러독스' 가 오답 처리됨 — 한국에서 흔한 표기 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox",
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox",
+    "https://en.wikipedia.org/wiki/Russell%27s_paradox"
+   ]
+  },
+  {
+   "id": 5587,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "그가 돌아오자 당 태종이 반기며 여행기를 쓰라고 권했다.",
+   "after": "신라 승려 원측이 이 승려의 제자가 되어 경전 번역단에서 일했다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/H2-13 — famous-one·variants: 힌트 '당 태종이 반기며 여행기를 쓰라고 권했다' 는 현장의 대표 일화(대당서역기 집필)라 질문 없이도 현장·삼장법사로 닿음(H9 famous-one). 또 한국에서 흔한 표기 '현장법사' 가 변형에 없음.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Xuanzang",
+    "https://en.wikipedia.org/wiki/Xuanzang",
+    "https://en.wikipedia.org/wiki/Xuanzang"
+   ]
+  },
+  {
+   "id": 5587,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "현장법사",
+   "why": "CV-64 V021 g009a/H2-13 — famous-one·variants: 힌트 '당 태종이 반기며 여행기를 쓰라고 권했다' 는 현장의 대표 일화(대당서역기 집필)라 질문 없이도 현장·삼장법사로 닿음(H9 famous-one). 또 한국에서 흔한 표기 '현장법사' 가 변형에 없음.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Xuanzang",
+    "https://en.wikipedia.org/wiki/Xuanzang",
+    "https://en.wikipedia.org/wiki/Xuanzang"
+   ]
+  },
+  {
+   "id": 5603,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "피터 브룩은 왕립 셰익스피어 극단 워크숍에서 이 이론을 실험했고, 그 실험이 1966년 '마라/사드' 무대로 이어졌다.",
+   "after": "피터 브룩은 왕립 셰익스피어 극단 워크숍에서 이 이론을 실험했고, 그 실험이 '마라/사드' 무대로 이어졌다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/A1-11 — h-error: 힌트 '그 실험이 1966년 마라/사드 무대로 이어졌다' — Theatre of Cruelty 문서는 1966 production 이라 적었으나 Marat/Sade 문서는 RSC 무대를 1964 번역·공연(영화 1967)으로 적어 서로 어긋남. 연도 단정을 빼면 성립 → fix h-er",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Theatre_of_Cruelty",
+    "https://en.wikipedia.org/wiki/Theatre_of_Cruelty",
+    "https://en.wikipedia.org/wiki/Marat/Sade"
+   ]
+  },
+  {
+   "id": 5620,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "돈가츠",
+   "why": "CV-64 V021 g009a/L1-17 — variants: 변형 누락 — 한국에서 일상으로 치는 '돈가츠'·'돈까츠' 표기가 변형에 없다(현재 돈까스·돈카츠만). 질문·해설·힌트 사실은 ja 돈카츠 문서 원문과 일치(1929 오카치마치 폰치켄 시마다 신지로, 궁내성 대선직, 아들 시마다 다다히코 증언, 1899 렌가테이 포크커틀릿에 생양배추 채",
+   "sources": [
+    "https://ja.wikipedia.org/wiki/とんかつ",
+    "https://ja.wikipedia.org/wiki/とんかつ",
+    "https://en.wikipedia.org/wiki/Katsu_sando"
+   ]
+  },
+  {
+   "id": 5620,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "돈까츠",
+   "why": "CV-64 V021 g009a/L1-17 — variants: 변형 누락 — 한국에서 일상으로 치는 '돈가츠'·'돈까츠' 표기가 변형에 없다(현재 돈까스·돈카츠만). 질문·해설·힌트 사실은 ja 돈카츠 문서 원문과 일치(1929 오카치마치 폰치켄 시마다 신지로, 궁내성 대선직, 아들 시마다 다다히코 증언, 1899 렌가테이 포크커틀릿에 생양배추 채",
+   "sources": [
+    "https://ja.wikipedia.org/wiki/とんかつ",
+    "https://ja.wikipedia.org/wiki/とんかつ",
+    "https://en.wikipedia.org/wiki/Katsu_sando"
+   ]
+  },
+  {
+   "id": 5623,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "냄비에 빵 조각을 빠뜨리면 술 한 잔이나 노래, 또는 눈밭을 알몸으로 뛰는 벌칙을 받는다고 한다.",
+   "after": "19세기 후반까지 이 이름은 치즈를 넣은 달걀 요리를 가리켰다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/L1-20 — famous-one: 힌트 '냄비에 빵 조각을 빠뜨리면 술 한 잔·노래·알몸 눈밭 벌칙' 은 en Fondue 원문대로 사실이지만 퐁듀의 가장 유명한 풍습(대표 쓰임·일화)이라 질문 없이도 퐁듀가 나옴(H9 ②, CV-37). 질문은 원문 대조 true(카클롱 바닥 껍질 la religieuse, 1956 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Fondue",
+    "https://en.wikipedia.org/wiki/Fondue",
+    "https://en.wikipedia.org/wiki/Fondue"
+   ]
+  },
+  {
+   "id": 5652,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "제목은 주인공이 로버트 번스의 시 구절을 잘못 들은 데서 나온 상상에서 왔다.",
+   "after": "1946년 뉴요커는 이 주인공의 90쪽 분량 원고를 받아들였지만 작가가 스스로 거두어들였다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009a/A1-04 — famous-one: 힌트 '제목은 주인공이 번스의 시 구절을 잘못 들은 데서 나온 상상' 은 이 소설의 가장 유명한 대목(홀든의 호밀밭 파수꾼 상상)이자 제목 유래 — H9 ② 대표 일화·① 이름 유래를 질문 없이도 독서층이 바로 답하는 꼴(경계). 두 번째 줄 사실(1946 뉴요커가 받아들인 홀든 원고를",
+   "sources": [
+    "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
+    "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
+    "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye"
+   ]
+  },
+  {
+   "id": 5661,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "토토로",
+   "why": "CV-64 V021 g009b/M2-25 — variants: My Neighbor Totoro 문서로 1988 반딧불이의 묘와 동시 상영·메이가 토토로를 Three Billy Goats Gruff 의 트롤로 여김·토토로는 지브리 마스코트이자 로고·키네마 준보 최우수 작품상(본문 1988, 표 1989) true. 한국에서 일상으로 치는 '토토로'",
+   "sources": [
+    "https://en.wikipedia.org/wiki/My_Neighbor_Totoro",
+    "https://en.wikipedia.org/wiki/My_Neighbor_Totoro",
+    "https://en.wikipedia.org/wiki/My_Neighbor_Totoro"
+   ]
+  },
+  {
+   "id": 5663,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "미야자키와 제작진은 배경 도시를 그리려고 스웨덴 비스뷔 같은 곳을 찾아갔다.",
+   "after": "미야자키는 '말괄량이 삐삐' 영화화를 추진하다 스웨덴 비스뷔를 먼저 찾았고, 그때 찍은 사진을 뒤에 이 영화의 배경 참고로 썼다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/M2-27 — h-error: Kiki's Delivery Service 문서로 가도노 1985 소설·미야자키 제작자→감독 교체·다큐빈 야마토 운수 상표와 처음 반대 true. 그러나 힌트 '배경 도시를 그리려고 비스뷔를 찾아갔다' 는 본문과 어긋남 — 본문은 '미야자키는 원래 연구차 스웨덴에 간 게 아니라' 삐삐 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kiki%27s_Delivery_Service",
+    "https://en.wikipedia.org/wiki/Kiki%27s_Delivery_Service",
+    "https://en.wikipedia.org/wiki/Kiki%27s_Delivery_Service"
+   ]
+  },
+  {
+   "id": 5668,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "31층에는 1929년형 자동차 라디에이터 캡을 본뜬 장식이, 61층에는 독수리 장식이 달려 있다.",
+   "after": "로비 천장에는 에드워드 트럼불이 그린 벽화 '운송과 인간의 노력'이 있다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/A1-15 — famous-one: 힌트 '31층 1929년형 자동차 라디에이터 캡 장식·61층 독수리' 는 Chrysler Building 문서와 일치하나, 자동차 회사 이름의 상징 장식이라 질문 없이 보통 성인이 크라이슬러 빌딩을 바로 떠올림(H9 ② 대표 장식·정체).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chrysler_Building",
+    "https://en.wikipedia.org/wiki/Chrysler_Building",
+    "https://en.wikipedia.org/wiki/Chrysler_Building"
+   ]
+  },
+  {
+   "id": 5676,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "같은 해 스키아파렐리는 이 행성 표면의 줄무늬들을 이탈리아어로 '카날리'라 불렀다.",
+   "after": "그 두 위성의 이름은 영국 이튼 칼리지의 과학 교사 헨리 매든이 『일리아스』에서 따 제안했다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/C1-07 — famous-one: 힌트 '1877 스키아파렐리가 줄무늬를 카날리로 불렀다' 는 Giovanni Schiaparelli 문서와 일치하나 화성 운하설이라는 가장 유명한 일화라 질문 없이 보통 성인이 화성을 바로 말함(H9 ② 대표 일화).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Asaph_Hall",
+    "https://en.wikipedia.org/wiki/Stickney_(crater)",
+    "https://en.wikipedia.org/wiki/Stickney_(crater)"
+   ]
+  },
+  {
+   "id": 5688,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1968년 3월 윌트 체임벌린은 한 경기에서 53점·32리바운드·14어시스트를 올렸다.",
+   "after": "체임벌린은 1968년 3월 18일 경기에서 이 기록을 넘어 블록·스틸까지 두 자릿수였다는 비공식 주장이 있다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/S2-10 — famous-one: 힌트 '53점·32리바운드·14어시스트' 는 세 부문 두 자릿수라는 정의의 예시여서 기록 이름의 정의를 그대로 건넨다(CV-05 정의 꼴). Q·E 는 true(졸레시설·폴랙설, 로버트슨 1961–62 시즌 평균). 두 번째 줄 사실로 교체.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Triple-double",
+    "https://en.wikipedia.org/wiki/Triple-double",
+    "https://en.wikipedia.org/wiki/Double-double"
+   ]
+  },
+  {
+   "id": 5690,
+   "cv": "CV-61",
+   "field": "is_active",
+   "before": true,
+   "after": false,
+   "why": "G020 CV-61 — V020 drop — pair-3-3 (g009b/S2-12)"
+  },
+  {
+   "id": 5692,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "유에스 오픈",
+   "why": "CV-64 V021 g009b/S2-17 — variants: Q·E·H 문서 대조 true(1975–77 클레이·1978 하드, 코너스 세 표면 유일, 1881년 8월 뉴포트 잔디, 1973 최초 남녀 동일 상금). 변형이 비어 한국에서 일상으로 쓰는 '유에스 오픈'·'미국 오픈' 을 못 받음(공백·대소문자 정규화로 'US오픈' 은 같음).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/US_Open_(tennis)",
+    "https://en.wikipedia.org/wiki/US_Open_(tennis)",
+    "https://en.wikipedia.org/wiki/US_Open_(tennis)"
+   ]
+  },
+  {
+   "id": 5692,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "미국 오픈",
+   "why": "CV-64 V021 g009b/S2-17 — variants: Q·E·H 문서 대조 true(1975–77 클레이·1978 하드, 코너스 세 표면 유일, 1881년 8월 뉴포트 잔디, 1973 최초 남녀 동일 상금). 변형이 비어 한국에서 일상으로 쓰는 '유에스 오픈'·'미국 오픈' 을 못 받음(공백·대소문자 정규화로 'US오픈' 은 같음).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/US_Open_(tennis)",
+    "https://en.wikipedia.org/wiki/US_Open_(tennis)",
+    "https://en.wikipedia.org/wiki/US_Open_(tennis)"
+   ]
+  },
+  {
+   "id": 5712,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1953년 봄 미국 터스키기 대학에 이 세포를 대량으로 길러 내는 공장이 세워져, 조너스 소크의 소아마비 백신 시험에 쓸 세포를 댔습니다. 진화생물학자 리 밴 베일런은 이 세포를 새로운 생물 종으로 보자며, 다른 세포주의 오염 문제를 처음 보고한 유전학자 스탠리 가틀러의 이름을 학명에 넣었습니다. 이 세포는 무엇일까요?",
+   "after": "1953년 봄 미국 터스키기 대학에 이 세포를 대량으로 길러 내는 공장이 세워져, 조너스 소크의 소아마비 백신 시험에 쓸 세포를 댔습니다. 진화생물학자 리 밴 베일런은 이 세포를 새로운 생물 종으로 보자며, 이 세포가 다른 세포주에 퍼져 섞인 사실을 밝힌 유전학자 스탠리 가틀러의 이름을 학명에 넣었습니다. 이 세포는 무엇일까요?",
+   "why": "CV-64 V021 g009b/C1-02 — assertive·variants: HeLa 문서는 가틀러(1967)와 넬슨리스(1975)를 둘 다 'first to publish' 로 적어 질문의 '처음 보고한 유전학자 가틀러' 는 문서와 단정이 어긋나고(Q3), 문서가 밴 베일런이 가틀러를 '세포가 다른 배양에 퍼진 것을 기록한 사람' 으로 든다고 하므로 그 서술로",
+   "sources": [
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa"
+   ]
+  },
+  {
+   "id": 5712,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "헬라",
+   "why": "CV-64 V021 g009b/C1-02 — assertive·variants: HeLa 문서는 가틀러(1967)와 넬슨리스(1975)를 둘 다 'first to publish' 로 적어 질문의 '처음 보고한 유전학자 가틀러' 는 문서와 단정이 어긋나고(Q3), 문서가 밴 베일런이 가틀러를 '세포가 다른 배양에 퍼진 것을 기록한 사람' 으로 든다고 하므로 그 서술로",
+   "sources": [
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa"
+   ]
+  },
+  {
+   "id": 5712,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "힐라",
+   "why": "CV-64 V021 g009b/C1-02 — assertive·variants: HeLa 문서는 가틀러(1967)와 넬슨리스(1975)를 둘 다 'first to publish' 로 적어 질문의 '처음 보고한 유전학자 가틀러' 는 문서와 단정이 어긋나고(Q3), 문서가 밴 베일런이 가틀러를 '세포가 다른 배양에 퍼진 것을 기록한 사람' 으로 든다고 하므로 그 서술로",
+   "sources": [
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa"
+   ]
+  },
+  {
+   "id": 5712,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "HeLa",
+   "why": "CV-64 V021 g009b/C1-02 — assertive·variants: HeLa 문서는 가틀러(1967)와 넬슨리스(1975)를 둘 다 'first to publish' 로 적어 질문의 '처음 보고한 유전학자 가틀러' 는 문서와 단정이 어긋나고(Q3), 문서가 밴 베일런이 가틀러를 '세포가 다른 배양에 퍼진 것을 기록한 사람' 으로 든다고 하므로 그 서술로",
+   "sources": [
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa"
+   ]
+  },
+  {
+   "id": 5712,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "HeLa 세포",
+   "why": "CV-64 V021 g009b/C1-02 — assertive·variants: HeLa 문서는 가틀러(1967)와 넬슨리스(1975)를 둘 다 'first to publish' 로 적어 질문의 '처음 보고한 유전학자 가틀러' 는 문서와 단정이 어긋나고(Q3), 문서가 밴 베일런이 가틀러를 '세포가 다른 배양에 퍼진 것을 기록한 사람' 으로 든다고 하므로 그 서술로",
+   "sources": [
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa",
+    "https://en.wikipedia.org/wiki/HeLa"
+   ]
+  },
+  {
+   "id": 5730,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "이 회사는 1910년 구스타프 오토가 바이에른에 세운 항공기 회사에도 뿌리를 둔다.",
+   "after": "이 회사는 1910년 구스타프 오토가 세운 항공기 회사에도 뿌리를 둔다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/L2-36 — letters: BMW 문서로 1917 개명·말 머리 로고·주 문장 금지 법·1929 프로펠러 속설·1910 구스타프 오토 true. 힌트의 '바이에른'은 Bayerische(B)의 우리말 표기 — 약칭 풀이 조각이라 V014 H2 letters(바우하우스·용승 꼴).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/BMW",
+    "https://en.wikipedia.org/wiki/BMW",
+    "https://en.wikipedia.org/wiki/BMW"
+   ]
+  },
+  {
+   "id": 5736,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "이날을 기리는 캐나다 몬트리올의 행진은 1824년부터 해마다 열려 왔다.",
+   "after": "이 기념일을 기리는 캐나다 몬트리올의 행진은 1824년에 시작된 것으로 알려져 있다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/L2-30 — variants·h-error: Chicago River 문서로 1961 배관공·3월 17일 앞 토요일 true. 힌트의 '1824년부터 해마다' 는 문서에 없고 웹 자료에 2020·2021 취소가 있어 '해마다' 단정이 틀림(H5). 흔한 표기 '세인트 패트릭스 데이' 변형 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://www.rcinet.ca/en/2018/03/15/st-patricks-day-parade-the-195th-edition-in-montreal"
+   ]
+  },
+  {
+   "id": 5736,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "세인트 패트릭스 데이",
+   "why": "CV-64 V021 g009b/L2-30 — variants·h-error: Chicago River 문서로 1961 배관공·3월 17일 앞 토요일 true. 힌트의 '1824년부터 해마다' 는 문서에 없고 웹 자료에 2020·2021 취소가 있어 '해마다' 단정이 틀림(H5). 흔한 표기 '세인트 패트릭스 데이' 변형 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://www.rcinet.ca/en/2018/03/15/st-patricks-day-parade-the-195th-edition-in-montreal"
+   ]
+  },
+  {
+   "id": 5736,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "세인트 패트릭 데이",
+   "why": "CV-64 V021 g009b/L2-30 — variants·h-error: Chicago River 문서로 1961 배관공·3월 17일 앞 토요일 true. 힌트의 '1824년부터 해마다' 는 문서에 없고 웹 자료에 2020·2021 취소가 있어 '해마다' 단정이 틀림(H5). 흔한 표기 '세인트 패트릭스 데이' 변형 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://www.rcinet.ca/en/2018/03/15/st-patricks-day-parade-the-195th-edition-in-montreal"
+   ]
+  },
+  {
+   "id": 5736,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "성 패트릭 축일",
+   "why": "CV-64 V021 g009b/L2-30 — variants·h-error: Chicago River 문서로 1961 배관공·3월 17일 앞 토요일 true. 힌트의 '1824년부터 해마다' 는 문서에 없고 웹 자료에 2020·2021 취소가 있어 '해마다' 단정이 틀림(H5). 흔한 표기 '세인트 패트릭스 데이' 변형 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://en.wikipedia.org/wiki/Chicago_River",
+    "https://www.rcinet.ca/en/2018/03/15/st-patricks-day-parade-the-195th-edition-in-montreal"
+   ]
+  },
+  {
+   "id": 5738,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1892년 이 나라는 주된 무역 상대인 미국에 맞추려고 7월 4일 월요일을 두 번 보내, 그해 미국 독립 기념일을 두 번 쇠었습니다. 2009년 9월 7일에는 백 년 넘게 지켜 온 우측 통행을 좌측 통행으로 바꾼 이 태평양 나라는 어디일까요?",
+   "after": "1892년 이 나라는 미국 상인들의 설득으로 미국과 날짜를 맞추려고 7월 4일 월요일을 두 번 보냈습니다. 2009년 9월 7일에는 백 년 넘게 지켜 온 우측 통행을 좌측 통행으로 바꾼 이 태평양 나라는 어디일까요?",
+   "why": "CV-64 V021 g009b/L2-32 — assertive: 문서(International Date Line)는 1892-07-04 월요일 반복·미국 상인 설득만 적고, '그해 독립 기념일을 두 번 쇠었다' 와 '주된 무역 상대인 미국' 은 어느 문서에도 없다(Time in Samoa·Samoa 문서도 미언급) — 3-2 단정 서술. 질문에서 뺀",
+   "sources": [
+    "https://en.wikipedia.org/wiki/International_Date_Line",
+    "https://en.wikipedia.org/wiki/Time_in_Samoa",
+    "https://en.wikipedia.org/wiki/Samoa"
+   ]
+  },
+  {
+   "id": 5740,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "서력",
+   "why": "CV-64 V021 g009b/L2-34 — variants: Anno Domini 문서에서 525 로마·동로마 수도사·베다 731·탄생 해 미언급·0년 없음 true. 한국에서 '서력' 단독 표기(서력 2000년)가 흔한데 변형에 없음, 'AD' 도 빠짐.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Anno_Domini",
+    "https://en.wikipedia.org/wiki/Anno_Domini",
+    "https://en.wikipedia.org/wiki/Anno_Domini"
+   ]
+  },
+  {
+   "id": 5740,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "AD",
+   "why": "CV-64 V021 g009b/L2-34 — variants: Anno Domini 문서에서 525 로마·동로마 수도사·베다 731·탄생 해 미언급·0년 없음 true. 한국에서 '서력' 단독 표기(서력 2000년)가 흔한데 변형에 없음, 'AD' 도 빠짐.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Anno_Domini",
+    "https://en.wikipedia.org/wiki/Anno_Domini",
+    "https://en.wikipedia.org/wiki/Anno_Domini"
+   ]
+  },
+  {
+   "id": 5755,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "창시자는 현역에서 물러난 뒤 이 무술을 경찰과 일반 시민에 맞게 고치고, 텔아비브와 네타냐에 훈련 센터를 세웠다.",
+   "after": "창시자는 영국의 감독을 받는 체코슬로바키아 제11 보병 대대 소속으로 북아프리카에서 복무했다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/S3-26 — famous-one: 힌트 '경찰과 일반 시민에 맞게 고치고 텔아비브·네타냐에 훈련 센터' 는 이스라엘의 호신 무술이라는 정체(대표 성격)를 건네 힌트만으로 크라브 마가에 닿는다(H9 ②). Q·E 는 true(부다페스트 출생·브라티슬라바 성장, 1930년대 중반 유대인 권투·레슬링 선수 지휘, IDF 체력",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Krav_Maga",
+    "https://en.wikipedia.org/wiki/Krav_Maga",
+    "https://en.wikipedia.org/wiki/Krav_Maga"
+   ]
+  },
+  {
+   "id": 5762,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "슈가 레이 로빈슨",
+   "why": "CV-64 V021 g009b/S3-33 — variants: Q·E·H 문서 대조 true(본명 워커 스미스 주니어, 레이 로빈슨의 AAU 카드로 이름 굳음, 파운드 포 파운드는 활동기 기자들이 만든 말, 워터타운에서 '설탕처럼 달콤', 열한 살 디트로이트 같은 블록 조 루이스). 변형이 비어 한국에서 흔한 '슈가 레이 로빈슨' 을 못 받는다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sugar_Ray_Robinson",
+    "https://en.wikipedia.org/wiki/Sugar_Ray_Robinson",
+    "https://en.wikipedia.org/wiki/Sugar_Ray_Robinson"
+   ]
+  },
+  {
+   "id": 5762,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "레이 로빈슨",
+   "why": "CV-64 V021 g009b/S3-33 — variants: Q·E·H 문서 대조 true(본명 워커 스미스 주니어, 레이 로빈슨의 AAU 카드로 이름 굳음, 파운드 포 파운드는 활동기 기자들이 만든 말, 워터타운에서 '설탕처럼 달콤', 열한 살 디트로이트 같은 블록 조 루이스). 변형이 비어 한국에서 흔한 '슈가 레이 로빈슨' 을 못 받는다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sugar_Ray_Robinson",
+    "https://en.wikipedia.org/wiki/Sugar_Ray_Robinson",
+    "https://en.wikipedia.org/wiki/Sugar_Ray_Robinson"
+   ]
+  },
+  {
+   "id": 5763,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "살코 점프",
+   "why": "CV-64 V021 g009b/S3-34 — variants: Q·E·H 문서 대조 true(1920 테리사 웰드 살코에서 치마가 무릎까지 올라간다고 꾸지람, 뒤쪽 안쪽 날 도약·반대 발 뒤쪽 바깥 날 착지, 1909 명명, 1955 로버트슨 첫 남자 트리플로 기록, 살코는 1908 런던 올림픽 우승). 질문이 '이 피겨 점프는?' 이라 '살코 점",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Salchow_jump",
+    "https://en.wikipedia.org/wiki/Salchow_jump",
+    "https://en.wikipedia.org/wiki/Salchow_jump"
+   ]
+  },
+  {
+   "id": 5763,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "살코프 점프",
+   "why": "CV-64 V021 g009b/S3-34 — variants: Q·E·H 문서 대조 true(1920 테리사 웰드 살코에서 치마가 무릎까지 올라간다고 꾸지람, 뒤쪽 안쪽 날 도약·반대 발 뒤쪽 바깥 날 착지, 1909 명명, 1955 로버트슨 첫 남자 트리플로 기록, 살코는 1908 런던 올림픽 우승). 질문이 '이 피겨 점프는?' 이라 '살코 점",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Salchow_jump",
+    "https://en.wikipedia.org/wiki/Salchow_jump",
+    "https://en.wikipedia.org/wiki/Salchow_jump"
+   ]
+  },
+  {
+   "id": 5769,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "스키 리프트",
+   "why": "CV-64 V021 g009b/S3-41 — variants: Q·E·H 문서 대조 true(1936 여름 유니언 퍼시픽 커런, 바나나 컨베이어 갈고리를 고침, 프록터산 첫 리프트, 1939-03 특허, 해리먼 출자). 변형이 비어 한국에서 일상으로 쓰는 '리프트'·'스키 리프트' 를 못 받는다 — 질문이 선밸리 프록터산이라고 한정해 체어리프트로 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chairlift",
+    "https://en.wikipedia.org/wiki/Chairlift",
+    "https://en.wikipedia.org/wiki/Chairlift"
+   ]
+  },
+  {
+   "id": 5769,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "리프트",
+   "why": "CV-64 V021 g009b/S3-41 — variants: Q·E·H 문서 대조 true(1936 여름 유니언 퍼시픽 커런, 바나나 컨베이어 갈고리를 고침, 프록터산 첫 리프트, 1939-03 특허, 해리먼 출자). 변형이 비어 한국에서 일상으로 쓰는 '리프트'·'스키 리프트' 를 못 받는다 — 질문이 선밸리 프록터산이라고 한정해 체어리프트로 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chairlift",
+    "https://en.wikipedia.org/wiki/Chairlift",
+    "https://en.wikipedia.org/wiki/Chairlift"
+   ]
+  },
+  {
+   "id": 5769,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "의자 리프트",
+   "why": "CV-64 V021 g009b/S3-41 — variants: Q·E·H 문서 대조 true(1936 여름 유니언 퍼시픽 커런, 바나나 컨베이어 갈고리를 고침, 프록터산 첫 리프트, 1939-03 특허, 해리먼 출자). 변형이 비어 한국에서 일상으로 쓰는 '리프트'·'스키 리프트' 를 못 받는다 — 질문이 선밸리 프록터산이라고 한정해 체어리프트로 ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chairlift",
+    "https://en.wikipedia.org/wiki/Chairlift",
+    "https://en.wikipedia.org/wiki/Chairlift"
+   ]
+  },
+  {
+   "id": 5772,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "컴펄서리",
+   "why": "CV-64 V021 g009b/S3-44 — variants: Q·E·H 문서 대조 true(1947년까지 대부분 대회 총점의 60%, 판정 시비·TV 중계가 쇠퇴 원인, ISU 가 1990 국제 싱글 대회에서 제외, 규율과 통제력 훈련, 1983 유럽선수권 오전 8시부터 여섯 시간). 한국 보도는 '컴펄서리 스케이팅'·'컴펄서리' 로 줄여 쓰는데",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Compulsory_figures",
+    "https://en.wikipedia.org/wiki/Compulsory_figures",
+    "https://en.wikipedia.org/wiki/Compulsory_figures"
+   ]
+  },
+  {
+   "id": 5772,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "컴펄서리 스케이팅",
+   "why": "CV-64 V021 g009b/S3-44 — variants: Q·E·H 문서 대조 true(1947년까지 대부분 대회 총점의 60%, 판정 시비·TV 중계가 쇠퇴 원인, ISU 가 1990 국제 싱글 대회에서 제외, 규율과 통제력 훈련, 1983 유럽선수권 오전 8시부터 여섯 시간). 한국 보도는 '컴펄서리 스케이팅'·'컴펄서리' 로 줄여 쓰는데",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Compulsory_figures",
+    "https://en.wikipedia.org/wiki/Compulsory_figures",
+    "https://en.wikipedia.org/wiki/Compulsory_figures"
+   ]
+  },
+  {
+   "id": 5775,
+   "cv": "CV-60 + CV-64",
+   "field": "question_text",
+   "before": "1947년 전남 여수에서 태어나 여수고를 졸업한 이 만화가는 서울로 올라가 박문윤, 이어 이향원의 문하생으로 일했습니다. 1974년 소년한국일보 신인만화공모전에 당선되어 데뷔한 이 만화가는 누구일까요?",
+   "after": "1947년 당시 전남 여수에서 태어나 여수고를 졸업한 이 만화가는 서울로 올라가 박문윤, 이어 이향원의 문하생으로 일했습니다. 1974년 소년한국일보 신인만화공모전에 당선되어 데뷔한 이 만화가는 누구일까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 날짜 한정어(당시) / CV-64 V021 g009b/M2-21 — question-repeat·weak: 허영만 문서로 1947 여수·여수고·박문윤/이향원 문하생·1974 소년한국일보 신인만화공모전 '집을 찾아서' 데뷔·2019 SICAF 공로대상·2022 보관문화훈장 true. 그러나 힌트는 질문이 이미 말한 '1974 공모전 당선 데뷔' 를 되풀이하고 제목('집을 찾아서')은 풀이에 보",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/허영만",
+    "https://ko.wikipedia.org/wiki/허영만",
+    "https://ko.wikipedia.org/wiki/허영만"
+   ]
+  },
+  {
+   "id": 5775,
+   "cv": "CV-60 + CV-64",
+   "field": "general_hint",
+   "before": "데뷔작이 된 공모전 당선작의 제목은 '집을 찾아서'였다.",
+   "after": "『미생』의 윤태호가 그의 문하생 출신이다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 날짜 한정어(당시) / CV-64 V021 g009b/M2-21 — question-repeat·weak: 허영만 문서로 1947 여수·여수고·박문윤/이향원 문하생·1974 소년한국일보 신인만화공모전 '집을 찾아서' 데뷔·2019 SICAF 공로대상·2022 보관문화훈장 true. 그러나 힌트는 질문이 이미 말한 '1974 공모전 당선 데뷔' 를 되풀이하고 제목('집을 찾아서')은 풀이에 보",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/허영만",
+    "https://ko.wikipedia.org/wiki/허영만",
+    "https://ko.wikipedia.org/wiki/허영만"
+   ]
+  },
+  {
+   "id": 5776,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "미국의 토머스 내스트는 이런 그림으로 공화당을 처음 코끼리로 그린 사람으로 꼽힌다.",
+   "after": "이 작품 일곱 점은 1865년부터 런던의 빅토리아 앨버트 박물관에 대여돼 왔다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/M2-22 — wrong-name·famous-one: Cartoon 문서로 1843 Punch 'Cartoon, No. 1'(웨스트민스터 궁 프레스코 밑그림 풍자)·라파엘로 c.1516 태피스트리 밑그림·cartone/karton 어원 true, Nast 문서로 공화당 코끼리 최초 true. 힌트의 '이런 그림'은 풍자 만평·만화로 유도해",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cartoon",
+    "https://en.wikipedia.org/wiki/Cartoon",
+    "https://en.wikipedia.org/wiki/Cartoon"
+   ]
+  },
+  {
+   "id": 5783,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "건널목",
+   "why": "CV-61 V020 g009b/L1-32 — variants: 벨리샤 비컨·1951 슬라우·애비 로드 표지·펠리컨 횡단보도 갈래 문서로 true. 다만 일상어 '건널목'을 같은 대상으로 치는 사람이 많은데 변형이 없음(6절).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Zebra_crossing",
+    "https://en.wikipedia.org/wiki/Zebra_crossing",
+    "https://en.wikipedia.org/wiki/Zebra_crossing"
+   ]
+  },
+  {
+   "id": 5783,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "얼룩말 건널목",
+   "why": "CV-61 V020 g009b/L1-32 — variants: 벨리샤 비컨·1951 슬라우·애비 로드 표지·펠리컨 횡단보도 갈래 문서로 true. 다만 일상어 '건널목'을 같은 대상으로 치는 사람이 많은데 변형이 없음(6절).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Zebra_crossing",
+    "https://en.wikipedia.org/wiki/Zebra_crossing",
+    "https://en.wikipedia.org/wiki/Zebra_crossing"
+   ]
+  },
+  {
+   "id": 5783,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "제브라 크로싱",
+   "why": "CV-61 V020 g009b/L1-32 — variants: 벨리샤 비컨·1951 슬라우·애비 로드 표지·펠리컨 횡단보도 갈래 문서로 true. 다만 일상어 '건널목'을 같은 대상으로 치는 사람이 많은데 변형이 없음(6절).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Zebra_crossing",
+    "https://en.wikipedia.org/wiki/Zebra_crossing",
+    "https://en.wikipedia.org/wiki/Zebra_crossing"
+   ]
+  },
+  {
+   "id": 5785,
+   "cv": "CV-64",
+   "field": "is_active",
+   "before": true,
+   "after": false,
+   "why": "G020 CV-64 — V021 drop — 3-3 범주 단서 (g009b/L1-35)"
+  },
+  {
+   "id": 5795,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "소련은 1970년부터 1992년까지 이 경계를 목표로 콜라반도에서 12,260m까지 땅을 뚫었다.",
+   "after": "이 경계까지 뚫으려던 미국의 1961년 시험 시추는 멕시코 과달루페섬 앞바다에서 바다 밑 183m까지 닿았고, 계획은 1966년 끊겼다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/C2-24 — h-error·variants: 힌트 '소련이 1970~1992 콜라반도에서 이 경계를 목표로 12,260m' 는 Moho 문서와 일치하나 Kola Superdeep Borehole 문서는 12,262m·1995 종료이고 목표에 모호면을 언급하지 않아 문서끼리 어긋남(H5 확신 없음). 변형은 '모호 불연속면' 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+    "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+    "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole"
+   ]
+  },
+  {
+   "id": 5795,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "모호 불연속면",
+   "why": "CV-64 V021 g009b/C2-24 — h-error·variants: 힌트 '소련이 1970~1992 콜라반도에서 이 경계를 목표로 12,260m' 는 Moho 문서와 일치하나 Kola Superdeep Borehole 문서는 12,262m·1995 종료이고 목표에 모호면을 언급하지 않아 문서끼리 어긋남(H5 확신 없음). 변형은 '모호 불연속면' 누락.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+    "https://en.wikipedia.org/wiki/Mohorovi%C4%8Di%C4%87_discontinuity",
+    "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole"
+   ]
+  },
+  {
+   "id": 5800,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "미국 캘리포니아의 '더 가이저스'에는 이런 발전소 18곳이 모여 세계 최대 단지를 이룬다.",
+   "after": "2021년 기준 이 방식의 생산량은 미국, 인도네시아, 필리핀 순으로 많았다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/C2-23 — famous-one: 힌트 '캘리포니아 더 가이저스에 발전소 18곳, 세계 최대 단지' 는 The Geysers 문서와 일치하나 간헐천(geyser) 이름·세계 최대 지열 단지라는 대표 사례 나열이라 질문 없이 보통 성인이 지열 발전을 바로 말함(H9 ② 대표 예 나열이 정답을 가리킴). 질문·해설은 Lar",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Larderello",
+    "https://en.wikipedia.org/wiki/Larderello",
+    "https://en.wikipedia.org/wiki/The_Geysers"
+   ]
+  },
+  {
+   "id": 5807,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "주인공은 마을 아래 무작위로 만들어지는 지하 16층을 내려가 마침내 지옥에 이른다.",
+   "after": "이 게임의 사운드트랙은 맷 우엘먼이 작곡했다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/M2-16 — famous-one: Diablo 문서로 1993 콘도르·턴제→실시간 팀 투표·블리자드 노스/사우스·멀티 마지막 6개월·트리스트럼(수도원 폐허 옆)·무작위 16층 지옥 true. 다만 힌트가 게임의 핵심 줄거리(마을 아래 무작위 지하 16층, 지옥)라 H9 ② 유명 줄거리 요지 — 힌트만 읽어도 디아블로.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Diablo_(video_game)",
+    "https://en.wikipedia.org/wiki/Diablo_(video_game)",
+    "https://en.wikipedia.org/wiki/Diablo_(video_game)"
+   ]
+  },
+  {
+   "id": 5809,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "2002년 3월까지 630만 장 넘게 팔려 '미스트'를 넘고 그때까지 가장 많이 팔린 PC 게임이 되었다.",
+   "after": "개발 중에는 '프로젝트 X'라는 암호명으로 불렸다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/M2-18 — famous-one: The Sims 문서로 1991 오클랜드 화재·패턴 랭귀지 영감·포커스 그룹 부진·심리시 true. 힌트(미스트를 넘고 당시 가장 많이 팔린 PC 게임)는 대표 기록이라 정체에 가까워 힌트만 읽어도 심즈(H9·CV-11). 제안은 두 번째 줄 사실(개발 암호명).",
+   "sources": [
+    "https://en.wikipedia.org/wiki/The_Sims_(video_game)",
+    "https://en.wikipedia.org/wiki/The_Sims_(video_game)",
+    "https://en.wikipedia.org/wiki/The_Sims_(video_game)"
+   ]
+  },
+  {
+   "id": 5811,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "몽클레어",
+   "why": "CV-61 V020 g009b/L2-22 — variants: 1952 그르노블 근처 출발·1954 K2 원정대·모네스티에드클레르몽·테레이 제품군('Moncler pour Lionel Terray')·스톤 아일랜드 2020 모두 영문 위키 true. 다만 한국에서 '몽클레어'로 널리 쓰는데 변형이 없음.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Moncler",
+    "https://en.wikipedia.org/wiki/Moncler",
+    "https://en.wikipedia.org/wiki/Moncler"
+   ]
+  },
+  {
+   "id": 5832,
+   "cv": "CV-61",
+   "field": "general_hint",
+   "before": "알프레도 디 스테파노를 앞세워 유럽 챔피언스컵을 다섯 번 연달아 차지했다.",
+   "after": "1953년부터 산티아고 베르나베우가 세계적인 선수들을 영입하는 전략을 폈다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-61 V020 g009b/S1-31 — famous-one: 질문·해설 사실은 문서로 true. 그러나 힌트 '디 스테파노를 앞세워 챔피언스컵 5연패'는 레알 마드리드의 가장 유명한 업적(CV-46 대표 인물·업적)이라 힌트만으로 정체가 나옴(H9 ②). 문서는 'helped the club win'이라 '앞세워'도 센 표현.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/History_of_Real_Madrid_CF",
+    "https://en.wikipedia.org/wiki/History_of_Real_Madrid_CF",
+    "https://en.wikipedia.org/wiki/History_of_Real_Madrid_CF"
+   ]
+  },
+  {
+   "id": 5846,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "구절판처럼 본래 양반과 궁중의 상에 오르던 음식이었다고 한다.",
+   "after": "조선 후기 요리책에는 얇게 저민 소고기에 잣가루를 뿌려 먹는 조리법도 실려 있다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K2-31 — pair-same: 힌트 '본래 양반과 궁중의 상에 오르던 음식'(Jeongol en 위키에 있음)이 sameAnswerActive #1001 해설 '궁중에서도 즐기던 음식이었다고 전해집니다'와 같은 사실(H12 pair-same). 질문·해설은 백과 전골(전립투·구이전골→냄비전골 추측·장지연)과 일치.",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0049244"
+   ]
+  },
+  {
+   "id": 5852,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "밥 뜸을 들일 때 솥에 콩나물을 넣어 밥 김으로 데친 뒤 밥과 함께 뒤섞는다.",
+   "after": "쌀을 안칠 때 물 대신 양지머리를 곤 육수를 쓴다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K2-37 — famous-one: 힌트 '밥 뜸 들일 때 솥에 콩나물을 넣어 밥 김으로 데침'은 전주비빔밥의 대표 특징(콩나물비빔밥이라는 별칭)이라 질문 없이도 전주가 떠오름(H9 ② 대표 쓰임, CV-37). 질문·해설은 백과(황포묵·오목대 부근 지하수·재료 30여 가지·콩나물국)와 일치.",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0049662"
+   ]
+  },
+  {
+   "id": 5867,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "17세기 네덜란드 선원 하멜이 조선에 처음 표착한 곳으로 이 섬을 꼽기도 한다.",
+   "after": "운진항에서 배를 타면 10분쯤 걸리는 섬이다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K2-14 — h-error: 힌트 하멜 최초 표착지로 가파도를 꼽는다 는 en 위키 한 문장뿐이고, 한국어 자료는 용머리 해안(공식)·신도리·고산리 한장동 일대를 표착지로 다룰 뿐 가파도는 보이지 않음(WebSearch) → H5 확신 없는 사실. 질문·해설은 백과/가파도 문서(1751 흑우 목장·1842 개간 허",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Gapado"
+   ]
+  },
+  {
+   "id": 5868,
+   "cv": "CV-60",
+   "field": "question_text",
+   "before": "본래 남쪽의 대조도와는 다른 섬이었으나 두 섬을 잇는 제방이 쌓이면서 하나가 되었고, 그 제방 사이에 염전이 개발되었습니다. 썰물 때 드러나는 노두길로 화도까지 걸어갈 수 있는 전남 신안의 이 섬은 무엇일까요?",
+   "after": "본래 남쪽의 대조도와는 다른 섬이었으나 두 섬을 잇는 제방이 쌓이면서 하나가 되었고, 그 제방 사이에 염전이 개발되었습니다. 썰물 때 드러나는 노두길로 화도까지 걸어갈 수 있는 신안의 이 섬은 무엇일까요?",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 도 이름 빼기",
+   "sources": [
+    "https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법"
+   ]
+  },
+  {
+   "id": 5870,
+   "cv": "CV-60",
+   "field": "general_hint",
+   "before": "이 섬의 멸치잡이 노래는 1988년 전라남도 무형문화재로 지정되었다.",
+   "after": "이 섬의 멸치잡이 노래는 1988년 당시 전라남도 무형문화재로 지정되었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-60 전남광주통합특별시(2026-07-01 시행 · 전라남도 폐지) — 날짜 한정어(당시 — 지정 주체)",
+   "sources": null
+  },
+  {
+   "id": 5872,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1273년 무렵에는 '후풍도'로 불리다가 14세기 말부터 지금 이름이 쓰이기 시작했고, 『태조실록』에 지금 이름이 처음 나옵니다. 이 섬 무리의 큰 섬 하나는 약 1억 년 전 중생대 백악기 화산 활동으로 생겨, 신생대에 생긴 제주도보다 지질이 훨씬 오래되었는데, 이 섬은 무엇일까요?",
+   "after": "1273년 무렵에는 '후풍도'로 불리다가 14세기 말부터 지금 이름이 쓰이기 시작했고, 『태조실록』에 지금 이름이 처음 나옵니다.\n이 이름의 섬 무리에서 큰 섬 하나는 약 1억 년 전 중생대 백악기 화산 활동으로 생겨, 신생대에 생긴 제주도보다 지질이 훨씬 오래되었습니다. 이 섬 무리의 이름은 무엇일까요?",
+   "why": "CV-64 V021 g009b/K2-19 — not-unique·readable: '이 섬 무리의 큰 섬 하나는 … 이 섬은 무엇일까요?'가 무리(추자도)와 그 안의 큰 섬(상추자도)을 섞어 부름. 문서(Sangchuja)도 후풍도·태조실록·백악기를 상추자도 기준으로 적어 상추자도를 칠 수 있음(3-1 묻는 문장 한정). 사실은 문서와 일치.",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0027372",
+    "https://encykorea.aks.ac.kr/Article/E0027372",
+    "https://ko.wikipedia.org/wiki/추자면"
+   ]
+  },
+  {
+   "id": 5872,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "추자군도",
+   "why": "CV-64 V021 g009b/K2-19 — not-unique·readable: '이 섬 무리의 큰 섬 하나는 … 이 섬은 무엇일까요?'가 무리(추자도)와 그 안의 큰 섬(상추자도)을 섞어 부름. 문서(Sangchuja)도 후풍도·태조실록·백악기를 상추자도 기준으로 적어 상추자도를 칠 수 있음(3-1 묻는 문장 한정). 사실은 문서와 일치.",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0027372",
+    "https://encykorea.aks.ac.kr/Article/E0027372",
+    "https://ko.wikipedia.org/wiki/추자면"
+   ]
+  },
+  {
+   "id": 5874,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "넓이 약 46㎢로 경기도의 섬 가운데 가장 크다.",
+   "after": "1994년 주민 투표 결과에 따라 옹진군에서 안산시로 편입되었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K2-21 — h-error: 힌트 넓이 약 46㎢가 ko 위키(45.94㎢)와는 맞으나 한국민족문화대백과는 같은 섬을 34.39㎢로 적어 문서마다 다름(수치 단정). 질문(탄도 공룡알 화석·규화목·조선시대 목마장)·해설(1994 시화방조제 12.7km 오이도 연결)은 백과와 일치.",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/대부도"
+   ]
+  },
+  {
+   "id": 5884,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1962년 12월 20일 국보로 지정되었고, 높이는 10.29m다.",
+   "after": "기단에 있던 돌사자 네 마리 가운데 세 마리는 행방이 알려지지 않았다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K1-07 — weak: 질문·해설은 다보탑 문서(1925경 일본인 해체·기록 없음·사리장치 소실·2016 지진 동쪽 난간석·4각·8각·원·2008-12 1년 수리)와 일치. 힌트(1962-12-20 국보·10.29m)는 문서와 맞으나 석가탑과 같은 날 지정이라 풀이에 도움이 거의 없음(H11 한 걸음 생각할 ",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/경주_불국사_다보탑"
+   ]
+  },
+  {
+   "id": 5888,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "일행은 고향을 떠난 지 13년 만인 1668년 바타비아를 거쳐 네덜란드로 돌아갔다.",
+   "after": "저자의 고향 네덜란드 호린험에는 그의 동상이 서 있다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K1-11 — weak: 재채점 3(하멜을 서기로 가리키면 중학 역사 수준)인데 힌트가 없음 → H0 에 따라 붙인다. 질문·해설은 하멜 문서(남원·순천·좌수영 분산, 1666 8명 데지마 탈출, 서기, 체불 임금 보고, 스페르베르호 1653)와 일치. 한편 같은 사람의 『조선왕국기』도 있어 '보고서' 한정이 ",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/하멜_표류기"
+   ]
+  },
+  {
+   "id": 5899,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "명성황후 시해 사건",
+   "why": "CV-61 V020 g009b/K1-22 — variants: 사실은 모두 위키 문장으로 true(우범선·고영근 1903·48명 히로시마 재판소·이경직 권총). 다만 이 사건의 흔한 다른 이름 '명성황후 시해 사건'이 변형에 없어 그대로 치면 오답(6절 빠진 흔한 표기).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/우장춘",
+    "https://ko.wikipedia.org/wiki/을미사변",
+    "https://ko.wikipedia.org/wiki/을미사변"
+   ]
+  },
+  {
+   "id": 5899,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "명성황후 시해",
+   "why": "CV-61 V020 g009b/K1-22 — variants: 사실은 모두 위키 문장으로 true(우범선·고영근 1903·48명 히로시마 재판소·이경직 권총). 다만 이 사건의 흔한 다른 이름 '명성황후 시해 사건'이 변형에 없어 그대로 치면 오답(6절 빠진 흔한 표기).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/우장춘",
+    "https://ko.wikipedia.org/wiki/을미사변",
+    "https://ko.wikipedia.org/wiki/을미사변"
+   ]
+  },
+  {
+   "id": 5900,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "경인철도",
+   "why": "CV-64 V021 g009b/K1-23 — variants: 질문(1897-03-22 우각현 기공, 모가형 기관차 1시간 40분)·해설·힌트(1900-07-08 연장)가 경인선 문서와 일치. 그러나 질문이 '이 철도'를 묻고 개통 당시 이름이 경인철도인데, 변형에 '경인철도'가 없어 그대로 치면 오답(변형 누락).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/경인선",
+    "https://ko.wikipedia.org/wiki/경인선",
+    "https://ko.wikipedia.org/wiki/경인선"
+   ]
+  },
+  {
+   "id": 5911,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1716년 완성된 『강희자전』도 한자의 음을 이 방식으로 적었다.",
+   "after": "이 낱말을 쓴 책은 '기역, 니은' 같은 한글 자모 이름이 문헌에 처음 실린 책이기도 하다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K1-34 — question-repeat: 힌트 『강희자전』도 한자의 음을 이 방식으로 적었다 는 질문 조건(중국에서 한자음을 나타내던 방법)을 다시 말한 것(H3 조건 되풀이)이고 새 사실은 책 이름뿐. 질문은 훈몽자회 문서와 일치(해설 반절 정의는 unverified).",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/훈몽자회"
+   ]
+  },
+  {
+   "id": 5919,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "장화홍련",
+   "why": "CV-64 V021 g009b/K3-01 — variants: 질문·해설은 백과 장화홍련전(한문본 1818 박인수, 효종 때 철산부사 전동흘, 4계열 중 환생 계열)과 일치하고 힌트(배무룡)는 ko 위키 문장 이전 판정자 확인. 변형이 없는데 한국에서 이 소설은 '장화홍련'으로도 흔히 침 → 누락.",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0048918",
+    "https://encykorea.aks.ac.kr/Article/E0048918"
+   ]
+  },
+  {
+   "id": 5932,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1978년 『창작과 비평』 가을호에 실린 이 중편 때문에, 이듬해 같은 제목의 소설집을 낸 작가는 1980년 보안사에 연행되어 사흘 동안 고문을 당했고, 그 소설집은 14년 동안 금서로 지정되었습니다. 이 소설은 무엇일까요?",
+   "after": "1978년 『창작과 비평』 가을호에 실린 이 중편 때문에, 이듬해 같은 제목의 소설집을 낸 작가는 1980년 보안사에 연행되어 사흘 동안 고문을 당했고, 그 소설집은 오랫동안 금서로 지정되었습니다. 이 소설은 무엇일까요?",
+   "why": "CV-64 V021 g009b/K3-14 — fact-error·assertive·explanation: Q3·3-2: 질문의 '14년 동안 금서'가 문서마다 어긋난다 — ko 위키 현기영은 14년, ko 위키 순이삼촌은 '1980년 금서 · 7년'(WebSearch 도 14년을 확인 못 함). 확신 없는 기간은 질문에서 뺀다. 해설 '처음으로 다룬'은 문서가 '처음 다룬 것으로 흔히 꼽힌",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/현기영 (14년) vs https://ko.wikipedia.org/wiki/순이삼촌 (7년)",
+    "https://ko.wikipedia.org/wiki/순이삼촌",
+    "https://ko.wikipedia.org/wiki/순이삼촌"
+   ]
+  },
+  {
+   "id": 5932,
+   "cv": "CV-64",
+   "field": "explanation",
+   "before": "제주 4·3 사건을 처음으로 다룬 소설로, 제주에서는 촌수를 따지기 어려운 먼 친척 어른을 남녀 구별 없이 흔히 '삼촌'이라 부릅니다.",
+   "after": "제주 4·3 사건을 처음 다룬 소설로 꼽히며, 제주에서는 촌수를 따지기 어려운 먼 친척 어른을 남녀 구별 없이 흔히 '삼촌'이라 부릅니다.",
+   "why": "CV-64 V021 g009b/K3-14 — fact-error·assertive·explanation: Q3·3-2: 질문의 '14년 동안 금서'가 문서마다 어긋난다 — ko 위키 현기영은 14년, ko 위키 순이삼촌은 '1980년 금서 · 7년'(WebSearch 도 14년을 확인 못 함). 확신 없는 기간은 질문에서 뺀다. 해설 '처음으로 다룬'은 문서가 '처음 다룬 것으로 흔히 꼽힌",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/현기영 (14년) vs https://ko.wikipedia.org/wiki/순이삼촌 (7년)",
+    "https://ko.wikipedia.org/wiki/순이삼촌",
+    "https://ko.wikipedia.org/wiki/순이삼촌"
+   ]
+  },
+  {
+   "id": 5947,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "1981년부터 MBC FM 심야 프로그램 '한밤의 데이트'를 진행했다.",
+   "after": "시인 윤동주가 그의 6촌 형이다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/M1-17 — famous-one·question-repeat: 윤형주 문서로 1966 연대 의대·1968 경희대 전학·1971 중퇴·1971 0시의 다이얼 MC·2009 부산 로고송 true. 힌트(1981 MBC-FM '윤형주의 한밤의 데이트' 진행)는 문서상 true 지만 프로그램 제목이 본인 이름이 붙은 대표 활동이라 정체(H9)에 가깝고 질",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/윤형주",
+    "https://ko.wikipedia.org/wiki/윤형주",
+    "https://ko.wikipedia.org/wiki/윤형주"
+   ]
+  },
+  {
+   "id": 5967,
+   "cv": "CV-64",
+   "field": "explanation",
+   "before": "한자로는 동상례라 하는데, 진나라 왕희지의 장인 될 사람이 그를 동쪽 건물에 두고 살핀 뒤 사위로 삼았다는 고사에서 나온 말이라고 합니다.",
+   "after": "한자로는 동상례라고도 하는데, 중국 왕희지의 장인 될 사람이 그를 동쪽 건물에 두고 살핀 뒤 사위로 삼았다는 고사에서 나왔다는 설이 있습니다. 다만 우리나라에서는 사위를 동상이라 부르지 않았다고 합니다.",
+   "why": "CV-64 V021 g009b/K3-33 — explanation: E5·3-2: 해설이 동상례=왕희지 고사 유래를 사실로 단정했으나 encykorea(신랑다루기)는 '어원으로 왕희지 고사가 거론되지만 우리나라에서는 사위를 동상이라 하지 않았고 중국에 동상례라는 말도 없다'고 덧붙인다 → 설로 낮추고 단서를 함께 적는다. 질문 사실(평안도 한시 · 한문",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0032872",
+    "https://encykorea.aks.ac.kr/Article/E0032872",
+    "https://encykorea.aks.ac.kr/Article/E0032872"
+   ]
+  },
+  {
+   "id": 5968,
+   "cv": "CV-64",
+   "field": "explanation",
+   "before": "1970년 창덕궁 창고에서 장례용구와 함께 발견된 높이 72㎝의 나무 방상시탈은 네 눈과 입을 새겼으되 뚫지는 않았습니다.",
+   "after": "1970년 창덕궁 창고에서 장례용구와 함께 발견된 높이 72㎝의 나무 방상시탈은 눈과 입을 새겼으되 뚫지는 않았습니다.",
+   "why": "CV-64 V021 g009b/K3-34 — explanation: Q3·E5: 해설의 '네 눈'은 encykorea 방상시탈 문서(눈과 입은 음각만, 높이 72cm, 1970 창덕궁 창고 발견)에 없고 WebSearch 로도 닫지 못함 → 확신 없는 세부를 뺀다. 질문(맨 앞 수레 · 광중 악귀 · 한 번 쓴 탈 묻거나 태움)과 힌트(궁중 나례 방상씨",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0021715",
+    "https://encykorea.aks.ac.kr/Article/E0021715",
+    "https://encykorea.aks.ac.kr/Article/E0021715"
+   ]
+  },
+  {
+   "id": 5970,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "신부가 시댁에서 시부모를 처음 뵙는 절차는 '현구고례'로, 시부모는 예물로 답례했다.",
+   "after": "며느리가 시댁에서 시부모를 처음 뵙는 절차는 '현구고례'로, 친정에서 준비해 온 밤·대추·육포·닭·술 등을 올렸다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/K3-36 — h-error: H5·h-error: 힌트의 '시부모는 예물로 답례했다'가 encykorea 신행 문서에 없다 — 현구고례 대목은 신부가 친정에서 준비한 밤·대추·육포·닭·술을 올린다는 내용뿐(ko 위키 폐백은 대추·밤을 던져 준다고 적음). 질문(달묵이·해묵이 · 하님·수모·상객·가마꾼·짐꾼)과 해설",
+   "sources": [
+    "https://encykorea.aks.ac.kr/Article/E0033553",
+    "https://encykorea.aks.ac.kr/Article/E0033553",
+    "https://encykorea.aks.ac.kr/Article/E0033553"
+   ]
+  },
+  {
+   "id": 5979,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "2011년 이 프로그램에서는 '석천한유도'에 15억 원의 감정가가 매겨지기도 했다.",
+   "after": "이 프로그램의 첫 진행자는 임성훈이었다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/M1-05 — famous-one·question-repeat: ko 문서로 질문 사실(1995-03-05 KBS 2TV, 2000-07-30 1TV, 1000회 25억 대동여지도) true. 힌트(2011 석천한유도 15억 감정가)는 문서상 true 지만 감정가 TV 프로 하나뿐이라 힌트만 읽어도 진품명품이 나오고(H9 정체) 질문이 이미 말한 '",
+   "sources": [
+    "https://ko.wikipedia.org/wiki/TV쇼_진품명품",
+    "https://ko.wikipedia.org/wiki/TV쇼_진품명품",
+    "https://ko.wikipedia.org/wiki/TV쇼_진품명품"
+   ]
+  },
+  {
+   "id": 6031,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "셰퍼드",
+   "why": "CV-64 V021 g009b/L1-06 — variants: 변형 누락: 한국에서 이 품종은 '셰퍼드'로 일상 표기·호칭(로열캐닌 코리아는 '저먼 셰퍼드', 위키낱말사전 shepherd=셰퍼드)한다. 현재 변형이 '독일 셰퍼드' 하나뿐이라 '셰퍼드'·붙여쓴 표기를 친 사람이 오답이 된다. 질문 사실(1899 슈테파니츠 기병 대위 · 헥토르 링크스",
+   "sources": [
+    "https://en.wikipedia.org/wiki/German_Shepherd",
+    "https://en.wikipedia.org/wiki/German_Shepherd",
+    "https://en.wikipedia.org/wiki/Rin_Tin_Tin"
+   ]
+  },
+  {
+   "id": 6076,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "초연 무대에서 하숙집 주인 슈나이더 부인 역은 쿠르트 바일의 아내였던 로테 레냐가 맡았다.",
+   "after": "초연 무대에서 하숙집 주인 슈나이더 양 역은 쿠르트 바일의 아내였던 로테 레냐가 맡았다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/A1-10 — h-error·variants: 힌트의 '슈나이더 부인' 은 문서의 Fräulein Schneider(미혼 여성 호칭, 한국 공연에서는 '슈나이더 양')와 어긋나는 호칭이고, 영어 제목 작품인데 변형에 Cabaret 이 없다(B10). 질문·해설 사실은 Cabaret·Lotte Lenya 문서와 일치.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cabaret_(musical)",
+    "https://en.wikipedia.org/wiki/Cabaret_(musical)",
+    "https://en.wikipedia.org/wiki/Lotte_Lenya"
+   ]
+  },
+  {
+   "id": 6088,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "날씨가 나빠 작전은 24시간 미뤄졌고, 기상 장교 제임스 스태그가 날이 나아질 것이라고 내다봤다.",
+   "after": "독일군이 칼레로 오리라 믿게 하려고, 패튼이 이끄는 가짜 부대가 영국 남동부에 있는 것처럼 꾸몄다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/H1-17 — famous-one: 힌트 '날씨 때문에 24시간 미뤄짐·기상 장교 스태그'는 디데이의 가장 유명한 일화로 질문 없이도 노르망디가 떠오름(H9 ② 대표 일화, CV-37). 질문·해설은 Dawe 문서 문장과 일치하고 3-3 도 퍼즐 일화가 새 사실이라 ok.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Normandy_landings"
+   ]
+  },
+  {
+   "id": 6088,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "오버로드",
+   "why": "CV-64 V021 g009b/H1-17 — famous-one: 힌트 '날씨 때문에 24시간 미뤄짐·기상 장교 스태그'는 디데이의 가장 유명한 일화로 질문 없이도 노르망디가 떠오름(H9 ② 대표 일화, CV-37). 질문·해설은 Dawe 문서 문장과 일치하고 3-3 도 퍼즐 일화가 새 사실이라 ok.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Normandy_landings"
+   ]
+  },
+  {
+   "id": 6088,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "노르망디 상륙",
+   "why": "CV-64 V021 g009b/H1-17 — famous-one: 힌트 '날씨 때문에 24시간 미뤄짐·기상 장교 스태그'는 디데이의 가장 유명한 일화로 질문 없이도 노르망디가 떠오름(H9 ② 대표 일화, CV-37). 질문·해설은 Dawe 문서 문장과 일치하고 3-3 도 퍼즐 일화가 새 사실이라 ok.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Normandy_landings"
+   ]
+  },
+  {
+   "id": 6089,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "레닌그라드 전투",
+   "why": "CV-64 V021 g009b/H1-18 — variants: 질문·해설·힌트의 사실은 쇼스타코비치 7번 문서와 Siege_of_Leningrad 문서 문장과 일치. 그러나 정답 변형에 한국에서 흔한 '레닌그라드 전투'·'레닌그라드 포위'·'레닌그라드 봉쇄'가 없음(질문이 '열린 싸움'이라 전투로 치기 쉽다). ko 위키 요약은 '포위전'을 제목으",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Symphony_No._7_(Shostakovich)",
+    "https://en.wikipedia.org/wiki/Symphony_No._7_(Shostakovich)",
+    "https://ko.wikipedia.org/wiki/레닌그라드_공방전"
+   ]
+  },
+  {
+   "id": 6089,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "레닌그라드 포위",
+   "why": "CV-64 V021 g009b/H1-18 — variants: 질문·해설·힌트의 사실은 쇼스타코비치 7번 문서와 Siege_of_Leningrad 문서 문장과 일치. 그러나 정답 변형에 한국에서 흔한 '레닌그라드 전투'·'레닌그라드 포위'·'레닌그라드 봉쇄'가 없음(질문이 '열린 싸움'이라 전투로 치기 쉽다). ko 위키 요약은 '포위전'을 제목으",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Symphony_No._7_(Shostakovich)",
+    "https://en.wikipedia.org/wiki/Symphony_No._7_(Shostakovich)",
+    "https://ko.wikipedia.org/wiki/레닌그라드_공방전"
+   ]
+  },
+  {
+   "id": 6089,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "레닌그라드 봉쇄",
+   "why": "CV-64 V021 g009b/H1-18 — variants: 질문·해설·힌트의 사실은 쇼스타코비치 7번 문서와 Siege_of_Leningrad 문서 문장과 일치. 그러나 정답 변형에 한국에서 흔한 '레닌그라드 전투'·'레닌그라드 포위'·'레닌그라드 봉쇄'가 없음(질문이 '열린 싸움'이라 전투로 치기 쉽다). ko 위키 요약은 '포위전'을 제목으",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Symphony_No._7_(Shostakovich)",
+    "https://en.wikipedia.org/wiki/Symphony_No._7_(Shostakovich)",
+    "https://ko.wikipedia.org/wiki/레닌그라드_공방전"
+   ]
+  },
+  {
+   "id": 6098,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "칠리",
+   "why": "CV-61 V020 g009b/L1-20 — variants: 사실은 문서로 true(칠리 퀸·1893 박람회·1977 주 공식 요리, 광장은 UIW 문서의 Military/Alamo Plaza). 다만 한국에서 이 요리를 '칠리'로 흔히 부르는데 변형이 없어 '칠리'·'칠리콘카르네' 붙여 쓴 꼴이 오답이 됨.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chili_con_carne",
+    "https://www.uiw.edu/sanantonio/jenningschiliqueens.html",
+    "https://en.wikipedia.org/wiki/Chili_con_carne"
+   ]
+  },
+  {
+   "id": 6098,
+   "cv": "CV-61",
+   "field": "question_answers",
+   "before": null,
+   "after": "칠리 콘 까르네",
+   "why": "CV-61 V020 g009b/L1-20 — variants: 사실은 문서로 true(칠리 퀸·1893 박람회·1977 주 공식 요리, 광장은 UIW 문서의 Military/Alamo Plaza). 다만 한국에서 이 요리를 '칠리'로 흔히 부르는데 변형이 없어 '칠리'·'칠리콘카르네' 붙여 쓴 꼴이 오답이 됨.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chili_con_carne",
+    "https://www.uiw.edu/sanantonio/jenningschiliqueens.html",
+    "https://en.wikipedia.org/wiki/Chili_con_carne"
+   ]
+  },
+  {
+   "id": 6106,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "이 도시 한가운데 솟은 언덕 '아서왕의 자리'는 오래전 꺼진 화산이다.",
+   "after": "'아서왕의 자리'라 불리는 이 도시 동쪽의 언덕은 오래전 꺼진 화산이다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/H1-24 — h-error: 힌트 '도시 한가운데 솟은 언덕'이 Arthur's Seat 문서의 'just to the east of the city centre, about 1 mile east of Edinburgh Castle' 와 어긋남. 질문·해설(Auld Reekie, 더럼, 스콧 1820)은 문서와 일",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Arthur%27s_Seat"
+   ]
+  },
+  {
+   "id": 6116,
+   "cv": "CV-64",
+   "field": "general_hint",
+   "before": "루이 18세와 샤를 10세 때는 아예 금지되었고, 1879년에 다시 나라의 공식 노래로 정해졌다.",
+   "after": "차이콥스키는 '1812년 서곡'에서 침입하는 프랑스군을 나타내려고 이 노래를 인용했다.",
+   "beforeVersion": "hint-v5",
+   "why": "CV-64 V021 g009b/H1-09 — famous-one: 힌트 '루이 18세·샤를 10세 때 금지, 1879년에 다시 나라의 공식 노래' 는 La Marseillaise 문서와 일치(문서는 나폴레옹과 부르봉 왕이 금지)하나 질문에 없는 '나라의 공식 노래=국가' 를 드러내 프랑스 국가라는 정체를 바로 말하게 한다(H9 ② 정체·대표 사건). ",
+   "sources": [
+    "https://en.wikipedia.org/wiki/La_Marseillaise",
+    "https://en.wikipedia.org/wiki/La_Marseillaise",
+    "https://en.wikipedia.org/wiki/La_Marseillaise"
+   ]
+  },
+  {
+   "id": 6121,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "한 신문 기자는 비밀 정보원을 만나고 싶을 때 고층 아파트 발코니에 작은 빨간 깃발을 꽂은 화분을 옮겨 두었고, 정보원은 기자가 받아 보는 '뉴욕 타임스' 20쪽에 시계 바늘을 그려 만날 시각을 알렸습니다. 둘은 버지니아주 로슬린의 한 지하 주차장 맨 아래층에서 만났는데, 이 정보원이 도운 취재가 파헤친 사건은 무엇일까요?",
+   "after": "한 신문 기자는 비밀 정보원을 만나고 싶을 때 고층 아파트 발코니에 작은 빨간 깃발을 꽂은 화분을 옮겨 두었고, 정보원은 '뉴욕 타임스' 20쪽에 시계 바늘을 그려 만날 시각을 알렸다고 증언했습니다.\n두 사람이 만난 곳은 버지니아주 로슬린의 지하 주차장 맨 아래층이라고 합니다. 이 정보원이 도운 취재가 파헤친 사건은 무엇일까요?",
+   "why": "CV-64 V021 g009b/H1-14 — assertive: Deep_Throat 문서가 발코니 화분·20쪽 시계 바늘·로슬린 만남을 우드워드 한 사람의 증언으로 적고 하빌이 불가능하다고 반박한 것도 함께 적는다 → 질문이 사실처럼 단정(15 §3-2 단정어는 출처가 있을 때만). 증언 꼴로 고치면 살린다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)",
+    "https://en.wikipedia.org/wiki/Deep_Throat_(Watergate)"
+   ]
+  },
+  {
+   "id": 6125,
+   "cv": "CV-64",
+   "field": "question_text",
+   "before": "1962년 학자 비토레 브랑카는 베를린 국립도서관의 '해밀턴 90' 사본을 작가가 말년에 지니고 있던 자필본으로 밝혀냈습니다. 이 작품의 마지막 이야기인 참을성 많은 그리셀다 이야기는 페트라르카가 라틴어로 옮기기도 했는데, 이 작품은 무엇일까요?",
+   "after": "1962년 학자 비토레 브랑카는 베를린 국립도서관의 '해밀턴 90' 사본을 작가가 말년에 직접 베껴 쓴 자필본으로 밝혀냈습니다. 이 작품의 마지막 이야기인 참을성 많은 그리셀다 이야기는 페트라르카가 라틴어로 옮기기도 했는데, 이 작품은 무엇일까요?",
+   "why": "CV-64 V021 g009b/A1-02 — fact-error·assertive: 질문의 '작가가 말년에 지니고 있던 자필본' 은 Decameron 문서의 'autograph from Boccaccio's later years'(말년에 직접 쓴 자필본)와 어긋난다 — 문서에 소유(지니고 있던)는 없고 단정이다(Q3). 나머지(1962 브랑카·그리셀다 페트라르카 라틴어",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Decameron",
+    "https://en.wikipedia.org/wiki/Decameron",
+    "https://en.wikipedia.org/wiki/Decameron"
+   ]
+  },
+  {
+   "id": 6130,
+   "cv": "CV-64",
+   "field": "question_answers",
+   "before": null,
+   "after": "낙타상자",
+   "why": "CV-64 V021 g009b/A1-07 — variants: 질문·해설·힌트는 Rickshaw Boy·Lao She 문서와 일치(베스트셀러·이달의 책 클럽 문장은 문서 자체에 citation needed). 한국 표기가 『낙타샹즈』 외에 『낙타상자』(연극·언론)로도 쓰이는데 변형에 없다.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Rickshaw_Boy",
+    "https://en.wikipedia.org/wiki/Rickshaw_Boy",
+    "https://en.wikipedia.org/wiki/Rickshaw_Boy"
+   ]
+  }
+ ],
+ "notTaken": [
+  {
+   "id": 2411,
+   "cv": "제보#2",
+   "field": "variants",
+   "proposal": [
+    "열 팽창"
+   ],
+   "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+  },
+  {
+   "id": 5618,
+   "cv": "CV-64",
+   "field": "variants",
+   "proposal": [
+    "It Happened One Night"
+   ],
+   "why": "넣지 않음 — 게이트 latin — 영문 원어 표기 — 프롬프트가 금지한다"
+  },
+  {
+   "id": 5692,
+   "cv": "CV-64",
+   "field": "variants",
+   "proposal": [
+    "US Open"
+   ],
+   "why": "넣지 않음 — 게이트 latin — 영문 원어 표기 — 프롬프트가 금지한다"
+  },
+  {
+   "id": 5783,
+   "cv": "CV-61",
+   "field": "variants",
+   "proposal": [
+    "횡단 보도"
+   ],
+   "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+  },
+  {
+   "id": 5806,
+   "cv": "CV-64",
+   "field": "variants",
+   "proposal": [
+    "Counter-Strike"
+   ],
+   "why": "넣지 않음 — 15 A5 — 특수문자"
+  },
+  {
+   "id": 5806,
+   "cv": "CV-64",
+   "field": "variants",
+   "proposal": [
+    "Counter Strike"
+   ],
+   "why": "넣지 않음 — 게이트 latin — 영문 원어 표기 — 프롬프트가 금지한다"
+  },
+  {
+   "id": 5811,
+   "cv": "CV-61",
+   "field": "variants",
+   "proposal": [
+    "Moncler"
+   ],
+   "why": "넣지 않음 — 게이트 latin — 영문 원어 표기 — 프롬프트가 금지한다"
+  },
+  {
+   "id": 5899,
+   "cv": "CV-61",
+   "field": "variants",
+   "proposal": [
+    "명성황후 시해사건"
+   ],
+   "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+  },
+  {
+   "id": 6031,
+   "cv": "CV-64",
+   "field": "variants",
+   "proposal": [
+    "저먼셰퍼드"
+   ],
+   "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+  },
+  {
+   "id": 6031,
+   "cv": "CV-64",
+   "field": "variants",
+   "proposal": [
+    "독일셰퍼드"
+   ],
+   "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+  },
+  {
+   "id": 6076,
+   "cv": "CV-64",
+   "field": "variants",
+   "proposal": [
+    "Cabaret"
+   ],
+   "why": "넣지 않음 — 게이트 latin — 영문 원어 표기 — 프롬프트가 금지한다"
+  },
+  {
+   "id": 6098,
+   "cv": "CV-61",
+   "field": "variants",
+   "proposal": [
+    "칠리콘카르네"
+   ],
+   "why": "넣지 않음 — 게이트 redundant — 정규화하면 이미 있는 표기와 같아진다 — 넣어도 판정이 바뀜지 않는다"
+  }
+ ]
+}
