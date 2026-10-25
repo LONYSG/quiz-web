@@ -427,28 +427,24 @@ export function sfx(id: SfxId): void {
 }
 
 /**
- * ★★★ R050 — 케이크 기다리기의 리듬 (찬종: "단순히 띡 띡 띡 소리만 나는게 아니라 하나의 리듬처럼").
- *   1초(화면 기준)마다 한 박 · 4박 중 넷째 박 강세 · 음 높이가 박마다 바뀐다(솔-라-시-도↑) · 박 사이 반 박에 작은 "칫"(하이햇 느낌).
- *   ★ 0초에는 아무 소리도 안 난다(정답 소리 금지) — 부르는 쪽이 0 박을 부르지 않는다. 가려진 뒤에도 부르지 않는다.
- *   ★ 효과음 음량을 따른다. beat = 남은 초(정수), beatSec = 실제 한 박 길이(2배속이면 0.5초)
+ * ★★★ R067 (D-296 · 찬종 "똑·딱") — 고기 굽기 박자. 옛 메트로놈 틱(R066) · 박자 점을 바꿨다.
+ *   strong = 정수 초의 "똑"(낮고 또렷 — 나무 블록 꼴) · weak = 반 초의 "딱"(짧고 작게 · 강세의 40%).
+ *   vol = 1 → 0.25 (가린 뒤 0 까지 점점 작게 — 부르는 쪽이 정한다). 0초에는 부르지 않는다(정답 소리 금지). 효과음 음량을 따른다.
  */
-export function cakeBeat(beat: number, beatSec: number): void {
+export function cakeTick(strong: boolean, vol = 1): void {
   if (!prefs.sfxOn || !ctx || ctx.state !== 'running' || !sfxGain) {
-    logSound('cake-beat', false, !prefs.sfxOn ? 'off' : !ctx ? 'no-ctx' : `ctx-${ctx.state}`);
+    logSound(strong ? 'cake-tock' : 'cake-tick', false, !prefs.sfxOn ? 'off' : !ctx ? 'no-ctx' : `ctx-${ctx.state}`);
     return;
   }
-  logSound('cake-beat', true);
+  logSound(strong ? 'cake-tock' : 'cake-tick', true, `vol ${vol.toFixed(2)}`);
   const t = ctx.currentTime + 0.005;
   const d = sfxGain;
-  // ★★ R066 (D-279 · 찬종 #50 "박자 맞춰주는 음악 더 직관적이고 … 리듬이 더 정확하게") — 메트로놈 꼴: 박마다 짧은 틱 · 4박째(4의 배수 — 0초도 여기) 강세 틱.
-  //   음 높이 · 꼬리가 짧아 박의 앞머리가 또렷하다(옛 멜로디 · 반 박 칫은 뺐다)
-  void beatSec;
-  const accent = beat % 4 === 0;
-  if (accent) {
-    playNote(d, 1760, t, 0.05, { type: 'square', gain: 0.16, attack: 0.001, decay: 0.05 });
-    playNote(d, 880, t, 0.06, { type: 'triangle', gain: 0.22, attack: 0.001, decay: 0.06 });
+  const v = Math.max(0, Math.min(1, vol));
+  if (strong) {
+    playNote(d, 520, t, 0.07, { type: 'triangle', gain: 0.34 * v, attack: 0.001, decay: 0.07 });
+    playNote(d, 260, t, 0.06, { type: 'sine', gain: 0.24 * v, attack: 0.001, decay: 0.06 });
   } else {
-    playNote(d, 1320, t, 0.03, { type: 'square', gain: 0.08, attack: 0.001, decay: 0.03 });
+    playNote(d, 1250, t, 0.025, { type: 'triangle', gain: 0.34 * 0.4 * v, attack: 0.001, decay: 0.025 });
   }
 }
 

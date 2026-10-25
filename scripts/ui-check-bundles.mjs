@@ -73,6 +73,8 @@ export const BUNDLES = [
   { id: 'r063', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R063: '1', SHOT_DIR: 'r063', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R064 — 찬종 제보 #20~#31(결과 화면 2560 · 사진 그림 실패 · 줄바꿈 감사 · 단축키 자리)
   // ★ R066 — 결과 화면 잘림(미니게임만 3명 · 10명 · 퀴즈 접힘 · 펼침 + 채팅 25줄 · 2560 · 1536 · 1280) · 그 밖 R066 화면
+  // ★ R067 — 고기 굽기 새로(상태 다섯 · 1536 · 2560 · m390) · 타자 연습칸 · 기준 날짜 · ⚙ 탭 셋 (R067_ONLY=cake|typing|asof|gear)
+  { id: 'r067', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R067: '1', SHOT_DIR: 'r067', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },
   { id: 'r066', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R066: '1', SHOT_DIR: 'r066', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },
   // ★ R065 — 제보 메뉴 두 갈래(1280 · 1536 · 2560 · m390 · 밤) · 최근 목록 · 제보 창이 열린 채 미니게임(타자 · 풍선)
   { id: 'r065', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R065: '1', SHOT_DIR: 'r065', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5' }) },

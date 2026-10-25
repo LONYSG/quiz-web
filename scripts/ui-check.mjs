@@ -3786,6 +3786,53 @@ const RESULT_FULL = `JSON.stringify((() => {
     cardH: Math.round(r.height), cardBottom: Math.round(r.bottom), chatTop: chat ? Math.round(chat.top) : null, chatH: chat ? Math.round(chat.height) : null, vh: innerHeight };
 })())`;
 const R066_PC = [{ w: 2560, h: 1313 }, { w: 1536, h: 864 }, { w: 1280, h: 720 }];
+// ★★★ R067 — 고기 굽기 새로(상태 다섯 · 세 크기) · 타자 연습칸 · 기준 날짜 · ⚙ 탭 셋
+const R067_MEAT = "JSON.stringify((() => { const c = (sel) => { const r = document.querySelector(sel)?.getBoundingClientRect(); return r ? { x: Math.round((r.left + r.right) / 2), top: Math.round(r.top), bottom: Math.round(r.bottom) } : null; }; const lab = document.querySelector('.cake-stage [data-meat-label]'); const cnt = document.querySelector('.cake-count'); return { count: c('.cake-count'), meat: c('.cake-stage .meat-art'), label: c('.cake-stage [data-meat-label]'), help: c('.cake-help'), text: lab?.innerText ?? '', n: cnt?.dataset.cakeCount, hidden: cnt?.dataset.hidden, op: cnt ? getComputedStyle(cnt).opacity : null, color: cnt ? getComputedStyle(cnt).color : null, dots: document.querySelectorAll('.cake-beats, .cake-dot').length }; })())";
+async function r067CakeFlow(L) {
+  const states = [
+    ['count', 'at=2300'],
+    ['hidden', 'at=7500'],
+    ['pressed-perfect', 'at=11000&pressed=0.1'],
+    ['pressed-raw', 'at=6000&pressed=-3'],
+    ['timeout', 'at=14500'],
+  ];
+  const all = {};
+  for (const [dev, w, h, touch] of [['1536', 1536, 864, false], ['2560', 2560, 1313, false], ['m390', 390, 844, true]]) {
+    await touchDevice(L, w, h, touch);
+    if (!touch) await L.setViewport(w, h);
+    const rows = {};
+    for (const [nm, q] of states) {
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=cake&phase=play&${q}`);
+      await L.waitFor("document.querySelector('.cake-stage') !== null", 8000).catch(() => false);
+      await sleep(nm === 'hidden' ? 900 : 400);
+      rows[nm] = JSON.parse(await L.evaluate(R067_MEAT));
+      await snap(L, `200-cake-${nm}-${dev}`);
+    }
+    all[dev] = rows;
+    const v = Object.values(rows);
+    const meatTop = new Set(v.map((r) => r.meat?.top));
+    const labelTop = new Set(v.map((r) => r.label?.top));
+    const helpTop = new Set(v.map((r) => r.help?.top));
+    record(`★★★ R067 A 고기 ${dev} — 다섯 상태 모두 고기 · 문구 자리 같음(위치 차 0) · 문구 = 고기 가운데 · 초 칸 가운데`, meatTop.size === 1 && labelTop.size === 1 && helpTop.size === 1 && v.every((r) => r.meat && r.label && r.count && Math.abs(r.label.x - r.meat.x) <= 3 && Math.abs(r.count.x - r.meat.x) <= 3), JSON.stringify(rows));
+  }
+  const r = all['1536'];
+  record('★★ R067 A 고기 — 정수 초만 · 가린 뒤 투명(자리 그대로) · 결과 문구(딱 좋게 · 생고기 · 새까맣게 탐) · 박자 점 없음',
+    /^\d+$/.test(r.count.n) && Number(r.count.n) <= 10 && r.count.hidden === '0' && r.hidden.hidden === '1' && Number(r.hidden.op) < 0.05 && r.hidden.count.top === r.count.count.top && /딱 좋게/.test(r['pressed-perfect'].text) && /생고기/.test(r['pressed-raw'].text) && /새까맣게/.test(r.timeout.text) && v067NoDots(all),
+    JSON.stringify({ count: r.count, hidden: r.hidden }));
+  record('★★ R067 A 고기 — 초 글자색이 검정 아님(강조색 쪽)', !/^rgb\(0, 0, 0\)|^rgb\(2[0-9], 2[0-9], 3[0-9]\)/.test(r.count.color ?? 'rgb(0, 0, 0)'), r.count.color);
+}
+function v067NoDots(all) {
+  return Object.values(all).every((rows) => Object.values(rows).every((x) => x.dots === 0));
+}
+async function r067Flow(browser) {
+  const L = await newPage(browser, 'U-lab', true);
+  await L.setViewport(1536, 864);
+  await signUp(L, 'ul', '실험실');
+  if (!process.env.R067_ONLY || process.env.R067_ONLY === 'cake') await r067CakeFlow(L);
+  await touchDevice(L, 1536, 864, false);
+  await L.setViewport(1536, 864);
+}
+
 async function r066ResultAt(H, label, shot) {
   const out = {};
   for (const z of R066_PC) {
@@ -4834,6 +4881,11 @@ async function minigameFlow(browser) {
     await closeAllTabs(browser);
     if (process.env.R066_ONLY !== 'lab') await r066ResultFlow(browser);
     if (process.env.R066_ONLY !== 'result') await r066Flow(browser);
+  }
+  // ★ R067 — 고기 굽기 새로 · 타자 연습칸 · 기준 날짜 · ⚙
+  if (process.env.UICHECK_R067) {
+    await closeAllTabs(browser);
+    await r067Flow(browser);
   }
   // ★ R065 — 제보 메뉴 두 갈래 · 최근 목록 · 창이 열린 채 미니게임
   if (process.env.UICHECK_R065) {

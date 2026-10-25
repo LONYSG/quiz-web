@@ -483,7 +483,8 @@ export const CAKE_ROUNDS: readonly CakeRound[] = [
 ];
 /** 0초가 지나도 이만큼(실제 시간)은 누를 수 있다 */
 export const CAKE_LATE_MS = 3_000;
-export const CAKE_FADE_MS = 500;
+/** ★ R067 — 초가 사라지는 시간(스르륵 · 자리는 그대로) */
+export const CAKE_FADE_MS = 600;
 /**
  * ★ R063 (D-261 · 찬종 #13 "10초라면 … 사실상 11초 정도의 시간을 주고 … 10, 9, 8, 7 ..") — 처음 1초(화면 기준)는 "10.00" 에 멈춰 있다가
  *   10.00 → 0.00 으로 흐른다. 목표 = 0.00 이 되는 순간 = (설정 초 + 1) 화면 초.

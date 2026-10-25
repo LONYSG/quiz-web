@@ -5004,54 +5004,57 @@ button.primary.tone-warn {
 .mg-result .mg-thumbs {
   grid-column: 1 / -1;
 }
-/* ── 케이크 기다리기 */
+/* ── 고기 굽기 — ★ R067 (D-294) 세로 한 줄 [초] / [고기] / [결과 문구] / [도움] 모두 가운데 · 칸 높이 고정 */
 .cake-stage {
   position: relative;
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px 24px;
+  gap: 4px;
   padding: 8px 0 4px;
+  text-align: center;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   cursor: pointer;
 }
 .cake-count {
-  font-size: clamp(3rem, 9vw, 5.4rem);
+  font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 900;
   line-height: 1;
-  color: var(--text);
-  min-width: 4.2ch;
-  text-align: right;
-  transition: opacity 60ms linear;
+  height: 1.05em;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  transition-property: opacity;
+  transition-timing-function: ease-out;
+}
+.cake-num {
+  display: inline-block;
+  min-width: 1.2ch;
+  animation: cake-pulse 180ms ease-out;
+}
+@keyframes cake-pulse {
+  from { transform: scale(1.15); }
+  to { transform: scale(1); }
 }
 .cake-unit {
   font-size: 0.35em;
   margin-left: 0.15em;
   color: var(--text-dim);
 }
-.cake-hidden-note {
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  transform: translateX(-120%);
+.cake-help {
   margin: 0;
-  font-weight: 900;
+  min-height: 1.5em;
+  font-weight: 800;
   color: var(--text-dim);
+}
+.cake-help.breathe {
   animation: mg-breathe 1.6s ease-in-out infinite;
 }
 @keyframes mg-breathe {
   0%, 100% { opacity: 0.35; }
   50% { opacity: 0.9; }
-}
-.cake-help {
-  grid-column: 1 / -1;
-  margin: 0;
-  text-align: center;
-  font-weight: 800;
-  color: var(--text-dim);
 }
 .cake-stage.pressed .cake-help {
   color: var(--accent);
@@ -5091,7 +5094,7 @@ button.primary.tone-warn {
   50% { opacity: 0.85; }
   100% { transform: translateY(-4px); opacity: 0; }
 }
-/* ★ R066 (D-279) — 박자 점 4개 · 넷째가 강세(크게) */
+/* ★ R066 (D-285) — 타자 언어 */
 .typing-lang-warn {
   margin: 0 0 4px;
   color: var(--bad, #d9485f);
@@ -5106,31 +5109,6 @@ button.primary.tone-warn {
   font-size: 1.6em;
   margin-left: 0.3em;
   color: var(--accent);
-}
-.cake-beats {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  height: 18px;
-}
-.cake-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--border);
-  transition: background 60ms linear, transform 60ms linear;
-}
-.cake-dot.strong {
-  width: 14px;
-  height: 14px;
-}
-.cake-dot.on {
-  background: var(--accent);
-  transform: scale(1.25);
-}
-.cake-dot.strong.on {
-  background: var(--accent-2);
 }
 .mg-cake-result {
   display: grid;
@@ -5377,16 +5355,8 @@ button.primary.tone-warn {
   flex-direction: column;
   text-align: center;
 }
-:where(.ui-mobile) .cake-stage {
-  grid-template-columns: auto;
-  justify-items: center;
-}
 :where(.ui-mobile) .balance-svg {
   width: min(100%, 92vw, 420px);
-}
-:where(.ui-mobile) .cake-hidden-note {
-  position: static;
-  transform: none;
 }
 
 /* =============================================================================
@@ -7453,11 +7423,6 @@ button.mg-cat-card.on .mg-cat-check {
 }
 
 /* ★★ R063 (D-261) — 고기 굽기: 큰 정수 · 작은 소수 · 익은 정도 글 */
-.cake-count .cake-small {
-  font-size: 0.42em;
-  font-weight: 800;
-  opacity: 0.75;
-}
 .meat-art.sizzle .meat-steam {
   animation: meat-steam 0.9s ease-in-out infinite alternate;
 }
@@ -7467,6 +7432,8 @@ button.mg-cat-card.on .mg-cat-check {
 }
 .meat-label {
   margin: 4px 0 0;
+  min-height: 1.5em; /* ★ R067 — 비어 있어도 자리를 차지(글이 있을 때와 같은 높이) */
+  line-height: 1.5;
   text-align: center;
   font-weight: 900;
   font-size: 1rem;

@@ -82,7 +82,14 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
   })();
   // ★ R051 — 장면 상태 (?state= — 번개손 wait/fake-color/fake-text/go · 타자 typed 글 · 원 · 각도는 기본)
   const sceneState = new URLSearchParams(window.location.search).get('state') ?? '';
-  const playAgo = key === 'reaction' ? ({ wait: 600, 'fake-color': 1300, 'fake-text': 1300, go: 3050 } as Record<string, number>)[sceneState] ?? 600 : 2300;
+  // ★ R067 — 고기 굽기 play: ?at=ms(판 시작부터 · 기본 2300 = 숫자 보임 · 7500 = 가림 · 14500 = 시간 끝) · ?pressed=오차초(누른 뒤)
+  const qs = new URLSearchParams(window.location.search);
+  const playAgo =
+    key === 'reaction'
+      ? ({ wait: 600, 'fake-color': 1300, 'fake-text': 1300, go: 3050 } as Record<string, number>)[sceneState] ?? 600
+      : key === 'cake' && qs.get('at') !== null
+        ? Number(qs.get('at'))
+        : 2300;
   const roundParams = quiz
     ? quiz.params
     : key === 'reaction'
@@ -153,6 +160,8 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
         ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 2000) }
         : key === 'reaction' && phase === 'play'
         ? { elapsedMs: playAgo }
+        : key === 'cake' && phase === 'play' && qs.get('pressed') !== null
+        ? { pressedErr: Number(qs.get('pressed')) }
         : key === 'typing' && sceneState === 'typed'
           ? { typed: `${[...TYPING_KO_SHORT[0]!].slice(0, 6).join('')}리 ㄱ`, composing: true }
           : key === 'typing' && sceneState === 'wronglang'

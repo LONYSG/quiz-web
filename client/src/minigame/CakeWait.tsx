@@ -8,14 +8,18 @@
 //   단순히 띡 띡 띡 소리만 나는게 아니라 하나의 리듬처럼."
 // ★ 잰다: **이 기기에서** 판 시작 신호를 받은 순간(performance.now) → 누른 순간. 그 ms 를 서버에 보낸다(서버는 이상값만 거른다).
 //   → 네트워크 지연은 받는 순간 · 보내는 순간에만 끼고 잰 시간에는 끼지 않는다(봇 cakelag — 지연 0 · 150 · 400ms).
-// ★ 화면: 큰 카운트다운(소수 둘째 자리까지 흘러감) + 오븐 속 케이크 · 가림 시점부터 0.5초 페이드아웃(숫자 · 소리 둘 다) · 0초에 소리 없음.
+// ★★★ R067 (D-294 · 찬종 "기존 거 필요 없고 내 요구사항에 맞춰서 새로 만들어") — 화면 · 소리 새로:
+//   · 세로 한 줄 [초] / [고기] / [결과 문구] / [도움 한 줄] 모두 가운데 · 초 칸은 끝까지 자리를 차지(사라질 때 투명도만)
+//     → 안 누름 · 누름 · 시간 끝 어느 상태든 고기와 문구 자리가 같다(옛 2열 격자는 투명 카운트가 1열을 차지해 문구가 왼쪽 아래로 갔다)
+//   · 숫자는 정수 초만 · 강조색 → 0 에 가까울수록 주황 → 빨강 · 바뀔 때마다 박동 · 가림 구간에 0.6초 스르륵
+//   · 소리 똑·딱(cakeTick) — 1초마다 "똑" · 0.5초마다 작은 "딱" · 가린 뒤에도 이어지되 0 까지 점점 작게(1 → 0.25) · 0 에서 멈춤
 // ★ 누르기: PC Space · Enter / 모바일 화면 톡 — 한 번만. 0초가 지나도 3초까지 누를 수 있다. 안 누르면 그 판 꼴찌.
 // =============================================================================
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { CAKE_FADE_MS, CAKE_HOLD_SEC, cakeDisplaySec, meatDoneness } from '@quiz/shared';
-import { cakeBeat, sfx } from '../sound.js';
+import { cakeTick, sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { typingTarget } from '../reportGuard.js';
 
@@ -24,6 +28,14 @@ interface Props {
   view: MinigameView;
   serverNow: () => number;
   mobile: boolean;
+}
+
+/** ★ R067 — 초 글자색: 테마 강조색 → 주황 → 빨강 (p 0 = 시작 · 1 = 0초 · 밤 테마도 같은 식) */
+function countColor(p: number): string {
+  const x = Math.max(0, Math.min(1, p));
+  return x <= 0.5
+    ? `color-mix(in oklab, var(--accent) ${Math.round(100 - x * 200)}%, #ff8a1f)`
+    : `color-mix(in oklab, #ff8a1f ${Math.round(200 - x * 200)}%, #e8392f)`;
 }
 
 export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
@@ -46,7 +58,10 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
   const t0 = t0Ref.current?.key === key ? t0Ref.current.t0 : null;
 
   const [now, setNow] = useState(() => performance.now());
-  const [pressed, setPressed] = useState<{ key: string; elapsed: number } | null>(null);
+  // ★ 실험실 — 누른 뒤 모습(?pressed=오차초)
+  const [pressed, setPressed] = useState<{ key: string; elapsed: number } | null>(() =>
+    view.lab?.pressedErr !== undefined ? { key, elapsed: targetMs + view.lab.pressedErr * 1000 } : null,
+  );
   const pressedHere = pressed?.key === key ? pressed : null;
 
   useEffect(() => {
@@ -65,27 +80,25 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
   const remainSec = cakeDisplaySec(durationSec, shownElapsedSec);
   // ★ R063 — 가림은 "흐르기 시작한 뒤 hideAfterSec 초" (처음 1초 멈춤 뒤부터 센다)
   const hideStart = hideAfterSec + CAKE_HOLD_SEC;
-  const fade = shownElapsedSec <= hideStart ? 1 : Math.max(0, 1 - ((shownElapsedSec - hideStart) * 1000) / speed / CAKE_FADE_MS);
-  const hidden = fade <= 0;
+  const endSec = durationSec + CAKE_HOLD_SEC; // 화면 0초가 되는 때
+  const hidden = shownElapsedSec > hideStart;
   const over = elapsed > targetMs + lateMs;
+  const done = Boolean(pressedHere) || view.selfSubmitted;
 
-  // ── 리듬: 화면 숫자가 정수(10.00 · 9.00 …)에 닿을 때마다 한 박 (가려지기 전까지 · 0초는 소리 없음)
-  //   ★ R063 — 처음 1초 멈춤이 끝나는 순간이 "10" · 그 뒤 1초마다 9 · 8 … → "0" 박자가 곧 목표
-  const beatRef = useRef<{ key: string; last: number } | null>(null);
-  // ★ R066 (D-279) — 박자 점 4개(넷째가 강세 · 0초는 늘 넷째) — 박마다 차례로 켜진다
-  const [lit, setLit] = useState<number | null>(null);
+  // ── ★ R067 똑·딱: 반 초(화면 기준)마다 한 번 — 정수 초에 "똑" · 그 사이 반 초에 작은 "딱".
+  //   처음 1초 멈춤 동안은 조용 · 첫 "똑" = 10 → 9 로 넘어가는 순간 · 0 에 닿으면 멈춤(정답 소리 금지) · 누르면 멈춤.
+  //   가린 뒤에도 이어지되 0 까지 점점 작게(1 → 0.25) — 리듬만 남긴다.
+  const tickRef = useRef<{ key: string; last: number } | null>(null);
   useEffect(() => {
-    if (!playing || t0 === null) return;
-    const crossed = durationSec + CAKE_HOLD_SEC - Math.floor(shownElapsedSec + 1e-6); // 방금 닿은 정수
-    if (beatRef.current?.key !== key) {
-      beatRef.current = { key, last: durationSec + 1 };
-    }
-    if (crossed <= durationSec && crossed < beatRef.current.last && crossed > 0 && shownElapsedSec < hideStart + 1e-6) {
-      beatRef.current.last = crossed;
-      cakeBeat(crossed, 1 / speed);
-      setLit(3 - (crossed % 4));
-    }
-  }, [playing, t0, key, shownElapsedSec, durationSec, hideStart, speed]);
+    if (!playing || t0 === null || done) return;
+    if (tickRef.current?.key !== key) tickRef.current = { key, last: 1 };
+    const half = Math.floor(shownElapsedSec * 2 + 1e-6); // 지난 반 초 수
+    if (half <= tickRef.current.last || half >= endSec * 2) return;
+    tickRef.current.last = half;
+    const at = half / 2;
+    const vol = at <= hideStart ? 1 : 1 - 0.75 * Math.min(1, (at - hideStart) / Math.max(0.5, endSec - hideStart));
+    cakeTick(half % 2 === 0, vol);
+  }, [playing, t0, key, shownElapsedSec, endSec, hideStart, done]);
 
   const press = () => {
     if (!canPlay || pressedHere || t0 === null || view.selfSubmitted) return;
@@ -110,13 +123,23 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
     return () => window.removeEventListener('keydown', onKey, true);
   });
 
-  // ★ R063 — 큰 정수 + 작은 소수 ("10" 크게 ".00" 작게)
-  const [bigPart, smallPart] = remainSec.toFixed(2).split('.');
-  const done = Boolean(pressedHere) || view.selfSubmitted;
+  // ★ R067 — 정수 초만(10 · 9 … 0) · 바뀌는 순간 = 똑
+  const n = Math.ceil(remainSec - 1e-6);
   // ★ 고기: 판 동안은 가려지는 순간까지만 익는다 · 누르면 내 굽기 · 시간이 지나면 탐
   const cookUntil = Math.min(shownElapsedSec, hideStart);
-  const playD = Math.min(0.85, (cookUntil / (durationSec + CAKE_HOLD_SEC)) * 1.1);
+  const playD = Math.min(0.85, (cookUntil / endSec) * 1.1);
   const mineD = pressedHere ? meatDoneness((pressedHere.elapsed - targetMs) / 1000) : over ? meatDoneness(null) : null;
+  const help = view.spectating
+    ? '구경 중이에요'
+    : done
+      ? '눌렀어요! 결과를 기다리는 중…'
+      : over
+        ? '시간이 지났어요'
+        : hidden
+          ? '리듬을 기억하세요…'
+          : mobile
+            ? '0초가 되는 순간 화면을 톡!'
+            : '0초가 되는 순간 Space / Enter!';
 
   return (
     <div
@@ -130,32 +153,25 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
         press();
       }}
     >
-      <div className="cake-count mono" style={{ opacity: hidden ? 0 : fade }} aria-live="off" data-hidden={hidden ? '1' : '0'}>
-        <span className="cake-big">{bigPart}</span>
-        <span className="cake-small">.{smallPart}</span>
+      {/* 초 칸 — 사라져도 자리는 그대로(투명도만) */}
+      <div
+        className="cake-count mono"
+        style={{ opacity: hidden ? 0 : 1, transitionDuration: `${CAKE_FADE_MS}ms`, color: countColor(1 - n / Math.max(1, durationSec)) }}
+        aria-live="off"
+        data-hidden={hidden ? '1' : '0'}
+        data-cake-count={n}
+      >
+        <span key={n} className="cake-num">
+          {n}
+        </span>
         <span className="cake-unit">초</span>
       </div>
-      {!hidden && !done && !over && playing && (
-        <div className="cake-beats" aria-hidden="true">
-          {[0, 1, 2, 3].map((i) => (
-            <span key={i} className={`cake-dot${i === 3 ? ' strong' : ''}${lit === i ? ' on' : ''}`} />
-          ))}
-        </div>
-      )}
-      {hidden && !done && !over && <p className="cake-hidden-note">리듬을 기억하세요…</p>}
       <MeatArt d={mineD ? mineD.d : playD} sizzle={playing && !done && !over} />
-      {mineD && !view.spectating && <p className={`meat-label ${mineD.level}`}>{mineD.label}</p>}
-      <p className="cake-help">
-        {view.spectating
-          ? '구경 중이에요'
-          : done
-            ? '눌렀어요! 결과를 기다리는 중…'
-            : over
-              ? '시간이 지났어요'
-              : mobile
-                ? '0초가 되는 순간 화면을 톡!'
-                : '0초가 되는 순간 Space / Enter!'}
+      {/* 결과 문구 칸 — 비어 있어도 자리를 차지 */}
+      <p className={`meat-label${mineD && !view.spectating ? ` ${mineD.level}` : ''}`} data-meat-label>
+        {mineD && !view.spectating ? mineD.label : ''}
       </p>
+      <p className={`cake-help${hidden && !done && !over ? ' breathe' : ''}`}>{help}</p>
     </div>
   );
 }
