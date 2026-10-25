@@ -3821,6 +3821,37 @@ async function r067CakeFlow(L) {
     JSON.stringify({ count: r.count, hidden: r.hidden }));
   record('★★ R067 A 고기 — 초 글자색이 검정 아님(강조색 쪽)', !/^rgb\(0, 0, 0\)|^rgb\(2[0-9], 2[0-9], 3[0-9]\)/.test(r.count.color ?? 'rgb(0, 0, 0)'), r.count.color);
 }
+/** ★ R067 B — 타자 연습 입력칸: 준비 단계에 입력칸 · 자동 포커스 · 친 글은 판 시작에 비워지고 같은 칸에 포커스가 남는다 */
+async function r067TypingFlow(browser) {
+  for (const [dev, w, h, touch] of [['pc', 1536, 864, false], ['m390', 390, 844, true]]) {
+    const H = await newPage(browser, `U-typ-${dev}`, true);
+    await H.setViewport(1536, 864);
+    await signUp(H, `ut${dev}`.slice(0, 6), `타자${dev}`);
+    await createRoom(H, 'R067 타자');
+    if (touch) {
+      await touchDevice(H, w, h);
+      await H.evaluate("window.dispatchEvent(new Event('resize'))");
+      await sleep(400);
+    } else await H.setViewport(w, h);
+    await r051Start(H, 'typing');
+    const ready = await waitPhase(H, 'ready', 20000);
+    await sleep(400);
+    const r1 = JSON.parse(await H.evaluate("JSON.stringify((() => { const el = document.querySelector('[data-typing-input]'); if (el) el.__r067 = 1; return { has: !!el, practice: document.querySelector('[data-typing-practice]')?.dataset.typingPractice, focused: !!el && document.activeElement === el, ph: el?.placeholder ?? '', target: !!document.querySelector('.typing-target'), lang: document.querySelector('[data-typing-lang]')?.innerText ?? '' }; })())"));
+    await H.send('Input.insertText', { text: 'abc' });
+    await sleep(250);
+    const r2 = JSON.parse(await H.evaluate("JSON.stringify({ v: document.querySelector('[data-typing-input]')?.value ?? null, warn: !!document.querySelector('[data-typing-lang-warn]') })"));
+    await snap(H, `210-typing-practice-${dev}`);
+    const play = await waitPhase(H, 'play', 15000);
+    await sleep(300);
+    const r3 = JSON.parse(await H.evaluate("JSON.stringify((() => { const el = document.querySelector('[data-typing-input]'); return { v: el?.value ?? null, same: !!el && el.__r067 === 1, focused: !!el && document.activeElement === el, target: !!document.querySelector('.typing-target') }; })())"));
+    await snap(H, `211-typing-play-${dev}`);
+    const ko = /한글/.test(r1.lang);
+    record(`★★★ R067 B 타자 연습칸 ${dev} — 준비 단계 입력칸 · 자동 포커스 · "여기서 미리 쳐 보세요" · 문장은 아직 없음`, ready && r1.has && r1.practice === '1' && r1.focused && /미리 쳐/.test(r1.ph) && !r1.target, JSON.stringify(r1));
+    record(`★★ R067 B 타자 연습칸 ${dev} — 친 글이 남고 · 틀린 언어면 빨간 안내(한글 판에 영문)`, r2.v === 'abc' && r2.warn === ko, JSON.stringify({ ...r2, ko }));
+    record(`★★★ R067 B 타자 연습칸 ${dev} — 판 시작에 비워지고 같은 칸에 포커스 그대로`, play && r3.v === '' && r3.same && r3.focused && r3.target, JSON.stringify(r3));
+    H.close();
+  }
+}
 function v067NoDots(all) {
   return Object.values(all).every((rows) => Object.values(rows).every((x) => x.dots === 0));
 }
@@ -3829,6 +3860,7 @@ async function r067Flow(browser) {
   await L.setViewport(1536, 864);
   await signUp(L, 'ul', '실험실');
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'cake') await r067CakeFlow(L);
+  if (!process.env.R067_ONLY || process.env.R067_ONLY === 'typing') await r067TypingFlow(browser);
   await touchDevice(L, 1536, 864, false);
   await L.setViewport(1536, 864);
 }

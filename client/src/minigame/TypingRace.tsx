@@ -5,6 +5,8 @@
 // ★ 제시 문장은 `.no-copy`(복사 · 끌기 · 선택 막기 — noCopy.ts) · 입력칸은 **붙여넣기 · 끌어 놓기 막기**(paste · drop · beforeinput).
 // ★ 완성 = 입력이 제시와 정확히 같은 순간(NFC). 틀린 글자는 빨갛게 — 지워야 진행(같아질 수 없으니).
 // ★ 시간 = 판 시작 신호를 받은 순간(문장이 보인 때)부터 — 기기 시간. 치는 동안 0.4초마다 진행 글(임시)을 보낸다(못 끝내면 진행률 순위).
+// ★★ R067 (D-297) — 준비(ready) 단계에는 **연습 입력칸**: 문장 · 시간 막대 없이 입력칸만(자동 포커스 · "여기서 미리 쳐 보세요") · 점수 없음 ·
+//   틀린 언어면 R066 빨간 안내 그대로. play 로 넘어가는 순간 칸을 비우고 포커스는 그대로(같은 input — MinigameStage 가 같은 자리에 둔다).
 // ★ 모바일: autocapitalize · autocorrect · spellcheck 끔 · 키보드가 올라오면 입력칸을 화면 가운데로(문장은 입력칸 바로 위).
 // =============================================================================
 
@@ -30,6 +32,7 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
   const playMs = view.round?.playMs ?? 30000;
   const playing = view.phase === 'play';
   const canPlay = playing && !view.spectating;
+  const practice = view.phase === 'ready' && !view.spectating; // ★ R067 연습 입력칸
   const { key, t0 } = usePlayT0(view, serverNow);
   const now = useFrameNow(playing);
   const [text, setText] = useState(view.lab?.typed ?? '');
@@ -40,6 +43,8 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const textRef = useRef(text);
   textRef.current = text;
+  const composingRef = useRef(composing);
+  composingRef.current = composing;
   const dirty = useRef(false);
 
   // 판이 바뀌면 비운다
@@ -75,6 +80,33 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
     }, 30);
     return () => window.clearTimeout(id);
   }, [canPlay, mobile, key]);
+  // ★ R067 — 연습 입력칸: 준비 화면이 뜨면 포커스(제보 창이 열려 있으면 건너뜀)
+  useEffect(() => {
+    if (!practice) return undefined;
+    const id = window.setTimeout(() => {
+      if (isReportOpen()) return;
+      inputRef.current?.focus({ preventScroll: true });
+    }, 30);
+    return () => window.clearTimeout(id);
+  }, [practice, key]);
+  // ★ R067 — 판 시작: 연습한 글을 비운다(포커스는 그대로 · 조합 중이면 먼저 끊는다)
+  const wasPractice = useRef(false);
+  useEffect(() => {
+    if (practice) {
+      wasPractice.current = true;
+      return;
+    }
+    if (!playing || !wasPractice.current) return;
+    wasPractice.current = false;
+    const el = inputRef.current;
+    if (composingRef.current && el && document.activeElement === el) {
+      el.blur();
+      el.focus({ preventScroll: true });
+    }
+    setComposing(false);
+    setText('');
+    dirty.current = false;
+  }, [practice, playing]);
   useEffect(() => {
     if (!mobile || !canPlay || !window.visualViewport) return undefined;
     const vv = window.visualViewport;
@@ -98,6 +130,10 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
 
   const doneKey = useRef<string | null>(null);
   const onValue = (v: string) => {
+    if (practice) {
+      setText(v); // 연습 — 점수 없음 · 보내지 않는다
+      return;
+    }
     if (!canPlay || mine || over || t0 === null || doneKey.current === key) return;
     setText(v);
     dirty.current = true;
@@ -141,20 +177,26 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
   const want = chars[typed.length - 1] ?? '';
   const isKo = (c: string) => /[ᄀ-ᇿㄱ-ㆎ가-힣]/.test(c);
   const isEn = (c: string) => /[A-Za-z]/.test(c);
-  const wrongLang = canPlay && !mine && !over && lastT !== '' && ((isKo(want) && isEn(lastT)) || (isEn(want) && isKo(lastT)));
+  const wrongLang = practice
+    ? lastT !== '' && ((lang === 'ko' && isEn(lastT)) || (lang === 'en' && isKo(lastT)))
+    : canPlay && !mine && !over && lastT !== '' && ((isKo(want) && isEn(lastT)) || (isEn(want) && isKo(lastT)));
 
   return (
-    <div className={`typing-stage${mobile ? ' m' : ''}${mine ? ' done' : ''}`} data-done={mine ? '1' : '0'}>
-      <div className="typing-bar" aria-hidden="true">
-        <span style={{ width: `${(mine ? 0 : leftRatio) * 100}%` }} />
-      </div>
-      <p ref={targetRef} className={`typing-target no-copy lang-${lang}`} lang={lang} aria-label="따라 칠 문장">
-        {chars.map((ch, i) => (
-          <span key={i} className={`tc ${marks[i]}${ch === ' ' ? ' sp' : ''}`}>
-            {ch}
-          </span>
-        ))}
-      </p>
+    <div className={`typing-stage${mobile ? ' m' : ''}${mine ? ' done' : ''}${practice ? ' practice' : ''}`} data-done={mine ? '1' : '0'} data-typing-practice={practice ? '1' : '0'}>
+      {!practice && (
+        <>
+          <div className="typing-bar" aria-hidden="true">
+            <span style={{ width: `${(mine ? 0 : leftRatio) * 100}%` }} />
+          </div>
+          <p ref={targetRef} className={`typing-target no-copy lang-${lang}`} lang={lang} aria-label="따라 칠 문장">
+            {chars.map((ch, i) => (
+              <span key={i} className={`tc ${marks[i]}${ch === ' ' ? ' sp' : ''}`}>
+                {ch}
+              </span>
+            ))}
+          </p>
+        </>
+      )}
       {wrongLang && (
         <p className="typing-lang-warn" data-typing-lang-warn role="alert">
           한/영 키를 누르세요
@@ -162,12 +204,13 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
       )}
       <input
         ref={inputRef}
-        className={`typing-input${hasBad ? ' bad' : ''}`}
+        className={`typing-input${hasBad && !practice ? ' bad' : ''}`}
         type="text"
         lang={lang}
         value={text}
-        disabled={!canPlay || Boolean(mine) || over}
-        placeholder={view.spectating ? '구경 중' : mobile ? '여기를 눌러 입력' : '여기에 입력'}
+        disabled={!practice && (!canPlay || Boolean(mine) || over)}
+        placeholder={view.spectating ? '구경 중' : practice ? '여기서 미리 쳐 보세요' : mobile ? '여기를 눌러 입력' : '여기에 입력'}
+        data-typing-input
         autoComplete="off"
         autoCorrect="off"
         autoCapitalize="off"
@@ -198,6 +241,8 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
       <p className="typing-help">
         {view.spectating ? (
           '구경 중이에요'
+        ) : practice ? (
+          '연습 — 점수 없음 · 시작하면 비워져요'
         ) : mine ? (
           <>
             <strong className="mono">{(mine.ms / 1000).toFixed(2)}초</strong> — 다 쳤어요! 다른 사람을 기다리는 중…

@@ -227,7 +227,11 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         </div>
       )}
 
-      {view.phase === 'play' && <PlayView socket={socket} view={view} serverNow={serverNow} mobile={mobile} />}
+      {/* ★ R067 (D-297) — 타자는 준비 단계부터 같은 입력칸(연습 → 판 시작에 비우고 포커스 유지 · 모바일 키보드가 내려가지 않게 같은 요소) */}
+      {view.key === 'typing' && (view.phase === 'ready' || view.phase === 'play') && (
+        <TypingRace socket={socket} view={view} serverNow={serverNow} mobile={mobile} />
+      )}
+      {view.phase === 'play' && view.key !== 'typing' && <PlayView socket={socket} view={view} serverNow={serverNow} mobile={mobile} />}
 
       {view.phase === 'play' && !view.spectating && (
         <p className="mg-submitted dim">

@@ -15,6 +15,7 @@ import {
   CIRCLE_PLAY_MS,
   TYPING_MIN_MS_PER_CHAR,
   TYPING_PLAY_MS,
+  TYPING_READY_MS,
   TYPING_UNFINISHED_BASE,
   angleError,
   angleStart,
@@ -289,6 +290,7 @@ const typing: MinigameDef = {
       itemKey: `typing-${r.lang}-${r.size}-${r.index}`,
       params: { lang: r.lang, size: r.size, text: r.text },
       playMs: TYPING_PLAY_MS,
+      readyMs: TYPING_READY_MS, // ★ R067 — 연습 입력칸(+3초)
       seed: seed + i,
     }));
   },

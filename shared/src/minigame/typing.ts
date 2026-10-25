@@ -14,6 +14,11 @@ import { TYPING_EN, TYPING_KO_LONG, TYPING_KO_SHORT } from './typing-sentences.j
 
 export const TYPING_ROUNDS = 3;
 export const TYPING_PLAY_MS = 30_000;
+/**
+ * ★ R067 (D-297 · 찬종 "시간을 좀 더 늘리더라도 직접 키보드로 칠 수 있게 중간 대기 때 텍스트 상자") — 타자만 준비(ready)를 3초 더(1.5 → 4.5초).
+ *   그동안 연습 입력칸에 미리 쳐 본다(점수 없음) · 다른 게임 준비 시간은 그대로(MINIGAME_TIMING.READY_MS).
+ */
+export const TYPING_READY_MS = 4_500;
 /** 한 글자에 이보다 빠르면 사람 손이 아니다 (붙여넣기 · 조작) */
 export const TYPING_MIN_MS_PER_CHAR = 40;
 /** 못 끝낸 사람의 순위 값 — 끝낸 사람(≤ 30초)보다 항상 뒤 · 진행률이 높을수록 앞 */
