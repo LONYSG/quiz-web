@@ -1,229 +1,259 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "world-language/4",
-  "midKey": "world-language",
-  "subName": "세계 언어 분포",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-language/4#g019a-L1-11",
-   "seed": {
-    "subject": "독일어",
-    "aspect": null,
-    "ref": "L1-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "오이펜에 따로 의회와 정부를 둔 한 언어 공동체는 아홉 개 기초 자치 단체로 이루어져 있고, 정치적 과거를 함께한 이웃 말메디와 바임은 이 공동체에 들지 않습니다. 1973년 나라 안 세 언어 공동체의 하나로 자치를 얻은 이 공동체가 쓰는 언어는?",
-    "answer": "독일어",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이 일대는 1920년까지 독일 제국 프로이센의 라인주에 속했다가 베르사유 조약으로 벨기에 땅이 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "엮음: 1973년 나라 안 세 언어 공동체의 하나 + 오이펜",
-     "difWhy": "벨기에 동부 언어 공동체 — 대학 교양 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 벨기에 언어 지리",
-     "acc": 3,
-     "accWhy": "언어·어원 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "벨기에의 세 공용어 가운데 이 공동체가 쓰는 언어",
-     "difWhy": "벨기에 동부 독일어권 — 관심 있는 사람",
-     "wor": 4,
-     "worWhy": "교양 — 벨기에 언어 구성"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "벨기에 동부 오이펜에는 아홉 개 기초 자치 단체로 이루어진 한 언어 공동체가 따로 의회와 정부를 두고 있습니다. 벨기에의 세 공용어 가운데 이 공동체가 쓰는 언어는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "벨기에의 세 공용어 가운데 (나라 이름과 세 선택지)",
-     "addedCue": "말메디·바임은 들지 않음 · 1973년 세 언어 공동체의 하나로 자치",
-     "why": "나라 이름과 세 공용어 선택지를 빼고 오이펜·말메디의 공동체 경계로 엮음"
-    },
-    "generalHint": "이 공동체의 아홉 자치 단체는 북쪽 오이펜 칸톤과 남쪽 장크트피트 칸톤으로 나뉜다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "독일·오스트리아에서 쓰는 언어",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 언어",
-     "piece": "f04",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "L1-11",
-     "key": "b117",
-     "hint": "이 공동체의 아홉 자치 단체는 북쪽 오이펜 칸톤과 남쪽 장크트피트 칸톤으로 나뉜다.",
-     "guess": "벨기에 독일어 공동체",
-     "confidence": "high",
-     "hit": true,
-     "answer": "독일어"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium"
-    ],
-    "facts": [
-     {
-      "claim": "아홉 개 자치 단체, 오이펜에 의회·정부",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
-      "note": "The community comprises nine municipalities in Liège Province, Wallonia, within the Eupen-Malmedy region in Eastern Belgium. ... the area has its own parliament and government at Eupen."
-     },
-     {
-      "claim": "벨기에 독일어 공동체(세 언어 공동체 중 하나)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
-      "note": "German-speaking Community of Belgium — Eupen is the seat of the government, the parliament and the administrative centre."
-     },
-     {
-      "claim": "1920년까지 프로이센 라인주, 베르사유 조약으로 벨기에",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
-      "note": "The East Cantons were part of the Rhine Province of Prussia in the German Empire until 1920 ... but were annexed by Belgium following Germany's defeat in World War I and the subsequent Treaty of Versailles."
-     },
-     {
-      "claim": "말메디·바임은 동부 칸톤에 함께 묶이지만 프랑스어 공동체에 속함 · 공통의 정치적 과거",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
-      "note": "The area known today as the East Cantons consists of the German-speaking Community and the municipalities of Malmedy and Waimes (German: Weismes), which belong to the French Community of Belgium. ... the nine German-speaking communities, together with the communities of Malmedy and Weismes, are historically called East Belgium or East Cantons because of their common political past"
-     },
-     {
-      "claim": "1973년 세 공동체와 세 지역이 세워져 자치를 얻음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
-      "note": "In 1973, three communities and three regions were established and granted internal autonomy."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium"
-    ],
-    "hintNote": "The municipalities are grouped into two cantons, namely the Canton of Eupen in the north and the Canton of Sankt Vith in the south.",
-    "easiestCue": "오이펜에 의회와 정부를 둔 언어 공동체",
-    "targetWhy": "오이펜이 벨기에 독일어 공동체의 수도라는 것은 유럽 지리 애호가가 아는 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "소거 추리 여지",
-    "pairCheck": null,
-    "dbCheck": "pair-or-different #500(아르바이트 어원) — 지식이 다름",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "world-language/4",
+    "midKey": "world-language",
+    "subName": "세계 언어 분포",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "world-language/4#g019a-L1-12",
-   "seed": {
-    "subject": "일본어",
-    "aspect": null,
-    "ref": "L1-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "팔라우의 앙가우르주는 1982년 주 헌법에서 팔라우어·영어와 함께 이 언어를 공용어로 정했습니다. 정작 이 언어가 주로 쓰이는 나라에서는 법으로 정한 공용어가 아니라, 이곳이 세계에서 유일하게 법으로 정한 공용어로 꼽히는 이 언어는?",
-    "answer": "일본어",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "헌법을 만들 때 참여한 원로들 상당수가 1914년부터 이어진 남양 위임 통치 시기에 이 언어로 교육을 받았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "주로 쓰이는 나라에서는 법으로 정한 공용어가 아니라",
-     "difWhy": "법정 공용어 없는 나라 언어 — 언어 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "언어 이야깃거리",
-     "acc": 3,
-     "accWhy": "언어·어원 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "world-language/4#g019a-L1-11",
+      "seed": {
+        "subject": "독일어",
+        "aspect": null,
+        "ref": "L1-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "오이펜에 따로 의회와 정부를 둔 한 언어 공동체는 아홉 개 기초 자치 단체로 이루어져 있고, 정치적 과거를 함께한 이웃 말메디와 바임은 이 공동체에 들지 않습니다. 1973년 나라 안 세 언어 공동체의 하나로 자치를 얻은 이 공동체가 쓰는 언어는?",
+        "answer": "독일어",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이 일대는 1920년까지 독일 제국 프로이센의 라인주에 속했다가 베르사유 조약으로 벨기에 땅이 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 1973년 나라 안 세 언어 공동체의 하나 + 오이펜",
+          "difWhy": "벨기에 동부 언어 공동체 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 벨기에 언어 지리",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "벨기에의 세 공용어 가운데 이 공동체가 쓰는 언어",
+          "difWhy": "벨기에 동부 독일어권 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "교양 — 벨기에 언어 구성"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "벨기에 동부 오이펜에는 아홉 개 기초 자치 단체로 이루어진 한 언어 공동체가 따로 의회와 정부를 두고 있습니다. 벨기에의 세 공용어 가운데 이 공동체가 쓰는 언어는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "벨기에의 세 공용어 가운데 (나라 이름과 세 선택지)",
+          "addedCue": "말메디·바임은 들지 않음 · 1973년 세 언어 공동체의 하나로 자치",
+          "why": "나라 이름과 세 공용어 선택지를 빼고 오이펜·말메디의 공동체 경계로 엮음"
+        },
+        "generalHint": "이 공동체의 아홉 자치 단체는 북쪽 오이펜 칸톤과 남쪽 장크트피트 칸톤으로 나뉜다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "독일·오스트리아에서 쓰는 언어",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 언어",
+          "piece": "f04",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "L1-11",
+          "key": "b117",
+          "hint": "이 공동체의 아홉 자치 단체는 북쪽 오이펜 칸톤과 남쪽 장크트피트 칸톤으로 나뉜다.",
+          "guess": "벨기에 독일어 공동체",
+          "confidence": "high",
+          "hit": true,
+          "answer": "독일어"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium"
+        ],
+        "facts": [
+          {
+            "claim": "아홉 개 자치 단체, 오이펜에 의회·정부",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
+            "note": "The community comprises nine municipalities in Liège Province, Wallonia, within the Eupen-Malmedy region in Eastern Belgium. ... the area has its own parliament and government at Eupen."
+          },
+          {
+            "claim": "벨기에 독일어 공동체(세 언어 공동체 중 하나)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
+            "note": "German-speaking Community of Belgium — Eupen is the seat of the government, the parliament and the administrative centre."
+          },
+          {
+            "claim": "1920년까지 프로이센 라인주, 베르사유 조약으로 벨기에",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
+            "note": "The East Cantons were part of the Rhine Province of Prussia in the German Empire until 1920 ... but were annexed by Belgium following Germany's defeat in World War I and the subsequent Treaty of Versailles."
+          },
+          {
+            "claim": "말메디·바임은 동부 칸톤에 함께 묶이지만 프랑스어 공동체에 속함 · 공통의 정치적 과거",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
+            "note": "The area known today as the East Cantons consists of the German-speaking Community and the municipalities of Malmedy and Waimes (German: Weismes), which belong to the French Community of Belgium. ... the nine German-speaking communities, together with the communities of Malmedy and Weismes, are historically called East Belgium or East Cantons because of their common political past"
+          },
+          {
+            "claim": "1973년 세 공동체와 세 지역이 세워져 자치를 얻음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium",
+            "note": "In 1973, three communities and three regions were established and granted internal autonomy."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/German-speaking_Community_of_Belgium"
+        ],
+        "hintNote": "The municipalities are grouped into two cantons, namely the Canton of Eupen in the north and the Canton of Sankt Vith in the south.",
+        "easiestCue": "오이펜에 의회와 정부를 둔 언어 공동체",
+        "targetWhy": "오이펜이 벨기에 독일어 공동체의 수도라는 것은 유럽 지리 애호가가 아는 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "소거 추리 여지",
+        "pairCheck": null,
+        "dbCheck": "pair-or-different #500(아르바이트 어원) — 지식이 다름",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 1973년 나라 안 세 언어 공동체의 하나 + 오이펜",
+          "difWhy": "벨기에 동부 언어 공동체 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 벨기에 언어 지리",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "주로 쓰이는 나라에서는 법으로 정한 공용어가 아니라",
-     "difWhy": "법정 공용어 없는 나라 언어 — 언어 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "언어 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "1944년 9월부터 10월까지 앙가우르섬에서는 미군과 이 언어를 쓰던 군대가 맞붙은 전투가 벌어졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "동아시아 섬나라의 언어",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 언어",
-     "piece": "f02",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "L1-12",
-     "key": "b110",
-     "hint": "1944년 9월부터 10월까지 앙가우르섬에서는 미군과 이 언어를 쓰던 군대가 맞붙은 전투가 벌어졌다.",
-     "guess": "일본어",
-     "confidence": "high",
-     "hit": true,
-     "answer": "일본어"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Angaur"
-    ],
-    "facts": [
-     {
-      "claim": "1982년 주 헌법, 팔라우어·영어·일본어 공용어",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Angaur",
-      "note": "According to the state constitution of 1982, Angaur's official languages are Palauan (and the Angauran dialect in particular), English and Japanese."
-     },
-     {
-      "claim": "세계 유일 법적 공용어, 일본에서는 사실상 공용어",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Angaur",
-      "note": "It is the only place in the world where Japanese is a de jure official language, as it is only the de facto official language of Japan."
-     },
-     {
-      "claim": "원로들이 1914년부터 남양 위임 통치 때 일본어 교육",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Angaur",
-      "note": "At the time the constitution was written, many of the elders participating in the process had been educated in Japanese, as was the practice once Japan gained control of the South Seas Mandate in 1914."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Battle_of_Angaur"
-    ],
-    "hintNote": "fought on the island of Angaur in the Palau Islands from 17 September to 22 October 1944. ... In mid-1944, the Japanese had 1,400 troops on the island",
-    "easiestCue": "팔라우의 앙가우르주는 1982년 주 헌법에서 팔라우어·영어와 함께 이 언어를 공용어로 정했습니다",
-    "targetWhy": "팔라우가 일본 위임 통치를 받았다는 것은 세계사 애호가, 앙가우르 공용어는 트리비아 애호가 — 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 언어, 뜻밖의 분포",
-    "pairCheck": null,
-    "dbCheck": "pair-or-different #501(쓰나미 어원) — 지식이 다름",
-    "warn": [
-     "단정어 유일"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "world-language/4#g019a-L1-12",
+      "seed": {
+        "subject": "일본어",
+        "aspect": null,
+        "ref": "L1-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "팔라우의 앙가우르주는 1982년 주 헌법에서 팔라우어·영어와 함께 이 언어를 공용어로 정했습니다. 정작 이 언어가 주로 쓰이는 나라에서는 법으로 정한 공용어가 아니라, 이곳이 세계에서 유일하게 법으로 정한 공용어로 꼽히는 이 언어는?",
+        "answer": "일본어",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "헌법을 만들 때 참여한 원로들 상당수가 1914년부터 이어진 남양 위임 통치 시기에 이 언어로 교육을 받았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "주로 쓰이는 나라에서는 법으로 정한 공용어가 아니라",
+          "difWhy": "법정 공용어 없는 나라 언어 — 언어 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "언어 이야깃거리",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "주로 쓰이는 나라에서는 법으로 정한 공용어가 아니라",
+          "difWhy": "법정 공용어 없는 나라 언어 — 언어 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "언어 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "1944년 9월부터 10월까지 앙가우르섬에서는 미군과 이 언어를 쓰던 군대가 맞붙은 전투가 벌어졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "동아시아 섬나라의 언어",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 언어",
+          "piece": "f02",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "L1-12",
+          "key": "b110",
+          "hint": "1944년 9월부터 10월까지 앙가우르섬에서는 미군과 이 언어를 쓰던 군대가 맞붙은 전투가 벌어졌다.",
+          "guess": "일본어",
+          "confidence": "high",
+          "hit": true,
+          "answer": "일본어"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Angaur"
+        ],
+        "facts": [
+          {
+            "claim": "1982년 주 헌법, 팔라우어·영어·일본어 공용어",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Angaur",
+            "note": "According to the state constitution of 1982, Angaur's official languages are Palauan (and the Angauran dialect in particular), English and Japanese."
+          },
+          {
+            "claim": "세계 유일 법적 공용어, 일본에서는 사실상 공용어",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Angaur",
+            "note": "It is the only place in the world where Japanese is a de jure official language, as it is only the de facto official language of Japan."
+          },
+          {
+            "claim": "원로들이 1914년부터 남양 위임 통치 때 일본어 교육",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Angaur",
+            "note": "At the time the constitution was written, many of the elders participating in the process had been educated in Japanese, as was the practice once Japan gained control of the South Seas Mandate in 1914."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Battle_of_Angaur"
+        ],
+        "hintNote": "fought on the island of Angaur in the Palau Islands from 17 September to 22 October 1944. ... In mid-1944, the Japanese had 1,400 troops on the island",
+        "easiestCue": "팔라우의 앙가우르주는 1982년 주 헌법에서 팔라우어·영어와 함께 이 언어를 공용어로 정했습니다",
+        "targetWhy": "팔라우가 일본 위임 통치를 받았다는 것은 세계사 애호가, 앙가우르 공용어는 트리비아 애호가 — 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 언어, 뜻밖의 분포",
+        "pairCheck": null,
+        "dbCheck": "pair-or-different #501(쓰나미 어원) — 지식이 다름",
+        "warn": [
+          "단정어 유일"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "주로 쓰이는 나라에서는 법으로 정한 공용어가 아니라",
+          "difWhy": "법정 공용어 없는 나라 언어 — 언어 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "언어 이야깃거리",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

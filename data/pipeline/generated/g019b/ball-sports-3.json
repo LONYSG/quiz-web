@@ -1,535 +1,592 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "ball-sports/3",
-  "midKey": "ball-sports",
-  "subName": "테니스",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "ball-sports/3#g019b-S1-06",
-   "seed": {
-    "subject": "윔블던",
-    "aspect": null,
-    "ref": "S1-06",
-    "pairedWith": 2093
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 2093,
-    "question": "이 테니스 대회의 첫 결승은 비로 사흘 미뤄져 관중 200명쯤 앞에서 스펜서 고어가 이겼습니다. 대회를 연 클럽은 잔디를 고르는 조랑말 롤러를 고칠 돈이 필요했는데, 이 대회는 무엇일까요?",
-    "answer": "윔블던",
-    "acceptedAnswers": [
-     "윔블던 선수권 대회"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '윔블던 선수권 대회' 문서 제목",
-    "explanation": "대회를 연 클럽은 1868년 '올잉글랜드 크로케 클럽'으로 세워졌고, 첫 대회는 10파운드의 이익을 남겨 롤러를 계속 쓸 수 있었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "클럽이 잔디를 고르는 조랑말 롤러를 고칠 돈이 필요했던 테니스 대회",
-     "difWhy": "'잔디 테니스 대회 시초' — 스포츠 관심층",
-     "wor": 3,
-     "worWhy": "유명 대회 기원",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
+  "_meta": {
+    "round": "g019b",
+    "subId": "ball-sports/3",
+    "midKey": "ball-sports",
+    "subName": "테니스",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "ball-sports/3#g019b-S1-06",
+      "seed": {
+        "subject": "윔블던",
+        "aspect": null,
+        "ref": "S1-06",
+        "pairedWith": 2093
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 2093,
+        "question": "이 테니스 대회의 첫 결승은 비로 사흘 미뤄져 관중 200명쯤 앞에서 스펜서 고어가 이겼습니다. 대회를 연 클럽은 코트를 고르는 조랑말 롤러를 고칠 돈이 필요했는데, 이 대회는 무엇일까요?",
+        "answer": "윔블던",
+        "acceptedAnswers": [
+          "윔블던 선수권 대회"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '윔블던 선수권 대회' 문서 제목",
+        "explanation": "대회를 연 클럽은 1868년 '올잉글랜드 크로케 클럽'으로 세워졌고, 첫 대회는 10파운드의 이익을 남겨 롤러를 계속 쓸 수 있었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "클럽이 잔디를 고르는 조랑말 롤러를 고칠 돈이 필요했던 테니스 대회",
+          "difWhy": "'잔디 테니스 대회 시초' — 스포츠 관심층",
+          "wor": 3,
+          "worWhy": "유명 대회 기원",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1877년 한 크로케 클럽은 ... 이 대회를 처음 열었습니다",
+          "difWhy": "윔블던 크로케 클럽 기원 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 대회 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1877년 한 크로케 클럽은 조랑말이 끄는 땅 고르기 롤러를 고칠 돈을 마련하려고 이 대회를 처음 열었습니다. 첫 결승은 비로 사흘 미뤄져 관중 200명쯤 앞에서 스펜서 고어가 이겼는데, 이 테니스 대회는?",
+          "beforeExplanation": "대회는 10파운드의 이익을 남겨, 고장 났던 롤러를 계속 쓸 수 있었습니다.",
+          "removedCue": "1877년 한 크로케 클럽이 처음 연 대회(관심층 — 1877년 시작·크로케 클럽 기원)",
+          "addedCue": "없음(쉬운 단서를 해설로 내림 — 첫 결승·롤러 사연이 남음)",
+          "why": "1877년과 크로케 클럽은 대회 역사의 첫 줄이라 해설로 내림"
+        },
+        "generalHint": "2025년 대회부터 선심을 없애고 전자 판정만 써, 147년 이어진 선심의 모습이 사라졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "런던 남서부 잔디 코트에서 열리는 그랜드 슬램 테니스 대회",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "대표 테니스 대회로 널리 알려짐",
+          "piece": "f04",
+          "genPct": 78
+        },
+        "blind": {
+          "ref": "S1-06",
+          "key": "b164",
+          "hint": "2025년 대회부터 선심을 없애고 전자 판정만 써, 147년 이어진 선심의 모습이 사라졌다.",
+          "guess": "윔블던",
+          "confidence": "high",
+          "hit": true,
+          "answer": "윔블던"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship"
+        ],
+        "facts": [
+          {
+            "claim": "결승이 비로 사흘 미뤄짐, 관중 약 200명, 스펜서 고어 우승",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
+            "note": "the final – delayed for three days by rain – was played on 19 July in front of a crowd of about 200 people ... Spencer Gore ... became the first Wimbledon champion"
+          },
+          {
+            "claim": "1877년 롤러 수리비를 마련하려고 대회를 엶",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
+            "note": "In June 1877 the club decided to organise a tennis tournament to pay for the repair of its pony roller, needed to maintain the lawns."
+          },
+          {
+            "claim": "클럽은 크로케 클럽으로 출발",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
+            "note": "The AEC & LTC had been founded in July 1868, as the All England Croquet Club."
+          },
+          {
+            "claim": "10파운드 이익, 롤러 계속 사용",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
+            "note": "The tournament generated a profit of £10 and the pony roller stayed in use."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Wimbledon_Championships"
+        ],
+        "hintNote": "Line umpires and the ability to challenge calls made during a match were axed, starting from the 2025 Championships ... bringing an end to the 147 years of traditional scenes of line umpires",
+        "easiestCue": "첫 결승을 스펜서 고어가 이김",
+        "targetWhy": "첫 우승자와 롤러 수리 사연은 테니스 애호가 세부 — 1회차(흰옷·잔디)와 다른 사실",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 대회의 탄생 뒷이야기 — '크로케 클럽'은 애호가 단서",
+        "pairCheck": "1회차(#2093) 질문 '잔디·흰옷 규정·가장 오래된 대회', 해설 '1963년 흰옷 규정', 힌트 없음 — 2회차는 롤러 수리비·첫 결승(고어)만 써 겹치지 않고, 1회차 정답의 정의(잔디 코트 대회)도 쓰지 않음",
+        "dbCheck": "윔블던 pair-or-different — 활성 #2093(잔디·흰옷·가장 오래됨)과 지식이 다름(대회 기원) · (가) 2회차",
+        "warn": [
+          "단정어 처음"
+        ],
+        "first": {
+          "id": 2093,
+          "question": "잔디 코트에서 열리며 선수에게 흰옷을 입도록 규정한, 가장 오래된 테니스 대회는?",
+          "explanation": "출전 선수는 거의 전부 흰색 옷을 입어야 한다는 규정이 1963년부터 엄격히 적용돼 왔습니다(2023년부터 여성 선수의 속바지는 색 있는 것도 허용).",
+          "hint": null,
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "클럽이 잔디를 고르는 조랑말 롤러를 고칠 돈이 필요했던 테니스 대회",
+          "difWhy": "'잔디 테니스 대회 시초' — 스포츠 관심층",
+          "wor": 3,
+          "worWhy": "유명 대회 기원",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 fix pair-3-3",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1877년 한 크로케 클럽은 ... 이 대회를 처음 열었습니다",
-     "difWhy": "윔블던 크로케 클럽 기원 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 대회 기원"
+    {
+      "seedId": "ball-sports/3#g019b-S1-07",
+      "seed": {
+        "subject": "프랑스 오픈",
+        "aspect": null,
+        "ref": "S1-07",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1927년 네 선수가 미국 땅에서 데이비스컵을 차지하자, 그들의 나라는 이듬해 컵을 지키려고 새 테니스 경기장을 지었습니다. 오늘날 이 경기장에서 열리는 그랜드 슬램 대회의 남자 단식 우승컵은 그 네 선수를 기려 이름 붙였는데, 이 대회는?",
+        "answer": "프랑스 오픈",
+        "acceptedAnswers": [
+          "롤랑가로스"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '프랑스 오픈' 문서 제목 · '롤랑가로스' 넘겨주기 문서 있음",
+        "explanation": "경기장 이름은 땅을 내준 쪽의 조건에 따라 제1차 세계대전의 비행 영웅 롤랑 가로스에게서 땄습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "남자 단식 우승컵이 1927년 데이비스컵 네 선수를 기려 이름 붙은 대회",
+          "difWhy": "'네 총사' 우승컵 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "메이저 대회 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1928년 5월부터 이 경기장에서 열려 온 그랜드 슬램 대회",
+          "difWhy": "롤랑 가로스 개장 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 대회 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1927년 앙리 코셰·자크 브뤼뇽 등 네 선수가 미국 땅에서 데이비스컵을 차지하자, 그들의 나라는 이듬해 컵을 지키려고 새 테니스 경기장을 지었습니다. 1928년 5월부터 이 경기장에서 열려 온 그랜드 슬램 대회는?",
+          "beforeExplanation": "남자 단식 우승컵 '쿠프 데 무스크테르(사총사 컵)'도 이 네 선수를 기려 붙인 이름입니다.",
+          "removedCue": "1928년 5월부터 이 경기장에서 열려 온 그랜드 슬램 대회 · 코셰·브뤼뇽 이름",
+          "addedCue": "남자 단식 우승컵이 1927년 데이비스컵 네 선수를 기림",
+          "why": "경기장 개장 연도와 선수 이름을 빼고 우승컵 이름의 유래로 바꿈"
+        },
+        "generalHint": "1968년 이 대회는 그랜드 슬램 가운데 처음으로 아마추어와 프로 모두에게 문을 열었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "파리의 붉은 클레이 코트에서 열리는 그랜드 슬램 테니스 대회",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "테니스 그랜드 슬램으로 스포츠 뉴스에서 접함",
+          "piece": "f04",
+          "genPct": 58
+        },
+        "blind": {
+          "ref": "S1-07",
+          "key": "b023",
+          "hint": "1968년 이 대회는 그랜드 슬램 가운데 처음으로 아마추어와 프로 모두에게 문을 열었다.",
+          "guess": "프랑스 오픈",
+          "confidence": "high",
+          "hit": true,
+          "answer": "프랑스 오픈"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/French_Open"
+        ],
+        "facts": [
+          {
+            "claim": "1927년 네 선수(라코스트·보로트라·코셰·브뤼뇽)가 미국에서 데이비스컵 우승, 1928년 컵을 지키려 새 경기장",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/French_Open",
+            "note": "After the Mousquetaires or Philadelphia Four (René Lacoste, Jean Borotra, Henri Cochet, and Jacques Brugnon) won the Davis Cup on American soil in 1927, the French decided to defend the cup in 1928 at a new tennis stadium at Porte d'Auteuil."
+          },
+          {
+            "claim": "남자 단식 트로피 이름이 사총사를 기림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/French_Open",
+            "note": "The trophy awarded to the winner of the men's singles is called the Coupe des Mousquetaires (The Musketeers' Cup). It is named in honor of the \"Four Musketeers\"."
+          },
+          {
+            "claim": "경기장은 땅을 내준 쪽의 조건으로 1차 대전 비행 영웅 롤랑 가로스의 이름을 땀",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/French_Open",
+            "note": "the new stadium must be named after the World War I aviator hero Roland Garros."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/French_Open"
+        ],
+        "hintNote": "In 1968, the year of the French General Strike, the French Championships became the first Grand Slam tournament to go open, allowing both amateurs and professionals to compete.",
+        "easiestCue": "남자 단식 우승컵은 그 네 선수를 기려 이름 붙였다",
+        "targetWhy": "쿠프 데 무스크테르 유래 — 테니스 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 대회의 경기장 탄생 사연",
+        "pairCheck": null,
+        "dbCheck": "프랑스 오픈 · 롤랑가로스 new (활성 '비행사' 문항은 정답이 달라 대조만 — 비행사 단서 안 씀)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "남자 단식 우승컵이 1927년 데이비스컵 네 선수를 기려 이름 붙은 대회",
+          "difWhy": "'네 총사' 우승컵 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "메이저 대회 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1877년 한 크로케 클럽은 조랑말이 끄는 땅 고르기 롤러를 고칠 돈을 마련하려고 이 대회를 처음 열었습니다. 첫 결승은 비로 사흘 미뤄져 관중 200명쯤 앞에서 스펜서 고어가 이겼는데, 이 테니스 대회는?",
-     "beforeExplanation": "대회는 10파운드의 이익을 남겨, 고장 났던 롤러를 계속 쓸 수 있었습니다.",
-     "removedCue": "1877년 한 크로케 클럽이 처음 연 대회(관심층 — 1877년 시작·크로케 클럽 기원)",
-     "addedCue": "없음(쉬운 단서를 해설로 내림 — 첫 결승·롤러 사연이 남음)",
-     "why": "1877년과 크로케 클럽은 대회 역사의 첫 줄이라 해설로 내림"
+    {
+      "seedId": "ball-sports/3#g019b-S1-08",
+      "seed": {
+        "subject": "호주 오픈",
+        "aspect": null,
+        "ref": "S1-08",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1977년에는 이 대회가 1월에 끝난 대회와 12월에 끝난 대회로 두 번 열렸고, 날짜를 1월 중순으로 옮기면서 1986년에는 열리지 않았습니다. 1983년 국제테니스연맹이 경기장이 좁다며 장소를 옮기라고 한 이 그랜드 슬램 대회는?",
+        "answer": "호주 오픈",
+        "acceptedAnswers": [
+          "오스트레일리아 오픈"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '오스트레일리아 오픈' 문서 제목 · '호주 오픈' 넘겨주기 · 한국 보도는 '호주오픈' 이 흔함",
+        "explanation": "1988년 플린더스 파크(지금의 멜버른 파크)로 옮긴 첫해 관중이 앞 해보다 90% 늘었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1986년에는 열리지 않았습니다",
+          "difWhy": "호주 오픈 일정 변경 — 테니스 애호가",
+          "wor": 2,
+          "worWhy": "팬 세부 — 대회 일정사",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1986년에는 열리지 않았습니다",
+          "difWhy": "호주 오픈 일정 변경 — 테니스 애호가",
+          "wor": 2,
+          "worWhy": "팬 세부 — 대회 일정사"
+        },
+        "rewrite": null,
+        "generalHint": null,
+        "generalHintVersion": null,
+        "identity": "해마다 1월 멜버른에서 열리는 그랜드 슬램 테니스 대회",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "테니스 그랜드 슬램으로 스포츠 뉴스에서 접함",
+          "piece": "f05",
+          "genPct": 60
+        },
+        "blind": null,
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Australian_Open"
+        ],
+        "facts": [
+          {
+            "claim": "1977년 두 번 개최 — 첫 대회는 1976년 12월~1977년 1월, 둘째는 12월 31일에 끝남",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Australian_Open",
+            "note": "After a first 1977 tournament was held in December 1976 – January 1977, the organisers chose to move the next tournament forward a few days, then a second 1977 tournament was played (ended on 31 December)"
+          },
+          {
+            "claim": "1월 중순으로 옮기며 1986년에는 열리지 않음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Australian_Open",
+            "note": "Then it was decided to move the next tournament to mid-January (January 1987), which meant no tournament was organised in 1986."
+          },
+          {
+            "claim": "1983년 대회 뒤 ITF 가 장소 이전 요구 — 쿠용 경기장이 부적합",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Australian_Open",
+            "note": "Following the 1983 Australian Open, the International Tennis Federation prompted the Lawn Tennis Association of Australia to change the site of the tournament, because the Kooyong stadium was then inappropriate to serve such a big event."
+          },
+          {
+            "claim": "1988년 플린더스 파크 이전 첫해 관중 90% 증가",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Australian_Open",
+            "note": "The move to Flinders Park was an immediate success, with a 90 percent increase in attendance in 1988 (266,436) on the previous year at Kooyong (140,000). / Flinders Park (later renamed Melbourne Park)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": null,
+        "hintSources": [],
+        "hintNote": null,
+        "easiestCue": "1986년에는 열리지 않았습니다",
+        "targetWhy": "개최 일정이 꼬인 사연·장소 이전 경위는 테니스 애호가 세부 — 멜버른·1월 개최·하드 코트 단서 뺌",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'1월 중순으로 옮기면서' 가 1월 개최를 아는 관심층에게 쉬운 단서가 될 수 있음 — 네 대회 가운데 하나라 추리가 남음",
+        "pairCheck": null,
+        "dbCheck": "호주 오픈 · 오스트레일리아 오픈 new",
+        "warn": [],
+        "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 대회 일정사) · sports 는 3 이상"
+      }
     },
-    "generalHint": "2025년 대회부터 선심을 없애고 전자 판정만 써, 147년 이어진 선심의 모습이 사라졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "런던 남서부 잔디 코트에서 열리는 그랜드 슬램 테니스 대회",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "대표 테니스 대회로 널리 알려짐",
-     "piece": "f04",
-     "genPct": 78
+    {
+      "seedId": "ball-sports/3#g019b-S1-09",
+      "seed": {
+        "subject": "샤라포바",
+        "aspect": null,
+        "ref": "S1-09",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "소치에서 자라며 아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓을 받았습니다. 여섯 살 때 모스크바 강습회에서 마르티나 나브라틸로바가 미국 훈련을 권했고, 아버지와 모은 돈 700달러만 들고 플로리다로 건너간 이 테니스 선수는?",
+        "answer": "샤라포바",
+        "acceptedAnswers": [
+          "마리아 샤라포바",
+          "마리야 샤라포바"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '마리야 샤라포바' 문서 제목 · '마리아 샤라포바' · '샤라포바' 넘겨주기 문서 있음",
+        "explanation": "비자 문제로 어머니는 2년 동안 미국에 오지 못했고, 아버지는 여러 허드렛일로 딸의 레슨비를 댔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓",
+          "difWhy": "샤라포바 유년기 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓",
+          "difWhy": "샤라포바 유년기 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "부모는 벨라루스 고멜 출신으로, 1986년 체르노빌 사고가 걱정되어 고향을 떠났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2000년대 그랜드 슬램을 다섯 번 우승한 러시아 여자 테니스 스타",
+        "familiarity": {
+          "judge": 3,
+          "pct": 70,
+          "why": "테니스 스타·도핑 뉴스로 들어 봄",
+          "piece": "f04",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "S1-09",
+          "key": "b261",
+          "hint": "2016년 호주 오픈 도핑 검사에서 멜도니움 양성 반응이 나왔다.",
+          "guess": "마리야 샤라포바",
+          "confidence": "high",
+          "hit": true,
+          "answer": "샤라포바"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Maria_Sharapova"
+        ],
+        "facts": [
+          {
+            "claim": "세 살 때 소치로 이사, 카펠니코프(아버지 친구)가 첫 라켓을 줌",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
+            "note": "In 1990, when Sharapova was three, the family moved to Sochi, Russia. Her father, Yuri, befriended Aleksandr Kafelnikov ... Aleksandr gave Sharapova her first tennis racquet in 1991"
+          },
+          {
+            "claim": "여섯 살 때 모스크바 강습회에서 나브라틸로바가 미국(볼리티에리) 훈련을 권함",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
+            "note": "In 1993, at the age of six, Sharapova attended a tennis clinic in Moscow run by Martina Navratilova, who recommended professional training with Nick Bollettieri at the IMG Academy in Bradenton, Florida."
+          },
+          {
+            "claim": "700달러를 들고 플로리다로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
+            "note": "Arriving in Florida with savings of US$700, Sharapova's father took various low-paying jobs to fund her lessons"
+          },
+          {
+            "claim": "비자 문제로 어머니 2년간 합류 못 함",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
+            "note": "Visa restrictions prevented Sharapova's mother from joining them for two years."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "여섯 살 때 모스크바 강습회에서 마르티나 나브라틸로바가 미국 훈련을 권했고",
+        "targetWhy": "어린 시절 미국행 사연은 테니스 애호가 세부 — 도핑·대표 우승·미모 단서 없음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 선수의 성장기",
+        "pairCheck": null,
+        "dbCheck": "샤라포바 · 마리아 샤라포바 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓",
+          "difWhy": "샤라포바 유년기 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "blind": {
-     "ref": "S1-06",
-     "key": "b164",
-     "hint": "2025년 대회부터 선심을 없애고 전자 판정만 써, 147년 이어진 선심의 모습이 사라졌다.",
-     "guess": "윔블던",
-     "confidence": "high",
-     "hit": true,
-     "answer": "윔블던"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship"
-    ],
-    "facts": [
-     {
-      "claim": "결승이 비로 사흘 미뤄짐, 관중 약 200명, 스펜서 고어 우승",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
-      "note": "the final – delayed for three days by rain – was played on 19 July in front of a crowd of about 200 people ... Spencer Gore ... became the first Wimbledon champion"
-     },
-     {
-      "claim": "1877년 롤러 수리비를 마련하려고 대회를 엶",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
-      "note": "In June 1877 the club decided to organise a tennis tournament to pay for the repair of its pony roller, needed to maintain the lawns."
-     },
-     {
-      "claim": "클럽은 크로케 클럽으로 출발",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
-      "note": "The AEC & LTC had been founded in July 1868, as the All England Croquet Club."
-     },
-     {
-      "claim": "10파운드 이익, 롤러 계속 사용",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/1877_Wimbledon_Championship",
-      "note": "The tournament generated a profit of £10 and the pony roller stayed in use."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Wimbledon_Championships"
-    ],
-    "hintNote": "Line umpires and the ability to challenge calls made during a match were axed, starting from the 2025 Championships ... bringing an end to the 147 years of traditional scenes of line umpires",
-    "easiestCue": "첫 결승을 스펜서 고어가 이김",
-    "targetWhy": "첫 우승자와 롤러 수리 사연은 테니스 애호가 세부 — 1회차(흰옷·잔디)와 다른 사실",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 대회의 탄생 뒷이야기 — '크로케 클럽'은 애호가 단서",
-    "pairCheck": "1회차(#2093) 질문 '잔디·흰옷 규정·가장 오래된 대회', 해설 '1963년 흰옷 규정', 힌트 없음 — 2회차는 롤러 수리비·첫 결승(고어)만 써 겹치지 않고, 1회차 정답의 정의(잔디 코트 대회)도 쓰지 않음",
-    "dbCheck": "윔블던 pair-or-different — 활성 #2093(잔디·흰옷·가장 오래됨)과 지식이 다름(대회 기원) · (가) 2회차",
-    "warn": [
-     "단정어 처음"
-    ],
-    "first": {
-     "id": 2093,
-     "question": "잔디 코트에서 열리며 선수에게 흰옷을 입도록 규정한, 가장 오래된 테니스 대회는?",
-     "explanation": "출전 선수는 거의 전부 흰색 옷을 입어야 한다는 규정이 1963년부터 엄격히 적용돼 왔습니다(2023년부터 여성 선수의 속바지는 색 있는 것도 허용).",
-     "hint": null,
-     "difficulty": 2
+    {
+      "seedId": "ball-sports/3#g019b-S1-10",
+      "seed": {
+        "subject": "정현",
+        "aspect": null,
+        "ref": "S1-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2008년 12월 에디 허 인터내셔널과 주니어 오렌지볼의 12세 이하 남자 단식을 잇달아 우승한 뒤, 형과 함께 플로리다의 닉 볼리티에리 아카데미와 계약했습니다. 2013년 윔블던 주니어 남자 단식 준우승을 거둔 이 한국 선수는?",
+        "answer": "정현",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "어릴 때 안경을 써야 할 만큼 눈이 나빠, 시력을 지키는 데 도움이 되리라 여겨 테니스를 시작했다고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "2013년 윔블던 주니어 남자 단식 준우승",
+          "difWhy": "정현 주니어 경력 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "2013년 윔블던 주니어 남자 단식 준우승",
+          "difWhy": "정현 주니어 경력 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "2017년 넥스트 제너레이션 ATP 파이널스에서 우승했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2018년 호주 오픈 4강에 오른 한국 남자 테니스 선수",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "호주 오픈 4강 뉴스로 들어 봄",
+          "piece": "f07",
+          "genPct": 68
+        },
+        "blind": {
+          "ref": "S1-10",
+          "key": "b137",
+          "hint": "2017년 넥스트 제너레이션 ATP 파이널스에서 우승했다.",
+          "guess": "정현",
+          "confidence": "high",
+          "hit": true,
+          "answer": "정현"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Chung_Hyeon",
+          "https://ko.wikipedia.org/wiki/%EC%A0%95%ED%98%84_(%ED%85%8C%EB%8B%88%EC%8A%A4_%EC%84%A0%EC%88%98)"
+        ],
+        "facts": [
+          {
+            "claim": "2008년 12월 에디 허·주니어 오렌지볼 12세 이하 우승, 형 정홍과 볼리티에리 아카데미 계약",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Chung_Hyeon",
+            "note": "He won the Eddie Herr International and Junior Orange Bowl Boys under-12s titles in December 2008, and was subsequently signed, along with his brother Chung Hong, to the Nick Bollettieri Tennis Academy at IMG in Florida."
+          },
+          {
+            "claim": "2013년 윔블던 주니어 남자 단식 준우승",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Chung_Hyeon",
+            "note": "was runner-up in the 2013 Wimbledon Boys' Singles"
+          },
+          {
+            "claim": "시력을 지키려 테니스를 시작",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Chung_Hyeon",
+            "note": "Chung took up tennis as a way to try to help maintain his eyesight after requiring glasses at a young age."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/정현_(테니스_선수)"
+        ],
+        "hintNote": "2017년 넥스트 제너레이션 ATP 파이널 챔피언을 거머쥐었다.",
+        "easiestCue": "2013년 윔블던 주니어 남자 단식 준우승을 거둔 이 한국 선수",
+        "targetWhy": "주니어 시절 이력은 테니스 애호가 세부 — 호주 오픈 4강·안경·넥스트 젠 단서 뺌",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "한국 테니스 선수 후보가 몇 안 돼 찍을 수 있음 — 세대(2008년 12세 이하)를 알아야 좁혀짐",
+        "pairCheck": null,
+        "dbCheck": "정현 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "2013년 윔블던 주니어 남자 단식 준우승",
+          "difWhy": "정현 주니어 경력 — 테니스 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "ball-sports/3#g019b-S1-07",
-   "seed": {
-    "subject": "프랑스 오픈",
-    "aspect": null,
-    "ref": "S1-07",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1927년 네 선수가 미국 땅에서 데이비스컵을 차지하자, 그들의 나라는 이듬해 컵을 지키려고 새 테니스 경기장을 지었습니다. 오늘날 이 경기장에서 열리는 그랜드 슬램 대회의 남자 단식 우승컵은 그 네 선수를 기려 이름 붙였는데, 이 대회는?",
-    "answer": "프랑스 오픈",
-    "acceptedAnswers": [
-     "롤랑가로스"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '프랑스 오픈' 문서 제목 · '롤랑가로스' 넘겨주기 문서 있음",
-    "explanation": "경기장 이름은 땅을 내준 쪽의 조건에 따라 제1차 세계대전의 비행 영웅 롤랑 가로스에게서 땄습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "남자 단식 우승컵이 1927년 데이비스컵 네 선수를 기려 이름 붙은 대회",
-     "difWhy": "'네 총사' 우승컵 — 테니스 애호가",
-     "wor": 3,
-     "worWhy": "메이저 대회 이야깃거리",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1928년 5월부터 이 경기장에서 열려 온 그랜드 슬램 대회",
-     "difWhy": "롤랑 가로스 개장 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 대회 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1927년 앙리 코셰·자크 브뤼뇽 등 네 선수가 미국 땅에서 데이비스컵을 차지하자, 그들의 나라는 이듬해 컵을 지키려고 새 테니스 경기장을 지었습니다. 1928년 5월부터 이 경기장에서 열려 온 그랜드 슬램 대회는?",
-     "beforeExplanation": "남자 단식 우승컵 '쿠프 데 무스크테르(사총사 컵)'도 이 네 선수를 기려 붙인 이름입니다.",
-     "removedCue": "1928년 5월부터 이 경기장에서 열려 온 그랜드 슬램 대회 · 코셰·브뤼뇽 이름",
-     "addedCue": "남자 단식 우승컵이 1927년 데이비스컵 네 선수를 기림",
-     "why": "경기장 개장 연도와 선수 이름을 빼고 우승컵 이름의 유래로 바꿈"
-    },
-    "generalHint": "1968년 이 대회는 그랜드 슬램 가운데 처음으로 아마추어와 프로 모두에게 문을 열었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "파리의 붉은 클레이 코트에서 열리는 그랜드 슬램 테니스 대회",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "테니스 그랜드 슬램으로 스포츠 뉴스에서 접함",
-     "piece": "f04",
-     "genPct": 58
-    },
-    "blind": {
-     "ref": "S1-07",
-     "key": "b023",
-     "hint": "1968년 이 대회는 그랜드 슬램 가운데 처음으로 아마추어와 프로 모두에게 문을 열었다.",
-     "guess": "프랑스 오픈",
-     "confidence": "high",
-     "hit": true,
-     "answer": "프랑스 오픈"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/French_Open"
-    ],
-    "facts": [
-     {
-      "claim": "1927년 네 선수(라코스트·보로트라·코셰·브뤼뇽)가 미국에서 데이비스컵 우승, 1928년 컵을 지키려 새 경기장",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/French_Open",
-      "note": "After the Mousquetaires or Philadelphia Four (René Lacoste, Jean Borotra, Henri Cochet, and Jacques Brugnon) won the Davis Cup on American soil in 1927, the French decided to defend the cup in 1928 at a new tennis stadium at Porte d'Auteuil."
-     },
-     {
-      "claim": "남자 단식 트로피 이름이 사총사를 기림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/French_Open",
-      "note": "The trophy awarded to the winner of the men's singles is called the Coupe des Mousquetaires (The Musketeers' Cup). It is named in honor of the \"Four Musketeers\"."
-     },
-     {
-      "claim": "경기장은 땅을 내준 쪽의 조건으로 1차 대전 비행 영웅 롤랑 가로스의 이름을 땀",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/French_Open",
-      "note": "the new stadium must be named after the World War I aviator hero Roland Garros."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/French_Open"
-    ],
-    "hintNote": "In 1968, the year of the French General Strike, the French Championships became the first Grand Slam tournament to go open, allowing both amateurs and professionals to compete.",
-    "easiestCue": "남자 단식 우승컵은 그 네 선수를 기려 이름 붙였다",
-    "targetWhy": "쿠프 데 무스크테르 유래 — 테니스 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 대회의 경기장 탄생 사연",
-    "pairCheck": null,
-    "dbCheck": "프랑스 오픈 · 롤랑가로스 new (활성 '비행사' 문항은 정답이 달라 대조만 — 비행사 단서 안 씀)",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "ball-sports/3#g019b-S1-08",
-   "seed": {
-    "subject": "호주 오픈",
-    "aspect": null,
-    "ref": "S1-08",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1977년에는 이 대회가 1월에 끝난 대회와 12월에 끝난 대회로 두 번 열렸고, 날짜를 1월 중순으로 옮기면서 1986년에는 열리지 않았습니다. 1983년 국제테니스연맹이 경기장이 좁다며 장소를 옮기라고 한 이 그랜드 슬램 대회는?",
-    "answer": "호주 오픈",
-    "acceptedAnswers": [
-     "오스트레일리아 오픈"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '오스트레일리아 오픈' 문서 제목 · '호주 오픈' 넘겨주기 · 한국 보도는 '호주오픈' 이 흔함",
-    "explanation": "1988년 플린더스 파크(지금의 멜버른 파크)로 옮긴 첫해 관중이 앞 해보다 90% 늘었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1986년에는 열리지 않았습니다",
-     "difWhy": "호주 오픈 일정 변경 — 테니스 애호가",
-     "wor": 2,
-     "worWhy": "팬 세부 — 대회 일정사",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1986년에는 열리지 않았습니다",
-     "difWhy": "호주 오픈 일정 변경 — 테니스 애호가",
-     "wor": 2,
-     "worWhy": "팬 세부 — 대회 일정사"
-    },
-    "rewrite": null,
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "해마다 1월 멜버른에서 열리는 그랜드 슬램 테니스 대회",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "테니스 그랜드 슬램으로 스포츠 뉴스에서 접함",
-     "piece": "f05",
-     "genPct": 60
-    },
-    "blind": null,
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Australian_Open"
-    ],
-    "facts": [
-     {
-      "claim": "1977년 두 번 개최 — 첫 대회는 1976년 12월~1977년 1월, 둘째는 12월 31일에 끝남",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Australian_Open",
-      "note": "After a first 1977 tournament was held in December 1976 – January 1977, the organisers chose to move the next tournament forward a few days, then a second 1977 tournament was played (ended on 31 December)"
-     },
-     {
-      "claim": "1월 중순으로 옮기며 1986년에는 열리지 않음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Australian_Open",
-      "note": "Then it was decided to move the next tournament to mid-January (January 1987), which meant no tournament was organised in 1986."
-     },
-     {
-      "claim": "1983년 대회 뒤 ITF 가 장소 이전 요구 — 쿠용 경기장이 부적합",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Australian_Open",
-      "note": "Following the 1983 Australian Open, the International Tennis Federation prompted the Lawn Tennis Association of Australia to change the site of the tournament, because the Kooyong stadium was then inappropriate to serve such a big event."
-     },
-     {
-      "claim": "1988년 플린더스 파크 이전 첫해 관중 90% 증가",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Australian_Open",
-      "note": "The move to Flinders Park was an immediate success, with a 90 percent increase in attendance in 1988 (266,436) on the previous year at Kooyong (140,000). / Flinders Park (later renamed Melbourne Park)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "1986년에는 열리지 않았습니다",
-    "targetWhy": "개최 일정이 꼬인 사연·장소 이전 경위는 테니스 애호가 세부 — 멜버른·1월 개최·하드 코트 단서 뺌",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'1월 중순으로 옮기면서' 가 1월 개최를 아는 관심층에게 쉬운 단서가 될 수 있음 — 네 대회 가운데 하나라 추리가 남음",
-    "pairCheck": null,
-    "dbCheck": "호주 오픈 · 오스트레일리아 오픈 new",
-    "warn": [],
-    "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 대회 일정사) · sports 는 3 이상"
-   }
-  },
-  {
-   "seedId": "ball-sports/3#g019b-S1-09",
-   "seed": {
-    "subject": "샤라포바",
-    "aspect": null,
-    "ref": "S1-09",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "소치에서 자라며 아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓을 받았습니다. 여섯 살 때 모스크바 강습회에서 마르티나 나브라틸로바가 미국 훈련을 권했고, 아버지와 모은 돈 700달러만 들고 플로리다로 건너간 이 테니스 선수는?",
-    "answer": "샤라포바",
-    "acceptedAnswers": [
-     "마리아 샤라포바",
-     "마리야 샤라포바"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '마리야 샤라포바' 문서 제목 · '마리아 샤라포바' · '샤라포바' 넘겨주기 문서 있음",
-    "explanation": "비자 문제로 어머니는 2년 동안 미국에 오지 못했고, 아버지는 여러 허드렛일로 딸의 레슨비를 댔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓",
-     "difWhy": "샤라포바 유년기 — 테니스 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "아버지의 친구 알렉산드르 카펠니코프에게 첫 라켓",
-     "difWhy": "샤라포바 유년기 — 테니스 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "2016년 호주 오픈 도핑 검사에서 멜도니움 양성 반응이 나왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2000년대 그랜드 슬램을 다섯 번 우승한 러시아 여자 테니스 스타",
-    "familiarity": {
-     "judge": 3,
-     "pct": 70,
-     "why": "테니스 스타·도핑 뉴스로 들어 봄",
-     "piece": "f04",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "S1-09",
-     "key": "b261",
-     "hint": "2016년 호주 오픈 도핑 검사에서 멜도니움 양성 반응이 나왔다.",
-     "guess": "마리야 샤라포바",
-     "confidence": "high",
-     "hit": true,
-     "answer": "샤라포바"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Maria_Sharapova"
-    ],
-    "facts": [
-     {
-      "claim": "세 살 때 소치로 이사, 카펠니코프(아버지 친구)가 첫 라켓을 줌",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
-      "note": "In 1990, when Sharapova was three, the family moved to Sochi, Russia. Her father, Yuri, befriended Aleksandr Kafelnikov ... Aleksandr gave Sharapova her first tennis racquet in 1991"
-     },
-     {
-      "claim": "여섯 살 때 모스크바 강습회에서 나브라틸로바가 미국(볼리티에리) 훈련을 권함",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
-      "note": "In 1993, at the age of six, Sharapova attended a tennis clinic in Moscow run by Martina Navratilova, who recommended professional training with Nick Bollettieri at the IMG Academy in Bradenton, Florida."
-     },
-     {
-      "claim": "700달러를 들고 플로리다로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
-      "note": "Arriving in Florida with savings of US$700, Sharapova's father took various low-paying jobs to fund her lessons"
-     },
-     {
-      "claim": "비자 문제로 어머니 2년간 합류 못 함",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Maria_Sharapova",
-      "note": "Visa restrictions prevented Sharapova's mother from joining them for two years."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Maria_Sharapova"
-    ],
-    "hintNote": "Sharapova failed a drug test at the 2016 Australian Open, testing positive for meldonium",
-    "easiestCue": "여섯 살 때 모스크바 강습회에서 마르티나 나브라틸로바가 미국 훈련을 권했고",
-    "targetWhy": "어린 시절 미국행 사연은 테니스 애호가 세부 — 도핑·대표 우승·미모 단서 없음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 선수의 성장기",
-    "pairCheck": null,
-    "dbCheck": "샤라포바 · 마리아 샤라포바 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "ball-sports/3#g019b-S1-10",
-   "seed": {
-    "subject": "정현",
-    "aspect": null,
-    "ref": "S1-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2008년 12월 에디 허 인터내셔널과 주니어 오렌지볼의 12세 이하 남자 단식을 잇달아 우승한 뒤, 형과 함께 플로리다의 닉 볼리티에리 아카데미와 계약했습니다. 2013년 윔블던 주니어 남자 단식 준우승을 거둔 이 한국 선수는?",
-    "answer": "정현",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "어릴 때 안경을 써야 할 만큼 눈이 나빠, 시력을 지키는 데 도움이 되리라 여겨 테니스를 시작했다고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "2013년 윔블던 주니어 남자 단식 준우승",
-     "difWhy": "정현 주니어 경력 — 테니스 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "2013년 윔블던 주니어 남자 단식 준우승",
-     "difWhy": "정현 주니어 경력 — 테니스 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "2017년 넥스트 제너레이션 ATP 파이널스에서 우승했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2018년 호주 오픈 4강에 오른 한국 남자 테니스 선수",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "호주 오픈 4강 뉴스로 들어 봄",
-     "piece": "f07",
-     "genPct": 68
-    },
-    "blind": {
-     "ref": "S1-10",
-     "key": "b137",
-     "hint": "2017년 넥스트 제너레이션 ATP 파이널스에서 우승했다.",
-     "guess": "정현",
-     "confidence": "high",
-     "hit": true,
-     "answer": "정현"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Chung_Hyeon",
-     "https://ko.wikipedia.org/wiki/%EC%A0%95%ED%98%84_(%ED%85%8C%EB%8B%88%EC%8A%A4_%EC%84%A0%EC%88%98)"
-    ],
-    "facts": [
-     {
-      "claim": "2008년 12월 에디 허·주니어 오렌지볼 12세 이하 우승, 형 정홍과 볼리티에리 아카데미 계약",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Chung_Hyeon",
-      "note": "He won the Eddie Herr International and Junior Orange Bowl Boys under-12s titles in December 2008, and was subsequently signed, along with his brother Chung Hong, to the Nick Bollettieri Tennis Academy at IMG in Florida."
-     },
-     {
-      "claim": "2013년 윔블던 주니어 남자 단식 준우승",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Chung_Hyeon",
-      "note": "was runner-up in the 2013 Wimbledon Boys' Singles"
-     },
-     {
-      "claim": "시력을 지키려 테니스를 시작",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Chung_Hyeon",
-      "note": "Chung took up tennis as a way to try to help maintain his eyesight after requiring glasses at a young age."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/정현_(테니스_선수)"
-    ],
-    "hintNote": "2017년 넥스트 제너레이션 ATP 파이널 챔피언을 거머쥐었다.",
-    "easiestCue": "2013년 윔블던 주니어 남자 단식 준우승을 거둔 이 한국 선수",
-    "targetWhy": "주니어 시절 이력은 테니스 애호가 세부 — 호주 오픈 4강·안경·넥스트 젠 단서 뺌",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "한국 테니스 선수 후보가 몇 안 돼 찍을 수 있음 — 세대(2008년 12세 이하)를 알아야 좁혀짐",
-    "pairCheck": null,
-    "dbCheck": "정현 new",
-    "warn": []
-   }
-  }
- ]
+  ]
 }

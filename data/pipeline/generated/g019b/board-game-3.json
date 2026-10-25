@@ -1,218 +1,248 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "board-game/3",
-  "midKey": "board-game",
-  "subName": "화투·카드",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "board-game/3#g019b-L2-20",
-   "seed": {
-    "subject": "우노",
-    "aspect": null,
-    "ref": "L2-20",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1971년 미국 오하이오주 신시내티 근교 레딩에서 멀 로빈스가 만든 카드 게임입니다. 그는 뒤에 로버트 테작이 이끄는 친구들에게 이 게임의 권리를 팔았는데, 이 카드 게임은 무엇일까요?",
-    "answer": "우노",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이 게임을 내던 인터내셔널 게임스는 1992년 마텔 계열 회사가 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "멀 로빈스가 만든 카드 게임",
-     "difWhy": "우노 창작자 — 보드게임 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 유명 게임 기원",
-     "acc": 4,
-     "accWhy": "바둑·화투·체스 — 대부분이 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "멀 로빈스가 만든 카드 게임",
-     "difWhy": "우노 창작자 — 보드게임 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 유명 게임 기원"
-    },
-    "rewrite": null,
-    "generalHint": "멀 로빈스는 처음에 자기 이발소에서 이 게임을 팔았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "같은 색·숫자를 맞춰 내는 미국 카드 게임",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "흔한 카드 게임",
-     "piece": "f09",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "L2-20",
-     "key": "b014",
-     "hint": "멀 로빈스는 처음에 자기 이발소에서 이 게임을 팔았다.",
-     "guess": "우노",
-     "confidence": "high",
-     "hit": true,
-     "answer": "우노"
-    },
-    "hobby": "보드게임",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Uno_(card_game)"
-    ],
-    "facts": [
-     {
-      "claim": "1971년 멀 로빈스, 신시내티 근교 레딩",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Uno_(card_game)",
-      "note": "The game was originally developed in 1971 by Merle Robbins in Reading, Ohio, a suburb of Cincinnati."
-     },
-     {
-      "claim": "로버트 테작이 이끄는 친구들에게 권리 매각",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Uno_(card_game)",
-      "note": "Robbins later sold the rights to Uno to a group of friends headed by Robert Tezak"
-     },
-     {
-      "claim": "1992년 인터내셔널 게임스가 마텔 계열",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Uno_(card_game)",
-      "note": "In 1992, International Games became part of the Mattel family of companies."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Uno_(card_game)"
-    ],
-    "hintNote": "He sold it from his barbershop at first, and local businesses began to sell it as well.",
-    "easiestCue": "1971년 오하이오주 레딩에서 멀 로빈스가 만든 카드 게임",
-    "targetWhy": "'한 장 남으면 외친다'(대표 규칙)·마텔을 빼고 창작자·권리 매각만 — 보드게임 애호가 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 해 본 게임의 몰랐던 출발",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "board-game/3",
+    "midKey": "board-game",
+    "subName": "화투·카드",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "board-game/3#g019b-L2-21",
-   "seed": {
-    "subject": "텍사스 홀덤",
-    "aspect": null,
-    "ref": "L2-21",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "20세기 초 롭스타운에서 생겼다고 그 주 의회가 공식으로 인정한 카드 게임입니다. 1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽에 처음 들여왔고, 몇 해 동안은 골든 너겟 카지노만 이 게임을 열었습니다. 이 게임은?",
-    "answer": "텍사스 홀덤",
-    "acceptedAnswers": [
-     "홀덤"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '텍사스 홀덤' 문서 · 국내 언론의 '홀덤' 줄임 표기 — 같은 게임",
-    "explanation": "1967년에는 크랜델 애딩턴·도일 브런슨·아마릴로 슬림 같은 고향 출신 도박사들이 라스베이거스에서 이 게임을 즐기며 퍼뜨렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽",
-     "difWhy": "홀덤 도입사 — 카드 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 대표 포커",
-     "acc": 4,
-     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+  "items": [
+    {
+      "seedId": "board-game/3#g019b-L2-20",
+      "seed": {
+        "subject": "우노",
+        "aspect": null,
+        "ref": "L2-20",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1971년 미국 오하이오주 신시내티 근교 레딩에서 멀 로빈스가 만든 카드 게임입니다. 그는 뒤에 로버트 테작이 이끄는 친구들에게 이 게임의 권리를 팔았는데, 이 카드 게임은 무엇일까요?",
+        "answer": "우노",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이 게임을 내던 인터내셔널 게임스는 1992년 마텔 계열 회사가 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "멀 로빈스가 만든 카드 게임",
+          "difWhy": "우노 창작자 — 보드게임 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 게임 기원",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "멀 로빈스가 만든 카드 게임",
+          "difWhy": "우노 창작자 — 보드게임 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 게임 기원"
+        },
+        "rewrite": null,
+        "generalHint": "멀 로빈스는 처음에 자기 이발소에서 이 게임을 팔았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "같은 색·숫자를 맞춰 내는 미국 카드 게임",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "흔한 카드 게임",
+          "piece": "f09",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "L2-20",
+          "key": "b014",
+          "hint": "멀 로빈스는 처음에 자기 이발소에서 이 게임을 팔았다.",
+          "guess": "우노",
+          "confidence": "high",
+          "hit": true,
+          "answer": "우노"
+        },
+        "hobby": "보드게임",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Uno_(card_game)"
+        ],
+        "facts": [
+          {
+            "claim": "1971년 멀 로빈스, 신시내티 근교 레딩",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Uno_(card_game)",
+            "note": "The game was originally developed in 1971 by Merle Robbins in Reading, Ohio, a suburb of Cincinnati."
+          },
+          {
+            "claim": "로버트 테작이 이끄는 친구들에게 권리 매각",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Uno_(card_game)",
+            "note": "Robbins later sold the rights to Uno to a group of friends headed by Robert Tezak"
+          },
+          {
+            "claim": "1992년 인터내셔널 게임스가 마텔 계열",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Uno_(card_game)",
+            "note": "In 1992, International Games became part of the Mattel family of companies."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Uno_(card_game)"
+        ],
+        "hintNote": "He sold it from his barbershop at first, and local businesses began to sell it as well.",
+        "easiestCue": "1971년 오하이오주 레딩에서 멀 로빈스가 만든 카드 게임",
+        "targetWhy": "'한 장 남으면 외친다'(대표 규칙)·마텔을 빼고 창작자·권리 매각만 — 보드게임 애호가 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 해 본 게임의 몰랐던 출발",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "멀 로빈스가 만든 카드 게임",
+          "difWhy": "우노 창작자 — 보드게임 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 게임 기원",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽",
-     "difWhy": "홀덤 도입사 — 카드 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 대표 포커"
-    },
-    "rewrite": null,
-    "generalHint": "2006년 영화 '카지노 로얄'에서 르 시프르가 몬테네그로의 카지노에서 연 대회의 종목이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "개인 카드 두 장과 공용 카드 다섯 장으로 겨루는 포커",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "포커 방송·영화·'더 지니어스'로 들어 봤을 법함",
-     "piece": "f05",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "L2-21",
-     "key": "b260",
-     "hint": "2006년 영화 '카지노 로얄'에서 르 시프르가 몬테네그로의 카지노에서 연 대회의 종목이다.",
-     "guess": "텍사스 홀덤",
-     "confidence": "high",
-     "hit": true,
-     "answer": "텍사스 홀덤"
-    },
-    "hobby": "보드게임",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Texas_hold_%27em"
-    ],
-    "facts": [
-     {
-      "claim": "주 의회가 롭스타운을 발상지로 공식 인정, 20세기 초",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
-      "note": "the Texas Legislature officially recognizes Robstown, Texas, as the game's birthplace (early 20th century)"
-     },
-     {
-      "claim": "1963년 코키 매코쿼데일이 캘리포니아 클럽에 들여옴",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
-      "note": "Corky McCorquodale introduced the game to Las Vegas in 1963 at the California Club"
-     },
-     {
-      "claim": "몇 해 동안 골든 너겟만",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
-      "note": "For several years, the Golden Nugget was the only Las Vegas casino offering it."
-     },
-     {
-      "claim": "1967년 애딩턴·브런슨·아마릴로 슬림",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
-      "note": "the 1967 Texan group, including Crandell Addington, Doyle Brunson, and Amarillo Slim, playing in Las Vegas that year"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Casino_Royale_(2006_film)"
-    ],
-    "hintNote": "To recoup his clients' money, Le Chiffre organises a Texas hold 'em tournament at the Casino Royale in Montenegro.",
-    "easiestCue": "1963년 라스베이거스 캘리포니아 클럽에 처음 들어온 카드 게임",
-    "targetWhy": "'텍사스'·WSOP·공용 카드 규칙(대표 사실)을 빼고 라스베이거스 전래 세부만 — 포커 애호가 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "라스베이거스 카드 게임으로 포커 갈래를 찍을 여지",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (5728 포커·5726 바카라와 다른 정답)",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "board-game/3#g019b-L2-21",
+      "seed": {
+        "subject": "텍사스 홀덤",
+        "aspect": null,
+        "ref": "L2-21",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "20세기 초 롭스타운에서 생겼다고 그 주 의회가 공식으로 인정한 카드 게임입니다. 1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽에 처음 들여왔고, 몇 해 동안은 골든 너겟 카지노만 이 게임을 열었습니다. 이 게임은?",
+        "answer": "텍사스 홀덤",
+        "acceptedAnswers": [
+          "홀덤"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '텍사스 홀덤' 문서 · 국내 언론의 '홀덤' 줄임 표기 — 같은 게임",
+        "explanation": "1967년에는 크랜델 애딩턴·도일 브런슨·아마릴로 슬림 같은 고향 출신 도박사들이 라스베이거스에서 이 게임을 즐기며 퍼뜨렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽",
+          "difWhy": "홀덤 도입사 — 카드 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 대표 포커",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽",
+          "difWhy": "홀덤 도입사 — 카드 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 대표 포커"
+        },
+        "rewrite": null,
+        "generalHint": "2006년 영화 '카지노 로얄'에서 르 시프르가 몬테네그로의 카지노에서 연 대회의 종목이다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "개인 카드 두 장과 공용 카드 다섯 장으로 겨루는 포커",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "포커 방송·영화·'더 지니어스'로 들어 봤을 법함",
+          "piece": "f05",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "L2-21",
+          "key": "b260",
+          "hint": "2006년 영화 '카지노 로얄'에서 르 시프르가 몬테네그로의 카지노에서 연 대회의 종목이다.",
+          "guess": "텍사스 홀덤",
+          "confidence": "high",
+          "hit": true,
+          "answer": "텍사스 홀덤"
+        },
+        "hobby": "보드게임",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Texas_hold_%27em"
+        ],
+        "facts": [
+          {
+            "claim": "주 의회가 롭스타운을 발상지로 공식 인정, 20세기 초",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
+            "note": "the Texas Legislature officially recognizes Robstown, Texas, as the game's birthplace (early 20th century)"
+          },
+          {
+            "claim": "1963년 코키 매코쿼데일이 캘리포니아 클럽에 들여옴",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
+            "note": "Corky McCorquodale introduced the game to Las Vegas in 1963 at the California Club"
+          },
+          {
+            "claim": "몇 해 동안 골든 너겟만",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
+            "note": "For several years, the Golden Nugget was the only Las Vegas casino offering it."
+          },
+          {
+            "claim": "1967년 애딩턴·브런슨·아마릴로 슬림",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
+            "note": "the 1967 Texan group, including Crandell Addington, Doyle Brunson, and Amarillo Slim, playing in Las Vegas that year"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Casino_Royale_(2006_film)"
+        ],
+        "hintNote": "To recoup his clients' money, Le Chiffre organises a Texas hold 'em tournament at the Casino Royale in Montenegro.",
+        "easiestCue": "1963년 라스베이거스 캘리포니아 클럽에 처음 들어온 카드 게임",
+        "targetWhy": "'텍사스'·WSOP·공용 카드 규칙(대표 사실)을 빼고 라스베이거스 전래 세부만 — 포커 애호가 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "라스베이거스 카드 게임으로 포커 갈래를 찍을 여지",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (5728 포커·5726 바카라와 다른 정답)",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1963년 코키 매코쿼데일이 라스베이거스의 캘리포니아 클럽",
+          "difWhy": "홀덤 도입사 — 카드 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 대표 포커",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

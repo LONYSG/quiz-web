@@ -1,125 +1,140 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "physics/2",
-  "midKey": "physics",
-  "subName": "전기·자기",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "physics/2#g019a-C2-24",
-   "seed": {
-    "subject": "MRI",
-    "aspect": null,
-    "ref": "C2-24",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "폴 로터버는 자기장에 기울기를 주어 평면 영상을 얻는 방법을 제안했습니다. 처음 이름 맨 앞에는 '핵'이라는 말이 붙어 있었지만 나쁜 느낌을 피하려 그 말을 뺀 이 장비는 무엇일까요?",
-    "answer": "MRI",
-    "acceptedAnswers": [
-     "자기 공명 영상",
-     "자기 공명 영상 장치"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '자기 공명 영상' → '자기공명영상' 넘겨주기 확인 · 장비를 묻는 질문이라 '장치' 붙은 꼴도 받음",
-    "explanation": "검사 중 코일이 빠르게 켜졌다 꺼지며 최대 120dB에 이르는 큰 소리가 납니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "처음 이름 맨 앞에는 '핵'이라는 말이 붙어 있었지만 … 뺀 이 장비",
-     "difWhy": "NMR→자기공명 영상 — 고교 물리·관심층",
-     "wor": 4,
-     "worWhy": "교양 — 의료 기술 기본",
-     "acc": 5,
-     "accWhy": "물리 — 중학 과학 교과 과목"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "몸속 수소 원자핵이 전파를 받았다가 … 몸 안을 그려 내는 검사 장비",
-     "difWhy": "자기공명 영상 — 고교 물리",
-     "wor": 4,
-     "worWhy": "교양 — 의료 장비"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "몸속 수소 원자핵이 전파를 받았다가 다시 내놓는 신호를 읽어 몸 안을 그려 내는 검사 장비입니다. 처음 이름 맨 앞에는 '핵'이라는 말이 붙어 있었지만 나쁜 느낌을 피하려 그 말을 뺐는데, 이 장비는 무엇일까요?",
-     "beforeExplanation": "피터 맨스필드와 폴 로터버는 이 장비와 관련된 발견으로 2003년 노벨 생리의학상을 받았습니다.",
-     "removedCue": "몸속 수소 원자핵이 전파를 받았다가 내놓는 신호를 읽어 몸 안을 그리는 검사 장비(고교 물리 정의)",
-     "addedCue": "로터버의 자기장 기울기 제안",
-     "why": "원리 정의를 빼고 개발사와 이름 뒷이야기로"
-    },
-    "generalHint": "1977년 7월 3일 레이먼드 다마디언 팀은 '불굴'이라 이름 붙인 기계로 사람 몸을 처음 검사했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "강한 자석과 전파로 몸속 단면을 찍는 병원 검사 장비",
-    "familiarity": {
-     "judge": 3,
-     "pct": 99,
-     "why": "병원 검사로 익숙",
-     "piece": "f09",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "C2-24",
-     "key": "b201",
-     "hint": "1977년 7월 3일 레이먼드 다마디언 팀은 '불굴'이라 이름 붙인 기계로 사람 몸을 처음 검사했다.",
-     "guess": "자기 공명 영상(MRI)",
-     "confidence": "high",
-     "hit": true,
-     "answer": "MRI"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging"
-    ],
-    "facts": [
-     {
-      "claim": "본래 NMRI — 나쁜 연상을 피하려 nuclear 를 뺌",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
-      "note": "MRI was originally called NMRI (nuclear magnetic resonance imaging), but \"nuclear\" was dropped to avoid negative associations."
-     },
-     {
-      "claim": "로터버가 자기장 기울기로 2차원 평면 영상을 얻자고 제안",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
-      "note": "Lauterbur proposed to use a magnetic field gradient to generate the NMR image in a 2-D plane."
-     },
-     {
-      "claim": "코일 전환으로 반복 소음, 최대 120dB",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
-      "note": "As these coils are rapidly switched during the excitation and response to perform a moving line scan, they create the characteristic repetitive noise of an MRI scan … MRI machines can produce loud noise, up to 120 dB(A)."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Raymond_Damadian"
-    ],
-    "hintNote": "On July 3, 1977, the first MRI body exam was performed on a human being ... They named their original machine \"Indomitable\"",
-    "easiestCue": "처음 이름 맨 앞의 '핵'이라는 말을 나쁜 느낌을 피하려 뺀 장비",
-    "targetWhy": "NMRI→MRI 이름 변천·로터버 — 대학 교양(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "원리 문장이 대학 교양이지만 '몸 안을 그려 내는 검사 장비' 만으로 CT 와 갈려 추리될 수 있음",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "physics/2",
+    "midKey": "physics",
+    "subName": "전기·자기",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "physics/2#g019a-C2-24",
+      "seed": {
+        "subject": "MRI",
+        "aspect": null,
+        "ref": "C2-24",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "폴 로터버는 자기장에 기울기를 주어 평면 영상을 얻는 방법을 제안했습니다. 처음 이름 맨 앞에는 '핵'이라는 말이 붙어 있었지만 나쁜 느낌을 피하려 그 말을 뺀 이 장비는 무엇일까요?",
+        "answer": "MRI",
+        "acceptedAnswers": [
+          "자기 공명 영상",
+          "자기 공명 영상 장치"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '자기 공명 영상' → '자기공명영상' 넘겨주기 확인 · 장비를 묻는 질문이라 '장치' 붙은 꼴도 받음",
+        "explanation": "검사 중 코일이 빠르게 켜졌다 꺼지며 최대 120dB에 이르는 큰 소리가 납니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "처음 이름 맨 앞에는 '핵'이라는 말이 붙어 있었지만 … 뺀 이 장비",
+          "difWhy": "NMR→자기공명 영상 — 고교 물리·관심층",
+          "wor": 4,
+          "worWhy": "교양 — 의료 기술 기본",
+          "acc": 5,
+          "accWhy": "물리 — 중학 과학 교과 과목",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "몸속 수소 원자핵이 전파를 받았다가 … 몸 안을 그려 내는 검사 장비",
+          "difWhy": "자기공명 영상 — 고교 물리",
+          "wor": 4,
+          "worWhy": "교양 — 의료 장비"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "몸속 수소 원자핵이 전파를 받았다가 다시 내놓는 신호를 읽어 몸 안을 그려 내는 검사 장비입니다. 처음 이름 맨 앞에는 '핵'이라는 말이 붙어 있었지만 나쁜 느낌을 피하려 그 말을 뺐는데, 이 장비는 무엇일까요?",
+          "beforeExplanation": "피터 맨스필드와 폴 로터버는 이 장비와 관련된 발견으로 2003년 노벨 생리의학상을 받았습니다.",
+          "removedCue": "몸속 수소 원자핵이 전파를 받았다가 내놓는 신호를 읽어 몸 안을 그리는 검사 장비(고교 물리 정의)",
+          "addedCue": "로터버의 자기장 기울기 제안",
+          "why": "원리 정의를 빼고 개발사와 이름 뒷이야기로"
+        },
+        "generalHint": "1977년 7월 3일 레이먼드 다마디언 팀은 '불굴'이라 이름 붙인 기계로 사람 몸을 처음 검사했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "강한 자석과 전파로 몸속 단면을 찍는 병원 검사 장비",
+        "familiarity": {
+          "judge": 3,
+          "pct": 99,
+          "why": "병원 검사로 익숙",
+          "piece": "f09",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "C2-24",
+          "key": "b201",
+          "hint": "1977년 7월 3일 레이먼드 다마디언 팀은 '불굴'이라 이름 붙인 기계로 사람 몸을 처음 검사했다.",
+          "guess": "자기 공명 영상(MRI)",
+          "confidence": "high",
+          "hit": true,
+          "answer": "MRI"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging"
+        ],
+        "facts": [
+          {
+            "claim": "본래 NMRI — 나쁜 연상을 피하려 nuclear 를 뺌",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
+            "note": "MRI was originally called NMRI (nuclear magnetic resonance imaging), but \"nuclear\" was dropped to avoid negative associations."
+          },
+          {
+            "claim": "로터버가 자기장 기울기로 2차원 평면 영상을 얻자고 제안",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
+            "note": "Lauterbur proposed to use a magnetic field gradient to generate the NMR image in a 2-D plane."
+          },
+          {
+            "claim": "코일 전환으로 반복 소음, 최대 120dB",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
+            "note": "As these coils are rapidly switched during the excitation and response to perform a moving line scan, they create the characteristic repetitive noise of an MRI scan … MRI machines can produce loud noise, up to 120 dB(A)."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Raymond_Damadian"
+        ],
+        "hintNote": "On July 3, 1977, the first MRI body exam was performed on a human being ... They named their original machine \"Indomitable\"",
+        "easiestCue": "처음 이름 맨 앞의 '핵'이라는 말을 나쁜 느낌을 피하려 뺀 장비",
+        "targetWhy": "NMRI→MRI 이름 변천·로터버 — 대학 교양(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "원리 문장이 대학 교양이지만 '몸 안을 그려 내는 검사 장비' 만으로 CT 와 갈려 추리될 수 있음",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "처음 이름 맨 앞에는 '핵'이라는 말이 붙어 있었지만 … 뺀 이 장비",
+          "difWhy": "NMR→자기공명 영상 — 고교 물리·관심층",
+          "wor": 4,
+          "worWhy": "교양 — 의료 기술 기본",
+          "acc": 5,
+          "accWhy": "물리 — 중학 과학 교과 과목"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

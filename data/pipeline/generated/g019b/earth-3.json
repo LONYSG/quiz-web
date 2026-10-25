@@ -1,331 +1,379 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "earth/3",
-  "midKey": "earth",
-  "subName": "대기·기상",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "earth/3#g019b-C1-14",
-   "seed": {
-    "subject": "나비 효과",
-    "aspect": null,
-    "ref": "C1-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1961년 미국의 한 기상학자는 계산을 다시 돌리며 0.506127 대신 출력지에 찍힌 0.506을 넣었다가 전혀 다른 날씨 결과를 얻었습니다. 그는 처음에 갈매기의 날갯짓에 빗댔는데, 1972년 학회 발표 제목을 동료가 지어 주면서 굳어진 이 현상의 이름은?",
-    "answer": "나비 효과",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이 생각이 담긴 가장 이른 작품으로 알려진 것은 1952년 레이 브래드버리의 단편 '천둥소리'로, 과거로 간 시간 여행자가 나비 한 마리를 밟아 미래가 바뀝니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "그는 처음에 갈매기의 날갯짓에 빗댔는데",
-     "difWhy": "로렌즈 날갯짓 비유 — 관심 있는 사람",
-     "wor": 4,
-     "worWhy": "교양 — 기본 어휘",
-     "acc": 5,
-     "accWhy": "지구과학·기상 — 중학 과학 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "그는 처음에 갈매기의 날갯짓에 빗댔는데",
-     "difWhy": "로렌즈 날갯짓 비유 — 관심 있는 사람",
-     "wor": 4,
-     "worWhy": "교양 — 기본 어휘"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "이 현상을 알려 주는 어떤 서술(반올림 일화·갈매기·튜링의 전자 비유)도 곧 정의나 유명 일화라, 쉬운 단서를 빼면 메릴리스의 작명 하나만 남아 묻는 대상이 흐려짐"
-    },
-    "generalHint": "그 기상학자는 '결정론적 혼돈'을 찾아낸 공으로 1991년 교토상을 받았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "작은 초기 차이가 큰 결과 차이로 번지는 현상",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "영화·일상 비유로 익숙",
-     "piece": "f07",
-     "genPct": 92
-    },
-    "blind": {
-     "ref": "C1-14",
-     "key": "b018",
-     "hint": "그 기상학자는 '결정론적 혼돈'을 찾아낸 공으로 1991년 교토상을 받았다.",
-     "guess": "나비 효과",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "나비 효과"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Butterfly_effect"
-    ],
-    "facts": [
-     {
-      "claim": "1961년 0.506127 대신 0.506 입력",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
-      "note": "he \"entered the initial condition 0.506 from the printout instead of entering the full precision 0.506127 value.\""
-     },
-     {
-      "claim": "처음엔 갈매기 날갯짓, 1972년까지 나비로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
-      "note": "\"one flap of a sea gull's wings would be enough to alter the course of the weather forever.\" He first used a seagull, then switched to a butterfly by 1972"
-     },
-     {
-      "claim": "1972년 AAAS 발표 제목을 필립 메릴리스가 제안",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
-      "note": "Lorenz had no title for a talk at the 139th AAAS meeting, so Merilees proposed \"Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?\""
-     },
-     {
-      "claim": "1952년 브래드버리 '천둥소리'",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
-      "note": "\"A Sound of Thunder\" is the earliest known appearance of the butterfly idea ... \"inadvertently treading on a butterfly in the past.\""
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Edward_Norton_Lorenz"
-    ],
-    "hintNote": "1991 Kyoto Prize for \"his boldest scientific achievement in discovering 'deterministic chaos'\".",
-    "easiestCue": "그는 처음에 갈매기의 날갯짓에 빗댔는데, 1972년 학회 발표 제목을 동료가 지어 주면서 굳어진",
-    "targetWhy": "로렌즈의 반올림·갈매기 비유는 대표 문구(브라질 나비→텍사스 토네이도)를 뺀 애호가 지식",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'갈매기 대신 다른 날갯짓'에서 나비를 떠올리기 쉬움",
-    "pairCheck": null,
-    "dbCheck": "나비 효과 new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "earth/3",
+    "midKey": "earth",
+    "subName": "대기·기상",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "earth/3#g019b-C1-15",
-   "seed": {
-    "subject": "일기 예보",
-    "aspect": null,
-    "ref": "C1-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1859년 로열 차터호를 침몰시킨 폭풍을 계기로 로버트 피츠로이는 이 일에 쓸 도표를 만들며 영어 이름까지 지어냈고, 1861년부터 신문 '타임스'에 이것이 날마다 실렸습니다. 이것은 무엇일까요?",
-    "answer": "일기 예보",
-    "acceptedAnswers": [
-     "날씨 예보",
-     "기상 예보"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "표준국어대사전 '일기 예보' · 언론에서 '날씨 예보' '기상 예보' 함께 씀",
-    "explanation": "피츠로이는 1854년 오늘날 영국 기상청의 전신을 세웠고, 1860년부터 큰 항구에 원뿔 모양 폭풍 경보 표지를 내걸게 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "엮음: 폭풍을 계기로 + 신문에 날마다 실린 이것",
-     "difWhy": "폭풍·매일 신문 — 일상 상식에서 바로",
-     "wor": 3,
-     "worWhy": "일상 제도 유래 이야깃거리",
-     "acc": 5,
-     "accWhy": "지구과학·기상 — 중학 과학 교과"
+  "items": [
+    {
+      "seedId": "earth/3#g019b-C1-14",
+      "seed": {
+        "subject": "나비 효과",
+        "aspect": null,
+        "ref": "C1-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1961년 미국의 한 기상학자는 계산을 다시 돌리며 0.506127 대신 출력지에 찍힌 0.506을 넣었다가 전혀 다른 날씨 결과를 얻었습니다. 그는 처음에 갈매기의 날갯짓에 빗댔는데, 1972년 학회 발표 제목을 동료가 지어 주면서 굳어진 이 현상의 이름은?",
+        "answer": "나비 효과",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이 생각이 담긴 가장 이른 작품으로 알려진 것은 1952년 레이 브래드버리의 단편 '천둥소리'로, 과거로 간 시간 여행자가 나비 한 마리를 밟아 미래가 바뀝니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "그는 처음에 갈매기의 날갯짓에 빗댔는데",
+          "difWhy": "로렌즈 날갯짓 비유 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "교양 — 기본 어휘",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "그는 처음에 갈매기의 날갯짓에 빗댔는데",
+          "difWhy": "로렌즈 날갯짓 비유 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "교양 — 기본 어휘"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "이 현상을 알려 주는 어떤 서술(반올림 일화·갈매기·튜링의 전자 비유)도 곧 정의나 유명 일화라, 쉬운 단서를 빼면 메릴리스의 작명 하나만 남아 묻는 대상이 흐려짐"
+        },
+        "generalHint": "그 기상학자는 '결정론적 혼돈'을 찾아낸 공으로 1991년 교토상을 받았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "작은 초기 차이가 큰 결과 차이로 번지는 현상",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "영화·일상 비유로 익숙",
+          "piece": "f07",
+          "genPct": 92
+        },
+        "blind": {
+          "ref": "C1-14",
+          "key": "b018",
+          "hint": "그 기상학자는 '결정론적 혼돈'을 찾아낸 공으로 1991년 교토상을 받았다.",
+          "guess": "나비 효과",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "나비 효과"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Butterfly_effect"
+        ],
+        "facts": [
+          {
+            "claim": "1961년 0.506127 대신 0.506 입력",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
+            "note": "he \"entered the initial condition 0.506 from the printout instead of entering the full precision 0.506127 value.\""
+          },
+          {
+            "claim": "처음엔 갈매기 날갯짓, 1972년까지 나비로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
+            "note": "\"one flap of a sea gull's wings would be enough to alter the course of the weather forever.\" He first used a seagull, then switched to a butterfly by 1972"
+          },
+          {
+            "claim": "1972년 AAAS 발표 제목을 필립 메릴리스가 제안",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
+            "note": "Lorenz had no title for a talk at the 139th AAAS meeting, so Merilees proposed \"Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?\""
+          },
+          {
+            "claim": "1952년 브래드버리 '천둥소리'",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Butterfly_effect",
+            "note": "\"A Sound of Thunder\" is the earliest known appearance of the butterfly idea ... \"inadvertently treading on a butterfly in the past.\""
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Edward_Norton_Lorenz"
+        ],
+        "hintNote": "1991 Kyoto Prize for \"his boldest scientific achievement in discovering 'deterministic chaos'\".",
+        "easiestCue": "그는 처음에 갈매기의 날갯짓에 빗댔는데, 1972년 학회 발표 제목을 동료가 지어 주면서 굳어진",
+        "targetWhy": "로렌즈의 반올림·갈매기 비유는 대표 문구(브라질 나비→텍사스 토네이도)를 뺀 애호가 지식",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'갈매기 대신 다른 날갯짓'에서 나비를 떠올리기 쉬움",
+        "pairCheck": null,
+        "dbCheck": "나비 효과 new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "그는 처음에 갈매기의 날갯짓에 빗댔는데",
+          "difWhy": "로렌즈 날갯짓 비유 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "교양 — 기본 어휘",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "비글호의 선장이던 로버트 피츠로이는",
-     "difWhy": "피츠로이 forecast 작명 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 낱말 기원"
+    {
+      "seedId": "earth/3#g019b-C1-15",
+      "seed": {
+        "subject": "일기 예보",
+        "aspect": null,
+        "ref": "C1-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1859년 로열 차터호를 침몰시킨 폭풍을 계기로 로버트 피츠로이는 이 일에 쓸 도표를 만들며 영어 이름까지 지어냈고, 1861년부터 신문 '타임스'에 이것이 날마다 실렸습니다. 이것은 무엇일까요?",
+        "answer": "일기 예보",
+        "acceptedAnswers": [
+          "날씨 예보",
+          "기상 예보"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "표준국어대사전 '일기 예보' · 언론에서 '날씨 예보' '기상 예보' 함께 씀",
+        "explanation": "피츠로이는 1854년 오늘날 영국 기상청의 전신을 세웠고, 1860년부터 큰 항구에 원뿔 모양 폭풍 경보 표지를 내걸게 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 폭풍을 계기로 + 신문에 날마다 실린 이것",
+          "difWhy": "폭풍·매일 신문 — 일상 상식에서 바로",
+          "wor": 3,
+          "worWhy": "일상 제도 유래 이야깃거리",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "비글호의 선장이던 로버트 피츠로이는",
+          "difWhy": "피츠로이 forecast 작명 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 낱말 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "다윈을 태운 비글호의 선장이던 로버트 피츠로이는 1859년 로열 차터호가 폭풍에 난파한 뒤 이 일의 영어 이름을 지어냈고, 1861년부터 신문 '타임스'에 이것을 날마다 실었습니다. 이것은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "다윈을 태운 비글호의 선장(관심층 — 피츠로이를 바로 떠올림)",
+          "addedCue": "없음(쉬운 단서만 뺌 — 로열 차터호 폭풍·타임스 연재가 남음)",
+          "why": "비글호 선장은 피츠로이를 바로 알려 주는 관심층 단서라 뺌"
+        },
+        "generalHint": "피츠로이가 세상을 떠난 뒤 한동안 끊겼다가 1874년 간추린 꼴로 다시 시작되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "앞으로의 날씨를 미리 알려 주는 일",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상어",
+          "piece": "f03",
+          "genPct": 99
+        },
+        "blind": null,
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Robert_FitzRoy"
+        ],
+        "facts": [
+          {
+            "claim": "로열 차터호 난파(1859) 뒤 'weather forecast' 용어 창안",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Robert_FitzRoy",
+            "note": "FitzRoy called his accurate daily predictions by \"a new name of his own invention: 'forecasts'.\" After the 1859 storm that wrecked the Royal Charter, he \"coined the term 'weather forecast'.\""
+          },
+          {
+            "claim": "1861년 타임스에 첫 일일 예보",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Robert_FitzRoy",
+            "note": "\"The first daily weather forecasts were published in The Times in 1861.\""
+          },
+          {
+            "claim": "1854년 기상청 전신 · 1860년 폭풍 경보 원뿔",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Robert_FitzRoy",
+            "note": "\"In 1854 he established what would later be called the Met Office.\" / \"In 1860, FitzRoy introduced a system of hoisting storm warning cones at the principal ports when a gale was expected.\""
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Robert_FitzRoy"
+        ],
+        "easiestCue": "1859년 로열 차터호 폭풍 뒤 피츠로이가 영어 이름을 지어냄",
+        "targetWhy": "'forecast'라는 말의 작명과 타임스 첫 연재는 기상사 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'폭풍 뒤 · 신문에 날마다'로 짐작될 수 있음 — 피츠로이를 알아야 확신",
+        "pairCheck": null,
+        "dbCheck": "일기 예보 · 날씨 예보 · 기상 예보 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "엮음: 폭풍을 계기로 + 신문에 날마다 실린 이것",
+          "difWhy": "폭풍·매일 신문 — 일상 상식에서 바로",
+          "wor": 3,
+          "worWhy": "일상 제도 유래 이야깃거리",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과"
+        },
+        "g020": {
+          "why": "V026 ok  · H0 재채점 3 → 힌트 붙임",
+          "verdict": "ok",
+          "hintGen": true,
+          "hintGenNote": "G020 하위 에이전트(hint-v6 규칙 · 문서 확인)"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "다윈을 태운 비글호의 선장이던 로버트 피츠로이는 1859년 로열 차터호가 폭풍에 난파한 뒤 이 일의 영어 이름을 지어냈고, 1861년부터 신문 '타임스'에 이것을 날마다 실었습니다. 이것은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "다윈을 태운 비글호의 선장(관심층 — 피츠로이를 바로 떠올림)",
-     "addedCue": "없음(쉬운 단서만 뺌 — 로열 차터호 폭풍·타임스 연재가 남음)",
-     "why": "비글호 선장은 피츠로이를 바로 알려 주는 관심층 단서라 뺌"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "앞으로의 날씨를 미리 알려 주는 일",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상어",
-     "piece": "f03",
-     "genPct": 99
-    },
-    "blind": null,
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Robert_FitzRoy"
-    ],
-    "facts": [
-     {
-      "claim": "로열 차터호 난파(1859) 뒤 'weather forecast' 용어 창안",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Robert_FitzRoy",
-      "note": "FitzRoy called his accurate daily predictions by \"a new name of his own invention: 'forecasts'.\" After the 1859 storm that wrecked the Royal Charter, he \"coined the term 'weather forecast'.\""
-     },
-     {
-      "claim": "1861년 타임스에 첫 일일 예보",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Robert_FitzRoy",
-      "note": "\"The first daily weather forecasts were published in The Times in 1861.\""
-     },
-     {
-      "claim": "1854년 기상청 전신 · 1860년 폭풍 경보 원뿔",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Robert_FitzRoy",
-      "note": "\"In 1854 he established what would later be called the Met Office.\" / \"In 1860, FitzRoy introduced a system of hoisting storm warning cones at the principal ports when a gale was expected.\""
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "1859년 로열 차터호 폭풍 뒤 피츠로이가 영어 이름을 지어냄",
-    "targetWhy": "'forecast'라는 말의 작명과 타임스 첫 연재는 기상사 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'폭풍 뒤 · 신문에 날마다'로 짐작될 수 있음 — 피츠로이를 알아야 확신",
-    "pairCheck": null,
-    "dbCheck": "일기 예보 · 날씨 예보 · 기상 예보 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "earth/3#g019b-C1-16",
-   "seed": {
-    "subject": "구름",
-    "aspect": null,
-    "ref": "C1-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1802년 영국의 화학 약품 제조업자 루크 하워드는 아스케시언 학회 발표에서 이것을 갈래짓는 체계를 내놓았습니다. 그의 체계에 반한 괴테가 고마움을 담은 시를 써 보내기도 했는데, 하워드가 나눈 이것은?",
-    "answer": "구름",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "하워드는 퀘이커교도였지만 1825년 경전 문제로 다툰 뒤 모임을 떠났고, 1836년에는 퀘이커 운동에서 완전히 떨어져 나왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "루크 하워드가 갈래짓는 체계를 내놓은 이것",
-     "difWhy": "'하워드의 분류 체계' — 대학 교양 과학사 (경계 3)",
-     "wor": 4,
-     "worWhy": "구름 분류 체계 — 교양 과학",
-     "acc": 5,
-     "accWhy": "지구과학·기상 — 중학 과학 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "린네의 생물 분류처럼 라틴어 이름을 붙여 이것을 갈래지었습니다",
-     "difWhy": "하워드 구름 분류 — 고교 지구과학",
-     "wor": 4,
-     "worWhy": "교양 — 구름 분류 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1802년 영국의 화학 약품 제조업자 루크 하워드는 아스케시언 학회 발표에서, 린네의 생물 분류처럼 라틴어 이름을 붙여 이것을 갈래지었습니다. 그의 체계에 반한 괴테가 고마움을 담은 시를 써 보내기도 했는데, 하워드가 이렇게 나눈 이것은?",
-     "beforeExplanation": null,
-     "removedCue": "린네의 생물 분류처럼 라틴어 이름을 붙여 갈래지음",
-     "addedCue": "(뺌만 — 남은 단서: 아스케시언 학회 · 괴테의 시)",
-     "why": "고교 지구과학의 라틴어 분류 단서를 뺌"
-    },
-    "generalHint": "하워드는 1818~20년 펴낸 『런던의 기후』에서 도시 열섬 현상을 처음 짚었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "하늘에 떠 있는 작은 물방울·얼음 알갱이의 모임",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상어",
-     "piece": "f06",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "C1-16",
-     "key": "b142",
-     "hint": "하워드는 1818~20년 펴낸 『런던의 기후』에서 도시 열섬 현상을 처음 짚었다.",
-     "guess": "구름",
-     "confidence": "low",
-     "hit": true,
-     "answer": "구름"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)"
-    ],
-    "facts": [
-     {
-      "claim": "영국 화학 약품 제조업자(약사 수련)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
-      "note": "a \"British manufacturing chemist (1772–1864).\" He trained as a pharmacist"
-     },
-     {
-      "claim": "1802년 아스케시언 학회 발표, 라틴어 이름, 린네식",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
-      "note": "cloud naming system ... \"which he proposed in an 1802 presentation to the Askesian Society.\" ... \"Howard's use of universal Latin.\" Its Latin-based names followed the Linnaean approach to classification"
-     },
-     {
-      "claim": "괴테가 감사의 시",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
-      "note": "\"Goethe was entranced by Howard's system.\" Afterward, Goethe wrote verse expressing his gratitude to Howard"
-     },
-     {
-      "claim": "퀘이커 탈퇴 1825 · 1836",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
-      "note": "\"Although a Quaker, he quit the Society in 1825 after a dispute concerning apocryphal texts.\" He later left the Quaker movement entirely in 1836"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)"
-    ],
-    "hintNote": "publishing the earliest scientific book on urban climatology, The Climate of London in 1818–20 … Howard was first to note the urban heat island effect",
-    "easiestCue": "그의 체계에 반한 괴테가 고마움을 담은 시를 써 보내기도",
-    "targetWhy": "하워드·괴테 일화 — 과학사 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "대기·기상에서 라틴어 갈래 이름이면 구름을 짐작하기 쉬움",
-    "pairCheck": null,
-    "dbCheck": "구름 new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "earth/3#g019b-C1-16",
+      "seed": {
+        "subject": "구름",
+        "aspect": null,
+        "ref": "C1-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1802년 영국의 화학 약품 제조업자 루크 하워드는 아스케시언 학회 발표에서 이것을 갈래짓는 체계를 내놓았습니다. 그의 체계에 반한 괴테가 고마움을 담은 시를 써 보내기도 했는데, 하워드가 나눈 이것은?",
+        "answer": "구름",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "하워드는 퀘이커교도였지만 1825년 경전 문제로 다툰 뒤 모임을 떠났고, 1836년에는 퀘이커 운동에서 완전히 떨어져 나왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "루크 하워드가 갈래짓는 체계를 내놓은 이것",
+          "difWhy": "'하워드의 분류 체계' — 대학 교양 과학사 (경계 3)",
+          "wor": 4,
+          "worWhy": "구름 분류 체계 — 교양 과학",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "린네의 생물 분류처럼 라틴어 이름을 붙여 이것을 갈래지었습니다",
+          "difWhy": "하워드 구름 분류 — 고교 지구과학",
+          "wor": 4,
+          "worWhy": "교양 — 구름 분류 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1802년 영국의 화학 약품 제조업자 루크 하워드는 아스케시언 학회 발표에서, 린네의 생물 분류처럼 라틴어 이름을 붙여 이것을 갈래지었습니다. 그의 체계에 반한 괴테가 고마움을 담은 시를 써 보내기도 했는데, 하워드가 이렇게 나눈 이것은?",
+          "beforeExplanation": null,
+          "removedCue": "린네의 생물 분류처럼 라틴어 이름을 붙여 갈래지음",
+          "addedCue": "(뺌만 — 남은 단서: 아스케시언 학회 · 괴테의 시)",
+          "why": "고교 지구과학의 라틴어 분류 단서를 뺌"
+        },
+        "generalHint": "하워드는 1818~20년 펴낸 『런던의 기후』에서 도시 열섬 현상을 처음 짚었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "하늘에 떠 있는 작은 물방울·얼음 알갱이의 모임",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상어",
+          "piece": "f06",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "C1-16",
+          "key": "b142",
+          "hint": "하워드는 1818~20년 펴낸 『런던의 기후』에서 도시 열섬 현상을 처음 짚었다.",
+          "guess": "구름",
+          "confidence": "low",
+          "hit": true,
+          "answer": "구름"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)"
+        ],
+        "facts": [
+          {
+            "claim": "영국 화학 약품 제조업자(약사 수련)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
+            "note": "a \"British manufacturing chemist (1772–1864).\" He trained as a pharmacist"
+          },
+          {
+            "claim": "1802년 아스케시언 학회 발표, 라틴어 이름, 린네식",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
+            "note": "cloud naming system ... \"which he proposed in an 1802 presentation to the Askesian Society.\" ... \"Howard's use of universal Latin.\" Its Latin-based names followed the Linnaean approach to classification"
+          },
+          {
+            "claim": "괴테가 감사의 시",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
+            "note": "\"Goethe was entranced by Howard's system.\" Afterward, Goethe wrote verse expressing his gratitude to Howard"
+          },
+          {
+            "claim": "퀘이커 탈퇴 1825 · 1836",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)",
+            "note": "\"Although a Quaker, he quit the Society in 1825 after a dispute concerning apocryphal texts.\" He later left the Quaker movement entirely in 1836"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Luke_Howard_(meteorologist)"
+        ],
+        "hintNote": "publishing the earliest scientific book on urban climatology, The Climate of London in 1818–20 … Howard was first to note the urban heat island effect",
+        "easiestCue": "그의 체계에 반한 괴테가 고마움을 담은 시를 써 보내기도",
+        "targetWhy": "하워드·괴테 일화 — 과학사 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "대기·기상에서 라틴어 갈래 이름이면 구름을 짐작하기 쉬움",
+        "pairCheck": null,
+        "dbCheck": "구름 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "루크 하워드가 갈래짓는 체계를 내놓은 이것",
+          "difWhy": "'하워드의 분류 체계' — 대학 교양 과학사 (경계 3)",
+          "wor": 4,
+          "worWhy": "구름 분류 체계 — 교양 과학",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

@@ -1,241 +1,271 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "transport/1",
-  "midKey": "transport",
-  "subName": "자동차 구조·용어",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "transport/1#g019a-C2-01",
-   "seed": {
-    "subject": "터보차저",
-    "aspect": null,
-    "ref": "C2-01",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "스위스 기술자 알프레트 뷔히가 1905년 특허를 낸 이 장치는 1924년 스위스 기관차 공장에 처음 상업용으로 납품되었습니다. 1962년 쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음 달았던 이 엔진 장치는 무엇일까요?",
-    "answer": "터보차저",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "제트파이어는 노킹을 막으려고 메탄올과 증류수를 반씩 섞은 액체를 따로 넣어야 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음",
-     "difWhy": "1962 첫 승용차 장치 — 자동차 애호가",
-     "wor": 3,
-     "worWhy": "기술 기원 이야깃거리",
-     "acc": 4,
-     "accWhy": "자동차·교통 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음",
-     "difWhy": "1962 첫 승용차 장치 — 자동차 애호가",
-     "wor": 3,
-     "worWhy": "기술 기원 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "1916년 프랑스의 증기 터빈 발명가 오귀스트 라토는 전투기용 르노 엔진에 쓰려고 이 장치의 특허를 신청했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "배기가스로 터빈을 돌려 엔진에 공기를 눌러 넣는 장치",
-    "familiarity": {
-     "judge": 3,
-     "pct": 70,
-     "why": "자동차 광고·게임에서 들어 봄",
-     "piece": "f08",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "C2-01",
-     "key": "b294",
-     "hint": "1916년 프랑스의 증기 터빈 발명가 오귀스트 라토는 전투기용 르노 엔진에 쓰려고 이 장치의 특허를 신청했다.",
-     "guess": "터보차저",
-     "confidence": "high",
-     "hit": true,
-     "answer": "터보차저"
-    },
-    "hobby": "자동차",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Turbocharger",
-     "https://en.wikipedia.org/wiki/Oldsmobile_Cutlass"
-    ],
-    "facts": [
-     {
-      "claim": "1905년 스위스 기술자 알프레트 뷔히의 특허",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Turbocharger",
-      "note": "The 1905 patent by Alfred Büchi, a Swiss engineer working at Sulzer is often considered the birth of the turbocharger."
-     },
-     {
-      "claim": "1924년 첫 상업용 — 스위스 기관차 공장 SLM 에 납품",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Turbocharger",
-      "note": "The first commercial application of a turbocharger was in June 1924 when the first heavy duty turbocharger, model VT402, was delivered ... to SLM, Swiss Locomotive and Machine Works in Winterthur."
-     },
-     {
-      "claim": "1962년 쉐보레 코베어 몬자 · 올즈모빌 제트파이어가 첫 터보 승용차",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Turbocharger",
-      "note": "The first turbocharged cars were the short-lived Chevrolet Corvair Monza and the Oldsmobile Jetfire, both introduced in 1962."
-     },
-     {
-      "claim": "제트파이어는 노킹을 막으려 메탄올·증류수 50/50 혼합액을 써야 했다",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Oldsmobile_Cutlass",
-      "note": "the Jetfire was prone to 'spark-knock' and without modern engine management systems, the only way to mitigate this was to use a 50/50 mixture of methanol and distilled water."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Turbocharger"
-    ],
-    "hintNote": "Another early patent for turbochargers was applied for in 1916 by French steam turbine inventor Auguste Rateau, for their intended use on the Renault engines used by French fighter planes.",
-    "easiestCue": "1962년 쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음 달았던 이 엔진 장치",
-    "targetWhy": "첫 터보 양산차 · 뷔히 특허 — 자동차 애호가 세부, 교과서·방송에 없음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 엔진 장치의 탄생 · 첫 양산차 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": [
-     "단정어 처음",
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "transport/1",
+    "midKey": "transport",
+    "subName": "자동차 구조·용어",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "transport/1#g019a-C2-02",
-   "seed": {
-    "subject": "크루즈 컨트롤",
-    "aspect": null,
-    "ref": "C2-02",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "다섯 살 때 사고로 두 눈의 시력을 잃은 미국 발명가 랠프 티터는 피스톤 링 회사 '퍼펙트 서클'의 사장을 지냈습니다. 그가 열 해 동안 매달린 끝에 1948년 첫 특허를 받은 이 자동차 장치는 무엇일까요?",
-    "answer": "크루즈 컨트롤",
-    "acceptedAnswers": [
-     "정속 주행 장치"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '크루즈 컨트롤' 첫 줄 — \"자동차의 속도를 일정하게 유지하도록 하는 '정속 주행 장치'\"",
-    "explanation": "집안 변호사가 말할 때는 차를 늦추고 들을 때는 빨리 모는 것을 보고 떠올렸다고 전하며, 1958년 크라이슬러가 '오토 파일럿'이라는 이름으로 처음 내놓았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "랠프 티터 … 1948년 첫 특허를 받은 이 자동차 장치",
-     "difWhy": "시각장애 발명가의 장치 — 자동차 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 발명 일화",
-     "acc": 4,
-     "accWhy": "자동차·교통 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "transport/1#g019a-C2-01",
+      "seed": {
+        "subject": "터보차저",
+        "aspect": null,
+        "ref": "C2-01",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "스위스 기술자 알프레트 뷔히가 1905년 특허를 낸 이 장치는 1924년 스위스 기관차 공장에 처음 상업용으로 납품되었습니다. 1962년 쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음 달았던 이 엔진 장치는 무엇일까요?",
+        "answer": "터보차저",
+        "acceptedAnswers": [
+          "터보",
+          "터보차져"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "제트파이어는 노킹을 막으려고 메탄올과 증류수를 반씩 섞은 액체를 따로 넣어야 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음",
+          "difWhy": "1962 첫 승용차 장치 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "기술 기원 이야깃거리",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음",
+          "difWhy": "1962 첫 승용차 장치 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "기술 기원 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "1916년 프랑스의 증기 터빈 발명가 오귀스트 라토는 전투기용 르노 엔진에 쓰려고 이 장치의 특허를 신청했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "배기가스로 터빈을 돌려 엔진에 공기를 눌러 넣는 장치",
+        "familiarity": {
+          "judge": 3,
+          "pct": 70,
+          "why": "자동차 광고·게임에서 들어 봄",
+          "piece": "f08",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "C2-01",
+          "key": "b294",
+          "hint": "1916년 프랑스의 증기 터빈 발명가 오귀스트 라토는 전투기용 르노 엔진에 쓰려고 이 장치의 특허를 신청했다.",
+          "guess": "터보차저",
+          "confidence": "high",
+          "hit": true,
+          "answer": "터보차저"
+        },
+        "hobby": "자동차",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Turbocharger",
+          "https://en.wikipedia.org/wiki/Oldsmobile_Cutlass"
+        ],
+        "facts": [
+          {
+            "claim": "1905년 스위스 기술자 알프레트 뷔히의 특허",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Turbocharger",
+            "note": "The 1905 patent by Alfred Büchi, a Swiss engineer working at Sulzer is often considered the birth of the turbocharger."
+          },
+          {
+            "claim": "1924년 첫 상업용 — 스위스 기관차 공장 SLM 에 납품",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Turbocharger",
+            "note": "The first commercial application of a turbocharger was in June 1924 when the first heavy duty turbocharger, model VT402, was delivered ... to SLM, Swiss Locomotive and Machine Works in Winterthur."
+          },
+          {
+            "claim": "1962년 쉐보레 코베어 몬자 · 올즈모빌 제트파이어가 첫 터보 승용차",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Turbocharger",
+            "note": "The first turbocharged cars were the short-lived Chevrolet Corvair Monza and the Oldsmobile Jetfire, both introduced in 1962."
+          },
+          {
+            "claim": "제트파이어는 노킹을 막으려 메탄올·증류수 50/50 혼합액을 써야 했다",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Oldsmobile_Cutlass",
+            "note": "the Jetfire was prone to 'spark-knock' and without modern engine management systems, the only way to mitigate this was to use a 50/50 mixture of methanol and distilled water."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Turbocharger"
+        ],
+        "hintNote": "Another early patent for turbochargers was applied for in 1916 by French steam turbine inventor Auguste Rateau, for their intended use on the Renault engines used by French fighter planes.",
+        "easiestCue": "1962년 쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음 달았던 이 엔진 장치",
+        "targetWhy": "첫 터보 양산차 · 뷔히 특허 — 자동차 애호가 세부, 교과서·방송에 없음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 엔진 장치의 탄생 · 첫 양산차 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [
+          "단정어 처음",
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "쉐보레 코베어 몬자와 올즈모빌 제트파이어가 승용차로는 처음",
+          "difWhy": "1962 첫 승용차 장치 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "기술 기원 이야깃거리",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix variants",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "말할 때는 차를 늦추고 … '오토 파일럿'이라는 이름",
-     "difWhy": "정속 주행 장치 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "발명 일화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "다섯 살 때 사고로 두 눈의 시력을 잃은 미국 발명가 랠프 티터는, 집안 변호사가 말할 때는 차를 늦추고 들을 때는 빨리 모는 것을 보고 이 장치를 떠올렸다고 전합니다. 1958년 크라이슬러가 '오토 파일럿'이라는 이름으로 처음 내놓은 이 장치는 무엇일까요?",
-     "beforeExplanation": "티터의 상표 이름은 '스피도스탯'이었고, 지금 이름은 캐딜락이 이 장치를 팔 때 붙인 것이 굳은 것입니다.",
-     "removedCue": "변호사가 말할 때 늦추고 들을 때 빨리 몬 일화 · '오토 파일럿' 이름",
-     "addedCue": "퍼펙트 서클 사장 · 1948년 첫 특허(열 해 손질)",
-     "why": "속도 조절을 드러내는 일화와 상품명을 해설로 옮기고 발명가 이력으로"
-    },
-    "generalHint": "1908년 미국 차 피어리스는 운전대에 따로 단 스로틀 레버와 조속기로 엔진 속도를 일정하게 지키게 했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "운전자가 정한 속도를 차가 알아서 유지하게 하는 장치",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "운전자에겐 익숙하나 모르는 사람도 꽤 됨",
-     "piece": "f03",
-     "genPct": 70
-    },
-    "blind": {
-     "ref": "C2-02",
-     "key": "b122",
-     "hint": "1908년 미국 차 피어리스는 운전대에 따로 단 스로틀 레버와 조속기로 엔진 속도를 일정하게 지키게 했다.",
-     "guess": "크루즈 컨트롤",
-     "confidence": "high",
-     "hit": true,
-     "answer": "크루즈 컨트롤"
-    },
-    "hobby": "자동차",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ralph_Teetor"
-    ],
-    "facts": [
-     {
-      "claim": "티터는 다섯 살 때 칼에 눈을 다쳐 두 눈이 멀었다",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
-      "note": "Teetor injured his eye at the age of five with a knife. Within a year, he developed sympathetic ophthalmia and became blind in both eyes."
-     },
-     {
-      "claim": "집안 변호사가 말할 때 늦추고 들을 때 빨리 모는 것을 보고 떠올렸다고 전함",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
-      "note": "Family lore suggests that Teetor was inspired to invent cruise control one day while riding with his family's lawyer, Harry Lindsay. The lawyer would slow down while talking and speed up while listening."
-     },
-     {
-      "claim": "1958년 크라이슬러가 '오토 파일럿'으로 처음 상용화",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
-      "note": "The Perfect Circle device wasn't used commercially until Chrysler introduced it as a luxury model option called the \"Auto Pilot\" in 1958."
-     },
-     {
-      "claim": "퍼펙트 서클(피스톤 링 제조사) 사장",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
-      "note": "He was the longtime president of the automotive parts manufacturer The Perfect Circle Co. ... a manufacturer of piston rings. / He was president of the company from 1946 to 1957."
-     },
-     {
-      "claim": "1948년, 열 해의 손질 끝에 첫 특허",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
-      "note": "In 1948, after ten years of tinkering, Ralph Teetor received his first patent on a speed control device."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Cruise_control"
-    ],
-    "hintNote": "In 1908, the Peerless included a governor to keep the speed of the engine through an extra throttle lever on the steering wheel.",
-    "easiestCue": "시각 장애 발명가 랠프 티터가 1948년 첫 특허를 받은 자동차 장치",
-    "targetWhy": "티터=크루즈 컨트롤은 자동차 애호가 세부 — 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "일화에서 '속도를 일정하게' 를 추리할 수 있어 3 으로 내려갈 수 있음",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "transport/1#g019a-C2-02",
+      "seed": {
+        "subject": "크루즈 컨트롤",
+        "aspect": null,
+        "ref": "C2-02",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "다섯 살 때 사고로 두 눈의 시력을 잃은 미국 발명가 랠프 티터는 피스톤 링 회사 '퍼펙트 서클'의 사장을 지냈습니다. 그가 열 해 동안 매달린 끝에 1948년 첫 특허를 받은 이 자동차 장치는 무엇일까요?",
+        "answer": "크루즈 컨트롤",
+        "acceptedAnswers": [
+          "정속 주행 장치"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '크루즈 컨트롤' 첫 줄 — \"자동차의 속도를 일정하게 유지하도록 하는 '정속 주행 장치'\"",
+        "explanation": "집안 변호사가 말할 때는 차를 늦추고 들을 때는 빨리 모는 것을 보고 떠올렸다고 전하며, 1958년 크라이슬러가 '오토 파일럿'이라는 이름으로 처음 내놓았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "랠프 티터 … 1948년 첫 특허를 받은 이 자동차 장치",
+          "difWhy": "시각장애 발명가의 장치 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 발명 일화",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "말할 때는 차를 늦추고 … '오토 파일럿'이라는 이름",
+          "difWhy": "정속 주행 장치 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "발명 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "다섯 살 때 사고로 두 눈의 시력을 잃은 미국 발명가 랠프 티터는, 집안 변호사가 말할 때는 차를 늦추고 들을 때는 빨리 모는 것을 보고 이 장치를 떠올렸다고 전합니다. 1958년 크라이슬러가 '오토 파일럿'이라는 이름으로 처음 내놓은 이 장치는 무엇일까요?",
+          "beforeExplanation": "티터의 상표 이름은 '스피도스탯'이었고, 지금 이름은 캐딜락이 이 장치를 팔 때 붙인 것이 굳은 것입니다.",
+          "removedCue": "변호사가 말할 때 늦추고 들을 때 빨리 몬 일화 · '오토 파일럿' 이름",
+          "addedCue": "퍼펙트 서클 사장 · 1948년 첫 특허(열 해 손질)",
+          "why": "속도 조절을 드러내는 일화와 상품명을 해설로 옮기고 발명가 이력으로"
+        },
+        "generalHint": "이 장치를 만든 발명가는 1936년 미국 자동차공학회(SAE) 회장에 뽑혔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "운전자가 정한 속도를 차가 알아서 유지하게 하는 장치",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "운전자에겐 익숙하나 모르는 사람도 꽤 됨",
+          "piece": "f03",
+          "genPct": 70
+        },
+        "blind": {
+          "ref": "C2-02",
+          "key": "b122",
+          "hint": "1908년 미국 차 피어리스는 운전대에 따로 단 스로틀 레버와 조속기로 엔진 속도를 일정하게 지키게 했다.",
+          "guess": "크루즈 컨트롤",
+          "confidence": "high",
+          "hit": true,
+          "answer": "크루즈 컨트롤"
+        },
+        "hobby": "자동차",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ralph_Teetor"
+        ],
+        "facts": [
+          {
+            "claim": "티터는 다섯 살 때 칼에 눈을 다쳐 두 눈이 멀었다",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
+            "note": "Teetor injured his eye at the age of five with a knife. Within a year, he developed sympathetic ophthalmia and became blind in both eyes."
+          },
+          {
+            "claim": "집안 변호사가 말할 때 늦추고 들을 때 빨리 모는 것을 보고 떠올렸다고 전함",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
+            "note": "Family lore suggests that Teetor was inspired to invent cruise control one day while riding with his family's lawyer, Harry Lindsay. The lawyer would slow down while talking and speed up while listening."
+          },
+          {
+            "claim": "1958년 크라이슬러가 '오토 파일럿'으로 처음 상용화",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
+            "note": "The Perfect Circle device wasn't used commercially until Chrysler introduced it as a luxury model option called the \"Auto Pilot\" in 1958."
+          },
+          {
+            "claim": "퍼펙트 서클(피스톤 링 제조사) 사장",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
+            "note": "He was the longtime president of the automotive parts manufacturer The Perfect Circle Co. ... a manufacturer of piston rings. / He was president of the company from 1946 to 1957."
+          },
+          {
+            "claim": "1948년, 열 해의 손질 끝에 첫 특허",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ralph_Teetor",
+            "note": "In 1948, after ten years of tinkering, Ralph Teetor received his first patent on a speed control device."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "시각 장애 발명가 랠프 티터가 1948년 첫 특허를 받은 자동차 장치",
+        "targetWhy": "티터=크루즈 컨트롤은 자동차 애호가 세부 — 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "일화에서 '속도를 일정하게' 를 추리할 수 있어 3 으로 내려갈 수 있음",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "랠프 티터 … 1948년 첫 특허를 받은 이 자동차 장치",
+          "difWhy": "시각장애 발명가의 장치 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 발명 일화",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

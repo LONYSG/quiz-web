@@ -1,241 +1,271 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "daily-rule/4",
-  "midKey": "daily-rule",
-  "subName": "신고·응급 번호",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "daily-rule/4#g019a-L1-07",
-   "seed": {
-    "subject": "사이렌",
-    "aspect": null,
-    "ref": "L1-07",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1799년 이전 스코틀랜드의 존 로비슨이 처음 만든 이 장치는 오르간 파이프 몇 개를 울리는 악기로 쓰였습니다. 1819년 샤를 카냐르 드 라 투르는 구멍 뚫린 원판 두 장 가운데 하나를 돌려 공기 흐름을 끊어 소리를 내게 고쳤는데, 이 장치는?",
-    "answer": "사이렌",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "로비슨의 것은 공기관을 여닫는 마개 하나로 된 단순한 구조였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "구멍 뚫린 원판 두 장 가운데 하나를 돌려 공기 흐름을 끊어 소리",
-     "difWhy": "회전 원판 소리 장치 — 기술사 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 장치 원리",
-     "acc": 5,
-     "accWhy": "생활 규칙·안전 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "물속에서도 소리가 난다는 점에서 그리스 신화를 떠올려",
-     "difWhy": "바다 요정 이름 경보기 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이름 어원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1799년 이전 스코틀랜드의 존 로비슨이 처음 만든 이 장치는 오르간 파이프 몇 개를 울리는 악기로 쓰였습니다. 1819년 이를 개량한 샤를 카냐르 드 라 투르는 물속에서도 소리가 난다는 점에서 그리스 신화를 떠올려 이름을 붙였는데, 이 장치는?",
-     "beforeExplanation": null,
-     "removedCue": "물속에서도 소리가 난다는 점에서 그리스 신화를 떠올려 이름을 붙임",
-     "addedCue": "구멍 뚫린 원판 두 장 중 하나를 돌려 공기 흐름을 끊는 구조",
-     "why": "그리스 신화 이름 유래(정답 이름의 풀이)를 빼고 구조 세부로"
-    },
-    "generalHint": "독일 등 유럽 몇 나라에서는 높은음과 낮은음 공기 나팔 두 벌을 번갈아 울리는 방식이 쓰인다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "크고 높은 경보음을 내는 장치",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상어",
-     "piece": "f04",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "L1-07",
-     "key": "b303",
-     "hint": "독일 등 유럽 몇 나라에서는 높은음과 낮은음 공기 나팔 두 벌을 번갈아 울리는 방식이 쓰인다.",
-     "guess": "사이렌",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "사이렌"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Siren_(alarm)"
-    ],
-    "facts": [
-     {
-      "claim": "1799년 이전 로비슨 발명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
-      "note": "Some time before 1799, the siren was invented by the Scottish natural philosopher John Robison."
-     },
-     {
-      "claim": "오르간 파이프 일부를 울리는 악기로 사용",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
-      "note": "Robison's sirens were used as musical instruments; specifically, they powered some of the pipes in an organ."
-     },
-     {
-      "claim": "1819년 카냐르 드 라 투르 개량·이름",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
-      "note": "In 1819, an improved siren was developed and named by Baron Charles Cagniard de la Tour."
-     },
-     {
-      "claim": "로비슨 사이렌은 공기관을 여닫는 마개",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
-      "note": "Robison's siren consisted of a stopcock that opened and closed a pneumatic tube."
-     },
-     {
-      "claim": "드 라 투르의 것 — 구멍 뚫린 원판 두 장, 하나는 고정 하나는 회전, 공기 흐름을 끊어 소리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
-      "note": "De la Tour's siren consisted of two perforated disks that were mounted coaxially at the outlet of a pneumatic tube. One disk was stationary, while the other disk rotated. The rotating disk periodically interrupted the flow of air through the fixed disk, producing a tone."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Siren_(alarm)"
-    ],
-    "hintNote": "In Germany and some other European countries, the pneumatic two-tone (hi-lo) siren consists of two sets of air horns, one high pitched and the other low pitched.",
-    "easiestCue": "구멍 뚫린 원판 두 장 가운데 하나를 돌려 공기 흐름을 끊어 소리를",
-    "targetWhy": "경보 장치의 발명사·원리 — 대학 교양(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "어원 단서가 관심층 수준일 수 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "daily-rule/4",
+    "midKey": "daily-rule",
+    "subName": "신고·응급 번호",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "daily-rule/4#g019a-L1-08",
-   "seed": {
-    "subject": "구급차",
-    "aspect": null,
-    "ref": "L1-08",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1487년 그라나다 왕국의 말라가를 포위한 스페인 가톨릭 공동 왕의 군대가 처음 쓴 것으로 기록되어 있습니다. 나폴레옹 시대 군의관 도미니크 장 라레는 기마 포병 마차의 빠른 움직임을 보고 '날아다니는 이것'을 만들었는데, 이것은?",
-    "answer": "구급차",
-    "acceptedAnswers": [
-     "앰뷸런스"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "앰뷸런스 — 국립국어원 외래어 표기·일상에서 같은 대상의 흔한 이름",
-    "explanation": "크림 전쟁 무렵인 1854년쯤부터 부상병을 나르는 마차를 이 이름으로 부르기 시작했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "도미니크 장 라레 … '날아다니는 이것'",
-     "difWhy": "라레의 날아다니는 구급차 — 의료사 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 구급차 기원",
-     "acc": 5,
-     "accWhy": "생활 규칙·안전 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "daily-rule/4#g019a-L1-07",
+      "seed": {
+        "subject": "사이렌",
+        "aspect": null,
+        "ref": "L1-07",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1799년 이전 스코틀랜드의 존 로비슨이 처음 만든 이 장치는 오르간 파이프 몇 개를 울리는 악기로 쓰였습니다. 1819년 샤를 카냐르 드 라 투르는 구멍 뚫린 원판 두 장 가운데 하나를 돌려 공기 흐름을 끊어 소리를 내게 고쳤는데, 이 장치는?",
+        "answer": "사이렌",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "로비슨의 것은 공기관을 여닫는 마개 하나로 된 단순한 구조였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "구멍 뚫린 원판 두 장 가운데 하나를 돌려 공기 흐름을 끊어 소리",
+          "difWhy": "회전 원판 소리 장치 — 기술사 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 장치 원리",
+          "acc": 5,
+          "accWhy": "생활 규칙·안전 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "물속에서도 소리가 난다는 점에서 그리스 신화를 떠올려",
+          "difWhy": "바다 요정 이름 경보기 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이름 어원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1799년 이전 스코틀랜드의 존 로비슨이 처음 만든 이 장치는 오르간 파이프 몇 개를 울리는 악기로 쓰였습니다. 1819년 이를 개량한 샤를 카냐르 드 라 투르는 물속에서도 소리가 난다는 점에서 그리스 신화를 떠올려 이름을 붙였는데, 이 장치는?",
+          "beforeExplanation": null,
+          "removedCue": "물속에서도 소리가 난다는 점에서 그리스 신화를 떠올려 이름을 붙임",
+          "addedCue": "구멍 뚫린 원판 두 장 중 하나를 돌려 공기 흐름을 끊는 구조",
+          "why": "그리스 신화 이름 유래(정답 이름의 풀이)를 빼고 구조 세부로"
+        },
+        "generalHint": "독일 등 유럽 몇 나라에서는 높은음과 낮은음 공기 나팔 두 벌을 번갈아 울리는 방식이 쓰인다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "크고 높은 경보음을 내는 장치",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상어",
+          "piece": "f04",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "L1-07",
+          "key": "b303",
+          "hint": "독일 등 유럽 몇 나라에서는 높은음과 낮은음 공기 나팔 두 벌을 번갈아 울리는 방식이 쓰인다.",
+          "guess": "사이렌",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "사이렌"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Siren_(alarm)"
+        ],
+        "facts": [
+          {
+            "claim": "1799년 이전 로비슨 발명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
+            "note": "Some time before 1799, the siren was invented by the Scottish natural philosopher John Robison."
+          },
+          {
+            "claim": "오르간 파이프 일부를 울리는 악기로 사용",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
+            "note": "Robison's sirens were used as musical instruments; specifically, they powered some of the pipes in an organ."
+          },
+          {
+            "claim": "1819년 카냐르 드 라 투르 개량·이름",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
+            "note": "In 1819, an improved siren was developed and named by Baron Charles Cagniard de la Tour."
+          },
+          {
+            "claim": "로비슨 사이렌은 공기관을 여닫는 마개",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
+            "note": "Robison's siren consisted of a stopcock that opened and closed a pneumatic tube."
+          },
+          {
+            "claim": "드 라 투르의 것 — 구멍 뚫린 원판 두 장, 하나는 고정 하나는 회전, 공기 흐름을 끊어 소리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Siren_(alarm)",
+            "note": "De la Tour's siren consisted of two perforated disks that were mounted coaxially at the outlet of a pneumatic tube. One disk was stationary, while the other disk rotated. The rotating disk periodically interrupted the flow of air through the fixed disk, producing a tone."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Siren_(alarm)"
+        ],
+        "hintNote": "In Germany and some other European countries, the pneumatic two-tone (hi-lo) siren consists of two sets of air horns, one high pitched and the other low pitched.",
+        "easiestCue": "구멍 뚫린 원판 두 장 가운데 하나를 돌려 공기 흐름을 끊어 소리를",
+        "targetWhy": "경보 장치의 발명사·원리 — 대학 교양(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "어원 단서가 관심층 수준일 수 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "구멍 뚫린 원판 두 장 가운데 하나를 돌려 공기 흐름을 끊어 소리",
+          "difWhy": "회전 원판 소리 장치 — 기술사 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 장치 원리",
+          "acc": 5,
+          "accWhy": "생활 규칙·안전 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "사람을 반듯이 눕혀 실을 수 있는 차 … 영구차를 고쳐 쓰기도",
-     "difWhy": "환자 눕혀 나르는 차 — 일상",
-     "wor": 3,
-     "worWhy": "생활 물건 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1487년 그라나다 왕국의 말라가를 포위한 스페인 가톨릭 공동 왕의 군대가 처음 쓴 것으로 기록되어 있습니다. 초창기에는 사람을 반듯이 눕혀 실을 수 있는 차가 드물어 영구차를 고쳐 쓰기도 했던 이것은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "사람을 반듯이 눕혀 실을 수 있는 차가 드물어 영구차를 고쳐 씀(쓰임 설명)",
-     "addedCue": "라레의 '날아다니는 이것'(기마 포병 마차에서 착안)",
-     "why": "쓰임을 드러내는 설명을 빼고 군 의료사 세부로"
-    },
-    "generalHint": "라레는 1789년 바스티유 습격 때도 다친 사람들을 돌보려고 즉석에서 이것을 꾸렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "환자를 병원으로 실어 나르는 차",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상어",
-     "piece": "f08",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "L1-08",
-     "key": "b074",
-     "hint": "라레는 1789년 바스티유 습격 때도 다친 사람들을 돌보려고 즉석에서 이것을 꾸렸다.",
-     "guess": "구급차",
-     "confidence": "high",
-     "hit": true,
-     "answer": "구급차"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ambulance",
-     "https://en.wikipedia.org/wiki/Dominique_Jean_Larrey"
-    ],
-    "facts": [
-     {
-      "claim": "1487년 말라가 포위전에서 스페인군이 처음 사용",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ambulance",
-      "note": "Ambulances (ambulancias in Spanish) were first used for emergency transport in 1487 by the Spanish forces during the siege of Málaga by the Catholic Monarchs against the Emirate of Granada."
-     },
-     {
-      "claim": "1854년 무렵 크림 전쟁 때 마차를 구급차라 부름",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ambulance",
-      "note": "...even though the wagons were first referred to as ambulances about 1854 during the Crimean War."
-     },
-     {
-      "claim": "라레가 기마 포병 마차의 속도를 보고 '날아다니는 구급차'로 고침",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Dominique_Jean_Larrey",
-      "note": "After seeing the speed with which the carriages of French horse artillery units maneuvered across the battlefields, Larrey adapted them as \"flying ambulances\" for rapid transport of the wounded"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Dominique_Jean_Larrey"
-    ],
-    "hintNote": "On 14 July, Larrey was present during the Storming of the Bastille and he improvised an ambulance to treat the wounded.",
-    "easiestCue": "나폴레옹 시대 군의관 라레가 만든 '날아다니는 이것'",
-    "targetWhy": "라레의 flying ambulance는 역사·의료 애호가 세부 — 4(경계)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "범주 추리 여지",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "daily-rule/4#g019a-L1-08",
+      "seed": {
+        "subject": "구급차",
+        "aspect": null,
+        "ref": "L1-08",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1487년 그라나다 왕국의 말라가를 포위한 스페인 가톨릭 공동 왕의 군대가 처음 쓴 것으로 기록되어 있습니다. 나폴레옹 시대 군의관 도미니크 장 라레는 기마 포병 마차의 빠른 움직임을 보고 '날아다니는 이것'을 만들었는데, 이것은?",
+        "answer": "구급차",
+        "acceptedAnswers": [
+          "앰뷸런스"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "앰뷸런스 — 국립국어원 외래어 표기·일상에서 같은 대상의 흔한 이름",
+        "explanation": "크림 전쟁 무렵인 1854년쯤부터 부상병을 나르는 마차를 이 이름으로 부르기 시작했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "도미니크 장 라레 … '날아다니는 이것'",
+          "difWhy": "라레의 날아다니는 구급차 — 의료사 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 구급차 기원",
+          "acc": 5,
+          "accWhy": "생활 규칙·안전 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "사람을 반듯이 눕혀 실을 수 있는 차 … 영구차를 고쳐 쓰기도",
+          "difWhy": "환자 눕혀 나르는 차 — 일상",
+          "wor": 3,
+          "worWhy": "생활 물건 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1487년 그라나다 왕국의 말라가를 포위한 스페인 가톨릭 공동 왕의 군대가 처음 쓴 것으로 기록되어 있습니다. 초창기에는 사람을 반듯이 눕혀 실을 수 있는 차가 드물어 영구차를 고쳐 쓰기도 했던 이것은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "사람을 반듯이 눕혀 실을 수 있는 차가 드물어 영구차를 고쳐 씀(쓰임 설명)",
+          "addedCue": "라레의 '날아다니는 이것'(기마 포병 마차에서 착안)",
+          "why": "쓰임을 드러내는 설명을 빼고 군 의료사 세부로"
+        },
+        "generalHint": "라레는 1789년 바스티유 습격 때도 다친 사람들을 돌보려고 즉석에서 이것을 꾸렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "환자를 병원으로 실어 나르는 차",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상어",
+          "piece": "f08",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "L1-08",
+          "key": "b074",
+          "hint": "라레는 1789년 바스티유 습격 때도 다친 사람들을 돌보려고 즉석에서 이것을 꾸렸다.",
+          "guess": "구급차",
+          "confidence": "high",
+          "hit": true,
+          "answer": "구급차"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ambulance",
+          "https://en.wikipedia.org/wiki/Dominique_Jean_Larrey"
+        ],
+        "facts": [
+          {
+            "claim": "1487년 말라가 포위전에서 스페인군이 처음 사용",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ambulance",
+            "note": "Ambulances (ambulancias in Spanish) were first used for emergency transport in 1487 by the Spanish forces during the siege of Málaga by the Catholic Monarchs against the Emirate of Granada."
+          },
+          {
+            "claim": "1854년 무렵 크림 전쟁 때 마차를 구급차라 부름",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ambulance",
+            "note": "...even though the wagons were first referred to as ambulances about 1854 during the Crimean War."
+          },
+          {
+            "claim": "라레가 기마 포병 마차의 속도를 보고 '날아다니는 구급차'로 고침",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Dominique_Jean_Larrey",
+            "note": "After seeing the speed with which the carriages of French horse artillery units maneuvered across the battlefields, Larrey adapted them as \"flying ambulances\" for rapid transport of the wounded"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Dominique_Jean_Larrey"
+        ],
+        "hintNote": "On 14 July, Larrey was present during the Storming of the Bastille and he improvised an ambulance to treat the wounded.",
+        "easiestCue": "나폴레옹 시대 군의관 라레가 만든 '날아다니는 이것'",
+        "targetWhy": "라레의 flying ambulance는 역사·의료 애호가 세부 — 4(경계)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "범주 추리 여지",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "도미니크 장 라레 … '날아다니는 이것'",
+          "difWhy": "라레의 날아다니는 구급차 — 의료사 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 구급차 기원",
+          "acc": 5,
+          "accWhy": "생활 규칙·안전 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

@@ -1,568 +1,640 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "ball-sports/4",
-  "midKey": "ball-sports",
-  "subName": "골프",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "ball-sports/4#g019a-S1-01",
-   "seed": {
-    "subject": "마스터스",
-    "aspect": null,
-    "ref": "S1-01",
-    "pairedWith": 774
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 774,
-    "question": "이 골프 대회의 코스는 묘목장 자리에 지어져, 열여덟 홀마다 그 홀과 어울리는 나무나 떨기나무의 이름이 붙어 있습니다. 1960년부터 대회 전날 파3 코스에서 여는 친선 경기의 우승자는 2026년까지 같은 해 본 대회를 이긴 적이 없는데, 이 대회는?",
-    "answer": "마스터스",
-    "acceptedAnswers": [
-     "매스터스",
-     "마스터스 토너먼트",
-     "매스터스 토너먼트"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목이 \"매스터스 토너먼트\" — 매스터스 표기와 정식 이름 함께 받음",
-    "explanation": "파3 콘테스트의 우승자는 크리스털 그릇을 받습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "대회 전날 파3 코스에서 여는 친선 경기",
-     "difWhy": "파3 콘테스트·묘목장 코스 — 골프 애호가",
-     "wor": 3,
-     "worWhy": "유명 대회 이야깃거리",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
+  "_meta": {
+    "round": "g019a",
+    "subId": "ball-sports/4",
+    "midKey": "ball-sports",
+    "subName": "골프",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "ball-sports/4#g019a-S1-01",
+      "seed": {
+        "subject": "마스터스",
+        "aspect": null,
+        "ref": "S1-01",
+        "pairedWith": 774
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 774,
+        "question": "이 골프 대회의 코스는 묘목장 자리에 지어져, 열여덟 홀마다 그 홀과 어울리는 나무나 떨기나무의 이름이 붙어 있습니다. 1960년부터 대회 전날 파3 코스에서 여는 친선 경기의 우승자는 2026년까지 같은 해 본 대회를 이긴 적이 없는데, 이 대회는?",
+        "answer": "마스터스",
+        "acceptedAnswers": [
+          "매스터스",
+          "마스터스 토너먼트",
+          "매스터스 토너먼트"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목이 \"매스터스 토너먼트\" — 매스터스 표기와 정식 이름 함께 받음",
+        "explanation": "파3 콘테스트의 우승자는 크리스털 그릇을 받습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "대회 전날 파3 코스에서 여는 친선 경기",
+          "difWhy": "파3 콘테스트·묘목장 코스 — 골프 애호가",
+          "wor": 3,
+          "worWhy": "유명 대회 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "대회 전날 파3 코스에서 여는 친선 경기",
+          "difWhy": "파3 콘테스트·묘목장 코스 — 골프 애호가",
+          "wor": 3,
+          "worWhy": "유명 대회 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "잭 니클라우스는 1963년부터 1986년까지 이 대회를 여섯 번 이겨 최다 우승 기록을 갖고 있다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "해마다 4월 미국 조지아에서 열리는 남자 골프 메이저 대회",
+        "familiarity": {
+          "judge": 2,
+          "pct": 55,
+          "why": "골프 뉴스(타이거 우즈)로 들어 본 사람 절반쯤",
+          "piece": "f05",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "S1-01",
+          "key": "b237",
+          "hint": "잭 니클라우스는 1963년부터 1986년까지 이 대회를 여섯 번 이겨 최다 우승 기록을 갖고 있다.",
+          "guess": "마스터스 토너먼트",
+          "confidence": "high",
+          "hit": true,
+          "answer": "마스터스"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Masters_Tournament"
+        ],
+        "facts": [
+          {
+            "claim": "코스는 묘목장 자리, 홀마다 나무·떨기나무 이름",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
+            "note": "The golf course was formerly a plant nursery and each hole is named after the tree or shrub with which it has become associated."
+          },
+          {
+            "claim": "1960년부터 대회 전날 파3 코스 친선 경기",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
+            "note": "Since 1960, a semi-social contest on the Par 3 course has been played on Wednesday, the day before the first round."
+          },
+          {
+            "claim": "파3 콘테스트 우승자가 같은 해 본 대회를 이긴 적 없음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
+            "note": "As of 2026, no Par 3 Contest winner has also won the Masters in the same year."
+          },
+          {
+            "claim": "파3 콘테스트 우승자는 크리스털 그릇",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
+            "note": "The winner of the Par 3 Contest, which is played the day before the tournament begins, wins a crystal bowl."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Masters_Tournament"
+        ],
+        "hintNote": "Nicklaus has the most Masters wins, with six between 1963 and 1986.",
+        "easiestCue": "1960년부터 대회 전날 파3 코스에서 여는 친선 경기의 우승자는 2026년까지 같은 해 본 대회를 이긴 적이 없는데",
+        "targetWhy": "파3 콘테스트 징크스·홀 이름 유래 — 골프 애호가가 아는 세부, 오거스타·그린 재킷·보비 존스는 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "대회는 유명, 단서는 대회 운영의 뒷이야기",
+        "pairCheck": "1회차 q(오거스타·초록 재킷) · e(코스 고정) · h(보비 존스·4월) 어느 것도 쓰지 않음 — 묘목장·홀 이름·파3 콘테스트는 새 사실",
+        "dbCheck": "answercheck 마스터스 pair-or-different #774(1회차) — (가) 2회차, 지식 다름",
+        "warn": [],
+        "first": {
+          "id": 774,
+          "question": "골프 4대 메이저 가운데 해마다 같은 코스인 오거스타 내셔널에서 열리며, 우승자에게 초록색 재킷을 입혀 주는 대회는?",
+          "explanation": "네 메이저 가운데 유일하게 개최 코스가 고정돼 있습니다.",
+          "hint": "보비 존스가 만든 대회로, 해마다 4월에 열려 그해 메이저의 첫 무대가 된다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "대회 전날 파3 코스에서 여는 친선 경기",
+          "difWhy": "파3 콘테스트·묘목장 코스 — 골프 애호가",
+          "wor": 3,
+          "worWhy": "유명 대회 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "대회 전날 파3 코스에서 여는 친선 경기",
-     "difWhy": "파3 콘테스트·묘목장 코스 — 골프 애호가",
-     "wor": 3,
-     "worWhy": "유명 대회 이야깃거리"
+    {
+      "seedId": "ball-sports/4#g019a-S1-02",
+      "seed": {
+        "subject": "세인트앤드루스",
+        "aspect": null,
+        "ref": "S1-02",
+        "pairedWith": 4270
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 4270,
+        "question": "이 도시의 한 링크스 코스 18번 홀에는 양치기들이 가축을 건너보내려고 지었다는 작은 돌다리가 있고, 2005년 잭 니클라우스는 그 다리 위에서 프로 골프와 작별했습니다. 더블 그린이 일곱 개인 이 코스가 있는 도시는?",
+        "answer": "세인트앤드루스",
+        "acceptedAnswers": [
+          "세인트앤드류스"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 넘겨주기 \"세인트앤드류스\" → 세인트앤드루스 (deep-v5 점검 1 이 짚은 표기)",
+        "explanation": "이 돌다리는 수백 년 동안 '골퍼의 다리'라고 불렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "2005년 잭 니클라우스는 그 다리 위에서 프로 골프와 작별",
+          "difWhy": "스윌컨 다리 작별 — 골프 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "골프 성지 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "2005년 잭 니클라우스는 그 다리 위에서 프로 골프와 작별",
+          "difWhy": "스윌컨 다리 작별 — 골프 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "골프 성지 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "18번 홀의 그 다리가 건너는 개울은 '스윌컨 번'이라 불린다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "스코틀랜드 동부 해안의 대학 도시이자 골프 명소",
+        "familiarity": {
+          "judge": 2,
+          "pct": 35,
+          "why": "골프 팬·영국 왕실(윌리엄 왕자) 뉴스로 일부 앎",
+          "piece": "f01",
+          "genPct": 45
+        },
+        "blind": {
+          "ref": "S1-02",
+          "key": "b189",
+          "hint": "18번 홀의 그 다리가 건너는 개울은 '스윌컨 번'이라 불린다.",
+          "guess": "스윌컨 다리",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "세인트앤드루스"
+        },
+        "hobby": "구단 역사",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Swilcan_Bridge",
+          "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews"
+        ],
+        "facts": [
+          {
+            "claim": "18번 홀의 작은 돌다리(스윌컨 다리)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
+            "note": "The Swilcan Bridge or Swilken Bridge is a small stone bridge on the 18th hole of the Old Course in St Andrews, Scotland."
+          },
+          {
+            "claim": "양치기가 가축을 건너보내려 지었다는 다리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
+            "note": "Originally built at least 700 years ago to help shepherds get livestock across"
+          },
+          {
+            "claim": "2005년 니클라우스가 다리 위에서 작별",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
+            "note": "At the 2005 Open Championship, Jack Nicklaus gave his final farewell to professional golf while standing on the bridge."
+          },
+          {
+            "claim": "더블 그린 일곱",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews",
+            "note": "Around 1863, Old Tom Morris had the 1st green separated from the 17th green, producing the current 18-hole layout with 7 double greens and 4 single greens."
+          },
+          {
+            "claim": "수백 년 동안 골퍼의 다리",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
+            "note": "The bridge had previously been known as the Golfers' Bridge for hundreds of years."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Swilcan_Bridge"
+        ],
+        "hintNote": "The bridge spans the Swilcan Burn and has become a legendary image in the sport of golf.",
+        "easiestCue": "18번 홀에는 양치기들이 가축을 건너보내려고 지었다는 작은 돌다리가 있고",
+        "targetWhy": "스윌컨 다리·니클라우스 작별·더블 그린 — 골프 애호가 세부. \"골프의 고향\"·\"올드 코스\"·\"스코틀랜드\"는 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "도시는 골프로 유명, 단서는 코스 안의 세부",
+        "pairCheck": "1회차 q(골프의 고향·1764 18홀) · e(디 오픈 30번) · h(대학·윌리엄 왕세자)와 겹치지 않음",
+        "dbCheck": "answercheck 세인트앤드루스 pair-or-different #4270(1회차) — (가)",
+        "warn": [],
+        "first": {
+          "id": 4270,
+          "question": "'골프의 고향'으로 불리는 스코틀랜드의 한 코스는 1764년 22홀을 18홀로 줄였고, 이것이 오늘날 한 라운드 18홀의 표준이 되었습니다. 이 올드 코스가 있는 도시는 어디일까요?",
+          "explanation": "디 오픈을 다른 어느 코스보다 많이 열었는데, 2022년까지 30번입니다.",
+          "hint": "이 도시의 대학은 스코틀랜드에서 가장 오래된 대학으로, 윌리엄 왕세자도 이곳을 다녔다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "2005년 잭 니클라우스는 그 다리 위에서 프로 골프와 작별",
+          "difWhy": "스윌컨 다리 작별 — 골프 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "골프 성지 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "잭 니클라우스는 1963년부터 1986년까지 이 대회를 여섯 번 이겨 최다 우승 기록을 갖고 있다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "해마다 4월 미국 조지아에서 열리는 남자 골프 메이저 대회",
-    "familiarity": {
-     "judge": 2,
-     "pct": 55,
-     "why": "골프 뉴스(타이거 우즈)로 들어 본 사람 절반쯤",
-     "piece": "f05",
-     "genPct": 60
+    {
+      "seedId": "ball-sports/4#g019a-S1-03",
+      "seed": {
+        "subject": "버디",
+        "aspect": null,
+        "ref": "S1-03",
+        "pairedWith": 239
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 239,
+        "question": "이 골프 점수 이름은 1899년 미국 애틀랜틱시티 컨트리클럽에서 조지 크럼프가 홀 몇 인치 옆에 붙인 두 번째 샷을 보고 함께 치던 스미스 형제가 외친 말에서 왔다고 전합니다. 휴양지 클럽이라 외지 손님이 많아 미국 골퍼들 사이에 퍼진 이 이름은?",
+        "answer": "버디",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "크럼프의 첫 샷은 날아가던 새를 맞혔다고도 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "홀 몇 인치 옆에 붙인 두 번째 샷을 보고 … 외친 말",
+          "difWhy": "버디 어원 일화 — 골프 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "스포츠 용어 어원 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "홀 몇 인치 옆에 붙인 두 번째 샷을 보고 … 외친 말",
+          "difWhy": "버디 어원 일화 — 골프 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "스포츠 용어 어원 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "이 일화의 클럽은 애틀랜틱시티라는 이름이지만 실제로는 뉴저지주 노스필드에 있었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "골프에서 기준 타수보다 한 타 적은 점수",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "골프 중계·일상에서 들음",
+          "piece": "f03",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S1-03",
+          "key": "b058",
+          "hint": "조지 크럼프가 두 번째 샷을 홀 바로 옆에 붙인 그 홀은 파 4 홀이었다.",
+          "guess": "파인 밸리 골프 클럽",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "버디"
+        },
+        "hobby": "규칙",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Par_(score)"
+        ],
+        "facts": [
+          {
+            "claim": "1899년 애틀랜틱시티 컨트리클럽에서 생긴 말",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Par_(score)",
+            "note": "This expression was coined in 1899, at the Atlantic City Country Club in Northfield, New Jersey."
+          },
+          {
+            "claim": "크럼프의 두 번째 샷이 홀 몇 인치 옆 · 스미스 형제가 외침",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Par_(score)",
+            "note": "Crump hit his second shot only inches from the cup on a par-four hole after his first shot had struck a bird in flight. Simultaneously, the Smith brothers exclaimed that Crump's shot was \"a bird\"."
+          },
+          {
+            "claim": "휴양지라 외지 손님이 많아 퍼짐",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Par_(score)",
+            "note": "As the Atlantic City Country Club, being a resort, had many out-of-town visitors, the expression spread and caught the fancy of all American golfers."
+          },
+          {
+            "claim": "첫 샷이 날아가던 새를 맞힘",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Par_(score)",
+            "note": "after his first shot had struck a bird in flight"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "1899년 미국 애틀랜틱시티 컨트리클럽에서 조지 크럼프가 홀 몇 인치 옆에 붙인 두 번째 샷을 보고 함께 치던 스미스 형제가 외친 말에서 왔다고 전합니다",
+        "targetWhy": "용어 이름의 탄생 일화 — 골프 애호가. 정의(1타 적게)·새 계열 이름은 질문에서 뺐다",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "\"점수 이름\" 이라 골프 점수 용어 몇 개 중 찍기가 가능하다",
+        "pairCheck": "1회차 q·e(1타 적은 것 — 정의) · h(독수리·바닷새 계열) 모두 쓰지 않음 — 새 사실만",
+        "dbCheck": "answercheck 버디 pair-or-different #239(1회차) — (가)",
+        "warn": [],
+        "first": {
+          "id": 239,
+          "question": "골프에서 각 홀의 기준 타수(파, Par)보다 1타 적게 홀에 공을 넣는 것을 뜻하는 용어는?",
+          "explanation": "골프에서 기준 타수보다 1타 적은 타수로 홀아웃하는 것을 버디(Birdie)라 부른다.",
+          "hint": "2타 적으면 독수리, 3타 적으면 큰 바닷새의 이름으로 부르는데, 이 용어도 같은 계열의 이름이다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "홀 몇 인치 옆에 붙인 두 번째 샷을 보고 … 외친 말",
+          "difWhy": "버디 어원 일화 — 골프 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "스포츠 용어 어원 이야깃거리",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix question-repeat",
+          "verdict": "fix"
+        }
+      }
     },
-    "blind": {
-     "ref": "S1-01",
-     "key": "b237",
-     "hint": "잭 니클라우스는 1963년부터 1986년까지 이 대회를 여섯 번 이겨 최다 우승 기록을 갖고 있다.",
-     "guess": "마스터스 토너먼트",
-     "confidence": "high",
-     "hit": true,
-     "answer": "마스터스"
+    {
+      "seedId": "ball-sports/4#g019a-S1-04",
+      "seed": {
+        "subject": "벙커",
+        "aspect": null,
+        "ref": "S1-04",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "스코틀랜드 링크스의 이것은, 바닷바람을 피하려던 양들이 모래 언덕 뒤를 파고든 우묵한 자리가 세월이 지나 생긴 것이라는 이야기가 전합니다. 올드 톰 모리스가 경기하기 알맞게 다듬기 시작했다고 알려진 이것은?",
+        "answer": "벙커",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "2019년 골프 규칙이 바뀌며 벙커와 페널티 구역을 함께 부르던 '해저드'라는 말이 없어졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "양들이 모래 언덕 뒤를 파고든 우묵한 자리",
+          "difWhy": "모래 웅덩이 장애물 — 골프 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "골프 용어 기원",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "양들이 모래 언덕 뒤를 파고든 우묵한 자리",
+          "difWhy": "모래 웅덩이 장애물 — 골프 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "골프 용어 기원"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "출처에 있는 깊은 세부가 양 전설·올드 톰 모리스·2019 규칙 셋뿐 — 양 전설을 빼면 남는 것(모래 고르기·해저드 용어)이 더 쉬운 쓰임 단서다"
+        },
+        "generalHint": "세인트앤드루스 올드 코스에는 이것이 112개나 있고, 저마다 이름과 전설을 지닌 것이 많다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "골프 코스에 모래를 채워 둔 장애물",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "골프 용어·일상어로 익숙",
+          "piece": "f03",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S1-04",
+          "key": "b082",
+          "hint": "세인트앤드루스 올드 코스에는 이것이 112개나 있고, 저마다 이름과 전설을 지닌 것이 많다.",
+          "guess": "벙커",
+          "confidence": "high",
+          "hit": true,
+          "answer": "벙커"
+        },
+        "hobby": "장비",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas"
+        ],
+        "facts": [
+          {
+            "claim": "양들이 바람을 피해 모래 언덕 뒤를 파고든 자리가 벙커가 됨",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas",
+            "note": "sand traps were originally formed out of natural depressions in the landscape because \"the sheep would burrow down behind them (dunes) to take shelter from the wind. Over time, these areas hollowed out to form the bunkers"
+          },
+          {
+            "claim": "올드 톰 모리스가 경기에 알맞게 관리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas",
+            "note": "Old Tom Morris is said to be responsible for maintaining sand traps and hazards to form playable conditions, using rakes"
+          },
+          {
+            "claim": "2019년 규칙 개정으로 해저드라는 말 없어짐",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas",
+            "note": "In 2019, the Rules of Golf that The R&A and the USGA maintain were updated to separate the rules for the two types of obstacle, and removed the umbrella term \"hazard\""
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews"
+        ],
+        "hintNote": "its 112 bunkers and endless hills and hollows have been cursed for centuries, and many have their own names and legends.",
+        "easiestCue": "바닷바람을 피하려던 양들이 모래 언덕 뒤를 파고든 우묵한 자리가 세월이 지나 생긴 것이라는 이야기가 전합니다",
+        "targetWhy": "장애물이 생긴 사연 — 골프 애호가. 갈퀴·모래 채움 같은 정의 단서는 뺐다",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "\"모래 언덕\" 에서 모래 장애물을 떠올릴 수 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 벙커 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "양들이 모래 언덕 뒤를 파고든 우묵한 자리",
+          "difWhy": "모래 웅덩이 장애물 — 골프 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "골프 용어 기원",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Masters_Tournament"
-    ],
-    "facts": [
-     {
-      "claim": "코스는 묘목장 자리, 홀마다 나무·떨기나무 이름",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
-      "note": "The golf course was formerly a plant nursery and each hole is named after the tree or shrub with which it has become associated."
-     },
-     {
-      "claim": "1960년부터 대회 전날 파3 코스 친선 경기",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
-      "note": "Since 1960, a semi-social contest on the Par 3 course has been played on Wednesday, the day before the first round."
-     },
-     {
-      "claim": "파3 콘테스트 우승자가 같은 해 본 대회를 이긴 적 없음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
-      "note": "As of 2026, no Par 3 Contest winner has also won the Masters in the same year."
-     },
-     {
-      "claim": "파3 콘테스트 우승자는 크리스털 그릇",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Masters_Tournament",
-      "note": "The winner of the Par 3 Contest, which is played the day before the tournament begins, wins a crystal bowl."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Masters_Tournament"
-    ],
-    "hintNote": "Nicklaus has the most Masters wins, with six between 1963 and 1986.",
-    "easiestCue": "1960년부터 대회 전날 파3 코스에서 여는 친선 경기의 우승자는 2026년까지 같은 해 본 대회를 이긴 적이 없는데",
-    "targetWhy": "파3 콘테스트 징크스·홀 이름 유래 — 골프 애호가가 아는 세부, 오거스타·그린 재킷·보비 존스는 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "대회는 유명, 단서는 대회 운영의 뒷이야기",
-    "pairCheck": "1회차 q(오거스타·초록 재킷) · e(코스 고정) · h(보비 존스·4월) 어느 것도 쓰지 않음 — 묘목장·홀 이름·파3 콘테스트는 새 사실",
-    "dbCheck": "answercheck 마스터스 pair-or-different #774(1회차) — (가) 2회차, 지식 다름",
-    "warn": [],
-    "first": {
-     "id": 774,
-     "question": "골프 4대 메이저 가운데 해마다 같은 코스인 오거스타 내셔널에서 열리며, 우승자에게 초록색 재킷을 입혀 주는 대회는?",
-     "explanation": "네 메이저 가운데 유일하게 개최 코스가 고정돼 있습니다.",
-     "hint": "보비 존스가 만든 대회로, 해마다 4월에 열려 그해 메이저의 첫 무대가 된다.",
-     "difficulty": 3
+    {
+      "seedId": "ball-sports/4#g019a-S1-05",
+      "seed": {
+        "subject": "티",
+        "aspect": null,
+        "ref": "S1-05",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1899년 미국의 아프리카계 치과 의사 조지 프랭클린 그랜트는 이것을 개량해 특허를 받았습니다. 윌리엄 라월은 나무 못 모양으로 만든 이것을 프로 골퍼 월터 헤이건 등을 고용해 선보인 뒤에야 잘 팔기 시작했는데, 이것은?",
+        "answer": "티",
+        "acceptedAnswers": [
+          "골프 티"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "언론 기사 제목 \"골프 티 (Tee) 얼마나 알고 계신가요?\"(다음 뉴스)에서 \"골프 티\" 표기 확인",
+        "explanation": "이것이 널리 쓰이기 전에는 골퍼들이 상자에 담아 둔 모래를 조금 쌓아 그 위에 공을 올렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "나무 못 모양으로 만든 이것 … 프로 골퍼",
+          "difWhy": "나무 못 모양 골프 용품 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 용품 기원",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "모래를 조금 쌓아 그 위에 공을 올렸는데",
+          "difWhy": "공 올려두는 골프 도구 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "골프 도구 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1899년 미국의 아프리카계 치과 의사 조지 프랭클린 그랜트는 이것을 개량해 특허를 받았습니다. 이것이 널리 쓰이기 전에는 골퍼들이 상자에 담아 둔 모래를 조금 쌓아 그 위에 공을 올렸는데, 이것은?",
+          "beforeExplanation": "윌리엄 라월의 나무 '레디 티'는 프로 골퍼 월터 헤이건 등을 고용해 선보인 뒤 잘 팔리기 시작했습니다.",
+          "removedCue": "골퍼들이 상자에 담아 둔 모래를 조금 쌓아 그 위에 공을 올렸는데",
+          "addedCue": "라월의 나무 제품을 월터 헤이건 등이 선보임",
+          "why": "쓰임새를 그대로 준 모래 받침 문장을 해설로 옮기고 해설의 판매 세부를 질문으로(제품 이름은 뺌)"
+        },
+        "generalHint": "그랜트는 하버드 대학의 첫 아프리카계 교수였고, 입천장갈림증 환자 치료를 전문으로 했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "골프에서 첫 타를 칠 때 공을 올려 두는 작은 받침",
+        "familiarity": {
+          "judge": 3,
+          "pct": 70,
+          "why": "골프 티샷으로 들어 봄",
+          "piece": "f04",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "S1-05",
+          "key": "b196",
+          "hint": "그랜트는 하버드 대학의 첫 아프리카계 교수였고, 입천장갈림증 환자 치료를 전문으로 했다.",
+          "guess": "골프 티",
+          "confidence": "high",
+          "hit": true,
+          "answer": "티"
+        },
+        "hobby": "장비",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Tee",
+          "https://v.daum.net/v/20191203145130629?d=y"
+        ],
+        "facts": [
+          {
+            "claim": "1899년 아프리카계 치과 의사 그랜트가 개량 티 특허",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tee",
+            "note": "In 1899, an African-American dentist, Dr. George Franklin Grant, obtained a patent for an \"improved golf tee\"."
+          },
+          {
+            "claim": "레디 티 — 헤이건 등을 고용한 뒤 판매가 늘어남",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tee",
+            "note": "Sales of his \"Reddy Tee,\" a simple wooden peg with a flared top, took off after Lowell hired professional golfers Walter Hagen and Joe Kirkwood, Sr."
+          },
+          {
+            "claim": "그전에는 상자에 담긴 모래를 조금 쌓아 공을 올림",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Tee",
+            "note": "Before this, golf balls were teed up on little heaps of sand that were provided in boxes."
+          },
+          {
+            "claim": "변형 표기 \"골프 티\"",
+            "where": "q",
+            "url": "https://v.daum.net/v/20191203145130629?d=y",
+            "note": "[시리어스 골퍼] '골프 티 (Tee)' 얼마나 알고 계신가요? (기사 제목)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/George_Franklin_Grant"
+        ],
+        "hintNote": "George Franklin Grant ... was the first African-American professor at Harvard. / He specialized in treating patients with cleft palate",
+        "easiestCue": "1899년 치과 의사 그랜트의 개량 특허",
+        "targetWhy": "그랜트·라월·헤이건은 골프 애호가 세부 — 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "모래를 쌓아 공을 올렸다는 말에서 받침을 짐작할 수 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 티 new · 골프 티 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "나무 못 모양으로 만든 이것 … 프로 골퍼",
+          "difWhy": "나무 못 모양 골프 용품 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 용품 기원",
+          "acc": 4,
+          "accWhy": "구기 종목 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "ball-sports/4#g019a-S1-02",
-   "seed": {
-    "subject": "세인트앤드루스",
-    "aspect": null,
-    "ref": "S1-02",
-    "pairedWith": 4270
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 4270,
-    "question": "이 도시의 한 링크스 코스 18번 홀에는 양치기들이 가축을 건너보내려고 지었다는 작은 돌다리가 있고, 2005년 잭 니클라우스는 그 다리 위에서 프로 골프와 작별했습니다. 더블 그린이 일곱 개인 이 코스가 있는 도시는?",
-    "answer": "세인트앤드루스",
-    "acceptedAnswers": [
-     "세인트앤드류스"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 넘겨주기 \"세인트앤드류스\" → 세인트앤드루스 (deep-v5 점검 1 이 짚은 표기)",
-    "explanation": "이 돌다리는 수백 년 동안 '골퍼의 다리'라고 불렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "2005년 잭 니클라우스는 그 다리 위에서 프로 골프와 작별",
-     "difWhy": "스윌컨 다리 작별 — 골프 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "골프 성지 이야깃거리",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "2005년 잭 니클라우스는 그 다리 위에서 프로 골프와 작별",
-     "difWhy": "스윌컨 다리 작별 — 골프 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "골프 성지 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "18번 홀의 그 다리가 건너는 개울은 '스윌컨 번'이라 불린다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "스코틀랜드 동부 해안의 대학 도시이자 골프 명소",
-    "familiarity": {
-     "judge": 2,
-     "pct": 35,
-     "why": "골프 팬·영국 왕실(윌리엄 왕자) 뉴스로 일부 앎",
-     "piece": "f01",
-     "genPct": 45
-    },
-    "blind": {
-     "ref": "S1-02",
-     "key": "b189",
-     "hint": "18번 홀의 그 다리가 건너는 개울은 '스윌컨 번'이라 불린다.",
-     "guess": "스윌컨 다리",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "세인트앤드루스"
-    },
-    "hobby": "구단 역사",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Swilcan_Bridge",
-     "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews"
-    ],
-    "facts": [
-     {
-      "claim": "18번 홀의 작은 돌다리(스윌컨 다리)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
-      "note": "The Swilcan Bridge or Swilken Bridge is a small stone bridge on the 18th hole of the Old Course in St Andrews, Scotland."
-     },
-     {
-      "claim": "양치기가 가축을 건너보내려 지었다는 다리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
-      "note": "Originally built at least 700 years ago to help shepherds get livestock across"
-     },
-     {
-      "claim": "2005년 니클라우스가 다리 위에서 작별",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
-      "note": "At the 2005 Open Championship, Jack Nicklaus gave his final farewell to professional golf while standing on the bridge."
-     },
-     {
-      "claim": "더블 그린 일곱",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews",
-      "note": "Around 1863, Old Tom Morris had the 1st green separated from the 17th green, producing the current 18-hole layout with 7 double greens and 4 single greens."
-     },
-     {
-      "claim": "수백 년 동안 골퍼의 다리",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Swilcan_Bridge",
-      "note": "The bridge had previously been known as the Golfers' Bridge for hundreds of years."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Swilcan_Bridge"
-    ],
-    "hintNote": "The bridge spans the Swilcan Burn and has become a legendary image in the sport of golf.",
-    "easiestCue": "18번 홀에는 양치기들이 가축을 건너보내려고 지었다는 작은 돌다리가 있고",
-    "targetWhy": "스윌컨 다리·니클라우스 작별·더블 그린 — 골프 애호가 세부. \"골프의 고향\"·\"올드 코스\"·\"스코틀랜드\"는 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "도시는 골프로 유명, 단서는 코스 안의 세부",
-    "pairCheck": "1회차 q(골프의 고향·1764 18홀) · e(디 오픈 30번) · h(대학·윌리엄 왕세자)와 겹치지 않음",
-    "dbCheck": "answercheck 세인트앤드루스 pair-or-different #4270(1회차) — (가)",
-    "warn": [],
-    "first": {
-     "id": 4270,
-     "question": "'골프의 고향'으로 불리는 스코틀랜드의 한 코스는 1764년 22홀을 18홀로 줄였고, 이것이 오늘날 한 라운드 18홀의 표준이 되었습니다. 이 올드 코스가 있는 도시는 어디일까요?",
-     "explanation": "디 오픈을 다른 어느 코스보다 많이 열었는데, 2022년까지 30번입니다.",
-     "hint": "이 도시의 대학은 스코틀랜드에서 가장 오래된 대학으로, 윌리엄 왕세자도 이곳을 다녔다.",
-     "difficulty": 3
-    }
-   }
-  },
-  {
-   "seedId": "ball-sports/4#g019a-S1-03",
-   "seed": {
-    "subject": "버디",
-    "aspect": null,
-    "ref": "S1-03",
-    "pairedWith": 239
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 239,
-    "question": "이 골프 점수 이름은 1899년 미국 애틀랜틱시티 컨트리클럽에서 조지 크럼프가 홀 몇 인치 옆에 붙인 두 번째 샷을 보고 함께 치던 스미스 형제가 외친 말에서 왔다고 전합니다. 휴양지 클럽이라 외지 손님이 많아 미국 골퍼들 사이에 퍼진 이 이름은?",
-    "answer": "버디",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "크럼프의 첫 샷은 날아가던 새를 맞혔다고도 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "홀 몇 인치 옆에 붙인 두 번째 샷을 보고 … 외친 말",
-     "difWhy": "버디 어원 일화 — 골프 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "스포츠 용어 어원 이야깃거리",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "홀 몇 인치 옆에 붙인 두 번째 샷을 보고 … 외친 말",
-     "difWhy": "버디 어원 일화 — 골프 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "스포츠 용어 어원 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "조지 크럼프가 두 번째 샷을 홀 바로 옆에 붙인 그 홀은 파 4 홀이었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "골프에서 기준 타수보다 한 타 적은 점수",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "골프 중계·일상에서 들음",
-     "piece": "f03",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "S1-03",
-     "key": "b058",
-     "hint": "조지 크럼프가 두 번째 샷을 홀 바로 옆에 붙인 그 홀은 파 4 홀이었다.",
-     "guess": "파인 밸리 골프 클럽",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "버디"
-    },
-    "hobby": "규칙",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Par_(score)"
-    ],
-    "facts": [
-     {
-      "claim": "1899년 애틀랜틱시티 컨트리클럽에서 생긴 말",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Par_(score)",
-      "note": "This expression was coined in 1899, at the Atlantic City Country Club in Northfield, New Jersey."
-     },
-     {
-      "claim": "크럼프의 두 번째 샷이 홀 몇 인치 옆 · 스미스 형제가 외침",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Par_(score)",
-      "note": "Crump hit his second shot only inches from the cup on a par-four hole after his first shot had struck a bird in flight. Simultaneously, the Smith brothers exclaimed that Crump's shot was \"a bird\"."
-     },
-     {
-      "claim": "휴양지라 외지 손님이 많아 퍼짐",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Par_(score)",
-      "note": "As the Atlantic City Country Club, being a resort, had many out-of-town visitors, the expression spread and caught the fancy of all American golfers."
-     },
-     {
-      "claim": "첫 샷이 날아가던 새를 맞힘",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Par_(score)",
-      "note": "after his first shot had struck a bird in flight"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Birdie_(golf)"
-    ],
-    "hintNote": "Crump hit his second shot only inches from the cup on a par-four hole",
-    "easiestCue": "1899년 미국 애틀랜틱시티 컨트리클럽에서 조지 크럼프가 홀 몇 인치 옆에 붙인 두 번째 샷을 보고 함께 치던 스미스 형제가 외친 말에서 왔다고 전합니다",
-    "targetWhy": "용어 이름의 탄생 일화 — 골프 애호가. 정의(1타 적게)·새 계열 이름은 질문에서 뺐다",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "\"점수 이름\" 이라 골프 점수 용어 몇 개 중 찍기가 가능하다",
-    "pairCheck": "1회차 q·e(1타 적은 것 — 정의) · h(독수리·바닷새 계열) 모두 쓰지 않음 — 새 사실만",
-    "dbCheck": "answercheck 버디 pair-or-different #239(1회차) — (가)",
-    "warn": [],
-    "first": {
-     "id": 239,
-     "question": "골프에서 각 홀의 기준 타수(파, Par)보다 1타 적게 홀에 공을 넣는 것을 뜻하는 용어는?",
-     "explanation": "골프에서 기준 타수보다 1타 적은 타수로 홀아웃하는 것을 버디(Birdie)라 부른다.",
-     "hint": "2타 적으면 독수리, 3타 적으면 큰 바닷새의 이름으로 부르는데, 이 용어도 같은 계열의 이름이다.",
-     "difficulty": 3
-    }
-   }
-  },
-  {
-   "seedId": "ball-sports/4#g019a-S1-04",
-   "seed": {
-    "subject": "벙커",
-    "aspect": null,
-    "ref": "S1-04",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "스코틀랜드 링크스의 이것은, 바닷바람을 피하려던 양들이 모래 언덕 뒤를 파고든 우묵한 자리가 세월이 지나 생긴 것이라는 이야기가 전합니다. 올드 톰 모리스가 경기하기 알맞게 다듬기 시작했다고 알려진 이것은?",
-    "answer": "벙커",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "2019년 골프 규칙이 바뀌며 벙커와 페널티 구역을 함께 부르던 '해저드'라는 말이 없어졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "양들이 모래 언덕 뒤를 파고든 우묵한 자리",
-     "difWhy": "모래 웅덩이 장애물 — 골프 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "골프 용어 기원",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "양들이 모래 언덕 뒤를 파고든 우묵한 자리",
-     "difWhy": "모래 웅덩이 장애물 — 골프 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "골프 용어 기원"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "출처에 있는 깊은 세부가 양 전설·올드 톰 모리스·2019 규칙 셋뿐 — 양 전설을 빼면 남는 것(모래 고르기·해저드 용어)이 더 쉬운 쓰임 단서다"
-    },
-    "generalHint": "세인트앤드루스 올드 코스에는 이것이 112개나 있고, 저마다 이름과 전설을 지닌 것이 많다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "골프 코스에 모래를 채워 둔 장애물",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "골프 용어·일상어로 익숙",
-     "piece": "f03",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "S1-04",
-     "key": "b082",
-     "hint": "세인트앤드루스 올드 코스에는 이것이 112개나 있고, 저마다 이름과 전설을 지닌 것이 많다.",
-     "guess": "벙커",
-     "confidence": "high",
-     "hit": true,
-     "answer": "벙커"
-    },
-    "hobby": "장비",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas"
-    ],
-    "facts": [
-     {
-      "claim": "양들이 바람을 피해 모래 언덕 뒤를 파고든 자리가 벙커가 됨",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas",
-      "note": "sand traps were originally formed out of natural depressions in the landscape because \"the sheep would burrow down behind them (dunes) to take shelter from the wind. Over time, these areas hollowed out to form the bunkers"
-     },
-     {
-      "claim": "올드 톰 모리스가 경기에 알맞게 관리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas",
-      "note": "Old Tom Morris is said to be responsible for maintaining sand traps and hazards to form playable conditions, using rakes"
-     },
-     {
-      "claim": "2019년 규칙 개정으로 해저드라는 말 없어짐",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Golf_bunkers_and_penalty_areas",
-      "note": "In 2019, the Rules of Golf that The R&A and the USGA maintain were updated to separate the rules for the two types of obstacle, and removed the umbrella term \"hazard\""
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Old_Course_at_St_Andrews"
-    ],
-    "hintNote": "its 112 bunkers and endless hills and hollows have been cursed for centuries, and many have their own names and legends.",
-    "easiestCue": "바닷바람을 피하려던 양들이 모래 언덕 뒤를 파고든 우묵한 자리가 세월이 지나 생긴 것이라는 이야기가 전합니다",
-    "targetWhy": "장애물이 생긴 사연 — 골프 애호가. 갈퀴·모래 채움 같은 정의 단서는 뺐다",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "\"모래 언덕\" 에서 모래 장애물을 떠올릴 수 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 벙커 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "ball-sports/4#g019a-S1-05",
-   "seed": {
-    "subject": "티",
-    "aspect": null,
-    "ref": "S1-05",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1899년 미국의 아프리카계 치과 의사 조지 프랭클린 그랜트는 이것을 개량해 특허를 받았습니다. 윌리엄 라월은 나무 못 모양으로 만든 이것을 프로 골퍼 월터 헤이건 등을 고용해 선보인 뒤에야 잘 팔기 시작했는데, 이것은?",
-    "answer": "티",
-    "acceptedAnswers": [
-     "골프 티"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "언론 기사 제목 \"골프 티 (Tee) 얼마나 알고 계신가요?\"(다음 뉴스)에서 \"골프 티\" 표기 확인",
-    "explanation": "이것이 널리 쓰이기 전에는 골퍼들이 상자에 담아 둔 모래를 조금 쌓아 그 위에 공을 올렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "나무 못 모양으로 만든 이것 … 프로 골퍼",
-     "difWhy": "나무 못 모양 골프 용품 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 용품 기원",
-     "acc": 4,
-     "accWhy": "구기 종목 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "모래를 조금 쌓아 그 위에 공을 올렸는데",
-     "difWhy": "공 올려두는 골프 도구 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "골프 도구 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1899년 미국의 아프리카계 치과 의사 조지 프랭클린 그랜트는 이것을 개량해 특허를 받았습니다. 이것이 널리 쓰이기 전에는 골퍼들이 상자에 담아 둔 모래를 조금 쌓아 그 위에 공을 올렸는데, 이것은?",
-     "beforeExplanation": "윌리엄 라월의 나무 '레디 티'는 프로 골퍼 월터 헤이건 등을 고용해 선보인 뒤 잘 팔리기 시작했습니다.",
-     "removedCue": "골퍼들이 상자에 담아 둔 모래를 조금 쌓아 그 위에 공을 올렸는데",
-     "addedCue": "라월의 나무 제품을 월터 헤이건 등이 선보임",
-     "why": "쓰임새를 그대로 준 모래 받침 문장을 해설로 옮기고 해설의 판매 세부를 질문으로(제품 이름은 뺌)"
-    },
-    "generalHint": "그랜트는 하버드 대학의 첫 아프리카계 교수였고, 입천장갈림증 환자 치료를 전문으로 했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "골프에서 첫 타를 칠 때 공을 올려 두는 작은 받침",
-    "familiarity": {
-     "judge": 3,
-     "pct": 70,
-     "why": "골프 티샷으로 들어 봄",
-     "piece": "f04",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "S1-05",
-     "key": "b196",
-     "hint": "그랜트는 하버드 대학의 첫 아프리카계 교수였고, 입천장갈림증 환자 치료를 전문으로 했다.",
-     "guess": "골프 티",
-     "confidence": "high",
-     "hit": true,
-     "answer": "티"
-    },
-    "hobby": "장비",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Tee",
-     "https://v.daum.net/v/20191203145130629?d=y"
-    ],
-    "facts": [
-     {
-      "claim": "1899년 아프리카계 치과 의사 그랜트가 개량 티 특허",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tee",
-      "note": "In 1899, an African-American dentist, Dr. George Franklin Grant, obtained a patent for an \"improved golf tee\"."
-     },
-     {
-      "claim": "레디 티 — 헤이건 등을 고용한 뒤 판매가 늘어남",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tee",
-      "note": "Sales of his \"Reddy Tee,\" a simple wooden peg with a flared top, took off after Lowell hired professional golfers Walter Hagen and Joe Kirkwood, Sr."
-     },
-     {
-      "claim": "그전에는 상자에 담긴 모래를 조금 쌓아 공을 올림",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Tee",
-      "note": "Before this, golf balls were teed up on little heaps of sand that were provided in boxes."
-     },
-     {
-      "claim": "변형 표기 \"골프 티\"",
-      "where": "q",
-      "url": "https://v.daum.net/v/20191203145130629?d=y",
-      "note": "[시리어스 골퍼] '골프 티 (Tee)' 얼마나 알고 계신가요? (기사 제목)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/George_Franklin_Grant"
-    ],
-    "hintNote": "George Franklin Grant ... was the first African-American professor at Harvard. / He specialized in treating patients with cleft palate",
-    "easiestCue": "1899년 치과 의사 그랜트의 개량 특허",
-    "targetWhy": "그랜트·라월·헤이건은 골프 애호가 세부 — 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "모래를 쌓아 공을 올렸다는 말에서 받침을 짐작할 수 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 티 new · 골프 티 new",
-    "warn": []
-   }
-  }
- ]
+  ]
 }

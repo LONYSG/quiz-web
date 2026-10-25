@@ -1,250 +1,280 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "politics/3",
-  "midKey": "politics",
-  "subName": "헌법·법 개념",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "politics/3#g019a-H2-18",
-   "seed": {
-    "subject": "나폴레옹 법전",
-    "aspect": null,
-    "ref": "H2-18",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1800년 8월 포르탈리스 등 이름난 법률가들로 꾸려진 위원회가 초안을 맡은 이 법전은, 소설가 스탕달이 이만큼 꾸밈없이 쓰겠다며 문체의 본보기로 삼았다고 전합니다. 1804년 제정된 이 법전은?",
-    "answer": "나폴레옹 법전",
-    "acceptedAnswers": [
-     "프랑스 민법전"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 넘겨주기 '나폴레옹 법전' → '프랑스 민법전' 확인(같은 대상의 정식 이름)",
-    "explanation": "미국 루이지애나주는 프랑스·스페인 법 전통의 영향을 강하게 받아 민법이 다른 주와 다릅니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1804년 제정된 이 법전",
-     "difWhy": "1804년 법전 — 고교 세계사 (경계 2)",
-     "wor": 5,
-     "worWhy": "세계사 교과",
-     "acc": 4,
-     "accWhy": "정치·법 — 고교 사회 교과"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "1800년 … 법전에 이름을 남긴 지도자",
-     "difWhy": "지도자 이름 법전 — 중학 역사",
-     "wor": 5,
-     "worWhy": "세계사 교과"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1800년 이 법전의 초안은 포르탈리스 등 이름난 법률가 네 명으로 꾸려진 위원회가 맡았고, 법전에 이름을 남긴 지도자는 위원회 전체 회의를 여러 차례 몸소 주재했습니다. 소설가 스탕달이 이만큼 꾸밈없이 쓰겠다고 한 이 법전은?",
-     "beforeExplanation": null,
-     "removedCue": "법전에 이름을 남긴 지도자가 전체 회의를 주재",
-     "addedCue": "1804년 제정 (지도자 서술은 뺌)",
-     "why": "정답 이름을 가리키는 지도자 서술을 빼 기초 위원회·스탕달 세부로 묻게 함"
-    },
-    "generalHint": "이어 1806년에는 민사 소송법전, 1807년에는 상법전이 따로 채택되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "1804년 제정된 프랑스의 민법전",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "세계사 교과서에 나옴",
-     "piece": "f05",
-     "genPct": 78
-    },
-    "blind": {
-     "ref": "H2-18",
-     "key": "b143",
-     "hint": "이어 1806년에는 민사 소송법전, 1807년에는 상법전이 따로 채택되었다.",
-     "guess": "나폴레옹 법전",
-     "confidence": "high",
-     "hit": true,
-     "answer": "나폴레옹 법전"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Napoleonic_Code",
-     "https://fr.wikipedia.org/wiki/Stendhal"
-    ],
-    "facts": [
-     {
-      "claim": "1800년 8월 12일 포르탈리스 등 법률가로 위원회 임명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Napoleonic_Code",
-      "note": "he appointed on 12 August 1800 a commission of distinguished jurists and politicians, including Jacques de Maleville, François Denis Tronchet, Félix-Julien-Jean Bigot de Préameneu, Jean-Étienne-Marie Portalis to draft a civil code."
-     },
-     {
-      "claim": "스탕달은 민법전처럼 담백하게 쓰겠다고 주장",
-      "where": "q",
-      "url": "https://fr.wikipedia.org/wiki/Stendhal",
-      "note": "« son style sec, précis, la revendication d'écrire aussi nuement que le Code civil, écartent de Stendhal tout soupçon de romantisme »"
-     },
-     {
-      "claim": "루이지애나는 프랑스·스페인 법 전통 영향의 민법",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Napoleonic_Code",
-      "note": "But the state of Louisiana is unique in being strongly influenced by French and Spanish legal traditions in its civil code."
-     },
-     {
-      "claim": "1804년 통령 정부 때 제정된 프랑스 민법전",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Napoleonic_Code",
-      "note": "The Napoleonic Code (French: Code Napoléon), officially the Civil Code of the French (French: Code civil des Français; simply referred to as Code civil), is the French civil code established during the French Consulate in 1804"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Napoleonic_Code"
-    ],
-    "hintNote": "After an overhaul of the entire legal system, the new code of civil procedure was adopted in 1806. The commercial code (code de commerce) was adopted in 1807.",
-    "easiestCue": "1804년 제정된 법전 · 포르탈리스 위원회",
-    "targetWhy": "포르탈리스·스탕달 일화는 법·문학사 대학 교양 — 4(경계 3: 1804년 프랑스 법전이면 짐작 가능)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "교과서 법전의 편찬·문학 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "정답조각 법전"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "politics/3",
+    "midKey": "politics",
+    "subName": "헌법·법 개념",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "politics/3#g019a-H2-19",
-   "seed": {
-    "subject": "인권 선언",
-    "aspect": null,
-    "ref": "H2-19",
-    "pairedWith": 1355
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 1355,
-    "question": "라파예트 후작은 가까운 친구인 미국 외교관 토머스 제퍼슨과 상의하며 이 문서의 주요 초안을 썼고, 최종안의 대부분은 시에예스에게서 나왔습니다. 프랑스 제5공화국 헌법 앞머리에도 실려 지금도 헌법적 효력을 지니는 이 문서는?",
-    "answer": "인권 선언",
-    "acceptedAnswers": [
-     "프랑스 인권 선언",
-     "인간과 시민의 권리 선언"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 '인권 선언'·'인간과 시민의 권리선언', 넘겨주기 '프랑스 인권 선언' 확인",
-    "explanation": "1791년 올랭프 드 구주는 이 문서에 맞서 여성판 선언을 써 냈습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 라파예트 후작 … 초안 + 프랑스 제5공화국 헌법 앞머리에도 실려",
-     "difWhy": "라파예트 초안 혁명 문서 — 고교 세계사 (경계 4)",
-     "wor": 5,
-     "worWhy": "세계사 교과 — 프랑스 혁명",
-     "acc": 4,
-     "accWhy": "정치·법 — 고교 사회 교과"
+  "items": [
+    {
+      "seedId": "politics/3#g019a-H2-18",
+      "seed": {
+        "subject": "나폴레옹 법전",
+        "aspect": null,
+        "ref": "H2-18",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1800년 8월 포르탈리스 등 이름난 법률가들로 꾸려진 위원회가 초안을 맡은 이 법전은, 소설가 스탕달이 이만큼 꾸밈없이 쓰겠다며 문체의 본보기로 삼았다고 전합니다. 1804년 제정된 이 법전은?",
+        "answer": "나폴레옹 법전",
+        "acceptedAnswers": [
+          "프랑스 민법전"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 넘겨주기 '나폴레옹 법전' → '프랑스 민법전' 확인(같은 대상의 정식 이름)",
+        "explanation": "미국 루이지애나주는 프랑스·스페인 법 전통의 영향을 강하게 받아 민법이 다른 주와 다릅니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1804년 제정된 이 법전",
+          "difWhy": "1804년 법전 — 고교 세계사 (경계 2)",
+          "wor": 5,
+          "worWhy": "세계사 교과",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "1800년 … 법전에 이름을 남긴 지도자",
+          "difWhy": "지도자 이름 법전 — 중학 역사",
+          "wor": 5,
+          "worWhy": "세계사 교과"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1800년 이 법전의 초안은 포르탈리스 등 이름난 법률가 네 명으로 꾸려진 위원회가 맡았고, 법전에 이름을 남긴 지도자는 위원회 전체 회의를 여러 차례 몸소 주재했습니다. 소설가 스탕달이 이만큼 꾸밈없이 쓰겠다고 한 이 법전은?",
+          "beforeExplanation": null,
+          "removedCue": "법전에 이름을 남긴 지도자가 전체 회의를 주재",
+          "addedCue": "1804년 제정 (지도자 서술은 뺌)",
+          "why": "정답 이름을 가리키는 지도자 서술을 빼 기초 위원회·스탕달 세부로 묻게 함"
+        },
+        "generalHint": "이어 1806년에는 민사 소송법전, 1807년에는 상법전이 따로 채택되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "1804년 제정된 프랑스의 민법전",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "세계사 교과서에 나옴",
+          "piece": "f05",
+          "genPct": 78
+        },
+        "blind": {
+          "ref": "H2-18",
+          "key": "b143",
+          "hint": "이어 1806년에는 민사 소송법전, 1807년에는 상법전이 따로 채택되었다.",
+          "guess": "나폴레옹 법전",
+          "confidence": "high",
+          "hit": true,
+          "answer": "나폴레옹 법전"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Napoleonic_Code",
+          "https://fr.wikipedia.org/wiki/Stendhal"
+        ],
+        "facts": [
+          {
+            "claim": "1800년 8월 12일 포르탈리스 등 법률가로 위원회 임명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Napoleonic_Code",
+            "note": "he appointed on 12 August 1800 a commission of distinguished jurists and politicians, including Jacques de Maleville, François Denis Tronchet, Félix-Julien-Jean Bigot de Préameneu, Jean-Étienne-Marie Portalis to draft a civil code."
+          },
+          {
+            "claim": "스탕달은 민법전처럼 담백하게 쓰겠다고 주장",
+            "where": "q",
+            "url": "https://fr.wikipedia.org/wiki/Stendhal",
+            "note": "« son style sec, précis, la revendication d'écrire aussi nuement que le Code civil, écartent de Stendhal tout soupçon de romantisme »"
+          },
+          {
+            "claim": "루이지애나는 프랑스·스페인 법 전통 영향의 민법",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Napoleonic_Code",
+            "note": "But the state of Louisiana is unique in being strongly influenced by French and Spanish legal traditions in its civil code."
+          },
+          {
+            "claim": "1804년 통령 정부 때 제정된 프랑스 민법전",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Napoleonic_Code",
+            "note": "The Napoleonic Code (French: Code Napoléon), officially the Civil Code of the French (French: Code civil des Français; simply referred to as Code civil), is the French civil code established during the French Consulate in 1804"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Napoleonic_Code"
+        ],
+        "hintNote": "After an overhaul of the entire legal system, the new code of civil procedure was adopted in 1806. The commercial code (code de commerce) was adopted in 1807.",
+        "easiestCue": "1804년 제정된 법전 · 포르탈리스 위원회",
+        "targetWhy": "포르탈리스·스탕달 일화는 법·문학사 대학 교양 — 4(경계 3: 1804년 프랑스 법전이면 짐작 가능)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "교과서 법전의 편찬·문학 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "정답조각 법전"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1804년 제정된 이 법전",
+          "difWhy": "1804년 법전 — 고교 세계사 (경계 2)",
+          "wor": 5,
+          "worWhy": "세계사 교과",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "올랭프 드 구주가 이 문서에 맞서 여성판을",
-     "difWhy": "프랑스 혁명 선언문 — 고교 세계사",
-     "wor": 5,
-     "worWhy": "세계사 교과"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "라파예트 후작은 가까운 친구인 미국 외교관 토머스 제퍼슨과 상의하며 이 문서의 주요 초안을 썼고, 최종안의 대부분은 시에예스에게서 나왔습니다. 1791년 올랭프 드 구주가 이 문서에 맞서 여성판을 써 내기도 한 이 문서는?",
-     "beforeExplanation": "왕의 처형에 반대한 입헌군주파였던 올랭프 드 구주는 반역죄로 처형되었습니다.",
-     "removedCue": "1791년 올랭프 드 구주가 맞서 쓴 여성판(질문에서 해설로 옮김)",
-     "addedCue": "제5공화국 헌법 앞머리 · 헌법적 효력",
-     "why": "올랭프 드 구주(고교 세계사)를 빼고 초안 경위·현행 효력으로 · 1회차(1789 국민의회·자유·평등·국민 주권)와 겹치지 않음"
-    },
-    "generalHint": "1793년에 나온 새 판에는 노동·공공 부조·교육을 보장하고 압제에 맞서는 것을 정당하다고 본 조항들이 새로 들어갔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "1789년 프랑스 혁명 때 채택된 권리 문서",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "세계사·사회 교과서에 나옴",
-     "piece": "f09",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "H2-19",
-     "key": "b141",
-     "hint": "1793년에 나온 새 판에는 노동·공공 부조·교육을 보장하고 압제에 맞서는 것을 정당하다고 본 조항들이 새로 들어갔다.",
-     "guess": "인간과 시민의 권리 선언",
-     "confidence": "high",
-     "hit": true,
-     "answer": "인권 선언"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
-     "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen"
-    ],
-    "facts": [
-     {
-      "claim": "라파예트가 제퍼슨의 도움·상의로 주요 초안, 최종안 대부분은 시에예스",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
-      "note": "The declaration was initially drafted by Marquis de Lafayette with assistance from Thomas Jefferson, but the majority of the final draft came from Abbé Sieyès. / Marquis de Lafayette prepared the principal drafts in consultation with his close friend Thomas Jefferson."
-     },
-     {
-      "claim": "제퍼슨은 당시 프랑스 주재 미국 외교관",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
-      "note": "Assisted by Jefferson, then American diplomat to France, Lafayette prepared a draft"
-     },
-     {
-      "claim": "1791년 구주가 1789 인권 선언에 대응해 여성 권리 선언",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen",
-      "note": "was written on 14 September 1791 by French activist, feminist, and playwright Olympe de Gouges in response to the 1789 Declaration of the Rights of Man and of the Citizen."
-     },
-     {
-      "claim": "제4·5공화국 헌법 앞머리 · 헌법적 효력",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
-      "note": "It is included at the beginning of the constitutions of both the French Fourth Republic (1946) and French Fifth Republic (1958) and is considered valid as constitutional law."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen_of_1793"
-    ],
-    "hintNote": "The 1793 version included new rights, and revisions to prior ones: to work, to public assistance, to education, and to resist oppression.",
-    "easiestCue": "라파예트 후작은 … 토머스 제퍼슨과 상의하며 이 문서의 주요 초안을",
-    "targetWhy": "혁명 문서의 작성 경위 — 대학 교양 세계사",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "교과서 문서의 만든 사람·반박 이야기",
-    "pairCheck": "1회차 #1355 '1789년 국민의회가 자유·평등·국민주권을 선포한 문서' · 해설·힌트 확인 — 2회차는 연도·국민의회·내용을 쓰지 않고 초안자(라파예트·제퍼슨·시에예스)와 구주의 반박만",
-    "dbCheck": "pair-or-different — 활성 #1355(1789 선포 문서) · (가) 2회차, 지식 다름",
-    "warn": [],
-    "first": {
-     "id": 1355,
-     "question": "1789년 프랑스 국민의회가 자유와 평등, 그리고 주권이 국민에게 있음을 선포한 문서는?",
-     "explanation": "정식 이름은 '인간과 시민의 권리선언'입니다.",
-     "hint": null,
-     "difficulty": 2
+    {
+      "seedId": "politics/3#g019a-H2-19",
+      "seed": {
+        "subject": "인권 선언",
+        "aspect": null,
+        "ref": "H2-19",
+        "pairedWith": 1355
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 1355,
+        "question": "라파예트 후작은 가까운 친구인 미국 외교관 토머스 제퍼슨과 상의하며 이 문서의 주요 초안을 썼고, 최종안의 대부분은 시에예스에게서 나왔습니다. 프랑스 제5공화국 헌법 앞머리에도 실려 지금도 헌법적 효력을 지니는 이 문서는?",
+        "answer": "인권 선언",
+        "acceptedAnswers": [
+          "프랑스 인권 선언",
+          "인간과 시민의 권리 선언"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 '인권 선언'·'인간과 시민의 권리선언', 넘겨주기 '프랑스 인권 선언' 확인",
+        "explanation": "1791년 올랭프 드 구주는 이 문서에 맞서 여성판 선언을 써 냈습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 라파예트 후작 … 초안 + 프랑스 제5공화국 헌법 앞머리에도 실려",
+          "difWhy": "라파예트 초안 혁명 문서 — 고교 세계사 (경계 4)",
+          "wor": 5,
+          "worWhy": "세계사 교과 — 프랑스 혁명",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "올랭프 드 구주가 이 문서에 맞서 여성판을",
+          "difWhy": "프랑스 혁명 선언문 — 고교 세계사",
+          "wor": 5,
+          "worWhy": "세계사 교과"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "라파예트 후작은 가까운 친구인 미국 외교관 토머스 제퍼슨과 상의하며 이 문서의 주요 초안을 썼고, 최종안의 대부분은 시에예스에게서 나왔습니다. 1791년 올랭프 드 구주가 이 문서에 맞서 여성판을 써 내기도 한 이 문서는?",
+          "beforeExplanation": "왕의 처형에 반대한 입헌군주파였던 올랭프 드 구주는 반역죄로 처형되었습니다.",
+          "removedCue": "1791년 올랭프 드 구주가 맞서 쓴 여성판(질문에서 해설로 옮김)",
+          "addedCue": "제5공화국 헌법 앞머리 · 헌법적 효력",
+          "why": "올랭프 드 구주(고교 세계사)를 빼고 초안 경위·현행 효력으로 · 1회차(1789 국민의회·자유·평등·국민 주권)와 겹치지 않음"
+        },
+        "generalHint": "1793년에 나온 새 판에는 노동·공공 부조·교육을 보장하고 압제에 맞서는 것을 정당하다고 본 조항들이 새로 들어갔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "1789년 프랑스 혁명 때 채택된 권리 문서",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "세계사·사회 교과서에 나옴",
+          "piece": "f09",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "H2-19",
+          "key": "b141",
+          "hint": "1793년에 나온 새 판에는 노동·공공 부조·교육을 보장하고 압제에 맞서는 것을 정당하다고 본 조항들이 새로 들어갔다.",
+          "guess": "인간과 시민의 권리 선언",
+          "confidence": "high",
+          "hit": true,
+          "answer": "인권 선언"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+          "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen"
+        ],
+        "facts": [
+          {
+            "claim": "라파예트가 제퍼슨의 도움·상의로 주요 초안, 최종안 대부분은 시에예스",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+            "note": "The declaration was initially drafted by Marquis de Lafayette with assistance from Thomas Jefferson, but the majority of the final draft came from Abbé Sieyès. / Marquis de Lafayette prepared the principal drafts in consultation with his close friend Thomas Jefferson."
+          },
+          {
+            "claim": "제퍼슨은 당시 프랑스 주재 미국 외교관",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+            "note": "Assisted by Jefferson, then American diplomat to France, Lafayette prepared a draft"
+          },
+          {
+            "claim": "1791년 구주가 1789 인권 선언에 대응해 여성 권리 선언",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen",
+            "note": "was written on 14 September 1791 by French activist, feminist, and playwright Olympe de Gouges in response to the 1789 Declaration of the Rights of Man and of the Citizen."
+          },
+          {
+            "claim": "제4·5공화국 헌법 앞머리 · 헌법적 효력",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen",
+            "note": "It is included at the beginning of the constitutions of both the French Fourth Republic (1946) and French Fifth Republic (1958) and is considered valid as constitutional law."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Declaration_of_the_Rights_of_Man_and_of_the_Citizen_of_1793"
+        ],
+        "hintNote": "The 1793 version included new rights, and revisions to prior ones: to work, to public assistance, to education, and to resist oppression.",
+        "easiestCue": "라파예트 후작은 … 토머스 제퍼슨과 상의하며 이 문서의 주요 초안을",
+        "targetWhy": "혁명 문서의 작성 경위 — 대학 교양 세계사",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "교과서 문서의 만든 사람·반박 이야기",
+        "pairCheck": "1회차 #1355 '1789년 국민의회가 자유·평등·국민주권을 선포한 문서' · 해설·힌트 확인 — 2회차는 연도·국민의회·내용을 쓰지 않고 초안자(라파예트·제퍼슨·시에예스)와 구주의 반박만",
+        "dbCheck": "pair-or-different — 활성 #1355(1789 선포 문서) · (가) 2회차, 지식 다름",
+        "warn": [],
+        "first": {
+          "id": 1355,
+          "question": "1789년 프랑스 국민의회가 자유와 평등, 그리고 주권이 국민에게 있음을 선포한 문서는?",
+          "explanation": "정식 이름은 '인간과 시민의 권리선언'입니다.",
+          "hint": null,
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 라파예트 후작 … 초안 + 프랑스 제5공화국 헌법 앞머리에도 실려",
+          "difWhy": "라파예트 초안 혁명 문서 — 고교 세계사 (경계 4)",
+          "wor": 5,
+          "worWhy": "세계사 교과 — 프랑스 혁명",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  }
- ]
+  ]
 }

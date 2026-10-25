@@ -1,247 +1,277 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "psychology/4",
-  "midKey": "psychology",
-  "subName": "정신 건강 용어",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "psychology/4#g019a-H2-10",
-   "seed": {
-    "subject": "서번트 증후군",
-    "aspect": null,
-    "ref": "H2-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1887년 다운 증후군에 이름을 남긴 영국 의사 존 랭던 다운은 자기가 아는 젊은이 열 명쯤의 사례로 이 증상을 처음 기술하며, 모두 남성이었고 놀라운 기억력이 대개 추론 능력의 큰 결함과 함께 나타났다고 적었습니다. 이 증후군은?",
-    "answer": "서번트 증후군",
-    "acceptedAnswers": [
-     "사반트 증후군"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '사반트 증후군', 넘겨주기 '서번트 증후군' 확인",
-    "explanation": "미국의 킴 피크가 대표 사례로 꼽히며, 사례의 절반쯤은 자폐와 함께 나타납니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "놀라운 기억력이 대개 추론 능력의 큰 결함과 함께 나타났다",
-     "difWhy": "정의 = 비범한 능력+장애 — 방송·교양",
-     "wor": 4,
-     "worWhy": "교양 — 심리 기본 어휘",
-     "acc": 3,
-     "accWhy": "심리학 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "미국의 킴 피크도 대표 사례로 꼽히는 이 증후군",
-     "difWhy": "레인맨 실제 인물 — 관심 있는 사람",
-     "wor": 4,
-     "worWhy": "교양 — 심리 용어"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1887년 다운 증후군에 이름을 남긴 영국 의사 존 랭던 다운은 자기가 아는 젊은이 열 명쯤의 사례로 이 증상을 처음 기술하며, 사례가 모두 남성이었고 집안에 비슷한 재능을 가진 사람은 없었다고 적었습니다. 미국의 킴 피크도 대표 사례로 꼽히는 이 증후군은?",
-     "beforeExplanation": "다운은 이들의 놀라운 기억력이 대개 추론 능력의 큰 결함과 함께 나타났다고 적었습니다.",
-     "removedCue": "미국의 킴 피크도 대표 사례로 꼽히는 (레인맨 실제 인물)",
-     "addedCue": "놀라운 기억력과 추론 능력 결함(해설에서 옮김)",
-     "why": "영화로 널리 알려진 킴 피크를 해설로 옮기고 다운의 첫 기술 세부로만 묻게 함"
-    },
-    "generalHint": "갑작스러운 뇌 손상이나 병을 겪은 뒤에 이런 재능이 생긴 '후천성' 사례도 50건쯤 보고되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "장애가 있으면서 한 분야에 비상한 재능을 보이는 증상",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "영화·다큐로 들어 봄",
-     "piece": "f05",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "H2-10",
-     "key": "b038",
-     "hint": "갑작스러운 뇌 손상이나 병을 겪은 뒤에 이런 재능이 생긴 '후천성' 사례도 50건쯤 보고되었다.",
-     "guess": "서번트 증후군",
-     "confidence": "high",
-     "hit": true,
-     "answer": "서번트 증후군"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Savant_syndrome"
-    ],
-    "facts": [
-     {
-      "claim": "1887년 존 랭던 다운(다운 증후군 기술자)이 idiot savant 라는 말로 처음 기술",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
-      "note": "The term idiot savant ... was first used to describe the condition in 1887 by John Langdon Down, who is known for his description of Down syndrome."
-     },
-     {
-      "claim": "아는 젊은이 열 명쯤의 사례",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
-      "note": "Down described approximately ten cases of youth he had known with unusual mental powers"
-     },
-     {
-      "claim": "모두 남성, 집안 내력 없음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
-      "note": "Down noted that they were all male, none had a family history of similar talents"
-     },
-     {
-      "claim": "놀라운 기억력이 대개 큰 추론 결함과 함께",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
-      "note": "the extraordinary memory was usually associated with \"very great defect of reasoning power\"."
-     },
-     {
-      "claim": "킴 피크 — 미국의 메가 서번트(대표 사례 목록)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
-      "note": "Kim Peek, American \"megasavant\""
-     },
-     {
-      "claim": "사례의 약 절반은 자폐와 연관",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
-      "note": "About half of cases are associated with autism, and these individuals may be known as autistic savants."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Savant_syndrome"
-    ],
-    "hintNote": "As many as 50 cases of sudden or acquired savant syndrome have been reported.",
-    "easiestCue": "존 랭던 다운의 1887년 첫 기술",
-    "targetWhy": "다운의 첫 기술은 심리학 대학 교양 — 4(경계 3: 놀라운 기억력으로 짐작 가능)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정의 없이 명명 의사와 실존 사례로",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "정답조각 증후군",
-     "단정어 처음,모두"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "psychology/4",
+    "midKey": "psychology",
+    "subName": "정신 건강 용어",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "psychology/4#g019a-H2-11",
-   "seed": {
-    "subject": "가면 증후군",
-    "aspect": null,
-    "ref": "H2-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1978년 미국 심리학자 폴린 클랜스와 수잰 아임스는 높은 성취를 이룬 여성들을 다룬 논문에서 이 현상을 처음 소개했습니다. 1985년 클랜스가 이를 다룬 책을 내고 측정 척도도 만들면서 널리 알려진 이 심리 현상을 흔히 무엇이라 할까요?",
-    "answer": "가면 증후군",
-    "acceptedAnswers": [
-     "임포스터 증후군",
-     "사기꾼 증후군"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "WebSearch — 한국 언론(OSEN)·Asana 한국어판·하퍼스 바자 코리아가 '가면 증후군', '임포스터 증후군'을 같은 개념으로 씀 · 블로그에 직역 '사기꾼 증후군'",
-    "explanation": "처음에는 성취가 높은 여성에게 흔하다고 여겨졌지만, 뒤의 연구에서는 남녀 모두 여러 직업 환경에서 널리 나타난다고 밝혀졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "높은 성취를 이룬 여성들을 다룬 논문에서 이 현상을 처음 소개",
-     "difWhy": "클랜스·아임스 논문 — 대학 교양 심리 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 시사 심리 용어",
-     "acc": 3,
-     "accWhy": "심리학 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "psychology/4#g019a-H2-10",
+      "seed": {
+        "subject": "서번트 증후군",
+        "aspect": null,
+        "ref": "H2-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1887년 다운 증후군에 이름을 남긴 영국 의사 존 랭던 다운은 자기가 아는 젊은이 열 명쯤의 사례로 이 증상을 처음 기술하며, 모두 남성이었고 놀라운 기억력이 대개 추론 능력의 큰 결함과 함께 나타났다고 적었습니다. 이 증후군은?",
+        "answer": "서번트 증후군",
+        "acceptedAnswers": [
+          "사반트 증후군"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '사반트 증후군', 넘겨주기 '서번트 증후군' 확인",
+        "explanation": "미국의 킴 피크가 대표 사례로 꼽히며, 사례의 절반쯤은 자폐와 함께 나타납니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "놀라운 기억력이 대개 추론 능력의 큰 결함과 함께 나타났다",
+          "difWhy": "정의 = 비범한 능력+장애 — 방송·교양",
+          "wor": 4,
+          "worWhy": "교양 — 심리 기본 어휘",
+          "acc": 3,
+          "accWhy": "심리학 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "미국의 킴 피크도 대표 사례로 꼽히는 이 증후군",
+          "difWhy": "레인맨 실제 인물 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "교양 — 심리 용어"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1887년 다운 증후군에 이름을 남긴 영국 의사 존 랭던 다운은 자기가 아는 젊은이 열 명쯤의 사례로 이 증상을 처음 기술하며, 사례가 모두 남성이었고 집안에 비슷한 재능을 가진 사람은 없었다고 적었습니다. 미국의 킴 피크도 대표 사례로 꼽히는 이 증후군은?",
+          "beforeExplanation": "다운은 이들의 놀라운 기억력이 대개 추론 능력의 큰 결함과 함께 나타났다고 적었습니다.",
+          "removedCue": "미국의 킴 피크도 대표 사례로 꼽히는 (레인맨 실제 인물)",
+          "addedCue": "놀라운 기억력과 추론 능력 결함(해설에서 옮김)",
+          "why": "영화로 널리 알려진 킴 피크를 해설로 옮기고 다운의 첫 기술 세부로만 묻게 함"
+        },
+        "generalHint": "갑작스러운 뇌 손상이나 병을 겪은 뒤에 이런 재능이 생긴 '후천성' 사례도 50건쯤 보고되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "장애가 있으면서 한 분야에 비상한 재능을 보이는 증상",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "영화·다큐로 들어 봄",
+          "piece": "f05",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "H2-10",
+          "key": "b038",
+          "hint": "갑작스러운 뇌 손상이나 병을 겪은 뒤에 이런 재능이 생긴 '후천성' 사례도 50건쯤 보고되었다.",
+          "guess": "서번트 증후군",
+          "confidence": "high",
+          "hit": true,
+          "answer": "서번트 증후군"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Savant_syndrome"
+        ],
+        "facts": [
+          {
+            "claim": "1887년 존 랭던 다운(다운 증후군 기술자)이 idiot savant 라는 말로 처음 기술",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
+            "note": "The term idiot savant ... was first used to describe the condition in 1887 by John Langdon Down, who is known for his description of Down syndrome."
+          },
+          {
+            "claim": "아는 젊은이 열 명쯤의 사례",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
+            "note": "Down described approximately ten cases of youth he had known with unusual mental powers"
+          },
+          {
+            "claim": "모두 남성, 집안 내력 없음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
+            "note": "Down noted that they were all male, none had a family history of similar talents"
+          },
+          {
+            "claim": "놀라운 기억력이 대개 큰 추론 결함과 함께",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
+            "note": "the extraordinary memory was usually associated with \"very great defect of reasoning power\"."
+          },
+          {
+            "claim": "킴 피크 — 미국의 메가 서번트(대표 사례 목록)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
+            "note": "Kim Peek, American \"megasavant\""
+          },
+          {
+            "claim": "사례의 약 절반은 자폐와 연관",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Savant_syndrome",
+            "note": "About half of cases are associated with autism, and these individuals may be known as autistic savants."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Savant_syndrome"
+        ],
+        "hintNote": "As many as 50 cases of sudden or acquired savant syndrome have been reported.",
+        "easiestCue": "존 랭던 다운의 1887년 첫 기술",
+        "targetWhy": "다운의 첫 기술은 심리학 대학 교양 — 4(경계 3: 놀라운 기억력으로 짐작 가능)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정의 없이 명명 의사와 실존 사례로",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "정답조각 증후군",
+          "단정어 처음,모두"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "놀라운 기억력이 대개 추론 능력의 큰 결함과 함께 나타났다",
+          "difWhy": "정의 = 비범한 능력+장애 — 방송·교양",
+          "wor": 4,
+          "worWhy": "교양 — 심리 기본 어휘",
+          "acc": 3,
+          "accWhy": "심리학 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "높은 성취를 이룬 여성들을 다룬 논문에서 이 현상을 처음 소개",
-     "difWhy": "클랜스·아임스 논문 — 대학 교양 심리 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 시사 심리 용어"
-    },
-    "rewrite": null,
-    "generalHint": "새 학교에 막 들어간 학생들에게 흔하며, 학업 준비가 덜 됐다는 걱정이나 동료와의 비교와 이어진다고 한다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "자기 성공을 운 덕분으로 여기며 들통날까 두려워하는 심리",
-    "familiarity": {
-     "judge": 2,
-     "pct": 50,
-     "why": "심리 기사·SNS에서 가끔 접함",
-     "piece": "f02",
-     "genPct": 45
-    },
-    "blind": {
-     "ref": "H2-11",
-     "key": "b247",
-     "hint": "새 학교에 막 들어간 학생들에게 흔하며, 학업 준비가 덜 됐다는 걱정이나 동료와의 비교와 이어진다고 한다.",
-     "guess": "가면 증후군",
-     "confidence": "high",
-     "hit": true,
-     "answer": "가면 증후군"
-    },
-    "hobby": null,
-    "defForm": true,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Impostor_syndrome",
-     "https://www.osen.co.kr/article/G1112129701",
-     "https://asana.com/ko/resources/overcome-imposter-syndrome"
-    ],
-    "facts": [
-     {
-      "claim": "1978년 클랜스·아임스 논문 'The Impostor Phenomenon in High Achieving Women'에서 처음 소개",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Impostor_syndrome",
-      "note": "The term impostor phenomenon was introduced in an article published in 1978, titled \"The Impostor Phenomenon in High Achieving Women: Dynamics and Therapeutic Intervention\" by Pauline R. Clance and Suzanne A. Imes."
-     },
-     {
-      "claim": "1985년 클랜스 책으로 널리 알려짐, 1985년 클랜스 척도(CIPS)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Impostor_syndrome",
-      "note": "In 1985, Clance published a book on the topic, and the phenomenon became widely known. / In 1985, the Clance Impostor Phenomenon Scale (CIPS) was developed."
-     },
-     {
-      "claim": "처음엔 고성취 여성, 뒤 연구에서 남녀 모두 널리",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Impostor_syndrome",
-      "note": "Initially, Clance identified the syndrome with high-achieving professional women, but later studies found that it is widespread in both men and women and in many professional settings."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Impostor_syndrome"
-    ],
-    "hintNote": "The impostor phenomenon is common among students entering new academic environments and has been associated with concerns about academic preparedness and comparisons with peers.",
-    "easiestCue": "1978년 미국 심리학자 폴린 클랜스와 수잰 아임스는 높은 성취를 이룬 여성들을 다룬 논문에서",
-    "targetWhy": "정의를 주지 않고 명명 논문·연도만 — 심리 교양 애호가 수준(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "정답 이름은 연예 기사로 퍼졌지만 친숙도 2 하단일 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new(가면 증후군 · 임포스터 증후군)",
-    "warn": [
-     "단정어 처음",
-     "단정어 처음,모두",
-     "낱말뜻꼴"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "psychology/4#g019a-H2-11",
+      "seed": {
+        "subject": "가면 증후군",
+        "aspect": null,
+        "ref": "H2-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1978년 미국 심리학자 폴린 클랜스와 수잰 아임스는 높은 성취를 이룬 여성들을 다룬 논문에서 이 현상을 처음 소개했습니다. 1985년 클랜스가 이를 다룬 책을 내고 측정 척도도 만들면서 널리 알려진 이 심리 현상을 흔히 무엇이라 할까요?",
+        "answer": "가면 증후군",
+        "acceptedAnswers": [
+          "임포스터 증후군",
+          "사기꾼 증후군"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "WebSearch — 한국 언론(OSEN)·Asana 한국어판·하퍼스 바자 코리아가 '가면 증후군', '임포스터 증후군'을 같은 개념으로 씀 · 블로그에 직역 '사기꾼 증후군'",
+        "explanation": "처음에는 성취가 높은 여성에게 흔하다고 여겨졌지만, 뒤의 연구에서는 남녀 모두 여러 직업 환경에서 널리 나타난다고 밝혀졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "높은 성취를 이룬 여성들을 다룬 논문에서 이 현상을 처음 소개",
+          "difWhy": "클랜스·아임스 논문 — 대학 교양 심리 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 시사 심리 용어",
+          "acc": 3,
+          "accWhy": "심리학 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "높은 성취를 이룬 여성들을 다룬 논문에서 이 현상을 처음 소개",
+          "difWhy": "클랜스·아임스 논문 — 대학 교양 심리 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 시사 심리 용어"
+        },
+        "rewrite": null,
+        "generalHint": "새 학교에 막 들어간 학생들에게 흔하며, 학업 준비가 덜 됐다는 걱정이나 동료와의 비교와 이어진다고 한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "자기 성공을 운 덕분으로 여기며 들통날까 두려워하는 심리",
+        "familiarity": {
+          "judge": 2,
+          "pct": 50,
+          "why": "심리 기사·SNS에서 가끔 접함",
+          "piece": "f02",
+          "genPct": 45
+        },
+        "blind": {
+          "ref": "H2-11",
+          "key": "b247",
+          "hint": "새 학교에 막 들어간 학생들에게 흔하며, 학업 준비가 덜 됐다는 걱정이나 동료와의 비교와 이어진다고 한다.",
+          "guess": "가면 증후군",
+          "confidence": "high",
+          "hit": true,
+          "answer": "가면 증후군"
+        },
+        "hobby": null,
+        "defForm": true,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Impostor_syndrome",
+          "https://www.osen.co.kr/article/G1112129701",
+          "https://asana.com/ko/resources/overcome-imposter-syndrome"
+        ],
+        "facts": [
+          {
+            "claim": "1978년 클랜스·아임스 논문 'The Impostor Phenomenon in High Achieving Women'에서 처음 소개",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Impostor_syndrome",
+            "note": "The term impostor phenomenon was introduced in an article published in 1978, titled \"The Impostor Phenomenon in High Achieving Women: Dynamics and Therapeutic Intervention\" by Pauline R. Clance and Suzanne A. Imes."
+          },
+          {
+            "claim": "1985년 클랜스 책으로 널리 알려짐, 1985년 클랜스 척도(CIPS)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Impostor_syndrome",
+            "note": "In 1985, Clance published a book on the topic, and the phenomenon became widely known. / In 1985, the Clance Impostor Phenomenon Scale (CIPS) was developed."
+          },
+          {
+            "claim": "처음엔 고성취 여성, 뒤 연구에서 남녀 모두 널리",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Impostor_syndrome",
+            "note": "Initially, Clance identified the syndrome with high-achieving professional women, but later studies found that it is widespread in both men and women and in many professional settings."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Impostor_syndrome"
+        ],
+        "hintNote": "The impostor phenomenon is common among students entering new academic environments and has been associated with concerns about academic preparedness and comparisons with peers.",
+        "easiestCue": "1978년 미국 심리학자 폴린 클랜스와 수잰 아임스는 높은 성취를 이룬 여성들을 다룬 논문에서",
+        "targetWhy": "정의를 주지 않고 명명 논문·연도만 — 심리 교양 애호가 수준(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "정답 이름은 연예 기사로 퍼졌지만 친숙도 2 하단일 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new(가면 증후군 · 임포스터 증후군)",
+        "warn": [
+          "단정어 처음",
+          "단정어 처음,모두",
+          "낱말뜻꼴"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "높은 성취를 이룬 여성들을 다룬 논문에서 이 현상을 처음 소개",
+          "difWhy": "클랜스·아임스 논문 — 대학 교양 심리 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 시사 심리 용어",
+          "acc": 3,
+          "accWhy": "심리학 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

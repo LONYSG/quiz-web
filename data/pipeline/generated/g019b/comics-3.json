@@ -1,365 +1,410 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "comics/3",
-  "midKey": "comics",
-  "subName": "한국 만화·웹툰",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "comics/3#g019b-M2-21",
-   "seed": {
-    "subject": "타짜",
-    "aspect": "팬 세부",
-    "ref": "M2-21",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1부 '지리산 작두'의 김곤에서 4부 '벨제붑의 노래'의 장태영까지 부마다 주인공이 바뀌는 만화입니다. 이 만화는 무엇일까요?",
-    "answer": "타짜",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "2부 부제는 '신의 손'(주인공 함대길), 3부는 '원 아이드 잭'(도일출)이고, 그림은 허영만이 그렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1부 '지리산 작두'의 김곤",
-     "difWhy": "고니 1부 — 만화·영화 관심층",
-     "wor": 3,
-     "worWhy": "대중적 만화 제목",
-     "acc": 4,
-     "accWhy": "만화·웹툰 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "김세영이 글을 쓰고 '스포츠조선'에 연재된 이 만화",
-     "difWhy": "허영만 타짜 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 만화 제목"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1부 '지리산 작두'의 김곤에서 4부 '벨제붑의 노래'의 장태영까지 부마다 주인공이 바뀌는 만화입니다. 김세영이 글을 쓰고 '스포츠조선'에 연재된 이 만화는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "김세영이 글을 쓰고 '스포츠조선'에 연재",
-     "addedCue": "(뺌만 — 남은 단서: 1부·4부 부제와 주인공)",
-     "why": "작가·연재지 단서를 빼고 부제·주인공 세부만 남김"
-    },
-    "generalHint": "2008년 SBS 월화 드라마로도 만들어져 장혁이 주인공을, 여진구가 그 아역을 맡았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "허영만이 그린 노름꾼 세계 만화(영화화)",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "흥행 영화로 누구나 앎",
-     "piece": "f03",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "M2-21",
-     "key": "b030",
-     "hint": "2008년 SBS 월화 드라마로도 만들어져 장혁이 주인공을, 여진구가 그 아역을 맡았다.",
-     "guess": "타짜",
-     "confidence": "high",
-     "hit": true,
-     "answer": "타짜",
-     "first": {
-      "ref": "M2-21",
-      "key": "b047",
-      "hint": "2006년 영화에는 원작 만화가 허영만과 산악인 박영석이 노름꾼으로 깜짝 출연했다.",
-      "guess": "타짜",
-      "confidence": "high",
-      "hit": true,
-      "answer": "타짜"
-     }
-    },
-    "layer": "팬 세부",
-    "genre": "웹툰·만화",
-    "work": "타짜",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/타짜_(만화)"
-    ],
-    "facts": [
-     {
-      "claim": "1부 지리산 작두 김곤 · 4부 벨제붑의 노래 장태영",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/타짜_(만화)",
-      "note": "1부 \"지리산 작두\" 김곤 / 4부 \"벨제붑의 노래\" 장태영"
-     },
-     {
-      "claim": "2부 신의 손 함대길 · 3부 원 아이드 잭 도일출",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/타짜_(만화)",
-      "note": "2부 \"신의 손\" 함대길 / 3부 \"원 아이드 잭\" 도일출"
-     },
-     {
-      "claim": "글 김세영 · 그림 허영만 · 스포츠조선 연재(해설)",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/타짜_(만화)",
-      "note": "《스포츠조선》에 연재 … 글은 김세영, 그림은 허영만"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/타짜_(드라마)"
-    ],
-    "hintNote": "《타짜》는 2008년 9월 16일부터 2008년 11월 25일까지 방송된 SBS 월화 드라마 … 장혁 : 고니 역 (아역 : 여진구)",
-    "easiestCue": "1부 '지리산 작두'의 김곤",
-    "targetWhy": "부제와 주인공 — 만화 팬 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "comics/3",
+    "midKey": "comics",
+    "subName": "한국 만화·웹툰",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "comics/3#g019b-M2-22",
-   "seed": {
-    "subject": "달려라 하니",
-    "aspect": "팬 세부",
-    "ref": "M2-22",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1985년부터 1987년까지 만화잡지 '보물섬'에 연재된 순정만화입니다. 처음에는 '포니'라는 제목으로 추진되었다가, 같은 이름의 현대자동차 승용차를 홍보하는 것처럼 보일 수 있다고 해서 제목이 바뀐 이 작품은?",
-    "answer": "달려라 하니",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1988년 KBS가 13부작 TV 만화영화로 만들었고, 2008년에는 주인공이 작가가 사는 서울 강동구에서 주민등록증을 받기도 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "처음에는 '포니'라는 제목으로 추진된 1985년 보물섬 순정만화",
-     "difWhy": "'포니→달리기' 연상 — 만화 관심층",
-     "wor": 3,
-     "worWhy": "국민 만화 제목 유래",
-     "acc": 4,
-     "accWhy": "만화·웹툰 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "comics/3#g019b-M2-21",
+      "seed": {
+        "subject": "타짜",
+        "aspect": "팬 세부",
+        "ref": "M2-21",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1부 '지리산 작두'의 김곤에서 4부 '벨제붑의 노래'의 장태영까지 부마다 주인공이 바뀌는 만화입니다. 이 만화는 무엇일까요?",
+        "answer": "타짜",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "2부 부제는 '신의 손'(주인공 함대길), 3부는 '원 아이드 잭'(도일출)이고, 그림은 허영만이 그렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1부 '지리산 작두'의 김곤",
+          "difWhy": "고니 1부 — 만화·영화 관심층",
+          "wor": 3,
+          "worWhy": "대중적 만화 제목",
+          "acc": 4,
+          "accWhy": "만화·웹툰 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "김세영이 글을 쓰고 '스포츠조선'에 연재된 이 만화",
+          "difWhy": "허영만 타짜 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 만화 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1부 '지리산 작두'의 김곤에서 4부 '벨제붑의 노래'의 장태영까지 부마다 주인공이 바뀌는 만화입니다. 김세영이 글을 쓰고 '스포츠조선'에 연재된 이 만화는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "김세영이 글을 쓰고 '스포츠조선'에 연재",
+          "addedCue": "(뺌만 — 남은 단서: 1부·4부 부제와 주인공)",
+          "why": "작가·연재지 단서를 빼고 부제·주인공 세부만 남김"
+        },
+        "generalHint": "2008년 SBS 월화 드라마로도 만들어져 장혁이 주인공을, 여진구가 그 아역을 맡았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "허영만이 그린 노름꾼 세계 만화(영화화)",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "흥행 영화로 누구나 앎",
+          "piece": "f03",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "M2-21",
+          "key": "b030",
+          "hint": "2008년 SBS 월화 드라마로도 만들어져 장혁이 주인공을, 여진구가 그 아역을 맡았다.",
+          "guess": "타짜",
+          "confidence": "high",
+          "hit": true,
+          "answer": "타짜",
+          "first": {
+            "ref": "M2-21",
+            "key": "b047",
+            "hint": "2006년 영화에는 원작 만화가 허영만과 산악인 박영석이 노름꾼으로 깜짝 출연했다.",
+            "guess": "타짜",
+            "confidence": "high",
+            "hit": true,
+            "answer": "타짜"
+          }
+        },
+        "layer": "팬 세부",
+        "genre": "웹툰·만화",
+        "work": "타짜",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/타짜_(만화)"
+        ],
+        "facts": [
+          {
+            "claim": "1부 지리산 작두 김곤 · 4부 벨제붑의 노래 장태영",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/타짜_(만화)",
+            "note": "1부 \"지리산 작두\" 김곤 / 4부 \"벨제붑의 노래\" 장태영"
+          },
+          {
+            "claim": "2부 신의 손 함대길 · 3부 원 아이드 잭 도일출",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/타짜_(만화)",
+            "note": "2부 \"신의 손\" 함대길 / 3부 \"원 아이드 잭\" 도일출"
+          },
+          {
+            "claim": "글 김세영 · 그림 허영만 · 스포츠조선 연재(해설)",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/타짜_(만화)",
+            "note": "《스포츠조선》에 연재 … 글은 김세영, 그림은 허영만"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/타짜_(드라마)"
+        ],
+        "hintNote": "《타짜》는 2008년 9월 16일부터 2008년 11월 25일까지 방송된 SBS 월화 드라마 … 장혁 : 고니 역 (아역 : 여진구)",
+        "easiestCue": "1부 '지리산 작두'의 김곤",
+        "targetWhy": "부제와 주인공 — 만화 팬 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1부 '지리산 작두'의 김곤",
+          "difWhy": "고니 1부 — 만화·영화 관심층",
+          "wor": 3,
+          "worWhy": "대중적 만화 제목",
+          "acc": 4,
+          "accWhy": "만화·웹툰 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1988년 KBS가 13부작 TV 만화영화로 만들어",
-     "difWhy": "KBS 국산 만화영화 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 만화 제목"
+    {
+      "seedId": "comics/3#g019b-M2-22",
+      "seed": {
+        "subject": "달려라 하니",
+        "aspect": "팬 세부",
+        "ref": "M2-22",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1985년부터 1987년까지 만화잡지 '보물섬'에 연재된 순정만화입니다. 처음에는 '포니'라는 제목으로 추진되었다가, 같은 이름의 현대자동차 승용차를 홍보하는 것처럼 보일 수 있다고 해서 제목이 바뀐 이 작품은?",
+        "answer": "달려라 하니",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1988년 KBS가 13부작 TV 만화영화로 만들었고, 2008년에는 주인공이 작가가 사는 서울 강동구에서 주민등록증을 받기도 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "처음에는 '포니'라는 제목으로 추진된 1985년 보물섬 순정만화",
+          "difWhy": "'포니→달리기' 연상 — 만화 관심층",
+          "wor": 3,
+          "worWhy": "국민 만화 제목 유래",
+          "acc": 4,
+          "accWhy": "만화·웹툰 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1988년 KBS가 13부작 TV 만화영화로 만들어",
+          "difWhy": "KBS 국산 만화영화 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 만화 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "만화가 이진주가 1985년부터 1987년까지 만화잡지 '보물섬'에 연재한 순정만화입니다. 1988년 KBS가 13부작 TV 만화영화로 만들어 방영한 이 작품은 무엇일까요?",
+          "beforeExplanation": "만화영화 속 홍두깨 선생의 신부감 고은애는 충남 예산이 고향이라 충청도 사투리를 씁니다.",
+          "removedCue": "1988년 KBS 13부작 TV 만화영화(관심층)",
+          "addedCue": "처음 제목 '포니'가 현대자동차 승용차 때문에 바뀐 사연",
+          "why": "만화영화 방영 정보는 관심층 단서라 해설로 내리고, 팬도 잘 모르는 제목 변경 뒷이야기로 바꿈"
+        },
+        "generalHint": "주인공이 다니는 학교는 빛나리중학교다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "육상 소녀가 주인공인 1980년대 한국 순정만화",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "국민 만화영화로 30대도 익숙",
+          "piece": "f04",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "M2-22",
+          "key": "b132",
+          "hint": "주인공이 다니는 학교는 빛나리중학교다.",
+          "guess": "안녕 자두야",
+          "confidence": "low",
+          "hit": false,
+          "answer": "달려라 하니"
+        },
+        "layer": "팬 세부",
+        "genre": "웹툰·만화",
+        "work": "달려라 하니",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/달려라_하니"
+        ],
+        "facts": [
+          {
+            "claim": "이진주 · 보물섬 1985~1987",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/달려라_하니",
+            "note": "이진주가 그린 대한민국의 순정만화 … 1985년부터 1987년까지 만화잡지 《보물섬》에 연재"
+          },
+          {
+            "claim": "1988년 KBS 13부작",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/달려라_하니",
+            "note": "1988년 8월 15일 KBS 2TV에서 첫 방송 … 13부작으로 같은 해 11월 20일 끝남"
+          },
+          {
+            "claim": "원래 '포니'라는 제목으로 추진했으나 현대자동차 포니 홍보로 비칠까 봐 바꿈",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/달려라_하니",
+            "note": "그리고 원래 하니가 아닌 포니라는 제목으로 추진되었으나, 현대자동차에서 개발한 승용차인 포니를 홍보할 수 있다고 판단하여, 하니로 결정되었다."
+          },
+          {
+            "claim": "2008년 작가가 사는 강동구에서 주민등록증 발급",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/달려라_하니",
+            "note": "하니는 2008년에는 이진주 교수가 살고 있는 서울 강동구에서 주민등록증을 발급받기도 했다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EB%8B%AC%EB%A0%A4%EB%9D%BC_%ED%95%98%EB%8B%88"
+        ],
+        "hintNote": "달려라 하니는 빛나리 중학교의 신입생 하니가 홍두깨 선생님의 배려와 지도로 육상선수로 성장하지만",
+        "easiestCue": "'보물섬' 1985~1987년 연재 순정만화",
+        "targetWhy": "연재 잡지·기간과 제목 변경 사연은 1980년대 만화 애호가 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "처음에는 '포니'라는 제목으로 추진된 1985년 보물섬 순정만화",
+          "difWhy": "'포니→달리기' 연상 — 만화 관심층",
+          "wor": 3,
+          "worWhy": "국민 만화 제목 유래",
+          "acc": 4,
+          "accWhy": "만화·웹툰 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "만화가 이진주가 1985년부터 1987년까지 만화잡지 '보물섬'에 연재한 순정만화입니다. 1988년 KBS가 13부작 TV 만화영화로 만들어 방영한 이 작품은 무엇일까요?",
-     "beforeExplanation": "만화영화 속 홍두깨 선생의 신부감 고은애는 충남 예산이 고향이라 충청도 사투리를 씁니다.",
-     "removedCue": "1988년 KBS 13부작 TV 만화영화(관심층)",
-     "addedCue": "처음 제목 '포니'가 현대자동차 승용차 때문에 바뀐 사연",
-     "why": "만화영화 방영 정보는 관심층 단서라 해설로 내리고, 팬도 잘 모르는 제목 변경 뒷이야기로 바꿈"
-    },
-    "generalHint": "주인공이 다니는 학교는 빛나리중학교다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "육상 소녀가 주인공인 1980년대 한국 순정만화",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "국민 만화영화로 30대도 익숙",
-     "piece": "f04",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "M2-22",
-     "key": "b132",
-     "hint": "주인공이 다니는 학교는 빛나리중학교다.",
-     "guess": "안녕 자두야",
-     "confidence": "low",
-     "hit": false,
-     "answer": "달려라 하니"
-    },
-    "layer": "팬 세부",
-    "genre": "웹툰·만화",
-    "work": "달려라 하니",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/달려라_하니"
-    ],
-    "facts": [
-     {
-      "claim": "이진주 · 보물섬 1985~1987",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/달려라_하니",
-      "note": "이진주가 그린 대한민국의 순정만화 … 1985년부터 1987년까지 만화잡지 《보물섬》에 연재"
-     },
-     {
-      "claim": "1988년 KBS 13부작",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/달려라_하니",
-      "note": "1988년 8월 15일 KBS 2TV에서 첫 방송 … 13부작으로 같은 해 11월 20일 끝남"
-     },
-     {
-      "claim": "원래 '포니'라는 제목으로 추진했으나 현대자동차 포니 홍보로 비칠까 봐 바꿈",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/달려라_하니",
-      "note": "그리고 원래 하니가 아닌 포니라는 제목으로 추진되었으나, 현대자동차에서 개발한 승용차인 포니를 홍보할 수 있다고 판단하여, 하니로 결정되었다."
-     },
-     {
-      "claim": "2008년 작가가 사는 강동구에서 주민등록증 발급",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/달려라_하니",
-      "note": "하니는 2008년에는 이진주 교수가 살고 있는 서울 강동구에서 주민등록증을 발급받기도 했다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EB%8B%AC%EB%A0%A4%EB%9D%BC_%ED%95%98%EB%8B%88"
-    ],
-    "hintNote": "달려라 하니는 빛나리 중학교의 신입생 하니가 홍두깨 선생님의 배려와 지도로 육상선수로 성장하지만",
-    "easiestCue": "'보물섬' 1985~1987년 연재 순정만화",
-    "targetWhy": "연재 잡지·기간과 제목 변경 사연은 1980년대 만화 애호가 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "comics/3#g019b-M2-23",
-   "seed": {
-    "subject": "궁",
-    "aspect": "팬 세부",
-    "ref": "M2-23",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2002년부터 2012년까지 서울문화사의 순정만화 잡지에 연재되어 모두 27권으로 묶인 만화입니다. 발레리나의 꿈을 이유로 남자 주인공 이신의 청혼을 거절한 성효린이 나오는 이 만화는?",
-    "answer": "궁",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "한국이 영국·일본·타이처럼 입헌군주제 나라라는 가정 아래 펼쳐지는 이야기로, 2006년 MBC 드라마로도 만들어졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "남자 주인공 이신의 청혼을 거절한 성효린이 나오는 만화",
-     "difWhy": "'이신' 등장인물 — 드라마·만화 관심층",
-     "wor": 3,
-     "worWhy": "대중적 만화 제목",
-     "acc": 4,
-     "accWhy": "만화·웹툰 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "박소희가 글과 그림을 ... '윙크'에 연재",
-     "difWhy": "드라마 원작 만화 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 만화 제목"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "박소희가 글과 그림을 모두 맡아 2002년부터 2012년까지 서울문화사의 순정만화 잡지 '윙크'에 연재한 만화로, 모두 27권으로 묶였습니다. 이 만화는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "박소희가 글과 그림을 … '윙크'에 연재",
-     "addedCue": "성효린의 청혼 거절",
-     "why": "작가·잡지 이름을 빼고 주요 조연 설정으로 바꿈"
-    },
-    "generalHint": "남자 주인공의 사촌 이율은 아버지가 일찍 죽은 뒤 어머니와 영국으로 떠났다가 돌아와 여주인공과 같은 반이 된다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "왕실이 남은 가상의 한국을 그린 순정만화(드라마화)",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "윤은혜·주지훈 드라마로 크게 히트",
-     "piece": "f03",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "M2-23",
-     "key": "b016",
-     "hint": "남자 주인공의 사촌 이율은 아버지가 일찍 죽은 뒤 어머니와 영국으로 떠났다가 돌아와 여주인공과 같은 반이 된다.",
-     "guess": "궁",
-     "confidence": "high",
-     "hit": true,
-     "answer": "궁",
-     "first": {
-      "ref": "M2-23",
-      "key": "b119",
-      "hint": "여주인공 신채경은 할아버지와 선왕이 맺은 약속 때문에 왕세자와 결혼하게 된다.",
-      "guess": "궁",
-      "confidence": "high",
-      "hit": true,
-      "answer": "궁"
-     }
-    },
-    "layer": "팬 세부",
-    "genre": "웹툰·만화",
-    "work": "궁",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/궁_(만화)"
-    ],
-    "facts": [
-     {
-      "claim": "서울문화사 · 윙크 연재",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
-      "note": "박소희가 집필과 그림을 모두 맡음 … 잡지 《윙크》에 연재, 출판은 서울문화사"
-     },
-     {
-      "claim": "2002~2012 · 27권",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
-      "note": "2002년부터 2012년까지 … 총 27권"
-     },
-     {
-      "claim": "입헌군주제 가정 · 2006 MBC 드라마",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
-      "note": "한국이 영국, 일본, 타이처럼 입헌군주제 국가라는 가정 … MBC 수목미니시리즈 《궁》 2006년 상반기 방영"
-     },
-     {
-      "claim": "성효린 — 이신의 전 여자친구, 발레리나의 꿈을 이유로 청혼 거절",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
-      "note": "성효린: 이신의 전 여자친구이며, 발레리나의 꿈을 이유로 청혼을 거절한다(문서 요지)."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/궁_(만화)"
-    ],
-    "hintNote": "이율 — 신의 사촌이자 한국의 또 다른 왕자. 그의 아버지는 선왕의 장남이자 왕세자였으나, 요절한 탓에 … 그는 자신의 어머니와 함께 영국으로 떠났다. 한국으로 돌아온 후, 그는 채경과 같은 반에 배속되고",
-    "easiestCue": "발레리나의 꿈을 이유로 남자 주인공 이신의 청혼을 거절한 성효린",
-    "targetWhy": "주요 조연 설정 — 만화·드라마 팬 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
-    "warn": [
-     "단정어 모두"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "comics/3#g019b-M2-23",
+      "seed": {
+        "subject": "궁",
+        "aspect": "팬 세부",
+        "ref": "M2-23",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2002년부터 2012년까지 서울문화사의 순정만화 잡지에 연재되어 모두 27권으로 묶인 만화입니다. 발레리나의 꿈을 이유로 남자 주인공 이신의 청혼을 거절한 성효린이 나오는 이 만화는?",
+        "answer": "궁",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "한국이 영국·일본·타이처럼 입헌군주제 나라라는 가정 아래 펼쳐지는 이야기로, 2006년 MBC 드라마로도 만들어졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "남자 주인공 이신의 청혼을 거절한 성효린이 나오는 만화",
+          "difWhy": "'이신' 등장인물 — 드라마·만화 관심층",
+          "wor": 3,
+          "worWhy": "대중적 만화 제목",
+          "acc": 4,
+          "accWhy": "만화·웹툰 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "박소희가 글과 그림을 ... '윙크'에 연재",
+          "difWhy": "드라마 원작 만화 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 만화 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "박소희가 글과 그림을 모두 맡아 2002년부터 2012년까지 서울문화사의 순정만화 잡지 '윙크'에 연재한 만화로, 모두 27권으로 묶였습니다. 이 만화는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "박소희가 글과 그림을 … '윙크'에 연재",
+          "addedCue": "성효린의 청혼 거절",
+          "why": "작가·잡지 이름을 빼고 주요 조연 설정으로 바꿈"
+        },
+        "generalHint": "남자 주인공의 사촌 이율은 아버지가 일찍 죽은 뒤 어머니와 영국으로 떠났다가 돌아와 여주인공과 같은 반이 된다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "왕실이 남은 가상의 한국을 그린 순정만화(드라마화)",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "윤은혜·주지훈 드라마로 크게 히트",
+          "piece": "f03",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "M2-23",
+          "key": "b016",
+          "hint": "남자 주인공의 사촌 이율은 아버지가 일찍 죽은 뒤 어머니와 영국으로 떠났다가 돌아와 여주인공과 같은 반이 된다.",
+          "guess": "궁",
+          "confidence": "high",
+          "hit": true,
+          "answer": "궁",
+          "first": {
+            "ref": "M2-23",
+            "key": "b119",
+            "hint": "여주인공 신채경은 할아버지와 선왕이 맺은 약속 때문에 왕세자와 결혼하게 된다.",
+            "guess": "궁",
+            "confidence": "high",
+            "hit": true,
+            "answer": "궁"
+          }
+        },
+        "layer": "팬 세부",
+        "genre": "웹툰·만화",
+        "work": "궁",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/궁_(만화)"
+        ],
+        "facts": [
+          {
+            "claim": "서울문화사 · 윙크 연재",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
+            "note": "박소희가 집필과 그림을 모두 맡음 … 잡지 《윙크》에 연재, 출판은 서울문화사"
+          },
+          {
+            "claim": "2002~2012 · 27권",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
+            "note": "2002년부터 2012년까지 … 총 27권"
+          },
+          {
+            "claim": "입헌군주제 가정 · 2006 MBC 드라마",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
+            "note": "한국이 영국, 일본, 타이처럼 입헌군주제 국가라는 가정 … MBC 수목미니시리즈 《궁》 2006년 상반기 방영"
+          },
+          {
+            "claim": "성효린 — 이신의 전 여자친구, 발레리나의 꿈을 이유로 청혼 거절",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/궁_(만화)",
+            "note": "성효린: 이신의 전 여자친구이며, 발레리나의 꿈을 이유로 청혼을 거절한다(문서 요지)."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/궁_(만화)"
+        ],
+        "hintNote": "이율 — 신의 사촌이자 한국의 또 다른 왕자. 그의 아버지는 선왕의 장남이자 왕세자였으나, 요절한 탓에 … 그는 자신의 어머니와 함께 영국으로 떠났다. 한국으로 돌아온 후, 그는 채경과 같은 반에 배속되고",
+        "easiestCue": "발레리나의 꿈을 이유로 남자 주인공 이신의 청혼을 거절한 성효린",
+        "targetWhy": "주요 조연 설정 — 만화·드라마 팬 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
+        "warn": [
+          "단정어 모두"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "남자 주인공 이신의 청혼을 거절한 성효린이 나오는 만화",
+          "difWhy": "'이신' 등장인물 — 드라마·만화 관심층",
+          "wor": 3,
+          "worWhy": "대중적 만화 제목",
+          "acc": 4,
+          "accWhy": "만화·웹툰 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

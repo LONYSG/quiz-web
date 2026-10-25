@@ -1,585 +1,651 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "baseball/2",
-  "midKey": "baseball",
-  "subName": "KBO",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "baseball/2#g019a-S1-14",
-   "seed": {
-    "subject": "잠실야구장",
-    "aspect": null,
-    "ref": "S1-14",
-    "pairedWith": 2749
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 2749,
-    "question": "이 야구장의 개장 첫 경기는 경북고·천안북일고·군산상고·부산고가 나선 고교 초청 경기였고, 개장 첫 홈런은 경북고의 류중일이 쳤습니다. 2003년 11월에는 이곳에서 처음으로 e스포츠 경기인 한 게임 리그 결승이 열렸는데, 이 야구장은?",
-    "answer": "잠실야구장",
-    "acceptedAnswers": [
-     "잠실구장",
-     "서울종합운동장 야구장"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 넘겨주기 \"잠실야구장\" → 서울종합운동장 야구장 · \"잠실구장\" 넘겨주기 확인",
-    "explanation": "1982년 아마추어 월드 시리즈와 1988년 서울 올림픽 야구 경기를 치르려고 1980년 4월에 착공했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "개장 첫 홈런은 경북고의 류중일 … 2003년 … 리그 결승",
-     "difWhy": "개장 첫 홈런 류중일 — 야구 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 구장 역사",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
+  "_meta": {
+    "round": "g019a",
+    "subId": "baseball/2",
+    "midKey": "baseball",
+    "subName": "KBO",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "baseball/2#g019a-S1-14",
+      "seed": {
+        "subject": "잠실야구장",
+        "aspect": null,
+        "ref": "S1-14",
+        "pairedWith": 2749
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 2749,
+        "question": "이 야구장의 개장 첫 경기는 경북고·천안북일고·군산상고·부산고가 나선 고교 초청 경기였고, 개장 첫 홈런은 경북고의 류중일이 쳤습니다. 2003년 11월에는 이곳에서 처음으로 e스포츠 경기인 한 게임 리그 결승이 열렸는데, 이 야구장은?",
+        "answer": "잠실야구장",
+        "acceptedAnswers": [
+          "잠실구장",
+          "서울종합운동장 야구장"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 넘겨주기 \"잠실야구장\" → 서울종합운동장 야구장 · \"잠실구장\" 넘겨주기 확인",
+        "explanation": "1982년 아마추어 월드 시리즈와 1988년 서울 올림픽 야구 경기를 치르려고 1980년 4월에 착공했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "개장 첫 홈런은 경북고의 류중일 … 2003년 … 리그 결승",
+          "difWhy": "개장 첫 홈런 류중일 — 야구 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 구장 역사",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "서울 올림픽 야구 경기를 치르려고 1980년 착공한 이 야구장",
+          "difWhy": "올림픽 서울 야구장 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 경기장 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "제27회 세계 야구 선수권 대회와 서울 올림픽 야구 경기를 치르려고 1980년 착공한 이 야구장의 개장 첫 경기는 고교 네 팀의 초청 경기였습니다. 그날 개장 첫 홈런을 친 선수는 경북고의 류중일이었는데, 이 야구장은?",
+          "beforeExplanation": "2000년 5월 4일 두산 김동주가 친 개장 첫 장외 홈런이 떨어진 자리에는 기념비가 서 있습니다.",
+          "removedCue": "서울 올림픽 야구 경기를 치르려고 1980년 착공한 이 야구장",
+          "addedCue": "개장 첫 경기 4개 고교 · 2003년 11월 이곳 첫 e스포츠 결승",
+          "why": "올림픽 구장이라는 첫 줄 사실을 해설로 옮기고 개장 경기·e스포츠 결승 세부로 바꿈"
+        },
+        "generalHint": "개장 첫 장외 홈런은 2000년 5월 4일 두산 김동주가 쳤다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "서울 송파구 종합운동장 안의 프로야구장",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "대표 야구장",
+          "piece": "f06",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S1-14",
+          "key": "b215",
+          "hint": "국내 어느 구장보다 홈런이 나오기 어려운, 투수에게 유리한 곳으로 알려져 있다.",
+          "guess": "잠실 야구장",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "잠실야구장"
+        },
+        "hobby": "구단 역사",
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5_%EC%95%BC%EA%B5%AC%EC%9E%A5",
+          "https://ko.wikipedia.org/wiki/서울종합운동장_야구장"
+        ],
+        "facts": [
+          {
+            "claim": "개장 첫 경기 고교 4팀 초청 · 첫 홈런 경북고 류중일",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5_%EC%95%BC%EA%B5%AC%EC%9E%A5",
+            "note": "개장 이후 첫 번째 경기는 우수 고교 초청 경기였으며, 경북고, 천안북일고, 군산상고, 부산고의 4팀이 출전했고 개장 첫 홈런은 당시 경북고의 류중일 선수가 기록했다."
+          },
+          {
+            "claim": "세계야구선수권·서울 올림픽용으로 1980년 착공",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5_%EC%95%BC%EA%B5%AC%EC%9E%A5",
+            "note": "제27회 세계야구선수권대회와 서울 올림픽의 야구 경기 메인 구장으로서 국제 경기 개최를 목적으로 1980년 4월 17일 착공되었다."
+          },
+          {
+            "claim": "개장 첫 경기 출전 4팀(경북고·천안북일고·군산상고·부산고), 첫 홈런 류중일",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/서울종합운동장_야구장",
+            "note": "개장 이후 첫 번째 경기는 우수 고교 초청 경기였으며 경북고, 천안북일고, 군산상고, 부산고의 4팀이 출전했고 개장 첫 홈런은 당시 경북고 선수인 류중일이 기록했다."
+          },
+          {
+            "claim": "2003년 11월 9일 이 야구장에서 최초로 e스포츠 경기 결승",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/서울종합운동장_야구장",
+            "note": "2003년 11월 9일에는 이 야구장에서 최초로 e스포츠 경기인 강민 대 박용욱의 2003 Mycube배 온게임넷 스타리그 결승전이 열리기도 했는데"
+          },
+          {
+            "claim": "1982년 아마추어 월드 시리즈·1988 올림픽용으로 1980년 4월 17일 착공",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/서울종합운동장_야구장",
+            "note": "1982년 아마추어 월드 시리즈와 1988년 하계 올림픽의 야구 경기 메인 구장으로서 국제 경기 개최를 목적으로 1980년 4월 17일 착공되었으며"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "개장 첫 홈런을 친 경북고 류중일",
+        "targetWhy": "개장 경기·첫 홈런·e스포츠 결승은 야구 애호가 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "서울 올림픽 야구 경기장을 아는 관심층은 바로 댄다",
+        "pairCheck": "1회차 q(두산·LG 공동 홈) · e(잠실 더비) · h(없음)와 겹치지 않음",
+        "dbCheck": "answercheck 잠실야구장 pair-or-different #2749(1회차) — (가)",
+        "warn": [
+          "정답조각 야구장"
+        ],
+        "first": {
+          "id": 2749,
+          "question": "두산 베어스와 LG 트윈스가 함께 홈구장으로 쓰는 서울의 야구장은?",
+          "explanation": "두 팀이 맞붙는 경기를 \"잠실 더비\" 라 부르기도 합니다.",
+          "hint": null,
+          "difficulty": 1
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "개장 첫 홈런은 경북고의 류중일 … 2003년 … 리그 결승",
+          "difWhy": "개장 첫 홈런 류중일 — 야구 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 구장 역사",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "서울 올림픽 야구 경기를 치르려고 1980년 착공한 이 야구장",
-     "difWhy": "올림픽 서울 야구장 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 경기장 이야깃거리"
+    {
+      "seedId": "baseball/2#g019a-S1-15",
+      "seed": {
+        "subject": "골든글러브",
+        "aspect": null,
+        "ref": "S1-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "한국 프로야구 원년인 1982년과 이듬해, 이 상은 투표 없이 수비율만으로 수상자를 정해 신문에 거의 보도되지도 않았습니다. 그 두 해에는 지금의 이 상과 비슷한 성격의 상이 '베스트 10'으로 따로 있었는데, 이 상은 무엇일까요?",
+        "answer": "골든글러브",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1984년 베스트 10과 합쳐지면서 공격 능력과 인지도까지 따지는 상으로 바뀌었고, 지명 타자 부문도 생겼습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "투표 없이 수비율만으로 수상자를 정해 … 이 상",
+          "difWhy": "수비율 기준 원년 상 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 상의 역사",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1984년 '베스트 10'과 합쳐지며 지명 타자 부문도 생긴 이 상",
+          "difWhy": "포지션별 시상 — 야구 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "시상 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "한국 프로야구 원년인 1982년과 이듬해, 이 상은 투표 없이 수비율만으로 수상자를 정해 신문에 거의 보도되지도 않았습니다. 1984년 '베스트 10'과 합쳐지며 지명 타자 부문도 생긴 이 상은?",
+          "beforeExplanation": "지금은 시상식 당일 프로야구 기자단과 방송 관계자들의 투표로 수상자를 정합니다.",
+          "removedCue": "1984년 '베스트 10'과 합쳐지며 지명 타자 부문 신설(해설로 옮김)",
+          "addedCue": "원년 두 해 동안 비슷한 성격의 상 '베스트 10'이 따로 있었음",
+          "why": "포지션별 시상으로 바로 풀리는 통합·지명 타자 부문을 빼고 원년 시상 세부로"
+        },
+        "generalHint": "시상식은 해마다 한국 프로 야구 창립 기념일인 12월 11일에 열린다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한국 프로야구가 해마다 포지션별 최고 선수에게 주는 상",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "야구 시상식으로 유명",
+          "piece": "f03",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "S1-15",
+          "key": "b061",
+          "hint": "시상식은 해마다 한국 프로 야구 창립 기념일인 12월 11일에 열린다.",
+          "guess": "KBO 골든글러브",
+          "confidence": "high",
+          "hit": true,
+          "answer": "골든글러브"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
+          "https://ko.wikipedia.org/wiki/KBO%20%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C"
+        ],
+        "facts": [
+          {
+            "claim": "1982·1983년 투표 없이 수비율로 결정",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
+            "note": "한국 프로 야구 첫 해인 1982년과 1983년까지는 최고 수비수를 뽑는 취지의 시상식인 만큼 투표 없이 수비율로 수상자를 결정하였으나"
+          },
+          {
+            "claim": "신문에 거의 보도되지 않음",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
+            "note": "당시의 골든글러브는 신문에 거의 보도조차 되지 않았을 정도로 그 중요도가 낮게 다뤄졌지만 1984년부터 베스트 10과 통합되면서 지금의 모습이 되었다."
+          },
+          {
+            "claim": "1984년 베스트 10과 통합 · 지명 타자 부문 신설",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
+            "note": "1984년부터는 베스트 10의 시상과 통합되면서 수비는 물론 공격 능력과 인지도까지 아울러서 평가하는 상으로 바뀌며 1984년부터는 지명 타자 부문도 신설되었다."
+          },
+          {
+            "claim": "1982·1983년엔 수비율만으로 시상, 비슷한 성격의 상으로 베스트 10이 따로",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/KBO%20%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
+            "note": "원년인 1982년과 1983년엔 수비율만으로 골든글러브를 시상했으며, 지금의 골든글러브와 비슷한 성격의 상으론 베스트 10이 있었다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C"
+        ],
+        "hintNote": "KBO에서 주최하고 있으며 한국 프로 야구 창립 기념일을 기념하여 매년 동일하게 12월 11일에 열린다.",
+        "easiestCue": "원년 1982·1983년 투표 없이 수비율만으로 수상자를 정한 상",
+        "targetWhy": "KBO 원년 시상 제도의 뒷이야기 — 야구 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "\"수비율\" 에서 수비상을 떠올리면 짐작할 수 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 골든글러브 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "투표 없이 수비율만으로 수상자를 정해 … 이 상",
+          "difWhy": "수비율 기준 원년 상 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 상의 역사",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "제27회 세계 야구 선수권 대회와 서울 올림픽 야구 경기를 치르려고 1980년 착공한 이 야구장의 개장 첫 경기는 고교 네 팀의 초청 경기였습니다. 그날 개장 첫 홈런을 친 선수는 경북고의 류중일이었는데, 이 야구장은?",
-     "beforeExplanation": "2000년 5월 4일 두산 김동주가 친 개장 첫 장외 홈런이 떨어진 자리에는 기념비가 서 있습니다.",
-     "removedCue": "서울 올림픽 야구 경기를 치르려고 1980년 착공한 이 야구장",
-     "addedCue": "개장 첫 경기 4개 고교 · 2003년 11월 이곳 첫 e스포츠 결승",
-     "why": "올림픽 구장이라는 첫 줄 사실을 해설로 옮기고 개장 경기·e스포츠 결승 세부로 바꿈"
+    {
+      "seedId": "baseball/2#g019a-S1-16",
+      "seed": {
+        "subject": "이승엽",
+        "aspect": null,
+        "ref": "S1-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "초등학교 감독과 아버지의 협상이 틀어지자 야구를 시작할 때까지 단식하겠다며 아버지를 설득했다는 이 선수는, 경상중학교 시절 노히트 노런을 기록한 좌완 투수였습니다. 프로 첫해에는 내야수 이동수에게 밀려 신인왕을 놓쳤는데, 이 선수는?",
+        "answer": "이승엽",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "뒤에 감독 백인천에게서 '외다리 타법'을 배운 뒤 본격적인 홈런 타자가 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "프로 첫해에는 내야수 이동수에게 밀려 신인왕을 놓쳤는데",
+          "difWhy": "투수 출신 거포 신인왕 경쟁 — 야구 애호가",
+          "wor": 3,
+          "worWhy": "널리 알려진 선수 이름",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1995년 투수로 프로에 들어갔습니다 … 1년만 타자로",
+          "difWhy": "투수→타자 전향 — 야구 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 선수 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1993년 청룡기 대회에서 경북고를 우승으로 이끌며 우수 투수상을 받은 이 선수는 1995년 투수로 프로에 들어갔습니다. 그러나 팔꿈치 부상 탓에 첫 스프링 캠프에서 타격 코치 박승호에게 1년만 타자로 뛰어 보라는 권유를 받았는데, 이 선수는?",
+          "beforeExplanation": null,
+          "removedCue": "1995년 투수로 입단했다가 1년만 타자로 뛰어 보라는 권유(투수→타자 전향) · 1993 청룡기 우수 투수상",
+          "addedCue": "단식으로 아버지 설득 · 경상중 노히트 노런 · 신인왕을 이동수에게 놓침",
+          "why": "널리 알려진 투수→타자 전향 일화를 빼고 어린 시절·데뷔 첫해 세부로"
+        },
+        "generalHint": "1994년 세계 청소년 야구 선수권 대회에서 최다 홈런상과 최다 타점상을 받았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "아시아 시즌 최다 홈런을 세운 한국의 국민 타자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 98,
+          "why": "국민 타자",
+          "piece": "f03",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "S1-16",
+          "key": "b040",
+          "hint": "2005년 시즌을 마치고 일본 지바 롯데 마린스와 계약이 끝나자 다른 일본 팀으로 옮겼다.",
+          "guess": "이승엽",
+          "confidence": "high",
+          "hit": true,
+          "answer": "이승엽"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD"
+        ],
+        "facts": [
+          {
+            "claim": "백인천에게 외다리 타법",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
+            "note": "이후 당시 감독이었던 백인천에게‘외다리 타법’을 전수받은 뒤 본격적인 홈런 타자로 실력을 뽐내기 시작했다."
+          },
+          {
+            "claim": "초등학교 감독과 아버지 협상 불발 · 단식으로 설득",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
+            "note": "중앙초 감독이 그의 아버지와 협상했다가 불발됐고 그는 야구를 시작할 때까지 단식하겠다고 해 그의 아버지를 설득시켜 야구를 시작했다."
+          },
+          {
+            "claim": "경상중 노히트 노런 · 좌완 투수",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
+            "note": "그 중에서도 특히 좌완 투수로 좀 더 이름을 알렸다. 그는 경상중학교 재학 당시 노히트 노런을 기록했고"
+          },
+          {
+            "claim": "데뷔 첫해 이동수에게 밀려 신인왕 실패",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
+            "note": "붙박이 3번 타자 겸 1루수로 자리매김했지만 내야수 이동수에게 밀려 데뷔 첫 해에 신인왕 수상에는 실패했다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "경상중학교 시절 노히트 노런을 기록한 좌완 투수",
+        "targetWhy": "어린 시절 투수 경력과 신인왕 경쟁 — 야구 애호가 세부",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "투수 출신 거포라는 사실은 관심층에도 알려져 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 이승엽 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "프로 첫해에는 내야수 이동수에게 밀려 신인왕을 놓쳤는데",
+          "difWhy": "투수 출신 거포 신인왕 경쟁 — 야구 애호가",
+          "wor": 3,
+          "worWhy": "널리 알려진 선수 이름",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "generalHint": "국내 어느 구장보다 홈런이 나오기 어려운, 투수에게 유리한 곳으로 알려져 있다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "서울 송파구 종합운동장 안의 프로야구장",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "대표 야구장",
-     "piece": "f06",
-     "genPct": 90
+    {
+      "seedId": "baseball/2#g019a-S1-17",
+      "seed": {
+        "subject": "류현진",
+        "aspect": null,
+        "ref": "S1-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2006년 신인 드래프트 2차 지명에서 전체 1순위 롯데가 나승현을 고르자 전체 2순위 구단이 지명한 투수로, 그 구단 드래프트 역사상 최고의 스카우트로 꼽힙니다. 동산고 2학년 초 토미 존 수술을 받았던 이 투수는?",
+        "answer": "류현진",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "프로 첫해 청주에서 현대 유니콘스에 난타당한 뒤 구대성에게서 서클 체인지업을 배웠습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "롯데가 나승현을 고르자 전체 2순위 구단이 지명 … 동산고",
+          "difWhy": "나승현 뒤 2순위 괴물 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 선수 이름",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "SK는 동산고의 이 투수 대신 … 이재원을 1차 지명",
+          "difWhy": "SK가 지나친 동산고 투수 — 야구 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 선수 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2006년 신인 드래프트에서 인천 연고 구단 SK는 동산고의 이 투수 대신 인천고 포수 이재원을 1차 지명했고, 2차 1순위의 롯데도 나승현을 골랐습니다. 고교 2학년 때 토미 존 수술을 받은 전력도 걸림돌이었던 이 투수는?",
+          "beforeExplanation": null,
+          "removedCue": "SK가 이 투수 대신 인천고 포수 이재원을 1차 지명(야구 관심층이 아는 대표 일화)",
+          "addedCue": "2차 전체 2순위 지명 · 구단 역사상 최고의 스카우트",
+          "why": "유명한 SK 1차 지명 일화를 빼고 지명 순서·수술 이력의 세부로"
+        },
+        "generalHint": "고교 3학년 때 청룡기 8강에서 17탈삼진 완봉승을 거두며 학교에 39년 만의 우승을 안겼다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한화와 LA 다저스에서 뛴 한국의 왼손 에이스",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "유명 메이저리거",
+          "piece": "f04",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "S1-17",
+          "key": "b147",
+          "hint": "고교 3학년 때 청룡기 8강에서 17탈삼진 완봉승을 거두며 학교에 39년 만의 우승을 안겼다.",
+          "guess": "정민철",
+          "confidence": "low",
+          "hit": false,
+          "answer": "류현진"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84"
+        ],
+        "facts": [
+          {
+            "claim": "2차 1순위 롯데는 나승현 지명",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
+            "note": "2차 지명에서 전체 1순위 지명권을 가진 구단은 롯데 자이언츠였기에 그가 롯데 자이언츠에 지명될 것으로 예상됐지만 롯데 자이언츠는 나승현을 지명했고"
+          },
+          {
+            "claim": "고교 2학년 토미 존 수술 · 지명 판단에 영향",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
+            "note": "동산고 2학년 초인 2004년에는 팔꿈치 부상으로 토미 존 수술을 받아 1년 동안 재활에 매진했다. / 그가 동산고등학교 시절 토미 존 수술을 받은 전력이 있어 다른 구단에서 지명을 하지 않을 것이라 생각하고"
+          },
+          {
+            "claim": "구대성에게 서클 체인지업",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
+            "note": "프로 첫 해 현대 유니콘스를 상대로 청주야구장에서 난타당한 후 구대성에게 서클 체인지업을 전수받았다."
+          },
+          {
+            "claim": "2006년 신인 드래프트 2차 — 1순위 롯데 나승현, 전체 2순위 한화가 지명",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
+            "note": "2006년 한국프로야구 신인 드래프트에서 … 2차 지명에서 전체 1순위 지명권을 가진 구단은 롯데 자이언츠였기에 … 롯데 자이언츠는 나승현을 지명했고, 전체 2순위 지명권을 가진 한화 이글스가 그를 지명했다."
+          },
+          {
+            "claim": "한화 드래프트 역사상 최고의 스카우트",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
+            "note": "이는 한화 이글스 신인 드래프트 역사상 최고의 스카우트로 여겨졌다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84"
+        ],
+        "hintNote": "3학년인 2005년에는 제 60회 청룡기 전국고교야구 선수권대회에 출전해 성남고등학교와의 8강전에서 17탈삼진 완봉승을 거뒀고, 1966년 이후 39년 만에 동산고등학교의 6번째 청룡기 우승을 이끌며",
+        "easiestCue": "동산고 2학년 초 토미 존 수술을 받았던 투수",
+        "targetWhy": "스타 선수의 입단 전 이력 세부 — 야구 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "\"SK 가 거른 투수\" 이야기는 야구 관심층에 꽤 알려져 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 류현진 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "롯데가 나승현을 고르자 전체 2순위 구단이 지명 … 동산고",
+          "difWhy": "나승현 뒤 2순위 괴물 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 선수 이름",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "S1-14",
-     "key": "b215",
-     "hint": "국내 어느 구장보다 홈런이 나오기 어려운, 투수에게 유리한 곳으로 알려져 있다.",
-     "guess": "잠실 야구장",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "잠실야구장"
-    },
-    "hobby": "구단 역사",
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5_%EC%95%BC%EA%B5%AC%EC%9E%A5",
-     "https://ko.wikipedia.org/wiki/서울종합운동장_야구장"
-    ],
-    "facts": [
-     {
-      "claim": "개장 첫 경기 고교 4팀 초청 · 첫 홈런 경북고 류중일",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5_%EC%95%BC%EA%B5%AC%EC%9E%A5",
-      "note": "개장 이후 첫 번째 경기는 우수 고교 초청 경기였으며, 경북고, 천안북일고, 군산상고, 부산고의 4팀이 출전했고 개장 첫 홈런은 당시 경북고의 류중일 선수가 기록했다."
-     },
-     {
-      "claim": "세계야구선수권·서울 올림픽용으로 1980년 착공",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5_%EC%95%BC%EA%B5%AC%EC%9E%A5",
-      "note": "제27회 세계야구선수권대회와 서울 올림픽의 야구 경기 메인 구장으로서 국제 경기 개최를 목적으로 1980년 4월 17일 착공되었다."
-     },
-     {
-      "claim": "개장 첫 경기 출전 4팀(경북고·천안북일고·군산상고·부산고), 첫 홈런 류중일",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/서울종합운동장_야구장",
-      "note": "개장 이후 첫 번째 경기는 우수 고교 초청 경기였으며 경북고, 천안북일고, 군산상고, 부산고의 4팀이 출전했고 개장 첫 홈런은 당시 경북고 선수인 류중일이 기록했다."
-     },
-     {
-      "claim": "2003년 11월 9일 이 야구장에서 최초로 e스포츠 경기 결승",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/서울종합운동장_야구장",
-      "note": "2003년 11월 9일에는 이 야구장에서 최초로 e스포츠 경기인 강민 대 박용욱의 2003 Mycube배 온게임넷 스타리그 결승전이 열리기도 했는데"
-     },
-     {
-      "claim": "1982년 아마추어 월드 시리즈·1988 올림픽용으로 1980년 4월 17일 착공",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/서울종합운동장_야구장",
-      "note": "1982년 아마추어 월드 시리즈와 1988년 하계 올림픽의 야구 경기 메인 구장으로서 국제 경기 개최를 목적으로 1980년 4월 17일 착공되었으며"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%9E%A0%EC%8B%A4%EC%95%BC%EA%B5%AC%EC%9E%A5"
-    ],
-    "hintNote": "때문에 대한민국의 어떠한 구장보다도 홈런이 나오기 어렵고, 투수 친화적인 야구장으로 알려져 있다.",
-    "easiestCue": "개장 첫 홈런을 친 경북고 류중일",
-    "targetWhy": "개장 경기·첫 홈런·e스포츠 결승은 야구 애호가 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "서울 올림픽 야구 경기장을 아는 관심층은 바로 댄다",
-    "pairCheck": "1회차 q(두산·LG 공동 홈) · e(잠실 더비) · h(없음)와 겹치지 않음",
-    "dbCheck": "answercheck 잠실야구장 pair-or-different #2749(1회차) — (가)",
-    "warn": [
-     "정답조각 야구장"
-    ],
-    "first": {
-     "id": 2749,
-     "question": "두산 베어스와 LG 트윈스가 함께 홈구장으로 쓰는 서울의 야구장은?",
-     "explanation": "두 팀이 맞붙는 경기를 \"잠실 더비\" 라 부르기도 합니다.",
-     "hint": null,
-     "difficulty": 1
+    {
+      "seedId": "baseball/2#g019a-S1-18",
+      "seed": {
+        "subject": "김성근",
+        "aspect": null,
+        "ref": "S1-18",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "교토에서 나고 자란 이 야구인은 가쓰라 고교 시절인 1959년 재일 동포 학생 모국 방문 경기로 처음 한국 땅을 밟았습니다. 좌완 투수로 1962년 아시아 선수권 대표가 되었다가 혹사로 어깨를 다쳐 야수로 바꾼 이 사람은?",
+        "answer": "김성근",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1963년 대통령배 가을 리그 인천시청전에서는 볼넷 하나만 내주고 노히트 노런을 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "교토에서 나고 자란 이 야구인 … 재일 동포",
+          "difWhy": "재일동포 출신 감독 성장기 — 야구 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 감독 이름",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "교토에서 나고 자란 이 야구인 … 재일 동포",
+          "difWhy": "재일동포 출신 감독 성장기 — 야구 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 감독 이름"
+        },
+        "rewrite": null,
+        "generalHint": "1977년 봉황기에서 충암고를 창단 9년 만에 전국 대회 우승으로 이끌었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'야신'으로 불리는 재일 동포 출신 야구 감독",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "'야신'·최강야구로 유명한 감독",
+          "piece": "f05",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "S1-18",
+          "key": "b302",
+          "hint": "1977년 봉황기에서 충암고를 창단 9년 만에 처음 전국 대회 우승으로 이끌었다.",
+          "guess": "김성근",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "김성근"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)"
+        ],
+        "facts": [
+          {
+            "claim": "교토 출생",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
+            "note": "쇼와 17년(서기 1942년) 일본 교토부에서 5남매의 막내로 태어났다."
+          },
+          {
+            "claim": "가쓰라 고교 시절 1959년 재일 동포 학생 모국 방문 경기로 첫 방한",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
+            "note": "교토부립 가쓰라 고등학교에 재학 중이던 1959년, 제 4회 재일 동포 학생 모국 방문 경기를 통해 처음으로 대한민국 땅을 밟았고"
+          },
+          {
+            "claim": "좌완 투수 · 1962년 아시아 선수권 대표",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
+            "note": "좌완 투수로 빠른 직구를 주 무기로 삼아 1962년 제 4회 아시아 야구 선수권 대회 때 대표팀에 선발돼 대한민국을 준우승으로 이끌었다."
+          },
+          {
+            "claim": "혹사로 어깨 부상 → 야수 전업",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
+            "note": "그러나 지나친 혹사로 어깨 부상을 당한 후 야수로 전업했고, 1969년 이른 나이에 현역에서 은퇴했다."
+          },
+          {
+            "claim": "1963년 인천시청전 노히트 노런",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
+            "note": "1963년 11월 13일 대통령배 가을 리그 인천시청과의 경기에서는 볼넷 1개만을 내주며 노히트 노런을 기록했고"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "교토에서 나고 자란 이 야구인은 가쓰라 고교 시절인 1959년 재일 동포 학생 모국 방문 경기로 처음 한국 땅을 밟았습니다",
+        "targetWhy": "감독의 선수 시절 — 프로야구 애호가. 야신·SK 왕조·최강야구는 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "감독으로는 유명하고 선수 시절은 잘 모른다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 김성근 new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "교토에서 나고 자란 이 야구인 … 재일 동포",
+          "difWhy": "재일동포 출신 감독 성장기 — 야구 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 감독 이름",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 fix h-error",
+          "verdict": "fix"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "baseball/2#g019a-S1-15",
-   "seed": {
-    "subject": "골든글러브",
-    "aspect": null,
-    "ref": "S1-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "한국 프로야구 원년인 1982년과 이듬해, 이 상은 투표 없이 수비율만으로 수상자를 정해 신문에 거의 보도되지도 않았습니다. 그 두 해에는 지금의 이 상과 비슷한 성격의 상이 '베스트 10'으로 따로 있었는데, 이 상은 무엇일까요?",
-    "answer": "골든글러브",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1984년 베스트 10과 합쳐지면서 공격 능력과 인지도까지 따지는 상으로 바뀌었고, 지명 타자 부문도 생겼습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "투표 없이 수비율만으로 수상자를 정해 … 이 상",
-     "difWhy": "수비율 기준 원년 상 — 야구 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 상의 역사",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1984년 '베스트 10'과 합쳐지며 지명 타자 부문도 생긴 이 상",
-     "difWhy": "포지션별 시상 — 야구 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "시상 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "한국 프로야구 원년인 1982년과 이듬해, 이 상은 투표 없이 수비율만으로 수상자를 정해 신문에 거의 보도되지도 않았습니다. 1984년 '베스트 10'과 합쳐지며 지명 타자 부문도 생긴 이 상은?",
-     "beforeExplanation": "지금은 시상식 당일 프로야구 기자단과 방송 관계자들의 투표로 수상자를 정합니다.",
-     "removedCue": "1984년 '베스트 10'과 합쳐지며 지명 타자 부문 신설(해설로 옮김)",
-     "addedCue": "원년 두 해 동안 비슷한 성격의 상 '베스트 10'이 따로 있었음",
-     "why": "포지션별 시상으로 바로 풀리는 통합·지명 타자 부문을 빼고 원년 시상 세부로"
-    },
-    "generalHint": "시상식은 해마다 한국 프로 야구 창립 기념일인 12월 11일에 열린다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한국 프로야구가 해마다 포지션별 최고 선수에게 주는 상",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "야구 시상식으로 유명",
-     "piece": "f03",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "S1-15",
-     "key": "b061",
-     "hint": "시상식은 해마다 한국 프로 야구 창립 기념일인 12월 11일에 열린다.",
-     "guess": "KBO 골든글러브",
-     "confidence": "high",
-     "hit": true,
-     "answer": "골든글러브"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
-     "https://ko.wikipedia.org/wiki/KBO%20%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C"
-    ],
-    "facts": [
-     {
-      "claim": "1982·1983년 투표 없이 수비율로 결정",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
-      "note": "한국 프로 야구 첫 해인 1982년과 1983년까지는 최고 수비수를 뽑는 취지의 시상식인 만큼 투표 없이 수비율로 수상자를 결정하였으나"
-     },
-     {
-      "claim": "신문에 거의 보도되지 않음",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
-      "note": "당시의 골든글러브는 신문에 거의 보도조차 되지 않았을 정도로 그 중요도가 낮게 다뤄졌지만 1984년부터 베스트 10과 통합되면서 지금의 모습이 되었다."
-     },
-     {
-      "claim": "1984년 베스트 10과 통합 · 지명 타자 부문 신설",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
-      "note": "1984년부터는 베스트 10의 시상과 통합되면서 수비는 물론 공격 능력과 인지도까지 아울러서 평가하는 상으로 바뀌며 1984년부터는 지명 타자 부문도 신설되었다."
-     },
-     {
-      "claim": "1982·1983년엔 수비율만으로 시상, 비슷한 성격의 상으로 베스트 10이 따로",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/KBO%20%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C",
-      "note": "원년인 1982년과 1983년엔 수비율만으로 골든글러브를 시상했으며, 지금의 골든글러브와 비슷한 성격의 상으론 베스트 10이 있었다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/KBO_%EA%B3%A8%EB%93%A0%EA%B8%80%EB%9F%AC%EB%B8%8C"
-    ],
-    "hintNote": "KBO에서 주최하고 있으며 한국 프로 야구 창립 기념일을 기념하여 매년 동일하게 12월 11일에 열린다.",
-    "easiestCue": "원년 1982·1983년 투표 없이 수비율만으로 수상자를 정한 상",
-    "targetWhy": "KBO 원년 시상 제도의 뒷이야기 — 야구 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "\"수비율\" 에서 수비상을 떠올리면 짐작할 수 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 골든글러브 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "baseball/2#g019a-S1-16",
-   "seed": {
-    "subject": "이승엽",
-    "aspect": null,
-    "ref": "S1-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "초등학교 감독과 아버지의 협상이 틀어지자 야구를 시작할 때까지 단식하겠다며 아버지를 설득했다는 이 선수는, 경상중학교 시절 노히트 노런을 기록한 좌완 투수였습니다. 프로 첫해에는 내야수 이동수에게 밀려 신인왕을 놓쳤는데, 이 선수는?",
-    "answer": "이승엽",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "뒤에 감독 백인천에게서 '외다리 타법'을 배운 뒤 본격적인 홈런 타자가 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "프로 첫해에는 내야수 이동수에게 밀려 신인왕을 놓쳤는데",
-     "difWhy": "투수 출신 거포 신인왕 경쟁 — 야구 애호가",
-     "wor": 3,
-     "worWhy": "널리 알려진 선수 이름",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1995년 투수로 프로에 들어갔습니다 … 1년만 타자로",
-     "difWhy": "투수→타자 전향 — 야구 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 선수 일화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1993년 청룡기 대회에서 경북고를 우승으로 이끌며 우수 투수상을 받은 이 선수는 1995년 투수로 프로에 들어갔습니다. 그러나 팔꿈치 부상 탓에 첫 스프링 캠프에서 타격 코치 박승호에게 1년만 타자로 뛰어 보라는 권유를 받았는데, 이 선수는?",
-     "beforeExplanation": null,
-     "removedCue": "1995년 투수로 입단했다가 1년만 타자로 뛰어 보라는 권유(투수→타자 전향) · 1993 청룡기 우수 투수상",
-     "addedCue": "단식으로 아버지 설득 · 경상중 노히트 노런 · 신인왕을 이동수에게 놓침",
-     "why": "널리 알려진 투수→타자 전향 일화를 빼고 어린 시절·데뷔 첫해 세부로"
-    },
-    "generalHint": "2005년 시즌을 마치고 일본 지바 롯데 마린스와 계약이 끝나자 다른 일본 팀으로 옮겼다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "아시아 시즌 최다 홈런을 세운 한국의 국민 타자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 98,
-     "why": "국민 타자",
-     "piece": "f03",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "S1-16",
-     "key": "b040",
-     "hint": "2005년 시즌을 마치고 일본 지바 롯데 마린스와 계약이 끝나자 다른 일본 팀으로 옮겼다.",
-     "guess": "이승엽",
-     "confidence": "high",
-     "hit": true,
-     "answer": "이승엽"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD"
-    ],
-    "facts": [
-     {
-      "claim": "백인천에게 외다리 타법",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
-      "note": "이후 당시 감독이었던 백인천에게‘외다리 타법’을 전수받은 뒤 본격적인 홈런 타자로 실력을 뽐내기 시작했다."
-     },
-     {
-      "claim": "초등학교 감독과 아버지 협상 불발 · 단식으로 설득",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
-      "note": "중앙초 감독이 그의 아버지와 협상했다가 불발됐고 그는 야구를 시작할 때까지 단식하겠다고 해 그의 아버지를 설득시켜 야구를 시작했다."
-     },
-     {
-      "claim": "경상중 노히트 노런 · 좌완 투수",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
-      "note": "그 중에서도 특히 좌완 투수로 좀 더 이름을 알렸다. 그는 경상중학교 재학 당시 노히트 노런을 기록했고"
-     },
-     {
-      "claim": "데뷔 첫해 이동수에게 밀려 신인왕 실패",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD",
-      "note": "붙박이 3번 타자 겸 1루수로 자리매김했지만 내야수 이동수에게 밀려 데뷔 첫 해에 신인왕 수상에는 실패했다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%8A%B9%EC%97%BD"
-    ],
-    "hintNote": "2005년 시즌 후 지바 롯데 마린스와의 계약이 종료되며 재계약하는 듯했으나 ... 1월 19일에 이적했다.",
-    "easiestCue": "경상중학교 시절 노히트 노런을 기록한 좌완 투수",
-    "targetWhy": "어린 시절 투수 경력과 신인왕 경쟁 — 야구 애호가 세부",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "투수 출신 거포라는 사실은 관심층에도 알려져 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 이승엽 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "baseball/2#g019a-S1-17",
-   "seed": {
-    "subject": "류현진",
-    "aspect": null,
-    "ref": "S1-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2006년 신인 드래프트 2차 지명에서 전체 1순위 롯데가 나승현을 고르자 전체 2순위 구단이 지명한 투수로, 그 구단 드래프트 역사상 최고의 스카우트로 꼽힙니다. 동산고 2학년 초 토미 존 수술을 받았던 이 투수는?",
-    "answer": "류현진",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "프로 첫해 청주에서 현대 유니콘스에 난타당한 뒤 구대성에게서 서클 체인지업을 배웠습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "롯데가 나승현을 고르자 전체 2순위 구단이 지명 … 동산고",
-     "difWhy": "나승현 뒤 2순위 괴물 — 야구 관심층",
-     "wor": 3,
-     "worWhy": "누구나 아는 선수 이름",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "SK는 동산고의 이 투수 대신 … 이재원을 1차 지명",
-     "difWhy": "SK가 지나친 동산고 투수 — 야구 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 선수 일화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2006년 신인 드래프트에서 인천 연고 구단 SK는 동산고의 이 투수 대신 인천고 포수 이재원을 1차 지명했고, 2차 1순위의 롯데도 나승현을 골랐습니다. 고교 2학년 때 토미 존 수술을 받은 전력도 걸림돌이었던 이 투수는?",
-     "beforeExplanation": null,
-     "removedCue": "SK가 이 투수 대신 인천고 포수 이재원을 1차 지명(야구 관심층이 아는 대표 일화)",
-     "addedCue": "2차 전체 2순위 지명 · 구단 역사상 최고의 스카우트",
-     "why": "유명한 SK 1차 지명 일화를 빼고 지명 순서·수술 이력의 세부로"
-    },
-    "generalHint": "고교 3학년 때 청룡기 8강에서 17탈삼진 완봉승을 거두며 학교에 39년 만의 우승을 안겼다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한화와 LA 다저스에서 뛴 한국의 왼손 에이스",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "유명 메이저리거",
-     "piece": "f04",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "S1-17",
-     "key": "b147",
-     "hint": "고교 3학년 때 청룡기 8강에서 17탈삼진 완봉승을 거두며 학교에 39년 만의 우승을 안겼다.",
-     "guess": "정민철",
-     "confidence": "low",
-     "hit": false,
-     "answer": "류현진"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84"
-    ],
-    "facts": [
-     {
-      "claim": "2차 1순위 롯데는 나승현 지명",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
-      "note": "2차 지명에서 전체 1순위 지명권을 가진 구단은 롯데 자이언츠였기에 그가 롯데 자이언츠에 지명될 것으로 예상됐지만 롯데 자이언츠는 나승현을 지명했고"
-     },
-     {
-      "claim": "고교 2학년 토미 존 수술 · 지명 판단에 영향",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
-      "note": "동산고 2학년 초인 2004년에는 팔꿈치 부상으로 토미 존 수술을 받아 1년 동안 재활에 매진했다. / 그가 동산고등학교 시절 토미 존 수술을 받은 전력이 있어 다른 구단에서 지명을 하지 않을 것이라 생각하고"
-     },
-     {
-      "claim": "구대성에게 서클 체인지업",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
-      "note": "프로 첫 해 현대 유니콘스를 상대로 청주야구장에서 난타당한 후 구대성에게 서클 체인지업을 전수받았다."
-     },
-     {
-      "claim": "2006년 신인 드래프트 2차 — 1순위 롯데 나승현, 전체 2순위 한화가 지명",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
-      "note": "2006년 한국프로야구 신인 드래프트에서 … 2차 지명에서 전체 1순위 지명권을 가진 구단은 롯데 자이언츠였기에 … 롯데 자이언츠는 나승현을 지명했고, 전체 2순위 지명권을 가진 한화 이글스가 그를 지명했다."
-     },
-     {
-      "claim": "한화 드래프트 역사상 최고의 스카우트",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84",
-      "note": "이는 한화 이글스 신인 드래프트 역사상 최고의 스카우트로 여겨졌다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EB%A5%98%ED%98%84%EC%A7%84"
-    ],
-    "hintNote": "3학년인 2005년에는 제 60회 청룡기 전국고교야구 선수권대회에 출전해 성남고등학교와의 8강전에서 17탈삼진 완봉승을 거뒀고, 1966년 이후 39년 만에 동산고등학교의 6번째 청룡기 우승을 이끌며",
-    "easiestCue": "동산고 2학년 초 토미 존 수술을 받았던 투수",
-    "targetWhy": "스타 선수의 입단 전 이력 세부 — 야구 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "\"SK 가 거른 투수\" 이야기는 야구 관심층에 꽤 알려져 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 류현진 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "baseball/2#g019a-S1-18",
-   "seed": {
-    "subject": "김성근",
-    "aspect": null,
-    "ref": "S1-18",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "교토에서 나고 자란 이 야구인은 가쓰라 고교 시절인 1959년 재일 동포 학생 모국 방문 경기로 처음 한국 땅을 밟았습니다. 좌완 투수로 1962년 아시아 선수권 대표가 되었다가 혹사로 어깨를 다쳐 야수로 바꾼 이 사람은?",
-    "answer": "김성근",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1963년 대통령배 가을 리그 인천시청전에서는 볼넷 하나만 내주고 노히트 노런을 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "교토에서 나고 자란 이 야구인 … 재일 동포",
-     "difWhy": "재일동포 출신 감독 성장기 — 야구 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 감독 이름",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "교토에서 나고 자란 이 야구인 … 재일 동포",
-     "difWhy": "재일동포 출신 감독 성장기 — 야구 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 감독 이름"
-    },
-    "rewrite": null,
-    "generalHint": "1977년 봉황기에서 충암고를 창단 9년 만에 처음 전국 대회 우승으로 이끌었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'야신'으로 불리는 재일 동포 출신 야구 감독",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "'야신'·최강야구로 유명한 감독",
-     "piece": "f05",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "S1-18",
-     "key": "b302",
-     "hint": "1977년 봉황기에서 충암고를 창단 9년 만에 처음 전국 대회 우승으로 이끌었다.",
-     "guess": "김성근",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "김성근"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)"
-    ],
-    "facts": [
-     {
-      "claim": "교토 출생",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
-      "note": "쇼와 17년(서기 1942년) 일본 교토부에서 5남매의 막내로 태어났다."
-     },
-     {
-      "claim": "가쓰라 고교 시절 1959년 재일 동포 학생 모국 방문 경기로 첫 방한",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
-      "note": "교토부립 가쓰라 고등학교에 재학 중이던 1959년, 제 4회 재일 동포 학생 모국 방문 경기를 통해 처음으로 대한민국 땅을 밟았고"
-     },
-     {
-      "claim": "좌완 투수 · 1962년 아시아 선수권 대표",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
-      "note": "좌완 투수로 빠른 직구를 주 무기로 삼아 1962년 제 4회 아시아 야구 선수권 대회 때 대표팀에 선발돼 대한민국을 준우승으로 이끌었다."
-     },
-     {
-      "claim": "혹사로 어깨 부상 → 야수 전업",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
-      "note": "그러나 지나친 혹사로 어깨 부상을 당한 후 야수로 전업했고, 1969년 이른 나이에 현역에서 은퇴했다."
-     },
-     {
-      "claim": "1963년 인천시청전 노히트 노런",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)",
-      "note": "1963년 11월 13일 대통령배 가을 리그 인천시청과의 경기에서는 볼넷 1개만을 내주며 노히트 노런을 기록했고"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%84%B1%EA%B7%BC_(%EC%95%BC%EA%B5%AC%EC%9D%B8)"
-    ],
-    "hintNote": "1977년 봉황기에서 충암고를 창단 9년만에 전국 대회 우승으로 이끌었다.",
-    "easiestCue": "교토에서 나고 자란 이 야구인은 가쓰라 고교 시절인 1959년 재일 동포 학생 모국 방문 경기로 처음 한국 땅을 밟았습니다",
-    "targetWhy": "감독의 선수 시절 — 프로야구 애호가. 야신·SK 왕조·최강야구는 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "감독으로는 유명하고 선수 시절은 잘 모른다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 김성근 new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+  ]
 }

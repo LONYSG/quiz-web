@@ -1,341 +1,389 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "war-history/3",
-  "midKey": "war-history",
-  "subName": "제2차 세계대전",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "war-history/3#g019b-H1-33",
-   "seed": {
-    "subject": "아우슈비츠",
-    "aspect": null,
-    "ref": "H1-33",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1940년 폴란드 장교 비톨트 필레츠키는 일부러 독일군에게 붙잡혀 이 수용소에 들어가 지하 조직을 꾸렸고, 1943년 4월 탈출했습니다. 정문 위 철제 글씨는 대장장이 얀 리바치 등 수감자들이 만들었는데, 이 수용소는?",
-    "answer": "아우슈비츠",
-    "acceptedAnswers": [
-     "아우슈비츠 수용소",
-     "아우슈비츠 강제 수용소"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '아우슈비츠 강제 수용소', '아우슈비츠'에서 넘어옴",
-    "explanation": "필레츠키는 전쟁 뒤 공산 당국에 붙잡혀 1948년 5월 사형을 선고받았고, 그가 묻힌 곳은 끝내 찾지 못했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "정문 위 철제 글씨를 수감자들이 만든 이 수용소",
-     "difWhy": "'정문 철제 글씨 수용소' — 역사 관심층",
-     "wor": 4,
-     "worWhy": "교양 — 홀로코스트 상징",
-     "acc": 3,
-     "accWhy": "전쟁·군사사 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "2009년 12월 정문 위 철제 글씨를 도둑맞았다가",
-     "difWhy": "아르바이트 마흐트 프라이 도난 — 방송·뉴스",
-     "wor": 5,
-     "worWhy": "교과 — 홀로코스트"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1940년 폴란드 장교 비톨트 필레츠키는 일부러 독일군에게 붙잡혀 이 수용소에 들어가 지하 조직을 꾸렸고, 1943년 4월 탈출했습니다. 2009년 12월 정문 위 철제 글씨를 도둑맞았다가 세 조각으로 되찾은 이 수용소는?",
-     "beforeExplanation": "정문 글씨는 대장장이 얀 리바치를 비롯한 수감자들이 만들었는데, 'B'가 거꾸로 달린 것을 수감자들의 저항으로 보는 해석이 있습니다.",
-     "removedCue": "2009년 12월 정문 글씨 도난·세 조각으로 되찾음(방송·뉴스)",
-     "addedCue": "정문 글씨를 대장장이 얀 리바치 등 수감자들이 만듦(해설에서 옮김)",
-     "why": "도난 사건은 뉴스 단서라 빼고, 정문 글씨를 만든 사람 세부로 바꿈"
-    },
-    "generalHint": "1947년 7월 2일 폴란드 의회의 법으로 이곳에 국립 박물관이 세워졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "나치 독일이 폴란드 남부에 세운 최대의 강제·절멸 수용소",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "교과서·영화로 누구나 앎",
-     "piece": "f06",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "H1-33",
-     "key": "b136",
-     "hint": "1947년 7월 2일 폴란드 의회의 법으로 이곳에 국립 박물관이 세워졌다.",
-     "guess": "아우슈비츠",
-     "confidence": "high",
-     "hit": true,
-     "answer": "아우슈비츠"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Witold_Pilecki",
-     "https://en.wikipedia.org/wiki/Arbeit_macht_frei"
-    ],
-    "facts": [
-     {
-      "claim": "1940년 필레츠키가 일부러 붙잡혀 들어감 · 지하 조직",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
-      "note": "In 1940, Pilecki let himself be captured … organized an underground Military Organization Union"
-     },
-     {
-      "claim": "1943년 4월 탈출",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
-      "note": "After escaping from Auschwitz in April 1943"
-     },
-     {
-      "claim": "얀 리바치 등 수감자가 제작 · 거꾸로 된 B",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Arbeit_macht_frei",
-      "note": "The Auschwitz I sign was made by prisoner-laborers including master blacksmith Jan Liwacz … features an upside-down 'B', which has been interpreted as an act of defiance by the prisoners who made it."
-     },
-     {
-      "claim": "1947년 공산 당국에 체포, 1948년 5월 15일 사형 선고",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
-      "note": "Arrested on 8 May 1947 by the communist authorities ... He was sentenced to death on 15 May with three of his comrades."
-     },
-     {
-      "claim": "묻힌 곳을 찾지 못함",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
-      "note": "Pilecki's burial place has never been found, though it is thought to be in Warsaw's Powązki Cemetery."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Auschwitz-Birkenau_State_Museum"
-    ],
-    "hintNote": "It was formally founded on July 2, 1947, by an act of the Polish parliament.",
-    "easiestCue": "필레츠키가 일부러 붙잡혀 들어가 지하 조직을 꾸림",
-    "targetWhy": "필레츠키와 정문 글씨 제작자는 제2차 세계대전사 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'정문 위 철제 글씨'로 유명한 문구를 떠올릴 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 홀로코스트(#1280)와 정답 다름",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "war-history/3",
+    "midKey": "war-history",
+    "subName": "제2차 세계대전",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "war-history/3#g019b-H1-34",
-   "seed": {
-    "subject": "리틀 보이",
-    "aspect": null,
-    "ref": "H1-34",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 폭탄은 포신형 설계로, 실전에 쓰이기 전에 한 번도 온전히 시험된 적이 없었습니다. 핵분열 물질 64kg을 실었지만 실제로 분열한 것은 1kg도 안 되었다는 이 폭탄의 이름은 무엇일까요?",
-    "answer": "리틀 보이",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1945년 8월 6일 B-29 폭격기 '에놀라 게이'가 이 폭탄을 히로시마에 떨어뜨렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "포신형 설계로 실전 전에 한 번도 시험되지 않은 폭탄",
-     "difWhy": "히로시마 우라늄탄 — 전쟁사 관심층",
-     "wor": 3,
-     "worWhy": "현대사 이야깃거리",
-     "acc": 3,
-     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "war-history/3#g019b-H1-33",
+      "seed": {
+        "subject": "아우슈비츠",
+        "aspect": null,
+        "ref": "H1-33",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1940년 폴란드 장교 비톨트 필레츠키는 일부러 독일군에게 붙잡혀 이 수용소에 들어가 지하 조직을 꾸렸고, 1943년 4월 탈출했습니다. 정문 위 철제 글씨는 대장장이 얀 리바치 등 수감자들이 만들었는데, 이 수용소는?",
+        "answer": "아우슈비츠",
+        "acceptedAnswers": [
+          "아우슈비츠 수용소",
+          "아우슈비츠 강제 수용소"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '아우슈비츠 강제 수용소', '아우슈비츠'에서 넘어옴",
+        "explanation": "필레츠키는 전쟁 뒤 공산 당국에 붙잡혀 1948년 5월 사형을 선고받았고, 그가 묻힌 곳은 끝내 찾지 못했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "정문 위 철제 글씨를 수감자들이 만든 이 수용소",
+          "difWhy": "'정문 철제 글씨 수용소' — 역사 관심층",
+          "wor": 4,
+          "worWhy": "교양 — 홀로코스트 상징",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "2009년 12월 정문 위 철제 글씨를 도둑맞았다가",
+          "difWhy": "아르바이트 마흐트 프라이 도난 — 방송·뉴스",
+          "wor": 5,
+          "worWhy": "교과 — 홀로코스트"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1940년 폴란드 장교 비톨트 필레츠키는 일부러 독일군에게 붙잡혀 이 수용소에 들어가 지하 조직을 꾸렸고, 1943년 4월 탈출했습니다. 2009년 12월 정문 위 철제 글씨를 도둑맞았다가 세 조각으로 되찾은 이 수용소는?",
+          "beforeExplanation": "정문 글씨는 대장장이 얀 리바치를 비롯한 수감자들이 만들었는데, 'B'가 거꾸로 달린 것을 수감자들의 저항으로 보는 해석이 있습니다.",
+          "removedCue": "2009년 12월 정문 글씨 도난·세 조각으로 되찾음(방송·뉴스)",
+          "addedCue": "정문 글씨를 대장장이 얀 리바치 등 수감자들이 만듦(해설에서 옮김)",
+          "why": "도난 사건은 뉴스 단서라 빼고, 정문 글씨를 만든 사람 세부로 바꿈"
+        },
+        "generalHint": "1947년 7월 2일 폴란드 의회의 법으로 이곳에 국립 박물관이 세워졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "나치 독일이 폴란드 남부에 세운 최대의 강제·절멸 수용소",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "교과서·영화로 누구나 앎",
+          "piece": "f06",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "H1-33",
+          "key": "b136",
+          "hint": "1947년 7월 2일 폴란드 의회의 법으로 이곳에 국립 박물관이 세워졌다.",
+          "guess": "아우슈비츠",
+          "confidence": "high",
+          "hit": true,
+          "answer": "아우슈비츠"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Witold_Pilecki",
+          "https://en.wikipedia.org/wiki/Arbeit_macht_frei"
+        ],
+        "facts": [
+          {
+            "claim": "1940년 필레츠키가 일부러 붙잡혀 들어감 · 지하 조직",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
+            "note": "In 1940, Pilecki let himself be captured … organized an underground Military Organization Union"
+          },
+          {
+            "claim": "1943년 4월 탈출",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
+            "note": "After escaping from Auschwitz in April 1943"
+          },
+          {
+            "claim": "얀 리바치 등 수감자가 제작 · 거꾸로 된 B",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Arbeit_macht_frei",
+            "note": "The Auschwitz I sign was made by prisoner-laborers including master blacksmith Jan Liwacz … features an upside-down 'B', which has been interpreted as an act of defiance by the prisoners who made it."
+          },
+          {
+            "claim": "1947년 공산 당국에 체포, 1948년 5월 15일 사형 선고",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
+            "note": "Arrested on 8 May 1947 by the communist authorities ... He was sentenced to death on 15 May with three of his comrades."
+          },
+          {
+            "claim": "묻힌 곳을 찾지 못함",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Witold_Pilecki",
+            "note": "Pilecki's burial place has never been found, though it is thought to be in Warsaw's Powązki Cemetery."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Auschwitz-Birkenau_State_Museum"
+        ],
+        "hintNote": "It was formally founded on July 2, 1947, by an act of the Polish parliament.",
+        "easiestCue": "필레츠키가 일부러 붙잡혀 들어가 지하 조직을 꾸림",
+        "targetWhy": "필레츠키와 정문 글씨 제작자는 제2차 세계대전사 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'정문 위 철제 글씨'로 유명한 문구를 떠올릴 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 홀로코스트(#1280)와 정답 다름",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "정문 위 철제 글씨를 수감자들이 만든 이 수용소",
+          "difWhy": "'정문 철제 글씨 수용소' — 역사 관심층",
+          "wor": 4,
+          "worWhy": "교양 — 홀로코스트 상징",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "우라늄-235를 농축한 우라늄을 쓴 이 폭탄",
-     "difWhy": "히로시마 원폭 이름 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 원폭 이름"
+    {
+      "seedId": "war-history/3#g019b-H1-34",
+      "seed": {
+        "subject": "리틀 보이",
+        "aspect": null,
+        "ref": "H1-34",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 폭탄은 포신형 설계로, 실전에 쓰이기 전에 한 번도 온전히 시험된 적이 없었습니다. 핵분열 물질 64kg을 실었지만 실제로 분열한 것은 1kg도 안 되었다는 이 폭탄의 이름은 무엇일까요?",
+        "answer": "리틀 보이",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1945년 8월 6일 B-29 폭격기 '에놀라 게이'가 이 폭탄을 히로시마에 떨어뜨렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "포신형 설계로 실전 전에 한 번도 시험되지 않은 폭탄",
+          "difWhy": "히로시마 우라늄탄 — 전쟁사 관심층",
+          "wor": 3,
+          "worWhy": "현대사 이야깃거리",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "우라늄-235를 농축한 우라늄을 쓴 이 폭탄",
+          "difWhy": "히로시마 원폭 이름 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 원폭 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "이 폭탄은 포신형 설계로, 실전에 쓰이기 전에 한 번도 시험된 적이 없었습니다. 무게가 약 4,400kg이고 우라늄-235를 농축한 우라늄을 쓴 이 폭탄의 이름은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "우라늄-235를 농축한 우라늄을 쓴 이 폭탄 · 무게 약 4,400kg",
+          "addedCue": "64kg 가운데 1kg도 안 되게 분열",
+          "why": "우라늄탄이라는 대표 단서를 빼고 비효율 세부로 바꿈"
+        },
+        "generalHint": "약 580m 상공에서 터져 폭탄 구덩이가 생기지 않았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "1945년 히로시마에 떨어진 원자 폭탄의 별명",
+        "familiarity": {
+          "judge": 2,
+          "pct": 45,
+          "why": "영화 오펜하이머·2차대전 다큐로 들어 봤을 법함",
+          "piece": "f01",
+          "genPct": 50
+        },
+        "blind": {
+          "ref": "H1-34",
+          "key": "b069",
+          "hint": "약 580m 상공에서 터져 폭탄 구덩이가 생기지 않았다.",
+          "guess": "리틀 보이(히로시마 원자 폭탄)",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "리틀 보이"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Little_Boy"
+        ],
+        "facts": [
+          {
+            "claim": "포신형 설계 · 실전 전에 시험되지 않음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Little_Boy",
+            "note": "The gun-type design was never tested prior to its use at Hiroshima."
+          },
+          {
+            "claim": "1945년 8월 6일 에놀라 게이",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Little_Boy",
+            "note": "dropped by the B-29 Enola Gay on 6 August 1945"
+          },
+          {
+            "claim": "농축 우라늄 64kg · 분열한 것은 1kg 미만",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Little_Boy",
+            "note": "The bomb contained 64 kilograms (141 lb) of enriched uranium. / Less than a kilogram of uranium underwent nuclear fission."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Little_Boy"
+        ],
+        "hintNote": "Because Little Boy was an air burst 1,900 feet (580 m) above the ground, there was no bomb crater and no local radioactive fallout.",
+        "easiestCue": "포신형 설계로, 실전에 쓰이기 전에 한 번도 온전히 시험된 적이 없었다",
+        "targetWhy": "설계 · 효율 세부 — 전쟁사 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "히로시마라는 말 없이 설계 세부로만 닿음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 맨해튼 계획(#1279)과 정답 다름",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "포신형 설계로 실전 전에 한 번도 시험되지 않은 폭탄",
+          "difWhy": "히로시마 우라늄탄 — 전쟁사 관심층",
+          "wor": 3,
+          "worWhy": "현대사 이야깃거리",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "이 폭탄은 포신형 설계로, 실전에 쓰이기 전에 한 번도 시험된 적이 없었습니다. 무게가 약 4,400kg이고 우라늄-235를 농축한 우라늄을 쓴 이 폭탄의 이름은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "우라늄-235를 농축한 우라늄을 쓴 이 폭탄 · 무게 약 4,400kg",
-     "addedCue": "64kg 가운데 1kg도 안 되게 분열",
-     "why": "우라늄탄이라는 대표 단서를 빼고 비효율 세부로 바꿈"
-    },
-    "generalHint": "약 580m 상공에서 터져 폭탄 구덩이가 생기지 않았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "1945년 히로시마에 떨어진 원자 폭탄의 별명",
-    "familiarity": {
-     "judge": 2,
-     "pct": 45,
-     "why": "영화 오펜하이머·2차대전 다큐로 들어 봤을 법함",
-     "piece": "f01",
-     "genPct": 50
-    },
-    "blind": {
-     "ref": "H1-34",
-     "key": "b069",
-     "hint": "약 580m 상공에서 터져 폭탄 구덩이가 생기지 않았다.",
-     "guess": "리틀 보이(히로시마 원자 폭탄)",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "리틀 보이"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Little_Boy"
-    ],
-    "facts": [
-     {
-      "claim": "포신형 설계 · 실전 전에 시험되지 않음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Little_Boy",
-      "note": "The gun-type design was never tested prior to its use at Hiroshima."
-     },
-     {
-      "claim": "1945년 8월 6일 에놀라 게이",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Little_Boy",
-      "note": "dropped by the B-29 Enola Gay on 6 August 1945"
-     },
-     {
-      "claim": "농축 우라늄 64kg · 분열한 것은 1kg 미만",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Little_Boy",
-      "note": "The bomb contained 64 kilograms (141 lb) of enriched uranium. / Less than a kilogram of uranium underwent nuclear fission."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Little_Boy"
-    ],
-    "hintNote": "Because Little Boy was an air burst 1,900 feet (580 m) above the ground, there was no bomb crater and no local radioactive fallout.",
-    "easiestCue": "포신형 설계로, 실전에 쓰이기 전에 한 번도 온전히 시험된 적이 없었다",
-    "targetWhy": "설계 · 효율 세부 — 전쟁사 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "히로시마라는 말 없이 설계 세부로만 닿음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 맨해튼 계획(#1279)과 정답 다름",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "war-history/3#g019b-H1-35",
-   "seed": {
-    "subject": "오스카 쉰들러",
-    "aspect": null,
-    "ref": "H1-35",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1974년 서독 힐데스하임에서 숨진 이 인물은 예루살렘 시온산에 묻혔는데, 나치당원이었던 사람으로는 아마 유일한 경우입니다. 1962년 야드 바셈에서 그를 기려 캐럽나무를 심은 이 인물은 누구일까요?",
-    "answer": "오스카 쉰들러",
-    "acceptedAnswers": [
-     "쉰들러",
-     "오스카어 신들러"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '오스카어 신들러', '오스카 쉰들러'에서 넘어옴 · 성만 부르는 일이 흔함",
-    "explanation": "체코 브륀리츠에 있던 그의 공장에서는 쓸 만한 포탄이 거의 만들어지지 않았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "나치당원으로 유일하게 시온산에 묻히고 야드 바셈에서 기린 인물",
-     "difWhy": "영화로 알려진 의인 — 방송·영화",
-     "wor": 3,
-     "worWhy": "유명 인물 이야기",
-     "acc": 3,
-     "accWhy": "전쟁·군사사 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "체코 브륀리츠의 그의 공장에서는 쓸 만한 포탄이 거의",
-     "difWhy": "쉰들러 리스트 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1974년 서독 힐데스하임에서 숨진 이 인물은 예루살렘 시온산에 묻혔는데, 나치당원이었던 사람으로는 아마 유일한 경우입니다. 체코 브륀리츠의 그의 공장에서는 쓸 만한 포탄이 거의 만들어지지 않았다는데, 이 인물은?",
-     "beforeExplanation": "1962년 야드 바셈에서는 그를 기려 캐럽나무를 심었고, 그는 1993년 '열방의 의인'으로 인정되었습니다.",
-     "removedCue": "체코 브륀리츠의 그의 공장에서는 쓸 만한 포탄이 거의",
-     "addedCue": "1962년 야드 바셈 캐럽나무",
-     "why": "영화로 알려진 공장 단서를 해설로 옮기고 기념 식수 세부로 바꿈"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "자기 공장 노동자 명단으로 유대인 1,000여 명을 구한 독일인 사업가",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "영화 '쉰들러 리스트'로 들어 봄",
-     "piece": "f08",
-     "genPct": 70
-    },
-    "blind": null,
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Oskar_Schindler"
-    ],
-    "facts": [
-     {
-      "claim": "1974년 10월 9일 힐데스하임에서 사망",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
-      "note": "Schindler died on 9 October 1974 in Hildesheim, West Germany, aged 66."
-     },
-     {
-      "claim": "시온산 매장 · 아마 유일한 나치당원",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
-      "note": "He is buried on Mount Zion in Jerusalem … possibly the only member (of the Nazi Party) to be honoured in this way"
-     },
-     {
-      "claim": "브륀리츠 공장 — 쓸 만한 포탄 거의 없음",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
-      "note": "Few if any useful artillery shells were produced at the plant."
-     },
-     {
-      "claim": "1962 캐럽나무 · 1993 열방의 의인",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
-      "note": "The 1962 date refers to a Yad Vashem ceremony where a carob tree was planted in his honour … 24 June 1993 (Righteous Among the Nations)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "예루살렘 시온산에 묻혔는데, 나치당원이었던 사람으로는 아마 유일",
-    "targetWhy": "묻힌 곳 · 기념 식수 — 현대사 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 영화로 알려진 인물, 단서는 영화 밖 사실",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (쉰들러 · 오스카 쉰들러)",
-    "warn": [
-     "단정어 유일"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "war-history/3#g019b-H1-35",
+      "seed": {
+        "subject": "오스카 쉰들러",
+        "aspect": null,
+        "ref": "H1-35",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1974년 서독 힐데스하임에서 숨진 이 인물은 예루살렘 시온산에 묻혔는데, 나치당원이었던 사람으로는 아마 유일한 경우입니다. 1962년 야드 바셈에서 그를 기려 캐럽나무를 심은 이 인물은 누구일까요?",
+        "answer": "오스카 쉰들러",
+        "acceptedAnswers": [
+          "쉰들러",
+          "오스카어 신들러"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '오스카어 신들러', '오스카 쉰들러'에서 넘어옴 · 성만 부르는 일이 흔함",
+        "explanation": "체코 브륀리츠에 있던 그의 공장에서는 쓸 만한 포탄이 거의 만들어지지 않았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "나치당원으로 유일하게 시온산에 묻히고 야드 바셈에서 기린 인물",
+          "difWhy": "영화로 알려진 의인 — 방송·영화",
+          "wor": 3,
+          "worWhy": "유명 인물 이야기",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "체코 브륀리츠의 그의 공장에서는 쓸 만한 포탄이 거의",
+          "difWhy": "쉰들러 리스트 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1974년 서독 힐데스하임에서 숨진 이 인물은 예루살렘 시온산에 묻혔는데, 나치당원이었던 사람으로는 아마 유일한 경우입니다. 체코 브륀리츠의 그의 공장에서는 쓸 만한 포탄이 거의 만들어지지 않았다는데, 이 인물은?",
+          "beforeExplanation": "1962년 야드 바셈에서는 그를 기려 캐럽나무를 심었고, 그는 1993년 '열방의 의인'으로 인정되었습니다.",
+          "removedCue": "체코 브륀리츠의 그의 공장에서는 쓸 만한 포탄이 거의",
+          "addedCue": "1962년 야드 바셈 캐럽나무",
+          "why": "영화로 알려진 공장 단서를 해설로 옮기고 기념 식수 세부로 바꿈"
+        },
+        "generalHint": "1949년 아르헨티나로 건너가 닭과 뉴트리아를 기르다 1958년 사업이 망하자 아내를 두고 독일로 돌아왔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "자기 공장 노동자 명단으로 유대인 1,000여 명을 구한 독일인 사업가",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "영화 '쉰들러 리스트'로 들어 봄",
+          "piece": "f08",
+          "genPct": 70
+        },
+        "blind": null,
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Oskar_Schindler"
+        ],
+        "facts": [
+          {
+            "claim": "1974년 10월 9일 힐데스하임에서 사망",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
+            "note": "Schindler died on 9 October 1974 in Hildesheim, West Germany, aged 66."
+          },
+          {
+            "claim": "시온산 매장 · 아마 유일한 나치당원",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
+            "note": "He is buried on Mount Zion in Jerusalem … possibly the only member (of the Nazi Party) to be honoured in this way"
+          },
+          {
+            "claim": "브륀리츠 공장 — 쓸 만한 포탄 거의 없음",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
+            "note": "Few if any useful artillery shells were produced at the plant."
+          },
+          {
+            "claim": "1962 캐럽나무 · 1993 열방의 의인",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Oskar_Schindler",
+            "note": "The 1962 date refers to a Yad Vashem ceremony where a carob tree was planted in his honour … 24 June 1993 (Righteous Among the Nations)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Oskar_Schindler"
+        ],
+        "easiestCue": "예루살렘 시온산에 묻혔는데, 나치당원이었던 사람으로는 아마 유일",
+        "targetWhy": "묻힌 곳 · 기념 식수 — 현대사 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 영화로 알려진 인물, 단서는 영화 밖 사실",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (쉰들러 · 오스카 쉰들러)",
+        "warn": [
+          "단정어 유일"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "나치당원으로 유일하게 시온산에 묻히고 야드 바셈에서 기린 인물",
+          "difWhy": "영화로 알려진 의인 — 방송·영화",
+          "wor": 3,
+          "worWhy": "유명 인물 이야기",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok  · H0 재채점 3 → 힌트 붙임",
+          "verdict": "ok",
+          "hintGen": true,
+          "hintGenNote": "G020 하위 에이전트(hint-v6 규칙 · 문서 확인)"
+        }
+      }
+    }
+  ]
 }

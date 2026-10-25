@@ -1,238 +1,265 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "pets-garden/3",
-  "midKey": "pets-garden",
-  "subName": "반려동물 관리",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "pets-garden/3#g019a-L2-22",
-   "seed": {
-    "subject": "마카다미아",
-    "aspect": null,
-    "ref": "L2-22",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 견과는 고양이에게 떨림·마비·관절 경직·고열을 일으킬 수 있지만, 무엇이 독성을 내는지는 알려져 있지 않습니다. 오스트레일리아 토박이 식물 가운데 널리 기르는 유일한 식량 작물인 이 견과는?",
-    "answer": "마카다미아",
-    "acceptedAnswers": [
-     "마카데미아",
-     "마카다미아 너트",
-     "마카데미아 너트"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '마카다미아' · WebSearch — '마카데미아(너트)' 표기도 영양 정보 사이트·상품에서 흔히 씀",
-    "explanation": "개가 먹으면 12시간 안에 뒷다리에 힘이 빠져 일어서지 못하기도 하지만, 대개 24~48시간 안에 완전히 회복됩니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "오스트레일리아 토박이 식물 가운데 널리 기르는 유일한 식량 작물인 이 견과",
-     "difWhy": "호주산 견과 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 반려동물 안전",
-     "acc": 4,
-     "accWhy": "반려동물·원예 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "개가 이 견과를 먹으면 … 뒷다리에 힘이 빠져",
-     "difWhy": "개에게 독인 견과 — 반려인 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "반려동물 생활 상식"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "개가 이 견과를 먹으면 12시간 안에 뒷다리에 힘이 빠져 일어서지 못하기도 하지만, 무엇이 독성을 내는지는 아직 밝혀지지 않았습니다. 고양이에게도 떨림과 고열을 일으킬 수 있다는 이 견과는?",
-     "beforeExplanation": "증상은 먹은 양과 개의 크기에 따라 다르지만, 대개 24~48시간 안에 완전히 회복됩니다.",
-     "removedCue": "개가 이 견과를 먹으면 12시간 안에 뒷다리에 힘이 빠져(질문에서 해설로 옮김)",
-     "addedCue": "고양이 증상 · 오스트레일리아 토박이 식량 작물",
-     "why": "반려인 상식(개에게 독인 견과)을 빼고 고양이 증상과 원산지 세부로"
-    },
-    "generalHint": "1880년대 오스트레일리아 씨앗이 들어간 하와이가 100년 넘게 세계 최대 생산지였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "오스트레일리아 원산의 고소하고 둥근 견과",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "과자·견과로 흔함",
-     "piece": "f07",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "L2-22",
-     "key": "b140",
-     "hint": "1880년대 오스트레일리아 씨앗이 들어간 하와이가 100년 넘게 세계 최대 생산지였다.",
-     "guess": "마카다미아",
-     "confidence": "high",
-     "hit": true,
-     "answer": "마카다미아"
-    },
-    "hobby": "반려동물",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Macadamia"
-    ],
-    "facts": [
-     {
-      "claim": "개가 먹으면 12시간 안에 쇠약·뒷다리 마비로 서지 못함, 원인 불명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Macadamia",
-      "note": "Macadamias are toxic to dogs. Ingestion may result in macadamia toxicity marked by weakness and hind limb paralysis with the inability to stand, occurring within 12 hours of ingestion. It is not known what makes macadamia nuts toxic in dogs."
-     },
-     {
-      "claim": "고양이에게도 떨림·마비·관절 경직·고열",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Macadamia",
-      "note": "Macadamias are also toxic to cats, causing tremors, paralysis, joint stiffness, and high fever."
-     },
-     {
-      "claim": "대개 24~48시간 안에 완전 회복",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Macadamia",
-      "note": "Depending on the quantity ingested and the size of the dog ... with full recovery usually within 24 to 48 hours."
-     },
-     {
-      "claim": "오스트레일리아 토박이 식물 중 널리 기르는 유일한 식량 작물",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Macadamia",
-      "note": "The macadamia is the only widely grown food plant that is native to Australia."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Macadamia"
-    ],
-    "hintNote": "The nut was first commercially produced on a wide scale in Hawaii, where Australian seeds were introduced in the 1880s, and which for more than a century was the world's largest producer.",
-    "easiestCue": "오스트레일리아 토박이 식물 가운데 널리 기르는 유일한 식량 작물",
-    "targetWhy": "반려동물 독성 세부 + 작물 세부 — 반려·요리 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "반려견 금지 음식 목록을 본 사람은 안다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "pets-garden/3",
+    "midKey": "pets-garden",
+    "subName": "반려동물 관리",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "pets-garden/3#g019a-L2-23",
-   "seed": {
-    "subject": "아보카도",
-    "aspect": null,
-    "ref": "L2-23",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 나무의 잎과 껍질에 든 '퍼신'은 소와 염소가 먹으면 유방염을 일으켜 젖이 줄고, 토끼는 잎을 먹으면 부정맥이 올 수 있습니다. 씨에서 과육으로도 스며드는 이 독소를 품은 과일은 무엇일까요?",
-    "answer": "아보카도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "새는 특히 민감해 많이 먹으면 숨이 막혀 12~48시간 안에 죽을 수 있고, 새장에서 기르는 새가 더 위험하다고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "'퍼신' … 씨에서 과육으로도 스며드는 이 독소를 품은 과일",
-     "difWhy": "반려동물 금지 과일 — 반려인 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 생활 안전",
-     "acc": 4,
-     "accWhy": "반려동물·원예 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "pets-garden/3#g019a-L2-22",
+      "seed": {
+        "subject": "마카다미아",
+        "aspect": null,
+        "ref": "L2-22",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 견과는 고양이에게 떨림·마비·관절 경직·고열을 일으킬 수 있지만, 무엇이 독성을 내는지는 알려져 있지 않습니다. 오스트레일리아 토박이 식물 가운데 널리 기르는 유일한 식량 작물인 이 견과는?",
+        "answer": "마카다미아",
+        "acceptedAnswers": [
+          "마카데미아",
+          "마카다미아 너트",
+          "마카데미아 너트"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '마카다미아' · WebSearch — '마카데미아(너트)' 표기도 영양 정보 사이트·상품에서 흔히 씀",
+        "explanation": "개가 먹으면 12시간 안에 뒷다리에 힘이 빠져 일어서지 못하기도 하지만, 대개 24~48시간 안에 완전히 회복됩니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "오스트레일리아 토박이 식물 가운데 널리 기르는 유일한 식량 작물인 이 견과",
+          "difWhy": "호주산 견과 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 반려동물 안전",
+          "acc": 4,
+          "accWhy": "반려동물·원예 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "개가 이 견과를 먹으면 … 뒷다리에 힘이 빠져",
+          "difWhy": "개에게 독인 견과 — 반려인 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "반려동물 생활 상식"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "개가 이 견과를 먹으면 12시간 안에 뒷다리에 힘이 빠져 일어서지 못하기도 하지만, 무엇이 독성을 내는지는 아직 밝혀지지 않았습니다. 고양이에게도 떨림과 고열을 일으킬 수 있다는 이 견과는?",
+          "beforeExplanation": "증상은 먹은 양과 개의 크기에 따라 다르지만, 대개 24~48시간 안에 완전히 회복됩니다.",
+          "removedCue": "개가 이 견과를 먹으면 12시간 안에 뒷다리에 힘이 빠져(질문에서 해설로 옮김)",
+          "addedCue": "고양이 증상 · 오스트레일리아 토박이 식량 작물",
+          "why": "반려인 상식(개에게 독인 견과)을 빼고 고양이 증상과 원산지 세부로"
+        },
+        "generalHint": "껍데기가 먹는 견과 가운데 가장 깨기 어렵다고 알려져 있다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "오스트레일리아 원산의 고소하고 둥근 견과",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "과자·견과로 흔함",
+          "piece": "f07",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "L2-22",
+          "key": "b140",
+          "hint": "1880년대 오스트레일리아 씨앗이 들어간 하와이가 100년 넘게 세계 최대 생산지였다.",
+          "guess": "마카다미아",
+          "confidence": "high",
+          "hit": true,
+          "answer": "마카다미아"
+        },
+        "hobby": "반려동물",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Macadamia"
+        ],
+        "facts": [
+          {
+            "claim": "개가 먹으면 12시간 안에 쇠약·뒷다리 마비로 서지 못함, 원인 불명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Macadamia",
+            "note": "Macadamias are toxic to dogs. Ingestion may result in macadamia toxicity marked by weakness and hind limb paralysis with the inability to stand, occurring within 12 hours of ingestion. It is not known what makes macadamia nuts toxic in dogs."
+          },
+          {
+            "claim": "고양이에게도 떨림·마비·관절 경직·고열",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Macadamia",
+            "note": "Macadamias are also toxic to cats, causing tremors, paralysis, joint stiffness, and high fever."
+          },
+          {
+            "claim": "대개 24~48시간 안에 완전 회복",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Macadamia",
+            "note": "Depending on the quantity ingested and the size of the dog ... with full recovery usually within 24 to 48 hours."
+          },
+          {
+            "claim": "오스트레일리아 토박이 식물 중 널리 기르는 유일한 식량 작물",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Macadamia",
+            "note": "The macadamia is the only widely grown food plant that is native to Australia."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "오스트레일리아 토박이 식물 가운데 널리 기르는 유일한 식량 작물",
+        "targetWhy": "반려동물 독성 세부 + 작물 세부 — 반려·요리 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "반려견 금지 음식 목록을 본 사람은 안다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "오스트레일리아 토박이 식물 가운데 널리 기르는 유일한 식량 작물인 이 견과",
+          "difWhy": "호주산 견과 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 반려동물 안전",
+          "acc": 4,
+          "accWhy": "반려동물·원예 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'퍼신' … 새장에서 기르는 새에게 특히 위험",
-     "difWhy": "새에게 독인 과일 — 반려인 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "반려 생활 상식"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "이 과일의 씨에서 과육으로 스며드는 '퍼신'은 사람에게는 대개 해롭지 않지만, 새장에서 기르는 새에게 특히 위험해 하루이틀 만에 숨이 막혀 죽게 할 수 있습니다. 토끼도 이 나무의 잎을 먹으면 부정맥이 올 수 있는데, 이 과일은?",
-     "beforeExplanation": "개와 고양이는 가벼운 배탈 정도로 그치는 경우가 많고, 개는 비교적 덜 민감한 편이라고 합니다.",
-     "removedCue": "새장에서 기르는 새에게 특히 위험 (반려인에게 널리 알려진 경고)",
-     "addedCue": "소·염소 유방염 · 젖 감소",
-     "why": "반려조 경고를 해설로 옮기고 가축에 대한 독성 세부로 바꿈"
-    },
-    "generalHint": "2024년 멕시코가 세계 수확량 1,120만 톤의 25%를 내 가장 많이 길렀다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "녹색 껍질에 큰 씨가 든 버터 같은 과일",
-    "familiarity": {
-     "judge": 3,
-     "pct": 98,
-     "why": "흔한 과일",
-     "piece": "f03",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "L2-23",
-     "key": "b185",
-     "hint": "2024년 멕시코가 세계 수확량 1,120만 톤의 25%를 내 가장 많이 길렀다.",
-     "guess": "아보카도",
-     "confidence": "high",
-     "hit": true,
-     "answer": "아보카도"
-    },
-    "hobby": "반려동물",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Persin"
-    ],
-    "facts": [
-     {
-      "claim": "퍼신은 씨에서 과육으로 스며들며 익은 과육의 낮은 농도는 사람에게 대개 무해",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Persin",
-      "note": "Persin is a fungicidal toxin present in the avocado ... it leaches into the body of the fruit from the seeds. The relatively low concentrations of persin in the ripe pulp of the avocado fruit is generally considered harmless to humans."
-     },
-     {
-      "claim": "토끼는 잎을 먹으면 부정맥",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Persin",
-      "note": "Rabbits: cardiac arrhythmia, submandibular edema and death after consumption of leaves."
-     },
-     {
-      "claim": "새가 특히 민감, 고용량은 질식, 12~48시간 안에 죽음, 새장 새가 더 민감",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Persin",
-      "note": "In birds, which are particularly sensitive to the avocado toxin ... High doses cause acute respiratory syndrome (asphyxia), with death approximately 12 to 48 hours after consumption. Caged birds seem to be more sensitive to the effects of persin"
-     },
-     {
-      "claim": "소·염소 — 잎이나 껍질을 먹으면 유방염·젖 감소",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Persin",
-      "note": "Cows and goats: mastitis, decreased milk production after consumption of leaves or bark."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Avocado"
-    ],
-    "hintNote": "In 2024, Mexico was the world's leading producer of avocados, supplying 25% of the global harvest of 11.2 million tonnes.",
-    "easiestCue": "독소 '퍼신'을 품은 과일",
-    "targetWhy": "퍼신이라는 이름과 가축 독성은 반려·사육 애호가 세부 — 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "흔한 과일이 반려 새에게 위험하다는 뜻밖 사실",
-    "pairCheck": null,
-    "dbCheck": "answercheck pair-or-different — 5567(작물·과일, 하스 품종의 기원)과 답은 같지만 지식이 다름(반려동물 독성)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "pets-garden/3#g019a-L2-23",
+      "seed": {
+        "subject": "아보카도",
+        "aspect": null,
+        "ref": "L2-23",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 나무의 잎과 껍질에 든 '퍼신'은 소와 염소가 먹으면 유방염을 일으켜 젖이 줄고, 토끼는 잎을 먹으면 부정맥이 올 수 있습니다. 씨에서 과육으로도 스며드는 이 독소를 품은 과일은 무엇일까요?",
+        "answer": "아보카도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "새는 특히 민감해 많이 먹으면 숨이 막혀 12~48시간 안에 죽을 수 있고, 새장에서 기르는 새가 더 위험하다고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'퍼신' … 씨에서 과육으로도 스며드는 이 독소를 품은 과일",
+          "difWhy": "반려동물 금지 과일 — 반려인 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 생활 안전",
+          "acc": 4,
+          "accWhy": "반려동물·원예 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'퍼신' … 새장에서 기르는 새에게 특히 위험",
+          "difWhy": "새에게 독인 과일 — 반려인 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "반려 생활 상식"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "이 과일의 씨에서 과육으로 스며드는 '퍼신'은 사람에게는 대개 해롭지 않지만, 새장에서 기르는 새에게 특히 위험해 하루이틀 만에 숨이 막혀 죽게 할 수 있습니다. 토끼도 이 나무의 잎을 먹으면 부정맥이 올 수 있는데, 이 과일은?",
+          "beforeExplanation": "개와 고양이는 가벼운 배탈 정도로 그치는 경우가 많고, 개는 비교적 덜 민감한 편이라고 합니다.",
+          "removedCue": "새장에서 기르는 새에게 특히 위험 (반려인에게 널리 알려진 경고)",
+          "addedCue": "소·염소 유방염 · 젖 감소",
+          "why": "반려조 경고를 해설로 옮기고 가축에 대한 독성 세부로 바꿈"
+        },
+        "generalHint": "2024년 멕시코가 세계 수확량 1,120만 톤의 25%를 내 가장 많이 길렀다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "녹색 껍질에 큰 씨가 든 버터 같은 과일",
+        "familiarity": {
+          "judge": 3,
+          "pct": 98,
+          "why": "흔한 과일",
+          "piece": "f03",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "L2-23",
+          "key": "b185",
+          "hint": "2024년 멕시코가 세계 수확량 1,120만 톤의 25%를 내 가장 많이 길렀다.",
+          "guess": "아보카도",
+          "confidence": "high",
+          "hit": true,
+          "answer": "아보카도"
+        },
+        "hobby": "반려동물",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Persin"
+        ],
+        "facts": [
+          {
+            "claim": "퍼신은 씨에서 과육으로 스며들며 익은 과육의 낮은 농도는 사람에게 대개 무해",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Persin",
+            "note": "Persin is a fungicidal toxin present in the avocado ... it leaches into the body of the fruit from the seeds. The relatively low concentrations of persin in the ripe pulp of the avocado fruit is generally considered harmless to humans."
+          },
+          {
+            "claim": "토끼는 잎을 먹으면 부정맥",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Persin",
+            "note": "Rabbits: cardiac arrhythmia, submandibular edema and death after consumption of leaves."
+          },
+          {
+            "claim": "새가 특히 민감, 고용량은 질식, 12~48시간 안에 죽음, 새장 새가 더 민감",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Persin",
+            "note": "In birds, which are particularly sensitive to the avocado toxin ... High doses cause acute respiratory syndrome (asphyxia), with death approximately 12 to 48 hours after consumption. Caged birds seem to be more sensitive to the effects of persin"
+          },
+          {
+            "claim": "소·염소 — 잎이나 껍질을 먹으면 유방염·젖 감소",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Persin",
+            "note": "Cows and goats: mastitis, decreased milk production after consumption of leaves or bark."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Avocado"
+        ],
+        "hintNote": "In 2024, Mexico was the world's leading producer of avocados, supplying 25% of the global harvest of 11.2 million tonnes.",
+        "easiestCue": "독소 '퍼신'을 품은 과일",
+        "targetWhy": "퍼신이라는 이름과 가축 독성은 반려·사육 애호가 세부 — 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "흔한 과일이 반려 새에게 위험하다는 뜻밖 사실",
+        "pairCheck": null,
+        "dbCheck": "answercheck pair-or-different — 5567(작물·과일, 하스 품종의 기원)과 답은 같지만 지식이 다름(반려동물 독성)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'퍼신' … 씨에서 과육으로도 스며드는 이 독소를 품은 과일",
+          "difWhy": "반려동물 금지 과일 — 반려인 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 생활 안전",
+          "acc": 4,
+          "accWhy": "반려동물·원예 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

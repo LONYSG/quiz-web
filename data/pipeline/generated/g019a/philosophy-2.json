@@ -1,234 +1,264 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "philosophy/2",
-  "midKey": "philosophy",
-  "subName": "근대 철학",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "philosophy/2#g019a-H2-03",
-   "seed": {
-    "subject": "루소",
-    "aspect": null,
-    "ref": "H2-03",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1742년 이 사상가는 숫자로 음을 적는 새 악보 표기법을 들고 파리로 가 과학 아카데미에 내놓았습니다. 1752년에는 가사와 곡을 모두 직접 쓴 그의 오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연되었는데, 이 사상가는 누구일까요?",
-    "answer": "루소",
-    "acceptedAnswers": [
-     "장자크 루소"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '장자크 루소' 확인(띄어쓰기만 다른 '장 자크 루소'는 정규화로 같아짐)",
-    "explanation": "그는 『고백록』에서 아이들을 모두 고아원에 맡겼다고 털어놓았고, 볼테르와 버크 등은 이를 들어 그를 공격했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연",
-     "difWhy": "사상가의 오페라 — 대학 교양 철학·음악사",
-     "wor": 3,
-     "worWhy": "유명 인물 이야깃거리",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "이 제네바 출신 사상가",
-     "difWhy": "제네바 출신 계몽 사상가 — 고교 윤리",
-     "wor": 3,
-     "worWhy": "유명 사상가 일화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1742년 이 사상가는 숫자로 음을 적는 새 악보 표기법을 들고 파리로 가 과학 아카데미에 내놓았습니다. 1752년에는 가사와 곡을 모두 직접 쓴 그의 오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연되었습니다. 이 제네바 출신 사상가는 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "제네바 출신 사상가(고교 윤리)",
-     "addedCue": "없음 — 음악가로서의 두 세부만 남김",
-     "why": "교과서의 출신 단서를 빼 음악 활동 세부만으로 풀게 함"
-    },
-    "generalHint": "1778년 에름농빌 호수의 작은 섬에 묻혔다가, 1794년 팡테옹으로 옮겨져 볼테르 가까이에 놓였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "『사회계약론』과 『에밀』을 쓴 18세기 사상가",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "윤리·사회 교과서 필수 사상가",
-     "piece": "f07",
-     "genPct": 92
-    },
-    "blind": {
-     "ref": "H2-03",
-     "key": "b133",
-     "hint": "1778년 에름농빌 호수의 작은 섬에 묻혔다가, 1794년 팡테옹으로 옮겨져 볼테르 가까이에 놓였다.",
-     "guess": "장자크 루소",
-     "confidence": "high",
-     "hit": true,
-     "answer": "루소"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau"
-    ],
-    "facts": [
-     {
-      "claim": "1742년 숫자 악보 표기법을 과학 아카데미에 내려고 파리로 감",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
-      "note": "In 1742, Rousseau moved to Paris to present the Académie des Sciences with a new system of numbered musical notation he believed would make his fortune."
-     },
-     {
-      "claim": "오페라 『마을의 점쟁이』 가사·곡 모두 직접, 1752년 루이 15세 앞 공연",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
-      "note": "He wrote both the words and music of his opera Le devin du village (The Village Soothsayer), which was performed for King Louis XV in 1752."
-     },
-     {
-      "claim": "아이들을 고아원에 맡김(고백록) — 볼테르·버크가 공격에 씀",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
-      "note": "Rousseau wrote that he persuaded Thérèse to give each of the newborns up to a foundling hospital ... his abandonment of his children was used by his critics, including Voltaire and Edmund Burke, as the basis for arguments ad hominem."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau"
-    ],
-    "hintNote": "On 4 July 1778, Rousseau was buried on the Île des Peupliers, a tiny, wooded island in a lake at Ermenonville ... On 11 October 1794, his remains were moved to the Panthéon, where they were placed near those of Voltaire.",
-    "easiestCue": "오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연",
-    "targetWhy": "사상가의 교과서 밖 음악 이력 — 대학 교양(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "교과서 사상가의 음악가 얼굴 — 들으면 아 그거",
-    "pairCheck": null,
-    "dbCheck": "answercheck new(루소 · 장 자크 루소)",
-    "warn": [
-     "단정어 모두",
-     "단정어 모두"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "philosophy/2",
+    "midKey": "philosophy",
+    "subName": "근대 철학",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "philosophy/2#g019a-H2-04",
-   "seed": {
-    "subject": "로크",
-    "aspect": null,
-    "ref": "H2-04",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1666년 옥스퍼드에서 우연히 섀프츠베리 경을 만나 그의 주치의가 된 이 철학자는, 목숨이 위태롭던 그의 간 감염에 여러 의사의 조언을 모으고 낭종 수술을 받도록 설득했다고 전합니다. 섀프츠베리는 그가 목숨을 구했다고 여겼는데, 이 영국 철학자는?",
-    "answer": "로크",
-    "acceptedAnswers": [
-     "존 로크"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '존 로크' 확인 — 성만 치는 사람과 풀네임 치는 사람 둘 다 흔함",
-    "explanation": "섀프츠베리가 실각한 뒤 그는 1683~85년 네덜란드에서 망명 생활을 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "섀프츠베리 경을 만나 그의 주치의가 된 이 철학자",
-     "difWhy": "섀프츠베리 주치의 — 철학 애호가",
-     "wor": 3,
-     "worWhy": "유명 철학자 일화",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
+  "items": [
+    {
+      "seedId": "philosophy/2#g019a-H2-03",
+      "seed": {
+        "subject": "루소",
+        "aspect": null,
+        "ref": "H2-03",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1742년 이 사상가는 숫자로 음을 적는 새 악보 표기법을 들고 파리로 가 과학 아카데미에 내놓았습니다. 1752년에는 가사와 곡을 모두 직접 쓴 그의 오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연되었는데, 이 사상가는 누구일까요?",
+        "answer": "루소",
+        "acceptedAnswers": [
+          "장자크 루소"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '장자크 루소' 확인(띄어쓰기만 다른 '장 자크 루소'는 정규화로 같아짐)",
+        "explanation": "그는 『고백록』에서 아이들을 모두 고아원에 맡겼다고 털어놓았고, 볼테르와 버크 등은 이를 들어 그를 공격했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연",
+          "difWhy": "사상가의 오페라 — 대학 교양 철학·음악사",
+          "wor": 3,
+          "worWhy": "유명 인물 이야깃거리",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "이 제네바 출신 사상가",
+          "difWhy": "제네바 출신 계몽 사상가 — 고교 윤리",
+          "wor": 3,
+          "worWhy": "유명 사상가 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1742년 이 사상가는 숫자로 음을 적는 새 악보 표기법을 들고 파리로 가 과학 아카데미에 내놓았습니다. 1752년에는 가사와 곡을 모두 직접 쓴 그의 오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연되었습니다. 이 제네바 출신 사상가는 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "제네바 출신 사상가(고교 윤리)",
+          "addedCue": "없음 — 음악가로서의 두 세부만 남김",
+          "why": "교과서의 출신 단서를 빼 음악 활동 세부만으로 풀게 함"
+        },
+        "generalHint": "1778년 에름농빌 호수의 작은 섬에 묻혔다가, 1794년 팡테옹으로 옮겨져 볼테르 가까이에 놓였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "『사회계약론』과 『에밀』을 쓴 18세기 사상가",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "윤리·사회 교과서 필수 사상가",
+          "piece": "f07",
+          "genPct": 92
+        },
+        "blind": {
+          "ref": "H2-03",
+          "key": "b133",
+          "hint": "1778년 에름농빌 호수의 작은 섬에 묻혔다가, 1794년 팡테옹으로 옮겨져 볼테르 가까이에 놓였다.",
+          "guess": "장자크 루소",
+          "confidence": "high",
+          "hit": true,
+          "answer": "루소"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau"
+        ],
+        "facts": [
+          {
+            "claim": "1742년 숫자 악보 표기법을 과학 아카데미에 내려고 파리로 감",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
+            "note": "In 1742, Rousseau moved to Paris to present the Académie des Sciences with a new system of numbered musical notation he believed would make his fortune."
+          },
+          {
+            "claim": "오페라 『마을의 점쟁이』 가사·곡 모두 직접, 1752년 루이 15세 앞 공연",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
+            "note": "He wrote both the words and music of his opera Le devin du village (The Village Soothsayer), which was performed for King Louis XV in 1752."
+          },
+          {
+            "claim": "아이들을 고아원에 맡김(고백록) — 볼테르·버크가 공격에 씀",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
+            "note": "Rousseau wrote that he persuaded Thérèse to give each of the newborns up to a foundling hospital ... his abandonment of his children was used by his critics, including Voltaire and Edmund Burke, as the basis for arguments ad hominem."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau"
+        ],
+        "hintNote": "On 4 July 1778, Rousseau was buried on the Île des Peupliers, a tiny, wooded island in a lake at Ermenonville ... On 11 October 1794, his remains were moved to the Panthéon, where they were placed near those of Voltaire.",
+        "easiestCue": "오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연",
+        "targetWhy": "사상가의 교과서 밖 음악 이력 — 대학 교양(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "교과서 사상가의 음악가 얼굴 — 들으면 아 그거",
+        "pairCheck": null,
+        "dbCheck": "answercheck new(루소 · 장 자크 루소)",
+        "warn": [
+          "단정어 모두",
+          "단정어 모두"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "오페라 『마을의 점쟁이』가 루이 15세 앞에서 공연",
+          "difWhy": "사상가의 오페라 — 대학 교양 철학·음악사",
+          "wor": 3,
+          "worWhy": "유명 인물 이야깃거리",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "섀프츠베리 경을 만나 그의 주치의가 된 이 철학자",
-     "difWhy": "섀프츠베리 주치의 — 철학 애호가",
-     "wor": 3,
-     "worWhy": "유명 철학자 일화"
-    },
-    "rewrite": null,
-    "generalHint": "말년 14년을 에식스의 오츠에서 마셤 부부의 집에 살다가 1704년 그곳에서 숨졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "『통치론』을 쓴 영국 경험론 철학자",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "윤리·사회 교과서에 나오나 이름만 기억",
-     "piece": "f04",
-     "genPct": 88
-    },
-    "blind": {
-     "ref": "H2-04",
-     "key": "b006",
-     "hint": "말년 14년을 에식스의 오츠에서 마셤 부부의 집에 살다가 1704년 그곳에서 숨졌다.",
-     "guess": "존 로크",
-     "confidence": "high",
-     "hit": true,
-     "answer": "로크"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/John_Locke"
-    ],
-    "facts": [
-     {
-      "claim": "1666년 옥스퍼드에서 섀프츠베리를 우연히 만남",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/John_Locke",
-      "note": "In 1666, when Locke was 34, he met Anthony Ashley Cooper, later Lord Shaftesbury ... The meeting with Shaftesbury was by chance; he was in Oxford, visiting his son."
-     },
-     {
-      "claim": "주치의가 됨",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/John_Locke",
-      "note": "In 1667 Locke moved into Shaftesbury's London home at Exeter House on the Strand, to be his personal physician."
-     },
-     {
-      "claim": "간 감염 — 여러 의사 조언 조율, 낭종 제거 수술 설득(probably)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/John_Locke",
-      "note": "Locke coordinated the advice of several physicians and was probably instrumental in persuading Ashley to undergo surgery (then life-threatening in itself) to remove the cyst."
-     },
-     {
-      "claim": "섀프츠베리는 로크가 목숨을 구했다고 여김",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/John_Locke",
-      "note": "Shaftesbury survived and prospered, crediting Locke with saving his life."
-     },
-     {
-      "claim": "1683~85 네덜란드 망명",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/John_Locke",
-      "note": "When Shaftesbury fell from royal favour and died shortly thereafter, Locke went into political exile for five years in the Netherlands (1683–85)."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/John_Locke"
-    ],
-    "hintNote": "For the last fourteen years of his life, he lived in the household of Sir Francis Masham and his wife ... he died in his rooms at Oates Manor on 28 October 1704.",
-    "easiestCue": "섀프츠베리 경을 만나 그의 주치의가 된 이 철학자",
-    "targetWhy": "의사 로크와 섀프츠베리의 관계는 정치사상사 교양 — 대학 교양(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "교과서 사상가의 의사 경력이라는 뜻밖 세부",
-    "pairCheck": null,
-    "dbCheck": "answercheck new(로크 · 존 로크)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "philosophy/2#g019a-H2-04",
+      "seed": {
+        "subject": "로크",
+        "aspect": null,
+        "ref": "H2-04",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1666년 옥스퍼드에서 우연히 섀프츠베리 경을 만나 그의 주치의가 된 이 철학자는, 목숨이 위태롭던 그의 간 감염에 여러 의사의 조언을 모으고 낭종 수술을 받도록 설득했다고 전합니다. 섀프츠베리는 그가 목숨을 구했다고 여겼는데, 이 영국 철학자는?",
+        "answer": "로크",
+        "acceptedAnswers": [
+          "존 로크"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '존 로크' 확인 — 성만 치는 사람과 풀네임 치는 사람 둘 다 흔함",
+        "explanation": "섀프츠베리가 실각한 뒤 그는 1683년 네덜란드로 망명했다가 1689년 명예혁명 뒤에야 돌아왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "섀프츠베리 경을 만나 그의 주치의가 된 이 철학자",
+          "difWhy": "섀프츠베리 주치의 — 철학 애호가",
+          "wor": 3,
+          "worWhy": "유명 철학자 일화",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "섀프츠베리 경을 만나 그의 주치의가 된 이 철학자",
+          "difWhy": "섀프츠베리 주치의 — 철학 애호가",
+          "wor": 3,
+          "worWhy": "유명 철학자 일화"
+        },
+        "rewrite": null,
+        "generalHint": "말년 14년을 에식스의 오츠에서 마셤 부부의 집에 살다가 1704년 그곳에서 숨졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "『통치론』을 쓴 영국 경험론 철학자",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "윤리·사회 교과서에 나오나 이름만 기억",
+          "piece": "f04",
+          "genPct": 88
+        },
+        "blind": {
+          "ref": "H2-04",
+          "key": "b006",
+          "hint": "말년 14년을 에식스의 오츠에서 마셤 부부의 집에 살다가 1704년 그곳에서 숨졌다.",
+          "guess": "존 로크",
+          "confidence": "high",
+          "hit": true,
+          "answer": "로크"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/John_Locke"
+        ],
+        "facts": [
+          {
+            "claim": "1666년 옥스퍼드에서 섀프츠베리를 우연히 만남",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/John_Locke",
+            "note": "In 1666, when Locke was 34, he met Anthony Ashley Cooper, later Lord Shaftesbury ... The meeting with Shaftesbury was by chance; he was in Oxford, visiting his son."
+          },
+          {
+            "claim": "주치의가 됨",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/John_Locke",
+            "note": "In 1667 Locke moved into Shaftesbury's London home at Exeter House on the Strand, to be his personal physician."
+          },
+          {
+            "claim": "간 감염 — 여러 의사 조언 조율, 낭종 제거 수술 설득(probably)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/John_Locke",
+            "note": "Locke coordinated the advice of several physicians and was probably instrumental in persuading Ashley to undergo surgery (then life-threatening in itself) to remove the cyst."
+          },
+          {
+            "claim": "섀프츠베리는 로크가 목숨을 구했다고 여김",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/John_Locke",
+            "note": "Shaftesbury survived and prospered, crediting Locke with saving his life."
+          },
+          {
+            "claim": "1683~85 네덜란드 망명",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/John_Locke",
+            "note": "When Shaftesbury fell from royal favour and died shortly thereafter, Locke went into political exile for five years in the Netherlands (1683–85)."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/John_Locke"
+        ],
+        "hintNote": "For the last fourteen years of his life, he lived in the household of Sir Francis Masham and his wife ... he died in his rooms at Oates Manor on 28 October 1704.",
+        "easiestCue": "섀프츠베리 경을 만나 그의 주치의가 된 이 철학자",
+        "targetWhy": "의사 로크와 섀프츠베리의 관계는 정치사상사 교양 — 대학 교양(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "교과서 사상가의 의사 경력이라는 뜻밖 세부",
+        "pairCheck": null,
+        "dbCheck": "answercheck new(로크 · 존 로크)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "섀프츠베리 경을 만나 그의 주치의가 된 이 철학자",
+          "difWhy": "섀프츠베리 주치의 — 철학 애호가",
+          "wor": 3,
+          "worWhy": "유명 철학자 일화",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V025 fix explanation·fact-error",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

@@ -1,343 +1,388 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "baseball/1",
-  "midKey": "baseball",
-  "subName": "규칙",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "baseball/1#g019a-S1-11",
-   "seed": {
-    "subject": "홈 플레이트",
-    "aspect": null,
-    "ref": "S1-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "야구의 이것은 1868년 한 변 12인치의 정사각형이 되었을 때 평평한 변이 투수와 포수 쪽을 향했는데, 1871년 프로 리그 내셔널 어소시에이션이 45도 돌려 놓았습니다. 1877년 앞으로 옮겨져 지금처럼 온전히 페어 지역 안에 놓인 이것은?",
-    "answer": "홈 플레이트",
-    "acceptedAnswers": [
-     "홈베이스",
-     "본루"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 넘겨주기 \"홈베이스\" · \"본루\" · \"홈플레이트\" → 야구 필드(본루 절)",
-    "explanation": "지금의 오각형 모양과 고무 재질은 1887년 볼티모어에서 단 한 경기를 던진 로버트 키팅이 고안해 1900년 내셔널리그가 받아들였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "지금처럼 온전히 페어 지역 안에 놓인 이것",
-     "difWhy": "오각형 판 — 야구 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 규칙 변천",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "흰 칠을 한 둥근 철판 … 지금 모양과 고무 재질",
-     "difWhy": "고무판 베이스 — 야구 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "야구 용구 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "야구의 이것은 1857년부터 흰 칠을 한 둥근 철판이었다가 1868년 한 변 12인치의 정사각형이 되었습니다. 1887년 볼티모어에서 단 한 경기를 던진 로버트 키팅이 고안한 지금 모양과 고무 재질은 1900년 내셔널리그가 받아들였는데, 이것은?",
-     "beforeExplanation": "1877년에 지금 자리인 페어 지역 안으로 옮겨졌습니다.",
-     "removedCue": "1857년부터 흰 칠을 한 둥근 철판 · 지금 모양(오각형)과 고무 재질",
-     "addedCue": "1868 정사각형의 평평한 변 방향 · 1871 내셔널 어소시에이션이 45도 돌림",
-     "why": "옛 재질·고무판 이야기를 빼고 판의 방향이 바뀐 사연으로"
-    },
-    "generalHint": "한 변은 17인치이고, 그 양옆의 두 변은 8.5인치다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "야구에서 타자가 서서 치는 자리의 흰 판",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "야구 중계 용어",
-     "piece": "f04",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "S1-11",
-     "key": "b192",
-     "hint": "한 변은 17인치이고, 그 양옆의 두 변은 8.5인치다.",
-     "guess": "홈 플레이트",
-     "confidence": "high",
-     "hit": true,
-     "answer": "홈 플레이트"
-    },
-    "hobby": "장비",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Baseball_field"
-    ],
-    "facts": [
-     {
-      "claim": "오각형·고무는 1887 볼티모어에서 한 경기 던진 키팅 고안, 1900 NL 채택",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Baseball_field",
-      "note": "The pentagonal shape and the mandatory use of rubber were developed by Robert Keating, who had pitched one game for the 1887 Baltimore Orioles; the new plate was adopted by the National League in 1900."
-     },
-     {
-      "claim": "1877년 페어 지역 안으로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Baseball_field",
-      "note": "In 1877 it was moved forward to its modern location, wholly in fair territory."
-     },
-     {
-      "claim": "1868년 한 변 12인치 정사각형 · 평평한 변이 투수·포수 쪽 · 1871년 내셔널 어소시에이션이 45도 돌림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Baseball_field",
-      "note": "In 1868 the plate was changed to a square, 12\" on a side, originally set with the flat sides toward the pitcher and catcher; the new professional National Association rotated it 45 degrees in 1871."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Baseball_field"
-    ],
-    "hintNote": "One side is 17 inches (43 cm) long, the two adjacent sides are 8.5 inches (22 cm).",
-    "easiestCue": "1871년 프로 리그 내셔널 어소시에이션이 45도 돌려 놓았습니다",
-    "targetWhy": "규칙 변천의 뒷이야기 — 야구 애호가가 아는 세부(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "대상은 누구나 알고, 옛 모양은 애호가만 안다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 홈 플레이트 · 홈베이스 · 본루 new (투수판 #5243 과 다른 장비·다른 사실)",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "baseball/1",
+    "midKey": "baseball",
+    "subName": "규칙",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "baseball/1#g019a-S1-12",
-   "seed": {
-    "subject": "스트라이크 존",
-    "aspect": null,
-    "ref": "S1-12",
-    "pairedWith": 787
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 787,
-    "question": "1968년 메이저리그에서는 밥 깁슨 같은 투수들이 타자를 압도해 완봉이 339번이나 나왔습니다. 이듬해 리그는 투수 우위를 줄이려고 마운드를 15인치에서 10인치로 낮추고 이것도 좁혔는데, 이것은 무엇일까요?",
-    "answer": "스트라이크 존",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1887년까지는 타자가 투수에게 '높은 공'이나 '낮은 공'을 골라 요구할 수 있었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "투수 우위를 줄이려고 마운드를 … 낮추고 이것도 좁혔는데",
-     "difWhy": "투수 유리한 판정 구역 — 야구 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 규칙 변천",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
+  "items": [
+    {
+      "seedId": "baseball/1#g019a-S1-11",
+      "seed": {
+        "subject": "홈 플레이트",
+        "aspect": null,
+        "ref": "S1-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "야구의 이것은 1868년 한 변 12인치의 정사각형이 되었을 때 평평한 변이 투수와 포수 쪽을 향했는데, 1871년 프로 리그 내셔널 어소시에이션이 45도 돌려 놓았습니다. 1877년 앞으로 옮겨져 지금처럼 온전히 페어 지역 안에 놓인 이것은?",
+        "answer": "홈 플레이트",
+        "acceptedAnswers": [
+          "홈베이스",
+          "본루"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 넘겨주기 \"홈베이스\" · \"본루\" · \"홈플레이트\" → 야구 필드(본루 절)",
+        "explanation": "지금의 오각형 모양과 고무 재질은 1887년 볼티모어에서 단 한 경기를 던진 로버트 키팅이 고안해 1900년 내셔널리그가 받아들였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "지금처럼 온전히 페어 지역 안에 놓인 이것",
+          "difWhy": "오각형 판 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 규칙 변천",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "흰 칠을 한 둥근 철판 … 지금 모양과 고무 재질",
+          "difWhy": "고무판 베이스 — 야구 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "야구 용구 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "야구의 이것은 1857년부터 흰 칠을 한 둥근 철판이었다가 1868년 한 변 12인치의 정사각형이 되었습니다. 1887년 볼티모어에서 단 한 경기를 던진 로버트 키팅이 고안한 지금 모양과 고무 재질은 1900년 내셔널리그가 받아들였는데, 이것은?",
+          "beforeExplanation": "1877년에 지금 자리인 페어 지역 안으로 옮겨졌습니다.",
+          "removedCue": "1857년부터 흰 칠을 한 둥근 철판 · 지금 모양(오각형)과 고무 재질",
+          "addedCue": "1868 정사각형의 평평한 변 방향 · 1871 내셔널 어소시에이션이 45도 돌림",
+          "why": "옛 재질·고무판 이야기를 빼고 판의 방향이 바뀐 사연으로"
+        },
+        "generalHint": "한 변은 17인치이고, 그 양옆의 두 변은 8.5인치다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "야구에서 타자가 서서 치는 자리의 흰 판",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "야구 중계 용어",
+          "piece": "f04",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S1-11",
+          "key": "b192",
+          "hint": "한 변은 17인치이고, 그 양옆의 두 변은 8.5인치다.",
+          "guess": "홈 플레이트",
+          "confidence": "high",
+          "hit": true,
+          "answer": "홈 플레이트"
+        },
+        "hobby": "장비",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Baseball_field"
+        ],
+        "facts": [
+          {
+            "claim": "오각형·고무는 1887 볼티모어에서 한 경기 던진 키팅 고안, 1900 NL 채택",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Baseball_field",
+            "note": "The pentagonal shape and the mandatory use of rubber were developed by Robert Keating, who had pitched one game for the 1887 Baltimore Orioles; the new plate was adopted by the National League in 1900."
+          },
+          {
+            "claim": "1877년 페어 지역 안으로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Baseball_field",
+            "note": "In 1877 it was moved forward to its modern location, wholly in fair territory."
+          },
+          {
+            "claim": "1868년 한 변 12인치 정사각형 · 평평한 변이 투수·포수 쪽 · 1871년 내셔널 어소시에이션이 45도 돌림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Baseball_field",
+            "note": "In 1868 the plate was changed to a square, 12\" on a side, originally set with the flat sides toward the pitcher and catcher; the new professional National Association rotated it 45 degrees in 1871."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Baseball_field"
+        ],
+        "hintNote": "One side is 17 inches (43 cm) long, the two adjacent sides are 8.5 inches (22 cm).",
+        "easiestCue": "1871년 프로 리그 내셔널 어소시에이션이 45도 돌려 놓았습니다",
+        "targetWhy": "규칙 변천의 뒷이야기 — 야구 애호가가 아는 세부(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "대상은 누구나 알고, 옛 모양은 애호가만 안다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 홈 플레이트 · 홈베이스 · 본루 new (투수판 #5243 과 다른 장비·다른 사실)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "지금처럼 온전히 페어 지역 안에 놓인 이것",
+          "difWhy": "오각형 판 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 규칙 변천",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "'높은 공'이나 '낮은 공'을 … 요구권이 없어지면서 범위가 새로 정해진",
-     "difWhy": "투구 판정 범위 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "규칙 기원 이야깃거리"
+    {
+      "seedId": "baseball/1#g019a-S1-12",
+      "seed": {
+        "subject": "스트라이크 존",
+        "aspect": null,
+        "ref": "S1-12",
+        "pairedWith": 787
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 787,
+        "question": "1968년 메이저리그에서는 밥 깁슨 같은 투수들이 타자를 압도해 완봉이 339번이나 나왔습니다. 이듬해 리그는 투수 우위를 줄이려고 마운드를 15인치에서 10인치로 낮추고 이것도 좁혔는데, 이것은 무엇일까요?",
+        "answer": "스트라이크 존",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1887년까지는 타자가 투수에게 '높은 공'이나 '낮은 공'을 골라 요구할 수 있었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "투수 우위를 줄이려고 마운드를 … 낮추고 이것도 좁혔는데",
+          "difWhy": "투수 유리한 판정 구역 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 규칙 변천",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "'높은 공'이나 '낮은 공'을 … 요구권이 없어지면서 범위가 새로 정해진",
+          "difWhy": "투구 판정 범위 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "규칙 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1887년까지 야구 타자는 투수에게 '높은 공'이나 '낮은 공'을 골라 요구할 수 있었습니다. 그해 규칙이 바뀌어 이 요구권이 없어지면서 범위가 새로 정해진 이것은 무엇일까요?",
+          "beforeExplanation": "1969년에는 투수 우위를 줄이려고 이것을 겨드랑이부터 무릎 위까지로 좁혔습니다.",
+          "removedCue": "'높은 공'·'낮은 공' 요구권이 없어지면서 범위가 새로 정해진",
+          "addedCue": "1968년 투수의 해 · 1969년 마운드 15→10인치와 함께 좁힘",
+          "why": "정의에 가까운 규칙 설명을 빼고 1969년 규칙 개정의 배경으로"
+        },
+        "generalHint": "그보다 몇 해 앞서 메이저리그는 오히려 이것의 위쪽 끝을 높여 넓혔었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "야구에서 공이 지나가면 스트라이크가 되는 구역",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "야구 중계의 기본 용어",
+          "piece": "f01",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "S1-12",
+          "key": "b136",
+          "hint": "2002~2006년에는 투구 추적 장치 퀘스텍 탓에 실제로 판정되는 이것이 규칙에 더 가깝게 넓어졌다는 분석이 나왔다.",
+          "guess": "스트라이크 존",
+          "confidence": "high",
+          "hit": true,
+          "answer": "스트라이크 존"
+        },
+        "hobby": "규칙",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Rules_of_baseball",
+          "https://en.wikipedia.org/wiki/Strike_zone"
+        ],
+        "facts": [
+          {
+            "claim": "1887년까지 타자가 높은 공·낮은 공을 요구",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Rules_of_baseball",
+            "note": "Until 1887, batters could call for either a high or low pitch, and the strike zone was either above or below the waist."
+          },
+          {
+            "claim": "1969년 겨드랑이~무릎 위로 좁힘",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Strike_zone",
+            "note": "Major League Baseball reduced pitchers' advantage by lowering the height of the mound from 15 inches (380 mm) to 10 inches (250 mm), and by reducing the size of the strike zone for the 1969 season to extend only from the batter's armpits to the top of the knees."
+          },
+          {
+            "claim": "1968년 맥레인·깁슨 등 투수 압도 · 완봉 339",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Strike_zone",
+            "note": "In 1968, pitchers such as Denny McLain and Bob Gibson dominated hitters, producing 339 shutouts."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Strike_zone"
+        ],
+        "easiestCue": "1969년 마운드를 15인치에서 10인치로 낮추며 함께 좁힌 것",
+        "targetWhy": "1968 투수의 해 뒤 개정은 야구 애호가 세부 — 4(경계)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "높은 공·낮은 공 요구에서 판정 구역을 짐작할 수 있다",
+        "pairCheck": "1회차 q(무릎과 가슴 사이 — 정의) · e(키 작은 타자) · h(없음)와 겹치지 않음 — 1887 요구권 폐지는 새 사실, 몸 부위 정의는 쓰지 않음",
+        "dbCheck": "answercheck 스트라이크 존 pair-or-different #787(1회차) — (가)",
+        "warn": [],
+        "first": {
+          "id": 787,
+          "question": "야구에서 투구를 판정하는 구역을 무엇이라 합니까? 그 범위는 타자의 무릎과 가슴 사이로 정해져 타자마다 높이가 달라집니다.",
+          "explanation": "타자의 몸을 기준으로 삼기 때문에 키가 작은 타자는 그 구역도 좁아집니다.",
+          "hint": null,
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "투수 우위를 줄이려고 마운드를 … 낮추고 이것도 좁혔는데",
+          "difWhy": "투수 유리한 판정 구역 — 야구 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 규칙 변천",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix",
+          "hintGen": true
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1887년까지 야구 타자는 투수에게 '높은 공'이나 '낮은 공'을 골라 요구할 수 있었습니다. 그해 규칙이 바뀌어 이 요구권이 없어지면서 범위가 새로 정해진 이것은 무엇일까요?",
-     "beforeExplanation": "1969년에는 투수 우위를 줄이려고 이것을 겨드랑이부터 무릎 위까지로 좁혔습니다.",
-     "removedCue": "'높은 공'·'낮은 공' 요구권이 없어지면서 범위가 새로 정해진",
-     "addedCue": "1968년 투수의 해 · 1969년 마운드 15→10인치와 함께 좁힘",
-     "why": "정의에 가까운 규칙 설명을 빼고 1969년 규칙 개정의 배경으로"
-    },
-    "generalHint": "2002~2006년에는 투구 추적 장치 퀘스텍 탓에 실제로 판정되는 이것이 규칙에 더 가깝게 넓어졌다는 분석이 나왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "야구에서 공이 지나가면 스트라이크가 되는 구역",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "야구 중계의 기본 용어",
-     "piece": "f01",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "S1-12",
-     "key": "b136",
-     "hint": "2002~2006년에는 투구 추적 장치 퀘스텍 탓에 실제로 판정되는 이것이 규칙에 더 가깝게 넓어졌다는 분석이 나왔다.",
-     "guess": "스트라이크 존",
-     "confidence": "high",
-     "hit": true,
-     "answer": "스트라이크 존"
-    },
-    "hobby": "규칙",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Rules_of_baseball",
-     "https://en.wikipedia.org/wiki/Strike_zone"
-    ],
-    "facts": [
-     {
-      "claim": "1887년까지 타자가 높은 공·낮은 공을 요구",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Rules_of_baseball",
-      "note": "Until 1887, batters could call for either a high or low pitch, and the strike zone was either above or below the waist."
-     },
-     {
-      "claim": "1969년 겨드랑이~무릎 위로 좁힘",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Strike_zone",
-      "note": "Major League Baseball reduced pitchers' advantage by lowering the height of the mound from 15 inches (380 mm) to 10 inches (250 mm), and by reducing the size of the strike zone for the 1969 season to extend only from the batter's armpits to the top of the knees."
-     },
-     {
-      "claim": "1968년 맥레인·깁슨 등 투수 압도 · 완봉 339",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Strike_zone",
-      "note": "In 1968, pitchers such as Denny McLain and Bob Gibson dominated hitters, producing 339 shutouts."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Strike_zone"
-    ],
-    "hintNote": "due to the QuesTec pitch-tracking system, the enforced strike zone in 2002–2006 was larger compared to the zone in 1996–2000 and thus closer to the rulebook definition.",
-    "easiestCue": "1969년 마운드를 15인치에서 10인치로 낮추며 함께 좁힌 것",
-    "targetWhy": "1968 투수의 해 뒤 개정은 야구 애호가 세부 — 4(경계)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "높은 공·낮은 공 요구에서 판정 구역을 짐작할 수 있다",
-    "pairCheck": "1회차 q(무릎과 가슴 사이 — 정의) · e(키 작은 타자) · h(없음)와 겹치지 않음 — 1887 요구권 폐지는 새 사실, 몸 부위 정의는 쓰지 않음",
-    "dbCheck": "answercheck 스트라이크 존 pair-or-different #787(1회차) — (가)",
-    "warn": [],
-    "first": {
-     "id": 787,
-     "question": "야구에서 투구를 판정하는 구역을 무엇이라 합니까? 그 범위는 타자의 무릎과 가슴 사이로 정해져 타자마다 높이가 달라집니다.",
-     "explanation": "타자의 몸을 기준으로 삼기 때문에 키가 작은 타자는 그 구역도 좁아집니다.",
-     "hint": null,
-     "difficulty": 2
+    {
+      "seedId": "baseball/1#g019a-S1-13",
+      "seed": {
+        "subject": "번트",
+        "aspect": null,
+        "ref": "S1-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이것과 비슷한 타격이 기록에 처음 나오는 것은 1864년 브루클린 두 클럽의 2군 경기이고, 초창기 스타 디키 피어스가 거의 확실히 완성했다고 합니다. 1880년대까지 흔하지 않았고 20세기에야 전략으로 받아들여진 이 타격은?",
+        "answer": "번트",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "피어스는 굴러서 파울 지역으로 나가도 안타로 쳐 주던 당시 규칙 덕에 이 타격을 큰 무기로 썼습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "20세기에야 전략으로 받아들여진 이 타격",
+          "difWhy": "번트 기원 — 야구 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기술 기원",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "굴러서 파울 지역으로 나가도 안타 … 20세기에야 전략으로",
+          "difWhy": "대는 타격 — 야구 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "야구 기술 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "초창기 야구 스타 디키 피어스가 거의 확실히 완성했다는 이 타격은, 굴러서 파울 지역으로 나가도 안타로 쳐 주던 당시 규칙 덕에 그의 큰 무기가 되었습니다. 1880년대까지 흔하지 않았고 20세기에야 전략으로 받아들여진 이 타격은?",
+          "beforeExplanation": "이것과 비슷한 타격이 기록에 처음 나오는 것은 1864년 브루클린의 두 클럽 2군 경기입니다.",
+          "removedCue": "굴러서 파울 지역으로 나가도 안타로 쳐 주던 규칙(질문에서 해설로 옮김)",
+          "addedCue": "1864년 브루클린 2군 경기의 첫 기록(해설에서 질문으로)",
+          "why": "타격 모양을 드러내는 '굴러서' 를 빼고 기록사 세부로"
+        },
+        "generalHint": "에디 콜린스가 이 타격으로 남긴 메이저리그 통산 기록 512개는 다른 어느 선수보다 100개 넘게 많다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "야구에서 배트를 휘두르지 않고 공을 대어 굴리는 타격",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "야구 중계 용어",
+          "piece": "f06",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S1-13",
+          "key": "b152",
+          "hint": "에디 콜린스가 이 타격으로 남긴 메이저리그 통산 기록 512개는 다른 어느 선수보다 100개 넘게 많다.",
+          "guess": "희생 번트",
+          "confidence": "high",
+          "hit": true,
+          "answer": "번트"
+        },
+        "hobby": "규칙",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Bunt_(baseball)"
+        ],
+        "facts": [
+          {
+            "claim": "디키 피어스가 거의 확실히 완성",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
+            "note": "But the batting technique now known as the bunt was almost certainly perfected by Dickey Pearce, one of baseball's early stars."
+          },
+          {
+            "claim": "파울 지역으로 굴러도 안타로 인정되던 규칙",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
+            "note": "For much of his career, Pearce used his 'tricky hit' to tremendous effect as the rules permitted it to roll foul and still be counted as a hit."
+          },
+          {
+            "claim": "1880년대까지 흔하지 않고 20세기에야 전략",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
+            "note": "The bunt was not common until the 1880s, and was not an accepted part of baseball strategy until the 20th century."
+          },
+          {
+            "claim": "1864년 브루클린 두 클럽 2군 경기 기록",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
+            "note": "the earliest known reference to a bunt-like hit appears in the account of a game played in 1864 between the junior squads (\"muffins\") of the Brooklyn Excelsior and Enterprise clubs"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Eddie_Collins"
+        ],
+        "hintNote": "He still holds the major league record of 512 career sacrifice bunts, over 100 more than any other player.",
+        "easiestCue": "20세기에야 전략으로 받아들여진 이 타격",
+        "targetWhy": "규칙·기술의 탄생 사연 — 야구 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "\"굴러서\" 에서 짐작할 수 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck 번트 new (희생번트 · 스퀴즈 번트 활성은 다른 정답·다른 지식)",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "20세기에야 전략으로 받아들여진 이 타격",
+          "difWhy": "번트 기원 — 야구 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기술 기원",
+          "acc": 4,
+          "accWhy": "야구 — 국민 인기 스포츠"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "baseball/1#g019a-S1-13",
-   "seed": {
-    "subject": "번트",
-    "aspect": null,
-    "ref": "S1-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이것과 비슷한 타격이 기록에 처음 나오는 것은 1864년 브루클린 두 클럽의 2군 경기이고, 초창기 스타 디키 피어스가 거의 확실히 완성했다고 합니다. 1880년대까지 흔하지 않았고 20세기에야 전략으로 받아들여진 이 타격은?",
-    "answer": "번트",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "피어스는 굴러서 파울 지역으로 나가도 안타로 쳐 주던 당시 규칙 덕에 이 타격을 큰 무기로 썼습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "20세기에야 전략으로 받아들여진 이 타격",
-     "difWhy": "번트 기원 — 야구 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 기술 기원",
-     "acc": 4,
-     "accWhy": "야구 — 국민 인기 스포츠"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "굴러서 파울 지역으로 나가도 안타 … 20세기에야 전략으로",
-     "difWhy": "대는 타격 — 야구 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "야구 기술 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "초창기 야구 스타 디키 피어스가 거의 확실히 완성했다는 이 타격은, 굴러서 파울 지역으로 나가도 안타로 쳐 주던 당시 규칙 덕에 그의 큰 무기가 되었습니다. 1880년대까지 흔하지 않았고 20세기에야 전략으로 받아들여진 이 타격은?",
-     "beforeExplanation": "이것과 비슷한 타격이 기록에 처음 나오는 것은 1864년 브루클린의 두 클럽 2군 경기입니다.",
-     "removedCue": "굴러서 파울 지역으로 나가도 안타로 쳐 주던 규칙(질문에서 해설로 옮김)",
-     "addedCue": "1864년 브루클린 2군 경기의 첫 기록(해설에서 질문으로)",
-     "why": "타격 모양을 드러내는 '굴러서' 를 빼고 기록사 세부로"
-    },
-    "generalHint": "에디 콜린스가 이 타격으로 남긴 메이저리그 통산 기록 512개는 다른 어느 선수보다 100개 넘게 많다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "야구에서 배트를 휘두르지 않고 공을 대어 굴리는 타격",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "야구 중계 용어",
-     "piece": "f06",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "S1-13",
-     "key": "b152",
-     "hint": "에디 콜린스가 이 타격으로 남긴 메이저리그 통산 기록 512개는 다른 어느 선수보다 100개 넘게 많다.",
-     "guess": "희생 번트",
-     "confidence": "high",
-     "hit": true,
-     "answer": "번트"
-    },
-    "hobby": "규칙",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Bunt_(baseball)"
-    ],
-    "facts": [
-     {
-      "claim": "디키 피어스가 거의 확실히 완성",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
-      "note": "But the batting technique now known as the bunt was almost certainly perfected by Dickey Pearce, one of baseball's early stars."
-     },
-     {
-      "claim": "파울 지역으로 굴러도 안타로 인정되던 규칙",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
-      "note": "For much of his career, Pearce used his 'tricky hit' to tremendous effect as the rules permitted it to roll foul and still be counted as a hit."
-     },
-     {
-      "claim": "1880년대까지 흔하지 않고 20세기에야 전략",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
-      "note": "The bunt was not common until the 1880s, and was not an accepted part of baseball strategy until the 20th century."
-     },
-     {
-      "claim": "1864년 브루클린 두 클럽 2군 경기 기록",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Bunt_(baseball)",
-      "note": "the earliest known reference to a bunt-like hit appears in the account of a game played in 1864 between the junior squads (\"muffins\") of the Brooklyn Excelsior and Enterprise clubs"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Eddie_Collins"
-    ],
-    "hintNote": "He still holds the major league record of 512 career sacrifice bunts, over 100 more than any other player.",
-    "easiestCue": "20세기에야 전략으로 받아들여진 이 타격",
-    "targetWhy": "규칙·기술의 탄생 사연 — 야구 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "\"굴러서\" 에서 짐작할 수 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck 번트 new (희생번트 · 스퀴즈 번트 활성은 다른 정답·다른 지식)",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+  ]
 }

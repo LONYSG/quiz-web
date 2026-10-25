@@ -1,145 +1,160 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "energy/4",
-  "midKey": "energy",
-  "subName": "환경 협약·오염",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "energy/4#g019a-C2-23",
-   "seed": {
-    "subject": "지구의 날",
-    "aspect": null,
-    "ref": "C2-23",
-    "pairedWith": 150
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 150,
-    "question": "게일로드 넬슨 상원의원은 이것을 처음에 전국 규모의 환경 '티치인'으로 구상했고, 이름은 광고 문안가 줄리언 쾨니그가 지었습니다. 1990년 첫 전국 조직자였던 데니스 헤이스가 141개국 행사로 넓힌 이것은 무엇일까요?",
-    "answer": "지구의 날",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "넬슨은 1969년 캘리포니아 샌타바버라 앞바다의 기름 유출을 비행기에서 내려다본 뒤 이것을 구상했다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "엮음: 게일로드 넬슨 상원의원 … 환경 '티치인' + 1990년 141개국 행사",
-     "difWhy": "1970 미국발 환경 기념일 — 대학 교양 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 환경 운동사",
-     "acc": 4,
-     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "기름 유출을 … 내려다본 뒤 이것을 구상 … 레닌이 태어난 지 100년",
-     "difWhy": "4월 22일 환경 기념일 — 관심 있는 사람",
-     "wor": 4,
-     "worWhy": "교양 — 환경 기념일"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "위스콘신주 상원의원 게일로드 넬슨은 1969년 캘리포니아 샌타바버라 앞바다의 기름 유출을 비행기에서 내려다본 뒤 이것을 구상했다고 전합니다. 대학생들의 시험과 봄방학을 피해 수요일로 날을 골랐는데, 공교롭게도 레닌이 태어난 지 100년 되는 날이었던 이것은 무엇일까요?",
-     "beforeExplanation": "이 이름은 광고인 줄리언 쾨니그가 여러 후보 가운데 가장 마음에 들어 한 것으로, 그날이 마침 그의 생일이기도 했습니다.",
-     "removedCue": "기름 유출을 내려다보고 구상(해설로 옮김) · 레닌 탄생 100주년(1회차의 날짜와 겹침)",
-     "addedCue": "환경 '티치인' 구상 · 쾨니그의 작명 · 1990년 141개국",
-     "why": "1회차 날짜(4월 22일)로 이어지는 단서를 빼고 이름·확산 세부로"
-    },
-    "generalHint": "2016년 이날 미국·영국·중국 등 여러 나라가 파리 기후 협정에 서명했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "해마다 4월에 지구 환경 보호를 되새기는 기념일",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "학교·뉴스에서 접하는 기념일",
-     "piece": "f02",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "C2-23",
-     "key": "b068",
-     "hint": "2016년 이날 미국·영국·중국 등 여러 나라가 파리 기후 협정에 서명했다.",
-     "guess": "지구의 날",
-     "confidence": "high",
-     "hit": true,
-     "answer": "지구의 날"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Earth_Day"
-    ],
-    "facts": [
-     {
-      "claim": "넬슨은 샌타바버라 해협 기름띠를 비행기에서 보고 착안했다고 헤이스가 전함",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Earth_Day",
-      "note": "Denis Hayes, organizer of the first Earth Day, said that Senator Gaylord Nelson from Wisconsin was inspired to create Earth Day upon seeing an 800-square-mile (2,100 km2) oil slick from an airplane in the Santa Barbara Channel."
-     },
-     {
-      "claim": "1969년 1월 28일 샌타바버라 앞바다 유정 폭발 유출",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Earth_Day",
-      "note": "On January 28, 1969, a well called Platform A, drilled by Union Oil 6 miles (10 km) off the coast of Santa Barbara, California, blew out."
-     },
-     {
-      "claim": "넬슨이 전국 환경 티치인을 제안, 헤이스를 전국 조직자로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Earth_Day",
-      "note": "United States senator Gaylord Nelson proposed the idea to hold a nationwide environmental teach-in on April 22, 1970, and hired a young activist, Denis Hayes, to be the national coordinator."
-     },
-     {
-      "claim": "헤이스가 처음의 티치인 구상을 넘어 전국 행사로 키움",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Earth_Day",
-      "note": "Hayes and his staff grew the event beyond the original idea for a teach-in to include the entire United States."
-     },
-     {
-      "claim": "이름은 광고 문안가 줄리언 쾨니그가 지음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Earth_Day",
-      "note": "The name \"Earth Day\" was coined by the advertising writer Julian Koenig."
-     },
-     {
-      "claim": "1990년 헤이스가 국제화, 141개국",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Earth_Day",
-      "note": "In 1990, Denis Hayes, the original national coordinator in 1970, took it international and organized events in 141 nations."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Earth_Day"
-    ],
-    "hintNote": "On Earth Day 2016, the landmark Paris Agreement was signed by the United States, the United Kingdom, China, and 120 other countries.",
-    "easiestCue": "이름은 광고 문안가 줄리언 쾨니그가 지었습니다",
-    "targetWhy": "기념일 탄생의 뒷이야기 — 환경 애호가(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 날의 몰랐던 출발",
-    "pairCheck": "1회차 #150 질문(1970년 4월 22일 미국에서 처음 열린 환경 기념일) · 해설(매년 4월 22일) · 힌트(없음) — 2회차는 날짜 · '환경 기념일' 정의를 쓰지 않고 넬슨 · 기름 유출 · 날 고른 사연 · 레닌으로만 물음",
-    "dbCheck": "pair-or-different — 활성 #150 1건, (가) 2회차로 지식이 다름",
-    "warn": [],
-    "first": {
-     "id": 150,
-     "question": "환경오염 문제를 알리기 위해 1970년 4월 22일 미국에서 처음 열린 뒤 해마다 이어지는 환경 기념일은?",
-     "explanation": "매년 4월 22일에 기념하는 국제 환경 보호의 날이다.",
-     "hint": null,
-     "difficulty": 2
+  "_meta": {
+    "round": "g019a",
+    "subId": "energy/4",
+    "midKey": "energy",
+    "subName": "환경 협약·오염",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "energy/4#g019a-C2-23",
+      "seed": {
+        "subject": "지구의 날",
+        "aspect": null,
+        "ref": "C2-23",
+        "pairedWith": 150
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 150,
+        "question": "게일로드 넬슨 상원의원은 이것을 처음에 전국 규모의 환경 '티치인'으로 구상했고, 이름은 광고 문안가 줄리언 쾨니그가 지었습니다. 1990년 첫 전국 조직자였던 데니스 헤이스가 141개국 행사로 넓힌 이것은 무엇일까요?",
+        "answer": "지구의 날",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "넬슨은 1969년 캘리포니아 샌타바버라 앞바다의 기름 유출을 비행기에서 내려다본 뒤 이것을 구상했다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 게일로드 넬슨 상원의원 … 환경 '티치인' + 1990년 141개국 행사",
+          "difWhy": "1970 미국발 환경 기념일 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 환경 운동사",
+          "acc": 4,
+          "accWhy": "에너지·환경 — 고교 교과·뉴스 상식",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "기름 유출을 … 내려다본 뒤 이것을 구상 … 레닌이 태어난 지 100년",
+          "difWhy": "4월 22일 환경 기념일 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "교양 — 환경 기념일"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "위스콘신주 상원의원 게일로드 넬슨은 1969년 캘리포니아 샌타바버라 앞바다의 기름 유출을 비행기에서 내려다본 뒤 이것을 구상했다고 전합니다. 대학생들의 시험과 봄방학을 피해 수요일로 날을 골랐는데, 공교롭게도 레닌이 태어난 지 100년 되는 날이었던 이것은 무엇일까요?",
+          "beforeExplanation": "이 이름은 광고인 줄리언 쾨니그가 여러 후보 가운데 가장 마음에 들어 한 것으로, 그날이 마침 그의 생일이기도 했습니다.",
+          "removedCue": "기름 유출을 내려다보고 구상(해설로 옮김) · 레닌 탄생 100주년(1회차의 날짜와 겹침)",
+          "addedCue": "환경 '티치인' 구상 · 쾨니그의 작명 · 1990년 141개국",
+          "why": "1회차 날짜(4월 22일)로 이어지는 단서를 빼고 이름·확산 세부로"
+        },
+        "generalHint": "2016년 이날 미국·영국·중국 등 여러 나라가 파리 기후 협정에 서명했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "해마다 4월에 지구 환경 보호를 되새기는 기념일",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "학교·뉴스에서 접하는 기념일",
+          "piece": "f02",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "C2-23",
+          "key": "b068",
+          "hint": "2016년 이날 미국·영국·중국 등 여러 나라가 파리 기후 협정에 서명했다.",
+          "guess": "지구의 날",
+          "confidence": "high",
+          "hit": true,
+          "answer": "지구의 날"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Earth_Day"
+        ],
+        "facts": [
+          {
+            "claim": "넬슨은 샌타바버라 해협 기름띠를 비행기에서 보고 착안했다고 헤이스가 전함",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Earth_Day",
+            "note": "Denis Hayes, organizer of the first Earth Day, said that Senator Gaylord Nelson from Wisconsin was inspired to create Earth Day upon seeing an 800-square-mile (2,100 km2) oil slick from an airplane in the Santa Barbara Channel."
+          },
+          {
+            "claim": "1969년 1월 28일 샌타바버라 앞바다 유정 폭발 유출",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Earth_Day",
+            "note": "On January 28, 1969, a well called Platform A, drilled by Union Oil 6 miles (10 km) off the coast of Santa Barbara, California, blew out."
+          },
+          {
+            "claim": "넬슨이 전국 환경 티치인을 제안, 헤이스를 전국 조직자로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Earth_Day",
+            "note": "United States senator Gaylord Nelson proposed the idea to hold a nationwide environmental teach-in on April 22, 1970, and hired a young activist, Denis Hayes, to be the national coordinator."
+          },
+          {
+            "claim": "헤이스가 처음의 티치인 구상을 넘어 전국 행사로 키움",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Earth_Day",
+            "note": "Hayes and his staff grew the event beyond the original idea for a teach-in to include the entire United States."
+          },
+          {
+            "claim": "이름은 광고 문안가 줄리언 쾨니그가 지음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Earth_Day",
+            "note": "The name \"Earth Day\" was coined by the advertising writer Julian Koenig."
+          },
+          {
+            "claim": "1990년 헤이스가 국제화, 141개국",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Earth_Day",
+            "note": "In 1990, Denis Hayes, the original national coordinator in 1970, took it international and organized events in 141 nations."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Earth_Day"
+        ],
+        "hintNote": "On Earth Day 2016, the landmark Paris Agreement was signed by the United States, the United Kingdom, China, and 120 other countries.",
+        "easiestCue": "이름은 광고 문안가 줄리언 쾨니그가 지었습니다",
+        "targetWhy": "기념일 탄생의 뒷이야기 — 환경 애호가(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 날의 몰랐던 출발",
+        "pairCheck": "1회차 #150 질문(1970년 4월 22일 미국에서 처음 열린 환경 기념일) · 해설(매년 4월 22일) · 힌트(없음) — 2회차는 날짜 · '환경 기념일' 정의를 쓰지 않고 넬슨 · 기름 유출 · 날 고른 사연 · 레닌으로만 물음",
+        "dbCheck": "pair-or-different — 활성 #150 1건, (가) 2회차로 지식이 다름",
+        "warn": [],
+        "first": {
+          "id": 150,
+          "question": "환경오염 문제를 알리기 위해 1970년 4월 22일 미국에서 처음 열린 뒤 해마다 이어지는 환경 기념일은?",
+          "explanation": "매년 4월 22일에 기념하는 국제 환경 보호의 날이다.",
+          "hint": null,
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 게일로드 넬슨 상원의원 … 환경 '티치인' + 1990년 141개국 행사",
+          "difWhy": "1970 미국발 환경 기념일 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 환경 운동사",
+          "acc": 4,
+          "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  }
- ]
+  ]
 }

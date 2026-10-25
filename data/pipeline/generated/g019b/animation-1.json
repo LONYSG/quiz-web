@@ -1,359 +1,404 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "animation/1",
-  "midKey": "animation",
-  "subName": "일본 애니메이션",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "animation/1#g019b-M2-16",
-   "seed": {
-    "subject": "은하철도 999",
-    "aspect": "팬 세부",
-    "ref": "M2-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1977년부터 1981년까지 쇼넨가호샤의 잡지 '소년 킹'에 연재된 만화가 원작입니다. 여주인공은 기계화 제국을 다스리는 프로메슘 여왕의 딸로 설정되어 있는데, 이 작품은 무엇일까요?",
-    "answer": "은하철도 999",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "미야자와 겐지의 소설 '은하철도의 밤'에서 별 사이를 달리는 기차라는 착상을 얻었고, 1979년 린타로 감독의 극장판도 나왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "여주인공은 기계화 제국을 다스리는 프로메슘 여왕의 딸",
-     "difWhy": "'기계화 제국' 설정 — 애니 관심층",
-     "wor": 3,
-     "worWhy": "대중적 애니 제목",
-     "acc": 4,
-     "accWhy": "애니메이션 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "미야자와 겐지의 한 소설에서 출발한 착상",
-     "difWhy": "은하철도의 밤과 999 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 애니 제목"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1977년부터 1981년까지 쇼넨가호샤의 잡지 '소년 킹'에 연재된 만화가 원작이고, 미야자와 겐지의 한 소설에서 출발한 착상이 담긴 작품입니다. 1979년 린타로 감독의 극장판 애니메이션으로도 만들어진 이 작품은 무엇일까요?",
-     "beforeExplanation": "여주인공 메텔은 기계화 제국을 다스리는 프로메슘 여왕의 딸로 설정되어 있습니다.",
-     "removedCue": "미야자와 겐지의 한 소설에서 출발한 착상(관심층 — 은하철도의 밤)",
-     "addedCue": "여주인공이 프로메슘 여왕의 딸이라는 설정(해설에서 옮김)",
-     "why": "원작 소설의 착상은 관심층 상식이라 해설로 내리고, 팬이 아는 설정으로 바꿈"
-    },
-    "generalHint": "1979년 극장판 주제가는 밴드 고다이고가 불렀다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "우주를 달리는 기차 여행을 그린 마쓰모토 레이지 원작 작품",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "추억의 애니메이션으로 널리 알려짐",
-     "piece": "f06",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "M2-16",
-     "key": "b182",
-     "hint": "1979년 극장판 주제가는 밴드 고다이고가 불렀다.",
-     "guess": "은하철도 999",
-     "confidence": "high",
-     "hit": true,
-     "answer": "은하철도 999"
-    },
-    "layer": "팬 세부",
-    "genre": "애니",
-    "work": "은하철도 999",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Galaxy_Express_999"
-    ],
-    "facts": [
-     {
-      "claim": "소년 킹 연재 1977~1981",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
-      "note": "serialized in Shōnen King (Shōnen Gahosha) from 1977 to 1981"
-     },
-     {
-      "claim": "메텔은 프로메슘 여왕의 딸",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
-      "note": "she is the daughter of Queen Promethium, ruler of the Mechanization Empire"
-     },
-     {
-      "claim": "미야자와 겐지 소설에서 착상",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
-      "note": "inspired by the idea of a steam train running through the stars in Kenji Miyazawa's novel Night on the Galactic Railroad"
-     },
-     {
-      "claim": "1979년 린타로 극장판",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
-      "note": "The film version of Galaxy Express 999 was released in 1979 (director Rintaro)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Godiego"
-    ],
-    "hintNote": "Godiego are also known for performing the theme song \"The Galaxy Express 999\" for the film Galaxy Express 999",
-    "easiestCue": "여주인공이 기계화 제국 프로메슘 여왕의 딸",
-    "targetWhy": "연재 잡지와 메텔의 출신 설정은 애니 팬 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "animation/1",
+    "midKey": "animation",
+    "subName": "일본 애니메이션",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "animation/1#g019b-M2-17",
-   "seed": {
-    "subject": "붉은 돼지",
-    "aspect": "팬 세부",
-    "ref": "M2-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "처음에는 일본항공(JAL)의 기내 상영용 단편으로 계획되었던 스튜디오 지브리 장편입니다. 주인공이 모는 비행기는 이름을 이탈리아의 사보이아 S.21에서 땄지만 생김새는 마키 M.33을 바탕으로 했는데, 이 작품은?",
-    "answer": "붉은 돼지",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "감독 미야자키 하야오가 1989년에 그린 자기 만화 '비행정 시대'가 바탕입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 지브리 장편 + 주인공이 모는 이탈리아 비행기",
-     "difWhy": "이탈리아 비행정 주인공 — 애니 관심층",
-     "wor": 3,
-     "worWhy": "대중적 애니 제목",
-     "acc": 4,
-     "accWhy": "애니메이션 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "animation/1#g019b-M2-16",
+      "seed": {
+        "subject": "은하철도 999",
+        "aspect": "팬 세부",
+        "ref": "M2-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1977년부터 1981년까지 쇼넨가호샤의 잡지 '소년 킹'에 연재된 만화가 원작입니다. 여주인공은 기계화 제국을 다스리는 프로메슘 여왕의 딸로 설정되어 있는데, 이 작품은 무엇일까요?",
+        "answer": "은하철도 999",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "미야자와 겐지의 소설 '은하철도의 밤'에서 별 사이를 달리는 기차라는 착상을 얻었고, 1979년 린타로 감독의 극장판도 나왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "여주인공은 기계화 제국을 다스리는 프로메슘 여왕의 딸",
+          "difWhy": "'기계화 제국' 설정 — 애니 관심층",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목",
+          "acc": 4,
+          "accWhy": "애니메이션 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "미야자와 겐지의 한 소설에서 출발한 착상",
+          "difWhy": "은하철도의 밤과 999 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1977년부터 1981년까지 쇼넨가호샤의 잡지 '소년 킹'에 연재된 만화가 원작이고, 미야자와 겐지의 한 소설에서 출발한 착상이 담긴 작품입니다. 1979년 린타로 감독의 극장판 애니메이션으로도 만들어진 이 작품은 무엇일까요?",
+          "beforeExplanation": "여주인공 메텔은 기계화 제국을 다스리는 프로메슘 여왕의 딸로 설정되어 있습니다.",
+          "removedCue": "미야자와 겐지의 한 소설에서 출발한 착상(관심층 — 은하철도의 밤)",
+          "addedCue": "여주인공이 프로메슘 여왕의 딸이라는 설정(해설에서 옮김)",
+          "why": "원작 소설의 착상은 관심층 상식이라 해설로 내리고, 팬이 아는 설정으로 바꿈"
+        },
+        "generalHint": "1979년 극장판 주제가는 밴드 고다이고가 불렀다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "우주를 달리는 기차 여행을 그린 마쓰모토 레이지 원작 작품",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "추억의 애니메이션으로 널리 알려짐",
+          "piece": "f06",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "M2-16",
+          "key": "b182",
+          "hint": "1979년 극장판 주제가는 밴드 고다이고가 불렀다.",
+          "guess": "은하철도 999",
+          "confidence": "high",
+          "hit": true,
+          "answer": "은하철도 999"
+        },
+        "layer": "팬 세부",
+        "genre": "애니",
+        "work": "은하철도 999",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Galaxy_Express_999"
+        ],
+        "facts": [
+          {
+            "claim": "소년 킹 연재 1977~1981",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
+            "note": "serialized in Shōnen King (Shōnen Gahosha) from 1977 to 1981"
+          },
+          {
+            "claim": "메텔은 프로메슘 여왕의 딸",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
+            "note": "she is the daughter of Queen Promethium, ruler of the Mechanization Empire"
+          },
+          {
+            "claim": "미야자와 겐지 소설에서 착상",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
+            "note": "inspired by the idea of a steam train running through the stars in Kenji Miyazawa's novel Night on the Galactic Railroad"
+          },
+          {
+            "claim": "1979년 린타로 극장판",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Galaxy_Express_999",
+            "note": "The film version of Galaxy Express 999 was released in 1979 (director Rintaro)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Godiego"
+        ],
+        "hintNote": "Godiego are also known for performing the theme song \"The Galaxy Express 999\" for the film Galaxy Express 999",
+        "easiestCue": "여주인공이 기계화 제국 프로메슘 여왕의 딸",
+        "targetWhy": "연재 잡지와 메텔의 출신 설정은 애니 팬 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "여주인공은 기계화 제국을 다스리는 프로메슘 여왕의 딸",
+          "difWhy": "'기계화 제국' 설정 — 애니 관심층",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목",
+          "acc": 4,
+          "accWhy": "애니메이션 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "감독이 그린 자기 만화 '비행정 시대'가 바탕",
-     "difWhy": "지브리 비행정 작품 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 애니 제목"
+    {
+      "seedId": "animation/1#g019b-M2-17",
+      "seed": {
+        "subject": "붉은 돼지",
+        "aspect": "팬 세부",
+        "ref": "M2-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "처음에는 일본항공(JAL)의 기내 상영용 단편으로 계획되었던 스튜디오 지브리 장편입니다. 주인공이 모는 비행기는 이름을 이탈리아의 사보이아 S.21에서 땄지만 생김새는 마키 M.33을 바탕으로 했는데, 이 작품은?",
+        "answer": "붉은 돼지",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "감독 미야자키 하야오가 1989년에 그린 자기 만화 '비행정 시대'가 바탕입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 지브리 장편 + 주인공이 모는 이탈리아 비행기",
+          "difWhy": "이탈리아 비행정 주인공 — 애니 관심층",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목",
+          "acc": 4,
+          "accWhy": "애니메이션 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "감독이 그린 자기 만화 '비행정 시대'가 바탕",
+          "difWhy": "지브리 비행정 작품 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "처음에는 일본항공(JAL)의 기내 상영용 단편으로 계획되었던 1992년 스튜디오 지브리 장편입니다. 감독이 그린 자기 만화 '비행정 시대'가 바탕인 이 작품은 무엇일까요?",
+          "beforeExplanation": "주인공 비행기 이름은 사보이아 S.21에서 땄지만, 생김새는 마키 M.33을 바탕으로 했습니다.",
+          "removedCue": "감독이 그린 자기 만화 '비행정 시대'가 바탕 · 1992년(지브리 팬이면 연도만으로 앎)",
+          "addedCue": "주인공 비행기 이름은 사보이아 S.21, 생김새는 마키 M.33(해설에서 옮김)",
+          "why": "원작 만화 이름과 개봉 연도가 관심층 단서라 빼고, 비행기 애호가 세부로 바꿈"
+        },
+        "generalHint": "가수 가토 도키코가 호텔 주인 지나의 목소리를 맡고 노래 두 곡도 불렀다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "1992년 지브리가 만든 비행정 조종사 이야기 장편",
+        "familiarity": {
+          "judge": 3,
+          "pct": 70,
+          "why": "지브리 작품으로 들어 봄",
+          "piece": "f06",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "M2-17",
+          "key": "b295",
+          "hint": "가수 가토 도키코가 호텔 주인 지나의 목소리를 맡고 노래 두 곡도 불렀다.",
+          "guess": "붉은 돼지",
+          "confidence": "high",
+          "hit": true,
+          "answer": "붉은 돼지"
+        },
+        "layer": "팬 세부",
+        "genre": "애니",
+        "work": "붉은 돼지",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Porco_Rosso"
+        ],
+        "facts": [
+          {
+            "claim": "JAL 기내 단편으로 계획",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Porco_Rosso",
+            "note": "The film was originally planned as a short in-flight film for Japan Airlines."
+          },
+          {
+            "claim": "사보이아 S.21 / 마키 M.33",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Porco_Rosso",
+            "note": "the plane's name comes from the Savoia S.21, but is based on the Macchi M.33"
+          },
+          {
+            "claim": "미야자키의 1989년 만화 비행정 시대가 원작",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Porco_Rosso",
+            "note": "Porco Rosso ... is a 1992 Japanese animated adventure fantasy film written and directed by Hayao Miyazaki, based on his 1989 manga Hikōtei Jidai."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Porco_Rosso"
+        ],
+        "hintNote": "The soundtrack features two vocal songs performed by Tokiko Kato, who also provides the Japanese voice for the character Gina.",
+        "easiestCue": "JAL 기내 상영용 단편으로 계획",
+        "targetWhy": "기내 상영 계획·실제 비행기 모델은 지브리 애호가 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 지브리 장편 + 주인공이 모는 이탈리아 비행기",
+          "difWhy": "이탈리아 비행정 주인공 — 애니 관심층",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목",
+          "acc": 4,
+          "accWhy": "애니메이션 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "처음에는 일본항공(JAL)의 기내 상영용 단편으로 계획되었던 1992년 스튜디오 지브리 장편입니다. 감독이 그린 자기 만화 '비행정 시대'가 바탕인 이 작품은 무엇일까요?",
-     "beforeExplanation": "주인공 비행기 이름은 사보이아 S.21에서 땄지만, 생김새는 마키 M.33을 바탕으로 했습니다.",
-     "removedCue": "감독이 그린 자기 만화 '비행정 시대'가 바탕 · 1992년(지브리 팬이면 연도만으로 앎)",
-     "addedCue": "주인공 비행기 이름은 사보이아 S.21, 생김새는 마키 M.33(해설에서 옮김)",
-     "why": "원작 만화 이름과 개봉 연도가 관심층 단서라 빼고, 비행기 애호가 세부로 바꿈"
-    },
-    "generalHint": "가수 가토 도키코가 호텔 주인 지나의 목소리를 맡고 노래 두 곡도 불렀다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "1992년 지브리가 만든 비행정 조종사 이야기 장편",
-    "familiarity": {
-     "judge": 3,
-     "pct": 70,
-     "why": "지브리 작품으로 들어 봄",
-     "piece": "f06",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "M2-17",
-     "key": "b295",
-     "hint": "가수 가토 도키코가 호텔 주인 지나의 목소리를 맡고 노래 두 곡도 불렀다.",
-     "guess": "붉은 돼지",
-     "confidence": "high",
-     "hit": true,
-     "answer": "붉은 돼지"
-    },
-    "layer": "팬 세부",
-    "genre": "애니",
-    "work": "붉은 돼지",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Porco_Rosso"
-    ],
-    "facts": [
-     {
-      "claim": "JAL 기내 단편으로 계획",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Porco_Rosso",
-      "note": "The film was originally planned as a short in-flight film for Japan Airlines."
-     },
-     {
-      "claim": "사보이아 S.21 / 마키 M.33",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Porco_Rosso",
-      "note": "the plane's name comes from the Savoia S.21, but is based on the Macchi M.33"
-     },
-     {
-      "claim": "미야자키의 1989년 만화 비행정 시대가 원작",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Porco_Rosso",
-      "note": "Porco Rosso ... is a 1992 Japanese animated adventure fantasy film written and directed by Hayao Miyazaki, based on his 1989 manga Hikōtei Jidai."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Porco_Rosso"
-    ],
-    "hintNote": "The soundtrack features two vocal songs performed by Tokiko Kato, who also provides the Japanese voice for the character Gina.",
-    "easiestCue": "JAL 기내 상영용 단편으로 계획",
-    "targetWhy": "기내 상영 계획·실제 비행기 모델은 지브리 애호가 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "animation/1#g019b-M2-18",
-   "seed": {
-    "subject": "하울의 움직이는 성",
-    "aspect": "팬 세부",
-    "ref": "M2-18",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "처음에는 호소다 마모루가 감독으로 뽑혔다가 그만둔 스튜디오 지브리 작품입니다. 미야자키 하야오는 2003년 미국의 이라크 침공에 반대하는 생각을 이 작품에 담았다고 하는데, 이 애니메이션은?",
-    "answer": "하울의 움직이는 성",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "미야자키는 프랑스 알자스의 콜마르와 리크위르에서 건축을 살폈고, 작품은 2004년 9월 베네치아 국제 영화제에서 처음 공개되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "호소다 마모루가 감독으로 뽑혔다가 그만둔 지브리 작품",
-     "difWhy": "감독 교체·이라크 반전 — 애니 애호가",
-     "wor": 3,
-     "worWhy": "대중적 애니 제목",
-     "acc": 4,
-     "accWhy": "애니메이션 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "프랑스 알자스의 콜마르와 리크위르에서 건축을 살폈습니다",
-     "difWhy": "하울 배경 콜마르 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 애니 제목"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "처음에는 호소다 마모루가 감독으로 뽑혔다가 그만둔 작품입니다. 미야자키 하야오는 2003년 미국의 이라크 침공에 반대하는 생각을 담았고, 프랑스 알자스의 콜마르와 리크위르에서 건축을 살폈습니다. 이 애니메이션은 무엇일까요?",
-     "beforeExplanation": "2004년 9월 5일 제61회 베네치아 국제 영화제에서 처음 공개되었습니다.",
-     "removedCue": "프랑스 알자스의 콜마르·리크위르 건축 답사(관심층 — 여행 상식)",
-     "addedCue": "없음(쉬운 단서를 해설로 내림 — 호소다 하차·이라크 침공 반대가 남음)",
-     "why": "콜마르 배경은 여행 방송 단골이라 해설로 내림"
-    },
-    "generalHint": "영어 더빙판은 픽사의 피트 닥터가 이끌어 2005년 디즈니를 통해 미국에서 개봉했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2004년 미야자키 하야오의 마법사와 저주받은 소녀 이야기 장편",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "지브리 대표작으로 누구나 앎",
-     "piece": "f04",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "M2-18",
-     "key": "b009",
-     "hint": "영어 더빙판은 픽사의 피트 닥터가 이끌어 2005년 디즈니를 통해 미국에서 개봉했다.",
-     "guess": "하울의 움직이는 성",
-     "confidence": "high",
-     "hit": true,
-     "answer": "하울의 움직이는 성",
-     "first": {
-      "ref": "M2-18",
-      "key": "b290",
-      "hint": "영국 작가 다이애나 윈 존스의 1986년 소설이 원작이다.",
-      "guess": "하울의 움직이는 성",
-      "confidence": "high",
-      "hit": true,
-      "answer": "하울의 움직이는 성"
-     }
-    },
-    "layer": "팬 세부",
-    "genre": "애니",
-    "work": "하울의 움직이는 성",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)"
-    ],
-    "facts": [
-     {
-      "claim": "호소다 마모루가 처음 감독으로 뽑혔다 그만둠",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
-      "note": "was originally selected to direct the film but quit the project"
-     },
-     {
-      "claim": "이라크 침공 반대 영향",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
-      "note": "Influenced by Miyazaki's opposition to the United States' invasion of Iraq in 2003"
-     },
-     {
-      "claim": "콜마르 · 리크위르 답사",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
-      "note": "Miyazaki went to Colmar and Riquewihr in Alsace, France, to study the architecture"
-     },
-     {
-      "claim": "베네치아 초연",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
-      "note": "premiered at the 61st Venice International Film Festival on 5 September 2004"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)"
-    ],
-    "hintNote": "The film was later dubbed into English under the supervision of Pete Docter of Pixar, and released in the United States by Walt Disney Studios on 10 June 2005.",
-    "easiestCue": "호소다 마모루가 감독으로 뽑혔다가 그만둠",
-    "targetWhy": "감독 교체·이라크 침공 반대는 지브리 애호가 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
-    "warn": [
-     "단정어 처음",
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "animation/1#g019b-M2-18",
+      "seed": {
+        "subject": "하울의 움직이는 성",
+        "aspect": "팬 세부",
+        "ref": "M2-18",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "처음에는 호소다 마모루가 감독으로 뽑혔다가 그만둔 스튜디오 지브리 작품입니다. 미야자키 하야오는 2003년 미국의 이라크 침공에 반대하는 생각을 이 작품에 담았다고 하는데, 이 애니메이션은?",
+        "answer": "하울의 움직이는 성",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "미야자키는 프랑스 알자스의 콜마르와 리크위르에서 건축을 살폈고, 작품은 2004년 9월 베네치아 국제 영화제에서 처음 공개되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "호소다 마모루가 감독으로 뽑혔다가 그만둔 지브리 작품",
+          "difWhy": "감독 교체·이라크 반전 — 애니 애호가",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목",
+          "acc": 4,
+          "accWhy": "애니메이션 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "프랑스 알자스의 콜마르와 리크위르에서 건축을 살폈습니다",
+          "difWhy": "하울 배경 콜마르 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "처음에는 호소다 마모루가 감독으로 뽑혔다가 그만둔 작품입니다. 미야자키 하야오는 2003년 미국의 이라크 침공에 반대하는 생각을 담았고, 프랑스 알자스의 콜마르와 리크위르에서 건축을 살폈습니다. 이 애니메이션은 무엇일까요?",
+          "beforeExplanation": "2004년 9월 5일 제61회 베네치아 국제 영화제에서 처음 공개되었습니다.",
+          "removedCue": "프랑스 알자스의 콜마르·리크위르 건축 답사(관심층 — 여행 상식)",
+          "addedCue": "없음(쉬운 단서를 해설로 내림 — 호소다 하차·이라크 침공 반대가 남음)",
+          "why": "콜마르 배경은 여행 방송 단골이라 해설로 내림"
+        },
+        "generalHint": "영어 더빙판은 픽사의 피트 닥터가 이끌어 2005년 디즈니를 통해 미국에서 개봉했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2004년 미야자키 하야오의 마법사와 저주받은 소녀 이야기 장편",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "지브리 대표작으로 누구나 앎",
+          "piece": "f04",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "M2-18",
+          "key": "b009",
+          "hint": "영어 더빙판은 픽사의 피트 닥터가 이끌어 2005년 디즈니를 통해 미국에서 개봉했다.",
+          "guess": "하울의 움직이는 성",
+          "confidence": "high",
+          "hit": true,
+          "answer": "하울의 움직이는 성",
+          "first": {
+            "ref": "M2-18",
+            "key": "b290",
+            "hint": "영국 작가 다이애나 윈 존스의 1986년 소설이 원작이다.",
+            "guess": "하울의 움직이는 성",
+            "confidence": "high",
+            "hit": true,
+            "answer": "하울의 움직이는 성"
+          }
+        },
+        "layer": "팬 세부",
+        "genre": "애니",
+        "work": "하울의 움직이는 성",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)"
+        ],
+        "facts": [
+          {
+            "claim": "호소다 마모루가 처음 감독으로 뽑혔다 그만둠",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
+            "note": "was originally selected to direct the film but quit the project"
+          },
+          {
+            "claim": "이라크 침공 반대 영향",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
+            "note": "Influenced by Miyazaki's opposition to the United States' invasion of Iraq in 2003"
+          },
+          {
+            "claim": "콜마르 · 리크위르 답사",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
+            "note": "Miyazaki went to Colmar and Riquewihr in Alsace, France, to study the architecture"
+          },
+          {
+            "claim": "베네치아 초연",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)",
+            "note": "premiered at the 61st Venice International Film Festival on 5 September 2004"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle_(film)"
+        ],
+        "hintNote": "The film was later dubbed into English under the supervision of Pete Docter of Pixar, and released in the United States by Walt Disney Studios on 10 June 2005.",
+        "easiestCue": "호소다 마모루가 감독으로 뽑혔다가 그만둠",
+        "targetWhy": "감독 교체·이라크 침공 반대는 지브리 애호가 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 친숙도 2~3, 단서는 교과서·방송 밖 제작·기원 뒷이야기만",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 활성·초안(g019a a-answers · g019b H1/H2/M1) 겹침 없음",
+        "warn": [
+          "단정어 처음",
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "호소다 마모루가 감독으로 뽑혔다가 그만둔 지브리 작품",
+          "difWhy": "감독 교체·이라크 반전 — 애니 애호가",
+          "wor": 3,
+          "worWhy": "대중적 애니 제목",
+          "acc": 4,
+          "accWhy": "애니메이션 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

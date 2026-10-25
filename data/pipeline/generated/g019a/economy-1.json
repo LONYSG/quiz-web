@@ -1,244 +1,274 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "economy/1",
-  "midKey": "economy",
-  "subName": "경제 개념·지표",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "economy/1#g019a-H2-22",
-   "seed": {
-    "subject": "GDP",
-    "aspect": null,
-    "ref": "H2-22",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "17세기 윌리엄 페티는 네덜란드와 전쟁하던 시기 땅 주인들이 세금을 부당하게 많이 낸다고 주장하려고 이와 비슷한 개념을 떠올렸습니다. 1934년 이것의 현대적 개념을 세운 사이먼 쿠즈네츠는 이렇게 잰 국민소득으로는 복지를 거의 추론할 수 없다고 경고했는데, 이 지표는?",
-    "answer": "GDP",
-    "acceptedAnswers": [
-     "국내총생산"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '국내총생산' 확인 — 영문 약칭이 더 흔해 대표로(A4)",
-    "explanation": "1944년 브레턴우즈 회의 뒤 나라 경제를 재는 주된 도구가 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 사이먼 쿠즈네츠 + 국민소득 … 이 지표",
-     "difWhy": "국민소득 대표 지표 — 고교 경제",
-     "wor": 5,
-     "worWhy": "경제 교과",
-     "acc": 4,
-     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "나라 경제를 재는 주된 도구가 된 이 지표",
-     "difWhy": "국내총생산 — 중학 사회",
-     "wor": 5,
-     "worWhy": "사회 교과 개념"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1934년 미국 의회 보고서로 이 지표의 현대적 개념을 처음 세운 경제학자 사이먼 쿠즈네츠는, 이렇게 잰 국민소득으로는 한 나라의 복지를 거의 추론할 수 없다고 경고했습니다. 1944년 브레턴우즈 회의 뒤 나라 경제를 재는 주된 도구가 된 이 지표는?",
-     "beforeExplanation": "17세기 윌리엄 페티는 네덜란드와 전쟁하던 시기 땅 주인들이 세금을 부당하게 많이 낸다고 주장하려고 이와 비슷한 개념을 생각해 냈습니다.",
-     "removedCue": "나라 경제를 재는 주된 도구가 된 지표(중학 사회 정의 — 해설로 옮김)",
-     "addedCue": "윌리엄 페티의 17세기 과세 논변(해설에서 옮김)",
-     "why": "지표의 정의를 빼고 개념의 기원 두 세부로"
-    },
-    "generalHint": "아일랜드가 2016년 발표한 2015년 이 수치가 26.3% 늘자, 폴 크루그먼은 '레프러콘 경제학'이라고 비꼬았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한 나라 안에서 일정 기간 생산된 최종 재화·서비스 가치의 합",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "경제 뉴스·교과서 용어",
-     "piece": "f05",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "H2-22",
-     "key": "b095",
-     "hint": "아일랜드가 2016년 발표한 2015년 이 수치가 26.3% 늘자, 폴 크루그먼은 '레프러콘 경제학'이라고 비꼬았다.",
-     "guess": "국내 총생산(GDP)",
-     "confidence": "high",
-     "hit": true,
-     "answer": "GDP"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Gross_domestic_product"
-    ],
-    "facts": [
-     {
-      "claim": "현대적 GDP 개념은 쿠즈네츠가 1934년 미국 의회 보고서를 위해 처음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-      "note": "The modern concept of GDP was first developed by Simon Kuznets for a 1934 U.S. Congress report"
-     },
-     {
-      "claim": "쿠즈네츠의 경고 — 국민소득 측정으로 복지 추론 어려움",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-      "note": "The welfare of a nation can, therefore, scarcely be inferred from a measurement of national income as defined above."
-     },
-     {
-      "claim": "1944 브레턴우즈 뒤 주된 도구",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-      "note": "After the Bretton Woods Conference in 1944, GDP became the main tool for measuring a country's economy."
-     },
-     {
-      "claim": "17세기(1652~1674 영국·네덜란드 전쟁 시기) 윌리엄 페티가 땅 주인 과세 부당을 주장하려 GDP 비슷한 개념을 떠올림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-      "note": "Sir William Petty came up with a concept of GDP, to calculate the tax burden, and argue landlords were unfairly taxed during warfare between the Dutch and the English between 1652 and 1674."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Leprechaun_economics"
-    ],
-    "hintNote": "Leprechaun economics ... coined by economist Paul Krugman to describe the 26.3 per cent rise in Irish 2015 GDP ... in a 12 July 2016 publication",
-    "easiestCue": "1934년 현대적 개념을 세운 사이먼 쿠즈네츠",
-    "targetWhy": "경제 지표의 지성사 — 대학 교양(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'나라 경제를 재는 주된 지표'만으로 GDP를 떠올릴 수 있음(GNP와도 헷갈림)",
-    "pairCheck": null,
-    "dbCheck": "answercheck new(GDP · 국내총생산)",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "economy/1",
+    "midKey": "economy",
+    "subName": "경제 개념·지표",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "economy/1#g019a-H2-23",
-   "seed": {
-    "subject": "낙수 효과",
-    "aspect": null,
-    "ref": "H2-23",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1932년 유머 작가 윌 로저스는 후버 대통령의 대공황 대책을 두고 돈이 모두 꼭대기에 배정됐다고 비꼬았습니다. 갈브레이스는 이 이론이 예전에는 말에게 귀리를 잔뜩 먹이면 일부가 참새 몫으로 나온다는 '말과 참새 이론'이었다고 썼는데, 이 이론은?",
-    "answer": "낙수 효과",
-    "acceptedAnswers": [
-     "트리클다운",
-     "낙수 이론",
-     "트리클다운 이론"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 '낙수 효과'·'트리클다운' 확인 · '낙수 이론'은 언론에서 흔히 씀",
-    "explanation": "1981년 레이건 행정부의 예산국장 데이비드 스톡먼은 잡지 인터뷰에서 공급 중시 정책이 사실 이 이론이라고 말해 해임될 뻔했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "돈이 모두 꼭대기에 배정됐다고 비꼬았습니다 … 이 이론",
-     "difWhy": "위에 몰아주면 아래로 흐른다 — 고교 경제",
-     "wor": 4,
-     "worWhy": "경제·시사 기본 어휘",
-     "acc": 4,
-     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+  "items": [
+    {
+      "seedId": "economy/1#g019a-H2-22",
+      "seed": {
+        "subject": "GDP",
+        "aspect": null,
+        "ref": "H2-22",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "17세기 윌리엄 페티는 네덜란드와 전쟁하던 시기 땅 주인들이 세금을 부당하게 많이 낸다고 주장하려고 이와 비슷한 개념을 떠올렸습니다. 1934년 이것의 현대적 개념을 세운 사이먼 쿠즈네츠는 이렇게 잰 국민소득으로는 복지를 거의 추론할 수 없다고 경고했는데, 이 지표는?",
+        "answer": "GDP",
+        "acceptedAnswers": [
+          "국내총생산"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '국내총생산' 확인 — 영문 약칭이 더 흔해 대표로(A4)",
+        "explanation": "1944년 브레턴우즈 회의 뒤 나라 경제를 재는 주된 도구가 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 사이먼 쿠즈네츠 + 국민소득 … 이 지표",
+          "difWhy": "국민소득 대표 지표 — 고교 경제",
+          "wor": 5,
+          "worWhy": "경제 교과",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "나라 경제를 재는 주된 도구가 된 이 지표",
+          "difWhy": "국내총생산 — 중학 사회",
+          "wor": 5,
+          "worWhy": "사회 교과 개념"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1934년 미국 의회 보고서로 이 지표의 현대적 개념을 처음 세운 경제학자 사이먼 쿠즈네츠는, 이렇게 잰 국민소득으로는 한 나라의 복지를 거의 추론할 수 없다고 경고했습니다. 1944년 브레턴우즈 회의 뒤 나라 경제를 재는 주된 도구가 된 이 지표는?",
+          "beforeExplanation": "17세기 윌리엄 페티는 네덜란드와 전쟁하던 시기 땅 주인들이 세금을 부당하게 많이 낸다고 주장하려고 이와 비슷한 개념을 생각해 냈습니다.",
+          "removedCue": "나라 경제를 재는 주된 도구가 된 지표(중학 사회 정의 — 해설로 옮김)",
+          "addedCue": "윌리엄 페티의 17세기 과세 논변(해설에서 옮김)",
+          "why": "지표의 정의를 빼고 개념의 기원 두 세부로"
+        },
+        "generalHint": "아일랜드가 2016년 발표한 2015년 이 수치가 26.3% 늘자, 폴 크루그먼은 '레프러콘 경제학'이라고 비꼬았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한 나라 안에서 일정 기간 생산된 최종 재화·서비스 가치의 합",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "경제 뉴스·교과서 용어",
+          "piece": "f05",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "H2-22",
+          "key": "b095",
+          "hint": "아일랜드가 2016년 발표한 2015년 이 수치가 26.3% 늘자, 폴 크루그먼은 '레프러콘 경제학'이라고 비꼬았다.",
+          "guess": "국내 총생산(GDP)",
+          "confidence": "high",
+          "hit": true,
+          "answer": "GDP"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Gross_domestic_product"
+        ],
+        "facts": [
+          {
+            "claim": "현대적 GDP 개념은 쿠즈네츠가 1934년 미국 의회 보고서를 위해 처음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+            "note": "The modern concept of GDP was first developed by Simon Kuznets for a 1934 U.S. Congress report"
+          },
+          {
+            "claim": "쿠즈네츠의 경고 — 국민소득 측정으로 복지 추론 어려움",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+            "note": "The welfare of a nation can, therefore, scarcely be inferred from a measurement of national income as defined above."
+          },
+          {
+            "claim": "1944 브레턴우즈 뒤 주된 도구",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+            "note": "After the Bretton Woods Conference in 1944, GDP became the main tool for measuring a country's economy."
+          },
+          {
+            "claim": "17세기(1652~1674 영국·네덜란드 전쟁 시기) 윌리엄 페티가 땅 주인 과세 부당을 주장하려 GDP 비슷한 개념을 떠올림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+            "note": "Sir William Petty came up with a concept of GDP, to calculate the tax burden, and argue landlords were unfairly taxed during warfare between the Dutch and the English between 1652 and 1674."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Leprechaun_economics"
+        ],
+        "hintNote": "Leprechaun economics ... coined by economist Paul Krugman to describe the 26.3 per cent rise in Irish 2015 GDP ... in a 12 July 2016 publication",
+        "easiestCue": "1934년 현대적 개념을 세운 사이먼 쿠즈네츠",
+        "targetWhy": "경제 지표의 지성사 — 대학 교양(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'나라 경제를 재는 주된 지표'만으로 GDP를 떠올릴 수 있음(GNP와도 헷갈림)",
+        "pairCheck": null,
+        "dbCheck": "answercheck new(GDP · 국내총생산)",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 사이먼 쿠즈네츠 + 국민소득 … 이 지표",
+          "difWhy": "국민소득 대표 지표 — 고교 경제",
+          "wor": 5,
+          "worWhy": "경제 교과",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "공급 중시 정책이 사실 이 이론 … '말과 참새 이론'",
-     "difWhy": "레이거노믹스 낙수 — 고교 경제",
-     "wor": 4,
-     "worWhy": "시사 경제 기본 어휘"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1981년 레이건 행정부의 예산국장 데이비드 스톡먼은 잡지 인터뷰에서 공급 중시 정책이 사실 이 이론이라고 말해 해임될 뻔했습니다. 갈브레이스는 이 이론이 예전에 말에게 귀리를 잔뜩 먹이면 일부가 참새 몫으로 나온다는 '말과 참새 이론'이었다고 썼는데, 이 이론은?",
-     "beforeExplanation": "1932년 유머 작가 윌 로저스는 후버 대통령의 대공황 대책을 두고 돈이 모두 꼭대기에 배정됐다고 비꼬았습니다.",
-     "removedCue": "레이건 행정부 … 공급 중시 정책이 사실 이 이론 (레이거노믹스)",
-     "addedCue": "1932년 윌 로저스의 후버 비판",
-     "why": "고교 경제의 레이거노믹스 연결을 해설로 옮기고 해설의 1932년 비판을 질문으로(흘러내린다는 말은 빼고)"
-    },
-    "generalHint": "2022년 영국 리즈 트러스 총리의 '미니 예산' 감세도 비판하는 쪽에서 이 이름으로 불렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "부유층 감세 혜택이 아래로 퍼진다는 경제 주장",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "경제 뉴스·사회 교과서 용어",
-     "piece": "f06",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "H2-23",
-     "key": "b281",
-     "hint": "2022년 영국 리즈 트러스 총리의 '미니 예산' 감세도 비판하는 쪽에서 이 이름으로 불렸다.",
-     "guess": "낙수 경제학",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "낙수 효과"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Trickle-down_economics"
-    ],
-    "facts": [
-     {
-      "claim": "1932년 윌 로저스 — 후버 정책 비판, 돈이 모두 꼭대기에 배정",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
-      "note": "In 1932, humorist and social commentator Will Rogers wrote a column criticizing Herbert Hoover's policies ... \"The money was all appropriated for the top in the hopes that it would trickle down to the needy."
-     },
-     {
-      "claim": "갈브레이스 1982 — 예전 이름 말과 참새 이론",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
-      "note": "In 1982, John Kenneth Galbraith wrote the \"trickle-down economics\" that Stockman was referring to was previously known under the name \"horse-and-sparrow theory\", the idea that feeding a horse a huge amount of oats results in some of the feed passing through for lucky sparrows to eat."
-     },
-     {
-      "claim": "1981년 12월 애틀랜틱 먼슬리 인터뷰 — 스톡먼 예산국장",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
-      "note": "\"The Education of David Stockman\", a December 1981 interview of Reagan's incoming Office of Management and Budget director David Stockman, in the magazine Atlantic Monthly."
-     },
-     {
-      "claim": "공급 중시가 트리클다운이라 말함 — 해임 요구, 사과로 유임",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
-      "note": "Stockman said that ... \"Supply-side is 'trickle-down' theory.\" Reagan administration officials including Michael Deaver wanted Stockman to be fired in response to his comments, but he was ultimately kept on in exchange for a private apology."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Trickle-down_economics"
-    ],
-    "hintNote": "Major examples of what critics have called \"trickle-down economics\" in the US include the Reagan tax cuts, the Bush tax cuts, and in the UK include Margaret Thatcher's economic policies in the 1980s and Liz Truss's mini-budget tax cuts of 2022.",
-    "easiestCue": "갈브레이스의 '말과 참새 이론'",
-    "targetWhy": "윌 로저스·갈브레이스의 비유는 경제사 대학 교양 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "비유가 '위에서 아래로 흘러감'을 그려 짐작할 길이 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 모두"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "economy/1#g019a-H2-23",
+      "seed": {
+        "subject": "낙수 효과",
+        "aspect": null,
+        "ref": "H2-23",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1932년 유머 작가 윌 로저스는 후버 대통령의 대공황 대책을 두고 돈이 모두 꼭대기에 배정됐다고 비꼬았습니다. 갈브레이스는 이 이론이 예전에는 말에게 귀리를 잔뜩 먹이면 일부가 참새 몫으로 나온다는 '말과 참새 이론'이었다고 썼는데, 이 이론은?",
+        "answer": "낙수 효과",
+        "acceptedAnswers": [
+          "트리클다운",
+          "낙수 이론",
+          "트리클다운 이론"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 '낙수 효과'·'트리클다운' 확인 · '낙수 이론'은 언론에서 흔히 씀",
+        "explanation": "1981년 레이건 행정부의 예산국장 데이비드 스톡먼은 잡지 인터뷰에서 공급 중시 정책이 사실 이 이론이라고 말해 해임될 뻔했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "돈이 모두 꼭대기에 배정됐다고 비꼬았습니다 … 이 이론",
+          "difWhy": "위에 몰아주면 아래로 흐른다 — 고교 경제",
+          "wor": 4,
+          "worWhy": "경제·시사 기본 어휘",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "공급 중시 정책이 사실 이 이론 … '말과 참새 이론'",
+          "difWhy": "레이거노믹스 낙수 — 고교 경제",
+          "wor": 4,
+          "worWhy": "시사 경제 기본 어휘"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1981년 레이건 행정부의 예산국장 데이비드 스톡먼은 잡지 인터뷰에서 공급 중시 정책이 사실 이 이론이라고 말해 해임될 뻔했습니다. 갈브레이스는 이 이론이 예전에 말에게 귀리를 잔뜩 먹이면 일부가 참새 몫으로 나온다는 '말과 참새 이론'이었다고 썼는데, 이 이론은?",
+          "beforeExplanation": "1932년 유머 작가 윌 로저스는 후버 대통령의 대공황 대책을 두고 돈이 모두 꼭대기에 배정됐다고 비꼬았습니다.",
+          "removedCue": "레이건 행정부 … 공급 중시 정책이 사실 이 이론 (레이거노믹스)",
+          "addedCue": "1932년 윌 로저스의 후버 비판",
+          "why": "고교 경제의 레이거노믹스 연결을 해설로 옮기고 해설의 1932년 비판을 질문으로(흘러내린다는 말은 빼고)"
+        },
+        "generalHint": "2022년 영국 리즈 트러스 총리의 '미니 예산' 감세도 비판하는 쪽에서 이 이름으로 불렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "부유층 감세 혜택이 아래로 퍼진다는 경제 주장",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "경제 뉴스·사회 교과서 용어",
+          "piece": "f06",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "H2-23",
+          "key": "b281",
+          "hint": "2022년 영국 리즈 트러스 총리의 '미니 예산' 감세도 비판하는 쪽에서 이 이름으로 불렸다.",
+          "guess": "낙수 경제학",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "낙수 효과"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Trickle-down_economics"
+        ],
+        "facts": [
+          {
+            "claim": "1932년 윌 로저스 — 후버 정책 비판, 돈이 모두 꼭대기에 배정",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
+            "note": "In 1932, humorist and social commentator Will Rogers wrote a column criticizing Herbert Hoover's policies ... \"The money was all appropriated for the top in the hopes that it would trickle down to the needy."
+          },
+          {
+            "claim": "갈브레이스 1982 — 예전 이름 말과 참새 이론",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
+            "note": "In 1982, John Kenneth Galbraith wrote the \"trickle-down economics\" that Stockman was referring to was previously known under the name \"horse-and-sparrow theory\", the idea that feeding a horse a huge amount of oats results in some of the feed passing through for lucky sparrows to eat."
+          },
+          {
+            "claim": "1981년 12월 애틀랜틱 먼슬리 인터뷰 — 스톡먼 예산국장",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
+            "note": "\"The Education of David Stockman\", a December 1981 interview of Reagan's incoming Office of Management and Budget director David Stockman, in the magazine Atlantic Monthly."
+          },
+          {
+            "claim": "공급 중시가 트리클다운이라 말함 — 해임 요구, 사과로 유임",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Trickle-down_economics",
+            "note": "Stockman said that ... \"Supply-side is 'trickle-down' theory.\" Reagan administration officials including Michael Deaver wanted Stockman to be fired in response to his comments, but he was ultimately kept on in exchange for a private apology."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Trickle-down_economics"
+        ],
+        "hintNote": "Major examples of what critics have called \"trickle-down economics\" in the US include the Reagan tax cuts, the Bush tax cuts, and in the UK include Margaret Thatcher's economic policies in the 1980s and Liz Truss's mini-budget tax cuts of 2022.",
+        "easiestCue": "갈브레이스의 '말과 참새 이론'",
+        "targetWhy": "윌 로저스·갈브레이스의 비유는 경제사 대학 교양 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "비유가 '위에서 아래로 흘러감'을 그려 짐작할 길이 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 모두"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "돈이 모두 꼭대기에 배정됐다고 비꼬았습니다 … 이 이론",
+          "difWhy": "위에 몰아주면 아래로 흐른다 — 고교 경제",
+          "wor": 4,
+          "worWhy": "경제·시사 기본 어휘",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

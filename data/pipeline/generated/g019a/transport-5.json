@@ -1,239 +1,266 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "transport/5",
-  "midKey": "transport",
-  "subName": "도로·교통 체계",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "transport/5#g019a-C2-04",
-   "seed": {
-    "subject": "주차 미터기",
-    "aspect": null,
-    "ref": "C2-04",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1935년 처음 세워진 이 장치의 첫 시제품 별명은 '블랙 마리아'였고, 초기 것은 관리 요원이 이따금 태엽을 감아 주어야 했습니다. 뉴욕시가 2006년 12월 코니아일랜드에서 마지막 태엽식 한 칸짜리 기계를 걷어 낸 이 길가 장치는?",
-    "answer": "주차 미터기",
-    "acceptedAnswers": [
-     "파킹 미터"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '파킹 미터' · 본문 '한국어로는 주차 미터기 … 등'",
-    "explanation": "1960년 뉴욕시가 처음 뽑은 단속 요원은 모두 여성이었고, 남성 요원은 1967년에야 처음 뽑혔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 태엽식 한 칸짜리 기계 + 길가 장치",
-     "difWhy": "한 칸 길가 태엽 기계 — 관심 있는 사람 (경계 4)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 생활 장치 기원",
-     "acc": 4,
-     "accWhy": "자동차·교통 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "오클라호마시티에 세계에서 처음 세워진 … 이 길가 장치",
-     "difWhy": "첫 길가 요금 장치 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "생활 장치 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1935년 7월 16일 미국 오클라호마시티에 세계에서 처음 세워진 이 장치는, 변호사이자 신문 발행인 칼 매기의 부탁으로 오클라호마 주립대 공학 교수들이 만들었습니다. 첫 시제품의 별명은 '블랙 마리아'였고, 영국에는 1958년에야 들어온 이 길가 장치는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "1935년 7월 16일 오클라호마시티에 세계 처음 · 칼 매기와 오클라호마 주립대 교수 · 영국 1958년",
-     "addedCue": "태엽을 감아 주어야 했던 초기 방식 · 뉴욕 마지막 태엽식 철거",
-     "why": "첫 설치 도시(관심층 상식)를 빼고 기계 구조와 퇴장 뒷이야기로"
-    },
-    "generalHint": "미국 산타모니카의 것은 차량 감지기로 차가 떠나면 남은 시간을 지워, 다음 차가 공짜로 쓰지 못하게 한다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "길가 주차 시간만큼 요금을 받는 기계",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "영화·해외여행에서 접함",
-     "piece": "f02",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "C2-04",
-     "key": "b114",
-     "hint": "미국 산타모니카의 것은 차량 감지기로 차가 떠나면 남은 시간을 지워, 다음 차가 공짜로 쓰지 못하게 한다.",
-     "guess": "주차 미터기",
-     "confidence": "high",
-     "hit": true,
-     "answer": "주차 미터기"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Parking_meter"
-    ],
-    "facts": [
-     {
-      "claim": "1935년 7월 16일 오클라호마시티에 세계 첫 설치",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Parking_meter",
-      "note": "The world's first installed parking meter was in Oklahoma City on July 16, 1935."
-     },
-     {
-      "claim": "첫 작동 시제품 '블랙 마리아'",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Parking_meter",
-      "note": "Hale designed the first working parking meter, the Black Maria, in 1935."
-     },
-     {
-      "claim": "1960년 뉴욕시 첫 단속 요원은 모두 여성, 남성은 1967년",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Parking_meter",
-      "note": "In 1960, New York City hired its first crew of \"meter maids\"; all were women. It was not until 1967 that the first man was hired."
-     },
-     {
-      "claim": "매기 방식은 관리 요원이 이따금 태엽을 감아야",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Parking_meter",
-      "note": "At the same time, Magee's meters needed a service worker to wind the spring occasionally."
-     },
-     {
-      "claim": "2006년 12월 20일 코니아일랜드에서 뉴욕시 마지막 태엽식 한 칸짜리 기계식 미터기 철거",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Parking_meter",
-      "note": "New York City retired its last spring-loaded, single-space, mechanical parking meter at West 10th Street and Surf Avenue in Coney Island on December 20, 2006."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Parking_meter"
-    ],
-    "hintNote": "Parking meters in Santa Monica use vehicle detectors to prevent drivers from \"feeding the meter\" indefinitely, and to delete remaining time when a car departs so the next car cannot take any time without paying.",
-    "easiestCue": "마지막 태엽식 한 칸짜리 기계를 걷어 낸 이 길가 장치",
-    "targetWhy": "자동차 생활 장치의 옛 구조 — 애호가 세부(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "흔히 보는 길가 장치의 처음 이야기",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": [
-     "단정어 처음",
-     "단정어 처음,모두"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "transport/5",
+    "midKey": "transport",
+    "subName": "도로·교통 체계",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "transport/5#g019a-C2-05",
-   "seed": {
-    "subject": "택시",
-    "aspect": null,
-    "ref": "C2-05",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1897년 고틀리프 다임러가 만든 '다임러 빅토리아'가 엔진을 단 첫 이것으로 꼽힙니다. 영국 런던에서 이것을 몰려면 흔히 3년쯤 걸려 거리 2만 5천 곳을 익히는 시험 '더 날리지'를 거쳐야 하는데, 이것은 무엇일까요?",
-    "answer": "택시",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "영어 '택시캡'은 요금 미터기 '택시미터'와 말이 끄는 마차 '캐브리올레'를 합쳐 줄인 말입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "거리 2만 5천 곳을 익히는 시험 '더 날리지'",
-     "difWhy": "런던 기사 시험 — 방송 다큐 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 런던 택시",
-     "acc": 4,
-     "accWhy": "자동차·교통 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "transport/5#g019a-C2-04",
+      "seed": {
+        "subject": "주차 미터기",
+        "aspect": null,
+        "ref": "C2-04",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1935년 처음 세워진 이 장치의 첫 시제품 별명은 '블랙 마리아'였고, 초기 것은 관리 요원이 이따금 태엽을 감아 주어야 했습니다. 뉴욕시가 2006년 12월 코니아일랜드에서 마지막 태엽식 한 칸짜리 기계를 걷어 낸 이 길가 장치는?",
+        "answer": "주차 미터기",
+        "acceptedAnswers": [
+          "파킹 미터"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '파킹 미터' · 본문 '한국어로는 주차 미터기 … 등'",
+        "explanation": "1960년 뉴욕시가 처음 뽑은 단속 요원은 모두 여성이었고, 남성 요원은 1967년에야 처음 뽑혔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 태엽식 한 칸짜리 기계 + 길가 장치",
+          "difWhy": "한 칸 길가 태엽 기계 — 관심 있는 사람 (경계 4)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 생활 장치 기원",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "오클라호마시티에 세계에서 처음 세워진 … 이 길가 장치",
+          "difWhy": "첫 길가 요금 장치 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "생활 장치 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1935년 7월 16일 미국 오클라호마시티에 세계에서 처음 세워진 이 장치는, 변호사이자 신문 발행인 칼 매기의 부탁으로 오클라호마 주립대 공학 교수들이 만들었습니다. 첫 시제품의 별명은 '블랙 마리아'였고, 영국에는 1958년에야 들어온 이 길가 장치는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "1935년 7월 16일 오클라호마시티에 세계 처음 · 칼 매기와 오클라호마 주립대 교수 · 영국 1958년",
+          "addedCue": "태엽을 감아 주어야 했던 초기 방식 · 뉴욕 마지막 태엽식 철거",
+          "why": "첫 설치 도시(관심층 상식)를 빼고 기계 구조와 퇴장 뒷이야기로"
+        },
+        "generalHint": "영국에서는 1958년에야 처음 쓰이기 시작해 대부분의 도시와 읍으로 퍼졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "길가 주차 시간만큼 요금을 받는 기계",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "영화·해외여행에서 접함",
+          "piece": "f02",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "C2-04",
+          "key": "b114",
+          "hint": "미국 산타모니카의 것은 차량 감지기로 차가 떠나면 남은 시간을 지워, 다음 차가 공짜로 쓰지 못하게 한다.",
+          "guess": "주차 미터기",
+          "confidence": "high",
+          "hit": true,
+          "answer": "주차 미터기"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Parking_meter"
+        ],
+        "facts": [
+          {
+            "claim": "1935년 7월 16일 오클라호마시티에 세계 첫 설치",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Parking_meter",
+            "note": "The world's first installed parking meter was in Oklahoma City on July 16, 1935."
+          },
+          {
+            "claim": "첫 작동 시제품 '블랙 마리아'",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Parking_meter",
+            "note": "Hale designed the first working parking meter, the Black Maria, in 1935."
+          },
+          {
+            "claim": "1960년 뉴욕시 첫 단속 요원은 모두 여성, 남성은 1967년",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Parking_meter",
+            "note": "In 1960, New York City hired its first crew of \"meter maids\"; all were women. It was not until 1967 that the first man was hired."
+          },
+          {
+            "claim": "매기 방식은 관리 요원이 이따금 태엽을 감아야",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Parking_meter",
+            "note": "At the same time, Magee's meters needed a service worker to wind the spring occasionally."
+          },
+          {
+            "claim": "2006년 12월 20일 코니아일랜드에서 뉴욕시 마지막 태엽식 한 칸짜리 기계식 미터기 철거",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Parking_meter",
+            "note": "New York City retired its last spring-loaded, single-space, mechanical parking meter at West 10th Street and Surf Avenue in Coney Island on December 20, 2006."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "마지막 태엽식 한 칸짜리 기계를 걷어 낸 이 길가 장치",
+        "targetWhy": "자동차 생활 장치의 옛 구조 — 애호가 세부(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "흔히 보는 길가 장치의 처음 이야기",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [
+          "단정어 처음",
+          "단정어 처음,모두"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 태엽식 한 칸짜리 기계 + 길가 장치",
+          "difWhy": "한 칸 길가 태엽 기계 — 관심 있는 사람 (경계 4)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 생활 장치 기원",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "마른 전투 때 파리의 이것들이 병사들을 실어 날랐는데",
-     "difWhy": "마른의 택시 — 세계사 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "탈것 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "제1차 세계 대전 마른 전투 때 파리의 이것들이 병사들을 실어 날랐는데, 군사적 효과는 작았지만 군과 시민이 하나 된 상징이 되었습니다. 1897년 고틀리프 다임러가 만든 '다임러 빅토리아'가 엔진을 단 첫 이것으로 꼽히는데, 이것은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "제1차 세계 대전 마른 전투 때 파리의 이것들이 병사를 실어 나름",
-     "addedCue": "런던 운전사 시험 '더 날리지'(약 3년 · 거리 2만 5천)",
-     "why": "세계사 관심층의 '마른의 택시'를 빼고 런던 운전사 시험으로"
-    },
-    "generalHint": "런던의 이것은 회전 지름이 28피트를 넘으면 안 되는데, 사보이 호텔 입구의 작은 로터리가 그 까닭 가운데 하나로 꼽힌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "요금을 받고 손님을 태워 나르는 영업용 승용차",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상 교통수단",
-     "piece": "f04",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "C2-05",
-     "key": "b212",
-     "hint": "런던의 이것은 회전 지름이 28피트를 넘으면 안 되는데, 사보이 호텔 입구의 작은 로터리가 그 까닭 가운데 하나로 꼽힌다.",
-     "guess": "블랙 캡(런던 택시)",
-     "confidence": "high",
-     "hit": true,
-     "answer": "택시"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Taxi"
-    ],
-    "facts": [
-     {
-      "claim": "1897년 다임러가 만든 다임러 빅토리아 — 세계 첫 엔진 택시",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Taxi",
-      "note": "The Daimler Victoria—the world's first motorized-powered taximeter-cab—was built by Gottlieb Daimler in 1897 and began operating in Stuttgart in June 1897."
-     },
-     {
-      "claim": "taxicab = taximeter + cabriolet",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Taxi",
-      "note": "The word taxicab is a compound word formed as a contraction of taximeter and cabriolet."
-     },
-     {
-      "claim": "런던 블랙캡 운전사는 약 3년 걸리는 The Knowledge로 거리 2만 5천(25,000) 곳 익힘",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Taxi",
-      "note": "black cab taxi ... drivers ... are required to undergo a demanding process of learning and testing called The Knowledge. This typically takes around three years and equips them with a detailed command of 25,000 streets within central London"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Hackney_carriage"
-    ],
-    "hintNote": "London taxis must have a turning circle not greater than 8.535 m (28 ft). One reason for this is the configuration of the famed Savoy Hotel: the hotel entrance's small roundabout meant that vehicles needed the small turning circle",
-    "easiestCue": "런던에서 몰려면 '더 날리지' 시험을 거쳐야 하는 것",
-    "targetWhy": "더 날리지·다임러 빅토리아는 교통 애호가 세부 — 4(경계)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 대상의 역사 속 뜻밖의 장면",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "transport/5#g019a-C2-05",
+      "seed": {
+        "subject": "택시",
+        "aspect": null,
+        "ref": "C2-05",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1897년 고틀리프 다임러가 만든 '다임러 빅토리아'가 엔진을 단 첫 이것으로 꼽힙니다. 영국 런던에서 이것을 몰려면 흔히 3년쯤 걸려 거리 2만 5천 곳을 익히는 시험 '더 날리지'를 거쳐야 하는데, 이것은 무엇일까요?",
+        "answer": "택시",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "영어 '택시캡'은 요금 미터기 '택시미터'와 말이 끄는 마차 '캐브리올레'를 합쳐 줄인 말입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "거리 2만 5천 곳을 익히는 시험 '더 날리지'",
+          "difWhy": "런던 기사 시험 — 방송 다큐 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 런던 택시",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "마른 전투 때 파리의 이것들이 병사들을 실어 날랐는데",
+          "difWhy": "마른의 택시 — 세계사 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "탈것 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "제1차 세계 대전 마른 전투 때 파리의 이것들이 병사들을 실어 날랐는데, 군사적 효과는 작았지만 군과 시민이 하나 된 상징이 되었습니다. 1897년 고틀리프 다임러가 만든 '다임러 빅토리아'가 엔진을 단 첫 이것으로 꼽히는데, 이것은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "제1차 세계 대전 마른 전투 때 파리의 이것들이 병사를 실어 나름",
+          "addedCue": "런던 운전사 시험 '더 날리지'(약 3년 · 거리 2만 5천)",
+          "why": "세계사 관심층의 '마른의 택시'를 빼고 런던 운전사 시험으로"
+        },
+        "generalHint": "런던의 이것은 회전 지름이 28피트를 넘으면 안 되는데, 사보이 호텔 입구의 작은 로터리가 그 까닭 가운데 하나로 꼽힌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "요금을 받고 손님을 태워 나르는 영업용 승용차",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상 교통수단",
+          "piece": "f04",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "C2-05",
+          "key": "b212",
+          "hint": "런던의 이것은 회전 지름이 28피트를 넘으면 안 되는데, 사보이 호텔 입구의 작은 로터리가 그 까닭 가운데 하나로 꼽힌다.",
+          "guess": "블랙 캡(런던 택시)",
+          "confidence": "high",
+          "hit": true,
+          "answer": "택시"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Taxi"
+        ],
+        "facts": [
+          {
+            "claim": "1897년 다임러가 만든 다임러 빅토리아 — 세계 첫 엔진 택시",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Taxi",
+            "note": "The Daimler Victoria—the world's first motorized-powered taximeter-cab—was built by Gottlieb Daimler in 1897 and began operating in Stuttgart in June 1897."
+          },
+          {
+            "claim": "taxicab = taximeter + cabriolet",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Taxi",
+            "note": "The word taxicab is a compound word formed as a contraction of taximeter and cabriolet."
+          },
+          {
+            "claim": "런던 블랙캡 운전사는 약 3년 걸리는 The Knowledge로 거리 2만 5천(25,000) 곳 익힘",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Taxi",
+            "note": "black cab taxi ... drivers ... are required to undergo a demanding process of learning and testing called The Knowledge. This typically takes around three years and equips them with a detailed command of 25,000 streets within central London"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Hackney_carriage"
+        ],
+        "hintNote": "London taxis must have a turning circle not greater than 8.535 m (28 ft). One reason for this is the configuration of the famed Savoy Hotel: the hotel entrance's small roundabout meant that vehicles needed the small turning circle",
+        "easiestCue": "런던에서 몰려면 '더 날리지' 시험을 거쳐야 하는 것",
+        "targetWhy": "더 날리지·다임러 빅토리아는 교통 애호가 세부 — 4(경계)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 대상의 역사 속 뜻밖의 장면",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "거리 2만 5천 곳을 익히는 시험 '더 날리지'",
+          "difWhy": "런던 기사 시험 — 방송 다큐 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 런던 택시",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

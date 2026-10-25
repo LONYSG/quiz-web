@@ -1,136 +1,151 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "drinks/3",
-  "midKey": "drinks",
-  "subName": "맥주",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "drinks/3#g019a-L2-13",
-   "seed": {
-    "subject": "칭따오",
-    "aspect": null,
-    "ref": "L2-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1903년 세워진 이 양조장은 멕시코 은화 40만 달러를 자본금으로 삼았고, 1916년 일본의 대일본맥주에 팔렸다가 1949년 국유화되었습니다. 오랫동안 '라오산 샘의 광천수로 빚었다'고 광고해 온 이 맥주는?",
-    "answer": "칭따오",
-    "acceptedAnswers": [
-     "칭다오",
-     "칭다오 맥주",
-     "칭따오 맥주"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '칭다오 맥주'(국립국어원식 도시명 표기) · 한국 수입 상표 표기 '칭따오' 둘 다 흔함",
-    "explanation": "처음 이름은 '게르마니아 양조장'으로, 그 도시는 당시 독일이 빌려 쓰던 자오저우만 조차지에 있었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "'라오산 샘의 광천수로 빚었다'고 광고해 온 이 맥주",
-     "difWhy": "라오산 중국 맥주 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 브랜드 역사",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'게르마니아 양조장'이라는 이름으로 세웠고",
-     "difWhy": "독일 조차지 맥주 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 맥주 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1903년 홍콩에 본사를 둔 영국·독일 합작 회사가 '게르마니아 양조장'이라는 이름으로 세웠고, 이듬해 12월 첫 맥주를 내놓았습니다. 1916년 일본의 대일본맥주에 팔렸다가 1949년 국유화된 이 맥주는?",
-     "beforeExplanation": "상표에는 해안 잔교 끝에 선 정자 '회란각'이 그려져 있습니다.",
-     "removedCue": "'게르마니아 양조장'이라는 이름 (독일 조차지 연상)",
-     "addedCue": "멕시코 은화 40만 달러 자본금 · 라오산 샘 광천수 광고",
-     "why": "독일 조차지로 바로 잇는 옛 이름을 해설로 옮기고 자본금·광고 세부로 바꿈"
-    },
-    "generalHint": "1993년 6월 홍콩 증권거래소에 상장된 첫 중국 기업이 되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "중국 산둥의 항구 도시 이름이 붙은 맥주",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "광고로 유명한 맥주",
-     "piece": "f07",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "L2-13",
-     "key": "b265",
-     "hint": "1993년 6월 홍콩 증권거래소에 상장된 첫 중국 기업이 되었다.",
-     "guess": "칭다오 맥주",
-     "confidence": "high",
-     "hit": true,
-     "answer": "칭따오"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Tsingtao_Brewery"
-    ],
-    "facts": [
-     {
-      "claim": "1916년 대일본맥주에 매각, 1949년 국유화",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
-      "note": "it was decided the company would be sold to the Dai-Nippon Brewery ... 1949 when ... the new People's Republic of China confiscated all the shares ... and the business became a state-owned enterprise."
-     },
-     {
-      "claim": "홍콩 소재 영국·독일 합작 회사가 1903년 게르마니아 양조장으로 설립",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
-      "note": "Tsingtao Brewery was founded by the Anglo-German Brewery Co. Ltd., an English-German joint stock company based in Hong Kong ... The brewery was founded on August 15, 1903, as the Germania-Brauerei Tsingtao Co., Ltd (Germania Brewery)"
-     },
-     {
-      "claim": "1903년 8월 15일 게르마니아 양조장 설립 · 자본금 멕시코 은화 40만 달러",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
-      "note": "The brewery was founded on August 15, 1903, as the Germania-Brauerei Tsingtao Co., Ltd (Germania Brewery) with a paid-in capital of 400,000 Mexican silver dollars divided into 4,000 shares priced at $100 each."
-     },
-     {
-      "claim": "라오산 샘 광천수 광고",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
-      "note": "Tsingtao Beer was long advertized as being \"brewed with mineral water from the Laoshan Spring\", which contributed to its characteristic flavor"
-     },
-     {
-      "claim": "자오저우만 조차지 — 독일에 조차",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
-      "note": "The brewery was founded in 1903 as an Anglo–German business ... in Tsingtao (modern-day Qingdao), Kiautschou Bay Leased Territory, a 552 km2 (213 sq mi) area leased by the government of China to Imperial Germany."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Tsingtao_Brewery"
-    ],
-    "hintNote": "In June 1993, Tsingtao Brewery became the first Chinese firm listed on the Hong Kong Stock Exchange.",
-    "easiestCue": "'라오산 샘의 광천수'로 빚었다는 광고",
-    "targetWhy": "라오산 광천수·자본금은 맥주 애호가 세부 — 4(경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 마셔 본 맥주의 뜻밖 출신",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "drinks/3",
+    "midKey": "drinks",
+    "subName": "맥주",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "drinks/3#g019a-L2-13",
+      "seed": {
+        "subject": "칭따오",
+        "aspect": null,
+        "ref": "L2-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1903년 세워진 이 양조장은 멕시코 은화 40만 달러를 자본금으로 삼았고, 1916년 일본의 대일본맥주에 팔렸다가 1949년 국유화되었습니다. 오랫동안 '라오산 샘의 광천수로 빚었다'고 광고해 온 이 맥주는?",
+        "answer": "칭따오",
+        "acceptedAnswers": [
+          "칭다오",
+          "칭다오 맥주",
+          "칭따오 맥주"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '칭다오 맥주'(국립국어원식 도시명 표기) · 한국 수입 상표 표기 '칭따오' 둘 다 흔함",
+        "explanation": "처음 이름은 '게르마니아 양조장'으로, 그 도시는 당시 독일이 빌려 쓰던 자오저우만 조차지에 있었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'라오산 샘의 광천수로 빚었다'고 광고해 온 이 맥주",
+          "difWhy": "라오산 중국 맥주 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 브랜드 역사",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'게르마니아 양조장'이라는 이름으로 세웠고",
+          "difWhy": "독일 조차지 맥주 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 맥주 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1903년 홍콩에 본사를 둔 영국·독일 합작 회사가 '게르마니아 양조장'이라는 이름으로 세웠고, 이듬해 12월 첫 맥주를 내놓았습니다. 1916년 일본의 대일본맥주에 팔렸다가 1949년 국유화된 이 맥주는?",
+          "beforeExplanation": "상표에는 해안 잔교 끝에 선 정자 '회란각'이 그려져 있습니다.",
+          "removedCue": "'게르마니아 양조장'이라는 이름 (독일 조차지 연상)",
+          "addedCue": "멕시코 은화 40만 달러 자본금 · 라오산 샘 광천수 광고",
+          "why": "독일 조차지로 바로 잇는 옛 이름을 해설로 옮기고 자본금·광고 세부로 바꿈"
+        },
+        "generalHint": "1993년 6월 홍콩 증권거래소에 상장된 첫 중국 기업이 되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "중국 산둥의 항구 도시 이름이 붙은 맥주",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "광고로 유명한 맥주",
+          "piece": "f07",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "L2-13",
+          "key": "b265",
+          "hint": "1993년 6월 홍콩 증권거래소에 상장된 첫 중국 기업이 되었다.",
+          "guess": "칭다오 맥주",
+          "confidence": "high",
+          "hit": true,
+          "answer": "칭따오"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Tsingtao_Brewery"
+        ],
+        "facts": [
+          {
+            "claim": "1916년 대일본맥주에 매각, 1949년 국유화",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
+            "note": "it was decided the company would be sold to the Dai-Nippon Brewery ... 1949 when ... the new People's Republic of China confiscated all the shares ... and the business became a state-owned enterprise."
+          },
+          {
+            "claim": "홍콩 소재 영국·독일 합작 회사가 1903년 게르마니아 양조장으로 설립",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
+            "note": "Tsingtao Brewery was founded by the Anglo-German Brewery Co. Ltd., an English-German joint stock company based in Hong Kong ... The brewery was founded on August 15, 1903, as the Germania-Brauerei Tsingtao Co., Ltd (Germania Brewery)"
+          },
+          {
+            "claim": "1903년 8월 15일 게르마니아 양조장 설립 · 자본금 멕시코 은화 40만 달러",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
+            "note": "The brewery was founded on August 15, 1903, as the Germania-Brauerei Tsingtao Co., Ltd (Germania Brewery) with a paid-in capital of 400,000 Mexican silver dollars divided into 4,000 shares priced at $100 each."
+          },
+          {
+            "claim": "라오산 샘 광천수 광고",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
+            "note": "Tsingtao Beer was long advertized as being \"brewed with mineral water from the Laoshan Spring\", which contributed to its characteristic flavor"
+          },
+          {
+            "claim": "자오저우만 조차지 — 독일에 조차",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Tsingtao_Brewery",
+            "note": "The brewery was founded in 1903 as an Anglo–German business ... in Tsingtao (modern-day Qingdao), Kiautschou Bay Leased Territory, a 552 km2 (213 sq mi) area leased by the government of China to Imperial Germany."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Tsingtao_Brewery"
+        ],
+        "hintNote": "In June 1993, Tsingtao Brewery became the first Chinese firm listed on the Hong Kong Stock Exchange.",
+        "easiestCue": "'라오산 샘의 광천수'로 빚었다는 광고",
+        "targetWhy": "라오산 광천수·자본금은 맥주 애호가 세부 — 4(경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 마셔 본 맥주의 뜻밖 출신",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'라오산 샘의 광천수로 빚었다'고 광고해 온 이 맥주",
+          "difWhy": "라오산 중국 맥주 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 브랜드 역사",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

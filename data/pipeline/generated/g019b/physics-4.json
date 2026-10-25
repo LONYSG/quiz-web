@@ -1,137 +1,149 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "physics/4",
-  "midKey": "physics",
-  "subName": "열·에너지",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "physics/4#g019b-C2-20",
-   "seed": {
-    "subject": "다이아몬드",
-    "aspect": null,
-    "ref": "C2-20",
-    "pairedWith": 155
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 155,
-    "question": "1893년 프랑스 화학자 앙리 무아상은 애리조나 캐니언디아블로 근처 운석 구덩이의 돌에서 찾은 결정을 처음에 이 보석으로 잘못 알았다가, 1904년에야 탄화규소임을 밝혔습니다. 이 보석은 무엇일까요?",
-    "answer": "다이아몬드",
-    "acceptedAnswers": [
-     "금강석"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "금강석 — 다이아몬드의 한국어 이름(표준국어대사전)",
-    "explanation": "탄화규소는 열 전도율을 재는 감별기에서 이 보석과 비슷하게 읽혀, 전기 전도도 시험으로 가리는 편이 실용적이라고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "운석 구덩이 돌의 결정을 이 보석으로 잘못 알았다가 탄화규소로 밝힘",
-     "difWhy": "모아사나이트 착각 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "보석 이야깃거리",
-     "acc": 5,
-     "accWhy": "물리 — 중학 과학 교과 과목"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "돌이 열을 얼마나 잘 전하는지를 재어 진짜를 가리는 것",
-     "difWhy": "열 감별기와 다이아몬드 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 모이사나이트"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "보석상이 쓰는 감별기 가운데에는 돌이 열을 얼마나 잘 전하는지를 재어 진짜를 가리는 것이 있습니다. 1893년 애리조나 운석 구덩이의 돌에서 나온 탄화규소 결정은 열 전도율이 비슷해 이 감별기를 속이기 쉬운데, 처음 발견됐을 때도 이 보석으로 잘못 알려졌습니다. 이 보석은?",
-     "beforeExplanation": "그래서 전기가 얼마나 잘 통하는지 재는 시험으로 둘을 가리는 편이 실용적이라고 합니다.",
-     "removedCue": "돌이 열을 얼마나 잘 전하는지 재어 진짜를 가리는 감별기(관심층 — 다이아몬드 감별)",
-     "addedCue": "없음(쉬운 단서를 해설로 내림 — 무아상의 1893년 오인·1904년 확인이 남음)",
-     "why": "열 감별기는 보석 관심층이 바로 다이아몬드로 잇는 단서라 해설로 내림"
-    },
-    "generalHint": "무아상은 자신이 발전시킨 전기 아크로로 이 보석을 인공으로 만들어 보려 했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "탄소로 된 가장 단단한 천연 보석",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 보석",
-     "piece": "f09",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "C2-20",
-     "key": "b108",
-     "hint": "무아상은 자신이 발전시킨 전기 아크로로 이 보석을 인공으로 만들어 보려 했다.",
-     "guess": "다이아몬드",
-     "confidence": "high",
-     "hit": true,
-     "answer": "다이아몬드"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Moissanite"
-    ],
-    "facts": [
-     {
-      "claim": "1893년 메테오 크레이터 돌에서 발견, 처음엔 다이아몬드로 오인, 1904년 탄화규소로 확인",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Moissanite",
-      "note": "discovered by Henri Moissan while examining rock samples from what is now called Meteor Crater near Canyon Diablo, Arizona, in 1893 · He first misidentified the crystals as diamonds, and only in 1904 identified them as silicon carbide."
-     },
-     {
-      "claim": "열 전도율 감별기는 모이사나이트를 이 보석과 비슷하게 읽음",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Moissanite",
-      "note": "Testing equipment based on measuring thermal conductivity in particular may give results similar to diamond."
-     },
-     {
-      "claim": "전기 전도 시험이 더 실용적",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Moissanite",
-      "note": "a more practical test is electrical conductivity, which gives higher values for moissanite"
-     },
-     {
-      "claim": "무아상은 프랑스 화학자",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Moissanite",
-      "note": "It has the chemical formula SiC and is a rare mineral, discovered by the French chemist Henri Moissan in 1893."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Henri_Moissan"
-    ],
-    "hintNote": "Moissan contributed to the development of the electric arc furnace … and attempted to use pressure to produce synthetic diamonds from the more common form of carbon",
-    "easiestCue": "무아상이 탄화규소 결정을 처음에 이 보석으로 잘못 앎",
-    "targetWhy": "모이사나이트 발견사는 광물·보석 애호가 세부 — 1회차(모스 굳기 10)와 다른 사실",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 보석을 열 전도로 감별하는 세부",
-    "pairCheck": "1회차 155 질문(모스 굳기 10)·해설(굳기 10, 금강석)·힌트(없음)와 겹치지 않음 — 열 전도 감별·모이사나이트는 새 사실",
-    "dbCheck": "answercheck pair-or-different — 155 와 같은 답, (가) 2회차",
-    "warn": [
-     "단정어 처음"
-    ],
-    "first": {
-     "id": 155,
-     "question": "광물의 굳기를 비교하는 '모스 굳기계'에서 가장 단단한 굳기 10에 해당하는 광물은?",
-     "explanation": "모스 굳기계에서 굳기 10으로 가장 단단한 광물은 다이아몬드(금강석)이다.",
-     "hint": null,
-     "difficulty": 2
+  "_meta": {
+    "round": "g019b",
+    "subId": "physics/4",
+    "midKey": "physics",
+    "subName": "열·에너지",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "physics/4#g019b-C2-20",
+      "seed": {
+        "subject": "다이아몬드",
+        "aspect": null,
+        "ref": "C2-20",
+        "pairedWith": 155
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 155,
+        "question": "1893년 프랑스 화학자 앙리 무아상은 애리조나 캐니언디아블로 근처 운석 구덩이의 돌에서 찾은 결정을 처음에 이 보석으로 잘못 알았다가, 1904년에야 탄화규소임을 밝혔습니다. 이 보석은 무엇일까요?",
+        "answer": "다이아몬드",
+        "acceptedAnswers": [
+          "금강석"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "금강석 — 다이아몬드의 한국어 이름(표준국어대사전)",
+        "explanation": "탄화규소는 열 전도율을 재는 감별기에서 이 보석과 비슷하게 읽혀, 전기 전도도 시험으로 가리는 편이 실용적이라고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "운석 구덩이 돌의 결정을 이 보석으로 잘못 알았다가 탄화규소로 밝힘",
+          "difWhy": "모아사나이트 착각 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "보석 이야깃거리",
+          "acc": 5,
+          "accWhy": "물리 — 중학 과학 교과 과목",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "돌이 열을 얼마나 잘 전하는지를 재어 진짜를 가리는 것",
+          "difWhy": "열 감별기와 다이아몬드 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 모이사나이트"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "보석상이 쓰는 감별기 가운데에는 돌이 열을 얼마나 잘 전하는지를 재어 진짜를 가리는 것이 있습니다. 1893년 애리조나 운석 구덩이의 돌에서 나온 탄화규소 결정은 열 전도율이 비슷해 이 감별기를 속이기 쉬운데, 처음 발견됐을 때도 이 보석으로 잘못 알려졌습니다. 이 보석은?",
+          "beforeExplanation": "그래서 전기가 얼마나 잘 통하는지 재는 시험으로 둘을 가리는 편이 실용적이라고 합니다.",
+          "removedCue": "돌이 열을 얼마나 잘 전하는지 재어 진짜를 가리는 감별기(관심층 — 다이아몬드 감별)",
+          "addedCue": "없음(쉬운 단서를 해설로 내림 — 무아상의 1893년 오인·1904년 확인이 남음)",
+          "why": "열 감별기는 보석 관심층이 바로 다이아몬드로 잇는 단서라 해설로 내림"
+        },
+        "generalHint": "무아상의 이름을 딴 모이사나이트는 보석으로도 팔리며, 일부 광학 성질이 이 보석을 앞선다고 한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "탄소로 된 가장 단단한 천연 보석",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 보석",
+          "piece": "f09",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "C2-20",
+          "key": "b108",
+          "hint": "무아상은 자신이 발전시킨 전기 아크로로 이 보석을 인공으로 만들어 보려 했다.",
+          "guess": "다이아몬드",
+          "confidence": "high",
+          "hit": true,
+          "answer": "다이아몬드"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Moissanite"
+        ],
+        "facts": [
+          {
+            "claim": "1893년 메테오 크레이터 돌에서 발견, 처음엔 다이아몬드로 오인, 1904년 탄화규소로 확인",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Moissanite",
+            "note": "discovered by Henri Moissan while examining rock samples from what is now called Meteor Crater near Canyon Diablo, Arizona, in 1893 · He first misidentified the crystals as diamonds, and only in 1904 identified them as silicon carbide."
+          },
+          {
+            "claim": "열 전도율 감별기는 모이사나이트를 이 보석과 비슷하게 읽음",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Moissanite",
+            "note": "Testing equipment based on measuring thermal conductivity in particular may give results similar to diamond."
+          },
+          {
+            "claim": "전기 전도 시험이 더 실용적",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Moissanite",
+            "note": "a more practical test is electrical conductivity, which gives higher values for moissanite"
+          },
+          {
+            "claim": "무아상은 프랑스 화학자",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Moissanite",
+            "note": "It has the chemical formula SiC and is a rare mineral, discovered by the French chemist Henri Moissan in 1893."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "무아상이 탄화규소 결정을 처음에 이 보석으로 잘못 앎",
+        "targetWhy": "모이사나이트 발견사는 광물·보석 애호가 세부 — 1회차(모스 굳기 10)와 다른 사실",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 보석을 열 전도로 감별하는 세부",
+        "pairCheck": "1회차 155 질문(모스 굳기 10)·해설(굳기 10, 금강석)·힌트(없음)와 겹치지 않음 — 열 전도 감별·모이사나이트는 새 사실",
+        "dbCheck": "answercheck pair-or-different — 155 와 같은 답, (가) 2회차",
+        "warn": [
+          "단정어 처음"
+        ],
+        "first": {
+          "id": 155,
+          "question": "광물의 굳기를 비교하는 '모스 굳기계'에서 가장 단단한 굳기 10에 해당하는 광물은?",
+          "explanation": "모스 굳기계에서 굳기 10으로 가장 단단한 광물은 다이아몬드(금강석)이다.",
+          "hint": null,
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "운석 구덩이 돌의 결정을 이 보석으로 잘못 알았다가 탄화규소로 밝힘",
+          "difWhy": "모아사나이트 착각 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "보석 이야깃거리",
+          "acc": 5,
+          "accWhy": "물리 — 중학 과학 교과 과목"
+        },
+        "g020": {
+          "why": "V026 fix famous-one·weak",
+          "verdict": "fix"
+        }
+      }
     }
-   }
-  }
- ]
+  ]
 }

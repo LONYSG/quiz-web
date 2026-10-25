@@ -1,321 +1,366 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "brands/1",
-  "midKey": "brands",
-  "subName": "기업 창업·역사",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "brands/1#g019a-L2-07",
-   "seed": {
-    "subject": "펩시",
-    "aspect": null,
-    "ref": "L2-07",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1893년 미국 노스캐롤라이나주 뉴번의 약사 케일럽 브래덤이 자기 약국에서 '브래드의 음료'라는 이름으로 팔기 시작했습니다. 1923년 크게 출렁이던 설탕값에 투기했다가 파산하기도 한 이 음료 회사는?",
-    "answer": "펩시",
-    "acceptedAnswers": [
-     "펩시콜라"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '펩시' 문서 — '펩시 콜라(Pepsi-Cola)'로 이름을 바꿨다고 씀, 펩시콜라는 흔한 일상 표기",
-    "explanation": "1898년 소화 효소 '펩신'의 성분을 넣었다는 데서 지금의 이름으로 바꾸었다고 설명됩니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "'브래드의 음료'라는 이름으로 팔기 시작",
-     "difWhy": "Brad's Drink — 브랜드 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 브랜드 기원",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "'브래드의 음료'라는 이름으로 팔기 시작",
-     "difWhy": "Brad's Drink — 브랜드 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 브랜드 기원"
-    },
-    "rewrite": null,
-    "generalHint": "1972년 소련과 물물 교환 계약을 맺어, 자기 음료를 소련에 들이는 대신 스톨리치나야 보드카의 서방 판매권을 얻었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "미국의 콜라 음료 브랜드이자 그 회사",
-    "familiarity": {
-     "judge": 3,
-     "pct": 99,
-     "why": "유명 음료 브랜드",
-     "piece": "f02",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "L2-07",
-     "key": "b148",
-     "hint": "1972년 소련과 물물 교환 계약을 맺어, 자기 음료를 소련에 들이는 대신 스톨리치나야 보드카의 서방 판매권을 얻었다.",
-     "guess": "펩시",
-     "confidence": "high",
-     "hit": true,
-     "answer": "펩시"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Pepsi",
-     "https://ko.wikipedia.org/wiki/%ED%8E%A9%EC%8B%9C"
-    ],
-    "facts": [
-     {
-      "claim": "1893년 브래덤이 '브래드의 음료'로 뉴번의 약국에서 판매",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Pepsi",
-      "note": "Pepsi was invented in 1893 as \"Brad's Drink\" by Caleb Bradham, who sold the drink at his drugstore in New Bern, North Carolina."
-     },
-     {
-      "claim": "1923년 설탕값 투기 손실로 파산",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Pepsi",
-      "note": "In 1923, the Pepsi-Cola Company entered bankruptcy—in large part due to financial losses incurred by speculating on the wildly fluctuating sugar prices as a result of World War I."
-     },
-     {
-      "claim": "1898년 펩신 성분 때문에 이름을 바꿈",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Pepsi",
-      "note": "It was renamed \"Pepsi-Cola\" in 1898 due to its formula's inclusion of essence of pepsin."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Pepsi"
-    ],
-    "hintNote": "In 1972, PepsiCo struck a barter agreement with the government of the Soviet Union, in which PepsiCo was granted exportation and Western marketing rights to Stolichnaya vodka in exchange for importation and Soviet marketing of Pepsi.",
-    "easiestCue": "약사 케일럽 브래덤이 자기 약국에서 '브래드의 음료'라는 이름으로 팔기 시작했습니다",
-    "targetWhy": "창업자 이름·옛 이름은 기업사 애호가 세부 — '약국 음료'는 코카콜라와도 겹쳐 그것만으로는 안 풀림 (4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 브랜드의 출발과 파산 이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "brands/1",
+    "midKey": "brands",
+    "subName": "기업 창업·역사",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "brands/1#g019a-L2-08",
-   "seed": {
-    "subject": "농심",
-    "aspect": null,
-    "ref": "L2-08",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1981년 3월 미국 켈로그와 손잡고 합작 회사를 세운 한국 식품 회사입니다. 1991년 씨앗 모양을 본뜬 지금의 로고를 내놓은 이 회사는 어디일까요?",
-    "answer": "농심",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1971년 12월 이 회사는 과자 새우깡을 내놓았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1981년 3월 미국 켈로그와 손잡고 합작 회사",
-     "difWhy": "농심켈로그 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 기업 역사",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "brands/1#g019a-L2-07",
+      "seed": {
+        "subject": "펩시",
+        "aspect": null,
+        "ref": "L2-07",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1893년 미국 노스캐롤라이나주 뉴번의 약사 케일럽 브래덤이 자기 약국에서 '브래드의 음료'라는 이름으로 팔기 시작했습니다. 1923년 크게 출렁이던 설탕값에 투기했다가 파산하기도 한 이 음료 회사는?",
+        "answer": "펩시",
+        "acceptedAnswers": [
+          "펩시콜라"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '펩시' 문서 — '펩시 콜라(Pepsi-Cola)'로 이름을 바꿨다고 씀, 펩시콜라는 흔한 일상 표기",
+        "explanation": "1898년 소화 효소 '펩신'의 성분을 넣었다는 데서 지금의 이름으로 바꾸었다고 설명됩니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'브래드의 음료'라는 이름으로 팔기 시작",
+          "difWhy": "Brad's Drink — 브랜드 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 브랜드 기원",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "'브래드의 음료'라는 이름으로 팔기 시작",
+          "difWhy": "Brad's Drink — 브랜드 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 브랜드 기원"
+        },
+        "rewrite": null,
+        "generalHint": "1972년 소련과 물물 교환 계약을 맺어, 자기 음료를 소련에 들이는 대신 스톨리치나야 보드카의 서방 판매권을 얻었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "미국의 콜라 음료 브랜드이자 그 회사",
+        "familiarity": {
+          "judge": 3,
+          "pct": 99,
+          "why": "유명 음료 브랜드",
+          "piece": "f02",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "L2-07",
+          "key": "b148",
+          "hint": "1972년 소련과 물물 교환 계약을 맺어, 자기 음료를 소련에 들이는 대신 스톨리치나야 보드카의 서방 판매권을 얻었다.",
+          "guess": "펩시",
+          "confidence": "high",
+          "hit": true,
+          "answer": "펩시"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Pepsi",
+          "https://ko.wikipedia.org/wiki/%ED%8E%A9%EC%8B%9C"
+        ],
+        "facts": [
+          {
+            "claim": "1893년 브래덤이 '브래드의 음료'로 뉴번의 약국에서 판매",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Pepsi",
+            "note": "Pepsi was invented in 1893 as \"Brad's Drink\" by Caleb Bradham, who sold the drink at his drugstore in New Bern, North Carolina."
+          },
+          {
+            "claim": "1923년 설탕값 투기 손실로 파산",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Pepsi",
+            "note": "In 1923, the Pepsi-Cola Company entered bankruptcy—in large part due to financial losses incurred by speculating on the wildly fluctuating sugar prices as a result of World War I."
+          },
+          {
+            "claim": "1898년 펩신 성분 때문에 이름을 바꿈",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Pepsi",
+            "note": "It was renamed \"Pepsi-Cola\" in 1898 due to its formula's inclusion of essence of pepsin."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Pepsi"
+        ],
+        "hintNote": "In 1972, PepsiCo struck a barter agreement with the government of the Soviet Union, in which PepsiCo was granted exportation and Western marketing rights to Stolichnaya vodka in exchange for importation and Soviet marketing of Pepsi.",
+        "easiestCue": "약사 케일럽 브래덤이 자기 약국에서 '브래드의 음료'라는 이름으로 팔기 시작했습니다",
+        "targetWhy": "창업자 이름·옛 이름은 기업사 애호가 세부 — '약국 음료'는 코카콜라와도 겹쳐 그것만으로는 안 풀림 (4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 브랜드의 출발과 파산 이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'브래드의 음료'라는 이름으로 팔기 시작",
+          "difWhy": "Brad's Drink — 브랜드 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 브랜드 기원",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1965년 '롯데공업'이라는 이름으로 세워진 식품 회사",
-     "difWhy": "롯데공업 후신 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 기업 기원"
+    {
+      "seedId": "brands/1#g019a-L2-08",
+      "seed": {
+        "subject": "농심",
+        "aspect": null,
+        "ref": "L2-08",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1981년 3월 미국 켈로그와 손잡고 합작 회사를 세운 한국 식품 회사입니다. 1991년 씨앗 모양을 본뜬 지금의 로고를 내놓은 이 회사는 어디일까요?",
+        "answer": "농심",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1971년 12월 이 회사는 과자 새우깡을 내놓았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1981년 3월 미국 켈로그와 손잡고 합작 회사",
+          "difWhy": "농심켈로그 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기업 역사",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1965년 '롯데공업'이라는 이름으로 세워진 식품 회사",
+          "difWhy": "롯데공업 후신 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 기업 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1965년 '롯데공업'이라는 이름으로 세워진 식품 회사로, 1978년 지금 이름으로 바꾸었습니다. 1981년에는 미국 켈로그와 손잡고 합작 회사를 세우기도 한 이 회사는 어디일까요?",
+          "beforeExplanation": null,
+          "removedCue": "1965년 '롯데공업'으로 세워져 1978년 이름을 바꿈",
+          "addedCue": "1991년 씨앗 모양 로고",
+          "why": "롯데공업 후신(관심층 상식)을 빼고 합작·로고 세부로"
+        },
+        "generalHint": "1979년 도입한 이 회사의 옛 로고는 홍익대 권명광 교수가 만들었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "라면과 과자로 이름난 한국 식품 회사",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "국민 식품 회사",
+          "piece": "f09",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "L2-08",
+          "key": "b121",
+          "hint": "1979년 도입한 이 회사의 옛 로고는 홍익대 권명광 교수가 만들었다.",
+          "guess": "롯데",
+          "confidence": "low",
+          "hit": false,
+          "answer": "농심"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC"
+        ],
+        "facts": [
+          {
+            "claim": "1981년 켈로그와 합작으로 농심켈로그 설립",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC",
+            "note": "1981년 3월: 미국 켈로그社와 합작으로 농심켈로그 설립"
+          },
+          {
+            "claim": "1971년 12월 새우깡 출시",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC",
+            "note": "1971년 12월: 새우깡 출시"
+          },
+          {
+            "claim": "1991년 씨앗 모양 로고",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC",
+            "note": "현재의 로고는 1991년에 발표되었으며, 씨앗의 형태를 형상화한 것이다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC"
+        ],
+        "hintNote": "1979년: 농심(♥農心) 구 로고 도입 (홍익대학교 권명광 교수의 작업)",
+        "easiestCue": "1981년 3월 미국 켈로그와 손잡고 합작 회사를 세운",
+        "targetWhy": "기업사 세부 — 관심층/애호가(경계 3: 합작사 이름을 아는 사람은 바로 풂)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "롯데 창업가 형제 이야기를 아는 사람에게는 바로 풀린다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1981년 3월 미국 켈로그와 손잡고 합작 회사",
+          "difWhy": "농심켈로그 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기업 역사",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1965년 '롯데공업'이라는 이름으로 세워진 식품 회사로, 1978년 지금 이름으로 바꾸었습니다. 1981년에는 미국 켈로그와 손잡고 합작 회사를 세우기도 한 이 회사는 어디일까요?",
-     "beforeExplanation": null,
-     "removedCue": "1965년 '롯데공업'으로 세워져 1978년 이름을 바꿈",
-     "addedCue": "1991년 씨앗 모양 로고",
-     "why": "롯데공업 후신(관심층 상식)을 빼고 합작·로고 세부로"
-    },
-    "generalHint": "1979년 도입한 이 회사의 옛 로고는 홍익대 권명광 교수가 만들었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "라면과 과자로 이름난 한국 식품 회사",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "국민 식품 회사",
-     "piece": "f09",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "L2-08",
-     "key": "b121",
-     "hint": "1979년 도입한 이 회사의 옛 로고는 홍익대 권명광 교수가 만들었다.",
-     "guess": "롯데",
-     "confidence": "low",
-     "hit": false,
-     "answer": "농심"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC"
-    ],
-    "facts": [
-     {
-      "claim": "1981년 켈로그와 합작으로 농심켈로그 설립",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC",
-      "note": "1981년 3월: 미국 켈로그社와 합작으로 농심켈로그 설립"
-     },
-     {
-      "claim": "1971년 12월 새우깡 출시",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC",
-      "note": "1971년 12월: 새우깡 출시"
-     },
-     {
-      "claim": "1991년 씨앗 모양 로고",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC",
-      "note": "현재의 로고는 1991년에 발표되었으며, 씨앗의 형태를 형상화한 것이다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EB%86%8D%EC%8B%AC"
-    ],
-    "hintNote": "1979년: 농심(♥農心) 구 로고 도입 (홍익대학교 권명광 교수의 작업)",
-    "easiestCue": "1981년 3월 미국 켈로그와 손잡고 합작 회사를 세운",
-    "targetWhy": "기업사 세부 — 관심층/애호가(경계 3: 합작사 이름을 아는 사람은 바로 풂)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "롯데 창업가 형제 이야기를 아는 사람에게는 바로 풀린다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "brands/1#g019a-L2-09",
-   "seed": {
-    "subject": "네이버",
-    "aspect": null,
-    "ref": "L2-09",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "창업자가 삼성SDS에서 일하다 1999년 세운 이 회사는, 2000년 8월 검색 결과를 블로그·웹사이트·이미지 등 종류별로 한 쪽에 모아 보여 주는 '통합 검색'을 내놓았습니다. 한국 업체 가운데 처음으로 자체 검색 엔진을 만든 이 인터넷 기업은?",
-    "answer": "네이버",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "야후의 제품 전략 부사장이던 브래들리 호로비츠는 '야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안했다고 밝혔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "검색 결과를 … 종류별로 한 쪽에 모아 보여 주는 '통합 검색'",
-     "difWhy": "통합검색 포털 — IT 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 기업 역사",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "'야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안",
-     "difWhy": "지식iN 원조 포털 — 일상",
-     "wor": 3,
-     "worWhy": "유명 기업 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "야후의 제품 전략 부사장이던 브래들리 호로비츠는 '야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안했다고 밝혔습니다. 창업자가 삼성SDS에서 일하다 1999년 세운 이 한국 인터넷 기업은?",
-     "beforeExplanation": "회사 이름은 'navigate'에 사람을 뜻하는 '-er'를 붙여, 정보의 바다를 항해하는 사람이라는 뜻을 담았습니다.",
-     "removedCue": "'야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안 (지식iN)",
-     "addedCue": "2000년 8월 통합 검색 · 한국 첫 자체 검색 엔진",
-     "why": "누구나 아는 지식iN 연상을 해설로 옮기고 검색 서비스 초기사로 바꿈"
-    },
-    "generalHint": "2000년 7월 한게임커뮤니케이션을 합병했고, 이듬해 9월에는 회사 이름을 바꾸었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "검색 포털을 운영하는 한국 인터넷 기업",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "국내 최대 포털",
-     "piece": "f01",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "L2-09",
-     "key": "b168",
-     "hint": "2000년 7월 한게임커뮤니케이션을 합병했고, 이듬해 9월에는 회사 이름을 바꾸었다.",
-     "guess": "네이버(NHN)",
-     "confidence": "high",
-     "hit": true,
-     "answer": "네이버"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Lee_Hae-jin",
-     "https://en.wikipedia.org/wiki/Naver"
-    ],
-    "facts": [
-     {
-      "claim": "창업자 이해진은 삼성SDS에서 일하다 1999년 네이버 설립",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Lee_Hae-jin",
-      "note": "Lee began his career at Samsung SDS before founding Naver.com in 1999."
-     },
-     {
-      "claim": "야후 제품 전략 부사장 호로비츠가 지식iN을 야후 앤서즈의 영감으로 꼽음",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Naver",
-      "note": "Bradley Horowitz, former Vice President of Product Strategy at Yahoo!, has cited Knowledge iN as the inspiration for Yahoo! Answers, which was launched three years after Naver introduced the original service."
-     },
-     {
-      "claim": "2000년 8월 통합 검색 · 한국 첫 자체 검색 엔진",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Naver",
-      "note": "Naver was the first Korean web provider to develop its own search engine. ... In August 2000, Naver launched its 'comprehensive search' service, which allows users to get a variety of results from a single search query on one page, organized by type, including blogs, websites, images, and web communities."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EB%84%A4%EC%9D%B4%EB%B2%84_(%EA%B8%B0%EC%97%85)"
-    ],
-    "hintNote": "2000년 7월 네이버컴이 한게임커뮤니케이션을 인수합병한 후 2001년 9월 사명을 네이버컴에서 NHN으로 변경하였으며",
-    "easiestCue": "창업자가 삼성SDS 출신 · 1999년 설립",
-    "targetWhy": "삼성SDS 사내 출신 창업·통합 검색 도입은 IT 관심층 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "한국 질문·답변 서비스를 떠올리면 추리로 닿는다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "brands/1#g019a-L2-09",
+      "seed": {
+        "subject": "네이버",
+        "aspect": null,
+        "ref": "L2-09",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "창업자가 삼성SDS에서 일하다 1999년 세운 이 회사는, 2000년 8월 한 번의 검색으로 여러 종류의 결과를 한 쪽에 모아 보여 주는 '통합 검색'을 내놓았습니다. 한국 업체 가운데 처음으로 자체 검색 엔진을 만든 이 인터넷 기업은?",
+        "answer": "네이버",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "야후의 제품 전략 부사장이던 브래들리 호로비츠는 '야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안했다고 밝혔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "검색 결과를 … 종류별로 한 쪽에 모아 보여 주는 '통합 검색'",
+          "difWhy": "통합검색 포털 — IT 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기업 역사",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "'야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안",
+          "difWhy": "지식iN 원조 포털 — 일상",
+          "wor": 3,
+          "worWhy": "유명 기업 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "야후의 제품 전략 부사장이던 브래들리 호로비츠는 '야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안했다고 밝혔습니다. 창업자가 삼성SDS에서 일하다 1999년 세운 이 한국 인터넷 기업은?",
+          "beforeExplanation": "회사 이름은 'navigate'에 사람을 뜻하는 '-er'를 붙여, 정보의 바다를 항해하는 사람이라는 뜻을 담았습니다.",
+          "removedCue": "'야후! 앤서즈'가 이 회사의 질문·답변 서비스에서 착안 (지식iN)",
+          "addedCue": "2000년 8월 통합 검색 · 한국 첫 자체 검색 엔진",
+          "why": "누구나 아는 지식iN 연상을 해설로 옮기고 검색 서비스 초기사로 바꿈"
+        },
+        "generalHint": "2000년 7월 한게임커뮤니케이션을 합병했고, 이듬해 9월에는 회사 이름을 바꾸었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "검색 포털을 운영하는 한국 인터넷 기업",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "국내 최대 포털",
+          "piece": "f01",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "L2-09",
+          "key": "b168",
+          "hint": "2000년 7월 한게임커뮤니케이션을 합병했고, 이듬해 9월에는 회사 이름을 바꾸었다.",
+          "guess": "네이버(NHN)",
+          "confidence": "high",
+          "hit": true,
+          "answer": "네이버"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Lee_Hae-jin",
+          "https://en.wikipedia.org/wiki/Naver"
+        ],
+        "facts": [
+          {
+            "claim": "창업자 이해진은 삼성SDS에서 일하다 1999년 네이버 설립",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Lee_Hae-jin",
+            "note": "Lee began his career at Samsung SDS before founding Naver.com in 1999."
+          },
+          {
+            "claim": "야후 제품 전략 부사장 호로비츠가 지식iN을 야후 앤서즈의 영감으로 꼽음",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Naver",
+            "note": "Bradley Horowitz, former Vice President of Product Strategy at Yahoo!, has cited Knowledge iN as the inspiration for Yahoo! Answers, which was launched three years after Naver introduced the original service."
+          },
+          {
+            "claim": "2000년 8월 통합 검색 · 한국 첫 자체 검색 엔진",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Naver",
+            "note": "Naver was the first Korean web provider to develop its own search engine. ... In August 2000, Naver launched its 'comprehensive search' service, which allows users to get a variety of results from a single search query on one page, organized by type, including blogs, websites, images, and web communities."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EB%84%A4%EC%9D%B4%EB%B2%84_(%EA%B8%B0%EC%97%85)"
+        ],
+        "hintNote": "2000년 7월 네이버컴이 한게임커뮤니케이션을 인수합병한 후 2001년 9월 사명을 네이버컴에서 NHN으로 변경하였으며",
+        "easiestCue": "창업자가 삼성SDS 출신 · 1999년 설립",
+        "targetWhy": "삼성SDS 사내 출신 창업·통합 검색 도입은 IT 관심층 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "한국 질문·답변 서비스를 떠올리면 추리로 닿는다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "검색 결과를 … 종류별로 한 쪽에 모아 보여 주는 '통합 검색'",
+          "difWhy": "통합검색 포털 — IT 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기업 역사",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 fix assertive",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

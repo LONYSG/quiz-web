@@ -1,364 +1,409 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "society/1",
-  "midKey": "society",
-  "subName": "교육 제도",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "society/1#g019a-H2-12",
-   "seed": {
-    "subject": "유치원",
-    "aspect": null,
-    "ref": "H2-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "미국의 첫 번째 이 교육기관은 1856년 위스콘신주 워터타운에서 마르가레테 마이어슈르츠가 독일어로 열었고, 영어로 된 첫 번째 것은 1860년 엘리자베스 피바디가 열었습니다. 이 교육기관은 무엇일까요?",
-    "answer": "유치원",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "독일 교육자 프뢰벨이 1840년 자기 시설에 붙인 이름은 아이들을 정원의 식물처럼 돌봐야 한다는 생각을 담았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 독일어로 열었고 + 이 교육기관",
-     "difWhy": "독일 기원 교육기관 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 제도 기원",
-     "acc": 4,
-     "accWhy": "사회 제도 — 고교 사회 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'아이들을 무신론자로 만든다'며 이런 기관을 모두 금지",
-     "difWhy": "프뢰벨 어린이 기관 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "교육 제도 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1851년 프로이센 정부는 이 교육기관을 다룬 책이 '사회주의 체제의 일부'이며 '아이들을 무신론자로 만든다'며 이런 기관을 모두 금지했습니다. 미국의 첫 번째 것은 1856년 위스콘신주 워터타운에서 마르가레테 마이어슈르츠가 독일어로 열었는데, 이 교육기관은?",
-     "beforeExplanation": null,
-     "removedCue": "'아이들을 무신론자로 만든다'며 이런 기관을 모두 금지 (프로이센 금지령)",
-     "addedCue": "1860년 엘리자베스 피바디의 첫 영어 기관",
-     "why": "프뢰벨로 이어지는 금지령을 빼고 미국 도입사 세부로 바꿈"
-    },
-    "generalHint": "1873년 미국 세인트루이스에서 수전 블로가 공공 재정으로 운영하는 첫 이 기관을 세웠다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "초등학교 입학 전 어린이를 가르치는 교육기관",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상 교육기관",
-     "piece": "f05",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "H2-12",
-     "key": "b125",
-     "hint": "1873년 미국 세인트루이스에서 수전 블로가 공공 재정으로 운영하는 첫 이 기관을 세웠다.",
-     "guess": "유치원",
-     "confidence": "high",
-     "hit": true,
-     "answer": "유치원"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Kindergarten"
-    ],
-    "facts": [
-     {
-      "claim": "미국 첫 유치원 1856년 워터타운, 마르가레테 마이어슈르츠가 독일어로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kindergarten",
-      "note": "The first kindergarten in the US was founded in Watertown, Wisconsin, in 1856, and was conducted in German by Margaretha Meyer-Schurz."
-     },
-     {
-      "claim": "1840년 프뢰벨이 '아이들의 정원' — 정원의 식물처럼",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Kindergarten",
-      "note": "He renamed his institute Kindergarten (meaning \"garden of children\") on June 28, 1840, reflecting his belief that children should be nurtured and nourished \"like plants in a garden\"."
-     },
-     {
-      "claim": "1860년 엘리자베스 피바디가 미국 첫 영어 유치원",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kindergarten",
-      "note": "Elizabeth Peabody founded the first English-language kindergarten in the US in 1860."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Kindergarten"
-    ],
-    "hintNote": "The first publicly financed kindergarten in the US was established in St. Louis in 1873 by Susan Blow",
-    "easiestCue": "1856년 워터타운에서 독일어로 연 미국 첫 교육기관",
-    "targetWhy": "마이어슈르츠·피바디는 교육사 대학 교양 — 4(경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 다닌 기관의 뜻밖 역사",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 모두"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "society/1",
+    "midKey": "society",
+    "subName": "교육 제도",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "society/1#g019a-H2-13",
-   "seed": {
-    "subject": "옥스퍼드 대학교",
-    "aspect": null,
-    "ref": "H2-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1355년 2월 10일, 이 대학 학생 몇이 선술집 포도주 맛을 따지다 벌인 싸움이 폭동으로 번져 학생 63명이 숨졌다고 흔히 전합니다. 그 뒤 시장과 주민 60명은 1825년까지 해마다 희생자 미사에 나가고 죽은 학자 한 명당 1페니를 대학에 내야 했는데, 이 대학은?",
-    "answer": "옥스퍼드 대학교",
-    "acceptedAnswers": [
-     "옥스포드 대학교",
-     "옥스퍼드 대학",
-     "옥스퍼드"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '옥스퍼드 대학교', 넘겨주기 '옥스포드 대학교' 확인 · '옥스퍼드'만 치는 줄임은 흔함",
-    "explanation": "이 대학은 1167년 헨리 2세가 잉글랜드 사람의 파리 대학 유학을 막은 뒤 빠르게 커졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1355년 2월 10일 … 포도주 맛을 따지다 벌인 싸움",
-     "difWhy": "성 스콜라스티카 폭동 — 역사 애호가",
-     "wor": 3,
-     "worWhy": "대학 역사 이야깃거리",
-     "acc": 4,
-     "accWhy": "사회 제도 — 고교 사회 교과"
+  "items": [
+    {
+      "seedId": "society/1#g019a-H2-12",
+      "seed": {
+        "subject": "유치원",
+        "aspect": null,
+        "ref": "H2-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "미국의 첫 번째 이 교육기관은 1856년 위스콘신주 워터타운에서 마르가레테 마이어슈르츠가 독일어로 열었고, 영어로 된 첫 번째 것은 1860년 엘리자베스 피바디가 열었습니다. 이 교육기관은 무엇일까요?",
+        "answer": "유치원",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "독일 교육자 프뢰벨이 1840년 자기 시설에 붙인 이름은 아이들을 정원의 식물처럼 돌봐야 한다는 생각을 담았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 독일어로 열었고 + 이 교육기관",
+          "difWhy": "독일 기원 교육기관 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 제도 기원",
+          "acc": 4,
+          "accWhy": "사회 제도 — 고교 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'아이들을 무신론자로 만든다'며 이런 기관을 모두 금지",
+          "difWhy": "프뢰벨 어린이 기관 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "교육 제도 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1851년 프로이센 정부는 이 교육기관을 다룬 책이 '사회주의 체제의 일부'이며 '아이들을 무신론자로 만든다'며 이런 기관을 모두 금지했습니다. 미국의 첫 번째 것은 1856년 위스콘신주 워터타운에서 마르가레테 마이어슈르츠가 독일어로 열었는데, 이 교육기관은?",
+          "beforeExplanation": null,
+          "removedCue": "'아이들을 무신론자로 만든다'며 이런 기관을 모두 금지 (프로이센 금지령)",
+          "addedCue": "1860년 엘리자베스 피바디의 첫 영어 기관",
+          "why": "프뢰벨로 이어지는 금지령을 빼고 미국 도입사 세부로 바꿈"
+        },
+        "generalHint": "1873년 미국 세인트루이스에서 수전 블로가 공공 재정으로 운영하는 첫 이 기관을 세웠다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "초등학교 입학 전 어린이를 가르치는 교육기관",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상 교육기관",
+          "piece": "f05",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "H2-12",
+          "key": "b125",
+          "hint": "1873년 미국 세인트루이스에서 수전 블로가 공공 재정으로 운영하는 첫 이 기관을 세웠다.",
+          "guess": "유치원",
+          "confidence": "high",
+          "hit": true,
+          "answer": "유치원"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Kindergarten"
+        ],
+        "facts": [
+          {
+            "claim": "미국 첫 유치원 1856년 워터타운, 마르가레테 마이어슈르츠가 독일어로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kindergarten",
+            "note": "The first kindergarten in the US was founded in Watertown, Wisconsin, in 1856, and was conducted in German by Margaretha Meyer-Schurz."
+          },
+          {
+            "claim": "1840년 프뢰벨이 '아이들의 정원' — 정원의 식물처럼",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Kindergarten",
+            "note": "He renamed his institute Kindergarten (meaning \"garden of children\") on June 28, 1840, reflecting his belief that children should be nurtured and nourished \"like plants in a garden\"."
+          },
+          {
+            "claim": "1860년 엘리자베스 피바디가 미국 첫 영어 유치원",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kindergarten",
+            "note": "Elizabeth Peabody founded the first English-language kindergarten in the US in 1860."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Kindergarten"
+        ],
+        "hintNote": "The first publicly financed kindergarten in the US was established in St. Louis in 1873 by Susan Blow",
+        "easiestCue": "1856년 워터타운에서 독일어로 연 미국 첫 교육기관",
+        "targetWhy": "마이어슈르츠·피바디는 교육사 대학 교양 — 4(경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 다닌 기관의 뜻밖 역사",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 모두"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 독일어로 열었고 + 이 교육기관",
+          "difWhy": "독일 기원 교육기관 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 제도 기원",
+          "acc": 4,
+          "accWhy": "사회 제도 — 고교 사회 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1355년 2월 10일 … 포도주 맛을 따지다 벌인 싸움",
-     "difWhy": "성 스콜라스티카 폭동 — 역사 애호가",
-     "wor": 3,
-     "worWhy": "대학 역사 이야깃거리"
+    {
+      "seedId": "society/1#g019a-H2-13",
+      "seed": {
+        "subject": "옥스퍼드 대학교",
+        "aspect": null,
+        "ref": "H2-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1355년 2월 10일, 이 대학 학생 몇이 선술집 포도주 맛을 따지다 벌인 싸움이 폭동으로 번져 학생 63명이 숨졌다고 흔히 전합니다. 그 뒤 시장과 주민 60명은 1825년까지 해마다 희생자 미사에 나가고 죽은 학자 한 명당 1페니를 대학에 내야 했는데, 이 대학은?",
+        "answer": "옥스퍼드 대학교",
+        "acceptedAnswers": [
+          "옥스포드 대학교",
+          "옥스퍼드 대학",
+          "옥스퍼드"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '옥스퍼드 대학교', 넘겨주기 '옥스포드 대학교' 확인 · '옥스퍼드'만 치는 줄임은 흔함",
+        "explanation": "이 대학은 1167년 헨리 2세가 잉글랜드 사람의 파리 대학 유학을 막은 뒤 빠르게 커졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1355년 2월 10일 … 포도주 맛을 따지다 벌인 싸움",
+          "difWhy": "성 스콜라스티카 폭동 — 역사 애호가",
+          "wor": 3,
+          "worWhy": "대학 역사 이야깃거리",
+          "acc": 4,
+          "accWhy": "사회 제도 — 고교 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1355년 2월 10일 … 포도주 맛을 따지다 벌인 싸움",
+          "difWhy": "성 스콜라스티카 폭동 — 역사 애호가",
+          "wor": 3,
+          "worWhy": "대학 역사 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "1209년 주민과의 다툼이 커지자 이 대학 학자 일부는 북동쪽 도시로 달아나 다른 대학을 세웠다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "영국 잉글랜드에서 가장 오래된 대학",
+        "familiarity": {
+          "judge": 3,
+          "pct": 99,
+          "why": "세계적 명문대",
+          "piece": "f05",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "H2-13",
+          "key": "b009",
+          "hint": "1209년 주민과의 다툼이 커지자 이 대학 학자 일부는 북동쪽 도시로 달아나 다른 대학을 세웠다.",
+          "guess": "옥스퍼드 대학교",
+          "confidence": "high",
+          "hit": true,
+          "answer": "옥스퍼드 대학교"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
+          "https://en.wikipedia.org/wiki/University_of_Oxford"
+        ],
+        "facts": [
+          {
+            "claim": "1355년 2월 10일(성 스콜라스티카 축일) 시작, 학생들이 스윈들스톡 선술집 포도주 품질 불평",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
+            "note": "The St Scholastica Day riot began in Oxford, England, on 10 February 1355 ... The disturbance began when two students from the University of Oxford complained about the quality of wine served to them in the Swindlestock Tavern"
+          },
+          {
+            "claim": "숨진 학생 수는 흔히 63명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
+            "note": "The number of students killed in the riots is often given as sixty-three."
+          },
+          {
+            "claim": "시장·관리·주민 60명 해마다 미사, 죽은 학자 1명당 1페니 — 1825년에 그침",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
+            "note": "each year, on St Scholastica's Day, the mayor, bailiffs and sixty townspeople were to attend a Mass ... the town was also made to pay the university an annual fine of one penny for each scholar killed. The practice was dropped in 1825"
+          },
+          {
+            "claim": "1167년 헨리 2세가 파리 대학 유학 금지 → 빠르게 성장",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
+            "note": "It grew rapidly from 1167, when Henry II prohibited English students from attending the University of Paris."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/University_of_Oxford"
+        ],
+        "hintNote": "After escalating conflict between students and the Oxford townspeople, some Oxford academics fled northeast to Cambridge, where they established the University of Cambridge in 1209.",
+        "easiestCue": "죽은 학자 한 명당 1페니를 대학에 내야 했는데",
+        "targetWhy": "성 스콜라스티카 축일 폭동은 영국사 애호가 세부 — 교과서·방송에 없음(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 대학의 기묘한 옛 벌금 이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new · 초안 H1-16(케임브리지 — 옥스퍼드 언급)은 다른 정답·다른 지식",
+        "warn": [
+          "정답조각 대학"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1355년 2월 10일 … 포도주 맛을 따지다 벌인 싸움",
+          "difWhy": "성 스콜라스티카 폭동 — 역사 애호가",
+          "wor": 3,
+          "worWhy": "대학 역사 이야깃거리",
+          "acc": 4,
+          "accWhy": "사회 제도 — 고교 사회 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "1209년 주민과의 다툼이 커지자 이 대학 학자 일부는 북동쪽 도시로 달아나 다른 대학을 세웠다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "영국 잉글랜드에서 가장 오래된 대학",
-    "familiarity": {
-     "judge": 3,
-     "pct": 99,
-     "why": "세계적 명문대",
-     "piece": "f05",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "H2-13",
-     "key": "b009",
-     "hint": "1209년 주민과의 다툼이 커지자 이 대학 학자 일부는 북동쪽 도시로 달아나 다른 대학을 세웠다.",
-     "guess": "옥스퍼드 대학교",
-     "confidence": "high",
-     "hit": true,
-     "answer": "옥스퍼드 대학교"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
-     "https://en.wikipedia.org/wiki/University_of_Oxford"
-    ],
-    "facts": [
-     {
-      "claim": "1355년 2월 10일(성 스콜라스티카 축일) 시작, 학생들이 스윈들스톡 선술집 포도주 품질 불평",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
-      "note": "The St Scholastica Day riot began in Oxford, England, on 10 February 1355 ... The disturbance began when two students from the University of Oxford complained about the quality of wine served to them in the Swindlestock Tavern"
-     },
-     {
-      "claim": "숨진 학생 수는 흔히 63명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
-      "note": "The number of students killed in the riots is often given as sixty-three."
-     },
-     {
-      "claim": "시장·관리·주민 60명 해마다 미사, 죽은 학자 1명당 1페니 — 1825년에 그침",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/St_Scholastica_Day_riot",
-      "note": "each year, on St Scholastica's Day, the mayor, bailiffs and sixty townspeople were to attend a Mass ... the town was also made to pay the university an annual fine of one penny for each scholar killed. The practice was dropped in 1825"
-     },
-     {
-      "claim": "1167년 헨리 2세가 파리 대학 유학 금지 → 빠르게 성장",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
-      "note": "It grew rapidly from 1167, when Henry II prohibited English students from attending the University of Paris."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/University_of_Oxford"
-    ],
-    "hintNote": "After escalating conflict between students and the Oxford townspeople, some Oxford academics fled northeast to Cambridge, where they established the University of Cambridge in 1209.",
-    "easiestCue": "죽은 학자 한 명당 1페니를 대학에 내야 했는데",
-    "targetWhy": "성 스콜라스티카 축일 폭동은 영국사 애호가 세부 — 교과서·방송에 없음(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 대학의 기묘한 옛 벌금 이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new · 초안 H1-16(케임브리지 — 옥스퍼드 언급)은 다른 정답·다른 지식",
-    "warn": [
-     "정답조각 대학"
-    ]
-   }
-  },
-  {
-   "seedId": "society/1#g019a-H2-14",
-   "seed": {
-    "subject": "하버드 대학교",
-    "aspect": null,
-    "ref": "H2-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1884년 대니얼 체스터 프렌치가 만든 교정의 동상은 생김새를 알 길이 없어 한 학생에게서 영감을 얻었고, 받침의 '설립자 · 1638'이라는 글귀도 논란거리입니다. 1636년 매사추세츠만 식민지 의회의 결의로 세워진 이 대학은?",
-    "answer": "하버드 대학교",
-    "acceptedAnswers": [
-     "하버드 대학",
-     "하버드"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '하버드 대학교', 넘겨주기 '하버드 대학' 확인 · '하버드'만 치는 줄임은 흔함",
-    "explanation": "1638년 결핵으로 숨진 청교도 목사가 재산 절반인 780파운드와 400권 남짓한 장서를 남겼고, 학교는 이듬해 그의 이름을 따랐습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1636년 매사추세츠만 식민지 의회의 결의로 세워진 이 대학",
-     "difWhy": "미국 최고(最古) 대학 — 관심 있는 사람 교양",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 동상 논란",
-     "acc": 4,
-     "accWhy": "사회 제도 — 고교 사회 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "식민지의 새 학교에 남겼고, 학교는 그의 이름을 따랐습니다 … 동상",
-     "difWhy": "존 하버드 동상 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 대학 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1638년 결핵으로 숨진 한 젊은 청교도 목사는 재산의 절반인 780파운드와 400권 남짓한 장서를 식민지의 새 학교에 남겼고, 학교는 그의 이름을 따랐습니다. 교정에 선 그의 동상은 생김새를 알 길이 없어 실제 모습을 본뜬 것이 아닌데, 이 대학은?",
-     "beforeExplanation": "1780년 매사추세츠주 헌법이 처음으로 이곳을 '대학교'라 불렀습니다.",
-     "removedCue": "재산과 장서를 남긴 청교도 목사의 이름을 학교가 따랐다(유명 설립 일화 — 해설로 옮김)",
-     "addedCue": "동상의 모델·받침 글귀 논란 · 1636년 의회 결의",
-     "why": "존 하버드 기증 일화를 빼고 동상의 뒷이야기와 설립 경위로"
-    },
-    "generalHint": "동상 얼굴은 학생 셔먼 호어를 본떴는데, 그는 이곳의 넷째 총장 레너드 호어의 형제 쪽 후손이었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "미국 매사추세츠주 케임브리지에 있는 사립 대학",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "세계적 명문대",
-     "piece": "f08",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "H2-14",
-     "key": "b021",
-     "hint": "동상 얼굴은 학생 셔먼 호어를 본떴는데, 그는 이곳의 넷째 총장 레너드 호어의 형제 쪽 후손이었다.",
-     "guess": "하버드 대학교",
-     "confidence": "high",
-     "hit": true,
-     "answer": "하버드 대학교"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
-     "https://en.wikipedia.org/wiki/John_Harvard_(statue)",
-     "https://en.wikipedia.org/wiki/Harvard_University"
-    ],
-    "facts": [
-     {
-      "claim": "1638년 결핵으로 사망, 400권 장서와 큰돈을 새 학교에 남김, 학교가 그를 기려 이름 붙임",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
-      "note": "Harvard died of tuberculosis in 1638, leaving a large sum of money and his 400-volume scholar's library to the colony's new school, which the colony then voted to name in his honor."
-     },
-     {
-      "claim": "780파운드 = 금전 재산의 절반",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
-      "note": "bequeathed to the school £780‍—‌half of his monetary estate‍—‌with the remainder to his wife"
-     },
-     {
-      "claim": "청교도 목사(1607–1638)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
-      "note": "John Harvard (1607–1638) was an English Puritan minister in colonial New England"
-     },
-     {
-      "claim": "동상은 생김새를 알 수 없어 실제 모습이 아님",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
-      "note": "A statue in Harvard's honor—not, however, a 'likeness' of him, there being nothing to indicate what he had looked like—is a prominent feature of Harvard Yard"
-     },
-     {
-      "claim": "1884년 프렌치 작 동상, 생김새를 몰라 한 학생에게서 영감",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/John_Harvard_(statue)",
-      "note": "John Harvard is an 1884 sculpture in bronze by Daniel Chester French at Harvard University … There being nothing to indicate what John Harvard had looked like, French took inspiration from a Harvard student collaterally descended from an early Harvard president."
-     },
-     {
-      "claim": "받침 글귀 'FOUNDER · 1638' 논란",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/John_Harvard_(statue)",
-      "note": "The statue's inscription—JOHN HARVARD • FOUNDER • 1638—is the subject of an arch polemic"
-     },
-     {
-      "claim": "1636년 매사추세츠만 식민지 의회 결의로 설립, 1639년 하버드 이름",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Harvard_University",
-      "note": "Harvard was founded in 1636 by a vote of the Great and General Court of the Massachusetts Bay Colony. / Founded in 1636, and named Harvard College in 1639 in honor of its first benefactor"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/John_Harvard_statue"
-    ],
-    "hintNote": "French ... used Harvard student Sherman Hoar as inspiration for the figure's face. / Sherman Hoar was descended from a brother of Harvard's fourth president Leonard Hoar",
-    "easiestCue": "1884년 프렌치가 만든 동상 · 받침의 '설립자 · 1638' 논란",
-    "targetWhy": "유명 대학의 상징물 뒷이야기 — 관광·역사 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'기부자 이름을 딴 식민지 대학'에서 하버드를 떠올리는 사람이 꽤 있을 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "정답조각 대학,학교",
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "society/1#g019a-H2-14",
+      "seed": {
+        "subject": "하버드 대학교",
+        "aspect": null,
+        "ref": "H2-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1884년 대니얼 체스터 프렌치가 만든 교정의 동상은 생김새를 알 길이 없어 한 학생에게서 영감을 얻었고, 받침의 '설립자 · 1638'이라는 글귀도 논란거리입니다. 1636년 매사추세츠만 식민지 의회의 결의로 세워진 이 대학은?",
+        "answer": "하버드 대학교",
+        "acceptedAnswers": [
+          "하버드 대학",
+          "하버드"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '하버드 대학교', 넘겨주기 '하버드 대학' 확인 · '하버드'만 치는 줄임은 흔함",
+        "explanation": "1638년 결핵으로 숨진 청교도 목사가 재산 절반인 780파운드와 400권 남짓한 장서를 남겼고, 학교는 이듬해 그의 이름을 따랐습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1636년 매사추세츠만 식민지 의회의 결의로 세워진 이 대학",
+          "difWhy": "미국 최고(最古) 대학 — 관심 있는 사람 교양",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 동상 논란",
+          "acc": 4,
+          "accWhy": "사회 제도 — 고교 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "식민지의 새 학교에 남겼고, 학교는 그의 이름을 따랐습니다 … 동상",
+          "difWhy": "존 하버드 동상 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 대학 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1638년 결핵으로 숨진 한 젊은 청교도 목사는 재산의 절반인 780파운드와 400권 남짓한 장서를 식민지의 새 학교에 남겼고, 학교는 그의 이름을 따랐습니다. 교정에 선 그의 동상은 생김새를 알 길이 없어 실제 모습을 본뜬 것이 아닌데, 이 대학은?",
+          "beforeExplanation": "1780년 매사추세츠주 헌법이 처음으로 이곳을 '대학교'라 불렀습니다.",
+          "removedCue": "재산과 장서를 남긴 청교도 목사의 이름을 학교가 따랐다(유명 설립 일화 — 해설로 옮김)",
+          "addedCue": "동상의 모델·받침 글귀 논란 · 1636년 의회 결의",
+          "why": "존 하버드 기증 일화를 빼고 동상의 뒷이야기와 설립 경위로"
+        },
+        "generalHint": "동상 얼굴은 학생 셔먼 호어를 본떴는데, 그는 이곳의 넷째 총장 레너드 호어의 형제 쪽 후손이었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "미국 매사추세츠주 케임브리지에 있는 사립 대학",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "세계적 명문대",
+          "piece": "f08",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "H2-14",
+          "key": "b021",
+          "hint": "동상 얼굴은 학생 셔먼 호어를 본떴는데, 그는 이곳의 넷째 총장 레너드 호어의 형제 쪽 후손이었다.",
+          "guess": "하버드 대학교",
+          "confidence": "high",
+          "hit": true,
+          "answer": "하버드 대학교"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
+          "https://en.wikipedia.org/wiki/John_Harvard_(statue)",
+          "https://en.wikipedia.org/wiki/Harvard_University"
+        ],
+        "facts": [
+          {
+            "claim": "1638년 결핵으로 사망, 400권 장서와 큰돈을 새 학교에 남김, 학교가 그를 기려 이름 붙임",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
+            "note": "Harvard died of tuberculosis in 1638, leaving a large sum of money and his 400-volume scholar's library to the colony's new school, which the colony then voted to name in his honor."
+          },
+          {
+            "claim": "780파운드 = 금전 재산의 절반",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
+            "note": "bequeathed to the school £780‍—‌half of his monetary estate‍—‌with the remainder to his wife"
+          },
+          {
+            "claim": "청교도 목사(1607–1638)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
+            "note": "John Harvard (1607–1638) was an English Puritan minister in colonial New England"
+          },
+          {
+            "claim": "동상은 생김새를 알 수 없어 실제 모습이 아님",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/John_Harvard_(clergyman)",
+            "note": "A statue in Harvard's honor—not, however, a 'likeness' of him, there being nothing to indicate what he had looked like—is a prominent feature of Harvard Yard"
+          },
+          {
+            "claim": "1884년 프렌치 작 동상, 생김새를 몰라 한 학생에게서 영감",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/John_Harvard_(statue)",
+            "note": "John Harvard is an 1884 sculpture in bronze by Daniel Chester French at Harvard University … There being nothing to indicate what John Harvard had looked like, French took inspiration from a Harvard student collaterally descended from an early Harvard president."
+          },
+          {
+            "claim": "받침 글귀 'FOUNDER · 1638' 논란",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/John_Harvard_(statue)",
+            "note": "The statue's inscription—JOHN HARVARD • FOUNDER • 1638—is the subject of an arch polemic"
+          },
+          {
+            "claim": "1636년 매사추세츠만 식민지 의회 결의로 설립, 1639년 하버드 이름",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Harvard_University",
+            "note": "Harvard was founded in 1636 by a vote of the Great and General Court of the Massachusetts Bay Colony. / Founded in 1636, and named Harvard College in 1639 in honor of its first benefactor"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/John_Harvard_statue"
+        ],
+        "hintNote": "French ... used Harvard student Sherman Hoar as inspiration for the figure's face. / Sherman Hoar was descended from a brother of Harvard's fourth president Leonard Hoar",
+        "easiestCue": "1884년 프렌치가 만든 동상 · 받침의 '설립자 · 1638' 논란",
+        "targetWhy": "유명 대학의 상징물 뒷이야기 — 관광·역사 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'기부자 이름을 딴 식민지 대학'에서 하버드를 떠올리는 사람이 꽤 있을 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "정답조각 대학,학교",
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1636년 매사추세츠만 식민지 의회의 결의로 세워진 이 대학",
+          "difWhy": "미국 최고(最古) 대학 — 관심 있는 사람 교양",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 동상 논란",
+          "acc": 4,
+          "accWhy": "사회 제도 — 고교 사회 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

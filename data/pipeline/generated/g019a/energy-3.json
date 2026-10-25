@@ -1,126 +1,141 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "energy/3",
-  "midKey": "energy",
-  "subName": "자원·연료",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "energy/3#g019a-C2-22",
-   "seed": {
-    "subject": "유연 휘발유",
-    "aspect": null,
-    "ref": "C2-22",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1921년 GM의 토머스 미즐리가 효과를 찾아낸 첨가제를 넣은 연료로, 1924년 뉴저지 스탠더드 오일 정유 공장 노동자 다섯 명이 숨지자 '미치광이 가스'라는 비난을 들었습니다. 2021년 7월 알제리를 끝으로 세계에서 자동차용 판매가 사라진 이 연료는 무엇일까요?",
-    "answer": "유연 휘발유",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '유연휘발유' → '유연 휘발유' (띄어쓰기는 정규화로 같음)",
-    "explanation": "GM은 '납'이라는 말의 나쁜 느낌을 피하려고 이 첨가제를 '에틸'이라는 이름으로 팔았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "토머스 미즐리가 효과를 찾아낸 첨가제를 넣은 연료 … 2021년 알제리",
-     "difWhy": "사에틸납 첨가 연료 — 대학 교양 화학사",
-     "wor": 4,
-     "worWhy": "교양 — 납 오염 환경사",
-     "acc": 4,
-     "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "엔진 노킹을 막는 효과를 찾아낸 첨가제를 넣은 연료",
-     "difWhy": "납 첨가 휘발유 — 고교 화학 교양",
-     "wor": 3,
-     "worWhy": "환경사 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1921년 GM의 토머스 미즐리가 엔진 노킹을 막는 효과를 찾아낸 첨가제를 넣은 연료로, 1924년 뉴저지 스탠더드 오일 정유 공장 노동자 다섯 명이 숨지자 '미치광이 가스'라는 비난을 들었습니다. 2021년 7월 알제리를 끝으로 세계에서 자동차용 판매가 사라진 이 연료는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "엔진 노킹을 막는 효과(첨가제의 교과서 정의)",
-     "addedCue": "없음 — 정의를 빼고 미즐리·미치광이 가스·알제리 세부만 남김",
-     "why": "고교 화학 교양인 '노킹 방지 첨가제' 정의를 질문에서 뺌"
-    },
-    "generalHint": "이 첨가제를 찾아낸 미즐리는 뒤에 냉매 '프레온'으로 알려진 염화플루오린화탄소 개발에도 큰 몫을 했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "노킹을 막는 납 화합물을 섞은 옛 자동차 연료",
-    "familiarity": {
-     "judge": 2,
-     "pct": 50,
-     "why": "무연 휘발유는 익숙하나 유연은 덜 들음",
-     "piece": "f07",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "C2-22",
-     "key": "b180",
-     "hint": "이 첨가제를 찾아낸 미즐리는 뒤에 냉매 '프레온'으로 알려진 염화플루오린화탄소 개발에도 큰 몫을 했다.",
-     "guess": "사에틸납",
-     "confidence": "high",
-     "hit": false,
-     "answer": "유연 휘발유"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Tetraethyllead"
-    ],
-    "facts": [
-     {
-      "claim": "1921년 12월 9일 GM 의 미즐리가 테트라에틸납의 노킹 방지 효과 발견",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
-      "note": "American chemical engineer Thomas Midgley Jr., who was working for the U.S. corporation General Motors, was the first to discover its effectiveness as a knock inhibitor on 9 December 1921"
-     },
-     {
-      "claim": "1924년 뉴저지 스탠더드 오일 정유 공장 노동자 5명 사망 · 'loony gas' 논란",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
-      "note": "In 1924, a public controversy arose over the \"loony gas\", after five workers died, and many others were severely injured, in Standard Oil refineries in New Jersey."
-     },
-     {
-      "claim": "2021년 7월 알제리 생산 중단으로 자동차용 판매 전 세계에서 끝남",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
-      "note": "In July 2021, the sale of leaded gasoline for cars was completely phased out worldwide following the termination of production by Algeria"
-     },
-     {
-      "claim": "'납' 의 나쁜 느낌을 피하려 '에틸' 이라는 이름으로 마케팅",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
-      "note": "General Motors patented the use of TEL as an antiknock agent and used the name \"Ethyl\" that had been proposed by Kettering in its marketing materials, thereby avoiding the negative connotation of the word \"lead\"."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Thomas_Midgley_Jr."
-    ],
-    "hintNote": "He played a major role in developing leaded gasoline (tetraethyl lead) and some of the first chlorofluorocarbons (CFCs), better known in the United States by the brand name Freon",
-    "easiestCue": "2021년 7월 알제리를 끝으로 자동차용 판매가 사라진 연료",
-    "targetWhy": "미즐리 · 1924 '미치광이 가스' · 알제리 — 화학사·시사 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'노킹 방지 첨가제' 에서 무연/유연 구분을 아는 사람은 바로 닿을 수 있음 · '휘발유' 만 친 사람은 오답",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "energy/3",
+    "midKey": "energy",
+    "subName": "자원·연료",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "energy/3#g019a-C2-22",
+      "seed": {
+        "subject": "유연 휘발유",
+        "aspect": null,
+        "ref": "C2-22",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1921년 GM의 토머스 미즐리가 효과를 찾아낸 첨가제를 넣은 연료로, 1924년 뉴저지 스탠더드 오일 정유 공장 노동자 다섯 명이 숨지자 '미치광이 가스'라는 비난을 들었습니다. 2021년 7월 알제리를 끝으로 세계에서 자동차용 판매가 사라진 이 연료는 무엇일까요?",
+        "answer": "유연 휘발유",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '유연휘발유' → '유연 휘발유' (띄어쓰기는 정규화로 같음)",
+        "explanation": "GM은 '납'이라는 말의 나쁜 느낌을 피하려고 이 첨가제를 '에틸'이라는 이름으로 팔았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "토머스 미즐리가 효과를 찾아낸 첨가제를 넣은 연료 … 2021년 알제리",
+          "difWhy": "사에틸납 첨가 연료 — 대학 교양 화학사",
+          "wor": 4,
+          "worWhy": "교양 — 납 오염 환경사",
+          "acc": 4,
+          "accWhy": "에너지·환경 — 고교 교과·뉴스 상식",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "엔진 노킹을 막는 효과를 찾아낸 첨가제를 넣은 연료",
+          "difWhy": "납 첨가 휘발유 — 고교 화학 교양",
+          "wor": 3,
+          "worWhy": "환경사 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1921년 GM의 토머스 미즐리가 엔진 노킹을 막는 효과를 찾아낸 첨가제를 넣은 연료로, 1924년 뉴저지 스탠더드 오일 정유 공장 노동자 다섯 명이 숨지자 '미치광이 가스'라는 비난을 들었습니다. 2021년 7월 알제리를 끝으로 세계에서 자동차용 판매가 사라진 이 연료는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "엔진 노킹을 막는 효과(첨가제의 교과서 정의)",
+          "addedCue": "없음 — 정의를 빼고 미즐리·미치광이 가스·알제리 세부만 남김",
+          "why": "고교 화학 교양인 '노킹 방지 첨가제' 정의를 질문에서 뺌"
+        },
+        "generalHint": "이 첨가제를 찾아낸 미즐리는 뒤에 냉매 '프레온'으로 알려진 염화플루오린화탄소 개발에도 큰 몫을 했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "노킹을 막는 납 화합물을 섞은 옛 자동차 연료",
+        "familiarity": {
+          "judge": 2,
+          "pct": 50,
+          "why": "무연 휘발유는 익숙하나 유연은 덜 들음",
+          "piece": "f07",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "C2-22",
+          "key": "b180",
+          "hint": "이 첨가제를 찾아낸 미즐리는 뒤에 냉매 '프레온'으로 알려진 염화플루오린화탄소 개발에도 큰 몫을 했다.",
+          "guess": "사에틸납",
+          "confidence": "high",
+          "hit": false,
+          "answer": "유연 휘발유"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Tetraethyllead"
+        ],
+        "facts": [
+          {
+            "claim": "1921년 12월 9일 GM 의 미즐리가 테트라에틸납의 노킹 방지 효과 발견",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
+            "note": "American chemical engineer Thomas Midgley Jr., who was working for the U.S. corporation General Motors, was the first to discover its effectiveness as a knock inhibitor on 9 December 1921"
+          },
+          {
+            "claim": "1924년 뉴저지 스탠더드 오일 정유 공장 노동자 5명 사망 · 'loony gas' 논란",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
+            "note": "In 1924, a public controversy arose over the \"loony gas\", after five workers died, and many others were severely injured, in Standard Oil refineries in New Jersey."
+          },
+          {
+            "claim": "2021년 7월 알제리 생산 중단으로 자동차용 판매 전 세계에서 끝남",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
+            "note": "In July 2021, the sale of leaded gasoline for cars was completely phased out worldwide following the termination of production by Algeria"
+          },
+          {
+            "claim": "'납' 의 나쁜 느낌을 피하려 '에틸' 이라는 이름으로 마케팅",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Tetraethyllead",
+            "note": "General Motors patented the use of TEL as an antiknock agent and used the name \"Ethyl\" that had been proposed by Kettering in its marketing materials, thereby avoiding the negative connotation of the word \"lead\"."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Thomas_Midgley_Jr."
+        ],
+        "hintNote": "He played a major role in developing leaded gasoline (tetraethyl lead) and some of the first chlorofluorocarbons (CFCs), better known in the United States by the brand name Freon",
+        "easiestCue": "2021년 7월 알제리를 끝으로 자동차용 판매가 사라진 연료",
+        "targetWhy": "미즐리 · 1924 '미치광이 가스' · 알제리 — 화학사·시사 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'노킹 방지 첨가제' 에서 무연/유연 구분을 아는 사람은 바로 닿을 수 있음 · '휘발유' 만 친 사람은 오답",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "토머스 미즐리가 효과를 찾아낸 첨가제를 넣은 연료 … 2021년 알제리",
+          "difWhy": "사에틸납 첨가 연료 — 대학 교양 화학사",
+          "wor": 4,
+          "worWhy": "교양 — 납 오염 환경사",
+          "acc": 4,
+          "accWhy": "에너지·환경 — 고교 교과·뉴스 상식"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

@@ -1,216 +1,242 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "economy/2",
-  "midKey": "economy",
-  "subName": "화폐·환율",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "economy/2#g019b-H2-22",
-   "seed": {
-    "subject": "달러",
-    "aspect": null,
-    "ref": "H2-22",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "아일랜드 상인 올리버 폴록이 1778년 편지에 이어 쓴 약자는 이 화폐 기호와 거의 똑같이 생겼습니다. 이 기호를 처음 활자로 찍은 사람은 1790년대 필라델피아의 인쇄업자 아치볼드 비니라고 하는데, 이 기호가 나타내는 화폐 단위는?",
-    "answer": "달러",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "그 약자는 스페인 페소를 줄인 'ps'로, 이것이 기호의 기원이라는 설이 가장 널리 받아들여집니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "엮음: 화폐 기호 + 1790년대 필라델피아에서 처음 활자로",
-     "difWhy": "미국 화폐 기호 — 일상·방송에서 흔히",
-     "wor": 3,
-     "worWhy": "기호 유래 이야깃거리",
-     "acc": 4,
-     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "스페인 페소를 줄인 'ps'를 거의 한 글자처럼",
-     "difWhy": "$ 기호 기원 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 기호 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "아일랜드 상인 올리버 폴록은 1778년 편지에서 스페인 페소를 줄인 'ps'를 거의 한 글자처럼 이어 썼는데, 이것이 오늘날 이 화폐 기호의 기원이라는 설명이 가장 널리 받아들여집니다. 이 기호가 나타내는 화폐 단위는?",
-     "beforeExplanation": "지브롤터 해협 양쪽을 뜻하는 '헤라클레스의 기둥'에 S자 띠를 감은 스페인 은화 무늬에서 왔다는 설도 있습니다.",
-     "removedCue": "스페인 페소를 줄인 'ps'를 한 글자처럼 이어 씀(관심층 — $ 기원 상식)",
-     "addedCue": "1790년대 필라델피아 인쇄업자 아치볼드 비니가 처음 활자로 찍음",
-     "why": "'페소 약자' 설명이 대중 상식이라 해설로 내리고, 인쇄 쪽 세부로 바꿈"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "미국 등 여러 나라가 쓰는 화폐 단위",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 화폐 단위",
-     "piece": "f01",
-     "genPct": 100
-    },
-    "blind": null,
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Dollar_sign"
-    ],
-    "facts": [
-     {
-      "claim": "아일랜드 상인 폴록 1778 편지",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Dollar_sign",
-      "note": "Oliver Pollock, an Irish trader, used the abbreviation 'ps', sometimes run together in a way that almost exactly resembled the dollar sign in a letter from 1778."
-     },
-     {
-      "claim": "페소 ps 약칭설이 가장 널리 받아들여짐",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Dollar_sign",
-      "note": "the most widely accepted theory … the dollar sign developed out of an abbreviation for the Spanish and Spanish-American ps for pesos."
-     },
-     {
-      "claim": "이 기호가 처음 활자로 찍힌 것은 1790년대 필라델피아 인쇄업자 아치볼드 비니라고 함",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Dollar_sign",
-      "note": "The first occurrence in print is claimed to be from 1790s, by a Philadelphia printer Archibald Binny, creator of the Monticello typeface."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "폴록의 1778년 편지 속 약자",
-    "targetWhy": "폴록 편지와 비니의 첫 인쇄는 화폐·타이포그래피 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'ps 이어 쓰기' 에서 $ 모양을 추론할 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (탈러 활성은 다른 정답 — 이름 어원 단서는 쓰지 않음)",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "economy/2",
+    "midKey": "economy",
+    "subName": "화폐·환율",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "economy/2#g019b-H2-23",
-   "seed": {
-    "subject": "위안화",
-    "aspect": null,
-    "ref": "H2-23",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1948년 12월 1일, 새로 세워진 한 중앙은행이 이 화폐의 첫 지폐 시리즈를 냈습니다. 1955년 3월 둘째 시리즈를 내면서 옛 돈 1만을 새 돈 1로 바꾼 이 화폐를 흔히 무엇이라 부를까요?",
-    "answer": "위안화",
-    "acceptedAnswers": [
-     "런민비",
-     "인민폐",
-     "위안"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '런민비' 문서(인민폐·위안) · 국내 언론은 '위안화'가 흔함 · 질문이 화폐 이름과 단위를 함께 말해 둘 다 허용",
-    "explanation": "기본 단위의 기호는 일본 엔과 같은 ¥이라, 구별해야 할 때는 따로 표시를 붙입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "엮음: 1948년 12월 새 중앙은행 첫 지폐 + 1955년 1만→1 교환",
-     "difWhy": "인민은행 화폐사 — 경제사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "주요 화폐 이야깃거리",
-     "acc": 4,
-     "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+  "items": [
+    {
+      "seedId": "economy/2#g019b-H2-22",
+      "seed": {
+        "subject": "달러",
+        "aspect": null,
+        "ref": "H2-22",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "아일랜드 상인 올리버 폴록이 1778년 편지에 이어 쓴 약자는 이 화폐 기호와 거의 똑같이 생겼습니다. 이 기호를 처음 활자로 찍은 사람은 1790년대 필라델피아의 인쇄업자 아치볼드 비니라고 하는데, 미국에서 쓰는 이 기호가 나타내는 화폐 단위는?",
+        "answer": "달러",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "그 약자는 스페인 페소를 줄인 'ps'로, 이것이 기호의 기원이라는 설이 가장 널리 받아들여집니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 화폐 기호 + 1790년대 필라델피아에서 처음 활자로",
+          "difWhy": "미국 화폐 기호 — 일상·방송에서 흔히",
+          "wor": 3,
+          "worWhy": "기호 유래 이야깃거리",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "스페인 페소를 줄인 'ps'를 거의 한 글자처럼",
+          "difWhy": "$ 기호 기원 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기호 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "아일랜드 상인 올리버 폴록은 1778년 편지에서 스페인 페소를 줄인 'ps'를 거의 한 글자처럼 이어 썼는데, 이것이 오늘날 이 화폐 기호의 기원이라는 설명이 가장 널리 받아들여집니다. 이 기호가 나타내는 화폐 단위는?",
+          "beforeExplanation": "지브롤터 해협 양쪽을 뜻하는 '헤라클레스의 기둥'에 S자 띠를 감은 스페인 은화 무늬에서 왔다는 설도 있습니다.",
+          "removedCue": "스페인 페소를 줄인 'ps'를 한 글자처럼 이어 씀(관심층 — $ 기원 상식)",
+          "addedCue": "1790년대 필라델피아 인쇄업자 아치볼드 비니가 처음 활자로 찍음",
+          "why": "'페소 약자' 설명이 대중 상식이라 해설로 내리고, 인쇄 쪽 세부로 바꿈"
+        },
+        "generalHint": "스페인 은화에 새겨진 헤라클레스의 기둥에 S자 띠가 감긴 무늬에서 왔다는 설도 있다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "미국 등 여러 나라가 쓰는 화폐 단위",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 화폐 단위",
+          "piece": "f01",
+          "genPct": 100
+        },
+        "blind": null,
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Dollar_sign"
+        ],
+        "facts": [
+          {
+            "claim": "아일랜드 상인 폴록 1778 편지",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Dollar_sign",
+            "note": "Oliver Pollock, an Irish trader, used the abbreviation 'ps', sometimes run together in a way that almost exactly resembled the dollar sign in a letter from 1778."
+          },
+          {
+            "claim": "페소 ps 약칭설이 가장 널리 받아들여짐",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Dollar_sign",
+            "note": "the most widely accepted theory … the dollar sign developed out of an abbreviation for the Spanish and Spanish-American ps for pesos."
+          },
+          {
+            "claim": "이 기호가 처음 활자로 찍힌 것은 1790년대 필라델피아 인쇄업자 아치볼드 비니라고 함",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Dollar_sign",
+            "note": "The first occurrence in print is claimed to be from 1790s, by a Philadelphia printer Archibald Binny, creator of the Monticello typeface."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "폴록의 1778년 편지 속 약자",
+        "targetWhy": "폴록 편지와 비니의 첫 인쇄는 화폐·타이포그래피 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'ps 이어 쓰기' 에서 $ 모양을 추론할 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (탈러 활성은 다른 정답 — 이름 어원 단서는 쓰지 않음)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "엮음: 화폐 기호 + 1790년대 필라델피아에서 처음 활자로",
+          "difWhy": "미국 화폐 기호 — 일상·방송에서 흔히",
+          "wor": 3,
+          "worWhy": "기호 유래 이야깃거리",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+        },
+        "g020": {
+          "why": "V026 fix not-unique·scope·h-error",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "영국의 '스털링'과 '파운드'처럼 화폐 이름과 기본 단위 이름이 따로",
-     "difWhy": "런민비·위안 — 관심 있는 사람",
-     "wor": 4,
-     "worWhy": "시사 상식 — 주요 통화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1948년 12월 1일, 새로 세워진 한 중앙은행이 이 화폐의 첫 지폐 시리즈를 냈습니다. 영국의 '스털링'과 '파운드'처럼 화폐 이름과 기본 단위 이름이 따로 있는 이 화폐를 흔히 무엇이라 부를까요?",
-     "beforeExplanation": null,
-     "removedCue": "영국의 '스털링'과 '파운드'처럼 화폐 이름과 기본 단위 이름이 따로",
-     "addedCue": "1955년 둘째 시리즈 · 1만 대 1 화폐 개혁",
-     "why": "화폐 이름/단위 구분(대표 상식)을 빼고 화폐 개혁 세부로 바꿈"
-    },
-    "generalHint": "2016년 10월 1일 신흥국 화폐로는 처음 IMF 특별인출권 바스켓에 들어갔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "중화인민공화국의 법정 화폐",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "환율 뉴스로 누구나 앎",
-     "piece": "f07",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "H2-23",
-     "key": "b160",
-     "hint": "2016년 10월 1일 신흥국 화폐로는 처음 IMF 특별인출권 바스켓에 들어갔다.",
-     "guess": "위안화",
-     "confidence": "high",
-     "hit": true,
-     "answer": "위안화"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Renminbi"
-    ],
-    "facts": [
-     {
-      "claim": "1948.12.1 새로 세워진 중국인민은행이 첫 지폐 시리즈",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Renminbi",
-      "note": "The first series of renminbi banknotes was issued on 1 December 1948, by the newly founded People's Bank of China."
-     },
-     {
-      "claim": "기호 ¥, 엔과 구별 시 RMB",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Renminbi",
-      "note": "The currency symbol for the yuan unit is ¥ … when a distinction from the Japanese yen is needed, 'RMB' is used instead"
-     },
-     {
-      "claim": "둘째 시리즈 1955년 3월 1일 · 1955년 옛 1만 = 새 1 로 바꿈",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Renminbi",
-      "note": "was introduced on 1 March 1955 (but dated 1953) / a revaluation occurred in 1955 at the rate of 1 new yuan = 10,000 old yuan."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Renminbi"
-    ],
-    "hintNote": "On 1 October 2016, the renminbi became the first emerging market currency to be included in the IMF's special drawing rights basket",
-    "easiestCue": "1948년 12월 1일, 새로 세워진 한 중앙은행이 … 첫 지폐",
-    "targetWhy": "인민은행 첫 지폐 · 1955 개혁 — 경제사 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "1948년 새 중앙은행에서 국공 내전을 떠올리는 관심층이 있을 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (위안화·런민비)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "economy/2#g019b-H2-23",
+      "seed": {
+        "subject": "위안화",
+        "aspect": null,
+        "ref": "H2-23",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1948년 12월 1일, 새로 세워진 한 중앙은행이 이 화폐의 첫 지폐 시리즈를 냈습니다. 1955년 3월 둘째 시리즈를 내면서 옛 돈 1만을 새 돈 1로 바꾼 이 화폐를 흔히 무엇이라 부를까요?",
+        "answer": "위안화",
+        "acceptedAnswers": [
+          "런민비",
+          "인민폐",
+          "위안"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '런민비' 문서(인민폐·위안) · 국내 언론은 '위안화'가 흔함 · 질문이 화폐 이름과 단위를 함께 말해 둘 다 허용",
+        "explanation": "기본 단위의 기호는 일본 엔과 같은 ¥이라, 구별해야 할 때는 따로 표시를 붙입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 1948년 12월 새 중앙은행 첫 지폐 + 1955년 1만→1 교환",
+          "difWhy": "인민은행 화폐사 — 경제사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "주요 화폐 이야깃거리",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "영국의 '스털링'과 '파운드'처럼 화폐 이름과 기본 단위 이름이 따로",
+          "difWhy": "런민비·위안 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "시사 상식 — 주요 통화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1948년 12월 1일, 새로 세워진 한 중앙은행이 이 화폐의 첫 지폐 시리즈를 냈습니다. 영국의 '스털링'과 '파운드'처럼 화폐 이름과 기본 단위 이름이 따로 있는 이 화폐를 흔히 무엇이라 부를까요?",
+          "beforeExplanation": null,
+          "removedCue": "영국의 '스털링'과 '파운드'처럼 화폐 이름과 기본 단위 이름이 따로",
+          "addedCue": "1955년 둘째 시리즈 · 1만 대 1 화폐 개혁",
+          "why": "화폐 이름/단위 구분(대표 상식)을 빼고 화폐 개혁 세부로 바꿈"
+        },
+        "generalHint": "지폐 뒷면에는 몽골어·티베트어·위구르어·좡어로도 금액이 적혀 있다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "중화인민공화국의 법정 화폐",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "환율 뉴스로 누구나 앎",
+          "piece": "f07",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "H2-23",
+          "key": "b160",
+          "hint": "2016년 10월 1일 신흥국 화폐로는 처음 IMF 특별인출권 바스켓에 들어갔다.",
+          "guess": "위안화",
+          "confidence": "high",
+          "hit": true,
+          "answer": "위안화"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Renminbi"
+        ],
+        "facts": [
+          {
+            "claim": "1948.12.1 새로 세워진 중국인민은행이 첫 지폐 시리즈",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Renminbi",
+            "note": "The first series of renminbi banknotes was issued on 1 December 1948, by the newly founded People's Bank of China."
+          },
+          {
+            "claim": "기호 ¥, 엔과 구별 시 RMB",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Renminbi",
+            "note": "The currency symbol for the yuan unit is ¥ … when a distinction from the Japanese yen is needed, 'RMB' is used instead"
+          },
+          {
+            "claim": "둘째 시리즈 1955년 3월 1일 · 1955년 옛 1만 = 새 1 로 바꿈",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Renminbi",
+            "note": "was introduced on 1 March 1955 (but dated 1953) / a revaluation occurred in 1955 at the rate of 1 new yuan = 10,000 old yuan."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "1948년 12월 1일, 새로 세워진 한 중앙은행이 … 첫 지폐",
+        "targetWhy": "인민은행 첫 지폐 · 1955 개혁 — 경제사 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "1948년 새 중앙은행에서 국공 내전을 떠올리는 관심층이 있을 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (위안화·런민비)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 1948년 12월 새 중앙은행 첫 지폐 + 1955년 1만→1 교환",
+          "difWhy": "인민은행 화폐사 — 경제사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "주요 화폐 이야깃거리",
+          "acc": 4,
+          "accWhy": "경제·금융 — 고교 경제·대부분 관심"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

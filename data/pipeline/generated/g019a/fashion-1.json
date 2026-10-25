@@ -1,348 +1,399 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "fashion/1",
-  "midKey": "fashion",
-  "subName": "의류 명칭",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "fashion/1#g019a-L1-15",
-   "seed": {
-    "subject": "턱시도",
-    "aspect": null,
-    "ref": "L1-15",
-    "pairedWith": 4400
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 4400,
-    "question": "에드워드 7세가 왕세자이던 1865년 런던 새빌 로의 헨리 풀 양복점에 주문한 짙은 남색 비단 스모킹 재킷이 그 시작으로 꼽히는 남성 야회복입니다. 대서양을 건너 미국에서 불리게 된 이 옷의 이름은?",
-    "answer": "턱시도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "여러 유럽 말에서는 지금도 이 옷을 '스모킹'이라 부르며, 헨리 풀은 1876년 세상을 떠나 자기 디자인이 미국에서 새 이름으로 불리는 것을 보지 못했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "대서양을 건너 미국에서 불리게 된 이 (남성 야회복) 이름",
-     "difWhy": "미국식 남성 예복 이름 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 옷 이름 유래",
-     "acc": 4,
-     "accWhy": "의복·패션 — 대부분이 관심"
+  "_meta": {
+    "round": "g019a",
+    "subId": "fashion/1",
+    "midKey": "fashion",
+    "subName": "의류 명칭",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "fashion/1#g019a-L1-15",
+      "seed": {
+        "subject": "턱시도",
+        "aspect": null,
+        "ref": "L1-15",
+        "pairedWith": 4400
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 4400,
+        "question": "에드워드 7세가 왕세자이던 1865년 런던 새빌 로의 헨리 풀 양복점에 주문한 짙은 남색 비단 스모킹 재킷이 그 시작으로 꼽히는 남성 야회복입니다. 대서양을 건너 미국에서 불리게 된 이 옷의 이름은?",
+        "answer": "턱시도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "여러 유럽 말에서는 지금도 이 옷을 '스모킹'이라 부르며, 헨리 풀은 1876년 세상을 떠나 자기 디자인이 미국에서 새 이름으로 불리는 것을 보지 못했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "대서양을 건너 미국에서 불리게 된 이 (남성 야회복) 이름",
+          "difWhy": "미국식 남성 예복 이름 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 옷 이름 유래",
+          "acc": 4,
+          "accWhy": "의복·패션 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'스모킹'이라 부르는 이 옷을 미국에서 퍼진 이름으로",
+          "difWhy": "스모킹 재킷의 미국 이름 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "의류 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "에드워드 7세가 왕세자이던 1865년 런던 새빌 로의 헨리 풀 양복점에 주문한 짙은 남색 비단 스모킹 재킷이 그 시작으로 꼽힙니다. 지금도 여러 유럽 말에서 '스모킹'이라 부르는 이 옷을 미국에서 퍼진 이름으로 무엇이라 할까요?",
+          "beforeExplanation": "헨리 풀은 1876년 세상을 떠나, 자기 디자인이 대서양을 건너 새 이름으로 불리는 것을 보지 못했습니다.",
+          "removedCue": "지금도 여러 유럽 말에서 '스모킹'이라 부르는 이 옷",
+          "addedCue": "(빼기만) 헨리 풀·에드워드 7세 주문 세부만 남김",
+          "why": "스모킹이라는 다른 이름(관심층이 바로 잇는 단서)을 해설로 옮김"
+        },
+        "generalHint": "이 옷을 미국에 처음 들여온 사람으로는 런던에서 일했던 은행가 제임스 브라운 포터가 꼽히지만, 확인되지는 않았다고 한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "남성의 격식 있는 저녁 예복",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "결혼식 등에서 흔한 예복",
+          "piece": "f02",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "L1-15",
+          "key": "b013",
+          "hint": "이 옷을 미국에 처음 들여온 사람으로는 런던에서 일했던 은행가 제임스 브라운 포터가 꼽히지만, 확인되지는 않았다고 한다.",
+          "guess": "턱시도",
+          "confidence": "high",
+          "hit": true,
+          "answer": "턱시도"
+        },
+        "hobby": null,
+        "defForm": true,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Black_tie"
+        ],
+        "facts": [
+          {
+            "claim": "1865년 왕세자(에드워드 7세)가 헨리 풀에 주문한 짙은 남색 비단 스모킹 재킷이 가장 이른 기록",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Black_tie",
+            "note": "The earliest record of a tailless coat being worn with evening wear is an 1865 midnight blue smoking jacket in silk with matching trousers ordered by the Prince of Wales, later Edward VII of the United Kingdom, from Savile Row tailors Henry Poole & Co."
+          },
+          {
+            "claim": "미국에서는 턱시도라 불림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Black_tie",
+            "note": "Henry Poole never saw his design become known as a dinner jacket or cross the Atlantic and be called a tuxedo over there"
+          },
+          {
+            "claim": "여러 유럽 말에서 '스모킹'이라 부름",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Black_tie",
+            "note": "In a number of European and other languages the style is referred to by the pseudo-anglicism smoking."
+          },
+          {
+            "claim": "헨리 풀 1876년 사망",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Black_tie",
+            "note": "he died in 1876 leaving behind a well-respected business to be run by his cousin Samuel Cundey."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Tuxedo"
+        ],
+        "hintNote": "An essay in the Tuxedo Park archives attributes the jacket's importation to America to resident James Brown Potter, a merchant banker who had worked in London for Brown Brothers. However, this claim for Potter cannot be verified through independent sources.",
+        "easiestCue": "1865년 왕세자가 헨리 풀에 주문한 스모킹 재킷",
+        "targetWhy": "헨리 풀·1865년 주문은 남성복 애호가 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'스모킹'이 YSL '르 스모킹'으로 연상되면 관심층 3",
+        "pairCheck": "1회차(#4400) 질문은 1886 턱시도 파크 무도회·디너 재킷, 해설은 블랙타이·1888 — 2회차는 1865 헨리 풀·'스모킹' 이름으로 겹치지 않음(힌트 null) · 1회차 정의 문장('꼬리 없는 야회복')은 쓰지 않음",
+        "dbCheck": "pair-or-different #4400 — (가) 2회차",
+        "warn": [
+          "낱말뜻꼴"
+        ],
+        "first": {
+          "id": 4400,
+          "question": "1886년 미국 뉴욕주의 한 부유층 마을 클럽 무도회에 젊은 남성들이 꼬리 없는 야회복을 입고 나왔다고 전하며, 그 마을 이름이 이 옷의 이름이 되었다고 합니다. 영국에서는 흔히 '디너 재킷'이라 부르는 이 남성 예복은?",
+          "explanation": "옷차림 규정으로는 '블랙타이'에 해당하며, 이 이름이 남성복을 가리키는 말로 쓰인 것은 1888년 무렵 미국에서라고 합니다.",
+          "hint": null,
+          "difficulty": 1
+        },
+        "discarded": "G020 V025 drop — pair-3-3: 2회차가 1회차 정의 문장('남성 야회복')을 되풀이하고 '미국에서 불리게 된 이 옷의 이름'만으로 새 사실 없이 턱시도가 나옴 — 3-3 · CV-45",
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "대서양을 건너 미국에서 불리게 된 이 (남성 야회복) 이름",
+          "difWhy": "미국식 남성 예복 이름 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 옷 이름 유래",
+          "acc": 4,
+          "accWhy": "의복·패션 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 drop pair-3-3",
+          "verdict": "drop"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'스모킹'이라 부르는 이 옷을 미국에서 퍼진 이름으로",
-     "difWhy": "스모킹 재킷의 미국 이름 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "의류 기원 이야깃거리"
+    {
+      "seedId": "fashion/1#g019a-L1-16",
+      "seed": {
+        "subject": "세일러복",
+        "aspect": null,
+        "ref": "L1-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1846년 네 살 난 영국 왕세자 앨버트 에드워드는 왕실 요트 승무원 제복을 작게 줄인 옷을 입었습니다. 빈터할터가 그린 그 초상화가 판화로 퍼지면서 1870년대에는 여러 나라에서 남녀 아이 옷으로 유행한 이 옷은?",
+        "answer": "세일러복",
+        "acceptedAnswers": [
+          "세라복"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "세라복 — 일본어 セーラー服 를 거친 한국 일상 표기(교복을 가리킬 때 흔함) · ko.wikipedia 문서 제목은 세일러복",
+        "explanation": "일본·한국·필리핀·태국 등 아시아 여러 나라 학교가 이 옷을 교복으로 받아들였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "왕실 요트 승무원 제복을 작게 줄인 옷",
+          "difWhy": "선원 제복 본뜬 아이 옷 — 일상",
+          "wor": 3,
+          "worWhy": "의류 기원 이야깃거리",
+          "acc": 4,
+          "accWhy": "의복·패션 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "왕실 요트 승무원 제복을 작게 줄인 옷",
+          "difWhy": "선원 제복 본뜬 아이 옷 — 일상",
+          "wor": 3,
+          "worWhy": "의류 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "출처의 기원 이야기가 수병 제복 하나뿐이라 그것을 빼면 왕세자의 다른 아이 옷(킬트 등)과 갈리지 않고, 확인되는 다른 깊은 세부(일본 교복 도입 등)는 문서에서 찾지 못함"
+        },
+        "generalHint": "빈 소년 합창단은 해외 공연을 다닐 때 이 옷을 차려입는다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "큰 깃이 달린 해군 수병풍의 옷",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "교복·애니(세일러문)로 익숙",
+          "piece": "f01",
+          "genPct": 80
+        },
+        "blind": null,
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Sailor_suit",
+          "https://ko.wikipedia.org/wiki/세일러복"
+        ],
+        "facts": [
+          {
+            "claim": "1846년 네 살 왕세자 앨버트 에드워드가 왕실 요트 수병 제복 축소판을 받음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sailor_suit",
+            "note": "In 1846, the four-year-old Albert Edward, Prince of Wales was given a scaled-down version of the uniform worn by ratings on the Royal Yacht."
+          },
+          {
+            "claim": "빈터할터 초상화 판화로 퍼져 1870년대 남녀 아이 유행",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sailor_suit",
+            "note": "Popular engravings, including the famous portrait done by Winterhalter, spread the idea, and by the 1870s the sailor suit had become a fashionable dress for both boys and girls in many countries."
+          },
+          {
+            "claim": "아시아 여러 나라 교복",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Sailor_suit",
+            "note": "Many schools in some Asian countries and regions, including Japan, the Philippines, North Korea, South Korea, Vietnam, and Thailand, have adopted sailor outfits as a school uniform."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Sailor_suit"
+        ],
+        "easiestCue": "왕실 요트 승무원 제복을 작게 줄인 옷",
+        "targetWhy": "'선원 제복을 아이 옷으로' 추리가 열려 있어 경계 — 1846 왕세자·빈터할터는 복식사 애호가",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "승무원 제복이 정답 이름(세일러)의 뜻과 가깝다 — 3 으로 내려갈 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "왕실 요트 승무원 제복을 작게 줄인 옷",
+          "difWhy": "선원 제복 본뜬 아이 옷 — 일상",
+          "wor": 3,
+          "worWhy": "의류 기원 이야깃거리",
+          "acc": 4,
+          "accWhy": "의복·패션 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok  · H0 재채점 3 → 힌트 붙임",
+          "verdict": "ok",
+          "hintGen": true,
+          "hintGenNote": "G020 하위 에이전트(hint-v6 규칙 · 문서 확인)"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "에드워드 7세가 왕세자이던 1865년 런던 새빌 로의 헨리 풀 양복점에 주문한 짙은 남색 비단 스모킹 재킷이 그 시작으로 꼽힙니다. 지금도 여러 유럽 말에서 '스모킹'이라 부르는 이 옷을 미국에서 퍼진 이름으로 무엇이라 할까요?",
-     "beforeExplanation": "헨리 풀은 1876년 세상을 떠나, 자기 디자인이 대서양을 건너 새 이름으로 불리는 것을 보지 못했습니다.",
-     "removedCue": "지금도 여러 유럽 말에서 '스모킹'이라 부르는 이 옷",
-     "addedCue": "(빼기만) 헨리 풀·에드워드 7세 주문 세부만 남김",
-     "why": "스모킹이라는 다른 이름(관심층이 바로 잇는 단서)을 해설로 옮김"
-    },
-    "generalHint": "이 옷을 미국에 처음 들여온 사람으로는 런던에서 일했던 은행가 제임스 브라운 포터가 꼽히지만, 확인되지는 않았다고 한다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "남성의 격식 있는 저녁 예복",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "결혼식 등에서 흔한 예복",
-     "piece": "f02",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "L1-15",
-     "key": "b013",
-     "hint": "이 옷을 미국에 처음 들여온 사람으로는 런던에서 일했던 은행가 제임스 브라운 포터가 꼽히지만, 확인되지는 않았다고 한다.",
-     "guess": "턱시도",
-     "confidence": "high",
-     "hit": true,
-     "answer": "턱시도"
-    },
-    "hobby": null,
-    "defForm": true,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Black_tie"
-    ],
-    "facts": [
-     {
-      "claim": "1865년 왕세자(에드워드 7세)가 헨리 풀에 주문한 짙은 남색 비단 스모킹 재킷이 가장 이른 기록",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Black_tie",
-      "note": "The earliest record of a tailless coat being worn with evening wear is an 1865 midnight blue smoking jacket in silk with matching trousers ordered by the Prince of Wales, later Edward VII of the United Kingdom, from Savile Row tailors Henry Poole & Co."
-     },
-     {
-      "claim": "미국에서는 턱시도라 불림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Black_tie",
-      "note": "Henry Poole never saw his design become known as a dinner jacket or cross the Atlantic and be called a tuxedo over there"
-     },
-     {
-      "claim": "여러 유럽 말에서 '스모킹'이라 부름",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Black_tie",
-      "note": "In a number of European and other languages the style is referred to by the pseudo-anglicism smoking."
-     },
-     {
-      "claim": "헨리 풀 1876년 사망",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Black_tie",
-      "note": "he died in 1876 leaving behind a well-respected business to be run by his cousin Samuel Cundey."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Tuxedo"
-    ],
-    "hintNote": "An essay in the Tuxedo Park archives attributes the jacket's importation to America to resident James Brown Potter, a merchant banker who had worked in London for Brown Brothers. However, this claim for Potter cannot be verified through independent sources.",
-    "easiestCue": "1865년 왕세자가 헨리 풀에 주문한 스모킹 재킷",
-    "targetWhy": "헨리 풀·1865년 주문은 남성복 애호가 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'스모킹'이 YSL '르 스모킹'으로 연상되면 관심층 3",
-    "pairCheck": "1회차(#4400) 질문은 1886 턱시도 파크 무도회·디너 재킷, 해설은 블랙타이·1888 — 2회차는 1865 헨리 풀·'스모킹' 이름으로 겹치지 않음(힌트 null) · 1회차 정의 문장('꼬리 없는 야회복')은 쓰지 않음",
-    "dbCheck": "pair-or-different #4400 — (가) 2회차",
-    "warn": [
-     "낱말뜻꼴"
-    ],
-    "first": {
-     "id": 4400,
-     "question": "1886년 미국 뉴욕주의 한 부유층 마을 클럽 무도회에 젊은 남성들이 꼬리 없는 야회복을 입고 나왔다고 전하며, 그 마을 이름이 이 옷의 이름이 되었다고 합니다. 영국에서는 흔히 '디너 재킷'이라 부르는 이 남성 예복은?",
-     "explanation": "옷차림 규정으로는 '블랙타이'에 해당하며, 이 이름이 남성복을 가리키는 말로 쓰인 것은 1888년 무렵 미국에서라고 합니다.",
-     "hint": null,
-     "difficulty": 1
+    {
+      "seedId": "fashion/1#g019a-L1-17",
+      "seed": {
+        "subject": "다운 재킷",
+        "aspect": null,
+        "ref": "L1-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1922년 에베레스트 원정에서 산악인 조지 핀치는 기구용 천으로 만든 이 옷의 초기형을 처음 입은 것으로 꼽힙니다. 1937년 디자이너 찰스 제임스가 비슷한 짜임의 옷을 오트 쿠튀르로 내놓기도 한 이 옷은 무엇일까요?",
+        "answer": "다운 재킷",
+        "acceptedAnswers": [
+          "패딩",
+          "패딩 점퍼",
+          "다운 자켓",
+          "다운 점퍼"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '다운 재킷' 첫 줄 '다운 재킷 또는 패딩, 누비옷' · 패딩 점퍼는 일상 상품명으로 흔함(누비옷은 넓은 말이라 뺌)",
+        "explanation": "1936년 낚시 여행에서 저체온증으로 죽을 뻔한 에디 바워는 1940년 마름모꼴로 누빈 이 옷의 특허를 받아 '스카이라이너'로 팔았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "에베레스트 원정 … 기구용 천으로 만든 이 옷의 초기형",
+          "difWhy": "핀치의 원정복 — 아웃도어 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 옷 기원",
+          "acc": 4,
+          "accWhy": "의복·패션 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "에디 바워는 … 마름모꼴로 누빈 이 옷",
+          "difWhy": "누빈 방한 옷 기원 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "의류 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1936년 겨울 낚시 여행에서 저체온증으로 죽을 뻔했던 미국의 에디 바워는, 1940년 마름모꼴로 누빈 이 옷의 특허를 받아 '스카이라이너'라는 이름으로 팔았습니다. 이 옷은 무엇일까요?",
+          "beforeExplanation": "1922년 에베레스트 원정에서는 오스트레일리아의 화학자이자 산악인 조지 핀치가 기구용 천과 솜털로 만든 옷을 입은 것으로 알려져 있습니다.",
+          "removedCue": "에디 바워의 마름모 누빔 옷(관심층 — 해설로 옮김)",
+          "addedCue": "조지 핀치의 1922년 에베레스트 원정(해설에서 옮김) · 찰스 제임스의 오트 쿠튀르",
+          "why": "아웃도어 브랜드 기원을 빼고 등산사·패션사 세부로"
+        },
+        "generalHint": "1970년대 노르마 카말리는 코트 두 벌을 겹쳐 꿰매고 사이를 채운 여성용 판을 내놓으며 침낭에 빗댄 이름을 붙였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "솜털을 채워 누빈 겨울 외투",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "흔한 겨울 옷 이름",
+          "piece": "f06",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "L1-17",
+          "key": "b291",
+          "hint": "1970년대 노르마 카말리는 코트 두 벌을 겹쳐 꿰매고 사이를 채운 여성용 판을 내놓으며 침낭에 빗댄 이름을 붙였다.",
+          "guess": "패딩 코트",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "다운 재킷"
+        },
+        "hobby": "낚시",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Eddie_Bauer",
+          "https://en.wikipedia.org/wiki/Down_jacket"
+        ],
+        "facts": [
+          {
+            "claim": "겨울 낚시 여행 중 저체온증",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Eddie_Bauer",
+            "note": "While on a winter fishing trip in Washington, Eddie Bauer developed hypothermia."
+          },
+          {
+            "claim": "1936년 거의 죽을 뻔한 낚시 뒤 다운 재킷",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Down_jacket",
+            "note": "In 1936, outdoor adventurer Eddie Bauer created a down jacket following a hazardous fishing trip during which Bauer almost died of hypothermia; the adventurer invented an outer jacket encased with feathers, originally sold as the \"skyliner\"."
+          },
+          {
+            "claim": "1940년 누빈 거위털 재킷 특허, 스카이라이너, 마름모 누빔",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Eddie_Bauer",
+            "note": "In 1940, Bauer patented the first quilted goose down-insulated jacket in the United States: and introduced it in his store as \"The Skyliner\". ... Bauer held exclusive rights to the jacket's diamond-quilt design for 14 years"
+          },
+          {
+            "claim": "1922 조지 핀치 기구용 천과 솜털",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Down_jacket",
+            "note": "George Finch, an Australian chemist and mountaineer, is credited with first wearing a version of the down jacket in 1922, originally made from balloon fabric and eiderdown."
+          },
+          {
+            "claim": "1937년 찰스 제임스가 비슷한 디자인의 재킷을 오트 쿠튀르로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Down_jacket",
+            "note": "In 1937 designer Charles James developed a jacket with a similar design for haute couture."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Down_jacket"
+        ],
+        "hintNote": "The garment was reimagined in the 1970s as an athleisure jacket specifically marketed towards women by designer Norma Kamali. Named the \"sleeping bag jacket\", Kamali's version featured two coats sewn together with a synthetic down alternative packed between.",
+        "easiestCue": "조지 핀치가 에베레스트 원정에서 기구용 천으로 만든 옷",
+        "targetWhy": "등산 장비·패션의 역사 세부 — 등산·패션 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "누빔·방한이 범주를 좁힌다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (몽클레르 #5811 은 정답·지식 다름)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "에베레스트 원정 … 기구용 천으로 만든 이 옷의 초기형",
+          "difWhy": "핀치의 원정복 — 아웃도어 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 옷 기원",
+          "acc": 4,
+          "accWhy": "의복·패션 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix variants",
+          "verdict": "fix"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "fashion/1#g019a-L1-16",
-   "seed": {
-    "subject": "세일러복",
-    "aspect": null,
-    "ref": "L1-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1846년 네 살 난 영국 왕세자 앨버트 에드워드는 왕실 요트 승무원 제복을 작게 줄인 옷을 입었습니다. 빈터할터가 그린 그 초상화가 판화로 퍼지면서 1870년대에는 여러 나라에서 남녀 아이 옷으로 유행한 이 옷은?",
-    "answer": "세일러복",
-    "acceptedAnswers": [
-     "세라복"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "세라복 — 일본어 セーラー服 를 거친 한국 일상 표기(교복을 가리킬 때 흔함) · ko.wikipedia 문서 제목은 세일러복",
-    "explanation": "일본·한국·필리핀·태국 등 아시아 여러 나라 학교가 이 옷을 교복으로 받아들였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "왕실 요트 승무원 제복을 작게 줄인 옷",
-     "difWhy": "선원 제복 본뜬 아이 옷 — 일상",
-     "wor": 3,
-     "worWhy": "의류 기원 이야깃거리",
-     "acc": 4,
-     "accWhy": "의복·패션 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "왕실 요트 승무원 제복을 작게 줄인 옷",
-     "difWhy": "선원 제복 본뜬 아이 옷 — 일상",
-     "wor": 3,
-     "worWhy": "의류 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "출처의 기원 이야기가 수병 제복 하나뿐이라 그것을 빼면 왕세자의 다른 아이 옷(킬트 등)과 갈리지 않고, 확인되는 다른 깊은 세부(일본 교복 도입 등)는 문서에서 찾지 못함"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "큰 깃이 달린 해군 수병풍의 옷",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "교복·애니(세일러문)로 익숙",
-     "piece": "f01",
-     "genPct": 80
-    },
-    "blind": null,
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Sailor_suit",
-     "https://ko.wikipedia.org/wiki/세일러복"
-    ],
-    "facts": [
-     {
-      "claim": "1846년 네 살 왕세자 앨버트 에드워드가 왕실 요트 수병 제복 축소판을 받음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sailor_suit",
-      "note": "In 1846, the four-year-old Albert Edward, Prince of Wales was given a scaled-down version of the uniform worn by ratings on the Royal Yacht."
-     },
-     {
-      "claim": "빈터할터 초상화 판화로 퍼져 1870년대 남녀 아이 유행",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sailor_suit",
-      "note": "Popular engravings, including the famous portrait done by Winterhalter, spread the idea, and by the 1870s the sailor suit had become a fashionable dress for both boys and girls in many countries."
-     },
-     {
-      "claim": "아시아 여러 나라 교복",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Sailor_suit",
-      "note": "Many schools in some Asian countries and regions, including Japan, the Philippines, North Korea, South Korea, Vietnam, and Thailand, have adopted sailor outfits as a school uniform."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "왕실 요트 승무원 제복을 작게 줄인 옷",
-    "targetWhy": "'선원 제복을 아이 옷으로' 추리가 열려 있어 경계 — 1846 왕세자·빈터할터는 복식사 애호가",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "승무원 제복이 정답 이름(세일러)의 뜻과 가깝다 — 3 으로 내려갈 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "fashion/1#g019a-L1-17",
-   "seed": {
-    "subject": "다운 재킷",
-    "aspect": null,
-    "ref": "L1-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1922년 에베레스트 원정에서 산악인 조지 핀치는 기구용 천으로 만든 이 옷의 초기형을 처음 입은 것으로 꼽힙니다. 1937년 디자이너 찰스 제임스가 비슷한 짜임의 옷을 오트 쿠튀르로 내놓기도 한 이 옷은 무엇일까요?",
-    "answer": "다운 재킷",
-    "acceptedAnswers": [
-     "패딩",
-     "패딩 점퍼"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '다운 재킷' 첫 줄 '다운 재킷 또는 패딩, 누비옷' · 패딩 점퍼는 일상 상품명으로 흔함(누비옷은 넓은 말이라 뺌)",
-    "explanation": "1936년 낚시 여행에서 저체온증으로 죽을 뻔한 에디 바워는 1940년 마름모꼴로 누빈 이 옷의 특허를 받아 '스카이라이너'로 팔았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "에베레스트 원정 … 기구용 천으로 만든 이 옷의 초기형",
-     "difWhy": "핀치의 원정복 — 아웃도어 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 옷 기원",
-     "acc": 4,
-     "accWhy": "의복·패션 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "에디 바워는 … 마름모꼴로 누빈 이 옷",
-     "difWhy": "누빈 방한 옷 기원 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "의류 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1936년 겨울 낚시 여행에서 저체온증으로 죽을 뻔했던 미국의 에디 바워는, 1940년 마름모꼴로 누빈 이 옷의 특허를 받아 '스카이라이너'라는 이름으로 팔았습니다. 이 옷은 무엇일까요?",
-     "beforeExplanation": "1922년 에베레스트 원정에서는 오스트레일리아의 화학자이자 산악인 조지 핀치가 기구용 천과 솜털로 만든 옷을 입은 것으로 알려져 있습니다.",
-     "removedCue": "에디 바워의 마름모 누빔 옷(관심층 — 해설로 옮김)",
-     "addedCue": "조지 핀치의 1922년 에베레스트 원정(해설에서 옮김) · 찰스 제임스의 오트 쿠튀르",
-     "why": "아웃도어 브랜드 기원을 빼고 등산사·패션사 세부로"
-    },
-    "generalHint": "1970년대 노르마 카말리는 코트 두 벌을 겹쳐 꿰매고 사이를 채운 여성용 판을 내놓으며 침낭에 빗댄 이름을 붙였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "솜털을 채워 누빈 겨울 외투",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "흔한 겨울 옷 이름",
-     "piece": "f06",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "L1-17",
-     "key": "b291",
-     "hint": "1970년대 노르마 카말리는 코트 두 벌을 겹쳐 꿰매고 사이를 채운 여성용 판을 내놓으며 침낭에 빗댄 이름을 붙였다.",
-     "guess": "패딩 코트",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "다운 재킷"
-    },
-    "hobby": "낚시",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Eddie_Bauer",
-     "https://en.wikipedia.org/wiki/Down_jacket"
-    ],
-    "facts": [
-     {
-      "claim": "겨울 낚시 여행 중 저체온증",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Eddie_Bauer",
-      "note": "While on a winter fishing trip in Washington, Eddie Bauer developed hypothermia."
-     },
-     {
-      "claim": "1936년 거의 죽을 뻔한 낚시 뒤 다운 재킷",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Down_jacket",
-      "note": "In 1936, outdoor adventurer Eddie Bauer created a down jacket following a hazardous fishing trip during which Bauer almost died of hypothermia; the adventurer invented an outer jacket encased with feathers, originally sold as the \"skyliner\"."
-     },
-     {
-      "claim": "1940년 누빈 거위털 재킷 특허, 스카이라이너, 마름모 누빔",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Eddie_Bauer",
-      "note": "In 1940, Bauer patented the first quilted goose down-insulated jacket in the United States: and introduced it in his store as \"The Skyliner\". ... Bauer held exclusive rights to the jacket's diamond-quilt design for 14 years"
-     },
-     {
-      "claim": "1922 조지 핀치 기구용 천과 솜털",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Down_jacket",
-      "note": "George Finch, an Australian chemist and mountaineer, is credited with first wearing a version of the down jacket in 1922, originally made from balloon fabric and eiderdown."
-     },
-     {
-      "claim": "1937년 찰스 제임스가 비슷한 디자인의 재킷을 오트 쿠튀르로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Down_jacket",
-      "note": "In 1937 designer Charles James developed a jacket with a similar design for haute couture."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Down_jacket"
-    ],
-    "hintNote": "The garment was reimagined in the 1970s as an athleisure jacket specifically marketed towards women by designer Norma Kamali. Named the \"sleeping bag jacket\", Kamali's version featured two coats sewn together with a synthetic down alternative packed between.",
-    "easiestCue": "조지 핀치가 에베레스트 원정에서 기구용 천으로 만든 옷",
-    "targetWhy": "등산 장비·패션의 역사 세부 — 등산·패션 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "누빔·방한이 범주를 좁힌다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (몽클레르 #5811 은 정답·지식 다름)",
-    "warn": []
-   }
-  }
- ]
+  ]
 }

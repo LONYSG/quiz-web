@@ -1,232 +1,262 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "philosophy/5",
-  "midKey": "philosophy",
-  "subName": "철학 용어·명제",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "philosophy/5#g019a-H2-05",
-   "seed": {
-    "subject": "패러다임",
-    "aspect": null,
-    "ref": "H2-05",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1965년 런던의 과학철학 국제 학술 모임에서 영국 철학자 마거릿 마스터먼은, 1962년에 나온 한 과학사 책이 핵심 낱말을 적어도 21가지 다른 뜻으로 쓴다고 지적했습니다. 저자도 이 비판을 받아들였는데, 그 낱말은 무엇일까요?",
-    "answer": "패러다임",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "토머스 쿤은 1947년 하버드 대학원생 시절 아리스토텔레스의 『자연학』을 읽다가 이 책의 착상을 얻었다고 회고했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "엮음: 1962년에 나온 한 과학사 책 + 핵심 낱말",
-     "difWhy": "쿤 『과학혁명의 구조』 핵심어 — 대학 교양",
-     "wor": 4,
-     "worWhy": "교양 기본 어휘 — 패러다임",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "엮음: 1962년에 나온 한 과학사 책 + 핵심 낱말",
-     "difWhy": "쿤 『과학혁명의 구조』 핵심어 — 대학 교양",
-     "wor": 4,
-     "worWhy": "교양 기본 어휘 — 패러다임"
-    },
-    "rewrite": null,
-    "generalHint": "그 책은 서로 맞서는 과학 이론 체계 사이에는 공통의 잣대가 없다는 '공약 불가능성'도 내세웠다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한 시대 과학자 공동체가 공유하는 이론·방법의 틀",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "일상·뉴스에서 흔히 쓰는 말",
-     "piece": "f01",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "H2-05",
-     "key": "b071",
-     "hint": "그 책은 서로 맞서는 과학 이론 체계 사이에는 공통의 잣대가 없다는 '공약 불가능성'도 내세웠다.",
-     "guess": "과학 혁명의 구조",
-     "confidence": "high",
-     "hit": false,
-     "answer": "패러다임"
-    },
-    "hobby": null,
-    "defForm": true,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Margaret_Masterman",
-     "https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions"
-    ],
-    "facts": [
-     {
-      "claim": "1965년 런던 제4차 과학철학 국제 콜로키움에서 마스터먼 발표",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Margaret_Masterman",
-      "note": "In 1965, Margaret Masterman read the work \"The Nature of a Paradigm\" at the Fourth International Colloquium in the Philosophy of Science, in London."
-     },
-     {
-      "claim": "쿤의 1962년 책이 패러다임을 적어도 21가지 뜻으로 씀 — 쿤이 비판을 받아들임",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Margaret_Masterman",
-      "note": "She criticised Thomas Kuhn for his vague and inconsistent use of the concept \"Paradigm,\" noting that it is used in at least 21 different senses ... This criticism was accepted by Thomas Kuhn"
-     },
-     {
-      "claim": "『과학혁명의 구조』는 1962년 책",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions",
-      "note": "The Structure of Scientific Revolutions is a 1962 book about the history of science by the philosopher Thomas S. Kuhn."
-     },
-     {
-      "claim": "1947년 하버드 대학원생 때 아리스토텔레스 『자연학』을 읽으며 착상",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions",
-      "note": "Kuhn dated the genesis of his book to 1947, when he was a graduate student at Harvard University ... While perusing Aristotle's Physics, Kuhn formed the view..."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Thomas_Kuhn"
-    ],
-    "hintNote": "Competing paradigms are frequently incommensurable; that is, there is no one-to-one correspondence of assumptions and terms.",
-    "easiestCue": "1962년에 나온 한 과학사 책이 핵심 낱말을",
-    "targetWhy": "1962년 과학사 책 = 쿤 『과학혁명의 구조』 연결은 대학 교양(과학철학), 마스터먼 비판은 그보다 깊음 — 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "일상어가 된 낱말의 학술적 뒷이야기(정의를 주지 않음)",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "낱말뜻꼴"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "philosophy/5",
+    "midKey": "philosophy",
+    "subName": "철학 용어·명제",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "philosophy/5#g019a-H2-06",
-   "seed": {
-    "subject": "카타르시스",
-    "aspect": null,
-    "ref": "H2-06",
-    "pairedWith": 3247
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 3247,
-    "question": "1890년대 초 오스트리아 의사 요제프 브로이어는 최면 상태의 환자가 잊고 있던 충격적 경험을 떠올리게 하는 히스테리 치료법을 만들었습니다. 1895년 프로이트와 함께 『히스테리 연구』를 펴낸 그의 이 치료법 이름에 들어간, 그리스어에서 온 낱말은?",
-    "answer": "카타르시스",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "프로이트는 1857년 아리스토텔레스의 연극론에 관한 책을 낸 고전학자 야코프 베르나이스의 조카딸과 결혼했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "엮음: 브로이어 히스테리 치료법 이름 + 그리스어에서 온 낱말",
-     "difWhy": "브로이어 카타르시스 요법 — 대학 교양 심리학 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 기본 어휘 — 카타르시스",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
+  "items": [
+    {
+      "seedId": "philosophy/5#g019a-H2-05",
+      "seed": {
+        "subject": "패러다임",
+        "aspect": null,
+        "ref": "H2-05",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1965년 런던의 과학철학 국제 학술 모임에서 영국 철학자 마거릿 마스터먼은, 1962년에 나온 한 과학사 책이 핵심 낱말을 적어도 21가지 다른 뜻으로 쓴다고 지적했습니다. 저자도 이 비판을 받아들였는데, 그 낱말은 무엇일까요?",
+        "answer": "패러다임",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "토머스 쿤은 1947년 하버드 대학원생 시절 아리스토텔레스의 『자연학』을 읽다가 이 책의 착상을 얻었다고 회고했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 1962년에 나온 한 과학사 책 + 핵심 낱말",
+          "difWhy": "쿤 『과학혁명의 구조』 핵심어 — 대학 교양",
+          "wor": 4,
+          "worWhy": "교양 기본 어휘 — 패러다임",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "엮음: 1962년에 나온 한 과학사 책 + 핵심 낱말",
+          "difWhy": "쿤 『과학혁명의 구조』 핵심어 — 대학 교양",
+          "wor": 4,
+          "worWhy": "교양 기본 어휘 — 패러다임"
+        },
+        "rewrite": null,
+        "generalHint": "그 책은 서로 맞서는 과학 이론 체계 사이에는 공통의 잣대가 없다는 '공약 불가능성'도 내세웠다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한 시대 과학자 공동체가 공유하는 이론·방법의 틀",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "일상·뉴스에서 흔히 쓰는 말",
+          "piece": "f01",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "H2-05",
+          "key": "b071",
+          "hint": "그 책은 서로 맞서는 과학 이론 체계 사이에는 공통의 잣대가 없다는 '공약 불가능성'도 내세웠다.",
+          "guess": "과학 혁명의 구조",
+          "confidence": "high",
+          "hit": false,
+          "answer": "패러다임"
+        },
+        "hobby": null,
+        "defForm": true,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Margaret_Masterman",
+          "https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions"
+        ],
+        "facts": [
+          {
+            "claim": "1965년 런던 제4차 과학철학 국제 콜로키움에서 마스터먼 발표",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Margaret_Masterman",
+            "note": "In 1965, Margaret Masterman read the work \"The Nature of a Paradigm\" at the Fourth International Colloquium in the Philosophy of Science, in London."
+          },
+          {
+            "claim": "쿤의 1962년 책이 패러다임을 적어도 21가지 뜻으로 씀 — 쿤이 비판을 받아들임",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Margaret_Masterman",
+            "note": "She criticised Thomas Kuhn for his vague and inconsistent use of the concept \"Paradigm,\" noting that it is used in at least 21 different senses ... This criticism was accepted by Thomas Kuhn"
+          },
+          {
+            "claim": "『과학혁명의 구조』는 1962년 책",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions",
+            "note": "The Structure of Scientific Revolutions is a 1962 book about the history of science by the philosopher Thomas S. Kuhn."
+          },
+          {
+            "claim": "1947년 하버드 대학원생 때 아리스토텔레스 『자연학』을 읽으며 착상",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions",
+            "note": "Kuhn dated the genesis of his book to 1947, when he was a graduate student at Harvard University ... While perusing Aristotle's Physics, Kuhn formed the view..."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Thomas_Kuhn"
+        ],
+        "hintNote": "Competing paradigms are frequently incommensurable; that is, there is no one-to-one correspondence of assumptions and terms.",
+        "easiestCue": "1962년에 나온 한 과학사 책이 핵심 낱말을",
+        "targetWhy": "1962년 과학사 책 = 쿤 『과학혁명의 구조』 연결은 대학 교양(과학철학), 마스터먼 비판은 그보다 깊음 — 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "일상어가 된 낱말의 학술적 뒷이야기(정의를 주지 않음)",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "낱말뜻꼴"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 1962년에 나온 한 과학사 책 + 핵심 낱말",
+          "difWhy": "쿤 『과학혁명의 구조』 핵심어 — 대학 교양",
+          "wor": 4,
+          "worWhy": "교양 기본 어휘 — 패러다임",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "엮음: 브로이어 히스테리 치료법 이름 + 그리스어에서 온 낱말",
-     "difWhy": "브로이어 카타르시스 요법 — 대학 교양 심리학 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 기본 어휘 — 카타르시스"
-    },
-    "rewrite": null,
-    "generalHint": "브로이어의 환자 '안나 O.'는 이 치료를 '굴뚝 청소'와 '말하기 치료'라고 불렀다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "비극을 보며 감정이 씻겨 나가는 효과를 이르는 그리스어 개념",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "일상에서도 쓰는 말",
-     "piece": "f08",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "H2-06",
-     "key": "b298",
-     "hint": "브로이어의 환자 '안나 O.'는 이 치료를 '굴뚝 청소'와 '말하기 치료'라고 불렀다.",
-     "guess": "정신분석",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "카타르시스"
-    },
-    "hobby": null,
-    "defForm": true,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Catharsis"
-    ],
-    "facts": [
-     {
-      "claim": "브로이어가 1890년대 초 최면을 이용한 카타르시스 치료법을 개발 — 환자가 외상 경험을 떠올림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Catharsis",
-      "note": "Austrian psychiatrist Josef Breuer developed a cathartic method of treatment using hypnosis for persons who have intensive hysteria in the early 1890s. While under hypnosis, Breuer's patients were able to recall traumatic experiences"
-     },
-     {
-      "claim": "브로이어와 프로이트가 1895년 『히스테리 연구』",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Catharsis",
-      "note": "Breuer and Freud released the book Studies on Hysteria in 1895."
-     },
-     {
-      "claim": "카타르시스는 고대 그리스어에서 온 말",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Catharsis",
-      "note": "Catharsis or katharsis is from the Ancient Greek word κάθαρσις"
-     },
-     {
-      "claim": "베르나이스 1857·1880 아리스토텔레스 연극관 책, 프로이트는 그의 조카딸과 결혼",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Catharsis",
-      "note": "Jakob Bernays was a German philosopher who wrote books about Aristotle's views of drama in 1857 and 1880. ... Breuer became a mentor to fellow Austrian psychiatrist Sigmund Freud (who was married to Bernays' niece)."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Bertha_Pappenheim"
-    ],
-    "hintNote": "she described the process using the terms \"chimney-sweeping\" and \"talking cure\".",
-    "easiestCue": "브로이어 … 이 치료법 이름에 들어간, 그리스어에서 온 낱말",
-    "targetWhy": "브로이어의 '카타르시스 요법'은 심리학사 대학 교양 — 4(질문은 감정 해소를 정의하지 않음)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'잊었던 충격 경험을 떠올리게 하는 치료'가 감정 해소를 떠올리게 할 수 있음",
-    "pairCheck": "1회차 #3247 은 아리스토텔레스 『시학』의 비극 효과(정의) · 해설 '정화라는 뜻의 그리스어' · 힌트 없음 — 2회차는 브로이어 치료법으로 시학·정화 뜻을 쓰지 않음(베르나이스·아리스토텔레스는 해설에만)",
-    "dbCheck": "pair-or-different — 활성 #3247(연극 사조, 시학의 정의) · 지식이 다름(심리 치료법 이름)",
-    "warn": [
-     "낱말뜻꼴"
-    ],
-    "first": {
-     "id": 3247,
-     "question": "아리스토텔레스가 \"시학\" 에서, 비극을 보며 연민과 두려움을 느낀 관객의 마음이 씻겨 나간다고 한 효과는?",
-     "explanation": "\"정화\" 라는 뜻의 그리스어입니다.",
-     "hint": null,
-     "difficulty": 2
+    {
+      "seedId": "philosophy/5#g019a-H2-06",
+      "seed": {
+        "subject": "카타르시스",
+        "aspect": null,
+        "ref": "H2-06",
+        "pairedWith": 3247
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 3247,
+        "question": "1890년대 초 오스트리아 의사 요제프 브로이어는 최면 상태의 환자가 잊고 있던 충격적 경험을 떠올리게 하는 히스테리 치료법을 만들었습니다. 1895년 프로이트와 함께 『히스테리 연구』를 펴낸 그의 이 치료법 이름에 들어간, 그리스어에서 온 낱말은?",
+        "answer": "카타르시스",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "프로이트는 1857년 아리스토텔레스의 연극론에 관한 책을 낸 고전학자 야코프 베르나이스의 조카딸과 결혼했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 브로이어 히스테리 치료법 이름 + 그리스어에서 온 낱말",
+          "difWhy": "브로이어 카타르시스 요법 — 대학 교양 심리학 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 기본 어휘 — 카타르시스",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "엮음: 브로이어 히스테리 치료법 이름 + 그리스어에서 온 낱말",
+          "difWhy": "브로이어 카타르시스 요법 — 대학 교양 심리학 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 기본 어휘 — 카타르시스"
+        },
+        "rewrite": null,
+        "generalHint": "브로이어의 환자 '안나 O.'는 이 치료를 '굴뚝 청소'와 '말하기 치료'라고 불렀다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "비극을 보며 감정이 씻겨 나가는 효과를 이르는 그리스어 개념",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "일상에서도 쓰는 말",
+          "piece": "f08",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "H2-06",
+          "key": "b298",
+          "hint": "브로이어의 환자 '안나 O.'는 이 치료를 '굴뚝 청소'와 '말하기 치료'라고 불렀다.",
+          "guess": "정신분석",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "카타르시스"
+        },
+        "hobby": null,
+        "defForm": true,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Catharsis"
+        ],
+        "facts": [
+          {
+            "claim": "브로이어가 1890년대 초 최면을 이용한 카타르시스 치료법을 개발 — 환자가 외상 경험을 떠올림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Catharsis",
+            "note": "Austrian psychiatrist Josef Breuer developed a cathartic method of treatment using hypnosis for persons who have intensive hysteria in the early 1890s. While under hypnosis, Breuer's patients were able to recall traumatic experiences"
+          },
+          {
+            "claim": "브로이어와 프로이트가 1895년 『히스테리 연구』",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Catharsis",
+            "note": "Breuer and Freud released the book Studies on Hysteria in 1895."
+          },
+          {
+            "claim": "카타르시스는 고대 그리스어에서 온 말",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Catharsis",
+            "note": "Catharsis or katharsis is from the Ancient Greek word κάθαρσις"
+          },
+          {
+            "claim": "베르나이스 1857·1880 아리스토텔레스 연극관 책, 프로이트는 그의 조카딸과 결혼",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Catharsis",
+            "note": "Jakob Bernays was a German philosopher who wrote books about Aristotle's views of drama in 1857 and 1880. ... Breuer became a mentor to fellow Austrian psychiatrist Sigmund Freud (who was married to Bernays' niece)."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Bertha_Pappenheim"
+        ],
+        "hintNote": "she described the process using the terms \"chimney-sweeping\" and \"talking cure\".",
+        "easiestCue": "브로이어 … 이 치료법 이름에 들어간, 그리스어에서 온 낱말",
+        "targetWhy": "브로이어의 '카타르시스 요법'은 심리학사 대학 교양 — 4(질문은 감정 해소를 정의하지 않음)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'잊었던 충격 경험을 떠올리게 하는 치료'가 감정 해소를 떠올리게 할 수 있음",
+        "pairCheck": "1회차 #3247 은 아리스토텔레스 『시학』의 비극 효과(정의) · 해설 '정화라는 뜻의 그리스어' · 힌트 없음 — 2회차는 브로이어 치료법으로 시학·정화 뜻을 쓰지 않음(베르나이스·아리스토텔레스는 해설에만)",
+        "dbCheck": "pair-or-different — 활성 #3247(연극 사조, 시학의 정의) · 지식이 다름(심리 치료법 이름)",
+        "warn": [
+          "낱말뜻꼴"
+        ],
+        "first": {
+          "id": 3247,
+          "question": "아리스토텔레스가 \"시학\" 에서, 비극을 보며 연민과 두려움을 느낀 관객의 마음이 씻겨 나간다고 한 효과는?",
+          "explanation": "\"정화\" 라는 뜻의 그리스어입니다.",
+          "hint": null,
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 브로이어 히스테리 치료법 이름 + 그리스어에서 온 낱말",
+          "difWhy": "브로이어 카타르시스 요법 — 대학 교양 심리학 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 기본 어휘 — 카타르시스",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  }
- ]
+  ]
 }

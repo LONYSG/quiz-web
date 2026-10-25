@@ -1,138 +1,153 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "computer/2",
-  "midKey": "computer",
-  "subName": "소프트웨어·운영체제",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "computer/2#g019a-C2-15",
-   "seed": {
-    "subject": "안드로이드",
-    "aspect": null,
-    "ref": "C2-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "앤디 루빈은 2003년 디지털카메라용 운영체제를 만들려고 회사를 세웠지만, 투자자를 설득하지 못해 이듬해 휴대전화 쪽으로 방향을 틀었고 2005년 3월에는 삼성에 거래를 거절당했습니다. 그해 7월 적어도 5천만 달러에 팔린 이 회사의 운영체제는?",
-    "answer": "안드로이드",
-    "acceptedAnswers": [
-     "Android"
-    ],
-    "originalTitleVariants": [
-     "Android"
-    ],
-    "variantCheck": "ko.wikipedia '안드로이드 (운영체제)' 문서 · 공식 상표 영문 Android(B10)",
-    "explanation": "회사 이름은 루빈이 이미 이 이름의 도메인을 갖고 있던 데서 정했고, 이 운영체제를 처음 실은 상용 스마트폰은 2008년의 HTC 드림이었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "앤디 루빈 … 휴대전화 쪽으로 방향 … 이 회사의 운영체제",
-     "difWhy": "루빈의 모바일 OS — IT 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 기업 역사",
-     "acc": 5,
-     "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "2008년 HTC 드림에 처음 실려 나온 이 운영체제",
-     "difWhy": "HTC 드림 OS — IT 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 OS 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "앤디 루빈은 2003년 디지털카메라용 운영체제를 만들려고 회사를 세웠지만, 투자자를 설득하지 못해 이듬해 휴대전화 쪽으로 방향을 틀었고 2005년 3월에는 삼성에 거래를 거절당했습니다. 2008년 HTC 드림에 처음 실려 나온 이 운영체제는 무엇일까요?",
-     "beforeExplanation": "회사 이름은 루빈이 이미 이 이름의 도메인을 갖고 있던 데서 정했고, 2005년 7월 적어도 5천만 달러에 팔렸습니다.",
-     "removedCue": "2008년 HTC 드림에 처음 실려 나온 이 운영체제",
-     "addedCue": "2005년 7월 적어도 5천만 달러에 팔림 (인수 회사 이름은 뺌)",
-     "why": "IT 관심층이 아는 첫 탑재 기기를 해설로 옮기고 회사 매각 세부로 바꿈"
-    },
-    "generalHint": "루빈은 앞서 1999년 휴대전화 회사 데인저를 세웠고, 그 회사는 2008년 마이크로소프트에 팔렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "구글이 만든 스마트폰용 운영체제",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "스마트폰 OS",
-     "piece": "f06",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "C2-15",
-     "key": "b178",
-     "hint": "루빈은 앞서 1999년 휴대전화 회사 데인저를 세웠고, 그 회사는 2008년 마이크로소프트에 팔렸다.",
-     "guess": "안드로이드",
-     "confidence": "high",
-     "hit": true,
-     "answer": "안드로이드"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Android_(operating_system)"
-    ],
-    "facts": [
-     {
-      "claim": "2003년 루빈 · 화이트가 회사 설립 · 처음엔 디지털카메라용 운영체제",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
-      "note": "was founded in Palo Alto, California, in October 2003 by Andy Rubin and Chris White ... Rubin and White started out to build an operating system for digital cameras"
-     },
-     {
-      "claim": "투자자 설득 실패 → 2004년 4월 휴대전화로 전환",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
-      "note": "the company failed to convince investors, and so in April 2004 they pivoted to building an operating system for phones at the suggestion of Nick Sears"
-     },
-     {
-      "claim": "2005년 3월 삼성이 거래를 거절",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
-      "note": "In 2005, Rubin tried to negotiate deals with Samsung and HTC. Later in March 2005, Samsung refused the deal"
-     },
-     {
-      "claim": "회사 이름은 루빈이 가진 android.com 도메인 · 2005년 7월 최소 5천만 달러에 구글 인수",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
-      "note": "The company name was changed to Android as Rubin already owned the domain name android.com. ... Google acquired the company in July 2005 for at least $50 million"
-     },
-     {
-      "claim": "첫 상용 스마트폰 HTC 드림 — 2008년",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
-      "note": "The first commercially available smartphone running Android was the HTC Dream, also known as T-Mobile G1, announced on September 23, 2008."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Andy_Rubin"
-    ],
-    "hintNote": "Rubin founded Danger Inc. in 1999 and left in 2003; Danger was eventually acquired by Microsoft in 2008.",
-    "easiestCue": "앤디 루빈이 세운 회사의 운영체제",
-    "targetWhy": "카메라 OS 출발·삼성 거절·매각가는 IT 애호가 세부 — 4(경계 3: 루빈을 알면 풀림)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 쓰는 운영체제의 출발 이야기",
-    "pairCheck": null,
-    "dbCheck": "new — 활성 3513(정답 리눅스) 질문에 이 이름이 나오지만 정답 · 지식이 다름",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "computer/2",
+    "midKey": "computer",
+    "subName": "소프트웨어·운영체제",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "computer/2#g019a-C2-15",
+      "seed": {
+        "subject": "안드로이드",
+        "aspect": null,
+        "ref": "C2-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "앤디 루빈은 2003년 디지털카메라용 운영체제를 만들려고 회사를 세웠지만, 투자자를 설득하지 못해 이듬해 휴대전화 쪽으로 방향을 틀었고 2005년 3월에는 삼성에 거래를 거절당했습니다. 그해 7월 적어도 5천만 달러에 팔린 이 회사의 운영체제는?",
+        "answer": "안드로이드",
+        "acceptedAnswers": [
+          "Android"
+        ],
+        "originalTitleVariants": [
+          "Android"
+        ],
+        "variantCheck": "ko.wikipedia '안드로이드 (운영체제)' 문서 · 공식 상표 영문 Android(B10)",
+        "explanation": "회사 이름은 루빈이 이미 이 이름의 도메인을 갖고 있던 데서 정했고, 이 운영체제를 처음 실은 상용 스마트폰은 2008년의 HTC 드림이었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "앤디 루빈 … 휴대전화 쪽으로 방향 … 이 회사의 운영체제",
+          "difWhy": "루빈의 모바일 OS — IT 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기업 역사",
+          "acc": 5,
+          "accWhy": "컴퓨터·인터넷 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "2008년 HTC 드림에 처음 실려 나온 이 운영체제",
+          "difWhy": "HTC 드림 OS — IT 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 OS 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "앤디 루빈은 2003년 디지털카메라용 운영체제를 만들려고 회사를 세웠지만, 투자자를 설득하지 못해 이듬해 휴대전화 쪽으로 방향을 틀었고 2005년 3월에는 삼성에 거래를 거절당했습니다. 2008년 HTC 드림에 처음 실려 나온 이 운영체제는 무엇일까요?",
+          "beforeExplanation": "회사 이름은 루빈이 이미 이 이름의 도메인을 갖고 있던 데서 정했고, 2005년 7월 적어도 5천만 달러에 팔렸습니다.",
+          "removedCue": "2008년 HTC 드림에 처음 실려 나온 이 운영체제",
+          "addedCue": "2005년 7월 적어도 5천만 달러에 팔림 (인수 회사 이름은 뺌)",
+          "why": "IT 관심층이 아는 첫 탑재 기기를 해설로 옮기고 회사 매각 세부로 바꿈"
+        },
+        "generalHint": "루빈은 앞서 1999년 휴대전화 회사 데인저를 세웠고, 그 회사는 2008년 마이크로소프트에 팔렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "구글이 만든 스마트폰용 운영체제",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "스마트폰 OS",
+          "piece": "f06",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "C2-15",
+          "key": "b178",
+          "hint": "루빈은 앞서 1999년 휴대전화 회사 데인저를 세웠고, 그 회사는 2008년 마이크로소프트에 팔렸다.",
+          "guess": "안드로이드",
+          "confidence": "high",
+          "hit": true,
+          "answer": "안드로이드"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Android_(operating_system)"
+        ],
+        "facts": [
+          {
+            "claim": "2003년 루빈 · 화이트가 회사 설립 · 처음엔 디지털카메라용 운영체제",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+            "note": "was founded in Palo Alto, California, in October 2003 by Andy Rubin and Chris White ... Rubin and White started out to build an operating system for digital cameras"
+          },
+          {
+            "claim": "투자자 설득 실패 → 2004년 4월 휴대전화로 전환",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+            "note": "the company failed to convince investors, and so in April 2004 they pivoted to building an operating system for phones at the suggestion of Nick Sears"
+          },
+          {
+            "claim": "2005년 3월 삼성이 거래를 거절",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+            "note": "In 2005, Rubin tried to negotiate deals with Samsung and HTC. Later in March 2005, Samsung refused the deal"
+          },
+          {
+            "claim": "회사 이름은 루빈이 가진 android.com 도메인 · 2005년 7월 최소 5천만 달러에 구글 인수",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+            "note": "The company name was changed to Android as Rubin already owned the domain name android.com. ... Google acquired the company in July 2005 for at least $50 million"
+          },
+          {
+            "claim": "첫 상용 스마트폰 HTC 드림 — 2008년",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Android_(operating_system)",
+            "note": "The first commercially available smartphone running Android was the HTC Dream, also known as T-Mobile G1, announced on September 23, 2008."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Andy_Rubin"
+        ],
+        "hintNote": "Rubin founded Danger Inc. in 1999 and left in 2003; Danger was eventually acquired by Microsoft in 2008.",
+        "easiestCue": "앤디 루빈이 세운 회사의 운영체제",
+        "targetWhy": "카메라 OS 출발·삼성 거절·매각가는 IT 애호가 세부 — 4(경계 3: 루빈을 알면 풀림)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 쓰는 운영체제의 출발 이야기",
+        "pairCheck": null,
+        "dbCheck": "new — 활성 3513(정답 리눅스) 질문에 이 이름이 나오지만 정답 · 지식이 다름",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "앤디 루빈 … 휴대전화 쪽으로 방향 … 이 회사의 운영체제",
+          "difWhy": "루빈의 모바일 OS — IT 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기업 역사",
+          "acc": 5,
+          "accWhy": "컴퓨터·인터넷 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

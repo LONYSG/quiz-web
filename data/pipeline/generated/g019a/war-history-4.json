@@ -1,230 +1,260 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "war-history/4",
-  "midKey": "war-history",
-  "subName": "냉전 이후",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "war-history/4#g019a-H1-31",
-   "seed": {
-    "subject": "빈 라덴",
-    "aspect": null,
-    "ref": "H1-31",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 인물이 숨어 살던 집은 이웃들과 달리 쓰레기를 내놓지 않고 직접 태웠고, 주민들은 집주인이 와지리스탄 출신인 줄 알고 '와지리스탄 하벨리'라 불렀습니다. CIA가 가짜 B형 간염 예방 접종 사업까지 벌여 정보를 모은 이 인물은?",
-    "answer": "빈 라덴",
-    "acceptedAnswers": [
-     "오사마 빈 라덴"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia \"오사마 빈 라덴\" → \"오사마 빈라덴\" 넘겨주기 확인(띄어쓰기는 정규화로 같음)",
-    "explanation": "작전명은 '넵튠 스피어'였고, 네이비실 6팀이 파키스탄 아보타바드의 은신처를 급습했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "CIA가 가짜 B형 간염 예방 접종 사업까지 벌여 정보를 모은",
-     "difWhy": "파키스탄 은신 테러 수괴 — 시사 관심층",
-     "wor": 4,
-     "worWhy": "시사 교양",
-     "acc": 3,
-     "accWhy": "전쟁·군사사 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "암호명은 '제로니모' … 시신이 … 바다에 묻힌",
-     "difWhy": "2011 사살·수장 — 뉴스에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 인물 사건"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "미군 작전 중 이 인물에게 붙인 암호명은 '제로니모'였습니다. 사살된 뒤 받아 주겠다는 나라가 없어, 시신이 항공모함 칼빈슨호에서 이슬람식 의식을 거쳐 바다에 묻힌 이 인물은 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "암호명 '제로니모' · 시신이 칼빈슨호에서 바다에 묻힘",
-     "addedCue": "쓰레기를 태운 은신처 · 와지리스탄 하벨리 · 가짜 예방 접종",
-     "why": "뉴스로 흔히 접한 암호명·수장을 빼고 은신처 추적 세부로 바꿈"
-    },
-    "generalHint": "가짜 접종 사업에 나섰던 파키스탄 의사 샤킬 아프리디는 2012년 반역죄로 징역 33년을 선고받았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "9·11 테러를 일으킨 알카에다의 지도자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "9·11 뉴스로 유명",
-     "piece": "f07",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "H1-31",
-     "key": "b319",
-     "hint": "가짜 접종 사업에 나섰던 파키스탄 의사 샤킬 아프리디는 2012년 반역죄로 징역 33년을 선고받았다.",
-     "guess": "오사마 빈 라덴",
-     "confidence": "high",
-     "hit": true,
-     "answer": "빈 라덴"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden"
-    ],
-    "facts": [
-     {
-      "claim": "넵튠 스피어 작전, 네이비실 6팀, 아보타바드",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
-      "note": "the United States conducted Operation Neptune Spear, in which SEAL Team Six shot and killed Osama bin Laden at his \"Waziristan Haveli\" in Abbottabad, Pakistan."
-     },
-     {
-      "claim": "은신처 주민은 쓰레기를 태움 · 와지리스탄 하벨리라 불림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
-      "note": "Its residents burned their refuse, unlike their neighbors, who set their garbage out for collection. Local residents called the building the Waziristan Haveli, because they believed the owner was from Waziristan."
-     },
-     {
-      "claim": "CIA 가짜 B형 간염 예방 접종 사업",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
-      "note": "The CIA team used informants and other techniques—including a widely criticized fake hepatitis B vaccination program— to gather intelligence on the compound."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Shakil_Afridi"
-    ],
-    "hintNote": "On 23 May 2012, he was sentenced to 33 years' imprisonment for treason",
-    "easiestCue": "CIA 가 가짜 예방 접종까지 벌여 추적한 인물",
-    "targetWhy": "은신처 별명·쓰레기 소각은 국제 뉴스 애호가 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "수장 사실은 당시 뉴스에 나왔음",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "war-history/4",
+    "midKey": "war-history",
+    "subName": "냉전 이후",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "war-history/4#g019a-H1-32",
-   "seed": {
-    "subject": "사담 후세인",
-    "aspect": null,
-    "ref": "H1-32",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2003년 12월 이 인물을 붙잡은 미군 작전은 1984년 영화 '레드 던'에서 이름을 땄고, 수색 지점 두 곳도 영화 속 저항군을 따 '울버린 1', '울버린 2'라 불렀습니다. 붙잡힌 뒤 헬기로 티크리트의 기지로 옮겨져 신원이 확인된 이 인물은?",
-    "answer": "사담 후세인",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "그는 땅을 파 만든 좁은 은신처 '거미 구멍'에 숨어 있다가 발견되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "2003년 12월 … 붙잡힌 뒤 헬기로 티크리트의 기지로 옮겨져",
-     "difWhy": "2003년 12월 생포 독재자 — 시사 관심층",
-     "wor": 4,
-     "worWhy": "시사 교양 — 이라크 전쟁",
-     "acc": 3,
-     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "war-history/4#g019a-H1-31",
+      "seed": {
+        "subject": "빈 라덴",
+        "aspect": null,
+        "ref": "H1-31",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 인물이 숨어 살던 집은 이웃들과 달리 쓰레기를 내놓지 않고 직접 태웠고, 주민들은 집주인이 와지리스탄 출신인 줄 알고 '와지리스탄 하벨리'라 불렀습니다. CIA가 가짜 B형 간염 예방 접종 사업까지 벌여 정보를 모은 이 인물은?",
+        "answer": "빈 라덴",
+        "acceptedAnswers": [
+          "오사마 빈 라덴"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia \"오사마 빈 라덴\" → \"오사마 빈라덴\" 넘겨주기 확인(띄어쓰기는 정규화로 같음)",
+        "explanation": "작전명은 '넵튠 스피어'였고, 네이비실 6팀이 파키스탄 아보타바드의 은신처를 급습했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "CIA가 가짜 B형 간염 예방 접종 사업까지 벌여 정보를 모은",
+          "difWhy": "파키스탄 은신 테러 수괴 — 시사 관심층",
+          "wor": 4,
+          "worWhy": "시사 교양",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "암호명은 '제로니모' … 시신이 … 바다에 묻힌",
+          "difWhy": "2011 사살·수장 — 뉴스에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 인물 사건"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "미군 작전 중 이 인물에게 붙인 암호명은 '제로니모'였습니다. 사살된 뒤 받아 주겠다는 나라가 없어, 시신이 항공모함 칼빈슨호에서 이슬람식 의식을 거쳐 바다에 묻힌 이 인물은 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "암호명 '제로니모' · 시신이 칼빈슨호에서 바다에 묻힘",
+          "addedCue": "쓰레기를 태운 은신처 · 와지리스탄 하벨리 · 가짜 예방 접종",
+          "why": "뉴스로 흔히 접한 암호명·수장을 빼고 은신처 추적 세부로 바꿈"
+        },
+        "generalHint": "가짜 접종 사업에 나섰던 파키스탄 의사 샤킬 아프리디는 2012년 반역죄로 징역 33년을 선고받았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "9·11 테러를 일으킨 알카에다의 지도자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "9·11 뉴스로 유명",
+          "piece": "f07",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "H1-31",
+          "key": "b319",
+          "hint": "가짜 접종 사업에 나섰던 파키스탄 의사 샤킬 아프리디는 2012년 반역죄로 징역 33년을 선고받았다.",
+          "guess": "오사마 빈 라덴",
+          "confidence": "high",
+          "hit": true,
+          "answer": "빈 라덴"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden"
+        ],
+        "facts": [
+          {
+            "claim": "넵튠 스피어 작전, 네이비실 6팀, 아보타바드",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
+            "note": "the United States conducted Operation Neptune Spear, in which SEAL Team Six shot and killed Osama bin Laden at his \"Waziristan Haveli\" in Abbottabad, Pakistan."
+          },
+          {
+            "claim": "은신처 주민은 쓰레기를 태움 · 와지리스탄 하벨리라 불림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
+            "note": "Its residents burned their refuse, unlike their neighbors, who set their garbage out for collection. Local residents called the building the Waziristan Haveli, because they believed the owner was from Waziristan."
+          },
+          {
+            "claim": "CIA 가짜 B형 간염 예방 접종 사업",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Killing_of_Osama_bin_Laden",
+            "note": "The CIA team used informants and other techniques—including a widely criticized fake hepatitis B vaccination program— to gather intelligence on the compound."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Shakil_Afridi"
+        ],
+        "hintNote": "On 23 May 2012, he was sentenced to 33 years' imprisonment for treason",
+        "easiestCue": "CIA 가 가짜 예방 접종까지 벌여 추적한 인물",
+        "targetWhy": "은신처 별명·쓰레기 소각은 국제 뉴스 애호가 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "수장 사실은 당시 뉴스에 나왔음",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "CIA가 가짜 B형 간염 예방 접종 사업까지 벌여 정보를 모은",
+          "difWhy": "파키스탄 은신 테러 수괴 — 시사 관심층",
+          "wor": 4,
+          "worWhy": "시사 교양",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "2003년 12월 … '거미 구멍'에 숨어 있다 붙잡힌",
-     "difWhy": "거미 구멍 체포 — 뉴스에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 인물 사건"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2003년 12월 이 인물을 붙잡은 미군 작전은 1984년 영화 '레드 던'에서 이름을 땄고, 수색 지점 두 곳도 영화 속 저항군을 따 '울버린 1', '울버린 2'라 불렀습니다. '거미 구멍'에 숨어 있다 붙잡힌 이 인물은?",
-     "beforeExplanation": "붙잡힌 뒤 헬기로 티크리트의 기지로 옮겨져 신원이 확인되었습니다.",
-     "removedCue": "'거미 구멍'에 숨어 있다 붙잡힌",
-     "addedCue": "티크리트 기지로 옮겨 신원 확인(해설에서 옮김)",
-     "why": "뉴스로 흔한 거미 구멍 장면을 해설로 옮김"
-    },
-    "generalHint": "그는 티크리트 근처의 작은 마을 알아우자에서 태어났다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "이라크 전쟁으로 무너진 이라크의 독재자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "뉴스로 유명한 독재자",
-     "piece": "f05",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "H1-32",
-     "key": "b299",
-     "hint": "그는 티크리트 근처의 작은 마을 알아우자에서 태어났다.",
-     "guess": "사담 후세인",
-     "confidence": "high",
-     "hit": true,
-     "answer": "사담 후세인"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein"
-    ],
-    "facts": [
-     {
-      "claim": "2003년 12월 13일 체포, 작전명 레드 던은 1984년 영화에서",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
-      "note": "Saddam Hussein, the deposed president of Iraq, was captured … on 13 December 2003. / The military operation to capture him was codenamed Operation Red Dawn, after the 1984 American film Red Dawn."
-     },
-     {
-      "claim": "수색 지점 울버린 1·2, 영화 속 저항군에서",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
-      "note": "The site names \"Wolverine 1\" and \"Wolverine 2\" are also a reference to the American insurgent group in the film."
-     },
-     {
-      "claim": "티크리트 기지로 옮겨 신원 확인",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
-      "note": "he was taken by an MH-6 Little Bird from the 160th SOAR to the Tikrit Mission Support Site where he was properly identified."
-     },
-     {
-      "claim": "거미 구멍에 숨어 있다 발견",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
-      "note": "A continued search between the two sites found Saddam hiding in a \"spider hole\" at 20:30 local Iraqi time."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Saddam_Hussein"
-    ],
-    "hintNote": "Saddam Hussein Al-Majid Al-Tikriti was born on 28 April 1937 in al-Awja, a small village near Tikrit",
-    "easiestCue": "작전명 '레드 던' · 울버린 1·2",
-    "targetWhy": "작전명·수색 지점 이름은 현대사 애호가 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "2003년 체포 보도를 기억하는 사람이 있음",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "war-history/4#g019a-H1-32",
+      "seed": {
+        "subject": "사담 후세인",
+        "aspect": null,
+        "ref": "H1-32",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2003년 12월 이 인물을 붙잡은 미군 작전은 1984년 영화 '레드 던'에서 이름을 땄고, 수색 지점 두 곳도 영화 속 저항군을 따 '울버린 1', '울버린 2'라 불렀습니다. 붙잡힌 뒤 헬기로 티크리트의 기지로 옮겨져 신원이 확인된 이 인물은?",
+        "answer": "사담 후세인",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "그는 땅을 파 만든 좁은 은신처 '거미 구멍'에 숨어 있다가 발견되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "2003년 12월 … 붙잡힌 뒤 헬기로 티크리트의 기지로 옮겨져",
+          "difWhy": "2003년 12월 생포 독재자 — 시사 관심층",
+          "wor": 4,
+          "worWhy": "시사 교양 — 이라크 전쟁",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "2003년 12월 … '거미 구멍'에 숨어 있다 붙잡힌",
+          "difWhy": "거미 구멍 체포 — 뉴스에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 인물 사건"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2003년 12월 이 인물을 붙잡은 미군 작전은 1984년 영화 '레드 던'에서 이름을 땄고, 수색 지점 두 곳도 영화 속 저항군을 따 '울버린 1', '울버린 2'라 불렀습니다. '거미 구멍'에 숨어 있다 붙잡힌 이 인물은?",
+          "beforeExplanation": "붙잡힌 뒤 헬기로 티크리트의 기지로 옮겨져 신원이 확인되었습니다.",
+          "removedCue": "'거미 구멍'에 숨어 있다 붙잡힌",
+          "addedCue": "티크리트 기지로 옮겨 신원 확인(해설에서 옮김)",
+          "why": "뉴스로 흔한 거미 구멍 장면을 해설로 옮김"
+        },
+        "generalHint": "그는 티크리트 근처의 작은 마을 알아우자에서 태어났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "이라크 전쟁으로 무너진 이라크의 독재자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "뉴스로 유명한 독재자",
+          "piece": "f05",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "H1-32",
+          "key": "b299",
+          "hint": "그는 티크리트 근처의 작은 마을 알아우자에서 태어났다.",
+          "guess": "사담 후세인",
+          "confidence": "high",
+          "hit": true,
+          "answer": "사담 후세인"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein"
+        ],
+        "facts": [
+          {
+            "claim": "2003년 12월 13일 체포, 작전명 레드 던은 1984년 영화에서",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
+            "note": "Saddam Hussein, the deposed president of Iraq, was captured … on 13 December 2003. / The military operation to capture him was codenamed Operation Red Dawn, after the 1984 American film Red Dawn."
+          },
+          {
+            "claim": "수색 지점 울버린 1·2, 영화 속 저항군에서",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
+            "note": "The site names \"Wolverine 1\" and \"Wolverine 2\" are also a reference to the American insurgent group in the film."
+          },
+          {
+            "claim": "티크리트 기지로 옮겨 신원 확인",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
+            "note": "he was taken by an MH-6 Little Bird from the 160th SOAR to the Tikrit Mission Support Site where he was properly identified."
+          },
+          {
+            "claim": "거미 구멍에 숨어 있다 발견",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
+            "note": "A continued search between the two sites found Saddam hiding in a \"spider hole\" at 20:30 local Iraqi time."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Saddam_Hussein"
+        ],
+        "hintNote": "Saddam Hussein Al-Majid Al-Tikriti was born on 28 April 1937 in al-Awja, a small village near Tikrit",
+        "easiestCue": "작전명 '레드 던' · 울버린 1·2",
+        "targetWhy": "작전명·수색 지점 이름은 현대사 애호가 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "2003년 체포 보도를 기억하는 사람이 있음",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "2003년 12월 … 붙잡힌 뒤 헬기로 티크리트의 기지로 옮겨져",
+          "difWhy": "2003년 12월 생포 독재자 — 시사 관심층",
+          "wor": 4,
+          "worWhy": "시사 교양 — 이라크 전쟁",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

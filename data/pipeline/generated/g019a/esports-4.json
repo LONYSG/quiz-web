@@ -1,370 +1,409 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "esports/4",
-  "midKey": "esports",
-  "subName": "e스포츠 대회·리그",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "esports/4#g019a-M2-11",
-   "seed": {
-    "subject": "리그 오브 레전드 월드 챔피언십",
-    "aspect": "대중",
-    "ref": "M2-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 대회의 첫 회는 2011년 6월 '드림핵 서머 2011'에서 상금 10만 달러로 열려 유럽 팀 프나틱이 우승했습니다. 이듬해 2회 결승에서는 대만의 타이베이 어새신스가 한국의 아주부 프로스트를 3대 1로 꺾었는데, 이 대회는 무엇일까요?",
-    "answer": "롤드컵",
-    "acceptedAnswers": [
-     "리그 오브 레전드 월드 챔피언십",
-     "롤 월드 챔피언십",
-     "월즈"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '리그 오브 레전드 월드 챔피언십 … 한국에서 비공식 명칭으로 롤드컵' · '월즈'는 국내 중계 흔한 줄임말",
-    "explanation": "2018년 대회는 서울·부산·광주·인천 네 도시를 돌며 열렸고 결승은 인천에서 치렀습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "2회 결승 … 타이베이 어새신스가 … 아주부 프로스트를 3대 1로",
-     "difWhy": "시즌 2 결승 — e스포츠 애호가",
-     "wor": 2,
-     "worWhy": "중계 별칭 — 팬 세부",
-     "acc": 3,
-     "accWhy": "e스포츠·게임 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "2회 결승 … 타이베이 어새신스가 … 아주부 프로스트를 3대 1로",
-     "difWhy": "시즌 2 결승 — e스포츠 애호가",
-     "wor": 2,
-     "worWhy": "중계 별칭 — 팬 세부"
-    },
-    "rewrite": null,
-    "generalHint": "우승 팀이 받는 트로피 '소환사의 컵'은 무게가 10kg쯤 된다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "라이엇 게임즈가 해마다 여는 LoL 세계 대회",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "T1 우승 뉴스로 널리 알려짐",
-     "piece": "f09",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "M2-11",
-     "key": "b154",
-     "hint": "우승 팀이 받는 트로피 '소환사의 컵'은 무게가 10kg쯤 된다.",
-     "guess": "리그 오브 레전드 월드 챔피언십",
-     "confidence": "high",
-     "hit": true,
-     "answer": "롤드컵"
-    },
-    "layer": "대중",
-    "genre": "게임",
-    "work": "리그 오브 레전드 월드 챔피언십",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
-     "https://ko.wikipedia.org/wiki/리그_오브_레전드_월드_챔피언십"
-    ],
-    "facts": [
-     {
-      "claim": "시즌 1은 2011년 6월 드림핵 서머 2011, 상금 10만 달러",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
-      "note": "The Season 1 Championship was held in June 2011 at Dreamhack Summer 2011, and featured a US$100,000 tournament prize pool."
-     },
-     {
-      "claim": "시즌 1 우승 프나틱",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
-      "note": "Maciej \"Shushei\" Ratuszniak of the winning team Fnatic was named the most valuable player (MVP) of the tournament."
-     },
-     {
-      "claim": "시즌 2 결승 타이베이 어새신스 3-1 아주부 프로스트",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
-      "note": "In the grand final, Taiwan's professional team Taipei Assassins triumphed over South Korea's Azubu Frost 3 to 1"
-     },
-     {
-      "claim": "롤드컵 별칭",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/리그_오브_레전드_월드_챔피언십",
-      "note": "리그 오브 레전드 월드 챔피언십 … 한국에서 비공식 명칭으로 롤드컵이라고도 불린다."
-     },
-     {
-      "claim": "2018년 네 도시, 결승 인천",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
-      "note": "The 2018 World Championship was held … in 4 cities across South Korea: Seoul (play-in), Busan (groups & quarterfinals), Gwangju (semifinals), and Incheon (final)."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship"
-    ],
-    "hintNote": "Teams compete for the champion title, the 22-pound (10-kilogram) Summoner's Cup",
-    "easiestCue": "유럽 팀 프나틱이 우승했습니다",
-    "targetWhy": "초대·2회 우승 팀은 e스포츠 애호가 세부 — 게임 이름은 질문에 없음 (4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "소환사의 컵 #4396 · 삼성 화이트 #5337(2014 결승)과 다른 사실만 씀",
-    "pairCheck": null,
-    "dbCheck": "answercheck new · 같은 대회의 활성 #4396(트로피) · #5337(2014 결승)과 지식 다름",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "esports/4",
+    "midKey": "esports",
+    "subName": "e스포츠 대회·리그",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "esports/4#g019a-M2-12",
-   "seed": {
-    "subject": "온게임넷 스타리그",
-    "aspect": "팬 세부",
-    "ref": "M2-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1999년 3월 투니버스는 스튜디오가 없어 사옥 휴게실 탁구대에 천을 덮고 모니터 두 대를 연결해 한 게임 대회를 중계했습니다. 이 방송사가 이듬해 방송 4일 전에야 하나로통신을 후원사로 잡아 연 개인 리그로, 기욤 패트리가 첫 우승을 차지한 이 대회는?",
-    "answer": "스타리그",
-    "acceptedAnswers": [
-     "온게임넷 스타리그",
-     "OSL"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 '온게임넷 스타리그' — '스타리그(Starleague)' · en 문서 'Ongamenet Starleague (OSL)'",
-    "explanation": "2012년 'tving 스타리그'를 끝으로 브루드 워로 이어 온 13년의 역사를 마치고 '스타크래프트 II'로 종목을 바꿨습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "기욤 패트리가 첫 우승을 차지한 이 대회",
-     "difWhy": "기욤 우승 개인 리그 — 스타 관심층",
-     "wor": 3,
-     "worWhy": "레전드 리그 이름 이야깃거리",
-     "acc": 3,
-     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "esports/4#g019a-M2-11",
+      "seed": {
+        "subject": "리그 오브 레전드 월드 챔피언십",
+        "aspect": "대중",
+        "ref": "M2-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 대회의 첫 회는 2011년 6월 '드림핵 서머 2011'에서 상금 10만 달러로 열려 유럽 팀 프나틱이 우승했습니다. 이듬해 2회 결승에서는 대만의 타이베이 어새신스가 한국의 아주부 프로스트를 3대 1로 꺾었는데, 이 대회는 무엇일까요?",
+        "answer": "롤드컵",
+        "acceptedAnswers": [
+          "리그 오브 레전드 월드 챔피언십",
+          "롤 월드 챔피언십",
+          "월즈"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '리그 오브 레전드 월드 챔피언십 … 한국에서 비공식 명칭으로 롤드컵' · '월즈'는 국내 중계 흔한 줄임말",
+        "explanation": "2018년 대회는 서울·부산·광주·인천 네 도시를 돌며 열렸고 결승은 인천에서 치렀습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "2회 결승 … 타이베이 어새신스가 … 아주부 프로스트를 3대 1로",
+          "difWhy": "시즌 2 결승 — e스포츠 애호가",
+          "wor": 2,
+          "worWhy": "중계 별칭 — 팬 세부",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "2회 결승 … 타이베이 어새신스가 … 아주부 프로스트를 3대 1로",
+          "difWhy": "시즌 2 결승 — e스포츠 애호가",
+          "wor": 2,
+          "worWhy": "중계 별칭 — 팬 세부"
+        },
+        "rewrite": null,
+        "generalHint": "2013년 결승은 미국 로스앤젤레스의 스테이플스 센터에서 열렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "라이엇 게임즈가 해마다 여는 LoL 세계 대회",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "T1 우승 뉴스로 널리 알려짐",
+          "piece": "f09",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "M2-11",
+          "key": "b154",
+          "hint": "우승 팀이 받는 트로피 '소환사의 컵'은 무게가 10kg쯤 된다.",
+          "guess": "리그 오브 레전드 월드 챔피언십",
+          "confidence": "high",
+          "hit": true,
+          "answer": "롤드컵"
+        },
+        "layer": "팬 세부",
+        "genre": "게임",
+        "work": "리그 오브 레전드 월드 챔피언십",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
+          "https://ko.wikipedia.org/wiki/리그_오브_레전드_월드_챔피언십"
+        ],
+        "facts": [
+          {
+            "claim": "시즌 1은 2011년 6월 드림핵 서머 2011, 상금 10만 달러",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
+            "note": "The Season 1 Championship was held in June 2011 at Dreamhack Summer 2011, and featured a US$100,000 tournament prize pool."
+          },
+          {
+            "claim": "시즌 1 우승 프나틱",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
+            "note": "Maciej \"Shushei\" Ratuszniak of the winning team Fnatic was named the most valuable player (MVP) of the tournament."
+          },
+          {
+            "claim": "시즌 2 결승 타이베이 어새신스 3-1 아주부 프로스트",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
+            "note": "In the grand final, Taiwan's professional team Taipei Assassins triumphed over South Korea's Azubu Frost 3 to 1"
+          },
+          {
+            "claim": "롤드컵 별칭",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/리그_오브_레전드_월드_챔피언십",
+            "note": "리그 오브 레전드 월드 챔피언십 … 한국에서 비공식 명칭으로 롤드컵이라고도 불린다."
+          },
+          {
+            "claim": "2018년 네 도시, 결승 인천",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/League_of_Legends_World_Championship",
+            "note": "The 2018 World Championship was held … in 4 cities across South Korea: Seoul (play-in), Busan (groups & quarterfinals), Gwangju (semifinals), and Incheon (final)."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "유럽 팀 프나틱이 우승했습니다",
+        "targetWhy": "초대·2회 우승 팀은 e스포츠 애호가 세부 — 게임 이름은 질문에 없음 (4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "소환사의 컵 #4396 · 삼성 화이트 #5337(2014 결승)과 다른 사실만 씀",
+        "pairCheck": null,
+        "dbCheck": "answercheck new · 같은 대회의 활성 #4396(트로피) · #5337(2014 결승)과 지식 다름",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "2회 결승 … 타이베이 어새신스가 … 아주부 프로스트를 3대 1로",
+          "difWhy": "시즌 2 결승 — e스포츠 애호가",
+          "wor": 2,
+          "worWhy": "중계 별칭 — 팬 세부",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'99 PKO'를 시초로 … 지금의 이름을 쓴 개인 리그",
-     "difWhy": "투니버스 스타 개인 리그 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "한국 e스포츠 원조 이야깃거리"
+    {
+      "seedId": "esports/4#g019a-M2-12",
+      "seed": {
+        "subject": "온게임넷 스타리그",
+        "aspect": "팬 세부",
+        "ref": "M2-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1999년 3월 투니버스는 스튜디오가 없어 사옥 휴게실 탁구대에 천을 덮고 모니터 두 대를 연결해 한 게임 대회를 중계했습니다. 이 방송사가 이듬해 방송 4일 전에야 하나로통신을 후원사로 잡아 연 개인 리그로, 기욤 패트리가 첫 우승을 차지한 이 대회는?",
+        "answer": "스타리그",
+        "acceptedAnswers": [
+          "온게임넷 스타리그",
+          "OSL"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 '온게임넷 스타리그' — '스타리그(Starleague)' · en 문서 'Ongamenet Starleague (OSL)'",
+        "explanation": "2012년 'tving 스타리그'를 끝으로 브루드 워로 이어 온 13년의 역사를 마치고 '스타크래프트 II'로 종목을 바꿨습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "기욤 패트리가 첫 우승을 차지한 이 대회",
+          "difWhy": "기욤 우승 개인 리그 — 스타 관심층",
+          "wor": 3,
+          "worWhy": "레전드 리그 이름 이야깃거리",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'99 PKO'를 시초로 … 지금의 이름을 쓴 개인 리그",
+          "difWhy": "투니버스 스타 개인 리그 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "한국 e스포츠 원조 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1999년 3월 투니버스는 스튜디오가 없어 사옥 휴게실 탁구대에 천을 덮고 모니터 두 대를 연결해 한 PC 게임 대회를 중계했습니다. 이 중계에서 출발해 '99 PKO'를 시초로 2000년 하나로통신배부터 지금의 이름을 쓴 개인 리그는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "'99 PKO'를 시초로 2000년 하나로통신배부터 지금의 이름을 쓴 개인 리그",
+          "addedCue": "방송 4일 전 하나로통신 후원 확정 · 기욤 패트리 첫 우승",
+          "why": "리그 계보 서술을 빼고 첫 대회의 후원·우승자 세부로 바꿈"
+        },
+        "generalHint": "스튜디오 밖에서 치른 첫 결승은 2000년 연세대학교 백주년 기념관에서 열렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "OGN이 중계한 스타크래프트 개인 리그",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "스타크래프트 붐 세대에 익숙",
+          "piece": "f08",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "M2-12",
+          "key": "b234",
+          "hint": "2001년 대회에서는 '임진록'이라 불린 임요환과 홍진호의 맞대결이 큰 관심을 모았다.",
+          "guess": "온게임넷 스타리그",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "스타리그"
+        },
+        "layer": "팬 세부",
+        "genre": "게임",
+        "work": "온게임넷 스타리그",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/온게임넷_스타리그"
+        ],
+        "facts": [
+          {
+            "claim": "1999년 3월 투니버스 중계 · 탁구대에 천 · 모니터 2대",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
+            "note": "마침내 1999년 3월 소규모 오프라인 대회중 하나인 ‘KPGL배 하이텔 게임넷’이 투니버스를 통해 세계 최초의 게임 중계 방송이 전파를 타기에 이르렀다. 이 과정에서 스튜디오가 없어 온미디어 사옥 휴게실에 있던 탁구대에 천을 덮어 탁자를 만들고 2대의 일반 모니터에 컴퓨터를 연결해서 경기를 중계했다."
+          },
+          {
+            "claim": "99 PKO 시초, 2000년 하나로통신배부터 스타리그 명칭",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
+            "note": "1999년 99 PKO를 시초로 하며 2000년 하나로통신배부터 스타리그라는 명칭을 쓰기 시작하였다."
+          },
+          {
+            "claim": "tving 스타리그 2012로 13년 역사 마침",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
+            "note": "tving 스타리그 2012를 마지막으로 스타크래프트: 브루드 워로 이어지는 13년의 역사를 마치고 스타크래프트 II: 자유의 날개으로 종목을 대체하게 되었다."
+          },
+          {
+            "claim": "하나로통신 상무에게 매달린 끝에 방송 4일 전 스폰서 결정",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
+            "note": "이런 상황 속에 마지막이라는 생각으로 하나로통신을 찾아가게 되었고, 하나로통신 상무에게 일주일 간 매달린 끝에 방송 4일전 스폰서로 결정되었다."
+          },
+          {
+            "claim": "2000 하나로통신배 — 기욤 패트리 우승",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
+            "note": "최초로 스타리그라는 명칭을 쓴 2000 하나로통신배 투니버스 스타리그는 ... 당시 스타크래프트 최강자였던 기욤 패트리의 우승으로 대회는 큰 흥행을 거두게 되었고"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "투니버스 탁구대 중계에서 출발한 개인 리그",
+        "targetWhy": "첫 대회의 후원 경위·우승자는 스타 애호가 세부 — 4(경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "온게임넷 #2908(채널 개국)과 다른 사실 — 채널 이름도 질문에 쓰지 않음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new · #2908 온게임넷·#5338 골든 마우스와 정답·지식 다름",
+        "warn": [
+          "정답조각 리그"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "기욤 패트리가 첫 우승을 차지한 이 대회",
+          "difWhy": "기욤 우승 개인 리그 — 스타 관심층",
+          "wor": 3,
+          "worWhy": "레전드 리그 이름 이야깃거리",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1999년 3월 투니버스는 스튜디오가 없어 사옥 휴게실 탁구대에 천을 덮고 모니터 두 대를 연결해 한 PC 게임 대회를 중계했습니다. 이 중계에서 출발해 '99 PKO'를 시초로 2000년 하나로통신배부터 지금의 이름을 쓴 개인 리그는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "'99 PKO'를 시초로 2000년 하나로통신배부터 지금의 이름을 쓴 개인 리그",
-     "addedCue": "방송 4일 전 하나로통신 후원 확정 · 기욤 패트리 첫 우승",
-     "why": "리그 계보 서술을 빼고 첫 대회의 후원·우승자 세부로 바꿈"
-    },
-    "generalHint": "2001년 대회에서는 '임진록'이라 불린 임요환과 홍진호의 맞대결이 큰 관심을 모았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "OGN이 중계한 스타크래프트 개인 리그",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "스타크래프트 붐 세대에 익숙",
-     "piece": "f08",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "M2-12",
-     "key": "b234",
-     "hint": "2001년 대회에서는 '임진록'이라 불린 임요환과 홍진호의 맞대결이 큰 관심을 모았다.",
-     "guess": "온게임넷 스타리그",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "스타리그"
-    },
-    "layer": "팬 세부",
-    "genre": "게임",
-    "work": "온게임넷 스타리그",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/온게임넷_스타리그"
-    ],
-    "facts": [
-     {
-      "claim": "1999년 3월 투니버스 중계 · 탁구대에 천 · 모니터 2대",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
-      "note": "마침내 1999년 3월 소규모 오프라인 대회중 하나인 ‘KPGL배 하이텔 게임넷’이 투니버스를 통해 세계 최초의 게임 중계 방송이 전파를 타기에 이르렀다. 이 과정에서 스튜디오가 없어 온미디어 사옥 휴게실에 있던 탁구대에 천을 덮어 탁자를 만들고 2대의 일반 모니터에 컴퓨터를 연결해서 경기를 중계했다."
-     },
-     {
-      "claim": "99 PKO 시초, 2000년 하나로통신배부터 스타리그 명칭",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
-      "note": "1999년 99 PKO를 시초로 하며 2000년 하나로통신배부터 스타리그라는 명칭을 쓰기 시작하였다."
-     },
-     {
-      "claim": "tving 스타리그 2012로 13년 역사 마침",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
-      "note": "tving 스타리그 2012를 마지막으로 스타크래프트: 브루드 워로 이어지는 13년의 역사를 마치고 스타크래프트 II: 자유의 날개으로 종목을 대체하게 되었다."
-     },
-     {
-      "claim": "하나로통신 상무에게 매달린 끝에 방송 4일 전 스폰서 결정",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
-      "note": "이런 상황 속에 마지막이라는 생각으로 하나로통신을 찾아가게 되었고, 하나로통신 상무에게 일주일 간 매달린 끝에 방송 4일전 스폰서로 결정되었다."
-     },
-     {
-      "claim": "2000 하나로통신배 — 기욤 패트리 우승",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/온게임넷_스타리그",
-      "note": "최초로 스타리그라는 명칭을 쓴 2000 하나로통신배 투니버스 스타리그는 ... 당시 스타크래프트 최강자였던 기욤 패트리의 우승으로 대회는 큰 흥행을 거두게 되었고"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%98%A8%EA%B2%8C%EC%9E%84%EB%84%B7_%EC%8A%A4%ED%83%80%EB%A6%AC%EA%B7%B8"
-    ],
-    "hintNote": "2001 코카콜라배 온게임넷 스타리그에서는 역대 스타리그 최고 라이벌 전이라고 손꼽히는 '임진록(임요환 vs 홍진호)'이 펼쳐져",
-    "easiestCue": "투니버스 탁구대 중계에서 출발한 개인 리그",
-    "targetWhy": "첫 대회의 후원 경위·우승자는 스타 애호가 세부 — 4(경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "온게임넷 #2908(채널 개국)과 다른 사실 — 채널 이름도 질문에 쓰지 않음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new · #2908 온게임넷·#5338 골든 마우스와 정답·지식 다름",
-    "warn": [
-     "정답조각 리그"
-    ]
-   }
-  },
-  {
-   "seedId": "esports/4#g019a-M2-13",
-   "seed": {
-    "subject": "T1",
-    "aspect": "팬 세부",
-    "ref": "M2-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2002년 '팀 오리온'으로 출발해 2003년 12월 '4 Union'으로 이름을 바꾼 한 게임단은, 2004년 4월 200만 달러 후원을 받아 새 이름으로 창단했습니다. 2013년 2월 둘째 리그 오브 레전드 팀 'K'를 만든 이 게임단은?",
-    "answer": "T1",
-    "acceptedAnswers": [
-     "SK텔레콤 T1",
-     "SKT T1",
-     "티원"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "en.wikipedia 'T1 (previously known as SK Telecom T1 or SKT T1)' — 같은 팀의 옛 이름 · '티원'은 한글 음차",
-    "explanation": "2019년 10월 SK텔레콤과 미국 컴캐스트 스펙타코어가 합작 회사를 세우면서 팀 이름에서 회사 이름을 떼었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "둘째 리그 오브 레전드 팀 'K'를 만든 이 게임단",
-     "difWhy": "SKT K팀 — e스포츠 관심층",
-     "wor": 3,
-     "worWhy": "레전드 구단 이름",
-     "acc": 3,
-     "accWhy": "e스포츠·게임 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "임요환 … 한 이동통신사가 … 후원하면서 새 이름으로 창단",
-     "difWhy": "임요환 팀 후신 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 게임단 이름"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2002년 프로게이머 임요환이 '팀 오리온'이라는 이름으로 만든 게임단은 2003년 12월 '4 Union'으로 이름을 바꿨습니다. 이듬해 4월 한 이동통신사가 200만 달러를 들여 후원하면서 새 이름으로 창단한 이 게임단은 어디일까요?",
-     "beforeExplanation": null,
-     "removedCue": "프로게이머 임요환이 만든 · 한 이동통신사가 후원",
-     "addedCue": "둘째 LoL 팀 'K'(2013년 2월)",
-     "why": "임요환·이동통신사(관심층 상식)를 빼고 옛 팀 이름과 팀 구성 세부로"
-    },
-    "generalHint": "이 이름을 얻기 전인 2003년 첫 프로리그 결승에서 한빛 스타즈를 4:1로 꺾고 팀의 첫 우승을 이뤘다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "페이커가 뛰는 한국 e스포츠 게임단",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "페이커·롤드컵 뉴스로 널리 알려짐",
-     "piece": "f01",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "M2-13",
-     "key": "b204",
-     "hint": "이 이름을 얻기 전인 2003년 첫 프로리그 결승에서 한빛 스타즈를 4:1로 꺾고 팀의 첫 우승을 이뤘다.",
-     "guess": "SK텔레콤 T1",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "T1"
-    },
-    "layer": "팬 세부",
-    "genre": "게임",
-    "work": "T1",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/T1_(esports)"
-    ],
-    "facts": [
-     {
-      "claim": "2002년 임요환이 팀 오리온으로 창단, 2003년 12월 4 Union",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/T1_(esports)",
-      "note": "The team that would become SKT T1 was originally founded in 2002 by StarCraft player Lim \"BoxeR\" Yo-hwan under the name Team Orion, which was later renamed to 4 Union in December 2003."
-     },
-     {
-      "claim": "2004년 4월 SK텔레콤 200만 달러 후원으로 SK Telecom T1 창단",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/T1_(esports)",
-      "note": "On April 13, 2004, South Korean wireless carrier SK Telecom sponsored the team with an investment of US$2 million, officially creating the team SK Telecom T1"
-     },
-     {
-      "claim": "2019년 10월 컴캐스트 합작으로 T1",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/T1_(esports)",
-      "note": "In October 2019, SK Telecom T1 was rebranded to simply T1, after SK Telecom and Comcast Spectacor partnered to create T1 Entertainment & Sports"
-     },
-     {
-      "claim": "2013년 2월 26일 둘째 LoL 팀 SK Telecom T1 K 창단",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/T1_(esports)",
-      "note": "On February 26, 2013, they created a second League of Legends team, SK Telecom T1 K."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/T1_(e%EC%8A%A4%ED%8F%AC%EC%B8%A0)"
-    ],
-    "hintNote": "2003년 8월 30일에 열린 결승전에서 한빛 스타즈(현 웅진 스타즈)를 4:1로 꺾고 팀내 첫 우승을 일궈냈다.",
-    "easiestCue": "2013년 2월 둘째 리그 오브 레전드 팀 'K'를 만든",
-    "targetWhy": "e스포츠 구단 역사 — 팬 세부",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'임요환 = SKT T1' 은 스타 팬에겐 관심층 지식일 수 있음 · 소분류 esports/5(게임 용어) 소재 부족으로 1건을 esports/4 로 돌림",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "esports/4#g019a-M2-13",
+      "seed": {
+        "subject": "T1",
+        "aspect": "팬 세부",
+        "ref": "M2-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2003년 12월 '4 Union'으로 이름을 바꾼 한 게임단은, 2004년 4월 200만 달러 후원을 받아 새 이름으로 창단했습니다. 2013년 2월 둘째 리그 오브 레전드 팀 'K'를 만든 이 게임단은?",
+        "answer": "T1",
+        "acceptedAnswers": [
+          "SK텔레콤 T1",
+          "SKT T1",
+          "티원"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "en.wikipedia 'T1 (previously known as SK Telecom T1 or SKT T1)' — 같은 팀의 옛 이름 · '티원'은 한글 음차",
+        "explanation": "2019년 10월 SK텔레콤과 미국 컴캐스트 스펙타코어가 합작 회사를 세우면서 팀 이름에서 회사 이름을 떼었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "둘째 리그 오브 레전드 팀 'K'를 만든 이 게임단",
+          "difWhy": "SKT K팀 — e스포츠 관심층",
+          "wor": 3,
+          "worWhy": "레전드 구단 이름",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "임요환 … 한 이동통신사가 … 후원하면서 새 이름으로 창단",
+          "difWhy": "임요환 팀 후신 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 게임단 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2002년 프로게이머 임요환이 '팀 오리온'이라는 이름으로 만든 게임단은 2003년 12월 '4 Union'으로 이름을 바꿨습니다. 이듬해 4월 한 이동통신사가 200만 달러를 들여 후원하면서 새 이름으로 창단한 이 게임단은 어디일까요?",
+          "beforeExplanation": null,
+          "removedCue": "프로게이머 임요환이 만든 · 한 이동통신사가 후원",
+          "addedCue": "둘째 LoL 팀 'K'(2013년 2월)",
+          "why": "임요환·이동통신사(관심층 상식)를 빼고 옛 팀 이름과 팀 구성 세부로"
+        },
+        "generalHint": "이 이름을 얻기 전인 2003년 첫 프로리그 결승에서 한빛 스타즈를 4:1로 꺾고 팀의 첫 우승을 이뤘다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "페이커가 뛰는 한국 e스포츠 게임단",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "페이커·롤드컵 뉴스로 널리 알려짐",
+          "piece": "f01",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "M2-13",
+          "key": "b204",
+          "hint": "이 이름을 얻기 전인 2003년 첫 프로리그 결승에서 한빛 스타즈를 4:1로 꺾고 팀의 첫 우승을 이뤘다.",
+          "guess": "SK텔레콤 T1",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "T1"
+        },
+        "layer": "팬 세부",
+        "genre": "게임",
+        "work": "T1",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/T1_(esports)"
+        ],
+        "facts": [
+          {
+            "claim": "2002년 임요환이 팀 오리온으로 창단, 2003년 12월 4 Union",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/T1_(esports)",
+            "note": "The team that would become SKT T1 was originally founded in 2002 by StarCraft player Lim \"BoxeR\" Yo-hwan under the name Team Orion, which was later renamed to 4 Union in December 2003."
+          },
+          {
+            "claim": "2004년 4월 SK텔레콤 200만 달러 후원으로 SK Telecom T1 창단",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/T1_(esports)",
+            "note": "On April 13, 2004, South Korean wireless carrier SK Telecom sponsored the team with an investment of US$2 million, officially creating the team SK Telecom T1"
+          },
+          {
+            "claim": "2019년 10월 컴캐스트 합작으로 T1",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/T1_(esports)",
+            "note": "In October 2019, SK Telecom T1 was rebranded to simply T1, after SK Telecom and Comcast Spectacor partnered to create T1 Entertainment & Sports"
+          },
+          {
+            "claim": "2013년 2월 26일 둘째 LoL 팀 SK Telecom T1 K 창단",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/T1_(esports)",
+            "note": "On February 26, 2013, they created a second League of Legends team, SK Telecom T1 K."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/T1_(e%EC%8A%A4%ED%8F%AC%EC%B8%A0)"
+        ],
+        "hintNote": "2003년 8월 30일에 열린 결승전에서 한빛 스타즈(현 웅진 스타즈)를 4:1로 꺾고 팀내 첫 우승을 일궈냈다.",
+        "easiestCue": "2013년 2월 둘째 리그 오브 레전드 팀 'K'를 만든",
+        "targetWhy": "e스포츠 구단 역사 — 팬 세부",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'임요환 = SKT T1' 은 스타 팬에겐 관심층 지식일 수 있음 · 소분류 esports/5(게임 용어) 소재 부족으로 1건을 esports/4 로 돌림",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "둘째 리그 오브 레전드 팀 'K'를 만든 이 게임단",
+          "difWhy": "SKT K팀 — e스포츠 관심층",
+          "wor": 3,
+          "worWhy": "레전드 구단 이름",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 fix fact-error",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

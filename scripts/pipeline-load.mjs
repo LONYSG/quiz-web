@@ -210,6 +210,8 @@ for (const round of ROUNDS) {
           // ★ R030: 일반 힌트 (남은 20초) — 난이도 4~5 는 반드시 (기준서 4-1 H0)
           generalHint: q.generalHint ?? null,
           generalHintVersion: q.generalHintVersion ?? null,
+          // ★ G020 (CV-87): 'H0 예외 — 정답이 맥락 자체' 표시가 있으면 난이도 3 이상이라도 힌트 없이 통과
+          hintNote: q.hintNote ?? null,
           // ★ R031: 같은 라운드 같은 소재를 사람이 '다른 지식' 으로 판정했으면 그 이유 (게이트 통과)
           roundDupOk: q.roundDupOk ?? null,
           answerLang: 'ko',
@@ -470,7 +472,7 @@ try {
     // ★★ R030 일반 힌트 게이트
     const gh = g.generalHint ? String(g.generalHint).trim() : null;
     if (!NO_HINT_GATE && item.sourceId === SEED_SOURCE_ID) {
-      if (!gh && (sc?.dif ?? 0) >= HINT_MIN_DIF) {
+      if (!gh && (sc?.dif ?? 0) >= HINT_MIN_DIF && !String(g.hintNote ?? '').startsWith('H0 예외')) {
         skipped.push({ ref: item.sourceRef, reason: `★ 난이도 ${sc.dif} 인데 일반 힌트가 없다 (기준서 4-1 H0 — 3~5 는 반드시)` });
         continue;
       }

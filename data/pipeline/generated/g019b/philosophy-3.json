@@ -1,321 +1,366 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "philosophy/3",
-  "midKey": "philosophy",
-  "subName": "현대 철학",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "philosophy/3#g019b-H2-01",
-   "seed": {
-    "subject": "한나 아렌트",
-    "aspect": null,
-    "ref": "H2-01",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 사상가는 카를 야스퍼스의 지도로 아우구스티누스의 사랑 개념을 다룬 박사 논문을 썼습니다. 프랑스의 귀르 수용소에 갇혔다가 혼란 속에 풀려나는 서류를 얻어 빠져나왔고, 1941년 5월 22일 뉴욕에 닿았습니다. 이 사상가는 누구일까요?",
-    "answer": "한나 아렌트",
-    "acceptedAnswers": [
-     "아렌트"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '한나 아렌트' · 국내 글에서 성만 '아렌트'로 흔히 부름(A3 짧은 쪽)",
-    "explanation": "1937년 독일 국적을 잃은 뒤 1950년 미국 시민이 되기까지 무국적자로 지냈습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "카를 야스퍼스의 지도로 아우구스티누스의 사랑 개념",
-     "difWhy": "아렌트 박사 논문 — 대학 교양 철학",
-     "wor": 3,
-     "worWhy": "유명 사상가 이름 맞히기",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "카를 야스퍼스의 지도로 아우구스티누스의 사랑 개념",
-     "difWhy": "아렌트 박사 논문 — 대학 교양 철학",
-     "wor": 3,
-     "worWhy": "유명 사상가 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "마르부르크 대학에서 하이데거에게 배우던 학생 시절 그와 연인 사이가 되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "전체주의와 악의 평범성을 논한 독일 출신 유대계 정치철학자",
-    "familiarity": {
-     "judge": 2,
-     "pct": 45,
-     "why": "'악의 평범성'·인문 교양서로 들어 봤을 법함",
-     "piece": "f08",
-     "genPct": 45
-    },
-    "blind": {
-     "ref": "H2-01",
-     "key": "b251",
-     "hint": "마르부르크 대학에서 하이데거에게 배우던 학생 시절 그와 연인 사이가 되었다.",
-     "guess": "한나 아렌트",
-     "confidence": "high",
-     "hit": true,
-     "answer": "한나 아렌트"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Hannah_Arendt"
-    ],
-    "facts": [
-     {
-      "claim": "야스퍼스 지도로 아우구스티누스 사랑 개념 박사 논문",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
-      "note": "her dissertation was entitled Love and Saint Augustine, and her supervisor was the existentialist philosopher Karl Jaspers."
-     },
-     {
-      "claim": "귀르 수용소에서 풀려나는 서류를 얻어 빠져나옴",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
-      "note": "(Camp Gurs) in the resulting chaos we succeeded in getting hold of liberation papers with which we were able to leave the camp."
-     },
-     {
-      "claim": "1941년 5월 22일 뉴욕 도착",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
-      "note": "Upon arriving in New York City on 22 May 1941 with very little"
-     },
-     {
-      "claim": "1937~1950 무국적, 1950년 미국 시민",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
-      "note": "Stateless (1937–1950) / became an American citizen in 1950"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Hannah_Arendt"
-    ],
-    "hintNote": "Arendt studied at the University of Marburg under Martin Heidegger, with whom she engaged in a romantic affair that began while she was his student.",
-    "easiestCue": "1941년 5월 22일 뉴욕에 닿았습니다",
-    "targetWhy": "논문 주제·귀르 수용소·뉴욕 도착은 정치철학 애호가가 아는 생애 세부 — 대표작(전체주의의 기원·예루살렘의 아이히만)과 악의 평범성을 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "이름은 '악의 평범성'으로 들어 본 사람 꽤 있고 단서는 생애 세부뿐",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "philosophy/3",
+    "midKey": "philosophy",
+    "subName": "현대 철학",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "philosophy/3#g019b-H2-02",
-   "seed": {
-    "subject": "푸코",
-    "aspect": null,
-    "ref": "H2-02",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 프랑스 철학자는 1955년부터 스웨덴 웁살라에서 프랑스어 강사로 일하며 '메종 드 프랑스'의 책임자를 겸했고, 1958년 10월부터는 바르샤바 대학의 프랑스 센터를 맡았습니다. 1966~68년에는 튀니스 대학에서 강의했는데, 이 철학자는 누구일까요?",
-    "answer": "푸코",
-    "acceptedAnswers": [
-     "미셸 푸코"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '미셸 푸코' · 국내 글에서 '푸코'로 흔히 부름",
-    "explanation": "웁살라 대학이 그에게 박사 학위를 주지 않은 일도 그가 스웨덴을 떠난 까닭의 하나였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 5,
-     "easiestCue": "1955년부터 스웨덴 웁살라에서 프랑스어 강사",
-     "difWhy": "푸코의 웁살라·바르샤바 경력 — 전공 철학사",
-     "wor": 3,
-     "worWhy": "유명 철학자 이름 맞히기",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
+  "items": [
+    {
+      "seedId": "philosophy/3#g019b-H2-01",
+      "seed": {
+        "subject": "한나 아렌트",
+        "aspect": null,
+        "ref": "H2-01",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 사상가는 카를 야스퍼스의 지도로 아우구스티누스의 사랑 개념을 다룬 박사 논문을 썼습니다. 프랑스의 귀르 수용소에 갇혔다가 혼란 속에 풀려나는 서류를 얻어 빠져나왔고, 1941년 5월 22일 뉴욕에 닿았습니다. 이 사상가는 누구일까요?",
+        "answer": "한나 아렌트",
+        "acceptedAnswers": [
+          "아렌트"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '한나 아렌트' · 국내 글에서 성만 '아렌트'로 흔히 부름(A3 짧은 쪽)",
+        "explanation": "1937년 독일 국적을 잃은 뒤 1950년 미국 시민이 되기까지 무국적자로 지냈습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "카를 야스퍼스의 지도로 아우구스티누스의 사랑 개념",
+          "difWhy": "아렌트 박사 논문 — 대학 교양 철학",
+          "wor": 3,
+          "worWhy": "유명 사상가 이름 맞히기",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "카를 야스퍼스의 지도로 아우구스티누스의 사랑 개념",
+          "difWhy": "아렌트 박사 논문 — 대학 교양 철학",
+          "wor": 3,
+          "worWhy": "유명 사상가 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "마르부르크 대학에서 하이데거에게 배우던 학생 시절 그와 연인 사이가 되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "전체주의와 악의 평범성을 논한 독일 출신 유대계 정치철학자",
+        "familiarity": {
+          "judge": 2,
+          "pct": 45,
+          "why": "'악의 평범성'·인문 교양서로 들어 봤을 법함",
+          "piece": "f08",
+          "genPct": 45
+        },
+        "blind": {
+          "ref": "H2-01",
+          "key": "b251",
+          "hint": "마르부르크 대학에서 하이데거에게 배우던 학생 시절 그와 연인 사이가 되었다.",
+          "guess": "한나 아렌트",
+          "confidence": "high",
+          "hit": true,
+          "answer": "한나 아렌트"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Hannah_Arendt"
+        ],
+        "facts": [
+          {
+            "claim": "야스퍼스 지도로 아우구스티누스 사랑 개념 박사 논문",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
+            "note": "her dissertation was entitled Love and Saint Augustine, and her supervisor was the existentialist philosopher Karl Jaspers."
+          },
+          {
+            "claim": "귀르 수용소에서 풀려나는 서류를 얻어 빠져나옴",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
+            "note": "(Camp Gurs) in the resulting chaos we succeeded in getting hold of liberation papers with which we were able to leave the camp."
+          },
+          {
+            "claim": "1941년 5월 22일 뉴욕 도착",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
+            "note": "Upon arriving in New York City on 22 May 1941 with very little"
+          },
+          {
+            "claim": "1937~1950 무국적, 1950년 미국 시민",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Hannah_Arendt",
+            "note": "Stateless (1937–1950) / became an American citizen in 1950"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Hannah_Arendt"
+        ],
+        "hintNote": "Arendt studied at the University of Marburg under Martin Heidegger, with whom she engaged in a romantic affair that began while she was his student.",
+        "easiestCue": "1941년 5월 22일 뉴욕에 닿았습니다",
+        "targetWhy": "논문 주제·귀르 수용소·뉴욕 도착은 정치철학 애호가가 아는 생애 세부 — 대표작(전체주의의 기원·예루살렘의 아이히만)과 악의 평범성을 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "이름은 '악의 평범성'으로 들어 본 사람 꽤 있고 단서는 생애 세부뿐",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "카를 야스퍼스의 지도로 아우구스티누스의 사랑 개념",
+          "difWhy": "아렌트 박사 논문 — 대학 교양 철학",
+          "wor": 3,
+          "worWhy": "유명 사상가 이름 맞히기",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 5,
-     "easiestCue": "1955년부터 스웨덴 웁살라에서 프랑스어 강사",
-     "difWhy": "푸코의 웁살라·바르샤바 경력 — 전공 철학사",
-     "wor": 3,
-     "worWhy": "유명 철학자 이름 맞히기"
+    {
+      "seedId": "philosophy/3#g019b-H2-02",
+      "seed": {
+        "subject": "푸코",
+        "aspect": null,
+        "ref": "H2-02",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 프랑스 철학자는 1955년부터 스웨덴 웁살라에서 프랑스어 강사로 일하며 '메종 드 프랑스'의 책임자를 겸했고, 1958년 10월부터는 바르샤바 대학의 프랑스 센터를 맡았습니다. 1966~68년에는 튀니스 대학에서 강의했는데, 이 철학자는 누구일까요?",
+        "answer": "푸코",
+        "acceptedAnswers": [
+          "미셸 푸코"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '미셸 푸코' · 국내 글에서 '푸코'로 흔히 부름",
+        "explanation": "웁살라 대학이 그에게 박사 학위를 주지 않은 일도 그가 스웨덴을 떠난 까닭의 하나였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1955년부터 스웨덴 웁살라에서 프랑스어 강사",
+          "difWhy": "푸코의 웁살라·바르샤바 경력 — 전공 철학사",
+          "wor": 3,
+          "worWhy": "유명 철학자 이름 맞히기",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 5,
+          "easiestCue": "1955년부터 스웨덴 웁살라에서 프랑스어 강사",
+          "difWhy": "푸코의 웁살라·바르샤바 경력 — 전공 철학사",
+          "wor": 3,
+          "worWhy": "유명 철학자 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "1970년 콜레주 드 프랑스에 '사유 체계의 역사' 교수로 들어갔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "권력과 감시·광기의 역사를 연구한 20세기 프랑스 사상가",
+        "familiarity": {
+          "judge": 2,
+          "pct": 40,
+          "why": "교양서·'감시와 처벌'로 인문 관심층만 앎",
+          "piece": "f07",
+          "genPct": 50
+        },
+        "blind": {
+          "ref": "H2-02",
+          "key": "b235",
+          "hint": "1970년 콜레주 드 프랑스에 '사유 체계의 역사' 교수로 들어갔다.",
+          "guess": "미셸 푸코",
+          "confidence": "high",
+          "hit": true,
+          "answer": "푸코"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Michel_Foucault"
+        ],
+        "facts": [
+          {
+            "claim": "1955년부터 해외, 웁살라 프랑스어 강사 겸 메종 드 프랑스 책임자",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
+            "note": "spent the next five years abroad (from 1955) … appointed a Reader in French language and literature, while simultaneously working as director of the Maison de France"
+          },
+          {
+            "claim": "1958년 10월부터 바르샤바 대학 프랑스 센터",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
+            "note": "(October 1958) took charge of the University of Warsaw's Centre Français"
+          },
+          {
+            "claim": "1966~68 튀니스 대학 강의",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
+            "note": "Foucault lectured at the University of Tunis (1966–68)"
+          },
+          {
+            "claim": "웁살라가 박사 학위를 거절한 것이 스웨덴을 떠난 이유 중 하나",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
+            "note": "he left Sweden partly after Uppsala refused him a doctorate"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Michel_Foucault"
+        ],
+        "hintNote": "He was admitted to the Collège de France (1970) … taking up a chair in what he called the \"history of systems of thought\"",
+        "easiestCue": "1966~68년에는 튀니스 대학에서 강의했는데",
+        "targetWhy": "해외 문화원·대학 이력은 푸코 독자도 잘 모르는 세부 — 판옵티콘·감시와 처벌·광기의 역사를 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 교양 수준 이름, 단서는 이력 세부",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (판옵티콘 활성은 다른 정답)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 5,
+          "easiestCue": "1955년부터 스웨덴 웁살라에서 프랑스어 강사",
+          "difWhy": "푸코의 웁살라·바르샤바 경력 — 전공 철학사",
+          "wor": 3,
+          "worWhy": "유명 철학자 이름 맞히기",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "1970년 콜레주 드 프랑스에 '사유 체계의 역사' 교수로 들어갔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "권력과 감시·광기의 역사를 연구한 20세기 프랑스 사상가",
-    "familiarity": {
-     "judge": 2,
-     "pct": 40,
-     "why": "교양서·'감시와 처벌'로 인문 관심층만 앎",
-     "piece": "f07",
-     "genPct": 50
-    },
-    "blind": {
-     "ref": "H2-02",
-     "key": "b235",
-     "hint": "1970년 콜레주 드 프랑스에 '사유 체계의 역사' 교수로 들어갔다.",
-     "guess": "미셸 푸코",
-     "confidence": "high",
-     "hit": true,
-     "answer": "푸코"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Michel_Foucault"
-    ],
-    "facts": [
-     {
-      "claim": "1955년부터 해외, 웁살라 프랑스어 강사 겸 메종 드 프랑스 책임자",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
-      "note": "spent the next five years abroad (from 1955) … appointed a Reader in French language and literature, while simultaneously working as director of the Maison de France"
-     },
-     {
-      "claim": "1958년 10월부터 바르샤바 대학 프랑스 센터",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
-      "note": "(October 1958) took charge of the University of Warsaw's Centre Français"
-     },
-     {
-      "claim": "1966~68 튀니스 대학 강의",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
-      "note": "Foucault lectured at the University of Tunis (1966–68)"
-     },
-     {
-      "claim": "웁살라가 박사 학위를 거절한 것이 스웨덴을 떠난 이유 중 하나",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Michel_Foucault",
-      "note": "he left Sweden partly after Uppsala refused him a doctorate"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Michel_Foucault"
-    ],
-    "hintNote": "He was admitted to the Collège de France (1970) … taking up a chair in what he called the \"history of systems of thought\"",
-    "easiestCue": "1966~68년에는 튀니스 대학에서 강의했는데",
-    "targetWhy": "해외 문화원·대학 이력은 푸코 독자도 잘 모르는 세부 — 판옵티콘·감시와 처벌·광기의 역사를 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 교양 수준 이름, 단서는 이력 세부",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (판옵티콘 활성은 다른 정답)",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "philosophy/3#g019b-H2-03",
-   "seed": {
-    "subject": "러셀",
-    "aspect": null,
-    "ref": "H2-03",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 영국 철학자는 1916년 국토방위법 위반으로 유죄 판결을 받은 뒤 케임브리지 트리니티 칼리지에서 쫓겨났습니다. 1918년에는 브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』을 썼는데, 이 철학자는 누구일까요?",
-    "answer": "러셀",
-    "acceptedAnswers": [
-     "버트런드 러셀"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '버트런드 러셀' · '러셀의 역설' 등 성만 흔히 씀",
-    "explanation": "1940년에는 뉴욕 시립대학 교수로 임명됐지만, 결혼과 성 도덕에 관한 그의 견해를 문제 삼은 법원 판결로 임명이 취소되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』",
-     "difWhy": "러셀 반전 투옥 — 대학 교양 철학",
-     "wor": 3,
-     "worWhy": "유명 철학자 이름 맞히기",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』",
-     "difWhy": "러셀 반전 투옥 — 대학 교양 철학",
-     "wor": 3,
-     "worWhy": "유명 철학자 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "1950년 인도주의와 사상의 자유를 옹호한 글들로 노벨 문학상을 받았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "20세기 영국의 논리학자이자 평화 운동가였던 철학자",
-    "familiarity": {
-     "judge": 2,
-     "pct": 40,
-     "why": "철학 교양·러셀의 역설로 일부만 앎",
-     "piece": "f09",
-     "genPct": 50
-    },
-    "blind": {
-     "ref": "H2-03",
-     "key": "b224",
-     "hint": "1950년 인도주의와 사상의 자유를 옹호한 글들로 노벨 문학상을 받았다.",
-     "guess": "버트런드 러셀",
-     "confidence": "high",
-     "hit": true,
-     "answer": "러셀"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Bertrand_Russell"
-    ],
-    "facts": [
-     {
-      "claim": "1916년 국토방위법 유죄 뒤 트리니티 칼리지 해임",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
-      "note": "he was dismissed from Trinity College following his conviction under the Defence of the Realm Act 1914."
-     },
-     {
-      "claim": "1918년 브릭스턴 6개월 수감, 수리철학 입문 집필",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
-      "note": "resulted in six months' imprisonment in Brixton Prison … wrote Introduction to Mathematical Philosophy"
-     },
-     {
-      "claim": "1940 CCNY 임명이 법원 판결로 취소, 결혼과 도덕의 견해",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
-      "note": "the appointment was annulled by a court judgment … 'morally unfit' … citing his views on sexual morality in Marriage and Morals"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Bertrand_Russell"
-    ],
-    "hintNote": "In 1950, Russell was awarded the Nobel Prize in Literature \"in recognition of his varied and significant writings in which he champions humanitarian ideals and freedom of thought\".",
-    "easiestCue": "1918년에는 브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』을 썼는데",
-    "targetWhy": "전쟁 반대로 해임·수감된 세부는 철학 애호가 영역 — 러셀의 역설·노벨 문학상·『서양철학사』를 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 이름 + 생애 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (러셀의 역설 활성은 다른 정답·다른 지식)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "philosophy/3#g019b-H2-03",
+      "seed": {
+        "subject": "러셀",
+        "aspect": null,
+        "ref": "H2-03",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 영국 철학자는 1916년 국토방위법 위반으로 유죄 판결을 받은 뒤 케임브리지 트리니티 칼리지에서 쫓겨났습니다. 1918년에는 브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』을 썼는데, 이 철학자는 누구일까요?",
+        "answer": "러셀",
+        "acceptedAnswers": [
+          "버트런드 러셀"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '버트런드 러셀' · '러셀의 역설' 등 성만 흔히 씀",
+        "explanation": "1940년에는 뉴욕 시립대학 교수로 임명됐지만, 결혼과 성 도덕에 관한 그의 견해를 문제 삼은 법원 판결로 임명이 취소되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』",
+          "difWhy": "러셀 반전 투옥 — 대학 교양 철학",
+          "wor": 3,
+          "worWhy": "유명 철학자 이름 맞히기",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』",
+          "difWhy": "러셀 반전 투옥 — 대학 교양 철학",
+          "wor": 3,
+          "worWhy": "유명 철학자 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "1950년 인도주의와 사상의 자유를 옹호한 글들로 노벨 문학상을 받았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "20세기 영국의 논리학자이자 평화 운동가였던 철학자",
+        "familiarity": {
+          "judge": 2,
+          "pct": 40,
+          "why": "철학 교양·러셀의 역설로 일부만 앎",
+          "piece": "f09",
+          "genPct": 50
+        },
+        "blind": {
+          "ref": "H2-03",
+          "key": "b224",
+          "hint": "1950년 인도주의와 사상의 자유를 옹호한 글들로 노벨 문학상을 받았다.",
+          "guess": "버트런드 러셀",
+          "confidence": "high",
+          "hit": true,
+          "answer": "러셀"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Bertrand_Russell"
+        ],
+        "facts": [
+          {
+            "claim": "1916년 국토방위법 유죄 뒤 트리니티 칼리지 해임",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
+            "note": "he was dismissed from Trinity College following his conviction under the Defence of the Realm Act 1914."
+          },
+          {
+            "claim": "1918년 브릭스턴 6개월 수감, 수리철학 입문 집필",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
+            "note": "resulted in six months' imprisonment in Brixton Prison … wrote Introduction to Mathematical Philosophy"
+          },
+          {
+            "claim": "1940 CCNY 임명이 법원 판결로 취소, 결혼과 도덕의 견해",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
+            "note": "the appointment was annulled by a court judgment … 'morally unfit' … citing his views on sexual morality in Marriage and Morals"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Bertrand_Russell"
+        ],
+        "hintNote": "In 1950, Russell was awarded the Nobel Prize in Literature \"in recognition of his varied and significant writings in which he champions humanitarian ideals and freedom of thought\".",
+        "easiestCue": "1918년에는 브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』을 썼는데",
+        "targetWhy": "전쟁 반대로 해임·수감된 세부는 철학 애호가 영역 — 러셀의 역설·노벨 문학상·『서양철학사』를 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 이름 + 생애 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (러셀의 역설 활성은 다른 정답·다른 지식)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "브릭스턴 교도소에 6개월 동안 갇혀 지내며 『수리철학 입문』",
+          "difWhy": "러셀 반전 투옥 — 대학 교양 철학",
+          "wor": 3,
+          "worWhy": "유명 철학자 이름 맞히기",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

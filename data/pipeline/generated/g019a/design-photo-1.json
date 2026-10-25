@@ -1,128 +1,146 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "design-photo/1",
-  "midKey": "design-photo",
-  "subName": "사진 기술·용어",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "design-photo/1#g019a-A1-06",
-   "seed": {
-    "subject": "어안 렌즈",
-    "aspect": null,
-    "ref": "A1-06",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1923년 9월 구름 조사에 쓰였고 이듬해 로빈 힐이 기술한 '힐 하늘 렌즈'가 첫 예로 꼽히는 렌즈입니다. 니콘이 1960년 내놓은 이 렌즈의 구름 촬영용 카메라는 30대만 만들어져 18대가 팔렸는데, 이 렌즈는?",
-    "answer": "어안 렌즈",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '어안렌즈' → '어안 렌즈'(띄어쓰기만 다름 — 정규화로 같음) · '피시아이 렌즈'는 검색으로 쓰임 확인 못 해 넣지 않음",
-    "explanation": "이름은 1906년 미국 물리학자 로버트 우드가 물을 채운 통 바닥에 사진판을 놓고 바늘구멍으로 찍은 실험에서 나왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "'힐 하늘 렌즈' … 구름 촬영용",
-     "difWhy": "하늘 전체 찍는 렌즈 — 사진 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 렌즈 기원",
-     "acc": 3,
-     "accWhy": "사진·디자인 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "물을 채운 통 바닥에 … 이 렌즈의 이름은 거기서 나왔습니다",
-     "difWhy": "물속 시점에서 온 렌즈 이름 — 사진 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "렌즈 이름 유래 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1906년 미국 물리학자 로버트 우드는 물을 채운 통 바닥에 사진판을 놓고 바늘구멍으로 찍는 실험을 논문으로 냈고, 이 렌즈의 이름은 거기서 나왔습니다. 1923년 로빈 힐이 구름 조사에 쓴 렌즈가 첫 예로 꼽히는 이 렌즈는?",
-     "beforeExplanation": "니콘이 1960년 내놓은 구름 촬영용 어안 카메라는 30대만 만들어져 18대가 팔렸습니다.",
-     "removedCue": "물을 채운 통 바닥에 … 이 렌즈의 이름은 거기서 나왔습니다 (이름 유래)",
-     "addedCue": "니콘 1960년 구름 카메라 30대 제작·18대 판매",
-     "why": "정답 이름의 유래를 해설로 옮기고 해설의 니콘 카메라 세부를 질문으로"
-    },
-    "generalHint": "1922년 본드는 물통 대신 반구 모양 유리 렌즈를 써서 이런 장치를 들고 다닐 수 있게 만들었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "180도 넘게 담아 화면이 둥글게 휘는 초광각 사진 렌즈",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "사진·카메라 앱에서 흔히 들음",
-     "piece": "f04",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "A1-06",
-     "key": "b057",
-     "hint": "1922년 본드는 물통 대신 반구 모양 유리 렌즈를 써서 이런 장치를 들고 다닐 수 있게 만들었다.",
-     "guess": "어안 렌즈",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "어안 렌즈"
-    },
-    "hobby": "사진",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Fisheye_lens"
-    ],
-    "facts": [
-     {
-      "claim": "1923년 힐 하늘 렌즈 — 구름 조사, 첫 어안 렌즈로 꼽힘",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
-      "note": "In 1924, Robin Hill first described a lens with 180° coverage that had been used for a cloud survey in September 1923 ... The Hill Sky Lens is now credited as the first fisheye lens."
-     },
-     {
-      "claim": "니콘 1960 어안 카메라 30대 제작, 18대 판매",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
-      "note": "followed by a commercial release as the Nikon Fisheye Camera ... in September 1960 ... Only 30 examples of the Nikon Fisheye Camera were manufactured, and of those, 18 were sold to customers"
-     },
-     {
-      "claim": "1906년 로버트 우드가 이름을 지음",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
-      "note": "The term fisheye was coined in 1906 by American physicist and inventor Robert W. Wood"
-     },
-     {
-      "claim": "물 채운 통 바닥 사진판·바늘구멍 실험 논문",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
-      "note": "In 1906, Wood published a paper detailing an experiment in which he built a camera in a water-filled pail starting with a photographic plate at the bottom, a short focus lens with a pinhole diaphragm ... the title of the paper was \"Fish-Eye Views, and Vision under Water\"."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Fisheye_lens"
-    ],
-    "hintNote": "Bond described an improvement to Wood's apparatus in 1922 which replaced the tank of water with a simple hemispheric glass lens, making the camera significantly more portable.",
-    "easiestCue": "1923년 구름 조사에 쓰인 '힐 하늘 렌즈'",
-    "targetWhy": "힐 하늘 렌즈·니콘 구름 카메라는 사진 애호가 세부 — 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'물 채운 통 바닥' 실험 묘사가 이름(물고기 눈)을 떠올리게 해 쉬워질 수 있다",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": [
-     "정답조각 렌즈"
-    ]
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "design-photo/1",
+    "midKey": "design-photo",
+    "subName": "사진 기술·용어",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "design-photo/1#g019a-A1-06",
+      "seed": {
+        "subject": "어안 렌즈",
+        "aspect": null,
+        "ref": "A1-06",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1923년 9월 구름 조사에 쓰였고 이듬해 로빈 힐이 기술한 '힐 하늘 렌즈'가 첫 예로 꼽히는 렌즈입니다. 니콘이 1960년 내놓은 이 렌즈의 구름 촬영용 카메라는 30대만 만들어져 18대가 팔렸는데, 이 렌즈는?",
+        "answer": "어안 렌즈",
+        "acceptedAnswers": [
+          "피쉬아이 렌즈",
+          "피시아이 렌즈"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '어안렌즈' → '어안 렌즈'(띄어쓰기만 다름 — 정규화로 같음) · '피시아이 렌즈'는 검색으로 쓰임 확인 못 해 넣지 않음",
+        "explanation": "이름은 1906년 미국 물리학자 로버트 우드가 물을 채운 통 바닥에 사진판을 놓고 바늘구멍으로 찍은 실험에서 나왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'힐 하늘 렌즈' … 구름 촬영용",
+          "difWhy": "하늘 전체 찍는 렌즈 — 사진 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 렌즈 기원",
+          "acc": 3,
+          "accWhy": "사진·디자인 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "물을 채운 통 바닥에 … 이 렌즈의 이름은 거기서 나왔습니다",
+          "difWhy": "물속 시점에서 온 렌즈 이름 — 사진 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "렌즈 이름 유래 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1906년 미국 물리학자 로버트 우드는 물을 채운 통 바닥에 사진판을 놓고 바늘구멍으로 찍는 실험을 논문으로 냈고, 이 렌즈의 이름은 거기서 나왔습니다. 1923년 로빈 힐이 구름 조사에 쓴 렌즈가 첫 예로 꼽히는 이 렌즈는?",
+          "beforeExplanation": "니콘이 1960년 내놓은 구름 촬영용 어안 카메라는 30대만 만들어져 18대가 팔렸습니다.",
+          "removedCue": "물을 채운 통 바닥에 … 이 렌즈의 이름은 거기서 나왔습니다 (이름 유래)",
+          "addedCue": "니콘 1960년 구름 카메라 30대 제작·18대 판매",
+          "why": "정답 이름의 유래를 해설로 옮기고 해설의 니콘 카메라 세부를 질문으로"
+        },
+        "generalHint": "1922년 본드는 물통 대신 반구 모양 유리 렌즈를 써서 이런 장치를 들고 다닐 수 있게 만들었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "180도 넘게 담아 화면이 둥글게 휘는 초광각 사진 렌즈",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "사진·카메라 앱에서 흔히 들음",
+          "piece": "f04",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "A1-06",
+          "key": "b057",
+          "hint": "1922년 본드는 물통 대신 반구 모양 유리 렌즈를 써서 이런 장치를 들고 다닐 수 있게 만들었다.",
+          "guess": "어안 렌즈",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "어안 렌즈"
+        },
+        "hobby": "사진",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Fisheye_lens"
+        ],
+        "facts": [
+          {
+            "claim": "1923년 힐 하늘 렌즈 — 구름 조사, 첫 어안 렌즈로 꼽힘",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
+            "note": "In 1924, Robin Hill first described a lens with 180° coverage that had been used for a cloud survey in September 1923 ... The Hill Sky Lens is now credited as the first fisheye lens."
+          },
+          {
+            "claim": "니콘 1960 어안 카메라 30대 제작, 18대 판매",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
+            "note": "followed by a commercial release as the Nikon Fisheye Camera ... in September 1960 ... Only 30 examples of the Nikon Fisheye Camera were manufactured, and of those, 18 were sold to customers"
+          },
+          {
+            "claim": "1906년 로버트 우드가 이름을 지음",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
+            "note": "The term fisheye was coined in 1906 by American physicist and inventor Robert W. Wood"
+          },
+          {
+            "claim": "물 채운 통 바닥 사진판·바늘구멍 실험 논문",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Fisheye_lens",
+            "note": "In 1906, Wood published a paper detailing an experiment in which he built a camera in a water-filled pail starting with a photographic plate at the bottom, a short focus lens with a pinhole diaphragm ... the title of the paper was \"Fish-Eye Views, and Vision under Water\"."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Fisheye_lens"
+        ],
+        "hintNote": "Bond described an improvement to Wood's apparatus in 1922 which replaced the tank of water with a simple hemispheric glass lens, making the camera significantly more portable.",
+        "easiestCue": "1923년 구름 조사에 쓰인 '힐 하늘 렌즈'",
+        "targetWhy": "힐 하늘 렌즈·니콘 구름 카메라는 사진 애호가 세부 — 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'물 채운 통 바닥' 실험 묘사가 이름(물고기 눈)을 떠올리게 해 쉬워질 수 있다",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [
+          "정답조각 렌즈"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'힐 하늘 렌즈' … 구름 촬영용",
+          "difWhy": "하늘 전체 찍는 렌즈 — 사진 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 렌즈 기원",
+          "acc": 3,
+          "accWhy": "사진·디자인 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 fix variants",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

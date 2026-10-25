@@ -1,235 +1,262 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "drinks/5",
-  "midKey": "drinks",
-  "subName": "커피·차",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "drinks/5#g019a-L2-16",
-   "seed": {
-    "subject": "버블티",
-    "aspect": null,
-    "ref": "L2-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "두 찻집이 서로 원조라고 맞선 끝에 2019년 이 음료는 특허 대상이 아니라는 판결이 나왔습니다. 미국에서 흔히 부르는 다른 이름이 홍콩 배우 엽자미의 별명에서 왔다는 이 음료는 무엇일까요?",
-    "answer": "버블티",
-    "acceptedAnswers": [
-     "펄 밀크티",
-     "버블 밀크티",
-     "타피오카 밀크티",
-     "보바티",
-     "보바"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '버블티' — 중화권 이름 '펄 밀크티', en.wikipedia — bubble milk tea · tapioca milk tea · boba tea · boba 를 같은 음료의 다른 이름으로 적음",
-    "explanation": "타이중의 한 찻집 개발 담당자는 1988년 직원 회의 중 차에 타피오카 알갱이를 부어 처음 만들었다고 말합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "홍콩 배우 엽자미의 별명에서 왔다는 이 음료",
-     "difWhy": "대만 원조 다툼 음료 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 이름 유래",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1988년 타이중의 한 찻집은 직원 회의 중 처음 만들어졌다",
-     "difWhy": "대만 찻집 발명 음료 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "음료 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1988년 타이중의 한 찻집은 직원 회의 중 처음 만들어졌다고 하고, 타이난의 다른 찻집은 1986년이 먼저라고 맞서 2019년 판결까지 갔습니다. 미국에서 흔히 부르는 다른 이름이 홍콩 배우 엽자미의 별명에서 왔다는 이 음료는?",
-     "beforeExplanation": "대만은 2020년 4월 30일을 이 음료의 날로 공식 지정했습니다.",
-     "removedCue": "1988년 타이중의 찻집 직원 회의 · 타이난 찻집(대만 찻집 발명 — 관심층)",
-     "addedCue": "없음 — 대만 지명을 빼고 2019년 판결·엽자미 별명만 남김",
-     "why": "대만 찻집 발명이라는 쉬운 연결을 빼고 원조 다툼의 결말과 이름 유래로"
-    },
-    "generalHint": "일본에는 1990년대 말 들어왔지만 자리 잡지 못하다가 2010년대에야 크게 유행했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "쫄깃한 타피오카 알갱이를 넣은 대만식 차 음료",
-    "familiarity": {
-     "judge": 3,
-     "pct": 98,
-     "why": "흔한 음료",
-     "piece": "f03",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "L2-16",
-     "key": "b107",
-     "hint": "일본에는 1990년대 말 들어왔지만 자리 잡지 못하다가 2010년대에야 크게 유행했다.",
-     "guess": "버블티",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "버블티"
-    },
-    "hobby": "요리",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Bubble_tea"
-    ],
-    "facts": [
-     {
-      "claim": "타이중 춘수당(1987·직원 회의 1988 주장) · 타이난 한림다관(1986) 원조 다툼, 2019년 판결",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Bubble_tea",
-      "note": "Two Taiwanese tea rooms, Chun Shui Tang in Taichung, and Hanlin Tea Room in Tainan, claim the invention of bubble tea in 1987 and 1986 respectively; litigation between them resulted in a 2019 ruling that bubble tea was non-patentable."
-     },
-     {
-      "claim": "춘수당 개발 담당 린슈후이가 1988년 직원 회의 중 처음 만들었다고 함",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Bubble_tea",
-      "note": "The company's product development manager, Lin Hsiu Hui, said she created the first bubble tea in 1988 when she poured tapioca balls into her tea during a staff meeting"
-     },
-     {
-      "claim": "미국에서 흔한 이름 boba 는 홍콩 배우 엽자미(Amy Yip)의 별명에서",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Bubble_tea",
-      "note": "The alternative name \"boba\" (Chinese: 波霸), common in the United States but rare in Asia, originates from a nickname for Hong Kong actress Amy Yip."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Bubble_tea"
-    ],
-    "hintNote": "Bubble tea first entered Japan in the late 1990s, but it failed to leave a lasting impression on the public markets. ... it was not until the 2010s that the bubble tea trend finally swept Japan.",
-    "easiestCue": "미국에서 흔히 부르는 다른 이름이 홍콩 배우 엽자미의 별명에서",
-    "targetWhy": "음료 이름의 유래·원조 소송 — 음료 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "타이중·타이난이 대만임을 알면 대표 음료로 추리된다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "drinks/5",
+    "midKey": "drinks",
+    "subName": "커피·차",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "drinks/5#g019a-L2-17",
-   "seed": {
-    "subject": "인스턴트 커피",
-    "aspect": null,
-    "ref": "L2-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1890년 뉴질랜드 인버카길의 데이비드 스트랭이 '마른 열풍' 공정으로 특허를 받은 이 커피는, 한때 시카고에서 일하던 일본인 과학자 가토 사토리가 처음 만들었다고 알려졌습니다. 가토가 1901년 뉴욕주 버펄로의 범아메리카 박람회에서 선보인 이 커피는?",
-    "answer": "인스턴트 커피",
-    "acceptedAnswers": [
-     "커피가루",
-     "분말 커피"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '인스턴트 커피' 첫 문장 — '인스턴트 커피 또는 커피가루', 분말 커피는 같은 뜻의 흔한 일상어",
-    "explanation": "1963년에는 제너럴 푸즈가 맥스웰하우스 상표로 첫 동결 건조 제품을 내놓았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: '마른 열풍' 공정 + 이 커피",
-     "difWhy": "말려 가루로 만든 커피 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 발명 논란",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "drinks/5#g019a-L2-16",
+      "seed": {
+        "subject": "버블티",
+        "aspect": null,
+        "ref": "L2-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "두 찻집이 서로 원조라고 맞선 끝에 2019년 이 음료는 특허 대상이 아니라는 판결이 나왔습니다. 미국에서 흔히 부르는 다른 이름이 홍콩 배우 엽자미의 별명에서 왔다는 이 음료는 무엇일까요?",
+        "answer": "버블티",
+        "acceptedAnswers": [
+          "펄 밀크티",
+          "버블 밀크티",
+          "타피오카 밀크티",
+          "보바티",
+          "보바"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '버블티' — 중화권 이름 '펄 밀크티', en.wikipedia — bubble milk tea · tapioca milk tea · boba tea · boba 를 같은 음료의 다른 이름으로 적음",
+        "explanation": "타이중의 한 찻집 개발 담당자는 1988년 직원 회의 중 차에 타피오카 알갱이를 부어 처음 만들었다고 말합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "홍콩 배우 엽자미의 별명에서 왔다는 이 음료",
+          "difWhy": "대만 원조 다툼 음료 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이름 유래",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1988년 타이중의 한 찻집은 직원 회의 중 처음 만들어졌다",
+          "difWhy": "대만 찻집 발명 음료 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "음료 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1988년 타이중의 한 찻집은 직원 회의 중 처음 만들어졌다고 하고, 타이난의 다른 찻집은 1986년이 먼저라고 맞서 2019년 판결까지 갔습니다. 미국에서 흔히 부르는 다른 이름이 홍콩 배우 엽자미의 별명에서 왔다는 이 음료는?",
+          "beforeExplanation": "대만은 2020년 4월 30일을 이 음료의 날로 공식 지정했습니다.",
+          "removedCue": "1988년 타이중의 찻집 직원 회의 · 타이난 찻집(대만 찻집 발명 — 관심층)",
+          "addedCue": "없음 — 대만 지명을 빼고 2019년 판결·엽자미 별명만 남김",
+          "why": "대만 찻집 발명이라는 쉬운 연결을 빼고 원조 다툼의 결말과 이름 유래로"
+        },
+        "generalHint": "일본에는 1990년대 말 들어왔지만 자리 잡지 못하다가 2010년대에야 크게 유행했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "쫄깃한 타피오카 알갱이를 넣은 대만식 차 음료",
+        "familiarity": {
+          "judge": 3,
+          "pct": 98,
+          "why": "흔한 음료",
+          "piece": "f03",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "L2-16",
+          "key": "b107",
+          "hint": "일본에는 1990년대 말 들어왔지만 자리 잡지 못하다가 2010년대에야 크게 유행했다.",
+          "guess": "버블티",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "버블티"
+        },
+        "hobby": "요리",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Bubble_tea"
+        ],
+        "facts": [
+          {
+            "claim": "타이중 춘수당(1987·직원 회의 1988 주장) · 타이난 한림다관(1986) 원조 다툼, 2019년 판결",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Bubble_tea",
+            "note": "Two Taiwanese tea rooms, Chun Shui Tang in Taichung, and Hanlin Tea Room in Tainan, claim the invention of bubble tea in 1987 and 1986 respectively; litigation between them resulted in a 2019 ruling that bubble tea was non-patentable."
+          },
+          {
+            "claim": "춘수당 개발 담당 린슈후이가 1988년 직원 회의 중 처음 만들었다고 함",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Bubble_tea",
+            "note": "The company's product development manager, Lin Hsiu Hui, said she created the first bubble tea in 1988 when she poured tapioca balls into her tea during a staff meeting"
+          },
+          {
+            "claim": "미국에서 흔한 이름 boba 는 홍콩 배우 엽자미(Amy Yip)의 별명에서",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Bubble_tea",
+            "note": "The alternative name \"boba\" (Chinese: 波霸), common in the United States but rare in Asia, originates from a nickname for Hong Kong actress Amy Yip."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Bubble_tea"
+        ],
+        "hintNote": "Bubble tea first entered Japan in the late 1990s, but it failed to leave a lasting impression on the public markets. ... it was not until the 2010s that the bubble tea trend finally swept Japan.",
+        "easiestCue": "미국에서 흔히 부르는 다른 이름이 홍콩 배우 엽자미의 별명에서",
+        "targetWhy": "음료 이름의 유래·원조 소송 — 음료 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "타이중·타이난이 대만임을 알면 대표 음료로 추리된다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "홍콩 배우 엽자미의 별명에서 왔다는 이 음료",
+          "difWhy": "대만 원조 다툼 음료 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이름 유래",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "말토덱스트린을 반쯤 섞어 … 미군 보급품으로 퍼진 이 커피",
-     "difWhy": "네스카페 기원 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "생활 음료 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1890년 뉴질랜드 인버카길의 데이비드 스트랭이 '마른 열풍' 공정으로 특허를 받았습니다. 1938년 스위스 화학자 막스 모르겐탈러가 말토덱스트린을 반쯤 섞어 뭉치지 않게 만든 제품이 미군 보급품으로 퍼진 이 커피는?",
-     "beforeExplanation": null,
-     "removedCue": "1938년 모르겐탈러가 말토덱스트린을 섞어 만든 제품이 미군 보급품으로 퍼짐 (네스카페 기원)",
-     "addedCue": "가토 사토리 · 1901년 범아메리카 박람회",
-     "why": "네스카페 기원담을 빼고 발명자로 잘못 알려졌던 가토 사토리 세부로 바꿈"
-    },
-    "generalHint": "미국 남북전쟁 때 북군에는 커피·우유·설탕을 졸인 '커피 에센스'가 보급되어 한 숟갈씩 뜨거운 물에 타 마셨다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "뜨거운 물만 부으면 되는 가루 형태의 커피",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상 음료",
-     "piece": "f02",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "L2-17",
-     "key": "b060",
-     "hint": "미국 남북전쟁 때 북군에는 커피·우유·설탕을 졸인 '커피 에센스'가 보급되어 한 숟갈씩 뜨거운 물에 타 마셨다.",
-     "guess": "인스턴트 커피",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "인스턴트 커피"
-    },
-    "hobby": "요리",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Instant_coffee"
-    ],
-    "facts": [
-     {
-      "claim": "1889년 출원·1890년 특허, 인버카길의 데이비드 스트랭, Dry Hot-Air 공정",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Instant_coffee",
-      "note": "The invention for powdered soluble instant coffee was filed on 28 January 1889 and patented in 1890, by David Strang of Invercargill, New Zealand ... citing the patented \"Dry Hot-Air\" process."
-     },
-     {
-      "claim": "1963년 제너럴 푸즈 맥스웰하우스 첫 동결 건조",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Instant_coffee",
-      "note": "The first freeze-dried instant coffee was launched in 1963 by General Foods under the brand Maxwell House."
-     },
-     {
-      "claim": "한때 1901년 시카고의 일본인 과학자 가토 사토리를 발명자로 봄 · 버펄로 범아메리카 박람회에서 선보임",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Instant_coffee",
-      "note": "The invention had previously been attributed to Satori Kato, a Japanese scientist working in Chicago in 1901. Kato introduced the powdered substance in Buffalo, New York, at the Pan-American Exposition."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Instant_coffee"
-    ],
-    "hintNote": "A concentrated coffee/milk/sugar mixture was produced for the Union army during the American Civil War under the name Essence of Coffee, a teaspoonful of which was mixed with a cup of hot water.",
-    "easiestCue": "데이비드 스트랭의 마른 열풍 공정 특허",
-    "targetWhy": "발명자 논쟁(스트랭·가토)은 커피 애호가가 아는 세부 — 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "가루 제품이라는 추리로 닿기 쉽다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "정답조각 커피"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "drinks/5#g019a-L2-17",
+      "seed": {
+        "subject": "인스턴트 커피",
+        "aspect": null,
+        "ref": "L2-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1890년 뉴질랜드 인버카길의 데이비드 스트랭이 '마른 열풍' 공정으로 특허를 받은 이 커피는, 한때 시카고에서 일하던 일본인 과학자 가토 사토리가 처음 만들었다고 알려졌습니다. 가토가 1901년 뉴욕주 버펄로의 범아메리카 박람회에서 선보인 이 커피는?",
+        "answer": "인스턴트 커피",
+        "acceptedAnswers": [
+          "커피가루",
+          "분말 커피"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '인스턴트 커피' 첫 문장 — '인스턴트 커피 또는 커피가루', 분말 커피는 같은 뜻의 흔한 일상어",
+        "explanation": "1963년에는 제너럴 푸즈가 맥스웰하우스 상표로 첫 동결 건조 제품을 내놓았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: '마른 열풍' 공정 + 이 커피",
+          "difWhy": "말려 가루로 만든 커피 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 발명 논란",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "말토덱스트린을 반쯤 섞어 … 미군 보급품으로 퍼진 이 커피",
+          "difWhy": "네스카페 기원 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "생활 음료 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1890년 뉴질랜드 인버카길의 데이비드 스트랭이 '마른 열풍' 공정으로 특허를 받았습니다. 1938년 스위스 화학자 막스 모르겐탈러가 말토덱스트린을 반쯤 섞어 뭉치지 않게 만든 제품이 미군 보급품으로 퍼진 이 커피는?",
+          "beforeExplanation": null,
+          "removedCue": "1938년 모르겐탈러가 말토덱스트린을 섞어 만든 제품이 미군 보급품으로 퍼짐 (네스카페 기원)",
+          "addedCue": "가토 사토리 · 1901년 범아메리카 박람회",
+          "why": "네스카페 기원담을 빼고 발명자로 잘못 알려졌던 가토 사토리 세부로 바꿈"
+        },
+        "generalHint": "북군에는 우유와 설탕을 섞어 졸인 농축액이 보급되어 한 숟갈씩 뜨거운 물에 타 마셨지만, 걸쭉하고 기름져 인기가 없었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "뜨거운 물만 부으면 되는 가루 형태의 커피",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상 음료",
+          "piece": "f02",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "L2-17",
+          "key": "b060",
+          "hint": "미국 남북전쟁 때 북군에는 커피·우유·설탕을 졸인 '커피 에센스'가 보급되어 한 숟갈씩 뜨거운 물에 타 마셨다.",
+          "guess": "인스턴트 커피",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "인스턴트 커피"
+        },
+        "hobby": "요리",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Instant_coffee"
+        ],
+        "facts": [
+          {
+            "claim": "1889년 출원·1890년 특허, 인버카길의 데이비드 스트랭, Dry Hot-Air 공정",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Instant_coffee",
+            "note": "The invention for powdered soluble instant coffee was filed on 28 January 1889 and patented in 1890, by David Strang of Invercargill, New Zealand ... citing the patented \"Dry Hot-Air\" process."
+          },
+          {
+            "claim": "1963년 제너럴 푸즈 맥스웰하우스 첫 동결 건조",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Instant_coffee",
+            "note": "The first freeze-dried instant coffee was launched in 1963 by General Foods under the brand Maxwell House."
+          },
+          {
+            "claim": "한때 1901년 시카고의 일본인 과학자 가토 사토리를 발명자로 봄 · 버펄로 범아메리카 박람회에서 선보임",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Instant_coffee",
+            "note": "The invention had previously been attributed to Satori Kato, a Japanese scientist working in Chicago in 1901. Kato introduced the powdered substance in Buffalo, New York, at the Pan-American Exposition."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "데이비드 스트랭의 마른 열풍 공정 특허",
+        "targetWhy": "발명자 논쟁(스트랭·가토)은 커피 애호가가 아는 세부 — 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "가루 제품이라는 추리로 닿기 쉽다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "정답조각 커피"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: '마른 열풍' 공정 + 이 커피",
+          "difWhy": "말려 가루로 만든 커피 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 발명 논란",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix wrong-name·letters",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

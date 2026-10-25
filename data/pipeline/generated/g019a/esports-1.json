@@ -1,278 +1,308 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "esports/1",
-  "midKey": "esports",
-  "subName": "고전 게임(1980~90년대)",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "esports/1#g019a-M2-09",
-   "seed": {
-    "subject": "메탈슬러그",
-    "aspect": "팬 세부",
-    "ref": "M2-09",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "아이렘에서 '건포스'·'인 더 헌트'를 만들던 팀이 나즈카라는 회사로 1996년 내놓은 네오지오 게임입니다. 주인공 부대가 도널드 모든 장군의 반란군에 맞서고, 작은 탱크 'SV-001'의 다른 이름이 곧 제목인 이 게임은?",
-    "answer": "메탈슬러그",
-    "acceptedAnswers": [
-     "Metal Slug"
-    ],
-    "originalTitleVariants": [
-     "Metal Slug"
-    ],
-    "variantCheck": "ko.wikipedia 문서 제목 '메탈슬러그'(띄어쓰기 꼴은 정규화로 같음) · 영문 게임 제목(B10)",
-    "explanation": "첫 세 편까지 나즈카 팀이 만들었고, 2001년 10월 SNK가 파산하면서 원래 팀은 흩어졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "네오지오 게임 … 도널드 모든 장군의 반란군",
-     "difWhy": "오락실 네오지오 모든 장군 — 게임 관심층",
-     "wor": 3,
-     "worWhy": "레전드 게임 제목",
-     "acc": 3,
-     "accWhy": "e스포츠·게임 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1996년 네오지오용 런앤건 … 오락실 대표 시리즈",
-     "difWhy": "네오지오 런앤건 — 오락실 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 게임 제목"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "아이렘에서 '건포스'·'인 더 헌트' 같은 슈팅 게임을 만들던 팀이 나즈카라는 회사로 1996년 네오지오용 런앤건 게임을 내놓았습니다. 첫 작을 끝낸 뒤 나즈카가 SNK에 합쳐지며 오락실 대표 시리즈가 된 이 게임은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "런앤건 장르 · 오락실 대표 시리즈가 됨",
-     "addedCue": "모든 장군의 반란군 · 탱크 SV-001",
-     "why": "장르·대표 시리즈라는 대중 단서를 빼고 게임 속 설정의 팬 세부로"
-    },
-    "generalHint": "작은 탱크에는 포탄 수가 정해진 대포 한 문과, 끝없이 쏘는 쌍발 벌컨포가 달려 있다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "1990년대 오락실의 횡스크롤 군인 슈팅 게임",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "오락실 추억의 게임",
-     "piece": "f08",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "M2-09",
-     "key": "b195",
-     "hint": "작은 탱크에는 포탄 수가 정해진 대포 한 문과, 끝없이 쏘는 쌍발 벌컨포가 달려 있다.",
-     "guess": "메탈 슬러그",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "메탈슬러그"
-    },
-    "layer": "팬 세부",
-    "genre": "게임",
-    "work": "메탈슬러그",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
-     "https://ko.wikipedia.org/wiki/메탈슬러그"
-    ],
-    "facts": [
-     {
-      "claim": "나즈카가 만들고 첫 작 완성 뒤 1996년 SNK와 합침",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
-      "note": "Metal Slug … is a Japanese run and gun video game series … originally created by Nazca Corporation before merging with SNK in 1996 after the completion of the first game in the series."
-     },
-     {
-      "claim": "같은 팀이 아이렘에서 건포스·인 더 헌트 제작",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
-      "note": "The same team that created Metal Slug for the Neo-Geo previously created several games for Irem which have very similar graphics and gameplays, such as GunForce (1991), In the Hunt (1993) and Gunforce 2 (1994)."
-     },
-     {
-      "claim": "첫 작 1996년 네오지오",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/메탈슬러그",
-      "note": "NeoGeo 메탈슬러그（1996년 5월 24일, 일본）"
-     },
-     {
-      "claim": "첫 세 편 나즈카 팀, 2001년 10월 SNK 파산으로 해체",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
-      "note": "The first three titles were developed by the Nazca team before SNK declared bankruptcy in October 2001, leading to the disbandment of the original team."
-     },
-     {
-      "claim": "첫 작 이야기 — 모든 장군의 군대에 맞섬",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
-      "note": "The first game's story involved the Peregrine Falcon (PF) Squad … who fight against the army of General Donald Morden in order to prevent a massive coup d'état"
-     },
-     {
-      "claim": "SV-001 은 시리즈의 주 탈것, 작은 탱크",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
-      "note": "The SV-001 (SV being an abbreviation for \"Super Vehicle\") or 'Metal Slug' is the main vehicle of the Metal Slug franchise. It is a small, cartoonish silver-gray tank propelled by caterpillar treads."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)"
-    ],
-    "hintNote": "The tank is armed with one cannon which shoots powerful bombs in limited numbers, and twin vulcan cannons which shoot unlimited tracer bullets.",
-    "easiestCue": "작은 탱크 'SV-001'의 다른 이름이 곧 제목",
-    "targetWhy": "고전 게임의 설정 세부 — 오락실 게임 팬(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'네오지오 런앤건'이 관심층 단서일 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "esports/1",
+    "midKey": "esports",
+    "subName": "고전 게임(1980~90년대)",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "esports/1#g019a-M2-10",
-   "seed": {
-    "subject": "더 킹 오브 파이터즈",
-    "aspect": "팬 세부",
-    "ref": "M2-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "SNK의 한 격투 게임 시리즈는 처음에 '더블 드래곤' 같은 횡스크롤 액션 게임 'Survivor'로 기획되었다고 합니다. 1994년 첫 작의 마지막 상대는 꺾은 격투가들을 동상으로 만들어 모아 두었는데, 이 시리즈는 무엇일까요?",
-    "answer": "킹 오브 파이터즈",
-    "acceptedAnswers": [
-     "더 킹 오브 파이터즈",
-     "킹 오브 파이터",
-     "킹오파",
-     "KOF",
-     "The King of Fighters"
-    ],
-    "originalTitleVariants": [
-     "KOF",
-     "The King of Fighters"
-    ],
-    "variantCheck": "ko.wikipedia 문서 '더 킹 오브 파이터즈(약칭 KOF)' · '킹오파'는 국내 흔한 줄임말(MD8) · 영문 게임 제목(B10)",
-    "explanation": "첫 작에는 '이카리' 시리즈의 랄프와 클라크가 지휘관 하이데른과 함께 한 팀으로 나왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1994년 첫 작의 마지막 상대는 꺾은 격투가들을 동상으로",
-     "difWhy": "루갈 동상 SNK 격투 — 게임 관심층",
-     "wor": 3,
-     "worWhy": "레전드 게임 제목",
-     "acc": 3,
-     "accWhy": "e스포츠·게임 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "esports/1#g019a-M2-09",
+      "seed": {
+        "subject": "메탈슬러그",
+        "aspect": "팬 세부",
+        "ref": "M2-09",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "아이렘에서 '건포스'·'인 더 헌트'를 만들던 팀이 나즈카라는 회사로 1996년 내놓은 네오지오 게임입니다. 주인공 부대가 도널드 모든 장군의 반란군에 맞서고, 작은 탱크 'SV-001'의 다른 이름이 곧 제목인 이 게임은?",
+        "answer": "메탈슬러그",
+        "acceptedAnswers": [
+          "Metal Slug"
+        ],
+        "originalTitleVariants": [
+          "Metal Slug"
+        ],
+        "variantCheck": "ko.wikipedia 문서 제목 '메탈슬러그'(띄어쓰기 꼴은 정규화로 같음) · 영문 게임 제목(B10)",
+        "explanation": "첫 세 편까지 나즈카 팀이 만들었고, 2001년 10월 SNK가 파산하면서 원래 팀은 흩어졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "네오지오 게임 … 도널드 모든 장군의 반란군",
+          "difWhy": "오락실 네오지오 모든 장군 — 게임 관심층",
+          "wor": 3,
+          "worWhy": "레전드 게임 제목",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1996년 네오지오용 런앤건 … 오락실 대표 시리즈",
+          "difWhy": "네오지오 런앤건 — 오락실 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 게임 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "아이렘에서 '건포스'·'인 더 헌트' 같은 슈팅 게임을 만들던 팀이 나즈카라는 회사로 1996년 네오지오용 런앤건 게임을 내놓았습니다. 첫 작을 끝낸 뒤 나즈카가 SNK에 합쳐지며 오락실 대표 시리즈가 된 이 게임은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "런앤건 장르 · 오락실 대표 시리즈가 됨",
+          "addedCue": "모든 장군의 반란군 · 탱크 SV-001",
+          "why": "장르·대표 시리즈라는 대중 단서를 빼고 게임 속 설정의 팬 세부로"
+        },
+        "generalHint": "작은 탱크에는 포탄 수가 정해진 대포 한 문과, 끝없이 쏘는 쌍발 벌컨포가 달려 있다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "1990년대 오락실의 횡스크롤 군인 슈팅 게임",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "오락실 추억의 게임",
+          "piece": "f08",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "M2-09",
+          "key": "b195",
+          "hint": "작은 탱크에는 포탄 수가 정해진 대포 한 문과, 끝없이 쏘는 쌍발 벌컨포가 달려 있다.",
+          "guess": "메탈 슬러그",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "메탈슬러그"
+        },
+        "layer": "팬 세부",
+        "genre": "게임",
+        "work": "메탈슬러그",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
+          "https://ko.wikipedia.org/wiki/메탈슬러그"
+        ],
+        "facts": [
+          {
+            "claim": "나즈카가 만들고 첫 작 완성 뒤 1996년 SNK와 합침",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
+            "note": "Metal Slug … is a Japanese run and gun video game series … originally created by Nazca Corporation before merging with SNK in 1996 after the completion of the first game in the series."
+          },
+          {
+            "claim": "같은 팀이 아이렘에서 건포스·인 더 헌트 제작",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
+            "note": "The same team that created Metal Slug for the Neo-Geo previously created several games for Irem which have very similar graphics and gameplays, such as GunForce (1991), In the Hunt (1993) and Gunforce 2 (1994)."
+          },
+          {
+            "claim": "첫 작 1996년 네오지오",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/메탈슬러그",
+            "note": "NeoGeo 메탈슬러그（1996년 5월 24일, 일본）"
+          },
+          {
+            "claim": "첫 세 편 나즈카 팀, 2001년 10월 SNK 파산으로 해체",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
+            "note": "The first three titles were developed by the Nazca team before SNK declared bankruptcy in October 2001, leading to the disbandment of the original team."
+          },
+          {
+            "claim": "첫 작 이야기 — 모든 장군의 군대에 맞섬",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
+            "note": "The first game's story involved the Peregrine Falcon (PF) Squad … who fight against the army of General Donald Morden in order to prevent a massive coup d'état"
+          },
+          {
+            "claim": "SV-001 은 시리즈의 주 탈것, 작은 탱크",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)",
+            "note": "The SV-001 (SV being an abbreviation for \"Super Vehicle\") or 'Metal Slug' is the main vehicle of the Metal Slug franchise. It is a small, cartoonish silver-gray tank propelled by caterpillar treads."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Metal_Slug_(video_game)"
+        ],
+        "hintNote": "The tank is armed with one cannon which shoots powerful bombs in limited numbers, and twin vulcan cannons which shoot unlimited tracer bullets.",
+        "easiestCue": "작은 탱크 'SV-001'의 다른 이름이 곧 제목",
+        "targetWhy": "고전 게임의 설정 세부 — 오락실 게임 팬(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'네오지오 런앤건'이 관심층 단서일 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "네오지오 게임 … 도널드 모든 장군의 반란군",
+          "difWhy": "오락실 네오지오 모든 장군 — 게임 관심층",
+          "wor": 3,
+          "worWhy": "레전드 게임 제목",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1994년 첫 작 … 랄프와 클라크가 지휘관 하이데른과 함께",
-     "difWhy": "KOF 94 이카리 팀 — 게임 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 게임 제목"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "SNK의 한 격투 게임 시리즈는 처음에 '더블 드래곤' 같은 횡스크롤 액션 게임 'Survivor'로 기획되었다고 합니다. 1994년 첫 작에서는 '이카리' 시리즈의 랄프와 클라크가 지휘관 하이데른과 함께 나왔는데, 이 시리즈는 무엇일까요?",
-     "beforeExplanation": "첫 작의 대회를 연 인물은 무기·마약 밀매상 루갈 번스타인으로, 결승은 그의 항공모함 '블랙 노아'에서 벌어집니다.",
-     "removedCue": "1994년 첫 작에 '이카리' 시리즈의 랄프·클라크·하이데른 등장",
-     "addedCue": "첫 작 마지막 상대(루갈)의 동상 수집",
-     "why": "크로스오버 단서를 해설로 옮기고 팬 세부(최종 보스 설정)로"
-    },
-    "generalHint": "1999년작부터는 팀이 넷으로 늘고, 넷째 멤버는 싸움 중에 불러내 돕는 '스트라이커'가 되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "SNK의 3대3 팀 대전 격투 게임 시리즈",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "오락실 대표 격투 게임",
-     "piece": "f08",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "M2-10",
-     "key": "b002",
-     "hint": "1999년작부터는 팀이 넷으로 늘고, 넷째 멤버는 싸움 중에 불러내 돕는 '스트라이커'가 되었다.",
-     "guess": "더 킹 오브 파이터즈",
-     "confidence": "high",
-     "hit": true,
-     "answer": "킹 오브 파이터즈",
-     "first": {
-      "ref": "M2-10",
-      "key": "b289",
-      "hint": "SNK의 앞선 격투 게임 '아랑전설'과 '용호의 권'의 인물들이 한 무대에 모여 겨룬다.",
-      "guess": "더 킹 오브 파이터즈",
-      "confidence": "high",
-      "hit": true,
-      "answer": "킹 오브 파이터즈"
-     }
-    },
-    "layer": "팬 세부",
-    "genre": "게임",
-    "work": "더 킹 오브 파이터즈",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
-     "https://ko.wikipedia.org/wiki/더_킹_오브_파이터즈"
-    ],
-    "facts": [
-     {
-      "claim": "원형은 더블 드래곤풍 횡스크롤 액션 'Survivor'",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
-      "note": "According to interviews with veteran designers of The King of Fighters series, the prototype version of the game was a Double Dragon-style side-scrolling beat 'em up titled Survivor."
-     },
-     {
-      "claim": "이카리 시리즈의 랄프·클라크·하이데른 등장",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
-      "note": "Ralf Jones, protagonist of the Ikari Warriors series. / Clark Steel, Ralf's best friend and the other protagonist of the Ikari Warriors series. / Heidern, the commander of the Ikari Warriors mercenary unit"
-     },
-     {
-      "claim": "1994년 첫 작",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/더_킹_오브_파이터즈",
-      "note": "1994년 첫 작품 《더 킹 오브 파이터즈 '94》부터 시작해"
-     },
-     {
-      "claim": "첫 작 마지막 보스 루갈 — 꺾은 도전자들을 동상으로 모음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
-      "note": "Rugal reveals the true purpose of his tournament: to defeat the winning team and add them to his grisly collection of previous challengers, who have been preserved as statues."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2799"
-    ],
-    "hintNote": "\"each team now has four members\" · \"The fourth member becomes the 'Striker' the player summons during battle\"",
-    "easiestCue": "기획 원형 'Survivor' · 첫 작 최종 보스의 동상 수집",
-    "targetWhy": "원형 기획·루갈 동상은 격투 게임 팬 세부 — 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "대표 캐릭터(쿄·이오리)와 팀 대전 정의를 넣지 않음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (야가미 이오리 #4082 와는 정답 다름)",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "esports/1#g019a-M2-10",
+      "seed": {
+        "subject": "더 킹 오브 파이터즈",
+        "aspect": "팬 세부",
+        "ref": "M2-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "SNK의 한 격투 게임 시리즈는 처음에 '더블 드래곤' 같은 횡스크롤 액션 게임 'Survivor'로 기획되었다고 합니다. 1994년 첫 작의 마지막 상대는 꺾은 격투가들을 동상으로 만들어 모아 두었는데, 이 시리즈는 무엇일까요?",
+        "answer": "킹 오브 파이터즈",
+        "acceptedAnswers": [
+          "더 킹 오브 파이터즈",
+          "킹 오브 파이터",
+          "킹오파",
+          "KOF",
+          "The King of Fighters"
+        ],
+        "originalTitleVariants": [
+          "KOF",
+          "The King of Fighters"
+        ],
+        "variantCheck": "ko.wikipedia 문서 '더 킹 오브 파이터즈(약칭 KOF)' · '킹오파'는 국내 흔한 줄임말(MD8) · 영문 게임 제목(B10)",
+        "explanation": "첫 작에는 '이카리' 시리즈의 랄프와 클라크가 지휘관 하이데른과 함께 한 팀으로 나왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1994년 첫 작의 마지막 상대는 꺾은 격투가들을 동상으로",
+          "difWhy": "루갈 동상 SNK 격투 — 게임 관심층",
+          "wor": 3,
+          "worWhy": "레전드 게임 제목",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1994년 첫 작 … 랄프와 클라크가 지휘관 하이데른과 함께",
+          "difWhy": "KOF 94 이카리 팀 — 게임 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 게임 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "SNK의 한 격투 게임 시리즈는 처음에 '더블 드래곤' 같은 횡스크롤 액션 게임 'Survivor'로 기획되었다고 합니다. 1994년 첫 작에서는 '이카리' 시리즈의 랄프와 클라크가 지휘관 하이데른과 함께 나왔는데, 이 시리즈는 무엇일까요?",
+          "beforeExplanation": "첫 작의 대회를 연 인물은 무기·마약 밀매상 루갈 번스타인으로, 결승은 그의 항공모함 '블랙 노아'에서 벌어집니다.",
+          "removedCue": "1994년 첫 작에 '이카리' 시리즈의 랄프·클라크·하이데른 등장",
+          "addedCue": "첫 작 마지막 상대(루갈)의 동상 수집",
+          "why": "크로스오버 단서를 해설로 옮기고 팬 세부(최종 보스 설정)로"
+        },
+        "generalHint": "1999년작부터는 팀이 넷으로 늘고, 넷째 멤버는 싸움 중에 불러내 돕는 '스트라이커'가 되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "SNK의 3대3 팀 대전 격투 게임 시리즈",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "오락실 대표 격투 게임",
+          "piece": "f08",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "M2-10",
+          "key": "b002",
+          "hint": "1999년작부터는 팀이 넷으로 늘고, 넷째 멤버는 싸움 중에 불러내 돕는 '스트라이커'가 되었다.",
+          "guess": "더 킹 오브 파이터즈",
+          "confidence": "high",
+          "hit": true,
+          "answer": "킹 오브 파이터즈",
+          "first": {
+            "ref": "M2-10",
+            "key": "b289",
+            "hint": "SNK의 앞선 격투 게임 '아랑전설'과 '용호의 권'의 인물들이 한 무대에 모여 겨룬다.",
+            "guess": "더 킹 오브 파이터즈",
+            "confidence": "high",
+            "hit": true,
+            "answer": "킹 오브 파이터즈"
+          }
+        },
+        "layer": "팬 세부",
+        "genre": "게임",
+        "work": "더 킹 오브 파이터즈",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
+          "https://ko.wikipedia.org/wiki/더_킹_오브_파이터즈"
+        ],
+        "facts": [
+          {
+            "claim": "원형은 더블 드래곤풍 횡스크롤 액션 'Survivor'",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
+            "note": "According to interviews with veteran designers of The King of Fighters series, the prototype version of the game was a Double Dragon-style side-scrolling beat 'em up titled Survivor."
+          },
+          {
+            "claim": "이카리 시리즈의 랄프·클라크·하이데른 등장",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
+            "note": "Ralf Jones, protagonist of the Ikari Warriors series. / Clark Steel, Ralf's best friend and the other protagonist of the Ikari Warriors series. / Heidern, the commander of the Ikari Warriors mercenary unit"
+          },
+          {
+            "claim": "1994년 첫 작",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/더_킹_오브_파이터즈",
+            "note": "1994년 첫 작품 《더 킹 오브 파이터즈 '94》부터 시작해"
+          },
+          {
+            "claim": "첫 작 마지막 보스 루갈 — 꺾은 도전자들을 동상으로 모음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2794",
+            "note": "Rugal reveals the true purpose of his tournament: to defeat the winning team and add them to his grisly collection of previous challengers, who have been preserved as statues."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/The_King_of_Fighters_%2799"
+        ],
+        "hintNote": "\"each team now has four members\" · \"The fourth member becomes the 'Striker' the player summons during battle\"",
+        "easiestCue": "기획 원형 'Survivor' · 첫 작 최종 보스의 동상 수집",
+        "targetWhy": "원형 기획·루갈 동상은 격투 게임 팬 세부 — 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "대표 캐릭터(쿄·이오리)와 팀 대전 정의를 넣지 않음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (야가미 이오리 #4082 와는 정답 다름)",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1994년 첫 작의 마지막 상대는 꺾은 격투가들을 동상으로",
+          "difWhy": "루갈 동상 SNK 격투 — 게임 관심층",
+          "wor": 3,
+          "worWhy": "레전드 게임 제목",
+          "acc": 3,
+          "accWhy": "e스포츠·게임 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

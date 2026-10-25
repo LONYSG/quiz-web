@@ -1,650 +1,746 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "kr-tv/2",
-  "midKey": "kr-tv",
-  "subName": "유행어",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "kr-tv/2#g019a-M1-01",
-   "seed": {
-    "subject": "개그콘서트 '거지의 품격'",
-    "aspect": "대중",
-    "ref": "M1-01",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2012년 10월 KBS '개그콘서트'의 한 코너에 배우 박해진이 허경환의 쌍둥이 동생 역으로 나왔습니다. 허경환은 그에게 자기 말투를 따라 해 보라며 금액만 700원으로 바꾼 유행어를 시켰는데, 원래의 이 유행어는 무엇일까요?",
-    "answer": "궁금하면 500원",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이 코너는 '거지의 품격'으로, 허경환은 낡은 점퍼 안에 감춘 꽃을 펼치며 '꽃거지' 춤을 췄습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "허경환은 … 금액만 700원으로 바꾼 유행어",
-     "difWhy": "허경환 금액 유행어 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "레전드 예능 유행어",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "허경환은 … 금액만 700원으로 바꾼 유행어",
-     "difWhy": "허경환 금액 유행어 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "레전드 예능 유행어"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "유행어를 묻는 이상 금액·말투 단서를 빼면 같은 개그맨의 다른 유행어와 갈리지 않고, 코너 단서만 남기면 한 시즌 코너의 조연 세부(MD3)가 됨"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "2012년 개그 코너 속 꽃거지가 돈을 달라며 하던 말",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "개그콘서트 유행어",
-     "piece": "f02",
-     "genPct": 75
-    },
-    "blind": null,
-    "layer": "대중",
-    "genre": "예능",
-    "work": "개그콘서트 '거지의 품격'",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9"
-    ],
-    "facts": [
-     {
-      "claim": "2012년 10월 박해진이 허경환의 쌍둥이 동생 역으로 출연, 허경환이 말투를 따라 하라며 '궁금하면 700원'",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9",
-      "note": "박해진: 2012년 10월 21일에 허경환의 쌍둥이 동생 역으로 출연했다. … 허경환이 자기 말투를 따라 해 보라면서 \"궁금하면 700원'하는 부분은 영락없는 광해, 왕이 된 남자 패러디다."
-     },
-     {
-      "claim": "원래 유행어 '궁금하면 500원'(허경환)",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9",
-      "note": "한 푼만 주세요~(김영희)무슨 일이야?~(허경환)궁금해요? 궁금하면 500원!(허경환)"
-     },
-     {
-      "claim": "코너 이름 거지의 품격, 꽃 점퍼와 꽃거지 춤",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9",
-      "note": "허경환은 \"난 그냥 거지가 아냐! 난 꽃거지야~\"라며 찢어진 낡은 점퍼 안에 감춘 꽃을 선보이며 꽃거지춤을 추는 것."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "허경환 … 금액만 700원으로 바꾼 유행어",
-    "targetWhy": "허경환의 '500원' 유행어 자체는 국민 밈이라 층은 대중 — 박해진 출연 회차는 개콘 애청자 세부 (경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "정답은 국민 유행어, 단서는 특정 회차 세부 — 허경환 이름이 쉬운 쪽",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "kr-tv/2",
+    "midKey": "kr-tv",
+    "subName": "유행어",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "kr-tv/2#g019a-M1-02",
-   "seed": {
-    "subject": "개그콘서트 '황해'",
-    "aspect": "대중",
-    "ref": "M1-02",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2013년 KBS '개그콘서트'의 한 코너는 나홍진 감독의 영화와 제목이 같았고, 사장 역의 이상구는 늘 커다란 족발 뼈다귀를 들고 다녔습니다. 이 코너에서 정찬민이 되풀이하던 유행어는 무엇일까요?",
-    "answer": "당황하셨어요",
-    "acceptedAnswers": [
-     "많이 당황하셨어요"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "나무위키 '황해(개그콘서트)' 유행어 칸 표기 '(많이) 당황하셨어요?' 로 확인",
-    "explanation": "4회부터는 경찰청 사이버테러대응센터가 보이스 피싱 소재를 직접 대 주었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "나홍진 감독의 영화와 제목이 같았고 … 개그콘서트",
-     "difWhy": "개콘 황해 보이스피싱 유행어 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 유명 유행어",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "kr-tv/2#g019a-M1-01",
+      "seed": {
+        "subject": "개그콘서트 '거지의 품격'",
+        "aspect": "대중",
+        "ref": "M1-01",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2012년 10월 KBS '개그콘서트'의 한 코너에 배우 박해진이 허경환의 쌍둥이 동생 역으로 나왔습니다. 허경환은 그에게 자기 말투를 따라 해 보라며 금액만 700원으로 바꾼 유행어를 시켰는데, 원래의 이 유행어는 무엇일까요?",
+        "answer": "궁금하면 500원",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이 코너는 '거지의 품격'으로, 허경환은 낡은 점퍼 안에 감춘 꽃을 펼치며 '꽃거지' 춤을 췄습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "허경환은 … 금액만 700원으로 바꾼 유행어",
+          "difWhy": "허경환 금액 유행어 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "허경환은 … 금액만 700원으로 바꾼 유행어",
+          "difWhy": "허경환 금액 유행어 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "유행어를 묻는 이상 금액·말투 단서를 빼면 같은 개그맨의 다른 유행어와 갈리지 않고, 코너 단서만 남기면 한 시즌 코너의 조연 세부(MD3)가 됨"
+        },
+        "generalHint": null,
+        "generalHintVersion": null,
+        "identity": "2012년 개그 코너 속 꽃거지가 돈을 달라며 하던 말",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "개그콘서트 유행어",
+          "piece": "f02",
+          "genPct": 75
+        },
+        "blind": null,
+        "layer": "대중",
+        "genre": "예능",
+        "work": "개그콘서트 '거지의 품격'",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9"
+        ],
+        "facts": [
+          {
+            "claim": "2012년 10월 박해진이 허경환의 쌍둥이 동생 역으로 출연, 허경환이 말투를 따라 하라며 '궁금하면 700원'",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9",
+            "note": "박해진: 2012년 10월 21일에 허경환의 쌍둥이 동생 역으로 출연했다. … 허경환이 자기 말투를 따라 해 보라면서 \"궁금하면 700원'하는 부분은 영락없는 광해, 왕이 된 남자 패러디다."
+          },
+          {
+            "claim": "원래 유행어 '궁금하면 500원'(허경환)",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9",
+            "note": "한 푼만 주세요~(김영희)무슨 일이야?~(허경환)궁금해요? 궁금하면 500원!(허경환)"
+          },
+          {
+            "claim": "코너 이름 거지의 품격, 꽃 점퍼와 꽃거지 춤",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EA%B1%B0%EC%A7%80%EC%9D%98%20%ED%92%88%EA%B2%A9",
+            "note": "허경환은 \"난 그냥 거지가 아냐! 난 꽃거지야~\"라며 찢어진 낡은 점퍼 안에 감춘 꽃을 선보이며 꽃거지춤을 추는 것."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": null,
+        "hintSources": [],
+        "hintNote": null,
+        "easiestCue": "허경환 … 금액만 700원으로 바꾼 유행어",
+        "targetWhy": "허경환의 '500원' 유행어 자체는 국민 밈이라 층은 대중 — 박해진 출연 회차는 개콘 애청자 세부 (경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "정답은 국민 유행어, 단서는 특정 회차 세부 — 허경환 이름이 쉬운 쪽",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "허경환은 … 금액만 700원으로 바꾼 유행어",
+          "difWhy": "허경환 금액 유행어 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "신입 사기꾼 정찬민이 전화 너머 상대에게 던지던",
-     "difWhy": "개콘 보이스피싱 유행어 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "레전드 예능 유행어"
+    {
+      "seedId": "kr-tv/2#g019a-M1-02",
+      "seed": {
+        "subject": "개그콘서트 '황해'",
+        "aspect": "대중",
+        "ref": "M1-02",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2013년 KBS '개그콘서트'의 한 코너는 나홍진 감독의 영화와 제목이 같았고, 사장 역의 이상구는 늘 커다란 족발 뼈다귀를 들고 다녔습니다. 이 코너에서 정찬민이 되풀이하던 유행어는 무엇일까요?",
+        "answer": "당황하셨어요",
+        "acceptedAnswers": [
+          "많이 당황하셨어요"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "나무위키 '황해(개그콘서트)' 유행어 칸 표기 '(많이) 당황하셨어요?' 로 확인",
+        "explanation": "4회부터는 경찰청 사이버테러대응센터가 보이스 피싱 소재를 직접 대 주었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "나홍진 감독의 영화와 제목이 같았고 … 개그콘서트",
+          "difWhy": "개콘 황해 보이스피싱 유행어 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "신입 사기꾼 정찬민이 전화 너머 상대에게 던지던",
+          "difWhy": "개콘 보이스피싱 유행어 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2013년 KBS '개그콘서트'의 한 코너는 나홍진 감독의 영화와 제목이 같았고, 사장 역의 이상구는 늘 커다란 족발 뼈다귀를 들고 다녔습니다. 신입 사기꾼 정찬민이 전화 너머 상대에게 던지던 이 코너의 유행어는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "신입 사기꾼이 전화 너머 상대에게 던지던(보이스 피싱 상황)",
+          "addedCue": "(뺌만) 코너 제목·소품 단서로 좁힘",
+          "why": "보이스 피싱 상황 설명을 빼 코너를 알아야 풀리게"
+        },
+        "generalHint": "이 말을 하던 신입 '순페이'를 다그치는 팀장 린자오밍 역은 이수지가 맡았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2013년 보이스피싱 풍자 개그 코너의 유행어",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "개그콘서트 유행어로 널리 퍼짐",
+          "piece": "f01",
+          "genPct": 75
+        },
+        "blind": null,
+        "layer": "대중",
+        "genre": "예능",
+        "work": "개그콘서트 '황해'",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
+          "https://ko.wikipedia.org/wiki/%ED%99%A9%ED%95%B4_(%EC%98%81%ED%99%94)"
+        ],
+        "facts": [
+          {
+            "claim": "2013년 개그콘서트 코너, 제목은 영화 '황해'에서",
+            "where": "q",
+            "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
+            "note": "2013 ~ 2014년도에 큰 인기를 끌었던 개그콘서트의 코너.제목은 영화 《황해》에서 따 온 것으로 보이는데, 사장으로 등장하는 이상구가 황해의 김윤석을 코스프레했다."
+          },
+          {
+            "claim": "영화 황해 감독 나홍진",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%ED%99%A9%ED%95%B4_(%EC%98%81%ED%99%94)",
+            "note": "2011년 제44회 시체스영화제 오피셜 판타스틱-최우수감독상(나홍진)"
+          },
+          {
+            "claim": "사장 이상구는 족발 뼈다귀를 들고 다님",
+            "where": "q",
+            "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
+            "note": "조직의 리더. 보통 이수지에게 '사장이'라고 불린다. 항상 손에 커다란 족발 뼈다귀를 들고 다닌다."
+          },
+          {
+            "claim": "신입 정찬민의 '당황하셨어요?'",
+            "where": "q",
+            "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
+            "note": "조선족 사기꾼 콘셉트의 정찬민과 이수지가 … 보이스 피싱을 하려고 하지만 … 예를 들어 1, 2회차는 정찬민과 같은 '당황하셨어요?'를 썼으나"
+          },
+          {
+            "claim": "4화부터 경찰청 사이버테러대응센터가 소재 제공",
+            "where": "e",
+            "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
+            "note": "4화부터 대한민국 경찰청 사이버테러대응센터에서 보이스 피싱에 관한 소재를 직접 제공."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)"
+        ],
+        "easiestCue": "나홍진 감독의 영화와 제목이 같은 개콘 코너",
+        "targetWhy": "코너 제목(황해)·족발 소품은 예능 팬 세부 — 4(경계)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "족발 뼈다귀·영화 제목은 팬 세부지만 '전화 사기꾼' 쪽이 쉽다",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "나홍진 감독의 영화와 제목이 같았고 … 개그콘서트",
+          "difWhy": "개콘 황해 보이스피싱 유행어 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok  · H0 재채점 3 → 힌트 붙임",
+          "verdict": "ok",
+          "hintGen": true,
+          "hintGenNote": "G020 하위 에이전트(hint-v6 규칙 · 문서 확인)"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "2013년 KBS '개그콘서트'의 한 코너는 나홍진 감독의 영화와 제목이 같았고, 사장 역의 이상구는 늘 커다란 족발 뼈다귀를 들고 다녔습니다. 신입 사기꾼 정찬민이 전화 너머 상대에게 던지던 이 코너의 유행어는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "신입 사기꾼이 전화 너머 상대에게 던지던(보이스 피싱 상황)",
-     "addedCue": "(뺌만) 코너 제목·소품 단서로 좁힘",
-     "why": "보이스 피싱 상황 설명을 빼 코너를 알아야 풀리게"
+    {
+      "seedId": "kr-tv/2#g019a-M1-03",
+      "seed": {
+        "subject": "개그야 '사모님'",
+        "aspect": "팬 세부",
+        "ref": "M1-03",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2006~2007년 한 개그 프로그램의 코너는 판타스틱 플라스틱 머신의 'Philter'를 시그널 음악으로 썼고, 마지막 회에는 신해철이 회장님 역으로 특별 출연했습니다. 이 코너의 주인공이 외친 대표 유행어는 무엇일까요?",
+        "answer": "김기사 운전해",
+        "acceptedAnswers": [
+          "김기사 운전해 어서"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "나무위키 '사모님(개그야)' 유행어 칸 '김 기사~ 운전해~ 어~서~' (띄어쓰기는 정규화로 같음)",
+        "explanation": "사모님 역은 김미려가 맡았고, 김기사 역으로 나온 김철민은 정작 운전면허가 없었다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "마지막 회에는 신해철이 회장님 역으로 특별 출연",
+          "difWhy": "사모님 코너 유행어 — 예능 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "MBC '개그야'의 한 코너 … 김미려가 외친 대표 유행어",
+          "difWhy": "개그야 사모님 유행어 — 관심 있는 사람 (경계 4)",
+          "wor": 3,
+          "worWhy": "예능 유행어 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2006~2007년 MBC '개그야'의 한 코너는 판타스틱 플라스틱 머신의 'Philter'를 시그널 음악으로 썼고, 마지막 회에는 신해철이 회장님 역으로 특별 출연했습니다. 이 코너에서 김미려가 외친 대표 유행어는 무엇일까요?",
+          "beforeExplanation": "김기사 역으로 나온 김철민은 정작 운전면허가 없었다고 전합니다.",
+          "removedCue": "MBC '개그야' · 김미려",
+          "addedCue": "(빼기만) 시그널 음악·신해철 특별 출연만 남김",
+          "why": "프로그램 이름과 배우 이름을 빼 코너를 시그널·특별 출연 세부로만 알아보게 함"
+        },
+        "generalHint": "이 코너 이름은 주인공 배역 이름과 같은 '사모님'이었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2006년 MBC 개그 코너 속 부잣집 사모님의 말",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "웃찾사 '사모님' 유행어",
+          "piece": "f06",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "M1-03",
+          "key": "b041",
+          "hint": "이 코너 이름은 주인공 배역 이름과 같은 '사모님'이었다.",
+          "guess": "웃음을 찾는 사람들",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "김기사 운전해"
+        },
+        "layer": "대중",
+        "genre": "예능",
+        "work": "개그야 '사모님'",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)"
+        ],
+        "facts": [
+          {
+            "claim": "2006년 7월~2007년 3월 개그야 코너, 시그널 FPM 'Philter'",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
+            "note": "2006년 7월 3일부터 2007년 3월 19일까지 방영된 개그야 초창기 시절에 나온 최고의 인기 코너 … 판타스틱 플라스틱 머신의 Philter가 시그널 음악이었는데"
+          },
+          {
+            "claim": "마지막 회 신해철 회장님 역 특별출연",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
+            "note": "그 회장님은 맥거핀으로서 통화 장면 등에서만 언급되지만, 마지막회에서 가수 신해철이 회장님 역으로 특별출연."
+          },
+          {
+            "claim": "김미려의 명대사 '김기사~ 운전해~ 어~서~'",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
+            "note": "사모님 역의 김미려의 \"김기사~ 운전해~ 어~서~\"가 이 코너의 명대사."
+          },
+          {
+            "claim": "김철민은 면허가 없었다",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
+            "note": "김기사 역으로 출연했지만 정작 면허는 없었다고(…)."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EA%B9%80%EB%AF%B8%EB%A0%A4"
+        ],
+        "hintNote": "2006년 MBC : 《개그야》 / 《사모님》 사모님 역",
+        "easiestCue": "시그널 'Philter' · 마지막 회 신해철 회장님 특별 출연",
+        "targetWhy": "코너의 시그널·특별 출연은 예능 애호가 세부 — 4(경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들으면 아는 유행어, 단서는 코너 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [
+          "단정어 마지막"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "마지막 회에는 신해철이 회장님 역으로 특별 출연",
+          "difWhy": "사모님 코너 유행어 — 예능 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 fix layer",
+          "verdict": "fix"
+        }
+      }
     },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "2013년 보이스피싱 풍자 개그 코너의 유행어",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "개그콘서트 유행어로 널리 퍼짐",
-     "piece": "f01",
-     "genPct": 75
+    {
+      "seedId": "kr-tv/2#g019a-M1-04",
+      "seed": {
+        "subject": "개그콘서트 '뿜 엔터테인먼트'",
+        "aspect": "팬 세부",
+        "ref": "M1-04",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2013~2014년 KBS '개그콘서트'의 한 코너는 김원효가 사장인 연예 기획사를 무대로, 소속 연예인들의 허세와 '연예인 병'을 풍자했습니다. 이 코너에서 김지민이 되풀이한 유행어는 무엇일까요?",
+        "answer": "느낌 아니까",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "같은 코너에서 사장 김원효는 '아 나 진짜 뿜겠네!'를 외쳤습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'개그콘서트'의 한 코너 … 김지민이 되풀이한 유행어",
+          "difWhy": "개콘 뿜엔터 김지민 유행어 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어 — 이야깃거리",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'개그콘서트'의 한 코너 … 김지민이 되풀이한 유행어",
+          "difWhy": "개콘 뿜엔터 김지민 유행어 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어 — 이야깃거리"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "코너(뿜엔터테인먼트)와 출연자 단서를 무엇으로 바꿔도 국민 유행어 자체를 가리키고, 더 깊게 하면 한 시즌 코너의 조연 세부(MD3·MD10)가 됨"
+        },
+        "generalHint": "흡연·도박처럼 이미지에 안 좋은 장면일수록 '해 봐서 잘할 수 있다'며 자신 있게 맡겠다고 할 때 나온 말이다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2013년 개그우먼 김지민이 유행시킨 말",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "개그콘서트 유행어",
+          "piece": "f08",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "M1-04",
+          "key": "b270",
+          "hint": "흡연·도박처럼 이미지에 안 좋은 장면일수록 '해 봐서 잘할 수 있다'며 자신 있게 맡겠다고 할 때 나온 말이다.",
+          "guess": "최민식",
+          "confidence": "low",
+          "hit": false,
+          "answer": "느낌 아니까"
+        },
+        "layer": "대중",
+        "genre": "예능",
+        "work": "개그콘서트 '뿜 엔터테인먼트'",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8"
+        ],
+        "facts": [
+          {
+            "claim": "2013~2014 개그콘서트 코너, 사장 김원효의 기획사, 연예인 병 풍자",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8",
+            "note": "2013년 7월 7일부터 2014년 5월 25일까지 방영된 개그콘서트의 전 코너.뿜 엔터테인먼트라는 연예 기획사의 사장 김원효가 하나같이 제정신들이 아닌 소속 연예인들이 부리는 허세 및 하극상에 당황해하는 내용이다. 이른바 연예인 병을 풍자한 코너."
+          },
+          {
+            "claim": "김지민의 유행어 '느낌 아니까~'",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8",
+            "note": "아 나 진짜 뿜겠네!(김원효) … 살쪄~(김지민)느낌 아니까~(김지민)~자나(김준호)"
+          },
+          {
+            "claim": "김원효 '아 나 진짜 뿜겠네!'",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8",
+            "note": "아 나 진짜 뿜겠네!(김원효)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://namu.wiki/w/%EB%BF%9C%20%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8"
+        ],
+        "hintNote": "반면 흡연하는 장면, 욕하는 장면, 도박하는 장면 등 이미지에 좋지 않을 법한 장면들은 오히려 \"느낌 아니까~\", \"~ 해봐서 잘 할 수 있어요.\"라면서, 특유의 자신감 넘치는 말투로 찍겠다고 한다.",
+        "easiestCue": "이 코너에서 김지민이 되풀이한 유행어",
+        "targetWhy": "김지민의 개콘 유행어 — 2013년 애청자가 아는 세부(관심층~애호가, 경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 유행어, 어느 코너였는지는 기억이 흐린 쪽",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'개그콘서트'의 한 코너 … 김지민이 되풀이한 유행어",
+          "difWhy": "개콘 뿜엔터 김지민 유행어 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어 — 이야깃거리",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": null,
-    "layer": "대중",
-    "genre": "예능",
-    "work": "개그콘서트 '황해'",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
-     "https://ko.wikipedia.org/wiki/%ED%99%A9%ED%95%B4_(%EC%98%81%ED%99%94)"
-    ],
-    "facts": [
-     {
-      "claim": "2013년 개그콘서트 코너, 제목은 영화 '황해'에서",
-      "where": "q",
-      "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
-      "note": "2013 ~ 2014년도에 큰 인기를 끌었던 개그콘서트의 코너.제목은 영화 《황해》에서 따 온 것으로 보이는데, 사장으로 등장하는 이상구가 황해의 김윤석을 코스프레했다."
-     },
-     {
-      "claim": "영화 황해 감독 나홍진",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%ED%99%A9%ED%95%B4_(%EC%98%81%ED%99%94)",
-      "note": "2011년 제44회 시체스영화제 오피셜 판타스틱-최우수감독상(나홍진)"
-     },
-     {
-      "claim": "사장 이상구는 족발 뼈다귀를 들고 다님",
-      "where": "q",
-      "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
-      "note": "조직의 리더. 보통 이수지에게 '사장이'라고 불린다. 항상 손에 커다란 족발 뼈다귀를 들고 다닌다."
-     },
-     {
-      "claim": "신입 정찬민의 '당황하셨어요?'",
-      "where": "q",
-      "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
-      "note": "조선족 사기꾼 콘셉트의 정찬민과 이수지가 … 보이스 피싱을 하려고 하지만 … 예를 들어 1, 2회차는 정찬민과 같은 '당황하셨어요?'를 썼으나"
-     },
-     {
-      "claim": "4화부터 경찰청 사이버테러대응센터가 소재 제공",
-      "where": "e",
-      "url": "https://namu.wiki/w/%ED%99%A9%ED%95%B4(%EA%B0%9C%EA%B7%B8%EC%BD%98%EC%84%9C%ED%8A%B8)",
-      "note": "4화부터 대한민국 경찰청 사이버테러대응센터에서 보이스 피싱에 관한 소재를 직접 제공."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "나홍진 감독의 영화와 제목이 같은 개콘 코너",
-    "targetWhy": "코너 제목(황해)·족발 소품은 예능 팬 세부 — 4(경계)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "족발 뼈다귀·영화 제목은 팬 세부지만 '전화 사기꾼' 쪽이 쉽다",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-tv/2#g019a-M1-03",
-   "seed": {
-    "subject": "개그야 '사모님'",
-    "aspect": "팬 세부",
-    "ref": "M1-03",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2006~2007년 한 개그 프로그램의 코너는 판타스틱 플라스틱 머신의 'Philter'를 시그널 음악으로 썼고, 마지막 회에는 신해철이 회장님 역으로 특별 출연했습니다. 이 코너의 주인공이 외친 대표 유행어는 무엇일까요?",
-    "answer": "김기사 운전해",
-    "acceptedAnswers": [
-     "김기사 운전해 어서"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "나무위키 '사모님(개그야)' 유행어 칸 '김 기사~ 운전해~ 어~서~' (띄어쓰기는 정규화로 같음)",
-    "explanation": "사모님 역은 김미려가 맡았고, 김기사 역으로 나온 김철민은 정작 운전면허가 없었다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "마지막 회에는 신해철이 회장님 역으로 특별 출연",
-     "difWhy": "사모님 코너 유행어 — 예능 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 유명 유행어",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
+    {
+      "seedId": "kr-tv/2#g019a-M1-05",
+      "seed": {
+        "subject": "시크릿 가든",
+        "aspect": "대중",
+        "ref": "M1-05",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2010년 SBS 드라마의 로엘백화점 사장은 여러 쇼핑몰에서 팔릴 만큼 인기를 끈 파란색 트레이닝복을 입었습니다. 그의 대사 가운데 '확실해요?'와 짝을 이뤄 크게 유행한 말은 무엇일까요?",
+        "answer": "이게 최선입니까",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이 드라마는 2010년 11월부터 2011년 1월까지 방영된 SBS 주말 특별기획 '시크릿 가든'입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "로엘백화점 사장 … 파란색 트레이닝복 … '확실해요?'와 짝",
+          "difWhy": "시크릿 가든 트레이닝복 유행어 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 크게 유행한 대사",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "김주원은 스턴트우먼 길라임과 영혼이 바뀝니다",
+          "difWhy": "시크릿 가든 명대사 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "레전드 드라마 명대사"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2010년 SBS 드라마에서 로엘백화점 사장 김주원은 스턴트우먼 길라임과 영혼이 바뀝니다. 그가 남긴 대사 가운데 '확실해요?'와 짝을 이뤄 크게 유행한 말은 무엇일까요?",
+          "beforeExplanation": "김주원이 입은 파란색 트레이닝복도 여러 쇼핑몰에서 팔릴 만큼 인기를 끌었습니다.",
+          "removedCue": "김주원·길라임 이름 · 영혼이 바뀌는 줄거리(방송에서 흔히)",
+          "addedCue": "파란색 트레이닝복(해설에서 옮김)",
+          "why": "줄거리·주인공 이름을 빼고 의상 화제의 세부로"
+        },
+        "generalHint": "이 대사를 한 사장 역에는 처음 장혁이 거론됐지만 소속사와 제작사 사이 갈등으로 무산되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2010년 드라마 속 재벌 사장의 유명한 되물음",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "시크릿 가든 명대사로 유명",
+          "piece": "f03",
+          "genPct": 75
+        },
+        "blind": null,
+        "layer": "대중",
+        "genre": "드라마",
+        "work": "시크릿 가든",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
+          "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF%20%EA%B0%80%EB%93%A0%20(%EB%93%9C%EB%9D%BC%EB%A7%88)"
+        ],
+        "facts": [
+          {
+            "claim": "2010년 SBS 드라마, 백화점 사장 김주원·스턴트우먼 길라임 영혼 바뀜",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
+            "note": "《시크릿 가든》(영어: Secret Garden)은 2010년 11월 13일부터 2011년 1월 16일까지 방영된 SBS 주말 특별기획 드라마 / 무술감독을 꿈꾸는 스턴트우먼 길라임(하지원 분)과 까칠한 백화점 사장 김주원(현빈 분)이 서로 영혼이 바뀌면서 벌어지는 일을 다룬 판타지 로코 드라마."
+          },
+          {
+            "claim": "로엘백화점 사장",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
+            "note": "현빈: 김주원 (金主園)(33세) 역. 로엘백화점 사장(재벌 3세)."
+          },
+          {
+            "claim": "'이게 최선입니까? 확실해요?' 유행",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
+            "note": "많은 유행어를 남겼으며 특히 극중 김주원의 대사 \"이게 최선입니까? 확실해요?\"가 크게 유행하였고"
+          },
+          {
+            "claim": "김주원의 파란색 트레이닝복이 여러 쇼핑몰에서 판매",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF%20%EA%B0%80%EB%93%A0%20(%EB%93%9C%EB%9D%BC%EB%A7%88)",
+            "note": "김주원의 파란색 트레이닝복은 여러 쇼핑몰에서 판매되기도 했으며"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/시크릿_가든_(드라마)"
+        ],
+        "easiestCue": "'확실해요?'와 짝을 이뤄 유행한 말",
+        "targetWhy": "국민 유행어라 층은 대중 — 줄거리 단서를 빼 한 층 깊게(경계 3~4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "국민 드라마 명대사라 대중 층",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "로엘백화점 사장 … 파란색 트레이닝복 … '확실해요?'와 짝",
+          "difWhy": "시크릿 가든 트레이닝복 유행어 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 크게 유행한 대사",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok  · H0 재채점 3 → 힌트 붙임",
+          "verdict": "ok",
+          "hintGen": true,
+          "hintGenNote": "G020 하위 에이전트(hint-v6 규칙 · 문서 확인)"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "MBC '개그야'의 한 코너 … 김미려가 외친 대표 유행어",
-     "difWhy": "개그야 사모님 유행어 — 관심 있는 사람 (경계 4)",
-     "wor": 3,
-     "worWhy": "예능 유행어 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2006~2007년 MBC '개그야'의 한 코너는 판타스틱 플라스틱 머신의 'Philter'를 시그널 음악으로 썼고, 마지막 회에는 신해철이 회장님 역으로 특별 출연했습니다. 이 코너에서 김미려가 외친 대표 유행어는 무엇일까요?",
-     "beforeExplanation": "김기사 역으로 나온 김철민은 정작 운전면허가 없었다고 전합니다.",
-     "removedCue": "MBC '개그야' · 김미려",
-     "addedCue": "(빼기만) 시그널 음악·신해철 특별 출연만 남김",
-     "why": "프로그램 이름과 배우 이름을 빼 코너를 시그널·특별 출연 세부로만 알아보게 함"
-    },
-    "generalHint": "이 코너 이름은 주인공 배역 이름과 같은 '사모님'이었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2006년 MBC 개그 코너 속 부잣집 사모님의 말",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "웃찾사 '사모님' 유행어",
-     "piece": "f06",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "M1-03",
-     "key": "b041",
-     "hint": "이 코너 이름은 주인공 배역 이름과 같은 '사모님'이었다.",
-     "guess": "웃음을 찾는 사람들",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "김기사 운전해"
-    },
-    "layer": "팬 세부",
-    "genre": "예능",
-    "work": "개그야 '사모님'",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)"
-    ],
-    "facts": [
-     {
-      "claim": "2006년 7월~2007년 3월 개그야 코너, 시그널 FPM 'Philter'",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
-      "note": "2006년 7월 3일부터 2007년 3월 19일까지 방영된 개그야 초창기 시절에 나온 최고의 인기 코너 … 판타스틱 플라스틱 머신의 Philter가 시그널 음악이었는데"
-     },
-     {
-      "claim": "마지막 회 신해철 회장님 역 특별출연",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
-      "note": "그 회장님은 맥거핀으로서 통화 장면 등에서만 언급되지만, 마지막회에서 가수 신해철이 회장님 역으로 특별출연."
-     },
-     {
-      "claim": "김미려의 명대사 '김기사~ 운전해~ 어~서~'",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
-      "note": "사모님 역의 김미려의 \"김기사~ 운전해~ 어~서~\"가 이 코너의 명대사."
-     },
-     {
-      "claim": "김철민은 면허가 없었다",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EC%82%AC%EB%AA%A8%EB%8B%98(%EA%B0%9C%EA%B7%B8%EC%95%BC)",
-      "note": "김기사 역으로 출연했지만 정작 면허는 없었다고(…)."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EA%B9%80%EB%AF%B8%EB%A0%A4"
-    ],
-    "hintNote": "2006년 MBC : 《개그야》 / 《사모님》 사모님 역",
-    "easiestCue": "시그널 'Philter' · 마지막 회 신해철 회장님 특별 출연",
-    "targetWhy": "코너의 시그널·특별 출연은 예능 애호가 세부 — 4(경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들으면 아는 유행어, 단서는 코너 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": [
-     "단정어 마지막"
-    ]
-   }
-  },
-  {
-   "seedId": "kr-tv/2#g019a-M1-04",
-   "seed": {
-    "subject": "개그콘서트 '뿜 엔터테인먼트'",
-    "aspect": "팬 세부",
-    "ref": "M1-04",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2013~2014년 KBS '개그콘서트'의 한 코너는 김원효가 사장인 연예 기획사를 무대로, 소속 연예인들의 허세와 '연예인 병'을 풍자했습니다. 이 코너에서 김지민이 되풀이한 유행어는 무엇일까요?",
-    "answer": "느낌 아니까",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "같은 코너에서 사장 김원효는 '아 나 진짜 뿜겠네!'를 외쳤습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "'개그콘서트'의 한 코너 … 김지민이 되풀이한 유행어",
-     "difWhy": "개콘 뿜엔터 김지민 유행어 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "레전드 예능 유행어 — 이야깃거리",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'개그콘서트'의 한 코너 … 김지민이 되풀이한 유행어",
-     "difWhy": "개콘 뿜엔터 김지민 유행어 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "레전드 예능 유행어 — 이야깃거리"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "코너(뿜엔터테인먼트)와 출연자 단서를 무엇으로 바꿔도 국민 유행어 자체를 가리키고, 더 깊게 하면 한 시즌 코너의 조연 세부(MD3·MD10)가 됨"
-    },
-    "generalHint": "흡연·도박처럼 이미지에 안 좋은 장면일수록 '해 봐서 잘할 수 있다'며 자신 있게 맡겠다고 할 때 나온 말이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2013년 개그우먼 김지민이 유행시킨 말",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "개그콘서트 유행어",
-     "piece": "f08",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "M1-04",
-     "key": "b270",
-     "hint": "흡연·도박처럼 이미지에 안 좋은 장면일수록 '해 봐서 잘할 수 있다'며 자신 있게 맡겠다고 할 때 나온 말이다.",
-     "guess": "최민식",
-     "confidence": "low",
-     "hit": false,
-     "answer": "느낌 아니까"
-    },
-    "layer": "팬 세부",
-    "genre": "예능",
-    "work": "개그콘서트 '뿜 엔터테인먼트'",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8"
-    ],
-    "facts": [
-     {
-      "claim": "2013~2014 개그콘서트 코너, 사장 김원효의 기획사, 연예인 병 풍자",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8",
-      "note": "2013년 7월 7일부터 2014년 5월 25일까지 방영된 개그콘서트의 전 코너.뿜 엔터테인먼트라는 연예 기획사의 사장 김원효가 하나같이 제정신들이 아닌 소속 연예인들이 부리는 허세 및 하극상에 당황해하는 내용이다. 이른바 연예인 병을 풍자한 코너."
-     },
-     {
-      "claim": "김지민의 유행어 '느낌 아니까~'",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8",
-      "note": "아 나 진짜 뿜겠네!(김원효) … 살쪄~(김지민)느낌 아니까~(김지민)~자나(김준호)"
-     },
-     {
-      "claim": "김원효 '아 나 진짜 뿜겠네!'",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EB%BF%9C%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8",
-      "note": "아 나 진짜 뿜겠네!(김원효)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://namu.wiki/w/%EB%BF%9C%20%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8"
-    ],
-    "hintNote": "반면 흡연하는 장면, 욕하는 장면, 도박하는 장면 등 이미지에 좋지 않을 법한 장면들은 오히려 \"느낌 아니까~\", \"~ 해봐서 잘 할 수 있어요.\"라면서, 특유의 자신감 넘치는 말투로 찍겠다고 한다.",
-    "easiestCue": "이 코너에서 김지민이 되풀이한 유행어",
-    "targetWhy": "김지민의 개콘 유행어 — 2013년 애청자가 아는 세부(관심층~애호가, 경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 유행어, 어느 코너였는지는 기억이 흐린 쪽",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-tv/2#g019a-M1-05",
-   "seed": {
-    "subject": "시크릿 가든",
-    "aspect": "대중",
-    "ref": "M1-05",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2010년 SBS 드라마의 로엘백화점 사장은 여러 쇼핑몰에서 팔릴 만큼 인기를 끈 파란색 트레이닝복을 입었습니다. 그의 대사 가운데 '확실해요?'와 짝을 이뤄 크게 유행한 말은 무엇일까요?",
-    "answer": "이게 최선입니까",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이 드라마는 2010년 11월부터 2011년 1월까지 방영된 SBS 주말 특별기획 '시크릿 가든'입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "로엘백화점 사장 … 파란색 트레이닝복 … '확실해요?'와 짝",
-     "difWhy": "시크릿 가든 트레이닝복 유행어 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 크게 유행한 대사",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "김주원은 스턴트우먼 길라임과 영혼이 바뀝니다",
-     "difWhy": "시크릿 가든 명대사 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "레전드 드라마 명대사"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2010년 SBS 드라마에서 로엘백화점 사장 김주원은 스턴트우먼 길라임과 영혼이 바뀝니다. 그가 남긴 대사 가운데 '확실해요?'와 짝을 이뤄 크게 유행한 말은 무엇일까요?",
-     "beforeExplanation": "김주원이 입은 파란색 트레이닝복도 여러 쇼핑몰에서 팔릴 만큼 인기를 끌었습니다.",
-     "removedCue": "김주원·길라임 이름 · 영혼이 바뀌는 줄거리(방송에서 흔히)",
-     "addedCue": "파란색 트레이닝복(해설에서 옮김)",
-     "why": "줄거리·주인공 이름을 빼고 의상 화제의 세부로"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "2010년 드라마 속 재벌 사장의 유명한 되물음",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "시크릿 가든 명대사로 유명",
-     "piece": "f03",
-     "genPct": 75
-    },
-    "blind": null,
-    "layer": "대중",
-    "genre": "드라마",
-    "work": "시크릿 가든",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
-     "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF%20%EA%B0%80%EB%93%A0%20(%EB%93%9C%EB%9D%BC%EB%A7%88)"
-    ],
-    "facts": [
-     {
-      "claim": "2010년 SBS 드라마, 백화점 사장 김주원·스턴트우먼 길라임 영혼 바뀜",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
-      "note": "《시크릿 가든》(영어: Secret Garden)은 2010년 11월 13일부터 2011년 1월 16일까지 방영된 SBS 주말 특별기획 드라마 / 무술감독을 꿈꾸는 스턴트우먼 길라임(하지원 분)과 까칠한 백화점 사장 김주원(현빈 분)이 서로 영혼이 바뀌면서 벌어지는 일을 다룬 판타지 로코 드라마."
-     },
-     {
-      "claim": "로엘백화점 사장",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
-      "note": "현빈: 김주원 (金主園)(33세) 역. 로엘백화점 사장(재벌 3세)."
-     },
-     {
-      "claim": "'이게 최선입니까? 확실해요?' 유행",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF_%EA%B0%80%EB%93%A0_(%EB%93%9C%EB%9D%BC%EB%A7%88)",
-      "note": "많은 유행어를 남겼으며 특히 극중 김주원의 대사 \"이게 최선입니까? 확실해요?\"가 크게 유행하였고"
-     },
-     {
-      "claim": "김주원의 파란색 트레이닝복이 여러 쇼핑몰에서 판매",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%AC%EB%A6%BF%20%EA%B0%80%EB%93%A0%20(%EB%93%9C%EB%9D%BC%EB%A7%88)",
-      "note": "김주원의 파란색 트레이닝복은 여러 쇼핑몰에서 판매되기도 했으며"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "'확실해요?'와 짝을 이뤄 유행한 말",
-    "targetWhy": "국민 유행어라 층은 대중 — 줄거리 단서를 빼 한 층 깊게(경계 3~4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "국민 드라마 명대사라 대중 층",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-tv/2#g019a-M1-06",
-   "seed": {
-    "subject": "웃음을 찾는 사람들 '그때그때 달라요'",
-    "aspect": "팬 세부",
-    "ref": "M1-06",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2004년 SBS '웃음을 찾는 사람들'의 한 코너에서, 인라인스케이트를 타고 머리에 해바라기를 단 영어 강사가 나와 영어 문장을 엉터리로 풀었습니다. 코너 이름이기도 한 이 강사의 명대사는 무엇일까요?",
-    "answer": "그때그때 달라요",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "정찬우가 맡은 이 강사의 이름 '미친소'는, 인라인스케이트를 타고 튀어나오는 모습이 미친 소 같다며 김태균이 붙인 별명이었다고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "인라인스케이트 … 영어 강사 … 영어 문장을 엉터리로 풀었습니다",
-     "difWhy": "웃찾사 컬투 코너 — 예능 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 유명 유행어",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "정찬우는 … 영어 강사 '미친소'",
-     "difWhy": "웃찾사 미친소 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "레전드 예능 유행어"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2004년 SBS '웃음을 찾는 사람들'에서 정찬우는 인라인스케이트를 타고 머리에 해바라기를 단 영어 강사 '미친소'로 나와 영어 문장을 엉터리로 풀었습니다. 코너 이름이기도 한 그의 명대사는 무엇일까요?",
-     "beforeExplanation": "인라인스케이트를 타고 튀어나오는 모습이 미친 소 같다며 김태균이 붙인 별명이 그대로 배역 이름이 됐다고 합니다.",
-     "removedCue": "정찬우 · 영어 강사 '미친소'",
-     "addedCue": "(빼기만) 인라인스케이트·해바라기 차림만 남김",
-     "why": "배역 이름과 배우 이름을 해설로 옮겨 차림 세부로만 코너를 알아보게 함"
-    },
-    "generalHint": "이 강사는 'I wish a happy new year'를 위씨 성의 아이가 해피라는 개에게 말하는데 그 개가 누워 있다는 식으로 풀었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2000년대 컬투 개그 코너의 영어 강사가 하던 말",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "개그 유행어로 일상에서 씀",
-     "piece": "f07",
-     "genPct": 50
-    },
-    "blind": {
-     "ref": "M1-06",
-     "key": "b085",
-     "hint": "이 강사는 'I wish a happy new year'를 위씨 성의 아이가 해피라는 개에게 말하는데 그 개가 누워 있다는 식으로 풀었다.",
-     "guess": "문단열",
-     "confidence": "low",
-     "hit": false,
-     "answer": "그때그때 달라요"
-    },
-    "layer": "팬 세부",
-    "genre": "예능",
-    "work": "웃음을 찾는 사람들 '그때그때 달라요'",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94"
-    ],
-    "facts": [
-     {
-      "claim": "2004~2005 웃찾사 코너, 컬투 출연, 영어 문장을 엉터리 해석",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94",
-      "note": "2004년 10월 14일부터 2005년 4월 14일까지 방영한 웃음을 찾는 사람들의 코너였다. 컬투가 출연하였다. 대한민국의 영어 만능주의와 교육 실태를 풍자하는 코너로 영어강사 컨셉의 미친소가 영어 문장을 엉터리로 해석한다."
-     },
-     {
-      "claim": "미친소 = 정찬우, 인라인스케이트·해바라기, 명대사 '그건 그때그때 달라요'",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94",
-      "note": "미친소 - 정찬우 분. 인라인스케이트를 타고 머리에 해바라기 꽃을 단 영어강사이다. … 명대사는 \"지금부터 저의 해석에 대해서 절대로 충격받지 않았으면 하는 바람인 거죠?\", \"그건 그때그때 달라요\", \"쌩뚱맞죠~\" 등."
-     },
-     {
-      "claim": "미친소 이름의 유래",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94",
-      "note": "정찬우가 인라인 스케이트를 타고 튀어나오는 모습이 ‘미친소’ 같아서 김태균이 '미친소'라고 불렀다가 그대로 ‘미친소’가 되었다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94"
-    ],
-    "hintNote": "예를 들면 'I wish a happy new year.'라는 문장을 '아이(I)가 자기성이 위씨여(wish a)라고 해피(happy)라는 개에게 말하는데 그 개는 누워(new year)있다'라는 의미로 해석하는 식.",
-    "easiestCue": "웃찾사 · 인라인스케이트와 해바라기 차림의 영어 강사",
-    "targetWhy": "배역 차림만으로 코너를 떠올리는 것은 예능 애호가 — 4(경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들으면 '아 그거' 하는 2000년대 유행어",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "kr-tv/2#g019a-M1-06",
+      "seed": {
+        "subject": "웃음을 찾는 사람들 '그때그때 달라요'",
+        "aspect": "팬 세부",
+        "ref": "M1-06",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2004년 SBS '웃음을 찾는 사람들'의 한 코너에서, 인라인스케이트를 타고 머리에 해바라기를 단 영어 강사가 나와 영어 문장을 엉터리로 풀었습니다. 코너 이름이기도 한 이 강사의 명대사는 무엇일까요?",
+        "answer": "그때그때 달라요",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "정찬우가 맡은 이 강사의 이름 '미친소'는, 인라인스케이트를 타고 튀어나오는 모습이 미친 소 같다며 김태균이 붙인 별명이었다고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "인라인스케이트 … 영어 강사 … 영어 문장을 엉터리로 풀었습니다",
+          "difWhy": "웃찾사 컬투 코너 — 예능 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "정찬우는 … 영어 강사 '미친소'",
+          "difWhy": "웃찾사 미친소 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 예능 유행어"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2004년 SBS '웃음을 찾는 사람들'에서 정찬우는 인라인스케이트를 타고 머리에 해바라기를 단 영어 강사 '미친소'로 나와 영어 문장을 엉터리로 풀었습니다. 코너 이름이기도 한 그의 명대사는 무엇일까요?",
+          "beforeExplanation": "인라인스케이트를 타고 튀어나오는 모습이 미친 소 같다며 김태균이 붙인 별명이 그대로 배역 이름이 됐다고 합니다.",
+          "removedCue": "정찬우 · 영어 강사 '미친소'",
+          "addedCue": "(빼기만) 인라인스케이트·해바라기 차림만 남김",
+          "why": "배역 이름과 배우 이름을 해설로 옮겨 차림 세부로만 코너를 알아보게 함"
+        },
+        "generalHint": "이 강사는 'I wish a happy new year'를 위씨 성의 아이가 해피라는 개에게 말하는데 그 개가 누워 있다는 식으로 풀었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2000년대 컬투 개그 코너의 영어 강사가 하던 말",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "개그 유행어로 일상에서 씀",
+          "piece": "f07",
+          "genPct": 50
+        },
+        "blind": {
+          "ref": "M1-06",
+          "key": "b085",
+          "hint": "이 강사는 'I wish a happy new year'를 위씨 성의 아이가 해피라는 개에게 말하는데 그 개가 누워 있다는 식으로 풀었다.",
+          "guess": "문단열",
+          "confidence": "low",
+          "hit": false,
+          "answer": "그때그때 달라요"
+        },
+        "layer": "대중",
+        "genre": "예능",
+        "work": "웃음을 찾는 사람들 '그때그때 달라요'",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94"
+        ],
+        "facts": [
+          {
+            "claim": "2004~2005 웃찾사 코너, 컬투 출연, 영어 문장을 엉터리 해석",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94",
+            "note": "2004년 10월 14일부터 2005년 4월 14일까지 방영한 웃음을 찾는 사람들의 코너였다. 컬투가 출연하였다. 대한민국의 영어 만능주의와 교육 실태를 풍자하는 코너로 영어강사 컨셉의 미친소가 영어 문장을 엉터리로 해석한다."
+          },
+          {
+            "claim": "미친소 = 정찬우, 인라인스케이트·해바라기, 명대사 '그건 그때그때 달라요'",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94",
+            "note": "미친소 - 정찬우 분. 인라인스케이트를 타고 머리에 해바라기 꽃을 단 영어강사이다. … 명대사는 \"지금부터 저의 해석에 대해서 절대로 충격받지 않았으면 하는 바람인 거죠?\", \"그건 그때그때 달라요\", \"쌩뚱맞죠~\" 등."
+          },
+          {
+            "claim": "미친소 이름의 유래",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94",
+            "note": "정찬우가 인라인 스케이트를 타고 튀어나오는 모습이 ‘미친소’ 같아서 김태균이 '미친소'라고 불렀다가 그대로 ‘미친소’가 되었다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://namu.wiki/w/%EA%B7%B8%EB%95%8C%EA%B7%B8%EB%95%8C%20%EB%8B%AC%EB%9D%BC%EC%9A%94"
+        ],
+        "hintNote": "예를 들면 'I wish a happy new year.'라는 문장을 '아이(I)가 자기성이 위씨여(wish a)라고 해피(happy)라는 개에게 말하는데 그 개는 누워(new year)있다'라는 의미로 해석하는 식.",
+        "easiestCue": "웃찾사 · 인라인스케이트와 해바라기 차림의 영어 강사",
+        "targetWhy": "배역 차림만으로 코너를 떠올리는 것은 예능 애호가 — 4(경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들으면 '아 그거' 하는 2000년대 유행어",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "인라인스케이트 … 영어 강사 … 영어 문장을 엉터리로 풀었습니다",
+          "difWhy": "웃찾사 컬투 코너 — 예능 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 유행어",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

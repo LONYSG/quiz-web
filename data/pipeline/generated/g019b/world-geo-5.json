@@ -1,427 +1,487 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "world-geo/5",
-  "midKey": "world-geo",
-  "subName": "도시 별칭",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-geo/5#g019b-H1-25",
-   "seed": {
-    "subject": "샌프란시스코",
-    "aspect": null,
-    "ref": "H1-25",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1859년 9월 스스로 '미합중국 황제'라 선언한 노턴이 살며 포고를 내던 도시가 있습니다. 칼럼니스트 허브 캐언의 수필집 제목 '만 옆의 바그다드'가 별칭으로도 쓰이는 이 도시는 어디일까요?",
-    "answer": "샌프란시스코",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "노턴은 이 도시와 오클랜드를 잇는 다리나 터널을 놓으라는 포고를 여러 번 냈고, 비슷한 다리와 해저 터널은 그가 죽고 한참 뒤에 지어졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "스스로 '미합중국 황제'라 선언한 노턴",
-     "difWhy": "노턴 황제·만 옆의 바그다드 — 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 도시 일화",
-     "acc": 4,
-     "accWhy": "세계 지리 — 고교 세계지리 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "스스로 '미합중국 황제'라 선언한 노턴",
-     "difWhy": "노턴 황제·만 옆의 바그다드 — 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 도시 일화"
-    },
-    "rewrite": null,
-    "generalHint": "1915년 파나마 운하 개통을 기리는 파나마 태평양 만국 박람회가 이 도시에서 열렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "금문교가 있는 미국 캘리포니아의 항구 도시",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 도시",
-     "piece": "f08",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "H1-25",
-     "key": "b121",
-     "hint": "1915년 파나마 운하 개통을 기리는 파나마 태평양 만국 박람회가 이 도시에서 열렸다.",
-     "guess": "샌프란시스코",
-     "confidence": "high",
-     "hit": true,
-     "answer": "샌프란시스코"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Emperor_Norton",
-     "https://en.wikipedia.org/wiki/Nicknames_of_San_Francisco"
-    ],
-    "facts": [
-     {
-      "claim": "1859년 9월 17일 미합중국 황제 선언 · 이 도시 신문에 실림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Emperor_Norton",
-      "note": "On September 17, 1859, he declared himself \"Emperor of these United States.\" The San Francisco Daily Evening Bulletin printed the declaration that evening."
-     },
-     {
-      "claim": "'만 옆의 바그다드' — 허브 캐언 수필집 제목 · 별칭",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Nicknames_of_San_Francisco",
-      "note": "\"Baghdad by the Bay\" — title of a book of essays by Herb Caen … Caen used it as a nickname for the city because of its cosmopolitan diversity"
-     },
-     {
-      "claim": "오클랜드와 잇는 다리·터널 포고 · 뒤에 지어짐",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Emperor_Norton",
-      "note": "Norton issued several decrees calling for a suspension bridge or tunnel linking Oakland and San Francisco. … built long after his death."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Panama%E2%80%93Pacific_International_Exposition"
-    ],
-    "hintNote": "The Panama–Pacific International Exposition was a world's fair held in San Francisco, California, United States, from February 20 to December 4, 1915.",
-    "easiestCue": "'미합중국 황제'를 자칭한 노턴이 살던 도시",
-    "targetWhy": "금문교·알카트라즈·골드러시(대표 사실)는 빼고 노턴 황제와 캐언의 별칭만 — 미국 도시 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "'만(灣)'이 단서가 되지만 미국 만 도시는 여럿",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "world-geo/5",
+    "midKey": "world-geo",
+    "subName": "도시 별칭",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "world-geo/5#g019b-H1-26",
-   "seed": {
-    "subject": "보스턴",
-    "aspect": null,
-    "ref": "H1-26",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "올리버 웬들 홈스가 적은 '태양계의 중심축'이라는 말을 줄인 '더 허브'가 별칭인 미국 도시가 있습니다. 문화와 지식의 중심이라 하여 '아메리카의 아테네'라고도 불리는 이 도시는 어디일까요?",
-    "answer": "보스턴",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "식민지 시절 즐겨 먹던, 당밀을 넣어 오래 구운 콩 요리에서 '빈타운'이라는 별칭도 나왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "'더 허브'가 별칭인 미국 도시",
-     "difWhy": "보스턴 별칭 — 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 도시 별칭",
-     "acc": 4,
-     "accWhy": "세계 지리 — 고교 세계지리 교과"
+  "items": [
+    {
+      "seedId": "world-geo/5#g019b-H1-25",
+      "seed": {
+        "subject": "샌프란시스코",
+        "aspect": null,
+        "ref": "H1-25",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1859년 9월 스스로 '미합중국 황제'라 선언한 노턴이 살며 포고를 내던 도시가 있습니다. 칼럼니스트 허브 캐언의 수필집 제목 '만 옆의 바그다드'가 별칭으로도 쓰이는 이 도시는 어디일까요?",
+        "answer": "샌프란시스코",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "노턴은 이 도시와 오클랜드를 잇는 다리나 터널을 놓으라는 포고를 여러 번 냈고, 비슷한 다리와 해저 터널은 그가 죽고 한참 뒤에 지어졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "스스로 '미합중국 황제'라 선언한 노턴",
+          "difWhy": "노턴 황제·만 옆의 바그다드 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 일화",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "스스로 '미합중국 황제'라 선언한 노턴",
+          "difWhy": "노턴 황제·만 옆의 바그다드 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 일화"
+        },
+        "rewrite": null,
+        "generalHint": "1915년 파나마 운하 개통을 기리는 파나마 태평양 만국 박람회가 이 도시에서 열렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "금문교가 있는 미국 캘리포니아의 항구 도시",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 도시",
+          "piece": "f08",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "H1-25",
+          "key": "b121",
+          "hint": "1915년 파나마 운하 개통을 기리는 파나마 태평양 만국 박람회가 이 도시에서 열렸다.",
+          "guess": "샌프란시스코",
+          "confidence": "high",
+          "hit": true,
+          "answer": "샌프란시스코"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Emperor_Norton",
+          "https://en.wikipedia.org/wiki/Nicknames_of_San_Francisco"
+        ],
+        "facts": [
+          {
+            "claim": "1859년 9월 17일 미합중국 황제 선언 · 이 도시 신문에 실림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Emperor_Norton",
+            "note": "On September 17, 1859, he declared himself \"Emperor of these United States.\" The San Francisco Daily Evening Bulletin printed the declaration that evening."
+          },
+          {
+            "claim": "'만 옆의 바그다드' — 허브 캐언 수필집 제목 · 별칭",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Nicknames_of_San_Francisco",
+            "note": "\"Baghdad by the Bay\" — title of a book of essays by Herb Caen … Caen used it as a nickname for the city because of its cosmopolitan diversity"
+          },
+          {
+            "claim": "오클랜드와 잇는 다리·터널 포고 · 뒤에 지어짐",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Emperor_Norton",
+            "note": "Norton issued several decrees calling for a suspension bridge or tunnel linking Oakland and San Francisco. … built long after his death."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Panama%E2%80%93Pacific_International_Exposition"
+        ],
+        "hintNote": "The Panama–Pacific International Exposition was a world's fair held in San Francisco, California, United States, from February 20 to December 4, 1915.",
+        "easiestCue": "'미합중국 황제'를 자칭한 노턴이 살던 도시",
+        "targetWhy": "금문교·알카트라즈·골드러시(대표 사실)는 빼고 노턴 황제와 캐언의 별칭만 — 미국 도시 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "'만(灣)'이 단서가 되지만 미국 만 도시는 여럿",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "스스로 '미합중국 황제'라 선언한 노턴",
+          "difWhy": "노턴 황제·만 옆의 바그다드 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 일화",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "'더 허브'가 별칭인 미국 도시",
-     "difWhy": "보스턴 별칭 — 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 도시 별칭"
+    {
+      "seedId": "world-geo/5#g019b-H1-26",
+      "seed": {
+        "subject": "보스턴",
+        "aspect": null,
+        "ref": "H1-26",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "올리버 웬들 홈스가 적은 '태양계의 중심축'이라는 말을 줄인 '더 허브'가 별칭인 미국 도시가 있습니다. 문화와 지식의 중심이라 하여 '아메리카의 아테네'라고도 불리는 이 도시는 어디일까요?",
+        "answer": "보스턴",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "식민지 시절 즐겨 먹던, 당밀을 넣어 오래 구운 콩 요리에서 '빈타운'이라는 별칭도 나왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'더 허브'가 별칭인 미국 도시",
+          "difWhy": "보스턴 별칭 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 별칭",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "'더 허브'가 별칭인 미국 도시",
+          "difWhy": "보스턴 별칭 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 별칭"
+        },
+        "rewrite": null,
+        "generalHint": "1919년 1월 이 도시 노스엔드에서 당밀 탱크가 터져 21명이 숨졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "미국 매사추세츠주의 주도이자 독립 혁명의 발상지",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "유명 미국 도시",
+          "piece": "f05",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "H1-26",
+          "key": "b025",
+          "hint": "1897년 문을 연 이 도시의 트레몬트가 지하철은 북아메리카에서 가장 오래된 지하철 터널이다.",
+          "guess": "보스턴",
+          "confidence": "high",
+          "hit": true,
+          "answer": "보스턴"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Nicknames_of_Boston"
+        ],
+        "facts": [
+          {
+            "claim": "더 허브 — 홈스의 '태양계의 중심축'",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Nicknames_of_Boston",
+            "note": "The nickname shortens a phrase that Oliver Wendell Holmes recorded: \"The Hub of the Solar System.\""
+          },
+          {
+            "claim": "아메리카의 아테네 — 문화·지식",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Nicknames_of_Boston",
+            "note": "William Tudor … coined the title \"for Boston's great cultural and intellectual influence.\" Philadelphia also uses this nickname."
+          },
+          {
+            "claim": "빈타운 — 당밀로 오래 구운 콩",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Nicknames_of_Boston",
+            "note": "a favorite local food was \"slow-baked in molasses\" (Boston baked beans → Beantown)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Great_Molasses_Flood"
+        ],
+        "easiestCue": "'아메리카의 아테네'라고도 불림",
+        "targetWhy": "보스턴 차 사건·하버드·마라톤(대표 사실)은 빼고 별칭 둘의 유래만 — 미국 문화 애호가(경계 3: 대학 도시로 짐작)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'아메리카의 아테네'는 필라델피아도 쓰지만 '더 허브'와 함께면 하나",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'더 허브'가 별칭인 미국 도시",
+          "difWhy": "보스턴 별칭 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 별칭",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix",
+          "hintGen": true
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "1897년 문을 연 이 도시의 트레몬트가 지하철은 북아메리카에서 가장 오래된 지하철 터널이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "미국 매사추세츠주의 주도이자 독립 혁명의 발상지",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "유명 미국 도시",
-     "piece": "f05",
-     "genPct": 90
+    {
+      "seedId": "world-geo/5#g019b-H1-27",
+      "seed": {
+        "subject": "리우데자네이루",
+        "aspect": null,
+        "ref": "H1-27",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "마라냥 출신 작가 코엘류 네투가 이 도시의 자연을 기려 지은 별칭은, 1935년 카니발에 맞춰 안드레 필류가 같은 제목으로 만든 노래가 되었습니다. 이 노래는 1960년 구아나바라주의 공식 노래로도 정해졌는데, 이 도시는?",
+        "answer": "리우데자네이루",
+        "acceptedAnswers": [
+          "리우"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '리우데자네이루', '리우'에서 넘어옴",
+        "explanation": "그 별칭이자 노래 제목은 '경이로운 도시'라는 뜻의 '시다지 마라빌료자'입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 1935년 카니발 노래 + 구아나바라주",
+          "difWhy": "카니발 도시 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 도시 별칭",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'경이로운 도시'라는 별칭",
+          "difWhy": "리우 별칭 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 별칭"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "마라냥 출신 작가 코엘류 네투가 이 도시의 자연을 기려 '경이로운 도시'라는 별칭을 지었고, 1935년 카니발에 맞춰 안드레 필류가 같은 제목으로 만든 노래는 뒤에 이 도시의 노래가 되었습니다. 이 도시는?",
+          "beforeExplanation": "이 노래는 1960년 구아나바라주의 공식 노래로도 정해졌습니다.",
+          "removedCue": "'경이로운 도시'라는 별칭",
+          "addedCue": "1960년 구아나바라주 공식 노래",
+          "why": "널리 알려진 별칭을 해설로 옮기고 주(州) 공식 노래 지정으로 바꿈"
+        },
+        "generalHint": "1565년 3월 1일 포르투갈의 에스타시우 드 사가 이끈 무리가 세운 도시다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "예수상과 카니발로 이름난 브라질의 해안 도시",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "올림픽 개최지·카니발로 널리 알려진 도시",
+          "piece": "f01",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "H1-27",
+          "key": "b220",
+          "hint": "1565년 3월 1일 포르투갈의 에스타시우 드 사가 이끈 무리가 세운 도시다.",
+          "guess": "리우데자네이루",
+          "confidence": "high",
+          "hit": true,
+          "answer": "리우데자네이루"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Cidade_Maravilhosa"
+        ],
+        "facts": [
+          {
+            "claim": "별칭은 마라냥 출신 작가 코엘류 네투가 자연을 기려 지음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
+            "note": "was coined by the writer Coelho Neto … a tribute to the city's natural beauty (Coelho Neto came from Maranhão)"
+          },
+          {
+            "claim": "1935년 카니발 · 안드레 필류 작곡 · 도시의 노래",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
+            "note": "written and composed by André Filho … for the Rio de Janeiro carnival in 1935 … It has since become the anthem for the city of Rio de Janeiro."
+          },
+          {
+            "claim": "1960년 구아나바라주 공식 노래",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
+            "note": "the 1960 declaration as the \"official song\" of the state of Guanabara."
+          },
+          {
+            "claim": "별칭 '시다지 마라빌료자'(경이로운 도시)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
+            "note": "Cidade Maravilhosa (Marvelous City) — was coined by the writer Coelho Neto"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Rio_de_Janeiro"
+        ],
+        "hintNote": "The city of Rio de Janeiro proper was founded on 1 March 1565 by the Portuguese, led by Estácio de Sá",
+        "easiestCue": "1960년 구아나바라주의 공식 노래로도 정해졌는데",
+        "targetWhy": "별칭의 작자 · 노래 · 옛 주 이름 — 여행·음악 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'카니발'이 리우를 떠올리게 함 — 남미 도시를 아는 관심층은 짐작 가능",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 1935년 카니발 노래 + 구아나바라주",
+          "difWhy": "카니발 도시 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 도시 별칭",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "H1-26",
-     "key": "b025",
-     "hint": "1897년 문을 연 이 도시의 트레몬트가 지하철은 북아메리카에서 가장 오래된 지하철 터널이다.",
-     "guess": "보스턴",
-     "confidence": "high",
-     "hit": true,
-     "answer": "보스턴"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Nicknames_of_Boston"
-    ],
-    "facts": [
-     {
-      "claim": "더 허브 — 홈스의 '태양계의 중심축'",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Nicknames_of_Boston",
-      "note": "The nickname shortens a phrase that Oliver Wendell Holmes recorded: \"The Hub of the Solar System.\""
-     },
-     {
-      "claim": "아메리카의 아테네 — 문화·지식",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Nicknames_of_Boston",
-      "note": "William Tudor … coined the title \"for Boston's great cultural and intellectual influence.\" Philadelphia also uses this nickname."
-     },
-     {
-      "claim": "빈타운 — 당밀로 오래 구운 콩",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Nicknames_of_Boston",
-      "note": "a favorite local food was \"slow-baked in molasses\" (Boston baked beans → Beantown)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Tremont_Street_subway"
-    ],
-    "hintNote": "The Tremont Street subway in Boston's MBTA subway system is the oldest subway tunnel in North America ... opening on September 1, 1897.",
-    "easiestCue": "'아메리카의 아테네'라고도 불림",
-    "targetWhy": "보스턴 차 사건·하버드·마라톤(대표 사실)은 빼고 별칭 둘의 유래만 — 미국 문화 애호가(경계 3: 대학 도시로 짐작)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'아메리카의 아테네'는 필라델피아도 쓰지만 '더 허브'와 함께면 하나",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "world-geo/5#g019b-H1-27",
-   "seed": {
-    "subject": "리우데자네이루",
-    "aspect": null,
-    "ref": "H1-27",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "마라냥 출신 작가 코엘류 네투가 이 도시의 자연을 기려 지은 별칭은, 1935년 카니발에 맞춰 안드레 필류가 같은 제목으로 만든 노래가 되었습니다. 이 노래는 1960년 구아나바라주의 공식 노래로도 정해졌는데, 이 도시는?",
-    "answer": "리우데자네이루",
-    "acceptedAnswers": [
-     "리우"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '리우데자네이루', '리우'에서 넘어옴",
-    "explanation": "그 별칭이자 노래 제목은 '경이로운 도시'라는 뜻의 '시다지 마라빌료자'입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 1935년 카니발 노래 + 구아나바라주",
-     "difWhy": "카니발 도시 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 도시 별칭",
-     "acc": 4,
-     "accWhy": "세계 지리 — 고교 세계지리 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'경이로운 도시'라는 별칭",
-     "difWhy": "리우 별칭 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 도시 별칭"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "마라냥 출신 작가 코엘류 네투가 이 도시의 자연을 기려 '경이로운 도시'라는 별칭을 지었고, 1935년 카니발에 맞춰 안드레 필류가 같은 제목으로 만든 노래는 뒤에 이 도시의 노래가 되었습니다. 이 도시는?",
-     "beforeExplanation": "이 노래는 1960년 구아나바라주의 공식 노래로도 정해졌습니다.",
-     "removedCue": "'경이로운 도시'라는 별칭",
-     "addedCue": "1960년 구아나바라주 공식 노래",
-     "why": "널리 알려진 별칭을 해설로 옮기고 주(州) 공식 노래 지정으로 바꿈"
-    },
-    "generalHint": "1565년 3월 1일 포르투갈의 에스타시우 드 사가 이끈 무리가 세운 도시다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "예수상과 카니발로 이름난 브라질의 해안 도시",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "올림픽 개최지·카니발로 널리 알려진 도시",
-     "piece": "f01",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "H1-27",
-     "key": "b220",
-     "hint": "1565년 3월 1일 포르투갈의 에스타시우 드 사가 이끈 무리가 세운 도시다.",
-     "guess": "리우데자네이루",
-     "confidence": "high",
-     "hit": true,
-     "answer": "리우데자네이루"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Cidade_Maravilhosa"
-    ],
-    "facts": [
-     {
-      "claim": "별칭은 마라냥 출신 작가 코엘류 네투가 자연을 기려 지음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
-      "note": "was coined by the writer Coelho Neto … a tribute to the city's natural beauty (Coelho Neto came from Maranhão)"
-     },
-     {
-      "claim": "1935년 카니발 · 안드레 필류 작곡 · 도시의 노래",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
-      "note": "written and composed by André Filho … for the Rio de Janeiro carnival in 1935 … It has since become the anthem for the city of Rio de Janeiro."
-     },
-     {
-      "claim": "1960년 구아나바라주 공식 노래",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
-      "note": "the 1960 declaration as the \"official song\" of the state of Guanabara."
-     },
-     {
-      "claim": "별칭 '시다지 마라빌료자'(경이로운 도시)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Cidade_Maravilhosa",
-      "note": "Cidade Maravilhosa (Marvelous City) — was coined by the writer Coelho Neto"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Rio_de_Janeiro"
-    ],
-    "hintNote": "The city of Rio de Janeiro proper was founded on 1 March 1565 by the Portuguese, led by Estácio de Sá",
-    "easiestCue": "1960년 구아나바라주의 공식 노래로도 정해졌는데",
-    "targetWhy": "별칭의 작자 · 노래 · 옛 주 이름 — 여행·음악 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'카니발'이 리우를 떠올리게 함 — 남미 도시를 아는 관심층은 짐작 가능",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "world-geo/5#g019b-H1-28",
-   "seed": {
-    "subject": "프라하",
-    "aspect": null,
-    "ref": "H1-28",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "옛 라틴어 표어에서는 '도시들의 어머니'로 불렸고, 오늘날 시의 표어는 '공화국의 머리'라는 뜻의 라틴어입니다. 이 유럽의 수도는 어디일까요?",
-    "answer": "프라하",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "19세기 수학자 볼차노가 이 도시의 탑을 센 것이 '백 개의 탑의 도시'라는 별칭의 바탕이 되었고, 오늘날 시 관광 안내소는 탑을 500개쯤으로 어림합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "옛 라틴어 표어 '도시들의 어머니'",
-     "difWhy": "도시 라틴어 표어 — 여행 애호가",
-     "wor": 3,
-     "worWhy": "유명 도시 별칭",
-     "acc": 4,
-     "accWhy": "세계 지리 — 고교 세계지리 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "이 도시의 탑을 하나하나 세어 본 것이 이 도시의 유명한 별칭",
-     "difWhy": "백탑의 도시 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 도시 별칭"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "19세기 수학자 베르나르트 볼차노가 이 도시의 탑을 하나하나 세어 본 것이 이 도시의 유명한 별칭의 바탕이 되었다고 합니다. 오늘날 시 관광 안내소는 그 탑이 500개쯤이라고 어림하는데, 이 도시는 어디일까요?",
-     "beforeExplanation": "'황금의 도시', '도시들의 어머니', '유럽의 심장'이라는 별칭도 있습니다.",
-     "removedCue": "탑을 하나하나 세어 본 것이 유명한 별칭의 바탕(백탑의 도시)",
-     "addedCue": "라틴어 표어 '도시들의 어머니' · '공화국의 머리'",
-     "why": "백탑 별칭 단서를 해설로 옮기고 라틴어 표어 두 개로 바꿈"
-    },
-    "generalHint": "1784년 요제프 2세 때 말라스트라나·구시가·신시가·흐라드차니 네 자치 도시가 하나로 합쳐졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "블타바강이 흐르는 체코의 수도",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 도시",
-     "piece": "f08",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "H1-28",
-     "key": "b193",
-     "hint": "1784년 요제프 2세 때 말라스트라나·구시가·신시가·흐라드차니 네 자치 도시가 하나로 합쳐졌다.",
-     "guess": "프라하",
-     "confidence": "high",
-     "hit": true,
-     "answer": "프라하"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Prague"
-    ],
-    "facts": [
-     {
-      "claim": "백 개의 탑의 도시 — 볼차노가 셈",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Prague",
-      "note": "City of a Hundred Spires … The count behind that name came from Bernard Bolzano, a 19th-century mathematician"
-     },
-     {
-      "claim": "오늘날 프라하 관광 안내소 추정 500개",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Prague",
-      "note": "today's count is estimated at 500 by the Prague Information Service."
-     },
-     {
-      "claim": "옛 라틴어 표어 'Praga mater urbium'(도시들의 어머니)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Prague",
-      "note": "Mother of Cities: historical Latin motto \"Praga mater urbium\" — \"Prague, Mother of Cities.\""
-     },
-     {
-      "claim": "시의 표어 'Praga Caput Rei publicae'(공화국의 머리)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Prague",
-      "note": "\"Praga Caput Rei publicae\" is listed as the city's motto, translated as \"Prague, Head of the Republic.\""
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Prague"
-    ],
-    "hintNote": "In 1784, under Joseph II, the four municipalities of Malá Strana, Nové Město, Staré Město, and Hradčany were merged into a single entity.",
-    "easiestCue": "오늘날 시의 표어는 '공화국의 머리'",
-    "targetWhy": "라틴어 표어 — 유럽 여행·역사 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'탑이 많은 도시'에서 백탑의 도시를 떠올리는 여행 관심층이 있을 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "world-geo/5#g019b-H1-28",
+      "seed": {
+        "subject": "프라하",
+        "aspect": null,
+        "ref": "H1-28",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "옛 라틴어 표어에서는 '도시들의 어머니'로 불렸고, 오늘날 시의 표어는 '공화국의 머리'라는 뜻의 라틴어입니다. 이 유럽의 수도는 어디일까요?",
+        "answer": "프라하",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "19세기 수학자 볼차노가 이 도시의 탑을 센 것이 '백 개의 탑의 도시'라는 별칭의 바탕이 되었고, 오늘날 시 관광 안내소는 탑을 500개쯤으로 어림합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "옛 라틴어 표어 '도시들의 어머니'",
+          "difWhy": "도시 라틴어 표어 — 여행 애호가",
+          "wor": 3,
+          "worWhy": "유명 도시 별칭",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "이 도시의 탑을 하나하나 세어 본 것이 이 도시의 유명한 별칭",
+          "difWhy": "백탑의 도시 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 도시 별칭"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "19세기 수학자 베르나르트 볼차노가 이 도시의 탑을 하나하나 세어 본 것이 이 도시의 유명한 별칭의 바탕이 되었다고 합니다. 오늘날 시 관광 안내소는 그 탑이 500개쯤이라고 어림하는데, 이 도시는 어디일까요?",
+          "beforeExplanation": "'황금의 도시', '도시들의 어머니', '유럽의 심장'이라는 별칭도 있습니다.",
+          "removedCue": "탑을 하나하나 세어 본 것이 유명한 별칭의 바탕(백탑의 도시)",
+          "addedCue": "라틴어 표어 '도시들의 어머니' · '공화국의 머리'",
+          "why": "백탑 별칭 단서를 해설로 옮기고 라틴어 표어 두 개로 바꿈"
+        },
+        "generalHint": "1784년 요제프 2세 때 말라스트라나·구시가·신시가·흐라드차니 네 자치 도시가 하나로 합쳐졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "블타바강이 흐르는 체코의 수도",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 도시",
+          "piece": "f08",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "H1-28",
+          "key": "b193",
+          "hint": "1784년 요제프 2세 때 말라스트라나·구시가·신시가·흐라드차니 네 자치 도시가 하나로 합쳐졌다.",
+          "guess": "프라하",
+          "confidence": "high",
+          "hit": true,
+          "answer": "프라하"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Prague"
+        ],
+        "facts": [
+          {
+            "claim": "백 개의 탑의 도시 — 볼차노가 셈",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Prague",
+            "note": "City of a Hundred Spires … The count behind that name came from Bernard Bolzano, a 19th-century mathematician"
+          },
+          {
+            "claim": "오늘날 프라하 관광 안내소 추정 500개",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Prague",
+            "note": "today's count is estimated at 500 by the Prague Information Service."
+          },
+          {
+            "claim": "옛 라틴어 표어 'Praga mater urbium'(도시들의 어머니)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Prague",
+            "note": "Mother of Cities: historical Latin motto \"Praga mater urbium\" — \"Prague, Mother of Cities.\""
+          },
+          {
+            "claim": "시의 표어 'Praga Caput Rei publicae'(공화국의 머리)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Prague",
+            "note": "\"Praga Caput Rei publicae\" is listed as the city's motto, translated as \"Prague, Head of the Republic.\""
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Prague"
+        ],
+        "hintNote": "In 1784, under Joseph II, the four municipalities of Malá Strana, Nové Město, Staré Město, and Hradčany were merged into a single entity.",
+        "easiestCue": "오늘날 시의 표어는 '공화국의 머리'",
+        "targetWhy": "라틴어 표어 — 유럽 여행·역사 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'탑이 많은 도시'에서 백탑의 도시를 떠올리는 여행 관심층이 있을 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "옛 라틴어 표어 '도시들의 어머니'",
+          "difWhy": "도시 라틴어 표어 — 여행 애호가",
+          "wor": 3,
+          "worWhy": "유명 도시 별칭",
+          "acc": 4,
+          "accWhy": "세계 지리 — 고교 세계지리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

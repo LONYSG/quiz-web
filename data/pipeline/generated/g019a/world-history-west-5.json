@@ -1,347 +1,392 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "world-history-west/5",
-  "midKey": "world-history-west",
-  "subName": "20세기 서양",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-history-west/5#g019a-H1-18",
-   "seed": {
-    "subject": "아나스타샤",
-    "aspect": null,
-    "ref": "H1-18",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1920년 베를린의 란트베어 운하에 몸을 던졌다가 정신 병원에 들어간 한 젊은 여성은, 뒤에 '애나 앤더슨'이라는 이름으로 자신이 이 인물이라고 주장했습니다. 1984년 그가 숨진 뒤 DNA는 폴란드 공장 노동자의 종손자와 일치했는데, 그가 자처한 이 인물은?",
-    "answer": "아나스타샤",
-    "acceptedAnswers": [
-     "아나스타시아",
-     "아나스타시야"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia \"아나스타샤\"·\"아나스타시야\" → \"아나스타시아\" 넘겨주기 확인(이름 문서의 표기 목록)",
-    "explanation": "1927년 황후의 오빠인 헤센 대공이 비용을 댄 사설 조사는 이미 그를 프란치스카 샨츠코프스카라는 폴란드 공장 노동자로 지목했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "'애나 앤더슨'이라는 이름으로 자신이 이 인물이라고 주장",
-     "difWhy": "황녀 사칭 사건 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 로마노프 미스터리",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1918년 예카테린부르크에서 가족과 함께 살해된 이 러시아 황녀",
-     "difWhy": "로마노프 막내 황녀 전설 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 — 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1984년 숨진 애나 앤더슨은 자신이 이 인물이라고 주장했지만, 머리카락과 조직 표본의 DNA는 로마노프 일가와 맞지 않았습니다. 1918년 예카테린부르크에서 가족과 함께 살해된 이 러시아 황녀는?",
-     "beforeExplanation": "앤더슨의 미토콘드리아 DNA는 폴란드 공장 노동자 프란치스카 샨츠코프스카의 종손자와 일치했습니다.",
-     "removedCue": "1918년 예카테린부르크에서 가족과 함께 살해된 이 러시아 황녀",
-     "addedCue": "1920년 베를린 운하 투신 · 폴란드 노동자 종손자와 DNA 일치",
-     "why": "황녀 정체를 그대로 준 문장을 빼고 사칭자 앤더슨의 경위로만 묻게 함"
-    },
-    "generalHint": "1956년 잉그리드 버그먼은 이 인물을 꼭 닮은 기억 잃은 여인을 연기해 아카데미 여우주연상을 받았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "러시아 마지막 황제의 막내딸",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "애니메이션·전설로 들어 봄",
-     "piece": "f06",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "H1-18",
-     "key": "b285",
-     "hint": "1956년 잉그리드 버그먼은 이 인물을 꼭 닮은 기억 잃은 여인을 연기해 아카데미 여우주연상을 받았다.",
-     "guess": "아나스타시야",
-     "confidence": "high",
-     "hit": true,
-     "answer": "아나스타샤"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Anna_Anderson"
-    ],
-    "facts": [
-     {
-      "claim": "애나 앤더슨 1984년 사망, 아나스타샤라 주장한 사칭자",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
-      "note": "Anna Anderson (born Franziska Schanzkowska; 16 December 1896 – 12 February 1984) was an impostor who claimed to be Grand Duchess Anastasia Nikolaevna of Russia."
-     },
-     {
-      "claim": "머리카락·조직 표본 DNA가 로마노프와 불일치",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
-      "note": "DNA tests on a lock of Anderson's hair and surviving medical samples of her tissue showed that her DNA did not match that of the Romanov remains or that of living relatives of the Romanovs."
-     },
-     {
-      "claim": "미토콘드리아 DNA가 샨츠코프스카 종손자와 일치",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
-      "note": "Instead, Anderson's mitochondrial DNA matched that of Karl Maucher, a great-nephew of Franziska Schanzkowska."
-     },
-     {
-      "claim": "1920년 2월 27일 베를린 란트베어 운하 투신 · 정신 병원 수용",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
-      "note": "On 27 February 1920, an unidentified young woman attempted to commit suicide in Berlin by jumping off the Bendlerstrasse bridge into the Landwehrkanal. ... In 1920, Anderson was institutionalized in a mental hospital after a suicide attempt in Berlin."
-     },
-     {
-      "claim": "1927년 헤센 대공이 비용을 댄 사설 조사가 샨츠코프스카로 지목",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
-      "note": "In 1927, a private investigation funded by the Tsarina's brother, Ernest Louis, Grand Duke of Hesse, identified Anderson as Franziska Schanzkowska, a Polish factory worker with a history of mental illness."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Anastasia_(1956_film)"
-    ],
-    "hintNote": "using an amnesiac (Bergman) who looks remarkably like the missing Anastasia. / She won the Academy Award for Best Actress",
-    "easiestCue": "'애나 앤더슨'이 자처한 인물",
-    "targetWhy": "앤더슨 사칭 사건을 알아야 풀림 — 러시아사·영화 애호가 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 이름(애니메이션)의 실제 역사 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "world-history-west/5",
+    "midKey": "world-history-west",
+    "subName": "20세기 서양",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "world-history-west/5#g019a-H1-19",
-   "seed": {
-    "subject": "처칠",
-    "aspect": null,
-    "ref": "H1-19",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "어머니 제니는 미국 사업가 레너드 제롬의 딸이었습니다. 그림을 그릴 때 프랑스 풍경화가와 같은 '샤를 모랭'이라는 가명을 자주 썼고, 저택의 정원 담을 손수 쌓는 아마추어 벽돌공이기도 했던 이 영국 정치인은?",
-    "answer": "처칠",
-    "acceptedAnswers": [
-     "윈스턴 처칠"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 \"윈스턴 처칠\" 확인",
-    "explanation": "1953년 노벨 문학상을 받았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "그림을 그릴 때 … 가명 … 아마추어 벽돌공이기도 했던 이 영국 정치인",
-     "difWhy": "그림 취미 영국 총리 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
+  "items": [
+    {
+      "seedId": "world-history-west/5#g019a-H1-18",
+      "seed": {
+        "subject": "아나스타샤",
+        "aspect": null,
+        "ref": "H1-18",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1920년 베를린의 란트베어 운하에 몸을 던졌다가 정신 병원에 들어간 한 젊은 여성은, 뒤에 '애나 앤더슨'이라는 이름으로 자신이 이 인물이라고 주장했습니다. 1984년 그가 숨진 뒤 DNA는 폴란드 공장 노동자의 종손자와 일치했는데, 그가 자처한 이 인물은?",
+        "answer": "아나스타샤",
+        "acceptedAnswers": [
+          "아나스타시아",
+          "아나스타시야"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia \"아나스타샤\"·\"아나스타시야\" → \"아나스타시아\" 넘겨주기 확인(이름 문서의 표기 목록)",
+        "explanation": "1927년 황후의 오빠인 헤센 대공이 비용을 댄 사설 조사는 이미 그를 프란치스카 샨츠코프스카라는 폴란드 공장 노동자로 지목했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'애나 앤더슨'이라는 이름으로 자신이 이 인물이라고 주장",
+          "difWhy": "황녀 사칭 사건 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 로마노프 미스터리",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1918년 예카테린부르크에서 가족과 함께 살해된 이 러시아 황녀",
+          "difWhy": "로마노프 막내 황녀 전설 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 — 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1984년 숨진 애나 앤더슨은 자신이 이 인물이라고 주장했지만, 머리카락과 조직 표본의 DNA는 로마노프 일가와 맞지 않았습니다. 1918년 예카테린부르크에서 가족과 함께 살해된 이 러시아 황녀는?",
+          "beforeExplanation": "앤더슨의 미토콘드리아 DNA는 폴란드 공장 노동자 프란치스카 샨츠코프스카의 종손자와 일치했습니다.",
+          "removedCue": "1918년 예카테린부르크에서 가족과 함께 살해된 이 러시아 황녀",
+          "addedCue": "1920년 베를린 운하 투신 · 폴란드 노동자 종손자와 DNA 일치",
+          "why": "황녀 정체를 그대로 준 문장을 빼고 사칭자 앤더슨의 경위로만 묻게 함"
+        },
+        "generalHint": "1956년 잉그리드 버그먼은 이 인물을 꼭 닮은 기억 잃은 여인을 연기해 아카데미 여우주연상을 받았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "러시아 마지막 황제의 막내딸",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "애니메이션·전설로 들어 봄",
+          "piece": "f06",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "H1-18",
+          "key": "b285",
+          "hint": "1956년 잉그리드 버그먼은 이 인물을 꼭 닮은 기억 잃은 여인을 연기해 아카데미 여우주연상을 받았다.",
+          "guess": "아나스타시야",
+          "confidence": "high",
+          "hit": true,
+          "answer": "아나스타샤"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Anna_Anderson"
+        ],
+        "facts": [
+          {
+            "claim": "애나 앤더슨 1984년 사망, 아나스타샤라 주장한 사칭자",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
+            "note": "Anna Anderson (born Franziska Schanzkowska; 16 December 1896 – 12 February 1984) was an impostor who claimed to be Grand Duchess Anastasia Nikolaevna of Russia."
+          },
+          {
+            "claim": "머리카락·조직 표본 DNA가 로마노프와 불일치",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
+            "note": "DNA tests on a lock of Anderson's hair and surviving medical samples of her tissue showed that her DNA did not match that of the Romanov remains or that of living relatives of the Romanovs."
+          },
+          {
+            "claim": "미토콘드리아 DNA가 샨츠코프스카 종손자와 일치",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
+            "note": "Instead, Anderson's mitochondrial DNA matched that of Karl Maucher, a great-nephew of Franziska Schanzkowska."
+          },
+          {
+            "claim": "1920년 2월 27일 베를린 란트베어 운하 투신 · 정신 병원 수용",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
+            "note": "On 27 February 1920, an unidentified young woman attempted to commit suicide in Berlin by jumping off the Bendlerstrasse bridge into the Landwehrkanal. ... In 1920, Anderson was institutionalized in a mental hospital after a suicide attempt in Berlin."
+          },
+          {
+            "claim": "1927년 헤센 대공이 비용을 댄 사설 조사가 샨츠코프스카로 지목",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Anna_Anderson",
+            "note": "In 1927, a private investigation funded by the Tsarina's brother, Ernest Louis, Grand Duke of Hesse, identified Anderson as Franziska Schanzkowska, a Polish factory worker with a history of mental illness."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Anastasia_(1956_film)"
+        ],
+        "hintNote": "using an amnesiac (Bergman) who looks remarkably like the missing Anastasia. / She won the Academy Award for Best Actress",
+        "easiestCue": "'애나 앤더슨'이 자처한 인물",
+        "targetWhy": "앤더슨 사칭 사건을 알아야 풀림 — 러시아사·영화 애호가 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 이름(애니메이션)의 실제 역사 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'애나 앤더슨'이라는 이름으로 자신이 이 인물이라고 주장",
+          "difWhy": "황녀 사칭 사건 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 로마노프 미스터리",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "블레넘 궁전에서 태어났고",
-     "difWhy": "블레넘 궁전 출생 정치인 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이야깃거리"
+    {
+      "seedId": "world-history-west/5#g019a-H1-19",
+      "seed": {
+        "subject": "처칠",
+        "aspect": null,
+        "ref": "H1-19",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "어머니 제니는 미국 사업가 레너드 제롬의 딸이었습니다. 그림을 그릴 때 프랑스 풍경화가와 같은 '샤를 모랭'이라는 가명을 자주 썼고, 저택의 정원 담을 손수 쌓는 아마추어 벽돌공이기도 했던 이 영국 정치인은?",
+        "answer": "처칠",
+        "acceptedAnswers": [
+          "윈스턴 처칠"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 \"윈스턴 처칠\" 확인",
+        "explanation": "1953년 노벨 문학상을 받았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "그림을 그릴 때 … 가명 … 아마추어 벽돌공이기도 했던 이 영국 정치인",
+          "difWhy": "그림 취미 영국 총리 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "블레넘 궁전에서 태어났고",
+          "difWhy": "블레넘 궁전 출생 정치인 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "옥스퍼드셔에 있는 집안의 저택 블레넘 궁전에서 태어났고, 어머니 제니는 미국 사업가 레너드 제롬의 딸이었습니다. 이 영국 정치인은 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "블레넘 궁전에서 태어남(관심층)",
+          "addedCue": "'샤를 모랭' 가명 · 아마추어 벽돌공",
+          "why": "출생지 단서를 빼고 취미 생활의 세부로"
+        },
+        "generalHint": "그의 아버지 랜돌프 경은 1886년 재무장관이 되었지만, 사임하겠다고 으름장을 놓았다가 받아들여져 정치 경력이 사실상 끝났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2차 세계대전 때 영국을 이끈 총리",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "2차대전 대표 인물",
+          "piece": "f09",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "H1-19",
+          "key": "b055",
+          "hint": "그의 아버지 랜돌프 경은 1886년 재무장관이 되었지만, 사임하겠다고 으름장을 놓았다가 받아들여져 정치 경력이 사실상 끝났다.",
+          "guess": "윈스턴 처칠",
+          "confidence": "high",
+          "hit": true,
+          "answer": "처칠"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Winston_Churchill"
+        ],
+        "facts": [
+          {
+            "claim": "어머니 제니는 미국 사업가 레너드 제롬의 딸",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
+            "note": "His mother was Jennie, Lady Randolph Churchill, a daughter of Leonard Jerome, an American businessman."
+          },
+          {
+            "claim": "1953년 노벨 문학상",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
+            "note": "He was awarded the Nobel Prize in Literature in 1953."
+          },
+          {
+            "claim": "그림에 '샤를 모랭' 가명을 자주 씀 — 프랑스 풍경화가와 같은 이름",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
+            "note": "Often using the pseudonym \"Charles Morin\", identical to that of the French landscape painter Charles Camille Morin (died 1919), he completed hundreds of paintings"
+          },
+          {
+            "claim": "아마추어 벽돌공, 차트웰의 건물·정원 담을 지음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
+            "note": "Churchill was an amateur bricklayer, constructing buildings and garden walls at Chartwell."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Lord_Randolph_Churchill"
+        ],
+        "hintNote": "In 1886, Churchill was appointed Chancellor of the Exchequer ... he threatened to resign ... To his surprise, the prime minister accepted his resignation – effectively ending his career.",
+        "easiestCue": "그림에 '샤를 모랭'이라는 가명을 쓴 영국 정치인",
+        "targetWhy": "유명 정치인의 교과서 밖 취미 세부 — 애호가(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 인물의 집안 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "그림을 그릴 때 … 가명 … 아마추어 벽돌공이기도 했던 이 영국 정치인",
+          "difWhy": "그림 취미 영국 총리 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "옥스퍼드셔에 있는 집안의 저택 블레넘 궁전에서 태어났고, 어머니 제니는 미국 사업가 레너드 제롬의 딸이었습니다. 이 영국 정치인은 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "블레넘 궁전에서 태어남(관심층)",
-     "addedCue": "'샤를 모랭' 가명 · 아마추어 벽돌공",
-     "why": "출생지 단서를 빼고 취미 생활의 세부로"
-    },
-    "generalHint": "그의 아버지 랜돌프 경은 1886년 재무장관이 되었지만, 사임하겠다고 으름장을 놓았다가 받아들여져 정치 경력이 사실상 끝났다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2차 세계대전 때 영국을 이끈 총리",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "2차대전 대표 인물",
-     "piece": "f09",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "H1-19",
-     "key": "b055",
-     "hint": "그의 아버지 랜돌프 경은 1886년 재무장관이 되었지만, 사임하겠다고 으름장을 놓았다가 받아들여져 정치 경력이 사실상 끝났다.",
-     "guess": "윈스턴 처칠",
-     "confidence": "high",
-     "hit": true,
-     "answer": "처칠"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Winston_Churchill"
-    ],
-    "facts": [
-     {
-      "claim": "어머니 제니는 미국 사업가 레너드 제롬의 딸",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
-      "note": "His mother was Jennie, Lady Randolph Churchill, a daughter of Leonard Jerome, an American businessman."
-     },
-     {
-      "claim": "1953년 노벨 문학상",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
-      "note": "He was awarded the Nobel Prize in Literature in 1953."
-     },
-     {
-      "claim": "그림에 '샤를 모랭' 가명을 자주 씀 — 프랑스 풍경화가와 같은 이름",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
-      "note": "Often using the pseudonym \"Charles Morin\", identical to that of the French landscape painter Charles Camille Morin (died 1919), he completed hundreds of paintings"
-     },
-     {
-      "claim": "아마추어 벽돌공, 차트웰의 건물·정원 담을 지음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Winston_Churchill",
-      "note": "Churchill was an amateur bricklayer, constructing buildings and garden walls at Chartwell."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Lord_Randolph_Churchill"
-    ],
-    "hintNote": "In 1886, Churchill was appointed Chancellor of the Exchequer ... he threatened to resign ... To his surprise, the prime minister accepted his resignation – effectively ending his career.",
-    "easiestCue": "그림에 '샤를 모랭'이라는 가명을 쓴 영국 정치인",
-    "targetWhy": "유명 정치인의 교과서 밖 취미 세부 — 애호가(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 인물의 집안 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "world-history-west/5#g019a-H1-20",
-   "seed": {
-    "subject": "체 게바라",
-    "aspect": null,
-    "ref": "H1-20",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 혁명가는 거친 럭비 경기 때문에 '격노한 자'와 어머니의 성을 합친 '푸세르'라는 별명을 얻었습니다. 젊은 시절 살충제를 만들어 팔 생각으로 집 차고에 실험실을 차렸다가 심한 천식 발작 때문에 그만둔 그는 누구일까요?",
-    "answer": "체 게바라",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": "붙여 쓴 \"체게바라\"는 정규화로 같아 넣지 않음",
-    "explanation": "그가 죽은 뒤 잘린 두 손은 지문 확인을 위해 부에노스아이레스로 보내졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "심한 천식 발작 … 이 혁명가",
-     "difWhy": "천식 앓은 혁명가 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "아르헨티나에서 자란 이 혁명가",
-     "difWhy": "아르헨티나 출신 혁명가 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 인물 일화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "아르헨티나에서 자란 이 혁명가는 거친 럭비 경기 때문에 '격노한 자'와 어머니의 성을 합친 '푸세르'라는 별명을 얻었습니다. 그가 죽은 뒤 잘린 두 손은 지문 확인을 위해 부에노스아이레스로 보내졌는데, 그는 누구일까요?",
-     "beforeExplanation": "젊은 시절 살충제를 만들어 팔 생각으로 집 차고에 실험실을 차렸지만, 심한 천식 발작 때문에 그만두었습니다.",
-     "removedCue": "아르헨티나에서 자란 이 혁명가 · 두 손이 부에노스아이레스로(해설로 옮김)",
-     "addedCue": "살충제 실험실과 천식(해설에서 질문으로)",
-     "why": "출신국(방송 상식)을 빼고 젊은 시절 세부로"
-    },
-    "generalHint": "쿠바 혁명 뒤 산업부 장관에 더해 국립은행 총재까지 맡아, 한때 경제의 '사실상 차르'로 일컬어졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "쿠바 혁명을 이끈 아르헨티나 출신 혁명가",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "티셔츠·영화로 유명한 혁명가",
-     "piece": "f02",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "H1-20",
-     "key": "b290",
-     "hint": "쿠바 혁명 뒤 산업부 장관에 더해 국립은행 총재까지 맡아, 한때 경제의 '사실상 차르'로 일컬어졌다.",
-     "guess": "체 게바라",
-     "confidence": "high",
-     "hit": true,
-     "answer": "체 게바라"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Che_Guevara"
-    ],
-    "facts": [
-     {
-      "claim": "럭비로 'Fuser'(El Furibundo + 어머니 성 de la Serna) 별명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Che_Guevara",
-      "note": "His rugby playing earned him the nickname \"Fuser\"—a contraction of El Furibundo (furious) and his mother's surname, de la Serna—for his aggressive play."
-     },
-     {
-      "claim": "손을 지문 확인을 위해 부에노스아이레스로",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Che_Guevara",
-      "note": "The hands were sent to Buenos Aires for fingerprint identification."
-     },
-     {
-      "claim": "차고 실험실 살충제 사업, 천식으로 포기",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Che_Guevara",
-      "note": "he contemplated a career selling insecticides, and set up a laboratory in his family's garage … but was forced to abandon his efforts after suffering a severe asthmatic reaction."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Che_Guevara"
-    ],
-    "hintNote": "Guevara acquired the additional position of Finance Minister, as well as President of the National Bank. These appointments, combined with his existing position as Minister of Industries, placed Guevara at the zenith of his power, as \"virtual czar\" of the economy.",
-    "easiestCue": "'격노한 자'와 어머니의 성을 합친 '푸세르'라는 별명",
-    "targetWhy": "인물의 젊은 시절 세부 — 현대사 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "티셔츠로도 아는 인물의 덜 알려진 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "world-history-west/5#g019a-H1-20",
+      "seed": {
+        "subject": "체 게바라",
+        "aspect": null,
+        "ref": "H1-20",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 혁명가는 거친 럭비 경기 때문에 '격노한 자'와 어머니의 성을 합친 '푸세르'라는 별명을 얻었습니다. 젊은 시절 살충제를 만들어 팔 생각으로 집 차고에 실험실을 차렸다가 심한 천식 발작 때문에 그만둔 그는 누구일까요?",
+        "answer": "체 게바라",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": "붙여 쓴 \"체게바라\"는 정규화로 같아 넣지 않음",
+        "explanation": "그가 죽은 뒤 잘린 두 손은 지문 확인을 위해 부에노스아이레스로 보내졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "심한 천식 발작 … 이 혁명가",
+          "difWhy": "천식 앓은 혁명가 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "아르헨티나에서 자란 이 혁명가",
+          "difWhy": "아르헨티나 출신 혁명가 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 인물 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "아르헨티나에서 자란 이 혁명가는 거친 럭비 경기 때문에 '격노한 자'와 어머니의 성을 합친 '푸세르'라는 별명을 얻었습니다. 그가 죽은 뒤 잘린 두 손은 지문 확인을 위해 부에노스아이레스로 보내졌는데, 그는 누구일까요?",
+          "beforeExplanation": "젊은 시절 살충제를 만들어 팔 생각으로 집 차고에 실험실을 차렸지만, 심한 천식 발작 때문에 그만두었습니다.",
+          "removedCue": "아르헨티나에서 자란 이 혁명가 · 두 손이 부에노스아이레스로(해설로 옮김)",
+          "addedCue": "살충제 실험실과 천식(해설에서 질문으로)",
+          "why": "출신국(방송 상식)을 빼고 젊은 시절 세부로"
+        },
+        "generalHint": "쿠바 혁명 뒤 산업부 장관에 더해 국립은행 총재까지 맡아, 한때 경제의 '사실상 차르'로 일컬어졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "쿠바 혁명을 이끈 아르헨티나 출신 혁명가",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "티셔츠·영화로 유명한 혁명가",
+          "piece": "f02",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "H1-20",
+          "key": "b290",
+          "hint": "쿠바 혁명 뒤 산업부 장관에 더해 국립은행 총재까지 맡아, 한때 경제의 '사실상 차르'로 일컬어졌다.",
+          "guess": "체 게바라",
+          "confidence": "high",
+          "hit": true,
+          "answer": "체 게바라"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Che_Guevara"
+        ],
+        "facts": [
+          {
+            "claim": "럭비로 'Fuser'(El Furibundo + 어머니 성 de la Serna) 별명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Che_Guevara",
+            "note": "His rugby playing earned him the nickname \"Fuser\"—a contraction of El Furibundo (furious) and his mother's surname, de la Serna—for his aggressive play."
+          },
+          {
+            "claim": "손을 지문 확인을 위해 부에노스아이레스로",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Che_Guevara",
+            "note": "The hands were sent to Buenos Aires for fingerprint identification."
+          },
+          {
+            "claim": "차고 실험실 살충제 사업, 천식으로 포기",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Che_Guevara",
+            "note": "he contemplated a career selling insecticides, and set up a laboratory in his family's garage … but was forced to abandon his efforts after suffering a severe asthmatic reaction."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Che_Guevara"
+        ],
+        "hintNote": "Guevara acquired the additional position of Finance Minister, as well as President of the National Bank. These appointments, combined with his existing position as Minister of Industries, placed Guevara at the zenith of his power, as \"virtual czar\" of the economy.",
+        "easiestCue": "'격노한 자'와 어머니의 성을 합친 '푸세르'라는 별명",
+        "targetWhy": "인물의 젊은 시절 세부 — 현대사 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "티셔츠로도 아는 인물의 덜 알려진 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "심한 천식 발작 … 이 혁명가",
+          "difWhy": "천식 앓은 혁명가 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

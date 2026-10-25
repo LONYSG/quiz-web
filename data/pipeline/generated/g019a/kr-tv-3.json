@@ -1,670 +1,763 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "kr-tv/3",
-  "midKey": "kr-tv",
-  "subName": "광고",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "kr-tv/3#g019a-M1-07",
-   "seed": {
-    "subject": "천호식품 광고",
-    "aspect": "대중",
-    "ref": "M1-07",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "한 건강식품 회사 회장은 자사 TV 광고에 직접 나와 경상도 사투리로 제품을 알렸습니다. 그는 효능을 구구절절 말하면 과장 광고가 된다는 점에서 일부러 돌려 말하는 대사를 떠올렸다고 하는데, 이 광고가 알린 제품은 무엇일까요?",
-    "answer": "산수유",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이 광고는 뒤에 과장 광고가 아니라는 판결을 받았다고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "회장은 … 경상도 사투리로 … 일부러 돌려 말하는 대사",
-     "difWhy": "'남자한테 참 좋은데' 광고 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 광고 상품",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "회장은 … 경상도 사투리로 … 일부러 돌려 말하는 대사",
-     "difWhy": "'남자한테 참 좋은데' 광고 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 광고 상품"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "광고 자체가 대상 — '일부러 돌려 말하는 대사'를 빼면 제품을 가리킬 단서가 없고, 남기면 유명 광고 문구로 바로 풀린다. 출처가 나무위키뿐이라 더 깊은 광고 세부를 확인하지 못함"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "가을에 빨갛게 익는 약재용 열매 — 건강즙 광고로 유명",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "광고 유행어·열매로 널리 앎",
-     "piece": "f01",
-     "genPct": 90
-    },
-    "blind": null,
-    "layer": "대중",
-    "genre": "예능",
-    "work": "천호식품 광고",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)"
-    ],
-    "facts": [
-     {
-      "claim": "회장이 자사 광고에 직접 출연, 경상도 사투리",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
-      "note": "자사 텔레비전 광고에 직접 출연하여 특유의 경상도 사투리로 자사 제품을 선전하여 유명해졌다."
-     },
-     {
-      "claim": "대사와 제품 산수유",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
-      "note": "산수유, 남자한테 참 좋은데, 남자한테 정말 좋은데, 어떻게 표현할 방뻡이 없네. 직접 말하기도 그렇고..."
-     },
-     {
-      "claim": "과장광고 법에서 착안",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
-      "note": "본인의 자서전에 따르면 이 대사는 건강보조식품이 몸에 좋다고 하며 효능을 구구절절 직접적으로 말하면 과장광고가 된다는 법에서 착안했다고 한다. 그러니까 말할 수가 없으니까 진짜로 \"말할 수가 없다.\"고 돌려 말하듯이 했다는 것."
-     },
-     {
-      "claim": "과장광고 아님 판결",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
-      "note": "실제로 이 광고는 과장광고가 아닌 것으로 판결이 났다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "회장이 직접 나와 경상도 사투리로 … 일부러 돌려 말하는 대사",
-    "targetWhy": "'표현할 방법이 없네' 광고 — 방송에서 흔히 본 유명 광고(경계 3), 대사 착안 사연은 애호가",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "광고 자체가 국민 밈이라 대중 층",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "kr-tv/3",
+    "midKey": "kr-tv",
+    "subName": "광고",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "kr-tv/3#g019a-M1-08",
-   "seed": {
-    "subject": "삼성 마이젯 광고",
-    "aspect": "대중",
-    "ref": "M1-08",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1997년 하이틴 잡지 《에꼴》의 표지 모델로 데뷔한 이 배우는, 드라마 PD 오종록이 본명의 성 한자에 삿갓을 씌운 모습이 멋있다며 성을 바꾼 예명을 지어 주었습니다. 1999년 중국 가수 여명의 '사랑의 시작' 뮤직비디오에도 나온 이 배우는?",
-    "answer": "전지현",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "같은 해 삼성 마이젯 프린터 광고에서 테크노 춤을 선보여 큰 인기를 얻었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "본명의 성 한자에 삿갓을 씌운 모습 … 성을 바꾼 예명",
-     "difWhy": "성을 바꾼 예명 배우 — 연예 관심층",
-     "wor": 3,
-     "worWhy": "누구나 아는 배우 이름 맞히기",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "kr-tv/3#g019a-M1-07",
+      "seed": {
+        "subject": "천호식품 광고",
+        "aspect": "대중",
+        "ref": "M1-07",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "한 건강식품 회사 회장은 자사 TV 광고에 직접 나와 경상도 사투리로 제품을 알렸습니다. 그는 효능을 구구절절 말하면 과장 광고가 된다는 점에서 일부러 돌려 말하는 대사를 떠올렸다고 하는데, 이 광고가 알린 제품은 무엇일까요?",
+        "answer": "산수유",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이 광고는 뒤에 과장 광고가 아니라는 판결을 받았다고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "회장은 … 경상도 사투리로 … 일부러 돌려 말하는 대사",
+          "difWhy": "'남자한테 참 좋은데' 광고 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 광고 상품",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "회장은 … 경상도 사투리로 … 일부러 돌려 말하는 대사",
+          "difWhy": "'남자한테 참 좋은데' 광고 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 광고 상품"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "광고 자체가 대상 — '일부러 돌려 말하는 대사'를 빼면 제품을 가리킬 단서가 없고, 남기면 유명 광고 문구로 바로 풀린다. 출처가 나무위키뿐이라 더 깊은 광고 세부를 확인하지 못함"
+        },
+        "generalHint": "지리산 기슭인 전남 구례의 산동면이 이름난 산지로 꼽힌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "가을에 빨갛게 익는 약재용 열매 — 건강즙 광고로 유명",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "광고 유행어·열매로 널리 앎",
+          "piece": "f01",
+          "genPct": 90
+        },
+        "blind": null,
+        "layer": "대중",
+        "genre": "예능",
+        "work": "천호식품 광고",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)"
+        ],
+        "facts": [
+          {
+            "claim": "회장이 자사 광고에 직접 출연, 경상도 사투리",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
+            "note": "자사 텔레비전 광고에 직접 출연하여 특유의 경상도 사투리로 자사 제품을 선전하여 유명해졌다."
+          },
+          {
+            "claim": "대사와 제품 산수유",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
+            "note": "산수유, 남자한테 참 좋은데, 남자한테 정말 좋은데, 어떻게 표현할 방뻡이 없네. 직접 말하기도 그렇고..."
+          },
+          {
+            "claim": "과장광고 법에서 착안",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
+            "note": "본인의 자서전에 따르면 이 대사는 건강보조식품이 몸에 좋다고 하며 효능을 구구절절 직접적으로 말하면 과장광고가 된다는 법에서 착안했다고 한다. 그러니까 말할 수가 없으니까 진짜로 \"말할 수가 없다.\"고 돌려 말하듯이 했다는 것."
+          },
+          {
+            "claim": "과장광고 아님 판결",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EA%B9%80%EC%98%81%EC%8B%9D(%EA%B8%B0%EC%97%85%EC%9D%B8)",
+            "note": "실제로 이 광고는 과장광고가 아닌 것으로 판결이 났다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/산수유"
+        ],
+        "easiestCue": "회장이 직접 나와 경상도 사투리로 … 일부러 돌려 말하는 대사",
+        "targetWhy": "'표현할 방법이 없네' 광고 — 방송에서 흔히 본 유명 광고(경계 3), 대사 착안 사연은 애호가",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "광고 자체가 국민 밈이라 대중 층",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "회장은 … 경상도 사투리로 … 일부러 돌려 말하는 대사",
+          "difWhy": "'남자한테 참 좋은데' 광고 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 광고 상품",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok  · H0 재채점 3 → 힌트 붙임",
+          "verdict": "ok",
+          "hintGen": true,
+          "hintGenNote": "G020 하위 에이전트(hint-v6 규칙 · 문서 확인) → GEN 다시 씀"
+        }
+      }
     },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "삼성의 마이젯 프린터 광고에서 테크노 음악에 맞춰 춤",
-     "difWhy": "프린터 광고 테크노 춤 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 배우 이름"
+    {
+      "seedId": "kr-tv/3#g019a-M1-08",
+      "seed": {
+        "subject": "삼성 마이젯 광고",
+        "aspect": "대중",
+        "ref": "M1-08",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1997년 하이틴 잡지 《에꼴》의 표지 모델로 데뷔한 이 배우는, 드라마 PD 오종록이 본명의 성 한자에 삿갓을 씌운 모습이 멋있다며 성을 바꾼 예명을 지어 주었습니다. 1999년 중국 가수 여명의 '사랑의 시작' 뮤직비디오에도 나온 이 배우는?",
+        "answer": "전지현",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "같은 해 삼성 마이젯 프린터 광고에서 테크노 춤을 선보여 큰 인기를 얻었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "본명의 성 한자에 삿갓을 씌운 모습 … 성을 바꾼 예명",
+          "difWhy": "성을 바꾼 예명 배우 — 연예 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 배우 이름 맞히기",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "삼성의 마이젯 프린터 광고에서 테크노 음악에 맞춰 춤",
+          "difWhy": "프린터 광고 테크노 춤 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 배우 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1999년 삼성의 마이젯 프린터 광고에서 테크노 음악에 맞춰 춤을 추며 큰 인기를 얻은 배우입니다. 같은 해 가수 여명의 노래 '사랑의 시작' 뮤직비디오에도 나온 이 배우는 누구일까요?",
+          "beforeExplanation": "같은 해 SBS 드라마 '해피투게더'의 막내 가영 역으로 SBS 연기대상 여자 신인상을 받았습니다.",
+          "removedCue": "삼성의 마이젯 프린터 광고에서 테크노 음악에 맞춰 춤",
+          "addedCue": "《에꼴》 표지 데뷔 · 오종록 PD가 지어 준 예명",
+          "why": "누구나 아는 프린터 광고 춤을 해설로 옮기고 데뷔·예명 뒷이야기로 바꿈"
+        },
+        "generalHint": "1999년 영화 '화이트 발렌타인'과 2000년 '시월애'에 나오며 배우 경력을 쌓았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'엽기적인 그녀'·'도둑들'의 한국 여배우",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "톱 여배우",
+          "piece": "f08",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "M1-08",
+          "key": "b284",
+          "hint": "1999년 영화 '화이트 발렌타인'과 2000년 '시월애'에 나오며 배우 경력을 쌓았다.",
+          "guess": "전지현",
+          "confidence": "high",
+          "hit": true,
+          "answer": "전지현"
+        },
+        "layer": "대중",
+        "genre": "예능",
+        "work": "삼성 마이젯 광고",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84",
+          "https://ko.wikipedia.org/wiki/전지현"
+        ],
+        "facts": [
+          {
+            "claim": "1999년 여명 '사랑의 시작' 뮤직비디오",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84",
+            "note": "1999년 전지현은 중국 가수 여명의 노래 〈사랑의 시작〉 뮤직비디오에 출연했다."
+          },
+          {
+            "claim": "1999년 테크노 댄스 삼성 마이젯 프린터 광고",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84",
+            "note": "같은 해 테크노 댄스를 선보인 삼성 마이젯 프린터 광고에서 청순하면서도 섹시한 이미지를 구축해 엄청난 인기를 얻으며"
+          },
+          {
+            "claim": "1997년 하이틴 잡지 《에꼴》 표지 모델로 데뷔",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/전지현",
+            "note": "1997년 하이틴 잡지 《에꼴》의 표지 모델로 데뷔했다."
+          },
+          {
+            "claim": "오종록 PD가 본명 왕지현의 성 왕(王)에 삿갓 쓴 모습이 멋있다며 전(全)으로 바꾼 예명",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/전지현",
+            "note": "드라마를 연출했던 오종록 PD는 전지현에게 본명인 왕지현의 성 왕(王)에 \"삿갓을 쓴 모습\"이 멋있다며 왕을 전(全)으로 바꿔 전지현이라는 예명을 지어줬다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84"
+        ],
+        "hintNote": "영화 《화이트 발렌타인》 (1999), 《시월애》 (2000)에 출연하면서 배우로서 경력을 쌓았다.",
+        "easiestCue": "1999년 여명 '사랑의 시작' 뮤직비디오 출연",
+        "targetWhy": "데뷔 잡지·예명 유래·여명 뮤직비디오는 연예 애호가 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "유명 배우의 데뷔 초 광고 세부",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "본명의 성 한자에 삿갓을 씌운 모습 … 성을 바꾼 예명",
+          "difWhy": "성을 바꾼 예명 배우 — 연예 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 배우 이름 맞히기",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1999년 삼성의 마이젯 프린터 광고에서 테크노 음악에 맞춰 춤을 추며 큰 인기를 얻은 배우입니다. 같은 해 가수 여명의 노래 '사랑의 시작' 뮤직비디오에도 나온 이 배우는 누구일까요?",
-     "beforeExplanation": "같은 해 SBS 드라마 '해피투게더'의 막내 가영 역으로 SBS 연기대상 여자 신인상을 받았습니다.",
-     "removedCue": "삼성의 마이젯 프린터 광고에서 테크노 음악에 맞춰 춤",
-     "addedCue": "《에꼴》 표지 데뷔 · 오종록 PD가 지어 준 예명",
-     "why": "누구나 아는 프린터 광고 춤을 해설로 옮기고 데뷔·예명 뒷이야기로 바꿈"
+    {
+      "seedId": "kr-tv/3#g019a-M1-09",
+      "seed": {
+        "subject": "동서식품 커피 광고",
+        "aspect": "대중",
+        "ref": "M1-09",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1957년 영화 '황혼열차'의 아역으로 데뷔해 대학에서는 베트남어를 전공한 이 배우는 1991년 유니세프 홍보대사가 되었습니다. 그 무렵 한국으로 들어오는 항공편 기내에서 그의 유니세프 공익 광고가 상영되기도 했는데, 이 배우는 누구일까요?",
+        "answer": "안성기",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1983년부터 2021년까지 동서식품의 맥스웰하우스·맥심·프리마 광고에 나왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1957년 영화 '황혼열차'의 아역으로 데뷔 … 유니세프 홍보대사",
+          "difWhy": "아역 출신 국민 배우 — 영화 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 배우 이름",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "1983년부터 2021년까지 동서식품의 … 맥심 … 광고",
+          "difWhy": "맥심 장수 광고 배우 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "국민 배우 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "대학에서 베트남어를 전공한 이 배우는 1983년부터 2021년까지 동서식품의 맥스웰하우스·맥심·프리마 광고에 나왔습니다. 1957년 영화 '황혼열차'의 아역으로 데뷔한 이 배우는 누구일까요?",
+          "beforeExplanation": "2026년 1월 5일 향년 75세로 세상을 떠났습니다.",
+          "removedCue": "1983~2021년 동서식품 맥스웰하우스·맥심·프리마 광고",
+          "addedCue": "1991년 유니세프 홍보대사 · 입국 항공편 기내 공익 광고",
+          "why": "방송에서 흔한 장수 커피 광고를 해설로 옮기고 공익 광고 세부로(광고 소분류 유지)"
+        },
+        "generalHint": "대학 때 베트남 전쟁에 나가 베트남으로 진출하려 했으나, 소위 임관을 앞두고 전쟁이 끝났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'국민 배우'로 불린 한국 원로 남자 배우",
+        "familiarity": {
+          "judge": 3,
+          "pct": 98,
+          "why": "국민 배우",
+          "piece": "f01",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "M1-09",
+          "key": "b287",
+          "hint": "대학 때 베트남 전쟁에 나가 베트남으로 진출하려 했으나, 소위 임관을 앞두고 전쟁이 끝났다.",
+          "guess": "이수만",
+          "confidence": "low",
+          "hit": false,
+          "answer": "안성기"
+        },
+        "layer": "대중",
+        "genre": "예능",
+        "work": "동서식품 커피 광고",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0"
+        ],
+        "facts": [
+          {
+            "claim": "한국외대 베트남어 전공",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
+            "note": "대학에서는 베트남어를 전공하였다."
+          },
+          {
+            "claim": "동서식품 광고 1983~2021",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
+            "note": "동서식품 그랜디, 맥스웰상카, 맥스웰하우스, 프리마, 맥심 아라비카100, 맥심 아이스커피, 맥심 커피선물세트, 맥심 한잔 어때요?(라디오) (1983년 ~ 2021년)"
+          },
+          {
+            "claim": "1957년 황혼열차 아역 데뷔",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
+            "note": "1957년 영화 《황혼열차》를 통해 연예계에 데뷔하여 아역 배우로 활동을 시작하였다."
+          },
+          {
+            "claim": "1991년 유니세프 홍보대사 · 입국 항공편 기내 공익 광고",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
+            "note": "1991년 유니세프 홍보대사로 임명되어 국제 구호 및 인도적 활동에 참여하였다. 당시 대한민국 입국 항공편 기내에서 유니세프 공익 광고가 상영되기도 하였다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0"
+        ],
+        "hintNote": "베트남 전쟁 발발 당시 참전을 통해 베트남 진출을 모색하였으나, 소위 임관을 앞둔 시점에 전쟁이 종전되면서 실제 참전에는 이르지 못하였다.",
+        "easiestCue": "1957년 '황혼열차' 아역 데뷔 · 베트남어 전공 배우",
+        "targetWhy": "아역 데뷔작·전공·기내 공익 광고는 영화 애호가 세부 — 4(경계)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "국민 배우의 광고 이력 — 쉬운 쪽 단서가 남음",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1957년 영화 '황혼열차'의 아역으로 데뷔 … 유니세프 홍보대사",
+          "difWhy": "아역 출신 국민 배우 — 영화 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 배우 이름",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "generalHint": "1999년 영화 '화이트 발렌타인'과 2000년 '시월애'에 나오며 배우 경력을 쌓았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'엽기적인 그녀'·'도둑들'의 한국 여배우",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "톱 여배우",
-     "piece": "f08",
-     "genPct": 98
+    {
+      "seedId": "kr-tv/3#g019a-M1-10",
+      "seed": {
+        "subject": "2% 부족할 때 광고",
+        "aspect": "팬 세부",
+        "ref": "M1-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1999년 7월 롯데칠성음료가 내놓은 미과즙 음료의 첫 광고는 '가! 가란 말이야!'라는 대사로 전설이 됐습니다. 이 광고에 정우성과 함께 나온 중국 여배우는 누구일까요?",
+        "answer": "장쯔이",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '장쯔이' 확인",
+        "explanation": "이 음료와 광고 덕분에 '2% 부족하다'는 말이 일상 표현처럼 쓰이게 됐습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'가! 가란 말이야!' … 정우성과 함께 나온 중국 여배우",
+          "difWhy": "2% 광고 상대역 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 광고 이야깃거리",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'가! 가란 말이야!' … 정우성과 함께 나온 중국 여배우",
+          "difWhy": "2% 광고 상대역 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 광고 이야깃거리"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "광고 자체가 대상 — 대사·정우성을 빼면 남는 단서가 없고, 확인되는 더 깊은 광고 세부(출처 나무위키뿐)가 없다. 장쯔이 개인 이력으로 바꾸면 광고 소분류를 벗어난다"
+        },
+        "generalHint": "2001년 '러시 아워 2'의 악역으로 할리우드에 데뷔했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'와호장룡'·'게이샤의 추억'의 중국 여배우",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "와호장룡 등으로 알려진 중국 배우",
+          "piece": "f01",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "M1-10",
+          "key": "b056",
+          "hint": "2001년 '러시 아워 2'의 악역으로 할리우드에 데뷔했다.",
+          "guess": "장쯔이",
+          "confidence": "high",
+          "hit": true,
+          "answer": "장쯔이"
+        },
+        "layer": "대중",
+        "genre": "예능",
+        "work": "2% 부족할 때 광고",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
+          "https://ko.wikipedia.org/wiki/%EC%9E%A5%EC%AF%94%EC%9D%B4"
+        ],
+        "facts": [
+          {
+            "claim": "1999년 7월 롯데칠성음료 미과즙 음료",
+            "where": "q",
+            "url": "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
+            "note": "롯데칠성음료에서 1999년 7월 출시한 미과즙 음료."
+          },
+          {
+            "claim": "첫 광고 '가! 가란 말이야!', 정우성과 장쯔이 출연",
+            "where": "q",
+            "url": "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
+            "note": "\"가! 가란 말이야!\" 전설이 된 첫번째 광고. 정우성과 장쯔이가 출연했다."
+          },
+          {
+            "claim": "장쯔이는 중국 배우",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9E%A5%EC%AF%94%EC%9D%B4",
+            "note": "장쯔이(장자이, 중국어: 章子怡, 병음: Zhāng Zǐyí, 1979년 2월 9일 ~ )는 중국의 배우로 베이징시에서 태어났다."
+          },
+          {
+            "claim": "'2% 부족하다' 표현 일상화",
+            "where": "e",
+            "url": "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
+            "note": "이 음료와 광고의 영향으로 인해 \"2% 부족하다\"라는 표현이 거의 일상"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Zhang_Ziyi"
+        ],
+        "hintNote": "Zhang made her Hollywood debut as a villain in Rush Hour 2 (2001)",
+        "easiestCue": "이 광고에 정우성과 함께 나온 중국 여배우",
+        "targetWhy": "2% 부족할 때 첫 광고의 상대역 — 광고를 기억하는 애호가 세부",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "아는 배우의 의외의 한국 광고 출연",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'가! 가란 말이야!' … 정우성과 함께 나온 중국 여배우",
+          "difWhy": "2% 광고 상대역 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "레전드 광고 이야깃거리",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "M1-08",
-     "key": "b284",
-     "hint": "1999년 영화 '화이트 발렌타인'과 2000년 '시월애'에 나오며 배우 경력을 쌓았다.",
-     "guess": "전지현",
-     "confidence": "high",
-     "hit": true,
-     "answer": "전지현"
+    {
+      "seedId": "kr-tv/3#g019a-M1-11",
+      "seed": {
+        "subject": "우루사 광고",
+        "aspect": "팬 세부",
+        "ref": "M1-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1980년대 초에는 가수 최희준이, 1980년대 후반부터는 배우 백일섭이 광고를 도맡았던 약입니다. 이 약은 무엇일까요?",
+        "answer": "우루사",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이름은 라틴어로 곰을 뜻하는 말에서 왔고, 2011년 차두리가 나온 '간 때문이야' 광고로 다시 크게 화제가 됐습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1980년대 후반부터는 배우 백일섭이 광고를 도맡았던 약",
+          "difWhy": "백일섭 간장약 광고 — 방송 관심층",
+          "wor": 3,
+          "worWhy": "대중적 제품 이름",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "엮음: '나는 곰이다' + 간장약",
+          "difWhy": "곰 + 간장약 광고 — 방송 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 광고 상품 이름 — 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1980년대 초에는 '나는 곰이다'를 발표한 가수 최희준이, 1980년대 후반부터는 배우 백일섭이 광고를 도맡았던 간장약입니다. 이 약은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "'나는 곰이다'를 발표한 · 간장약",
+          "addedCue": "(새 단서 없음 — 광고 모델 둘의 엮음만)",
+          "why": "곡명 '나는 곰이다'와 간장약(곰+간 연결로 바로 풀림)을 빼서 옛 광고 기억으로만"
+        },
+        "generalHint": "1961년 처음 나왔고, 2016년부터는 가수 윤종신도 광고 모델로 나왔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "곰 그림으로 알려진 한국의 대표 간장약",
+        "familiarity": {
+          "judge": 3,
+          "pct": 92,
+          "why": "광고로 유명한 약",
+          "piece": "f02",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "M1-11",
+          "key": "b100",
+          "hint": "1961년 처음 나왔고, 2016년부터는 가수 윤종신도 광고 모델로 나왔다.",
+          "guess": "박카스",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "우루사"
+        },
+        "layer": "팬 세부",
+        "genre": "예능",
+        "work": "우루사 광고",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC"
+        ],
+        "facts": [
+          {
+            "claim": "1980년대 초 최희준, 1980년대 후반부터 백일섭 광고",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC",
+            "note": "광고는 1980년대 초반에 '나는 곰이다'를 발표한 최희준이 광고한 데 이어 1980년대 후반부터 백일섭이 전담했으나"
+          },
+          {
+            "claim": "이름 유래 라틴어 곰",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC",
+            "note": "라틴어로 곰을 뜻하는 우르수스(Ursus)의 지소사격인 우르사(Ursa)에서 이름을 따왔기 때문에"
+          },
+          {
+            "claim": "2011년 차두리 간 때문이야 광고",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC",
+            "note": "원래부터 유명했지만 2011년 차두리의 간 때문이야 광고로 엄청 떴다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%9A%B0%EB%A3%A8%EC%82%AC"
+        ],
+        "hintNote": "1961년에 처음 발매되었다. / 우루사 광고모델 ... 윤종신 (2016~현재)",
+        "easiestCue": "1980년대 후반부터는 배우 백일섭이 광고를 도맡았던",
+        "targetWhy": "옛 광고 모델 — 광고 애호가(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 약 이름, 단서는 옛 광고 모델",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1980년대 후반부터는 배우 백일섭이 광고를 도맡았던 약",
+          "difWhy": "백일섭 간장약 광고 — 방송 관심층",
+          "wor": 3,
+          "worWhy": "대중적 제품 이름",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "layer": "대중",
-    "genre": "예능",
-    "work": "삼성 마이젯 광고",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84",
-     "https://ko.wikipedia.org/wiki/전지현"
-    ],
-    "facts": [
-     {
-      "claim": "1999년 여명 '사랑의 시작' 뮤직비디오",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84",
-      "note": "1999년 전지현은 중국 가수 여명의 노래 〈사랑의 시작〉 뮤직비디오에 출연했다."
-     },
-     {
-      "claim": "1999년 테크노 댄스 삼성 마이젯 프린터 광고",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84",
-      "note": "같은 해 테크노 댄스를 선보인 삼성 마이젯 프린터 광고에서 청순하면서도 섹시한 이미지를 구축해 엄청난 인기를 얻으며"
-     },
-     {
-      "claim": "1997년 하이틴 잡지 《에꼴》 표지 모델로 데뷔",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/전지현",
-      "note": "1997년 하이틴 잡지 《에꼴》의 표지 모델로 데뷔했다."
-     },
-     {
-      "claim": "오종록 PD가 본명 왕지현의 성 왕(王)에 삿갓 쓴 모습이 멋있다며 전(全)으로 바꾼 예명",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/전지현",
-      "note": "드라마를 연출했던 오종록 PD는 전지현에게 본명인 왕지현의 성 왕(王)에 \"삿갓을 쓴 모습\"이 멋있다며 왕을 전(全)으로 바꿔 전지현이라는 예명을 지어줬다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%A0%84%EC%A7%80%ED%98%84"
-    ],
-    "hintNote": "영화 《화이트 발렌타인》 (1999), 《시월애》 (2000)에 출연하면서 배우로서 경력을 쌓았다.",
-    "easiestCue": "1999년 여명 '사랑의 시작' 뮤직비디오 출연",
-    "targetWhy": "데뷔 잡지·예명 유래·여명 뮤직비디오는 연예 애호가 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "유명 배우의 데뷔 초 광고 세부",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-tv/3#g019a-M1-09",
-   "seed": {
-    "subject": "동서식품 커피 광고",
-    "aspect": "대중",
-    "ref": "M1-09",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1957년 영화 '황혼열차'의 아역으로 데뷔해 대학에서는 베트남어를 전공한 이 배우는 1991년 유니세프 홍보대사가 되었습니다. 그 무렵 한국으로 들어오는 항공편 기내에서 그의 유니세프 공익 광고가 상영되기도 했는데, 이 배우는 누구일까요?",
-    "answer": "안성기",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1983년부터 2021년까지 동서식품의 맥스웰하우스·맥심·프리마 광고에 나왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1957년 영화 '황혼열차'의 아역으로 데뷔 … 유니세프 홍보대사",
-     "difWhy": "아역 출신 국민 배우 — 영화 관심층",
-     "wor": 3,
-     "worWhy": "누구나 아는 배우 이름",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "1983년부터 2021년까지 동서식품의 … 맥심 … 광고",
-     "difWhy": "맥심 장수 광고 배우 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "국민 배우 이름"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "대학에서 베트남어를 전공한 이 배우는 1983년부터 2021년까지 동서식품의 맥스웰하우스·맥심·프리마 광고에 나왔습니다. 1957년 영화 '황혼열차'의 아역으로 데뷔한 이 배우는 누구일까요?",
-     "beforeExplanation": "2026년 1월 5일 향년 75세로 세상을 떠났습니다.",
-     "removedCue": "1983~2021년 동서식품 맥스웰하우스·맥심·프리마 광고",
-     "addedCue": "1991년 유니세프 홍보대사 · 입국 항공편 기내 공익 광고",
-     "why": "방송에서 흔한 장수 커피 광고를 해설로 옮기고 공익 광고 세부로(광고 소분류 유지)"
-    },
-    "generalHint": "대학 때 베트남 전쟁에 나가 베트남으로 진출하려 했으나, 소위 임관을 앞두고 전쟁이 끝났다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'국민 배우'로 불린 한국 원로 남자 배우",
-    "familiarity": {
-     "judge": 3,
-     "pct": 98,
-     "why": "국민 배우",
-     "piece": "f01",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "M1-09",
-     "key": "b287",
-     "hint": "대학 때 베트남 전쟁에 나가 베트남으로 진출하려 했으나, 소위 임관을 앞두고 전쟁이 끝났다.",
-     "guess": "이수만",
-     "confidence": "low",
-     "hit": false,
-     "answer": "안성기"
-    },
-    "layer": "대중",
-    "genre": "예능",
-    "work": "동서식품 커피 광고",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0"
-    ],
-    "facts": [
-     {
-      "claim": "한국외대 베트남어 전공",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
-      "note": "대학에서는 베트남어를 전공하였다."
-     },
-     {
-      "claim": "동서식품 광고 1983~2021",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
-      "note": "동서식품 그랜디, 맥스웰상카, 맥스웰하우스, 프리마, 맥심 아라비카100, 맥심 아이스커피, 맥심 커피선물세트, 맥심 한잔 어때요?(라디오) (1983년 ~ 2021년)"
-     },
-     {
-      "claim": "1957년 황혼열차 아역 데뷔",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
-      "note": "1957년 영화 《황혼열차》를 통해 연예계에 데뷔하여 아역 배우로 활동을 시작하였다."
-     },
-     {
-      "claim": "1991년 유니세프 홍보대사 · 입국 항공편 기내 공익 광고",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0",
-      "note": "1991년 유니세프 홍보대사로 임명되어 국제 구호 및 인도적 활동에 참여하였다. 당시 대한민국 입국 항공편 기내에서 유니세프 공익 광고가 상영되기도 하였다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%95%88%EC%84%B1%EA%B8%B0"
-    ],
-    "hintNote": "베트남 전쟁 발발 당시 참전을 통해 베트남 진출을 모색하였으나, 소위 임관을 앞둔 시점에 전쟁이 종전되면서 실제 참전에는 이르지 못하였다.",
-    "easiestCue": "1957년 '황혼열차' 아역 데뷔 · 베트남어 전공 배우",
-    "targetWhy": "아역 데뷔작·전공·기내 공익 광고는 영화 애호가 세부 — 4(경계)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "국민 배우의 광고 이력 — 쉬운 쪽 단서가 남음",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-tv/3#g019a-M1-10",
-   "seed": {
-    "subject": "2% 부족할 때 광고",
-    "aspect": "팬 세부",
-    "ref": "M1-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1999년 7월 롯데칠성음료가 내놓은 미과즙 음료의 첫 광고는 '가! 가란 말이야!'라는 대사로 전설이 됐습니다. 이 광고에 정우성과 함께 나온 중국 여배우는 누구일까요?",
-    "answer": "장쯔이",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '장쯔이' 확인",
-    "explanation": "이 음료와 광고 덕분에 '2% 부족하다'는 말이 일상 표현처럼 쓰이게 됐습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "'가! 가란 말이야!' … 정우성과 함께 나온 중국 여배우",
-     "difWhy": "2% 광고 상대역 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "레전드 광고 이야깃거리",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'가! 가란 말이야!' … 정우성과 함께 나온 중국 여배우",
-     "difWhy": "2% 광고 상대역 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "레전드 광고 이야깃거리"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "광고 자체가 대상 — 대사·정우성을 빼면 남는 단서가 없고, 확인되는 더 깊은 광고 세부(출처 나무위키뿐)가 없다. 장쯔이 개인 이력으로 바꾸면 광고 소분류를 벗어난다"
-    },
-    "generalHint": "2001년 '러시 아워 2'의 악역으로 할리우드에 데뷔했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'와호장룡'·'게이샤의 추억'의 중국 여배우",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "와호장룡 등으로 알려진 중국 배우",
-     "piece": "f01",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "M1-10",
-     "key": "b056",
-     "hint": "2001년 '러시 아워 2'의 악역으로 할리우드에 데뷔했다.",
-     "guess": "장쯔이",
-     "confidence": "high",
-     "hit": true,
-     "answer": "장쯔이"
-    },
-    "layer": "팬 세부",
-    "genre": "예능",
-    "work": "2% 부족할 때 광고",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
-     "https://ko.wikipedia.org/wiki/%EC%9E%A5%EC%AF%94%EC%9D%B4"
-    ],
-    "facts": [
-     {
-      "claim": "1999년 7월 롯데칠성음료 미과즙 음료",
-      "where": "q",
-      "url": "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
-      "note": "롯데칠성음료에서 1999년 7월 출시한 미과즙 음료."
-     },
-     {
-      "claim": "첫 광고 '가! 가란 말이야!', 정우성과 장쯔이 출연",
-      "where": "q",
-      "url": "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
-      "note": "\"가! 가란 말이야!\" 전설이 된 첫번째 광고. 정우성과 장쯔이가 출연했다."
-     },
-     {
-      "claim": "장쯔이는 중국 배우",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9E%A5%EC%AF%94%EC%9D%B4",
-      "note": "장쯔이(장자이, 중국어: 章子怡, 병음: Zhāng Zǐyí, 1979년 2월 9일 ~ )는 중국의 배우로 베이징시에서 태어났다."
-     },
-     {
-      "claim": "'2% 부족하다' 표현 일상화",
-      "where": "e",
-      "url": "https://namu.wiki/w/2%25%20%EB%B6%80%EC%A1%B1%ED%95%A0%20%EB%95%8C",
-      "note": "이 음료와 광고의 영향으로 인해 \"2% 부족하다\"라는 표현이 거의 일상"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Zhang_Ziyi"
-    ],
-    "hintNote": "Zhang made her Hollywood debut as a villain in Rush Hour 2 (2001)",
-    "easiestCue": "이 광고에 정우성과 함께 나온 중국 여배우",
-    "targetWhy": "2% 부족할 때 첫 광고의 상대역 — 광고를 기억하는 애호가 세부",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "아는 배우의 의외의 한국 광고 출연",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-tv/3#g019a-M1-11",
-   "seed": {
-    "subject": "우루사 광고",
-    "aspect": "팬 세부",
-    "ref": "M1-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1980년대 초에는 가수 최희준이, 1980년대 후반부터는 배우 백일섭이 광고를 도맡았던 약입니다. 이 약은 무엇일까요?",
-    "answer": "우루사",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이름은 라틴어로 곰을 뜻하는 말에서 왔고, 2011년 차두리가 나온 '간 때문이야' 광고로 다시 크게 화제가 됐습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1980년대 후반부터는 배우 백일섭이 광고를 도맡았던 약",
-     "difWhy": "백일섭 간장약 광고 — 방송 관심층",
-     "wor": 3,
-     "worWhy": "대중적 제품 이름",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "엮음: '나는 곰이다' + 간장약",
-     "difWhy": "곰 + 간장약 광고 — 방송 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 광고 상품 이름 — 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1980년대 초에는 '나는 곰이다'를 발표한 가수 최희준이, 1980년대 후반부터는 배우 백일섭이 광고를 도맡았던 간장약입니다. 이 약은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "'나는 곰이다'를 발표한 · 간장약",
-     "addedCue": "(새 단서 없음 — 광고 모델 둘의 엮음만)",
-     "why": "곡명 '나는 곰이다'와 간장약(곰+간 연결로 바로 풀림)을 빼서 옛 광고 기억으로만"
-    },
-    "generalHint": "1961년 처음 나왔고, 2016년부터는 가수 윤종신도 광고 모델로 나왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "곰 그림으로 알려진 한국의 대표 간장약",
-    "familiarity": {
-     "judge": 3,
-     "pct": 92,
-     "why": "광고로 유명한 약",
-     "piece": "f02",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "M1-11",
-     "key": "b100",
-     "hint": "1961년 처음 나왔고, 2016년부터는 가수 윤종신도 광고 모델로 나왔다.",
-     "guess": "박카스",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "우루사"
-    },
-    "layer": "팬 세부",
-    "genre": "예능",
-    "work": "우루사 광고",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC"
-    ],
-    "facts": [
-     {
-      "claim": "1980년대 초 최희준, 1980년대 후반부터 백일섭 광고",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC",
-      "note": "광고는 1980년대 초반에 '나는 곰이다'를 발표한 최희준이 광고한 데 이어 1980년대 후반부터 백일섭이 전담했으나"
-     },
-     {
-      "claim": "이름 유래 라틴어 곰",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC",
-      "note": "라틴어로 곰을 뜻하는 우르수스(Ursus)의 지소사격인 우르사(Ursa)에서 이름을 따왔기 때문에"
-     },
-     {
-      "claim": "2011년 차두리 간 때문이야 광고",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EC%9A%B0%EB%A3%A8%EC%82%AC",
-      "note": "원래부터 유명했지만 2011년 차두리의 간 때문이야 광고로 엄청 떴다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%9A%B0%EB%A3%A8%EC%82%AC"
-    ],
-    "hintNote": "1961년에 처음 발매되었다. / 우루사 광고모델 ... 윤종신 (2016~현재)",
-    "easiestCue": "1980년대 후반부터는 배우 백일섭이 광고를 도맡았던",
-    "targetWhy": "옛 광고 모델 — 광고 애호가(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 약 이름, 단서는 옛 광고 모델",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-tv/3#g019a-M1-12",
-   "seed": {
-    "subject": "용각산 광고",
-    "aspect": "팬 세부",
-    "ref": "M1-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "일본에서 개발된 흰 가루약이라, 일본에서 사 온 것이 공항 검색대에서 마약으로 오인되는 일이 잦았다고 합니다. 2003년 커피 믹스처럼 생긴 스틱형 봉지 제품이 나오자 그룹 더더가 광고에 나선 이 기침·가래약은?",
-    "answer": "용각산",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "원래 제품은 '소리가 나지 않습니다'라는 광고로 유명했고, 스틱형 제품의 광고 카피는 '소리가 납니다'였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "일본에서 개발된 흰 가루약 … 기침·가래약",
-     "difWhy": "가루 기침약 광고 — 방송 관심층",
-     "wor": 3,
-     "worWhy": "대중적 제품 이름",
-     "acc": 5,
-     "accWhy": "방송·예능 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "원래 제품은 '소리가 나지 않습니다'라는 광고로 유명",
-     "difWhy": "'소리가 나지 않습니다' 광고 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "유명 광고 상품"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2003년 커피 믹스처럼 생긴 스틱형 봉지에 담긴 제품이 나오자, 그룹 더더가 '소리가 납니다'라는 카피로 광고했습니다. 원래 제품은 '소리가 나지 않습니다'라는 광고로 유명했는데, 보령이 파는 이 기침·가래약은 무엇일까요?",
-     "beforeExplanation": "일본에서 개발된 흰 가루약이라, 일본에서 사 온 이 약이 공항 검색대에서 마약으로 오인되는 일도 잦았다고 합니다.",
-     "removedCue": "원래 제품의 '소리가 나지 않습니다' 광고(방송에서 흔히 — 해설로 옮김) · 판매사 보령",
-     "addedCue": "공항 검색대에서 마약으로 오인(해설에서 옮김)",
-     "why": "유명 광고 문구와 판매사를 빼고 곁가지 일화와 스틱 제품 광고 세부로"
-    },
-    "generalHint": "에도 시대 후기 구보타번(지금의 아키타현) 번주 집안의 의사가 처음 만들었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "통에 든 흰 가루로 된 기침·가래약",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "광고로 유명한 약",
-     "piece": "f03",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "M1-12",
-     "key": "b048",
-     "hint": "에도 시대 후기 구보타번(지금의 아키타현) 번주 집안의 의사가 처음 만들었다.",
-     "guess": "아키타 난가",
-     "confidence": "low",
-     "hit": false,
-     "answer": "용각산"
-    },
-    "layer": "팬 세부",
-    "genre": "예능",
-    "work": "용각산 광고",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0"
-    ],
-    "facts": [
-     {
-      "claim": "보령이 판매하는 진해거담제, 일본 류카쿠산 개발",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
-      "note": "용각산(龍角散)은 동명 일본 기업 류카쿠산에서 개발해 대한민국 보령컨슈머헬스케어에서 판매하는 진해거담제이다."
-     },
-     {
-      "claim": "원래 광고 '용각산은 소리가 나지 않습니다'",
-      "where": "e",
-      "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
-      "note": "(착.착.착!) 이 소리가 아닙니다, (달각.달각.달각!) 이 소리도 아닙니다. (무음) 용각산은 소리가 나지 않습니다."
-     },
-     {
-      "claim": "2003년 스틱형 봉지 제품, 더더 광고 '소리가 납니다'",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
-      "note": "2003년에 발매된 제품. 커피 믹스처럼 생긴 스틱형 봉지에 담긴 가루 제품이다. … 초기 TV광고는 그룹 더더를 기용하여 진행했는데, 메인 카피가 \"용각산쿨은 소리가 납니다\" 였다."
-     },
-     {
-      "claim": "공항 검역에서 마약으로 오인",
-      "where": "q",
-      "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
-      "note": "실제 공항 검역에서도 마약종으로 오인되어서 걸리는 사례가 수두룩했다. … 일본여행을 갔다 온 이들 중에도 귀국할 때 공항 검색대에서 일본에서 사온 용각산이 마약종으로 잘못 판정되어서 걸리는 경우가 많았다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%9A%A9%EA%B0%81%EC%82%B0"
-    ],
-    "hintNote": "그 원형은 에도 시대 후기(분세이 연간)에 구보타번 (현재 아키타현) 번주 집안인 사타케씨의 어전의 후지이 겐엔이 개발했다.",
-    "easiestCue": "스틱형 봉지 제품 광고에 그룹 더더",
-    "targetWhy": "장수 상품 광고·일화 세부 — 광고 팬(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "이름은 아는 약, 단서는 광고 카피 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "kr-tv/3#g019a-M1-12",
+      "seed": {
+        "subject": "용각산 광고",
+        "aspect": "팬 세부",
+        "ref": "M1-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "일본에서 개발된 흰 가루약이라, 일본에서 사 온 것이 공항 검색대에서 마약으로 오인되는 일이 잦았다고 합니다. 2003년 커피 믹스처럼 생긴 스틱형 봉지 제품이 나오자 그룹 더더가 광고에 나선 이 기침·가래약은?",
+        "answer": "용각산",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "원래 제품은 '소리가 나지 않습니다'라는 광고로 유명했고, 스틱형 제품의 광고 카피는 '소리가 납니다'였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "일본에서 개발된 흰 가루약 … 기침·가래약",
+          "difWhy": "가루 기침약 광고 — 방송 관심층",
+          "wor": 3,
+          "worWhy": "대중적 제품 이름",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "원래 제품은 '소리가 나지 않습니다'라는 광고로 유명",
+          "difWhy": "'소리가 나지 않습니다' 광고 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "유명 광고 상품"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2003년 커피 믹스처럼 생긴 스틱형 봉지에 담긴 제품이 나오자, 그룹 더더가 '소리가 납니다'라는 카피로 광고했습니다. 원래 제품은 '소리가 나지 않습니다'라는 광고로 유명했는데, 보령이 파는 이 기침·가래약은 무엇일까요?",
+          "beforeExplanation": "일본에서 개발된 흰 가루약이라, 일본에서 사 온 이 약이 공항 검색대에서 마약으로 오인되는 일도 잦았다고 합니다.",
+          "removedCue": "원래 제품의 '소리가 나지 않습니다' 광고(방송에서 흔히 — 해설로 옮김) · 판매사 보령",
+          "addedCue": "공항 검색대에서 마약으로 오인(해설에서 옮김)",
+          "why": "유명 광고 문구와 판매사를 빼고 곁가지 일화와 스틱 제품 광고 세부로"
+        },
+        "generalHint": "에도 시대 후기 구보타번(지금의 아키타현) 번주 집안의 의사가 처음 만들었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "통에 든 흰 가루로 된 기침·가래약",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "광고로 유명한 약",
+          "piece": "f03",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "M1-12",
+          "key": "b048",
+          "hint": "에도 시대 후기 구보타번(지금의 아키타현) 번주 집안의 의사가 처음 만들었다.",
+          "guess": "아키타 난가",
+          "confidence": "low",
+          "hit": false,
+          "answer": "용각산"
+        },
+        "layer": "대중",
+        "genre": "예능",
+        "work": "용각산 광고",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0"
+        ],
+        "facts": [
+          {
+            "claim": "보령이 판매하는 진해거담제, 일본 류카쿠산 개발",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
+            "note": "용각산(龍角散)은 동명 일본 기업 류카쿠산에서 개발해 대한민국 보령컨슈머헬스케어에서 판매하는 진해거담제이다."
+          },
+          {
+            "claim": "원래 광고 '용각산은 소리가 나지 않습니다'",
+            "where": "e",
+            "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
+            "note": "(착.착.착!) 이 소리가 아닙니다, (달각.달각.달각!) 이 소리도 아닙니다. (무음) 용각산은 소리가 나지 않습니다."
+          },
+          {
+            "claim": "2003년 스틱형 봉지 제품, 더더 광고 '소리가 납니다'",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
+            "note": "2003년에 발매된 제품. 커피 믹스처럼 생긴 스틱형 봉지에 담긴 가루 제품이다. … 초기 TV광고는 그룹 더더를 기용하여 진행했는데, 메인 카피가 \"용각산쿨은 소리가 납니다\" 였다."
+          },
+          {
+            "claim": "공항 검역에서 마약으로 오인",
+            "where": "q",
+            "url": "https://namu.wiki/w/%EC%9A%A9%EA%B0%81%EC%82%B0",
+            "note": "실제 공항 검역에서도 마약종으로 오인되어서 걸리는 사례가 수두룩했다. … 일본여행을 갔다 온 이들 중에도 귀국할 때 공항 검색대에서 일본에서 사온 용각산이 마약종으로 잘못 판정되어서 걸리는 경우가 많았다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%9A%A9%EA%B0%81%EC%82%B0"
+        ],
+        "hintNote": "그 원형은 에도 시대 후기(분세이 연간)에 구보타번 (현재 아키타현) 번주 집안인 사타케씨의 어전의 후지이 겐엔이 개발했다.",
+        "easiestCue": "스틱형 봉지 제품 광고에 그룹 더더",
+        "targetWhy": "장수 상품 광고·일화 세부 — 광고 팬(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "이름은 아는 약, 단서는 광고 카피 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "일본에서 개발된 흰 가루약 … 기침·가래약",
+          "difWhy": "가루 기침약 광고 — 방송 관심층",
+          "wor": 3,
+          "worWhy": "대중적 제품 이름",
+          "acc": 5,
+          "accWhy": "방송·예능 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 fix worth",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

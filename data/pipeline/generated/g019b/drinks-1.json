@@ -1,239 +1,269 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "drinks/1",
-  "midKey": "drinks",
-  "subName": "와인",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "drinks/1#g019b-L2-13",
-   "seed": {
-    "subject": "돔 페리뇽",
-    "aspect": null,
-    "ref": "L2-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1638년 태어나 오빌레르의 생피에르 수도원에서 1715년 세상을 뜰 때까지 술 창고를 맡은 베네딕도회 수사입니다. 여러 포도밭의 포도를 압착하기 전에 섞는 방법을 들여왔고, 청포도는 다시 발효하기 쉬워 좋아하지 않았다는 이 수사는 누구일까요?",
-    "answer": "돔 페리뇽",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "'어서 오게, 별을 맛보고 있네!'라는 그의 말은 19세기 말 광고에서 처음 나온 것으로 보이며, 그의 이름은 모엣 샹동의 최고급 샴페인이 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "술 창고를 맡은 베네딕도회 수사, 포도를 섞는 방법을 들여옴",
-     "difWhy": "'샴페인 수사' 일화 — 술 관심층 (경계 4)",
-     "wor": 3,
-     "worWhy": "유명 샴페인 이름 유래",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "병 속에서 발효가 다시 일어나 봄에 병이 터지는 일을 막으려 애썼다",
-     "difWhy": "돔 페리뇽 샴페인 전설 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 유명 이름 유래"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1638년 태어나 오빌레르의 생피에르 수도원에서 1715년 세상을 뜰 때까지 술 창고를 맡은 베네딕도회 수사입니다. 그는 병 속에서 발효가 다시 일어나 봄에 병이 터지는 일을 막으려 애썼다고 하는데, 이 수사는 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "병 속 재발효로 봄에 병이 터지는 일을 막으려 애씀",
-     "addedCue": "압착 전 포도 혼합 · 청포도를 꺼림",
-     "why": "샴페인 전설의 대표 일화를 빼고 양조 방식 세부로 바꿈"
-    },
-    "generalHint": "그는 같은 수도원의 이름난 학자 티에리 뤼나르의 도움을 받아 포도주를 다듬었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "샴페인 이름에도 쓰인 17세기 프랑스 수도사",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "고급 샴페인 이름으로 들어 봤을 법함",
-     "piece": "f06",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "L2-13",
-     "key": "b269",
-     "hint": "그는 같은 수도원의 이름난 학자 티에리 뤼나르의 도움을 받아 포도주를 다듬었다.",
-     "guess": "동 페리뇽",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "돔 페리뇽"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)"
-    ],
-    "facts": [
-     {
-      "claim": "1638년 12월 출생, 1715년 9월 14일 사망",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
-      "note": "Born in December 1638 and died on 14 September 1715."
-     },
-     {
-      "claim": "오빌레르 생피에르 수도원 술 창고 담당(평생)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
-      "note": "Abbaye Saint-Pierre d'Hautvillers ... served as cellarer for the rest of his life"
-     },
-     {
-      "claim": "별 인용은 19세기 말 광고에서 처음, 모엣 샹동 프레스티지 퀴베",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
-      "note": "'Come quickly, I am tasting the stars!' ... first appearance ... in a print advertisement in the late 19th century / the prestige cuvée of winery Moët & Chandon"
-     },
-     {
-      "claim": "압착 전에 포도를 섞는 방법을 들여옴 · 여러 포도밭 포도 혼합",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
-      "note": "did not introduce blending to Champagne wines but rather the method of blending the grapes prior to sending them to press. / mixing grapes from several vineyards"
-     },
-     {
-      "claim": "청포도는 재발효 경향 때문에 좋아하지 않음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
-      "note": "was not fond of white grapes because they tended to re-ferment"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Dom_P%C3%A9rignon_(monk)"
-    ],
-    "hintNote": "he worked to improve their product with the help of Dom Thierry Ruinart, a noted scholar of the abbey.",
-    "easiestCue": "오빌레르의 생피에르 수도원 술 창고를 맡은 베네딕도회 수사",
-    "targetWhy": "수도원 이름 · 압착 전 혼합 — 와인 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "알려진 이름의 실제 모습이 전설과 반대라는 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (3525 샴페인은 다른 정답 — 해설의 별 인용은 3525 질문과 같은 일화라 힌트 작성 때 주의)",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "drinks/1",
+    "midKey": "drinks",
+    "subName": "와인",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "drinks/1#g019b-L2-14",
-   "seed": {
-    "subject": "아이스 와인",
-    "aspect": null,
-    "ref": "L2-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1794년 독일 프랑켄 지방에서 처음 만들어졌다고 여겨지는 와인 갈래입니다. 더 확실한 기록은 1830년 2월 11일 빙겐 가까운 드로머스하임의 수확으로, 혹독한 겨울에 짐승 먹이로 쓰려고 남겨 둔 1829년산 포도로 거둔 이 와인은?",
-    "answer": "아이스 와인",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1991년 비넥스포에서 캐나다 이니스킬린의 1989년산 비달 와인이 '그랑프리 도뇌르'를 받으며 캐나다산이 세계에 이름을 알렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "혹독한 겨울에 남겨 둔 포도로 거둔 와인",
-     "difWhy": "언 포도 와인 — 와인 관심층",
-     "wor": 3,
-     "worWhy": "와인 이야깃거리",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "drinks/1#g019b-L2-13",
+      "seed": {
+        "subject": "돔 페리뇽",
+        "aspect": null,
+        "ref": "L2-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1638년 태어나 오빌레르의 생피에르 수도원에서 1715년 세상을 뜰 때까지 술 창고를 맡은 베네딕도회 수사입니다. 여러 포도밭의 포도를 압착하기 전에 섞는 방법을 들여왔고, 청포도는 다시 발효하기 쉬워 좋아하지 않았다는 이 수사는 누구일까요?",
+        "answer": "돔 페리뇽",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "'어서 오게, 별을 맛보고 있네!'라는 그의 말은 19세기 말 광고에서 처음 나온 것으로 보이며, 그의 이름은 모엣 샹동의 최고급 샴페인이 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "술 창고를 맡은 베네딕도회 수사, 포도를 섞는 방법을 들여옴",
+          "difWhy": "'샴페인 수사' 일화 — 술 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 샴페인 이름 유래",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "병 속에서 발효가 다시 일어나 봄에 병이 터지는 일을 막으려 애썼다",
+          "difWhy": "돔 페리뇽 샴페인 전설 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 이름 유래"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1638년 태어나 오빌레르의 생피에르 수도원에서 1715년 세상을 뜰 때까지 술 창고를 맡은 베네딕도회 수사입니다. 그는 병 속에서 발효가 다시 일어나 봄에 병이 터지는 일을 막으려 애썼다고 하는데, 이 수사는 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "병 속 재발효로 봄에 병이 터지는 일을 막으려 애씀",
+          "addedCue": "압착 전 포도 혼합 · 청포도를 꺼림",
+          "why": "샴페인 전설의 대표 일화를 빼고 양조 방식 세부로 바꿈"
+        },
+        "generalHint": "그는 같은 수도원의 이름난 학자 티에리 뤼나르의 도움을 받아 포도주를 다듬었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "샴페인 이름에도 쓰인 17세기 프랑스 수도사",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "고급 샴페인 이름으로 들어 봤을 법함",
+          "piece": "f06",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "L2-13",
+          "key": "b269",
+          "hint": "그는 같은 수도원의 이름난 학자 티에리 뤼나르의 도움을 받아 포도주를 다듬었다.",
+          "guess": "동 페리뇽",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "돔 페리뇽"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)"
+        ],
+        "facts": [
+          {
+            "claim": "1638년 12월 출생, 1715년 9월 14일 사망",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
+            "note": "Born in December 1638 and died on 14 September 1715."
+          },
+          {
+            "claim": "오빌레르 생피에르 수도원 술 창고 담당(평생)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
+            "note": "Abbaye Saint-Pierre d'Hautvillers ... served as cellarer for the rest of his life"
+          },
+          {
+            "claim": "별 인용은 19세기 말 광고에서 처음, 모엣 샹동 프레스티지 퀴베",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
+            "note": "'Come quickly, I am tasting the stars!' ... first appearance ... in a print advertisement in the late 19th century / the prestige cuvée of winery Moët & Chandon"
+          },
+          {
+            "claim": "압착 전에 포도를 섞는 방법을 들여옴 · 여러 포도밭 포도 혼합",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
+            "note": "did not introduce blending to Champagne wines but rather the method of blending the grapes prior to sending them to press. / mixing grapes from several vineyards"
+          },
+          {
+            "claim": "청포도는 재발효 경향 때문에 좋아하지 않음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Dom_Pérignon_(monk)",
+            "note": "was not fond of white grapes because they tended to re-ferment"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Dom_P%C3%A9rignon_(monk)"
+        ],
+        "hintNote": "he worked to improve their product with the help of Dom Thierry Ruinart, a noted scholar of the abbey.",
+        "easiestCue": "오빌레르의 생피에르 수도원 술 창고를 맡은 베네딕도회 수사",
+        "targetWhy": "수도원 이름 · 압착 전 혼합 — 와인 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "알려진 이름의 실제 모습이 전설과 반대라는 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (3525 샴페인은 다른 정답 — 해설의 별 인용은 3525 질문과 같은 일화라 힌트 작성 때 주의)",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "술 창고를 맡은 베네딕도회 수사, 포도를 섞는 방법을 들여옴",
+          "difWhy": "'샴페인 수사' 일화 — 술 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 샴페인 이름 유래",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "캐나다 이니스킬린의 1989년산 비달 와인",
-     "difWhy": "언 포도 와인 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 와인 갈래"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1794년 독일 프랑켄 지방에서 처음 만들어졌다고 여겨지는 와인 갈래입니다. 1991년 비넥스포에서 캐나다 이니스킬린의 1989년산 비달 와인이 '그랑프리 도뇌르'를 받으며 캐나다산이 세계에 이름을 알린 이 와인은?",
-     "beforeExplanation": "캐나다 법은 영하 8도, 독일 법은 영하 7도 이하에서 나무에 달린 채 언 포도를 따도록 정해 두었습니다.",
-     "removedCue": "캐나다 이니스킬린의 1989년산 비달 와인 수상",
-     "addedCue": "1830년 드로머스하임 수확 기록",
-     "why": "와인 관심층이 아는 캐나다 수상 단서를 해설로 옮기고 독일 초기 기록으로 바꿈"
-    },
-    "generalHint": "중국은 이 와인의 세계 두 번째 생산국으로, 간쑤성과 랴오닝성에서 많이 만든다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "얼어붙은 포도로 빚는 단맛 디저트 와인",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "와인 상식·선물용으로 들어 봤을 법함",
-     "piece": "f03",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "L2-14",
-     "key": "b255",
-     "hint": "중국은 이 와인의 세계 두 번째 생산국으로, 간쑤성과 랴오닝성에서 많이 만든다.",
-     "guess": "아이스 와인",
-     "confidence": "high",
-     "hit": true,
-     "answer": "아이스 와인"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ice_wine"
-    ],
-    "facts": [
-     {
-      "claim": "1794년 프랑켄에서 처음(로마 이후)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ice_wine",
-      "note": "It is believed that the first post-Roman ice wine was made in Franconia in 1794."
-     },
-     {
-      "claim": "이니스킬린 1989 비달, 비넥스포 그랑프리 도뇌르(1991 시상)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ice_wine",
-      "note": "Inniskillin's 1989 Vidal ice wine won the Grand Prix d'Honneur at Vinexpo. (presented in 1991)"
-     },
-     {
-      "claim": "1830년 2월 11일 빙겐 근처 드로머스하임 수확 · 1829년산 포도를 혹독한 겨울에 짐승 먹이로 남겨 둠",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ice_wine",
-      "note": "Better documentation exists for an ice wine harvest in Dromersheim close to Bingen in Rheinhessen on February 11, 1830. (grapes of the 1829 vintage left on the vine as animal fodder during a harsh winter)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Ice_wine"
-    ],
-    "hintNote": "China is the second largest global producer of ice wine … with significant portions of the industry occurring in Gansu and Liaoning provinces",
-    "easiestCue": "혹독한 겨울에 짐승 먹이로 쓰려고 남겨 둔 포도로 거둔",
-    "targetWhy": "초기 생산 기록 — 와인 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "이름은 들어 본 와인의 기원·캐나다 인연",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "정답조각 와인",
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "drinks/1#g019b-L2-14",
+      "seed": {
+        "subject": "아이스 와인",
+        "aspect": null,
+        "ref": "L2-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1794년 독일 프랑켄 지방에서 처음 만들어졌다고 여겨지는 와인 갈래입니다. 더 확실한 기록은 1830년 2월 11일 빙겐 가까운 드로머스하임의 수확으로, 혹독한 겨울에 짐승 먹이로 쓰려고 남겨 둔 1829년산 포도로 거둔 이 와인은?",
+        "answer": "아이스 와인",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1991년 비넥스포에서 캐나다 이니스킬린의 1989년산 비달 와인이 '그랑프리 도뇌르'를 받으며 캐나다산이 세계에 이름을 알렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "혹독한 겨울에 남겨 둔 포도로 거둔 와인",
+          "difWhy": "언 포도 와인 — 와인 관심층",
+          "wor": 3,
+          "worWhy": "와인 이야깃거리",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "캐나다 이니스킬린의 1989년산 비달 와인",
+          "difWhy": "언 포도 와인 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 와인 갈래"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1794년 독일 프랑켄 지방에서 처음 만들어졌다고 여겨지는 와인 갈래입니다. 1991년 비넥스포에서 캐나다 이니스킬린의 1989년산 비달 와인이 '그랑프리 도뇌르'를 받으며 캐나다산이 세계에 이름을 알린 이 와인은?",
+          "beforeExplanation": "캐나다 법은 영하 8도, 독일 법은 영하 7도 이하에서 나무에 달린 채 언 포도를 따도록 정해 두었습니다.",
+          "removedCue": "캐나다 이니스킬린의 1989년산 비달 와인 수상",
+          "addedCue": "1830년 드로머스하임 수확 기록",
+          "why": "와인 관심층이 아는 캐나다 수상 단서를 해설로 옮기고 독일 초기 기록으로 바꿈"
+        },
+        "generalHint": "중국은 이 와인의 세계 두 번째 생산국으로, 간쑤성과 랴오닝성에서 많이 만든다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "얼어붙은 포도로 빚는 단맛 디저트 와인",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "와인 상식·선물용으로 들어 봤을 법함",
+          "piece": "f03",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "L2-14",
+          "key": "b255",
+          "hint": "중국은 이 와인의 세계 두 번째 생산국으로, 간쑤성과 랴오닝성에서 많이 만든다.",
+          "guess": "아이스 와인",
+          "confidence": "high",
+          "hit": true,
+          "answer": "아이스 와인"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ice_wine"
+        ],
+        "facts": [
+          {
+            "claim": "1794년 프랑켄에서 처음(로마 이후)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ice_wine",
+            "note": "It is believed that the first post-Roman ice wine was made in Franconia in 1794."
+          },
+          {
+            "claim": "이니스킬린 1989 비달, 비넥스포 그랑프리 도뇌르(1991 시상)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ice_wine",
+            "note": "Inniskillin's 1989 Vidal ice wine won the Grand Prix d'Honneur at Vinexpo. (presented in 1991)"
+          },
+          {
+            "claim": "1830년 2월 11일 빙겐 근처 드로머스하임 수확 · 1829년산 포도를 혹독한 겨울에 짐승 먹이로 남겨 둠",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ice_wine",
+            "note": "Better documentation exists for an ice wine harvest in Dromersheim close to Bingen in Rheinhessen on February 11, 1830. (grapes of the 1829 vintage left on the vine as animal fodder during a harsh winter)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Ice_wine"
+        ],
+        "hintNote": "China is the second largest global producer of ice wine … with significant portions of the industry occurring in Gansu and Liaoning provinces",
+        "easiestCue": "혹독한 겨울에 짐승 먹이로 쓰려고 남겨 둔 포도로 거둔",
+        "targetWhy": "초기 생산 기록 — 와인 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "이름은 들어 본 와인의 기원·캐나다 인연",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "정답조각 와인",
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "혹독한 겨울에 남겨 둔 포도로 거둔 와인",
+          "difWhy": "언 포도 와인 — 와인 관심층",
+          "wor": 3,
+          "worWhy": "와인 이야깃거리",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

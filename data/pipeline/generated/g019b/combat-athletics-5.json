@@ -1,665 +1,761 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "combat-athletics/5",
-  "midKey": "combat-athletics",
-  "subName": "동계 종목",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "combat-athletics/5#g019b-S2-20",
-   "seed": {
-    "subject": "키스 앤 크라이",
-    "aspect": null,
-    "ref": "S2-20",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1983년 헬싱키 피겨 세계 선수권 조직위원이던 핀란드의 제인 에르코는, 경기장을 꾸미던 방송 기술자들이 이곳을 뭐라고 부르냐고 묻자 이 이름을 지어 냈습니다. 올림픽에는 1984년 사라예보 대회에서 처음 따로 마련된 이곳은?",
-    "answer": "키스 앤 크라이",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "지금은 국제빙상경기연맹 규정에도 들어 있고, 일부 체조 대회에도 비슷한 자리가 생겼습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "제인 에르코는 ... 이 이름을 지어 냈습니다",
-     "difWhy": "키스 앤 크라이 작명 — 피겨 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 이름 기원",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "제인 에르코는 ... 이 이름을 지어 냈습니다",
-     "difWhy": "키스 앤 크라이 작명 — 피겨 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 이름 기원"
-    },
-    "rewrite": null,
-    "generalHint": "미국을 비롯한 여러 나라 연맹은 선수들이 이곳에서 기다리는 동안의 몸가짐을 따로 가르친다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "피겨 선수가 연기 뒤 코치와 점수를 기다리는 자리",
-    "familiarity": {
-     "judge": 2,
-     "pct": 40,
-     "why": "김연아 중계로 피겨 팬은 들어 봤을 법함",
-     "piece": "f02",
-     "genPct": 50
-    },
-    "blind": {
-     "ref": "S2-20",
-     "key": "b010",
-     "hint": "미국을 비롯한 여러 나라 연맹은 선수들이 이곳에서 기다리는 동안의 몸가짐을 따로 가르친다.",
-     "guess": "키스 앤 크라이",
-     "confidence": "low",
-     "hit": true,
-     "answer": "키스 앤 크라이",
-     "first": {
-      "ref": "S2-20",
-      "key": "b092",
-      "hint": "흔히 꽃 같은 장식으로 꾸며 선수가 점수에 반응하는 모습이 TV 화면과 사진에 잘 담기게 한다.",
-      "guess": "키스 앤 크라이",
-      "confidence": "high",
-      "hit": true,
-      "answer": "키스 앤 크라이"
-     }
-    },
-    "hobby": "규칙",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Kiss_and_cry"
-    ],
-    "facts": [
-     {
-      "claim": "1983 헬싱키 세계 선수권 · 제인 에르코 · 방송 기술자 질문",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kiss_and_cry",
-      "note": "Jane Erkko, a Finnish figure skating official on the organizing committee for the 1983 World Figure Skating Championships ... came up with the name when visiting television technicians asked what the area was called"
-     },
-     {
-      "claim": "1984 사라예보 첫 올림픽 별도 자리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kiss_and_cry",
-      "note": "The first formal off-ice waiting area at the Olympics came later, at the 1984 Sarajevo Winter Games."
-     },
-     {
-      "claim": "ISU 규정 · 체조 대회에도",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Kiss_and_cry",
-      "note": "is now part of International Skating Union regulations ... Some gymnastics competitions now include a similar kiss and cry area."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Kiss_and_cry"
-    ],
-    "hintNote": "Many national federations, including the Americans, train skaters on how they should appear on camera while waiting.",
-    "easiestCue": "1983년 헬싱키 피겨 세계 선수권 조직위원이던 핀란드의 제인 에르코는",
-    "targetWhy": "이름을 지은 사람과 사연은 피겨 애호가 세부 — 자리의 정의(점수 기다림) 문장 없음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "김연아 중계로 아는 말의 이름 유래",
-    "pairCheck": null,
-    "dbCheck": "키스 앤 크라이 new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "combat-athletics/5",
+    "midKey": "combat-athletics",
+    "subName": "동계 종목",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "combat-athletics/5#g019b-S2-21",
-   "seed": {
-    "subject": "왁스",
-    "aspect": null,
-    "ref": "S2-21",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1913년 노르웨이의 페테르 외스트뷔는 끈적한 '클리스터'로 특허를 냈습니다. 국제스키연맹은 환경에 오래 남는 과불화화합물 때문에 불소가 든 이것을 대회에서 쓰지 못하게 했는데, 이것은?",
-    "answer": "왁스",
-    "acceptedAnswers": [
-     "스키 왁스"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "en.wikipedia 'Ski wax' · 한국 스키 용품 표기 '스키 왁스'(질문의 '스키'와 겹치지만 같은 대상의 흔한 이름)",
-    "explanation": "1673년 요하네스 셰퍼의 책은 스키에 송진 피치와 로진을 바르라고 적어, 이것을 다룬 가장 오랜 기록으로 꼽힙니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "끈적한 '클리스터' + 불소가 든 이것을 대회에서 금지",
-     "difWhy": "스키 바닥에 바르는 것 — 스키 관심층",
-     "wor": 3,
-     "worWhy": "장비 이야깃거리",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "combat-athletics/5#g019b-S2-20",
+      "seed": {
+        "subject": "키스 앤 크라이",
+        "aspect": null,
+        "ref": "S2-20",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1983년 헬싱키 피겨 세계 선수권 조직위원이던 핀란드의 제인 에르코는, 경기장을 꾸미던 방송 기술자들이 선수가 연기 뒤 점수를 기다리는 이곳을 뭐라고 부르냐고 묻자 이 이름을 지어 냈습니다. 올림픽에는 1984년 사라예보 대회에서 처음 따로 마련된 이곳은?",
+        "answer": "키스 앤 크라이",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "지금은 국제빙상경기연맹 규정에도 들어 있고, 일부 체조 대회에도 비슷한 자리가 생겼습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "제인 에르코는 ... 이 이름을 지어 냈습니다",
+          "difWhy": "키스 앤 크라이 작명 — 피겨 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이름 기원",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "제인 에르코는 ... 이 이름을 지어 냈습니다",
+          "difWhy": "키스 앤 크라이 작명 — 피겨 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이름 기원"
+        },
+        "rewrite": null,
+        "generalHint": null,
+        "generalHintVersion": null,
+        "identity": "피겨 선수가 연기 뒤 코치와 점수를 기다리는 자리",
+        "familiarity": {
+          "judge": 2,
+          "pct": 40,
+          "why": "김연아 중계로 피겨 팬은 들어 봤을 법함",
+          "piece": "f02",
+          "genPct": 50
+        },
+        "blind": {
+          "ref": "S2-20",
+          "key": "b010",
+          "hint": "미국을 비롯한 여러 나라 연맹은 선수들이 이곳에서 기다리는 동안의 몸가짐을 따로 가르친다.",
+          "guess": "키스 앤 크라이",
+          "confidence": "low",
+          "hit": true,
+          "answer": "키스 앤 크라이",
+          "first": {
+            "ref": "S2-20",
+            "key": "b092",
+            "hint": "흔히 꽃 같은 장식으로 꾸며 선수가 점수에 반응하는 모습이 TV 화면과 사진에 잘 담기게 한다.",
+            "guess": "키스 앤 크라이",
+            "confidence": "high",
+            "hit": true,
+            "answer": "키스 앤 크라이"
+          }
+        },
+        "hobby": "규칙",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Kiss_and_cry"
+        ],
+        "facts": [
+          {
+            "claim": "1983 헬싱키 세계 선수권 · 제인 에르코 · 방송 기술자 질문",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kiss_and_cry",
+            "note": "Jane Erkko, a Finnish figure skating official on the organizing committee for the 1983 World Figure Skating Championships ... came up with the name when visiting television technicians asked what the area was called"
+          },
+          {
+            "claim": "1984 사라예보 첫 올림픽 별도 자리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kiss_and_cry",
+            "note": "The first formal off-ice waiting area at the Olympics came later, at the 1984 Sarajevo Winter Games."
+          },
+          {
+            "claim": "ISU 규정 · 체조 대회에도",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Kiss_and_cry",
+            "note": "is now part of International Skating Union regulations ... Some gymnastics competitions now include a similar kiss and cry area."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Kiss_and_cry"
+        ],
+        "hintNote": "H0 예외 — 정답이 맥락 자체(CV-87): 어떤 사실을 써도 그 맥락이 정답을 부른다",
+        "easiestCue": "1983년 헬싱키 피겨 세계 선수권 조직위원이던 핀란드의 제인 에르코는",
+        "targetWhy": "이름을 지은 사람과 사연은 피겨 애호가 세부 — 자리의 정의(점수 기다림) 문장 없음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "김연아 중계로 아는 말의 이름 유래",
+        "pairCheck": null,
+        "dbCheck": "키스 앤 크라이 new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "제인 에르코는 ... 이 이름을 지어 냈습니다",
+          "difWhy": "키스 앤 크라이 작명 — 피겨 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이름 기원",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 fix not-unique·famous-one·question-repeat · CV-87 힌트 비움",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "스키에 송진 피치와 로진을 바르라고",
-     "difWhy": "스키 왁스 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 장비 규정"
+    {
+      "seedId": "combat-athletics/5#g019b-S2-21",
+      "seed": {
+        "subject": "왁스",
+        "aspect": null,
+        "ref": "S2-21",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1913년 노르웨이의 페테르 외스트뷔는 끈적한 '클리스터'로 특허를 냈습니다. 국제스키연맹은 환경에 오래 남는 과불화화합물 때문에 불소가 든 이것을 대회에서 쓰지 못하게 했는데, 이것은?",
+        "answer": "왁스",
+        "acceptedAnswers": [
+          "스키 왁스"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "en.wikipedia 'Ski wax' · 한국 스키 용품 표기 '스키 왁스'(질문의 '스키'와 겹치지만 같은 대상의 흔한 이름)",
+        "explanation": "1673년 요하네스 셰퍼의 책은 스키에 송진 피치와 로진을 바르라고 적어, 이것을 다룬 가장 오랜 기록으로 꼽힙니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "끈적한 '클리스터' + 불소가 든 이것을 대회에서 금지",
+          "difWhy": "스키 바닥에 바르는 것 — 스키 관심층",
+          "wor": 3,
+          "worWhy": "장비 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "스키에 송진 피치와 로진을 바르라고",
+          "difWhy": "스키 왁스 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 장비 규정"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1673년 요하네스 셰퍼의 책은 스키에 송진 피치와 로진을 바르라고 적어, 이것을 다룬 가장 오랜 기록으로 꼽힙니다. 국제스키연맹은 환경에 오래 남는 과불화화합물 때문에 불소가 든 이것을 대회에서 쓰지 못하게 했는데, 이것은?",
+          "beforeExplanation": "1913년 노르웨이의 페테르 외스트뷔는 끈적한 '클리스터'로 특허를 냈습니다.",
+          "removedCue": "스키에 송진 피치와 로진을 바르라고",
+          "addedCue": "1913년 외스트뷔의 '클리스터' 특허",
+          "why": "바르는 재료 서술(정체가 바로 드러남)을 해설로 옮기고 클리스터 특허로 바꿈"
+        },
+        "generalHint": "1946년 스웨덴에서 세워진 스윅스는 이것을 종류마다 색으로 나눠 팔았고, 그 방식을 업계 전체가 따랐다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "스키 바닥에 발라 미끄럼과 접지를 조절하는 물질",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "일상어(왁스)로 누구나 앎",
+          "piece": "f01",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S2-21",
+          "key": "b216",
+          "hint": "1946년 스웨덴에서 세워진 스윅스는 이것을 종류마다 색으로 나눠 팔았고, 그 방식을 업계 전체가 따랐다.",
+          "guess": "스키 왁스",
+          "confidence": "high",
+          "hit": true,
+          "answer": "왁스"
+        },
+        "hobby": "장비",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ski_wax"
+        ],
+        "facts": [
+          {
+            "claim": "1673 셰퍼 · 송진 피치와 로진",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ski_wax",
+            "note": "Johannes Scheffer's 1673 book as likely the first recorded ski-wax instructions. He advised skiers to use pine tar pitch and rosin."
+          },
+          {
+            "claim": "FIS 불소 왁스 금지 · PFAS 환경 잔류",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ski_wax",
+            "note": "the FIS ban applies in all competitive ski disciplines ... PFASs in ski wax are heat resistant, chemically and biologically stable, and thus environmentally persistent."
+          },
+          {
+            "claim": "1913 외스트뷔 클리스터 특허",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ski_wax",
+            "note": "Norwegian Peter Østbye patented klister in 1913."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Swix"
+        ],
+        "hintNote": "The company was founded in Sweden in 1946 by Börje Gabrielsson ... The wax was colour-coded according to type, a practice that has since been adopted by the entire ski wax industry.",
+        "easiestCue": "국제스키연맹은 … 불소가 든 이것을 대회에서 쓰지 못하게",
+        "targetWhy": "클리스터 · 불소 금지 — 스키 애호가 장비 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "스키어라면 쓰는 장비의 규칙 사연",
+        "pairCheck": null,
+        "dbCheck": "왁스 · 스키 왁스 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "끈적한 '클리스터' + 불소가 든 이것을 대회에서 금지",
+          "difWhy": "스키 바닥에 바르는 것 — 스키 관심층",
+          "wor": 3,
+          "worWhy": "장비 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1673년 요하네스 셰퍼의 책은 스키에 송진 피치와 로진을 바르라고 적어, 이것을 다룬 가장 오랜 기록으로 꼽힙니다. 국제스키연맹은 환경에 오래 남는 과불화화합물 때문에 불소가 든 이것을 대회에서 쓰지 못하게 했는데, 이것은?",
-     "beforeExplanation": "1913년 노르웨이의 페테르 외스트뷔는 끈적한 '클리스터'로 특허를 냈습니다.",
-     "removedCue": "스키에 송진 피치와 로진을 바르라고",
-     "addedCue": "1913년 외스트뷔의 '클리스터' 특허",
-     "why": "바르는 재료 서술(정체가 바로 드러남)을 해설로 옮기고 클리스터 특허로 바꿈"
+    {
+      "seedId": "combat-athletics/5#g019b-S2-22",
+      "seed": {
+        "subject": "정빙기",
+        "aspect": null,
+        "ref": "S2-22",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인은, 빙판을 고르려면 일꾼 서너 명이 손으로 긁고 씻어 내야 하는 것이 불만이었습니다. 1947년 군용 지프 차대에 얹은 시제품을 거쳐 1949년 그가 완성한 이 기계는?",
+        "answer": "정빙기",
+        "acceptedAnswers": [
+          "잠보니"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '정빙기(…) 또는 빙판포장차, 빙포차' · en.wikipedia 'often referred to as a Zamboni as a genericized trademark' — 같은 기계를 부르는 다른 이름",
+        "explanation": "만든 사람 프랭크 잠보니의 이름이 이 기계를 가리키는 보통 이름처럼 쓰이게 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인",
+          "difWhy": "잠보니 정빙기 발명 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 발명 일화",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인",
+          "difWhy": "잠보니 정빙기 발명 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 발명 일화"
+        },
+        "rewrite": null,
+        "generalHint": "피겨 스타 소냐 헤니가 그의 링크를 다녀간 뒤 이 기계를 두 대 주문했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "빙판을 깎고 물을 뿌려 다시 매끈하게 만드는 차량",
+        "familiarity": {
+          "judge": 2,
+          "pct": 40,
+          "why": "빙상 중계에서 보지만 이름은 낯선 편",
+          "piece": "f06",
+          "genPct": 45
+        },
+        "blind": {
+          "ref": "S2-22",
+          "key": "b031",
+          "hint": "피겨 스타 소냐 헤니가 그의 링크를 다녀간 뒤 이 기계를 두 대 주문했다.",
+          "guess": "잠보니",
+          "confidence": "high",
+          "hit": true,
+          "answer": "정빙기"
+        },
+        "hobby": "장비",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ice_resurfacer"
+        ],
+        "facts": [
+          {
+            "claim": "1939 파라마운트 링크 · 일꾼 서너 명 손작업",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
+            "note": "The Iceland rink he built in 1939 was in Paramount, California ... he needed three or four workers to scrape, wash, and squeegee the ice by hand."
+          },
+          {
+            "claim": "얼음 공장(냉동업) 주인",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
+            "note": "Zamboni was originally in the refrigeration business, making ice blocks."
+          },
+          {
+            "claim": "1947 지프 차대 시제품 · 1949 완성",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
+            "note": "His 1947 prototype was mounted on an army surplus Willys jeep chassis ... The Model A followed in 1949"
+          },
+          {
+            "claim": "잠보니 보통 이름화",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
+            "note": "often referred to as a \"Zamboni\" as a genericized trademark"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Frank_Zamboni"
+        ],
+        "hintNote": "he expanded the operation when he received two orders from figure skater Sonja Henie after she visited his rink",
+        "easiestCue": "빙판을 고르려면 일꾼 서너 명이 손으로 긁고 씻어 내야 하는 것이 불만이었습니다",
+        "targetWhy": "발명 경위는 빙상 애호가 세부 — 기계의 하는 일을 간접으로만 비춘다 (경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "첫 문장이 하는 일을 암시해 추측이 된다",
+        "pairCheck": null,
+        "dbCheck": "정빙기 · 잠보니 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인",
+          "difWhy": "잠보니 정빙기 발명 — 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 발명 일화",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "generalHint": "1946년 스웨덴에서 세워진 스윅스는 이것을 종류마다 색으로 나눠 팔았고, 그 방식을 업계 전체가 따랐다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "스키 바닥에 발라 미끄럼과 접지를 조절하는 물질",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "일상어(왁스)로 누구나 앎",
-     "piece": "f01",
-     "genPct": 90
+    {
+      "seedId": "combat-athletics/5#g019b-S2-23",
+      "seed": {
+        "subject": "아사다 마오",
+        "aspect": null,
+        "ref": "S2-23",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "세 살부터 아홉 살까지 발레를 배우다 두 살 위 언니를 따라 피겨로 옮긴 일본 선수입니다. 네슬레 초콜릿 이름을 딴 애완 푸들 '에어로'를 갈라 프로그램에 함께 내보내기도 한 이 선수는 누구일까요?",
+        "answer": "아사다 마오",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "2017년 은퇴한 뒤 2024년 11월 도쿄 다치카와에 자기 이름을 내건 링크를 열었고, 이름은 배우 다이치 마오에서 따왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "두 살 위 언니를 따라 피겨로 옮긴 일본 선수",
+          "difWhy": "자매 피겨 선수 — 피겨 관심층",
+          "wor": 3,
+          "worWhy": "유명 선수 이야기",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "2017년 은퇴한 뒤 ... 자기 이름을 내건 링크",
+          "difWhy": "아사다 마오 은퇴 뒤 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "세 살부터 아홉 살까지 발레를 배우다 두 살 위 언니를 따라 피겨로 옮긴 이 일본 선수는, 2017년 은퇴한 뒤 2024년 11월 도쿄 다치카와에 자기 이름을 내건 링크를 열었습니다. 이 선수는 누구일까요?",
+          "beforeExplanation": "그의 이름은 일본 배우 다이치 마오의 이름을 따서 지은 것입니다.",
+          "removedCue": "2017년 은퇴 뒤 자기 이름을 내건 링크(관심층 — 근황 뉴스)",
+          "addedCue": "푸들 '에어로'를 갈라 프로그램에 내보냄",
+          "why": "은퇴 뒤 링크는 근황 뉴스라 해설로 내리고, 팬이 '아 그거' 할 갈라 세부로 바꿈"
+        },
+        "generalHint": "2010년 동계 올림픽 때 밴쿠버의 일본식 핫도그 노점 재파독은 그의 이름을 딴 핫도그를 내놓았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "김연아와 겨룬 일본 여자 피겨 선수",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "김연아 라이벌로 널리 알려짐",
+          "piece": "f08",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "S2-23",
+          "key": "b210",
+          "hint": "2010년 동계 올림픽 때 밴쿠버의 일본식 핫도그 노점 재파독은 그의 이름을 딴 핫도그를 내놓았다.",
+          "guess": "아사다 마오",
+          "confidence": "low",
+          "hit": true,
+          "answer": "아사다 마오"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Mao_Asada"
+        ],
+        "facts": [
+          {
+            "claim": "3~9세 발레 · 언니 따라 피겨",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mao_Asada",
+            "note": "Mao Asada studied classical ballet from the age of three to nine, but followed her sister in switching to figure skating."
+          },
+          {
+            "claim": "언니 두 살 위",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mao_Asada",
+            "note": "Her sister Mai Asada (two years older) is also a figure skater."
+          },
+          {
+            "claim": "2017 은퇴 · 2024년 11월 다치카와 MAO RINK",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Mao_Asada",
+            "note": "She announced her retirement from competition in 2017, and in November 2024 she opened a rink in Tachikawa, Tokyo ... MAO RINK"
+          },
+          {
+            "claim": "이름 다이치 마오에서",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Mao_Asada",
+            "note": "She was named after the Japanese actress Mao Daichi."
+          },
+          {
+            "claim": "네슬레 초콜릿 이름을 딴 푸들 에어로를 갈라 프로그램에 등장시킴",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mao_Asada",
+            "note": "Asada owned a miniature poodle named Aero, who is named after the chocolate confection made by Nestlé. She has included Aero in exhibition programs."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Mao_Asada"
+        ],
+        "hintNote": "During the 2010 Winter Olympics, a popular Vancouver Japanese street food vendor, Japadog, named a hot dog after Asada called the Mao Dog.",
+        "easiestCue": "두 살 위 언니를 따라 피겨로 옮김",
+        "targetWhy": "발레 이력·푸들 갈라는 피겨 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "일본 여자 피겨 선수를 하나 대라면 이 이름이 먼저 떠오른다",
+        "pairCheck": null,
+        "dbCheck": "아사다 마오 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "두 살 위 언니를 따라 피겨로 옮긴 일본 선수",
+          "difWhy": "자매 피겨 선수 — 피겨 관심층",
+          "wor": 3,
+          "worWhy": "유명 선수 이야기",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "S2-21",
-     "key": "b216",
-     "hint": "1946년 스웨덴에서 세워진 스윅스는 이것을 종류마다 색으로 나눠 팔았고, 그 방식을 업계 전체가 따랐다.",
-     "guess": "스키 왁스",
-     "confidence": "high",
-     "hit": true,
-     "answer": "왁스"
+    {
+      "seedId": "combat-athletics/5#g019b-S2-24",
+      "seed": {
+        "subject": "스키 점프",
+        "aspect": null,
+        "ref": "S2-24",
+        "pairedWith": 6009
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 6009,
+        "question": "1969년 폴란드의 미로스와프 그라프가 어릴 때 처음 찾아냈다는 이 종목의 한 자세는, 심판들이 1990년대 초까지 낮은 자세 점수를 주어 외면당했습니다. 스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고 이 자세로 이기면서 1990년대 중반 모두가 쓰게 된 이 종목은?",
+        "answer": "스키 점프",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "보클뢰브는 이 자세로 1988~89 시즌 월드컵 종합 우승을 차지했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고",
+          "difWhy": "V자 자세 — 스키 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종목 기술사",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고",
+          "difWhy": "V자 자세 — 스키 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종목 기술사"
+        },
+        "rewrite": null,
+        "generalHint": "이 자세는 옛 평행 자세보다 최대 10퍼센트 더 먼 기록을 낼 수 있었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "도약대에서 날아올라 거리와 자세를 겨루는 스키 종목",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "국가대표 영화로 익숙",
+          "piece": "f09",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S2-24",
+          "key": "b146",
+          "hint": "슬로베니아 플라니차에서 요제프 브라들이 처음으로 100m를 넘게 날았다.",
+          "guess": "스키 점프",
+          "confidence": "high",
+          "hit": true,
+          "answer": "스키 점프"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/V-style",
+          "https://en.wikipedia.org/wiki/Jan_Boklöv"
+        ],
+        "facts": [
+          {
+            "claim": "1969 그라프가 어릴 때 처음 찾음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/V-style",
+            "note": "Graf discovered the technique as a child in 1969, but it was not taken seriously by his contemporaries."
+          },
+          {
+            "claim": "심판이 낮은 점수 · 1990년대 초에야 인정",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/V-style",
+            "note": "judges made it an issue to award poor marks to those who used it ... The V-style only became recognised as valid by judges in the early 1990s."
+          },
+          {
+            "claim": "보클뢰브 등 감점에도 승리 · 1990년대 중반 주류",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/V-style",
+            "note": "Wins by Jan Boklöv, Jiří Malec, and Stefan Zünd, who kept using it despite low style points ... By the mid-1990s it had become the predominant style of jumping used by all athletes."
+          },
+          {
+            "claim": "보클뢰브 1988~89 월드컵 종합 우승",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Jan_Boklöv",
+            "note": "He won the 1988–89 World Cup season (overall title 1989)."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고 이 자세로 이기면서",
+        "targetWhy": "V자 자세의 탄생과 감점 역사는 스키 점프 애호가 세부 — V자라는 꼴 자체는 질문에서 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "기술이 받아들여진 사연(취미 세부)",
+        "pairCheck": "1회차 #6009 는 1924 하우그·하우겐 동메달 정정(질문·해설) · 1924 금 탐스(힌트) — V자 자세 사연과 겹치지 않음",
+        "dbCheck": "스키 점프 pair-or-different — #6009 와 지식 다름(2회차)",
+        "warn": [
+          "단정어 처음",
+          "단정어 모두"
+        ],
+        "first": {
+          "id": 6009,
+          "question": "1924년 샤모니 대회 이 종목에서 3위로 기록된 노르웨이의 토를레이프 하우그는, 1974년 야코브 보게가 점수 계산의 착오를 찾아내면서 순위가 바뀌었습니다. 그해 9월 오슬로에서 하우그의 딸이 85살의 미국 선수 안데르스 하우겐에게 동메달을 건넨 이 종목은 무엇일까요?",
+          "explanation": "다시 계산해 보니 하우겐의 점수가 하우그보다 0.095점 높았습니다.",
+          "hint": "이 종목의 1924년 금메달은 노르웨이의 야콥 툴린 탐스가 땄다.",
+          "difficulty": 4
+        },
+        "disputed": {
+          "valueStatus": "disputed",
+          "where": "질문(그라프 1969·어릴 때 찾아냄) · 힌트(브라들 100m 연도 — 질문·해설·힌트에 연도는 쓰이지 않음)",
+          "use": "질문은 V-style 문서(그라프가 1969년 어릴 때 발견했으나 동시대에 진지하게 받아들여지지 않음)를 쓰고 '찾아냈다는'으로 전승 표현을 유지 — Ski jumping 문서의 '보클뢰브가 1980년대 중반 개척' 은 정착(널리 쓰임) 서술과 충돌하지 않음. 브라들 최초 100m 는 한 문서가 1935 다른 곳이 1936 이므로 연도를 쓰지 않는 것이 안전(교체 힌트는 브라들을 쓰지 않음).",
+          "sources": [
+            "https://en.wikipedia.org/wiki/V-style",
+            "https://en.wikipedia.org/wiki/Ski_jumping"
+          ]
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고",
+          "difWhy": "V자 자세 — 스키 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종목 기술사",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "hobby": "장비",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ski_wax"
-    ],
-    "facts": [
-     {
-      "claim": "1673 셰퍼 · 송진 피치와 로진",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ski_wax",
-      "note": "Johannes Scheffer's 1673 book as likely the first recorded ski-wax instructions. He advised skiers to use pine tar pitch and rosin."
-     },
-     {
-      "claim": "FIS 불소 왁스 금지 · PFAS 환경 잔류",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ski_wax",
-      "note": "the FIS ban applies in all competitive ski disciplines ... PFASs in ski wax are heat resistant, chemically and biologically stable, and thus environmentally persistent."
-     },
-     {
-      "claim": "1913 외스트뷔 클리스터 특허",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ski_wax",
-      "note": "Norwegian Peter Østbye patented klister in 1913."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Swix"
-    ],
-    "hintNote": "The company was founded in Sweden in 1946 by Börje Gabrielsson ... The wax was colour-coded according to type, a practice that has since been adopted by the entire ski wax industry.",
-    "easiestCue": "국제스키연맹은 … 불소가 든 이것을 대회에서 쓰지 못하게",
-    "targetWhy": "클리스터 · 불소 금지 — 스키 애호가 장비 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "스키어라면 쓰는 장비의 규칙 사연",
-    "pairCheck": null,
-    "dbCheck": "왁스 · 스키 왁스 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "combat-athletics/5#g019b-S2-22",
-   "seed": {
-    "subject": "정빙기",
-    "aspect": null,
-    "ref": "S2-22",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인은, 빙판을 고르려면 일꾼 서너 명이 손으로 긁고 씻어 내야 하는 것이 불만이었습니다. 1947년 군용 지프 차대에 얹은 시제품을 거쳐 1949년 그가 완성한 이 기계는?",
-    "answer": "정빙기",
-    "acceptedAnswers": [
-     "잠보니"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '정빙기(…) 또는 빙판포장차, 빙포차' · en.wikipedia 'often referred to as a Zamboni as a genericized trademark' — 같은 기계를 부르는 다른 이름",
-    "explanation": "만든 사람 프랭크 잠보니의 이름이 이 기계를 가리키는 보통 이름처럼 쓰이게 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인",
-     "difWhy": "잠보니 정빙기 발명 — 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 발명 일화",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1939년 캘리포니아 파라마운트에 아이스링크를 지은 한 얼음 공장 주인",
-     "difWhy": "잠보니 정빙기 발명 — 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 발명 일화"
-    },
-    "rewrite": null,
-    "generalHint": "피겨 스타 소냐 헤니가 그의 링크를 다녀간 뒤 이 기계를 두 대 주문했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "빙판을 깎고 물을 뿌려 다시 매끈하게 만드는 차량",
-    "familiarity": {
-     "judge": 2,
-     "pct": 40,
-     "why": "빙상 중계에서 보지만 이름은 낯선 편",
-     "piece": "f06",
-     "genPct": 45
-    },
-    "blind": {
-     "ref": "S2-22",
-     "key": "b031",
-     "hint": "피겨 스타 소냐 헤니가 그의 링크를 다녀간 뒤 이 기계를 두 대 주문했다.",
-     "guess": "잠보니",
-     "confidence": "high",
-     "hit": true,
-     "answer": "정빙기"
-    },
-    "hobby": "장비",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ice_resurfacer"
-    ],
-    "facts": [
-     {
-      "claim": "1939 파라마운트 링크 · 일꾼 서너 명 손작업",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
-      "note": "The Iceland rink he built in 1939 was in Paramount, California ... he needed three or four workers to scrape, wash, and squeegee the ice by hand."
-     },
-     {
-      "claim": "얼음 공장(냉동업) 주인",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
-      "note": "Zamboni was originally in the refrigeration business, making ice blocks."
-     },
-     {
-      "claim": "1947 지프 차대 시제품 · 1949 완성",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
-      "note": "His 1947 prototype was mounted on an army surplus Willys jeep chassis ... The Model A followed in 1949"
-     },
-     {
-      "claim": "잠보니 보통 이름화",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ice_resurfacer",
-      "note": "often referred to as a \"Zamboni\" as a genericized trademark"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Frank_Zamboni"
-    ],
-    "hintNote": "he expanded the operation when he received two orders from figure skater Sonja Henie after she visited his rink",
-    "easiestCue": "빙판을 고르려면 일꾼 서너 명이 손으로 긁고 씻어 내야 하는 것이 불만이었습니다",
-    "targetWhy": "발명 경위는 빙상 애호가 세부 — 기계의 하는 일을 간접으로만 비춘다 (경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "첫 문장이 하는 일을 암시해 추측이 된다",
-    "pairCheck": null,
-    "dbCheck": "정빙기 · 잠보니 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "combat-athletics/5#g019b-S2-23",
-   "seed": {
-    "subject": "아사다 마오",
-    "aspect": null,
-    "ref": "S2-23",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "세 살부터 아홉 살까지 발레를 배우다 두 살 위 언니를 따라 피겨로 옮긴 일본 선수입니다. 네슬레 초콜릿 이름을 딴 애완 푸들 '에어로'를 갈라 프로그램에 함께 내보내기도 한 이 선수는 누구일까요?",
-    "answer": "아사다 마오",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "2017년 은퇴한 뒤 2024년 11월 도쿄 다치카와에 자기 이름을 내건 링크를 열었고, 이름은 배우 다이치 마오에서 따왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "두 살 위 언니를 따라 피겨로 옮긴 일본 선수",
-     "difWhy": "자매 피겨 선수 — 피겨 관심층",
-     "wor": 3,
-     "worWhy": "유명 선수 이야기",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "2017년 은퇴한 뒤 ... 자기 이름을 내건 링크",
-     "difWhy": "아사다 마오 은퇴 뒤 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "세 살부터 아홉 살까지 발레를 배우다 두 살 위 언니를 따라 피겨로 옮긴 이 일본 선수는, 2017년 은퇴한 뒤 2024년 11월 도쿄 다치카와에 자기 이름을 내건 링크를 열었습니다. 이 선수는 누구일까요?",
-     "beforeExplanation": "그의 이름은 일본 배우 다이치 마오의 이름을 따서 지은 것입니다.",
-     "removedCue": "2017년 은퇴 뒤 자기 이름을 내건 링크(관심층 — 근황 뉴스)",
-     "addedCue": "푸들 '에어로'를 갈라 프로그램에 내보냄",
-     "why": "은퇴 뒤 링크는 근황 뉴스라 해설로 내리고, 팬이 '아 그거' 할 갈라 세부로 바꿈"
-    },
-    "generalHint": "2010년 동계 올림픽 때 밴쿠버의 일본식 핫도그 노점 재파독은 그의 이름을 딴 핫도그를 내놓았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "김연아와 겨룬 일본 여자 피겨 선수",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "김연아 라이벌로 널리 알려짐",
-     "piece": "f08",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "S2-23",
-     "key": "b210",
-     "hint": "2010년 동계 올림픽 때 밴쿠버의 일본식 핫도그 노점 재파독은 그의 이름을 딴 핫도그를 내놓았다.",
-     "guess": "아사다 마오",
-     "confidence": "low",
-     "hit": true,
-     "answer": "아사다 마오"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Mao_Asada"
-    ],
-    "facts": [
-     {
-      "claim": "3~9세 발레 · 언니 따라 피겨",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mao_Asada",
-      "note": "Mao Asada studied classical ballet from the age of three to nine, but followed her sister in switching to figure skating."
-     },
-     {
-      "claim": "언니 두 살 위",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mao_Asada",
-      "note": "Her sister Mai Asada (two years older) is also a figure skater."
-     },
-     {
-      "claim": "2017 은퇴 · 2024년 11월 다치카와 MAO RINK",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Mao_Asada",
-      "note": "She announced her retirement from competition in 2017, and in November 2024 she opened a rink in Tachikawa, Tokyo ... MAO RINK"
-     },
-     {
-      "claim": "이름 다이치 마오에서",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Mao_Asada",
-      "note": "She was named after the Japanese actress Mao Daichi."
-     },
-     {
-      "claim": "네슬레 초콜릿 이름을 딴 푸들 에어로를 갈라 프로그램에 등장시킴",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mao_Asada",
-      "note": "Asada owned a miniature poodle named Aero, who is named after the chocolate confection made by Nestlé. She has included Aero in exhibition programs."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Mao_Asada"
-    ],
-    "hintNote": "During the 2010 Winter Olympics, a popular Vancouver Japanese street food vendor, Japadog, named a hot dog after Asada called the Mao Dog.",
-    "easiestCue": "두 살 위 언니를 따라 피겨로 옮김",
-    "targetWhy": "발레 이력·푸들 갈라는 피겨 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "일본 여자 피겨 선수를 하나 대라면 이 이름이 먼저 떠오른다",
-    "pairCheck": null,
-    "dbCheck": "아사다 마오 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "combat-athletics/5#g019b-S2-24",
-   "seed": {
-    "subject": "스키 점프",
-    "aspect": null,
-    "ref": "S2-24",
-    "pairedWith": 6009
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 6009,
-    "question": "1969년 폴란드의 미로스와프 그라프가 어릴 때 처음 찾아냈다는 이 종목의 한 자세는, 심판들이 1990년대 초까지 낮은 자세 점수를 주어 외면당했습니다. 스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고 이 자세로 이기면서 1990년대 중반 모두가 쓰게 된 이 종목은?",
-    "answer": "스키 점프",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "보클뢰브는 이 자세로 1988~89 시즌 월드컵 종합 우승을 차지했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고",
-     "difWhy": "V자 자세 — 스키 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 종목 기술사",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고",
-     "difWhy": "V자 자세 — 스키 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 종목 기술사"
-    },
-    "rewrite": null,
-    "generalHint": "슬로베니아 플라니차에서 요제프 브라들이 처음으로 100m를 넘게 날았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "도약대에서 날아올라 거리와 자세를 겨루는 스키 종목",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "국가대표 영화로 익숙",
-     "piece": "f09",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "S2-24",
-     "key": "b146",
-     "hint": "슬로베니아 플라니차에서 요제프 브라들이 처음으로 100m를 넘게 날았다.",
-     "guess": "스키 점프",
-     "confidence": "high",
-     "hit": true,
-     "answer": "스키 점프"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/V-style",
-     "https://en.wikipedia.org/wiki/Jan_Boklöv"
-    ],
-    "facts": [
-     {
-      "claim": "1969 그라프가 어릴 때 처음 찾음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/V-style",
-      "note": "Graf discovered the technique as a child in 1969, but it was not taken seriously by his contemporaries."
-     },
-     {
-      "claim": "심판이 낮은 점수 · 1990년대 초에야 인정",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/V-style",
-      "note": "judges made it an issue to award poor marks to those who used it ... The V-style only became recognised as valid by judges in the early 1990s."
-     },
-     {
-      "claim": "보클뢰브 등 감점에도 승리 · 1990년대 중반 주류",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/V-style",
-      "note": "Wins by Jan Boklöv, Jiří Malec, and Stefan Zünd, who kept using it despite low style points ... By the mid-1990s it had become the predominant style of jumping used by all athletes."
-     },
-     {
-      "claim": "보클뢰브 1988~89 월드컵 종합 우승",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Jan_Boklöv",
-      "note": "He won the 1988–89 World Cup season (overall title 1989)."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Ski_jumping"
-    ],
-    "hintNote": "In 1935, the origins of ski flying began in Planica, Slovenia, where Josef Bradl became the first competitor in history to jump over 100 m (330 ft).",
-    "easiestCue": "스웨덴의 얀 보클뢰브 등이 감점을 무릅쓰고 이 자세로 이기면서",
-    "targetWhy": "V자 자세의 탄생과 감점 역사는 스키 점프 애호가 세부 — V자라는 꼴 자체는 질문에서 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "기술이 받아들여진 사연(취미 세부)",
-    "pairCheck": "1회차 #6009 는 1924 하우그·하우겐 동메달 정정(질문·해설) · 1924 금 탐스(힌트) — V자 자세 사연과 겹치지 않음",
-    "dbCheck": "스키 점프 pair-or-different — #6009 와 지식 다름(2회차)",
-    "warn": [
-     "단정어 처음",
-     "단정어 모두"
-    ],
-    "first": {
-     "id": 6009,
-     "question": "1924년 샤모니 대회 이 종목에서 3위로 기록된 노르웨이의 토를레이프 하우그는, 1974년 야코브 보게가 점수 계산의 착오를 찾아내면서 순위가 바뀌었습니다. 그해 9월 오슬로에서 하우그의 딸이 85살의 미국 선수 안데르스 하우겐에게 동메달을 건넨 이 종목은 무엇일까요?",
-     "explanation": "다시 계산해 보니 하우겐의 점수가 하우그보다 0.095점 높았습니다.",
-     "hint": "이 종목의 1924년 금메달은 노르웨이의 야콥 툴린 탐스가 땄다.",
-     "difficulty": 4
+    {
+      "seedId": "combat-athletics/5#g019b-S2-25",
+      "seed": {
+        "subject": "아이스하키",
+        "aspect": null,
+        "ref": "S2-25",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1895년 버킹엄 궁전에서는 캐나다 총독을 지낸 한 귀족의 다섯 아들이, 뒷날 에드워드 7세와 조지 5세가 될 이들이 낀 궁정 팀과 이 종목 경기를 벌여 이겼습니다. 이 아들들이 유럽에 퍼뜨리는 데 큰 몫을 한 이 종목은?",
+        "answer": "아이스하키",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1875년 3월 3일 몬트리올 빅토리아 스케이팅 링크에서 첫 정식 실내 경기가 열렸고, 관중이 다치지 않게 공 대신 납작하고 둥근 나무 조각을 썼습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 캐나다 총독을 지낸 귀족의 아들들 + 동계 종목",
+          "difWhy": "캐나다 국민 종목 추론 — 스포츠 관심층",
+          "wor": 3,
+          "worWhy": "종목 전파 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "캐나다 몬트리올의 빅토리아 스케이팅 링크에서 ... 두 팀",
+          "difWhy": "몬트리올 첫 실내 경기 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종목 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1875년 3월 3일 캐나다 몬트리올의 빅토리아 스케이팅 링크에서, 제임스 크레이턴과 맥길 대학 학생들이 아홉 명씩 두 팀을 이뤄 이 종목의 첫 정식 실내 경기를 치렀습니다. 이 종목은 무엇일까요?",
+          "beforeExplanation": "이 경기에서는 관중이 다치지 않고 공이 링크 밖으로 나가지 않게 하려고, 공 대신 납작하고 둥근 나무 조각을 썼습니다.",
+          "removedCue": "1875년 몬트리올 빅토리아 스케이팅 링크의 첫 정식 실내 경기(관심층)",
+          "addedCue": "1895년 버킹엄 궁전에서 총독의 다섯 아들이 궁정 팀을 이긴 경기",
+          "why": "몬트리올 첫 경기는 그 종목 역사의 첫 줄이라 해설로 내리고, 유럽 전파 뒷이야기로 바꿈(스탠리 이름은 스탠리컵으로 바로 이어져 뺌)"
+        },
+        "generalHint": "1877년 몬트리올의 맥길 대학교에 이 종목 첫 클럽이 생겼다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "스케이트를 신고 스틱으로 퍽을 쳐 넣는 빙상 구기",
+        "familiarity": {
+          "judge": 3,
+          "pct": 98,
+          "why": "누구나 아는 종목",
+          "piece": "f03",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "S2-25",
+          "key": "b104",
+          "hint": "1877년 몬트리올의 맥길 대학교에 이 종목 첫 클럽이 생겼다.",
+          "guess": "아이스하키",
+          "confidence": "high",
+          "hit": true,
+          "answer": "아이스하키"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/History_of_ice_hockey"
+        ],
+        "facts": [
+          {
+            "claim": "1875.3.3 몬트리올 빅토리아 링크 첫 조직된 실내 경기 · 크레이턴 · 맥길 학생",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
+            "note": "On March 3, 1875, the first organized indoor game was played at Montreal's Victoria Skating Rink. James Creighton was among the players, along with several McGill University students."
+          },
+          {
+            "claim": "공 대신 납작한 나무 원반 · 관중 보호",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
+            "note": "Instead of a ball or bung, the game used a flat circular piece of wood ... meant to keep it in the rink and protect spectators."
+          },
+          {
+            "claim": "스탠리의 다섯 아들이 1895년 버킹엄 궁전에서 궁정 팀(뒷날 에드워드 7세·조지 5세 포함)을 이김, 유럽 보급에 큰 몫",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
+            "note": "Stanley's five sons were instrumental in bringing ice hockey to Europe, defeating a court team (which included the future Edward VII and George V) at Buckingham Palace in 1895."
+          },
+          {
+            "claim": "스탠리는 캐나다 총독",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
+            "note": "In 1888, the Governor General of Canada, The Lord Stanley of Preston, first attended the Montreal Winter Carnival tournament and was impressed with the game. His sons and his daughter, Isobel Stanley, were hockey enthusiasts."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/History_of_ice_hockey"
+        ],
+        "hintNote": "The McGill University Hockey Club, the first ice hockey club, was founded in 1877",
+        "easiestCue": "캐나다 총독의 다섯 아들이 유럽에 퍼뜨림",
+        "targetWhy": "버킹엄 궁전 경기는 그 종목 역사 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "캐나다 + 스케이트 링크 + 팀 경기면 추측이 쉽다",
+        "pairCheck": null,
+        "dbCheck": "아이스하키 new · 퍽(#2191)과 지식 다름",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 캐나다 총독을 지낸 귀족의 아들들 + 동계 종목",
+          "difWhy": "캐나다 국민 종목 추론 — 스포츠 관심층",
+          "wor": 3,
+          "worWhy": "종목 전파 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "combat-athletics/5#g019b-S2-25",
-   "seed": {
-    "subject": "아이스하키",
-    "aspect": null,
-    "ref": "S2-25",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1895년 버킹엄 궁전에서는 캐나다 총독을 지낸 한 귀족의 다섯 아들이, 뒷날 에드워드 7세와 조지 5세가 될 이들이 낀 궁정 팀과 이 종목 경기를 벌여 이겼습니다. 이 아들들이 유럽에 퍼뜨리는 데 큰 몫을 한 이 종목은?",
-    "answer": "아이스하키",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1875년 3월 3일 몬트리올 빅토리아 스케이팅 링크에서 첫 정식 실내 경기가 열렸고, 관중이 다치지 않게 공 대신 납작하고 둥근 나무 조각을 썼습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 캐나다 총독을 지낸 귀족의 아들들 + 동계 종목",
-     "difWhy": "캐나다 국민 종목 추론 — 스포츠 관심층",
-     "wor": 3,
-     "worWhy": "종목 전파 이야깃거리",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "캐나다 몬트리올의 빅토리아 스케이팅 링크에서 ... 두 팀",
-     "difWhy": "몬트리올 첫 실내 경기 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 종목 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1875년 3월 3일 캐나다 몬트리올의 빅토리아 스케이팅 링크에서, 제임스 크레이턴과 맥길 대학 학생들이 아홉 명씩 두 팀을 이뤄 이 종목의 첫 정식 실내 경기를 치렀습니다. 이 종목은 무엇일까요?",
-     "beforeExplanation": "이 경기에서는 관중이 다치지 않고 공이 링크 밖으로 나가지 않게 하려고, 공 대신 납작하고 둥근 나무 조각을 썼습니다.",
-     "removedCue": "1875년 몬트리올 빅토리아 스케이팅 링크의 첫 정식 실내 경기(관심층)",
-     "addedCue": "1895년 버킹엄 궁전에서 총독의 다섯 아들이 궁정 팀을 이긴 경기",
-     "why": "몬트리올 첫 경기는 그 종목 역사의 첫 줄이라 해설로 내리고, 유럽 전파 뒷이야기로 바꿈(스탠리 이름은 스탠리컵으로 바로 이어져 뺌)"
-    },
-    "generalHint": "1877년 몬트리올의 맥길 대학교에 이 종목 첫 클럽이 생겼다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "스케이트를 신고 스틱으로 퍽을 쳐 넣는 빙상 구기",
-    "familiarity": {
-     "judge": 3,
-     "pct": 98,
-     "why": "누구나 아는 종목",
-     "piece": "f03",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "S2-25",
-     "key": "b104",
-     "hint": "1877년 몬트리올의 맥길 대학교에 이 종목 첫 클럽이 생겼다.",
-     "guess": "아이스하키",
-     "confidence": "high",
-     "hit": true,
-     "answer": "아이스하키"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/History_of_ice_hockey"
-    ],
-    "facts": [
-     {
-      "claim": "1875.3.3 몬트리올 빅토리아 링크 첫 조직된 실내 경기 · 크레이턴 · 맥길 학생",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
-      "note": "On March 3, 1875, the first organized indoor game was played at Montreal's Victoria Skating Rink. James Creighton was among the players, along with several McGill University students."
-     },
-     {
-      "claim": "공 대신 납작한 나무 원반 · 관중 보호",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
-      "note": "Instead of a ball or bung, the game used a flat circular piece of wood ... meant to keep it in the rink and protect spectators."
-     },
-     {
-      "claim": "스탠리의 다섯 아들이 1895년 버킹엄 궁전에서 궁정 팀(뒷날 에드워드 7세·조지 5세 포함)을 이김, 유럽 보급에 큰 몫",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
-      "note": "Stanley's five sons were instrumental in bringing ice hockey to Europe, defeating a court team (which included the future Edward VII and George V) at Buckingham Palace in 1895."
-     },
-     {
-      "claim": "스탠리는 캐나다 총독",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/History_of_ice_hockey",
-      "note": "In 1888, the Governor General of Canada, The Lord Stanley of Preston, first attended the Montreal Winter Carnival tournament and was impressed with the game. His sons and his daughter, Isobel Stanley, were hockey enthusiasts."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/History_of_ice_hockey"
-    ],
-    "hintNote": "The McGill University Hockey Club, the first ice hockey club, was founded in 1877",
-    "easiestCue": "캐나다 총독의 다섯 아들이 유럽에 퍼뜨림",
-    "targetWhy": "버킹엄 궁전 경기는 그 종목 역사 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "캐나다 + 스케이트 링크 + 팀 경기면 추측이 쉽다",
-    "pairCheck": null,
-    "dbCheck": "아이스하키 new · 퍽(#2191)과 지식 다름",
-    "warn": []
-   }
-  }
- ]
+  ]
 }

@@ -1,217 +1,240 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "board-game/2",
-  "midKey": "board-game",
-  "subName": "체스",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "board-game/2#g019b-L2-18",
-   "seed": {
-    "subject": "룩",
-    "aspect": null,
-    "ref": "L2-18",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 체스 기물을 러시아어로는 '배'를 뜻하는 '라디야'라고 부릅니다. 영어 이름은 '전차'를 뜻하는 페르시아어에서 왔고, 인도의 차투랑가에서도 이 자리의 말은 전차를 뜻하는 '라타'였습니다. 이 기물은 무엇일까요?",
-    "answer": "룩",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "독일어와 스페인어로는 '탑'을 뜻하는 투름·토레라고 부릅니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "영어 이름은 '전차'를 뜻하는 페르시아어에서 왔고",
-     "difWhy": "룩 어원 — 체스 애호가",
-     "wor": 2,
-     "worWhy": "팬 세부 — 기물 이름 유래",
-     "acc": 4,
-     "accWhy": "바둑·화투·체스 — 대부분이 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "영어 이름은 '전차'를 뜻하는 페르시아어에서 왔고",
-     "difWhy": "룩 어원 — 체스 애호가",
-     "wor": 2,
-     "worWhy": "팬 세부 — 기물 이름 유래"
-    },
-    "rewrite": null,
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "가로세로로 곧게 움직이는 탑 모양 체스 기물",
-    "familiarity": {
-     "judge": 2,
-     "pct": 40,
-     "why": "체스 기물 이름으로 체스 아는 사람만 앎",
-     "piece": "f01",
-     "genPct": 55
-    },
-    "blind": null,
-    "hobby": "보드게임",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Rook_(chess)"
-    ],
-    "facts": [
-     {
-      "claim": "러시아어 ladya = 배",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
-      "note": "ладья (ladya), glossed as 'boat'"
-     },
-     {
-      "claim": "페르시아어 rukh = 전차",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
-      "note": "The Persian word rukh means 'chariot'."
-     },
-     {
-      "claim": "차투랑가의 ratha 도 전차",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
-      "note": "the name of the corresponding piece in the original Indian game, chaturanga, is ratha, which also means chariot."
-     },
-     {
-      "claim": "독일어 Turm, 스페인어 torre = 탑",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
-      "note": "German: Turm, glossed as 'tower' / Spanish: torre, glossed as 'tower'"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "인도의 차투랑가에서 이 자리의 말은 전차를 뜻했다",
-    "targetWhy": "탑 모양·움직임(대표 사실)을 빼고 각 나라 이름의 뜻만 — 체스 애호가 4 (kept4 비숍 꼴)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "장기의 '차'와 같은 말이라는 연결로 추리할 여지",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [],
-    "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 기물 이름 유래) · life 는 3 이상"
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "board-game/2",
+    "midKey": "board-game",
+    "subName": "체스",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "board-game/2#g019b-L2-19",
-   "seed": {
-    "subject": "그랜드마스터",
-    "aspect": null,
-    "ref": "L2-19",
-    "pairedWith": 353
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 353,
-    "question": "1914년 상트페테르부르크 대회 결승에 오른 라스커·카파블랑카·알레힌·타라시·마셜에게 니콜라이 2세가 이 칭호를 주었다는 이야기는 1940년대 글에서야 나와 의심받습니다. 이 체스 칭호는 무엇일까요?",
-    "answer": "그랜드마스터",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "국제체스연맹은 1950년 27명에게 처음 이 칭호를 주었고, 같은 해 인터내셔널 마스터 칭호도 함께 만들었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "이 체스 칭호는 무엇일까요?",
-     "difWhy": "대표 체스 칭호 — 방송·뉴스에서 흔히",
-     "wor": 3,
-     "worWhy": "칭호 유래 이야깃거리",
-     "acc": 4,
-     "accWhy": "바둑·화투·체스 — 대부분이 안다"
+  "items": [
+    {
+      "seedId": "board-game/2#g019b-L2-18",
+      "seed": {
+        "subject": "룩",
+        "aspect": null,
+        "ref": "L2-18",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 체스 기물을 러시아어로는 '배'를 뜻하는 '라디야'라고 부릅니다. 영어 이름은 '전차'를 뜻하는 페르시아어에서 왔고, 인도의 차투랑가에서도 이 자리의 말은 전차를 뜻하는 '라타'였습니다. 이 기물은 무엇일까요?",
+        "answer": "룩",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "독일어와 스페인어로는 '탑'을 뜻하는 투름·토레라고 부릅니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "영어 이름은 '전차'를 뜻하는 페르시아어에서 왔고",
+          "difWhy": "룩 어원 — 체스 애호가",
+          "wor": 4,
+          "worWhy": "체스의 기본 어휘(기물 이름) — 이름 유래도 교양(G020 재채점)",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다",
+          "worBy": "G020 재채점(CV-88)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "영어 이름은 '전차'를 뜻하는 페르시아어에서 왔고",
+          "difWhy": "룩 어원 — 체스 애호가",
+          "wor": 2,
+          "worWhy": "팬 세부 — 기물 이름 유래"
+        },
+        "rewrite": null,
+        "generalHint": "기물 값어치로는 보통 폰 다섯 개쯤으로 친다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "가로세로로 곧게 움직이는 탑 모양 체스 기물",
+        "familiarity": {
+          "judge": 2,
+          "pct": 40,
+          "why": "체스 기물 이름으로 체스 아는 사람만 앎",
+          "piece": "f01",
+          "genPct": 55
+        },
+        "blind": null,
+        "hobby": "보드게임",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Rook_(chess)"
+        ],
+        "facts": [
+          {
+            "claim": "러시아어 ladya = 배",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
+            "note": "ладья (ladya), glossed as 'boat'"
+          },
+          {
+            "claim": "페르시아어 rukh = 전차",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
+            "note": "The Persian word rukh means 'chariot'."
+          },
+          {
+            "claim": "차투랑가의 ratha 도 전차",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
+            "note": "the name of the corresponding piece in the original Indian game, chaturanga, is ratha, which also means chariot."
+          },
+          {
+            "claim": "독일어 Turm, 스페인어 torre = 탑",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Rook_(chess)",
+            "note": "German: Turm, glossed as 'tower' / Spanish: torre, glossed as 'tower'"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Rook_(chess)"
+        ],
+        "easiestCue": "인도의 차투랑가에서 이 자리의 말은 전차를 뜻했다",
+        "targetWhy": "탑 모양·움직임(대표 사실)을 빼고 각 나라 이름의 뜻만 — 체스 애호가 4 (kept4 비숍 꼴)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "장기의 '차'와 같은 말이라는 연결로 추리할 여지",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "discardedBefore": "선별 게이트 — 알 가치 2 (팬 세부 — 기물 이름 유래) · life 는 3 이상",
+        "g020": {
+          "why": "CV-88 (b) 알 가치 재채점 4 → 격리 풂",
+          "verdict": "quarantine",
+          "hintGen": true
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "국제체스연맹이 1950년 27명에게 처음 준 이 칭호",
-     "difWhy": "체스 최고 칭호 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 체스 기본 칭호"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1914년 상트페테르부르크 대회 결승에 오른 라스커·카파블랑카·알레힌·타라시·마셜에게 니콜라이 2세가 이 칭호를 주었다는 이야기는 1940년대 글에서야 나와 의심받습니다. 국제체스연맹이 1950년 27명에게 처음 준 이 칭호는?",
-     "beforeExplanation": "국제체스연맹은 같은 1950년 인터내셔널 마스터 칭호도 함께 만들었습니다.",
-     "removedCue": "국제체스연맹이 1950년 27명에게 처음 준 칭호(관심층)",
-     "addedCue": "없음(쉬운 단서를 해설로 내림 — 니콜라이 2세 전설과 그 의심이 남음)",
-     "why": "FIDE 첫 수여는 관심층 사실이라 해설로 내림"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "국제체스연맹이 주는 가장 높은 선수 칭호",
-    "familiarity": {
-     "judge": 2,
-     "pct": 45,
-     "why": "체스·게임 칭호로 들어 봤을 법함",
-     "piece": "f08",
-     "genPct": 75
-    },
-    "blind": null,
-    "hobby": "보드게임",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Grandmaster_(chess)"
-    ],
-    "facts": [
-     {
-      "claim": "1914 상트페테르부르크, 니콜라이 2세가 다섯 결승 진출자에게 줬다는 이야기",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
-      "note": "the title Grandmaster was formally conferred by Russian Tsar Nicholas II ... five finalists: Lasker, Capablanca, Alekhine, Tarrasch, and Marshall."
-     },
-     {
-      "claim": "근거는 1940년 뉴요커 글·1942 마셜 자서전 — 의문 제기",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
-      "note": "Edward Winter has questioned this, noting the earliest known supporting sources are a 1940 New Yorker article and Marshall's 1942 autobiography."
-     },
-     {
-      "claim": "1950년 27명에게 처음",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
-      "note": "FIDE first awarded the Grandmaster title in 1950 to 27 players."
-     },
-     {
-      "claim": "1950년 IM 도 함께 만듦",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
-      "note": "In 1950 FIDE created the titles of Grandmaster (GM), International Master (IM) and Woman Master"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "니콜라이 2세가 1914년 결승 진출자 다섯에게 이 칭호를 주었다는 이야기",
-    "targetWhy": "1914년 칭호 전설과 그 출처 의심은 체스 애호가 세부 — 1회차(최고 등급·평생 유지)·힌트(피셔)와 겹치지 않음",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "같은 해 IM 도 생겨 'FIDE 칭호'만으로는 갈리지 않지만, 전설의 거장 다섯에서 최고 칭호로 추리 가능",
-    "pairCheck": "1회차 353 질문(최고 등급·평생 유지)·해설(기준 성적·평점 요건)·힌트(피셔 1958 최연소)와 겹치지 않음 — 1914 전설과 1950 첫 수여라는 다른 속성",
-    "dbCheck": "answercheck pair-or-different — 353 과 지식이 다른 2회차",
-    "warn": [
-     "단정어 처음"
-    ],
-    "first": {
-     "id": 353,
-     "question": "국제체스연맹이 주는 칭호 가운데 선수가 받을 수 있는 가장 높은 등급으로, 한 번 얻으면 실력이 떨어져도 평생 유지되는 것은?",
-     "explanation": "정해진 수준의 대회에서 기준 성적을 여러 차례 내고 평점 요건을 채워야 얻습니다.",
-     "hint": "보비 피셔는 1958년 열다섯 살에 이 칭호를 따 당시 최연소 기록을 세웠다.",
-     "difficulty": 3
+    {
+      "seedId": "board-game/2#g019b-L2-19",
+      "seed": {
+        "subject": "그랜드마스터",
+        "aspect": null,
+        "ref": "L2-19",
+        "pairedWith": 353
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 353,
+        "question": "1914년 상트페테르부르크 대회 결승에 오른 라스커·카파블랑카·알레힌·타라시·마셜에게 니콜라이 2세가 이 칭호를 주었다는 이야기는 1940년대 글에서야 나와 의심받습니다. 이 체스 칭호는 무엇일까요?",
+        "answer": "그랜드마스터",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "국제체스연맹은 1950년 27명에게 처음 이 칭호를 주었고, 같은 해 인터내셔널 마스터 칭호도 함께 만들었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "이 체스 칭호는 무엇일까요?",
+          "difWhy": "대표 체스 칭호 — 방송·뉴스에서 흔히",
+          "wor": 3,
+          "worWhy": "칭호 유래 이야깃거리",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "국제체스연맹이 1950년 27명에게 처음 준 이 칭호",
+          "difWhy": "체스 최고 칭호 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 체스 기본 칭호"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1914년 상트페테르부르크 대회 결승에 오른 라스커·카파블랑카·알레힌·타라시·마셜에게 니콜라이 2세가 이 칭호를 주었다는 이야기는 1940년대 글에서야 나와 의심받습니다. 국제체스연맹이 1950년 27명에게 처음 준 이 칭호는?",
+          "beforeExplanation": "국제체스연맹은 같은 1950년 인터내셔널 마스터 칭호도 함께 만들었습니다.",
+          "removedCue": "국제체스연맹이 1950년 27명에게 처음 준 칭호(관심층)",
+          "addedCue": "없음(쉬운 단서를 해설로 내림 — 니콜라이 2세 전설과 그 의심이 남음)",
+          "why": "FIDE 첫 수여는 관심층 사실이라 해설로 내림"
+        },
+        "generalHint": null,
+        "generalHintVersion": null,
+        "identity": "국제체스연맹이 주는 가장 높은 선수 칭호",
+        "familiarity": {
+          "judge": 2,
+          "pct": 45,
+          "why": "체스·게임 칭호로 들어 봤을 법함",
+          "piece": "f08",
+          "genPct": 75
+        },
+        "blind": null,
+        "hobby": "보드게임",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Grandmaster_(chess)"
+        ],
+        "facts": [
+          {
+            "claim": "1914 상트페테르부르크, 니콜라이 2세가 다섯 결승 진출자에게 줬다는 이야기",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
+            "note": "the title Grandmaster was formally conferred by Russian Tsar Nicholas II ... five finalists: Lasker, Capablanca, Alekhine, Tarrasch, and Marshall."
+          },
+          {
+            "claim": "근거는 1940년 뉴요커 글·1942 마셜 자서전 — 의문 제기",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
+            "note": "Edward Winter has questioned this, noting the earliest known supporting sources are a 1940 New Yorker article and Marshall's 1942 autobiography."
+          },
+          {
+            "claim": "1950년 27명에게 처음",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
+            "note": "FIDE first awarded the Grandmaster title in 1950 to 27 players."
+          },
+          {
+            "claim": "1950년 IM 도 함께 만듦",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Grandmaster_(chess)",
+            "note": "In 1950 FIDE created the titles of Grandmaster (GM), International Master (IM) and Woman Master"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": null,
+        "hintSources": [],
+        "hintNote": null,
+        "easiestCue": "니콜라이 2세가 1914년 결승 진출자 다섯에게 이 칭호를 주었다는 이야기",
+        "targetWhy": "1914년 칭호 전설과 그 출처 의심은 체스 애호가 세부 — 1회차(최고 등급·평생 유지)·힌트(피셔)와 겹치지 않음",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "같은 해 IM 도 생겨 'FIDE 칭호'만으로는 갈리지 않지만, 전설의 거장 다섯에서 최고 칭호로 추리 가능",
+        "pairCheck": "1회차 353 질문(최고 등급·평생 유지)·해설(기준 성적·평점 요건)·힌트(피셔 1958 최연소)와 겹치지 않음 — 1914 전설과 1950 첫 수여라는 다른 속성",
+        "dbCheck": "answercheck pair-or-different — 353 과 지식이 다른 2회차",
+        "warn": [
+          "단정어 처음"
+        ],
+        "first": {
+          "id": 353,
+          "question": "국제체스연맹이 주는 칭호 가운데 선수가 받을 수 있는 가장 높은 등급으로, 한 번 얻으면 실력이 떨어져도 평생 유지되는 것은?",
+          "explanation": "정해진 수준의 대회에서 기준 성적을 여러 차례 내고 평점 요건을 채워야 얻습니다.",
+          "hint": "보비 피셔는 1958년 열다섯 살에 이 칭호를 따 당시 최연소 기록을 세웠다.",
+          "difficulty": 3
+        },
+        "discarded": "G020 V026 drop — pair-3-3: 2회차 질문이 '체스 칭호'라는 범주 단서만으로 그랜드마스터가 되고(니콜라이 2세 일화는 풀이에 필요 없음) 1회차(체스 최고 칭호)를 아는 사람이 새 사실 없이 풀 수 있음 — 3-3 · CV-10",
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "이 체스 칭호는 무엇일까요?",
+          "difWhy": "대표 체스 칭호 — 방송·뉴스에서 흔히",
+          "wor": 3,
+          "worWhy": "칭호 유래 이야깃거리",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다"
+        },
+        "g020": {
+          "why": "V026 drop pair-3-3",
+          "verdict": "drop"
+        }
+      }
     }
-   }
-  }
- ]
+  ]
 }

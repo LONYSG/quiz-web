@@ -1,545 +1,616 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "kr-music/1",
-  "midKey": "kr-music",
-  "subName": "1980년대 이전 가요",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "kr-music/1#g019b-M1-13",
-   "seed": {
-    "subject": "활주로 · 송골매",
-    "aspect": "대중",
-    "ref": "M1-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "한국항공대 출신 밴드를 이끌고 1978년 제1회 해변가요제에서 '세상 모르고 살았노라'로 인기상을 받은 음악인입니다. 그 밴드의 결성 당시 이름은 '런웨이'였는데, 이 음악인은 누구일까요?",
-    "answer": "배철수",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "같은 해 MBC 대학가요제에서는 '탈춤'으로 은상을 받았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "한국항공대 밴드, 결성 당시 이름 '런웨이'",
-     "difWhy": "활주로 밴드 — 가요 관심층",
-     "wor": 3,
-     "worWhy": "유명 음악인 이력",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "MBC 대학가요제에서는 '탈춤'으로 은상",
-     "difWhy": "송골매 배철수 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "한국항공대 출신 밴드를 이끌고 1978년 제1회 해변가요제에서 '세상 모르고 살았노라'로 인기상을 받았습니다. 같은 해 MBC 대학가요제에서는 '탈춤'으로 은상을 받은 이 음악인은 누구일까요?",
-     "beforeExplanation": "2016년 MBC 방송연예대상 라디오 부문 최우수상을 받으며 남긴 수상 소감 '라디오 만세'가 화제가 됐습니다.",
-     "removedCue": "MBC 대학가요제에서는 '탈춤'으로 은상",
-     "addedCue": "밴드의 결성 당시 이름 '런웨이'",
-     "why": "관심층이 아는 대학가요제 수상을 해설로 옮기고 밴드 옛 이름으로 바꿈"
-    },
-    "generalHint": "그 밴드에서 이 음악인은 노래와 드럼을 함께 맡았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'배철수의 음악캠프'를 오래 진행한 록 밴드 출신 DJ",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "방송인으로 널리 알려짐",
-     "piece": "f05",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "M1-13",
-     "key": "b034",
-     "hint": "그 밴드에서 이 음악인은 노래와 드럼을 함께 맡았다.",
-     "guess": "필 콜린스",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "배철수"
-    },
-    "layer": "대중",
-    "genre": "가요",
-    "work": "활주로 · 송골매",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/활주로_(밴드)",
-     "https://ko.wikipedia.org/wiki/배철수"
-    ],
-    "facts": [
-     {
-      "claim": "한국항공대 출신 밴드를 이끎 · 결성 당시 이름 런웨이",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/활주로_(밴드)",
-      "note": "활주로는 대한민국의 록 밴드였다. 배철수가 이끄는 한국항공대학교 출신의 밴드로, 결성 당시 이름은 런웨이(Runway)였다."
-     },
-     {
-      "claim": "1978년 제1회 해변가요제 세상 모르고 살았노라 인기상 · 대학가요제 탈춤 은상",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/배철수",
-      "note": "1978년 7월 22일, 동양방송 (TBC) 제1회 해변가요제에서 그룹 활주로(RUNWAY)의 일원으로 출전, \"세상 모르고 살았노라\"로 인기상을 받았으며, 같은 해 9월 9일, 제2회 MBC 대학가요제에도 출전, 〈탈춤〉으로 은상을 받았다."
-     },
-     {
-      "claim": "같은 해 대학가요제 탈춤 은상",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/배철수",
-      "note": "같은 해 9월 9일, 제2회 MBC 대학가요제에도 출전, 〈탈춤〉으로 은상을 받았다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/배철수"
-    ],
-    "hintNote": "배철수(보컬, 드럼), 지덕엽(기타), 이응수(베이스), 이봉환(키보드) / 1979년 송골매를 결성해서 보컬, 드럼으로 활동하기 시작했으며",
-    "easiestCue": "1978년 제1회 해변가요제에서 '세상 모르고 살았노라'로 인기상",
-    "targetWhy": "해변가요제 · 밴드 옛 이름 — 가요 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 인물의 데뷔 전 가요제 이력",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — 활성 #5012(송골매) 와 다른 지식(감전 사고 · 활동 종료)",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "kr-music/1",
+    "midKey": "kr-music",
+    "subName": "1980년대 이전 가요",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "kr-music/1#g019b-M1-14",
-   "seed": {
-    "subject": "조용필",
-    "aspect": "대중",
-    "ref": "M1-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1969년 '화이브 핑거스'를 결성해 미8군 무대에 섰고, 1971년 김대환·최이철과 3인조 '김트리오'로 활동했습니다. 1980년대 후반 미스코리아 선발대회에서 진선미 후보를 무대 아래로 에스코트하기도 한 이 가수는?",
-    "answer": "조용필",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1979년 '위대한 탄생'과 함께 낸 정규 1집은 한국에서 처음으로 100만 장 넘게 팔린 단일 음반으로 꼽힙니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1971년 김대환·최이철과 3인조 '김트리오'",
-     "difWhy": "조용필 데뷔 전 — 가요 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "kr-music/1#g019b-M1-13",
+      "seed": {
+        "subject": "활주로 · 송골매",
+        "aspect": "대중",
+        "ref": "M1-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "한국항공대 출신 밴드를 이끌고 1978년 제1회 해변가요제에서 '세상 모르고 살았노라'로 인기상을 받은 음악인입니다. 그 밴드의 결성 당시 이름은 '런웨이'였는데, 이 음악인은 누구일까요?",
+        "answer": "배철수",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "같은 해 MBC 대학가요제에서는 '탈춤'으로 은상을 받았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "한국항공대 밴드, 결성 당시 이름 '런웨이'",
+          "difWhy": "활주로 밴드 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "유명 음악인 이력",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "MBC 대학가요제에서는 '탈춤'으로 은상",
+          "difWhy": "송골매 배철수 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "한국항공대 출신 밴드를 이끌고 1978년 제1회 해변가요제에서 '세상 모르고 살았노라'로 인기상을 받았습니다. 같은 해 MBC 대학가요제에서는 '탈춤'으로 은상을 받은 이 음악인은 누구일까요?",
+          "beforeExplanation": "2016년 MBC 방송연예대상 라디오 부문 최우수상을 받으며 남긴 수상 소감 '라디오 만세'가 화제가 됐습니다.",
+          "removedCue": "MBC 대학가요제에서는 '탈춤'으로 은상",
+          "addedCue": "밴드의 결성 당시 이름 '런웨이'",
+          "why": "관심층이 아는 대학가요제 수상을 해설로 옮기고 밴드 옛 이름으로 바꿈"
+        },
+        "generalHint": "이 음악인은 이 밴드가 끝난 1979년에 새 밴드를 만들어 노래와 드럼을 함께 맡았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'배철수의 음악캠프'를 오래 진행한 록 밴드 출신 DJ",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "방송인으로 널리 알려짐",
+          "piece": "f05",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "M1-13",
+          "key": "b034",
+          "hint": "그 밴드에서 이 음악인은 노래와 드럼을 함께 맡았다.",
+          "guess": "필 콜린스",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "배철수"
+        },
+        "layer": "대중",
+        "genre": "가요",
+        "work": "활주로 · 송골매",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/활주로_(밴드)",
+          "https://ko.wikipedia.org/wiki/배철수"
+        ],
+        "facts": [
+          {
+            "claim": "한국항공대 출신 밴드를 이끎 · 결성 당시 이름 런웨이",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/활주로_(밴드)",
+            "note": "활주로는 대한민국의 록 밴드였다. 배철수가 이끄는 한국항공대학교 출신의 밴드로, 결성 당시 이름은 런웨이(Runway)였다."
+          },
+          {
+            "claim": "1978년 제1회 해변가요제 세상 모르고 살았노라 인기상 · 대학가요제 탈춤 은상",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/배철수",
+            "note": "1978년 7월 22일, 동양방송 (TBC) 제1회 해변가요제에서 그룹 활주로(RUNWAY)의 일원으로 출전, \"세상 모르고 살았노라\"로 인기상을 받았으며, 같은 해 9월 9일, 제2회 MBC 대학가요제에도 출전, 〈탈춤〉으로 은상을 받았다."
+          },
+          {
+            "claim": "같은 해 대학가요제 탈춤 은상",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/배철수",
+            "note": "같은 해 9월 9일, 제2회 MBC 대학가요제에도 출전, 〈탈춤〉으로 은상을 받았다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/배철수"
+        ],
+        "easiestCue": "1978년 제1회 해변가요제에서 '세상 모르고 살았노라'로 인기상",
+        "targetWhy": "해변가요제 · 밴드 옛 이름 — 가요 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 인물의 데뷔 전 가요제 이력",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — 활성 #5012(송골매) 와 다른 지식(감전 사고 · 활동 종료)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "한국항공대 밴드, 결성 당시 이름 '런웨이'",
+          "difWhy": "활주로 밴드 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "유명 음악인 이력",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 fix h-error",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1971년 김대환·최이철과 3인조 '김트리오'",
-     "difWhy": "조용필 데뷔 전 — 가요 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
+    {
+      "seedId": "kr-music/1#g019b-M1-14",
+      "seed": {
+        "subject": "조용필",
+        "aspect": "대중",
+        "ref": "M1-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1969년 '화이브 핑거스'를 결성해 미8군 무대에 섰고, 1971년 김대환·최이철과 3인조 '김트리오'로 활동했습니다. 1980년대 후반 미스코리아 선발대회에서 진선미 후보를 무대 아래로 에스코트하기도 한 이 가수는?",
+        "answer": "조용필",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1979년 '위대한 탄생'과 함께 낸 정규 1집은 한국에서 처음으로 100만 장 넘게 팔린 단일 음반으로 꼽힙니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1971년 김대환·최이철과 3인조 '김트리오'",
+          "difWhy": "조용필 데뷔 전 — 가요 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1971년 김대환·최이철과 3인조 '김트리오'",
+          "difWhy": "조용필 데뷔 전 — 가요 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "일본에서는 그를 '엔카의 황제'라 부르기도 한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'가왕'으로 불리는 한국 대중음악의 대표 가수",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "국민 가수",
+          "piece": "f05",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "M1-14",
+          "key": "b245",
+          "hint": "일본에서는 그를 '엔카의 황제'라 부르기도 한다.",
+          "guess": "조용필",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "조용필"
+        },
+        "layer": "대중",
+        "genre": "가요",
+        "work": "조용필",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/조용필"
+        ],
+        "facts": [
+          {
+            "claim": "1969년 화이브 핑거스 · 미8군 무대",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/조용필",
+            "note": "1969년에 '화이브 핑거스'를 결성하여 미 8군 무대에 데뷔하였다."
+          },
+          {
+            "claim": "1971년 김대환·조용필·최이철 김트리오",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/조용필",
+            "note": "1971년, 김대환, 조용필, 최이철을 주축으로 결성된 3인조 음악 그룹 김트리오로 본격적인 락 음악 활동"
+          },
+          {
+            "claim": "1980년대 후반 미스코리아 진선미 후보 에스코트",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/조용필",
+            "note": "1980년대 후반에는 김동건 아나운서에게 '조용필군'이라고 호명되며 미스코리아 선발대회를 몇 회에 걸쳐서 거의 고정 출현하였다. … 미스코리아 진선미(眞善美) 최종 후보에게만 손을 내밀고 1명씩 계단 아래 무대로 에스코트하는 역할을 수행하였다."
+          },
+          {
+            "claim": "정규 1집 한국 최초 밀리언셀러 단일 음반",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/조용필",
+            "note": "이 곡이 수록된 조용필의 정규 1집 음반은 대한민국 최초로 100만장 이상 팔린(밀리언 셀러) 단일 음반이다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%9A%A9%ED%95%84"
+        ],
+        "hintNote": "일본에서는 조용필을 엔카의 황제로 부른다.",
+        "easiestCue": "1971년 김대환·최이철과 3인조 '김트리오'로 활동",
+        "targetWhy": "대표곡 · 가왕 · 위대한 탄생을 빼고 데뷔 전 밴드와 방송 곁가지만 — 가요 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "가장 유명한 가수, 단서는 거의 안 알려진 초기 이력 — \"들어 본 건데 기억이 안 나\" 꼴",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1971년 김대환·최이철과 3인조 '김트리오'",
+          "difWhy": "조용필 데뷔 전 — 가요 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "일본에서는 그를 '엔카의 황제'라 부르기도 한다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'가왕'으로 불리는 한국 대중음악의 대표 가수",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "국민 가수",
-     "piece": "f05",
-     "genPct": 99
+    {
+      "seedId": "kr-music/1#g019b-M1-15",
+      "seed": {
+        "subject": "굳세어라 금순아",
+        "aspect": "팬 세부",
+        "ref": "M1-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "박시춘이 곡을 쓰고 그의 친구 강사랑이 노랫말을 붙여, 1953년 대구의 오리엔트레코드에서 나온 노래입니다. 순수음악을 전공했다가 대중가수가 된 가수가 부른 이 노래는 무엇일까요?",
+        "answer": "굳세어라 금순아",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "노랫말에는 '흥남부두', '일사(1·4 후퇴)', '국제시장', '영도다리' 같은 그 시대를 상징하는 낱말이 들어 있습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "박시춘 작곡, 1953년 대구 오리엔트레코드에서 나온 노래",
+          "difWhy": "작곡·음반사 — 옛 가요 애호가",
+          "wor": 3,
+          "worWhy": "시대 상징 가요 제목",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'신라의 달밤'을 히트시킨 현인이 부른 이 노래",
+          "difWhy": "현인 대표곡 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 노래 제목 맞히기"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "박시춘이 곡을 쓰고 그의 친구 강사랑이 노랫말을 붙여, 1953년 대구의 오리엔트레코드에서 나온 노래입니다. '신라의 달밤'을 히트시킨 현인이 부른 이 노래는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "'신라의 달밤'을 히트시킨 현인이 부른",
+          "addedCue": "순수음악 전공 뒤 대중가수가 된 가수(이름 없이)",
+          "why": "가수 이름·대표곡 단서를 빼고 가수 이력으로 바꿈"
+        },
+        "generalHint": "3절에는 '남북통일'이 되면 다시 만나 함께 춤을 추자는 바람이 담겼다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한국 전쟁 피란민의 이별을 담은 1950년대 대중가요",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "'눈보라가 휘날리는 바람찬 흥남부두에' 노래·영화 국제시장으로 익숙",
+          "piece": "f01",
+          "genPct": 70
+        },
+        "blind": {
+          "ref": "M1-15",
+          "key": "b007",
+          "hint": "3절에는 '남북통일'이 되면 다시 만나 함께 춤을 추자는 바람이 담겼다.",
+          "guess": "아리랑 목동",
+          "confidence": "low",
+          "hit": false,
+          "answer": "굳세어라 금순아"
+        },
+        "layer": "팬 세부",
+        "genre": "가요",
+        "work": "굳세어라 금순아",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/굳세어라_금순아"
+        ],
+        "facts": [
+          {
+            "claim": "박시춘 작곡 · 친구 강사랑 작사 · 현인 · 1953 대구 오리엔트레코드",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/굳세어라_금순아",
+            "note": "인기 작곡가 박시춘이 작곡하고 그의 친구인 강사랑이 작사했다. 노래는 순수음악을 전공했다가 대중가수가 되어 〈신라의 달밤〉이라는 히트곡을 낸 바 있는 현인이 불렀다. 1953년 대구의 오리엔트레코드사를 통해 발표되었다."
+          },
+          {
+            "claim": "노랫말의 시대 상징 낱말",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/굳세어라_금순아",
+            "note": "노랫말에는 '흥남부두', '일사(1·4 후퇴)', '국제시장', '영도다리' 등 시대를 상징하는 단어가 들어 있다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/굳세어라_금순아"
+        ],
+        "hintNote": "특히 3절에는 어떤 어려움 속에서도 너와 나 사이는 변함이 없을 것이며 '남북통일'이 되면 재회하여 함께 춤을 추자는 매우 희망적인 내용이 들어 있다.",
+        "easiestCue": "박시춘이 곡을 쓰고 … 1953년 대구의 오리엔트레코드",
+        "targetWhy": "작사·작곡·음반사 — 가요사 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "현인의 다른 대표곡을 아는 관심층에게는 둘 중 하나로 좁혀짐(경계 3)",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "박시춘 작곡, 1953년 대구 오리엔트레코드에서 나온 노래",
+          "difWhy": "작곡·음반사 — 옛 가요 애호가",
+          "wor": 3,
+          "worWhy": "시대 상징 가요 제목",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "M1-14",
-     "key": "b245",
-     "hint": "일본에서는 그를 '엔카의 황제'라 부르기도 한다.",
-     "guess": "조용필",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "조용필"
+    {
+      "seedId": "kr-music/1#g019b-M1-16",
+      "seed": {
+        "subject": "잊혀진 계절",
+        "aspect": "팬 세부",
+        "ref": "M1-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1981년 '국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상을 받으며 데뷔한 가수입니다. 1984년에는 자신의 히트곡과 같은 제목의 영화에 주인공으로 나선 이 가수는 누구일까요?",
+        "answer": "이용",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1982년 1집에 '잊혀진 계절'이 실렸고, 그해 KBS 가요대상과 MBC 10대 가수 가요제 최고인기가수상을 받았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상",
+          "difWhy": "이용 데뷔 — 가요 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 가수 이름 맞히기",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "'국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상",
+          "difWhy": "이용 데뷔 — 가요 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 가수 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "1957년 경기도 수원에서 태어났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'잊혀진 계절'을 부른 1980년대 남자 가수",
+        "familiarity": {
+          "judge": 3,
+          "pct": 70,
+          "why": "매년 10월 31일 '잊혀진 계절'로 회자되는 가수",
+          "piece": "f03",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "M1-16",
+          "key": "b126",
+          "hint": "1984년에는 LA 세계 가요제에서 은상을 받았다.",
+          "guess": "이선희",
+          "confidence": "low",
+          "hit": false,
+          "answer": "이용"
+        },
+        "layer": "팬 세부",
+        "genre": "가요",
+        "work": "잊혀진 계절",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/이용_(가수)",
+          "https://ko.wikipedia.org/wiki/잊혀진_계절_(노래)"
+        ],
+        "facts": [
+          {
+            "claim": "1981 국풍 81 바람이려오 금상 데뷔",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/이용_(가수)",
+            "note": "1981년에 열린 국풍 81에서 《바람이려오》로 금상을 수상하면서 데뷔 / 25세 시절이던 1981년 국풍81(젊은이의 가요제)로 데뷔하였다."
+          },
+          {
+            "claim": "1984년 같은 제목 영화 주인공",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/잊혀진_계절_(노래)",
+            "note": "1984년 이 노래의 제목과 동명인 영화가 제작되었으며, 주인공으로 이용이 출연하고, 이혜숙, 손창호와 공연하기도 했다."
+          },
+          {
+            "claim": "1982 1집 잊혀진 계절 · 1982 KBS 가요대상 · 최고인기가수상",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/이용_(가수)",
+            "note": "1982년 1집 《잊혀진 계절》,《그렇게 쉽게 그렇게 빨리》 / 1982년 KBS 가요대상 수상 및 MBC 10대 가수 가요제 최고인기가수상"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "1981년 '국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상",
+        "targetWhy": "대표곡 '잊혀진 계절' · '시월의 마지막 밤' 을 빼고 데뷔 가요제와 영화 출연만 — 가요 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "노래로 이름은 아는 가수, 단서는 데뷔 경위",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상",
+          "difWhy": "이용 데뷔 — 가요 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 가수 이름 맞히기",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 fix h-error",
+          "verdict": "fix"
+        }
+      }
     },
-    "layer": "대중",
-    "genre": "가요",
-    "work": "조용필",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/조용필"
-    ],
-    "facts": [
-     {
-      "claim": "1969년 화이브 핑거스 · 미8군 무대",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/조용필",
-      "note": "1969년에 '화이브 핑거스'를 결성하여 미 8군 무대에 데뷔하였다."
-     },
-     {
-      "claim": "1971년 김대환·조용필·최이철 김트리오",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/조용필",
-      "note": "1971년, 김대환, 조용필, 최이철을 주축으로 결성된 3인조 음악 그룹 김트리오로 본격적인 락 음악 활동"
-     },
-     {
-      "claim": "1980년대 후반 미스코리아 진선미 후보 에스코트",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/조용필",
-      "note": "1980년대 후반에는 김동건 아나운서에게 '조용필군'이라고 호명되며 미스코리아 선발대회를 몇 회에 걸쳐서 거의 고정 출현하였다. … 미스코리아 진선미(眞善美) 최종 후보에게만 손을 내밀고 1명씩 계단 아래 무대로 에스코트하는 역할을 수행하였다."
-     },
-     {
-      "claim": "정규 1집 한국 최초 밀리언셀러 단일 음반",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/조용필",
-      "note": "이 곡이 수록된 조용필의 정규 1집 음반은 대한민국 최초로 100만장 이상 팔린(밀리언 셀러) 단일 음반이다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%9A%A9%ED%95%84"
-    ],
-    "hintNote": "일본에서는 조용필을 엔카의 황제로 부른다.",
-    "easiestCue": "1971년 김대환·최이철과 3인조 '김트리오'로 활동",
-    "targetWhy": "대표곡 · 가왕 · 위대한 탄생을 빼고 데뷔 전 밴드와 방송 곁가지만 — 가요 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "가장 유명한 가수, 단서는 거의 안 알려진 초기 이력 — \"들어 본 건데 기억이 안 나\" 꼴",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "kr-music/1#g019b-M1-15",
-   "seed": {
-    "subject": "굳세어라 금순아",
-    "aspect": "팬 세부",
-    "ref": "M1-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "박시춘이 곡을 쓰고 그의 친구 강사랑이 노랫말을 붙여, 1953년 대구의 오리엔트레코드에서 나온 노래입니다. 순수음악을 전공했다가 대중가수가 된 가수가 부른 이 노래는 무엇일까요?",
-    "answer": "굳세어라 금순아",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "노랫말에는 '흥남부두', '일사(1·4 후퇴)', '국제시장', '영도다리' 같은 그 시대를 상징하는 낱말이 들어 있습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "박시춘 작곡, 1953년 대구 오리엔트레코드에서 나온 노래",
-     "difWhy": "작곡·음반사 — 옛 가요 애호가",
-     "wor": 3,
-     "worWhy": "시대 상징 가요 제목",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'신라의 달밤'을 히트시킨 현인이 부른 이 노래",
-     "difWhy": "현인 대표곡 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 노래 제목 맞히기"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "박시춘이 곡을 쓰고 그의 친구 강사랑이 노랫말을 붙여, 1953년 대구의 오리엔트레코드에서 나온 노래입니다. '신라의 달밤'을 히트시킨 현인이 부른 이 노래는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "'신라의 달밤'을 히트시킨 현인이 부른",
-     "addedCue": "순수음악 전공 뒤 대중가수가 된 가수(이름 없이)",
-     "why": "가수 이름·대표곡 단서를 빼고 가수 이력으로 바꿈"
-    },
-    "generalHint": "3절에는 '남북통일'이 되면 다시 만나 함께 춤을 추자는 바람이 담겼다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한국 전쟁 피란민의 이별을 담은 1950년대 대중가요",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "'눈보라가 휘날리는 바람찬 흥남부두에' 노래·영화 국제시장으로 익숙",
-     "piece": "f01",
-     "genPct": 70
-    },
-    "blind": {
-     "ref": "M1-15",
-     "key": "b007",
-     "hint": "3절에는 '남북통일'이 되면 다시 만나 함께 춤을 추자는 바람이 담겼다.",
-     "guess": "아리랑 목동",
-     "confidence": "low",
-     "hit": false,
-     "answer": "굳세어라 금순아"
-    },
-    "layer": "팬 세부",
-    "genre": "가요",
-    "work": "굳세어라 금순아",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/굳세어라_금순아"
-    ],
-    "facts": [
-     {
-      "claim": "박시춘 작곡 · 친구 강사랑 작사 · 현인 · 1953 대구 오리엔트레코드",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/굳세어라_금순아",
-      "note": "인기 작곡가 박시춘이 작곡하고 그의 친구인 강사랑이 작사했다. 노래는 순수음악을 전공했다가 대중가수가 되어 〈신라의 달밤〉이라는 히트곡을 낸 바 있는 현인이 불렀다. 1953년 대구의 오리엔트레코드사를 통해 발표되었다."
-     },
-     {
-      "claim": "노랫말의 시대 상징 낱말",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/굳세어라_금순아",
-      "note": "노랫말에는 '흥남부두', '일사(1·4 후퇴)', '국제시장', '영도다리' 등 시대를 상징하는 단어가 들어 있다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/굳세어라_금순아"
-    ],
-    "hintNote": "특히 3절에는 어떤 어려움 속에서도 너와 나 사이는 변함이 없을 것이며 '남북통일'이 되면 재회하여 함께 춤을 추자는 매우 희망적인 내용이 들어 있다.",
-    "easiestCue": "박시춘이 곡을 쓰고 … 1953년 대구의 오리엔트레코드",
-    "targetWhy": "작사·작곡·음반사 — 가요사 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "현인의 다른 대표곡을 아는 관심층에게는 둘 중 하나로 좁혀짐(경계 3)",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-music/1#g019b-M1-16",
-   "seed": {
-    "subject": "잊혀진 계절",
-    "aspect": "팬 세부",
-    "ref": "M1-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1981년 '국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상을 받으며 데뷔한 가수입니다. 1984년에는 자신의 히트곡과 같은 제목의 영화에 주인공으로 나선 이 가수는 누구일까요?",
-    "answer": "이용",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1982년 1집에 '잊혀진 계절'이 실렸고, 그해 KBS 가요대상과 MBC 10대 가수 가요제 최고인기가수상을 받았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "'국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상",
-     "difWhy": "이용 데뷔 — 가요 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 가수 이름 맞히기",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "'국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상",
-     "difWhy": "이용 데뷔 — 가요 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 가수 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "1984년에는 LA 세계 가요제에서 은상을 받았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'잊혀진 계절'을 부른 1980년대 남자 가수",
-    "familiarity": {
-     "judge": 3,
-     "pct": 70,
-     "why": "매년 10월 31일 '잊혀진 계절'로 회자되는 가수",
-     "piece": "f03",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "M1-16",
-     "key": "b126",
-     "hint": "1984년에는 LA 세계 가요제에서 은상을 받았다.",
-     "guess": "이선희",
-     "confidence": "low",
-     "hit": false,
-     "answer": "이용"
-    },
-    "layer": "팬 세부",
-    "genre": "가요",
-    "work": "잊혀진 계절",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/이용_(가수)",
-     "https://ko.wikipedia.org/wiki/잊혀진_계절_(노래)"
-    ],
-    "facts": [
-     {
-      "claim": "1981 국풍 81 바람이려오 금상 데뷔",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/이용_(가수)",
-      "note": "1981년에 열린 국풍 81에서 《바람이려오》로 금상을 수상하면서 데뷔 / 25세 시절이던 1981년 국풍81(젊은이의 가요제)로 데뷔하였다."
-     },
-     {
-      "claim": "1984년 같은 제목 영화 주인공",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/잊혀진_계절_(노래)",
-      "note": "1984년 이 노래의 제목과 동명인 영화가 제작되었으며, 주인공으로 이용이 출연하고, 이혜숙, 손창호와 공연하기도 했다."
-     },
-     {
-      "claim": "1982 1집 잊혀진 계절 · 1982 KBS 가요대상 · 최고인기가수상",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/이용_(가수)",
-      "note": "1982년 1집 《잊혀진 계절》,《그렇게 쉽게 그렇게 빨리》 / 1982년 KBS 가요대상 수상 및 MBC 10대 가수 가요제 최고인기가수상"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%9A%A9_(%EA%B0%80%EC%88%98)"
-    ],
-    "hintNote": "1984년 LA 세계 가요제 은상",
-    "easiestCue": "1981년 '국풍 81'의 젊은이의 가요제에서 '바람이려오'로 금상",
-    "targetWhy": "대표곡 '잊혀진 계절' · '시월의 마지막 밤' 을 빼고 데뷔 가요제와 영화 출연만 — 가요 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "노래로 이름은 아는 가수, 단서는 데뷔 경위",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-music/1#g019b-M1-17",
-   "seed": {
-    "subject": "패티김",
-    "aspect": "대중",
-    "ref": "M1-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1960년 광복 뒤 일본 정부의 공식 초청을 받은 첫 한국 가수로 NHK 무대에 섰고, 1978년에는 대중가수로는 처음으로 세종문화회관 대극장에서 공연했습니다. 이 가수는 누구일까요?",
-    "answer": "패티김",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1966년 한국 첫 창작 뮤지컬 '살짜기 옵서예'에서 애랑을 연기했고, 2013년 10월 마지막 무대로 55년 가수 생활을 마쳤습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "대중가수로 처음 세종문화회관 대극장에서 공연한 가수",
-     "difWhy": "가수 첫 기록 — 가요 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "원로 가수 이력",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "한국 최초의 창작 뮤지컬 '살짜기 옵서예'에서 애랑",
-     "difWhy": "패티김 — 관심층 (경계 4)",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1960년 광복 뒤 일본 정부의 공식 초청을 받은 첫 한국 가수로 NHK 무대에 섰고, 1966년 한국 최초의 창작 뮤지컬 '살짜기 옵서예'에서 애랑을 연기했습니다. 이 가수는 누구일까요?",
-     "beforeExplanation": "1978년 대중가수로는 처음으로 세종문화회관 대극장 무대에 섰고, 2013년 10월 마지막 공연으로 55년 가수 생활을 마쳤습니다.",
-     "removedCue": "한국 최초의 창작 뮤지컬 '살짜기 옵서예'의 애랑(관심층)",
-     "addedCue": "1978년 대중가수 첫 세종문화회관 대극장 공연(해설에서 옮김)",
-     "why": "살짜기 옵서예 주연은 그 가수 소개 첫 줄이라 해설로 내림"
-    },
-    "generalHint": "1989년 이 가수는 한국 대중음악인으로는 처음으로 뉴욕 카네기 홀에서 공연했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'이별' · '서울의 찬가'를 부른 1960년대부터의 대형 여가수",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "원로 대형 가수로 널리 알려짐",
-     "piece": "f07",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "M1-17",
-     "key": "b003",
-     "hint": "1989년 이 가수는 한국 대중음악인으로는 처음으로 뉴욕 카네기 홀에서 공연했다.",
-     "guess": "패티김",
-     "confidence": "high",
-     "hit": true,
-     "answer": "패티김",
-     "first": {
-      "ref": "M1-17",
-      "key": "b218",
-      "hint": "작곡가 길옥윤과 결혼했다가 헤어진 뒤 이탈리아 사람과 다시 결혼했다.",
-      "guess": "패티김",
-      "confidence": "high",
-      "hit": true,
-      "answer": "패티김"
-     }
-    },
-    "layer": "대중",
-    "genre": "가요",
-    "work": "패티김",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/패티_김"
-    ],
-    "facts": [
-     {
-      "claim": "1960 NHK 초청 · 일본 정부 공식 초청 최초 한국 가수",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/패티_김",
-      "note": "1960년 일본 NHK-TV 초청 패티김 콘서트 (광복 후 한·일 문화교류를 위해 일본정부로부터 공식 초청된 최초의 한국가수)"
-     },
-     {
-      "claim": "1978 세종문화회관 대극장 최초 · 2013년 10월 26일 마지막 무대",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/패티_김",
-      "note": "1978년 패티김 리사이틀 - 서울의 연가 (대중가수 최초의 세종문화회관 대극장 공연) / 2013년 10월 26일 55년 가수인생의 마침표를 찍는 마지막 무대를 가졌다."
-     },
-     {
-      "claim": "1966 한국 최초 창작 뮤지컬 살짜기 옵서예 애랑",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/패티_김",
-      "note": "1966년 한국 최초의 창작 뮤지컬 《살짜기 옵서예》 주연 (애랑 역)"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/패티_김"
-    ],
-    "hintNote": "1989년 미국 뉴욕 카네기 홀 콘서트 (한국대중음악인 최초)",
-    "easiestCue": "광복 뒤 일본 정부 공식 초청을 받은 첫 한국 가수",
-    "targetWhy": "NHK 초청과 세종문화회관 첫 공연은 옛 가요 애호가 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 가수의 교과서 밖 이력",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 최초",
-     "단정어 처음,마지막"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "kr-music/1#g019b-M1-17",
+      "seed": {
+        "subject": "패티김",
+        "aspect": "대중",
+        "ref": "M1-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1960년 광복 뒤 일본 정부의 공식 초청을 받은 첫 한국 가수로 NHK 무대에 섰고, 1978년에는 대중가수로는 처음으로 세종문화회관 대극장에서 공연했습니다. 이 가수는 누구일까요?",
+        "answer": "패티김",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1966년 한국 첫 창작 뮤지컬 '살짜기 옵서예'에서 애랑을 연기했고, 2013년 10월 마지막 무대로 55년 가수 생활을 마쳤습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "대중가수로 처음 세종문화회관 대극장에서 공연한 가수",
+          "difWhy": "가수 첫 기록 — 가요 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "원로 가수 이력",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "한국 최초의 창작 뮤지컬 '살짜기 옵서예'에서 애랑",
+          "difWhy": "패티김 — 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1960년 광복 뒤 일본 정부의 공식 초청을 받은 첫 한국 가수로 NHK 무대에 섰고, 1966년 한국 최초의 창작 뮤지컬 '살짜기 옵서예'에서 애랑을 연기했습니다. 이 가수는 누구일까요?",
+          "beforeExplanation": "1978년 대중가수로는 처음으로 세종문화회관 대극장 무대에 섰고, 2013년 10월 마지막 공연으로 55년 가수 생활을 마쳤습니다.",
+          "removedCue": "한국 최초의 창작 뮤지컬 '살짜기 옵서예'의 애랑(관심층)",
+          "addedCue": "1978년 대중가수 첫 세종문화회관 대극장 공연(해설에서 옮김)",
+          "why": "살짜기 옵서예 주연은 그 가수 소개 첫 줄이라 해설로 내림"
+        },
+        "generalHint": "1989년 이 가수는 한국 대중음악인으로는 처음으로 뉴욕 카네기 홀에서 공연했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'이별' · '서울의 찬가'를 부른 1960년대부터의 대형 여가수",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "원로 대형 가수로 널리 알려짐",
+          "piece": "f07",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "M1-17",
+          "key": "b003",
+          "hint": "1989년 이 가수는 한국 대중음악인으로는 처음으로 뉴욕 카네기 홀에서 공연했다.",
+          "guess": "패티김",
+          "confidence": "high",
+          "hit": true,
+          "answer": "패티김",
+          "first": {
+            "ref": "M1-17",
+            "key": "b218",
+            "hint": "작곡가 길옥윤과 결혼했다가 헤어진 뒤 이탈리아 사람과 다시 결혼했다.",
+            "guess": "패티김",
+            "confidence": "high",
+            "hit": true,
+            "answer": "패티김"
+          }
+        },
+        "layer": "대중",
+        "genre": "가요",
+        "work": "패티김",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/패티_김"
+        ],
+        "facts": [
+          {
+            "claim": "1960 NHK 초청 · 일본 정부 공식 초청 최초 한국 가수",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/패티_김",
+            "note": "1960년 일본 NHK-TV 초청 패티김 콘서트 (광복 후 한·일 문화교류를 위해 일본정부로부터 공식 초청된 최초의 한국가수)"
+          },
+          {
+            "claim": "1978 세종문화회관 대극장 최초 · 2013년 10월 26일 마지막 무대",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/패티_김",
+            "note": "1978년 패티김 리사이틀 - 서울의 연가 (대중가수 최초의 세종문화회관 대극장 공연) / 2013년 10월 26일 55년 가수인생의 마침표를 찍는 마지막 무대를 가졌다."
+          },
+          {
+            "claim": "1966 한국 최초 창작 뮤지컬 살짜기 옵서예 애랑",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/패티_김",
+            "note": "1966년 한국 최초의 창작 뮤지컬 《살짜기 옵서예》 주연 (애랑 역)"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/패티_김"
+        ],
+        "hintNote": "1989년 미국 뉴욕 카네기 홀 콘서트 (한국대중음악인 최초)",
+        "easiestCue": "광복 뒤 일본 정부 공식 초청을 받은 첫 한국 가수",
+        "targetWhy": "NHK 초청과 세종문화회관 첫 공연은 옛 가요 애호가 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 가수의 교과서 밖 이력",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 최초",
+          "단정어 처음,마지막"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "대중가수로 처음 세종문화회관 대극장에서 공연한 가수",
+          "difWhy": "가수 첫 기록 — 가요 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "원로 가수 이력",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

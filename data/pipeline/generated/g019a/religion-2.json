@@ -1,220 +1,250 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "religion/2",
-  "midKey": "religion",
-  "subName": "불교",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "religion/2#g019a-H2-28",
-   "seed": {
-    "subject": "템플스테이",
-    "aspect": null,
-    "ref": "H2-28",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "대한불교조계종은 2002년 한일 월드컵을 '문화 월드컵'으로 만들자며 이 프로그램을 시작했고, 대회 30일 동안 외국인 1천 명과 내국인 1만 명이 참여했습니다. 2009년 OECD 관광 보고서가 세계에서 가장 성공한 문화 콘텐츠 다섯 가운데 하나로 꼽은 이것은?",
-    "answer": "템플스테이",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "월드컵이 끝난 뒤 조계종은 이 프로그램을 상설화했고, 2002년 이후 10년 동안 70만 명이 참여했다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "대한불교조계종 … 외국인 1천 명과 내국인 1만 명이 참여",
-     "difWhy": "절 체험 프로그램 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "문화 프로그램 이야깃거리",
-     "acc": 3,
-     "accWhy": "종교·경전 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "대한불교조계종 … 외국인 1천 명과 내국인 1만 명이 참여",
-     "difWhy": "절 체험 프로그램 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "문화 프로그램 이야깃거리"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "쉬운 단서를 빼면 정답이 유일하지 않다 — 어떤 세부를 써도 '절에 머무는 체험 프로그램' 이라는 범주가 곧 정답을 가리키고, 조계종·사찰을 빼면 무엇을 묻는지 흐려짐"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "산사에 머물며 사찰 생활을 겪어 보는 체험 프로그램",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "관광·뉴스로 알려진 체험",
-     "piece": "f04",
-     "genPct": 82
-    },
-    "blind": null,
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/템플스테이"
-    ],
-    "facts": [
-     {
-      "claim": "조계종이 2002 월드컵을 문화 월드컵으로 승화하려 산문 개방",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/템플스테이",
-      "note": "대한불교조계종에서는 2002년 한일 월드컵을 문화월드컵으로 승화시키기 위해 내외국인에게 산문을 개방하고 산사에 머물 수 있게 했다."
-     },
-     {
-      "claim": "30여 일 동안 외국인 1천 명, 내국인 1만 명",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/템플스테이",
-      "note": "2002년 5월 31일부터 6월 30일까지 30여 일 동안 1천 명의 외국인과 1만 명의 내국인이 템플스테이를 체험하게 된다."
-     },
-     {
-      "claim": "2009 OECD 관광보고서 가장 성공적인 5개 문화콘텐츠",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/템플스테이",
-      "note": "2009년 OECD 관광보고서에서는 전 세계 가장 성공적인 5개 문화콘텐츠 가운데 하나로 템플스테이를 선정하기도 했으며"
-     },
-     {
-      "claim": "월드컵 뒤 상설화, 10년 동안 70만 명",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/템플스테이",
-      "note": "한일 월드컵이 끝난 후 대한불교조계종은 템플스테이를 상설화할 것을 발표하는 ... 2002년 이후 10년 동안 70만 명이 템플스테이를 체험했다고 알려졌다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "대한불교조계종은 2002년 한일 월드컵을 '문화 월드컵'으로 만들자며 이 프로그램을 시작했고",
-    "targetWhy": "'머문다·숙소' 같은 이름 풀이 단서를 뺐음 — 월드컵 기원·OECD 선정은 관심층 밖 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'불교 종단 + 외국인 참여 프로그램'에서 바로 떠올릴 사람도 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "religion/2",
+    "midKey": "religion",
+    "subName": "불교",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "religion/2#g019a-H2-29",
-   "seed": {
-    "subject": "조계종",
-    "aspect": null,
-    "ref": "H2-29",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 종단의 이름은 중국 선종의 제6조 혜능이 머물렀던 산에서 비롯되었습니다. 통일신라의 구산선문에 뿌리를 두고 1962년 오늘날의 모습으로 정립된 이 한국 불교 종단은?",
-    "answer": "조계종",
-    "acceptedAnswers": [
-     "대한불교조계종"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '대한불교조계종'(줄여서 조계종) 확인",
-    "explanation": "연산군 때 이 종단은 해체되기도 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "구산선문에 뿌리를 두고 1962년 … 한국 불교 종단",
-     "difWhy": "대표 한국 불교 종단 — 고교 교양",
-     "wor": 4,
-     "worWhy": "교양 — 한국 불교",
-     "acc": 3,
-     "accWhy": "종교·경전 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "religion/2#g019a-H2-28",
+      "seed": {
+        "subject": "템플스테이",
+        "aspect": null,
+        "ref": "H2-28",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "대한불교조계종은 2002년 한일 월드컵을 '문화 월드컵'으로 만들자며 이 프로그램을 시작했고, 대회 30일 동안 외국인 1천 명과 내국인 1만 명이 참여했습니다. 2009년 OECD 관광 보고서가 세계에서 가장 성공한 문화 콘텐츠 다섯 가운데 하나로 꼽은 이것은?",
+        "answer": "템플스테이",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "월드컵이 끝난 뒤 조계종은 이 프로그램을 상설화했고, 2002년 이후 10년 동안 70만 명이 참여했다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "대한불교조계종 … 외국인 1천 명과 내국인 1만 명이 참여",
+          "difWhy": "절 체험 프로그램 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "문화 프로그램 이야깃거리",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "대한불교조계종 … 외국인 1천 명과 내국인 1만 명이 참여",
+          "difWhy": "절 체험 프로그램 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "문화 프로그램 이야깃거리"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "쉬운 단서를 빼면 정답이 유일하지 않다 — 어떤 세부를 써도 '절에 머무는 체험 프로그램' 이라는 범주가 곧 정답을 가리키고, 조계종·사찰을 빼면 무엇을 묻는지 흐려짐"
+        },
+        "generalHint": null,
+        "generalHintVersion": null,
+        "identity": "산사에 머물며 사찰 생활을 겪어 보는 체험 프로그램",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "관광·뉴스로 알려진 체험",
+          "piece": "f04",
+          "genPct": 82
+        },
+        "blind": null,
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/템플스테이"
+        ],
+        "facts": [
+          {
+            "claim": "조계종이 2002 월드컵을 문화 월드컵으로 승화하려 산문 개방",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/템플스테이",
+            "note": "대한불교조계종에서는 2002년 한일 월드컵을 문화월드컵으로 승화시키기 위해 내외국인에게 산문을 개방하고 산사에 머물 수 있게 했다."
+          },
+          {
+            "claim": "30여 일 동안 외국인 1천 명, 내국인 1만 명",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/템플스테이",
+            "note": "2002년 5월 31일부터 6월 30일까지 30여 일 동안 1천 명의 외국인과 1만 명의 내국인이 템플스테이를 체험하게 된다."
+          },
+          {
+            "claim": "2009 OECD 관광보고서 가장 성공적인 5개 문화콘텐츠",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/템플스테이",
+            "note": "2009년 OECD 관광보고서에서는 전 세계 가장 성공적인 5개 문화콘텐츠 가운데 하나로 템플스테이를 선정하기도 했으며"
+          },
+          {
+            "claim": "월드컵 뒤 상설화, 10년 동안 70만 명",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/템플스테이",
+            "note": "한일 월드컵이 끝난 후 대한불교조계종은 템플스테이를 상설화할 것을 발표하는 ... 2002년 이후 10년 동안 70만 명이 템플스테이를 체험했다고 알려졌다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": null,
+        "hintSources": [],
+        "hintNote": null,
+        "easiestCue": "대한불교조계종은 2002년 한일 월드컵을 '문화 월드컵'으로 만들자며 이 프로그램을 시작했고",
+        "targetWhy": "'머문다·숙소' 같은 이름 풀이 단서를 뺐음 — 월드컵 기원·OECD 선정은 관심층 밖 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'불교 종단 + 외국인 참여 프로그램'에서 바로 떠올릴 사람도 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "대한불교조계종 … 외국인 1천 명과 내국인 1만 명이 참여",
+          "difWhy": "절 체험 프로그램 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "문화 프로그램 이야깃거리",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "구산선문에 뿌리를 두고 1962년 … 한국 불교 종단",
-     "difWhy": "대표 한국 불교 종단 — 고교 교양",
-     "wor": 4,
-     "worWhy": "교양 — 한국 불교"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "쉬운 단서를 빼면 남는 '한국 불교 종단' 한정만으로 대표 종단을 짐작해 풀리고(구산선문·1962·혜능 어느 쪽을 써도), 그 한정을 빼면 묻는 대상이 흐려짐"
-    },
-    "generalHint": "1980년 10월 신군부가 이 종단 승려와 관련자 153명을 강제 연행한 '10·27 법난'이 일어났다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한국 불교의 대표적인 선종 종단",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "뉴스에 자주 나오는 불교 종단",
-     "piece": "f01",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "H2-29",
-     "key": "b181",
-     "hint": "1980년 10월 신군부가 이 종단 승려와 관련자 153명을 강제 연행한 '10·27 법난'이 일어났다.",
-     "guess": "대한불교조계종",
-     "confidence": "high",
-     "hit": true,
-     "answer": "조계종"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/대한불교조계종"
-    ],
-    "facts": [
-     {
-      "claim": "'조계'라는 이름은 혜능이 머문 조계산에서",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/대한불교조계종",
-      "note": "'조계'라는 이름은 중국 선종의 제6조 혜능이 머물렀던 조계산에서 비롯되었다."
-     },
-     {
-      "claim": "구산선문에 뿌리, 1962년 현대적 형태 정립",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/대한불교조계종",
-      "note": "통일신라 때 설립된 구산선문에 뿌리를 두고 있으나, 현대적인 형태는 1962년에 정립되었다."
-     },
-     {
-      "claim": "연산군 때 해체",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/대한불교조계종",
-      "note": "연산군 때는 조계종이 해체되기도 하였다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%B6%88%EA%B5%90%EC%A1%B0%EA%B3%84%EC%A2%85"
-    ],
-    "hintNote": "1980년 10월 27일에 10·27 법난이 발생했다. 전두환 정부는 불교계 정화를 명분으로 조계종 승려와 관련자 153명을 강제 연행했고",
-    "easiestCue": "통일신라의 구산선문에 뿌리를 두고",
-    "targetWhy": "구산선문은 고교 한국사지만 그것만으로 오늘날 종단 이름이 나오지는 않음 — 혜능의 산·1962 정립은 불교 관심층(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'한국 선종 종단' 하면 조계종을 떠올리는 사람이 많을 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "religion/2#g019a-H2-29",
+      "seed": {
+        "subject": "조계종",
+        "aspect": null,
+        "ref": "H2-29",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 종단의 이름은 중국 선종의 제6조 혜능이 머물렀던 산에서 비롯되었습니다. 통일신라의 구산선문에 뿌리를 두고 1962년 오늘날의 모습으로 정립된 이 한국 불교 종단은?",
+        "answer": "조계종",
+        "acceptedAnswers": [
+          "대한불교조계종"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '대한불교조계종'(줄여서 조계종) 확인",
+        "explanation": "연산군 때 이 종단은 해체되기도 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "구산선문에 뿌리를 두고 1962년 … 한국 불교 종단",
+          "difWhy": "대표 한국 불교 종단 — 고교 교양",
+          "wor": 4,
+          "worWhy": "교양 — 한국 불교",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "구산선문에 뿌리를 두고 1962년 … 한국 불교 종단",
+          "difWhy": "대표 한국 불교 종단 — 고교 교양",
+          "wor": 4,
+          "worWhy": "교양 — 한국 불교"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "쉬운 단서를 빼면 남는 '한국 불교 종단' 한정만으로 대표 종단을 짐작해 풀리고(구산선문·1962·혜능 어느 쪽을 써도), 그 한정을 빼면 묻는 대상이 흐려짐"
+        },
+        "generalHint": "1980년 10월 신군부가 이 종단 승려와 관련자 153명을 강제 연행한 '10·27 법난'이 일어났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한국 불교의 대표적인 선종 종단",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "뉴스에 자주 나오는 불교 종단",
+          "piece": "f01",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "H2-29",
+          "key": "b181",
+          "hint": "1980년 10월 신군부가 이 종단 승려와 관련자 153명을 강제 연행한 '10·27 법난'이 일어났다.",
+          "guess": "대한불교조계종",
+          "confidence": "high",
+          "hit": true,
+          "answer": "조계종"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/대한불교조계종"
+        ],
+        "facts": [
+          {
+            "claim": "'조계'라는 이름은 혜능이 머문 조계산에서",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/대한불교조계종",
+            "note": "'조계'라는 이름은 중국 선종의 제6조 혜능이 머물렀던 조계산에서 비롯되었다."
+          },
+          {
+            "claim": "구산선문에 뿌리, 1962년 현대적 형태 정립",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/대한불교조계종",
+            "note": "통일신라 때 설립된 구산선문에 뿌리를 두고 있으나, 현대적인 형태는 1962년에 정립되었다."
+          },
+          {
+            "claim": "연산군 때 해체",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/대한불교조계종",
+            "note": "연산군 때는 조계종이 해체되기도 하였다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%B6%88%EA%B5%90%EC%A1%B0%EA%B3%84%EC%A2%85"
+        ],
+        "hintNote": "1980년 10월 27일에 10·27 법난이 발생했다. 전두환 정부는 불교계 정화를 명분으로 조계종 승려와 관련자 153명을 강제 연행했고",
+        "easiestCue": "통일신라의 구산선문에 뿌리를 두고",
+        "targetWhy": "구산선문은 고교 한국사지만 그것만으로 오늘날 종단 이름이 나오지는 않음 — 혜능의 산·1962 정립은 불교 관심층(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'한국 선종 종단' 하면 조계종을 떠올리는 사람이 많을 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "구산선문에 뿌리를 두고 1962년 … 한국 불교 종단",
+          "difWhy": "대표 한국 불교 종단 — 고교 교양",
+          "wor": 4,
+          "worWhy": "교양 — 한국 불교",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

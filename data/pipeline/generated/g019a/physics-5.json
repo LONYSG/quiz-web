@@ -1,127 +1,142 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "physics/5",
-  "midKey": "physics",
-  "subName": "현대 물리",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "physics/5#g019a-C2-25",
-   "seed": {
-    "subject": "블랙홀",
-    "aspect": null,
-    "ref": "C2-25",
-    "pairedWith": 1446
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 1446,
-    "question": "1967년 12월 존 휠러의 강연에서 한 청중이 제안했다는 이 이름을, 휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다. 그보다 앞선 1964년 1월 과학 기자 앤 유잉은 이 이름을 따옴표에 넣은 제목의 기사를 썼는데, 이 천체는?",
-    "answer": "블랙홀",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1971~1974년 여러 연구를 거쳐, X선을 내는 백조자리 X-1이 이 천체로 널리 받아들여진 첫 사례가 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "존 휠러의 강연에서 한 청중이 제안했다는 이 이름 … 이 천체",
-     "difWhy": "휠러가 퍼뜨린 천체명 — 고교 지구과학",
-     "wor": 4,
-     "worWhy": "교양 — 이름 기원",
-     "acc": 5,
-     "accWhy": "물리 — 중학 과학 교과 과목"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'털이 없다'는 말이 붙은 이 천체",
-     "difWhy": "무모 정리 천체 — 고교 지구과학 교양",
-     "wor": 4,
-     "worWhy": "교양 — 천문 기본 어휘"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1967년 12월 물리학자 존 휠러의 강연에서 한 청중이 제안했다는 이 이름을, 휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다. 질량·전하·각운동량 말고는 아무 특징도 밖에 남지 않는다는 뜻으로 '털이 없다'는 말이 붙은 이 천체는 무엇일까요?",
-     "beforeExplanation": "그보다 앞선 1964년 1월 과학 기자 앤 유잉은 이 이름을 따옴표에 넣은 제목으로 미국과학진흥협회 모임을 다룬 기사를 썼습니다.",
-     "removedCue": "질량·전하·각운동량 말고는 밖에 남지 않는다는 '털이 없다'",
-     "addedCue": "앤 유잉의 1964년 기사(해설에서 질문으로 옮김)",
-     "why": "무모 정리(교양 상식)를 빼고 이름이 퍼진 경위로 · 1회차(빛도 못 빠져나감·2019 그림자 촬영)와 겹치지 않음"
-    },
-    "generalHint": "아인슈타인의 방정식이 나온 지 몇 달 만인 1916년, 이 천체를 기술할 수 있는 첫 해를 슈바르츠실트가 찾았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "중력이 너무 강해 빛조차 빠져나오지 못하는 천체",
-    "familiarity": {
-     "judge": 3,
-     "pct": 99,
-     "why": "과학 교양·영화로 누구나 앎",
-     "piece": "f01",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "C2-25",
-     "key": "b308",
-     "hint": "아인슈타인의 방정식이 나온 지 몇 달 만인 1916년, 이 천체를 기술할 수 있는 첫 해를 슈바르츠실트가 찾았다.",
-     "guess": "블랙홀",
-     "confidence": "high",
-     "hit": true,
-     "answer": "블랙홀"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Black_hole"
-    ],
-    "facts": [
-     {
-      "claim": "1967년 12월 휠러의 강연에서 한 청중이 이 이름을 제안했다고 전함 · 휠러가 짧고 광고 효과가 있다며 받아 씀",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Black_hole",
-      "note": "In December 1967, someone in the audience reportedly suggested the phrase black hole at a lecture by John Wheeler; Wheeler adopted the term for its brevity and \"advertising value\", and Wheeler's stature in the field ensured it quickly caught on"
-     },
-     {
-      "claim": "1964년 1월 18일 앤 유잉의 기사 ''Black Holes' in Space' — AAAS 클리블랜드 모임 보도",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Black_hole",
-      "note": "science journalist Ann Ewing in her article \"'Black Holes' in Space\", dated 18 January 1964, which was a report on a meeting of the American Association for the Advancement of Science held in Cleveland, Ohio."
-     },
-     {
-      "claim": "널리 받아들여진 첫 사례 백조자리 X-1 (1971~1974)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Black_hole",
-      "note": "The first widely accepted black hole was Cygnus X-1, an x-ray source  proposed as a black hole binary through several studies between 1971 and 1974."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Black_hole"
-    ],
-    "hintNote": "In 1916, the first solution of general relativity that would characterise a black hole was found. / Only a few months after Einstein published the field equations describing general relativity, astrophysicist Karl Schwarzschild set out to apply the idea to stars.",
-    "easiestCue": "휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다",
-    "targetWhy": "천체 이름의 유래 — 대학 교양 과학사(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 천체의 이름 뒷이야기 · 무모 정리",
-    "pairCheck": "1회차 #1446 질문(빛도 벗어나지 못하는 천체 · 2019년 그림자 촬영) · 해설(전파망원경 묶음) · 힌트(없음) 와 겹치지 않음 — 2회차는 정의 문장 없이 휠러 작명 일화 · 무모 정리로만 물음",
-    "dbCheck": "pair-or-different — 활성 #1446 1건, (가) 2회차로 지식이 다름",
-    "warn": [],
-    "first": {
-     "id": 1446,
-     "question": "중력이 너무 강해 빛조차 벗어날 수 없는 천체로, 2019년에 그림자가 처음으로 직접 촬영된 것은?",
-     "explanation": "여러 대륙의 전파망원경을 묶어 지구만 한 망원경처럼 써서 찍었습니다.",
-     "hint": null,
-     "difficulty": 1
+  "_meta": {
+    "round": "g019a",
+    "subId": "physics/5",
+    "midKey": "physics",
+    "subName": "현대 물리",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "physics/5#g019a-C2-25",
+      "seed": {
+        "subject": "블랙홀",
+        "aspect": null,
+        "ref": "C2-25",
+        "pairedWith": 1446
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 1446,
+        "question": "1967년 12월 존 휠러의 강연에서 한 청중이 제안했다는 이 이름을, 휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다. 그보다 앞선 1964년 1월 과학 기자 앤 유잉은 이 이름을 따옴표에 넣은 제목의 기사를 썼는데, 이 천체는?",
+        "answer": "블랙홀",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1971~1974년 여러 연구를 거쳐, X선을 내는 백조자리 X-1이 이 천체로 널리 받아들여진 첫 사례가 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "존 휠러의 강연에서 한 청중이 제안했다는 이 이름 … 이 천체",
+          "difWhy": "휠러가 퍼뜨린 천체명 — 고교 지구과학",
+          "wor": 4,
+          "worWhy": "교양 — 이름 기원",
+          "acc": 5,
+          "accWhy": "물리 — 중학 과학 교과 과목",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'털이 없다'는 말이 붙은 이 천체",
+          "difWhy": "무모 정리 천체 — 고교 지구과학 교양",
+          "wor": 4,
+          "worWhy": "교양 — 천문 기본 어휘"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1967년 12월 물리학자 존 휠러의 강연에서 한 청중이 제안했다는 이 이름을, 휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다. 질량·전하·각운동량 말고는 아무 특징도 밖에 남지 않는다는 뜻으로 '털이 없다'는 말이 붙은 이 천체는 무엇일까요?",
+          "beforeExplanation": "그보다 앞선 1964년 1월 과학 기자 앤 유잉은 이 이름을 따옴표에 넣은 제목으로 미국과학진흥협회 모임을 다룬 기사를 썼습니다.",
+          "removedCue": "질량·전하·각운동량 말고는 밖에 남지 않는다는 '털이 없다'",
+          "addedCue": "앤 유잉의 1964년 기사(해설에서 질문으로 옮김)",
+          "why": "무모 정리(교양 상식)를 빼고 이름이 퍼진 경위로 · 1회차(빛도 못 빠져나감·2019 그림자 촬영)와 겹치지 않음"
+        },
+        "generalHint": "아인슈타인의 방정식이 나온 지 몇 달 만인 1916년, 이 천체를 기술할 수 있는 첫 해를 슈바르츠실트가 찾았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "중력이 너무 강해 빛조차 빠져나오지 못하는 천체",
+        "familiarity": {
+          "judge": 3,
+          "pct": 99,
+          "why": "과학 교양·영화로 누구나 앎",
+          "piece": "f01",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "C2-25",
+          "key": "b308",
+          "hint": "아인슈타인의 방정식이 나온 지 몇 달 만인 1916년, 이 천체를 기술할 수 있는 첫 해를 슈바르츠실트가 찾았다.",
+          "guess": "블랙홀",
+          "confidence": "high",
+          "hit": true,
+          "answer": "블랙홀"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Black_hole"
+        ],
+        "facts": [
+          {
+            "claim": "1967년 12월 휠러의 강연에서 한 청중이 이 이름을 제안했다고 전함 · 휠러가 짧고 광고 효과가 있다며 받아 씀",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Black_hole",
+            "note": "In December 1967, someone in the audience reportedly suggested the phrase black hole at a lecture by John Wheeler; Wheeler adopted the term for its brevity and \"advertising value\", and Wheeler's stature in the field ensured it quickly caught on"
+          },
+          {
+            "claim": "1964년 1월 18일 앤 유잉의 기사 ''Black Holes' in Space' — AAAS 클리블랜드 모임 보도",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Black_hole",
+            "note": "science journalist Ann Ewing in her article \"'Black Holes' in Space\", dated 18 January 1964, which was a report on a meeting of the American Association for the Advancement of Science held in Cleveland, Ohio."
+          },
+          {
+            "claim": "널리 받아들여진 첫 사례 백조자리 X-1 (1971~1974)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Black_hole",
+            "note": "The first widely accepted black hole was Cygnus X-1, an x-ray source  proposed as a black hole binary through several studies between 1971 and 1974."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Black_hole"
+        ],
+        "hintNote": "In 1916, the first solution of general relativity that would characterise a black hole was found. / Only a few months after Einstein published the field equations describing general relativity, astrophysicist Karl Schwarzschild set out to apply the idea to stars.",
+        "easiestCue": "휠러는 짧고 '광고 효과'가 있다며 받아 써서 널리 퍼뜨렸습니다",
+        "targetWhy": "천체 이름의 유래 — 대학 교양 과학사(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 천체의 이름 뒷이야기 · 무모 정리",
+        "pairCheck": "1회차 #1446 질문(빛도 벗어나지 못하는 천체 · 2019년 그림자 촬영) · 해설(전파망원경 묶음) · 힌트(없음) 와 겹치지 않음 — 2회차는 정의 문장 없이 휠러 작명 일화 · 무모 정리로만 물음",
+        "dbCheck": "pair-or-different — 활성 #1446 1건, (가) 2회차로 지식이 다름",
+        "warn": [],
+        "first": {
+          "id": 1446,
+          "question": "중력이 너무 강해 빛조차 벗어날 수 없는 천체로, 2019년에 그림자가 처음으로 직접 촬영된 것은?",
+          "explanation": "여러 대륙의 전파망원경을 묶어 지구만 한 망원경처럼 써서 찍었습니다.",
+          "hint": null,
+          "difficulty": 1
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "존 휠러의 강연에서 한 청중이 제안했다는 이 이름 … 이 천체",
+          "difWhy": "휠러가 퍼뜨린 천체명 — 고교 지구과학",
+          "wor": 4,
+          "worWhy": "교양 — 이름 기원",
+          "acc": 5,
+          "accWhy": "물리 — 중학 과학 교과 과목"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  }
- ]
+  ]
 }

@@ -1,249 +1,279 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "kr-language/5",
-  "midKey": "kr-language",
-  "subName": "높임말·어법",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "kr-language/5#g019a-K1-24",
-   "seed": {
-    "subject": "영감",
-    "aspect": null,
-    "ref": "K1-24",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이수광은 『지봉유설』에서 원래 '영공'이라 부르던 것을 1590년대부터 이렇게 부르기 시작했다고 적었습니다. 일제강점기에는 군수·판사·검사를 높여 부를 때도 쓰인 이 두 글자 호칭은?",
-    "answer": "영감",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "조선에서는 종2품과 정3품 당상관을 이렇게 높여 불렀고, 1962년 이후 대법원은 판사를 이렇게 부르는 관습을 민주주의에 반한다며 없앴다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "군수·판사·검사를 높여 부를 때도 쓰인 이 두 글자 호칭",
-     "difWhy": "판검사 '○○' 호칭 — 고교 국어·관심층",
-     "wor": 4,
-     "worWhy": "기본 어휘 — 호칭 어원",
-     "acc": 5,
-     "accWhy": "한국어·한글 — 초중 국어 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'대감' … '나리' … 그 사이의 종2품과 정3품 당상관",
-     "difWhy": "조선 관원 호칭 — 사극 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "호칭 유래 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "조선의 관원 호칭에서 정1품 삼정승은 '합하', 정2품 이상은 '대감', 정3품 당하관 이하는 '나리'라 높였습니다. 그 사이의 종2품과 정3품 당상관을 높여 부르던 두 글자 호칭은?",
-     "beforeExplanation": "일제강점기에는 판사·검사·군수에게도 쓰였고, 1962년 이후 대법원은 판사를 이렇게 부르는 관습을 민주주의에 반한다며 없앴다.",
-     "removedCue": "합하·대감·나리 사이의 종2품·정3품 당상관 호칭(정의 꼴)",
-     "addedCue": "지봉유설의 '영공'에서 바뀐 기록 · 일제강점기 군수·판사·검사",
-     "why": "품계 서열 정의를 빼고 이름이 바뀐 기록과 근대의 쓰임으로"
-    },
-    "generalHint": "조선에는 80세나 90세 넘은 노인에게 품계를 내리는 노인직이 있었고, 그 임명장은 나라 살림이 어려우면 공명첩으로 팔리기도 했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "나이 든 남자를 높여 이르는 말",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "일상어",
-     "piece": "f04",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "K1-24",
-     "key": "b012",
-     "hint": "조선에는 80세나 90세 넘은 노인에게 품계를 내리는 노인직이 있었고, 그 임명장은 나라 살림이 어려우면 공명첩으로 팔리기도 했다.",
-     "guess": "교지",
-     "confidence": "low",
-     "hit": false,
-     "answer": "영감",
-     "first": {
-      "ref": "K1-24",
-      "key": "b149",
-      "hint": "오늘날에는 늙은 아내가 남편을 이르는 말로도 쓴다.",
-      "guess": "영감",
-      "confidence": "high",
-      "hit": true,
-      "answer": "영감"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/영감_(호칭)",
-     "https://ko.wikipedia.org/wiki/%EC%98%81%EA%B0%90%20(%ED%98%B8%EC%B9%AD)"
-    ],
-    "facts": [
-     {
-      "claim": "합하 정1품 삼정승 · 대감 정1~정2품 · 영감 종2·정3 당상관 · 나리 정3 당하관 이하",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/영감_(호칭)",
-      "note": "합하(閤下) : 정1품 영의정, 좌의정, 우의정 / 대감(大監) : 정1품, 종1품, 정2품 / 영감(令監) : 종2품, 정3품 당상관 / 나리, 나으리 : 정3품 당하관 이하부터 종9품까지 관원"
-     },
-     {
-      "claim": "일제강점기 판사·검사·군수 · 1962년 이후 판사 호칭 관습 폐지",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/영감_(호칭)",
-      "note": "영감 호칭은 일제강점기에는 판사, 검사, 군수 등에게 사용되었다. 1962년 이후 대한민국의 최고 법원에서는 판사들에게 영감 호칭을 사용하는 관습을 민주주의에 반하는 것으로 간주하고 폐지하였다."
-     },
-     {
-      "claim": "지봉유설 — 원래 영공이라 부르던 것을 1590년대부터",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%98%81%EA%B0%90%20(%ED%98%B8%EC%B9%AD)",
-      "note": "반면 이수광은 《지봉유설》에서 원래 영공(令公)이라 부르던 것을 1590년대부터 영감이라 부르기 시작했다고 적었다."
-     },
-     {
-      "claim": "일제강점기 군수·판사·검사",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%98%81%EA%B0%90%20(%ED%98%B8%EC%B9%AD)",
-      "note": "일제강점기에는 군수, 판사, 검사 등에 대한 높임말로 사용되었다가 현재는 노인 남성에 대한 존칭으로 사용된다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/영감_(호칭)"
-    ],
-    "hintNote": "80세 또는 90세 이상 노인에게 1품 품계를 하사하는 제도 · 임명장은 노직첩, 재정이 어려울 때는 공명첩으로 만들어 팔기도 했다",
-    "easiestCue": "일제강점기에는 군수·판사·검사를 높여 부를 때도 쓰인",
-    "targetWhy": "호칭의 역사 — 우리말 애호가 세부(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "일상어의 옛 벼슬 호칭 — 낱말 뜻 꼴 1 (호칭 체계 안의 자리로 묻는다)",
-    "pairCheck": null,
-    "dbCheck": "answercheck 영감 new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "kr-language/5",
+    "midKey": "kr-language",
+    "subName": "높임말·어법",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "kr-language/5#g019a-K1-25",
-   "seed": {
-    "subject": "각하",
-    "aspect": null,
-    "ref": "K1-25",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "고려 때 문하시중·평장사 같은 재상을 높여 부르던 두 글자 존칭입니다. 메이지 유신 뒤 일본은 이 존칭을 천황이 직접 임명하는 칙임관과 육군 소장 이상에게만 쓰게 했는데, 이 존칭은?",
-    "answer": "각하",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "김영삼 대통령 취임과 함께 공식적으로 쓰지 않게 되었고, 김대중 대통령 때부터는 청와대 안에서도 '대통령님'으로 불렀다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "재상을 높여 부르던 두 글자 존칭 … 칙임관",
-     "difWhy": "고관 존칭 — 관심 있는 사람",
-     "wor": 4,
-     "worWhy": "기본 어휘 — 호칭 유래",
-     "acc": 5,
-     "accWhy": "한국어·한글 — 초중 국어 교과"
+  "items": [
+    {
+      "seedId": "kr-language/5#g019a-K1-24",
+      "seed": {
+        "subject": "영감",
+        "aspect": null,
+        "ref": "K1-24",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이수광은 『지봉유설』에서 원래 '영공'이라 부르던 것을 1590년대부터 이렇게 부르기 시작했다고 적었습니다. 일제강점기에는 군수·판사·검사를 높여 부를 때도 쓰인 이 두 글자 호칭은?",
+        "answer": "영감",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "조선에서는 종2품과 정3품 당상관을 이렇게 높여 불렀고, 1962년 이후 대법원은 판사를 이렇게 부르는 관습을 민주주의에 반한다며 없앴다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "군수·판사·검사를 높여 부를 때도 쓰인 이 두 글자 호칭",
+          "difWhy": "판검사 '○○' 호칭 — 고교 국어·관심층",
+          "wor": 4,
+          "worWhy": "기본 어휘 — 호칭 어원",
+          "acc": 5,
+          "accWhy": "한국어·한글 — 초중 국어 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'대감' … '나리' … 그 사이의 종2품과 정3품 당상관",
+          "difWhy": "조선 관원 호칭 — 사극 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "호칭 유래 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "조선의 관원 호칭에서 정1품 삼정승은 '합하', 정2품 이상은 '대감', 정3품 당하관 이하는 '나리'라 높였습니다. 그 사이의 종2품과 정3품 당상관을 높여 부르던 두 글자 호칭은?",
+          "beforeExplanation": "일제강점기에는 판사·검사·군수에게도 쓰였고, 1962년 이후 대법원은 판사를 이렇게 부르는 관습을 민주주의에 반한다며 없앴다.",
+          "removedCue": "합하·대감·나리 사이의 종2품·정3품 당상관 호칭(정의 꼴)",
+          "addedCue": "지봉유설의 '영공'에서 바뀐 기록 · 일제강점기 군수·판사·검사",
+          "why": "품계 서열 정의를 빼고 이름이 바뀐 기록과 근대의 쓰임으로"
+        },
+        "generalHint": "조선에는 80세나 90세 넘은 노인에게 품계를 내리는 노인직이 있었고, 그 임명장은 나라 살림이 어려우면 공명첩으로 팔리기도 했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "나이 든 남자를 높여 이르는 말",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "일상어",
+          "piece": "f04",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "K1-24",
+          "key": "b012",
+          "hint": "조선에는 80세나 90세 넘은 노인에게 품계를 내리는 노인직이 있었고, 그 임명장은 나라 살림이 어려우면 공명첩으로 팔리기도 했다.",
+          "guess": "교지",
+          "confidence": "low",
+          "hit": false,
+          "answer": "영감",
+          "first": {
+            "ref": "K1-24",
+            "key": "b149",
+            "hint": "오늘날에는 늙은 아내가 남편을 이르는 말로도 쓴다.",
+            "guess": "영감",
+            "confidence": "high",
+            "hit": true,
+            "answer": "영감"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/영감_(호칭)",
+          "https://ko.wikipedia.org/wiki/%EC%98%81%EA%B0%90%20(%ED%98%B8%EC%B9%AD)"
+        ],
+        "facts": [
+          {
+            "claim": "합하 정1품 삼정승 · 대감 정1~정2품 · 영감 종2·정3 당상관 · 나리 정3 당하관 이하",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/영감_(호칭)",
+            "note": "합하(閤下) : 정1품 영의정, 좌의정, 우의정 / 대감(大監) : 정1품, 종1품, 정2품 / 영감(令監) : 종2품, 정3품 당상관 / 나리, 나으리 : 정3품 당하관 이하부터 종9품까지 관원"
+          },
+          {
+            "claim": "일제강점기 판사·검사·군수 · 1962년 이후 판사 호칭 관습 폐지",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/영감_(호칭)",
+            "note": "영감 호칭은 일제강점기에는 판사, 검사, 군수 등에게 사용되었다. 1962년 이후 대한민국의 최고 법원에서는 판사들에게 영감 호칭을 사용하는 관습을 민주주의에 반하는 것으로 간주하고 폐지하였다."
+          },
+          {
+            "claim": "지봉유설 — 원래 영공이라 부르던 것을 1590년대부터",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%81%EA%B0%90%20(%ED%98%B8%EC%B9%AD)",
+            "note": "반면 이수광은 《지봉유설》에서 원래 영공(令公)이라 부르던 것을 1590년대부터 영감이라 부르기 시작했다고 적었다."
+          },
+          {
+            "claim": "일제강점기 군수·판사·검사",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%81%EA%B0%90%20(%ED%98%B8%EC%B9%AD)",
+            "note": "일제강점기에는 군수, 판사, 검사 등에 대한 높임말로 사용되었다가 현재는 노인 남성에 대한 존칭으로 사용된다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/영감_(호칭)"
+        ],
+        "hintNote": "80세 또는 90세 이상 노인에게 1품 품계를 하사하는 제도 · 임명장은 노직첩, 재정이 어려울 때는 공명첩으로 만들어 팔기도 했다",
+        "easiestCue": "일제강점기에는 군수·판사·검사를 높여 부를 때도 쓰인",
+        "targetWhy": "호칭의 역사 — 우리말 애호가 세부(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "일상어의 옛 벼슬 호칭 — 낱말 뜻 꼴 1 (호칭 체계 안의 자리로 묻는다)",
+        "pairCheck": null,
+        "dbCheck": "answercheck 영감 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "군수·판사·검사를 높여 부를 때도 쓰인 이 두 글자 호칭",
+          "difWhy": "판검사 '○○' 호칭 — 고교 국어·관심층",
+          "wor": 4,
+          "worWhy": "기본 어휘 — 호칭 어원",
+          "acc": 5,
+          "accWhy": "한국어·한글 — 초중 국어 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "박정희 집권 뒤 한 자리에만 쓰이게 된 이 두 글자 존칭",
-     "difWhy": "대통령 존칭 — 현대사 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "호칭 내력 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "고려 때는 문하시중·평장사 같은 재상을 높여 부르던 존칭이었습니다. 광복 뒤에는 국무총리·장관은 물론 육군 장군에게도 붙였는데, 박정희 집권 뒤 한 자리에만 쓰이게 된 이 두 글자 존칭은?",
-     "beforeExplanation": null,
-     "removedCue": "박정희 집권 뒤 한 자리(대통령)에만 쓰이게 됨 · 광복 뒤 총리·장관·장군",
-     "addedCue": "메이지 일본에서 칙임관·육군 소장 이상에게만",
-     "why": "대통령 존칭(현대사 상식)을 빼고 고려·일본의 쓰임 세부로"
-    },
-    "generalHint": "1930년 교황청 교령으로 가톨릭 주교들도 이 존칭으로 불리게 되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "예전 대통령을 높여 부르던 존칭",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "사극·현대사에서 익숙한 존칭",
-     "piece": "f02",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "K1-25",
-     "key": "b007",
-     "hint": "1930년 교황청 교령으로 가톨릭 주교들도 이 존칭으로 불리게 되었다.",
-     "guess": "각하",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "각하",
-     "first": {
-      "ref": "K1-25",
-      "key": "b087",
-      "hint": "외교 의례에서는 지금도 외국의 대통령·총리나 대사를 높여 부르는 존칭으로 쓰인다.",
-      "guess": "각하",
-      "confidence": "high",
-      "hit": true,
-      "answer": "각하"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/각하_(호칭)",
-     "https://ko.wikipedia.org/wiki/%EA%B0%81%ED%95%98%20(%ED%98%B8%EC%B9%AD)"
-    ],
-    "facts": [
-     {
-      "claim": "고려 문하시중·평장사 등 존칭",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/각하_(호칭)",
-      "note": "고려시대의 각하는 문하시중과 평장사, 참지정사 및 중추원 재상 및 6부상서를 부르는 존칭으로 쓰였고"
-     },
-     {
-      "claim": "김영삼 공식 금지 · 김대중 대통령님",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/각하_(호칭)",
-      "note": "14대 김영삼 대통령 취임과 동시에 공식적으로 각하라는 표현을 금하게 했고 … 15대 김대중 대통령부터는 청와대 내에서도 '대통령 님'으로 부르게 되었다."
-     },
-     {
-      "claim": "메이지 유신 이후 일본 — 칙임관과 육군 소장 이상에게만",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B0%81%ED%95%98%20(%ED%98%B8%EC%B9%AD)",
-      "note": "막부 때까지는 고급 각료에게 쓰이다 메이지 유신 이후 문관 중에서는 일본 덴노가 직접 임명하는 칙임관, 무관 중에서는 육군 소장 이상에게만 쓰도록 했다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Excellency",
-     "https://ko.wikipedia.org/wiki/각하_(호칭)"
-    ],
-    "hintNote": "\"the Holy See's 31 December 1930 decree ... granted bishops of the Catholic Church the title of Most Reverend Excellency\" · ko: 가톨릭에서 주교는 각하로 부른다",
-    "easiestCue": "고려 때 문하시중·평장사 같은 재상을 높여 부르던 두 글자 존칭",
-    "targetWhy": "호칭의 역사적 쓰임 — 대학 교양(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'한 자리에만' + 박정희로 대통령 호칭을 떠올리기 쉽다 — 낱말 뜻 꼴 2",
-    "pairCheck": null,
-    "dbCheck": "answercheck 각하 new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "kr-language/5#g019a-K1-25",
+      "seed": {
+        "subject": "각하",
+        "aspect": null,
+        "ref": "K1-25",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "고려 때 문하시중·평장사 같은 재상을 높여 부르던 두 글자 존칭입니다. 메이지 유신 뒤 일본은 이 존칭을 천황이 직접 임명하는 칙임관과 육군 소장 이상에게만 쓰게 했는데, 이 존칭은?",
+        "answer": "각하",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "김영삼 대통령 취임과 함께 공식적으로 쓰지 않게 되었고, 김대중 대통령 때부터는 청와대 안에서도 '대통령님'으로 불렀다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "재상을 높여 부르던 두 글자 존칭 … 칙임관",
+          "difWhy": "고관 존칭 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "기본 어휘 — 호칭 유래",
+          "acc": 5,
+          "accWhy": "한국어·한글 — 초중 국어 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "박정희 집권 뒤 한 자리에만 쓰이게 된 이 두 글자 존칭",
+          "difWhy": "대통령 존칭 — 현대사 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "호칭 내력 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "고려 때는 문하시중·평장사 같은 재상을 높여 부르던 존칭이었습니다. 광복 뒤에는 국무총리·장관은 물론 육군 장군에게도 붙였는데, 박정희 집권 뒤 한 자리에만 쓰이게 된 이 두 글자 존칭은?",
+          "beforeExplanation": null,
+          "removedCue": "박정희 집권 뒤 한 자리(대통령)에만 쓰이게 됨 · 광복 뒤 총리·장관·장군",
+          "addedCue": "메이지 일본에서 칙임관·육군 소장 이상에게만",
+          "why": "대통령 존칭(현대사 상식)을 빼고 고려·일본의 쓰임 세부로"
+        },
+        "generalHint": "1930년 교황청 교령으로 가톨릭 주교들도 이 존칭으로 불리게 되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "예전 대통령을 높여 부르던 존칭",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "사극·현대사에서 익숙한 존칭",
+          "piece": "f02",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "K1-25",
+          "key": "b007",
+          "hint": "1930년 교황청 교령으로 가톨릭 주교들도 이 존칭으로 불리게 되었다.",
+          "guess": "각하",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "각하",
+          "first": {
+            "ref": "K1-25",
+            "key": "b087",
+            "hint": "외교 의례에서는 지금도 외국의 대통령·총리나 대사를 높여 부르는 존칭으로 쓰인다.",
+            "guess": "각하",
+            "confidence": "high",
+            "hit": true,
+            "answer": "각하"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/각하_(호칭)",
+          "https://ko.wikipedia.org/wiki/%EA%B0%81%ED%95%98%20(%ED%98%B8%EC%B9%AD)"
+        ],
+        "facts": [
+          {
+            "claim": "고려 문하시중·평장사 등 존칭",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/각하_(호칭)",
+            "note": "고려시대의 각하는 문하시중과 평장사, 참지정사 및 중추원 재상 및 6부상서를 부르는 존칭으로 쓰였고"
+          },
+          {
+            "claim": "김영삼 공식 금지 · 김대중 대통령님",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/각하_(호칭)",
+            "note": "14대 김영삼 대통령 취임과 동시에 공식적으로 각하라는 표현을 금하게 했고 … 15대 김대중 대통령부터는 청와대 내에서도 '대통령 님'으로 부르게 되었다."
+          },
+          {
+            "claim": "메이지 유신 이후 일본 — 칙임관과 육군 소장 이상에게만",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B0%81%ED%95%98%20(%ED%98%B8%EC%B9%AD)",
+            "note": "막부 때까지는 고급 각료에게 쓰이다 메이지 유신 이후 문관 중에서는 일본 덴노가 직접 임명하는 칙임관, 무관 중에서는 육군 소장 이상에게만 쓰도록 했다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Excellency",
+          "https://ko.wikipedia.org/wiki/각하_(호칭)"
+        ],
+        "hintNote": "\"the Holy See's 31 December 1930 decree ... granted bishops of the Catholic Church the title of Most Reverend Excellency\" · ko: 가톨릭에서 주교는 각하로 부른다",
+        "easiestCue": "고려 때 문하시중·평장사 같은 재상을 높여 부르던 두 글자 존칭",
+        "targetWhy": "호칭의 역사적 쓰임 — 대학 교양(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'한 자리에만' + 박정희로 대통령 호칭을 떠올리기 쉽다 — 낱말 뜻 꼴 2",
+        "pairCheck": null,
+        "dbCheck": "answercheck 각하 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "재상을 높여 부르던 두 글자 존칭 … 칙임관",
+          "difWhy": "고관 존칭 — 관심 있는 사람",
+          "wor": 4,
+          "worWhy": "기본 어휘 — 호칭 유래",
+          "acc": 5,
+          "accWhy": "한국어·한글 — 초중 국어 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

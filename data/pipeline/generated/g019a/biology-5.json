@@ -1,130 +1,145 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "biology/5",
-  "midKey": "biology",
-  "subName": "식물 생리",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "biology/5#g019a-C1-25",
-   "seed": {
-    "subject": "미모사",
-    "aspect": null,
-    "ref": "C1-25",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1823년 스위스 식물학자 드 캉돌은 빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는 것을 쟀습니다. 뿌리에서 이황화탄소를 내어 둘레에 병원성 곰팡이가 자라지 못하게 하는 이 콩과 식물은?",
-    "answer": "미모사",
-    "acceptedAnswers": [
-     "함수초",
-     "신경초"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 미모사 넘겨주기(신경초 · 함수초) 확인",
-    "explanation": "19세기 독일 식물학자 빌헬름 페퍼는 이 식물로 식물의 습관화를 시험한 첫 실험 가운데 하나를 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "이 식물의 잎이 … 움직이는 … 콩과 식물",
-     "difWhy": "잎이 움직이는 콩과 식물 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 생체 시계 실험",
-     "acc": 5,
-     "accWhy": "생물 — 중학 과학 교과 과목"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "엮음: 잎이 움직이는 식물 + 거듭 떨어뜨리면 반응을 멈추고",
-     "difWhy": "반응해 잎 움직이는 식물 — 고교 생물 교양",
-     "wor": 3,
-     "worWhy": "미모사 습관화 — 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1823년 스위스 식물학자 드 캉돌은 빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는 것을 쟀습니다. 15cm 높이에서 거듭 떨어뜨리면 반응을 멈추고 그 상태가 28일 넘게 이어진다는 연구도 있는 이 식물은?",
-     "beforeExplanation": null,
-     "removedCue": "15cm 높이에서 거듭 떨어뜨리면 반응을 멈추고 28일 넘게 이어짐(만지면 잎을 접는 식물)",
-     "addedCue": "뿌리의 이황화탄소 · 콩과",
-     "why": "자극 반응(고교 생물 상식)을 빼고 생체 시계·뿌리 화학 세부로"
-    },
-    "generalHint": "카리브해와 중남미가 고향이지만 지금은 열대 곳곳에 퍼져, 탄자니아와 여러 태평양 섬에서는 침입종으로 여겨진다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "건드리면 잎을 오므리는 콩과 풀",
-    "familiarity": {
-     "judge": 2,
-     "pct": 55,
-     "why": "과학 시간·식물원에서 들어 봄",
-     "piece": "f08",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "C1-25",
-     "key": "b116",
-     "hint": "카리브해와 중남미가 고향이지만 지금은 열대 곳곳에 퍼져, 탄자니아와 여러 태평양 섬에서는 침입종으로 여겨진다.",
-     "guess": "란타나",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "미모사"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Jean-Jacques_d'Ortous_de_Mairan",
-     "https://en.wikipedia.org/wiki/Mimosa_pudica"
-    ],
-    "facts": [
-     {
-      "claim": "1823 드 캉돌 — 일정 조건에서 잎 운동 자유 주기 22~23시간",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jean-Jacques_d'Ortous_de_Mairan",
-      "note": "In 1823, almost a century after de Mairan's work, the Swiss botanist Augustin Pyramus de Candolle expanded on it by measuring the free-running period of Mimosa pudica leaf movements in constant conditions, finding them to be 22–23 hours long."
-     },
-     {
-      "claim": "페퍼 — 습관화 첫 실험 가운데 하나",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Mimosa_pudica",
-      "note": "Wilhelm Pfeffer, a German botanist during the 19th century, used Mimosa in one of the first experiments testing plant habituation."
-     },
-     {
-      "claim": "뿌리에서 이황화탄소 — 병원성·균근 곰팡이 억제",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mimosa_pudica",
-      "note": "The roots of Mimosa pudica produce carbon disulfide, an antifeedant that prevents certain pathogenic and mycorrhizal fungi from growing within the plant's rhizosphere."
-     },
-     {
-      "claim": "콩과",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mimosa_pudica",
-      "note": "is a creeping annual or perennial flowering plant of the pea/legume family Fabaceae."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Mimosa_pudica"
-    ],
-    "hintNote": "The species is native to the Caribbean and South and Central America, but is now a pantropical weed ... regarded as an invasive species in Tanzania, South and Southeast Asia, and many Pacific islands.",
-    "easiestCue": "빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는",
-    "targetWhy": "식물 생리 연구사 — 대학 교양(경계 3: 잎이 움직이는 콩과 식물로 짐작될 수 있음)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "교과서 단골 식물의 교과서 밖 실험",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "biology/5",
+    "midKey": "biology",
+    "subName": "식물 생리",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "biology/5#g019a-C1-25",
+      "seed": {
+        "subject": "미모사",
+        "aspect": null,
+        "ref": "C1-25",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1823년 스위스 식물학자 드 캉돌은 빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는 것을 쟀습니다. 뿌리에서 이황화탄소를 내어 둘레에 병원성 곰팡이가 자라지 못하게 하는 이 콩과 식물은?",
+        "answer": "미모사",
+        "acceptedAnswers": [
+          "함수초",
+          "신경초"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 미모사 넘겨주기(신경초 · 함수초) 확인",
+        "explanation": "19세기 독일 식물학자 빌헬름 페퍼는 이 식물로 식물의 습관화를 시험한 첫 실험 가운데 하나를 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "이 식물의 잎이 … 움직이는 … 콩과 식물",
+          "difWhy": "잎이 움직이는 콩과 식물 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 생체 시계 실험",
+          "acc": 5,
+          "accWhy": "생물 — 중학 과학 교과 과목",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "엮음: 잎이 움직이는 식물 + 거듭 떨어뜨리면 반응을 멈추고",
+          "difWhy": "반응해 잎 움직이는 식물 — 고교 생물 교양",
+          "wor": 3,
+          "worWhy": "미모사 습관화 — 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1823년 스위스 식물학자 드 캉돌은 빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는 것을 쟀습니다. 15cm 높이에서 거듭 떨어뜨리면 반응을 멈추고 그 상태가 28일 넘게 이어진다는 연구도 있는 이 식물은?",
+          "beforeExplanation": null,
+          "removedCue": "15cm 높이에서 거듭 떨어뜨리면 반응을 멈추고 28일 넘게 이어짐(만지면 잎을 접는 식물)",
+          "addedCue": "뿌리의 이황화탄소 · 콩과",
+          "why": "자극 반응(고교 생물 상식)을 빼고 생체 시계·뿌리 화학 세부로"
+        },
+        "generalHint": "카리브해와 중남미가 고향이지만 지금은 열대 곳곳에 퍼져, 탄자니아와 여러 태평양 섬에서는 침입종으로 여겨진다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "건드리면 잎을 오므리는 콩과 풀",
+        "familiarity": {
+          "judge": 2,
+          "pct": 55,
+          "why": "과학 시간·식물원에서 들어 봄",
+          "piece": "f08",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "C1-25",
+          "key": "b116",
+          "hint": "카리브해와 중남미가 고향이지만 지금은 열대 곳곳에 퍼져, 탄자니아와 여러 태평양 섬에서는 침입종으로 여겨진다.",
+          "guess": "란타나",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "미모사"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Jean-Jacques_d'Ortous_de_Mairan",
+          "https://en.wikipedia.org/wiki/Mimosa_pudica"
+        ],
+        "facts": [
+          {
+            "claim": "1823 드 캉돌 — 일정 조건에서 잎 운동 자유 주기 22~23시간",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jean-Jacques_d'Ortous_de_Mairan",
+            "note": "In 1823, almost a century after de Mairan's work, the Swiss botanist Augustin Pyramus de Candolle expanded on it by measuring the free-running period of Mimosa pudica leaf movements in constant conditions, finding them to be 22–23 hours long."
+          },
+          {
+            "claim": "페퍼 — 습관화 첫 실험 가운데 하나",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Mimosa_pudica",
+            "note": "Wilhelm Pfeffer, a German botanist during the 19th century, used Mimosa in one of the first experiments testing plant habituation."
+          },
+          {
+            "claim": "뿌리에서 이황화탄소 — 병원성·균근 곰팡이 억제",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mimosa_pudica",
+            "note": "The roots of Mimosa pudica produce carbon disulfide, an antifeedant that prevents certain pathogenic and mycorrhizal fungi from growing within the plant's rhizosphere."
+          },
+          {
+            "claim": "콩과",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mimosa_pudica",
+            "note": "is a creeping annual or perennial flowering plant of the pea/legume family Fabaceae."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Mimosa_pudica"
+        ],
+        "hintNote": "The species is native to the Caribbean and South and Central America, but is now a pantropical weed ... regarded as an invasive species in Tanzania, South and Southeast Asia, and many Pacific islands.",
+        "easiestCue": "빛 조건이 바뀌지 않는 곳에서도 이 식물의 잎이 22~23시간 주기로 움직이는",
+        "targetWhy": "식물 생리 연구사 — 대학 교양(경계 3: 잎이 움직이는 콩과 식물로 짐작될 수 있음)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "교과서 단골 식물의 교과서 밖 실험",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "이 식물의 잎이 … 움직이는 … 콩과 식물",
+          "difWhy": "잎이 움직이는 콩과 식물 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 생체 시계 실험",
+          "acc": 5,
+          "accWhy": "생물 — 중학 과학 교과 과목"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

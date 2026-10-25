@@ -1,574 +1,649 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "combat-athletics/4",
-  "midKey": "combat-athletics",
-  "subName": "수영·수상 종목",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "combat-athletics/4#g019a-S2-21",
-   "seed": {
-    "subject": "쑨양",
-    "aspect": null,
-    "ref": "S2-21",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2014년 금지 약물 트리메타지딘 양성 반응으로 석 달 자격 정지를 받았던 이 수영 선수는, 2020년 스포츠중재재판소에서 도핑 검사 방해로 8년 자격 정지를 받았다가 재심에서 4년 3개월로 줄었습니다. 이 선수는 누구일까요?",
-    "answer": "쑨양",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "2018년 9월 집으로 찾아온 도핑 검사원 앞에서 그의 경호원이 시료가 담긴 용기를 깨뜨린 일이 징계의 발단이었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "도핑 검사 방해로 8년 자격 정지",
-     "difWhy": "샘플 파손 도핑 징계 수영 선수 — 관심층",
-     "wor": 3,
-     "worWhy": "널리 알려진 선수 이름",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "경호원이 시료가 담긴 용기를 깨뜨렸습니다",
-     "difWhy": "도핑 시료 파손 수영 선수 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 선수 사건"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2018년 9월 집으로 찾아온 도핑 검사원 앞에서 이 수영 선수의 경호원이 시료가 담긴 용기를 깨뜨렸습니다. 2020년 스포츠중재재판소는 검사 방해를 이유로 8년 자격 정지를 내렸다가 재심에서 4년 3개월로 줄였는데, 이 선수는 누구일까요?",
-     "beforeExplanation": "2014년에는 금지 약물 트리메타지딘 양성 반응으로 석 달 자격 정지를 받기도 했습니다.",
-     "removedCue": "경호원이 시료가 담긴 용기를 깨뜨렸습니다",
-     "addedCue": "2014년 트리메타지딘 석 달 정지",
-     "why": "널리 보도된 시료 파손 장면을 해설로 옮기고 해설의 2014년 첫 징계를 질문으로"
-    },
-    "generalHint": "200m부터 1500m까지 모든 자유형 거리에서 올림픽과 세계 선수권 금메달을 딴 첫 남자 선수다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "2012년 런던 올림픽 자유형 금메달을 딴 중국 수영 선수",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "박태환 라이벌로 뉴스에 나옴",
-     "piece": "f08",
-     "genPct": 45
-    },
-    "blind": {
-     "ref": "S2-21",
-     "key": "b076",
-     "hint": "200m부터 1500m까지 모든 자유형 거리에서 올림픽과 세계 선수권 금메달을 딴 첫 남자 선수다.",
-     "guess": "쑨양",
-     "confidence": "high",
-     "hit": true,
-     "answer": "쑨양"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Sun_Yang"
-    ],
-    "facts": [
-     {
-      "claim": "2014 트리메타지딘 3개월",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sun_Yang",
-      "note": "he tested positive for trimetazidine ... Chinada confirmed it had handed Sun a retrospective suspension of three months."
-     },
-     {
-      "claim": "2020 CAS 8년",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sun_Yang",
-      "note": "On 28 February 2020, the Court of Arbitration for Sport (CAS) overturned FINA's decision, banning Sun for eight years for tampering with the doping control process."
-     },
-     {
-      "claim": "재심 4년 3개월",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sun_Yang",
-      "note": "On 22 June 2021, after a retrial, CAS upheld the ban but reduced it to four years and three months"
-     },
-     {
-      "claim": "2018.9 집에서 도핑 검사, 경호원이 용기 파손",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Sun_Yang",
-      "note": "In September 2018, Sun was involved in a controversial incident during an out-of-competition doping test at his home. ... A security guard broke open the container to prevent the testers from taking the vials."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Sun_Yang"
-    ],
-    "hintNote": "Sun is the first male swimmer in history to earn Olympic and World Championship gold medals at every freestyle distance from 200 to 1500 metres.",
-    "easiestCue": "CAS 8년 → 재심 4년 3개월 자격 정지",
-    "targetWhy": "징계 기간·첫 약물명은 수영 애호가 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "정답 친숙도 2 경계(박태환 맞수로 아는 정도)",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "combat-athletics/4",
+    "midKey": "combat-athletics",
+    "subName": "수영·수상 종목",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "combat-athletics/4#g019a-S2-22",
-   "seed": {
-    "subject": "오리발",
-    "aspect": null,
-    "ref": "S2-22",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1933년 프랑스 해군 장교 루이 드 코를리외가 특허를 냈고, 같은 해 미국의 오언 처칠이 권리를 얻어 대량 생산에 나섰습니다. 벤저민 프랭클린이 어릴 적 만든 팔레트 모양 나무판 두 장이 이른 형태로 꼽히는 이 장비는?",
-    "answer": "오리발",
-    "acceptedAnswers": [
-     "물갈퀴"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 오리발 문서 — \"큰 물갈퀴나 모노핀은\" 으로 같은 장비를 물갈퀴로도 부름",
-    "explanation": "처칠이 프랑스 이름 대신 붙인 '스윔핀'이 지금도 영어 이름으로 쓰입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "벤저민 프랭클린이 어릴 적 만든 팔레트 모양 나무판 두 장",
-     "difWhy": "프랭클린 손 지느러미 — 수영 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 장비 기원",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "combat-athletics/4#g019a-S2-21",
+      "seed": {
+        "subject": "쑨양",
+        "aspect": null,
+        "ref": "S2-21",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2014년 금지 약물 트리메타지딘 양성 반응으로 석 달 자격 정지를 받았던 이 수영 선수는, 2020년 스포츠중재재판소에서 도핑 검사 방해로 8년 자격 정지를 받았다가 재심에서 4년 3개월로 줄었습니다. 이 선수는 누구일까요?",
+        "answer": "쑨양",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "2018년 9월 집으로 찾아온 도핑 검사원 앞에서 그의 경호원이 시료가 담긴 용기를 깨뜨린 일이 징계의 발단이었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "도핑 검사 방해로 8년 자격 정지",
+          "difWhy": "샘플 파손 도핑 징계 수영 선수 — 관심층",
+          "wor": 3,
+          "worWhy": "널리 알려진 선수 이름",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "경호원이 시료가 담긴 용기를 깨뜨렸습니다",
+          "difWhy": "도핑 시료 파손 수영 선수 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 선수 사건"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2018년 9월 집으로 찾아온 도핑 검사원 앞에서 이 수영 선수의 경호원이 시료가 담긴 용기를 깨뜨렸습니다. 2020년 스포츠중재재판소는 검사 방해를 이유로 8년 자격 정지를 내렸다가 재심에서 4년 3개월로 줄였는데, 이 선수는 누구일까요?",
+          "beforeExplanation": "2014년에는 금지 약물 트리메타지딘 양성 반응으로 석 달 자격 정지를 받기도 했습니다.",
+          "removedCue": "경호원이 시료가 담긴 용기를 깨뜨렸습니다",
+          "addedCue": "2014년 트리메타지딘 석 달 정지",
+          "why": "널리 보도된 시료 파손 장면을 해설로 옮기고 해설의 2014년 첫 징계를 질문으로"
+        },
+        "generalHint": "200m부터 1500m까지 모든 자유형 거리에서 올림픽과 세계 선수권 금메달을 딴 첫 남자 선수다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "2012년 런던 올림픽 자유형 금메달을 딴 중국 수영 선수",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "박태환 라이벌로 뉴스에 나옴",
+          "piece": "f08",
+          "genPct": 45
+        },
+        "blind": {
+          "ref": "S2-21",
+          "key": "b076",
+          "hint": "200m부터 1500m까지 모든 자유형 거리에서 올림픽과 세계 선수권 금메달을 딴 첫 남자 선수다.",
+          "guess": "쑨양",
+          "confidence": "high",
+          "hit": true,
+          "answer": "쑨양"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Sun_Yang"
+        ],
+        "facts": [
+          {
+            "claim": "2014 트리메타지딘 3개월",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sun_Yang",
+            "note": "he tested positive for trimetazidine ... Chinada confirmed it had handed Sun a retrospective suspension of three months."
+          },
+          {
+            "claim": "2020 CAS 8년",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sun_Yang",
+            "note": "On 28 February 2020, the Court of Arbitration for Sport (CAS) overturned FINA's decision, banning Sun for eight years for tampering with the doping control process."
+          },
+          {
+            "claim": "재심 4년 3개월",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sun_Yang",
+            "note": "On 22 June 2021, after a retrial, CAS upheld the ban but reduced it to four years and three months"
+          },
+          {
+            "claim": "2018.9 집에서 도핑 검사, 경호원이 용기 파손",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Sun_Yang",
+            "note": "In September 2018, Sun was involved in a controversial incident during an out-of-competition doping test at his home. ... A security guard broke open the container to prevent the testers from taking the vials."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Sun_Yang"
+        ],
+        "hintNote": "Sun is the first male swimmer in history to earn Olympic and World Championship gold medals at every freestyle distance from 200 to 1500 metres.",
+        "easiestCue": "CAS 8년 → 재심 4년 3개월 자격 정지",
+        "targetWhy": "징계 기간·첫 약물명은 수영 애호가 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "정답 친숙도 2 경계(박태환 맞수로 아는 정도)",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "도핑 검사 방해로 8년 자격 정지",
+          "difWhy": "샘플 파손 도핑 징계 수영 선수 — 관심층",
+          "wor": 3,
+          "worWhy": "널리 알려진 선수 이름",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "엮음: 손에 끼고 헤엄쳤는데 + 수중 폭파대가 쓴 이 장비",
-     "difWhy": "헤엄용 물갈퀴 장비 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "장비 기원 이야깃거리"
+    {
+      "seedId": "combat-athletics/4#g019a-S2-22",
+      "seed": {
+        "subject": "오리발",
+        "aspect": null,
+        "ref": "S2-22",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1933년 프랑스 해군 장교 루이 드 코를리외가 특허를 냈고, 1939년 미국의 오언 처칠이 권리를 얻어 대량 생산에 나섰습니다. 벤저민 프랭클린이 어릴 적 만든 팔레트 모양 나무판 두 장이 이른 형태로 꼽히는 이 장비는?",
+        "answer": "오리발",
+        "acceptedAnswers": [
+          "물갈퀴"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 오리발 문서 — \"큰 물갈퀴나 모노핀은\" 으로 같은 장비를 물갈퀴로도 부름",
+        "explanation": "처칠이 프랑스 이름 대신 붙인 '스윔핀'이 지금도 영어 이름으로 쓰입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "벤저민 프랭클린이 어릴 적 만든 팔레트 모양 나무판 두 장",
+          "difWhy": "프랭클린 손 지느러미 — 수영 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 장비 기원",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "엮음: 손에 끼고 헤엄쳤는데 + 수중 폭파대가 쓴 이 장비",
+          "difWhy": "헤엄용 물갈퀴 장비 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "장비 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "벤저민 프랭클린은 어릴 적 화가의 팔레트 모양 나무판 두 장을 손에 끼고 헤엄쳤는데, 이것의 이른 형태로 꼽힙니다. 1933년 프랑스 해군 장교 루이 드 코를리외가 특허를 냈고, 미국의 오언 처칠이 들여와 미 해군 수중 폭파대가 쓴 이 장비는?",
+          "beforeExplanation": null,
+          "removedCue": "손에 끼고 헤엄쳤다 · 미 해군 수중 폭파대가 씀(엮으면 헤엄 장비로 바로 풀림)",
+          "addedCue": "오언 처칠의 라이선스 대량 생산",
+          "why": "헤엄 동작과 수중 부대 단서를 빼고 특허·생산 내력으로"
+        },
+        "generalHint": "코를리외가 1914년 해군 장교들 앞에서 시제품을 시연할 때, 뒤에 초기 스쿠버 장비를 만든 이브 르 프리외르도 그 자리에 있었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "발에 신어 물을 세게 차게 해 주는 지느러미 모양 장비",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "수영 장비이자 일상어",
+          "piece": "f01",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "S2-22",
+          "key": "b083",
+          "hint": "코를리외가 1914년 해군 장교들 앞에서 시제품을 시연할 때, 뒤에 초기 스쿠버 장비를 만든 이브 르 프리외르도 그 자리에 있었다.",
+          "guess": "오리발",
+          "confidence": "high",
+          "hit": true,
+          "answer": "오리발"
+        },
+        "hobby": "장비",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Swimfin"
+        ],
+        "facts": [
+          {
+            "claim": "프랭클린의 손에 끼는 팔레트 모양 나무판",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Swimfin",
+            "note": "Benjamin Franklin made a pair of early swimfins (for hands) when he was a young boy ... they were two thin pieces of wood, about the shape of an artist's palette"
+          },
+          {
+            "claim": "드 코를리외 프랑스 해군 장교, 1933 특허",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Swimfin",
+            "note": "Modern swimfins are an invention by the Frenchman Louis de Corlieu, capitaine de corvette ... in the French Navy. In April 1933 he registered a patent"
+          },
+          {
+            "claim": "오언 처칠 라이선스, 미 해군 UDT",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Swimfin",
+            "note": "The same year he issued a licence to Owen Churchill for mass production in the United States. ... Churchill presented his fins to the US Navy, which decided to acquire them for its Underwater Demolition Team (UDT)."
+          },
+          {
+            "claim": "swimfins 이름",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Swimfin",
+            "note": "Owen Churchill changed the French Corlieu's name (propulseurs) to \"swimfins\", which is still the common English name."
+          },
+          {
+            "claim": "같은 해 오언 처칠에게 미국 대량 생산 라이선스",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Swimfin",
+            "note": "The same year he issued a licence to Owen Churchill for mass production in the United States."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Swimfin"
+        ],
+        "hintNote": "In 1914 Corlieu made a practical demonstration of his first prototype for a group of navy officers, Yves le Prieur among them who, years later in 1926, invented an early model of scuba set.",
+        "easiestCue": "프랭클린이 어릴 적 만든 팔레트 모양 나무판 두 장이 이른 형태",
+        "targetWhy": "수상 장비의 발명사 — 수영·다이빙 애호가(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 장비의 뜻밖의 기원(프랭클린)",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "벤저민 프랭클린이 어릴 적 만든 팔레트 모양 나무판 두 장",
+          "difWhy": "프랭클린 손 지느러미 — 수영 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 장비 기원",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix fact-error",
+          "verdict": "fix"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "벤저민 프랭클린은 어릴 적 화가의 팔레트 모양 나무판 두 장을 손에 끼고 헤엄쳤는데, 이것의 이른 형태로 꼽힙니다. 1933년 프랑스 해군 장교 루이 드 코를리외가 특허를 냈고, 미국의 오언 처칠이 들여와 미 해군 수중 폭파대가 쓴 이 장비는?",
-     "beforeExplanation": null,
-     "removedCue": "손에 끼고 헤엄쳤다 · 미 해군 수중 폭파대가 씀(엮으면 헤엄 장비로 바로 풀림)",
-     "addedCue": "오언 처칠의 라이선스 대량 생산",
-     "why": "헤엄 동작과 수중 부대 단서를 빼고 특허·생산 내력으로"
+    {
+      "seedId": "combat-athletics/4#g019a-S2-23",
+      "seed": {
+        "subject": "아티스틱 스위밍",
+        "aspect": null,
+        "ref": "S2-23",
+        "pairedWith": 2790
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 2790,
+        "question": "이 종목 선수들은 경기 때 머리를 쪽진 뒤 젤라틴을 발라 고정합니다. 기록에 남은 첫 대회는 1891년 독일 베를린에서 열렸고, 1917년 오스트레일리아의 아네트 켈러먼이 뉴욕 히포드롬 공연으로 널리 알린 이 수영 종목은?",
+        "answer": "아티스틱 스위밍",
+        "acceptedAnswers": [
+          "싱크로나이즈드 스위밍",
+          "수중발레"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 싱크로나이즈드 스위밍·수중발레 모두 아티스틱스위밍 문서로 넘겨주기 확인",
+        "explanation": "1984년 로스앤젤레스 대회에서 올림픽 정식 종목이 되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "머리를 쪽진 뒤 젤라틴을 발라 고정",
+          "difWhy": "젤라틴 머리 수중 종목 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종목 기원",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "에스더 윌리엄스가 인기를 더한 이 수영 종목",
+          "difWhy": "수중 발레 종목 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "종목 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "이 종목 선수들은 경기 때 머리를 쪽진 뒤 젤라틴을 발라 고정합니다. 1917년 오스트레일리아의 아네트 켈러먼이 뉴욕 히포드롬 공연으로 널리 알렸고, 1940~50년대 할리우드 영화의 에스더 윌리엄스가 인기를 더한 이 수영 종목은?",
+          "beforeExplanation": null,
+          "removedCue": "1940~50년대 할리우드 영화의 에스더 윌리엄스가 인기를 더한",
+          "addedCue": "1891년 베를린 첫 대회",
+          "why": "영화로 널리 알려진 에스더 윌리엄스를 빼고 첫 대회 기록으로 바꿈"
+        },
+        "generalHint": "2000년부터 2020년까지 올림픽 이 종목 금메달 12개는 모두 러시아 선수들이 가져갔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "음악에 맞춰 물속과 물 위에서 연기하는 수영 종목",
+        "familiarity": {
+          "judge": 2,
+          "pct": 55,
+          "why": "싱크로나이즈드 스위밍의 새 이름이라 덜 익숙",
+          "piece": "f05",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "S2-23",
+          "key": "b124",
+          "hint": "2000년부터 2020년까지 올림픽 이 종목 금메달 12개는 모두 러시아 선수들이 가져갔다.",
+          "guess": "아티스틱 스위밍",
+          "confidence": "high",
+          "hit": true,
+          "answer": "아티스틱 스위밍"
+        },
+        "hobby": "장비",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Synchronised_swimming"
+        ],
+        "facts": [
+          {
+            "claim": "머리 쪽지고 젤라틴",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
+            "note": "While competing, hair is typically worn in a bun and gelatin is applied to keep the hair in place."
+          },
+          {
+            "claim": "1917 켈러먼 뉴욕 히포드롬",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
+            "note": "In 1917, Australian Annette Kellerman popularised the sport when she performed in a water ballet at the New York Hippodrome."
+          },
+          {
+            "claim": "1984부터 올림픽",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
+            "note": "Synchronised swimming has been part of the Summer Olympics program since 1984"
+          },
+          {
+            "claim": "기록에 남은 첫 대회 1891년 베를린",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
+            "note": "The first recorded synchronised swimming competition took place in 1891 in Berlin, Germany."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Artistic_swimming_at_the_Summer_Olympics"
+        ],
+        "hintNote": "from 2000 to 2020, Russian athletes competing as either Russia or under the Russian Olympic Committee flag won all twelve gold medals contested.",
+        "easiestCue": "머리를 쪽지고 젤라틴으로 고정하는 수영 종목",
+        "targetWhy": "젤라틴 머리·켈러먼·베를린 첫 대회는 수영 애호가 세부 — 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "머리 단장에서 여자 연기 종목을 짐작할 여지",
+        "pairCheck": "1회차 질문(음악에 맞춘 연기·2017 개명)·해설(거꾸로 서기)·힌트(2024 남자 출전)와 겹치지 않음 — 정의 문장 안 씀",
+        "dbCheck": "pair-or-different 2790 — (가) 2회차, 다른 지식",
+        "warn": [],
+        "first": {
+          "id": 2790,
+          "question": "음악에 맞춰 물속과 물 위에서 연기를 펼치는 종목으로, 2017년 싱크로나이즈드 스위밍에서 이름을 바꾼 것은?",
+          "explanation": "물속에서 거꾸로 선 채 오래 버티는 연기가 많습니다.",
+          "hint": "2024년 파리 올림픽부터 남자 선수도 팀 종목에 출전할 수 있게 되었다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "머리를 쪽진 뒤 젤라틴을 발라 고정",
+          "difWhy": "젤라틴 머리 수중 종목 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종목 기원",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "generalHint": "코를리외가 1914년 해군 장교들 앞에서 시제품을 시연할 때, 뒤에 초기 스쿠버 장비를 만든 이브 르 프리외르도 그 자리에 있었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "발에 신어 물을 세게 차게 해 주는 지느러미 모양 장비",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "수영 장비이자 일상어",
-     "piece": "f01",
-     "genPct": 98
+    {
+      "seedId": "combat-athletics/4#g019a-S2-24",
+      "seed": {
+        "subject": "조오련",
+        "aspect": null,
+        "ref": "S2-24",
+        "pairedWith": 4832
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 4832,
+        "question": "배우 오지호의 수영 스승이기도 했던 이 선수는 평영과 배영을 뺀 모든 영법에서 한국 신기록 33개를 세웠습니다. 2003년에는 한강 700리 종주를 해낸 이 수영 선수는 누구일까요?",
+        "answer": "조오련",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "2021년 국립대전현충원 국가사회공헌자 묘역에 체육인으로는 여섯 번째로 안장되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "2003년에는 한강 700리 종주를 해낸 이 수영 선수",
+          "difWhy": "아시아의 물개 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "누구나 아는 선수 이름",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1982년 도버 해협을 헤엄쳐 건넜고",
+          "difWhy": "도버 해협 횡단 수영 선수 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 국민 선수 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "배우 오지호의 수영 스승이기도 했던 이 선수는, 평영과 배영을 뺀 모든 영법에서 한국 신기록 33개를 세웠습니다. 1982년 도버 해협을 헤엄쳐 건넜고, 2008년에는 독도를 33바퀴 헤엄쳐 도는 계획을 해낸 이 선수는?",
+          "beforeExplanation": null,
+          "removedCue": "1982년 도버 해협 횡단 · 2008년 독도 33바퀴(1회차 질문과도 겹침)",
+          "addedCue": "2003년 한강 700리 종주",
+          "why": "관심층이 아는 도버 해협 횡단과 1회차 질문의 독도 33바퀴를 빼고 덜 알려진 한강 종주로"
+        },
+        "generalHint": "2006년 애니메이션 '아이스 에이지 2'에서 거북이 목소리를 맡았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "1970년대 아시안 게임을 휩쓴 한국 수영 선수",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "'아시아의 물개'로 알려진 수영 영웅",
+          "piece": "f06",
+          "genPct": 70
+        },
+        "blind": {
+          "ref": "S2-24",
+          "key": "b194",
+          "hint": "2006년 애니메이션 '아이스 에이지 2'에서 거북이 목소리를 맡았다.",
+          "guess": "조지 포먼",
+          "confidence": "low",
+          "hit": false,
+          "answer": "조오련"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8"
+        ],
+        "facts": [
+          {
+            "claim": "오지호의 스승, 평영·배영 뺀 모든 영법 33개 한국 신기록",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8",
+            "note": "또한 배우 오지호의 스승이기도 했던 조오련은 통산 자유형 14개, 개인혼영 12개, 접영 5개, 계영 2개 등 평영과 배영을 제외한 모든 영법에서 총 33개의 한국 신기록을 세웠다."
+          },
+          {
+            "claim": "2021 현충원 안장, 체육인 6번째",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8",
+            "note": "2021년 6월 10일 오후 2시 국립대전현충원 국가사회공헌자 묘역에 안장되었는데 ... 6번째로 국립 묘역에 안장된 것이다."
+          },
+          {
+            "claim": "2003년 한강 700리 종주",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8",
+            "note": "1980년에는 대한해협, 1982년에는 영국-프랑스 도버해협, 2002년에는 대한해협, 2003년에는 한강 700리 종주, 2005년에는 독도를 횡단했으며 2008년에는 독도 33바퀴 헤엄쳐 돌기 프로젝트를 성공시켰다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8"
+        ],
+        "hintNote": "2006년 애니메이션 아이스 에이지 2 - 거북이 목소리",
+        "easiestCue": "배우 오지호의 수영 스승 · 평영·배영 뺀 영법 한국 신기록 33개",
+        "targetWhy": "선수 이력의 교과서·방송 밖 세부 — 수영 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "바다 횡단 단서에서 조오련을 떠올리는 사람이 많을 수 있음",
+        "pairCheck": "1회차 질문(해남·아시안 게임 400·1500)·해설(1980 대한해협·아시아의 물개)·힌트(1978 접영 동)와 겹치지 않음",
+        "dbCheck": "pair-or-different 4832 — (가) 2회차, 다른 지식",
+        "warn": [],
+        "first": {
+          "id": 4832,
+          "question": "전라남도 해남 출신의 이 수영 선수는 1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승했습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈는데, 이 선수는 누구일까요?",
+          "explanation": "1980년 대한해협을 헤엄쳐 건넜고, '아시아의 물개'라는 별명으로 불렸습니다.",
+          "hint": "1978년 방콕 아시안 게임에서는 접영 200m 동메달을 땄다.",
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "2003년에는 한강 700리 종주를 해낸 이 수영 선수",
+          "difWhy": "아시아의 물개 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "누구나 아는 선수 이름",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "S2-22",
-     "key": "b083",
-     "hint": "코를리외가 1914년 해군 장교들 앞에서 시제품을 시연할 때, 뒤에 초기 스쿠버 장비를 만든 이브 르 프리외르도 그 자리에 있었다.",
-     "guess": "오리발",
-     "confidence": "high",
-     "hit": true,
-     "answer": "오리발"
-    },
-    "hobby": "장비",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Swimfin"
-    ],
-    "facts": [
-     {
-      "claim": "프랭클린의 손에 끼는 팔레트 모양 나무판",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Swimfin",
-      "note": "Benjamin Franklin made a pair of early swimfins (for hands) when he was a young boy ... they were two thin pieces of wood, about the shape of an artist's palette"
-     },
-     {
-      "claim": "드 코를리외 프랑스 해군 장교, 1933 특허",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Swimfin",
-      "note": "Modern swimfins are an invention by the Frenchman Louis de Corlieu, capitaine de corvette ... in the French Navy. In April 1933 he registered a patent"
-     },
-     {
-      "claim": "오언 처칠 라이선스, 미 해군 UDT",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Swimfin",
-      "note": "The same year he issued a licence to Owen Churchill for mass production in the United States. ... Churchill presented his fins to the US Navy, which decided to acquire them for its Underwater Demolition Team (UDT)."
-     },
-     {
-      "claim": "swimfins 이름",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Swimfin",
-      "note": "Owen Churchill changed the French Corlieu's name (propulseurs) to \"swimfins\", which is still the common English name."
-     },
-     {
-      "claim": "같은 해 오언 처칠에게 미국 대량 생산 라이선스",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Swimfin",
-      "note": "The same year he issued a licence to Owen Churchill for mass production in the United States."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Swimfin"
-    ],
-    "hintNote": "In 1914 Corlieu made a practical demonstration of his first prototype for a group of navy officers, Yves le Prieur among them who, years later in 1926, invented an early model of scuba set.",
-    "easiestCue": "프랭클린이 어릴 적 만든 팔레트 모양 나무판 두 장이 이른 형태",
-    "targetWhy": "수상 장비의 발명사 — 수영·다이빙 애호가(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 장비의 뜻밖의 기원(프랭클린)",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "combat-athletics/4#g019a-S2-23",
-   "seed": {
-    "subject": "아티스틱 스위밍",
-    "aspect": null,
-    "ref": "S2-23",
-    "pairedWith": 2790
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 2790,
-    "question": "이 종목 선수들은 경기 때 머리를 쪽진 뒤 젤라틴을 발라 고정합니다. 기록에 남은 첫 대회는 1891년 독일 베를린에서 열렸고, 1917년 오스트레일리아의 아네트 켈러먼이 뉴욕 히포드롬 공연으로 널리 알린 이 수영 종목은?",
-    "answer": "아티스틱 스위밍",
-    "acceptedAnswers": [
-     "싱크로나이즈드 스위밍",
-     "수중발레"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 싱크로나이즈드 스위밍·수중발레 모두 아티스틱스위밍 문서로 넘겨주기 확인",
-    "explanation": "1984년 로스앤젤레스 대회에서 올림픽 정식 종목이 되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "머리를 쪽진 뒤 젤라틴을 발라 고정",
-     "difWhy": "젤라틴 머리 수중 종목 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 종목 기원",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "에스더 윌리엄스가 인기를 더한 이 수영 종목",
-     "difWhy": "수중 발레 종목 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "종목 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "이 종목 선수들은 경기 때 머리를 쪽진 뒤 젤라틴을 발라 고정합니다. 1917년 오스트레일리아의 아네트 켈러먼이 뉴욕 히포드롬 공연으로 널리 알렸고, 1940~50년대 할리우드 영화의 에스더 윌리엄스가 인기를 더한 이 수영 종목은?",
-     "beforeExplanation": null,
-     "removedCue": "1940~50년대 할리우드 영화의 에스더 윌리엄스가 인기를 더한",
-     "addedCue": "1891년 베를린 첫 대회",
-     "why": "영화로 널리 알려진 에스더 윌리엄스를 빼고 첫 대회 기록으로 바꿈"
-    },
-    "generalHint": "2000년부터 2020년까지 올림픽 이 종목 금메달 12개는 모두 러시아 선수들이 가져갔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "음악에 맞춰 물속과 물 위에서 연기하는 수영 종목",
-    "familiarity": {
-     "judge": 2,
-     "pct": 55,
-     "why": "싱크로나이즈드 스위밍의 새 이름이라 덜 익숙",
-     "piece": "f05",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "S2-23",
-     "key": "b124",
-     "hint": "2000년부터 2020년까지 올림픽 이 종목 금메달 12개는 모두 러시아 선수들이 가져갔다.",
-     "guess": "아티스틱 스위밍",
-     "confidence": "high",
-     "hit": true,
-     "answer": "아티스틱 스위밍"
-    },
-    "hobby": "장비",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Synchronised_swimming"
-    ],
-    "facts": [
-     {
-      "claim": "머리 쪽지고 젤라틴",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
-      "note": "While competing, hair is typically worn in a bun and gelatin is applied to keep the hair in place."
-     },
-     {
-      "claim": "1917 켈러먼 뉴욕 히포드롬",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
-      "note": "In 1917, Australian Annette Kellerman popularised the sport when she performed in a water ballet at the New York Hippodrome."
-     },
-     {
-      "claim": "1984부터 올림픽",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
-      "note": "Synchronised swimming has been part of the Summer Olympics program since 1984"
-     },
-     {
-      "claim": "기록에 남은 첫 대회 1891년 베를린",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Synchronised_swimming",
-      "note": "The first recorded synchronised swimming competition took place in 1891 in Berlin, Germany."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Artistic_swimming_at_the_Summer_Olympics"
-    ],
-    "hintNote": "from 2000 to 2020, Russian athletes competing as either Russia or under the Russian Olympic Committee flag won all twelve gold medals contested.",
-    "easiestCue": "머리를 쪽지고 젤라틴으로 고정하는 수영 종목",
-    "targetWhy": "젤라틴 머리·켈러먼·베를린 첫 대회는 수영 애호가 세부 — 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "머리 단장에서 여자 연기 종목을 짐작할 여지",
-    "pairCheck": "1회차 질문(음악에 맞춘 연기·2017 개명)·해설(거꾸로 서기)·힌트(2024 남자 출전)와 겹치지 않음 — 정의 문장 안 씀",
-    "dbCheck": "pair-or-different 2790 — (가) 2회차, 다른 지식",
-    "warn": [],
-    "first": {
-     "id": 2790,
-     "question": "음악에 맞춰 물속과 물 위에서 연기를 펼치는 종목으로, 2017년 싱크로나이즈드 스위밍에서 이름을 바꾼 것은?",
-     "explanation": "물속에서 거꾸로 선 채 오래 버티는 연기가 많습니다.",
-     "hint": "2024년 파리 올림픽부터 남자 선수도 팀 종목에 출전할 수 있게 되었다.",
-     "difficulty": 3
+    {
+      "seedId": "combat-athletics/4#g019a-S2-25",
+      "seed": {
+        "subject": "조정",
+        "aspect": null,
+        "ref": "S2-25",
+        "pairedWith": 2794
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 2794,
+        "question": "1896년 아테네 대회 일정에 있었지만 궂은 날씨로 취소되어 1900년 파리 대회에서 처음 열린 수상 종목입니다. 영국의 스티브 레드그레이브가 1984년부터 2000년까지 다섯 대회 연속 금메달을 딴 이 종목은 무엇일까요?",
+        "answer": "조정",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "여자 경기는 1976년 몬트리올 대회에서야 열리기 시작했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "스티브 레드그레이브가 … 다섯 대회 연속 금메달",
+          "difWhy": "레드그레이브 종목 — 스포츠 애호가",
+          "wor": 3,
+          "worWhy": "종목 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "스티브 레드그레이브가 … 다섯 대회 연속 금메달",
+          "difWhy": "레드그레이브 종목 — 스포츠 애호가",
+          "wor": 3,
+          "worWhy": "종목 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "매슈 핀슨트는 2000년 그와 같은 배를 타고 금메달을 땄고, 2004년까지 네 대회 연속 금메달을 이어 갔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "진행 방향을 등지고 노를 저어 배를 모는 경기",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "올림픽 종목으로 들어 봤으나 낯선 사람도 있음",
+          "piece": "f02",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "S2-25",
+          "key": "b293",
+          "hint": "매슈 핀슨트는 2000년 그와 같은 배를 타고 금메달을 땄고, 2004년까지 네 대회 연속 금메달을 이어 갔다.",
+          "guess": "스티브 레드그레이브",
+          "confidence": "high",
+          "hit": false,
+          "answer": "조정"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Rowing_at_the_Summer_Olympics",
+          "https://en.wikipedia.org/wiki/Steve_Redgrave"
+        ],
+        "facts": [
+          {
+            "claim": "1896 일정, 날씨로 취소, 1900 첫 경기",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Rowing_at_the_Summer_Olympics",
+            "note": "Rowing has been part of the Summer Olympics since its debut in the 1900 Games. Rowing was on the program at the 1896 Summer Olympics but was cancelled due to bad weather."
+          },
+          {
+            "claim": "레드그레이브 1984~2000 다섯 대회 연속 금",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Steve_Redgrave",
+            "note": "is a British retired rower who won gold medals at five consecutive Olympic Games from 1984 to 2000."
+          },
+          {
+            "claim": "여자 1976",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Rowing_at_the_Summer_Olympics",
+            "note": "Only men were allowed to compete until the women's events were introduced at the 1976 Summer Olympics in Montreal"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Matthew_Pinsent"
+        ],
+        "hintNote": "he won 10 world championship gold medals and four consecutive Olympic gold medals. ... In 2000 he won Olympic gold again as part of a coxless four with Redgrave",
+        "easiestCue": "영국의 스티브 레드그레이브가 1984년부터 2000년까지 다섯 대회 연속 금메달을 딴 이 종목",
+        "targetWhy": "1896 취소·레드그레이브 — 올림픽 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "이름은 아는 종목의 올림픽사 (요트도 1896 취소 — 레드그레이브로 가름)",
+        "pairCheck": "1회차 질문(등지고 앉아 노 젓기 정의)·해설과 겹치지 않음 — 정의 문장 안 씀",
+        "dbCheck": "pair-or-different 2794 — (가) 2회차, 다른 지식",
+        "warn": [
+          "단정어 처음"
+        ],
+        "first": {
+          "id": 2794,
+          "question": "진행 방향을 등지고 앉아 노를 저어 배를 모는 수상 경기는?",
+          "explanation": "앞을 보고 젓는 카누·카약과 구별됩니다.",
+          "hint": "영국 옥스퍼드와 케임브리지 대학이 해마다 템스강에서 벌이는 대항전으로 유명하다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "스티브 레드그레이브가 … 다섯 대회 연속 금메달",
+          "difWhy": "레드그레이브 종목 — 스포츠 애호가",
+          "wor": 3,
+          "worWhy": "종목 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "combat-athletics/4#g019a-S2-24",
-   "seed": {
-    "subject": "조오련",
-    "aspect": null,
-    "ref": "S2-24",
-    "pairedWith": 4832
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 4832,
-    "question": "배우 오지호의 수영 스승이기도 했던 이 선수는 평영과 배영을 뺀 모든 영법에서 한국 신기록 33개를 세웠습니다. 2003년에는 한강 700리 종주를 해낸 이 수영 선수는 누구일까요?",
-    "answer": "조오련",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "2021년 국립대전현충원 국가사회공헌자 묘역에 체육인으로는 여섯 번째로 안장되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "2003년에는 한강 700리 종주를 해낸 이 수영 선수",
-     "difWhy": "아시아의 물개 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "누구나 아는 선수 이름",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1982년 도버 해협을 헤엄쳐 건넜고",
-     "difWhy": "도버 해협 횡단 수영 선수 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 국민 선수 이름"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "배우 오지호의 수영 스승이기도 했던 이 선수는, 평영과 배영을 뺀 모든 영법에서 한국 신기록 33개를 세웠습니다. 1982년 도버 해협을 헤엄쳐 건넜고, 2008년에는 독도를 33바퀴 헤엄쳐 도는 계획을 해낸 이 선수는?",
-     "beforeExplanation": null,
-     "removedCue": "1982년 도버 해협 횡단 · 2008년 독도 33바퀴(1회차 질문과도 겹침)",
-     "addedCue": "2003년 한강 700리 종주",
-     "why": "관심층이 아는 도버 해협 횡단과 1회차 질문의 독도 33바퀴를 빼고 덜 알려진 한강 종주로"
-    },
-    "generalHint": "2006년 애니메이션 '아이스 에이지 2'에서 거북이 목소리를 맡았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "1970년대 아시안 게임을 휩쓴 한국 수영 선수",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "'아시아의 물개'로 알려진 수영 영웅",
-     "piece": "f06",
-     "genPct": 70
-    },
-    "blind": {
-     "ref": "S2-24",
-     "key": "b194",
-     "hint": "2006년 애니메이션 '아이스 에이지 2'에서 거북이 목소리를 맡았다.",
-     "guess": "조지 포먼",
-     "confidence": "low",
-     "hit": false,
-     "answer": "조오련"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8"
-    ],
-    "facts": [
-     {
-      "claim": "오지호의 스승, 평영·배영 뺀 모든 영법 33개 한국 신기록",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8",
-      "note": "또한 배우 오지호의 스승이기도 했던 조오련은 통산 자유형 14개, 개인혼영 12개, 접영 5개, 계영 2개 등 평영과 배영을 제외한 모든 영법에서 총 33개의 한국 신기록을 세웠다."
-     },
-     {
-      "claim": "2021 현충원 안장, 체육인 6번째",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8",
-      "note": "2021년 6월 10일 오후 2시 국립대전현충원 국가사회공헌자 묘역에 안장되었는데 ... 6번째로 국립 묘역에 안장된 것이다."
-     },
-     {
-      "claim": "2003년 한강 700리 종주",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8",
-      "note": "1980년에는 대한해협, 1982년에는 영국-프랑스 도버해협, 2002년에는 대한해협, 2003년에는 한강 700리 종주, 2005년에는 독도를 횡단했으며 2008년에는 독도 33바퀴 헤엄쳐 돌기 프로젝트를 성공시켰다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%98%A4%EB%A0%A8"
-    ],
-    "hintNote": "2006년 애니메이션 아이스 에이지 2 - 거북이 목소리",
-    "easiestCue": "배우 오지호의 수영 스승 · 평영·배영 뺀 영법 한국 신기록 33개",
-    "targetWhy": "선수 이력의 교과서·방송 밖 세부 — 수영 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "바다 횡단 단서에서 조오련을 떠올리는 사람이 많을 수 있음",
-    "pairCheck": "1회차 질문(해남·아시안 게임 400·1500)·해설(1980 대한해협·아시아의 물개)·힌트(1978 접영 동)와 겹치지 않음",
-    "dbCheck": "pair-or-different 4832 — (가) 2회차, 다른 지식",
-    "warn": [],
-    "first": {
-     "id": 4832,
-     "question": "전라남도 해남 출신의 이 수영 선수는 1970년과 1974년 아시안 게임에서 자유형 400m·1500m를 잇달아 우승했습니다. 2008년에는 독도 둘레를 33바퀴 헤엄쳐 도는 일도 해냈는데, 이 선수는 누구일까요?",
-     "explanation": "1980년 대한해협을 헤엄쳐 건넜고, '아시아의 물개'라는 별명으로 불렸습니다.",
-     "hint": "1978년 방콕 아시안 게임에서는 접영 200m 동메달을 땄다.",
-     "difficulty": 2
-    }
-   }
-  },
-  {
-   "seedId": "combat-athletics/4#g019a-S2-25",
-   "seed": {
-    "subject": "조정",
-    "aspect": null,
-    "ref": "S2-25",
-    "pairedWith": 2794
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 2794,
-    "question": "1896년 아테네 대회 일정에 있었지만 궂은 날씨로 취소되어 1900년 파리 대회에서 처음 열린 수상 종목입니다. 영국의 스티브 레드그레이브가 1984년부터 2000년까지 다섯 대회 연속 금메달을 딴 이 종목은 무엇일까요?",
-    "answer": "조정",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "여자 경기는 1976년 몬트리올 대회에서야 열리기 시작했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "스티브 레드그레이브가 … 다섯 대회 연속 금메달",
-     "difWhy": "레드그레이브 종목 — 스포츠 애호가",
-     "wor": 3,
-     "worWhy": "종목 이야깃거리",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "스티브 레드그레이브가 … 다섯 대회 연속 금메달",
-     "difWhy": "레드그레이브 종목 — 스포츠 애호가",
-     "wor": 3,
-     "worWhy": "종목 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "매슈 핀슨트는 2000년 그와 같은 배를 타고 금메달을 땄고, 2004년까지 네 대회 연속 금메달을 이어 갔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "진행 방향을 등지고 노를 저어 배를 모는 경기",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "올림픽 종목으로 들어 봤으나 낯선 사람도 있음",
-     "piece": "f02",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "S2-25",
-     "key": "b293",
-     "hint": "매슈 핀슨트는 2000년 그와 같은 배를 타고 금메달을 땄고, 2004년까지 네 대회 연속 금메달을 이어 갔다.",
-     "guess": "스티브 레드그레이브",
-     "confidence": "high",
-     "hit": false,
-     "answer": "조정"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Rowing_at_the_Summer_Olympics",
-     "https://en.wikipedia.org/wiki/Steve_Redgrave"
-    ],
-    "facts": [
-     {
-      "claim": "1896 일정, 날씨로 취소, 1900 첫 경기",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Rowing_at_the_Summer_Olympics",
-      "note": "Rowing has been part of the Summer Olympics since its debut in the 1900 Games. Rowing was on the program at the 1896 Summer Olympics but was cancelled due to bad weather."
-     },
-     {
-      "claim": "레드그레이브 1984~2000 다섯 대회 연속 금",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Steve_Redgrave",
-      "note": "is a British retired rower who won gold medals at five consecutive Olympic Games from 1984 to 2000."
-     },
-     {
-      "claim": "여자 1976",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Rowing_at_the_Summer_Olympics",
-      "note": "Only men were allowed to compete until the women's events were introduced at the 1976 Summer Olympics in Montreal"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Matthew_Pinsent"
-    ],
-    "hintNote": "he won 10 world championship gold medals and four consecutive Olympic gold medals. ... In 2000 he won Olympic gold again as part of a coxless four with Redgrave",
-    "easiestCue": "영국의 스티브 레드그레이브가 1984년부터 2000년까지 다섯 대회 연속 금메달을 딴 이 종목",
-    "targetWhy": "1896 취소·레드그레이브 — 올림픽 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "이름은 아는 종목의 올림픽사 (요트도 1896 취소 — 레드그레이브로 가름)",
-    "pairCheck": "1회차 질문(등지고 앉아 노 젓기 정의)·해설과 겹치지 않음 — 정의 문장 안 씀",
-    "dbCheck": "pair-or-different 2794 — (가) 2회차, 다른 지식",
-    "warn": [
-     "단정어 처음"
-    ],
-    "first": {
-     "id": 2794,
-     "question": "진행 방향을 등지고 앉아 노를 저어 배를 모는 수상 경기는?",
-     "explanation": "앞을 보고 젓는 카누·카약과 구별됩니다.",
-     "hint": "영국 옥스퍼드와 케임브리지 대학이 해마다 템스강에서 벌이는 대항전으로 유명하다.",
-     "difficulty": 3
-    }
-   }
-  }
- ]
+  ]
 }

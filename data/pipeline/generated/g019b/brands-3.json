@@ -1,345 +1,389 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "brands/3",
-  "midKey": "brands",
-  "subName": "상표가 된 상품명",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "brands/3#g019b-L2-10",
-   "seed": {
-    "subject": "크레파스",
-    "aspect": null,
-    "ref": "L2-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1925년 일본의 한 화구 회사가 세계에서 처음 내놓았다고 내세우는 그림 도구의 상품명으로, 일본에서는 지금도 등록 상표입니다. 나라 밖에서는 다른 갈래 이름으로 부르지만 한국에서는 표준국어대사전에 올라 그 도구를 가리키는 낱말이 된 이 이름은?",
-    "answer": "크레파스",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "국제적으로는 '오일 파스텔'이라 부르며, 이 상품을 만든 회사는 오늘날 '사쿠라 크레파스'입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "한국에서는 표준국어대사전에 올라 그 도구를 가리키는 낱말",
-     "difWhy": "사쿠라 크레파스 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 상표명 유래",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "한국에서는 표준국어대사전에 올라 그 도구를 가리키는 낱말",
-     "difWhy": "사쿠라 크레파스 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 상표명 유래"
-    },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "쉬운 단서를 빼면 묻는 대상이 흐려짐 — '한국에서 일반 명사가 된 상품명' 을 빼면 남는 단서는 1925년 일본 화구 회사 상품명 하나뿐이고, 나라 밖 이름(오일 파스텔)·회사 옛 이름(크레용 상회)은 정답 조각이 나와 쓸 수 없음"
-    },
-    "generalHint": "이 상품을 낸 회사의 창업자는 야마모토 가나에의 자유화 교육 운동에 영향을 받은 전직 교사였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "막대 모양의 기름 섞인 그림 도구",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "어릴 때 누구나 쓴 그림 도구",
-     "piece": "f05",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "L2-10",
-     "key": "b040",
-     "hint": "이 상품을 낸 회사의 창업자는 야마모토 가나에의 자유화 교육 운동에 영향을 받은 전직 교사였다.",
-     "guess": "크레파스",
-     "confidence": "high",
-     "hit": true,
-     "answer": "크레파스"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ja.wikipedia.org/wiki/サクラクレパス"
-    ],
-    "facts": [
-     {
-      "claim": "1925년 세계 첫 오일 파스텔로 발명",
-      "where": "q",
-      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
-      "note": "1925年に世界初のオイルパステル『クレパス（CRAY-PAS）』を発明。"
-     },
-     {
-      "claim": "일본에서 상표 등록",
-      "where": "q",
-      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
-      "note": "クレパスは日本において商標登録されている"
-     },
-     {
-      "claim": "국제적으로 오일 파스텔, 한국에서는 크레파스로 표준국어대사전 등재",
-      "where": "q",
-      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
-      "note": "ただし韓国ではクレパス（크레파스）と呼ばれており、標準国語大辞典に登録されている。"
-     },
-     {
-      "claim": "회사 이름 사쿠라 크레파스",
-      "where": "e",
-      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
-      "note": "株式会社サクラクレパス（文書題目）/ 日本クレイヨン商会 → 桜クレイヨン商会"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ja.wikipedia.org/wiki/サクラクレパス"
-    ],
-    "hintNote": "創業者の佐武は元成城学園教師で、山本鼎（創業後役員に招聘）の自由画教育運動に触れ、国産画材製造のため独立・創業。",
-    "easiestCue": "일본에서는 지금도 등록 상표이고 한국에서는 사전에 올라 일반 낱말이 되었다",
-    "targetWhy": "'크레용+파스텔' 이름 풀이·'오일 파스텔'을 질문에서 빼 이 낱말이 일본 상표라는 애호가 세부로만 — 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'한국에서 상표가 일반어가 된 그림 도구'로 크레파스를 떠올리는 추리 여지",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "brands/3",
+    "midKey": "brands",
+    "subName": "상표가 된 상품명",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "brands/3#g019b-L2-11",
-   "seed": {
-    "subject": "샤프",
-    "aspect": null,
-    "ref": "L2-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1912년 도쿄 혼조에 금속 공방을 연 하야카와 도쿠지는 '도쿠비조'라는 버클로 출발했습니다. 1923년 간토 대지진으로 주력 사업을 잃은 뒤 오사카로 옮겨 일본 첫 세대 라디오를 만든 이 회사는 어디일까요?",
-    "answer": "샤프",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "회사 이름은 1915년 내놓은 필기구 '에버 레디 샤프 펜슬'에서 땄고, 한국과 일본에서는 샤프펜슬을 줄인 이 말이 일반 명사처럼 쓰입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "하야카와 도쿠지가 버클로 출발해 일본 첫 세대 라디오를 만든 회사",
-     "difWhy": "창업 내력 — 가전 애호가",
-     "wor": 3,
-     "worWhy": "상표가 된 말 이야깃거리",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "brands/3#g019b-L2-10",
+      "seed": {
+        "subject": "크레파스",
+        "aspect": null,
+        "ref": "L2-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1925년 일본의 한 화구 회사가 세계에서 처음 내놓았다고 내세우는 그림 도구의 상품명으로, 일본에서는 지금도 등록 상표입니다. 나라 밖에서는 다른 갈래 이름으로 부르지만 한국에서는 표준국어대사전에 올라 그 도구를 가리키는 낱말이 된 이 이름은?",
+        "answer": "크레파스",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "국제적으로는 '오일 파스텔'이라 부르며, 이 상품을 만든 회사는 오늘날 '사쿠라 크레파스'입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "한국에서는 표준국어대사전에 올라 그 도구를 가리키는 낱말",
+          "difWhy": "사쿠라 크레파스 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 상표명 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "한국에서는 표준국어대사전에 올라 그 도구를 가리키는 낱말",
+          "difWhy": "사쿠라 크레파스 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 상표명 유래"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "쉬운 단서를 빼면 묻는 대상이 흐려짐 — '한국에서 일반 명사가 된 상품명' 을 빼면 남는 단서는 1925년 일본 화구 회사 상품명 하나뿐이고, 나라 밖 이름(오일 파스텔)·회사 옛 이름(크레용 상회)은 정답 조각이 나와 쓸 수 없음"
+        },
+        "generalHint": "이 상품을 낸 회사의 창업자는 야마모토 가나에의 자유화 교육 운동에 영향을 받은 전직 교사였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "막대 모양의 기름 섞인 그림 도구",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "어릴 때 누구나 쓴 그림 도구",
+          "piece": "f05",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "L2-10",
+          "key": "b040",
+          "hint": "이 상품을 낸 회사의 창업자는 야마모토 가나에의 자유화 교육 운동에 영향을 받은 전직 교사였다.",
+          "guess": "크레파스",
+          "confidence": "high",
+          "hit": true,
+          "answer": "크레파스"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ja.wikipedia.org/wiki/サクラクレパス"
+        ],
+        "facts": [
+          {
+            "claim": "1925년 세계 첫 오일 파스텔로 발명",
+            "where": "q",
+            "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+            "note": "1925年に世界初のオイルパステル『クレパス（CRAY-PAS）』を発明。"
+          },
+          {
+            "claim": "일본에서 상표 등록",
+            "where": "q",
+            "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+            "note": "クレパスは日本において商標登録されている"
+          },
+          {
+            "claim": "국제적으로 오일 파스텔, 한국에서는 크레파스로 표준국어대사전 등재",
+            "where": "q",
+            "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+            "note": "ただし韓国ではクレパス（크레파스）と呼ばれており、標準国語大辞典に登録されている。"
+          },
+          {
+            "claim": "회사 이름 사쿠라 크레파스",
+            "where": "e",
+            "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+            "note": "株式会社サクラクレパス（文書題目）/ 日本クレイヨン商会 → 桜クレイヨン商会"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ja.wikipedia.org/wiki/サクラクレパス"
+        ],
+        "hintNote": "創業者の佐武は元成城学園教師で、山本鼎（創業後役員に招聘）の自由画教育運動に触れ、国産画材製造のため独立・創業。",
+        "easiestCue": "일본에서는 지금도 등록 상표이고 한국에서는 사전에 올라 일반 낱말이 되었다",
+        "targetWhy": "'크레용+파스텔' 이름 풀이·'오일 파스텔'을 질문에서 빼 이 낱말이 일본 상표라는 애호가 세부로만 — 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'한국에서 상표가 일반어가 된 그림 도구'로 크레파스를 떠올리는 추리 여지",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "한국에서는 표준국어대사전에 올라 그 도구를 가리키는 낱말",
+          "difWhy": "사쿠라 크레파스 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 상표명 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1915년 한 필기구로 크게 성공했고, 그 상품명에서 회사 이름",
-     "difWhy": "샤프펜슬→샤프 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 상표명 유래"
+    {
+      "seedId": "brands/3#g019b-L2-11",
+      "seed": {
+        "subject": "샤프",
+        "aspect": null,
+        "ref": "L2-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1912년 도쿄 혼조에 금속 공방을 연 하야카와 도쿠지는 '도쿠비조'라는 버클로 출발했습니다. 1923년 간토 대지진으로 주력 사업을 잃은 뒤 오사카로 옮겨 일본 첫 세대 라디오를 만든 이 회사는 어디일까요?",
+        "answer": "샤프",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "회사 이름은 1915년 내놓은 필기구 '에버 레디 샤프 펜슬'에서 땄고, 한국과 일본에서는 샤프펜슬을 줄인 이 말이 일반 명사처럼 쓰입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "하야카와 도쿠지가 버클로 출발해 일본 첫 세대 라디오를 만든 회사",
+          "difWhy": "창업 내력 — 가전 애호가",
+          "wor": 3,
+          "worWhy": "상표가 된 말 이야깃거리",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1915년 한 필기구로 크게 성공했고, 그 상품명에서 회사 이름",
+          "difWhy": "샤프펜슬→샤프 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 상표명 유래"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1912년 도쿄 혼조에 금속 공방을 연 하야카와 도쿠지는 '도쿠비조'라는 버클로 출발해 1915년 한 필기구로 크게 성공했고, 그 상품명에서 회사 이름을 땄습니다. 1923년 간토 대지진으로 그 사업을 잃고 오사카에서 라디오를 만든 이 회사는?",
+          "beforeExplanation": "그 필기구는 '에버 레디 샤프 펜슬'이었고, 한국과 일본에서는 샤프펜슬을 줄여 부르는 이 말이 일반 명사처럼 쓰입니다.",
+          "removedCue": "1915년 한 필기구로 크게 성공했고, 그 상품명에서 회사 이름",
+          "addedCue": "(뺌만 — 남은 단서: 도쿠비조 버클 · 간토 대지진 뒤 오사카 라디오)",
+          "why": "상품명=회사명 단서를 해설로 옮김"
+        },
+        "generalHint": "1964년 이 회사는 세계 최초의 트랜지스터 전자계산기를 내놓았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "일본 오사카의 전자 회사이자 심을 밀어 쓰는 연필의 통칭",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "샤프펜슬로 누구나 앎",
+          "piece": "f04",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "L2-11",
+          "key": "b001",
+          "hint": "2016년부터 대만의 훙하이 정밀공업(폭스콘)이 이 회사 지분의 과반을 가지고 있다.",
+          "guess": "샤프",
+          "confidence": "high",
+          "hit": true,
+          "answer": "샤프"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Sharp_Corporation",
+          "https://ko.wikipedia.org/wiki/샤프펜슬"
+        ],
+        "facts": [
+          {
+            "claim": "1912년 도쿄 혼조 금속 공방",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
+            "note": "Hayakawa founded a metal workshop in Honjo, Tokyo. (founded 15 September 1912)"
+          },
+          {
+            "claim": "첫 발명품 도쿠비조 버클",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
+            "note": "the first of Hayakawa's inventions was a snap buckle named 'Tokubijo.'"
+          },
+          {
+            "claim": "1915년 에버 레디 샤프 펜슬, 회사 이름의 출처",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
+            "note": "Ever-Ready Sharp mechanical pencil, introduced in 1915 ... the Sharp Corporation derived its name from it"
+          },
+          {
+            "claim": "1923년 간토 대지진으로 연필 사업을 잃고 오사카로, 라디오",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
+            "note": "the 1923 earthquake destroyed the pencil business ... move to Osaka, where it began designing Japan's first generation of radio sets"
+          },
+          {
+            "claim": "한국·일본에서 줄임말이 일반 명사",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/샤프펜슬",
+            "note": "한국에서는 샤프펜슬을 줄여 '샤프'라고 부르며 ... 두 나라에서 일반명사가 되었다 / '에버 레디 샤프 펜슬'은 전자기업인 샤프 사명의 어원이다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Sharp_Corporation"
+        ],
+        "easiestCue": "1923년 간토 대지진으로 주력 사업을 잃은 뒤 오사카로 옮겨 일본 첫 세대 라디오",
+        "targetWhy": "창업자 버클 · 대지진 뒤 업종 전환 — 전자 기업사 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "매일 쓰는 낱말이 회사 이름과 이어진 연결",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "하야카와 도쿠지가 버클로 출발해 일본 첫 세대 라디오를 만든 회사",
+          "difWhy": "창업 내력 — 가전 애호가",
+          "wor": 3,
+          "worWhy": "상표가 된 말 이야깃거리",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1912년 도쿄 혼조에 금속 공방을 연 하야카와 도쿠지는 '도쿠비조'라는 버클로 출발해 1915년 한 필기구로 크게 성공했고, 그 상품명에서 회사 이름을 땄습니다. 1923년 간토 대지진으로 그 사업을 잃고 오사카에서 라디오를 만든 이 회사는?",
-     "beforeExplanation": "그 필기구는 '에버 레디 샤프 펜슬'이었고, 한국과 일본에서는 샤프펜슬을 줄여 부르는 이 말이 일반 명사처럼 쓰입니다.",
-     "removedCue": "1915년 한 필기구로 크게 성공했고, 그 상품명에서 회사 이름",
-     "addedCue": "(뺌만 — 남은 단서: 도쿠비조 버클 · 간토 대지진 뒤 오사카 라디오)",
-     "why": "상품명=회사명 단서를 해설로 옮김"
-    },
-    "generalHint": "2016년부터 대만의 훙하이 정밀공업(폭스콘)이 이 회사 지분의 과반을 가지고 있다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "일본 오사카의 전자 회사이자 심을 밀어 쓰는 연필의 통칭",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "샤프펜슬로 누구나 앎",
-     "piece": "f04",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "L2-11",
-     "key": "b001",
-     "hint": "2016년부터 대만의 훙하이 정밀공업(폭스콘)이 이 회사 지분의 과반을 가지고 있다.",
-     "guess": "샤프",
-     "confidence": "high",
-     "hit": true,
-     "answer": "샤프"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Sharp_Corporation",
-     "https://ko.wikipedia.org/wiki/샤프펜슬"
-    ],
-    "facts": [
-     {
-      "claim": "1912년 도쿄 혼조 금속 공방",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
-      "note": "Hayakawa founded a metal workshop in Honjo, Tokyo. (founded 15 September 1912)"
-     },
-     {
-      "claim": "첫 발명품 도쿠비조 버클",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
-      "note": "the first of Hayakawa's inventions was a snap buckle named 'Tokubijo.'"
-     },
-     {
-      "claim": "1915년 에버 레디 샤프 펜슬, 회사 이름의 출처",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
-      "note": "Ever-Ready Sharp mechanical pencil, introduced in 1915 ... the Sharp Corporation derived its name from it"
-     },
-     {
-      "claim": "1923년 간토 대지진으로 연필 사업을 잃고 오사카로, 라디오",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Sharp_Corporation",
-      "note": "the 1923 earthquake destroyed the pencil business ... move to Osaka, where it began designing Japan's first generation of radio sets"
-     },
-     {
-      "claim": "한국·일본에서 줄임말이 일반 명사",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/샤프펜슬",
-      "note": "한국에서는 샤프펜슬을 줄여 '샤프'라고 부르며 ... 두 나라에서 일반명사가 되었다 / '에버 레디 샤프 펜슬'은 전자기업인 샤프 사명의 어원이다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Sharp_Corporation"
-    ],
-    "hintNote": "Since 2016, it is majority owned by the Taiwan-based manufacturer Hon Hai Precision Industry Co., Ltd., better known as Foxconn.",
-    "easiestCue": "1923년 간토 대지진으로 주력 사업을 잃은 뒤 오사카로 옮겨 일본 첫 세대 라디오",
-    "targetWhy": "창업자 버클 · 대지진 뒤 업종 전환 — 전자 기업사 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "매일 쓰는 낱말이 회사 이름과 이어진 연결",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "brands/3#g019b-L2-12",
-   "seed": {
-    "subject": "헤로인",
-    "aspect": null,
-    "ref": "L2-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1897년 8월 21일 바이엘의 화학자 펠릭스 호프만이 합성한 물질을, 바이엘은 1898년부터 1910년까지 기침을 멎게 하는 약으로 내세워 한 상표 이름으로 팔았습니다. 이 상표 이름은 무엇일까요?",
-    "answer": "헤로인",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "호프만은 이 물질을 아스피린을 합성한 지 열하루 만에 만들었고, 상표 이름은 '강한·영웅적'이라는 뜻의 독일어에서 왔다고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "바이엘이 1898년부터 기침약으로 내세워 판 상표 이름",
-     "difWhy": "마약의 기침약 시절 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "놀라운 상표 유래 이야깃거리",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "오늘날 마약으로 금지된 이 물질의 옛 상표 이름",
-     "difWhy": "바이엘 헤로인 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 상표명 유래"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1897년 8월 21일 바이엘의 화학자 펠릭스 호프만이 합성한 물질을, 바이엘은 1898년부터 1910년까지 기침을 멎게 하는 약으로 내세워 이 상표 이름으로 팔았습니다. 오늘날 마약으로 금지된 이 물질의 옛 상표 이름은?",
-     "beforeExplanation": "호프만은 이 물질을 아스피린을 합성한 지 열하루 만에 만들었고, 바이엘은 1919년 베르사유 조약으로 두 상표의 일부 권리를 잃었습니다.",
-     "removedCue": "오늘날 마약으로 금지된 이 물질(관심층)",
-     "addedCue": "없음(쉬운 단서만 뺌 — 합성일·기침약 판매가 남음)",
-     "why": "'마약'은 정답으로 바로 이어져 뺌 · 기침약·1910년으로 아스피린과 가름"
-    },
-    "generalHint": "상사 하인리히 드레저가 호프만에게 모르핀을 아세틸화하라고 시켜 나온 물질이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "모르핀에서 만든 강한 마약성 물질",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "마약 뉴스·영화로 익숙",
-     "piece": "f09",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "L2-12",
-     "key": "b029",
-     "hint": "상사 하인리히 드레저가 호프만에게 모르핀을 아세틸화하라고 시켜 나온 물질이다.",
-     "guess": "헤로인",
-     "confidence": "high",
-     "hit": true,
-     "answer": "헤로인"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Heroin"
-    ],
-    "facts": [
-     {
-      "claim": "1897년 8월 21일 호프만 합성",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Heroin",
-      "note": "Hoffmann synthesized heroin on 21 August 1897, just eleven days after he had synthesized aspirin."
-     },
-     {
-      "claim": "1898~1910년 상표 이름으로 판매, 기침약",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Heroin",
-      "note": "From 1898 through to 1910, diamorphine was marketed under the trademark name Heroin ... developed chiefly as a morphine substitute for cough suppressants."
-     },
-     {
-      "claim": "연구 책임자가 '강한·영웅적'이라는 독일어에서 이름",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Heroin",
-      "note": "The head of Bayer's research department reportedly chose the name 'heroin,' which came from a German word meaning strong or heroic."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Heroin"
-    ],
-    "hintNote": "his supervisor Heinrich Dreser instructed him to acetylate morphine with the objective of producing codeine",
-    "easiestCue": "바이엘이 1898~1910년 기침약으로 판 상표",
-    "targetWhy": "호프만의 합성일·기침약 판매 시기는 약학사 애호가 세부 (경계 3 — 바이엘 헤로인 일화를 아는 관심층)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'바이엘의 헤로인'을 잡학으로 아는 관심층이 있을 수 있음 · '영웅' 뜻이 이름(hero)과 이어져 추리 단서가 됨",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "brands/3#g019b-L2-12",
+      "seed": {
+        "subject": "헤로인",
+        "aspect": null,
+        "ref": "L2-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1897년 8월 21일 바이엘의 화학자 펠릭스 호프만이 합성한 물질을, 바이엘은 1898년부터 1910년까지 기침을 멎게 하는 약으로 내세워 한 상표 이름으로 팔았습니다. 이 상표 이름은 무엇일까요?",
+        "answer": "헤로인",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "호프만은 이 물질을 아스피린을 합성한 지 열하루 만에 만들었고, 상표 이름은 '강한·영웅적'이라는 뜻의 독일어에서 왔다고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "바이엘이 1898년부터 기침약으로 내세워 판 상표 이름",
+          "difWhy": "마약의 기침약 시절 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "놀라운 상표 유래 이야깃거리",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "오늘날 마약으로 금지된 이 물질의 옛 상표 이름",
+          "difWhy": "바이엘 헤로인 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 상표명 유래"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1897년 8월 21일 바이엘의 화학자 펠릭스 호프만이 합성한 물질을, 바이엘은 1898년부터 1910년까지 기침을 멎게 하는 약으로 내세워 이 상표 이름으로 팔았습니다. 오늘날 마약으로 금지된 이 물질의 옛 상표 이름은?",
+          "beforeExplanation": "호프만은 이 물질을 아스피린을 합성한 지 열하루 만에 만들었고, 바이엘은 1919년 베르사유 조약으로 두 상표의 일부 권리를 잃었습니다.",
+          "removedCue": "오늘날 마약으로 금지된 이 물질(관심층)",
+          "addedCue": "없음(쉬운 단서만 뺌 — 합성일·기침약 판매가 남음)",
+          "why": "'마약'은 정답으로 바로 이어져 뺌 · 기침약·1910년으로 아스피린과 가름"
+        },
+        "generalHint": "상사 하인리히 드레저가 호프만에게 모르핀을 아세틸화하라고 시켜 나온 물질이다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "모르핀에서 만든 강한 마약성 물질",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "마약 뉴스·영화로 익숙",
+          "piece": "f09",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "L2-12",
+          "key": "b029",
+          "hint": "상사 하인리히 드레저가 호프만에게 모르핀을 아세틸화하라고 시켜 나온 물질이다.",
+          "guess": "헤로인",
+          "confidence": "high",
+          "hit": true,
+          "answer": "헤로인"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Heroin"
+        ],
+        "facts": [
+          {
+            "claim": "1897년 8월 21일 호프만 합성",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Heroin",
+            "note": "Hoffmann synthesized heroin on 21 August 1897, just eleven days after he had synthesized aspirin."
+          },
+          {
+            "claim": "1898~1910년 상표 이름으로 판매, 기침약",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Heroin",
+            "note": "From 1898 through to 1910, diamorphine was marketed under the trademark name Heroin ... developed chiefly as a morphine substitute for cough suppressants."
+          },
+          {
+            "claim": "연구 책임자가 '강한·영웅적'이라는 독일어에서 이름",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Heroin",
+            "note": "The head of Bayer's research department reportedly chose the name 'heroin,' which came from a German word meaning strong or heroic."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Heroin"
+        ],
+        "hintNote": "his supervisor Heinrich Dreser instructed him to acetylate morphine with the objective of producing codeine",
+        "easiestCue": "바이엘이 1898~1910년 기침약으로 판 상표",
+        "targetWhy": "호프만의 합성일·기침약 판매 시기는 약학사 애호가 세부 (경계 3 — 바이엘 헤로인 일화를 아는 관심층)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'바이엘의 헤로인'을 잡학으로 아는 관심층이 있을 수 있음 · '영웅' 뜻이 이름(hero)과 이어져 추리 단서가 됨",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "바이엘이 1898년부터 기침약으로 내세워 판 상표 이름",
+          "difWhy": "마약의 기침약 시절 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "놀라운 상표 유래 이야깃거리",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

@@ -1,461 +1,518 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "combat-athletics/2",
-  "midKey": "combat-athletics",
-  "subName": "태권도·유도·씨름",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "combat-athletics/2#g019a-S2-17",
-   "seed": {
-    "subject": "스모",
-    "aspect": null,
-    "ref": "S2-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1909년 도쿄의 절 에코인 경내에 이 경기를 위한 실내 경기장이 문을 열었습니다. 도쿄역을 설계한 다쓰노 긴고 등이 맡은 이 건물은 큰 지붕 때문에 '큰 쇠우산'이라 불렸는데, 이 경기는 무엇일까요?",
-    "answer": "스모",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이 경기장은 1944년 군에 징발되어 풍선 폭탄 공장이 되기도 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "도쿄의 절 에코인 경내 … 이 경기를 위한 실내 경기장",
-     "difWhy": "료고쿠 국기관 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 경기장 역사",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "도쿄 료고쿠 … 이 경기를 위한 실내 경기장",
-     "difWhy": "료고쿠 국기관 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "경기장 내력 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1909년 도쿄 료고쿠의 절 에코인 경내에 이 경기를 위한 실내 경기장이 문을 열었습니다. 도쿄역을 설계한 다쓰노 긴고 등이 맡은 이 건물은 큰 지붕 때문에 '큰 쇠우산'이라 불렸는데, 이 경기는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "료고쿠(그 경기의 대명사인 지명)",
-     "addedCue": "(새 단서 없음 — 지명을 감춤)",
-     "why": "료고쿠(국기관으로 바로 이어짐)를 빼서 건물 세부로만"
-    },
-    "generalHint": "1952년 9월 대회 전까지는 모래판 위 지붕을 기둥이 받쳤으나, 관객 시야를 가리지 않게 기둥을 없애고 줄로 매달았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "둥근 모래판에서 겨루는 일본 전통 씨름",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "일본 전통 씨름으로 널리 앎",
-     "piece": "f07",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "S2-17",
-     "key": "b203",
-     "hint": "1952년 9월 대회 전까지는 모래판 위 지붕을 기둥이 받쳤으나, 관객 시야를 가리지 않게 기둥을 없애고 줄로 매달았다.",
-     "guess": "스모",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "스모"
-    },
-    "hobby": "구단 역사",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan"
-    ],
-    "facts": [
-     {
-      "claim": "1909 에코인 경내 료고쿠 고쿠기칸 개관",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
-      "note": "The first Ryōgoku Kokugikan opened its doors in 1909 and was located on the premises of the Ekōin temple in Ryōgoku, Tokyo."
-     },
-     {
-      "claim": "실내 스모 시설",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
-      "note": "In March 1906, the 22nd Imperial Diet decided to build an indoor sumo facility within the precincts of the Ekōin temple in Ryōgoku."
-     },
-     {
-      "claim": "다쓰노 긴고·가사이 만지, 도쿄역",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
-      "note": "The task was given to two of the most predominant architects in Japan at the time, Tatsuno Kingo and Kasai Manji (mostly known for the Bank of Japan, the Hamadera Park Station or the Tokyo Station)."
-     },
-     {
-      "claim": "큰 쇠우산 별명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
-      "note": "the arena was quickly nicknamed \"big iron umbrella\" (大鉄傘, Daitetsusan) because of the large roof resembling a huge umbrella."
-     },
-     {
-      "claim": "1944 군 징발 풍선 폭탄 공장",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
-      "note": "In February 1944, the Kokugikan was requisitioned by the military and turned into a balloon bomb factory."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Dohy%C5%8D"
-    ],
-    "hintNote": "Prior to the September 1952 tournament, the tsuriyane had been supported by columns, but they were removed to allow fans an uninterrupted view of the dohyō.",
-    "easiestCue": "도쿄의 절 에코인 경내에 이 경기를 위한 실내 경기장",
-    "targetWhy": "경기장 역사 세부 — 격투기 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "일본 전통 경기라는 점에서 짐작할 여지",
-    "pairCheck": null,
-    "dbCheck": "new (관련 4824 요코즈나·5286 상투 — 다른 정답)",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "combat-athletics/2",
+    "midKey": "combat-athletics",
+    "subName": "태권도·유도·씨름",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "combat-athletics/2#g019a-S2-18",
-   "seed": {
-    "subject": "태권도",
-    "aspect": null,
-    "ref": "S2-18",
-    "pairedWith": 482
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 482,
-    "question": "2008년 베이징 대회 이 종목 남자 80kg 초과급 동메달 결정전에서 쿠바의 앙헬 마토스는 발을 다친 뒤 1분의 치료 시간 안에 경기장 가운데로 돌아오지 않아 기권 처리되었습니다. 2000년 시드니 대회 80kg급 금메달리스트였던 그가 겨룬 이 종목은?",
-    "answer": "태권도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "판정에 화가 난 마토스는 스웨덴 심판의 얼굴을 발로 차, 세계 연맹에서 영구 출전 정지를 받았고 IOC도 이를 인정했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "엮음: 80kg 초과급 + 2000년 시드니 대회 80kg급 금메달",
-     "difWhy": "체급으로 종목 추리 — 올림픽 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 기권 사건",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "combat-athletics/2#g019a-S2-17",
+      "seed": {
+        "subject": "스모",
+        "aspect": null,
+        "ref": "S2-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1909년 도쿄의 절 에코인 경내에 이 경기를 위한 실내 경기장이 문을 열었습니다. 도쿄역을 설계한 다쓰노 긴고 등이 맡은 이 건물은 큰 지붕 때문에 '큰 쇠우산'이라 불렸는데, 이 경기는 무엇일까요?",
+        "answer": "스모",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이 경기장은 1944년 군에 징발되어 풍선 폭탄 공장이 되기도 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "도쿄의 절 에코인 경내 … 이 경기를 위한 실내 경기장",
+          "difWhy": "료고쿠 국기관 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 경기장 역사",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "도쿄 료고쿠 … 이 경기를 위한 실내 경기장",
+          "difWhy": "료고쿠 국기관 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "경기장 내력 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1909년 도쿄 료고쿠의 절 에코인 경내에 이 경기를 위한 실내 경기장이 문을 열었습니다. 도쿄역을 설계한 다쓰노 긴고 등이 맡은 이 건물은 큰 지붕 때문에 '큰 쇠우산'이라 불렸는데, 이 경기는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "료고쿠(그 경기의 대명사인 지명)",
+          "addedCue": "(새 단서 없음 — 지명을 감춤)",
+          "why": "료고쿠(국기관으로 바로 이어짐)를 빼서 건물 세부로만"
+        },
+        "generalHint": "1917년 불이 나 이 건물의 큰 지붕이 무너졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "둥근 모래판에서 겨루는 일본 전통 씨름",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "일본 전통 씨름으로 널리 앎",
+          "piece": "f07",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "S2-17",
+          "key": "b203",
+          "hint": "1952년 9월 대회 전까지는 모래판 위 지붕을 기둥이 받쳤으나, 관객 시야를 가리지 않게 기둥을 없애고 줄로 매달았다.",
+          "guess": "스모",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "스모"
+        },
+        "hobby": "구단 역사",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan"
+        ],
+        "facts": [
+          {
+            "claim": "1909 에코인 경내 료고쿠 고쿠기칸 개관",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
+            "note": "The first Ryōgoku Kokugikan opened its doors in 1909 and was located on the premises of the Ekōin temple in Ryōgoku, Tokyo."
+          },
+          {
+            "claim": "실내 스모 시설",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
+            "note": "In March 1906, the 22nd Imperial Diet decided to build an indoor sumo facility within the precincts of the Ekōin temple in Ryōgoku."
+          },
+          {
+            "claim": "다쓰노 긴고·가사이 만지, 도쿄역",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
+            "note": "The task was given to two of the most predominant architects in Japan at the time, Tatsuno Kingo and Kasai Manji (mostly known for the Bank of Japan, the Hamadera Park Station or the Tokyo Station)."
+          },
+          {
+            "claim": "큰 쇠우산 별명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
+            "note": "the arena was quickly nicknamed \"big iron umbrella\" (大鉄傘, Daitetsusan) because of the large roof resembling a huge umbrella."
+          },
+          {
+            "claim": "1944 군 징발 풍선 폭탄 공장",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ryōgoku_Kokugikan",
+            "note": "In February 1944, the Kokugikan was requisitioned by the military and turned into a balloon bomb factory."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "도쿄의 절 에코인 경내에 이 경기를 위한 실내 경기장",
+        "targetWhy": "경기장 역사 세부 — 격투기 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "일본 전통 경기라는 점에서 짐작할 여지",
+        "pairCheck": null,
+        "dbCheck": "new (관련 4824 요코즈나·5286 상투 — 다른 정답)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "도쿄의 절 에코인 경내 … 이 경기를 위한 실내 경기장",
+          "difWhy": "료고쿠 국기관 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 경기장 역사",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "베이징 대회 이 종목 동메달 결정전에서 실격되자 … 심판을 폭행",
-     "difWhy": "베이징 심판 폭행 종목 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "올림픽 사건 이야깃거리"
+    {
+      "seedId": "combat-athletics/2#g019a-S2-18",
+      "seed": {
+        "subject": "태권도",
+        "aspect": null,
+        "ref": "S2-18",
+        "pairedWith": 482
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 482,
+        "question": "2008년 베이징 대회 이 종목 남자 80kg 초과급 동메달 결정전에서 쿠바의 앙헬 마토스는 발을 다친 뒤 1분의 치료 시간 안에 경기장 가운데로 돌아오지 않아 기권 처리되었습니다. 2000년 시드니 대회 80kg급 금메달리스트였던 그가 겨룬 이 종목은?",
+        "answer": "태권도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "판정에 화가 난 마토스는 스웨덴 심판의 얼굴을 발로 차, 세계 연맹에서 영구 출전 정지를 받았고 IOC도 이를 인정했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 80kg 초과급 + 2000년 시드니 대회 80kg급 금메달",
+          "difWhy": "체급으로 종목 추리 — 올림픽 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기권 사건",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "베이징 대회 이 종목 동메달 결정전에서 실격되자 … 심판을 폭행",
+          "difWhy": "베이징 심판 폭행 종목 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "올림픽 사건 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2007년 팬아메리칸 게임 금메달리스트인 쿠바의 앙헬 마토스는 2008년 베이징 대회 이 종목 동메달 결정전에서 실격되자 스웨덴 심판을 폭행했습니다. 이 일로 세계 연맹에서 영구 출전 정지를 받고 IOC도 이를 인정한 이 종목은?",
+          "beforeExplanation": "마토스는 2000년 시드니 대회에서 이 종목 80kg급 금메달을 딴 선수였습니다.",
+          "removedCue": "동메달 결정전에서 실격되자 심판 폭행 · 영구 출전 정지",
+          "addedCue": "80kg 초과급 · 1분 치료 시간 규칙으로 기권 처리된 경위",
+          "why": "뉴스로 알려진 심판 폭행을 해설로 옮기고 판정 경위(치료 시간 규칙)로"
+        },
+        "generalHint": "2012년 런던 대회부터 이 종목에 전자 채점 장치와 즉석 비디오 판독이 들어왔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한국에서 시작된 발차기 중심의 무도",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "국기 무도",
+          "piece": "f04",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "S2-18",
+          "key": "b118",
+          "hint": "2012년 런던 대회부터 이 종목에 전자 채점 장치와 즉석 비디오 판독이 들어왔다.",
+          "guess": "태권도",
+          "confidence": "high",
+          "hit": true,
+          "answer": "태권도"
+        },
+        "hobby": "규칙",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ángel_Matos",
+          "https://en.wikipedia.org/wiki/%C3%81ngel_Matos"
+        ],
+        "facts": [
+          {
+            "claim": "2008 동메달 결정전 실격 뒤 스웨덴 심판 가격, 영구 정지, IOC 승인",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ángel_Matos",
+            "note": "The World Taekwondo Federation banned Matos and his coach for life following an incident at the 2008 Summer Olympics where Matos kicked the Swedish referee Chakir Chelbat in the face, after being disqualified in the bronze medal match. The decision was later ratified by the IOC."
+          },
+          {
+            "claim": "2000 시드니 80kg 금",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ángel_Matos",
+            "note": "At the 2000 Summer Olympics, Matos was gold medalist in the men's middleweight (80 kg) class."
+          },
+          {
+            "claim": "2008 80kg 초과급 동메달 결정전 · 발 부상 · 1분 치료 시간 경과로 기권 처리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/%C3%81ngel_Matos",
+            "note": "In the bronze medal match in the men's 80+ kg class at the 2008 Summer Olympics ... After he incurred a foot injury ... he took a Kyeshi (\"suspend\", medical timeout). Under World Taekwondo Federation tournament rules, players sustaining injury are allowed one minute of Kyeshi time, at the end of which the competitor in question must return to the center of the ring ... Kyeshi elapsed without Matos returning to the center. The referee ... ruled he had retired."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Taekwondo_at_the_2012_Summer_Olympics"
+        ],
+        "hintNote": "the World Taekwondo Federation introduced new electronic scoring system and instant video replays in anticipation to make the competition more transparent and fair.",
+        "easiestCue": "1분의 치료 시간 안에 경기장 가운데로 돌아오지 않아 기권 처리",
+        "targetWhy": "부상 치료 시간 1분 규칙과 마토스 경위는 올림픽 애호가 세부 — 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 종목의 올림픽 사건",
+        "pairCheck": "1회차 질문(1988·92 시범, 2000 정식)·해설(유도 다음 아시아 종목)과 겹치지 않음 — 질문에 2000 시드니 없음",
+        "dbCheck": "pair-or-different 482 — (가) 2회차, 다른 지식",
+        "warn": [],
+        "first": {
+          "id": 482,
+          "question": "1988년과 1992년 대회에서 시범 종목으로 치러진 뒤, 2000년 시드니 대회부터 올림픽 정식 종목이 된 한국의 무예는?",
+          "explanation": "유도에 이어 아시아에서 나온 두 번째 올림픽 정식 종목입니다.",
+          "hint": null,
+          "difficulty": 2
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 80kg 초과급 + 2000년 시드니 대회 80kg급 금메달",
+          "difWhy": "체급으로 종목 추리 — 올림픽 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 기권 사건",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "2007년 팬아메리칸 게임 금메달리스트인 쿠바의 앙헬 마토스는 2008년 베이징 대회 이 종목 동메달 결정전에서 실격되자 스웨덴 심판을 폭행했습니다. 이 일로 세계 연맹에서 영구 출전 정지를 받고 IOC도 이를 인정한 이 종목은?",
-     "beforeExplanation": "마토스는 2000년 시드니 대회에서 이 종목 80kg급 금메달을 딴 선수였습니다.",
-     "removedCue": "동메달 결정전에서 실격되자 심판 폭행 · 영구 출전 정지",
-     "addedCue": "80kg 초과급 · 1분 치료 시간 규칙으로 기권 처리된 경위",
-     "why": "뉴스로 알려진 심판 폭행을 해설로 옮기고 판정 경위(치료 시간 규칙)로"
+    {
+      "seedId": "combat-athletics/2#g019a-S2-19",
+      "seed": {
+        "subject": "추성훈",
+        "aspect": null,
+        "ref": "S2-19",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1998년 부산시청에 입단한 이 선수는 2001년 4월 울란바토르 아시아 유도 선수권에서 전 경기 한판승으로 우승했습니다. 2006년 10월에는 네덜란드의 멜빈 마누프를 꺾고 K-1 히어로즈 라이트헤비급 그랑프리 챔피언에 올랐는데, 이 선수는 누구일까요?",
+        "answer": "추성훈",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "오사카 쓰루하시의 한인촌에서 자라 아버지의 영향으로 세 살 때 유도를 시작했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "부산시청 유도 선수 … K-1 히어로즈 라이트헤비급 챔피언",
+          "difWhy": "유도 출신 K-1 파이터 — 격투기 관심층",
+          "wor": 3,
+          "worWhy": "널리 알려진 선수 이름 맞히기",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "사쿠라바 가즈시를 TKO … 몸에 크림을 바른 것이 드러나",
+          "difWhy": "크림 사건 — 방송 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 선수 사건"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2001년 4월 울란바토르 아시아 유도 선수권에서 전 경기 한판승으로 우승한 이 선수는, 2006년 12월 31일 격투기 경기에서 사쿠라바 가즈시를 TKO로 이겼습니다. 그러나 몸에 크림을 바른 것이 드러나 무효가 된 이 선수는 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "2006년 12월 31일 사쿠라바 TKO · 크림을 발라 무효(크림 사건)",
+          "addedCue": "1998년 부산시청 입단 · 2006년 10월 멜빈 마누프 꺾고 히어로즈 그랑프리 우승",
+          "why": "방송에서 회자된 크림 사건을 빼고 경력 세부로"
+        },
+        "generalHint": "1998년 4월 '할아버지의 나라에서 태극기를 달라'는 아버지의 당부를 듣고 여동생과 함께 한국으로 건너왔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "재일 한국인 출신 유도 선수이자 종합격투기 선수",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "예능으로 유명한 격투기 선수",
+          "piece": "f07",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "S2-19",
+          "key": "b035",
+          "hint": "1998년 4월 '할아버지의 나라에서 태극기를 달라'는 아버지의 당부를 듣고 여동생과 함께 한국으로 건너왔다.",
+          "guess": "추성훈",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "추성훈"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88"
+        ],
+        "facts": [
+          {
+            "claim": "2001.4 울란바토르 아시아 선수권 전 경기 한판승 우승",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
+            "note": "2001년 4월 몽골 울란바타르에서 열렸던 아시아 유도 선수권 대회에서 전 경기 한판승으로 우승을 차지했다."
+          },
+          {
+            "claim": "쓰루하시 한인촌, 3살 유도 시작",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
+            "note": "일본 오사카부 오사카시 이쿠노구 쓰루하시의 한인촌에서 자라면서 아버지의 영향으로 3살 때부터 유도를 시작하였다."
+          },
+          {
+            "claim": "1998년 4월 부산광역시청 입단",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
+            "note": "졸업 후 1998년 4월 한국에 건너와 부산광역시청에 입단하였다."
+          },
+          {
+            "claim": "2006.10.9 멜빈 마누프 꺾고 K-1 히어로즈 라이트헤비급 그랑프리 챔피언",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
+            "note": "2006년 10월 9일 네덜란드의 타격가 멜빈 마누프와의 K-1 히어로즈 라이트헤비급 그랑프리 결승전에서 승리해 챔피언에 올랐다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88"
+        ],
+        "hintNote": "재일교포 유도선수로 전국체전에서 우승한 적이 있는 아버지의 \"할아버지의 나라 한국에서 태극기를 달고 한국인의 기상을 떨치라\"라는 당부에 따라 1998년 4월 여동생 추정화와 함께 한국으로 건너왔다.",
+        "easiestCue": "1998년 부산시청 입단 · 아시아 선수권 전 경기 한판승 우승",
+        "targetWhy": "부산시청 시절과 히어로즈 그랑프리는 격투기·유도 애호가 세부 — 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "유도+격투기 조합만으로 한국인은 짐작할 수 있음",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "부산시청 유도 선수 … K-1 히어로즈 라이트헤비급 챔피언",
+          "difWhy": "유도 출신 K-1 파이터 — 격투기 관심층",
+          "wor": 3,
+          "worWhy": "널리 알려진 선수 이름 맞히기",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "generalHint": "2012년 런던 대회부터 이 종목에 전자 채점 장치와 즉석 비디오 판독이 들어왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한국에서 시작된 발차기 중심의 무도",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "국기 무도",
-     "piece": "f04",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "S2-18",
-     "key": "b118",
-     "hint": "2012년 런던 대회부터 이 종목에 전자 채점 장치와 즉석 비디오 판독이 들어왔다.",
-     "guess": "태권도",
-     "confidence": "high",
-     "hit": true,
-     "answer": "태권도"
-    },
-    "hobby": "규칙",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ángel_Matos",
-     "https://en.wikipedia.org/wiki/%C3%81ngel_Matos"
-    ],
-    "facts": [
-     {
-      "claim": "2008 동메달 결정전 실격 뒤 스웨덴 심판 가격, 영구 정지, IOC 승인",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ángel_Matos",
-      "note": "The World Taekwondo Federation banned Matos and his coach for life following an incident at the 2008 Summer Olympics where Matos kicked the Swedish referee Chakir Chelbat in the face, after being disqualified in the bronze medal match. The decision was later ratified by the IOC."
-     },
-     {
-      "claim": "2000 시드니 80kg 금",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ángel_Matos",
-      "note": "At the 2000 Summer Olympics, Matos was gold medalist in the men's middleweight (80 kg) class."
-     },
-     {
-      "claim": "2008 80kg 초과급 동메달 결정전 · 발 부상 · 1분 치료 시간 경과로 기권 처리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/%C3%81ngel_Matos",
-      "note": "In the bronze medal match in the men's 80+ kg class at the 2008 Summer Olympics ... After he incurred a foot injury ... he took a Kyeshi (\"suspend\", medical timeout). Under World Taekwondo Federation tournament rules, players sustaining injury are allowed one minute of Kyeshi time, at the end of which the competitor in question must return to the center of the ring ... Kyeshi elapsed without Matos returning to the center. The referee ... ruled he had retired."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Taekwondo_at_the_2012_Summer_Olympics"
-    ],
-    "hintNote": "the World Taekwondo Federation introduced new electronic scoring system and instant video replays in anticipation to make the competition more transparent and fair.",
-    "easiestCue": "1분의 치료 시간 안에 경기장 가운데로 돌아오지 않아 기권 처리",
-    "targetWhy": "부상 치료 시간 1분 규칙과 마토스 경위는 올림픽 애호가 세부 — 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 종목의 올림픽 사건",
-    "pairCheck": "1회차 질문(1988·92 시범, 2000 정식)·해설(유도 다음 아시아 종목)과 겹치지 않음 — 질문에 2000 시드니 없음",
-    "dbCheck": "pair-or-different 482 — (가) 2회차, 다른 지식",
-    "warn": [],
-    "first": {
-     "id": 482,
-     "question": "1988년과 1992년 대회에서 시범 종목으로 치러진 뒤, 2000년 시드니 대회부터 올림픽 정식 종목이 된 한국의 무예는?",
-     "explanation": "유도에 이어 아시아에서 나온 두 번째 올림픽 정식 종목입니다.",
-     "hint": null,
-     "difficulty": 2
+    {
+      "seedId": "combat-athletics/2#g019a-S2-20",
+      "seed": {
+        "subject": "유도",
+        "aspect": null,
+        "ref": "S2-20",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1966년 비틀스가 록 밴드로는 처음 공연한 도쿄의 팔각형 건물 '일본 무도관'은 나라 호류지의 유메도노를 본떠 지었습니다. 원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은 이 건물에서, 2020년 대회 때도 이 종목 경기가 열렸습니다. 이 종목은?",
+        "answer": "유도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1964년 도쿄 대회는 이 종목이 처음 올림픽에 들어온 대회였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은",
+          "difWhy": "무도관 1964 종목 — 올림픽 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "종목·건물 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은",
+          "difWhy": "무도관 1964 종목 — 올림픽 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "종목·건물 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "1964년 그 건물에서 열린 무제한급 결승에서는 네덜란드의 안톤 헤싱크가 일본의 가미나가 아키오를 꺾었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "가노 지고로가 만든 일본의 메치기·굳히기 무도",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "올림픽 종목",
+          "piece": "f04",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "S2-20",
+          "key": "b052",
+          "hint": "1964년 그 건물에서 열린 무제한급 결승에서는 네덜란드의 안톤 헤싱크가 일본의 가미나가 아키오를 꺾었다.",
+          "guess": "닛폰 부도칸",
+          "confidence": "high",
+          "hit": false,
+          "answer": "유도"
+        },
+        "hobby": "구단 역사",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Nippon_Budokan",
+          "https://en.wikipedia.org/wiki/Judo_at_the_1964_Summer_Olympics"
+        ],
+        "facts": [
+          {
+            "claim": "1964 올림픽 유도 경기장으로 지음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
+            "note": "It was originally built for the inaugural Olympic judo competition in the 1964 Summer Olympics."
+          },
+          {
+            "claim": "비틀스가 처음 공연한 록 그룹 1966",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
+            "note": "The Beatles were the first rock group to play there, in a series of five concerts ... from June 30 to July 2, 1966."
+          },
+          {
+            "claim": "팔각형, 호류지 유메도노",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
+            "note": "The 42 metres (138 ft) high octagonal structure holds 14,471 people ... The building is modeled after Yumedono (Hall of Dreams) in Hōryū-ji in Nara."
+          },
+          {
+            "claim": "2020 대회 유도·가라테",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
+            "note": "Most recently, the arena hosted the judo and karate competitions at the 2020 Summer Olympics"
+          },
+          {
+            "claim": "1964 첫 올림픽 유도",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Judo_at_the_1964_Summer_Olympics",
+            "note": "The judo competition at the 1964 Summer Olympics was the first time the sport was included in the Summer Olympic Games."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Anton_Geesink"
+        ],
+        "hintNote": "Anton Geesink won the final of the open weight division, defeating Akio Kaminaga in front of his home crowd.",
+        "easiestCue": "원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은 이 건물",
+        "targetWhy": "무도관의 건립 목적·비틀스 공연 — 음악·무도 애호가",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'무도관' 이름에서 무도 종목을 짐작할 수 있음",
+        "pairCheck": null,
+        "dbCheck": "new (관련 4590 가라테·4822 고도칸 — 다른 정답)",
+        "warn": [
+          "단정어 처음",
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은",
+          "difWhy": "무도관 1964 종목 — 올림픽 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "종목·건물 이야깃거리",
+          "acc": 4,
+          "accWhy": "격투기·육상·수영 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "combat-athletics/2#g019a-S2-19",
-   "seed": {
-    "subject": "추성훈",
-    "aspect": null,
-    "ref": "S2-19",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1998년 부산시청에 입단한 이 선수는 2001년 4월 울란바토르 아시아 유도 선수권에서 전 경기 한판승으로 우승했습니다. 2006년 10월에는 네덜란드의 멜빈 마누프를 꺾고 K-1 히어로즈 라이트헤비급 그랑프리 챔피언에 올랐는데, 이 선수는 누구일까요?",
-    "answer": "추성훈",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "오사카 쓰루하시의 한인촌에서 자라 아버지의 영향으로 세 살 때 유도를 시작했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "부산시청 유도 선수 … K-1 히어로즈 라이트헤비급 챔피언",
-     "difWhy": "유도 출신 K-1 파이터 — 격투기 관심층",
-     "wor": 3,
-     "worWhy": "널리 알려진 선수 이름 맞히기",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "사쿠라바 가즈시를 TKO … 몸에 크림을 바른 것이 드러나",
-     "difWhy": "크림 사건 — 방송 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 선수 사건"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2001년 4월 울란바토르 아시아 유도 선수권에서 전 경기 한판승으로 우승한 이 선수는, 2006년 12월 31일 격투기 경기에서 사쿠라바 가즈시를 TKO로 이겼습니다. 그러나 몸에 크림을 바른 것이 드러나 무효가 된 이 선수는 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "2006년 12월 31일 사쿠라바 TKO · 크림을 발라 무효(크림 사건)",
-     "addedCue": "1998년 부산시청 입단 · 2006년 10월 멜빈 마누프 꺾고 히어로즈 그랑프리 우승",
-     "why": "방송에서 회자된 크림 사건을 빼고 경력 세부로"
-    },
-    "generalHint": "1998년 4월 '할아버지의 나라에서 태극기를 달라'는 아버지의 당부를 듣고 여동생과 함께 한국으로 건너왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "재일 한국인 출신 유도 선수이자 종합격투기 선수",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "예능으로 유명한 격투기 선수",
-     "piece": "f07",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "S2-19",
-     "key": "b035",
-     "hint": "1998년 4월 '할아버지의 나라에서 태극기를 달라'는 아버지의 당부를 듣고 여동생과 함께 한국으로 건너왔다.",
-     "guess": "추성훈",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "추성훈"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88"
-    ],
-    "facts": [
-     {
-      "claim": "2001.4 울란바토르 아시아 선수권 전 경기 한판승 우승",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
-      "note": "2001년 4월 몽골 울란바타르에서 열렸던 아시아 유도 선수권 대회에서 전 경기 한판승으로 우승을 차지했다."
-     },
-     {
-      "claim": "쓰루하시 한인촌, 3살 유도 시작",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
-      "note": "일본 오사카부 오사카시 이쿠노구 쓰루하시의 한인촌에서 자라면서 아버지의 영향으로 3살 때부터 유도를 시작하였다."
-     },
-     {
-      "claim": "1998년 4월 부산광역시청 입단",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
-      "note": "졸업 후 1998년 4월 한국에 건너와 부산광역시청에 입단하였다."
-     },
-     {
-      "claim": "2006.10.9 멜빈 마누프 꺾고 K-1 히어로즈 라이트헤비급 그랑프리 챔피언",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88",
-      "note": "2006년 10월 9일 네덜란드의 타격가 멜빈 마누프와의 K-1 히어로즈 라이트헤비급 그랑프리 결승전에서 승리해 챔피언에 올랐다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%B6%94%EC%84%B1%ED%9B%88"
-    ],
-    "hintNote": "재일교포 유도선수로 전국체전에서 우승한 적이 있는 아버지의 \"할아버지의 나라 한국에서 태극기를 달고 한국인의 기상을 떨치라\"라는 당부에 따라 1998년 4월 여동생 추정화와 함께 한국으로 건너왔다.",
-    "easiestCue": "1998년 부산시청 입단 · 아시아 선수권 전 경기 한판승 우승",
-    "targetWhy": "부산시청 시절과 히어로즈 그랑프리는 격투기·유도 애호가 세부 — 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "유도+격투기 조합만으로 한국인은 짐작할 수 있음",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "combat-athletics/2#g019a-S2-20",
-   "seed": {
-    "subject": "유도",
-    "aspect": null,
-    "ref": "S2-20",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1966년 비틀스가 록 밴드로는 처음 공연한 도쿄의 팔각형 건물 '일본 무도관'은 나라 호류지의 유메도노를 본떠 지었습니다. 원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은 이 건물에서, 2020년 대회 때도 이 종목 경기가 열렸습니다. 이 종목은?",
-    "answer": "유도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1964년 도쿄 대회는 이 종목이 처음 올림픽에 들어온 대회였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은",
-     "difWhy": "무도관 1964 종목 — 올림픽 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "종목·건물 이야깃거리",
-     "acc": 4,
-     "accWhy": "격투기·육상·수영 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은",
-     "difWhy": "무도관 1964 종목 — 올림픽 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "종목·건물 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "1964년 그 건물에서 열린 무제한급 결승에서는 네덜란드의 안톤 헤싱크가 일본의 가미나가 아키오를 꺾었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "가노 지고로가 만든 일본의 메치기·굳히기 무도",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "올림픽 종목",
-     "piece": "f04",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "S2-20",
-     "key": "b052",
-     "hint": "1964년 그 건물에서 열린 무제한급 결승에서는 네덜란드의 안톤 헤싱크가 일본의 가미나가 아키오를 꺾었다.",
-     "guess": "닛폰 부도칸",
-     "confidence": "high",
-     "hit": false,
-     "answer": "유도"
-    },
-    "hobby": "구단 역사",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Nippon_Budokan",
-     "https://en.wikipedia.org/wiki/Judo_at_the_1964_Summer_Olympics"
-    ],
-    "facts": [
-     {
-      "claim": "1964 올림픽 유도 경기장으로 지음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
-      "note": "It was originally built for the inaugural Olympic judo competition in the 1964 Summer Olympics."
-     },
-     {
-      "claim": "비틀스가 처음 공연한 록 그룹 1966",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
-      "note": "The Beatles were the first rock group to play there, in a series of five concerts ... from June 30 to July 2, 1966."
-     },
-     {
-      "claim": "팔각형, 호류지 유메도노",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
-      "note": "The 42 metres (138 ft) high octagonal structure holds 14,471 people ... The building is modeled after Yumedono (Hall of Dreams) in Hōryū-ji in Nara."
-     },
-     {
-      "claim": "2020 대회 유도·가라테",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Nippon_Budokan",
-      "note": "Most recently, the arena hosted the judo and karate competitions at the 2020 Summer Olympics"
-     },
-     {
-      "claim": "1964 첫 올림픽 유도",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Judo_at_the_1964_Summer_Olympics",
-      "note": "The judo competition at the 1964 Summer Olympics was the first time the sport was included in the Summer Olympic Games."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Anton_Geesink"
-    ],
-    "hintNote": "Anton Geesink won the final of the open weight division, defeating Akio Kaminaga in front of his home crowd.",
-    "easiestCue": "원래 1964년 도쿄 대회의 이 종목 경기를 치르려고 지은 이 건물",
-    "targetWhy": "무도관의 건립 목적·비틀스 공연 — 음악·무도 애호가",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'무도관' 이름에서 무도 종목을 짐작할 수 있음",
-    "pairCheck": null,
-    "dbCheck": "new (관련 4590 가라테·4822 고도칸 — 다른 정답)",
-    "warn": [
-     "단정어 처음",
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+  ]
 }

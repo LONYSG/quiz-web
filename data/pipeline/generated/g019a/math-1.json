@@ -1,237 +1,267 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "math/1",
-  "midKey": "math",
-  "subName": "수와 연산",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "math/1#g019a-C1-07",
-   "seed": {
-    "subject": "로그",
-    "aspect": null,
-    "ref": "C1-07",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "라플라스는 이것을 두고, 몇 달 걸릴 일을 며칠로 줄여 천문학자의 수명을 두 배로 늘려 주는 훌륭한 장치라고 했습니다. 1617년 헨리 브리그스가 1부터 1000까지 모든 정수의 값을 14자리까지 실은 첫 표를 만든 이것은?",
-    "answer": "로그",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1970년대까지 공학자와 과학자들이 쓰던 계산자도 이것으로 눈금을 매겼습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "헨리 브리그스가 1부터 1000까지 … 첫 표",
-     "difWhy": "상용로그표 — 고교 수학",
-     "wor": 5,
-     "worWhy": "수학 교과",
-     "acc": 5,
-     "accWhy": "수학 — 초중 교과 과목"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "계산자도 이것으로 눈금을 매겼는데",
-     "difWhy": "계산자 눈금 — 고교 수학",
-     "wor": 4,
-     "worWhy": "교과 개념 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "라플라스는 이것을 두고, 몇 달 걸릴 일을 며칠로 줄여 천문학자의 수명을 두 배로 늘려 주는 훌륭한 장치라고 했습니다. 1970년대까지 공학자들이 쓰던 계산자도 이것으로 눈금을 매겼는데, 이것은 무엇일까요?",
-     "beforeExplanation": "1617년 헨리 브리그스가 10을 밑으로 한 첫 표를 만들어, 1부터 1000까지 모든 정수의 값을 14자리까지 실었습니다.",
-     "removedCue": "계산자도 이것으로 눈금을 매김(질문에서 해설로 옮김)",
-     "addedCue": "브리그스의 1617년 첫 표(해설에서 질문으로 · '10을 밑으로' 는 뺌)",
-     "why": "계산자 눈금(고교 수학 연결)을 빼고 수학사 세부로"
-    },
-    "generalHint": "스위스 수학자 요스트 뷔르기도 따로 비슷한 표를 만들었고, 케플러의 권유를 받아 그것을 펴냈다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "거듭제곱의 지수를 구하는 연산, 곱셈을 덧셈으로 바꿈",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "고교 수학 필수 개념",
-     "piece": "f05",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "C1-07",
-     "key": "b221",
-     "hint": "스위스 수학자 요스트 뷔르기도 따로 비슷한 표를 만들었고, 케플러의 권유를 받아 그것을 펴냈다.",
-     "guess": "로그",
-     "confidence": "high",
-     "hit": true,
-     "answer": "로그"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Logarithm"
-    ],
-    "facts": [
-     {
-      "claim": "라플라스 — 몇 달 일을 며칠로, 천문학자의 수명을 두 배로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Logarithm",
-      "note": "Pierre-Simon Laplace called logarithms \"[a]n admirable artifice which, by reducing to a few days the labour of many months, doubles the life of the astronomer...\""
-     },
-     {
-      "claim": "계산자는 로그 눈금 · 1970년대까지 공학자 필수",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Logarithm",
-      "note": "the slide rule, a pair of logarithmically divided scales used for calculation. ... The slide rule was an essential calculating tool for engineers and scientists until the 1970s"
-     },
-     {
-      "claim": "1617 브리그스 첫 상용로그표 1~1000, 14자리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Logarithm",
-      "note": "The first such table was compiled by Henry Briggs in 1617 ... using 10 as the base. Briggs' first table contained the common logarithms of all integers in the range from 1 to 1000, with a precision of 14 digits."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/History_of_logarithms"
-    ],
-    "hintNote": "The Swiss mathematician Jost Bürgi constructed a table of progressions which can be considered a table of antilogarithms independently of John Napier ... by the time Bürgi published at the behest of Johannes Kepler.",
-    "easiestCue": "1617년 헨리 브리그스가 … 첫 표를 만든",
-    "targetWhy": "수학사의 교과서 밖 세부 — 대학 교양(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "고교 수학 개념의 역사 쪽 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "math/1",
+    "midKey": "math",
+    "subName": "수와 연산",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "math/1#g019a-C1-08",
-   "seed": {
-    "subject": "20진법",
-    "aspect": null,
-    "ref": "C1-08",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1994년 학생이 아홉 명뿐인 알래스카 캑토빅의 한 중학교에서, 이진법을 배우던 이누피아트 학생들이 자기 말에 맞는 새 숫자를 만들었습니다. 덴마크어 50~90 낱말의 짜임에도 흔적이 남은 이 기수법은 무엇일까요?",
-    "answer": "20진법",
-    "acceptedAnswers": [
-     "이십진법"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "숫자·한글 표기 둘 다 흔함(진법 이름 \"십진법/10진법\" 과 같은 꼴) — 확신 중간",
-    "explanation": "프랑스어로 80을 뜻하는 'quatre-vingts' 는 글자 그대로 '네 개의 스물' 이라는 뜻입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "덴마크어 50~90 낱말의 짜임에도 흔적이 남은 이 기수법",
-     "difWhy": "덴마크어 수사 속 20진법 — 대학 교양 언어·수학",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 이누피아트 숫자",
-     "acc": 5,
-     "accWhy": "수학 — 초중 교과 과목"
+  "items": [
+    {
+      "seedId": "math/1#g019a-C1-07",
+      "seed": {
+        "subject": "로그",
+        "aspect": null,
+        "ref": "C1-07",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "라플라스는 이것을 두고, 몇 달 걸릴 일을 며칠로 줄여 천문학자의 수명을 두 배로 늘려 주는 훌륭한 장치라고 했습니다. 1617년 헨리 브리그스가 1부터 1000까지 모든 정수의 값을 14자리까지 실은 첫 표를 만든 이것은?",
+        "answer": "로그",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1970년대까지 공학자와 과학자들이 쓰던 계산자도 이것으로 눈금을 매겼습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "헨리 브리그스가 1부터 1000까지 … 첫 표",
+          "difWhy": "상용로그표 — 고교 수학",
+          "wor": 5,
+          "worWhy": "수학 교과",
+          "acc": 5,
+          "accWhy": "수학 — 초중 교과 과목",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "계산자도 이것으로 눈금을 매겼는데",
+          "difWhy": "계산자 눈금 — 고교 수학",
+          "wor": 4,
+          "worWhy": "교과 개념 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "라플라스는 이것을 두고, 몇 달 걸릴 일을 며칠로 줄여 천문학자의 수명을 두 배로 늘려 주는 훌륭한 장치라고 했습니다. 1970년대까지 공학자들이 쓰던 계산자도 이것으로 눈금을 매겼는데, 이것은 무엇일까요?",
+          "beforeExplanation": "1617년 헨리 브리그스가 10을 밑으로 한 첫 표를 만들어, 1부터 1000까지 모든 정수의 값을 14자리까지 실었습니다.",
+          "removedCue": "계산자도 이것으로 눈금을 매김(질문에서 해설로 옮김)",
+          "addedCue": "브리그스의 1617년 첫 표(해설에서 질문으로 · '10을 밑으로' 는 뺌)",
+          "why": "계산자 눈금(고교 수학 연결)을 빼고 수학사 세부로"
+        },
+        "generalHint": "스위스 수학자 요스트 뷔르기도 따로 비슷한 표를 만들었고, 케플러의 권유를 받아 그것을 펴냈다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "거듭제곱의 지수를 구하는 연산, 곱셈을 덧셈으로 바꿈",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "고교 수학 필수 개념",
+          "piece": "f05",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "C1-07",
+          "key": "b221",
+          "hint": "스위스 수학자 요스트 뷔르기도 따로 비슷한 표를 만들었고, 케플러의 권유를 받아 그것을 펴냈다.",
+          "guess": "로그",
+          "confidence": "high",
+          "hit": true,
+          "answer": "로그"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Logarithm"
+        ],
+        "facts": [
+          {
+            "claim": "라플라스 — 몇 달 일을 며칠로, 천문학자의 수명을 두 배로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Logarithm",
+            "note": "Pierre-Simon Laplace called logarithms \"[a]n admirable artifice which, by reducing to a few days the labour of many months, doubles the life of the astronomer...\""
+          },
+          {
+            "claim": "계산자는 로그 눈금 · 1970년대까지 공학자 필수",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Logarithm",
+            "note": "the slide rule, a pair of logarithmically divided scales used for calculation. ... The slide rule was an essential calculating tool for engineers and scientists until the 1970s"
+          },
+          {
+            "claim": "1617 브리그스 첫 상용로그표 1~1000, 14자리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Logarithm",
+            "note": "The first such table was compiled by Henry Briggs in 1617 ... using 10 as the base. Briggs' first table contained the common logarithms of all integers in the range from 1 to 1000, with a precision of 14 digits."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/History_of_logarithms"
+        ],
+        "hintNote": "The Swiss mathematician Jost Bürgi constructed a table of progressions which can be considered a table of antilogarithms independently of John Napier ... by the time Bürgi published at the behest of Johannes Kepler.",
+        "easiestCue": "1617년 헨리 브리그스가 … 첫 표를 만든",
+        "targetWhy": "수학사의 교과서 밖 세부 — 대학 교양(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "고교 수학 개념의 역사 쪽 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "헨리 브리그스가 1부터 1000까지 … 첫 표",
+          "difWhy": "상용로그표 — 고교 수학",
+          "wor": 5,
+          "worWhy": "수학 교과",
+          "acc": 5,
+          "accWhy": "수학 — 초중 교과 과목"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "마야와 아스테카의 수 체계도 이것을 바탕으로",
-     "difWhy": "마야 기수법 — 고교 교양",
-     "wor": 3,
-     "worWhy": "수 체계 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1994년 미국 알래스카 캑토빅의 이누이트 학생들은 자기 말의 수 세기에 맞는 새 숫자를 만들었습니다. 마야와 아스테카의 수 체계도 이것을 바탕으로 했고, 덴마크어 50~90 낱말의 짜임에도 흔적이 남은 이 기수법은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "마야와 아스테카의 수 체계 바탕(고교 교양)",
-     "addedCue": "학생 아홉 명 중학교 · 이진법 수업 중 착안",
-     "why": "교과서급 마야 수 체계를 빼고 캑토빅 숫자 탄생 세부로"
-    },
-    "generalHint": "캑토빅 숫자는 5를 작은 묶음으로 삼아, 숫자 위쪽 획으로 5가 몇 번인지, 아래쪽 획으로 나머지를 나타낸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "스물을 한 묶음으로 세는 수 체계",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "10진법·2진법 연상으로 이름은 익숙",
-     "piece": "f03",
-     "genPct": 50
-    },
-    "blind": {
-     "ref": "C1-08",
-     "key": "b157",
-     "hint": "캑토빅 숫자는 5를 작은 묶음으로 삼아, 숫자 위쪽 획으로 5가 몇 번인지, 아래쪽 획으로 나머지를 나타낸다.",
-     "guess": "20진법",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "20진법"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Vigesimal",
-     "https://en.wikipedia.org/wiki/Kaktovik_numerals"
-    ],
-    "facts": [
-     {
-      "claim": "1994 캑토빅 이누이트 학생들이 캑토빅 숫자를 만듦(20진)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Vigesimal",
-      "note": "In 1994, Inuit students in Kaktovik, Alaska, came up with the base-20 Kaktovik numerals to better represent their language."
-     },
-     {
-      "claim": "덴마크어 50~90 낱말이 20 바탕(어원상)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Vigesimal",
-      "note": "Twenty (tyve) is used as a base number in the Danish names of tens from 50 to 90. However, Danish numerals are not vigesimal since it is only the names of some of the tens that are etymologically formed in a vigesimal way."
-     },
-     {
-      "claim": "quatre-vingts = four-twenties",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Vigesimal",
-      "note": "quatre-vingts, the French word for \"80\", literally means \"four-twenties\""
-     },
-     {
-      "claim": "캑토빅 중학교 이진법 수업 중 학생들이 착안",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kaktovik_numerals",
-      "note": "The numerals began as an enrichment activity in 1994, when, during a math class exploring binary numbers at Harold Kaveolook middle school on Barter Island Kaktovik, Alaska, students noted that their language used a base-20 system."
-     },
-     {
-      "claim": "학생은 아홉 명뿐",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kaktovik_numerals",
-      "note": "The small middle school had only nine students so they were all able to work together to create a base-20 notation."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Kaktovik_numerals"
-    ],
-    "hintNote": "they created an iconic notation with the sub-base of 5 forming the upper part of the digit, and the remainder forming the lower part.",
-    "easiestCue": "덴마크어 50~90 낱말의 짜임에 흔적",
-    "targetWhy": "수 체계의 언어학 세부 — 대학 교양(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "이름은 쉬운 진법, 쓰임은 교과서 밖",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "math/1#g019a-C1-08",
+      "seed": {
+        "subject": "20진법",
+        "aspect": null,
+        "ref": "C1-08",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1994년 학생이 아홉 명뿐인 알래스카 캑토빅의 한 중학교에서, 이진법을 배우던 이누피아트 학생들이 자기 말에 맞는 새 숫자를 만들었습니다. 덴마크어 50~90 낱말의 짜임에도 흔적이 남은 이 기수법은 무엇일까요?",
+        "answer": "20진법",
+        "acceptedAnswers": [
+          "이십진법"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "숫자·한글 표기 둘 다 흔함(진법 이름 \"십진법/10진법\" 과 같은 꼴) — 확신 중간",
+        "explanation": "프랑스어로 80을 뜻하는 'quatre-vingts' 는 글자 그대로 '네 개의 스물' 이라는 뜻입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "덴마크어 50~90 낱말의 짜임에도 흔적이 남은 이 기수법",
+          "difWhy": "덴마크어 수사 속 20진법 — 대학 교양 언어·수학",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이누피아트 숫자",
+          "acc": 5,
+          "accWhy": "수학 — 초중 교과 과목",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "마야와 아스테카의 수 체계도 이것을 바탕으로",
+          "difWhy": "마야 기수법 — 고교 교양",
+          "wor": 3,
+          "worWhy": "수 체계 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1994년 미국 알래스카 캑토빅의 이누이트 학생들은 자기 말의 수 세기에 맞는 새 숫자를 만들었습니다. 마야와 아스테카의 수 체계도 이것을 바탕으로 했고, 덴마크어 50~90 낱말의 짜임에도 흔적이 남은 이 기수법은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "마야와 아스테카의 수 체계 바탕(고교 교양)",
+          "addedCue": "학생 아홉 명 중학교 · 이진법 수업 중 착안",
+          "why": "교과서급 마야 수 체계를 빼고 캑토빅 숫자 탄생 세부로"
+        },
+        "generalHint": "캑토빅 숫자는 5를 작은 묶음으로 삼아, 숫자 위쪽 획으로 5가 몇 번인지, 아래쪽 획으로 나머지를 나타낸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "스물을 한 묶음으로 세는 수 체계",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "10진법·2진법 연상으로 이름은 익숙",
+          "piece": "f03",
+          "genPct": 50
+        },
+        "blind": {
+          "ref": "C1-08",
+          "key": "b157",
+          "hint": "캑토빅 숫자는 5를 작은 묶음으로 삼아, 숫자 위쪽 획으로 5가 몇 번인지, 아래쪽 획으로 나머지를 나타낸다.",
+          "guess": "20진법",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "20진법"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Vigesimal",
+          "https://en.wikipedia.org/wiki/Kaktovik_numerals"
+        ],
+        "facts": [
+          {
+            "claim": "1994 캑토빅 이누이트 학생들이 캑토빅 숫자를 만듦(20진)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Vigesimal",
+            "note": "In 1994, Inuit students in Kaktovik, Alaska, came up with the base-20 Kaktovik numerals to better represent their language."
+          },
+          {
+            "claim": "덴마크어 50~90 낱말이 20 바탕(어원상)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Vigesimal",
+            "note": "Twenty (tyve) is used as a base number in the Danish names of tens from 50 to 90. However, Danish numerals are not vigesimal since it is only the names of some of the tens that are etymologically formed in a vigesimal way."
+          },
+          {
+            "claim": "quatre-vingts = four-twenties",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Vigesimal",
+            "note": "quatre-vingts, the French word for \"80\", literally means \"four-twenties\""
+          },
+          {
+            "claim": "캑토빅 중학교 이진법 수업 중 학생들이 착안",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kaktovik_numerals",
+            "note": "The numerals began as an enrichment activity in 1994, when, during a math class exploring binary numbers at Harold Kaveolook middle school on Barter Island Kaktovik, Alaska, students noted that their language used a base-20 system."
+          },
+          {
+            "claim": "학생은 아홉 명뿐",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kaktovik_numerals",
+            "note": "The small middle school had only nine students so they were all able to work together to create a base-20 notation."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Kaktovik_numerals"
+        ],
+        "hintNote": "they created an iconic notation with the sub-base of 5 forming the upper part of the digit, and the remainder forming the lower part.",
+        "easiestCue": "덴마크어 50~90 낱말의 짜임에 흔적",
+        "targetWhy": "수 체계의 언어학 세부 — 대학 교양(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "이름은 쉬운 진법, 쓰임은 교과서 밖",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "덴마크어 50~90 낱말의 짜임에도 흔적이 남은 이 기수법",
+          "difWhy": "덴마크어 수사 속 20진법 — 대학 교양 언어·수학",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이누피아트 숫자",
+          "acc": 5,
+          "accWhy": "수학 — 초중 교과 과목"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

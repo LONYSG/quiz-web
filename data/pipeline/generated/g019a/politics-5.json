@@ -1,241 +1,268 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "politics/5",
-  "midKey": "politics",
-  "subName": "법률 용어",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "politics/5#g019a-H2-20",
-   "seed": {
-    "subject": "저작권",
-    "aspect": null,
-    "ref": "H2-20",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1710년 영국 의회가 통과시킨 '앤 여왕법'은 이 권리를 민간이 아닌 정부와 법원이 다루게 한 첫 법으로 꼽히며, 1842년까지 효력을 이어 갔습니다. 보호 기간을 14년으로 하고 한 번 더 늘릴 수 있게 한 이 권리는?",
-    "answer": "저작권",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "미국은 1886년 맺어진 베른 협약에 1989년에야 가입했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1710년 … '앤 여왕법' … 보호 기간을 14년으로",
-     "difWhy": "앤 여왕법 — 대학 교양 법제사 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 제도 기원",
-     "acc": 4,
-     "accWhy": "정치·법 — 고교 사회 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "베른 협약 … 이 협약이 보호하는 권리",
-     "difWhy": "베른 협약 = 저작권 — 고교 사회 (경계 4)",
-     "wor": 4,
-     "worWhy": "교양 — 지식재산 기본 어휘"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1710년 영국 의회가 통과시킨 '앤 여왕법'은 이 권리를 민간 조합이 아닌 정부와 법원이 다루게 한 첫 법으로 꼽힙니다. 미국은 1886년 맺어진 베른 협약에 1989년에야 가입했는데, 이 협약이 보호하는 권리는?",
-     "beforeExplanation": "앤 여왕법은 보호 기간을 14년으로 정하고, 같은 기간만큼 한 번 더 늘릴 수 있게 했습니다.",
-     "removedCue": "베른 협약이 보호하는 권리(고교 사회 — 해설로 옮김)",
-     "addedCue": "1842년까지 효력 · 보호 기간 14년과 한 번 연장(해설에서 옮김)",
-     "why": "베른 협약=저작권이라는 교과서 연결을 빼고 앤 여왕법 세부만으로"
-    },
-    "generalHint": "앤 여왕법의 정식 이름은 '학문 장려를 위해 인쇄된 책의 사본을 저자나 그 구매자에게 맡기는 법'이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "창작물을 만든 사람이 갖는 법적 권리",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상·뉴스 용어",
-     "piece": "f03",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "H2-20",
-     "key": "b090",
-     "hint": "앤 여왕법의 정식 이름은 '학문 장려를 위해 인쇄된 책의 사본을 저자나 그 구매자에게 맡기는 법'이다.",
-     "guess": "저작권",
-     "confidence": "high",
-     "hit": true,
-     "answer": "저작권"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Statute_of_Anne",
-     "https://en.wikipedia.org/wiki/Copyright"
-    ],
-    "facts": [
-     {
-      "claim": "앤 여왕법 1710년 — 민간이 아닌 정부·법원이 다루는 첫 저작권 법",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Statute_of_Anne",
-      "note": "was an act of the Parliament of Great Britain passed in 1710, which was the first statute to provide for copyright regulated by the government and courts, rather than by private parties."
-     },
-     {
-      "claim": "1886 베른 협약, 미국은 1989년에야 가입",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Copyright",
-      "note": "The Berne International Copyright Convention of 1886 finally provided protection for authors among the countries who signed the agreement, although the US did not join the Berne Convention until 1989."
-     },
-     {
-      "claim": "14년, 같은 기간 갱신",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Statute_of_Anne",
-      "note": "The new law prescribed a copyright term of 14 years, with a provision for renewal for a similar term"
-     },
-     {
-      "claim": "1842년 법이 나올 때까지 효력 유지",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Statute_of_Anne",
-      "note": "the statute remained in force until the Copyright Act 1842"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Statute_of_Anne"
-    ],
-    "hintNote": "the Statute of Anne is formally titled \"An Act for the Encouragement of Learning, by Vesting the Copies of Printed Books in the Authors or Purchasers of Copies, during the Times therein mentioned\".",
-    "easiestCue": "1710년 '앤 여왕법'이 정부와 법원이 다루게 한 권리",
-    "targetWhy": "법제사 세부 — 대학 교양(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 권리의 법제사",
-    "pairCheck": null,
-    "dbCheck": "pair-or-different — 활성 #2219(인용 분량·출처 표시, 쉬움) · 지식 다름(법의 기원·국제 협약)",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "politics/5",
+    "midKey": "politics",
+    "subName": "법률 용어",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "politics/5#g019a-H2-21",
-   "seed": {
-    "subject": "특허",
-    "aspect": null,
-    "ref": "H2-21",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1421년 피렌체는 브루넬레스키가 고안한 아르노강 짐배에 이것을 주었습니다. 그가 1427년 대리석을 나르려고 지은 큰 배 '바달로네'는 첫 항해에서 가라앉았는데, 1474년 베네치아가 법으로 제도화한 이 권리는?",
-    "answer": "특허",
-    "acceptedAnswers": [
-     "특허권"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "'이 권리'를 묻는 질문이라 '특허권'도 같은 대상 — 표준국어대사전 표제어 '특허권'",
-    "explanation": "베네치아 법은 이전에 만들어진 적 없는 쓸모 있는 '새롭고 독창적인 장치'에 이 권리를 주었고, 이 원칙은 오늘날에도 기본으로 남아 있습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1474년 베네치아가 법으로 제도화한 이 권리",
-     "difWhy": "베네치아 특허법 — 대학 교양 법제사",
-     "wor": 4,
-     "worWhy": "교양 — 제도 기원",
-     "acc": 4,
-     "accWhy": "정치·법 — 고교 사회 교과"
+  "items": [
+    {
+      "seedId": "politics/5#g019a-H2-20",
+      "seed": {
+        "subject": "저작권",
+        "aspect": null,
+        "ref": "H2-20",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1710년 영국 의회가 통과시킨 '앤 여왕법'은 이 권리를 민간이 아닌 정부와 법원이 다루게 한 첫 법으로 꼽히며, 1842년까지 효력을 이어 갔습니다. 보호 기간을 14년으로 하고 한 번 더 늘릴 수 있게 한 이 권리는?",
+        "answer": "저작권",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "미국은 1886년 맺어진 베른 협약에 1989년에야 가입했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1710년 … '앤 여왕법' … 보호 기간을 14년으로",
+          "difWhy": "앤 여왕법 — 대학 교양 법제사 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 제도 기원",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "베른 협약 … 이 협약이 보호하는 권리",
+          "difWhy": "베른 협약 = 저작권 — 고교 사회 (경계 4)",
+          "wor": 4,
+          "worWhy": "교양 — 지식재산 기본 어휘"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1710년 영국 의회가 통과시킨 '앤 여왕법'은 이 권리를 민간 조합이 아닌 정부와 법원이 다루게 한 첫 법으로 꼽힙니다. 미국은 1886년 맺어진 베른 협약에 1989년에야 가입했는데, 이 협약이 보호하는 권리는?",
+          "beforeExplanation": "앤 여왕법은 보호 기간을 14년으로 정하고, 같은 기간만큼 한 번 더 늘릴 수 있게 했습니다.",
+          "removedCue": "베른 협약이 보호하는 권리(고교 사회 — 해설로 옮김)",
+          "addedCue": "1842년까지 효력 · 보호 기간 14년과 한 번 연장(해설에서 옮김)",
+          "why": "베른 협약=저작권이라는 교과서 연결을 빼고 앤 여왕법 세부만으로"
+        },
+        "generalHint": "앤 여왕법 이전에는 인쇄업자 길드가 인쇄 독점권을 쥐고 있었고, 그 독점은 1695년 의회가 근거 법을 갱신하지 않아 끝났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "창작물을 만든 사람이 갖는 법적 권리",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상·뉴스 용어",
+          "piece": "f03",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "H2-20",
+          "key": "b090",
+          "hint": "앤 여왕법의 정식 이름은 '학문 장려를 위해 인쇄된 책의 사본을 저자나 그 구매자에게 맡기는 법'이다.",
+          "guess": "저작권",
+          "confidence": "high",
+          "hit": true,
+          "answer": "저작권"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Statute_of_Anne",
+          "https://en.wikipedia.org/wiki/Copyright"
+        ],
+        "facts": [
+          {
+            "claim": "앤 여왕법 1710년 — 민간이 아닌 정부·법원이 다루는 첫 저작권 법",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Statute_of_Anne",
+            "note": "was an act of the Parliament of Great Britain passed in 1710, which was the first statute to provide for copyright regulated by the government and courts, rather than by private parties."
+          },
+          {
+            "claim": "1886 베른 협약, 미국은 1989년에야 가입",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Copyright",
+            "note": "The Berne International Copyright Convention of 1886 finally provided protection for authors among the countries who signed the agreement, although the US did not join the Berne Convention until 1989."
+          },
+          {
+            "claim": "14년, 같은 기간 갱신",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Statute_of_Anne",
+            "note": "The new law prescribed a copyright term of 14 years, with a provision for renewal for a similar term"
+          },
+          {
+            "claim": "1842년 법이 나올 때까지 효력 유지",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Statute_of_Anne",
+            "note": "the statute remained in force until the Copyright Act 1842"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "1710년 '앤 여왕법'이 정부와 법원이 다루게 한 권리",
+        "targetWhy": "법제사 세부 — 대학 교양(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 권리의 법제사",
+        "pairCheck": null,
+        "dbCheck": "pair-or-different — 활성 #2219(인용 분량·출처 표시, 쉬움) · 지식 다름(법의 기원·국제 협약)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1710년 … '앤 여왕법' … 보호 기간을 14년으로",
+          "difWhy": "앤 여왕법 — 대학 교양 법제사 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 제도 기원",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과"
+        },
+        "g020": {
+          "why": "V025 fix meaning·famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "새 방법을 고안한 … 건축가 … 이 권리",
-     "difWhy": "새 고안에 주는 권리 — 중학 사회",
-     "wor": 3,
-     "worWhy": "제도 기원 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "기록에 남은 첫 산업 분야의 이것은 1421년, 채석장의 대리석을 아르노강의 바지선으로 실어 나르는 새 방법을 고안한 피렌체 건축가 브루넬레스키에게 주어졌습니다. 1474년 베네치아는 이것을 처음 법으로 제도화했는데, 이 권리는?",
-     "beforeExplanation": null,
-     "removedCue": "채석장 대리석을 실어 나르는 새 방법을 고안한 건축가에게 주어진 권리(새 고안 → 권리)",
-     "addedCue": "1427년 대리석 운반선 '바달로네'의 첫 항해 침몰",
-     "why": "'새 방법 고안' 정의형 문구를 줄이고 뒷이야기로 — 다만 권리를 묻는 꼴이라 추론 여지 남음"
-    },
-    "generalHint": "1624년 잉글랜드 의회의 '독점법'이 이 권리를 처음 성문법으로 다룬 법으로 꼽힌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "발명을 일정 기간 독점하게 하는 법적 권리",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "일상·뉴스 용어",
-     "piece": "f04",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "H2-21",
-     "key": "b288",
-     "hint": "1624년 잉글랜드 의회의 '독점법'이 이 권리를 처음 성문법으로 다룬 법으로 꼽힌다.",
-     "guess": "특허권",
-     "confidence": "high",
-     "hit": true,
-     "answer": "특허"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Patent",
-     "https://en.wikipedia.org/wiki/Venetian_Patent_Statute",
-     "https://en.wikipedia.org/wiki/Filippo_Brunelleschi"
-    ],
-    "facts": [
-     {
-      "claim": "첫 산업 특허 1421년 브루넬레스키 — 아르노강 바지선으로 대리석 운반",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Patent",
-      "note": "The first recorded industrial patent was granted in 1421 to Filippo Brunelleschi, a Florentine engineer and architect who invented a new way to transport marble from quarries on the river Arno via barge."
-     },
-     {
-      "claim": "1474년 베네치아 특허법 — 첫 법정 특허 제도",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Patent",
-      "note": "the first statutory patent system is generally regarded to be the Venetian Patent Statute of 1474."
-     },
-     {
-      "claim": "새롭고 독창적이며 쓸모 있는 장치 — 원칙이 오늘날 특허법의 기본",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Venetian_Patent_Statute",
-      "note": "It provided that patents might be granted for \"any new and ingenious device, not previously made\", provided it was useful. By and large, these principles still remain the basic principles of patent law."
-     },
-     {
-      "claim": "1427 바달로네 건조 · 첫 항해에서 침몰",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Filippo_Brunelleschi",
-      "note": "In 1427 he built a large boat named Il Badalone to transport marble to Florence from Pisa up the River Arno. The ship sank on its maiden voyage, along with a sizable portion of Brunelleschi's personal fortune."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Statute_of_Monopolies"
-    ],
-    "hintNote": "an act of the Parliament of England notable as the first statutory expression of English patent law. / passed on 29 May 1624.",
-    "easiestCue": "브루넬레스키가 고안한 짐배에 피렌체가 준 이것",
-    "targetWhy": "브루넬레스키 특허·바달로네는 교양 세부지만 추론 여지 — 3~4 경계",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 건축가와 일상 법 개념의 뜻밖 연결",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "politics/5#g019a-H2-21",
+      "seed": {
+        "subject": "특허",
+        "aspect": null,
+        "ref": "H2-21",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1421년 피렌체는 브루넬레스키가 고안한 아르노강 짐배에 이것을 주었습니다. 그가 1427년 대리석을 나르려고 지은 큰 배 '바달로네'는 첫 항해에서 가라앉았는데, 1474년 베네치아가 법으로 제도화한 이 권리는?",
+        "answer": "특허",
+        "acceptedAnswers": [
+          "특허권"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "'이 권리'를 묻는 질문이라 '특허권'도 같은 대상 — 표준국어대사전 표제어 '특허권'",
+        "explanation": "베네치아 법은 이전에 만들어진 적 없는 쓸모 있는 '새롭고 독창적인 장치'에 이 권리를 주었고, 이 원칙은 오늘날에도 기본으로 남아 있습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1474년 베네치아가 법으로 제도화한 이 권리",
+          "difWhy": "베네치아 특허법 — 대학 교양 법제사",
+          "wor": 4,
+          "worWhy": "교양 — 제도 기원",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "새 방법을 고안한 … 건축가 … 이 권리",
+          "difWhy": "새 고안에 주는 권리 — 중학 사회",
+          "wor": 3,
+          "worWhy": "제도 기원 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "기록에 남은 첫 산업 분야의 이것은 1421년, 채석장의 대리석을 아르노강의 바지선으로 실어 나르는 새 방법을 고안한 피렌체 건축가 브루넬레스키에게 주어졌습니다. 1474년 베네치아는 이것을 처음 법으로 제도화했는데, 이 권리는?",
+          "beforeExplanation": null,
+          "removedCue": "채석장 대리석을 실어 나르는 새 방법을 고안한 건축가에게 주어진 권리(새 고안 → 권리)",
+          "addedCue": "1427년 대리석 운반선 '바달로네'의 첫 항해 침몰",
+          "why": "'새 방법 고안' 정의형 문구를 줄이고 뒷이야기로 — 다만 권리를 묻는 꼴이라 추론 여지 남음"
+        },
+        "generalHint": "1624년 잉글랜드 의회의 '독점법'이 이 권리를 처음 성문법으로 다룬 법으로 꼽힌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "발명을 일정 기간 독점하게 하는 법적 권리",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "일상·뉴스 용어",
+          "piece": "f04",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "H2-21",
+          "key": "b288",
+          "hint": "1624년 잉글랜드 의회의 '독점법'이 이 권리를 처음 성문법으로 다룬 법으로 꼽힌다.",
+          "guess": "특허권",
+          "confidence": "high",
+          "hit": true,
+          "answer": "특허"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Patent",
+          "https://en.wikipedia.org/wiki/Venetian_Patent_Statute",
+          "https://en.wikipedia.org/wiki/Filippo_Brunelleschi"
+        ],
+        "facts": [
+          {
+            "claim": "첫 산업 특허 1421년 브루넬레스키 — 아르노강 바지선으로 대리석 운반",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Patent",
+            "note": "The first recorded industrial patent was granted in 1421 to Filippo Brunelleschi, a Florentine engineer and architect who invented a new way to transport marble from quarries on the river Arno via barge."
+          },
+          {
+            "claim": "1474년 베네치아 특허법 — 첫 법정 특허 제도",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Patent",
+            "note": "the first statutory patent system is generally regarded to be the Venetian Patent Statute of 1474."
+          },
+          {
+            "claim": "새롭고 독창적이며 쓸모 있는 장치 — 원칙이 오늘날 특허법의 기본",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Venetian_Patent_Statute",
+            "note": "It provided that patents might be granted for \"any new and ingenious device, not previously made\", provided it was useful. By and large, these principles still remain the basic principles of patent law."
+          },
+          {
+            "claim": "1427 바달로네 건조 · 첫 항해에서 침몰",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Filippo_Brunelleschi",
+            "note": "In 1427 he built a large boat named Il Badalone to transport marble to Florence from Pisa up the River Arno. The ship sank on its maiden voyage, along with a sizable portion of Brunelleschi's personal fortune."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Statute_of_Monopolies"
+        ],
+        "hintNote": "an act of the Parliament of England notable as the first statutory expression of English patent law. / passed on 29 May 1624.",
+        "easiestCue": "브루넬레스키가 고안한 짐배에 피렌체가 준 이것",
+        "targetWhy": "브루넬레스키 특허·바달로네는 교양 세부지만 추론 여지 — 3~4 경계",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 건축가와 일상 법 개념의 뜻밖 연결",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1474년 베네치아가 법으로 제도화한 이 권리",
+          "difWhy": "베네치아 특허법 — 대학 교양 법제사",
+          "wor": 4,
+          "worWhy": "교양 — 제도 기원",
+          "acc": 4,
+          "accWhy": "정치·법 — 고교 사회 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

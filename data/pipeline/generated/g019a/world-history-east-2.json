@@ -1,567 +1,642 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "world-history-east/2",
-  "midKey": "world-history-east",
-  "subName": "일본사",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-history-east/2#g019a-H1-01",
-   "seed": {
-    "subject": "도쿠가와 이에야스",
-    "aspect": null,
-    "ref": "H1-01",
-    "pairedWith": 5634
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 5634,
-    "question": "한 일본 무장은 죽음을 앞두고 주검은 스루가의 구노잔에 장사 지내고, 장례는 에도의 조조사에서 치르고, 위패는 미카와의 다이주지에 모시라는 유언을 남겼습니다. 죽은 뒤 '도쇼다이곤겐'이라는 신호를 받은 이 인물은?",
-    "answer": "도쿠가와 이에야스",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "말년에 매사냥을 나갔다가 측근에게서 받은 튀김 요리를 먹은 그날 밤 복통을 일으켜 쓰러졌다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "죽은 뒤 '도쇼다이곤겐'이라는 신호",
-     "difWhy": "도쇼구 신격 — 대학 교양 일본사",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
+  "_meta": {
+    "round": "g019a",
+    "subId": "world-history-east/2",
+    "midKey": "world-history-east",
+    "subName": "일본사",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "world-history-east/2#g019a-H1-01",
+      "seed": {
+        "subject": "도쿠가와 이에야스",
+        "aspect": null,
+        "ref": "H1-01",
+        "pairedWith": 5634
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 5634,
+        "question": "한 일본 무장은 죽음을 앞두고 주검은 스루가의 구노잔에 장사 지내고, 장례는 에도의 조조사에서 치르고, 위패는 미카와의 다이주지에 모시라는 유언을 남겼습니다. 죽은 뒤 '도쇼다이곤겐'이라는 신호를 받은 이 인물은?",
+        "answer": "도쿠가와 이에야스",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "말년에 매사냥을 나갔다가 측근에게서 받은 튀김 요리를 먹은 그날 밤 복통을 일으켜 쓰러졌다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "죽은 뒤 '도쇼다이곤겐'이라는 신호",
+          "difWhy": "도쇼구 신격 — 대학 교양 일본사",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "측근에게서 받은 튀김 요리를 먹은 그날 밤 복통",
+          "difWhy": "도미 튀김 사인설 — 일본사 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "한 일본 무장은 말년에 매사냥을 나갔다가 측근에게서 받은 튀김 요리를 먹은 그날 밤 복통을 일으켜 쓰러졌다고 전합니다. 죽은 뒤 '도쇼다이곤겐'이라는 신으로 모셔진 이 인물은 누구일까요?",
+          "beforeExplanation": "주치의 가타야마 소테쓰는 그의 병을 위암으로 진단했다고 전합니다.",
+          "removedCue": "측근에게서 받은 튀김 요리를 먹은 밤의 복통(도미 튀김 사인설 — 관심층 · 해설로 옮김)",
+          "addedCue": "구노잔·조조사·다이주지 유언",
+          "why": "유명한 튀김 사인설을 빼고 장례 유언의 세부로"
+        },
+        "generalHint": "그를 모신 닛코의 신사는 아들 히데타다가 쇼군이던 1617년 처음 세워졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "에도 막부를 연 일본의 초대 쇼군",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "일본사 대표 인물",
+          "piece": "f03",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "H1-01",
+          "key": "b314",
+          "hint": "그를 모신 닛코의 신사는 아들 히데타다가 쇼군이던 1617년 처음 세워졌다.",
+          "guess": "도쿠가와 이에야스",
+          "confidence": "high",
+          "hit": true,
+          "answer": "도쿠가와 이에야스"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80_%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4",
+          "https://en.wikipedia.org/wiki/Tokugawa_Ieyasu",
+          "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80%20%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4"
+        ],
+        "facts": [
+          {
+            "claim": "매사냥 나갔다가 측근에게서 받은 덴푸라를 먹은 그날 밤 복통",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80_%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4",
+            "note": "1616년 정월, 슨푸 근교로 매 사냥을 나갔던 이에야스는 측근으로부터 돈카쓰, 덴푸라를 먹은 후 그날 밤 복통을 일으키며 중태에 빠졌는데, 시의 (侍醫) 가타야마 소테쓰의 재빠른 조치로 회복되었지만…"
+          },
+          {
+            "claim": "죽은 뒤 도쇼다이곤겐으로 신격화",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tokugawa_Ieyasu",
+            "note": "The first Tokugawa shōgun was posthumously deified with the name Tōshō Daigongen (東照大權現), the \"Great Gongen, Light of the East\"."
+          },
+          {
+            "claim": "유언 — 구노잔 장사 · 조조사 장례 · 다이주지 위패",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80%20%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4",
+            "note": "이외에 이에야스는 죽음을 앞두고 혼다 마사즈미, 곤치인 스덴, 덴카이 쇼닌을 불러, 사체를 스루가 국 구노잔(久能山)에서 장사지낸 후 장례는 에도의 조조 사에서 지내고, 위패는 미카와 국의 다이주지에 봉안하고 시모쓰케 국의 닛코(日光)에 작은 사당을 지어 … 옮기라는 유언을 남겼다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Nikk%C5%8D_T%C5%8Dsh%C5%8D-g%C5%AB"
+        ],
+        "hintNote": "It was initially built in 1617, during the Edo period, while Ieyasu's son Hidetada was shōgun.",
+        "easiestCue": "죽은 뒤 '도쇼다이곤겐'이라는 신호를 받은 인물",
+        "targetWhy": "일본사 인물의 교과서 밖 세부 — 일본사 애호가(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 인물의 죽음 무렵 세부",
+        "pairCheck": "1회차 q(윌리엄 애덤스·미우라 안진)·e(슨푸 인질)·h(1605 은퇴·1616 사망일)와 겹치지 않음 — 질문에 연도도 넣지 않음",
+        "dbCheck": "pair-or-different — 활성 5634 의 (가) 2회차",
+        "warn": [],
+        "first": {
+          "id": 5634,
+          "question": "다섯 척으로 떠난 네덜란드 원정대 가운데 홀로 일본에 닿은 리프데호에는 영국인 항해사가 타고 있었습니다. 이 항해사에게 막부의 첫 서양식 배를 짓는 일을 맡기고 '미우라 안진'이라는 이름과 헤미의 영지를 내린 사람은 누구일까요?",
+          "explanation": "어린 시절 이마가와 요시모토와 동맹을 맺는 조건으로 슨푸에 인질로 보내졌습니다.",
+          "hint": "그는 1605년 쇼군 자리에서 스스로 물러났고, 1616년 6월 1일 73세로 숨졌다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "죽은 뒤 '도쇼다이곤겐'이라는 신호",
+          "difWhy": "도쇼구 신격 — 대학 교양 일본사",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "측근에게서 받은 튀김 요리를 먹은 그날 밤 복통",
-     "difWhy": "도미 튀김 사인설 — 일본사 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 일화"
+    {
+      "seedId": "world-history-east/2#g019a-H1-02",
+      "seed": {
+        "subject": "오다 노부나가",
+        "aspect": null,
+        "ref": "H1-02",
+        "pairedWith": 5633
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 5633,
+        "question": "1578년 자기 성이 선 산에서 1,500명이 참가한 스모 대회를 열 만큼 스모를 몹시 좋아했던 일본 무장입니다. 비와호 동쪽 기슭에 쌓은 그 성을 그린 병풍을 교황 그레고리오 13세에게 보낸 이 무장은?",
+        "answer": "오다 노부나가",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "다케다 신겐이 편지에 '천태좌주 사문 신겐'이라 서명하자, 그는 자신을 '제육천마왕'이라 일컬어 맞받았다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "비와호 동쪽 기슭에 쌓은 그 성을 그린 병풍을 교황 … 에게 보낸",
+          "difWhy": "아즈치성 병풍 — 대학 교양 일본사 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "자신을 '제육천마왕'이라 일컬어 맞받았다",
+          "difWhy": "제육천마왕 별칭 — 일본사 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "다케다 신겐이 편지에 '천태좌주 사문 신겐'이라 서명하자, 한 일본 무장은 자신을 '제육천마왕'이라 일컬어 맞받았다고 전합니다. 비와호 동쪽 기슭에 쌓은 자기 성을 그린 병풍을 교황 그레고리오 13세에게 보낸 이 무장은?",
+          "beforeExplanation": "스모를 몹시 좋아해 1578년 아즈치산에서 1,500명이 참가한 대회를 열기도 했습니다.",
+          "removedCue": "자신을 '제육천마왕'이라 일컬어 맞받았다",
+          "addedCue": "1578년 스모 대회 1,500명",
+          "why": "일본사 관심층이 아는 제육천마왕 별칭을 해설로 옮기고 해설의 스모 대회를 질문으로(아즈치라는 이름은 뺌)"
+        },
+        "generalHint": "다도의 한 유파를 세운 이 무장의 동생 우라쿠사이의 이름에서 도쿄의 '유라쿠초'라는 지명이 왔다고 한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "일본 전국 시대 통일의 기틀을 닦은 무장",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "일본 전국시대 대표 인물",
+          "piece": "f09",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "H1-02",
+          "key": "b001",
+          "hint": "다도의 한 유파를 세운 이 무장의 동생 우라쿠사이의 이름에서 도쿄의 '유라쿠초'라는 지명이 왔다고 한다.",
+          "guess": "오다 노부나가",
+          "confidence": "high",
+          "hit": true,
+          "answer": "오다 노부나가",
+          "first": {
+            "ref": "H1-02",
+            "key": "b176",
+            "hint": "젊을 때 소매 없는 옷에 말 위에서 멜론을 먹는 등 기행을 일삼아 '오와리의 바보'라는 별명을 얻었다.",
+            "guess": "오다 노부나가",
+            "confidence": "high",
+            "hit": true,
+            "answer": "오다 노부나가"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Oda_Nobunaga"
+        ],
+        "facts": [
+          {
+            "claim": "1578년 아즈치산 스모 대회 1,500명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
+            "note": "Nobunaga was famous for his great love of sumo … The largest tournament was held in 1578 at Mount Azuchi, with 1,500 participants."
+          },
+          {
+            "claim": "아즈치성은 비와호 동쪽 기슭",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
+            "note": "Azuchi Castle was built from 1576 to 1579 on Mount Azuchi on the eastern shore of Lake Biwa in Ōmi Province."
+          },
+          {
+            "claim": "아즈치 병풍을 교황 그레고리오 13세에게 보냄",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
+            "note": "The castle and its nearby town were depicted on the so-called Azuchi Screens, which Oda Nobunaga gave to Pope Gregory XIII, who displayed them in the Vatican collections."
+          },
+          {
+            "claim": "신겐의 천태좌주 사문 서명에 대해 제육천마왕이라 칭함",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
+            "note": "A letter left by Luis Frois states that in response to a letter from Takeda Shingen signed Tendai no Zasu Shamon Shingen (天台座主沙門信玄 …) … 'Nobunaga the Demon King of the 6th Heaven'). In reality, however, Shingen was not a Tendai Zasu … it is said that Nobunaga may have referred to himself as the Demon King to mock Shingen's own choice of title."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Oda_Nagamasu"
+        ],
+        "hintNote": "\"a brother of Oda Nobunaga\" · \"Also known as Yūraku (有楽) or Urakusai (有楽斎)\" · \"eventually started his own school of the tea ceremony\" · \"the Tokyo neighborhood Yūrakuchō is named for him\"",
+        "easiestCue": "비와호 동쪽 기슭 성(아즈치성) 병풍을 교황에게 보냄",
+        "targetWhy": "스모 대회·병풍 헌정은 일본사 애호가 세부 — 4(경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 무장의 별칭 유래·외교 세부",
+        "pairCheck": "1회차 q(야스케)·e(엔랴쿠지 방화)·h(히데요시 짚신 당번)와 겹치지 않음",
+        "dbCheck": "pair-or-different — 활성 5633 의 (가) 2회차",
+        "warn": [],
+        "first": {
+          "id": 5633,
+          "question": "예수회 선교사 발리냐노를 따라 일본에 온 아프리카 출신 남자 야스케를 처음 본 한 일본 무장은, 피부색이 진짜인지 보려고 그의 몸을 씻기게 했다고 전합니다. 그 뒤 야스케에게 녹봉과 칼, 집을 내린 이 무장은 누구일까요?",
+          "explanation": "1571년 엔랴쿠지를 먼저 공격해 히에이산을 에워싸고 절의 건물을 모두 불태웠습니다.",
+          "hint": "훗날 도요토미 히데요시가 되는 하시바 히데요시는 이 무장의 짚신 당번이었다고 한다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "비와호 동쪽 기슭에 쌓은 그 성을 그린 병풍을 교황 … 에게 보낸",
+          "difWhy": "아즈치성 병풍 — 대학 교양 일본사 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "한 일본 무장은 말년에 매사냥을 나갔다가 측근에게서 받은 튀김 요리를 먹은 그날 밤 복통을 일으켜 쓰러졌다고 전합니다. 죽은 뒤 '도쇼다이곤겐'이라는 신으로 모셔진 이 인물은 누구일까요?",
-     "beforeExplanation": "주치의 가타야마 소테쓰는 그의 병을 위암으로 진단했다고 전합니다.",
-     "removedCue": "측근에게서 받은 튀김 요리를 먹은 밤의 복통(도미 튀김 사인설 — 관심층 · 해설로 옮김)",
-     "addedCue": "구노잔·조조사·다이주지 유언",
-     "why": "유명한 튀김 사인설을 빼고 장례 유언의 세부로"
+    {
+      "seedId": "world-history-east/2#g019a-H1-03",
+      "seed": {
+        "subject": "도요토미 히데요시",
+        "aspect": null,
+        "ref": "H1-03",
+        "pairedWith": 5636
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 5636,
+        "question": "1591년 세 살 난 아들 쓰루마쓰를 잃은 한 일본 권력자는 관백 자리를 조카에게 물려주었습니다. 당대 가톨릭 기록이 '쿠암바콘도노'라고도 부른 이 인물은 누구일까요?",
+        "answer": "도요토미 히데요시",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "오와리국 나카무라, 지금의 나고야시 나카무라구에서 태어났다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "관백 자리를 조카에게 물려주었습니다",
+          "difWhy": "관백 물려준 권력자 — 고교 세계사",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "물러난 관백을 이르는 칭호 … '타이코사마'",
+          "difWhy": "태합 칭호 — 일본사 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 칭호"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1591년 세 살 난 아들 쓰루마쓰를 잃은 한 일본 권력자는 관백 자리를 조카에게 물려주고, 물러난 관백을 이르는 칭호를 썼습니다. 당대 가톨릭 기록이 '타이코사마'라 부른 이 인물은 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "물러난 관백을 이르는 칭호(태합) · '타이코사마'",
+          "addedCue": "가톨릭 기록의 다른 이름 '쿠암바콘도노'",
+          "why": "태합 칭호(일본사 관심층 상식)를 빼고 후계·기록 세부로 · 1회차(황금 다실·대불전)·힌트(바테렌 추방령)와 겹치지 않음"
+        },
+        "generalHint": "관백을 물려받은 조카는 1595년 반란을 꾀했다는 의심을 받아 할복을 명받았고, 그 가족도 모두 처형되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "임진왜란을 일으킨 일본의 통일 권력자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "임진왜란으로 교과서 필수 인물",
+          "piece": "f01",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "H1-03",
+          "key": "b315",
+          "hint": "관백을 물려받은 조카는 1595년 반란을 꾀했다는 의심을 받아 할복을 명받았고, 그 가족도 모두 처형되었다.",
+          "guess": "도요토미 히데요시",
+          "confidence": "high",
+          "hit": true,
+          "answer": "도요토미 히데요시"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
+          "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%9A%94%ED%86%A0%EB%AF%B8_%ED%9E%88%EB%8D%B0%EC%9A%94%EC%8B%9C"
+        ],
+        "facts": [
+          {
+            "claim": "1591년 세 살 아들 쓰루마쓰 사망",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
+            "note": "The future stability of the Toyotomi dynasty … was put in doubt when his only son, three-year-old Tsurumatsu, died in September 1591"
+          },
+          {
+            "claim": "관백을 조카 히데쓰구에게 넘기고 태합 칭호",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
+            "note": "He then passed the position and title of kampaku to his nephew, Toyotomi Hidetsugu. / Hideyoshi resigned as kampaku to take the title of taikō (retired regent)"
+          },
+          {
+            "claim": "가톨릭 기록이 Taicosama 라 부름",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
+            "note": "Contemporary Catholic sources referred to him as Cuambacondono … and \"emperor Taicosama\" (from taikō, a retired kampaku …)"
+          },
+          {
+            "claim": "오와리국 나카무라 출생",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%9A%94%ED%86%A0%EB%AF%B8_%ED%9E%88%EB%8D%B0%EC%9A%94%EC%8B%9C",
+            "note": "태합소성기에 의하면 오와리국 아이치군 나카무라(지금의 일본 나고야시 나카무라구)의 농민 출신이라고 알려진 아버지 기노시타 야에몬과 어머니 나카 사이에서 태어났다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Toyotomi_Hidetsugu"
+        ],
+        "hintNote": "in 1595, Hidetsugu was accused of plotting a coup and ordered to commit ritual suicide / Hidetsugu's entire family, including children, were also executed on Hideyoshi's orders.",
+        "easiestCue": "1591년 세 살 난 아들 쓰루마쓰를 잃은 … 관백 자리를 조카에게",
+        "targetWhy": "일본사의 후계 세부 — 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'태합 = 히데요시'를 아는 사람이 적지 않을 수 있음",
+        "pairCheck": "1회차 q(황금 다실·도수령 대불전)·e(센노 리큐)·h(바테렌 추방령)와 겹치지 않음 — 임진왜란도 쓰지 않음",
+        "dbCheck": "pair-or-different — 활성 5636 의 (가) 2회차",
+        "warn": [],
+        "first": {
+          "id": 5636,
+          "question": "1586년 1월 한 일본 권력자는 금으로 꾸민 다실을 교토 황궁에 옮겨 와 오기마치 천황을 대접했습니다. 농민에게서 거둔 무기를 녹여 교토 호코지의 대불전을 짓는 데 쓴 이 인물은 누구일까요?",
+          "explanation": "1591년 다도의 스승 센노 리큐에게, 분노 때문이었을지도 모른다는 명으로 스스로 목숨을 끊게 했습니다.",
+          "hint": "1587년 7월 '바테렌 추방령'을 내려 예수회 선교사를 내쫓고 기독교를 금했다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "관백 자리를 조카에게 물려주었습니다",
+          "difWhy": "관백 물려준 권력자 — 고교 세계사",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "generalHint": "그를 모신 닛코의 신사는 아들 히데타다가 쇼군이던 1617년 처음 세워졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "에도 막부를 연 일본의 초대 쇼군",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "일본사 대표 인물",
-     "piece": "f03",
-     "genPct": 85
+    {
+      "seedId": "world-history-east/2#g019a-H1-04",
+      "seed": {
+        "subject": "이토 히로부미",
+        "aspect": null,
+        "ref": "H1-04",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1863년 막부의 해외 도항 금지를 어기고 몰래 영국으로 건너간 '조슈 5인' 가운데 한 명으로, 유니버시티 칼리지 런던에서 공부했습니다. 1963년부터 일본은행 천 엔권에 초상이 실린 이 정치인은 누구일까요?",
+        "answer": "이토 히로부미",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "런던에서는 화학자 알렉산더 윌리엄슨 교수의 집에 하숙하며 영어와 영국식 예절을 배웠습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1963년부터 일본은행 천 엔권에 초상이 실린",
+          "difWhy": "옛 천 엔권 초상 — 일본사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 — 유학 이야깃거리",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1963년부터 일본은행 천 엔권에 초상이 실린",
+          "difWhy": "옛 천 엔권 초상 — 일본사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 — 유학 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "반년쯤 뒤 『타임스』에서 시모노세키 포격 소식을 읽고 이노우에 가오루와 함께 일본으로 돌아가기로 했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "메이지 시대 일본 초대 총리이자 초대 한국 통감",
+        "familiarity": {
+          "judge": 3,
+          "pct": 98,
+          "why": "안중근 의거로 교과서 필수",
+          "piece": "f03",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "H1-04",
+          "key": "b177",
+          "hint": "반년쯤 뒤 『타임스』에서 시모노세키 포격 소식을 읽고 이노우에 가오루와 함께 일본으로 돌아가기로 했다.",
+          "guess": "이토 히로부미",
+          "confidence": "high",
+          "hit": true,
+          "answer": "이토 히로부미"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi",
+          "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E5%8D%9A%E6%96%87",
+          "https://ko.wikipedia.org/wiki/%EC%9D%B4%ED%86%A0_%ED%9E%88%EB%A1%9C%EB%B6%80%EB%AF%B8"
+        ],
+        "facts": [
+          {
+            "claim": "조슈 5인으로 1863년 막부 금령 어기고 영국 밀항",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi",
+            "note": "Itō was selected as one of the Chōshū Five to secretly travel to Britain in 1863 for study, an act that violated the Tokugawa shogunate's ban on overseas travel."
+          },
+          {
+            "claim": "University College London 에서 공부",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi",
+            "note": "being sent to England in 1863 to study at University College London."
+          },
+          {
+            "claim": "일본은행 C 천 엔권(1963-1984) 초상",
+            "where": "q",
+            "url": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E5%8D%9A%E6%96%87",
+            "note": "のちに日本銀行券C千円券（1963年11月1日 - 1984年11月1日発行）の肖像として採用された。"
+          },
+          {
+            "claim": "윌리엄슨 교수 집 하숙",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%ED%86%A0_%ED%9E%88%EB%A1%9C%EB%B6%80%EB%AF%B8",
+            "note": "런던 도착 후 화학자인 알렉산더 윌리엄슨 런던 대학교 교수의 저택에서 하숙하면서 그는 영어와 영국식 예의 범절의 지도를 받았다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi"
+        ],
+        "hintNote": "After about six months, he and Inoue Kaoru decided to return to Japan upon learning from The Times about the bombardment of Shimonoseki by Western powers",
+        "easiestCue": "1963년부터 일본은행 천 엔권에 초상이 실린 이 정치인",
+        "targetWhy": "천 엔권 초상·조슈 5인 — 일본 근대사 애호가, 한국사 교과서의 통감·을사조약은 쓰지 않음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "한국인이 다 아는 인물의 일본 쪽 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1963년부터 일본은행 천 엔권에 초상이 실린",
+          "difWhy": "옛 천 엔권 초상 — 일본사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 — 유학 이야깃거리",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "H1-01",
-     "key": "b314",
-     "hint": "그를 모신 닛코의 신사는 아들 히데타다가 쇼군이던 1617년 처음 세워졌다.",
-     "guess": "도쿠가와 이에야스",
-     "confidence": "high",
-     "hit": true,
-     "answer": "도쿠가와 이에야스"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80_%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4",
-     "https://en.wikipedia.org/wiki/Tokugawa_Ieyasu",
-     "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80%20%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4"
-    ],
-    "facts": [
-     {
-      "claim": "매사냥 나갔다가 측근에게서 받은 덴푸라를 먹은 그날 밤 복통",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80_%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4",
-      "note": "1616년 정월, 슨푸 근교로 매 사냥을 나갔던 이에야스는 측근으로부터 돈카쓰, 덴푸라를 먹은 후 그날 밤 복통을 일으키며 중태에 빠졌는데, 시의 (侍醫) 가타야마 소테쓰의 재빠른 조치로 회복되었지만…"
-     },
-     {
-      "claim": "죽은 뒤 도쇼다이곤겐으로 신격화",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tokugawa_Ieyasu",
-      "note": "The first Tokugawa shōgun was posthumously deified with the name Tōshō Daigongen (東照大權現), the \"Great Gongen, Light of the East\"."
-     },
-     {
-      "claim": "유언 — 구노잔 장사 · 조조사 장례 · 다이주지 위패",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BF%A0%EA%B0%80%EC%99%80%20%EC%9D%B4%EC%97%90%EC%95%BC%EC%8A%A4",
-      "note": "이외에 이에야스는 죽음을 앞두고 혼다 마사즈미, 곤치인 스덴, 덴카이 쇼닌을 불러, 사체를 스루가 국 구노잔(久能山)에서 장사지낸 후 장례는 에도의 조조 사에서 지내고, 위패는 미카와 국의 다이주지에 봉안하고 시모쓰케 국의 닛코(日光)에 작은 사당을 지어 … 옮기라는 유언을 남겼다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Nikk%C5%8D_T%C5%8Dsh%C5%8D-g%C5%AB"
-    ],
-    "hintNote": "It was initially built in 1617, during the Edo period, while Ieyasu's son Hidetada was shōgun.",
-    "easiestCue": "죽은 뒤 '도쇼다이곤겐'이라는 신호를 받은 인물",
-    "targetWhy": "일본사 인물의 교과서 밖 세부 — 일본사 애호가(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 인물의 죽음 무렵 세부",
-    "pairCheck": "1회차 q(윌리엄 애덤스·미우라 안진)·e(슨푸 인질)·h(1605 은퇴·1616 사망일)와 겹치지 않음 — 질문에 연도도 넣지 않음",
-    "dbCheck": "pair-or-different — 활성 5634 의 (가) 2회차",
-    "warn": [],
-    "first": {
-     "id": 5634,
-     "question": "다섯 척으로 떠난 네덜란드 원정대 가운데 홀로 일본에 닿은 리프데호에는 영국인 항해사가 타고 있었습니다. 이 항해사에게 막부의 첫 서양식 배를 짓는 일을 맡기고 '미우라 안진'이라는 이름과 헤미의 영지를 내린 사람은 누구일까요?",
-     "explanation": "어린 시절 이마가와 요시모토와 동맹을 맺는 조건으로 슨푸에 인질로 보내졌습니다.",
-     "hint": "그는 1605년 쇼군 자리에서 스스로 물러났고, 1616년 6월 1일 73세로 숨졌다.",
-     "difficulty": 3
+    {
+      "seedId": "world-history-east/2#g019a-H1-05",
+      "seed": {
+        "subject": "오사카성",
+        "aspect": null,
+        "ref": "H1-05",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1583년 잇코잇키의 거점이던 이시야마 혼간지 터에 쌓기 시작한 일본의 성입니다. 지금의 천수각은 1931년 철근 콘크리트로 다시 지은 것으로 안에 엘리베이터까지 있는데, 이 성은 무엇일까요?",
+        "answer": "오사카성",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": "띄어 쓴 \"오사카 성\"은 정규화로 같아 넣지 않음",
+        "explanation": "도요토미 히데요시가 이 성을 짓기 시작했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "이시야마 혼간지 터에 쌓기 시작한 일본의 성",
+          "difWhy": "혼간지 터 성 — 일본사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 성 이야깃거리",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "이시야마 혼간지 터에 쌓기 시작한 일본의 성",
+          "difWhy": "혼간지 터 성 — 일본사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 성 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "1665년 벼락을 맞아 천수각이 불탔고, 1868년에는 막부에 맞선 세력에게 넘어갔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "일본 간사이 지방의 대표적인 옛 성",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "일본 여행 명소",
+          "piece": "f02",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "H1-05",
+          "key": "b155",
+          "hint": "1665년 벼락을 맞아 천수각이 불탔고, 1868년에는 막부에 맞선 세력에게 넘어갔다.",
+          "guess": "오사카성",
+          "confidence": "high",
+          "hit": true,
+          "answer": "오사카성"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Osaka_Castle"
+        ],
+        "facts": [
+          {
+            "claim": "1583년 이시야마 혼간지 터에서 공사 시작",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Osaka_Castle",
+            "note": "In 1583 Toyotomi Hideyoshi commenced construction on the site of the Ikkō-ikki temple of Ishiyama Hongan-ji."
+          },
+          {
+            "claim": "1931년 철근 콘크리트 천수각, 엘리베이터 포함",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Osaka_Castle",
+            "note": "In 1931, the ferroconcrete tenshu was built. / The keep is a concrete reproduction (including elevators) of the original"
+          },
+          {
+            "claim": "히데요시가 공사 시작",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Osaka_Castle",
+            "note": "In 1583 Toyotomi Hideyoshi commenced construction"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Osaka_Castle"
+        ],
+        "hintNote": "In 1665, lightning struck and burnt down the tenshu. In 1868, Osaka Castle fell and was surrendered to anti-bakufu imperial loyalists.",
+        "easiestCue": "1583년 잇코잇키의 거점이던 이시야마 혼간지 터에 쌓기 시작한 일본의 성",
+        "targetWhy": "혼간지 터·1931 콘크리트 재건 — 일본 여행·성곽 애호가 세부",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 성의 내력 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "이시야마 혼간지 터에 쌓기 시작한 일본의 성",
+          "difWhy": "혼간지 터 성 — 일본사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 성 이야깃거리",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "world-history-east/2#g019a-H1-02",
-   "seed": {
-    "subject": "오다 노부나가",
-    "aspect": null,
-    "ref": "H1-02",
-    "pairedWith": 5633
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 5633,
-    "question": "1578년 자기 성이 선 산에서 1,500명이 참가한 스모 대회를 열 만큼 스모를 몹시 좋아했던 일본 무장입니다. 비와호 동쪽 기슭에 쌓은 그 성을 그린 병풍을 교황 그레고리오 13세에게 보낸 이 무장은?",
-    "answer": "오다 노부나가",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "다케다 신겐이 편지에 '천태좌주 사문 신겐'이라 서명하자, 그는 자신을 '제육천마왕'이라 일컬어 맞받았다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "비와호 동쪽 기슭에 쌓은 그 성을 그린 병풍을 교황 … 에게 보낸",
-     "difWhy": "아즈치성 병풍 — 대학 교양 일본사 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "자신을 '제육천마왕'이라 일컬어 맞받았다",
-     "difWhy": "제육천마왕 별칭 — 일본사 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "다케다 신겐이 편지에 '천태좌주 사문 신겐'이라 서명하자, 한 일본 무장은 자신을 '제육천마왕'이라 일컬어 맞받았다고 전합니다. 비와호 동쪽 기슭에 쌓은 자기 성을 그린 병풍을 교황 그레고리오 13세에게 보낸 이 무장은?",
-     "beforeExplanation": "스모를 몹시 좋아해 1578년 아즈치산에서 1,500명이 참가한 대회를 열기도 했습니다.",
-     "removedCue": "자신을 '제육천마왕'이라 일컬어 맞받았다",
-     "addedCue": "1578년 스모 대회 1,500명",
-     "why": "일본사 관심층이 아는 제육천마왕 별칭을 해설로 옮기고 해설의 스모 대회를 질문으로(아즈치라는 이름은 뺌)"
-    },
-    "generalHint": "다도의 한 유파를 세운 이 무장의 동생 우라쿠사이의 이름에서 도쿄의 '유라쿠초'라는 지명이 왔다고 한다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "일본 전국 시대 통일의 기틀을 닦은 무장",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "일본 전국시대 대표 인물",
-     "piece": "f09",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "H1-02",
-     "key": "b001",
-     "hint": "다도의 한 유파를 세운 이 무장의 동생 우라쿠사이의 이름에서 도쿄의 '유라쿠초'라는 지명이 왔다고 한다.",
-     "guess": "오다 노부나가",
-     "confidence": "high",
-     "hit": true,
-     "answer": "오다 노부나가",
-     "first": {
-      "ref": "H1-02",
-      "key": "b176",
-      "hint": "젊을 때 소매 없는 옷에 말 위에서 멜론을 먹는 등 기행을 일삼아 '오와리의 바보'라는 별명을 얻었다.",
-      "guess": "오다 노부나가",
-      "confidence": "high",
-      "hit": true,
-      "answer": "오다 노부나가"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Oda_Nobunaga"
-    ],
-    "facts": [
-     {
-      "claim": "1578년 아즈치산 스모 대회 1,500명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
-      "note": "Nobunaga was famous for his great love of sumo … The largest tournament was held in 1578 at Mount Azuchi, with 1,500 participants."
-     },
-     {
-      "claim": "아즈치성은 비와호 동쪽 기슭",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
-      "note": "Azuchi Castle was built from 1576 to 1579 on Mount Azuchi on the eastern shore of Lake Biwa in Ōmi Province."
-     },
-     {
-      "claim": "아즈치 병풍을 교황 그레고리오 13세에게 보냄",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
-      "note": "The castle and its nearby town were depicted on the so-called Azuchi Screens, which Oda Nobunaga gave to Pope Gregory XIII, who displayed them in the Vatican collections."
-     },
-     {
-      "claim": "신겐의 천태좌주 사문 서명에 대해 제육천마왕이라 칭함",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Oda_Nobunaga",
-      "note": "A letter left by Luis Frois states that in response to a letter from Takeda Shingen signed Tendai no Zasu Shamon Shingen (天台座主沙門信玄 …) … 'Nobunaga the Demon King of the 6th Heaven'). In reality, however, Shingen was not a Tendai Zasu … it is said that Nobunaga may have referred to himself as the Demon King to mock Shingen's own choice of title."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Oda_Nagamasu"
-    ],
-    "hintNote": "\"a brother of Oda Nobunaga\" · \"Also known as Yūraku (有楽) or Urakusai (有楽斎)\" · \"eventually started his own school of the tea ceremony\" · \"the Tokyo neighborhood Yūrakuchō is named for him\"",
-    "easiestCue": "비와호 동쪽 기슭 성(아즈치성) 병풍을 교황에게 보냄",
-    "targetWhy": "스모 대회·병풍 헌정은 일본사 애호가 세부 — 4(경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 무장의 별칭 유래·외교 세부",
-    "pairCheck": "1회차 q(야스케)·e(엔랴쿠지 방화)·h(히데요시 짚신 당번)와 겹치지 않음",
-    "dbCheck": "pair-or-different — 활성 5633 의 (가) 2회차",
-    "warn": [],
-    "first": {
-     "id": 5633,
-     "question": "예수회 선교사 발리냐노를 따라 일본에 온 아프리카 출신 남자 야스케를 처음 본 한 일본 무장은, 피부색이 진짜인지 보려고 그의 몸을 씻기게 했다고 전합니다. 그 뒤 야스케에게 녹봉과 칼, 집을 내린 이 무장은 누구일까요?",
-     "explanation": "1571년 엔랴쿠지를 먼저 공격해 히에이산을 에워싸고 절의 건물을 모두 불태웠습니다.",
-     "hint": "훗날 도요토미 히데요시가 되는 하시바 히데요시는 이 무장의 짚신 당번이었다고 한다.",
-     "difficulty": 3
-    }
-   }
-  },
-  {
-   "seedId": "world-history-east/2#g019a-H1-03",
-   "seed": {
-    "subject": "도요토미 히데요시",
-    "aspect": null,
-    "ref": "H1-03",
-    "pairedWith": 5636
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 5636,
-    "question": "1591년 세 살 난 아들 쓰루마쓰를 잃은 한 일본 권력자는 관백 자리를 조카에게 물려주었습니다. 당대 가톨릭 기록이 '쿠암바콘도노'라고도 부른 이 인물은 누구일까요?",
-    "answer": "도요토미 히데요시",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "오와리국 나카무라, 지금의 나고야시 나카무라구에서 태어났다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "관백 자리를 조카에게 물려주었습니다",
-     "difWhy": "관백 물려준 권력자 — 고교 세계사",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "물러난 관백을 이르는 칭호 … '타이코사마'",
-     "difWhy": "태합 칭호 — 일본사 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 칭호"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1591년 세 살 난 아들 쓰루마쓰를 잃은 한 일본 권력자는 관백 자리를 조카에게 물려주고, 물러난 관백을 이르는 칭호를 썼습니다. 당대 가톨릭 기록이 '타이코사마'라 부른 이 인물은 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "물러난 관백을 이르는 칭호(태합) · '타이코사마'",
-     "addedCue": "가톨릭 기록의 다른 이름 '쿠암바콘도노'",
-     "why": "태합 칭호(일본사 관심층 상식)를 빼고 후계·기록 세부로 · 1회차(황금 다실·대불전)·힌트(바테렌 추방령)와 겹치지 않음"
-    },
-    "generalHint": "관백을 물려받은 조카는 1595년 반란을 꾀했다는 의심을 받아 할복을 명받았고, 그 가족도 모두 처형되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "임진왜란을 일으킨 일본의 통일 권력자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "임진왜란으로 교과서 필수 인물",
-     "piece": "f01",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "H1-03",
-     "key": "b315",
-     "hint": "관백을 물려받은 조카는 1595년 반란을 꾀했다는 의심을 받아 할복을 명받았고, 그 가족도 모두 처형되었다.",
-     "guess": "도요토미 히데요시",
-     "confidence": "high",
-     "hit": true,
-     "answer": "도요토미 히데요시"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
-     "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%9A%94%ED%86%A0%EB%AF%B8_%ED%9E%88%EB%8D%B0%EC%9A%94%EC%8B%9C"
-    ],
-    "facts": [
-     {
-      "claim": "1591년 세 살 아들 쓰루마쓰 사망",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
-      "note": "The future stability of the Toyotomi dynasty … was put in doubt when his only son, three-year-old Tsurumatsu, died in September 1591"
-     },
-     {
-      "claim": "관백을 조카 히데쓰구에게 넘기고 태합 칭호",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
-      "note": "He then passed the position and title of kampaku to his nephew, Toyotomi Hidetsugu. / Hideyoshi resigned as kampaku to take the title of taikō (retired regent)"
-     },
-     {
-      "claim": "가톨릭 기록이 Taicosama 라 부름",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Toyotomi_Hideyoshi",
-      "note": "Contemporary Catholic sources referred to him as Cuambacondono … and \"emperor Taicosama\" (from taikō, a retired kampaku …)"
-     },
-     {
-      "claim": "오와리국 나카무라 출생",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EB%8F%84%EC%9A%94%ED%86%A0%EB%AF%B8_%ED%9E%88%EB%8D%B0%EC%9A%94%EC%8B%9C",
-      "note": "태합소성기에 의하면 오와리국 아이치군 나카무라(지금의 일본 나고야시 나카무라구)의 농민 출신이라고 알려진 아버지 기노시타 야에몬과 어머니 나카 사이에서 태어났다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Toyotomi_Hidetsugu"
-    ],
-    "hintNote": "in 1595, Hidetsugu was accused of plotting a coup and ordered to commit ritual suicide / Hidetsugu's entire family, including children, were also executed on Hideyoshi's orders.",
-    "easiestCue": "1591년 세 살 난 아들 쓰루마쓰를 잃은 … 관백 자리를 조카에게",
-    "targetWhy": "일본사의 후계 세부 — 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'태합 = 히데요시'를 아는 사람이 적지 않을 수 있음",
-    "pairCheck": "1회차 q(황금 다실·도수령 대불전)·e(센노 리큐)·h(바테렌 추방령)와 겹치지 않음 — 임진왜란도 쓰지 않음",
-    "dbCheck": "pair-or-different — 활성 5636 의 (가) 2회차",
-    "warn": [],
-    "first": {
-     "id": 5636,
-     "question": "1586년 1월 한 일본 권력자는 금으로 꾸민 다실을 교토 황궁에 옮겨 와 오기마치 천황을 대접했습니다. 농민에게서 거둔 무기를 녹여 교토 호코지의 대불전을 짓는 데 쓴 이 인물은 누구일까요?",
-     "explanation": "1591년 다도의 스승 센노 리큐에게, 분노 때문이었을지도 모른다는 명으로 스스로 목숨을 끊게 했습니다.",
-     "hint": "1587년 7월 '바테렌 추방령'을 내려 예수회 선교사를 내쫓고 기독교를 금했다.",
-     "difficulty": 3
-    }
-   }
-  },
-  {
-   "seedId": "world-history-east/2#g019a-H1-04",
-   "seed": {
-    "subject": "이토 히로부미",
-    "aspect": null,
-    "ref": "H1-04",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1863년 막부의 해외 도항 금지를 어기고 몰래 영국으로 건너간 '조슈 5인' 가운데 한 명으로, 유니버시티 칼리지 런던에서 공부했습니다. 1963년부터 일본은행 천 엔권에 초상이 실린 이 정치인은 누구일까요?",
-    "answer": "이토 히로부미",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "런던에서는 화학자 알렉산더 윌리엄슨 교수의 집에 하숙하며 영어와 영국식 예절을 배웠습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1963년부터 일본은행 천 엔권에 초상이 실린",
-     "difWhy": "옛 천 엔권 초상 — 일본사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 — 유학 이야깃거리",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1963년부터 일본은행 천 엔권에 초상이 실린",
-     "difWhy": "옛 천 엔권 초상 — 일본사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 — 유학 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "반년쯤 뒤 『타임스』에서 시모노세키 포격 소식을 읽고 이노우에 가오루와 함께 일본으로 돌아가기로 했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "메이지 시대 일본 초대 총리이자 초대 한국 통감",
-    "familiarity": {
-     "judge": 3,
-     "pct": 98,
-     "why": "안중근 의거로 교과서 필수",
-     "piece": "f03",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "H1-04",
-     "key": "b177",
-     "hint": "반년쯤 뒤 『타임스』에서 시모노세키 포격 소식을 읽고 이노우에 가오루와 함께 일본으로 돌아가기로 했다.",
-     "guess": "이토 히로부미",
-     "confidence": "high",
-     "hit": true,
-     "answer": "이토 히로부미"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi",
-     "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E5%8D%9A%E6%96%87",
-     "https://ko.wikipedia.org/wiki/%EC%9D%B4%ED%86%A0_%ED%9E%88%EB%A1%9C%EB%B6%80%EB%AF%B8"
-    ],
-    "facts": [
-     {
-      "claim": "조슈 5인으로 1863년 막부 금령 어기고 영국 밀항",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi",
-      "note": "Itō was selected as one of the Chōshū Five to secretly travel to Britain in 1863 for study, an act that violated the Tokugawa shogunate's ban on overseas travel."
-     },
-     {
-      "claim": "University College London 에서 공부",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi",
-      "note": "being sent to England in 1863 to study at University College London."
-     },
-     {
-      "claim": "일본은행 C 천 엔권(1963-1984) 초상",
-      "where": "q",
-      "url": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E8%97%A4%E5%8D%9A%E6%96%87",
-      "note": "のちに日本銀行券C千円券（1963年11月1日 - 1984年11月1日発行）の肖像として採用された。"
-     },
-     {
-      "claim": "윌리엄슨 교수 집 하숙",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%ED%86%A0_%ED%9E%88%EB%A1%9C%EB%B6%80%EB%AF%B8",
-      "note": "런던 도착 후 화학자인 알렉산더 윌리엄슨 런던 대학교 교수의 저택에서 하숙하면서 그는 영어와 영국식 예의 범절의 지도를 받았다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/It%C5%8D_Hirobumi"
-    ],
-    "hintNote": "After about six months, he and Inoue Kaoru decided to return to Japan upon learning from The Times about the bombardment of Shimonoseki by Western powers",
-    "easiestCue": "1963년부터 일본은행 천 엔권에 초상이 실린 이 정치인",
-    "targetWhy": "천 엔권 초상·조슈 5인 — 일본 근대사 애호가, 한국사 교과서의 통감·을사조약은 쓰지 않음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "한국인이 다 아는 인물의 일본 쪽 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "world-history-east/2#g019a-H1-05",
-   "seed": {
-    "subject": "오사카성",
-    "aspect": null,
-    "ref": "H1-05",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1583년 잇코잇키의 거점이던 이시야마 혼간지 터에 쌓기 시작한 일본의 성입니다. 지금의 천수각은 1931년 철근 콘크리트로 다시 지은 것으로 안에 엘리베이터까지 있는데, 이 성은 무엇일까요?",
-    "answer": "오사카성",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": "띄어 쓴 \"오사카 성\"은 정규화로 같아 넣지 않음",
-    "explanation": "도요토미 히데요시가 이 성을 짓기 시작했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "이시야마 혼간지 터에 쌓기 시작한 일본의 성",
-     "difWhy": "혼간지 터 성 — 일본사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 성 이야깃거리",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "이시야마 혼간지 터에 쌓기 시작한 일본의 성",
-     "difWhy": "혼간지 터 성 — 일본사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 성 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "1665년 벼락을 맞아 천수각이 불탔고, 1868년에는 막부에 맞선 세력에게 넘어갔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "일본 간사이 지방의 대표적인 옛 성",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "일본 여행 명소",
-     "piece": "f02",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "H1-05",
-     "key": "b155",
-     "hint": "1665년 벼락을 맞아 천수각이 불탔고, 1868년에는 막부에 맞선 세력에게 넘어갔다.",
-     "guess": "오사카성",
-     "confidence": "high",
-     "hit": true,
-     "answer": "오사카성"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Osaka_Castle"
-    ],
-    "facts": [
-     {
-      "claim": "1583년 이시야마 혼간지 터에서 공사 시작",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Osaka_Castle",
-      "note": "In 1583 Toyotomi Hideyoshi commenced construction on the site of the Ikkō-ikki temple of Ishiyama Hongan-ji."
-     },
-     {
-      "claim": "1931년 철근 콘크리트 천수각, 엘리베이터 포함",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Osaka_Castle",
-      "note": "In 1931, the ferroconcrete tenshu was built. / The keep is a concrete reproduction (including elevators) of the original"
-     },
-     {
-      "claim": "히데요시가 공사 시작",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Osaka_Castle",
-      "note": "In 1583 Toyotomi Hideyoshi commenced construction"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Osaka_Castle"
-    ],
-    "hintNote": "In 1665, lightning struck and burnt down the tenshu. In 1868, Osaka Castle fell and was surrendered to anti-bakufu imperial loyalists.",
-    "easiestCue": "1583년 잇코잇키의 거점이던 이시야마 혼간지 터에 쌓기 시작한 일본의 성",
-    "targetWhy": "혼간지 터·1931 콘크리트 재건 — 일본 여행·성곽 애호가 세부",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 성의 내력 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+  ]
 }

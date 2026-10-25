@@ -1,130 +1,145 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "math/3",
-  "midKey": "math",
-  "subName": "확률·통계",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "math/3#g019a-C1-09",
-   "seed": {
-    "subject": "조지 갤럽",
-    "aspect": null,
-    "ref": "C1-09",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1932년 한 미국 저널리즘 교수는 당선 가능성이 낮던 장모의 아이오와주 국무장관 선거를 돕다 처음 여론조사에 발을 들였습니다. 1935년 자기 여론조사 회사인 '미국 여론 연구소'를 세운 이 사람은 누구일까요?",
-    "answer": "조지 갤럽",
-    "acceptedAnswers": [
-     "갤럽"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 조지 갤럽 문서(넘겨주기 조지갤럽) · 한국갤럽 이름으로 성만 치는 사람이 많아 갤럽 추가(ko 갤럽 문서는 말 걸음걸이라 대상이 다르지만 이 질문에서는 사람으로만 읽힘)",
-    "explanation": "1936년 대선에서 200만 장 넘는 설문을 거둔 '리터러리 다이제스트'를 제치고 루스벨트의 승리를 맞혔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "자기 여론조사 회사인 '미국 여론 연구소'를 세운",
-     "difWhy": "여론조사 대명사 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 인물 이름",
-     "acc": 5,
-     "accWhy": "수학 — 초중 교과 과목"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'리터러리 다이제스트'를 제치고 루스벨트의 승리를 맞힌",
-     "difWhy": "1936 여론조사 — 고교 통계·사회",
-     "wor": 3,
-     "worWhy": "여론조사 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1932년 한 미국 저널리즘 교수는 당선 가능성이 낮던 장모의 아이오와주 국무장관 선거를 돕다 처음 여론조사에 발을 들였습니다. 1936년 대선에서 200만 장 넘는 설문을 거둔 '리터러리 다이제스트'를 제치고 루스벨트의 승리를 맞힌 이 사람은?",
-     "beforeExplanation": "고등학생 때 우유 배달로 번 돈으로 학교 신문을 창간했습니다.",
-     "removedCue": "'리터러리 다이제스트'를 제치고 루스벨트 승리를 맞힘(고교 통계·사회 — 해설로 옮김)",
-     "addedCue": "1935년 '미국 여론 연구소' 설립",
-     "why": "교과서의 1936년 예측 일화를 빼고 입문 계기·회사 설립 세부로"
-    },
-    "generalHint": "그는 1931년까지 드레이크 대학 저널리즘 학과장을 지낸 뒤 노스웨스턴 대학으로 옮겼다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "이름난 여론조사 회사를 세운 미국 통계 조사가",
-    "familiarity": {
-     "judge": 2,
-     "pct": 45,
-     "why": "갤럽 조사는 익숙하나 인물 이름은 덜 앎",
-     "piece": "f08",
-     "genPct": 70
-    },
-    "blind": {
-     "ref": "C1-09",
-     "key": "b025",
-     "hint": "그는 1931년까지 드레이크 대학 저널리즘 학과장을 지낸 뒤 노스웨스턴 대학으로 옮겼다.",
-     "guess": "조지 갤럽",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "조지 갤럽"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/George_Gallup"
-    ],
-    "facts": [
-     {
-      "claim": "1932 장모(가능성 낮던 아이오와 국무장관 후보) 선거 여론조사가 처음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/George_Gallup",
-      "note": "Gallup had first become involved in polling in 1932, when he did some for his mother-in-law, Ola Babcock Miller, a longshot candidate for Iowa Secretary of State."
-     },
-     {
-      "claim": "당시 저널리즘 교수(노스웨스턴, 1931~)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/George_Gallup",
-      "note": "served until 1931 as head of the Department of Journalism at Drake University, then to Evanston, Illinois, as a professor of journalism and advertising at Northwestern University."
-     },
-     {
-      "claim": "1936 루스벨트 승리 예측, 200만 장 넘는 리터러리 다이제스트 조사를 이김",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/George_Gallup",
-      "note": "In 1936, his new organization achieved national recognition by correctly predicting that Franklin Roosevelt would defeat Alf Landon ... besting a poll based on over two million returned questionnaires conducted by the widely-respected Literary Digest magazine."
-     },
-     {
-      "claim": "1935년 여론조사 회사 미국 여론 연구소 설립",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/George_Gallup",
-      "note": "he formed his own polling company, the American Institute of Public Opinion, in 1935."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/George_Gallup"
-    ],
-    "hintNote": "he served until 1931 as head of the Department of Journalism at Drake University, then to Evanston, Illinois, as a professor of journalism and advertising at Northwestern University.",
-    "easiestCue": "1935년 '미국 여론 연구소'를 세운 사람",
-    "targetWhy": "통계·여론조사사의 인물 세부 — 대학 교양(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "1936 사례가 통계 수업 단골이라 관심층은 안다 — 4 경계",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "math/3",
+    "midKey": "math",
+    "subName": "확률·통계",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "math/3#g019a-C1-09",
+      "seed": {
+        "subject": "조지 갤럽",
+        "aspect": null,
+        "ref": "C1-09",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1932년 한 미국 저널리즘 교수는 당선 가능성이 낮던 장모의 아이오와주 국무장관 선거를 돕다 처음 여론조사에 발을 들였습니다. 1935년 자기 여론조사 회사인 '미국 여론 연구소'를 세운 이 사람은 누구일까요?",
+        "answer": "조지 갤럽",
+        "acceptedAnswers": [
+          "갤럽"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 조지 갤럽 문서(넘겨주기 조지갤럽) · 한국갤럽 이름으로 성만 치는 사람이 많아 갤럽 추가(ko 갤럽 문서는 말 걸음걸이라 대상이 다르지만 이 질문에서는 사람으로만 읽힘)",
+        "explanation": "1936년 대선에서 200만 장 넘는 설문을 거둔 '리터러리 다이제스트'를 제치고 루스벨트의 승리를 맞혔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "자기 여론조사 회사인 '미국 여론 연구소'를 세운",
+          "difWhy": "여론조사 대명사 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 인물 이름",
+          "acc": 5,
+          "accWhy": "수학 — 초중 교과 과목",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'리터러리 다이제스트'를 제치고 루스벨트의 승리를 맞힌",
+          "difWhy": "1936 여론조사 — 고교 통계·사회",
+          "wor": 3,
+          "worWhy": "여론조사 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1932년 한 미국 저널리즘 교수는 당선 가능성이 낮던 장모의 아이오와주 국무장관 선거를 돕다 처음 여론조사에 발을 들였습니다. 1936년 대선에서 200만 장 넘는 설문을 거둔 '리터러리 다이제스트'를 제치고 루스벨트의 승리를 맞힌 이 사람은?",
+          "beforeExplanation": "고등학생 때 우유 배달로 번 돈으로 학교 신문을 창간했습니다.",
+          "removedCue": "'리터러리 다이제스트'를 제치고 루스벨트 승리를 맞힘(고교 통계·사회 — 해설로 옮김)",
+          "addedCue": "1935년 '미국 여론 연구소' 설립",
+          "why": "교과서의 1936년 예측 일화를 빼고 입문 계기·회사 설립 세부로"
+        },
+        "generalHint": "그는 1931년까지 드레이크 대학 저널리즘 학과장을 지낸 뒤 노스웨스턴 대학으로 옮겼다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "이름난 여론조사 회사를 세운 미국 통계 조사가",
+        "familiarity": {
+          "judge": 2,
+          "pct": 45,
+          "why": "갤럽 조사는 익숙하나 인물 이름은 덜 앎",
+          "piece": "f08",
+          "genPct": 70
+        },
+        "blind": {
+          "ref": "C1-09",
+          "key": "b025",
+          "hint": "그는 1931년까지 드레이크 대학 저널리즘 학과장을 지낸 뒤 노스웨스턴 대학으로 옮겼다.",
+          "guess": "조지 갤럽",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "조지 갤럽"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/George_Gallup"
+        ],
+        "facts": [
+          {
+            "claim": "1932 장모(가능성 낮던 아이오와 국무장관 후보) 선거 여론조사가 처음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/George_Gallup",
+            "note": "Gallup had first become involved in polling in 1932, when he did some for his mother-in-law, Ola Babcock Miller, a longshot candidate for Iowa Secretary of State."
+          },
+          {
+            "claim": "당시 저널리즘 교수(노스웨스턴, 1931~)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/George_Gallup",
+            "note": "served until 1931 as head of the Department of Journalism at Drake University, then to Evanston, Illinois, as a professor of journalism and advertising at Northwestern University."
+          },
+          {
+            "claim": "1936 루스벨트 승리 예측, 200만 장 넘는 리터러리 다이제스트 조사를 이김",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/George_Gallup",
+            "note": "In 1936, his new organization achieved national recognition by correctly predicting that Franklin Roosevelt would defeat Alf Landon ... besting a poll based on over two million returned questionnaires conducted by the widely-respected Literary Digest magazine."
+          },
+          {
+            "claim": "1935년 여론조사 회사 미국 여론 연구소 설립",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/George_Gallup",
+            "note": "he formed his own polling company, the American Institute of Public Opinion, in 1935."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/George_Gallup"
+        ],
+        "hintNote": "he served until 1931 as head of the Department of Journalism at Drake University, then to Evanston, Illinois, as a professor of journalism and advertising at Northwestern University.",
+        "easiestCue": "1935년 '미국 여론 연구소'를 세운 사람",
+        "targetWhy": "통계·여론조사사의 인물 세부 — 대학 교양(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "1936 사례가 통계 수업 단골이라 관심층은 안다 — 4 경계",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "자기 여론조사 회사인 '미국 여론 연구소'를 세운",
+          "difWhy": "여론조사 대명사 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 인물 이름",
+          "acc": 5,
+          "accWhy": "수학 — 초중 교과 과목"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

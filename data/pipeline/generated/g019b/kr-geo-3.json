@@ -1,851 +1,970 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "kr-geo/3",
-  "midKey": "kr-geo",
-  "subName": "섬·해안",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "kr-geo/3#g019b-K1-08",
-   "seed": {
-    "subject": "남이섬",
-    "aspect": null,
-    "ref": "K1-08",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "본래 물가 구릉의 작은 봉우리였는데, 1944년 댐이 생기며 물이 차올라 섬이 되었습니다. 한때 최인호 원작 『겨울 나그네』의 촬영지로 알려졌던 이 섬은 무엇일까요?",
-    "answer": "남이섬",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "섬 북쪽 언덕 돌무더기에 한 장군이 묻혔다는 민간 전승에서 이름이 왔지만, 그 장군의 행정상 진묘는 경기도 화성에 있습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1944년 댐이 생기며 섬이 된 곳, 『겨울 나그네』 촬영지",
-     "difWhy": "청평댐 섬 — 여행 관심층",
-     "wor": 3,
-     "worWhy": "관광지 이야깃거리",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1965년 금융인이자 출판인인 민병도가 땅을 사들여",
-     "difWhy": "남이섬 조성 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 명소 내력"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "본래 물가 구릉의 작은 봉우리였는데, 1944년 댐이 생기며 물이 차올라 섬이 되었습니다. 1965년 금융인이자 출판인인 민병도가 땅을 사들여 나무를 심기 시작해 휴양지로 가꾼 이 섬은?",
-     "beforeExplanation": null,
-     "removedCue": "1965년 금융인이자 출판인인 민병도가 땅을 사들여 나무를 심기 시작(관심층)",
-     "addedCue": "최인호 원작 『겨울 나그네』 촬영지",
-     "why": "설립자 민병도 단서를 빼고 겨울연가 이전의 옛 촬영지 세부로 바꿈"
-    },
-    "generalHint": "1960~90년대에는 강변가요제가 열린 곳으로도 알려졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "춘천 북한강에 있는 드라마 촬영지로 이름난 섬",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "겨울연가 촬영지·관광지로 누구나 앎",
-     "piece": "f03",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "K1-08",
-     "key": "b305",
-     "hint": "1960~90년대에는 강변가요제가 열린 곳으로도 알려졌다.",
-     "guess": "청평",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "남이섬"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/남이섬"
-    ],
-    "facts": [
-     {
-      "claim": "1944년 청평댐 건설로 북한강 물이 차서 섬이 됨, 원래 구릉지 작은 봉우리",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/남이섬",
-      "note": "1944년 청평댐을 만들 때 북한강 강물이 차서 생긴 … 원래는 구릉지의 작은 봉우리였으나"
-     },
-     {
-      "claim": "남이 장군 묻혔다는 전승, 진묘는 화성",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/남이섬",
-      "note": "남이섬 북쪽 언덕의 돌무더기에 남이장군이 묻혀있다는 오랜 민간전승 … 장군의 행정상 진묘는 경기도 화성시에 있습니다"
-     },
-     {
-      "claim": "1960~90년대 최인호의 <겨울 나그네> 촬영지로 알려짐",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/남이섬",
-      "note": "1960~90년대에는 최인호의 <겨울 나그네> 촬영지 및 강변가요제 개최지로 알려져 행락객들의 유원지로 인식되어 왔으나"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/남이섬"
-    ],
-    "hintNote": "1960~90년대에는 최인호의 <겨울 나그네> 촬영지 및 강변가요제 개최지로 알려져",
-    "easiestCue": "1944년 댐이 생기며 물이 차올라 섬이 되었습니다",
-    "targetWhy": "댐으로 생긴 내력·겨울연가 이전의 촬영지는 여행·영화 애호가 세부 — 겨울연가·남이 장군은 질문에 없음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 섬의 몰랐던 내력",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "정답조각 이섬"
-    ]
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "kr-geo/3",
+    "midKey": "kr-geo",
+    "subName": "섬·해안",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "kr-geo/3#g019b-K1-09",
-   "seed": {
-    "subject": "여의도",
-    "aspect": null,
-    "ref": "K1-09",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "조선 전기부터 나라가 관리하는 짐승을 기르는 목축지로 쓰인 섬입니다. 1968년 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방을 쌓았고, 섬 안에는 본래 '양말산'이라는 산이 있었는데, 이 섬은?",
-    "answer": "여의도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1916년 비행장이 들어서 1971년까지 공군기지로 쓰였고, 양말산 자리에는 오늘날 국회의사당이 들어섰습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1968년 이웃한 섬을 폭파해 얻은 골재로 제방을 쌓은 섬",
-     "difWhy": "밤섬 폭파·제방 — 서울 관심층",
-     "wor": 3,
-     "worWhy": "서울 지리 이야깃거리",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
+  "items": [
+    {
+      "seedId": "kr-geo/3#g019b-K1-08",
+      "seed": {
+        "subject": "남이섬",
+        "aspect": null,
+        "ref": "K1-08",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "본래 물가 구릉의 작은 봉우리였는데, 1944년 댐이 생기며 물이 차올라 섬이 되었습니다. 한때 최인호 원작 『겨울 나그네』의 촬영지로 알려졌던 이 섬은 무엇일까요?",
+        "answer": "남이섬",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "섬 북쪽 언덕 돌무더기에 한 장군이 묻혔다는 민간 전승에서 이름이 왔지만, 그 장군의 행정상 진묘는 경기도 화성에 있습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1944년 댐이 생기며 섬이 된 곳, 『겨울 나그네』 촬영지",
+          "difWhy": "청평댐 섬 — 여행 관심층",
+          "wor": 3,
+          "worWhy": "관광지 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1965년 금융인이자 출판인인 민병도가 땅을 사들여",
+          "difWhy": "남이섬 조성 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 명소 내력"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "본래 물가 구릉의 작은 봉우리였는데, 1944년 댐이 생기며 물이 차올라 섬이 되었습니다. 1965년 금융인이자 출판인인 민병도가 땅을 사들여 나무를 심기 시작해 휴양지로 가꾼 이 섬은?",
+          "beforeExplanation": null,
+          "removedCue": "1965년 금융인이자 출판인인 민병도가 땅을 사들여 나무를 심기 시작(관심층)",
+          "addedCue": "최인호 원작 『겨울 나그네』 촬영지",
+          "why": "설립자 민병도 단서를 빼고 겨울연가 이전의 옛 촬영지 세부로 바꿈"
+        },
+        "generalHint": "1960~90년대에는 강변가요제가 열린 곳으로도 알려졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "춘천 북한강에 있는 드라마 촬영지로 이름난 섬",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "겨울연가 촬영지·관광지로 누구나 앎",
+          "piece": "f03",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "K1-08",
+          "key": "b305",
+          "hint": "1960~90년대에는 강변가요제가 열린 곳으로도 알려졌다.",
+          "guess": "청평",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "남이섬"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/남이섬"
+        ],
+        "facts": [
+          {
+            "claim": "1944년 청평댐 건설로 북한강 물이 차서 섬이 됨, 원래 구릉지 작은 봉우리",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/남이섬",
+            "note": "1944년 청평댐을 만들 때 북한강 강물이 차서 생긴 … 원래는 구릉지의 작은 봉우리였으나"
+          },
+          {
+            "claim": "남이 장군 묻혔다는 전승, 진묘는 화성",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/남이섬",
+            "note": "남이섬 북쪽 언덕의 돌무더기에 남이장군이 묻혀있다는 오랜 민간전승 … 장군의 행정상 진묘는 경기도 화성시에 있습니다"
+          },
+          {
+            "claim": "1960~90년대 최인호의 <겨울 나그네> 촬영지로 알려짐",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/남이섬",
+            "note": "1960~90년대에는 최인호의 <겨울 나그네> 촬영지 및 강변가요제 개최지로 알려져 행락객들의 유원지로 인식되어 왔으나"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/남이섬"
+        ],
+        "hintNote": "1960~90년대에는 최인호의 <겨울 나그네> 촬영지 및 강변가요제 개최지로 알려져",
+        "easiestCue": "1944년 댐이 생기며 물이 차올라 섬이 되었습니다",
+        "targetWhy": "댐으로 생긴 내력·겨울연가 이전의 촬영지는 여행·영화 애호가 세부 — 겨울연가·남이 장군은 질문에 없음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 섬의 몰랐던 내력",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "정답조각 이섬"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1944년 댐이 생기며 섬이 된 곳, 『겨울 나그네』 촬영지",
+          "difWhy": "청평댐 섬 — 여행 관심층",
+          "wor": 3,
+          "worWhy": "관광지 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1916년 비행장이 들어서 1971년까지 공군기지로",
-     "difWhy": "여의도 비행장 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 서울 지명 내력"
+    {
+      "seedId": "kr-geo/3#g019b-K1-09",
+      "seed": {
+        "subject": "여의도",
+        "aspect": null,
+        "ref": "K1-09",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "조선 전기부터 나라가 관리하는 짐승을 기르는 목축지로 쓰인 섬입니다. 1968년 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방을 쌓았고, 섬 안에는 본래 '양말산'이라는 산이 있었는데, 이 섬은?",
+        "answer": "여의도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1916년 비행장이 들어서 1971년까지 공군기지로 쓰였고, 양말산 자리에는 오늘날 국회의사당이 들어섰습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1968년 이웃한 섬을 폭파해 얻은 골재로 제방을 쌓은 섬",
+          "difWhy": "밤섬 폭파·제방 — 서울 관심층",
+          "wor": 3,
+          "worWhy": "서울 지리 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1916년 비행장이 들어서 1971년까지 공군기지로",
+          "difWhy": "여의도 비행장 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 서울 지명 내력"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "조선 전기부터 나라가 관리하는 짐승을 기르는 목축지로 쓰인 섬입니다. 1916년 비행장이 들어서 1971년까지 공군기지로 쓰였고, 1968년에는 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방을 쌓았습니다. 이 섬은?",
+          "beforeExplanation": "지금의 국회의사당 자리에는 본래 '양말산'이라는 산이 있었습니다.",
+          "removedCue": "1916년 비행장이 들어서 1971년까지 공군기지",
+          "addedCue": "섬 안의 옛 '양말산'",
+          "why": "관심층이 아는 여의도 비행장을 해설로 옮기고 옛 지형 세부로 바꿈"
+        },
+        "generalHint": "예전에는 소수의 주민이 대대로 정착해 살며 폐쇄적인 섬 공동체를 이루었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "서울 한강 가운데의 국회와 금융가가 있는 섬",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "뉴스에 매일 나오는 지명",
+          "piece": "f03",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "K1-09",
+          "key": "b297",
+          "hint": "1971년 박정희 대통령의 지시로 이곳 가운데에 넓은 '5·16 광장'이 닦였다.",
+          "guess": "여의도",
+          "confidence": "high",
+          "hit": true,
+          "answer": "여의도"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/여의도"
+        ],
+        "facts": [
+          {
+            "claim": "조선 전기 이래 국가가 관리하는 짐승을 기르는 목축 공간",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/여의도",
+            "note": "조선 전기 이래 주로 국가가 관리하는 짐승을 기르는 목축의 공간으로 이용되었다."
+          },
+          {
+            "claim": "1916년 비행장 건립, 1971년까지 공군기지",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/여의도",
+            "note": "일제강점기인 1916년에 비행장이 건립되어 해방 후에도 여의도공항으로 쓰였고, 1971년까지 공군기지로 사용되었다."
+          },
+          {
+            "claim": "1968년 밤섬을 폭파해 얻은 골재로 제방(윤중제)",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/여의도",
+            "note": "1968년 밤섬을 폭파해 얻은 골재로 여의도의 제방(윤중제)을 쌓았다."
+          },
+          {
+            "claim": "국회의사당 자리에 양말산",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/여의도",
+            "note": "현재의 국회의사당 자리에는 양말산이라는 산이 있었고"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "1968년 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방",
+        "targetWhy": "목장 · 밤섬 폭파 · 양말산 — 서울 역사 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "여의도 비행장이 관심층에 알려졌을 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1968년 이웃한 섬을 폭파해 얻은 골재로 제방을 쌓은 섬",
+          "difWhy": "밤섬 폭파·제방 — 서울 관심층",
+          "wor": 3,
+          "worWhy": "서울 지리 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "조선 전기부터 나라가 관리하는 짐승을 기르는 목축지로 쓰인 섬입니다. 1916년 비행장이 들어서 1971년까지 공군기지로 쓰였고, 1968년에는 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방을 쌓았습니다. 이 섬은?",
-     "beforeExplanation": "지금의 국회의사당 자리에는 본래 '양말산'이라는 산이 있었습니다.",
-     "removedCue": "1916년 비행장이 들어서 1971년까지 공군기지",
-     "addedCue": "섬 안의 옛 '양말산'",
-     "why": "관심층이 아는 여의도 비행장을 해설로 옮기고 옛 지형 세부로 바꿈"
+    {
+      "seedId": "kr-geo/3#g019b-K1-10",
+      "seed": {
+        "subject": "해운대",
+        "aspect": null,
+        "ref": "K1-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "신라 말의 한 문인은 고향으로 돌아가던 길에 이곳 경치에 감탄해 바닷가 바위에 글자를 새겼다고 전합니다. 그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳은 어디일까요?",
+        "answer": "해운대",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "그 석각은 섬 전체를 붉게 물들이는 동백나무에서 이름이 온 동백섬에 남아 있습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳",
+          "difWhy": "최치원 해운 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 지명 유래",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳",
+          "difWhy": "최치원 해운 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 지명 유래"
+        },
+        "rewrite": {
+          "changed": false,
+          "before": null,
+          "beforeExplanation": null,
+          "removedCue": null,
+          "addedCue": null,
+          "why": "지명의 유래(최치원의 자 '해운')가 곧 묻는 사실이라, 그 단서를 빼면 남는 단서(동백섬·석각·누리마루)가 오히려 더 쉬워 고치지 않음"
+        },
+        "generalHint": "그 문인은 황소의 난 때 반란군 지도자를 꾸짖는 격문을 지어 당나라에 이름을 떨쳤다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "부산 동쪽의 해수욕장으로 이름난 바닷가 일대",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 해수욕장",
+          "piece": "f05",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "K1-10",
+          "key": "b072",
+          "hint": "그 문인은 황소의 난 때 반란군 지도자를 꾸짖는 격문을 지어 당나라에 이름을 떨쳤다.",
+          "guess": "토황소격문",
+          "confidence": "low",
+          "hit": false,
+          "answer": "해운대"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/해운대"
+        ],
+        "facts": [
+          {
+            "claim": "해운대는 최치원의 자 해운에서 비롯된 지명",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/해운대",
+            "note": "해운대는 고운 최치원의 자인 해운(海雲)에서 비롯된 지명이다."
+          },
+          {
+            "claim": "최치원이 낙향하는 길에 지나며 아름다움에 감탄해 글자를 새겼다",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/해운대",
+            "note": "최치원이 낙향하는 길에 이곳을 지나며 아름다움에 감탄해 글자를 새겼다고 전합니다"
+          },
+          {
+            "claim": "동백섬 이름은 동백나무에서, 해운대석각이 동백섬에 있다",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/해운대",
+            "note": "섬 이름은 섬 전체를 붉게 물들이는 동백나무에서 왔습니다 … 해운대석각은 동백섬 곳곳에 있는 볼거리 중 하나"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%B9%98%EC%9B%90"
+        ],
+        "hintNote": "황소의 난이 일어나자 절도사 고병의 막하에서 《토황소격문(討黃巢檄文)》을 지어 당 전역에 문장으로 이름을 떨쳤고",
+        "easiestCue": "그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳",
+        "targetWhy": "최치원의 자가 지명이 된 유래는 애호가 세부(경계 3: 부산 사람·관심층은 앎) — 동백섬·해수욕장은 뺐다",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "부산 지명 유래로 방송에 나왔을 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳",
+          "difWhy": "최치원 해운 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 지명 유래",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "generalHint": "1971년 박정희 대통령의 지시로 이곳 가운데에 넓은 '5·16 광장'이 닦였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "서울 한강 가운데의 국회와 금융가가 있는 섬",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "뉴스에 매일 나오는 지명",
-     "piece": "f03",
-     "genPct": 99
+    {
+      "seedId": "kr-geo/3#g019b-K1-11",
+      "seed": {
+        "subject": "호미곶",
+        "aspect": null,
+        "ref": "K1-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1908년 철근 없이 벽돌로만 쌓은 이곳의 8각형 등대는 각 층 천장마다 대한제국의 오얏꽃 문장이 새겨져 있고, '대보등대'라는 다른 이름으로도 불립니다. 이 등대가 선 곶은 어디일까요?",
+        "answer": "호미곶",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "2001년 12월 공식 지명이 바뀌기 전까지는 '장기곶'으로 불렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'대보등대'라 불리는 1908년 벽돌 8각형 등대",
+          "difWhy": "대보등대 이름 — 지역 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "명소 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'장기곶'으로 불렸던 곳",
+          "difWhy": "장기곶→호미곶 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 지명 변경"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2001년 12월 공식 지명이 바뀌기 전까지 '장기곶'으로 불렸던 곳입니다. 1908년 철근 없이 벽돌로만 쌓은 이곳 8각형 등대의 각 층 천장에는 대한제국의 오얏꽃 문장이 새겨져 있습니다. 이곳은?",
+          "beforeExplanation": "이곳 등대는 높이 26.4m에 내부가 6층이며, 1982년 경상북도 기념물로 지정되었습니다.",
+          "removedCue": "2001년 12월까지 '장기곶'으로 불림(관심층 — 옛 이름이 곧 답)",
+          "addedCue": "등대의 다른 이름 '대보등대'",
+          "why": "옛 지명이 바로 답을 가리켜 해설로 내리고, 등대 쪽 세부로 바꿈"
+        },
+        "generalHint": "이곳의 해안단구는 약 90만 년 전에 만들어져 경북동해안 국가지질공원의 지질유산이 되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "경북 포항 동쪽 끝에 튀어나온 해맞이 명소 곶",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "상생의 손·해맞이 뉴스로 익숙",
+          "piece": "f05",
+          "genPct": 88
+        },
+        "blind": {
+          "ref": "K1-11",
+          "key": "b195",
+          "hint": "이곳의 해안단구는 약 90만 년 전에 만들어져 경북동해안 국가지질공원의 지질유산이 되었다.",
+          "guess": "호미곶",
+          "confidence": "low",
+          "hit": true,
+          "answer": "호미곶"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/호미곶등대",
+          "https://ko.wikipedia.org/wiki/호미곶",
+          "https://ko.wikipedia.org/wiki/호미곶_등대"
+        ],
+        "facts": [
+          {
+            "claim": "1908년 건립, 철근 없이 벽돌로만 쌓은 8각형, 각 층 천장에 오얏꽃 문장",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/호미곶등대",
+            "note": "1908년에 건립 … 8각형 탑 형식 … 철근을 사용하지 않고 벽돌로만 쌓아올려 … 각 층 천장에는 대한제국의 상징인 오얏꽃모양의 문장(紋章)이 조각"
+          },
+          {
+            "claim": "과거 장기곶으로 불림, 2001년 12월 공식 지명 변경",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/호미곶",
+            "note": "과거 장기곶(長鬐串), 장기갑(長鬐岬) 등의 명칭으로 불렸으며 … 2001년 12월 공식 지명이 장기곶에서 호미곶으로 변경되었다"
+          },
+          {
+            "claim": "이 등대는 일명 대보등대",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/호미곶_등대",
+            "note": "이곳을 '호미곶' 혹은 '동외곶'이라고 하는데, 서쪽으로는 영일만, 동쪽으로는 동해와 만나고 있어 일명 대보등대(大甫燈臺)라고도 한다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%ED%98%B8%EB%AF%B8%EA%B3%B6"
+        ],
+        "hintNote": "호미곶 해안단구는 경북동해안 국가지질공원의 지질유산으로 약 90만 년 전에 만들어졌다.",
+        "easiestCue": "1908년 벽돌로만 쌓은 8각형 등대, 천장의 오얏꽃 문장",
+        "targetWhy": "등대 구조·문장·다른 이름은 등대·근대 건축 애호가 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "대표 상징 없이 옛 이름과 등대 세부만",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'대보등대'라 불리는 1908년 벽돌 8각형 등대",
+          "difWhy": "대보등대 이름 — 지역 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "명소 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "K1-09",
-     "key": "b297",
-     "hint": "1971년 박정희 대통령의 지시로 이곳 가운데에 넓은 '5·16 광장'이 닦였다.",
-     "guess": "여의도",
-     "confidence": "high",
-     "hit": true,
-     "answer": "여의도"
+    {
+      "seedId": "kr-geo/3#g019b-K1-12",
+      "seed": {
+        "subject": "거제도",
+        "aspect": null,
+        "ref": "K1-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "삼한 시대에는 변한 12국 가운데 독로국에 해당했고, 순우리말로는 '두룽이섬'이라 불렸다고 합니다. 757년 신라 경덕왕 때부터 지금 이름이 쓰인 이 섬은?",
+        "answer": "거제도",
+        "acceptedAnswers": [
+          "거제"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "임진왜란 때 옥포해전·칠천량해전 같은 큰 해전이 이 섬 둘레에서 벌어졌습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "변한 12국 가운데 독로국",
+          "difWhy": "독로국=거제 — 한국사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 섬 이름 내력",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "변한 12국 가운데 독로국",
+          "difWhy": "독로국=거제 — 한국사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 섬 이름 내력"
+        },
+        "rewrite": null,
+        "generalHint": "고려 의종이 쫓겨나 3년 동안 유배 생활을 했다고 전하는 곳이다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "경남 남해안의 조선소로 이름난 큰 섬",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "누구나 아는 섬",
+          "piece": "f08",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "K1-12",
+          "key": "b262",
+          "hint": "고려 의종이 쫓겨나 3년 동안 유배 생활을 했다고 전하는 곳이다.",
+          "guess": "거제도",
+          "confidence": "high",
+          "hit": true,
+          "answer": "거제도"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/거제도"
+        ],
+        "facts": [
+          {
+            "claim": "변한 12국 중 독로국",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/거제도",
+            "note": "변한의 12개 나라 중 독로국(瀆盧國)에 해당하였고"
+          },
+          {
+            "claim": "순우리말로 두룽이섬",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/거제도",
+            "note": "순우리말로는 '두룽이섬'이라 불렸다고 한다."
+          },
+          {
+            "claim": "757년 경덕왕 16년부터 거제라는 명칭",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/거제도",
+            "note": "757년(신라 경덕왕 16년)부터 거제(巨濟)라는 현재의 명칭이 사용되었다."
+          },
+          {
+            "claim": "임진왜란 때 옥포해전·칠천량해전 등",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/거제도",
+            "note": "임진왜란 때 옥포해전, 한산대첩, 칠천량해전 등 주요 해전이 벌어졌고"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/거제_둔덕기성"
+        ],
+        "hintNote": "고려사와 신증동국여지승람 등 문헌에 따르면 고려 의종이 3년간 거제도에 유배됐고",
+        "easiestCue": "삼한 시대에는 변한 12국 가운데 독로국에 해당했고",
+        "targetWhy": "독로국·두룽이섬은 지역사 애호가 세부 — 포로수용소·조선소·옥포해전은 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "대표 사실 없이 옛 이름 둘",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — g019a 하 '거제도 포로수용소'(kr-history)와 정답·지식 다름",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "변한 12국 가운데 독로국",
+          "difWhy": "독로국=거제 — 한국사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 섬 이름 내력",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 fix variants",
+          "verdict": "fix"
+        }
+      }
     },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/여의도"
-    ],
-    "facts": [
-     {
-      "claim": "조선 전기 이래 국가가 관리하는 짐승을 기르는 목축 공간",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/여의도",
-      "note": "조선 전기 이래 주로 국가가 관리하는 짐승을 기르는 목축의 공간으로 이용되었다."
-     },
-     {
-      "claim": "1916년 비행장 건립, 1971년까지 공군기지",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/여의도",
-      "note": "일제강점기인 1916년에 비행장이 건립되어 해방 후에도 여의도공항으로 쓰였고, 1971년까지 공군기지로 사용되었다."
-     },
-     {
-      "claim": "1968년 밤섬을 폭파해 얻은 골재로 제방(윤중제)",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/여의도",
-      "note": "1968년 밤섬을 폭파해 얻은 골재로 여의도의 제방(윤중제)을 쌓았다."
-     },
-     {
-      "claim": "국회의사당 자리에 양말산",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/여의도",
-      "note": "현재의 국회의사당 자리에는 양말산이라는 산이 있었고"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/여의도공원"
-    ],
-    "hintNote": "박정희 대통령의 지시로 기존의 활주로 자리를 유사시에도 쓸 수 있도록 5·16 광장이라는 형태로 남겨 놓았다. 5.16 광장은 1971년 2월 착공해, 같은 해 9월에 완공됐다.",
-    "easiestCue": "1968년 이웃한 섬을 폭파해 얻은 골재로 둘레에 제방",
-    "targetWhy": "목장 · 밤섬 폭파 · 양말산 — 서울 역사 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "여의도 비행장이 관심층에 알려졌을 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-geo/3#g019b-K1-10",
-   "seed": {
-    "subject": "해운대",
-    "aspect": null,
-    "ref": "K1-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "신라 말의 한 문인은 고향으로 돌아가던 길에 이곳 경치에 감탄해 바닷가 바위에 글자를 새겼다고 전합니다. 그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳은 어디일까요?",
-    "answer": "해운대",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "그 석각은 섬 전체를 붉게 물들이는 동백나무에서 이름이 온 동백섬에 남아 있습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳",
-     "difWhy": "최치원 해운 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 지명 유래",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
+    {
+      "seedId": "kr-geo/3#g019b-K1-13",
+      "seed": {
+        "subject": "오륙도",
+        "aspect": null,
+        "ref": "K1-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "해식대로 이어진 두 섬을 묶어 '우삭도'라 부르던 것을 2011년 무인도 지명 정비 사업 때 지금 이름으로 정리했습니다. 등대섬의 등대가 1937년 처음 세워졌다가 1998년 시민 설계 공모로 27.5m 등탑으로 다시 선 이 섬 무리는?",
+        "answer": "오륙도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1740년 『동래부지』는 동쪽에서 보면 봉우리가 여섯, 서쪽에서 보면 다섯으로 보여 이 이름이 붙었다고 적었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "등대섬의 등대가 1998년 27.5m 등탑으로 다시 선 섬 무리",
+          "difWhy": "부산 섬 무리·등대섬 — 여행 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "부산 명소 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "방패섬·솔섬·수리섬·송곳섬·굴섬·등대섬",
+          "difWhy": "부산 섬 무리 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 명소"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "육지에서 가까운 순서로 방패섬·솔섬·수리섬·송곳섬·굴섬·등대섬이 이어지는 섬 무리입니다. 등대섬의 등대는 1937년 처음 세워졌다가 1998년 시민 설계 공모를 거쳐 27.5m 등탑으로 다시 섰는데, 이 섬 무리는?",
+          "beforeExplanation": null,
+          "removedCue": "방패섬·솔섬·수리섬·송곳섬·굴섬·등대섬 목록(관심층)",
+          "addedCue": "옛 이름 '우삭도'와 2011년 지명 정비",
+          "why": "여섯 섬 이름 목록을 빼고 이름 정리 내력으로 바꿈 — 부산·이름 유래는 질문에 없음"
+        },
+        "generalHint": "2007년 10월 국가 명승 제24호로 지정되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "부산 남구 앞바다의 작은 바위섬 무리",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "부산 명소·'돌아와요 부산항에' 가사로 익숙",
+          "piece": "f01",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "K1-13",
+          "key": "b275",
+          "hint": "2007년 10월 국가 명승 제24호로 지정되었다.",
+          "guess": "남해 가천 다랭이논",
+          "confidence": "low",
+          "hit": false,
+          "answer": "오륙도"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/오륙도"
+        ],
+        "facts": [
+          {
+            "claim": "등대 1937년 11월 처음 설치, 1998년 시민 현상 설계공모로 27.5m 등탑",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/오륙도",
+            "note": "1937년 11월 일제강점기에 처음 설치 … 1998년 시민 현상 설계공모를 거쳐 높이 27.5m의 등탑으로 새로 세워졌습니다"
+          },
+          {
+            "claim": "동래부지(1740) 동쪽 6, 서쪽 5",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/오륙도",
+            "note": "1740년 동래부사 박사창이 편찬한 『동래부지』 … 동쪽에서 보면 봉우리가 6개, 서쪽에서 보면 5개로 보여 오륙도라 불렸다"
+          },
+          {
+            "claim": "해식대로 이어진 방패섬·솔섬을 우삭도로 부르다 2011년 무인도 지명 정비로 지금 이름으로 정리",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/오륙도",
+            "note": "과거 해식대로 연결된 방패섬과 솔섬을 합쳐 우삭도로 부르고 있었으나, 2011년 무인도 지명 정비사업으로 현재의 이름으로 정리되었다"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%A5%99%EB%8F%84"
+        ],
+        "hintNote": "2007년 10월 1일 국가지정문화재 명승 제24호로 지정되었다.",
+        "easiestCue": "1998년 시민 설계 공모로 27.5m 등탑으로 다시 선 등대섬 등대",
+        "targetWhy": "우삭도 옛 이름·등대 재건 내력은 지역·등대 애호가 세부",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "섬 이름 여섯을 늘어놓아 개수에서 추리될 여지",
+        "pairCheck": null,
+        "dbCheck": "answercheck new(대조 뒤 추가)",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "등대섬의 등대가 1998년 27.5m 등탑으로 다시 선 섬 무리",
+          "difWhy": "부산 섬 무리·등대섬 — 여행 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "부산 명소 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳",
-     "difWhy": "최치원 해운 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 지명 유래"
+    {
+      "seedId": "kr-geo/3#g019b-K1-14",
+      "seed": {
+        "subject": "보길도",
+        "aspect": null,
+        "ref": "K1-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1689년 봄, 여든세 살의 송시열은 제주도로 유배되어 가던 길에 이 섬에 잠시 들러 바닷가 바위에 시를 새긴 것으로 짐작됩니다. 전남 완도군에 속한 이 섬은?",
+        "answer": "보길도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "바위에 새긴 시의 첫 구는 '여든세 살 늙은이(八十三歲翁)'로 시작합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "여든세 살의 송시열은 제주도로 유배되어 가던 길에",
+          "difWhy": "송시열 글씐바위 — 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 섬 유적",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "여든세 살의 송시열은 제주도로 유배되어 가던 길에",
+          "difWhy": "송시열 글씐바위 — 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 섬 유적"
+        },
+        "rewrite": null,
+        "generalHint": "지관이 남긴 '십용십일구'라는 글을 한 스님이 '명당 열한 곳 가운데 열 곳은 이미 쓰였다'고 풀었다는 이름 유래가 전한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "전남 완도군 남쪽의 윤선도 유적이 있는 섬",
+        "familiarity": {
+          "judge": 2,
+          "pct": 45,
+          "why": "윤선도 '어부사시사' 교과서·관광지로 들어 봤을 법함",
+          "piece": "f02",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "K1-14",
+          "key": "b015",
+          "hint": "지관이 남긴 '십용십일구'라는 글을 한 스님이 '명당 열한 곳 가운데 열 곳은 이미 쓰였다'고 풀었다는 이름 유래가 전한다.",
+          "guess": "용인",
+          "confidence": "low",
+          "hit": false,
+          "answer": "보길도"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://dh.aks.ac.kr/Edu/wiki/index.php/송시열_글씐바위",
+          "https://ko.wikipedia.org/wiki/보길도"
+        ],
+        "facts": [
+          {
+            "claim": "1689년 봄 제주도로 유배되던 길에 보길도에 잠시 들렀을 때 새긴 것으로 짐작",
+            "where": "q",
+            "url": "https://dh.aks.ac.kr/Edu/wiki/index.php/송시열_글씐바위",
+            "note": "1689년 봄 제주도로 유배되던 길에 보길도에 잠시 들렀을 때 새긴 것으로 짐작된다"
+          },
+          {
+            "claim": "시를 지을 때 83세로 추정",
+            "where": "q",
+            "url": "https://dh.aks.ac.kr/Edu/wiki/index.php/송시열_글씐바위",
+            "note": "이 시를 지을 때 83세였다고 추정합니다. 원문 첫 구는 '八十三歲翁'"
+          },
+          {
+            "claim": "보길도는 전라남도 완도군 보길면에 속한다",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/보길도",
+            "note": "보길도(甫吉島)는 대한민국 남해안의 섬으로, 전라남도 완도군 보길면에 속한다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/보길면"
+        ],
+        "hintNote": "지관이 '십용십일구 보길(十用十一口, 甫吉)'라는 글을 남겼다 … 스님이 \"섬 내에 명당자리가 11군데가 있는데 10군데는 이미 사용되었고 나머지 1군데도 이미 쓸 사람이 정해졌다\"고 풀었다",
+        "easiestCue": "여든세 살의 송시열은 제주도로 유배되어 가던 길에 이 섬에 잠시 들러 바닷가 바위에 시를 새긴 것으로",
+        "targetWhy": "송시열 글씐바위는 지역사 애호가 세부 — 윤선도·부용동·어부사시사(고교 국어)는 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "교과서 인물(윤선도) 대신 덜 알려진 유적으로",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "여든세 살의 송시열은 제주도로 유배되어 가던 길에",
+          "difWhy": "송시열 글씐바위 — 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 섬 유적",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": false,
-     "before": null,
-     "beforeExplanation": null,
-     "removedCue": null,
-     "addedCue": null,
-     "why": "지명의 유래(최치원의 자 '해운')가 곧 묻는 사실이라, 그 단서를 빼면 남는 단서(동백섬·석각·누리마루)가 오히려 더 쉬워 고치지 않음"
-    },
-    "generalHint": "그 문인은 황소의 난 때 반란군 지도자를 꾸짖는 격문을 지어 당나라에 이름을 떨쳤다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "부산 동쪽의 해수욕장으로 이름난 바닷가 일대",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 해수욕장",
-     "piece": "f05",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "K1-10",
-     "key": "b072",
-     "hint": "그 문인은 황소의 난 때 반란군 지도자를 꾸짖는 격문을 지어 당나라에 이름을 떨쳤다.",
-     "guess": "토황소격문",
-     "confidence": "low",
-     "hit": false,
-     "answer": "해운대"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/해운대"
-    ],
-    "facts": [
-     {
-      "claim": "해운대는 최치원의 자 해운에서 비롯된 지명",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/해운대",
-      "note": "해운대는 고운 최치원의 자인 해운(海雲)에서 비롯된 지명이다."
-     },
-     {
-      "claim": "최치원이 낙향하는 길에 지나며 아름다움에 감탄해 글자를 새겼다",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/해운대",
-      "note": "최치원이 낙향하는 길에 이곳을 지나며 아름다움에 감탄해 글자를 새겼다고 전합니다"
-     },
-     {
-      "claim": "동백섬 이름은 동백나무에서, 해운대석각이 동백섬에 있다",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/해운대",
-      "note": "섬 이름은 섬 전체를 붉게 물들이는 동백나무에서 왔습니다 … 해운대석각은 동백섬 곳곳에 있는 볼거리 중 하나"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%B9%98%EC%9B%90"
-    ],
-    "hintNote": "황소의 난이 일어나자 절도사 고병의 막하에서 《토황소격문(討黃巢檄文)》을 지어 당 전역에 문장으로 이름을 떨쳤고",
-    "easiestCue": "그가 새긴 자기의 자(字)가 그대로 지명이 되었다는 부산의 이곳",
-    "targetWhy": "최치원의 자가 지명이 된 유래는 애호가 세부(경계 3: 부산 사람·관심층은 앎) — 동백섬·해수욕장은 뺐다",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "부산 지명 유래로 방송에 나왔을 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-geo/3#g019b-K1-11",
-   "seed": {
-    "subject": "호미곶",
-    "aspect": null,
-    "ref": "K1-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1908년 철근 없이 벽돌로만 쌓은 이곳의 8각형 등대는 각 층 천장마다 대한제국의 오얏꽃 문장이 새겨져 있고, '대보등대'라는 다른 이름으로도 불립니다. 이 등대가 선 곶은 어디일까요?",
-    "answer": "호미곶",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "2001년 12월 공식 지명이 바뀌기 전까지는 '장기곶'으로 불렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "'대보등대'라 불리는 1908년 벽돌 8각형 등대",
-     "difWhy": "대보등대 이름 — 지역 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "명소 이야깃거리",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'장기곶'으로 불렸던 곳",
-     "difWhy": "장기곶→호미곶 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 지명 변경"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2001년 12월 공식 지명이 바뀌기 전까지 '장기곶'으로 불렸던 곳입니다. 1908년 철근 없이 벽돌로만 쌓은 이곳 8각형 등대의 각 층 천장에는 대한제국의 오얏꽃 문장이 새겨져 있습니다. 이곳은?",
-     "beforeExplanation": "이곳 등대는 높이 26.4m에 내부가 6층이며, 1982년 경상북도 기념물로 지정되었습니다.",
-     "removedCue": "2001년 12월까지 '장기곶'으로 불림(관심층 — 옛 이름이 곧 답)",
-     "addedCue": "등대의 다른 이름 '대보등대'",
-     "why": "옛 지명이 바로 답을 가리켜 해설로 내리고, 등대 쪽 세부로 바꿈"
-    },
-    "generalHint": "이곳의 해안단구는 약 90만 년 전에 만들어져 경북동해안 국가지질공원의 지질유산이 되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "경북 포항 동쪽 끝에 튀어나온 해맞이 명소 곶",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "상생의 손·해맞이 뉴스로 익숙",
-     "piece": "f05",
-     "genPct": 88
-    },
-    "blind": {
-     "ref": "K1-11",
-     "key": "b195",
-     "hint": "이곳의 해안단구는 약 90만 년 전에 만들어져 경북동해안 국가지질공원의 지질유산이 되었다.",
-     "guess": "호미곶",
-     "confidence": "low",
-     "hit": true,
-     "answer": "호미곶"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/호미곶등대",
-     "https://ko.wikipedia.org/wiki/호미곶",
-     "https://ko.wikipedia.org/wiki/호미곶_등대"
-    ],
-    "facts": [
-     {
-      "claim": "1908년 건립, 철근 없이 벽돌로만 쌓은 8각형, 각 층 천장에 오얏꽃 문장",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/호미곶등대",
-      "note": "1908년에 건립 … 8각형 탑 형식 … 철근을 사용하지 않고 벽돌로만 쌓아올려 … 각 층 천장에는 대한제국의 상징인 오얏꽃모양의 문장(紋章)이 조각"
-     },
-     {
-      "claim": "과거 장기곶으로 불림, 2001년 12월 공식 지명 변경",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/호미곶",
-      "note": "과거 장기곶(長鬐串), 장기갑(長鬐岬) 등의 명칭으로 불렸으며 … 2001년 12월 공식 지명이 장기곶에서 호미곶으로 변경되었다"
-     },
-     {
-      "claim": "이 등대는 일명 대보등대",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/호미곶_등대",
-      "note": "이곳을 '호미곶' 혹은 '동외곶'이라고 하는데, 서쪽으로는 영일만, 동쪽으로는 동해와 만나고 있어 일명 대보등대(大甫燈臺)라고도 한다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%ED%98%B8%EB%AF%B8%EA%B3%B6"
-    ],
-    "hintNote": "호미곶 해안단구는 경북동해안 국가지질공원의 지질유산으로 약 90만 년 전에 만들어졌다.",
-    "easiestCue": "1908년 벽돌로만 쌓은 8각형 등대, 천장의 오얏꽃 문장",
-    "targetWhy": "등대 구조·문장·다른 이름은 등대·근대 건축 애호가 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "대표 상징 없이 옛 이름과 등대 세부만",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-geo/3#g019b-K1-12",
-   "seed": {
-    "subject": "거제도",
-    "aspect": null,
-    "ref": "K1-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "삼한 시대에는 변한 12국 가운데 독로국에 해당했고, 순우리말로는 '두룽이섬'이라 불렸다고 합니다. 757년 신라 경덕왕 때부터 지금 이름이 쓰인 이 섬은?",
-    "answer": "거제도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "임진왜란 때 옥포해전·칠천량해전 같은 큰 해전이 이 섬 둘레에서 벌어졌습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "변한 12국 가운데 독로국",
-     "difWhy": "독로국=거제 — 한국사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 섬 이름 내력",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "변한 12국 가운데 독로국",
-     "difWhy": "독로국=거제 — 한국사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 섬 이름 내력"
-    },
-    "rewrite": null,
-    "generalHint": "고려 의종이 쫓겨나 3년 동안 유배 생활을 했다고 전하는 곳이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "경남 남해안의 조선소로 이름난 큰 섬",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "누구나 아는 섬",
-     "piece": "f08",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "K1-12",
-     "key": "b262",
-     "hint": "고려 의종이 쫓겨나 3년 동안 유배 생활을 했다고 전하는 곳이다.",
-     "guess": "거제도",
-     "confidence": "high",
-     "hit": true,
-     "answer": "거제도"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/거제도"
-    ],
-    "facts": [
-     {
-      "claim": "변한 12국 중 독로국",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/거제도",
-      "note": "변한의 12개 나라 중 독로국(瀆盧國)에 해당하였고"
-     },
-     {
-      "claim": "순우리말로 두룽이섬",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/거제도",
-      "note": "순우리말로는 '두룽이섬'이라 불렸다고 한다."
-     },
-     {
-      "claim": "757년 경덕왕 16년부터 거제라는 명칭",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/거제도",
-      "note": "757년(신라 경덕왕 16년)부터 거제(巨濟)라는 현재의 명칭이 사용되었다."
-     },
-     {
-      "claim": "임진왜란 때 옥포해전·칠천량해전 등",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/거제도",
-      "note": "임진왜란 때 옥포해전, 한산대첩, 칠천량해전 등 주요 해전이 벌어졌고"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/거제_둔덕기성"
-    ],
-    "hintNote": "고려사와 신증동국여지승람 등 문헌에 따르면 고려 의종이 3년간 거제도에 유배됐고",
-    "easiestCue": "삼한 시대에는 변한 12국 가운데 독로국에 해당했고",
-    "targetWhy": "독로국·두룽이섬은 지역사 애호가 세부 — 포로수용소·조선소·옥포해전은 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "대표 사실 없이 옛 이름 둘",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — g019a 하 '거제도 포로수용소'(kr-history)와 정답·지식 다름",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-geo/3#g019b-K1-13",
-   "seed": {
-    "subject": "오륙도",
-    "aspect": null,
-    "ref": "K1-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "해식대로 이어진 두 섬을 묶어 '우삭도'라 부르던 것을 2011년 무인도 지명 정비 사업 때 지금 이름으로 정리했습니다. 등대섬의 등대가 1937년 처음 세워졌다가 1998년 시민 설계 공모로 27.5m 등탑으로 다시 선 이 섬 무리는?",
-    "answer": "오륙도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1740년 『동래부지』는 동쪽에서 보면 봉우리가 여섯, 서쪽에서 보면 다섯으로 보여 이 이름이 붙었다고 적었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "등대섬의 등대가 1998년 27.5m 등탑으로 다시 선 섬 무리",
-     "difWhy": "부산 섬 무리·등대섬 — 여행 관심층 (경계 4)",
-     "wor": 3,
-     "worWhy": "부산 명소 이야깃거리",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "방패섬·솔섬·수리섬·송곳섬·굴섬·등대섬",
-     "difWhy": "부산 섬 무리 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 명소"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "육지에서 가까운 순서로 방패섬·솔섬·수리섬·송곳섬·굴섬·등대섬이 이어지는 섬 무리입니다. 등대섬의 등대는 1937년 처음 세워졌다가 1998년 시민 설계 공모를 거쳐 27.5m 등탑으로 다시 섰는데, 이 섬 무리는?",
-     "beforeExplanation": null,
-     "removedCue": "방패섬·솔섬·수리섬·송곳섬·굴섬·등대섬 목록(관심층)",
-     "addedCue": "옛 이름 '우삭도'와 2011년 지명 정비",
-     "why": "여섯 섬 이름 목록을 빼고 이름 정리 내력으로 바꿈 — 부산·이름 유래는 질문에 없음"
-    },
-    "generalHint": "2007년 10월 국가 명승 제24호로 지정되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "부산 남구 앞바다의 작은 바위섬 무리",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "부산 명소·'돌아와요 부산항에' 가사로 익숙",
-     "piece": "f01",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "K1-13",
-     "key": "b275",
-     "hint": "2007년 10월 국가 명승 제24호로 지정되었다.",
-     "guess": "남해 가천 다랭이논",
-     "confidence": "low",
-     "hit": false,
-     "answer": "오륙도"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/오륙도"
-    ],
-    "facts": [
-     {
-      "claim": "등대 1937년 11월 처음 설치, 1998년 시민 현상 설계공모로 27.5m 등탑",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/오륙도",
-      "note": "1937년 11월 일제강점기에 처음 설치 … 1998년 시민 현상 설계공모를 거쳐 높이 27.5m의 등탑으로 새로 세워졌습니다"
-     },
-     {
-      "claim": "동래부지(1740) 동쪽 6, 서쪽 5",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/오륙도",
-      "note": "1740년 동래부사 박사창이 편찬한 『동래부지』 … 동쪽에서 보면 봉우리가 6개, 서쪽에서 보면 5개로 보여 오륙도라 불렸다"
-     },
-     {
-      "claim": "해식대로 이어진 방패섬·솔섬을 우삭도로 부르다 2011년 무인도 지명 정비로 지금 이름으로 정리",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/오륙도",
-      "note": "과거 해식대로 연결된 방패섬과 솔섬을 합쳐 우삭도로 부르고 있었으나, 2011년 무인도 지명 정비사업으로 현재의 이름으로 정리되었다"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%A5%99%EB%8F%84"
-    ],
-    "hintNote": "2007년 10월 1일 국가지정문화재 명승 제24호로 지정되었다.",
-    "easiestCue": "1998년 시민 설계 공모로 27.5m 등탑으로 다시 선 등대섬 등대",
-    "targetWhy": "우삭도 옛 이름·등대 재건 내력은 지역·등대 애호가 세부",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "섬 이름 여섯을 늘어놓아 개수에서 추리될 여지",
-    "pairCheck": null,
-    "dbCheck": "answercheck new(대조 뒤 추가)",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "kr-geo/3#g019b-K1-14",
-   "seed": {
-    "subject": "보길도",
-    "aspect": null,
-    "ref": "K1-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1689년 봄, 여든세 살의 송시열은 제주도로 유배되어 가던 길에 이 섬에 잠시 들러 바닷가 바위에 시를 새긴 것으로 짐작됩니다. 전남 완도군에 속한 이 섬은?",
-    "answer": "보길도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "바위에 새긴 시의 첫 구는 '여든세 살 늙은이(八十三歲翁)'로 시작합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "여든세 살의 송시열은 제주도로 유배되어 가던 길에",
-     "difWhy": "송시열 글씐바위 — 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 섬 유적",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "여든세 살의 송시열은 제주도로 유배되어 가던 길에",
-     "difWhy": "송시열 글씐바위 — 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 섬 유적"
-    },
-    "rewrite": null,
-    "generalHint": "지관이 남긴 '십용십일구'라는 글을 한 스님이 '명당 열한 곳 가운데 열 곳은 이미 쓰였다'고 풀었다는 이름 유래가 전한다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "전남 완도군 남쪽의 윤선도 유적이 있는 섬",
-    "familiarity": {
-     "judge": 2,
-     "pct": 45,
-     "why": "윤선도 '어부사시사' 교과서·관광지로 들어 봤을 법함",
-     "piece": "f02",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "K1-14",
-     "key": "b015",
-     "hint": "지관이 남긴 '십용십일구'라는 글을 한 스님이 '명당 열한 곳 가운데 열 곳은 이미 쓰였다'고 풀었다는 이름 유래가 전한다.",
-     "guess": "용인",
-     "confidence": "low",
-     "hit": false,
-     "answer": "보길도"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://dh.aks.ac.kr/Edu/wiki/index.php/송시열_글씐바위",
-     "https://ko.wikipedia.org/wiki/보길도"
-    ],
-    "facts": [
-     {
-      "claim": "1689년 봄 제주도로 유배되던 길에 보길도에 잠시 들렀을 때 새긴 것으로 짐작",
-      "where": "q",
-      "url": "https://dh.aks.ac.kr/Edu/wiki/index.php/송시열_글씐바위",
-      "note": "1689년 봄 제주도로 유배되던 길에 보길도에 잠시 들렀을 때 새긴 것으로 짐작된다"
-     },
-     {
-      "claim": "시를 지을 때 83세로 추정",
-      "where": "q",
-      "url": "https://dh.aks.ac.kr/Edu/wiki/index.php/송시열_글씐바위",
-      "note": "이 시를 지을 때 83세였다고 추정합니다. 원문 첫 구는 '八十三歲翁'"
-     },
-     {
-      "claim": "보길도는 전라남도 완도군 보길면에 속한다",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/보길도",
-      "note": "보길도(甫吉島)는 대한민국 남해안의 섬으로, 전라남도 완도군 보길면에 속한다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/보길면"
-    ],
-    "hintNote": "지관이 '십용십일구 보길(十用十一口, 甫吉)'라는 글을 남겼다 … 스님이 \"섬 내에 명당자리가 11군데가 있는데 10군데는 이미 사용되었고 나머지 1군데도 이미 쓸 사람이 정해졌다\"고 풀었다",
-    "easiestCue": "여든세 살의 송시열은 제주도로 유배되어 가던 길에 이 섬에 잠시 들러 바닷가 바위에 시를 새긴 것으로",
-    "targetWhy": "송시열 글씐바위는 지역사 애호가 세부 — 윤선도·부용동·어부사시사(고교 국어)는 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "교과서 인물(윤선도) 대신 덜 알려진 유적으로",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-geo/3#g019b-K1-15",
-   "seed": {
-    "subject": "외도",
-    "aspect": null,
-    "ref": "K1-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1969년 7월 이창호는 낚시를 나왔다가 태풍을 만나 이 섬에서 하룻밤 민박을 한 것이 인연이 되었습니다. 1970년대 초 그가 고구마밭에 감귤나무 3천 그루를 심어 농장을 꾸몄다가 여러 차례 실패를 겪은 이 섬은?",
-    "answer": "외도",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이창호와 아내 최호숙이 가꿔 1995년 해상농원으로 문을 열었고, 2001년 식물원으로 등록되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "이창호가 고구마밭에 감귤나무를 심어 농장을 꾸민 섬",
-     "difWhy": "해상농원 섬 내력 — 여행 관심층 (경계 4)",
-     "wor": 3,
-     "worWhy": "관광지 이야깃거리",
-     "acc": 5,
-     "accWhy": "한국 지리 — 초중 사회 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "이창호는 1973년까지 3년에 걸쳐 이 섬 전체를 사들였습니다",
-     "difWhy": "거제 외도 해상농원 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 명소 내력"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1969년 7월 낚시를 나왔다가 태풍을 만나 하룻밤 민박을 한 것이 인연이 되어, 이창호는 1973년까지 3년에 걸쳐 이 섬 전체를 사들였습니다. 그와 아내 최호숙이 가꿔 1995년 해상농원으로 문을 연 이 섬은?",
-     "beforeExplanation": "2001년 식물원으로 등록되었고, 이창호는 2003년 3월 세상을 떠났습니다.",
-     "removedCue": "이창호가 1973년까지 3년에 걸쳐 섬 전체를 사들임 · 1995년 해상농원(관심층)",
-     "addedCue": "감귤 농장의 실패",
-     "why": "섬 매입·해상농원 단서를 해설로 내리고 식물원 이전의 농장 실패로 바꿈"
-    },
-    "generalHint": "2002년 KBS 드라마 '겨울연가' 마지막 회의 배경이 된 곳이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "경남 거제 앞바다의 개인이 가꾼 식물원 섬",
-    "familiarity": {
-     "judge": 2,
-     "pct": 45,
-     "why": "거제 외도 보타니아 관광지로 들어 본 사람이 꽤 있음",
-     "piece": "f01",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "K1-15",
-     "key": "b162",
-     "hint": "2002년 KBS 드라마 '겨울연가' 마지막 회의 배경이 된 곳이다.",
-     "guess": "외도",
-     "confidence": "high",
-     "hit": true,
-     "answer": "외도"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/외도"
-    ],
-    "facts": [
-     {
-      "claim": "1969년 7월 낚시 중 태풍을 만나 하룻밤 민박한 인연, 1973년까지 3년에 걸쳐 섬 전체를 사들임",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/외도",
-      "note": "이창호는 1969년 7월 낚시 중 '태풍을 만나 우연히 하룻밤 민박을 한 것이 인연이 되어' … 1973년까지 3년에 걸쳐 섬 전체를 사들였습니다"
-     },
-     {
-      "claim": "아내 최호숙",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/외도",
-      "note": "이창호와 아내 최호숙은 섬의 자연에 매료되어"
-     },
-     {
-      "claim": "외도해상농원 1995년 4월 15일 개원",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/외도",
-      "note": "외도해상농원은 1995년 4월 15일에 개원했습니다"
-     },
-     {
-      "claim": "2001년 식물원 등록, 2003년 3월 이창호 별세",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/외도",
-      "note": "2001년 문화관광부 지정 식물원으로 외도조경식물원이 등록되었고, 2003년 3월 1일 이창호 회장이 세상을 떠났습니다"
-     },
-     {
-      "claim": "1970년대 초 고구마밭에 감귤나무 3천 그루를 심어 농장 조성, 여러 차례 실패",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/외도",
-      "note": "1970년대 초반부터 이 섬을 개발하기 시작하여, 고구마밭에 감귤나무 3천 그루와 편백 방품림 8천 그루를 심어 놓고 농장을 조성하였는데, 여러 차례 실패를 겪고 농장 대신 식물원을 구상하여"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/외도"
-    ],
-    "hintNote": "2002년 방영되어 … KBS 드라마 《겨울연가》의 마지막회 장면의 배경으로 사용되었다.",
-    "easiestCue": "1969년 7월 이창호가 낚시 중 태풍을 만나 하룻밤 민박",
-    "targetWhy": "식물원 이전의 민박 인연·감귤 농장 실패는 여행 애호가 세부 — 해상농원·식물원은 해설로",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "섬 안내에 꼭 나오는 이야기라 관심층 대표 일화일 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new(대조 뒤 추가)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "kr-geo/3#g019b-K1-15",
+      "seed": {
+        "subject": "외도",
+        "aspect": null,
+        "ref": "K1-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1969년 7월 이창호는 낚시를 나왔다가 태풍을 만나 이 섬에서 하룻밤 민박을 한 것이 인연이 되었습니다. 1970년대 초 그가 고구마밭에 감귤나무 3천 그루를 심어 농장을 꾸몄다가 여러 차례 실패를 겪은 이 섬은?",
+        "answer": "외도",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이창호와 아내 최호숙이 가꿔 1995년 해상농원으로 문을 열었고, 2001년 식물원으로 등록되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "이창호가 고구마밭에 감귤나무를 심어 농장을 꾸민 섬",
+          "difWhy": "해상농원 섬 내력 — 여행 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "관광지 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "이창호는 1973년까지 3년에 걸쳐 이 섬 전체를 사들였습니다",
+          "difWhy": "거제 외도 해상농원 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 명소 내력"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1969년 7월 낚시를 나왔다가 태풍을 만나 하룻밤 민박을 한 것이 인연이 되어, 이창호는 1973년까지 3년에 걸쳐 이 섬 전체를 사들였습니다. 그와 아내 최호숙이 가꿔 1995년 해상농원으로 문을 연 이 섬은?",
+          "beforeExplanation": "2001년 식물원으로 등록되었고, 이창호는 2003년 3월 세상을 떠났습니다.",
+          "removedCue": "이창호가 1973년까지 3년에 걸쳐 섬 전체를 사들임 · 1995년 해상농원(관심층)",
+          "addedCue": "감귤 농장의 실패",
+          "why": "섬 매입·해상농원 단서를 해설로 내리고 식물원 이전의 농장 실패로 바꿈"
+        },
+        "generalHint": "2002년 KBS 드라마 '겨울연가' 마지막 회의 배경이 된 곳이다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "경남 거제 앞바다의 개인이 가꾼 식물원 섬",
+        "familiarity": {
+          "judge": 2,
+          "pct": 45,
+          "why": "거제 외도 보타니아 관광지로 들어 본 사람이 꽤 있음",
+          "piece": "f01",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "K1-15",
+          "key": "b162",
+          "hint": "2002년 KBS 드라마 '겨울연가' 마지막 회의 배경이 된 곳이다.",
+          "guess": "외도",
+          "confidence": "high",
+          "hit": true,
+          "answer": "외도"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/외도"
+        ],
+        "facts": [
+          {
+            "claim": "1969년 7월 낚시 중 태풍을 만나 하룻밤 민박한 인연, 1973년까지 3년에 걸쳐 섬 전체를 사들임",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/외도",
+            "note": "이창호는 1969년 7월 낚시 중 '태풍을 만나 우연히 하룻밤 민박을 한 것이 인연이 되어' … 1973년까지 3년에 걸쳐 섬 전체를 사들였습니다"
+          },
+          {
+            "claim": "아내 최호숙",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/외도",
+            "note": "이창호와 아내 최호숙은 섬의 자연에 매료되어"
+          },
+          {
+            "claim": "외도해상농원 1995년 4월 15일 개원",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/외도",
+            "note": "외도해상농원은 1995년 4월 15일에 개원했습니다"
+          },
+          {
+            "claim": "2001년 식물원 등록, 2003년 3월 이창호 별세",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/외도",
+            "note": "2001년 문화관광부 지정 식물원으로 외도조경식물원이 등록되었고, 2003년 3월 1일 이창호 회장이 세상을 떠났습니다"
+          },
+          {
+            "claim": "1970년대 초 고구마밭에 감귤나무 3천 그루를 심어 농장 조성, 여러 차례 실패",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/외도",
+            "note": "1970년대 초반부터 이 섬을 개발하기 시작하여, 고구마밭에 감귤나무 3천 그루와 편백 방품림 8천 그루를 심어 놓고 농장을 조성하였는데, 여러 차례 실패를 겪고 농장 대신 식물원을 구상하여"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/외도"
+        ],
+        "hintNote": "2002년 방영되어 … KBS 드라마 《겨울연가》의 마지막회 장면의 배경으로 사용되었다.",
+        "easiestCue": "1969년 7월 이창호가 낚시 중 태풍을 만나 하룻밤 민박",
+        "targetWhy": "식물원 이전의 민박 인연·감귤 농장 실패는 여행 애호가 세부 — 해상농원·식물원은 해설로",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "섬 안내에 꼭 나오는 이야기라 관심층 대표 일화일 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new(대조 뒤 추가)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "이창호가 고구마밭에 감귤나무를 심어 농장을 꾸민 섬",
+          "difWhy": "해상농원 섬 내력 — 여행 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "관광지 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 지리 — 초중 사회 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

@@ -1,135 +1,150 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "world-cinema/3",
-  "midKey": "world-cinema",
-  "subName": "유럽·아시아 영화",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-cinema/3#g019a-M2-27",
-   "seed": {
-    "subject": "레옹",
-    "aspect": "팬 세부",
-    "ref": "M2-27",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "감독은 이 1994년 영화의 주인공을, 자기 1990년 영화에서 같은 배우가 맡았던 해결사 빅토르의 '미국 사촌쯤'이라고 불렀습니다. 25분 분량이 더해진 판을 감독 자신은 '감독판'이 아니라 '롱 버전'이라 부르는 이 영화는?",
-    "answer": "레옹",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "킬러가 거둔 열두 살 소녀 역은 나탈리 포트먼의 장편 영화 데뷔였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 1994년 영화 주인공 해결사 + '롱 버전'",
-     "difWhy": "뤽 베송 1994 킬러 영화 — 영화 관심층",
-     "wor": 3,
-     "worWhy": "대중적 영화 제목",
-     "acc": 4,
-     "accWhy": "세계 영화 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "뤽 베송은 … '니키타'에 나온 인물 빅토르에서 생각을 넓혀",
-     "difWhy": "뤽 베송 킬러 영화 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "대중적 영화 제목"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "뤽 베송은 자신의 1990년 영화 '니키타'에 나온 인물 빅토르에서 생각을 넓혀 이 영화를 만들었고, 주인공을 '빅토르의 미국 사촌쯤'이라고 했습니다. 25분 분량이 더해진 판을 베송 자신은 '감독판'이 아니라 '롱 버전'이라 부르는 이 영화는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "뤽 베송 · '니키타'(감독·전작 이름)",
-     "addedCue": "감독·전작 이름 없이 빅토르의 '미국 사촌' 발언만",
-     "why": "감독 이름(대표작으로 바로 풀림)을 빼서 팬 세부만 남김"
-    },
-    "generalHint": "부패한 마약 단속국 요원 노먼 스탠스필드 역은 게리 올드먼이 맡았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "뤽 베송의 1994년 킬러와 소녀 영화",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "명작 영화로 유명",
-     "piece": "f07",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "M2-27",
-     "key": "b004",
-     "hint": "부패한 마약 단속국 요원 노먼 스탠스필드 역은 게리 올드먼이 맡았다.",
-     "guess": "레옹",
-     "confidence": "high",
-     "hit": true,
-     "answer": "레옹"
-    },
-    "layer": "팬 세부",
-    "genre": "영화",
-    "work": "레옹",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional"
-    ],
-    "facts": [
-     {
-      "claim": "레옹은 니키타 아이디어의 확장 · 장 르노가 니키타에서 빅토르 역",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
-      "note": "Léon: The Professional is to some extent an expansion of an idea in Besson's earlier 1990 film, La Femme Nikita (in some countries Nikita). In La Femme Nikita, Jean Reno plays a similar character named Victor."
-     },
-     {
-      "claim": "빅토르의 미국 사촌",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
-      "note": "Besson described Léon as \"Now maybe Jean is playing the American cousin of Victor.\""
-     },
-     {
-      "claim": "25분 추가판 — 베송은 원판을 감독판, 새 판을 롱 버전이라 부름",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
-      "note": "Containing 25 minutes of additional footage, it is sometimes called the \"Director's Cut\", but Besson refers to the original version as the Director's Cut and the new version as \"The Long Version\"."
-     },
-     {
-      "claim": "포트먼 장편 데뷔 · 12세 마틸다",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
-      "note": "It stars Jean Reno, Gary Oldman and Natalie Portman in her feature film debut. … reluctantly takes in twelve-year-old Mathilda Lando (Portman)"
-     },
-     {
-      "claim": "1994년 영화",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
-      "note": "Léon (released in the United States and Australia as The Professional originally and then as Léon: The Professional) is a 1994 French English-language action-thriller film written and directed by Luc Besson."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional"
-    ],
-    "hintNote": "after her family is murdered by corrupt Drug Enforcement Administration (DEA) agent Norman Stansfield (Oldman).",
-    "easiestCue": "25분 분량이 더해진 판을 … '롱 버전'이라 부르는",
-    "targetWhy": "레전드 영화의 판본·기획 뒷이야기 — 팬 세부",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "마틸다 #4217 과 정답 다름 · 그 질문의 사실(가족 잃은 열두 살 소녀)은 질문에 쓰지 않음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "world-cinema/3",
+    "midKey": "world-cinema",
+    "subName": "유럽·아시아 영화",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "world-cinema/3#g019a-M2-27",
+      "seed": {
+        "subject": "레옹",
+        "aspect": "팬 세부",
+        "ref": "M2-27",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "감독은 이 1994년 영화의 주인공을, 자기 1990년 영화에서 같은 배우가 맡았던 해결사 빅토르의 '미국 사촌쯤'이라고 불렀습니다. 25분 분량이 더해진 판을 감독 자신은 '감독판'이 아니라 '롱 버전'이라 부르는 이 영화는?",
+        "answer": "레옹",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "킬러가 거둔 열두 살 소녀 역은 나탈리 포트먼의 장편 영화 데뷔였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 1994년 영화 주인공 해결사 + '롱 버전'",
+          "difWhy": "뤽 베송 1994 킬러 영화 — 영화 관심층",
+          "wor": 3,
+          "worWhy": "대중적 영화 제목",
+          "acc": 4,
+          "accWhy": "세계 영화 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "뤽 베송은 … '니키타'에 나온 인물 빅토르에서 생각을 넓혀",
+          "difWhy": "뤽 베송 킬러 영화 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "대중적 영화 제목"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "뤽 베송은 자신의 1990년 영화 '니키타'에 나온 인물 빅토르에서 생각을 넓혀 이 영화를 만들었고, 주인공을 '빅토르의 미국 사촌쯤'이라고 했습니다. 25분 분량이 더해진 판을 베송 자신은 '감독판'이 아니라 '롱 버전'이라 부르는 이 영화는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "뤽 베송 · '니키타'(감독·전작 이름)",
+          "addedCue": "감독·전작 이름 없이 빅토르의 '미국 사촌' 발언만",
+          "why": "감독 이름(대표작으로 바로 풀림)을 빼서 팬 세부만 남김"
+        },
+        "generalHint": "부패한 마약 단속국 요원 노먼 스탠스필드 역은 게리 올드먼이 맡았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "뤽 베송의 1994년 킬러와 소녀 영화",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "명작 영화로 유명",
+          "piece": "f07",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "M2-27",
+          "key": "b004",
+          "hint": "부패한 마약 단속국 요원 노먼 스탠스필드 역은 게리 올드먼이 맡았다.",
+          "guess": "레옹",
+          "confidence": "high",
+          "hit": true,
+          "answer": "레옹"
+        },
+        "layer": "팬 세부",
+        "genre": "영화",
+        "work": "레옹",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional"
+        ],
+        "facts": [
+          {
+            "claim": "레옹은 니키타 아이디어의 확장 · 장 르노가 니키타에서 빅토르 역",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
+            "note": "Léon: The Professional is to some extent an expansion of an idea in Besson's earlier 1990 film, La Femme Nikita (in some countries Nikita). In La Femme Nikita, Jean Reno plays a similar character named Victor."
+          },
+          {
+            "claim": "빅토르의 미국 사촌",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
+            "note": "Besson described Léon as \"Now maybe Jean is playing the American cousin of Victor.\""
+          },
+          {
+            "claim": "25분 추가판 — 베송은 원판을 감독판, 새 판을 롱 버전이라 부름",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
+            "note": "Containing 25 minutes of additional footage, it is sometimes called the \"Director's Cut\", but Besson refers to the original version as the Director's Cut and the new version as \"The Long Version\"."
+          },
+          {
+            "claim": "포트먼 장편 데뷔 · 12세 마틸다",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
+            "note": "It stars Jean Reno, Gary Oldman and Natalie Portman in her feature film debut. … reluctantly takes in twelve-year-old Mathilda Lando (Portman)"
+          },
+          {
+            "claim": "1994년 영화",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional",
+            "note": "Léon (released in the United States and Australia as The Professional originally and then as Léon: The Professional) is a 1994 French English-language action-thriller film written and directed by Luc Besson."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/L%C3%A9on:_The_Professional"
+        ],
+        "hintNote": "after her family is murdered by corrupt Drug Enforcement Administration (DEA) agent Norman Stansfield (Oldman).",
+        "easiestCue": "25분 분량이 더해진 판을 … '롱 버전'이라 부르는",
+        "targetWhy": "레전드 영화의 판본·기획 뒷이야기 — 팬 세부",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "마틸다 #4217 과 정답 다름 · 그 질문의 사실(가족 잃은 열두 살 소녀)은 질문에 쓰지 않음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 1994년 영화 주인공 해결사 + '롱 버전'",
+          "difWhy": "뤽 베송 1994 킬러 영화 — 영화 관심층",
+          "wor": 3,
+          "worWhy": "대중적 영화 제목",
+          "acc": 4,
+          "accWhy": "세계 영화 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

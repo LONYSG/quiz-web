@@ -1,223 +1,256 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "earth/5",
-  "midKey": "earth",
-  "subName": "기후 변화",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "earth/5#g019a-C1-15",
-   "seed": {
-    "subject": "빙하기",
-    "aspect": null,
-    "ref": "C1-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "독일 식물학자 카를 쉼퍼는 바이에른 고지의 떠돌이 바위에 자란 이끼를 연구하다가 그 바위들이 어떻게 옮겨졌는지 결론을 얻었고, 1837년 초 그런 시기를 가리키는 이 말을 지어냈습니다. 이 말은 무엇일까요?",
-    "answer": "빙하기",
-    "acceptedAnswers": [
-     "빙하 시대"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 빙하기 넘겨주기(빙하 시대 · 빙하시대) 확인",
-    "explanation": "같은 해 7월 친구 루이 아가시가 뇌샤텔에서 열린 스위스 자연연구학회 연례 모임에서 두 사람의 이론을 발표했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "떠돌이 바위 … 어떻게 옮겨졌는지 … 그런 시기를 가리키는 이 말",
-     "difWhy": "표석 운반 시기 — 고교 지구과학",
-     "wor": 4,
-     "worWhy": "교양 — 기본 어휘 기원",
-     "acc": 5,
-     "accWhy": "지구과학·기상 — 중학 과학 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "얼음이 그 바위를 옮겼다고 결론지었습니다 … 지어낸 이 말",
-     "difWhy": "빙하 시대 개념 — 고교 지구과학",
-     "wor": 4,
-     "worWhy": "교양 — 지구사 어휘"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "독일 식물학자 카를 쉼퍼는 바이에른 고지의 떠돌이 바위에 자란 이끼를 연구하다, 얼음이 그 바위를 옮겼다고 결론지었습니다. 그가 1837년 초 지어낸 이 말은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "얼음이 그 바위를 옮겼다고 결론지었습니다",
-     "addedCue": "결론의 내용(얼음)을 감추고 떠돌이 바위·이끼 연구로만",
-     "why": "'얼음이 옮겼다'(정답을 바로 가리킴)를 빼서 떠돌이 바위의 정체를 알아야 풀리게"
-    },
-    "generalHint": "쉼퍼는 이 생각을 아가시와 나누었는데, 아가시가 제 생각처럼 내세워 공을 대부분 가져가자 크게 실망했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "지구 기온이 크게 떨어져 빙하가 넓게 덮였던 시기",
-    "familiarity": {
-     "judge": 3,
-     "pct": 99,
-     "why": "교과서·영화(아이스 에이지)로 익숙",
-     "piece": "f03",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "C1-15",
-     "key": "b296",
-     "hint": "쉼퍼는 이 생각을 아가시와 나누었는데, 아가시가 제 생각처럼 내세워 공을 대부분 가져가자 크게 실망했다.",
-     "guess": "빙하 시대",
-     "confidence": "high",
-     "hit": true,
-     "answer": "빙하기"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ice_age"
-    ],
-    "facts": [
-     {
-      "claim": "쉼퍼가 바이에른 고지 떠돌이 바위의 이끼를 연구 → 얼음이 옮겼다고 결론",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ice_age",
-      "note": "the German botanist Karl Friedrich Schimper (1803–1867) was studying mosses which were growing on erratic boulders in the alpine upland of Bavaria. Schimper came to the conclusion that ice must have been the means of transport for the boulders in the alpine upland."
-     },
-     {
-      "claim": "1837년 초 쉼퍼가 Eiszeit 라는 말을 지음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ice_age",
-      "note": "At the beginning of 1837, Schimper coined the term \"ice age\" (\"Eiszeit\") for the period of the glaciers."
-     },
-     {
-      "claim": "1837년 7월 아가시가 뇌샤텔 스위스 자연연구학회에서 발표",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ice_age",
-      "note": "In July 1837 Agassiz presented their synthesis before the annual meeting of the Swiss Society for Natural Research at Neuchâtel."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Karl_Friedrich_Schimper"
-    ],
-    "hintNote": "He discussed them with Louis Agassiz, who went on to appropriate the idea as his own and, much to Schimper's dismay, undeservedly received much of the credit for its origination.",
-    "easiestCue": "떠돌이 바위에 자란 이끼를 연구하다가 그 바위들이 어떻게 옮겨졌는지",
-    "targetWhy": "지질학 용어의 탄생 경위 — 대학 교양 지구과학",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "\"얼음이 바위를 옮겼다\" 에서 빙하 쪽으로 추리 가능 — 4/3 경계",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "earth/5",
+    "midKey": "earth",
+    "subName": "기후 변화",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "earth/5#g019a-C1-16",
-   "seed": {
-    "subject": "지구 온난화",
-    "aspect": null,
-    "ref": "C1-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1975년 미국 과학자 월리스 브로커가 논문 제목에 넣어 널리 퍼뜨린 이 말은, 1957년 로저 르벨의 연구를 다룬 신문 기사에 이미 나왔고 1988년 NASA 기후학자 제임스 핸슨이 미국 상원 증언에서 쓴 뒤 더 흔해졌습니다. 이 말은?",
-    "answer": "지구 온난화",
-    "acceptedAnswers": [
-     "온난화"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "한국 언론에서 \"온난화\" 만으로 흔히 씀 — 같은 대상의 줄임",
-    "explanation": "브로커는 전 세계 바다의 순환을 하나로 잇는 '컨베이어 벨트' 개념을 내놓은 것으로도 이름났습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 2,
-     "easiestCue": "NASA 기후학자 제임스 핸슨이 미국 상원 증언에서 쓴",
-     "difWhy": "기후학자의 말 — 중학 과학·뉴스",
-     "wor": 5,
-     "worWhy": "교과 — 기후 변화",
-     "acc": 5,
-     "accWhy": "지구과학·기상 — 중학 과학 교과"
+  "items": [
+    {
+      "seedId": "earth/5#g019a-C1-15",
+      "seed": {
+        "subject": "빙하기",
+        "aspect": null,
+        "ref": "C1-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "독일 식물학자 카를 쉼퍼는 바이에른 고지의 떠돌이 바위에 자란 이끼를 연구하다가 그 바위들이 어떻게 옮겨졌는지 결론을 얻었고, 1837년 초 그런 시기를 가리키는 이 말을 지어냈습니다. 이 말은 무엇일까요?",
+        "answer": "빙하기",
+        "acceptedAnswers": [
+          "빙하 시대"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 빙하기 넘겨주기(빙하 시대 · 빙하시대) 확인",
+        "explanation": "같은 해 7월 친구 루이 아가시가 뇌샤텔에서 열린 스위스 자연연구학회 연례 모임에서 두 사람의 이론을 발표했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "떠돌이 바위 … 어떻게 옮겨졌는지 … 그런 시기를 가리키는 이 말",
+          "difWhy": "표석 운반 시기 — 고교 지구과학",
+          "wor": 4,
+          "worWhy": "교양 — 기본 어휘 기원",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "얼음이 그 바위를 옮겼다고 결론지었습니다 … 지어낸 이 말",
+          "difWhy": "빙하 시대 개념 — 고교 지구과학",
+          "wor": 4,
+          "worWhy": "교양 — 지구사 어휘"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "독일 식물학자 카를 쉼퍼는 바이에른 고지의 떠돌이 바위에 자란 이끼를 연구하다, 얼음이 그 바위를 옮겼다고 결론지었습니다. 그가 1837년 초 지어낸 이 말은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "얼음이 그 바위를 옮겼다고 결론지었습니다",
+          "addedCue": "결론의 내용(얼음)을 감추고 떠돌이 바위·이끼 연구로만",
+          "why": "'얼음이 옮겼다'(정답을 바로 가리킴)를 빼서 떠돌이 바위의 정체를 알아야 풀리게"
+        },
+        "generalHint": "쉼퍼는 이 생각을 아가시와 나누었는데, 아가시가 제 생각처럼 내세워 공을 대부분 가져가자 크게 실망했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "지구 기온이 크게 떨어져 빙하가 넓게 덮였던 시기",
+        "familiarity": {
+          "judge": 3,
+          "pct": 99,
+          "why": "교과서·영화(아이스 에이지)로 익숙",
+          "piece": "f03",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "C1-15",
+          "key": "b296",
+          "hint": "쉼퍼는 이 생각을 아가시와 나누었는데, 아가시가 제 생각처럼 내세워 공을 대부분 가져가자 크게 실망했다.",
+          "guess": "빙하 시대",
+          "confidence": "high",
+          "hit": true,
+          "answer": "빙하기"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ice_age"
+        ],
+        "facts": [
+          {
+            "claim": "쉼퍼가 바이에른 고지 떠돌이 바위의 이끼를 연구 → 얼음이 옮겼다고 결론",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ice_age",
+            "note": "the German botanist Karl Friedrich Schimper (1803–1867) was studying mosses which were growing on erratic boulders in the alpine upland of Bavaria. Schimper came to the conclusion that ice must have been the means of transport for the boulders in the alpine upland."
+          },
+          {
+            "claim": "1837년 초 쉼퍼가 Eiszeit 라는 말을 지음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ice_age",
+            "note": "At the beginning of 1837, Schimper coined the term \"ice age\" (\"Eiszeit\") for the period of the glaciers."
+          },
+          {
+            "claim": "1837년 7월 아가시가 뇌샤텔 스위스 자연연구학회에서 발표",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ice_age",
+            "note": "In July 1837 Agassiz presented their synthesis before the annual meeting of the Swiss Society for Natural Research at Neuchâtel."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Karl_Friedrich_Schimper"
+        ],
+        "hintNote": "He discussed them with Louis Agassiz, who went on to appropriate the idea as his own and, much to Schimper's dismay, undeservedly received much of the credit for its origination.",
+        "easiestCue": "떠돌이 바위에 자란 이끼를 연구하다가 그 바위들이 어떻게 옮겨졌는지",
+        "targetWhy": "지질학 용어의 탄생 경위 — 대학 교양 지구과학",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "\"얼음이 바위를 옮겼다\" 에서 빙하 쪽으로 추리 가능 — 4/3 경계",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "떠돌이 바위 … 어떻게 옮겨졌는지 … 그런 시기를 가리키는 이 말",
+          "difWhy": "표석 운반 시기 — 고교 지구과학",
+          "wor": 4,
+          "worWhy": "교양 — 기본 어휘 기원",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "'기후 변화: 우리는 뚜렷한 ○○ ○○○의 문턱에 서 있는가?'",
-     "difWhy": "기후 변화 빈칸 — 중학 과학",
-     "wor": 4,
-     "worWhy": "시사 기본 어휘"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1975년 미국 과학자 월리스 브로커는 '기후 변화: 우리는 뚜렷한 ○○ ○○○의 문턱에 서 있는가?'라는 논문으로 이 말을 널리 퍼뜨렸습니다. 1957년 로저 르벨의 연구를 다룬 신문 기사에 이미 나왔던 이 말은?",
-     "beforeExplanation": "1988년 NASA 기후학자 제임스 핸슨이 미국 상원 증언에서 이 말을 쓴 뒤 더 흔히 쓰이게 됐습니다.",
-     "removedCue": "'기후 변화: 우리는 뚜렷한 ○○ ○○○의 문턱에 서 있는가?' (빈칸 제목)",
-     "addedCue": "1988년 핸슨의 상원 증언(해설에서 옮김)",
-     "why": "빈칸으로 바로 풀리는 논문 제목을 빼고 이 말이 퍼진 경위로 바꿈"
-    },
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "온실가스 탓에 지구 평균 기온이 오르는 현상",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "뉴스·교과서 단골",
-     "piece": "f09",
-     "genPct": 99
-    },
-    "blind": null,
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
-     "https://en.wikipedia.org/wiki/Climate_change"
-    ],
-    "facts": [
-     {
-      "claim": "1975 브로커 논문 제목으로 널리 퍼뜨림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
-      "note": "In 1975, Broecker popularized the term global warming when he published a paper titled: \"Climatic Change: Are we on the Brink of a Pronounced Global Warming?\""
-     },
-     {
-      "claim": "1957 로저 르벨 연구 신문 기사에 먼저 나옴",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
-      "note": "the phrase had previously appeared in a 1957 newspaper report about Roger Revelle's research."
-     },
-     {
-      "claim": "1988 핸슨 상원 증언 뒤 더 흔한 말",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Climate_change",
-      "note": "Global warming—used as early as 1975—became the more popular term after NASA climate scientist James Hansen used it in his 1988 testimony in the U.S. Senate."
-     },
-     {
-      "claim": "브로커 — 전 지구 해양 컨베이어 벨트 개념",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
-      "note": "He developed the idea of a global \"conveyor belt\" linking the circulation of the global ocean"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "1988년 제임스 핸슨의 상원 증언 뒤 흔해진 말",
-    "targetWhy": "브로커·르벨·핸슨으로 말의 역사를 엮음 — 기후 과학 대학 교양 4(경계 3)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "빈칸 꼴이 추리를 도와 3 경계 — 대상은 누구나 앎",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "earth/5#g019a-C1-16",
+      "seed": {
+        "subject": "지구 온난화",
+        "aspect": null,
+        "ref": "C1-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1975년 미국 과학자 월리스 브로커가 논문 제목에 넣어 널리 퍼뜨린 이 말은, 1957년 로저 르벨의 연구를 다룬 신문 기사에 이미 나왔고 1988년 NASA 기후학자 제임스 핸슨이 미국 상원 증언에서 쓴 뒤 더 흔해졌습니다. 논문 제목 앞머리의 '기후 변화'와는 다른 이 말은?",
+        "answer": "지구 온난화",
+        "acceptedAnswers": [
+          "온난화"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "한국 언론에서 \"온난화\" 만으로 흔히 씀 — 같은 대상의 줄임",
+        "explanation": "브로커는 전 세계 바다의 순환을 하나로 잇는 '컨베이어 벨트' 개념을 내놓은 것으로도 이름났습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "NASA 기후학자 제임스 핸슨이 미국 상원 증언에서 쓴",
+          "difWhy": "기후학자의 말 — 중학 과학·뉴스",
+          "wor": 5,
+          "worWhy": "교과 — 기후 변화",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "'기후 변화: 우리는 뚜렷한 ○○ ○○○의 문턱에 서 있는가?'",
+          "difWhy": "기후 변화 빈칸 — 중학 과학",
+          "wor": 4,
+          "worWhy": "시사 기본 어휘"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1975년 미국 과학자 월리스 브로커는 '기후 변화: 우리는 뚜렷한 ○○ ○○○의 문턱에 서 있는가?'라는 논문으로 이 말을 널리 퍼뜨렸습니다. 1957년 로저 르벨의 연구를 다룬 신문 기사에 이미 나왔던 이 말은?",
+          "beforeExplanation": "1988년 NASA 기후학자 제임스 핸슨이 미국 상원 증언에서 이 말을 쓴 뒤 더 흔히 쓰이게 됐습니다.",
+          "removedCue": "'기후 변화: 우리는 뚜렷한 ○○ ○○○의 문턱에 서 있는가?' (빈칸 제목)",
+          "addedCue": "1988년 핸슨의 상원 증언(해설에서 옮김)",
+          "why": "빈칸으로 바로 풀리는 논문 제목을 빼고 이 말이 퍼진 경위로 바꿈"
+        },
+        "generalHint": "공화당 여론 전략가 프랭크 런츠는 부시 정부에 이 말 대신 덜 무섭게 들리는 다른 말을 쓰라고 권했다고 알려져 있다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "온실가스 탓에 지구 평균 기온이 오르는 현상",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "뉴스·교과서 단골",
+          "piece": "f09",
+          "genPct": 99
+        },
+        "blind": null,
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
+          "https://en.wikipedia.org/wiki/Climate_change"
+        ],
+        "facts": [
+          {
+            "claim": "1975 브로커 논문 제목으로 널리 퍼뜨림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
+            "note": "In 1975, Broecker popularized the term global warming when he published a paper titled: \"Climatic Change: Are we on the Brink of a Pronounced Global Warming?\""
+          },
+          {
+            "claim": "1957 로저 르벨 연구 신문 기사에 먼저 나옴",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
+            "note": "the phrase had previously appeared in a 1957 newspaper report about Roger Revelle's research."
+          },
+          {
+            "claim": "1988 핸슨 상원 증언 뒤 더 흔한 말",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Climate_change",
+            "note": "Global warming—used as early as 1975—became the more popular term after NASA climate scientist James Hansen used it in his 1988 testimony in the U.S. Senate."
+          },
+          {
+            "claim": "브로커 — 전 지구 해양 컨베이어 벨트 개념",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Wallace_Smith_Broecker",
+            "note": "He developed the idea of a global \"conveyor belt\" linking the circulation of the global ocean"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Frank_Luntz"
+        ],
+        "easiestCue": "1988년 제임스 핸슨의 상원 증언 뒤 흔해진 말",
+        "targetWhy": "브로커·르벨·핸슨으로 말의 역사를 엮음 — 기후 과학 대학 교양 4(경계 3)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "빈칸 꼴이 추리를 도와 3 경계 — 대상은 누구나 앎",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 2,
+          "easiestCue": "NASA 기후학자 제임스 핸슨이 미국 상원 증언에서 쓴",
+          "difWhy": "기후학자의 말 — 중학 과학·뉴스",
+          "wor": 5,
+          "worWhy": "교과 — 기후 변화",
+          "acc": 5,
+          "accWhy": "지구과학·기상 — 중학 과학 교과"
+        },
+        "g020": {
+          "why": "V025 fix not-unique·rewrite-unique · H0 재채점 3 → 힌트 붙임",
+          "verdict": "fix",
+          "hintGen": true,
+          "hintGenNote": "G020 하위 에이전트(hint-v6 규칙 · 문서 확인)"
+        }
+      }
+    }
+  ]
 }

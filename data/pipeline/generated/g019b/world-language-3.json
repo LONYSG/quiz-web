@@ -1,338 +1,380 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "world-language/3",
-  "midKey": "world-language",
-  "subName": "문자 체계",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-language/3#g019b-L1-12",
-   "seed": {
-    "subject": "히라가나",
-    "aspect": null,
-    "ref": "L1-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1900년 일본의 문자 정리로 한 음절에 한 글자만 남기고, 나머지 수백 자는 '헨타이가나'로 밀려난 문자입니다. 10세기 무렵의 노래 '이로하'는 이 문자를 모두 한 번씩 쓰는데, 이 문자는 무엇일까요?",
-    "answer": "히라가나",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "궁중 여성들의 편지와 문학에 먼저 널리 쓰여 '온나데', 곧 여자의 글씨라는 다른 이름으로도 불렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "노래 '이로하'는 이 문자를 모두 한 번씩 쓴다",
-     "difWhy": "'이로하 노래' — 일본어 관심층",
-     "wor": 3,
-     "worWhy": "문자 이야깃거리",
-     "acc": 3,
-     "accWhy": "언어·어원 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "궁중 여성들의 편지와 문학에 먼저 널리 쓰여 '온나데'",
-     "difWhy": "여성 문자 히라가나 — 고교 일본어",
-     "wor": 4,
-     "worWhy": "교양 — 일본 문자 기본"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1900년 일본의 문자 정리로 한 음절에 한 글자만 남기고, 나머지 수백 자는 '헨타이가나'로 밀려난 문자입니다. 궁중 여성들의 편지와 문학에 먼저 널리 쓰여 '온나데'라는 다른 이름으로도 불렸는데, 이 문자는 무엇일까요?",
-     "beforeExplanation": "남성들이 쓰던 해서체 한자는 이와 대비해 '오토코데', 곧 남자의 글씨라 불렸습니다.",
-     "removedCue": "궁중 여성들의 편지와 문학 · '온나데'",
-     "addedCue": "이로하 노래가 모든 글자를 한 번씩 씀",
-     "why": "여성 문자(고교 일본어) 단서를 해설로 옮기고 이로하로 바꿈"
-    },
-    "generalHint": "'a' 소리를 내는 이 문자의 글자는 한자 '安'을 흘려 쓴 꼴에서 나왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한자 초서체를 바탕으로 만든 일본의 둥근 음절 문자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "일본어 문자로 누구나 앎",
-     "piece": "f06",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "L1-12",
-     "key": "b083",
-     "hint": "'a' 소리를 내는 이 문자의 글자는 한자 '安'을 흘려 쓴 꼴에서 나왔다.",
-     "guess": "히라가나",
-     "confidence": "high",
-     "hit": true,
-     "answer": "히라가나"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Hiragana"
-    ],
-    "facts": [
-     {
-      "claim": "1900년 개혁으로 수백 자가 헨타이가나가 되었다",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Hiragana",
-      "note": "After the 1900 script reform, which deemed hundreds of characters hentaigana, the hiragana syllabary consists of 48 base characters"
-     },
-     {
-      "claim": "1900년 한 음절에 히라가나 하나만 남기도록 단순화",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Hiragana",
-      "note": "In 1900, the system was simplified so each syllable had only one hiragana. The deprecated hiragana are now known as hentaigana (変体仮名)."
-     },
-     {
-      "claim": "궁중 여성들의 사적 편지·문학에 먼저 널리 쓰였고 '온나데'라는 다른 이름이 있다",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Hiragana",
-      "note": "hiragana was first widely used among court women in the writing of personal communications and literature. From this comes the alternative name of onnade (女手) \"women's writing\"."
-     },
-     {
-      "claim": "이로하 노래(10세기)는 모든 히라가나를 한 번씩 씀",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Hiragana",
-      "note": "The pangram poem Iroha-uta (\"ABC song/poem\"), which dates to the 10th century, uses every hiragana once."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Hiragana"
-    ],
-    "hintNote": "hiragana developed from cursive forms of kanji via man'yōgana ... for example, あ (a) from 安 (an).",
-    "easiestCue": "나머지 수백 자는 '헨타이가나'로 밀려난 문자",
-    "targetWhy": "1900 문자 정리 · 이로하 — 일본어 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'궁중 여성의 문자' 는 일본 문화 관심층이 알 수 있어 3 경계",
-    "pairCheck": null,
-    "dbCheck": "new — 활성 1372 가타카나는 다른 답(헨타이가나·온나데는 히라가나에만 해당)",
-    "warn": [
-     "정답조각 가나"
-    ]
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "world-language/3",
+    "midKey": "world-language",
+    "subName": "문자 체계",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "world-language/3#g019b-L1-13",
-   "seed": {
-    "subject": "갑골문",
-    "aspect": null,
-    "ref": "L1-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "청나라 말 소설 '노잔유기'를 쓴 유악은 이것의 조각 5,000개를 모았고, 1903년 탁본 1,058장을 실은 첫 자료집 '철운장귀'를 펴내 글자 34자를 바르게 읽어 냈습니다. 이것은 무엇일까요?",
-    "answer": "갑골문",
-    "acceptedAnswers": [
-     "갑골문자"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia — '갑골문' · '갑골문자' 모두 '갑골 문자' 문서로 넘겨주기(API redirects 확인)",
-    "explanation": "1899년 왕의영이 이것을 처음 알아보았을 때 이 조각들은 한약재로 쓰이고 있었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "유악은 이것의 조각 5,000개를 모았고",
-     "difWhy": "『철운장귀』 — 대학 교양 중국사",
-     "wor": 4,
-     "worWhy": "교양 — 한자 기원",
-     "acc": 3,
-     "accWhy": "언어·어원 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "world-language/3#g019b-L1-12",
+      "seed": {
+        "subject": "히라가나",
+        "aspect": null,
+        "ref": "L1-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1900년 일본의 문자 정리로 한 음절에 한 글자만 남기고, 나머지 수백 자는 '헨타이가나'로 밀려난 문자입니다. 10세기 무렵의 노래 '이로하'는 이 문자를 한 번씩만 써서 지었는데, 이 문자는 무엇일까요?",
+        "answer": "히라가나",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "궁중 여성들의 편지와 문학에 먼저 널리 쓰여 '온나데', 곧 여자의 글씨라는 다른 이름으로도 불렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "노래 '이로하'는 이 문자를 모두 한 번씩 쓴다",
+          "difWhy": "'이로하 노래' — 일본어 관심층",
+          "wor": 3,
+          "worWhy": "문자 이야깃거리",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "궁중 여성들의 편지와 문학에 먼저 널리 쓰여 '온나데'",
+          "difWhy": "여성 문자 히라가나 — 고교 일본어",
+          "wor": 4,
+          "worWhy": "교양 — 일본 문자 기본"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1900년 일본의 문자 정리로 한 음절에 한 글자만 남기고, 나머지 수백 자는 '헨타이가나'로 밀려난 문자입니다. 궁중 여성들의 편지와 문학에 먼저 널리 쓰여 '온나데'라는 다른 이름으로도 불렸는데, 이 문자는 무엇일까요?",
+          "beforeExplanation": "남성들이 쓰던 해서체 한자는 이와 대비해 '오토코데', 곧 남자의 글씨라 불렸습니다.",
+          "removedCue": "궁중 여성들의 편지와 문학 · '온나데'",
+          "addedCue": "이로하 노래가 모든 글자를 한 번씩 씀",
+          "why": "여성 문자(고교 일본어) 단서를 해설로 옮기고 이로하로 바꿈"
+        },
+        "generalHint": "'a' 소리를 내는 이 문자의 글자는 한자 '安'을 흘려 쓴 꼴에서 나왔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한자 초서체를 바탕으로 만든 일본의 둥근 음절 문자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "일본어 문자로 누구나 앎",
+          "piece": "f06",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "L1-12",
+          "key": "b083",
+          "hint": "'a' 소리를 내는 이 문자의 글자는 한자 '安'을 흘려 쓴 꼴에서 나왔다.",
+          "guess": "히라가나",
+          "confidence": "high",
+          "hit": true,
+          "answer": "히라가나"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Hiragana"
+        ],
+        "facts": [
+          {
+            "claim": "1900년 개혁으로 수백 자가 헨타이가나가 되었다",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Hiragana",
+            "note": "After the 1900 script reform, which deemed hundreds of characters hentaigana, the hiragana syllabary consists of 48 base characters"
+          },
+          {
+            "claim": "1900년 한 음절에 히라가나 하나만 남기도록 단순화",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Hiragana",
+            "note": "In 1900, the system was simplified so each syllable had only one hiragana. The deprecated hiragana are now known as hentaigana (変体仮名)."
+          },
+          {
+            "claim": "궁중 여성들의 사적 편지·문학에 먼저 널리 쓰였고 '온나데'라는 다른 이름이 있다",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Hiragana",
+            "note": "hiragana was first widely used among court women in the writing of personal communications and literature. From this comes the alternative name of onnade (女手) \"women's writing\"."
+          },
+          {
+            "claim": "이로하 노래(10세기)는 모든 히라가나를 한 번씩 씀",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Hiragana",
+            "note": "The pangram poem Iroha-uta (\"ABC song/poem\"), which dates to the 10th century, uses every hiragana once."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Hiragana"
+        ],
+        "hintNote": "hiragana developed from cursive forms of kanji via man'yōgana ... for example, あ (a) from 安 (an).",
+        "easiestCue": "나머지 수백 자는 '헨타이가나'로 밀려난 문자",
+        "targetWhy": "1900 문자 정리 · 이로하 — 일본어 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'궁중 여성의 문자' 는 일본 문화 관심층이 알 수 있어 3 경계",
+        "pairCheck": null,
+        "dbCheck": "new — 활성 1372 가타카나는 다른 답(헨타이가나·온나데는 히라가나에만 해당)",
+        "warn": [
+          "정답조각 가나"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "노래 '이로하'는 이 문자를 모두 한 번씩 쓴다",
+          "difWhy": "'이로하 노래' — 일본어 관심층",
+          "wor": 3,
+          "worWhy": "문자 이야깃거리",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 fix assertive",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "유악은 이것의 조각 5,000개를 모았고",
-     "difWhy": "『철운장귀』 — 대학 교양 중국사",
-     "wor": 4,
-     "worWhy": "교양 — 한자 기원"
+    {
+      "seedId": "world-language/3#g019b-L1-13",
+      "seed": {
+        "subject": "갑골문",
+        "aspect": null,
+        "ref": "L1-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "청나라 말 소설 '노잔유기'를 쓴 유악은 이것의 조각 5,000개를 모았고, 1903년 탁본 1,058장을 실은 첫 자료집 '철운장귀'를 펴내 글자 34자를 바르게 읽어 냈습니다. 이것은 무엇일까요?",
+        "answer": "갑골문",
+        "acceptedAnswers": [
+          "갑골문자"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia — '갑골문' · '갑골문자' 모두 '갑골 문자' 문서로 넘겨주기(API redirects 확인)",
+        "explanation": "1899년 왕의영이 이것을 처음 알아보았을 때 이 조각들은 한약재로 쓰이고 있었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "유악은 이것의 조각 5,000개를 모았고",
+          "difWhy": "『철운장귀』 — 대학 교양 중국사",
+          "wor": 4,
+          "worWhy": "교양 — 한자 기원",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "유악은 이것의 조각 5,000개를 모았고",
+          "difWhy": "『철운장귀』 — 대학 교양 중국사",
+          "wor": 4,
+          "worWhy": "교양 — 한자 기원"
+        },
+        "rewrite": null,
+        "generalHint": "둥쭤빈은 점친 이들을 가려내고 이 조각들의 연대 체계를 세웠다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "거북 배딱지와 짐승 뼈에 새긴 중국 상나라의 옛 한자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "한자 기원으로 교과서에서 배움",
+          "piece": "f07",
+          "genPct": 68
+        },
+        "blind": {
+          "ref": "L1-13",
+          "key": "b311",
+          "hint": "둥쭤빈은 점친 이들을 가려내고 이 조각들의 연대 체계를 세웠다.",
+          "guess": "갑골문",
+          "confidence": "high",
+          "hit": true,
+          "answer": "갑골문"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Oracle_bone_script",
+          "https://en.wikipedia.org/wiki/The_Travels_of_Lao_Can",
+          "https://ko.wikipedia.org/wiki/갑골_문자"
+        ],
+        "facts": [
+          {
+            "claim": "유악(Liu E)은 갑골 조각 5,000개를 모았고 1903년 탁본 1,058장의 첫 자료집 철운장귀를 펴내 34자를 바르게 읽었다",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Oracle_bone_script",
+            "note": "Liu E collected five thousand oracle bone fragments, published the first collection of 1,058 rubbings entitled Tieyun Canggui (鐵雲藏龜, Tie Yun's [i.e., Liu E] Repository of Turtles) in 1903, and correctly identified thirty-four characters."
+          },
+          {
+            "claim": "'노잔유기'는 유악(1857–1909)의 소설",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/The_Travels_of_Lao_Can",
+            "note": "The Travels of Lao Can (simplified Chinese: 老残游记 ...) is a novel by Liu E (1857–1909), written between 1903 and 1904 and published in 1907 to wide acclaim."
+          },
+          {
+            "claim": "1899년 왕의영이 발견했을 때 한약재로 쓰이고 있었다",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/갑골_문자",
+            "note": "갑골문은 1899년 청조 말기에 … 왕의영(王懿榮)이 최초로 발견하였으며, 당시 한약재로서 쓰이고 있었다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Oracle_bone_script"
+        ],
+        "hintNote": "Dong Zuobin identified the diviners and established a chronology for the oracle bones",
+        "easiestCue": "1903년 탁본 1,058장을 실은 첫 자료집 '철운장귀'를 펴내 글자 34자를 바르게 읽어 냈습니다",
+        "targetWhy": "유악의 철운장귀는 한자학·중국사 애호가 지식 — 교과서의 '은허·거북 배딱지' 단서는 쓰지 않음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 대상의 교과서 밖 연구사 — 소설가와의 뜻밖의 연결",
+        "pairCheck": null,
+        "dbCheck": "활성 1340(중국 왕조 — 정의 꼴 · 힌트 '은허')과 답만 같고 지식이 다름(초기 연구사) · 은허·왕의영은 질문에 쓰지 않음",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "유악은 이것의 조각 5,000개를 모았고",
+          "difWhy": "『철운장귀』 — 대학 교양 중국사",
+          "wor": 4,
+          "worWhy": "교양 — 한자 기원",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "둥쭤빈은 점친 이들을 가려내고 이 조각들의 연대 체계를 세웠다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "거북 배딱지와 짐승 뼈에 새긴 중국 상나라의 옛 한자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "한자 기원으로 교과서에서 배움",
-     "piece": "f07",
-     "genPct": 68
-    },
-    "blind": {
-     "ref": "L1-13",
-     "key": "b311",
-     "hint": "둥쭤빈은 점친 이들을 가려내고 이 조각들의 연대 체계를 세웠다.",
-     "guess": "갑골문",
-     "confidence": "high",
-     "hit": true,
-     "answer": "갑골문"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Oracle_bone_script",
-     "https://en.wikipedia.org/wiki/The_Travels_of_Lao_Can",
-     "https://ko.wikipedia.org/wiki/갑골_문자"
-    ],
-    "facts": [
-     {
-      "claim": "유악(Liu E)은 갑골 조각 5,000개를 모았고 1903년 탁본 1,058장의 첫 자료집 철운장귀를 펴내 34자를 바르게 읽었다",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Oracle_bone_script",
-      "note": "Liu E collected five thousand oracle bone fragments, published the first collection of 1,058 rubbings entitled Tieyun Canggui (鐵雲藏龜, Tie Yun's [i.e., Liu E] Repository of Turtles) in 1903, and correctly identified thirty-four characters."
-     },
-     {
-      "claim": "'노잔유기'는 유악(1857–1909)의 소설",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/The_Travels_of_Lao_Can",
-      "note": "The Travels of Lao Can (simplified Chinese: 老残游记 ...) is a novel by Liu E (1857–1909), written between 1903 and 1904 and published in 1907 to wide acclaim."
-     },
-     {
-      "claim": "1899년 왕의영이 발견했을 때 한약재로 쓰이고 있었다",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/갑골_문자",
-      "note": "갑골문은 1899년 청조 말기에 … 왕의영(王懿榮)이 최초로 발견하였으며, 당시 한약재로서 쓰이고 있었다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Oracle_bone_script"
-    ],
-    "hintNote": "Dong Zuobin identified the diviners and established a chronology for the oracle bones",
-    "easiestCue": "1903년 탁본 1,058장을 실은 첫 자료집 '철운장귀'를 펴내 글자 34자를 바르게 읽어 냈습니다",
-    "targetWhy": "유악의 철운장귀는 한자학·중국사 애호가 지식 — 교과서의 '은허·거북 배딱지' 단서는 쓰지 않음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 대상의 교과서 밖 연구사 — 소설가와의 뜻밖의 연결",
-    "pairCheck": null,
-    "dbCheck": "활성 1340(중국 왕조 — 정의 꼴 · 힌트 '은허')과 답만 같고 지식이 다름(초기 연구사) · 은허·왕의영은 질문에 쓰지 않음",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "world-language/3#g019b-L1-14",
-   "seed": {
-    "subject": "이집트 상형문자",
-    "aspect": null,
-    "ref": "L1-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "394년 필라이섬에 새겨진 '에스메트아콤의 낙서'가 이 문자로 쓴 마지막 비문으로 알려져 있습니다. 17세기 아타나시우스 키르허는 이 문자가 소리도 나타낼 수 있다고 본 초기 학자였지만, 기호에 신비한 뜻이 있다는 믿음에 발목이 잡혔는데, 이 문자는?",
-    "answer": "이집트 상형문자",
-    "acceptedAnswers": [
-     "신성문자",
-     "히에로글리프",
-     "이집트 신성문자"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia — '이집트 상형문자' · '히에로글리프' 가 '신성문자' 문서로 넘겨주기(API redirects 확인). '상형문자' 만 친 것은 더 넓은 말(B7)이라 넣지 않음",
-    "explanation": "이 문자를 기념물에 새기는 일은 391년 테오도시우스 1세가 그리스도교가 아닌 신전을 모두 닫으면서 끊겼습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "'에스메트아콤의 낙서'가 이 문자로 쓴 마지막 비문",
-     "difWhy": "필라이 마지막 비문 — 대학 교양",
-     "wor": 4,
-     "worWhy": "교양 — 고대 문자",
-     "acc": 3,
-     "accWhy": "언어·어원 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "'에스메트아콤의 낙서'가 이 문자로 쓴 마지막 비문",
-     "difWhy": "필라이 마지막 비문 — 대학 교양",
-     "wor": 4,
-     "worWhy": "교양 — 고대 문자"
-    },
-    "rewrite": null,
-    "generalHint": "왕의 이름은 한쪽 끝에 선을 댄 타원 '카르투슈' 안에 적었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "고대 이집트의 신전·무덤에 새긴 그림 모양 문자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "교과서·다큐에서 흔히 접하는 고대 문자",
-     "piece": "f01",
-     "genPct": 90
-    },
-    "blind": {
-     "ref": "L1-14",
-     "key": "b051",
-     "hint": "왕의 이름은 한쪽 끝에 선을 댄 타원 '카르투슈' 안에 적었다.",
-     "guess": "이집트 상형 문자",
-     "confidence": "high",
-     "hit": true,
-     "answer": "이집트 상형문자"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
-     "https://ko.wikipedia.org/wiki/신성문자"
-    ],
-    "facts": [
-     {
-      "claim": "마지막으로 알려진 비문은 394년 필라이의 에스메트아콤 낙서",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
-      "note": "the last known inscription is from Philae, known as the Graffito of Esmet-Akhom, from 394."
-     },
-     {
-      "claim": "17세기 중반 키르허 때에야 상형문자가 소리를 나타낼 수 있다고 생각하기 시작했다",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
-      "note": "It was not until Athanasius Kircher in the mid 17th century that scholars began to think the hieroglyphs might also represent sounds."
-     },
-     {
-      "claim": "키르허는 기호의 신비한 성격에 대한 믿음 때문에 막혔다",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
-      "note": "Kircher was familiar with Coptic, and thought that it might be the key to deciphering the hieroglyphs, but was held back by a belief in the mystical nature of the symbols."
-     },
-     {
-      "claim": "391년 테오도시우스 1세가 비그리스도교 신전을 닫은 뒤 기념물 사용이 끊겼다",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
-      "note": "Monumental use of hieroglyphs ceased after the closing of all non-Christian temples in 391 by the Roman Emperor Theodosius I"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Cartouche"
-    ],
-    "hintNote": "In Egyptian hieroglyphs, a cartouche is an oval with a line at one end tangent to it, indicating that the text enclosed is a royal name.",
-    "easiestCue": "17세기 아타나시우스 키르허는 이 문자가 소리도 나타낼 수 있다고 본 초기 학자였지만",
-    "targetWhy": "마지막 비문·키르허의 해독 시도는 고대사 애호가 지식 — 로제타석·샹폴리옹(교과·대표 일화)은 쓰지 않음",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'필라이섬'을 이집트로 아는 관심층은 바로 풀 수 있다",
-    "pairCheck": null,
-    "dbCheck": "new — 활성 1368 로제타석은 다른 답, 로제타석·샹폴리옹 사실은 쓰지 않음",
-    "warn": [
-     "정답조각 문자",
-     "단정어 모두"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "world-language/3#g019b-L1-14",
+      "seed": {
+        "subject": "이집트 상형문자",
+        "aspect": null,
+        "ref": "L1-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "394년 필라이섬에 새겨진 '에스메트아콤의 낙서'가 이 문자로 쓴 마지막 비문으로 알려져 있습니다. 17세기 아타나시우스 키르허는 이 문자가 소리도 나타낼 수 있다고 본 초기 학자였지만, 기호에 신비한 뜻이 있다는 믿음에 발목이 잡혔는데, 이 문자는?",
+        "answer": "이집트 상형문자",
+        "acceptedAnswers": [
+          "신성문자",
+          "히에로글리프",
+          "이집트 신성문자"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia — '이집트 상형문자' · '히에로글리프' 가 '신성문자' 문서로 넘겨주기(API redirects 확인). '상형문자' 만 친 것은 더 넓은 말(B7)이라 넣지 않음",
+        "explanation": "이 문자를 기념물에 새기는 일은 391년 테오도시우스 1세가 그리스도교가 아닌 신전을 모두 닫으면서 끊겼습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'에스메트아콤의 낙서'가 이 문자로 쓴 마지막 비문",
+          "difWhy": "필라이 마지막 비문 — 대학 교양",
+          "wor": 4,
+          "worWhy": "교양 — 고대 문자",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "'에스메트아콤의 낙서'가 이 문자로 쓴 마지막 비문",
+          "difWhy": "필라이 마지막 비문 — 대학 교양",
+          "wor": 4,
+          "worWhy": "교양 — 고대 문자"
+        },
+        "rewrite": null,
+        "generalHint": "프톨레마이오스 시대에는 쓰는 기호가 5천 개 안팎까지 불어났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "고대 이집트의 신전·무덤에 새긴 그림 모양 문자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "교과서·다큐에서 흔히 접하는 고대 문자",
+          "piece": "f01",
+          "genPct": 90
+        },
+        "blind": {
+          "ref": "L1-14",
+          "key": "b051",
+          "hint": "왕의 이름은 한쪽 끝에 선을 댄 타원 '카르투슈' 안에 적었다.",
+          "guess": "이집트 상형 문자",
+          "confidence": "high",
+          "hit": true,
+          "answer": "이집트 상형문자"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+          "https://ko.wikipedia.org/wiki/신성문자"
+        ],
+        "facts": [
+          {
+            "claim": "마지막으로 알려진 비문은 394년 필라이의 에스메트아콤 낙서",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+            "note": "the last known inscription is from Philae, known as the Graffito of Esmet-Akhom, from 394."
+          },
+          {
+            "claim": "17세기 중반 키르허 때에야 상형문자가 소리를 나타낼 수 있다고 생각하기 시작했다",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+            "note": "It was not until Athanasius Kircher in the mid 17th century that scholars began to think the hieroglyphs might also represent sounds."
+          },
+          {
+            "claim": "키르허는 기호의 신비한 성격에 대한 믿음 때문에 막혔다",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+            "note": "Kircher was familiar with Coptic, and thought that it might be the key to deciphering the hieroglyphs, but was held back by a belief in the mystical nature of the symbols."
+          },
+          {
+            "claim": "391년 테오도시우스 1세가 비그리스도교 신전을 닫은 뒤 기념물 사용이 끊겼다",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+            "note": "Monumental use of hieroglyphs ceased after the closing of all non-Christian temples in 391 by the Roman Emperor Theodosius I"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "17세기 아타나시우스 키르허는 이 문자가 소리도 나타낼 수 있다고 본 초기 학자였지만",
+        "targetWhy": "마지막 비문·키르허의 해독 시도는 고대사 애호가 지식 — 로제타석·샹폴리옹(교과·대표 일화)은 쓰지 않음",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'필라이섬'을 이집트로 아는 관심층은 바로 풀 수 있다",
+        "pairCheck": null,
+        "dbCheck": "new — 활성 1368 로제타석은 다른 답, 로제타석·샹폴리옹 사실은 쓰지 않음",
+        "warn": [
+          "정답조각 문자",
+          "단정어 모두"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'에스메트아콤의 낙서'가 이 문자로 쓴 마지막 비문",
+          "difWhy": "필라이 마지막 비문 — 대학 교양",
+          "wor": 4,
+          "worWhy": "교양 — 고대 문자",
+          "acc": 3,
+          "accWhy": "언어·어원 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

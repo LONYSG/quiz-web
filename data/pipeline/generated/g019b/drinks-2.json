@@ -1,319 +1,356 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "drinks/2",
-  "midKey": "drinks",
-  "subName": "위스키·증류주",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "drinks/2#g019b-L2-15",
-   "seed": {
-    "subject": "잭 다니엘",
-    "aspect": null,
-    "ref": "L2-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 위스키의 증류소가 있는 미국 무어 카운티는 술 판매를 막은 '드라이 카운티'라, 술을 빚을 수는 있어도 사는 것은 막혀 있습니다. 노예 출신 너리스트 그린이 1875~81년 마스터 디스틸러로 기록된 이 위스키 상표는?",
-    "answer": "잭 다니엘",
-    "acceptedAnswers": [
-     "잭 대니얼스",
-     "잭 다니엘스",
-     "잭 대니얼"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '잭 대니얼스' · 일상 표기 '잭 다니엘' — 같은 상표의 음차 차이",
-    "explanation": "원액을 사탕단풍나무 숯에 거르는 '링컨 카운티 공정'을 거치며, 'Old No. 7'은 정부 등록 때 받은 증류소 번호에서 왔다는 설명이 있습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "미국 무어 카운티는 술 판매를 막은 '드라이 카운티'",
-     "difWhy": "잭 다니엘 증류소 — 위스키 애호가",
-     "wor": 3,
-     "worWhy": "유명 상표 이름 맞히기",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "미국 무어 카운티는 술 판매를 막은 '드라이 카운티'",
-     "difWhy": "잭 다니엘 증류소 — 위스키 애호가",
-     "wor": 3,
-     "worWhy": "유명 상표 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "프랭크 시나트라는 1998년 이 위스키 한 병과 함께 묻혔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "검은 사각 병의 미국 테네시 위스키 상표",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "유명 위스키 상표로 술자리·광고에서 익숙",
-     "piece": "f01",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "L2-15",
-     "key": "b173",
-     "hint": "프랭크 시나트라는 1998년 이 위스키 한 병과 함께 묻혔다.",
-     "guess": "잭 다니엘",
-     "confidence": "high",
-     "hit": true,
-     "answer": "잭 다니엘"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Jack_Daniel%27s"
-    ],
-    "facts": [
-     {
-      "claim": "무어 카운티는 드라이 카운티, 증류는 합법·구매는 불법",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jack_Daniel%27s",
-      "note": "Moore County is one of the state's many dry counties ... Distilling is legal there, but buying the product is not."
-     },
-     {
-      "claim": "너리스트 그린 마스터 디스틸러 1875~81, 노예 출신",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jack_Daniel%27s",
-      "note": "Daniel's Master Distiller, Nathan 'Nearest' Green, an enslaved African-American man ... former Master Distiller (1875–81)"
-     },
-     {
-      "claim": "링컨 카운티 공정(사탕단풍 숯), Old No. 7 등록 번호 설",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Jack_Daniel%27s",
-      "note": "filtered through sugar maple charcoal ... known as the Lincoln County Process / the number assigned to Daniel's distillery for government registration"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Jack_Daniel's"
-    ],
-    "hintNote": "He was buried with a bottle of Jack Daniel's in 1998.",
-    "easiestCue": "증류소가 있는 무어 카운티는 '드라이 카운티'다",
-    "targetWhy": "'테네시 위스키'·린치버그·숯 거르기(대표 사실)를 빼고 드라이 카운티·그린만 — 위스키 애호가 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 술의 고향에서 정작 술을 못 산다는 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "drinks/2",
+    "midKey": "drinks",
+    "subName": "위스키·증류주",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "drinks/2#g019b-L2-16",
-   "seed": {
-    "subject": "조니 워커",
-    "aspect": null,
-    "ref": "L2-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1893년 카듀 증류소를 사들여 몰트 원액을 확보한 스카치 위스키 상표입니다. 1997년 디아지오 산하에 들어갔고, 2012년 3월에는 이 상표가 출발한 킬마녹의 공장이 문을 닫았습니다. 이 상표는 무엇일까요?",
-    "answer": "조니 워커",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "창업자의 아들 알렉산더가 1860년 네모난 병과 24도 기울어진 라벨을 들였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1893년 카듀 증류소를 사들여",
-     "difWhy": "카듀·킬마녹 공장 — 위스키 애호가",
-     "wor": 3,
-     "worWhy": "유명 상표 이름 맞히기",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "drinks/2#g019b-L2-15",
+      "seed": {
+        "subject": "잭 다니엘",
+        "aspect": null,
+        "ref": "L2-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 위스키의 증류소가 있는 미국 무어 카운티는 술 판매를 막은 '드라이 카운티'라, 술을 빚을 수는 있어도 사는 것은 막혀 있습니다. 노예 출신 너리스트 그린이 1875~81년 마스터 디스틸러로 기록된 이 위스키 상표는?",
+        "answer": "잭 다니엘",
+        "acceptedAnswers": [
+          "잭 대니얼스",
+          "잭 다니엘스",
+          "잭 대니얼"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '잭 대니얼스' · 일상 표기 '잭 다니엘' — 같은 상표의 음차 차이",
+        "explanation": "원액을 사탕단풍나무 숯에 거르는 '링컨 카운티 공정'을 거치며, 'Old No. 7'은 정부 등록 때 받은 증류소 번호에서 왔다는 설명이 있습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "미국 무어 카운티는 술 판매를 막은 '드라이 카운티'",
+          "difWhy": "잭 다니엘 증류소 — 위스키 애호가",
+          "wor": 3,
+          "worWhy": "유명 상표 이름 맞히기",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "미국 무어 카운티는 술 판매를 막은 '드라이 카운티'",
+          "difWhy": "잭 다니엘 증류소 — 위스키 애호가",
+          "wor": 3,
+          "worWhy": "유명 상표 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "창업자는 열리지 않는 금고를 걷어찼다가 다친 발가락이 덧나 숨졌다는 이야기가 전하지만, 전기 작가는 사실이 아니라고 본다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "검은 사각 병의 미국 테네시 위스키 상표",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "유명 위스키 상표로 술자리·광고에서 익숙",
+          "piece": "f01",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "L2-15",
+          "key": "b173",
+          "hint": "프랭크 시나트라는 1998년 이 위스키 한 병과 함께 묻혔다.",
+          "guess": "잭 다니엘",
+          "confidence": "high",
+          "hit": true,
+          "answer": "잭 다니엘"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Jack_Daniel%27s"
+        ],
+        "facts": [
+          {
+            "claim": "무어 카운티는 드라이 카운티, 증류는 합법·구매는 불법",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jack_Daniel%27s",
+            "note": "Moore County is one of the state's many dry counties ... Distilling is legal there, but buying the product is not."
+          },
+          {
+            "claim": "너리스트 그린 마스터 디스틸러 1875~81, 노예 출신",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jack_Daniel%27s",
+            "note": "Daniel's Master Distiller, Nathan 'Nearest' Green, an enslaved African-American man ... former Master Distiller (1875–81)"
+          },
+          {
+            "claim": "링컨 카운티 공정(사탕단풍 숯), Old No. 7 등록 번호 설",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Jack_Daniel%27s",
+            "note": "filtered through sugar maple charcoal ... known as the Lincoln County Process / the number assigned to Daniel's distillery for government registration"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Jack_Daniel"
+        ],
+        "easiestCue": "증류소가 있는 무어 카운티는 '드라이 카운티'다",
+        "targetWhy": "'테네시 위스키'·린치버그·숯 거르기(대표 사실)를 빼고 드라이 카운티·그린만 — 위스키 애호가 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 술의 고향에서 정작 술을 못 산다는 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "미국 무어 카운티는 술 판매를 막은 '드라이 카운티'",
+          "difWhy": "잭 다니엘 증류소 — 위스키 애호가",
+          "wor": 3,
+          "worWhy": "유명 상표 이름 맞히기",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix",
+          "hintGen": true
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1893년 카듀 증류소를 사들여",
-     "difWhy": "카듀·킬마녹 공장 — 위스키 애호가",
-     "wor": 3,
-     "worWhy": "유명 상표 이름 맞히기"
+    {
+      "seedId": "drinks/2#g019b-L2-16",
+      "seed": {
+        "subject": "조니 워커",
+        "aspect": null,
+        "ref": "L2-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1893년 카듀 증류소를 사들여 몰트 원액을 확보한 스카치 위스키 상표입니다. 1997년 디아지오 산하에 들어갔고, 2012년 3월에는 이 상표가 출발한 킬마녹의 공장이 문을 닫았습니다. 이 상표는 무엇일까요?",
+        "answer": "조니 워커",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "창업자의 아들 알렉산더가 1860년 네모난 병과 24도 기울어진 라벨을 들였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1893년 카듀 증류소를 사들여",
+          "difWhy": "카듀·킬마녹 공장 — 위스키 애호가",
+          "wor": 3,
+          "worWhy": "유명 상표 이름 맞히기",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1893년 카듀 증류소를 사들여",
+          "difWhy": "카듀·킬마녹 공장 — 위스키 애호가",
+          "wor": 3,
+          "worWhy": "유명 상표 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "이 상표는 1820년 킬마녹에서 문을 연 한 식료품 가게에서 출발했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "걷는 신사 그림의 블렌디드 스카치 위스키 상표",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "유명 위스키 상표",
+          "piece": "f06",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "L2-16",
+          "key": "b071",
+          "hint": "이 상표는 1820년 킬마녹에서 문을 연 한 식료품 가게에서 출발했다.",
+          "guess": "조니 워커",
+          "confidence": "high",
+          "hit": true,
+          "answer": "조니 워커"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/조니_워커",
+          "https://en.wikipedia.org/wiki/Johnnie_Walker"
+        ],
+        "facts": [
+          {
+            "claim": "1893년 카듀 증류소 인수",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/조니_워커",
+            "note": "1893년 Cardhu 증류소를 인수해 핵심 몰트 위스키 공급원을 확보했습니다."
+          },
+          {
+            "claim": "1997년 디아지오 산하",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/조니_워커",
+            "note": "1997년 디아지오가 설립되면서 그 산하에 들어갔습니다."
+          },
+          {
+            "claim": "2012년 3월 킬마녹 공장 폐쇄",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/조니_워커",
+            "note": "디아지오는 2009년 킬마녹 사업장 폐쇄를 발표했고, 2012년 3월 공장이 문을 닫았습니다."
+          },
+          {
+            "claim": "킬마녹 식료품점에서 출발",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Johnnie_Walker",
+            "note": "established by grocer John Walker, a native of Kilmarnock ... founded the grocery shop in 1820"
+          },
+          {
+            "claim": "1860년 알렉산더 워커의 네모난 병, 24도 라벨",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Johnnie_Walker",
+            "note": "Alexander Walker had introduced the brand's signature square bottle in 1860 ... the label ... applied at an angle of 24 degrees"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Johnnie_Walker"
+        ],
+        "hintNote": "The brand was first established by grocer John Walker, a native of Kilmarnock, who originally established the business as a grocery shop in 1820",
+        "easiestCue": "이 상표가 출발한 킬마녹의 공장이 2012년 문을 닫았다",
+        "targetWhy": "네모 병·기운 라벨·걷는 신사(대표 상징)를 빼고 증류소 인수·킬마녹만 — 위스키 애호가 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 상표의 출발지·원액 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1893년 카듀 증류소를 사들여",
+          "difWhy": "카듀·킬마녹 공장 — 위스키 애호가",
+          "wor": 3,
+          "worWhy": "유명 상표 이름 맞히기",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "이 상표는 1820년 킬마녹에서 문을 연 한 식료품 가게에서 출발했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "걷는 신사 그림의 블렌디드 스카치 위스키 상표",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "유명 위스키 상표",
-     "piece": "f06",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "L2-16",
-     "key": "b071",
-     "hint": "이 상표는 1820년 킬마녹에서 문을 연 한 식료품 가게에서 출발했다.",
-     "guess": "조니 워커",
-     "confidence": "high",
-     "hit": true,
-     "answer": "조니 워커"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/조니_워커",
-     "https://en.wikipedia.org/wiki/Johnnie_Walker"
-    ],
-    "facts": [
-     {
-      "claim": "1893년 카듀 증류소 인수",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/조니_워커",
-      "note": "1893년 Cardhu 증류소를 인수해 핵심 몰트 위스키 공급원을 확보했습니다."
-     },
-     {
-      "claim": "1997년 디아지오 산하",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/조니_워커",
-      "note": "1997년 디아지오가 설립되면서 그 산하에 들어갔습니다."
-     },
-     {
-      "claim": "2012년 3월 킬마녹 공장 폐쇄",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/조니_워커",
-      "note": "디아지오는 2009년 킬마녹 사업장 폐쇄를 발표했고, 2012년 3월 공장이 문을 닫았습니다."
-     },
-     {
-      "claim": "킬마녹 식료품점에서 출발",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Johnnie_Walker",
-      "note": "established by grocer John Walker, a native of Kilmarnock ... founded the grocery shop in 1820"
-     },
-     {
-      "claim": "1860년 알렉산더 워커의 네모난 병, 24도 라벨",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Johnnie_Walker",
-      "note": "Alexander Walker had introduced the brand's signature square bottle in 1860 ... the label ... applied at an angle of 24 degrees"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Johnnie_Walker"
-    ],
-    "hintNote": "The brand was first established by grocer John Walker, a native of Kilmarnock, who originally established the business as a grocery shop in 1820",
-    "easiestCue": "이 상표가 출발한 킬마녹의 공장이 2012년 문을 닫았다",
-    "targetWhy": "네모 병·기운 라벨·걷는 신사(대표 상징)를 빼고 증류소 인수·킬마녹만 — 위스키 애호가 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 상표의 출발지·원액 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "drinks/2#g019b-L2-17",
-   "seed": {
-    "subject": "예거마이스터",
-    "aspect": null,
-    "ref": "L2-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1934년 독일 볼펜뷔텔의 쿠르트 마스트가 만든 약초 술로, 같은 해 새 '제국 사냥법'이 고위 산림 관리인을 부르는 칭호로 정한 말을 이름으로 삼았습니다. 제국 사냥 총책이던 괴링 때문에 '괴링 슈냅스'라는 별명도 얻은 이 술은?",
-    "answer": "예거마이스터",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "56가지 약초와 향신료를 쓰는 조리법은 처음부터 바뀌지 않았다고 하며, 라벨의 사슴뿔 사이 십자가는 사냥꾼의 수호성인 이야기에서 왔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "제국 사냥 총책이던 괴링 때문에 '괴링 슈냅스'",
-     "difWhy": "예거마이스터 이름 유래 — 애호가",
-     "wor": 2,
-     "worWhy": "팬 세부 — 술 상표 내력",
-     "acc": 4,
-     "accWhy": "술·음료 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "제국 사냥 총책이던 괴링 때문에 '괴링 슈냅스'",
-     "difWhy": "예거마이스터 이름 유래 — 애호가",
-     "wor": 2,
-     "worWhy": "팬 세부 — 술 상표 내력"
-    },
-    "rewrite": null,
-    "generalHint": null,
-    "generalHintVersion": null,
-    "identity": "사슴 라벨의 독일 약초 리큐르",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "클럽·술자리 예거밤으로 알려졌으나 모르는 사람도 꽤 있음",
-     "piece": "f01",
-     "genPct": 60
-    },
-    "blind": null,
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/J%C3%A4germeister"
-    ],
-    "facts": [
-     {
-      "claim": "1934년 쿠르트 마스트가 조리법 고안(1935 출시), 볼펜뷔텔",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
-      "note": "In 1934, at age 37 [Curt devised the recipe] ... introduced in 1935 / headquartered in Wolfenbüttel, Germany"
-     },
-     {
-      "claim": "1934년 제국 사냥법이 고위 산림·사냥 관리인 칭호로 재정의",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
-      "note": "the new Reichsjagdgesetz (Reich hunting law) redefined the term for senior foresters and gamekeepers"
-     },
-     {
-      "claim": "괴링 슈냅스 별명, 괴링은 제국 사냥 총책",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
-      "note": "Germans sometimes called the product 'Göring-Schnaps' ... Hermann Göring, who was appointed Reichsjägermeister"
-     },
-     {
-      "claim": "56가지 약초, 사슴뿔 사이 십자가(성 후베르투스·에우스타키우스)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
-      "note": "The recipe of 56 herbs and spices has not changed since its creation / a glowing Christian cross seen between the antlers of a stag ... patron saints of hunters"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": null,
-    "hintSources": [],
-    "hintNote": null,
-    "easiestCue": "'괴링 슈냅스'라는 별명을 얻었다",
-    "targetWhy": "사슴 라벨·예거밤(대표 이미지)을 빼고 이름의 나치 시대 유래만 — 술 애호가 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "파티 술로 아는 이름의 뜻밖의 유래",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ],
-    "discarded": "선별 게이트 — 알 가치 2 (팬 세부 — 술 상표 내력) · life 는 3 이상"
-   }
-  }
- ]
+    {
+      "seedId": "drinks/2#g019b-L2-17",
+      "seed": {
+        "subject": "예거마이스터",
+        "aspect": null,
+        "ref": "L2-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1934년 독일 볼펜뷔텔의 쿠르트 마스트가 만든 약초 술로, 같은 해 새 '제국 사냥법'이 고위 산림 관리인을 부르는 칭호로 정한 말을 이름으로 삼았습니다. 제국 사냥 총책이던 괴링 때문에 '괴링 슈냅스'라는 별명도 얻은 이 술은?",
+        "answer": "예거마이스터",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "56가지 약초와 향신료를 쓰는 조리법은 처음부터 바뀌지 않았다고 하며, 라벨의 사슴뿔 사이 십자가는 사냥꾼의 수호성인 이야기에서 왔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "제국 사냥 총책이던 괴링 때문에 '괴링 슈냅스'",
+          "difWhy": "예거마이스터 이름 유래 — 애호가",
+          "wor": 3,
+          "worWhy": "널리 알려진 술 이름 맞히기 + 이름 유래 · 괴링 별명 일화 — 이야깃거리(G020 재채점)",
+          "acc": 4,
+          "accWhy": "술·음료 — 대부분이 관심",
+          "worBy": "G020 재채점(CV-88)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "제국 사냥 총책이던 괴링 때문에 '괴링 슈냅스'",
+          "difWhy": "예거마이스터 이름 유래 — 애호가",
+          "wor": 2,
+          "worWhy": "팬 세부 — 술 상표 내력"
+        },
+        "rewrite": null,
+        "generalHint": "1980년대 미국 수입사의 시드니 프랭크가 대학생 파티 술로 홍보해 크게 알려졌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "사슴 라벨의 독일 약초 리큐르",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "클럽·술자리 예거밤으로 알려졌으나 모르는 사람도 꽤 있음",
+          "piece": "f01",
+          "genPct": 60
+        },
+        "blind": null,
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/J%C3%A4germeister"
+        ],
+        "facts": [
+          {
+            "claim": "1934년 쿠르트 마스트가 조리법 고안(1935 출시), 볼펜뷔텔",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
+            "note": "In 1934, at age 37 [Curt devised the recipe] ... introduced in 1935 / headquartered in Wolfenbüttel, Germany"
+          },
+          {
+            "claim": "1934년 제국 사냥법이 고위 산림·사냥 관리인 칭호로 재정의",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
+            "note": "the new Reichsjagdgesetz (Reich hunting law) redefined the term for senior foresters and gamekeepers"
+          },
+          {
+            "claim": "괴링 슈냅스 별명, 괴링은 제국 사냥 총책",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
+            "note": "Germans sometimes called the product 'Göring-Schnaps' ... Hermann Göring, who was appointed Reichsjägermeister"
+          },
+          {
+            "claim": "56가지 약초, 사슴뿔 사이 십자가(성 후베르투스·에우스타키우스)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/J%C3%A4germeister",
+            "note": "The recipe of 56 herbs and spices has not changed since its creation / a glowing Christian cross seen between the antlers of a stag ... patron saints of hunters"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/J%C3%A4germeister"
+        ],
+        "easiestCue": "'괴링 슈냅스'라는 별명을 얻었다",
+        "targetWhy": "사슴 라벨·예거밤(대표 이미지)을 빼고 이름의 나치 시대 유래만 — 술 애호가 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "파티 술로 아는 이름의 뜻밖의 유래",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "discardedBefore": "선별 게이트 — 알 가치 2 (팬 세부 — 술 상표 내력) · life 는 3 이상",
+        "g020": {
+          "why": "CV-88 (b) 알 가치 재채점 3 → 격리 풂",
+          "verdict": "quarantine",
+          "hintGen": true
+        }
+      }
+    }
+  ]
 }

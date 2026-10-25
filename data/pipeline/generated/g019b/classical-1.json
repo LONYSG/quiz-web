@@ -1,317 +1,362 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "classical/1",
-  "midKey": "classical",
-  "subName": "작곡가",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "classical/1#g019b-A1-11",
-   "seed": {
-    "subject": "브람스",
-    "aspect": null,
-    "ref": "A1-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1889년 토머스 에디슨이 보낸 테오 방게만의 권유로, 이 작곡가는 자기 곡과 요제프 슈트라우스의 '잠자리'를 줄여 피아노로 쳐 녹음했습니다. 브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡을 쓴 이 작곡가는 누구일까요?",
-    "answer": "브람스",
-    "acceptedAnswers": [
-     "요하네스 브람스"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '요하네스 브람스' — 성만 부르는 '브람스' 가 가장 흔함(A3)",
-    "explanation": "그는 첫 교향곡을 15년 가까이 붙들고 다듬었고, 한스 폰 뷜로는 이 곡을 '베토벤의 10번'이라 불렀습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡",
-     "difWhy": "대학 축전 서곡 — 클래식 애호가",
-     "wor": 3,
-     "worWhy": "유명 작곡가 이름 맞히기",
-     "acc": 3,
-     "accWhy": "클래식 음악 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡",
-     "difWhy": "대학 축전 서곡 — 클래식 애호가",
-     "wor": 3,
-     "worWhy": "유명 작곡가 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "1853년 하노버에서 만난 바이올리니스트 요제프 요아힘을 통해 슈만 부부의 후원을 얻었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "헝가리 무곡과 자장가로 알려진 19세기 독일 작곡가",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "유명 작곡가로 음악 교과서에서 접함",
-     "piece": "f02",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "A1-11",
-     "key": "b317",
-     "hint": "1853년 하노버에서 만난 바이올리니스트 요제프 요아힘을 통해 슈만 부부의 후원을 얻었다.",
-     "guess": "요하네스 브람스",
-     "confidence": "high",
-     "hit": true,
-     "answer": "브람스"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Johannes_Brahms"
-    ],
-    "facts": [
-     {
-      "claim": "1889 에디슨 쪽 방게만의 권유로 녹음 — 자기 헝가리 무곡 1번과 요제프 슈트라우스 '잠자리'를 줄여 연주",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Johannes_Brahms",
-      "note": "Theo Wangemann, a representative of Thomas Edison, invited Brahms to make an experimental recording: \"Brahms played an abbreviated version of his first Hungarian Dance and of Josef Strauss's Die Libelle on the piano.\""
-     },
-     {
-      "claim": "브레슬라우 명예 학위 뒤 서곡(대학 축전 서곡)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Johannes_Brahms",
-      "note": "Academic Festival Overture \"written following the conferring of an honorary degree by the University of Breslau\""
-     },
-     {
-      "claim": "첫 교향곡 15년 가까이 · 뷜로 '베토벤의 10번'",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Johannes_Brahms",
-      "note": "Brahms \"laboured over the official First Symphony for almost fifteen years, from about 1861 to 1876.\" Hans von Bülow \"dubbed it 'Beethoven's Tenth'\""
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Johannes_Brahms"
-    ],
-    "hintNote": "In 1853 Brahms went on a concert tour with Reményi, visiting the violinist and composer Joseph Joachim at Hanover in May. ... through Joseph Joachim, gained Robert and Clara Schumann's support and guidance.",
-    "easiestCue": "브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡을 쓴 이 작곡가",
-    "targetWhy": "에디슨 녹음 · 브레슬라우 학위 — 클래식 애호가 세부, 자장가·헝가리 무곡·클라라 단서 없음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 작곡가의 덜 알려진 일화 둘",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "classical/1",
+    "midKey": "classical",
+    "subName": "작곡가",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "classical/1#g019b-A1-12",
-   "seed": {
-    "subject": "리스트",
-    "aspect": null,
-    "ref": "A1-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1840년 6월 런던 하노버 스퀘어 룸스에서 열린 이 음악가의 연주회에 처음으로 '리사이틀'이라는 말이 붙었습니다. 1865년 호엔로에 추기경에게서 삭발례를 받은 뒤 흔히 '아베'라 불린 피아노 연주자이자 작곡가인 이 사람은 누구일까요?",
-    "answer": "리스트",
-    "acceptedAnswers": [
-     "프란츠 리스트"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '프란츠 리스트' — 성만 '리스트' 가 흔함(A3)",
-    "explanation": "하인리히 하이네는 1844년 그를 향한 청중의 열광을 '리스토마니아'라고 불렀습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1865년 호엔로에 추기경에게서 삭발례를 받은 뒤 흔히 '아베'",
-     "difWhy": "리스트 성직·리사이틀 — 클래식 애호가",
-     "wor": 3,
-     "worWhy": "유명 작곡가 이름 맞히기",
-     "acc": 3,
-     "accWhy": "클래식 음악 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "classical/1#g019b-A1-11",
+      "seed": {
+        "subject": "브람스",
+        "aspect": null,
+        "ref": "A1-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1889년 토머스 에디슨이 보낸 테오 방게만의 권유로, 이 작곡가는 자기 곡과 요제프 슈트라우스의 '잠자리'를 줄여 피아노로 쳐 녹음했습니다. 브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡을 쓴 이 작곡가는 누구일까요?",
+        "answer": "브람스",
+        "acceptedAnswers": [
+          "요하네스 브람스"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '요하네스 브람스' — 성만 부르는 '브람스' 가 가장 흔함(A3)",
+        "explanation": "그는 첫 교향곡을 15년 가까이 붙들고 다듬었고, 한스 폰 뷜로는 이 곡을 '베토벤의 10번'이라 불렀습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡",
+          "difWhy": "대학 축전 서곡 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 작곡가 이름 맞히기",
+          "acc": 3,
+          "accWhy": "클래식 음악 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡",
+          "difWhy": "대학 축전 서곡 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 작곡가 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "1853년 하노버에서 만난 바이올리니스트 요제프 요아힘을 통해 슈만 부부의 후원을 얻었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "헝가리 무곡과 자장가로 알려진 19세기 독일 작곡가",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "유명 작곡가로 음악 교과서에서 접함",
+          "piece": "f02",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "A1-11",
+          "key": "b317",
+          "hint": "1853년 하노버에서 만난 바이올리니스트 요제프 요아힘을 통해 슈만 부부의 후원을 얻었다.",
+          "guess": "요하네스 브람스",
+          "confidence": "high",
+          "hit": true,
+          "answer": "브람스"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Johannes_Brahms"
+        ],
+        "facts": [
+          {
+            "claim": "1889 에디슨 쪽 방게만의 권유로 녹음 — 자기 헝가리 무곡 1번과 요제프 슈트라우스 '잠자리'를 줄여 연주",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Johannes_Brahms",
+            "note": "Theo Wangemann, a representative of Thomas Edison, invited Brahms to make an experimental recording: \"Brahms played an abbreviated version of his first Hungarian Dance and of Josef Strauss's Die Libelle on the piano.\""
+          },
+          {
+            "claim": "브레슬라우 명예 학위 뒤 서곡(대학 축전 서곡)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Johannes_Brahms",
+            "note": "Academic Festival Overture \"written following the conferring of an honorary degree by the University of Breslau\""
+          },
+          {
+            "claim": "첫 교향곡 15년 가까이 · 뷜로 '베토벤의 10번'",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Johannes_Brahms",
+            "note": "Brahms \"laboured over the official First Symphony for almost fifteen years, from about 1861 to 1876.\" Hans von Bülow \"dubbed it 'Beethoven's Tenth'\""
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Johannes_Brahms"
+        ],
+        "hintNote": "In 1853 Brahms went on a concert tour with Reményi, visiting the violinist and composer Joseph Joachim at Hanover in May. ... through Joseph Joachim, gained Robert and Clara Schumann's support and guidance.",
+        "easiestCue": "브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡을 쓴 이 작곡가",
+        "targetWhy": "에디슨 녹음 · 브레슬라우 학위 — 클래식 애호가 세부, 자장가·헝가리 무곡·클라라 단서 없음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 작곡가의 덜 알려진 일화 둘",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "브레슬라우 대학교에서 명예 학위를 받은 뒤 그 일을 계기로 서곡",
+          "difWhy": "대학 축전 서곡 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 작곡가 이름 맞히기",
+          "acc": 3,
+          "accWhy": "클래식 음악 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1865년 호엔로에 추기경에게서 삭발례를 받은 뒤 흔히 '아베'",
-     "difWhy": "리스트 성직·리사이틀 — 클래식 애호가",
-     "wor": 3,
-     "worWhy": "유명 작곡가 이름 맞히기"
+    {
+      "seedId": "classical/1#g019b-A1-12",
+      "seed": {
+        "subject": "리스트",
+        "aspect": null,
+        "ref": "A1-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1840년 6월 런던 하노버 스퀘어 룸스에서 열린 이 음악가의 연주회에 처음으로 '리사이틀'이라는 말이 붙었습니다. 1865년 호엔로에 추기경에게서 삭발례를 받은 뒤 흔히 '아베'라 불린 피아노 연주자이자 작곡가인 이 사람은 누구일까요?",
+        "answer": "리스트",
+        "acceptedAnswers": [
+          "프란츠 리스트"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '프란츠 리스트' — 성만 '리스트' 가 흔함(A3)",
+        "explanation": "하인리히 하이네는 1844년 그를 향한 청중의 열광을 '리스토마니아'라고 불렀습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1865년 호엔로에 추기경에게서 삭발례를 받은 뒤 흔히 '아베'",
+          "difWhy": "리스트 성직·리사이틀 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 작곡가 이름 맞히기",
+          "acc": 3,
+          "accWhy": "클래식 음악 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1865년 호엔로에 추기경에게서 삭발례를 받은 뒤 흔히 '아베'",
+          "difWhy": "리스트 성직·리사이틀 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 작곡가 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "그의 딸 코지마는 피아노 연주자 한스 폰 뷜로와 결혼했다가 뒤에 바그너와 결혼했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "헝가리 태생의 19세기 피아노 거장 작곡가",
+        "familiarity": {
+          "judge": 2,
+          "pct": 55,
+          "why": "음악 교과서 작곡가지만 일반어 '리스트'와 겹쳐 덜 떠올림",
+          "piece": "f06",
+          "genPct": 50
+        },
+        "blind": {
+          "ref": "A1-12",
+          "key": "b246",
+          "hint": "그의 딸 코지마는 피아노 연주자 한스 폰 뷜로와 결혼했다가 뒤에 바그너와 결혼했다.",
+          "guess": "프란츠 리스트",
+          "confidence": "high",
+          "hit": true,
+          "answer": "리스트"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Franz_Liszt"
+        ],
+        "facts": [
+          {
+            "claim": "1840년 6월 9일 런던 하노버 스퀘어 룸스 연주회에 처음 '리사이틀'",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Franz_Liszt",
+            "note": "\"the term was first applied to Liszt's concert at the Hanover Square Rooms in London on 9 June 1840.\""
+          },
+          {
+            "claim": "1865년 호엔로에 추기경에게 삭발례 · '아베' 칭호",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Franz_Liszt",
+            "note": "\"On 25 April 1865 he received the tonsure at the hands of Cardinal Hohenlohe.\" Afterward often called \"Abbé\" Liszt."
+          },
+          {
+            "claim": "하이네 1844 리스토마니아",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Franz_Liszt",
+            "note": "The term was dubbed \"Lisztomania\" by Heinrich Heine in 1844."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Franz_Liszt"
+        ],
+        "hintNote": "Hans von Bülow, who married Liszt's daughter Cosima in 1857 (she would later marry Wagner).",
+        "easiestCue": "1840년 6월 런던 하노버 스퀘어 룸스에서 열린 이 음악가의 연주회에 처음으로 '리사이틀'이라는 말이 붙었습니다",
+        "targetWhy": "리사이틀이란 말의 시작 · 삭발례 — 클래식 애호가 세부, 헝가리 광시곡·라 캄파넬라 단서 없음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 작곡가의 '아 그렇구나' 사실",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1865년 호엔로에 추기경에게서 삭발례를 받은 뒤 흔히 '아베'",
+          "difWhy": "리스트 성직·리사이틀 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 작곡가 이름 맞히기",
+          "acc": 3,
+          "accWhy": "클래식 음악 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "그의 딸 코지마는 피아노 연주자 한스 폰 뷜로와 결혼했다가 뒤에 바그너와 결혼했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "헝가리 태생의 19세기 피아노 거장 작곡가",
-    "familiarity": {
-     "judge": 2,
-     "pct": 55,
-     "why": "음악 교과서 작곡가지만 일반어 '리스트'와 겹쳐 덜 떠올림",
-     "piece": "f06",
-     "genPct": 50
-    },
-    "blind": {
-     "ref": "A1-12",
-     "key": "b246",
-     "hint": "그의 딸 코지마는 피아노 연주자 한스 폰 뷜로와 결혼했다가 뒤에 바그너와 결혼했다.",
-     "guess": "프란츠 리스트",
-     "confidence": "high",
-     "hit": true,
-     "answer": "리스트"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Franz_Liszt"
-    ],
-    "facts": [
-     {
-      "claim": "1840년 6월 9일 런던 하노버 스퀘어 룸스 연주회에 처음 '리사이틀'",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Franz_Liszt",
-      "note": "\"the term was first applied to Liszt's concert at the Hanover Square Rooms in London on 9 June 1840.\""
-     },
-     {
-      "claim": "1865년 호엔로에 추기경에게 삭발례 · '아베' 칭호",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Franz_Liszt",
-      "note": "\"On 25 April 1865 he received the tonsure at the hands of Cardinal Hohenlohe.\" Afterward often called \"Abbé\" Liszt."
-     },
-     {
-      "claim": "하이네 1844 리스토마니아",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Franz_Liszt",
-      "note": "The term was dubbed \"Lisztomania\" by Heinrich Heine in 1844."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Franz_Liszt"
-    ],
-    "hintNote": "Hans von Bülow, who married Liszt's daughter Cosima in 1857 (she would later marry Wagner).",
-    "easiestCue": "1840년 6월 런던 하노버 스퀘어 룸스에서 열린 이 음악가의 연주회에 처음으로 '리사이틀'이라는 말이 붙었습니다",
-    "targetWhy": "리사이틀이란 말의 시작 · 삭발례 — 클래식 애호가 세부, 헝가리 광시곡·라 캄파넬라 단서 없음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 작곡가의 '아 그렇구나' 사실",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "classical/1#g019b-A1-13",
-   "seed": {
-    "subject": "파가니니",
-    "aspect": null,
-    "ref": "A1-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1840년 사제를 부르기도 전에 숨진 이 음악가에게 교회는 가톨릭식 장례를 허락하지 않아, 그는 1876년에야 파르마의 묘지에 묻혔습니다. 그가 켜던 과르네리 바이올린 '일 카노네'가 제노바의 도리아투르시 궁전에 전시된 이 음악가는 누구일까요?",
-    "answer": "파가니니",
-    "acceptedAnswers": [
-     "니콜로 파가니니"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '니콜로 파가니니' — 성만 '파가니니' 가 흔함(A3)",
-    "explanation": "교회가 장례를 거부한 데에는 그가 악마와 얽혔다는 소문이 널리 퍼져 있던 것도 한몫했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "과르네리 바이올린 '일 카노네'",
-     "difWhy": "파가니니 바이올린 — 클래식 애호가",
-     "wor": 3,
-     "worWhy": "유명 음악가 이름 맞히기",
-     "acc": 3,
-     "accWhy": "클래식 음악 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "과르네리 바이올린 '일 카노네'",
-     "difWhy": "파가니니 바이올린 — 클래식 애호가",
-     "wor": 3,
-     "worWhy": "유명 음악가 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "그가 마르팡 증후군이나 엘러스-단로스 증후군을 앓았으리라는 추측이 뒤에 나왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "초절기교로 이름난 이탈리아의 바이올린 거장",
-    "familiarity": {
-     "judge": 2,
-     "pct": 50,
-     "why": "클래식 교양·'악마의 바이올리니스트'로 들어 봄",
-     "piece": "f07",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "A1-13",
-     "key": "b016",
-     "hint": "그가 마르팡 증후군이나 엘러스-단로스 증후군을 앓았으리라는 추측이 뒤에 나왔다.",
-     "guess": "니콜로 파가니니",
-     "confidence": "high",
-     "hit": true,
-     "answer": "파가니니"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Niccolò_Paganini"
-    ],
-    "facts": [
-     {
-      "claim": "1840년 사제가 오기 전 숨짐",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
-      "note": "\"on 27 May 1840, the 57-year-old Paganini died from internal hemorrhaging before a priest could be summoned.\""
-     },
-     {
-      "claim": "교회가 가톨릭 장례 거부 · 1876년 파르마 묘지에 매장",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
-      "note": "\"the Church denied his body a Catholic burial in Genoa.\" / \"His body was finally buried in 1876, in a cemetery in Parma.\""
-     },
-     {
-      "claim": "일 카노네 — 제노바 도리아투르시 궁전 전시",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
-      "note": "photo caption: \"Il Cannone Guarnerius on exhibit at the Palazzo Doria-Tursi in Genoa, Italy\""
-     },
-     {
-      "claim": "악마와 얽혔다는 소문도 거부의 까닭",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
-      "note": "\"Because of this, and his widely rumored association with the devil, the Church denied his body a Catholic burial in Genoa.\""
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Niccol%C3%B2_Paganini"
-    ],
-    "hintNote": "it has been later theorized that he might have been affected by Marfan syndrome or Ehlers–Danlos syndrome.",
-    "easiestCue": "그가 켜던 과르네리 바이올린 '일 카노네'가 제노바의 도리아투르시 궁전에 전시된",
-    "targetWhy": "장례 거부·늦은 매장 · 일 카노네 — 클래식 애호가 세부, 악마 소문·카프리스 단서는 해설로만",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 음악가의 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "classical/1#g019b-A1-13",
+      "seed": {
+        "subject": "파가니니",
+        "aspect": null,
+        "ref": "A1-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1840년 사제를 부르기도 전에 숨진 이 음악가에게 교회는 가톨릭식 장례를 허락하지 않아, 그는 1876년에야 파르마의 묘지에 묻혔습니다. 그가 켜던 과르네리 바이올린 '일 카노네'가 제노바의 도리아투르시 궁전에 전시된 이 음악가는 누구일까요?",
+        "answer": "파가니니",
+        "acceptedAnswers": [
+          "니콜로 파가니니"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '니콜로 파가니니' — 성만 '파가니니' 가 흔함(A3)",
+        "explanation": "교회가 장례를 거부한 데에는 그가 악마와 얽혔다는 소문이 널리 퍼져 있던 것도 한몫했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "과르네리 바이올린 '일 카노네'",
+          "difWhy": "파가니니 바이올린 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 음악가 이름 맞히기",
+          "acc": 3,
+          "accWhy": "클래식 음악 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "과르네리 바이올린 '일 카노네'",
+          "difWhy": "파가니니 바이올린 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 음악가 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "그가 마르팡 증후군이나 엘러스-단로스 증후군을 앓았으리라는 추측이 뒤에 나왔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "초절기교로 이름난 이탈리아의 바이올린 거장",
+        "familiarity": {
+          "judge": 2,
+          "pct": 50,
+          "why": "클래식 교양·'악마의 바이올리니스트'로 들어 봄",
+          "piece": "f07",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "A1-13",
+          "key": "b016",
+          "hint": "그가 마르팡 증후군이나 엘러스-단로스 증후군을 앓았으리라는 추측이 뒤에 나왔다.",
+          "guess": "니콜로 파가니니",
+          "confidence": "high",
+          "hit": true,
+          "answer": "파가니니"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Niccolò_Paganini"
+        ],
+        "facts": [
+          {
+            "claim": "1840년 사제가 오기 전 숨짐",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
+            "note": "\"on 27 May 1840, the 57-year-old Paganini died from internal hemorrhaging before a priest could be summoned.\""
+          },
+          {
+            "claim": "교회가 가톨릭 장례 거부 · 1876년 파르마 묘지에 매장",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
+            "note": "\"the Church denied his body a Catholic burial in Genoa.\" / \"His body was finally buried in 1876, in a cemetery in Parma.\""
+          },
+          {
+            "claim": "일 카노네 — 제노바 도리아투르시 궁전 전시",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
+            "note": "photo caption: \"Il Cannone Guarnerius on exhibit at the Palazzo Doria-Tursi in Genoa, Italy\""
+          },
+          {
+            "claim": "악마와 얽혔다는 소문도 거부의 까닭",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Niccolò_Paganini",
+            "note": "\"Because of this, and his widely rumored association with the devil, the Church denied his body a Catholic burial in Genoa.\""
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Niccol%C3%B2_Paganini"
+        ],
+        "hintNote": "it has been later theorized that he might have been affected by Marfan syndrome or Ehlers–Danlos syndrome.",
+        "easiestCue": "그가 켜던 과르네리 바이올린 '일 카노네'가 제노바의 도리아투르시 궁전에 전시된",
+        "targetWhy": "장례 거부·늦은 매장 · 일 카노네 — 클래식 애호가 세부, 악마 소문·카프리스 단서는 해설로만",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 음악가의 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "과르네리 바이올린 '일 카노네'",
+          "difWhy": "파가니니 바이올린 — 클래식 애호가",
+          "wor": 3,
+          "worWhy": "유명 음악가 이름 맞히기",
+          "acc": 3,
+          "accWhy": "클래식 음악 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

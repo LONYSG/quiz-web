@@ -1,355 +1,397 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "kr-music/2",
-  "midKey": "kr-music",
-  "subName": "1990년대 가요",
-  "questionPrompt": "media-v3",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "kr-music/2#g019a-M1-13",
-   "seed": {
-    "subject": "god의 육아일기",
-    "aspect": "팬 세부",
-    "ref": "M1-13",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1998년 7월 아직 고등학생이던 멤버가 탈퇴한 멤버의 자리에 합류했고, 1999년 1월 SBS '한밤의 TV연예'에서 1집 타이틀곡을 라이브로 부르며 데뷔한 그룹입니다. 박진영이 프로듀서를 맡은 이 그룹은 무엇일까요?",
-    "answer": "지오디",
-    "acceptedAnswers": [
-     "god"
-    ],
-    "originalTitleVariants": [
-     "god"
-    ],
-    "variantCheck": "ko.wikipedia '지오디' → 'God (음악 그룹)' 넘겨주기 확인 · 공식 영문 이름 god(B10)",
-    "explanation": "이 그룹은 원래 'GOT6'로 불릴 예정이었고, 박진영은 뒤에 GOT7이라는 이름이 여기서 왔다고 밝혔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 1999년 1월 데뷔 + 박진영이 프로듀서를 맡은 그룹",
-     "difWhy": "1999 데뷔 박진영 프로듀싱 그룹 — 가요 관심층",
-     "wor": 3,
-     "worWhy": "누구나 아는 그룹 이름 맞히기",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "생후 11개월 된 한재민 군을 일주일 동안 맡아 돌본 그룹",
-     "difWhy": "재민이 육아 예능 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "대중적 그룹 이름"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2000년 1월 MBC '일요일 일요일 밤에'의 한 코너에서 생후 11개월 된 한재민 군을 일주일 동안 맡아 돌본 그룹입니다. 멤버들이 '엄마'·'아빠'·'패션 담당' 등으로 역할을 나눈 이 그룹은 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "'일요일 일요일 밤에' 육아일기 · 한재민 군 · 역할 분담",
-     "addedCue": "막내 김태우의 1998년 7월 합류 · '한밤의 TV연예' 라이브 데뷔 · 박진영 프로듀서",
-     "why": "방송에서 흔히 회자된 육아일기를 빼고 결성·데뷔 경위의 팬 세부로"
-    },
-    "generalHint": "맏형은 1997년 서양과 아시아 음악을 섞은 그룹을 만들겠다며 한국에 왔고, 가장 먼저 자기 사촌을 불러들였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "'어머님께'·'거짓말'의 1999년 데뷔 5인조 남성 그룹",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "국민 그룹 god",
-     "piece": "f01",
-     "genPct": 92
-    },
-    "blind": {
-     "ref": "M1-13",
-     "key": "b320",
-     "hint": "맏형은 1997년 서양과 아시아 음악을 섞은 그룹을 만들겠다며 한국에 왔고, 가장 먼저 자기 사촌을 불러들였다.",
-     "guess": "god",
-     "confidence": "high",
-     "hit": true,
-     "answer": "지오디"
-    },
-    "layer": "팬 세부",
-    "genre": "가요",
-    "work": "god의 육아일기",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/God_(%EC%9D%8C%EC%95%85_%EA%B7%B8%EB%A3%B9)",
-     "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)"
-    ],
-    "facts": [
-     {
-      "claim": "원래 GOT6, GOT7 이름 유래",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/God_(%EC%9D%8C%EC%95%85_%EA%B7%B8%EB%A3%B9)",
-      "note": "이 그룹은 원래 \"갓식스\"(GOT6)로 불릴 예정이었으나 5인조 보이 밴드가 되면서 이름이 god(Groove Over Dose)로 바뀌었는데, 이후 박진영은 GOT7(갓세븐)의 그룹명이 GOT6에서 유래했다고 밝혔다."
-     },
-     {
-      "claim": "1998년 7월 고등학생 김태우가 탈퇴한 문성연 대신 합류",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)",
-      "note": "그러던 중에 김선아의 후임으로 영입된 문성연이 개인 사정으로 인해 탈퇴했고, 1998년 7월에 아직 고등학생이었던 김태우가 합류했다."
-     },
-     {
-      "claim": "1999년 1월 13일 한밤의 TV연예에서 1집 타이틀곡 라이브로 데뷔",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)",
-      "note": "god는 1999년 1월 13일에 SBS 한밤의 TV연예에서 1집 음반의 타이틀곡인 \"어머님께\"의 라이브 공연을 선보이면서 데뷔했다."
-     },
-     {
-      "claim": "박진영이 프로듀서이자 멘토",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)",
-      "note": "싱어송라이터이자 JYP 엔터테인먼트의 설립자인 박진영을 그들의 프로듀서이자 멘토로 소개했다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/God_(%EC%9D%8C%EC%95%85_%EA%B7%B8%EB%A3%B9)"
-    ],
-    "hintNote": "박준형은 1997년에 서양과 아시아의 영향을 혼합한 음악 그룹을 만들겠다는 목표를 가지고 대한민국에 도착했다. 박준형은 자신의 사촌인 데니 안을 영입했고",
-    "easiestCue": "박진영이 프로듀서를 맡은 · 1999년 1월 데뷔한 그룹",
-    "targetWhy": "결성·데뷔 무대 세부 — 1990년대 가요 팬(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "국민 그룹의 데뷔 초 예능 세부",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "kr-music/2",
+    "midKey": "kr-music",
+    "subName": "1990년대 가요",
+    "questionPrompt": "media-v3",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "kr-music/2#g019a-M1-14",
-   "seed": {
-    "subject": "박진영 1집 Blue City",
-    "aspect": "팬 세부",
-    "ref": "M1-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1992년 한 그룹으로 먼저 데뷔했다가 성공하지 못했고, 1994년 솔로 데뷔곡이 전국적인 인기를 얻던 무렵 인터뷰에서 '대학 졸업 후 꿈은 일반적인 샐러리맨'이라고 말한 가수입니다. 연세대 지질학과를 나온 이 가수는?",
-    "answer": "박진영",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "그는 비닐 소재 의상을 입고 무대에 서는 등 파격적인 차림으로 화제를 모으기도 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "연세대 지질학과를 나온 이 가수",
-     "difWhy": "연대 지질학과 가수 — 가요 관심층",
-     "wor": 3,
-     "worWhy": "누구나 아는 가수 이름",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "kr-music/2#g019a-M1-13",
+      "seed": {
+        "subject": "god의 육아일기",
+        "aspect": "팬 세부",
+        "ref": "M1-13",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1998년 7월 아직 고등학생이던 멤버가 탈퇴한 멤버의 자리에 합류했고, 1999년 1월 SBS '한밤의 TV연예'에서 1집 타이틀곡을 라이브로 부르며 데뷔한 그룹입니다. 박진영이 프로듀서를 맡은 이 그룹은 무엇일까요?",
+        "answer": "지오디",
+        "acceptedAnswers": [
+          "god"
+        ],
+        "originalTitleVariants": [
+          "god"
+        ],
+        "variantCheck": "ko.wikipedia '지오디' → 'God (음악 그룹)' 넘겨주기 확인 · 공식 영문 이름 god(B10)",
+        "explanation": "이 그룹은 원래 'GOT6'로 불릴 예정이었고, 박진영은 뒤에 GOT7이라는 이름이 여기서 왔다고 밝혔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 1999년 1월 데뷔 + 박진영이 프로듀서를 맡은 그룹",
+          "difWhy": "1999 데뷔 박진영 프로듀싱 그룹 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 그룹 이름 맞히기",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "생후 11개월 된 한재민 군을 일주일 동안 맡아 돌본 그룹",
+          "difWhy": "재민이 육아 예능 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "대중적 그룹 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2000년 1월 MBC '일요일 일요일 밤에'의 한 코너에서 생후 11개월 된 한재민 군을 일주일 동안 맡아 돌본 그룹입니다. 멤버들이 '엄마'·'아빠'·'패션 담당' 등으로 역할을 나눈 이 그룹은 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "'일요일 일요일 밤에' 육아일기 · 한재민 군 · 역할 분담",
+          "addedCue": "막내 김태우의 1998년 7월 합류 · '한밤의 TV연예' 라이브 데뷔 · 박진영 프로듀서",
+          "why": "방송에서 흔히 회자된 육아일기를 빼고 결성·데뷔 경위의 팬 세부로"
+        },
+        "generalHint": "맏형은 1997년 서양과 아시아 음악을 섞은 그룹을 만들겠다며 한국에 왔고, 가장 먼저 자기 사촌을 불러들였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "'어머님께'·'거짓말'의 1999년 데뷔 5인조 남성 그룹",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "국민 그룹 god",
+          "piece": "f01",
+          "genPct": 92
+        },
+        "blind": {
+          "ref": "M1-13",
+          "key": "b320",
+          "hint": "맏형은 1997년 서양과 아시아 음악을 섞은 그룹을 만들겠다며 한국에 왔고, 가장 먼저 자기 사촌을 불러들였다.",
+          "guess": "god",
+          "confidence": "high",
+          "hit": true,
+          "answer": "지오디"
+        },
+        "layer": "대중",
+        "genre": "가요",
+        "work": "god의 육아일기",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/God_(%EC%9D%8C%EC%95%85_%EA%B7%B8%EB%A3%B9)",
+          "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)"
+        ],
+        "facts": [
+          {
+            "claim": "원래 GOT6, GOT7 이름 유래",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/God_(%EC%9D%8C%EC%95%85_%EA%B7%B8%EB%A3%B9)",
+            "note": "이 그룹은 원래 \"갓식스\"(GOT6)로 불릴 예정이었으나 5인조 보이 밴드가 되면서 이름이 god(Groove Over Dose)로 바뀌었는데, 이후 박진영은 GOT7(갓세븐)의 그룹명이 GOT6에서 유래했다고 밝혔다."
+          },
+          {
+            "claim": "1998년 7월 고등학생 김태우가 탈퇴한 문성연 대신 합류",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)",
+            "note": "그러던 중에 김선아의 후임으로 영입된 문성연이 개인 사정으로 인해 탈퇴했고, 1998년 7월에 아직 고등학생이었던 김태우가 합류했다."
+          },
+          {
+            "claim": "1999년 1월 13일 한밤의 TV연예에서 1집 타이틀곡 라이브로 데뷔",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)",
+            "note": "god는 1999년 1월 13일에 SBS 한밤의 TV연예에서 1집 음반의 타이틀곡인 \"어머님께\"의 라이브 공연을 선보이면서 데뷔했다."
+          },
+          {
+            "claim": "박진영이 프로듀서이자 멘토",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/God%20(%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9)",
+            "note": "싱어송라이터이자 JYP 엔터테인먼트의 설립자인 박진영을 그들의 프로듀서이자 멘토로 소개했다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/God_(%EC%9D%8C%EC%95%85_%EA%B7%B8%EB%A3%B9)"
+        ],
+        "hintNote": "박준형은 1997년에 서양과 아시아의 영향을 혼합한 음악 그룹을 만들겠다는 목표를 가지고 대한민국에 도착했다. 박준형은 자신의 사촌인 데니 안을 영입했고",
+        "easiestCue": "박진영이 프로듀서를 맡은 · 1999년 1월 데뷔한 그룹",
+        "targetWhy": "결성·데뷔 무대 세부 — 1990년대 가요 팬(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "국민 그룹의 데뷔 초 예능 세부",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 1999년 1월 데뷔 + 박진영이 프로듀서를 맡은 그룹",
+          "difWhy": "1999 데뷔 박진영 프로듀싱 그룹 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 그룹 이름 맞히기",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1994년 앨범 'Blue City'로 솔로 데뷔",
-     "difWhy": "Blue City 데뷔 — 가요 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 가수 이름"
+    {
+      "seedId": "kr-music/2#g019a-M1-14",
+      "seed": {
+        "subject": "박진영 1집 Blue City",
+        "aspect": "팬 세부",
+        "ref": "M1-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1992년 한 그룹으로 먼저 데뷔했다가 성공하지 못했고, 1994년 솔로 데뷔곡이 전국적인 인기를 얻던 무렵 인터뷰에서 '대학 졸업 후 꿈은 일반적인 샐러리맨'이라고 말한 가수입니다. 연세대 지질학과를 나온 이 가수는?",
+        "answer": "박진영",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "그는 비닐 소재 의상을 입고 무대에 서는 등 파격적인 차림으로 화제를 모으기도 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "연세대 지질학과를 나온 이 가수",
+          "difWhy": "연대 지질학과 가수 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 가수 이름",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1994년 앨범 'Blue City'로 솔로 데뷔",
+          "difWhy": "Blue City 데뷔 — 가요 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 가수 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1992년 한 그룹의 일원으로 먼저 데뷔했다가 성공하지 못했고, 1994년 앨범 'Blue City'로 솔로 데뷔해 이름을 알린 가수입니다. 연세대 지질학과를 나온 이 가수는 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "1994년 앨범 'Blue City'로 솔로 데뷔(가요 관심층)",
+          "addedCue": "1994년 인터뷰 '대학 졸업 후 꿈은 일반적인 샐러리맨'",
+          "why": "데뷔 앨범 이름을 빼고 데뷔 무렵의 인터뷰 세부로"
+        },
+        "generalHint": "1992년 처음 데뷔한 그룹 이름의 뒤쪽은 '신세대'였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "JYP 엔터테인먼트를 세운 가수 겸 프로듀서",
+        "familiarity": {
+          "judge": 3,
+          "pct": 99,
+          "why": "유명 가수·프로듀서",
+          "piece": "f08",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "M1-14",
+          "key": "b186",
+          "hint": "1992년 처음 데뷔한 그룹 이름의 뒤쪽은 '신세대'였다.",
+          "guess": "서태지와 아이들",
+          "confidence": "low",
+          "hit": false,
+          "answer": "박진영"
+        },
+        "layer": "대중",
+        "genre": "가요",
+        "work": "박진영 1집 Blue City",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81"
+        ],
+        "facts": [
+          {
+            "claim": "1992년 그룹으로 데뷔했으나 실패, 1994년 Blue City 솔로 데뷔 성공",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
+            "note": "그는 1992년 그룹 '박진영과 신세대'로 데뷔하였지만 성공하지 못하고 1994년 내놓은 앨범 《Blue City》를 통해 타이틀곡 〈날 떠나지마〉로 솔로 데뷔하여 가수로서 성공하였다."
+          },
+          {
+            "claim": "연세대 지질학과",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
+            "note": "연세대학교 이과대학 지질학과 (학사) (1990학번)"
+          },
+          {
+            "claim": "비닐 의상",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
+            "note": "박진영은 파격적인 의상으로 화제를 불러모으기도 했는데 대표적으로 비닐의상이 있다."
+          },
+          {
+            "claim": "1994년 인터뷰 — '대학 졸업 후 꿈은 일반적인 샐러리맨'",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
+            "note": "〈날 떠나지마〉가 전국적인 인기를 얻고 있던 1994년 모 언론사와의 공식적인 인터뷰에서 \"대학 졸업 후 꿈은 '일반적인 샐러리맨'이다\"라고 이야기하였고"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81"
+        ],
+        "hintNote": "그는 1992년 그룹 '박진영과 신세대'로 데뷔하였지만 성공하지 못하고",
+        "easiestCue": "연세대 지질학과를 나온 가수",
+        "targetWhy": "레전드 가수의 데뷔 무렵 세부 — 가요 팬(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "모두 아는 인물, 단서는 데뷔 무렵 이력",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "연세대 지질학과를 나온 이 가수",
+          "difWhy": "연대 지질학과 가수 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 가수 이름",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1992년 한 그룹의 일원으로 먼저 데뷔했다가 성공하지 못했고, 1994년 앨범 'Blue City'로 솔로 데뷔해 이름을 알린 가수입니다. 연세대 지질학과를 나온 이 가수는 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "1994년 앨범 'Blue City'로 솔로 데뷔(가요 관심층)",
-     "addedCue": "1994년 인터뷰 '대학 졸업 후 꿈은 일반적인 샐러리맨'",
-     "why": "데뷔 앨범 이름을 빼고 데뷔 무렵의 인터뷰 세부로"
-    },
-    "generalHint": "1992년 처음 데뷔한 그룹 이름의 뒤쪽은 '신세대'였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "JYP 엔터테인먼트를 세운 가수 겸 프로듀서",
-    "familiarity": {
-     "judge": 3,
-     "pct": 99,
-     "why": "유명 가수·프로듀서",
-     "piece": "f08",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "M1-14",
-     "key": "b186",
-     "hint": "1992년 처음 데뷔한 그룹 이름의 뒤쪽은 '신세대'였다.",
-     "guess": "서태지와 아이들",
-     "confidence": "low",
-     "hit": false,
-     "answer": "박진영"
-    },
-    "layer": "팬 세부",
-    "genre": "가요",
-    "work": "박진영 1집 Blue City",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81"
-    ],
-    "facts": [
-     {
-      "claim": "1992년 그룹으로 데뷔했으나 실패, 1994년 Blue City 솔로 데뷔 성공",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
-      "note": "그는 1992년 그룹 '박진영과 신세대'로 데뷔하였지만 성공하지 못하고 1994년 내놓은 앨범 《Blue City》를 통해 타이틀곡 〈날 떠나지마〉로 솔로 데뷔하여 가수로서 성공하였다."
-     },
-     {
-      "claim": "연세대 지질학과",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
-      "note": "연세대학교 이과대학 지질학과 (학사) (1990학번)"
-     },
-     {
-      "claim": "비닐 의상",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
-      "note": "박진영은 파격적인 의상으로 화제를 불러모으기도 했는데 대표적으로 비닐의상이 있다."
-     },
-     {
-      "claim": "1994년 인터뷰 — '대학 졸업 후 꿈은 일반적인 샐러리맨'",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81",
-      "note": "〈날 떠나지마〉가 전국적인 인기를 얻고 있던 1994년 모 언론사와의 공식적인 인터뷰에서 \"대학 졸업 후 꿈은 '일반적인 샐러리맨'이다\"라고 이야기하였고"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%A7%84%EC%98%81"
-    ],
-    "hintNote": "그는 1992년 그룹 '박진영과 신세대'로 데뷔하였지만 성공하지 못하고",
-    "easiestCue": "연세대 지질학과를 나온 가수",
-    "targetWhy": "레전드 가수의 데뷔 무렵 세부 — 가요 팬(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "모두 아는 인물, 단서는 데뷔 무렵 이력",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-music/2#g019a-M1-15",
-   "seed": {
-    "subject": "S.E.S.",
-    "aspect": "팬 세부",
-    "ref": "M1-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1997년 데뷔한 한 걸그룹의 멤버 하나는 H.O.T. 영상집 촬영차 괌에 간 제작진의 눈에 띄어 뽑혔고, 또 하나는 잠실 롯데월드 지하상가에서 길거리 캐스팅됐습니다. 연습생 시절 가칭이 '멜로즈'였던 이 3인조 걸그룹은?",
-    "answer": "S.E.S.",
-    "acceptedAnswers": [
-     "SES",
-     "에스이에스"
-    ],
-    "originalTitleVariants": [
-     "SES"
-    ],
-    "variantCheck": "ko.wikipedia 'S.E.S.' 첫 문장 '(한국어: 에스이에스)' · '에스이에스' 넘겨주기 확인 · 점 없는 SES 는 영문 이름 표기 차이(B10)",
-    "explanation": "이 그룹의 등장으로 초·중·고 남학생 팬을 가리키는 '누나부대'라는 말이 처음 생겼다고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1997년 데뷔 … 가칭이 '멜로즈'였던 이 3인조 걸그룹",
-     "difWhy": "SM 1997 3인조 — 가요 관심층",
-     "wor": 3,
-     "worWhy": "누구나 아는 그룹 이름",
-     "acc": 5,
-     "accWhy": "한국 가요 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 2,
-     "easiestCue": "SM이 내놓은 이 3인조 걸그룹 … 한국어·영어·일본어",
-     "difWhy": "SM 1세대 3인조 걸그룹 — 방송에서 흔히",
-     "wor": 3,
-     "worWhy": "대중적 그룹 이름"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "SM이 내놓은 이 3인조 걸그룹은 한국어·영어·일본어를 멤버 한 사람씩 맡도록 짜였습니다. 이 그룹의 등장으로 초·중·고 남학생 팬을 가리키는 '누나부대'라는 말이 생겼다고 하는데, 이 그룹은 무엇일까요?",
-     "beforeExplanation": "SM의 유영진은 이 그룹을 준비하며 이수만이 본보기로 꼽은 미국 걸그룹 TLC와 체인징 페이시스의 노래를 연구했습니다.",
-     "removedCue": "SM이 내놓은 3인조 걸그룹 · 한국어·영어·일본어 담당",
-     "addedCue": "괌·롯데월드 캐스팅 · 가칭 멜로즈",
-     "why": "방송에서 흔한 SM·언어 담당 구성을 빼고 결성 뒷이야기로 바꿈"
-    },
-    "generalHint": "평론가 강명석은 이 그룹의 'Love'와 'Be Natural'을 '걸그룹 노래의 전설'로 꼽았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "바다·유진·슈의 1997년 데뷔 1세대 걸그룹",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "1세대 유명 걸그룹",
-     "piece": "f08",
-     "genPct": 88
-    },
-    "blind": {
-     "ref": "M1-15",
-     "key": "b073",
-     "hint": "평론가 강명석은 이 그룹의 'Love'와 'Be Natural'을 '걸그룹 노래의 전설'로 꼽았다.",
-     "guess": "S.E.S.",
-     "confidence": "high",
-     "hit": true,
-     "answer": "S.E.S."
-    },
-    "layer": "팬 세부",
-    "genre": "가요",
-    "work": "S.E.S.",
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/S.E.S."
-    ],
-    "facts": [
-     {
-      "claim": "누나부대 신조어",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/S.E.S.",
-      "note": "등장 이후 오빠부대 대신 초·중·고 남학생들로 구성된 '누나부대'라는 신조어가 연예계에 최초로 등장하였을 만큼 S.E.S.의 데뷔는 하나의 문화현상으로 급부상하였다."
-     },
-     {
-      "claim": "슈는 롯데월드 지하상가 길거리 캐스팅, 유진은 H.O.T. 영상집 촬영차 괌에서 발탁",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/S.E.S.",
-      "note": "god의 손호영, 데니안과 함께 혼성 그룹을 준비하다가 잠실 롯데월드 지하상가에서 길거리 캐스팅이 되면서 합류하게 된 슈, 마지막으로 H.O.T.의 영상집 촬영 때문에 괌에 갔던 캐스팅 디렉터 김수현과 프로듀서 이수만의 눈에 동시에 띄어 발탁된 유진이 합류 하면서 지금의 S.E.S.가 탄생하였다."
-     },
-     {
-      "claim": "연습생 시절 가칭 멜로즈 · 3인조 · 1997년 데뷔",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/S.E.S.",
-      "note": "데뷔 전 연습생 시절 가칭은 멜로즈였다. / S.E.S.(한국어: 에스이에스, 일본어: エスイーエス)는 바다, 유진, 슈로 구성된 대한민국의 3인조 걸그룹이다. 1997년 데뷔해 우리나라 가요계에 요정 신드롬을 일으켰다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/S.E.S._(band)"
-    ],
-    "hintNote": "Critic Kang Myeong-seok ... noted tracks like \"Love\" and \"Be Natural\" as \"legends of girl group songs\".",
-    "easiestCue": "H.O.T. 영상집 촬영 중 발탁된 멤버(→ SM 걸그룹)",
-    "targetWhy": "캐스팅 경위·가칭은 1세대 아이돌 애호가 세부 — 4(경계 3: H.O.T. 로 SM 을 떠올리면 좁혀짐)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'SM 3인조' 가 쉬운 쪽 단서",
-    "pairCheck": null,
-    "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "kr-music/2#g019a-M1-15",
+      "seed": {
+        "subject": "S.E.S.",
+        "aspect": "팬 세부",
+        "ref": "M1-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1997년 데뷔한 한 걸그룹의 멤버 하나는 H.O.T. 영상집 촬영차 괌에 간 제작진의 눈에 띄어 뽑혔고, 또 하나는 잠실 롯데월드 지하상가에서 길거리 캐스팅됐습니다. 연습생 시절 가칭이 '멜로즈'였던 이 3인조 걸그룹은?",
+        "answer": "S.E.S.",
+        "acceptedAnswers": [
+          "SES",
+          "에스이에스"
+        ],
+        "originalTitleVariants": [
+          "SES"
+        ],
+        "variantCheck": "ko.wikipedia 'S.E.S.' 첫 문장 '(한국어: 에스이에스)' · '에스이에스' 넘겨주기 확인 · 점 없는 SES 는 영문 이름 표기 차이(B10)",
+        "explanation": "이 그룹의 등장으로 초·중·고 남학생 팬을 가리키는 '누나부대'라는 말이 처음 생겼다고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1997년 데뷔 … 가칭이 '멜로즈'였던 이 3인조 걸그룹",
+          "difWhy": "SM 1997 3인조 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 그룹 이름",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 2,
+          "easiestCue": "SM이 내놓은 이 3인조 걸그룹 … 한국어·영어·일본어",
+          "difWhy": "SM 1세대 3인조 걸그룹 — 방송에서 흔히",
+          "wor": 3,
+          "worWhy": "대중적 그룹 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "SM이 내놓은 이 3인조 걸그룹은 한국어·영어·일본어를 멤버 한 사람씩 맡도록 짜였습니다. 이 그룹의 등장으로 초·중·고 남학생 팬을 가리키는 '누나부대'라는 말이 생겼다고 하는데, 이 그룹은 무엇일까요?",
+          "beforeExplanation": "SM의 유영진은 이 그룹을 준비하며 이수만이 본보기로 꼽은 미국 걸그룹 TLC와 체인징 페이시스의 노래를 연구했습니다.",
+          "removedCue": "SM이 내놓은 3인조 걸그룹 · 한국어·영어·일본어 담당",
+          "addedCue": "괌·롯데월드 캐스팅 · 가칭 멜로즈",
+          "why": "방송에서 흔한 SM·언어 담당 구성을 빼고 결성 뒷이야기로 바꿈"
+        },
+        "generalHint": "일본 데뷔 싱글은 오리콘 주간 차트 37위에 올라 엔카 가수를 빼면 한국 가수 가운데 가장 높은 데뷔 성적이었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "바다·유진·슈의 1997년 데뷔 1세대 걸그룹",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "1세대 유명 걸그룹",
+          "piece": "f08",
+          "genPct": 88
+        },
+        "blind": {
+          "ref": "M1-15",
+          "key": "b073",
+          "hint": "평론가 강명석은 이 그룹의 'Love'와 'Be Natural'을 '걸그룹 노래의 전설'로 꼽았다.",
+          "guess": "S.E.S.",
+          "confidence": "high",
+          "hit": true,
+          "answer": "S.E.S."
+        },
+        "layer": "팬 세부",
+        "genre": "가요",
+        "work": "S.E.S.",
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/S.E.S."
+        ],
+        "facts": [
+          {
+            "claim": "누나부대 신조어",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/S.E.S.",
+            "note": "등장 이후 오빠부대 대신 초·중·고 남학생들로 구성된 '누나부대'라는 신조어가 연예계에 최초로 등장하였을 만큼 S.E.S.의 데뷔는 하나의 문화현상으로 급부상하였다."
+          },
+          {
+            "claim": "슈는 롯데월드 지하상가 길거리 캐스팅, 유진은 H.O.T. 영상집 촬영차 괌에서 발탁",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/S.E.S.",
+            "note": "god의 손호영, 데니안과 함께 혼성 그룹을 준비하다가 잠실 롯데월드 지하상가에서 길거리 캐스팅이 되면서 합류하게 된 슈, 마지막으로 H.O.T.의 영상집 촬영 때문에 괌에 갔던 캐스팅 디렉터 김수현과 프로듀서 이수만의 눈에 동시에 띄어 발탁된 유진이 합류 하면서 지금의 S.E.S.가 탄생하였다."
+          },
+          {
+            "claim": "연습생 시절 가칭 멜로즈 · 3인조 · 1997년 데뷔",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/S.E.S.",
+            "note": "데뷔 전 연습생 시절 가칭은 멜로즈였다. / S.E.S.(한국어: 에스이에스, 일본어: エスイーエス)는 바다, 유진, 슈로 구성된 대한민국의 3인조 걸그룹이다. 1997년 데뷔해 우리나라 가요계에 요정 신드롬을 일으켰다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "H.O.T. 영상집 촬영 중 발탁된 멤버(→ SM 걸그룹)",
+        "targetWhy": "캐스팅 경위·가칭은 1세대 아이돌 애호가 세부 — 4(경계 3: H.O.T. 로 SM 을 떠올리면 좁혀짐)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'SM 3인조' 가 쉬운 쪽 단서",
+        "pairCheck": null,
+        "dbCheck": "answercheck(정답·변형, 이 job 초안 제외) 모두 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1997년 데뷔 … 가칭이 '멜로즈'였던 이 3인조 걸그룹",
+          "difWhy": "SM 1997 3인조 — 가요 관심층",
+          "wor": 3,
+          "worWhy": "누구나 아는 그룹 이름",
+          "acc": 5,
+          "accWhy": "한국 가요 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

@@ -1,350 +1,395 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "philosophy/4",
-  "midKey": "philosophy",
-  "subName": "동양 사상",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "philosophy/4#g019b-H2-04",
-   "seed": {
-    "subject": "공자",
-    "aspect": null,
-    "ref": "H2-04",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 사상가는 세 살 때 아버지를 여의었고, 젊은 시절 회계 출납을 맡은 관리와 양·말을 돌보는 일로 벼슬살이를 시작했습니다. 말년에는 쉰 살이던 아들을 먼저 떠나보냈는데, 이 사상가는 누구일까요?",
-    "answer": "공자",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "아들뿐 아니라 가장 아끼던 제자들까지 먼저 잃어 말년이 무거웠다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "세 살 때 아버지를 여의었고 ... 회계 출납",
-     "difWhy": "공자 위리·승전리 — 대학 교양 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 동양 사상 대표 인물",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "세 살 때 아버지를 여의었고 ... 회계 출납",
-     "difWhy": "공자 위리·승전리 — 대학 교양 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 동양 사상 대표 인물"
-    },
-    "rewrite": null,
-    "generalHint": "노나라 무관 숙량흘의 둘째 아들로 태어났다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "인(仁)과 예를 가르친 춘추 시대 노나라의 스승",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 인물",
-     "piece": "f05",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "H2-04",
-     "key": "b138",
-     "hint": "노나라 무관 숙량흘의 둘째 아들로 태어났다.",
-     "guess": "공자",
-     "confidence": "high",
-     "hit": true,
-     "answer": "공자"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/공자",
-     "https://en.wikipedia.org/wiki/Confucius"
-    ],
-    "facts": [
-     {
-      "claim": "세 살 때 아버지 사망",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/공자",
-      "note": "3살 때 아버지가 죽었고"
-     },
-     {
-      "claim": "회계 출납직 위리, 목장 일로 관리 생활 시작",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/공자",
-      "note": "회계 출납직인 위리(委吏)를 거쳐 목장 경영직인 사직(司直) 등으로 관리 생활을 시작하였다."
-     },
-     {
-      "claim": "양과 말을 돌보는 일",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Confucius",
-      "note": "as a bookkeeper and a caretaker of sheep and horses"
-     },
-     {
-      "claim": "아들 백어가 50세로 먼저 죽음",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/공자",
-      "note": "(아들 백어가) 50세의 나이로 죽었다"
-     },
-     {
-      "claim": "아들과 아끼던 제자들을 잃음",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Confucius",
-      "note": "Burdened by the loss of both his son and his favorite disciples"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/공자"
-    ],
-    "hintNote": "춘추시대에 서주의 제후국인 노나라의 무관인 숙량흘의 둘째 아들이자, 서자로 태어났었다.",
-    "easiestCue": "젊은 시절 회계 출납을 맡은 관리와 양·말을 돌보는 일로 벼슬살이를 시작했습니다",
-    "targetWhy": "위리·가축 관리 벼슬과 아들의 죽음은 논어·사기 애호가 영역 — 인·논어·노나라·제자 안회를 뺐다",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "대상은 누구나 알지만 '세 살 아버지'를 아는 관심층이 있을 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "philosophy/4",
+    "midKey": "philosophy",
+    "subName": "동양 사상",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "philosophy/4#g019b-H2-05",
-   "seed": {
-    "subject": "장자",
-    "aspect": null,
-    "ref": "H2-05",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "『사기』에 따르면 이 사상가는 일찍이 몽 땅 칠원의 관리를 지냈지만 살림은 몹시 가난했습니다. 그의 이름이 붙은 책의 마지막 33편은 제자백가의 여러 흐름을 훑으며 혜시의 철학을 비중 있게 다루는데, 이 사상가는?",
-    "answer": "장자",
-    "acceptedAnswers": [
-     "장주"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '장자' 문서 — 본명 장주(莊周)로도 부름(en 문서 제목 Zhuang Zhou)",
-    "explanation": "초나라 위왕이 벼슬을 주겠다고 했으나, 얽매이지 않는 삶을 아껴 거절했다고 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "책 마지막 편이 혜시의 철학을 비중 있게 다루는 사상가",
-     "difWhy": "장자와 혜시 — 고교 윤리·사상",
-     "wor": 4,
-     "worWhy": "동양 사상 교양",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
+  "items": [
+    {
+      "seedId": "philosophy/4#g019b-H2-04",
+      "seed": {
+        "subject": "공자",
+        "aspect": null,
+        "ref": "H2-04",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 사상가는 세 살 때 아버지를 여의었고, 젊은 시절 회계 출납을 맡은 관리와 양·말을 돌보는 일로 벼슬살이를 시작했습니다. 말년에는 쉰 살이던 아들을 먼저 떠나보냈는데, 이 사상가는 누구일까요?",
+        "answer": "공자",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "아들뿐 아니라 가장 아끼던 제자들까지 먼저 잃어 말년이 무거웠다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "세 살 때 아버지를 여의었고 ... 회계 출납",
+          "difWhy": "공자 위리·승전리 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 동양 사상 대표 인물",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "세 살 때 아버지를 여의었고 ... 회계 출납",
+          "difWhy": "공자 위리·승전리 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 동양 사상 대표 인물"
+        },
+        "rewrite": null,
+        "generalHint": "노나라 무관 숙량흘의 둘째 아들로 태어났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "인(仁)과 예를 가르친 춘추 시대 노나라의 스승",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 인물",
+          "piece": "f05",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "H2-04",
+          "key": "b138",
+          "hint": "노나라 무관 숙량흘의 둘째 아들로 태어났다.",
+          "guess": "공자",
+          "confidence": "high",
+          "hit": true,
+          "answer": "공자"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/공자",
+          "https://en.wikipedia.org/wiki/Confucius"
+        ],
+        "facts": [
+          {
+            "claim": "세 살 때 아버지 사망",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/공자",
+            "note": "3살 때 아버지가 죽었고"
+          },
+          {
+            "claim": "회계 출납직 위리, 목장 일로 관리 생활 시작",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/공자",
+            "note": "회계 출납직인 위리(委吏)를 거쳐 목장 경영직인 사직(司直) 등으로 관리 생활을 시작하였다."
+          },
+          {
+            "claim": "양과 말을 돌보는 일",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Confucius",
+            "note": "as a bookkeeper and a caretaker of sheep and horses"
+          },
+          {
+            "claim": "아들 백어가 50세로 먼저 죽음",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/공자",
+            "note": "(아들 백어가) 50세의 나이로 죽었다"
+          },
+          {
+            "claim": "아들과 아끼던 제자들을 잃음",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Confucius",
+            "note": "Burdened by the loss of both his son and his favorite disciples"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/공자"
+        ],
+        "hintNote": "춘추시대에 서주의 제후국인 노나라의 무관인 숙량흘의 둘째 아들이자, 서자로 태어났었다.",
+        "easiestCue": "젊은 시절 회계 출납을 맡은 관리와 양·말을 돌보는 일로 벼슬살이를 시작했습니다",
+        "targetWhy": "위리·가축 관리 벼슬과 아들의 죽음은 논어·사기 애호가 영역 — 인·논어·노나라·제자 안회를 뺐다",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "대상은 누구나 알지만 '세 살 아버지'를 아는 관심층이 있을 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "세 살 때 아버지를 여의었고 ... 회계 출납",
+          "difWhy": "공자 위리·승전리 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 동양 사상 대표 인물",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "초나라 위왕이 벼슬을 주겠다고 했으나 얽매이지 않는 삶을 아껴 거절",
-     "difWhy": "장자의 벼슬 거절 — 고교 윤리",
-     "wor": 4,
-     "worWhy": "교양 — 동양 사상 대표 인물"
+    {
+      "seedId": "philosophy/4#g019b-H2-05",
+      "seed": {
+        "subject": "장자",
+        "aspect": null,
+        "ref": "H2-05",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "『사기』에 따르면 이 사상가는 일찍이 몽 땅 칠원의 관리를 지냈지만 살림은 몹시 가난했습니다. 그의 이름이 붙은 책의 마지막 33편은 제자백가의 여러 흐름을 훑으며 혜시의 철학을 비중 있게 다루는데, 이 사상가는?",
+        "answer": "장자",
+        "acceptedAnswers": [
+          "장주"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '장자' 문서 — 본명 장주(莊周)로도 부름(en 문서 제목 Zhuang Zhou)",
+        "explanation": "초나라 위왕이 벼슬을 주겠다고 했으나, 얽매이지 않는 삶을 아껴 거절했다고 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "책 마지막 편이 혜시의 철학을 비중 있게 다루는 사상가",
+          "difWhy": "장자와 혜시 — 고교 윤리·사상",
+          "wor": 4,
+          "worWhy": "동양 사상 교양",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "초나라 위왕이 벼슬을 주겠다고 했으나 얽매이지 않는 삶을 아껴 거절",
+          "difWhy": "장자의 벼슬 거절 — 고교 윤리",
+          "wor": 4,
+          "worWhy": "교양 — 동양 사상 대표 인물"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "『사기』에 따르면 이 사상가는 일찍이 몽 땅 칠원의 관리를 지냈지만 살림은 몹시 가난했습니다. 초나라 위왕이 벼슬을 주겠다고 했으나 얽매이지 않는 삶을 아껴 거절했다고 하는데, 이 사상가는 누구일까요?",
+          "beforeExplanation": "벗 혜자(혜시)와 자주 어울렸고, 그의 이름이 붙은 책의 33편은 혜시의 철학을 다룹니다.",
+          "removedCue": "초나라 위왕의 벼슬을 거절(고교 윤리)",
+          "addedCue": "책의 마지막 33편이 혜시 철학을 다룸",
+          "why": "벼슬 거절 일화를 해설로 내리고 책 구성 세부로 바꿈"
+        },
+        "generalHint": "그는 혜시의 무덤을 지나며, 코끝에 묻은 흙을 도끼로 깎아 낸 장석 이야기로 맞수를 잃은 슬픔을 말했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "노자와 함께 도가를 대표하는 전국 시대 사상가",
+        "familiarity": {
+          "judge": 3,
+          "pct": 80,
+          "why": "호접몽·윤리 교과서로 익숙",
+          "piece": "f05",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "H2-05",
+          "key": "b006",
+          "hint": "그는 혜시의 무덤을 지나며, 코끝에 묻은 흙을 도끼로 깎아 낸 장석 이야기로 맞수를 잃은 슬픔을 말했다.",
+          "guess": "장자",
+          "confidence": "high",
+          "hit": true,
+          "answer": "장자",
+          "first": {
+            "ref": "H2-05",
+            "key": "b017",
+            "hint": "아내가 죽자 동이를 두드리며 노래했다는 이야기가 그의 책에 실려 있다.",
+            "guess": "장자",
+            "confidence": "high",
+            "hit": true,
+            "answer": "장자"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/장자",
+          "https://en.wikipedia.org/wiki/Zhuang_Zhou"
+        ],
+        "facts": [
+          {
+            "claim": "사기: 몽 칠원의 관리, 매우 가난",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/장자",
+            "note": "《사기》에 따르면, 장자는 일찍이 몽(蒙) 칠원(漆園)의 관리가 되었으나, 생활은 매우 가난했다."
+          },
+          {
+            "claim": "초 위왕의 벼슬 제안을 자유를 아껴 거절",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Zhuang_Zhou",
+            "note": "he turned down a job offer from King Wei of Chu, because he valued his personal freedom."
+          },
+          {
+            "claim": "현재 33편 · 33편은 제자백가의 주요 흐름을 훑으며 혜시 철학을 강조",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Zhuang_Zhou",
+            "note": "This work, in its current shape consisting of 33 chapters … chapter 33 has been often considered as intrusive, being a survey of the major movements during the \"Hundred Schools of Thought\" with an emphasis on the philosophy of Hui Shi."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Hui_Shi"
+        ],
+        "hintNote": "Chuang Tzu was accompanying a funeral when he passed by the grave of Hui Tzu … a plasterer who, if he got a speck of mud on the tip of his nose … would get his friend Carpenter Shih to slice it off for him.",
+        "easiestCue": "『사기』 — 몽 땅 칠원의 관리를 지냈지만 몹시 가난",
+        "targetWhy": "칠원 관리 경력·33편의 혜시 서술은 동양 철학 대학 교양 세부",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "초 위왕 거절(거북 비유)을 관심층이 알 수 있음 — 거북 이야기는 넣지 않음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (호접지몽 활성은 다른 정답)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "책 마지막 편이 혜시의 철학을 비중 있게 다루는 사상가",
+          "difWhy": "장자와 혜시 — 고교 윤리·사상",
+          "wor": 4,
+          "worWhy": "동양 사상 교양",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "『사기』에 따르면 이 사상가는 일찍이 몽 땅 칠원의 관리를 지냈지만 살림은 몹시 가난했습니다. 초나라 위왕이 벼슬을 주겠다고 했으나 얽매이지 않는 삶을 아껴 거절했다고 하는데, 이 사상가는 누구일까요?",
-     "beforeExplanation": "벗 혜자(혜시)와 자주 어울렸고, 그의 이름이 붙은 책의 33편은 혜시의 철학을 다룹니다.",
-     "removedCue": "초나라 위왕의 벼슬을 거절(고교 윤리)",
-     "addedCue": "책의 마지막 33편이 혜시 철학을 다룸",
-     "why": "벼슬 거절 일화를 해설로 내리고 책 구성 세부로 바꿈"
-    },
-    "generalHint": "그는 혜시의 무덤을 지나며, 코끝에 묻은 흙을 도끼로 깎아 낸 장석 이야기로 맞수를 잃은 슬픔을 말했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "노자와 함께 도가를 대표하는 전국 시대 사상가",
-    "familiarity": {
-     "judge": 3,
-     "pct": 80,
-     "why": "호접몽·윤리 교과서로 익숙",
-     "piece": "f05",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "H2-05",
-     "key": "b006",
-     "hint": "그는 혜시의 무덤을 지나며, 코끝에 묻은 흙을 도끼로 깎아 낸 장석 이야기로 맞수를 잃은 슬픔을 말했다.",
-     "guess": "장자",
-     "confidence": "high",
-     "hit": true,
-     "answer": "장자",
-     "first": {
-      "ref": "H2-05",
-      "key": "b017",
-      "hint": "아내가 죽자 동이를 두드리며 노래했다는 이야기가 그의 책에 실려 있다.",
-      "guess": "장자",
-      "confidence": "high",
-      "hit": true,
-      "answer": "장자"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/장자",
-     "https://en.wikipedia.org/wiki/Zhuang_Zhou"
-    ],
-    "facts": [
-     {
-      "claim": "사기: 몽 칠원의 관리, 매우 가난",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/장자",
-      "note": "《사기》에 따르면, 장자는 일찍이 몽(蒙) 칠원(漆園)의 관리가 되었으나, 생활은 매우 가난했다."
-     },
-     {
-      "claim": "초 위왕의 벼슬 제안을 자유를 아껴 거절",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Zhuang_Zhou",
-      "note": "he turned down a job offer from King Wei of Chu, because he valued his personal freedom."
-     },
-     {
-      "claim": "현재 33편 · 33편은 제자백가의 주요 흐름을 훑으며 혜시 철학을 강조",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Zhuang_Zhou",
-      "note": "This work, in its current shape consisting of 33 chapters … chapter 33 has been often considered as intrusive, being a survey of the major movements during the \"Hundred Schools of Thought\" with an emphasis on the philosophy of Hui Shi."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Hui_Shi"
-    ],
-    "hintNote": "Chuang Tzu was accompanying a funeral when he passed by the grave of Hui Tzu … a plasterer who, if he got a speck of mud on the tip of his nose … would get his friend Carpenter Shih to slice it off for him.",
-    "easiestCue": "『사기』 — 몽 땅 칠원의 관리를 지냈지만 몹시 가난",
-    "targetWhy": "칠원 관리 경력·33편의 혜시 서술은 동양 철학 대학 교양 세부",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "초 위왕 거절(거북 비유)을 관심층이 알 수 있음 — 거북 이야기는 넣지 않음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (호접지몽 활성은 다른 정답)",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "philosophy/4#g019b-H2-06",
-   "seed": {
-    "subject": "순자",
-    "aspect": null,
-    "ref": "H2-06",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "제나라 양왕은 직하학궁에서 이 사상가에게 세 번이나 제사 술을 올리는 일을 맡겼는데, 가장 존경받는 학자의 몫이었습니다. 기원전 240년에는 초나라 재상 춘신군의 부름을 받아 난릉의 수령이 되었는데, 이 사상가는 누구일까요?",
-    "answer": "순자",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "춘신군이 암살되자 자리를 잃었지만 난릉에 남아 여생을 보냈고 그곳에 묻혔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "직하학궁에서 이 사상가에게 세 번이나 제사 술을 올리는 일",
-     "difWhy": "순자 좨주·난릉령 — 대학 교양 동양 철학",
-     "wor": 4,
-     "worWhy": "교양 — 동양 사상 대표 인물",
-     "acc": 4,
-     "accWhy": "철학·사상 — 고교 윤리 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "직하학궁에서 이 사상가에게 세 번이나 제사 술을 올리는 일",
-     "difWhy": "순자 좨주·난릉령 — 대학 교양 동양 철학",
-     "wor": 4,
-     "worWhy": "교양 — 동양 사상 대표 인물"
-    },
-    "rewrite": null,
-    "generalHint": "그는 제나라를 떠난 뒤 진나라에 들러, 재상 범수와 나눈 대화에서 그 나라의 관리와 관청을 높이 샀다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "사람의 본성이 악하다고 본 전국 시대 유학자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "성악설로 윤리 교과서에서 배움",
-     "piece": "f05",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "H2-06",
-     "key": "b005",
-     "hint": "그는 제나라를 떠난 뒤 진나라에 들러, 재상 범수와 나눈 대화에서 그 나라의 관리와 관청을 높이 샀다.",
-     "guess": "순자",
-     "confidence": "high",
-     "hit": true,
-     "answer": "순자",
-     "first": {
-      "ref": "H2-06",
-      "key": "b129",
-      "hint": "한비와 이사가 그의 제자였다.",
-      "guess": "순자",
-      "confidence": "high",
-      "hit": true,
-      "answer": "순자"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Xunzi_(philosopher)"
-    ],
-    "facts": [
-     {
-      "claim": "제 양왕이 세 번 제사 술을 올리게 함, 가장 존경받는 학자의 일",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
-      "note": "King Xiang of Qi had Xunzi sacrifice wine three times, a task that was reserved for the most respected scholar available."
-     },
-     {
-      "claim": "직하학궁",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
-      "note": "attended the Jixia Academy"
-     },
-     {
-      "claim": "기원전 240년 춘신군 초청 난릉령",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
-      "note": "In 240 BCE, Lord Chunshen, the prime minister of Chu, invited him to take a position as Magistrate of Lanling."
-     },
-     {
-      "claim": "춘신군 암살 뒤 자리 잃음, 난릉에 남아 묻힘",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
-      "note": "Lord Chunshen was later assassinated, and Xunzi lost the post … remained in Lanling for the rest of his life and was buried there."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Xunzi_(philosopher)"
-    ],
-    "hintNote": "Xunzi's writings suggest that after leaving Qi he visited Qin, possibly from 265 BCE to 260 BCE … In a conversation with the Qin official Fan Sui, Xunzi praised much of the state's achievements, officials and governmental organizations.",
-    "easiestCue": "기원전 240년에는 초나라 재상 춘신군의 부름을 받아 난릉의 수령이 되었는데",
-    "targetWhy": "직하학궁 좨주·난릉령은 고교 윤리 밖 세부 — 성악설·한비자·이사의 스승을 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "성악설로 이름은 익숙, 단서는 벼슬 이력",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (성악설 활성은 다른 정답)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "philosophy/4#g019b-H2-06",
+      "seed": {
+        "subject": "순자",
+        "aspect": null,
+        "ref": "H2-06",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "제나라 양왕은 직하학궁에서 이 사상가에게 세 번이나 제사 술을 올리는 일을 맡겼는데, 가장 존경받는 학자의 몫이었습니다. 기원전 240년에는 초나라 재상 춘신군의 부름을 받아 난릉의 수령이 되었는데, 이 사상가는 누구일까요?",
+        "answer": "순자",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "춘신군이 암살되자 자리를 잃었지만 난릉에 남아 여생을 보냈고 그곳에 묻혔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "직하학궁에서 이 사상가에게 세 번이나 제사 술을 올리는 일",
+          "difWhy": "순자 좨주·난릉령 — 대학 교양 동양 철학",
+          "wor": 4,
+          "worWhy": "교양 — 동양 사상 대표 인물",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "직하학궁에서 이 사상가에게 세 번이나 제사 술을 올리는 일",
+          "difWhy": "순자 좨주·난릉령 — 대학 교양 동양 철학",
+          "wor": 4,
+          "worWhy": "교양 — 동양 사상 대표 인물"
+        },
+        "rewrite": null,
+        "generalHint": "그는 제나라를 떠난 뒤 진나라에 들러, 재상 범수와 나눈 대화에서 그 나라의 관리와 관청을 높이 샀다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "사람의 본성이 악하다고 본 전국 시대 유학자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "성악설로 윤리 교과서에서 배움",
+          "piece": "f05",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "H2-06",
+          "key": "b005",
+          "hint": "그는 제나라를 떠난 뒤 진나라에 들러, 재상 범수와 나눈 대화에서 그 나라의 관리와 관청을 높이 샀다.",
+          "guess": "순자",
+          "confidence": "high",
+          "hit": true,
+          "answer": "순자",
+          "first": {
+            "ref": "H2-06",
+            "key": "b129",
+            "hint": "한비와 이사가 그의 제자였다.",
+            "guess": "순자",
+            "confidence": "high",
+            "hit": true,
+            "answer": "순자"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Xunzi_(philosopher)"
+        ],
+        "facts": [
+          {
+            "claim": "제 양왕이 세 번 제사 술을 올리게 함, 가장 존경받는 학자의 일",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
+            "note": "King Xiang of Qi had Xunzi sacrifice wine three times, a task that was reserved for the most respected scholar available."
+          },
+          {
+            "claim": "직하학궁",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
+            "note": "attended the Jixia Academy"
+          },
+          {
+            "claim": "기원전 240년 춘신군 초청 난릉령",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
+            "note": "In 240 BCE, Lord Chunshen, the prime minister of Chu, invited him to take a position as Magistrate of Lanling."
+          },
+          {
+            "claim": "춘신군 암살 뒤 자리 잃음, 난릉에 남아 묻힘",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Xunzi_(philosopher)",
+            "note": "Lord Chunshen was later assassinated, and Xunzi lost the post … remained in Lanling for the rest of his life and was buried there."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Xunzi_(philosopher)"
+        ],
+        "hintNote": "Xunzi's writings suggest that after leaving Qi he visited Qin, possibly from 265 BCE to 260 BCE … In a conversation with the Qin official Fan Sui, Xunzi praised much of the state's achievements, officials and governmental organizations.",
+        "easiestCue": "기원전 240년에는 초나라 재상 춘신군의 부름을 받아 난릉의 수령이 되었는데",
+        "targetWhy": "직하학궁 좨주·난릉령은 고교 윤리 밖 세부 — 성악설·한비자·이사의 스승을 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "성악설로 이름은 익숙, 단서는 벼슬 이력",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (성악설 활성은 다른 정답)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "직하학궁에서 이 사상가에게 세 번이나 제사 술을 올리는 일",
+          "difWhy": "순자 좨주·난릉령 — 대학 교양 동양 철학",
+          "wor": 4,
+          "worWhy": "교양 — 동양 사상 대표 인물",
+          "acc": 4,
+          "accWhy": "철학·사상 — 고교 윤리 교과"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

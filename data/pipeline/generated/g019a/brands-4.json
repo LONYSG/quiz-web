@@ -1,338 +1,383 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "brands/4",
-  "midKey": "brands",
-  "subName": "기업 국적",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "brands/4#g019a-L2-10",
-   "seed": {
-    "subject": "롤렉스",
-    "aspect": null,
-    "ref": "L2-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1905년 독일 출신 사업가와 영국인 투자자가 스위스 무브먼트를 들여오는 회사로 런던에서 세웠고, 1919년 세금 문제로 제네바로 옮겼습니다. 1927년 메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을 헤엄쳐 건넌 이 시계 회사는?",
-    "answer": "롤렉스",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1931년에는 중력으로 자유롭게 도는 반원형 판으로 태엽을 감는 자동 감김 장치 '퍼페추얼 로터'의 특허를 냈습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을",
-     "difWhy": "오이스터 해협 광고 — 시계 애호가",
-     "wor": 3,
-     "worWhy": "유명 브랜드 이야깃거리",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을",
-     "difWhy": "오이스터 해협 광고 — 시계 애호가",
-     "wor": 3,
-     "worWhy": "유명 브랜드 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "1944년 아내가 세상을 떠나자 창업자는 자기 지분을 모두 재단에 넘겼고, 회사는 지금도 그 재단이 가지고 있다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "스위스 제네바의 고급 손목시계 회사",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "명품 시계 브랜드",
-     "piece": "f07",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "L2-10",
-     "key": "b017",
-     "hint": "1944년 아내가 세상을 떠나자 창업자는 자기 지분을 모두 재단에 넘겼고, 회사는 지금도 그 재단이 가지고 있다.",
-     "guess": "롤렉스",
-     "confidence": "high",
-     "hit": true,
-     "answer": "롤렉스"
-    },
-    "hobby": "기록 뒷이야기",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Rolex"
-    ],
-    "facts": [
-     {
-      "claim": "1905년 런던에서 독일 사업가 빌스도르프와 영국 투자자 데이비스가 스위스 무브먼트 수입 회사로 설립",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Rolex",
-      "note": "Founded in 1905 in London as Wilsdorf and Davis by German businessman Hans Wilsdorf and British investor and watch dealer Alfred Davis, who were importing watches from Switzerland to England. ... importing Hermann Aegler's Swiss movements to England"
-     },
-     {
-      "claim": "1919년 사치품 수입 세금 등 때문에 제네바로 옮김",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Rolex",
-      "note": "In 1919, Hans Wilsdorf moved the company from England to Geneva, Switzerland, because of heavy post-war taxes levied on luxury imports and high export duties on the silver and gold used for the watch cases."
-     },
-     {
-      "claim": "1927년 글라이츠가 오이스터를 목걸이에 걸고 영국 해협 횡단",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Rolex",
-      "note": "In 1927, British swimmer Mercedes Gleitze swam the English Channel with an Oyster on her necklace, becoming the first Rolex ambassador."
-     },
-     {
-      "claim": "1931년 퍼페추얼 로터 특허",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Rolex",
-      "note": "In 1931, Rolex patented a self-winding mechanism called a Perpetual rotor, a semi-circular plate that relies on gravity to move freely."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Rolex"
-    ],
-    "hintNote": "Upon the death of his wife in 1944, Wilsdorf established the Hans Wilsdorf Foundation, a private trust, in which he left all of his Rolex shares ... The Hans Wilsdorf Foundation, which privately owns Rolex SA",
-    "easiestCue": "1927년 메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을 헤엄쳐 건넌 이 시계 회사",
-    "targetWhy": "런던 출발 · 글라이츠 일화는 시계 애호가가 아는 브랜드사 — 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 스위스 시계가 영국에서 시작했다는 뜻밖의 국적 이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "brands/4",
+    "midKey": "brands",
+    "subName": "기업 국적",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "brands/4#g019a-L2-11",
-   "seed": {
-    "subject": "몽블랑",
-    "aspect": null,
-    "ref": "L2-11",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1977년 영국 던힐에 인수된 뒤 값싼 펜을 접고 여러 고급 상품으로 브랜드를 넓힌 독일 함부르크의 회사입니다. 숫자 '4810'이 자주 되풀이되는 주제로 쓰이는 이 회사는 어디일까요?",
-    "answer": "몽블랑",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "회사 이름은 알프스에서 가장 높은 산에서 따왔고, 4810은 그 산의 높이(미터)입니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "숫자 '4810'이 자주 되풀이되는 주제",
-     "difWhy": "4810 = 산 높이 상징 — 필기구 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 브랜드 국적",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "brands/4#g019a-L2-10",
+      "seed": {
+        "subject": "롤렉스",
+        "aspect": null,
+        "ref": "L2-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1905년 독일 출신 사업가와 영국인 투자자가 스위스 무브먼트를 들여오는 회사로 런던에서 세웠고, 1919년 세금 문제로 제네바로 옮겼습니다. 1927년 메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을 헤엄쳐 건넌 이 시계 회사는?",
+        "answer": "롤렉스",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1931년에는 중력으로 자유롭게 도는 반원형 판으로 태엽을 감는 자동 감김 장치 '퍼페추얼 로터'의 특허를 냈습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을",
+          "difWhy": "오이스터 해협 광고 — 시계 애호가",
+          "wor": 3,
+          "worWhy": "유명 브랜드 이야깃거리",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을",
+          "difWhy": "오이스터 해협 광고 — 시계 애호가",
+          "wor": 3,
+          "worWhy": "유명 브랜드 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "1944년 아내가 세상을 떠나자 창업자는 자기 지분을 모두 재단에 넘겼고, 회사는 지금도 그 재단이 가지고 있다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "스위스 제네바의 고급 손목시계 회사",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "명품 시계 브랜드",
+          "piece": "f07",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "L2-10",
+          "key": "b017",
+          "hint": "1944년 아내가 세상을 떠나자 창업자는 자기 지분을 모두 재단에 넘겼고, 회사는 지금도 그 재단이 가지고 있다.",
+          "guess": "롤렉스",
+          "confidence": "high",
+          "hit": true,
+          "answer": "롤렉스"
+        },
+        "hobby": "기록 뒷이야기",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Rolex"
+        ],
+        "facts": [
+          {
+            "claim": "1905년 런던에서 독일 사업가 빌스도르프와 영국 투자자 데이비스가 스위스 무브먼트 수입 회사로 설립",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Rolex",
+            "note": "Founded in 1905 in London as Wilsdorf and Davis by German businessman Hans Wilsdorf and British investor and watch dealer Alfred Davis, who were importing watches from Switzerland to England. ... importing Hermann Aegler's Swiss movements to England"
+          },
+          {
+            "claim": "1919년 사치품 수입 세금 등 때문에 제네바로 옮김",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Rolex",
+            "note": "In 1919, Hans Wilsdorf moved the company from England to Geneva, Switzerland, because of heavy post-war taxes levied on luxury imports and high export duties on the silver and gold used for the watch cases."
+          },
+          {
+            "claim": "1927년 글라이츠가 오이스터를 목걸이에 걸고 영국 해협 횡단",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Rolex",
+            "note": "In 1927, British swimmer Mercedes Gleitze swam the English Channel with an Oyster on her necklace, becoming the first Rolex ambassador."
+          },
+          {
+            "claim": "1931년 퍼페추얼 로터 특허",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Rolex",
+            "note": "In 1931, Rolex patented a self-winding mechanism called a Perpetual rotor, a semi-circular plate that relies on gravity to move freely."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Rolex"
+        ],
+        "hintNote": "Upon the death of his wife in 1944, Wilsdorf established the Hans Wilsdorf Foundation, a private trust, in which he left all of his Rolex shares ... The Hans Wilsdorf Foundation, which privately owns Rolex SA",
+        "easiestCue": "1927년 메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을 헤엄쳐 건넌 이 시계 회사",
+        "targetWhy": "런던 출발 · 글라이츠 일화는 시계 애호가가 아는 브랜드사 — 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 스위스 시계가 영국에서 시작했다는 뜻밖의 국적 이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "메르세데스 글라이츠가 방수 모델을 목에 걸고 영국 해협을",
+          "difWhy": "오이스터 해협 광고 — 시계 애호가",
+          "wor": 3,
+          "worWhy": "유명 브랜드 이야깃거리",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'마이스터스튁'이라는 이름을 쓴 만년필",
-     "difWhy": "마이스터스튁 만년필 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 브랜드 이름"
+    {
+      "seedId": "brands/4#g019a-L2-11",
+      "seed": {
+        "subject": "몽블랑",
+        "aspect": null,
+        "ref": "L2-11",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1977년 영국 던힐에 인수된 뒤 값싼 펜을 접고 여러 고급 상품으로 브랜드를 넓힌 독일 함부르크의 회사입니다. 숫자 '4810'이 자주 되풀이되는 주제로 쓰이는 이 회사는 어디일까요?",
+        "answer": "몽블랑",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "회사 이름은 알프스에서 가장 높은 산에서 따왔고, 4810은 그 산의 높이(미터)입니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "숫자 '4810'이 자주 되풀이되는 주제",
+          "difWhy": "4810 = 산 높이 상징 — 필기구 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 브랜드 국적",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'마이스터스튁'이라는 이름을 쓴 만년필",
+          "difWhy": "마이스터스튁 만년필 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 브랜드 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1924년 처음 '마이스터스튁'이라는 이름을 쓴 만년필로 이름난 독일 함부르크의 회사입니다. 1977년 영국 던힐에 인수된 뒤 값싼 펜을 접고 여러 고급 상품으로 브랜드를 넓힌 이 회사는 어디일까요?",
+          "beforeExplanation": "회사 이름은 알프스에서 가장 높은 산에서 따왔고, 1993년부터는 스위스 리슈몽 그룹에 속해 있습니다.",
+          "removedCue": "1924년 '마이스터스튁' 만년필(관심층)",
+          "addedCue": "되풀이되는 숫자 '4810'",
+          "why": "대표 상품 이름을 빼고 브랜드의 숨은 상징 숫자로"
+        },
+        "generalHint": "1906년 베를린에서 세워진 뒤 이듬해 함부르크로 옮기며 '심플로 필러 펜'으로 이름을 바꾸었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "고급 만년필로 이름난 독일의 명품 회사",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "명품 브랜드·알프스 산·빵 이름",
+          "piece": "f07",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "L2-11",
+          "key": "b313",
+          "hint": "1906년 베를린에서 세워진 뒤 이듬해 함부르크로 옮기며 '심플로 필러 펜'으로 이름을 바꾸었다.",
+          "guess": "몽블랑",
+          "confidence": "high",
+          "hit": true,
+          "answer": "몽블랑"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Montblanc_(company)"
+        ],
+        "facts": [
+          {
+            "claim": "독일 회사, 함부르크에 근거",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
+            "note": "Montblanc is a German manufacturer and distributor of luxury goods, which was founded in Berlin in 1906 and is currently based in Hamburg."
+          },
+          {
+            "claim": "1977년 던힐 인수 뒤 값싼 펜을 접고 여러 고급 상품으로",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
+            "note": "Alfred Dunhill Ltd. acquired Montblanc in 1977, after which lower-priced pens were dropped, and the brand was used on a wide range of luxury goods other than pens."
+          },
+          {
+            "claim": "이름은 알프스 최고봉에서, 1993년 리슈몽 그룹",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
+            "note": "Since 1993, Montblanc has been part of the Swiss Richemont group. The brand is named after Mont Blanc, the highest mountain in the Alps."
+          },
+          {
+            "claim": "숫자 4810(산 높이 m)이 자주 되풀이되는 주제",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
+            "note": "The number \"4810,\" the mountain's height in metres, is a common recurring theme."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Montblanc_(company)"
+        ],
+        "hintNote": "The company was founded in 1906 as Simplizissiumus-Füllhalter in Berlin. In 1907, it moved to Hamburg and changed its name to Simplo Filler Pen Co.",
+        "easiestCue": "1977년 던힐에 인수된 함부르크의 회사",
+        "targetWhy": "명품 필기구 브랜드의 상징 세부 — 애호가(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 명품 브랜드의 국적·이력",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "숫자 '4810'이 자주 되풀이되는 주제",
+          "difWhy": "4810 = 산 높이 상징 — 필기구 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 브랜드 국적",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1924년 처음 '마이스터스튁'이라는 이름을 쓴 만년필로 이름난 독일 함부르크의 회사입니다. 1977년 영국 던힐에 인수된 뒤 값싼 펜을 접고 여러 고급 상품으로 브랜드를 넓힌 이 회사는 어디일까요?",
-     "beforeExplanation": "회사 이름은 알프스에서 가장 높은 산에서 따왔고, 1993년부터는 스위스 리슈몽 그룹에 속해 있습니다.",
-     "removedCue": "1924년 '마이스터스튁' 만년필(관심층)",
-     "addedCue": "되풀이되는 숫자 '4810'",
-     "why": "대표 상품 이름을 빼고 브랜드의 숨은 상징 숫자로"
-    },
-    "generalHint": "1906년 베를린에서 세워진 뒤 이듬해 함부르크로 옮기며 '심플로 필러 펜'으로 이름을 바꾸었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "고급 만년필로 이름난 독일의 명품 회사",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "명품 브랜드·알프스 산·빵 이름",
-     "piece": "f07",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "L2-11",
-     "key": "b313",
-     "hint": "1906년 베를린에서 세워진 뒤 이듬해 함부르크로 옮기며 '심플로 필러 펜'으로 이름을 바꾸었다.",
-     "guess": "몽블랑",
-     "confidence": "high",
-     "hit": true,
-     "answer": "몽블랑"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Montblanc_(company)"
-    ],
-    "facts": [
-     {
-      "claim": "독일 회사, 함부르크에 근거",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
-      "note": "Montblanc is a German manufacturer and distributor of luxury goods, which was founded in Berlin in 1906 and is currently based in Hamburg."
-     },
-     {
-      "claim": "1977년 던힐 인수 뒤 값싼 펜을 접고 여러 고급 상품으로",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
-      "note": "Alfred Dunhill Ltd. acquired Montblanc in 1977, after which lower-priced pens were dropped, and the brand was used on a wide range of luxury goods other than pens."
-     },
-     {
-      "claim": "이름은 알프스 최고봉에서, 1993년 리슈몽 그룹",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
-      "note": "Since 1993, Montblanc has been part of the Swiss Richemont group. The brand is named after Mont Blanc, the highest mountain in the Alps."
-     },
-     {
-      "claim": "숫자 4810(산 높이 m)이 자주 되풀이되는 주제",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Montblanc_(company)",
-      "note": "The number \"4810,\" the mountain's height in metres, is a common recurring theme."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Montblanc_(company)"
-    ],
-    "hintNote": "The company was founded in 1906 as Simplizissiumus-Füllhalter in Berlin. In 1907, it moved to Hamburg and changed its name to Simplo Filler Pen Co.",
-    "easiestCue": "1977년 던힐에 인수된 함부르크의 회사",
-    "targetWhy": "명품 필기구 브랜드의 상징 세부 — 애호가(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 명품 브랜드의 국적·이력",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "brands/4#g019a-L2-12",
-   "seed": {
-    "subject": "야쿠르트",
-    "aspect": null,
-    "ref": "L2-12",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1930년 교토 대학 의학부의 한 연구자가 강화 배양에 성공한 균을 넣어, 1935년 후쿠오카에서 만들어 팔기 시작한 음료입니다. 이름은 한 에스페란토 낱말에서 따왔다는 이 일본 음료는?",
-    "answer": "야쿠르트",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "한국에서는 1969년 일본 회사와의 기술 제휴로 처음 나왔고, 1971년 8월 방문 판매 방식을 들여왔다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "강화 배양에 성공한 균을 넣어 … 이 일본 음료",
-     "difWhy": "유산균 일본 음료 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 이름 유래",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "시로타 미노루가 … 강화 배양에 성공한 젖산균 … 음료",
-     "difWhy": "일본 젖산균 음료 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 제품 기원"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "교토 대학 의학부에서 미생물을 연구하던 시로타 미노루가 1930년 강화 배양에 성공한 젖산균으로, 1935년 후쿠오카에서 만들어 팔기 시작한 음료입니다. 이름은 한 에스페란토 낱말에서 따왔다는 이 일본 음료는?",
-     "beforeExplanation": "이름의 바탕이 된 에스페란토 낱말 '야후르토'는 요구르트를 뜻합니다.",
-     "removedCue": "연구자 이름 시로타 미노루 · '젖산균'(관심층)",
-     "addedCue": "없음 — 이름·균 종류를 빼고 연대·지명·에스페란토 작명만 남김(해설은 한국 출시로 교체)",
-     "why": "제품 포장에도 나오는 시로타 이름을 빼고 작명 세부로"
-    },
-    "generalHint": "1964년 타이완에서 처음으로 외국 판매를 시작했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "작은 병에 담긴 일본에서 시작된 유산균 음료",
-    "familiarity": {
-     "judge": 3,
-     "pct": 99,
-     "why": "국민 유산균 음료",
-     "piece": "f03",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "L2-12",
-     "key": "b078",
-     "hint": "1964년 타이완에서 처음으로 외국 판매를 시작했다.",
-     "guess": "야쿠르트",
-     "confidence": "high",
-     "hit": true,
-     "answer": "야쿠르트"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
-     "https://en.wikipedia.org/wiki/Yakult"
-    ],
-    "facts": [
-     {
-      "claim": "교토 대학 의학부의 시로타 미노루, 1930년 강화 배양, 1935년 후쿠오카에서 제조·판매",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
-      "note": "야쿠르트는 교토 대학 의학부에서 미생물을 연구하고 있던 의학 박사 시로타 미노루가, 1930년에 ... 락토바실루스 카세이의 시로타 변종(Lactobacillus casei Shirota)의 강화 배양에 성공해, 1935년에 후쿠오카현 후쿠오카시에서 ... 음료로서 제조·판매를 개시한 것으로 시작되고 있다."
-     },
-     {
-      "claim": "이름은 에스페란토 jahurto(요구르트)에서",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Yakult",
-      "note": "The name \"Yakult\" was coined from jahurto, an Esperanto word meaning \"yogurt\"."
-     },
-     {
-      "claim": "한국 1969년 기술 제휴로 처음 출시",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
-      "note": "대한민국에서는 유산균 발효유가 생소했던 1969년에 … Hy(한국야쿠르트)를 설립해, 야쿠르트 혼샤와의 기술제휴를 통해 야쿠르트를 최초로 출시했다."
-     },
-     {
-      "claim": "1971년 8월 방문 판매 시스템 도입",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
-      "note": "1971년 8월 ‘야쿠르트아줌마’라는 방문 판매시스템을 도입하며 사업을 확장시켰고"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Yakult"
-    ],
-    "hintNote": "In 1963, Yakult introduced a home delivery service ... The following year, Yakult expanded internationally, beginning sales in Taiwan.",
-    "easiestCue": "이름을 한 에스페란토 낱말에서 따온 일본 음료",
-    "targetWhy": "식품 브랜드의 작명·기원 세부 — 애호가(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'일본 유산균 음료'에서 추리로 닿을 수 있다",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "brands/4#g019a-L2-12",
+      "seed": {
+        "subject": "야쿠르트",
+        "aspect": null,
+        "ref": "L2-12",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1930년 교토 대학 의학부의 한 연구자가 강화 배양에 성공한 균을 넣어, 1935년 후쿠오카에서 만들어 팔기 시작한 음료입니다. 이름은 한 에스페란토 낱말에서 따왔다는 이 일본 음료는?",
+        "answer": "야쿠르트",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "한국에서는 1969년 일본 회사와의 기술 제휴로 처음 나왔고, 1971년 8월 방문 판매 방식을 들여왔다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "강화 배양에 성공한 균을 넣어 … 이 일본 음료",
+          "difWhy": "유산균 일본 음료 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이름 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "시로타 미노루가 … 강화 배양에 성공한 젖산균 … 음료",
+          "difWhy": "일본 젖산균 음료 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 제품 기원"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "교토 대학 의학부에서 미생물을 연구하던 시로타 미노루가 1930년 강화 배양에 성공한 젖산균으로, 1935년 후쿠오카에서 만들어 팔기 시작한 음료입니다. 이름은 한 에스페란토 낱말에서 따왔다는 이 일본 음료는?",
+          "beforeExplanation": "이름의 바탕이 된 에스페란토 낱말 '야후르토'는 요구르트를 뜻합니다.",
+          "removedCue": "연구자 이름 시로타 미노루 · '젖산균'(관심층)",
+          "addedCue": "없음 — 이름·균 종류를 빼고 연대·지명·에스페란토 작명만 남김(해설은 한국 출시로 교체)",
+          "why": "제품 포장에도 나오는 시로타 이름을 빼고 작명 세부로"
+        },
+        "generalHint": "1964년 타이완에서 처음으로 외국 판매를 시작했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "작은 병에 담긴 일본에서 시작된 유산균 음료",
+        "familiarity": {
+          "judge": 3,
+          "pct": 99,
+          "why": "국민 유산균 음료",
+          "piece": "f03",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "L2-12",
+          "key": "b078",
+          "hint": "1964년 타이완에서 처음으로 외국 판매를 시작했다.",
+          "guess": "야쿠르트",
+          "confidence": "high",
+          "hit": true,
+          "answer": "야쿠르트"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
+          "https://en.wikipedia.org/wiki/Yakult"
+        ],
+        "facts": [
+          {
+            "claim": "교토 대학 의학부의 시로타 미노루, 1930년 강화 배양, 1935년 후쿠오카에서 제조·판매",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
+            "note": "야쿠르트는 교토 대학 의학부에서 미생물을 연구하고 있던 의학 박사 시로타 미노루가, 1930년에 ... 락토바실루스 카세이의 시로타 변종(Lactobacillus casei Shirota)의 강화 배양에 성공해, 1935년에 후쿠오카현 후쿠오카시에서 ... 음료로서 제조·판매를 개시한 것으로 시작되고 있다."
+          },
+          {
+            "claim": "이름은 에스페란토 jahurto(요구르트)에서",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Yakult",
+            "note": "The name \"Yakult\" was coined from jahurto, an Esperanto word meaning \"yogurt\"."
+          },
+          {
+            "claim": "한국 1969년 기술 제휴로 처음 출시",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
+            "note": "대한민국에서는 유산균 발효유가 생소했던 1969년에 … Hy(한국야쿠르트)를 설립해, 야쿠르트 혼샤와의 기술제휴를 통해 야쿠르트를 최초로 출시했다."
+          },
+          {
+            "claim": "1971년 8월 방문 판매 시스템 도입",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%95%BC%EC%BF%A0%EB%A5%B4%ED%8A%B8",
+            "note": "1971년 8월 ‘야쿠르트아줌마’라는 방문 판매시스템을 도입하며 사업을 확장시켰고"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Yakult"
+        ],
+        "hintNote": "In 1963, Yakult introduced a home delivery service ... The following year, Yakult expanded internationally, beginning sales in Taiwan.",
+        "easiestCue": "이름을 한 에스페란토 낱말에서 따온 일본 음료",
+        "targetWhy": "식품 브랜드의 작명·기원 세부 — 애호가(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'일본 유산균 음료'에서 추리로 닿을 수 있다",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "강화 배양에 성공한 균을 넣어 … 이 일본 음료",
+          "difWhy": "유산균 일본 음료 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 이름 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

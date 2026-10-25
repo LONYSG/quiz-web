@@ -1,121 +1,136 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "religion/1",
-  "midKey": "religion",
-  "subName": "기독교·성경",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "religion/1#g019a-H2-27",
-   "seed": {
-    "subject": "노아",
-    "aspect": null,
-    "ref": "H2-27",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1872년 대영박물관 조수 조지 스미스는 기원전 7세기 아카드어 점토판을 번역해 학회에서 발표했고, 『데일리 텔레그래프』는 비용을 대 그를 니네베로 보내 빠진 조각을 찾게 했습니다. 이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물은?",
-    "answer": "노아",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "스미스는 1873년 5월 7일 니네베에서, 배에 곡식과 짐승을 싣는 대목이 담긴 빠진 조각을 찾아냈습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물",
-     "difWhy": "길가메시 홍수 이야기 — 대학 교양 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 홍수 신화 비교",
-     "acc": 3,
-     "accWhy": "종교·경전 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물",
-     "difWhy": "길가메시 홍수 이야기 — 대학 교양 (경계 3)",
-     "wor": 4,
-     "worWhy": "교양 — 홍수 신화 비교"
-    },
-    "rewrite": null,
-    "generalHint": "1876년 스미스는 이 점토판이 든 서사시의 번역을 『칼데아의 창세기 이야기』라는 책으로 펴냈다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "대홍수 때 방주를 지어 살아남은 성경 인물",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "노아의 방주로 널리 앎",
-     "piece": "f05",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "H2-27",
-     "key": "b043",
-     "hint": "1876년 스미스는 이 점토판이 든 서사시의 번역을 『칼데아의 창세기 이야기』라는 책으로 펴냈다.",
-     "guess": "길가메시 서사시",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "노아"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
-     "https://en.wikipedia.org/wiki/George_Smith_(Assyriologist)",
-     "https://ko.wikipedia.org/wiki/우트나피쉬팀"
-    ],
-    "facts": [
-     {
-      "claim": "1872년 대영박물관 조수 스미스가 기원전 7세기 아카드어 점토판 번역",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
-      "note": "In 1872, George Smith, an assistant at the British Museum, translated the tablet from the seventh-century B.C Akkadian."
-     },
-     {
-      "claim": "12월 3일 성서고고학회에서 발표, 데일리 텔레그래프가 비용을 대 니네베 발굴",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/George_Smith_(Assyriologist)",
-      "note": "which he read before the Society of Biblical Archaeology on 3 December. The following January, Edwin Arnold, the editor of The Daily Telegraph, arranged for Smith to go to Nineveh at the expense of that newspaper and carry out excavations with a view to finding the missing fragments"
-     },
-     {
-      "claim": "우트나피쉬팀은 노아와 견주어짐",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/우트나피쉬팀",
-      "note": "우타-나피쉬팀 이야기는 성경의 노아 이야기와의 유사성 때문에 성서학계에서도 학술적으로 비교되어 왔다."
-     },
-     {
-      "claim": "1873년 5월 7일 방주에 실을 것을 적은 빠진 조각 발견",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
-      "note": "Smith found a portion of a tablet on 7 May 1873 containing the missing part of the flood story, describing the provisioning of the ark: \"Into the midst of it thy grain, ... the animals of the field all\""
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh"
-    ],
-    "hintNote": "In 1872, Smith read translated fragments before the Society of Biblical Archaeology, and in 1875 and 1876 he published fuller translations, the latter of which was published as The Chaldaean Account of Genesis.",
-    "easiestCue": "이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물",
-    "targetWhy": "'홍수·방주'를 쓰지 않음 — 우트나피쉬팀·조지 스미스는 고대사 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 인물을 메소포타미아 쪽에서 묻기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new(노아 · 노아의 방주)",
-    "warn": []
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "religion/1",
+    "midKey": "religion",
+    "subName": "기독교·성경",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "religion/1#g019a-H2-27",
+      "seed": {
+        "subject": "노아",
+        "aspect": null,
+        "ref": "H2-27",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1872년 대영박물관 조수 조지 스미스는 기원전 7세기 아카드어 점토판을 번역해 학회에서 발표했고, 『데일리 텔레그래프』는 비용을 대 그를 니네베로 보내 빠진 조각을 찾게 했습니다. 이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물은?",
+        "answer": "노아",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "스미스는 1873년 5월 7일 니네베에서, 배에 곡식과 짐승을 싣는 대목이 담긴 빠진 조각을 찾아냈습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물",
+          "difWhy": "길가메시 홍수 이야기 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 홍수 신화 비교",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물",
+          "difWhy": "길가메시 홍수 이야기 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 홍수 신화 비교"
+        },
+        "rewrite": null,
+        "generalHint": "1876년 스미스는 이 점토판이 든 서사시의 번역을 『칼데아의 창세기 이야기』라는 책으로 펴냈다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "대홍수 때 방주를 지어 살아남은 성경 인물",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "노아의 방주로 널리 앎",
+          "piece": "f05",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "H2-27",
+          "key": "b043",
+          "hint": "1876년 스미스는 이 점토판이 든 서사시의 번역을 『칼데아의 창세기 이야기』라는 책으로 펴냈다.",
+          "guess": "길가메시 서사시",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "노아"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
+          "https://en.wikipedia.org/wiki/George_Smith_(Assyriologist)",
+          "https://ko.wikipedia.org/wiki/우트나피쉬팀"
+        ],
+        "facts": [
+          {
+            "claim": "1872년 대영박물관 조수 스미스가 기원전 7세기 아카드어 점토판 번역",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
+            "note": "In 1872, George Smith, an assistant at the British Museum, translated the tablet from the seventh-century B.C Akkadian."
+          },
+          {
+            "claim": "12월 3일 성서고고학회에서 발표, 데일리 텔레그래프가 비용을 대 니네베 발굴",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/George_Smith_(Assyriologist)",
+            "note": "which he read before the Society of Biblical Archaeology on 3 December. The following January, Edwin Arnold, the editor of The Daily Telegraph, arranged for Smith to go to Nineveh at the expense of that newspaper and carry out excavations with a view to finding the missing fragments"
+          },
+          {
+            "claim": "우트나피쉬팀은 노아와 견주어짐",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/우트나피쉬팀",
+            "note": "우타-나피쉬팀 이야기는 성경의 노아 이야기와의 유사성 때문에 성서학계에서도 학술적으로 비교되어 왔다."
+          },
+          {
+            "claim": "1873년 5월 7일 방주에 실을 것을 적은 빠진 조각 발견",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
+            "note": "Smith found a portion of a tablet on 7 May 1873 containing the missing part of the flood story, describing the provisioning of the ark: \"Into the midst of it thy grain, ... the animals of the field all\""
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh"
+        ],
+        "hintNote": "In 1872, Smith read translated fragments before the Society of Biblical Archaeology, and in 1875 and 1876 he published fuller translations, the latter of which was published as The Chaldaean Account of Genesis.",
+        "easiestCue": "이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물",
+        "targetWhy": "'홍수·방주'를 쓰지 않음 — 우트나피쉬팀·조지 스미스는 고대사 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 인물을 메소포타미아 쪽에서 묻기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new(노아 · 노아의 방주)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "이 점토판 속 우트나피쉬팀과 흔히 견주어지는 성경 인물",
+          "difWhy": "길가메시 홍수 이야기 — 대학 교양 (경계 3)",
+          "wor": 4,
+          "worWhy": "교양 — 홍수 신화 비교",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

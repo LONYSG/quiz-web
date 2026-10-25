@@ -1,431 +1,487 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "kr-food/2",
-  "midKey": "kr-food",
-  "subName": "김치·반찬",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "kr-food/2#g019a-K2-14",
-   "seed": {
-    "subject": "고추장",
-    "aspect": null,
-    "ref": "K2-14",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "한국식품연구원 연구팀은 1433년 『향약집성방』에 나오는 '초장(椒醬)'이 이 장을 가리킨다고 주장했습니다. 18세기 『수문사설』에는 전복·대하·홍합·생강 등을 넣어 담그는 한 고장의 이름난 제조법이 실린 이 장은?",
-    "answer": "고추장",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1766년 유중림이 엮은 『증보산림경제』에도 담그는 법이 실려 있다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "'초장(椒醬)'이 이 장을 가리킨다",
-     "difWhy": "椒醬 = 고추 장 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 순창 제조법",
-     "acc": 5,
-     "accWhy": "한국 음식 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "『영조실록』 … 이것이 있으면 밥을 잘 먹는다 … 이 장",
-     "difWhy": "영조의 장 사랑 — 사극 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "음식 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1768년 『영조실록』에는 임금이 송이·생복·어린 꿩과 함께 이것이 있으면 밥을 잘 먹는다고 말한 대목이 있습니다. 『승정원일기』에는 신하 조종부의 집에서 보낸 것을 매우 흡족해했다는 내용도 보이는 이 장은?",
-     "beforeExplanation": null,
-     "removedCue": "『영조실록』 영조가 이것이 있으면 밥을 잘 먹는다 · 『승정원일기』 조종부 집의 장",
-     "addedCue": "향약집성방 '초장' 주장 · 수문사설의 해산물 넣은 제조법",
-     "why": "영조의 고추장 사랑(사극·방송 상식)을 빼고 문헌 세부로"
-    },
-    "generalHint": "이 장의 매운맛 등급을 정한 KS 규격이 2010년 5월 고시되어, 2011년부터 인증 제품에 의무로 적용되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "찹쌀·메줏가루에 고춧가루를 넣어 담근 붉은 장",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "한국 기본 양념",
-     "piece": "f06",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "K2-14",
-     "key": "b081",
-     "hint": "이 장의 매운맛 등급을 정한 KS 규격이 2010년 5월 고시되어, 2011년부터 인증 제품에 의무로 적용되었다.",
-     "guess": "고추장",
-     "confidence": "high",
-     "hit": true,
-     "answer": "고추장"
-    },
-    "hobby": "요리",
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/고추장"
-    ],
-    "facts": [
-     {
-      "claim": "1766년 증보산림경제에 고추장 담그는 법",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/고추장",
-      "note": "1766년 영조 42년 유학자 유중림이 홍만선의 《산림경제》를 늘리고 보충하여(증보) 간행한 농업서적인 《증보산림경제》에도 고추장을 담그는 법에 관한 기록이 등장한다."
-     },
-     {
-      "claim": "권대영 박사팀 — 1433년 향약집성방의 '초장'이 고추장이라고 주장",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B3%A0%EC%B6%94%EC%9E%A5",
-      "note": "그는 1433년 세종 15년 발간된 《향약집성방》과 1460년 세조 6년에 발간된 《식료찬요》에 등장하는 ‘초장’(椒醬)이라는 표현이 고추장이라고 주장하였다."
-     },
-     {
-      "claim": "수문사설 순창 고추장 조법 — 전복·대하·홍합·생강",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B3%A0%EC%B6%94%EC%9E%A5",
-      "note": "1740년 영조 때 이표가 쓴 《수문사설》의 〈순창 고추장 조법〉에는 곡창 지대인 순창 지방의 유명한 고추장 제조법이 기록되어 있는데 전복, 큰 새우(대하), 홍합, 생강 등을 첨가하여 만든다고 기록되어 있다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EA%B3%A0%EC%B6%94%EC%9E%A5"
-    ],
-    "hintNote": "KS 규격안으로 2010년 5월 1일 최종 고시되었다. ... 이것은 2011년 1월 1일부터 인증을 받은 고추장에 의무적으로 적용된다.",
-    "easiestCue": "전복·대하·홍합·생강 등을 넣어 담그는 한 고장의 이름난 제조법",
-    "targetWhy": "고문헌 속 장 기록 — 한식 애호가 세부(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 먹는 장의 '영조가 사랑한 반찬' 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck 고추장 new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "kr-food/2",
+    "midKey": "kr-food",
+    "subName": "김치·반찬",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "kr-food/2#g019a-K2-15",
-   "seed": {
-    "subject": "콩나물",
-    "aspect": null,
-    "ref": "K2-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "북한 문화어로는 '숙주줄금'이라 부르고, 어린 것을 말린 약재 '대두황권'은 우황청심환 재료로도 쓰이는 반찬거리입니다. 이것은 무엇일까요?",
-    "answer": "콩나물",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "고려 건국 무렵 배현경이 식량이 떨어진 군사들에게 콩을 냇물에 담가 이것을 불려 먹게 했다는 이야기가 전한다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "어린 것을 말린 약재 '대두황권' … 반찬거리",
-     "difWhy": "대두 싹 말린 약재 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 북한어·약재",
-     "acc": 5,
-     "accWhy": "한국 음식 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "kr-food/2#g019a-K2-14",
+      "seed": {
+        "subject": "고추장",
+        "aspect": null,
+        "ref": "K2-14",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "한국식품연구원 연구팀은 1433년 『향약집성방』에 나오는 '초장(椒醬)'이 이 장을 가리킨다고 주장했습니다. 18세기 『수문사설』에는 전복·대하·홍합·생강 등을 넣어 담그는 한 고장의 이름난 제조법이 실린 이 장은?",
+        "answer": "고추장",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1766년 유중림이 엮은 『증보산림경제』에도 담그는 법이 실려 있다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'초장(椒醬)'이 이 장을 가리킨다",
+          "difWhy": "椒醬 = 고추 장 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 순창 제조법",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "『영조실록』 … 이것이 있으면 밥을 잘 먹는다 … 이 장",
+          "difWhy": "영조의 장 사랑 — 사극 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "음식 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1768년 『영조실록』에는 임금이 송이·생복·어린 꿩과 함께 이것이 있으면 밥을 잘 먹는다고 말한 대목이 있습니다. 『승정원일기』에는 신하 조종부의 집에서 보낸 것을 매우 흡족해했다는 내용도 보이는 이 장은?",
+          "beforeExplanation": null,
+          "removedCue": "『영조실록』 영조가 이것이 있으면 밥을 잘 먹는다 · 『승정원일기』 조종부 집의 장",
+          "addedCue": "향약집성방 '초장' 주장 · 수문사설의 해산물 넣은 제조법",
+          "why": "영조의 고추장 사랑(사극·방송 상식)을 빼고 문헌 세부로"
+        },
+        "generalHint": "1614년 이수광은 『지봉유설』에서 이 장의 주재료인 '만초'가 일본을 거쳐 들어온 것이라고 적었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "찹쌀·메줏가루에 고춧가루를 넣어 담근 붉은 장",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "한국 기본 양념",
+          "piece": "f06",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "K2-14",
+          "key": "b081",
+          "hint": "이 장의 매운맛 등급을 정한 KS 규격이 2010년 5월 고시되어, 2011년부터 인증 제품에 의무로 적용되었다.",
+          "guess": "고추장",
+          "confidence": "high",
+          "hit": true,
+          "answer": "고추장"
+        },
+        "hobby": "요리",
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/고추장"
+        ],
+        "facts": [
+          {
+            "claim": "1766년 증보산림경제에 고추장 담그는 법",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/고추장",
+            "note": "1766년 영조 42년 유학자 유중림이 홍만선의 《산림경제》를 늘리고 보충하여(증보) 간행한 농업서적인 《증보산림경제》에도 고추장을 담그는 법에 관한 기록이 등장한다."
+          },
+          {
+            "claim": "권대영 박사팀 — 1433년 향약집성방의 '초장'이 고추장이라고 주장",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B3%A0%EC%B6%94%EC%9E%A5",
+            "note": "그는 1433년 세종 15년 발간된 《향약집성방》과 1460년 세조 6년에 발간된 《식료찬요》에 등장하는 ‘초장’(椒醬)이라는 표현이 고추장이라고 주장하였다."
+          },
+          {
+            "claim": "수문사설 순창 고추장 조법 — 전복·대하·홍합·생강",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B3%A0%EC%B6%94%EC%9E%A5",
+            "note": "1740년 영조 때 이표가 쓴 《수문사설》의 〈순창 고추장 조법〉에는 곡창 지대인 순창 지방의 유명한 고추장 제조법이 기록되어 있는데 전복, 큰 새우(대하), 홍합, 생강 등을 첨가하여 만든다고 기록되어 있다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "전복·대하·홍합·생강 등을 넣어 담그는 한 고장의 이름난 제조법",
+        "targetWhy": "고문헌 속 장 기록 — 한식 애호가 세부(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 먹는 장의 '영조가 사랑한 반찬' 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck 고추장 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'초장(椒醬)'이 이 장을 가리킨다",
+          "difWhy": "椒醬 = 고추 장 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 순창 제조법",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "엮음: 냇물을 이용해 길러 먹였다 + '대두황권'",
-     "difWhy": "콩(대두) 싹 반찬 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "흔한 반찬 유래 이야깃거리"
+    {
+      "seedId": "kr-food/2#g019a-K2-15",
+      "seed": {
+        "subject": "콩나물",
+        "aspect": null,
+        "ref": "K2-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "북한 문화어로는 '숙주줄금'이라 부르고, 어린 것을 말린 약재 '대두황권'은 우황청심환 재료로도 쓰이는 반찬거리입니다. 이것은 무엇일까요?",
+        "answer": "콩나물",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "고려 건국 무렵 배현경이 식량이 떨어진 군사들에게 콩을 냇물에 담가 이것을 불려 먹게 했다는 이야기가 전한다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "어린 것을 말린 약재 '대두황권' … 반찬거리",
+          "difWhy": "대두 싹 말린 약재 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 북한어·약재",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "엮음: 냇물을 이용해 길러 먹였다 + '대두황권'",
+          "difWhy": "콩(대두) 싹 반찬 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "흔한 반찬 유래 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "고려 건국 무렵 배현경이 식량이 떨어진 군사들에게 냇물을 이용해 길러 먹였다는 이야기가 전합니다. 어린 것을 말린 약재 '대두황권'은 우황청심환 재료로도 쓰이는데, 이 반찬거리는?",
+          "beforeExplanation": "이 땅에서 처음 길러 먹은 때는 삼국 시대 말이나 고려 초로 짐작한다.",
+          "removedCue": "배현경이 냇물을 이용해 군사들에게 길러 먹였다는 이야기",
+          "addedCue": "북한 문화어 '숙주줄금'",
+          "why": "알려진 기원 일화를 해설로 옮기고 문화어 이름으로"
+        },
+        "generalHint": "네팔에서는 8월 축제 때 아홉 가지 싹 틔운 콩으로 끓이는 수프 '크와티'에 이것도 넣는다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "콩을 물만 주어 어둡게 키운 싹 채소",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "흔한 채소",
+          "piece": "f06",
+          "genPct": 100
+        },
+        "blind": {
+          "ref": "K2-15",
+          "key": "b119",
+          "hint": "네팔에서는 8월 축제 때 아홉 가지 싹 틔운 콩으로 끓이는 수프 '크와티'에 이것도 넣는다.",
+          "guess": "녹두",
+          "confidence": "low",
+          "hit": false,
+          "answer": "콩나물"
+        },
+        "hobby": "요리",
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/콩나물",
+          "https://ko.wikipedia.org/wiki/%EC%BD%A9%EB%82%98%EB%AC%BC"
+        ],
+        "facts": [
+          {
+            "claim": "고려 태조가 나라를 세울 때 배현경이 군사들에게 콩을 냇물에 담가 콩나물을 불려 먹게 함",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/콩나물",
+            "note": "935년 고려, 태조가 나라를 세울 때 태광태사 배현경이 식량 부족으로 허덕이던 군사들에게 콩을 냇물에 담가 콩나물을 불리어 먹게 하였다."
+          },
+          {
+            "claim": "어린 콩나물을 말린 것이 대두황권, 우황청심환 재료",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/콩나물",
+            "note": "어린 콩나물을 말린 것을 한의학에서는 대두황권(大豆黃卷)이라고 하며, 우황청심환 등을 만드는 재료로 쓰이는데"
+          },
+          {
+            "claim": "문화어 '숙주줄금'",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%BD%A9%EB%82%98%EB%AC%BC",
+            "note": "콩나물(문화어: 숙주줄금)은 한국의 대표적인 음식재료 중 하나로"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Soybean_sprout"
+        ],
+        "hintNote": "In Nepalese cuisine, kwati, a soup of nine types of sprouted beans, is specially prepared in the festival of Janai Purnima which normally falls in August. ... including soybean sprouts.",
+        "easiestCue": "어린 것을 말린 약재 '대두황권'",
+        "targetWhy": "대두황권·숙주줄금은 한의·우리말 관심 애호가 세부 — 4(경계)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'대두(콩) + 냇물로 길러' 를 엮으면 바로 풀릴 수 있어 3 경계",
+        "pairCheck": null,
+        "dbCheck": "answercheck 콩나물 new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "어린 것을 말린 약재 '대두황권' … 반찬거리",
+          "difWhy": "대두 싹 말린 약재 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 북한어·약재",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "고려 건국 무렵 배현경이 식량이 떨어진 군사들에게 냇물을 이용해 길러 먹였다는 이야기가 전합니다. 어린 것을 말린 약재 '대두황권'은 우황청심환 재료로도 쓰이는데, 이 반찬거리는?",
-     "beforeExplanation": "이 땅에서 처음 길러 먹은 때는 삼국 시대 말이나 고려 초로 짐작한다.",
-     "removedCue": "배현경이 냇물을 이용해 군사들에게 길러 먹였다는 이야기",
-     "addedCue": "북한 문화어 '숙주줄금'",
-     "why": "알려진 기원 일화를 해설로 옮기고 문화어 이름으로"
+    {
+      "seedId": "kr-food/2#g019a-K2-16",
+      "seed": {
+        "subject": "게장",
+        "aspect": null,
+        "ref": "K2-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "충남 태안 앞바다에서 건진 고려 배 마도선의 항아리에서 이것이 나왔는데, 함께 나온 죽간에 그 이름이 적혀 있었습니다. 17세기 말 『산림경제』에는 술지게미에 절이는 '조해법'으로 나오는 이 젓갈은?",
+        "answer": "게장",
+        "acceptedAnswers": [
+          "게젓",
+          "간장게장"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia '게장' 문서 — '게젓 … 이라고도 한다' · '오늘날에는 간장게장이라는 용어가 사용된다' 확인(같은 음식의 다른 이름)",
+        "explanation": "이 배는 1208년 2월 출항했다고 기록되어 있고, 같은 항아리들에서는 밴댕이·가오리도 확인되었다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "술지게미에 절이는 '조해법'으로 나오는 이 젓갈",
+          "difWhy": "조해(糟蟹)법 — 전통 음식 애호가",
+          "wor": 3,
+          "worWhy": "전통 음식 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "술지게미에 절이는 '조해법'으로 나오는 이 젓갈",
+          "difWhy": "조해(糟蟹)법 — 전통 음식 애호가",
+          "wor": 3,
+          "worWhy": "전통 음식 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "조선 시대에는 『규합총서』·『시의전서』 같은 책에도 만드는 법이 실렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "게를 간장 물에 담가 삭힌 젓갈 반찬",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "흔한 반찬",
+          "piece": "f08",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "K2-16",
+          "key": "b306",
+          "hint": "조선 시대에는 『규합총서』·『시의전서』 같은 책에도 만드는 법이 실렸다.",
+          "guess": "약과",
+          "confidence": "low",
+          "hit": false,
+          "answer": "게장"
+        },
+        "hobby": "요리",
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/게장"
+        ],
+        "facts": [
+          {
+            "claim": "태안 인양 고려 마도선 항아리 — 게, 죽간에 '게젓'",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/게장",
+            "note": "태안에서 인양된 고려시대 마도선의 유물로 수십 개의 항아리가 발견되었다. 항아리의 유기물은 게, 밴댕이, 가오리 등으로 밝혀졌다. 게는 민물게인 농게로 확인되었고, 죽간에는 게젓이라고 쓰여 있었다."
+          },
+          {
+            "claim": "17세기 말 산림경제 — 술지게미로 절이는 조해법",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/게장",
+            "note": "17세기 말에 쓰인 『산림경제』(山林經濟)를 보면, 게장을 만드는 방법을 '조해법(糟蟹法)'이라 하여 술지게미로 절였음을 알 수 있다."
+          },
+          {
+            "claim": "1208년 2월 출항 기록",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/게장",
+            "note": "당시 배는 1208년 2월 출항했다고 기록되어 있으며, 탄소 연대 측정 결과도 동일했다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EA%B2%8C%EC%9E%A5"
+        ],
+        "hintNote": "게장에 대한 조선시대의 기록은 규합총서(閨閤叢書), 주방문(酒方文), 시의전서(是議全書)를 비롯해 조선시대에 기술된 다양한 문헌에서 찾을 수 있다.",
+        "easiestCue": "『산림경제』에는 술지게미에 절이는 '조해법'으로 나오는 이 젓갈",
+        "targetWhy": "'밥도둑' · 간장에 담근다는 정의를 뺐다 — 수중 발굴 유물 · 조선 조리서의 옛 방식은 애호가 세부('조해' 의 蟹 를 아는 사람은 풀어도 그것도 한문 지식)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 반찬의 800년 전 실물 증거",
+        "pairCheck": null,
+        "dbCheck": "answercheck 게장 · 간장게장 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "술지게미에 절이는 '조해법'으로 나오는 이 젓갈",
+          "difWhy": "조해(糟蟹)법 — 전통 음식 애호가",
+          "wor": 3,
+          "worWhy": "전통 음식 이야깃거리",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 fix variants",
+          "verdict": "fix"
+        }
+      }
     },
-    "generalHint": "네팔에서는 8월 축제 때 아홉 가지 싹 틔운 콩으로 끓이는 수프 '크와티'에 이것도 넣는다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "콩을 물만 주어 어둡게 키운 싹 채소",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "흔한 채소",
-     "piece": "f06",
-     "genPct": 100
-    },
-    "blind": {
-     "ref": "K2-15",
-     "key": "b119",
-     "hint": "네팔에서는 8월 축제 때 아홉 가지 싹 틔운 콩으로 끓이는 수프 '크와티'에 이것도 넣는다.",
-     "guess": "녹두",
-     "confidence": "low",
-     "hit": false,
-     "answer": "콩나물"
-    },
-    "hobby": "요리",
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/콩나물",
-     "https://ko.wikipedia.org/wiki/%EC%BD%A9%EB%82%98%EB%AC%BC"
-    ],
-    "facts": [
-     {
-      "claim": "고려 태조가 나라를 세울 때 배현경이 군사들에게 콩을 냇물에 담가 콩나물을 불려 먹게 함",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/콩나물",
-      "note": "935년 고려, 태조가 나라를 세울 때 태광태사 배현경이 식량 부족으로 허덕이던 군사들에게 콩을 냇물에 담가 콩나물을 불리어 먹게 하였다."
-     },
-     {
-      "claim": "어린 콩나물을 말린 것이 대두황권, 우황청심환 재료",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/콩나물",
-      "note": "어린 콩나물을 말린 것을 한의학에서는 대두황권(大豆黃卷)이라고 하며, 우황청심환 등을 만드는 재료로 쓰이는데"
-     },
-     {
-      "claim": "문화어 '숙주줄금'",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%BD%A9%EB%82%98%EB%AC%BC",
-      "note": "콩나물(문화어: 숙주줄금)은 한국의 대표적인 음식재료 중 하나로"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Soybean_sprout"
-    ],
-    "hintNote": "In Nepalese cuisine, kwati, a soup of nine types of sprouted beans, is specially prepared in the festival of Janai Purnima which normally falls in August. ... including soybean sprouts.",
-    "easiestCue": "어린 것을 말린 약재 '대두황권'",
-    "targetWhy": "대두황권·숙주줄금은 한의·우리말 관심 애호가 세부 — 4(경계)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'대두(콩) + 냇물로 길러' 를 엮으면 바로 풀릴 수 있어 3 경계",
-    "pairCheck": null,
-    "dbCheck": "answercheck 콩나물 new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "kr-food/2#g019a-K2-16",
-   "seed": {
-    "subject": "게장",
-    "aspect": null,
-    "ref": "K2-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "충남 태안 앞바다에서 건진 고려 배 마도선의 항아리에서 이것이 나왔는데, 함께 나온 죽간에 그 이름이 적혀 있었습니다. 17세기 말 『산림경제』에는 술지게미에 절이는 '조해법'으로 나오는 이 젓갈은?",
-    "answer": "게장",
-    "acceptedAnswers": [
-     "게젓",
-     "간장게장"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia '게장' 문서 — '게젓 … 이라고도 한다' · '오늘날에는 간장게장이라는 용어가 사용된다' 확인(같은 음식의 다른 이름)",
-    "explanation": "이 배는 1208년 2월 출항했다고 기록되어 있고, 같은 항아리들에서는 밴댕이·가오리도 확인되었다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "술지게미에 절이는 '조해법'으로 나오는 이 젓갈",
-     "difWhy": "조해(糟蟹)법 — 전통 음식 애호가",
-     "wor": 3,
-     "worWhy": "전통 음식 이야깃거리",
-     "acc": 5,
-     "accWhy": "한국 음식 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "술지게미에 절이는 '조해법'으로 나오는 이 젓갈",
-     "difWhy": "조해(糟蟹)법 — 전통 음식 애호가",
-     "wor": 3,
-     "worWhy": "전통 음식 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "조선 시대에는 『규합총서』·『시의전서』 같은 책에도 만드는 법이 실렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "게를 간장 물에 담가 삭힌 젓갈 반찬",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "흔한 반찬",
-     "piece": "f08",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "K2-16",
-     "key": "b306",
-     "hint": "조선 시대에는 『규합총서』·『시의전서』 같은 책에도 만드는 법이 실렸다.",
-     "guess": "약과",
-     "confidence": "low",
-     "hit": false,
-     "answer": "게장"
-    },
-    "hobby": "요리",
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/게장"
-    ],
-    "facts": [
-     {
-      "claim": "태안 인양 고려 마도선 항아리 — 게, 죽간에 '게젓'",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/게장",
-      "note": "태안에서 인양된 고려시대 마도선의 유물로 수십 개의 항아리가 발견되었다. 항아리의 유기물은 게, 밴댕이, 가오리 등으로 밝혀졌다. 게는 민물게인 농게로 확인되었고, 죽간에는 게젓이라고 쓰여 있었다."
-     },
-     {
-      "claim": "17세기 말 산림경제 — 술지게미로 절이는 조해법",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/게장",
-      "note": "17세기 말에 쓰인 『산림경제』(山林經濟)를 보면, 게장을 만드는 방법을 '조해법(糟蟹法)'이라 하여 술지게미로 절였음을 알 수 있다."
-     },
-     {
-      "claim": "1208년 2월 출항 기록",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/게장",
-      "note": "당시 배는 1208년 2월 출항했다고 기록되어 있으며, 탄소 연대 측정 결과도 동일했다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EA%B2%8C%EC%9E%A5"
-    ],
-    "hintNote": "게장에 대한 조선시대의 기록은 규합총서(閨閤叢書), 주방문(酒方文), 시의전서(是議全書)를 비롯해 조선시대에 기술된 다양한 문헌에서 찾을 수 있다.",
-    "easiestCue": "『산림경제』에는 술지게미에 절이는 '조해법'으로 나오는 이 젓갈",
-    "targetWhy": "'밥도둑' · 간장에 담근다는 정의를 뺐다 — 수중 발굴 유물 · 조선 조리서의 옛 방식은 애호가 세부('조해' 의 蟹 를 아는 사람은 풀어도 그것도 한문 지식)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 반찬의 800년 전 실물 증거",
-    "pairCheck": null,
-    "dbCheck": "answercheck 게장 · 간장게장 new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "kr-food/2#g019a-K2-17",
-   "seed": {
-    "subject": "새우젓",
-    "aspect": null,
-    "ref": "K2-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "조선 후기 『임원경제지』는 동해에는 이것이 없고, 서해에서 담근 것이 온 나라에 넘쳐난다고 적었습니다. 잡는 철에 따라 오젓·추젓 등으로 나뉘고, 6월에 잡은 산란기의 것을 가장 상등품으로 치는 이 젓갈은?",
-    "answer": "새우젓",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "충남 홍성 광천에서는 토굴에서 숙성한 것이 특산물로 꼽힌다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "잡는 철에 따라 오젓·추젓 등으로 나뉘고",
-     "difWhy": "오젓·추젓·육젓 — 김장 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 젓갈 등급",
-     "acc": 5,
-     "accWhy": "한국 음식 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "서해에서 담근 것이 … 김장에 쓰던",
-     "difWhy": "김장용 서해 젓갈 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "음식 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "조선 후기 『임원경제지』는 동해에는 이것이 없고, 서해에서 담근 것이 온 나라에 넘쳐난다고 적었습니다. 김장에 쓰던 중부 지방과 달리 경상·전라에서는 주로 반찬으로 먹었다는 이 젓갈은?",
-     "beforeExplanation": null,
-     "removedCue": "중부에서는 김장에 쓰던(관심층)",
-     "addedCue": "오젓·추젓 구분 · 6월 산란기 것이 상등품",
-     "why": "김장 젓갈이라는 쉬운 연결을 빼고 요리인이 아는 철별 구분으로"
-    },
-    "generalHint": "2~3월 서해 깊은 바다에서 잡히는 아주 작은 곤쟁이로 담그면, 익으면서 밤색을 띤다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "작은 새우를 소금에 절여 삭힌 젓갈",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "흔한 젓갈",
-     "piece": "f05",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "K2-17",
-     "key": "b227",
-     "hint": "2~3월 서해 깊은 바다에서 잡히는 아주 작은 곤쟁이로 담그면, 익으면서 밤색을 띤다.",
-     "guess": "감동젓",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "새우젓"
-    },
-    "hobby": "요리",
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/새우젓"
-    ],
-    "facts": [
-     {
-      "claim": "임원경제지 전어지 — 동해에는 없고 서해의 젓새우가 전역에",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/새우젓",
-      "note": "조선 후기 백과전서인 '임원경제지(林園經濟志)' 중 전어지에 따르면 “동해에는 새우와 그것을 소금에 담근 것이 없고, 소금에 담가 한국 전역에 흘러넘치게 한 것은 서해의 젓새우이며 속어로 '세하'라하고”"
-     },
-     {
-      "claim": "광천 토굴 숙성 새우젓 특산",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/새우젓",
-      "note": "광천읍의 젓갈 상가는 광천의 토굴에서 숙성시킨 새우젓이 특산물이다."
-     },
-     {
-      "claim": "어획 시기에 따라 오젓·육젓·자하젓·추젓·동백하",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%83%88%EC%9A%B0%EC%A0%93",
-      "note": "새우젓의 종류는 주로 어획 시기와 종류에 따라 나뉘며, 대표적으로 오젓, 육젓, 자하젓, 추젓, 동백하가 있다."
-     },
-     {
-      "claim": "6월 산란기 새우로 담근 육젓이 가장 상등품",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%83%88%EC%9A%B0%EC%A0%93",
-      "note": "육젓(六-) - 6월에 수확한 산란기의 새우로 담그며, 새우젓 가운데서 가장 상등품으로 여겨진다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%83%88%EC%9A%B0%EC%A0%93"
-    ],
-    "hintNote": "곤쟁이젓 - 2~3월 서해의 깊은 바다에서 잡히는 아주 작은 새우로 담근 젓이며, 숙성되며 밤색을 띤다.",
-    "easiestCue": "잡는 철에 따라 오젓·추젓 등으로 나뉘는 젓갈",
-    "targetWhy": "장 담그기·요리 애호가가 아는 세부(경계 4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'중부 김장 젓갈' 은 요리하는 사람에게 관심층 지식이라 3 경계",
-    "pairCheck": null,
-    "dbCheck": "answercheck 새우젓 new (육젓 4432 는 다른 답)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "kr-food/2#g019a-K2-17",
+      "seed": {
+        "subject": "새우젓",
+        "aspect": null,
+        "ref": "K2-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "조선 후기 『임원경제지』는 동해에는 이것이 없고, 서해에서 담근 것이 온 나라에 넘쳐난다고 적었습니다. 잡는 철에 따라 오젓·추젓 등으로 나뉘고, 6월에 잡은 산란기의 것을 가장 상등품으로 치는 이 젓갈은?",
+        "answer": "새우젓",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "충남 홍성 광천에서는 토굴에서 숙성한 것이 특산물로 꼽힌다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "잡는 철에 따라 오젓·추젓 등으로 나뉘고",
+          "difWhy": "오젓·추젓·육젓 — 김장 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 젓갈 등급",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "서해에서 담근 것이 … 김장에 쓰던",
+          "difWhy": "김장용 서해 젓갈 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "음식 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "조선 후기 『임원경제지』는 동해에는 이것이 없고, 서해에서 담근 것이 온 나라에 넘쳐난다고 적었습니다. 김장에 쓰던 중부 지방과 달리 경상·전라에서는 주로 반찬으로 먹었다는 이 젓갈은?",
+          "beforeExplanation": null,
+          "removedCue": "중부에서는 김장에 쓰던(관심층)",
+          "addedCue": "오젓·추젓 구분 · 6월 산란기 것이 상등품",
+          "why": "김장 젓갈이라는 쉬운 연결을 빼고 요리인이 아는 철별 구분으로"
+        },
+        "generalHint": "소금을 켜켜이 뿌려 서늘한 곳에서 두세 달 삭히는데, 더운 철에는 잡자마자 소금을 더 치기도 한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "작은 새우를 소금에 절여 삭힌 젓갈",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "흔한 젓갈",
+          "piece": "f05",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "K2-17",
+          "key": "b227",
+          "hint": "2~3월 서해 깊은 바다에서 잡히는 아주 작은 곤쟁이로 담그면, 익으면서 밤색을 띤다.",
+          "guess": "감동젓",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "새우젓"
+        },
+        "hobby": "요리",
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/새우젓"
+        ],
+        "facts": [
+          {
+            "claim": "임원경제지 전어지 — 동해에는 없고 서해의 젓새우가 전역에",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/새우젓",
+            "note": "조선 후기 백과전서인 '임원경제지(林園經濟志)' 중 전어지에 따르면 “동해에는 새우와 그것을 소금에 담근 것이 없고, 소금에 담가 한국 전역에 흘러넘치게 한 것은 서해의 젓새우이며 속어로 '세하'라하고”"
+          },
+          {
+            "claim": "광천 토굴 숙성 새우젓 특산",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/새우젓",
+            "note": "광천읍의 젓갈 상가는 광천의 토굴에서 숙성시킨 새우젓이 특산물이다."
+          },
+          {
+            "claim": "어획 시기에 따라 오젓·육젓·자하젓·추젓·동백하",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%83%88%EC%9A%B0%EC%A0%93",
+            "note": "새우젓의 종류는 주로 어획 시기와 종류에 따라 나뉘며, 대표적으로 오젓, 육젓, 자하젓, 추젓, 동백하가 있다."
+          },
+          {
+            "claim": "6월 산란기 새우로 담근 육젓이 가장 상등품",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%83%88%EC%9A%B0%EC%A0%93",
+            "note": "육젓(六-) - 6월에 수확한 산란기의 새우로 담그며, 새우젓 가운데서 가장 상등품으로 여겨진다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/새우젓"
+        ],
+        "easiestCue": "잡는 철에 따라 오젓·추젓 등으로 나뉘는 젓갈",
+        "targetWhy": "장 담그기·요리 애호가가 아는 세부(경계 4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'중부 김장 젓갈' 은 요리하는 사람에게 관심층 지식이라 3 경계",
+        "pairCheck": null,
+        "dbCheck": "answercheck 새우젓 new (육젓 4432 는 다른 답)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "잡는 철에 따라 오젓·추젓 등으로 나뉘고",
+          "difWhy": "오젓·추젓·육젓 — 김장 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 젓갈 등급",
+          "acc": 5,
+          "accWhy": "한국 음식 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V025 fix wrong-name",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

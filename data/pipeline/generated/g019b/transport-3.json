@@ -1,350 +1,393 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "transport/3",
-  "midKey": "transport",
-  "subName": "철도",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "transport/3#g019b-C2-03",
-   "seed": {
-    "subject": "새마을호",
-    "aspect": null,
-    "ref": "C2-03",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1969년 2월 10일 경부선에서 맹호호 대신 달리기 시작한 초특급열차에는 '싸롱'이라 불린 식당차가 달렸습니다. 1974년 8월 15일 새 이름을 얻은 이 열차는 무엇일까요?",
-    "answer": "새마을호",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "구형 객차로 달리던 이 열차는 2018년 4월 30일 운행을 마쳤고, 그 자리는 ITX-새마을 등이 이어받았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1974년 8월 15일 새 이름을 얻은 경부선 초특급열차",
-     "difWhy": "1970년대 새 이름 열차 — 철도 관심층",
-     "wor": 3,
-     "worWhy": "추억의 열차 이야깃거리",
-     "acc": 4,
-     "accWhy": "자동차·교통 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'관광호'라는 이름의 초특급열차",
-     "difWhy": "관광호→새마을호 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 철도 역사"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1969년 2월 10일 경부선에서 '관광호'라는 이름의 초특급열차가 달리기 시작했고, 이 열차에 달린 식당차는 '싸롱'이라 불렸습니다. 1974년 8월 15일 이름을 바꾼 이 열차는 무엇일까요?",
-     "beforeExplanation": null,
-     "removedCue": "'관광호'라는 이름의 초특급열차",
-     "addedCue": "맹호호를 대신한 초특급열차",
-     "why": "관심층이 아는 옛 이름 관광호를 빼고 앞선 열차 맹호호로 바꿈"
-    },
-    "generalHint": "1987년부터 1994년까지 들여온 디젤 액압 동차도 이 이름을 달고 달렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "한국 철도의 옛 최고급 등급 열차",
-    "familiarity": {
-     "judge": 3,
-     "pct": 90,
-     "why": "한국 철도 열차명으로 누구나 앎",
-     "piece": "f03",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "C2-03",
-     "key": "b256",
-     "hint": "1987년부터 1994년까지 들여온 디젤 액압 동차도 이 이름을 달고 달렸다.",
-     "guess": "통일호",
-     "confidence": "low",
-     "hit": false,
-     "answer": "새마을호"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://ko.wikipedia.org/wiki/새마을호"
-    ],
-    "facts": [
-     {
-      "claim": "1969년 2월 10일 경부선 관광호 운행 개시",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/새마을호",
-      "note": "1969년 2월 10일 경부선에서 기존의 맹호호 대신 초특급열차 관광호로 운행을 개시하였으며"
-     },
-     {
-      "claim": "식당차 이름 '싸롱'",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/새마을호",
-      "note": "1969년 최초 운행 때 식당차는 '싸롱'이라는 이름으로 연결되었다"
-     },
-     {
-      "claim": "1974년 8월 15일 새마을호로 개칭",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/새마을호",
-      "note": "1974년 8월 15일 새마을호로 명칭을 개칭하였다."
-     },
-     {
-      "claim": "2018년 4월 30일 구형 새마을호 운행 종료, ITX-새마을이 대체",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/새마을호",
-      "note": "2018년 4월 30일 구형 새마을호 열차가 운행을 종료하였으며 · 이듬해 ITX-새마을이 기존 새마을호를 대체"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://ko.wikipedia.org/wiki/%EC%83%88%EB%A7%88%EC%9D%84%ED%98%B8"
-    ],
-    "hintNote": "흔히 DHC나 PP동차라 하며, 1987년부터 1994년까지 제작·도입되었다. ... 1987년 새마을형 디젤 액압 동차의 등장",
-    "easiestCue": "'싸롱'이라 불린 식당차",
-    "targetWhy": "전신 열차 · 식당차 이름 — 철도 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 열차 이름이 바뀐 사연",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "transport/3",
+    "midKey": "transport",
+    "subName": "철도",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "transport/3#g019b-C2-04",
-   "seed": {
-    "subject": "TGV",
-    "aspect": null,
-    "ref": "C2-04",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "이 고속 열차는 처음에 작고 힘이 좋은 가스 터빈으로 달리게 할 계획이었고, 시제차 '001'은 이 열차 가운데 유일하게 가스 터빈으로 달렸습니다. 1973년 석유 파동으로 기름값이 오르자 가공 전차선의 전기로 방향을 바꾼 이 열차는 무엇일까요?",
-    "answer": "TGV",
-    "acceptedAnswers": [
-     "테제베"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "테제베 — ko.wikipedia 'TGV' 문서와 국내 언론이 쓰는 한글 표기",
-    "explanation": "1981년 9월 27일 파리와 리옹 사이에서 일반 승객을 처음 태웠습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "시제차 '001'만 가스 터빈으로 달린 고속 열차",
-     "difWhy": "가스 터빈 시제차 — 철도 애호가",
-     "wor": 3,
-     "worWhy": "유명 고속열차 개발 이야기",
-     "acc": 4,
-     "accWhy": "자동차·교통 — 대부분이 관심"
+  "items": [
+    {
+      "seedId": "transport/3#g019b-C2-03",
+      "seed": {
+        "subject": "새마을호",
+        "aspect": null,
+        "ref": "C2-03",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1969년 2월 10일 경부선에서 맹호호 대신 달리기 시작한 초특급열차에는 '싸롱'이라 불린 식당차가 달렸습니다. 1974년 8월 15일 새 이름을 얻은 이 열차는 무엇일까요?",
+        "answer": "새마을호",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "구형 객차로 달리던 이 열차는 2018년 4월 30일 운행을 마쳤고, 그 자리는 ITX-새마을 등이 이어받았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1974년 8월 15일 새 이름을 얻은 경부선 초특급열차",
+          "difWhy": "1970년대 새 이름 열차 — 철도 관심층",
+          "wor": 3,
+          "worWhy": "추억의 열차 이야깃거리",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'관광호'라는 이름의 초특급열차",
+          "difWhy": "관광호→새마을호 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 철도 역사"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1969년 2월 10일 경부선에서 '관광호'라는 이름의 초특급열차가 달리기 시작했고, 이 열차에 달린 식당차는 '싸롱'이라 불렸습니다. 1974년 8월 15일 이름을 바꾼 이 열차는 무엇일까요?",
+          "beforeExplanation": null,
+          "removedCue": "'관광호'라는 이름의 초특급열차",
+          "addedCue": "맹호호를 대신한 초특급열차",
+          "why": "관심층이 아는 옛 이름 관광호를 빼고 앞선 열차 맹호호로 바꿈"
+        },
+        "generalHint": "1987년부터 1994년까지 들여온 디젤 액압 동차도 이 이름을 달고 달렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "한국 철도의 옛 최고급 등급 열차",
+        "familiarity": {
+          "judge": 3,
+          "pct": 90,
+          "why": "한국 철도 열차명으로 누구나 앎",
+          "piece": "f03",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "C2-03",
+          "key": "b256",
+          "hint": "1987년부터 1994년까지 들여온 디젤 액압 동차도 이 이름을 달고 달렸다.",
+          "guess": "통일호",
+          "confidence": "low",
+          "hit": false,
+          "answer": "새마을호"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://ko.wikipedia.org/wiki/새마을호"
+        ],
+        "facts": [
+          {
+            "claim": "1969년 2월 10일 경부선 관광호 운행 개시",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/새마을호",
+            "note": "1969년 2월 10일 경부선에서 기존의 맹호호 대신 초특급열차 관광호로 운행을 개시하였으며"
+          },
+          {
+            "claim": "식당차 이름 '싸롱'",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/새마을호",
+            "note": "1969년 최초 운행 때 식당차는 '싸롱'이라는 이름으로 연결되었다"
+          },
+          {
+            "claim": "1974년 8월 15일 새마을호로 개칭",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/새마을호",
+            "note": "1974년 8월 15일 새마을호로 명칭을 개칭하였다."
+          },
+          {
+            "claim": "2018년 4월 30일 구형 새마을호 운행 종료, ITX-새마을이 대체",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/새마을호",
+            "note": "2018년 4월 30일 구형 새마을호 열차가 운행을 종료하였으며 · 이듬해 ITX-새마을이 기존 새마을호를 대체"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://ko.wikipedia.org/wiki/%EC%83%88%EB%A7%88%EC%9D%84%ED%98%B8"
+        ],
+        "hintNote": "흔히 DHC나 PP동차라 하며, 1987년부터 1994년까지 제작·도입되었다. ... 1987년 새마을형 디젤 액압 동차의 등장",
+        "easiestCue": "'싸롱'이라 불린 식당차",
+        "targetWhy": "전신 열차 · 식당차 이름 — 철도 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 열차 이름이 바뀐 사연",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1974년 8월 15일 새 이름을 얻은 경부선 초특급열차",
+          "difWhy": "1970년대 새 이름 열차 — 철도 관심층",
+          "wor": 3,
+          "worWhy": "추억의 열차 이야깃거리",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "엮음: 이 프랑스 고속 열차 + 1973년 석유 파동",
-     "difWhy": "프랑스 고속 열차 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 대표 열차 내력"
+    {
+      "seedId": "transport/3#g019b-C2-04",
+      "seed": {
+        "subject": "TGV",
+        "aspect": null,
+        "ref": "C2-04",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "이 고속 열차는 처음에 작고 힘이 좋은 가스 터빈으로 달리게 할 계획이었고, 시제차 '001'은 이 열차 가운데 유일하게 가스 터빈으로 달렸습니다. 1973년 석유 파동으로 기름값이 오르자 가공 전차선의 전기로 방향을 바꾼 이 열차는 무엇일까요?",
+        "answer": "TGV",
+        "acceptedAnswers": [
+          "테제베"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "테제베 — ko.wikipedia 'TGV' 문서와 국내 언론이 쓰는 한글 표기",
+        "explanation": "1981년 9월 27일 파리와 리옹 사이에서 일반 승객을 처음 태웠습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "시제차 '001'만 가스 터빈으로 달린 고속 열차",
+          "difWhy": "가스 터빈 시제차 — 철도 애호가",
+          "wor": 3,
+          "worWhy": "유명 고속열차 개발 이야기",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "엮음: 이 프랑스 고속 열차 + 1973년 석유 파동",
+          "difWhy": "프랑스 고속 열차 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 대표 열차 내력"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "이 프랑스 고속 열차는 처음에 작고 힘이 좋은 가스 터빈으로 달리게 할 계획이었고, 시제차 '001'은 실제로 가스 터빈으로 달렸습니다. 1973년 석유 파동으로 기름값이 오르자 가공 전차선의 전기로 방향을 바꾼 이 열차는 무엇일까요?",
+          "beforeExplanation": "이 열차는 1981년 9월 27일 파리와 리옹 사이에서 일반 승객을 처음 태웠습니다.",
+          "removedCue": "'이 프랑스 고속 열차'(프랑스 + 고속 열차 = 바로 답)",
+          "addedCue": "없음(쉬운 단서만 뺌 — 가스 터빈 시제차·석유 파동 전환이 남음)",
+          "why": "나라 이름이 붙으면 석유 파동 단서 없이도 풀려 '프랑스'를 뺌"
+        },
+        "generalHint": "2017년부터 고급 노선은 '이누이', 저가 노선은 '위고'라는 상표로 나뉘기 시작했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "프랑스 국철의 고속 철도 열차",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "프랑스 고속열차로 교과서·여행에서 접함",
+          "piece": "f06",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "C2-04",
+          "key": "b050",
+          "hint": "2007년 4월 개조한 시험 열차 V150이 시속 574.8km로 바퀴 달린 열차의 세계 기록을 세웠다.",
+          "guess": "TGV",
+          "confidence": "high",
+          "hit": true,
+          "answer": "TGV"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/TGV"
+        ],
+        "facts": [
+          {
+            "claim": "원래 가스 터빈으로 달리게 할 계획",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/TGV",
+            "note": "would be propelled by gas turbines, selected for their small size, good power-to-weight ratio"
+          },
+          {
+            "claim": "시제차 TGV 001 만 가스 터빈",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/TGV",
+            "note": "The first prototype, TGV 001, was the only gas-turbine TGV."
+          },
+          {
+            "claim": "1973년 석유 파동 뒤 가공 전차선 전기로 전환",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/TGV",
+            "note": "gas turbines were deemed uneconomic and the project turned to electricity from overhead lines (1973 oil crisis)"
+          },
+          {
+            "claim": "1981년 9월 27일 파리–리옹 개통",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/TGV",
+            "note": "The TGV opened to the public between Paris and Lyon on 27 September 1981."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/TGV"
+        ],
+        "easiestCue": "시제차 '001'만 가스 터빈으로 달림 · 석유 파동으로 전기로 전환",
+        "targetWhy": "가스 터빈 계획과 전환 사연은 철도 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'프랑스 고속 열차' 범주만으로 답이 하나로 좁혀질 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new · KTX(활성)는 다른 열차",
+        "warn": [
+          "단정어 처음",
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "시제차 '001'만 가스 터빈으로 달린 고속 열차",
+          "difWhy": "가스 터빈 시제차 — 철도 애호가",
+          "wor": 3,
+          "worWhy": "유명 고속열차 개발 이야기",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix",
+          "hintGen": true
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "이 프랑스 고속 열차는 처음에 작고 힘이 좋은 가스 터빈으로 달리게 할 계획이었고, 시제차 '001'은 실제로 가스 터빈으로 달렸습니다. 1973년 석유 파동으로 기름값이 오르자 가공 전차선의 전기로 방향을 바꾼 이 열차는 무엇일까요?",
-     "beforeExplanation": "이 열차는 1981년 9월 27일 파리와 리옹 사이에서 일반 승객을 처음 태웠습니다.",
-     "removedCue": "'이 프랑스 고속 열차'(프랑스 + 고속 열차 = 바로 답)",
-     "addedCue": "없음(쉬운 단서만 뺌 — 가스 터빈 시제차·석유 파동 전환이 남음)",
-     "why": "나라 이름이 붙으면 석유 파동 단서 없이도 풀려 '프랑스'를 뺌"
-    },
-    "generalHint": "2007년 4월 개조한 시험 열차 V150이 시속 574.8km로 바퀴 달린 열차의 세계 기록을 세웠다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "프랑스 국철의 고속 철도 열차",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "프랑스 고속열차로 교과서·여행에서 접함",
-     "piece": "f06",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "C2-04",
-     "key": "b050",
-     "hint": "2007년 4월 개조한 시험 열차 V150이 시속 574.8km로 바퀴 달린 열차의 세계 기록을 세웠다.",
-     "guess": "TGV",
-     "confidence": "high",
-     "hit": true,
-     "answer": "TGV"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/TGV"
-    ],
-    "facts": [
-     {
-      "claim": "원래 가스 터빈으로 달리게 할 계획",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/TGV",
-      "note": "would be propelled by gas turbines, selected for their small size, good power-to-weight ratio"
-     },
-     {
-      "claim": "시제차 TGV 001 만 가스 터빈",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/TGV",
-      "note": "The first prototype, TGV 001, was the only gas-turbine TGV."
-     },
-     {
-      "claim": "1973년 석유 파동 뒤 가공 전차선 전기로 전환",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/TGV",
-      "note": "gas turbines were deemed uneconomic and the project turned to electricity from overhead lines (1973 oil crisis)"
-     },
-     {
-      "claim": "1981년 9월 27일 파리–리옹 개통",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/TGV",
-      "note": "The TGV opened to the public between Paris and Lyon on 27 September 1981."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/TGV"
-    ],
-    "hintNote": "Project V150 ... set the world record for the fastest wheeled train, reaching 574.8 km/h (357.2 mph) during a test run on 3 April 2007.",
-    "easiestCue": "시제차 '001'만 가스 터빈으로 달림 · 석유 파동으로 전기로 전환",
-    "targetWhy": "가스 터빈 계획과 전환 사연은 철도 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'프랑스 고속 열차' 범주만으로 답이 하나로 좁혀질 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new · KTX(활성)는 다른 열차",
-    "warn": [
-     "단정어 처음",
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "transport/3#g019b-C2-05",
-   "seed": {
-    "subject": "런던",
-    "aspect": null,
-    "ref": "C2-05",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "지하철 신호 부서의 한 제도사는 전기 회로도를 그리다가, 역 사이 실제 거리를 버리고 수직·수평·45도 선만으로 노선을 그리는 지도를 떠올렸습니다. 회사의 의심 속에 1933년 작은 안내 책자로 처음 선보인 이 노선도는 어느 도시 지하철의 것일까요?",
-    "answer": "런던",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "벡이 이 지도로 받은 돈은 기록마다 달라, 한 푼도 못 받았다는 말과 5~10기니를 받았다는 말이 함께 전합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "수직·수평·45도 선만으로 그린 1933년 노선도",
-     "difWhy": "해리 벡 노선도 — 디자인 관심층",
-     "wor": 3,
-     "worWhy": "디자인 이야깃거리",
-     "acc": 4,
-     "accWhy": "자동차·교통 — 대부분이 관심"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "지하철 신호 부서의 제도사 해리 벡",
-     "difWhy": "런던 지하철 노선도 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 디자인 고전"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "지하철 신호 부서의 제도사 해리 벡은 전기 회로도를 그리다가, 역 사이 실제 거리를 버리고 수직·수평·45도 선만으로 노선을 그리는 지도를 떠올렸습니다. 회사의 의심 속에 1933년 작은 안내 책자로 처음 선보인 이 노선도는 어느 도시 지하철의 것일까요?",
-     "beforeExplanation": null,
-     "removedCue": "해리 벡이라는 이름",
-     "addedCue": "(뺌만 — 남은 단서: 회로도 착상 · 1933 책자)",
-     "why": "노선도 디자이너 이름(관심층 단서)을 뺌"
-    },
-    "generalHint": "이 도시의 첫 지하철은 가스등을 켠 나무 객차를 증기 기관차가 끌었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "템스강이 흐르는 영국의 수도",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 도시",
-     "piece": "f09",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "C2-05",
-     "key": "b135",
-     "hint": "이 도시의 첫 지하철은 가스등을 켠 나무 객차를 증기 기관차가 끌었다.",
-     "guess": "런던",
-     "confidence": "high",
-     "hit": true,
-     "answer": "런던"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Harry_Beck",
-     "https://en.wikipedia.org/wiki/Tube_map"
-    ],
-    "facts": [
-     {
-      "claim": "벡은 지하철 신호 부서 제도사였고 회로도를 그리다 착상",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Harry_Beck",
-      "note": "He started his career in the 1920s as an engineering draughtsman with the London Underground Signals Office · While drawing an electrical circuit diagram, Beck came up with a new idea for a map."
-     },
-     {
-      "claim": "수직·수평·45도 선만, 지리 무시",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tube_map",
-      "note": "lines running only vertically, horizontally, or on 45° diagonals · only the topology of the route mattered"
-     },
-     {
-      "claim": "1933년 작은 책자로 처음 공개, 회사는 처음에 의심",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Tube_map",
-      "note": "was tentatively introduced to the public in a small pamphlet in 1933 (London Underground initially doubting the project)"
-     },
-     {
-      "claim": "받은 돈은 기록마다 다름",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Harry_Beck",
-      "note": "Some say he was never paid for the map, while others say he was paid a fee of five or ten guineas."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/London_Underground"
-    ],
-    "hintNote": "it opened in January 1863 between Paddington and Farringdon using gas-lit wooden carriages hauled by steam locomotives.",
-    "easiestCue": "수직·수평·45도 선만으로 노선을 그리는 지도",
-    "targetWhy": "노선도 착상 · 첫 공개 — 디자인 애호가 세부(4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 도시, 노선도 탄생 뒷이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck pair-or-different — 활성 1534(1908 올림픽 마라톤 거리)와 지식 다름",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "transport/3#g019b-C2-05",
+      "seed": {
+        "subject": "런던",
+        "aspect": null,
+        "ref": "C2-05",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "지하철 신호 부서의 한 제도사는 역 사이 실제 거리를 버리고 수직·수평·45도 선만으로 노선을 그리는 지도를 떠올렸습니다. 회사의 의심 속에 1933년 작은 안내 책자로 처음 선보인 이 노선도는 어느 도시 지하철의 것일까요?",
+        "answer": "런던",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "벡이 이 지도로 받은 돈은 기록마다 달라, 한 푼도 못 받았다는 말과 5~10기니를 받았다는 말이 함께 전합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "수직·수평·45도 선만으로 그린 1933년 노선도",
+          "difWhy": "해리 벡 노선도 — 디자인 관심층",
+          "wor": 3,
+          "worWhy": "디자인 이야깃거리",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "지하철 신호 부서의 제도사 해리 벡",
+          "difWhy": "런던 지하철 노선도 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 디자인 고전"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "지하철 신호 부서의 제도사 해리 벡은 전기 회로도를 그리다가, 역 사이 실제 거리를 버리고 수직·수평·45도 선만으로 노선을 그리는 지도를 떠올렸습니다. 회사의 의심 속에 1933년 작은 안내 책자로 처음 선보인 이 노선도는 어느 도시 지하철의 것일까요?",
+          "beforeExplanation": null,
+          "removedCue": "해리 벡이라는 이름",
+          "addedCue": "(뺌만 — 남은 단서: 회로도 착상 · 1933 책자)",
+          "why": "노선도 디자이너 이름(관심층 단서)을 뺌"
+        },
+        "generalHint": "이 도시 지하철은 1890년 지하 전기 철도의 선구가 된 노선을 열었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "템스강이 흐르는 영국의 수도",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 도시",
+          "piece": "f09",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "C2-05",
+          "key": "b135",
+          "hint": "이 도시의 첫 지하철은 가스등을 켠 나무 객차를 증기 기관차가 끌었다.",
+          "guess": "런던",
+          "confidence": "high",
+          "hit": true,
+          "answer": "런던"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Harry_Beck",
+          "https://en.wikipedia.org/wiki/Tube_map"
+        ],
+        "facts": [
+          {
+            "claim": "벡은 지하철 신호 부서 제도사였고 회로도를 그리다 착상",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Harry_Beck",
+            "note": "He started his career in the 1920s as an engineering draughtsman with the London Underground Signals Office · While drawing an electrical circuit diagram, Beck came up with a new idea for a map."
+          },
+          {
+            "claim": "수직·수평·45도 선만, 지리 무시",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tube_map",
+            "note": "lines running only vertically, horizontally, or on 45° diagonals · only the topology of the route mattered"
+          },
+          {
+            "claim": "1933년 작은 책자로 처음 공개, 회사는 처음에 의심",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Tube_map",
+            "note": "was tentatively introduced to the public in a small pamphlet in 1933 (London Underground initially doubting the project)"
+          },
+          {
+            "claim": "받은 돈은 기록마다 다름",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Harry_Beck",
+            "note": "Some say he was never paid for the map, while others say he was paid a fee of five or ten guineas."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "수직·수평·45도 선만으로 노선을 그리는 지도",
+        "targetWhy": "노선도 착상 · 첫 공개 — 디자인 애호가 세부(4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 도시, 노선도 탄생 뒷이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck pair-or-different — 활성 1534(1908 올림픽 마라톤 거리)와 지식 다름",
+        "warn": [
+          "단정어 처음"
+        ],
+        "valueStatus": "disputed",
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "수직·수평·45도 선만으로 그린 1933년 노선도",
+          "difWhy": "해리 벡 노선도 — 디자인 관심층",
+          "wor": 3,
+          "worWhy": "디자인 이야깃거리",
+          "acc": 4,
+          "accWhy": "자동차·교통 — 대부분이 관심"
+        },
+        "g020": {
+          "why": "V026 fix fact-error·famous-one",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

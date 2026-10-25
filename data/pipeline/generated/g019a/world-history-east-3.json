@@ -1,549 +1,624 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "world-history-east/3",
-  "midKey": "world-history-east",
-  "subName": "인도·동남아",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-history-east/3#g019a-H1-06",
-   "seed": {
-    "subject": "간디",
-    "aspect": null,
-    "ref": "H1-06",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "런던 이너 템플에서 법학을 공부하던 이 인물은 헨리 솔트의 글에 영향을 받아 런던 채식주의자 협회에 들어가 집행 위원으로 뽑혔습니다. 1910년에는 요하네스버그 근처에 친구 헤르만 칼렌바흐와 함께 이상적인 공동체를 세웠는데, 이 인물은?",
-    "answer": "간디",
-    "acceptedAnswers": [
-     "마하트마 간디"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 \"마하트마 간디\" 확인",
-    "explanation": "그 공동체의 이름은 '톨스토이 농장'으로, 톨스토이와의 편지 왕래는 톨스토이가 쓴 '한 힌두교도에게 보내는 편지'에서 시작되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "요하네스버그 근처에 … 이상적인 공동체를 세웠는데",
-     "difWhy": "남아공 시절 인도 지도자 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "남아프리카 요하네스버그 근처에 … '톨스토이 농장'",
-     "difWhy": "남아공 시절 인도 지도자 — 고교 세계사",
-     "wor": 3,
-     "worWhy": "유명 인물 일화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "런던 이너 템플에서 법학을 공부한 이 인물은 1910년 남아프리카 요하네스버그 근처에 친구 헤르만 칼렌바흐와 함께 '톨스토이 농장'이라는 공동체를 세웠습니다. 이 인물은 누구일까요?",
-     "beforeExplanation": "톨스토이와의 편지 왕래는 톨스토이가 쓴 '한 힌두교도에게 보내는 편지'에서 시작되었습니다.",
-     "removedCue": "'톨스토이 농장' (간디-톨스토이 연결)",
-     "addedCue": "런던 채식주의자 협회 집행 위원",
-     "why": "이름만으로 간디를 떠올리게 하는 톨스토이 농장을 해설로 옮기고 런던 유학 시절 세부로 바꿈"
-    },
-    "generalHint": "제2차 보어 전쟁 때는 인도인 1,100명가량으로 된 들것 부대를 꾸려 영국군을 도왔다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "비폭력 운동으로 인도 독립을 이끈 지도자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "교과서 필수 인물",
-     "piece": "f04",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "H1-06",
-     "key": "b013",
-     "hint": "제2차 보어 전쟁 때는 인도인 1,100명가량으로 된 들것 부대를 꾸려 영국군을 도왔다.",
-     "guess": "마하트마 간디",
-     "confidence": "high",
-     "hit": true,
-     "answer": "간디",
-     "first": {
-      "ref": "H1-06",
-      "key": "b197",
-      "hint": "남아프리카에서 일하던 때 1등칸에서 나가기를 거부했다가 피터마리츠버그역에서 기차 밖으로 내던져졌다.",
-      "guess": "마하트마 간디",
-      "confidence": "high",
-      "hit": true,
-      "answer": "간디"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
-    ],
-    "facts": [
-     {
-      "claim": "이너 템플에서 법학",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
-      "note": "Gandhi was trained in the law at the Inner Temple in London and was called to the bar at the age of 22."
-     },
-     {
-      "claim": "1910년 칼렌바흐와 요하네스버그 근처 톨스토이 농장",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
-      "note": "In 1910, Gandhi established, with the help of his friend Hermann Kallenbach, an idealistic community they named Tolstoy Farm near Johannesburg."
-     },
-     {
-      "claim": "톨스토이와의 편지는 A Letter to a Hindu 로 시작",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
-      "note": "Leo Tolstoy mentioned it in their correspondence that began with \"A Letter to a Hindu\"."
-     },
-     {
-      "claim": "헨리 솔트의 글에 영향, 런던 채식주의자 협회 가입·집행 위원 선출",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
-      "note": "Influenced by Henry Salt's writing, Gandhi joined the London Vegetarian Society (LVS) and was elected to its executive committee under the aegis of its president and benefactor Arnold Hills."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Natal_Indian_Ambulance_Corps"
-    ],
-    "hintNote": "\"was created by Mahatma Gandhi for use by the British as stretcher bearers during the Second Boer War\" · \"It consisted of 300 free Indians and 800 indentured labourers\"",
-    "easiestCue": "런던에서 법학 공부 · 요하네스버그 근처 공동체",
-    "targetWhy": "런던 채식주의자 협회·칼렌바흐는 고교 세계사 밖 — 대학 교양 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 인물의 남아프리카 시절 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "world-history-east/3",
+    "midKey": "world-history-east",
+    "subName": "인도·동남아",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "world-history-east/3#g019a-H1-07",
-   "seed": {
-    "subject": "네루",
-    "aspect": null,
-    "ref": "H1-07",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "영국 해로 스쿨 시절 '조'라는 별명으로 불린 이 인물은, 1928년 여름 무수리에 머물던 열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로 펴냈습니다. 이 인물은 누구일까요?",
-    "answer": "네루",
-    "acceptedAnswers": [
-     "자와할랄 네루"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 \"자와할랄 네루\" 확인",
-    "explanation": "해로 스쿨에 이어 케임브리지 트리니티 칼리지에서 공부했고, 런던 이너 템플에서 법학을 익혔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로",
-     "difWhy": "딸에게 보낸 편지 책 — 세계사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
+  "items": [
+    {
+      "seedId": "world-history-east/3#g019a-H1-06",
+      "seed": {
+        "subject": "간디",
+        "aspect": null,
+        "ref": "H1-06",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "런던 이너 템플에서 법학을 공부하던 이 인물은 헨리 솔트의 글에 영향을 받아 런던 채식주의자 협회에 들어가 집행 위원으로 뽑혔습니다. 1910년에는 요하네스버그 근처에 친구 헤르만 칼렌바흐와 함께 이상적인 공동체를 세웠는데, 이 인물은?",
+        "answer": "간디",
+        "acceptedAnswers": [
+          "마하트마 간디"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 \"마하트마 간디\" 확인",
+        "explanation": "그 공동체의 이름은 '톨스토이 농장'으로, 톨스토이와의 편지 왕래는 톨스토이가 쓴 '한 힌두교도에게 보내는 편지'에서 시작되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "요하네스버그 근처에 … 이상적인 공동체를 세웠는데",
+          "difWhy": "남아공 시절 인도 지도자 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "남아프리카 요하네스버그 근처에 … '톨스토이 농장'",
+          "difWhy": "남아공 시절 인도 지도자 — 고교 세계사",
+          "wor": 3,
+          "worWhy": "유명 인물 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "런던 이너 템플에서 법학을 공부한 이 인물은 1910년 남아프리카 요하네스버그 근처에 친구 헤르만 칼렌바흐와 함께 '톨스토이 농장'이라는 공동체를 세웠습니다. 이 인물은 누구일까요?",
+          "beforeExplanation": "톨스토이와의 편지 왕래는 톨스토이가 쓴 '한 힌두교도에게 보내는 편지'에서 시작되었습니다.",
+          "removedCue": "'톨스토이 농장' (간디-톨스토이 연결)",
+          "addedCue": "런던 채식주의자 협회 집행 위원",
+          "why": "이름만으로 간디를 떠올리게 하는 톨스토이 농장을 해설로 옮기고 런던 유학 시절 세부로 바꿈"
+        },
+        "generalHint": "제2차 보어 전쟁 때는 인도인 1,100명가량으로 된 들것 부대를 꾸려 영국군을 도왔다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "비폭력 운동으로 인도 독립을 이끈 지도자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "교과서 필수 인물",
+          "piece": "f04",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "H1-06",
+          "key": "b013",
+          "hint": "제2차 보어 전쟁 때는 인도인 1,100명가량으로 된 들것 부대를 꾸려 영국군을 도왔다.",
+          "guess": "마하트마 간디",
+          "confidence": "high",
+          "hit": true,
+          "answer": "간디",
+          "first": {
+            "ref": "H1-06",
+            "key": "b197",
+            "hint": "남아프리카에서 일하던 때 1등칸에서 나가기를 거부했다가 피터마리츠버그역에서 기차 밖으로 내던져졌다.",
+            "guess": "마하트마 간디",
+            "confidence": "high",
+            "hit": true,
+            "answer": "간디"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+        ],
+        "facts": [
+          {
+            "claim": "이너 템플에서 법학",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+            "note": "Gandhi was trained in the law at the Inner Temple in London and was called to the bar at the age of 22."
+          },
+          {
+            "claim": "1910년 칼렌바흐와 요하네스버그 근처 톨스토이 농장",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+            "note": "In 1910, Gandhi established, with the help of his friend Hermann Kallenbach, an idealistic community they named Tolstoy Farm near Johannesburg."
+          },
+          {
+            "claim": "톨스토이와의 편지는 A Letter to a Hindu 로 시작",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+            "note": "Leo Tolstoy mentioned it in their correspondence that began with \"A Letter to a Hindu\"."
+          },
+          {
+            "claim": "헨리 솔트의 글에 영향, 런던 채식주의자 협회 가입·집행 위원 선출",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+            "note": "Influenced by Henry Salt's writing, Gandhi joined the London Vegetarian Society (LVS) and was elected to its executive committee under the aegis of its president and benefactor Arnold Hills."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Natal_Indian_Ambulance_Corps"
+        ],
+        "hintNote": "\"was created by Mahatma Gandhi for use by the British as stretcher bearers during the Second Boer War\" · \"It consisted of 300 free Indians and 800 indentured labourers\"",
+        "easiestCue": "런던에서 법학 공부 · 요하네스버그 근처 공동체",
+        "targetWhy": "런던 채식주의자 협회·칼렌바흐는 고교 세계사 밖 — 대학 교양 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 인물의 남아프리카 시절 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "요하네스버그 근처에 … 이상적인 공동체를 세웠는데",
+          "difWhy": "남아공 시절 인도 지도자 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로",
-     "difWhy": "딸에게 보낸 편지 책 — 세계사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 일화"
+    {
+      "seedId": "world-history-east/3#g019a-H1-07",
+      "seed": {
+        "subject": "네루",
+        "aspect": null,
+        "ref": "H1-07",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "영국 해로 스쿨 시절 '조'라는 별명으로 불린 이 인물은, 1928년 여름 무수리에 머물던 열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로 펴냈습니다. 이 인물은 누구일까요?",
+        "answer": "네루",
+        "acceptedAnswers": [
+          "자와할랄 네루"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 \"자와할랄 네루\" 확인",
+        "explanation": "해로 스쿨에 이어 케임브리지 트리니티 칼리지에서 공부했고, 런던 이너 템플에서 법학을 익혔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로",
+          "difWhy": "딸에게 보낸 편지 책 — 세계사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로",
+          "difWhy": "딸에게 보낸 편지 책 — 세계사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화"
+        },
+        "rewrite": null,
+        "generalHint": "그의 아버지 모틸랄도 인도 국민회의 의장을 두 차례 지낸 변호사였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "인도의 초대 총리",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "세계사 교과서에 나오나 기억 흐린 사람 많음",
+          "piece": "f02",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "H1-07",
+          "key": "b275",
+          "hint": "그의 아버지 모틸랄도 인도 국민회의 의장을 두 차례 지낸 변호사였다.",
+          "guess": "자와할랄 네루",
+          "confidence": "high",
+          "hit": true,
+          "answer": "네루"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
+          "https://en.wikipedia.org/wiki/Letters_from_a_Father_to_His_Daughter"
+        ],
+        "facts": [
+          {
+            "claim": "해로 스쿨에서 'Joe' 라는 별명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
+            "note": "Later, in 1905, when he had begun his institutional schooling at Harrow, a leading school in England where he was nicknamed \"Joe\""
+          },
+          {
+            "claim": "1928년 여름 열 살 딸에게 편지 30통, 1929년 출간, 딸은 무수리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Letters_from_a_Father_to_His_Daughter",
+            "note": "The collection was originally published in 1929 … and consists of 30 letters sent in the summer of 1928, when Indira was ten years old. At the time of writing, Nehru was in Allahabad while Indira resided in Mussoorie."
+          },
+          {
+            "claim": "해로·트리니티 칼리지·이너 템플",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
+            "note": "Jawaharlal Nehru was educated in England—at Harrow School and Trinity College, Cambridge, and trained in the law at the Inner Temple."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Motilal_Nehru"
+        ],
+        "hintNote": "Motilal Nehru ... was an Indian lawyer, activist, and politician affiliated with the Indian National Congress. He served as the Congress President twice",
+        "easiestCue": "1928년 여름 무수리에 머물던 열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로 펴냈습니다",
+        "targetWhy": "『아버지가 딸에게 보내는 편지』 — 독서·인도사 애호가, 교과서 밖",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "유명 정치인의 개인사 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로",
+          "difWhy": "딸에게 보낸 편지 책 — 세계사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "rewrite": null,
-    "generalHint": "그의 아버지 모틸랄도 인도 국민회의 의장을 두 차례 지낸 변호사였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "인도의 초대 총리",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "세계사 교과서에 나오나 기억 흐린 사람 많음",
-     "piece": "f02",
-     "genPct": 65
+    {
+      "seedId": "world-history-east/3#g019a-H1-08",
+      "seed": {
+        "subject": "보로부두르",
+        "aspect": null,
+        "ref": "H1-08",
+        "pairedWith": 3317
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 3317,
+        "question": "1885년 네덜란드 기술자 에이제르만은 이 유적의 기단 안쪽에 감춰진 '숨겨진 발'이 있다는 것을 알아냈습니다. 그곳의 부조 160판은 업보의 인과를 한 판에 하나씩 보여 주는데, 이 유적은 무엇일까요?",
+        "answer": "보로부두르",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1983년 인도네시아 정부와 유네스코의 대규모 복원이 끝난 뒤 세계유산에 올랐습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "기단 안쪽에 감춰진 '숨겨진 발' … 부조 160판",
+          "difWhy": "숨겨진 기단 부조 — 세계 유적 애호가",
+          "wor": 3,
+          "worWhy": "유명 유적 이야깃거리",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "기단 안쪽에 감춰진 '숨겨진 발' … 부조 160판",
+          "difWhy": "숨겨진 기단 부조 — 세계 유적 애호가",
+          "wor": 3,
+          "worWhy": "유명 유적 이야깃거리"
+        },
+        "rewrite": null,
+        "generalHint": "이 유적의 첫 사진은 1872년 네덜란드계 판화가 이시도르 판 킨스베르헌이 찍었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "인도네시아에 있는 거대한 불교 사원 유적",
+        "familiarity": {
+          "judge": 2,
+          "pct": 35,
+          "why": "세계사 교과서·여행 프로에서 접한 유적",
+          "piece": "f08",
+          "genPct": 40
+        },
+        "blind": {
+          "ref": "H1-08",
+          "key": "b240",
+          "hint": "이 유적의 첫 사진은 1872년 네덜란드계 판화가 이시도르 판 킨스베르헌이 찍었다.",
+          "guess": "보로부두르",
+          "confidence": "high",
+          "hit": true,
+          "answer": "보로부두르"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Borobudur"
+        ],
+        "facts": [
+          {
+            "claim": "1885년 IJzerman 이 기단 안 숨겨진 발 발견",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Borobudur",
+            "note": "Borobudur attracted attention in 1885, when the Dutch engineer Jan Willem IJzerman, chairman of the Archaeological Society in Yogyakarta, discovered that the temple base enclosed a hidden foot."
+          },
+          {
+            "claim": "숨겨진 부조 160판, 한 판마다 인과 하나",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Borobudur",
+            "note": "The 160 hidden panels do not form a continuous story, but each panel provides one complete illustration of cause and effect."
+          },
+          {
+            "claim": "1983년 정부·유네스코 복원 뒤 세계유산",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Borobudur",
+            "note": "The largest restoration project was completed in 1983 by the Indonesian government and UNESCO, followed by the monument's listing as a UNESCO World Heritage Site."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Borobudur"
+        ],
+        "hintNote": "The first photograph of the monument was taken in 1872 by the Dutch-Flemish engraver Isidore van Kinsbergen.",
+        "easiestCue": "이 유적의 기단 안쪽에 감춰진 '숨겨진 발'",
+        "targetWhy": "숨겨진 기단·까르마위방가 부조 — 동남아 미술·여행 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "이름은 들어 본 유적의 덜 알려진 구조",
+        "pairCheck": "1회차 q(자와섬·세계 최대 불교 사원)·e(8~9세기·화산재·19세기 재발견)·h(샤일렌드라·만다라)와 겹치지 않음 — 1885 기단 발견은 다른 사실",
+        "dbCheck": "pair-or-different — 활성 3317 의 (가) 2회차",
+        "warn": [],
+        "first": {
+          "id": 3317,
+          "question": "이슬람 신자가 대부분인 인도네시아 자와섬에 있는 세계 최대 규모의 불교 사원 유적은?",
+          "explanation": "8~9세기에 지어졌고 화산재에 묻혀 있다가 19세기에 다시 알려졌습니다.",
+          "hint": "샤일렌드라 왕조가 지었으며, 위에서 보면 거대한 만다라 모양이다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "기단 안쪽에 감춰진 '숨겨진 발' … 부조 160판",
+          "difWhy": "숨겨진 기단 부조 — 세계 유적 애호가",
+          "wor": 3,
+          "worWhy": "유명 유적 이야깃거리",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "blind": {
-     "ref": "H1-07",
-     "key": "b275",
-     "hint": "그의 아버지 모틸랄도 인도 국민회의 의장을 두 차례 지낸 변호사였다.",
-     "guess": "자와할랄 네루",
-     "confidence": "high",
-     "hit": true,
-     "answer": "네루"
+    {
+      "seedId": "world-history-east/3#g019a-H1-09",
+      "seed": {
+        "subject": "호찌민",
+        "aspect": null,
+        "ref": "H1-09",
+        "pairedWith": 5639
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 5639,
+        "question": "이 인물은 유언으로 자기 몸을 화장해 그 재를 북부·중부·남부에 나눠 뿌려 달라 했지만, 시신은 방부 처리되어 영묘에 안치되었습니다. 숨진 날이 마침 나라의 기념일과 겹쳐 정부가 사망 발표를 하루 늦췄던 이 인물은?",
+        "answer": "호찌민",
+        "acceptedAnswers": [
+          "호치민"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia \"호치민\" → \"호찌민\" 넘겨주기 확인",
+        "explanation": "그는 1969년 9월 2일 숨졌는데, 그날은 24년 전 그가 독립 선언문을 읽은 날이었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 재를 북부·중부·남부에 + 영묘에 안치",
+          "difWhy": "베트남 지도자 영묘 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "독립 선언문을 읽은 날과 같은 9월 2일에 숨진",
+          "difWhy": "베트남 독립 선언 지도자 — 고교 세계사",
+          "wor": 4,
+          "worWhy": "교양 — 베트남 건국 인물"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "이 인물은 유언으로 자기 몸을 화장해 그 재를 북부·중부·남부에 나눠 뿌려 달라 했지만, 시신은 방부 처리되어 영묘에 안치되었습니다. 24년 전 독립 선언문을 읽은 날과 같은 9월 2일에 숨진 이 인물은?",
+          "beforeExplanation": "본명은 응우옌신꿍이며, 여러 가명을 썼습니다.",
+          "removedCue": "24년 전 독립 선언문을 읽은 날과 같은 9월 2일에 숨진",
+          "addedCue": "기념일과 겹쳐 사망 발표를 하루 늦춤",
+          "why": "고교 세계사의 독립 선언을 직접 주는 문장을 해설로 옮기고 사망 발표 세부로 바꿈"
+        },
+        "generalHint": "그의 영묘는 모스크바의 레닌 영묘를 본떠 지었지만, 비스듬한 지붕 같은 이 나라 건축 요소도 담았다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "베트남 민주 공화국을 세운 혁명가",
+        "familiarity": {
+          "judge": 3,
+          "pct": 85,
+          "why": "베트남 도시명·교과서로 앎",
+          "piece": "f05",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "H1-09",
+          "key": "b039",
+          "hint": "그의 영묘는 모스크바의 레닌 영묘를 본떠 지었지만, 비스듬한 지붕 같은 이 나라 건축 요소도 담았다.",
+          "guess": "호찌민",
+          "confidence": "high",
+          "hit": true,
+          "answer": "호찌민"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ho_Chi_Minh"
+        ],
+        "facts": [
+          {
+            "claim": "화장해 북·중·남부에 재를 뿌려 달라는 유언, 방부 처리되어 영묘",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
+            "note": "Although Hồ Chí Minh wished for his body to be cremated and his ashes spread in North, Central, and South Vietnam, the body instead is embalmed on view in a mausoleum."
+          },
+          {
+            "claim": "1969년 9월 2일 사망",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
+            "note": "Hồ Chí Minh (born Nguyễn Sinh Cung; 19 May 1890 – 2 September 1969)"
+          },
+          {
+            "claim": "1945년 9월 2일 독립 선언 낭독 (24년 전)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
+            "note": "Hồ Chí Minh read the Declaration of Independence of Vietnam on 2 September 1945"
+          },
+          {
+            "claim": "9월 2일이 독립기념일이라 사망 발표를 9월 3일로 늦춤",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
+            "note": "Due to the sensitivity of 2 September being Independence Day, the North Vietnamese government originally delayed announcing Hồ's death until 3 September."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Ho_Chi_Minh_Mausoleum"
+        ],
+        "hintNote": "It was inspired by Lenin's Mausoleum in Moscow but incorporates distinct Vietnamese architectural elements, such as the sloping roof.",
+        "easiestCue": "화장 유언과 달리 방부 처리되어 영묘에 안치",
+        "targetWhy": "유언·사망 발표 지연은 교과서 밖 — 대학 교양 4(경계 3: 영묘 안치 지도자를 떠올리면 좁혀짐)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'독립 선언문'이 독립 지도자를 떠올리게 하지만 나라 이름은 없음",
+        "pairCheck": "1회차 q(반 바 가명·투르 대회)·e(에스코피에 제과설)·h(1931 홍콩 체포)와 겹치지 않음",
+        "dbCheck": "pair-or-different — 활성 5639 의 (가) 2회차",
+        "warn": [],
+        "first": {
+          "id": 5639,
+          "question": "사이공에서 '반 바'라는 가명으로 프랑스 상선 아미랄 드 라투슈트레빌호의 주방 보조 자리를 얻어 1911년 고국을 떠난 사람이 있습니다. 1920년 12월 프랑스 투르 대회에 대표로 나가 프랑스 공산당 창당 멤버가 된 이 인물은 누구일까요?",
+          "explanation": "런던 칼턴 호텔에서 에스코피에에게 제과를 배웠다는 이야기는 문서로 뒷받침되지 않습니다.",
+          "hint": "1931년 6월 홍콩 경찰에 붙잡혔는데, 송환을 피하려고 이듬해 그가 죽었다는 보도가 나기도 했다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 재를 북부·중부·남부에 + 영묘에 안치",
+          "difWhy": "베트남 지도자 영묘 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
-     "https://en.wikipedia.org/wiki/Letters_from_a_Father_to_His_Daughter"
-    ],
-    "facts": [
-     {
-      "claim": "해로 스쿨에서 'Joe' 라는 별명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
-      "note": "Later, in 1905, when he had begun his institutional schooling at Harrow, a leading school in England where he was nicknamed \"Joe\""
-     },
-     {
-      "claim": "1928년 여름 열 살 딸에게 편지 30통, 1929년 출간, 딸은 무수리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Letters_from_a_Father_to_His_Daughter",
-      "note": "The collection was originally published in 1929 … and consists of 30 letters sent in the summer of 1928, when Indira was ten years old. At the time of writing, Nehru was in Allahabad while Indira resided in Mussoorie."
-     },
-     {
-      "claim": "해로·트리니티 칼리지·이너 템플",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Jawaharlal_Nehru",
-      "note": "Jawaharlal Nehru was educated in England—at Harrow School and Trinity College, Cambridge, and trained in the law at the Inner Temple."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Motilal_Nehru"
-    ],
-    "hintNote": "Motilal Nehru ... was an Indian lawyer, activist, and politician affiliated with the Indian National Congress. He served as the Congress President twice",
-    "easiestCue": "1928년 여름 무수리에 머물던 열 살 딸에게 편지 30통을 보냈고 이듬해 이를 책으로 펴냈습니다",
-    "targetWhy": "『아버지가 딸에게 보내는 편지』 — 독서·인도사 애호가, 교과서 밖",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "유명 정치인의 개인사 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "world-history-east/3#g019a-H1-08",
-   "seed": {
-    "subject": "보로부두르",
-    "aspect": null,
-    "ref": "H1-08",
-    "pairedWith": 3317
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 3317,
-    "question": "1885년 네덜란드 기술자 에이제르만은 이 유적의 기단 안쪽에 감춰진 '숨겨진 발'이 있다는 것을 알아냈습니다. 그곳의 부조 160판은 업보의 인과를 한 판에 하나씩 보여 주는데, 이 유적은 무엇일까요?",
-    "answer": "보로부두르",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1983년 인도네시아 정부와 유네스코의 대규모 복원이 끝난 뒤 세계유산에 올랐습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "기단 안쪽에 감춰진 '숨겨진 발' … 부조 160판",
-     "difWhy": "숨겨진 기단 부조 — 세계 유적 애호가",
-     "wor": 3,
-     "worWhy": "유명 유적 이야깃거리",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "기단 안쪽에 감춰진 '숨겨진 발' … 부조 160판",
-     "difWhy": "숨겨진 기단 부조 — 세계 유적 애호가",
-     "wor": 3,
-     "worWhy": "유명 유적 이야깃거리"
-    },
-    "rewrite": null,
-    "generalHint": "이 유적의 첫 사진은 1872년 네덜란드계 판화가 이시도르 판 킨스베르헌이 찍었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "인도네시아에 있는 거대한 불교 사원 유적",
-    "familiarity": {
-     "judge": 2,
-     "pct": 35,
-     "why": "세계사 교과서·여행 프로에서 접한 유적",
-     "piece": "f08",
-     "genPct": 40
-    },
-    "blind": {
-     "ref": "H1-08",
-     "key": "b240",
-     "hint": "이 유적의 첫 사진은 1872년 네덜란드계 판화가 이시도르 판 킨스베르헌이 찍었다.",
-     "guess": "보로부두르",
-     "confidence": "high",
-     "hit": true,
-     "answer": "보로부두르"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Borobudur"
-    ],
-    "facts": [
-     {
-      "claim": "1885년 IJzerman 이 기단 안 숨겨진 발 발견",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Borobudur",
-      "note": "Borobudur attracted attention in 1885, when the Dutch engineer Jan Willem IJzerman, chairman of the Archaeological Society in Yogyakarta, discovered that the temple base enclosed a hidden foot."
-     },
-     {
-      "claim": "숨겨진 부조 160판, 한 판마다 인과 하나",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Borobudur",
-      "note": "The 160 hidden panels do not form a continuous story, but each panel provides one complete illustration of cause and effect."
-     },
-     {
-      "claim": "1983년 정부·유네스코 복원 뒤 세계유산",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Borobudur",
-      "note": "The largest restoration project was completed in 1983 by the Indonesian government and UNESCO, followed by the monument's listing as a UNESCO World Heritage Site."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Borobudur"
-    ],
-    "hintNote": "The first photograph of the monument was taken in 1872 by the Dutch-Flemish engraver Isidore van Kinsbergen.",
-    "easiestCue": "이 유적의 기단 안쪽에 감춰진 '숨겨진 발'",
-    "targetWhy": "숨겨진 기단·까르마위방가 부조 — 동남아 미술·여행 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "이름은 들어 본 유적의 덜 알려진 구조",
-    "pairCheck": "1회차 q(자와섬·세계 최대 불교 사원)·e(8~9세기·화산재·19세기 재발견)·h(샤일렌드라·만다라)와 겹치지 않음 — 1885 기단 발견은 다른 사실",
-    "dbCheck": "pair-or-different — 활성 3317 의 (가) 2회차",
-    "warn": [],
-    "first": {
-     "id": 3317,
-     "question": "이슬람 신자가 대부분인 인도네시아 자와섬에 있는 세계 최대 규모의 불교 사원 유적은?",
-     "explanation": "8~9세기에 지어졌고 화산재에 묻혀 있다가 19세기에 다시 알려졌습니다.",
-     "hint": "샤일렌드라 왕조가 지었으며, 위에서 보면 거대한 만다라 모양이다.",
-     "difficulty": 3
+    {
+      "seedId": "world-history-east/3#g019a-H1-10",
+      "seed": {
+        "subject": "리콴유",
+        "aspect": null,
+        "ref": "H1-10",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "'해리 리'라는 이름으로 태어나 케임브리지에서 법학을 공부한 이 정치인은, 1965년 한 텔레비전 기자회견에서 눈물을 참으며 그 순간을 '고뇌의 순간'이라 불렀습니다. 이 정치인은 누구일까요?",
+        "answer": "리콴유",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 \"리콴유\" 확인 — 띄어 쓴 꼴은 정규화로 같음",
+        "explanation": "그 기자회견은 싱가포르가 말레이시아에서 떨어져 나와 독립하게 된 날 열렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "'해리 리'라는 이름으로 … 1965년 … '고뇌의 순간'",
+          "difWhy": "싱가포르 분리 회견 — 세계사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "'해리 리'라는 이름으로 … 1965년 … '고뇌의 순간'",
+          "difWhy": "싱가포르 분리 회견 — 세계사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화"
+        },
+        "rewrite": null,
+        "generalHint": "그의 아들은 2004년부터 2024년까지 이 나라의 세 번째 총리를 지냈다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "싱가포르의 초대 총리",
+        "familiarity": {
+          "judge": 2,
+          "pct": 60,
+          "why": "싱가포르 뉴스에서 접한 정치인",
+          "piece": "f04",
+          "genPct": 55
+        },
+        "blind": {
+          "ref": "H1-10",
+          "key": "b239",
+          "hint": "그의 아들은 2004년부터 2024년까지 이 나라의 세 번째 총리를 지냈다.",
+          "guess": "리콴유",
+          "confidence": "high",
+          "hit": true,
+          "answer": "리콴유"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Lee_Kuan_Yew"
+        ],
+        "facts": [
+          {
+            "claim": "Harry Lee Kuan Yew 로 태어남, 케임브리지 법학",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Lee_Kuan_Yew",
+            "note": "Lee Kuan Yew (born Harry Lee Kuan Yew …) / Lee studied law in England at Cambridge University and was called to the bar at the Middle Temple in 1950."
+          },
+          {
+            "claim": "텔레비전 기자회견에서 눈물을 참으며 moment of anguish",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Lee_Kuan_Yew",
+            "note": "In a televised press conference that day, Lee fought back tears and briefly stopped to regain his composure as he formally announced the news … it will be a moment of anguish."
+          },
+          {
+            "claim": "1965년 말레이시아에서 떨어져 나와 독립",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Lee_Kuan_Yew",
+            "note": "Racial strife and ideological differences later led to Singapore's expulsion from Malaysia and consequent independence in 1965."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Lee_Hsien_Loong"
+        ],
+        "hintNote": "having previously served as the third prime minister between 2004 and 2024.",
+        "easiestCue": "'해리 리'라는 이름으로 태어나 케임브리지에서 법학을 공부한 이 정치인",
+        "targetWhy": "영어 본명·분리 독립 기자회견 — 동남아 현대사 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 정치인의 덜 알려진 개인사",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "'해리 리'라는 이름으로 … 1965년 … '고뇌의 순간'",
+          "difWhy": "싱가포르 분리 회견 — 세계사 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "동양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  },
-  {
-   "seedId": "world-history-east/3#g019a-H1-09",
-   "seed": {
-    "subject": "호찌민",
-    "aspect": null,
-    "ref": "H1-09",
-    "pairedWith": 5639
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 5639,
-    "question": "이 인물은 유언으로 자기 몸을 화장해 그 재를 북부·중부·남부에 나눠 뿌려 달라 했지만, 시신은 방부 처리되어 영묘에 안치되었습니다. 숨진 날이 마침 나라의 기념일과 겹쳐 정부가 사망 발표를 하루 늦췄던 이 인물은?",
-    "answer": "호찌민",
-    "acceptedAnswers": [
-     "호치민"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia \"호치민\" → \"호찌민\" 넘겨주기 확인",
-    "explanation": "그는 1969년 9월 2일 숨졌는데, 그날은 24년 전 그가 독립 선언문을 읽은 날이었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 재를 북부·중부·남부에 + 영묘에 안치",
-     "difWhy": "베트남 지도자 영묘 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "독립 선언문을 읽은 날과 같은 9월 2일에 숨진",
-     "difWhy": "베트남 독립 선언 지도자 — 고교 세계사",
-     "wor": 4,
-     "worWhy": "교양 — 베트남 건국 인물"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "이 인물은 유언으로 자기 몸을 화장해 그 재를 북부·중부·남부에 나눠 뿌려 달라 했지만, 시신은 방부 처리되어 영묘에 안치되었습니다. 24년 전 독립 선언문을 읽은 날과 같은 9월 2일에 숨진 이 인물은?",
-     "beforeExplanation": "본명은 응우옌신꿍이며, 여러 가명을 썼습니다.",
-     "removedCue": "24년 전 독립 선언문을 읽은 날과 같은 9월 2일에 숨진",
-     "addedCue": "기념일과 겹쳐 사망 발표를 하루 늦춤",
-     "why": "고교 세계사의 독립 선언을 직접 주는 문장을 해설로 옮기고 사망 발표 세부로 바꿈"
-    },
-    "generalHint": "그의 영묘는 모스크바의 레닌 영묘를 본떠 지었지만, 비스듬한 지붕 같은 이 나라 건축 요소도 담았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "베트남 민주 공화국을 세운 혁명가",
-    "familiarity": {
-     "judge": 3,
-     "pct": 85,
-     "why": "베트남 도시명·교과서로 앎",
-     "piece": "f05",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "H1-09",
-     "key": "b039",
-     "hint": "그의 영묘는 모스크바의 레닌 영묘를 본떠 지었지만, 비스듬한 지붕 같은 이 나라 건축 요소도 담았다.",
-     "guess": "호찌민",
-     "confidence": "high",
-     "hit": true,
-     "answer": "호찌민"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Ho_Chi_Minh"
-    ],
-    "facts": [
-     {
-      "claim": "화장해 북·중·남부에 재를 뿌려 달라는 유언, 방부 처리되어 영묘",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
-      "note": "Although Hồ Chí Minh wished for his body to be cremated and his ashes spread in North, Central, and South Vietnam, the body instead is embalmed on view in a mausoleum."
-     },
-     {
-      "claim": "1969년 9월 2일 사망",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
-      "note": "Hồ Chí Minh (born Nguyễn Sinh Cung; 19 May 1890 – 2 September 1969)"
-     },
-     {
-      "claim": "1945년 9월 2일 독립 선언 낭독 (24년 전)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
-      "note": "Hồ Chí Minh read the Declaration of Independence of Vietnam on 2 September 1945"
-     },
-     {
-      "claim": "9월 2일이 독립기념일이라 사망 발표를 9월 3일로 늦춤",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh",
-      "note": "Due to the sensitivity of 2 September being Independence Day, the North Vietnamese government originally delayed announcing Hồ's death until 3 September."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Ho_Chi_Minh_Mausoleum"
-    ],
-    "hintNote": "It was inspired by Lenin's Mausoleum in Moscow but incorporates distinct Vietnamese architectural elements, such as the sloping roof.",
-    "easiestCue": "화장 유언과 달리 방부 처리되어 영묘에 안치",
-    "targetWhy": "유언·사망 발표 지연은 교과서 밖 — 대학 교양 4(경계 3: 영묘 안치 지도자를 떠올리면 좁혀짐)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'독립 선언문'이 독립 지도자를 떠올리게 하지만 나라 이름은 없음",
-    "pairCheck": "1회차 q(반 바 가명·투르 대회)·e(에스코피에 제과설)·h(1931 홍콩 체포)와 겹치지 않음",
-    "dbCheck": "pair-or-different — 활성 5639 의 (가) 2회차",
-    "warn": [],
-    "first": {
-     "id": 5639,
-     "question": "사이공에서 '반 바'라는 가명으로 프랑스 상선 아미랄 드 라투슈트레빌호의 주방 보조 자리를 얻어 1911년 고국을 떠난 사람이 있습니다. 1920년 12월 프랑스 투르 대회에 대표로 나가 프랑스 공산당 창당 멤버가 된 이 인물은 누구일까요?",
-     "explanation": "런던 칼턴 호텔에서 에스코피에에게 제과를 배웠다는 이야기는 문서로 뒷받침되지 않습니다.",
-     "hint": "1931년 6월 홍콩 경찰에 붙잡혔는데, 송환을 피하려고 이듬해 그가 죽었다는 보도가 나기도 했다.",
-     "difficulty": 3
-    }
-   }
-  },
-  {
-   "seedId": "world-history-east/3#g019a-H1-10",
-   "seed": {
-    "subject": "리콴유",
-    "aspect": null,
-    "ref": "H1-10",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "'해리 리'라는 이름으로 태어나 케임브리지에서 법학을 공부한 이 정치인은, 1965년 한 텔레비전 기자회견에서 눈물을 참으며 그 순간을 '고뇌의 순간'이라 불렀습니다. 이 정치인은 누구일까요?",
-    "answer": "리콴유",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 \"리콴유\" 확인 — 띄어 쓴 꼴은 정규화로 같음",
-    "explanation": "그 기자회견은 싱가포르가 말레이시아에서 떨어져 나와 독립하게 된 날 열렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "'해리 리'라는 이름으로 … 1965년 … '고뇌의 순간'",
-     "difWhy": "싱가포르 분리 회견 — 세계사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "동양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "'해리 리'라는 이름으로 … 1965년 … '고뇌의 순간'",
-     "difWhy": "싱가포르 분리 회견 — 세계사 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 일화"
-    },
-    "rewrite": null,
-    "generalHint": "그의 아들은 2004년부터 2024년까지 이 나라의 세 번째 총리를 지냈다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "싱가포르의 초대 총리",
-    "familiarity": {
-     "judge": 2,
-     "pct": 60,
-     "why": "싱가포르 뉴스에서 접한 정치인",
-     "piece": "f04",
-     "genPct": 55
-    },
-    "blind": {
-     "ref": "H1-10",
-     "key": "b239",
-     "hint": "그의 아들은 2004년부터 2024년까지 이 나라의 세 번째 총리를 지냈다.",
-     "guess": "리콴유",
-     "confidence": "high",
-     "hit": true,
-     "answer": "리콴유"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Lee_Kuan_Yew"
-    ],
-    "facts": [
-     {
-      "claim": "Harry Lee Kuan Yew 로 태어남, 케임브리지 법학",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Lee_Kuan_Yew",
-      "note": "Lee Kuan Yew (born Harry Lee Kuan Yew …) / Lee studied law in England at Cambridge University and was called to the bar at the Middle Temple in 1950."
-     },
-     {
-      "claim": "텔레비전 기자회견에서 눈물을 참으며 moment of anguish",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Lee_Kuan_Yew",
-      "note": "In a televised press conference that day, Lee fought back tears and briefly stopped to regain his composure as he formally announced the news … it will be a moment of anguish."
-     },
-     {
-      "claim": "1965년 말레이시아에서 떨어져 나와 독립",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Lee_Kuan_Yew",
-      "note": "Racial strife and ideological differences later led to Singapore's expulsion from Malaysia and consequent independence in 1965."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Lee_Hsien_Loong"
-    ],
-    "hintNote": "having previously served as the third prime minister between 2004 and 2024.",
-    "easiestCue": "'해리 리'라는 이름으로 태어나 케임브리지에서 법학을 공부한 이 정치인",
-    "targetWhy": "영어 본명·분리 독립 기자회견 — 동남아 현대사 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 정치인의 덜 알려진 개인사",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+  ]
 }

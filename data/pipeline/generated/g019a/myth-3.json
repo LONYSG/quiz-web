@@ -1,243 +1,273 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "myth/3",
-  "midKey": "myth",
-  "subName": "이집트·메소포타미아 신화",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "myth/3#g019a-H1-39",
-   "seed": {
-    "subject": "불사조",
-    "aspect": null,
-    "ref": "H1-39",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "헤로도토스는 이집트인의 이 신성한 새를 그림으로만 보았다며, 깃털이 일부는 붉고 일부는 금빛이며 생김새와 크기가 독수리와 거의 같다고 적었습니다. 몰약으로 빚은 공 속에 어버이를 넣어 태양 신전에 묻는다는 이 새는?",
-    "answer": "불사조",
-    "acceptedAnswers": [
-     "피닉스"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 \"불사조\"·\"피닉스\" 확인 — 한국에서 두 이름 다 흔함",
-    "explanation": "타키투스는 이 새가 서기 34년에 나타났으며 그 주기가 500년이나 1,461년이라고 적었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "몰약으로 빚은 공 속에 어버이를 넣어 태양 신전에 묻는다는 이 새",
-     "difWhy": "태양 신전 전설의 새 — 신화 관심층",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 전설 기원",
-     "acc": 3,
-     "accWhy": "신화 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "500년에 한 번 아라비아에서 날아와 … 태양 신전",
-     "difWhy": "500년 주기 신성한 새 — 신화 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 신화 소재"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "헤로도토스는 이집트인의 이 신성한 새를 그림으로만 보았다며, 500년에 한 번 아라비아에서 날아와 몰약으로 감싼 어버이를 태양 신전에 묻는다는 헬리오폴리스 사람들의 이야기를 전했습니다. 이 새는?",
-     "beforeExplanation": null,
-     "removedCue": "500년에 한 번 아라비아에서 날아와 … 태양 신전",
-     "addedCue": "붉고 금빛인 깃털 · 독수리 크기 · 몰약 공",
-     "why": "널리 알려진 500년 주기를 빼고 헤로도토스의 생김새 묘사·몰약 공 세부로 바꿈"
-    },
-    "generalHint": "대 플리니우스는 이 새의 머리에 깃털 볏이 있다고 적었고, 극작가 에제키엘은 수탉에 견주었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "죽은 뒤 다시 살아난다는 전설의 새",
-    "familiarity": {
-     "judge": 3,
-     "pct": 98,
-     "why": "누구나 아는 전설의 새",
-     "piece": "f08",
-     "genPct": 97
-    },
-    "blind": {
-     "ref": "H1-39",
-     "key": "b233",
-     "hint": "대 플리니우스는 이 새의 머리에 깃털 볏이 있다고 적었고, 극작가 에제키엘은 수탉에 견주었다.",
-     "guess": "불사조(피닉스)",
-     "confidence": "high",
-     "hit": true,
-     "answer": "불사조"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Phoenix_(mythology)"
-    ],
-    "facts": [
-     {
-      "claim": "헤로도토스, 이집트인의 신성한 새, 그림으로만 봄",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
-      "note": "[The Egyptians] have also another sacred bird called the phoenix which I myself have never seen, except in pictures."
-     },
-     {
-      "claim": "아라비아에서 몰약으로 감싼 어버이를 태양 신전에 묻음",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
-      "note": "he comes all the way from Arabia, and brings the parent bird, all plastered over with myrrh, to the temple of the Sun, and there buries the body."
-     },
-     {
-      "claim": "타키투스 — 서기 34년 출현, 주기 500년 또는 1461년",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
-      "note": "A second recording of the phoenix was made by Tacitus, who said that the phoenix had appeared instead in 34 AD … and that the cycle was either 500 years or 1461 years"
-     },
-     {
-      "claim": "헤로도토스 — 깃털은 일부 붉고 일부 금빛, 독수리와 거의 같은 생김새·크기",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
-      "note": "Its size and appearance, if it is like the pictures, are as follow: The plumage is partly red, partly golden, while the general make and size are almost exactly that of the eagle."
-     },
-     {
-      "claim": "몰약 공 속에 어버이를 넣어 태양 신전에 둠",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
-      "note": "he first forms a ball of myrrh as big as he finds that he can carry; then he hollows out the ball and puts his parent inside, after which he covers over the opening with fresh myrrh ... and deposits it in the temple of the Sun."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Phoenix_(mythology)"
-    ],
-    "hintNote": "Pliny the Elder also describes the bird as having a crest of feathers on its head, and Ezekiel the Dramatist compared it to a rooster.",
-    "easiestCue": "몰약으로 감싼 어버이를 태양 신전에 묻는 이집트의 신성한 새",
-    "targetWhy": "불에서 되살아나는 대중 이미지가 없는 헤로도토스판 묘사 — 신화 애호가 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 전설 새의 옛 기록",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "myth/3",
+    "midKey": "myth",
+    "subName": "이집트·메소포타미아 신화",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "myth/3#g019a-H1-40",
-   "seed": {
-    "subject": "아누비스",
-    "aspect": null,
-    "ref": "H1-40",
-    "pairedWith": 1810
-   },
-   "question": {
-    "ok": true,
-    "mode": "가",
-    "pairedWith": 1810,
-    "question": "그리스인들은 이 이집트 신을 섬기던 중심지를 키노폴리스라 불렀습니다. 쥐밀라크 파피루스에는 이 신이 표범으로 변한 세트를 제압해 달군 쇠막대로 가죽을 지졌고, 이것이 표범 무늬의 유래가 되었다는 이야기가 전하는데, 이 신은 누구일까요?",
-    "answer": "아누비스",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "그리스인이 오기 전 이집트에서는 이 신을 '안푸' 또는 '인푸'라 불렀습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "이 이집트 신을 섬기던 중심지를 키노폴리스",
-     "difWhy": "개의 도시 신 — 신화 관심층",
-     "wor": 3,
-     "worWhy": "유명 신 이름",
-     "acc": 3,
-     "accWhy": "신화 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "myth/3#g019a-H1-39",
+      "seed": {
+        "subject": "불사조",
+        "aspect": null,
+        "ref": "H1-39",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "헤로도토스는 이집트인의 이 신성한 새를 그림으로만 보았다며, 깃털이 일부는 붉고 일부는 금빛이며 생김새와 크기가 독수리와 거의 같다고 적었습니다. 몰약으로 빚은 공 속에 어버이를 넣어 태양 신전에 묻는다는 이 새는?",
+        "answer": "불사조",
+        "acceptedAnswers": [
+          "피닉스"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 \"불사조\"·\"피닉스\" 확인 — 한국에서 두 이름 다 흔함",
+        "explanation": "타키투스는 이 새가 서기 34년에 나타났으며 그 주기가 500년이나 1,461년이라고 적었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "몰약으로 빚은 공 속에 어버이를 넣어 태양 신전에 묻는다는 이 새",
+          "difWhy": "태양 신전 전설의 새 — 신화 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 전설 기원",
+          "acc": 3,
+          "accWhy": "신화 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "500년에 한 번 아라비아에서 날아와 … 태양 신전",
+          "difWhy": "500년 주기 신성한 새 — 신화 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 신화 소재"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "헤로도토스는 이집트인의 이 신성한 새를 그림으로만 보았다며, 500년에 한 번 아라비아에서 날아와 몰약으로 감싼 어버이를 태양 신전에 묻는다는 헬리오폴리스 사람들의 이야기를 전했습니다. 이 새는?",
+          "beforeExplanation": null,
+          "removedCue": "500년에 한 번 아라비아에서 날아와 … 태양 신전",
+          "addedCue": "붉고 금빛인 깃털 · 독수리 크기 · 몰약 공",
+          "why": "널리 알려진 500년 주기를 빼고 헤로도토스의 생김새 묘사·몰약 공 세부로 바꿈"
+        },
+        "generalHint": "대 플리니우스는 이 새의 머리에 깃털 볏이 있다고 적었고, 극작가 에제키엘은 수탉에 견주었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "죽은 뒤 다시 살아난다는 전설의 새",
+        "familiarity": {
+          "judge": 3,
+          "pct": 98,
+          "why": "누구나 아는 전설의 새",
+          "piece": "f08",
+          "genPct": 97
+        },
+        "blind": {
+          "ref": "H1-39",
+          "key": "b233",
+          "hint": "대 플리니우스는 이 새의 머리에 깃털 볏이 있다고 적었고, 극작가 에제키엘은 수탉에 견주었다.",
+          "guess": "불사조(피닉스)",
+          "confidence": "high",
+          "hit": true,
+          "answer": "불사조"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Phoenix_(mythology)"
+        ],
+        "facts": [
+          {
+            "claim": "헤로도토스, 이집트인의 신성한 새, 그림으로만 봄",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
+            "note": "[The Egyptians] have also another sacred bird called the phoenix which I myself have never seen, except in pictures."
+          },
+          {
+            "claim": "아라비아에서 몰약으로 감싼 어버이를 태양 신전에 묻음",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
+            "note": "he comes all the way from Arabia, and brings the parent bird, all plastered over with myrrh, to the temple of the Sun, and there buries the body."
+          },
+          {
+            "claim": "타키투스 — 서기 34년 출현, 주기 500년 또는 1461년",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
+            "note": "A second recording of the phoenix was made by Tacitus, who said that the phoenix had appeared instead in 34 AD … and that the cycle was either 500 years or 1461 years"
+          },
+          {
+            "claim": "헤로도토스 — 깃털은 일부 붉고 일부 금빛, 독수리와 거의 같은 생김새·크기",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
+            "note": "Its size and appearance, if it is like the pictures, are as follow: The plumage is partly red, partly golden, while the general make and size are almost exactly that of the eagle."
+          },
+          {
+            "claim": "몰약 공 속에 어버이를 넣어 태양 신전에 둠",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
+            "note": "he first forms a ball of myrrh as big as he finds that he can carry; then he hollows out the ball and puts his parent inside, after which he covers over the opening with fresh myrrh ... and deposits it in the temple of the Sun."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Phoenix_(mythology)"
+        ],
+        "hintNote": "Pliny the Elder also describes the bird as having a crest of feathers on its head, and Ezekiel the Dramatist compared it to a rooster.",
+        "easiestCue": "몰약으로 감싼 어버이를 태양 신전에 묻는 이집트의 신성한 새",
+        "targetWhy": "불에서 되살아나는 대중 이미지가 없는 헤로도토스판 묘사 — 신화 애호가 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 전설 새의 옛 기록",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "몰약으로 빚은 공 속에 어버이를 넣어 태양 신전에 묻는다는 이 새",
+          "difWhy": "태양 신전 전설의 새 — 신화 관심층",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 전설 기원",
+          "acc": 3,
+          "accWhy": "신화 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'개들의 도시' … 영혼을 저승으로 이끄는",
-     "difWhy": "개 머리 저승 신 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 신화 인물"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "그리스인들은 이 이집트 신을 섬기는 중심지를 '개들의 도시' 키노폴리스라 불렀고, 영혼을 저승으로 이끄는 자기들의 신 헤르메스와 같은 신으로 여겼습니다. 이 이집트 신은 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "'개들의 도시' 풀이 · 영혼을 저승으로 이끄는 헤르메스와 같은 신",
-     "addedCue": "쥐밀라크 파피루스의 세트-표범 지짐 이야기(표범 무늬 유래)",
-     "why": "개·저승 안내(범주 단서)를 빼고 신화 속 뒷이야기로 바꿈"
-    },
-    "generalHint": "그의 딸로는 죽은 이의 몸을 물로 씻어 깨끗하게 한다는 뱀 여신 케베체트가 꼽힌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "죽은 자와 장례를 맡은 이집트의 신",
-    "familiarity": {
-     "judge": 2,
-     "pct": 65,
-     "why": "영화(미이라)·게임에서 접한 이집트 신",
-     "piece": "f09",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "H1-40",
-     "key": "b115",
-     "hint": "그의 딸로는 죽은 이의 몸을 물로 씻어 깨끗하게 한다는 뱀 여신 케베체트가 꼽힌다.",
-     "guess": "아누비스",
-     "confidence": "high",
-     "hit": true,
-     "answer": "아누비스"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Anubis"
-    ],
-    "facts": [
-     {
-      "claim": "그리스인 오기 전 이름 안푸·인푸",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Anubis",
-      "note": "Before the Greeks arrived in Egypt, around the 7th century BC, the god was known as Anpu or Inpu."
-     },
-     {
-      "claim": "숭배 중심지 키노폴리스(상이집트)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Anubis",
-      "note": "His cult center was at Cynopolis in Upper Egypt but memorials were built everywhere and he was universally revered in every part of the nation."
-     },
-     {
-      "claim": "쥐밀라크 파피루스 — 표범으로 변한 세트를 제압해 달군 쇠막대로 지짐 · 표범 무늬 유래",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Anubis",
-      "note": "The Jumilhac papyrus recounts another tale where Anubis protected the body of Osiris from Set. Set attempted to attack the body of Osiris by transforming himself into a leopard. Anubis stopped and subdued Set, however, and he branded Set's skin with a hot iron rod. ... The legend of Anubis branding the hide of Set in leopard form was used to explain how the leopard got its spots."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Anubis"
-    ],
-    "hintNote": "His daughter is the serpent goddess Kebechet.",
-    "easiestCue": "그리스인들이 중심지를 키노폴리스라 부른 이집트 신",
-    "targetWhy": "키노폴리스 · 쥐밀라크 파피루스 일화는 신화 애호가 세부 — 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'개들의 도시'+'저승'이 개 머리 장례 신을 떠올리게 함 — 추리 한 걸음은 남음",
-    "pairCheck": "1회차 q(자칼 머리·미라·심판)·e(자칼 형상 유래)·h(검은 몸)와 겹치지 않음 — '자칼'·'미라'·'심판'을 쓰지 않음",
-    "dbCheck": "pair-or-different — 활성 1810 의 (가) 2회차",
-    "warn": [],
-    "first": {
-     "id": 1810,
-     "question": "자칼의 머리를 하고 미라 제작과 죽은 자의 심판을 맡았다고 전하는 이집트의 신은?",
-     "explanation": "무덤 주변을 어슬렁거리던 자칼의 모습에서 형상이 왔다고 봅니다.",
-     "hint": "이집트 그림에서 검은 몸으로 그려지는데, 검은색은 나일강의 기름진 흙과 되살아남을 뜻했다.",
-     "difficulty": 3
+    {
+      "seedId": "myth/3#g019a-H1-40",
+      "seed": {
+        "subject": "아누비스",
+        "aspect": null,
+        "ref": "H1-40",
+        "pairedWith": 1810
+      },
+      "question": {
+        "ok": true,
+        "mode": "가",
+        "pairedWith": 1810,
+        "question": "그리스인들은 이 이집트 신을 섬기던 중심지를 키노폴리스라 불렀습니다. 쥐밀라크 파피루스에는 이 신이 표범으로 변한 세트를 제압해 달군 쇠막대로 가죽을 지졌고, 이것이 표범 무늬의 유래가 되었다는 이야기가 전하는데, 이 신은 누구일까요?",
+        "answer": "아누비스",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "그리스인이 오기 전 이집트에서는 이 신을 '안푸' 또는 '인푸'라 불렀습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "이 이집트 신을 섬기던 중심지를 키노폴리스",
+          "difWhy": "개의 도시 신 — 신화 관심층",
+          "wor": 3,
+          "worWhy": "유명 신 이름",
+          "acc": 3,
+          "accWhy": "신화 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'개들의 도시' … 영혼을 저승으로 이끄는",
+          "difWhy": "개 머리 저승 신 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 신화 인물"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "그리스인들은 이 이집트 신을 섬기는 중심지를 '개들의 도시' 키노폴리스라 불렀고, 영혼을 저승으로 이끄는 자기들의 신 헤르메스와 같은 신으로 여겼습니다. 이 이집트 신은 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "'개들의 도시' 풀이 · 영혼을 저승으로 이끄는 헤르메스와 같은 신",
+          "addedCue": "쥐밀라크 파피루스의 세트-표범 지짐 이야기(표범 무늬 유래)",
+          "why": "개·저승 안내(범주 단서)를 빼고 신화 속 뒷이야기로 바꿈"
+        },
+        "generalHint": "그의 딸로는 죽은 이의 몸을 물로 씻어 깨끗하게 한다는 뱀 여신 케베체트가 꼽힌다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "죽은 자와 장례를 맡은 이집트의 신",
+        "familiarity": {
+          "judge": 2,
+          "pct": 65,
+          "why": "영화(미이라)·게임에서 접한 이집트 신",
+          "piece": "f09",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "H1-40",
+          "key": "b115",
+          "hint": "그의 딸로는 죽은 이의 몸을 물로 씻어 깨끗하게 한다는 뱀 여신 케베체트가 꼽힌다.",
+          "guess": "아누비스",
+          "confidence": "high",
+          "hit": true,
+          "answer": "아누비스"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Anubis"
+        ],
+        "facts": [
+          {
+            "claim": "그리스인 오기 전 이름 안푸·인푸",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Anubis",
+            "note": "Before the Greeks arrived in Egypt, around the 7th century BC, the god was known as Anpu or Inpu."
+          },
+          {
+            "claim": "숭배 중심지 키노폴리스(상이집트)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Anubis",
+            "note": "His cult center was at Cynopolis in Upper Egypt but memorials were built everywhere and he was universally revered in every part of the nation."
+          },
+          {
+            "claim": "쥐밀라크 파피루스 — 표범으로 변한 세트를 제압해 달군 쇠막대로 지짐 · 표범 무늬 유래",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Anubis",
+            "note": "The Jumilhac papyrus recounts another tale where Anubis protected the body of Osiris from Set. Set attempted to attack the body of Osiris by transforming himself into a leopard. Anubis stopped and subdued Set, however, and he branded Set's skin with a hot iron rod. ... The legend of Anubis branding the hide of Set in leopard form was used to explain how the leopard got its spots."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Anubis"
+        ],
+        "hintNote": "His daughter is the serpent goddess Kebechet.",
+        "easiestCue": "그리스인들이 중심지를 키노폴리스라 부른 이집트 신",
+        "targetWhy": "키노폴리스 · 쥐밀라크 파피루스 일화는 신화 애호가 세부 — 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'개들의 도시'+'저승'이 개 머리 장례 신을 떠올리게 함 — 추리 한 걸음은 남음",
+        "pairCheck": "1회차 q(자칼 머리·미라·심판)·e(자칼 형상 유래)·h(검은 몸)와 겹치지 않음 — '자칼'·'미라'·'심판'을 쓰지 않음",
+        "dbCheck": "pair-or-different — 활성 1810 의 (가) 2회차",
+        "warn": [],
+        "first": {
+          "id": 1810,
+          "question": "자칼의 머리를 하고 미라 제작과 죽은 자의 심판을 맡았다고 전하는 이집트의 신은?",
+          "explanation": "무덤 주변을 어슬렁거리던 자칼의 모습에서 형상이 왔다고 봅니다.",
+          "hint": "이집트 그림에서 검은 몸으로 그려지는데, 검은색은 나일강의 기름진 흙과 되살아남을 뜻했다.",
+          "difficulty": 3
+        },
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "이 이집트 신을 섬기던 중심지를 키노폴리스",
+          "difWhy": "개의 도시 신 — 신화 관심층",
+          "wor": 3,
+          "worWhy": "유명 신 이름",
+          "acc": 3,
+          "accWhy": "신화 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
     }
-   }
-  }
- ]
+  ]
 }

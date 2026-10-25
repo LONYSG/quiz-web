@@ -1,240 +1,270 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "material/2",
-  "midKey": "material",
-  "subName": "플라스틱·신소재",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "material/2#g019b-C2-15",
-   "seed": {
-    "subject": "PVC",
-    "aspect": null,
-    "ref": "C2-15",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1872년 독일 화학자 오이겐 바우만은 한 기체를 담아 햇빛을 가린 채 4주 동안 둔 플라스크에서 이 고분자를 얻었습니다. 1926년 미국 B.F.굿리치의 월도 시먼이 첨가제를 섞어 무르게 만드는 법을 찾으면서 쓰임이 넓어진, 흔히 영문 약자로 부르는 이 플라스틱은?",
-    "answer": "PVC",
-    "acceptedAnswers": [
-     "폴리염화비닐"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "폴리염화비닐 — 표준 화학 용어(ko.wikipedia 문서 제목)",
-    "explanation": "20세기 초 프리츠 클라테 등도 이 물질로 상품을 만들려 했지만 가공이 어려워 뜻을 이루지 못했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1872년 독일 화학자 오이겐 바우만",
-     "difWhy": "PVC 발견사 — 대학 교양 화학",
-     "wor": 4,
-     "worWhy": "교양 — 소재 기본 어휘",
-     "acc": 2,
-     "accWhy": "재료·건설 기술 — 애호가 영역"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1872년 독일 화학자 오이겐 바우만",
-     "difWhy": "PVC 발견사 — 대학 교양 화학",
-     "wor": 4,
-     "worWhy": "교양 — 소재 기본 어휘"
-    },
-    "rewrite": null,
-    "generalHint": "2018년 기준 이 플라스틱을 가장 많이 만드는 업체는 세계 몫의 약 30%를 차지한 일본의 신에쓰 화학이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "배관·전선 피복에 흔히 쓰는 염소가 든 플라스틱",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "PVC 파이프 등 생활에서 접함",
-     "piece": "f09",
-     "genPct": 80
-    },
-    "blind": {
-     "ref": "C2-15",
-     "key": "b014",
-     "hint": "2018년 기준 이 플라스틱을 가장 많이 만드는 업체는 세계 몫의 약 30%를 차지한 일본의 신에쓰 화학이다.",
-     "guess": "폴리염화비닐(PVC)",
-     "confidence": "high",
-     "hit": true,
-     "answer": "PVC",
-     "first": {
-      "ref": "C2-15",
-      "key": "b165",
-      "hint": "세계에서 셋째로 많이 만드는 합성 고분자 플라스틱이다.",
-      "guess": "폴리염화비닐(PVC)",
-      "confidence": "high",
-      "hit": true,
-      "answer": "PVC"
-     }
-    },
-    "hobby": "DIY",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Polyvinyl_chloride"
-    ],
-    "facts": [
-     {
-      "claim": "1872년 바우만이 햇빛을 가린 채 4주 둔 플라스크에서 합성",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride",
-      "note": "PVC was synthesized in 1872 by German chemist Eugen Baumann after extended investigation and experimentation. (the polymer appeared in a flask of vinyl chloride that had been kept out of sunlight for four weeks)"
-     },
-     {
-      "claim": "1926년 시먼·B.F.굿리치가 첨가제로 가소화",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride",
-      "note": "Waldo Semon and the B.F. Goodrich Company developed a method in 1926 to plasticize PVC by blending it with various additives."
-     },
-     {
-      "claim": "클라테·오스트로미슬렌스키의 시도는 가공 어려움으로 좌절",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride",
-      "note": "Klatte, of Griesheim-Elektron, and Ivan Ostromislensky tried to use PVC in commercial products in the early 20th century, but processing difficulties thwarted them."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Polyvinyl_chloride"
-    ],
-    "hintNote": "The largest single producer of PVC as of 2018 is Shin-Etsu Chemical of Japan, with a global share of around 30%.",
-    "easiestCue": "흔히 영문 약자로 부르는 이 플라스틱",
-    "targetWhy": "바우만·시먼의 개발사는 재료 애호가 수준 — 배관·전선 같은 대표 쓰임 단서 없음",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "집에서 흔한 재료의 탄생 사연",
-    "pairCheck": null,
-    "dbCheck": "answercheck new · 페트·폴리에틸렌(활성)과 다른 물질",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "material/2",
+    "midKey": "material",
+    "subName": "플라스틱·신소재",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "material/2#g019b-C2-16",
-   "seed": {
-    "subject": "스판덱스",
-    "aspect": null,
-    "ref": "C2-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1958년 듀폰의 화학자 조지프 시버스는 여성용 거들에 쓰던 고무를 대신할 섬유를 찾다 이 섬유를 만들었고, 처음에는 '파이버 K'라 불렸습니다. 북미에서 쓰는 이 섬유의 일반 이름은 무엇일까요?",
-    "answer": "스판덱스",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "이름은 영어 'expands'의 글자 순서를 바꾼 것이고, 듀폰은 자기 제품에 '라이크라'라는 상표를 붙였습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "여성용 거들에 쓰던 고무를 대신할 섬유",
-     "difWhy": "'거들 고무 대신 섬유' — 의류 관심층",
-     "wor": 3,
-     "worWhy": "흔한 섬유 이름 유래",
-     "acc": 2,
-     "accWhy": "재료·건설 기술 — 애호가 영역"
+  "items": [
+    {
+      "seedId": "material/2#g019b-C2-15",
+      "seed": {
+        "subject": "PVC",
+        "aspect": null,
+        "ref": "C2-15",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1872년 독일 화학자 오이겐 바우만은 한 기체를 담아 햇빛을 가린 채 4주 동안 둔 플라스크에서 이 고분자를 얻었습니다. 1926년 미국 B.F.굿리치의 월도 시먼이 첨가제를 섞어 무르게 만드는 법을 찾으면서 쓰임이 넓어진, 흔히 영문 약자로 부르는 이 플라스틱은?",
+        "answer": "PVC",
+        "acceptedAnswers": [
+          "폴리염화비닐"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "폴리염화비닐 — 표준 화학 용어(ko.wikipedia 문서 제목)",
+        "explanation": "20세기 초 프리츠 클라테 등도 이 물질로 상품을 만들려 했지만 가공이 어려워 뜻을 이루지 못했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1872년 독일 화학자 오이겐 바우만",
+          "difWhy": "PVC 발견사 — 대학 교양 화학",
+          "wor": 4,
+          "worWhy": "교양 — 소재 기본 어휘",
+          "acc": 2,
+          "accWhy": "재료·건설 기술 — 애호가 영역",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1872년 독일 화학자 오이겐 바우만",
+          "difWhy": "PVC 발견사 — 대학 교양 화학",
+          "wor": 4,
+          "worWhy": "교양 — 소재 기본 어휘"
+        },
+        "rewrite": null,
+        "generalHint": "2018년 기준 이 플라스틱을 가장 많이 만드는 업체는 세계 몫의 약 30%를 차지한 일본의 신에쓰 화학이다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "배관·전선 피복에 흔히 쓰는 염소가 든 플라스틱",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "PVC 파이프 등 생활에서 접함",
+          "piece": "f09",
+          "genPct": 80
+        },
+        "blind": {
+          "ref": "C2-15",
+          "key": "b014",
+          "hint": "2018년 기준 이 플라스틱을 가장 많이 만드는 업체는 세계 몫의 약 30%를 차지한 일본의 신에쓰 화학이다.",
+          "guess": "폴리염화비닐(PVC)",
+          "confidence": "high",
+          "hit": true,
+          "answer": "PVC",
+          "first": {
+            "ref": "C2-15",
+            "key": "b165",
+            "hint": "세계에서 셋째로 많이 만드는 합성 고분자 플라스틱이다.",
+            "guess": "폴리염화비닐(PVC)",
+            "confidence": "high",
+            "hit": true,
+            "answer": "PVC"
+          }
+        },
+        "hobby": "DIY",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Polyvinyl_chloride"
+        ],
+        "facts": [
+          {
+            "claim": "1872년 바우만이 햇빛을 가린 채 4주 둔 플라스크에서 합성",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride",
+            "note": "PVC was synthesized in 1872 by German chemist Eugen Baumann after extended investigation and experimentation. (the polymer appeared in a flask of vinyl chloride that had been kept out of sunlight for four weeks)"
+          },
+          {
+            "claim": "1926년 시먼·B.F.굿리치가 첨가제로 가소화",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride",
+            "note": "Waldo Semon and the B.F. Goodrich Company developed a method in 1926 to plasticize PVC by blending it with various additives."
+          },
+          {
+            "claim": "클라테·오스트로미슬렌스키의 시도는 가공 어려움으로 좌절",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride",
+            "note": "Klatte, of Griesheim-Elektron, and Ivan Ostromislensky tried to use PVC in commercial products in the early 20th century, but processing difficulties thwarted them."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Polyvinyl_chloride"
+        ],
+        "hintNote": "The largest single producer of PVC as of 2018 is Shin-Etsu Chemical of Japan, with a global share of around 30%.",
+        "easiestCue": "흔히 영문 약자로 부르는 이 플라스틱",
+        "targetWhy": "바우만·시먼의 개발사는 재료 애호가 수준 — 배관·전선 같은 대표 쓰임 단서 없음",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "집에서 흔한 재료의 탄생 사연",
+        "pairCheck": null,
+        "dbCheck": "answercheck new · 페트·폴리에틸렌(활성)과 다른 물질",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1872년 독일 화학자 오이겐 바우만",
+          "difWhy": "PVC 발견사 — 대학 교양 화학",
+          "wor": 4,
+          "worWhy": "교양 — 소재 기본 어휘",
+          "acc": 2,
+          "accWhy": "재료·건설 기술 — 애호가 영역"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "한 영어 낱말의 글자 순서를 바꾼 것",
-     "difWhy": "expands 철자 바꿈 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 섬유 이름 유래"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1958년 듀폰의 화학자 조지프 시버스는 여성용 거들에 쓰던 고무를 대신할 섬유를 찾다 이 섬유를 만들었고, 처음에는 '파이버 K'라 불렸습니다. 북미에서 쓰는 이 섬유의 일반 이름은 한 영어 낱말의 글자 순서를 바꾼 것인데, 무엇일까요?",
-     "beforeExplanation": "듀폰은 다른 회사 제품과 구별하려고 자기 제품에 '라이크라'라는 상표를 붙였습니다.",
-     "removedCue": "이름이 한 영어 낱말의 글자 순서를 바꾼 것(관심층 — expands)",
-     "addedCue": "없음(쉬운 단서를 해설로 내림 — 시버스·거들·파이버 K가 남음)",
-     "why": "철자 바꿈 단서가 곧 이름을 알려 줘 해설로 내림"
-    },
-    "generalHint": "1968년 동계 올림픽에서 프랑스 스키 대표팀이 이 섬유로 만든 옷을 입었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "잘 늘어나는 합성 섬유로 운동복·레깅스에 쓰는 것",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "옷 소재 표시·일상에서 흔히 들음",
-     "piece": "f05",
-     "genPct": 85
-    },
-    "blind": {
-     "ref": "C2-16",
-     "key": "b236",
-     "hint": "1968년 동계 올림픽에서 프랑스 스키 대표팀이 이 섬유로 만든 옷을 입었다.",
-     "guess": "스판덱스",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "스판덱스"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Spandex"
-    ],
-    "facts": [
-     {
-      "claim": "1958년 듀폰 시버스가 발명",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Spandex",
-      "note": "invented in 1958 by chemist Joseph Shivers at DuPont"
-     },
-     {
-      "claim": "거들의 고무를 대신할 섬유",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Spandex",
-      "note": "DuPont sought a better fiber for women's girdles, which were usually rubber at the time"
-     },
-     {
-      "claim": "처음 이름 Fiber K",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Spandex",
-      "note": "originally called Fiber K"
-     },
-     {
-      "claim": "이름은 expands 의 애너그램, 북미에서 쓰는 말",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Spandex",
-      "note": "The name \"spandex\" is an anagram of the word \"expands\" and is the preferred term in North America."
-     },
-     {
-      "claim": "듀폰의 상표 라이크라",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Spandex",
-      "note": "DuPont picked Lycra as a trade name to distinguish its brand of spandex fiber"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Spandex"
-    ],
-    "hintNote": "The association of Lycra with fitness had been established at the 1968 Winter Olympic Games, when the French ski team wore Lycra garments.",
-    "easiestCue": "1958년 듀폰 시버스가 거들 고무 대신 만든 섬유",
-    "targetWhy": "발명자와 첫 이름 '파이버 K'는 소재·패션 애호가 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "흔한 소재 이름의 뜻밖의 유래",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  }
- ]
+    {
+      "seedId": "material/2#g019b-C2-16",
+      "seed": {
+        "subject": "스판덱스",
+        "aspect": null,
+        "ref": "C2-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1958년 듀폰의 화학자 조지프 시버스는 여성용 거들에 쓰던 고무를 대신할 섬유를 찾다 이 섬유를 만들었고, 처음에는 '파이버 K'라 불렸습니다. 북미에서 쓰는 이 섬유의 일반 이름은 무엇일까요?",
+        "answer": "스판덱스",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "이름은 영어 'expands'의 글자 순서를 바꾼 것이고, 듀폰은 자기 제품에 '라이크라'라는 상표를 붙였습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "여성용 거들에 쓰던 고무를 대신할 섬유",
+          "difWhy": "'거들 고무 대신 섬유' — 의류 관심층",
+          "wor": 3,
+          "worWhy": "흔한 섬유 이름 유래",
+          "acc": 2,
+          "accWhy": "재료·건설 기술 — 애호가 영역",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "한 영어 낱말의 글자 순서를 바꾼 것",
+          "difWhy": "expands 철자 바꿈 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 섬유 이름 유래"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1958년 듀폰의 화학자 조지프 시버스는 여성용 거들에 쓰던 고무를 대신할 섬유를 찾다 이 섬유를 만들었고, 처음에는 '파이버 K'라 불렸습니다. 북미에서 쓰는 이 섬유의 일반 이름은 한 영어 낱말의 글자 순서를 바꾼 것인데, 무엇일까요?",
+          "beforeExplanation": "듀폰은 다른 회사 제품과 구별하려고 자기 제품에 '라이크라'라는 상표를 붙였습니다.",
+          "removedCue": "이름이 한 영어 낱말의 글자 순서를 바꾼 것(관심층 — expands)",
+          "addedCue": "없음(쉬운 단서를 해설로 내림 — 시버스·거들·파이버 K가 남음)",
+          "why": "철자 바꿈 단서가 곧 이름을 알려 줘 해설로 내림"
+        },
+        "generalHint": "1968년 동계 올림픽에서 프랑스 스키 대표팀이 이 섬유로 만든 옷을 입었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "잘 늘어나는 합성 섬유로 운동복·레깅스에 쓰는 것",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "옷 소재 표시·일상에서 흔히 들음",
+          "piece": "f05",
+          "genPct": 85
+        },
+        "blind": {
+          "ref": "C2-16",
+          "key": "b236",
+          "hint": "1968년 동계 올림픽에서 프랑스 스키 대표팀이 이 섬유로 만든 옷을 입었다.",
+          "guess": "스판덱스",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "스판덱스"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Spandex"
+        ],
+        "facts": [
+          {
+            "claim": "1958년 듀폰 시버스가 발명",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Spandex",
+            "note": "invented in 1958 by chemist Joseph Shivers at DuPont"
+          },
+          {
+            "claim": "거들의 고무를 대신할 섬유",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Spandex",
+            "note": "DuPont sought a better fiber for women's girdles, which were usually rubber at the time"
+          },
+          {
+            "claim": "처음 이름 Fiber K",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Spandex",
+            "note": "originally called Fiber K"
+          },
+          {
+            "claim": "이름은 expands 의 애너그램, 북미에서 쓰는 말",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Spandex",
+            "note": "The name \"spandex\" is an anagram of the word \"expands\" and is the preferred term in North America."
+          },
+          {
+            "claim": "듀폰의 상표 라이크라",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Spandex",
+            "note": "DuPont picked Lycra as a trade name to distinguish its brand of spandex fiber"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Spandex"
+        ],
+        "hintNote": "The association of Lycra with fitness had been established at the 1968 Winter Olympic Games, when the French ski team wore Lycra garments.",
+        "easiestCue": "1958년 듀폰 시버스가 거들 고무 대신 만든 섬유",
+        "targetWhy": "발명자와 첫 이름 '파이버 K'는 소재·패션 애호가 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "흔한 소재 이름의 뜻밖의 유래",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "여성용 거들에 쓰던 고무를 대신할 섬유",
+          "difWhy": "'거들 고무 대신 섬유' — 의류 관심층",
+          "wor": 3,
+          "worWhy": "흔한 섬유 이름 유래",
+          "acc": 2,
+          "accWhy": "재료·건설 기술 — 애호가 영역"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

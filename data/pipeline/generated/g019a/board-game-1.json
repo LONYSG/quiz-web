@@ -1,121 +1,136 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "board-game/1",
-  "midKey": "board-game",
-  "subName": "바둑·장기",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "board-game/1#g019a-L2-18",
-   "seed": {
-    "subject": "이세돌",
-    "aspect": null,
-    "ref": "L2-18",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "2003년 KAT배에서 홍창식을 상대로 초보자의 실수로 여겨지는 '축이 안 되는 축'을 일부러 몰아 대마를 잡고 이겼습니다. 열두 살 넉 달에 역대 다섯 번째로 어린 나이에 입단한 이 기사는?",
-    "answer": "이세돌",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "전남 신안의 비금도에서 자라, 어릴 때 언론에서 '비금도 소년'이라 불렸습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "열두 살 넉 달에 역대 다섯 번째로 어린 나이에 입단",
-     "difWhy": "입단 나이·대국 세부 — 바둑 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "누구나 아는 기사 이름",
-     "acc": 4,
-     "accWhy": "바둑·화투·체스 — 대부분이 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "2002년에는 3단으로 후지쯔배를 차지해",
-     "difWhy": "3단 세계 대회 우승 — 바둑 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 기사 이름"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "2003년 KAT배에서 홍창식을 상대로 초보자의 실수로 여겨지는 '축이 안 되는 축'을 일부러 몰아 대마를 잡고 이겼습니다. 2002년에는 3단으로 후지쯔배를 차지해 최저단 세계 대회 우승 기록을 새로 쓴 이 기사는?",
-     "beforeExplanation": null,
-     "removedCue": "2002년 3단으로 후지쯔배 우승(최저단 세계 대회 우승)",
-     "addedCue": "12세 4개월 — 역대 다섯 번째 최연소 입단",
-     "why": "세계 대회 우승 기록(바둑 관심층 상식)을 빼고 기보·입단 세부로"
-    },
-    "generalHint": "그의 형 이상훈도 9단에 오른 프로 기사다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "인공지능과 대국해 한 판을 이긴 한국의 전 프로 바둑 기사",
-    "familiarity": {
-     "judge": 3,
-     "pct": 97,
-     "why": "알파고 대국으로 유명",
-     "piece": "f06",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "L2-18",
-     "key": "b042",
-     "hint": "그의 형 이상훈도 9단에 오른 프로 기사다.",
-     "guess": "이세돌",
-     "confidence": "high",
-     "hit": true,
-     "answer": "이세돌"
-    },
-    "hobby": "보드게임",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Lee_Sedol",
-     "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%84%B8%EB%8F%8C"
-    ],
-    "facts": [
-     {
-      "claim": "2003년 4월 23일 KAT컵 홍창식전에서 깨진 축(broken ladder)으로 대마를 잡아 승리",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Lee_Sedol",
-      "note": "On 23 April 2003, in a game against Hong Chang-sik during the 2003 KAT cup, Lee used a broken ladder formation. Normally, playing out a broken ladder is a mistake, associated with beginner play ... using the broken ladder to capture a large group of Hong's stones ... White ultimately resigned."
-     },
-     {
-      "claim": "비금도에서 자라 '비금도 소년'",
-      "where": "e",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%84%B8%EB%8F%8C",
-      "note": "이세돌이 어릴 때 성장한 곳이 비금도여서 어릴 때에는 각종 언론 매체에서 '비금도 소년'이라는 수식어를 붙여 주었다."
-     },
-     {
-      "claim": "역대 최연소 5위(12세 4개월) 입단",
-      "where": "q",
-      "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%84%B8%EB%8F%8C",
-      "note": "이세돌은 조훈현, 이창호, 조혜연, 최철한에 이어 역대 최연소 5위(12세 4개월)로 입단하였고, 그 뒤로 2단이 되는 데에 3년이 걸렸다."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Lee_Sedol"
-    ],
-    "hintNote": "His older brother Lee Sang-hoon is also a 9 dan professional go player.",
-    "easiestCue": "'축이 안 되는 축'을 일부러 몰아 대마를 잡고",
-    "targetWhy": "바둑 기사의 명국·입단 세부 — 바둑 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 기사의 알파고 밖 이야기",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019a",
+    "subId": "board-game/1",
+    "midKey": "board-game",
+    "subName": "바둑·장기",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "board-game/1#g019a-L2-18",
+      "seed": {
+        "subject": "이세돌",
+        "aspect": null,
+        "ref": "L2-18",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "2003년 KAT배에서 홍창식을 상대로 초보자의 실수로 여겨지는 '축이 안 되는 축'을 일부러 몰아 대마를 잡고 이겼습니다. 열두 살 넉 달에 역대 다섯 번째로 어린 나이에 입단한 이 기사는?",
+        "answer": "이세돌",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "전남 신안의 비금도에서 자라, 어릴 때 언론에서 '비금도 소년'이라 불렸습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "열두 살 넉 달에 역대 다섯 번째로 어린 나이에 입단",
+          "difWhy": "입단 나이·대국 세부 — 바둑 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "누구나 아는 기사 이름",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "2002년에는 3단으로 후지쯔배를 차지해",
+          "difWhy": "3단 세계 대회 우승 — 바둑 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 기사 이름"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "2003년 KAT배에서 홍창식을 상대로 초보자의 실수로 여겨지는 '축이 안 되는 축'을 일부러 몰아 대마를 잡고 이겼습니다. 2002년에는 3단으로 후지쯔배를 차지해 최저단 세계 대회 우승 기록을 새로 쓴 이 기사는?",
+          "beforeExplanation": null,
+          "removedCue": "2002년 3단으로 후지쯔배 우승(최저단 세계 대회 우승)",
+          "addedCue": "12세 4개월 — 역대 다섯 번째 최연소 입단",
+          "why": "세계 대회 우승 기록(바둑 관심층 상식)을 빼고 기보·입단 세부로"
+        },
+        "generalHint": "그의 형 이상훈도 9단에 오른 프로 기사다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "인공지능과 대국해 한 판을 이긴 한국의 전 프로 바둑 기사",
+        "familiarity": {
+          "judge": 3,
+          "pct": 97,
+          "why": "알파고 대국으로 유명",
+          "piece": "f06",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "L2-18",
+          "key": "b042",
+          "hint": "그의 형 이상훈도 9단에 오른 프로 기사다.",
+          "guess": "이세돌",
+          "confidence": "high",
+          "hit": true,
+          "answer": "이세돌"
+        },
+        "hobby": "보드게임",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Lee_Sedol",
+          "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%84%B8%EB%8F%8C"
+        ],
+        "facts": [
+          {
+            "claim": "2003년 4월 23일 KAT컵 홍창식전에서 깨진 축(broken ladder)으로 대마를 잡아 승리",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Lee_Sedol",
+            "note": "On 23 April 2003, in a game against Hong Chang-sik during the 2003 KAT cup, Lee used a broken ladder formation. Normally, playing out a broken ladder is a mistake, associated with beginner play ... using the broken ladder to capture a large group of Hong's stones ... White ultimately resigned."
+          },
+          {
+            "claim": "비금도에서 자라 '비금도 소년'",
+            "where": "e",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%84%B8%EB%8F%8C",
+            "note": "이세돌이 어릴 때 성장한 곳이 비금도여서 어릴 때에는 각종 언론 매체에서 '비금도 소년'이라는 수식어를 붙여 주었다."
+          },
+          {
+            "claim": "역대 최연소 5위(12세 4개월) 입단",
+            "where": "q",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%84%B8%EB%8F%8C",
+            "note": "이세돌은 조훈현, 이창호, 조혜연, 최철한에 이어 역대 최연소 5위(12세 4개월)로 입단하였고, 그 뒤로 2단이 되는 데에 3년이 걸렸다."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Lee_Sedol"
+        ],
+        "hintNote": "His older brother Lee Sang-hoon is also a 9 dan professional go player.",
+        "easiestCue": "'축이 안 되는 축'을 일부러 몰아 대마를 잡고",
+        "targetWhy": "바둑 기사의 명국·입단 세부 — 바둑 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 기사의 알파고 밖 이야기",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "열두 살 넉 달에 역대 다섯 번째로 어린 나이에 입단",
+          "difWhy": "입단 나이·대국 세부 — 바둑 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "누구나 아는 기사 이름",
+          "acc": 4,
+          "accWhy": "바둑·화투·체스 — 대부분이 안다"
+        },
+        "g020": {
+          "why": "V025 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

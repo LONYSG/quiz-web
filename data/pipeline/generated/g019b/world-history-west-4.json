@@ -1,589 +1,658 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "world-history-west/4",
-  "midKey": "world-history-west",
-  "subName": "근대 유럽·혁명",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "world-history-west/4#g019b-H1-16",
-   "seed": {
-    "subject": "마리 앙투아네트",
-    "aspect": null,
-    "ref": "H1-16",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1783년 한 숭배자가 시계공 브레게에게 주문한 것으로 여겨지는 회중시계 'No.160'은, 받을 사람이 세상을 떠나고 9년 뒤인 1802년에야 완성되었습니다. 같은 해 낙농장과 곡식을 빻지 않는 물레방아를 갖춘 시골 마을을 짓게 한 이 인물은?",
-    "answer": "마리 앙투아네트",
-    "acceptedAnswers": [
-     "앙투아네트"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '마리 앙투아네트' — '앙투아네트'만 치는 일이 흔함",
-    "explanation": "이 시계는 1983년 예루살렘의 L. A. 메이어 이슬람 미술관에서 도난당했다가 2007년에야 되찾았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "낙농장과 곡식을 빻지 않는 물레방아를 갖춘 시골 마을",
-     "difWhy": "브레게 시계·아모 마을 — 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "낙농장과 곡식을 빻지 않는 물레방아를 갖춘 시골 마을",
-     "difWhy": "브레게 시계·아모 마을 — 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "그녀의 후원을 받은 화가 엘리자베트 비제르브룅은 그녀와 그 가족의 초상을 30점 넘게 그렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "프랑스 혁명 때 단두대에서 처형된 루이 16세의 왕비",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "누구나 아는 역사 인물",
-     "piece": "f08",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "H1-16",
-     "key": "b028",
-     "hint": "그녀의 후원을 받은 화가 엘리자베트 비제르브룅은 그녀와 그 가족의 초상을 30점 넘게 그렸다.",
-     "guess": "마리 앙투아네트",
-     "confidence": "high",
-     "hit": true,
-     "answer": "마리 앙투아네트",
-     "first": {
-      "ref": "H1-16",
-      "key": "b032",
-      "hint": "1774년 6월 남편 루이 16세에게서 프티 트리아농을 선물로 받았다.",
-      "guess": "마리 앙투아네트",
-      "confidence": "high",
-      "hit": true,
-      "answer": "마리 앙투아네트"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
-     "https://en.wikipedia.org/wiki/Hameau_de_la_Reine"
-    ],
-    "facts": [
-     {
-      "claim": "1783년 숭배자가 주문한 것으로 여겨짐 · 브레게 160번째",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
-      "note": "thought to have been commissioned in 1783 by … an unknown admirer of the French Queen … Breguet … his 160th watch"
-     },
-     {
-      "claim": "처형 9년 뒤 1802년 완성",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
-      "note": "finally finished in 1802, nine years after Marie Antoinette's execution."
-     },
-     {
-      "claim": "1783년 왕비를 위해 지은 마을 · 낙농장 · 곡식을 빻지 않은 물레방아",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Hameau_de_la_Reine",
-      "note": "built for Marie Antoinette in 1783 … one where the dairy products were made … the mill was never used for grinding grain."
-     },
-     {
-      "claim": "1983년 L.A. 메이어 미술관 도난 · 2007년 회수",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
-      "note": "Stolen from the L.A. Mayer Institute for Islamic Art in Jerusalem on April 17, 1983 … recovered in 2007"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/%C3%89lisabeth_Vig%C3%A9e_Le_Brun"
-    ],
-    "hintNote": "As her career blossomed, Vigée Le Brun was granted patronage by Marie Antoinette. She painted more than 30 portraits of the Queen and her family",
-    "easiestCue": "1783년 낙농장과 물레방아를 갖춘 시골 마을을 짓게 함",
-    "targetWhy": "'빵 대신 케이크'·단두대·베르사유·페르센(대표 일화)은 빼고 시계와 왕비의 촌락만 — 시계·궁정사 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "정답은 누구나 아는 인물, 단서는 시계 애호가 세부",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "world-history-west/4",
+    "midKey": "world-history-west",
+    "subName": "근대 유럽·혁명",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "world-history-west/4#g019b-H1-17",
-   "seed": {
-    "subject": "나폴레옹",
-    "aspect": null,
-    "ref": "H1-17",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "런던 첼시의 국립 육군 박물관에는 이 인물이 탔던 아랍종 말의 뼈대가 있고, 그 말의 발굽 하나는 근위 여단 장교들에게 코담배갑으로 건네졌습니다. 이 인물이 숨을 거둔 집은 1858년 프랑스 정부가 사들여 지금도 프랑스 외무부가 갖고 있는데, 이 인물은?",
-    "answer": "나폴레옹",
-    "acceptedAnswers": [
-     "나폴레옹 보나파르트",
-     "나폴레옹 1세"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '나폴레옹 보나파르트', '나폴레옹 1세'에서 넘어옴(API 넘겨주기 확인)",
-    "explanation": "그 말의 이름 '마렝고'는 주인을 태우고 무사히 빠져나온 전투에서 땄고, 말은 1815년 워털루 전투에서 영국의 페트리 남작에게 붙잡혔습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "숨을 거둔 집을 1858년 프랑스 정부가 사들여 지금도 소유",
-     "difWhy": "'외국에서 죽은 프랑스 인물' — 세계사 관심층 (경계 4)",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
+  "items": [
+    {
+      "seedId": "world-history-west/4#g019b-H1-16",
+      "seed": {
+        "subject": "마리 앙투아네트",
+        "aspect": null,
+        "ref": "H1-16",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1783년 한 숭배자가 시계공 브레게에게 주문한 것으로 여겨지는 회중시계 'No.160'은, 받을 사람이 세상을 떠나고 9년 뒤인 1802년에야 완성되었습니다. 이 인물은 시계를 주문한 1783년에 낙농장과 곡식을 빻지 않는 물레방아를 갖춘 시골 마을을 짓게 했는데, 이 인물은 누구일까요?",
+        "answer": "마리 앙투아네트",
+        "acceptedAnswers": [
+          "앙투아네트"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '마리 앙투아네트' — '앙투아네트'만 치는 일이 흔함",
+        "explanation": "이 시계는 1983년 예루살렘의 L. A. 메이어 이슬람 미술관에서 도난당했다가 2007년에야 되찾았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "낙농장과 곡식을 빻지 않는 물레방아를 갖춘 시골 마을",
+          "difWhy": "브레게 시계·아모 마을 — 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "낙농장과 곡식을 빻지 않는 물레방아를 갖춘 시골 마을",
+          "difWhy": "브레게 시계·아모 마을 — 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "그녀의 후원을 받은 화가 엘리자베트 비제르브룅은 그녀와 그 가족의 초상을 30점 넘게 그렸다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "프랑스 혁명 때 단두대에서 처형된 루이 16세의 왕비",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "누구나 아는 역사 인물",
+          "piece": "f08",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "H1-16",
+          "key": "b028",
+          "hint": "그녀의 후원을 받은 화가 엘리자베트 비제르브룅은 그녀와 그 가족의 초상을 30점 넘게 그렸다.",
+          "guess": "마리 앙투아네트",
+          "confidence": "high",
+          "hit": true,
+          "answer": "마리 앙투아네트",
+          "first": {
+            "ref": "H1-16",
+            "key": "b032",
+            "hint": "1774년 6월 남편 루이 16세에게서 프티 트리아농을 선물로 받았다.",
+            "guess": "마리 앙투아네트",
+            "confidence": "high",
+            "hit": true,
+            "answer": "마리 앙투아네트"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
+          "https://en.wikipedia.org/wiki/Hameau_de_la_Reine"
+        ],
+        "facts": [
+          {
+            "claim": "1783년 숭배자가 주문한 것으로 여겨짐 · 브레게 160번째",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
+            "note": "thought to have been commissioned in 1783 by … an unknown admirer of the French Queen … Breguet … his 160th watch"
+          },
+          {
+            "claim": "처형 9년 뒤 1802년 완성",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
+            "note": "finally finished in 1802, nine years after Marie Antoinette's execution."
+          },
+          {
+            "claim": "1783년 왕비를 위해 지은 마을 · 낙농장 · 곡식을 빻지 않은 물레방아",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Hameau_de_la_Reine",
+            "note": "built for Marie Antoinette in 1783 … one where the dairy products were made … the mill was never used for grinding grain."
+          },
+          {
+            "claim": "1983년 L.A. 메이어 미술관 도난 · 2007년 회수",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Marie_Antoinette_(watch)",
+            "note": "Stolen from the L.A. Mayer Institute for Islamic Art in Jerusalem on April 17, 1983 … recovered in 2007"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/%C3%89lisabeth_Vig%C3%A9e_Le_Brun"
+        ],
+        "hintNote": "As her career blossomed, Vigée Le Brun was granted patronage by Marie Antoinette. She painted more than 30 portraits of the Queen and her family",
+        "easiestCue": "1783년 낙농장과 물레방아를 갖춘 시골 마을을 짓게 함",
+        "targetWhy": "'빵 대신 케이크'·단두대·베르사유·페르센(대표 일화)은 빼고 시계와 왕비의 촌락만 — 시계·궁정사 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "정답은 누구나 아는 인물, 단서는 시계 애호가 세부",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "낙농장과 곡식을 빻지 않는 물레방아를 갖춘 시골 마을",
+          "difWhy": "브레게 시계·아모 마을 — 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V026 fix readable·not-unique",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "이 인물이 마지막 몇 해를 보낸 롱우드 하우스",
-     "difWhy": "세인트헬레나 유배 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
+    {
+      "seedId": "world-history-west/4#g019b-H1-17",
+      "seed": {
+        "subject": "나폴레옹",
+        "aspect": null,
+        "ref": "H1-17",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "런던 첼시의 국립 육군 박물관에는 이 인물이 탔던 아랍종 말의 뼈대가 있고, 그 말의 발굽 하나는 근위 여단 장교들에게 코담배갑으로 건네졌습니다. 이 인물이 숨을 거둔 집은 1858년 프랑스 정부가 사들여 지금도 프랑스 외무부가 갖고 있는데, 이 인물은?",
+        "answer": "나폴레옹",
+        "acceptedAnswers": [
+          "나폴레옹 보나파르트",
+          "나폴레옹 1세"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '나폴레옹 보나파르트', '나폴레옹 1세'에서 넘어옴(API 넘겨주기 확인)",
+        "explanation": "그 말의 이름 '마렝고'는 주인을 태우고 무사히 빠져나온 전투에서 땄고, 말은 1815년 워털루 전투에서 영국의 페트리 남작에게 붙잡혔습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "숨을 거둔 집을 1858년 프랑스 정부가 사들여 지금도 소유",
+          "difWhy": "'외국에서 죽은 프랑스 인물' — 세계사 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "이 인물이 마지막 몇 해를 보낸 롱우드 하우스",
+          "difWhy": "세인트헬레나 유배 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "런던 첼시의 국립 육군 박물관에는 이 인물이 탔던 말 '마렝고'의 뼈대가 있고, 그 말의 발굽 하나는 코담배갑이 되었습니다. 이 인물이 마지막 몇 해를 보낸 롱우드 하우스는 원래 동인도회사의 농장이었는데, 이 인물은?",
+          "beforeExplanation": "롱우드 하우스는 1858년 프랑스 정부가 사들여 지금도 프랑스 외무부가 갖고 있습니다.",
+          "removedCue": "마지막 몇 해를 보낸 롱우드 하우스(세인트헬레나 유배) · 말 이름 '마렝고'",
+          "addedCue": "숨진 집을 1858년 프랑스 정부가 사 외무부가 소유",
+          "why": "유배지 이름과 말 이름을 빼고 유물·거처 소유의 뒷이야기로 좁힘"
+        },
+        "generalHint": "이 인물이 숨을 거둔 집은 원래 동인도회사의 농장이었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "프랑스 혁명 뒤 황제가 된 코르시카 출신 군인",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 인물",
+          "piece": "f04",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "H1-17",
+          "key": "b059",
+          "hint": "1840년 그의 유해가 프랑스로 돌아와 12월 15일 파리 앵발리드로 가는 국장이 치러졌다.",
+          "guess": "나폴레옹",
+          "confidence": "high",
+          "hit": true,
+          "answer": "나폴레옹"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Marengo_(horse)",
+          "https://en.wikipedia.org/wiki/Longwood_House"
+        ],
+        "facts": [
+          {
+            "claim": "마렝고 뼈대 — 국립 육군 박물관(첼시)",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
+            "note": "His skeleton (minus two hooves) is now on display at the National Army Museum in Chelsea, London."
+          },
+          {
+            "claim": "발굽 하나는 코담배갑",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
+            "note": "One of the removed hooves was given to the Brigade of Guards officers as a snuff box."
+          },
+          {
+            "claim": "롱우드는 그가 숨질 때까지 머문 거처",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Longwood_House",
+            "note": "Longwood was Napoleon's residence on Saint Helena from December 1815 until his death in May 1821"
+          },
+          {
+            "claim": "1858년 프랑스 정부 매입 · 외무부 소유",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Longwood_House",
+            "note": "In 1858 the French government bought Longwood and the Valley of the Tomb for £7,100. It is now owned by the French Foreign Ministry."
+          },
+          {
+            "claim": "아랍종",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
+            "note": "An Arabian breed, greyish-white coat"
+          },
+          {
+            "claim": "발굽 하나를 앵거스타인이 근위 여단 장교들에게 코담배갑으로 줌",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
+            "note": "One went to the officers of the Brigade of Guards, given by John Julius Angerstein as a snuff box."
+          },
+          {
+            "claim": "이름은 마렝고 전투에서 땀 · 1815 워털루에서 페트리 남작이 포획",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
+            "note": "Named after the Battle of Marengo, through which he carried his rider safely. / captured in 1815 at the Battle of Waterloo by William Petre, 11th Baron Petre."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "이 인물이 숨을 거둔 집은 1858년 프랑스 정부가 사들여 지금도 프랑스 외무부가",
+        "targetWhy": "말 뼈대·코담배갑 · 거처 소유 — 역사 애호가 세부(4)",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "'마렝고'가 그의 전투 이름이라 관심층이 짐작할 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new — g019a 의 '나폴레옹 법전'(정치)과 정답 다름",
+        "warn": [
+          "단정어 마지막"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "숨을 거둔 집을 1858년 프랑스 정부가 사들여 지금도 소유",
+          "difWhy": "'외국에서 죽은 프랑스 인물' — 세계사 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "런던 첼시의 국립 육군 박물관에는 이 인물이 탔던 말 '마렝고'의 뼈대가 있고, 그 말의 발굽 하나는 코담배갑이 되었습니다. 이 인물이 마지막 몇 해를 보낸 롱우드 하우스는 원래 동인도회사의 농장이었는데, 이 인물은?",
-     "beforeExplanation": "롱우드 하우스는 1858년 프랑스 정부가 사들여 지금도 프랑스 외무부가 갖고 있습니다.",
-     "removedCue": "마지막 몇 해를 보낸 롱우드 하우스(세인트헬레나 유배) · 말 이름 '마렝고'",
-     "addedCue": "숨진 집을 1858년 프랑스 정부가 사 외무부가 소유",
-     "why": "유배지 이름과 말 이름을 빼고 유물·거처 소유의 뒷이야기로 좁힘"
+    {
+      "seedId": "world-history-west/4#g019b-H1-18",
+      "seed": {
+        "subject": "잭 더 리퍼",
+        "aspect": null,
+        "ref": "H1-18",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "굴스턴 거리의 한 계단 벽에 분필로 적힌 글을, 경시총감 찰스 워런은 반유대 폭동을 걱정해 날이 밝기 전에 지우게 했습니다. 그 아래에는 그날 밤 숨진 한 여성의 피 묻은 앞치마 조각이 있었는데, 이 사건의 범인을 흔히 무엇이라 부를까요?",
+        "answer": "잭 더 리퍼",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "범인이 보냈다고 주장하는 '지옥에서' 편지는 1888년 10월 16일 화이트채플 자경단장 조지 러스크에게 콩팥 반쪽이 든 상자와 함께 배달되었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 경시총감 찰스 워런 + 그날 밤 숨진 여성 + 범인 별명",
+          "difWhy": "런던 연쇄 살인범 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 미제 사건",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "그날 밤 숨진 캐서린 에도스의 피 묻은 앞치마",
+          "difWhy": "화이트채플 살인 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 유명 미제 사건"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "굴스턴 거리의 한 계단 벽에 분필로 적힌 글을, 경시총감 찰스 워런은 반유대 폭동을 걱정해 날이 밝기 전에 지우게 했습니다. 그 아래에는 그날 밤 숨진 캐서린 에도스의 피 묻은 앞치마 조각이 있었는데, 이 사건의 범인을 흔히 무엇이라 부를까요?",
+          "beforeExplanation": null,
+          "removedCue": "그날 밤 숨진 캐서린 에도스(관심층 — 피해자 이름)",
+          "addedCue": "없음(쉬운 단서만 뺌 — 굴스턴 거리 낙서·워런의 지시가 남음)",
+          "why": "피해자 이름은 사건 관심층이 바로 잇는 단서라 뺌"
+        },
+        "generalHint": "경찰 쪽은 뒷날 이 이름을 처음 쓴 편지의 글쓴이로 한 신문 기자를 지목했다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "19세기 말 런던 이스트엔드의 정체불명 연쇄 살인범",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "영화·추리물로 널리 알려진 이름",
+          "piece": "f09",
+          "genPct": 75
+        },
+        "blind": {
+          "ref": "H1-18",
+          "key": "b278",
+          "hint": "'Dear Boss'로 시작하는 편지가 이 이름으로 서명된 첫 편지로 여겨진다.",
+          "guess": "잭 더 리퍼",
+          "confidence": "high",
+          "hit": true,
+          "answer": "잭 더 리퍼"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Goulston_Street_graffito",
+          "https://en.wikipedia.org/wiki/Jack_the_Ripper"
+        ],
+        "facts": [
+          {
+            "claim": "굴스턴 거리 계단 분필 글씨 · 앞치마 조각",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Goulston_Street_graffito",
+            "note": "The writing was in chalk above a bloodstained piece of apron found by Constable Alfred Long in a Goulston Street tenement stairwell. The cloth was later confirmed as part of the apron worn by Catherine Eddowes."
+          },
+          {
+            "claim": "워런이 반유대 폭동을 걱정해 날이 밝기 전에 지우게 함",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jack_the_Ripper",
+            "note": "Police Commissioner Sir Charles Warren feared the chalk writing could spark antisemitic riots, so he ordered the writing washed away before dawn."
+          },
+          {
+            "claim": "에도스는 그날 밤(9월 30일 새벽) 살해",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Jack_the_Ripper",
+            "note": "Elizabeth Stride and Catherine Eddowes were both killed in the early morning hours of Sunday 30 September 1888."
+          },
+          {
+            "claim": "지옥에서 편지 · 러스크 · 10월 16일 · 콩팥 반쪽",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Jack_the_Ripper",
+            "note": "The 'From Hell' letter was received by George Lusk, leader of the Whitechapel Vigilance Committee, on 16 October 1888. … a small box with a preserved half kidney"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Jack_the_Ripper"
+        ],
+        "easiestCue": "굴스턴 거리 분필 글씨를 워런이 지우게 함",
+        "targetWhy": "굴스턴 거리 낙서는 사건 애호가(리퍼학) 세부라 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "런던·1888 없이 낙서·희생자 이름으로만 닿음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "엮음: 경시총감 찰스 워런 + 그날 밤 숨진 여성 + 범인 별명",
+          "difWhy": "런던 연쇄 살인범 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 미제 사건",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix",
+          "hintGen": true
+        }
+      }
     },
-    "generalHint": "1840년 그의 유해가 프랑스로 돌아와 12월 15일 파리 앵발리드로 가는 국장이 치러졌다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "프랑스 혁명 뒤 황제가 된 코르시카 출신 군인",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 인물",
-     "piece": "f04",
-     "genPct": 99
+    {
+      "seedId": "world-history-west/4#g019b-H1-19",
+      "seed": {
+        "subject": "표트르 대제",
+        "aspect": null,
+        "ref": "H1-19",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1697년 네덜란드에서 기형 태아 표본 등을 사들였던 이 인물은 1714년 여름 궁전에서 자기 수집품을 처음 공개해 쿤스트카메라를 열었습니다. 영국에 머물 때 그의 일행이 존 이블린의 집과 정원을 크게 망가뜨린 이 인물은?",
+        "answer": "표트르 대제",
+        "acceptedAnswers": [
+          "표트르 1세"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '표트르 1세', '표트르 대제'에서 넘어옴",
+        "explanation": "서유럽 사절단에 '미하일로프'라는 성을 쓴 가명으로 끼어 가, 네덜란드에서 배 만드는 일꾼으로 일하기도 했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1697년 네덜란드, 영국에 머문 서유럽 순방 인물",
+          "difWhy": "서유럽 사절단 — 고교 세계사",
+          "wor": 4,
+          "worWhy": "세계사 인물 교양",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "'미하일로프'라는 성을 쓴 가명 ... 네덜란드에서 배 만드는 일꾼",
+          "difWhy": "표트르 대사절단 — 고교 세계사",
+          "wor": 4,
+          "worWhy": "교양 — 세계사 주요 인물"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "서유럽으로 큰 사절단을 보낼 때 이 인물은 '미하일로프'라는 성을 쓴 가명으로 신분을 숨기고 함께 가, 네덜란드에서 배 만드는 일꾼으로 일했습니다. 1714년 기형 태아 표본 등을 모은 쿤스트카메라를 처음 연 이 인물은?",
+          "beforeExplanation": "1717년에는 네덜란드 해부학자 프레데릭 라위스의 표본을 대량으로 사들였고, 영국에 머물 때는 그의 일행이 존 이블린의 집과 정원을 크게 망가뜨렸습니다.",
+          "removedCue": "'미하일로프' 가명 · 네덜란드에서 배 만드는 일꾼(고교 세계사 — 대사절단)",
+          "addedCue": "1697년 표본 구입 · 이블린 저택 훼손(해설에서 옮김)",
+          "why": "가명·조선소 일화는 교과서 단서라 해설로 내리고, 수집품과 영국 체류 뒷이야기로 바꿈"
+        },
+        "generalHint": "1716년에는 네덜란드 약학자 알베르투스 세바의 수집품을 대량으로 사들였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "상트페테르부르크를 세우고 러시아를 서구화한 차르",
+        "familiarity": {
+          "judge": 3,
+          "pct": 75,
+          "why": "세계사 교과서·러시아 관련 뉴스로 익숙한 이름",
+          "piece": "f02",
+          "genPct": 60
+        },
+        "blind": {
+          "ref": "H1-19",
+          "key": "b122",
+          "hint": "턱수염을 지키려는 귀족에게는 해마다 100루블의 수염세를 물렸다.",
+          "guess": "표트르 대제",
+          "confidence": "high",
+          "hit": true,
+          "answer": "표트르 대제"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great",
+          "https://en.wikipedia.org/wiki/Kunstkamera"
+        ],
+        "facts": [
+          {
+            "claim": "세이스 코트 — 이블린의 집과 정원 망가뜨림",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great",
+            "note": "The Russian party did great harm to both house and grounds … The garden which was Evelyn's pride was ruined."
+          },
+          {
+            "claim": "대사절단 · 미하일로프 가명 · 네덜란드에서 조선공으로 일함",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great",
+            "note": "Peter traveled incognito under the name of Peter Mikhailov … worked incognito as a shipbuilder from 1 September (after arriving in the Dutch Republic)"
+          },
+          {
+            "claim": "1697년 라위스와 빈센트에게서 기형 태아 표본 등을 사들임",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kunstkamera",
+            "note": "A major component of the original collection was a large assortment of human and animal fetuses with various birth defects, many of which Peter had acquired in 1697 from Ruysch and Vincent."
+          },
+          {
+            "claim": "1714년 여름 궁전에서 수집품을 처음 공개",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Kunstkamera",
+            "note": "Peter's personal collection was first exhibited to the public at the Summer Palace in 1714"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "1714년 수집품을 공개해 쿤스트카메라를 엶",
+        "targetWhy": "쿤스트카메라와 이블린 저택 일화는 러시아사 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "조선공 일화는 관심층에 조금 알려짐",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [
+          "단정어 처음"
+        ],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "1697년 네덜란드, 영국에 머문 서유럽 순방 인물",
+          "difWhy": "서유럽 사절단 — 고교 세계사",
+          "wor": 4,
+          "worWhy": "세계사 인물 교양",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "blind": {
-     "ref": "H1-17",
-     "key": "b059",
-     "hint": "1840년 그의 유해가 프랑스로 돌아와 12월 15일 파리 앵발리드로 가는 국장이 치러졌다.",
-     "guess": "나폴레옹",
-     "confidence": "high",
-     "hit": true,
-     "answer": "나폴레옹"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Marengo_(horse)",
-     "https://en.wikipedia.org/wiki/Longwood_House"
-    ],
-    "facts": [
-     {
-      "claim": "마렝고 뼈대 — 국립 육군 박물관(첼시)",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
-      "note": "His skeleton (minus two hooves) is now on display at the National Army Museum in Chelsea, London."
-     },
-     {
-      "claim": "발굽 하나는 코담배갑",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
-      "note": "One of the removed hooves was given to the Brigade of Guards officers as a snuff box."
-     },
-     {
-      "claim": "롱우드는 그가 숨질 때까지 머문 거처",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Longwood_House",
-      "note": "Longwood was Napoleon's residence on Saint Helena from December 1815 until his death in May 1821"
-     },
-     {
-      "claim": "1858년 프랑스 정부 매입 · 외무부 소유",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Longwood_House",
-      "note": "In 1858 the French government bought Longwood and the Valley of the Tomb for £7,100. It is now owned by the French Foreign Ministry."
-     },
-     {
-      "claim": "아랍종",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
-      "note": "An Arabian breed, greyish-white coat"
-     },
-     {
-      "claim": "발굽 하나를 앵거스타인이 근위 여단 장교들에게 코담배갑으로 줌",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
-      "note": "One went to the officers of the Brigade of Guards, given by John Julius Angerstein as a snuff box."
-     },
-     {
-      "claim": "이름은 마렝고 전투에서 땀 · 1815 워털루에서 페트리 남작이 포획",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Marengo_(horse)",
-      "note": "Named after the Battle of Marengo, through which he carried his rider safely. / captured in 1815 at the Battle of Waterloo by William Petre, 11th Baron Petre."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Napoleon"
-    ],
-    "hintNote": "On 15 December 1840, a state funeral was held in Paris … to the chapel of Les Invalides.",
-    "easiestCue": "이 인물이 숨을 거둔 집은 1858년 프랑스 정부가 사들여 지금도 프랑스 외무부가",
-    "targetWhy": "말 뼈대·코담배갑 · 거처 소유 — 역사 애호가 세부(4)",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "'마렝고'가 그의 전투 이름이라 관심층이 짐작할 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new — g019a 의 '나폴레옹 법전'(정치)과 정답 다름",
-    "warn": [
-     "단정어 마지막"
-    ]
-   }
-  },
-  {
-   "seedId": "world-history-west/4#g019b-H1-18",
-   "seed": {
-    "subject": "잭 더 리퍼",
-    "aspect": null,
-    "ref": "H1-18",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "굴스턴 거리의 한 계단 벽에 분필로 적힌 글을, 경시총감 찰스 워런은 반유대 폭동을 걱정해 날이 밝기 전에 지우게 했습니다. 그 아래에는 그날 밤 숨진 한 여성의 피 묻은 앞치마 조각이 있었는데, 이 사건의 범인을 흔히 무엇이라 부를까요?",
-    "answer": "잭 더 리퍼",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "범인이 보냈다고 주장하는 '지옥에서' 편지는 1888년 10월 16일 화이트채플 자경단장 조지 러스크에게 콩팥 반쪽이 든 상자와 함께 배달되었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "엮음: 경시총감 찰스 워런 + 그날 밤 숨진 여성 + 범인 별명",
-     "difWhy": "런던 연쇄 살인범 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 미제 사건",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "그날 밤 숨진 캐서린 에도스의 피 묻은 앞치마",
-     "difWhy": "화이트채플 살인 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 유명 미제 사건"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "굴스턴 거리의 한 계단 벽에 분필로 적힌 글을, 경시총감 찰스 워런은 반유대 폭동을 걱정해 날이 밝기 전에 지우게 했습니다. 그 아래에는 그날 밤 숨진 캐서린 에도스의 피 묻은 앞치마 조각이 있었는데, 이 사건의 범인을 흔히 무엇이라 부를까요?",
-     "beforeExplanation": null,
-     "removedCue": "그날 밤 숨진 캐서린 에도스(관심층 — 피해자 이름)",
-     "addedCue": "없음(쉬운 단서만 뺌 — 굴스턴 거리 낙서·워런의 지시가 남음)",
-     "why": "피해자 이름은 사건 관심층이 바로 잇는 단서라 뺌"
-    },
-    "generalHint": "'Dear Boss'로 시작하는 편지가 이 이름으로 서명된 첫 편지로 여겨진다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "19세기 말 런던 이스트엔드의 정체불명 연쇄 살인범",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "영화·추리물로 널리 알려진 이름",
-     "piece": "f09",
-     "genPct": 75
-    },
-    "blind": {
-     "ref": "H1-18",
-     "key": "b278",
-     "hint": "'Dear Boss'로 시작하는 편지가 이 이름으로 서명된 첫 편지로 여겨진다.",
-     "guess": "잭 더 리퍼",
-     "confidence": "high",
-     "hit": true,
-     "answer": "잭 더 리퍼"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Goulston_Street_graffito",
-     "https://en.wikipedia.org/wiki/Jack_the_Ripper"
-    ],
-    "facts": [
-     {
-      "claim": "굴스턴 거리 계단 분필 글씨 · 앞치마 조각",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Goulston_Street_graffito",
-      "note": "The writing was in chalk above a bloodstained piece of apron found by Constable Alfred Long in a Goulston Street tenement stairwell. The cloth was later confirmed as part of the apron worn by Catherine Eddowes."
-     },
-     {
-      "claim": "워런이 반유대 폭동을 걱정해 날이 밝기 전에 지우게 함",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jack_the_Ripper",
-      "note": "Police Commissioner Sir Charles Warren feared the chalk writing could spark antisemitic riots, so he ordered the writing washed away before dawn."
-     },
-     {
-      "claim": "에도스는 그날 밤(9월 30일 새벽) 살해",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Jack_the_Ripper",
-      "note": "Elizabeth Stride and Catherine Eddowes were both killed in the early morning hours of Sunday 30 September 1888."
-     },
-     {
-      "claim": "지옥에서 편지 · 러스크 · 10월 16일 · 콩팥 반쪽",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Jack_the_Ripper",
-      "note": "The 'From Hell' letter was received by George Lusk, leader of the Whitechapel Vigilance Committee, on 16 October 1888. … a small box with a preserved half kidney"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Dear_Boss_letter"
-    ],
-    "hintNote": "the \"Dear Boss\" letter is regarded as the first piece of correspondence signed by one Jack the Ripper, ultimately resulting in the unidentified killer being known by this name.",
-    "easiestCue": "굴스턴 거리 분필 글씨를 워런이 지우게 함",
-    "targetWhy": "굴스턴 거리 낙서는 사건 애호가(리퍼학) 세부라 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "런던·1888 없이 낙서·희생자 이름으로만 닿음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "world-history-west/4#g019b-H1-19",
-   "seed": {
-    "subject": "표트르 대제",
-    "aspect": null,
-    "ref": "H1-19",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1697년 네덜란드에서 기형 태아 표본 등을 사들였던 이 인물은 1714년 여름 궁전에서 자기 수집품을 처음 공개해 쿤스트카메라를 열었습니다. 영국에 머물 때 그의 일행이 존 이블린의 집과 정원을 크게 망가뜨린 이 인물은?",
-    "answer": "표트르 대제",
-    "acceptedAnswers": [
-     "표트르 1세"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '표트르 1세', '표트르 대제'에서 넘어옴",
-    "explanation": "서유럽 사절단에 '미하일로프'라는 성을 쓴 가명으로 끼어 가, 네덜란드에서 배 만드는 일꾼으로 일하기도 했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "1697년 네덜란드, 영국에 머문 서유럽 순방 인물",
-     "difWhy": "서유럽 사절단 — 고교 세계사",
-     "wor": 4,
-     "worWhy": "세계사 인물 교양",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "'미하일로프'라는 성을 쓴 가명 ... 네덜란드에서 배 만드는 일꾼",
-     "difWhy": "표트르 대사절단 — 고교 세계사",
-     "wor": 4,
-     "worWhy": "교양 — 세계사 주요 인물"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "서유럽으로 큰 사절단을 보낼 때 이 인물은 '미하일로프'라는 성을 쓴 가명으로 신분을 숨기고 함께 가, 네덜란드에서 배 만드는 일꾼으로 일했습니다. 1714년 기형 태아 표본 등을 모은 쿤스트카메라를 처음 연 이 인물은?",
-     "beforeExplanation": "1717년에는 네덜란드 해부학자 프레데릭 라위스의 표본을 대량으로 사들였고, 영국에 머물 때는 그의 일행이 존 이블린의 집과 정원을 크게 망가뜨렸습니다.",
-     "removedCue": "'미하일로프' 가명 · 네덜란드에서 배 만드는 일꾼(고교 세계사 — 대사절단)",
-     "addedCue": "1697년 표본 구입 · 이블린 저택 훼손(해설에서 옮김)",
-     "why": "가명·조선소 일화는 교과서 단서라 해설로 내리고, 수집품과 영국 체류 뒷이야기로 바꿈"
-    },
-    "generalHint": "턱수염을 지키려는 귀족에게는 해마다 100루블의 수염세를 물렸다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "상트페테르부르크를 세우고 러시아를 서구화한 차르",
-    "familiarity": {
-     "judge": 3,
-     "pct": 75,
-     "why": "세계사 교과서·러시아 관련 뉴스로 익숙한 이름",
-     "piece": "f02",
-     "genPct": 60
-    },
-    "blind": {
-     "ref": "H1-19",
-     "key": "b122",
-     "hint": "턱수염을 지키려는 귀족에게는 해마다 100루블의 수염세를 물렸다.",
-     "guess": "표트르 대제",
-     "confidence": "high",
-     "hit": true,
-     "answer": "표트르 대제"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great",
-     "https://en.wikipedia.org/wiki/Kunstkamera"
-    ],
-    "facts": [
-     {
-      "claim": "세이스 코트 — 이블린의 집과 정원 망가뜨림",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great",
-      "note": "The Russian party did great harm to both house and grounds … The garden which was Evelyn's pride was ruined."
-     },
-     {
-      "claim": "대사절단 · 미하일로프 가명 · 네덜란드에서 조선공으로 일함",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Grand_Embassy_of_Peter_the_Great",
-      "note": "Peter traveled incognito under the name of Peter Mikhailov … worked incognito as a shipbuilder from 1 September (after arriving in the Dutch Republic)"
-     },
-     {
-      "claim": "1697년 라위스와 빈센트에게서 기형 태아 표본 등을 사들임",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kunstkamera",
-      "note": "A major component of the original collection was a large assortment of human and animal fetuses with various birth defects, many of which Peter had acquired in 1697 from Ruysch and Vincent."
-     },
-     {
-      "claim": "1714년 여름 궁전에서 수집품을 처음 공개",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Kunstkamera",
-      "note": "Peter's personal collection was first exhibited to the public at the Summer Palace in 1714"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Peter_the_Great"
-    ],
-    "hintNote": "Boyars who sought to retain their beards were required to pay an annual beard tax of one hundred rubles.",
-    "easiestCue": "1714년 수집품을 공개해 쿤스트카메라를 엶",
-    "targetWhy": "쿤스트카메라와 이블린 저택 일화는 러시아사 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "조선공 일화는 관심층에 조금 알려짐",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": [
-     "단정어 처음"
-    ]
-   }
-  },
-  {
-   "seedId": "world-history-west/4#g019b-H1-20",
-   "seed": {
-    "subject": "조제핀",
-    "aspect": null,
-    "ref": "H1-20",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "마르티니크의 사탕수수 농장 집안에서 태어난 이 인물은 원래 '로즈'라 불렸는데, 두 번째 남편이 다른 이름으로 부르기를 좋아했습니다. 공포 정치 때 카르메 감옥에 갇혔다가 첫 남편이 처형되고 닷새 뒤에 풀려난 이 인물은?",
-    "answer": "조제핀",
-    "acceptedAnswers": [
-     "조세핀",
-     "조제핀 드 보아르네"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '조제핀 드 보아르네' · '조제핀'은 '조세핀' 문서로 넘어감(API 넘겨주기 확인)",
-    "explanation": "그가 살던 말메종 성은 그가 손수 꼼꼼히 돌본 장미 정원으로 이름났습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "마르티니크의 사탕수수 농장 집안에서 태어난 이 인물은 원래 '로즈'",
-     "difWhy": "조제핀 출신·본명 — 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기",
-     "acc": 4,
-     "accWhy": "서양사 — 고교 세계사 교과"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "마르티니크의 사탕수수 농장 집안에서 태어난 이 인물은 원래 '로즈'",
-     "difWhy": "조제핀 출신·본명 — 애호가",
-     "wor": 3,
-     "worWhy": "유명 인물 이름 맞히기"
-    },
-    "rewrite": null,
-    "generalHint": "딸 오르탕스는 뒷날 나폴레옹 3세의 어머니가 되었다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "나폴레옹의 첫 아내이자 프랑스 황후",
-    "familiarity": {
-     "judge": 2,
-     "pct": 50,
-     "why": "나폴레옹의 아내로 세계사·드라마에서 접했을 법함",
-     "piece": "f02",
-     "genPct": 45
-    },
-    "blind": {
-     "ref": "H1-20",
-     "key": "b310",
-     "hint": "딸 오르탕스는 뒷날 나폴레옹 3세의 어머니가 되었다.",
-     "guess": "조제핀",
-     "confidence": "high",
-     "hit": true,
-     "answer": "조제핀"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais"
-    ],
-    "facts": [
-     {
-      "claim": "마르티니크 레트루아질레 사탕수수 농장",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
-      "note": "Les Trois-Îlets, Martinique, where the family home was a sugar plantation."
-     },
-     {
-      "claim": "원래 로즈 · 나폴레옹이 조제핀이라 부르기를 좋아함",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
-      "note": "born Marie Josèphe Rose Tascher de La Pagerie and went by Rose until she met Napoleon, who preferred to call her Joséphine."
-     },
-     {
-      "claim": "첫 남편 공포 정치 때 처형 · 카르메 감옥 · 닷새 뒤 석방",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
-      "note": "Alexandre de Beauharnais was guillotined during the Reign of Terror … held in the Carmes prison until five days after his execution."
-     },
-     {
-      "claim": "말메종 장미 정원",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
-      "note": "The Château de Malmaison was noted for its rose garden, which she supervised closely."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Hortense_de_Beauharnais"
-    ],
-    "hintNote": "She and Louis had three sons: Napoléon-Charles Bonaparte; Napoleon III, Emperor of the French; and Napoléon Louis Bonaparte",
-    "easiestCue": "원래 '로즈'라 불렸는데 두 번째 남편이 다른 이름을 좋아함",
-    "targetWhy": "'나폴레옹의 아내'·이혼(대표 사실)은 빼고 출생지·본래 이름·감옥 세부만 — 나폴레옹 시대 애호가",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "두 번째 남편이 누구인지 말하지 않아 대표 사실 없이 세부로만 닿음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new (조제핀 · 조세핀)",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "world-history-west/4#g019b-H1-20",
+      "seed": {
+        "subject": "조제핀",
+        "aspect": null,
+        "ref": "H1-20",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "마르티니크의 사탕수수 농장 집안 출신인 이 인물은 원래 '로즈'라 불렸는데, 두 번째 남편이 다른 이름으로 부르기를 좋아했습니다. 공포 정치 때 카르메 감옥에 갇혔다가 첫 남편이 처형되고 닷새 뒤에 풀려난 이 인물은?",
+        "answer": "조제핀",
+        "acceptedAnswers": [
+          "조세핀",
+          "조제핀 드 보아르네"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '조제핀 드 보아르네' · '조제핀'은 '조세핀' 문서로 넘어감(API 넘겨주기 확인)",
+        "explanation": "그가 살던 말메종 성은 그가 손수 꼼꼼히 돌본 장미 정원으로 이름났습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "마르티니크의 사탕수수 농장 집안에서 태어난 이 인물은 원래 '로즈'",
+          "difWhy": "조제핀 출신·본명 — 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "마르티니크의 사탕수수 농장 집안에서 태어난 이 인물은 원래 '로즈'",
+          "difWhy": "조제핀 출신·본명 — 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기"
+        },
+        "rewrite": null,
+        "generalHint": "딸 오르탕스는 뒷날 나폴레옹 3세의 어머니가 되었다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "나폴레옹의 첫 아내이자 프랑스 황후",
+        "familiarity": {
+          "judge": 2,
+          "pct": 50,
+          "why": "나폴레옹의 아내로 세계사·드라마에서 접했을 법함",
+          "piece": "f02",
+          "genPct": 45
+        },
+        "blind": {
+          "ref": "H1-20",
+          "key": "b310",
+          "hint": "딸 오르탕스는 뒷날 나폴레옹 3세의 어머니가 되었다.",
+          "guess": "조제핀",
+          "confidence": "high",
+          "hit": true,
+          "answer": "조제핀"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais"
+        ],
+        "facts": [
+          {
+            "claim": "마르티니크 레트루아질레 사탕수수 농장",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
+            "note": "Les Trois-Îlets, Martinique, where the family home was a sugar plantation."
+          },
+          {
+            "claim": "원래 로즈 · 나폴레옹이 조제핀이라 부르기를 좋아함",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
+            "note": "born Marie Josèphe Rose Tascher de La Pagerie and went by Rose until she met Napoleon, who preferred to call her Joséphine."
+          },
+          {
+            "claim": "첫 남편 공포 정치 때 처형 · 카르메 감옥 · 닷새 뒤 석방",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
+            "note": "Alexandre de Beauharnais was guillotined during the Reign of Terror … held in the Carmes prison until five days after his execution."
+          },
+          {
+            "claim": "말메종 장미 정원",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Joséphine_de_Beauharnais",
+            "note": "The Château de Malmaison was noted for its rose garden, which she supervised closely."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Hortense_de_Beauharnais"
+        ],
+        "hintNote": "She and Louis had three sons: Napoléon-Charles Bonaparte; Napoleon III, Emperor of the French; and Napoléon Louis Bonaparte",
+        "easiestCue": "원래 '로즈'라 불렸는데 두 번째 남편이 다른 이름을 좋아함",
+        "targetWhy": "'나폴레옹의 아내'·이혼(대표 사실)은 빼고 출생지·본래 이름·감옥 세부만 — 나폴레옹 시대 애호가",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "두 번째 남편이 누구인지 말하지 않아 대표 사실 없이 세부로만 닿음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new (조제핀 · 조세핀)",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "마르티니크의 사탕수수 농장 집안에서 태어난 이 인물은 원래 '로즈'",
+          "difWhy": "조제핀 출신·본명 — 애호가",
+          "wor": 3,
+          "worWhy": "유명 인물 이름 맞히기",
+          "acc": 4,
+          "accWhy": "서양사 — 고교 세계사 교과"
+        },
+        "g020": {
+          "why": "V026 fix fact-error",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

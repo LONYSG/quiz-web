@@ -1,236 +1,263 @@
 {
- "_meta": {
-  "round": "g019a",
-  "subId": "war-history/2",
-  "midKey": "war-history",
-  "subName": "제1차 세계대전",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "war-history/2#g019a-H1-29",
-   "seed": {
-    "subject": "마타 하리",
-    "aspect": null,
-    "ref": "H1-29",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "네덜란드 레이우아르던에서 태어난 마르하레타 젤러는 신문 구혼 광고를 낸 식민지군 대위 매클라우드와 결혼해 자와섬 말랑에서 살았습니다. 뒷날 그녀가 무대에서 쓴 이름은 무엇일까요?",
-    "answer": "마타 하리",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": "붙여 쓴 \"마타하리\"는 정규화로 같아 넣지 않음",
-    "explanation": "1917년 10월 15일 프랑스에서 총살형을 당했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "엮음: 마르하레타 젤러 + 무대에서 쓴 이름",
-     "difWhy": "여간첩 본명 — 대학 교양·애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "유명 인물 이름",
-     "acc": 3,
-     "accWhy": "전쟁·군사사 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "파리에서 이국풍 무희로 이름을 떨친 그녀의 무대 이름",
-     "difWhy": "무희 출신 스파이 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 이야깃거리"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "네덜란드 레이우아르던에서 태어난 마르하레타 젤러는 신문 구혼 광고를 낸 식민지군 대위 매클라우드와 결혼해 자와섬 말랑에서 살았습니다. 뒷날 파리에서 이국풍 무희로 이름을 떨친 그녀의 무대 이름은?",
-     "beforeExplanation": null,
-     "removedCue": "파리에서 이국풍 무희로 이름을 떨친(무희 출신 스파이 — 관심층)",
-     "addedCue": "없음 — 무희 단서를 빼고 본명·결혼 세부만 남김",
-     "why": "무희·스파이로 바로 이어지는 단서를 뺌"
-    },
-    "generalHint": "1917년 1월 독일 쪽 무선 전보에 나온 암호명 'H-21' 스파이의 이력이 그녀와 꼭 맞았다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "1차 세계대전 때 이중간첩 혐의로 처형된 무희",
-    "familiarity": {
-     "judge": 2,
-     "pct": 55,
-     "why": "유명 스파이로 영화·교양에서 접함",
-     "piece": "f03",
-     "genPct": 45
-    },
-    "blind": {
-     "ref": "H1-29",
-     "key": "b064",
-     "hint": "1917년 1월 독일 쪽 무선 전보에 나온 암호명 'H-21' 스파이의 이력이 그녀와 꼭 맞았다.",
-     "guess": "마타 하리",
-     "confidence": "high",
-     "hit": true,
-     "answer": "마타 하리"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Mata_Hari"
-    ],
-    "facts": [
-     {
-      "claim": "레이우아르던 출생, 본명 마르하레타 젤러",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mata_Hari",
-      "note": "Margaretha Geertruida Zelle was born on 7 August 1876 in Leeuwarden, a city in the north of the Netherlands"
-     },
-     {
-      "claim": "신문 광고를 낸 식민지군 대위 매클라우드와 결혼",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mata_Hari",
-      "note": "At 18, Zelle answered an advertisement in a Dutch newspaper placed by Dutch colonial army captain Rudolf MacLeod … who was living in the Dutch East Indies … and was looking for a wife."
-     },
-     {
-      "claim": "자와섬 동쪽 말랑으로 이주",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Mata_Hari",
-      "note": "She moved with her husband to Malang on the east side of the island of Java"
-     },
-     {
-      "claim": "1917년 10월 15일 프랑스에서 총살",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Mata_Hari",
-      "note": "7 August 1876 – 15 October 1917 … She was executed by firing squad in France."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Mata_Hari"
-    ],
-    "hintNote": "In January 1917, Kalle transmitted radio messages to Berlin describing the helpful activities of a German spy code-named H-21, whose biography so closely matched Zelle's",
-    "easiestCue": "본명 마르하레타 젤러",
-    "targetWhy": "유명 인물의 본명·결혼 세부 — 세계사 애호가(경계 4)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "이름은 들어 본 첩자의 젊은 시절",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019a",
+    "subId": "war-history/2",
+    "midKey": "war-history",
+    "subName": "제1차 세계대전",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019a(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019a-verify-targets.json)"
   },
-  {
-   "seedId": "war-history/2#g019a-H1-30",
-   "seed": {
-    "subject": "히틀러",
-    "aspect": null,
-    "ref": "H1-30",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1918년 8월 이 인물은 유대인 상관 후고 구트만 중위의 추천으로, 그의 계급에서는 드물게 주는 1급 철십자 훈장을 받았습니다. 오스트리아 국적인데도 행정 착오로 바이에른 예비 보병 제16연대에 들어가 전령으로 일한 이 인물은?",
-    "answer": "히틀러",
-    "acceptedAnswers": [
-     "아돌프 히틀러"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "\"아돌프 히틀러\"는 한국에서 흔히 쓰는 풀네임",
-    "explanation": "1914년 1차 이프르 전투에도 참전했고, 그해 용감함을 인정받아 2급 철십자 훈장을 받았습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "오스트리아 국적인데도 … 바이에른 예비 보병 연대에 들어가 전령으로 일한",
-     "difWhy": "오스트리아인 1차대전 독일군 전령 — 관심 있는 사람 (경계 4)",
-     "wor": 3,
-     "worWhy": "유명 인물 일화",
-     "acc": 3,
-     "accWhy": "전쟁·군사사 — 관심층이면 안다"
+  "items": [
+    {
+      "seedId": "war-history/2#g019a-H1-29",
+      "seed": {
+        "subject": "마타 하리",
+        "aspect": null,
+        "ref": "H1-29",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "네덜란드 레이우아르던에서 태어난 마르하레타 젤러는 신문 구혼 광고를 낸 식민지군 대위 매클라우드와 결혼해 자와섬 말랑에서 살았습니다. 뒷날 그녀가 무대에서 쓴 이름은 무엇일까요?",
+        "answer": "마타 하리",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": "붙여 쓴 \"마타하리\"는 정규화로 같아 넣지 않음",
+        "explanation": "1917년 10월 15일 프랑스에서 총살형을 당했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 마르하레타 젤러 + 무대에서 쓴 이름",
+          "difWhy": "여간첩 본명 — 대학 교양·애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 이름",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "파리에서 이국풍 무희로 이름을 떨친 그녀의 무대 이름",
+          "difWhy": "무희 출신 스파이 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 이야깃거리"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "네덜란드 레이우아르던에서 태어난 마르하레타 젤러는 신문 구혼 광고를 낸 식민지군 대위 매클라우드와 결혼해 자와섬 말랑에서 살았습니다. 뒷날 파리에서 이국풍 무희로 이름을 떨친 그녀의 무대 이름은?",
+          "beforeExplanation": null,
+          "removedCue": "파리에서 이국풍 무희로 이름을 떨친(무희 출신 스파이 — 관심층)",
+          "addedCue": "없음 — 무희 단서를 빼고 본명·결혼 세부만 남김",
+          "why": "무희·스파이로 바로 이어지는 단서를 뺌"
+        },
+        "generalHint": "아버지는 모자 공장과 가게를 운영했다고 전한다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "1차 세계대전 때 이중간첩 혐의로 처형된 무희",
+        "familiarity": {
+          "judge": 2,
+          "pct": 55,
+          "why": "유명 스파이로 영화·교양에서 접함",
+          "piece": "f03",
+          "genPct": 45
+        },
+        "blind": {
+          "ref": "H1-29",
+          "key": "b064",
+          "hint": "1917년 1월 독일 쪽 무선 전보에 나온 암호명 'H-21' 스파이의 이력이 그녀와 꼭 맞았다.",
+          "guess": "마타 하리",
+          "confidence": "high",
+          "hit": true,
+          "answer": "마타 하리"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Mata_Hari"
+        ],
+        "facts": [
+          {
+            "claim": "레이우아르던 출생, 본명 마르하레타 젤러",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mata_Hari",
+            "note": "Margaretha Geertruida Zelle was born on 7 August 1876 in Leeuwarden, a city in the north of the Netherlands"
+          },
+          {
+            "claim": "신문 광고를 낸 식민지군 대위 매클라우드와 결혼",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mata_Hari",
+            "note": "At 18, Zelle answered an advertisement in a Dutch newspaper placed by Dutch colonial army captain Rudolf MacLeod … who was living in the Dutch East Indies … and was looking for a wife."
+          },
+          {
+            "claim": "자와섬 동쪽 말랑으로 이주",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Mata_Hari",
+            "note": "She moved with her husband to Malang on the east side of the island of Java"
+          },
+          {
+            "claim": "1917년 10월 15일 프랑스에서 총살",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Mata_Hari",
+            "note": "7 August 1876 – 15 October 1917 … She was executed by firing squad in France."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "본명 마르하레타 젤러",
+        "targetWhy": "유명 인물의 본명·결혼 세부 — 세계사 애호가(경계 4)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "이름은 들어 본 첩자의 젊은 시절",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "엮음: 마르하레타 젤러 + 무대에서 쓴 이름",
+          "difWhy": "여간첩 본명 — 대학 교양·애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "유명 인물 이름",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 fix famous-one·explain-overlap",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "1차 세계대전 때 독일군 병사 … 겨자 가스 공격으로 잠시 눈이 먼",
-     "difWhy": "1차대전 독일 병사 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "유명 인물 일화"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1차 세계대전 때 독일군 병사였던 이 인물은 1918년 8월 유대인 상관 후고 구트만 중위의 추천으로 1급 철십자 훈장을 받았습니다. 그해 10월 겨자 가스 공격으로 잠시 눈이 먼 이 인물은 누구일까요?",
-     "beforeExplanation": null,
-     "removedCue": "1차 세계대전 때 독일군 병사 … 겨자 가스 공격으로 잠시 눈이 먼",
-     "addedCue": "오스트리아 국적 · 행정 착오로 바이에른 연대 입대 · 전령",
-     "why": "독일 병사·가스 실명이라는 흔한 일화를 빼고 입대 경위·보직 세부로 바꿈"
-    },
-    "generalHint": "구트만은 1938년 게슈타포에 붙잡혔다가, 그의 지난 이력을 아는 친위대원들 덕에 풀려났다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "나치 독일의 독재자",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 독재자",
-     "piece": "f06",
-     "genPct": 99
-    },
-    "blind": {
-     "ref": "H1-30",
-     "key": "b166",
-     "hint": "구트만은 1938년 게슈타포에 붙잡혔다가, 그의 지난 이력을 아는 친위대원들 덕에 풀려났다.",
-     "guess": "아돌프 히틀러",
-     "confidence": "mid",
-     "hit": true,
-     "answer": "히틀러"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Adolf_Hitler"
-    ],
-    "facts": [
-     {
-      "claim": "1918년 8월 유대인 상관 구트만 중위 추천으로 1급 철십자",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
-      "note": "Three months later, in August 1918, on a recommendation by Lieutenant Hugo Gutmann, his Jewish superior, Hitler received the Iron Cross, First Class"
-     },
-     {
-      "claim": "1914년 1차 이프르 전투, 2급 철십자",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
-      "note": "In 1914, he was present at the First Battle of Ypres and in that year was decorated for bravery, receiving the Iron Cross, Second Class."
-     },
-     {
-      "claim": "1급 철십자 — 그의 계급(상등병)에서는 드물게 수여",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
-      "note": "Three months later, in August 1918, on a recommendation by Lieutenant Hugo Gutmann, his Jewish superior, Hitler received the Iron Cross, First Class, a decoration rarely awarded at Hitler's Gefreiter rank."
-     },
-     {
-      "claim": "오스트리아 국적이라 행정 착오로 복무 · 바이에른 예비 보병 제16연대 전령",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
-      "note": "According to a 1924 report by the Bavarian authorities, allowing Hitler to serve was most likely an administrative error, because as an Austrian citizen, he should have been returned to Austria. Posted to the Bavarian Reserve Infantry Regiment 16 (1st Company of the List Regiment), he served as a dispatch runner on the Western Front"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Hugo_Gutmann"
-    ],
-    "hintNote": "In 1938, Gutmann was arrested by the Gestapo, but released as a result of the influence of SS personnel who knew his history.",
-    "easiestCue": "유대인 상관 구트만 중위의 추천으로 1급 철십자",
-    "targetWhy": "입대 경위·연대 보직은 20세기사 애호가 세부 — 4(경계 3)",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "아이러니가 있는 '아 그렇구나' 세부",
-    "pairCheck": null,
-    "dbCheck": "new",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "war-history/2#g019a-H1-30",
+      "seed": {
+        "subject": "히틀러",
+        "aspect": null,
+        "ref": "H1-30",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1918년 8월 이 인물은 유대인 상관 후고 구트만 중위의 추천으로, 그의 계급에서는 드물게 주는 1급 철십자 훈장을 받았습니다. 오스트리아 국적인데도 바이에른 예비 보병 제16연대에 들어가 전령으로 일한 이 인물은?",
+        "answer": "히틀러",
+        "acceptedAnswers": [
+          "아돌프 히틀러"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "\"아돌프 히틀러\"는 한국에서 흔히 쓰는 풀네임",
+        "explanation": "1914년 1차 이프르 전투에도 참전했고, 그해 용감함을 인정받아 2급 철십자 훈장을 받았습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "오스트리아 국적인데도 … 바이에른 예비 보병 연대에 들어가 전령으로 일한",
+          "difWhy": "오스트리아인 1차대전 독일군 전령 — 관심 있는 사람 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "1차 세계대전 때 독일군 병사 … 겨자 가스 공격으로 잠시 눈이 먼",
+          "difWhy": "1차대전 독일 병사 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "유명 인물 일화"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1차 세계대전 때 독일군 병사였던 이 인물은 1918년 8월 유대인 상관 후고 구트만 중위의 추천으로 1급 철십자 훈장을 받았습니다. 그해 10월 겨자 가스 공격으로 잠시 눈이 먼 이 인물은 누구일까요?",
+          "beforeExplanation": null,
+          "removedCue": "1차 세계대전 때 독일군 병사 … 겨자 가스 공격으로 잠시 눈이 먼",
+          "addedCue": "오스트리아 국적 · 행정 착오로 바이에른 연대 입대 · 전령",
+          "why": "독일 병사·가스 실명이라는 흔한 일화를 빼고 입대 경위·보직 세부로 바꿈"
+        },
+        "generalHint": "구트만은 1938년 게슈타포에 붙잡혔다가, 그의 지난 이력을 아는 친위대원들 덕에 풀려났다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "나치 독일의 독재자",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 독재자",
+          "piece": "f06",
+          "genPct": 99
+        },
+        "blind": {
+          "ref": "H1-30",
+          "key": "b166",
+          "hint": "구트만은 1938년 게슈타포에 붙잡혔다가, 그의 지난 이력을 아는 친위대원들 덕에 풀려났다.",
+          "guess": "아돌프 히틀러",
+          "confidence": "mid",
+          "hit": true,
+          "answer": "히틀러"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Adolf_Hitler"
+        ],
+        "facts": [
+          {
+            "claim": "1918년 8월 유대인 상관 구트만 중위 추천으로 1급 철십자",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+            "note": "Three months later, in August 1918, on a recommendation by Lieutenant Hugo Gutmann, his Jewish superior, Hitler received the Iron Cross, First Class"
+          },
+          {
+            "claim": "1914년 1차 이프르 전투, 2급 철십자",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+            "note": "In 1914, he was present at the First Battle of Ypres and in that year was decorated for bravery, receiving the Iron Cross, Second Class."
+          },
+          {
+            "claim": "1급 철십자 — 그의 계급(상등병)에서는 드물게 수여",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+            "note": "Three months later, in August 1918, on a recommendation by Lieutenant Hugo Gutmann, his Jewish superior, Hitler received the Iron Cross, First Class, a decoration rarely awarded at Hitler's Gefreiter rank."
+          },
+          {
+            "claim": "오스트리아 국적이라 행정 착오로 복무 · 바이에른 예비 보병 제16연대 전령",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+            "note": "According to a 1924 report by the Bavarian authorities, allowing Hitler to serve was most likely an administrative error, because as an Austrian citizen, he should have been returned to Austria. Posted to the Bavarian Reserve Infantry Regiment 16 (1st Company of the List Regiment), he served as a dispatch runner on the Western Front"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Hugo_Gutmann"
+        ],
+        "hintNote": "In 1938, Gutmann was arrested by the Gestapo, but released as a result of the influence of SS personnel who knew his history.",
+        "easiestCue": "유대인 상관 구트만 중위의 추천으로 1급 철십자",
+        "targetWhy": "입대 경위·연대 보직은 20세기사 애호가 세부 — 4(경계 3)",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "아이러니가 있는 '아 그렇구나' 세부",
+        "pairCheck": null,
+        "dbCheck": "new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "오스트리아 국적인데도 … 바이에른 예비 보병 연대에 들어가 전령으로 일한",
+          "difWhy": "오스트리아인 1차대전 독일군 전령 — 관심 있는 사람 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 인물 일화",
+          "acc": 3,
+          "accWhy": "전쟁·군사사 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V025 fix assertive",
+          "verdict": "fix"
+        }
+      }
+    }
+  ]
 }

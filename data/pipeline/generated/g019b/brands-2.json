@@ -1,334 +1,378 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "brands/2",
-  "midKey": "brands",
-  "subName": "로고·상징",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "brands/2#g019b-L2-07",
-   "seed": {
-    "subject": "벤츠",
-    "aspect": null,
-    "ref": "L2-07",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1870년대 쾰른 도이츠의 엔진 회사에서 일하던 한 기술자는 아내에게 보낸 엽서에 자기 집을 표시한 그림을 그리고 '언젠가 이것이 우리 공장 위에서 빛날 것'이라고 적었습니다. 1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림을 지금 로고로 쓰는 자동차 상표는?",
-    "answer": "벤츠",
-    "acceptedAnswers": [
-     "메르세데스벤츠"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '메르세데스-벤츠' · 일상 표기 '벤츠' — 같은 상표",
-    "explanation": "엽서 속 그림은 세 꼭지 별이었고, 세 꼭지는 땅·바다·하늘에서 쓸 엔진을 만든다는 뜻을 담았다고 합니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림",
-     "difWhy": "다임러 세 꼭지 별 — 자동차 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 로고 유래",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림",
-     "difWhy": "다임러 세 꼭지 별 — 자동차 애호가",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 로고 유래"
-    },
-    "rewrite": null,
-    "generalHint": "오스트리아 사업가 에밀 옐리네크는 1901년 이 회사의 차에 자기 딸의 이름을 붙였다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "세 꼭지 별 엠블럼의 독일 고급 자동차 상표",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 자동차 상표",
-     "piece": "f06",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "L2-07",
-     "key": "b318",
-     "hint": "오스트리아 사업가 에밀 옐리네크는 1901년 이 회사의 차에 자기 딸의 이름을 붙였다.",
-     "guess": "다임러",
-     "confidence": "mid",
-     "hit": false,
-     "answer": "벤츠"
-    },
-    "hobby": "자동차",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft"
-    ],
-    "facts": [
-     {
-      "claim": "1870년대 도이츠(쾰른)에서 일하던 다임러가 아내에게 집을 표시한 엽서",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft",
-      "note": "In the 1870s, while working for Otto at Deutz AG in Cologne, Daimler sent his wife Emma Kunz a postcard with a three-pointed star marking his home, writing: 'one day this star will shine over our triumphant factories.'"
-     },
-     {
-      "claim": "아들 파울·아돌프 제안, 1909년 6월 채택",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft",
-      "note": "Paul and Adolf Daimler, the sons of Gottlieb ... The board accepted the proposal in June 1909"
-     },
-     {
-      "claim": "땅·바다·하늘의 뜻",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft",
-      "note": "suitable for use on land, sea, and in the air, with each of the three points representing one of those domains"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Mercedes-Benz"
-    ],
-    "hintNote": "Emil Jellinek, an Austrian automobile entrepreneur who worked with DMG, registered the trademark in 1902, naming the 1901 Mercedes 35 hp after his daughter Mercédès Jellinek.",
-    "easiestCue": "엽서의 그림이 공장 위에서 '빛날 것'이라고 적었다",
-    "targetWhy": "별·땅바다하늘(대표 상징 풀이)·다임러 이름을 빼고 엽서 일화만 — 자동차 애호가 세부 4",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "누구나 아는 로고의 몰랐던 출발",
-    "pairCheck": null,
-    "dbCheck": "answercheck 벤츠 pair-or-different — 3250(카를 벤츠의 1886 특허 차)과 지식이 다름 · 메르세데스벤츠 new",
-    "warn": []
-   }
+  "_meta": {
+    "round": "g019b",
+    "subId": "brands/2",
+    "midKey": "brands",
+    "subName": "로고·상징",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
   },
-  {
-   "seedId": "brands/2#g019b-L2-08",
-   "seed": {
-    "subject": "인텔",
-    "aspect": null,
-    "ref": "L2-08",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1969년 4월 창업자 두 사람이 만든 이 회사의 첫 로고는 글자 하나가 줄 아래로 떨어진 모양이었습니다. 2006년 1월 디자인 회사 퓨처브랜드가 만든 새 로고로 바뀌며 그 모양은 사라졌는데, 이 회사는 어디일까요?",
-    "answer": "인텔",
-    "acceptedAnswers": [],
-    "originalTitleVariants": [],
-    "variantCheck": null,
-    "explanation": "1994년 작곡가 발터 베르초바가 만든 다섯 음짜리 가락이 이 회사의 소리 상표가 되었고, '인사이드' 광고 구호는 데이비드 하우스가 지었습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "첫 로고가 글자 하나가 줄 아래로 떨어진 모양",
-     "difWhy": "'dropped e' 로고 — 브랜드 애호가",
-     "wor": 3,
-     "worWhy": "유명 기업 로고 이야기",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
+  "items": [
+    {
+      "seedId": "brands/2#g019b-L2-07",
+      "seed": {
+        "subject": "벤츠",
+        "aspect": null,
+        "ref": "L2-07",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1870년대 쾰른 도이츠의 엔진 회사에서 일하던 한 기술자는 아내에게 보낸 엽서에 자기 집을 표시한 그림을 그리고 '언젠가 이것이 우리 공장 위에서 빛날 것'이라고 적었습니다. 1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림을 지금 로고로 쓰는 자동차 상표는?",
+        "answer": "벤츠",
+        "acceptedAnswers": [
+          "메르세데스벤츠",
+          "메르세데스-벤츠",
+          "메르세데스"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '메르세데스-벤츠' · 일상 표기 '벤츠' — 같은 상표",
+        "explanation": "엽서 속 그림은 세 꼭지 별이었고, 세 꼭지는 땅·바다·하늘에서 쓸 엔진을 만든다는 뜻을 담았다고 합니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림",
+          "difWhy": "다임러 세 꼭지 별 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 로고 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림",
+          "difWhy": "다임러 세 꼭지 별 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 로고 유래"
+        },
+        "rewrite": null,
+        "generalHint": "오스트리아 사업가 에밀 옐리네크는 1901년 이 회사의 차에 자기 딸의 이름을 붙였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "세 꼭지 별 엠블럼의 독일 고급 자동차 상표",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 자동차 상표",
+          "piece": "f06",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "L2-07",
+          "key": "b318",
+          "hint": "오스트리아 사업가 에밀 옐리네크는 1901년 이 회사의 차에 자기 딸의 이름을 붙였다.",
+          "guess": "다임러",
+          "confidence": "mid",
+          "hit": false,
+          "answer": "벤츠"
+        },
+        "hobby": "자동차",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft"
+        ],
+        "facts": [
+          {
+            "claim": "1870년대 도이츠(쾰른)에서 일하던 다임러가 아내에게 집을 표시한 엽서",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft",
+            "note": "In the 1870s, while working for Otto at Deutz AG in Cologne, Daimler sent his wife Emma Kunz a postcard with a three-pointed star marking his home, writing: 'one day this star will shine over our triumphant factories.'"
+          },
+          {
+            "claim": "아들 파울·아돌프 제안, 1909년 6월 채택",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft",
+            "note": "Paul and Adolf Daimler, the sons of Gottlieb ... The board accepted the proposal in June 1909"
+          },
+          {
+            "claim": "땅·바다·하늘의 뜻",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Daimler-Motoren-Gesellschaft",
+            "note": "suitable for use on land, sea, and in the air, with each of the three points representing one of those domains"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Mercedes-Benz"
+        ],
+        "hintNote": "Emil Jellinek, an Austrian automobile entrepreneur who worked with DMG, registered the trademark in 1902, naming the 1901 Mercedes 35 hp after his daughter Mercédès Jellinek.",
+        "easiestCue": "엽서의 그림이 공장 위에서 '빛날 것'이라고 적었다",
+        "targetWhy": "별·땅바다하늘(대표 상징 풀이)·다임러 이름을 빼고 엽서 일화만 — 자동차 애호가 세부 4",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "누구나 아는 로고의 몰랐던 출발",
+        "pairCheck": null,
+        "dbCheck": "answercheck 벤츠 pair-or-different — 3250(카를 벤츠의 1886 특허 차)과 지식이 다름 · 메르세데스벤츠 new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "1909년 6월 그의 아들들 제안으로 회사 상징이 된 이 그림",
+          "difWhy": "다임러 세 꼭지 별 — 자동차 애호가",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 로고 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 fix variants·wrong-name",
+          "verdict": "fix"
+        }
+      }
     },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "다섯 음짜리 실로폰·마림바 가락",
-     "difWhy": "인텔 효과음 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 소리 상표"
+    {
+      "seedId": "brands/2#g019b-L2-08",
+      "seed": {
+        "subject": "인텔",
+        "aspect": null,
+        "ref": "L2-08",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1969년 4월 창업자 두 사람이 만든 이 회사의 첫 로고는 글자 하나가 줄 아래로 떨어진 모양이었습니다. 2006년 1월 디자인 회사 퓨처브랜드가 만든 새 로고로 바뀌며 그 모양은 사라졌는데, 이 회사는 어디일까요?",
+        "answer": "인텔",
+        "acceptedAnswers": [],
+        "originalTitleVariants": [],
+        "variantCheck": null,
+        "explanation": "1994년 작곡가 발터 베르초바가 만든 다섯 음짜리 가락이 이 회사의 소리 상표가 되었고, '인사이드' 광고 구호는 데이비드 하우스가 지었습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "첫 로고가 글자 하나가 줄 아래로 떨어진 모양",
+          "difWhy": "'dropped e' 로고 — 브랜드 애호가",
+          "wor": 3,
+          "worWhy": "유명 기업 로고 이야기",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "다섯 음짜리 실로폰·마림바 가락",
+          "difWhy": "인텔 효과음 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 소리 상표"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1994년 작곡가 발터 베르초바가 만든 다섯 음짜리 실로폰·마림바 가락은 이 회사의 소리 상표가 되어 '스파이럴'이나 '봉'으로 불립니다. 1969년부터 2006년 초까지 이 회사 로고는 글자 하나가 줄 아래로 떨어진 모양이었는데, 이 회사는?",
+          "beforeExplanation": "1991년 시작한 '인사이드' 광고 캠페인의 구호는 당시 마이크로프로세서 사업부장 데이비드 하우스가 지었습니다.",
+          "removedCue": "다섯 음짜리 실로폰·마림바 소리 상표(관심층 — 광고 효과음)",
+          "addedCue": "창업자 두 사람이 만든 첫 로고 · 2006년 퓨처브랜드 새 로고",
+          "why": "광고 효과음은 누구나 귀로 아는 단서라 해설로 내리고, 로고 내력으로 바꿈"
+        },
+        "generalHint": "이 회사의 세 번째 직원은 화학공학자 앤디 그로브였다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "미국의 컴퓨터 중앙 처리 장치 반도체 회사",
+        "familiarity": {
+          "judge": 3,
+          "pct": 95,
+          "why": "인텔 인사이드로 누구나 앎",
+          "piece": "f04",
+          "genPct": 95
+        },
+        "blind": {
+          "ref": "L2-08",
+          "key": "b240",
+          "hint": "2020년 애플은 맥의 CPU를 이 회사 것에서 자체 설계 칩으로 바꾸겠다고 발표했다.",
+          "guess": "인텔",
+          "confidence": "high",
+          "hit": true,
+          "answer": "인텔"
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Intel_Inside",
+          "https://en.wikipedia.org/wiki/Intel"
+        ],
+        "facts": [
+          {
+            "claim": "1969년 4월부터 2006년 1월 2일까지 e 가 떨어진 로고",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Intel_Inside",
+            "note": "introduced in April 1969 ... April 1969 to January 2, 2006 ... It has the letter 'e' dropped below the other letters"
+          },
+          {
+            "claim": "작곡가 발터 베르초바, 1994년, 다섯 음 실로폰·마림바 가락, 스파이럴·봉",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Intel_Inside",
+            "note": "The D♭–D♭–G♭–D♭–A♭ xylophone/marimba jingle, known as the 'Intel Spiral' or 'Intel Bong' ... written by Walter Werzowa ... first made in 1994"
+          },
+          {
+            "claim": "1991년 캠페인, 데이비드 하우스가 구호",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Intel_Inside",
+            "note": "The first campaign, the 1991 'Intel Inside' marketing and branding campaign ... David House, then head of the microprocessor division, coined the slogan"
+          },
+          {
+            "claim": "첫 로고는 1969년 4월 로버트 노이스와 고든 무어가 만듦",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Intel",
+            "note": "The first Intel logo, introduced in April 1969 and created by Robert Noyce and Gordon Moore ... It has the letter \"e\" dropped below the other letters"
+          },
+          {
+            "claim": "2006년 1월 3일 퓨처브랜드가 만든 둘째 로고",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Intel",
+            "note": "The second logo, officially introduced on January 3, 2006, was created by FutureBrand."
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [],
+        "easiestCue": "글자 하나가 줄 아래로 떨어진 옛 로고",
+        "targetWhy": "로고를 만든 사람과 바뀐 해는 IT·디자인 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "광고 끝 '띵 띵 띵 띵 띵' 소리를 기억하는 사람은 바로 떠올릴 수 있음",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "첫 로고가 글자 하나가 줄 아래로 떨어진 모양",
+          "difWhy": "'dropped e' 로고 — 브랜드 애호가",
+          "wor": 3,
+          "worWhy": "유명 기업 로고 이야기",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 fix famous-one",
+          "verdict": "fix"
+        }
+      }
     },
-    "rewrite": {
-     "changed": true,
-     "before": "1994년 작곡가 발터 베르초바가 만든 다섯 음짜리 실로폰·마림바 가락은 이 회사의 소리 상표가 되어 '스파이럴'이나 '봉'으로 불립니다. 1969년부터 2006년 초까지 이 회사 로고는 글자 하나가 줄 아래로 떨어진 모양이었는데, 이 회사는?",
-     "beforeExplanation": "1991년 시작한 '인사이드' 광고 캠페인의 구호는 당시 마이크로프로세서 사업부장 데이비드 하우스가 지었습니다.",
-     "removedCue": "다섯 음짜리 실로폰·마림바 소리 상표(관심층 — 광고 효과음)",
-     "addedCue": "창업자 두 사람이 만든 첫 로고 · 2006년 퓨처브랜드 새 로고",
-     "why": "광고 효과음은 누구나 귀로 아는 단서라 해설로 내리고, 로고 내력으로 바꿈"
-    },
-    "generalHint": "2020년 애플은 맥의 CPU를 이 회사 것에서 자체 설계 칩으로 바꾸겠다고 발표했다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "미국의 컴퓨터 중앙 처리 장치 반도체 회사",
-    "familiarity": {
-     "judge": 3,
-     "pct": 95,
-     "why": "인텔 인사이드로 누구나 앎",
-     "piece": "f04",
-     "genPct": 95
-    },
-    "blind": {
-     "ref": "L2-08",
-     "key": "b240",
-     "hint": "2020년 애플은 맥의 CPU를 이 회사 것에서 자체 설계 칩으로 바꾸겠다고 발표했다.",
-     "guess": "인텔",
-     "confidence": "high",
-     "hit": true,
-     "answer": "인텔"
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Intel_Inside",
-     "https://en.wikipedia.org/wiki/Intel"
-    ],
-    "facts": [
-     {
-      "claim": "1969년 4월부터 2006년 1월 2일까지 e 가 떨어진 로고",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Intel_Inside",
-      "note": "introduced in April 1969 ... April 1969 to January 2, 2006 ... It has the letter 'e' dropped below the other letters"
-     },
-     {
-      "claim": "작곡가 발터 베르초바, 1994년, 다섯 음 실로폰·마림바 가락, 스파이럴·봉",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Intel_Inside",
-      "note": "The D♭–D♭–G♭–D♭–A♭ xylophone/marimba jingle, known as the 'Intel Spiral' or 'Intel Bong' ... written by Walter Werzowa ... first made in 1994"
-     },
-     {
-      "claim": "1991년 캠페인, 데이비드 하우스가 구호",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Intel_Inside",
-      "note": "The first campaign, the 1991 'Intel Inside' marketing and branding campaign ... David House, then head of the microprocessor division, coined the slogan"
-     },
-     {
-      "claim": "첫 로고는 1969년 4월 로버트 노이스와 고든 무어가 만듦",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Intel",
-      "note": "The first Intel logo, introduced in April 1969 and created by Robert Noyce and Gordon Moore ... It has the letter \"e\" dropped below the other letters"
-     },
-     {
-      "claim": "2006년 1월 3일 퓨처브랜드가 만든 둘째 로고",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Intel",
-      "note": "The second logo, officially introduced on January 3, 2006, was created by FutureBrand."
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Mac_transition_to_Apple_silicon"
-    ],
-    "hintNote": "switching the central processing units (CPUs) of Apple's line of Mac computers from Intel's x86-64 processors to Apple-designed Apple silicon ... Apple CEO Tim Cook announced a \"two-year transition plan\" to Apple silicon on June 22, 2020.",
-    "easiestCue": "글자 하나가 줄 아래로 떨어진 옛 로고",
-    "targetWhy": "로고를 만든 사람과 바뀐 해는 IT·디자인 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "광고 끝 '띵 띵 띵 띵 띵' 소리를 기억하는 사람은 바로 떠올릴 수 있음",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  },
-  {
-   "seedId": "brands/2#g019b-L2-09",
-   "seed": {
-    "subject": "도요타",
-    "aspect": null,
-    "ref": "L2-09",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1936년 9월 이 회사가 연 로고 공모에는 2만 7천 점이 넘는 응모작이 들어왔고, 창업 가문의 성을 가타카나 세 글자로 원 안에 쓴 것이 뽑혔습니다. 그 뒤 성과 끝소리 하나가 다른 이름을 쓰게 된 일본 자동차 회사는?",
-    "answer": "도요타",
-    "acceptedAnswers": [
-     "토요타"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '도요타 자동차' · 한국 법인·언론 표기 '토요타' — 같은 회사의 표기 차이",
-    "explanation": "새 이름은 쓰는 획수가 행운의 수인 여덟이었고, 끝의 탁음 부호가 빠져 쓰기도 더 간단했습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 3,
-     "easiestCue": "창업 가문의 성과 끝소리 하나가 다른 이름을 쓰는 일본 자동차 회사",
-     "difWhy": "도요다→도요타 — 자동차 관심층 (경계 4)",
-     "wor": 3,
-     "worWhy": "유명 회사 이름 유래",
-     "acc": 5,
-     "accWhy": "브랜드·기업 — 전 국민 일상"
-    },
-    "score1": {
-     "dif": 3,
-     "easiestCue": "성의 끝소리를 바꿔 획수가 행운의 수 여덟이 되는 이름",
-     "difWhy": "도요다→도요타 유래 — 관심 있는 사람",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 브랜드 이름 유래"
-    },
-    "rewrite": {
-     "changed": true,
-     "before": "1936년 9월 이 회사가 연 로고 공모에는 2만 7천 점이 넘는 응모작이 들어왔고, 창업 가문의 성을 가타카나로 원 안에 쓴 것이 뽑혔습니다. 그 뒤 성의 끝소리를 바꿔 획수가 행운의 수 여덟이 되는 이름을 택한 일본 자동차 회사는?",
-     "beforeExplanation": "새 이름은 끝의 탁음 부호가 빠져 쓰기도 더 간단해졌습니다.",
-     "removedCue": "획수가 행운의 수 여덟이 되는 이름(관심층 — 도요다→도요타 유래)",
-     "addedCue": "없음(쉬운 단서를 해설로 내림 — 1936년 로고 공모가 남음)",
-     "why": "여덟 획 유래는 자동차 관심층 단골 상식이라 해설로 내림"
-    },
-    "generalHint": "이 회사가 처음 양산한 승용차는 1936년부터 만든 AA형 세단이다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "일본 아이치현의 최대 자동차 회사",
-    "familiarity": {
-     "judge": 3,
-     "pct": 100,
-     "why": "누구나 아는 자동차 회사",
-     "piece": "f02",
-     "genPct": 98
-    },
-    "blind": {
-     "ref": "L2-09",
-     "key": "b133",
-     "hint": "이 회사가 처음 양산한 승용차는 1936년부터 만든 AA형 세단이다.",
-     "guess": "토요타",
-     "confidence": "high",
-     "hit": true,
-     "answer": "도요타"
-    },
-    "hobby": "자동차",
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Toyota"
-    ],
-    "facts": [
-     {
-      "claim": "1936년 9월 로고 공모, 2만 7천 점, 원 안 가타카나 '도요다'",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Toyota",
-      "note": "In September 1936, the company ran a public competition to design a new logo ... 27,000 entries ... the winner was the katakana spelling of 'Toyoda' in a circle"
-     },
-     {
-      "claim": "획수 여덟(행운의 수)",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Toyota",
-      "note": "Rizaburo Toyoda preferred 'Toyota' because it took eight brush strokes (a lucky number) to write in Japanese."
-     },
-     {
-      "claim": "탁음 부호가 빠져 간단",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Toyota",
-      "note": "the spelling was simpler, since it dropped the final diacritic"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Toyota_AA"
-    ],
-    "hintNote": "It was redesigned and put into production as Toyota's first production cars, the AA sedan ... produced from 1936 to 1943",
-    "easiestCue": "1936년 9월 로고 공모 2만 7천 점 · 원 안 가타카나",
-    "targetWhy": "로고 공모 사연은 자동차 애호가 세부라 4",
-    "selfJudge": "경계",
-    "selfJudgeWhy": "창업 가문 성이 '도요다'임을 아는 관심층이면 바로 풀림",
-    "pairCheck": null,
-    "dbCheck": "answercheck 도요타 new · 토요타 pair-or-different 3256(방직기에서 출발) — 지식 다름",
-    "warn": []
-   }
-  }
- ]
+    {
+      "seedId": "brands/2#g019b-L2-09",
+      "seed": {
+        "subject": "도요타",
+        "aspect": null,
+        "ref": "L2-09",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1936년 9월 이 회사가 연 로고 공모에는 2만 7천 점이 넘는 응모작이 들어왔고, 창업 가문의 성을 가타카나 세 글자로 원 안에 쓴 것이 뽑혔습니다. 그 뒤 성과 끝소리 하나가 다른 이름을 쓰게 된 일본 자동차 회사는?",
+        "answer": "도요타",
+        "acceptedAnswers": [
+          "토요타"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '도요타 자동차' · 한국 법인·언론 표기 '토요타' — 같은 회사의 표기 차이",
+        "explanation": "새 이름은 쓰는 획수가 행운의 수인 여덟이었고, 끝의 탁음 부호가 빠져 쓰기도 더 간단했습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "창업 가문의 성과 끝소리 하나가 다른 이름을 쓰는 일본 자동차 회사",
+          "difWhy": "도요다→도요타 — 자동차 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 회사 이름 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 3,
+          "easiestCue": "성의 끝소리를 바꿔 획수가 행운의 수 여덟이 되는 이름",
+          "difWhy": "도요다→도요타 유래 — 관심 있는 사람",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 브랜드 이름 유래"
+        },
+        "rewrite": {
+          "changed": true,
+          "before": "1936년 9월 이 회사가 연 로고 공모에는 2만 7천 점이 넘는 응모작이 들어왔고, 창업 가문의 성을 가타카나로 원 안에 쓴 것이 뽑혔습니다. 그 뒤 성의 끝소리를 바꿔 획수가 행운의 수 여덟이 되는 이름을 택한 일본 자동차 회사는?",
+          "beforeExplanation": "새 이름은 끝의 탁음 부호가 빠져 쓰기도 더 간단해졌습니다.",
+          "removedCue": "획수가 행운의 수 여덟이 되는 이름(관심층 — 도요다→도요타 유래)",
+          "addedCue": "없음(쉬운 단서를 해설로 내림 — 1936년 로고 공모가 남음)",
+          "why": "여덟 획 유래는 자동차 관심층 단골 상식이라 해설로 내림"
+        },
+        "generalHint": "이 회사가 처음 양산한 승용차는 1936년부터 만든 AA형 세단이다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "일본 아이치현의 최대 자동차 회사",
+        "familiarity": {
+          "judge": 3,
+          "pct": 100,
+          "why": "누구나 아는 자동차 회사",
+          "piece": "f02",
+          "genPct": 98
+        },
+        "blind": {
+          "ref": "L2-09",
+          "key": "b133",
+          "hint": "이 회사가 처음 양산한 승용차는 1936년부터 만든 AA형 세단이다.",
+          "guess": "토요타",
+          "confidence": "high",
+          "hit": true,
+          "answer": "도요타"
+        },
+        "hobby": "자동차",
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Toyota"
+        ],
+        "facts": [
+          {
+            "claim": "1936년 9월 로고 공모, 2만 7천 점, 원 안 가타카나 '도요다'",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Toyota",
+            "note": "In September 1936, the company ran a public competition to design a new logo ... 27,000 entries ... the winner was the katakana spelling of 'Toyoda' in a circle"
+          },
+          {
+            "claim": "획수 여덟(행운의 수)",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Toyota",
+            "note": "Rizaburo Toyoda preferred 'Toyota' because it took eight brush strokes (a lucky number) to write in Japanese."
+          },
+          {
+            "claim": "탁음 부호가 빠져 간단",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Toyota",
+            "note": "the spelling was simpler, since it dropped the final diacritic"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Toyota_AA"
+        ],
+        "hintNote": "It was redesigned and put into production as Toyota's first production cars, the AA sedan ... produced from 1936 to 1943",
+        "easiestCue": "1936년 9월 로고 공모 2만 7천 점 · 원 안 가타카나",
+        "targetWhy": "로고 공모 사연은 자동차 애호가 세부라 4",
+        "selfJudge": "경계",
+        "selfJudgeWhy": "창업 가문 성이 '도요다'임을 아는 관심층이면 바로 풀림",
+        "pairCheck": null,
+        "dbCheck": "answercheck 도요타 new · 토요타 pair-or-different 3256(방직기에서 출발) — 지식 다름",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 3,
+          "easiestCue": "창업 가문의 성과 끝소리 하나가 다른 이름을 쓰는 일본 자동차 회사",
+          "difWhy": "도요다→도요타 — 자동차 관심층 (경계 4)",
+          "wor": 3,
+          "worWhy": "유명 회사 이름 유래",
+          "acc": 5,
+          "accWhy": "브랜드·기업 — 전 국민 일상"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }

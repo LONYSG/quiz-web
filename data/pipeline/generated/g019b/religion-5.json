@@ -1,125 +1,140 @@
 {
- "_meta": {
-  "round": "g019b",
-  "subId": "religion/5",
-  "midKey": "religion",
-  "subName": "고대·소수 종교",
-  "questionPrompt": "deep-v5",
-  "scorePrompt": "score-v3",
-  "hintPrompt": "hint-v6",
-  "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
-  "generator": "claude-opus-5-5",
-  "questionGenerator": "claude-opus-5-5",
-  "stage": "deep",
-  "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
- },
- "items": [
-  {
-   "seedId": "religion/5#g019b-H2-28",
-   "seed": {
-    "subject": "부두교",
-    "aspect": null,
-    "ref": "H2-28",
-    "pairedWith": null
-   },
-   "question": {
-    "ok": true,
-    "mode": "나",
-    "pairedWith": null,
-    "question": "1941년 가톨릭 교회가 뒷받침한 '정화 작전'으로 이 종교의 사원이 여럿 부서졌습니다. 2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로 인정했는데, 이 종교는 무엇일까요?",
-    "answer": "부두교",
-    "acceptedAnswers": [
-     "부두"
-    ],
-    "originalTitleVariants": [],
-    "variantCheck": "ko.wikipedia 문서 제목 '부두교' · 일상에서 '부두'만으로도 씀(부두 인형 등)",
-    "explanation": "1791년 부아카이망에서 열린 이 종교 의식이 아이티 혁명의 불씨가 되었다는 전설이 있지만, 역사가들 사이에 논란이 있습니다.",
-    "score": {
-     "version": "score-v3",
-     "dif": 4,
-     "easiestCue": "2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로",
-     "difWhy": "아이티 종교 — 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 종교 이름",
-     "acc": 3,
-     "accWhy": "종교·경전 — 관심층이면 안다"
-    },
-    "score1": {
-     "dif": 4,
-     "easiestCue": "2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로",
-     "difWhy": "아이티 종교 — 애호가 (경계 3)",
-     "wor": 3,
-     "worWhy": "이야깃거리 — 종교 이름"
-    },
-    "rewrite": null,
-    "generalHint": "이 종교에서는 남자 사제를 '웅간', 여자 사제를 '만보'라 부른다.",
-    "generalHintVersion": "hint-v6",
-    "identity": "서아프리카 신앙과 가톨릭이 섞인 아이티의 민간 종교",
-    "familiarity": {
-     "judge": 3,
-     "pct": 70,
-     "why": "부두 인형·영화로 이름은 익숙",
-     "piece": "f04",
-     "genPct": 65
-    },
-    "blind": {
-     "ref": "H2-28",
-     "key": "b013",
-     "hint": "이 종교에서는 남자 사제를 '웅간', 여자 사제를 '만보'라 부른다.",
-     "guess": "부두교",
-     "confidence": "high",
-     "hit": true,
-     "answer": "부두교",
-     "first": {
-      "ref": "H2-28",
-      "key": "b187",
-      "hint": "이 종교는 최고신 아래의 정령들을 '르와(lwa)'라 부르며 가톨릭 성인과 겹쳐 섬긴다.",
-      "guess": "부두교",
-      "confidence": "high",
-      "hit": true,
-      "answer": "부두교"
-     }
-    },
-    "hobby": null,
-    "defForm": false,
-    "sources": [
-     "https://en.wikipedia.org/wiki/Haitian_Vodou",
-     "https://ko.wikipedia.org/wiki/부두교"
-    ],
-    "facts": [
-     {
-      "claim": "1941 교회가 뒷받침한 정화 작전, 사원 파괴",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Haitian_Vodou",
-      "note": "Operation Nettoyage (Operation Cleanup), a Church-backed campaign to destroy many ounfòs … (1941)"
-     },
-     {
-      "claim": "2003 아리스티드 공식 인정",
-      "where": "q",
-      "url": "https://en.wikipedia.org/wiki/Haitian_Vodou",
-      "note": "President Jean-Bertrand Aristide granted Vodou official recognition in 2003."
-     },
-     {
-      "claim": "1791 부아카이망 의식 전설·논란",
-      "where": "e",
-      "url": "https://en.wikipedia.org/wiki/Haitian_Vodou",
-      "note": "According to legend, the Revolution was sparked by a 1791 Vodou ritual at Bois-Caïman … Although historians debate the veracity of such claims"
-     }
-    ],
-    "knowledgeClaims": [],
-    "hintBasis": "web",
-    "hintSources": [
-     "https://en.wikipedia.org/wiki/Haitian_Vodou"
-    ],
-    "hintNote": "Male priests are referred to as an oungan, alternatively spelled houngan … manbo (priestess), through which group ceremonies are conducted.",
-    "easiestCue": "2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로 인정했는데",
-    "targetWhy": "정화 작전·아리스티드 인정은 애호가 세부 — 아이티·좀비·부두 인형을 뺐다",
-    "selfJudge": "좋은 어려움",
-    "selfJudgeWhy": "들어 본 종교, 제도사 세부",
-    "pairCheck": null,
-    "dbCheck": "answercheck new",
-    "warn": []
-   }
-  }
- ]
+  "_meta": {
+    "round": "g019b",
+    "subId": "religion/5",
+    "midKey": "religion",
+    "subName": "고대·소수 종교",
+    "questionPrompt": "deep-v5",
+    "scorePrompt": "score-v3",
+    "hintPrompt": "hint-v6",
+    "familiarityJudge": "scripts/g019-familiarity.mjs (V022 꼴)",
+    "generator": "claude-opus-5-5",
+    "questionGenerator": "claude-opus-5-5",
+    "stage": "deep",
+    "note": "G019 — 상(4) 생성 4차 g019b(정답 친숙도 판정 · 생성 직후 채점 · 3 이하 한 번 고침 · hint-v6 · blind 자기 점검). 적재하지 않았다 — V024 판정 뒤 다음 G 가 적재한다 (data/pipeline/audit/g019b-verify-targets.json)"
+  },
+  "items": [
+    {
+      "seedId": "religion/5#g019b-H2-28",
+      "seed": {
+        "subject": "부두교",
+        "aspect": null,
+        "ref": "H2-28",
+        "pairedWith": null
+      },
+      "question": {
+        "ok": true,
+        "mode": "나",
+        "pairedWith": null,
+        "question": "1941년 가톨릭 교회가 뒷받침한 '정화 작전'으로 이 종교의 사원이 여럿 부서졌습니다. 2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로 인정했는데, 이 종교는 무엇일까요?",
+        "answer": "부두교",
+        "acceptedAnswers": [
+          "부두"
+        ],
+        "originalTitleVariants": [],
+        "variantCheck": "ko.wikipedia 문서 제목 '부두교' · 일상에서 '부두'만으로도 씀(부두 인형 등)",
+        "explanation": "1791년 부아카이망에서 열린 이 종교 의식이 아이티 혁명의 불씨가 되었다는 전설이 있지만, 역사가들 사이에 논란이 있습니다.",
+        "score": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로",
+          "difWhy": "아이티 종교 — 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종교 이름",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다",
+          "difBy": "V025/V026 판정자 blind 재채점(G020)"
+        },
+        "score1": {
+          "dif": 4,
+          "easiestCue": "2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로",
+          "difWhy": "아이티 종교 — 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종교 이름"
+        },
+        "rewrite": null,
+        "generalHint": "이 종교에서는 남자 사제를 '웅간', 여자 사제를 '만보'라 부른다.",
+        "generalHintVersion": "hint-v6",
+        "identity": "서아프리카 신앙과 가톨릭이 섞인 아이티의 민간 종교",
+        "familiarity": {
+          "judge": 3,
+          "pct": 70,
+          "why": "부두 인형·영화로 이름은 익숙",
+          "piece": "f04",
+          "genPct": 65
+        },
+        "blind": {
+          "ref": "H2-28",
+          "key": "b013",
+          "hint": "이 종교에서는 남자 사제를 '웅간', 여자 사제를 '만보'라 부른다.",
+          "guess": "부두교",
+          "confidence": "high",
+          "hit": true,
+          "answer": "부두교",
+          "first": {
+            "ref": "H2-28",
+            "key": "b187",
+            "hint": "이 종교는 최고신 아래의 정령들을 '르와(lwa)'라 부르며 가톨릭 성인과 겹쳐 섬긴다.",
+            "guess": "부두교",
+            "confidence": "high",
+            "hit": true,
+            "answer": "부두교"
+          }
+        },
+        "hobby": null,
+        "defForm": false,
+        "sources": [
+          "https://en.wikipedia.org/wiki/Haitian_Vodou",
+          "https://ko.wikipedia.org/wiki/부두교"
+        ],
+        "facts": [
+          {
+            "claim": "1941 교회가 뒷받침한 정화 작전, 사원 파괴",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Haitian_Vodou",
+            "note": "Operation Nettoyage (Operation Cleanup), a Church-backed campaign to destroy many ounfòs … (1941)"
+          },
+          {
+            "claim": "2003 아리스티드 공식 인정",
+            "where": "q",
+            "url": "https://en.wikipedia.org/wiki/Haitian_Vodou",
+            "note": "President Jean-Bertrand Aristide granted Vodou official recognition in 2003."
+          },
+          {
+            "claim": "1791 부아카이망 의식 전설·논란",
+            "where": "e",
+            "url": "https://en.wikipedia.org/wiki/Haitian_Vodou",
+            "note": "According to legend, the Revolution was sparked by a 1791 Vodou ritual at Bois-Caïman … Although historians debate the veracity of such claims"
+          }
+        ],
+        "knowledgeClaims": [],
+        "hintBasis": "web",
+        "hintSources": [
+          "https://en.wikipedia.org/wiki/Haitian_Vodou"
+        ],
+        "hintNote": "Male priests are referred to as an oungan, alternatively spelled houngan … manbo (priestess), through which group ceremonies are conducted.",
+        "easiestCue": "2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로 인정했는데",
+        "targetWhy": "정화 작전·아리스티드 인정은 애호가 세부 — 아이티·좀비·부두 인형을 뺐다",
+        "selfJudge": "좋은 어려움",
+        "selfJudgeWhy": "들어 본 종교, 제도사 세부",
+        "pairCheck": null,
+        "dbCheck": "answercheck new",
+        "warn": [],
+        "scoreGen": {
+          "version": "score-v3",
+          "dif": 4,
+          "easiestCue": "2003년에는 장베르트랑 아리스티드 대통령이 이 종교를 공식으로",
+          "difWhy": "아이티 종교 — 애호가 (경계 3)",
+          "wor": 3,
+          "worWhy": "이야깃거리 — 종교 이름",
+          "acc": 3,
+          "accWhy": "종교·경전 — 관심층이면 안다"
+        },
+        "g020": {
+          "why": "V026 ok ",
+          "verdict": "ok"
+        }
+      }
+    }
+  ]
 }
