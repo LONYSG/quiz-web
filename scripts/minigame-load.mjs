@@ -6,6 +6,7 @@
 //   node scripts/minigame-load.mjs --apply      ← 쓰기 (★ 먼저 npm run db:backup)
 //   node scripts/minigame-load.mjs --mark       ← 적재한 항목의 파일 status 를 'loaded' 로 (★ G010 몫 — MAIN 은 쓰지 않는다)
 //   [--game price,photo]  게임 고르기
+//   ★ G021: photoyear(18 §8)는 GAMES_ALL 에 없다 — `--game photoyear` 로만 읽고 검사한다(서버에 게임이 없어 --apply 는 거부 · MAIN R068 이 게임을 만든 뒤 GAMES_ALL 에 넣는다)
 //
 // ★ 읽는 것: data/minigame/<game>/items*.json 전부(묶음 파일) + worldprice/products.json · 그림 assets/minigame/<game>/…
 // ★ 형식 검사: docs/18 0~5절(g008-check 와 같은 규칙) — 모르는 칸 · 빠진 칸 · 숫자형 · 날짜 · id 꼴 · 게임별 규칙. 걸리면 그 항목 거부(목록)
@@ -26,6 +27,8 @@ const APPLY = args.includes('--apply');
 const MARK = args.includes('--mark');
 const GAMES_ALL = ['price', 'worldprice', 'photo', 'estimate', 'which'];
 const GAMES = args.includes('--game') ? args[args.indexOf('--game') + 1].split(',') : GAMES_ALL;
+const GAMES_LATER = ['photoyear']; // ★ G021 — 데이터만 있고 게임 코드가 아직 없다
+if (APPLY && GAMES.some((g) => GAMES_LATER.includes(g))) { console.error(`★ ${GAMES_LATER.join(' · ')} 는 아직 적재하지 않는다(게임 코드 없음 — MAIN R068 뒤 GAMES_ALL 에 넣고)`); process.exit(1); }
 
 const COMMON = ['id', 'status', 'createdRound', 'sources', 'image', 'tags', 'verify'];
 const FIELDS = {
@@ -34,8 +37,9 @@ const FIELDS = {
   photo: ['answer', 'altAnswers', 'category', 'revealMode', 'explanation', 'difficulty'],
   estimate: ['kind', 'question', 'value', 'unit', 'displayDecimals', 'asOf', 'explanation'],
   which: ['kind', 'stem', 'a', 'b', 'answer', 'unit', 'margin', 'asOf'],
+  photoyear: ['year', 'yearKind', 'yearRange', 'title', 'place', 'region', 'difficulty', 'cues'],
 };
-const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [] };
+const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [], photoyear: [] };
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const PRICE_CAT = ['식품', '생활', '가전', '패션', '뷰티', '취미', '자동차', '사치품', '해외', '기타'];
 const PHOTO_CAT = ['person', 'place', 'object', 'everyday', 'food', 'animal', 'logo'];
@@ -102,6 +106,14 @@ function problems(g, it, products) {
     if (!Number.isInteger(it.displayDecimals)) p.push('displayDecimals');
     if (it.asOf !== null && !DATE.test(it.asOf)) p.push('asOf');
   }
+  if (g === 'photoyear') {
+    if (!Number.isInteger(it.year) || it.year < 1826 || it.year > 2026) p.push('year');
+    if (!['exact', 'circa'].includes(it.yearKind)) p.push('yearKind');
+    if (it.yearKind === 'circa' ? !(Array.isArray(it.yearRange) && it.yearRange[0] <= it.year && it.year <= it.yearRange[1] && it.yearRange[1] - it.yearRange[0] <= 20) : it.yearRange !== null) p.push('yearRange');
+    if (!['kr', 'world'].includes(it.region)) p.push('region');
+    if (![1, 2, 3].includes(it.difficulty)) p.push('difficulty');
+    if (it.image == null) p.push('그림 필수');
+  }
   if (g === 'which') {
     if (!['bigger', 'earlier'].includes(it.kind)) p.push('kind');
     for (const s of ['a', 'b']) if (!it[s] || typeof it[s].label !== 'string' || typeof it[s].value !== 'number' || it[s].image === undefined) p.push(`${s} 칸`);
@@ -114,6 +126,7 @@ function problems(g, it, products) {
   return p;
 }
 
+// ★ photoyear 의 year 는 정답(촬영 연도)이지 수집 기준 날짜가 아니다 → as_of null (G021)
 const asOfOf = (g, it) => (g === 'price' ? it.priceAsOf : g === 'estimate' || g === 'which' ? it.asOf : null);
 
 // ── 읽기
@@ -214,7 +227,7 @@ if (MARK) {
       it.status = 'loaded';
       n += 1;
     }
-    if (n) writeFileSync(path.join(ROOT, 'data/minigame', k), JSON.stringify(doc, null, 2) + '\n');
+    if (n) writeFileSync(path.join(ROOT, 'data/minigame', k), JSON.stringify(doc, null, 1) + '\n'); // ★ G021 — 파일은 1칸 들여쓰기(GEN 이 쓴 꼴 그대로)
     console.log(`[mark] ${k} loaded ${n}`);
   }
 }

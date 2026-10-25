@@ -1,6 +1,6 @@
 # assets/minigame — 미니게임 그림 (G008 · docs/18 0장)
 
-퀴즈류 미니게임(얼마게요 · 빅맥지수 · 사진 이름 맞히기 · 얼마나 될까 · 어느 쪽?)의 **그림 파일**을 두는 자리다. 폴더 하나 = 게임 하나.
+퀴즈류 미니게임(얼마게요 · 빅맥지수 · 사진 이름 맞히기 · 얼마나 될까 · 어느 쪽? · 이 사진 몇 년도?)의 **그림 파일**을 두는 자리다. 폴더 하나 = 게임 하나.
 
 ```
 assets/minigame/
@@ -10,6 +10,7 @@ assets/minigame/
   photo/               ← photo-0001.jpg …   (위키미디어 공용 자유 라이선스만)
   estimate/            ← estimate-0001.jpg …
   which/               ← which-0001-a.jpg · which-0001-b.jpg …
+  photoyear/           ← photoyear-0001.jpg …   (이 사진 몇 년도? — 위키미디어 공용 자유 라이선스만 · 데이터 100 verified · ★ 게임 코드 없음 — 적재는 MAIN R068 뒤 · G021)
 ```
 
 ## 규칙
