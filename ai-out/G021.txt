@@ -1,0 +1,84 @@
+===========================================
+ROUND: G021
+DATE: 2026-10-25
+TASK: V024 판정(C80 · CV-72~77 — 찬종 결정 전부 기본값 (a)) 반영 → 미니게임 3차 적재(price · worldprice · photo · estimate · which + products.json 나라 행 69) · photoyear 100 은 데이터만 완성(게임 코드 없음 — MAIN 몫) · DB 쓰기는 minigame 표만
+STATUS: 완료
+===========================================
+
+[cmd 창 요약]
+1. V024 fix 22 적용(54칸 · 멱등) + 그림 교체 6 + drop 1(photoyear-0012 → 다른 1960년대 사진) → 3차 파일 509 + photoyear 100 전부 verified · g008-check 1,784 막힘 0(시작 · 끝).
+2. 적재 2026-10-25 11:39~11:40(백업 quizweb-20261025-113935 · 열린 판 0): 넣음 1,673 · 쉬게 함 0 · 활성 1,164 → 1,673 · 그림 1,002 → 1,529장 · 품목 5(콜라 43 → 77 · 휘발유 42 → 75 · iPhone 38 → 40 행).
+3. as_of: price 297 · worldprice 323(품목 asOf) 전부 있음 · estimate · which 는 없는 것이 시간 무관 사실 — 3차 "지금 상태" 3건만 출처 날짜로 채움.
+4. questions · question_answers md5 전후 같음 · photoyear 는 minigame-load 에 형식 검사만(--apply 거부) · 13 C82(V027 그림 6 · MAIN photoyear).
+5. 커밋 00c22ae(A) · e0d4400(B) · 2a5b648(D·E) · 문서. DG-058.
+
+0. 찬종이 볼 것
+- 게임별 적재 (DB minigame_items 활성)
+  | 게임 | 적재 전 | 3차 | 적재 뒤 | 50%↑ | 한 계정이 안 본 항목으로 몇 판(전 → 뒤) |
+  |---|---|---|---|---|---|
+  | price 얼마게요 | 197 | +100 | 297 | 51% | 39 → 59 (5문항 · 가장 많이 본 계정 20 본 → 55) |
+  | worldprice 빅맥지수 | 254 | +69 | 323 | 27% | 50 → 64 (5문항 · 61) |
+  | photo 사진 이름 | 219 | +120 | 339 | 55% | 43 → 67 (5문항 · 65) |
+  | estimate 얼마나 될까 | 199 | +100 | 299 | 50% | 39 → 59 (5문항 · 56) |
+  | which 어느 쪽? | 295 | +120 | 415 | 41% | 29 → 41 (10문항 · 39) |
+  | 합 | 1,164 | +509 | 1,673 | 44% | |
+  · 판 수 = 활성 ÷ 한 판 문항 수(QUIZ_SPEC) · 빅맥지수는 EU 목표 · 예시 문항 · 같은 품목 피하기로 조금 줄어든다. "가장 많이 본 계정" = minigame_item_experiences 에서 그 게임을 가장 많이 본 계정(본 수를 빼고 셈).
+  · 그림 minigame_images 1,002 → 1,529장(138.2MB) · minigame_products 5(나라 행 bigmac 54 · cocacola 77 · gasoline 75 · iphone 40 · netflix 194).
+- ★ as_of(수집 기준 날짜 — 찬종 요청 · 화면은 MAIN R067)
+  | 게임 | 1차 | 2차 | 3차 | 없는 것 |
+  |---|---|---|---|---|
+  | price(priceAsOf) | 97/97 | 100/100 | 100/100 | 0 |
+  | worldprice(품목 asOf) | 171/171 | 83/83 | 69/69 | 0 — 항목 칸이 아니라 품목마다(bigmac 2026-07-01 · iphone · netflix 10-17 · gasoline 10-12 · cocacola 10-18 · 환율 10-16/10-12) |
+  | estimate(asOf) | 16/99 | 13/100 | 13/100(+3 채움) | 257 — 무게 · 길이 · 높이 · 공전 주기 · 녹는점 · 경기 규칙 같은 시간 무관 사실 · 질문에 연도가 박힌 옛 사실(1867 알래스카 값 · 2017 경매 · 2007 TGV 기록 …) |
+  | which(asOf) | 32/146 | 7/149 | 10/120 | 366 — 산 · 섬 · 호수 · 건물 높이 · 동물 기록 · 연도 비교(시간 무관) |
+  · 채운 3: estimate-0203(지금 성조기 별 50) · 0230(베트남 인구 2019 조사) · 0274(지금의 10원 동전 무게) → 출처 fetchedAt 2026-10-21. 1·2차는 세기만(값 바꾸기 금지 — 하나씩 읽어 채울 것 0).
+  · ★ MAIN 메모: worldprice 는 DB minigame_items.as_of 가 비어 있고(로더가 항목 칸으로 읽지 않음) minigame_products.as_of 에 있다 — 화면에 그릴 때 품목 쪽을 읽어야 한다.
+- 그림 교체 6 (이 PC · git 밖 · 교체 전 원본 tmp/g021/orig/)
+  | 항목 | 전 | 후 | 라이선스 |
+  |---|---|---|---|
+  | which-0306-b 배핀섬 | MODIS 위성 사진(섬 윤곽 안 보임) | 위치 지도(섬을 초록으로 · 왼쪽 지명 글자 잘라 냄) | CC BY-SA 3.0 Time3000 (cropped) |
+  | which-0316-b 황다랑어 | 248×150 그림 | NOAA NURP 사진 1024px | Public domain |
+  | which-0346-a 베네른호 | 흐린 사진 | 동쪽 기슭 사진(선명) | CC BY-SA 4.0 Leonhard Lenz |
+  | which-0397-b 마라의 죽음 | 편지 '13 juillet 1793' 보임 | 같은 그림을 더 잘라 편지 · 상자 글자 안 보임(470×520) | Public domain (cropped) |
+  | photo-0305 손흥민 | EXIF 저작권 THFC 의심 | 대한민국 정부 공식 Flickr(2022-12-08 영빈관) | CC BY-SA 2.0 (extracted) |
+  | photoyear-0012 | 이화여고 운동회(삭제 요청 중 · circa) | 1967-06-15 부산항 파월 장병 수송선과 환송 인파(NH 104846 · 미 해군) | Public domain |
+  · 새 그림은 값이 V024 ok 라 status verified 로 적재했다(2차 G016 꼴) · V027 이 다시 본다(audit/g021-images.json · C82). zip backups/minigame-g021.zip(assets/minigame 1,642개 · 150.9MB).
+- CV-74 · 77 에서 GEN 이 문서를 열어 정한 것: 변형 3 모두 닫힘 — 찍찍이(ko 위키 '찍찍이' 문서 첫 줄 "상표명 벨크로") · 핸드 스피너(기사 "피젯스피너(핸드스피너)" 뉴스핌 2017 · 조선비즈 2017) · 플라즈마 볼(기사 154건 — 국립부산과학관 "플라즈마 볼 체험") → 추가. price-0216 노가리: CU 상품 페이지를 다시 열어 3,900원(2026-10-25) — 그대로(온라인 묶음 환산 +79% 는 채널 차이).
+
+★ 원칙 메모
+- 원칙 7: 3차 파일 loaded 0 · candidate/verified 만 ✔ · 1·2차 loaded price 197 · photo 219 · estimate 199 · which 295(worldprice 254) ✔ · V024 fix 22 · drop 1 ✔ · 그림 627(+ 기존) ✔ · 나라 행 69(iphone 2 · 콜라 34 · 휘발유 33) ✔ · GAMES_ALL 에 photoyear 없음 · shared/server/client 코드에 photoyear 없음 ✔. 다른 점 없음.
+- 동시 라운드: VERIFY V026 · MAIN R067 파일 0 · server/ client/ shared/ migrations/ 0. 실 서버(3000)는 적재 때 꺼져 있었다(healthz 응답 없음) · games · minigame_runs 에 끝나지 않은 판 0 → 기다리지 않음.
+- DB 쓰기: minigame_items · minigame_images · minigame_products 만(minigame-load --apply 두 번 — 적재 · as_of 3 채운 뒤 · 멱등). questions md5 b13ee41c… · question_answers md5 ca90e3bb… 전후 같음.
+- ★ 규칙 어김 1: price-0216 을 다시 확인할 때 네이버 쇼핑 검색 API 를 한 번 불렀다(404 로 결과 없음). 키는 블로그 · 뉴스 · 이미지 검색에만 쓰기로 되어 있다 — 다시 쓰지 않았고 CU 페이지로 확인했다. 키 값은 어디에도 쓰지 않았다.
+- 하위 에이전트 0(GEN 이 직접 — 그림 6 은 공용 API · 미리보기로 눈으로 봄) · WebSearch 0 · 위키미디어 API 요청 제한 몇 번(쉬었다 다시).
+
+1. A — fix 22 (scripts/g021-apply-v024.mjs · 54칸 · audit/g021-applied.json)
+- price-0283 137,655 → 74,990 · 버킷 1~10만 · priceAsOf 2026-10-24 · priceSources 를 칸 꼴로(다나와 중앙값 · 에누리 최저).
+- photo: attribution (cropped) 5 · 0290 라이선스 CC BY 2.0 Sam Valadi · 변형 0265 · 0270 · 0318(코코아나무 뺌) · 0339 + 0231 찍찍이 · 0251 핸드 스피너 · 0259 플라즈마 볼(근거 sources 에).
+- which-0347 본류 2,800 vs 1,900 · 1.47 · note · disputed 5 note(0304 · 0353 · 0371 · 0420 · 0385 — 근거 연도 · 값).
+- photoyear 제목 · 장소 5(0021 · 0023 포항 · 0066 · 0079 · 0094) · 0037 은 그대로 + sources note 에 "깃발 2002 는 이듬해 월드컵 글자".
+- verify 칸은 그대로 · status candidate → verified.
+
+2. B — 그림 6 (scripts/g021-images.mjs · g008-img · sharp 자름) — 위 0절.
+
+3. C — 나라 행 69: minigame-load 가 products.json 품목을 통째(payload)로 넣는다 → 덧붙인 행 69 가 그대로 들어감(콜라 asOf 10-18 품목 칸 그대로 — CV-75 (a) · 불가리아 EUR · 휘발유 9행 unverified 그대로). ★ 행 안의 verify 칸(V024 가 씀)도 payload 에 같이 들어간다 — 화면에 쓰지 않으면 무해.
+
+4. D — 적재
+- g008-check 1,784 막힘 0 → dry-run(넣을 1,673 · 쉬게 함 대상 0 — 1·2차는 loaded 라 그대로) → npm run db:backup → --apply → --mark(3차 509 → loaded). 1·2차 파일 값 0 변경.
+
+5. E — photoyear 준비
+- items.json 100 verified(0012 교체 뒤) · minigame-load 에 형식 검사 가지(year · yearKind · yearRange · region · difficulty · 그림) — GAMES_ALL 밖 · `--game photoyear` 로 읽기만(100 통과) · --apply 는 거부. as_of 는 null(year 는 정답이지 수집 날짜가 아니다). README · 18 §8 · C82.
+
+6. GEN 판단 (DG-058)
+1. 새 그림 6 은 값이 ok 라 verified 로 적재 · 그림만 V027.
+2. as_of 는 1·2차를 세기만 · 3차 "지금 상태" 3건만 출처 fetchedAt.
+3. photoyear-0012 대신 1967 부산항(파월) — 한국 1960년대 공용 사진 대부분이 공공누리 1유형(KOGL)이라 g008-check 자유 라이선스 목록 밖 → 미 해군 퍼블릭 도메인을 골랐다(같은 해 0013 · 0014 가 있다).
+4. --mark 가 파일을 2칸 들여쓰기로 다시 써 통째 diff 가 나던 것 → 1칸(GEN 파일 꼴)으로.
+
+7. 새 결정 필요
+- 없음(Q 를 올리지 않았다). 메모는 13 C82.
+
+고친 문서
+- docs/18-MINIGAME-DATA.md(§7 3차 적재 · §8) · docs/13-PENDING-CHECKS.md(C80 끝 · CV-72~77 끝 · C82) · docs/07-DECISIONS.md(DG-058) · docs/05-STATUS.md · docs/06-WORKLOG.md · ai-out/README.md(G 표) · ai-out/G021.txt · assets/minigame/README.md
+- 코드 · 데이터: scripts/g021-apply-v024.mjs · g021-images.mjs · g021-asof.mjs · minigame-load.mjs · data/minigame/{price,photo,estimate,which,worldprice}/items-3.json · photoyear/items.json · audit/g021-applied.json · g021-images.json
+- git 밖: assets/minigame(새 그림 6) · backups/minigame-g021.zip · backups/quizweb-20261025-113935.dump · tmp/g021/

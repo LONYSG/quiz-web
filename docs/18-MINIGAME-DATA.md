@@ -120,6 +120,7 @@ assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .giti
 - G016 재적재(2026-10-20 · V012 fix 63 · V017 fix 29 반영 뒤): price 197 · worldprice 254 · photo 219 · estimate 199 · which 295 = **1,164 loaded**(파일 status 도 `--mark` 로 loaded) · 그림 1,002장 91.2MB · 품목 5 · 형식 거부 0 · 그림 없음 0 · rejected 11 은 넣지 않았다. 다시 돌려도 같다(멱등).
 - 재적재 규칙(G016): 파일(값 · 그림)을 고치면 같은 스크립트를 다시 돌린다 — 같은 항목 id · 같은 그림 id 는 갱신(payload · bytea · 크기), loaded 도 다시 넣고, verified/loaded 가 아니게 된 항목은 active=false. 그림을 바꿀 때는 파일 이름(= 그림 id)을 그대로 두고 image 칸의 크기 · 출처 · 라이선스 · attribution 을 파일에 맞춘다. 다음 묶음은 `items-3.json`.
 - G018 3차(2026-10-21 · 적재 전 — V023 뒤): `items-3.json`(price · photo · estimate · which · worldprice 덧붙인 나라 문항) + 새 게임 `photoyear/items.json` · 수량은 ai-out/G018.txt 0절. worldprice 기존 품목의 나라 보충은 products.json 의 그 품목 rows **끝에 덧붙이기만**(기존 행 · 다른 칸은 글자 그대로 — `g008-build --round g018` 이 바뀌면 멈춘다) · 환율은 그 품목의 fxAsOf 하루치. ★ `minigame-load.mjs` 의 게임 목록에 photoyear 가 아직 없다(적재 · 출제는 MAIN — R058 뒤).
+- **G021 3차 적재(2026-10-25 · V024 뒤 — DG-058)**: V024 fix 22(`scripts/g021-apply-v024.mjs` · 멱등) · 그림 교체 6(`g021-images.mjs` — 새 그림은 값이 ok 라 verified 로 넣고 V027 이 다시 본다 · `audit/g021-images.json`) → `minigame-load --game price,worldprice,photo,estimate,which --apply` — 넣음 1,673 · 쉬게 함 0 · 활성 price 297 · worldprice 323 · photo 339 · estimate 299 · which 415 · 그림 1,529장 138.2MB · 품목 5(나라 행은 products.json 품목째 들어간다) · `--mark` 3차 509 loaded(★ --mark 는 이제 1칸 들여쓰기). ★ as_of(수집 기준 날짜 — 화면에 계속 보인다 · MAIN R067): price = priceAsOf · worldprice = **품목** asOf(minigame_products.as_of — 항목 행의 as_of 는 비어 있다) · estimate · which = asOf(없는 것은 시간 무관 사실 — "지금 상태" 를 묻는 항목은 asOf 를 꼭 채운다 · `scripts/g021-asof.mjs` 가 센다).
 
 ## 8. `photoyear` — 이 사진 몇 년도? (G018 신설 · DG-056 — 데이터가 먼저, 게임은 MAIN R058 뒤)
 
@@ -135,5 +136,6 @@ assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .giti
 - `title` 공개 뒤 보여 줄 한 줄(연도 포함 가능) · `place` 도시 · 나라 · `region` `kr` | `world` · `difficulty` 1~3(GEN 추정 — 정답 모르는 맞혀 보기의 오차로 근거) · `cues` 짐작 단서 요지 한 줄.
 - 그림 필수 · **자유 라이선스만**(위키미디어 공용 — photo 와 같다) · ★ **그림 안에 연도 · 날짜 · 캡션 글자가 보이면 안 된다**(현수막 연도 · 신문 날짜 · 사진 귀퉁이 날짜 · 워터마크 — 잘라 내고 attribution 에 "(cropped)"). 간판 · 상표 글자는 연도가 아니면 괜찮다.
 - 소재 균형(1차): 한국 50 · 세계 50 · 연대를 고르게 · 유명 사건 사진은 한국 30% 이내 · 세계의 연도가 자명한 상징 사건은 10 이내 · 난이도 1 은 30% 이내. 같은 사진 · 같은 행사 연속 사진 금지(g008-check 가 같은 sourceUrl · 같은 title 을 막는다).
+- ★ G021(2026-10-25): 데이터 100 verified(V024 ok 94 · fix 5 반영 · drop 1 → 0012 를 1967 부산항 사진으로 교체 — V027 재검증) · **게임 코드가 아직 없다**(shared MINIGAME_KEYS · server defs · 클라이언트) → 적재하지 않았다. `minigame-load --game photoyear` 는 형식 검사만(100 통과) · --apply 거부 · GAMES_ALL 밖 — MAIN R068 이 게임(사진 보고 연도 맞히기 · 오차 점수)을 만든 뒤 GAMES_ALL 에 넣고 적재한다. as_of 는 null(year 는 정답이지 수집 날짜가 아니다). difficulty 는 GEN 값 그대로(CV-73 (a) — 실플레이 오차로 보정).
 - 판정(MAIN): 오차 |입력 − year| 작은 순 · circa 는 yearRange 안이면 오차 0. VERIFY(6절에 더해): 촬영 연도 근거(파일 페이지 · 기관 기록) · 그림의 연도 글자 · 라이선스.
 
