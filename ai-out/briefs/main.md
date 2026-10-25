@@ -5,10 +5,16 @@ TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 �
 ■ 고정 규칙: docs/16 그대로 (07 **D-301** 부터 · 13 **A96** · 10 **48절** · 01 16-R068 · 05 · 06 · README). 하위 에이전트 ≤1 · 남는 메모리 1.5GB(검사 서버 · 봇은 `quizweb_test` 만 · 실 DB 는 마이그레이션과 photoyear 적재만 · 쓰기 전 `npm run db:backup`). 실 서버(3000) 재시작은 찬종(`ops.bat` 3 → 1) — MAIN 은 하지 않는다.
 ■ ★★ 동시 라운드 — **VERIFY V028 · GEN G022**(난이도 재판정 — DB 읽기만 · questions 안 씀)가 돌고 있을 수 있다. MAIN 은 **questions · question_answers 를 쓰지 않는다**(제보 문항 5 도 — 아래). 05 · 06 · 13 · README 는 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지. R067 과 같이 끝 점검은 단계별로.
 
-■ 제보 13 처리 (처리마다 `reports:handle --id N --note "R068 …"` · 0절에 표: id · 화면 · 원문 요지 · 원인 · 고침/보류)
+■ 제보 13 + 7 = 20 처리 (#52~64 lonysg2 · #65~71 lonysg 10-25 밤 · 처리마다 `reports:handle --id N --note "R068 …"` · 0절에 표: id · 화면 · 원문 요지 · 원인 · 고침/보류)
 | id | 화면 | 요지 | 할 일 |
 |---|---|---|---|
-| (제보 없음 · 찬종 말) | profile | **프로필 사진 올리기가 안 됨**(10-26 00:50 · 계정 123qwe(3556) · "이미지 파일이 안 바뀜" · 설계가 DB 직접 넣어 줌 — account_avatars 3556 jpeg 16,200B) | 원인 찾기: ProfileEditor.tsx 120 `canvas.toBlob('image/webp')` 이 iOS Safari 에서 png 로 떨어져 256² png 가 200KB(AVATAR_MAX_BYTES) 를 넘어 413 되는지 · 오류 글이 안 보이는지(ProfileEditor 124 setError 가 화면에 뜨는가) · 성공 뒤 avatarV 가 안 갱신되는 곳이 있는지. 재현은 m390 Safari(playwright webkit) + jpg 사진. 고침은 webp 안 되면 jpeg 0.85 로 fallback + 오류 글 보이게 |
+| 65 | game:question(설정) | 설정에서 "제보" 누르면 버튼이 다 튀어나감 · 이모티콘 설정에서 QHD(2560)일 때 둘째 줄 특별 이모티콘을 누르면 제대로 선택이 안 됨 | 설정 창 제보 버튼 레이아웃(1536/2560/m390) · 이모티콘 편집 둘째 줄 클릭 영역(2560 에서 히트 영역·겹침 확인 · 57 과 같은 뿌리인지) |
+| 66 | game:reveal | 이모티콘을 붙여 보내면 세레모니에 맨 앞 하나만 표시됨 | 세레모니 이모티콘 파서가 첫 코드포인트만 잡는지(ZWJ · 연속 이모지) · 의도(하나만)면 보낼 때부터 하나로 제한하고 안내 |
+| 67 | game:reveal · 문항 1941 | "답이 주관식이 아님"(정답 "특허를 공개했다" — 문장형 정답) | **문항은 안 고친다** — V028(verify 반)이 입력 꼴 표시로 잡는다 · R068 은 note 만("V028/G023 몫") · 처리 표시는 하지 않는다 |
+| 68 | game:result | 결과 화면의 문제 평가는 기본 접힌 상태로 | 접힘 기본값 + 펼침 기억(localStorage) · 접혀 있어도 평가 수는 보이게 |
+| 69 | room | 미니게임 고르기: 아이콘 가운데 정렬 · 체크 박스 더 크게 · 위치 정확히 | 아이콘·체크 정렬(1536/2560/m390 캡처) |
+| 70 | room(idea) | 자주 쓰는 이모티콘 탭 | **보류**(note "다음 라운드 · 10 절 후보") — 사용 빈도 저장 설계가 필요 |
+| 71 | room | **프로필 사진 변경이 안 됨 — 확장자 맞췄는데도 에러가 뜸**(PC 웹 · 10-26 00:56 · 계정 lonysg) · 같은 날 123qwe(3556)도 못 바꿔 설계가 DB 에 직접 넣어 줌(account_avatars 3556 jpeg 16,200B) | 원인 찾기(재현: test 서버 + playwright chromium, jpg 56KB 올리기): ① avatarRoutes PUT 의 409 "게임 중에는…"(room.state 가 LOBBY 가 아닐 때 — GAME_RESULT 에서 설정 열면?) ② express.raw type/limit 과 blob.type 불일치 → 400/413 ③ ProfileEditor 120 toBlob webp 실패 → "사진을 만들지 못했습니다" ④ 오류 글이 무엇이었는지 0절에 적고 고침 · 터널(cloudflared) 경유도 한 번 |
 | 52 | room | 미니게임 첫 1위 설명이 길어 "…" 으로 생략 | 생략 없이 줄바꿈(폭 · 두 줄까지 · 1536/2560/m390) |
 | 53 | room | "지난판 문제 평가" 누르면 글자가 오른쪽으로 쭉 늘어나 화면 밖으로 | 긴 질문 글 줄바꿈(nowrap · min-width · 표 셀 원인 찾기) · m390 포함 |
 | 54 | balloon roundResult | 펌프가 가운데 정렬이 아님 · "점수 오르는 범위도 정해 주고 알려 줘" | 펌프 가운데 · 점수 규칙(얼마에서 얼마까지 · 어떻게 오르는지)을 도움 줄/결과에 한 줄로 보이게 |
@@ -43,7 +49,7 @@ TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 �
 ■ 할 일 순서 · 커밋: A 제보 UI 7(52 · 53 · 54 · 55 · 56 · 57 · 61)과 240자 검사 → B 설문 팝업(마이그레이션 · 서버 · 창 · 포인트 · ops · 보고) → C photoyear(게임 · 적재) → D 문서 · 끝 점검. 커밋 묶음마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 · fetch → rebase → push.
 ■ 끝 점검(단계별 · 10 48절 표): typecheck · vitest · build · smoke · 봇(minigame · mgquiz · report · 새 photoyear · 설문 투표 봇 — 패널 계정만 창을 받는지 · 1초 연타 포인트 0 · 하루 10P 상한) · ui-check r068(제보 7 · 설문 · photoyear · 240자) + r067(고기 — 가림 뒤 소리 0) · wrap-audit · 메모리.
 ■ 하지 말 것: questions · question_answers 쓰기 · 문항 내용 고치기 · V028/G022 파일(audit/v028-* · g022-* · v028-raw) · 15 · 19 수정 · 실 서버 재시작 · 설문 패널 계정 켜기 · 로비 몰아서 설문 · 원 게임 다른 도형 구현 · force push.
-■ 확인할 것 (원칙 7): 미처리 제보 13(#52~64 · 전부 계정 4463 lonysg2) · R067 끝 번호 D-300 · A95 · 10 47절 · 마이그레이션 마지막 0025 · CakeWait.tsx 에 hideStart 뒤 점점 작게 규칙 · GameSettings.tsx 85~94 마지막 하나 못 끄기 · photoyear items.json 100 verified · GAMES_ALL 에 photoyear 없음 · 5760 질문 140자 · 가장 긴 활성 5332 198자 — 다르면 0절에.
+■ 확인할 것 (원칙 7): 미처리 제보 20(#52~64 계정 4463 lonysg2 · #65~71 계정 483 lonysg) · R067 끝 번호 D-300 · A95 · 10 47절 · 마이그레이션 마지막 0025 · CakeWait.tsx 에 hideStart 뒤 점점 작게 규칙 · GameSettings.tsx 85~94 마지막 하나 못 끄기 · photoyear items.json 100 verified · GAMES_ALL 에 photoyear 없음 · 5760 질문 140자 · 가장 긴 활성 5332 198자 — 다르면 0절에.
 ■ 보고 `ai-out/R068.txt`: 0절 찬종이 볼 것(제보 13 표 · 설문 창 그림 · photoyear 그림 · 240자 표와 권고 · 난이도 버튼 원인 한 줄) · 끝 점검 표 · 고친 문서.
 ■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄 "R068 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.
