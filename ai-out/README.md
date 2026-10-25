@@ -50,6 +50,7 @@
 | V023.txt | 정답 친숙도 — 중 나머지 2,551 전수(1 225 · 8.8%) + 둘째 판정자 교차: 확정 1 268(상 159 · 중 109) · 경계 182 · 확정 비활성 시 중+상 76.06 → 70.70판 · 대조 오판 2.5% → `audit/v023-targets.json` · `v023-familiarity.json` · `v023-cross.json` · `v023-raw/` · CV-71 (+CV-68 덧붙임) |
 | V024.txt | 미니게임 3차 509 + photoyear 100 전수 재검증(C80) — 3차 ok 492 · fix 17(3.3% · 1차 9.8% · 2차 5.4%) · photoyear ok 94 · fix 5 · drop 1 · 나라 행 69 전부 ok(휘발유 9 unverified) · photoyear 맞혀 보기 중앙 오차 1년(재매김 규칙이 변별 못 함) → `audit/v024-minigame.json` · `v024-raw/` · items-3.json 다섯 · photoyear/items.json · products.json 덧붙인 행 verify · CV-72~77 |
 | V025.txt | g019a 346 전수 판정(상 생성 4차 첫 묶음) — ok 239 · fix 106 · drop 1(a 24% · b 25% → 31% — 힌트 쪽) · 정답 친숙도 둘째 판정자 346: 확정 1 0 · 경계 1 · blind 맞혀 보기 242/320(GEN 252) · 4 이상 143(GEN 133 · 독립 채점자 26/100) · 층 어긋남 14 · 2회차 44 fix·drop 13 → `audit/v025-results.json` · `v025-raw/` · CV-78~83 |
+| V026.txt | g019b 345 전수 판정(상 생성 4차 둘째 묶음) — ok 237 · fix 105 · drop 3(fix+drop 31% = a) · ★ 상 유지율 214(62%) → blind 재채점 158(46%) · 질문 쪽 쉬운 단서 120건 · 친숙도 둘째 판정자(첫 독립): 확정 1 0 · 경계 9 · 2 비율 b 26%(a 14% — 소재 효과) · blind 맞힘 256/327(GEN 283) · contextBound 11 → `audit/v026-results.json` · `v026-raw/` · CV-84~90 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
