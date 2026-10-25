@@ -62,6 +62,7 @@ const LabMinigame = lazy(() => import('./lab/LabMinigame.js'));
 const LabSound = lazy(() => import('./lab/LabSound.js'));
 import { useServerClock } from './useServerClock.js';
 import { isMobileUi, uiMode } from './uiMode.js';
+import { getGearTab } from './gearTab.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
 function roomIdFromPath(): string | null {
@@ -337,7 +338,9 @@ export default function App() {
     else if (st === 'PAUSED') screen = 'game:paused';
     else if (st === 'COUNTDOWN') screen = 'game:countdown';
     else if (st === 'GAME_RESULT') screen = 'game:result';
-    if (popupNow && POPUP_SCREEN[popupNow]) screen = `${POPUP_SCREEN[popupNow]}${snap ? '@room' : ''}`;
+    // ★ R067 — ⚙ 창의 안내 탭은 안내(설정 창과 같은 팝업 id)
+    const popScreen = popupNow === 'prefs' && getGearTab() === 'info' ? 'info' : popupNow ? POPUP_SCREEN[popupNow] : undefined;
+    if (popScreen) screen = `${popScreen}${snap ? '@room' : ''}`;
     const mgName = mg ? (minigameInfo(mg.key as MinigameKey)?.name ?? mg.key) : null;
     const gameId = snap?.game?.gameId ?? snap?.result?.gameId ?? null;
     // ★ R063 (D-256) — 맥락 줄은 사람 말로 · 번호가 없는 화면(로비 · 대기실 · 로그인 · 창)은 빈 줄 → 창에서 숨긴다

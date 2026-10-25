@@ -28,6 +28,7 @@ import { getEmojiInsert } from './emojiCatalog.js';
 import { getTheme } from './theme.js';
 import { closePopup, useCurrentPopup, usePopup } from './popup.js';
 import { useUiMode } from './uiMode.js';
+import { gearHasTabs, getGearTab, openGear } from './gearTab.js';
 
 declare const __BUILD__: string;
 
@@ -571,6 +572,32 @@ export function ReportButton({ className = 'ghost tiny report-btn' }: { classNam
   );
 }
 
+/**
+ * ★★ R067 (D-301) — ⚙ 창의 "제보" 탭: 제보 메뉴의 두 갈래를 그대로(누르면 제보 창이 그 단계로 열린다 — ⚙ 창은 닫힌다)
+ */
+export function ReportPick() {
+  const [, setOpen] = usePopup('report');
+  const go = (step: Step) => {
+    nextStep = step;
+    setOpen(true);
+  };
+  return (
+    <div className="report-menu-pick gear-report" data-gear-report>
+      <button type="button" className="report-menu-item" data-report-pick="recent" onClick={() => go('list')}>
+        <Icon icon={ListChecks} />
+        <span className="rm-title">문제 · 미니게임 제보</span>
+        <span className="rm-sub dim">최근에 본 것에서 골라요</span>
+      </button>
+      <button type="button" className="report-menu-item" data-report-pick="general" onClick={() => go('general')}>
+        <Icon icon={MessageSquareWarning} />
+        <span className="rm-title">일반 제보</span>
+        <span className="rm-sub dim">버그 · 어색함 · 제안 · 기타</span>
+      </button>
+      <p className="dim gear-report-key">단축키 Alt+B</p>
+    </div>
+  );
+}
+
 /** 로그인 전 화면 — 카드 아래 작은 글 링크 */
 export function ReportLink() {
   const [, setOpen] = usePopup('report');
@@ -621,11 +648,17 @@ export default function ReportHost({ ctx }: { ctx: ReportScreen }) {
     const onKey = (e: KeyboardEvent) => {
       if (!e.altKey || e.ctrlKey || e.metaKey || e.code !== 'KeyB') return;
       e.preventDefault();
+      // ★ R067 (D-301) — PC 방 안은 ⚙ 의 제보 탭(다시 누르면 닫힘) · 방 밖 · 모바일은 옛 제보 창
+      if (gearHasTabs()) {
+        if (current === 'prefs' && getGearTab() === 'report') closePopup('prefs');
+        else openGear('report');
+        return;
+      }
       setOpen((x) => !x);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [setOpen]);
+  }, [setOpen, current]);
   const back = (child: React.ReactNode, onClose: () => void) =>
     createPortal(
       <div

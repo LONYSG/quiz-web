@@ -21,6 +21,10 @@ import {
 import { cycleTheme, getTheme, setTheme, THEMES, type ThemeId } from './theme.js';
 import Icon from './Icon.js';
 import { Palette, Settings, Volume2, VolumeX } from 'lucide-react';
+import { setGearTab, useGearTab, type GearTab } from './gearTab.js';
+import InfoText from './InfoText.js';
+import { ReportPick } from './AppReport.js';
+import { useUiMode } from './uiMode.js';
 
 /**
  * ★ 방 안에서는 Lobby 의 단축키 목록이 Alt+T / Alt+M 을 맡는다 (목록에 보이게 하려고).
@@ -38,9 +42,24 @@ interface Props {
    */
   variant?: 'footer' | 'gear';
   onLogout?: () => void;
+  /**
+   * ★★ R067 (D-301 · A91) — PC 방 위 막대의 ⚙ = 탭 셋(설정 · 안내 · 제보). 위 막대 7 → 5(초대 · 친구 · 포인트샵 · ⚙ · 나가기).
+   *   모바일(☰ 의 "설정")은 탭 없이 설정만(☰ 가 이미 모아 둔다).
+   */
+  tabs?: boolean;
 }
 
-export default function Prefs({ variant = 'footer', onLogout }: Props) {
+const GEAR_TABS: { id: GearTab; label: string }[] = [
+  { id: 'settings', label: '설정' },
+  { id: 'info', label: '안내' },
+  { id: 'report', label: '제보' },
+];
+
+export default function Prefs({ variant = 'footer', onLogout, tabs = false }: Props) {
+  const mobile = useUiMode() === 'mobile';
+  const gearTab = useGearTab();
+  const tabbed = tabs && variant === 'gear' && !mobile;
+  const tab: GearTab = tabbed ? gearTab : 'settings';
   // ★ R041 — 팝업은 한 번에 하나 (popup.ts). 방 밖(footer)도 같은 규칙
   const [open, setOpen] = usePopup('prefs');
   const [theme, setThemeState] = useState<ThemeId>(getTheme());
@@ -100,14 +119,19 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
 
   // ★★ R035 — 창 안의 설명 문장을 지웠다 (건우: "설명은 숨겨라"). 소리 규칙 설명은 방 안 ⓘ 안내에 있다
   return (
-    <div className={variant === 'gear' ? 'prefs gear' : 'prefs'}>
+    <div className={variant === 'gear' ? `prefs gear${tabbed ? ' gear-tabbed' : ''}` : 'prefs'}>
       <button
         type="button"
         className="ghost tiny prefs-toggle"
         aria-expanded={open}
-        aria-label="테마 · 소리 · 로그아웃"
-        onClick={() => setOpen((v) => !v)}
-        title="테마 · 소리 (Alt+T 테마 · Alt+M 소리)"
+        aria-label={tabbed ? '설정 · 안내 · 제보' : '테마 · 소리 · 로그아웃'}
+        data-gear-btn={tabbed ? '1' : undefined}
+        onClick={() => {
+          // ★ R067 — 위 막대 ⚙ 는 늘 설정 탭부터(Alt+B 는 제보 탭)
+          if (tabbed && !open) setGearTab('settings');
+          setOpen((v) => !v);
+        }}
+        title={tabbed ? '설정 · 안내 · 제보 (Alt+B 제보)' : '테마 · 소리 (Alt+T 테마 · Alt+M 소리)'}
       >
         {/* ★ R041 (건우) — 웹은 글자까지 ("초대·안내·나가기는 글자가 있는데 톱니만 아이콘"), 모바일은 아이콘만 (.lbl) */}
         {variant === 'gear' ? (
@@ -123,12 +147,34 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
       </button>
 
       {open && (
-        <div className="prefs-pop" role="dialog" aria-label="테마와 소리">
+        <div className={`prefs-pop${tabbed ? ` gear-tabs tab-${tab}` : ''}`} role="dialog" aria-label={tabbed ? '설정 · 안내 · 제보' : '테마와 소리'} data-gear-pop={tabbed ? tab : undefined}>
           {/* ★ R043 A-8 — 모든 팝업에 같은 ✕ */}
           <div className="pop-head">
-            <p className="pop-title">설정</p>
+            {tabbed ? (
+              <div className="gear-tab-row" role="tablist" aria-label="⚙ 탭">
+                {GEAR_TABS.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    role="tab"
+                    className={tab === t.id ? 'seg-btn active' : 'seg-btn'}
+                    aria-selected={tab === t.id}
+                    data-gear-tab={t.id}
+                    onClick={() => setGearTab(t.id)}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <p className="pop-title">설정</p>
+            )}
             <PopupClose onClose={() => setOpen(false)} />
           </div>
+          {tab === 'info' && <InfoText />}
+          {tab === 'report' && <ReportPick />}
+          {tab === 'settings' && (
+          <>
           <p className="prefs-title">테마</p>
           <div className="seg">
             {THEMES.map((t) => (
@@ -217,6 +263,8 @@ export default function Prefs({ variant = 'footer', onLogout }: Props) {
             <button type="button" className="ghost tiny prefs-logout" onClick={() => setLogoutOpen(true)}>
               로그아웃
             </button>
+          )}
+          </>
           )}
         </div>
       )}

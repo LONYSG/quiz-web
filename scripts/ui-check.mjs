@@ -2233,6 +2233,13 @@ async function setTheme(page, t) {
   await page.evaluate(`document.documentElement.dataset.theme = '${t}'`);
   await sleep(120);
 }
+/** ★ R067 (D-301) — PC 방 위 막대 ⚙ 창을 이 탭으로 연다(ⓘ 안내 · 제보 버튼은 ⚙ 탭으로 모였다) */
+async function openGearTab(page, tab) {
+  if (!(await page.evaluate("document.querySelector('[data-gear-pop]') !== null"))) await page.evaluate("document.querySelector('[data-gear-btn]')?.click()");
+  await page.waitFor("document.querySelector('[data-gear-pop]') !== null", 3000).catch(() => false);
+  await page.evaluate(`document.querySelector('[data-gear-tab="${tab}"]')?.click()`);
+  await sleep(250);
+}
 async function waitPhase(page, phase, timeout = 30000) {
   return page.waitFor(`document.querySelector('.mg-card')?.dataset.phase === '${phase}'`, timeout);
 }
@@ -3965,6 +3972,92 @@ async function r067AsofFlow(browser) {
     H.close();
   }
 }
+/** ★ R067 E — 위 막대 7 → 5 · ⚙ 탭 셋(설정 · 안내 · 제보) · Alt+B = ⚙ 제보 탭 · 모바일 ☰ 그대로 */
+const R067_TOPBAR = "JSON.stringify([...document.querySelectorAll('.room-tools button')].filter((b) => b.offsetParent && b.getBoundingClientRect().width > 0 && !b.closest('[role=dialog]')).map((b) => (b.getAttribute('aria-label') || b.innerText.trim()).slice(0, 12)))";
+const altB = async (P) => {
+  await P.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'b', code: 'KeyB', windowsVirtualKeyCode: 66, modifiers: 1 });
+  await P.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'b', code: 'KeyB', windowsVirtualKeyCode: 66, modifiers: 1 });
+  await sleep(300);
+};
+async function r067GearFlow(browser) {
+  const H = await newPage(browser, 'U-gear', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'ugr', '톱니방장');
+  await createRoom(H, 'R067 톱니');
+  // 빨간 점은 포인트가 있을 때만(검사 계정은 0) — 검사 DB 에 가입 선물 한 줄 → 다시 열기 → 끝에 지움
+  const gid = await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE nickname = $1`, ['톱니방장'])).rows[0]?.id ?? null);
+  if (gid) await withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) VALUES ($1, 50, 'signup', '가입 선물')`, [gid]));
+  await H.goto(await H.evaluate('location.href'));
+  await H.waitFor("document.querySelector('.room-tools') !== null", 8000).catch(() => false);
+  await H.waitFor("document.querySelector('[data-signup-gift]') !== null", 4000).catch(() => false);
+  await pressKey(H, 'Escape', 'Escape', 27); // 가입 선물 창은 닫기만(포인트샵을 열면 점이 꺼진다)
+  await sleep(500);
+  const bar = JSON.parse(await H.evaluate(R067_TOPBAR));
+  const dot = await H.waitFor("!!document.querySelector('.room-tools [data-shop-dot]')?.offsetParent", 8000).catch(() => false);
+  await snap(H, '230-topbar-1536');
+  // ★ 프로필(✏)은 대기실(LOBBY)에만 있는 버튼 — 브리핑의 일곱(게임 중 캡처)에 없다 → 빼고 센다
+  const core = bar.filter((b) => b !== '프로필');
+  const bal = await H.evaluate("fetch('/api/shop').then((r) => r.json()).then((j) => j.balance).catch(() => -1)");
+  const flag = await H.evaluate("localStorage.getItem('qw.flag.shopOpened')");
+  record('★★★ R067 E 위 막대 PC — 버튼 다섯(초대 · 친구 · 포인트샵 · ⚙ · 나가기 — 대기실은 프로필 더) · 포인트샵 빨간 점 그대로', core.length === 5 && dot, JSON.stringify({ bar, dot, gid, bal, flag }));
+  // ⚙ — 설정 탭부터 · 안내 · 제보
+  await realClick(H, '[data-gear-btn]');
+  await H.waitFor("document.querySelector('[data-gear-pop]') !== null", 3000).catch(() => false);
+  const t0 = await H.evaluate("document.querySelector('[data-gear-pop]')?.dataset.gearPop ?? ''");
+  const hasTheme = await H.evaluate("!!document.querySelector('[data-gear-pop] .prefs-title')");
+  await snap(H, '231-gear-settings-1536');
+  await realClick(H, '[data-gear-tab="info"]');
+  await sleep(250);
+  const info = await H.evaluate("!!document.querySelector('[data-gear-pop=\"info\"] .info-tabs')");
+  const infoBox = JSON.parse(await H.evaluate("JSON.stringify((() => { const r = document.querySelector('[data-gear-pop]')?.getBoundingClientRect(); return r ? { l: Math.round(r.left), r: Math.round(r.right), b: Math.round(r.bottom) } : null; })())"));
+  await snap(H, '232-gear-info-1536');
+  await realClick(H, '[data-gear-tab="report"]');
+  await sleep(250);
+  const rep = await H.evaluate("document.querySelectorAll('[data-gear-pop=\"report\"] [data-report-pick]').length");
+  await snap(H, '233-gear-report-1536');
+  await H.evaluate("document.documentElement.dataset.theme = 'night'");
+  await sleep(200);
+  await snap(H, '233-gear-report-1536-night');
+  await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  record('★★★ R067 E ⚙ 창 — 설정 탭부터 · 안내 탭(안내 넷) · 제보 탭(두 갈래) · 화면 안', t0 === 'settings' && hasTheme && info && rep === 2 && infoBox && infoBox.l >= 0 && infoBox.r <= 1536 && infoBox.b <= 864, JSON.stringify({ t0, hasTheme, info, rep, infoBox }));
+  // 제보 탭 → "문제 · 미니게임 제보" = 제보 창 목록 단계(⚙ 는 닫힘)
+  await realClick(H, '[data-gear-report] [data-report-pick="recent"]');
+  const list = await H.waitFor("document.querySelector('[data-report-list]') !== null", 3000).catch(() => false);
+  const gearClosed = await H.evaluate("document.querySelector('[data-gear-pop]') === null");
+  record('★★ R067 E ⚙ 제보 탭 → 제보 창(목록 단계) · ⚙ 는 닫힘', list && gearClosed, JSON.stringify({ list, gearClosed }));
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await sleep(300);
+  // Alt+B — ⚙ 제보 탭 · 다시 누르면 닫힘
+  await realClickAt(H, 1400, 600);
+  await altB(H);
+  const b1 = await H.evaluate("document.querySelector('[data-gear-pop]')?.dataset.gearPop ?? ''");
+  await altB(H);
+  const b2 = await H.evaluate("document.querySelector('[data-gear-pop]') === null && document.querySelector('.report-modal') === null");
+  record('★★★ R067 E Alt+B — PC 방 안은 ⚙ 의 제보 탭 · 다시 누르면 닫힘', b1 === 'report' && b2, JSON.stringify({ b1, b2 }));
+  await snap(H, '230-topbar-1536');
+  await H.setViewport(2560, 1313);
+  await sleep(300);
+  const bar2560 = JSON.parse(await H.evaluate(R067_TOPBAR));
+  await openGearTab(H, 'info');
+  await snap(H, '232-gear-info-2560');
+  await closeTop(H);
+  // 모바일 ☰ 그대로 · Alt+B 는 옛 제보 창
+  await touchDevice(H, 390, 844);
+  await H.evaluate("window.dispatchEvent(new Event('resize'))");
+  await sleep(500);
+  const mBar = JSON.parse(await H.evaluate(R067_TOPBAR));
+  await tapOn(H, '#menu-btn');
+  const menu = await H.waitFor("document.querySelector('[data-menu-report]') !== null", 3000).catch(() => false);
+  const menuItems = await H.evaluate("[...document.querySelectorAll('.menu-list button')].map((b) => b.innerText.trim()).filter(Boolean).join(' | ')");
+  await snap(H, '234-menu-m390');
+  await pressKey(H, 'Escape', 'Escape', 27);
+  await sleep(200);
+  await altB(H);
+  const mAlt = await H.evaluate("document.querySelector('[data-report-menu]') !== null");
+  if (gid) await withPg((c) => c.query(`DELETE FROM point_grants WHERE account_id = $1 AND reason = 'signup'`, [gid]));
+  record('★★ R067 E 모바일 — ☰ 그대로(제보 · 설정 · 안내 메뉴) · Alt+B 는 제보 창', menu && /안내/.test(menuItems) && /설정/.test(menuItems) && mAlt && bar2560.filter((b) => b !== '프로필').length === 5, JSON.stringify({ mBar, menuItems, mAlt, bar2560 }));
+  H.close();
+}
 function v067NoDots(all) {
   return Object.values(all).every((rows) => Object.values(rows).every((x) => x.dots === 0));
 }
@@ -3976,6 +4069,7 @@ async function r067Flow(browser) {
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'typing') await r067TypingFlow(browser);
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'bgm') await r067BgmFlow(browser);
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'asof') await r067AsofFlow(browser);
+  if (!process.env.R067_ONLY || process.env.R067_ONLY === 'gear') await r067GearFlow(browser);
   await touchDevice(L, 1536, 864, false);
   await L.setViewport(1536, 864);
 }
@@ -4106,7 +4200,7 @@ async function r066Flow(browser) {
   record('★★★ R066 C1 · C2 손님 — 방장이 고르는 대로 이름 줄 · 열린 창(3/16 · 켜진 셋)이 바로 · 고르기 창은 생략(…) 없음(PC · m390)', /3\/16/.test(after.count) && after.on.length === 3 && /각도|사진|균형/.test(names) && ell.pc.length === 0 && ell.m.length === 0, JSON.stringify({ before, after, names, ell }));
 
   // ── D1 ⓘ 안내 탭 넷
-  await realClick(H, '.infotip-btn');
+  await openGearTab(H, 'info'); // ★ R067 — ⓘ 는 ⚙ 의 안내 탭
   await H.waitFor("document.querySelector('.info-tabs') !== null", 3000);
   const tabs = [];
   let pts = '';
@@ -4631,12 +4725,13 @@ async function r063Flow(browser) {
   await sleep(400);
   await audit(H, '방(PC)');
   // ── A 제보 — PC 위 막대 · 모바일 메뉴 · 떠 있는 🐞 없음
-  const a1 = JSON.parse(await H.evaluate("JSON.stringify({ btn: !!document.querySelector('.room-tools [data-report-btn]')?.offsetParent, float: document.querySelector('.report-float') !== null })"));
+  // ★ R067 (D-301) — PC 는 ⚙ 창의 "제보" 탭(위 막대 "제보" 버튼은 ⚙ 로 모였다)
+  const a1 = JSON.parse(await H.evaluate("JSON.stringify({ btn: !!document.querySelector('.room-tools [data-gear-btn]')?.offsetParent && !document.querySelector('.room-tools [data-report-btn]')?.offsetParent, float: document.querySelector('.report-float') !== null })"));
   await snap(H, '130-report-topbar-pc');
-  await realClick(H, '.room-tools [data-report-btn]');
-  await H.waitFor("document.querySelector('[data-report-menu]') !== null", 3000);
-  // ★ R065 — 메뉴 → ② 일반 제보
-  await realClick(H, '[data-report-pick="general"]');
+  await openGearTab(H, 'report');
+  await snap(H, '130-report-gear-tab-pc');
+  // ★ R065 — 메뉴 → ② 일반 제보 (★ R067 — ⚙ 제보 탭의 두 갈래)
+  await realClick(H, '[data-gear-report] [data-report-pick="general"]');
   await H.waitFor("document.querySelector('.report-text') !== null", 3000);
   const ctxHidden = await H.evaluate("document.querySelector('[data-report-ctx]') === null");
   const ph = await H.evaluate("document.querySelector('.report-text')?.placeholder ?? ''");
@@ -4646,7 +4741,7 @@ async function r063Flow(browser) {
   const g1 = JSON.parse(await G.evaluate("JSON.stringify({ menu: !!document.querySelector('[data-menu-report]'), barBtn: !!document.querySelector('.room-tools [data-report-btn]')?.offsetParent, float: document.querySelector('.report-float') !== null })"));
   await snap(G, '131-report-menu-m390');
   await pressKey(G, 'Escape', 'Escape', 27);
-  record('★★★ A 제보 — PC 위 막대 "제보" · 모바일은 ☰ 메뉴만 · 떠 있는 🐞 없음 · 대기실은 맥락 줄 숨김 · placeholder 한 줄', a1.btn && !a1.float && g1.menu && !g1.barBtn && !g1.float && ctxHidden && ph === '무엇이 이상했나요?', JSON.stringify({ a1, g1, ctxHidden, ph }));
+  record('★★★ A 제보 — PC ⚙ 의 "제보" 탭(R067) · 모바일은 ☰ 메뉴만 · 떠 있는 🐞 없음 · 대기실은 맥락 줄 숨김 · placeholder 한 줄', a1.btn && !a1.float && g1.menu && !g1.barBtn && !g1.float && ctxHidden && ph === '무엇이 이상했나요?', JSON.stringify({ a1, g1, ctxHidden, ph }));
   // ── C 미니게임 고르기 창
   if (!(await H.evaluate("document.querySelector('.mg-check input')?.checked === true"))) await realClick(H, '.mg-check input');
   await H.waitFor("document.querySelector('[data-mg-catalog-open]') !== null", 4000);
@@ -4736,14 +4831,15 @@ async function r063Flow(browser) {
   await H.waitFor("document.querySelector('[data-signup-gift]') !== null", 8000).catch(() => undefined);
   await sleep(300);
   const toast = await H.evaluate("document.querySelector('[data-signup-gift]')?.innerText.replace(/\\s+/g, ' ') ?? ''");
-  const dotBefore = await H.evaluate("document.querySelector('#shop-btn [data-shop-dot]') !== null");
+  const dotBefore = await H.waitFor("document.querySelector('#shop-btn [data-shop-dot]') !== null", 6000).catch(() => false);
+  const dotDiag = await H.evaluate("fetch('/api/shop').then((r) => r.json()).then((j) => ({ bal: j.balance, flag: localStorage.getItem('qw.flag.shopOpened'), btns: document.querySelectorAll('#shop-btn').length })).catch((e) => String(e))");
   await snap(H, '139-signup-gift-pc');
   await H.evaluate("document.querySelector('[data-signup-shop]')?.click()");
   await H.waitFor("document.querySelector('.shop-pop') !== null", 4000).catch(() => undefined);
   await sleep(500);
   const shopLine = await H.evaluate("document.querySelector('.shop-points-sub')?.innerText ?? ''");
   const dotAfter = await H.evaluate("document.querySelector('#shop-btn [data-shop-dot]') !== null");
-  record('★★ E R066 가입 선물 창 "가입 선물 50P · 포인트샵" → [포인트샵 가기] 로 샵 · 빨간 점(열기 전 있음 · 연 뒤 없음) · 상점 설명 줄 없음', /가입 선물 50P/.test(toast) && /포인트샵/.test(toast) && dotBefore && !dotAfter && shopLine === '', JSON.stringify({ toast, dotBefore, dotAfter, shopLine }));
+  record('★★ E R066 가입 선물 창 "가입 선물 50P · 포인트샵" → [포인트샵 가기] 로 샵 · 빨간 점(열기 전 있음 · 연 뒤 없음) · 상점 설명 줄 없음', /가입 선물 50P/.test(toast) && /포인트샵/.test(toast) && dotBefore && !dotAfter && shopLine === '', JSON.stringify({ toast, dotBefore, dotAfter, shopLine, dotDiag }));
   await withPg((c) => c.query(`DELETE FROM point_grants WHERE account_id = $1 AND reason = 'signup'`, [hId]));
   // ── A 로그인 전 제보(m390) — 아이디 칸만 읽고 비밀번호는 안 읽는다
   const L = await newPage(browser, 'R063-anon', true);
@@ -4805,14 +4901,15 @@ async function r063Flow(browser) {
   await X.goto(`${BASE}/lab/minigame?scene=1&key=cake&phase=play&seed=2024`);
   await sleep(1200);
   await audit(X, '미니게임(PC)');
-  const cake = JSON.parse(await X.evaluate("JSON.stringify({ big: document.querySelector('.cake-big')?.innerText, small: document.querySelector('.cake-small')?.innerText, name: document.body.innerText.includes('케이크') })"));
+  // ★ R067 (D-295) — 소수점 없이 정수 초만(.cake-num) — 옛 "큰 정수 + 작은 소수" 는 없앴다
+  const cake = JSON.parse(await X.evaluate("JSON.stringify({ big: document.querySelector('.cake-num')?.innerText, small: document.querySelector('.cake-small')?.innerText ?? null, name: document.body.innerText.includes('케이크') })"));
   await X.goto(`${BASE}/lab/minigame?scene=1&key=balloon&phase=roundResult&seed=2024&state=popped`);
   await sleep(800);
   await snap(X, '142-balloon-pop-pc');
   await X.goto(`${BASE}/lab/minigame?scene=1&key=balloon&phase=rules&seed=2024`);
   await sleep(600);
   const bal = await X.evaluate("document.body.innerText.includes('딱 100')");
-  record('★★ F 고기 굽기 4단계(색 다름) · "10" 큰 정수 + 작은 소수 · 케이크 글자 없음 · 풍선 규칙 "딱 100"', meat === '0.00,0.55,1.00,1.50' && /^\d+$/.test(cake.big ?? '') && /^\.\d\d$/.test(cake.small ?? '') && bal, JSON.stringify({ meat, cake, bal }));
+  record('★★ F 고기 굽기 4단계(색 다름) · 정수 초만(R067 — 소수 없음) · 케이크 글자 없음 · 풍선 규칙 "딱 100"', meat === '0.00,0.55,1.00,1.50' && /^\d+$/.test(cake.big ?? '') && cake.small === null && !cake.name && bal, JSON.stringify({ meat, cake, bal }));
   await touchDevice(X, 390, 844);
   await X.goto(`${BASE}/lab/minigame?scene=1&key=photo&phase=play&seed=2024&hard=1`);
   await X.waitFor("document.querySelector('[data-photo-hint]') !== null", 5000).catch(() => undefined);
@@ -5949,7 +6046,7 @@ async function socialFlow(browser) {
   // ── ★★ B — 팝업 규칙 (방장 PC 로비): ✕ 있음 · 바깥 누르기 닫힘 · Esc 닫힘 · 정보 창은 뒤를 어둡게 하지 않는다
   const POPS = [
     ['.prefs-toggle', '.prefs-pop', '설정'],
-    ['.infotip-btn', '.infotip-pop', '안내'],
+    // ★ R067 (D-301) — ⓘ 안내는 PC 에서 ⚙ 창의 탭(같은 창 — 위 줄이 맡는다)
     ['#invite-btn', '.invite-pop', '초대'],
     ['#friends-btn', '.friends-pop', '친구'],
     ['#rename-btn', '.rename-pop', '프로필'],
@@ -6039,14 +6136,13 @@ async function socialFlow(browser) {
   await snap(host, '51-avail-gap-pc');
   record('★ C-3 — 문제 수 ↔ 낼 수 있는 문제 간격 4px 이하', gap !== null && gap <= 4, `${gap}px`);
   // ── ★★ C-4 — 안내 창: 한 항목 한 줄 (PC 5 · 모바일 3)
-  const INFO_LINES = "(() => [...document.querySelectorAll('.infotip-pop .info-list li')].filter((li) => li.getClientRects().length > 0).map((li) => { const tops = []; const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); for (let n = w.nextNode(); n; n = w.nextNode()) { if (!n.textContent.trim()) continue; const rg = document.createRange(); rg.selectNodeContents(n); for (const rc of rg.getClientRects()) { if (rc.width < 1) continue; if (!tops.some((t) => Math.abs(t - rc.top) < rc.height * 0.5)) tops.push(rc.top); } } return tops.length; }))()";
+  const INFO_LINES = "(() => [...document.querySelectorAll('.infotip-pop .info-list li, [data-gear-pop] .info-list li')].filter((li) => li.getClientRects().length > 0).map((li) => { const tops = []; const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); for (let n = w.nextNode(); n; n = w.nextNode()) { if (!n.textContent.trim()) continue; const rg = document.createRange(); rg.selectNodeContents(n); for (const rc of rg.getClientRects()) { if (rc.width < 1) continue; if (!tops.some((t) => Math.abs(t - rc.top) < rc.height * 0.5)) tops.push(rc.top); } } return tops.length; }))()";
   for (const s of SHOT_PC) {
     await host.setViewport(s.w, s.h);
     await sleep(300);
-    await realClick(host, '.infotip-btn');
-    await sleep(250);
+    await openGearTab(host, 'info'); // ★ R067 — ⚙ 의 안내 탭
     const lines = await host.evaluate(INFO_LINES);
-    const inView = await host.evaluate("(() => { const r = document.querySelector('.infotip-pop')?.getBoundingClientRect(); return Boolean(r) && r.left >= 0 && r.right <= innerWidth && r.bottom <= innerHeight; })()");
+    const inView = await host.evaluate("(() => { const r = document.querySelector('.infotip-pop, [data-gear-pop]')?.getBoundingClientRect(); return Boolean(r) && r.left >= 0 && r.right <= innerWidth && r.bottom <= innerHeight; })()");
     if (s.n === 'pc' || s.n === 'qhd') await snap(host, `53-info-${s.n}`);
     record(`★★ C-4 — 안내 PC ${s.w}×${s.h}: 줄마다 한 줄 · 화면 안`, lines.length > 0 && lines.every((n) => n === 1) && inView, lines.join(','));
     await closeTop(host);
@@ -6275,11 +6371,10 @@ async function shotsFlow(browser) {
   await sleep(300);
   await snap(host, '07o-kick-confirm-pc');
   await closeTop(host);
-  await host.evaluate("document.querySelector('.infotip-btn')?.click()");
-  await sleep(300);
+  await openGearTab(host, 'info'); // ★ R067 — ⚙ 의 안내 탭
   await snap(host, '07p-info-pc');
   // ★ R043 — 초대 팝업 (PC — 설정처럼 버튼 아래 · 모바일 — ☰ → 초대, 화면 가운데)
-  await host.evaluate("document.querySelector('.infotip-close')?.click()");
+  await closeTop(host);
   await host.evaluate("document.querySelector('#invite-btn')?.click()");
   await sleep(300);
   await snap(host, '07r-invite-pc');
@@ -7515,12 +7610,13 @@ try {
       }
       record('★★ R041 G — 화면을 한 번 누르면 소리가 깨어 있다 (AudioContext running)', await host.waitFor("document.documentElement.dataset.audio === 'running'", 3000), await host.evaluate("document.documentElement.dataset.audio ?? '-'"));
       // 팝업 하나 — ⓘ 를 연 채 ⚙ 를 열면 ⓘ 는 닫힌다 · 나가기(Alt+X)를 열면 ⚙ 도 닫힌다
-      await host.evaluate("document.querySelector('.infotip-btn')?.click()");
+      // ★ R067 — ⓘ 는 ⚙ 의 탭이 됐다 → 친구 창을 연 채 ⚙ 를 열면 친구 창이 닫힌다
+      await host.evaluate("document.querySelector('#friends-btn')?.click()");
       await sleep(200);
       await host.evaluate("document.querySelector('.prefs-toggle')?.click()");
       await sleep(200);
-      const pops1 = await host.evaluate("[!!document.querySelector('.infotip-pop'), !!document.querySelector('.prefs-pop')].join(',')");
-      record('★★★ R041 B — 팝업은 하나만: ⓘ 를 연 채 ⚙ 를 열면 ⓘ 가 닫힌다', pops1 === 'false,true', pops1);
+      const pops1 = await host.evaluate("[!!document.querySelector('.friends-pop'), !!document.querySelector('.prefs-pop')].join(',')");
+      record('★★★ R041 B — 팝업은 하나만: 친구 창을 연 채 ⚙ 를 열면 친구 창이 닫힌다', pops1 === 'false,true', pops1);
       // ★ 로비에서는 나가기 확인이 없다(Q-82 — 바로 나간다) — 대신 칸 누르기로 강퇴 팝업을 띄운다
       await host.evaluate("document.querySelector('.seat-card.pickable')?.click()");
       await sleep(250);
@@ -7543,12 +7639,11 @@ try {
       record('★ R041 B — 팝업은 화면 가운데', Math.abs(mid.dx) <= 3 && Math.abs(mid.dy) <= 3, JSON.stringify(mid));
       await closeTop(host);
       // ⓘ — ✕ 로 닫힌다 · 짧다
-      await host.evaluate("document.querySelector('.infotip-btn')?.click()");
+      await openGearTab(host, 'info'); // ★ R067 — ⚙ 의 안내 탭
+      const infoLines = await host.evaluate("[...document.querySelectorAll('[data-gear-pop] .info-list li')].filter((li) => li.getClientRects().length > 0).length");
+      await host.evaluate("document.querySelector('[data-gear-pop] .popup-close')?.click()");
       await sleep(200);
-      const infoLines = await host.evaluate("[...document.querySelectorAll('.infotip-pop .info-list li')].filter((li) => li.getClientRects().length > 0).length");
-      await host.evaluate("document.querySelector('.infotip-close')?.click()");
-      await sleep(200);
-      record('★★ R041 D — ⓘ 는 짧게(8줄 이하) · ✕ 로 닫힌다', infoLines > 0 && infoLines <= 8 && (await host.evaluate("document.querySelector('.infotip-pop') === null")), `${infoLines}줄`);
+      record('★★ R041 D — ⓘ(⚙ 안내 탭)는 짧게(8줄 이하) · ✕ 로 닫힌다', infoLines > 0 && infoLines <= 8 && (await host.evaluate("document.querySelector('[data-gear-pop]') === null")), `${infoLines}줄`);
       // ★ R043 A-9 — 단축키 목록 창 자체가 없다 (R041 E-3 검사는 대상이 사라졌다)
       await guest.setViewport(1280, 720);
       await sleep(300);

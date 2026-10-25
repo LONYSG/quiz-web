@@ -8150,3 +8150,35 @@ button.mg-cat-card {
   white-space: nowrap;
   margin-left: 6px;
 }
+
+/* ★★ R067 (D-301 · A91) — PC 위 막대 7 → 5: ⓘ 안내 · 제보는 ⚙ 창의 탭으로(모바일 ☰ 는 그대로 — 그 창들을 연다) */
+:where(.ui-pc) .room-tools > .infotip,
+:where(.ui-pc) .room-tools > .report-btn {
+  display: none !important;
+}
+.prefs.gear.gear-tabbed .prefs-pop.gear-tabs {
+  width: 340px;
+}
+.prefs.gear.gear-tabbed .prefs-pop.gear-tabs.tab-info {
+  width: min(440px, calc(100vw - 32px));
+  max-height: min(70vh, 640px);
+  overflow-y: auto;
+}
+.gear-tab-row {
+  display: flex;
+  gap: 4px;
+}
+.gear-tab-row .seg-btn {
+  padding: 4px 12px;
+  font-weight: 800;
+}
+.gear-report {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+.gear-report .gear-report-key {
+  margin: 0;
+  font-size: 0.78rem;
+  text-align: right;
+}
