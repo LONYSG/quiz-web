@@ -1,0 +1,572 @@
+{
+ "round": "G021",
+ "note": "V024 fix 반영 로그 — before 로 되돌릴 수 있다",
+ "runs": [
+  {
+   "at": "2026-10-25T02:28:42.893Z",
+   "script": "g021-apply-v024",
+   "changes": [
+    {
+     "id": "price-0283",
+     "key": "priceKrw",
+     "before": 137655,
+     "after": 74990,
+     "why": "V024 fix — 다나와 첫 화면 4곳 중앙값"
+    },
+    {
+     "id": "price-0283",
+     "key": "bucket",
+     "before": "10~100만",
+     "after": "1~10만",
+     "why": "V024 fix — 74,990 이라 버킷 이동"
+    },
+    {
+     "id": "price-0283",
+     "key": "priceAsOf",
+     "before": "2026-10-21",
+     "after": "2026-10-24",
+     "why": "V024 이 다시 읽은 날"
+    },
+    {
+     "id": "price-0283",
+     "key": "priceSources",
+     "before": [
+      {
+       "url": "https://prod.danawa.com/info/?pcode=3322594",
+       "seller": "11번가 (다나와 판매처 목록 · 최저)",
+       "priceKrw": 136840,
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://prod.danawa.com/info/?pcode=3322594",
+       "seller": "다나와 판매처 목록 4곳 중앙값",
+       "priceKrw": 137655,
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://prod.danawa.com/info/?pcode=3322594",
+       "seller": "11번가 (다나와 판매처 목록 · 최고)",
+       "priceKrw": 143700,
+       "fetchedAt": "2026-10-21"
+      }
+     ],
+     "after": [
+      {
+       "url": "https://prod.danawa.com/info/?pcode=3322594",
+       "seller": "다나와 판매처 목록 첫 화면 4곳 중앙값",
+       "priceKrw": 74990,
+       "fetchedAt": "2026-10-24"
+      },
+      {
+       "url": "https://price.enuri.com/search?keyword=MTG%20%EB%A6%AC%ED%8C%8C%20%ED%8C%8C%EC%98%A4%20FF-PO1858F",
+       "seller": "에누리 최저",
+       "priceKrw": 73690,
+       "fetchedAt": "2026-10-24"
+      }
+     ],
+     "why": "V024 fix proposal.priceSources(문장 → 칸)"
+    },
+    {
+     "id": "price-0283",
+     "key": "sources",
+     "before": [
+      {
+       "url": "https://prod.danawa.com/info/?pcode=3322594",
+       "note": "다나와 상품 정보 \"MTG 리파 파오 페이셜 피트니스 FF-PO1858F\" — 괄사 / 효과: 윤곽관리 / 주요방식: 마사지, 얼굴은 작아지고, 얼굴선은 팽팽하게! · 판매처 목록 4곳 136,840~143,700원 (요지)",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://www.designboom.com/technology/cristiano-ronaldo-pao-facial-fitness-08-08-2014/",
+       "note": "\"cristiano ronaldo stars in quirky japanese commercial for facial fitness device\" · \"the PAO facial fitness targets and massages the major muscles in the face line for 30 seconds, increasing the 'smiling angle' on both sides of the mouth\"",
+       "fetchedAt": "2026-10-21"
+      }
+     ],
+     "after": [
+      {
+       "url": "https://prod.danawa.com/info/?pcode=3322594",
+       "note": "다나와 상품 정보 \"MTG 리파 파오 페이셜 피트니스 FF-PO1858F\" — 괄사 / 효과: 윤곽관리 / 주요방식: 마사지, 얼굴은 작아지고, 얼굴선은 팽팽하게! · 판매처 목록 4곳 136,840~143,700원 (요지)",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://www.designboom.com/technology/cristiano-ronaldo-pao-facial-fitness-08-08-2014/",
+       "note": "\"cristiano ronaldo stars in quirky japanese commercial for facial fitness device\" · \"the PAO facial fitness targets and massages the major muscles in the face line for 30 seconds, increasing the 'smiling angle' on both sides of the mouth\"",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://prod.danawa.com/info/?pcode=3322594",
+       "note": "V024 재열람(2026-10-24): 다나와 첫 화면 73,690~77,400원 · 에누리 최저 73,690원 — G018 기록 137,655 의 -45% (요지)",
+       "fetchedAt": "2026-10-24"
+      }
+     ],
+     "why": "V024 근거"
+    },
+    {
+     "id": "price-0283",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0224",
+     "key": "image.attribution",
+     "before": "Michael Nutt / Wikimedia Commons",
+     "after": "Michael Nutt / Wikimedia Commons (cropped)",
+     "why": "V024 fix"
+    },
+    {
+     "id": "photo-0232",
+     "key": "image.attribution",
+     "before": "국립국어원 / Wikimedia Commons",
+     "after": "국립국어원 / Wikimedia Commons (cropped)",
+     "why": "V024 fix"
+    },
+    {
+     "id": "photo-0244",
+     "key": "image.attribution",
+     "before": "Brian Negin (bdnegin) / Wikimedia Commons",
+     "after": "Brian Negin (bdnegin) / Wikimedia Commons (cropped, retouched)",
+     "why": "V024 fix"
+    },
+    {
+     "id": "photo-0302",
+     "key": "image.attribution",
+     "before": "Chatham House / Wikimedia Commons",
+     "after": "Chatham House / Wikimedia Commons (cropped)",
+     "why": "V024 fix"
+    },
+    {
+     "id": "photo-0306",
+     "key": "image.attribution",
+     "before": "Sfcphoto.KeunHwa / Wikimedia Commons",
+     "after": "Sfcphoto.KeunHwa / Wikimedia Commons (cropped)",
+     "why": "V024 fix"
+    },
+    {
+     "id": "photo-0290",
+     "key": "image.license",
+     "before": "Public domain",
+     "after": "CC BY 2.0",
+     "why": "V024 fix — 공용 페이지 CC BY 2.0(VERIFY 직접 확인)"
+    },
+    {
+     "id": "photo-0265",
+     "key": "altAnswers",
+     "before": [
+      "미륵보살 반가사유상",
+      "반가상"
+     ],
+     "after": [
+      "미륵보살 반가사유상",
+      "반가상",
+      "미륵반가사유상"
+     ],
+     "why": "V024 fix — ko 위키 반가사유상"
+    },
+    {
+     "id": "photo-0270",
+     "key": "altAnswers",
+     "before": [
+      "가스 마스크",
+      "방독마스크"
+     ],
+     "after": [
+      "가스 마스크",
+      "방독마스크",
+      "개스 마스크"
+     ],
+     "why": "V024 fix — ko 위키 근거(가스 마스크 · 방독마스크는 그대로)"
+    },
+    {
+     "id": "photo-0318",
+     "key": "altAnswers",
+     "before": [
+      "카카오나무",
+      "카카오 나무",
+      "코코아나무"
+     ],
+     "after": [
+      "카카오나무",
+      "카카오 나무"
+     ],
+     "why": "V024 fix — '코코아나무' 근거 없음 · 뺌"
+    },
+    {
+     "id": "photo-0339",
+     "key": "altAnswers",
+     "before": [
+      "호랑꼬리여우원숭이",
+      "호랑이꼬리여우원숭이"
+     ],
+     "after": [
+      "호랑꼬리여우원숭이",
+      "호랑이꼬리여우원숭이",
+      "고양이원숭이"
+     ],
+     "why": "V024 fix"
+    },
+    {
+     "id": "photo-0231",
+     "key": "altAnswers",
+     "before": [
+      "벨크로 테이프",
+      "밸크로"
+     ],
+     "after": [
+      "벨크로 테이프",
+      "밸크로",
+      "찍찍이"
+     ],
+     "why": "CV-74 — ko 위키 \"찍찍이\" 문서 첫 줄(상표명 벨크로) · 기사 다수"
+    },
+    {
+     "id": "photo-0231",
+     "key": "sources",
+     "before": [
+      {
+       "url": "https://ko.wikipedia.org/wiki/%EB%B2%A8%ED%81%AC%EB%A1%9C",
+       "note": "벨크로(영어: Velcro)는 영국의 브랜드이다. 주로 후크 앤드 루프 패스너를 제작하고 있으며, 보통명사화된 브랜드이다.",
+       "fetchedAt": "2026-10-21"
+      }
+     ],
+     "after": [
+      {
+       "url": "https://ko.wikipedia.org/wiki/%EB%B2%A8%ED%81%AC%EB%A1%9C",
+       "note": "벨크로(영어: Velcro)는 영국의 브랜드이다. 주로 후크 앤드 루프 패스너를 제작하고 있으며, 보통명사화된 브랜드이다.",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://ko.wikipedia.org/wiki/%EC%B0%8D%EC%B0%8D%EC%9D%B4",
+       "note": "찍찍이, 후크앤드루프 패스너(hook-and-loop fastener), 상표명 벨크로(Velcro)는 갈고리와 걸림고리가 쌍을 이뤄 서로 붙였다 떼었다 할 수 있게 하는 도구다.",
+       "fetchedAt": "2026-10-25"
+      }
+     ],
+     "why": "CV-74 변형 근거"
+    },
+    {
+     "id": "photo-0251",
+     "key": "altAnswers",
+     "before": [
+      "피젯스피너"
+     ],
+     "after": [
+      "피젯스피너",
+      "핸드 스피너"
+     ],
+     "why": "CV-74 — 기사 \"피젯스피너(핸드스피너)\" · \"핸드 스피너(장난감)\""
+    },
+    {
+     "id": "photo-0251",
+     "key": "sources",
+     "before": [
+      {
+       "url": "https://ko.wikipedia.org/wiki/%ED%94%BC%EC%A0%AF_%EC%8A%A4%ED%94%BC%EB%84%88",
+       "note": "피젯 스피너(Fidget spinner)는 금속 또는 플라스틱으로 만든 다중 잎(일반적으로 3엽) 모양의 평평한 구조 중앙에 볼 베어링으로 구성되어 있고, 돌출부에 금속 추를 얹어 중앙 축을 중심으로 회전하도록 설계된 장난감이다. 피젯 스피너는 2017년에 매우 널리 퍼진 인기 장난감이 되었다.",
+       "fetchedAt": "2026-10-21"
+      }
+     ],
+     "after": [
+      {
+       "url": "https://ko.wikipedia.org/wiki/%ED%94%BC%EC%A0%AF_%EC%8A%A4%ED%94%BC%EB%84%88",
+       "note": "피젯 스피너(Fidget spinner)는 금속 또는 플라스틱으로 만든 다중 잎(일반적으로 3엽) 모양의 평평한 구조 중앙에 볼 베어링으로 구성되어 있고, 돌출부에 금속 추를 얹어 중앙 축을 중심으로 회전하도록 설계된 장난감이다. 피젯 스피너는 2017년에 매우 널리 퍼진 인기 장난감이 되었다.",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "http://www.newspim.com/news/view/20171019000105",
+       "note": "손안에서 회전하는 장난감 피젯스피너(핸드스피너)를 우주공간에서 돌린 영상이 공개됐다. (뉴스핌 2017-10-19 · 네이버 뉴스 검색 요지)",
+       "fetchedAt": "2026-10-25"
+      }
+     ],
+     "why": "CV-74 변형 근거"
+    },
+    {
+     "id": "photo-0259",
+     "key": "altAnswers",
+     "before": [
+      "플라스마 볼",
+      "플라스마 램프",
+      "플라즈마 램프",
+      "플라스마 공"
+     ],
+     "after": [
+      "플라스마 볼",
+      "플라스마 램프",
+      "플라즈마 램프",
+      "플라스마 공",
+      "플라즈마 볼"
+     ],
+     "why": "CV-74 — 기사 쓰임(국립부산과학관 \"플라즈마 볼 체험\" 등 뉴스 154건)"
+    },
+    {
+     "id": "photo-0259",
+     "key": "sources",
+     "before": [
+      {
+       "url": "https://ko.wikipedia.org/wiki/%ED%94%8C%EB%9D%BC%EC%8A%A4%EB%A7%88_%EA%B5%AC",
+       "note": "플라스마 구(영어: plasma globe)는 1980년대 인기가 있었던 장식품이다. 1904년 니콜라 테슬라가 플라스마를 연구하기 위해 발명했으며, 후에 샌프란시스코의 과학박물관인 익스플로러토리엄의 빌 파커가 다시 사용하여 유명해졌다.",
+       "fetchedAt": "2026-10-21"
+      }
+     ],
+     "after": [
+      {
+       "url": "https://ko.wikipedia.org/wiki/%ED%94%8C%EB%9D%BC%EC%8A%A4%EB%A7%88_%EA%B5%AC",
+       "note": "플라스마 구(영어: plasma globe)는 1980년대 인기가 있었던 장식품이다. 1904년 니콜라 테슬라가 플라스마를 연구하기 위해 발명했으며, 후에 샌프란시스코의 과학박물관인 익스플로러토리엄의 빌 파커가 다시 사용하여 유명해졌다.",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://www.inews24.com/view/2011369",
+       "note": "서로 멀리 떨어진 입자 사이에서도 특별한 상관관계가 나타나는 양자얽힘은 플라즈마 볼 체험으로 이해할 수… (아이뉴스24 · 네이버 뉴스 검색 요지)",
+       "fetchedAt": "2026-10-25"
+      }
+     ],
+     "why": "CV-74 변형 근거"
+    },
+    {
+     "id": "photo-0224",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0232",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0244",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0302",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0306",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0290",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0265",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0270",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0318",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photo-0339",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "which-0347",
+     "key": "a.value",
+     "before": 3596,
+     "after": 2800,
+     "why": "V024 fix — 본류 길이(슈얏알아랍 빼고)"
+    },
+    {
+     "id": "which-0347",
+     "key": "b.value",
+     "before": 1950,
+     "after": 1900,
+     "why": "V024 fix — 같은 정의"
+    },
+    {
+     "id": "which-0347",
+     "key": "margin",
+     "before": 1.84,
+     "after": 1.47,
+     "why": "V024 fix"
+    },
+    {
+     "id": "which-0347",
+     "key": "note",
+     "after": "강 본류 길이 기준(유프라테스는 샤트알아랍을 빼면 약 2,800km · 티그리스 약 1,900km) — 비율 1.47 로 경계",
+     "why": "V024 fix proposal.note"
+    },
+    {
+     "id": "which-0347",
+     "key": "sources",
+     "before": [
+      {
+       "url": "https://en.wikipedia.org/wiki/List_of_river_systems_by_length",
+       "note": "표 행 원문: \"19. | Shatt al-Arab–Euphrates–Murat | 3,596 | 2,236 | 938,173 | 3,350 | Persian Gulf | Iraq, Turkey, Syria, Iran\" (열: # | River | Length (km) | Length (miles) | Drainage area (km²) | …)",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/List_of_river_systems_by_length",
+       "note": "표 행 원문: \"69. | Tigris | 1,950 | 1,212 | 375,000 | 1,014 | Shatt al-Arab | Turkey, Iraq, Syria, Iran\" (열: # | River | Length (km) | Length (miles) | Drainage area (km²) | …)",
+       "fetchedAt": "2026-10-21"
+      }
+     ],
+     "after": [
+      {
+       "url": "https://en.wikipedia.org/wiki/List_of_river_systems_by_length",
+       "note": "표 행 원문: \"19. | Shatt al-Arab–Euphrates–Murat | 3,596 | 2,236 | 938,173 | 3,350 | Persian Gulf | Iraq, Turkey, Syria, Iran\" (열: # | River | Length (km) | Length (miles) | Drainage area (km²) | …)",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/List_of_river_systems_by_length",
+       "note": "표 행 원문: \"69. | Tigris | 1,950 | 1,212 | 375,000 | 1,014 | Shatt al-Arab | Turkey, Iraq, Syria, Iran\" (열: # | River | Length (km) | Length (miles) | Drainage area (km²) | …)",
+       "fetchedAt": "2026-10-21"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/Euphrates",
+       "note": "V024 재열람: 같은 정의(본류)로 맞추면 유프라테스 약 2,800km · 티그리스 약 1,900km (요지 · https://en.wikipedia.org/wiki/Tigris)",
+       "fetchedAt": "2026-10-24"
+      }
+     ],
+     "why": "V024 근거"
+    },
+    {
+     "id": "which-0347",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "which-0304",
+     "key": "note",
+     "after": "애나벌새 최고 속도는 문서마다 갈린다(구애 비행 약 98km/h · 다른 문서 약 83km/h) — 어느 쪽이든 집비둘기가 빠르다",
+     "why": "CV-76 (a) disputed — note 에 근거"
+    },
+    {
+     "id": "which-0353",
+     "key": "note",
+     "after": "블랙맘바 속도는 문서마다 약 20~22.5km/h — 어느 쪽이든 장수거북이 빠르다",
+     "why": "CV-76 (a) disputed"
+    },
+    {
+     "id": "which-0371",
+     "key": "note",
+     "after": "측우기는 세종 23년(1441) 제작 기록 · 이듬해(1442) 제도를 정했다고 적는 문서도 있다 — 어느 쪽이든 먼저다",
+     "why": "CV-76 (a) disputed"
+    },
+    {
+     "id": "which-0420",
+     "key": "note",
+     "after": "워싱턴 기념탑은 석조 구조가 1884년에 완성되고 1888년에 일반에 열렸다 — 어느 쪽이든 먼저다",
+     "why": "CV-76 (a) disputed"
+    },
+    {
+     "id": "which-0385",
+     "key": "note",
+     "after": "스페이스 니들은 1962년 개장(1961년 말 공사를 마쳤다는 문서도 있다) — 개장 연도 기준",
+     "why": "CV-76 (a) disputed"
+    },
+    {
+     "id": "photoyear-0021",
+     "key": "title",
+     "before": "1979년 4월 서울 시내 지하도 입구와 도심 거리",
+     "after": "1979년 4월 서울 도심 거리의 환영 아치와 코리아나 호텔",
+     "why": "V024 fix — 지하도 표현 근거 약함"
+    },
+    {
+     "id": "photoyear-0023",
+     "key": "place",
+     "before": "한국",
+     "after": "포항",
+     "why": "V024 fix — 파일 설명 Base: Pohang"
+    },
+    {
+     "id": "photoyear-0066",
+     "key": "title",
+     "before": "1958년 6월 드레스덴 에른스트텔만 거리의 노면전차와 새 아파트 공사",
+     "after": "1958년 6월 드레스덴의 노면전차와 새 아파트 공사 거리",
+     "why": "V024 fix — 거리 이름은 문서마다 달라 뺌"
+    },
+    {
+     "id": "photoyear-0079",
+     "key": "title",
+     "before": "1977년 파리 거리의 렌터카와 가족",
+     "after": "1977년 파리 거리에 주차된 푸조 승용차와 아이들",
+     "why": "V024 fix — '렌터카' 근거 없음"
+    },
+    {
+     "id": "photoyear-0094",
+     "key": "title",
+     "before": "2008년 8월 베이징 왕푸징 거리 — 올림픽 표어 광고판",
+     "after": "2008년 8월 베이징 왕푸징 거리",
+     "why": "V024 fix — '올림픽 표어 광고판' 근거 없음"
+    },
+    {
+     "id": "photoyear-0021",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photoyear-0023",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photoyear-0066",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photoyear-0079",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photoyear-0094",
+     "key": "status",
+     "before": "candidate",
+     "after": "verified",
+     "why": "V024 fix 적용"
+    },
+    {
+     "id": "photoyear-0037",
+     "key": "sources.0.note",
+     "before": "Date: {{taken_on|location=South_Korea|2001-07-17}} 20:51:53 (파일 페이지 날짜 칸 원문) / Description: \"2001 Trip to Asia\" by Alex C (flickr)",
+     "after": "Date: {{taken_on|location=South_Korea|2001-07-17}} 20:51:53 (파일 페이지 날짜 칸 원문) / Description: \"2001 Trip to Asia\" by Alex C (flickr) · GEN 메모(G021 · CV-72 (a)): 그림 속 깃발의 'WELCOME … 2002' 는 이듬해 월드컵 글자 — 정답(2001) 단서가 아니라 그대로 둠",
+     "why": "CV-72 (a) 0037 그대로 + note"
+    }
+   ]
+  }
+ ]
+}
