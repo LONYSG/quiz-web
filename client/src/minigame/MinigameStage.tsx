@@ -181,6 +181,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             그만하기
           </button>
         )}
+        {/* ★ R067 (D-299) — 수집 기준 날짜: 머리줄 맨 끝 · 준비 · 판 · 정답 공개 내내 같은 자리 */}
+        <AsOfNote view={view} />
       </header>
 
       {view.phase === 'intro' && (
@@ -309,6 +311,20 @@ function bonusRanks(n: number): string {
 function PlayView(props: { socket: Socket; view: MinigameView; serverNow: () => number; mobile: boolean }) {
   const C = PLAY[props.view.key];
   return <C {...props} />;
+}
+
+/** ★ R067 — "기준 2026-10-17" · 빅맥은 "가격 기준 10-21 · 환율 10-17" (날짜가 없으면 안 그림) */
+function AsOfNote({ view }: { view: MinigameView }) {
+  const r = view.round;
+  if (!r?.asOf && !r?.fxAsOf) return null;
+  const md = (d: string) => d.slice(5);
+  const text = !r.fxAsOf ? `기준 ${r.asOf}` : r.asOf ? `가격 기준 ${md(r.asOf)} · 환율 ${md(r.fxAsOf)}` : `환율 기준 ${r.fxAsOf}`;
+  const title = r.fxAsOf ? `가격 ${r.asOf ?? '-'} · 환율 ${r.fxAsOf} 기준` : `${r.asOf} 기준으로 모은 값`;
+  return (
+    <span className="mg-asof dim mono" title={title} data-asof={r.asOf ?? ''} data-fx-asof={r.fxAsOf ?? ''}>
+      {text}
+    </span>
+  );
 }
 
 function readyDesc(view: MinigameView): string {

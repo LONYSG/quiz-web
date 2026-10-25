@@ -96,7 +96,16 @@ export interface MinigameView {
   roundCount: number;
   /** ★ R063 — 미리 받아 둘 그림 주소(규칙 · 준비 단계) */
   preload?: string[] | null;
-  round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null; reveal?: Record<string, unknown> | null; itemId?: string | null } | null;
+  round: {
+    params: Record<string, unknown>;
+    playMs: number;
+    private: Record<string, unknown> | null;
+    reveal?: Record<string, unknown> | null;
+    itemId?: string | null;
+    /** ★ R067 (D-299) — 수집 기준 날짜(준비 · 판 · 정답 공개 내내) · 빅맥은 환율 기준도 */
+    asOf?: string | null;
+    fxAsOf?: string | null;
+  } | null;
   participants: MinigameParticipantView[];
   submittedCount: number;
   selfSubmitted: boolean;

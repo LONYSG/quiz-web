@@ -119,7 +119,16 @@ export interface MinigameView {
   roundCount: number;
   /** ★ R063 — 미리 받아 둘 그림 주소 */
   preload: string[] | null;
-  round: { params: Record<string, unknown>; playMs: number; private: Record<string, unknown> | null; reveal?: Record<string, unknown> | null; itemId?: string | null } | null;
+  round: {
+    params: Record<string, unknown>;
+    playMs: number;
+    private: Record<string, unknown> | null;
+    reveal?: Record<string, unknown> | null;
+    itemId?: string | null;
+    /** ★ R067 (D-299) — 수집 기준 날짜(준비 · 판 · 정답 공개 내내) · 빅맥은 환율 기준도 */
+    asOf?: string | null;
+    fxAsOf?: string | null;
+  } | null;
   participants: MinigameParticipant[];
   submittedCount: number;
   selfSubmitted: boolean;
@@ -161,6 +170,8 @@ export function minigameView(room: Room, viewerAccountId: string): MinigameView 
             // ★ R052 — 정답 · 값은 정답 공개 때만 (판 진행 중에는 보내지 않는다)
             reveal: run.phase === 'roundResult' ? (spec.reveal ?? null) : null,
             itemId: spec.itemId ?? null,
+            asOf: spec.asOf ?? null,
+            fxAsOf: spec.fxAsOf ?? null,
           }
         : null,
     participants: run.participants,

@@ -99,6 +99,12 @@ export interface RoundSpec {
   resultMs?: number;
   /** 판 길이(ms) — 이 시간이 지나면(+ 지연 여유) 마감 */
   playMs: number;
+  /**
+   * ★ R067 (D-299 · 찬종 "가격·최신 정보가 중요한 건 수집 기준 날짜도 같이 표기") — 수집 기준 날짜('YYYY-MM-DD').
+   *   문제가 나온 때부터(준비 · 판 · 정답 공개) 화면에 보낸다(정답이 아니다). 얼마게요 · 얼마나 · 어느 쪽 = 항목 · 빅맥 = 상품 가격 + 환율(fxAsOf)
+   */
+  asOf?: string | null;
+  fxAsOf?: string | null;
   /** 이 판의 시드 */
   seed: number;
 }
@@ -402,6 +408,13 @@ function pickFor(key: QuizMinigameKey, seed: number, ctx: BuildCtx, filter: (it:
   return pick;
 }
 
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+const dayOf = (v: unknown): string | null => (typeof v === 'string' && DAY.test(v) ? v : null);
+/** ★ R067 — 항목의 기준 날짜: DB 칸(as_of) → 없으면 payload 의 날짜 칸 */
+function itemAsOf(it: QuizItem, field: string): string | null {
+  return dayOf(it.asOf) ?? dayOf(it.payload[field]);
+}
+
 function quizSpec(key: QuizMinigameKey, i: number, seed: number, base: Omit<RoundSpec, 'playMs' | 'seed' | 'readyMs' | 'resultMs'>): RoundSpec {
   const q = QUIZ_SPEC[key];
   return { ...base, playMs: q.playMs, seed: seed + i, readyMs: q.readyMs, resultMs: q.revealMs };
@@ -444,6 +457,7 @@ const price: MinigameDef = {
         params: { name: p.name, brand: p.brand, category: p.category, imageId: it.imageIds[0] ?? null },
         reveal: { priceKrw: p.priceKrw, note: p.note, priceAsOf: p.priceAsOf, attribution: it.attribution },
         secret: { answer: p.priceKrw },
+        asOf: itemAsOf(it, 'priceAsOf'),
         experiencedBy: pick.experiencedBy.get(it.id),
       });
     });
@@ -464,6 +478,7 @@ const worldprice: MinigameDef = {
       targetCc: string,
       shownCc: readonly string[],
       real: boolean,
+      dates: { asOf: string | null; fxAsOf: string | null } = { asOf: null, fxAsOf: null },
     ): RoundSpec => {
       const rows = prod.rows.map((r) => ({ cc: r.cc, countryKo: countryLabel(r.cc, r.countryKo), localPrice: r.localPrice, currency: r.currency, krw: r.krw }));
       const target = rows.find((r) => r.cc === targetCc)!;
@@ -475,6 +490,7 @@ const worldprice: MinigameDef = {
         params: { nameKo: prod.nameKo, unit: prod.unit, imageId, target: { cc: target.cc, countryKo: target.countryKo }, shown, fxAsOf: prod.fxAsOf, dummy: !real },
         reveal: { targetKrw: target.krw, targetLocal: target.localPrice, currency: target.currency, rows: sorted, fxAsOf: prod.fxAsOf, asOf: prod.asOf ?? null },
         secret: { answer: target.krw },
+        ...(real ? dates : {}),
       });
     };
     if (ctx.practice) {
@@ -492,7 +508,10 @@ const worldprice: MinigameDef = {
     if (!pick) return null;
     return pick.items.map((it, i) => {
       const pr = prods.get(String(it.payload.productId))!;
-      const sp = make(i, it.id, pr.payload, pr.imageId, String(it.payload.targetCc), it.payload.shownCc as string[], true);
+      const sp = make(i, it.id, pr.payload, pr.imageId, String(it.payload.targetCc), it.payload.shownCc as string[], true, {
+        asOf: dayOf(pr.asOf) ?? dayOf(pr.payload.asOf),
+        fxAsOf: dayOf(pr.fxAsOf) ?? dayOf(pr.payload.fxAsOf),
+      });
       return { ...sp, experiencedBy: pick.experiencedBy.get(it.id) };
     });
   },
@@ -600,6 +619,7 @@ const estimate: MinigameDef = {
         params: { question: p.question, unit: p.unit, kind: p.kind, imageId: it.imageIds[0] ?? null, displayDecimals: p.displayDecimals },
         reveal: { value: p.value, unit: p.unit, displayDecimals: p.displayDecimals, note: p.note ?? null, explanation: p.explanation, attribution: it.attribution },
         secret: { answer: p.value },
+        asOf: itemAsOf(it, 'asOf'),
         experiencedBy: pick.experiencedBy.get(it.id),
       });
     });
@@ -633,6 +653,7 @@ const which: MinigameDef = {
         params: { stem: p.stem, kind: p.kind, unit: p.unit, a: { label: p.a.label, imageId: imgA }, b: { label: p.b.label, imageId: imgB } },
         reveal: { answer: p.answer, a: p.a.value, b: p.b.value, unit: p.unit, margin: p.margin, note: p.note ?? null, attribution: it.attribution },
         secret: { answer: p.answer },
+        asOf: itemAsOf(it, 'asOf'),
         experiencedBy: pick.experiencedBy.get(it.id),
       });
     });

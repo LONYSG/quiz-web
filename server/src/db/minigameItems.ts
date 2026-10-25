@@ -15,12 +15,17 @@ export interface QuizItem {
   payload: Record<string, unknown>;
   imageIds: string[];
   attribution: string | null;
+  /** ★ R067 (D-299) — 수집 기준 날짜(minigame_items.as_of · 'YYYY-MM-DD') — 없으면 null */
+  asOf: string | null;
 }
 
 export interface QuizProduct {
   productId: string;
   payload: Record<string, unknown> & { rows: { cc: string; countryKo: string; localPrice: number; currency: string; krw: number }[] };
   imageId: string | null;
+  /** ★ R067 — 가격 · 환율 기준 날짜(minigame_products.as_of · fx_as_of) */
+  asOf: string | null;
+  fxAsOf: string | null;
 }
 
 export interface QuizData {
@@ -35,20 +40,22 @@ const TTL_MS = 60_000;
 export async function loadQuizData(force = false): Promise<QuizData> {
   if (!force && cache && Date.now() - cache.loadedAt < TTL_MS) return cache;
   const [it, pr] = await Promise.all([
-    query<{ item_id: string; game: string; payload: Record<string, unknown>; image_ids: string[]; attribution: string | null }>(
-      `SELECT item_id, game, payload, image_ids, attribution FROM minigame_items WHERE active ORDER BY item_id`,
+    query<{ item_id: string; game: string; payload: Record<string, unknown>; image_ids: string[]; attribution: string | null; as_of: string | null }>(
+      `SELECT item_id, game, payload, image_ids, attribution, to_char(as_of, 'YYYY-MM-DD') AS as_of FROM minigame_items WHERE active ORDER BY item_id`,
     ),
-    query<{ product_id: string; payload: QuizProduct['payload']; image_id: string | null }>(`SELECT product_id, payload, image_id FROM minigame_products`),
+    query<{ product_id: string; payload: QuizProduct['payload']; image_id: string | null; as_of: string | null; fx_as_of: string | null }>(
+      `SELECT product_id, payload, image_id, to_char(as_of, 'YYYY-MM-DD') AS as_of, to_char(fx_as_of, 'YYYY-MM-DD') AS fx_as_of FROM minigame_products`,
+    ),
   ]);
   const items = Object.fromEntries(QUIZ_MINIGAME_KEYS.map((k) => [k, [] as QuizItem[]])) as Record<QuizMinigameKey, QuizItem[]>;
   for (const r of it.rows) {
     const g = r.game as QuizMinigameKey;
     if (!items[g]) continue;
-    items[g].push({ id: r.item_id, game: g, payload: r.payload, imageIds: r.image_ids, attribution: r.attribution });
+    items[g].push({ id: r.item_id, game: g, payload: r.payload, imageIds: r.image_ids, attribution: r.attribution, asOf: r.as_of });
   }
   cache = {
     items,
-    products: new Map(pr.rows.map((r) => [r.product_id, { productId: r.product_id, payload: r.payload, imageId: r.image_id }])),
+    products: new Map(pr.rows.map((r) => [r.product_id, { productId: r.product_id, payload: r.payload, imageId: r.image_id, asOf: r.as_of, fxAsOf: r.fx_as_of }])),
     loadedAt: Date.now(),
   };
   return cache;

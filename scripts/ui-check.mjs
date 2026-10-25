@@ -3922,6 +3922,49 @@ async function r067BgmFlow(browser) {
   Q.close();
   writeFileSync(path.join(ROOT, 'docs', 'design', 'r067', 'bgm-log.json'), JSON.stringify(r067BgmFlow.rows, null, 1));
 }
+/** ★ R067 D — 기준 날짜: 얼마게요 · 빅맥 실제 판(미니게임만 · 손님 하나) — 준비 · 판 · 정답 공개 내내 머리줄 끝 같은 자리 */
+const R067_ASOF = "JSON.stringify((() => { const el = document.querySelector('.mg-head [data-asof]'); const r = el?.getBoundingClientRect(); const head = document.querySelector('.mg-head')?.getBoundingClientRect(); return { phase: document.querySelector('.mg-card')?.dataset.phase ?? '', text: el?.innerText ?? '', asOf: el?.dataset.asof ?? '', fx: el?.dataset.fxAsof ?? '', right: r && head ? Math.round(head.right - r.right) : null, lines: el ? el.getClientRects().length : 0 }; })())";
+async function r067AsofFlow(browser) {
+  for (const key of ['price', 'worldprice']) {
+    const H = await newPage(browser, `U-asof-${key}`, true);
+    await H.setViewport(1536, 864);
+    await signUp(H, `ua${key.slice(0, 3)}`, `기준${key.slice(0, 3)}`);
+    const roomId = await createRoom(H, `R067 기준 ${key}`);
+    const socks = await socketGuests(roomId, 1, `as${key.slice(0, 2)}`);
+    await sleep(600);
+    await realClick(H, 'button[data-mode="minigame"]');
+    await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+    await H.setInput('.mg-rounds-input', '2');
+    await sleep(300);
+    await selectMinigames(H, [key]);
+    await sleep(300);
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+    const rows = {};
+    for (const ph of ['ready', 'play', 'roundResult']) {
+      const ok = await waitPhase(H, ph, 90000).catch(() => false);
+      await sleep(ph === 'play' ? 600 : 300);
+      rows[ph] = ok ? JSON.parse(await H.evaluate(R067_ASOF)) : null;
+      if (ph !== 'ready') await snap(H, `220-asof-${key}-${ph}`);
+      if (ph === 'play') {
+        await touchDevice(H, 390, 844);
+        await H.evaluate("window.dispatchEvent(new Event('resize'))");
+        await sleep(500);
+        rows.m390 = JSON.parse(await H.evaluate(R067_ASOF));
+        await snap(H, `220-asof-${key}-play-m390`);
+        await touchDevice(H, 1536, 864, false);
+        await H.setViewport(1536, 864);
+        await H.evaluate("window.dispatchEvent(new Event('resize'))");
+      }
+    }
+    const v = ['ready', 'play', 'roundResult'].map((k) => rows[k]);
+    const want = key === 'price' ? /^기준 \d{4}-\d{2}-\d{2}$/ : /^가격 기준 \d{2}-\d{2} · 환율 \d{2}-\d{2}$/;
+    record(`★★★ R067 D 기준 날짜 ${key} — 준비 · 판 · 정답 공개 내내 머리줄 끝("${key === 'price' ? '기준 YYYY-MM-DD' : '가격 기준 MM-DD · 환율 MM-DD'}") · 같은 글 · 한 줄`,
+      v.every((r) => r && want.test(r.text) && r.lines === 1 && r.right !== null && r.right <= 24) && new Set(v.map((r) => r.text)).size === 1 && rows.m390?.lines === 1,
+      JSON.stringify(rows));
+    for (const so of socks) so.close();
+    H.close();
+  }
+}
 function v067NoDots(all) {
   return Object.values(all).every((rows) => Object.values(rows).every((x) => x.dots === 0));
 }
@@ -3932,6 +3975,7 @@ async function r067Flow(browser) {
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'cake') await r067CakeFlow(L);
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'typing') await r067TypingFlow(browser);
   if (!process.env.R067_ONLY || process.env.R067_ONLY === 'bgm') await r067BgmFlow(browser);
+  if (!process.env.R067_ONLY || process.env.R067_ONLY === 'asof') await r067AsofFlow(browser);
   await touchDevice(L, 1536, 864, false);
   await L.setViewport(1536, 864);
 }
