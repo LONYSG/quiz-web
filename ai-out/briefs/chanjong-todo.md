@@ -2,6 +2,7 @@
 
 > 마지막 갱신: 2026-10-21 아침(V021 · V022 · R056 · R057 끝 · GEN G018 진행 중 → G019 자동 · 새로 연 것 V023 · R058).
 > ★★ **주의(2026-10-21 23:06 사고)**: MAIN 이 끝 점검(봇 · ui-check)을 돌리면 검사 서버가 **실제 DB 에 붙어 부팅 정리**를 하므로 그 순간 사람이 하던 방·판이 터진다(game 2134). R060 에서 검사 DB 를 분리할 때까지 **친구들과 할 때는 MAIN 창을 돌리지 않거나, 끝 점검 단계(터미널 "[bundles]" · "[bot]" 줄)가 끝난 뒤에 한다.**
+> ★ 2026-10-26 밤: **셋 열림** — 먼저 둘: VERIFY `claude --model claude-sonnet-5-5` → `ai-out/briefs/verify.md 읽고 진행`(V028) · GEN `claude --model claude-opus-5-5` → `ai-out/briefs/gen.md 읽고 진행`(G022 · 판정만 · DB 안 씀). **둘 중 하나가 끝나면** MAIN `claude --model claude-opus-5-5` → `ai-out/briefs/main.md 읽고 진행`(R068 — 제보 13 · 설문 팝업 · photoyear · 240자). R068 뒤 할 것: `ops.bat` 3 → 1 새 빌드 · ops 메뉴에서 **설문 패널 켜기**(진지 14 + yuja0218) · 한 판 해 보기(설문 창 · photoyear).
 > ★ 2026-10-26 저녁: **V027 · G020 끝 · 열린 브리핑 없음**. 찬종 제보 13(10-25 플레이)은 R068 몫. 다음 라운드(V028 ‖ G022 · R068)는 설계 제안을 보고 결정(CV-91~98 기본값 · 고기 "소리가 끝까지 난다" 뜻 · R068 을 재판정보다 먼저 할지).
 > ★ 2026-10-26 낮: **둘 열림** — VERIFY `claude --model claude-sonnet-5-5` → `ai-out/briefs/verify.md 읽고 진행`(V027) · GEN `claude --model claude-opus-5-5` → `ai-out/briefs/gen.md 읽고 진행`(G020 — DB 쓰기 · 열린 방 없을 때 씀). MAIN 은 쉼(R067 빌드로 한 판 하고 제보 → R068). 찬종이 둘 다 끝났다고 알려 주면 설계가 V028 · G022 를 쓴다.
 > ★ 2026-10-26 아침: **R067 · G021 · V026 끝**(V027 은 아직 — VERIFY 창에 `ai-out/briefs/verify.md 읽고 진행` 을 넣으면 시작 · 설계가 verify-next → verify 로 옮긴 뒤). 할 것: ① `ops.bat` 3 → 1 로 새 빌드(고기 굽기 · 타자 연습칸 · 기준 날짜 · ⚙ · 3차 미니게임 항목 +509) ② 한 판 해 보고 체감(A95 — 고기 똑딱 · BGM 늦으면 "탭을 오래 두었다 돌아왔는지" 함께) ③ 다음 라운드(V027 · G020 · R068)는 설계와 상의 뒤.
