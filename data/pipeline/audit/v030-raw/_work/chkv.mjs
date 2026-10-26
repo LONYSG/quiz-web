@@ -1,5 +1,5 @@
 import fs from 'node:fs';import {W} from './vblocks.mjs';
-const RULES=['B1','DG-051','B10','B2','B4','B5','B6','B7','B9','other'];
+const RULES=['B1','DG-051','B10','B3','B2','B4','B5','B6','B7','B9','other'];
 export function chkv(p,gold){let o;try{o=JSON.parse(fs.readFileSync(W+p+'.out.json','utf8'));}catch(e){return {p,fail:'PARSE '+e.message};}
 const k=JSON.parse(fs.readFileSync(W+p+'.keys.json','utf8'));const errs=[];if(o.length!==k.length)errs.push('len '+o.length+'/'+k.length);
 const c={};let miss=[];
