@@ -72,6 +72,14 @@ if (mig.status !== 0) {
   process.exit(1);
 }
 
+// ★★ R069 — 검사 DB 에만: 알가치(questions.worth)가 **하나도** 없으면(실 DB 는 G025 전까지 전부 NULL) 등급마다 1 · 2 · 3 · NULL 이
+//   고루 섞이게 채운다(id % 4 — 늘 같은 값). 비율 출제 · 가장 어려운 칸(알가치 3) 봇 levelmix 가 이것을 본다. 값이 이미 있으면 건드리지 않는다.
+const worthCol = sql(TEST_DB_NAME, `SELECT count(*) FROM information_schema.columns WHERE table_name = 'questions' AND column_name = 'worth'`);
+if (String(worthCol).trim() === '1' && String(sql(TEST_DB_NAME, `SELECT count(worth) FROM questions`)).trim() === '0') {
+  sql(TEST_DB_NAME, `UPDATE questions SET worth = CASE id % 4 WHEN 1 THEN 1 WHEN 2 THEN 2 WHEN 3 THEN 3 ELSE NULL END`);
+  console.log(`[test-db] ★ R069 알가치 seed — ${String(sql(TEST_DB_NAME, `SELECT string_agg(w || ':' || n, ' · ') FROM (SELECT coalesce(worth::text, 'NULL') w, count(*) n FROM questions GROUP BY 1 ORDER BY 1) x`)).trim()}`);
+}
+
 const n = (t) => sql(TEST_DB_NAME, `SELECT count(*) FROM ${t}`);
 console.log(`[test-db] ${TEST_DB_NAME} — questions ${n('questions')} · accounts ${n('accounts')} · minigame_items ${n('minigame_items')} · games ${n('games')}`);
 console.log(`[test-db] 검사 스크립트(ui-check · bot · smoke)는 이 DB 를 기본으로 쓴다 — 실 DB 로는 서버가 뜨지 않는다(QUIZ_TEST_SERVER)`);

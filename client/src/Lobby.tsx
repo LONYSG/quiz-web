@@ -922,7 +922,7 @@ export default function Lobby({
                 players={snapshot.players}
                 myAccountId={snapshot.me.accountId}
                 activeCount={snapshot.room.activeCount}
-                difficulties={snapshot.room.settings.difficulties}
+                level={snapshot.room.settings.level}
                 topics={snapshot.room.settings.topics}
                 ceremony={ceremony}
                 gameId={snapshot.game?.gameId ?? null}

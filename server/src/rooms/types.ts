@@ -52,10 +52,10 @@ export interface RoomSettings {
   startMode: 'instant' | 'countdown';
   countdownSec: number;
   /**
-   * ★ 출제할 난이도 (R025). 하=1~2 / 중=3 / 상=4~5 (questions.difficulty_score).
-   *   ★ 출제 가능 수(Q-21)·출제 풀·다시 하기(Q-31) 가 전부 이 값을 따른다.
+   * ★★★ 난이도 단계 (R069 · docs/19 §5) — 초급 · 중급 · 고급 중 하나. 출제 풀 = 그 단계가 읽는 등급(levelScores) ·
+   *   한 판의 문항은 등급 비율(planGrades)로 · 출제 가능 수(Q-21) · 다시 하기(Q-31) 가 이 값을 따른다.
    */
-  difficulties: import('@quiz/shared').DifficultyTier[];
+  level: import('@quiz/shared').DifficultyLevel;
   /**
    * ★ 출제할 분야 묶음 (R034). 출제 가능 수·출제 풀·다시 하기가 난이도와 함께 이 값을 따른다.
    */
@@ -152,6 +152,12 @@ export interface ActiveGame {
   endedQuestionCount: number;
   /** ★ 3단계 선정이 발동한 횟수. 운영자용 관측값이다 (D-054) */
   stage3Count: number;
+  /** ★★★ R069 — 등급 계획(길이 = 문항 수 · 문항 i 의 목표 등급 = gradePlan[i] · planGrades 로 섞음) · 가장 어려운 칸 등급 */
+  gradePlan: number[];
+  hardestGrade: number;
+  /** ★ R069 — 목표 등급을 못 채워 다른 등급에서 낸 횟수 · 가장 어려운 칸을 알가치 3 으로 못 채운 횟수(관측값) */
+  gradeFallbackCount: number;
+  worthFallbackCount: number;
   /**
    * ★★ 문제별 기록 (Phase 4 / R016). 결과 화면이 쓴다.
    *
@@ -470,8 +476,8 @@ export interface GameResultData {
     /** ★ 가장 빨리 맞힌 시간(ms) */
     fastestMs: number | null;
   }[];
-  /** ★ 이 판의 난이도 (R025). 결과 화면에 "어떤 난이도로 한 판인지" 를 보여준다 */
-  difficulties: import('@quiz/shared').DifficultyTier[];
+  /** ★ 이 판의 난이도 단계 (R069 — 옛 R025 difficulties). 결과 화면에 "어떤 난이도로 한 판인지" 를 보여준다 */
+  level: import('@quiz/shared').DifficultyLevel;
   /** ★ 이 판의 분야 (R034) */
   topics: import('@quiz/shared').GameTopic[];
   /** 조기 종료·강제 종료 사유 안내 */

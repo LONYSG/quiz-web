@@ -1,13 +1,14 @@
 // =============================================================================
 // ★★ 전적 (R054 · D-242) — 이미 보존된 표에서 **읽기만**(새로 세어 두는 표 없음 — 느리면 그때 요약 표)
 //
-//   퀴즈: 참여 판 수(game_players) · 맞힌 수(answer_events.accepted — 포인트 원천) · 분야 7 별 · 난이도 단계별 · 평균 반응 ms(matched)
+//   퀴즈: 참여 판 수(game_players) · 맞힌 수(answer_events.accepted — 포인트 원천) · 분야 7 별 · 등급(1~5)별 · 평균 반응 ms(matched)
+//   ★ R069 — 옛 하·중·상 세 칸 → 등급 1~5 다섯 칸(label '1'~'5' · 화면 "등급별 맞힌 수")
 //   미니게임: 게임별 판 수 · 최종 1위 횟수(minigame_players.final_rank = 1) · 최고 기록(minigame_results.value — 게임 방향대로) · 퀴즈류는 맞힌 비율
 //   포인트: 맞힌 + 보상 − 쓴 것 = 지금(R048 식 그대로 — getPoints) · 최근 쓴 것 10
 // ★ 연습 판(practice)은 세지 않는다.
 // =============================================================================
 
-import { DIFFICULTY_TIERS, GAME_TOPICS, MINIGAMES } from '@quiz/shared';
+import { GAME_TOPICS, MINIGAMES } from '@quiz/shared';
 import { query } from './pool.js';
 import { getPoints } from './points.js';
 
@@ -46,7 +47,7 @@ export async function getStats(accountId: string): Promise<Stats> {
     getPoints(accountId),
   ]);
   const topicN = new Map(topics.rows.map((r) => [r.game_topic, Number(r.n)]));
-  const tierN = (scores: readonly number[]) => tiers.rows.filter((r) => scores.includes(Number(r.s))).reduce((s, r) => s + Number(r.n), 0);
+  const tierN = (score: number) => tiers.rows.filter((r) => Number(r.s) === score).reduce((s, r) => s + Number(r.n), 0);
   const runMap = new Map(runs.rows.map((r) => [r.k, r]));
   const bestMap = new Map(best.rows.map((r) => [r.k, r]));
   return {
@@ -54,7 +55,7 @@ export async function getStats(accountId: string): Promise<Stats> {
       games: Number(games.rows[0]?.n ?? 0),
       correct: Number(correct.rows[0]?.n ?? 0),
       byTopic: GAME_TOPICS.map((t) => ({ topic: t.topic, label: t.label, n: topicN.get(t.topic) ?? 0 })),
-      byTier: DIFFICULTY_TIERS.map((t) => ({ tier: t.tier, label: t.label, n: tierN(t.scores) })),
+      byTier: [1, 2, 3, 4, 5].map((g) => ({ tier: String(g), label: String(g), n: tierN(g) })),
       avgResponseMs: resp.rows[0]?.ms ? Number(resp.rows[0].ms) : null,
     },
     minigames: MINIGAMES.map((m) => {

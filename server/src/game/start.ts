@@ -28,7 +28,7 @@
 //   · ★ 출제 풀과 경험 기록을 게임 시작 때 메모리로 올린다 (D-054 성능 항목)
 // =============================================================================
 
-import { MINIGAMES, NICKNAME_LIMIT_HINT, nicknameFits, validateRoomSettings } from '@quiz/shared';
+import { MINIGAMES, NICKNAME_LIMIT_HINT, levelInfo, nicknameFits, planGrades, validateRoomSettings } from '@quiz/shared';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { loadAllItemExperiences, loadQuizData } from '../db/minigameItems.js';
@@ -344,6 +344,11 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,
+    // ★★★ R069 — 등급 계획(다시 하기는 새로 섞는다 · docs/19 §5)
+    gradePlan: mgOnly ? [] : planGrades(settings.questionCount, settings.level),
+    hardestGrade: levelInfo(settings.level).hardest,
+    gradeFallbackCount: 0,
+    worthFallbackCount: 0,
     questionLog: [],
   };
   console.log(

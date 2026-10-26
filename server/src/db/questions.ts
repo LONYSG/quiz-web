@@ -12,7 +12,7 @@
 //     Neon 같은 서버리스 DB는 스케일 투 제로가 영원히 발동하지 않는다.
 // =============================================================================
 
-import { difficultyScores, type DifficultyTier, type GameTopic } from '@quiz/shared';
+import { levelScores, type DifficultyLevel, type GameTopic } from '@quiz/shared';
 import { query } from './pool.js';
 
 /**
@@ -25,7 +25,8 @@ import { query } from './pool.js';
 export const POOL_WHERE = `q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'`;
 
 /**
- * ★ 난이도 조건 (R025). `$n` 자리에 difficultyScores(...) 를 넘긴다.
+ * ★ 난이도 조건 (R025 → ★ R069 단계가 읽는 등급 — 초급 1~3 · 중급 1~4 · 고급 1~5). `$n` 자리에 levelScores(...) 를 넘긴다.
+ *   ★ 초급도 1~3 을 **전부** 읽는다 — 등급 폴백(아래 먼저)이 같은 풀 안에서 돌아야 한다. 비율은 선정(select.ts)이 맞춘다.
  *
  * ★ 기준 열은 **difficulty_score(1~5 원점수)** 다. 옛 3단계 열(difficulty)이 아니다.
  *   ★ 근거: 옛 열은 원점수에서 파생된 값이다. 지금은 3,263건 전부 일치하지만(R025 실측),
@@ -46,9 +47,9 @@ export function topicWhere(param: string): string {
   return `q.category_id IN (SELECT category_id FROM category_game_topics WHERE game_topic = ANY(${param}::text[]))`;
 }
 
-/** 출제 범위 설정. 난이도 × 분야 (방 설정의 일부) */
+/** 출제 범위 설정. 난이도 단계 × 분야 (방 설정의 일부) */
 export interface PoolFilter {
-  difficulties: readonly DifficultyTier[];
+  level: DifficultyLevel;
   topics: readonly GameTopic[];
 }
 
@@ -61,7 +62,7 @@ export function filterWhere(first: number): string {
 }
 
 export function filterParams(filter: PoolFilter): [number[], string[]] {
-  return [difficultyScores(filter.difficulties), [...filter.topics]];
+  return [levelScores(filter.level), [...filter.topics]];
 }
 
 /** 경험률의 분모. 전체 활성 문제 수 (guide 6절: "분모는 전체 활성 문제 수") */

@@ -16,60 +16,99 @@ import { MINIGAME_KEYS, isMinigameKey, type MinigameKey } from './minigame.js';
 export type StartMode = 'instant' | 'countdown';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ★★ 난이도 선택 (R025)
+// ★★★ 난이도 = 초급 · 중급 · 고급 중 하나 (R069 · docs/19 §5 · 찬종 2026-10-26)
 //
-// ★ 건우: "지금까지 만든 문제 난이도가 좀 쉬운 편이다 … 난이도 범위 설정을 만들어 달라.
-//   상·중·하 3단계면 좋겠다."
-//
-// ★ 매핑 (건우 확정) — questions.difficulty_score (1~5, R024 / 0007) 기준이다.
-//     하 = 1~2 / 중 = 3 / 상 = 4~5
-//   ★ 옛 3단계 열(questions.difficulty)을 쓰지 않는다. R025 에서 두 열을 대조했더니
-//     활성 3,263건 전부 같은 매핑으로 일치했다. 그래도 **원점수를 기준으로 한다** —
-//     옛 열은 파생값이라, 나중에 원점수만 다시 매기면 둘이 조용히 갈라진다.
-//
-// ★ 복수 선택이다. "상만" / "중+상" / "전체" 가 모두 가능하다. 최소 하나는 켜져 있어야 한다.
+// ★ 옛 R025 하·중·상 켜고 끄기(1~2 / 3 / 4~5 필터)를 버렸다. 이제 **한 판의 문항을 등급(difficulty_score 1~5) 비율로** 뽑는다.
+//   찬종: "상중하는 유지하고 1~5 는 따로 저장 · 하에서 5 가 나오면 당황스럽지만 상에서 1 은 괜찮다 — 1·5 가 대칭일 필요는 없다".
+// ★ 비율(%) — 1 · 2 · 3 · 4 · 5:  초급 30/50/20/0/0 · 중급 10/30/40/20/0 · 고급 5/15/30/30/20.
+// ★ 각 단계의 가장 어려운 칸(hardest)은 알가치(questions.worth) 3 에서만 — 선정은 server/src/game/select.ts.
+// ★ 옛 `difficulties` 배열(옛 클라이언트 · 봇 · 다시 하기 이어받기)은 받아서 옮긴다 — levelFromLegacy.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type DifficultyTier = 'easy' | 'medium' | 'hard';
+export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
 
-export interface DifficultyTierInfo {
-  tier: DifficultyTier;
+export interface DifficultyLevelInfo {
+  level: DifficultyLevel;
   /** 화면 표기 */
-  label: '하' | '중' | '상';
-  /** 이 단계에 드는 difficulty_score */
+  label: '초급' | '중급' | '고급';
+  /** 버튼 밑 한 줄 설명 (19 §5 문구를 화면에 맞춰 다듬음 — 뜻 유지) */
+  desc: string;
+  /** 등급 1~5 비율(%) — 합 100 */
+  ratio: readonly [number, number, number, number, number];
+  /** 이 단계가 읽는 등급(비율 > 0) — 출제 풀 · 출제 가능 수 · 폴백이 이 안에서 돈다 */
   scores: readonly number[];
+  /** 가장 어려운 칸의 등급(알가치 3 에서만 뽑는다) */
+  hardest: number;
 }
 
-/** ★ 순서가 표기 순서다 (하 → 상) */
-export const DIFFICULTY_TIERS: readonly DifficultyTierInfo[] = [
-  { tier: 'easy', label: '하', scores: [1, 2] },
-  { tier: 'medium', label: '중', scores: [3] },
-  { tier: 'hard', label: '상', scores: [4, 5] },
+/** ★ 순서가 표기 순서다 (초급 → 고급) */
+export const DIFFICULTY_LEVELS: readonly DifficultyLevelInfo[] = [
+  { level: 'beginner', label: '초급', desc: '누구나 아는 상식 · 맞히는 재미', ratio: [30, 50, 20, 0, 0], scores: [1, 2, 3], hardest: 3 },
+  { level: 'intermediate', label: '중급', desc: '학교에서 배운 것과 일반 상식 · 가끔 "오~"', ratio: [10, 30, 40, 20, 0], scores: [1, 2, 3, 4], hardest: 4 },
+  { level: 'advanced', label: '고급', desc: '몰라도 알아 둘 만한 문제 · 다섯 중 하나는 어렵다', ratio: [5, 15, 30, 30, 20], scores: [1, 2, 3, 4, 5], hardest: 5 },
 ];
 
-/**
- * ★ 기본값 = 전체 (하·중·상). 근거 (R025 판단, D-115)
- *   · 지금까지의 동작과 같다 — 기존 방·다시 하기·테스트가 조용히 바뀌지 않는다
- *   · 출제 풀이 가장 크다 — 기본 설정에서 "문제가 부족합니다" 가 뜨지 않는다
- *   · ★ 어떤 난이도를 기본으로 할지는 **모임의 성격**에 달린 기획 판단이다.
- *     방장이 한 번 누르면 바뀌므로, 기본은 아무것도 빼지 않는 쪽이 안전하다.
- */
-export const DEFAULT_DIFFICULTIES: readonly DifficultyTier[] = ['easy', 'medium', 'hard'];
+/** ★ 기본값 = 중급 (찬종 2026-10-26) */
+export const DEFAULT_LEVEL: DifficultyLevel = 'intermediate';
 
-/** 선택한 단계들 → difficulty_score 목록 (SQL 에 넘긴다) */
-export function difficultyScores(tiers: readonly DifficultyTier[]): number[] {
-  const out: number[] = [];
-  for (const info of DIFFICULTY_TIERS) {
-    if (tiers.includes(info.tier)) out.push(...info.scores);
-  }
+export function levelInfo(level: DifficultyLevel): DifficultyLevelInfo {
+  return DIFFICULTY_LEVELS.find((i) => i.level === level) ?? DIFFICULTY_LEVELS[1]!;
+}
+
+/** 이 단계가 읽는 difficulty_score 목록 (SQL 에 넘긴다) */
+export function levelScores(level: DifficultyLevel): number[] {
+  return [...levelInfo(level).scores];
+}
+
+/** 화면 표기 — 초급 · 중급 · 고급 */
+export function formatLevel(level: DifficultyLevel): string {
+  return levelInfo(level).label;
+}
+
+/** ★ 옛 `difficulties` 배열 → 단계: 상(hard) 포함 → 고급 · 하(easy)만 → 초급 · 그 밖 → 중급 */
+export function levelFromLegacy(difficulties: readonly unknown[]): DifficultyLevel {
+  if (difficulties.includes('hard')) return 'advanced';
+  if (difficulties.length > 0 && difficulties.every((d) => d === 'easy')) return 'beginner';
+  return 'intermediate';
+}
+
+export function isDifficultyLevel(v: unknown): v is DifficultyLevel {
+  return typeof v === 'string' && DIFFICULTY_LEVELS.some((i) => i.level === v);
+}
+
+/**
+ * ★ 문항 수 × 비율 → 등급별 수 [n1 … n5] (큰 나머지 순 반올림 · 나머지가 같으면 낮은 등급 먼저 · 비율 0 인 등급은 0).
+ *   20문항: 초급 6·10·4 · 중급 2·6·8·4 · 고급 1·3·6·6·4.
+ */
+export function planGradeCounts(count: number, level: DifficultyLevel): number[] {
+  const ratio = levelInfo(level).ratio;
+  const n = Math.max(0, Math.floor(count));
+  const exact = ratio.map((r) => (n * r) / 100);
+  const out = exact.map((x) => Math.floor(x));
+  let left = n - out.reduce((a, b) => a + b, 0);
+  const order = exact
+    .map((x, i) => ({ i, rem: x - Math.floor(x) }))
+    .filter((x) => ratio[x.i]! > 0)
+    .sort((a, b) => b.rem - a.rem || a.i - b.i);
+  for (let k = 0; left > 0; k += 1, left -= 1) out[order[k % order.length]!.i]! += 1;
   return out;
 }
 
-/** 화면 표기. 세 개 다 켜져 있으면 "전체" */
-export function formatDifficulties(tiers: readonly DifficultyTier[]): string {
-  const labels = DIFFICULTY_TIERS.filter((i) => tiers.includes(i.tier)).map((i) => i.label);
-  if (labels.length === DIFFICULTY_TIERS.length) return '전체';
-  return labels.join('·');
+/**
+ * ★ 등급 계획 — 길이 = 문항 수 · 값 = 그 문항의 목표 등급(1~5). **무작위로 섞는다**(오름차순이 아니다 —
+ *   "하에서 5 는 당황 · 상에서 1 은 괜찮다" 는 비율로 이미 지켜진다). random 은 0~1(테스트에서 고정).
+ */
+export function planGrades(count: number, level: DifficultyLevel, random: () => number = Math.random): number[] {
+  const counts = planGradeCounts(count, level);
+  const out: number[] = [];
+  counts.forEach((c, i) => {
+    for (let k = 0; k < c; k += 1) out.push(i + 1);
+  });
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(random() * (i + 1));
+    [out[i], out[j]] = [out[j]!, out[i]!];
+  }
+  return out;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -103,7 +142,7 @@ export const GAME_TOPICS: readonly GameTopicInfo[] = [
   { topic: 'media', label: '미디어·콘텐츠' },
 ];
 
-/** ★ 기본값 = 전체. 난이도(D-115)와 같은 근거 — 지금까지의 동작과 같고 출제 풀이 가장 크다 */
+/** ★ 기본값 = 전체 (R034 · D-115 근거 — 지금까지의 동작과 같고 출제 풀이 가장 크다) */
 export const DEFAULT_TOPICS: readonly GameTopic[] = GAME_TOPICS.map((t) => t.topic);
 
 /** 화면 표기. 전부 켜져 있으면 "전체" */
@@ -127,8 +166,8 @@ export interface RoomSettingsInput {
   questionCount: number;
   startMode: StartMode;
   countdownSec: number;
-  /** ★ R025. 정규화된 순서(하→중→상)로 저장된다. 중복 없음, 최소 1개 */
-  difficulties: DifficultyTier[];
+  /** ★★ R069 — 초급 · 중급 · 고급 중 하나 (기본 중급 · 옛 difficulties 배열은 받아서 옮긴다) */
+  level: DifficultyLevel;
   /** ★ R034. 정규화된 순서(GAME_TOPICS 순)로 저장된다. 중복 없음, 최소 1개 */
   topics: GameTopic[];
   /** ★★ R050 — 미니게임 포함 (기본 꺼짐 · 다시 하기 이어받음 — D-234) */
@@ -145,7 +184,7 @@ export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'difficulties' | 'topics' | 'minigames' | 'minigameRounds';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds';
       message: string;
     };
 
@@ -168,7 +207,7 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   if (input === null || typeof input !== 'object') {
     return { ok: false, field: 'questionCount', message: '설정 형식이 올바르지 않습니다.' };
   }
-  const raw = input as Partial<RoomSettingsInput>;
+  const raw = input as Partial<RoomSettingsInput> & { difficulties?: unknown };
 
   if (!isInt(raw.questionCount)) {
     return { ok: false, field: 'questionCount', message: '문제 수는 정수여야 합니다.' };
@@ -189,37 +228,23 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   //     거부하지 않고 고정값으로 맞춘다 (거부하면 문제 수만 고치려던 요청까지 막힌다).
   //   ★ 필드 자체는 남긴다 — games 기록·프로토콜 형식이 그대로 유지된다.
 
-  // ── ★ 난이도 (R025)
-  //   ★ 필드가 없으면 기본값(전체)을 쓴다. R024 이전 형식과 호환하기 위해서다.
-  //     ★ 방장이 설정을 바꿀 때 서버는 **현재 값을 먼저 채운 뒤** 이 함수를 부른다
-  //       (socket lobby.updateSettings). 그래서 "문제 수만 고쳤더니 난이도가 풀렸다" 는 일이 없다.
-  let difficulties: DifficultyTier[];
-  if (raw.difficulties === undefined) {
-    difficulties = [...DEFAULT_DIFFICULTIES];
-  } else {
-    if (!Array.isArray(raw.difficulties)) {
-      return { ok: false, field: 'difficulties', message: '난이도 형식이 올바르지 않습니다.' };
+  // ── ★★ R069 난이도 단계 — 없으면 기본(중급).
+  //   ★ 옛 `difficulties` 배열이 오면(옛 클라이언트 · 봇 · 옛 다시 하기) 받아서 옮긴다 — 배열이 있으면 그쪽이 이긴다
+  //     (서버는 지금 level 을 먼저 채우고 보낸 것을 덮으므로, 옛 클라이언트가 보낸 배열이 뜻대로 바뀐다).
+  //   ★ 방장이 설정을 바꿀 때 서버는 **현재 값을 먼저 채운 뒤** 이 함수를 부른다(socket lobby.updateSettings).
+  let level: DifficultyLevel = DEFAULT_LEVEL;
+  if (raw.difficulties !== undefined) {
+    if (!Array.isArray(raw.difficulties) || !(raw.difficulties as unknown[]).every((d) => d === 'easy' || d === 'medium' || d === 'hard')) {
+      return { ok: false, field: 'level', message: '난이도 형식이 올바르지 않습니다.' };
     }
-    const known = new Set<string>(DIFFICULTY_TIERS.map((i) => i.tier));
-    for (const d of raw.difficulties as unknown[]) {
-      if (typeof d !== 'string' || !known.has(d)) {
-        return { ok: false, field: 'difficulties', message: '알 수 없는 난이도가 있습니다.' };
-      }
-    }
-    // ★ 정규화: 중복을 없애고 하→중→상 순서로 둔다. 같은 선택이 늘 같은 값이 되게 한다
-    difficulties = DIFFICULTY_TIERS.map((i) => i.tier).filter((tier) =>
-      (raw.difficulties as unknown[]).includes(tier),
-    );
-    if (difficulties.length === 0) {
-      return {
-        ok: false,
-        field: 'difficulties',
-        message: '난이도는 하나 이상 선택해야 합니다.',
-      };
-    }
+    if ((raw.difficulties as unknown[]).length === 0) return { ok: false, field: 'level', message: '난이도는 하나 이상 선택해야 합니다.' };
+    level = levelFromLegacy(raw.difficulties as unknown[]);
+  } else if (raw.level !== undefined) {
+    if (!isDifficultyLevel(raw.level)) return { ok: false, field: 'level', message: '알 수 없는 난이도입니다.' };
+    level = raw.level;
   }
 
-  // ── ★ 분야 (R034). 난이도와 같은 방식이다 — 없으면 기본값(전체), 있으면 정규화
+  // ── ★ 분야 (R034) — 없으면 기본값(전체), 있으면 정규화
   let topics: GameTopic[];
   if (raw.topics === undefined) {
     topics = [...DEFAULT_TOPICS];
@@ -276,7 +301,7 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       questionCount: raw.questionCount,
       startMode: 'countdown',
       countdownSec: RULES.START_COUNTDOWN_SEC,
-      difficulties,
+      level,
       topics,
       minigames: raw.minigames === true,
       minigameKeys,

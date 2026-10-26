@@ -671,7 +671,7 @@ function registerRoomHandlers(socket: Socket): void {
       //     ★ 그러지 않으면 "문제 수만 고쳤더니 난이도가 전체로 풀렸다" 가 된다.
       //   ★ R034 — 분야도 같다.
       const valid = validateRoomSettings({
-        difficulties: room.settings.difficulties,
+        level: room.settings.level,
         topics: room.settings.topics,
         // ★ R050 — 미니게임도 보낸 것만 바꾼다
         minigames: room.settings.minigames,
@@ -687,7 +687,7 @@ function registerRoomHandlers(socket: Socket): void {
       }
 
       const diffChanged =
-        valid.settings.difficulties.join(',') !== room.settings.difficulties.join(',') ||
+        valid.settings.level !== room.settings.level ||
         valid.settings.topics.join(',') !== room.settings.topics.join(',');
       room.settings = { ...valid.settings };
 

@@ -106,7 +106,8 @@ export default function StatsModal({ onClose }: { onClose: () => void }) {
                 ))}
               </ul>
               <p className="stats-line dim">
-                난이도 {s.quiz.byTier.map((t) => `${t.label} ${t.n}`).join(' · ')}
+                {/* ★ R069 — 등급(1~5)별 맞힌 수(옛 하·중·상) */}
+                등급별 {s.quiz.byTier.map((t) => `${t.label}등급 ${t.n}`).join(' · ')}
               </p>
             </section>
             <section className="stats-sec">

@@ -31,7 +31,7 @@
 // =============================================================================
 
 import { checkAchievements } from '../achievements.js';
-import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, flexAnswerSet, generateHint, nearestAnswer, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
+import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, flexAnswerSet, generateHint, levelScores, nearestAnswer, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame } from '../db/games.js';
 import { insertNearMiss } from '../db/nearMisses.js';
@@ -96,6 +96,10 @@ export function beginQuestion(room: Room): boolean {
     participantIds,
     experienced: game.experienced,
     shownNorm: game.shownNorm,
+    // ★★★ R069 — 이 문항의 목표 등급(계획) · 가장 어려운 칸 · 단계가 읽는 등급
+    ...(game.gradePlan.length > 0
+      ? { targetGrade: game.gradePlan[game.questionIndex % game.gradePlan.length], hardestGrade: game.hardestGrade, levelScores: levelScores(room.settings.level) }
+      : {}),
   });
   if (!picked) return false;
 
@@ -115,6 +119,8 @@ ${normalizeAnswer(q.text)}
 ${normalizeAnswer(q.generalHint ?? '')}
 ${normalizeAnswer(q.explanation ?? '')}`;
   if (picked.stage === 3) game.stage3Count += 1;
+  if (picked.gradeFallback) game.gradeFallbackCount += 1;
+  if (picked.worthFallback) game.worthFallbackCount += 1;
 
   const now = Date.now();
   const current: CurrentQuestion = {
@@ -156,7 +162,11 @@ ${normalizeAnswer(q.explanation ?? '')}`;
   console.log(
     `[game] ${room.id} 문제 ${current.index}/${game.totalQuestions} epoch=${current.epoch} ` +
       `#${q.id} (선정 ${picked.stage}단계 / 미경험 ${picked.unexperiencedCount}명 / ` +
-      `경험자 ${current.experiencedAccountIds.size}명)`,
+      `경험자 ${current.experiencedAccountIds.size}명)` +
+      // ★ R069 — "등급 g→실제 s · 알가치 w · 폴백" (game_questions 에 열이 없어 로그로 남긴다 — 마이그레이션 없음)
+      (picked.targetGrade !== null
+        ? ` 등급 ${picked.targetGrade}→${q.grade} · 알가치 ${q.worth ?? '-'}${picked.gradeFallback ? ' · 등급 폴백' : ''}${picked.worthFallback ? ' · 알가치 폴백' : ''}`
+        : ''),
   );
 
   // ── 8. DB 기록. ★ 기다리지 않는다
@@ -586,7 +596,7 @@ export function finishGame(
       };
     }),
     // ★ 게임 중에는 설정이 잠겨 있으므로 지금 설정이 곧 이 판의 설정이다
-    difficulties: [...room.settings.difficulties],
+    level: room.settings.level,
     topics: [...room.settings.topics],
     abortedNote,
     endedQuestionCount: game.endedQuestionCount,

@@ -20,7 +20,7 @@
 // =============================================================================
 
 import { randomBytes, randomInt } from 'node:crypto';
-import { DEFAULT_DIFFICULTIES, DEFAULT_TOPICS, MINIGAME_KEYS, MINIGAME_ONLY_ROUNDS, RULES } from '@quiz/shared';
+import { DEFAULT_LEVEL, DEFAULT_TOPICS, MINIGAME_KEYS, MINIGAME_ONLY_ROUNDS, RULES } from '@quiz/shared';
 import type { ChatEntry, Player, Room, RoomSettings } from './types.js';
 
 const rooms = new Map<string, Room>();
@@ -49,8 +49,8 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   // ★ R033 (Q-11 개정) — 항상 5초 카운트다운. 값은 validateRoomSettings 가 다시 맞춘다
   startMode: 'countdown',
   countdownSec: RULES.START_COUNTDOWN_SEC,
-  // ★ 전체. 근거는 shared/settings.ts DEFAULT_DIFFICULTIES 주석 (D-115)
-  difficulties: [...DEFAULT_DIFFICULTIES],
+  // ★ R069 — 중급(찬종 · shared DEFAULT_LEVEL)
+  level: DEFAULT_LEVEL,
   // ★ R034 — 분야 전체 (shared/settings.ts DEFAULT_TOPICS)
   topics: [...DEFAULT_TOPICS],
   // ★★ R050 — 미니게임 포함은 기본 꺼짐 · 넣을 미니게임은 전부 (D-234)

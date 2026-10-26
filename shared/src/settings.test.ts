@@ -7,8 +7,11 @@
 
 import { describe, expect, it } from 'vitest';
 import {
-  difficultyScores,
-  formatDifficulties,
+  DIFFICULTY_LEVELS,
+  formatLevel,
+  levelScores,
+  planGradeCounts,
+  planGrades,
   formatExperienceRate,
   formatTopics,
   GAME_TOPICS,
@@ -74,8 +77,8 @@ describe('validateRoomSettings — 형식 방어', () => {
     expect(r.ok).toBe(true);
     if (r.ok) expect(Object.keys(r.settings).sort()).toEqual([
       'countdownSec',
-      // ★ R025 — 난이도가 알려진 필드에 더해졌다
-      'difficulties',
+      // ★ R069 — 난이도 단계(옛 R025 difficulties 배열을 대신)
+      'level',
       // ★ R050 — 미니게임 포함 · 넣을 미니게임
       'minigameKeys',
       // ★ R057 — 미니게임만 · 미니게임 수
@@ -128,39 +131,64 @@ describe('formatExperienceRate (guide 6절 표기 규칙)', () => {
   });
 });
 
-describe('★ 난이도 선택 (R025)', () => {
-  it('★ 매핑: 하=1~2 / 중=3 / 상=4~5', () => {
-    expect(difficultyScores(['easy'])).toEqual([1, 2]);
-    expect(difficultyScores(['medium'])).toEqual([3]);
-    expect(difficultyScores(['hard'])).toEqual([4, 5]);
-    expect(difficultyScores(['medium', 'hard'])).toEqual([3, 4, 5]);
+describe('★★★ 난이도 단계 — 초급 · 중급 · 고급 (R069 · docs/19 §5)', () => {
+  it('★ 비율 · 읽는 등급 · 가장 어려운 칸', () => {
+    expect(DIFFICULTY_LEVELS.map((l) => l.ratio.reduce((a, b) => a + b, 0))).toEqual([100, 100, 100]);
+    expect(levelScores('beginner')).toEqual([1, 2, 3]);
+    expect(levelScores('intermediate')).toEqual([1, 2, 3, 4]);
+    expect(levelScores('advanced')).toEqual([1, 2, 3, 4, 5]);
+    expect(DIFFICULTY_LEVELS.map((l) => l.hardest)).toEqual([3, 4, 5]);
+    expect(DIFFICULTY_LEVELS.map((l) => formatLevel(l.level))).toEqual(['초급', '중급', '고급']);
   });
-
-  it('★ 필드가 없으면 전체 (옛 형식 호환)', () => {
+  it('★ 필드가 없으면 중급(기본 · 찬종)', () => {
     const r = validateRoomSettings(base);
-    expect(r.ok && r.settings.difficulties).toEqual(['easy', 'medium', 'hard']);
+    expect(r.ok && r.settings.level).toBe('intermediate');
   });
-
-  it('★ 복수 선택을 하→상 순서로 정규화하고 중복을 없앤다', () => {
-    const r = validateRoomSettings({ ...base, difficulties: ['hard', 'medium', 'hard'] });
-    expect(r.ok && r.settings.difficulties).toEqual(['medium', 'hard']);
+  it('★ level 셋 · 모르는 값 거부', () => {
+    for (const lv of ['beginner', 'intermediate', 'advanced'] as const) {
+      const r = validateRoomSettings({ ...base, level: lv });
+      expect(r.ok && r.settings.level).toBe(lv);
+    }
+    const bad = validateRoomSettings({ ...base, level: 'insane' });
+    expect(!bad.ok && bad.field).toBe('level');
   });
-
-  it('★★ 하나도 켜지 않으면 거부한다', () => {
-    const r = validateRoomSettings({ ...base, difficulties: [] });
-    expect(r.ok).toBe(false);
-    expect(!r.ok && r.field).toBe('difficulties');
+  it('★★ 옛 difficulties 배열은 옮긴다 — 상 포함 → 고급 · 하만 → 초급 · 그 밖 → 중급 · 배열이 level 보다 이긴다', () => {
+    const lv = (d: unknown) => {
+      const r = validateRoomSettings({ ...base, level: 'intermediate', difficulties: d });
+      return r.ok ? r.settings.level : null;
+    };
+    expect(lv(['easy', 'medium', 'hard'])).toBe('advanced');
+    expect(lv(['hard'])).toBe('advanced');
+    expect(lv(['easy'])).toBe('beginner');
+    expect(lv(['medium'])).toBe('intermediate');
+    expect(lv(['easy', 'medium'])).toBe('intermediate');
+    expect(lv([])).toBe(null);
+    expect(lv(['insane'])).toBe(null);
+    expect(lv('hard')).toBe(null);
   });
-
-  it('★ 모르는 값·배열 아닌 값은 거부한다', () => {
-    expect(validateRoomSettings({ ...base, difficulties: ['insane'] }).ok).toBe(false);
-    expect(validateRoomSettings({ ...base, difficulties: 'hard' }).ok).toBe(false);
+  it('★★ 20문항 등급 수 — 초급 6·10·4 · 중급 2·6·8·4 · 고급 1·3·6·6·4', () => {
+    expect(planGradeCounts(20, 'beginner')).toEqual([6, 10, 4, 0, 0]);
+    expect(planGradeCounts(20, 'intermediate')).toEqual([2, 6, 8, 4, 0]);
+    expect(planGradeCounts(20, 'advanced')).toEqual([1, 3, 6, 6, 4]);
   });
-
-  it('★ 표기: 전체 / 상 / 중·상', () => {
-    expect(formatDifficulties(['easy', 'medium', 'hard'])).toBe('전체');
-    expect(formatDifficulties(['hard'])).toBe('상');
-    expect(formatDifficulties(['medium', 'hard'])).toBe('중·상');
+  it('★ 문항 수 1 · 3 · 50 · 200 — 합 = 문항 수 · 비율 0 인 등급은 0', () => {
+    for (const n of [1, 3, 7, 50, 199, 200]) {
+      for (const l of DIFFICULTY_LEVELS) {
+        const c = planGradeCounts(n, l.level);
+        expect(c.reduce((a, b) => a + b, 0)).toBe(n);
+        c.forEach((x, i) => {
+          if (l.ratio[i] === 0) expect(x).toBe(0);
+        });
+      }
+    }
+    expect(planGradeCounts(1, 'beginner')).toEqual([0, 1, 0, 0, 0]);
+  });
+  it('★ 계획은 섞인다(오름차순 아님) · 같은 개수', () => {
+    let seed = 7;
+    const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
+    const p = planGrades(20, 'advanced', rnd);
+    expect([...p].sort((a, b) => a - b)).toEqual([1, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5]);
+    expect(p).not.toEqual([...p].sort((a, b) => a - b));
   });
 });
 

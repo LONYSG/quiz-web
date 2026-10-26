@@ -19,7 +19,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatDifficulties, formatGapNsString, formatTopics, RULES, type DifficultyTier, type GameTopic } from '@quiz/shared';
+import { formatGapNsString, formatLevel, formatTopics, RULES, type DifficultyLevel, type GameTopic } from '@quiz/shared';
 import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
@@ -49,8 +49,8 @@ interface Props {
   /** 지금까지의 점수판 */
   players: { accountId: string; nickname: string; colorIndex: number; score: number; connected: boolean; avatarV?: number | null }[];
   myAccountId: string;
-  /** ★ R025 — 이 판의 난이도. 설정이 잠겨 있으므로 방 설정이 곧 이 판의 설정이다 */
-  difficulties: DifficultyTier[];
+  /** ★ R069 — 이 판의 난이도 단계(초급 · 중급 · 고급). 설정이 잠겨 있으므로 방 설정이 곧 이 판의 설정이다 */
+  level: DifficultyLevel;
   /** ★ R034 — 이 판의 분야 */
   topics: GameTopic[];
   /** ★ R034 — 지금 접속 인원 (넘기기 투표 현황 "몇 명 중") */
@@ -71,7 +71,7 @@ export default function Question({
   state,
   players,
   myAccountId,
-  difficulties,
+  level,
   topics,
   activeCount,
   ceremony,
@@ -224,7 +224,7 @@ export default function Question({
         )}
         {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */}
         <span className="badge cat">{question.categoryName}</span>
-        <span className="badge diff">난이도 {formatDifficulties(difficulties)}</span>
+        <span className="badge diff">난이도 {formatLevel(level)}</span>
         {formatTopics(topics) !== '전체' && <span className="badge diff">분야 {formatTopics(topics)}</span>}
         {question.selfExperienced && (
           /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) — 진행에 필요한 알림이다 */

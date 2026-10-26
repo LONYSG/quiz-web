@@ -40,6 +40,9 @@ export interface PoolQuestion {
   answersNorm: string[];
   /** ★ 마스킹에 쓰는 원문 표기 (Phase 6) */
   answersRaw: string[];
+  /** ★★ R069 — 등급(difficulty_score 1~5 · 비율 출제) · 알가치(questions.worth 1~3 · 판정 전 null = 2 로 친다) */
+  grade: number;
+  worth: number | null;
 }
 
 /**
@@ -66,6 +69,11 @@ export async function loadQuestionPool(
       WHERE table_name = 'questions' AND column_name = 'general_hint'`,
   );
   const generalHintExpr = (hintColCheck.rowCount ?? 0) > 0 ? 'q.general_hint' : 'NULL::text';
+  // ★ R069 — 알가치 열(0026)도 없으면 NULL(= 2) 로 읽는다(마이그레이션 전이라고 시작이 실패하면 안 된다)
+  const worthColCheck = await query<{ n: number }>(
+    `SELECT 1 AS n FROM information_schema.columns WHERE table_name = 'questions' AND column_name = 'worth'`,
+  );
+  const worthExpr = (worthColCheck.rowCount ?? 0) > 0 ? 'q.worth' : 'NULL::smallint';
   if ((hintColCheck.rowCount ?? 0) === 0) {
     console.warn('[pool] ★ questions.general_hint 열이 없다 (0008 미적용). 일반 힌트 없이 진행한다 — npm run db:migrate');
   }
@@ -89,6 +97,8 @@ export async function loadQuestionPool(
     explanation: string | null;
     answers_norm: string[];
     answers_raw: string[];
+    grade: number;
+    worth: number | null;
   }>(
     `SELECT q.id::text                        AS id,
             q.question_text,
@@ -97,6 +107,8 @@ export async function loadQuestionPool(
             q.hint_answer,
             ${generalHintExpr}                AS general_hint,
             q.explanation,
+            q.difficulty_score                AS grade,
+            ${worthExpr}                      AS worth,
             -- ★ 정답을 한 번의 쿼리로 모은다. 문제마다 따로 조회하면 N+1 이 된다
             coalesce(a.norms, '{}')           AS answers_norm,
             coalesce(a.raws,  '{}')           AS answers_raw
@@ -136,6 +148,8 @@ export async function loadQuestionPool(
       explanation: r.explanation,
       answersNorm: norms,
       answersRaw: (r.answers_raw ?? []).filter((s) => typeof s === 'string' && s.length > 0),
+      grade: Number(r.grade),
+      worth: r.worth === null || r.worth === undefined ? null : Number(r.worth),
     });
   }
   return out;

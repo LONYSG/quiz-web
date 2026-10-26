@@ -138,6 +138,8 @@ const SCENARIO_ENV = {
   near: { RESOLVED_WAIT_MS: '200', NEAR_MISS_SKIP_LOGIN: '^(bot_nx|uic|r10_)' },
   // ★ R068 — 정답 공개 평가 1P: 공개 2.5초(그 사이 표) · bot_rx 만 봇 규칙(0P)
   rate: { RESOLVED_WAIT_MS: '2500', RATE_SKIP_LOGIN: '^(bot_rx|uic|r10_)' },
+  // ★ R069 — 등급 비율 실측(20문항 판 다섯 · 방장 넘기기)
+  levelmix: { RESOLVED_WAIT_MS: '200' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -812,9 +814,9 @@ async function markExperiencedAll(accountId) {
 }
 
 
-// ★ R025 — 난이도 검증용 DB 헬퍼 ───────────────────────────────────────────────
-const TIER_SCORES = { easy: [1, 2], medium: [3], hard: [4, 5] };
-const scoresOf = (tiers) => tiers.flatMap((x) => TIER_SCORES[x]);
+// ★ R025 → ★★ R069 — 난이도 검증용 DB 헬퍼 (단계가 읽는 등급 — 초급 1~3 · 중급 1~4 · 고급 1~5) ─────────
+const LEVEL_SCORES = { beginner: [1, 2, 3], intermediate: [1, 2, 3, 4], advanced: [1, 2, 3, 4, 5] };
+const scoresOf = (level) => LEVEL_SCORES[level];
 
 /** 게임에서 실제로 출제된 문제들의 difficulty_score */
 async function difficultyScoresOfGame(gameId) {
@@ -830,7 +832,7 @@ async function difficultyScoresOfGame(gameId) {
 }
 
 /** ★ 서버와 **독립적으로** 센 출제 가능 수 (참가자 = 주어진 계정들) */
-async function expectedAvailable(accountIds, tiers) {
+async function expectedAvailable(accountIds, level) {
   return withDb(async (c) => {
     const r = await c.query(
       `SELECT count(*)::int AS n FROM questions q
@@ -838,20 +840,20 @@ async function expectedAvailable(accountIds, tiers) {
           AND q.difficulty_score = ANY($3::int[])
           AND (SELECT count(*) FROM question_experiences qe
                 WHERE qe.question_id = q.id AND qe.account_id = ANY($1::bigint[])) < $2`,
-      [accountIds, accountIds.length, scoresOf(tiers)],
+      [accountIds, accountIds.length, scoresOf(level)],
     );
     return r.rows[0].n;
   });
 }
 
-/** ★ 지정 계정들을 "상" 문제 중 keep 개만 빼고 전부 경험자로 만든다 (부족 상황 재현) */
-async function exhaustHardExcept(accountIds, keep) {
+/** ★ 지정 계정들을 grades 등급 문제 중 keep 개만 빼고 전부 경험자로 만든다 (부족 상황 재현 · R069 — 등급을 받는다 · 기본 4·5) */
+async function exhaustHardExcept(accountIds, keep, grades = [4, 5]) {
   return withDb(async (c) => {
     const r = await c.query(
       `WITH hard AS (
          SELECT id FROM questions
           WHERE status = 'approved' AND is_active AND question_type = 'short_answer'
-            AND difficulty_score IN (4, 5)
+            AND difficulty_score = ANY($3::int[])
             -- ★ R039 — 앞 단계의 판에서 이미 나온 문제는 "남길 문제" 로 고르지 않는다 (무작위 출제와 겹치면 2개만 남던 흔들림)
             AND NOT EXISTS (SELECT 1 FROM question_experiences e WHERE e.question_id = questions.id AND e.account_id = ANY($1::bigint[]))
           ORDER BY id
@@ -859,14 +861,14 @@ async function exhaustHardExcept(accountIds, keep) {
        INSERT INTO question_experiences (account_id, question_id)
        SELECT a.account_id, t.id FROM unnest($1::bigint[]) AS a(account_id), target t
        ON CONFLICT (account_id, question_id) DO NOTHING`,
-      [accountIds, keep],
+      [accountIds, keep, grades],
     );
     return r.rowCount ?? 0;
   });
 }
 
-/** 남은 "상" 문제 하나를 더 경험하게 한다 (카운트다운 중 부족 재현) */
-async function consumeOneHard(accountIds) {
+/** 남은 grades 등급 문제 하나를 더 경험하게 한다 (카운트다운 중 부족 재현 · 기본 4·5) */
+async function consumeOneHard(accountIds, grades = [4, 5]) {
   return withDb(async (c) => {
     const r = await c.query(
       `INSERT INTO question_experiences (account_id, question_id)
@@ -874,12 +876,12 @@ async function consumeOneHard(accountIds) {
          FROM unnest($1::bigint[]) AS a(account_id),
               (SELECT q.id FROM questions q
                 WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
-                  AND q.difficulty_score IN (4, 5)
+                  AND q.difficulty_score = ANY($2::int[])
                   AND NOT EXISTS (SELECT 1 FROM question_experiences qe
                                    WHERE qe.question_id = q.id AND qe.account_id = ANY($1::bigint[]))
                 ORDER BY q.id LIMIT 1) x
        ON CONFLICT (account_id, question_id) DO NOTHING`,
-      [accountIds],
+      [accountIds, grades],
     );
     return r.rowCount ?? 0;
   });
@@ -3781,12 +3783,12 @@ async function scenarioResult() {
 //     · 비방장은 못 바꾼다 / 빈 선택은 서버가 거부한다 / 다른 필드만 고치면 난이도가 유지된다
 // -----------------------------------------------------------------------------
 async function scenarioDifficulty() {
-  log('시나리오 difficulty — ★★ 난이도 선택 (R025)');
+  log('시나리오 difficulty — ★★★ 난이도 단계 초급 · 중급 · 고급 (R069 · 옛 R025)');
   await clearExperiences(PREFIX);
 
   const [host, guest] = await makeBots(2);
   await host.connect();
-  host.createRoom('R025 난이도 테스트');
+  host.createRoom('R069 난이도 테스트');
   await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
   const roomId = host.snapshot.room.id;
   await guest.connect();
@@ -3796,27 +3798,19 @@ async function scenarioDifficulty() {
 
   // ── 0. 기본값
   log('\n[0] 기본값');
-  expect(
-    '★ 기본값은 전체 (하·중·상)',
-    (host.snapshot.room.settings.difficulties ?? []).join(','),
-    'easy,medium,hard',
-  );
+  expect('★ 기본값은 중급(찬종)', host.snapshot.room.settings.level, 'intermediate');
 
   /** 설정을 보내고, 출제 가능 수가 서버와 독립 계산 값으로 맞춰질 때까지 기다린다 */
-  const apply = async (patch, tiers, label) => {
-    const want = await expectedAvailable(ids, tiers);
+  const apply = async (patch, level, label) => {
+    const want = await expectedAvailable(ids, level);
     const from = host.mark();
     host.socket.emit('lobby.updateSettings', { startMode: 'instant', countdownSec: 3, ...patch });
     await host.waitFor(
-      () =>
-        host.since(from, 'lobby.settingsUpdated').some(
-          (e) => (e.settings?.difficulties ?? []).join(',') === tiers.join(',') &&
-            e.availableQuestionCount === want,
-        ),
+      () => host.since(from, 'lobby.settingsUpdated').some((e) => e.settings?.level === level && e.availableQuestionCount === want),
       8000,
       `${label} 출제 가능 수 반영`,
     );
-    expect(`★★ ${label} — 출제 가능 수가 선택을 따른다 (${want}건)`, host.snapshot.room.availableQuestionCount, want);
+    expect(`★★ ${label} — 출제 가능 수 = 그 단계가 읽는 등급의 전체 수 (${want}건)`, host.snapshot.room.availableQuestionCount, want);
     return want;
   };
 
@@ -3841,88 +3835,75 @@ async function scenarioDifficulty() {
   };
 
   const CASES = [
-    { tiers: ['hard'], label: '상만' },
-    { tiers: ['medium', 'hard'], label: '중+상' },
-    { tiers: ['easy', 'medium', 'hard'], label: '전체' },
+    { level: 'advanced', label: '고급' },
+    { level: 'beginner', label: '초급' },
+    { level: 'intermediate', label: '중급' },
   ];
-  const all = [];
   for (const c of CASES) {
     log(`\n[1] ★★ ${c.label}`);
-    await apply({ questionCount: 4, difficulties: c.tiers }, c.tiers, c.label);
-    const { scores, result } = await playOne(4);
-    all.push(...scores);
-    const allowed = scoresOf(c.tiers);
-    expect(`★ ${c.label} — 4문제가 출제됐다`, scores.length, 4);
-    expectTrue(
-      `★★★ ${c.label} — 출제된 문제의 난이도가 전부 선택 안이다`,
-      scores.every((s) => allowed.includes(s)),
-      `난이도 ${scores.join(',')} / 허용 ${allowed.join(',')}`,
-    );
-    expect(`★ ${c.label} — 결과에 이 판의 난이도가 실린다`, (result.difficulties ?? []).join(','), c.tiers.join(','));
-
-    if (c.label === '상만') {
-      // ★★ 다시 하기가 난이도를 이어받는다 (Q-31)
-      log('\n[2] ★★ 다시 하기가 난이도를 이어받는다');
+    await apply({ questionCount: 5, level: c.level }, c.level, c.label);
+    const { scores, result } = await playOne(5);
+    const allowed = scoresOf(c.level);
+    expect(`★ ${c.label} — 5문제가 출제됐다`, scores.length, 5);
+    expectTrue(`★★★ ${c.label} — 출제된 문제의 등급이 전부 그 단계 안`, scores.every((x) => allowed.includes(x)), `등급 ${scores.join(',')} / 허용 ${allowed.join(',')}`);
+    expect(`★ ${c.label} — 결과에 이 판의 단계가 실린다`, result.level, c.level);
+    if (c.level === 'advanced') {
+      log('\n[2] ★★ 다시 하기가 단계를 이어받는다');
       await againAndCancel(host);
-      expect('★★ 다시 하기 후에도 상만', host.snapshot.room.settings.difficulties.join(','), 'hard');
+      expect('★★ 다시 하기 후에도 고급', host.snapshot.room.settings.level, 'advanced');
     } else {
       host.socket.emit('game.toLobby', {});
       await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비 복귀');
     }
   }
-  log(`  ★ 세 판에서 출제된 난이도: ${all.join(',')}`);
 
-  // ── 3. 권한과 형식
-  log('\n[3] ★ 권한과 형식 (guide 44절)');
-  await apply({ questionCount: 4, difficulties: ['hard'] }, ['hard'], '상만(권한 검사 전)');
+  // ── 3. 권한과 형식 · 옛 difficulties 옮김
+  log('\n[3] ★ 권한과 형식 · 옛 difficulties 배열 옮김');
+  await apply({ questionCount: 4, level: 'advanced' }, 'advanced', '고급(권한 검사 전)');
   let from = guest.mark();
-  guest.socket.emit('lobby.updateSettings', { questionCount: 4, startMode: 'instant', countdownSec: 3, difficulties: ['easy'] });
+  guest.socket.emit('lobby.updateSettings', { questionCount: 4, level: 'beginner' });
   await sleep(500);
   expect('★ 비방장이 바꾸면 NOT_HOST', guest.since(from, 'error')[0]?.code, 'NOT_HOST');
-  expect('★ 설정은 그대로', host.snapshot.room.settings.difficulties.join(','), 'hard');
-
+  expect('★ 설정은 그대로', host.snapshot.room.settings.level, 'advanced');
   from = host.mark();
-  host.socket.emit('lobby.updateSettings', { questionCount: 4, startMode: 'instant', countdownSec: 3, difficulties: [] });
+  host.socket.emit('lobby.updateSettings', { questionCount: 4, level: 'insane' });
   await sleep(500);
-  expect('★★ 빈 선택은 서버가 거부한다', host.since(from, 'error')[0]?.code, 'BAD_REQUEST');
-  expect('★ 설정은 그대로', host.snapshot.room.settings.difficulties.join(','), 'hard');
-
+  expect('★★ 모르는 단계는 서버가 거부한다', host.since(from, 'error')[0]?.code, 'BAD_REQUEST');
+  expect('★ 설정은 그대로', host.snapshot.room.settings.level, 'advanced');
   from = host.mark();
-  host.socket.emit('lobby.updateSettings', { questionCount: 6, startMode: 'instant', countdownSec: 3 });
+  host.socket.emit('lobby.updateSettings', { questionCount: 6 });
   await host.waitFor(() => host.since(from, 'lobby.settingsUpdated').length > 0, 4000, '설정');
-  expect('★★ 난이도를 안 보내면 지금 값을 유지한다', host.snapshot.room.settings.difficulties.join(','), 'hard');
+  expect('★★ 단계를 안 보내면 지금 값을 유지한다', host.snapshot.room.settings.level, 'advanced');
   expect('★ 문제 수는 바뀌었다', host.snapshot.room.settings.questionCount, 6);
+  await apply({ questionCount: 4, difficulties: ['easy'] }, 'beginner', '★ 옛 difficulties [하] → 초급');
+  await apply({ questionCount: 4, difficulties: ['medium'] }, 'intermediate', '★ 옛 difficulties [중] → 중급');
+  await apply({ questionCount: 4, difficulties: ['easy', 'medium', 'hard'] }, 'advanced', '★ 옛 difficulties [하·중·상] → 고급');
 
-  // ── 4. ★★ 부족하면 시작 거부
-  log('\n[4] ★★ "상" 이 부족하면 시작을 거부한다');
-  const marked = await exhaustHardExcept(ids, 3);
-  log(`  ★ 경험 기록 ${marked}행 — "상" 미경험 문제를 3개로 줄였다`);
-  // ★ 난이도를 한 번 바꿔 서버가 다시 세게 한다 (참가자 변동 없이)
-  await apply({ questionCount: 5, difficulties: ['medium', 'hard'] }, ['medium', 'hard'], '중+상(재계산)');
-  const hardLeft = await apply({ questionCount: 5, difficulties: ['hard'] }, ['hard'], '상만(부족)');
-  expect('★ "상" 출제 가능 수가 3이다', hardLeft, 3);
+  // ── 4. ★★ 전체가 모자라면 시작 거부 (초급 = 1~3 등급 · "문제가 부족합니다" 는 전체가 모자랄 때만 — 19 §5)
+  log('\n[4] ★★ 초급(1~3) 이 부족하면 시작을 거부한다');
+  const marked = await exhaustHardExcept(ids, 3, [1, 2, 3]);
+  log(`  ★ 경험 기록 ${marked}행 — 1~3 등급 미경험 문제를 3개로 줄였다`);
+  await apply({ questionCount: 5, level: 'intermediate' }, 'intermediate', '중급(재계산)');
+  const lowLeft = await apply({ questionCount: 5, level: 'beginner' }, 'beginner', '초급(부족)');
+  expect('★ 초급 출제 가능 수가 3이다', lowLeft, 3);
   from = host.mark();
   host.socket.emit('game.start', {});
   await sleep(1200);
   expect('★★★ 부족하면 NOT_ENOUGH_QUESTIONS', host.since(from, 'error')[0]?.code, 'NOT_ENOUGH_QUESTIONS');
   expect('★ 로비에 머문다', host.snapshot.room.state, 'LOBBY');
-  const allTiers = await apply({ questionCount: 5, difficulties: ['easy', 'medium', 'hard'] }, ['easy', 'medium', 'hard'], '전체(부족 해소)');
-  expectTrue('★ 전체로 바꾸면 충분해진다', allTiers >= 5, `${allTiers}건`);
+  const adv = await apply({ questionCount: 5, level: 'advanced' }, 'advanced', '고급(부족 해소)');
+  expectTrue('★ 고급(1~5)으로 바꾸면 충분해진다', adv >= 5, `${adv}건`);
 
-  // ── 5. ★★ 카운트다운 만료 재검증 (D-025) 도 난이도를 따른다
-  log('\n[5] ★★ 카운트다운 중 "상" 이 줄면 만료 시 로비로 돌아간다 (D-025)');
-  await apply({ questionCount: 3, difficulties: ['hard'], startMode: 'countdown', countdownSec: 3 }, ['hard'], '상만 3문제');
+  // ── 5. ★★ 카운트다운 만료 재검증 (D-025) 도 단계를 따른다
+  log('\n[5] ★★ 카운트다운 중 초급이 줄면 만료 시 로비로 돌아간다 (D-025)');
+  await apply({ questionCount: 3, level: 'beginner', startMode: 'countdown', countdownSec: 3 }, 'beginner', '초급 3문제');
   from = host.mark();
   host.socket.emit('game.start', {});
   await host.waitFor(() => host.since(from, 'game.countdownStarted').length > 0, 5000, '카운트다운');
-  const used = await consumeOneHard(ids);
-  log(`  ★ 카운트다운 중 "상" 한 문제를 더 경험시켰다 (${used}행)`);
+  const used = await consumeOneHard(ids, [1, 2, 3]);
+  log(`  ★ 카운트다운 중 1~3 등급 한 문제를 더 경험시켰다 (${used}행)`);
   await host.waitFor(() => host.since(from, 'game.countdownCancelled').length > 0, 8000, '만료 재검증');
-  expect(
-    '★★ 만료 재검증에서 부족 → 로비로 (사유 not_enough_questions)',
-    host.since(from, 'game.countdownCancelled')[0]?.reason,
-    'not_enough_questions',
-  );
+  expect('★★ 만료 재검증에서 부족 → 로비로 (사유 not_enough_questions)', host.since(from, 'game.countdownCancelled')[0]?.reason, 'not_enough_questions');
   expect('★ 게임이 시작되지 않았다', host.since(from, 'game.started').length, 0);
 
   host.leave();
@@ -3935,6 +3916,119 @@ async function scenarioDifficulty() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R069 — 등급 비율 · 알가치 실측 (docs/19 §5) — `npm run bot -- levelmix`
+//   검사 DB 의 알가치 seed(db:test-init — id % 4 → 1 · 2 · 3 · NULL)를 쓴다. 새 봇 계정(경험 0) 둘 · 20문항 판을 방장 넘기기로 돌린다.
+//   [1] 중급 20 → 등급 2·6·8·4(폴백 없음) · [2] 고급 20 → 1·3·6·6·4 · 5등급 칸은 전부 알가치 3 · [3] 초급 20 → 6·10·4
+//   [4] 5등급 알가치 3 을 잠깐 2 로 → 5등급 칸 = 알가치 2 · NULL · [5] 5등급을 전부 본 것으로 → 5등급 0 · 4등급 10(6 + 폴백 4) · 그 4 는 알가치 3
+//   [6] 같은 판 같은 정답 없음 · 흘림 규칙은 select 단위 테스트(선정 위에서 그대로)
+// -----------------------------------------------------------------------------
+async function scenarioLevelMix() {
+  log('시나리오 levelmix — ★★★ 등급 비율 · 알가치 실측 (R069)');
+  const host = new Bot('lm1');
+  const guest = new Bot('lm2');
+  for (const b of [host, guest]) await b.auth();
+  const ids0 = [host.loginId, guest.loginId];
+  await withDb((c) => c.query(`DELETE FROM question_experiences WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [ids0]));
+  const seeded = await withDb(async (c) => (await c.query(`SELECT count(worth)::int n FROM questions`)).rows[0].n);
+  expectTrue('★ 검사 DB 알가치 seed 가 있다(npm run db:test-init)', seeded > 1000, String(seeded));
+  for (const b of [host, guest]) await b.connect();
+  host.createRoom('R069 비율');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  guest.join(host.snapshot.room.id);
+  await guest.waitFor(() => guest.snapshot?.room.id === host.snapshot.room.id, 6000, '입장');
+  const accIds = [host.snapshot.me.accountId, guest.snapshot.me.accountId];
+  const play = async (level, n = 20) => {
+    const from = host.mark();
+    host.socket.emit('lobby.updateSettings', { questionCount: n, level, minigames: false, minigameOnly: false });
+    await host.waitFor(() => host.since(from, 'lobby.settingsUpdated').some((e) => e.settings?.level === level && e.settings?.questionCount === n), 6000, '설정');
+    const g = host.mark();
+    host.socket.emit('game.start', {});
+    await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+    for (let i = 1; i <= n; i += 1) {
+      const q = await host.waitQuestion(i, 20000);
+      const m = host.mark();
+      host.socket.emit('host.forceSkip', { epoch: q.epoch });
+      await host.waitFor(() => host.since(m, 'question.resolved').length > 0 || host.since(m, 'game.result').length > 0, 8000, `${i}번 넘김`);
+    }
+    await host.waitFor(() => host.snapshot.result != null, 15000, '결과');
+    await sleep(400);
+    const gid = host.snapshot.game?.gameId ?? host.snapshot.result?.gameId;
+    const rows = await withDb(async (c) =>
+      (await c.query(
+        `SELECT gq.question_index i, q.difficulty_score g, q.worth w, (SELECT array_agg(answer_norm) FROM question_answers a WHERE a.question_id = q.id) norms
+           FROM game_questions gq JOIN questions q ON q.id = gq.question_id WHERE gq.game_id = $1 ORDER BY gq.question_index`,
+        [gid],
+      )).rows,
+    );
+    host.socket.emit('game.toLobby', {});
+    await host.waitFor(() => host.snapshot.room.state === 'LOBBY', 6000, '로비');
+    const counts = [1, 2, 3, 4, 5].map((g) => rows.filter((r) => r.g === g).length);
+    return { rows, counts };
+  };
+  const table = [];
+  const noDup = (rows) => {
+    const seen = new Set();
+    for (const r of rows) for (const nm of r.norms ?? []) {
+      if (seen.has(nm)) return false;
+      seen.add(nm);
+    }
+    return true;
+  };
+
+  log('\n[1] ★★★ 중급 20');
+  const m = await play('intermediate');
+  table.push(['중급', '2·6·8·4·0', m.counts.join('·')]);
+  expect('★★★ 중급 20 — 실제 등급 분포 = 계획 2·6·8·4', m.counts.join('·'), '2·6·8·4·0');
+  expectTrue('★★ 중급 — 4등급 칸(가장 어려운 칸) 4개는 모두 알가치 3', m.rows.filter((r) => r.g === 4).every((r) => r.w === 3), JSON.stringify(m.rows.filter((r) => r.g === 4).map((r) => r.w)));
+  expectTrue('★★ 같은 판 같은 정답 없음', noDup(m.rows));
+  const rest = m.rows.filter((r) => r.g !== 4);
+  log(`  나머지 칸 알가치: 3=${rest.filter((r) => r.w === 3).length} · 2=${rest.filter((r) => r.w === 2).length} · null=${rest.filter((r) => r.w === null).length} · 1=${rest.filter((r) => r.w === 1).length}`);
+  expectTrue('★★ 나머지 칸에 알가치 1(예비)은 안 나온다(3·2 가 넉넉함)', rest.every((r) => r.w !== 1), JSON.stringify(rest.map((r) => r.w)));
+
+  log('\n[2] ★★★ 고급 20');
+  const a = await play('advanced');
+  table.push(['고급', '1·3·6·6·4', a.counts.join('·')]);
+  expect('★★★ 고급 20 — 실제 등급 분포 = 계획 1·3·6·6·4', a.counts.join('·'), '1·3·6·6·4');
+  expectTrue('★★★ 고급 — 5등급 칸은 모두 알가치 3', a.rows.filter((r) => r.g === 5).every((r) => r.w === 3), JSON.stringify(a.rows.filter((r) => r.g === 5).map((r) => r.w)));
+
+  log('\n[3] ★★ 초급 20');
+  const b = await play('beginner');
+  table.push(['초급', '6·10·4·0·0', b.counts.join('·')]);
+  expect('★★★ 초급 20 — 실제 등급 분포 = 계획 6·10·4', b.counts.join('·'), '6·10·4·0·0');
+  expectTrue('★★ 초급 — 3등급 칸은 모두 알가치 3', b.rows.filter((r) => r.g === 3).every((r) => r.w === 3));
+
+  log('\n[4] ★★ 5등급 알가치 3 을 비우면(검사 DB 잠깐 2 로) → 5등급 칸은 알가치 2 · NULL');
+  const moved = await withDb(async (c) => (await c.query(`UPDATE questions SET worth = 2, inactive_reason = coalesce(inactive_reason, '') || '[r069-w3]' WHERE difficulty_score = 5 AND worth = 3 RETURNING id`)).rowCount);
+  try {
+    const a2 = await play('advanced');
+    table.push(['고급 · 5등급 알가치 3 없음', '1·3·6·6·4', a2.counts.join('·')]);
+    expect('★★ 분포는 그대로 1·3·6·6·4', a2.counts.join('·'), '1·3·6·6·4');
+    expectTrue('★★★ 5등급 칸 = 알가치 2 또는 NULL(1 은 안 나옴)', a2.rows.filter((r) => r.g === 5).every((r) => r.w === 2 || r.w === null), JSON.stringify(a2.rows.filter((r) => r.g === 5).map((r) => r.w)));
+  } finally {
+    await withDb((c) => c.query(`UPDATE questions SET worth = 3, inactive_reason = nullif(replace(inactive_reason, '[r069-w3]', ''), '') WHERE inactive_reason LIKE '%[r069-w3]%'`));
+  }
+  log(`  (되돌림 ${moved}행)`);
+
+  log('\n[5] ★★★ 5등급을 전부 본 것으로 → 4등급으로 내려온다(알가치 3 먼저)');
+  const ex5 = await exhaustHardExcept(accIds, 0, [5]);
+  log(`  ★ 5등급 경험 ${ex5}행`);
+  const a3 = await play('advanced');
+  table.push(['고급 · 5등급 없음', '1·3·6·10·0', a3.counts.join('·')]);
+  expect('★★★ 5등급 0 · 4등급 10(6 + 폴백 4)', a3.counts.join('·'), '1·3·6·10·0');
+  const w3in4 = a3.rows.filter((r) => r.g === 4 && r.w === 3).length;
+  expectTrue('★★ 4등급 중 알가치 3 이 4개 이상(폴백 칸은 알가치 3 에서)', w3in4 >= 4, String(w3in4));
+
+  log('\n  ★ 표(계획 vs 실제)');
+  for (const t of table) log(`    ${t[0].padEnd(18)} 계획 ${t[1]} · 실제 ${t[2]}`);
+  for (const b2 of [host, guest]) {
+    b2.leave();
+    await sleep(40);
+    b2.disconnect();
+  }
+  await withDb((c) => c.query(`DELETE FROM question_experiences WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [ids0]));
+  return checkSummary();
+}
 
 // -----------------------------------------------------------------------------
 // ★★ generalhint — 일반 힌트 20초 / 초성 10초 / 재접속 / PAUSED 누출 (R028)
@@ -4090,7 +4184,7 @@ async function scenarioGeneralHint() {
 //     · 다시 하기가 분야를 이어받는다 / 다른 필드만 고치면 분야가 유지된다
 //     · 비방장은 못 바꾼다 / 빈 선택·모르는 분야는 서버가 거부한다
 // -----------------------------------------------------------------------------
-async function expectedAvailableTopics(accountIds, tiers, topics) {
+async function expectedAvailableTopics(accountIds, level, topics) {
   return withDb(async (c) => {
     const r = await c.query(
       `SELECT count(*)::int AS n FROM questions q
@@ -4100,7 +4194,7 @@ async function expectedAvailableTopics(accountIds, tiers, topics) {
           AND t.game_topic = ANY($4::text[])
           AND (SELECT count(*) FROM question_experiences qe
                 WHERE qe.question_id = q.id AND qe.account_id = ANY($1::bigint[])) < $2`,
-      [accountIds, accountIds.length, scoresOf(tiers), topics],
+      [accountIds, accountIds.length, scoresOf(level), topics],
     );
     return r.rows[0].n;
   });
@@ -4137,8 +4231,8 @@ async function scenarioTopics() {
   log('\n[0] 기본값');
   expect('★ 기본값은 분야 전체', (host.snapshot.room.settings.topics ?? []).join(','), ALL.join(','));
 
-  const apply = async (patch, tiers, topics, label) => {
-    const want = await expectedAvailableTopics(ids, tiers, topics);
+  const apply = async (patch, level, topics, label) => {
+    const want = await expectedAvailableTopics(ids, level, topics);
     const from = host.mark();
     host.socket.emit('lobby.updateSettings', patch);
     await host.waitFor(
@@ -4149,7 +4243,7 @@ async function scenarioTopics() {
       8000,
       `${label} 출제 가능 수 반영`,
     ).catch((err) => {
-      log(`  ★ 받은 설정: ${JSON.stringify(host.since(from, 'lobby.settingsUpdated').map((e) => [e.settings?.difficulties, e.settings?.topics, e.availableQuestionCount]))} / 기대 ${want} / 오류 ${JSON.stringify(host.since(from, 'error'))}`);
+      log(`  ★ 받은 설정: ${JSON.stringify(host.since(from, 'lobby.settingsUpdated').map((e) => [e.settings?.level, e.settings?.topics, e.availableQuestionCount]))} / 기대 ${want} / 오류 ${JSON.stringify(host.since(from, 'error'))}`);
       throw err;
     });
     expect(`★★ ${label} — 출제 가능 수가 난이도 × 분야를 따른다 (${want}건)`, host.snapshot.room.availableQuestionCount, want);
@@ -4177,7 +4271,7 @@ async function scenarioTopics() {
 
   // ── 1. 미디어·콘텐츠만
   log('\n[1] ★★ 미디어·콘텐츠만');
-  await apply({ questionCount: 3, topics: ['media'] }, ['easy', 'medium', 'hard'], ['media'], '미디어만');
+  await apply({ questionCount: 3, topics: ['media'] }, 'intermediate', ['media'], '미디어만');
   const one = await playOne(3);
   expect('★ 3문제가 출제됐다', one.topics.length, 3);
   expectTrue('★★★ 출제된 문제가 전부 미디어·콘텐츠다', one.topics.every((t) => t === 'media'), one.topics.join(','));
@@ -4190,7 +4284,7 @@ async function scenarioTopics() {
 
   // ── 3. 난이도 × 분야
   log('\n[3] ★★ 난이도 "상" × 분야 "한국·과학·기술"');
-  await apply({ questionCount: 3, difficulties: ['hard'], topics: ['science', 'korea'] }, ['hard'], ['korea', 'science'], '상 × 한국·과학');
+  await apply({ questionCount: 3, level: 'advanced', topics: ['science', 'korea'] }, 'advanced', ['korea', 'science'], '고급 × 한국·과학');
 
   // ── 4. 다른 필드만 고치면 분야가 유지된다
   log('\n[4] ★ 문제 수만 고치면 분야가 그대로');
@@ -8367,6 +8461,7 @@ const SCENARIOS = {
   emojiinline: scenarioEmojiInline,
   near: scenarioNear,
   rate: scenarioRate,
+  levelmix: scenarioLevelMix,
   grant: scenarioGrant,
   report: scenarioReport,
   signup: scenarioSignup,

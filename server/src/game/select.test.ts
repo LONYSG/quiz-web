@@ -13,10 +13,10 @@
 // =============================================================================
 
 import { describe, expect, it } from 'vitest';
-import { remainingQuestionCount, selectNextQuestion } from './select.js';
+import { gradeOrder, remainingQuestionCount, selectNextQuestion, worthFactor } from './select.js';
 import type { PoolQuestion } from '../db/questionPool.js';
 
-function q(id: string, answers: string[]): PoolQuestion {
+function q(id: string, answers: string[], grade = 3, worth: number | null = null): PoolQuestion {
   return {
     id,
     text: `문제 ${id}`,
@@ -27,6 +27,8 @@ function q(id: string, answers: string[]): PoolQuestion {
     explanation: null,
     answersNorm: answers,
     answersRaw: answers,
+    grade,
+    worth,
   };
 }
 
@@ -398,5 +400,113 @@ describe('R050 — 정답 흘림 (shownNorm)', () => {
     );
     expect(r3?.question.id).toBe('2');
     expect(r3?.stage).toBe(3);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R069 — 등급 계획 · 알가치 가중 · 가장 어려운 칸 · 등급 폴백 (docs/19 §5)
+// ─────────────────────────────────────────────────────────────────────────────
+describe('★★★ R069 등급 · 알가치', () => {
+  const ADV = { hardestGrade: 5, levelScores: [1, 2, 3, 4, 5] };
+  const MID = { hardestGrade: 4, levelScores: [1, 2, 3, 4] };
+  /** 같은 입력을 여러 난수로 돌려 나온 문제 id 집합 */
+  const picks = (over: Partial<Parameters<typeof selectNextQuestion>[0]>, n = 60) => {
+    const out = new Set<string>();
+    for (let i = 0; i < n; i += 1) {
+      const r = selectNextQuestion(input({ ...over, random: () => (i + 0.5) / n }));
+      if (r) out.add(r.question.id);
+    }
+    return out;
+  };
+
+  it('★ worthFactor — 3 ×2 · 2 · null ×1 · 1 예비(0) · gradeOrder 아래 먼저', () => {
+    expect([worthFactor(3), worthFactor(2), worthFactor(null), worthFactor(1)]).toEqual([2, 1, 1, 0]);
+    expect(gradeOrder(3, [1, 2, 3, 4, 5])).toEqual([3, 2, 1, 4, 5]);
+    expect(gradeOrder(1, [1, 2, 3])).toEqual([1, 2, 3]);
+    expect(gradeOrder(5, [1, 2, 3, 4, 5])).toEqual([5, 4, 3, 2, 1]);
+  });
+
+  it('★★ 목표 등급의 문제만 나온다(있을 때)', () => {
+    const pool = [q('a', ['a'], 2), q('b', ['b'], 3), q('c', ['c'], 3), q('d', ['d'], 4)];
+    expect(picks({ pool, targetGrade: 3, ...MID })).toEqual(new Set(['b', 'c']));
+    const r = selectNextQuestion(input({ pool, targetGrade: 3, ...MID }));
+    expect(r?.gradeFallback).toBe(false);
+    expect(r?.targetGrade).toBe(3);
+  });
+
+  it('★★★ 가장 어려운 칸 — 알가치 3 만 · 없으면 2(null 포함) · 그것도 없으면 한 등급 아래', () => {
+    const p1 = [q('w3', ['x1'], 5, 3), q('w2', ['x2'], 5, 2), q('wn', ['x3'], 5, null), q('w1', ['x4'], 5, 1), q('m3', ['x5'], 4, 3)];
+    expect(picks({ pool: p1, targetGrade: 5, ...ADV })).toEqual(new Set(['w3']));
+    const p2 = p1.filter((x) => x.id !== 'w3');
+    expect(picks({ pool: p2, targetGrade: 5, ...ADV })).toEqual(new Set(['w2', 'wn']));
+    const r2 = selectNextQuestion(input({ pool: p2, targetGrade: 5, ...ADV }));
+    expect(r2?.worthFallback).toBe(true);
+    expect(r2?.gradeFallback).toBe(false);
+    const p3 = [q('w1', ['x4'], 5, 1), q('m3', ['x5'], 4, 3), q('m2', ['x6'], 4, 2)];
+    expect(picks({ pool: p3, targetGrade: 5, ...ADV })).toEqual(new Set(['m3']));
+    const r3 = selectNextQuestion(input({ pool: p3, targetGrade: 5, ...ADV }));
+    expect(r3?.gradeFallback).toBe(true);
+    expect(r3?.question.grade).toBe(4);
+  });
+
+  it('★★ 가장 어려운 칸 — 알가치 1 은 넣지 않는다(다른 등급에 3·2 가 있으면 그쪽) · 정말 그것뿐이면 마지막에', () => {
+    const p = [q('h1', ['y1'], 5, 1), q('k1', ['y2'], 4, 1), q('t2', ['y3'], 3, 2)];
+    expect(picks({ pool: p, targetGrade: 5, ...ADV })).toEqual(new Set(['t2']));
+    expect(picks({ pool: [q('h1', ['y1'], 5, 1)], targetGrade: 5, ...ADV })).toEqual(new Set(['h1']));
+  });
+
+  it('★★ 나머지 칸 — 알가치 3 이 2 보다 두 배 · 1 은 예비(3·2 가 없을 때만)', () => {
+    const pool = [q('t3', ['z1'], 3, 3), q('t2', ['z2'], 3, 2), q('t1', ['z3'], 3, 1)];
+    let n3 = 0;
+    let n2 = 0;
+    let n1 = 0;
+    for (let i = 0; i < 300; i += 1) {
+      const r = selectNextQuestion(input({ pool, targetGrade: 3, ...MID, random: () => (i + 0.5) / 300 }));
+      if (r?.question.id === 't3') n3 += 1;
+      else if (r?.question.id === 't2') n2 += 1;
+      else n1 += 1;
+    }
+    expect(n1).toBe(0);
+    expect(n3).toBe(200);
+    expect(n2).toBe(100);
+    expect(picks({ pool: [q('t1', ['z3'], 3, 1), q('u2', ['z4'], 2, 2)], targetGrade: 3, ...MID })).toEqual(new Set(['t1']));
+  });
+
+  it('★★ null(판정 전)은 2 로 친다', () => {
+    const pool = [q('n', ['n1'], 3, null), q('two', ['n2'], 3, 2)];
+    expect(picks({ pool, targetGrade: 3, ...MID })).toEqual(new Set(['n', 'two']));
+    expect(picks({ pool: [q('n', ['n1'], 4, null), q('one', ['n3'], 4, 1)], targetGrade: 4, ...MID })).toEqual(new Set(['n']));
+  });
+
+  it('★★ 등급 폴백 — 아래 먼저 · 그다음 위 · 단계가 읽는 등급 안에서', () => {
+    expect(picks({ pool: [q('g1', ['p1'], 1), q('g4', ['p4'], 4)], targetGrade: 2, ...MID })).toEqual(new Set(['g1']));
+    expect(picks({ pool: [q('g4', ['p4'], 4), q('g3', ['p3'], 3)], targetGrade: 1, ...MID })).toEqual(new Set(['g3']));
+    const r = selectNextQuestion(input({ pool: [q('g3', ['p3'], 3)], targetGrade: 1, ...MID }));
+    expect(r?.gradeFallback).toBe(true);
+  });
+
+  it('★★★ 경험 단계가 등급보다 먼저 — 전원 미경험인 다른 등급 > 일부가 본 목표 등급', () => {
+    const exp = new Map([
+      ['A', new Set(['tgt'])],
+      ['B', new Set<string>()],
+    ]);
+    const r = selectNextQuestion(input({ pool: [q('tgt', ['k1'], 3, 3), q('other', ['k2'], 1, 2)], experienced: exp, targetGrade: 3, ...MID }));
+    expect(r?.question.id).toBe('other');
+    expect(r?.stage).toBe(1);
+    expect(r?.gradeFallback).toBe(true);
+  });
+
+  it('★★ 정답 중복 · 흘림 규칙 그대로(등급 규칙 위에서)', () => {
+    const r = selectNextQuestion(input({ pool: [q('dup', ['같음'], 3, 3), q('ok', ['다름'], 2, 1)], usedAnswerNorms: new Set(['같음']), targetGrade: 3, ...MID }));
+    expect(r?.question.id).toBe('ok');
+    expect(r?.stage).toBe(1);
+    const l = selectNextQuestion(input({ pool: [q('leak', ['훈민정음'], 3, 3), q('safe', ['안도라'], 1, 1)], shownNorm: '훈민정음', targetGrade: 3, ...MID }));
+    expect(l?.question.id).toBe('safe');
+  });
+
+  it('★ 목표 등급이 없으면 옛 동작(등급 · 알가치를 보지 않는다)', () => {
+    const r = selectNextQuestion(input({ pool: [q('1', ['가'], 5, 1), q('2', ['나'], 1, 3)] }));
+    expect(r?.question.id).toBe('1');
+    expect(r?.targetGrade).toBe(null);
   });
 });

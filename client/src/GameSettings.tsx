@@ -16,7 +16,7 @@
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import {
-  DIFFICULTY_TIERS,
+  DIFFICULTY_LEVELS,
   GAME_TOPICS,
   MINIGAMES,
   MINIGAME_KEYS,
@@ -26,7 +26,7 @@ import {
   type MinigameKey,
   RULES,
   validateRoomSettings,
-  type DifficultyTier,
+  type DifficultyLevel,
   type GameTopic,
 } from '@quiz/shared';
 import type { RoomSettings } from './useRoom.js';
@@ -79,27 +79,19 @@ export default function GameSettings({
   const shown = editable ? draft : settings;
   const shortage = availableQuestionCount !== null && shown.questionCount > availableQuestionCount;
 
-  /** ★ 난이도·분야 모두 **마지막 하나는 끌 수 없다** (빈 선택 상태를 만들지 않는다 — R025 판단) */
-  const [lastHint, setLastHint] = useState<'tier' | 'topic' | null>(null);
-  // ★ R068 (찬종 #56 "난이도 선택 버튼이 토글이 안됨") — 마지막 하나를 누르면 그 버튼이 흔들리고 바로 아래 안내(옛: 설정 맨 아래 빨간 줄만 — 모바일에서 안 보였다)
+  /** ★ 분야는 **마지막 하나는 끌 수 없다** (빈 선택 상태를 만들지 않는다 — R025 판단) · ★ R069 난이도는 셋 중 하나(라디오 꼴)라 해당 없음 */
+  const [lastHint, setLastHint] = useState<'topic' | null>(null);
+  // ★ R068 (찬종 #56) — 마지막 분야를 누르면 그 버튼이 흔들리고 아래 안내
   const [shake, setShake] = useState<string | null>(null);
   const bump = (k: string) => {
     setShake(null);
     window.requestAnimationFrame(() => setShake(k));
     window.setTimeout(() => setShake((s) => (s === k ? null : s)), 500);
   };
-  const toggleTier = (tier: DifficultyTier) => {
-    const has = draft.difficulties.includes(tier);
-    if (has && draft.difficulties.length === 1) {
-      setLastHint('tier');
-      bump(tier);
-      return;
-    }
-    setLastHint(null);
-    const next = has
-      ? draft.difficulties.filter((d) => d !== tier)
-      : DIFFICULTY_TIERS.map((i) => i.tier).filter((d) => d === tier || draft.difficulties.includes(d));
-    push({ ...draft, difficulties: next });
+  /** ★★★ R069 — 난이도 = 초급 · 중급 · 고급 중 하나 */
+  const pickLevel = (level: DifficultyLevel) => {
+    if (draft.level === level) return;
+    push({ ...draft, level });
   };
   const toggleTopic = (topic: GameTopic) => {
     const has = draft.topics.includes(topic);
@@ -239,36 +231,37 @@ export default function GameSettings({
                 : `이번 설정으로 낼 수 있는 문제 ${availableQuestionCount.toLocaleString('ko-KR')}개`}
           </p>
 
-          {/* ★★ 난이도 (R025) — 하=1~2 / 중=3 / 상=4~5 */}
-          <div className="set-row">
+          {/* ★★★ 난이도 (R069 · docs/19 §5) — 초급 · 중급 · 고급 중 하나(라디오 꼴) · 고른 것의 한 줄 설명 */}
+          <div className="set-row level-row">
             <span className="set-label">난이도</span>
-            <div className="preset-row">
-              {DIFFICULTY_TIERS.map((info) => {
-                const on = shown.difficulties.includes(info.tier);
-                return editable ? (
-                  <button
-                    key={info.tier}
-                    type="button"
-                    data-tier={info.tier}
-                    aria-pressed={on}
-                    className={`${on ? 'preset active' : 'preset'}${shake === info.tier ? ' shake' : ''}`}
-                    onClick={() => toggleTier(info.tier)}
-                  >
-                    {info.label}
-                  </button>
-                ) : (
-                  <span key={info.tier} className={on ? 'chip on' : 'chip'}>
-                    {info.label}
-                  </span>
-                );
-              })}
+            <div className="level-box">
+              <div className="preset-row" role="radiogroup" aria-label="난이도">
+                {DIFFICULTY_LEVELS.map((info) => {
+                  const on = shown.level === info.level;
+                  return editable ? (
+                    <button
+                      key={info.level}
+                      type="button"
+                      role="radio"
+                      data-level={info.level}
+                      aria-checked={on}
+                      className={on ? 'preset active' : 'preset'}
+                      onClick={() => pickLevel(info.level)}
+                    >
+                      {info.label}
+                    </button>
+                  ) : (
+                    <span key={info.level} data-level={info.level} className={on ? 'chip on' : 'chip'}>
+                      {info.label}
+                    </span>
+                  );
+                })}
+              </div>
+              <p className="level-desc dim" data-level-desc data-wrap-ok>
+                {DIFFICULTY_LEVELS.find((i) => i.level === shown.level)?.desc}
+              </p>
             </div>
           </div>
-          {lastHint === 'tier' && (
-            <p className="form-error last-hint" data-last-hint>
-              하나는 남겨야 해요 — 다른 난이도를 먼저 켜 주세요
-            </p>
-          )}
 
           {/* ★★ 분야 (R034) — 난이도 × 분야로 출제 가능 수가 바뀐다 */}
           <div className="set-row">

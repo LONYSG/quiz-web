@@ -9,7 +9,7 @@
 //   여기서 게임 판정이나 상태 전환을 하지 않는다.
 // =============================================================================
 
-import type { DifficultyTier, GameTopic } from '@quiz/shared';
+import type { DifficultyLevel, GameTopic } from '@quiz/shared';
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import type { MinigameKey, MinigamePhase } from '@quiz/shared';
@@ -57,8 +57,8 @@ export interface RoomSettings {
   questionCount: number;
   startMode: 'instant' | 'countdown';
   countdownSec: number;
-  /** ★ R025 — 출제할 난이도 (하·중·상 복수 선택) */
-  difficulties: DifficultyTier[];
+  /** ★★ R069 — 난이도 단계(초급 · 중급 · 고급 중 하나 · 옛 R025 하·중·상 복수 선택) */
+  level: DifficultyLevel;
   /** ★ R034 — 출제할 분야 (복수 선택) */
   topics: GameTopic[];
   /** ★★ R050 — 미니게임 포함 (기본 꺼짐) · 넣을 미니게임 */
@@ -212,8 +212,8 @@ export interface GameResultView {
     avgResponseMs: number | null;
     fastestMs: number | null;
   }[];
-  /** ★ R025 — 이 판의 난이도 */
-  difficulties: DifficultyTier[];
+  /** ★ R069 — 이 판의 난이도 단계 */
+  level: DifficultyLevel;
   /** ★ R034 — 이 판의 분야 (옛 서버는 보내지 않는다) */
   topics?: GameTopic[];
   abortedNote: string | null;
