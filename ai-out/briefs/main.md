@@ -1,5 +1,5 @@
-[MAIN R068 — 찬종 제보 13(10-25 플레이 #52~64) · 설문 팝업(docs/19 §7) · photoyear 게임(docs/18 §8) · 긴 질문 240자 360폭 검사 · 고기 굽기 가림 = 소리 끊김]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 끝나면 멈춘다)
-TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 남긴 **제보 13 을 처리**하고, 재판정 보정용 **설문 팝업**과 **photoyear 미니게임**을 만들고, 질문 상한을 200 → 240자로 올릴 수 있는지 **화면으로 검사**한다. 머리에 `npm run reports:report -- --no-bots` 로 13 건을 읽는다(아래 표가 설계 요약 · 원문은 보고가 정본).
+[MAIN R068 — 찬종 제보 13(10-25 플레이 #52~64) · 정답 공개 평가 3단계 · 1P(docs/19 §7) · photoyear 게임(docs/18 §8) · 긴 질문 240자 360폭 검사 · 고기 굽기 가림 = 소리 끊김]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 끝나면 멈춘다)
+TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 남긴 **제보 13 을 처리**하고, **정답 공개 평가(3단계 · 1P)**와 **photoyear 미니게임**을 만들고, 질문 상한을 200 → 240자로 올릴 수 있는지 **화면으로 검사**한다. 머리에 `npm run reports:report -- --no-bots` 로 13 건을 읽는다(아래 표가 설계 요약 · 원문은 보고가 정본).
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` · 바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 그대로 (07 **D-301** 부터 · 13 **A96** · 10 **48절** · 01 16-R068 · 05 · 06 · README). 하위 에이전트 ≤1 · 남는 메모리 1.5GB(검사 서버 · 봇은 `quizweb_test` 만 · 실 DB 는 마이그레이션과 photoyear 적재만 · 쓰기 전 `npm run db:backup`). 실 서버(3000) 재시작은 찬종(`ops.bat` 3 → 1) — MAIN 은 하지 않는다.
@@ -25,16 +25,16 @@ TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 �
 | 64 | circle final | "원 말고 다른 도형 해도 재밌을 듯" | 구현 안 함 — 13 A96 에 "아이디어(보류 · 설계 대기함)" 로 적고 handle note "보류" |
 | 58 · 59 · 60 · 62 · 63 | game | 문항 제보 5(3813 국화 분야 · 1438 민화 · 1619 지열 발전 "문제가 힌트같음" · 500 독일어 · 2096 타이브레이크 "무슨 게임인지") | **내용은 안 건드림** — handle note "V028 판정 대상(설계 브리핑) · 고침은 G023" |
 
-■ 설문 팝업 (docs/19 §7 설계 초안 그대로 — 재판정 보정 데이터)
-- 마이그레이션 **0026**: `question_difficulty_votes(id · question_id · account_id · game_id · vote smallint 1~5 · solved bool · hint_seen text 'none'|'general'|'initial' · response_ms int null · created_at)` · unique(question_id · account_id) · `accounts.survey_panel boolean not null default false` · ★ `question_difficulty_votes.worth smallint null check (worth between 1 and 3)`(알가치 답) · ★ **`questions.worth smallint null check (worth between 1 and 3)`**(알가치 — docs/19 §9 · 값은 G025 가 넣는다 · R068 은 열만 · 코드에서 읽지 않는다). 실 DB 적용은 백업 뒤 · 관례대로.
-- 대상: `survey_panel` 인 계정만. ops.mjs 메뉴에 **"설문 패널 켜기/끄기(계정 이름)"** 와 **"설문 패널 목록"** 항목 — MAIN 은 아무 계정도 켜지 않는다(찬종이 ops.bat 로 진지 14 + yuja0218 을 켠다).
-- 때: 퀴즈 판에서 **정답 공개 뒤** 본인에게만 작은 창(깜짝 이벤트 꼴 · 다른 사람 화면엔 안 뜸) — **판당 2문항**(서버가 판 시작 때 무작위로 고름 · 모든 패널 참가자에게 같은 문항) · 다음 문제 카운트다운을 막지 않게(창은 겹쳐 뜨고 다음 문제 뜨면 사라짐 · 안 눌렀으면 그냥 넘어감).
-- 창: "이 문제, 어느 정도였어요?" + 버튼 다섯(**1 아주 쉬움** "힌트 없이 바로" · **2 쉬움** "힌트 전에" · **3 보통** "힌트 보고" · **4 어려움** "초성 봐야/못 맞힘" · **5 매우 어려움** "전공·마니아") + [건너뛰기]. 저장 때 solved(본인이 맞혔나) · hint_seen(답 낸 시점 — 10초 전 none · 25초 전 general · 그 뒤 initial · 못 맞힘은 initial) · response_ms 를 서버가 채운다.
-- 보상: 답마다 **1P** · 하루 **10P** 까지 · 지급 사유 `survey`(기존 포인트 지급 길 그대로) · **창이 뜬 뒤 1초 안의 답은 저장은 하되 포인트 0**(성의 없는 연타). 토스트 "설문 +1P".
-- ★ **알가치 질문**(찬종 2026-10-26 · docs/19 §7 · §9): 난이도 버튼을 누른 뒤 같은 창이 한 번 더 묻는다 — **"알아둘 만했어요?"** 버튼 셋 **오~**(3) · **그냥**(2) · **굳이**(1) + [건너뛰기] → `question_difficulty_votes.worth`. 포인트는 문항당 1P(난이도 답에) · 알가치 답은 덤(추가 P 없음). 건너뛰면 null. 그림 300-survey-worth-{pc · m390}.png.
-- 보고 `npm run survey:report`(문항별 표 수 · 중앙값 · **알가치 표 수와 분포(3/2/1)** · 지금 difficulty_score · |중앙값 − 등급| ≥ 2 이고 표 ≥ 5 인 후보 목록 · 계정별 표 수) — 설계가 읽는다. 자동 반영 없음.
-- "어떤 문항" 우선순위(애매 우선)는 이번엔 **무작위만** — 후보 파일을 설계가 다음 라운드에 준다(코드에 `survey_priority` 끼울 자리만 한 줄 메모). 로비에서 몰아서 하기는 이번엔 **안 함**(13 A96 메모).
-- 그림: 300-survey-{popup · thanks · pc · m390}.png · PLAY-GUIDE 한 절.
+■ 정답 공개 평가 — 3단계 버튼 · 1P (찬종 2026-10-26 · docs/19 §7 — ★ 옛 안(1~5 난이도 설문 팝업 · 설문 패널 · 알가치 두 번 묻기 · question_difficulty_votes · survey:report)은 **없앤다** · 찬종: "어차피 글까지 써 주는 사람은 없더라 · 정답 공개 시간에만 방금 문제 어땠냐고 3단계로 묻고 1P · 자세한 의견은 제보란")
+- 지금 있는 것을 고친다: `question_feedback`(vote 1/−1 · reasons · comment · 문항당 계정당 한 줄) · client `QuestionFeedback.tsx`(RevealFeedback = 정답 공개 중 👍👎 · ResultFeedback = 결과 화면 · LastGameFeedback = 로비 "지난 판 문제 평가") · `server/src/http/feedbackRoutes.ts` · `feedback:report` · `feedback:adopt`(+5P 는 그대로).
+- 마이그레이션 **0026**: `question_feedback.vote` CHECK → (−1 · 0 · 1) · `question_feedback.at_reveal boolean not null default false` · `question_feedback.rate_grant_id bigint null references point_grants(id) on delete set null` · ★ `questions.worth smallint null check (worth between 1 and 3)`(알가치 — docs/19 §9 · 값은 G025 가 넣는다 · R068 은 열만 · 코드에서 읽지 않는다). 실 DB 적용은 백업 뒤 · 관례대로. survey_panel · question_difficulty_votes 는 만들지 않는다.
+- 정답 공개 화면(game:reveal · 공개 시간 동안): 정답 줄 아래 한 줄 **"방금 문제 어땠어요? (+1P)"** + 버튼 셋 **👍 좋아요 · 😐 그냥 · 👎 별로**(이름은 이것으로 — 더 자연스러운 이름이 있으면 0절에 둘 다 적고 하나로) · 누르면 그 자리가 **"+1P 고마워요"** 로 바뀜(바꾸기는 공개 시간 안에서만 · 포인트는 한 번) · 다음 문제로 넘어가면 사라짐 · 모바일에서 입력칸·힌트를 가리지 않게(m390 캡처). 봇·검사 계정은 버튼이 떠도 포인트 0(BOT 규칙 그대로).
+- 포인트 규칙(서버가 판단 · 클라이언트 시각 안 믿음): 표가 들어온 순간 그 방이 **QUESTION_RESOLVED 이고 그 문항이 현재 문항**이면 at_reveal=true → **1P**(point_grants reason **`rate`** 신설 · ref = question_feedback.id · 토스트·잔액 갱신은 기존 지급 길) · **하루 상한 없음**(찬종 "1포인트씩") · 같은 문항 두 번 없음(rate_grant_id 가 있으면 다시 안 줌) · 공개 시간 밖(결과 화면 · 로비 지난 판 평가 · 늦게 온 요청)은 저장만 하고 **0P**(at_reveal=false · 찬종: "정답 공개 시간 외에 평가한 문제들은 포인트 안 준다").
+- 결과 화면 · 로비 "지난 판 문제 평가": 버튼을 같은 3단계(👍/😐/👎)로 · reasons · comment 는 그대로 두되 머리에 **"자세한 의견은 제보에 적어 주세요(채택되면 +5P)"** 한 줄 + 제보 창 여는 링크 · 0P 라고 작게 표시("공개 시간에 누르면 +1P").
+- 보고 `npm run feedback:report -- --no-bots` 확장: 문항별 👍/😐/👎 수 · 그중 at_reveal 수 · ★ **찬종 표(lonysg · lonysg2)는 따로 열** — 찬종은 "절대 신뢰"(실수는 제보 코멘트로 교정) · **검토 후보** 절: 찬종 표가 없고 남의 표가 ≥ 2 인 문항 중 👎 ≥ 👍 + 1 인 것 · 한 계정이 한 판에서 전부 같은 버튼(장난 의심 · 그 계정 표는 검토 후보에서 뺌) · (questions.worth 가 채워진 뒤) worth 3 인데 👎 > 👍 · worth 1 인데 👍 ≥ 2 → 설계가 찬종에게 가져간다(자동 반영 없음).
+- 문구(그대로 쓴다): 공개 "방금 문제 어땠어요? (+1P)" · 누른 뒤 "+1P 고마워요" · 결과·로비 "공개 시간에 누르면 +1P · 자세한 의견은 제보에 적어 주세요(채택되면 +5P)". PLAY-GUIDE 한 절 갱신(옛 👍👎 설명 교체).
+- 봇 시나리오: 공개 중 표 → 1P · 공개 뒤 같은 문항 다시 → 저장만 · 결과 화면 표 → 0P · 두 번 눌러도 잔액 +1.
+- 그림: 300-rate-{reveal · after · result · m390}.png.
 
 ■ photoyear 미니게임 (docs/18 §8 · C82 ③ — 데이터 100 verified 가 `data/minigame/photoyear/items.json` 에 있다 · 적재 안 됨)
 - 규칙: 사진 한 장 → **연도 4자리 입력**(모바일 숫자 키패드 · 1800~올해 범위) · 시간은 photo 게임과 같게 · 점수 = **오차 |입력 − year| 작은 순**(순위 점수는 다른 미니게임 꼴) · `yearKind circa` 는 `yearRange` 안이면 오차 0 · 공개 때 정답 연도 · title · place · 각자 오차 · attribution(photo 와 같은 자리) · as_of 머리줄 없음(as_of null).
@@ -47,10 +47,10 @@ TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 �
 - 결과 표(폭 × 길이 140/198/240 → 줄 수 · 넘침 여부 · 시간 표시 줄바꿈) + 권고 한 줄(240 가능 / 220 까지 / 200 유지 · 조건). 글자 크기를 줄이거나 레이아웃을 바꾸면 **240자가 되는지도** 따로.
 - 그림: 320-qlen-{140 · 198 · 240}-{m390 · 1536}.png.
 
-■ 할 일 순서 · 커밋: A 제보 UI 7(52 · 53 · 54 · 55 · 56 · 57 · 61)과 240자 검사 → B 설문 팝업(마이그레이션 · 서버 · 창 · 포인트 · ops · 보고) → C photoyear(게임 · 적재) → D 문서 · 끝 점검. 커밋 묶음마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 · fetch → rebase → push.
-■ 끝 점검(단계별 · 10 48절 표): typecheck · vitest · build · smoke · 봇(minigame · mgquiz · report · 새 photoyear · 설문 투표 봇 — 패널 계정만 창을 받는지 · 1초 연타 포인트 0 · 하루 10P 상한) · ui-check r068(제보 7 · 설문 · photoyear · 240자) + r067(고기 — 가림 뒤 소리 0) · wrap-audit · 메모리.
+■ 할 일 순서 · 커밋: A 제보 UI 7(52 · 53 · 54 · 55 · 56 · 57 · 61)과 240자 검사 → B 정답 공개 평가(마이그레이션 · 서버 · 공개 화면 · 결과·로비 · 포인트 · 보고) → C photoyear(게임 · 적재) → D 문서 · 끝 점검. 커밋 묶음마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 · fetch → rebase → push.
+■ 끝 점검(단계별 · 10 48절 표): typecheck · vitest · build · smoke · 봇(minigame · mgquiz · report · 새 photoyear · 평가 1P 봇 — 패널 계정만 창을 받는지 · 1초 연타 포인트 0 · 하루 10P 상한) · ui-check r068(제보 7 · 설문 · photoyear · 240자) + r067(고기 — 가림 뒤 소리 0) · wrap-audit · 메모리.
 ■ 하지 말 것: questions · question_answers 쓰기 · 문항 내용 고치기 · V028/G022 파일(audit/v028-* · g022-* · v028-raw) · 15 · 19 수정 · 실 서버 재시작 · 설문 패널 계정 켜기 · 로비 몰아서 설문 · 원 게임 다른 도형 구현 · force push.
 ■ 확인할 것 (원칙 7): 미처리 제보 20(#52~64 계정 4463 lonysg2 · #65~71 계정 483 lonysg) · R067 끝 번호 D-300 · A95 · 10 47절 · 마이그레이션 마지막 0025 · CakeWait.tsx 에 hideStart 뒤 점점 작게 규칙 · GameSettings.tsx 85~94 마지막 하나 못 끄기 · photoyear items.json 100 verified · GAMES_ALL 에 photoyear 없음 · 5760 질문 140자 · 가장 긴 활성 5332 198자 — 다르면 0절에.
-■ 보고 `ai-out/R068.txt`: 0절 찬종이 볼 것(제보 13 표 · 설문 창 그림 · photoyear 그림 · 240자 표와 권고 · 난이도 버튼 원인 한 줄) · 끝 점검 표 · 고친 문서.
+■ 보고 `ai-out/R068.txt`: 0절 찬종이 볼 것(제보 13 표 · 평가 버튼 그림 · photoyear 그림 · 240자 표와 권고 · 난이도 버튼 원인 한 줄) · 끝 점검 표 · 고친 문서.
 ■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄 "R068 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.
