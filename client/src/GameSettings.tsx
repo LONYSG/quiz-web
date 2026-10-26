@@ -223,7 +223,7 @@ export default function GameSettings({
           </div>
 
           {/* ★ 출제 가능 수 (Q-21) — 진행에 필요한 알림이다 (부족하면 시작할 수 없다) */}
-          <p className={shortage ? 'form-error avail-line' : 'note avail-line'}>
+          <p className={shortage ? 'form-error avail-line' : 'note avail-line'} data-wrap-ok>
             {availableQuestionCount === null
               ? '출제 가능 문제 수를 확인하는 중입니다.'
               : shortage

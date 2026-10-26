@@ -348,6 +348,31 @@
 
 ---
 
+## D-310. 이모티콘 "자주" 탭 — 최근 보낸 순 12 · 이 기기(localStorage) · 첫 탭 (R069 · 찬종 #70 "자주 쓰는 이모티콘 탭도 따로 있으면 좋을듯")
+- `emojiRecent.ts`(useSyncExternalStore 작은 저장소 · 키 qw.emoji.recent) — 보내기(Lobby sendEmoji: 고르기 창 · 10칸 · Alt+1~0 모두)와 입력창에 넣기(insertEmoji)가 맨 앞에 넣는다(같은 것은 한 번 · 12개). 고르기 창: 있으면 첫 탭 🕘 "자주" · 창을 열 때마다 그 탭부터 · 특별은 가진 것만 · 비면 탭 없음.
+- 계정 저장은 하지 않았다(설계 판단 — 기기마다 쓰는 것이 다를 수 있고 서버 표 · 마이그레이션이 필요). 단축키 10칸과 무관.
+- 되돌리기: EmojiPicker 의 recent 탭 줄 · Lobby 의 pushRecentEmoji 두 줄.
+
+## D-309. 좁은 칸 지문 글자 = 글자 수로 정한다 (R069 · R068 240자 검사 권고)
+- 원인(R068 측정 메모): QuestionText 자동 맞춤(가장 긴 문장이 한 줄에 들어갈 때까지 줄이고 하한이면 줄바꿈)이 360 폭에서 재는 때에 따라 19px(11줄) · 15.2px(9줄)로 갈렸다.
+- 규칙: 지문 칸 폭 ≤ 400px 이면 **150자 넘음 15px · 120~150자 17px · 그 밖 19px**(× 뿌리 글자 배율) · 늘 줄바꿈. 수치 근거 = R068 표(360: 140자 19px 7줄 보임 · 197자 15px 9줄 보임 · 240자 15px 9줄 보임 · 16px 는 240자 17px 넘침). 120~150 은 17px 로 한 줄 덜(140자 6줄). PC(넓은 칸)는 옛 자동 맞춤 그대로.
+- 확인: ui-check r069 game — 360 에서 같은 문제를 두 번 재도 같은 값 · 240 · 197 = 15px 9줄 입력칸 보임 · 140 = 17px 6줄 · 390 도 같은 글자 · PC 1536 240 = 21px 4줄.
+- 되돌리기: QuestionText 의 narrow 가지(NARROW_MAX_W)를 지운다. ★ 15 §3-1 QLEN 은 설계가 G025 에서 240 으로(MAIN 은 화면만).
+
+## D-308. 선정 — 등급 계획 + 알가치 가중 · 가장 어려운 칸 · 등급 폴백 (R069 · 19 §5 · CV-113 설계 결정 "그대로")
+- 등급 계획: 게임 시작(start.ts)에 `planGrades(문항 수, 단계)` → game.gradePlan(섞음) · hardestGrade. 다시 하기는 새 게임이라 새로 섞임. 문항 i 의 목표 = gradePlan[questionIndex].
+- select.ts(순수 함수 · await 없음): 입력에 targetGrade · hardestGrade · levelScores(없으면 옛 동작). 경험 단계 1 → 2 → 3 이 먼저(D-054) · 단계 안 흘림 없는 쪽 먼저 · 그 안에서 pickByGrade — 가장 어려운 칸: g 3 → g 2(NULL) → g−1 3 → g−1 2 → 그 밖 등급(아래 먼저)은 나머지 칸 규칙 → 마지막 알가치 1(g−1 → g) · 나머지 칸: 등급 순서(g → 아래 → 위)마다 미경험자 수 × worthFactor(3 → 2 · 2/NULL → 1 · 1 → 0) · 0 뿐이면 그 등급 알가치 1 · 없으면 다음 등급.
+- ★ 설계 판단(브리핑 ② 해석): 브리핑은 "가장 어려운 칸 3 → 2 → g−1 같은 순서 → 그래도 비면 ③ 폴백". ③ 폴백에서 g 와 g−1 의 알가치 1 이 g−2 의 3·2 보다 먼저 오면 "알가치 1 은 이 칸에 넣지 않는다" 와 어긋나 → g · g−1 의 알가치 1 은 맨 끝으로 미뤘다(되돌리기 쉬움 — pickByGrade 의 continue 한 줄).
+- 기록: game_questions 에 열이 없어 **서버 로그 한 줄**("#id … 등급 g→실제 s · 알가치 w · 등급 폴백 · 알가치 폴백") + game.gradeFallbackCount · worthFallbackCount. 마이그레이션은 하지 않았다 — 열(target_grade · grade · worth smallint)이 필요하면 0절 제안.
+- 확인: select.test 10개(+R069) · 봇 levelmix — 검사 DB 알가치 seed(id % 4) · 20문항 다섯 판 계획 = 실제(중급 2·6·8·4 · 고급 1·3·6·6·4 · 초급 6·10·4 · 5등급 알가치 3 없음 → 2/NULL · 5등급 없음 → 4등급 10).
+- 되돌리기: question.ts 의 targetGrade 펼침 줄을 지우면 옛 선정(단계가 읽는 등급 전체에서 무작위).
+
+## D-307. 난이도 = 초급 · 중급 · 고급 중 하나 (R069 · 찬종 2026-10-26 · 19 §5)
+- shared settings: DifficultyLevel · DIFFICULTY_LEVELS(label · desc · ratio · scores · hardest) · DEFAULT_LEVEL 중급 · levelScores · formatLevel · levelFromLegacy · planGradeCounts · planGrades. RoomSettingsInput.difficulties → **level**. validateRoomSettings: level 검증 · 옛 `difficulties` 배열이 오면 옮김(상 포함 → 고급 · 하만 → 초급 · 그 밖 → 중급 · 배열이 level 을 이긴다 — 서버가 지금 level 을 먼저 채우므로 옛 클라이언트의 뜻대로) · 빈 배열 · 모르는 값 거부.
+- 서버: PoolFilter.level · difficultyWhere = levelScores(초급도 1~3 전부 — 폴백이 같은 풀에서) · countAvailableQuestions = 그 등급들의 전체 수(Q-21) · RoomSettings · GameResult.level · lobby filterKey · socket 병합 · stats byTier = 등급 1~5. games 에는 옛 difficulties 도 기록하지 않았다(그대로 — 열 없음).
+- 화면: 설정 = 라디오 셋 + 고른 것의 한 줄 설명(360 · 390 한 줄) · 손님 칩 · "하나는 남겨야" 안내 · 흔들림은 난이도에서 없앰(분야는 그대로 — R068 #56 검사는 분야 버튼으로 옮김) · 뱃지 "난이도 고급" · 전적 "등급별 1등급 …".
+- 되돌리기: 옛 difficulties 를 되살리려면 이 커밋(13f3cbfc)의 settings · questions · GameSettings 를 되돌린다(DB 는 바뀐 것 없음).
+
 ## D-306. 프로필 사진 — 브라우저가 못 여는 사진은 파일 앞머리로 꼴을 보고 바꾸는 법을 알린다 (R068 · 찬종 #71 "확장자 맞췄는데도 에러")
 - 재현 안 됨: test 서버(직접 · cloudflared 터널 둘 다) + 진짜 [등록] 클릭으로 jpg 56KB · 4032×3024 jpg · png · webp · 회전 jpg 모두 PUT 200 · "바꿨습니다"(ui-check r068 avatar). 서버 409(게임 중) · 400 · 413 경로는 이번 판 상황(대기실 · 위 막대 프로필)과 맞지 않다.
 - 가장 그럴듯한 원인(추정): 휴대폰 사진 HEIC/HEIF — Windows Chrome 이 못 열어 옛 문구 "이 사진은 열 수 없습니다 (jpg · png · webp 를 써 주세요)" 가 떴고, **확장자만 .jpg 로 바꿔도 속은 HEIC** 라 같은 오류. 찬종 글 "확장자 맞췄는데도" 와 맞는다.

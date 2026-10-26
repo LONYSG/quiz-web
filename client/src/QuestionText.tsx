@@ -20,7 +20,7 @@ const MIN_PX = 15;
 /**
  * ★★ R069 (R068 240자 검사 권고) — 좁은 칸(지문 칸 폭 ≤ 400px · 휴대폰)은 **글자 수로 정한다**(재는 때에 따라 안 흔들리게).
  *   R068 실측(360 · 높이 740): 140자 19px 7줄 · 197자 19px 11줄(입력칸 66px 아래) · 15px 9줄(보임) · 240자 15px 9줄(보임).
- *   → 150자 넘음 15px · 120~150자 17px · 그 밖 19px · 늘 줄바꿈. PC(넓은 칸)는 옛 자동 맞춤 그대로.
+ *   → 150자 넘음 15px · 120~150자 17px · 그 밖 19px 를 **위 끝**으로(옛 자동 맞춤 값이 더 작으면 그것) · 늘 줄바꿈. PC(넓은 칸)는 옛 자동 맞춤 그대로.
  */
 const NARROW_MAX_W = 400;
 export function narrowPx(chars: number): number {
@@ -42,15 +42,9 @@ export default function QuestionText({ text }: { text: string }) {
       const width = box.clientWidth;
       // ★ R041 — 화면이 클수록 뿌리 글자(html)가 커진다 → 지문의 기본·하한도 같은 비율로 (16px 기준)
       const k = parseFloat(getComputedStyle(document.documentElement).fontSize) / 16 || 1;
-      if (width > 0 && width <= NARROW_MAX_W) {
-        const px = Math.round(narrowPx([...text].length) * k);
-        box.style.setProperty('--q-px', `${px}px`);
-        box.dataset.wrap = '1';
-        box.dataset.narrow = '1';
-        setFit((prev) => (prev.px === px && prev.wrap ? prev : { px, wrap: true }));
-        return;
-      }
-      delete box.dataset.narrow;
+      const narrow = width > 0 && width <= NARROW_MAX_W;
+      if (narrow) box.dataset.narrow = '1';
+      else delete box.dataset.narrow;
       const base = Math.round(BASE_PX * k);
       const min = Math.round(MIN_PX * k);
       let px = base;
@@ -61,7 +55,13 @@ export default function QuestionText({ text }: { text: string }) {
         px -= 1;
         box.style.setProperty('--q-px', `${px}px`);
       }
-      const wrap = widest() > width;
+      let wrap = widest() > width;
+      // ★ R069 — 좁은 칸은 글자 수 규칙이 **위 끝**(옛 맞춤보다 크게는 안 한다 — 긴 문장이 있는 짧은 글은 옛 값이 더 작다) · 늘 줄바꿈
+      if (narrow) {
+        px = Math.min(px, Math.round(narrowPx([...text].length) * k));
+        box.style.setProperty('--q-px', `${px}px`);
+        wrap = true;
+      }
       // ★★ R039 — 잴 때 바꾼 줄바꿈 상태를 **DOM 에도 다시** 적는다.
       //   ★ 옛 코드의 결함: 재측정(창 크기·글꼴 로딩) 때 data-wrap 을 '0' 으로 바꿔 놓고, 결과가 이전과 같으면 React 가
       //     다시 그리지 않아 '0'(줄바꿈 금지) 이 그대로 남았다 → 긴 문장이 **칸 밖으로 잘렸다** (R039 1장)
@@ -79,6 +79,7 @@ export default function QuestionText({ text }: { text: string }) {
       ref={boxRef}
       className="q-text no-copy"
       data-text={text}
+      data-wrap-ok
       data-wrap={fit.wrap ? '1' : '0'}
       style={{ ['--q-px' as string]: `${fit.px}px` }}
     >

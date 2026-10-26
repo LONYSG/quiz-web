@@ -8358,14 +8358,7 @@ button.link-btn.fb-report-link {
   padding: 0;
   font-size: inherit;
 }
-/* 모바일 — 폭 360 에서 물음이 잘렸다(…) → 물음은 한 줄 위 · 버튼 셋은 아래 줄(공개 카드가 한 줄 늘어남 · 입력칸과 안 겹침 — ui-check r068) */
-:where(.ui-mobile) .reveal-fb:not(.picked) {
-  flex-wrap: wrap;
-  row-gap: 4px;
-}
-:where(.ui-mobile) .reveal-fb:not(.picked) .reveal-fb-ask {
-  flex: 1 0 100%;
-}
+/* 모바일 — 폭 360 에서 물음이 잘렸다(…) → ★ R069: 물음은 "+1P" 만(긴 글은 title) · 버튼 셋과 한 줄(공개 카드를 늘리지 않는다 — main-layout C-4) */
 :where(.ui-mobile) .reveal-fb-ask {
   font-size: 0.74rem;
 }
@@ -8434,4 +8427,18 @@ button.preset.shake {
   font-size: 0.76rem;
   line-height: 1.35;
   word-break: keep-all;
+}
+
+/* ★ R069 (끝 점검 — r063 감사가 찾음) — 모바일 평가 목록: 3단계 버튼(R068)이 들어오며 질문 칸이 71px 로 눌렸다
+   → 질문은 첫 줄 전체 · [피드백] + 👍😐👎 는 다음 줄 오른쪽 */
+:where(.ui-mobile) .fb-row-head {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+:where(.ui-mobile) .fb-row-head > button.fb-q {
+  flex: 1 1 calc(100% - 10ch);
+}
+:where(.ui-mobile) .fb-row-head > .qreport-btn,
+:where(.ui-mobile) .fb-row-head > button.qreport-btn {
+  margin-left: auto;
 }

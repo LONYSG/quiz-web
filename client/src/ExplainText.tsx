@@ -39,7 +39,7 @@ export default function ExplainText({ text }: { text: string }) {
     return () => ro.disconnect();
   }, [text]);
   return (
-    <p ref={ref} className="reveal-explain">
+    <p ref={ref} className="reveal-explain" data-wrap-ok>
       {text}
     </p>
   );

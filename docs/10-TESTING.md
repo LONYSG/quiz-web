@@ -1074,6 +1074,26 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 49. ★★★ R069 — 난이도 초급 · 중급 · 고급 · 등급 비율 · 알가치 · 좁은 칸 지문 · 이모티콘 "자주"
+
+```bash
+npm run db:test-init                         ★ 검사 DB 알가치 seed(전부 NULL 일 때만 · id % 4 → 1 · 2 · 3 · NULL)
+npm run bot -- levelmix                      ★ 20문항 다섯 판 — 계획 vs 실제 등급 · 가장 어려운 칸 알가치 3 · 3 을 비우면 2/NULL · 5등급을 다 보면 4등급으로 · 같은 정답 없음
+npm run bot -- difficulty                    ★ level 셋 · 기본 중급 · 다시 하기 이어받음 · 비방장 NOT_HOST · 모르는 값 거부 · 옛 difficulties 옮김 셋 · 초급 부족 → NOT_ENOUGH · 카운트다운 만료 재검증
+node scripts/ui-check-bundles.mjs r069       ★ settings(PC 5크기 · 고급 클릭 · m360/390 탭 · 손님 칩 · 전적 등급별) · emoji("자주") · game(뱃지 · 좁은 칸 140/197/240 두 번 재기 · PC)
+```
+
+★ 옛 검사 고침: main-layout [4-9](하·중·상 → 단계 셋) · r068 #56(난이도 끄기 → 분야 끄기 — 난이도는 라디오) · r061 계열 미니게임만 설정 숨김(data-tier → data-level).
+
+| 검사 | 결과 |
+|---|---|
+| typecheck · vitest · build · smoke | 통과 · 562 · 통과 · 12/12 |
+| 봇 | **levelmix(새) 13/13** · difficulty 34/34 · topics 13/13 · feedback 23/23 · rate 15/15 |
+| ui-check | **r069 9/9** · r068 21/21 · r063 12/12 · r066 16/16 · main-layout 128/129(C-4 = A79 그대로) · WRAP 0 |
+| 끝 점검에서 고친 것 | R068 회귀 둘(모바일 평가 목록 질문 칸 · 공개 평가 물음 줄) · 좁은 칸 규칙 = 옛 맞춤의 위 끝 · 옛 난이도 검사 셋 · 감사 data-wrap-ok |
+
+---
+
 ## 48. ★★★ R068 — 정답 공개 평가 3단계 · 1P · photoyear · 제보 20 · 긴 질문(QLEN 240) 검사
 
 ```bash

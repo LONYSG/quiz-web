@@ -144,12 +144,15 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
 export function RevealFeedback({ gameId, questionId }: { gameId: string; questionId: string }) {
   const f = useFeedback(gameId, questionId);
   const picked = f.vote !== null;
+  // ★ R069 (끝 점검 — main-layout C-4) — 모바일은 물음을 따로 한 줄에 두면 긴 문제의 공개 카드가 넘쳤다 → 한 줄 "+1P" + 버튼 셋
+  const mobile = useUiMode() === 'mobile';
   return (
     <span className={picked ? 'reveal-fb picked' : 'reveal-fb'} data-fb-question={questionId} data-rate-granted={f.granted || undefined}>
-      <span className="reveal-fb-ask" data-rate-ask aria-live="polite">
-        {!picked ? `방금 문제 어땠어요? (+${RATE_POINTS}P)` : f.granted > 0 ? `+${f.granted}P 고마워요` : f.answered ? '고마워요' : '…'}
+      <span className="reveal-fb-ask" data-rate-ask aria-live="polite" title={`방금 문제 어땠어요? (+${RATE_POINTS}P)`}>
+        {!picked ? (mobile ? `+${RATE_POINTS}P` : `방금 문제 어땠어요? (+${RATE_POINTS}P)`) : f.granted > 0 ? `+${f.granted}P 고마워요` : f.answered ? '고마워요' : '…'}
       </span>
-      <VoteButtons vote={f.vote} onVote={f.onVote} compact={picked} />
+      {/* ★ R069 — 모바일은 그림만(이름은 aria · title) — 360 에서 "N초 후" 와 한 줄 */}
+      <VoteButtons vote={f.vote} onVote={f.onVote} compact={picked || mobile} />
       {f.error && <span className="fb-err">저장 실패</span>}
     </span>
   );
@@ -174,7 +177,7 @@ function FeedbackRow({ gameId, item, open, onToggle }: { gameId: string; item: F
         <QNo id={item.questionId} />
         <button type="button" className="fb-q" aria-expanded={open} onClick={onToggle}>
           {/* ★ 질문은 복사 막기 그대로(R050) */}
-          <span className="fb-text no-copy">{shown}</span>
+          <span className="fb-text no-copy" data-wrap-ok={open || undefined}>{shown}</span>
           {(open || !mobile) && (
             <span className="fb-answer dim">
               정답 <strong>{item.answer}</strong>
@@ -250,7 +253,7 @@ export function FeedbackList({ gameId }: { gameId: string }) {
 function RateNote() {
   const openReport = useOpenReportAt();
   return (
-    <p className="fb-rate-note dim" data-rate-note>
+    <p className="fb-rate-note dim" data-rate-note data-wrap-ok>
       공개 시간에 누르면 +{RATE_POINTS}P · 자세한 의견은{' '}
       <button type="button" className="link-btn fb-report-link" data-fb-report onClick={() => openReport('menu')}>
         제보
