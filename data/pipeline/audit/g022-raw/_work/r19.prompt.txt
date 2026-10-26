@@ -8,4 +8,4 @@
 - factChange: 지금 질문에 없던 새 사실을 넣거나, 있던 단서를 다른 뜻으로 바꾸거나, 한정어를 지웠는가. true/false + 한 줄(무엇이 달라졌나).
 - easier: 지금 질문보다 처음 읽는 사람이 이해하기 쉬운가. "yes" / "same"(거의 같음) / "no"(더 나쁨).
 - verdict: ok(그대로 써도 됨) / fix(사소하게 고치면 됨 — fixText 에 고친 질문 전문) / reject(쓰면 안 됨 — leak 또는 사실 변경, 또는 easier no).
-결과 C:/work/quiz-web/data/pipeline/audit/g022-raw/_work/r19.out.json 에 JSON 배열(입력 순서)을 Write 로 직접: {"id":숫자,"leak":bool,"leakNote":"…","factChange":bool,"factNote":"…","easier":"yes|same|no","verdict":"ok|fix|reject","fixText":null|"…"}. 마지막 답변에는 "개수 · ok/fix/reject 수"만 적는다.
+결과 C:/work/quiz-web/data/pipeline/audit/g022-raw/_work/r19.out.json 에 JSON 배열(입력 순서)을 Write 로 직접: {"id":숫자,"leak":bool,"leakNote":"…","factChange":bool,"factNote":"…","easier":"yes|same|no","verdict":"ok|fix|reject","fixText":null|"…"}. leak 또는 factChange 가 true 이면 verdict 는 fix 또는 reject 다(ok 금지). easier 는 블록마다 따로 판단한다(일괄 금지). 마지막 답변에는 "개수 · ok/fix/reject 수"만 적는다.
