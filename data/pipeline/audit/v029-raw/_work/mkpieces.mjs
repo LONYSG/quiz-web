@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import {T,block} from './mkblocks.mjs';
+const W='C:/work/quiz-web/data/pipeline/audit/v029-raw/_work/';
+const A=JSON.parse(fs.readFileSync(W+'anchors60.json','utf8')).filter(a=>!a.ex);
+let seed=31;const rnd=()=>(seed=(seed*1103515245+12345)&0x7fffffff)/0x7fffffff;
+const shuf=(a)=>{const t=[...a];for(let i=t.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[t[i],t[j]]=[t[j],t[i]];}return t;};
+const anchorIds=new Set(JSON.parse(fs.readFileSync(W+'anchors60.json','utf8')).map(a=>a.id));
+const ids=shuf(Object.keys(T).map(Number).filter(i=>!anchorIds.has(i)));
+const NP=Math.ceil((ids.length)/100);const pieces=[];
+for(let p=0;p<NP;p++)pieces.push(ids.slice(Math.floor(p*ids.length/NP),Math.floor((p+1)*ids.length/NP)));
+const gold={};for(const a of A)gold[a.id]=a.worth;
+const map={};let n=0;
+pieces.forEach((arr,p)=>{const name='p'+String(p+1).padStart(2,'0');const an=shuf(A).slice(0,10).map(a=>a.id);const all=shuf([...arr,...an]);
+fs.writeFileSync(W+name+'.txt',all.map(block).join('\n'));fs.writeFileSync(W+name+'.keys.json',JSON.stringify(all));
+fs.writeFileSync(W+name+'.anchors.json',JSON.stringify(an));
+fs.writeFileSync(W+name+'.prompt.txt',`V029 알가치 판정자. 먼저 ${W}prompt.md 를 Read 로 전부 읽고 그 지시대로 한다(예 20 포함).\n입력: ${W}${name}.txt (블록 ${all.length}개). 결과: ${W}${name}.out.json (JSON 배열 · 입력 순서 그대로 · Write 로 직접). 입력 파일과 prompt.md 외 다른 파일은 열지 않는다. 스크립트 일괄 처리 금지 — 한 건씩 읽고 판정한다. 끝나면 "done" 한 줄만 답한다.\n`);n+=arr.length;});
+fs.writeFileSync(W+'anchors.gold.json',JSON.stringify(gold));
+console.log(NP,n,ids.length,'+anchors not in pieces:',A.length,'total',n+60);

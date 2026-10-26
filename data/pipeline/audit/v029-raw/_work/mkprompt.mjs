@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+const R='C:/work/quiz-web/data/pipeline/audit/v029-raw/';
+const T=JSON.parse(fs.readFileSync(R+'targets.json','utf8')).items;
+const A=JSON.parse(fs.readFileSync('anchors60.json','utf8'));
+const KIND={404:['개념','학교 경제 개념 — 2'],1567:['유래','자판 배열의 까닭'],1496:['유래','로고의 까닭'],2054:['상식','일상 말로 굳은 성장 과정'],2291:['개념','학교 과학 개념 — 2'],3086:['쓸모','고양이 키우는 사람에게만 쓸모'],3729:['유래','일흔을 뜻하는 말의 출처'],5147:['유래','매일 쓰는 것의 출발'],6571:['유래','샴페인 이름이 사람 이름'],3219:['쓸모','돈과 직결 · 누구에게나'],695:['상식','수도·별칭은 일반 상식'],2911:['상식','대표 브랜드는 일반 상식'],1548:['상식','대중문화 기본 이름'],3436:['고유명사','유명해도 이름만 떠올림'],1289:['취미세부','영화사 사실 — 취미 영역'],868:['고유명사','처음 듣는 인물'],4659:['고유명사','처음 듣는 인물·남는 것 없음'],5744:['고유명사','초연 세부로 작품 이름'],6814:['일화','일화 세부로 인물'],6075:['숫자','통행 방향 사실']};
+const one=(s)=>String(s??'').replace(/\s+/g,' ').trim();
+const ex=A.filter(a=>a.ex).map(a=>{const t=T[a.id];return `- ${a.id} · 정답 ${t.answer} · 질문: ${one(t.question)} → worth ${a.worth} · ${KIND[a.id][0]} · ${KIND[a.id][1]}`;}).join('\n');
+const ins=fs.readFileSync(R+'INSTRUCTIONS.md','utf8');
+if(!ins.includes('{{예 20}}')) throw 'no slot';
+fs.writeFileSync(R+'_work/prompt.md', ins.replace('{{예 20}}',ex));
+console.log(ex.length);
