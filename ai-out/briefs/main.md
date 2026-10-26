@@ -1,59 +1,43 @@
-[MAIN R068 — 찬종 제보 13(10-25 플레이 #52~64) · 정답 공개 평가 3단계 · 1P(docs/19 §7) · photoyear 게임(docs/18 §8) · 긴 질문 240자 360폭 검사 · 고기 굽기 가림 = 소리 끊김]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 끝나면 멈춘다)
-TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 남긴 **제보 13 을 처리**하고, **정답 공개 평가(3단계 · 1P)**와 **photoyear 미니게임**을 만들고, 질문 상한을 200 → 240자로 올릴 수 있는지 **화면으로 검사**한다. 머리에 `npm run reports:report -- --no-bots` 로 13 건을 읽는다(아래 표가 설계 요약 · 원문은 보고가 정본).
+[MAIN R069 — 난이도 설정을 초급·중급·고급(단일 선택)으로 바꾸고 등급 비율 출제 + 알가치 가중 선택(docs/19 §5) · 긴 지문 360 폭 글자 규칙(240자 대비) · 자주 쓰는 이모티콘 탭(#70)]  (이 파일이 지시 전체다 — docs/16 2장. 다 읽고 시작한다. 끝나면 멈춘다)
+TASK: 찬종 결정(2026-10-26 · docs/19 §5 정본)대로 방 설정의 난이도를 **하·중·상 켜고 끄기 → 초급 · 중급 · 고급 중 하나**로 바꾸고, 한 판의 문항을 **등급(difficulty_score 1~5) 비율**로 뽑되 **가장 어려운 칸은 알가치(questions.worth) 3 에서만 · 나머지 칸은 알가치 3 ×2 · 2 ×1 · 1 은 예비**로 고른다. 경험 규칙(안 본 문제 우선 3단계) · 같은 판 같은 정답 금지 · 정답 흘림 검사 · 분야 필터는 그대로 두고 **그 안에서** 등급·알가치가 후보를 좁힌다. 머리에 `npm run reports:report -- --no-bots` 로 미처리 제보를 본다(R068 이 19 건을 처리했고 #70 자주 쓰는 이모티콘 탭 · #64 다른 도형이 보류 — #70 은 이번에 한다 · #64 는 그대로 보류).
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` · 바꾸지 않는다)
 
-■ 고정 규칙: docs/16 그대로 (07 **D-301** 부터 · 13 **A96** · 10 **48절** · 01 16-R068 · 05 · 06 · README). 하위 에이전트 ≤1 · 남는 메모리 1.5GB(검사 서버 · 봇은 `quizweb_test` 만 · 실 DB 는 마이그레이션과 photoyear 적재만 · 쓰기 전 `npm run db:backup`). 실 서버(3000) 재시작은 찬종(`ops.bat` 3 → 1) — MAIN 은 하지 않는다.
-■ ★★ 동시 라운드 — **GEN G023**(재판정 결과 적용 — questions · question_answers 를 **쓴다** · 판이 열려 있을 때는 안 씀 · worth 열은 안 건드림) ‖ **VERIFY V029**(알가치 판정 — 읽기만)가 돌고 있을 수 있다. 0026 의 `ALTER TABLE questions ADD COLUMN worth` 는 G023 쓰기와 겹쳐도 된다(백업 뒤 · 판 없을 때 · 잠금 짧음). MAIN 은 **questions · question_answers 를 쓰지 않는다**(제보 문항 5 도 — 아래). 05 · 06 · 13 · README 는 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지. R067 과 같이 끝 점검은 단계별로.
+■ 고정 규칙: docs/16 그대로 (07 **D-307** 부터 · 13 **A97** · 10 **49절** · 01 16-R069 · 05 · 06 · README). 하위 에이전트 ≤1 · 남는 메모리 1.5GB(검사 서버 · 봇 · ui-check 는 `quizweb_test` 만 · ui-check 는 3GB 남을 때 · 실 DB 쓰기 **없음** — 마이그레이션도 없다 · worth 열은 R068 0026 이 이미 만들었다). 실 서버(3000) 재시작은 찬종(`ops.bat` 3 → 1) — MAIN 은 하지 않는다. 16 §5-1 "모은 것 · 뺀 것" 표.
+■ ★★ 동시 라운드 — **GEN G024**(힌트 라운드 — questions 의 general_hint · explanation · category_id 를 **쓴다** · 6686 비활성 · 판이 열려 있을 때는 안 씀 · worth 안 건드림) 가 돌고 있다. VERIFY V029 는 끝났다(`questions.worth` 값은 아직 **전부 NULL** — G025 가 `audit/v029-worth.json` 을 쓴다 · 이번 라운드는 NULL 을 2 로 치는 규칙으로 완성하고, 값이 들어오면 그대로 동작해야 한다). MAIN 은 **questions · question_answers 를 쓰지 않는다**. 05 · 06 · 13 · README 는 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지(작업 트리에 GEN 의 미커밋 파일이 있을 수 있다 — 건드리지 않는다). 끝 점검은 단계별로.
 
-■ 제보 13 + 7 = 20 처리 (#52~64 lonysg2 · #65~71 lonysg 10-25 밤 · 처리마다 `reports:handle --id N --note "R068 …"` · 0절에 표: id · 화면 · 원문 요지 · 원인 · 고침/보류)
-| id | 화면 | 요지 | 할 일 |
-|---|---|---|---|
-| 65 | game:question(설정) | 설정에서 "제보" 누르면 버튼이 다 튀어나감 · 이모티콘 설정에서 QHD(2560)일 때 둘째 줄 특별 이모티콘을 누르면 제대로 선택이 안 됨 | 설정 창 제보 버튼 레이아웃(1536/2560/m390) · 이모티콘 편집 둘째 줄 클릭 영역(2560 에서 히트 영역·겹침 확인 · 57 과 같은 뿌리인지) |
-| 66 | game:reveal | 이모티콘을 붙여 보내면 세레모니에 맨 앞 하나만 표시됨 | 세레모니 이모티콘 파서가 첫 코드포인트만 잡는지(ZWJ · 연속 이모지) · 의도(하나만)면 보낼 때부터 하나로 제한하고 안내 |
-| 67 | game:reveal · 문항 1941 | "답이 주관식이 아님"(정답 "특허를 공개했다" — 문장형 정답) | **문항은 안 고친다** — V028(verify 반)이 입력 꼴 표시로 잡는다 · R068 은 note 만("V028/G023 몫") · 처리 표시는 하지 않는다 |
-| 68 | game:result | 결과 화면의 문제 평가는 기본 접힌 상태로 | 접힘 기본값 + 펼침 기억(localStorage) · 접혀 있어도 평가 수는 보이게 |
-| 69 | room | 미니게임 고르기: 아이콘 가운데 정렬 · 체크 박스 더 크게 · 위치 정확히 | 아이콘·체크 정렬(1536/2560/m390 캡처) |
-| 70 | room(idea) | 자주 쓰는 이모티콘 탭 | **보류**(note "다음 라운드 · 10 절 후보") — 사용 빈도 저장 설계가 필요 |
-| 71 | room | **프로필 사진 변경이 안 됨 — 확장자 맞췄는데도 에러가 뜸**(PC 웹 · 10-26 00:56 · 계정 lonysg) · 같은 날 123qwe(3556)도 못 바꿔 설계가 DB 에 직접 넣어 줌(account_avatars 3556 jpeg 16,200B) | 원인 찾기(재현: test 서버 + playwright chromium, jpg 56KB 올리기): ① avatarRoutes PUT 의 409 "게임 중에는…"(room.state 가 LOBBY 가 아닐 때 — GAME_RESULT 에서 설정 열면?) ② express.raw type/limit 과 blob.type 불일치 → 400/413 ③ ProfileEditor 120 toBlob webp 실패 → "사진을 만들지 못했습니다" ④ 오류 글이 무엇이었는지 0절에 적고 고침 · 터널(cloudflared) 경유도 한 번 |
-| (찬종 말 10-26 ①) | minigame | **사진이 없는 미니게임 항목이 나온다**("(연습용)" 같은 글이 보였다고 함) | 실측: 활성 항목 중 image 없음 = estimate 39/299 · which 97/415 · worldprice 323/323(이 게임은 애초에 사진 없음 — 숫자만) · photo · price 0. ① 사진이 있어야 하는 게임(photo · photoyear · price · estimate · which)은 **출제 SQL 에서 image_ids 비어 있으면 제외**(서버 defs 에 `needsImage` 한 줄 · 선택 함수 한 곳) ② 그 136 항목은 `active=false` 로(백업 · `audit/r068-mg-noimg-undo.json` · 되돌리기 한 줄) ③ 로더(minigame-load.mjs)에 같은 규칙 — 사진 없으면 적재 안 함(dry-run 표) ④ 화면에서 "(연습용)" · "(연습)" 글이 어디서 뜨는지 찾아 0절에(MinigameStage 173 연습 배지 · LabMinigame 254 "나나라(연습)" 는 lab 전용 — 라이브에서 보이면 버그) ⑤ worldprice 는 그대로(숫자 게임 — 찬종 확인 10-26: 문제는 estimate · which 의 사진 없는 항목) |
-| (찬종 말 10-26 ②) | minigame | **사진이 잘리거나 특정 부분만 확대돼 보이는 것이 있다** | 미니게임 사진 컨테이너 전수(styles.css object-fit cover 2628 · 6035 · 6968 · contain 5754 · 5986 · PhotoGuess photo-zoom scale/transformOrigin): 규칙 — **잘라내지 않는다**(contain + 어두운 레터박스 · 세로·가로 사진 모두 전체가 보임 · 공개 화면도 같음). 예외는 photo 게임의 **의도된 확대 모드**(zoom/mosaic 단계 — 규칙상 일부만 보여 주는 것) 뿐이며 그것도 **공개 때는 전체**가 보여야 한다. 게임마다 1536 · m390 캡처(가로 · 세로 사진 각 1) → 330-mgimg-{game}-{1536 · m390}.png. 잘림이 정말 "의도된 확대" 였으면 0절에 그렇게 적는다 |
-| (찬종 말 10-26 ③) | chat | **이모티콘 검색창을 누르면 "검색 활성화" 부분이 검색 박스보다 커져 일체감이 사라진다** | EmojiPicker.tsx 254~256(`.emoji-search-wrap` 32px 둥근 테두리 안에 `.emoji-search` input): 포커스 링이 input 에 붙어 wrap 보다 커진다(전역 `input:focus` 규칙 의심) → input 은 outline/box-shadow 없음 · **wrap 에 `:focus-within` 으로 테두리 색만** 바뀌게 · 높이·반지름 그대로 · 모바일 확대(font-size < 16px → iOS 줌) 확인 · 1536 · m390 캡처 340-emoji-search-{idle · focus}.png |
-| 52 | room | 미니게임 첫 1위 설명이 길어 "…" 으로 생략 | 생략 없이 줄바꿈(폭 · 두 줄까지 · 1536/2560/m390) |
-| 53 | room | "지난판 문제 평가" 누르면 글자가 오른쪽으로 쭉 늘어나 화면 밖으로 | 긴 질문 글 줄바꿈(nowrap · min-width · 표 셀 원인 찾기) · m390 포함 |
-| 54 | balloon roundResult | 펌프가 가운데 정렬이 아님 · "점수 오르는 범위도 정해 주고 알려 줘" | 펌프 가운데 · 점수 규칙(얼마에서 얼마까지 · 어떻게 오르는지)을 도움 줄/결과에 한 줄로 보이게 |
-| 55 | cake play | "소리가 끝까지 난다" — ★ 찬종 확정(2026-10-26): **가리면 소리도 끊는다** | CakeWait.tsx 똑딱 — hideStart 뒤 재생 안 함(점점 작게 규칙 삭제) · lab · ui-check r067 고기 기대값 · PLAY-GUIDE 문구 |
-| 56 | room | 난이도 선택 버튼이 토글이 안 됨 — "눌러도 표기되는 건 선택된 걸로만 보임" | GameSettings.tsx 85~94(마지막 하나는 못 끄게 돼 있다) → 실제로 재현(PC · m390 · 방장/비방장 · 둘 이상 켠 뒤 끄기)해 원인 확정. 끌 수 없는 경우면 **그 이유가 보이게**(흔들림 + "하나는 남겨야" 안내) · 다른 원인(상태 안 반영 · 서버 설정 echo 지연)이면 고침 |
-| 57 | game:question m390 | 이모티콘 편집 아이콘이 버튼과 그림이 안 맞음 | 모바일에서 아이콘 · 버튼 정렬 고침 · ui-check |
-| 61 | game:reveal m390 | 긴 문제(5760 검도 · **140자**인데도)에서 시간 표시가 줄바꿈 됨(갤럭시 울트라는 안 생김 — 폭 360 쪽 문제) | 아래 ■ 240자 검사와 같이 — 시간 표시는 폭 360 에서도 한 줄 고정 |
-| 64 | circle final | "원 말고 다른 도형 해도 재밌을 듯" | 구현 안 함 — 13 A96 에 "아이디어(보류 · 설계 대기함)" 로 적고 handle note "보류" |
-| 58 · 59 · 60 · 62 · 63 | game | 문항 제보 5(3813 국화 분야 · 1438 민화 · 1619 지열 발전 "문제가 힌트같음" · 500 독일어 · 2096 타이브레이크 "무슨 게임인지") | **내용은 안 건드림** — handle note "V028 판정 대상(설계 브리핑) · 고침은 G023" |
+■ 먼저 읽기
+- **docs/19 §5 전체**(비율 표 · 가장 어려운 칸 규칙 · 가중 · 그대로 두는 규칙 · 저장) · §9-2 씀 ① · 13 **CV-113**(가장 어려운 칸 공급 — 고급 5등급 × 알가치 3 = 15 뿐 · 설계 결정: **폴백은 §5 그대로(3 → 2 → 한 등급 아래) · 비율을 따로 두지 않는다** · 경험 규칙이 사람마다 다른 문제를 주므로 자연히 돌아간다 — CV-113 줄 끝에 "설계 결정 — 그대로 · R069" 를 MAIN 이 적는다) · V029.txt 2-2 표(등급 × 알가치 수 — 검사 기대값의 근거 · 지금 DB 는 worth NULL)
+- `shared/src/settings.ts`(DifficultyTier · DIFFICULTY_TIERS · DEFAULT_DIFFICULTIES · difficultyScores · formatDifficulties · RoomSettingsInput.difficulties · validateRoomSettings) · `server/src/db/questions.ts`(difficultyWhere · filterWhere · PoolFilter · countAvailableQuestions) · `server/src/db/questionPool.ts`(PoolQuestion — difficulty_score · worth 가 없다 → 더한다) · **`server/src/game/select.ts`**(selectNextQuestion — 3단계 경험 규칙 · 정답 중복 · 흘림 · weightedPick · 순수 함수 · 단위 테스트) · `server/src/game/question.ts`(92행 selectNextQuestion 호출 · game.stage3Count) · `server/src/rooms/types.ts`(58 · 474 difficulties) · `server/src/lobby/info.ts` · `server/src/socket/index.ts` · `server/src/db/stats.ts`(byTier) · `client/src/GameSettings.tsx`(242~269 난이도 버튼 · 마지막 하나 못 끄기 R068) · `client/src/Lobby.tsx` · `client/src/Question.tsx`(227 뱃지 "난이도 하·중") · `client/src/useRoom.ts` · `scripts/bot.mjs` 3790~3890(난이도 검사) · ui-check 묶음(설정 화면)
+- docs/04-PROTOCOL 3장(선정 알고리즘 — D-054) · 01 4장 136행(난이도 매핑) · 8장 · PLAY-GUIDE 38 · 68행 · R068.txt 0절 "240자 표" 와 "측정 메모"(QuestionText 자동 맞춤이 재는 때에 따라 19px/15.2px 로 갈림)
 
-■ 정답 공개 평가 — 3단계 버튼 · 1P (찬종 2026-10-26 · docs/19 §7 — ★ 옛 안(1~5 난이도 설문 팝업 · 설문 패널 · 알가치 두 번 묻기 · question_difficulty_votes · survey:report)은 **없앤다** · 찬종: "어차피 글까지 써 주는 사람은 없더라 · 정답 공개 시간에만 방금 문제 어땠냐고 3단계로 묻고 1P · 자세한 의견은 제보란")
-- 지금 있는 것을 고친다: `question_feedback`(vote 1/−1 · reasons · comment · 문항당 계정당 한 줄) · client `QuestionFeedback.tsx`(RevealFeedback = 정답 공개 중 👍👎 · ResultFeedback = 결과 화면 · LastGameFeedback = 로비 "지난 판 문제 평가") · `server/src/http/feedbackRoutes.ts` · `feedback:report` · `feedback:adopt`(+5P 는 그대로).
-- 마이그레이션 **0026**: `question_feedback.vote` CHECK → (−1 · 0 · 1) · `question_feedback.at_reveal boolean not null default false` · `question_feedback.rate_grant_id bigint null references point_grants(id) on delete set null` · ★ `questions.worth smallint null check (worth between 1 and 3)`(알가치 — docs/19 §9 · 값은 G025 가 넣는다 · R068 은 열만 · 코드에서 읽지 않는다). 실 DB 적용은 백업 뒤 · 관례대로. survey_panel · question_difficulty_votes 는 만들지 않는다.
-- 정답 공개 화면(game:reveal · 공개 시간 동안): 정답 줄 아래 한 줄 **"방금 문제 어땠어요? (+1P)"** + 버튼 셋 **👍 좋아요 · 😐 그냥 · 👎 별로**(이름은 이것으로 — 더 자연스러운 이름이 있으면 0절에 둘 다 적고 하나로) · 누르면 그 자리가 **"+1P 고마워요"** 로 바뀜(바꾸기는 공개 시간 안에서만 · 포인트는 한 번) · 다음 문제로 넘어가면 사라짐 · 모바일에서 입력칸·힌트를 가리지 않게(m390 캡처). 봇·검사 계정은 버튼이 떠도 포인트 0(BOT 규칙 그대로).
-- 포인트 규칙(서버가 판단 · 클라이언트 시각 안 믿음): 표가 들어온 순간 그 방이 **QUESTION_RESOLVED 이고 그 문항이 현재 문항**이면 at_reveal=true → **1P**(point_grants reason **`rate`** 신설 · ref = question_feedback.id · 토스트·잔액 갱신은 기존 지급 길) · **하루 상한 없음**(찬종 "1포인트씩") · 같은 문항 두 번 없음(rate_grant_id 가 있으면 다시 안 줌) · 공개 시간 밖(결과 화면 · 로비 지난 판 평가 · 늦게 온 요청)은 저장만 하고 **0P**(at_reveal=false · 찬종: "정답 공개 시간 외에 평가한 문제들은 포인트 안 준다").
-- 결과 화면 · 로비 "지난 판 문제 평가": 버튼을 같은 3단계(👍/😐/👎)로 · reasons · comment 는 그대로 두되 머리에 **"자세한 의견은 제보에 적어 주세요(채택되면 +5P)"** 한 줄 + 제보 창 여는 링크 · 0P 라고 작게 표시("공개 시간에 누르면 +1P").
-- 보고 `npm run feedback:report -- --no-bots` 확장: 문항별 👍/😐/👎 수 · 그중 at_reveal 수 · ★ **찬종 표(lonysg · lonysg2)는 따로 열** — 찬종은 "절대 신뢰"(실수는 제보 코멘트로 교정) · **검토 후보** 절: 찬종 표가 없고 남의 표가 ≥ 2 인 문항 중 👎 ≥ 👍 + 1 인 것 · 한 계정이 한 판에서 전부 같은 버튼(장난 의심 · 그 계정 표는 검토 후보에서 뺌) · (questions.worth 가 채워진 뒤) worth 3 인데 👎 > 👍 · worth 1 인데 👍 ≥ 2 → 설계가 찬종에게 가져간다(자동 반영 없음).
-- 문구(그대로 쓴다): 공개 "방금 문제 어땠어요? (+1P)" · 누른 뒤 "+1P 고마워요" · 결과·로비 "공개 시간에 누르면 +1P · 자세한 의견은 제보에 적어 주세요(채택되면 +5P)". PLAY-GUIDE 한 절 갱신(옛 👍👎 설명 교체).
-- 봇 시나리오: 공개 중 표 → 1P · 공개 뒤 같은 문항 다시 → 저장만 · 결과 화면 표 → 0P · 두 번 눌러도 잔액 +1.
-- 그림: 300-rate-{reveal · after · result · m390}.png.
+■ A. 설정 모델 — 초급 · 중급 · 고급 (shared → server → client)
+- `shared/src/settings.ts`: `DifficultyLevel = 'beginner' | 'intermediate' | 'advanced'` · `DIFFICULTY_LEVELS`(순서 = 표기 순서 · label 초급 · 중급 · 고급 · 한 줄 설명(19 §5 문구 — 화면에 맞춰 다듬되 뜻 유지) · `ratio: [p1,p2,p3,p4,p5]`(초급 30/50/20/0/0 · 중급 10/30/40/20/0 · 고급 5/15/30/30/20) · `scores`(비율 > 0 인 등급 — 초급 1~3 · 중급 1~4 · 고급 1~5) · `hardest`(초급 3 · 중급 4 · 고급 5)) · **기본값 중급**(찬종) · `RoomSettingsInput.difficulties` → `level: DifficultyLevel` · `validateRoomSettings`: `level` 검증 · ★ **옛 `difficulties` 배열이 오면 받아서 옮긴다**(hard 포함 → advanced · easy 만 → beginner · 그 밖 → intermediate — 다시 하기 이어받기 · 옛 클라이언트 · 봇) · `formatDifficulties` → `formatLevel`(초급/중급/고급) · `planGrades(count, level, random)`: 문항 수 × 비율 → 등급별 수(큰 나머지 순 반올림 · 20이면 초급 6·10·4 / 중급 2·6·8·4 / 고급 1·3·6·6·4 · 예시를 단위 테스트로) → **등급 목록을 무작위로 섞는다**(오름차순 아님 — 찬종 "하에서 5 는 당황 · 상에서 1 은 괜찮다" 는 비율로 이미 지켜진다) · 순수 함수 · 테스트.
+- 서버 `PoolFilter.difficulties` → `level` · `difficultyWhere` 는 그 level 의 scores 로(초급은 1~3 전부 읽는다 — 폴백 "한 등급 아래" 가 같은 풀 안에서 돌아야 한다) · `countAvailableQuestions` 는 그대로 **전체 수**(Q-21 안내 · "문제가 부족합니다" 는 전체가 모자랄 때만 — 19 §5) · rooms/types · lobby/info · socket 핸들러 · games 에 이 판의 level 기록(지금 difficulties 를 어디에 남기는지 따라) · `stats.ts` byTier 는 **등급 1~5 다섯 칸**(label '1'~'5' · 프로필 전적 화면은 "등급별 맞힌 수" 작은 표 — 하/중/상 글자 없앰).
+- 클라이언트: 설정의 난이도 = **버튼 셋 중 하나**(라디오 꼴 · 켜고 끄기 아님 · "하나는 남겨야 해요" 안내와 흔들림 제거 · 버튼 밑 한 줄 설명은 고른 것만 보이거나 셋 다 작은 글자 — 360 폭에서 두 줄 안) · 게스트는 고른 것만 진하게(분야와 같은 꼴) · Question.tsx 뱃지 "난이도 중급" · 결과 화면 · 로비 설정 요약 · 다시 하기 · PLAY-GUIDE.
+- 봇 `scripts/bot.mjs` 난이도 검사(3790~) 를 level 로 다시 쓴다 + 옛 `difficulties` 를 보내면 옮겨지는 검사 한 줄 · ui-check 설정 묶음.
 
-■ photoyear 미니게임 (docs/18 §8 · C82 ③ — 데이터 100 verified 가 `data/minigame/photoyear/items.json` 에 있다 · 적재 안 됨)
-- 규칙: 사진 한 장 → **연도 4자리 입력**(모바일 숫자 키패드 · 1800~올해 범위) · 시간은 photo 게임과 같게 · 점수 = **오차 |입력 − year| 작은 순**(순위 점수는 다른 미니게임 꼴) · `yearKind circa` 는 `yearRange` 안이면 오차 0 · 공개 때 정답 연도 · title · place · 각자 오차 · attribution(photo 와 같은 자리) · as_of 머리줄 없음(as_of null).
-- 코드: shared MINIGAME_KEYS · server defs(RoundSpec) · 클라이언트(PhotoGuess 꼴 재사용 가능하면) · 봇 시나리오 · 미니게임 카탈로그 설명 · 미니게임만 모드 · 연습.
-- 적재: `minigame-load.mjs` 에 photoyear 추가(GAMES_ALL) → 백업 → `--game photoyear --dry-run` → `--apply`(100 · 그림은 이 PC assets/minigame 에 이미 있다 · `backups/minigame-g021.zip`) · difficulty 는 GEN 값 그대로(CV-73 (a)).
-- 그림: 310-photoyear-{play · reveal · result}-{1536 · m390}.png.
+■ B. 선정 — 등급 계획 + 알가치 가중 (`server/src/game/select.ts` 안에서 · 순수 함수 유지 · await 없음)
+- 게임 시작 때 `planGrades` 로 **등급 계획 배열**(길이 = 문항 수)을 만들어 game 에 둔다(다시 하기는 새로 섞음 · 중간 참가 · 조기 종료는 그대로). 문항 i 의 **목표 등급 g** = 계획[i].
+- `selectNextQuestion` 입력에 `targetGrade · level(hardest) · worthWeight` 를 더하고, 후보를 고를 때:
+  ① **후보 집합** = 지금 규칙(경험 3단계 · 정답 중복 · 흘림)으로 걸러진 것 가운데 `difficulty_score === g`.
+  ② **가장 어려운 칸**(g === hardest): worth 3 인 것만 → 비면 worth 2(NULL 포함) → 비면 **g−1 등급**에서 같은 순서(3 → 2) → 그래도 비면 ③ 의 폴백. worth 1 은 이 칸에 넣지 않는다.
+  ③ **나머지 칸**: 가중 = 기존 가중(미경험자 수) × (worth 3 → 2 · worth 2 또는 NULL → 1) · **worth 1 은 3·2 후보가 하나도 없을 때만**(그때는 ×1).
+  ④ **등급 폴백**: g 에 후보가 없으면 g−1 → g−2 … → 그다음 g+1 …(level 의 scores 안에서만 · 아래 먼저 — 19 §5) · 전부 없으면 지금의 "문제 부족" 경로 그대로.
+  ⑤ 경험 규칙의 단계(1 → 2 → 3)는 **등급보다 우선**한다(04 3장 · D-054 — 전원이 아는 문제보다 다른 등급의 안 본 문제가 먼저). 즉 순서는: 단계 1 안에서 ①~④ → 없으면 단계 2 안에서 ①~④ → 단계 3.
+- `game_questions` 에 목표 등급 · 실제 등급 · worth 를 남긴다(열이 없으면 로그 한 줄로 — 마이그레이션은 하지 않는다 · 열 추가가 꼭 필요하면 0절에 제안만) · 콘솔 한 줄 "#id (등급 g→실제 s · 알가치 w · 선정 n단계 · 폴백 여부)".
+- **단위 테스트**(select.test): 계획 수 20 셋 · 섞임 · 가장 어려운 칸 worth 3 만 · 3 이 없으면 2 · 2 도 없으면 g−1 · worth 1 은 예비 · NULL = 2 · 폴백 순서(아래 먼저) · 경험 단계 우선 · 흘림·정답 중복 그대로 · 문항 수 1 · 3 · 50 · 200 의 계획 합이 문항 수.
 
-■ 긴 질문 검사 (QLEN 200 → 240 올릴 수 있는가 — 15 §3-1 QLEN 블록은 SYNC · 설계가 고친다 · MAIN 은 결과만)
-- 제보 문항 5760(140자) · 활성 중 가장 긴 5332(198자) · **인위 240자 질문**(검사 DB 에 넣음)으로 game:question · game:reveal 을 **360 폭(m390) · 1536 · 2560** 에서 캡처 — 줄 수 · 글자 크기 · 시간 표시 한 줄 유지(#61) · 입력칸 · 힌트 줄이 **스크롤 없이** 보이는지 · 야간 테마.
-- 결과 표(폭 × 길이 140/198/240 → 줄 수 · 넘침 여부 · 시간 표시 줄바꿈) + 권고 한 줄(240 가능 / 220 까지 / 200 유지 · 조건). 글자 크기를 줄이거나 레이아웃을 바꾸면 **240자가 되는지도** 따로.
-- 그림: 320-qlen-{140 · 198 · 240}-{m390 · 1536}.png.
+■ C. 긴 지문 360 폭 글자 규칙 + 자주 쓰는 이모티콘 탭
+- R068 권고(240자 가능 — 360 에서 150자 넘는 지문은 15px): `QuestionText` 자동 맞춤을 **재는 때에 안 흔들리게** — 글자 수 · 폭으로 정하는 결정적 규칙(예: 폭 ≤ 400 이고 150자 초과 → 15px · 100~150 → 17px · 그 밖 19px — 수치는 R068 표에 맞춰 MAIN 이 정하고 0절에) · PC 는 그대로 · 검사 DB 의 240자 문항으로 m360 9줄 · 입력칸 보임 재확인(320-qlen-240-m360 다시). 15 §3-1 QLEN 블록은 설계가 G025 에서 240 으로 올린다 — MAIN 은 화면만.
+- **#70 자주 쓰는 이모티콘 탭**: 이모티콘 고르기 창 첫 탭 "자주"(최근 보낸 것 순 · 12 · localStorage · 비어 있으면 탭 숨김 또는 "아직 없어요") · 특별 이모티콘도 포함 · 단축키 자리 설정과 무관 · `reports:handle --id 70 --note "R069 …"`.
 
-■ 할 일 순서 · 커밋: A 제보 UI 7(52 · 53 · 54 · 55 · 56 · 57 · 61) + 찬종 말 ①②③(미니게임 사진 없음 제외 · 사진 잘림 · 이모티콘 검색창) + #65 · 66 · 68 · 69 · 71 과 240자 검사 → B 정답 공개 평가(마이그레이션 · 서버 · 공개 화면 · 결과·로비 · 포인트 · 보고) → C photoyear(게임 · 적재) → D 문서 · 끝 점검. 커밋 묶음마다 · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` · 내 파일만 · fetch → rebase → push.
-■ 끝 점검(단계별 · 10 48절 표): typecheck · vitest · build · smoke · 봇(minigame · mgquiz · report · 새 photoyear · 평가 1P 봇 — 패널 계정만 창을 받는지 · 1초 연타 포인트 0 · 하루 10P 상한) · ui-check r068(제보 7 · 설문 · photoyear · 240자) + r067(고기 — 가림 뒤 소리 0) · wrap-audit · 메모리.
-■ 하지 말 것: questions · question_answers 쓰기(minigame_items 의 active=false 는 ① 에서 허용 — 백업 · undo) · 문항 내용 고치기 · V028/G022 파일(audit/v028-* · g022-* · v028-raw) · 15 · 19 수정 · 실 서버 재시작 · 설문 패널 계정 켜기 · 로비 몰아서 설문 · 원 게임 다른 도형 구현 · force push.
-■ 확인할 것 (원칙 7): 미처리 제보 20(#52~64 계정 4463 lonysg2 · #65~71 계정 483 lonysg) · R067 끝 번호 D-300 · A95 · 10 47절 · 마이그레이션 마지막 0025 · CakeWait.tsx 에 hideStart 뒤 점점 작게 규칙 · GameSettings.tsx 85~94 마지막 하나 못 끄기 · photoyear items.json 100 verified · GAMES_ALL 에 photoyear 없음 · 5760 질문 140자 · 가장 긴 활성 5332 198자 — 다르면 0절에.
-■ 보고 `ai-out/R068.txt`: 0절 찬종이 볼 것(제보 13 표 · 평가 버튼 그림 · photoyear 그림 · 240자 표와 권고 · 난이도 버튼 원인 한 줄) · 끝 점검 표 · 고친 문서.
-■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄 "R068 끝 — 다음 브리핑 대기".
+■ D. 문서 · 끝 점검
+- 문서: 01 4장 난이도 매핑 줄(초급·중급·고급 비율 · 알가치 가중) · 8장(출제 규칙) · 16-R069 · 04 3장 선정 알고리즘(등급 계획 · 알가치 · 폴백 순서) · PLAY-GUIDE 38 · 68행 · 19 §5 머리에 "적용 R069(날짜 · 커밋)" 한 줄(본문은 설계 몫) · 07 D-307~ · 13 A97(체감 — 초급·중급·고급 이름 · 설명 · 고급 한 판에서 "모르는데 알아 둘 만한" 문제가 나오는지 · 등급별 분포) + CV-113 줄 끝 · 10 49절 · 05 · 06 · README R 표.
+- 끝 점검(단계별 · 10 49절 표): typecheck · vitest(select 새 테스트 포함) · build · smoke · 봇(설정 level 셋 · 옛 difficulties 옮김 · 다시 하기 이어받음 · 게스트 권한 · ★ **비율 실측**: quizweb_test 에 등급 1~5 · worth 1/2/3/NULL 이 고루 있는 seed 를 넣고 20문항 중급 판을 돌려 실제 등급 분포가 계획 2·6·8·4 와 같은지(폴백 없을 때) · 고급 판의 5등급 칸이 worth 3 에서만 나오는지 · worth 3 을 비우면 2 로 · 전부 비우면 4등급으로 내려오는지 · 흘림·정답 중복 검사 그대로) · ui-check r069(설정 화면 PC 5크기 + m390 · 뱃지 · 결과 · 프로필 전적 · 240자 m360 · 이모티콘 "자주" 탭) · wrap-audit · 메모리.
+- ★ 검사 DB 에 worth 를 넣는 seed 는 `npm run db:test-init` 의 최소 seed 에 더한다(실 DB 는 안 건드림).
+■ 하지 말 것: 실 DB 쓰기 전부(마이그레이션 · questions · worth) · 15 · 19 본문 수정(19 §5 머리 한 줄만) · 문항 내용 · G024 파일(audit/g024-* · g024-raw) · 13 새 CV 줄(A97 과 CV-113 줄 끝만) · 실 서버 재시작 · 사람이 하는 동안 끝 점검(검사 DB 분리됐으니 봇·ui-check 는 되지만 메모리 규칙) · force push · `worth_knowing`(옛 R011 열 — worth 와 다르다 · 건드리지 않음).
+■ 커밋: 묶음마다(A shared+server+client · B 선정+테스트 · C 화면 둘 · D 문서·끝 점검) · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+■ 확인할 것 (원칙 7): R068 끝 번호 D-306 · A96 · 10 48절 · 마이그레이션 마지막 0026(`questions.worth smallint null` 있음 · 값 전부 NULL · 옛 `worth_knowing` 열 따로) · 활성 6,506(G024 가 6686 비활성 — 6,507 일 수도) · 등급 분포 1:572 · 2:1,707 · 3:2,560 · 4:1,369~1,370 · 5:298 · DEFAULT_DIFFICULTIES = 셋 전부 · select.ts 순수 함수 · 미처리 제보 2(#70 · #64) — 다르면 0절에.
+■ 보고 `ai-out/R069.txt`: 0절 찬종이 볼 것(설정 화면 그림 PC · m390 · 선정 규칙 한 문단 · 봇 비율 실측 표(계획 vs 실제 · 폴백 수) · 지문 글자 규칙 표 · "자주" 탭 그림 · game_questions 기록 방식) · 끝 점검 표 · 고친 문서.
+■ ★ 이어서: 끝나면 멈춘다. 터미널 마지막 줄 "R069 끝 — 다음 브리핑 대기".
 ■ 답변: 한국어 · 터미널 5줄 이내.
