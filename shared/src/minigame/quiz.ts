@@ -10,8 +10,8 @@
 
 import { seededRandom } from '../balance.js';
 
-export type QuizMinigameKey = 'price' | 'worldprice' | 'photo' | 'estimate' | 'which';
-export const QUIZ_MINIGAME_KEYS: readonly QuizMinigameKey[] = ['price', 'worldprice', 'photo', 'estimate', 'which'];
+export type QuizMinigameKey = 'price' | 'worldprice' | 'photo' | 'estimate' | 'which' | 'photoyear';
+export const QUIZ_MINIGAME_KEYS: readonly QuizMinigameKey[] = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear'];
 
 /** 한 미니게임의 문항 수 · 문항당 입력 시간(ms) · 정답 공개(ms) · 문항 사이 준비(ms) */
 /**
@@ -29,7 +29,24 @@ export const QUIZ_SPEC: Record<QuizMinigameKey, { items: number; playMs: number;
   photo: { items: 5, playMs: 20_000, revealMs: 3_000, readyMs: 1_500 },
   estimate: { items: 5, playMs: 12_000, revealMs: 3_000, readyMs: 1_500 },
   which: { items: 10, playMs: 6_000, revealMs: 1_500, readyMs: 200 },
+  // ★ R068 — 사진 연도: 시간은 사진 맞히기와 같게(20초) · 공개는 제목 · 장소 · 각자 오차가 있어 조금 길게
+  photoyear: { items: 5, playMs: 20_000, revealMs: 4_000, readyMs: 1_500 },
 };
+
+/** ★ R068 — 사진 연도 입력 범위(1800 ~ 올해) */
+export const PHOTOYEAR_MIN = 1800;
+export function photoyearMax(nowMs: number = Date.now()): number {
+  return new Date(nowMs).getUTCFullYear();
+}
+/** ★ R068 — 사진 연도 오차(년): |입력 − year| · 대략(circa)이면 yearRange 안은 0 · 밖은 가까운 끝까지 */
+export function photoyearError(guess: number, year: number, range: readonly [number, number] | null | undefined): number {
+  if (range && range.length === 2) {
+    const [a, b] = range;
+    if (guess >= a && guess <= b) return 0;
+    return guess < a ? a - guess : guess - b;
+  }
+  return Math.abs(guess - year);
+}
 /** 연습 판(골라 하기) 문항 수 — 더미 */
 export const QUIZ_PRACTICE_ITEMS = 3;
 /** 사진 — 확대 · 모자이크가 풀리는 시간 */
@@ -206,6 +223,12 @@ export const QUIZ_DUMMY = {
     { id: 'dummy-estimate-1', question: '연습 문제 — 연습용 상자의 무게는?', value: 42, unit: 'kg', displayDecimals: 0, note: null, explanation: '연습용 가짜 값이에요.' },
     { id: 'dummy-estimate-2', question: '연습 문제 — 연습용 막대의 길이는?', value: 3.5, unit: 'm', displayDecimals: 1, note: null, explanation: '연습용 가짜 값이에요.' },
     { id: 'dummy-estimate-3', question: '연습 문제 — 연습 마을의 인구는?', value: 12_000, unit: '명', displayDecimals: 0, note: null, explanation: '연습용 가짜 값이에요.' },
+  ],
+  // ★ R068 — 연습: 도형 그림 · 가짜 연도(스포 방지)
+  photoyear: [
+    { id: 'dummy-photoyear-1', year: 2000, yearRange: null, title: '연습용 그림 — 정답 2000년', place: '연습 마을', shape: 'circle' },
+    { id: 'dummy-photoyear-2', year: 1950, yearRange: [1945, 1955], title: '연습용 그림 — 1945~1955년이면 오차 0', place: '연습 마을', shape: 'triangle' },
+    { id: 'dummy-photoyear-3', year: 1900, yearRange: null, title: '연습용 그림 — 정답 1900년', place: '연습 마을', shape: 'square' },
   ],
   which: [
     { id: 'dummy-which-1', kind: 'bigger', stem: '연습 — 둘 중 더 큰 수는?', a: { label: '연습 A (7)', value: 7 }, b: { label: '연습 B (3)', value: 3 }, answer: 'a', unit: '' },

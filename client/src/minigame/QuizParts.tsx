@@ -136,6 +136,7 @@ export function NumberInput({
   placeholder,
   allowZero = false,
   max,
+  year,
 }: {
   view: MinigameView;
   socket: { emit: (ev: string, p: unknown) => void };
@@ -146,6 +147,8 @@ export function NumberInput({
   /** ★ R053 — 0 도 받는다 · 최댓값(평균의 2/3 — 0~100) */
   allowZero?: boolean;
   max?: number;
+  /** ★ R068 — 사진 연도: 숫자 4자리(쉼표 없음) · 범위 안만 보낸다(모바일 숫자 키패드) */
+  year?: { min: number; max: number };
 }) {
   const key = `${view.token}:${view.roundIndex}`;
   const [text, setText] = useState('');
@@ -159,8 +162,9 @@ export function NumberInput({
     if (canPlay) window.setTimeout(() => !isReportOpen() && ref.current?.focus({ preventScroll: true }), 30);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, canPlay]);
-  const raw = parseNumberInput(text, allowZero);
-  const value = raw !== null && (max === undefined || raw <= max) ? raw : null;
+  const raw = year ? (/^\d{4}$/.test(text) ? Number(text) : null) : parseNumberInput(text, allowZero);
+  const value = raw !== null && (max === undefined || raw <= max) && (!year || (raw >= year.min && raw <= year.max)) ? raw : null;
+  const yearOut = year && /^\d{4}$/.test(text) && value === null;
   const submit = () => {
     if (!canPlay || mine || value === null) return;
     setSent({ key, value });
@@ -179,15 +183,17 @@ export function NumberInput({
         <input
           ref={ref}
           className="quiz-num-input mono"
-          size={8}
+          size={year ? 5 : 8}
+          maxLength={year ? 4 : undefined}
+          pattern={year ? '[0-9]*' : undefined}
           inputMode={allowDecimal ? 'decimal' : 'numeric'}
           autoComplete="off"
           enterKeyHint="done"
-          value={mine ? formatNumberInput(String(mine.value), allowDecimal) : text}
+          value={mine ? (year ? String(mine.value) : formatNumberInput(String(mine.value), allowDecimal)) : text}
           disabled={!canPlay || Boolean(mine)}
           placeholder={view.spectating ? '구경 중' : placeholder}
           aria-label="숫자 입력"
-          onChange={(e) => setText(formatNumberInput(e.target.value, allowDecimal))}
+          onChange={(e) => setText(year ? e.target.value.replace(/\D/g, '').slice(0, 4) : formatNumberInput(e.target.value, allowDecimal))}
           onKeyDown={(e) => {
             if (e.key === 'Enter') e.stopPropagation();
           }}
@@ -199,7 +205,9 @@ export function NumberInput({
           </button>
         )}
       </div>
-      <p className="quiz-num-help dim">{mine ? '보냈어요! 정답 공개를 기다리는 중…' : view.spectating ? '구경 중이에요' : ''}</p>
+      <p className={`quiz-num-help${yearOut ? ' bad' : ' dim'}`}>
+        {mine ? '보냈어요! 정답 공개를 기다리는 중…' : view.spectating ? '구경 중이에요' : yearOut && year ? `${year.min} ~ ${year.max} 사이로 적어 주세요` : ''}
+      </p>
     </form>
   );
 }

@@ -9,52 +9,50 @@
 //   (나) 결과 화면 — FeedbackList: 문제 번호 · 질문 앞 60자(복사 막기) · 정답 · 👍/👎 · 사유 칩 · 기타 의견(≤200자 · 칸을 벗어나면 저장).
 //   (다) 로비 — "지난 판 문제 평가" 링크 → 같은 목록을 팝업으로(FeedbackPopup).
 // ★ 포인트 보상 없음 · 미니게임 문항은 넣지 않는다(퀴즈 문제만).
+// ★★★ R068 (찬종 2026-10-26 · docs/19 §7) — 3단계 👍 좋아요 · 😐 그냥 · 👎 별로(RATE_CHOICES) · 다시 눌러 취소는 없앴다(바꾸기만).
+//   (가) 공개 화면: "방금 문제 어땠어요? (+1P)" → 누르면 그 자리가 "+1P 고마워요"(포인트는 서버가 판단 — 공개 중 첫 평가 한 번) · 사유 칩은 공개 화면에서 뺐다.
+//   (나)(다) 결과 · 로비: 같은 3단계(0P) · 머리에 "공개 시간에 누르면 +1P · 자세한 의견은 제보에 적어 주세요(채택되면 +5P)" + 제보 링크 · 👎 사유 · 의견 그대로.
+//   결과 화면 목록은 늘 접힌 채로 시작(찬종 #68) · 펼침은 기억(localStorage) · 접혀 있어도 평가 수가 보인다.
 // =============================================================================
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ChevronDown, ChevronRight, ClipboardList, ThumbsDown, ThumbsUp } from 'lucide-react';
-import { FEEDBACK_ADOPT_POINTS, FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS } from '@quiz/shared';
+import { ChevronDown, ChevronRight, ClipboardList } from 'lucide-react';
+import { FEEDBACK_ADOPT_POINTS, FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS, RATE_CHOICES, RATE_POINTS } from '@quiz/shared';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { fetchGameFeedback, postQuestionFeedback, type FeedbackItem } from './api.js';
 import { usePopup } from './popup.js';
-import { QNo, QReportButton } from './AppReport.js';
+import { QNo, QReportButton, useOpenReportAt } from './AppReport.js';
 import { useUiMode } from './uiMode.js';
 
-type Vote = 1 | -1 | null;
+type Vote = 1 | 0 | -1 | null;
 
 /** 누를 때 포커스가 버튼으로 가지 않게 — 입력창(답안)과 휴대폰 키보드를 그대로 둔다 */
 const keepFocus = (e: React.MouseEvent) => e.preventDefault();
 
-/** 👍 / 👎 두 버튼 */
-function VoteButtons({ vote, onVote, compact }: { vote: Vote; onVote: (v: 1 | -1) => void; compact?: boolean }) {
+/** ★ R068 — 👍 좋아요 · 😐 그냥 · 👎 별로 (compact = 그림만) */
+function VoteButtons({ vote, onVote, compact }: { vote: Vote; onVote: (v: 1 | 0 | -1) => void; compact?: boolean }) {
   return (
-    <span className="fb-votes">
-      <button
-        type="button"
-        className={vote === 1 ? 'fb-vote up on' : 'fb-vote up'}
-        aria-pressed={vote === 1}
-        aria-label="좋아"
-        title="좋아"
-        onMouseDown={keepFocus}
-        onClick={() => onVote(1)}
-      >
-        <Icon icon={ThumbsUp} />
-        {!compact && <span className="fb-vote-lbl">좋아</span>}
-      </button>
-      <button
-        type="button"
-        className={vote === -1 ? 'fb-vote down on' : 'fb-vote down'}
-        aria-pressed={vote === -1}
-        aria-label="별로"
-        title={`별로 — 사유·의견이 채택되면 보너스 ${FEEDBACK_ADOPT_POINTS}P`}
-        onMouseDown={keepFocus}
-        onClick={() => onVote(-1)}
-      >
-        <Icon icon={ThumbsDown} />
-        {!compact && <span className="fb-vote-lbl">별로</span>}
-      </button>
+    <span className="fb-votes" role="group" aria-label="방금 문제 평가">
+      {RATE_CHOICES.map((c) => (
+        <button
+          key={c.vote}
+          type="button"
+          className={`fb-vote ${c.vote === 1 ? 'up' : c.vote === 0 ? 'mid' : 'down'}${vote === c.vote ? ' on' : ''}`}
+          aria-pressed={vote === c.vote}
+          aria-label={c.label}
+          title={c.label}
+          data-vote={c.vote}
+          onMouseDown={keepFocus}
+          onClick={() => onVote(c.vote)}
+        >
+          <span className="fb-vote-emoji" aria-hidden="true">
+            {c.emoji}
+          </span>
+          {!compact && <span className="fb-vote-lbl">{c.label}</span>}
+        </button>
+      ))}
     </span>
   );
 }
@@ -95,6 +93,9 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
   const [reasons, setReasons] = useState<string[]>(init?.reasons ?? []);
   const [comment, setComment] = useState<string>(init?.comment ?? '');
   const [error, setError] = useState(false);
+  // ★ R068 — 이번에 받은 포인트(공개 중 첫 평가 1P) · 응답이 왔나
+  const [granted, setGranted] = useState(0);
+  const [answered, setAnswered] = useState(false);
   const saved = useRef({ vote: init?.vote ?? null, reasons: init?.reasons ?? [], comment: init?.comment ?? '' });
   const save = useCallback(
     (next: { vote: Vote; reasons: string[]; comment: string }) => {
@@ -103,8 +104,14 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
       setReasons(next.reasons);
       setError(false);
       postQuestionFeedback({ questionId, gameId, vote: next.vote, reasons: next.reasons, comment: next.comment.trim() || null })
-        .then(() => {
+        .then((r) => {
           saved.current = next;
+          setAnswered(true);
+          if (r.granted > 0) {
+            setGranted((g) => g + r.granted);
+            // ★ 잔액 다시 읽기(포인트샵 빨간 점 · 프로필) — 지급 토스트와 같은 길
+            window.dispatchEvent(new Event('qw:grants'));
+          }
         })
         .catch(() => {
           setVote(prev.vote);
@@ -115,11 +122,11 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
     },
     [gameId, questionId],
   );
-  const onVote = (v: 1 | -1) => {
-    // 같은 것을 다시 누르면 취소 · 👍 로 바꾸면 사유 · 의견은 버린다(서버도 같다)
-    if (vote === v) save({ vote: null, reasons: [], comment: '' });
-    else save({ vote: v, reasons: v === -1 ? reasons : [], comment: v === -1 ? comment : '' });
-    if (v === 1 || vote === v) setComment('');
+  const onVote = (v: 1 | 0 | -1) => {
+    // ★ R068 — 같은 것을 다시 눌러도 그대로(취소 없음) · 👎 가 아니면 사유 · 의견은 버린다(서버도 같다)
+    if (vote === v) return;
+    save({ vote: v, reasons: v === -1 ? reasons : [], comment: v === -1 ? comment : '' });
+    if (v !== -1) setComment('');
   };
   const onToggle = (code: string) => {
     const next = reasons.includes(code) ? reasons.filter((c) => c !== code) : [...reasons, code];
@@ -129,16 +136,20 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
     if (vote !== -1 || comment.trim() === (saved.current.comment ?? '').trim()) return;
     save({ vote: -1, reasons, comment });
   };
-  return { vote, reasons, comment, setComment, error, onVote, onToggle, commitComment };
+  return { vote, reasons, comment, setComment, error, granted, answered, onVote, onToggle, commitComment };
 }
 
 // ── (가) 정답 공개 화면 ─────────────────────────────────────────────────────────
+/** ★ R068 — "방금 문제 어땠어요? (+1P)" + 3단계 → 누르면 "+1P 고마워요"(바꾸기는 공개 시간 안에서만 · 포인트는 한 번) */
 export function RevealFeedback({ gameId, questionId }: { gameId: string; questionId: string }) {
   const f = useFeedback(gameId, questionId);
+  const picked = f.vote !== null;
   return (
-    <span className={f.vote === -1 ? 'reveal-fb down' : 'reveal-fb'} data-fb-question={questionId}>
-      <VoteButtons vote={f.vote} onVote={f.onVote} compact={f.vote === -1} />
-      {f.vote === -1 && <ReasonChips reasons={f.reasons} onToggle={f.onToggle} />}
+    <span className={picked ? 'reveal-fb picked' : 'reveal-fb'} data-fb-question={questionId} data-rate-granted={f.granted || undefined}>
+      <span className="reveal-fb-ask" data-rate-ask aria-live="polite">
+        {!picked ? `방금 문제 어땠어요? (+${RATE_POINTS}P)` : f.granted > 0 ? `+${f.granted}P 고마워요` : f.answered ? '고마워요' : '…'}
+      </span>
+      <VoteButtons vote={f.vote} onVote={f.onVote} compact={picked} />
       {f.error && <span className="fb-err">저장 실패</span>}
     </span>
   );
@@ -235,25 +246,56 @@ export function FeedbackList({ gameId }: { gameId: string }) {
   return <FeedbackListView gameId={gameId} items={items} err={err} />;
 }
 
-/** 결과 화면 — 순위 아래 접이식. ★ PC 는 결과 카드가 남는 높이만 쓰고 목록만 줄어든다(안에서 스크롤)
- *  ★ R058 (A80 · D-252 앞) — PC 는 **기본 접힘**(채팅 칸을 R055 처럼 넓게) · 공개 화면에서 👍/👎 를 하나라도 눌렀으면 펼침 ·
- *    모바일은 그대로 펼침(세로 스크롤). 직접 접고 펼친 것은 그대로 둔다. */
-export function ResultFeedback({ gameId }: { gameId: string }) {
-  const mode = useUiMode();
-  const { items, err } = useGameFeedbackItems(gameId);
-  const [userOpen, setUserOpen] = useState<boolean | null>(null);
-  const voted = !!items?.some((it) => it.vote !== null);
-  const open = userOpen ?? (mode === 'mobile' || voted);
+/** ★ R068 — 결과 · 로비 목록 머리 한 줄: 0P 안내 + 제보 링크 */
+function RateNote() {
+  const openReport = useOpenReportAt();
   return (
-    <div className={open ? 'fb-result open' : 'fb-result'} data-fb-default={userOpen === null ? (open ? 'open' : 'closed') : undefined}>
-      <button type="button" className="fb-result-head" aria-expanded={open} onClick={() => setUserOpen(!open)}>
-        <Icon icon={open ? ChevronDown : ChevronRight} />
-        <Icon icon={ClipboardList} /> 이번 판 문제 평가 <span className="dim fb-sub">별로인 문제를 알려 주세요</span>
-        {/* ★ R059 (D-254) — 접혀 있어도 보이게 머리 줄에 */}
-        <span className="fb-bonus" data-fb-bonus>
-          👎 사유·의견이 채택되면 보너스 포인트를 드려요(채택 1건 {FEEDBACK_ADOPT_POINTS}P)
-        </span>
+    <p className="fb-rate-note dim" data-rate-note>
+      공개 시간에 누르면 +{RATE_POINTS}P · 자세한 의견은{' '}
+      <button type="button" className="link-btn fb-report-link" data-fb-report onClick={() => openReport('menu')}>
+        제보
       </button>
+      에 적어 주세요(채택되면 +{FEEDBACK_ADOPT_POINTS}P)
+    </p>
+  );
+}
+
+const OPEN_KEY = 'qw.fbResultOpen';
+const readOpen = (): boolean => {
+  try {
+    return localStorage.getItem(OPEN_KEY) === '1';
+  } catch {
+    return false;
+  }
+};
+
+/** 결과 화면 — 순위 아래 접이식. ★ PC 는 결과 카드가 남는 높이만 쓰고 목록만 줄어든다(안에서 스크롤)
+ *  ★ R068 (찬종 #68 "결과 화면에서 문제 평가는 기본은 접은 상태로") — 늘 접힌 채로 시작(옛: 모바일 · 평가한 판은 펼침) ·
+ *    직접 펼치면 그 뒤로 펼친 채(localStorage) · 접혀 있어도 머리 줄에 "평가 N/M". */
+export function ResultFeedback({ gameId }: { gameId: string }) {
+  const { items, err } = useGameFeedbackItems(gameId);
+  const [open, setOpenState] = useState<boolean>(readOpen);
+  const setOpen = (v: boolean) => {
+    setOpenState(v);
+    try {
+      localStorage.setItem(OPEN_KEY, v ? '1' : '0');
+    } catch {
+      /* 저장 못 해도 화면은 그대로 */
+    }
+  };
+  const done = items?.filter((it) => it.vote !== null).length ?? 0;
+  return (
+    <div className={open ? 'fb-result open' : 'fb-result'} data-fb-default={open ? 'open' : 'closed'}>
+      <button type="button" className="fb-result-head" aria-expanded={open} onClick={() => setOpen(!open)}>
+        <Icon icon={open ? ChevronDown : ChevronRight} />
+        <Icon icon={ClipboardList} /> 이번 판 문제 평가
+        {items && items.length > 0 && (
+          <span className="mono fb-count" data-fb-count>
+            평가 {done}/{items.length}
+          </span>
+        )}
+      </button>
+      {open && <RateNote />}
       {open && <FeedbackListView gameId={gameId} items={items} err={err} />}
     </div>
   );
@@ -277,7 +319,7 @@ export function LastGameFeedback({ gameId }: { gameId: string }) {
   return (
     <>
       <button type="button" id="feedback-last-btn" className="link-btn fb-last-btn" onClick={() => setOpen(true)}>
-        <Icon icon={ClipboardList} /> 지난 판 문제 평가 <span className="dim fb-bonus-tip">· 채택되면 포인트</span>
+        <Icon icon={ClipboardList} /> 지난 판 문제 평가
       </button>
       {open &&
         createPortal(
@@ -294,6 +336,7 @@ export function LastGameFeedback({ gameId }: { gameId: string }) {
                 </p>
                 <PopupClose onClose={close} />
               </div>
+              <RateNote />
               <FeedbackList gameId={gameId} />
             </div>
           </div>,

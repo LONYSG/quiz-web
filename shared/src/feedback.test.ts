@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS, feedbackReasonLabel, parseFeedbackInput } from './feedback.js';
+import { FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS, RATE_CHOICES, RATE_POINTS, feedbackReasonLabel, parseFeedbackInput } from './feedback.js';
 
 const base = { questionId: '12', gameId: '34' };
 
@@ -32,11 +32,17 @@ describe('parseFeedbackInput (R056 문제 평가)', () => {
   });
   it('vote · id 이상하면 거부', () => {
     expect(parseFeedbackInput({ ...base, vote: 2 }).ok).toBe(false);
-    expect(parseFeedbackInput({ ...base, vote: 0 }).ok).toBe(false);
+    expect(parseFeedbackInput({ ...base, vote: 0.5 }).ok).toBe(false);
     expect(parseFeedbackInput({ ...base }).ok).toBe(false);
     expect(parseFeedbackInput({ ...base, questionId: 'x1', vote: 1 }).ok).toBe(false);
     expect(parseFeedbackInput({ ...base, gameId: '', vote: 1 }).ok).toBe(false);
     expect(parseFeedbackInput(null).ok).toBe(false);
+  });
+  it('★ R068 — 😐 그냥(0)은 받고 사유 · 의견은 버린다 · 3단계 순서', () => {
+    const r = parseFeedbackInput({ ...base, vote: 0, reasons: ['unclear'], comment: '글' });
+    expect(r.ok && r.value).toEqual({ questionId: base.questionId, gameId: base.gameId, vote: 0, reasons: [], comment: null });
+    expect(RATE_CHOICES.map((c) => c.vote)).toEqual([1, 0, -1]);
+    expect(RATE_POINTS).toBe(1);
   });
   it('사유 일곱 · 라벨', () => {
     expect(FEEDBACK_REASONS.map((r) => r.code)).toEqual(['never_heard', 'too_easy', 'unclear', 'answer', 'hint', 'boring', 'other']);

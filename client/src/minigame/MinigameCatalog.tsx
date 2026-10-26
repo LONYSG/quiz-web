@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  ArrowLeftRight, Balloon, Beef, Check, Circle, Gauge, Globe, Hand, Image as ImageIcon, Keyboard, Ruler, Scale, ScanSearch, Tag, TriangleRight, Users, Zap,
+  ArrowLeftRight, Balloon, Beef, CalendarClock, Check, Circle, Gauge, Globe, Hand, Image as ImageIcon, Keyboard, Ruler, Scale, ScanSearch, Tag, TriangleRight, Users, Zap,
   type LucideIcon,
 } from 'lucide-react';
 import { MINIGAMES, MINIGAME_EXAMPLES, type MinigameKey } from '@quiz/shared';
@@ -31,6 +31,7 @@ export const MINIGAME_ICONS: Record<MinigameKey, LucideIcon> = {
   photo: ImageIcon,
   estimate: Ruler,
   which: ArrowLeftRight,
+  photoyear: CalendarClock,
   minority: Users,
   oddone: ScanSearch,
   gauge: Gauge,

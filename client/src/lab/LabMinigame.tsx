@@ -228,7 +228,7 @@ function r051Rows(key: 'reaction' | 'typing' | 'circle' | 'angle') {
  * ★★★ R052 — 퀴즈류 장면(더미 문항 · ?image=<그림 id> 를 주면 실제 그림 · ?mode=zoom|mosaic|plain · ?at=ms 사진 드러남 시각 · ?state=seen 이미 본 문항)
  */
 function r052Scene(key: MinigameKey, phase: MinigamePhase) {
-  if (!['price', 'worldprice', 'photo', 'estimate', 'which'].includes(key)) return null;
+  if (!['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear'].includes(key)) return null;
   const q = new URLSearchParams(window.location.search);
   const image = q.get('image');
   const row = (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted = true) => ({ accountId: id, submitted, value, error: null, rank, points, extra });
@@ -264,6 +264,16 @@ function r052Scene(key: MinigameKey, phase: MinigamePhase) {
       params: { imageId: image, dummyShape: 'circle', revealMode: q.get('hard') ? 'plain' : mode, revealMs: 15000, dummy: !image, ...(q.get('hard') ? { hard: true, chosung: 'ㄷㄱㄹㅁ' } : {}) },
       reveal: { answer: image ? '(정답)' : '동그라미', explanation: '연습용 설명이에요.', attribution: image ? '(그림 출처)' : null },
       rows: [row('lab3', 1, 4, { timeSec: 3.2, tries: 1 }, 3200), row('lab1', 2, 3, { timeSec: 6.9, tries: 3 }, 6900), row('lab2', 3, 0, { tries: 2 }, null, false), row('lab4', 3, 0, null, null, false)],
+    };
+  }
+  // ★ R068 — 사진 연도(?image=<그림 id> · ?circa=1 대략 범위)
+  if (key === 'photoyear') {
+    const circa = q.get('circa') !== null;
+    return {
+      playMs: 20000,
+      params: { imageId: image, dummyShape: 'circle', min: 1800, max: new Date().getFullYear(), dummy: !image },
+      reveal: { year: 1988, yearRange: circa ? [1985, 1990] : null, title: image ? '(제목) 1988년 서울 거리' : '연습용 그림 — 정답 1988년', place: '서울', attribution: image ? '(그림 출처)' : null },
+      rows: [row('lab1', 1, 4, { guess: 1988, off: 0 }, 0), row('lab3', 2, 3, { guess: 1985, off: 3 }, 3), row('lab2', 3, 2, { guess: 1970, off: 18 }, 18), row('lab4', 4, 0, null, null, false)],
     };
   }
   if (key === 'estimate') {

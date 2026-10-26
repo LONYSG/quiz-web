@@ -81,10 +81,18 @@ export default function GameSettings({
 
   /** ★ 난이도·분야 모두 **마지막 하나는 끌 수 없다** (빈 선택 상태를 만들지 않는다 — R025 판단) */
   const [lastHint, setLastHint] = useState<'tier' | 'topic' | null>(null);
+  // ★ R068 (찬종 #56 "난이도 선택 버튼이 토글이 안됨") — 마지막 하나를 누르면 그 버튼이 흔들리고 바로 아래 안내(옛: 설정 맨 아래 빨간 줄만 — 모바일에서 안 보였다)
+  const [shake, setShake] = useState<string | null>(null);
+  const bump = (k: string) => {
+    setShake(null);
+    window.requestAnimationFrame(() => setShake(k));
+    window.setTimeout(() => setShake((s) => (s === k ? null : s)), 500);
+  };
   const toggleTier = (tier: DifficultyTier) => {
     const has = draft.difficulties.includes(tier);
     if (has && draft.difficulties.length === 1) {
       setLastHint('tier');
+      bump(tier);
       return;
     }
     setLastHint(null);
@@ -97,6 +105,7 @@ export default function GameSettings({
     const has = draft.topics.includes(topic);
     if (has && draft.topics.length === 1) {
       setLastHint('topic');
+      bump(topic);
       return;
     }
     setLastHint(null);
@@ -242,7 +251,7 @@ export default function GameSettings({
                     type="button"
                     data-tier={info.tier}
                     aria-pressed={on}
-                    className={on ? 'preset active' : 'preset'}
+                    className={`${on ? 'preset active' : 'preset'}${shake === info.tier ? ' shake' : ''}`}
                     onClick={() => toggleTier(info.tier)}
                   >
                     {info.label}
@@ -255,6 +264,11 @@ export default function GameSettings({
               })}
             </div>
           </div>
+          {lastHint === 'tier' && (
+            <p className="form-error last-hint" data-last-hint>
+              하나는 남겨야 해요 — 다른 난이도를 먼저 켜 주세요
+            </p>
+          )}
 
           {/* ★★ 분야 (R034) — 난이도 × 분야로 출제 가능 수가 바뀐다 */}
           <div className="set-row">
@@ -281,7 +295,7 @@ export default function GameSettings({
                     type="button"
                     data-topic={info.topic}
                     aria-pressed={on}
-                    className={on ? 'preset active' : 'preset'}
+                    className={`${on ? 'preset active' : 'preset'}${shake === info.topic ? ' shake' : ''}`}
                     onClick={() => toggleTopic(info.topic)}
                   >
                     {info.label}
@@ -347,9 +361,9 @@ export default function GameSettings({
         </div>
       </div>
 
-      {lastHint && (
-        <p className="form-error">
-          {lastHint === 'tier' ? '난이도는 하나 이상 선택해야 합니다.' : '분야는 하나 이상 선택해야 합니다.'}
+      {lastHint === 'topic' && (
+        <p className="form-error" data-last-hint>
+          분야는 하나는 남겨야 해요 — 다른 분야를 먼저 켜 주세요
         </p>
       )}
       {editable && !valid.ok && <p className="form-error">{valid.message}</p>}

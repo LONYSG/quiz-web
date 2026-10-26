@@ -48,6 +48,9 @@ import {
   QUIZ_DUMMY,
   QUIZ_MINIGAME_KEYS,
   QUIZ_PRACTICE_ITEMS,
+  PHOTOYEAR_MIN,
+  photoyearError,
+  photoyearMax,
   QUIZ_SPEC,
   PHOTO_REVEAL_MS,
   countryLabel,
@@ -394,12 +397,17 @@ export function isQuizMinigameKey(k: string): k is QuizMinigameKey {
   return (QUIZ_MINIGAME_KEYS as readonly string[]).includes(k);
 }
 
+/** ★ R068 (찬종 10-26 "사진이 없는 미니게임 항목이 나온다") — 사진이 있어야 하는 게임과 필요한 장 수(어느 쪽? = 양쪽 둘).
+ *  빅맥(worldprice)은 숫자 게임이라 사진 없음이 정상. 로더(minigame-load.mjs)도 같은 규칙으로 적재하지 않는다 */
+export const NEEDS_IMAGE: Partial<Record<QuizMinigameKey, number>> = { price: 1, photo: 1, estimate: 1, which: 2, photoyear: 1 };
+export const hasNeededImages = (key: QuizMinigameKey, imageIds: readonly string[]) => imageIds.filter(Boolean).length >= (NEEDS_IMAGE[key] ?? 0);
+
 /** 문항 고르기 — 적재본에서 3단계 선정 */
 function pickFor(key: QuizMinigameKey, seed: number, ctx: BuildCtx, filter: (it: QuizItem) => boolean = () => true) {
   if (!ctx.quiz) return null;
   const exp = ctx.quiz.experienced;
-  // ★ R063 (D-258) — 고르기 창의 예시와 겹치는 문항은 뽑지 않는다
-  const pool = ctx.quiz.data.items[key].filter((it) => filter(it) && !isExampleItem(key, it.payload));
+  // ★ R063 (D-258) — 고르기 창의 예시와 겹치는 문항은 뽑지 않는다 · ★ R068 사진이 모자란 항목도
+  const pool = ctx.quiz.data.items[key].filter((it) => filter(it) && !isExampleItem(key, it.payload) && hasNeededImages(key, it.imageIds));
   // ★ R066 (D-282) — 소재(빅맥 = 물품) 겹침 피하기 · 이번 게임에서 쓴 소재 먼저 피하기 · 다 떨어졌으면 본 것도
   const used = (ctx.quiz.used ??= new Set<string>());
   const materialOf = (it: QuizItem) => `${key}|${key === 'worldprice' ? `p:${String(it.payload.productId)}` : it.id}`;
@@ -671,6 +679,60 @@ const which: MinigameDef = {
 
 
 // ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R068 — 이 사진 몇 년도? (docs/18 §8 · C82 ③) — 사진 한 장 → 연도 4자리(1800 ~ 올해) · 한 번만 낸다.
+//   점수 = 오차(년) 작은 순(같으면 빠른 사람) · 대략(circa)은 yearRange 안이면 0 · 공개 = 정답 연도 · 제목 · 장소 · 각자 오차 · 출처.
+//   기준 날짜(as_of) 없음 — year 는 정답이지 수집 날짜가 아니다.
+// ─────────────────────────────────────────────────────────────────────────────
+const photoyear: MinigameDef = {
+  key: 'photoyear',
+  info: minigameInfo('photoyear'),
+  buildRounds(seed, ctx) {
+    if (ctx.practice) {
+      return QUIZ_DUMMY.photoyear.slice(0, QUIZ_PRACTICE_ITEMS).map((d, i) =>
+        quizSpec('photoyear', i, seed, {
+          itemKey: d.id,
+          params: { imageId: null, dummyShape: d.shape, min: PHOTOYEAR_MIN, max: photoyearMax(ctx.now), dummy: true },
+          reveal: { year: d.year, yearRange: d.yearRange, title: d.title, place: d.place, attribution: null },
+          secret: { year: d.year, range: d.yearRange },
+        }),
+      );
+    }
+    const pick = pickFor('photoyear', seed, ctx);
+    if (!pick) return null;
+    return pick.items.map((it, i) => {
+      const p = it.payload;
+      const range = p.yearKind === 'circa' && Array.isArray(p.yearRange) ? (p.yearRange as [number, number]) : null;
+      return quizSpec('photoyear', i, seed, {
+        itemKey: it.id,
+        itemId: it.id,
+        params: { imageId: it.imageIds[0] ?? null, min: PHOTOYEAR_MIN, max: photoyearMax(ctx.now) },
+        reveal: { year: p.year, yearRange: range, title: p.title, place: p.place, attribution: it.attribution },
+        secret: { year: p.year, range },
+        experiencedBy: pick.experiencedBy.get(it.id),
+      });
+    });
+  },
+  parseInput(raw, spec, ctx) {
+    const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
+    const v = num(obj?.value);
+    const max = Number(spec.params.max ?? photoyearMax());
+    if (v === null || !Number.isInteger(v) || v < PHOTOYEAR_MIN || v > max) return null;
+    const elapsed = deviceElapsed(obj, spec, ctx, true);
+    const year = Number(spec.secret?.year);
+    const range = (spec.secret?.range as [number, number] | null) ?? null;
+    const off = photoyearError(v, year, range);
+    return {
+      input: { value: v, elapsedMs: elapsed === null ? null : Math.round(elapsed) },
+      value: off,
+      error: v - year,
+      elapsedMs: elapsed,
+      extra: { guess: v, off },
+      provisional: false,
+    };
+  },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 // ★★★ R053 — 미니게임 3차 (소수파 · 평균의 2/3 · 다른 하나 찾기 · 게이지)
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -812,4 +874,4 @@ const tap: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, minority, oddone, gauge, balloon, tap };
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };

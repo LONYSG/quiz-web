@@ -63,7 +63,8 @@ export default function WhichPick({ socket, view, serverNow, mobile }: Props) {
       disabled={!canPlay || Boolean(mine)}
       onClick={() => pick(side)}
     >
-      <QuizImage imageId={s.imageId} alt={s.label} className="which-img" />
+      {/* ★ R068 — 사진이 없으면 "연습용" 도형을 그리지 않는다(연습 판만 — 실판에서 "(연습용)" 이 보였다 · 찬종 10-26 ①) */}
+      {Boolean(s.imageId || p.dummy) && <QuizImage imageId={s.imageId} alt={s.label} className="which-img" />}
       <span className="which-label">{s.label}</span>
       {!mobile && <span className="which-key mono">{side === 'a' ? '←' : '→'}</span>}
     </button>

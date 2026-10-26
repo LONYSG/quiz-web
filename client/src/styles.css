@@ -282,9 +282,13 @@ button {
   cursor: pointer;
   transition: transform 90ms ease, box-shadow 120ms ease, background-color 120ms, border-color 120ms;
 }
-button:hover:not(:disabled) {
-  border-color: var(--accent);
-  transform: translateY(-1px);
+/* ★ R068 (찬종 #56 m360 "난이도 버튼이 토글이 안됨 — 눌러도 선택된 걸로만 보임") — 터치 기기는 누른 뒤 :hover 가 그 버튼에 남는다
+   → 끈 버튼에 강조 테두리가 남아 "켜진 것" 처럼 보였다. hover 꾸밈은 마우스(hover: hover)에서만 */
+@media (hover: hover) {
+  button:hover:not(:disabled) {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
 }
 button:active:not(:disabled) {
   transform: translateY(1px) scale(0.98);
@@ -2338,8 +2342,36 @@ button {
   :where(.ui-mobile) .ceremony-msgs{
     max-height: 7.5em;
   }
+  /* ★ R068 (찬종 #61 m360 "시간 표시가 줄바꿈이 돼 · 갤럭시 울트라는 안 생김") — 원인은 질문 길이가 아니라 머리줄 폭:
+     번호 · #id · 분야 · 난이도 · 시간이 360 폭 한 줄을 넘었다 → 머리줄은 한 줄 고정 · 뱃지만 줄어든다(…) · 시간은 안 줄어든다.
+     "이미 풀어본 퀴즈" 뱃지는 잘리면 안 되니 다음 줄 */
   :where(.ui-mobile) .q-head{
     flex-wrap: wrap;
+  }
+  :where(.ui-mobile) .question-card .q-head{
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+  :where(.ui-mobile) .question-card .q-head > .badge{
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .q-exp-line{
+    display: none;
+    margin: -4px 0 8px;
+  }
+  :where(.ui-mobile) .q-exp-line{
+    display: block;
+  }
+  :where(.ui-mobile) .q-head > .q-exp-head{
+    display: none;
+  }
+  :where(.ui-mobile) .question-card .q-head > .q-progress,
+  :where(.ui-mobile) .question-card .q-head > .q-ids,
+  :where(.ui-mobile) .question-card .q-head > .q-timer{
+    flex: 0 0 auto;
   }
   :where(.ui-mobile) .action-bar{
     gap: 6px;
@@ -3570,6 +3602,23 @@ button.people-row.pickable:focus-visible {
   padding: 0;
   background: transparent;
   outline: none;
+}
+/* ★ R068 (찬종 10-26 ③ "검색창을 누르면 검색 활성화 부분이 검색 박스보다 커져 일체감이 사라진다") — 원인: 이 칸이 채팅 <form> 안이라
+   전역 `form input:focus { box-shadow: 0 0 0 4px … }` · `form input { margin-top: 5px }` 를 물려받았다 → 입력칸 자체는 꾸밈 없음 ·
+   포커스는 둥근 테두리(wrap)의 색만 바뀐다(높이 · 반지름 그대로) · 모바일은 16px(iOS 확대 막기) */
+.emoji-pop .emoji-tools .emoji-search-wrap .emoji-search,
+.emoji-pop .emoji-tools .emoji-search-wrap .emoji-search:focus {
+  margin: 0;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+.emoji-search-wrap:focus-within {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+:where(.ui-mobile) .emoji-pop .emoji-tools .emoji-search-wrap .emoji-search {
+  font-size: 16px;
 }
 .send-btn {
   display: inline-flex;
@@ -7300,6 +7349,18 @@ button.fb-q {
   box-shadow: none;
   cursor: pointer;
 }
+/* ★ R068 (찬종 #53 m360 "지난판 문제 평가 누르면 글자들이 오른쪽으로 쭉 열려서 화면 밖으로") — 원인: 질문 줄이 <button> 이라
+   전역 button { white-space: nowrap } 을 물려받아, 펼친 전체 질문이 한 줄로 창 밖까지 나갔다 → 펼침 · PC 는 줄바꿈 */
+button.fb-q,
+button.fb-q > span {
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.fb-modal,
+.fb-list {
+  overflow-x: hidden;
+}
 :where(.ui-mobile) .fb-row:not(.open) .fb-text {
   white-space: nowrap;
   overflow: hidden;
@@ -7765,6 +7826,13 @@ button.profile-photo {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* ★ R068 (찬종 #52 "미니게임 첫 1위 설명이 길어서 … 으로 생략됨") — 설명은 생략 없이 두 줄까지(낱말 단위) */
+.ach-text > .ach-desc {
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+}
 .wp-reveal .quiz-name,
 .wp-reveal > div > p.dim,
 .wp-minmax > span,
@@ -8112,6 +8180,16 @@ button.mg-cat-card {
   border: var(--bw) solid var(--border);
   color: var(--text-dim);
 }
+.emoji-pop button.emoji-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 0.95rem;
+}
+.emoji-pop button.emoji-edit-btn .ico {
+  vertical-align: 0;
+}
 .emoji-edit-btn.on {
   border-color: var(--accent);
   color: var(--accent);
@@ -8177,8 +8255,170 @@ button.mg-cat-card {
   gap: 8px;
   margin-top: 4px;
 }
+/* ★ R068 (찬종 #65 "설정에서 제보 누르니까 버튼 다 튀어나가고") — 원인: 제보 창용 두 칸 격자(.report-menu-pick 1fr 1fr)가
+   폭 340 ⚙ 창에도 걸려 한 칸 ~150px · 제목 · 설명은 한 줄(nowrap) → 버튼 밖으로 넘쳤다 → ⚙ 창에서는 한 칸에 하나씩 */
+.report-menu-pick.gear-report {
+  grid-template-columns: minmax(0, 1fr);
+}
+.gear-report .report-menu-item {
+  min-width: 0;
+}
 .gear-report .gear-report-key {
   margin: 0;
   font-size: 0.78rem;
   text-align: right;
+}
+
+/* ★ R068 (찬종 #69 "미니게임 고르기에서 아이콘 중앙정렬하고 체크 박스도 좀 키우고 위치 정확하게") —
+   아이콘 칸 · 체크 칸 모두 카드 세로 가운데 · 체크 18 → 24px(오른쪽 12px 고정) · 글은 체크 칸만큼 비운다 */
+button.mg-cat-card {
+  align-items: center;
+}
+.mg-cat-art .ico {
+  display: block;
+  vertical-align: 0;
+}
+.mg-cat-body {
+  flex: 1 1 auto;
+  padding-right: 34px;
+}
+.mg-cat-check {
+  top: 50%;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  border-radius: 7px;
+  border-width: 2px;
+  font-size: 0.95rem;
+}
+.mg-cat-check .ico {
+  display: block;
+  vertical-align: 0;
+}
+
+/* ★ R068 (찬종 10-26 ② "사진이 잘리거나 특정 부분만 확대돼 보이는 것이 있다") — 미니게임 사진은 잘라내지 않는다:
+   contain + 어두운 레터박스(세로 · 가로 사진 모두 전체가 보임 · 공개 화면도 같음). 원인 = 어느 쪽? 카드 사진이 4:3 cover 였다.
+   예외는 사진 이름 맞히기의 확대(zoom) 단계 — 규칙상 일부만 보여 주는 것 · 공개 화면은 전체. */
+:root {
+  --img-letterbox: #1f1d27;
+}
+.which-img,
+.which-card .quiz-img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+img.which-img,
+.which-card img.quiz-img {
+  background: var(--img-letterbox);
+}
+.photo-frame:has(img),
+img.quiz-pic {
+  background: var(--img-letterbox);
+}
+
+/* ★★★ R068 (docs/19 §7) — 정답 공개 평가 3단계 · 1P: "방금 문제 어땠어요? (+1P)" + 👍 좋아요 · 😐 그냥 · 👎 별로 → "+1P 고마워요" */
+.reveal-fb-ask {
+  flex: 0 1 auto;
+  min-width: 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reveal-fb.picked .reveal-fb-ask {
+  color: var(--accent);
+}
+.fb-vote-emoji {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+button.fb-vote.mid.on {
+  color: var(--text);
+  border-color: var(--text-dim);
+  background: color-mix(in srgb, var(--text-dim) 14%, var(--surface));
+}
+.fb-count {
+  margin-left: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.fb-rate-note {
+  margin: 6px 0 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+button.link-btn.fb-report-link {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+/* 모바일 — 폭 360 에서 물음이 잘렸다(…) → 물음은 한 줄 위 · 버튼 셋은 아래 줄(공개 카드가 한 줄 늘어남 · 입력칸과 안 겹침 — ui-check r068) */
+:where(.ui-mobile) .reveal-fb:not(.picked) {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+:where(.ui-mobile) .reveal-fb:not(.picked) .reveal-fb-ask {
+  flex: 1 0 100%;
+}
+:where(.ui-mobile) .reveal-fb-ask {
+  font-size: 0.74rem;
+}
+:where(.ui-mobile) .reveal-fb button.fb-vote {
+  padding: 2px 8px;
+}
+
+/* ★★ R068 — 이 사진 몇 년도? (사진 칸은 사진 맞히기와 같은 4:3 contain · 입력은 4자리) */
+.photoyear-ask {
+  margin: 8px 0 0;
+  text-align: center;
+  font-weight: 800;
+}
+.photoyear-stage .quiz-num-input {
+  width: 6.5ch;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+.photoyear-range {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.quiz-num-help.bad {
+  color: var(--bad);
+}
+
+/* ★ R068 (#56) — 마지막 하나는 끌 수 없음: 그 버튼이 흔들리고 바로 아래 안내 */
+button.preset.shake {
+  animation: preset-shake 0.42s ease-in-out;
+}
+@keyframes preset-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+.last-hint {
+  margin: 2px 0 0 62px;
+  font-size: 0.78rem;
+}
+:where(.ui-mobile) .last-hint {
+  margin-left: 0;
+}
+/* ★ R068 (#54) — 풍선 결과 점수 규칙 한 줄 */
+.balloon-rule {
+  font-size: 0.78rem;
+  max-width: 28em;
+}
+
+/* ★ R068 (찬종 #54 m360 "풍선불기 펌프 가운데 정렬이 아님") — 원인: [펌프] 는 넓은 버튼(min-width 9rem · inline-flex)인데
+   가운데 맞춤이 없어 모바일(단축키 글 없음)에서 "펌프" 글이 왼쪽에 붙었다 → 버튼 안 가운데 · 풍선 그림은 칸 폭을 넘지 않게(넘쳐서 6px 밀렸다) */
+.balloon-actions button {
+  justify-content: center;
+}
+.balloon-art {
+  max-width: 100%;
 }

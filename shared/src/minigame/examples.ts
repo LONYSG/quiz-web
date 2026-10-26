@@ -22,6 +22,8 @@ export const MINIGAME_EXAMPLES: Partial<Record<MinigameKey, MinigameExample>> = 
   photo: { q: '사진 한 장', a: '에펠탑', exclude: ['에펠'] },
   estimate: { q: '남산서울타워 높이는?', a: '약 237m', exclude: ['남산타워', '남산서울타워', 'N서울타워'] },
   which: { q: '더 먼저 생긴 것은? 직지 vs 훈민정음', a: '직지', exclude: ['직지', '훈민정음'] },
+  // ★ R068
+  photoyear: { q: '아폴로 11호 달 착륙 사진', a: '1969년', exclude: ['아폴로', '달 착륙'] },
 };
 
 /** 그 게임의 예시와 겹치는 문항인가 (payload 를 글로 펼쳐 낱말을 찾는다) */

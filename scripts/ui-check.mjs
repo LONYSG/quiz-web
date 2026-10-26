@@ -4076,6 +4076,525 @@ async function r067Flow(browser) {
   await L.setViewport(1536, 864);
 }
 
+// =============================================================================
+// ★★★ R068 — 찬종 제보 20 · 정답 공개 평가 3단계 · photoyear · 긴 질문(QLEN 240) 검사
+//   R068_ONLY = lab | room | game | avatar (없으면 전부)
+//   lab   고기 가림 뒤 소리 0(#55) · 풍선 펌프 · 결과 가운데 + 점수 규칙(#54) · photoyear 그림(310) · 미니게임 사진 잘림 없음(330)
+//   room  ⚙ 제보 탭(#65) · 미니게임 고르기 정렬(#69) · 난이도 끄기(#56) · 업적 설명(#52) · 이모티콘 찾기 포커스(340) · ✎ 정렬(#57) · 2560 특별 둘째 줄(#65)
+//   game  긴 질문 140 · 197 · 240 × 360 · 1536 · 2560(320 · #61) · 정답 공개 평가(300) · 세레모니 이모티콘 셋(#66) · 결과 접힘(#68) · 지난 판 평가 m360(#53)
+//   avatar 프로필 사진 올리기(#71) — jpg 56KB · 큰 jpg · png · webp · 회전 jpg
+// =============================================================================
+const R068_DEVS = [['1536', 1536, 864, false], ['2560', 2560, 1313, false], ['m390', 390, 844, true]];
+async function r068Flow(browser) {
+  const only = process.env.R068_ONLY ?? '';
+  if (!only || only === 'lab') await r068LabFlow(browser);
+  if (!only || only === 'room') await r068RoomFlow(browser);
+  if (!only || only === 'avatar') await r068AvatarFlow(browser);
+  if (!only || only === 'game') await r068GameFlow(browser);
+}
+
+// ── lab ─────────────────────────────────────────────────────────────────────
+async function r068LabFlow(browser) {
+  const L = await newPage(browser, 'R068-lab', true);
+  await L.setViewport(1536, 864);
+  await signUp(L, 'rl', '실험실');
+  // #55 고기 — 가린 뒤 소리 0
+  await L.goto(`${BASE}/lab/minigame?scene=1&key=cake&phase=play&at=2300`);
+  await L.waitFor("document.querySelector('.cake-stage') !== null", 8000).catch(() => false);
+  await trustedClick(L, 20, 860);
+  await L.waitFor("document.documentElement.dataset.audio === 'running'", 4000).catch(() => false);
+  await L.goto(`${BASE}/lab/minigame?scene=1&key=cake&phase=play&at=2300`);
+  await L.waitFor("document.querySelector('.cake-stage') !== null", 8000).catch(() => false);
+  await trustedClick(L, 20, 860);
+  const tStart = await L.evaluate('Math.round(performance.now())');
+  await L.waitFor("document.querySelector('.cake-count')?.dataset.hidden === '1'", 9000).catch(() => false);
+  const tHide = await L.evaluate('Math.round(performance.now())');
+  await sleep(4500);
+  const ticks = JSON.parse(await L.evaluate(`JSON.stringify((window.__qwSoundLog ?? []).filter((e) => /^cake-t/.test(e.id) && e.t >= ${tStart}).map((e) => ({ t: Math.round(e.t - ${tHide}), played: e.played })))`));
+  const before = ticks.filter((x) => x.t < 0 && x.played).length;
+  const after = ticks.filter((x) => x.t > 150 && x.played).length;
+  record('★★★ R068 #55 고기 — 가린 뒤 똑딱 0(가리기 전에는 울림) · 찬종 "가리면 소리도 끊는다"', before > 0 && after === 0, JSON.stringify({ before, after, audio: await L.evaluate("document.documentElement.dataset.audio ?? ''"), ticks: ticks.slice(-6) }));
+
+  // #54 풍선 — 펌프 줄 · 결과 풍선 가운데 · 점수 규칙 한 줄
+  const mid = (sel) => `(() => { const r = document.querySelector('${sel}')?.getBoundingClientRect(); const c = document.querySelector('.mg-card')?.getBoundingClientRect(); return r && c ? Math.round((r.left + r.right) / 2 - (c.left + c.right) / 2) : null; })()`;
+  const bal = {};
+  for (const [dev, w, h, touch] of R068_DEVS) {
+    await touchDevice(L, w, h, touch);
+    if (!touch) await L.setViewport(w, h);
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=balloon&phase=play&at=4000`);
+    await L.waitFor("document.querySelector('.balloon-stage') !== null", 8000).catch(() => false);
+    await sleep(400);
+    const play = JSON.parse(await L.evaluate(`JSON.stringify({ art: ${mid('.balloon-box .balloon-art')}, pump: ${mid('.balloon-actions')}, pct: ${mid('.balloon-pct')}, help: document.querySelector('.balloon-stage .quiz-num-help')?.innerText ?? '', label: (() => { const b = document.querySelector('[data-balloon-pump]'); if (!b) return null; const rg = document.createRange(); rg.selectNodeContents(b.firstChild); const t = rg.getBoundingClientRect(); const r = b.getBoundingClientRect(); return Math.round((t.left + t.right) / 2 - (r.left + r.right) / 2 + (b.querySelector('kbd') ? (b.querySelector('kbd').getBoundingClientRect().width + 6) / 2 : 0)); })() })`));
+    await snap(L, `350-balloon-play-${dev}`);
+    await L.goto(`${BASE}/lab/minigame?scene=1&key=balloon&phase=roundResult`);
+    await L.waitFor("document.querySelector('.balloon-result') !== null", 8000).catch(() => false);
+    await sleep(400);
+    const res = JSON.parse(await L.evaluate(`JSON.stringify({ art: ${mid('.balloon-result .balloon-art')}, big: ${mid('.balloon-result .mg-r051-big')}, rule: document.querySelector('[data-balloon-rule]')?.innerText ?? '' })`));
+    await snap(L, `351-balloon-result-${dev}`);
+    bal[dev] = { play, res };
+  }
+  await touchDevice(L, 1536, 864, false);
+  await L.setViewport(1536, 864);
+  const ok54 = Object.values(bal).every((b) => [b.play.art, b.play.pump, b.play.pct, b.play.label, b.res.art, b.res.big].every((x) => x !== null && Math.abs(x) <= 3) && /6/.test(b.play.help) && /16/.test(b.play.help) && /6/.test(b.res.rule));
+  record('★★ R068 #54 풍선 — 그림 · 펌프 줄 · [펌프] 글(버튼 안) · 숫자 · 결과 풍선이 가운데(±3px) · 점수 규칙 "한 번에 6~16" 이 판 · 결과에 한 줄(1536 · 2560 · m390)', ok54, JSON.stringify(bal));
+
+  // photoyear 그림 — play · reveal(판 결과) · result(최종) × 1536 · m390
+  const pyImg = await withPg(async (c) => (await c.query(`SELECT image_ids[1] AS id FROM minigame_items WHERE game = 'photoyear' AND active ORDER BY item_id LIMIT 1`)).rows[0]?.id ?? null);
+  const py = {};
+  for (const [dev, w, h, touch] of [R068_DEVS[0], R068_DEVS[2]]) {
+    await touchDevice(L, w, h, touch);
+    if (!touch) await L.setViewport(w, h);
+    for (const [nm, phase] of [['play', 'play'], ['reveal', 'roundResult'], ['result', 'final']]) {
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=photoyear&phase=${phase}${pyImg ? `&image=${pyImg}` : ''}`);
+      await L.waitFor("document.querySelector('.mg-card') !== null", 8000).catch(() => false);
+      await sleep(900);
+      py[`${nm}-${dev}`] = JSON.parse(await L.evaluate("JSON.stringify({ input: document.querySelector('.photoyear-stage .quiz-num-input')?.getAttribute('inputmode') ?? null, max: document.querySelector('.photoyear-stage .quiz-num-input')?.maxLength ?? null, img: !!document.querySelector('.photo-frame img.quiz-img, .photoyear-reveal img.quiz-img'), fit: getComputedStyle(document.querySelector('.photo-frame img, .photoyear-reveal img') ?? document.body).objectFit, answer: document.querySelector('[data-photoyear-answer]')?.innerText ?? '', scrollX: document.documentElement.scrollWidth > innerWidth + 1 })"));
+      await snap(L, `310-photoyear-${nm}-${dev}`);
+    }
+  }
+  await touchDevice(L, 1536, 864, false);
+  await L.setViewport(1536, 864);
+  record('★★★ R068 photoyear 화면 — 판: 사진(contain) + 숫자 키패드 4자리 · 공개: "1988년" · 가로 넘침 없음(1536 · m390)', py['play-1536']?.input === 'numeric' && py['play-1536']?.max === 4 && py['play-m390']?.img && /1988년/.test(py['reveal-1536']?.answer ?? '') && Object.values(py).every((v) => !v.scrollX && (v.fit === 'contain' || !v.img)), JSON.stringify(py));
+
+  // 미니게임 사진 — 잘라내지 않는다(contain) · 가로 · 세로 사진 각 1 · 판 · 공개
+  const imgs = await withPg(async (c) => (await c.query(`
+    SELECT i.game, i.item_id, im.image_id, im.width, im.height
+      FROM minigame_items i JOIN minigame_images im ON im.image_id = i.image_ids[1]
+     WHERE i.active AND i.game IN ('photo', 'price', 'estimate', 'which', 'photoyear')
+     ORDER BY i.item_id`)).rows ?? []);
+  const fit = {};
+  for (const game of ['photo', 'price', 'estimate', 'which', 'photoyear']) {
+    const land = imgs.find((x) => x.game === game && x.width > x.height * 1.2);
+    const port = imgs.find((x) => x.game === game && x.height > x.width * 1.15);
+    for (const [kind, it] of [['land', land], ['port', port]]) {
+      if (!it) continue;
+      for (const [dev, w, h, touch] of [R068_DEVS[0], R068_DEVS[2]]) {
+        await touchDevice(L, w, h, touch);
+        if (!touch) await L.setViewport(w, h);
+        for (const phase of ['play', 'roundResult']) {
+          await L.goto(`${BASE}/lab/minigame?scene=1&key=${game}&phase=${phase}&image=${it.image_id}${game === 'photo' ? '&mode=plain' : ''}`);
+          await L.waitFor("document.querySelector('.mg-card img.quiz-img') !== null", 8000).catch(() => false);
+          await sleep(700);
+          fit[`${game}-${kind}-${dev}-${phase}`] = JSON.parse(await L.evaluate("JSON.stringify([...document.querySelectorAll('.mg-card img.quiz-img')].map((im) => ({ fit: getComputedStyle(im).objectFit, zoom: getComputedStyle(im.closest('.photo-zoom') ?? im).transform })))"));
+          if (phase === 'play' || game === 'photo') await snap(L, `330-mgimg-${game}-${kind}-${phase === 'play' ? '' : 'reveal-'}${dev}`);
+        }
+      }
+    }
+  }
+  await touchDevice(L, 1536, 864, false);
+  await L.setViewport(1536, 864);
+  const allFit = Object.values(fit).flat();
+  record('★★★ R068 사진 규칙 — 미니게임 사진은 모두 contain(잘라내지 않음) · 확대(transform)는 판 진행의 사진 맞히기 확대 모드만(plain · 공개는 없음)', allFit.length > 10 && allFit.every((x) => x.fit === 'contain' && (x.zoom === 'none' || /matrix\(1, 0, 0, 1, 0, 0\)/.test(x.zoom))), JSON.stringify(fit).slice(0, 600));
+  L.close();
+}
+
+/** ★ R068 — 터치 기기 흉내 + 진짜 휴대폰처럼 (hover: none · pointer: coarse) — CDP 터치 흉내만으로는 hover 미디어가 그대로라 눌린 뒤 :hover 가 남는 것을 못 본다 */
+async function r068Touch(page, w, h, on = true) {
+  await touchDevice(page, w, h, on);
+  await page.send('Emulation.setEmulatedMedia', { features: on ? [{ name: 'hover', value: 'none' }, { name: 'pointer', value: 'coarse' }] : [] });
+}
+// ── room ────────────────────────────────────────────────────────────────────
+async function r068RoomFlow(browser) {
+  const H = await newPage(browser, 'R068-room', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'rr', '방장알파');
+  const roomId = await createRoom(H, 'R068 방');
+  const socks = await socketGuests(roomId, 1, 'rr');
+  await sleep(600);
+  const inside = (child, parent) => `(() => { const p = document.querySelector('${parent}')?.getBoundingClientRect(); const els = [...document.querySelectorAll('${child}')]; return p && els.length ? els.every((e) => { const r = e.getBoundingClientRect(); return r.left >= p.left - 1 && r.right <= p.right + 1 && r.bottom <= p.bottom + 1; }) : null; })()`;
+
+  // #65 ⚙ 제보 탭 — 버튼이 창 안
+  const gear = {};
+  for (const [w, h] of [[1536, 864], [2560, 1313], [1280, 720]]) {
+    await H.setViewport(w, h);
+    await sleep(300);
+    await openGearTab(H, 'report');
+    gear[w] = await H.evaluate(inside('[data-gear-report] .report-menu-item', '[data-gear-pop]'));
+    await snap(H, `352-gear-report-${w}`);
+    await H.key('Escape');
+    await sleep(200);
+  }
+  await H.setViewport(1536, 864);
+  record('★★★ R068 #65 ⚙ 제보 탭 — 두 버튼이 창 안(넘침 없음 · 1536 · 2560 · 1280)', Object.values(gear).every((v) => v === true), JSON.stringify(gear));
+
+  // #69 미니게임 고르기 — 아이콘 · 체크 세로 가운데 · 체크 24px · 오른쪽 12px
+  const cat = {};
+  for (const [dev, w, h, touch] of R068_DEVS) {
+    await r068Touch(H, w, h, touch);
+    if (!touch) await H.setViewport(w, h);
+    await H.evaluate("document.querySelector('button[data-mode=\"minigame\"]')?.click()");
+    await sleep(300);
+    if (touch) await tapOn(H, '[data-mg-catalog-open]');
+    else await realClick(H, '[data-mg-catalog-open]');
+    await H.waitFor("document.querySelector('.mg-cat') !== null", 4000).catch(() => false);
+    await sleep(300);
+    cat[dev] = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('.mg-cat-card')].slice(0, 4).map((c) => { const r = c.getBoundingClientRect(); const a = c.querySelector('.mg-cat-art').getBoundingClientRect(); const k = c.querySelector('.mg-cat-check')?.getBoundingClientRect(); const mid = (x) => Math.round((x.top + x.bottom) / 2 - (r.top + r.bottom) / 2); const ico = c.querySelector('.mg-cat-art svg')?.getBoundingClientRect(); return { art: mid(a), check: k ? mid(k) : null, size: k ? Math.round(k.width) : null, right: k ? Math.round(r.right - k.right) : null, ico: ico ? [Math.round((ico.left + ico.right) / 2 - (a.left + a.right) / 2), Math.round((ico.top + ico.bottom) / 2 - (a.top + a.bottom) / 2)] : null }; }))"));
+    await snap(H, `353-catalog-${dev}`);
+    await H.evaluate("document.querySelector('.mg-cat .popup-close')?.click()");
+    await sleep(200);
+  }
+  await r068Touch(H, 1536, 864, false);
+  await H.setViewport(1536, 864);
+  await H.evaluate("document.querySelector('button[data-mode=\"quiz\"]')?.click()");
+  await sleep(300);
+  record('★★★ R068 #69 고르기 — 아이콘 칸 · 체크 칸이 카드 세로 가운데(±2) · 아이콘이 칸 가운데(±1) · 체크 24px · 오른쪽 12px(1536 · 2560 · m390)', Object.values(cat).every((rows) => rows.length === 4 && rows.every((x) => Math.abs(x.art) <= 2 && Math.abs(x.check) <= 2 && x.size === 24 && Math.abs(x.right - 12) <= 1 && x.ico && Math.abs(x.ico[0]) <= 1 && Math.abs(x.ico[1]) <= 1)), JSON.stringify(cat));
+
+  // #56 난이도 — PC 클릭 · m390 터치로 끄기 · 마지막 하나는 이유가 보인다
+  const tierState = "JSON.stringify([...document.querySelectorAll('button[data-tier]')].map((b) => { const cs = getComputedStyle(b); return { t: b.dataset.tier, on: b.getAttribute('aria-pressed'), bg: cs.backgroundColor, bd: cs.borderTopColor, fg: cs.color }; }))";
+  await realClick(H, 'button[data-tier="easy"]');
+  await H.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 5, y: 850 });
+  await sleep(500);
+  const pc1 = JSON.parse(await H.evaluate(tierState));
+  await snap(H, '354-diff-pc');
+  await realClick(H, 'button[data-tier="easy"]');
+  await sleep(400);
+  await r068Touch(H, 390, 844, true);
+  await sleep(300);
+  await tapOn(H, 'button[data-tier="hard"]');
+  await sleep(500);
+  const m1 = JSON.parse(await H.evaluate(tierState));
+  await snap(H, '354-diff-m390-off');
+  await tapOn(H, 'button[data-tier="medium"]');
+  await sleep(300);
+  await tapOn(H, 'button[data-tier="easy"]');
+  await sleep(150);
+  const last = JSON.parse(await H.evaluate("JSON.stringify({ shake: document.querySelector('button[data-tier].shake') !== null, hint: document.querySelector('[data-last-hint]')?.innerText ?? '', on: [...document.querySelectorAll('button[data-tier][aria-pressed=\"true\"]')].map((b) => b.dataset.tier) })"));
+  await snap(H, '354-diff-m390-last');
+  for (const t of ['medium', 'hard']) await tapOn(H, `button[data-tier="${t}"]`);
+  await sleep(300);
+  await r068Touch(H, 1536, 864, false);
+  await H.setViewport(1536, 864);
+  const offLooksOff = (rows, t) => { const off = rows.find((r) => r.t === t); const on = rows.find((r) => r.on === 'true'); return off && on && off.on === 'false' && off.bd !== on.bd && off.bg !== on.bg && off.fg !== on.fg; };
+  record('★★★ R068 #56 난이도 — 누르면 꺼짐(aria · 배경 · 테두리 · 글자색 모두 켜진 것과 다름) · PC 클릭 · m390 터치(눌린 뒤 hover 가 남지 않음)', offLooksOff(pc1, 'easy') && offLooksOff(m1, 'hard'), JSON.stringify({ pc1, m1 }));
+  record('★★ R068 #56 마지막 하나 끄기 — 흔들림 + "하나는 남겨야" 안내 · 그대로 켜짐', last.shake && /하나/.test(last.hint) && last.on.join(',') === 'easy', JSON.stringify(last));
+
+  // #52 업적 설명 — 생략 없이 두 줄까지
+  const ach = {};
+  for (const [dev, w, h, touch] of [R068_DEVS[0], R068_DEVS[2]]) {
+    await r068Touch(H, w, h, touch);
+    if (!touch) await H.setViewport(w, h);
+    await sleep(300);
+    await H.evaluate("document.querySelector('#rename-btn')?.click()");
+    await H.waitFor("document.querySelector('.ach-all-open') !== null", 3000).catch(() => false);
+    await H.evaluate("document.querySelector('.ach-all-open')?.click()");
+    await H.waitFor("document.querySelector('.ach-all .ach-desc') !== null", 5000).catch(() => false);
+    await sleep(300);
+    ach[dev] = JSON.parse(await H.evaluate("JSON.stringify((() => { const d = [...document.querySelectorAll('.ach-all .ach-desc')]; const lh = (e) => parseFloat(getComputedStyle(e).lineHeight) || 16; return { n: d.length, cut: d.filter((e) => e.scrollWidth > e.clientWidth + 1 || e.scrollHeight > e.clientHeight + 1).map((e) => e.innerText.slice(0, 12)), maxLines: Math.max(...d.map((e) => Math.round(e.getBoundingClientRect().height / lh(e)))), mg: document.querySelector('.ach-all [data-ach=\"mg-win-1\"] .ach-desc')?.innerText ?? '' }; })())"));
+    await snap(H, `355-ach-${dev}`);
+    await H.key('Escape');
+    await sleep(150);
+    await H.key('Escape');
+    await sleep(150);
+  }
+  await r068Touch(H, 1536, 864, false);
+  await H.setViewport(1536, 864);
+  record('★★ R068 #52 업적 — 설명 생략(…) 없음 · 두 줄까지 · "미니게임 첫 1위" 설명 전부(1536 · m390)', Object.values(ach).every((a) => a.n > 5 && a.cut.length === 0 && a.maxLines <= 2 && /연습 제외/.test(a.mg)), JSON.stringify(ach));
+
+  // 이모티콘 — 찾기 포커스(340) · ✎ 정렬(#57) · 2560 특별 둘째 줄(#65)
+  const hId = await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_rr`])).rows[0]?.id);
+  const sp = await withPg(async (c) => (await c.query(`SELECT e.id FROM emojis e JOIN emoji_themes t ON t.id = e.theme_id WHERE e.category = 'special' ORDER BY t.id, e.id LIMIT 24`)).rows.map((r) => Number(r.id)) ?? []);
+  if (hId && sp?.length) await withPg((c) => c.query(`INSERT INTO account_emojis (account_id, emoji_id) SELECT $1, unnest($2::int[]) ON CONFLICT DO NOTHING`, [hId, sp]));
+  await H.goto(`${BASE}/r/${roomId}`);
+  await H.waitFor("document.querySelector('.stage') !== null", 10000).catch(() => false);
+  await sleep(600);
+  const search = {};
+  for (const [dev, w, h, touch] of [R068_DEVS[0], R068_DEVS[2]]) {
+    await r068Touch(H, w, h, touch);
+    if (!touch) await H.setViewport(w, h);
+    await sleep(300);
+    if (!(await H.evaluate("document.querySelector('.emoji-pop') !== null"))) await H.evaluate("document.querySelector('.emoji-btn')?.click()");
+    await H.waitFor("document.querySelector('.emoji-search') !== null", 3000).catch(() => false);
+    const probe = "JSON.stringify((() => { const w = document.querySelector('.emoji-search-wrap'); const i = document.querySelector('.emoji-search'); const wr = w.getBoundingClientRect(); const ir = i.getBoundingClientRect(); const cs = getComputedStyle(i); return { wh: Math.round(wr.height), wb: getComputedStyle(w).borderTopColor, ishadow: cs.boxShadow, ioutline: cs.outlineStyle, inside: ir.top >= wr.top - 0.5 && ir.bottom <= wr.bottom + 0.5, fs: cs.fontSize }; })())";
+    await sleep(400); // 창 pop-in(크기 애니메이션 140ms)이 끝난 뒤 잰다
+    const idle = JSON.parse(await H.evaluate(probe));
+    await snap(H, `340-emoji-search-idle-${dev}`);
+    if (touch) await tapOn(H, '.emoji-search');
+    else await realClick(H, '.emoji-search');
+    await sleep(250);
+    const focus = JSON.parse(await H.evaluate(probe));
+    await snap(H, `340-emoji-search-focus-${dev}`);
+    const pen = JSON.parse(await H.evaluate("JSON.stringify((() => { const b = document.querySelector('[data-emoji-edit]')?.getBoundingClientRect(); const s = document.querySelector('[data-emoji-edit] svg')?.getBoundingClientRect(); return b && s ? [Math.round(((s.left + s.right) - (b.left + b.right)) / 2 * 10) / 10, Math.round(((s.top + s.bottom) - (b.top + b.bottom)) / 2 * 10) / 10] : null; })())"));
+    if (touch) await snap(H, '341-emoji-edit-m390');
+    search[dev] = { idle, focus, pen };
+    await H.evaluate("document.querySelector('.emoji-pop .popup-close')?.click()");
+    await sleep(200);
+  }
+  await r068Touch(H, 1536, 864, false);
+  await H.setViewport(1536, 864);
+  record('★★★ R068 찾기 칸 포커스 — 입력칸 그림자 · 테두리 없음 · 둥근 칸(wrap) 높이 그대로 · 테두리 색만 바뀜 · 모바일 16px(1536 · m390)', Object.values(search).every((s) => s.focus.ishadow === 'none' && s.focus.inside && s.focus.wh === s.idle.wh && s.focus.wb !== s.idle.wb) && search.m390?.focus.fs === '16px', JSON.stringify(search));
+  record('★★ R068 #57 ✎ — 아이콘이 버튼 가운데(±1px · 1536 · m390)', Object.values(search).every((s) => s.pen && Math.abs(s.pen[0]) <= 1 && Math.abs(s.pen[1]) <= 1), JSON.stringify(Object.fromEntries(Object.entries(search).map(([k, v]) => [k, v.pen]))));
+  // #65 2560 · 편집 모드 · 3번 자리 → 특별 탭 둘째 줄 첫 칸
+  await H.setViewport(2560, 1313);
+  await sleep(300);
+  await realClick(H, '.emoji-btn');
+  await H.waitFor("document.querySelector('.emoji-pop') !== null", 3000).catch(() => false);
+  await realClick(H, '[data-emoji-edit]');
+  await sleep(200);
+  await realClick(H, '.emoji-slot-cell:nth-child(3) .emoji-slot');
+  await sleep(200);
+  await realClick(H, '.emoji-tab[title="특별"]');
+  await sleep(300);
+  const second = JSON.parse(await H.evaluate("JSON.stringify((() => { const cells = [...document.querySelectorAll('.emoji-group-cells .emoji-cell')]; if (cells.length < 2) return null; const top0 = cells[0].getBoundingClientRect().top; const c = cells.find((x) => x.getBoundingClientRect().top > top0 + 10); if (!c) return { rows: 1, n: cells.length }; c.dataset.r068 = '1'; const id = c.querySelector('img')?.getAttribute('src') ?? ''; return { rows: 2, n: cells.length, id }; })())"));
+  const hit = second?.rows === 2 ? await realClick(H, '.emoji-cell[data-r068="1"]') : { hit: false };
+  await sleep(300);
+  const slot3 = await H.evaluate("document.querySelector('.emoji-slot-cell:nth-child(3) .emoji-slot img')?.getAttribute('src') ?? ''");
+  await snap(H, '342-emoji-special-row2-2560');
+  record('★★★ R068 #65 2560 · 편집 모드 — 특별 둘째 줄 칸이 진짜 클릭에 눌리고 3번 자리에 들어간다', hit.hit && second?.id && slot3 === second.id, JSON.stringify({ second, hit, slot3 }));
+  await H.key('Escape');
+  await H.key('Escape');
+  await H.setViewport(1536, 864);
+  for (const s of socks) s.close();
+  H.close();
+}
+
+// ── avatar ──────────────────────────────────────────────────────────────────
+async function r068AvatarFlow(browser) {
+  const sharp = (await import('sharp')).default;
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'r068av-'));
+  const noise = (w, h) => { const b = Buffer.alloc(w * h * 3); for (let i = 0; i < b.length; i += 1) b[i] = (i * 2654435761) >>> 24; return sharp(b, { raw: { width: w, height: h, channels: 3 } }); };
+  const files = {
+    'jpg-56k': path.join(dir, 'a.jpg'),
+    'jpg-big': path.join(dir, 'big.jpg'),
+    png: path.join(dir, 'c.png'),
+    webp: path.join(dir, 'd.webp'),
+    'jpg-rot': path.join(dir, 'rot.jpg'),
+  };
+  await noise(420, 320).jpeg({ quality: 70 }).toFile(files['jpg-56k']);
+  await noise(4032, 3024).jpeg({ quality: 88 }).toFile(files['jpg-big']);
+  await noise(600, 600).png().toFile(files.png);
+  await noise(800, 600).webp().toFile(files.webp);
+  await noise(640, 480).jpeg().withMetadata({ orientation: 6 }).toFile(files['jpg-rot']);
+  // ★ 휴대폰 HEIC 를 이름만 .jpg 로 바꾼 파일(앞머리 ftypheic) — 브라우저가 못 연다 → 바꾸는 법 안내
+  const heic = path.join(dir, 'phone.jpg');
+  writeFileSync(heic, Buffer.concat([Buffer.from([0, 0, 0, 0x18]), Buffer.from('ftypheic'), Buffer.from([0, 0, 0, 0]), Buffer.from('mif1heic'), Buffer.alloc(4000, 7)]));
+  const H = await newPage(browser, 'R068-av', true);
+  await H.setViewport(2560, 1313);
+  await signUp(H, 'ra', '사진손님');
+  await createRoom(H, 'R068 사진');
+  await H.evaluate("(() => { const f = window.fetch; window.__av = []; window.fetch = async (...a) => { const r = await f(...a); if (String(a[0]).includes('/api/avatar')) { const c = r.clone(); window.__av.push({ s: r.status, b: (await c.text()).slice(0, 120) }); } return r; }; })()");
+  const out = {};
+  for (const [k, f] of Object.entries(files)) {
+    await H.evaluate("window.__av = []");
+    if (!(await H.evaluate("document.querySelector('.rename-pop') !== null"))) await realClick(H, '#rename-btn');
+    await H.waitFor("document.querySelector('#avatar-file') !== null", 3000).catch(() => false);
+    const doc = await H.send('DOM.getDocument', { depth: -1, pierce: true });
+    const { nodeId } = await H.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
+    await H.send('DOM.setFileInputFiles', { nodeId, files: [f] });
+    await H.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null || document.querySelector('.profile-editor .form-error') !== null", 8000).catch(() => false);
+    await sleep(300);
+    const err0 = await H.evaluate("document.querySelector('.profile-editor .form-error')?.innerText ?? ''");
+    if (!err0) await realClick(H, '.profile-editor button', '등록');
+    await H.waitFor("document.querySelector('.rename-pop .rename-msg')?.innerText.includes('사진') || document.querySelector('.profile-editor .form-error') !== null", 8000).catch(() => false);
+    out[k] = JSON.parse(await H.evaluate("JSON.stringify({ msg: document.querySelector('.rename-pop .rename-msg')?.innerText ?? '', err: document.querySelector('.profile-editor .form-error')?.innerText ?? '', net: window.__av })"));
+    if (k === 'jpg-56k') await snap(H, '360-avatar-ok-2560');
+    if (out[k].err) await snap(H, `360-avatar-err-${k}`);
+    await H.evaluate("document.querySelector('.profile-editor .popup-close')?.click()");
+    await sleep(200);
+  }
+  record(`★★★ R068 #71 프로필 사진 — jpg 56KB · 4032×3024 jpg · png · webp · 회전 jpg 모두 [등록] → "바꿨습니다"(PUT 200 · PC 2560)${EXTERNAL_URL ? ' · 터널' : ''}`, Object.values(out).every((o) => /바꿨/.test(o.msg) && !o.err && o.net.some((n) => n.s === 200)), JSON.stringify(out));
+  // HEIC 를 .jpg 로 바꾼 것
+  if (!(await H.evaluate("document.querySelector('.rename-pop') !== null"))) await realClick(H, '#rename-btn');
+  await H.waitFor("document.querySelector('#avatar-file') !== null", 3000).catch(() => false);
+  {
+    const doc = await H.send('DOM.getDocument', { depth: -1, pierce: true });
+    const { nodeId } = await H.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
+    await H.send('DOM.setFileInputFiles', { nodeId, files: [heic] });
+  }
+  await H.waitFor("document.querySelector('.profile-editor .form-error') !== null", 8000).catch(() => false);
+  await sleep(300);
+  const he = await H.evaluate("document.querySelector('.profile-editor .form-error')?.innerText ?? ''");
+  await snap(H, '361-avatar-heic-as-jpg');
+  record('★★ R068 #71 휴대폰 HEIC 를 이름만 .jpg 로 — "HEIC · 이름만 .jpg 로 바꿔서는 안 돼요 · JPG 로 저장" 안내', /HEIC/.test(he) && /\.jpg 로 바꿔서는/.test(he) && /JPG/.test(he), he);
+  H.close();
+}
+
+// ── game ────────────────────────────────────────────────────────────────────
+// ★ 실제 긴 문제처럼 문장 넷(문장마다 줄을 바꾸는 QuestionText 규칙 — 짧은 문장을 여럿 두면 줄 수가 실제보다 많아진다)
+const QLEN_FILL = '이 문장은 긴 질문 화면을 검사하려고 일부러 길게 늘여 쓴 연습용 글이며 실제로 나오는 문제는 아닙니다. ';
+async function r068GameFlow(browser) {
+  // 검사 DB 에 240자 질문 하나(5760 을 본뜸) · 이 판에는 140(5760) · 197(가장 긴 활성) · 240 세 문제만 나오게 잠깐 나머지를 쉬게 한다(끝나면 되돌림)
+  const prep = await withPg(async (c) => {
+    const longest = (await c.query(`SELECT id::text FROM questions WHERE is_active AND id <> 5760 ORDER BY char_length(question_text) DESC, id LIMIT 1`)).rows[0].id;
+    const cols = (await c.query(`SELECT column_name FROM information_schema.columns WHERE table_name = 'questions' AND column_name NOT IN ('id', 'question_text', 'source_ref') AND is_generated = 'NEVER' AND column_default IS DISTINCT FROM 'nextval(''questions_id_seq''::regclass)'`)).rows.map((r) => r.column_name);
+    let text = '[QLEN 240] ';
+    while ([...text].length < 240) text += QLEN_FILL;
+    text = [...text].slice(0, 239).join('') + '?';
+    const ins = await c.query(`INSERT INTO questions (question_text, ${cols.join(', ')}) SELECT $1, ${cols.join(', ')} FROM questions WHERE id = 5760 RETURNING id::text`, [text]);
+    const nid = ins.rows[0].id;
+    const acols = (await c.query(`SELECT column_name FROM information_schema.columns WHERE table_name = 'question_answers' AND column_name NOT IN ('id', 'question_id')`)).rows.map((r) => r.column_name);
+    await c.query(`INSERT INTO question_answers (question_id, ${acols.join(', ')}) SELECT $1, ${acols.join(', ')} FROM question_answers WHERE question_id = 5760`, [nid]);
+    await c.query(`DROP TABLE IF EXISTS _r068_active`);
+    await c.query(`CREATE TABLE _r068_active AS SELECT id FROM questions WHERE is_active`);
+    await c.query(`UPDATE questions SET is_active = (id = ANY($1::bigint[])) WHERE is_active OR id = ANY($1::bigint[])`, [[5760, longest, nid]]);
+    return { longest, nid, len: [...text].length };
+  });
+  console.log(`  [r068] QLEN 준비 ${JSON.stringify(prep)}`);
+  try {
+    await r068GamePlay(browser, prep);
+  } finally {
+    await withPg(async (c) => {
+      await c.query(`UPDATE questions SET is_active = true WHERE id IN (SELECT id FROM _r068_active)`);
+      await c.query(`DROP TABLE IF EXISTS _r068_active`);
+      if (prep?.nid) {
+        await c.query(`DELETE FROM question_feedback WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM game_questions WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM question_answers WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM questions WHERE id = $1`, [prep.nid]).catch((e) => console.log(`  [r068] 240자 질문 지우기 실패(남겨 둠): ${e.message}`));
+      }
+    });
+  }
+}
+const QLEN_PROBE = `JSON.stringify((() => {
+  const q = document.querySelector('.q-text'); const card = document.querySelector('.question-card');
+  if (!q) return null;
+  const cs = getComputedStyle(q); const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.45;
+  const head = document.querySelector('.q-head'); const timer = document.querySelector('.q-timer'); const prog = document.querySelector('.q-progress');
+  const input = document.querySelector('.chat-card input, .chat-form input'); const hints = document.querySelector('.q-hints');
+  const vis = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return r.bottom <= innerHeight + 1 && r.top >= -1; };
+  return {
+    len: [...(q.dataset.text ?? q.innerText)].length,
+    fs: cs.fontSize,
+    lines: Math.round(q.getBoundingClientRect().height / lh),
+    timerOneLine: timer && prog ? Math.abs((timer.getBoundingClientRect().top + timer.getBoundingClientRect().bottom) / 2 - (prog.getBoundingClientRect().top + prog.getBoundingClientRect().bottom) / 2) < 6 && timer.getBoundingClientRect().height < parseFloat(getComputedStyle(timer).fontSize) * 2.2 : null,
+    headH: head ? Math.round(head.getBoundingClientRect().height) : null,
+    input: vis(input), hints: vis(hints),
+    inputOver: input ? Math.round(input.getBoundingClientRect().bottom - innerHeight) : null,
+    pageScroll: document.scrollingElement.scrollHeight > innerHeight + 1,
+    cardScroll: card ? card.scrollHeight > card.clientHeight + 1 : null,
+    overflowX: document.documentElement.scrollWidth > innerWidth + 1,
+  };
+})())`;
+async function r068GamePlay(browser, prep) {
+  const H = await newPage(browser, 'R068-game', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'rq', '긴질문방장');
+  const roomId = await createRoom(H, 'R068 긴 질문');
+  const socks = await socketGuests(roomId, 1, 'rq');
+  const guest = socks[0];
+  await sleep(600);
+  await setQuestionCount(H, 3);
+  await sleep(300);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const table = [];
+  const rate = {};
+  let cere = null;
+  const sizes = [['m360', 360, 740, true], ['1536', 1536, 864, false], ['2560', 2560, 1313, false]];
+  for (let i = 0; i < 3; i += 1) {
+    await H.waitFor(`document.querySelector('.question-card .q-progress')?.innerText.trim().startsWith('${i + 1} ')`, 60000).catch(() => false);
+    await sleep(500);
+    const len = await H.evaluate("[...(document.querySelector('.q-text')?.dataset.text ?? '')].length");
+    const tag = len >= 230 ? '240' : len >= 180 ? '198' : '140';
+    for (const [dev, w, h, touch] of sizes) {
+      await touchDevice(H, w, h, touch);
+      if (!touch) await H.setViewport(w, h);
+      await H.evaluate("window.dispatchEvent(new Event('resize'))");
+      await sleep(450);
+      // 크기를 바꾼 뒤 지문 맞춤(QuestionText ResizeObserver)을 한 번 더 — 바뀌는 도중의 뿌리 글자 크기로 잰 값을 버린다
+      await H.evaluate("(() => { const q = document.querySelector('.q-text'); if (q) { q.style.width = '99%'; requestAnimationFrame(() => { q.style.width = ''; }); } })()");
+      await sleep(450);
+      const m = JSON.parse(await H.evaluate(QLEN_PROBE));
+      table.push({ ...m, chars: m?.len, len: tag, dev });
+      if (dev === 'm360' || dev === '1536') await snap(H, `320-qlen-${tag}-${dev === 'm360' ? 'm390' : '1536'}`);
+      if (dev === 'm360') {
+        // ★ 실험(브리핑 "글자 크기를 줄이면 240자가 되는지도 따로") — 지문 글자를 16 · 15px 로 눌러 본다(15 = QuestionText 하한)
+        for (const px of [16, 15]) {
+          await H.evaluate(`(() => { let st = document.getElementById('r068-qpx'); if (!st) { st = document.createElement('style'); st.id = 'r068-qpx'; document.head.appendChild(st); } st.textContent = '.q-text { --q-px: ${px}px !important; font-size: ${px}px !important; }'; })()`);
+          await sleep(300);
+          const e = JSON.parse(await H.evaluate(QLEN_PROBE));
+          table.push({ ...e, chars: e?.len, len: tag, dev: `m360-${px}px` });
+          if (tag === '240' && px === 15) await snap(H, '320-qlen-240-m390-15px');
+        }
+        await H.evaluate("document.getElementById('r068-qpx')?.remove()");
+        await sleep(200);
+      }
+      if (dev === '2560') await snap(H, `320-qlen-${tag}-2560`);
+    }
+    if (tag === '240') {
+      await touchDevice(H, 360, 740, true);
+      await setTheme(H, 'night');
+      await sleep(300);
+      await snap(H, '320-qlen-240-m390-night');
+      await setTheme(H, 'pastel');
+    }
+    // 정답 공개 — i=0 손님이 맞히고 이모티콘 셋(#66) · 그 밖은 방장 넘기기
+    await touchDevice(H, 1536, 864, false);
+    await H.setViewport(1536, 864);
+    await sleep(300);
+    if (i === 0) {
+      await answerCurrent(H);
+      await H.waitFor("document.querySelector('.reveal') !== null", 8000).catch(() => false);
+      await sleep(400);
+      await H.setInput('.chat-card input', '😀😂👍');
+      await H.click('전송');
+      await sleep(900);
+      cere = JSON.parse(await H.evaluate("JSON.stringify({ n: document.querySelectorAll('.ceremony-msg img.emoji, .ceremony-msg .emoji').length })"));
+      await snap(H, '357-ceremony-emoji3-1536');
+    } else {
+      await openHostSkip(H);
+      await H.evaluate("document.querySelector('.confirm-modal[data-kind=\"host-skip\"] .confirm-actions button')?.click()");
+      await H.waitFor("document.querySelector('.reveal') !== null", 8000).catch(() => false);
+      await sleep(400);
+    }
+    if (i === 0) {
+      rate.before = await H.evaluate("document.querySelector('[data-rate-ask]')?.innerText ?? ''");
+      await snap(H, '300-rate-reveal');
+      const c = await realClick(H, '.reveal-fb button[data-vote="1"]');
+      await H.waitFor("/고마워요/.test(document.querySelector('[data-rate-ask]')?.innerText ?? '')", 4000).catch(() => false);
+      rate.after = await H.evaluate("document.querySelector('[data-rate-ask]')?.innerText ?? ''");
+      rate.hit = c.hit;
+      rate.focus = await H.evaluate("document.activeElement?.tagName ?? ''");
+      await snap(H, '300-rate-after');
+      for (const [dev, w, h, touch] of sizes.slice(2)) { await H.setViewport(w, h); await sleep(300); await snap(H, `300-rate-after-${dev}`); }
+      await H.setViewport(1536, 864);
+    }
+    if (i === 1) {
+      await touchDevice(H, 390, 844, true);
+      await sleep(400);
+      rate.m = JSON.parse(await H.evaluate("JSON.stringify((() => { const ask = document.querySelector('[data-rate-ask]'); const f = document.querySelector('.reveal-fb')?.getBoundingClientRect(); const inp = document.querySelector('.chat-card input, .chat-form input')?.getBoundingClientRect(); return { cut: ask ? ask.scrollWidth > ask.clientWidth + 1 : null, fb: !!f && f.bottom <= innerHeight, input: !!inp && inp.bottom <= innerHeight + 1, overlap: !!f && !!inp && f.bottom > inp.top && f.top < inp.bottom, overflowX: document.documentElement.scrollWidth > innerWidth + 1 }; })())"));
+      await snap(H, '300-rate-m390');
+      await touchDevice(H, 1536, 864, false);
+      await H.setViewport(1536, 864);
+    }
+  }
+  // 결과 — 접힘 기본(#68) · 평가 수 · 펼침 기억 · 0P 안내
+  await H.waitFor("document.querySelector('.result-card') !== null", 60000).catch(() => false);
+  await sleep(600);
+  await H.evaluate("localStorage.removeItem('qw.fbResultOpen')");
+  const res1 = JSON.parse(await H.evaluate("JSON.stringify({ def: document.querySelector('.fb-result')?.dataset.fbDefault ?? '', count: document.querySelector('[data-fb-count]')?.innerText ?? '', list: !!document.querySelector('.fb-list') })"));
+  await snap(H, '300-rate-result-folded');
+  await realClick(H, '.fb-result-head');
+  await sleep(500);
+  const res2 = JSON.parse(await H.evaluate("JSON.stringify({ list: !!document.querySelector('.fb-list'), note: document.querySelector('[data-rate-note]')?.innerText ?? '', mem: localStorage.getItem('qw.fbResultOpen'), votes: document.querySelectorAll('.fb-row .fb-vote').length })"));
+  await snap(H, '300-rate-result');
+  const pts = await withPg(async (c) => (await c.query(`SELECT coalesce(sum(g.amount), 0)::int n FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1 AND g.reason = 'rate'`, [`${ACCOUNT_PREFIX}_rq`])).rows[0].n);
+  record('★★★ R068 정답 공개 평가 — "방금 문제 어땠어요? (+1P)" → 👍 진짜 클릭 → "+1P 고마워요" · 입력창 포커스 안 뺏김 · 1P 지급(검사 DB)', /방금 문제 어땠어요\? \(\+1P\)/.test(rate.before) && /\+1P 고마워요/.test(rate.after) && rate.hit && pts === 1, JSON.stringify({ ...rate, pts }));
+  record('★★ R068 공개 평가 m390 — 물음 글 잘림 없음 · 버튼 줄이 화면 안 · 입력칸과 겹치지 않음 · 가로 넘침 없음', rate.m?.cut === false && rate.m?.fb && rate.m.input && !rate.m.overlap && !rate.m.overflowX, JSON.stringify(rate.m));
+  record('★★★ R068 #68 결과 — 평가 목록은 접힌 채 시작 · 접혀도 "평가 N/3" · 펼치면 3단계 버튼 · 0P 안내 + 제보 링크 · 펼침 기억', res1.def === 'closed' && !res1.list && /평가 1\/3/.test(res1.count) && res2.list && res2.votes === 9 && /공개 시간에 누르면 \+1P/.test(res2.note) && /채택되면 \+5P/.test(res2.note) && res2.mem === '1', JSON.stringify({ res1, res2 }));
+  record('★★★ R068 #66 세레모니 — 붙여 보낸 이모티콘 셋이 셋 다', cere?.n === 3, JSON.stringify(cere));
+  // QLEN 표
+  const row = (len, dev) => table.find((t) => t.len === len && t.dev === dev);
+  console.log('  [r068] QLEN 표');
+  for (const t of table) console.log(`    ${t.len}(${t.chars})자 · ${t.dev} — 줄 ${t.lines} · 글자 ${t.fs} · 시간 한 줄 ${t.timerOneLine} · 입력칸 ${t.input}(${t.inputOver}px) · 힌트 ${t.hints} · 페이지 스크롤 ${t.pageScroll} · 카드 스크롤 ${t.cardScroll} · 가로 넘침 ${t.overflowX}`);
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r068', 'qlen-table.json'), JSON.stringify(table, null, 1));
+  record('★★★ R068 #61 시간 표시 — 360 폭에서 140 · 197 · 240자 모두 머리줄 한 줄', ['140', '198', '240'].every((l) => row(l, 'm360')?.timerOneLine === true), JSON.stringify(table.filter((t) => t.dev === 'm360').map((t) => [t.len, t.timerOneLine, t.headH])));
+  record('★★ R068 QLEN — 1536 · 2560 에서 140 · 197 · 240자 입력칸 · 힌트 줄이 스크롤 없이 보임(판단 근거 표 — 360 은 표로만)', ['140', '198', '240'].every((l) => ['1536', '2560'].every((d) => row(l, d)?.input && row(l, d)?.hints && !row(l, d)?.pageScroll)), JSON.stringify(table.map((t) => [t.len, t.dev, t.lines, t.input, t.hints, t.pageScroll])));
+  // #53 로비 "지난 판 문제 평가" m360 — 펼친 줄이 화면 밖으로 안 나감
+  await H.evaluate("[...document.querySelectorAll('.result-card button')].find((b) => /로비/.test(b.innerText))?.click()");
+  await H.waitFor("document.querySelector('#feedback-last-btn') !== null", 10000).catch(() => false);
+  await touchDevice(H, 360, 640, true);
+  await sleep(400);
+  await tapOn(H, '#feedback-last-btn');
+  await H.waitFor("document.querySelector('.fb-modal .fb-row') !== null", 6000).catch(() => false);
+  await tapOn(H, '.fb-modal .fb-row:nth-child(3) .fb-q');
+  await sleep(400);
+  const last = JSON.parse(await H.evaluate("JSON.stringify((() => { const m = document.querySelector('.fb-modal'); const r = m?.getBoundingClientRect(); const bad = [...(m?.querySelectorAll('*') ?? [])].filter((e) => { const b = e.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 1 || b.right > r.right + 1); }).map((e) => e.className).slice(0, 5); return { open: !!m?.querySelector('.fb-row.open'), bad, docX: document.documentElement.scrollWidth > innerWidth + 1, modalX: m ? m.scrollWidth > m.clientWidth + 1 : null, note: m?.querySelector('[data-rate-note]')?.innerText ?? '' }; })())"));
+  await snap(H, '358-fblast-m360');
+  record('★★★ R068 #53 로비 지난 판 평가 m360 — 줄을 펼쳐도 글이 창 · 화면 밖으로 안 나감 · 0P 안내', last.open && last.bad.length === 0 && !last.docX && !last.modalX && /\+1P/.test(last.note), JSON.stringify(last));
+  await touchDevice(H, 1536, 864, false);
+  for (const s of socks) s.close();
+  H.close();
+}
+
 async function r066ResultAt(H, label, shot) {
   const out = {};
   for (const z of R066_PC) {
@@ -5132,6 +5651,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R067) {
     await closeAllTabs(browser);
     await r067Flow(browser);
+  }
+  // ★ R068 — 찬종 제보 20 · 정답 공개 평가 · photoyear · 긴 질문
+  if (process.env.UICHECK_R068) {
+    await closeAllTabs(browser);
+    await r068Flow(browser);
   }
   // ★ R065 — 제보 메뉴 두 갈래 · 최근 목록 · 창이 열린 채 미니게임
   if (process.env.UICHECK_R065) {

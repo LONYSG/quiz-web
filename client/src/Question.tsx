@@ -24,6 +24,7 @@ import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
 import Emoji from './Emoji.js';
+import { isSpecialEmoji } from './emojiCatalog.js';
 import FitText from './FitText.js';
 import ExplainText from './ExplainText.js';
 import ConfirmModal from './ConfirmModal.js';
@@ -227,7 +228,7 @@ export default function Question({
         {formatTopics(topics) !== '전체' && <span className="badge diff">분야 {formatTopics(topics)}</span>}
         {question.selfExperienced && (
           /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) — 진행에 필요한 알림이다 */
-          <span className="badge exp">이미 풀어본 퀴즈 — 이번 문제는 점수 없음</span>
+          <span className="badge exp q-exp-head">이미 풀어본 퀴즈 — 이번 문제는 점수 없음</span>
         )}
         {/* ★ 0 이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */}
         {active &&
@@ -237,6 +238,8 @@ export default function Question({
             <span className="q-timer dim">결과 확인 중…</span>
           ))}
       </div>
+      {/* ★ R068 (#61) — 모바일 머리줄은 한 줄 고정이라 이 뱃지(잘리면 안 됨)는 아래 줄에 따로 */}
+      {question.selfExperienced && <p className="q-exp-line"><span className="badge exp">이미 풀어본 퀴즈 — 이번 문제는 점수 없음</span></p>}
 
       {/* ★★ 1순위 — 문제 지문. 문장마다 줄을 바꾸고 긴 문장은 글자를 줄여 한 줄에 (R035) */}
       <QuestionText text={question.text} />
@@ -334,7 +337,11 @@ export default function Question({
                     <p key={m.id} className="ceremony-msg">
                       {m.emojiId ? (
                         /* ★ R064 (D-267 · 찬종 #22) — 특별 이모티콘은 세레모니에서 1.5배(56 → 84 · 모바일은 그대로 — CSS) */
-                        <Emoji id={m.emojiId} size={m.special ? 84 : 56} className={m.special ? 'ceremony-special' : undefined} />
+                        /* ★ R068 (찬종 #66 "이모티콘 붙여서 보내면 세레모니에서 맨앞 하나만") — 채팅으로 붙여 보낸 1~3개(emojiIds)를 다 나란히(옛: 첫 번호 emojiId 만) */
+                        (m.emojiIds?.length ? m.emojiIds : [m.emojiId]).map((id, i) => {
+                          const sp = m.emojiIds?.length ? isSpecialEmoji(id) : !!m.special;
+                          return <Emoji key={i} id={id} size={sp ? 84 : 56} className={sp ? 'ceremony-special' : undefined} />;
+                        })
                       ) : (
                         <ChatText text={m.text} mine={m.accountId === myAccountId} masked={m.masked} />
                       )}

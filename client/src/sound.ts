@@ -429,7 +429,7 @@ export function sfx(id: SfxId): void {
 /**
  * ★★★ R067 (D-296 · 찬종 "똑·딱") — 고기 굽기 박자. 옛 메트로놈 틱(R066) · 박자 점을 바꿨다.
  *   strong = 정수 초의 "똑"(낮고 또렷 — 나무 블록 꼴) · weak = 반 초의 "딱"(짧고 작게 · 강세의 40%).
- *   vol = 1 → 0.25 (가린 뒤 0 까지 점점 작게 — 부르는 쪽이 정한다). 0초에는 부르지 않는다(정답 소리 금지). 효과음 음량을 따른다.
+ *   ★ R068 — 가린 뒤에는 부르지 않는다(찬종 #55). 0초에는 부르지 않는다(정답 소리 금지). 효과음 음량을 따른다.
  */
 export function cakeTick(strong: boolean, vol = 1): void {
   if (!prefs.sfxOn || !ctx || ctx.state !== 'running' || !sfxGain) {

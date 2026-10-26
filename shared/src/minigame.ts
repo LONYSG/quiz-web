@@ -30,7 +30,9 @@ export type MinigameKey =
   | 'gauge'
   // ★ R054
   | 'balloon'
-  | 'tap';
+  | 'tap'
+  // ★ R068 — 사진 연도(docs/18 §8)
+  | 'photoyear';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -50,7 +52,7 @@ export interface MinigameInfo {
   /** 값이 작을수록 좋은가(케이크 — 오차) · 클수록 좋은가(균형 — 작은 쪽 %) */
   better: 'low' | 'high';
   /** 표시 단위 */
-  unit: '초' | '%' | 'ms' | '°';
+  unit: '초' | '%' | 'ms' | '°' | '년';
   /** ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?) */
   scoring?: 'rank' | 'correct';
   /**
@@ -199,6 +201,20 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     better: 'low',
     unit: '%',
     fixedDecimals: 1,
+  },
+  // ★★ R068 (docs/18 §8 · C82 ③) — 이 사진 몇 년도? 사진 한 장 → 연도 4자리 · 오차(년) 작은 순 · 대략(circa)은 범위 안이면 0
+  {
+    key: 'photoyear',
+    name: '이 사진 몇 년도?',
+    oneLine: '사진 한 장 — 찍은 해를 맞혀 보세요! 가장 가까운 사람이 1등',
+    controlsPc: '연도 4자리 입력 → Enter',
+    controlsMobile: '연도 4자리 입력 → 확인',
+    kind: 'quiz',
+    rounds: 5,
+    estSec: 110,
+    better: 'low',
+    unit: '년',
+    fixedDecimals: 0,
   },
   {
     key: 'which',

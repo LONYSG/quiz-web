@@ -6,13 +6,14 @@
 //   node scripts/minigame-load.mjs --apply      ← 쓰기 (★ 먼저 npm run db:backup)
 //   node scripts/minigame-load.mjs --mark       ← 적재한 항목의 파일 status 를 'loaded' 로 (★ G010 몫 — MAIN 은 쓰지 않는다)
 //   [--game price,photo]  게임 고르기
-//   ★ G021: photoyear(18 §8)는 GAMES_ALL 에 없다 — `--game photoyear` 로만 읽고 검사한다(서버에 게임이 없어 --apply 는 거부 · MAIN R068 이 게임을 만든 뒤 GAMES_ALL 에 넣는다)
+//   ★ G021: photoyear(18 §8)는 게임 코드가 없어 적재를 막았다 → ★ R068 게임을 만들고 GAMES_ALL 에 넣었다
 //
 // ★ 읽는 것: data/minigame/<game>/items*.json 전부(묶음 파일) + worldprice/products.json · 그림 assets/minigame/<game>/…
 // ★ 형식 검사: docs/18 0~5절(g008-check 와 같은 규칙) — 모르는 칸 · 빠진 칸 · 숫자형 · 날짜 · id 꼴 · 게임별 규칙. 걸리면 그 항목 거부(목록)
 // ★ 넣는 것: status 'verified'(또는 이미 'loaded') 만 — candidate · rejected 는 넣지 않는다. 같은 id 는 갱신(멱등).
 //   payload = 파일 항목 그대로에서 verify 칸만 뺀 것. 그림은 bytea(minigame_images — 같은 그림 id 는 갱신).
-//   그림 파일이 없으면 그 항목은 건너뛰고 목록에 남긴다(그림 없는 항목은 출제하지 않는다 — '어느 쪽?'·얼마나 는 그림 없음(null)도 된다).
+//   그림 파일이 없으면 그 항목은 건너뛰고 목록에 남긴다(그림 없는 항목은 출제하지 않는다).
+//   ★ R068 — 사진이 있어야 하는 게임(NEEDS_IMAGE: 얼마게요 · 사진 · 얼마나 · 어느 쪽?(양쪽) · 사진 연도)은 사진이 모자라면 적재하지 않는다(옛: 얼마나 · 어느 쪽? 은 null 도 됐다).
 //   파일에서 빠졌거나 verified 가 아니게 된 항목은 DB 에서 active=false (지우지 않는다 — 경험 기록이 남아 있다).
 // ★ 파일은 쓰지 않는다(--mark 만 예외 · G010 이 쓴다).
 // =============================================================================
@@ -25,10 +26,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
 const APPLY = args.includes('--apply');
 const MARK = args.includes('--mark');
-const GAMES_ALL = ['price', 'worldprice', 'photo', 'estimate', 'which'];
+const GAMES_ALL = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear'];
 const GAMES = args.includes('--game') ? args[args.indexOf('--game') + 1].split(',') : GAMES_ALL;
-const GAMES_LATER = ['photoyear']; // ★ G021 — 데이터만 있고 게임 코드가 아직 없다
-if (APPLY && GAMES.some((g) => GAMES_LATER.includes(g))) { console.error(`★ ${GAMES_LATER.join(' · ')} 는 아직 적재하지 않는다(게임 코드 없음 — MAIN R068 뒤 GAMES_ALL 에 넣고)`); process.exit(1); }
 
 const COMMON = ['id', 'status', 'createdRound', 'sources', 'image', 'tags', 'verify'];
 const FIELDS = {
@@ -45,6 +44,8 @@ const PRICE_CAT = ['식품', '생활', '가전', '패션', '뷰티', '취미', '
 const PHOTO_CAT = ['person', 'place', 'object', 'everyday', 'food', 'animal', 'logo'];
 const EST_KIND = ['weight', 'calorie', 'count', 'length', 'height', 'distance', 'population', 'year', 'speed', 'price', 'other'];
 const STATUS = ['candidate', 'verified', 'rejected', 'loaded'];
+// ★ R068 (찬종 10-26 ① · 서버 defs NEEDS_IMAGE 와 같은 규칙) — 사진이 있어야 하는 게임 · 필요한 장 수(어느 쪽? = 양쪽). 모자라면 적재하지 않는다
+const NEEDS_IMAGE = { price: 1, photo: 1, estimate: 1, which: 2, photoyear: 1 };
 const MIME = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp' };
 
 /** 그림 칸 검사 → 그림 하나 { imageId, file, … } 또는 문제 글 */
@@ -196,6 +197,11 @@ for (const g of GAMES) {
       }
       if (missing) {
         noImage.push(`${it.id}: ${missing}`);
+        t.noImage += 1;
+        continue;
+      }
+      if (imgs.length < (NEEDS_IMAGE[g] ?? 0)) {
+        noImage.push(`${it.id}: 사진 ${imgs.length}/${NEEDS_IMAGE[g]}장(사진 없는 항목 — R068)`);
         t.noImage += 1;
         continue;
       }

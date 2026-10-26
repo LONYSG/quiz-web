@@ -136,6 +136,8 @@ const SCENARIO_ENV = {
   emojiinline: { RESOLVED_WAIT_MS: '200' },
   // ★ R058 — 근접 오답: bot_nx 만 거른다(기본 봇 · 검사 계정 규칙 대신 — 나머지 봇의 행을 본다)
   near: { RESOLVED_WAIT_MS: '200', NEAR_MISS_SKIP_LOGIN: '^(bot_nx|uic|r10_)' },
+  // ★ R068 — 정답 공개 평가 1P: 공개 2.5초(그 사이 표) · bot_rx 만 봇 규칙(0P)
+  rate: { RESOLVED_WAIT_MS: '2500', RATE_SKIP_LOGIN: '^(bot_rx|uic|r10_)' },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -6689,7 +6691,7 @@ function driveQuiz(bot, policy) {
 
 async function scenarioMgQuiz() {
   log('시나리오 mgquiz — ★★★ 퀴즈류 미니게임 (R052 · 얼마게요 · 빅맥지수 · 사진 · 얼마나 · 어느 쪽)');
-  const PARTS = (process.env.MGQ ?? 'common,price,worldprice,photo,estimate,which').split(',');
+  const PARTS = (process.env.MGQ ?? 'common,price,worldprice,photo,estimate,which,photoyear').split(',');
   const sh = await mgShared();
   const bots = await makeBots(4);
   const [b1, b2, b3, b4] = bots;
@@ -6800,6 +6802,10 @@ async function scenarioMgQuiz() {
       expectTrue('★★ 빅맥 — EU 는 "유로 지역" · 목표 나라로 나오지 않는다', rv.every((x) => !x.rows.some((y) => y.cc === 'EU' && y.countryKo !== '유로 지역')) && seenParams.every((p) => p.target.cc !== 'EU'));
       expectTrue('★ 빅맥 — 보여 준 나라 3곳(한국 포함 · 목표 제외)', seenParams.every((p) => p.shown.length === 3 && p.shown.some((x) => x.cc === 'KR') && !p.shown.some((x) => x.cc === p.target.cc)));
     }
+    if (key === 'estimate') {
+      // ★ R068 (찬종 10-26 ①) — 사진 없는 항목은 내지 않는다
+      expectTrue('★★ R068 얼마나 — 고른 문항 모두 사진이 있다(params.imageId)', seenParams.every((p) => typeof p.imageId === 'string' && p.imageId.length > 0), JSON.stringify(seenParams.map((p) => p.imageId)));
+    }
     if (key === 'price') {
       const picked = (await mgqRounds(run.id)).map((r) => r.item_id);
       const ages = await withDb(async (c) => (await c.query(`SELECT max(now()::date - (payload->>'priceAsOf')::date)::int d FROM minigame_items WHERE item_id = ANY($1)`, [picked])).rows[0].d);
@@ -6863,6 +6869,8 @@ async function scenarioMgQuiz() {
     const run = (await mgqRun(gid))[0];
     const rows = await mgqRows(run.id);
     expect('★ 기록 = 10문항 × 4명', rows.length, 40);
+    const wr = await mgqRounds(run.id);
+    expectTrue('★★ R068 어느 쪽? — 10문항 모두 양쪽 사진(a · b imageId)', wr.every((r) => r.params?.a?.imageId && r.params?.b?.imageId), JSON.stringify(wr.slice(0, 2).map((r) => [r.params?.a?.imageId, r.params?.b?.imageId])));
     const of = (b) => rows.filter((r) => r.login_id === b.loginId);
     expectTrue('★★★ 맞히면 1점 · 틀림 · 안 고름 0점', of(b1).every((r) => r.points === 1) && of(b2).every((r) => r.points === 1) && of(b3).every((r) => r.points === 0 && r.submitted) && of(b4).every((r) => r.points === 0 && !r.submitted));
     const fin = await withDb(async (c) =>
@@ -6872,7 +6880,47 @@ async function scenarioMgQuiz() {
     await backToLobby(b1, [b2, b3, b4]);
   }
 
+  if (PARTS.includes('photoyear')) {
+    log('\n[photoyear] ★★★ 사진 연도 — b1 정답 · b2 +7년 · b3 −40년 · b4 안 냄 · 범위 밖(1799 · 올해+1) 거부');
+    const want = new Map();
+    const seenParams = [];
+    for (const b of [b1, b2, b3, b4]) {
+      driveQuiz(b, async (bot, mg) => {
+        if (bot === b1) seenParams.push(mg.round.params);
+        if (bot === b4) return null;
+        const it = (await mgqAnswer(mg.round.itemId)).payload;
+        const guess = bot === b1 ? it.year : bot === b2 ? it.year + 7 : Math.max(1800, it.year - 40);
+        const range = it.yearKind === 'circa' ? it.yearRange : null;
+        want.set(`${bot.loginId}|${mg.round.itemId}`, sh.photoyearError(guess, it.year, range));
+        if (bot === b3) return [{ delayMs: 100, input: { value: 1799, elapsedMs: 100 } }, { delayMs: 200, input: { value: new Date().getUTCFullYear() + 1, elapsedMs: 200 } }, { delayMs: 400, input: { value: guess, elapsedMs: 400 } }];
+        return { delayMs: bot === b1 ? 300 : 500, input: { value: guess, elapsedMs: bot === b1 ? 300 : 500 } };
+      });
+    }
+    const b3m = b3.mark();
+    const gid = await playQuickGame(b1, [b2, b3, b4], 5, ['photoyear'], 220000);
+    const run = (await mgqRun(gid))[0];
+    expect('★ 사진 연도 — 미니게임 한 번', run?.minigame_key, 'photoyear');
+    const rows = await mgqRows(run.id);
+    const rounds = await mgqRounds(run.id);
+    expect('★ 기록 = 문항 5 × 4명', rows.length, 20);
+    const of = (b) => rows.filter((r) => r.login_id === b.loginId);
+    const itemOf = (r) => rounds.find((x) => x.round_index === r.round_index)?.item_id;
+    expectTrue('★★★ 점수 식 — 값 = 오차(년) · 대략(circa)은 범위 안 0', [b1, b2, b3].every((b) => of(b).every((r) => Number(r.value) === want.get(`${b.loginId}|${itemOf(r)}`))), JSON.stringify([of(b2).map((r) => r.value), of(b3).map((r) => r.value)]));
+    expectTrue('★★ 정답 낸 b1 은 매 문항 1위 · 오차 0', of(b1).every((r) => r.rank === 1 && Number(r.value) === 0));
+    expectTrue('★★ b2(+7) 는 b3(−40) 보다 순위가 높거나 같다', of(b2).every((r) => r.rank <= of(b3).find((x) => x.round_index === r.round_index).rank));
+    expectTrue('★★ 미입력 — 0점', of(b4).every((r) => !r.submitted && r.points === 0));
+    const rej = b3.since(b3m, 'error').filter((e) => e.message === 'minigame.rejected').length;
+    expectTrue('★★ 범위 밖(1799 · 내년) 거부 — 문항마다 2번', rej === 10, String(rej));
+    expectTrue('★★ 정답(year)은 진행 중 보기에 없다 · 사진은 있다', seenParams.length === 5 && seenParams.every((p) => !('year' in p) && typeof p.imageId === 'string' && p.max === new Date().getUTCFullYear()), JSON.stringify(seenParams[0]));
+    const rv = b1.__mgViews.filter((v) => v.phase === 'roundResult' && v.reveal).map((v) => v.reveal);
+    expectTrue('★★ 공개 — 연도 · 제목 · 장소 · 출처', rv.length >= 5 && rv.every((x) => Number.isInteger(x.year) && x.title && x.place && x.attribution), JSON.stringify(rv[0]));
+    const asof = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_items WHERE game = 'photoyear' AND as_of IS NOT NULL`)).rows[0].n);
+    expect('★ 기준 날짜(as_of) 없음', asof, 0);
+    await backToLobby(b1, [b2, b3, b4]);
+  }
+
   // 단위처럼 — 공유 함수
+  expectTrue('★ photoyearError — 정확 0 · 차 · 범위 안 0 · 범위 밖은 가까운 끝', sh.photoyearError(1990, 1988, null) === 2 && sh.photoyearError(1950, 1952, [1945, 1955]) === 0 && sh.photoyearError(1940, 1952, [1945, 1955]) === 5);
   expectTrue('★ ratioError — 2배 = ½배 · 0 은 Infinity', Math.abs(sh.ratioError(200, 100) - sh.ratioError(50, 100)) < 1e-12 && sh.ratioError(0, 100) === Infinity);
   for (const b of bots) {
     b.leave();
@@ -7606,6 +7654,102 @@ async function scenarioEmojiInline() {
 // =============================================================================
 // ★★ R058 — 근접 오답 (A83 (나) · D-252): 가까운 것만 · 정규화 글만 · 봇 제외(검사 서버는 bot_nx 만 거른다) · 5행 상한 · 공개 뒤 안 남김 · 90일 지움
 // =============================================================================
+// -----------------------------------------------------------------------------
+// ★★★ R068 — 정답 공개 평가 3단계 · 1P (docs/19 §7) — `npm run bot -- rate`
+//   자기 서버(SCENARIO_ENV): 정답 공개 2.5초 · RATE_SKIP_LOGIN = bot_rx 만(봇 규칙 — 0P) · rh · rg 는 1P 를 받는 계정으로 친다
+//   [1] 공개 중 표 → 1P(at_reveal · rate_grant_id) · 😐(0) 도 1P · 거른 봇 0P · 바꿔도 더 안 줌 · 1초 안 연타 두 번 → 1P 한 번
+//   [2] 공개 뒤(다음 문제) 같은 문항 → 저장만 0P · 1P 받은 표는 취소해도 안 지워짐
+//   [3] 문제 중(공개 전) 표 → 0P → 그 문항 공개 때 다시 → 1P(같은 문항 한 번)
+//   [4] 결과 화면(판 끝) 표 → 0P · 합계 rh 2 · rg 2 · rx 0 · 하루 상한 없음
+// -----------------------------------------------------------------------------
+async function scenarioRate() {
+  log('시나리오 rate — ★★★ 정답 공개 평가 3단계 · 1P (R068)');
+  const rh = new Bot('rh');
+  const rg = new Bot('rg');
+  const rx = new Bot('rx');
+  const all = [rh, rg, rx];
+  for (const b of all) await b.auth();
+  const logins = all.map((b) => b.loginId);
+  await withDb(async (c) => {
+    await c.query(`UPDATE question_feedback SET rate_grant_id = NULL, adopted_grant_id = NULL WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]);
+    await c.query(`DELETE FROM point_grants WHERE reason = 'rate' AND account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]);
+    await c.query(`DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]);
+  });
+  for (const b of all) await b.connect();
+  rh.createRoom('R068 평가');
+  await rh.waitFor(() => rh.snapshot !== null, 6000, '방');
+  for (const b of [rg, rx]) {
+    b.join(rh.snapshot.room.id);
+    await b.waitFor(() => b.snapshot?.room.id === rh.snapshot.room.id, 6000, '입장');
+  }
+  rh.socket.emit('lobby.updateSettings', { questionCount: 3, minigames: false, minigameOnly: false });
+  await sleep(400);
+  rh.socket.emit('game.start', {});
+  const gameIdOf = () => String(rh.snapshot?.game?.gameId ?? rh.snapshot?.result?.gameId ?? '');
+  const post = (bot, questionId, vote) => postJson('/api/feedback/question', { gameId: gameIdOf(), questionId, vote }, bot.cookie);
+  const grants = async (bot) => (await withDb((c) => c.query(`SELECT coalesce(sum(g.amount), 0)::int n FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1 AND g.reason = 'rate'`, [bot.loginId]))).rows[0].n;
+  const row = async (bot, q) => (await withDb((c) => c.query(`SELECT f.vote, f.at_reveal, f.rate_grant_id::text AS gid FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [bot.loginId, q]))).rows[0] ?? null;
+  const solve = async (i) => {
+    await rh.waitFor(() => rh.snapshot?.room.state === 'QUESTION_ACTIVE' && rh.snapshot.question?.index === i, 30000, `문제 ${i}`);
+    const q = String(rh.snapshot.question.questionId);
+    return q;
+  };
+  const answer = async (i) => {
+    const [ans] = await answersForText(rh.snapshot.question.text);
+    rh.chat(ans);
+    await rh.waitFor(() => rh.snapshot?.room.state === 'QUESTION_RESOLVED' && rh.snapshot.question?.index === i, 15000, `공개 ${i}`);
+  };
+
+  log('\n[1] ★★★ 공개 중 표 → 1P');
+  const q1 = await solve(1);
+  await answer(1);
+  let r = await post(rh, q1, 1);
+  expectTrue('★★★ 공개 중 👍 → granted 1 · rated', r.status === 200 && r.json?.granted === 1 && r.json?.feedback?.rated === true && r.json?.feedback?.atReveal === true, JSON.stringify(r.json));
+  r = await post(rg, q1, 0);
+  expectTrue('★★ 공개 중 😐(0) → 1P', r.json?.granted === 1 && r.json?.feedback?.vote === 0, JSON.stringify(r.json));
+  r = await post(rx, q1, -1);
+  expectTrue('★★ 봇 규칙(거른 계정 bot_rx) → 저장만 0P', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.vote === -1, JSON.stringify(r.json));
+  r = await post(rh, q1, -1);
+  expectTrue('★★★ 공개 중 바꾸기 → 저장(👎) · 포인트는 더 없음', r.json?.granted === 0 && r.json?.feedback?.vote === -1 && r.json?.feedback?.rated === true, JSON.stringify(r.json));
+  const [d1, d2] = await Promise.all([post(rg, q1, 1), post(rg, q1, -1)]);
+  expectTrue('★★ 1초 안 연타 두 번(이미 받음) → 둘 다 0P', d1.json?.granted === 0 && d2.json?.granted === 0, JSON.stringify([d1.json?.granted, d2.json?.granted]));
+
+  log('\n[2] ★★★ 공개 뒤(다음 문제) 같은 문항 → 저장만 · 받은 표는 취소해도 남음');
+  const q2 = await solve(2);
+  r = await post(rh, q1, 1);
+  const x1 = await row(rh, q1);
+  expectTrue('★★★ 공개 뒤 q1 다시 → granted 0 · 표는 바뀜(👍) · at_reveal 은 그대로 true', r.json?.granted === 0 && x1?.vote === 1 && x1.at_reveal === true && x1.gid !== null, JSON.stringify({ g: r.json?.granted, x1 }));
+  r = await post(rh, q1, null);
+  expectTrue('★★ 1P 받은 표 취소 → 지우지 않음(그대로 돌려줌)', r.status === 200 && r.json?.feedback?.rated === true && (await row(rh, q1)) !== null, JSON.stringify(r.json));
+
+  log('\n[3] ★★ 문제 중(공개 전) 표 → 0P → 공개 때 다시 → 1P');
+  r = await post(rh, q2, 1);
+  expectTrue('★★ 문제 중(QUESTION_ACTIVE) 👍 → 0P · at_reveal false', r.json?.granted === 0 && r.json?.feedback?.atReveal === false, JSON.stringify(r.json));
+  await answer(2);
+  r = await post(rh, q2, 1);
+  expectTrue('★★★ 그 문항 공개 때 → 1P(같은 문항 한 번)', r.json?.granted === 1, JSON.stringify(r.json));
+  const [e1, e2] = await Promise.all([post(rg, q2, 1), post(rg, q2, 0)]);
+  expectTrue('★★★ 아직 안 받은 문항에 동시에 두 번(연타) → 1P 한 번만', (e1.json?.granted ?? 0) + (e2.json?.granted ?? 0) === 1, JSON.stringify([e1.json?.granted, e2.json?.granted]));
+
+  log('\n[4] ★★ 결과 화면 표 → 0P · 합계');
+  const q3 = await solve(3);
+  await answer(3);
+  await rh.waitFor(() => rh.snapshot?.room.state === 'GAME_RESULT', 30000, '결과');
+  r = await post(rg, q3, 1);
+  expectTrue('★★★ 결과 화면(판 끝) 👍 → 저장만 0P', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.atReveal === false, JSON.stringify(r.json));
+  expect('★★★ 합계 — rh 2P(q1 · q2)', await grants(rh), 2);
+  expect('★★★ 합계 — rg 2P(q1 · q2 연타 한 번)', await grants(rg), 2);
+  expect('★★ 합계 — 거른 봇 rx 0P', await grants(rx), 0);
+  const pts = await apiGet('/api/me/points', rh.cookie);
+  expectTrue('★ 잔액 길(points) 에 지급이 들어간다(grants ≥ 2)', pts.status === 200 && Number(pts.json?.grants ?? pts.json?.points?.grants ?? 0) >= 2, JSON.stringify(pts.json)?.slice(0, 160));
+  for (const b of all) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
 async function scenarioNear() {
   log('시나리오 near — ★★ 근접 오답 (R058)');
   const { nearestAnswer, normalizeAnswer, NEAR_MISS_PER_QUESTION } = await import('../shared/dist/index.js');
@@ -8219,6 +8363,7 @@ const SCENARIOS = {
   mgduo: scenarioMgDuo,
   emojiinline: scenarioEmojiInline,
   near: scenarioNear,
+  rate: scenarioRate,
   grant: scenarioGrant,
   report: scenarioReport,
   signup: scenarioSignup,

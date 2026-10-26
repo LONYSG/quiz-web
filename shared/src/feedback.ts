@@ -7,6 +7,8 @@
 // ★ 사유는 **코드로 저장** · 라벨은 화면 글 — 순서 그대로 보인다. 👍 는 사유를 받지 않는다.
 // ★ 검사(서버 · 단위 테스트 같은 함수): 사유 ⊂ 상수 · 의견 trim ≤200 · vote 1 | -1 | null(null = 취소 = 행 삭제).
 // ★ 포인트 보상 없음(장난 유인 — 찬종 "독려할게").
+// ★★ R068 (찬종 2026-10-26 · docs/19 §7) — 3단계(👍 좋아요 1 · 😐 그냥 0 · 👎 별로 −1) · **정답 공개 시간에 누르면 1P**(서버가 판단 ·
+//   같은 문항 한 번 · 하루 상한 없음) · 공개 시간 밖(결과 화면 · 로비 지난 판)은 저장만 0P. 자세한 의견은 제보(채택 +5P).
 // =============================================================================
 
 export const FEEDBACK_REASONS = [
@@ -33,14 +35,24 @@ export const FEEDBACK_MONTHLY_TOP_POINTS = 30;
 /** ★ R063 (D-260) — 가입 선물(봇 제외 · 기존 회원은 0025 가 소급) */
 export const SIGNUP_GIFT_POINTS = 50;
 
+/** ★ R068 — 정답 공개 중 평가 1P (point_grants reason 'rate') */
+export const RATE_POINTS = 1;
+/** ★ R068 — 3단계 버튼(순서 그대로 보인다) */
+export const RATE_CHOICES = [
+  { vote: 1, emoji: '👍', label: '좋아요' },
+  { vote: 0, emoji: '😐', label: '그냥' },
+  { vote: -1, emoji: '👎', label: '별로' },
+] as const;
+export type RateVote = (typeof RATE_CHOICES)[number]['vote'];
+
 /** 속도 제한 — 한 계정 10초에 20번 */
 export const FEEDBACK_RATE = { windowMs: 10_000, max: 20 } as const;
 
 export interface FeedbackInput {
   questionId: string;
   gameId: string;
-  /** 1 = 👍 · -1 = 👎 · null = 취소(행 삭제) */
-  vote: 1 | -1 | null;
+  /** 1 = 👍 · 0 = 😐(R068) · -1 = 👎 · null = 취소(행 삭제 — 공개 중 1P 를 받은 표는 지우지 않는다) */
+  vote: 1 | 0 | -1 | null;
   reasons: FeedbackReason[];
   /** 빈 글은 null */
   comment: string | null;
@@ -60,7 +72,7 @@ export function parseFeedbackInput(body: unknown): { ok: true; value: FeedbackIn
   if (typeof questionId !== 'string' || !ID.test(questionId)) return { ok: false, error: '문제 번호가 없어요.' };
   if (typeof gameId !== 'string' || !ID.test(gameId)) return { ok: false, error: '판 번호가 없어요.' };
   const vote = b.vote;
-  if (vote !== 1 && vote !== -1 && vote !== null) return { ok: false, error: '평가 값이 이상해요.' };
+  if (vote !== 1 && vote !== 0 && vote !== -1 && vote !== null) return { ok: false, error: '평가 값이 이상해요.' };
   const rawReasons = b.reasons ?? [];
   if (!Array.isArray(rawReasons) || rawReasons.some((r) => typeof r !== 'string' || !CODES.has(r))) {
     return { ok: false, error: '없는 사유예요.' };

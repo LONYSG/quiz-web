@@ -118,6 +118,8 @@ export const config = {
      * ★ R058 (D-252) — 근접 오답을 남기지 않을 login_id 정규식(기본 봇 · 검사 계정 — shared NEAR_MISS_SKIP_LOGIN). **검사용** 덮어쓰기 — 봇 near 가 한 봇만 거르게 둔다
      */
     nearMissSkipLogin: process.env.NEAR_MISS_SKIP_LOGIN || NEAR_MISS_SKIP_LOGIN,
+    /** ★ R068 — 정답 공개 평가 1P 를 주지 않을 login_id 정규식(기본 = 봇 · 검사 계정 — 근접 오답과 같은 값). **검사용** 덮어쓰기 — 봇 rate 가 한 봇에만 주게 둔다 */
+    rateSkipLogin: process.env.RATE_SKIP_LOGIN || NEAR_MISS_SKIP_LOGIN,
     /** ★ R046 — 끊긴 사람이 빠지기까지 (기본 60초). 테스트에서 줄인다 */
     disconnectRemoveMs: positiveInt('DISCONNECT_REMOVE_MS', RULES.DISCONNECT_REMOVE_MS),
     /** ★ 방장 이전 유예 (Q-29 · 기본 30초). 테스트에서 줄인다 */

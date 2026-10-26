@@ -7,7 +7,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { BALLOON_PUMP_MS, BALLOON_TARGET } from '@quiz/shared';
+import { BALLOON_PUMP_MAX, BALLOON_PUMP_MIN, BALLOON_PUMP_MS, BALLOON_TARGET } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
@@ -60,6 +60,9 @@ export function BalloonBlow({ socket, view, serverNow, mobile }: Props) {
   const { key, t0 } = usePlayT0(view, serverNow);
   const now = useFrameNow(playing);
   const target = Number(view.round?.params?.target ?? BALLOON_TARGET);
+  // ★ R068 (찬종 #54 "점수 오르는 범위도 정해주고 알려줘") — 펌프 한 번에 들어가는 바람(서버 balloonAfter 와 같은 6~16)을 도움 줄에
+  const pumpMin = Number(view.round?.params?.pumpMin ?? BALLOON_PUMP_MIN);
+  const pumpMax = Number(view.round?.params?.pumpMax ?? BALLOON_PUMP_MAX);
   const [st, setSt] = useState<{ key: string; pumps: number; total: number; add: number; popped: boolean; stop: boolean; waiting: boolean; at: number } | null>(null);
   const mine = st?.key === key ? st : null;
   const ref = useRef(mine);
@@ -147,7 +150,7 @@ export function BalloonBlow({ socket, view, serverNow, mobile }: Props) {
             ? '펑! 100 을 넘었어요'
             : done
               ? `${total} 에서 멈췄어요`
-              : `딱 ${target} 이면 만점 · 넘으면 펑`}
+              : `한 번에 ${pumpMin}~${pumpMax} · 딱 ${target} 이면 만점 · 넘으면 펑(0점)`}
       </p>
     </div>
   );

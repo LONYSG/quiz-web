@@ -19,7 +19,7 @@ import PopupClose from './PopupClose.js';
 import Emoji from './Emoji.js';
 import { EMOJI_CATEGORIES, setEmojiInsert, setStoredSlots, useEmojiCatalog, useEmojiInsert, type EmojiMeta } from './emojiCatalog.js';
 import Icon from './Icon.js';
-import { Search, Send, Smile, TextCursorInput } from 'lucide-react';
+import { Pencil, Search, Send, Smile, TextCursorInput } from 'lucide-react';
 import { isReportOpen } from './reportGuard.js';
 
 interface Props {
@@ -228,7 +228,8 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
               setAssign(null);
             }}
           >
-            ✎
+            {/* ★ R068 (찬종 #57 m360 "편집 아이콘이 버튼이랑 그림이 안맞아") — 글자 ✎ 는 글꼴마다 기준선이 달라 칸 가운데서 벗어났다 → 선 아이콘 · 가운데 맞춤 */}
+            <Icon icon={Pencil} />
           </button>
           </div>
           {assign !== null ? (

@@ -3,6 +3,7 @@
 //
 //   얼마게요: 가격 · note · 입력들은 가까운 순(아래 표) / 빅맥지수: 목표국 값 + **전체 순위 표(스크롤)** · 최저/최고 · 주요국 강조 · 유로 지역 한 줄 · 환율 기준일
 //   사진: 원본 + 정답 + 설명 + 출처(작게) / 얼마나: 값(displayDecimals) · note(범위) · 설명 / 어느 쪽: 두 값 · 정답 표시 · margin
+//   ★ R068 사진 연도: 사진(전체) + 정답 연도(대략이면 범위) · 제목 · 장소 · 내 오차 · 출처 / 표 값 = "1985년 (3년 차)"
 // =============================================================================
 
 import { WORLDPRICE_MAJOR, formatInt } from '@quiz/shared';
@@ -23,6 +24,11 @@ export function quizValueText(view: MinigameView, r: MinigameRoundRow): string {
   const e = r.extra ?? {};
   const unit = view.key === 'estimate' ? String(view.round?.reveal?.unit ?? view.round?.params?.unit ?? '') : '원';
   if (view.key === 'photo') return r.value !== null && r.submitted ? `${(r.value / 1000).toFixed(1)}초` : e.tries ? `못 맞힘 (${String(e.tries)}번)` : '—';
+  if (view.key === 'photoyear') {
+    if (!r.submitted || e.guess === undefined) return '안 냄';
+    const off = Number(e.off ?? 0);
+    return `${String(e.guess)}년 (${off === 0 ? '딱 맞음' : `${off}년 차`})`;
+  }
   if (view.key === 'which') {
     if (!r.submitted) return '안 고름';
     return e.correct ? `맞음 ${((r.value ?? 0) / 1000).toFixed(2)}초` : '틀림';
@@ -106,6 +112,24 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
       </div>
     );
   }
+  if (view.key === 'photoyear') {
+    const range = Array.isArray(rv.yearRange) ? (rv.yearRange as number[]) : null;
+    return (
+      <div className="quiz-reveal photoyear-reveal">
+        <QuizImage imageId={p.imageId as string | null} alt={String(rv.title ?? '')} dummy={String(p.dummyShape ?? 'box')} className="quiz-pic" />
+        <div>
+          <p className="quiz-answer mono" data-photoyear-answer>
+            <span className="nowrap">{String(rv.year ?? '')}년</span>
+            {range && <span className="dim photoyear-range nowrap"> (대략 {range[0]}~{range[1]}년 — 안이면 0)</span>}
+          </p>
+          {rv.title ? <p className="quiz-note" data-wrap-ok>{String(rv.title)}</p> : null}
+          {rv.place ? <p className="quiz-note dim">{String(rv.place)}</p> : null}
+          {mine && <p className="dim">나: {quizValueText(view, mine)}</p>}
+          {attribution}
+        </div>
+      </div>
+    );
+  }
   if (view.key === 'estimate') {
     const d = Number(rv.displayDecimals ?? 0);
     return (
@@ -133,7 +157,7 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
     const v = Number(rv[k] ?? 0);
     return (
       <div className={`which-card reveal${ans === k ? ' answer' : ''}${mine?.extra?.choice === k ? ' picked' : ''}`} data-side={k}>
-        <QuizImage imageId={s.imageId ?? null} alt={s.label ?? ''} className="which-img" />
+        {Boolean(s.imageId || p.dummy) && <QuizImage imageId={s.imageId ?? null} alt={s.label ?? ''} className="which-img" />}
         <span className="which-label">{s.label}</span>
         <span className="mono which-value">
           <span className="nowrap">

@@ -624,6 +624,18 @@ export function useOpenBugReport(): () => void {
   return useCallback(() => setOpen(true), [setOpen]);
 }
 
+/** ★ R068 — 문제 평가 목록의 "제보에 적어 주세요" 링크 — 제보 메뉴(최근 문제 · 일반)를 연다 */
+export function useOpenReportAt(): (step: 'menu' | 'list' | 'general') => void {
+  const [, setOpen] = usePopup('report');
+  return useCallback(
+    (step) => {
+      nextStep = step;
+      setOpen(true);
+    },
+    [setOpen],
+  );
+}
+
 // ── App 에 하나 ─────────────────────────────────────────────────────────────────
 export default function ReportHost({ ctx }: { ctx: ReportScreen }) {
   screenNow = ctx;

@@ -18,8 +18,10 @@ import {
   meatDoneness,
   minigameInfo,
   type BalanceKind,
+  BALLOON_PUMP_MAX,
+  BALLOON_PUMP_MIN,
 } from '@quiz/shared';
-import { BookOpenCheck, Crosshair, Gamepad2, Hand, Globe2, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
+import { BookOpenCheck, CalendarClock, Crosshair, Gamepad2, Hand, Globe2, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
 import Icon from '../Icon.js';
 import Avatar from '../Avatar.js';
 import DeviceIcon from '../DeviceIcon.js';
@@ -40,6 +42,7 @@ import { preloadAll, preloadQuizImages } from './QuizParts.js';
 import { QNo } from '../AppReport.js';
 import { isReportOpen } from '../reportGuard.js';
 import WhichPick from './WhichPick.js';
+import PhotoYear from './PhotoYear.js';
 import { GaugeStop, MinorityPick, OddOneGrid, twemoji } from './R053Games.js';
 import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
 
@@ -57,6 +60,8 @@ const PLAY = {
   photo: PhotoGuess,
   estimate: QuizNumber,
   which: WhichPick,
+  // ★ R068 — 사진 연도
+  photoyear: PhotoYear,
   // ★ R053 — 미니게임 3차
   minority: MinorityPick,
   oddone: OddOneGrid,
@@ -66,9 +71,9 @@ const PLAY = {
   tap: TapRush,
 } as const;
 const R053_KEYS = new Set(['minority', 'oddone', 'gauge', 'balloon', 'tap']);
-const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which']);
+const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear']);
 /** 진행 중 "n / m명 …" 의 말 */
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
 
 interface Props {
   socket: Socket;
@@ -354,6 +359,8 @@ function readyDesc(view: MinigameView): string {
       return '어림해 보세요';
     case 'which':
       return '';
+    case 'photoyear':
+      return '찍은 해는?';
     case 'minority':
       return '남들이 안 고를 숫자는?';
     case 'oddone':
@@ -405,8 +412,9 @@ function RulesArt({ k }: { k: MinigameView['key'] }) {
     case 'worldprice':
     case 'photo':
     case 'estimate':
-    case 'which': {
-      const I = { price: Tag, worldprice: Globe2, photo: ImageIcon, estimate: Ruler, which: Scale }[k];
+    case 'which':
+    case 'photoyear': {
+      const I = { price: Tag, worldprice: Globe2, photo: ImageIcon, estimate: Ruler, which: Scale, photoyear: CalendarClock }[k];
       return (
         <div className="mg-rules-icon" aria-hidden="true">
           <Icon icon={I} className="mg-rules-big" />
@@ -830,6 +838,10 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
           <BalloonArt pct={100 + Number(mine?.extra?.size ?? 0) * 1.6} popped={popped} />
         </div>
         <p className="mg-r051-big mono">{mine && mine.submitted ? (popped ? `펑! (${Number(mine.extra?.size ?? 0)})` : `${mine.value ?? 0}${mine.value === 100 ? ' 만점!' : ''}`) : '—'}</p>
+        {/* ★ R068 (찬종 #54) — 점수 규칙 한 줄 */}
+        <p className="dim balloon-rule" data-balloon-rule data-wrap-ok>
+          펌프 한 번에 {Number(view.round?.params?.pumpMin ?? BALLOON_PUMP_MIN)}~{Number(view.round?.params?.pumpMax ?? BALLOON_PUMP_MAX)} · 100 에 가까울수록 높은 순위 · 넘으면 0점
+        </p>
       </div>
     );
   }

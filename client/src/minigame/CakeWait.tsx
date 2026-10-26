@@ -87,7 +87,7 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
 
   // ── ★ R067 똑·딱: 반 초(화면 기준)마다 한 번 — 정수 초에 "똑" · 그 사이 반 초에 작은 "딱".
   //   처음 1초 멈춤 동안은 조용 · 첫 "똑" = 10 → 9 로 넘어가는 순간 · 0 에 닿으면 멈춤(정답 소리 금지) · 누르면 멈춤.
-  //   가린 뒤에도 이어지되 0 까지 점점 작게(1 → 0.25) — 리듬만 남긴다.
+  //   ★ R068 (찬종 #55 · 2026-10-26 확정) — 가리면 소리도 끊는다(옛: 가린 뒤 0 까지 점점 작게).
   const tickRef = useRef<{ key: string; last: number } | null>(null);
   useEffect(() => {
     if (!playing || t0 === null || done) return;
@@ -95,9 +95,8 @@ export default function CakeWait({ socket, view, serverNow, mobile }: Props) {
     const half = Math.floor(shownElapsedSec * 2 + 1e-6); // 지난 반 초 수
     if (half <= tickRef.current.last || half >= endSec * 2) return;
     tickRef.current.last = half;
-    const at = half / 2;
-    const vol = at <= hideStart ? 1 : 1 - 0.75 * Math.min(1, (at - hideStart) / Math.max(0.5, endSec - hideStart));
-    cakeTick(half % 2 === 0, vol);
+    if (half / 2 > hideStart) return;
+    cakeTick(half % 2 === 0);
   }, [playing, t0, key, shownElapsedSec, endSec, hideStart, done]);
 
   const press = () => {

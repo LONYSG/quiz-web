@@ -213,7 +213,7 @@ export function AllAchievements({ p, onClose }: { p: PersonRef; onClose: () => v
                 </span>
                 <span className="ach-text">
                   <strong>{d.name}</strong>
-                  <span className="dim" title={d.desc}>{at ? `${day(at)} 달성 · ${d.desc}` : d.desc}</span>
+                  <span className="dim ach-desc" title={d.desc} data-wrap-ok>{at ? `${day(at)} 달성 · ${d.desc}` : d.desc}</span>
                 </span>
               </li>
             );

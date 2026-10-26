@@ -15,6 +15,30 @@ const STAGE = 260;
 const OUT = 256;
 const MAX_FILE = 20 * 1024 * 1024;
 
+/** ★ R068 — 파일 앞머리로 실제 꼴(확장자와 무관) */
+async function sniffKind(file: Blob): Promise<'heic' | 'tiff' | 'avif' | 'other'> {
+  try {
+    const b = new Uint8Array(await file.slice(0, 16).arrayBuffer());
+    const ascii = (i: number, n: number) => String.fromCharCode(...b.slice(i, i + n));
+    if (ascii(4, 4) === 'ftyp') {
+      const brand = ascii(8, 4);
+      if (/^(heic|heix|hevc|hevx|heim|heis|mif1|msf1)$/.test(brand)) return 'heic';
+      if (/^avi[fs]$/.test(brand)) return 'avif';
+    }
+    if ((b[0] === 0x49 && b[1] === 0x49 && b[2] === 0x2a) || (b[0] === 0x4d && b[1] === 0x4d && b[3] === 0x2a)) return 'tiff';
+  } catch {
+    /* 못 읽으면 일반 안내 */
+  }
+  return 'other';
+}
+export function unreadableMessage(kind: 'heic' | 'tiff' | 'avif' | 'other', name: string): string {
+  const ext = /\.[a-z0-9]+$/i.exec(name)?.[0]?.toLowerCase() ?? '';
+  if (kind === 'heic')
+    return `휴대폰 사진 형식(HEIC)이라 브라우저가 열 수 없어요${ext && ext !== '.heic' && ext !== '.heif' ? ` — 이름만 ${ext} 로 바꿔서는 안 돼요` : ''}. 사진 앱에서 "JPG 로 저장(내보내기)" 하거나, 화면을 캡처한 사진을 올려 주세요.`;
+  if (kind === 'tiff') return 'TIFF 사진은 브라우저가 열 수 없어요. JPG · PNG 로 저장해서 올려 주세요.';
+  return '이 사진은 열 수 없습니다 (jpg · png · webp 를 써 주세요). 이름만 바꾼 파일이면 사진 앱에서 JPG 로 다시 저장해 주세요.';
+}
+
 interface Props {
   file: File;
   onCancel: () => void;
@@ -41,10 +65,18 @@ export default function ProfileEditor({ file, onCancel, onDone }: Props) {
     }
     const url = URL.createObjectURL(file);
     const im = new Image();
-    im.onload = () => setImg(im);
-    im.onerror = () => setError('이 사진은 열 수 없습니다 (jpg · png · webp 를 써 주세요).');
+    let alive = true;
+    im.onload = () => alive && setImg(im);
+    // ★ R068 (찬종 #71 "확장자 맞췄는데도 에러") — 브라우저가 못 여는 사진은 **파일 앞머리**로 꼴을 보고 알려 준다.
+    //   휴대폰 사진(HEIC · HEIF)은 이름을 .jpg 로 바꿔도 속은 그대로라 열리지 않는다 → 바꾸는 법을 한 줄로
+    im.onerror = () => {
+      void sniffKind(file).then((kind) => alive && setError(unreadableMessage(kind, file.name)));
+    };
     im.src = url;
-    return () => URL.revokeObjectURL(url);
+    return () => {
+      alive = false;
+      URL.revokeObjectURL(url);
+    };
   }, [file]);
 
   const base = img ? Math.max(STAGE / img.naturalWidth, STAGE / img.naturalHeight) : 1;
