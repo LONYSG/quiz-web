@@ -4718,7 +4718,7 @@ async function r066Flow(browser) {
   await G.evaluate("document.querySelector('.mg-cat .popup-close')?.click()");
   await touchDevice(G, 390, 844, false);
   await G.setViewport(1536, 864);
-  record('★★★ R066 C1 · C2 손님 — 방장이 고르는 대로 이름 줄 · 열린 창(3/16 · 켜진 셋)이 바로 · 고르기 창은 생략(…) 없음(PC · m390)', /3\/16/.test(after.count) && after.on.length === 3 && /각도|사진|균형/.test(names) && ell.pc.length === 0 && ell.m.length === 0, JSON.stringify({ before, after, names, ell }));
+  record('★★★ R066 C1 · C2 손님 — 방장이 고르는 대로 이름 줄 · 열린 창(3/17 · 켜진 셋)이 바로 · 고르기 창은 생략(…) 없음(PC · m390)', /3\/17/.test(after.count) && after.on.length === 3 && /각도|사진|균형/.test(names) && ell.pc.length === 0 && ell.m.length === 0, JSON.stringify({ before, after, names, ell }));
 
   // ── D1 ⓘ 안내 탭 넷
   await openGearTab(H, 'info'); // ★ R067 — ⓘ 는 ⚙ 의 안내 탭
@@ -5280,7 +5280,7 @@ async function r063Flow(browser) {
   const c2 = JSON.parse(await G.evaluate(CAT));
   await snap(G, '133-mg-catalog-m390');
   await pressKey(G, 'Escape', 'Escape', 27);
-  record('★★★ C 고르기 창 — 카드 16 · 예시 5 · 창 안에서만 스크롤(페이지 0) · 꼬리 보임 · 방장 [확정] · 손님은 보기만 · "이번 판 N번" 없음', c1.cards === 16 && c1.ex === 5 && c1.page <= 0 && c1.footIn && c1.top >= 0 && c1.confirm && !c1.nth && c2.cards === 16 && c2.page <= 0 && c2.footIn && !c2.confirm && c2.inner, JSON.stringify({ c1, c2 }));
+  record('★★★ C 고르기 창 — 카드 17 · 예시 6(R068 사진 연도) · 창 안에서만 스크롤(페이지 0) · 꼬리 보임 · 방장 [확정] · 손님은 보기만 · "이번 판 N번" 없음', c1.cards === 17 && c1.ex === 6 && c1.page <= 0 && c1.footIn && c1.top >= 0 && c1.confirm && !c1.nth && c2.cards === 17 && c2.page <= 0 && c2.footIn && !c2.confirm && c2.inner, JSON.stringify({ c1, c2 }));
   // ── G④ 프로필 카드 하나(사람 → 사진 · 업적 + 친구 · 강퇴 · 차단)
   const gId = await withPg(async (c) => String((await c.query(`SELECT id FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_og`])).rows[0].id));
   const hId = await withPg(async (c) => String((await c.query(`SELECT id FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_oh`])).rows[0].id));
@@ -5332,6 +5332,9 @@ async function r063Flow(browser) {
     await H.waitFor("document.querySelector('.reveal') !== null", 8000);
   }
   await H.waitFor("document.querySelector('.fb-result') !== null", 30000);
+  // ★ R068 (#68) — 결과 목록은 모바일도 접힌 채 시작 → 손님(m390)도 머리를 눌러 편다
+  await G.waitFor("document.querySelector('.fb-result-head') !== null", 10000);
+  if (!(await G.evaluate("document.querySelector('.fb-result.open') !== null"))) await tapOn(G, '.fb-result-head');
   await G.waitFor("document.querySelector('.fb-list[data-loaded]') !== null", 10000);
   if (!(await H.evaluate("document.querySelector('.fb-result.open') !== null"))) await realClick(H, '.fb-result-head');
   await H.waitFor("document.querySelector('.fb-list[data-loaded]') !== null", 5000);

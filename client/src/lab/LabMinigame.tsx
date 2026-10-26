@@ -375,7 +375,7 @@ export default function LabMinigame({ myAccountId }: { myAccountId: string }) {
   return (
     <div className="lab-page">
       <h1>미니게임 그림 모음</h1>
-      <p className="dim">균형의 수호자 물건 넷 (시드 {kindSeed}) · 같은 시드면 모두에게 같은 그림 · 테두리 = 서버가 넓이를 재는 다각형 · 내 계정 {myAccountId}</p>
+      <p className="dim" data-wrap-ok>균형의 수호자 물건 넷 (시드 {kindSeed}) · 같은 시드면 모두에게 같은 그림 · 테두리 = 서버가 넓이를 재는 다각형 · 내 계정 {myAccountId}</p>
       <div className="lab-items">
         {KINDS.map((k) => {
           const item = balanceItem(k, kindSeed);

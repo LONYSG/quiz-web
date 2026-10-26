@@ -348,6 +348,51 @@
 
 ---
 
+## D-306. 프로필 사진 — 브라우저가 못 여는 사진은 파일 앞머리로 꼴을 보고 바꾸는 법을 알린다 (R068 · 찬종 #71 "확장자 맞췄는데도 에러")
+- 재현 안 됨: test 서버(직접 · cloudflared 터널 둘 다) + 진짜 [등록] 클릭으로 jpg 56KB · 4032×3024 jpg · png · webp · 회전 jpg 모두 PUT 200 · "바꿨습니다"(ui-check r068 avatar). 서버 409(게임 중) · 400 · 413 경로는 이번 판 상황(대기실 · 위 막대 프로필)과 맞지 않다.
+- 가장 그럴듯한 원인(추정): 휴대폰 사진 HEIC/HEIF — Windows Chrome 이 못 열어 옛 문구 "이 사진은 열 수 없습니다 (jpg · png · webp 를 써 주세요)" 가 떴고, **확장자만 .jpg 로 바꿔도 속은 HEIC** 라 같은 오류. 찬종 글 "확장자 맞췄는데도" 와 맞는다.
+- 고침: ProfileEditor 가 열기 실패 때 파일 앞 16바이트를 본다 — ftyp heic/heix/hevc/mif1… → "휴대폰 사진 형식(HEIC)이라 … 이름만 .jpg 로 바꿔서는 안 돼요 · 사진 앱에서 JPG 로 저장하거나 캡처" · TIFF → JPG · PNG 로 · 그 밖은 옛 문구 + "이름만 바꾼 파일이면 JPG 로 다시 저장". 검사 = 앞머리 ftypheic 인 phone.jpg.
+- 되돌리기: ProfileEditor 의 sniffKind · unreadableMessage 를 지우고 onerror 를 옛 한 줄로.
+
+## D-305. 찬종 제보 화면 고침 묶음 (R068 — #52 #53 #54 #55 #57 #61 #65 #66 #69 · 이모티콘 찾기 칸)
+- #55 고기: 가린 뒤 똑딱을 **부르지 않는다**(찬종 10-26 확정 · 옛: 0 까지 1 → 0.25 점점 작게). CakeWait 한 줄.
+- #52 업적 설명: `.ach-desc` 만 줄바꿈(두 줄까지 · keep-all) — 이름은 한 줄 그대로.
+- #53 평가 목록 m360: 질문 줄이 `<button>` 이라 전역 `button { white-space: nowrap }` 을 물려받아 펼친 전체 질문이 창 밖으로 → `button.fb-q` 와 안 글은 normal · 창 · 목록 overflow-x hidden.
+- #54 풍선: [펌프] 는 넓은 버튼(min-width 9rem · inline-flex)인데 가운데 맞춤이 없어 모바일(단축키 글 없음)에서 "펌프" 가 왼쪽 → `justify-content: center` · 풍선 그림 max-width 100%(m390 에서 6px 밀림). 규칙 한 줄 — 판 "한 번에 6~16 · 딱 100 이면 만점 · 넘으면 펑(0점)" · 결과 "펌프 한 번에 6~16 · 100 에 가까울수록 높은 순위 · 넘으면 0점"(값은 params · shared BALLOON_PUMP_MIN/MAX).
+- #57 ✎: 글자 ✎ 는 글꼴마다 기준선이 달라 칸에서 벗어남 → Lucide Pencil · 가운데 맞춤(±0px).
+- #61 시간 줄바꿈: 원인은 질문 길이가 아니라 **머리줄 폭**(번호 · #id · 분야 · 난이도 · 시간 > 360) → 모바일 문제 카드 머리줄은 한 줄 고정(nowrap) · 뱃지만 줄어듦(…) · 번호 · id · 시간은 안 줄어듦 · "이미 풀어본 퀴즈" 뱃지는 잘리면 안 되니 모바일에서 아래 줄(q-exp-line).
+- #65 ⚙ 제보 탭: 제보 창용 두 칸 격자(`.report-menu-pick` 1fr 1fr)가 폭 340 ⚙ 창에도 걸려 버튼이 창 밖 → ⚙ 창은 한 칸. #65 2560 특별 둘째 줄: 재현 안 됨(편집 모드 → 3번 자리 → 특별 탭 둘째 줄 진짜 클릭 = 그 이모티콘이 3번 자리 · ui-check r068) — 검사로 남김.
+- #66 세레모니: 첫 번호(emojiId)만 그렸다 → 붙여 보낸 1~3개(emojiIds) 모두 · 특별 여부는 각각.
+- #69 고르기: 아이콘 칸 · 체크 칸 모두 카드 세로 가운데 · 체크 18 → 24px · 오른쪽 12px.
+- 찾기 칸 포커스: 칸이 채팅 `<form>` 안이라 전역 `form input:focus { box-shadow 4px }` · `form input { margin-top 5px }` 를 물려받음 → 입력칸은 꾸밈 없음 · 둥근 칸 `:focus-within` 테두리 색만 · 모바일 16px(iOS 확대 막기).
+- 되돌리기: 각 줄의 ★ R068 규칙(styles.css · 해당 컴포넌트)을 지운다.
+
+## D-304. 터치 기기 — 버튼 hover 꾸밈은 마우스(hover: hover)에서만 · 마지막 난이도 · 분야는 흔들림 + 바로 아래 안내 (R068 · 찬종 #56 "난이도 선택 버튼이 토글이 안됨")
+- 원인: 서버는 누를 때마다 설정을 받았다(제보 recent — settingsUpdated 6번). 화면은 꺼졌지만 **터치 뒤 :hover 가 그 버튼에 남아** 전역 `button:hover { border-color: accent }` 때문에 끈 버튼에 강조 테두리 → "선택된 걸로만 보임". → `@media (hover: hover)` 안으로(전 버튼).
+- 검사: CDP 터치 흉내만으로는 hover 미디어가 그대로라 못 잡는다 → ui-check r068 은 터치 때 `Emulation.setEmulatedMedia(hover: none · pointer: coarse)` 까지(진짜 휴대폰과 같게) · PC 는 마우스를 치운 뒤 잰다.
+- 마지막 하나 끄기: 옛 안내는 설정 맨 아래 빨간 줄이라 모바일에서 안 보였다 → 그 버튼 흔들림(0.42초) + 난이도 줄 바로 아래 "하나는 남겨야 해요 — 다른 난이도를 먼저 켜 주세요"(분야도 같은 흔들림).
+- 되돌리기: styles.css 의 @media (hover: hover) 를 풀고 GameSettings 의 bump · data-last-hint 를 지운다.
+
+## D-303. 미니게임 사진 — 사진이 모자란 항목은 내지 않는다 · 사진은 잘라내지 않는다(contain) (R068 · 찬종 10-26 ①②)
+- 실측(활성): 얼마나 될까 사진 0장 39/299 · 어느 쪽? 0장 97 + **한쪽만 8**/415 · 빅맥 323(숫자 게임 — 원래 사진 없음 · 그대로) · 사진 · 얼마게요 0. "(연습용)" 글의 자리 = `WhichPick` · 공개 카드가 사진 없는 쪽에 **연습용 도형 상자**를 그렸다(라이브에서도). LabMinigame "나나라(연습)" 은 lab 전용.
+- 규칙 `NEEDS_IMAGE` = { price 1 · photo 1 · estimate 1 · which 2(양쪽) · photoyear 1 } — 서버 defs `pickFor` 한 곳(hasNeededImages) · 로더 minigame-load 같은 표(모자라면 "사진 n/m장" 으로 건너뜀).
+- DB: 144 항목 active=false(estimate 39 · which 97 + 한쪽 8 — 브리핑 136 에 한쪽 8 을 더했다: 같은 규칙) · `scripts/r068-mg-noimg.mjs`(dry-run · --apply · --undo) · 목록 data/pipeline/audit/r068-mg-noimg-undo.json · 백업 quizweb-20261026-195829.dump. 화면: 사진 없는 쪽은 상자를 그리지 않는다(연습 판만 도형).
+- 사진 규칙: 미니게임 사진은 모두 `object-fit: contain` + 어두운 레터박스(`--img-letterbox`). 잘림의 원인 = 어느 쪽? 카드 4:3 `cover`. 예외는 사진 이름 맞히기 확대(zoom) 단계(규칙상 일부) — 공개 화면은 전체(transform 없음 · ui-check r068 확인).
+- 되돌리기: 사진 — `node scripts/r068-mg-noimg.mjs --undo` · NEEDS_IMAGE 를 {} 로. 레터박스 — styles.css R068 사진 규칙.
+
+## D-302. 이 사진 몇 년도?(photoyear) — 17번째 미니게임 · 적재 100 (R068 · docs/18 §8 · C82 ③)
+- 규칙: 사진 한 장(4:3 칸 contain) → 연도 4자리(1800 ~ 올해 · 숫자 키패드 · 범위 밖은 서버 거부 + 화면 빨간 안내) · 한 번만 · 20초(사진 맞히기와 같음) · 5문항 · 점수 = 오차(년) 작은 순(같으면 빠른 사람) · circa 는 yearRange 안 0 · 밖은 가까운 끝까지(`photoyearError`) · 공개 4초 = 정답 연도(대략이면 범위) · 제목 · 장소 · 내 오차 · 출처 · as_of 없음.
+- 코드: shared MinigameKey · MINIGAMES(이름 · 한 줄 · 조작 · 단위 '년') · QUIZ_MINIGAME_KEYS · QUIZ_SPEC · QUIZ_DUMMY(도형 · 가짜 연도) · 예시(아폴로 11호 1969 — 데이터에 없는 낱말) · server defs photoyear · client PhotoYear(NumberInput year 모드) · QuizReveal · 카탈로그 아이콘 CalendarClock · lab 장면.
+- 적재: minigame-load GAMES_ALL 에 photoyear · GAMES_LATER 삭제 · 백업 quizweb-20261026-201019.dump → dry-run 100/100 → --apply 100(그림 100 · 실 DB · 검사 DB). difficulty 는 GEN 값 그대로(CV-73 (a)).
+- 되돌리기: `UPDATE minigame_items SET active=false WHERE game='photoyear'`(옛 서버는 모르는 게임 항목을 무시한다) · 코드에서 키를 뺀다.
+
+## D-301. 정답 공개 평가 3단계 · 공개 시간에만 1P (R068 · docs/19 §7 · 찬종 2026-10-26 "정답 공개 시간에만 방금 문제 어땠냐고 3단계로 묻고 1P · 자세한 의견은 제보란")
+- 0026: question_feedback.vote CHECK (−1 · 0 · 1) · at_reveal boolean · rate_grant_id → point_grants · point_grants reason 'rate' · ★ questions.worth smallint 1~3(알가치 — G025 가 채움 · 코드는 안 읽음). 실 DB 적용(백업 quizweb-20261026-200044.dump · 판 없음). 옛 안(설문 팝업 · 패널 · question_difficulty_votes)은 만들지 않았다. ★ questions 에 옛 `worth_knowing`(R011 알 가치 점수)도 있다 — 다른 열.
+- 서버 POST /api/feedback/question: 표가 들어온 순간 그 계정의 방이 QUESTION_RESOLVED · 그 판 · 그 문항이면 at_reveal → 1P(seen_at = 지금 — 화면이 "+1P 고마워요" 로 알림 · 잔액은 'qw:grants'). 같은 문항 한 번(rate_grant_id) · 하루 상한 없음 · 공개 밖 저장만 0P · 봇 · 검사 계정 0P(`config.tuning.rateSkipLogin` = NEAR_MISS_SKIP_LOGIN · 봇은 RATE_SKIP_LOGIN 덮어쓰기). 계정마다 한 줄로(동시 두 요청이 둘 다 1P 를 받지 않게 — 봇 rate 연타 [1,0]). 1P 받은 표는 취소해도 지우지 않는다(지우면 다시 받을 수 있다).
+- 화면: 공개 "방금 문제 어땠어요? (+1P)" + 👍 좋아요 · 😐 그냥 · 👎 별로(이름 그대로 — 더 나은 이름 안 찾음) → "+1P 고마워요"(버튼은 그림만 · 바꾸기 가능) · 공개 화면 사유 칩 삭제 · 모바일은 물음 한 줄 위 · 다시 눌러 취소 없음. 결과 · 로비: 같은 3단계 · "공개 시간에 누르면 +1P · 자세한 의견은 제보에 적어 주세요(채택되면 +5P)" + 제보 링크 · 👎 사유 · 의견 그대로. 결과 목록은 **늘 접힌 채 시작**(찬종 #68 · 옛: 모바일 · 평가한 판은 펼침) · 펼침 기억(localStorage qw.fbResultOpen) · 접혀도 "평가 N/M".
+- 보고 feedback:report: 👍/😐/👎(공개 수) · 찬종 열(lonysg · lonysg2) · 검토 후보(찬종 표 없음 · 남의 표 ≥ 2 · 👎 ≥ 👍 + 1) · 장난 의심(한 계정 한 판 3문제 이상 전부 같은 버튼 — 찬종 제외 · 후보 셈에서 뺌) · 알가치 어긋남(worth 3 👎 > 👍 · worth 1 👍 ≥ 2). ★ 옛 보고는 😐 가 없어 0 도 👎 로 셌다 — 고침.
+- 되돌리기: RevealFeedback 을 옛 👍👎 로 · 서버 grant 가지를 지운다(0026 열은 남겨도 무해).
+
 ## D-300. 위 막대 모으기 — PC 7 → 5 · ⚙ 창 탭 셋(설정 · 안내 · 제보) · Alt+B = ⚙ 제보 탭 (R067 · A91 · UX 원칙 "모으고 뺀다")
 - PC 방 위 막대: 초대 · 친구 · 포인트샵 · ⚙ · 나가기(대기실은 ✏ 프로필 더 — 브리핑의 일곱은 게임 중 캡처라 프로필이 없었다). ⚙ = Prefs(gear · tabs) — 팝업 id 는 그대로 'prefs'(한 번에 하나) · 탭은 `gearTab.ts`. 안내 탭 = InfoText(탭 넷 그대로) · 제보 탭 = 제보 메뉴의 두 갈래(누르면 제보 창이 그 단계로 · ⚙ 는 닫힘).
 - ⓘ 버튼 · 제보 버튼은 **PC 에서 숨김**(CSS `.ui-pc .room-tools > .infotip · .report-btn`) — 모바일 ☰ 의 "안내" · "제보" 가 그 창을 열어서 남겨 둔다. Alt+B: PC 방 안(⚙ 탭이 있으면) ⚙ 제보 탭 토글 · 그 밖은 옛 제보 창.

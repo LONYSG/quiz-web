@@ -1074,6 +1074,30 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 48. ★★★ R068 — 정답 공개 평가 3단계 · 1P · photoyear · 제보 20 · 긴 질문(QLEN 240) 검사
+
+```bash
+node scripts/ui-check-bundles.mjs r068     ★ 전부(R068_ONLY=lab|room|avatar|game 로 하나만) — 21개
+  lab    고기 가림 뒤 똑딱 0(소리 기록) · 풍선 [펌프] 글 · 그림 · 결과 가운데 + 규칙 한 줄(1536 · 2560 · m390) · photoyear 판 · 공개 · 최종 · 미니게임 사진 contain(게임 다섯 × 가로 · 세로 × 판 · 공개)
+  room   ⚙ 제보 탭 버튼 창 안(1280 · 1536 · 2560) · 고르기 아이콘 · 체크 가운데 · 24px · 난이도 끄기(PC 마우스 치운 뒤 · m390 터치 + hover:none) · 마지막 하나 흔들림 · 업적 설명 생략 없음 · 찾기 칸 포커스 · ✎ 가운데 · 2560 특별 둘째 줄
+  avatar 프로필 사진 jpg · 큰 jpg · png · webp · 회전 jpg → 200 · HEIC 를 .jpg 로 → 안내 (터널: --url <trycloudflare> 로 한 번)
+  game   검사 DB 에 240자 질문 하나 + 140(5760) · 197(가장 긴 활성) 만 활성 → 360 · 1536 · 2560 표(qlen-table.json) · 16 · 15px 실험 · 공개 평가 진짜 클릭 → +1P · m390 · 결과 접힘 · 세레모니 이모티콘 셋 · 로비 지난 판 m360 (끝나면 활성 되돌림 · 240자 질문 지움)
+npm run bot -- rate                         ★ 공개 중 1P · 😐 1P · 봇 규칙 0P · 바꿔도 더 없음 · 연타 두 번 → 1P 한 번 · 공개 뒤 · 문제 중 · 결과 0P · 받은 표 취소 안 지움 · 합계
+MGQ=photoyear npm run bot -- mgquiz         ★ 오차(년) · circa 0 · 범위 밖(1799 · 내년) 거부 · 정답은 공개 때만 · 얼마나 · 어느 쪽? 사진 있는 문항만
+```
+
+★ 왜 전 검사가 못 잡았나: ① ⚙ 제보 탭 — r067 은 탭이 열렸는지만 봤다(버튼이 창 밖인지 안 봄 · 그림 233 에 이미 보였다) → 창 안 검사 ② 난이도 — CDP 터치 흉내는 hover 미디어를 바꾸지 않아 눌린 뒤 :hover 가 남는 것을 볼 수 없었다 → `Emulation.setEmulatedMedia(hover: none)` ③ 풍선 — r054 는 그림만 보고 [펌프] 글 위치를 안 쟀다 ④ 평가 목록 m360 — 줄을 펼친 상태를 안 찍었다 ⑤ 찾기 칸 — 포커스 상태를 안 찍었다 ⑥ 시간 줄바꿈 — 360 폭 문제 화면 검사가 없었다(390 만).
+
+| 검사 | 결과 |
+|---|---|
+| typecheck · vitest · build · smoke | 통과 · 551 · 통과 · 12/12 |
+| 봇 | **rate(새) 15/15** · mgquiz 67/67 · mgcount 21/21(17 게임 · [결과] 줄 고침) · minigame 62/62 · feedback 23/23 · report 14/14 |
+| ui-check | **r068 21/21**(lab 4 · room 8 · avatar 2 · game 7) · 터널 avatar 2/2 · r067 23/23 · r066 16/16 · r065 5/5 · r063 12/12 · WRAP 0 |
+| 끝 점검에서 고친 것 | r063 · r066 기대값(17 게임 · 예시 6) · r063 평가 목록 손님도 펼치기(#68 접힘) · lab 설명 줄 data-wrap-ok · 공개 평가 모바일 물음 한 줄 위 |
+| 실 DB | 0026 · 미니게임 144 active=false(undo json) · photoyear 100 적재 · reports:handle 19 |
+
+---
+
 ## 47. ★★ R067 — 고기 굽기 새로 · 타자 연습칸 · BGM · 기준 날짜 · 위 막대 다섯
 
 ```bash

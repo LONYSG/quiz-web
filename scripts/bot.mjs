@@ -6933,7 +6933,7 @@ async function scenarioMgQuiz() {
 // -----------------------------------------------------------------------------
 // ★★ R066 (D-276 · 찬종 #35 "제출한 사람 명수가 안 올라가서 다들 미제출인 줄") — 16 게임 × 2명 제출 → 놀이 중 submittedCount 가 2/2 로 오르는지
 async function scenarioMgCount() {
-  log('시나리오 mgcount — ★★ 16 게임 제출 명수(R066)');
+  log('시나리오 mgcount — ★★ 17 게임 제출 명수(R066 · R068 사진 연도)');
   const sh = await mgShared();
   const bots = await makeBots(2);
   const [host, g] = bots;
@@ -6957,6 +6957,7 @@ async function scenarioMgCount() {
     estimate: async (b, mg) => { await sleep(200); send(b, mg, { value: 1000 }); },
     photo: async (b, mg) => { await sleep(400); send(b, mg, { text: sh.QUIZ_DUMMY.photo[mg.roundIndex % sh.QUIZ_DUMMY.photo.length].answer, elapsedMs: 300 }); },
     which: async (b, mg) => { await sleep(400); send(b, mg, { choice: 'a', elapsedMs: 300 }); },
+    photoyear: async (b, mg) => { await sleep(300); send(b, mg, { value: 1990, elapsedMs: 250 }); }, // ★ R068
     minority: async (b, mg) => { await sleep(200); send(b, mg, { pick: 1, elapsedMs: 150 }); },
     oddone: async (b, mg) => { await sleep(400); const size = Number(mg.round.params.size); for (let i = 0; i < size * size; i += 1) { send(b, mg, { index: i, elapsedMs: 300 }); await sleep(15); } },
     gauge: async (b, mg) => { await sleep(400); send(b, mg, { elapsedMs: 300 }); },
@@ -7031,6 +7032,8 @@ async function scenarioMgCount() {
   await host.connect();
   await sleep(800);
   expectTrue('★ D6 방에 남아 있으면 재접속 = room.state(reconnect) · notInRoom 없음', host.since(hm, 'room.notInRoom').length === 0 && host.since(hm, 'room.state').some((e) => e.reason === 'reconnect'));
+  // ★ R068 — 결과 줄이 없었다(끝까지 돌아도 [결과] 를 안 찍음)
+  return checkSummary();
 }
 
 // ★★★ R053 — 미니게임 3차 봇 (D-241) — mgminority · mgoddone · mggauge (mgtwothirds 는 R060 게임 삭제와 함께 뺌)
