@@ -1,0 +1,2 @@
+import fs from 'node:fs';
+for (const p of process.argv.slice(2)) { try { const o = JSON.parse(fs.readFileSync(p + '.out.json', 'utf8')), k = JSON.parse(fs.readFileSync(p + '.keys.json', 'utf8')); const c = {}; o.forEach((x) => (c[x.verdict] = (c[x.verdict] || 0) + 1)); console.log(p, o.length, k.length, o.every((x, i) => x.id == k[i]), JSON.stringify(c), 'distinctNotes', new Set(o.map((x) => x.leakNote)).size); } catch (e) { console.log(p, 'FAIL', e.message); } }
