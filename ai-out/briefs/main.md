@@ -3,7 +3,7 @@ TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 �
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` · 바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 그대로 (07 **D-301** 부터 · 13 **A96** · 10 **48절** · 01 16-R068 · 05 · 06 · README). 하위 에이전트 ≤1 · 남는 메모리 1.5GB(검사 서버 · 봇은 `quizweb_test` 만 · 실 DB 는 마이그레이션과 photoyear 적재만 · 쓰기 전 `npm run db:backup`). 실 서버(3000) 재시작은 찬종(`ops.bat` 3 → 1) — MAIN 은 하지 않는다.
-■ ★★ 동시 라운드 — **VERIFY V028 · GEN G022**(난이도 재판정 — DB 읽기만 · questions 안 씀)가 돌고 있을 수 있다. MAIN 은 **questions · question_answers 를 쓰지 않는다**(제보 문항 5 도 — 아래). 05 · 06 · 13 · README 는 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지. R067 과 같이 끝 점검은 단계별로.
+■ ★★ 동시 라운드 — **GEN G023**(재판정 결과 적용 — questions · question_answers 를 **쓴다** · 판이 열려 있을 때는 안 씀 · worth 열은 안 건드림) ‖ **VERIFY V029**(알가치 판정 — 읽기만)가 돌고 있을 수 있다. 0026 의 `ALTER TABLE questions ADD COLUMN worth` 는 G023 쓰기와 겹쳐도 된다(백업 뒤 · 판 없을 때 · 잠금 짧음). MAIN 은 **questions · question_answers 를 쓰지 않는다**(제보 문항 5 도 — 아래). 05 · 06 · 13 · README 는 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지. R067 과 같이 끝 점검은 단계별로.
 
 ■ 제보 13 + 7 = 20 처리 (#52~64 lonysg2 · #65~71 lonysg 10-25 밤 · 처리마다 `reports:handle --id N --note "R068 …"` · 0절에 표: id · 화면 · 원문 요지 · 원인 · 고침/보류)
 | id | 화면 | 요지 | 할 일 |
@@ -26,12 +26,13 @@ TASK: 찬종이 R067 빌드로 한 판(판 2194~2199 · 계정 lonysg2) 하며 �
 | 58 · 59 · 60 · 62 · 63 | game | 문항 제보 5(3813 국화 분야 · 1438 민화 · 1619 지열 발전 "문제가 힌트같음" · 500 독일어 · 2096 타이브레이크 "무슨 게임인지") | **내용은 안 건드림** — handle note "V028 판정 대상(설계 브리핑) · 고침은 G023" |
 
 ■ 설문 팝업 (docs/19 §7 설계 초안 그대로 — 재판정 보정 데이터)
-- 마이그레이션 **0026**: `question_difficulty_votes(id · question_id · account_id · game_id · vote smallint 1~5 · solved bool · hint_seen text 'none'|'general'|'initial' · response_ms int null · created_at)` · unique(question_id · account_id) · `accounts.survey_panel boolean not null default false`. 실 DB 적용은 백업 뒤 · 관례대로.
+- 마이그레이션 **0026**: `question_difficulty_votes(id · question_id · account_id · game_id · vote smallint 1~5 · solved bool · hint_seen text 'none'|'general'|'initial' · response_ms int null · created_at)` · unique(question_id · account_id) · `accounts.survey_panel boolean not null default false` · ★ `question_difficulty_votes.worth smallint null check (worth between 1 and 3)`(알가치 답) · ★ **`questions.worth smallint null check (worth between 1 and 3)`**(알가치 — docs/19 §9 · 값은 G025 가 넣는다 · R068 은 열만 · 코드에서 읽지 않는다). 실 DB 적용은 백업 뒤 · 관례대로.
 - 대상: `survey_panel` 인 계정만. ops.mjs 메뉴에 **"설문 패널 켜기/끄기(계정 이름)"** 와 **"설문 패널 목록"** 항목 — MAIN 은 아무 계정도 켜지 않는다(찬종이 ops.bat 로 진지 14 + yuja0218 을 켠다).
 - 때: 퀴즈 판에서 **정답 공개 뒤** 본인에게만 작은 창(깜짝 이벤트 꼴 · 다른 사람 화면엔 안 뜸) — **판당 2문항**(서버가 판 시작 때 무작위로 고름 · 모든 패널 참가자에게 같은 문항) · 다음 문제 카운트다운을 막지 않게(창은 겹쳐 뜨고 다음 문제 뜨면 사라짐 · 안 눌렀으면 그냥 넘어감).
 - 창: "이 문제, 어느 정도였어요?" + 버튼 다섯(**1 아주 쉬움** "힌트 없이 바로" · **2 쉬움** "힌트 전에" · **3 보통** "힌트 보고" · **4 어려움** "초성 봐야/못 맞힘" · **5 매우 어려움** "전공·마니아") + [건너뛰기]. 저장 때 solved(본인이 맞혔나) · hint_seen(답 낸 시점 — 10초 전 none · 25초 전 general · 그 뒤 initial · 못 맞힘은 initial) · response_ms 를 서버가 채운다.
 - 보상: 답마다 **1P** · 하루 **10P** 까지 · 지급 사유 `survey`(기존 포인트 지급 길 그대로) · **창이 뜬 뒤 1초 안의 답은 저장은 하되 포인트 0**(성의 없는 연타). 토스트 "설문 +1P".
-- 보고 `npm run survey:report`(문항별 표 수 · 중앙값 · 지금 difficulty_score · |중앙값 − 등급| ≥ 2 이고 표 ≥ 5 인 후보 목록 · 계정별 표 수) — 설계가 읽는다. 자동 반영 없음.
+- ★ **알가치 질문**(찬종 2026-10-26 · docs/19 §7 · §9): 난이도 버튼을 누른 뒤 같은 창이 한 번 더 묻는다 — **"알아둘 만했어요?"** 버튼 셋 **오~**(3) · **그냥**(2) · **굳이**(1) + [건너뛰기] → `question_difficulty_votes.worth`. 포인트는 문항당 1P(난이도 답에) · 알가치 답은 덤(추가 P 없음). 건너뛰면 null. 그림 300-survey-worth-{pc · m390}.png.
+- 보고 `npm run survey:report`(문항별 표 수 · 중앙값 · **알가치 표 수와 분포(3/2/1)** · 지금 difficulty_score · |중앙값 − 등급| ≥ 2 이고 표 ≥ 5 인 후보 목록 · 계정별 표 수) — 설계가 읽는다. 자동 반영 없음.
 - "어떤 문항" 우선순위(애매 우선)는 이번엔 **무작위만** — 후보 파일을 설계가 다음 라운드에 준다(코드에 `survey_priority` 끼울 자리만 한 줄 메모). 로비에서 몰아서 하기는 이번엔 **안 함**(13 A96 메모).
 - 그림: 300-survey-{popup · thanks · pc · m390}.png · PLAY-GUIDE 한 절.
 
