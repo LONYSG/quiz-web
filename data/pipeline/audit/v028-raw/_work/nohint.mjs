@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import { createRequire } from 'node:module';
+const require = createRequire('C:/work/quiz-web/package.json');
+const pg = require('pg'); process.loadEnvFile('C:/work/quiz-web/.env');
+const A = 'C:/work/quiz-web/data/pipeline/audit';
+const G = JSON.parse(fs.readFileSync(A + '/g022-rerate.json', 'utf8')).items; const ov = new Set(JSON.parse(fs.readFileSync(A + '/v028-targets.json', 'utf8')).overlap.map(String));
+const ids = Object.keys(G).filter((i) => !ov.has(i)).map(Number);
+const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
+const r = (await c.query('select id, general_hint, is_active from questions where id = any($1)', [ids])).rows; const act = (await c.query('select count(*)::int n from questions where is_active')).rows[0].n; await c.end();
+const nh = r.filter((x) => !(x.general_hint || '').trim() && G[x.id].v2 >= 3).length;
+console.log({ ids: ids.length, found: r.length, nohint3plus_G022_nonoverlap: nh, activeNow: act });
