@@ -16,6 +16,7 @@ import { normalizeAnswer } from '../shared/dist/index.js';
 const QLEN = QUESTION_MAX; // 15 §3-1 SYNC:QLEN — 200 (R068 이 240 을 권고해도 설계가 15 를 고치기 전엔 200)
 const CV107 = [4739, 4788, 5076, 5272, 5274, 5279, 5287, 5434, 5550, 5599, 5601, 5624, 5626, 5881, 5991, 6042, 6085, 6126, 6294, 6421, 6432, 6506, 6515, 6727, 6748, 6816, 2810, 5734];
 const REREAD_SKIP = [6366, 5551, 5915, 4734, 5132]; // G022 재독 의견 우선(reread.read reject/fix) — 적용 안 함
+const READ_REVERT = { 6312: 'G023 표본 재독 — "미군 준장인 소장" 으로 뜻이 흐려짐(원문이 더 읽기 쉬움)' }; // C 적용 뒤 표본 60 에서 되돌린 것
 const REPORTED = [3813, 1619, 2096, 1438, 500, 1941]; // D 에서 따로 — C 의 읽기 제안은 쓰지 않는다
 const FACT = [
   { id: 3439, field: 'question_text', from: '약 7천 5백만 년 전', to: '약 6천 6백만 년 전', src: 'V027 7절 · 영어 위키 Coelacanth' },
@@ -154,6 +155,7 @@ for (const id of ids) {
     let action = 'skip', text = null, reason = null;
     if (+id === 1619 && s === 'V027') reason = '⑤ 1619 V027 제안 안 씀(D 에서 따로)';
     else if (REPORTED.includes(+id)) reason = '제보 문항 — D 에서 따로';
+    else if (READ_REVERT[id]) reason = READ_REVERT[id];
     else if (s === 'G022' && REREAD_SKIP.includes(+id)) reason = `④ G022 재독 우선(reread.read ${g2.reread?.read})`;
     else if (rv.verdict === 'ok') {
       if (rv.leak || rv.factChange) reason = `① ok 이지만 leak ${rv.leak} · factChange ${rv.factChange}`;
@@ -175,7 +177,7 @@ for (const id of ids) {
       const g0 = checkAnswerSet(orig, db.display_answer, db.variants, normalizeAnswer);
       const newBlocked = g.blocked.filter((b) => !g0.blocked.some((x) => x.answer === b.answer));
       if (!orig) reason = '고정 사본 없음';
-      else if (!eqT(orig, db.question_text)) reason = '판정 뒤 지금 문구가 바뀜(고정 사본 ≠ DB)';
+      else if (!eqT(orig, db.question_text) && !eqT(nt, db.question_text)) reason = '판정 뒤 지금 문구가 바뀜(고정 사본 ≠ DB)';
       else if (eqT(nt, orig)) reason = '⑦ 원문과 같음';
       else if (len(nt) > QLEN) reason = `⑥ ${len(nt)}자 > QLEN ${QLEN}`;
       else if (leak.length) reason = `⑦ 정답·변형 글자 새로 등장(${leak.join('/')})`;
@@ -190,7 +192,7 @@ for (const id of ids) {
   if (tries.length) {
     // 겹침: VERIFY(V028) 제안을 먼저 · 못 쓰면 G022 제안
     const pick = tries.find((t) => t.from === 'V028' && t.action !== 'skip') ?? tries.find((t) => t.action !== 'skip');
-    it.read = pick ? { ...pick, before: db.question_text, ...(tries.length > 1 ? { others: tries.filter((t) => t !== pick).map(({ from, action, reason }) => ({ from, action, reason })) } : {}) }
+    it.read = pick ? { ...pick, before: T[pick.from][id].question, ...(tries.length > 1 ? { others: tries.filter((t) => t !== pick).map(({ from, action, reason }) => ({ from, action, reason })) } : {}) }
       : { action: 'skip', tries: tries.map(({ from, grade, verdict, easier, reason }) => ({ from, grade, verdict, easier, reason })) };
     if (pick) readRows.push(+id); else readSkipped.push({ id: +id, answer: db.display_answer, tries: it.read.tries });
   }
