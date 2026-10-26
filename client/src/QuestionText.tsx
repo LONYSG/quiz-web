@@ -17,6 +17,17 @@ import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 const BASE_PX = 19;
 /** 긴 문장을 위해 여기까지 줄인다 */
 const MIN_PX = 15;
+/**
+ * ★★ R069 (R068 240자 검사 권고) — 좁은 칸(지문 칸 폭 ≤ 400px · 휴대폰)은 **글자 수로 정한다**(재는 때에 따라 안 흔들리게).
+ *   R068 실측(360 · 높이 740): 140자 19px 7줄 · 197자 19px 11줄(입력칸 66px 아래) · 15px 9줄(보임) · 240자 15px 9줄(보임).
+ *   → 150자 넘음 15px · 120~150자 17px · 그 밖 19px · 늘 줄바꿈. PC(넓은 칸)는 옛 자동 맞춤 그대로.
+ */
+const NARROW_MAX_W = 400;
+export function narrowPx(chars: number): number {
+  if (chars > 150) return 15;
+  if (chars >= 120) return 17;
+  return BASE_PX;
+}
 
 export default function QuestionText({ text }: { text: string }) {
   const lines = useMemo(() => splitSentences(text), [text]);
@@ -31,6 +42,15 @@ export default function QuestionText({ text }: { text: string }) {
       const width = box.clientWidth;
       // ★ R041 — 화면이 클수록 뿌리 글자(html)가 커진다 → 지문의 기본·하한도 같은 비율로 (16px 기준)
       const k = parseFloat(getComputedStyle(document.documentElement).fontSize) / 16 || 1;
+      if (width > 0 && width <= NARROW_MAX_W) {
+        const px = Math.round(narrowPx([...text].length) * k);
+        box.style.setProperty('--q-px', `${px}px`);
+        box.dataset.wrap = '1';
+        box.dataset.narrow = '1';
+        setFit((prev) => (prev.px === px && prev.wrap ? prev : { px, wrap: true }));
+        return;
+      }
+      delete box.dataset.narrow;
       const base = Math.round(BASE_PX * k);
       const min = Math.round(MIN_PX * k);
       let px = base;
@@ -52,7 +72,7 @@ export default function QuestionText({ text }: { text: string }) {
     const ro = new ResizeObserver(measure);
     ro.observe(box);
     return () => ro.disconnect();
-  }, [lines]);
+  }, [lines, text]);
 
   return (
     <div

@@ -21,6 +21,7 @@ import { EMOJI_CATEGORIES, setEmojiInsert, setStoredSlots, useEmojiCatalog, useE
 import Icon from './Icon.js';
 import { Pencil, Search, Send, Smile, TextCursorInput } from 'lucide-react';
 import { isReportOpen } from './reportGuard.js';
+import { useRecentEmojis } from './emojiRecent.js';
 
 interface Props {
   slots: number[];
@@ -48,7 +49,9 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   // ★★ R066 (D-291 · 찬종 #39 "숫자 자리를 눌러 바꿀 수 있어요 팁 빼") — 팁 대신 단축키 줄 끝 ✎: 누르면 편집 모드
   //   (자리가 커지고 흔들림 · "자리를 누른 뒤 이모티콘을 고르세요" · 다시 ✎ 또는 Esc 로 끝). 숫자 자리를 바로 누르는 길도 그대로.
   const [editing, setEditing] = useState(false);
-  const [tab, setTab] = useState('smileys');
+  // ★★ R069 (#70) — "자주" 탭(최근 보낸 순 12 · 이 기기) — 있으면 첫 탭 · 창을 열 때 그 탭부터
+  const recent = useRecentEmojis();
+  const [tab, setTab] = useState(() => (recent.length > 0 ? 'recent' : 'smileys'));
   const [q, setQ] = useState('');
 
   useEffect(() => {
@@ -89,13 +92,19 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const hasCustom = Boolean(cat?.list.some((e) => e.category === 'custom'));
   // ★ R049 — ✨ 특별 탭은 **가진 것이 있을 때만** (뽑기 전엔 탭이 없다). 못 가진 특별은 어디에도 안 나온다 (찾기에도)
   const hasSpecial = Boolean(cat && cat.ownedSpecial.size > 0);
+  const recentShown = useMemo(() => {
+    if (!cat) return [];
+    return recent.map((id) => cat.byId.get(id)).filter((e): e is EmojiMeta => !!e && (e.category !== 'special' || cat.ownedSpecial.has(e.id)));
+  }, [cat, recent]);
+  const hasRecent = recentShown.length > 0;
   const shown = useMemo(() => {
     if (!cat) return [];
     const sendable = (e: EmojiMeta) => e.category !== 'special' || cat.ownedSpecial.has(e.id);
     const k = q.trim().toLowerCase();
     if (k) return cat.list.filter((e) => sendable(e) && (e.name.toLowerCase().includes(k) || e.tags.some((t) => t.toLowerCase().includes(k)))).slice(0, 160);
+    if (tab === 'recent') return recentShown;
     return cat.list.filter((e) => e.category === tab && sendable(e));
-  }, [cat, q, tab]);
+  }, [cat, q, tab, recentShown]);
   // ★ 특별 탭 — 테마별 머리글 (치이카와 7/27)
   const specialGroups = useMemo(() => {
     if (!cat || tab !== 'special' || q.trim()) return null;
@@ -108,7 +117,13 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   }, [cat, tab, q]);
   useEffect(() => {
     if (tab === 'special' && cat && !hasSpecial) setTab('smileys');
-  }, [tab, cat, hasSpecial]);
+    if (tab === 'recent' && cat && !hasRecent) setTab('smileys');
+  }, [tab, cat, hasSpecial, hasRecent]);
+  // ★ R069 — 창을 열 때마다 "자주" 가 있으면 거기서 시작
+  useEffect(() => {
+    if (open && recent.length > 0) setTab('recent');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   const pick = (id: number, shift = false) => {
     if (assign !== null) {
@@ -259,7 +274,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
           </div>
           {!q && (
             <div className="emoji-tabs" role="tablist">
-              {EMOJI_CATEGORIES.filter((c) => (c.key !== 'custom' || hasCustom) && (c.key !== 'special' || hasSpecial)).map((c) => (
+              {[...(hasRecent ? [{ key: 'recent', label: '자주', icon: '🕘' }] : []), ...EMOJI_CATEGORIES.filter((c) => (c.key !== 'custom' || hasCustom) && (c.key !== 'special' || hasSpecial))].map((c) => (
                 <button
                   key={c.key}
                   type="button"

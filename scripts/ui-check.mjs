@@ -3536,7 +3536,7 @@ async function r057Flow(browser) {
   // ★ R063 — 칩 나열 → 고르기 창
   const tapOnly = await selectMinigames(H, ['tap']);
   await sleep(300);
-  const st = JSON.parse(await H.evaluate("JSON.stringify({ count: document.querySelector('.settings .count-input:not(.mg-rounds-input)') !== null, rounds: document.querySelector('.mg-rounds-input')?.value, n: document.querySelector('[data-mg-catalog-open] .mono')?.innerText ?? '', tier: document.querySelector('.settings [data-tier]') !== null })"));
+  const st = JSON.parse(await H.evaluate("JSON.stringify({ count: document.querySelector('.settings .count-input:not(.mg-rounds-input)') !== null, rounds: document.querySelector('.mg-rounds-input')?.value, n: document.querySelector('[data-mg-catalog-open] .mono')?.innerText ?? '', tier: document.querySelector('.settings [data-level]') !== null })"));
   st.on = tapOnly.split(',');
   record('★★★ A 설정 — 미니게임만이면 문제 수 · 난이도 · 분야 숨김 · 미니게임 수 · 고르기만', !st.count && !st.tier && st.rounds === '2' && st.on.join() === 'tap', JSON.stringify(st));
   await G.waitFor("[...document.querySelectorAll('.settings .chip')].some((c) => c.innerText.trim() === '미니게임만')", 4000);
@@ -4239,34 +4239,34 @@ async function r068RoomFlow(browser) {
   await sleep(300);
   record('★★★ R068 #69 고르기 — 아이콘 칸 · 체크 칸이 카드 세로 가운데(±2) · 아이콘이 칸 가운데(±1) · 체크 24px · 오른쪽 12px(1536 · 2560 · m390)', Object.values(cat).every((rows) => rows.length === 4 && rows.every((x) => Math.abs(x.art) <= 2 && Math.abs(x.check) <= 2 && x.size === 24 && Math.abs(x.right - 12) <= 1 && x.ico && Math.abs(x.ico[0]) <= 1 && Math.abs(x.ico[1]) <= 1)), JSON.stringify(cat));
 
-  // #56 난이도 — PC 클릭 · m390 터치로 끄기 · 마지막 하나는 이유가 보인다
-  const tierState = "JSON.stringify([...document.querySelectorAll('button[data-tier]')].map((b) => { const cs = getComputedStyle(b); return { t: b.dataset.tier, on: b.getAttribute('aria-pressed'), bg: cs.backgroundColor, bd: cs.borderTopColor, fg: cs.color }; }))";
-  await realClick(H, 'button[data-tier="easy"]');
+  // #56 (R069 — 난이도는 셋 중 하나가 되어 끄기가 없다 → 같은 꼴인 분야 버튼으로) — PC 클릭 · m390 터치로 끄기 · 마지막 하나는 이유가 보인다
+  const tierState = "JSON.stringify([...document.querySelectorAll('button[data-topic]')].map((b) => { const cs = getComputedStyle(b); return { t: b.dataset.topic, on: b.getAttribute('aria-pressed'), bg: cs.backgroundColor, bd: cs.borderTopColor, fg: cs.color }; }))";
+  await realClick(H, 'button[data-topic="korea"]');
   await H.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 5, y: 850 });
   await sleep(500);
   const pc1 = JSON.parse(await H.evaluate(tierState));
   await snap(H, '354-diff-pc');
-  await realClick(H, 'button[data-tier="easy"]');
+  await realClick(H, 'button[data-topic="korea"]');
   await sleep(400);
   await r068Touch(H, 390, 844, true);
   await sleep(300);
-  await tapOn(H, 'button[data-tier="hard"]');
+  await tapOn(H, 'button[data-topic="media"]');
   await sleep(500);
   const m1 = JSON.parse(await H.evaluate(tierState));
   await snap(H, '354-diff-m390-off');
-  await tapOn(H, 'button[data-tier="medium"]');
+  for (const t of ['korea', 'history', 'science', 'arts', 'sports']) await tapOn(H, `button[data-topic="${t}"]`);
   await sleep(300);
-  await tapOn(H, 'button[data-tier="easy"]');
+  await tapOn(H, 'button[data-topic="life"]');
   await sleep(150);
-  const last = JSON.parse(await H.evaluate("JSON.stringify({ shake: document.querySelector('button[data-tier].shake') !== null, hint: document.querySelector('[data-last-hint]')?.innerText ?? '', on: [...document.querySelectorAll('button[data-tier][aria-pressed=\"true\"]')].map((b) => b.dataset.tier) })"));
+  const last = JSON.parse(await H.evaluate("JSON.stringify({ shake: document.querySelector('button[data-topic].shake') !== null, hint: document.querySelector('[data-last-hint]')?.innerText ?? '', on: [...document.querySelectorAll('button[data-topic][aria-pressed=\"true\"]')].map((b) => b.dataset.topic) })"));
   await snap(H, '354-diff-m390-last');
-  for (const t of ['medium', 'hard']) await tapOn(H, `button[data-tier="${t}"]`);
+  await H.evaluate("[...document.querySelectorAll('.topic-row button')].find((b) => b.innerText.trim() === '전체')?.click()");
   await sleep(300);
   await r068Touch(H, 1536, 864, false);
   await H.setViewport(1536, 864);
   const offLooksOff = (rows, t) => { const off = rows.find((r) => r.t === t); const on = rows.find((r) => r.on === 'true'); return off && on && off.on === 'false' && off.bd !== on.bd && off.bg !== on.bg && off.fg !== on.fg; };
-  record('★★★ R068 #56 난이도 — 누르면 꺼짐(aria · 배경 · 테두리 · 글자색 모두 켜진 것과 다름) · PC 클릭 · m390 터치(눌린 뒤 hover 가 남지 않음)', offLooksOff(pc1, 'easy') && offLooksOff(m1, 'hard'), JSON.stringify({ pc1, m1 }));
-  record('★★ R068 #56 마지막 하나 끄기 — 흔들림 + "하나는 남겨야" 안내 · 그대로 켜짐', last.shake && /하나/.test(last.hint) && last.on.join(',') === 'easy', JSON.stringify(last));
+  record('★★★ R068 #56 버튼 끄기(분야 — R069 난이도는 라디오) — 누르면 꺼짐(aria · 배경 · 테두리 · 글자색 모두 켜진 것과 다름) · PC 클릭 · m390 터치(눌린 뒤 hover 가 남지 않음)', offLooksOff(pc1, 'korea') && offLooksOff(m1, 'media'), JSON.stringify({ pc1, m1 }));
+  record('★★ R068 #56 마지막 하나 끄기(분야) — 흔들림 + "하나는 남겨야" 안내 · 그대로 켜짐', last.shake && /하나/.test(last.hint) && last.on.join(',') === 'life', JSON.stringify(last));
 
   // #52 업적 설명 — 생략 없이 두 줄까지
   const ach = {};
@@ -4437,6 +4437,8 @@ async function r068GameFlow(browser) {
       await c.query(`DROP TABLE IF EXISTS _r068_active`);
       if (prep?.nid) {
         await c.query(`DELETE FROM question_feedback WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM question_experiences WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM answer_events WHERE question_id = $1`, [prep.nid]).catch(() => undefined);
         await c.query(`DELETE FROM game_questions WHERE question_id = $1`, [prep.nid]);
         await c.query(`DELETE FROM question_answers WHERE question_id = $1`, [prep.nid]);
         await c.query(`DELETE FROM questions WHERE id = $1`, [prep.nid]).catch((e) => console.log(`  [r068] 240자 질문 지우기 실패(남겨 둠): ${e.message}`));
@@ -4593,6 +4595,205 @@ async function r068GamePlay(browser, prep) {
   await touchDevice(H, 1536, 864, false);
   for (const s of socks) s.close();
   H.close();
+}
+
+// =============================================================================
+// ★★★ R069 — 난이도 초급 · 중급 · 고급(설정 · 뱃지 · 전적) · 좁은 칸 지문 글자 규칙(240자) · 이모티콘 "자주" 탭
+//   R069_ONLY = settings | game | emoji (없으면 전부)
+// =============================================================================
+const R069_PC = [[1280, 720], [1536, 864], [1536, 730], [1920, 1080], [2560, 1440]];
+async function r069Flow(browser) {
+  const only = process.env.R069_ONLY ?? '';
+  if (!only || only === 'settings') await r069SettingsFlow(browser);
+  if (!only || only === 'emoji') await r069EmojiFlow(browser);
+  if (!only || only === 'game') await r069GameFlow(browser);
+}
+
+const R069_LEVEL = "JSON.stringify((() => { const btns = [...document.querySelectorAll('.settings button[data-level]')]; const d = document.querySelector('[data-level-desc]'); const lh = d ? parseFloat(getComputedStyle(d).lineHeight) || 16 : 16; const row = document.querySelector('.level-row')?.getBoundingClientRect(); return { labels: btns.map((b) => b.innerText.trim()), on: btns.filter((b) => b.getAttribute('aria-checked') === 'true').map((b) => b.dataset.level), desc: d?.innerText ?? '', descLines: d ? Math.round(d.getBoundingClientRect().height / lh) : null, tierBtns: document.querySelectorAll('button[data-tier]').length, overflowX: document.documentElement.scrollWidth > innerWidth + 1, rowRight: row ? Math.round(innerWidth - row.right) : null }; })())";
+
+async function r069SettingsFlow(browser) {
+  const H = await newPage(browser, 'R069-set', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'vs', '난이도방장');
+  const roomId = await createRoom(H, 'R069 난이도');
+  const out = {};
+  for (const [w, h] of R069_PC) {
+    await H.setViewport(w, h);
+    await sleep(400);
+    out[`${w}x${h}`] = JSON.parse(await H.evaluate(R069_LEVEL));
+    await snap(H, `400-level-${w}x${h}`);
+  }
+  const d0 = out['1536x864'];
+  record('★★★ R069 설정 — 버튼 셋 초급 · 중급 · 고급 · 기본 중급 · 한 줄 설명 · 옛 하·중·상 버튼 없음(PC 5크기)', Object.values(out).every((o) => o.labels.join(',') === '초급,중급,고급' && o.on.join(',') === 'intermediate' && /학교/.test(o.desc) && o.tierBtns === 0 && !o.overflowX && o.descLines <= 1), JSON.stringify(out));
+  await H.setViewport(1536, 864);
+  await realClick(H, 'button[data-level="advanced"]');
+  await H.waitFor("document.querySelector('button[data-level=\"advanced\"]')?.getAttribute('aria-checked') === 'true'", 4000).catch(() => false);
+  await sleep(300);
+  const adv = JSON.parse(await H.evaluate(R069_LEVEL));
+  const avail = await H.evaluate("document.querySelector('.avail-line')?.innerText ?? ''");
+  await snap(H, '401-level-advanced-1536');
+  await realClick(H, 'button[data-level="advanced"]');
+  await sleep(300);
+  const again = JSON.parse(await H.evaluate(R069_LEVEL));
+  record('★★★ R069 고급 진짜 클릭 → 하나만 켜짐 · 설명 "알아 둘 만한" · 다시 눌러도 그대로(끄기 없음) · 출제 가능 수 줄', adv.on.join(',') === 'advanced' && /알아 둘/.test(adv.desc) && again.on.join(',') === 'advanced' && /문제/.test(avail), JSON.stringify({ adv, again, avail }));
+  // 모바일 360 · 390 — 설명 두 줄 안
+  const m = {};
+  for (const w of [360, 390]) {
+    await r068Touch(H, w, 800, true);
+    await H.evaluate("window.dispatchEvent(new Event('resize'))");
+    await sleep(400);
+    for (const lv of ['beginner', 'intermediate', 'advanced']) {
+      await tapOn(H, `button[data-level="${lv}"]`);
+      await sleep(250);
+      m[`${w}-${lv}`] = JSON.parse(await H.evaluate(R069_LEVEL));
+      if (lv === 'advanced') await snap(H, `402-level-m${w}`);
+    }
+  }
+  await r068Touch(H, 1536, 864, false);
+  await H.setViewport(1536, 864);
+  record('★★ R069 모바일 360 · 390 — 셋 다 탭으로 바뀜 · 설명 두 줄 안 · 가로 넘침 없음', Object.entries(m).every(([k, o]) => o.on.join(',') === k.split('-')[1] && o.descLines <= 2 && !o.overflowX), JSON.stringify(m));
+  // 손님 화면 — 고른 것만 진하게(칩)
+  const G = await newPage(browser, 'R069-guest', true);
+  await G.setViewport(1536, 864);
+  await signUp(G, 'vg', '난이도손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.settings') !== null", 10000).catch(() => false);
+  await sleep(600);
+  const gv = JSON.parse(await G.evaluate("JSON.stringify({ chips: [...document.querySelectorAll('.settings .chip[data-level]')].map((c) => c.innerText.trim() + ':' + c.classList.contains('on')), btns: document.querySelectorAll('.settings button[data-level]').length, desc: document.querySelector('[data-level-desc]')?.innerText ?? '' })"));
+  await snap(G, '403-level-guest-1536');
+  record('★★ R069 손님 — 단계 셋이 칩(누를 수 없음) · 고른 것만 진하게 · 설명', gv.btns === 0 && gv.chips.join(',') === '초급:false,중급:false,고급:true' && /알아 둘/.test(gv.desc), JSON.stringify(gv));
+  // 전적 — 등급별
+  await H.evaluate("document.querySelector('#rename-btn')?.click()");
+  await H.waitFor("document.querySelector('.stats-open') !== null", 3000).catch(() => false);
+  await H.evaluate("document.querySelector('.stats-open')?.click()");
+  await H.waitFor("document.body.innerText.includes('등급별')", 6000).catch(() => false);
+  await sleep(300);
+  const st = await H.evaluate("[...document.querySelectorAll('.modal *')].map((e) => e.childElementCount === 0 ? e.innerText : '').join(' ')");
+  await snap(H, '404-stats-grades-1536');
+  record('★★ R069 전적 — "등급별 1등급 … 5등급"(옛 하·중·상 없음)', /등급별 1등급 \d+ · 2등급 \d+ · 3등급 \d+ · 4등급 \d+ · 5등급 \d+/.test(st), (st.match(/등급별[^\n]{0,60}/) ?? [''])[0]);
+  G.close();
+  H.close();
+}
+
+async function r069EmojiFlow(browser) {
+  const H = await newPage(browser, 'R069-emoji', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 've', '자주손님');
+  await createRoom(H, 'R069 자주');
+  await H.evaluate("localStorage.removeItem('qw.emoji.recent')");
+  await realClick(H, '.emoji-btn');
+  await H.waitFor("document.querySelector('.emoji-pop') !== null", 3000).catch(() => false);
+  const before = JSON.parse(await H.evaluate("JSON.stringify({ tab: document.querySelector('.emoji-tab.on')?.title ?? '', recent: !!document.querySelector('.emoji-tab[title=\"자주\"]') })"));
+  // 세 개 보내기(진짜 클릭) — 표정 탭 3번째 · 5번째 · 3번째(같은 것 다시 = 맨 앞)
+  const sent = [];
+  for (const nth of [3, 5, 3]) {
+    if (!(await H.evaluate("document.querySelector('.emoji-pop') !== null"))) {
+      await realClick(H, '.emoji-btn');
+      await H.waitFor("document.querySelector('.emoji-pop') !== null", 3000).catch(() => false);
+      await realClick(H, '.emoji-tab[title="표정"]');
+      await sleep(200);
+    }
+    sent.push(await H.evaluate(`document.querySelector('.emoji-grid .emoji-cell:nth-child(${nth}) img')?.getAttribute('src') ?? ''`));
+    await realClick(H, `.emoji-grid .emoji-cell:nth-child(${nth})`);
+    await sleep(5200 / 4);
+  }
+  await sleep(600);
+  if (!(await H.evaluate("document.querySelector('.emoji-pop') !== null"))) await realClick(H, '.emoji-btn');
+  await H.waitFor("document.querySelector('.emoji-pop') !== null", 3000).catch(() => false);
+  await sleep(300);
+  const after = JSON.parse(await H.evaluate("JSON.stringify({ first: document.querySelector('.emoji-tabs .emoji-tab')?.title ?? '', on: document.querySelector('.emoji-tab.on')?.title ?? '', cells: [...document.querySelectorAll('.emoji-grid .emoji-cell img')].map((i) => i.getAttribute('src')) })"));
+  await snap(H, '410-emoji-recent-1536');
+  await r068Touch(H, 390, 844, true);
+  await sleep(400);
+  await snap(H, '410-emoji-recent-m390');
+  await r068Touch(H, 1536, 864, false);
+  record('★★★ R069 #70 "자주" 탭 — 처음엔 없음 · 보낸 뒤 첫 탭 · 창을 열면 그 탭 · 최근 순(같은 것은 맨 앞 한 번) · 2개', !before.recent && after.first === '자주' && after.on === '자주' && after.cells.length === 2 && after.cells[0] === sent[2] && after.cells[1] === sent[1], JSON.stringify({ before, sent, after }));
+  H.close();
+}
+
+async function r069GameFlow(browser) {
+  // 검사 DB: 240자 질문(5760 본뜸 · 문장 넷) + 5760(140) + 가장 긴 활성만 쉬지 않게(끝나면 되돌림) — r068 과 같은 준비
+  const prep = await withPg(async (c) => {
+    const longest = (await c.query(`SELECT id::text FROM questions WHERE is_active AND id <> 5760 ORDER BY char_length(question_text) DESC, id LIMIT 1`)).rows[0].id;
+    const cols = (await c.query(`SELECT column_name FROM information_schema.columns WHERE table_name = 'questions' AND column_name NOT IN ('id', 'question_text', 'source_ref') AND is_generated = 'NEVER' AND column_default IS DISTINCT FROM 'nextval(''questions_id_seq''::regclass)'`)).rows.map((r) => r.column_name);
+    let text = '[QLEN 240] ';
+    while ([...text].length < 240) text += QLEN_FILL;
+    text = [...text].slice(0, 239).join('') + '?';
+    const nid = (await c.query(`INSERT INTO questions (question_text, ${cols.join(', ')}) SELECT $1, ${cols.join(', ')} FROM questions WHERE id = 5760 RETURNING id::text`, [text])).rows[0].id;
+    const acols = (await c.query(`SELECT column_name FROM information_schema.columns WHERE table_name = 'question_answers' AND column_name NOT IN ('id', 'question_id')`)).rows.map((r) => r.column_name);
+    await c.query(`INSERT INTO question_answers (question_id, ${acols.join(', ')}) SELECT $1, ${acols.join(', ')} FROM question_answers WHERE question_id = 5760`, [nid]);
+    await c.query(`DROP TABLE IF EXISTS _r068_active`);
+    await c.query(`CREATE TABLE _r068_active AS SELECT id FROM questions WHERE is_active`);
+    await c.query(`UPDATE questions SET is_active = (id = ANY($1::bigint[])) WHERE is_active OR id = ANY($1::bigint[])`, [[5760, longest, nid]]);
+    return { longest, nid };
+  });
+  console.log(`  [r069] 준비 ${JSON.stringify(prep)}`);
+  try {
+    const H = await newPage(browser, 'R069-game', true);
+    await H.setViewport(1536, 864);
+    await signUp(H, 'vq', '지문방장');
+    const roomId = await createRoom(H, 'R069 지문');
+    const socks = await socketGuests(roomId, 1, 'vq');
+    await sleep(500);
+    await realClick(H, 'button[data-level="advanced"]');
+    await sleep(300);
+    await setQuestionCount(H, 3);
+    await sleep(300);
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+    const rows = [];
+    let badge = '';
+    for (let i = 0; i < 3; i += 1) {
+      await H.waitFor(`document.querySelector('.question-card .q-progress')?.innerText.trim().startsWith('${i + 1} ')`, 60000).catch(() => false);
+      await sleep(400);
+      if (i === 0) {
+        badge = await H.evaluate("document.querySelector('.q-head .badge.diff')?.innerText ?? ''");
+        await snap(H, '405-badge-1536');
+      }
+      const len = await H.evaluate("[...(document.querySelector('.q-text')?.dataset.text ?? '')].length");
+      const tag = len >= 230 ? '240' : len >= 180 ? '197' : '140';
+      // 같은 문제를 PC → 360 → 390 → PC 순으로 두 번씩 재서 값이 같은지(재는 때에 안 흔들림)
+      const m = {};
+      for (const [dev, w, h, touch] of [['m360', 360, 740, true], ['m390', 390, 844, true], ['m360b', 360, 740, true]]) {
+        await r068Touch(H, w, h, touch);
+        await H.evaluate("window.dispatchEvent(new Event('resize'))");
+        await sleep(500);
+        m[dev] = JSON.parse(await H.evaluate(QLEN_PROBE));
+        if (dev === 'm360') await snap(H, `420-qlen-${tag}-m360`);
+      }
+      await r068Touch(H, 1536, 864, false);
+      await H.setViewport(1536, 864);
+      await sleep(300);
+      const pc = JSON.parse(await H.evaluate(QLEN_PROBE));
+      rows.push({ tag, chars: len, m360: m.m360, m360b: m.m360b, m390: m.m390, pc });
+      await openHostSkip(H);
+      await H.evaluate("document.querySelector('.confirm-modal[data-kind=\"host-skip\"] .confirm-actions button')?.click()");
+      await sleep(1500);
+    }
+    console.log('  [r069] 지문 표');
+    for (const r of rows) console.log(`    ${r.tag}(${r.chars})자 — 360: ${r.m360?.fs} ${r.m360?.lines}줄 입력칸 ${r.m360?.input}(${r.m360?.inputOver}px) · 다시 360: ${r.m360b?.fs} ${r.m360b?.lines}줄 · 390: ${r.m390?.fs} ${r.m390?.lines}줄 입력칸 ${r.m390?.input} · PC 1536: ${r.pc?.fs} ${r.pc?.lines}줄`);
+    writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r069', 'qlen-r069.json'), JSON.stringify(rows, null, 1));
+    const r240 = rows.find((r) => r.tag === '240');
+    const r197 = rows.find((r) => r.tag === '197');
+    const r140 = rows.find((r) => r.tag === '140');
+    record('★★★ R069 뱃지 — "난이도 고급"', /난이도 고급/.test(badge), badge);
+    record('★★★ R069 좁은 칸 글자 규칙 — 360: 240 · 197 = 15px · 140 = 17px · 두 번 재도 같음 · 240 은 입력칸 보임', r240?.m360?.fs === '15px' && r197?.m360?.fs === '15px' && r140?.m360?.fs === '17px' && rows.every((r) => r.m360?.fs === r.m360b?.fs && r.m360?.lines === r.m360b?.lines) && r240?.m360?.input === true && r197?.m360?.input === true, JSON.stringify(rows.map((r) => [r.tag, r.m360?.fs, r.m360?.lines, r.m360?.input, r.m360b?.fs])));
+    record('★★ R069 PC 는 옛 자동 맞춤 그대로(240 1536 = 4줄 · 입력칸 보임)', r240?.pc?.input === true && r240?.pc?.lines <= 5, JSON.stringify(rows.map((r) => [r.tag, r.pc?.fs, r.pc?.lines])));
+    for (const s of socks) s.close();
+    H.close();
+  } finally {
+    await withPg(async (c) => {
+      await c.query(`UPDATE questions SET is_active = true WHERE id IN (SELECT id FROM _r068_active)`);
+      await c.query(`DROP TABLE IF EXISTS _r068_active`);
+      if (prep?.nid) {
+        await c.query(`DELETE FROM question_feedback WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM question_experiences WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM answer_events WHERE question_id = $1`, [prep.nid]).catch(() => undefined);
+        await c.query(`DELETE FROM game_questions WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM question_answers WHERE question_id = $1`, [prep.nid]);
+        await c.query(`DELETE FROM questions WHERE id = $1`, [prep.nid]).catch((e) => console.log(`  [r069] 240자 질문 지우기 실패(남겨 둠): ${e.message}`));
+      }
+    });
+  }
 }
 
 async function r066ResultAt(H, label, shot) {
@@ -5654,6 +5855,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R067) {
     await closeAllTabs(browser);
     await r067Flow(browser);
+  }
+  // ★ R069 — 난이도 초급 · 중급 · 고급 · 좁은 칸 지문 글자 · 이모티콘 자주 탭
+  if (process.env.UICHECK_R069) {
+    await closeAllTabs(browser);
+    await r069Flow(browser);
   }
   // ★ R068 — 찬종 제보 20 · 정답 공개 평가 · photoyear · 긴 질문
   if (process.env.UICHECK_R068) {
@@ -7243,42 +7449,25 @@ try {
     //   ★ 수치는 남긴다. 09-BACKLOG 의 다음 목표가 된다.
     // ── ★★ R025 난이도 선택
     //   ★ 버튼을 실제로 눌러 출제 가능 수 안내가 바뀌는지 본다 (서버 재계산이 화면까지 오는가)
-    console.log('\n[4-9] ★★ 난이도 선택 (R025)');
+    console.log('\n[4-9] ★★ 난이도 단계 (R069 · 옛 R025)');
     const availText = () =>
       host.evaluate(
         "document.querySelector('.avail-line')?.innerText ?? ''",
       );
-    const diffBtns = await host.evaluate(
-      "[...document.querySelectorAll('.card button[data-tier]')].map(b => b.innerText.trim() + ':' + b.getAttribute('aria-pressed')).join(',')",
+    const lvBtns = await host.evaluate(
+      "[...document.querySelectorAll('.card button[data-level]')].map(b => b.innerText.trim() + ':' + b.getAttribute('aria-checked')).join(',')",
     );
-    record('★★ 난이도 버튼 셋이 있고 기본은 전부 켜짐', diffBtns === '하:true,중:true,상:true', diffBtns);
+    record('★★ 난이도 버튼 셋(초급 · 중급 · 고급) · 기본 중급', lvBtns === '초급:false,중급:true,고급:false', lvBtns);
     const beforeAvail = await availText();
-    await host.click('하');
-    await sleep(300);
-    await host.click('중');
+    await host.click('초급');
     const changed = await host.waitFor(
       `(document.querySelector('.avail-line')?.innerText ?? '') !== ${JSON.stringify(beforeAvail)}`,
       6000,
     );
-    record('★★ "상" 만 남기면 출제 가능 수 안내가 바뀐다', changed, `${beforeAvail} → ${await availText()}`);
-    // ★ 마지막 하나는 끌 수 없다. 눌러도 켜진 채로 남고 안내가 뜬다
-    await host.click('상');
-    await sleep(300);
-    record(
-      '★ 마지막 하나를 끄려 하면 안내가 뜨고 켜진 채로 남는다',
-      (await host.text()).includes('난이도는 하나 이상 선택해야 합니다') &&
-        (await host.evaluate(
-          "[...document.querySelectorAll('.card button[data-tier]')].find(b => b.innerText.trim() === '상')?.getAttribute('aria-pressed')",
-        )) === 'true',
-    );
-    // 원래대로 (뒤 검사가 전체 기준이다)
-    await host.click('하');
-    await sleep(200);
-    await host.click('중');
-    await host.waitFor(
-      "[...document.querySelectorAll('.card button[data-tier]')].every(b => b.getAttribute('aria-pressed') === 'true')",
-      4000,
-    );
+    record('★★ 초급으로 바꾸면 출제 가능 수 안내가 바뀐다(1~3 등급)', changed, `${beforeAvail} → ${await availText()}`);
+    // 원래대로 (뒤 검사가 중급 기준이다)
+    await host.click('중급');
+    await host.waitFor("document.querySelector('.card button[data-level=\"intermediate\"]')?.getAttribute('aria-checked') === 'true'", 4000);
     await sleep(800);
 
     // ── ★★ R034 분야 선택 — 출제 가능 수가 난이도 × 분야로 다시 계산되는가

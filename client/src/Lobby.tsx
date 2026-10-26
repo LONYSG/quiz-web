@@ -39,6 +39,7 @@ import Prefs, { setRoomOwnsKeys } from './Prefs.js';
 import Seat from './Seat.js';
 import Emoji from './Emoji.js';
 import EmojiPicker from './EmojiPicker.js';
+import { pushRecentEmoji } from './emojiRecent.js';
 import { emojiToken, isSpecialEmoji, peekEmojiCatalog, specialDisplayMode, useEmojiSlots } from './emojiCatalog.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
 import { chatSound, toggleMuteAll } from './sound.js';
@@ -353,6 +354,7 @@ export default function Lobby({
     }
     socket.emit('emoji.send', { emojiId: id });
     setEmojiFlash({ id, key: Date.now() });
+    pushRecentEmoji(id); // ★ R069 (#70) — "자주" 탭
   };
   // ★★★ R057 (D-250) — 입력창에 넣기: 커서 자리에 토큰(표준 = 글자 · 특별 = :sp:번호:) · 한 줄 10개까지
   //   ★ 터치 기기는 입력창에 포커스를 주지 않는다(키보드가 올라와 고르기 창을 덮는다) — 마지막 커서 자리에 넣는다
@@ -367,6 +369,7 @@ export default function Lobby({
     }
     const at = Math.min(caretRef.current ?? draft.length, draft.length);
     const next = draft.slice(0, at) + token + draft.slice(at);
+    pushRecentEmoji(id); // ★ R069 (#70)
     caretRef.current = at + token.length;
     setDraft(next);
     if (!window.matchMedia('(pointer: coarse)').matches) {
