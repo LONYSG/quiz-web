@@ -158,7 +158,8 @@ describe('★ R012 소분류 설계 원칙 검증', () => {
   it('★ 원칙 2 — "인물" 소분류를 두지 않는다', () => {
     // ★ 예외로 남긴 것: 클래식 음악의 작곡가, 세계 영화의 감독
     //   (음악학·영화학의 표준 분류 축이다. subNotes 로 경계를 적었다)
-    const ALLOWED = new Set(['classical|작곡가', 'world-cinema|감독']);
+    // ★ G025: 설계 결정(찬종 2026-10-27 "권장대로")으로 배우·영화인 L3 둘을 신설 — 원칙 2 와 부딪혀 G025.txt 7절에 결정 필요로 올림
+    const ALLOWED = new Set(['classical|작곡가', 'world-cinema|감독', 'world-cinema|배우·영화인', 'kr-screen|배우·영화인']);
     const PERSON_PATTERNS = [/작가/, /배우/, /감독/, /선수/, /방송인/, /성우/, /과학자/, /화가/, /작곡가/];
     const bad: string[] = [];
     for (const mid of MIDS) {
@@ -232,7 +233,7 @@ describe('★ R012 소분류 설계 원칙 검증', () => {
   it('트리 규모가 R012 개정 결과와 맞는다', () => {
     expect(MAJORS).toHaveLength(7);
     expect(MIDS).toHaveLength(63);
-    expect(MIDS.reduce((n, m) => n + m.subs.length, 0)).toBe(298); // ★ R037 해외 드라마 +1
+    expect(MIDS.reduce((n, m) => n + m.subs.length, 0)).toBe(307); // ★ R037 해외 드라마 +1 · ★ G025 L3 신설 +9
   });
 });
 
