@@ -24,9 +24,35 @@ const DATABASE_URL = process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@lo
 const DRY = process.argv.includes('--dry');
 const RESET = process.argv.includes('--reset');
 
+// ★ R070 (D-312) — 잠금은 10초만 기다린다. 전에는 lock_timeout 0(무한)이라 GEN 라운드가 표를 쓰는 트랜잭션을 연 채면
+//   메뉴 1 이 migrate 에서 끝없이 멈췄다. 한 파일 = 한 트랜잭션은 그대로라 실패하면 적용된 것이 없다.
+const LOCK_TIMEOUT = '10s';
+const STATEMENT_TIMEOUT = '120s';
+
+/** 잠금을 못 얻었을 때 — 지금 트랜잭션을 연 다른 세션을 찍는다(읽기만) */
+async function explainLock(client) {
+  console.error('');
+  console.error(`[migrate] ★ 다른 세션(GEN 라운드일 가능성)이 표를 쓰는 중이라 ${LOCK_TIMEOUT.replace('s', '초')} 안에 잠금을 못 얻었다 — 적용된 것 없음.`);
+  console.error("[migrate]   GEN 이 단계를 커밋한 뒤(터미널 '… 커밋' 줄) 다시 1 을 누르세요.");
+  try {
+    const r = await client.query(
+      `SELECT pid, coalesce(nullif(application_name, ''), '(이름 없음)') AS app, state,
+              extract(epoch FROM now() - xact_start)::int AS age,
+              left(regexp_replace(query, '\\s+', ' ', 'g'), 60) AS q
+         FROM pg_stat_activity
+        WHERE datname = current_database() AND pid <> pg_backend_pid() AND xact_start IS NOT NULL
+        ORDER BY xact_start LIMIT 3`,
+    );
+    for (const x of r.rows) console.error(`[migrate]   잠근 쪽 후보: pid ${x.pid} · ${x.app} · ${x.state} · 트랜잭션 ${x.age}초 · "${x.q}"`);
+    if (r.rows.length === 0) console.error('[migrate]   (지금은 열린 트랜잭션이 없다 — 방금 끝났을 수 있다 · 다시 1)');
+  } catch { /* 설명은 덤 */ }
+}
+
 async function main() {
   const client = new pg.Client({ connectionString: DATABASE_URL });
   await client.connect();
+  await client.query(`SET lock_timeout = '${LOCK_TIMEOUT}'`);
+  await client.query(`SET statement_timeout = '${STATEMENT_TIMEOUT}'`);
 
   try {
     if (RESET) {
@@ -80,6 +106,9 @@ async function main() {
     }
 
     console.log('[migrate] 완료');
+  } catch (err) {
+    if (err.code === '55P03') { await explainLock(client); err.message = `잠금 대기 ${LOCK_TIMEOUT} 초과 (${err.message})`; }
+    throw err;
   } finally {
     await client.end();
   }
