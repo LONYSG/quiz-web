@@ -32,7 +32,7 @@ export function pruneLogs(dir = LOG_DIR, days = KEEP_DAYS, now = Date.now()) {
   if (!existsSync(dir)) return [];
   const gone = [];
   for (const f of readdirSync(dir)) {
-    if (!/^[a-z]+-\d{8}-\d{4}\.log$/.test(f)) continue;
+    if (!/^[a-z]+\d*-\d{8}-\d{4}\.log$/.test(f)) continue;
     const full = path.join(dir, f);
     try {
       if (now - statSync(full).mtimeMs > days * 86_400_000) { unlinkSync(full); gone.push(f); }
