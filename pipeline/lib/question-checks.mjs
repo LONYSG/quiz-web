@@ -28,8 +28,9 @@ export function blankCheck(question, answer) {
   return { ok: blanks === len, blanks, answerLength: len };
 }
 
-/** ★ G019 (기준서 3-1 QLEN — R055 A79): 질문은 200자를 넘지 않는다 (360 폭 정답 공개에서 넘친다) */
-export const QUESTION_MAX = 200;
+/** ★ G019 (기준서 3-1 QLEN — R055 A79): 질문은 200자를 넘지 않는다 (360 폭 정답 공개에서 넘친다)
+ *  ★ G025 (15 §3-1 · R069 D-309 좁은 칸 글자 규칙): 200 → 240자 */
+export const QUESTION_MAX = 240;
 export function lengthCheck(question) {
   const len = [...(question ?? '')].length;
   return { ok: len <= QUESTION_MAX, length: len };
@@ -117,8 +118,8 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('pipeline/lib/question-checks.
     ['빈칸 6 ↔ 프로메테우스 6', blankCheck("부제 '현대의 ○○○○○○'", '프로메테우스').ok],
     ['빈칸 덩어리 합 ○○ ○○○ ↔ 악의 평범성', blankCheck("'○○ ○○○에 대한 보고서'", '악의 평범성').ok],
     ['빈칸 없음', blankCheck('빈칸이 없는 질문', '아무거나').ok],
-    ['질문 200자 통과', lengthCheck('가'.repeat(200)).ok],
-    ['질문 201자 막힘 (G019)', !lengthCheck('가'.repeat(201)).ok],
+    ['질문 240자 통과 (G025)', lengthCheck('가'.repeat(240)).ok],
+    ['질문 241자 막힘 (G025)', !lengthCheck('가'.repeat(241)).ok],
     ['같은 정답', roundDupCheck([{ ref: 'a', question: 'x', answer: '루이 14세' }, { ref: 'b', question: 'y', answer: '루이 14세' }], n).some((d) => d.kind === 'same-answer')],
     ['정답이 다른 질문에 + 글이 겹친다', roundDupCheck([{ ref: 'a', question: '쾨니히스베르크의 일곱 다리를 한 번씩만 건너는 길이 없음을 보인 수학자는?', answer: '오일러' }, { ref: 'b', question: '오일러가 일곱 다리를 한 번씩만 건너는 길이 없음을 보인 문제는?', answer: '쾨니히스베르크의 다리 문제' }], n).some((d) => d.kind === 'answer-in-question')],
     ['정답이 다른 질문에 나오기만 한다 (통과)', !roundDupCheck([{ ref: 'a', question: '다이너마이트를 발명한 사람은?', answer: '노벨' }, { ref: 'b', question: '노벨상 시상식이 열리는 도시는?', answer: '스톡홀름' }], n).some((d) => d.kind === 'answer-in-question')],
