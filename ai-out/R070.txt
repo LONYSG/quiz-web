@@ -1,0 +1,74 @@
+===========================================
+ROUND: R070
+DATE: 2026-10-30 23:10 KST
+TASK: ops 안정화 — 서버·터널 로그 파일 · 끄기(3)가 포트·cloudflared 가 실제로 사라질 때까지 기다림 · 켜기(1)가 옛 서버 잔재를 치움 · migrate 잠금 대기 제한 · 터널 주소는 연결 등록 + /healthz 확인 뒤에 열기 · 상태(4)에 로그 꼬리 · docs/11 규칙
+STATUS: 완료
+===========================================
+
+[cmd 창]
+- 실행: 한 세션 · 하위 에이전트 0 · 실 DB(quizweb) 읽기·쓰기 0 · 실 서버(3000) 띄우기·끄기 0 · 마이그레이션 없음 · 검사는 전부 PORT 3100 + quizweb_test
+- 코드: scripts/ops-run.mjs(새) · ops-lib.mjs(새) · play.mjs · dev-tunnel.mjs · migrate.mjs · ops.mjs · server/src/index.ts(healthz 에 pid 한 칸)
+- 검사: 끄기 0.5~0.8초에 포트 빔 · 연속 3 → 1 충돌 0 · migrate 잠금 10.6초에 멈춤 · 터널 23.7초에 "밖에서 열림" · vitest 562 · typecheck · smoke 11/11
+- 문서: docs/11 · 10 50절 · 07 D-312 · 13 A98 · 05 · 06 · README
+
+[0. 찬종이 볼 것]
+■ 바뀐 메뉴 동작(한 문단)
+  메뉴 3(끄기)은 이제 터널 · 서버를 끈 뒤 **포트 3000 이 비고 cloudflared 가 없어질 때까지 기다렸다가** "서버 · 터널 꺼짐 확인(포트 3000 비어 있음 · n초)" 으로 끝난다(보통 1초 · 최대 15초 — 안 비면 남은 PID 를 찍고 실패). 그래서 3 바로 뒤에 1 을 눌러도 된다. 메뉴 1 은 모든 줄 앞에 시각이 붙고, 새 마이그레이션이 없으면 migrate 를 건너뛰며, 포트는 잡혀 있는데 응답이 없는 옛 서버가 있으면 스스로 끄고 새로 띄운다. 서버 창이 뜨다 죽으면 60초를 기다리지 않고 바로 **서버 로그 마지막 30줄**을 보여 주고 멈춘다. 서버가 뜨면 "DB 응답(quizweb) · 열린 판 n" 한 줄. 터널 창은 주소를 받아도 바로 열지 않고 "등록 대기 n초" 를 찍다가 **밖에서 실제로 열리는 걸 확인한 뒤**(보통 10~30초) 주소를 크게 · 클립보드 · 브라우저로 연다. 45초 안에 안 열리면 주소와 함께 "★ 아직 밖에서 안 열림 — 마지막 응답 … · 서버 로컬 /healthz ok/실패" 를 찍고 브라우저는 안 연다(서버 탓인지 터널 탓인지 바로 갈림).
+
+■ 원인으로 확인된 것(검사로 잼)
+  - 새 터널 주소는 4초면 연결 등록되지만 **그 주소의 DNS 가 10~20초 동안 없다**(ENOTFOUND). 옛 터널은 주소가 찍히자마자 브라우저를 열어서 이 구간에 걸렸다 — "링크 접속이 안 될 때가 있어" 의 가장 흔한 경우로 보인다.
+  - 3 → 1 을 바로 누르면 옛 서버가 아직 답하는 순간이 있어 빌드·기동을 건너뛰거나 포트 충돌이 날 수 있었다 → 3 이 포트가 빌 때까지 기다리므로 사라짐.
+  - 덤: Windows 11 은 창이 Windows Terminal 탭이라 옛 끄기의 "창 제목으로 닫기" 가 안 맞아 **빈 서버 창이 쌓였다** → 이제 명령줄로 찾아 닫는다.
+
+■ 로그 위치
+  tmp/ops/server.log · tmp/ops/tunnel.log  (최신 — 켤 때마다 새로)
+  tmp/ops/server-YYYYMMDD-HHmm.log · tunnel-…  (켤 때마다 하나 · 14일 뒤 메뉴 1 이 지움)
+  메뉴 4 = 마지막 15줄씩 · 메뉴 14 = 메모장으로 열기
+
+■ 안 될 때 할 것(세 줄)
+  1) 메뉴 4 → 터널 줄의 "★ 아직 밖에서 안 열림 … 서버 로컬 /healthz 실패" 면 서버 문제, ok 면 잠시 뒤 다시 열거나 3 → 1
+  2) 메뉴 1 이 migrate 에서 "잠금을 못 얻었다" 로 멈추면 GEN 이 작업 중 — GEN 터미널에 "… 커밋" 줄이 나온 뒤 다시 1 (새 마이그레이션이 있을 때만 생김)
+  3) 그래도 모르겠으면 메뉴 4 화면(또는 메뉴 14 로그)을 그대로 설계에 붙여넣기
+
+■ 첫 적용: 지금 3000 서버는 꺼져 있다. 다음에 메뉴 1 을 누를 때부터 새 동작(빌드에 healthz pid 포함). A98 이 그때 볼 것 넷.
+
+■ 확인 못 한 것: 메뉴 14(메모장 열기)는 화면에 창을 띄우는 것이라 실행하지 않았다(코드만 · 파일 있는지 확인 후 start notepad). 실 3000 · 실 터널 경로는 찬종의 다음 3 → 1 이 첫 실행.
+
+[원칙 메모 — 7 확인]
+- play.mjs stop() 이 netstat/taskkill 뒤 기다리지 않음 — 맞음(옛 코드) · main() 이 healthy() 면 빌드·서버 건너뜀 — 맞음 · dev-tunnel 이 주소 regex 직후 start — 맞음 · migrate 타임아웃 없음 — 맞음 · pool max 5 — 맞음 · /healthz DB 안 봄 — 맞음(그대로 둠) · tmp/ .gitignore — 맞음 · 07 마지막 D-311 — 맞음(DG-063 은 G025 가 이 라운드 중 씀) · 13 마지막 A97 — 맞음 · 10 마지막 49절 — 맞음 · cloudflared 설치 — 2026.8.3.
+- 브리핑과 다른 것: ① 창 닫기를 제목 대신 명령줄로(WT 문제 — 위) ② 3000 이 아닌 포트는 창 제목 · 로그 이름에 포트를 붙였다(server3100.log — 검사가 실 서버 로그를 덮지 않게) ③ cloudflared 끄기 · "이미 떠 있음" 판단이 **이 포트를 가리키는 cloudflared 만** 본다(옛: 모든 cloudflared) ④ 공용 조각 scripts/ops-lib.mjs 를 하나 더 둠 ⑤ A 는 ops-run · ops-lib 커밋, play 쪽 연결은 B·C 커밋에 같이.
+- 동시 라운드: GEN G025 가 같은 작업 트리에서 커밋 중 — 내 커밋은 내 파일만(경로 지정 커밋 · `git show --stat` 확인). docs/15 (GEN 이 stage 한 것) 안 건드림.
+
+[1. 검사 (G · 10 50절과 같음)]
+| 검사 | 결과 |
+|---|---|
+| ① 켜기(빌드 포함 · 3100 · quizweb_test) | 14.7초 · 서버 응답 4.6초 · 로그 파일 생김 · 첫 줄(시각 · 명령 npm start · PORT 3100 · DB quizweb_test · HEAD) · "DB 응답(quizweb_test) · 열린 판 0" |
+| ① 이미 켜져 있음 | "기동 22:48 · PID … · 빌드 그대로 · HEAD …" 로 건너뜀 |
+| ① 끄기 | 0.7초 · 0.5초에 포트 빔(전체 1~1.5초) · exit 0 |
+| ① 3 → 1 쉬지 않고 ×2 | 새 서버 1.5초 · 포트 충돌 0 · "이미 켜져 있음" 오판 0 |
+| ① 무응답 잔재(3100 을 잡고 답 안 하는 node) | "LISTENING 인데 /healthz 2초 무응답" → 끄고 새로 · 성공 |
+| ① 서버가 바로 죽음(dist/index.js 잠시 치움) | 3초에 멈춤 · 꼬리 30줄(MODULE_NOT_FOUND · 끝(code=1)) |
+| ② 서버 taskkill 뒤 메뉴 4 | 서버(3100) 꺼짐 · 포트 PID 없음 · server3100.log 15줄 · 마지막 "끝(code=1)" |
+| ③ migrate 잠금(quizweb_test · 0026 행 잠시 뺌 · 한 세션 BEGIN; ALTER TABLE questions ADD COLUMN _r070 int) | **10.6초**에 exit 1 · 안내 문구 · 잠근 쪽 "r070-lock-test · idle in transaction · 11초 · ALTER TABLE questions …" · ROLLBACK 뒤 _r070 열 0 · 0026 행 복구 · --dry "26개 모두 적용됨" |
+| ④ 터널(서버 켬 · NO_OPEN=1) | 주소 3.7초 → 등록 4.2초 → ENOTFOUND ~18초 → **밖에서 200 23.7초**에 출력 · play 전체(터널 창 · ops-run 로그) 경로 10.8초 |
+| ④ 터널(서버 끔) | 45초 뒤 "★ 아직 밖에서 안 열림 — 마지막 응답 502 · 서버 로컬 /healthz 실패(ECONNREFUSED)" · 브라우저 안 염 · cloudflared 를 끄면 "종료(code=1)" + 마지막 20줄 |
+| 끄기(터널 포함) | cloudflared · 서버 · 창 2개 닫음 · 포트 빔 0.7초(전체 6초 — 프로세스 찾기 PowerShell 몫) |
+| ⑤ 14일 청소(가짜 파일 7) | 첫 실행에서 server3100-… 를 못 지우는 것 발견 → 정규식 고침 → 지난 2개만 지움 · 13.5일 · 최신 server.log · 다른 파일 남김 |
+| ⑤ npm test · typecheck · smoke(quizweb_test) | 562 통과 · 통과 · 11/11 |
+| ⑥ 남는 메모리 | 5.9GB |
+| 주소 | 보고서에 안 적음 · 검사 cloudflared 전부 끔(3100 것만) |
+
+[2. 고친 것]
+- A scripts/ops-run.mjs — 자식 stdout/stderr 를 창 + tmp/ops/<kind>-시각.log + <kind>.log · 첫 줄 · 끝 줄 code · exit code 그대로 · Ctrl+C 는 자식이 정리하도록 래퍼는 기다림
+- A scripts/ops-lib.mjs — stamp · hms · logPaths · pruneLogs(14일) · tail · portPids · cloudflaredPids(이 포트만) · windowPids(cmd /k 명령줄) · dbName · gitHead · tunnelUrl
+- B·C scripts/play.mjs — 위 [0] 문단 그대로 · 서버 창 `cmd /k "chcp 65001 && node scripts\ops-run.mjs server npm start"`(한글 · 창 남음)
+- D scripts/migrate.mjs — SET lock_timeout 10s · statement_timeout 120s · 55P03 이면 안내 + pg_stat_activity 3줄(읽기만)
+- E scripts/dev-tunnel.mjs — 등록 줄 30초 → 밖 /healthz 2초 · 45초 → 200 이면 공개 · 아니면 경고 + 로컬 /healthz · 종료 시 마지막 20줄 · NO_OPEN=1 그대로
+- F scripts/ops.mjs — 메뉴 4 줄 추가 + 로그 꼬리 15줄씩 · 메뉴 14 로그 열기 · 메뉴 3 · 4 이름
+- server/src/index.ts — /healthz 에 pid (DB 안 봄 그대로)
+
+[3. 새로 생긴 결정 필요 항목]
+- 없음. (주소 고정 = named tunnel 은 그대로 별도 결정 · D-312 "안 한 것")
+
+[4. 고친 문서]
+docs/11-DEPLOY.md(원터치 절 · 로그 · 규칙 · 증상 표 4줄 · healthz 예) · docs/10-TESTING.md 50절 · docs/07-DECISIONS.md D-312 · docs/13-PENDING-CHECKS.md A98 · docs/05-STATUS.md · docs/06-WORKLOG.md · ai-out/README.md R 표 · ai-out/R070.txt

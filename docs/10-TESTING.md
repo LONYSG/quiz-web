@@ -1074,6 +1074,40 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 50. ★★ R070 — ops 안정화: 서버·터널 로그 · 끄기가 포트를 기다림 · migrate 잠금 10초 · 터널 열림 확인 (D-312)
+
+★ 실 서버(3000) · 실 DB(quizweb) 는 건드리지 않는다 — 전부 `PORT=3100` · `quizweb_test` · `QUIZ_TEST_SERVER=1`.
+
+```bash
+# 켜기 · 끄기 · 연속
+PORT=3100 QUIZ_TEST_SERVER=1 DATABASE_URL=…/quizweb_test node scripts/play.mjs --no-tunnel   ★ 로그 tmp/ops/server3100.log · 첫 줄 · DB 확인 줄
+PORT=3100 node scripts/play.mjs --stop                                                       ★ "포트 3100 비어 있음 · n초"
+# 무응답 잔재: 3100 을 잡고 답하지 않는 node(net.createServer) → play 가 PID 를 끄고 새로
+# 일찍 죽음: server/dist/index.js 를 잠시 치우고 --no-build → 3초 안에 멈추고 꼬리 30줄
+# migrate 잠금: quizweb_test 에서 0026 행을 잠시 빼고 한 세션이 BEGIN; ALTER TABLE questions ADD COLUMN _r070 int; → npm run db:migrate
+# 터널: NO_OPEN=1 PORT=3100 node scripts/dev-tunnel.mjs (서버 켬 / 끔 두 번) · play 전체(터널 창) 한 번
+# 메뉴 4: (printf "4\n"; sleep 10; printf "0\n") | PORT=3100 … node scripts/ops.mjs
+```
+
+| 검사 | 결과 |
+|---|---|
+| 켜기(빌드 포함) | 14.7초 · 서버 응답 4.6초 · `DB 응답(quizweb_test) · 열린 판 0` · 로그 첫 줄(시각 · 명령 · PORT 3100 · DB quizweb_test · HEAD) |
+| 이미 켜져 있음 | "기동 22:48 · PID … · 빌드 그대로 · HEAD …" 로 건너뜀 |
+| 끄기 → 바로 켜기 ×2 (쉬지 않고) | 끄기 0.5~0.8초 안에 포트 빔 · 새 서버 1.5초 · 포트 충돌 0 · "이미 켜져 있음" 오판 0 |
+| 무응답 잔재 | "LISTENING 인데 /healthz 2초 무응답" → 끄고 새로 · 성공 |
+| 서버가 바로 죽음 | 60초 대신 3초에 멈춤 · 꼬리 30줄(MODULE_NOT_FOUND · `끝(code=1)`) |
+| 서버를 taskkill 한 뒤 메뉴 4 | 서버(3100) 꺼짐 · 포트 PID 없음 · server3100.log 15줄(마지막 `끝(code=1)`) |
+| migrate 잠금 | **10.6초**에 exit 1 · 안내 문구 · "잠근 쪽 후보: r070-lock-test · idle in transaction · 11초 · ALTER TABLE questions …" · 뒤에 `_r070` 열 0 · 0026 행 복구 · `--dry` "모두 적용됨" |
+| 터널(서버 켬) | 주소 3.7초 → 등록 4.2초 → `ENOTFOUND`(주소의 DNS 가 아직 없음) ~18초 → **밖에서 200 23.7초**에 출력 · 창 경로(play 전체) 10.8초 |
+| 터널(서버 끔) | 45초 뒤 "★ 아직 밖에서 안 열림 — 마지막 응답 502 · 서버 로컬 /healthz 실패(ECONNREFUSED)" · 브라우저 안 염 · cloudflared 를 끄면 `종료(code=1)` + 마지막 20줄 |
+| 끄기(터널 포함) | cloudflared PID · 서버 PID · 창 2개 닫음 · 포트 빔 0.7초(전체 6초 — 프로세스 찾기 PowerShell 몫) |
+| 14일 청소(가짜 파일 7) | 지난 2개만 지움(`server-…`, `server3100-…`) · 13.5일 · 최신 `server.log` · 다른 파일 남김 |
+| typecheck · vitest · smoke(quizweb_test) | 통과 · 562 · 11/11 |
+
+★ 검사 중 찾은 것: Windows 11 의 창은 Windows Terminal 탭이라 `taskkill /FI "WINDOWTITLE eq …"` 가 맞지 않아 **끄기 뒤 빈 서버 창이 쌓였다**(맞으면 WindowsTerminal.exe 전체가 닫힐 위험) → 창은 `cmd /k … ops-run.mjs <kind>` 명령줄로 찾아 닫는다.
+
+---
+
 ## 49. ★★★ R069 — 난이도 초급 · 중급 · 고급 · 등급 비율 · 알가치 · 좁은 칸 지문 · 이모티콘 "자주"
 
 ```bash
