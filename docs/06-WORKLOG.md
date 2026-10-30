@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-10-31 — 힌트 재편 1차: hint-v7 · 등급 4·5 힌트 1,667 · 해설 함께 356 (G026, GEN)
+
+- **무엇을**: hint-v7(핵심 + 연결 고리 · blind 맞혀야 통과 · 해설 함께) · hint-v6 · deep-v5 SYNC:HINT 얼림 · 등급 4·5 활성 1,667 힌트 전부 다시 씀 · 핵심이 해설에 있던 356 은 해설을 둘째 줄 사실로.
+- **어떻게**: 계획(audit/g026-plan.json · 42 묶음) → 묶음마다 쓰기 하위 에이전트(Opus) → hintcheck → blind(sonnet · 힌트 + 대분류) → 다섯 묶음마다 못 맞힌 것 다시 쓰기 → blind2 → scripts/g026-apply-hints.mjs(열린 판 0 · undo 먼저 · 한 트랜잭션) → 커밋·push(8번). 사실은 위키백과 API 원문 등 문서로(web 99.6%).
+- **결정**: DG-064 · 찬종 D-311 "권장대로".
+- **검증**: 4·5 hint-v7 1,667/1,667 · 백업 대비 바뀐 열 = general_hint · version 1,667 · explanation 356 뿐 · question_answers 같음 · hint-check-active 막힘 0 · 4·5 explain 경고 0 · criteria-sync --check · npm test 562 · undo dry-run 1,667.
+- **남은 것**: 15 기준 후보 · 변형 후보 40 · 질문 사실 의심 · miss 31 — G026.txt 7절 · 등급 3 2,560 은 G027~.
+
 ## 2026-10-30 — ops 안정화: 서버·터널 로그 · 끄기 대기 · migrate 잠금 10초 · 터널 열림 확인 (R070, MAIN)
 
 - **무엇을**: 찬종 "3 → 1 로 다시 켜도 링크 접속이 안 될 때가 있어 … 로깅을 제대로". 서버 · 터널 창 출력을 `tmp/ops/` 파일에도(ops-run.mjs) · 끄기는 포트 · cloudflared 가 사라질 때까지 기다림 · 켜기는 무응답 잔재를 끄고 새로 · 서버가 죽으면 바로 꼬리 30줄 · DB 확인 줄 · migrate 는 적용할 것이 있을 때만 + lock_timeout 10s · 터널은 등록 + 밖에서 /healthz 200 뒤에만 브라우저 · 메뉴 4 로그 꼬리 · 14 로그 열기.
