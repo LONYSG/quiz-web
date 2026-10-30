@@ -4,7 +4,7 @@
 > 라운드마다 달라지는 것(할 일 · 대상 파일 · 찬종의 말 · 보고 항목)만 브리핑에 적는다.
 > 출처: `ai-out/main.md` 4장 · `ai-out/gen.md` 4장 · `ai-out/verify.md` 2~5장 (2026-10-13 인수인계서). 어긋나면 이 문서가 맞다.
 
-마지막 갱신: **2026-10-13** (신설 — 번호 체계 분리 · 끝 점검 방식 · 모델 배정 · 브리핑 틀)
+마지막 갱신: **2026-10-30 G025** (5-2 GEN 두 줄 — 키 없는 공개 API 원문 = 문서 열기 · 변형 라운드 끝 점검 hint-check-active · DG-063) · 그 전 **2026-10-13** (신설 — 번호 체계 분리 · 끝 점검 방식 · 모델 배정 · 브리핑 틀)
 
 ---
 
@@ -150,6 +150,8 @@ DB 쓰기: 허용(백업 뒤) / 불허          ← GEN · MAIN
 - 규칙이 바뀌면 기준서(15) → `node scripts/criteria-sync.mjs` → `--check` 통과 → 새 프롬프트 버전. 옛 프롬프트는 SYNC 표시를 빼서 얼린다.
 - 생성 흐름: 생성(서브에이전트 분할) → 중앙 기계 검사 → 사실 확인(웹 출처 · 못 한 것은 "지식 근거" 표시) → 채점 → 힌트(hint-v3 · checkHint) → `pipeline-load` 게이트를 파일 단계에서 미리 → VERIFY 묶음(`data/pipeline/audit/gNNN-verify-targets.json` — `questionBefore` · `sources` · `hintBasis` · `check[]` · 가능하면 `criteria`) → (허용 시) 적재.
 - 서브에이전트가 429 · ENOTFOUND 로 죽으면 결과 파일이 없는 묶음만 다시.
+- ★ 문서 열기(G025 · DG-063): WebFetch · WebSearch · **키 없는 공개 API 원문 받기(위키백과 action/REST API · curl)** 도 문서 열기로 친다(G024 — 글자 대조가 오히려 정확). **키가 필요한 외부 API 금지는 그대로**(G021).
+- ★ 끝 점검(G025 · DG-063): **변형(question_answers)을 넣는 라운드는 `node scripts/hint-check-active.mjs` 막힘 0 을 끝 점검에 넣는다**(G024 — G023 H 변형 SD · 엠티브이가 옛 힌트와 겹쳐 H2 막힘 2).
 - **자기 블라인드 테스트 · 자기 검토를 판정으로 쓰지 않는다** (R036 실측 — 떠먹여 주기를 구분 못 한다).
 - 혼자 정한 것은 보고서에 **"GEN 판단 (되돌리기 쉽다)"** 로 따로.
 - 사용자 검토는 `docs/*-review.md` 체크박스 문서로. 그 파일의 커밋은 GEN 라운드에서.
