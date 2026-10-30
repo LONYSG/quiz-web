@@ -66,6 +66,7 @@ async function main(): Promise<void> {
       phase: 'phase5',
       serverTime: Date.now(),
       bootedAt: BOOTED_AT,
+      pid: process.pid, // ★ R070 — play.mjs · 메뉴 4 가 "어느 프로세스가 답하는가" 를 찍는다
       uptimeMs: Date.now() - BOOTED_AT,
       dbActiveMs: getDbActiveMs(),
       rooms: roomCount(),

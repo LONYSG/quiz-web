@@ -66,18 +66,28 @@ export function portPids(port) {
   ];
 }
 
-/** localhost:<port> 를 가리키는 cloudflared PID (명령줄로 가린다) */
-export function cloudflaredPids(port) {
+/** 이름이 image 이고 명령줄이 re 에 맞는 프로세스 PID */
+function procPids(image, re) {
   const ps =
-    `Get-CimInstance Win32_Process -Filter "Name='cloudflared.exe'" | ` +
+    `Get-CimInstance Win32_Process -Filter "Name='${image}'" | ` +
     `ForEach-Object { [string]$_.ProcessId + ' ' + $_.CommandLine }`;
   const r = spawnSync('powershell', ['-NoProfile', '-Command', ps], { stdio: 'pipe', encoding: 'utf8' });
   return (r.stdout ?? '')
     .split(/\r?\n/)
     .map((l) => l.trim())
-    .filter((l) => new RegExp(`localhost:${port}(\\D|$)`).test(l))
+    .filter((l) => re.test(l))
     .map((l) => l.split(' ')[0]);
 }
+
+/** localhost:<port> 를 가리키는 cloudflared PID (명령줄로 가린다) */
+export const cloudflaredPids = (port) => procPids('cloudflared.exe', new RegExp(`localhost:${port}(\\D|$)`));
+
+/**
+ * play.mjs 가 띄운 창(cmd /k … ops-run.mjs <kind> …)의 cmd.exe PID.
+ * ★ 창 제목(taskkill /FI WINDOWTITLE)으로 닫지 않는다 — Windows Terminal 에서는 제목이 WindowsTerminal.exe 에 붙어
+ *   맞지 않거나(창이 쌓임), 맞으면 다른 탭까지 통째로 닫힌다(R070 검사에서 확인).
+ */
+export const windowPids = (kind) => procPids('cmd.exe', new RegExp(`ops-run\\.mjs ${kind} `));
 
 /** DATABASE_URL → DB 이름(비밀번호는 절대 안 찍는다) */
 export function dbName(url) {
