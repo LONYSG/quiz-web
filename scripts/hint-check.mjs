@@ -26,6 +26,8 @@
 //          single       여러 낱말 정답의 **한 글자 낱말**이 힌트 낱말 첫머리에 있다 (딥 블루 ← 전신 '딥 소트')
 //          letter-talk  힌트가 글자·소리 놀이를 말한다 — '첫 글자' · '같은 소리' 꼴 (형설지공 ← "'형광등'의 첫 글자와 같다" · 산통 ← "같은 소리의 말")
 //                       실측은 G002 보고서 4절
+//   ★ G027 (G026 7절 ⑥ — 15 §4-1 H7) **경고**
+//          blank        힌트에 빈칸 '○' 이 있다 — 칸 수 = 정답 글자 수라 꼴이다 → '~' 로 (부랴부랴 · 노스탤지어 · 사돈 · 영감)
 // =============================================================================
 import { normalizeAnswer } from '../shared/dist/index.js';
 
@@ -123,6 +125,8 @@ export function checkHint({ hint, answer, variants = [], question = '', explanat
     for (const w of parts) if (w.length === 1 && HANGUL.test(w) && !qs1.includes(w) && hw.some((x) => x.startsWith(w))) res.warn.push({ kind: 'single', frag: w, of: a });
   }
   if (/(첫|끝|마지막|앞|뒤)\s?글자|같은 소리|소리가 같은|글자와 같/.test(hint)) res.warn.push({ kind: 'letter-talk' });
+  // ★ G027 (G026 7절 ⑥ · 15 §4-1 H7) — 빈칸 '○' 은 글자 수를 알려 주는 꼴이다 → '~' 로 쓴다 (경고)
+  if (/○/.test(hint)) res.warn.push({ kind: 'blank', frag: (hint.match(/○+/) ?? [''])[0] });
   // H3 — 질문 되풀이: 힌트의 2글자 조각 가운데 질문에도 있는 비율
   const hg = grams(hint, 2), qg = grams(question, 2);
   if (hg.size) { const share = [...hg].filter((g) => qg.has(g)).length / hg.size; if (share >= 0.6) res.warn.push({ kind: 'question', share: Math.round(share * 100) }); }
@@ -158,6 +162,9 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('scripts/hint-check.mjs')) {
     [{ hint: "이름은 회사 로고 색에서 비롯된 IBM의 별명에서 땄고, 전신은 '딥 소트'라는 기계였다.", answer: '딥 블루' }, 'single'],
     [{ hint: "'반딧불'을 뜻하는 한자는 '형광등'의 첫 글자와 같다.", answer: '형설지공' }, 'letter-talk'],
     [{ hint: '같은 소리의 말로, 아이를 낳을 때 겪는 진통을 가리키는 낱말이 있다.', answer: '산통' }, 'letter-talk'],
+    // ★ G027 — 빈칸 ○ (G026 GEN 고침 6314)
+    [{ hint: "늦잠을 자서 '○○○○ 집을 나섰다' 처럼 몹시 서두르는 모양을 나타내는 말이다", answer: '부랴부랴' }, 'blank'],
+    [{ hint: "늦잠을 자서 '~ 집을 나섰다' 처럼 몹시 서두르는 모양을 나타내는 말이다", answer: '부랴부랴' }, 'none'],
   ];
   let ok = 0;
   for (const [c, want] of cases) {
@@ -167,7 +174,7 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('scripts/hint-check.mjs')) {
     if (pass) ok++;
   }
   for (const [c, want] of warnCases) {
-    const r = checkHint(c); const got = r.warn.find((w) => ['partial-mid', 'roman', 'single', 'letter-talk'].includes(w.kind))?.kind ?? 'none';
+    const r = checkHint(c); const got = r.warn.find((w) => ['partial-mid', 'roman', 'single', 'letter-talk', 'blank'].includes(w.kind))?.kind ?? 'none';
     const pass = got === want;
     console.log(`${pass ? 'ok  ' : '★실패'} [${c.answer}] "${c.hint}" → 경고 ${got} / 기대 ${want}`);
     if (pass) ok++;

@@ -31,7 +31,7 @@ try {
     if (res.block.length) blocks.push(`#${r.id} ${r.display_answer} ${JSON.stringify(res.block)} | ${r.general_hint}`);
     for (const w of res.warn) {
       kinds[w.kind] = (kinds[w.kind] ?? 0) + 1;
-      if (['single', 'letter-talk'].includes(w.kind)) listed.push(`[${w.kind}] #${r.id} ${r.display_answer} | ${r.general_hint}`);
+      if (['single', 'letter-talk', 'blank'].includes(w.kind)) listed.push(`[${w.kind}] #${r.id} ${r.display_answer} | ${r.general_hint}`);
     }
   }
   console.log(`[hint-check-active] 힌트 ${rows.length} · 막힘 ${blocks.length} · 경고 ${JSON.stringify(kinds)}`);
