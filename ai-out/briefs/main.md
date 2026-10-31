@@ -3,6 +3,6 @@
 R070(ops 안정화)은 끝났고 push 됐다. 다음 MAIN 라운드(R071)는 찬종이 새 빌드로 플레이한 뒤 연다:
 - 기다리는 것: A96(R068 체감) · A97(R069 체감 — 알가치는 G025 로 2026-10-30 22:53 부터 실제로 돈다) · A98(R070 — 다음 3 → 1 때) · 찬종 결정 "힌트 뒤 정답의 점수 차등 · 힌트 보이는 시각"(15 §4-1 H11 — 설계 권장: hint-v7 이 들어간 뒤 실측하고 정한다 · 지금은 그대로).
 - R071 후보(결정 뒤 설계가 쓴다): questions.worth_kind 열(G025 7절 ② — audit/v029-worth.json 의 kind 8종) · game_questions 에 target_grade · grade · worth 열(D-308 "서버 로그 한 줄" 을 열로) · 힌트 뒤 정답 집계 보고 스크립트(힌트만 보이는 15초 안 정답률 — D-311 기준선 재측정).
-- 지금 GEN G026 이 questions 의 general_hint · explanation 을 묶음마다 쓴다 — questions 표 마이그레이션(ALTER)은 G026 이 끝난 뒤에.
+- 2026-10-31: G026 끝(등급 4·5 힌트 1,667 hint-v7). 지금은 GEN G027(등급 3 힌트 2,560)이 questions 의 general_hint · explanation 을 묶음마다 쓴다 — questions 표 마이그레이션(ALTER)은 GEN 힌트 라운드가 모두 끝난 뒤에.
 
 이 파일을 읽은 MAIN 세션은 아무것도 하지 않고 멈춘다. 터미널 마지막 줄 "MAIN 보류 — 브리핑 대기 · /clear 가능".
