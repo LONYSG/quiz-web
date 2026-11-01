@@ -35,6 +35,7 @@ const WAIT_MS = Number(process.env.UICHECK_MEM_WAIT_MS ?? 60_000);
 const WAIT_TIMES = Number(process.env.UICHECK_MEM_WAIT_TIMES ?? 10);
 const TIMEOUT_MS = Number(process.env.UICHECK_BUNDLE_TIMEOUT_MS ?? 30 * 60_000);
 
+// ★ R071 (D-313) — 평가 요청은 판마다 무작위 1/3 → 공개 화면 평가 줄을 보는 옛 묶음(r056 · r064 · r068)은 모든 문항을 요청으로 고정(RATE_ASK_FORCE)
 const MG = (o) => ({ MG_SKIP_R050: '1', MG_SKIP_R051: '1', MG_SKIP_R052: '1', MG_SKIP_R053: '1', MG_SKIP_R054: '1', ...o });
 /** ★ 묶음 — 단계(끝 점검의 11 단계) → 묶음들. 미니게임은 라운드 · 게임별로 쪼갠다 */
 export const BUNDLES = [
@@ -62,7 +63,7 @@ export const BUNDLES = [
   ...['balloon', 'tap'].map((g) => ({ id: `mg-r054-${g}`, stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_R054: '', MG_SKIP_LAB: '1', MG_R054: g, SHOT_DIR: 'r054' }) })),
   { id: 'r054-stats', stage: 'minigame', args: ['--minigame'], env: MG({ MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', UICHECK_STATS: '1', SHOT_DIR: 'r054' }) },
   // ★ R056 — 문제 평가(공개 · 결과 · 로비) · 골라 하기 가로 스크롤 · "없어요" · 프사 확대 · 업적 창 (r056-before = 옛 빌드로 "전" 그림)
-  { id: 'r056', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R056: '1', SHOT_DIR: 'r056', RESOLVED_WAIT_MS: '8000' }) },
+  { id: 'r056', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R056: '1', SHOT_DIR: 'r056', RESOLVED_WAIT_MS: '8000', RATE_ASK_FORCE: '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20' }) },
   { id: 'r056-before', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R056: '1', R056_BEFORE: '1', SHOT_DIR: 'r056' }) },
   // ★ R057 — 미니게임만 모드(설정 · 2개 · 결과) · 이모티콘 나열(토글 · Shift+클릭 · 길게 누르기 · 인라인 · 미리 보기)
   { id: 'r057', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R057: '1', SHOT_DIR: 'r057', MINIGAME_PHASE_SCALE: '0.5' }) },
@@ -80,11 +81,11 @@ export const BUNDLES = [
   // ★ R071 — 정답 공개 평가 손질(👎 사유 칩 줄 · 요청 밖 문항 줄 없음 · PC 5 · 모바일 360/390/430 · 밤) · 다른 하나 찾기 4~8 · 8×8 360/폴드 (R071_ONLY=reveal|oddone)
   { id: 'r071', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R071: '1', SHOT_DIR: 'r071', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '12000', RATE_ASK_FORCE: '1,3', RATE_SKIP_LOGIN: '^(bot|r10_)' }) },
   // ★ R068 — 제보 20(풍선 · 고기 소리 · 고르기 · 난이도 · 업적 · ⚙ 제보 · 이모티콘 · 사진 · 지난 판 평가) · 정답 공개 평가 3단계 · photoyear · 긴 질문 240 (R068_ONLY=lab|room|avatar|game)
-  { id: 'r068', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R068: '1', SHOT_DIR: 'r068', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '12000', RATE_SKIP_LOGIN: '^(bot|r10_)' }) },
+  { id: 'r068', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R068: '1', SHOT_DIR: 'r068', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '12000', RATE_SKIP_LOGIN: '^(bot|r10_)', RATE_ASK_FORCE: '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20' }) },
   { id: 'r066', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R066: '1', SHOT_DIR: 'r066', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },
   // ★ R065 — 제보 메뉴 두 갈래(1280 · 1536 · 2560 · m390 · 밤) · 최근 목록 · 제보 창이 열린 채 미니게임(타자 · 풍선)
   { id: 'r065', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R065: '1', SHOT_DIR: 'r065', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5' }) },
-  { id: 'r064', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R064: '1', SHOT_DIR: 'r064', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', DISCONNECT_REMOVE_MS: '8000' }) },
+  { id: 'r064', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R064: '1', SHOT_DIR: 'r064', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', DISCONNECT_REMOVE_MS: '8000', RATE_ASK_FORCE: '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20' }) },
   // ★ R061 — 앱 제보 🐞(PC Alt+B · m390 키보드 높이) · 📝 문항 피드백(문제 단계) · 번호 복사 · 카드 높이
   { id: 'r061', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R061: '1', SHOT_DIR: 'r061', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   { id: 'r060', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R060: '1', SHOT_DIR: 'r060', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },

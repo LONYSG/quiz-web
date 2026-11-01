@@ -7287,19 +7287,24 @@ async function scenarioMgOddOne() {
     await sleep(250);
     pre = b5.since(m, 'error')[0]?.code ?? null;
   });
-  expect('★★ 미리 계산한 값(흐른 시간보다 긴 ms) → 거부', pre, 'BAD_REQUEST');
+  // ★ R064 (D-265 "기기 시간이 길게 와도 버리지 않고 서버 시간으로 자른다") 뒤로 거부(BAD_REQUEST)가 아니라 **받되 서버 시간으로 자른다** — R071 끝 점검에서 옛 기대를 고침
+  expect('★★ 미리 계산한 값(흐른 시간보다 긴 ms) → 오류 창 없음(D-265)', pre, null);
   const rows = await mgRows(runId);
   const rounds = await mgRounds(runId);
   expect('★ 기록 = 5판 × 5명', rows.length, 25);
-  expect('★ 격자 4 · 5 · 6 · 6 · 7', rounds.map((r) => r.params.size), [4, 5, 6, 6, 7]);
+  // ★★ R071 (D-315) — 격자 4·5·6·7·8 · 1판만 쉬운 쌍
+  expect('★ 격자 4 · 5 · 6 · 7 · 8 (R071)', rounds.map((r) => r.params.size), [4, 5, 6, 7, 8]);
   const of = (b) => rows.filter((r) => r.login_id === b.loginId);
+  const b5r0 = of(b5).find((r) => r.round_index === 0);
+  expectTrue('★★ 미리 계산한 5000ms → 서버 흐른 시간으로 잘림(< 5000 · 1판 b5 기록)', b5r0?.submitted === true && b5r0.value < 5000, JSON.stringify(b5r0));
   expectTrue('★★★ 맞음 — 값 = 기기 ms(800)', of(b1).every((r) => r.value === 800 && r.submitted));
   expectTrue('★★★ 틀림 한 번 뒤 맞음 — 900 + 2000 벌점 = 2900', of(b2).every((r) => r.value === 2900 && r.input?.wrong === 1), JSON.stringify(of(b2).map((r) => r.value)));
   expectTrue('★★ 지연 150 기기 — 800 그대로', of(b3).every((r) => r.value === 800));
-  expectTrue('★★ 틀림만 · 미입력 → 0점 · submitted=false', of(b4).every((r) => !r.submitted && r.points === 0) && of(b5).every((r) => !r.submitted && r.points === 0));
-  expectTrue('★★ 순위 — b1 · b3 공동 1위 · b2 3위', of(b1).every((r) => r.rank === 1) && of(b3).every((r) => r.rank === 1) && of(b2).every((r) => r.rank === 3));
+  const later = (b) => of(b).filter((r) => r.round_index > 0);
+  expectTrue('★★ 틀림만 · 미입력(2~5판) → 0점 · submitted=false', of(b4).every((r) => !r.submitted && r.points === 0) && later(b5).every((r) => !r.submitted && r.points === 0), JSON.stringify({ b4: of(b4).map((r) => [r.submitted, r.points]), b5: later(b5).map((r) => [r.submitted, r.points]) }));
+  expectTrue('★★ 순위(2~5판) — b1 · b3 공동 1위 · b2 3위', later(b1).every((r) => r.rank === 1) && later(b3).every((r) => r.rank === 1) && later(b2).every((r) => r.rank === 3), JSON.stringify([b1, b2, b3].map((b) => of(b).map((r) => r.rank))));
   const f2 = fb.get(b2.loginId);
-  expectTrue('★★ 알림 — 친 사람에게만 틀림 → 맞음', f2.filter((f) => f.correct === false).length === 5 && f2.filter((f) => f.correct === true).length === 5 && fb.get(b5.loginId).length === 0);
+  expectTrue('★★ 알림 — 친 사람에게만 틀림 → 맞음(b5 는 1판 미리 계산 한 번뿐)', f2.filter((f) => f.correct === false).length === 5 && f2.filter((f) => f.correct === true).length === 5 && fb.get(b5.loginId).length <= 1, JSON.stringify({ b2: f2.map((f) => f.correct), b5: fb.get(b5.loginId).length }));
   for (const b of bots) {
     b.leave();
     await sleep(40);
