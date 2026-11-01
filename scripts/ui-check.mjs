@@ -4617,6 +4617,8 @@ const R071_FB = `JSON.stringify((() => {
     overlap: !!c && !!inp && c.bottom > inp.top + 1 && c.top < inp.bottom,
     overflowX: document.documentElement.scrollWidth > innerWidth + 1,
     chipsScroll: chips ? chips.querySelector('.fb-chips').scrollWidth > chips.querySelector('.fb-chips').clientWidth : null,
+    nextSameLine: (() => { const n = document.querySelector('.reveal-next')?.getBoundingClientRect(); const f = fb?.getBoundingClientRect(); return !!n && !!f && Math.abs((n.top + n.bottom) / 2 - (f.top + f.bottom) / 2) < 8; })(),
+    docH: document.scrollingElement.scrollHeight - innerHeight,
   };
 })())`;
 async function r071Flow(browser) {
@@ -4647,6 +4649,7 @@ async function r071RevealFlow(browser) {
   await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
   await sleep(500);
   out.h0 = JSON.parse(await H.evaluate(R071_FB));
+  out.g0 = JSON.parse(await G.evaluate(R071_FB));
   await H.evaluate("document.querySelector('.chat-card input')?.focus()");
   await realClick(H, '.reveal-fb button[data-vote="-1"]');
   await H.waitFor("document.querySelector('.reveal-fb-chips') !== null", 3000).catch(() => false);
@@ -4727,15 +4730,16 @@ async function r071RevealFlow(browser) {
     (await c.query(`SELECT a.login_id, gq.question_index AS i, f.vote, f.reasons, f.asked, f.at_reveal, (f.rate_grant_id IS NOT NULL) AS rated FROM question_feedback f JOIN accounts a ON a.id = f.account_id JOIN game_questions gq ON gq.game_id = f.game_id AND gq.question_id = f.question_id WHERE a.login_id = ANY($1) AND f.game_id = (SELECT max(game_id) FROM game_players gp JOIN accounts x ON x.id = gp.account_id WHERE x.login_id = $2) ORDER BY 1, 2`, [[`${ACCOUNT_PREFIX}_th`, `${ACCOUNT_PREFIX}_tg`], `${ACCOUNT_PREFIX}_th`])).rows,
   );
   console.log(`  [r071] ${JSON.stringify({ pts, rows })}`);
-  const fine = (m) => m && m.chips && m.chipN === 7 && m.chipsBelow && m.chipsInView && !m.overflowX && m.chipsScroll !== null;
+  const fine = (m) => m && m.chips && m.chipN === 7 && m.chipsBelow && m.chipsInView && !m.overflowX && m.chipsScroll !== null && m.nextSameLine;
   record('★★★ R071 A 공개 화면(요청 문항) — 👎 진짜 클릭 → 사유 칩 7개가 **그 줄 아래** 한 줄 · 물음 "사유 하나 고르면 +1P" (PC 1536 · 손님 m390 톡)',
     out.h0?.fb && /방금 문제 어땠어요/.test(out.h0.ask) && fine(out.h1) && /사유 하나 고르면 \+1P/.test(out.h1.ask) && fine(out.g1) && /사유 하나 고르면 \+1P/.test(out.g1.ask), JSON.stringify({ h0: out.h0, h1: out.h1, g1: out.g1 }));
   record('★★★ R071 A 칩을 누르면 "+1P 고마워요"(PC 클릭 · m390 톡) · 입력창 포커스 안 뺏김', /\+1P 고마워요/.test(out.h2?.ask) && /\+1P 고마워요/.test(out.g2?.ask) && out.focus && out.focus2, JSON.stringify({ h2: out.h2?.ask, g2: out.g2?.ask, f: [out.focus, out.focus2] }));
   record('★★★ R071 A 칩 줄 — PC 1280 · 1536×730 · 1920 · 2560 · 모바일 360 · 430 에서 화면 안 · 가로 넘침 없음 · 입력칸과 겹치지 않음',
-    Object.values(out.sizes).every((m) => fine(m) && !m.overlap && m.input), JSON.stringify(out.sizes));
+    Object.values(out.sizes).every((m) => fine(m) && !m.overlap && m.input && m.docH <= 1), JSON.stringify(out.sizes));
+  record('★★★ R071 A m390 — 칩 줄을 펼쳐도 입력칸이 화면 안(펼치기 전과 같다) · 페이지가 더 길어지지 않음', out.g0?.input === true && out.g1?.input === true && out.g1.docH <= out.g0.docH + 1, JSON.stringify({ g0: [out.g0?.input, out.g0?.docH, out.g0?.cardH], g1: [out.g1?.input, out.g1?.docH, out.g1?.cardH] }));
   record('★★ R071 A 모바일 칩 높이 44px(터치) · PC 32px', out.g1?.chipH === 44 && out.sizes.m360?.chipH === 44 && out.h1?.chipH === 32, JSON.stringify([out.g1?.chipH, out.sizes.m360?.chipH, out.h1?.chipH]));
   record('★★★ R071 A 요청 밖 문항(2번) — 공개 화면에 평가 줄 없음(방장 · 손님)', out.n2h && !out.n2h.fb && out.n2g && !out.n2g.fb, JSON.stringify({ h: out.n2h?.fb, g: out.n2g?.fb }));
-  record('★★ R071 A 밤 360 — 👎 칩 줄 보임 → 👍 로 바꾸면 칩 줄 접히고 "+1P 고마워요"', fine(out.n3g) && !out.n3g2?.chips && /\+1P 고마워요/.test(out.n3g2?.ask ?? ''), JSON.stringify({ a: out.n3g, b: out.n3g2?.ask }));
+  record('★★ R071 A 밤 360 — 👎 칩 줄 보임(입력칸 화면 안 · 페이지 안 길어짐) → 👍 로 바꾸면 칩 줄 접히고 "+1P 고마워요"', fine(out.n3g) && out.n3g.input && out.n3g.docH <= 1 && !out.n3g2?.chips && /\+1P 고마워요/.test(out.n3g2?.ask ?? ''), JSON.stringify({ a: out.n3g, b: out.n3g2?.ask }));
   const p = Object.fromEntries(pts.map((r) => [r.login_id.endsWith('_th') ? 'h' : 'g', r.n]));
   const hr = rows.filter((r) => r.login_id.endsWith('_th'));
   record('★★★ R071 A 포인트(검사 DB) — 방장 1P(1번 사유 뒤 · 3번 사유 없는 👎 는 0P) · 손님 2P(1번 · 3번 👍) · 요청 문항 표 asked true',
