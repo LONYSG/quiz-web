@@ -35,9 +35,12 @@ export function minorityResult(picks: readonly number[]): MinorityResult {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 다른 하나 찾기 — 격자 4·5·6·6·7 · 1~2판 쉬운 쌍 · 3~5판 어려운 쌍 · 틀리면 +2초
+// 다른 하나 찾기 — 격자 4·5·6·7·8 · 1판 쉬운 쌍 · 2~5판 어려운 쌍 · 틀리면 +2초
+//   ★★ R071 (D-315 · 제보 #74 "갈수록 어려워져야") — 옛 4·5·6·6·7 · 1~2판 쉬움 → 판마다 한 칸씩 커지고 2판부터 어려운 쌍
 // ─────────────────────────────────────────────────────────────────────────────
-export const ODDONE_SIZES = [4, 5, 6, 6, 7] as const;
+export const ODDONE_SIZES = [4, 5, 6, 7, 8] as const;
+/** ★ R071 — 쉬운 쌍을 쓰는 판 수(앞에서부터 · 나머지는 어려운 쌍) */
+export const ODDONE_EASY_ROUNDS = 1;
 export const ODDONE_PLAY_MS = 10_000;
 export const ODDONE_PENALTY_MS = 2_000;
 
@@ -54,7 +57,7 @@ export function oddoneRounds(seed: number): OddRound[] {
   const hard = ODD_PAIRS.filter((p) => p.level === 'hard');
   const used = new Set<OddPair>();
   return ODDONE_SIZES.map((size, i) => {
-    const pool = (i < 2 ? easy : hard).filter((p) => !used.has(p));
+    const pool = (i < ODDONE_EASY_ROUNDS ? easy : hard).filter((p) => !used.has(p));
     const pair = pool[Math.floor(rnd() * pool.length)]!;
     used.add(pair);
     // 바꿔 넣기(어느 쪽이 '하나' 인지)도 판마다

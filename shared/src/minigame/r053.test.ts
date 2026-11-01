@@ -45,10 +45,18 @@ describe('★★★ 소수파 — 가장 적게 고른 수(0명 제외)', () => 
 
 
 describe('★★★ 다른 하나 찾기 — 쌍 목록 · 시드 격자', () => {
-  it('쌍 ≥ 24 · 쉬운 ≥ 2 · 어려운 ≥ 3', () => {
+  it('쌍 ≥ 24 · 쉬운 ≥ 2 · ★ R071 어려운 ≥ 25 (D-315)', () => {
     expect(ODD_PAIRS.length).toBeGreaterThanOrEqual(24);
     expect(ODD_PAIRS.filter((p) => p.level === 'easy').length).toBeGreaterThanOrEqual(2);
-    expect(ODD_PAIRS.filter((p) => p.level === 'hard').length).toBeGreaterThanOrEqual(3);
+    expect(ODD_PAIRS.filter((p) => p.level === 'hard').length).toBeGreaterThanOrEqual(25);
+  });
+  it('★ R071 — 더한 쌍(hard 16번째부터)의 그림은 다른 어느 쌍에도 안 쓰인다', () => {
+    const hard = ODD_PAIRS.filter((p) => p.level === 'hard');
+    const added = hard.slice(15);
+    expect(added.length).toBeGreaterThanOrEqual(10);
+    const count = new Map<string, number>();
+    for (const p of ODD_PAIRS) for (const c of [p.base, p.odd]) count.set(c, (count.get(c) ?? 0) + 1);
+    for (const p of added) for (const c of [p.base, p.odd]) expect(count.get(c), c).toBe(1);
   });
   it('★ 색만 다른 쌍 0 — 모든 쌍에 모양 차이(diff)가 적혀 있고 "색" 만이 아니다', () => {
     for (const p of ODD_PAIRS) {
@@ -61,12 +69,13 @@ describe('★★★ 다른 하나 찾기 — 쌍 목록 · 시드 격자', () =>
   it('그림 파일(Twemoji SVG)이 모두 있다', () => {
     for (const p of ODD_PAIRS) for (const c of [p.base, p.odd]) expect(existsSync(path.join(ROOT, 'node_modules/@twemoji/svg', `${c}.svg`)), c).toBe(true);
   });
-  it('판 — 격자 4·5·6·6·7 · 1~2판 쉬운 · 3~5판 어려운 · 정답 칸 안 · 한 판 안 쌍 겹침 없음', () => {
+  it('★ R071 판 — 격자 4·5·6·7·8 · 1판만 쉬운 · 2~5판 어려운 · 정답 칸 안 · 한 판 안 쌍 겹침 없음', () => {
+    expect([...ODDONE_SIZES]).toEqual([4, 5, 6, 7, 8]);
     for (const s of SEEDS) {
       const r = oddoneRounds(s);
       expect(r.map((x) => x.size)).toEqual([...ODDONE_SIZES]);
       const lv = (x: (typeof r)[number]) => ODD_PAIRS.find((p) => (p.base === x.pair.base && p.odd === x.pair.odd) || (p.base === x.pair.odd && p.odd === x.pair.base))!.level;
-      expect(r.map(lv)).toEqual(['easy', 'easy', 'hard', 'hard', 'hard']);
+      expect(r.map(lv)).toEqual(['easy', 'hard', 'hard', 'hard', 'hard']);
       for (const x of r) {
         expect(x.oddIndex).toBeGreaterThanOrEqual(0);
         expect(x.oddIndex).toBeLessThan(x.size * x.size);
@@ -75,6 +84,23 @@ describe('★★★ 다른 하나 찾기 — 쌍 목록 · 시드 격자', () =>
     }
   });
   it('같은 시드 = 같은 판', () => expect(oddoneRounds(5)).toEqual(oddoneRounds(5)));
+  it('★ R071 — 어려운 쌍이 고르게 나온다(시드 2,000 · 28쌍 모두 한 번 이상 · 어려운 판 비율 4/5)', () => {
+    const seen = new Set<string>();
+    let hardRounds = 0;
+    let all = 0;
+    for (let s = 1; s <= 2000; s += 1) {
+      for (const x of oddoneRounds(s)) {
+        const p = ODD_PAIRS.find((q) => (q.base === x.pair.base && q.odd === x.pair.odd) || (q.base === x.pair.odd && q.odd === x.pair.base))!;
+        all += 1;
+        if (p.level === 'hard') {
+          hardRounds += 1;
+          seen.add(p.base + p.odd);
+        }
+      }
+    }
+    expect(seen.size).toBe(ODD_PAIRS.filter((p) => p.level === 'hard').length);
+    expect(hardRounds / all).toBe(0.8);
+  });
 });
 
 describe('★★★ 게이지 — 위치 재계산 · 가림', () => {

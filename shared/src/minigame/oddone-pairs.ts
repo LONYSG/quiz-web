@@ -3,8 +3,10 @@
 //
 // ★ 그림은 Twemoji SVG(/emoji/<code>.svg — 서버가 낸다) — 기기 글꼴과 무관하게 모두에게 같은 그림.
 // ★ 규칙: **색만 다른 쌍 금지**(색각) — 모양(눈 · 입 · 바늘 · 방향 · 물체)이 달라야 한다. diff 칸에 무엇이 다른지 적는다.
-//   easy(1~2판) — 다른 물건 · hard(3~5판) — 얼굴 표정 · 시계 바늘 · 방향 · 달 모양처럼 비슷한 것.
-// ★ 단위 검사(r053.test.ts)가 개수(≥ 24) · 그림 파일 존재 · diff 가 'color' 가 아님 · 쌍 겹침 없음을 본다.
+//   easy(1판) — 다른 물건 · hard(2~5판) — 얼굴 표정 · 시계 바늘 · 방향 · 달 모양처럼 비슷한 것.
+// ★ 단위 검사(r053.test.ts)가 개수(≥ 24 · hard ≥ 25) · 그림 파일 존재 · diff 가 'color' 가 아님 · 쌍 겹침 없음 · 그림 하나가 두 쌍에 안 쓰임(R071 에 더한 쌍)을 본다.
+// ★★ R071 (D-315 · 제보 #74 "갑자기 왜 이렇게 쉬워졌냐 · 갈수록 어려워져야") — hard 15 → 28(표정 한 군데 · 달 모양 · 시계 바늘 · 화살표 방향 · 손 모양 · 같은 동물의 얼굴/몸) ·
+//   easy 는 1판만(옛 1~2판) · 격자 4·5·6·7·8(옛 4·5·6·6·7).
 // =============================================================================
 
 export interface OddPair {
@@ -47,4 +49,18 @@ export const ODD_PAIRS: readonly OddPair[] = [
   { base: '23e9', odd: '23ea', level: 'hard', diff: '화살표 방향 — 앞 · 뒤' },
   { base: '1f62e', odd: '1f62f', level: 'hard', diff: '입 · 눈썹' },
   { base: '1f31e', odd: '1f31d', level: 'hard', diff: '해(햇살) · 보름달 얼굴' },
+  // ★★ R071 (D-315) — hard 13 더함(그림 하나는 한 쌍에만 · 색만 다른 쌍 없음)
+  { base: '1f617', odd: '1f619', level: 'hard', diff: '눈 — 점 눈 · 웃는 눈(입은 같다)' },
+  { base: '1f61b', odd: '1f61d', level: 'hard', diff: '눈 — 점 눈 · 꽉 감은 눈(><) (혀는 같다)' },
+  { base: '1f612', odd: '1f644', level: 'hard', diff: '눈동자 — 옆으로 흘김 · 위로 굴림' },
+  { base: '1f61f', odd: '1f641', level: 'hard', diff: '눈썹 — 걱정 눈썹 있음 · 없음(입 모양 비슷)' },
+  { base: '1f62a', odd: '1f634', level: 'hard', diff: '콧물 방울 · zzz (둘 다 감은 눈)' },
+  { base: '1f313', odd: '1f317', level: 'hard', diff: '달 — 오른쪽 반 · 왼쪽 반(거울)' },
+  { base: '1f553', odd: '1f554', level: 'hard', diff: '시계 바늘 4시 · 5시' },
+  { base: '2b06', odd: '2b07', level: 'hard', diff: '화살표 방향 — 위 · 아래' },
+  { base: '2196', odd: '2197', level: 'hard', diff: '화살표 방향 — 왼쪽 위 · 오른쪽 위' },
+  { base: '1f448', odd: '1f449', level: 'hard', diff: '손가락 방향 — 왼쪽 · 오른쪽' },
+  { base: '1f44a', odd: '270a', level: 'hard', diff: '주먹 — 앞으로 내민 주먹 · 위로 든 주먹' },
+  { base: '1f42d', odd: '1f401', level: 'hard', diff: '쥐 — 얼굴 · 몸 전체' },
+  { base: '1f430', odd: '1f407', level: 'hard', diff: '토끼 — 얼굴 · 몸 전체' },
 ];

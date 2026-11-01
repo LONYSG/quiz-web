@@ -77,6 +77,8 @@ export const BUNDLES = [
   { id: 'r067', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R067: '1', SHOT_DIR: 'r067', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },
   // ★ R069 — 난이도 초급 · 중급 · 고급(설정 PC 5크기 · m360/390 · 손님 · 전적) · 좁은 칸 지문 글자 규칙(240자) · 이모티콘 자주 탭 (R069_ONLY=settings|emoji|game)
   { id: 'r069', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R069: '1', SHOT_DIR: 'r069', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
+  // ★ R071 — 정답 공개 평가 손질(👎 사유 칩 줄 · 요청 밖 문항 줄 없음 · PC 5 · 모바일 360/390/430 · 밤) · 다른 하나 찾기 4~8 · 8×8 360/폴드 (R071_ONLY=reveal|oddone)
+  { id: 'r071', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R071: '1', SHOT_DIR: 'r071', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '12000', RATE_ASK_FORCE: '1,3', RATE_SKIP_LOGIN: '^(bot|r10_)' }) },
   // ★ R068 — 제보 20(풍선 · 고기 소리 · 고르기 · 난이도 · 업적 · ⚙ 제보 · 이모티콘 · 사진 · 지난 판 평가) · 정답 공개 평가 3단계 · photoyear · 긴 질문 240 (R068_ONLY=lab|room|avatar|game)
   { id: 'r068', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R068: '1', SHOT_DIR: 'r068', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '12000', RATE_SKIP_LOGIN: '^(bot|r10_)' }) },
   { id: 'r066', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R066: '1', SHOT_DIR: 'r066', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },

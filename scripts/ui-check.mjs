@@ -2987,10 +2987,9 @@ async function r053Live(browser, key) {
       const g = await cell(G, cells.odd);
       if (g) await trustedTap(G, g.x + g.w / 2, g.y + g.h / 2);
       await sleep(250);
-      if (i === 0 || i === 4) {
-        await snap(H, `${num}-live-oddone-r${i + 1}-pc`);
-        await snap(G, `${num}-live-oddone-r${i + 1}-m390`);
-      }
+      // ★ R071 (D-315) — 판마다 한 장(격자 4~8 · 2판부터 어려운 쌍)
+      await snap(H, `${num}-live-oddone-r${i + 1}-pc`);
+      if (i === 0 || i === 4) await snap(G, `${num}-live-oddone-r${i + 1}-m390`);
     } else {
       // 게이지 — 가운데 근처에 올 때 Space (H) · G 는 톡
       let pressed = false;
@@ -4598,6 +4597,216 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R071 — 정답 공개 평가 손질(👎 사유 칩 줄 · 요청 1/3 아닌 문항은 줄 없음) · 다른 하나 찾기 8×8 (D-313 · D-315)
+//   R071_ONLY = reveal | oddone (없으면 둘 다) · 묶음 env: RESOLVED_WAIT_MS 12000 · RATE_ASK_FORCE '1,3' (2 = 요청 밖) · RATE_SKIP_LOGIN 봇만
+// =============================================================================
+const R071_FB = `JSON.stringify((() => {
+  const fb = document.querySelector('.reveal-fb'); const chips = document.querySelector('.reveal-fb-chips');
+  const ask = document.querySelector('[data-rate-ask]'); const card = document.querySelector('.reveal');
+  const inp = document.querySelector('.chat-card input, .chat-form input')?.getBoundingClientRect();
+  const c = chips?.getBoundingClientRect(); const chip = document.querySelector('.reveal-fb-chips .fb-chip')?.getBoundingClientRect();
+  const st = document.querySelector('.stage, .question-card')?.getBoundingClientRect();
+  return {
+    fb: !!fb, ask: ask?.innerText ?? null, chips: !!chips, chipN: document.querySelectorAll('.reveal-fb-chips .fb-chip').length,
+    chipH: chip ? Math.round(chip.height) : null,
+    chipsBelow: !!c && !!fb && c.top >= fb.getBoundingClientRect().bottom - 1,
+    chipsInView: !!c && c.bottom <= innerHeight + 1 && c.top >= 0,
+    cardH: card ? Math.round(card.getBoundingClientRect().height) : null,
+    cardOver: card ? card.scrollHeight > card.clientHeight + 1 : null,
+    input: !!inp && inp.bottom <= innerHeight + 1,
+    overlap: !!c && !!inp && c.bottom > inp.top + 1 && c.top < inp.bottom,
+    overflowX: document.documentElement.scrollWidth > innerWidth + 1,
+    chipsScroll: chips ? chips.querySelector('.fb-chips').scrollWidth > chips.querySelector('.fb-chips').clientWidth : null,
+  };
+})())`;
+async function r071Flow(browser) {
+  const only = process.env.R071_ONLY ?? '';
+  if (!only || only === 'reveal') await r071RevealFlow(browser);
+  if (!only || only === 'oddone') await r071OddoneFlow(browser);
+}
+async function r071RevealFlow(browser) {
+  const H = await newPage(browser, 'R071-host', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'th', '평가손질방장');
+  const roomId = await createRoom(H, 'R071 평가');
+  const G = await newPage(browser, 'R071-guest', true);
+  await touchDevice(G, 390, 844);
+  await signUp(G, 'tg', '평가손질손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000);
+  await sleep(500);
+  await setQuestionCount(H, 3);
+  await sleep(300);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const out = {};
+  // ── 1번(요청 문항) — 방장 PC 👎 → 칩 줄 → 칩 → +1P · 손님 m390 톡
+  await H.waitFor("document.querySelector('.question-card .q-text') !== null", 30000);
+  await sleep(400);
+  await answerCurrent(H);
+  await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
+  await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
+  await sleep(500);
+  out.h0 = JSON.parse(await H.evaluate(R071_FB));
+  await H.evaluate("document.querySelector('.chat-card input')?.focus()");
+  await realClick(H, '.reveal-fb button[data-vote="-1"]');
+  await H.waitFor("document.querySelector('.reveal-fb-chips') !== null", 3000).catch(() => false);
+  await sleep(500);
+  out.h1 = JSON.parse(await H.evaluate(R071_FB));
+  await snap(H, '400-reveal-down-chips-1536');
+  await tapOn(G, '.reveal-fb button[data-vote="-1"]');
+  await G.waitFor("document.querySelector('.reveal-fb-chips') !== null", 3000).catch(() => false);
+  await sleep(400);
+  out.g1 = JSON.parse(await G.evaluate(R071_FB));
+  await snap(G, '400-reveal-down-chips-m390');
+  // 다른 크기(PC 넷 · 모바일 360/430) — 칩 줄이 펼쳐진 상태 그대로
+  out.sizes = {};
+  for (const [w, h] of [[1280, 720], [1536, 730], [1920, 1080], [2560, 1440]]) {
+    await H.setViewport(w, h);
+    await sleep(350);
+    out.sizes[`${w}x${h}`] = JSON.parse(await H.evaluate(R071_FB));
+    await snap(H, `400-reveal-down-chips-${w}x${h}`);
+  }
+  await H.setViewport(1536, 864);
+  for (const [w, h] of [[360, 740], [430, 932]]) {
+    await touchDevice(G, w, h);
+    await sleep(350);
+    out.sizes[`m${w}`] = JSON.parse(await G.evaluate(R071_FB));
+    await snap(G, `400-reveal-down-chips-m${w}`);
+  }
+  await touchDevice(G, 390, 844);
+  await sleep(300);
+  out.focus = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
+  await realClick(H, '.reveal-fb-chips .fb-chip[data-reason="unclear"]');
+  await H.waitFor("/고마워요/.test(document.querySelector('[data-rate-ask]')?.innerText ?? '')", 4000).catch(() => false);
+  await sleep(300);
+  out.h2 = JSON.parse(await H.evaluate(R071_FB));
+  out.focus2 = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
+  await snap(H, '400-reveal-chip-granted-1536');
+  await tapOn(G, '.reveal-fb-chips .fb-chip[data-reason="boring"]');
+  await G.waitFor("/고마워요/.test(document.querySelector('[data-rate-ask]')?.innerText ?? '')", 4000).catch(() => false);
+  await sleep(300);
+  out.g2 = JSON.parse(await G.evaluate(R071_FB));
+  await snap(G, '400-reveal-chip-granted-m390');
+  // ── 2번(요청 밖) — 평가 줄이 없다
+  await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 30000);
+  await sleep(300);
+  await answerCurrent(H);
+  await H.waitFor("document.querySelector('.reveal') !== null", 8000);
+  await sleep(700);
+  out.n2h = JSON.parse(await H.evaluate(R071_FB));
+  out.n2g = JSON.parse(await G.evaluate(R071_FB));
+  await snap(H, '401-reveal-not-asked-1536');
+  await snap(G, '401-reveal-not-asked-m390');
+  // ── 3번(요청 문항) — 밤 테마 · 360 손님 👍(바로 1P · 칩 없음) · 방장 👎 만 누르고 사유 안 고름(0P 로 남는다)
+  await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 30000);
+  await setTheme(G, 'night');
+  await touchDevice(G, 360, 740);
+  await sleep(300);
+  await answerCurrent(H);
+  await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
+  await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
+  await sleep(500);
+  await tapOn(G, '.reveal-fb button[data-vote="-1"]');
+  await G.waitFor("document.querySelector('.reveal-fb-chips') !== null", 3000).catch(() => false);
+  await sleep(400);
+  out.n3g = JSON.parse(await G.evaluate(R071_FB));
+  await snap(G, '402-reveal-down-chips-m360-night');
+  await tapOn(G, '.reveal-fb button[data-vote="1"]');
+  await sleep(600);
+  out.n3g2 = JSON.parse(await G.evaluate(R071_FB));
+  await realClick(H, '.reveal-fb button[data-vote="-1"]');
+  await sleep(700);
+  out.n3h = JSON.parse(await H.evaluate(R071_FB));
+  await setTheme(G, 'pastel');
+  await H.waitFor("document.querySelector('.result-card') !== null", 60000).catch(() => false);
+  await sleep(600);
+  const pts = await withPg(async (c) =>
+    (await c.query(`SELECT a.login_id, coalesce(sum(g.amount), 0)::int n FROM accounts a LEFT JOIN point_grants g ON g.account_id = a.id AND g.reason = 'rate' WHERE a.login_id = ANY($1) GROUP BY 1 ORDER BY 1`, [[`${ACCOUNT_PREFIX}_th`, `${ACCOUNT_PREFIX}_tg`]])).rows,
+  );
+  const rows = await withPg(async (c) =>
+    (await c.query(`SELECT a.login_id, gq.question_index AS i, f.vote, f.reasons, f.asked, f.at_reveal, (f.rate_grant_id IS NOT NULL) AS rated FROM question_feedback f JOIN accounts a ON a.id = f.account_id JOIN game_questions gq ON gq.game_id = f.game_id AND gq.question_id = f.question_id WHERE a.login_id = ANY($1) AND f.game_id = (SELECT max(game_id) FROM game_players gp JOIN accounts x ON x.id = gp.account_id WHERE x.login_id = $2) ORDER BY 1, 2`, [[`${ACCOUNT_PREFIX}_th`, `${ACCOUNT_PREFIX}_tg`], `${ACCOUNT_PREFIX}_th`])).rows,
+  );
+  console.log(`  [r071] ${JSON.stringify({ pts, rows })}`);
+  const fine = (m) => m && m.chips && m.chipN === 7 && m.chipsBelow && m.chipsInView && !m.overflowX && m.chipsScroll !== null;
+  record('★★★ R071 A 공개 화면(요청 문항) — 👎 진짜 클릭 → 사유 칩 7개가 **그 줄 아래** 한 줄 · 물음 "사유 하나 고르면 +1P" (PC 1536 · 손님 m390 톡)',
+    out.h0?.fb && /방금 문제 어땠어요/.test(out.h0.ask) && fine(out.h1) && /사유 하나 고르면 \+1P/.test(out.h1.ask) && fine(out.g1) && /사유 하나 고르면 \+1P/.test(out.g1.ask), JSON.stringify({ h0: out.h0, h1: out.h1, g1: out.g1 }));
+  record('★★★ R071 A 칩을 누르면 "+1P 고마워요"(PC 클릭 · m390 톡) · 입력창 포커스 안 뺏김', /\+1P 고마워요/.test(out.h2?.ask) && /\+1P 고마워요/.test(out.g2?.ask) && out.focus && out.focus2, JSON.stringify({ h2: out.h2?.ask, g2: out.g2?.ask, f: [out.focus, out.focus2] }));
+  record('★★★ R071 A 칩 줄 — PC 1280 · 1536×730 · 1920 · 2560 · 모바일 360 · 430 에서 화면 안 · 가로 넘침 없음 · 입력칸과 겹치지 않음',
+    Object.values(out.sizes).every((m) => fine(m) && !m.overlap && m.input), JSON.stringify(out.sizes));
+  record('★★ R071 A 모바일 칩 높이 44px(터치) · PC 32px', out.g1?.chipH === 44 && out.sizes.m360?.chipH === 44 && out.h1?.chipH === 32, JSON.stringify([out.g1?.chipH, out.sizes.m360?.chipH, out.h1?.chipH]));
+  record('★★★ R071 A 요청 밖 문항(2번) — 공개 화면에 평가 줄 없음(방장 · 손님)', out.n2h && !out.n2h.fb && out.n2g && !out.n2g.fb, JSON.stringify({ h: out.n2h?.fb, g: out.n2g?.fb }));
+  record('★★ R071 A 밤 360 — 👎 칩 줄 보임 → 👍 로 바꾸면 칩 줄 접히고 "+1P 고마워요"', fine(out.n3g) && !out.n3g2?.chips && /\+1P 고마워요/.test(out.n3g2?.ask ?? ''), JSON.stringify({ a: out.n3g, b: out.n3g2?.ask }));
+  const p = Object.fromEntries(pts.map((r) => [r.login_id.endsWith('_th') ? 'h' : 'g', r.n]));
+  const hr = rows.filter((r) => r.login_id.endsWith('_th'));
+  record('★★★ R071 A 포인트(검사 DB) — 방장 1P(1번 사유 뒤 · 3번 사유 없는 👎 는 0P) · 손님 2P(1번 · 3번 👍) · 요청 문항 표 asked true',
+    p.h === 1 && p.g === 2 && hr.some((r) => r.i === 3 && r.vote === -1 && !r.rated && r.asked) && rows.every((r) => r.asked === (r.i !== 2)), JSON.stringify({ p, rows }));
+  H.close();
+  G.close();
+}
+async function r071OddoneFlow(browser) {
+  const L = await newPage(browser, 'R071-odd');
+  await L.setViewport(1280, 720);
+  await signUp(L, 'to', '다른하나점검');
+  const cw = {};
+  for (const size of [4, 5, 6, 7, 8]) {
+    for (const [dev, w, h, touch] of [['pc', 1280, 720, false], ['m360', 360, 740, true], ['fold', 344, 882, true]]) {
+      if (dev !== 'm360' && size !== 8 && dev !== 'pc') continue;
+      if (touch) await touchDevice(L, w, h);
+      else {
+        await touchDevice(L, w, h, false);
+        await L.setViewport(w, h);
+      }
+      await L.goto(`${BASE}/lab/minigame?scene=1&key=oddone&phase=play&seed=2024&size=${size}`);
+      await L.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'play'", 6000);
+      await sleep(450);
+      const m = JSON.parse(await L.evaluate("JSON.stringify({ cw: Math.round(document.querySelector('.oddone-cell')?.getBoundingClientRect().width ?? 0), n: document.querySelectorAll('.oddone-cell').length, over: document.documentElement.scrollWidth - innerWidth, inView: (() => { const g = document.querySelector('.oddone-grid')?.getBoundingClientRect(); return !!g && g.bottom <= innerHeight + 1; })() })"));
+      cw[`${size}-${dev}`] = m;
+      await snap(L, `410-oddone-${size}x${size}-${dev}`);
+    }
+  }
+  console.log(`  [r071] oddone 실험실 ${JSON.stringify(cw)}`);
+  record('★★ R071 C 격자 4~8 — 실험실 360 에서 모두 격자가 화면 안(세로) · 가로 넘침 없음(실험실 카드는 실제 판보다 좁다 — 칸 폭 판정은 아래 실제 판)', [4, 5, 6, 7, 8].every((n) => cw[`${n}-m360`]?.inView && cw[`${n}-m360`]?.over <= 1), JSON.stringify(Object.fromEntries([4, 5, 6, 7, 8].map((n) => [n, cw[`${n}-m360`]]))));
+  await touchDevice(L, 1280, 720, false);
+  L.close();
+  // ── 실제 연습 판 — H(PC 1280 · 마우스) · G(360 터치) · 판마다 그림 한 장 · 5판(8×8)에서 360 · 폴드 344 칸 폭
+  const { H, G } = await r051Room(browser, 'r71o');
+  await touchDevice(G, 360, 740);
+  await r051Start(H, 'oddone');
+  await waitPhase(H, 'rules', 15000);
+  const live = [];
+  for (let i = 0; i < 5; i += 1) {
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'play' && document.querySelector('.oddone-grid')?.dataset.ready === '1'", 30000);
+    await G.waitFor("document.querySelector('.oddone-grid')?.dataset.ready === '1'", 8000).catch(() => false);
+    await sleep(300);
+    const info = JSON.parse(await H.evaluate(`JSON.stringify((() => { const cs = [...document.querySelectorAll('.oddone-cell')]; const srcs = cs.map((c) => c.querySelector('img')?.getAttribute('src')); const cnt = {}; for (const s of srcs) cnt[s] = (cnt[s] ?? 0) + 1; const odd = srcs.findIndex((s) => cnt[s] === 1); return { odd, n: cs.length, size: Number(document.querySelector('.oddone-grid')?.dataset.size), pair: [...new Set(srcs)].map((s) => s?.split('/').pop()) }; })())`));
+    const g = JSON.parse(await G.evaluate("JSON.stringify({ cw: Math.round(document.querySelector('.oddone-cell')?.getBoundingClientRect().width ?? 0), over: document.documentElement.scrollWidth - innerWidth })"));
+    await snap(H, `411-oddone-live-r${i + 1}-${info.size}x${info.size}-pc`);
+    await snap(G, `411-oddone-live-r${i + 1}-${info.size}x${info.size}-m360`);
+    let fold = null;
+    if (i === 4) {
+      await touchDevice(G, 344, 882);
+      await sleep(400);
+      fold = JSON.parse(await G.evaluate("JSON.stringify({ cw: Math.round(document.querySelector('.oddone-cell')?.getBoundingClientRect().width ?? 0), over: document.documentElement.scrollWidth - innerWidth })"));
+      await snap(G, `411-oddone-live-r5-8x8-fold344`);
+    }
+    live.push({ ...info, g, fold });
+    const r = await rectOf(H, `.oddone-cell[data-i="${info.odd}"]`);
+    await trustedClick(H, r.x + r.w / 2, r.y + r.h / 2);
+    const gr = await rectOf(G, `.oddone-cell[data-i="${info.odd}"]`);
+    if (gr) await trustedTap(G, gr.x + gr.w / 2, gr.y + gr.h / 2);
+    await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'roundResult'", 20000);
+  }
+  console.log(`  [r071] oddone 실제 판 ${JSON.stringify(live)}`);
+  const pairs = (await sharedDist()).ODD_PAIRS;
+  const lv = (x) => pairs.find((p) => x.pair.includes(`${p.base}.svg`) && x.pair.includes(`${p.odd}.svg`))?.level ?? '?';
+  record('★★★ R071 C 실제 판 — 격자 4·5·6·7·8 · 1판 쉬운 쌍 · 2~5판 어려운 쌍', JSON.stringify(live.map((x) => x.size)) === '[4,5,6,7,8]' && JSON.stringify(live.map(lv)) === '["easy","hard","hard","hard","hard"]', JSON.stringify(live.map((x) => [x.size, lv(x), x.pair])));
+  record('★★★ R071 C 실제 판 8×8 — 360 · 폴드 344 칸 ≥ 36px · 가로 넘침 없음', live[4]?.g.cw >= 36 && live[4]?.fold?.cw >= 36 && live[4].g.over <= 1 && live[4].fold.over <= 1, JSON.stringify({ m360: live[4]?.g, fold: live[4]?.fold }));
+  await waitPhase(H, 'final', 30000).catch(() => false);
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R069 — 난이도 초급 · 중급 · 고급(설정 · 뱃지 · 전적) · 좁은 칸 지문 글자 규칙(240자) · 이모티콘 "자주" 탭
 //   R069_ONLY = settings | game | emoji (없으면 전부)
 // =============================================================================
@@ -5860,6 +6069,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R069) {
     await closeAllTabs(browser);
     await r069Flow(browser);
+  }
+  // ★ R071 — 정답 공개 평가 손질(👎 칩 줄 · 요청 밖 문항) · 다른 하나 찾기 8×8
+  if (process.env.UICHECK_R071) {
+    await closeAllTabs(browser);
+    await r071Flow(browser);
   }
   // ★ R068 — 찬종 제보 20 · 정답 공개 평가 · photoyear · 긴 질문
   if (process.env.UICHECK_R068) {
