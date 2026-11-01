@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-01 — 정답 공개 평가 손질 · 이모티콘 도배 제한 제거 · 다른 하나 찾기 어렵게 · hint:solve · game_questions 등급 열 (R071, MAIN)
+
+- **무엇을**: 찬종 2026-11-01 "권장대로 · 도배 제한 완전히 없애". §A 공개 중 👎 는 사유 하나 골라야 1P(needReason) · 평가 요청은 판마다 무작위 ceil(n/3) 문항(rateAsk · 스냅샷 · 아닌 문항은 줄 없음 · 0P) · 0027 question_feedback.asked · feedback-report 가중 표(가중 0 묶음 · --raw) §B 이모티콘 도배 제한 제거(tuning.emojiRateLimit 기본 꺼짐 · 복원 EMOJI_RATE_LIMIT=1 · 한 소켓 1초 50개 폭주 방어) §C 다른 하나 찾기 격자 4~8 · 1판만 쉬움 · 어려운 쌍 28 §D `npm run hint:solve` §E 0028 game_questions.target_grade · grade · worth + 선정 코드 기록.
+- **찾은 것**: 칩 줄을 펼치면 flex-wrap 이 "N초 후" 를 따로 한 줄로 밀고 360 밤 긴 문제에서 입력칸이 26px 밖 → 첫 줄 줄바꿈 막기 · 칩 줄 동안 채팅 칸 최소 높이 186. 실험실 장면은 카드가 좁아 8×8 칸 34px(실제 판 41px). 봇 mgoddone 이 R064 D-265 뒤로 낡은 기대 4/9 였다.
+- **결정**: D-313 · D-314 · D-315.
+- **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
+- **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
+
 ## 2026-11-01 — 힌트 재편 2차: hint-v7 · 등급 3 힌트 2,560 · 해설 함께 359 (G027, GEN)
 
 - **무엇을**: 15 §4-1 예시 다섯 + V031 예시를 hint-v7 에 sync(버전 그대로) · hint-check `blank` 경고 · 등급 3 활성 2,560 힌트 전부 다시 씀(H13 — 알가치 2·3 핵심 한 줄 · 알가치 1 핵심 + 연결 고리) · 핵심이 해설에 있던 359 는 해설을 둘째 줄 사실로(빈 해설 7 새로 씀).

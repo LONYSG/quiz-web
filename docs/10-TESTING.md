@@ -1074,6 +1074,35 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 51. ★★★ R071 — 정답 공개 평가 손질 · 이모티콘 도배 제한 제거 · 다른 하나 찾기 어렵게 · 힌트 뒤 정답 집계 · game_questions 등급 열 (D-313 ~ D-315)
+
+★ 전부 검사 DB(quizweb_test · `npm run db:test-init` 이 0027 · 0028 적용) · 자기 서버(봇 · ui-check 가 띄움 · 3100). 실 DB(quizweb) 는 읽기만(마지막 마이그레이션 0026 그대로 · question_feedback 마지막 갱신 10-31 그대로).
+
+```bash
+npm test                                   # 571 (+ R071: feedback 4 · answer 1 · r053 2 · gameQuestions 2)
+npm run bot -- rate                        # 26/26 — 요청 문항(RATE_ASK_FORCE 1,2,4) 1P · 요청 밖 0P · 사유 없는 👎 needReason → 사유 뒤 1P · asked
+npm run bot -- spam                        # 19/19 — [5] 이모티콘 사람 연타 30개(초당 15) 전부 · 80개 한 번에 → 50 · 안내 0 · 채팅 제한 그대로
+npm run bot -- emojilimit                  # 4/4 — 복원 스위치 EMOJI_RATE_LIMIT=1 → 옛 8개 · kind emoji · 잠금 5초
+npm run bot -- emoji | shop                # 10/10 · 28/28 — 30개 연달아 전부 · 특별 12개 전부
+npm run bot -- mgoddone                    # 10/10 — 격자 4·5·6·7·8 · (옛 기대 둘 고침 — D-265 서버 시간 자르기)
+npm run bot -- levelmix                    # 15/15 — game_questions.target_grade · grade · worth 20행 · 폴백 target 5 → grade 4 가 4행
+node scripts/ui-check-bundles.mjs r071     # reveal 8/8 · oddone 4/4 (R071_ONLY=reveal|oddone)
+npm run hint:solve -- --games 2204,2205,2206   # 설계 실측 재현: 등급 4 48 = 힌트 전 3 · 힌트만 15초 22 · 초성 뒤 7 · 못 맞힘 16
+```
+
+| 검사 | 결과 |
+|---|---|
+| 공개 화면 👎 → 칩 줄 | PC 1536 진짜 클릭 · m390 터치 — 칩 7개가 **그 줄 아래** · 물음 "사유 하나 고르면 +1P" · 칩 → "+1P 고마워요" · 입력창 포커스 그대로 |
+| 칩 줄 크기 | PC 1280 · 1536×730 · 1920 · 2560 · m360 · m430 · 밤 360 — 화면 안 · 가로 넘침 0 · 입력칸과 안 겹침 · 페이지 안 길어짐 · 첫 줄(N초 후) 한 줄 · 칩 높이 모바일 44 · PC 32 |
+| 요청 밖 문항 | 공개 화면에 평가 줄 없음(방장 · 손님) · 봇: 스냅샷 rateAsk false · 0P · asked false |
+| 포인트(검사 DB) | 방장 1P(사유 뒤) · 사유 없는 👎 0P · 손님 2P · 요청 문항 asked true |
+| 다른 하나 실제 판 | 1판 쉬움 · 2~5판 어려움 · 360 8×8 칸 41px · 폴드 344 39px · 가로 넘침 0(실험실 장면은 카드가 좁아 34px — 판정은 실제 판) |
+| 기존 묶음 | r068 game 7/7(RATE_ASK_FORCE 전부) · main-layout 128/129(C-4 = 13 A79 그대로 · 넘침 16~24 · 52px — R069 와 같거나 작음) · typecheck · smoke 12/12 |
+
+★ 검사가 왜 못 잡았나 · 메운 것: ① 칩 줄을 펼치면 flex-wrap 때문에 "N초 후" 가 따로 한 줄로 밀리고(360) 360 밤 긴 문제에서 입력칸이 26px 밖 — 처음 검사가 "칩이 화면 안" 만 봐서 못 잡음 → `nextSameLine` · `docH`(페이지 길이) · 펼치기 전후 입력칸 비교를 검사에 더함. ② 다른 하나 8×8 칸 폭을 실험실 장면(카드가 실제보다 좁음)으로만 재면 34px 로 틀린 경고 → 실제 연습 판에서 잰다. ③ 봇 mgoddone 은 R064(D-265) 뒤로 옛 기대(미리 계산 → BAD_REQUEST)가 낡아 4/9 였다(끝 점검 목록 밖이라 안 돌았음) — 고침.
+
+---
+
 ## 50. ★★ R070 — ops 안정화: 서버·터널 로그 · 끄기가 포트를 기다림 · migrate 잠금 10초 · 터널 열림 확인 (D-312)
 
 ★ 실 서버(3000) · 실 DB(quizweb) 는 건드리지 않는다 — 전부 `PORT=3100` · `quizweb_test` · `QUIZ_TEST_SERVER=1`.

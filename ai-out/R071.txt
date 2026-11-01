@@ -1,0 +1,123 @@
+===========================================
+ROUND: R071
+DATE: 2026-11-01 17:40 KST
+TASK: 정답 공개 평가 손질(👎 사유 필수 1P · 평가 요청 판마다 무작위 1/3 · 보고서 가중) · 이모티콘 도배 제한 완전 제거(한 줄 복원) · 다른 하나 찾기 난이도(제보 #74) · 힌트 뒤 정답 집계 스크립트 · game_questions 등급 · 알가치 열
+STATUS: 완료
+===========================================
+
+[cmd 창]
+- 실행: 한 세션 · 하위 에이전트 0 · 실 DB(quizweb) 쓰기 0(읽기만 — 마지막 마이그레이션 0026 그대로) · 실 서버(3000) 손대지 않음(꺼져 있었음) · 검사는 전부 quizweb_test + 자기 서버
+- 빠른 길: §A · §B 를 먼저 커밋 · push(b7016fc3 · 7a9fa734 — npm test · build 통과 상태) → §C~§E 이어서
+- 검사: vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12(reveal 8 · oddone 4) · r068 game 7/7 · main-layout 128/129(A79 그대로)
+- 마이그레이션: 0027_feedback_asked · 0028_game_questions_grade (적용은 찬종 메뉴 3 → 1)
+- 문서: 07 D-313~315 · 13 A99 · 10 51절 · 19 §7 세 줄 · 01 · PLAY-GUIDE · 05 · 06 · README · 16 §7 한 줄
+
+[0. 찬종이 볼 것]
+■ 적용: 메뉴 3 → 1 (새 빌드 + 마이그레이션 둘). 메뉴 1 이 "적용 대상 2개: 0027_feedback_asked.sql · 0028_game_questions_grade.sql … 완료" 를 찍으면 된다.
+  (마이그레이션이 늦게 돌아도 서버는 멈추지 않는다 — 0028 전 DB 면 game_questions 를 옛 꼴로 적고 경고 한 줄 · 0027 전이면 평가 저장이 실패하므로 꼭 메뉴 1 로 켤 것)
+
+■ ★ 복원 한 줄(이모티콘 도배 제한): .env 에  EMOJI_RATE_LIMIT=1  넣고 메뉴 3 → 1
+  → 옛 규칙(표준 5초 8회 · 특별 5초 5회 · 넘으면 5초 잠금 · "이모티콘 도배 방지 · N초" 안내)이 그대로 돌아온다(봇 emojilimit 4/4 로 확인).
+
+■ 바뀐 흐름 그림 3
+  ① 정답 공개 평가 (판 시작 때 서버가 문항 n 의 ceil(n/3) 개를 무작위로 — 방 전원 같은 문항)
+     공개(요청 문항)  "방금 문제 어땠어요? (+1P)"  [👍][😐][👎]
+        ├ 👍 / 😐 ──────────────▶ "+1P 고마워요"                         (지금처럼 바로 1P)
+        └ 👎 ──▶ "사유 하나 고르면 +1P"  [👍][😐][👎]                     (저장만 · 0P · needReason)
+                 ┌──────────────────────────────────────────────┐
+                 │ [들어본 적도 없는 답][너무 쉬움][질문이 무슨…] ▶ │  ← 그 줄 아래 한 줄 · 가로 스크롤 · 폰 44px
+                 └──────────────────────────────────────────────┘
+                 칩 하나 ──▶ "+1P 고마워요"                                (같은 공개 시간 안 · 1P)
+     공개(요청 밖 문항)  → 평가 줄 없음 · 그 문항은 API 로 보내도 0P
+     결과 화면 · 로비 "지난 판"  → 모든 문항 그대로 · 0P (asked = 그 문항이 요청 문항이었나)
+
+  ② 이모티콘
+     옛:  보냄 ─▶ 5초 8회? ──넘음──▶ 5초 잠금 · "이모티콘 도배 방지 · N초"
+     새:  보냄 ─▶ 이 소켓이 이번 1초에 50개 넘었나? ──넘음──▶ 조용히 버림(안내 없음)
+                                                └─ 아니면 ─▶ 방에 보냄(잠금 · 카운트 · 안내 없음)
+          EMOJI_RATE_LIMIT=1 이면 50개 검사 뒤 옛 흐름이 그대로 이어진다 · 채팅 5초 5회는 그대로
+
+  ③ 다른 하나 찾기
+     옛:  1판 4×4 쉬움 · 2판 5×5 쉬움 · 3판 6×6 어려움 · 4판 6×6 어려움 · 5판 7×7 어려움 (어려운 쌍 15)
+     새:  1판 4×4 쉬움 · 2판 5×5 어려움 · 3판 6×6 어려움 · 4판 7×7 어려움 · 5판 8×8 어려움 (어려운 쌍 28)
+
+■ 재현 표 — `npm run hint:solve -- --games 2204,2205,2206` (설계 실측과 같다)
+  | 등급 | 문항 | 힌트 전(<10초) | 힌트만 15초 안(10~25초) | 초성 뒤(≥25초) | 못 맞힘 |
+  |---|---|---|---|---|---|
+  | 3 | 48 | 17 (35%) | 8 (17%) | 14 (29%) | 9 (19%) |
+  | **4** | **48** | **3 (6%)** | **22 (46%)** | **7 (15%)** | **16 (33%)** |
+  | 5 | 32 | 3 (9%) | 5 (16%) | 10 (31%) | 14 (44%) |
+  힌트 없는 문항 31(등급 1·2) — 힌트 전 21 · 15초 안 5 · 초성 뒤 4 · 못 맞힘 1.
+  `--split 2026-10-31T00:00+09:00` 전후: 등급 4 "힌트만 15초 안" 14%(160문항) → 46%(48문항) · 못 맞힘 59% → 33%.
+  ★ 주의: "힌트 있음/없음" 과 등급은 **지금 값** 기준(0028 전 판은 그때 값이 없다). 2204~2206 의 등급 3 은 그때 아직 옛 힌트였다(등급 3 hint-v7 은 11-01 08:54 끝).
+
+■ 실측 — 봇 · 검사 계정 꼴(DB 확인): bot_*(bot_pw 32 · bot_ 10 · bot_lk · bot_sh · bot_nx … 약 60) · uic*(2) · r10_*(2) = 정규식 `^(bot|uic|r10_)`(서버 rateSkipLogin 기본 · hint:solve · feedback-report 같은 값).
+  정규식 밖 검사 같은 계정: test · test2 · timer136 · timer1346(10-04~10-13 · 판 6) — 사람이 만든 검사 계정으로 **추정 · 확인 필요**(지금은 사람으로 센다 · 30일 창 끝자락).
+
+■ 보고서 가중 실측(feedback:report --no-bots · 2026-11-01): 가중 0 묶음 5 — 화요53 판 2204(85표 · 반응 중앙 2.7초) · 2205(28표 · 😐 93% · 2.5초) · 2206(22표 · 😐 100% · 3.0초) · 후니 2190(14표 · 👍 100%) · 2197(6표 · 👍 83%) · 가중 0 표 155/326 · 검토 후보 4(--raw 옛 셈 13).
+
+■ 실기기로 볼 것: A99 — ① 메뉴 1 의 마이그레이션 두 줄 ② 평가가 세 문제 중 한 문제꼴로만 · 👎 칩 줄이 손가락에 맞는지 ③ 이모티콘 마구 눌러도 안내 없음(시끄러우면 복원 한 줄) ④ 다른 하나 찾기 8×8 폰에서.
+
+[원칙 메모 — 7 확인]
+- RULES EMOJI_RATE 5초 8회 잠금 5초 — 맞음 · SPECIAL 5초 5회(잠금 5초) — 맞음 · 쌍 **easy 12**(브리핑 13 — 다름 · 실측 12) · hard 15 — 맞음 · ODDONE_SIZES [4,5,6,6,7] — 맞음 · 테스트 "쌍 ≥ 24" — 맞음 · 마이그레이션 마지막 0026 — 맞음 · 07 마지막 D-312 — 맞음 · 13 마지막 A98 — 맞음 · 10 마지막 50절 — 맞음 · question_feedback 열(vote · reasons · comment · at_reveal · rate_grant_id) — 맞음(+ id · question_id · account_id · game_id · created_at · updated_at · adopted_*) · point_grants 'rate' 277 — 맞음 · 공개 화면 사유 칩 없음(R068) — 맞음.
+- 실 서버 · 실 DB: 시작 때 3000 LISTEN 없음 · 검사 서버는 모두 자기 서버(봇 · ui-check · smoke — quizweb_test · 빗장 QUIZ_TEST_SERVER) · 끝에 실 DB 확인: question_feedback.asked 열 0 · game_questions 등급 열 0 · schema_migrations 마지막 0026 · 'rate' 277 · question_feedback 마지막 갱신 10-31 15:01 UTC 그대로.
+- 동시 라운드: GEN G028 — 작업 트리에서 GEN 파일 변경 없음(내 커밋은 경로 지정 · g028-* · tmp/ add 0) · fetch 때 origin 새 커밋 없음.
+- 브리핑과 다르게 한 것(기술 판단 · 되돌리기 쉬움):
+  ① "RULES 상수와 옛 코드는 지운다" — RULES 상수는 지웠지만 **서버의 창 · 잠금 코드와 클라이언트 잠금 표시는 남겼다**(복원 한 줄 EMOJI_RATE_LIMIT=1 이 옛 동작을 그대로 되살리려면 필요 · 꺼져 있으면 서버가 신호를 안 보내 화면에 아무것도 안 나온다). 옛 값은 config tuning 기본값에.
+  ② asked 판단 — 방 메모리의 rateAsk 는 판이 끝나면 사라지므로, 정답 공개 때 "판 → 요청 문항 id" 를 서버 메모리(최근 500판)에 적어 결과 화면 · 로비 표에도 asked 를 붙인다. 서버를 다시 켜기 전 판만 안다(그 뒤 표는 asked false — 0027 주석 · 보고서는 안다).
+  ③ 검사용 `RATE_ASK_FORCE`(요청 순번 고정 — 봇 rate · ui-check r071 · 옛 공개 평가 묶음 r056 · r064 · r068 이 쓴다 · 실제 서버엔 두지 않는다).
+  ④ 특별 이모티콘 소유 확인을 60초 메모리 사본 먼저(제한이 없어지면 연타마다 DB 조회 — 사면 forgetOwned 가 지움).
+  ⑤ 0028 전 DB 대비 — insertGameQuestion 이 42703(열 없음)이면 옛 꼴로 다시 적고 이후 옛 꼴(단위 테스트 2).
+  ⑥ 봇 mgoddone 옛 기대 둘 고침(R064 D-265 "기기 시간이 길게 와도 버리지 않고 서버 시간으로 자른다" 뒤로 BAD_REQUEST 기대가 낡아 4/9 였다).
+  ⑦ 다른 하나 그림: 판마다 한 장은 실제 연습 판(411-oddone-live-r1~r5) · 더한 13쌍 한 장(oddone-pairs-added-r071.png).
+
+[1. §A 정답 공개 평가 손질 (D-313)]
+- 서버: shared `rateAskCount` · `pickRateAsk`(Fisher-Yates · 1..n 중 ceil(n/3) · 오름차순) · `rateNeedsReason` / start.ts `game.rateAsk` / question.ts resolveQuestionSync → resolution.rateAsk · `question.resolved` 에 rateAsk · noteRateAsk / snapshot ResolutionView.rateAsk / feedbackRoutes: isRevealNow 에 rateAsk 조건 · needReason(공개 중 · 미지급 · 👎 · 사유 0 → 저장만) · asked(upsert OR) · 응답 needReason.
+- 클라: ResolutionView.rateAsk(옛 서버 = 보임) · Question.tsx 요청 문항만 RevealFeedback · RevealFeedback 👎 → 아래 `.reveal-fb-chips`(ReasonChips 재사용) · 물음 "사유 하나 고르면 +1P"(강조색) → "+1P 고마워요" · 👍/😐 로 바꾸면 칩 줄 접힘.
+- CSS: 칩 줄 order 3 · 100% · 첫 줄은 평가 묶음 flex 1 1 0(줄바꿈 대신 물음이 … 로 줄어듦) · 칩 PC 32px · 모바일 44px · 모바일 칩 줄 동안 채팅 칸 최소 240 → 186.
+- 보고서: 가중 0 묶음(표 ≥ 5 · 같은 버튼 ≥ 80% 또는 반응 중앙 < 3초) · 찬종 늘 1 · --raw · 머리에 asked · 1P · 가중 0 수 · 0027 전 DB 에서도 돈다.
+- 검사: 단위(needReason 5 · 요청 수 표 · pickRateAsk 400판 · 고름 2,000판) · 봇 rate 26/26([1] 요청 문항 1P · [2] 공개 뒤 0P · [3] 공개 전 → 공개 1P · [4] 요청 밖 rateAsk false · 0P · asked false · [5] 사유 없는 👎 needReason → 사유 뒤 1P · 처음부터 사유 1P · [6] 결과 화면 0P · 요청 문항이면 asked true · 합계 3 · 3 · 0) · ui-check r071 reveal 8/8.
+
+[2. §B 이모티콘 도배 제한 제거 (D-314)]
+- config.tuning.emojiRateLimit(env EMOJI_RATE_LIMIT === '1') 기본 false · emojiFloodPerSec(RULES.EMOJI_FLOOD_PER_SEC 50 · env EMOJI_FLOOD_PER_SEC) · socket emoji.send: floodOk(소켓마다 1초 창) → 소유 확인 → (스위치 켜졌을 때만) 옛 checkEmojiRate / checkSpecialEmojiRate.
+- 검사: answer.test 폭주 방어(50 · 51번째 버림 · 다음 초 · 사람 초당 15 × 10초 0 버림 · RULES 에 EMOJI_RATE_MAX 없음) · 봇 spam [5] 사람 연타 30 전부 · 한 번에 80 → 50 · 안내 0 · 다음 초 다시 · 채팅 그대로 / emojilimit 4/4 / emoji [4] 30 전부 / shop 특별 12 전부 · 안내 0.
+- 문서: 01 도배 방지 표 두 줄 · 이모티콘 행 두 곳 · PLAY-GUIDE 28.
+
+[3. §C 다른 하나 찾기 (D-315)]
+- ODDONE_SIZES [4,5,6,7,8] · ODDONE_EASY_ROUNDS 1 · 어려운 쌍 +13 = 28(목록 07 D-315) · 테스트: hard ≥ 25 · 더한 쌍 그림 한 번만 · 판 easy 1 + hard 4 · 시드 2,000 에서 28쌍 모두 나옴 · 어려운 판 80%.
+- 화면: 실제 연습 판 360 — 4×4 83 · 5×5 66 · 6×6 55 · 7×7 47 · **8×8 41px** · 폴드 344 8×8 39px · 가로 넘침 0 · 1판 쉬움(⭐/🌙) · 2~5판 어려움 · 봇 mgoddone 10/10.
+- 01 미니게임 표 한 줄.
+
+[4. §D 힌트 뒤 정답 집계 — scripts/hint-solve-report.mjs · npm run hint:solve]
+- 옵션: --since/--until(한국 날짜 · 기본 30일) · --split <시각> · --games a,b,c · 출력 tmp/hint-solve.md.
+- 셈: 문항마다 사람(봇 · 검사 정규식 밖)이 처음 맞힌 response_ms → 힌트 전 · 15초 안 · 초성 뒤 · 못 맞힘(timeout · skip) · 봇만 · aborted 뺌 · 봇만 있는 판 뺌 · 등급 = game_questions.grade(0028) 없으면 questions.difficulty_score · 알가치 같은 방식 · 힌트 없는 문항 따로.
+- 재현 표는 0절 · 16 §7 에 "설계가 라운드 끝마다" 한 줄.
+
+[5. §E game_questions 등급 · 알가치 열 (0028 · D-308)]
+- target_grade(계획 · 없으면 NULL) · grade · worth(그때 questions 값) — beginQuestion 이 insertGameQuestion 에 넘김 · 0028 전 DB 면 옛 꼴.
+- 봇 levelmix 15/15: 중급 20행 grade = 문항 등급 · worth = 문항 알가치 · target = grade · 5등급을 다 본 고급 판에서 target 5 → grade 4 가 4행(폴백을 표로 셀 수 있음).
+- questions ALTER 없음 · worth_kind 는 R072.
+
+[6. 끝 점검]
+| 검사 | 결과 | 방식 |
+|---|---|---|
+| vitest | 571 통과 | 한 번 |
+| typecheck(shared · server · client · pipeline) | 통과 | 한 번 |
+| build | 통과(단계마다) | — |
+| smoke(quizweb_test · 3100) | 12/12 | 한 번 |
+| 봇 rate · spam · emojilimit · emoji · shop · mgoddone · levelmix | 26/26 · 19/19 · 4/4 · 10/10 · 28/28 · 10/10 · 15/15 | 단계별(시나리오마다 자기 서버) |
+| ui-check r071 | reveal 8/8 · oddone 4/4 | 단계별 |
+| ui-check r068(R068_ONLY=game) | 7/7 | RATE_ASK_FORCE 전부 |
+| ui-check main-layout | 128/129 — C-4(긴 문제 공개 360 넘침 16~24 · 52px)는 13 A79(R055 부터 · R069 24 · 52px)와 같거나 작음 · 모든 문항 요청으로 돌려도 같음 | 한 번 × 2 |
+| 검사 DB 분리 | quizweb_test 0028 까지 · 실 DB 0026 그대로 | — |
+| 남는 메모리 | 시작 8.2GB → 끝 7.1GB | — |
+- 못 돌린 것: 봇 전체 SCENARIOS · npm run verify 전체(ui-check 11 단계)는 돌리지 않았다 — 브리핑 E 가 정한 목록(test · build · ui-check r071 · 봇 rate · emoji · mgoddone)과 영향 있는 묶음(spam · emojilimit · shop · levelmix · r068 · main-layout · smoke · typecheck)만. 그 밖 묶음은 **통과로 치지 않는다**.
+- 다시 찍혀 바뀐 옛 그림(docs/design/r068 18장)은 되돌림(커밋 안 함).
+
+[7. 결정 필요]
+- (없음 — 브리핑 결정대로) · 참고 둘:
+  ① test · test2 · timer136 · timer1346 계정을 봇 · 검사 정규식에 넣을지(지금은 사람으로 셈 · 판 6 · 10월 초) — 설계 판단.
+  ② asked 는 서버를 다시 켜기 전 판만 안다 — 결과 화면 · 로비 표가 재시작 뒤 들어오면 false(보고서 해석 때 주의). 영구 기록이 필요하면 game_questions 에 rate_ask 열(다음 마이그레이션) — 설계 판단.
+
+[고친 문서]
+docs/07-DECISIONS.md(D-313 · D-314 · D-315) · docs/13-PENDING-CHECKS.md(A99) · docs/10-TESTING.md(51절) · docs/19 §7(때 · 누가 · 포인트 · 신뢰 세 줄) · docs/01-GAME-RULES.md(도배 방지 표 · 이모티콘 행 · 미니게임 표 · 16-R071) · docs/PLAY-GUIDE.md(21 · 28) · docs/05-STATUS.md · docs/06-WORKLOG.md · ai-out/README.md · docs/16-ROUND-PROTOCOL.md(§7 한 줄)
