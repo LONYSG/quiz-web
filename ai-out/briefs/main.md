@@ -3,7 +3,7 @@ TASK: 평가 버튼 실측(설계 2026-11-01 · `briefs/next.md` 2026-11-01 절)
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` · 바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 그대로 (07 **D-313** 부터 · 13 **A99** 신설 · 10 **51절** · README · R071.txt · 그림 `docs/design/r071/`). **실 DB 쓰기 없음** — 마이그레이션 파일만 만든다(0027 · 0028 — 적용은 찬종의 ops 메뉴 1 · `migrate` 가 돈다 · GEN 이 쓰는 `questions` 표는 **ALTER 하지 않는다** — worth_kind 열은 R072). 끝 점검(봇 · ui-check)은 **검사 DB**(R060 분리)에서만 — 실 3000 서버 · 실 DB 에 붙지 않는지 시작 때 확인해 0절에.
-■ ★★ 동시 라운드 — **GEN G028**(questions 의 힌트·해설·질문 일부 · question_answers 2 행 · 2026-11-01 낮 ~ 저녁) · **VERIFY V032**(읽기만). 이 라운드가 만지는 표는 `question_feedback`(0027 열 추가) · `game_questions`(0028 열 추가) 뿐 — 겹치지 않는다. 05 · 06 · 07 · 10 · 13 · 19 · README 는 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지. GEN 의 `g028-*` · `tmp/` · VERIFY 의 `v032-*` 는 **git add 하지 않는다**.
+■ ★★ 동시 라운드 — **GEN G028**(questions 의 힌트·해설·질문 일부 · question_answers 2 행 · 2026-11-01 낮 ~ 저녁 · 돌고 있을 수도, 아닐 수도) · VERIFY V032 는 이 라운드 **뒤**(찬종 2026-11-01 "main 먼저"). 찬종이 빨리 적용해 보고 싶어 한다 — 빠른 길: §A·§B 를 먼저 끝내 커밋·push 하고(그 시점에 찬종이 빌드해도 되게 `npm test` · `build` 통과 상태로), §C~§E 는 이어서. 이 라운드가 만지는 표는 `question_feedback`(0027 열 추가) · `game_questions`(0028 열 추가) 뿐 — 겹치지 않는다. 05 · 06 · 07 · 10 · 13 · 19 · README 는 쓰기 직전 fetch · rebase · 내 파일만 add · force 금지. GEN 의 `g028-*` · `tmp/` · VERIFY 의 `v032-*` 는 **git add 하지 않는다**.
 ■ 토큰: 넉넉하다. §A~§E 전부 · 줄이지 않는다. 메모리 3GB 아래면 ui-check 는 크기 셋만(16 §4).
 
 ■ 먼저 읽기
