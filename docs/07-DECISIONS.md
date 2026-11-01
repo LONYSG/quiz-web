@@ -10,6 +10,18 @@
 
 ---
 
+## DG-065. hint-v7 · 등급 3 힌트 2,560 다시 씀 · 해설 함께 359 · hint-check blank 경고 (G027 · 기술 판단 — 찬종 결정 D-311 "권장대로"를 옮김 · 생성 없음)
+
+- **대상** = 활성 등급(difficulty_score) 3 전부 2,560(알가치 1 307 · 2 1,641 · 3 612) · 순서 알가치 1 → 2 → 3 · 같은 정답 무리(짝 있는 문항 672)는 같은 묶음 · 65 묶음(40 × 64 + 마지막 4).
+- **세기(H13)**: 알가치 2·3 = 핵심 한 줄(연결 고리 없음) · 알가치 1 = 핵심 + 널리 알려진 연결 고리 하나. 해설 함께(H4) 359(빈 해설 7 새로 씀 — 등급 3 빈 해설 0).
+- **blind(거꾸로)**: 처음 맞힘 2,408/2,560(94.1%) · 표기만 다른 답 51 을 맞힘으로 치면 96.1% · 다시 씀 101 → 76 맞힘 · miss 25(② 예라 그대로 반영 · `audit/g027-blind-miss.json` — 한국 유행어 · 광고 · 대중가요가 많다). 알가치별 처음 맞힘 93.5% · 94.2% · 94.0%.
+- **변형 후보 57**(`audit/g027-variant-candidates.json` — 판정자가 친 표기 · 변형은 넣지 않음 · V030 적용 라운드가 함께 본다 · 5918 수쥐는 "넣으면 안 됨" 메모).
+- **hint-check `blank`**: `checkHint` 경고에 '○' 빈칸 · 자체 검사 19/19 · `hint-check-active` 종류별 수에 포함 · 라운드 hintcheck 는 막힘으로 씀. 끝 점검 blank 0.
+- **sync**: 15 §4-1 예시 다섯(G026 7절 ①) + V031 예시(설계 e11f7653 · 라운드 중간) 를 criteria-sync 로 hint-v7 에 · 버전 그대로.
+- **반영** `scripts/g027-apply-hints.mjs`(g026 베낌 · --dry-run 기본 · --apply · --undo · 쓰기 직전 열린 판 0 · WHERE 지금 힌트·해설 = 계획 때) · 13번 반영(22:38~23:59 열린 판 1 이라 10분 간격 8번 기다림) · 건너뜀 0 · 비움 0.
+- **끝 점검**: 백업(quizweb-20261031-192734) 전 행 대조 — 바뀐 열 general_hint 2,560 · general_hint_version 2,560 · explanation 359 뿐 · question_answers 10,806 글자까지 같음 · 활성 6,506 → 6,506 · hint-v7 = 4,227 · 등급 3 checkHint 막힘 0 · explain 0 · blank 0.
+- **되돌리기**: `node scripts/g027-apply-hints.mjs --undo` (`audit/g027-undo-hints.json` — 2,560 행 옛 힌트·버전·해설) · 백업 `backups/quizweb-20261031-192734.dump`.
+
 ## DG-064. hint-v7 · 등급 4·5 힌트 1,667 다시 씀 · 해설 함께 356 · hint-v6 · deep-v5 얼림 (G026 · 기술 판단 — 찬종 결정 D-311 "권장대로"를 옮김 · 생성 없음)
 
 - **hint-v7**(`pipeline/prompts/hint-v7.md` · hint-v6 를 베낌): 15 §4-1 지금 문구(SYNC:HINT) + 3-2(SYNC:QFACT) · 입력에 등급 · 알가치 · 지금 힌트 · 지금 해설 · 쓰는 순서 11(핵심 → H13 연결 고리 → 문서 확인 → H2·H10 → H3 → H4 해설 함께 → H12 → 19 §8 → 자기 점검 know/learn → blind 맞혀야 통과) · 예(밀그램 · 오토튠 · 규모 · 자일리톨 · 루트 66 · 모헨조다로 · 은 · SAT · 루소) · "떠먹여 주기 · 덜 유명한 것 · 두 글자 정답" 줄 뺌 · 출력 core · link · explanation · selfTest.
