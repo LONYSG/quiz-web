@@ -3959,7 +3959,8 @@ async function scenarioLevelMix() {
     const gid = host.snapshot.game?.gameId ?? host.snapshot.result?.gameId;
     const rows = await withDb(async (c) =>
       (await c.query(
-        `SELECT gq.question_index i, q.difficulty_score g, q.worth w, (SELECT array_agg(answer_norm) FROM question_answers a WHERE a.question_id = q.id) norms
+        `SELECT gq.question_index i, q.difficulty_score g, q.worth w, (SELECT array_agg(answer_norm) FROM question_answers a WHERE a.question_id = q.id) norms,
+                gq.target_grade tg, gq.grade gg, gq.worth gw
            FROM game_questions gq JOIN questions q ON q.id = gq.question_id WHERE gq.game_id = $1 ORDER BY gq.question_index`,
         [gid],
       )).rows,
@@ -3985,6 +3986,9 @@ async function scenarioLevelMix() {
   expect('★★★ 중급 20 — 실제 등급 분포 = 계획 2·6·8·4', m.counts.join('·'), '2·6·8·4·0');
   expectTrue('★★ 중급 — 4등급 칸(가장 어려운 칸) 4개는 모두 알가치 3', m.rows.filter((r) => r.g === 4).every((r) => r.w === 3), JSON.stringify(m.rows.filter((r) => r.g === 4).map((r) => r.w)));
   expectTrue('★★ 같은 판 같은 정답 없음', noDup(m.rows));
+  // ★★ R071 (0028 · D-308) — game_questions 에 계획 등급 · 그때 등급 · 알가치가 남는다(폴백 없으면 계획 = 실제)
+  expectTrue('★★★ R071 — game_questions.target_grade · grade · worth 기록(20행 · grade = 문항 등급 · worth = 문항 알가치 · 폴백 없음 → target = grade)',
+    m.rows.length === 20 && m.rows.every((r) => r.gg === r.g && r.gw === r.w && r.tg === r.gg), JSON.stringify(m.rows.map((r) => [r.tg, r.gg, r.gw])));
   const rest = m.rows.filter((r) => r.g !== 4);
   log(`  나머지 칸 알가치: 3=${rest.filter((r) => r.w === 3).length} · 2=${rest.filter((r) => r.w === 2).length} · null=${rest.filter((r) => r.w === null).length} · 1=${rest.filter((r) => r.w === 1).length}`);
   expectTrue('★★ 나머지 칸에 알가치 1(예비)은 안 나온다(3·2 가 넉넉함)', rest.every((r) => r.w !== 1), JSON.stringify(rest.map((r) => r.w)));
@@ -4020,6 +4024,9 @@ async function scenarioLevelMix() {
   table.push(['고급 · 5등급 없음', '1·3·6·10·0', a3.counts.join('·')]);
   expect('★★★ 5등급 0 · 4등급 10(6 + 폴백 4)', a3.counts.join('·'), '1·3·6·10·0');
   const w3in4 = a3.rows.filter((r) => r.g === 4 && r.w === 3).length;
+  // ★★ R071 — 폴백 칸이 표에서 보인다(target 5 → grade 4 가 4행)
+  const fb = a3.rows.filter((r) => r.tg !== r.gg);
+  expectTrue('★★★ R071 — 폴백을 표로 셀 수 있다(target_grade 5 · grade 4 = 4행)', fb.length === 4 && fb.every((r) => r.tg === 5 && r.gg === 4), JSON.stringify(fb.map((r) => [r.i, r.tg, r.gg])));
   expectTrue('★★ 4등급 중 알가치 3 이 4개 이상(폴백 칸은 알가치 3 에서)', w3in4 >= 4, String(w3in4));
 
   log('\n  ★ 표(계획 vs 실제)');

@@ -14,7 +14,11 @@
 import { query } from './pool.js';
 import type { AnswerRejectReason, QuestionResolution } from '@quiz/shared';
 
-/** 문제 시작 기록. ★ gameId 가 null 이면 부르지 않는다 (호출자가 확인한다) */
+/** ★ R071 — 0028(target_grade · grade · worth)이 아직 안 돈 DB 면 false 로 바꾸고 옛 꼴로 쓴다(마이그레이션 전에 새 빌드가 떠도 기록이 빠지지 않게) */
+let gradeCols = true;
+
+/** 문제 시작 기록. ★ gameId 가 null 이면 부르지 않는다 (호출자가 확인한다)
+ *  ★★ R071 (0028 · D-308) — 그때의 계획 등급 · 실제 등급 · 알가치를 함께 적는다(target ≠ grade 이면 폴백 · 보고서 hint:solve · levelmix) */
 export async function insertGameQuestion(input: {
   gameId: string;
   questionIndex: number;
@@ -22,20 +26,34 @@ export async function insertGameQuestion(input: {
   epoch: number;
   startedAt: number;
   selectionStage: number;
+  targetGrade?: number | null;
+  grade?: number | null;
+  worth?: number | null;
 }): Promise<void> {
+  const base = [input.gameId, input.questionIndex, input.questionId, input.epoch, input.startedAt, input.selectionStage];
+  if (gradeCols) {
+    try {
+      await query(
+        `INSERT INTO game_questions
+           (game_id, question_index, question_id, epoch, started_at, selection_stage, target_grade, grade, worth)
+         VALUES ($1, $2, $3, $4, to_timestamp($5 / 1000.0), $6, $7, $8, $9)
+         ON CONFLICT (game_id, question_index) DO NOTHING`,
+        [...base, input.targetGrade ?? null, input.grade ?? null, input.worth ?? null],
+      );
+      return;
+    } catch (err) {
+      // 42703 = undefined_column — 0028 전 DB
+      if ((err as { code?: string }).code !== '42703') throw err;
+      gradeCols = false;
+      console.warn('[game] ★ game_questions 에 target_grade · grade · worth 열이 없다(0028 미적용) — 옛 꼴로 기록한다');
+    }
+  }
   await query(
     `INSERT INTO game_questions
        (game_id, question_index, question_id, epoch, started_at, selection_stage)
      VALUES ($1, $2, $3, $4, to_timestamp($5 / 1000.0), $6)
      ON CONFLICT (game_id, question_index) DO NOTHING`,
-    [
-      input.gameId,
-      input.questionIndex,
-      input.questionId,
-      input.epoch,
-      input.startedAt,
-      input.selectionStage,
-    ],
+    base,
   );
 }
 

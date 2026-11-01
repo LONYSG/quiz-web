@@ -164,7 +164,7 @@ ${normalizeAnswer(q.explanation ?? '')}`;
     `[game] ${room.id} 문제 ${current.index}/${game.totalQuestions} epoch=${current.epoch} ` +
       `#${q.id} (선정 ${picked.stage}단계 / 미경험 ${picked.unexperiencedCount}명 / ` +
       `경험자 ${current.experiencedAccountIds.size}명)` +
-      // ★ R069 — "등급 g→실제 s · 알가치 w · 폴백" (game_questions 에 열이 없어 로그로 남긴다 — 마이그레이션 없음)
+      // ★ R069 — "등급 g→실제 s · 알가치 w · 폴백" (★ R071 — game_questions.target_grade · grade · worth 에도 남긴다 · 0028)
       (picked.targetGrade !== null
         ? ` 등급 ${picked.targetGrade}→${q.grade} · 알가치 ${q.worth ?? '-'}${picked.gradeFallback ? ' · 등급 폴백' : ''}${picked.worthFallback ? ' · 알가치 폴백' : ''}`
         : ''),
@@ -181,6 +181,10 @@ ${normalizeAnswer(q.explanation ?? '')}`;
         epoch: current.epoch,
         startedAt: current.startedAt,
         selectionStage: current.selectionStage,
+        // ★★ R071 (0028 · D-308) — 계획 등급(없으면 null) · 그때의 등급 · 알가치
+        targetGrade: picked.targetGrade,
+        grade: q.grade,
+        worth: q.worth,
       }),
     );
   }
