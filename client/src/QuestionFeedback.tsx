@@ -13,6 +13,9 @@
 //   (가) 공개 화면: "방금 문제 어땠어요? (+1P)" → 누르면 그 자리가 "+1P 고마워요"(포인트는 서버가 판단 — 공개 중 첫 평가 한 번) · 사유 칩은 공개 화면에서 뺐다.
 //   (나)(다) 결과 · 로비: 같은 3단계(0P) · 머리에 "공개 시간에 누르면 +1P · 자세한 의견은 제보에 적어 주세요(채택되면 +5P)" + 제보 링크 · 👎 사유 · 의견 그대로.
 //   결과 화면 목록은 늘 접힌 채로 시작(찬종 #68) · 펼침은 기억(localStorage) · 접혀 있어도 평가 수가 보인다.
+// ★★★ R071 (D-313 · 찬종 2026-11-01 "권장대로") — (가) 공개 화면: 평가 요청 문항(판마다 무작위 1/3 · resolution.rateAsk)에서만 줄이 보인다 ·
+//   👎 를 누르면 그 줄 **아래**에 사유 칩 한 줄(FEEDBACK_REASONS 7 · 가로 스크롤 · 모바일 터치 44px)이 펼쳐지고 물음이 "사유 하나 고르면 +1P" →
+//   칩을 누르면 "+1P 고마워요"(서버가 사유 없는 👎 에는 0P · needReason). 👍 😐 는 그대로 바로 1P. (나)(다) 결과 · 로비는 그대로(0P).
 // =============================================================================
 
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -96,6 +99,8 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
   // ★ R068 — 이번에 받은 포인트(공개 중 첫 평가 1P) · 응답이 왔나
   const [granted, setGranted] = useState(0);
   const [answered, setAnswered] = useState(false);
+  // ★ R071 — 서버가 "사유 하나 고르면 +1P" 라고 답했나(공개 중 사유 없는 👎)
+  const [needReason, setNeedReason] = useState(false);
   const saved = useRef({ vote: init?.vote ?? null, reasons: init?.reasons ?? [], comment: init?.comment ?? '' });
   const save = useCallback(
     (next: { vote: Vote; reasons: string[]; comment: string }) => {
@@ -107,6 +112,7 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
         .then((r) => {
           saved.current = next;
           setAnswered(true);
+          setNeedReason(r.needReason);
           if (r.granted > 0) {
             setGranted((g) => g + r.granted);
             // ★ 잔액 다시 읽기(포인트샵 빨간 점 · 프로필) — 지급 토스트와 같은 길
@@ -136,25 +142,46 @@ function useFeedback(gameId: string, questionId: string, init?: { vote: Vote; re
     if (vote !== -1 || comment.trim() === (saved.current.comment ?? '').trim()) return;
     save({ vote: -1, reasons, comment });
   };
-  return { vote, reasons, comment, setComment, error, granted, answered, onVote, onToggle, commitComment };
+  return { vote, reasons, comment, setComment, error, granted, answered, needReason, onVote, onToggle, commitComment };
 }
 
 // ── (가) 정답 공개 화면 ─────────────────────────────────────────────────────────
-/** ★ R068 — "방금 문제 어땠어요? (+1P)" + 3단계 → 누르면 "+1P 고마워요"(바꾸기는 공개 시간 안에서만 · 포인트는 한 번) */
+/** ★ R068 — "방금 문제 어땠어요? (+1P)" + 3단계 → 누르면 "+1P 고마워요"(바꾸기는 공개 시간 안에서만 · 포인트는 한 번)
+ *  ★ R071 (D-313) — 👎 면 아래 줄에 사유 칩(한 줄 · 가로 스크롤) · 물음 "사유 하나 고르면 +1P" → 칩을 누르면 "+1P 고마워요" */
 export function RevealFeedback({ gameId, questionId }: { gameId: string; questionId: string }) {
   const f = useFeedback(gameId, questionId);
   const picked = f.vote !== null;
   // ★ R069 (끝 점검 — main-layout C-4) — 모바일은 물음을 따로 한 줄에 두면 긴 문제의 공개 카드가 넘쳤다 → 한 줄 "+1P" + 버튼 셋
   const mobile = useUiMode() === 'mobile';
+  // ★ R071 — 👎 를 눌렀고 아직 포인트를 못 받았으면 사유 칩을 펼친다(사유를 고른 뒤에도 그 자리에 둔다 — 줄이 출렁이지 않게 · 더 고를 수 있게)
+  const down = f.vote === -1 && f.granted === 0 && (f.needReason || f.reasons.length > 0 || !f.answered);
+  const ask = !picked
+    ? mobile
+      ? `+${RATE_POINTS}P`
+      : `방금 문제 어땠어요? (+${RATE_POINTS}P)`
+    : f.granted > 0
+      ? `+${f.granted}P 고마워요`
+      : f.vote === -1 && f.reasons.length === 0
+        ? `사유 하나 고르면 +${RATE_POINTS}P`
+        : f.answered
+          ? '고마워요'
+          : '…';
   return (
-    <span className={picked ? 'reveal-fb picked' : 'reveal-fb'} data-fb-question={questionId} data-rate-granted={f.granted || undefined}>
-      <span className="reveal-fb-ask" data-rate-ask aria-live="polite" title={`방금 문제 어땠어요? (+${RATE_POINTS}P)`}>
-        {!picked ? (mobile ? `+${RATE_POINTS}P` : `방금 문제 어땠어요? (+${RATE_POINTS}P)`) : f.granted > 0 ? `+${f.granted}P 고마워요` : f.answered ? '고마워요' : '…'}
+    <>
+      <span className={`reveal-fb${picked ? ' picked' : ''}${down ? ' need-reason' : ''}`} data-fb-question={questionId} data-rate-granted={f.granted || undefined} data-need-reason={down || undefined}>
+        <span className="reveal-fb-ask" data-rate-ask aria-live="polite" title={`방금 문제 어땠어요? (+${RATE_POINTS}P)`}>
+          {ask}
+        </span>
+        {/* ★ R069 — 모바일은 그림만(이름은 aria · title) — 360 에서 "N초 후" 와 한 줄 */}
+        <VoteButtons vote={f.vote} onVote={f.onVote} compact={picked || mobile} />
+        {f.error && <span className="fb-err">저장 실패</span>}
       </span>
-      {/* ★ R069 — 모바일은 그림만(이름은 aria · title) — 360 에서 "N초 후" 와 한 줄 */}
-      <VoteButtons vote={f.vote} onVote={f.onVote} compact={picked || mobile} />
-      {f.error && <span className="fb-err">저장 실패</span>}
-    </span>
+      {down && (
+        <div className="reveal-fb-chips" data-reveal-chips>
+          <ReasonChips reasons={f.reasons} onToggle={f.onToggle} />
+        </div>
+      )}
+    </>
   );
 }
 

@@ -159,6 +159,11 @@ export interface ActiveGame {
   gradeFallbackCount: number;
   worthFallbackCount: number;
   /**
+   * ★★ R071 (D-313) — 평가 요청 문항(순번 1부터 · 판 시작 때 무작위 ceil(n/3) 개 · pickRateAsk).
+   *   공개 화면은 이 문항에서만 평가 줄 · 이 문항에서만 1P(isRevealNow) · 재합류 스냅샷 resolution.rateAsk.
+   */
+  rateAsk: Set<number>;
+  /**
    * ★★ 문제별 기록 (Phase 4 / R016). 결과 화면이 쓴다.
    *
    * ★ 왜 메모리에 쌓는가 — 결과 화면은 게임이 끝나는 **그 순간** 만들어진다.
@@ -280,6 +285,8 @@ export interface Resolution {
   explanation: string | null;
   /** 다음 문제 시작 시각. ★ 마지막 문제면 null 이고 그 즉시 결과로 간다 */
   nextAt: number | null;
+  /** ★★ R071 (D-313) — 이 문항이 평가 요청 문항인가(game.rateAsk) — 아니면 공개 화면에 평가 줄이 없다 */
+  rateAsk: boolean;
 }
 
 /**

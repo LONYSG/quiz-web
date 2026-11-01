@@ -366,7 +366,8 @@ export default function Question({
 
           {/* ★★★ R056 — 문제 평가(👍/👎 · 👎 면 사유 칩)는 진행 안내와 **같은 줄** — 카드가 세로로 늘지 않는다 */}
           <div className="reveal-foot">
-            {gameId && resolution.questionId && <RevealFeedback gameId={gameId} questionId={resolution.questionId} />}
+            {/* ★★ R071 (D-313) — 평가 요청 문항(판마다 무작위 1/3)에서만 평가 줄 · 👎 면 아래에 사유 칩 한 줄(.reveal-fb-chips — 줄을 바꿔 펼친다) */}
+            {gameId && resolution.questionId && resolution.rateAsk !== false && <RevealFeedback gameId={gameId} questionId={resolution.questionId} />}
             {/* ★ 진행 안내 — 작고 흐리게. 자리를 잡아 두어 3초 뒤 나타나도 화면이 출렁이지 않는다 */}
             <p className="reveal-next" aria-live="polite">
               {showNext && nextRemainMs !== null

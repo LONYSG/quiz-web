@@ -45,6 +45,33 @@ export const RATE_CHOICES = [
 ] as const;
 export type RateVote = (typeof RATE_CHOICES)[number]['vote'];
 
+/**
+ * ★★ R071 (D-313 · 찬종 2026-11-01 "권장대로") — 평가 요청은 **판마다 무작위 1/3 문항**.
+ *   판 시작 때 서버가 문항 수 n 의 ceil(n/3) 개 순번(1부터)을 고른다(방 전원 같은 문항 · 2~3 문항이면 1개).
+ *   공개 화면은 이 문항에서만 평가 줄을 보이고 · 이 문항에서만 1P(결과 화면 · 로비 지난 판은 모든 문항 그대로 0P).
+ */
+export function rateAskCount(n: number): number {
+  return n > 0 ? Math.ceil(n / 3) : 0;
+}
+
+/** ★ R071 — 1..n 중 rateAskCount(n) 개를 무작위로(오름차순) · rand 는 테스트가 바꾼다 */
+export function pickRateAsk(n: number, rand: () => number = Math.random): number[] {
+  const all = Array.from({ length: Math.max(0, Math.floor(n)) }, (_, i) => i + 1);
+  for (let i = all.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rand() * (i + 1));
+    [all[i], all[j]] = [all[j]!, all[i]!];
+  }
+  return all.slice(0, rateAskCount(all.length)).sort((a, b) => a - b);
+}
+
+/**
+ * ★★ R071 (D-313) — 공개 중 👎 는 **사유 하나를 골라야 1P**(👍 😐 는 누르면 바로 1P).
+ *   사유 없는 👎 는 저장만 · 응답 needReason: true → 같은 공개 시간 안에 사유를 붙여 다시 보내면 그때 1P.
+ */
+export function rateNeedsReason(vote: 1 | 0 | -1 | null, reasons: readonly string[]): boolean {
+  return vote === -1 && reasons.length === 0;
+}
+
 /** 속도 제한 — 한 계정 10초에 20번 */
 export const FEEDBACK_RATE = { windowMs: 10_000, max: 20 } as const;
 

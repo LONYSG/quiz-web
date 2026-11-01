@@ -15,14 +15,20 @@
 //   같은 문항 두 번 없음(rate_grant_id) · 하루 상한 없음 · 공개 시간 밖은 저장만 0P · 봇 · 검사 계정 0P(config.tuning.rateSkipLogin).
 //   1P 를 받은 표는 취소(행 삭제)하지 않는다 — 지우면 rate_grant_id 를 잃어 다시 받을 수 있다.
 //   계정마다 요청을 한 줄로 세운다(빠른 연타 두 요청이 둘 다 1P 를 주지 않게 — 서버는 하나다).
+// ★★ R071 (D-313 · 찬종 2026-11-01 "권장대로") — ① 공개 중 👎 는 **사유 하나를 골라야 1P**: 사유 없는 👎 는 저장만 0P · 응답 needReason: true →
+//   같은 공개 시간 안에 사유를 붙여 다시 보내면(upsert) 그때 1P(rate_grant_id 가 없을 때만) · 👍 😐 는 그대로 즉시 1P.
+//   ② **평가 요청 문항(판마다 무작위 1/3 · game.rateAsk)에서만** 공개 중 1P — 아닌 문항은 공개 중이어도 0P(isRevealNow).
+//   ③ asked(0027) — 표가 들어온 문항이 그 판의 요청 문항이었나(wasRateAsked · 결과 화면 · 로비 표에도 · upsert 는 OR).
+//   응답: { ok, feedback, granted, needReason }.
 // =============================================================================
 
 import { Router } from 'express';
-import { FEEDBACK_RATE, RATE_POINTS, parseFeedbackInput, type FeedbackInput } from '@quiz/shared';
+import { FEEDBACK_RATE, RATE_POINTS, parseFeedbackInput, rateNeedsReason, type FeedbackInput } from '@quiz/shared';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { config } from '../config.js';
 import { getPool, query } from '../db/pool.js';
 import { getRoomOfAccount } from '../rooms/registry.js';
+import { wasRateAsked } from '../game/rateAsk.js';
 
 export const feedbackRouter = Router();
 
@@ -61,14 +67,20 @@ function inLane<T>(accountId: string, job: () => Promise<T>): Promise<T> {
   return next;
 }
 
-/** ★ R068 — 지금 이 계정의 방이 이 판 · 이 문항의 정답 공개 중인가 */
+/** ★ R068 — 지금 이 계정의 방이 이 판 · 이 문항의 정답 공개 중인가 · ★ R071 — 그리고 그 문항이 평가 요청 문항(rateAsk)인가 */
 export function isRevealNow(accountId: string, gameId: string, questionId: string): boolean {
   const room = getRoomOfAccount(accountId);
-  return !!room && room.state === 'QUESTION_RESOLVED' && room.game?.gameId === gameId && room.currentQuestion?.questionId === questionId;
+  return (
+    !!room &&
+    room.state === 'QUESTION_RESOLVED' &&
+    room.game?.gameId === gameId &&
+    room.currentQuestion?.questionId === questionId &&
+    room.game.rateAsk.has(room.currentQuestion.index)
+  );
 }
 
-/** ★ R068 — 저장 + (공개 중이면) 1P — 한 트랜잭션 */
-async function saveFeedback(accountId: string, v: FeedbackInput, atReveal: boolean): Promise<{ feedback: unknown; granted: number }> {
+/** ★ R068 — 저장 + (공개 중이면) 1P — 한 트랜잭션 · ★ R071 — 공개 중 사유 없는 👎 는 저장만(needReason) */
+async function saveFeedback(accountId: string, v: FeedbackInput, atReveal: boolean, asked: boolean): Promise<{ feedback: unknown; granted: number; needReason: boolean }> {
   const { questionId, gameId, vote, reasons, comment } = v;
   const c = await getPool().connect();
   try {
@@ -78,21 +90,24 @@ async function saveFeedback(accountId: string, v: FeedbackInput, atReveal: boole
       const del = await c.query(`DELETE FROM question_feedback WHERE question_id = $1 AND account_id = $2 AND rate_grant_id IS NULL`, [questionId, accountId]);
       const kept = del.rowCount ? null : (await c.query<Row & { at_reveal: boolean; rate_grant_id: string | null }>(`SELECT vote, reasons, comment, at_reveal, rate_grant_id FROM question_feedback WHERE question_id = $1 AND account_id = $2`, [questionId, accountId])).rows[0] ?? null;
       await c.query('COMMIT');
-      return { feedback: kept ? { vote: kept.vote, reasons: kept.reasons, comment: kept.comment, atReveal: kept.at_reveal, rated: kept.rate_grant_id !== null } : null, granted: 0 };
+      return { feedback: kept ? { vote: kept.vote, reasons: kept.reasons, comment: kept.comment, atReveal: kept.at_reveal, rated: kept.rate_grant_id !== null } : null, granted: 0, needReason: false };
     }
     const r = await c.query<Row & { id: string; at_reveal: boolean; rate_grant_id: string | null }>(
-      `INSERT INTO question_feedback (question_id, account_id, game_id, vote, reasons, comment, at_reveal)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)
+      `INSERT INTO question_feedback (question_id, account_id, game_id, vote, reasons, comment, at_reveal, asked)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
        ON CONFLICT (question_id, account_id) DO UPDATE
          SET game_id = EXCLUDED.game_id, vote = EXCLUDED.vote, reasons = EXCLUDED.reasons,
-             comment = EXCLUDED.comment, at_reveal = question_feedback.at_reveal OR EXCLUDED.at_reveal, updated_at = now()
+             comment = EXCLUDED.comment, at_reveal = question_feedback.at_reveal OR EXCLUDED.at_reveal,
+             asked = question_feedback.asked OR EXCLUDED.asked, updated_at = now()
        RETURNING id::text, vote, reasons, comment, at_reveal, rate_grant_id::text`,
-      [questionId, accountId, gameId, vote, reasons, comment, atReveal],
+      [questionId, accountId, gameId, vote, reasons, comment, atReveal, asked],
     );
     const row = r.rows[0]!;
     let granted = 0;
     let rated = row.rate_grant_id !== null;
-    if (atReveal && !rated) {
+    // ★★ R071 (D-313) — 공개 중 👎 인데 사유가 없으면 저장만 · 화면이 사유 칩을 펼친다(같은 공개 시간 안에 칩을 누르면 다시 와서 1P)
+    const needReason = atReveal && !rated && rateNeedsReason(vote, reasons);
+    if (atReveal && !rated && !needReason) {
       const g = await c.query<{ id: string }>(
         `INSERT INTO point_grants (account_id, amount, reason, ref_type, ref_id, seen_at)
          SELECT a.id, $2, 'rate', 'question_feedback', $3, now() FROM accounts a WHERE a.id = $1 AND a.login_id !~ $4
@@ -106,7 +121,7 @@ async function saveFeedback(accountId: string, v: FeedbackInput, atReveal: boole
       }
     }
     await c.query('COMMIT');
-    return { feedback: { vote: row.vote, reasons: row.reasons, comment: row.comment, atReveal: row.at_reveal, rated }, granted };
+    return { feedback: { vote: row.vote, reasons: row.reasons, comment: row.comment, atReveal: row.at_reveal, rated }, granted, needReason };
   } catch (err) {
     await c.query('ROLLBACK').catch(() => undefined);
     throw err;
@@ -145,9 +160,11 @@ feedbackRouter.post('/question', async (req, res) => {
     return;
   }
   const atReveal = isRevealNow(session.accountId, gameId, questionId);
-  let out: { feedback: unknown; granted: number };
+  // ★ R071 — 요청 문항이었나(공개 중이면 늘 true — isRevealNow 가 rateAsk 를 본다)
+  const asked = atReveal || wasRateAsked(gameId, questionId);
+  let out: { feedback: unknown; granted: number; needReason: boolean };
   try {
-    out = await inLane(session.accountId, () => saveFeedback(session.accountId, parsed.value, atReveal));
+    out = await inLane(session.accountId, () => saveFeedback(session.accountId, parsed.value, atReveal, asked));
   } catch (err) {
     console.error('[feedback] 저장 실패', err);
     res.status(500).json({ ok: false, message: '저장하지 못했어요.' });

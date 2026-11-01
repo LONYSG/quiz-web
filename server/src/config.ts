@@ -120,6 +120,14 @@ export const config = {
     nearMissSkipLogin: process.env.NEAR_MISS_SKIP_LOGIN || NEAR_MISS_SKIP_LOGIN,
     /** ★ R068 — 정답 공개 평가 1P 를 주지 않을 login_id 정규식(기본 = 봇 · 검사 계정 — 근접 오답과 같은 값). **검사용** 덮어쓰기 — 봇 rate 가 한 봇에만 주게 둔다 */
     rateSkipLogin: process.env.RATE_SKIP_LOGIN || NEAR_MISS_SKIP_LOGIN,
+    /**
+     * ★ R071 (D-313) — 평가 요청 문항을 무작위 대신 이 순번으로(쉼표 · 예 "1,2,4"). **검사용** — 봇 rate 가 어느 문항이 요청인지 알고 돈다.
+     *   ★ 실제 서버에 두지 않는다(없으면 판마다 무작위 ceil(n/3) 개).
+     */
+    rateAskForce: (() => {
+      const v = (process.env.RATE_ASK_FORCE ?? '').split(',').map((x) => Number(x.trim())).filter((x) => Number.isInteger(x) && x > 0);
+      return v.length > 0 ? v : null;
+    })(),
     /** ★ R046 — 끊긴 사람이 빠지기까지 (기본 60초). 테스트에서 줄인다 */
     disconnectRemoveMs: positiveInt('DISCONNECT_REMOVE_MS', RULES.DISCONNECT_REMOVE_MS),
     /** ★ 방장 이전 유예 (Q-29 · 기본 30초). 테스트에서 줄인다 */

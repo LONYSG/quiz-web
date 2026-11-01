@@ -8365,6 +8365,32 @@ button.link-btn.fb-report-link {
 :where(.ui-mobile) .reveal-fb button.fb-vote {
   padding: 2px 8px;
 }
+/* ★★ R071 (D-313) — 공개 중 👎 → 그 줄 **아래** 사유 칩 한 줄(가로 스크롤 · 높이 한 줄) · 물음은 "사유 하나 고르면 +1P"(강조색) */
+.reveal-foot:has(.reveal-fb-chips) {
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+.reveal-fb-chips {
+  order: 3;
+  flex: 1 0 100%;
+  display: flex;
+  min-width: 0;
+}
+.reveal-fb.need-reason .reveal-fb-ask {
+  color: var(--bad);
+}
+.reveal-fb-chips button.fb-chip {
+  height: 32px;
+}
+/* 모바일 — 손가락 칸 44px(칩 사이 간격도 넓게) */
+:where(.ui-mobile) .reveal-fb-chips button.fb-chip {
+  height: 44px;
+  padding: 2px 12px;
+  font-size: 0.8rem;
+}
+:where(.ui-mobile) .reveal-fb-chips .fb-chips {
+  gap: 6px;
+}
 
 /* ★★ R068 — 이 사진 몇 년도? (사진 칸은 사진 맞히기와 같은 4:3 contain · 입력은 4자리) */
 .photoyear-ask {

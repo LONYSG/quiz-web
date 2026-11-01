@@ -137,7 +137,8 @@ const SCENARIO_ENV = {
   // ★ R058 — 근접 오답: bot_nx 만 거른다(기본 봇 · 검사 계정 규칙 대신 — 나머지 봇의 행을 본다)
   near: { RESOLVED_WAIT_MS: '200', NEAR_MISS_SKIP_LOGIN: '^(bot_nx|uic|r10_)' },
   // ★ R068 — 정답 공개 평가 1P: 공개 2.5초(그 사이 표) · bot_rx 만 봇 규칙(0P)
-  rate: { RESOLVED_WAIT_MS: '2500', RATE_SKIP_LOGIN: '^(bot_rx|uic|r10_)' },
+  // ★ R071 — 평가 요청 문항을 1 · 2 · 4 로 고정(무작위 1/3 대신 — 3 은 요청 밖 문항)
+  rate: { RESOLVED_WAIT_MS: '2500', RATE_SKIP_LOGIN: '^(bot_rx|uic|r10_)', RATE_ASK_FORCE: '1,2,4' },
   // ★ R069 — 등급 비율 실측(20문항 판 다섯 · 방장 넘기기)
   levelmix: { RESOLVED_WAIT_MS: '200' },
 };
@@ -7754,13 +7755,16 @@ async function scenarioEmojiInline() {
 // -----------------------------------------------------------------------------
 // ★★★ R068 — 정답 공개 평가 3단계 · 1P (docs/19 §7) — `npm run bot -- rate`
 //   자기 서버(SCENARIO_ENV): 정답 공개 2.5초 · RATE_SKIP_LOGIN = bot_rx 만(봇 규칙 — 0P) · rh · rg 는 1P 를 받는 계정으로 친다
-//   [1] 공개 중 표 → 1P(at_reveal · rate_grant_id) · 😐(0) 도 1P · 거른 봇 0P · 바꿔도 더 안 줌 · 1초 안 연타 두 번 → 1P 한 번
+//   ★★ R071 (D-313) — 4문항 · 평가 요청 문항 = 1 · 2 · 4(RATE_ASK_FORCE — 실제는 판마다 무작위 ceil(n/3)) · 3 은 요청 밖
+//   [1] 요청 문항 공개 중 표 → 1P(at_reveal · rate_grant_id · asked) · 😐(0) 도 1P · 거른 봇 0P · 바꿔도 더 안 줌 · 1초 안 연타 두 번 → 1P 한 번 · 스냅샷 rateAsk true
 //   [2] 공개 뒤(다음 문제) 같은 문항 → 저장만 0P · 1P 받은 표는 취소해도 안 지워짐
 //   [3] 문제 중(공개 전) 표 → 0P → 그 문항 공개 때 다시 → 1P(같은 문항 한 번)
-//   [4] 결과 화면(판 끝) 표 → 0P · 합계 rh 2 · rg 2 · rx 0 · 하루 상한 없음
+//   [4] ★ R071 — 요청 밖 문항(3) 공개 중 → rateAsk false · 0P · asked false
+//   [5] ★ R071 — 공개 중 사유 없는 👎 → 0P · needReason → 같은 공개 안에 사유 붙여 다시 → 1P · 처음부터 사유 붙인 👎 → 1P
+//   [6] 결과 화면(판 끝) 표 → 0P(요청 문항이면 asked true) · 합계 rh 3 · rg 3 · rx 0 · 하루 상한 없음
 // -----------------------------------------------------------------------------
 async function scenarioRate() {
-  log('시나리오 rate — ★★★ 정답 공개 평가 3단계 · 1P (R068)');
+  log('시나리오 rate — ★★★ 정답 공개 평가 3단계 · 1P (R068) · ★ R071 👎 사유 필수 · 요청 1/3');
   const rh = new Bot('rh');
   const rg = new Bot('rg');
   const rx = new Bot('rx');
@@ -7773,19 +7777,19 @@ async function scenarioRate() {
     await c.query(`DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]);
   });
   for (const b of all) await b.connect();
-  rh.createRoom('R068 평가');
+  rh.createRoom('R071 평가');
   await rh.waitFor(() => rh.snapshot !== null, 6000, '방');
   for (const b of [rg, rx]) {
     b.join(rh.snapshot.room.id);
     await b.waitFor(() => b.snapshot?.room.id === rh.snapshot.room.id, 6000, '입장');
   }
-  rh.socket.emit('lobby.updateSettings', { questionCount: 3, minigames: false, minigameOnly: false });
+  rh.socket.emit('lobby.updateSettings', { questionCount: 4, minigames: false, minigameOnly: false });
   await sleep(400);
   rh.socket.emit('game.start', {});
   const gameIdOf = () => String(rh.snapshot?.game?.gameId ?? rh.snapshot?.result?.gameId ?? '');
-  const post = (bot, questionId, vote) => postJson('/api/feedback/question', { gameId: gameIdOf(), questionId, vote }, bot.cookie);
+  const post = (bot, questionId, vote, reasons) => postJson('/api/feedback/question', { gameId: gameIdOf(), questionId, vote, ...(reasons ? { reasons } : {}) }, bot.cookie);
   const grants = async (bot) => (await withDb((c) => c.query(`SELECT coalesce(sum(g.amount), 0)::int n FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1 AND g.reason = 'rate'`, [bot.loginId]))).rows[0].n;
-  const row = async (bot, q) => (await withDb((c) => c.query(`SELECT f.vote, f.at_reveal, f.rate_grant_id::text AS gid FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [bot.loginId, q]))).rows[0] ?? null;
+  const row = async (bot, q) => (await withDb((c) => c.query(`SELECT f.vote, f.at_reveal, f.asked, f.reasons, f.rate_grant_id::text AS gid FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [bot.loginId, q]))).rows[0] ?? null;
   const solve = async (i) => {
     await rh.waitFor(() => rh.snapshot?.room.state === 'QUESTION_ACTIVE' && rh.snapshot.question?.index === i, 30000, `문제 ${i}`);
     const q = String(rh.snapshot.question.questionId);
@@ -7797,19 +7801,21 @@ async function scenarioRate() {
     await rh.waitFor(() => rh.snapshot?.room.state === 'QUESTION_RESOLVED' && rh.snapshot.question?.index === i, 15000, `공개 ${i}`);
   };
 
-  log('\n[1] ★★★ 공개 중 표 → 1P');
+  log('\n[1] ★★★ 요청 문항 공개 중 표 → 1P');
   const q1 = await solve(1);
   await answer(1);
+  expectTrue('★★ R071 — 공개 스냅샷 rateAsk true(요청 문항 1)', rh.snapshot?.resolution?.rateAsk === true && rg.snapshot?.resolution?.rateAsk === true, JSON.stringify(rh.snapshot?.resolution?.rateAsk));
   let r = await post(rh, q1, 1);
-  expectTrue('★★★ 공개 중 👍 → granted 1 · rated', r.status === 200 && r.json?.granted === 1 && r.json?.feedback?.rated === true && r.json?.feedback?.atReveal === true, JSON.stringify(r.json));
+  expectTrue('★★★ 공개 중 👍 → granted 1 · rated', r.status === 200 && r.json?.granted === 1 && r.json?.feedback?.rated === true && r.json?.feedback?.atReveal === true && r.json?.needReason === false, JSON.stringify(r.json));
   r = await post(rg, q1, 0);
   expectTrue('★★ 공개 중 😐(0) → 1P', r.json?.granted === 1 && r.json?.feedback?.vote === 0, JSON.stringify(r.json));
-  r = await post(rx, q1, -1);
+  r = await post(rx, q1, -1, ['unclear']);
   expectTrue('★★ 봇 규칙(거른 계정 bot_rx) → 저장만 0P', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.vote === -1, JSON.stringify(r.json));
   r = await post(rh, q1, -1);
-  expectTrue('★★★ 공개 중 바꾸기 → 저장(👎) · 포인트는 더 없음', r.json?.granted === 0 && r.json?.feedback?.vote === -1 && r.json?.feedback?.rated === true, JSON.stringify(r.json));
-  const [d1, d2] = await Promise.all([post(rg, q1, 1), post(rg, q1, -1)]);
+  expectTrue('★★★ 공개 중 바꾸기(이미 받음 · 사유 없는 👎) → 저장 · 포인트 더 없음 · needReason 없음', r.json?.granted === 0 && r.json?.feedback?.vote === -1 && r.json?.feedback?.rated === true && r.json?.needReason === false, JSON.stringify(r.json));
+  const [d1, d2] = await Promise.all([post(rg, q1, 1), post(rg, q1, -1, ['boring'])]);
   expectTrue('★★ 1초 안 연타 두 번(이미 받음) → 둘 다 0P', d1.json?.granted === 0 && d2.json?.granted === 0, JSON.stringify([d1.json?.granted, d2.json?.granted]));
+  expectTrue('★★ R071 — 요청 문항 표 asked true', (await row(rh, q1))?.asked === true, JSON.stringify(await row(rh, q1)));
 
   log('\n[2] ★★★ 공개 뒤(다음 문제) 같은 문항 → 저장만 · 받은 표는 취소해도 남음');
   const q2 = await solve(2);
@@ -7828,17 +7834,38 @@ async function scenarioRate() {
   const [e1, e2] = await Promise.all([post(rg, q2, 1), post(rg, q2, 0)]);
   expectTrue('★★★ 아직 안 받은 문항에 동시에 두 번(연타) → 1P 한 번만', (e1.json?.granted ?? 0) + (e2.json?.granted ?? 0) === 1, JSON.stringify([e1.json?.granted, e2.json?.granted]));
 
-  log('\n[4] ★★ 결과 화면 표 → 0P · 합계');
+  log('\n[4] ★★★ R071 — 요청 밖 문항(3) → 공개 중이어도 0P');
   const q3 = await solve(3);
   await answer(3);
+  expectTrue('★★★ 공개 스냅샷 rateAsk false(요청 밖 3)', rh.snapshot?.resolution?.rateAsk === false && rg.snapshot?.resolution?.rateAsk === false, JSON.stringify(rh.snapshot?.resolution?.rateAsk));
+  r = await post(rh, q3, 1);
+  expectTrue('★★★ 요청 밖 문항 공개 중 👍 → 0P · at_reveal false', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.atReveal === false, JSON.stringify(r.json));
+  expectTrue('★★ 요청 밖 문항 표 asked false', (await row(rh, q3))?.asked === false, JSON.stringify(await row(rh, q3)));
+
+  log('\n[5] ★★★ R071 — 공개 중 👎 는 사유 하나 골라야 1P');
+  const q4 = await solve(4);
+  await answer(4);
+  r = await post(rh, q4, -1);
+  expectTrue('★★★ 사유 없는 👎 → 0P · needReason true · 저장은 됨(at_reveal)', r.status === 200 && r.json?.granted === 0 && r.json?.needReason === true && r.json?.feedback?.vote === -1 && r.json?.feedback?.atReveal === true, JSON.stringify(r.json));
+  r = await post(rh, q4, -1, ['unclear']);
+  expectTrue('★★★ 같은 공개 안에 사유 붙여 다시 → 1P · needReason false', r.json?.granted === 1 && r.json?.needReason === false && r.json?.feedback?.rated === true, JSON.stringify(r.json));
+  expectTrue('★★ 저장된 사유 = unclear', JSON.stringify((await row(rh, q4))?.reasons) === '["unclear"]', JSON.stringify(await row(rh, q4)));
+  r = await post(rg, q4, -1, ['too_easy', 'boring']);
+  expectTrue('★★ 처음부터 사유 붙인 👎 → 바로 1P', r.json?.granted === 1 && r.json?.needReason === false, JSON.stringify(r.json));
+  r = await post(rx, q4, -1);
+  expectTrue('★ 거른 봇 사유 없는 👎 → 0P(needReason 은 와도 포인트 없음)', r.json?.granted === 0, JSON.stringify(r.json));
+
+  log('\n[6] ★★ 결과 화면 표 → 0P · 합계');
   await rh.waitFor(() => rh.snapshot?.room.state === 'GAME_RESULT', 30000, '결과');
   r = await post(rg, q3, 1);
   expectTrue('★★★ 결과 화면(판 끝) 👍 → 저장만 0P', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.atReveal === false, JSON.stringify(r.json));
-  expect('★★★ 합계 — rh 2P(q1 · q2)', await grants(rh), 2);
-  expect('★★★ 합계 — rg 2P(q1 · q2 연타 한 번)', await grants(rg), 2);
+  r = await post(rx, q2, 1);
+  expectTrue('★★ 결과 화면 표라도 요청 문항(2)이면 asked true · 0P', r.json?.granted === 0 && (await row(rx, q2))?.asked === true, JSON.stringify(await row(rx, q2)));
+  expect('★★★ 합계 — rh 3P(q1 · q2 · q4 사유 뒤)', await grants(rh), 3);
+  expect('★★★ 합계 — rg 3P(q1 · q2 연타 한 번 · q4)', await grants(rg), 3);
   expect('★★ 합계 — 거른 봇 rx 0P', await grants(rx), 0);
   const pts = await apiGet('/api/me/points', rh.cookie);
-  expectTrue('★ 잔액 길(points) 에 지급이 들어간다(grants ≥ 2)', pts.status === 200 && Number(pts.json?.grants ?? pts.json?.points?.grants ?? 0) >= 2, JSON.stringify(pts.json)?.slice(0, 160));
+  expectTrue('★ 잔액 길(points) 에 지급이 들어간다(grants ≥ 3)', pts.status === 200 && Number(pts.json?.grants ?? pts.json?.points?.grants ?? 0) >= 3, JSON.stringify(pts.json)?.slice(0, 160));
   for (const b of all) {
     b.leave();
     await sleep(40);

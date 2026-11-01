@@ -239,16 +239,17 @@ export async function postQuestionFeedback(body: {
   vote: 1 | 0 | -1 | null;
   reasons?: string[];
   comment?: string | null;
-}): Promise<{ feedback: QuestionFeedbackValue | null; granted: number }> {
+}): Promise<{ feedback: QuestionFeedbackValue | null; granted: number; needReason: boolean }> {
   const res = await fetch('/api/feedback/question', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(body),
     credentials: 'same-origin',
   });
-  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; feedback?: QuestionFeedbackValue | null; granted?: number } & ApiError;
+  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; feedback?: QuestionFeedbackValue | null; granted?: number; needReason?: boolean } & ApiError;
   if (!res.ok || !json.ok) throw json;
-  return { feedback: json.feedback ?? null, granted: Number(json.granted ?? 0) };
+  // ★ R071 (D-313) — needReason: 공개 중 👎 인데 사유가 없어 아직 0P(사유 하나 고르면 +1P)
+  return { feedback: json.feedback ?? null, granted: Number(json.granted ?? 0), needReason: json.needReason === true };
 }
 
 export interface FeedbackItem {

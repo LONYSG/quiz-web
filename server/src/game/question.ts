@@ -48,6 +48,7 @@ import { emitRoom, emitRoomPerPlayer } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
 import { lateAnswersView, toPlayerView } from '../rooms/snapshot.js';
 import { selectNextQuestion } from './select.js';
+import { noteRateAsk } from './rateAsk.js';
 import type { CurrentQuestion, GameResultData, Player, Room } from '../rooms/types.js';
 
 /** DB 쓰기 실패를 조용히 삼키지 않는다 */
@@ -363,6 +364,9 @@ export function resolveQuestionSync(
   //   ★ 결과로 넘기는 일은 advanceAfterResolved 가 한다 (다음 문제 대신 finishGame)
   // ★ R050 — 검사용으로 줄일 수 있다(config.tuning.resolvedWaitMs — 기본은 RULES 8초)
   const nextAt = now + config.tuning.resolvedWaitMs;
+  // ★★ R071 (D-313) — 평가 요청 문항(판마다 무작위 1/3) · 결과 화면 · 로비 표의 asked 를 위해 판 번호 → 문항 id 를 적어 둔다
+  const rateAsk = game.rateAsk.has(current.index);
+  if (rateAsk && game.gameId) noteRateAsk(game.gameId, current.questionId);
   game.resolution = {
     epoch: current.epoch,
     reason,
@@ -370,6 +374,7 @@ export function resolveQuestionSync(
     displayAnswer: current.displayAnswer,
     explanation: current.explanation,
     nextAt,
+    rateAsk,
   };
   room.state = 'QUESTION_RESOLVED';
 
@@ -392,6 +397,8 @@ export function resolveQuestionSync(
       .sort((a, b) => a.joinOrder - b.joinOrder)
       .map((p) => ({ accountId: p.accountId, score: p.score })),
     nextAt,
+    // ★★ R071 (D-313) — 평가 요청 문항인가(아니면 공개 화면에 평가 줄이 없다)
+    rateAsk,
     state: room.state,
   });
 

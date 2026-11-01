@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS, RATE_CHOICES, RATE_POINTS, feedbackReasonLabel, parseFeedbackInput } from './feedback.js';
+import { FEEDBACK_COMMENT_MAX, FEEDBACK_REASONS, RATE_CHOICES, RATE_POINTS, feedbackReasonLabel, parseFeedbackInput, pickRateAsk, rateAskCount, rateNeedsReason } from './feedback.js';
 
 const base = { questionId: '12', gameId: '34' };
 
@@ -48,5 +48,39 @@ describe('parseFeedbackInput (R056 문제 평가)', () => {
     expect(FEEDBACK_REASONS.map((r) => r.code)).toEqual(['never_heard', 'too_easy', 'unclear', 'answer', 'hint', 'boring', 'other']);
     expect(feedbackReasonLabel('unclear')).toBe('질문이 무슨 말인지 모르겠음');
     expect(feedbackReasonLabel('zzz')).toBe('zzz');
+  });
+});
+
+// ★★ R071 (D-313) — 👎 사유 필수 1P · 평가 요청 무작위 1/3
+describe('R071 평가 손질', () => {
+  it('★ 사유 없는 👎 만 needReason — 👍 😐 · 사유 있는 👎 는 아니다', () => {
+    expect(rateNeedsReason(-1, [])).toBe(true);
+    expect(rateNeedsReason(-1, ['unclear'])).toBe(false);
+    expect(rateNeedsReason(1, [])).toBe(false);
+    expect(rateNeedsReason(0, [])).toBe(false);
+    expect(rateNeedsReason(null, [])).toBe(false);
+    // parseFeedbackInput 은 그대로 — 사유 없는 👎 도 받는다(저장만 · 포인트는 서버가 미룬다)
+    const r = parseFeedbackInput({ ...base, vote: -1 });
+    expect(r.ok && r.value.reasons).toEqual([]);
+  });
+  it('★ 요청 수 = ceil(n/3) · 2~3 문항이면 1 · 0 이면 0', () => {
+    expect([0, 1, 2, 3, 4, 6, 7, 10, 30, 50].map(rateAskCount)).toEqual([0, 1, 1, 1, 2, 2, 3, 4, 10, 17]);
+  });
+  it('★ pickRateAsk — 1..n 안 · 겹침 없음 · 오름차순 · 개수 ceil(n/3) (여러 번 · 여러 n)', () => {
+    for (const n of [1, 2, 3, 5, 10, 20, 30, 50]) {
+      for (let t = 0; t < 50; t += 1) {
+        const got = pickRateAsk(n);
+        expect(got.length).toBe(Math.ceil(n / 3));
+        expect(new Set(got).size).toBe(got.length);
+        expect(got.every((i) => Number.isInteger(i) && i >= 1 && i <= n)).toBe(true);
+        expect([...got].sort((a, b) => a - b)).toEqual(got);
+      }
+    }
+    expect(pickRateAsk(0)).toEqual([]);
+  });
+  it('★ 무작위 — 10 문항 2,000 판에서 순번마다 고르게(각 ≈ 40%)', () => {
+    const hit = new Array(11).fill(0);
+    for (let t = 0; t < 2000; t += 1) for (const i of pickRateAsk(10)) hit[i] += 1;
+    for (let i = 1; i <= 10; i += 1) expect(hit[i] / 2000).toBeGreaterThan(0.33), expect(hit[i] / 2000).toBeLessThan(0.47);
   });
 });
