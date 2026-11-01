@@ -112,6 +112,8 @@ const SCENARIO_ENV = {
   leavematrix: { DISCONNECT_REMOVE_MS: '3000', HOST_TRANSFER_GRACE_MS: '1500' },
   // ★ R049 — 뽑기 값 10 (bot_01 이 27번 · bot_06(19) 동시 두 번). 기본 서버에서 돌리면 한 번만 뽑는다
   shop: { SHOP_PRICE_OVERRIDE: '10' },
+  // ★ R071 (D-314) — 복원 한 줄(EMOJI_RATE_LIMIT=1)이 옛 이모티콘 도배 제한을 그대로 되살리나
+  emojilimit: { EMOJI_RATE_LIMIT: '1' },
   // ★ R050 — 정답 공개 대기 200ms · 미니게임 판 진행 밖 단계 ×0.05 (판 진행 시간은 그대로)
   minigame: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   // ★ R051 — 미니게임 2차 (같은 값)
@@ -5550,7 +5552,8 @@ async function scenarioLeaveMatrix() {
 }
 
 // -----------------------------------------------------------------------------
-// ★★★ spam — R048 A 도배 방지 개정 (D-228): 5초 5회 · 6번째부터 5초 잠금 · 본인에게만 안내 · 풀리면 다시 · 이모티콘 같은 꼴
+// ★★★ spam — R048 A 도배 방지 개정 (D-228): 5초 5회 · 6번째부터 5초 잠금 · 본인에게만 안내 · 풀리면 다시
+//   ★★★ R071 (D-314) — [5] 이모티콘은 제한 없음 + 1초 50개 폭주 방어(옛 이모티콘 규칙은 봇 emojilimit — EMOJI_RATE_LIMIT=1)
 //   ★ 감시 서버(기본값)에서 돈다 — RULES 기본값이 곧 규칙이다 (CHAT_RATE_WINDOW_MS 5000 · MAX 5 · LOCK 5000)
 // -----------------------------------------------------------------------------
 async function scenarioSpam() {
@@ -5613,22 +5616,69 @@ async function scenarioSpam() {
   expect('★ 안내 0', a.since(fa, 'chat.throttled').length, 0);
 
   await sleep(5200); // [4] 의 마지막 답들이 5초 창을 벗어나게
-  log('\n[5] ★★ 이모티콘 — 채팅과 따로 · ★ R064 5초 8회 · 9번째부터 잠금 · 안내 kind=emoji');
+  // ★★★ R071 (D-314 · 찬종 "도배 제한 완전히 없애") — 이모티콘은 제한 없음 · 남은 것은 한 소켓 1초 50개 폭주 방어(조용히 버림) 하나
+  log('\n[5] ★★★ 이모티콘 — 제한 없음(R071) · 사람 연타 그대로 · 1초 50개 넘는 폭주만 조용히 버림 · 채팅 제한은 그대로');
   const emojiId = (await fetch(`${BASE}/api/emoji`).then((r) => r.json())).defaults[0];
   fa = a.mark();
   fh = host.mark();
   a.chat('채팅은 따로');
+  // 사람 연타 — 초당 15개 · 2초(30개): 옛 규칙이면 8개에서 잠겼다
+  for (let i = 0; i < 30; i += 1) {
+    a.socket.emit('emoji.send', { emojiId });
+    await sleep(66);
+  }
+  await sleep(600);
+  expect('★★★ 사람 연타 30개(초당 15) 전부 도착 — 잠금 없음', emojisFrom(host, fh), 30);
+  expect('★★★ 이모티콘 안내(chat.throttled) 0', a.since(fa, 'chat.throttled').length, 0);
+  expect('★ 채팅은 그대로 간다', chatsFrom(host, fh), 1);
+  // 폭주 — 1초 창 머리에서 한 번에 80개 → 50개만(넘친 30개는 조용히 버림 · 안내 없음)
+  await sleep(1100);
+  while (Date.now() % 1000 > 150) await sleep(10);
+  fa = a.mark();
+  fh = host.mark();
+  for (let i = 0; i < 80; i += 1) a.socket.emit('emoji.send', { emojiId });
+  await sleep(900);
+  const burst = emojisFrom(host, fh);
+  expectTrue('★★★ 한 번에 80개 → 50개만 도착(폭주 방어 1초 50 · 서버 시계 초 경계에 걸리면 ≤ 80)', burst >= 50 && burst < 80, `${burst}개`);
+  expect('★★ 폭주를 버려도 안내 0(조용히)', a.since(fa, 'chat.throttled').length, 0);
+  await sleep(1100);
+  fh = host.mark();
+  a.socket.emit('emoji.send', { emojiId });
+  a.chat('폭주 뒤 채팅');
+  await sleep(500);
+  expect('★★ 다음 초에는 다시 간다(잠금 없음)', emojisFrom(host, fh), 1);
+  expect('★ 채팅도 그대로', chatsFrom(host, fh), 1);
+
+  for (const x of [host, a]) x.leave();
+  await sleep(300);
+  for (const x of [host, a]) x.disconnect();
+  return checkSummary();
+}
+
+// -----------------------------------------------------------------------------
+// ★★ emojilimit — R071 (D-314) 복원 스위치: 자기 서버를 EMOJI_RATE_LIMIT=1 로 띄우면 옛 이모티콘 도배 제한(5초 8회 · 9번째 잠금 · 안내 kind=emoji)이 그대로
+// -----------------------------------------------------------------------------
+async function scenarioEmojiLimit() {
+  log('시나리오 emojilimit — ★★ 이모티콘 도배 제한 복원 스위치(EMOJI_RATE_LIMIT=1 · R071)');
+  const [host, a] = await makeBots(2);
+  await host.connect();
+  host.createRoom('R071 복원');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  await a.connect();
+  a.join(host.snapshot.room.id);
+  await a.waitFor(() => a.snapshot !== null, 6000, 'a 입장');
+  const aId = a.snapshot.me.accountId;
+  const emojisFrom = (bot, from) => bot.since(from, 'chat').filter((e) => e.accountId === aId && e.emojiId).length;
+  const emojiId = (await fetch(`${BASE}/api/emoji`).then((r) => r.json())).defaults[0];
+  const fa = a.mark();
+  const fh = host.mark();
   for (let i = 0; i < 9; i += 1) a.socket.emit('emoji.send', { emojiId });
   await sleep(700);
-  expect('★★ 이모티콘 8개만 도착(R064 완화 — 5초 8회)', emojisFrom(host, fh), 8);
+  expect('★★ 옛 규칙 그대로 — 이모티콘 8개만 도착(5초 8회)', emojisFrom(host, fh), 8);
   const te = a.since(fa, 'chat.throttled');
-  expect('★ 이모티콘 안내 1번', te.length, 1);
+  expect('★ 안내 1번', te.length, 1);
   expect('★ kind=emoji', te[0]?.kind, 'emoji');
-  expect('★ 채팅은 그대로 간다 (따로 센다)', chatsFrom(host, fh), 1);
-  a.chat('이모티콘 잠겨도 채팅은 됨');
-  await sleep(400);
-  expect('★ 이모티콘이 잠겨도 채팅은 보낼 수 있다', chatsFrom(host, fh), 2);
-
+  expectTrue('★ 잠금 5초', te[0]?.retryAfterMs === 5000, JSON.stringify(te[0]));
   for (const x of [host, a]) x.leave();
   await sleep(300);
   for (const x of [host, a]) x.disconnect();
@@ -5796,19 +5846,19 @@ async function scenarioShop() {
   const sp = mine[0];
   let f2 = b2.mark();
   let f1 = b1.mark();
-  for (let i = 0; i < 6; i += 1) b1.socket.emit('emoji.send', { emojiId: mine[i % mine.length] });
+  for (let i = 0; i < 12; i += 1) b1.socket.emit('emoji.send', { emojiId: mine[i % mine.length] });
   await sleep(700);
   const seen = b2.since(f2, 'chat').filter((e) => e.emojiId);
-  expect('★★ 특별 5개만 방에 도착(R066 — 5초 5회)', seen.length, 5);
+  // ★★★ R071 (D-314) — 특별 이모티콘도 제한 없음(옛: 5초 5회 · 6번째 안내 — 봇 emojilimit 가 복원 스위치로 본다)
+  expect('★★★ 특별 12개 전부 방에 도착(R071 — 제한 없음)', seen.length, 12);
   expectTrue('★★ 채팅 항목에 special=true', seen.every((e) => e.special === true), JSON.stringify(seen[0]));
-  const th = b1.since(f1, 'chat.throttled');
-  expect('★★ 6번째에 안내 kind=special', th[0]?.kind, 'special');
+  expect('★★ 안내(chat.throttled) 0', b1.since(f1, 'chat.throttled').length, 0);
   const cat = await (await fetch(`${BASE}/api/emoji`)).json();
   f2 = b2.mark();
   f1 = b1.mark();
   b1.socket.emit('emoji.send', { emojiId: cat.defaults[0] });
   await sleep(400);
-  expect('★ 특별이 잠겨도 표준 이모티콘은 간다 (따로 센다)', b2.since(f2, 'chat').filter((e) => e.emojiId && !e.special).length, 1);
+  expect('★ 특별 연타 뒤에도 표준 이모티콘은 간다', b2.since(f2, 'chat').filter((e) => e.emojiId && !e.special).length, 1);
   f2 = b2.mark();
   b2.socket.emit('emoji.send', { emojiId: sp });
   await sleep(400);
@@ -8387,13 +8437,16 @@ async function scenarioEmoji() {
   await sleep(500);
   expect('★ 없는 번호 · 글자 → BAD_REQUEST 두 번', guest.since(from, 'error').filter((e) => e.code === 'BAD_REQUEST').length, 2);
 
-  log('\n[4] ★ 도배 제한 (★ R048 개정 — 채팅과 같은 5초 5회 · 6번째부터 잠금 — 자세한 것은 봇 spam)');
-  await sleep(5200); // 앞 단계의 이모티콘이 5초 창을 벗어나게
+  log('\n[4] ★★ 도배 제한 없음 (★ R071 D-314 — 30개 연달아 전부 · 1초 50개 넘는 폭주만 버림 — 자세한 것은 봇 spam · 옛 규칙은 봇 emojilimit)');
+  await sleep(1100);
+  while (Date.now() % 1000 > 150) await sleep(10);
   from = host.mark();
+  const gFrom = guest.mark();
   for (let i = 0; i < 30; i += 1) guest.socket.emit('emoji.send', { emojiId: cat.defaults[i % 10] });
   await sleep(800);
   const got = host.since(from, 'chat').filter((c) => c.emojiId).length;
-  expectTrue('★ 5초에 8개까지만 통과 (R048 → R064 완화)', got === 8, `${got}개`);
+  expectTrue('★★ 30개 전부 통과 (R071 — 제한 없음)', got === 30, `${got}개`);
+  expect('★ 안내(chat.throttled) 0', guest.since(gFrom, 'chat.throttled').length, 0);
 
   host.socket.emit('host.forceEnd', {});
   await sleep(400);
@@ -8459,6 +8512,7 @@ const SCENARIOS = {
   leavematrix: scenarioLeaveMatrix,
   // ★★ R048
   spam: scenarioSpam,
+  emojilimit: scenarioEmojiLimit,
   points: scenarioPoints,
   // ★★★ R049
   shop: scenarioShop,

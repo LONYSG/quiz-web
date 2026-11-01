@@ -89,14 +89,21 @@ export const config = {
     chatRateMax: positiveInt('CHAT_RATE_MAX', RULES.CHAT_RATE_MAX),
     /** ★ R048 — 넘었을 때 잠그는 시간 (기본 5초) */
     chatRateLockMs: positiveInt('CHAT_RATE_LOCK_MS', RULES.CHAT_RATE_LOCK_MS),
-    /** ★ R048 — 이모티콘은 채팅과 따로 세되 같은 값 */
-    emojiRateWindowMs: positiveInt('EMOJI_RATE_WINDOW_MS', RULES.EMOJI_RATE_WINDOW_MS),
-    emojiRateMax: positiveInt('EMOJI_RATE_MAX', RULES.EMOJI_RATE_MAX),
-    emojiRateLockMs: positiveInt('EMOJI_RATE_LOCK_MS', RULES.EMOJI_RATE_LOCK_MS),
-    /** ★ R048 — 특별 이모티콘(R049 에서 보냄) — 값만 */
-    specialEmojiRateWindowMs: positiveInt('SPECIAL_EMOJI_RATE_WINDOW_MS', RULES.SPECIAL_EMOJI_RATE_WINDOW_MS),
-    specialEmojiRateMax: positiveInt('SPECIAL_EMOJI_RATE_MAX', RULES.SPECIAL_EMOJI_RATE_MAX),
-    specialEmojiRateLockMs: positiveInt('SPECIAL_EMOJI_RATE_LOCK_MS', RULES.SPECIAL_EMOJI_RATE_LOCK_MS),
+    /**
+     * ★★★ R071 (D-314 · 찬종 2026-11-01 "도배 제한 완전히 없애 · 나중에 원복할 수도") — 이모티콘 도배 제한 스위치. **기본 꺼짐.**
+     *   ★ 복원 한 줄: `EMOJI_RATE_LIMIT=1` → 아래 옛 값(표준 5초 8회 · 특별 5초 5회 · 넘으면 5초 잠금 · 본인 안내)이 그대로 돈다.
+     *   꺼져 있으면 서버가 창 · 횟수 · 잠금을 전부 건너뛰고 chat.throttled(kind emoji · special)를 보내지 않는다 → 화면도 잠금 표시 · 안내가 없다.
+     */
+    emojiRateLimit: process.env.EMOJI_RATE_LIMIT === '1',
+    /** ★ 옛 값(R064 D-269 · R066 D-273) — emojiRateLimit 일 때만 쓴다 */
+    emojiRateWindowMs: positiveInt('EMOJI_RATE_WINDOW_MS', 5_000),
+    emojiRateMax: positiveInt('EMOJI_RATE_MAX', 8),
+    emojiRateLockMs: positiveInt('EMOJI_RATE_LOCK_MS', 5_000),
+    specialEmojiRateWindowMs: positiveInt('SPECIAL_EMOJI_RATE_WINDOW_MS', 5_000),
+    specialEmojiRateMax: positiveInt('SPECIAL_EMOJI_RATE_MAX', 5),
+    specialEmojiRateLockMs: positiveInt('SPECIAL_EMOJI_RATE_LOCK_MS', 5_000),
+    /** ★★ R071 (D-314) — 기계적 폭주 방어: 한 소켓 1초에 이만큼 넘게 보낸 이모티콘은 조용히 버린다(스위치와 상관없이 늘) */
+    emojiFloodPerSec: positiveInt('EMOJI_FLOOD_PER_SEC', RULES.EMOJI_FLOOD_PER_SEC),
     /**
      * ★ R049 — 뽑기 값 덮어쓰기 (검사용 · 0 = DB 의 emoji_themes.price 를 쓴다). 봇 shop 이 자기 서버에서 10 으로 두고 27번 뽑는다.
      *   ★ 실제 서버에서는 두지 않는다 — .env 에 넣지 말 것.

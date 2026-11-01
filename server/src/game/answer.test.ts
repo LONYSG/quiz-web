@@ -12,7 +12,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { flexAnswerSet, normalizeAnswer, RULES } from '@quiz/shared';
-import { checkChatRate, checkEmojiRate, checkSpecialEmojiRate, judgeAnswer } from './answer.js';
+import { checkChatRate, checkEmojiRate, checkSpecialEmojiRate, floodOk, judgeAnswer } from './answer.js';
 import type { CurrentQuestion, Player, Room } from '../rooms/types.js';
 
 const NOW = 1_700_000_000_000;
@@ -410,13 +410,29 @@ describe('★★ R048 도배 방지 — 창 + 잠금', () => {
     expect(checkChatRate(r, 'B', NOW, limits)).toBeNull();
     expect(checkEmojiRate(r, 'A', NOW, limits)).toBeNull();
   });
-  it('★★ R066 (D-273) 특별 이모티콘 — RULES 값 = 5초 5회 · 6번째 잠금 5초 · 5초 뒤 다시', () => {
-    const sp = { windowMs: RULES.SPECIAL_EMOJI_RATE_WINDOW_MS, max: RULES.SPECIAL_EMOJI_RATE_MAX, lockMs: RULES.SPECIAL_EMOJI_RATE_LOCK_MS };
+  it('★★ R066 (D-273) 특별 이모티콘 — 옛 값(EMOJI_RATE_LIMIT=1) = 5초 5회 · 6번째 잠금 5초 · 5초 뒤 다시', () => {
+    // ★ R071 (D-314) — RULES 상수는 지웠다 · 옛 값(EMOJI_RATE_LIMIT=1 일 때 config 기본값)으로 그대로 검사한다
+    const sp = { windowMs: 5_000, max: 5, lockMs: 5_000 };
     expect(sp).toEqual({ windowMs: 5_000, max: 5, lockMs: 5_000 });
     const r = fresh();
     for (let i = 0; i < 5; i += 1) expect(checkSpecialEmojiRate(r, 'A', NOW + i * 100, sp)).toBeNull();
     expect(checkSpecialEmojiRate(r, 'A', NOW + 500, sp)).toBe(5_000);
     expect(checkSpecialEmojiRate(r, 'A', NOW + 5_500, sp)).toBeNull();
+  });
+  it('★★★ R071 (D-314) 폭주 방어 — 1초에 50개까지 · 51번째부터 버림 · 다음 초에 다시 · 사람 연타(초당 15개 · 10초)는 한 번도 안 걸림', () => {
+    expect(RULES.EMOJI_FLOOD_PER_SEC).toBe(50);
+    const st = { sec: 0, n: 0 };
+    const T = 1_700_000_000_000;
+    let ok = 0;
+    for (let i = 0; i < 60; i += 1) if (floodOk(st, T + i, 50)) ok += 1;
+    expect(ok).toBe(50);
+    expect(floodOk(st, T + 999, 50)).toBe(false);
+    expect(floodOk(st, T + 1_000, 50)).toBe(true);
+    const human = { sec: 0, n: 0 };
+    let dropped = 0;
+    for (let i = 0; i < 150; i += 1) if (!floodOk(human, T + Math.round(i * (1000 / 15)), 50)) dropped += 1;
+    expect(dropped).toBe(0);
+    expect('EMOJI_RATE_MAX' in RULES).toBe(false);
   });
 });
 

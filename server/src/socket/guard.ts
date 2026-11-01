@@ -36,6 +36,8 @@ export interface SocketSession {
 export interface SocketData {
   session?: SocketSession;
   roomId?: string;
+  /** ★ R071 (D-314) — 이모티콘 폭주 방어(1초 창 · 이 소켓만) */
+  emojiFlood?: { sec: number; n: number };
 }
 
 export type ErrorCode =

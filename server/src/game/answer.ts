@@ -212,6 +212,21 @@ export function checkRate(
   return null;
 }
 
+/**
+ * ★★ R071 (D-314) — 기계적 폭주 방어(이모티콘). 1초 창(초 단위로 끊는다)에 maxPerSec 개까지 · 넘친 것은 false(조용히 버린다 — 안내 없음).
+ *   state 는 소켓마다 하나(socket.data.emojiFlood) — 방 · 계정이 아니라 연결 하나의 폭주만 본다.
+ */
+export function floodOk(state: { sec: number; n: number }, now: number, maxPerSec: number): boolean {
+  const sec = Math.floor(now / 1000);
+  if (state.sec !== sec) {
+    state.sec = sec;
+    state.n = 0;
+  }
+  if (state.n >= maxPerSec) return false;
+  state.n += 1;
+  return true;
+}
+
 /** 채팅 — room.chatTimestamps · room.chatLocks 를 쓴다 */
 export function checkChatRate(room: Room, accountId: string, now: number, limits: RateLimits): number | null {
   room.chatLocks ??= new Map();

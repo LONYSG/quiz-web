@@ -37,7 +37,7 @@ import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } fr
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
 import { loadExperienced } from '../db/questionPool.js';
 import { cancelCountdown, nicknameBlockMessage, notEnoughMessage, requestStart } from '../game/start.js';
-import { checkChatRate, checkEmojiRate, checkSpecialEmojiRate, judgeAnswer } from '../game/answer.js';
+import { checkChatRate, checkEmojiRate, checkSpecialEmojiRate, floodOk, judgeAnswer } from '../game/answer.js';
 import {
   abortQuestionSync,
   broadcastExperiencedUpdated,
@@ -589,28 +589,36 @@ function registerRoomHandlers(socket: Socket): void {
       },
     },
     async ({ seq, socket: s, room, player, payload }) => {
+      const now = Date.now();
+      // ★★ R071 (D-314) — 기계적 폭주 방어 하나: 이 소켓이 1초에 50개(tuning) 넘게 보내면 넘친 것을 조용히 버린다(안내 없음 · DB 조회 전에)
+      const sd = s.data as SocketData;
+      sd.emojiFlood ??= { sec: 0, n: 0 };
+      if (!floodOk(sd.emojiFlood, now, config.tuning.emojiFloodPerSec)) return;
       // ★★ R048 (D-230) — 특별 이모티콘(테마)은 **가진 사람만** 보낼 수 있다
+      //   ★ R071 — 제한이 없어 연타가 잦아지므로 60초 메모리 사본을 먼저 본다(없을 때만 DB · 사면 forgetOwned 가 지운다)
       const special = isSpecialEmoji(payload.emojiId);
-      if (special && !(await ownedEmojiIds(player.accountId)).has(payload.emojiId)) {
+      if (special && !(ownedEmojiIdsCached(player.accountId) ?? (await ownedEmojiIds(player.accountId))).has(payload.emojiId)) {
         sendError(s, 'BAD_REQUEST', '가지고 있지 않은 이모티콘입니다.');
         return;
       }
-      const now = Date.now();
-      // ★★ R048 (D-228) — 채팅과 같은 창+잠금(따로 센다). ★ R049 — 특별 이모티콘은 또 따로(R066: 5초 5회 · 5초 잠금 — D-273)
-      const retryAfterMs = special
-        ? checkSpecialEmojiRate(room, player.accountId, now, {
-            windowMs: config.tuning.specialEmojiRateWindowMs,
-            max: config.tuning.specialEmojiRateMax,
-            lockMs: config.tuning.specialEmojiRateLockMs,
-          })
-        : checkEmojiRate(room, player.accountId, now, {
-            windowMs: config.tuning.emojiRateWindowMs,
-            max: config.tuning.emojiRateMax,
-            lockMs: config.tuning.emojiRateLockMs,
-          });
-      if (retryAfterMs !== null) {
-        s.emit('chat.throttled', { retryAfterMs, kind: special ? 'special' : 'emoji' });
-        return;
+      // ★★★ R071 (D-314) — 도배 제한은 **스위치가 켜졌을 때만**(기본 꺼짐 · 복원 = EMOJI_RATE_LIMIT=1).
+      //   켜지면 옛 흐름 그대로: R048 (D-228) 채팅과 같은 창+잠금(따로 센다) · R049 특별은 또 따로(R066: 5초 5회 · 5초 잠금 — D-273)
+      if (config.tuning.emojiRateLimit) {
+        const retryAfterMs = special
+          ? checkSpecialEmojiRate(room, player.accountId, now, {
+              windowMs: config.tuning.specialEmojiRateWindowMs,
+              max: config.tuning.specialEmojiRateMax,
+              lockMs: config.tuning.specialEmojiRateLockMs,
+            })
+          : checkEmojiRate(room, player.accountId, now, {
+              windowMs: config.tuning.emojiRateWindowMs,
+              max: config.tuning.emojiRateMax,
+              lockMs: config.tuning.emojiRateLockMs,
+            });
+        if (retryAfterMs !== null) {
+          s.emit('chat.throttled', { retryAfterMs, kind: special ? 'special' : 'emoji' });
+          return;
+        }
       }
       const entry = {
         id: randomUUID(),
