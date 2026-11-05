@@ -1074,6 +1074,30 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 52. ★ R072 — 터널 열림 확인: 최대 5분 · 10초마다 한 줄 · 1.1.1.1 직접 · flushdns · 열리는 순간 브라우저 (D-316)
+
+★ 실 DB 쓰기 없음 · 실 3000 서버 · 찬종의 터널은 안 건드림(점검 때 이미 꺼져 있었다 — 09:54 Ctrl+C). 실제 터널 점검은 /healthz 만 답하는 자기 서버(3100).
+
+```bash
+npm test                                   # 580 (+ R072 scripts/tunnel-probe.test.mjs 9 — vitest include 에 scripts/**/*.test.mjs)
+npm run typecheck
+# 실제 터널 한 번 (자기 서버 3100 · 브라우저만 막음)
+PORT=3100 NO_OPEN=1 node scripts/dev-tunnel.mjs
+```
+
+| 검사 | 결과 |
+|---|---|
+| probeOnce 분류 | 1.1.1.1 실패 → `DNS 아직(ENOTFOUND)` · fetch 안 함 / 200 → ok / 530 → `상태 530` / ECONNRESET → `연결 안 됨(ECONNRESET)` |
+| flushdns | 1.1.1.1 은 풀리고 OS ENOTFOUND → flush **한 번**(로그 한 줄) 뒤 다시 · 다음 확인에선 안 함 |
+| 10초 한 줄 | 2초 간격 60초 같은 응답 → 0 · 10 · … · 50초 6줄 · 응답이 바뀌면 바로 한 줄 |
+| 5분 상한 | 끝내 안 열림 → 300초 · 150번 · 30줄 · 마지막 응답 / 90초에 200 → 그 순간 ok |
+| 열기 조건 | 열림 + NO_OPEN 없음일 때만 |
+| **실제 터널(11-05 09:57)** | 주소 3.4초 → 첫 상자(주소 · 클립보드) · 등록 4.2초 · 등록 대기 1줄(0초 · DNS 아직) · **열림 확인 7.6초** → 끝 상자 · "NO_OPEN=1 — 브라우저는 열지 않았습니다" |
+
+★ 검사가 못 본 것: 오늘 아침 같은 **OS 음수 캐시 → flushdns** 경로는 실제 터널로는 재현 안 됨(이번엔 7.6초에 바로 열림) — 단위 테스트로만. 다음 메뉴 1 의 로그에 "ipconfig /flushdns 함" 줄이 있으면 그 경로를 탄 것(13 A100).
+
+---
+
 ## 51. ★★★ R071 — 정답 공개 평가 손질 · 이모티콘 도배 제한 제거 · 다른 하나 찾기 어렵게 · 힌트 뒤 정답 집계 · game_questions 등급 열 (D-313 ~ D-315)
 
 ★ 전부 검사 DB(quizweb_test · `npm run db:test-init` 이 0027 · 0028 적용) · 자기 서버(봇 · ui-check 가 띄움 · 3100). 실 DB(quizweb) 는 읽기만(마지막 마이그레이션 0026 그대로 · question_feedback 마지막 갱신 10-31 그대로).

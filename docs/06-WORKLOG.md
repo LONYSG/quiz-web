@@ -8,6 +8,13 @@
 
 ---
 
+## 2026-11-05 — 터널 열림 확인: 최대 5분 · 10초마다 한 줄 · 1.1.1.1 직접 · flushdns · 열리는 순간 브라우저 (R072, MAIN)
+
+- **무엇을**: 찬종 2026-11-05 "왜 링크 자동으로 안 열려 · 지금 바로 고쳐". 09:48 메뉴 1 — 등록 5.2초인데 밖에서 /healthz 45초 내내 ENOTFOUND(23줄) → 브라우저 안 열림. scripts/dev-tunnel.mjs: 주소 받으면 바로 크게 한 번 + 클립보드 · 확인 최대 5분(2초 간격) · 줄은 10초마다 · DNS 는 1.1.1.1 에 직접(resolve4) · OS 만 ENOTFOUND 면 ipconfig /flushdns 한 번 · 200 순간 브라우저 · 5분 넘으면 "주소는 맞습니다 …" 안내(브라우저 안 염).
+- **결정**: D-316.
+- **검증**: 10 52절 — vitest 580(+ scripts/tunnel-probe.test.mjs 9) · typecheck · 실제 터널(3100 자기 서버 · NO_OPEN=1) 주소 3.4초 · 등록 4.2초 · 열림 7.6초 · 대기 줄 1.
+- **남은 것**: A100(다음 메뉴 1) · flushdns 경로는 실제로는 아직 안 탐(단위 테스트만).
+
 ## 2026-11-01 — 정답 공개 평가 손질 · 이모티콘 도배 제한 제거 · 다른 하나 찾기 어렵게 · hint:solve · game_questions 등급 열 (R071, MAIN)
 
 - **무엇을**: 찬종 2026-11-01 "권장대로 · 도배 제한 완전히 없애". §A 공개 중 👎 는 사유 하나 골라야 1P(needReason) · 평가 요청은 판마다 무작위 ceil(n/3) 문항(rateAsk · 스냅샷 · 아닌 문항은 줄 없음 · 0P) · 0027 question_feedback.asked · feedback-report 가중 표(가중 0 묶음 · --raw) §B 이모티콘 도배 제한 제거(tuning.emojiRateLimit 기본 꺼짐 · 복원 EMOJI_RATE_LIMIT=1 · 한 소켓 1초 50개 폭주 방어) §C 다른 하나 찾기 격자 4~8 · 1판만 쉬움 · 어려운 쌍 28 §D `npm run hint:solve` §E 0028 game_questions.target_grade · grade · worth + 선정 코드 기록.

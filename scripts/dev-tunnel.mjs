@@ -109,6 +109,7 @@ function banner(heads, final) {
     console.log('  종료:   Ctrl+C  (터널만 닫힙니다. 서버와 게임은 그대로 살아 있습니다)');
   }
   if (copyToClipboard()) console.log('  복사:   주소를 클립보드에 넣었습니다 — 그대로 붙여넣기(Ctrl+V)');
+  if (!final) { console.log(line); console.log(''); }
   return line;
 }
 

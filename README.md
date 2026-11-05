@@ -52,7 +52,7 @@ npm run dev:client        # 터미널 B: 클라이언트 개발 서버 (5173)
 ```bash
 npm run build
 npm run dev               # 터미널 A
-npm run dev:tunnel        # 터미널 B — 출력된 https 주소를 공유
+npm run dev:tunnel        # 터미널 B — 출력된 https 주소를 공유 (밖에서 열리면 브라우저를 연다 · 최대 5분 확인 — R072 D-316)
 ```
 
 ### 그 밖의 명령

@@ -1,0 +1,58 @@
+===========================================
+ROUND: R072
+DATE: 2026-11-05 10:05 KST
+TASK: 터널 주소 확인 루프 — 주소 먼저 한 번 · 최대 5분 뒤에서 확인 · 10초마다 한 줄 · DNS 1.1.1.1 직접 · flushdns · 열리는 순간 브라우저
+STATUS: 완료
+===========================================
+
+[cmd 창]
+- 실행: 한 세션 · 하위 에이전트 0 · 실 DB 쓰기 0(읽기만 — schema_migrations 마지막 0028) · 실 3000 서버 · 찬종 터널 손대지 않음(점검 때 이미 꺼져 있었음)
+- 검사: vitest 580(+ tunnel-probe 9) · typecheck · 실제 터널 한 번(자기 서버 3100 · NO_OPEN=1)
+- 문서: 07 D-316 · 13 A100 · 10 52절 · 11 터널 두 줄 · 05 · 06 · README
+
+[0. 찬종이 볼 것]
+■ 적용: 다음 메뉴 1(켜져 있으면 3 → 1) — 서버 코드가 아니라 스크립트라 빌드는 상관없고, 터널 창을 새로 띄우면 새 스크립트가 돈다.
+
+■ 전후 흐름
+  옛(R070):  주소 ─▶ 등록 줄(≤30초) ─▶ 2초마다 /healthz ─ 줄 23개 ─▶ 45초 ─▶ "★ 아직 밖에서 안 열림" (브라우저 안 열림)
+  새(R072):  주소 ─▶ ┌ 바로 크게 한 번 + 클립보드 ─ "DNS 가 퍼지면 자동으로 엽니다 (보통 10초~3분)" ┐
+                      등록 줄(≤30초) ─▶ 2초마다 확인 (줄은 10초마다 한 줄)
+                         확인 한 번 = 1.1.1.1 에 resolve4 ─실패─▶ "DNS 아직"
+                                                └─됨─▶ fetch ─ ENOTFOUND(OS 캐시) ─▶ ipconfig /flushdns 한 번 → 다시
+                                                          ├ 200 ──▶ ★ 그 순간 크게 · 클립보드 · 브라우저
+                                                          └ 그 밖 ─▶ "상태 NNN" / "연결 안 됨(코드)"
+                      5분 ─▶ "★ 주소는 맞습니다(터널 등록됨) … 잠시 뒤 직접 열어 보세요 · 서버 로컬 /healthz ok/실패 · 안 되면 메뉴 3 → 1" (브라우저 안 염)
+
+■ 실제 터널 결과(11-05 09:57 · 3100 자기 서버 · NO_OPEN=1)
+  주소 3.4초 → 첫 상자 · 등록 4.2초 · "등록 대기 0초 · 밖에서 /healthz → DNS 아직(ENOTFOUND)" 1줄 · 열림 확인 7.6초 → 끝 상자 "NO_OPEN=1 — 브라우저는 열지 않았습니다".
+  (오늘 아침 같은 OS 음수 캐시 → flushdns 경로는 이번엔 안 탔다 — 단위 테스트로만 · A100 에서 로그 확인)
+
+■ 실기기로 볼 것: 13 A100 — ① 주소가 먼저 크게 한 번 ② 10초마다 한 줄 ③ 열리는 순간 브라우저 ④ 5분 넘으면 안내.
+
+[원칙 메모 — 7 확인]
+- PROBE_MS 45_000 · PROBE_EVERY_MS 2_000 · REGISTER_WAIT_MS 30_000 · announce(false) 는 브라우저 안 염 — 맞음
+- 07 마지막 D-315 · 13 마지막 A99 · 10 마지막 51절 — 맞음
+- 오늘 로그 "등록 대기" 23줄 — 맞음
+- schema_migrations 마지막 0028(11-05 00:48 UTC) — 맞음
+- ★ 다름: "3000 서버 켜짐" — 점검 때 꺼져 있었다(server-20261105-0948.log · tunnel 로그 모두 09:54 Ctrl+C 로 끝). 찬종이 끈 것 · 이 라운드는 켜거나 끄지 않았다.
+
+[1. 바뀐 것 — scripts/dev-tunnel.mjs · scripts/tunnel-probe.mjs (D-316)]
+- tunnel-probe.mjs(새 · 순수 조각 — dev-tunnel 은 import 하자마자 cloudflared 를 띄워서 따로 뺌): REGISTER_WAIT_MS 30초 · PROBE_MS 300초 · PROBE_EVERY_MS 2초 · REPORT_EVERY_MS 10초 · cloudflareResolve4(1.1.1.1 · 1.0.0.1 · timeout 3초) · flushDns(win32 · 실패 무시) · probeOnce(분류 + flush 한 번) · shouldReport(10초 칸 또는 응답 바뀜) · shouldOpen(열림 && !NO_OPEN) · waitOpen.
+- dev-tunnel.mjs: 주소 받으면 banner(주소 · 클립보드) · confirm 은 waitOpen · announce(true) 는 큰 상자 + 클립보드 + 브라우저 · announce(false) 끝 문구 바꿈(브라우저 안 염).
+- 줄 덮어쓰기(TTY)는 안 함 — 메뉴 1 의 터널 창은 ops-run 이 파이프로 받아 TTY 가 아니라 늘 한 줄씩이라 의미가 없다.
+
+[2. 테스트]
+- scripts/tunnel-probe.test.mjs 9 — 분류(DNS 아직 · 200 · 530 · 연결 안 됨) · flushdns 한 번만 · 10초 한 줄 · 5분 상한(150번 · 30줄) · 90초에 열림 · 열기 조건 · 상수.
+- vitest.config.ts include 에 'scripts/**/*.test.mjs' 한 칸(지금까지 scripts 테스트가 없었다).
+
+[3. 끝 점검] 0절 · 10 52절.
+
+[4. 안 한 것] named tunnel · ops 메뉴 구조 · 서버 코드 · 실 DB.
+
+[5. 남은 것] A100(다음 메뉴 1) · R073 후보(설계 메모 그대로): questions.worth_kind · game_questions.rate_ask · 봇·검사 정규식 test·test2·timer* · H11 · A99·A100 제보.
+
+[6. 원칙 위반] 없음.
+
+[7. 결정 필요] 없음.
+
+[고친 문서] 07 D-316 · 13 A100 · 10 52절 · 11-DEPLOY(메뉴 1 줄 · 문제 표 줄) · 05 · 06 · README
