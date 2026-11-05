@@ -9048,3 +9048,26 @@ button.preset.shake {
 [data-theme='office'] .avatar:not(.photo)::after {
   content: ']';
 }
+
+/* =============================================================================
+   ★★★ R074 (§B · 찬종 11-05 "이모티콘 보낼 때 내 노트북 PC(FHD · 125%)에서 내 자리 하단이 약간 잘리는 문제가 또") —
+   재현: 쉴 때 이모티콘이 자리(.seat-emoji · overflow hidden)를 꽉 채워 그림자(0 4px 6px)가 잘림(그림자 자리 0px · 1280 · 1366 · 1536×864 · 1536×730) ·
+   튀어 오를 때 1.3배(위 기준)로 커져 카드 아래로 18~30px 넘쳐 잘림(DPR 1 · 1.25 모두 — 배율 탓이 아니라 높이 탓).
+   고침: 이모티콘 = (자리 높이 − 그림자 10px) ÷ 1.2 (최대 84px) — 자리가 줄면 이모티콘도 준다 · 튀어 오름은 1.12배 · 4도(위 기준)라 자리 안.
+   (옛 다섯 군데 덮어씀 2788 · 3102 · 4285 · 4332 · 7162 위에 마지막으로 하나)
+   ============================================================================= */
+.seat-emoji {
+  align-items: flex-start;
+}
+.seat-emoji-pop {
+  height: calc((100% - 10px) / 1.2);
+  max-height: min(84px, calc((100% - 10px) / 1.2));
+  transform-origin: 50% 0;
+  animation: seat-emoji-pop 650ms var(--ease-pop), emoji-fade 3s ease-in forwards;
+}
+@keyframes seat-emoji-pop {
+  0% { transform: scale(0.2) rotate(-12deg); opacity: 0; }
+  55% { transform: scale(1.12) rotate(4deg); opacity: 1; }
+  75% { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: none; }
+}

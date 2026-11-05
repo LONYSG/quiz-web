@@ -4614,7 +4614,7 @@ async function r074Flow(browser) {
   if (!only || only === 'photo') await r074PhotoFlow(browser);
   if (!only || only === 'live') await r074PhotoLive(browser);
   if (only === 'calib') await r074Calib(browser);
-  if (!only || only === 'bottom') await r074BottomFlow(browser);
+  if (!only || only === 'bottom' || only === 'seat') await r074BottomFlow(browser);
   if (!only || only === 'emoji') await r074EmojiFlow(browser);
   if (!only || only === 'theme') await r074ThemeFlow(browser);
 }
@@ -4915,15 +4915,9 @@ async function sendSeatEmoji(H, n) {
     await altDigit(H, '1');
     return;
   }
-  await openPicker(H);
-  await realClick(H, '[data-emoji-mode="insert"]');
-  await closePicker(H);
-  await realClick(H, '[data-chat-input]');
-  for (let i = 0; i < n; i += 1) await altDigit(H, String(i + 1));
-  await H.key('Enter');
-  await openPicker(H);
-  await realClick(H, '[data-emoji-mode="send"]');
-  await closePicker(H);
+  // 이모티콘 글자 n 개만 보내면 자리에 나란히(R057) — 입력창에 글자로 넣고 전송
+  await H.setInput('[data-chat-input]', ['👍', '😂', '😮'].slice(0, n).join(''));
+  await H.click('전송');
 }
 /** 팝업 뿌리(보이는 것 · 다른 뿌리 안이 아닌 것) — 아래 끝 · 안쪽 스크롤로 마지막 버튼까지 닿나 */
 const POP_BOTTOM_PROBE = `(() => {
@@ -4956,14 +4950,16 @@ async function r074BottomFlow(browser) {
   const pre = tag === 'after' ? '' : `${tag}/`;
 
   // ① 내 자리 이모티콘 — PC 6 크기 × DPR 1 · 1.25 × 1개 · 3개
-  const seatSizes = [...SHOT_PC, { w: 1366, h: 768, n: 'hd' }];
+  const seatSizes = [...SHOT_PC, { w: 1366, h: 768, n: 'hd' }].filter((s) => !process.env.R074_SEAT_SIZES || process.env.R074_SEAT_SIZES.split(',').includes(s.n));
   const seat = [];
   for (const sz of seatSizes) {
     for (const dpr of [1, 1.25]) {
       await r074Dpr(H, sz.w, sz.h, dpr);
-      for (const n of [1, 3]) {
+      // ★ R066 (D-275) 뒤로 자리에는 '이모티콘 보내기' 한 개만 뜬다(채팅에 섞은 이모티콘은 글) → 한 개만 잰다
+      for (const n of [1]) {
         await sendSeatEmoji(H, n);
-        await H.waitFor(`document.querySelectorAll('.seat-card.mine .seat-emoji-pop img').length === ${n}`, 3000).catch(() => false);
+        const shown = await H.waitFor(`document.querySelectorAll('.seat-card.mine .seat-emoji-pop img').length === ${n}`, 3000).catch(() => false);
+        if (!shown) console.log('  §B seat 안 뜸', n, await H.evaluate("JSON.stringify({ seat: document.querySelector('.seat-card.mine .seat-emoji')?.innerHTML.slice(0, 300), last: [...document.querySelectorAll('.chat-log > *')].slice(-2).map((e) => e.innerText), input: document.querySelector('[data-chat-input]')?.value })"));
         await sleep(330);
         const peak = JSON.parse(await H.evaluate(`JSON.stringify(${SEAT_PROBE})`));
         await sleep(700);
@@ -4987,8 +4983,13 @@ async function r074BottomFlow(browser) {
   }
   await r074Dpr(H, 1536, 864, 1);
   const badSeat = seat.filter((x) => !x.ok);
-  record('★★★ R074 §B 내 자리 이모티콘 — PC 6 크기 × DPR 1 · 1.25 × 1개 · 3개 · 쉴 때 자리 안(아래 · 옆 잘림 0 · 그림자 자리) · 튀어 오를 때 카드 밖으로 안 나감', badSeat.length === 0 && seat.length === seatSizes.length * 4, `NG ${badSeat.length}/${seat.length}: ${badSeat.slice(0, 5).map((x) => `${x.n}@${x.dpr}×${x.count} cutB ${x.rest?.cutB} cardCut ${x.rest?.cardCut}/${x.peak?.cardCut} room ${x.rest?.shadowRoom}`).join(' | ')}`);
+  record('★★★ R074 §B 내 자리 이모티콘 — PC 6 크기 × DPR 1 · 1.25 · 쉴 때 자리 안(아래 · 옆 잘림 0 · 그림자 자리) · 튀어 오를 때 카드 밖으로 안 나감', badSeat.length === 0 && seat.length === seatSizes.length * 2, `NG ${badSeat.length}/${seat.length}: ${badSeat.slice(0, 5).map((x) => `${x.n}@${x.dpr}×${x.count} cutB ${x.rest?.cutB} cardCut ${x.rest?.cardCut}/${x.peak?.cardCut} room ${x.rest?.shadowRoom}`).join(' | ')}`);
 
+  if (process.env.R074_ONLY === 'seat') {
+    G.close();
+    H.close();
+    return;
+  }
   // ② 팝업 전부 × PC 5 + 모바일 3 — 아래 끝이 화면 안 · 안쪽 스크롤로 마지막 버튼까지
   const pops = [];
   const viaMenu = async (label) => {
@@ -5021,7 +5022,7 @@ async function r074BottomFlow(browser) {
     ['prefs', () => openBy('.prefs-toggle', '설정')],
     ['prefs-report', async () => { await openBy('.prefs-toggle', '설정'); await H.evaluate("[...document.querySelectorAll('[role=tab], .prefs-tab, .gear-tab')].find((b) => /제보/.test(b.innerText))?.click()"); await sleep(300); }],
     ['report', async () => { await H.key('b', { alt: true, code: 'KeyB', vk: 66 }); await sleep(450); }],
-    ['info', () => openBy('.infotip-btn', '안내')],
+    ['info', async () => { if (await vis('#menu-btn')) await viaMenu('안내'); else await openGearTab(H, 'info'); await sleep(300); }],
     ['leave', () => openBy('button[aria-label="나가기"]', '나가기')],
     ['emoji', () => openBy('.emoji-btn', null)],
     ['emoji-help', async () => { await H.evaluate("localStorage.removeItem('qw.emojiHelp.v1')"); await openBy('.emoji-btn', null); await H.evaluate("document.querySelector('[data-emoji-help-open], [data-emoji-help-again]')?.click()"); await sleep(300); }],
@@ -5095,7 +5096,8 @@ async function r074BottomFlow(browser) {
   writeFileSync(path.join(dir, `bottom-${tag}.json`), JSON.stringify({ seat, pops, resultRows }, null, 1));
   const seen = pops.filter((x) => x.ok !== null);
   const badPop = seen.filter((x) => !x.ok);
-  const missing = [...new Set(pops.filter((x) => x.ok === null).map((x) => `${x.kind}@${x.size}`))];
+  // PC 에 없는 버튼(참여자 = 모바일 전용 · 알림 = 받은 알림이 있을 때만 🔔)은 못 연 것에서 뺀다
+  const missing = [...new Set(pops.filter((x) => x.ok === null && !(/^(people|notices)$/.test(x.kind) && !/^m/.test(x.size))).map((x) => `${x.kind}@${x.size}`))];
   console.log(`  §B 팝업 잰 것 ${seen.length} · 못 연 것 ${missing.length}: ${missing.slice(0, 30).join(' ')}`);
   for (const b of badPop) console.log(`  §B popup NG ${b.kind} ${b.size} ${b.root} bottom ${b.bottom}/${b.ih} over ${b.over} top ${b.topOver} last ${b.lastOver}`);
   record('★★★ R074 §B 팝업 아래 끝 — 종류 전부 × PC 5 + 모바일 3 · 아래 끝 ≤ 화면 · 위로도 안 나감 · 안쪽 스크롤로 마지막 버튼까지 화면 안', badPop.length === 0 && seen.length >= 120, `NG ${badPop.length}/${seen.length}: ${badPop.slice(0, 8).map((x) => `${x.kind}@${x.size} +${x.over}/${x.lastOver}`).join(' | ')} · 못 연 것 ${missing.length}`);
