@@ -28,6 +28,11 @@
 //                       실측은 G002 보고서 4절
 //   ★ G027 (G026 7절 ⑥ — 15 §4-1 H7) **경고**
 //          blank        힌트에 빈칸 '○' 이 있다 — 칸 수 = 정답 글자 수라 꼴이다 → '~' 로 (부랴부랴 · 노스탤지어 · 사돈 · 영감)
+//   ★ G030 (G029 7절 ① · 설계 결정 (나)) **대표 정답을 통째로 품은 변형**의 partial 검사
+//          변형이 대표 정답의 낱말을 모두 품으면("안도라 공국" ⊃ "안도라" · "밀그램 복종 실험" ⊃ "밀그램 실험")
+//          대표 정답 밖의 꾸밈·분류 낱말(공국 · 복종)과 그 조각은 H2 조각으로 보지 않는다 — 정답을 드러내지 않는다.
+//          변형 전체 문자열(full)은 여전히 막힘 · 대표 정답의 조각은 대표 정답 쪽 검사가 그대로 본다 ·
+//          대표 정답을 품지 않은 변형("4행정 엔진" ↔ "4행정 기관")은 지금 그대로.
 // =============================================================================
 import { normalizeAnswer } from '../shared/dist/index.js';
 
@@ -80,13 +85,26 @@ export function soundsLike(tok, word) {
 
 const grams = (s, n) => { const t = strip(s); const g = new Set(); for (let i = 0; i + n <= t.length; i++) g.add(t.slice(i, i + n)); return g; };
 
+/** ★ G030 — 변형 v 가 대표 정답 answer 를 통째로 품는가(낱말 전부 · 또는 띄어쓰기 없이 글자 그대로) */
+export function wrapsAnswer(v, answer) {
+  const na = strip(answer), nv = strip(v);
+  if (!na || !nv || na === nv) return false;
+  const aw = (answer ?? '').split(/[\s·\-]+/).map(strip).filter(Boolean);
+  const vw = new Set((v ?? '').split(/[\s·\-]+/).map(strip).filter(Boolean));
+  return nv.includes(na) || (aw.length > 0 && aw.every((w) => vw.has(w)));
+}
+
 export function checkHint({ hint, answer, variants = [], question = '', explanation = '' }) {
   const res = { block: [], warn: [] };
   if (!hint) return res;
   const h = strip(hint);
+  const answerWords = (answer ?? '').split(/[\s·\-]+/).map(strip).filter(Boolean);
   for (const a of [answer, ...variants]) {
     const na = strip(a);
     if (na && h.includes(na)) { res.block.push({ kind: 'full', frag: a }); continue; }
+    // ★ G030 — 대표 정답을 품은 변형은 대표 정답 낱말 안의 조각만 본다(꾸밈 낱말 조각은 H2 아님)
+    const wraps = a !== answer && wrapsAnswer(a, answer);
+    const inAnswer = (f) => !wraps || answerWords.some((w) => w.includes(f));
     // ★ 조각 — 긴 것부터 보고, 이미 잡은 조각에 들어가는 짧은 것은 다시 적지 않는다
     // ★ R027 실측으로 두 가지를 좁혔다 (R026 힌트 20개를 돌려 본 결과)
     //   (1) 질문에 이미 있는 조각은 새로 새는 정보가 아니다 — 헬라 세포 ← "세포" (질문에 "세포주")
@@ -95,14 +113,14 @@ export function checkHint({ hint, answer, variants = [], question = '', explanat
     const words = (hint ?? '').split(/[\s·,.'"“”‘’()「」\-]+/).map(strip).filter(Boolean);
     const whole = new Set((a ?? '').split(/[\s·\-]+/).map(strip).filter(Boolean));
     const hit = fragments(a)
-      .filter((f) => h.includes(f) && !qs.includes(f))
+      .filter((f) => h.includes(f) && !qs.includes(f) && inAnswer(f))
       .filter((f) => whole.has(f) || words.some((w) => w.startsWith(f)))
       .sort((x, y) => y.length - x.length);
     const kept = []; for (const f of hit) if (!kept.some((k) => k.includes(f))) kept.push(f);
     for (const f of kept) res.block.push({ kind: 'partial', frag: f, of: a });
     // ★ R030 — 낱말 중간 일치 (경고). 막힘으로 잡은 조각과 그 안의 짧은 조각은 다시 적지 않는다
     const mid = fragments(a)
-      .filter((f) => HANGUL.test(f) && h.includes(f) && !qs.includes(f) && !kept.some((k) => k.includes(f)))
+      .filter((f) => HANGUL.test(f) && h.includes(f) && !qs.includes(f) && inAnswer(f) && !kept.some((k) => k.includes(f)))
       .filter((f) => !whole.has(f) && words.some((w) => w.includes(f) && !w.startsWith(f)))
       .sort((x, y) => y.length - x.length);
     const midKept = []; for (const f of mid) if (!midKept.some((k) => k.includes(f))) midKept.push(f);
@@ -150,6 +168,12 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('scripts/hint-check.mjs')) {
     // ★ R027 — 오탐 두 가지를 막는다
     [{ hint: '세포를 떼어 낸 환자의 이름에서 따왔다', answer: '헬라 세포', question: '…연구에 쓰이는 세포주는?' }, 'none'],
     [{ hint: "이름은 '넷' 을 뜻하는 그리스어 접두어에서 왔다", answer: '테트리스' }, 'none'],
+    // ★ G030 — 대표 정답을 품은 변형의 꾸밈 낱말(G029 H2 막힘 가드 131)
+    [{ hint: '피레네산맥 속 작은 공국으로, 프랑스 대통령이 공동 군주를 맡는다', answer: '안도라', variants: ['안도라 공국'] }, 'none'],
+    [{ hint: '흔히 안도라 공국이라 부르는 피레네산맥의 나라', answer: '안도라', variants: ['안도라 공국'] }, 'full'],
+    [{ hint: "'선생' 역의 참가자가 전기 충격 버튼을 누르게 한, 권위에 대한 복종 실험이다", answer: '밀그램 실험', variants: ['밀그램 복종 실험'], question: '1961년 예일대에서 한 심리 실험은?' }, 'none'],
+    [{ hint: '밀그램이라는 심리학자가 한 실험', answer: '밀그램 실험', variants: ['밀그램 복종 실험'] }, 'partial'],
+    [{ hint: '피스톤이 네 번 오가는 엔진 방식이다', answer: '4행정 기관', variants: ['4행정 엔진'] }, 'partial'],
   ];
   // ★ R030 — 경고 (V003 실측 사례)
   const warnCases = [
