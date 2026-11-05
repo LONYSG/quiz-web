@@ -1,0 +1,35 @@
+[GEN G031 — ★ 등급 1·2 힌트 없는 1,728 에 핵심 한 줄 힌트(찬종 2026-11-06 "권장대로" — H0 보류 해제 · 15 H0 · H13 고침) + 빈 해설 15 · hint-v7 · blind ≥80% · DB 쓰기 허용(아래 열만) · 생성 없음 · 밤샘 체인 2/3(G030 뒤 · 끝나면 gen-next2.md = G032)]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
+TASK: 활성 힌트 4,778 은 전부 hint-v7 이고 세 등급 표본이 83~87% ok 다. 남은 것은 **힌트가 아예 없는 등급 1·2 의 1,728**(1: 545 · 2: 1,183)이다 — 실측(11-05 · tmp/hint-solve.md): 힌트 없는 등급 1·2 는 59% 가 10초 안에 맞히지만 **17% 는 끝내 못 맞혀 정답 공개 때 남는 게 없다**. 찬종 결정(2026-11-06): 단다. 이 라운드는 G028 C 흐름 그대로(쓰기 Opus 둘 + blind sonnet 하나 동시 — G028 7절 ⑦ "두 배 빠름") 1,728 전부에 **핵심 한 줄(40~80자)** 을 달고, 알가치 1 25 는 핵심 + 연결 고리로, 빈 해설 15 는 둘째 줄 해설을 함께 쓴다.
+실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` · 바꾸지 않는다)
+
+■ 고정 규칙: docs/16 그대로 (07 **DG-069** 부터(G030 이 DG-068) · 13 은 **새 줄 없음**(CV-141~ 는 V034 몫 · 줄 끝 닫을 것도 없음) · README G 표 · G031.txt). **DB 쓰기 허용** — 쓰기 전 `node scripts/backup.mjs`(한 번) · 반영은 `scripts/g031-apply-hints.mjs`(`g028-apply-hints.mjs` 를 베낌 — 멱등 · `--dry-run` 기본 · `--apply` · `--undo` · `--upto` · guardNoOpenGames · WHERE general_hint IS NULL) · 되돌리기 `data/pipeline/audit/g031-undo-hints.json` · 쓰기 직전 **열린 판 0**(열려 있으면 10분마다 다시 · 쓰기는 계속). **쓰는 열은 이것만**: `questions.general_hint`(지금 NULL/빈 것만) · `general_hint_version`('hint-v7') · `explanation`(빈 15 + 핵심을 힌트로 가져가 해설이 비는 것). 질문 · 등급 · 알가치 · 활성 · 변형은 손대지 않는다.
+■ ★★ 동시 라운드 — **VERIFY V034**(읽기만 — crossans 표본 · 👎 38 · 실측 대조 · 등급 1·2 힌트는 보지 않는다) · **MAIN R074**(client · 스크립트 · 0029 검사 DB). 겹치는 표 없음. `v034-*` · `tmp/` 는 add 하지 않는다. 05 · 06 · 07 · 15 · README 는 쓰기 직전 fetch · rebase --autostash · 내 파일만 add · force 금지. **찬종은 자는 중 — 묻지 않는다 · 막히면 7절에 적고 다음으로.** 라이브 서버는 건드리지 않는다.
+■ 토큰: **넉넉하다 — 1,728 전부 · 줄이지 않는다.** 묶음 40 × 44(마지막 8) · 쓰기 에이전트 둘 동시 + blind 하나(동시 3 이내 · 메모리 1.5GB 아래면 둘) · 다섯 묶음(200)마다 반영·커밋·push · `tmp/g031/STATE.md`. G028 실측(551 · 쓰기 약 3시간) → 약 8~9시간. 어디서 끊겨도 이어 갈 수 있게(16 §4).
+■ ★ 하위 에이전트 지시서 첫 줄: **외부 요청 User-Agent 에 개인 정보 금지 — `quiz-web-g031/1.0` 만.** 위키 429 는 `tmp/g029/tools/wiki.mjs` 꼴(4초 간격).
+
+■ 먼저 읽기
+- **ai-out/G028.txt 전체**(0절 ②(alga 1 85% · 묶음 표) · 3절 C 흐름 · "판정자가 많이 샌 꼴"(한국 가요·예능 · 옆 대상 · 원어) · ★ 새 교훈 1(crossans 보고 핵심 이름까지 빼지 말 것) · 7절 ⑦) · `tmp/g028/AVOID.md`(이어 쓴다 — 없으면 G028.txt 3절에서 다시 만든다) · `tmp/g028/tools/`(prep · blind(괄호 지움) · equiv · crossans · wait-apply — 없으면 `scripts/g028-apply-hints.mjs` · `g029-*` 와 보고서로 복원) · `scripts/g028-apply-hints.mjs` · `scripts/hint-check.mjs`(G030 이 손본 partial 규칙 포함) · `scripts/hint-check-active.mjs`(crossans 경고) · `scripts/criteria-sync.mjs`
+- **ai-out/V033.txt**(등급 1·2 판정 — fix 의 70% 가 **사전 뜻풀이·이름 풀이 조각(H2)** · 예 5 · 6절) · **docs/15 §4-1 전체** — ★ 설계가 2026-11-06 **H0 · H13 을 고쳤다**(등급 1·2 = 핵심 한 줄 40~80자 · 전부 단다 · 알가치 1 은 핵심 + 연결 고리) + 2026-11-05 V033 H2 예시(쉬운 일반명사·음식 정답은 뜻풀이 대신 쓰임·대표 장면 · 필연적 일반어 허용) + H12 예시 · H2 · H3 · H7 · H9 · H10 · §3-2 · MD9 · docs/19 §8 · §9-1
+- `pipeline/prompts/hint-v7.md`(G030 A 가 sync 했을 것 — `criteria-sync --check` 로 확인 · 다르면 A 에서 sync) · `ai-out/G030.txt`(직전 라운드 — 0절 · 7절 · 등급 1·2 에 손댄 것이 있으면(V033 fix 18 · 380 훑기) 그 id 는 이번 대상에서 빠진다(힌트가 생겼으므로))
+- DB 실측(설계 2026-11-06 00:40 KST): 활성 6,506 · 힌트 없음 **등급 1 545(해설 빈 12 · 알가치 1 4) · 등급 2 1,183(해설 빈 3 · 알가치 1 21)** = 1,728 · 활성 힌트 4,778 전부 hint-v7 · 열린 판 0.
+
+■ 설계 결정(찬종 2026-11-06 — 여기 적힌 대로 · 모르면 7절)
+- **대상** = `is_active AND difficulty_score <= 2 AND (general_hint IS NULL OR general_hint = '')`(시작 때 고정 `audit/g031-plan.json` · 1,728 ± G030 분). 순서 = 알가치 1(25) → 등급 1(545) → 등급 2(1,183). 같은 정답 무리는 같은 묶음(sameAnswerActive).
+- **세기(H13 새 문구)**: 핵심 한 줄 **40~80자**(두 문장 금지 · 한 문장) · 알가치 1 은 핵심 + 연결 고리(120자 안). **V033 교훈**: 쉬운 일반명사·음식·일상 말 정답은 **뜻풀이·이름 풀이·번역 조각 금지** — 쓰임 · 대표 장면 · 곁들이는 것 · 유래(H6) 로. 질문이 이미 정의를 다 말하면 대표 쓰임·일화(H3). 숫자 정답은 무엇의 수 + 왜(H7). 다른 문항 정답 이름은 핵심에 필요하면 그대로(H12 · crossans 는 경고). 해설(H4): 핵심이 해설에 있으면 힌트로 가져가고 해설은 둘째 줄 — 해설이 비거나 힌트와 4글자 겹치면 둘째 줄을 새로(140자 안 · 출처).
+- **blind**(sonnet · 힌트 + 대분류 · 괄호 지움 · 표기만 다른 답 equiv): 목표 **≥80%**(쉬운 등급이라 90% 넘을 것 — 묶음마다 수치) · 못 맞히면 한 번 더 → miss 는 ② 예(정답 공개 뒤 '그게 그거구나')면 반영 + `g031-blind-miss.json` · 표기만 다른 답 → `g031-variant-candidates.json`(변형은 쓰지 않는다 — V 판정 뒤). 판정자가 한국 가요·예능에 약한 것은 G026~G029 와 같이 ② 로 본다.
+- **hint-check**: 막힘 0(H2 조각 — 변형 6,449 포함 · G030 의 partial 규칙) · blank 0 · 120자 · explain 0 · crossans 는 경고(수만).
+- **hintBasis**: 사실은 출처(위키 원문 · 1차 출처)로 닫은 것만(H5) — 못 닫으면 상식 수준의 대표 쓰임만 · 7절에 수.
+- **손대지 않는 것**: 힌트가 이미 있는 문항 · 등급 3~5 · 질문 · 변형 · worth · difficulty · is_active · 15 규칙 문구 · 13.
+
+■ 할 일 (순서대로 · 단계마다 dry-run 표 → 0절 → apply → undo → 커밋)
+A. **준비**(DB 안 씀): `criteria-sync --check`(다르면 sync · 머리글 "★ G031: sync — 버전 그대로") · `tmp/g031/tools/`(G028 것 복원·베낌 — prep(대상 고정 · 묶음 · sameAnswerActive · 해설 · 알가치) · blind · equiv · crossans · wait-apply) · `scripts/g031-apply-hints.mjs` · HINT-INSTRUCTIONS.md(15 §4-1 글자 그대로 + H13 새 문구 + V033 H2 예시 + AVOID) · `npm test` · 백업(0절에 파일 이름). 커밋 1.
+B. **묶음 h-01 … h-44**: prep → 쓰기 Opus(둘 동시 · 묶음 40) → hintcheck(막힘 0 · blank 0 · 80자 경고 · 해설 겹침) → blind sonnet → equiv → redo → blind2 → miss → **다섯 묶음마다** apply(`--upto`) → 커밋·push · STATE.md. 묶음 표(쓴 수 · blind 처음 +표기 · 다시 씀 · 둘째 맞힘 · 해설 쓴 수 · hintBasis web · miss).
+C. **표본 재독**(GEN 직접 · seed 31 · 40 — 알가치 1 10 · 등급 1 15 · 등급 2 15): ①② · H2 노출 0(특히 뜻풀이 조각) · 길이 40~80 · 사실 출처 · 해설 둘째 줄. 0절에 20 · 나머지 4절.
+D. **끝 점검**(수치로 0절): 활성 6,506 그대로 · **힌트 없는 활성 문항 0**(등급 1·2 포함 — 건너뜀·비움 0 · 있으면 id 와 까닭) · `general_hint_version='hint-v7'` = 활성 전부(6,506 ± G032 pending 은 빼고) · 백업 대조로 바뀐 열 = general_hint(1,728 ± ) · general_hint_version · explanation(수) 뿐 · `hint-check-active` 막힘 0 · explain 0 · blank 0 · crossans n(전후) · blind 표(등급·알가치별) · undo dry-run 통과 · `criteria-sync --check` · `npm test` · 열린 판 0 시각 · 메모리 · 하위 에이전트 수 · hint:solve 는 돌리지 않는다(설계 몫).
+E. **문서**: 07 **DG-069**(1,728 · blind n% · 해설 n · 되돌리기 · H0 해제는 설계 결정 2026-11-06 인용) · 15 §4-1 머리 한 줄 + 끝 메모 한 줄("★ G031: 등급 1·2 힌트 없던 1,728 에 핵심 한 줄(blind n%) — **활성 전부 힌트 있음**") — 규칙 문구는 손대지 않는다 · 01 8장(힌트 — "하는 보류" 줄을 "전 등급" 으로 한 줄) · 05 · 06 · README G 표 · G031.txt.
+■ 산출물: `ai-out/G031.txt`(0절: 묶음 표 · 등급·알가치별 blind · 표본 20 전후 · 해설 15+ 전후 · 반영 시각 · 되돌리기 · 1~7절 · 7절 결정 필요(miss 목록 · 변형 후보 · 못 닫은 사실 · 15 후보)) · `scripts/g031-apply-hints.mjs` · `audit/g031-plan.json` · `g031-raw/` · `g031-undo-hints.json` · `g031-blind-miss.json` · `g031-variant-candidates.json` · `tmp/g031/`(git 밖).
+■ 하지 말 것: **새 문항 생성**(그건 G032) · 힌트 있는 문항 다시 쓰기 · 등급 3~5 · question_text · 변형 넣기 · worth · difficulty · is_active · 15 규칙 문구 · 15 SYNC(sync 만) · hint-v8 · 13 · `v034-*` · `g030-*` 고치기 · 라이브 서버 · 판 열려 있을 때 쓰기 · 키 필요한 API · User-Agent 개인 정보 · force push · 찬종에게 묻기.
+■ 커밋: 위 파일만 · A · B(다섯 묶음마다) · C·D·E · fetch → rebase --autostash → push · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+■ 확인할 것 (원칙 7): 힌트 없는 활성 등급 1 545 · 2 1,183(G030 이 등급 1·2 힌트를 손댔으면 ±) · 해설 빈 15 · 알가치 1 25 · 활성 힌트 전부 hint-v7 · `criteria-sync --check`(G030 A 가 맞췄으면 통과) · hint-check-active 막힘 0 · 07 마지막 DG-068 · 13 마지막 CV-140 또는 그 뒤(V034 가 쓰는 중) · 열린 판 0. 다르면 1절에 적고 실측대로.
+■ ★ 이어서: 보고서 · 커밋 · push 를 끝내면 **같은 창에서 `ai-out/briefs/gen-next2.md`(G032 — 생성 재개)를 읽고 바로 시작한다**(찬종에게 묻지 않는다). 터미널 마지막 줄 "G031 끝 — G032 로".
+■ 답변: 한국어 · 터미널 5줄 이내.
