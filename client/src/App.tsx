@@ -27,6 +27,7 @@
 //     "방 ID를 입력해 주세요." 가 남는다. 이미 해결된 문제를 화면이 계속 문제라고 말한다.
 // =============================================================================
 
+import { OFFICE_NOTICE } from './office.js';
 import { onSignedIn, onSignedOut } from './prefsSync.js';
 import { useCallback, useEffect, useMemo, useRef, useState, lazy, Suspense } from 'react';
 import { io, type Socket } from 'socket.io-client';
@@ -77,6 +78,12 @@ export default function App() {
   const [title, setTitle] = useState('');
   const [joinId, setJoinId] = useState('');
   const [notice, setNotice] = useState<ToastContent | null>(null);
+  // ★ R074 (D-322 ②) — 사무실 모드로 바꿔 소리를 껐다는 한 줄
+  useEffect(() => {
+    const on = (e: Event) => setNotice({ message: String((e as CustomEvent<string>).detail) });
+    window.addEventListener(OFFICE_NOTICE, on);
+    return () => window.removeEventListener(OFFICE_NOTICE, on);
+  }, []);
 
   // ★ R044 진단 — App 이 몇 번 그려졌나 (ui-check 가 읽는다 · 화면에는 안 보인다)
   (window as unknown as { __qwAppRenders?: number }).__qwAppRenders = ((window as unknown as { __qwAppRenders?: number }).__qwAppRenders ?? 0) + 1;

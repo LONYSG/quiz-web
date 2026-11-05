@@ -183,6 +183,8 @@ export default function Prefs({ variant = 'footer', onLogout, tabs = false }: Pr
                 type="button"
                 className={theme === t.id ? 'seg-btn active' : 'seg-btn'}
                 aria-pressed={theme === t.id}
+                title={t.desc}
+                data-theme-btn={t.id}
                 onClick={() => setTheme(t.id)}
               >
                 {t.label}

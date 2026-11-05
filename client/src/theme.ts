@@ -11,7 +11,8 @@
 // =============================================================================
 
 // ★ R044 (건우) — 원색(pop) 테마 삭제. 저장된 'pop' 은 기본(파스텔)으로 읽는다 (isTheme 이 거른다)
-export type ThemeId = 'pastel' | 'night';
+// ★★ R074 (D-322) — 사무실 모드(cmd 창 꼴) 추가 · 켜고 끄는 것(소리 · 탭 제목 · 그림 → 글자)은 office.ts
+export type ThemeId = 'pastel' | 'night' | 'office';
 
 export interface ThemeInfo {
   id: ThemeId;
@@ -23,7 +24,8 @@ export interface ThemeInfo {
 /** ★ 순서가 Alt+T 순환 순서다. 첫째가 기본값이다 */
 export const THEMES: readonly ThemeInfo[] = [
   { id: 'pastel', label: '파스텔', desc: '밝고 부드러운 색 · 둥근 모양 (캐치마인드 느낌)' },
-  { id: 'night', label: '밤', desc: '어두운 바탕 · 형광 포인트' },
+  { id: 'night', label: '밤', desc: '어두운 바탕 · 차분한 포인트' },
+  { id: 'office', label: '사무실', desc: '슬쩍 봐도 딴짓인지 모르게 · cmd 창 꼴' },
 ];
 
 const KEY = 'qw.theme.v1';

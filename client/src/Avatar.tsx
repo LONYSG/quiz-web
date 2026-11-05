@@ -9,6 +9,7 @@
 
 import { useState } from 'react';
 import { openPersonCard } from './PersonCard.js';
+import { useIsOffice } from './office.js';
 
 interface Props {
   nickname: string;
@@ -25,6 +26,8 @@ interface Props {
 
 export default function Avatar({ nickname, colorIndex, large, xs, accountId, avatarV, zoom }: Props) {
   const [broken, setBroken] = useState(false);
+  // ★ R074 (D-322 ①) — 사무실 모드: 사진 대신 첫 글자(`[닉]` 꼴 — 색 칸 없음)
+  const office = useIsOffice();
   const initial = [...nickname.trim()][0]?.toUpperCase() ?? '?';
   const canZoom = Boolean(zoom && accountId);
   const cls = ['avatar', large ? 'lg' : '', xs ? 'xs' : '', canZoom ? 'zoomable' : ''].filter(Boolean).join(' ');
@@ -43,7 +46,7 @@ export default function Avatar({ nickname, colorIndex, large, xs, accountId, ava
         },
       }
     : {};
-  if (accountId && avatarV && !broken) {
+  if (accountId && avatarV && !broken && !office) {
     return (
       <img
         className={`${cls} photo`}

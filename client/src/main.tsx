@@ -6,6 +6,7 @@ import { initTheme } from './theme.js';
 import { installPrefsSync } from './prefsSync.js';
 import { installUiMode } from './uiMode.js';
 import { installNoCopy } from './noCopy.js';
+import { installOffice } from './office.js';
 // ★★ R039 — Pretendard 를 우리 서버에서 낸다 (동적 서브셋 — 화면에 쓰인 글자 조각만 내려받는다)
 import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 import './styles.css';
@@ -20,6 +21,8 @@ installNoCopy();
 installAudioUnlock();
 // ★ R034 — 로그인한 동안 테마·소리를 계정에 저장한다
 installPrefsSync();
+// ★ R074 (D-322) — 사무실 모드: 소리 끄고 되돌리기 · 탭 제목 · 파비콘
+installOffice();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
