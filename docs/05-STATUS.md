@@ -9,6 +9,7 @@
 > ★ Track D 추가: **V029**(알가치 전수 판정 6,507 — 1:1,038 · 2:3,101 · 3:2,368 · 5등급의 알가치 3 은 15 뿐 · `audit/v029-worth.json` · DB 미적용 · 적용은 G025 · `ai-out/V029.txt`) — 위 Track D 줄은 G023 기준.
 > ★ Track D 추가: **V031**(hint-v7 표본 판정 274 — ok 238 · fix 19 · unsure 17 · 해설 313 중 fix 9 · 변형 43 accept 27 · 사실 13 틀림 3 · worth.json 재독 9 반영 · G025 글 fix 3 · DB 미적용 · CV-121~126 · `ai-out/V031.txt`).
 > ★ Track D 추가: **V032**(등급 3 hint-v7 표본 판정 308 — ok 240 · fix 37 · unsure 31 · 해설 fix 2 · 변형 65 accept 40 · 사실 틀림 2 · 아르곤 질문 맞음 · DB 미적용 · CV-127~134 · 적용은 G029)
+> ★ Track D 추가: **V033**(등급 1·2 hint-v7 표본 판정 171 — ok 144(84.2%) · fix 18 · unsure 9 · 해설 fix 2 · 변형 12 accept 11 · 사실 4 · 질문 읽기 60 rewrite 8(G030 범위 ≈80~120) · DB 미적용 · CV-135~140 · 적용은 G030)
 > ★ Track D 추가: **V030**(비유일 589 · 변형 9,688 · 시간 의존 106 판정 — narrow 39 · accept 90 · drop 5 · 변형 받음 2,800 · 불확실 964 · pin 5 ·  · DB 미적용 · 변형 판정자 자가 시험 통과 못 함 → 받음 low/mid 는 적용 전 재독 · CV-115~120).
 
 ---

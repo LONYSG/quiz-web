@@ -57,6 +57,7 @@
 | V030.txt | 정답 비유일 589 · 변형 9,688 · 시간 의존 106 판정 VERIFY — unique 455 · narrow 39 · accept 90 · drop 5 · pin 5 · 변형 받음 2,800 · 불확실 964 · 안 받음 5,924 · 자가 시험 통과 못 함(19/30) → 반박 2차 · 표본 재독 · CV-115~120 · C85 |
 | V031.txt | hint-v7 표본 판정 274(+해설 313) VERIFY — 힌트 ok 238 · fix 19 · unsure 17 · 해설 fix 9 · 변형 43(accept 27 · reject 10) · 사실 13(틀림 3) · worth.json 재독 9 반영 · G025 글 fix 3 · 👎 6 · 반복 오류 9종 · CV-121~126 · C86 |
 | V032.txt | 등급 3 hint-v7 표본 판정 308(+해설 67) VERIFY — ok 240 · fix 37 · unsure 31 · 해설 fix 2 · 변형 65(accept 40 · reject 18) · 사실 5(틀림 2 · 아르곤 맞음) · 제보 읽기 2 + 심화형 40 · 평가 13 → `audit/v032-*.json` · CV-127~134 · C87 |
+| V033.txt | 등급 1·2 hint-v7 표본 판정 171(+해설 54) VERIFY — ok 144(84.2%) · fix 18 · unsure 9 · 해설 fix 2 · 변형 12(accept 11 · reject 1) · 사실 4 · 질문 읽기 60(rewrite 8) · V031 unsure 반대 1 → `audit/v033-*.json` · CV-135~140 · C88 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
