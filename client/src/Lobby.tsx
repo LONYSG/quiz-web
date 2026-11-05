@@ -23,6 +23,7 @@ import KickFlow, { type KickTarget } from './KickFlow.js';
 import PeoplePanel from './PeoplePanel.js';
 import { openPopup, usePopup, useCurrentPopup } from './popup.js';
 import MobileMenu from './MobileMenu.js';
+import TourHost from './Tour.js';
 import InvitePopup from './InvitePopup.js';
 import InfoText from './InfoText.js';
 import Icon from './Icon.js';
@@ -784,6 +785,8 @@ export default function Lobby({
         </div>
       </header>
 
+      {/* ★★★ R073 (D-319) — 첫 안내 투어(로비 · 결과 화면 · 팝업 없을 때 · 계정당 한 번) */}
+      <TourHost state={state} mobile={uiModeNow === 'mobile'} />
       {/* ★★ R042 B — 모바일 ☰ 메뉴 (팝업 — 한 번에 하나). 항목을 누르면 그 창이 이 자리를 넘겨받는다 */}
       {menuOpen && (
         <MobileMenu

@@ -18,6 +18,30 @@ let signedIn = false;
 let applying = false;
 let timer: ReturnType<typeof setTimeout> | null = null;
 let installed = false;
+// ★★ R073 (D-319) — 계정 값을 받았나(투어 · 가입 선물 창이 tourSeen 을 계정 값으로 보고 정하게 — 다른 기기에서 본 투어를 또 띄우지 않는다)
+let loaded = false;
+const loadedWaiters = new Set<() => void>();
+function markLoaded(): void {
+  loaded = true;
+  for (const w of loadedWaiters) w();
+  loadedWaiters.clear();
+}
+/** 계정 값을 받을 때까지(실패해도 · 최대 timeoutMs) */
+export function whenPrefsLoaded(timeoutMs = 4000): Promise<void> {
+  if (loaded) return Promise.resolve();
+  return new Promise((resolve) => {
+    const t = setTimeout(() => {
+      loadedWaiters.delete(done);
+      resolve();
+    }, timeoutMs);
+    const done = () => {
+      clearTimeout(t);
+      resolve();
+    };
+    loadedWaiters.add(done);
+  });
+}
+export const prefsLoaded = (): boolean => loaded;
 
 function current(): ServerPrefs {
   const s = getSoundPrefs();
@@ -99,10 +123,12 @@ export async function onSignedIn(): Promise<void> {
   } catch {
     /* 불러오지 못해도 브라우저 값으로 계속한다 */
   }
+  if (signedIn) markLoaded();
 }
 
 export function onSignedOut(): void {
   signedIn = false;
+  loaded = false;
   if (timer) clearTimeout(timer);
   timer = null;
 }

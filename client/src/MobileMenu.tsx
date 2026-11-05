@@ -78,7 +78,7 @@ export default function MobileMenu({ shopDot = false, canRename, onInvite, onFri
               <Icon icon={Pencil} /> 프로필
             </button>
           )}
-          <button type="button" className="menu-item" onClick={onShop}>
+          <button type="button" className="menu-item" data-menu-shop onClick={onShop}>
             <Icon icon={Gift} /> 포인트샵
             {shopDot && <span className="menu-dot" data-shop-dot aria-label="새" />}
           </button>

@@ -33,6 +33,10 @@ export function openEmojiHelp(force = true): boolean {
   openPopup('emoji');
   return true;
 }
+/** 다음에 창이 열리면(사람이 😊 을 눌러도) 카드를 한 번 보인다 — 투어 ③ */
+export function armEmojiHelp(on = true): void {
+  forceNext = on;
+}
 /** 카드가 닫혔다(투어가 듣는다) */
 export const EMOJI_HELP_CLOSED = 'qw:emoji-help-closed';
 

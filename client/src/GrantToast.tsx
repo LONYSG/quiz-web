@@ -9,6 +9,7 @@ import { Gift } from 'lucide-react';
 import Icon from './Icon.js';
 import { openPopup } from './popup.js';
 import { sfx } from './sound.js';
+import { isTourPending } from './Tour.js';
 
 interface Grant {
   id: string;
@@ -53,9 +54,13 @@ export default function GrantToast({ accountId }: { accountId: string }) {
         // ★ R067 — 지급을 받았으면 포인트샵 빨간 점이 잔액을 다시 읽는다
         if (all.length > 0) window.dispatchEvent(new Event('qw:grants'));
         const gift = all.filter((g) => g.reason === 'signup');
+        // ★★ R073 (D-319) — 투어를 아직 안 봤으면 가입 선물 창을 띄우지 않는다(투어 ①이 그 말을 한다) · 이미 본 계정에 뒤늦게 오면 옛 창 그대로
         if (alive && gift.length > 0) {
-          setSignup(gift.reduce((s, g) => s + g.amount, 0));
-          sfx('mg-final');
+          void isTourPending().then((pending) => {
+            if (!alive || pending) return;
+            setSignup(gift.reduce((s, g) => s + g.amount, 0));
+            sfx('mg-final');
+          });
         }
         const t = grantToastText(all.filter((g) => g.reason !== 'signup'));
         if (!alive || !t) return;

@@ -8493,3 +8493,73 @@ button.preset.shake {
 .emoji-help-actions button {
   margin: 0 0 0 auto;
 }
+
+/* ★★★ R073 (D-319) — 첫 안내 투어: 구멍 둘레 네 판(어둡게 · 누르기 막음) · 구멍 테두리 · 말풍선 */
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  pointer-events: none;
+}
+.tour-shade {
+  position: fixed;
+  background: rgba(10, 12, 24, 0.55);
+  pointer-events: auto;
+}
+.tour-ring {
+  position: fixed;
+  border: 3px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35), 0 0 18px var(--accent);
+  pointer-events: none;
+  animation: tour-pulse 1.2s ease-in-out infinite alternate;
+}
+@keyframes tour-pulse {
+  from { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 0 10px var(--accent); }
+  to { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.45), 0 0 22px var(--accent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-ring { animation: none; }
+}
+.tour-bubble {
+  position: fixed;
+  box-sizing: border-box;
+  padding: 12px 14px 10px;
+  border: var(--bw) solid var(--accent);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-pop);
+  pointer-events: auto;
+  animation: pop-in 160ms var(--ease-pop);
+}
+.tour-bubble p {
+  margin: 0;
+}
+.tour-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 1.02rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.tour-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+.tour-line {
+  margin-top: 3px !important;
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+.tour-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+.tour-actions button {
+  margin: 0;
+}
