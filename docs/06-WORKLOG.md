@@ -43,6 +43,14 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-05 — V031 반영 + 등급 1·2 기존 힌트 551 hint-v7 · 활성 힌트 전부 hint-v7 (G028, GEN)
+
+- **무엇을**: 15 §4-1 예시 넷 sync(+ 라운드 중 V032 예시 다시 sync) · blind 도구 괄호 지움 · V031 힌트 fix 21 · unsure 18 · 해설 18 · 사실 13 · G025 글 · 모헨조다로 L3 · 제보 #75 · #77 변형 · #78 해설 반영 · 등급 1·2 에 이미 있던 힌트 551 을 hint-v7 핵심 한 줄로(알가치 1 은 + 연결 고리) · 해설 함께 54.
+- **어떻게**: B 는 GEN 직접(위키 API 대조 · WebSearch 3) → scripts/g028-apply-b.mjs --part v031|facts|g025|variants · blind 28 → 다시 5. C 는 14 묶음 · 쓰기 Opus 2 동시 + blind sonnet → 다시 쓰기 → blind2 → scripts/g028-apply-hints.mjs 세 번(11:03 · 14:20 · 14:48 · 매번 열린 판 0). 11:5x 찬종 재부팅으로 한 번 멈춤(반영 경계에서) → 재개.
+- **결정**: DG-066 · CV-121~126 끝.
+- **검증**: 활성 힌트 4,778 전부 hint-v7 · 백업 대비 바뀐 열 = general_hint 579 · version 551 · explanation 73 · question_text 9 · category_id 2 · question_answers +2 뿐 · hint-check-active 막힘 0 · explain 0 · blank 0 · criteria-sync --check · npm test 597 · undo 다섯 dry-run 통과.
+- **남은 것**: miss 12(B 6 · C 6) · 변형 후보 · 사실 미확인 · H12 이름 대조 178(서버 R050 이 뒤로 미룸) — G028.txt 7절 · 변형 적용은 G029.
+
 ## 2026-11-01 — 힌트 재편 2차: hint-v7 · 등급 3 힌트 2,560 · 해설 함께 359 (G027, GEN)
 
 - **무엇을**: 15 §4-1 예시 다섯 + V031 예시를 hint-v7 에 sync(버전 그대로) · hint-check `blank` 경고 · 등급 3 활성 2,560 힌트 전부 다시 씀(H13 — 알가치 2·3 핵심 한 줄 · 알가치 1 핵심 + 연결 고리) · 핵심이 해설에 있던 359 는 해설을 둘째 줄 사실로(빈 해설 7 새로 씀).
