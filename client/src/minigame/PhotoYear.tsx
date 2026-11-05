@@ -8,7 +8,7 @@
 import type { Socket } from 'socket.io-client';
 import type { MinigameView } from '../useRoom.js';
 import { usePlayT0, useFrameNow } from './playClock.js';
-import { NumberInput, QuizImage, SeenBadge } from './QuizParts.js';
+import { NumberInput, QuizImage, SeenBadge, dimsOf } from './QuizParts.js';
 
 interface Props {
   socket: Socket;
@@ -33,7 +33,7 @@ export default function PhotoYear({ socket, view, serverNow, mobile }: Props) {
       </div>
       <SeenBadge view={view} />
       <div className="photo-frame" data-mode="plain">
-        <QuizImage imageId={p.imageId as string | null} alt="찍은 해를 맞힐 사진" dummy={String(p.dummyShape ?? 'box')} className="photo-img" />
+        <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt="찍은 해를 맞힐 사진" dummy={String(p.dummyShape ?? 'box')} className="photo-img" />
       </div>
       <p className="quiz-ask photoyear-ask">몇 년도에 찍은 사진일까요?</p>
       <NumberInput view={view} socket={socket} t0={t0} unit="년" allowDecimal={false} placeholder="예: 1988" year={{ min, max }} />

@@ -82,6 +82,8 @@ export const BUNDLES = [
   { id: 'r071', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R071: '1', SHOT_DIR: 'r071', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '12000', RATE_ASK_FORCE: '1,3', RATE_SKIP_LOGIN: '^(bot|r10_)' }) },
   // ★ R073 — 이모티콘 끌어서 등록(PC · m360 터치) · 😊 안내 카드(PC 5 · 모바일 3) · 첫 안내 투어(PC · m360 · m390 · 게임 중 · 결과 · 기존 계정) · ⓘ 네 탭 줄바꿈 (R073_ONLY=drag|card|tour|info)
   { id: 'r073', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R073: '1', SHOT_DIR: 'r073', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
+  // ★ R074 — 사진 공개(§A · 느린 망) · 내 자리 · 팝업 아래 끝(§B) · 등록 안내(§C) · 사무실 모드 · 밤 테마(§D) (R074_ONLY=photo|bottom|emoji|theme)
+  { id: 'r074', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R074: '1', SHOT_DIR: 'r074', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R068 — 제보 20(풍선 · 고기 소리 · 고르기 · 난이도 · 업적 · ⚙ 제보 · 이모티콘 · 사진 · 지난 판 평가) · 정답 공개 평가 3단계 · photoyear · 긴 질문 240 (R068_ONLY=lab|room|avatar|game)
   { id: 'r068', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R068: '1', SHOT_DIR: 'r068', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '12000', RATE_SKIP_LOGIN: '^(bot|r10_)', RATE_ASK_FORCE: '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20' }) },
   { id: 'r066', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R066: '1', SHOT_DIR: 'r066', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },

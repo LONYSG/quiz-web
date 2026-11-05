@@ -10,7 +10,7 @@ import { WORLDPRICE_MAJOR, formatInt } from '@quiz/shared';
 import { Check, X } from 'lucide-react';
 import Icon from '../Icon.js';
 import type { MinigameRoundRow, MinigameView } from '../useRoom.js';
-import { QuizImage } from './QuizParts.js';
+import { QuizImage, dimsOf } from './QuizParts.js';
 
 type Row = { cc: string; countryKo: string; localPrice: number; currency: string; krw: number };
 
@@ -47,7 +47,7 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
   if (view.key === 'price') {
     return (
       <div className="quiz-reveal">
-        <QuizImage imageId={p.imageId as string | null} alt={String(p.name ?? '')} className="quiz-pic small" />
+        <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt={String(p.name ?? '')} className="quiz-pic small" />
         <div>
           <p className="quiz-name">{String(p.name ?? '')}</p>
           <p className="quiz-answer mono">{formatInt(Number(rv.priceKrw ?? 0))}원</p>
@@ -102,7 +102,7 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
   if (view.key === 'photo') {
     return (
       <div className="quiz-reveal">
-        <QuizImage imageId={p.imageId as string | null} alt={String(rv.answer ?? '')} dummy={String(p.dummyShape ?? 'box')} className="quiz-pic" />
+        <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt={String(rv.answer ?? '')} dummy={String(p.dummyShape ?? 'box')} className="quiz-pic" />
         <div>
           <p className="quiz-answer">{String(rv.answer ?? '')}</p>
           {rv.explanation ? <p className="quiz-note">{String(rv.explanation)}</p> : null}
@@ -116,7 +116,7 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
     const range = Array.isArray(rv.yearRange) ? (rv.yearRange as number[]) : null;
     return (
       <div className="quiz-reveal photoyear-reveal">
-        <QuizImage imageId={p.imageId as string | null} alt={String(rv.title ?? '')} dummy={String(p.dummyShape ?? 'box')} className="quiz-pic" />
+        <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt={String(rv.title ?? '')} dummy={String(p.dummyShape ?? 'box')} className="quiz-pic" />
         <div>
           <p className="quiz-answer mono" data-photoyear-answer>
             <span className="nowrap">{String(rv.year ?? '')}년</span>
@@ -134,7 +134,7 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
     const d = Number(rv.displayDecimals ?? 0);
     return (
       <div className="quiz-reveal">
-        {Boolean(p.imageId || p.dummy) && <QuizImage imageId={p.imageId as string | null} alt="" className="quiz-pic small" />}
+        {Boolean(p.imageId || p.dummy) && <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt="" className="quiz-pic small" />}
         <div>
           <p className="quiz-name" data-wrap-ok>{String(p.question ?? '')}</p>
           <p className="quiz-answer mono">
@@ -156,12 +156,14 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
     const s = (p[k] as { label?: string; imageId?: string | null } | undefined) ?? {};
     const v = Number(rv[k] ?? 0);
     return (
-      <div className={`which-card reveal${ans === k ? ' answer' : ''}${mine?.extra?.choice === k ? ' picked' : ''}`} data-side={k}>
+      // ★ R074 (§A) — 옛 클래스 "reveal" 이 문제 공개 상자(.reveal — pop-in 0.94→1 · 여백 · 배경)와 겹쳐 공개 순간 카드가 커졌다 → which-revealed
+      <div className={`which-card which-revealed${ans === k ? ' answer' : ''}${mine?.extra?.choice === k ? ' picked' : ''}`} data-side={k}>
         {Boolean(s.imageId || p.dummy) && <QuizImage imageId={s.imageId ?? null} alt={s.label ?? ''} className="which-img" />}
         <span className="which-label">{s.label}</span>
         <span className="mono which-value">
           <span className="nowrap">
-            {v.toLocaleString('ko-KR')}
+            {/* ★ R074 — 연도(언제? 문항)는 쉼표 없이("1,994년" 이 보였다) */}
+            {p.kind === 'earlier' ? String(v) : v.toLocaleString('ko-KR')}
             {String(rv.unit ?? '')}
           </span>
         </span>

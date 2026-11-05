@@ -31,6 +31,8 @@ export interface QuizProduct {
 export interface QuizData {
   items: Record<QuizMinigameKey, QuizItem[]>;
   products: Map<string, QuizProduct>;
+  /** ★ R074 (§A · D-278 이어서) — 그림 id → [폭, 높이] (minigame_images.width · height). 화면이 받기 전에 칸 크기를 잡는다 */
+  imageDims: Map<string, [number, number]>;
   loadedAt: number;
 }
 
@@ -39,13 +41,15 @@ const TTL_MS = 60_000;
 
 export async function loadQuizData(force = false): Promise<QuizData> {
   if (!force && cache && Date.now() - cache.loadedAt < TTL_MS) return cache;
-  const [it, pr] = await Promise.all([
+  const [it, pr, im] = await Promise.all([
     query<{ item_id: string; game: string; payload: Record<string, unknown>; image_ids: string[]; attribution: string | null; as_of: string | null }>(
       `SELECT item_id, game, payload, image_ids, attribution, to_char(as_of, 'YYYY-MM-DD') AS as_of FROM minigame_items WHERE active ORDER BY item_id`,
     ),
     query<{ product_id: string; payload: QuizProduct['payload']; image_id: string | null; as_of: string | null; fx_as_of: string | null }>(
       `SELECT product_id, payload, image_id, to_char(as_of, 'YYYY-MM-DD') AS as_of, to_char(fx_as_of, 'YYYY-MM-DD') AS fx_as_of FROM minigame_products`,
     ),
+    // ★ R074 — 크기만(그림 바이트는 읽지 않는다)
+    query<{ image_id: string; width: number; height: number }>(`SELECT image_id, width, height FROM minigame_images`),
   ]);
   const items = Object.fromEntries(QUIZ_MINIGAME_KEYS.map((k) => [k, [] as QuizItem[]])) as Record<QuizMinigameKey, QuizItem[]>;
   for (const r of it.rows) {
@@ -56,6 +60,7 @@ export async function loadQuizData(force = false): Promise<QuizData> {
   cache = {
     items,
     products: new Map(pr.rows.map((r) => [r.product_id, { productId: r.product_id, payload: r.payload, imageId: r.image_id, asOf: r.as_of, fxAsOf: r.fx_as_of }])),
+    imageDims: new Map(im.rows.filter((r) => r.width > 0 && r.height > 0).map((r) => [r.image_id, [r.width, r.height] as [number, number]])),
     loadedAt: Date.now(),
   };
   return cache;

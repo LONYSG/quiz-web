@@ -8,7 +8,7 @@
 // ★ 시작 때 방에 없던 사람은 "구경 중" (입력이 없다).
 // =============================================================================
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import type { Socket } from 'socket.io-client';
 import {
   BALANCE_BOTTOM_Y,
@@ -158,7 +158,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
   const lastResult = view.roundResults[view.roundResults.length - 1];
 
   return (
-    <section className={`card mg-card mg-${view.key} mg-phase-${view.phase}`} data-phase={view.phase} aria-live="polite">
+    // ★ R074 (§A) — --mg-n = 참가자 수(정답 공개 표 줄 수) · PC 그림 높이 예산이 이 수만큼 줄을 뺀다(styles R074 절)
+    <section className={`card mg-card mg-${view.key} mg-phase-${view.phase}`} data-phase={view.phase} aria-live="polite" style={{ '--mg-n': String(Math.max(1, view.participants.length)) } as CSSProperties}>
       <header className="mg-head">
         <span className="mg-badge">
           <Icon icon={Gamepad2} /> 미니게임

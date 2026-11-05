@@ -8563,3 +8563,488 @@ button.preset.shake {
 .tour-actions button {
   margin: 0;
 }
+
+/* =============================================================================
+   ★★★ R074 (§A · D-278 이어서 — 찬종 11-05 "사진 공개되는 타이밍에 사진이 커지면서 스크롤 생기고 화면이 망가져")
+   재현(실제 판 · 1536×730 = FHD 125%): 사진 · 연도 맞히기 판 화면이 가운데 칸을 25~27px 넘침(문서 스크롤) · 어느 쪽? 은 판 · 공개 모두 123px 넘침
+   (그림이 폭 기준으로만 커지고 높이 예산이 없었다 — 공개 표 줄이 늘면 채팅이 화면 밖으로) · 사진 맞히기 10초 초성 줄이 오며 카드가 한 줄 커짐.
+   고침: ① 그림 칸은 받기 전에 크기를 잡는다(서버 imageDims → decode 크기 → 4:3 · 받은 뒤 바뀌지 않음)
+        ② PC 는 그림 높이 = 화면 높이 − 위 막대 − 채팅 최소 − 카드 여분 − 공개 표 줄(--mg-n) · 모바일은 화면 스크롤 하나(그대로)
+        ③ 사진 <img> 는 판 내내 같은 요소(모자이크는 덮개) · 힌트 줄은 처음부터 자리
+   ============================================================================= */
+.img-wrap.box-ratio {
+  width: min(100%, calc(var(--img-maxh, 240px) * var(--arn, 1.3333)));
+  height: auto;
+  min-height: 0;
+  margin-inline: auto;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.img-wrap.box-ratio > img.quiz-img,
+.img-wrap.box-ratio > .quiz-img.img-fail {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+.img-wrap.box-ratio > .quiz-img.img-fail {
+  padding: 0 6px;
+  font-size: 0.8rem;
+}
+.img-wrap.box-fill {
+  min-height: 0;
+}
+.img-wrap.w-quiz-pic {
+  --img-maxh: 240px;
+}
+.img-wrap.w-quiz-pic.w-small {
+  --img-maxh: 150px;
+}
+.img-wrap.w-which-img {
+  --img-maxh: 9999px;
+}
+:where(.ui-mobile) .img-wrap.w-quiz-pic {
+  --img-maxh: 180px;
+}
+:where(.ui-mobile) .img-wrap.w-quiz-pic.w-small {
+  --img-maxh: 150px;
+}
+/* PC 높이 예산 — 위 막대 70 + 칸 사이 8 · 채팅 칸 최소 170(입력 줄 + 두세 줄) · 카드 여분은 R074 보정(ui-check r074 calib) */
+:where(.ui-pc) .mg-card {
+  --mg-chat-min: 170px;
+  --mg-fit: calc(100vh - 78px - var(--mg-chat-min));
+}
+:where(.ui-pc) .mg-card .photo-frame {
+  width: min(100%, calc(min(46vh, var(--mg-fit) - 235px) * 4 / 3));
+}
+:where(.ui-pc) .mg-card .which-card {
+  --which-h: max(80px, calc(var(--mg-fit) - max(256px, 240px + var(--mg-n, 2) * 37px)));
+}
+:where(.ui-pc) .mg-card .which-card .img-wrap.w-which-img {
+  --img-maxh: var(--which-h);
+}
+/* 연습 판(그림 없음) 도형 칸도 같은 높이 예산 */
+:where(.ui-pc) .mg-card .which-card .quiz-img.dummy {
+  width: min(100%, calc(var(--which-h) * 4 / 3));
+  margin-inline: auto;
+}
+:where(.ui-pc) .mg-card .quiz-reveal .img-wrap.w-quiz-pic {
+  --img-maxh: min(240px, max(80px, calc(var(--mg-fit) - 100px - var(--mg-n, 2) * 37px)));
+}
+:where(.ui-pc) .mg-card .quiz-reveal .img-wrap.w-quiz-pic.w-small {
+  --img-maxh: min(150px, max(80px, calc(var(--mg-fit) - 100px - var(--mg-n, 2) * 37px)));
+}
+/* 모자이크 덮개 — 사진 위에 캔버스 · 다 풀리면 덮개만 걷는다 */
+.photo-mosaic-cover {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-2);
+}
+.photo-frame:has(img) .photo-mosaic-cover {
+  background: var(--img-letterbox);
+}
+.photo-mosaic-cover > .img-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+/* 힌트 줄 자리 — 초성이 와도 카드 높이가 그대로 */
+.photo-hint {
+  line-height: 1.5;
+  min-height: 1.5em;
+}
+.photo-hint.empty {
+  visibility: hidden;
+  animation: none;
+}
+
+/* =============================================================================
+   ★★★ R074 (D-321) — 이모티콘 등록 안내 넷: 가 자동 시연 · 나 자리 줄 안내 + 흔들림 · 다 자리 메뉴 · 라 그림 카드
+   ============================================================================= */
+/* 나 — 자리 줄 위 연한 한 줄 · 끄는 중(시연 포함)은 진하게 "여기에 놓으세요" */
+.emoji-slots-cap {
+  margin: 0 0 2px;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--text-dim);
+  opacity: 0.75;
+  white-space: nowrap;
+  text-align: left;
+}
+.emoji-slots-cap.on {
+  color: var(--accent);
+  font-weight: 800;
+  opacity: 1;
+}
+.emoji-slots.shake {
+  animation: emoji-slots-shake 520ms var(--ease-pop) 1;
+}
+@keyframes emoji-slots-shake {
+  0%, 100% { transform: none; }
+  20% { transform: translateX(-7px) rotate(-1.2deg); }
+  40% { transform: translateX(6px) rotate(1deg); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+/* 다 — 자리 메뉴(창 안 · 칸 근처) */
+.emoji-pop {
+  position: relative;
+}
+.emoji-slot-menu {
+  position: absolute;
+  z-index: 5;
+  width: 292px;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: var(--bw) solid var(--accent);
+  box-shadow: var(--shadow-pop);
+  animation: pop-in 140ms var(--ease-pop);
+}
+:where(.ui-mobile) .emoji-slot-menu {
+  width: 236px;
+}
+.emoji-slot-menu-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.emoji-slot-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 3px;
+}
+:where(.ui-mobile) .emoji-slot-menu-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+.emoji-slot-menu-cell {
+  position: relative;
+  margin: 0;
+  padding: 3px 0 9px;
+  min-width: 0;
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+.emoji-slot-menu-cell:hover:not(:disabled),
+.emoji-slot-menu-cell:focus-visible {
+  outline: 2px solid var(--accent);
+}
+.emoji-slot-menu-cell:disabled {
+  opacity: 0.35;
+}
+.emoji-slot-menu-cell .emoji-key {
+  bottom: 0;
+}
+/* 가 — 시연 고스트(손가락과 함께) */
+.emoji-ghost.demo {
+  opacity: 0.95;
+  z-index: 9998;
+}
+.emoji-ghost.demo .emoji-demo-hand {
+  position: absolute;
+  left: 60%;
+  top: 62%;
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+}
+/* 라 — 카드: 움직이는 그림 · 한 줄 더 · [시연 보기] */
+.emoji-help-art.moving {
+  height: 40px;
+  overflow: visible;
+}
+.emoji-help-art .eh-pick.ghost-src {
+  opacity: 0.45;
+}
+.emoji-help-art .eh-fly {
+  animation: eh-fly 2.4s ease-in-out infinite;
+}
+.emoji-help-art .eh-hand {
+  font-size: 13px;
+}
+@keyframes eh-fly {
+  0%, 10% { transform: translate(0, 0); opacity: 1; }
+  55% { transform: translate(38px, -8px); }
+  80%, 92% { transform: translate(63px, 15px) scale(0.85); opacity: 1; }
+  100% { transform: translate(63px, 15px) scale(0.85); opacity: 0; }
+}
+.emoji-help-art .eh-slot.on {
+  animation: eh-slot-on 2.4s ease-in-out infinite;
+}
+@keyframes eh-slot-on {
+  0%, 75% { fill: var(--surface); }
+  85%, 100% { fill: var(--chip-bg); }
+}
+.emoji-help-extra {
+  color: var(--accent);
+  font-weight: 700;
+}
+.emoji-help-actions [data-emoji-help-demo] {
+  margin: 0;
+}
+.emoji-help-actions [data-emoji-help-close] {
+  margin-left: auto;
+}
+
+/* =============================================================================
+   ★★★ R074 (D-323 · 찬종 11-05 "밤 테마는 다크모드라기엔 너무 반짝반짝 — 좀 더 다크모드스럽게") — 밤 토큰만 손본다
+   바탕 #121212 · 표면 #1e1e1e · 글자 #e6e6e6 · 형광 채도 · 발광(glow) 낮춤 · 강조색 하나(#8ab4f8) · 테두리 흐리게(두께는 그대로 — R044 크기 규칙) · 그라데이션 없음
+   ============================================================================= */
+[data-theme='night'] {
+  --page: #121212;
+  --surface: #1e1e1e;
+  --surface-2: #262626;
+  --surface-3: #2e2e2e;
+  --border: #2f2f2f;
+  --text: #e6e6e6;
+  --text-dim: #a3a3a3;
+  --accent: #8ab4f8;
+  --accent-ink: #121212;
+  --accent-2: #8ab4f8;
+  --accent-soft: #24303f;
+  --ok: #81c995;
+  --ok-soft: #1d3124;
+  --bad: #f28b82;
+  --bad-soft: #3a2220;
+  --warn: #fdd663;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-pop: 0 6px 18px rgba(0, 0, 0, 0.55);
+  --q-bg: #1e1e1e;
+  --q-border: #3c3c3c;
+  --q-band: #8ab4f8;
+  --q-text: #f1f1f1;
+  --bar-bg: #2a2a2a;
+  --bar: #8ab4f8;
+  --reveal-bg: #1e1e1e;
+  --reveal-border: #8ab4f8;
+  --chip-bg: #262626;
+  --chat-bg: #181818;
+  --toast-bg: #2a2a2a;
+  --toast-border: #5f6368;
+  --mask-bg: #2e2e2e;
+  --mask-fg: #c4c4c4;
+  --img-letterbox: #121212;
+  --p0: #f28b82;
+  --p1: #fbbc6c;
+  --p2: #fdd663;
+  --p3: #81c995;
+  --p4: #78d9ec;
+  --p5: #8ab4f8;
+  --p6: #c58af9;
+  --p7: #ff8bcb;
+  --p8: #e6b9a0;
+  --p9: #b9d98a;
+}
+/* 밤 예외(옛 셋 — 4339 로고 · 4353 아바타 글자 · 7497 고기 글자) — 발광을 빼고 차분하게 */
+[data-theme='night'] .brand-mark {
+  background: #262626;
+  color: #8ab4f8;
+  box-shadow: inset 0 0 0 1.5px #3c3c3c;
+  text-shadow: none;
+}
+[data-theme='night'] .avatar:not(.photo) {
+  color: #121212;
+}
+[data-theme='night'] .ceremony {
+  animation: pop-in 300ms var(--ease-pop);
+}
+[data-theme='night'] .mg-card::before {
+  background: var(--accent);
+}
+[data-theme='night'] .mg-intro-name {
+  background: none;
+  color: var(--accent);
+}
+
+/* =============================================================================
+   ★★★ R074 (D-322 · 1판) — 사무실 모드: cmd 창 꼴. 토큰 + 이 블록 하나에 예외를 모은다(styles 9행 규칙)
+   검은 바탕 #0c0c0c · 고정폭 글꼴 · 회색 글자 #cccccc · 강조 녹색 #16c60c · 둥글기 · 그림자 · 그라데이션 · 움직임 0
+   위 막대 = cmd 제목줄 꼴 · 버튼 = [ 확인 ] · 채팅 줄 = > 프롬프트 · 이모티콘 · 아바타 = 글자(Emoji.tsx · Avatar.tsx)
+   ============================================================================= */
+[data-theme='office'] {
+  color-scheme: dark;
+  --font: Consolas, 'Cascadia Mono', 'D2Coding', 'Malgun Gothic', monospace;
+  --font-mono: Consolas, 'Cascadia Mono', 'D2Coding', monospace;
+  --ease-pop: linear;
+  --page: #0c0c0c;
+  --surface: #0c0c0c;
+  --surface-2: #151515;
+  --surface-3: #1e1e1e;
+  --border: #262626;
+  --bw: 1.5px;
+  --text: #cccccc;
+  --text-dim: #8c8c8c;
+  --accent: #16c60c;
+  --accent-ink: #0c0c0c;
+  --accent-2: #f2f2f2;
+  --accent-soft: #102a0e;
+  --ok: #16c60c;
+  --ok-soft: #0e220c;
+  --bad: #e74856;
+  --bad-soft: #2a1214;
+  --warn: #f9f1a5;
+  --radius: 0px;
+  --radius-sm: 0px;
+  --shadow: none;
+  --shadow-pop: none;
+  --q-bg: #0c0c0c;
+  --q-border: #262626;
+  --q-band: #16c60c;
+  --q-text: #f2f2f2;
+  --bar-bg: #1e1e1e;
+  --bar: #16c60c;
+  --reveal-bg: #0c0c0c;
+  --reveal-border: #16c60c;
+  --chip-bg: #151515;
+  --chat-bg: #0c0c0c;
+  --toast-bg: #151515;
+  --toast-border: #16c60c;
+  --mask-bg: #1e1e1e;
+  --mask-fg: #cccccc;
+  --img-letterbox: #0c0c0c;
+  --p0: #e74856;
+  --p1: #c19c00;
+  --p2: #f9f1a5;
+  --p3: #16c60c;
+  --p4: #61d6d6;
+  --p5: #3b78ff;
+  --p6: #b4009e;
+  --p7: #d670d6;
+  --p8: #cccccc;
+  --p9: #3a96dd;
+}
+[data-theme='office'] body {
+  letter-spacing: 0;
+}
+/* ④ 움직임 0 — prefers-reduced-motion 과 같은 길(끝 상태로 바로) · 미니게임 판은 그대로(사용자 선택) · 자리 이모티콘은 멈춘 채 보인다 */
+[data-theme='office'] *:not(.mg-card, .mg-card *),
+[data-theme='office'] *:not(.mg-card, .mg-card *)::before,
+[data-theme='office'] *:not(.mg-card, .mg-card *)::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+}
+[data-theme='office'] .seat-emoji-pop,
+[data-theme='office'] .ceremony,
+[data-theme='office'] .chat-line {
+  animation: none !important;
+}
+[data-theme='office'] .ceremony {
+  background: var(--surface);
+  border: var(--bw) solid var(--accent);
+}
+[data-theme='office'] .mg-card::before,
+[data-theme='office'] .mg-intro-name {
+  background: none;
+  color: var(--accent);
+}
+[data-theme='office'] .mg-card::before {
+  background: var(--accent);
+}
+[data-theme='office'] .brand-mark {
+  background: #0c0c0c;
+  color: #cccccc;
+  box-shadow: inset 0 0 0 1.5px #3a3a3a;
+  text-shadow: none;
+}
+/* 위 막대 = cmd 제목줄(PC) */
+[data-theme='office'] .room-head {
+  background: #1e1e1e;
+  outline: 6px solid #1e1e1e;
+}
+[data-theme='office'] .room-title h1::before {
+  content: 'C:\Windows\system32\cmd.exe - ';
+  color: #f2f2f2;
+  font-weight: 400;
+}
+[data-theme='office'] .room-tools::after {
+  content: '─   ☐   ✕';
+  margin-left: 14px;
+  color: #f2f2f2;
+  white-space: pre;
+}
+:where(.ui-mobile)[data-theme='office'] .room-title h1::before,
+:where(.ui-mobile)[data-theme='office'] .room-tools::after {
+  content: none;
+}
+/* 버튼 = [ 확인 ] */
+[data-theme='office'] button.primary,
+[data-theme='office'] button.big-btn {
+  background: transparent;
+  color: #f2f2f2;
+  border: none;
+  box-shadow: none;
+}
+[data-theme='office'] button.primary:hover:not(:disabled),
+[data-theme='office'] button.big-btn:hover:not(:disabled) {
+  background: #cccccc;
+  color: #0c0c0c;
+}
+[data-theme='office'] button.primary::before,
+[data-theme='office'] button.big-btn::before {
+  content: '[ ';
+}
+[data-theme='office'] button.primary::after,
+[data-theme='office'] button.big-btn::after {
+  content: ' ]';
+}
+/* 채팅 줄 = > 프롬프트 */
+[data-theme='office'] .chat-line::before {
+  content: '> ';
+  color: var(--text-dim);
+}
+[data-theme='office'] .chat-input-row input {
+  caret-color: #cccccc;
+}
+/* ① 이모티콘 = :이름: · 아바타 = [첫 글자] */
+.emoji-text {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  line-height: 1.2;
+}
+[data-theme='office'] .seat-emoji-pop {
+  height: auto;
+  max-height: none;
+  aspect-ratio: auto;
+  max-width: 100%;
+  filter: none;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+[data-theme='office'] .seat-emoji-pop .emoji-text {
+  font-size: 0.95rem !important;
+}
+[data-theme='office'] .emoji-slot .emoji-text,
+[data-theme='office'] .emoji-cell .emoji-text,
+[data-theme='office'] .emoji-slot-menu-cell .emoji-text {
+  max-width: 100%;
+  font-size: 0.62rem !important;
+}
+[data-theme='office'] .avatar:not(.photo) {
+  background: transparent !important;
+  color: var(--text);
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: 400;
+}
+[data-theme='office'] .avatar:not(.photo)::before {
+  content: '[';
+}
+[data-theme='office'] .avatar:not(.photo)::after {
+  content: ']';
+}

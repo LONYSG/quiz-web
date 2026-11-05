@@ -9,7 +9,7 @@ import type { Socket } from 'socket.io-client';
 import { formatInt } from '@quiz/shared';
 import type { MinigameView } from '../useRoom.js';
 import { usePlayT0, useFrameNow } from './playClock.js';
-import { NumberInput, QuizImage, SeenBadge } from './QuizParts.js';
+import { NumberInput, QuizImage, SeenBadge, dimsOf } from './QuizParts.js';
 
 interface Props {
   socket: Socket;
@@ -36,7 +36,7 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
       <SeenBadge view={view} />
       {view.key === 'price' && (
         <div className="quiz-q">
-          <QuizImage imageId={p.imageId as string | null} alt={String(p.name ?? '')} className="quiz-pic" />
+          <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt={String(p.name ?? '')} className="quiz-pic" />
           <div className="quiz-q-text" data-wrap-ok>
             <p className="quiz-brand dim">{String(p.brand ?? '')}</p>
             <p className="quiz-name no-copy">{String(p.name ?? '')}</p>
@@ -46,7 +46,7 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
       )}
       {view.key === 'worldprice' && (
         <div className="quiz-q">
-          <QuizImage imageId={p.imageId as string | null} alt={String(p.nameKo ?? '')} className="quiz-pic" />
+          <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt={String(p.nameKo ?? '')} className="quiz-pic" />
           <div className="quiz-q-text" data-wrap-ok>
             <p className="quiz-name no-copy">
               {String(p.nameKo ?? '')} <span className="dim nowrap">· {String(p.unit ?? '')}</span>
@@ -67,7 +67,7 @@ export default function QuizNumber({ socket, view, serverNow }: Props) {
       )}
       {view.key === 'estimate' && (
         <div className="quiz-q">
-          {Boolean(p.imageId || p.dummy) && <QuizImage imageId={p.imageId as string | null} alt="" className="quiz-pic" />}
+          {Boolean(p.imageId || p.dummy) && <QuizImage imageId={p.imageId as string | null} dims={dimsOf(p, p.imageId as string | null)} alt="" className="quiz-pic" />}
           <div className="quiz-q-text" data-wrap-ok>
             <p className="quiz-name no-copy">{String(p.question ?? '')}</p>
             <p className="quiz-ask">

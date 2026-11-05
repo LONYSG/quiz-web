@@ -45,6 +45,17 @@ import { setBeforeNextQuestion } from '../game/hooks.js';
 import { MINIGAME_DEFS, type ParsedInput, type RoundSpec } from './defs.js';
 import { checkAchievements } from '../achievements.js';
 
+/** ★ R074 (§A) — params 안의 그림 id(imageId · a.imageId · b.imageId)마다 [폭, 높이] 를 params.imageDims 로 */
+export function attachImageDims(params: Record<string, unknown>, dims: ReadonlyMap<string, readonly [number, number]>): void {
+  const ids = [params.imageId, (params.a as { imageId?: unknown } | undefined)?.imageId, (params.b as { imageId?: unknown } | undefined)?.imageId].filter((x): x is string => typeof x === 'string');
+  const out: Record<string, [number, number]> = {};
+  for (const id of ids) {
+    const d = dims.get(id);
+    if (d) out[id] = [d[0], d[1]];
+  }
+  if (Object.keys(out).length) params.imageDims = out;
+}
+
 export interface MinigameParticipant {
   accountId: string;
   nickname: string;
@@ -251,6 +262,9 @@ export function startMinigame(
     now,
     ignoreSeen: opts.ignoreSeen,
   });
+  // ★ R074 (§A) — 그림 크기를 판 params 에 싣는다(화면이 받기 전에 칸을 잡는다 · 공개 때 칸이 바뀌지 않게)
+  const dimsMap = room.game?.minigameQuiz?.data.imageDims;
+  if (rounds && dimsMap && !opts.practice) for (const r of rounds) attachImageDims(r.params, dimsMap);
   if (!rounds || rounds.length === 0) {
     console.log(`[minigame] ${room.id} ${def.info.name} 건너뜀 — 낼 수 있는 문항이 모자라다`);
     return false;

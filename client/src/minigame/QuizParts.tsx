@@ -4,7 +4,7 @@
 // ★ 그림은 /api/minigame/image/:imageId (DB bytea · 로그인만). 연습 판(더미)은 그림이 없어 누가 봐도 가짜인 도형을 그린다.
 // =============================================================================
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { formatNumberInput, parseNumberInput } from '@quiz/shared';
 import { Eye, Package } from 'lucide-react';
 import Icon from '../Icon.js';
@@ -18,15 +18,21 @@ export const imageUrl = (id: string) => `/api/minigame/image/${encodeURIComponen
  *   decode 가 끝난 그림은 <img> 로 그릴 때 깜빡임 · 로딩 표시가 없다.
  */
 const decoded = new Map<string, Promise<void>>();
+/** ★ R074 — decode 가 끝난 그림의 원래 크기(서버 크기가 없을 때 칸 비율로 쓴다) */
+const naturalDims = new Map<string, [number, number]>();
 export function decodeImage(src: string): Promise<void> {
   let p = decoded.get(src);
   if (!p) {
     const img = new Image();
     img.src = src;
     // ★ R064 — 실패한 약속은 잊는다(다음에 다시 받을 수 있게)
-    p = (img.decode ? img.decode() : new Promise<void>((res, rej) => { img.onload = () => res(); img.onerror = rej; })).catch(() => {
-      decoded.delete(src);
-    });
+    p = (img.decode ? img.decode() : new Promise<void>((res, rej) => { img.onload = () => res(); img.onerror = rej; }))
+      .then(() => {
+        if (img.naturalWidth > 0 && img.naturalHeight > 0) naturalDims.set(src, [img.naturalWidth, img.naturalHeight]);
+      })
+      .catch(() => {
+        decoded.delete(src);
+      });
     decoded.set(src, p);
   }
   return p;
@@ -45,6 +51,22 @@ export function preloadQuizImages(view: MinigameView): void {
   const p = view.round?.params ?? {};
   const ids = [p.imageId, (p.a as { imageId?: string } | undefined)?.imageId, (p.b as { imageId?: string } | undefined)?.imageId].filter((x): x is string => typeof x === 'string');
   void preloadAll(ids.map(imageUrl));
+}
+
+/** ★★ R074 (§A · 찬종 11-05 "사진 공개되는 타이밍에 사진이 커지면서 스크롤 생기고") — 그림 크기.
+ *  서버가 판 params.imageDims 에 [폭, 높이] 를 싣는다(minigame_images) → 없으면 이미 decode 한 그림의 원래 크기 → 그래도 없으면 4:3.
+ *  칸은 **받기 전에** 이 비율로 잡고, 받은 뒤에도 바꾸지 않는다(그림은 칸 안에서 contain). */
+export type ImageDims = readonly [number, number];
+export function dimsOf(params: Record<string, unknown> | null | undefined, imageId: string | null | undefined): ImageDims | null {
+  if (!imageId) return null;
+  const d = (params?.imageDims as Record<string, unknown> | undefined)?.[imageId];
+  return Array.isArray(d) && d.length === 2 && Number(d[0]) > 0 && Number(d[1]) > 0 ? [Number(d[0]), Number(d[1])] : null;
+}
+/** 칸 비율(폭/높이) — 서버 크기 → decode 크기 → 4:3 · 너무 길쭉한 것은 1:3 ~ 3:1 로 자른다(칸이 실처럼 되지 않게) */
+export function boxRatio(src: string | null, dims: ImageDims | null | undefined): number {
+  const d = dims ?? (src ? naturalDims.get(src) : undefined);
+  const r = d ? d[0] / d[1] : 4 / 3;
+  return Math.min(3, Math.max(1 / 3, r));
 }
 
 /** ★ R064 — 그림 받기 실패 시 다시 받기 횟수 · 간격 */
@@ -80,9 +102,10 @@ export function useRetryImage(src: string | null): { url: string | null; state: 
   return { url, state, onLoad, onError };
 }
 
-/** 문항 그림 — 없으면(연습 더미) 도형 · 상자 · ★ R064 받기 실패면 다시 받기 · 끝내 실패면 글 */
-export function QuizImage({ imageId, alt, className, dummy = 'box' }: { imageId: string | null | undefined; alt: string; className?: string; dummy?: string }) {
-  if (imageId) return <RetryImg src={imageUrl(imageId)} alt={alt} className={className} />;
+/** 문항 그림 — 없으면(연습 더미) 도형 · 상자 · ★ R064 받기 실패면 다시 받기 · 끝내 실패면 글
+ *  ★ R074 — dims(서버 크기)로 칸을 미리 잡는다. 칸 꼴: photo-img = 사진 칸(photo-frame)을 꽉 채움 · which-img = 4:3 고정(R068) · 그 밖 = 그림 비율 */
+export function QuizImage({ imageId, alt, className, dummy = 'box', dims }: { imageId: string | null | undefined; alt: string; className?: string; dummy?: string; dims?: ImageDims | null }) {
+  if (imageId) return <RetryImg src={imageUrl(imageId)} alt={alt} className={className} dims={dims ?? null} />;
   return (
     <div className={`quiz-img dummy ${className ?? ''}`} role="img" aria-label={`${alt} (연습용)`}>
       {dummy === 'circle' ? (
@@ -99,17 +122,29 @@ export function QuizImage({ imageId, alt, className, dummy = 'box' }: { imageId:
   );
 }
 
-function RetryImg({ src, alt, className }: { src: string; alt: string; className?: string }) {
+function RetryImg({ src, alt, className, dims }: { src: string; alt: string; className?: string; dims: ImageDims | null }) {
   const r = useRetryImage(src);
+  const cls = className ?? '';
+  const fill = /(^|\s)photo-img(\s|$)/.test(cls);
+  // ★ R074 — 칸 비율은 처음 그릴 때 한 번 정한다(받은 뒤 바뀌지 않게)
+  const [ratio] = useState(() => (/(^|\s)which-img(\s|$)/.test(cls) ? 4 / 3 : boxRatio(src, dims)));
+  const boxCls = `img-wrap${fill ? ' box-fill' : ' box-ratio'}${cls
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((c) => ` w-${c}`)
+    .join('')}`;
+  const style = fill ? undefined : ({ aspectRatio: String(ratio), '--arn': String(ratio) } as CSSProperties);
   if (r.state === 'fail') {
     return (
-      <div className={`quiz-img img-fail ${className ?? ''}`} role="img" aria-label={alt} data-img-fail>
-        <span>사진을 못 받았어요 — 그래도 맞혀 보세요</span>
-      </div>
+      <span className={boxCls} style={style} data-img-state="fail">
+        <span className={`quiz-img img-fail ${className ?? ''}`} role="img" aria-label={alt} data-img-fail>
+          <span>사진을 못 받았어요 — 그래도 맞혀 보세요</span>
+        </span>
+      </span>
     );
   }
   return (
-    <span className="img-wrap" data-img-state={r.state}>
+    <span className={boxCls} style={style} data-img-state={r.state}>
       {r.url && <img key={r.url} className={`quiz-img ${className ?? ''}`} src={r.url} alt={alt} draggable={false} onLoad={r.onLoad} onError={r.onError} />}
       {r.state === 'loading' && <span className="img-loading" data-img-loading>그림 불러오는 중</span>}
     </span>

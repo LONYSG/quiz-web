@@ -12,7 +12,7 @@ import { PHOTO_REVEAL_MS } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
-import { QuizImage, SeenBadge, imageUrl, useRetryImage } from './QuizParts.js';
+import { QuizImage, SeenBadge, dimsOf, imageUrl, useRetryImage } from './QuizParts.js';
 import { isReportOpen } from '../reportGuard.js';
 
 interface Props {
@@ -138,16 +138,25 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
         <span style={{ width: `${left * 100}%` }} />
       </div>
       <SeenBadge view={view} />
+      {/* ★★ R074 (§A · 원칙 ②) — 사진 <img> 는 판 내내 **같은 요소**: 확대는 transform 만 · 모자이크는 그 위에 캔버스를 덮었다가 다 풀리면 걷는다
+          (옛: 모자이크가 다 풀리는 순간 캔버스를 떼고 새 <img> 를 붙였다 — 공개 순간 요소 교체) */}
       <div className="photo-frame" data-mode={mode}>
-        {mode === 'mosaic' && imageId && level > 1 ? (
-          <Mosaic src={imageUrl(imageId)} level={level} />
-        ) : (
-          <div className="photo-zoom" style={{ transform: `scale(${scale})`, transformOrigin: origin, filter: mode === 'mosaic' && !imageId && level > 1 ? `blur(${level / 4}px)` : undefined }}>
-            <QuizImage imageId={imageId} alt="맞힐 사진" dummy={String(p.dummyShape ?? 'box')} className="photo-img" />
+        <div className="photo-zoom" style={{ transform: `scale(${scale})`, transformOrigin: origin, filter: mode === 'mosaic' && !imageId && level > 1 ? `blur(${level / 4}px)` : undefined }}>
+          <QuizImage imageId={imageId} dims={dimsOf(p, imageId)} alt="맞힐 사진" dummy={String(p.dummyShape ?? 'box')} className="photo-img" />
+        </div>
+        {mode === 'mosaic' && imageId && level > 1 && (
+          <div className="photo-mosaic-cover">
+            <Mosaic src={imageUrl(imageId)} level={level} />
           </div>
         )}
       </div>
       {/* ★ R063 (D-261) — 어려운 사진(d3)은 처음부터 다 보인다 · ★ R066 (D-283) 힌트: 6초 분류(d3) · 10초 초성(전부) — 서버가 그 시각 뒤에만 보낸다 */}
+      {/* ★ R074 — 힌트 줄은 처음부터 자리를 잡는다(10초에 초성이 오면 카드가 한 줄 커지며 채팅을 밀었다) · 없을 땐 빈 줄 */}
+      {!((typeof p.generalHint === 'string' || typeof p.chosung === 'string') && canPlay && !mine?.correct) && (
+        <p className="photo-hint empty" aria-hidden="true">
+          &nbsp;
+        </p>
+      )}
       {(typeof p.generalHint === 'string' || typeof p.chosung === 'string') && canPlay && !mine?.correct && (
         <p className="photo-hint" data-photo-hint>
           {typeof p.generalHint === 'string' && (

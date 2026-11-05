@@ -6,7 +6,7 @@
 // ★ 장면은 MinigameStage 를 그대로 쓰고, 보기(view)만 가짜다 — 서버에 아무것도 보내지 않는다(socket 자리에 빈 객체).
 // =============================================================================
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import {
   BALANCE_BOTTOM_Y,
@@ -39,7 +39,11 @@ const PEOPLE = [
   { accountId: 'lab4', nickname: '오버플로우', colorIndex: 3, device: 'mobile' as const },
 ];
 
-function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): MinigameView {
+/** ★ R074 — 장면 덮어쓰기(사진 드러남 시각 · ui-check 가 window.__labSet 으로 바꾼다) */
+interface LabOver {
+  at?: number;
+}
+function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number, over: LabOver = {}): MinigameView {
   const now = Date.now();
   const kind: BalanceKind = (['steak', 'pizza', 'donut'] as BalanceKind[])[seed % 3]!;
   const item = balanceItem(kind, seed);
@@ -157,7 +161,7 @@ function fakeView(key: MinigameKey, phase: MinigamePhase, seed: number): Minigam
         : key === 'gauge' && phase === 'play'
         ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 700) }
         : key === 'photo' && phase === 'play'
-        ? { elapsedMs: Number(new URLSearchParams(window.location.search).get('at') ?? 2000) }
+        ? { elapsedMs: over.at ?? Number(new URLSearchParams(window.location.search).get('at') ?? 2000) }
         : key === 'reaction' && phase === 'play'
         ? { elapsedMs: playAgo }
         : key === 'cake' && phase === 'play' && qs.get('pressed') !== null
@@ -231,7 +235,20 @@ function r052Scene(key: MinigameKey, phase: MinigamePhase) {
   if (!['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear'].includes(key)) return null;
   const q = new URLSearchParams(window.location.search);
   const image = q.get('image');
+  // ★ R074 — ?dims=w,h : 서버가 주는 그림 크기(params.imageDims)를 흉내 · 없으면 크기 모름(4:3 · 받은 뒤 크기)
+  const dm = /^(\d+),(\d+)$/.exec(q.get('dims') ?? '');
+  const imageDims = image && dm ? { imageDims: { [image]: [Number(dm[1]), Number(dm[2])] } } : {};
   const row = (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted = true) => ({ accountId: id, submitted, value, error: null, rank, points, extra });
+  const scene = r052SceneBase(key, q, image, row);
+  return scene ? { ...scene, params: { ...scene.params, ...imageDims } } : null;
+}
+
+function r052SceneBase(
+  key: MinigameKey,
+  q: URLSearchParams,
+  image: string | null,
+  row: (id: string, rank: number, points: number, extra: Record<string, unknown> | null, value: number | null, submitted?: boolean) => { accountId: string; submitted: boolean; value: number | null; error: null; rank: number; points: number; extra: Record<string, unknown> | null },
+) {
   if (key === 'price') {
     const d = QUIZ_DUMMY.price[0];
     return {
@@ -291,7 +308,8 @@ function r052Scene(key: MinigameKey, phase: MinigamePhase) {
   const d = QUIZ_DUMMY.which[0];
   return {
     playMs: 6000,
-    params: { stem: d.stem, kind: d.kind, unit: d.unit, a: { label: d.a.label, imageId: image }, b: { label: d.b.label, imageId: null }, dummy: true },
+    // ★ R074 — 실판은 양쪽 다 그림(NEEDS_IMAGE which 2) → 그림을 주면 b 도 같은 그림
+    params: { stem: d.stem, kind: d.kind, unit: d.unit, a: { label: d.a.label, imageId: image }, b: { label: d.b.label, imageId: image }, dummy: !image },
     reveal: { answer: d.answer, a: d.a.value, b: d.b.value, unit: d.unit, margin: 2.33 },
     rows: [row('lab1', 1, 1, { choice: 'a', correct: true }, 820), row('lab3', 2, 1, { choice: 'a', correct: true }, 1410), row('lab2', 3, 0, { choice: 'b', correct: false }, null), row('lab4', 3, 0, null, null, false)],
   };
@@ -350,6 +368,62 @@ function r053Scene(key: MinigameKey) {
   };
 }
 
+/**
+ * ★★ R074 — 한 장면 (ui-check 가 찍는다). window.__labSet({ phase, at }) 로 **같은 트리 안에서** 단계 · 드러남 시각을 바꾼다
+ *   (실제 판처럼 play → roundResult 가 한 번에 바뀐다 — 공개 순간 재현). ?room=1 = 방 화면 틀(위 막대 · 자리 · 채팅) 안에 놓는다.
+ */
+function LabScene({ k, phase0, seed, players, room }: { k: MinigameKey; phase0: MinigamePhase; seed: number; players: PlayerView[]; room: boolean }) {
+  const [st, setSt] = useState<{ phase: MinigamePhase } & LabOver>({ phase: phase0 });
+  useEffect(() => {
+    (window as unknown as { __labSet?: (o: Partial<{ phase: MinigamePhase } & LabOver>) => void }).__labSet = (o) => setSt((s) => ({ ...s, ...o }));
+  }, []);
+  const view = useMemo(() => fakeView(k, st.phase, seed, { at: st.at }), [k, st.phase, st.at, seed]);
+  const stage = <MinigameStage socket={fakeSocket} view={view} players={players} myAccountId={'lab1'} isHost serverNow={() => Date.now()} />;
+  if (!room)
+    return (
+      <div className="lab-scene" data-scene={`${k}-${st.phase}`}>
+        {stage}
+      </div>
+    );
+  const seats = (side: string) => (
+    <aside className={`seats seats-${side}`} aria-label="참여자">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <div key={i} className="seat-card empty" />
+      ))}
+    </aside>
+  );
+  return (
+    <div className="room room-game lab-room" data-scene={`${k}-${st.phase}`}>
+      <header className="room-head">
+        <div className="room-title">
+          <h1>방 틀(연습)</h1>
+        </div>
+        <div className="room-tools" />
+      </header>
+      <div className="stage">
+        {seats('left')}
+        <div className="center">
+          <div className="center-main">{stage}</div>
+          <section className="card chat-card">
+            <div className="chat-wrap">
+              <div className="chat-log" />
+            </div>
+            <div className="chat-foot">
+              <div className="field-row chat-input-row">
+                <input aria-label="채팅" />
+                <button type="button" className="primary send-btn">
+                  보내기
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+        {seats('right')}
+      </div>
+    </div>
+  );
+}
+
 export default function LabMinigame({ myAccountId }: { myAccountId: string }) {
   const q = new URLSearchParams(window.location.search);
   const scene = q.get('scene');
@@ -362,15 +436,7 @@ export default function LabMinigame({ myAccountId }: { myAccountId: string }) {
     [],
   );
 
-  if (scene) {
-    // 한 장면 (ui-check 가 찍는다)
-    const view = fakeView(key, phase, seed);
-    return (
-      <div className="lab-scene" data-scene={`${key}-${phase}`}>
-        <MinigameStage socket={fakeSocket} view={view} players={players} myAccountId={'lab1'} isHost serverNow={() => Date.now()} />
-      </div>
-    );
-  }
+  if (scene) return <LabScene k={key} phase0={phase} seed={seed} players={players} room={q.get('room') === '1'} />;
 
   return (
     <div className="lab-page">
