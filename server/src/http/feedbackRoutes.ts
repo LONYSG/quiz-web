@@ -29,6 +29,7 @@ import { config } from '../config.js';
 import { getPool, query } from '../db/pool.js';
 import { getRoomOfAccount } from '../rooms/registry.js';
 import { wasRateAsked } from '../game/rateAsk.js';
+import { loadRateAsked } from '../db/gameQuestions.js';
 
 export const feedbackRouter = Router();
 
@@ -161,7 +162,8 @@ feedbackRouter.post('/question', async (req, res) => {
   }
   const atReveal = isRevealNow(session.accountId, gameId, questionId);
   // ★ R071 — 요청 문항이었나(공개 중이면 늘 true — isRevealNow 가 rateAsk 를 본다)
-  const asked = atReveal || wasRateAsked(gameId, questionId);
+  // ★ R074 (0029) — 메모리에 없으면(서버를 다시 켠 뒤) game_questions.rate_ask 로
+  const asked = atReveal || wasRateAsked(gameId, questionId) || (await loadRateAsked(gameId, questionId));
   let out: { feedback: unknown; granted: number; needReason: boolean };
   try {
     out = await inLane(session.accountId, () => saveFeedback(session.accountId, parsed.value, atReveal, asked));

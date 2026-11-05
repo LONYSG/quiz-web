@@ -10,7 +10,7 @@
 // =============================================================================
 
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { createInterface } from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
@@ -198,6 +198,17 @@ function openLogs() {
   console.log(`  메모장으로 열었습니다: ${files.map((f) => path.basename(f)).join(' · ')} (지난 기동은 tmp/ops/<server|tunnel>-날짜-시각.log · 14일 보관)`);
 }
 
+async function pruneBackups() {
+  const { pickPrune } = await import('./backup-prune.mjs');
+  const dir = path.join(ROOT, 'backups');
+  const names = existsSync(dir) ? readdirSync(dir) : [];
+  const gone = pickPrune(names, 5);
+  if (!gone.length) return console.log('  지울 백업이 없습니다(덤프 5개 이하)');
+  console.log(`  지울 것 ${gone.length}개: ${gone.join(' · ')}`);
+  if (!(await yes('지울까요?'))) return console.log('  그만둠');
+  run('node scripts/backup.mjs --prune-only --keep 5');
+}
+
 const MENU = [
   ['1', '서버 켜기 (Docker → DB → 빌드 → 서버 창 → 터널 창 → 브라우저)', () => run('node scripts/play.mjs')],
   ['2', '서버 켜기 — 빌드 건너뜀 (코드가 안 바뀌었을 때)', () => run('node scripts/play.mjs --no-build')],
@@ -213,6 +224,8 @@ const MENU = [
   ['12', 'DB 백업', () => run('npm run db:backup')],
   ['13', '제보 보기 — 전부(처리된 것 포함)', () => reports(true)],
   ['14', '로그 열기 (서버 · 터널 — 메모장)', openLogs],
+  // ★ R074 (§F ①) — 백업은 만들 때마다 최신 5개만 남긴다 · 이 줄은 덤프 없이 정리만(지울 목록을 보여 주고 y)
+  ['15', '오래된 백업 정리 (최신 5개만 남김 · zip 은 그대로)', pruneBackups],
   ['0', '끝'],
 ];
 

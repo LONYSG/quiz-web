@@ -17,6 +17,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { flexCanon, normalizeAnswer, stripEnding } from '../shared/dist/index.js';
+// ★ R074 (§F ④) — 봇 · 검사 계정 = shared NEAR_MISS_SKIP_LOGIN 하나(test · test2 · timer136 · timer1346 포함)
+import { NEAR_MISS_SKIP_LOGIN } from '../shared/dist/nearMiss.js';
+const SKIP_SQL = `'${NEAR_MISS_SKIP_LOGIN.replace(/'/g, "''")}'`;
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const db = new pg.Client({ connectionString: process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb' });
@@ -136,7 +139,7 @@ try {
       await db.query(
         `SELECT f.question_id::text qid, q.display_answer, f.comment FROM question_feedback f JOIN questions q ON q.id = f.question_id
           JOIN accounts a ON a.id = f.account_id
-         WHERE 'answer' = ANY(f.reasons) AND a.login_id !~ '^(bot|uic|r10_)' ORDER BY f.updated_at DESC`,
+         WHERE 'answer' = ANY(f.reasons) AND a.login_id !~ ${SKIP_SQL} ORDER BY f.updated_at DESC`,
       )
     ).rows;
   } catch {

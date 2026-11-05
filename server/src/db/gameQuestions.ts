@@ -16,6 +16,8 @@ import type { AnswerRejectReason, QuestionResolution } from '@quiz/shared';
 
 /** ★ R071 — 0028(target_grade · grade · worth)이 아직 안 돈 DB 면 false 로 바꾸고 옛 꼴로 쓴다(마이그레이션 전에 새 빌드가 떠도 기록이 빠지지 않게) */
 let gradeCols = true;
+/** ★ R074 — 0029(rate_ask)가 아직 안 돈 DB 면 false(빼고 쓴다) */
+let rateAskCol = true;
 
 /** 문제 시작 기록. ★ gameId 가 null 이면 부르지 않는다 (호출자가 확인한다)
  *  ★★ R071 (0028 · D-308) — 그때의 계획 등급 · 실제 등급 · 알가치를 함께 적는다(target ≠ grade 이면 폴백 · 보고서 hint:solve · levelmix) */
@@ -29,8 +31,26 @@ export async function insertGameQuestion(input: {
   targetGrade?: number | null;
   grade?: number | null;
   worth?: number | null;
+  /** ★ R074 (0029) — 이 문항이 이 판의 평가 요청 문항(game.rateAsk)인가 */
+  rateAsk?: boolean;
 }): Promise<void> {
   const base = [input.gameId, input.questionIndex, input.questionId, input.epoch, input.startedAt, input.selectionStage];
+  if (gradeCols && rateAskCol) {
+    try {
+      await query(
+        `INSERT INTO game_questions
+           (game_id, question_index, question_id, epoch, started_at, selection_stage, target_grade, grade, worth, rate_ask)
+         VALUES ($1, $2, $3, $4, to_timestamp($5 / 1000.0), $6, $7, $8, $9, $10)
+         ON CONFLICT (game_id, question_index) DO NOTHING`,
+        [...base, input.targetGrade ?? null, input.grade ?? null, input.worth ?? null, input.rateAsk === true],
+      );
+      return;
+    } catch (err) {
+      if ((err as { code?: string }).code !== '42703') throw err;
+      rateAskCol = false;
+      console.warn('[game] ★ game_questions 에 rate_ask 열이 없다(0029 미적용) — 빼고 기록한다');
+    }
+  }
   if (gradeCols) {
     try {
       await query(
@@ -203,4 +223,16 @@ export async function insertMidgamePlayer(input: {
      ON CONFLICT (game_id, account_id) DO NOTHING`,
     [input.gameId, input.accountId, input.colorIndex],
   );
+}
+
+/** ★ R074 (0029) — 이 판의 이 문항이 평가 요청 문항이었나(DB) · 0029 전 DB 나 행이 없으면 false */
+export async function loadRateAsked(gameId: string, questionId: string): Promise<boolean> {
+  if (!rateAskCol) return false;
+  try {
+    const r = await query<{ rate_ask: boolean }>(`SELECT rate_ask FROM game_questions WHERE game_id = $1 AND question_id = $2 AND rate_ask LIMIT 1`, [gameId, questionId]);
+    return (r.rowCount ?? 0) > 0;
+  } catch (err) {
+    if ((err as { code?: string }).code === '42703') rateAskCol = false;
+    return false;
+  }
 }

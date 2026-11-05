@@ -42,7 +42,7 @@ if (GAMES && !gameIds.length) {
   process.exit(1);
 }
 
-let SKIP = '^(bot|uic|r10_)';
+let SKIP = '^(bot|uic|r10_)|^(test|test2|timer136|timer1346)$'; // ★ R074 — shared dist 가 없을 때의 기본값(같은 값)
 try {
   SKIP = (await import('../shared/dist/nearMiss.js')).NEAR_MISS_SKIP_LOGIN ?? SKIP;
 } catch {

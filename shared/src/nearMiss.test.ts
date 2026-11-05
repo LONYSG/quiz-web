@@ -39,5 +39,8 @@ describe('근접 오답 (R058 · D-252)', () => {
     const re = new RegExp(NEAR_MISS_SKIP_LOGIN, 'i');
     expect(['bot_01', 'uic3tk_fh', 'r10_a'].every((l) => re.test(l))).toBe(true);
     expect(['chanjong', 'robot'].some((l) => re.test(l))).toBe(false);
+    // ★ R074 — 찬종 검사 계정(이름 전체) · 비슷한 사람 이름은 아님
+    expect(['test', 'test2', 'timer136', 'timer1346'].every((l) => re.test(l))).toBe(true);
+    expect(['tester', 'test3', 'mytest', 'timer1', 'timer13467', 'lonysg'].some((l) => re.test(l))).toBe(false);
   });
 });

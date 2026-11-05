@@ -18,8 +18,10 @@ export const NEAR_MISS_MAX_LEN = 40;
 export const NEAR_MISS_PER_QUESTION = 5;
 /** 보관 일수(서버 부팅 때 지난 것을 지운다) */
 export const NEAR_MISS_KEEP_DAYS = 90;
-/** 봇 · 검사 계정(남기지 않는다) — 서버는 NEAR_MISS_SKIP_LOGIN 으로 덮어쓸 수 있다(검사용) */
-export const NEAR_MISS_SKIP_LOGIN = '^(bot|uic|r10_)';
+/** 봇 · 검사 계정(남기지 않는다) — 서버는 NEAR_MISS_SKIP_LOGIN 으로 덮어쓸 수 있다(검사용)
+ *  ★ R074 (§F ④ · R071 7절 ①) — 찬종 검사 계정 test · test2 · timer136 · timer1346 (이름 전체가 같을 때만 — tester · timer1 은 사람)
+ *  ★ 이 값 하나를 서버 config.tuning.rateSkipLogin 기본값 · hint:solve · play:stats · feedback-report · answers:flex 가 같이 쓴다 */
+export const NEAR_MISS_SKIP_LOGIN = '^(bot|uic|r10_)|^(test|test2|timer136|timer1346)$';
 
 export type NearMissKind = 'contains' | 'contained' | 'edit';
 

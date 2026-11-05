@@ -185,6 +185,8 @@ ${normalizeAnswer(q.explanation ?? '')}`;
         targetGrade: picked.targetGrade,
         grade: q.grade,
         worth: q.worth,
+        // ★ R074 (0029) — 평가 요청 문항(판마다 무작위 1/3)을 영구 기록
+        rateAsk: game.rateAsk.has(current.index),
       }),
     );
   }

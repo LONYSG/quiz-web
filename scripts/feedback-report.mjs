@@ -22,6 +22,9 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
+// ★ R074 (§F ④) — 봇 · 검사 계정 = shared NEAR_MISS_SKIP_LOGIN 하나(test · test2 · timer136 · timer1346 포함)
+import { NEAR_MISS_SKIP_LOGIN } from '../shared/dist/nearMiss.js';
+const SKIP_SQL = `'${NEAR_MISS_SKIP_LOGIN.replace(/'/g, "''")}'`;
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -59,17 +62,20 @@ if (SINCE) {
   params.push(SINCE);
   where.push(`f.updated_at >= $${params.length}::date`);
 }
-if (NO_BOTS) where.push(`a.login_id !~ '^(bot|uic|r10_)'`);
+if (NO_BOTS) where.push(`a.login_id !~ ${SKIP_SQL}`);
 const W = where.join(' AND ');
 // ★ R068 — 찬종 계정(절대 신뢰 — 실수는 제보 코멘트로 교정)
 const CHANJONG = new Set(['lonysg', 'lonysg2']);
 // ★ R071 — 0027(asked)이 아직 안 돈 DB 에서도 돈다(그때는 asked 0)
 const HAS_ASKED = (await db.query(`SELECT 1 FROM information_schema.columns WHERE table_name = 'question_feedback' AND column_name = 'asked'`)).rowCount > 0;
+// ★ R074 (0029) — 평가 요청 문항 영구 기록(game_questions.rate_ask) — asked = f.asked OR gq.rate_ask
+const HAS_RATE_ASK = (await db.query(`SELECT 1 FROM information_schema.columns WHERE table_name = 'game_questions' AND column_name = 'rate_ask'`)).rowCount > 0;
+const ASKED_SQL = HAS_ASKED && HAS_RATE_ASK ? '(f.asked OR coalesce(gq.rate_ask, false)) AS asked' : HAS_ASKED ? 'f.asked' : HAS_RATE_ASK ? 'coalesce(gq.rate_ask, false) AS asked' : 'false AS asked';
 try {
   const rows = (
     await db.query(
       `SELECT f.id::text AS fid, f.question_id::text, f.vote, f.reasons, f.comment, f.updated_at, f.adopted_at, g.amount AS adopted_amount, a.nickname, a.login_id,
-              f.account_id::text, f.game_id::text, f.at_reveal, ${HAS_ASKED ? 'f.asked' : 'false AS asked'}, (f.rate_grant_id IS NOT NULL) AS rated,
+              f.account_id::text, f.game_id::text, f.at_reveal, ${ASKED_SQL}, (f.rate_grant_id IS NOT NULL) AS rated,
               EXTRACT(EPOCH FROM (f.created_at - gq.resolved_at))::float AS react_s
          FROM question_feedback f JOIN accounts a ON a.id = f.account_id LEFT JOIN point_grants g ON g.id = f.adopted_grant_id
          LEFT JOIN game_questions gq ON gq.game_id = f.game_id AND gq.question_id = f.question_id
@@ -213,7 +219,7 @@ try {
     await db.query(
       `SELECT to_char(g.created_at AT TIME ZONE 'Asia/Seoul', 'YYYY-MM') AS month, a.nickname, a.login_id, count(*)::int AS n, sum(g.amount)::int AS points
          FROM point_grants g JOIN accounts a ON a.id = g.account_id
-        WHERE g.reason = 'feedback_adopted'${NO_BOTS ? " AND a.login_id !~ '^(bot|uic|r10_)'" : ''}
+        WHERE g.reason = 'feedback_adopted'${NO_BOTS ? ` AND a.login_id !~ ${SKIP_SQL}` : ''}
         GROUP BY 1, 2, 3 ORDER BY 1 DESC, 4 DESC, 5 DESC`,
     )
   ).rows;

@@ -13,12 +13,15 @@
 // 사용법
 //   npm run db:backup                 backups/quizweb-YYYYMMDD-HHmmss.dump 생성
 //   npm run db:backup -- --out 경로   위치 지정
+//   ★ R074 — 끝나면 backups/quizweb-*.dump 를 **최신 5개만** 남기고 지운다(--keep N · BACKUP_KEEP · 0 = 안 지움 · zip 은 그대로)
+//   npm run db:backup -- --prune-only  덤프 없이 정리만(ops 메뉴 15)
 //
 // 복원은 scripts/restore.mjs 를 쓴다. 절차는 docs/11-DEPLOY.md 참조.
 // =============================================================================
 
 import { spawn } from 'node:child_process';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readdir, unlink } from 'node:fs/promises';
+import { keepCount, pickPrune } from './backup-prune.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -39,6 +42,29 @@ function stamp() {
   const d = new Date();
   const p = (n) => String(n).padStart(2, '0');
   return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
+}
+
+const BACKUP_DIR = path.join(ROOT, 'backups');
+/** ★ R074 — 오래된 덤프 정리(최신 keep 개만) · 지운 이름 출력 */
+async function prune() {
+  const keep = keepCount(process.argv, process.env);
+  if (keep === 0) return console.log('[backup] 정리 안 함(keep 0)');
+  let names = [];
+  try {
+    names = await readdir(BACKUP_DIR);
+  } catch {
+    return;
+  }
+  const gone = pickPrune(names, keep);
+  for (const n of gone) {
+    await unlink(path.join(BACKUP_DIR, n));
+    console.log(`[backup] 지움(오래된 백업) ${n}`);
+  }
+  console.log(`[backup] 정리 — 최신 ${keep}개 남김 · 지운 것 ${gone.length}개`);
+}
+if (process.argv.includes('--prune-only')) {
+  await prune();
+  process.exit(0);
 }
 
 const outIdx = process.argv.indexOf('--out');
@@ -68,6 +94,10 @@ child.on('exit', (code) => {
   if (code === 0) {
     console.log('[backup] 완료');
     console.log('[backup] 복원:  npm run db:restore -- ' + path.relative(ROOT, outFile));
+    // ★ R074 — 기본 자리(backups/)에 만들었을 때만 정리(--out 으로 다른 곳에 둔 것은 손대지 않는다)
+    out.on('close', () => {
+      if (path.dirname(outFile) === BACKUP_DIR) void prune();
+    });
   } else {
     console.error(`[backup] 실패 (exit=${code}). 컨테이너가 떠 있는지 확인하세요: npm run db:up`);
     process.exit(1);
