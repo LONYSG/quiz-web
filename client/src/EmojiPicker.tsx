@@ -4,24 +4,40 @@
 // ★ 입력칸 **왼쪽**의 😊 (카카오톡처럼). 누르면 위로 작은 창:
 //   · 맨 위 = **내 10칸** (PC 는 번호 1~0 = Alt+1 ~ Alt+0). 누르면 **바로 보낸다**
 //   · 아래 = 분류 탭 · 검색 · 전체 이모티콘. 누르면 바로 보낸다
-//   · ★★ R064 (D-268 · 찬종 #30 "단축키 설정하는거 다들 어려워해") — 칸 아래 **숫자 자리**를 누르면 "N번 자리에 넣을 이모티콘을 고르세요" →
-//     아래에서 하나 누르면 그 칸이 바뀌고 끝(계정에 저장) · Esc · 다시 누르기 = 취소. 옛 "칸 바꾸기" 토글은 없앴다. 첫 열기 때 한 줄 팁(한 번만)
 // ★ 보내면 버튼 위로 그 이모티콘이 떠올라 "보냈다" 를 알린다 (모바일은 참여자 칸이 없어서 특히 필요하다)
 // ★ 이 창 안의 이모티콘 목록만은 스크롤된다 — 1,800개를 한 화면에 둘 수 없다 (떠 있는 창이라 화면 배치에는 영향이 없다)
 // ★★★ R057 (D-250) — 이모티콘 나열: 창 맨 위 [바로 보내기 · 입력창에 넣기](계정 저장 · 기본 바로 보내기).
-//   단발로는 PC **Shift+클릭** · 모바일 **길게 누르기**(0.45초) = 입력창에 넣기(토글과 무관). 넣는 동안 창은 열린 채로 둔다.
+//   단발로는 PC **Shift+클릭** = 입력창에 넣기(토글과 무관). 넣는 동안 창은 열린 채로 둔다.
 // ★★ R060 — **바로 보내기로 보내면 창을 닫는다**(보낸 사람의 큰 반응을 창이 가렸다 — 찬종 2026-10-21). 넣기는 열어 둔다.
+// ★★★ R073 (D-317 · 찬종 2026-11-05 "편집 버튼이 크기도 위치도 애매해 → 없애고 드래그해서 단축키 자리에 놓으면 교체") —
+//   자리 바꾸는 길은 **끌기 하나**: 창 안 이모티콘을 끌어 1~0 자리에 놓으면 교체 · 자리끼리 끌면 서로 바꿈 ·
+//   **채팅 입력창에 놓으면 입력창에 넣기**(창은 열어 둔다) · 그 밖은 취소. 판단은 emojiDrag.ts(단위 테스트).
+//   PC = 누른 뒤 6px 넘게 움직이면 끌기 · 모바일 = 450ms 길게 누르면 집어 올림(진동 한 번). Pointer Events(HTML5 DnD 는 터치가 안 된다).
+//   없앤 것: ✎ 편집 버튼 · 편집 모드 · 숫자 자리 누르기(D-268 · D-291) · 모바일 "길게 누르면 넣기"(→ 집어 올리기). 숫자는 표시만.
 // =============================================================================
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { usePopup } from './popup.js';
 import PopupClose from './PopupClose.js';
 import Emoji from './Emoji.js';
 import { EMOJI_CATEGORIES, setEmojiInsert, setStoredSlots, useEmojiCatalog, useEmojiInsert, type EmojiMeta } from './emojiCatalog.js';
 import Icon from './Icon.js';
-import { Pencil, Search, Send, Smile, TextCursorInput } from 'lucide-react';
+import { Search, Send, Smile, TextCursorInput } from 'lucide-react';
 import { isReportOpen } from './reportGuard.js';
 import { useRecentEmojis } from './emojiRecent.js';
+import { useUiMode } from './uiMode.js';
+import {
+  applyDrop,
+  dropMessage,
+  dropTargetOf,
+  LONG_PRESS_MS,
+  mouseDragStarts,
+  resolveDrop,
+  touchIsScroll,
+  type DragSource,
+  type DropTarget,
+} from './emojiDrag.js';
 
 interface Props {
   slots: number[];
@@ -33,26 +49,37 @@ interface Props {
 }
 
 const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-/** ★ R057 — 길게 누르기(모바일) */
-const LONG_PRESS_MS = 450;
+
+interface Press {
+  src: DragSource;
+  pid: number;
+  touch: boolean;
+  x0: number;
+  y0: number;
+  active: boolean;
+  timer: ReturnType<typeof setTimeout> | null;
+}
 
 export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const cat = useEmojiCatalog();
   const insertMode = useEmojiInsert();
-  // ★ 길게 누르기 — 넣은 뒤 따라오는 click 은 버린다
-  const longTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const longFired = useRef(false);
+  const mobile = useUiMode() === 'mobile';
   // ★ R041 — 팝업은 한 번에 하나
   const [open, setOpen] = usePopup('emoji');
-  // ★ R064 — 바꿀 자리(숫자 자리를 누르면). null 이면 평소(누르면 보내기)
-  const [assign, setAssign] = useState<number | null>(null);
-  // ★★ R066 (D-291 · 찬종 #39 "숫자 자리를 눌러 바꿀 수 있어요 팁 빼") — 팁 대신 단축키 줄 끝 ✎: 누르면 편집 모드
-  //   (자리가 커지고 흔들림 · "자리를 누른 뒤 이모티콘을 고르세요" · 다시 ✎ 또는 Esc 로 끝). 숫자 자리를 바로 누르는 길도 그대로.
-  const [editing, setEditing] = useState(false);
   // ★★ R069 (#70) — "자주" 탭(최근 보낸 순 12 · 이 기기) — 있으면 첫 탭 · 창을 열 때 그 탭부터
   const recent = useRecentEmojis();
   const [tab, setTab] = useState(() => (recent.length > 0 ? 'recent' : 'smileys'));
   const [q, setQ] = useState('');
+
+  // ── ★ R073 — 끌기 상태 ──────────────────────────────────────────────────────
+  const press = useRef<Press | null>(null);
+  const [ghost, setGhost] = useState<{ id: number; x: number; y: number } | null>(null);
+  const [hover, setHover] = useState<DropTarget>(null);
+  const [note, setNote] = useState<{ text: string; key: number } | null>(null);
+  /** 끌기를 끝낸 직후 따라오는 click 은 버린다 */
+  const suppressUntil = useRef(0);
+  const latest = useRef({ slots, onInsert });
+  latest.current = { slots, onInsert };
 
   useEffect(() => {
     if (!open) return undefined;
@@ -61,15 +88,10 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape' || isReportOpen()) return;
-      // ★ R064 — 자리 고르는 중이면 Esc 는 그것만 취소(창은 그대로) · ★ R066 편집 모드면 편집만 끝
-      if (assign !== null) {
+      // ★ R073 — 끄는 중이면 Esc 는 끌기만 취소
+      if (press.current?.active) {
         e.stopPropagation();
-        setAssign(null);
-        return;
-      }
-      if (editing) {
-        e.stopPropagation();
-        setEditing(false);
+        endPress();
         return;
       }
       setOpen(false);
@@ -80,14 +102,8 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
       window.removeEventListener('pointerdown', onDown);
       window.removeEventListener('keydown', onKey);
     };
-  }, [open, setOpen, assign, editing]);
-  // ★ R064 — 창이 닫히면 자리 고르기 · 편집도 끝
-  useEffect(() => {
-    if (!open) {
-      setAssign(null);
-      setEditing(false);
-    }
-  }, [open]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, setOpen]);
 
   const hasCustom = Boolean(cat?.list.some((e) => e.category === 'custom'));
   // ★ R049 — ✨ 특별 탭은 **가진 것이 있을 때만** (뽑기 전엔 탭이 없다). 못 가진 특별은 어디에도 안 나온다 (찾기에도)
@@ -125,51 +141,133 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  const pick = (id: number, shift = false) => {
-    if (assign !== null) {
-      const next = [...slots];
-      next[assign] = id;
-      setStoredSlots(next);
-      setAssign(null);
-      return;
-    }
-    // ★ R057 — 토글이 "입력창에 넣기" 거나 Shift+클릭이면 넣기 · 아니면 지금처럼 바로 보내기
-    if (insertMode || shift) onInsert(id);
-    else send(id);
-  };
   const send = (id: number) => {
     onSend(id);
     setOpen(false);
   };
-  /** 한 칸의 누르기 처리 — 클릭(Shift) · 길게 누르기(터치) */
-  const press = (id: number, onTap: (shift: boolean) => void) => ({
-    onClick: (e: React.MouseEvent) => {
-      if (longFired.current) {
-        longFired.current = false;
+  // ★ R057 — 토글이 "입력창에 넣기" 거나 Shift+클릭이면 넣기 · 아니면 지금처럼 바로 보내기
+  const tap = (id: number, shift: boolean) => {
+    if (insertMode || shift) onInsert(id);
+    else send(id);
+  };
+
+  // ── ★ R073 — 끌기 (window 에 건다 · 고스트는 pointer-events none 이라 손 아래 요소를 바로 본다) ─────────────
+  const targetAt = (x: number, y: number): DropTarget => dropTargetOf(document.elementFromPoint(x, y));
+  const setBodyDrop = (t: DropTarget) => document.body.classList.toggle('emoji-drop-input', t?.kind === 'input');
+  const onMove = useCallback((e: PointerEvent) => {
+    const p = press.current;
+    if (!p || e.pointerId !== p.pid) return;
+    const dx = e.clientX - p.x0;
+    const dy = e.clientY - p.y0;
+    if (!p.active) {
+      if (p.touch) {
+        if (touchIsScroll(dx, dy)) endPress(); // 목록 스크롤 — 끌기 아님
         return;
       }
-      onTap(e.shiftKey);
-    },
-    onPointerDown: (e: React.PointerEvent) => {
-      if (e.pointerType === 'mouse' || assign !== null) return;
-      longFired.current = false;
-      if (longTimer.current) clearTimeout(longTimer.current);
-      longTimer.current = setTimeout(() => {
-        longTimer.current = null;
-        longFired.current = true;
-        onInsert(id);
+      if (!mouseDragStarts(dx, dy)) return;
+      activate(p, e.clientX, e.clientY);
+    }
+    e.preventDefault();
+    setGhost({ id: p.src.id, x: e.clientX, y: e.clientY });
+    const t = targetAt(e.clientX, e.clientY);
+    setHover(t);
+    setBodyDrop(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const onUp = useCallback((e: PointerEvent) => {
+    const p = press.current;
+    if (!p || e.pointerId !== p.pid) return;
+    if (p.active) {
+      const action = resolveDrop(p.src, targetAt(e.clientX, e.clientY));
+      suppressUntil.current = performance.now() + 400;
+      const next = applyDrop(latest.current.slots, action);
+      if (next) setStoredSlots(next);
+      if (action.type === 'insert') latest.current.onInsert(action.id);
+      const msg = dropMessage(action);
+      if (msg && next) setNote({ text: msg, key: Date.now() });
+    }
+    endPress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const onCancel = useCallback((e: PointerEvent) => {
+    if (press.current && e.pointerId === press.current.pid) endPress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // ★ 집어 올린 뒤에는 목록이 스크롤되지 않게(터치) — passive false 라야 막힌다
+  const onTouchMove = useCallback((e: TouchEvent) => {
+    if (press.current?.active && e.cancelable) e.preventDefault();
+  }, []);
+  function activate(p: Press, x: number, y: number) {
+    p.active = true;
+    if (p.timer) clearTimeout(p.timer);
+    p.timer = null;
+    setGhost({ id: p.src.id, x, y });
+    document.body.classList.add('emoji-dragging');
+    window.getSelection()?.removeAllRanges();
+    setHover(targetAt(x, y));
+  }
+  function endPress() {
+    const p = press.current;
+    if (p?.timer) clearTimeout(p.timer);
+    press.current = null;
+    window.removeEventListener('pointermove', onMove);
+    window.removeEventListener('pointerup', onUp);
+    window.removeEventListener('pointercancel', onCancel);
+    window.removeEventListener('touchmove', onTouchMove);
+    document.body.classList.remove('emoji-dragging', 'emoji-drop-input');
+    setGhost(null);
+    setHover(null);
+  }
+  const startPress = (src: DragSource, e: React.PointerEvent) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (press.current) endPress();
+    const p: Press = { src, pid: e.pointerId, touch: e.pointerType !== 'mouse', x0: e.clientX, y0: e.clientY, active: false, timer: null };
+    press.current = p;
+    if (p.touch) {
+      p.timer = setTimeout(() => {
+        if (press.current !== p) return;
+        activate(p, p.x0, p.y0);
+        try {
+          navigator.vibrate?.(12);
+        } catch {
+          /* 진동 없음 */
+        }
       }, LONG_PRESS_MS);
+    }
+    window.addEventListener('pointermove', onMove, { passive: false });
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onCancel);
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+  };
+  // 창이 닫히거나 사라지면 끌기도 끝
+  useEffect(() => {
+    if (!open && press.current) endPress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+  useEffect(
+    () => () => {
+      if (press.current) endPress();
     },
-    onPointerUp: () => {
-      if (longTimer.current) clearTimeout(longTimer.current);
-      longTimer.current = null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+  useEffect(() => {
+    if (!note) return undefined;
+    const t = window.setTimeout(() => setNote(null), 1500);
+    return () => window.clearTimeout(t);
+  }, [note]);
+
+  /** 한 칸 — 누르기(보내기 · Shift = 넣기) + 끌기 */
+  const cellProps = (src: DragSource) => ({
+    onClick: (e: React.MouseEvent) => {
+      if (performance.now() < suppressUntil.current) return;
+      tap(src.id, e.shiftKey);
     },
-    onPointerLeave: () => {
-      if (longTimer.current) clearTimeout(longTimer.current);
-      longTimer.current = null;
-    },
+    onPointerDown: (e: React.PointerEvent) => startPress(src, e),
     onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
+    onDragStart: (e: React.DragEvent) => e.preventDefault(),
   });
+  const dragging = ghost !== null;
 
   return (
     <span className="emoji-picker">
@@ -188,13 +286,13 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
         </span>
       )}
       {open && (
-        <div className="emoji-pop" role="dialog" aria-label="이모티콘">
+        <div className={dragging ? 'emoji-pop dragging' : 'emoji-pop'} role="dialog" aria-label="이모티콘">
           {/* ★ R044 B — 모든 팝업에 같은 ✕ */}
           <div className="pop-head">
             <p className="pop-title">이모티콘</p>
             <PopupClose onClose={() => setOpen(false)} />
           </div>
-          {/* ★★★ R057 — 바로 보내기(기본) ⇄ 입력창에 넣기 (계정 저장) */}
+          {/* ★★★ R057 — 바로 보내기(기본) ⇄ 입력창에 넣기 (계정 저장) · ★ R073 — Alt+1~0 도 이 토글을 따른다 */}
           <div className="emoji-mode" role="group" aria-label="누르면">
             <button type="button" data-emoji-mode="send" aria-pressed={!insertMode} className={!insertMode ? 'emoji-mode-btn on' : 'emoji-mode-btn'} onClick={() => setEmojiInsert(false)}>
               <Icon icon={Send} /> 바로 보내기
@@ -202,69 +300,35 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
             <button type="button" data-emoji-mode="insert" aria-pressed={insertMode} className={insertMode ? 'emoji-mode-btn on' : 'emoji-mode-btn'} onClick={() => setEmojiInsert(true)}>
               <Icon icon={TextCursorInput} /> 입력창에 넣기
             </button>
-            <span className="dim emoji-mode-tip">{insertMode ? '여러 개 넣고 전송' : 'Shift+클릭 · 길게 누르면 넣기'}</span>
+            <span className="dim emoji-mode-tip">{insertMode ? '여러 개 넣고 전송' : mobile ? '채팅창에 끌면 넣기' : 'Shift+클릭 = 넣기'}</span>
           </div>
-          <div className="emoji-slots-row">
-          <div className={['emoji-slots', assign !== null ? 'assigning' : '', editing ? 'editing' : ''].filter(Boolean).join(' ')}>
+          <div className={dragging ? 'emoji-slots drop-ok' : 'emoji-slots'} data-emoji-slots>
             {slots.map((id, i) => (
-              <span key={i} className={assign === i ? 'emoji-slot-cell sel' : 'emoji-slot-cell'}>
-                <button
-                  type="button"
-                  className="emoji-slot"
-                  {...press(id, (shift) => (assign !== null || editing ? setAssign(i) : insertMode || shift ? onInsert(id) : send(id)))}
-                  title={`Alt+${KEYS[i]}`}
-                >
+              <span
+                key={i}
+                className={[
+                  'emoji-slot-cell',
+                  hover?.kind === 'slot' && hover.index === i ? 'drop-hover' : '',
+                  press.current?.active && press.current.src.kind === 'slot' && press.current.src.index === i ? 'drag-from' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                data-drop-slot={i}
+              >
+                <button type="button" className="emoji-slot" title={mobile ? `${KEYS[i]}번 자리` : `Alt+${KEYS[i]}`} {...cellProps({ kind: 'slot', index: i, id })}>
                   <Emoji id={id} size={26} />
                 </button>
-                {/* ★ R064 — 번호는 **누르는 자리**: 누르면 이 칸에 넣을 이모티콘 고르기(다시 누르면 취소) */}
-                <button
-                  type="button"
-                  className="emoji-key"
-                  data-slot-key={KEYS[i]}
-                  aria-pressed={assign === i}
-                  aria-label={`${KEYS[i]}번 자리 바꾸기`}
-                  title={`${KEYS[i]}번 자리 바꾸기`}
-                  onClick={() => setAssign((a) => (a === i ? null : i))}
-                >
+                {/* ★ R073 — 번호는 표시만(PC = Alt+N · 모바일 = 자리 이름) */}
+                <span className="emoji-key" data-slot-key={KEYS[i]} aria-hidden="true">
                   {KEYS[i]}
-                </button>
+                </span>
               </span>
             ))}
           </div>
-          <button
-            type="button"
-            className={editing ? 'emoji-edit-btn on' : 'emoji-edit-btn'}
-            data-emoji-edit
-            aria-pressed={editing}
-            aria-label="자리 바꾸기"
-            title="자리 바꾸기"
-            onClick={() => {
-              setEditing((v) => !v);
-              setAssign(null);
-            }}
-          >
-            {/* ★ R068 (찬종 #57 m360 "편집 아이콘이 버튼이랑 그림이 안맞아") — 글자 ✎ 는 글꼴마다 기준선이 달라 칸 가운데서 벗어났다 → 선 아이콘 · 가운데 맞춤 */}
-            <Icon icon={Pencil} />
-          </button>
-          </div>
-          {assign !== null ? (
-            <p className="emoji-edit-tip" data-slot-assign={KEYS[assign]}>
-              <span>
-                <strong>{KEYS[assign]}번 자리</strong>에 넣을 이모티콘을 고르세요
-              </span>
-              <button type="button" className="link-btn" onClick={() => setAssign(null)}>
-                취소
-              </button>
+          {note && (
+            <p key={note.key} className="emoji-drop-note" role="status" data-emoji-drop-note>
+              {note.text}
             </p>
-          ) : (
-            editing && (
-              <p className="emoji-edit-tip" data-slot-edit>
-                <span>자리를 누른 뒤 이모티콘을 고르세요</span>
-                <button type="button" className="link-btn" onClick={() => setEditing(false)}>
-                  끝
-                </button>
-              </p>
-            )
           )}
           <div className="emoji-tools">
             <label className="emoji-search-wrap">
@@ -298,7 +362,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
                     </p>
                     <div className="emoji-group-cells">
                       {g.owned.map((e) => (
-                        <button key={e.id} type="button" className="emoji-cell special" title={e.name} {...press(e.id, (shift) => pick(e.id, shift))}>
+                        <button key={e.id} type="button" className="emoji-cell special" title={e.name} data-emoji-id={e.id} {...cellProps({ kind: 'emoji', id: e.id })}>
                           <Emoji id={e.id} size={34} />
                         </button>
                       ))}
@@ -306,7 +370,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
                   </div>
                 ))
               : shown.map((e) => (
-                  <button key={e.id} type="button" className={e.category === 'special' ? 'emoji-cell special' : 'emoji-cell'} title={e.name} {...press(e.id, (shift) => pick(e.id, shift))}>
+                  <button key={e.id} type="button" className={e.category === 'special' ? 'emoji-cell special' : 'emoji-cell'} title={e.name} data-emoji-id={e.id} {...cellProps({ kind: 'emoji', id: e.id })}>
                     <Emoji id={e.id} size={e.category === 'special' ? 34 : 26} />
                   </button>
                 ))}
@@ -315,6 +379,13 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
           </div>
         </div>
       )}
+      {ghost &&
+        createPortal(
+          <span className="emoji-ghost" aria-hidden="true" data-emoji-ghost style={{ left: ghost.x, top: ghost.y }}>
+            <Emoji id={ghost.id} size={34} />
+          </span>,
+          document.body,
+        )}
     </span>
   );
 }

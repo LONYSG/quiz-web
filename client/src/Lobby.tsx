@@ -40,7 +40,8 @@ import Seat from './Seat.js';
 import Emoji from './Emoji.js';
 import EmojiPicker from './EmojiPicker.js';
 import { pushRecentEmoji } from './emojiRecent.js';
-import { emojiToken, isSpecialEmoji, peekEmojiCatalog, specialDisplayMode, useEmojiSlots } from './emojiCatalog.js';
+import { emojiToken, getEmojiInsert, isSpecialEmoji, peekEmojiCatalog, specialDisplayMode, useEmojiSlots } from './emojiCatalog.js';
+import { altKeyAction } from './emojiDrag.js';
 import { useFocusChatOnEscape, useShortcuts, type Shortcut } from './shortcuts.js';
 import { chatSound, toggleMuteAll } from './sound.js';
 import { cycleTheme } from './theme.js';
@@ -436,14 +437,15 @@ export default function Lobby({
         { combo: 'Alt+M', fkey: null, label: '소리 켜기/끄기', when: true, run: () => void toggleMuteAll() },
     */
     // ★ R039 — 이모티콘 10칸. 목록 창에는 한 줄로만 보인다
-    { combo: 'Alt+1~0', fkey: null, label: '이모티콘 보내기 (내 10칸 — 😊 에서 바꿀 수 있다)', when: true, run: () => {}, displayOnly: true },
+    { combo: 'Alt+1~0', fkey: null, label: '이모티콘 보내기 (내 10칸 — 😊 창에서 끌어 바꾼다)', when: true, run: () => {}, displayOnly: true },
     ...['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((k, i) => ({
       combo: `Alt+${k}`,
       fkey: null,
       label: `이모티콘 ${k}`,
       when: emojiSlots.length > 0,
       hideInList: true,
-      run: () => sendEmoji(emojiSlots[i] ?? 0),
+      // ★★ R073 (D-317) — 창 위 토글이 [입력창에 넣기]면 Alt 키도 넣기(Alt+Shift 같은 새 키는 만들지 않는다 — Windows 자판 전환)
+      run: () => (altKeyAction(getEmojiInsert()) === 'insert' ? insertEmoji(emojiSlots[i] ?? 0) : sendEmoji(emojiSlots[i] ?? 0)),
     })),
   ];
   useShortcuts(shortcuts);
@@ -1055,11 +1057,11 @@ export default function Lobby({
             )}
             {/* ★ R057 — 특별 이모티콘 토큰(:sp:번호:)이 든 글은 보낼 모습을 입력창 바로 위에 작게 보인다(입력창은 글자만 그린다) */}
             {draft.includes(':sp:') && (
-              <div className="chat-preview" aria-label="보낼 모습">
+              <div className="chat-preview" aria-label="보낼 모습" data-chat-drop>
                 <ChatText text={draft} mine={false} masked={false} />
               </div>
             )}
-            <div className="field-row chat-input-row">
+            <div className="field-row chat-input-row" data-chat-drop>
               <EmojiPicker slots={emojiSlots} onSend={sendEmoji} onInsert={insertEmoji} flash={emojiFlash} />
               <input
                 ref={inputRef}

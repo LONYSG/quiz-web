@@ -2865,9 +2865,6 @@ img.emoji {
   border-radius: 10px;
   background: var(--surface-2);
 }
-.emoji-slot.sel {
-  outline: 3px solid var(--accent);
-}
 .emoji-key {
   position: absolute;
   left: 0;
@@ -2894,11 +2891,6 @@ img.emoji {
   border-radius: 999px;
   background: var(--surface-2);
   color: var(--text);
-}
-.emoji-edit-tip {
-  margin: 0 0 6px;
-  font-size: 0.75rem;
-  color: var(--accent);
 }
 .emoji-tabs {
   display: flex;
@@ -7701,45 +7693,16 @@ button.profile-photo {
 .emoji-pop button.emoji-slot {
   padding: 4px 0;
 }
-.emoji-pop button.emoji-key {
+/* ★★ R073 (D-317) — 숫자는 표시만(누르는 자리 아님) */
+.emoji-pop .emoji-key {
   display: block;
-  box-sizing: border-box;
-  height: 18px;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
+  height: 16px;
   color: var(--text-dim);
   font-size: 0.68rem;
   font-weight: 800;
-  line-height: 18px;
-  cursor: pointer;
-}
-.emoji-pop button.emoji-key:hover {
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-.emoji-slot-cell.sel .emoji-slot {
-  outline: 3px solid var(--accent);
-}
-.emoji-pop .emoji-slot-cell.sel button.emoji-key {
-  background: var(--accent);
-  color: #fff;
-}
-.emoji-slots.assigning .emoji-slot-cell:not(.sel) .emoji-slot {
-  opacity: 0.55;
-}
-.emoji-edit-tip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 6px 0 0;
-  white-space: nowrap;
-}
-.emoji-edit-tip .link-btn {
-  margin-left: auto;
+  line-height: 16px;
+  text-align: center;
+  pointer-events: none;
 }
 
 /* ★★ R064 (D-267 · 찬종 #22 "피드백 버튼이 혼자 작음") — 📝 피드백은 같은 줄 이웃과 같은 높이 · 글자 크기
@@ -8157,57 +8120,80 @@ button.mg-cat-card {
   gap: 4px;
   font-size: 0.92rem;
 }
-/* ★★ R066 (D-291) — 이모티콘 창 ✎ 편집 모드: 자리가 커지고 흔들린다 */
-.emoji-slots-row {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+/* ★★★ R073 (D-317) — 끌어서 등록: 고스트 · 놓을 수 있는 곳(자리 10칸 · 입력창) 밝게 · 자리 위면 그 자리가 커진다 */
+.emoji-pop .emoji-slot,
+.emoji-pop .emoji-cell {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
 }
-.emoji-slots-row > .emoji-slots {
-  flex: 1 1 auto;
-  min-width: 0;
+.emoji-pop .emoji-slot {
+  touch-action: none;
 }
-.emoji-edit-btn {
-  flex: 0 0 auto;
-  margin: 0;
-  min-height: 0;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border-radius: 9px;
-  font-size: 1rem;
-  background: var(--surface-2);
-  border: var(--bw) solid var(--border);
-  color: var(--text-dim);
+.emoji-pop img {
+  -webkit-user-drag: none;
 }
-.emoji-pop button.emoji-edit-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  font-size: 0.95rem;
+.emoji-ghost {
+  position: fixed;
+  z-index: 9999;
+  transform: translate(-50%, -60%) scale(1.15);
+  opacity: 0.8;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.28));
 }
-.emoji-pop button.emoji-edit-btn .ico {
-  vertical-align: 0;
+.emoji-ghost img.emoji {
+  width: 40px;
+  height: 40px;
 }
-.emoji-edit-btn.on {
-  border-color: var(--accent);
-  color: var(--accent);
+.emoji-pop.dragging .emoji-grid {
+  overflow: hidden;
+  touch-action: none;
+}
+.emoji-pop.dragging,
+.emoji-pop.dragging * {
+  cursor: grabbing;
+}
+.emoji-slots.drop-ok .emoji-slot {
+  outline: 2px dashed var(--accent);
+  outline-offset: -2px;
   background: var(--chip-bg);
 }
-.emoji-slots.editing .emoji-slot {
-  transform: scale(1.08);
-  animation: emoji-wiggle 0.5s ease-in-out infinite alternate;
+.emoji-slot-cell .emoji-slot {
+  transition: transform 120ms var(--ease-pop, ease-out);
 }
-.emoji-slots.editing .emoji-slot-cell:nth-child(2n) .emoji-slot {
-  animation-delay: 0.25s;
+.emoji-slot-cell.drop-hover .emoji-slot {
+  transform: scale(1.22);
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+  z-index: 1;
 }
-@keyframes emoji-wiggle {
-  from { transform: scale(1.08) rotate(-3deg); }
-  to { transform: scale(1.08) rotate(3deg); }
+.emoji-slot-cell.drop-hover .emoji-key {
+  color: var(--accent);
 }
-@media (prefers-reduced-motion: reduce) {
-  .emoji-slots.editing .emoji-slot { animation: none; }
+.emoji-slot-cell.drag-from .emoji-slot {
+  opacity: 0.4;
+}
+body.emoji-dragging [data-chat-input] {
+  outline: 2px dashed var(--accent);
+  outline-offset: 1px;
+}
+body.emoji-drop-input [data-chat-input] {
+  outline: 3px solid var(--accent);
+  background: var(--chip-bg);
+}
+body.emoji-dragging {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.emoji-drop-note {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  white-space: nowrap;
+  animation: pop-in 140ms var(--ease-pop);
 }
 /* ★ R066 (D-292) — 사람 카드: 친구 상태는 이름 옆 배지(버튼 줄은 동작만) */
 .person-friend {
