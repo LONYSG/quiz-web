@@ -1887,15 +1887,16 @@ async function shopFlow(browser) {
   await altDigit(G, '1');
   await sleep(120);
   await altDigit(G, '1');
-  const locked = await G.waitFor("(document.querySelector('.throttle-note')?.innerText ?? '').includes('특별')", 3000);
-  await sleep(150);
+  // ★ R071 (D-314) 뒤로 특별 이모티콘 도배 제한이 없다 — 6번째도 가고 안내 줄은 없다(R073 끝 점검에서 낡은 기대를 고침)
+  await sleep(1500);
+  const locked = await G.evaluate("document.querySelector('.throttle-note') !== null");
   await snap(G, '122-special-locked-pc');
-  record('★★★ D 5초 안 6번째 → "특별 이모티콘 도배 방지 · N초" (보낸 사람만)', locked && (await H.evaluate("document.querySelector('.throttle-note') === null")), await G.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''"));
-  record('★ D 상대 화면엔 5개까지만 (6번째는 안 간다)', (await specialLines(H)) === l0 + 5, String((await specialLines(H)) - l0));
+  record('★★★ D (D-314) 5초 안 6번째도 간다 · 도배 방지 안내 없음(보낸 사람 · 받는 사람)', !locked && (await H.evaluate("document.querySelector('.throttle-note') === null")), await G.evaluate("document.querySelector('.throttle-note')?.innerText ?? ''"));
+  record('★ D (D-314) 상대 화면에 6개 모두', (await specialLines(H)) === l0 + 6, String((await specialLines(H)) - l0));
   await H.waitFor("document.querySelectorAll('.special-layer .special-float').length === 0", 4500);
   await sleep(200);
   await snap(H, '123-special-after-pc');
-  record('★★ D 3초 뒤 큰 반응은 사라지고 로그 줄만 남는다', (await floats(H)) === 0 && (await specialLines(H)) === l0 + 5);
+  record('★★ D 3초 뒤 큰 반응은 사라지고 로그 줄만 남는다', (await floats(H)) === 0 && (await specialLines(H)) === l0 + 6);
   // 특별이 잠겨도 표준 이모티콘은 간다
   const e0 = await H.evaluate("document.querySelectorAll('.chat-line .chat-emoji').length");
   await realClick(G, '.emoji-btn');
@@ -5608,7 +5609,8 @@ async function r066Flow(browser) {
     await auditAt(H, `info-${t}@1536`);
   }
   await H.key('Escape');
-  record('★★ R066 D1 ⓘ 안내 네 묶음(놀이 · 포인트 · 이모티콘 · 제보) · 포인트 묶음에 얻는 길 넷(1P · 보너스 · 5P · 50P)', tabs.every((x) => x.n > 0) && /1P/.test(pts) && /보너스/.test(pts) && /5P/.test(pts) && /50P/.test(pts), JSON.stringify({ tabs, pts }));
+  // ★ R073 (D-320) — 채택 +5P 는 제보 탭으로 옮겼다 · 포인트 탭 = 정답 1P · 평가 1P · 보너스 · 50P · 뽑기 20P
+  record('★★ R066 D1 ⓘ 안내 네 묶음(놀이 · 포인트 · 이모티콘 · 제보) · 포인트 묶음(1P · 평가 · 보너스 · 50P · 뽑기 20P — R073)', tabs.every((x) => x.n > 0) && /1P/.test(pts) && /평가/.test(pts) && /보너스/.test(pts) && /50P/.test(pts) && /20P/.test(pts), JSON.stringify({ tabs, pts }));
 
   // ── D4 첫 구매 가이드 — 포인트를 주고 샵에서 처음 뽑으면 1번 자리 + 가이드(한 번)
   hId = await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_uh`])).rows[0]?.id);

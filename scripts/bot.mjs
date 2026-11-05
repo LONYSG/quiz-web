@@ -8059,6 +8059,12 @@ async function scenarioSignup() {
   const c1 = (await raw('POST', '/api/me/grants/claim', null, cookie)).json;
   const c2 = (await raw('POST', '/api/me/grants/claim', null, cookie)).json;
   expectTrue('★★ 토스트 한 번(signup 50) · 다음 0건', c1?.grants?.length === 1 && c1.grants[0].reason === 'signup' && c1.grants[0].amount === 50 && c2?.grants?.length === 0, JSON.stringify({ c1: c1?.grants, c2: c2?.grants?.length }));
+  // ★★ R073 (D-318 · D-319) — 새 계정은 계정 값이 없다(= 투어 · 카드가 뜬다) · 플래그 둘 왕복 · 모르는 키는 버림
+  const p0 = (await raw('GET', '/api/auth/prefs', null, cookie)).json;
+  const put = await raw('PUT', '/api/auth/prefs', { theme: 'night', tourSeen: true, emojiHelpDismissed: true, emojiGuideSeen: false, hack: 1 }, cookie);
+  const p1 = (await raw('GET', '/api/auth/prefs', null, cookie)).json;
+  const dbPrefs = await withDb(async (c) => (await c.query(`SELECT prefs FROM accounts WHERE login_id = $1`, [loginId])).rows[0]?.prefs ?? null);
+  expectTrue('★★★ R073 prefs 플래그 왕복 — 처음 null · tourSeen · emojiHelpDismissed 저장 · 모르는 키(hack) 버림', p0?.prefs === null && put.status === 200 && p1?.prefs?.tourSeen === true && p1.prefs.emojiHelpDismissed === true && p1.prefs.emojiGuideSeen === false && !('hack' in (p1.prefs ?? {})) && dbPrefs?.tourSeen === true && !('hack' in (dbPrefs ?? {})), JSON.stringify({ p0: p0?.prefs, p1: p1?.prefs, dbPrefs }));
   const [b] = await makeBots(1);
   const bRows = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1 AND g.reason = 'signup'`, [b.loginId])).rows[0].n);
   expect('★★ 봇 계정은 가입 선물 없음', bRows, 0);
