@@ -5601,8 +5601,9 @@ async function r073CardFlow(browser) {
     rows[s.n] = await cardAt(s.n, s.touch);
     await closePicker(H);
   }
-  const want = (n) => (n.startsWith('m') ? 3 : 4);
-  record('★★★ R073 §B 😊 열 때마다 안내 카드 — PC 4줄 · 모바일 3줄 · 줄마다 한 줄 · 창이 화면 안(PC 5 · 모바일 3)', Object.entries(rows).every(([n, r]) => r.fit.card && r.fit.popIn && r.lines.length === want(n) && r.lines.every((l) => l.n === 1)), JSON.stringify(Object.fromEntries(Object.entries(rows).map(([n, r]) => [n, { ...r.fit, lines: r.lines.map((l) => `${l.n}:${l.len}`) }]))));
+  // ★ R074 (D-321 라) — 카드는 글 2줄 + 한 줄(우클릭 · 길게 떼기) = PC · 모바일 모두 3줄
+  const want = () => 3;
+  record('★★★ R073 §B → R074 😊 열 때마다 안내 카드 — PC · 모바일 3줄(2줄 + 한 줄) · 줄마다 한 줄 · 창이 화면 안(PC 5 · 모바일 3)', Object.entries(rows).every(([n, r]) => r.fit.card && r.fit.popIn && r.lines.length === want(n) && r.lines.every((l) => l.n === 1)), JSON.stringify(Object.fromEntries(Object.entries(rows).map(([n, r]) => [n, { ...r.fit, lines: r.lines.map((l) => `${l.n}:${l.len}`) }]))));
   console.log(`  [r073] 카드 문구 ${JSON.stringify(Object.fromEntries(Object.entries(rows).filter(([n]) => n === 'pc' || n === 'm360').map(([n, r]) => [n, r.lines.map((l) => l.t)])))}`);
   await r068Touch(H, 1536, 864, false);
   await H.setViewport(1536, 864);
@@ -6430,7 +6431,7 @@ async function r066Flow(browser) {
   const guide = JSON.parse(await H.evaluate("JSON.stringify({ shown: document.querySelector('[data-emoji-help]') !== null, old: document.querySelector('[data-emoji-guide]') !== null, lines: document.querySelectorAll('[data-emoji-help] li').length, slot1: JSON.parse(localStorage.getItem('qw.emoji.v1') ?? 'null')?.[0] ?? null })"));
   await snap(H, '183-emoji-guide-1536');
   await auditAt(H, 'guide@1536');
-  record('★★★ R066 D4 → R073 (D-318) 첫 구매 → 1번 자리 · 포인트샵 닫으면 😊 창 + 안내 카드(옛 가이드 창 없음)', guide.shown && !guide.old && guide.lines === 4 && Number.isInteger(guide.slot1), JSON.stringify(guide));
+  record('★★★ R066 D4 → R073 (D-318) 첫 구매 → 1번 자리 · 포인트샵 닫으면 😊 창 + 안내 카드(옛 가이드 창 없음 · R074 카드 3줄)', guide.shown && !guide.old && guide.lines === 3 && Number.isInteger(guide.slot1), JSON.stringify(guide));
   await H.key('Escape');
   await withPg((c) => c.query(`DELETE FROM account_emojis WHERE account_id = $1`, [hId]).catch(() => undefined));
 
@@ -10251,12 +10252,14 @@ try {
     const seatEmoji = await host.waitFor(`document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-emoji-pop img.emoji') !== null`, 4000);
     record('★★★ Alt+2 → 내 칸에 이모티콘이 크게 튀어 오른다', seatEmoji);
     const emoSize = await host.evaluate(`(() => { const i = document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-emoji-pop'); const n = document.querySelector('.seat-card[data-account="${ids?.h}"] .seat-nick'); return i && n ? Math.round(i.getBoundingClientRect().height) + '/' + Math.round(n.getBoundingClientRect().height) : '-'; })()`);
-    record('★★ 이모티콘 자리가 칸에서 가장 크다 (닉네임보다 높다)', /^(\d+)\/(\d+)$/.test(emoSize) && Number(emoSize.split('/')[0]) > Number(emoSize.split('/')[1]) * 1.5, emoSize);
+    // ★ R074 (§B) — 이모티콘은 자리 안에 들어가게(자리 − 그림자 ÷ 튀어 오름) — 옛 '닉네임 × 1.5' 대신 닉네임보다 높다
+    record('★★ 이모티콘 자리가 칸에서 가장 크다 (닉네임보다 높다 — R074 자리 안)', /^(\d+)\/(\d+)$/.test(emoSize) && Number(emoSize.split('/')[0]) > Number(emoSize.split('/')[1]), emoSize);
     record('★★ 채팅 로그에 작게 한 줄 (닉네임 + 그림)', await guest.waitFor("document.querySelector('.chat-log .chat-emoji') !== null", 4000));
     record('★ 그림 세트(Twemoji SVG)로 그린다', await host.evaluate("document.querySelector('.seat-emoji-pop img.emoji')?.getAttribute('src')?.startsWith('/emoji/') === true"));
     // 고르기 창 · 10칸 바꾸기
     await host.evaluate("document.querySelector('.emoji-btn').click()");
-    const pop = await host.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10 && document.querySelectorAll('.emoji-grid .emoji-cell').length > 50", 4000);
+    // ★ R069 — 보낸 적이 있으면 "자주" 탭(최근 12)부터 연다 → 칸 수 대신 탭 줄 · 칸이 있음
+    const pop = await host.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10 && document.querySelectorAll('.emoji-grid .emoji-cell').length > 0 && document.querySelectorAll('.emoji-tabs .emoji-tab').length >= 8", 4000);
     record('★★ 😊 → 고르기 창 (내 10칸 + 분류별 목록)', pop);
     // ★ R073 (D-317) — 찾은 하트를 끌어 1번 자리에(옛 숫자 자리 누르기는 없앴다)
     await host.setInput('.emoji-search', '하트');
@@ -10333,8 +10336,9 @@ try {
       await host.evaluate("document.querySelectorAll('.people-modal .people-list li').length === 2 && document.querySelector('.people-modal')?.innerText.includes('접속 종료') === true"),
     );
     await host.evaluate("document.querySelector('.people-modal button.people-row')?.click()");
-    const choose = await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"kick-choose\"]') !== null && document.querySelector('.people-modal') === null", 3000);
-    record('★★★ R041 — 사람을 누르면 강퇴/차단 고르기 팝업 (참여자 창은 닫힌다 — 팝업은 하나)', choose);
+    // ★ R074 (§F ②) — R056 뒤로 사람을 누르면 사람 카드(강퇴 · 차단 버튼)
+    const choose = await host.waitFor("document.querySelector('.person-card [data-act=\"kick\"]') !== null && document.querySelector('.people-modal') === null", 3000);
+    record('★★★ R041 → R056 — 사람을 누르면 사람 카드(강퇴 · 차단) · 참여자 창은 닫힌다(팝업은 하나)', choose);
     await host.click('강퇴');
     const fin = await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"kick-kick\"]') !== null", 3000);
     record(

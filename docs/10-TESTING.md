@@ -1074,6 +1074,26 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 54. ★★★ R074 — 사진 공개 레이아웃 · 내 자리 · 팝업 아래 끝 · 등록 안내 넷 · 사무실 모드 · 밤 다크 · play:stats · 백업 keep 5 · 0029 (D-321 ~ D-323 · D-278 이어서)
+
+★ 전부 검사 DB(quizweb_test — 0029 는 여기에만 적용) · 자기 서버(ui-check 3101). 실 DB 쓰기 0 · 실 3000 서버(꺼져 있음) 그대로 — 빌드만.
+
+```bash
+npm test                                                                   # 621 (+ emojiDemo 6 · emojiDrag +3 · office 3 · prefs +2 · gameQuestions 4 · play-stats 4 · backup-prune 2 · nearMiss +1)
+R074_ONLY=photo UICHECK_NO_BUILD=1 node scripts/ui-check-bundles.mjs r074  # 사진 공개(lab 방 틀 · 같은 트리 play → roundResult · 캐시 끔 · 400kbps · 프레임마다) — R074_CASES · R074_SIZES · R074_SHOT_SIZES · R074_EARLY=1(다 받기 전 공개) · R074_NO_DIMS=1
+R074_ONLY=live  UICHECK_NO_BUILD=1 RESOLVED_WAIT_MS=1500 node scripts/ui-check-bundles.mjs r074   # 실제 판 6게임 × 판 2 × (PC R074_LIVE_PC 기본 lap2 + m360) — R074_LIVE=photo,…
+R074_ONLY=bottom UICHECK_NO_BUILD=1 RESOLVED_WAIT_MS=20000 node scripts/ui-check-bundles.mjs r074  # 내 자리 이모티콘(PC 6 × DPR 1 · 1.25) · 팝업 22종 × PC 5 + 모바일 3 · 결과 버튼 줄 (seat = 자리만)
+R074_ONLY=emoji UICHECK_NO_BUILD=1 node scripts/ui-check-bundles.mjs r074  # 11 — 시연 · 멈춤 · 카드 · 자리 줄 글 · 우클릭 메뉴 · 모바일 길게 떼기 메뉴 · 투어 ④
+R074_ONLY=theme UICHECK_NO_BUILD=1 RESOLVED_WAIT_MS=25000 node scripts/ui-check-bundles.mjs r074  # 5 — 사무실(소리 · 탭 제목 · 글자 그림 · 움직임) · 되돌림 복원 · 밤 토큰 · 밤 전/후 그림(옛 밤 CSS 를 git HEAD 에서 덧붙여 '전')
+R074_ONLY=calib UICHECK_NO_BUILD=1 node scripts/ui-check-bundles.mjs r074  # 보정 — 카드 여분 · 채팅 칸 · 표 줄 높이(PC 높이 예산 숫자의 근거)
+npm run play:stats -- [--since D] [--games 1,2] [--min 3] [--out 파일]    # 검사 DB 로는 DATABASE_URL=…quizweb_test … --out tmp/…
+```
+
+- ★ 재현 먼저(고치기 전 빌드 · docs/design/r074/before/ · photo-live-before.json · bottom-before.json) → 고침 → 같은 검사 0.
+- §A 판정 = 공개 순간 · onLoad 뒤 · 500ms 뒤 + 그 사이 **모든 프레임**의 그림 칸 rect · 카드 높이 · document.scrollHeight · .center 넘침이 같다 · PC 문서 스크롤 0(모바일은 화면 스크롤 하나가 설계 — 높이 변화만).
+- 검사가 못 잡던 것(5절): 옛 사진 검사는 단계마다 장면을 새로 열어 "공개 순간" 이 없었다 · 자리 이모티콘은 쉰 뒤만 봤다(그림자 · 튀어 오를 때 없음).
+- 옛 묶음 · main-behavior 결과는 R074.txt 3절.
+
 ## 53. ★★★ R073 — 이모티콘 끌어서 등록 · 😊 안내 카드 · 첫 안내 투어 · ⓘ 리뉴얼 (D-317 ~ D-320)
 
 ★ 전부 검사 DB(quizweb_test) · 자기 서버(ui-check 3101 · 봇 3200 · smoke 3100). 실 DB(quizweb) 에 붙지 않음 · 마이그레이션 없음(prefs 플래그). 실 3000 서버(10:05 · 감시 없음)는 다시 뜨지 않음 — 빌드만.

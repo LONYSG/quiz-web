@@ -9052,21 +9052,28 @@ button.preset.shake {
    ★★★ R074 (§B · 찬종 11-05 "이모티콘 보낼 때 내 노트북 PC(FHD · 125%)에서 내 자리 하단이 약간 잘리는 문제가 또") —
    재현: 쉴 때 이모티콘이 자리(.seat-emoji · overflow hidden)를 꽉 채워 그림자(0 4px 6px)가 잘림(그림자 자리 0px · 1280 · 1366 · 1536×864 · 1536×730) ·
    튀어 오를 때 1.3배(위 기준)로 커져 카드 아래로 18~30px 넘쳐 잘림(DPR 1 · 1.25 모두 — 배율 탓이 아니라 높이 탓).
-   고침: 이모티콘 = (자리 높이 − 그림자 10px) ÷ 1.2 (최대 84px) — 자리가 줄면 이모티콘도 준다 · 튀어 오름은 1.12배 · 4도(위 기준)라 자리 안.
+   고침: 이모티콘 = (자리 높이 − 그림자 6px) ÷ 1.16 (최대 84px) — 자리가 줄면 이모티콘도 준다 · 그림자 0 2px 3px ·
+   튀어 오름은 1.1배 · 3도(위 기준 — 둘러싼 상자 1.16배)라 자리 안. 닉네임보다는 높다(main-behavior 6-E).
    (옛 다섯 군데 덮어씀 2788 · 3102 · 4285 · 4332 · 7162 위에 마지막으로 하나)
    ============================================================================= */
 .seat-emoji {
   align-items: flex-start;
 }
 .seat-emoji-pop {
-  height: calc((100% - 10px) / 1.2);
-  max-height: min(84px, calc((100% - 10px) / 1.2));
+  height: calc((100% - 6px) / 1.16);
+  max-height: min(84px, calc((100% - 6px) / 1.16));
   transform-origin: 50% 0;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.18));
   animation: seat-emoji-pop 650ms var(--ease-pop), emoji-fade 3s ease-in forwards;
 }
 @keyframes seat-emoji-pop {
-  0% { transform: scale(0.2) rotate(-12deg); opacity: 0; }
-  55% { transform: scale(1.12) rotate(4deg); opacity: 1; }
-  75% { transform: scale(0.95) rotate(-2deg); }
+  0% { transform: scale(0.2) rotate(-10deg); opacity: 0; }
+  55% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+  75% { transform: scale(0.96) rotate(-2deg); }
   100% { transform: none; }
+}
+/* ★ R074 (D-321) — 모바일 😊 창 + 안내 카드(그림 · 자리 줄 글이 늘었다)가 360×740 에서 화면 위로 넘쳤다(창 710px · r073 카드 검사) →
+   카드가 떠 있는 동안 목록 높이를 줄인다(목록은 원래 안에서 스크롤) */
+:where(.ui-mobile) .emoji-pop:has([data-emoji-help]) .emoji-grid {
+  max-height: 110px;
 }
