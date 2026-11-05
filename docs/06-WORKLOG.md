@@ -15,6 +15,13 @@
 - **검증**: 10 52절 — vitest 580(+ scripts/tunnel-probe.test.mjs 9) · typecheck · 실제 터널(3100 자기 서버 · NO_OPEN=1) 주소 3.4초 · 등록 4.2초 · 열림 7.6초 · 대기 줄 1.
 - **남은 것**: A100(다음 메뉴 1) · flushdns 경로는 실제로는 아직 안 탐(단위 테스트만).
 
+## 2026-11-05 — 등급 3 hint-v7 표본 판정 · 변형 65 · 사실 5 · 제보 읽기 · 평가 13 (V032, VERIFY)
+
+- **무엇을**: G027 이 다시 쓴 등급 3 힌트 2,560 중 표본 308(+해설 67)을 독립 판정 · 변형 후보 57 + 8 · 사실 의심 4 + 제보 #76 · 제보 읽기 5350 · 6662 + 심화형 40 · 평가 검토 후보 13.
+- **어떻게**: targets.json 고정(2,560) → seed 32 표본 → INSTRUCTIONS.md(15 §4-1 글자 그대로 + 새 범주 셋) → 보정 10 → 조각 6(sonnet 판정자 2 이내) → fix·unsure 전부 + ok 40 직접 재독 · 변형·사실·읽기·평가는 VERIFY 직접.
+- **결과**: 무작위 240 중 ok 83.3% · 전체 ok 240 · fix 37 · unsure 31 · 해설 fix 2 · 변형 accept 40 · 사실 틀림 2(두부 · 힌트 1975) · 아르곤 맞음 · 심화형 일화 20%. 한계: 웹 대조 57/308.
+- **남은 것**: CV-127~134 적용(G029) — ai-out/V032.txt · audit/v032-*.json.
+
 ## 2026-11-01 — 정답 공개 평가 손질 · 이모티콘 도배 제한 제거 · 다른 하나 찾기 어렵게 · hint:solve · game_questions 등급 열 (R071, MAIN)
 
 - **무엇을**: 찬종 2026-11-01 "권장대로 · 도배 제한 완전히 없애". §A 공개 중 👎 는 사유 하나 골라야 1P(needReason) · 평가 요청은 판마다 무작위 ceil(n/3) 문항(rateAsk · 스냅샷 · 아닌 문항은 줄 없음 · 0P) · 0027 question_feedback.asked · feedback-report 가중 표(가중 0 묶음 · --raw) §B 이모티콘 도배 제한 제거(tuning.emojiRateLimit 기본 꺼짐 · 복원 EMOJI_RATE_LIMIT=1 · 한 소켓 1초 50개 폭주 방어) §C 다른 하나 찾기 격자 4~8 · 1판만 쉬움 · 어려운 쌍 28 §D `npm run hint:solve` §E 0028 game_questions.target_grade · grade · worth + 선정 코드 기록.
