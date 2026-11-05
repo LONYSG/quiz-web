@@ -13,10 +13,11 @@
 //   자리 바꾸는 길은 **끌기 하나**: 창 안 이모티콘을 끌어 1~0 자리에 놓으면 교체 · 자리끼리 끌면 서로 바꿈 ·
 //   **채팅 입력창에 놓으면 입력창에 넣기**(창은 열어 둔다) · 그 밖은 취소. 판단은 emojiDrag.ts(단위 테스트).
 //   PC = 누른 뒤 6px 넘게 움직이면 끌기 · 모바일 = 450ms 길게 누르면 집어 올림(진동 한 번). Pointer Events(HTML5 DnD 는 터치가 안 된다).
+// ★★ R073 (D-318) — 창을 열 때마다 맨 위에 안내 카드(EmojiHelp.tsx · 다시 보지 않음 체크 전까지).
 //   없앤 것: ✎ 편집 버튼 · 편집 모드 · 숫자 자리 누르기(D-268 · D-291) · 모바일 "길게 누르면 넣기"(→ 집어 올리기). 숫자는 표시만.
 // =============================================================================
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { usePopup } from './popup.js';
 import PopupClose from './PopupClose.js';
@@ -27,6 +28,7 @@ import { Search, Send, Smile, TextCursorInput } from 'lucide-react';
 import { isReportOpen } from './reportGuard.js';
 import { useRecentEmojis } from './emojiRecent.js';
 import { useUiMode } from './uiMode.js';
+import EmojiHelpCard, { takeHelpWanted } from './EmojiHelp.js';
 import {
   applyDrop,
   dropMessage,
@@ -70,6 +72,11 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const recent = useRecentEmojis();
   const [tab, setTab] = useState(() => (recent.length > 0 ? 'recent' : 'smileys'));
   const [q, setQ] = useState('');
+  // ★★ R073 (D-318) — 안내 카드: 창을 열 때마다(다시 보지 않음 전까지 · ⓘ 다시 보기 · 투어 ④ 는 억지로)
+  const [help, setHelp] = useState(false);
+  useLayoutEffect(() => {
+    setHelp(open ? takeHelpWanted() : false);
+  }, [open]);
 
   // ── ★ R073 — 끌기 상태 ──────────────────────────────────────────────────────
   const press = useRef<Press | null>(null);
@@ -292,6 +299,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
             <p className="pop-title">이모티콘</p>
             <PopupClose onClose={() => setOpen(false)} />
           </div>
+          {help && <EmojiHelpCard mobile={mobile} onClose={() => setHelp(false)} />}
           {/* ★★★ R057 — 바로 보내기(기본) ⇄ 입력창에 넣기 (계정 저장) · ★ R073 — Alt+1~0 도 이 토글을 따른다 */}
           <div className="emoji-mode" role="group" aria-label="누르면">
             <button type="button" data-emoji-mode="send" aria-pressed={!insertMode} className={!insertMode ? 'emoji-mode-btn on' : 'emoji-mode-btn'} onClick={() => setEmojiInsert(false)}>

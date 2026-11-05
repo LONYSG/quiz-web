@@ -35,6 +35,9 @@ function current(): ServerPrefs {
     // ★ R066 (D-288) — 한 번만 보이는 것(포인트샵 빨간 점 · 이모티콘 가이드)
     shopOpened: getFlag('shopOpened'),
     emojiGuideSeen: getFlag('emojiGuideSeen'),
+    // ★ R073 (D-318 · D-319) — 안내 카드 다시 보지 않음 · 첫 안내 투어
+    emojiHelpDismissed: getFlag('emojiHelpDismissed'),
+    tourSeen: getFlag('tourSeen'),
   };
 }
 
@@ -66,6 +69,8 @@ function apply(p: ServerPrefs): void {
     // ★ R066 — 계정에서 "봤다" 면 이 브라우저도(되돌리지는 않는다 — 한 번 본 것은 본 것)
     if (p.shopOpened === true) setFlag('shopOpened');
     if (p.emojiGuideSeen === true) setFlag('emojiGuideSeen');
+    if (p.emojiHelpDismissed === true) setFlag('emojiHelpDismissed');
+    if (p.tourSeen === true) setFlag('tourSeen');
     if (Object.keys(patch).length > 0) setSoundPrefs(patch);
   } finally {
     applying = false;

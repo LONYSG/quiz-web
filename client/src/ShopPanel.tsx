@@ -19,8 +19,7 @@ import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { DrawError, drawEmoji, fetchShop, type DrawResult, type ShopView } from './api.js';
 import { reloadEmojiCatalog, setStoredSlots, useEmojiCatalog, useEmojiSlots } from './emojiCatalog.js';
-import { openEmojiGuide } from './EmojiGuide.js';
-import { getFlag } from './accountFlags.js';
+import { openEmojiHelp } from './EmojiHelp.js';
 import { usePopup } from './popup.js';
 import { sfx } from './sound.js';
 import { useDismiss } from './useDismiss.js';
@@ -76,9 +75,15 @@ type Stage = { kind: 'list' } | { kind: 'drawing'; result: DrawResult } | { kind
 
 export default function ShopPanel({ onClosed }: Props) {
   const [open, setOpen] = usePopup('shop');
+  // ★★ R073 (D-318) — 첫 뽑기 뒤 창을 닫으면 😊 창을 열어 1번 자리 · 안내 카드를 보인다(옛 D-290 가이드 창 대신 · 방 밖이면 없음)
+  const helpAfterClose = useRef(false);
   const close = useCallback(() => {
     setOpen(false);
     onClosed?.();
+    if (helpAfterClose.current) {
+      helpAfterClose.current = false;
+      window.setTimeout(() => openEmojiHelp(false), 60);
+    }
   }, [setOpen, onClosed]);
   useDismiss(open, close, '.shop');
   const cat = useEmojiCatalog();
@@ -88,9 +93,8 @@ export default function ShopPanel({ onClosed }: Props) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const timer = useRef<number | null>(null);
-  // ★ R066 (D-290 · 찬종 #40) — 첫 구매면 1번 자리에 넣고 결과를 보여 준 뒤 가이드를 연다(한 번만)
+  // ★ R066 (D-290 · 찬종 #40) — 첫 구매면 1번 자리에 넣는다 · ★ R073 가이드 창은 없앴다(닫을 때 😊 창 + 안내 카드)
   const slots = useEmojiSlots();
-  const guideFor = useRef<number | null>(null);
 
   const refresh = useCallback(async () => {
     const v = await fetchShop();
@@ -127,11 +131,6 @@ export default function ShopPanel({ onClosed }: Props) {
     timer.current = null;
     sfx('correct');
     setStage({ kind: 'result', result });
-    if (guideFor.current !== null) {
-      const id = guideFor.current;
-      guideFor.current = null;
-      window.setTimeout(() => openEmojiGuide(id), 700);
-    }
   };
 
   const draw = async (themeKey: string) => {
@@ -145,7 +144,7 @@ export default function ShopPanel({ onClosed }: Props) {
         const next = [...slots];
         next[0] = result.emoji.id;
         setStoredSlots(next);
-        if (!getFlag('emojiGuideSeen')) guideFor.current = result.emoji.id;
+        helpAfterClose.current = true;
       }
       // ★ 서버가 확정한 뒤에만 연출 — 연출 중에 실패해 보이는 일이 없다
       setStage({ kind: 'drawing', result });

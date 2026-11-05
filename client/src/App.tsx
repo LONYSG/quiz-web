@@ -49,7 +49,6 @@ import FriendList from './FriendList.js';
 import InviteToast from './InviteToast.js';
 import AchievementToast from './AchievementToast.js';
 import GrantToast from './GrantToast.js';
-import EmojiGuideHost from './EmojiGuide.js';
 import ReportHost, { ReportButton, ReportLink, trackReportEvents, type ReportScreen } from './AppReport.js';
 import { clearRecentTargets } from './reportRecent.js';
 import { useCurrentPopup } from './popup.js';
@@ -608,8 +607,6 @@ export default function App() {
       {socket && account && <AchievementToast socket={socket} />}
       {/* ★ R059 — 제보 채택 · 보너스 포인트 알림(로그인 뒤 한 번) */}
       {account && !mustChange && <GrantToast accountId={account.accountId} />}
-      {/* ★ R066 (D-290) — 첫 이모티콘 가이드(첫 구매 · ⓘ 다시 보기) */}
-      {account && <EmojiGuideHost />}
       {/* ★ R061 — 🐞 제보(어느 화면이든 · Alt+B) · 📝 문항 피드백 창 · 복사/접수 알림 */}
       {/* ★ R063 — 로그인 전(로그인 · 비밀번호 바꾸기)에도 창은 뜬다(서버는 그 두 화면만 비로그인 허용) */}
       <ReportHost ctx={reportCtx} />

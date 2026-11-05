@@ -182,6 +182,9 @@ export interface ServerPrefs {
   /** ★ R066 — 포인트샵을 열어 봤나 · 이모티콘 가이드를 봤나 */
   shopOpened?: boolean;
   emojiGuideSeen?: boolean;
+  /** ★ R073 — 😊 안내 카드 다시 보지 않음(D-318) · 첫 안내 투어를 봤나(D-319) */
+  emojiHelpDismissed?: boolean;
+  tourSeen?: boolean;
 }
 
 export async function fetchPrefs(): Promise<ServerPrefs | null> {

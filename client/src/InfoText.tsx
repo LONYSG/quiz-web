@@ -14,7 +14,7 @@ import { useState } from 'react';
 import { Coins, Gamepad2, Link, Menu, MessageSquareWarning, SkipForward, Smile, Users } from 'lucide-react';
 import { FEEDBACK_ADOPT_POINTS, SIGNUP_GIFT_POINTS } from '@quiz/shared';
 import Icon from './Icon.js';
-import { openEmojiGuide } from './EmojiGuide.js';
+import { openEmojiHelp } from './EmojiHelp.js';
 
 const TABS = [
   { key: 'play', label: '놀이', icon: Gamepad2 },
@@ -92,8 +92,8 @@ export default function InfoText() {
             <li>길게 누르면 입력창에 넣어요.</li>
             <li>특별 이모티콘은 5초에 5번까지예요.</li>
           </ul>
-          <button type="button" className="link-btn info-guide-btn" data-info-guide onClick={() => openEmojiGuide()}>
-            이모티콘 가이드 다시 보기
+          <button type="button" className="link-btn info-guide-btn" data-info-guide onClick={() => openEmojiHelp()}>
+            안내 다시 보기
           </button>
         </>
       )}

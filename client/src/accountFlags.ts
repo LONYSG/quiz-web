@@ -1,13 +1,14 @@
 // =============================================================================
 // ★★ R066 (D-288) — 한 번만 보여 줄 것들의 표시(계정에 저장 — prefsSync · 로그인 전엔 이 브라우저에만)
 //   shopOpened     — 포인트샵을 한 번이라도 열었나(안 열었고 포인트가 있으면 빨간 점 · 찬종 #39)
-//   emojiGuideSeen — 첫 이모티콘 가이드를 봤나(찬종 #40 · 한 번만 · ⓘ 에서 다시 보기)
+//   emojiGuideSeen — 첫 이모티콘 가이드를 봤나(찬종 #40) — ★ R073 (D-318) 가이드는 안내 카드로 합쳤다: 받아서 남기기만 하고 쓰지 않는다
+//   ★★ R073 emojiHelpDismissed — 😊 안내 카드 "다시 보지 않음"(D-318) · tourSeen — 첫 안내 투어를 봤나(D-319 · 기존 계정은 없음 → 모두 한 번)
 // =============================================================================
 
 import { useEffect, useState } from 'react';
 
-export type AccountFlag = 'shopOpened' | 'emojiGuideSeen';
-export const ACCOUNT_FLAGS: readonly AccountFlag[] = ['shopOpened', 'emojiGuideSeen'];
+export type AccountFlag = 'shopOpened' | 'emojiGuideSeen' | 'emojiHelpDismissed' | 'tourSeen';
+export const ACCOUNT_FLAGS: readonly AccountFlag[] = ['shopOpened', 'emojiGuideSeen', 'emojiHelpDismissed', 'tourSeen'];
 
 const keyOf = (f: AccountFlag) => `qw.flag.${f}`;
 

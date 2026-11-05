@@ -8031,15 +8031,13 @@ button.mg-cat-card {
 .signup-gift-title strong {
   color: var(--accent);
 }
-.signup-gift-actions,
-.emoji-guide-actions {
+.signup-gift-actions {
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 8px;
 }
-.signup-gift-actions button,
-.emoji-guide-actions button {
+.signup-gift-actions button {
   margin: 0;
   display: inline-flex;
   align-items: center;
@@ -8060,65 +8058,6 @@ button.mg-cat-card {
 }
 #shop-btn {
   position: relative;
-}
-/* ★★ R066 (D-290) — 첫 이모티콘 가이드 */
-.emoji-guide {
-  width: min(520px, calc(100vw - 24px));
-  box-sizing: border-box;
-  display: grid;
-  gap: 10px;
-  padding: 20px;
-}
-.emoji-guide-title {
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.emoji-guide-art {
-  width: 100%;
-  height: auto;
-}
-.emoji-guide-art .eg-bar {
-  fill: var(--surface-2);
-  stroke: var(--border);
-}
-.emoji-guide-art .eg-slot {
-  fill: var(--surface);
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-.emoji-guide-art .eg-slot.on {
-  stroke: var(--accent);
-  stroke-width: 3;
-}
-.emoji-guide-art .eg-key {
-  fill: var(--text-dim);
-  font-size: 12px;
-  font-weight: 800;
-}
-.emoji-guide-art .eg-key.on {
-  fill: var(--accent);
-}
-.emoji-guide-art .eg-pen,
-.emoji-guide-art .eg-star {
-  fill: var(--accent);
-  font-size: 18px;
-  font-weight: 900;
-}
-.emoji-guide-art .eg-arrow {
-  stroke: var(--accent);
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-.emoji-guide-steps {
-  margin: 0;
-  padding-left: 22px;
-  display: grid;
-  gap: 4px;
-  font-size: 0.92rem;
 }
 /* ★★★ R073 (D-317) — 끌어서 등록: 고스트 · 놓을 수 있는 곳(자리 10칸 · 입력창) 밝게 · 자리 위면 그 자리가 커진다 */
 .emoji-pop .emoji-slot,
@@ -8461,4 +8400,96 @@ button.preset.shake {
 :where(.ui-mobile) .fb-row-head > .qreport-btn,
 :where(.ui-mobile) .fb-row-head > button.qreport-btn {
   margin-left: auto;
+}
+
+/* ★★ R073 (D-318) — 😊 안내 카드(창 맨 위 · 열 때마다 · 다시 보지 않음 전까지) */
+.emoji-help {
+  margin: 0 0 8px;
+  padding: 8px 10px 6px;
+  border: var(--bw) solid var(--accent);
+  border-radius: 12px;
+  background: var(--chip-bg);
+}
+.emoji-help-art {
+  display: block;
+  height: 34px;
+  width: auto;
+  max-width: 100%;
+  margin: 0 0 4px;
+}
+.emoji-help-art .eh-pick {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+.emoji-help-art .eh-face {
+  fill: var(--accent);
+  font-size: 15px;
+  font-weight: 900;
+}
+.emoji-help-art .eh-arrow {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 4 3;
+}
+.emoji-help-art .eh-slot {
+  fill: var(--surface);
+  stroke: var(--border);
+  stroke-width: 1.2;
+}
+.emoji-help-art .eh-slot.on {
+  stroke: var(--accent);
+  stroke-width: 2.4;
+}
+.emoji-help-art .eh-key {
+  fill: var(--text-dim);
+  font-size: 10px;
+  font-weight: 800;
+}
+.emoji-help-art .eh-key.on {
+  fill: var(--accent);
+}
+.emoji-help-lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+.emoji-help-lines li {
+  white-space: nowrap;
+}
+.emoji-help-lines li::before {
+  content: '·';
+  margin-right: 5px;
+  color: var(--accent);
+  font-weight: 900;
+}
+.emoji-help-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.emoji-help-never {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.emoji-help-never input {
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+.emoji-help-actions button {
+  margin: 0 0 0 auto;
 }
