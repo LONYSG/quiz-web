@@ -50,6 +50,14 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-06 — 질문 친절하게 112 · 등급 1·2 힌트 44 · 변형 +133 · checkHint 꾸밈 낱말 규칙 (G030, GEN)
+
+- **무엇을**: 19 §8 ⓐⓑⓒ+⑨ 로 등급 3·4·5 질문 다시 쓰기(대상 760 고정) · V033 fix 18 + 해설 2 · 안 본 380 H2 뜻풀이 훑기 · 사실 3(3575 · 6625 · 4598) · 변형 남은 4 + G029 H2 가드 131 + ⓑ 표기 2 · 15 §4-1 sync.
+- **어떻게**: 판정 sonnet(V033 60 으로 보정 3번 · 1차 대량 판정이 느슨해 작은 묶음으로 재판정) + 기계 ⑨ 후보 → 고치기 Opus 4 → GEN 재독 → scripts/g030-apply-read.mjs --part qNN · blind 질문만 전/후(sonnet). 힌트는 scripts/g030-apply-hints12.mjs --part v033|scan · 변형은 scripts/g030-apply-variants.mjs --part rest|b|guard(guard 는 힌트 43 함께).
+- **결정**: DG-068 · CV-135~139 끝.
+- **검증**: 백업 대비 바뀐 것 = question_text 113 · general_hint 89 · explanation 11 · question_answers +133 뿐 · 활성 6,506 · 힌트 4,778 전부 hint-v7 · hint-check-active 막힘 0 · explain 0 · blank 0 · crossans 2,467 · blind 102/112 → 99/112 · criteria-sync --check · hint-check 24/24 · npm test 599 · undo 다섯 dry-run.
+- **남은 것**: 160자 초과가 줄지 않음(4 115 → 117 · 5 45 → 49) · 판정자 느슨함 · 웹 못 닫은 옛 사실 4 · 변형 후보 2 — G030.txt 7절.
+
 ## 2026-11-05 — V032 반영 · 변형 한 번에 2,700 · hint-check-active crossans (G029, GEN)
 
 - **무엇을**: 15 §4-1 예시(V032 H2 · H7 · G028 H12) sync · hint-check-active 에 H12 crossans 경고(scripts/hint-crossans.mjs + 테스트) · V032 fix 37 · unsure 31 · 해설 7 · 사실 2 · 질문 2 · 평가 3 반영 · V030 · V031 · V032 accept 변형을 한 번에.
