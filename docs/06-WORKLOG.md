@@ -43,6 +43,14 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-05 — V032 반영 · 변형 한 번에 2,700 · hint-check-active crossans (G029, GEN)
+
+- **무엇을**: 15 §4-1 예시(V032 H2 · H7 · G028 H12) sync · hint-check-active 에 H12 crossans 경고(scripts/hint-crossans.mjs + 테스트) · V032 fix 37 · unsure 31 · 해설 7 · 사실 2 · 질문 2 · 평가 3 반영 · V030 · V031 · V032 accept 변형을 한 번에.
+- **어떻게**: B 는 GEN 직접(위키 원문 약 55 · WebSearch 2 — 전화번호 넷) → scripts/g029-apply-v032.mjs --part hints|explain|read|feedback · blind 56 → 다시 2. C 는 scripts/g029-apply-variants.mjs --part v030|v031|v032(충돌 ⓐⓑⓒ + ★ H2 막힘 가드 — 넣으면 지금 힌트가 막히는 변형 131 은 안 넣음).
+- **결정**: DG-067 · CV-127~134 끝.
+- **검증**: 백업 대비 바뀐 것 = general_hint 56 · explanation 11 · question_text 3 · question_answers +2,700 뿐 · 활성 힌트 4,778 전부 hint-v7 · hint-check-active 막힘 0 · explain 0 · blank 0 · crossans 2,454 · criteria-sync --check · npm test 599 · undo 일곱 dry-run 통과.
+- **남은 것**: H2 가드로 뺀 변형 131(힌트를 고친 뒤 넣을 것) · ⓑ 2 · crossans 덧붙임 이름 · 웹으로 못 닫은 fact — G029.txt 7절.
+
 ## 2026-11-05 — V031 반영 + 등급 1·2 기존 힌트 551 hint-v7 · 활성 힌트 전부 hint-v7 (G028, GEN)
 
 - **무엇을**: 15 §4-1 예시 넷 sync(+ 라운드 중 V032 예시 다시 sync) · blind 도구 괄호 지움 · V031 힌트 fix 21 · unsure 18 · 해설 18 · 사실 13 · G025 글 · 모헨조다로 L3 · 제보 #75 · #77 변형 · #78 해설 반영 · 등급 1·2 에 이미 있던 힌트 551 을 hint-v7 핵심 한 줄로(알가치 1 은 + 연결 고리) · 해설 함께 54.
