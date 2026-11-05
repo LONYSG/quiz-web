@@ -216,7 +216,7 @@ export default function TourHost({ state, mobile }: Props) {
   const text: { title: string; lines: string[] } = [
     {
       title: mobile ? '☰ 메뉴 → 🎁 포인트샵' : '🎁 포인트샵',
-      lines: [`가입 선물 ${SIGNUP_GIFT_POINTS}P가 들어 있어요`, balance !== null ? `지금 ${balance.toLocaleString('ko-KR')}P` : ''].filter(Boolean),
+      lines: [`가입 선물로 ${SIGNUP_GIFT_POINTS}P를 드렸어요`, balance !== null ? `지금 ${balance.toLocaleString('ko-KR')}P` : ''].filter(Boolean),
     },
     { title: `뽑기 ${draw}P`, lines: ['포인트는 이모티콘 뽑기에 써요', '맞힌 문제 1개 = 1P'] },
     { title: '😊 이모티콘', lines: ['눌러서 열고 골라 보내요'] },

@@ -904,8 +904,16 @@ async function cleanupAccounts(pattern = `${ACCOUNT_PREFIX}%`, label = '테스�
 // -----------------------------------------------------------------------------
 // 화면 조작 도우미
 // -----------------------------------------------------------------------------
-async function signUp(page, suffix, nickname = null) {
+/**
+ * ★★ R073 (D-318 · D-319) — 옛 묶음은 첫 안내 투어 · 😊 안내 카드를 본 것으로 시작한다(투어 판이 화면을 덮어 옛 진짜 클릭이 막힌다).
+ *   r073 묶음만 fresh=true 로 처음 상태(새 계정 = 투어 · 카드가 뜬다)를 본다.
+ */
+async function presetSeen(page) {
+  await page.evaluate("(() => { try { localStorage.setItem('qw.flag.tourSeen', '1'); localStorage.setItem('qw.flag.emojiHelpDismissed', '1'); } catch {} })()");
+}
+async function signUp(page, suffix, nickname = null, { fresh = false } = {}) {
   await page.goto(BASE);
+  if (!fresh) await presetSeen(page);
   const switched = await page.click('회원가입');
   if (!switched) throw new Error(`[${page.label}] 회원가입 탭을 찾지 못했다`);
   await sleep(300);
@@ -1674,8 +1682,9 @@ async function spamFlow(browser) {
 const SHOP_ONLY = args.includes('--shop');
 if (SHOP_ONLY) process.env.SHOT_DIR ??= 'verify';
 const BOT_PASSWORD = 'bot1234';
-async function loginAs(page, loginId, password) {
+async function loginAs(page, loginId, password, { fresh = false } = {}) {
   await page.goto(BASE);
+  if (!fresh) await presetSeen(page);
   await page.waitFor("document.querySelectorAll('form input').length >= 2", 8000);
   await page.evaluate(`(() => {
     const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); };
@@ -1836,10 +1845,8 @@ async function shopFlow(browser) {
   const cells = await G.evaluate("document.querySelectorAll('.emoji-cell.special').length");
   await snap(G, '110-picker-special-pc');
   record(`★★ C ✨ 탭 — 테마 머리글 "치이카와 ${ownedBefore + 2}/27" · 가진 것만 ${ownedBefore + 2}칸`, head.includes('치이카와') && head.includes(`${ownedBefore + 2}/27`) && cells === ownedBefore + 2, `${head} · ${cells}`);
-  // 칸 바꾸기 → 1번 칸 → 특별 (★ R064 — 칸 아래 숫자 자리 "1" 을 누르고 고르면 끝)
-  await realClick(G, '.emoji-key[data-slot-key="1"]');
-  await sleep(150);
-  await realClick(G, '.emoji-cell.special');
+  // 칸 바꾸기 → 1번 칸 → 특별 (★ R073 D-317 — 특별 칸을 끌어 1번 자리에 놓는다 · 옛 숫자 자리 누르기는 없앴다)
+  await dragTo(G, '.emoji-cell.special', '.emoji-slot-cell[data-drop-slot="0"]');
   await sleep(300);
   const slot1 = await G.evaluate("Number(document.querySelector('.emoji-slot img')?.dataset.emojiId ?? 0)");
   const ownedIds = after2.themes[0].owned;
@@ -3613,15 +3620,15 @@ async function r057Flow(browser) {
   await H.setInput(CHAT_IN, '😂😂😂😂😂');
   await H.click('전송');
   await sleep(600);
-  // 모바일 — 특별 탭에서 길게 누르기 → :sp: 토큰 · 미리 보기
+  // 모바일 — 특별 탭에서 ★ R073 (D-317) 길게 눌러 집어 채팅 입력창에 놓기 → :sp: 토큰 · 미리 보기(옛 "길게 누르기 = 넣기" 는 집어 올리기로 바뀜)
   await tapOn(G, '.emoji-btn');
   await G.waitFor("document.querySelector('.emoji-mode') !== null", 4000);
   await tapOn(G, '.emoji-tab[title="특별"]');
   await sleep(300);
-  await longPress(G, '.emoji-grid .emoji-cell.special');
+  await dragTo(G, '.emoji-grid .emoji-cell.special', '[data-chat-input]', { touch: true });
   const gv = await inputVal(G);
   const stillOpen = await G.evaluate("document.querySelector('.emoji-pop') !== null");
-  record('★★★ B 모바일 길게 누르기 → 입력창에 :sp: 토큰(보내지 않음 · 창은 열린 채)', /:sp:\d+:/.test(gv ?? '') && stillOpen, `${gv} · ${stillOpen}`);
+  record('★★★ B 모바일 길게 집어 입력창에 놓기 → 입력창에 :sp: 토큰(보내지 않음 · 창은 열린 채)', /:sp:\d+:/.test(gv ?? '') && stillOpen, `${gv} · ${stillOpen}`);
   await tapOn(G, '.emoji-pop .popup-close');
   await sleep(200);
   await G.setInput(CHAT_IN, `${gv}안녕 ㅋㅋ`);
@@ -4312,7 +4319,8 @@ async function r068RoomFlow(browser) {
     await sleep(250);
     const focus = JSON.parse(await H.evaluate(probe));
     await snap(H, `340-emoji-search-focus-${dev}`);
-    const pen = JSON.parse(await H.evaluate("JSON.stringify((() => { const b = document.querySelector('[data-emoji-edit]')?.getBoundingClientRect(); const s = document.querySelector('[data-emoji-edit] svg')?.getBoundingClientRect(); return b && s ? [Math.round(((s.left + s.right) - (b.left + b.right)) / 2 * 10) / 10, Math.round(((s.top + s.bottom) - (b.top + b.bottom)) / 2 * 10) / 10] : null; })())"));
+    // ★ R073 (D-317) — ✎ 는 없앴다(없음을 본다)
+    const pen = await H.evaluate("document.querySelector('[data-emoji-edit]') === null");
     if (touch) await snap(H, '341-emoji-edit-m390');
     search[dev] = { idle, focus, pen };
     await H.evaluate("document.querySelector('.emoji-pop .popup-close')?.click()");
@@ -4321,24 +4329,22 @@ async function r068RoomFlow(browser) {
   await r068Touch(H, 1536, 864, false);
   await H.setViewport(1536, 864);
   record('★★★ R068 찾기 칸 포커스 — 입력칸 그림자 · 테두리 없음 · 둥근 칸(wrap) 높이 그대로 · 테두리 색만 바뀜 · 모바일 16px(1536 · m390)', Object.values(search).every((s) => s.focus.ishadow === 'none' && s.focus.inside && s.focus.wh === s.idle.wh && s.focus.wb !== s.idle.wb) && search.m390?.focus.fs === '16px', JSON.stringify(search));
-  record('★★ R068 #57 ✎ — 아이콘이 버튼 가운데(±1px · 1536 · m390)', Object.values(search).every((s) => s.pen && Math.abs(s.pen[0]) <= 1 && Math.abs(s.pen[1]) <= 1), JSON.stringify(Object.fromEntries(Object.entries(search).map(([k, v]) => [k, v.pen]))));
+  record('★★ R068 #57 ✎ → R073 (D-317) ✎ 없음(끌어서 등록 · 1536 · m390)', Object.values(search).every((s) => s.pen === true), JSON.stringify(Object.fromEntries(Object.entries(search).map(([k, v]) => [k, v.pen]))));
   // #65 2560 · 편집 모드 · 3번 자리 → 특별 탭 둘째 줄 첫 칸
   await H.setViewport(2560, 1313);
   await sleep(300);
   await realClick(H, '.emoji-btn');
   await H.waitFor("document.querySelector('.emoji-pop') !== null", 3000).catch(() => false);
-  await realClick(H, '[data-emoji-edit]');
-  await sleep(200);
-  await realClick(H, '.emoji-slot-cell:nth-child(3) .emoji-slot');
-  await sleep(200);
   await realClick(H, '.emoji-tab[title="특별"]');
   await sleep(300);
   const second = JSON.parse(await H.evaluate("JSON.stringify((() => { const cells = [...document.querySelectorAll('.emoji-group-cells .emoji-cell')]; if (cells.length < 2) return null; const top0 = cells[0].getBoundingClientRect().top; const c = cells.find((x) => x.getBoundingClientRect().top > top0 + 10); if (!c) return { rows: 1, n: cells.length }; c.dataset.r068 = '1'; const id = c.querySelector('img')?.getAttribute('src') ?? ''; return { rows: 2, n: cells.length, id }; })())"));
-  const hit = second?.rows === 2 ? await realClick(H, '.emoji-cell[data-r068="1"]') : { hit: false };
+  // ★ R073 (D-317) — 편집 모드 대신 끌어서 3번 자리에(둘째 줄 칸이 진짜 입력에 잡히는지)
+  const dr = second?.rows === 2 ? await dragTo(H, '.emoji-cell[data-r068="1"]', '.emoji-slot-cell[data-drop-slot="2"]') : { ok: false };
+  const hit = { hit: Boolean(dr.ok && dr.hover?.ghost && dr.hover.slot === '2'), hover: dr.hover };
   await sleep(300);
   const slot3 = await H.evaluate("document.querySelector('.emoji-slot-cell:nth-child(3) .emoji-slot img')?.getAttribute('src') ?? ''");
   await snap(H, '342-emoji-special-row2-2560');
-  record('★★★ R068 #65 2560 · 편집 모드 — 특별 둘째 줄 칸이 진짜 클릭에 눌리고 3번 자리에 들어간다', hit.hit && second?.id && slot3 === second.id, JSON.stringify({ second, hit, slot3 }));
+  record('★★★ R068 #65 2560 · (R073 끌기) — 특별 둘째 줄 칸을 끌어 3번 자리에 놓으면 들어간다', hit.hit && second?.id && slot3 === second.id, JSON.stringify({ second, hit, slot3 }));
   await H.key('Escape');
   await H.key('Escape');
   await H.setViewport(1536, 864);
@@ -4597,8 +4603,462 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R073 — 이모티콘 끌어서 등록(D-317) · 😊 안내 카드(D-318) · 첫 안내 투어(D-319) · ⓘ 리뉴얼(D-320)
+//   (UICHECK_R073=1 · 묶음 r073 · docs/design/r073) · R073_ONLY = drag | card | tour | info (없으면 전부)
+// =============================================================================
+/** ★ R073 — 끌어서 놓기(진짜 입력). 마우스: 누름 → 단계 이동 → 뗌 · 터치: 누름 → hold(집어 올림) → 이동 → 뗌.
+ *  to = 선택자 또는 {x,y} · onMid/onEnd = 가운데 · 놓기 직전에 부른다(그림) */
+async function dragTo(page, fromSel, to, { touch = false, hold = 560, steps = 14, onMid = null, onEnd = null } = {}) {
+  const c = (sel) =>
+    page
+      .evaluate(`JSON.stringify((() => { const e = [...document.querySelectorAll(${JSON.stringify(sel)})].find((x) => x.offsetParent !== null || getComputedStyle(x).position === 'fixed'); if (!e) return null; e.scrollIntoView({ block: 'nearest', inline: 'nearest' }); const r = e.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; })())`)
+      .then((s) => JSON.parse(s));
+  const a = await c(fromSel);
+  const b = typeof to === 'string' ? await c(to) : to;
+  if (!a || !b) return { ok: false, a, b };
+  if (touch) {
+    await page.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: a.x, y: a.y }] });
+    await sleep(hold);
+  } else {
+    await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: a.x, y: a.y, button: 'left', buttons: 1, clickCount: 1 });
+  }
+  for (let i = 1; i <= steps; i += 1) {
+    const x = a.x + ((b.x - a.x) * i) / steps;
+    const y = a.y + ((b.y - a.y) * i) / steps;
+    if (touch) await page.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x, y }] });
+    else await page.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y, button: 'left', buttons: 1 });
+    await sleep(18);
+    if (i === Math.round(steps / 2) && onMid) await onMid();
+  }
+  await sleep(80);
+  const hover = JSON.parse(await page.evaluate("JSON.stringify({ ghost: document.querySelector('[data-emoji-ghost]') !== null, slot: document.querySelector('.emoji-slot-cell.drop-hover')?.dataset.dropSlot ?? null, input: document.body.classList.contains('emoji-drop-input'), dragging: document.body.classList.contains('emoji-dragging') })"));
+  if (onEnd) await onEnd();
+  if (touch) await page.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  else await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: b.x, y: b.y, button: 'left', clickCount: 1 });
+  await sleep(300);
+  return { ok: true, hover };
+}
+const slotIds = (P) => P.evaluate("JSON.stringify([...document.querySelectorAll('.emoji-pop .emoji-slot img')].map((i) => Number(i.dataset.emojiId)))").then((s) => JSON.parse(s));
+const serverPrefs = (P) => P.evaluate("fetch('/api/auth/prefs').then((r) => r.json()).then((j) => JSON.stringify(j.prefs ?? null))").then((s) => JSON.parse(s));
+/** 글 상자마다 줄 수(Range top 종류) */
+const LINE_COUNTS = (sel) => `JSON.stringify([...document.querySelectorAll(${JSON.stringify(sel)})].filter((li) => li.getClientRects().length > 0).map((li) => { const tops = []; const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); for (let n = w.nextNode(); n; n = w.nextNode()) { if (!n.textContent.trim()) continue; const rg = document.createRange(); rg.selectNodeContents(n); for (const rc of rg.getClientRects()) { if (rc.width < 1) continue; if (!tops.some((t) => Math.abs(t - rc.top) < rc.height * 0.5)) tops.push(rc.top); } } return { t: li.innerText.trim(), n: tops.length, len: [...li.innerText.trim()].length }; }))`;
+const openPicker = async (P, touch = false) => {
+  if (!(await P.evaluate("document.querySelector('.emoji-pop') !== null"))) {
+    if (touch) await tapOn(P, '.emoji-btn');
+    else await realClick(P, '.emoji-btn');
+  }
+  return P.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10", 4000).catch(() => false);
+};
+const closePicker = async (P) => {
+  await P.evaluate("document.querySelector('.emoji-pop .popup-close')?.click()");
+  await sleep(200);
+};
+const tourState = (P) => P.evaluate("JSON.stringify((() => { const t = document.querySelector('[data-tour]'); const ring = document.querySelector('.tour-ring')?.getBoundingClientRect(); const b = document.querySelector('.tour-bubble')?.getBoundingClientRect(); return t ? { step: Number(t.dataset.tourStep), text: document.querySelector('.tour-bubble')?.innerText.replace(/\\s+/g, ' ') ?? '', ring: ring ? [Math.round(ring.left), Math.round(ring.top), Math.round(ring.width), Math.round(ring.height)] : null, bubbleIn: b ? b.left >= 0 && b.top >= 0 && b.right <= innerWidth && b.bottom <= innerHeight : false, shop: document.querySelector('.shop-pop') !== null, menu: document.querySelector('.menu-modal') !== null, pop: document.querySelector('.emoji-pop') !== null, card: document.querySelector('[data-emoji-help]') !== null, gift: document.querySelector('[data-signup-gift]') !== null } : null; })())").then((s) => JSON.parse(s));
+/** 강조 테두리가 그 요소를 감싸나 */
+const ringWraps = (P, sel) => P.evaluate(`(() => { const r = document.querySelector('.tour-ring')?.getBoundingClientRect(); const e = [...document.querySelectorAll(${JSON.stringify(sel)})].find((x) => x.offsetParent !== null || getComputedStyle(x).position === 'fixed')?.getBoundingClientRect(); return Boolean(r && e && r.left <= e.left + 1 && r.top <= e.top + 1 && r.right >= e.right - 1 && r.bottom >= e.bottom - 1); })()`);
+
+async function r073Flow(browser) {
+  const only = process.env.R073_ONLY ?? '';
+  if (!only || only === 'drag') await r073DragFlow(browser);
+  if (!only || only === 'card') await r073CardFlow(browser);
+  if (!only || only === 'tour') await r073TourFlow(browser);
+  if (!only || only === 'info') await r073InfoFlow(browser);
+}
+
+// ── §A 끌어서 등록 ────────────────────────────────────────────────────────────
+async function r073DragFlow(browser) {
+  const H = await newPage(browser, 'R073-drag', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'xd', '끌기방장');
+  await createRoom(H, 'R073 끌기');
+  await openPicker(H);
+  const removed = JSON.parse(await H.evaluate("JSON.stringify({ pen: document.querySelector('[data-emoji-edit]') !== null, keyBtn: document.querySelector('button.emoji-key') !== null, keySpan: document.querySelectorAll('span.emoji-key[data-slot-key]').length, tip: document.querySelector('[data-slot-tip], [data-slot-edit], [data-slot-assign]') !== null, card: document.querySelector('[data-emoji-help]') !== null })"));
+  record('★★★ R073 §A 없앤 것 — ✎ · 숫자 자리 버튼 · 편집/고르기 안내 없음 · 숫자 10개는 글자(표시만) · (다시 보지 않음 계정이라 카드 없음)', !removed.pen && !removed.keyBtn && removed.keySpan === 10 && !removed.tip && !removed.card, JSON.stringify(removed));
+  await realClick(H, '.emoji-tab[title="표정"]');
+  await sleep(200);
+  const s0 = await slotIds(H);
+  const pick = Number(await H.evaluate("document.querySelector('.emoji-grid .emoji-cell:nth-child(7) img')?.dataset.emojiId ?? 0"));
+  // ① 이모티콘 → 2번 자리 (끄는 중 · 자리 위 그림)
+  const d1 = await dragTo(H, '.emoji-grid .emoji-cell:nth-child(7)', '.emoji-slot-cell[data-drop-slot="1"]', {
+    onMid: () => snap(H, 'emoji-drag-pc-moving'),
+    onEnd: () => snap(H, 'emoji-drag-pc-slot'),
+  });
+  const s1 = await slotIds(H);
+  const note1 = await H.evaluate("document.querySelector('[data-emoji-drop-note]')?.innerText ?? ''");
+  await snap(H, 'emoji-drag-pc-dropped');
+  record('★★★ R073 §A PC 끌기 — 6px 넘게 움직이면 고스트 · 자리 위에서 그 자리 커짐 · 놓으면 2번 자리 교체 · "2번 자리에 넣었어요" · 창은 열린 채', d1.hover?.ghost && d1.hover.slot === '1' && s1[1] === pick && s1[0] === s0[0] && /2번 자리에 넣었어요/.test(note1) && (await H.evaluate("document.querySelector('.emoji-pop') !== null")), JSON.stringify({ hover: d1.hover, pick, s0: s0.slice(0, 3), s1: s1.slice(0, 3), note1 }));
+  // ② 자리끼리 = 서로 바꿈 (1번 ⇄ 0번)
+  await dragTo(H, '.emoji-slot-cell[data-drop-slot="0"] .emoji-slot', '.emoji-slot-cell[data-drop-slot="9"]');
+  const s2 = await slotIds(H);
+  const note2 = await H.evaluate("document.querySelector('[data-emoji-drop-note]')?.innerText ?? ''");
+  record('★★★ R073 §A 자리 → 자리 = 서로 바꿈(1번 ⇄ 0번) · 한 줄 안내', s2[0] === s1[9] && s2[9] === s1[0] && s2[1] === s1[1] && /1번 ⇄ 0번/.test(note2), JSON.stringify({ s1: [s1[0], s1[9]], s2: [s2[0], s2[9]], note2 }));
+  await sleep(1300);
+  const pf = await serverPrefs(H);
+  record('★★ R073 §A 바꾼 자리가 계정에 저장(prefs emojiSlots)', Array.isArray(pf?.emojiSlots) && pf.emojiSlots[1] === pick && pf.emojiSlots[0] === s2[0], JSON.stringify(pf?.emojiSlots));
+  // ③ 채팅 입력창에 놓기 = 넣기(창은 열어 둔다)
+  const before = await H.evaluate("document.querySelector('[data-chat-input]').value");
+  const d3 = await dragTo(H, '.emoji-grid .emoji-cell:nth-child(3)', '[data-chat-input]', { onEnd: () => snap(H, 'emoji-drag-pc-input') });
+  const after = await H.evaluate("document.querySelector('[data-chat-input]').value");
+  const s3 = await slotIds(H);
+  record('★★★ R073 §A 채팅 입력창에 놓기 = 입력창에 넣기(입력창 밝아짐) · 자리 그대로 · 창 열린 채', d3.hover?.input && after.length > before.length && JSON.stringify(s3) === JSON.stringify(s2) && (await H.evaluate("document.querySelector('.emoji-pop') !== null")), JSON.stringify({ hover: d3.hover, before, after }));
+  // ④ 그 밖에 놓기 = 취소
+  const d4 = await dragTo(H, '.emoji-grid .emoji-cell:nth-child(4)', { x: 40, y: 300 });
+  const s4 = await slotIds(H);
+  const after4 = await H.evaluate("document.querySelector('[data-chat-input]').value");
+  record('★★ R073 §A 그 밖에 놓기 = 아무 일 없음(자리 · 입력창 그대로)', d4.ok && JSON.stringify(s4) === JSON.stringify(s2) && after4 === after && !(await H.evaluate("document.body.classList.contains('emoji-dragging')")), JSON.stringify({ hover: d4.hover }));
+  // ⑤ 안 움직이고 누르기 = 지금처럼 보내기(창 닫힘)
+  await realClick(H, '.emoji-grid .emoji-cell:nth-child(5)');
+  await sleep(300);
+  const sentClosed = await H.evaluate("document.querySelector('.emoji-pop') === null");
+  record('★★ R073 §A 누르기(움직임 없음) = 바로 보내기 · 창 닫힘(R060 그대로)', sentClosed);
+  // ⑥ Alt+1 은 토글을 따른다
+  await H.evaluate("document.querySelector('[data-chat-input]').value = ''");
+  await H.setInput('[data-chat-input]', '');
+  await openPicker(H);
+  await realClick(H, '[data-emoji-mode="insert"]');
+  await closePicker(H);
+  await realClick(H, '[data-chat-input]');
+  const seatBefore = await H.evaluate("document.querySelectorAll('.seat-emoji-pop img.emoji').length");
+  await altDigit(H, '1');
+  await sleep(500);
+  const altIns = JSON.parse(await H.evaluate("JSON.stringify({ v: document.querySelector('[data-chat-input]').value, seat: document.querySelectorAll('.seat-emoji-pop img.emoji').length })"));
+  await openPicker(H);
+  await realClick(H, '[data-emoji-mode="send"]');
+  await closePicker(H);
+  await H.setInput('[data-chat-input]', '');
+  await realClick(H, '[data-chat-input]');
+  await altDigit(H, '2');
+  const altSent = await H.waitFor("document.querySelector('.seat-emoji-pop img.emoji') !== null", 3000).catch(() => false);
+  const v2 = await H.evaluate("document.querySelector('[data-chat-input]').value");
+  record('★★★ R073 §A Alt 키는 토글을 따름 — [입력창에 넣기] 면 Alt+1 = 넣기(안 보냄) · [바로 보내기] 면 Alt+2 = 보내기', altIns.v.length > 0 && altIns.seat === seatBefore && altSent && v2 === '', JSON.stringify({ altIns, seatBefore, altSent, v2 }));
+  // ⑦ 모바일 m360 — 길게 눌러 집어 올림 · 끌어 놓기 · 짧게 누르기 = 보내기 · 빨리 밀기 = 스크롤(끌기 아님)
+  await r068Touch(H, 360, 740, true);
+  await sleep(500);
+  await openPicker(H, true);
+  await tapOn(H, '.emoji-tab[title="표정"]');
+  const m0 = await slotIds(H);
+  const mpick = Number(await H.evaluate("document.querySelector('.emoji-grid .emoji-cell:nth-child(9) img')?.dataset.emojiId ?? 0"));
+  const dm = await dragTo(H, '.emoji-grid .emoji-cell:nth-child(9)', '.emoji-slot-cell[data-drop-slot="2"]', {
+    touch: true,
+    onMid: () => snap(H, 'emoji-drag-m360-pickup'),
+    onEnd: () => snap(H, 'emoji-drag-m360-slot'),
+  });
+  const m1 = await slotIds(H);
+  record('★★★ R073 §A 모바일 360 — 450ms 길게 눌러 집어 올림(고스트) · 3번 자리 위 · 놓으면 교체 · 창 열린 채', dm.hover?.ghost && dm.hover.slot === '2' && m1[2] === mpick && m1[0] === m0[0] && (await H.evaluate("document.querySelector('.emoji-pop') !== null")), JSON.stringify({ hover: dm.hover, mpick, m1: m1.slice(0, 4) }));
+  // 빨리 밀기(집어 올리기 전 40px) — 끌기 아님 · 자리 그대로
+  const cell = await rectOf(H, '.emoji-grid .emoji-cell:nth-child(12)');
+  await H.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: cell.x + cell.w / 2, y: cell.y + cell.h / 2 }] });
+  for (let i = 1; i <= 5; i += 1) {
+    await H.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: cell.x + cell.w / 2, y: cell.y + cell.h / 2 - i * 9 }] });
+    await sleep(20);
+  }
+  await sleep(600);
+  const swipeGhost = await H.evaluate("document.querySelector('[data-emoji-ghost]') !== null");
+  await H.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await sleep(300);
+  const m2 = await slotIds(H);
+  record('★★ R073 §A 모바일 — 집어 올리기 전에 밀면(스크롤) 끌기가 아니다(고스트 없음 · 자리 그대로)', !swipeGhost && JSON.stringify(m2) === JSON.stringify(m1), JSON.stringify({ swipeGhost }));
+  // 모바일 입력창에 놓기
+  const mb = await H.evaluate("document.querySelector('[data-chat-input]').value");
+  const dmi = await dragTo(H, '.emoji-grid .emoji-cell:nth-child(2)', '[data-chat-input]', { touch: true, onEnd: () => snap(H, 'emoji-drag-m360-input') });
+  const ma = await H.evaluate("document.querySelector('[data-chat-input]').value");
+  record('★★★ R073 §A 모바일 — 채팅 입력창에 놓으면 입력창에 넣기(창 열린 채)', dmi.hover?.input && ma.length > mb.length && (await H.evaluate("document.querySelector('.emoji-pop') !== null")), JSON.stringify({ hover: dmi.hover, mb, ma }));
+  // 짧게 누르기 = 보내기
+  await tapOn(H, '.emoji-grid .emoji-cell:nth-child(6)');
+  await sleep(300);
+  record('★★ R073 §A 모바일 짧게 누르기 = 바로 보내기(창 닫힘)', await H.evaluate("document.querySelector('.emoji-pop') === null"));
+  await r068Touch(H, 1536, 864, false);
+  H.close();
+}
+
+// ── §B 안내 카드 ──────────────────────────────────────────────────────────────
+async function r073CardFlow(browser) {
+  const H = await newPage(browser, 'R073-card', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'xc', '카드방장');
+  await createRoom(H, 'R073 카드');
+  await H.evaluate("localStorage.removeItem('qw.flag.emojiHelpDismissed')");
+  const cardAt = async (label, touch) => {
+    await openPicker(H, touch);
+    await sleep(250);
+    const lines = JSON.parse(await H.evaluate(LINE_COUNTS('[data-emoji-help] li')));
+    const fit = JSON.parse(await H.evaluate("JSON.stringify((() => { const p = document.querySelector('.emoji-pop')?.getBoundingClientRect(); const c = document.querySelector('[data-emoji-help]')?.getBoundingClientRect(); return { card: Boolean(c), popIn: Boolean(p) && p.top >= 0 && p.left >= 0 && p.right <= innerWidth && p.bottom <= innerHeight, h: p ? Math.round(p.height) : 0 }; })())"));
+    await snap(H, `emoji-help-${label}`);
+    return { lines, fit };
+  };
+  const sizes = [...SHOT_PC.map((s) => ({ ...s, touch: false })), ...SHOT_MOB.map((s) => ({ ...s, touch: true }))];
+  const rows = {};
+  for (const s of sizes) {
+    if (s.touch) await r068Touch(H, s.w, s.h, true);
+    else {
+      await r068Touch(H, s.w, s.h, false);
+      await H.setViewport(s.w, s.h);
+    }
+    await sleep(400);
+    rows[s.n] = await cardAt(s.n, s.touch);
+    await closePicker(H);
+  }
+  const want = (n) => (n.startsWith('m') ? 3 : 4);
+  record('★★★ R073 §B 😊 열 때마다 안내 카드 — PC 4줄 · 모바일 3줄 · 줄마다 한 줄 · 창이 화면 안(PC 5 · 모바일 3)', Object.entries(rows).every(([n, r]) => r.fit.card && r.fit.popIn && r.lines.length === want(n) && r.lines.every((l) => l.n === 1)), JSON.stringify(Object.fromEntries(Object.entries(rows).map(([n, r]) => [n, { ...r.fit, lines: r.lines.map((l) => `${l.n}:${l.len}`) }]))));
+  console.log(`  [r073] 카드 문구 ${JSON.stringify(Object.fromEntries(Object.entries(rows).filter(([n]) => n === 'pc' || n === 'm360').map(([n, r]) => [n, r.lines.map((l) => l.t)])))}`);
+  await r068Touch(H, 1536, 864, false);
+  await H.setViewport(1536, 864);
+  await sleep(300);
+  // 체크 없이 닫기 → 다음에 또 · 체크하고 닫기 → 안 뜸(계정)
+  await openPicker(H);
+  await realClick(H, '[data-emoji-help-close]');
+  const closedOnce = await H.evaluate("document.querySelector('[data-emoji-help]') === null && document.querySelector('.emoji-pop') !== null");
+  await closePicker(H);
+  await openPicker(H);
+  const again = await H.evaluate("document.querySelector('[data-emoji-help]') !== null");
+  await realClick(H, '[data-emoji-help-never]');
+  await snap(H, 'emoji-help-never-checked');
+  await realClick(H, '[data-emoji-help-close]');
+  await closePicker(H);
+  await openPicker(H);
+  const gone = await H.evaluate("document.querySelector('[data-emoji-help]') === null");
+  await sleep(1200);
+  const pf = await serverPrefs(H);
+  record('★★★ R073 §B [닫기](체크 없음) = 이번만 · 다시 열면 또 · [다시 보지 않음]+[닫기] = 안 뜸 · 계정 emojiHelpDismissed', closedOnce && again && gone && pf?.emojiHelpDismissed === true, JSON.stringify({ closedOnce, again, gone, flag: pf?.emojiHelpDismissed }));
+  await closePicker(H);
+  // ⓘ 이모티콘 탭 [안내 다시 보기] → 😊 창 + 카드(다시 보지 않음이어도 한 번)
+  await openGearTab(H, 'info');
+  await realClick(H, '[data-info-tab="emoji"]');
+  await realClick(H, '[data-info-guide]');
+  await H.waitFor("document.querySelector('[data-emoji-help]') !== null", 3000).catch(() => false);
+  const replay = JSON.parse(await H.evaluate("JSON.stringify({ card: document.querySelector('[data-emoji-help]') !== null, gear: document.querySelector('[data-gear-pop]') !== null })"));
+  await snap(H, 'emoji-help-replay-pc');
+  await closePicker(H);
+  await openPicker(H);
+  const replayOnce = await H.evaluate("document.querySelector('[data-emoji-help]') === null");
+  await closePicker(H);
+  record('★★ R073 §B ⓘ [안내 다시 보기] → ⚙ 닫히고 😊 창 + 카드 · 그다음 열기는 다시 안 뜸', replay.card && !replay.gear && replayOnce, JSON.stringify({ replay, replayOnce }));
+  // 첫 뽑기 → 1번 자리 · 포인트샵 닫으면 😊 창 + 카드(옛 가이드 창 없음)
+  await H.evaluate("localStorage.removeItem('qw.flag.emojiHelpDismissed')");
+  const hId = await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_xc`])).rows[0]?.id);
+  await withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) VALUES ($1, 100, 'admin', 'ui-check R073')`, [hId]));
+  await realClick(H, '#shop-btn');
+  await H.waitFor("document.querySelector('.shop-draw:not([disabled])') !== null", 6000).catch(() => false);
+  await realClick(H, '.shop-draw:not([disabled])');
+  await H.waitFor("document.querySelector('.gacha-result') !== null", 8000).catch(() => false);
+  await sleep(900);
+  const noGuide = await H.evaluate("document.querySelector('[data-emoji-guide]') === null && document.querySelector('.shop-pop') !== null");
+  await H.evaluate("document.querySelector('.shop-pop .popup-close')?.click()");
+  await H.waitFor("document.querySelector('[data-emoji-help]') !== null", 3000).catch(() => false);
+  await sleep(250);
+  const first = JSON.parse(await H.evaluate("JSON.stringify({ pop: document.querySelector('.emoji-pop') !== null, card: document.querySelector('[data-emoji-help]') !== null, slot1: Number(document.querySelector('.emoji-pop .emoji-slot img')?.dataset.emojiId ?? 0), special: document.querySelector('.emoji-pop .emoji-slot-cell[data-drop-slot=\"0\"] img')?.getAttribute('src')?.includes('special') ?? null })"));
+  await snap(H, 'emoji-help-first-draw-pc');
+  const owned = await withPg(async (c) => (await c.query(`SELECT emoji_id FROM account_emojis WHERE account_id = $1`, [hId])).rows.map((r) => Number(r.emoji_id)));
+  record('★★★ R073 §B 첫 뽑기 — 결과 화면에 옛 가이드 창 없음 · 포인트샵 닫으면 😊 창 + 카드 · 산 이모티콘이 1번 자리', noGuide && first.pop && first.card && owned.includes(first.slot1), JSON.stringify({ noGuide, first, owned }));
+  await closePicker(H);
+  await withPg((c) => c.query(`DELETE FROM account_emojis WHERE account_id = $1`, [hId]).catch(() => undefined));
+  H.close();
+}
+
+// ── §C 첫 안내 투어 ────────────────────────────────────────────────────────────
+async function r073TourFlow(browser) {
+  // PC 1536 — 새 계정(fresh): 가입 선물 창 없음 · 네 단계 · ①은 포인트샵을 직접 눌러도 다음
+  const H = await newPage(browser, 'R073-tour', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'xt', '투어방장', { fresh: true });
+  const giftHome = await H.evaluate("document.querySelector('[data-signup-gift]') !== null");
+  // 검사 계정은 가입 선물이 없다(accounts.ts — 봇 · 검사 빼고) → 실제 새 계정처럼 50P 를 넣어 그림을 찍는다
+  const grant50 = (sfx) => withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) SELECT id, 50, 'admin', 'ui-check R073 가입 선물 흉내' FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_${sfx}`]));
+  await grant50('xt');
+  await createRoom(H, 'R073 투어');
+  await H.waitFor("document.querySelector('[data-tour]') !== null", 6000).catch(() => false);
+  await sleep(500);
+  const t1 = await tourState(H);
+  const w1 = await ringWraps(H, '#shop-btn');
+  await snap(H, 'tour-1-pc');
+  record('★★★ R073 §C 새 계정 — 가입 선물 창 없음 · 로비에서 투어 ① 🎁 포인트샵 강조 · "가입 선물로 50P" · "지금 NP" · 말풍선 화면 안', !giftHome && t1?.step === 1 && w1 && /가입 선물로 50P/.test(t1.text) && /지금 \d+P/.test(t1.text) && t1.bubbleIn && !t1.gift, JSON.stringify({ giftHome, t1, w1 }));
+  // 덮인 곳은 눌리지 않는다(진짜 클릭 — 나가기 버튼)
+  const cover = await realClick(H, 'button[aria-label="나가기"]');
+  record('★★ R073 §C 투어 판이 다른 버튼을 덮는다(진짜 클릭이 판에 맞음 · 나가기 확인 안 뜸)', !cover.hit && (await H.evaluate("document.querySelector('.confirm-modal') === null")), JSON.stringify(cover));
+  await realClick(H, '#shop-btn');
+  await H.waitFor("document.querySelector('[data-tour]')?.dataset.tourStep === '2'", 4000).catch(() => false);
+  await H.waitFor("document.querySelector('.shop-pop .shop-draw') !== null", 5000).catch(() => false);
+  await sleep(500);
+  const t2 = await tourState(H);
+  const w2 = await ringWraps(H, '.shop-pop .shop-draw');
+  await snap(H, 'tour-2-pc');
+  record('★★★ R073 §C ② 포인트샵 열림 · [뽑기] 강조 · "포인트는 이모티콘 뽑기에 써요" · "맞힌 문제 1개 = 1P" (①은 강조한 포인트샵을 직접 눌러 넘어옴)', t2?.step === 2 && t2.shop && w2 && /뽑기에 써요/.test(t2.text) && /1개 = 1P/.test(t2.text), JSON.stringify({ t2, w2 }));
+  await realClick(H, '[data-tour-next]');
+  await sleep(500);
+  const t3 = await tourState(H);
+  const w3 = await ringWraps(H, '.emoji-btn');
+  await snap(H, 'tour-3-pc');
+  record('★★★ R073 §C ③ 포인트샵 닫힘 · 😊 강조', t3?.step === 3 && !t3.shop && w3 && /이모티콘/.test(t3.text), JSON.stringify({ t3, w3 }));
+  await realClick(H, '[data-tour-next]');
+  await H.waitFor("document.querySelector('[data-emoji-help]') !== null", 3000).catch(() => false);
+  await sleep(500);
+  const t4 = await tourState(H);
+  const w4 = await ringWraps(H, '[data-emoji-help]');
+  await snap(H, 'tour-4-pc');
+  record('★★★ R073 §C ④ 😊 창 + 안내 카드 강조 · "끌어서 1~0 자리" · [끝]', t4?.step === 4 && t4.pop && t4.card && w4 && /1~0 자리/.test(t4.text) && /끝/.test(t4.text), JSON.stringify({ t4, w4 }));
+  // 카드의 다시 보지 않음을 구멍 안에서 진짜 클릭 → [닫기] → 투어 끝
+  await realClick(H, '[data-emoji-help-never]');
+  await realClick(H, '[data-emoji-help-close]');
+  await sleep(400);
+  const end = JSON.parse(await H.evaluate("JSON.stringify({ tour: document.querySelector('[data-tour]') !== null, seen: localStorage.getItem('qw.flag.tourSeen'), help: localStorage.getItem('qw.flag.emojiHelpDismissed') })"));
+  await sleep(1200);
+  const pf = await serverPrefs(H);
+  record('★★★ R073 §C ④에서 카드 [다시 보지 않음]+[닫기] = 투어 끝 · tourSeen · emojiHelpDismissed 둘 다 계정에', !end.tour && end.seen === '1' && end.help === '1' && pf?.tourSeen === true && pf?.emojiHelpDismissed === true, JSON.stringify({ end, pf: { tourSeen: pf?.tourSeen, help: pf?.emojiHelpDismissed } }));
+  await closePicker(H);
+  // 새로 고침 → 다시 안 뜸 · 가입 선물은 이미 받음(창 없음)
+  await H.goto(await H.evaluate('location.href'));
+  await H.waitFor("document.querySelector('.stage') !== null", 10000).catch(() => false);
+  await sleep(3000);
+  record('★★ R073 §C 본 계정은 새로 고침해도 투어 없음', await H.evaluate("document.querySelector('[data-tour]') === null"));
+  // ⓘ 놀이 탭 [처음 안내 다시 보기] → 투어 다시 · [건너뛰기]
+  await openGearTab(H, 'info');
+  await realClick(H, '[data-info-tab="play"]');
+  await realClick(H, '[data-info-tour]');
+  const rep = await H.waitFor("document.querySelector('[data-tour]')?.dataset.tourStep === '1'", 4000).catch(() => false);
+  await realClick(H, '[data-tour-skip]');
+  await sleep(300);
+  record('★★ R073 §C ⓘ [처음 안내 다시 보기] → 투어 ① · [건너뛰기] 로 끝', rep && (await H.evaluate("document.querySelector('[data-tour]') === null")), String(rep));
+
+  // 게임 중엔 안 띄움 · 결과 화면이면 띄움 — 새 계정 둘째(방장) + 손님
+  const P = await newPage(browser, 'R073-tour-game', true);
+  await P.setViewport(1280, 720);
+  await signUp(P, 'xg', '투어게임', { fresh: true });
+  const roomId = await createRoom(P, 'R073 투어 게임');
+  const G = await newPage(browser, 'R073-tour-guest', true);
+  await G.setViewport(1280, 720);
+  await signUp(G, 'xq', '투어손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 10000).catch(() => false);
+  await P.waitFor("document.querySelector('[data-tour]') !== null", 6000).catch(() => false);
+  await setQuestionCount(P, 2);
+  await P.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await P.waitFor("document.querySelector('[data-tour]') === null", 4000).catch(() => false);
+  await P.waitFor("document.querySelector('.q-text') !== null", 15000).catch(() => false);
+  await sleep(2500);
+  const inGame = JSON.parse(await P.evaluate("JSON.stringify({ tour: document.querySelector('[data-tour]') !== null, seen: localStorage.getItem('qw.flag.tourSeen') })"));
+  await snap(P, 'tour-ingame-none-pc');
+  await openHostEnd(P);
+  await P.click('끝내기');
+  await P.waitFor("document.querySelector('.result-card') !== null", 10000).catch(() => false);
+  const onResult = await P.waitFor("document.querySelector('[data-tour]')?.dataset.tourStep === '1'", 8000).catch(() => false);
+  await sleep(400);
+  await snap(P, 'tour-result-pc');
+  record('★★★ R073 §C 게임이 시작되면 투어를 숨김(본 것으로 치지 않음) · 게임 중 없음 · 결과 화면에서 처음부터 다시', !inGame.tour && inGame.seen === null && onResult, JSON.stringify({ inGame, onResult }));
+  await realClick(P, '[data-tour-skip]');
+  P.close();
+  G.close();
+
+  // 기존 계정(계정 값에 tourSeen 없음) — 로그인하면 한 번
+  const loginId = `${ACCOUNT_PREFIX}_xo`;
+  const O = await newPage(browser, 'R073-old', true);
+  await O.setViewport(1536, 864);
+  await signUp(O, 'xo', '옛계정');
+  await sleep(1500);
+  O.close();
+  await withPg((c) => c.query(`UPDATE accounts SET prefs = prefs - 'tourSeen' - 'emojiHelpDismissed' WHERE login_id = $1`, [loginId]));
+  const O2 = await newPage(browser, 'R073-old2', true);
+  await O2.setViewport(1536, 864);
+  await loginAs(O2, loginId, 'uic1234', { fresh: true });
+  await createRoom(O2, 'R073 옛계정');
+  const oldTour = await O2.waitFor("document.querySelector('[data-tour]')?.dataset.tourStep === '1'", 6000).catch(() => false);
+  await snap(O2, 'tour-1-old-account-pc');
+  record('★★★ R073 §C 기존 계정(계정 값에 tourSeen 없음)도 로그인 뒤 로비에서 한 번', oldTour);
+  await realClick(O2, '[data-tour-skip]');
+  O2.close();
+
+  // 모바일 m360 · m390 — ①은 ☰ 를 열어 그 안의 포인트샵 줄 · 끝까지 [다음] · ④ 카드는 체크 없이 [닫기]
+  for (const [sz, suffix] of [[{ w: 360, h: 740, n: 'm360' }, 'xm'], [{ w: 390, h: 844, n: 'm390' }, 'xn']]) {
+    const M = await newPage(browser, `R073-tour-${sz.n}`, true);
+    await r068Touch(M, sz.w, sz.h, true);
+    await signUp(M, suffix, `투어${sz.n}`, { fresh: true });
+    await grant50(suffix);
+    await createRoom(M, `R073 투어 ${sz.n}`);
+    await M.waitFor("document.querySelector('[data-tour]') !== null", 6000).catch(() => false);
+    await sleep(600);
+    const m1 = await tourState(M);
+    const mw1 = await ringWraps(M, '[data-menu-shop]');
+    await snap(M, `tour-1-${sz.n}`);
+    await tapOn(M, '[data-tour-next]');
+    await M.waitFor("document.querySelector('.shop-pop .shop-draw') !== null", 5000).catch(() => false);
+    await sleep(600);
+    const m2 = await tourState(M);
+    const mw2 = await ringWraps(M, '.shop-pop .shop-draw');
+    await snap(M, `tour-2-${sz.n}`);
+    await tapOn(M, '[data-tour-next]');
+    await sleep(600);
+    const m3 = await tourState(M);
+    const mw3 = await ringWraps(M, '.emoji-btn');
+    await snap(M, `tour-3-${sz.n}`);
+    await tapOn(M, '[data-tour-next]');
+    await M.waitFor("document.querySelector('[data-emoji-help]') !== null", 3000).catch(() => false);
+    await sleep(600);
+    const m4 = await tourState(M);
+    const mw4 = await ringWraps(M, '[data-emoji-help]');
+    await snap(M, `tour-4-${sz.n}`);
+    await tapOn(M, '[data-emoji-help-close]');
+    await sleep(400);
+    const mend = JSON.parse(await M.evaluate("JSON.stringify({ tour: document.querySelector('[data-tour]') !== null, seen: localStorage.getItem('qw.flag.tourSeen'), help: localStorage.getItem('qw.flag.emojiHelpDismissed') })"));
+    record(`★★★ R073 §C 모바일 ${sz.n} — ① ☰ 안 포인트샵 줄 · ② 뽑기 · ③ 😊 · ④ 카드 · 말풍선 화면 안 · 카드 [닫기](체크 없음) = 투어 끝 · 카드는 다음에 또`, m1?.step === 1 && m1.menu && mw1 && m2?.step === 2 && m2.shop && mw2 && m3?.step === 3 && mw3 && m4?.step === 4 && m4.card && mw4 && [m1, m2, m3, m4].every((t) => t.bubbleIn) && !mend.tour && mend.seen === '1' && mend.help === null, JSON.stringify({ m1, m2, m3, m4, w: [mw1, mw2, mw3, mw4], mend }));
+    M.close();
+  }
+}
+
+// ── §D ⓘ 안내 — 네 탭 · PC 5 · 모바일 3 · 줄마다 한 줄 ─────────────────────────────
+async function r073InfoFlow(browser) {
+  const H = await newPage(browser, 'R073-info', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'xi', '안내방장');
+  await createRoom(H, 'R073 안내');
+  const table = {};
+  const texts = {};
+  for (const s of SHOT_PC) {
+    await H.setViewport(s.w, s.h);
+    await sleep(300);
+    await openGearTab(H, 'info');
+    for (const tab of ['play', 'points', 'emoji', 'report']) {
+      await H.evaluate(`document.querySelector('[data-info-tab="${tab}"]')?.click()`);
+      await sleep(150);
+      const rows = JSON.parse(await H.evaluate(LINE_COUNTS('[data-gear-pop] .info-list li, [data-gear-pop] .info-guide-btn')));
+      table[`${s.n}:${tab}`] = rows.map((r) => r.n);
+      if (s.n === 'pc') texts[`pc:${tab}`] = rows.map((r) => r.t);
+      if (s.n === 'pc' || s.n === 'qhd') await snap(H, `info-${tab}-${s.n}`);
+    }
+    await closeTop(H);
+  }
+  for (const s of SHOT_MOB) {
+    await r068Touch(H, s.w, s.h, true);
+    await sleep(400);
+    for (const tab of ['play', 'points', 'emoji', 'report']) {
+      if (!(await H.evaluate("document.querySelector('.infotip-pop') !== null"))) {
+        await tapOn(H, '#menu-btn');
+        await sleep(250);
+        await H.evaluate("[...document.querySelectorAll('.menu-item')].find((b) => b.innerText.includes('안내'))?.click()");
+        await H.waitFor("document.querySelector('.infotip-pop') !== null", 3000).catch(() => false);
+      }
+      await H.evaluate(`document.querySelector('.infotip-pop [data-info-tab="${tab}"]')?.click()`);
+      await sleep(150);
+      const rows = JSON.parse(await H.evaluate(LINE_COUNTS('.infotip-pop .info-list li, .infotip-pop .info-guide-btn')));
+      table[`${s.n}:${tab}`] = rows.map((r) => r.n);
+      if (s.n === 'm360') texts[`m360:${tab}`] = rows.map((r) => `${r.t} (${r.len})`);
+      if (s.n === 'm360') await snap(H, `info-${tab}-m360`);
+    }
+    await closeTop(H);
+  }
+  console.log(`  [r073] ⓘ 줄 수 ${JSON.stringify(table)}`);
+  console.log(`  [r073] ⓘ 글 ${JSON.stringify(texts)}`);
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r073', 'info-lines.json'), JSON.stringify({ table, texts }, null, 1));
+  const all = Object.values(table);
+  record('★★★ R073 §D ⓘ 네 탭 — PC 5 · 모바일 3 크기 · 모든 줄(+다시 보기 버튼) 한 줄 · 탭마다 3줄 이상', all.length === 32 && all.every((r) => r.length >= 3 && r.every((n) => n === 1)), JSON.stringify(table));
+  const joined = JSON.stringify(texts);
+  record('★★ R073 §D 뺀 것 — "답은 채팅창에" · "먼저 맞힌" · "끊겨도" · "✎" 없음 · 넣은 것 — 난이도 · 업적 한 줄 · 정답 공개 평가 · 뽑기 · 횟수 제한 없음 · 👍 😐 👎', !/답은 채팅창에|먼저 맞힌|끊겨도|✎/.test(joined) && /난이도/.test(joined) && /업적 \d+종/.test(joined) && /정답 공개 평가/.test(joined) && /뽑기/.test(joined) && /횟수 제한이 없어요/.test(joined) && /😐/.test(joined), joined.slice(0, 400));
+  await r068Touch(H, 1280, 720, false);
+  H.close();
+}
+
+// =============================================================================
 // ★★★ R071 — 정답 공개 평가 손질(👎 사유 칩 줄 · 요청 1/3 아닌 문항은 줄 없음) · 다른 하나 찾기 8×8 (D-313 · D-315)
 //   R071_ONLY = reveal | oddone (없으면 둘 다) · 묶음 env: RESOLVED_WAIT_MS 12000 · RATE_ASK_FORCE '1,3' (2 = 요청 밖) · RATE_SKIP_LOGIN 봇만
+
 // =============================================================================
 const R071_FB = `JSON.stringify((() => {
   const fb = document.querySelector('.reveal-fb'); const chips = document.querySelector('.reveal-fb-chips');
@@ -5153,19 +5613,20 @@ async function r066Flow(browser) {
   // ── D4 첫 구매 가이드 — 포인트를 주고 샵에서 처음 뽑으면 1번 자리 + 가이드(한 번)
   hId = await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_uh`])).rows[0]?.id);
   await withPg((c) => c.query(`INSERT INTO point_grants (account_id, amount, reason, note) VALUES ($1, 500, 'admin', 'ui-check R066')`, [hId]));
-  await H.evaluate("localStorage.removeItem('qw.flag.emojiGuideSeen')");
+  // ★ R073 (D-318) — 옛 가이드 창은 없앴다: 첫 뽑기 → 1번 자리 · 포인트샵을 닫으면 😊 창 + 안내 카드
+  await H.evaluate("localStorage.removeItem('qw.flag.emojiHelpDismissed')");
   await H.evaluate("document.querySelector('#shop-btn')?.click()");
   await H.waitFor("document.querySelector('.shop-draw:not([disabled])') !== null", 6000).catch(() => false);
   await H.evaluate("document.querySelector('.shop-draw:not([disabled])')?.click()");
-  await H.waitFor("document.querySelector('[data-emoji-guide]') !== null", 8000).catch(() => false);
+  await H.waitFor("document.querySelector('.gacha-result') !== null", 8000).catch(() => false);
   await sleep(300);
-  const guide = JSON.parse(await H.evaluate("JSON.stringify({ shown: document.querySelector('[data-emoji-guide]') !== null, img: document.querySelector('.emoji-guide-art image') !== null, steps: document.querySelectorAll('.emoji-guide-steps li').length, slot1: JSON.parse(localStorage.getItem('qw.emoji.v1') ?? 'null')?.[0] ?? null })"));
+  await H.evaluate("document.querySelector('.shop-pop .popup-close')?.click()");
+  await H.waitFor("document.querySelector('[data-emoji-help]') !== null", 4000).catch(() => false);
+  await sleep(300);
+  const guide = JSON.parse(await H.evaluate("JSON.stringify({ shown: document.querySelector('[data-emoji-help]') !== null, old: document.querySelector('[data-emoji-guide]') !== null, lines: document.querySelectorAll('[data-emoji-help] li').length, slot1: JSON.parse(localStorage.getItem('qw.emoji.v1') ?? 'null')?.[0] ?? null })"));
   await snap(H, '183-emoji-guide-1536');
   await auditAt(H, 'guide@1536');
-  await H.evaluate("document.querySelector('[data-emoji-guide-ok]')?.click()");
-  await sleep(300);
-  const seen = await H.evaluate("localStorage.getItem('qw.flag.emojiGuideSeen')");
-  record('★★★ R066 D4 첫 구매 → 가이드 창(그림 · 산 이모티콘 그림 · 세 단계) · 1번 자리에 넣음 · [알겠어요] 뒤 본 것으로', guide.shown && guide.img && guide.steps === 3 && Number.isInteger(guide.slot1) && seen === '1', JSON.stringify({ guide, seen }));
+  record('★★★ R066 D4 → R073 (D-318) 첫 구매 → 1번 자리 · 포인트샵 닫으면 😊 창 + 안내 카드(옛 가이드 창 없음)', guide.shown && !guide.old && guide.lines === 4 && Number.isInteger(guide.slot1), JSON.stringify(guide));
   await H.key('Escape');
   await withPg((c) => c.query(`DELETE FROM account_emojis WHERE account_id = $1`, [hId]).catch(() => undefined));
 
@@ -5593,49 +6054,20 @@ async function r064Flow(browser) {
   for (const r of bad) bySel[r.sel] = (bySel[r.sel] ?? 0) + 1;
   record('★★★ §C 줄바꿈 · 넘침 감사 — 의도한 설명문([data-wrap-ok]) 말고는 두 줄 0 · 상자 밖으로 넘친 글 0 (실험실 16게임 × 3단계 × 4크기 · 고르기 창 · 제보 창 · 업적 창 · 대기실 × 6크기)', bad.length === 0, `${bad.length}건 · ${JSON.stringify(Object.entries(bySel).sort((a, b) => b[1] - a[1]).slice(0, 12))}`);
 
-  // ── §D 이모티콘 단축키 자리 — 숫자 자리를 누르면 고르기 · 첫 열기 팁 한 번 · Esc 는 고르기만 취소
+  // ── §D 이모티콘 단축키 자리 — ★ R073 (D-317) 숫자 자리 누르기 · ✎ 편집 모드는 없앴다 → 끌어서 3번 자리에 놓기 · 창은 열린 채 · 숫자는 표시만
   await H.setViewport(1536, 864);
   await sleep(300);
-  await H.evaluate("try { localStorage.removeItem('quiz.emojiSlotTip'); } catch {}");
   await H.evaluate("document.querySelector('.emoji-btn')?.click()");
   await H.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10", 4000);
-  const tip1 = await H.evaluate("document.querySelector('[data-slot-tip]')?.innerText ?? ''");
-  await realClick(H, '.emoji-key[data-slot-key="3"]');
-  await sleep(200);
-  const asg = await H.evaluate("document.querySelector('[data-slot-assign]')?.innerText ?? ''");
-  await snap(H, '157-emoji-assign-pc');
-  await H.key('Escape');
-  await sleep(200);
-  const afterEsc = JSON.parse(await H.evaluate("JSON.stringify({ pop: document.querySelector('.emoji-pop') !== null, asg: document.querySelector('[data-slot-assign]') !== null })"));
-  await realClick(H, '.emoji-key[data-slot-key="3"]');
-  await sleep(150);
   const pickId = Number(await H.evaluate("document.querySelector('.emoji-grid .emoji-cell img')?.dataset.emojiId ?? 0"));
-  await realClick(H, '.emoji-grid .emoji-cell');
+  await dragTo(H, '.emoji-grid .emoji-cell', '.emoji-slot-cell[data-drop-slot="2"]');
+  const asg = await H.evaluate("document.querySelector('[data-emoji-drop-note]')?.innerText ?? ''");
+  await snap(H, '157-emoji-assign-pc');
   await sleep(1300);
   const slots = JSON.parse(await H.evaluate("fetch('/api/auth/prefs').then((r) => r.json()).then((j) => JSON.stringify(j.prefs?.emojiSlots ?? null))"));
-  const done = JSON.parse(await H.evaluate("JSON.stringify({ pop: document.querySelector('.emoji-pop') !== null, asg: document.querySelector('[data-slot-assign]') !== null, edit: [...document.querySelectorAll('.emoji-tools button')].some((b) => /칸 바꾸기/.test(b.innerText)) })"));
+  const done = JSON.parse(await H.evaluate("JSON.stringify({ pop: document.querySelector('.emoji-pop') !== null, edit: document.querySelector('[data-emoji-edit], button.emoji-key, [data-slot-assign]') !== null })"));
   await H.key('Escape');
-  await sleep(200);
-  await H.evaluate("document.querySelector('.emoji-btn')?.click()");
-  await sleep(300);
-  const tip2 = await H.evaluate("document.querySelector('[data-slot-tip]') !== null");
-  // ★ R066 (D-291) — 팁 대신 ✎ 편집 모드: 누르면 자리가 흔들리고 안내 한 줄 · 자리를 누르면 고르기 · Esc 는 고르기 → 편집 → 창 순서로
-  await realClick(H, '[data-emoji-edit]');
-  await sleep(200);
-  const ed1 = JSON.parse(await H.evaluate("JSON.stringify({ line: document.querySelector('[data-slot-edit]')?.innerText ?? '', editing: document.querySelector('.emoji-slots.editing') !== null })"));
-  await snap(H, '158-emoji-edit-pc');
-  await realClick(H, '.emoji-slot-cell:nth-child(5) .emoji-slot');
-  await sleep(200);
-  const ed2 = await H.evaluate("document.querySelector('[data-slot-assign]')?.innerText ?? ''");
-  await H.key('Escape');
-  await sleep(150);
-  const ed3 = JSON.parse(await H.evaluate("JSON.stringify({ asg: document.querySelector('[data-slot-assign]') !== null, editing: document.querySelector('.emoji-slots.editing') !== null })"));
-  await H.key('Escape');
-  await sleep(150);
-  const ed4 = JSON.parse(await H.evaluate("JSON.stringify({ editing: document.querySelector('.emoji-slots.editing') !== null, pop: document.querySelector('.emoji-pop') !== null })"));
-  await H.key('Escape');
-  record('★★★ §D 숫자 자리 "3" → "3번 자리에 넣을 이모티콘을 고르세요" · 고르면 3번 칸 저장 · 고르기 끝 · 창은 열린 채 · Esc 는 고르기만 취소 · 옛 "칸 바꾸기" 없음', /3번 자리/.test(asg) && afterEsc.pop && !afterEsc.asg && Array.isArray(slots) && slots[2] === pickId && done.pop && !done.asg && !done.edit, JSON.stringify({ asg, afterEsc, pickId, slot3: slots?.[2], done }));
-  record('★★ §D R066 팁 없음 · ✎ 편집 모드(자리 흔들림 · 안내 한 줄) → 자리 누르면 "5번 자리" 고르기 · Esc 는 고르기 → 편집 순서로 끝(창은 그대로)', !tip1 && !tip2 && /자리를 누른 뒤/.test(ed1.line) && ed1.editing && /5번 자리/.test(ed2) && !ed3.asg && ed3.editing && !ed4.editing && ed4.pop, JSON.stringify({ tip1, tip2, ed1, ed2, ed3, ed4 }));
+  record('★★★ §D (R073) 끌어서 3번 자리 → "3번 자리에 넣었어요" · 3번 칸 저장 · 창은 열린 채 · ✎ · 숫자 자리 버튼 · 고르기 안내 없음', /3번 자리/.test(asg) && Array.isArray(slots) && slots[2] === pickId && done.pop && !done.edit, JSON.stringify({ asg, pickId, slot3: slots?.[2], done }));
   L.close?.();
 }
 
@@ -6073,6 +6505,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R069) {
     await closeAllTabs(browser);
     await r069Flow(browser);
+  }
+  // ★ R073 — 이모티콘 끌어서 등록 · 😊 안내 카드 · 첫 안내 투어 · ⓘ 리뉴얼
+  if (process.env.UICHECK_R073) {
+    await closeAllTabs(browser);
+    await r073Flow(browser);
   }
   // ★ R071 — 정답 공개 평가 손질(👎 칩 줄 · 요청 밖 문항) · 다른 하나 찾기 8×8
   if (process.env.UICHECK_R071) {
@@ -9009,13 +9446,12 @@ try {
     await host.evaluate("document.querySelector('.emoji-btn').click()");
     const pop = await host.waitFor("document.querySelectorAll('.emoji-pop .emoji-slot').length === 10 && document.querySelectorAll('.emoji-grid .emoji-cell').length > 50", 4000);
     record('★★ 😊 → 고르기 창 (내 10칸 + 분류별 목록)', pop);
-    // ★ R064 — 옛 "칸 바꾸기" 토글 대신 칸 아래 숫자 자리 "1"
-    await host.evaluate("document.querySelector('.emoji-key[data-slot-key=\"1\"]').click()");
+    // ★ R073 (D-317) — 찾은 하트를 끌어 1번 자리에(옛 숫자 자리 누르기는 없앴다)
     await host.setInput('.emoji-search', '하트');
     await sleep(300);
     const firstHeart = await host.evaluate("Number(document.querySelector('.emoji-grid .emoji-cell img')?.dataset.emojiId ?? 0)");
     record('★ 검색 (한국어 이름·검색어)', firstHeart > 0, String(firstHeart));
-    await host.evaluate("document.querySelector('.emoji-grid .emoji-cell')?.click()");
+    await dragTo(host, '.emoji-grid .emoji-cell', '.emoji-slot-cell[data-drop-slot="0"]');
     await sleep(1300);
     const slots = await host.evaluate("fetch('/api/auth/prefs').then(r => r.json()).then(j => j.prefs?.emojiSlots ?? null)");
     record('★★ 10칸 바꾸기 → 첫 칸이 바뀌고 계정에 저장된다', Array.isArray(slots) && slots[0] === firstHeart, JSON.stringify(slots));

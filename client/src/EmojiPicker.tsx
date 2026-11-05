@@ -186,7 +186,8 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
     if (!p || e.pointerId !== p.pid) return;
     if (p.active) {
       const action = resolveDrop(p.src, targetAt(e.clientX, e.clientY));
-      suppressUntil.current = performance.now() + 400;
+      // 바로 뒤따르는 click 하나만(마우스 · 터치 모두 같은 흐름에 온다) — 길게 잡으면 다음 누르기를 삼킨다(ui-check r073)
+      suppressUntil.current = performance.now() + 80;
       const next = applyDrop(latest.current.slots, action);
       if (next) setStoredSlots(next);
       if (action.type === 'insert') latest.current.onInsert(action.id);
