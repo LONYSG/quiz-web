@@ -62,6 +62,8 @@ function current(): ServerPrefs {
     // ★ R073 (D-318 · D-319) — 안내 카드 다시 보지 않음 · 첫 안내 투어
     emojiHelpDismissed: getFlag('emojiHelpDismissed'),
     tourSeen: getFlag('tourSeen'),
+    // ★ R074 (D-321 가) — 😊 자동 시연
+    emojiDemoSeen: getFlag('emojiDemoSeen'),
   };
 }
 
@@ -95,6 +97,7 @@ function apply(p: ServerPrefs): void {
     if (p.emojiGuideSeen === true) setFlag('emojiGuideSeen');
     if (p.emojiHelpDismissed === true) setFlag('emojiHelpDismissed');
     if (p.tourSeen === true) setFlag('tourSeen');
+    if (p.emojiDemoSeen === true) setFlag('emojiDemoSeen');
     if (Object.keys(patch).length > 0) setSoundPrefs(patch);
   } finally {
     applying = false;

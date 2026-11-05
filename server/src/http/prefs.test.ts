@@ -14,3 +14,15 @@ describe('R073 prefs 플래그', () => {
     expect(sanitizePrefs({ hack: 1, tourSeen: true })).toEqual({ tourSeen: true });
   });
 });
+
+// ★ R074 (D-321 · D-322) — 자동 시연 플래그 · 사무실 테마
+describe('R074 prefs', () => {
+  it('emojiDemoSeen 은 boolean 만', () => {
+    expect(sanitizePrefs({ emojiDemoSeen: true })).toEqual({ emojiDemoSeen: true });
+    expect(sanitizePrefs({ emojiDemoSeen: 'y' })).toEqual({});
+  });
+  it("theme 'office' 를 받는다 · 모르는 테마는 버린다", () => {
+    expect(sanitizePrefs({ theme: 'office' })).toEqual({ theme: 'office' });
+    expect(sanitizePrefs({ theme: 'matrix' })).toEqual({});
+  });
+});

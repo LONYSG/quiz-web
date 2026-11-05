@@ -185,6 +185,8 @@ export interface ServerPrefs {
   /** ★ R073 — 😊 안내 카드 다시 보지 않음(D-318) · 첫 안내 투어를 봤나(D-319) */
   emojiHelpDismissed?: boolean;
   tourSeen?: boolean;
+  /** ★ R074 — 😊 창 자동 시연을 봤나(D-321) */
+  emojiDemoSeen?: boolean;
 }
 
 export async function fetchPrefs(): Promise<ServerPrefs | null> {

@@ -90,3 +90,23 @@ export function dropTargetOf(el: ClosestLike | null): DropTarget {
 export function altKeyAction(insertMode: boolean): 'send' | 'insert' {
   return insertMode ? 'insert' : 'send';
 }
+
+// ── ★★ R074 (D-321 다) — 끌기 말고도 되는 길: PC 우클릭 · 모바일 길게 눌렀다가 움직이지 않고 떼기 → 작은 메뉴 "1~0번 자리에 넣기" ──
+/** 집어 올린 뒤(터치) 이만큼 안 움직이고 떼면 메뉴 — 끌려던 게 아니다 */
+export const MENU_STILL_PX = 8;
+/** 터치 — 집어 올린 뒤 뗐을 때 메뉴를 여나(움직임이 MENU_STILL_PX 안 · 자리 위가 아님) */
+export function touchReleaseOpensMenu(dx: number, dy: number, target: DropTarget): boolean {
+  return Math.hypot(dx, dy) <= MENU_STILL_PX && target?.kind !== 'slot' && target?.kind !== 'input';
+}
+/** 메뉴에서 자리를 골랐다 — 끌어 그 자리에 놓은 것과 같다(창 안 이모티콘 = 교체 · 자리 = 서로 바꿈) */
+export function menuAction(src: DragSource, index: number): DropAction {
+  return resolveDrop(src, { kind: 'slot', index });
+}
+/** 메뉴 자리(창 안에서 · 칸 근처 · 창 밖으로 안 나가게) — 창 기준 좌표 */
+export function menuPlace(at: { x: number; y: number }, menu: { w: number; h: number }, box: { w: number; h: number }, pad = 6): { left: number; top: number } {
+  const left = Math.min(Math.max(pad, at.x - menu.w / 2), Math.max(pad, box.w - menu.w - pad));
+  // 아래에 자리가 있으면 아래 · 없으면 위
+  const below = at.y + 12;
+  const top = below + menu.h + pad <= box.h ? below : Math.max(pad, at.y - 12 - menu.h);
+  return { left, top };
+}

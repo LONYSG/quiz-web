@@ -137,7 +137,8 @@ export default function TourHost({ state, mobile }: Props) {
     if (step === 3) {
       emojiSeen.current = false;
       // 사람이 😊 을 눌러 왔으면 이미 열려 있다(③에서 카드를 걸어 뒀다)
-      if (stepPopup.current !== 'emoji' && !openEmojiHelp()) finish();
+      // ★ R074 (D-321) — ④ 는 자동 시연도 보여 준다
+      if (stepPopup.current !== 'emoji' && !openEmojiHelp(true, true)) finish();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);

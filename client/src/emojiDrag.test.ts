@@ -93,3 +93,28 @@ describe('Alt 키는 토글을 따른다', () => {
     expect(altKeyAction(true)).toBe('insert');
   });
 });
+
+// ★ R074 (D-321 다) — 우클릭 · 길게 눌렀다 떼기 메뉴
+import { MENU_STILL_PX, menuAction, menuPlace, touchReleaseOpensMenu } from './emojiDrag.js';
+describe('R074 자리 메뉴', () => {
+  it('길게 눌러 집은 뒤 안 움직이고 떼면 메뉴 · 움직였거나 자리 · 입력창 위면 끌기 결과', () => {
+    expect(touchReleaseOpensMenu(0, 0, null)).toBe(true);
+    expect(touchReleaseOpensMenu(MENU_STILL_PX, 0, null)).toBe(true);
+    expect(touchReleaseOpensMenu(MENU_STILL_PX + 1, 0, null)).toBe(false);
+    expect(touchReleaseOpensMenu(0, 0, { kind: 'slot', index: 2 })).toBe(false);
+    expect(touchReleaseOpensMenu(0, 0, { kind: 'input' })).toBe(false);
+  });
+  it('메뉴 고르기 = 그 자리에 끌어 놓기와 같다(교체 · 자리끼리는 바꿈)', () => {
+    expect(menuAction({ kind: 'emoji', id: 77 }, 3)).toEqual({ type: 'assign', index: 3, id: 77 });
+    expect(menuAction({ kind: 'slot', index: 0, id: 5 }, 9)).toEqual({ type: 'swap', a: 0, b: 9 });
+    expect(menuAction({ kind: 'slot', index: 4, id: 5 }, 4)).toEqual({ type: 'none' });
+  });
+  it('메뉴 자리 — 창 밖으로 안 나감 · 아래 자리가 없으면 위', () => {
+    const box = { w: 440, h: 400 };
+    const m = { w: 292, h: 104 };
+    expect(menuPlace({ x: 10, y: 50 }, m, box).left).toBe(6);
+    expect(menuPlace({ x: 430, y: 50 }, m, box).left).toBe(440 - 292 - 6);
+    expect(menuPlace({ x: 200, y: 50 }, m, box).top).toBe(62);
+    expect(menuPlace({ x: 200, y: 380 }, m, box).top).toBe(380 - 12 - 104);
+  });
+});

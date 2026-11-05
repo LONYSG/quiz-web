@@ -5241,23 +5241,24 @@ async function r074EmojiFlow(browser) {
   await snap(H, 'emoji-help-v2-m360');
   record('★★ R074 §C 라 — 모바일 카드: 글 2줄 + "길게 눌러 떼면 자리 메뉴" · 360 에서 줄마다 한 줄', mLines.length === 3 && /길게 눌러 떼면/.test(mLines[2]?.t ?? '') && mLines.every((l) => l.n === 1), JSON.stringify(mLines));
   await closePicker(H);
-  // 투어 ④ = 카드 + 시연
-  await r068Touch(H, 1536, 864, false);
-  await H.setViewport(1536, 864);
-  await H.evaluate("localStorage.setItem('qw.flag.emojiDemoSeen', '1'); localStorage.removeItem('qw.flag.tourSeen')");
-  const rid = await H.evaluate('location.pathname');
-  await H.goto(`${BASE}${rid}`);
-  await H.waitFor("document.querySelector('[data-tour]') !== null", 8000).catch(() => false);
-  for (let i = 0; i < 3; i += 1) {
-    await sleep(500);
-    await realClick(H, '[data-tour-next]');
-  }
-  await H.waitFor("document.querySelector('[data-emoji-help]') !== null", 4000).catch(() => false);
-  await sleep(900);
-  const t4 = await demoState(H);
-  await snap(H, 'emoji-demo-tour4-pc');
-  record('★★ R074 §C — 투어 ④ 는 안내 카드 + 시연(본 계정이어도 억지로)', t4.demo === 'playing' && t4.ghost && (await H.evaluate("document.querySelector('[data-tour]')?.dataset.tourStep === '4'")), JSON.stringify(t4));
+  // 투어 ④ = 카드 + 시연 — 새 계정(투어 안 봄 · 서버 값도 없음) · 시연은 '봤다' 로 둔 채(억지로 보이는지)
   H.close();
+  const T = await newPage(browser, 'R074-tour', true);
+  await T.setViewport(1536, 864);
+  await signUp(T, 'et', '투어시연', { fresh: true });
+  await createRoom(T, 'R074 투어');
+  await T.waitFor("document.querySelector('[data-tour]') !== null", 8000).catch(() => false);
+  await T.evaluate("localStorage.setItem('qw.flag.emojiDemoSeen', '1')");
+  for (let i = 0; i < 3; i += 1) {
+    await sleep(600);
+    await realClick(T, '[data-tour-next]');
+  }
+  await T.waitFor("document.querySelector('[data-emoji-help]') !== null", 4000).catch(() => false);
+  await sleep(900);
+  const t4 = await demoState(T);
+  await snap(T, 'emoji-demo-tour4-pc');
+  record('★★ R074 §C — 투어 ④ 는 안내 카드 + 시연(본 계정이어도 억지로)', t4.demo === 'playing' && t4.ghost && (await T.evaluate("document.querySelector('[data-tour]')?.dataset.tourStep === '4'")), JSON.stringify(t4));
+  T.close();
 }
 
 // ── §D 사무실 모드(D-322) · 밤 테마(D-323) ─────────────────────────────────────

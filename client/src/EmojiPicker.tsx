@@ -15,6 +15,10 @@
 //   PC = 누른 뒤 6px 넘게 움직이면 끌기 · 모바일 = 450ms 길게 누르면 집어 올림(진동 한 번). Pointer Events(HTML5 DnD 는 터치가 안 된다).
 // ★★ R073 (D-318) — 창을 열 때마다 맨 위에 안내 카드(EmojiHelp.tsx · 다시 보지 않음 체크 전까지).
 //   없앤 것: ✎ 편집 버튼 · 편집 모드 · 숫자 자리 누르기(D-268 · D-291) · 모바일 "길게 누르면 넣기"(→ 집어 올리기). 숫자는 표시만.
+// ★★★ R074 (D-321 · 찬종 2026-11-05 "이모티콘 등록은 설명이 좀 더 친절해야") —
+//   가 처음 열 때 자동 시연 3초(emojiDemo.ts · 계정 플래그 emojiDemoSeen · 누르면 멈춤 · 실제로 넣지 않음)
+//   나 자리 줄 위 연한 글자("끌어다 놓기" · 모바일 "길게 눌러 끌기") · 끌기 시작하면 자리 줄이 한 번 크게 흔들리며 "여기에 놓으세요"
+//   다 PC 우클릭 · 모바일 길게 눌렀다 안 움직이고 떼기 → 작은 메뉴 "1~0번 자리에 넣기"(10칸 미리 보기 · 누르면 교체) — 끌기는 그대로
 // =============================================================================
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
@@ -28,13 +32,18 @@ import { Search, Send, Smile, TextCursorInput } from 'lucide-react';
 import { isReportOpen } from './reportGuard.js';
 import { useRecentEmojis } from './emojiRecent.js';
 import { useUiMode } from './uiMode.js';
-import EmojiHelpCard, { takeHelpWanted } from './EmojiHelp.js';
+import EmojiHelpCard, { takeDemoWanted, takeHelpWanted } from './EmojiHelp.js';
+import { setFlag } from './accountFlags.js';
+import { DEMO_DELAY_MS, DEMO_MS, demoMarksSeen, demoNext, demoPoint, type DemoEvent, type DemoState } from './emojiDemo.js';
 import {
   applyDrop,
   dropMessage,
   dropTargetOf,
   LONG_PRESS_MS,
+  menuAction,
+  menuPlace,
   mouseDragStarts,
+  touchReleaseOpensMenu,
   resolveDrop,
   touchIsScroll,
   type DragSource,
@@ -74,9 +83,25 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const [q, setQ] = useState('');
   // ★★ R073 (D-318) — 안내 카드: 창을 열 때마다(다시 보지 않음 전까지 · ⓘ 다시 보기 · 투어 ④ 는 억지로)
   const [help, setHelp] = useState(false);
+  // ★ R074 (D-321 가) — 자동 시연
+  const [demo, setDemo] = useState<DemoState>('idle');
+  const demoRef = useRef<DemoState>('idle');
+  const demoGo = useCallback((e: DemoEvent) => {
+    const prev = demoRef.current;
+    const next = demoNext(prev, e);
+    if (next === prev) return;
+    demoRef.current = next;
+    if (demoMarksSeen(prev, next)) setFlag('emojiDemoSeen');
+    setDemo(next);
+  }, []);
   useLayoutEffect(() => {
     setHelp(open ? takeHelpWanted() : false);
-  }, [open]);
+    demoGo(open ? { type: 'open', wanted: takeDemoWanted() } : { type: 'close' });
+  }, [open, demoGo]);
+  // ★ R074 (D-321 다) — 자리 메뉴(우클릭 · 길게 눌렀다 떼기)
+  const [menu, setMenu] = useState<{ src: DragSource; x: number; y: number } | null>(null);
+  const popRef = useRef<HTMLDivElement>(null);
+  const [shake, setShake] = useState(0);
 
   // ── ★ R073 — 끌기 상태 ──────────────────────────────────────────────────────
   const press = useRef<Press | null>(null);
@@ -87,6 +112,8 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const suppressUntil = useRef(0);
   const latest = useRef({ slots, onInsert });
   latest.current = { slots, onInsert };
+  const menuOpenRef = useRef(false);
+  menuOpenRef.current = menu !== null;
 
   useEffect(() => {
     if (!open) return undefined;
@@ -95,6 +122,12 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape' || isReportOpen()) return;
+      // ★ R074 — 메뉴가 열려 있으면 Esc 는 메뉴만
+      if (menuOpenRef.current) {
+        e.stopPropagation();
+        setMenu(null);
+        return;
+      }
       // ★ R073 — 끄는 중이면 Esc 는 끌기만 취소
       if (press.current?.active) {
         e.stopPropagation();
@@ -184,7 +217,11 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const onUp = useCallback((e: PointerEvent) => {
     const p = press.current;
     if (!p || e.pointerId !== p.pid) return;
-    if (p.active) {
+    if (p.active && p.touch && touchReleaseOpensMenu(e.clientX - p.x0, e.clientY - p.y0, targetAt(e.clientX, e.clientY))) {
+      // ★ R074 (D-321 다) — 길게 눌렀다가 움직이지 않고 뗐다 → 자리 메뉴
+      suppressUntil.current = performance.now() + 400;
+      openMenu(p.src, e.clientX, e.clientY);
+    } else if (p.active) {
       const action = resolveDrop(p.src, targetAt(e.clientX, e.clientY));
       // 바로 뒤따르는 click 하나만(마우스 · 터치 모두 같은 흐름에 온다) — 길게 잡으면 다음 누르기를 삼킨다(ui-check r073)
       suppressUntil.current = performance.now() + 80;
@@ -207,6 +244,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   }, []);
   function activate(p: Press, x: number, y: number) {
     p.active = true;
+    setShake((n) => n + 1); // ★ R074 (D-321 나) — 끌기 시작 = 자리 줄 한 번 크게 흔들림
     if (p.timer) clearTimeout(p.timer);
     p.timer = null;
     setGhost({ id: p.src.id, x, y });
@@ -265,6 +303,79 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
     return () => window.clearTimeout(t);
   }, [note]);
 
+  /** ★ R074 — 자리 메뉴 열기(화면 좌표 → 창 기준) */
+  function openMenu(src: DragSource, cx: number, cy: number) {
+    const box = popRef.current?.getBoundingClientRect();
+    if (!box) return;
+    const at = { x: cx - box.left, y: cy - box.top };
+    const pl = menuPlace(at, { w: mobile ? 236 : 292, h: mobile ? 132 : 104 }, { w: box.width, h: box.height });
+    setMenu({ src, x: pl.left, y: pl.top });
+  }
+  const pickMenu = (index: number) => {
+    if (!menu) return;
+    const action = menuAction(menu.src, index);
+    const next = applyDrop(latest.current.slots, action);
+    if (next) setStoredSlots(next);
+    const msg = dropMessage(action);
+    if (msg && next) setNote({ text: msg, key: Date.now() });
+    setMenu(null);
+  };
+  useEffect(() => {
+    if (!open) setMenu(null);
+  }, [open]);
+  // ★ R074 (D-321 가) — 시연: armed → (칸 자리를 잴 시간) → playing 3초 → done · 사람이 누르거나 키를 치면 바로 멈춤
+  const [demoPos, setDemoPos] = useState<{ id: number; x: number; y: number; scale: number } | null>(null);
+  useEffect(() => {
+    if (demo === 'armed') {
+      const t = window.setTimeout(() => demoGo({ type: 'start' }), DEMO_DELAY_MS);
+      return () => window.clearTimeout(t);
+    }
+    if (demo !== 'playing') {
+      setDemoPos(null);
+      return undefined;
+    }
+    const pop = popRef.current;
+    const srcEl = pop?.querySelector<HTMLElement>('.emoji-grid .emoji-cell');
+    const dstEl = pop?.querySelector<HTMLElement>('[data-drop-slot="0"]');
+    if (!pop || !srcEl || !dstEl) {
+      demoGo({ type: 'finish' });
+      return undefined;
+    }
+    const center = (el: HTMLElement) => {
+      const r = el.getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    };
+    const from = center(srcEl);
+    const to = center(dstEl);
+    const id = Number(srcEl.dataset.emojiId ?? 0) || (latest.current.slots[0] ?? 0);
+    const reduce = document.documentElement.dataset.theme === 'office' || Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+    const t0 = performance.now();
+    let raf = 0;
+    let shook = false;
+    const tick = () => {
+      const t = (performance.now() - t0) / DEMO_MS;
+      const pt = demoPoint(from, to, reduce ? (t < 0.5 ? 0 : 1) : t);
+      setDemoPos({ id, ...pt });
+      if (!shook && t >= 0.8) {
+        shook = true;
+        setShake((n) => n + 1);
+      }
+      if (t >= 1) demoGo({ type: 'finish' });
+      else raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    const stop = () => demoGo({ type: 'interrupt' });
+    window.addEventListener('pointerdown', stop, true);
+    window.addEventListener('keydown', stop, true);
+    window.addEventListener('wheel', stop, true);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('pointerdown', stop, true);
+      window.removeEventListener('keydown', stop, true);
+      window.removeEventListener('wheel', stop, true);
+    };
+  }, [demo, demoGo]);
+
   /** 한 칸 — 누르기(보내기 · Shift = 넣기) + 끌기 */
   const cellProps = (src: DragSource) => ({
     onClick: (e: React.MouseEvent) => {
@@ -272,7 +383,13 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
       tap(src.id, e.shiftKey);
     },
     onPointerDown: (e: React.PointerEvent) => startPress(src, e),
-    onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
+    // ★ R074 (D-321 다) — PC 우클릭 = 자리 메뉴 · 터치의 길게 누름(contextmenu)은 막기만(뗄 때 메뉴 — onUp)
+    onContextMenu: (e: React.MouseEvent) => {
+      e.preventDefault();
+      if (mobile || press.current?.touch) return;
+      if (press.current) endPress();
+      openMenu(src, e.clientX, e.clientY);
+    },
     onDragStart: (e: React.DragEvent) => e.preventDefault(),
   });
   const dragging = ghost !== null;
@@ -294,13 +411,13 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
         </span>
       )}
       {open && (
-        <div className={dragging ? 'emoji-pop dragging' : 'emoji-pop'} role="dialog" aria-label="이모티콘">
+        <div ref={popRef} className={dragging ? 'emoji-pop dragging' : 'emoji-pop'} role="dialog" aria-label="이모티콘" data-emoji-demo={demo}>
           {/* ★ R044 B — 모든 팝업에 같은 ✕ */}
           <div className="pop-head">
             <p className="pop-title">이모티콘</p>
             <PopupClose onClose={() => setOpen(false)} />
           </div>
-          {help && <EmojiHelpCard mobile={mobile} onClose={() => setHelp(false)} />}
+          {help && <EmojiHelpCard mobile={mobile} onClose={() => setHelp(false)} onDemo={() => demoGo({ type: 'replay' })} />}
           {/* ★★★ R057 — 바로 보내기(기본) ⇄ 입력창에 넣기 (계정 저장) · ★ R073 — Alt+1~0 도 이 토글을 따른다 */}
           <div className="emoji-mode" role="group" aria-label="누르면">
             <button type="button" data-emoji-mode="send" aria-pressed={!insertMode} className={!insertMode ? 'emoji-mode-btn on' : 'emoji-mode-btn'} onClick={() => setEmojiInsert(false)}>
@@ -311,7 +428,11 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
             </button>
             <span className="dim emoji-mode-tip">{insertMode ? '여러 개 넣고 전송' : mobile ? '채팅창에 끌면 넣기' : 'Shift+클릭 = 넣기'}</span>
           </div>
-          <div className={dragging ? 'emoji-slots drop-ok' : 'emoji-slots'} data-emoji-slots>
+          {/* ★ R074 (D-321 나) — 자리 줄 위 연한 글자 · 끄는 중(시연 포함)은 "여기에 놓으세요" */}
+          <p className={dragging || demo === 'playing' ? 'emoji-slots-cap on' : 'emoji-slots-cap'} data-emoji-slots-cap aria-hidden="true">
+            {dragging || demo === 'playing' ? '↓ 여기에 놓으세요' : mobile ? '↓ 길게 눌러 끌기 · 떼면 메뉴' : '↓ 끌어다 놓기 · 우클릭 = 메뉴'}
+          </p>
+          <div key={`slots-${shake}`} className={[dragging ? 'emoji-slots drop-ok' : 'emoji-slots', shake > 0 ? 'shake' : ''].filter(Boolean).join(' ')} data-emoji-slots>
             {slots.map((id, i) => (
               <span
                 key={i}
@@ -334,6 +455,30 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
               </span>
             ))}
           </div>
+          {/* ★ R074 (D-321 다) — 자리 메뉴 */}
+          {menu && (
+            <div className="emoji-slot-menu" role="menu" aria-label="몇 번 자리에 넣을까요" data-emoji-menu style={{ left: menu.x, top: menu.y }}>
+              <p className="emoji-slot-menu-title">
+                <Emoji id={menu.src.id} size={20} /> {menu.src.kind === 'slot' ? '어느 자리와 바꿀까요?' : '몇 번 자리에 넣을까요?'}
+              </p>
+              <div className="emoji-slot-menu-grid">
+                {slots.map((id, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    role="menuitem"
+                    className="emoji-slot-menu-cell"
+                    data-menu-slot={i}
+                    disabled={menu.src.kind === 'slot' && menu.src.index === i}
+                    onClick={() => pickMenu(i)}
+                  >
+                    <Emoji id={id} size={22} />
+                    <span className="emoji-key">{KEYS[i]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {note && (
             <p key={note.key} className="emoji-drop-note" role="status" data-emoji-drop-note>
               {note.text}
@@ -388,6 +533,14 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
           </div>
         </div>
       )}
+      {demoPos &&
+        createPortal(
+          <span className="emoji-ghost demo" aria-hidden="true" data-emoji-demo-ghost style={{ left: demoPos.x, top: demoPos.y, transform: `translate(-50%, -50%) scale(${demoPos.scale})` }}>
+            <Emoji id={demoPos.id} size={34} />
+            <span className="emoji-demo-hand">☝</span>
+          </span>,
+          document.body,
+        )}
       {ghost &&
         createPortal(
           <span className="emoji-ghost" aria-hidden="true" data-emoji-ghost style={{ left: ghost.x, top: ghost.y }}>

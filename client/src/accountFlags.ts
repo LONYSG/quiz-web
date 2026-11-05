@@ -7,8 +7,9 @@
 
 import { useEffect, useState } from 'react';
 
-export type AccountFlag = 'shopOpened' | 'emojiGuideSeen' | 'emojiHelpDismissed' | 'tourSeen';
-export const ACCOUNT_FLAGS: readonly AccountFlag[] = ['shopOpened', 'emojiGuideSeen', 'emojiHelpDismissed', 'tourSeen'];
+//   ★★ R074 emojiDemoSeen — 😊 창 자동 시연을 봤나(D-321 가 · 기존 계정은 없음 → 모두 한 번)
+export type AccountFlag = 'shopOpened' | 'emojiGuideSeen' | 'emojiHelpDismissed' | 'tourSeen' | 'emojiDemoSeen';
+export const ACCOUNT_FLAGS: readonly AccountFlag[] = ['shopOpened', 'emojiGuideSeen', 'emojiHelpDismissed', 'tourSeen', 'emojiDemoSeen'];
 
 const keyOf = (f: AccountFlag) => `qw.flag.${f}`;
 

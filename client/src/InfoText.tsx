@@ -14,7 +14,7 @@ import { useState } from 'react';
 import { Award, Bug, Coins, Gamepad2, Link, MessageSquareWarning, SkipForward, Smile } from 'lucide-react';
 import { ACHIEVEMENTS, FEEDBACK_ADOPT_POINTS, RATE_POINTS, SIGNUP_GIFT_POINTS } from '@quiz/shared';
 import Icon from './Icon.js';
-import { EMOJI_HELP_LINES, openEmojiHelp } from './EmojiHelp.js';
+import { EMOJI_HELP_EXTRA, EMOJI_HELP_LINES, openEmojiHelp } from './EmojiHelp.js';
 import { replayTour } from './Tour.js';
 
 const TABS = [
@@ -74,12 +74,14 @@ export default function InfoText() {
             {EMOJI_HELP_LINES.pc.map((l) => (
               <li key={l}>{l}</li>
             ))}
+            <li>{EMOJI_HELP_EXTRA.pc}</li>
             <li>이모티콘은 횟수 제한이 없어요.</li>
           </ul>
           <ul className="info-list mobile-only" data-info-emoji>
             {EMOJI_HELP_LINES.mobile.map((l) => (
               <li key={l}>{l}</li>
             ))}
+            <li>{EMOJI_HELP_EXTRA.mobile}</li>
             <li>이모티콘은 횟수 제한이 없어요.</li>
           </ul>
           <button type="button" className="link-btn info-guide-btn" data-info-guide onClick={() => openEmojiHelp()}>
