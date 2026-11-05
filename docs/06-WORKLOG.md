@@ -62,6 +62,14 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-06 — 등급 1·2 힌트 1,728 · 활성 전부 힌트 (G031, GEN)
+
+- **무엇을**: 찬종 "권장대로"(15 H0 · H13 — 등급 1·2 에도 단다) → 힌트 없던 등급 1·2 1,728 에 핵심 한 줄(알가치 1 은 + 연결 고리) · 빈 해설 14.
+- **어떻게**: G028 흐름 — tmp/g031/tools(plan · prep · hintcheck(40~80 경고) · blind(괄호 지움) · equiv · redo) · 쓰기 Opus 둘 + blind sonnet 동시 · 다섯 묶음마다 scripts/g031-apply-hints.mjs --upto 반영·커밋·push(9번).
+- **결정**: DG-069.
+- **검증**: 백업 대비 바뀐 것 = general_hint 1,728 · general_hint_version 1,728 · explanation 136 뿐 · 활성 6,506 전부 힌트 · 전부 hint-v7 · hint-check-active 막힘 0 · blind 95.0%(+표기 96.1%) · undo dry-run 1,728 · criteria-sync --check · npm test 621.
+- **남은 것**: miss 14 · 변형 후보 20 · 출처 약한 것(knowledge 힌트 · 기사 출처) — G031.txt 7절. 중간에 사용량 한도로 한 번 멈춤(h-25 뒤).
+
 ## 2026-11-06 — 질문 친절하게 112 · 등급 1·2 힌트 44 · 변형 +133 · checkHint 꾸밈 낱말 규칙 (G030, GEN)
 
 - **무엇을**: 19 §8 ⓐⓑⓒ+⑨ 로 등급 3·4·5 질문 다시 쓰기(대상 760 고정) · V033 fix 18 + 해설 2 · 안 본 380 H2 뜻풀이 훑기 · 사실 3(3575 · 6625 · 4598) · 변형 남은 4 + G029 H2 가드 131 + ⓑ 표기 2 · 15 §4-1 sync.
