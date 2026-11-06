@@ -1074,6 +1074,12 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 56. ★★ R076 — 문제 카드 세로 흔들림 card-jitter (D-326)
+
+- 묶음 `r076`(`R076_TAG=before|after` · `R076_ONLY=reduced`): 방장 PC(1280 · 1536×730) · 손님 터치(m360 · m390) · 테마 pastel · night · office 마다 한 문제 판 — 시작 · 힌트 · 초성 · 마지막 5초 · 공개에서 2초 동안 프레임마다 `.question-card` · `.q-text` top/height · 지문 style/data-wrap 바뀜(MutationObserver) · 지문 크기 바뀜(ResizeObserver). 변형: office + 시간 막대 숨김 · pastel + prefers-reduced-motion · office 같은 문제 위 옛 1ms 전이 A/B.
+- 판정: 공개 밖 모든 조합 카드 top · 높이 · 지문 높이 바뀜 0(마지막 5초는 시간 종료 전환 한 번 허용) · 지문 재측정 ≤ 2. 전 = office lap2 넷 + 막대 숨김 실패(바뀜 수백) → 후 0. 결과 JSON docs/design/r076/card-jitter-{before,after}.json · 그림 jitter-office-{lap2,m360}-t0~t2.
+- 왜 못 잡았나: 화면 검사가 모두 정지 그림 · 한 순간 값이었다 — 흔들림(시간)은 프레임 샘플이 있어야 보인다.
+
 ## 55. ★★★ R075 — 단축키 문구 · 사무실 모드 2판 · 모바일 화면 움직임 (D-324 · D-322 2판 · D-325)
 
 - 묶음 `r075`(`UICHECK_NO_BUILD=1 node scripts/ui-check-bundles.mjs r075` · `R075_ONLY=shortcut|office|motion` · `R075_TAG=before|after` = 그림 이름 꼬리 · `R075_KB_MODE=resize|visual`).
