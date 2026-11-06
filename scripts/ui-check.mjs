@@ -4638,7 +4638,8 @@ async function r075ShortcutFlow(browser) {
   await H.setViewport(1280, 720);
   await signUp(H, 'sk', '단축키방장');
   await createRoom(H, 'R075 단축키');
-  const sizes = [{ w: 1280, h: 720, n: 'pc' }, { w: 1536, h: 730, n: 'lap2' }];
+  // ★ R075 — 2560 도(⓪ 탭 글이 1440 높이에서 두 줄로 꺾였다 — r073 info 가 잡음)
+  const sizes = [{ w: 1280, h: 720, n: 'pc' }, { w: 1536, h: 730, n: 'lap2' }, { w: 2560, h: 1440, n: 'qhd' }];
   const rows = {};
   for (const s of sizes) {
     await H.setViewport(s.w, s.h);
@@ -9961,12 +9962,12 @@ try {
       await host.waitFor("document.querySelector('.confirm-modal') === null", 4000),
     );
     {
-      // ★ R040 C-3 — 모바일 폭이면 정답 공개(넘기기)에서 키보드를 내린다(포커스 해제)가 맞다. PC 폭이면 채팅 입력으로 돌아온다
+      // ★ R040 C-3 — 모바일 폭이면 정답 공개(넘기기)에서 키보드를 내린다(포커스 해제)였다 → ★ R075 (D-325) 판 중(공개 포함)에는 내리지 않는다 — 두 폭 모두 채팅 입력으로
       const narrow = (await host.evaluate('innerWidth')) < 1000;
       const ae = await host.activeEl();
       record(
-        narrow ? '★ 확정 뒤 — 모바일 폭이라 정답 공개에서 키보드를 내린다 (R040 C-3 · 포커스 해제)' : '★ 확정 뒤 포커스가 채팅 입력으로 돌아온다',
-        narrow ? ae?.tag !== 'INPUT' : Boolean(ae?.inChatCard),
+        narrow ? '★ 확정 뒤 — 모바일 폭도 정답 공개에서 키보드를 내리지 않는다 (R075 D-325 · 채팅 입력 그대로)' : '★ 확정 뒤 포커스가 채팅 입력으로 돌아온다',
+        Boolean(ae?.inChatCard),
         JSON.stringify(ae),
       );
     }
