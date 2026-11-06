@@ -4604,6 +4604,105 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R077 — 로비 카드 넘침 settings-overflow (D-327 · 찬종 11-06 "사무실 왔다갔다 해도 저 글자가 튀어나가")
+//   (UICHECK_R077=1 · 묶음 r077 · docs/design/r077) · R077_TAG = before | after · R077_ONLY = overflow | minority
+//   손님 · 방장 × 크기(lap2 1536×695 @1.25 · pc 1280×720 · m360 터치) × 테마 순환(처음 → pastel → office → pastel → night → office → pastel · Alt+T 는 R043 A-9 로 꺼져 있어 ⚙ 단추로)
+//   설정 카드(.lobby-card) · 참여자 칸(.seats) · 채팅 카드(.chat-card) 안 요소 · 글자 줄이 카드 밖으로 나간 것(조상이 잘라 내면 뺀다)
+// =============================================================================
+const R077_TAG = process.env.R077_TAG ? `-${process.env.R077_TAG}` : '';
+const R077_OVERFLOW = `JSON.stringify((() => {
+  const out = [];
+  const clipped = (el, card) => { for (let a = el.parentElement; a && a !== card; a = a.parentElement) { const s = getComputedStyle(a); if (s.overflowX !== 'visible') return a; } return null; };
+  const label = (el) => (el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\\s+/).slice(0, 2).join('.') : el.tagName.toLowerCase());
+  for (const sel of ['.lobby-card', '.seats-left', '.seats-right', '.chat-card']) {
+    const card = document.querySelector(sel);
+    if (!card || card.getClientRects().length === 0) continue;
+    const c = card.getBoundingClientRect();
+    for (const el of card.querySelectorAll('*')) {
+      if (el.getClientRects().length === 0) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) continue;
+      const clip = clipped(el, card);
+      const box = clip ? clip.getBoundingClientRect() : c;
+      const over = Math.max(r.right - box.right, box.left - r.left, r.right - c.right, c.left - r.left);
+      if (over > 1 && !clip) out.push({ card: sel, el: label(el), px: Math.round(over), text: (el.innerText || '').slice(0, 30) });
+      // 글자 줄(자식 글 노드)이 상자 밖
+      for (const n of el.childNodes) {
+        if (n.nodeType !== 3 || !n.textContent.trim()) continue;
+        const rg = document.createRange();
+        rg.selectNodeContents(n);
+        for (const lr of rg.getClientRects()) {
+          const o = Math.max(lr.right - c.right, c.left - lr.left);
+          if (o > 1 && getComputedStyle(el).overflowX === 'visible' && !clipped(el, card)) out.push({ card: sel, el: label(el) + ' #text', px: Math.round(o), text: n.textContent.slice(0, 30) });
+        }
+      }
+    }
+  }
+  return out;
+})())`;
+async function r077Overflow(browser) {
+  const dir = path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r077');
+  const H = await newPage(browser, 'R077-host', true);
+  await H.setViewport(1536, 864);
+  await signUp(H, 'oh', '넘침방장');
+  const roomId = await createRoom(H, 'R077 넘침');
+  const G = await newPage(browser, 'R077-g', true);
+  await G.setViewport(1536, 864);
+  await signUp(G, 'og', '넘침손님');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  // ★ 사진과 같은 꼴 — 미니게임만 · 여럿 고름(전부가 아니어서 이름이 줄줄이)
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000).catch(() => false);
+  await selectMinigames(H, ['cake', 'balance', 'reaction', 'typing', 'circle', 'angle', 'price', 'worldprice', 'photo', 'estimate', 'which', 'minority', 'gauge', 'balloon']);
+  await sleep(600);
+  const SIZES = [
+    { n: 'lap2', set: (P) => P.send('Emulation.setDeviceMetricsOverride', { width: 1536, height: 695, deviceScaleFactor: 1.25, mobile: false }) },
+    { n: 'pc', set: (P) => P.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false }) },
+    { n: 'm360', set: (P) => r068Touch(P, 360, 740, true) },
+  ];
+  // ★ ⚙ 테마 단추(PC) — 모바일(⚙ 창 꼴이 다름)에서 안 바뀌면 setTheme 과 같은 일(html data-theme · 저장 · qw:theme)
+  const setT = async (P, id) => {
+    await pickTheme(P, id);
+    if ((await P.evaluate("document.documentElement.dataset.theme ?? ''")) !== id) await P.evaluate(`(() => { document.documentElement.dataset.theme = '${id}'; try { localStorage.setItem('qw.theme.v1', '${id}'); } catch {} window.dispatchEvent(new CustomEvent('qw:theme', { detail: '${id}' })); })()`);
+  };
+  const theme = (P) => P.evaluate("document.documentElement.dataset.theme ?? ''");
+  const table = [];
+  for (const S of SIZES) {
+    for (const [P, who] of [[G, 'guest'], [H, 'host']]) {
+      if (S.n === 'm360') await r068Touch(P, 360, 740, true);
+      else {
+        await r068Touch(P, 1536, 864, false);
+        await S.set(P);
+      }
+      await sleep(300);
+      await setT(P, 'pastel');
+      const seq = [['처음', null], ['pastel', 'pastel'], ['office', 'office'], ['pastel', 'pastel'], ['night', 'night'], ['office', 'office'], ['pastel', 'pastel']];
+      for (const [name, act] of seq) {
+        if (act) await setT(P, act);
+        await sleep(300);
+        const over = JSON.parse(await P.evaluate(R077_OVERFLOW));
+        table.push({ size: S.n, who, step: name, theme: await theme(P), over });
+        if (over.length && !table.some((t) => t.shot)) {
+          table[table.length - 1].shot = true;
+          await snap(P, `mg-names-overflow${R077_TAG}`);
+        }
+      }
+      if (who === 'guest' && S.n === 'lap2') await snap(P, `settings-guest-lap2${R077_TAG}`);
+      await setT(P, 'pastel');
+    }
+  }
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  writeFileSync(path.join(dir, `settings-overflow${R077_TAG}.json`), JSON.stringify(table, null, 1));
+  console.log('  [r077] 크기 · 누구 · 단계 · 테마 → 넘친 요소(px)');
+  for (const t of table) console.log(`    ${t.size}\t${t.who}\t${t.step}\t${t.theme}\t${t.over.map((o) => `${o.card} ${o.el} ${o.px}px「${o.text}」`).join(' | ') || '0'}`);
+  const bad = table.filter((t) => t.over.length > 0);
+  record('★★★ R077 settings-overflow — 테마 셋 순환(⚙) 뒤 설정 카드 · 참여자 칸 · 채팅 카드 자식 넘침 0(손님 · 방장 × lap2@1.25 · pc · m360)', bad.length === 0, JSON.stringify(bad.map((t) => `${t.size}/${t.who}/${t.step}:${t.over.map((o) => o.el + ' ' + o.px).join(',')}`)).slice(0, 600));
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R076 — 문제 카드 세로 흔들림 card-jitter (D-326 · 찬종 11-06 "사무실 모드 문제 부분이 위아래로 미친듯이 흔들려")
 //   (UICHECK_R076=1 · 묶음 r076 · docs/design/r076) · R076_TAG = before | after
 //   테마 셋 × 크기(PC 1280 · 1536×730 / m360 · m390 터치) × 상태(시작 · 힌트 · 초성 · 마지막 5초 · 공개) — 2초 동안 프레임마다 카드 · 지문 top/height ·
@@ -7004,14 +7103,14 @@ async function r066Flow(browser) {
   // ── C1 · C2 방장이 미니게임을 고르는 동안 손님 화면 — 이름 줄 · 열린 창이 바로 따라감 · 생략 없음
   await realClick(H, 'button[data-mode="minigame"]');
   await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
-  await G.waitFor("document.querySelector('[data-mg-names]') !== null", 4000).catch(() => false);
   await realClick(G, '[data-mg-catalog-open]');
   await G.waitFor("document.querySelector('.mg-cat') !== null", 4000);
   const before = await G.evaluate("document.querySelector('.mg-cat-count')?.innerText ?? ''");
   await selectMinigames(H, ['angle', 'photo', 'balance']);
   await sleep(600);
   const after = JSON.parse(await G.evaluate("JSON.stringify({ count: document.querySelector('.mg-cat-count')?.innerText ?? '', on: [...document.querySelectorAll('.mg-cat-card.on')].map((c) => c.dataset.key) })"));
-  const names = await G.evaluate("document.querySelector('[data-mg-names]')?.innerText ?? ''");
+  // ★ R077 (D-327) — 이름 한 줄(D-281)은 없앴다 → 손님 "미니게임 보기" 버튼 title 에 이름 전체 · 줄 요소는 없어야
+  const names = await G.evaluate("(document.querySelector('[data-mg-names]') ? 'LINE ' : '') + (document.querySelector('[data-mg-catalog-open]')?.title ?? '')");
   const ell = { pc: JSON.parse(await G.evaluate(NO_ELLIPSIS('.mg-cat'))) };
   await snap(G, '181-catalog-guest-1536');
   await auditAt(G, 'catalog-guest@1536');
@@ -7026,7 +7125,7 @@ async function r066Flow(browser) {
   await G.evaluate("document.querySelector('.mg-cat .popup-close')?.click()");
   await touchDevice(G, 390, 844, false);
   await G.setViewport(1536, 864);
-  record('★★★ R066 C1 · C2 손님 — 방장이 고르는 대로 이름 줄 · 열린 창(3/17 · 켜진 셋)이 바로 · 고르기 창은 생략(…) 없음(PC · m390)', /3\/17/.test(after.count) && after.on.length === 3 && /각도|사진|균형/.test(names) && ell.pc.length === 0 && ell.m.length === 0, JSON.stringify({ before, after, names, ell }));
+  record('★★★ R066 C1 · C2 손님 — 방장이 고르는 대로 열린 창(3/17 · 켜진 셋)이 바로 · 버튼 title 에 이름(R077 — 이름 줄 없음) · 고르기 창은 생략(…) 없음(PC · m390)', /3\/17/.test(after.count) && after.on.length === 3 && !names.startsWith('LINE') && /각도|사진|균형/.test(names) && ell.pc.length === 0 && ell.m.length === 0, JSON.stringify({ before, after, names, ell }));
 
   // ── D1 ⓘ 안내 탭 넷
   await openGearTab(H, 'info'); // ★ R067 — ⓘ 는 ⚙ 의 안내 탭
@@ -7945,6 +8044,12 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R074) {
     await closeAllTabs(browser);
     await r074Flow(browser);
+  }
+  // ★ R077 — 로비 카드 넘침(settings-overflow) · 소수파 선택지 = 인원 − 1(minority)
+  if (process.env.UICHECK_R077) {
+    await closeAllTabs(browser);
+    if (process.env.R077_ONLY !== 'minority') await r077Overflow(browser);
+    if (process.env.R077_ONLY !== 'overflow' && typeof r077Minority === 'function') await r077Minority(browser);
   }
   // ★ R076 — 문제 카드 세로 흔들림(card-jitter)
   if (process.env.UICHECK_R076) {

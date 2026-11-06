@@ -322,18 +322,19 @@ export default function GameSettings({
           )}
           {(shown.minigames || mgOnly) && (
             // ★★ R063 (D-258) — 칩 16개 나열 → 버튼 하나 · 누르면 고르기 창(카드 · 방장 아니면 설명 보기)
-            <button type="button" className="ghost tiny mg-cat-open" data-mg-catalog-open onClick={() => setCatOpen(true)}>
+            // ★ R077 (D-327 · 찬종 "굳이 저런식으로 안보여줘도 · 팝업 뜨면서 확인") — 손님 이름 한 줄(D-281)은 없앴다 · 이름 전체는 버튼 title 에만
+            <button
+              type="button"
+              className="ghost tiny mg-cat-open"
+              data-mg-catalog-open
+              title={editable ? undefined : (shown.minigameKeys ?? MINIGAME_KEYS).map((k) => minigameInfo(k).name).join(' · ')}
+              onClick={() => setCatOpen(true)}
+            >
               <Icon icon={Gamepad2} /> {editable ? '미니게임 고르기' : '미니게임 보기'}{' '}
               <span className="mono dim">
                 {(shown.minigameKeys ?? MINIGAME_KEYS).length}/{MINIGAME_KEYS.length}
               </span>
             </button>
-          )}
-          {/* ★ R066 (D-281 · 찬종 #33) — 손님도 방장이 고르는 목록을 바로(이름 한 줄 · 넘치면 … · 전부 보기는 창) */}
-          {!editable && (shown.minigames || mgOnly) && (
-            <span className="mg-set-names dim" data-mg-names title={(shown.minigameKeys ?? MINIGAME_KEYS).map((k) => minigameInfo(k).name).join(' · ')}>
-              {(shown.minigameKeys ?? MINIGAME_KEYS).length === MINIGAME_KEYS.length ? '전부' : (shown.minigameKeys ?? MINIGAME_KEYS).map((k) => minigameInfo(k).name).join(' · ')}
-            </span>
           )}
           {catOpen && (
             <MinigameCatalog

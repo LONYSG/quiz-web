@@ -7874,14 +7874,7 @@ button.mg-cat-card {
 .mg-cat-ex {
   overflow-wrap: anywhere;
 }
-.mg-set-names {
-  min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 0.8rem;
-}
+/* ★ R077 (D-327) — .mg-set-names(손님 이름 한 줄 · D-281) 없앰 — nowrap 줄이 flex 줄(.preset-row min-width auto)을 늘려 카드 밖으로 */
 
 /* ★★ R065 (D-270 · 찬종 "제보 메뉴를 누르면 두 가지") — 제보 메뉴 두 갈래 · 최근 문제 · 미니게임 목록(새것 위 · 창 안 스크롤) */
 .report-menu-pick {
