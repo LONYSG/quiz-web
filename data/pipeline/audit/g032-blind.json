@@ -1,0 +1,215 @@
+{
+ "at": "2026-11-06T20:52:39.294Z",
+ "note": "질문 blind = 질문만 보고 정답 · 힌트 blind = 힌트만 보고 정답(h 는 다시 쓴 뒤 h2 결과를 합친 값) · miss 는 변형 추가·equiv·남김으로 처리(보고서 3절)",
+ "g032a": {
+  "q": {
+   "n": 342,
+   "hit": 338,
+   "rate": 0.988,
+   "miss": [
+    {
+     "ref": "g032a-j08-6",
+     "answer": "영국 아카데미 영화상",
+     "guess": "영국 아카데미 시상식",
+     "conf": "high"
+    },
+    {
+     "ref": "g032a-j04-8",
+     "answer": "니켈",
+     "guess": "코발트",
+     "conf": "high"
+    },
+    {
+     "ref": "g032a-j09-10",
+     "answer": "달란트",
+     "guess": "탈란트",
+     "conf": "high"
+    },
+    {
+     "ref": "job-03-8",
+     "answer": "탈리오 법칙",
+     "guess": "동해보복 원칙",
+     "conf": "mid"
+    }
+   ]
+  },
+  "h": {
+   "n": 342,
+   "hit": 337,
+   "rate": 0.985,
+   "miss": [
+    {
+     "ref": "g032a-j17-5",
+     "answer": "GG",
+     "guess": "굿 게임",
+     "conf": "mid"
+    },
+    {
+     "ref": "g032a-j06-12",
+     "answer": "마타도어",
+     "guess": "흑색선전",
+     "conf": "high"
+    },
+    {
+     "ref": "g032a-j01-6",
+     "answer": "386세대",
+     "guess": "86세대",
+     "conf": "high"
+    },
+    {
+     "ref": "g032a-j01-5",
+     "answer": "구한말",
+     "guess": "대한제국기",
+     "conf": "high"
+    },
+    {
+     "ref": "g032a-j07-6",
+     "answer": "생태통로",
+     "guess": "생태이동통로",
+     "conf": "high"
+    }
+   ]
+  },
+  "fixes": {
+   "blindq-gen": [
+    {
+     "ref": "g032a-j04-8",
+     "step": "blind-q GEN",
+     "why": "blind 코발트(같은 코볼트 요정 유래) — '구리의 요정' 광석 이름으로 가름",
+     "question": "은빛을 띠는 금속 원소입니다. 중세 독일 광부들은 구리 광석처럼 생긴 돌에서 구리가 나오지 않자, 요정이 장난을 쳤다며 그 돌을 '구리의 요정'이라고 불렀습니다. 그 광석 이름 뒷부분이 원소 이름이 되었습니다. 이 원소는?"
+    },
+    {
+     "ref": "g032a-j08-6",
+     "step": "blind-q GEN",
+     "why": "blind '영국 아카데미 시상식' = 같은 것 → 변형",
+     "addAccepted": [
+      "영국 아카데미 시상식"
+     ]
+    },
+    {
+     "ref": "g032a-j09-10",
+     "step": "blind-q GEN",
+     "why": "blind '탈란트' = 표기 변형",
+     "addAccepted": [
+      "탈란트"
+     ]
+    },
+    {
+     "ref": "job-03-8",
+     "step": "blind-q GEN",
+     "why": "blind '동해보복 원칙' = 같은 것 → 변형",
+     "addAccepted": [
+      "동해보복 원칙"
+     ]
+    }
+   ],
+   "blindh-gen": [
+    {
+     "ref": "g032a-j17-5",
+     "step": "blind-h GEN",
+     "why": "blind '굿 게임' = 풀어 쓴 말 → 변형",
+     "addAccepted": [
+      "굿 게임",
+      "굿게임"
+     ]
+    },
+    {
+     "ref": "g032a-j01-6",
+     "step": "blind-h GEN",
+     "why": "blind '86세대' = 같은 세대의 바뀐 이름 → 변형",
+     "addAccepted": [
+      "86세대"
+     ]
+    },
+    {
+     "ref": "g032a-j07-6",
+     "step": "blind-h GEN",
+     "why": "blind '생태이동통로' = 같은 것 → 변형",
+     "addAccepted": [
+      "생태이동통로"
+     ]
+    }
+   ]
+  }
+ },
+ "g032b": {
+  "q": {
+   "n": 332,
+   "hit": 328,
+   "rate": 0.988,
+   "miss": [
+    {
+     "ref": "g032b-j01-1",
+     "answer": "개그맨",
+     "guess": "탤런트",
+     "conf": "high"
+    },
+    {
+     "ref": "g032b-j18-7",
+     "answer": "옐로카펫",
+     "guess": "노란 발자국",
+     "conf": "high"
+    },
+    {
+     "ref": "g032b-j26-4",
+     "answer": "며느리밑씻개",
+     "guess": "며느리배꼽",
+     "conf": "high"
+    },
+    {
+     "ref": "g032b-j14-7",
+     "answer": "총 맞은 것처럼",
+     "guess": "잊지 말아요",
+     "conf": "high"
+    }
+   ]
+  },
+  "h": {
+   "n": 332,
+   "hit": 332,
+   "rate": 1,
+   "miss": []
+  },
+  "fixes": {
+   "blindq-gen": [
+    {
+     "ref": "g032b-j08-12",
+     "step": "blind-q GEN",
+     "why": "blind 우리말 번역 = 같은 문구 → 변형",
+     "addAccepted": [
+      "침착하게 하던 일을 계속하라"
+     ]
+    },
+    {
+     "ref": "g032b-j30-6",
+     "step": "blind-q GEN",
+     "why": "blind '스크램블 교차로' = 같은 방식의 다른 이름 → 변형",
+     "addAccepted": [
+      "스크램블 교차로",
+      "스크램블 교차"
+     ]
+    }
+   ],
+   "blindh-gen": [
+    {
+     "ref": "g032b-j01-4",
+     "step": "blind-h GEN",
+     "why": "blind '배트 플립' = 같은 동작의 영어 이름 → 변형",
+     "addAccepted": [
+      "배트 플립",
+      "배트플립",
+      "빠따 던지기"
+     ]
+    },
+    {
+     "ref": "g032b-j28-1",
+     "step": "blind-h GEN",
+     "why": "blind '튜튜' = 표기 변형",
+     "addAccepted": [
+      "튜튜"
+     ]
+    }
+   ]
+  }
+ }
+}
