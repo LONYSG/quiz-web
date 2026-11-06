@@ -8865,9 +8865,16 @@ button.preset.shake {
 }
 
 /* =============================================================================
-   ★★★ R074 (D-322 · 1판) — 사무실 모드: cmd 창 꼴. 토큰 + 이 블록 하나에 예외를 모은다(styles 9행 규칙)
-   검은 바탕 #0c0c0c · 고정폭 글꼴 · 회색 글자 #cccccc · 강조 녹색 #16c60c · 둥글기 · 그림자 · 그라데이션 · 움직임 0
-   위 막대 = cmd 제목줄 꼴 · 버튼 = [ 확인 ] · 채팅 줄 = > 프롬프트 · 이모티콘 · 아바타 = 글자(Emoji.tsx · Avatar.tsx)
+   ★★★ R074 (D-322 1판) → ★★★ R075 (D-322 2판 · 찬종 11-06 "진짜 cmd 느낌이 아니라 cmd 느낌 내려고 꾸민 느낌이야. cmd 에 색깔은 보통 없잖아 ·
+   색구분도 다 없애고 진짜 딱딱하고 재미없어 보이게 만드는게 포인트야") — 사무실 모드: 보이는 것 = 검은 바탕 + 회색 글자 + (강조 흰색 하나) + 고정폭 글꼴.
+   ★ 팔레트 7(이 밖의 색이 계산 스타일에 나오면 결함 — ui-check r075 office-palette):
+     바탕 = 표면 #0c0c0c · 표면-2 #151515(입력창 · 막대 바탕) · 선 #262626 · 글자 #cccccc · 흐림 #808080 · 강조 #f2f2f2
+   ★ 뺀 것(1판): 가짜 제목줄(.room-head 배경 · "C:\Windows\system32\cmd.exe - " · "─ ☐ ✕") · [ 확인 ] 괄호 · "> " 프롬프트 · 아바타 [ ] ·
+     녹색 · 빨강 · 노랑 · 순위색 10 · 색 바탕(-soft) · 그림자 · 그라데이션 · 꽃가루 · 분류 탭 그림(글자로 — EmojiPicker)
+   ★ 색으로만 가르던 것 = 밝기(#808080 흐림 ↔ #cccccc 보통 ↔ #f2f2f2 강조) · 반전(바탕 #cccccc + 글자 #0c0c0c = cmd 선택 영역) · 글자(맞힌 사람 "O")
+   ★ 이모티콘 :이름: = 본문 글자 크기 · 잘림 0 · 줄임표 0 — 칸이 글자에 맞춰 늘어난다(😊 창은 글자 목록 꼴 · 10칸 = "1 :이름:")
+   ★ 그대로: 고정폭 글꼴(한글은 맑은 고딕으로 떨어짐) · 움직임 0 · 소리 끔(officeSound) · 미니게임 판(.mg-card) 그림 · 움직임
+   ★ 되돌리기 = 1판 블록(git 0fd87766 의 이 자리)으로 바꾸면 된다
    ============================================================================= */
 [data-theme='office'] {
   color-scheme: dark;
@@ -8877,69 +8884,82 @@ button.preset.shake {
   --page: #0c0c0c;
   --surface: #0c0c0c;
   --surface-2: #151515;
-  --surface-3: #1e1e1e;
+  --surface-3: #151515;
   --border: #262626;
-  --bw: 1.5px;
+  --bw: 1px;
   --text: #cccccc;
-  --text-dim: #8c8c8c;
-  --accent: #16c60c;
+  --text-dim: #808080;
+  --accent: #cccccc;
   --accent-ink: #0c0c0c;
   --accent-2: #f2f2f2;
-  --accent-soft: #102a0e;
-  --ok: #16c60c;
-  --ok-soft: #0e220c;
-  --bad: #e74856;
-  --bad-soft: #2a1214;
-  --warn: #f9f1a5;
+  --accent-soft: #151515;
+  --ok: #cccccc;
+  --ok-soft: #151515;
+  --bad: #cccccc;
+  --bad-soft: #151515;
+  --warn: #cccccc;
   --radius: 0px;
   --radius-sm: 0px;
   --shadow: none;
   --shadow-pop: none;
   --q-bg: #0c0c0c;
   --q-border: #262626;
-  --q-band: #16c60c;
+  --q-band: #262626;
   --q-text: #f2f2f2;
-  --bar-bg: #1e1e1e;
-  --bar: #16c60c;
+  --bar-bg: #151515;
+  --bar: #cccccc;
   --reveal-bg: #0c0c0c;
-  --reveal-border: #16c60c;
+  --reveal-border: #262626;
   --chip-bg: #151515;
   --chat-bg: #0c0c0c;
-  --toast-bg: #151515;
-  --toast-border: #16c60c;
-  --mask-bg: #1e1e1e;
+  --toast-bg: #0c0c0c;
+  --toast-border: #262626;
+  --mask-bg: #151515;
   --mask-fg: #cccccc;
   --img-letterbox: #0c0c0c;
-  --p0: #e74856;
-  --p1: #c19c00;
-  --p2: #f9f1a5;
-  --p3: #16c60c;
-  --p4: #61d6d6;
-  --p5: #3b78ff;
-  --p6: #b4009e;
-  --p7: #d670d6;
+  --p0: #cccccc;
+  --p1: #cccccc;
+  --p2: #cccccc;
+  --p3: #cccccc;
+  --p4: #cccccc;
+  --p5: #cccccc;
+  --p6: #cccccc;
+  --p7: #cccccc;
   --p8: #cccccc;
-  --p9: #3a96dd;
+  --p9: #cccccc;
 }
 [data-theme='office'] body {
   letter-spacing: 0;
 }
-/* ④ 움직임 0 — prefers-reduced-motion 과 같은 길(끝 상태로 바로) · 미니게임 판은 그대로(사용자 선택) · 자리 이모티콘은 멈춘 채 보인다 */
+/* 움직임 0 — prefers-reduced-motion 과 같은 길(끝 상태로 바로) · 미니게임 판은 그대로(사용자 선택) · 자리 이모티콘은 멈춘 채 보인다 */
 [data-theme='office'] *:not(.mg-card, .mg-card *),
 [data-theme='office'] *:not(.mg-card, .mg-card *)::before,
 [data-theme='office'] *:not(.mg-card, .mg-card *)::after {
   animation-duration: 1ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 1ms !important;
+  /* 장식 0 — 둥글기 · 그림자 · 글자 그림자 · 그라데이션 · 그림자 필터(미니게임 판 밖) */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  background-image: none !important;
+}
+[data-theme='office'] *:not(.mg-card, .mg-card *) {
+  filter: none !important;
+  accent-color: #cccccc;
+  caret-color: #cccccc;
 }
 [data-theme='office'] .seat-emoji-pop,
 [data-theme='office'] .ceremony,
 [data-theme='office'] .chat-line {
   animation: none !important;
 }
+[data-theme='office'] .confetti {
+  display: none;
+}
 [data-theme='office'] .ceremony {
   background: var(--surface);
-  border: var(--bw) solid var(--accent);
+  border: var(--bw) solid var(--border);
 }
 [data-theme='office'] .mg-card::before,
 [data-theme='office'] .mg-intro-name {
@@ -8947,105 +8967,209 @@ button.preset.shake {
   color: var(--accent);
 }
 [data-theme='office'] .mg-card::before {
-  background: var(--accent);
+  background: var(--border);
 }
 [data-theme='office'] .brand-mark {
   background: #0c0c0c;
   color: #cccccc;
-  box-shadow: inset 0 0 0 1.5px #3a3a3a;
-  text-shadow: none;
+  outline: 1px solid #262626;
 }
-/* 위 막대 = cmd 제목줄(PC) */
-[data-theme='office'] .room-head {
-  background: #1e1e1e;
-  outline: 6px solid #1e1e1e;
+/* 입력 — 바탕 표면-2 · 글자 회색(브라우저 기본 흰 글자 · 회색 바탕 · 파란 테두리 없음) */
+[data-theme='office'] input,
+[data-theme='office'] textarea,
+[data-theme='office'] select {
+  color: var(--text);
+  background-color: var(--surface-2);
+  border-color: var(--border);
 }
-[data-theme='office'] .room-title h1::before {
-  content: 'C:\\Windows\\system32\\cmd.exe - ';
-  color: #f2f2f2;
-  font-weight: 400;
+[data-theme='office'] input:focus,
+[data-theme='office'] textarea:focus,
+[data-theme='office'] input.judging {
+  border-color: #808080;
+  outline: none;
 }
-[data-theme='office'] .room-tools::after {
-  content: '─   ☐   ✕';
-  margin-left: 14px;
-  color: #f2f2f2;
-  white-space: pre;
+[data-theme='office'] :focus-visible {
+  outline-color: #cccccc;
 }
-:where(.ui-mobile)[data-theme='office'] .room-title h1::before,
-:where(.ui-mobile)[data-theme='office'] .room-tools::after {
-  content: none;
-}
-/* 버튼 = [ 확인 ] */
+/* 버튼 — 주 버튼 = 회색 글자 + 1px 선 · 모든 버튼 hover = 반전(cmd 선택 영역 꼴) · disabled = 흐림 */
 [data-theme='office'] button.primary,
 [data-theme='office'] button.big-btn {
   background: transparent;
+  color: var(--text);
+  border: 1px solid #262626;
+}
+[data-theme='office'] button:not(.mg-card *):hover:not(:disabled) {
+  background-color: #cccccc !important;
+  color: #0c0c0c !important;
+  border-color: #cccccc !important;
+}
+[data-theme='office'] button:not(.mg-card *):hover:not(:disabled) * {
+  color: inherit !important;
+}
+[data-theme='office'] button:not(.mg-card *):disabled {
+  color: #808080;
+}
+[data-theme='office'] .skip-btn,
+[data-theme='office'] .q-hint .hint-label {
+  color: var(--text);
+  background: var(--surface-2);
+}
+/* 고르기 · 탭 · 칩 — 고른 것 = 밝은 글자 + 밝은 선(색 바탕 없음) · 안 고른 것 = 흐림 */
+[data-theme='office'] .preset.active,
+[data-theme='office'] .emoji-mode-btn.on,
+[data-theme='office'] .emoji-tab.on {
   color: #f2f2f2;
-  border: none;
-  box-shadow: none;
+  background: var(--surface-2);
+  border-color: #808080;
 }
-[data-theme='office'] button.primary:hover:not(:disabled),
-[data-theme='office'] button.big-btn:hover:not(:disabled) {
-  background: #cccccc;
-  color: #0c0c0c;
+[data-theme='office'] .crown,
+[data-theme='office'] .crown .ico,
+[data-theme='office'] .host-mark .ico {
+  color: #808080;
 }
-[data-theme='office'] button.primary::before,
-[data-theme='office'] button.big-btn::before {
-  content: '[ ';
+[data-theme='office'] .chat-input-row input:not(:focus) {
+  border-color: var(--border);
 }
-[data-theme='office'] button.primary::after,
-[data-theme='office'] button.big-btn::after {
-  content: ' ]';
-}
-/* 채팅 줄 = > 프롬프트 */
-[data-theme='office'] .chat-line::before {
-  content: '> ';
+/* 이름 · 아바타 — 순위색 없음(토큰 --p0~9 가 모두 글자색) · 아바타 = 첫 글자 하나(흐림) */
+[data-theme='office'] .avatar:not(.photo) {
+  background: transparent !important;
   color: var(--text-dim);
+  border-radius: 0;
+  font-weight: 400;
 }
-[data-theme='office'] .chat-input-row input {
-  caret-color: #cccccc;
+/* 위 막대 — 가짜 제목줄 없음(배경 · 앞 글 · ─ ☐ ✕ 모두 뺐다) · 상태 알약은 글자만 */
+[data-theme='office'] .state-pill {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
 }
-/* ① 이모티콘 = :이름: · 아바타 = [첫 글자] */
+/* 색 그림 글자(이모지 글꼴) — 트로피 · 메달 · 업적 메달은 뺀다(순위는 숫자) · 서버가 쓰는 시스템 줄("🥇 … 첫 정답") · 평가 👍😐👎 · 안내 글은 흑백 */
+[data-theme='office'] .champion-trophy,
+[data-theme='office'] .medal,
+[data-theme='office'] .ach-toast-medal {
+  display: none;
+}
+[data-theme='office'] .chat-system,
+[data-theme='office'] .fb-vote-emoji,
+[data-theme='office'] .info-list,
+[data-theme='office'] .tour-title,
+[data-theme='office'] .toast,
+[data-theme='office'] .ach-toast,
+[data-theme='office'] .person-card,
+[data-theme='office'] .ach-all {
+  filter: grayscale(1) !important;
+}
+/* ① 이모티콘 = :이름: (Emoji.tsx) — 본문 글자 크기 · 칸이 글자에 맞춘다(잘림 · 줄임표 없음) · 특별 이모티콘도 같은 회색 */
 .emoji-text {
-  display: inline-block;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: inline;
   white-space: nowrap;
-  vertical-align: middle;
+  vertical-align: baseline;
   font-family: var(--font-mono);
-  color: var(--accent);
-  line-height: 1.2;
+  color: var(--text);
+  line-height: 1.3;
+}
+[data-theme='office'] .emoji-text {
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  font-size: 0.95rem !important;
+  margin: 0 !important;
+}
+[data-theme='office'] .ceremony-msg .emoji-text {
+  font-size: 1em !important;
 }
 [data-theme='office'] .seat-emoji-pop {
   height: auto;
   max-height: none;
   aspect-ratio: auto;
   max-width: 100%;
-  filter: none;
   flex-wrap: wrap;
   gap: 4px;
 }
-[data-theme='office'] .seat-emoji-pop .emoji-text {
-  font-size: 0.95rem !important;
+[data-theme='office'] .seat-emoji {
+  min-height: 1.3em;
 }
-[data-theme='office'] .emoji-slot .emoji-text,
-[data-theme='office'] .emoji-cell .emoji-text,
-[data-theme='office'] .emoji-slot-menu-cell .emoji-text {
-  max-width: 100%;
-  font-size: 0.62rem !important;
+[data-theme='office'] .special-float-nick {
+  background: var(--surface);
 }
-[data-theme='office'] .avatar:not(.photo) {
-  background: transparent !important;
-  color: var(--text);
-  border-radius: 0;
-  box-shadow: none;
+/* 😊 창 — 글자 목록 꼴: 10칸 = "1 :이름:" 줄 · 목록 · 특별 · 자리 메뉴 · 포인트샵 칸 = 한 줄에 여러 개(넘치면 다음 줄) */
+[data-theme='office'] .emoji-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+}
+[data-theme='office'] .emoji-slot-cell {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 6px;
+}
+[data-theme='office'] .emoji-slot-cell .emoji-key,
+[data-theme='office'] .emoji-slot-menu-cell .emoji-key {
+  order: -1;
+  position: static;
+  display: inline;
+  font-size: 0.95rem;
   font-weight: 400;
+  color: var(--text-dim);
 }
-[data-theme='office'] .avatar:not(.photo)::before {
-  content: '[';
+[data-theme='office'] .emoji-pop button.emoji-slot,
+[data-theme='office'] .emoji-pop button.emoji-cell,
+[data-theme='office'] .emoji-pop button.emoji-cell.special,
+[data-theme='office'] .emoji-slot-menu-cell {
+  padding: 0 2px;
+  background: transparent;
+  border: 0;
 }
-[data-theme='office'] .avatar:not(.photo)::after {
-  content: ']';
+[data-theme='office'] .emoji-grid,
+[data-theme='office'] .emoji-group-cells,
+[data-theme='office'] .emoji-slot-menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 2px 12px;
+}
+[data-theme='office'] .emoji-grid-special {
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+[data-theme='office'] .emoji-slot-menu-cell {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+[data-theme='office'] .emoji-slot-menu {
+  width: auto;
+  max-width: calc(100% - 16px);
+  border-color: var(--border);
+}
+[data-theme='office'] .emoji-tabs {
+  flex-wrap: wrap;
+  gap: 2px 4px;
+}
+[data-theme='office'] .emoji-tab {
+  flex: 0 0 auto;
+  padding: 1px 6px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  opacity: 1;
+}
+[data-theme='office'] .shop-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+}
+[data-theme='office'] .shop-cell {
+  aspect-ratio: auto;
+  background: transparent;
+  overflow: visible;
+}
+[data-theme='office'] .shop-cell.none {
+  border: 0;
+  opacity: 1;
+  font-weight: 400;
 }
 
 /* =============================================================================

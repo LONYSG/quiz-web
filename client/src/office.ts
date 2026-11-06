@@ -18,9 +18,8 @@ export { enterOfficeSound, leaveOfficeSound };
 
 export const OFFICE_TITLE = '명령 프롬프트';
 const NORMAL_TITLE = '상식 퀴즈';
-/** 검은 네모(가운데 회색 프롬프트 줄) — 16×16 SVG */
-const OFFICE_ICON =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230c0c0c'/%3E%3Crect x='0' y='0' width='16' height='3' fill='%23cccccc'/%3E%3Cpath d='M3 7l3 2-3 2' stroke='%23cccccc' stroke-width='1.3' fill='none'/%3E%3Crect x='7' y='11' width='5' height='1.3' fill='%23cccccc'/%3E%3C/svg%3E";
+/** 검은 네모 하나 — 16×16 SVG · ★ R075 (D-322 2판) 프롬프트 줄 · 흰 띠를 뺐다(장식 0) */
+const OFFICE_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230c0c0c'/%3E%3C/svg%3E";
 
 /** 탭 제목 · 파비콘 */
 export function applyOfficeTab(on: boolean): void {

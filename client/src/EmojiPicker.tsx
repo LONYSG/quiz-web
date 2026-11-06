@@ -34,6 +34,7 @@ import { useRecentEmojis } from './emojiRecent.js';
 import { useUiMode } from './uiMode.js';
 import EmojiHelpCard, { takeDemoWanted, takeHelpWanted } from './EmojiHelp.js';
 import { setFlag } from './accountFlags.js';
+import { useIsOffice } from './office.js';
 import { DEMO_DELAY_MS, DEMO_MS, demoMarksSeen, demoNext, demoPoint, type DemoEvent, type DemoState } from './emojiDemo.js';
 import {
   applyDrop,
@@ -75,6 +76,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
   const cat = useEmojiCatalog();
   const insertMode = useEmojiInsert();
   const mobile = useUiMode() === 'mobile';
+  const office = useIsOffice();
   // ★ R041 — 팝업은 한 번에 하나
   const [open, setOpen] = usePopup('emoji');
   // ★★ R069 (#70) — "자주" 탭(최근 보낸 순 12 · 이 기기) — 있으면 첫 탭 · 창을 열 때 그 탭부터
@@ -426,7 +428,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
             <button type="button" data-emoji-mode="insert" aria-pressed={insertMode} className={insertMode ? 'emoji-mode-btn on' : 'emoji-mode-btn'} onClick={() => setEmojiInsert(true)}>
               <Icon icon={TextCursorInput} /> 입력창에 넣기
             </button>
-            <span className="dim emoji-mode-tip">{insertMode ? '여러 개 넣고 전송' : mobile ? '채팅창에 끌면 넣기' : 'Shift+클릭 = 넣기'}</span>
+            <span className="dim emoji-mode-tip">{insertMode ? '여러 개 넣고 전송' : mobile ? '채팅창에 끌면 넣기' : 'Shift 누른 채 클릭 = 넣기'}</span>
           </div>
           {/* ★ R074 (D-321 나) — 자리 줄 위 연한 글자 · 끄는 중(시연 포함)은 "여기에 놓으세요" */}
           <p className={dragging || demo === 'playing' ? 'emoji-slots-cap on' : 'emoji-slots-cap'} data-emoji-slots-cap aria-hidden="true">
@@ -502,7 +504,8 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
                   title={c.label}
                   onClick={() => setTab(c.key)}
                 >
-                  {c.icon}
+                  {/* ★ R075 (D-322 2판) — 사무실 모드는 분류 그림(색 이모지 글자) 대신 이름 글자 */}
+                  {office ? c.label : c.icon}
                 </button>
               ))}
             </div>
