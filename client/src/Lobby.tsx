@@ -86,8 +86,16 @@ const MOBILE_FIT_MIN = 0.75;
 /**
  * ★ R040 — 모바일 키보드를 내리는 상태 (C-3).
  * ★★ R041 (건우) — **새 문제 시작(QUESTION_ACTIVE)도** 더한다: "문제를 봐야 하니까. 소감을 치다가 새 문제가 시작되면 안 보인다."
+ * ★★★ R075 (D-325 · 찬종 11-06 친구 제보 "모바일에서 플레이하면 화면이 계속 움직여서 플레이가 어렵다") —
+ *   잰 것(ui-check r075 mobile-motion · 360×740 · 한 판 5문제): 상태가 바뀔 때마다 입력창 blur → 키보드 내림 → 다시 누르면 올림 = 한 판 6번 ·
+ *   그때마다 화면이 밀려 scrollY 변화 2,300px · 문제 카드 top 변화 2,186px · 넘침 최대 317px · CLS 2.59.
+ *   → **판 중(COUNTDOWN · QUESTION_ACTIVE · QUESTION_RESOLVED)에는 내리지 않는다.** 내리는 때 = 결과 · 로비 · 일시정지.
+ *     키보드가 올라온 동안은 방이 보이는 영역에 맞춰 문제 카드 · 입력창이 한 화면에 든다(아래 kb-open · styles R075 블록).
+ *   ★ 되돌리기 = 이 집합을 R041 값으로: new Set(['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'GAME_RESULT', 'LOBBY', 'PAUSED', 'COUNTDOWN'])
  */
-const KEYBOARD_DROP_STATES = new Set(['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'GAME_RESULT', 'LOBBY', 'PAUSED', 'COUNTDOWN']);
+const KEYBOARD_DROP_STATES = new Set(['GAME_RESULT', 'LOBBY', 'PAUSED']);
+/** ★ R075 (D-325) — 키보드가 올라온 동안 방을 보이는 영역(visualViewport)에 맞추는 상태(판 중) — 로비 · 결과는 옛 꼴(화면 스크롤) */
+const KB_FIT_STATES = new Set(['QUESTION_ACTIVE', 'QUESTION_RESOLVED']);
 
 export default function Lobby({
   socket,
@@ -195,12 +203,33 @@ export default function Lobby({
   //   ★ 원인: 키보드가 올라오면 브라우저가 입력창이 보이도록 화면을 밀어 올린다. 내려가도 그 위치가 남아
   //     아래에 빈 공간(모바일 하단 여백 160px)이 드러났다. → 여백을 없애고(CSS), 내려갈 때 위치를 되돌린다.
   //   ★ visualViewport(보이는 영역) 높이로 키보드가 올라왔는지 판단한다 — 키보드는 이 높이만 줄인다.
+  // ★★★ R075 (D-325) — 키보드가 올라온 동안(모바일 · 입력창 포커스 · 보이는 높이 < 80%) <html class="kb-open"> +
+  //   --vvh(보이는 높이) · --vvt(보이는 영역 위 끝) → 판 중에는 방이 그 영역에 딱 맞는다(position fixed — 브라우저가 화면을 밀어도 방이 따라온다 ·
+  //   안드로이드 옛 꼴 = innerHeight 가 줆 · iOS · 새 크롬 = visualViewport 만 줆 — 둘 다 같은 값으로 맞춘다).
+  const [kbOpen, setKbOpen] = useState(false);
   useEffect(() => {
     const vv = window.visualViewport;
     if (!vv) return undefined;
     let full = vv.height;
     let open = false;
     let saved = 0;
+    const root = document.documentElement;
+    const typing = () => {
+      const a = document.activeElement;
+      return Boolean(a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA'));
+    };
+    const mark = () => {
+      const on = open && typing() && isMobileUi();
+      root.classList.toggle('kb-open', on);
+      if (on) {
+        root.style.setProperty('--vvh', `${Math.round(vv.height)}px`);
+        root.style.setProperty('--vvt', `${Math.round(vv.offsetTop)}px`);
+      } else {
+        root.style.removeProperty('--vvh');
+        root.style.removeProperty('--vvt');
+      }
+      setKbOpen(on);
+    };
     const onFocus = (e: FocusEvent) => {
       if (e.target instanceof HTMLInputElement && !open) saved = window.scrollY;
     };
@@ -214,12 +243,21 @@ export default function Lobby({
           window.scrollTo({ top: saved });
         }
       }
+      mark();
     };
+    const onBlur = () => requestAnimationFrame(mark);
     document.addEventListener('focusin', onFocus);
+    document.addEventListener('focusout', onBlur);
     vv.addEventListener('resize', onResize);
+    vv.addEventListener('scroll', mark);
     return () => {
       document.removeEventListener('focusin', onFocus);
+      document.removeEventListener('focusout', onBlur);
       vv.removeEventListener('resize', onResize);
+      vv.removeEventListener('scroll', mark);
+      root.classList.remove('kb-open');
+      root.style.removeProperty('--vvh');
+      root.style.removeProperty('--vvt');
     };
   }, []);
 
@@ -567,18 +605,32 @@ export default function Lobby({
     const fit = () => {
       const se = document.scrollingElement ?? document.documentElement;
       room.style.removeProperty('--qs');
-      room.classList.remove('squeeze');
+      room.classList.remove('squeeze', 'squeeze2');
       if (!isMobileUi()) {
         room.dataset.qs = '1';
         return;
       }
-      const over = () => se.scrollHeight - Math.max(window.innerHeight, fullHeight.current);
+      // ★ R075 (D-325) — 키보드가 올라와 방이 보이는 영역에 맞춰진 동안(kb-fit): 넘침 = 채팅 칸(입력창)이 방 아래 끝을 넘은 만큼
+      const kbFit = room.classList.contains('kb-fit');
+      const over = kbFit
+        ? () => {
+            // 문제 카드는 남는 높이까지 줄고 안이 넘치면 카드 안 스크롤(styles R075) — 글자를 줄여 그 넘침부터 없앤다
+            const card = room.querySelector('.center-main > .question-card');
+            const chat = room.querySelector('.chat-card');
+            const pad = parseFloat(getComputedStyle(room).paddingBottom) || 0;
+            const inCard = card ? card.scrollHeight - card.clientHeight : 0;
+            const below = chat ? Math.ceil(chat.getBoundingClientRect().bottom - (room.getBoundingClientRect().bottom - pad)) : 0;
+            return Math.max(inCard, below);
+          }
+        : () => se.scrollHeight - Math.max(window.innerHeight, fullHeight.current);
       let qs = 1;
       while (over() > 0 && qs > MOBILE_FIT_MIN) {
         qs = Math.max(MOBILE_FIT_MIN, Math.round((qs - 0.04) * 100) / 100);
         room.style.setProperty('--qs', String(qs));
       }
       if (over() > 0) room.classList.add('squeeze');
+      // ★ R075 (D-325 ③) — 그래도 넘치면(R040 C-4 m360 가장 긴 해설 #5700 16px · #5601 52px) 채팅 칸을 입력창 + 한 줄까지
+      if (over() > 0) room.classList.add('squeeze2');
       room.dataset.qs = String(qs);
       room.dataset.fitOver = String(Math.max(0, over()));
     };
@@ -600,6 +652,7 @@ export default function Lobby({
     snapshot.resolution?.late.length,
     ceremonyCount,
     uiModeNow,
+    kbOpen,
   ]);
 
 
@@ -708,7 +761,8 @@ export default function Lobby({
   const phase = inLobby ? 'lobby' : isResult ? 'result' : 'game';
 
   return (
-    <div ref={roomRef} className={`room room-${phase}`}>
+    // ★ R075 — data-state · data-epoch 는 검사(ui-check r075 mobile-motion)가 상태마다 화면 움직임을 재는 표지(보이는 것 없음)
+    <div ref={roomRef} className={`room room-${phase}${kbOpen && KB_FIT_STATES.has(state) ? ' kb-fit' : ''}`} data-state={state} data-epoch={snapshot.question?.epoch ?? ''}>
       {/* ── ★★ 상단 바 하나 */}
       <header className="room-head">
         <div className="room-title">

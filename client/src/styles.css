@@ -9201,3 +9201,74 @@ button.preset.shake {
 :where(.ui-mobile) .emoji-pop:has([data-emoji-help]) .emoji-grid {
   max-height: 110px;
 }
+
+/* =============================================================================
+   ★★★ R075 (D-325 · 찬종 11-06 친구 제보 "모바일에서 플레이하면 화면이 계속 움직여서 플레이가 어렵다") —
+   잰 원인(ui-check r075 mobile-motion): 상태가 바뀔 때마다 키보드를 내렸다(R041 KEYBOARD_DROP_STATES) → 다시 누르면 올라오며 브라우저가 입력창을
+   보이려 화면을 민다(한 판 6번 · 360×740 scrollY 변화 2,300px · 문제 카드 2,186px). → 판 중에는 키보드를 내리지 않고(Lobby.tsx),
+   키보드가 올라온 동안(html.kb-open — visualViewport 높이 < 80%)은 방을 **보이는 영역에 딱 맞춘다**: 위 막대 + 문제 카드 + 입력창이 한 화면 ·
+   채팅 줄은 남는 만큼(0줄까지) · 글자는 R040 fit 이 이 높이에서 맞춘다(--qs). 로비 · 결과는 옛 꼴(화면 스크롤 하나).
+   되돌리기 = 이 블록 + Lobby KEYBOARD_DROP_STATES 를 R041 값으로.
+   ============================================================================= */
+:where(.ui-mobile) .room.kb-fit {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--vvt, 0px);
+  height: var(--vvh, 100dvh);
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  /* clip — 브라우저가 입력 중 커서를 보이려 방 안을 스크롤하지 못하게(hidden 은 스크롤된다 — 잰 값 100px) */
+  overflow: clip;
+}
+/* 위 막대(방 이름 · 참여자 · ☰)는 치는 동안 숨긴다 — 키보드를 내리면 다시 */
+:where(.ui-mobile) .room.kb-fit .room-head {
+  display: none;
+}
+:where(.ui-mobile) .room.kb-fit .stage,
+:where(.ui-mobile) .room.kb-fit .center {
+  flex: 1 1 0;
+  min-height: 0;
+}
+:where(.ui-mobile) .room.kb-fit .center {
+  display: flex;
+  flex-direction: column;
+}
+/* 문제 카드는 남는 높이까지 — 더 길면(정답 공개 + 긴 해설) 카드 안만 스크롤 · 입력창은 늘 보인다 */
+:where(.ui-mobile) .room.kb-fit .center-main {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+:where(.ui-mobile) .room.kb-fit .center-main > .question-card {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+:where(.ui-mobile) .room.kb-fit .chat-card,
+:where(.ui-mobile) .room.kb-fit.squeeze .chat-card,
+:where(.ui-mobile) .room.kb-fit.squeeze2 .chat-card,
+:where(.ui-mobile) .room.kb-fit:not(.squeeze):has(.reveal-fb-chips) .chat-card {
+  flex: 1 1 0;
+  min-height: auto;
+  overflow: visible;
+}
+:where(.ui-mobile) .room.kb-fit .chat-wrap,
+:where(.ui-mobile) .room.kb-fit .chat-log {
+  min-height: 0;
+}
+/* ★ R075 (D-325 ③) — 글자 하한(75%) + 채팅 150px 에서도 넘치면(가장 긴 해설 · 360) 채팅 칸 = 입력창 + 한 줄 */
+:where(.ui-mobile) .room.squeeze2 .chat-card {
+  min-height: 96px;
+}
+/* ★ R075 (D-325 ②) — 힌트 줄 자리를 미리 잡는다 — 열릴 때 카드가 커져 아래가 밀리지 않게(잰 값: 초성 8px · 일반 힌트 두 줄 → 20px)
+   일반 힌트 = 두 줄(0.88rem × 1.4 × 2 · 세 줄 힌트는 한 줄만큼 남는다) · 초성 = 열린 줄 높이(1.2rem 글자 × 1.6) */
+:where(.ui-mobile) .room .q-hints .q-hint:first-child:not(.none) {
+  min-height: 2.5rem;
+}
+:where(.ui-mobile) .room .q-hints .q-hint:not(:first-child) {
+  min-height: 1.95rem;
+}

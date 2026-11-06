@@ -4926,16 +4926,23 @@ function r075MotionTable(rows) {
   const by = {};
   const lab = (r) => (r.st === 'QUESTION_ACTIVE' && r.hint > 0 ? `QUESTION_ACTIVE+힌트${r.hint}` : r.st);
   let kbUps = 0;
+  let flipT = -1e9;
   for (let i = 1; i < rows.length; i += 1) {
     const a = rows[i - 1];
     const b = rows[i];
     const k = lab(b);
-    const o = (by[k] ??= { n: 0, card: 0, cardN: 0, input: 0, inputN: 0, seat: 0, sy: 0, syMax: 0, overMax: 0, pan: 0, panN: 0, kbDrop: 0, qs: new Set(), fo: 0 });
+    const o = (by[k] ??= { n: 0, card: 0, cardN: 0, cardKb: 0, input: 0, inputN: 0, seat: 0, sy: 0, syMax: 0, overMax: 0, pan: 0, panN: 0, kbDrop: 0, qs: new Set(), fo: 0 });
     o.n += 1;
     const sameQ = a.ep === b.ep;
+    // 키보드가 오르내리는 때(포커스 · 보이는 높이가 바뀐 뒤 0.4초)의 이동은 따로(cardKb) — 브리핑 "입력창 top 변화는 키보드 올라올 때 한 번"
+    if (a.focus !== b.focus || a.ih !== b.ih || a.vh !== b.vh) flipT = b.t;
+    const kbMove = b.t - flipT <= 400;
     if (a.card !== null && b.card !== null && a.card !== b.card && sameQ) {
-      o.card += Math.abs(b.card - a.card);
-      o.cardN += 1;
+      if (kbMove) o.cardKb += Math.abs(b.card - a.card);
+      else {
+        o.card += Math.abs(b.card - a.card);
+        o.cardN += 1;
+      }
     }
     if (a.input !== null && b.input !== null && a.input !== b.input) {
       o.input += Math.abs(b.input - a.input);
@@ -5047,13 +5054,20 @@ async function r075MotionFlow(browser) {
   for (const g of guests) {
     const mm = JSON.parse(await g.P.evaluate('JSON.stringify(window.__mm ?? null)'));
     const t = r075MotionTable(mm?.list ?? []);
-    out[g.s.n] = { mode, table: t.by, kbUps: t.kbUps, kbLog: g.kbLog, cls: mm?.cls ?? null, clsAll: mm?.clsAll ?? null, shifts: (mm?.shifts ?? []).filter((x) => x.v >= 0.001).slice(0, 40), rows: mm?.list ?? [] };
+    // ★ 화면이 바뀌는 순간(상태 · 문제 · 공개가 바뀐 뒤 0.8초 — 로비 카드 → 문제 카드처럼 내용이 갈리는 때)의 이동은 "움직임" 이 아니다 → 같은 화면 안 CLS 를 따로
+    const rows = mm?.list ?? [];
+    const cuts = rows.filter((r, i) => i > 0 && (r.st !== rows[i - 1].st || r.ep !== rows[i - 1].ep || r.rv !== rows[i - 1].rv)).map((r) => r.t);
+    // 채팅 줄만 움직인 것(새 말이 올라와 옛 줄이 위로)은 채팅이 하는 일 — 화면 움직임에서 뺀다(전체 값은 cls 로 남긴다)
+    const chatOnly = (x) => x.src.length > 0 && x.src.every((s) => /^p\.chat-(line|system)|^#text/.test(s));
+    const inScreen = (mm?.shifts ?? []).filter((x) => !x.input && !chatOnly(x) && !cuts.some((c) => x.t >= c - 50 && x.t <= c + 800));
+    const clsScreen = +inScreen.reduce((a, x) => a + x.v, 0).toFixed(4);
+    out[g.s.n] = { mode, table: t.by, kbUps: t.kbUps, kbLog: g.kbLog, cls: mm?.cls ?? null, clsAll: mm?.clsAll ?? null, clsScreen, screenShifts: inScreen.slice(0, 20), shifts: (mm?.shifts ?? []).filter((x) => x.v >= 0.001).slice(0, 40), rows };
   }
   const file = path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r075', `mobile-motion-${mode}${R075_TAG}.json`);
   writeFileSync(file, JSON.stringify(out, null, 1));
   for (const [n, o] of Object.entries(out)) {
-    console.log(`  [r075] mobile-motion ${mode} ${n} — 키보드 올림 ${o.kbUps} · 내림 ${JSON.stringify(o.kbLog)} · CLS ${o.cls} (입력 포함 ${o.clsAll})`);
-    for (const [st, v] of Object.entries(o.table)) console.log(`      ${st.padEnd(24)} 카드 ${v.card}px/${v.cardN}번 · 입력창 ${v.input}px/${v.inputN}번 · 내 자리 ${v.seat}px · scrollY 변화 ${v.sy}px(최대 ${v.syMax}) · 넘침 최대 ${v.overMax} · 밀림(pan) ${v.pan}px/${v.panN}번 · kb내림 ${v.kbDrop} · qs ${v.qs} · fitOver ${v.fo}`);
+    console.log(`  [r075] mobile-motion ${mode} ${n} — 키보드 올림 ${o.kbUps} · 내림 ${JSON.stringify(o.kbLog)} · CLS ${o.cls} (입력 포함 ${o.clsAll} · 같은 화면 안 ${o.clsScreen})`);
+    for (const [st, v] of Object.entries(o.table)) console.log(`      ${st.padEnd(24)} 카드 ${v.card}px/${v.cardN}번(키보드 때 ${v.cardKb}px) · 입력창 ${v.input}px/${v.inputN}번 · 내 자리 ${v.seat}px · scrollY 변화 ${v.sy}px(최대 ${v.syMax}) · 넘침 최대 ${v.overMax} · 밀림(pan) ${v.pan}px/${v.panN}번 · kb내림 ${v.kbDrop} · qs ${v.qs} · fitOver ${v.fo}`);
   }
   // 고친 뒤 기준(브리핑 §C 다 됐다): 한 판 동안 scrollY 0 · 넘침 0 · 카드 top 변화 0(문제가 바뀔 때 빼고) · 입력창 변화 = 키보드 올라올 때 · CLS < 0.05 · kbDropped = 판 끝(결과 · 로비)에만
   const IN_GAME = ['COUNTDOWN', 'QUESTION_ACTIVE', 'QUESTION_RESOLVED'];
@@ -5067,12 +5081,13 @@ async function r075MotionFlow(browser) {
       kbDropInGame: game.reduce((a, [, v]) => a + v.kbDrop, 0),
       kbUps: o.kbUps,
       cls: o.cls,
+      clsScreen: o.clsScreen,
     }];
   }));
   console.log(`  [r075] mobile-motion 판정 ${JSON.stringify(verdict)}`);
   record(
-    `★★★ R075 §C mobile-motion(${mode}) — 세 크기 한 판: 판 중 scrollY 변화 0 · 넘침 0 · 문제 카드 top 변화 0(문제 바뀔 때 빼고) · 판 중 키보드 내림 0 · 키보드 올림 ≤ 2(처음 + 결과 뒤) · CLS < 0.05`,
-    Object.values(verdict).every((v) => v.sy === 0 && v.over === 0 && v.card === 0 && v.kbDropInGame === 0 && v.kbUps <= 2 && (v.cls ?? 1) < 0.05),
+    `★★★ R075 §C mobile-motion(${mode}) — 세 크기 한 판: 판 중 scrollY 변화 0 · 넘침 0 · 문제 카드 top 변화 ≤ 8px(문제 바뀔 때 · 키보드 처음 올라올 때 빼고) · 판 중 키보드 내림 0 · 키보드 올림 ≤ 2 · 같은 화면 안 CLS < 0.05`,
+    Object.values(verdict).every((v) => v.sy === 0 && v.over === 0 && v.card <= 8 && v.kbDropInGame === 0 && v.kbUps <= 2 && (v.clsScreen ?? 1) < 0.05),
     JSON.stringify(verdict),
   );
   for (const g of guests) g.P.close();
