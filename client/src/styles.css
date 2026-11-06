@@ -1424,7 +1424,8 @@ button.primary kbd {
   *::after {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
+    /* ★ R076 (D-326) — 사무실 블록과 같은 결함(1ms 전이 + 지문 맞춤 왕복) — 전이 없음으로 */
+    transition: none !important;
   }
 }
 
@@ -8937,7 +8938,10 @@ button.preset.shake {
 [data-theme='office'] *:not(.mg-card, .mg-card *)::after {
   animation-duration: 1ms !important;
   animation-iteration-count: 1 !important;
-  transition-duration: 1ms !important;
+  /* ★ R076 (D-326) — 옛 "transition-duration: 1ms" 는 transition-property 기본값 all 과 만나 **모든 속성 변화가 1ms 전이**가 됐다 →
+     지문 맞춤(QuestionText measure)이 글자 크기를 바꾸고 곧바로 폭을 재면 아직 옛 크기 값이라 판단이 뒤집혀 19px ↔ 15px · 줄바꿈 0 ↔ 1 을 매 프레임 왕복
+     (1536×730 · 2초에 재측정 약 550번 · 카드 높이 34.5px 씩 흔들림). 전이 자체를 없앤다(끝 상태로 바로 — 같은 뜻) */
+  transition: none !important;
   /* 장식 0 — 둥글기 · 그림자 · 글자 그림자 · 그라데이션 · 그림자 필터(미니게임 판 밖) */
   border-radius: 0 !important;
   box-shadow: none !important;
