@@ -221,14 +221,15 @@ export default function TourHost({ state, mobile }: Props) {
     },
     { title: `뽑기 ${draw}P`, lines: ['포인트는 이모티콘 뽑기에 써요', '맞힌 문제 1개 = 1P'] },
     { title: '😊 이모티콘', lines: ['눌러서 열고 골라 보내요'] },
-    { title: '단축키 등록', lines: [mobile ? '길게 눌러 1~0 자리로 끌어요' : '끌어서 1~0 자리에 놓아요', "'다시 보지 않음'도 여기서"] },
+    // ★ R075 (D-324) — PC 는 키를 풀어 쓴다("Alt 누른 채 숫자") · 말풍선 300px 안 한 줄씩
+    { title: '단축키 등록', lines: mobile ? ['길게 눌러 1~0 자리로 끌어요', "'다시 보지 않음'도 여기서"] : ['끌어서 1~0 자리에 놓아요', 'Alt 누른 채 숫자로 보내요', "'다시 보지 않음'도 여기서"] },
   ][step]!;
 
   // 말풍선 자리 — 구멍 아래(자리가 없으면 위) · 좌우는 화면 안
   const vw = window.innerWidth;
   const vh = window.innerHeight;
   const bw = Math.min(300, vw - 24);
-  const bh = 128;
+  const bh = 108 + text.lines.length * 20;
   let bx = 12;
   let by = vh / 2 - bh / 2;
   if (box) {

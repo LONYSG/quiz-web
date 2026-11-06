@@ -4604,6 +4604,482 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R075 — 단축키 문구(§A · D-324) · 사무실 모드 2판 office-palette(§B · D-322 2판) · 모바일 화면 움직임 mobile-motion(§C · D-325)
+//   (UICHECK_R075=1 · 묶음 r075 · docs/design/r075) · R075_ONLY = shortcut | office | motion (없으면 전부)
+//   R075_TAG = before | after → 그림 이름 꼬리(고치기 전 빌드로 먼저 돌려 "전" 그림 · 수를 남긴다)
+// =============================================================================
+const R075_TAG = process.env.R075_TAG ? `-${process.env.R075_TAG}` : '';
+async function r075Flow(browser) {
+  const only = process.env.R075_ONLY ?? '';
+  if (!only || only === 'shortcut') await r075ShortcutFlow(browser);
+  if (!only || only === 'office') await r075OfficeFlow(browser);
+  if (!only || only === 'motion') await r075MotionFlow(browser);
+}
+/** 요소 둘레만 찍는다(글자 읽힘 확인용) */
+async function snapClip(page, name, sel, pad = 8) {
+  const r = await rectOf(page, sel);
+  if (!r || r.w < 1) return false;
+  const dir = path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r075');
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  const vw = await page.evaluate('innerWidth');
+  const vh = await page.evaluate('innerHeight');
+  const x = Math.max(0, r.x - pad);
+  const y = Math.max(0, r.y - pad);
+  const clip = { x, y, width: Math.min(vw - x, r.w + pad * 2), height: Math.min(vh - y, r.h + pad * 2), scale: 2 };
+  const shot = await page.send('Page.captureScreenshot', { format: 'png', clip });
+  writeFileSync(path.join(dir, `${name}.png`), Buffer.from(shot.data, 'base64'));
+  console.log(`  📸 ${name} (부분)`);
+  return true;
+}
+
+// ── §A 단축키 문구 — 카드 PC · ⓘ 이모티콘 탭 PC · 투어 ④ PC (1280 · 1536×730) ───────────────
+async function r075ShortcutFlow(browser) {
+  const H = await newPage(browser, 'R075-short', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'sk', '단축키방장');
+  await createRoom(H, 'R075 단축키');
+  const sizes = [{ w: 1280, h: 720, n: 'pc' }, { w: 1536, h: 730, n: 'lap2' }];
+  const rows = {};
+  for (const s of sizes) {
+    await H.setViewport(s.w, s.h);
+    await sleep(300);
+    await H.evaluate("localStorage.removeItem('qw.flag.emojiHelpDismissed'); localStorage.setItem('qw.flag.emojiDemoSeen', '1')");
+    await openPicker(H);
+    await H.waitFor("document.querySelector('[data-emoji-help]') !== null", 3000).catch(() => false);
+    await sleep(300);
+    const card = JSON.parse(await H.evaluate(LINE_COUNTS('.emoji-help-lines li')));
+    await snap(H, `shortcut-card-${s.n}${R075_TAG}`);
+    await H.evaluate("document.querySelector('[data-emoji-help-close]')?.click()");
+    await sleep(150);
+    await closePicker(H);
+    await openGearTab(H, 'info');
+    await H.evaluate(`document.querySelector('[data-gear-pop] [data-info-tab="emoji"]')?.click()`);
+    await sleep(250);
+    const info = JSON.parse(await H.evaluate(LINE_COUNTS('[data-gear-pop] .info-list li')));
+    await snap(H, `shortcut-info-${s.n}${R075_TAG}`);
+    await closeTop(H);
+    rows[s.n] = { card, info };
+  }
+  // 투어 ④ — 새 계정(투어 안 봄)
+  const T = await newPage(browser, 'R075-tour', true);
+  await T.setViewport(1280, 720);
+  await signUp(T, 'st', '단축키투어', { fresh: true });
+  await createRoom(T, 'R075 투어');
+  await T.waitFor("document.querySelector('[data-tour]') !== null", 8000).catch(() => false);
+  await T.evaluate("localStorage.setItem('qw.flag.emojiDemoSeen', '1')");
+  for (let i = 0; i < 3; i += 1) {
+    await sleep(600);
+    await realClick(T, '[data-tour-next]');
+  }
+  await T.waitFor("document.querySelector('[data-emoji-help]') !== null", 4000).catch(() => false);
+  await sleep(600);
+  for (const s of sizes) {
+    await T.setViewport(s.w, s.h);
+    await sleep(500);
+    const st = await tourState(T);
+    const lines = JSON.parse(await T.evaluate(LINE_COUNTS('.tour-line')));
+    await snap(T, `shortcut-tour-${s.n}${R075_TAG}`);
+    rows[s.n].tour = { st, lines };
+  }
+  T.close();
+  H.close();
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r075', `shortcut${R075_TAG}.json`), JSON.stringify(rows, null, 1));
+  console.log(`  [r075] 단축키 문구 ${JSON.stringify(Object.fromEntries(Object.entries(rows).map(([n, r]) => [n, { card: r.card.map((l) => `${l.n}:${l.t}`), info: r.info.map((l) => `${l.n}:${l.t}`), tour: r.tour?.lines.map((l) => `${l.n}:${l.t}`) }])))}`);
+  const OLD = /Alt\+1~0|1~0 도|Alt도 넣기/;
+  const one = (ls) => ls.length > 0 && ls.every((l) => l.n === 1);
+  record(
+    '★★★ R075 §A 카드 PC(1280 · 1536×730) — "누르면 바로 보내요" / "Alt 누른 채 숫자 1~0 = 그 번호 자리 보내기" / 우클릭 한 줄 · 줄마다 한 줄 · 옛 "Alt+1~0 도" 없음',
+    sizes.every((s) => { const c = rows[s.n].card; return c.length === 3 && one(c) && /Alt 누른 채 숫자 1~0/.test(c[1].t) && !c.some((l) => OLD.test(l.t)); }),
+    JSON.stringify(Object.fromEntries(sizes.map((s) => [s.n, rows[s.n].card]))),
+  );
+  record(
+    '★★★ R075 §A ⓘ 이모티콘 탭 PC — "Alt 누른 채 숫자 1~0" · "Shift 누른 채 클릭" · "Alt+숫자도 입력창에" · 줄마다 한 줄 · 옛 축약 없음',
+    sizes.every((s) => { const c = rows[s.n].info; const j = c.map((l) => l.t).join('|'); return one(c) && /Alt 누른 채 숫자 1~0/.test(j) && /Shift 누른 채 클릭/.test(j) && /Alt\+숫자도 입력창에/.test(j) && !OLD.test(j); }),
+    JSON.stringify(Object.fromEntries(sizes.map((s) => [s.n, rows[s.n].info.map((l) => `${l.n}:${l.t}`)]))),
+  );
+  record(
+    '★★ R075 §A 투어 ④ PC — "Alt 누른 채 숫자로 보내요" · 줄마다 한 줄 · 말풍선 화면 안',
+    sizes.every((s) => { const t = rows[s.n].tour; return t?.st?.step === 4 && t.st.bubbleIn && one(t.lines) && t.lines.some((l) => /Alt 누른 채 숫자로/.test(l.t)); }),
+    JSON.stringify(Object.fromEntries(sizes.map((s) => [s.n, rows[s.n].tour]))),
+  );
+}
+
+// ── §B 사무실 모드 2판 — 팔레트 7 밖 색 · 이모티콘 :이름: 다섯 곳 ──────────────────────────────
+/** 팔레트(바탕 · 표면 = #0c0c0c · 표면-2 #151515 · 선 #262626 · 글자 #cccccc · 흐림 #808080 · 강조 #f2f2f2) */
+const R075_PALETTE = ['#0c0c0c', '#151515', '#262626', '#cccccc', '#808080', '#f2f2f2'];
+/** 보이는 모든 요소(+ ::before · ::after)의 color · background · border · outline · box-shadow · text-shadow · svg stroke/fill · gradient · 체크박스 accent 를 모아 팔레트 밖을 센다(투명 · 미니게임 판 안 제외) */
+const R075_PALETTE_PROBE = `JSON.stringify((() => {
+  const ok = new Set(${JSON.stringify(R075_PALETTE)});
+  const hex = (r, g, b) => '#' + [r, g, b].map((v) => Math.round(Number(v)).toString(16).padStart(2, '0')).join('');
+  const parse = (s) => { const out = []; const re = /rgba?\\(([^)]+)\\)/g; let m; while ((m = re.exec(String(s)))) { const p = m[1].split(/[ ,\\/]+/).filter(Boolean).map(Number); const a = p.length > 3 ? p[3] : 1; if (!(a > 0)) continue; out.push({ hex: hex(p[0], p[1], p[2]), a }); } return out; };
+  const cls = (e) => { const c = typeof e.className === 'string' ? e.className : (e.getAttribute && e.getAttribute('class')) || ''; return c.trim() ? '.' + c.trim().split(/\\s+/).slice(0, 2).join('.') : ''; };
+  const sel = (el) => { const p = el.parentElement; return (p ? p.tagName.toLowerCase() + cls(p) + ' > ' : '') + el.tagName.toLowerCase() + cls(el); };
+  const bad = new Map();
+  const add = (el, prop, v, ps = '') => { for (const c of parse(v)) { if (ok.has(c.hex)) continue; const k = sel(el) + ps + ' | ' + prop + ' ' + c.hex + (c.a < 1 ? '/' + c.a : ''); bad.set(k, (bad.get(k) || 0) + 1); } };
+  const borders = (el, cs, ps) => { for (const s of ['Top', 'Right', 'Bottom', 'Left']) if (cs['border' + s + 'Style'] !== 'none' && parseFloat(cs['border' + s + 'Width']) > 0) add(el, 'border', cs['border' + s + 'Color'], ps); };
+  let n = 0;
+  let imgs = 0;
+  for (const el of document.querySelectorAll('body *')) {
+    if (el.closest('.mg-card') || ['SCRIPT', 'STYLE', 'LINK', 'META', 'TITLE', 'BR'].includes(el.tagName)) continue;
+    const cs = getComputedStyle(el);
+    if (cs.visibility === 'hidden' || cs.display === 'none' || Number(cs.opacity) === 0 || el.getClientRects().length === 0) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width < 1 || r.height < 1 || r.bottom <= 0 || r.top >= innerHeight || r.right <= 0 || r.left >= innerWidth) continue;
+    n += 1;
+    if (el.tagName === 'IMG' || el.tagName === 'CANVAS') imgs += 1;
+    const text = [...el.childNodes].some((x) => x.nodeType === 3 && x.textContent.trim()) || ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName);
+    if (text) add(el, 'color', cs.color);
+    if (el instanceof SVGElement) { if (cs.stroke && cs.stroke !== 'none') add(el, 'stroke', cs.stroke); if (cs.fill && cs.fill !== 'none' && el.tagName !== 'svg') add(el, 'fill', cs.fill); }
+    add(el, 'background', cs.backgroundColor);
+    if (/gradient/.test(cs.backgroundImage)) { const k = sel(el) + ' | gradient'; bad.set(k, (bad.get(k) || 0) + 1); }
+    borders(el, cs, '');
+    if (cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0) add(el, 'outline', cs.outlineColor);
+    if (cs.boxShadow !== 'none') add(el, 'shadow', cs.boxShadow);
+    if (cs.textShadow !== 'none') add(el, 'text-shadow', cs.textShadow);
+    if (/drop-shadow/.test(cs.filter)) add(el, 'filter', cs.filter);
+    // 색 그림 글자(이모지 글꼴 — 👍 🏆 🥇 …): 흑백 필터(grayscale) 밖이면 결함
+    if ([...el.childNodes].some((x) => x.nodeType === 3 && /\\p{Emoji_Presentation}|\\p{Extended_Pictographic}\\uFE0F/u.test(x.textContent))) {
+      let gray = false;
+      for (let a = el; a && a !== document.documentElement; a = a.parentElement) if (/grayscale\\(1\\)/.test(getComputedStyle(a).filter)) { gray = true; break; }
+      if (!gray) { const k = sel(el) + ' | 색 그림 글자 ' + [...el.textContent.matchAll(/\\p{Emoji_Presentation}|\\p{Extended_Pictographic}\\uFE0F/gu)].map((m) => m[0]).slice(0, 3).join(''); bad.set(k, (bad.get(k) || 0) + 1); }
+    }
+    if (el.tagName === 'INPUT' && /checkbox|radio|range/.test(el.type) && cs.accentColor === 'auto') { const k = sel(el) + ' | accent auto(기본 파랑)'; bad.set(k, (bad.get(k) || 0) + 1); } else if (el.tagName === 'INPUT' && /checkbox|radio|range/.test(el.type)) add(el, 'accent', cs.accentColor);
+    for (const ps of ['::before', '::after']) {
+      const p = getComputedStyle(el, ps);
+      if (!p.content || p.content === 'none' || p.content === 'normal' || p.display === 'none') continue;
+      if (p.content !== '""' && p.content !== "''") add(el, 'color', p.color, ps);
+      add(el, 'background', p.backgroundColor, ps);
+      if (/gradient/.test(p.backgroundImage)) { const k = sel(el) + ps + ' | gradient'; bad.set(k, (bad.get(k) || 0) + 1); }
+      borders(el, p, ps);
+      if (p.boxShadow !== 'none') add(el, 'shadow', p.boxShadow, ps);
+    }
+  }
+  const rows = [...bad.entries()].sort((a, b) => b[1] - a[1]).map(([k, v]) => k + ' ×' + v);
+  return { els: n, imgs, kinds: rows.length, hits: [...bad.values()].reduce((a, b) => a + b, 0), rows };
+})())`;
+/** :이름: 글자(.emoji-text) — 글자 크기 · 잘림 · 줄임표 · 조상 상자에 잘림 */
+const R075_EMOJI_PROBE = (scope) => `JSON.stringify((() => {
+  const root = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  const body = parseFloat(getComputedStyle(document.querySelector('.chat-line, .room') || document.body).fontSize);
+  return [...document.querySelectorAll(${JSON.stringify(scope)})].filter((e) => e.getClientRects().length > 0).slice(0, 12).map((e) => {
+    const cs = getComputedStyle(e);
+    const r = e.getBoundingClientRect();
+    let cut = false;
+    for (let a = e.parentElement; a && a !== document.body; a = a.parentElement) {
+      const s = getComputedStyle(a);
+      if (s.overflowX === 'visible' && s.overflowY === 'visible') continue;
+      const b = a.getBoundingClientRect();
+      if (r.left < b.left - 1 || r.right > b.right + 1 || r.top < b.top - 1 || r.bottom > b.bottom + 1) { cut = true; break; }
+    }
+    return { t: e.innerText.trim().slice(0, 24), fs: +parseFloat(cs.fontSize).toFixed(1), rem: +(parseFloat(cs.fontSize) / root).toFixed(2), body: +body.toFixed(1), clip: e.scrollWidth > e.clientWidth + 1, ell: cs.textOverflow === 'ellipsis' && e.scrollWidth > e.clientWidth + 1, cut, color: cs.color, w: Math.round(r.width), h: Math.round(r.height) };
+  });
+})())`;
+const R075_EMOJI_OK = (list) => list.length > 0 && list.every((e) => e.rem >= 0.85 && !e.clip && !e.ell && !e.cut);
+async function r075OfficeFlow(browser) {
+  const H = await newPage(browser, 'R075-office', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'oh', '사무실방장');
+  const roomId = await createRoom(H, 'R075 사무실');
+  const G = await newPage(browser, 'R075-office-g', true);
+  await signUp(G, 'og', '사무실손님');
+  await G.setViewport(1280, 720);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  // 특별 이모티콘(세레모니 · ✨ 탭) — 방장 계정에 7개
+  await withPg((c) => c.query(`INSERT INTO account_emojis (account_id, emoji_id) SELECT a.id, e.id FROM accounts a, (SELECT id FROM emojis WHERE category = 'special' ORDER BY id LIMIT 7) e WHERE a.login_id = $1 ON CONFLICT DO NOTHING`, [`${ACCOUNT_PREFIX}_oh`]));
+  await H.goto(`${BASE}/r/${roomId}`);
+  await H.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  await pickTheme(H, 'office');
+  await sleep(300);
+  const pal = {};
+  const emo = {};
+  const SZ = [{ w: 1280, h: 720, n: 'pc', touch: false }, { w: 1536, h: 730, n: 'lap2', touch: false }, { w: 360, h: 740, n: 'm360', touch: true }];
+  /** 세 크기 그림 + 크기마다 팔레트 */
+  const shots = async (screen) => {
+    for (const s of SZ) {
+      await r068Touch(H, s.w, s.h, s.touch);
+      if (!s.touch) await H.setViewport(s.w, s.h);
+      await sleep(450);
+      await H.evaluate('window.scrollTo(0, 0)');
+      pal[`${screen}@${s.n}`] = JSON.parse(await H.evaluate(R075_PALETTE_PROBE));
+      await snap(H, `office-${screen}-${s.n}${R075_TAG}`);
+    }
+    await r068Touch(H, 1280, 720, false);
+    await H.setViewport(1280, 720);
+    await sleep(300);
+  };
+  // ── 로비 + 이모티콘 다섯 곳(채팅 줄 · 내 자리 · 😊 10칸 · 목록 · 특별 세레모니)
+  await realClick(H, '[data-chat-input]');
+  await H.setInput('.chat-card input', '안녕하세요 사무실 모드');
+  await H.click('전송');
+  await G.setInput('.chat-card input', '반가워요');
+  await G.click('전송');
+  await sleep(300);
+  await realClick(H, '[data-chat-input]');
+  await altDigit(H, '1');
+  await sleep(500);
+  emo.seat = JSON.parse(await H.evaluate(R075_EMOJI_PROBE('.seat-card.mine .seat-emoji-pop .emoji-text')));
+  await snapClip(H, `office-emoji${R075_TAG || '-now'}-seat`, '.seat-card.mine');
+  emo.chat = JSON.parse(await H.evaluate(R075_EMOJI_PROBE('.chat-log .emoji-text')));
+  await snapClip(H, `office-emoji${R075_TAG || '-now'}-chat`, '.chat-log');
+  await shots('lobby');
+  await openPicker(H);
+  await sleep(400);
+  emo.slots = JSON.parse(await H.evaluate(R075_EMOJI_PROBE('.emoji-pop .emoji-slot .emoji-text')));
+  emo.grid = JSON.parse(await H.evaluate(R075_EMOJI_PROBE('.emoji-pop .emoji-grid .emoji-text')));
+  await snapClip(H, `office-emoji${R075_TAG || '-now'}-picker`, '.emoji-pop');
+  await shots('emoji');
+  // 특별 — ✨ 탭 첫 칸을 누르면 바로 보냄(떠 있는 큰 반응)
+  await openPicker(H);
+  await sleep(300);
+  const hasSpecial = await H.evaluate("(() => { const t = [...document.querySelectorAll('.emoji-tab')].find((b) => /✨|특별/.test(b.title + b.innerText)); t?.click(); return Boolean(t); })()");
+  await sleep(300);
+  await realClick(H, '.emoji-pop .emoji-grid .emoji-cell');
+  await H.waitFor("document.querySelector('.special-layer .special-float') !== null", 3000).catch(() => false);
+  await sleep(250);
+  emo.special = JSON.parse(await H.evaluate(R075_EMOJI_PROBE('.special-layer .emoji-text')));
+  await snapClip(H, `office-emoji${R075_TAG || '-now'}-special`, '.special-layer .special-float');
+  pal['special@pc'] = JSON.parse(await H.evaluate(R075_PALETTE_PROBE));
+  await closePicker(H);
+  await sleep(3200);
+  // ⚙ · 포인트샵
+  await openGearTab(H, 'settings');
+  await shots('gear');
+  await closeTop(H);
+  await realClick(H, '#shop-btn');
+  await H.waitFor("document.querySelector('.shop-pop') !== null", 5000).catch(() => false);
+  await sleep(400);
+  await shots('shop');
+  await closeTop(H);
+  // ── 게임 중 · 정답 공개 · 결과
+  await setQuestionCount(H, 3).catch(() => {});
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.replace(/[\\[\\] ]/g, '').trim() === '게임시작')?.click()");
+  await H.waitFor("document.querySelector('.question-card .q-text') !== null", 30000).catch(() => false);
+  await sleep(600);
+  await G.setInput('.chat-card input', '틀린답이에요');
+  await G.click('전송');
+  await sleep(300);
+  await shots('game');
+  await answerCurrent(H, G);
+  await H.waitFor("document.querySelector('.reveal') !== null", 10000).catch(() => false);
+  await sleep(500);
+  await shots('reveal');
+  await openHostEnd(H).catch(() => {});
+  await sleep(300);
+  await confirmFirst(H).catch(() => {});
+  await H.waitFor("document.querySelector('.result-card, .room-result') !== null", 20000).catch(() => false);
+  await sleep(700);
+  await shots('result');
+  // 표
+  const table = Object.fromEntries(Object.entries(pal).map(([k, v]) => [k, v.kinds]));
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r075', `office-palette${R075_TAG}.json`), JSON.stringify({ table, pal, emo }, null, 1));
+  console.log(`  [r075] office-palette 종류 수 ${JSON.stringify(table)}`);
+  const allRows = [...new Set(Object.values(pal).flatMap((v) => v.rows.map((r) => r.replace(/ ×\d+$/, ''))))];
+  console.log(`  [r075] office-palette 밖 색(합쳐서 ${allRows.length}) ${JSON.stringify(allRows.slice(0, 60))}`);
+  console.log(`  [r075] 이모티콘 다섯 곳 ${JSON.stringify(Object.fromEntries(Object.entries(emo).map(([k, v]) => [k, v.slice(0, 3)])))}`);
+  record('★★★ R075 §B office-palette — 로비 · 😊 · ⚙ · 포인트샵 · 게임 · 공개 · 결과 × (1280 · 1536×730 · 360) 보이는 모든 요소 색이 팔레트 7 안(0)', Object.values(pal).every((v) => v.kinds === 0), JSON.stringify(table));
+  record('★★★ R075 §B 사무실 이모티콘 :이름: 다섯 곳(채팅 · 내 자리 · 😊 10칸 · 목록 · 특별) — 글자 ≥ 0.85rem · 잘림 0 · 줄임표 0', hasSpecial && ['chat', 'seat', 'slots', 'grid', 'special'].every((k) => R075_EMOJI_OK(emo[k] ?? [])), JSON.stringify(Object.fromEntries(Object.entries(emo).map(([k, v]) => [k, v.slice(0, 2)]))));
+  const fav = await H.evaluate("document.querySelector('link[data-office-icon]')?.href ?? ''");
+  record('★★ R075 §B 파비콘 = 검은 네모 하나(선 · 띠 없음) · 탭 제목 "명령 프롬프트"', !/path|x='7'|height='3'/.test(decodeURIComponent(fav)) && (await H.evaluate('document.title')) === '명령 프롬프트', decodeURIComponent(fav).slice(0, 200));
+  await pickTheme(H, 'pastel');
+  G.close();
+  H.close();
+}
+
+// ── §C 모바일 화면 움직임 — 손님 m360 · m390 · m430(터치) · 방장 PC · 한 판 5문제(힌트 · 초성 포함) ───────
+const R075_KB = 320; // 화면 키보드 높이(흉내) — 360×740 에서 남는 높이 420
+/** 프레임마다(값이 바뀔 때만) 한 줄 — 상태 · scrollY · 넘침 · visualViewport · kbDropped · --qs · fitOver · 카드 · 입력창 · 내 자리 top · layout-shift */
+const R075_MOTION_SAMPLER = `(() => {
+  if (window.__mm) return true;
+  const s = (window.__mm = { list: [], cls: 0, clsAll: 0, shifts: [] });
+  const sel = (n) => !n || !n.tagName ? '#text' : n.tagName.toLowerCase() + (typeof n.className === 'string' && n.className.trim() ? '.' + n.className.trim().split(/\\s+/).slice(0, 2).join('.') : '');
+  try {
+    new PerformanceObserver((l) => {
+      for (const e of l.getEntries()) {
+        s.clsAll += e.value;
+        if (!e.hadRecentInput) s.cls += e.value;
+        s.shifts.push({ t: Math.round(performance.now()), v: +e.value.toFixed(4), input: e.hadRecentInput, st: document.querySelector('.room')?.dataset.state ?? '', src: (e.sources || []).slice(0, 4).map((x) => sel(x.node) + ':' + Math.round(x.previousRect.top) + '→' + Math.round(x.currentRect.top)) });
+      }
+    }).observe({ type: 'layout-shift', buffered: false });
+  } catch {}
+  const top = (q) => { const e = document.querySelector(q); return e ? Math.round(e.getBoundingClientRect().top) : null; };
+  let last = '';
+  const tick = () => {
+    const se = document.scrollingElement;
+    const room = document.querySelector('.room');
+    const vv = window.visualViewport;
+    const a = document.activeElement;
+    const inp = document.querySelector('.chat-input-row input');
+    const focus = a && a.tagName === 'INPUT' ? 1 : 0;
+    // ★ 화면 그대로 꼴(iOS · 새 크롬 — 키보드가 보이는 영역만 줄이고 입력창이 보이게 화면을 밀어 올림): 밀리는 양 = 계산
+    const pan = window.__mmKB && focus && inp ? Math.max(0, Math.round(inp.getBoundingClientRect().bottom + 8 - (innerHeight - window.__mmKB))) : 0;
+    const row = { st: room?.dataset.state ?? '', ep: room?.dataset.epoch ?? '', hint: document.querySelectorAll('.q-hint.open').length, rv: document.querySelector('.reveal') ? 1 : 0, sy: Math.round(scrollY), over: Math.max(0, se.scrollHeight - innerHeight), ih: innerHeight, vh: vv ? Math.round(vv.height) : 0, vo: vv ? Math.round(vv.offsetTop) : 0, kb: Number(document.documentElement.dataset.kbDropped ?? 0), qs: room?.dataset.qs ?? '', fo: room?.dataset.fitOver ?? '', card: top('.question-card'), input: top('.chat-input-row input'), seat: top('.seat-card.mine'), focus, pan };
+    const k = JSON.stringify(row);
+    if (k !== last) { last = k; row.t = Math.round(performance.now()); row.cls = +s.cls.toFixed(4); s.list.push(row); }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  return true;
+})()`;
+/** 손님 기록 → 상태별 움직임 표 */
+function r075MotionTable(rows) {
+  const by = {};
+  const lab = (r) => (r.st === 'QUESTION_ACTIVE' && r.hint > 0 ? `QUESTION_ACTIVE+힌트${r.hint}` : r.st);
+  let kbUps = 0;
+  for (let i = 1; i < rows.length; i += 1) {
+    const a = rows[i - 1];
+    const b = rows[i];
+    const k = lab(b);
+    const o = (by[k] ??= { n: 0, card: 0, cardN: 0, input: 0, inputN: 0, seat: 0, sy: 0, syMax: 0, overMax: 0, pan: 0, panN: 0, kbDrop: 0, qs: new Set(), fo: 0 });
+    o.n += 1;
+    const sameQ = a.ep === b.ep;
+    if (a.card !== null && b.card !== null && a.card !== b.card && sameQ) {
+      o.card += Math.abs(b.card - a.card);
+      o.cardN += 1;
+    }
+    if (a.input !== null && b.input !== null && a.input !== b.input) {
+      o.input += Math.abs(b.input - a.input);
+      o.inputN += 1;
+    }
+    if (a.seat !== null && b.seat !== null && a.seat !== b.seat) o.seat += Math.abs(b.seat - a.seat);
+    if (a.sy !== b.sy) o.sy += Math.abs(b.sy - a.sy);
+    o.syMax = Math.max(o.syMax, b.sy);
+    o.overMax = Math.max(o.overMax, b.over);
+    if (a.pan !== b.pan) {
+      o.pan += Math.abs(b.pan - a.pan);
+      o.panN += 1;
+    }
+    if (b.kb > a.kb) o.kbDrop += b.kb - a.kb;
+    if (!a.focus && b.focus) kbUps += 1;
+    if (b.qs) o.qs.add(b.qs);
+    o.fo = Math.max(o.fo, Number(b.fo || 0));
+  }
+  for (const o of Object.values(by)) o.qs = [...o.qs].join('/');
+  return { by, kbUps };
+}
+async function r075MotionFlow(browser) {
+  const mode = process.env.R075_KB_MODE ?? 'resize'; // resize = 키보드가 innerHeight 를 줄임(안드로이드 옛 꼴 · 일부 브라우저) · visual = 화면 그대로(iOS · 새 크롬 — 밀어 올림은 계산값 pan)
+  const H = await newPage(browser, 'R075-mm-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'mh', '움직임방장');
+  const roomId = await createRoom(H, 'R075 움직임');
+  const guests = [];
+  for (const s of SHOT_MOB) {
+    const P = await newPage(browser, `R075-mm-${s.n}`, true);
+    await r068Touch(P, s.w, s.h, true);
+    await signUp(P, `m${s.n.slice(1)}`, `폰${s.n.slice(1)}`);
+    await P.goto(`${BASE}/r/${roomId}`);
+    await P.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+    await sleep(500);
+    if (mode === 'visual') await P.evaluate(`window.__mmKB = ${R075_KB}`);
+    await P.evaluate(R075_MOTION_SAMPLER);
+    guests.push({ P, s, kb: false, kbLog: [] });
+  }
+  // ★ 화면 키보드 흉내(resize): 입력창에 포커스가 가면 높이를 키보드만큼 줄이고 입력창이 보이게 민다(안드로이드가 하는 일) · 풀리면 되돌림
+  const sim = { on: mode === 'resize' };
+  const loop = (async () => {
+    while (sim.on) {
+      for (const g of guests) {
+        const f = await g.P.evaluate("(() => { const a = document.activeElement; return Boolean(a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA')); })()").catch(() => g.kb);
+        if (f === g.kb) continue;
+        g.kb = f;
+        g.kbLog.push(`${f ? '↑' : '↓'}${await g.P.evaluate("document.querySelector('.room')?.dataset.state ?? ''").catch(() => '')}`);
+        await g.P.send('Emulation.setDeviceMetricsOverride', { width: g.s.w, height: f ? g.s.h - R075_KB : g.s.h, deviceScaleFactor: 1, mobile: true }).catch(() => {});
+        if (f) await g.P.evaluate("document.activeElement?.scrollIntoView({ block: 'nearest' })").catch(() => {});
+      }
+      await sleep(50);
+    }
+  })();
+  const state = () => H.evaluate("JSON.stringify({ st: document.querySelector('.room')?.dataset.state ?? '', ep: document.querySelector('.room')?.dataset.epoch ?? '' })").then((x) => JSON.parse(x));
+  const typeWrong = async (g, text) => {
+    if (!(await g.P.evaluate("document.activeElement?.matches?.('.chat-input-row input') ?? false"))) await tapOn(g.P, '.chat-input-row input');
+    await sleep(250);
+    await g.P.send('Input.insertText', { text });
+    await sleep(80);
+    await g.P.key('Enter');
+  };
+  const shotAll = async (tag) => {
+    for (const g of guests) await snap(g.P, `mobile-motion-${g.s.n}-${tag}${R075_TAG}`);
+  };
+  await setQuestionCount(H, 5);
+  await sleep(500);
+  await H.click('게임 시작');
+  await H.waitFor("document.querySelector('.room')?.dataset.state === 'COUNTDOWN'", 10000).catch(() => false);
+  await sleep(400);
+  await shotAll('countdown');
+  let lastEp = '';
+  for (let i = 0; i < 5; i += 1) {
+    const up = await H.waitFor(`document.querySelector('.room')?.dataset.state === 'QUESTION_ACTIVE' && document.querySelector('.room')?.dataset.epoch !== ${JSON.stringify(lastEp)}`, 30000).catch(() => false);
+    if (!up) break;
+    lastEp = (await state()).ep;
+    await sleep(700);
+    // 손님: 문제마다 입력창을 누르고(키보드 올림) 한 번 답을 친다
+    for (const g of guests) await typeWrong(g, `오답${i + 1}`);
+    if (i === 0) await shotAll('active');
+    if (i === 0) {
+      // 힌트(30초 남았을 때) 까지 기다린다
+      await H.waitFor("document.querySelectorAll('.q-hint.open').length >= 1", 15000).catch(() => false);
+      await sleep(900);
+      await shotAll('hint');
+    } else if (i === 1) {
+      // 초성(15초 남았을 때) 까지
+      await H.waitFor("document.querySelectorAll('.q-hint.open').length >= 2", 30000).catch(() => false);
+      await sleep(900);
+      await shotAll('chosung');
+    } else await sleep(1500);
+    await answerCurrent(H);
+    await H.waitFor("document.querySelector('.room')?.dataset.state === 'QUESTION_RESOLVED'", 8000).catch(() => false);
+    await sleep(900);
+    if (i === 0) await shotAll('resolved');
+    // 공개 동안 손님이 소감 한 줄(키보드 다시 올림)
+    if (i === 0) for (const g of guests) await typeWrong(g, 'ㅋㅋ');
+  }
+  await H.waitFor("document.querySelector('.room')?.dataset.state === 'GAME_RESULT'", 30000).catch(() => false);
+  await sleep(1500);
+  await shotAll('result');
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => /로비로/.test(b.innerText))?.click()");
+  await H.waitFor("document.querySelector('.room')?.dataset.state === 'LOBBY'", 15000).catch(() => false);
+  await sleep(1500);
+  await shotAll('lobby');
+  sim.on = false;
+  await loop;
+  const out = {};
+  for (const g of guests) {
+    const mm = JSON.parse(await g.P.evaluate('JSON.stringify(window.__mm ?? null)'));
+    const t = r075MotionTable(mm?.list ?? []);
+    out[g.s.n] = { mode, table: t.by, kbUps: t.kbUps, kbLog: g.kbLog, cls: mm?.cls ?? null, clsAll: mm?.clsAll ?? null, shifts: (mm?.shifts ?? []).filter((x) => x.v >= 0.001).slice(0, 40), rows: mm?.list ?? [] };
+  }
+  const file = path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r075', `mobile-motion-${mode}${R075_TAG}.json`);
+  writeFileSync(file, JSON.stringify(out, null, 1));
+  for (const [n, o] of Object.entries(out)) {
+    console.log(`  [r075] mobile-motion ${mode} ${n} — 키보드 올림 ${o.kbUps} · 내림 ${JSON.stringify(o.kbLog)} · CLS ${o.cls} (입력 포함 ${o.clsAll})`);
+    for (const [st, v] of Object.entries(o.table)) console.log(`      ${st.padEnd(24)} 카드 ${v.card}px/${v.cardN}번 · 입력창 ${v.input}px/${v.inputN}번 · 내 자리 ${v.seat}px · scrollY 변화 ${v.sy}px(최대 ${v.syMax}) · 넘침 최대 ${v.overMax} · 밀림(pan) ${v.pan}px/${v.panN}번 · kb내림 ${v.kbDrop} · qs ${v.qs} · fitOver ${v.fo}`);
+  }
+  // 고친 뒤 기준(브리핑 §C 다 됐다): 한 판 동안 scrollY 0 · 넘침 0 · 카드 top 변화 0(문제가 바뀔 때 빼고) · 입력창 변화 = 키보드 올라올 때 · CLS < 0.05 · kbDropped = 판 끝(결과 · 로비)에만
+  const IN_GAME = ['COUNTDOWN', 'QUESTION_ACTIVE', 'QUESTION_RESOLVED'];
+  const verdict = Object.fromEntries(Object.entries(out).map(([n, o]) => {
+    const game = Object.entries(o.table).filter(([st]) => IN_GAME.some((x) => st.startsWith(x)));
+    return [n, {
+      sy: game.reduce((a, [, v]) => a + v.sy, 0),
+      over: Math.max(0, ...game.map(([, v]) => v.overMax)),
+      card: game.reduce((a, [, v]) => a + v.card, 0),
+      pan: game.reduce((a, [, v]) => a + v.panN, 0),
+      kbDropInGame: game.reduce((a, [, v]) => a + v.kbDrop, 0),
+      kbUps: o.kbUps,
+      cls: o.cls,
+    }];
+  }));
+  console.log(`  [r075] mobile-motion 판정 ${JSON.stringify(verdict)}`);
+  record(
+    `★★★ R075 §C mobile-motion(${mode}) — 세 크기 한 판: 판 중 scrollY 변화 0 · 넘침 0 · 문제 카드 top 변화 0(문제 바뀔 때 빼고) · 판 중 키보드 내림 0 · 키보드 올림 ≤ 2(처음 + 결과 뒤) · CLS < 0.05`,
+    Object.values(verdict).every((v) => v.sy === 0 && v.over === 0 && v.card === 0 && v.kbDropInGame === 0 && v.kbUps <= 2 && (v.cls ?? 1) < 0.05),
+    JSON.stringify(verdict),
+  );
+  for (const g of guests) g.P.close();
+  H.close();
+}
+
+// =============================================================================
 // ★★★ R074 — 사진 공개 레이아웃(§A) · 내 자리 · 팝업 아래 끝(§B) · 등록 안내(§C) · 사무실 모드 · 밤 테마(§D)
 //   (UICHECK_R074=1 · 묶음 r074 · docs/design/r074) · R074_ONLY = photo | bottom | emoji | theme (없으면 전부)
 // =============================================================================
@@ -5312,7 +5788,8 @@ async function r074ThemeFlow(browser) {
   await sleep(700);
   const txt = JSON.parse(await H.evaluate("JSON.stringify({ seatText: document.querySelector('.seat-card.mine .seat-emoji-pop .emoji-text')?.innerText ?? null, seatImg: document.querySelectorAll('.seat-emoji-pop img.emoji').length, chatImg: document.querySelectorAll('.chat-log img.emoji').length, chatText: document.querySelector('.chat-log .emoji-text')?.innerText ?? null, avatarImg: document.querySelectorAll('img.avatar.photo').length, avatar: getComputedStyle(document.querySelector('.seat-card .avatar'), '::before').content })"));
   await snapSizes(H, 'office-lobby', [...SHOT_PC]);
-  record('★★★ R074 §D 사무실 ① — 이모티콘 = :이름: 글자(자리 · 채팅) · 그림 0 · 아바타 = [첫 글자]', /^:.+:$/.test(txt.seatText ?? '') && txt.seatImg === 0 && txt.chatImg === 0 && /^:.+:$/.test(txt.chatText ?? '') && txt.avatarImg === 0 && /\[/.test(txt.avatar), JSON.stringify(txt));
+  // ★ R075 (D-322 2판) — 아바타 괄호 [ ] 를 뺐다(첫 글자 하나)
+  record('★★★ R074 §D 사무실 ① — 이모티콘 = :이름: 글자(자리 · 채팅) · 그림 0 · 아바타 = 첫 글자(R075 2판 — 괄호 없음)', /^:.+:$/.test(txt.seatText ?? '') && txt.seatImg === 0 && txt.chatImg === 0 && /^:.+:$/.test(txt.chatText ?? '') && txt.avatarImg === 0 && !/\[/.test(txt.avatar), JSON.stringify(txt));
   await openPicker(H);
   await sleep(300);
   await snap(H, 'office-emoji-pc');
@@ -7315,6 +7792,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R074) {
     await closeAllTabs(browser);
     await r074Flow(browser);
+  }
+  // ★ R075 — 단축키 문구 · 사무실 모드 2판(office-palette) · 모바일 화면 움직임(mobile-motion)
+  if (process.env.UICHECK_R075) {
+    await closeAllTabs(browser);
+    await r075Flow(browser);
   }
   // ★ R073 — 이모티콘 끌어서 등록 · 😊 안내 카드 · 첫 안내 투어 · ⓘ 리뉴얼
   if (process.env.UICHECK_R073) {
