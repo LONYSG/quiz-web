@@ -7196,8 +7196,9 @@ async function scenarioMgMinority() {
   const { bots, host, roomId } = await mgRoom(5, 'R053 소수파');
   const [b1, b2, b3, b4, b5] = bots;
   // 판마다 고르기: 1~4판은 b1 만 1 · 나머지 2 → b1 소수파 / 5판은 모두 3(전원 0) · b5 는 안 고름 · b4 는 바꾸기(처음 1 → 마지막 2)
+  //   ★ R077 (D-327) — 선택지 = 인원 − 1 → 5명은 1~4 · b5 는 5 를 보낸다(받지 않음 = 안 고름) · 3명 판은 1~2(5판 3 은 받지 않음 → 전원 0 그대로)
   const plan = (bot, ri) => {
-    if (bot === b5) return null;
+    if (bot === b5) return [{ delayMs: 100, input: { pick: 5 } }];
     if (ri === 4) return [{ delayMs: 100, input: { pick: 3 } }];
     if (bot === b1) return [{ delayMs: 100, input: { pick: 1 } }];
     if (bot === b4) return [{ delayMs: 100, input: { pick: 1 } }, { delayMs: 600, input: { pick: 2 } }];
@@ -7210,6 +7211,8 @@ async function scenarioMgMinority() {
       const k = `${mg.token}:${mg.roundIndex}`;
       if (b.__mgDone.has(k)) return;
       b.__mgDone.add(k);
+      const ch = mg.round?.params?.choices;
+      if (Array.isArray(ch)) (b.__choices ??= new Map()).set(mg.token, ch.join(','));
       for (const a of plan(b, mg.roundIndex) ?? []) setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: a.input }), a.delayMs);
     };
   }
@@ -7217,6 +7220,7 @@ async function scenarioMgMinority() {
   const runId = await mgPractice(host, roomId, 'minority', 120000);
   const rows = await mgRows(runId);
   expect('★ 기록 = 5판 × 5명', rows.length, 25);
+  expect('★★★ R077 5명 → 선택지 1~4 (인원 − 1)', [...(b2.__choices?.values() ?? [])].pop(), '1,2,3,4');
   const of = (b) => rows.filter((r) => r.login_id === b.loginId);
   expectTrue('★★★ 1~4판 — b1(혼자 1) 소수파 1점 · 나머지 0', of(b1).slice(0, 4).every((r) => r.points === 1) && [b2, b3, b4].every((b) => of(b).slice(0, 4).every((r) => r.points === 0)), JSON.stringify(of(b1).map((r) => r.points)));
   expectTrue('★★ 바꾸기 — b4 는 마지막 선택(2) 으로 기록', of(b4).slice(0, 4).every((r) => r.input?.pick === 2), JSON.stringify(of(b4).map((r) => r.input)));
@@ -7232,6 +7236,7 @@ async function scenarioMgMinority() {
   const g3 = await playQuickGame(host, [b2, b3], 5, ['minority'], 150000);
   const r3 = await runsOfGame(g3);
   expect('★★ 3명 — 5문제 판 3번째 뒤 소수파', r3.map((r) => r.minigame_key), ['minority']);
+  expect('★★★ R077 3명 → 선택지 1~2 (인원 − 1)', [...(b2.__choices?.values() ?? [])].pop(), '1,2');
   const rw = await withDb(async (c) => (await c.query(`SELECT a.login_id, r.amount FROM minigame_rewards r JOIN accounts a ON a.id = r.account_id WHERE r.run_id = $1 ORDER BY r.amount DESC`, [r3[0].id])).rows);
   expect('★★ 보상 — 1위 b1 +3', rw.map((r) => [r.login_id, r.amount])[0], [b1.loginId, 3]);
   await backToLobby(host, [b2, b3]);

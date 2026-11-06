@@ -11,6 +11,9 @@ import {
   gaugeOffPct,
   gaugePos,
   gaugeRounds,
+  minorityChoiceCount,
+  minorityChoices,
+  minorityLine,
   minorityResult,
   oddoneRounds,
 } from './r053.js';
@@ -41,6 +44,25 @@ describe('★★★ 소수파 — 가장 적게 고른 수(0명 제외)', () => 
     expect(r.counts[1]).toBe(0);
   });
   it('모두 다른 수 → 전원 소수파', () => expect(minorityResult([1, 2, 3]).minority).toEqual([1, 2, 3]));
+});
+
+describe('★★★ R077 소수파 선택지 = 인원 − 1 (2~5 · D-327)', () => {
+  it('n 계산 — 2 · 3 · 4 · 5 · 6 · 10명', () => {
+    expect([2, 3, 4, 5, 6, 10].map(minorityChoiceCount)).toEqual([2, 2, 3, 4, 5, 5]);
+    expect(minorityChoiceCount(1)).toBe(2); // 연습 1명도 둘
+    expect(minorityChoices(4)).toEqual([1, 2, 3]);
+  });
+  it('n=2 · 3명 1·1·2 → 소수파 [2] · counts 는 1~2 만', () => {
+    const r = minorityResult([1, 1, 2], 2);
+    expect(r.minority).toEqual([2]);
+    expect(Object.keys(r.counts)).toEqual(['1', '2']);
+  });
+  it('n=2 에서 3 은 세지 않는다', () => expect(minorityResult([3, 1, 1], 2).counts).toEqual({ 1: 2, 2: 0 }));
+  it('n < 인원 → 모두 다른 수는 불가능(비둘기집)', () => {
+    for (const p of [3, 4, 5, 6]) expect(minorityChoiceCount(p)).toBeLessThan(p);
+  });
+  it('판 화면 줄', () => expect(minorityLine(3)).toMatch(/^1~3 중 하나/));
+  it('카탈로그 설명 — 인원보다 하나 적은', () => expect(MINIGAMES.find((x) => x.key === 'minority')!.oneLine).toMatch(/인원보다 하나 적은/));
 });
 
 

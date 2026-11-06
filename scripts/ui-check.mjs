@@ -4702,6 +4702,65 @@ async function r077Overflow(browser) {
   G.close();
 }
 
+// ★★★ R077 — 소수파 선택지 = 인원 − 1 (D-327) — 실제 연습 판 3 · 4 · 6명(방장 PC 1280 · 손님 m360 터치 · 나머지 소켓)
+//   규칙 줄 "1~n" · 카드 n 장 · 키 n+1 무시 · 키 n 고름 · 결과 막대 n 개 → 그림 minority-{3,4,6}p-{pc,m360}(-result)
+async function r077Minority(browser) {
+  const rows = [];
+  for (const np of [3, 4, 6]) {
+    const n = Math.min(5, Math.max(2, np - 1));
+    const H = await newPage(browser, `R077-mn${np}`, true);
+    await H.setViewport(1280, 720);
+    await signUp(H, `mn${np}h`, `소수${np}방장`);
+    const roomId = await createRoom(H, `R077 소수파 ${np}명`);
+    const G = await newPage(browser, `R077-mn${np}-g`, true);
+    await signUp(G, `mn${np}g`, `소수${np}폰`);
+    await r068Touch(G, 360, 740, true);
+    await G.goto(`${BASE}/r/${roomId}`);
+    await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+    const socks = await socketGuests(roomId, np - 2, `mn${np}s`);
+    await sleep(500);
+    await r051Start(H, 'minority');
+    await waitPhase(H, 'rules', 15000);
+    await sleep(300);
+    const line = await H.evaluate("document.querySelector('.mg-rules-line')?.innerText ?? ''");
+    const ctrl = await H.evaluate("document.querySelector('.mg-rules-ctrl')?.innerText ?? ''");
+    if (np === 3) await snap(H, 'minority-3p-rules-pc');
+    await waitPhase(H, 'play', 30000);
+    await waitPhase(G, 'play', 5000);
+    await sleep(300);
+    const cards = async (P) => JSON.parse(await P.evaluate("JSON.stringify({ n: document.querySelectorAll('.minority-card').length, data: document.querySelector('.minority-cards')?.dataset.choices ?? '', help: document.querySelector('.quiz-num-help')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth })"));
+    const pc = await cards(H);
+    const m = await cards(G);
+    // 키 n+1 은 무시 · 키 n 은 고름
+    const d = String(n + 1);
+    await H.key(d, { code: `Digit${d}`, vk: 48 + n + 1, text: true });
+    await sleep(150);
+    const ignored = (await H.evaluate("document.querySelector('.minority-card.picked')?.dataset.n ?? ''")) === '';
+    await H.key(String(n), { code: `Digit${n}`, vk: 48 + n, text: true });
+    const c1 = await rectOf(G, '.minority-card[data-n="1"]');
+    await trustedTap(G, c1.x + c1.w / 2, c1.y + c1.h / 2);
+    await sleep(250);
+    const picked = [await H.evaluate("document.querySelector('.minority-card.picked')?.dataset.n ?? ''"), await G.evaluate("document.querySelector('.minority-card.picked')?.dataset.n ?? ''")];
+    await snap(H, `minority-${np}p-pc`);
+    await snap(G, `minority-${np}p-m360`);
+    await waitPhase(H, 'roundResult', 20000);
+    await sleep(500);
+    const bars = [await H.evaluate("document.querySelectorAll('.minority-bar').length"), await G.evaluate("document.querySelectorAll('.minority-bar').length")];
+    await snap(H, `minority-${np}p-pc-result`);
+    await snap(G, `minority-${np}p-m360-result`);
+    rows.push({ np, n, line, ctrl, pc, m, ignored, picked, bars });
+    for (const s2 of socks) s2.close();
+    H.close();
+    G.close();
+    await sleep(300);
+  }
+  console.log('  [r077] 인원 → 선택지 · 규칙 줄 · 카드 PC/m360 · 키 n+1 무시 · 고름 · 결과 막대');
+  for (const r of rows) console.log(`    ${r.np}명 → ${r.n}	「${r.line}」 「${r.ctrl}」 카드 ${r.pc.n}/${r.m.n} · 무시 ${r.ignored} · 고름 ${r.picked} · 막대 ${r.bars} · 넘침 ${r.pc.over}/${r.m.over}`);
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r077', 'minority.json'), JSON.stringify(rows, null, 1));
+  const ok = rows.every((r) => r.line.startsWith(`1~${r.n} 중`) && r.ctrl.includes(`1 ~ ${r.n} 키`) && r.pc.n === r.n && r.m.n === r.n && r.ignored && r.picked[0] === String(r.n) && r.picked[1] === '1' && r.bars.every((b) => b === r.n) && r.pc.over <= 1 && r.m.over <= 1);
+  record('★★★ R077 minority — 3명 → 1~2 · 4명 → 1~3 · 6명 → 1~5(규칙 줄 · 카드 PC/m360 · 키 n+1 무시 · 결과 막대 n · 넘침 0)', ok, JSON.stringify(rows.map((r) => ({ np: r.np, n: r.n, pc: r.pc.n, m: r.m.n, ig: r.ignored, pk: r.picked, bars: r.bars }))));
+}
+
 // =============================================================================
 // ★★★ R076 — 문제 카드 세로 흔들림 card-jitter (D-326 · 찬종 11-06 "사무실 모드 문제 부분이 위아래로 미친듯이 흔들려")
 //   (UICHECK_R076=1 · 묶음 r076 · docs/design/r076) · R076_TAG = before | after
@@ -8049,7 +8108,7 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R077) {
     await closeAllTabs(browser);
     if (process.env.R077_ONLY !== 'minority') await r077Overflow(browser);
-    if (process.env.R077_ONLY !== 'overflow' && typeof r077Minority === 'function') await r077Minority(browser);
+    if (process.env.R077_ONLY !== 'overflow') await r077Minority(browser);
   }
   // ★ R076 — 문제 카드 세로 흔들림(card-jitter)
   if (process.env.UICHECK_R076) {

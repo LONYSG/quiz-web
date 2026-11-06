@@ -5,9 +5,9 @@
 // ★ 그림 이모지는 Twemoji SVG(/emoji/<code>.svg) — 기기 글꼴과 무관하게 같은 그림.
 // =============================================================================
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { Socket } from 'socket.io-client';
-import { gaugePos } from '@quiz/shared';
+import { gaugePos, minorityChoices } from '@quiz/shared';
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
@@ -41,6 +41,10 @@ export function MinorityPick({ socket, view, serverNow, mobile }: Props) {
   const now = useFrameNow(playing);
   const [pick, setPick] = useState<{ key: string; n: number } | null>(null);
   const mine = pick?.key === key ? pick.n : null;
+  // ★ R077 (D-327 · 찬종) — 선택지 = 인원 − 1(2~5) · 서버 params.choices 를 따른다(없으면 참가자 수로 같은 계산)
+  const pc = view.round?.params?.choices;
+  const choices = Array.isArray(pc) ? (pc as number[]) : minorityChoices(view.participants.length);
+  const n = choices.length;
   const choose = (n: number) => {
     if (!canPlay) return;
     setPick({ key, n });
@@ -51,11 +55,11 @@ export function MinorityPick({ socket, view, serverNow, mobile }: Props) {
     if (!canPlay) return undefined;
     const on = (e: KeyboardEvent) => {
       if (typingTarget(e)) return;
-      const n = Number(e.key);
-      if (!(n >= 1 && n <= 5) || e.altKey || e.ctrlKey || e.metaKey) return;
+      const k = Number(e.key);
+      if (!(k >= 1 && k <= n) || e.altKey || e.ctrlKey || e.metaKey) return;
       e.preventDefault();
       e.stopPropagation();
-      choose(n);
+      choose(k);
     };
     window.addEventListener('keydown', on, true);
     return () => window.removeEventListener('keydown', on, true);
@@ -64,15 +68,15 @@ export function MinorityPick({ socket, view, serverNow, mobile }: Props) {
     <div className="quiz-stage minority-stage">
       <TimeBar view={view} t0={t0} now={now} />
       <p className="which-stem">가장 적게 고를 것 같은 숫자는?</p>
-      <div className="minority-cards" role="group" aria-label="숫자 고르기">
-        {[1, 2, 3, 4, 5].map((n) => (
+      <div className="minority-cards" role="group" aria-label="숫자 고르기" data-choices={n} style={{ '--n': n } as CSSProperties}>
+        {choices.map((n) => (
           <button key={n} type="button" className={`minority-card mono${mine === n ? ' picked' : ''}`} data-n={n} disabled={!canPlay} onClick={() => choose(n)}>
             {n}
           </button>
         ))}
       </div>
       <p className="quiz-num-help dim">
-        {view.spectating ? '구경 중이에요' : mine ? `${mine} 을(를) 골랐어요` : mobile ? '숫자 카드를 톡' : '1 ~ 5 키 또는 클릭'}
+        {view.spectating ? '구경 중이에요' : mine ? `${mine} 을(를) 골랐어요` : mobile ? '숫자 카드를 톡' : `1 ~ ${n} 키 또는 클릭`}
       </p>
     </div>
   );

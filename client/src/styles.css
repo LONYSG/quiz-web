@@ -6216,8 +6216,12 @@ button.primary.tone-warn {
    ============================================================================= */
 .minority-cards {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* ★ R077 (D-327) — 카드 수 = 선택지 n(인원 − 1 · 2~5) · 카드 폭은 5장일 때와 같게(적으면 가운데) */
+  grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr));
   gap: 8px;
+  width: 100%;
+  max-width: calc(var(--n, 5) * 20% + (var(--n, 5) - 5) * 1.6px);
+  margin-inline: auto;
 }
 .minority-card {
   aspect-ratio: 3 / 4;
@@ -6237,12 +6241,12 @@ button.primary.tone-warn {
 }
 .minority-bars {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr));
   gap: 8px;
   align-items: end;
   height: 150px;
   width: 100%;
-  max-width: 320px;
+  max-width: calc(var(--n, 5) * 64px);
 }
 .minority-bar {
   position: relative;

@@ -9,24 +9,48 @@ import { seededRandom } from '../balance.js';
 import { ODD_PAIRS, type OddPair } from './oddone-pairs.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 소수파 게임 — 1~5 중 하나 · 가장 적게 고른 수(0명 제외)를 고른 사람 전원이 판 1위
+// 소수파 게임 — 1~n 중 하나 · 가장 적게 고른 수(0명 제외)를 고른 사람 전원이 판 1위
+//   ★ R077 (D-327 · 찬종 "인원 수보다 소수파 선택지가 적게 해야 · 그게 의미 있을듯") — n = 인원 − 1 (2~5) · 판 시작 때 한 번
 // ─────────────────────────────────────────────────────────────────────────────
 export const MINORITY_ROUNDS = 5;
 export const MINORITY_PLAY_MS = 8_000;
+/** 선택지 최대(6명 이상) — 실제 선택지는 minorityChoices(인원) */
 export const MINORITY_CHOICES = [1, 2, 3, 4, 5] as const;
 export const MINORITY_MIN_PLAYERS = 3;
+export const MINORITY_MIN_CHOICES = 2;
+
+/** ★ R077 — 선택지 수 n = clamp(참가자 수 − 1, 2, 5) · 3명 → 2 · 4명 → 3 · 5명 → 4 · 6명 이상 → 5 (모두 다른 수를 고를 수 없게) */
+export function minorityChoiceCount(players: number): number {
+  const n = Math.floor(Number.isFinite(players) ? players : 0) - 1;
+  return Math.max(MINORITY_MIN_CHOICES, Math.min(MINORITY_CHOICES.length, n));
+}
+
+/** ★ R077 — 선택지 1~n */
+export function minorityChoices(players: number): number[] {
+  return Array.from({ length: minorityChoiceCount(players) }, (_, i) => i + 1);
+}
+
+/** ★ R077 — 판 화면 규칙 줄(n 을 넣은 것) · 카탈로그는 info.oneLine("인원보다 하나 적은 숫자") */
+export function minorityLine(n: number): string {
+  return `1~${n} 중 하나를 고르세요! 가장 적게 고른 숫자를 고른 사람이 이겨요`;
+}
+export function minorityControlsPc(n: number): string {
+  return `1 ~ ${n} 키 또는 클릭 (바꿔도 돼요 — 마지막 선택)`;
+}
 
 export interface MinorityResult {
-  /** 숫자 → 고른 사람 수 (1~5 모두) */
+  /** 숫자 → 고른 사람 수 (1~n 모두) */
   counts: Record<number, number>;
   /** 소수파 숫자들(가장 적게 · 0명 제외 · 공동이면 여럿). 모두 같은 수를 골랐거나(한 숫자뿐) 아무도 안 골랐으면 [] */
   minority: number[];
 }
 
-export function minorityResult(picks: readonly number[]): MinorityResult {
-  const counts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+/** ★ R077 — choices = 선택지 수 n(기본 5 — 옛 판) · counts 는 1~n */
+export function minorityResult(picks: readonly number[], choices: number = MINORITY_CHOICES.length): MinorityResult {
+  const all = Array.from({ length: choices }, (_, i) => i + 1);
+  const counts: Record<number, number> = Object.fromEntries(all.map((c) => [c, 0]));
   for (const p of picks) if (counts[p] !== undefined) counts[p] += 1;
-  const used = MINORITY_CHOICES.filter((c) => counts[c]! > 0);
+  const used = all.filter((c) => counts[c]! > 0);
   // ★ 고른 숫자가 하나뿐(모두 같은 수)이면 소수파가 없다 → 전원 0
   if (used.length <= 1) return { counts, minority: [] };
   const min = Math.min(...used.map((c) => counts[c]!));

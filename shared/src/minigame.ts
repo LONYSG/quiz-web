@@ -234,8 +234,9 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'minority',
     name: '소수파 게임',
-    oneLine: '1~5 중 하나를 고르세요! 가장 적게 고른 숫자를 고른 사람이 이겨요',
-    controlsPc: '1 ~ 5 키 또는 클릭 (바꿔도 돼요 — 마지막 선택)',
+    // ★ R077 (D-327) — 선택지 = 인원 − 1(2~5) · 판 화면은 minorityLine(n) 으로 "1~n" 을 넣는다
+    oneLine: '인원보다 하나 적은 숫자 중 하나를 고르세요! 가장 적게 고른 숫자를 고른 사람이 이겨요',
+    controlsPc: '숫자 키 또는 클릭 (바꿔도 돼요 — 마지막 선택)',
     controlsMobile: '숫자 카드를 톡 (바꿔도 돼요 — 마지막 선택)',
     kind: 'physical',
     rounds: 5,

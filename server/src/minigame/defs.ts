@@ -71,6 +71,7 @@ import {
   gaugeOffPct,
   gaugePos,
   gaugeRounds,
+  minorityChoices,
   minorityResult,
   oddoneRounds,
   BALLOON_MAX_PUMPS,
@@ -736,23 +737,27 @@ const photoyear: MinigameDef = {
 // ★★★ R053 — 미니게임 3차 (소수파 · 평균의 2/3 · 다른 하나 찾기 · 게이지)
 // ─────────────────────────────────────────────────────────────────────────────
 
-// 소수파 — 1~5 · 8초 동안 바꿀 수 있다(임시) · 마감 때 마지막 선택 · 판 끝 정산: 가장 적게 고른 수(0명 제외)를 고른 사람 = 1(이김)
+// 소수파 — 1~n · 8초 동안 바꿀 수 있다(임시) · 마감 때 마지막 선택 · 판 끝 정산: 가장 적게 고른 수(0명 제외)를 고른 사람 = 1(이김)
+//   ★ R077 (D-327 · 찬종) — n = clamp(참가자 수 − 1, 2, 5) · 참가자 = 판 시작 때 방 사람(room.players — minPlayers 3 판정과 같은 집합 · 봇도 사람으로 셈)
+//     다섯 판 모두 같은 n(중간에 나가도 그대로)
 const minority: MinigameDef = {
   key: 'minority',
   info: minigameInfo('minority'),
-  buildRounds(seed) {
-    return [0, 1, 2, 3, 4].map((i) => ({ itemKey: `minority-${i + 1}`, params: { choices: [1, 2, 3, 4, 5] }, playMs: MINORITY_PLAY_MS, seed: seed + i }));
+  buildRounds(seed, ctx) {
+    const choices = minorityChoices(ctx.participants.length);
+    return [0, 1, 2, 3, 4].map((i) => ({ itemKey: `minority-${i + 1}`, params: { choices }, playMs: MINORITY_PLAY_MS, seed: seed + i }));
   },
   countProvisional: true,
-  parseInput(raw) {
+  parseInput(raw, spec) {
     const obj = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : null;
     const pick = num(obj?.pick);
-    if (pick === null || !Number.isInteger(pick) || pick < 1 || pick > 5) return null;
+    const n = Array.isArray(spec.params.choices) ? spec.params.choices.length : 5;
+    if (pick === null || !Number.isInteger(pick) || pick < 1 || pick > n) return null;
     return { input: { pick }, value: null, error: null, elapsedMs: num(obj?.elapsedMs), extra: { pick }, provisional: true };
   },
-  finalizeRound(_spec, subs) {
+  finalizeRound(spec, subs) {
     const picks = [...subs.entries()].map(([a, s]) => [a, Number(s.extra?.pick)] as const);
-    const r = minorityResult(picks.map(([, p]) => p));
+    const r = minorityResult(picks.map(([, p]) => p), Array.isArray(spec.params.choices) ? spec.params.choices.length : 5);
     const values = new Map(picks.map(([a, p]) => [a, { value: r.minority.includes(p) ? 1 : null, extra: { pick: p, win: r.minority.includes(p) } }]));
     return { values, reveal: { counts: r.counts, minority: r.minority } };
   },

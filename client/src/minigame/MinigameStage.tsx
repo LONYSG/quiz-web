@@ -17,6 +17,9 @@ import {
   formatMinigameValue,
   meatDoneness,
   minigameInfo,
+  minorityChoices,
+  minorityControlsPc,
+  minorityLine,
   type BalanceKind,
   BALLOON_PUMP_MAX,
   BALLOON_PUMP_MIN,
@@ -214,9 +217,11 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
           </div>
           {/* ★ R064 — 규칙은 설명문(줄바꿈 감사에서 의도한 줄바꿈) */}
           <div className="mg-rules-text" data-wrap-ok>
-            <p className="mg-rules-line">{info.oneLine}</p>
+            {/* ★ R077 (D-327) — 소수파는 선택지 n(인원 − 1)을 넣은 줄 */}
+            <p className="mg-rules-line">{view.key === 'minority' ? minorityLine(minorityChoices(view.participants.length).length) : info.oneLine}</p>
             <p className="mg-rules-ctrl">
-              <span className="hint-label">{mobile ? '모바일' : 'PC'}</span> {mobile ? info.controlsMobile : info.controlsPc}
+              <span className="hint-label">{mobile ? '모바일' : 'PC'}</span>{' '}
+              {mobile ? info.controlsMobile : view.key === 'minority' ? minorityControlsPc(minorityChoices(view.participants.length).length) : info.controlsPc}
             </p>
             {view.key === 'cake' && <p className="dim mg-rules-note">블루투스 이어폰은 소리가 늦게 들려요 — 화면 숫자를 믿으세요</p>}
             {view.key === 'reaction' && <p className="dim mg-rules-note">진짜 신호는 초록 화면 — 소리를 꺼도 초록만 보면 돼요 · 노란 화면 · 글자 · 소리만은 가짜</p>}
@@ -794,14 +799,16 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
     const counts = (rv.counts as Record<string, number> | undefined) ?? {};
     const minority = (rv.minority as number[] | undefined) ?? [];
     const max = Math.max(1, ...Object.values(counts));
+    // ★ R077 (D-327) — 막대 수 = 판 선택지(params.choices · 옛 판은 1~5)
+    const choices = Array.isArray(p.choices) ? (p.choices as number[]) : [1, 2, 3, 4, 5];
     // ★ R066 (D-284 · 찬종 #45 "적게 한 사람들 그래프 색깔 자기 고유 색으로 · 겹친 그래프는 회색") — 이긴 막대 = 고른 사람마다 그 사람 색 조각
     const rows = view.roundResults.find((r) => r.roundIndex === view.roundIndex)?.rows ?? [];
     const colorOf = (acc: string) => view.participants.find((x) => x.accountId === acc)?.colorIndex ?? 0;
     const pickers = (n: number) => rows.filter((r) => r.extra?.pick === n).map((r) => colorOf(r.accountId));
     return (
       <div className="mg-r051-result minority-result">
-        <div className="minority-bars" aria-label="숫자마다 고른 사람 수">
-          {[1, 2, 3, 4, 5].map((n) => (
+        <div className="minority-bars" aria-label="숫자마다 고른 사람 수" data-choices={choices.length} style={{ '--n': choices.length } as CSSProperties}>
+          {choices.map((n) => (
             <div key={n} className={`minority-bar${minority.includes(n) ? ' win' : ''}${mine?.extra?.pick === n ? ' mine' : ''}`} data-n={n}>
               <span className="minority-count mono">{counts[n] ?? 0}</span>
               <span className="minority-fill" style={{ height: `${((counts[n] ?? 0) / max) * 100}%` }}>
