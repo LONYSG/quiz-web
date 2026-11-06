@@ -1,0 +1,123 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "invention/2",
+  "midKey": "invention",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "invention/2#g032a-g032a-j08-1",
+   "seed": {
+    "subject": "볼펜",
+    "aspect": null,
+    "ref": "g032a-j08-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "20세기에 나온 필기구입니다. 1938년 헝가리의 신문 편집자 비로 라슬로가 영국에 특허를 냈습니다. 그는 신문 인쇄 잉크가 빨리 말라 번지지 않는 것을 보고, 그런 잉크를 쓰는 펜을 만들었습니다. 만년필을 밀어내고 지금 세계에서 가장 많이 쓰이는 이 필기구는?",
+    "answer": "볼펜",
+    "acceptedAnswers": [
+     "볼포인트 펜"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "비로 형제는 아르헨티나로 건너가 1943년 다시 특허를 냈다. 그래서 아르헨티나에서는 지금도 이 펜을 '비로메'라 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "만년필을 밀어내고 지금 세계에서 가장 많이 쓰이는 필기구",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 생활용품 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "모나미 153처럼 똑딱 눌러 쓰는, 학교와 사무실에서 누구나 쓰는 가장 흔한 펜이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "끝의 작은 금속 구슬이 굴러 잉크를 묻히는 흔한 필기구",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "일상 필기구",
+     "piece": "f05",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '필기구' · 끝 ○○ = 필기구, 일화는 모두 정답 유래"
+    },
+    "blindQuestion": {
+     "guess": "볼펜",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "볼펜",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "볼펜",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ballpoint_pen",
+     "https://ko.wikipedia.org/wiki/볼펜"
+    ],
+    "facts": [
+     {
+      "claim": "헝가리 신문 편집자 비로, 신문 인쇄 잉크가 빨리 마르는 데 착안 · 1938년 영국 특허",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ballpoint_pen",
+      "note": "László Bíró, a Hungarian newspaper editor ... noticed that inks used in newspaper printing dried quickly, leaving the paper dry and smudge-free. ... Bíró filed for a British patent on 15 June 1938."
+     },
+     {
+      "claim": "세계에서 가장 많이 쓰이는 필기구 · 만년필 대체",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/볼펜",
+      "note": "볼펜은 딥펜과 만년필의 안정적인 대체품으로 개발되었고 현재 세계에서 가장 많이 사용되는 필기구이며 ... 헝가리 신문 편집자(후에 귀화한 아르헨티나인)인 비로 라슬로는 ... 신문 인쇄에 사용되는 잉크가 빨리 마르고 번지지 않는 것에 주목하여"
+     },
+     {
+      "claim": "1943년 아르헨티나 특허 · 아르헨티나에서 Birome 로 불림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ballpoint_pen",
+      "note": "moved to Argentina ... filed a new patent in 1943. Their pen was sold in Argentina as the \"Birome\" ... which is how ballpoint pens are still known in that country."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "만년필을 밀어내고 세계에서 가장 많이 쓰이는 필기구",
+    "worthWhyGen": "매일 쓰는 물건이 생긴 까닭(신문 잉크에서 착안) — 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '필기구' 예",
+     "unique": "세계에서 가장 많이 쓰는 + 신문 잉크 — 사인펜·만년필과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  }
+ ]
+}

@@ -1,0 +1,130 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "symbols/3",
+  "midKey": "symbols",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "symbols/3#g032a-g032a-j30-7",
+   "seed": {
+    "subject": "블루칼라",
+    "aspect": null,
+    "ref": "g032a-j30-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "옷 색깔로 일하는 사람을 나누는 영어 표현이 한국에서도 쓰입니다. 공장·광산·건설 현장의 노동자들이 때가 덜 타는 푸른 작업 셔츠를 입던 데서 나왔습니다. 육체노동자를 가리키는 이 말은?",
+    "answer": "블루칼라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1924년 미국 아이오와주 한 신문에서 처음 쓰였다고 합니다. 서비스직은 '핑크칼라'로 부르기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "푸른 작업 셔츠 육체노동자 영어 표현",
+     "difWhy": "2 — 일상 외래어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "사무실 직원을 흰 셔츠 깃에 빗댄 말과 짝을 이루는, 작업복 차림 생산직을 가리키는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "생산·현장에서 육체노동을 하는 노동자를 이르는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "화이트칼라와 함께 흔한 말",
+     "piece": "f01",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=표현(말), 첫 문장이 '옷 색깔로 사람을 나누는 영어 표현'. 짧고 분명."
+    },
+    "blindQuestion": {
+     "guess": "블루칼라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "블루칼라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "블루칼라",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/블루칼라",
+     "https://en.wikipedia.org/wiki/Blue-collar_worker",
+     "https://ko.wikipedia.org/wiki/화이트칼라"
+    ],
+    "facts": [
+     {
+      "claim": "과거 청색 작업복을 입고 육체노동을 하는 노동자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/블루칼라",
+      "note": "과거 블루칼라의 의미는 청색 작업복을 입고 육체노동을 하는 노동자를 가리켰다. 현재의 블루칼라의 의미는 구체적으로 제조업, 광업, 건설업 관련 분야에서 주로 육체노동에 종사하는 노동자"
+     },
+     {
+      "claim": "푸른 데님·샴브레이 셔츠에서 유래 · 1924년 아이오와 신문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue-collar_worker",
+      "note": "first used in reference to trades jobs in the United States in 1924, in an Alden, Iowa newspaper. The phrase stems from the image of manual workers wearing blue denim or chambray shirts"
+     },
+     {
+      "claim": "화이트칼라 = 흰 칼라 셔츠 · 간접 생산 부문",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/화이트칼라",
+      "note": "땀과 기름에 젖지 않은 간접 생산 부문 노동자의 상징으로, 청결한 작업복 즉 흰 칼라의 셔츠이다."
+     },
+     {
+      "claim": "핑크칼라 = 서비스직",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blue-collar_worker",
+      "note": "A third type of work is a service worker (pink collar)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/화이트칼라"
+    ],
+    "hintNote": null,
+    "easiestCue": "푸른 작업 셔츠 · 육체노동자",
+    "worthWhyGen": "3 — 늘 쓰는 말의 색 상징 유래가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '영어 표현' — 예",
+     "unique": "푸른 작업복 · 육체노동자 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

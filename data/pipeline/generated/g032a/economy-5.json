@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "economy/5",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/5#g032a-job-03-5",
+   "seed": {
+    "subject": "인클로저 운동",
+    "aspect": null,
+    "ref": "job-03-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "16세기 영국에서 벌어진 토지 정리 움직임입니다. 양털이 큰돈이 되자, 지주들이 마을 사람들이 함께 쓰던 땅에 울타리를 치고 양을 길렀습니다. 쫓겨난 농민들이 떠돌이가 되자 토머스 모어는 '양이 사람을 잡아먹는다'고 꼬집었습니다. 이 움직임은?",
+    "answer": "인클로저 운동",
+    "acceptedAnswers": [
+     "엔클로저 운동",
+     "인클로저",
+     "엔클로저"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "18세기 후반부터는 의회가 법을 만들어 밀어붙였고, 19세기 전반까지 영국 땅 대부분이 울타리 안으로 들어갔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "마을 사람들이 함께 쓰던 땅에 울타리를 치고 양을 길렀습니다",
+     "difWhy": "3 — 학교 세계사 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 경제사 교과 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "공유지를 사유지로 바꾼 이 일로 농촌에서 밀려난 사람들이 도시로 가서 산업혁명의 일손이 되었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "영국에서 공유지·개방 경지에 울타리를 쳐 사유지로 만든 움직임",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "세계사 교과서에서 접함",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '16세기 영국의 토지 정리 움직임' 이 끝 ○○(움직임)와 일치 · 모어의 말은 마지막 단서"
+    },
+    "blindQuestion": {
+     "guess": "인클로저 운동",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "인클로저 운동",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "인클로저 운동",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4387",
+      "answer": "남해 거품 사건",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(인클로저 운동 / 남해 거품 사건)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Enclosure",
+     "https://ko.wikipedia.org/wiki/인클로저"
+    ],
+    "facts": [
+     {
+      "claim": "튜더 시대 양모 수요로 지주가 공유지를 둘러싸 양 목장으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Enclosure",
+      "note": "In Tudor England the ever increasing demand for wool had a dramatic effect on the landscape. The attraction of large profits to be made from wool encouraged manorial lords to enclose common land and convert it from arable to (mainly) sheep pasture."
+     },
+     {
+      "claim": "토머스 모어 '유토피아' — 양이 사람을 잡아먹는다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Enclosure",
+      "note": "Sir Thomas More in his Utopia said: ... your sheep, which are naturally mild, and easily kept in order, may be said now to devour men"
+     },
+     {
+      "claim": "16세기~ 제1차는 양치기 목적 · 울타리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/인클로저",
+      "note": "16세기부터 17세기 중반까지의 제1차는 '양치기'를 목적으로 하였고 ... 양을 키우기 위해 농지에 울타리를 세우자 농사를 지었던 농민들은 도시의 공장으로 내몰리면서"
+     },
+     {
+      "claim": "쫓겨난 이들이 떠돌이·도둑이 될 걱정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Enclosure",
+      "note": "The authorities were concerned that many of the people subsequently dispossessed would become vagabonds and thieves."
+     },
+     {
+      "claim": "18세기 후반 의회 입법으로 강행 · 19세기 전반 대부분",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/인클로저",
+      "note": "18세기 후반의 인클로저는 의회(議會)의 입법에 의해 ... 강행되었다. ... 19세기 전반까지는 영국의 토지 대부분이 인클로저에 들어가게 되었다."
+     },
+     {
+      "claim": "남은 농촌 일손이 도시 산업 노동자로",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Enclosure",
+      "note": "Surplus peasant labour moved into the towns to become industrial workers."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/인클로저"
+    ],
+    "hintNote": null,
+    "easiestCue": "울타리를 치고 양을 길렀다 · 양이 사람을 잡아먹는다",
+    "worthWhyGen": "'양이 사람을 잡아먹는다'는 말이 왜 나왔는지 — 산업혁명 일손의 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '토지 정리 움직임' — 예",
+     "unique": "16세기 영국 울타리 + 양 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 산업혁명"
+    ],
+    "job": "job-03"
+   }
+  }
+ ]
+}

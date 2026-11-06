@@ -1,0 +1,251 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "music-theory/2",
+  "midKey": "music-theory",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "music-theory/2#g032a-g032a-j08-5",
+   "seed": {
+    "subject": "5음 음계",
+    "aspect": null,
+    "ref": "g032a-j08-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "음계의 한 종류입니다. 피아노에서 검은 건반만 차례로 누르면 이 음계가 나옵니다. 쇼팽의 '흑건' 연습곡도 오른손이 거의 검은 건반만 칩니다. 스코틀랜드·아일랜드 민요에 흔한 이 음계는?",
+    "answer": "5음 음계",
+    "acceptedAnswers": [
+     "오음 음계",
+     "오음계",
+     "펜타토닉",
+     "펜타토닉 스케일"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "쇼팽은 편지에서 그 곡을 두고 '검은 건반용인 줄 모르는 사람에게는 가장 재미없는 연습곡'이라고 적었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "피아노에서 검은 건반만 차례로 누르면 나오는 음계",
+     "difWhy": "4 — 이름이 정의 → 이름 · 용어 떠올리기 어려움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 음악 이론",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "'도·레·미·솔·라'처럼 파와 시가 빠져 아무렇게나 눌러도 어울리는 음계로, 블루스·록 기타 즉흥 연주의 기본이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한 옥타브를 다섯 음으로 이룬 음계(펜타토닉)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "음악 시간 용어, 이름은 흐릿",
+     "piece": "f07",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '음계의 한 종류' 가 끝 ○○ 와 일치, 검은 건반 단서가 구체적"
+    },
+    "blindQuestion": {
+     "guess": "5음음계",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "펜타토닉 스케일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "5음 음계",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1800",
+      "answer": "반음",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1803",
+      "answer": "평균율",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1806",
+      "answer": "메트로놈",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pentatonic_scale",
+     "https://en.wikipedia.org/wiki/Étude_Op._10,_No._5_(Chopin)"
+    ],
+    "facts": [
+     {
+      "claim": "피아노 검은 건반 = G플랫 장조 5음 음계 · 쇼팽 흑건 · 스코틀랜드·아일랜드 민요",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pentatonic_scale",
+      "note": "The black keys on a piano keyboard comprise a G-flat (or equivalently, F-sharp) major pentatonic scale ... which is exploited in Chopin's black key étude. ... In Scottish music, the pentatonic scale is very common. ... It also features in Irish traditional music"
+     },
+     {
+      "claim": "흑건 연습곡 오른손이 검은 건반만(한 음 제외)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Étude_Op._10,_No._5_(Chopin)",
+      "note": "The work is characterized by the rapid triplet figuration played by the right hand exclusively on black keys, except for one note, an F natural in measure 66."
+     },
+     {
+      "claim": "블루스·록 즉흥",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Pentatonic_scale",
+      "note": "the blues scale is predominantly derived from the minor pentatonic scale, a very popular scale for improvisation in the realms of blues and rock alike."
+     },
+     {
+      "claim": "쇼팽 편지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Étude_Op._10,_No._5_(Chopin)",
+      "note": "How could she have chosen precisely this Étude, the least interesting for those who do not know that it is intended for the black keys"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pentatonic_scale"
+    ],
+    "hintNote": null,
+    "easiestCue": "피아노 검은 건반만 누르면 나오는 음계",
+    "worthWhyGen": "음악 교과 개념에 피아노로 바로 확인되는 쓸모 — 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '음계' 예",
+     "unique": "검은 건반만 — 온음음계·반음계와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "music-theory/2#g032a-g032a-j29-8",
+   "seed": {
+    "subject": "캐논 진행",
+    "aspect": null,
+    "ref": "g032a-j29-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대중가요에 자주 쓰이는 화음 순서입니다. 라장조로 치면 D–A–Bm–F#m–G–D–G–A 여덟 화음이 되풀이됩니다. 결혼식 음악으로 유명한 17세기 바로크 곡의 제목을 붙여 부르는 이 화음 순서는?",
+    "answer": "캐논 진행",
+    "acceptedAnswers": [
+     "카논 진행",
+     "캐논 코드",
+     "카논 코드"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 곡은 수백 년 잊혔다가 1968년 파야르 실내악단의 녹음으로 다시 알려졌습니다. 그 뒤 여러 팝송이 이 화성을 가져다 썼습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "결혼식 음악으로 유명한 17세기 바로크 곡 제목을 붙인 화음 순서",
+     "difWhy": "3 — 음악 용어 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 음악 취미 지식",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 22",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "요한 파헬벨이 쓴 곡의 베이스가 되풀이하는 화성으로, 자전거 탄 풍경의 '너에게 난, 나에게 넌'도 이 흐름을 따른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "파헬벨의 카논에서 온 I–V–vi–iii–IV–I–IV–V 코드 진행",
+    "familiarity": {
+     "judge": 1,
+     "pct": 22,
+     "why": "음악 전문 용어, 파헬벨 캐논은 알아도 이름은 낯섦",
+     "piece": "f02",
+     "genPct": 50
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/파헬벨의_카논",
+     "https://en.wikipedia.org/wiki/Pachelbel%27s_Canon"
+    ],
+    "facts": [
+     {
+      "claim": "D–A–Bm–F#m–G–D–Em(또는 G)–A 진행 · 현대 곡에 널리 쓰임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/파헬벨의_카논",
+      "note": "D - A - Bm - F#m - G - D - Em(또는 G) - A7 ... 이 코드 진행은 현대 만들어지는 곡에도 널리 쓰이고 있다."
+     },
+     {
+      "claim": "17세기 바로크 · 결혼식에 쓰임 · 팝송에 화성 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pachelbel%27s_Canon",
+      "note": "Pachelbel's Canon ... by German Baroque composer Johann Pachelbel ... especially its chord progression, were used in a variety of pop songs ... The composition is famously used in weddings"
+     },
+     {
+      "claim": "베이스 오스티나토 반복 화성 · 너에게 난 나에게 넌",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/파헬벨의_카논",
+      "note": "베이스의 오스티나토와 이에 기반한 반복되는 화성을 기초로 하고 있다 ... 자전거 탄 풍경의 '너에게 난 나에게 넌'(G)"
+     },
+     {
+      "claim": "1968 파야르 녹음으로 인기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pachelbel%27s_Canon",
+      "note": "remained in obscurity for centuries. A 1968 arrangement and recording of it by the Jean-François Paillard chamber orchestra gained popularity"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/파헬벨의_카논"
+    ],
+    "hintNote": null,
+    "easiestCue": "결혼식 음악 바로크 곡 제목을 붙인 화음 순서",
+    "worthWhyGen": "2 — 음악 취미 영역이지만 수많은 가요에 쓰이는 화성",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '화음 순서' — 예",
+     "unique": "곡 이름 + 진행 → 하나",
+     "hint12": "① 예 ② 예 (곡 이름 '카논' 은 감춤)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29",
+    "discarded": "친숙도 1 (pct 22 · 음악 전문 용어, 파헬벨 캐논은 알아도 이름은 낯섦)"
+   }
+  }
+ ]
+}

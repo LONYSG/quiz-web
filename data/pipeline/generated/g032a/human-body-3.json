@@ -1,0 +1,265 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "human-body/3",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/3#g032a-g032a-j05-1",
+   "seed": {
+    "subject": "골전도",
+    "aspect": null,
+    "ref": "g032a-j05-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "귀로 소리가 전해지는 길 하나를 묻습니다. 녹음한 내 목소리는 평소보다 높고 얇게 들려 어색합니다. 말할 때 내 목소리는 공기뿐 아니라 머리뼈의 떨림으로도 속귀에 닿는데, 뼈는 낮은 소리를 더 잘 실어 나르기 때문입니다. 이렇게 소리가 전해지는 방식은?",
+    "answer": "골전도",
+    "acceptedAnswers": [
+     "뼈 전도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1923년 휴고 건스백이 이 원리를 쓴 보청기 '오소폰'을 내놓았다. 바깥 소리를 함께 들을 수 있어 운동용 헤드폰으로도 쓰인다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "머리뼈의 떨림으로도 속귀에 닿는데",
+     "difWhy": "3 — 골전도 이름은 알아도 설명에서 떠올려야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 녹음 목소리가 어색한 까닭 · 누구나 겪음",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "귀를 막지 않고 관자놀이에 대는 이어폰과 일부 보청기의 원리로, 베토벤이 막대를 입에 물고 피아노 소리를 들었다는 이야기로도 알려졌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "소리가 귓구멍 대신 머리뼈의 떨림으로 속귀에 전해지는 것(골전도 이어폰·보청기의 원리)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "이어폰 광고에서 접함",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '소리가 전해지는 길 하나' 로 묻는 종류를 밝히고 끝 ○○(방식)와 맞음 · 설명이 일상 장면이라 해독에 걸림 없음"
+    },
+    "blindQuestion": {
+     "guess": "골전도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "골전도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "골전도",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2284",
+      "answer": "간상세포",
+      "verdict": "diff",
+      "why": "골전도 vs 간상세포"
+     },
+     {
+      "old": "2290",
+      "answer": "통각",
+      "verdict": "diff",
+      "why": "골전도 vs 통각"
+     },
+     {
+      "old": "4425",
+      "answer": "유스타키오관",
+      "verdict": "diff",
+      "why": "골전도 vs 유스타키오관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/골전도",
+     "https://en.wikipedia.org/wiki/Bone_conduction"
+    ],
+    "facts": [
+     {
+      "claim": "녹음된 목소리가 다르게 들리는 까닭 · 머리뼈가 낮은 소리를 더 잘 전함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/골전도",
+      "note": "골전도는 어째서 사람의 목소리가 녹음 후 재생해서 들어볼 때 다르게 들리는지의 이유에서 출발한다. 두개골이 공기보다 더 낮은 주파수를 더 잘 전도하기 때문에 사람들은 자신의 목소리가 다른 사람들이 느끼는 것보다 더 낮고 더 꽉다고 느끼는 것이며 사람의 목소리를 녹음하면 그 사람이 예측한 바보다 주파수가 더 높게 들린다."
+     },
+     {
+      "claim": "같은 내용(영문)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bone_conduction",
+      "note": "Bone conduction is one reason why a person's voice sounds different to them when it is recorded and played back. Because the skull conducts lower frequencies better than air, people perceive their own voices to be lower and fuller than others do, and a recording of one's own voice frequently sounds higher than one expects."
+     },
+     {
+      "claim": "헤드폰·보청기 · 베토벤 막대 일화(소문)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Bone_conduction",
+      "note": "Ludwig van Beethoven was famously rumored to be using bone conduction after losing most of his hearing, by placing one end of a rod in his mouth and resting the other end on the rim of his piano. / ...as with bone-conduction headphones—or as a treatment option for certain types of hearing impairment."
+     },
+     {
+      "claim": "1923 건스백 오소폰 · 바깥 소리 인지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bone_conduction",
+      "note": "In 1923, Hugo Gernsback created a new kind of bone conduction hearing aid called the \"Osophone\" / leaving the ears free to pick up sound from the environment, users can listen to audio while maintaining greater situational awareness"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bone_conduction",
+     "https://ko.wikipedia.org/wiki/골전도"
+    ],
+    "hintNote": null,
+    "easiestCue": "머리뼈의 떨림으로 속귀에 닿는다",
+    "worthWhyGen": "누구나 겪는 '녹음된 내 목소리가 어색한 까닭'(왜 그렇게 되나)이 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '소리가 전해지는 길' 예",
+     "unique": "뼈로 전해지는 방식 — 공기 전도와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 베토벤"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "human-body/3#g032a-g032a-j20-12",
+   "seed": {
+    "subject": "홍채",
+    "aspect": null,
+    "ref": "g032a-j20-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "눈에서 동공을 둘러싼 고리 모양의 얇은 막입니다. 빛의 양에 따라 동공의 크기를 조절합니다. 이 막의 색에 따라 눈동자 색이 갈색이나 파란색 등으로 달라집니다. 이 막은 무엇일까요?",
+    "answer": "홍채",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름의 한자 '홍(虹)'은 무지개를 뜻하며, 영어 iris도 여러 빛깔을 띤다 하여 그리스어 '무지개'에서 왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "눈에서 동공을 둘러싼 고리 모양의 얇은 막 … 눈동자 색이 갈색이나 파란색",
+     "difWhy": "2 — 눈동자 색을 정하는 막 · 홍채는 익숙하나 설명 → 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 인체 개념 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "사람마다 무늬가 달라서, 카메라에 눈을 비춰 본인을 확인하는 생체 인식에 쓰이는 부위다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "동공 크기를 조절하고 눈 색을 정하는 눈의 막",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "눈 구조·홍채 인식",
+     "piece": "f09",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '눈 · 얇은 막' 이 있고 끝 ○○ '이 막' 이 그 막이라 지시어가 분명함"
+    },
+    "blindQuestion": {
+     "guess": "홍채",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "홍채",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "홍채",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Iris_(anatomy)",
+     "https://ko.wikipedia.org/wiki/홍채",
+     "https://ko.wikipedia.org/wiki/홍채_인식"
+    ],
+    "facts": [
+     {
+      "claim": "동공 크기 조절 · 눈 색 결정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Iris_(anatomy)",
+      "note": "is a thin, ring-shaped structure in the eye ... responsible for controlling the diameter and size of the pupil, and thus the amount of light reaching the retina. ... Eye color is defined by the iris."
+     },
+     {
+      "claim": "기질이 동공 근육과 이어져 동공 조절",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/홍채",
+      "note": "기질은 괄약근 근육(괄약근 동공)과 이어져 있어서 동공과 열린 확장근 근육들을 닫히게 한다."
+     },
+     {
+      "claim": "고유한 패턴 · 생체 식별",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/홍채_인식",
+      "note": "홍채 인식(虹彩認識, iris recognition)은 ... 자동화된 생체 식별 방식으로, 복잡한 패턴이 고유하고 안정적이며 일정한 거리에서 관찰이 가능하다."
+     },
+     {
+      "claim": "iris = 그리스어 무지개",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Iris_(anatomy)",
+      "note": "The word \"iris\" is derived from \"ἶρις\", the Greek word for \"rainbow\", as well as Iris, goddess of the rainbow in the Iliad, due to the many colors the human iris can take."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/홍채_인식"
+    ],
+    "hintNote": null,
+    "easiestCue": "동공 크기를 조절하고 눈 색을 정하는 막",
+    "worthWhyGen": "3 — 몸의 기본 부위와 일상 기술(홍채 인식)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '눈의 막' — 예",
+     "unique": "동공 조절 + 눈 색 = 하나(망막·각막 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  }
+ ]
+}

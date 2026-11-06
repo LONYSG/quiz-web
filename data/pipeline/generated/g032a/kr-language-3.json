@@ -1,0 +1,145 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-language/3",
+  "midKey": "kr-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/3#g032a-g032a-j02-3",
+   "seed": {
+    "subject": "안성맞춤",
+    "aspect": null,
+    "ref": "g032a-j02-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "생각하거나 바란 대로 꼭 들어맞는 것을 이르는 우리말 표현입니다. 경기도의 한 고을에 놋그릇(유기)을 주문해 만든 것처럼 마음에 꼭 든다는 데서 왔다고 사전은 풀이합니다. 이 말은?",
+    "answer": "안성맞춤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1988년 맞춤법이 바뀌기 전에는 '안성마춤'으로 적었습니다. 안성 유기는 품질이 좋아 궁궐에 진상품으로도 올라갔다고 전합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "마음에 꼭 든다는 데서 왔다 · 경기도 고을 놋그릇",
+     "difWhy": "2 — 흔한 말 · 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "날씨나 선물이 꼭 알맞을 때 '딱 ~이다'처럼 쓰는 말로, 앞부분은 놋그릇으로 이름난 경기도 남부 도시의 이름이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "꼭 알맞음을 이르는 말 — 안성 유기에서 유래",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상 관용어",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '꼭 들어맞는 것을 이르는 우리말 표현' 이 끝 ○○(말)와 일치 · 유래는 둘째 문장"
+    },
+    "blindQuestion": {
+     "guess": "안성맞춤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "안성맞춤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "안성맞춤",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5430",
+      "answer": "흥청망청",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(안성맞춤 / 흥청망청)"
+     },
+     {
+      "old": "4492",
+      "answer": "을씨년스럽다",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(안성맞춤 / 을씨년스럽다)"
+     },
+     {
+      "old": "4986",
+      "answer": "건달",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(안성맞춤 / 건달)"
+     }
+    ],
+    "sources": [
+     "https://pressian.com/pages/articles/2023080410563665278",
+     "https://sgsg.hankyung.com/article/2007061395741",
+     "https://www.kyeonggi.com/article/201803040973277"
+    ],
+    "facts": [
+     {
+      "claim": "표준국어대사전 — 안성에 유기를 주문하여 만든 것처럼 잘 들어맞는다는 데서 유래",
+      "where": "q",
+      "url": "https://pressian.com/pages/articles/2023080410563665278",
+      "note": "(기사 인용) 경기도 안성에 유기를 주문하여 만든 것처럼 잘 들어맞는다는 데서 유래한다."
+     },
+     {
+      "claim": "안성 유기가 주문자 마음에 꼭 들어 이 말이 생겼다",
+      "where": "q",
+      "url": "https://sgsg.hankyung.com/article/2007061395741",
+      "note": "(검색 요약) 안성에서 만든 유기가 품질과 모양이 뛰어나 궁궐 진상품 등으로 올라갔고, 주문자의 마음에 꼭 드는 유기가 많아 이 말이 생겼다"
+     },
+     {
+      "claim": "1988년 이전 '안성마춤'",
+      "where": "e",
+      "url": "https://www.kyeonggi.com/article/201803040973277",
+      "note": "(검색 요약) 이 단어는 1988년 이전까진 '안성마춤'이었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://sgsg.hankyung.com/article/2010051999421"
+    ],
+    "hintNote": null,
+    "easiestCue": "경기도 한 고을의 놋그릇 주문",
+    "worthWhyGen": "매일 쓰는 관용 표현의 유래(일상 말 + 유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '우리말 표현' 예",
+     "unique": "꼭 들어맞음 + 경기도 놋그릇 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 선물"
+    ],
+    "job": "job-02"
+   }
+  }
+ ]
+}

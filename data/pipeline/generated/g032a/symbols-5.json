@@ -1,0 +1,279 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "symbols/5",
+  "midKey": "symbols",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "symbols/5#g032a-g032a-j17-6",
+   "seed": {
+    "subject": "용",
+    "aspect": null,
+    "ref": "g032a-j17-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "열두 띠 가운데 다섯째 동물이며, 지지로는 '진(辰)'에 해당합니다. 중국계 사람이 많은 나라에서는 이 띠 해에 아이를 낳으면 운이 좋다고 여겨 출생아가 크게 늘곤 합니다. 이 띠 동물은?",
+    "answer": "용",
+    "acceptedAnswers": [
+     "용띠"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "태국·미얀마 등의 불교 달력에서는 이 자리에 뱀신 '나가'가, 옛 튀르크 달력에서는 물고기나 악어가 들어간다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "열두 띠 가운데 다섯째 동물이며 지지로는 진",
+     "difWhy": "1 — 열두 띠 다섯째는 바로 용",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 띠는 일상 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "비늘 덮인 긴 몸으로 하늘을 날며 비를 부른다고 믿던, 임금을 상징하던 상상의 동물",
+    "generalHintVersion": "hint-v7",
+    "identity": "용 — 십이지의 다섯째(진) 띠 동물",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "십이지 띠 상식",
+     "piece": "f07",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '열두 띠 다섯째 동물'이 끝 ○○=띠 동물과 일치. 주어 하나."
+    },
+    "blindQuestion": {
+     "guess": "용",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "용",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "용",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "308",
+      "answer": "쥐",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "g032a:g032a-j30-8",
+      "answer": "삼재",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5599",
+      "answer": "뱀주인자리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/지지_(역법)",
+     "https://en.wikipedia.org/wiki/Dragon_(zodiac)"
+    ],
+    "facts": [
+     {
+      "claim": "쥐·소·범·토끼·용 — 다섯째 · 진",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지지_(역법)",
+      "note": "자(子), 축(丑), 인(寅), 묘(卯), 진(辰) ... 쥐·소·범·토끼·용·뱀·말·양·원숭이·닭·개·돼지의 12동물과 대응시킨 것"
+     },
+     {
+      "claim": "fifth · 辰 · 출생률 급증",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dragon_(zodiac)",
+      "note": "the fifth of the 12-year cycle of animals ... associated with the Earthly Branch symbol 辰 ... There are typically marked spikes in the birth rates of countries that use the Chinese zodiac or places with substantial Chinese populations during the Year of the Dragon, because these births are considered to be lucky"
+     },
+     {
+      "claim": "나가 · 물고기·악어",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dragon_(zodiac)",
+      "note": "In the Buddhist calendar used in Thailand, Cambodia, Laos, Myanmar, and Sri Lanka, the dragon is replaced by the nāga. ... In the Old Turkic calendar it is replaced by a fish or crocodile."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "열두 띠 가운데 다섯째(진)",
+    "worthWhyGen": "누구나 쓰는 띠 상식 + 용띠 해 출생 붐이라는 생활 사실",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '띠 동물' 예",
+     "unique": "다섯째 · 진 → 용 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "symbols/5#g032a-g032a-j30-8",
+   "seed": {
+    "subject": "삼재",
+    "aspect": null,
+    "ref": "g032a-j30-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "띠로 따지는 민간 운세 속 액운의 시기 이야기입니다. 열두 해마다 세 해 동안 재난이 찾아온다고 합니다. 첫해에는 '들', 둘째 해에는 '눌', 마지막 해에는 '날'을 앞에 붙여 부릅니다. 이 시기를 무엇이라 할까요?",
+    "answer": "삼재",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한자로는 들·눌·날을 입(入)·침(枕)·출(出)로 적습니다. 과학적 근거는 없는 민간 신앙이지만 지금도 새해마다 자주 오르내립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "첫해에는 '들', 둘째 해에는 '눌', 마지막 해에는 '날'",
+     "difWhy": "2 — 들·눌·날 단서가 삼재로 이어짐",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 민속 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "새해 운세 기사마다 해당 띠 목록이 실리는 액운으로, 돼지·토끼·양띠는 뱀·말·양의 해에 함께 겪는다고 본다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "십이지 띠에 따라 12년마다 3년 동안 든다는 재난의 해",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "토정비결·띠 운세로 흔함",
+     "piece": "f06",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '민간 운세 속 액운의 시기' 가 끝 ○○(시기)와 일치 · 들·눌·날 접두 단서가 둘째·셋째 문장에 짧게 나옴"
+    },
+    "blindQuestion": {
+     "guess": "삼재",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "삼재",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "삼재",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6638",
+      "answer": "소백산",
+      "verdict": "diff",
+      "why": "신규 '삼재'(다른 민속·역법) ≠ 옛 '소백산' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1253",
+      "answer": "자시",
+      "verdict": "diff",
+      "why": "신규 '삼재'(다른 민속·역법) ≠ 옛 '자시' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1250",
+      "answer": "황도 12궁",
+      "verdict": "diff",
+      "why": "신규 '삼재'(다른 민속·역법) ≠ 옛 '황도 12궁' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1251",
+      "answer": "세차운동",
+      "verdict": "diff",
+      "why": "신규 '삼재'(다른 민속·역법) ≠ 옛 '세차운동' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "g032a:g032a-j17-6",
+      "answer": "용",
+      "verdict": "diff",
+      "why": "신규 '삼재'(다른 민속·역법) ≠ 옛 '용' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/삼재",
+     "https://thewiki.kr/w/삼재"
+    ],
+    "facts": [
+     {
+      "claim": "12년 주기로 돌아오는 세 가지 재난 · 십이지에 따름 · 입(들)·침(눌)·출(날)삼재",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼재",
+      "note": "삼재(三災)는 인간에게 12년 주기로 돌아온다는 3가지 재난을 의미한다 ... 십이지(十二支)에 따른다. 삼재의 첫해를 입삼재(入三災, 들삼재)이라고 하며 두 번째 해는 침삼재(枕三災, 눌삼재)를, 마지막 해를 출삼재(出三災, 날삼재)"
+     },
+     {
+      "claim": "띠마다 9년 쉬고 3년 · 들·눌·날삼재 단계",
+      "where": "q",
+      "url": "https://thewiki.kr/w/삼재",
+      "note": "특정 띠마다 9년 주기로 돌아오는 재난의 시기 · 들삼재는 시작되는 해, 눌삼재는 중간 해, 날삼재는 마지막 해 (WebSearch 요약)"
+     },
+     {
+      "claim": "해묘미(돼지·토끼·양)띠는 사오미(뱀·말·양)년이 삼재",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/삼재",
+      "note": "亥(해)卯(묘)未(미)띠는 巳(사)午(오)未(미)년이 삼재에 해당한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/삼재",
+     "https://thewiki.kr/w/삼재"
+    ],
+    "hintNote": null,
+    "easiestCue": "들·눌·날을 붙여 부르는 세 해의 재난",
+    "worthWhyGen": "3 — 지금도 새해 운세에서 쓰는 일상 말(민간 신앙)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '띠 운세' — 예(4문장이지만 짧음)",
+     "unique": "들·눌·날 → 삼재 하나(아홉수 배제)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

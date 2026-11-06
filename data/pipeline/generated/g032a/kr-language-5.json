@@ -1,0 +1,142 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-language/5",
+  "midKey": "kr-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/5#g032a-g032a-j12-10",
+   "seed": {
+    "subject": "생신",
+    "aspect": null,
+    "ref": "g032a-j12-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어른의 나이를 높여 '연세'라고 하듯, 어른의 생일을 높여 부르는 말이 있습니다. '할아버지 ○○ 잔치'처럼 쓰는 이 두 글자 높임말은?",
+    "answer": "생신",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한자로는 生辰이라 쓴다. 나이를 높인 '연세', 이름을 높인 '성함'과 함께 어른께 쓰는 대표 높임말이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "'할아버지 ○○ 잔치' 두 글자 높임말",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 일상 어법",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "해마다 돌아오는 어른의 이날에는 자녀들이 모여 미역국을 끓이고 선물을 드린다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'생일'의 높임말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "일상 높임말",
+     "piece": "f05",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "'연세' 비유로 무엇을 묻는지 바로 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "생신",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "생신",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "생신",
+     "qFacts": 1,
+     "qSources": 1,
+     "checked": 0,
+     "found": 0,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6214",
+      "answer": "해커",
+      "verdict": "diff",
+      "why": "기계 겹침은 '학생 신문' 붙여 읽은 오탐 - 생신 vs 해커"
+     },
+     {
+      "old": "6682",
+      "answer": "은행나무 침대",
+      "verdict": "diff",
+      "why": "'전생 신드롬' 오탐 - 생신 vs 은행나무 침대"
+     },
+     {
+      "old": "4336",
+      "answer": "로저 배니스터",
+      "verdict": "diff",
+      "why": "'의대생 신분' 오탐 - 생신 vs 로저 배니스터"
+     },
+     {
+      "old": "313",
+      "answer": "진지",
+      "verdict": "diff",
+      "why": "생신 vs 진지 - 서로 다른 높임말 어휘"
+     },
+     {
+      "old": "4502",
+      "answer": "춘부장",
+      "verdict": "diff",
+      "why": "생신 vs 춘부장 - 서로 다른 높임말"
+     }
+    ],
+    "sources": [
+     "https://ko.wiktionary.org/wiki/생신"
+    ],
+    "facts": [
+     {
+      "claim": "'생일'의 높임말 · 生辰",
+      "where": "q",
+      "url": "https://ko.wiktionary.org/wiki/생신",
+      "note": "어원: 한자 生辰 '생일'의 높임말. 이번 어머님 생신에는 어떤 선물을 할까?"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "어른의 생일을 높여 부르는 말",
+    "worthWhyGen": "일상 높임말 규범(19 §9-1 ③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '연세'와 견줌 — 예",
+     "unique": "두 글자 · 생일의 높임 — 탄신(위인)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 선물/미역국",
+     "질문 사실 출처 2 미만"
+    ],
+    "job": "job-12"
+   }
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "plants/2",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/2#g032a-g032a-j27-5",
+   "seed": {
+    "subject": "코스모스",
+    "aspect": null,
+    "ref": "g032a-j27-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "가을 길가에 흔히 피는 꽃입니다. 멕시코가 고향인 한해살이풀로, 우리말로는 '살사리꽃'이라고도 합니다. 꽃잎이 가지런히 질서 있게 달려, '질서'를 뜻하는 그리스어에서 이름을 땄다고 전합니다. 이 꽃은?",
+    "answer": "코스모스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 그리스어는 '질서 있는 세계', 곧 우주를 뜻하기도 합니다. 꽃 빛깔이 보석 같아 붙은 이름이라는 설도 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "가을 길가에 흔히 피는 꽃",
+     "difWhy": "2 — 가을 길가 꽃 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "분홍·흰·보라 혀꽃 6~8장이 2m 가까이 자라는 가는 줄기 끝에 하나씩 달려 바람에 하늘거리는 꽃이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "가을에 피는 멕시코 원산 국화과 한해살이 꽃",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "가을꽃으로 유명",
+     "piece": "f07",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '꽃' 이 끝 ○○ '꽃' 과 일치 · 그리스어 어원은 보조 단서"
+    },
+    "blindQuestion": {
+     "guess": "코스모스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "코스모스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "코스모스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4597",
+      "answer": "단일식물",
+      "verdict": "diff",
+      "why": "새=코스모스 꽃; 단일식물·국화·모란·제비꽃·동백은 다른 꽃 지식"
+     },
+     {
+      "old": "1181",
+      "answer": "국화",
+      "verdict": "diff",
+      "why": "새=코스모스 꽃; 단일식물·국화·모란·제비꽃·동백은 다른 꽃 지식"
+     },
+     {
+      "old": "4611",
+      "answer": "모란",
+      "verdict": "diff",
+      "why": "새=코스모스 꽃; 단일식물·국화·모란·제비꽃·동백은 다른 꽃 지식"
+     },
+     {
+      "old": "5565",
+      "answer": "제비꽃",
+      "verdict": "diff",
+      "why": "새=코스모스 꽃; 단일식물·국화·모란·제비꽃·동백은 다른 꽃 지식"
+     },
+     {
+      "old": "1186",
+      "answer": "동백",
+      "verdict": "diff",
+      "why": "새=코스모스 꽃; 단일식물·국화·모란·제비꽃·동백은 다른 꽃 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/코스모스_(꽃)",
+     "https://en.wikipedia.org/wiki/Cosmos_(plant)"
+    ],
+    "facts": [
+     {
+      "claim": "멕시코 원산 한해살이풀 · 고유어 살사리꽃",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/코스모스_(꽃)",
+      "note": "코스모스(Cosmos bipinnatus …)는 멕시코가 원산지인 코스모스속의 한해살이풀이다. 한국 고유어로는 살사리꽃이라 부른다."
+     },
+     {
+      "claim": "이름 = 그리스어 '질서 있는 세계', 꽃의 가지런한 배열 때문 (또는 보석)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cosmos_(plant)",
+      "note": "The generic name Cosmos derives either from the Greek κόσμος (cosmos) '(ordered) world' – in reference to the neat, orderly arrangement of the floral structures – or the Greek κόσμημα (kósmima) 'jewel' – in reference to the jewel-like colors"
+     },
+     {
+      "claim": "높이 1.5~2m · 설상화 6~8개 · 흰색·분홍·보라",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/코스모스_(꽃)",
+      "note": "코스모스의 높이는 약 1.5m에서 2m이다. … 꽃은 줄기와 가지 끝에 한 개씩 달린다. … 설상화는 6에서 8개이고 색상은 품종에 따라 흰색, 분홍색, 보라색으로 다양하다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/코스모스_(꽃)"
+    ],
+    "hintNote": null,
+    "easiestCue": "가을 길가 꽃 · 살사리꽃",
+    "worthWhyGen": "3 — 누구나 아는 꽃 이름의 유래('질서' → 우주와 같은 말)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '꽃' — 예",
+     "unique": "살사리꽃 + 멕시코 원산 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 분홍/보라"
+    ],
+    "job": "job-27"
+   }
+  }
+ ]
+}

@@ -1,0 +1,148 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-west/5",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/5#g032a-g032a-j02-6",
+   "seed": {
+    "subject": "테디 베어",
+    "aspect": null,
+    "ref": "g032a-j02-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "곰 봉제 인형을 부르는 이름입니다. 1902년 미국 대통령 시어도어 루스벨트가 사냥에서 궁지에 몰린 곰을 쏘지 않은 일화가 신문 만평에 실렸습니다. 이를 본 장난감 가게 주인이 곰 인형에 대통령의 애칭을 붙여 팔면서 퍼졌습니다. 이 이름은?",
+    "answer": "테디 베어",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "기념일은 루스벨트의 생일인 10월 27일입니다. 초기 오리지널 제품은 크리스티·소더비 같은 경매장에서 비싸게 팔립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "곰 봉제 인형을 부르는 이름",
+     "difWhy": "1 — 곰 인형 이름 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름의 유래 · 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "독일 슈타이프사 제품이 대량으로 들어오며 널리 퍼진 털 봉제 인형으로, 아이를 편안하게 해 주는 대표 장난감이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "곰 봉제 인형 — 시어도어 루스벨트의 애칭에서 이름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "곰 인형으로 매우 친숙",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '곰 봉제 인형을 부르는 이름' 이 끝과 일치, 일화는 뒤에서 순서대로 풀림"
+    },
+    "blindQuestion": {
+     "guess": "테디베어",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "테디베어",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "테디 베어",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6737",
+      "answer": "워터게이트 사건",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(테디 베어 / 워터게이트 사건)"
+     },
+     {
+      "old": "2623",
+      "answer": "뉴딜",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(테디 베어 / 뉴딜)"
+     },
+     {
+      "old": "6121",
+      "answer": "워터게이트 사건",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(테디 베어 / 워터게이트 사건)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/테디_베어",
+     "https://en.wikipedia.org/wiki/Teddy_bear"
+    ],
+    "facts": [
+     {
+      "claim": "루스벨트가 궁지에 몰린 곰을 쏘지 않음 · 1902년 워싱턴 포스트 만평 · 가게 주인이 애칭 '테디'를 붙여 판매",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/테디_베어",
+      "note": "그는 죽을 지경에 이른 곰을 공격하는 것은 스포츠맨십에 어긋나다는 생각에 직접 그 곰을 쏘는 것을 거절하였다. … 1902년 11월 16일에 워싱턴 포스트지의 정치 삽화에 … 장난감가게 주인 모리스 미첨이 곰의 봉제인형에 루스벨트 대통령의 애칭인 \"테디\"라는 이름을 붙여 판매하게 되었다."
+     },
+     {
+      "claim": "Teddy bear 이름이 시어도어 루스벨트 곰 사냥 일화에서 옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Teddy_bear",
+      "note": "The name Teddy Bear comes from former United States President Theodore Roosevelt … (Berryman cartoon, Morris Michtom)"
+     },
+     {
+      "claim": "슈타이프 제품이 대량으로 들어와 이름이 퍼짐 · 어린이를 편안하게",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/테디_베어",
+      "note": "이 시기에 독일의 마르가르테 슈타이프사의 곰 봉제 인형이 대량으로 미국에 들여와 이 이름이 퍼졌다. / 어린이들을 편안하게 해 주는 것이 테디 베어의 목적이다."
+     },
+     {
+      "claim": "10월 27일 · 경매",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/테디_베어",
+      "note": "테디 베어의 날은 10월 27일로 정해 놓고 있으며 이는 시어도어 루스벨트의 생일과 같다. / 크리스티와 소더비즈 같은 전문 경매장에서 고가로 낙찰되기도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/테디_베어"
+    ],
+    "hintNote": null,
+    "easiestCue": "곰 봉제 인형 + 루스벨트 애칭",
+    "worthWhyGen": "누구나 아는 인형 이름의 유래(대통령 일화) — 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '이름' + 곰 봉제 인형 예",
+     "unique": "루스벨트 애칭 — 곰돌이 푸와 갈림",
+     "hint12": "① 예 ② 예(질문이 곰을 말해 힌트는 곰 낱말을 피함 — 약할 수 있음)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

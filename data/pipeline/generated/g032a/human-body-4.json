@@ -1,0 +1,516 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "human-body/4",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/4#g032a-g032a-j05-2",
+   "seed": {
+    "subject": "엔도르핀",
+    "aspect": null,
+    "ref": "g032a-j05-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "뇌가 스스로 만드는 진통 물질의 이름을 묻습니다. 1970년대 과학자들은 아편 진통제가 붙는 뇌 속 자리(수용체)에 똑같이 붙는 물질을 몸 안에서 찾아냈습니다. 그래서 '안에서 생긴'이라는 뜻의 그리스어 말에 그 진통제 이름을 붙여 줄인 이름을 지었습니다. 이 물질은?",
+    "answer": "엔도르핀",
+    "acceptedAnswers": [
+     "엔돌핀"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "아편 진통제 모르핀의 이름은 그리스 신화의 꿈의 신 모르페우스에서 왔다. 다만 이 물질은 모르핀과 다른 펩타이드(작은 단백질)이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "뇌가 스스로 만드는 진통 물질",
+     "difWhy": "2 — 뇌 진통 물질에서 이름 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "장거리 달리기 뒤의 상쾌함인 '러너스 하이'의 원인으로 흔히 꼽히는, 아픔을 덜고 기분을 좋게 하는 뇌 속 물질이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "뇌에서 만들어지는 진통·기분 물질(내인성 모르핀)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "건강 상식으로 유명",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "긴 문장",
+     "reason": "첫 문장엔 '진통 물질' 이 있어 ⑨ 는 통과하나 마지막 이름 유래 문장이 한 번에 안 풀려 두 번 읽을 수 있음"
+    },
+    "blindQuestion": {
+     "guess": "엔도르핀",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "엔도르핀",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "엔도르핀",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3590",
+      "answer": "시냅스",
+      "verdict": "diff",
+      "why": "엔도르핀 vs 시냅스"
+     },
+     {
+      "old": "g032a:g032a-j05-3",
+      "answer": "가위눌림",
+      "verdict": "diff",
+      "why": "엔도르핀 vs 가위눌림"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Endorphins",
+     "https://ko.wikipedia.org/wiki/엔도르핀"
+    ],
+    "facts": [
+     {
+      "claim": "이름 = endogenous + morphine 줄임 · endo = 그리스어 '안에서'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Endorphins",
+      "note": "The word endorphin is derived from ἔνδον / Greek: éndon meaning \"within\" (endogenous ...), and morphine, from Morpheus ..., the god of dreams in the Greek mythology. Thus, endorphin is a contraction of 'endo(genous) (mo)rphin'"
+     },
+     {
+      "claim": "내인성 모르핀이라는 뜻 · 아편유사수용체에 작용 · 진통",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/엔도르핀",
+      "note": "엔도르핀(영어: endorphin 또는 endogeneous morphine)은 내인성 모르핀이라는 뜻으로, 뇌와 뇌하수체에서 생성되는 '내생성 아편유사물질'들을 일컫는 용어이다. 이들은 중추신경계의 아편유사수용체(opiate receptor)에 작용하는 신경전달물질로서, 인간 뇌에서는 고통을 완화하는 작용을 한다."
+     },
+     {
+      "claim": "1970년대 발견(수용체 발견 뒤 몸 안 물질 탐색)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Endorphins",
+      "note": "Opioid peptides in the brain were first discovered in 1973 ... This came after the discovery of a receptor that was proposed to produce the pain-relieving analgesic effects of morphine and other opioids, which led Kosterlitz and Hughes to their discovery of the endogenous opioid ligands."
+     },
+     {
+      "claim": "러너스 하이와 관련(원인으로 꼽힘 — 확정 아님이라 '흔히 꼽히는')",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/엔도르핀",
+      "note": "장거리 달리기 등의 장시간의 운동으로 인해 엔도르핀이 분비되어 기분의 변화가 일어날 수 있다. / en: The release of β-endorphin has been postulated to contribute to the phenomenon known as \"runner's high\"."
+     },
+     {
+      "claim": "펩타이드 · 몸 안의 진짜 모르핀과 구별",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Endorphins",
+      "note": "Studies have subsequently distinguished between enkephalins, endorphins, and endogenously produced true morphine, which is not a peptide."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/엔도르핀",
+     "https://en.wikipedia.org/wiki/Endorphins"
+    ],
+    "hintNote": null,
+    "easiestCue": "뇌가 스스로 만드는 진통 물질",
+    "worthWhyGen": "일상어로 굳은 말(웃으면 ~이 돈다)의 이름 유래가 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '진통 물질' 예",
+     "unique": "아편 수용체에 붙는 몸 안 물질 + 이름 짜임 — 엔케팔린도 넓게 이 무리지만 대중 이름은 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "human-body/4#g032a-g032a-j05-3",
+   "seed": {
+    "subject": "가위눌림",
+    "aspect": null,
+    "ref": "g032a-j05-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "잠에서 깰 때 겪는 현상을 묻습니다. 꿈을 많이 꾸는 렘수면 동안 뇌는 꿈속 행동을 몸이 따라 하지 않도록 온몸의 근육을 멈춰 둡니다. 그런데 의식이 먼저 깨어났는데 이 멈춤이 늦게 풀리면, 정신은 또렷한데 손가락 하나 움직이지 못합니다. 이 현상은?",
+    "answer": "가위눌림",
+    "acceptedAnswers": [
+     "수면 마비"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "인구의 8% 정도가 겪는다고 추산한다. 불규칙한 잠과 스트레스가 원인으로 꼽히고, 남이 몸을 건드리면 쉽게 풀린다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "의식이 먼저 깨어났는데 … 손가락 하나 움직이지 못합니다",
+     "difWhy": "2 — 겪어 본 사람 많음 · 현상 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상에서 쓰는 말 · 원인 설명",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "가슴 위에 무언가 올라앉은 듯한 압박과 방에 누가 서 있는 듯한 환각이 함께 와서 흔히 귀신 탓으로 여겨 온 경험이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "잠들거나 깰 때 의식은 있으나 몸을 움직이지 못하는 현상(수면 마비)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "흔한 일상 경험·용어",
+     "piece": "f04",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '잠에서 깰 때 겪는 현상'이라 끝 ○○=현상과 일치. 렘수면은 설명되어 있음."
+    },
+    "blindQuestion": {
+     "guess": "가위눌림",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "가위눌림",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "가위눌림",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j05-2",
+      "answer": "엔도르핀",
+      "verdict": "diff",
+      "why": "가위눌림 vs 엔도르핀"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/가위눌림",
+     "https://en.wikipedia.org/wiki/Sleep_paralysis"
+    ],
+    "facts": [
+     {
+      "claim": "렘수면 중 근육 마비(행동 방지) · 깰 때 의식은 깨고 마비가 남음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/가위눌림",
+      "note": "렘수면 상태에서는 뇌간이 신체의 골격근을 마비시키는데, 각성된 뇌의 활동이 실제 행동으로 이어져 위험에 빠지는 것을 방지하기 위함이다. 이와달리 잠들거나 깰때, 의식(대뇌피질)이 각성된 상태에서 뇌간의 운동 억제 스위치가 갑자기 켜지거나 또는 꺼지지 않아 근육 마비가 지속되고"
+     },
+     {
+      "claim": "렘수면과 깨어 있음이 겹친 상태(REM 기능 이상)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sleep_paralysis",
+      "note": "sleep paralysis is a parasomnia resulting from dysfunctional overlap of the REM and waking stages of sleep. / Medical treatment starts with education about sleep stages and the inability to move muscles during REM sleep."
+     },
+     {
+      "claim": "가슴 압박 · 방 안 침입자 환각 · 귀신·악령 탓으로 여김",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Sleep_paralysis",
+      "note": "the belief that there is an intruder in the room ... Such sleep paralysis was widely considered the work of demons, and more specifically incubi, which were thought to sit on the chests of sleepers."
+     },
+     {
+      "claim": "8% · 원인 · 접촉으로 풀림",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/가위눌림",
+      "note": "학계에서는 인구의 8퍼센트 정도가 수면 마비를 경험한다고 추산하고 있다. / 주요 원인으로는 ... 수면 부족 및 불규칙한 수면 패턴, 스트레스 및 피로 ... 타인의 접촉이나 강한 자극이 주어지면 마비현상에서 쉽게 빠져나올 수 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/가위눌림",
+     "https://en.wikipedia.org/wiki/Sleep_paralysis"
+    ],
+    "hintNote": null,
+    "easiestCue": "정신은 또렷한데 몸을 못 움직인다",
+    "worthWhyGen": "누구나 아는 일상 말의 '왜 그렇게 되나'(뇌의 근육 멈춤)가 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '잠에서 깰 때 겪는 현상' 예",
+     "unique": "깰 때 몸이 안 움직임 — 몽유병·악몽과 갈림 · 렘수면(avoid)과는 다른 정답 · 같은 지식 경계 약간",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "human-body/4#g032a-g032a-j14-9",
+   "seed": {
+    "subject": "뇌사",
+    "aspect": null,
+    "ref": "g032a-j14-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "의학에서 쓰는 뇌의 상태를 가리키는 말입니다. 큰 사고 등으로 숨을 조절하는 뇌줄기까지 뇌 전체의 기능이 멈춰 다시 회복할 수 없습니다. 심장은 뛰어도 인공호흡기 없이는 스스로 숨을 쉬지 못하는 이 상태는?",
+    "answer": "뇌사",
+    "acceptedAnswers": [
+     "뇌사 상태"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "판정은 깊은 혼수, 자발 호흡의 비가역적 소실, 양쪽 동공의 확대 고정, 뇌간반사 소실 등을 봅니다. 뇌간이 살아 있는 식물인간 상태와는 다릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "뇌 전체 기능이 멈춰 회복 불가 · 인공호흡기",
+     "difWhy": "2 — 뉴스 의료 용어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 의료 기본 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "한국이 2000년부터 법으로 인정해, 이 판정을 받은 사람의 장기를 다른 환자에게 이식할 수 있게 된 상태다",
+    "generalHintVersion": "hint-v7",
+    "identity": "뇌간을 포함한 뇌 전체 기능이 되돌릴 수 없이 멈춘 상태",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "장기기증·뉴스에서 흔함",
+     "piece": "f01",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '뇌 상태를 가리키는 말'이 끝 ○○=상태. 뇌줄기는 문맥상 뜻 잡힘."
+    },
+    "blindQuestion": {
+     "guess": "뇌사",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "뇌사",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "뇌사",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6613",
+      "answer": "송과선",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/뇌사",
+     "https://en.wikipedia.org/wiki/Brain_death"
+    ],
+    "facts": [
+     {
+      "claim": "뇌간을 포함한 전반적인 뇌 기능이 완전히 정지 · 회복 불가 · 식물인간과 대비",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뇌사",
+      "note": "뇌사(腦死, 영어: brain death)는 외상과 같은 심각한 사고를 당해 뇌간을 포함한 전반적인 뇌 기능이 완전히 정지된 상태를 말한다. 뇌의 기능을 회복할 수 있는 방법이 없기에 회복 및 소생은 불가능하다."
+     },
+     {
+      "claim": "뇌간 포함 전뇌사면 생명 유지 장치만이 호흡을 유지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Brain_death",
+      "note": "Brain death is the permanent, irreversible, and complete loss of brain function, which may include cessation of involuntary activity (e.g., breathing) ... in whole-brain death (which includes brainstem death), only life support equipment would maintain ventilation."
+     },
+     {
+      "claim": "2000년부터 법적으로 인정 · 뇌사자 장기이식 허용",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/뇌사",
+      "note": "\"미성년자의 장기기증을 막고, 뇌사자의 장기이식을 사실상 허용\"하는 것을 골자로 하는 `장기 등 이식에 관한 법률'을 ... 2000년부터 뇌사를 법적으로 인정하게 되었다."
+     },
+     {
+      "claim": "판정 조건",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/뇌사",
+      "note": "1. 외부 자극에 전혀 반응이 없는 깊은 혼수상태 2. 자발 호흡의 비가역적 소실 3. 양안 동공의 확대 고정 4. 뇌간반사의 완전 소실"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/뇌사"
+    ],
+    "hintNote": null,
+    "easiestCue": "뇌 전체 기능이 멈춰 회복 불가 · 인공호흡기",
+    "worthWhyGen": "장기 기증·연명 치료 뉴스에 늘 나오는 말(일반 상식 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '뇌의 상태' — 예",
+     "unique": "뇌줄기까지 멈춤 + 스스로 숨 못 쉼 → 식물인간(뇌간 살아 스스로 숨)·혼수와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "human-body/4#g032a-g032a-j21-1",
+   "seed": {
+    "subject": "뇌진탕",
+    "aspect": null,
+    "ref": "g032a-j21-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "머리를 세게 부딪친 뒤 생기는 가벼운 머리 손상입니다. 잠깐 정신을 잃거나, 어지럽고 머리가 아프며, 다친 직후의 일이 기억나지 않기도 합니다. 교통사고나 운동 경기에서 흔한 이 증상은?",
+    "answer": "뇌진탕",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "CT나 MRI 같은 영상 검사로는 대개 이상이 보이지 않습니다. 증상은 어른은 2주, 아이는 4주쯤 이어지기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "머리를 세게 부딪친 뒤 생기는 가벼운 머리 손상",
+     "difWhy": "2 — 일상 의학어 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 건강 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "몸싸움이 잦은 운동에서 선수들이 헬멧을 써서 막으려는 대표적인 머리 부상이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "머리 충격 뒤 일시적으로 뇌 기능이 흐트러지는 가벼운 외상성 뇌손상(concussion)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "뇌진탕 뉴스·드라마에서 흔함",
+     "piece": "f02",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '가벼운 머리 손상' = 끝 ○○ '증상'. 증상 나열이 쉬운 말"
+    },
+    "blindQuestion": {
+     "guess": "뇌진탕",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "뇌진탕",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "뇌진탕",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4552",
+      "answer": "프로레슬링",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6612",
+      "answer": "아세틸콜린",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/뇌진탕",
+     "https://en.wikipedia.org/wiki/Concussion"
+    ],
+    "facts": [
+     {
+      "claim": "머리 충격 뒤 일시적 의식 장애 · 두통 · 어지러움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뇌진탕",
+      "note": "뇌진탕(腦震蕩, concussion)은 머리에 센 충격이 가해졌을 때 일시적으로 의식 장애를 일으키는 것이다. 고식적인 의미의 뇌진탕은 의식장애가 동반해야하며 이외에 두통, 이명, 청력저하, 어지러움, 흐릿한 시야, 복시 등이며"
+     },
+     {
+      "claim": "가벼운 외상성 뇌손상 · 두통·어지러움·짧은 기억 상실·짧은 의식 소실 · 교통사고·낙상·운동 부상이 흔한 원인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Concussion",
+      "note": "A concussion, also known as a mild traumatic brain injury (mTBI), is a head injury that temporarily affects brain functioning. Symptoms may include headache, dizziness … a brief period of memory loss, brief loss of consciousness … Common causes include motor vehicle collisions, falls, sports injuries, and bicycle accidents."
+     },
+     {
+      "claim": "예방: 운동 때 헬멧·마우스가드",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Concussion",
+      "note": "Prevention of concussion approaches includes the use of a helmet and mouth guard for certain sporting activities, seatbelt use in motor vehicles"
+     },
+     {
+      "claim": "영상 검사는 정상 · 증상 어른 2주 아이 4주",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Concussion",
+      "note": "Routine imaging is not required to diagnose concussion and is, by definition, normal after concussions. … It is not unusual for symptoms to last 2 weeks in adults and 4 weeks in children."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Concussion"
+    ],
+    "hintNote": null,
+    "easiestCue": "머리를 부딪친 뒤 잠깐 정신을 잃음",
+    "worthWhyGen": "누구나 겪을 수 있는 머리 부상의 이름 · 일상어",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '머리 손상' — 예",
+     "unique": "가벼운 · 일시적 증상 묶음 — 뇌출혈 등 중한 손상과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  }
+ ]
+}

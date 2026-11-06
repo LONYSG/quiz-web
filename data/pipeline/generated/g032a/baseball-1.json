@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "baseball/1",
+  "midKey": "baseball",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "baseball/1#g032a-g032a-j19-10",
+   "seed": {
+    "subject": "콜드게임",
+    "aspect": null,
+    "ref": "g032a-j19-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "야구에서 한 팀이 크게 앞서거나 폭우로 더 할 수 없을 때, 심판이 정해진 회를 다 채우기 전에 끝내는 경기를 말합니다. 한국 아마추어 야구에서는 5회 10점, 7회 7점 이상 차이 나면 선언됩니다. 이 경기는?",
+    "answer": "콜드게임",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름의 '콜드'는 춥다(cold)가 아니라 심판이 선언한(called) 경기라는 뜻입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "폭우로 더 할 수 없을 때 심판이 끝내는 경기",
+     "difWhy": "2 — 콜드게임은 일상어 · 설명에서 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 야구 규칙 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "고교·대학 야구 대회에서 실력 차가 큰 경기를 일찍 끝내 주는 장치로, 이긴 쪽은 '~승'을 거뒀다고 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "심판이 도중에 끝내는 야구 경기(점수 차·날씨)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "야구 중계에서 흔함",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '야구 · 경기' 가 있고 뜻이 풀려 있음"
+    },
+    "blindQuestion": {
+     "guess": "콜드게임",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "콜드게임",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "콜드게임",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1476",
+      "answer": "투구 수 제한",
+      "verdict": "diff",
+      "why": "콜드게임 vs 투구 수 제한 — 다른 규칙"
+     },
+     {
+      "old": "1475",
+      "answer": "9",
+      "verdict": "diff",
+      "why": "콜드게임 vs 정규 9이닝 — 다른 지식"
+     },
+     {
+      "old": "4275",
+      "answer": "승부치기",
+      "verdict": "diff",
+      "why": "콜드게임 vs 승부치기 — 다른 규칙"
+     },
+     {
+      "old": "1477",
+      "answer": "피치 클록",
+      "verdict": "diff",
+      "why": "콜드게임 vs 피치 클록 — 다른 규칙"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/콜드게임",
+     "https://en.wikipedia.org/wiki/Mercy_rule"
+    ],
+    "facts": [
+     {
+      "claim": "심판이 종료 결정 · 점수 차 · 비 등 · 한국 아마추어 5회 10점 7회 7점",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/콜드게임",
+      "note": "콜드게임(called game)이란 소프트볼이나 야구 경기에서 심판에 의하여 종료결정이 내려진 게임을 말한다. … 해가 지거나 폭우 … 또는 양팀간의 점수차가 너무 많이 벌어져서 … 현재 한국 아마추어 야구에서는 … 5회 10점 차 이상, 7회 7점 이상 점수차가 나면 콜드게임이 선언된다."
+     },
+     {
+      "claim": "점수 차로 일찍 끝내는 규칙(머시 룰)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mercy_rule",
+      "note": "A mercy rule … brings a sports event to an early end when one team has a very large and presumably insurmountable lead over the other team."
+     },
+     {
+      "claim": "콜드승 · 콜드패",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/콜드게임",
+      "note": "승팀은 콜드승으로, 패팀은 콜드패로 기록된다."
+     },
+     {
+      "claim": "called game",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/콜드게임",
+      "note": "콜드게임(called game)이란 … 심판에 의하여 종료결정이 내려진 게임"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/콜드게임"
+    ],
+    "hintNote": null,
+    "easiestCue": "점수 차·폭우로 심판이 도중에 끝내는 야구 경기",
+    "worthWhyGen": "야구 중계에서 흔히 듣는 규칙 용어 — 유래(called)는 해설에만 있어 2",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장에 '야구 … 경기' — 예",
+     "unique": "도중 종료 + 아마추어 점수 차 기준 — 하나(서스펜디드·노게임과 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

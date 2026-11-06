@@ -1,0 +1,230 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "economy/2",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/2#g032a-job-03-2",
+   "seed": {
+    "subject": "와타나베 부인",
+    "aspect": null,
+    "ref": "job-03-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2000년대 들어 이름이 퍼진 일본 개인 외환 투자자들의 별명입니다. 이들은 금리가 아주 낮은 엔화를 빌려 금리가 높은 나라 통화에 투자했습니다. 일본에 흔한 성에 기혼 여성 호칭을 붙였는데, 처음엔 집안 돈을 굴리는 주부들이라고 여겼기 때문입니다. 이 별명은?",
+    "answer": "와타나베 부인",
+    "acceptedAnswers": [
+     "미세스 와타나베"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "실제로는 2019년 일본 개인 외환 거래자의 약 85%가 남성이었습니다. 이 별명은 1980년대부터 쓰였다고 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "금리가 낮은 엔화를 빌려 금리가 높은 나라 통화에 투자한 일본 개인 투자자들의 별명",
+     "difWhy": "4 — 이걸 어떻게 알아 · 금융 세부 별명",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 별명 암기",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "'엔 캐리 트레이드'로 해외 고금리 통화를 사들이는 일본 개미 투자자의 대명사로, 엔화 환율 기사에 자주 오른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "엔 캐리 트레이드로 해외 고금리 통화에 투자하는 일본 개인 투자자를 일컫는 말",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "경제 뉴스에서 간혹 접함",
+     "piece": "f08",
+     "genPct": 35
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/와타나베_부인",
+     "https://en.wikipedia.org/wiki/Mrs._Watanabe"
+    ],
+    "facts": [
+     {
+      "claim": "엔캐리 트레이드로 이익을 얻는 일본 개인투자자, 흔한 성 와타나베, 초기 주부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/와타나베_부인",
+      "note": "와타나베 부인은 엔캐리 트레이드로 높은 이익을 얻는 일본의 개인투자자들을 일컫는 말이다. 일본의 흔한 성인 '와타나베'에서 유래했으며, 초기에는 일본의 주부 재테크 사단을 지칭하는 용어였으나"
+     },
+     {
+      "claim": "2000년대 초 알려짐 · 저금리 엔을 빌려 고금리 통화 매수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mrs._Watanabe",
+      "note": "a term that gained prominence in the early 2000s, representing a stereotype associated with Japanese retail foreign exchange (FX) traders ... Due to the low interest rates in Japan, traders can borrow a large quantity of yen ... and use it to buy currencies from economies where interest rates are much higher"
+     },
+     {
+      "claim": "2019년 약 85% 남성 · 1980년대부터 쓰임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mrs._Watanabe",
+      "note": "The term Mrs. Watanabe was used as early as the 1980s ... about 85% of the retail currency traders in Japan as of 2019 are male"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/와타나베_부인"
+    ],
+    "hintNote": null,
+    "easiestCue": "일본에 흔한 성 + 기혼 여성 호칭",
+    "worthWhyGen": "엔화 환율 기사에 늘 나오는 말이 왜 '부인'인지 — 경제 뉴스 말의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '투자자들의 별명' — 예",
+     "unique": "일본 개인 외환 투자자 별명 — 하나(기모노 트레이더는 같은 대상 · 질문이 성+호칭 꼴을 요구)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03",
+    "discarded": "알가치 1 (고유명사 · 별명 암기)"
+   }
+  },
+  {
+   "seedId": "economy/2#g032a-g032a-j16-12",
+   "seed": {
+    "subject": "엔화",
+    "aspect": null,
+    "ref": "g032a-j16-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본의 공식 통화입니다. 1871년 메이지 정부는 지역마다 제각각이던 돈을 없애고 이 십진법 통화를 새로 정했습니다. 외환시장에서 미국 달러와 유로 다음으로 많이 거래되는 이 통화는?",
+    "answer": "엔화",
+    "acceptedAnswers": [
+     "엔",
+     "일본 엔",
+     "일본 엔화"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 '둥글다'는 뜻의 한자 圓에서 왔으며, 한국의 '원'과 같은 뿌리입니다. 1882년 일본은행이 발행권을 도맡았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "일본의 공식 통화입니다",
+     "difWhy": "1 — 일본 돈 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 통화 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "기호 ¥를 쓰는 일본 돈으로, 값이 내려가면 '일본 여행이 싸졌다'는 뉴스가 나온다",
+    "generalHintVersion": "hint-v7",
+    "identity": "일본의 통화",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 경제 용어",
+     "piece": "f08",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '일본의 공식 통화' 로 정체를 바로 밝히고 끝 ○○ 도 통화"
+    },
+    "blindQuestion": {
+     "guess": "엔",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "엔화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "엔화",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4388",
+      "answer": "플라자 합의",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "935",
+      "answer": "변동환율제",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/엔",
+     "https://en.wikipedia.org/wiki/Japanese_yen"
+    ],
+    "facts": [
+     {
+      "claim": "일본 공식 통화 · 달러·유로 다음 세 번째로 많이 거래 · 기호 ¥",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/엔",
+      "note": "엔(일본어: えん / 円, 기호: ¥; 코드: JPY)은 일본의 공식 통화이다. 외환시장에서 달러와 유로에 이어 세 번째로 많이 거래되는 통화이다."
+     },
+     {
+      "claim": "1871 새 화폐법 · 한사츠 등 봉건 화폐를 없애고 십진법 통화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Japanese_yen",
+      "note": "The New Currency Act of 1871 introduced Japan's modern currency system ... divided decimally into 100 sen or 1,000 rin. The yen replaced the previous Tokugawa coinage as well as the various hansatsu paper currencies issued by feudal han (fiefs)."
+     },
+     {
+      "claim": "圓 '둥근' · 한국 원과 같은 뿌리 · 1882 일본은행 독점",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Japanese_yen",
+      "note": "The name yen derives from the Japanese word 圓 (en; lit. 'round'), which borrows its phonetic reading from Chinese yuan, similar to North Korean won and South Korean won. ... The Bank of Japan was founded in 1882 and given a monopoly"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/엔"
+    ],
+    "hintNote": null,
+    "easiestCue": "일본의 공식 통화",
+    "worthWhyGen": "일상 경제 상식(알가치 3 ①)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '통화' — 예",
+     "unique": "'일본' 으로 하나",
+     "hint12": "① 예 ② 예(엔저 뉴스 부분은 상식)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

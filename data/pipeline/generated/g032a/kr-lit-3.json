@@ -1,0 +1,108 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-lit/3",
+  "midKey": "kr-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-lit/3#g032a-g032a-j11-2",
+   "seed": {
+    "subject": "김유정",
+    "aspect": null,
+    "ref": "g032a-j11-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일제강점기의 소설가입니다. 경춘선 신남역은 2004년 이 지역 출신인 그를 기려 그의 이름으로 역 이름을 바꿨습니다. 한국에서 사람 이름을 철도역 이름으로 삼은 첫 사례입니다. '봄봄'과 '동백꽃'을 쓴 이 작가는?",
+    "answer": "김유정",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "역 건물은 한옥 모양이고 역 간판도 궁서체로 적혀 있다. 옛 역사는 철도 기념물로 남았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "'봄봄'과 '동백꽃'을 쓴 이 작가",
+     "difWhy": "2 — 교과서 작품에서 작가로 한 번 건넘",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 문학 인물 이름 암기",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "춘천 실레마을을 고향으로 여긴 작가로, 폐결핵을 앓다 1937년 스물아홉에 세상을 떠났다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'봄봄' '동백꽃'을 쓴 일제강점기 소설가",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "교과서 소설 봄봄·동백꽃",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/김유정역",
+     "https://ko.wikipedia.org/wiki/김유정_(소설가)"
+    ],
+    "facts": [
+     {
+      "claim": "1939 신남역 개업 · 2004년 지역 출신 소설가 김유정 기념 역명 변경 · 인물 이름 첫 철도역",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김유정역",
+      "note": "이 지역 출신의 소설가 김유정을 기념하기 위해 2004년 12월 1일에 김유정역으로 역명을 변경했다. 대한민국에서 인물 이름을 철도역 이름으로 삼은 첫 번째 사례이다."
+     },
+     {
+      "claim": "신남역이 2004년 김유정역으로 · 고향 실레마을 · 1908~1937 폐결핵 요절",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/김유정_(소설가)",
+      "note": "김유정(金裕貞, 1908년 2월 12일 ~ 1937년 3월 29일)은 일제 강점기 조선의 소설가 ... 폐결핵으로 요절했다. ... 김유정의 고향은 실레마을로 알려져 있으며, 지금의 경춘선 신남역(2004년 김유정역으로 변경)이 있는 이 곳"
+     },
+     {
+      "claim": "한옥 역사 · 궁서체 간판 · 구 역사 준철도기념물",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/김유정역",
+      "note": "역 건물은 한옥 형태이며, 특이하게 역 간판과 역내 시설물이 궁서체로 적혀 있다. 구 역사는 철거되지 않고 한국철도공사 선정 준철도기념물로 지정되어 보존"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/김유정_(소설가)"
+    ],
+    "hintNote": null,
+    "easiestCue": "'봄봄'과 '동백꽃'을 쓴 작가",
+    "worthWhyGen": "역 이름의 유래(사람 이름 첫 철도역) — 이름 떠올리기보다 일상 지명 유래 각도",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '소설가' 예",
+     "unique": "봄봄·동백꽃 작가 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 춘천"
+    ],
+    "job": "job-11",
+    "discarded": "알가치 1 (고유명사 · 문학 인물 이름 암기)"
+   }
+  }
+ ]
+}

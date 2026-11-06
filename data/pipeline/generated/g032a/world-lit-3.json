@@ -1,0 +1,155 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-lit/3",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/3#g032a-g032a-j09-4",
+   "seed": {
+    "subject": "메타버스",
+    "aspect": null,
+    "ref": "g032a-j09-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "요즘 IT 업계에서 흔히 쓰는 말의 출처를 묻습니다. 1992년 미국 작가 닐 스티븐슨이 SF 소설 '스노 크래시'에서 처음 쓴 말입니다. 소설 속에서는 사람들이 아바타로 드나드는 거대한 3차원 가상 세계를 가리켰는데, 이 말은?",
+    "answer": "메타버스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "소설 제목 '스노 크래시'는 옛 매킨토시가 멈출 때 화면이 지지직거리던 모습에서 따왔다고 작가가 밝혔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "사람들이 아바타로 드나드는 거대한 3차원 가상 세계",
+     "difWhy": "1 — 메타버스 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — IT 말 출처",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "로블록스·제페토처럼 아바타로 모여 놀고 일하는 온라인 공간을 두루 이르며, 2021년 무렵 크게 유행한 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "3차원 가상 세계를 이르는 IT 용어(스노 크래시에서 처음 쓰임)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "뉴스·IT에서 매우 흔함",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 'IT 업계 말의 출처' 라 밝히고 이어 소설 단서가 직결"
+    },
+    "blindQuestion": {
+     "guess": "메타버스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "메타버스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "메타버스",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4018",
+      "answer": "멋진 신세계",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2646",
+      "answer": "노인과 바다",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2653",
+      "answer": "작가",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "4016",
+      "answer": "변신",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/메타버스",
+     "https://en.wikipedia.org/wiki/Metaverse",
+     "https://en.wikipedia.org/wiki/Snow_Crash"
+    ],
+    "facts": [
+     {
+      "claim": "1992년 스노 크래시에서 처음 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/메타버스",
+      "note": "1992년 출간한 닐 스티븐슨의 소설 '스노 크래시'에서 가장 먼저 사용했다."
+     },
+     {
+      "claim": "용어 기원 · 소설 속 하나의 몰입형 가상 세계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metaverse",
+      "note": "The term metaverse originated in the 1992 science fiction novel Snow Crash as a portmanteau of \"meta\" and \"universe\". In Snow Crash, the metaverse is envisioned as a version of the Internet that is a single, universal, and immersive virtual world"
+     },
+     {
+      "claim": "소설 속 메타버스는 아바타로 채워짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Snow_Crash",
+      "note": "The Metaverse is populated by user-controlled avatars, as well as system daemons."
+     },
+     {
+      "claim": "제목 유래 — 매킨토시 오류 화면",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Snow_Crash",
+      "note": "Stephenson has said that the title of the novel is his term for a software failure mode on the early Macintosh computer … something that looked vaguely like static on a broken television set—a 'snow crash'."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "아바타로 드나드는 3차원 가상 세계를 가리키는 IT 말",
+    "worthWhyGen": "일상에서 쓰는 말이 20세기 소설에서 왔다는 유래 — 3 (lowWorthField: 작품 이름 대신 작품에서 온 말)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 'IT 업계에서 쓰는 말' — 예",
+     "unique": "가상현실(VR)과는 '소설에서 처음 쓴 말 · 아바타 세계'로 갈림 — VR 을 칠 사람 조금 있음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 아바타"
+    ],
+    "job": "job-09"
+   }
+  }
+ ]
+}

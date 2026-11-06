@@ -1,0 +1,435 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "myth/2",
+  "midKey": "myth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "myth/2#g032a-g032a-j02-11",
+   "seed": {
+    "subject": "베르세르크",
+    "aspect": null,
+    "ref": "g032a-j02-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북유럽 전설에 나오는 전사입니다. 갑옷도 없이 신들린 듯 격노해 방패를 물어뜯으며 싸웠다고 전합니다. 이름은 고대 노르드어로 '곰 가죽 셔츠'라는 풀이가 정설인데, 곰 가죽을 걸치면 곰의 힘과 오딘의 가호를 얻는다고 믿었기 때문입니다. 이 전사는?",
+    "answer": "베르세르크",
+    "acceptedAnswers": [
+     "버서커",
+     "베르세르커",
+     "광전사"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "늑대 가죽을 뒤집어쓰고 싸운 전사는 '울프헤딘'이라 했습니다. 스노리 스투를루손은 '맨몸 셔츠', 곧 갑옷 없이 싸웠다는 뜻으로 풀었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "곰 가죽 셔츠 · 신들린 듯 격노한 북유럽 전사",
+     "difWhy": "3 — 신화·만화로 아는 이름 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 신화 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "게임에서 이성을 잃고 공격력이 치솟는 '분노' 계열 직업 이름으로 흔하며, 같은 이름의 일본 다크 판타지 만화도 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "북유럽 전설의 광포한 전사(berserkr)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "만화·게임 제목으로 알려짐",
+     "piece": "f03",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '북유럽 전설의 전사' · 끝 ○○ = 전사"
+    },
+    "blindQuestion": {
+     "guess": "베르세르크",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "버서커",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "베르세르크",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3761",
+      "answer": "라그나로크",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(베르세르크 / 라그나로크)"
+     },
+     {
+      "old": "3760",
+      "answer": "오딘",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(베르세르크 / 오딘)"
+     },
+     {
+      "old": "6004",
+      "answer": "펜리르",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(베르세르크 / 펜리르)"
+     },
+     {
+      "old": "6709",
+      "answer": "아스가르드",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(베르세르크 / 아스가르드)"
+     },
+     {
+      "old": "6708",
+      "answer": "화요일",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(베르세르크 / 화요일)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/베르세르크",
+     "https://en.wikipedia.org/wiki/Berserker"
+    ],
+    "facts": [
+     {
+      "claim": "곰(ber) + 셔츠(serkr) 해석이 정설 · 곰 가죽으로 곰의 힘과 오딘의 가호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/베르세르크",
+      "note": "\"베르세르크\"라는 표현은 이들이 싸울 때 곰(베르)의 모피로 만든 윗도리(세르크; \"셔츠\")를 걸쳤기 때문이라고 해석된다. 곰은 오딘을 상징하는 동물 중 하나였으며, 그 가죽을 걸침으로써 전사는 곰의 힘과 오딘의 가호를 얻게 된다. … 오늘날에는 이 설은 거의 폐기되었고, 곰 가죽 쪽이 정설이다."
+     },
+     {
+      "claim": "bear-shirt · 갑옷 없이 돌격 · 방패를 물어뜯음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Berserker",
+      "note": "is assumed to have most likely meant 'bear', with the full word, berserkr, meaning just 'bear-shirt' / His (Odin's) men rushed forwards without armour, were as mad as dogs or wolves, bit their shields"
+     },
+     {
+      "claim": "울프헤딘 · 스노리의 bare-shirt 해석",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Berserker",
+      "note": "울프헤딘은 … 싸울 때 늑대 가죽을 뒤집어쓰고 싸웠다고 한다.(ko) / Snorri Sturluson … interpreted the meaning as 'bare-shirt', that is to say that the warriors went into battle without armour"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "북유럽 전설의 격노한 전사",
+    "worthWhyGen": "게임·만화로 흔한 이름의 유래(곰 가죽 셔츠)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '전사' 예",
+     "unique": "북유럽 + 격노 + 곰 가죽 — 발키리(여전사)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "myth/2#g032a-g032a-j13-5",
+   "seed": {
+    "subject": "엘프",
+    "aspect": null,
+    "ref": "g032a-j13-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북유럽 신화에 뿌리를 둔 상상의 종족입니다. 오래 살고 마법을 다루며 숲이나 호수에 산다고 여겨졌습니다. 톨킨의 '반지의 제왕'에서 현명하고 선한 종족으로 그려진 뒤 판타지의 단골이 된 이 종족은?",
+    "answer": "엘프",
+    "acceptedAnswers": [
+     "엘프족"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "말의 뿌리는 고대 노르드어 '알브(Álfr)'입니다. 북유럽 신화를 정리한 스노리는 빛의 요정과 어둠의 요정을 나누어 적었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "톨킨의 '반지의 제왕'에서 현명하고 선한 종족",
+     "difWhy": "1 — 판타지 대중문화 · 단서가 곧 답",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 판타지 취미 영역",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "산타클로스 곁에서 장난감을 만드는 작은 도우미들도 영어로 이 종족 이름으로 부른다",
+    "generalHintVersion": "hint-v7",
+    "identity": "북유럽 신화에서 온 판타지 요정 종족",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "반지의 제왕·게임에서 친숙",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '상상의 종족' 이 있어 끝 ○○ '종족' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "엘프",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "엘프",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "엘프",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6003",
+      "answer": "토르",
+      "verdict": "diff",
+      "why": "엘프 vs 토르 일화"
+     },
+     {
+      "old": "6708",
+      "answer": "화요일",
+      "verdict": "diff",
+      "why": "엘프 vs 티르 화요일"
+     },
+     {
+      "old": "6709",
+      "answer": "아스가르드",
+      "verdict": "diff",
+      "why": "엘프 vs 아스가르드"
+     },
+     {
+      "old": "3760",
+      "answer": "오딘",
+      "verdict": "diff",
+      "why": "엘프 vs 오딘"
+     },
+     {
+      "old": "3761",
+      "answer": "라그나로크",
+      "verdict": "diff",
+      "why": "엘프 vs 라그나로크"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/엘프",
+     "https://en.wikipedia.org/wiki/Elf"
+    ],
+    "facts": [
+     {
+      "claim": "북유럽 신화 기원 · 숲·호수 · 장수 · 마법 · 반지의 제왕에서 현명하고 선한 종족 → 판타지 정형",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/엘프",
+      "note": "북유럽 신화에 기원을 두고 있는 인간과 유사한 모습을 한 상상의 존재이다. … 종종 숲이나 지하, 호수 등에 산다고 여겨졌다. 또 그들은 불사 혹은 장수하여 … 마법의 힘을 가지고 있다. 톨킨의 소설 반지의 제왕에서는, 현명하고 선한 종족으로서 활약한다. 이 작품이 크게 인기를 끈 이후, 톨킨풍의 엘프는 현대 판타지 작품에서의 정형이 되었다."
+     },
+     {
+      "claim": "북유럽 신화와 연결 · 톨킨이 다시 대중화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Elf",
+      "note": "These associate elves variously with the gods of Norse mythology … Tolkien's works; these re-popularised the idea of elves as human-sized and humanlike beings."
+     },
+     {
+      "claim": "산타의 도우미 Santa's elves",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Elf",
+      "note": "it was his little helpers … who became known as \"Santa's elves\""
+     },
+     {
+      "claim": "어원 알브 · 스노리의 빛/어둠의 요정",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/엘프",
+      "note": "엘프라는 말은 원래 고대 노르웨이어의 알브(Álfr)에서 온 것 / en: Snorri Sturluson's Prose Edda, which talks about svartálfar, dökkálfar and ljósálfar (\"black elves\", \"dark elves\", and \"light elves\")"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Elf"
+    ],
+    "hintNote": null,
+    "easiestCue": "반지의 제왕의 현명하고 선한 종족",
+    "worthWhyGen": "판타지 대표 종족이 북유럽 신화에서 왔다는 뿌리 — 취미 영역(2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '종족' 예",
+     "unique": "반지의 제왕 현명·선한 종족 = 엘프(호빗·드워프와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "myth/2#g032a-g032a-j20-2",
+   "seed": {
+    "subject": "금요일",
+    "aspect": null,
+    "ref": "g032a-j20-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일주일 가운데 하루의 영어 이름은 북유럽 신화의 여신 프리그에서 왔습니다. 프리그는 오딘의 아내로, 결혼과 가정을 맡은 여신입니다. '프리그의 날'이라는 뜻의 이 날은 우리말로 무슨 날일까요?",
+    "answer": "금요일",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "로마에서는 이날을 사랑의 여신 베누스의 날로 불렀는데, 두 여신 모두 금성을 상징해 한국과 일본에서는 금성의 이름을 땄습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "'프리그의 날'이라는 뜻의 이 날은 우리말로 무슨 날",
+     "difWhy": "3 — 요일 유래를 알아야 함 · 신화 단서는 간접(일곱 중 하나)",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 요일 이름의 유래 · 일상 말의 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "주말 바로 앞날로, 주 5일 근무하는 직장인에게는 한 주를 마치는 마지막 출근날이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한 주의 다섯째(월요일 기준) 날 — 영어 Friday",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "요일 이름",
+     "piece": "f07",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '하루의 영어 이름' 이 요일을 가리킴 · 끝 '이 날' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "금요일",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "금요일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "금요일",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "626",
+      "answer": "목요일",
+      "verdict": "diff",
+      "why": "금요일(프리그) vs 목요일(토르) — 다른 요일 어원"
+     },
+     {
+      "old": "2523",
+      "answer": "이맘",
+      "verdict": "diff",
+      "why": "금요일 vs 이맘 — 다른 지식"
+     },
+     {
+      "old": "5596",
+      "answer": "스마일리",
+      "verdict": "diff",
+      "why": "금요일 vs 스마일리 — 다른 지식"
+     },
+     {
+      "old": "3196",
+      "answer": "안식일",
+      "verdict": "diff",
+      "why": "금요일 어원 vs 안식일 — 다른 지식"
+     },
+     {
+      "old": "3924",
+      "answer": "카레",
+      "verdict": "diff",
+      "why": "금요일 어원 vs 해상자위대 카레 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/프리그",
+     "https://en.wikipedia.org/wiki/Friday",
+     "https://ko.wikipedia.org/wiki/금요일"
+    ],
+    "facts": [
+     {
+      "claim": "Friday = 프리그의 날",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/프리그",
+      "note": "오딘의 아내이자 발드르의 어머니로, 결혼·가정·출산·풍요를 주관한다. ... 오늘날의 Friday(금요일)는 프리그의 이름에서 유래하였는데, ‘프리그의 날’이라는 뜻을 갖고 있다."
+     },
+     {
+      "claim": "Friday 어원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Friday",
+      "note": "The name Friday comes from the Old English frīġedæġ, meaning the \"day of Frig\", a result of an old convention associating the Germanic goddess Frigg with the Roman goddess Venus"
+     },
+     {
+      "claim": "베누스의 날 · 금성 → 금요일",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/금요일",
+      "note": "많은 유럽어권에서 금요일은 '프리그의 날'(영어: Friday, 네덜란드어: Vrijdag) 또는 '베누스의 날'(프랑스어: vendredi ...)을 어원으로 하고 있는데, 프리그와 베누스 모두 금성을 상징하는 신이므로, 한국과 일본에서는 '금요일'로 불린다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "영어 요일 이름 Friday 를 떠올리면 바로",
+    "worthWhyGen": "3 — 날마다 쓰는 요일 이름의 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '하루의 영어 이름' — 예",
+     "unique": "프리그의 날 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  }
+ ]
+}

@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "music-theory/1",
+  "midKey": "music-theory",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "music-theory/1#g032a-g032a-j32-4",
+   "seed": {
+    "subject": "코다",
+    "aspect": null,
+    "ref": "g032a-j32-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "곡의 맨 끝에 덧붙여 전체를 마무리하는 부분을 가리키는 음악 용어를 묻습니다. 이탈리아어로 '꼬리'라는 뜻에서 온 이름입니다. 악보에서는 과녁의 조준선처럼 동그라미에 십자를 겹친 기호로 표시하는 이것은?",
+    "answer": "코다",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "베토벤은 이 부분을 크게 늘려, 앞의 제시부·발전부 못지않은 무게를 실었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "곡의 맨 끝에 덧붙여 전체를 마무리하는 부분",
+     "difWhy": "3 — 음악 용어 · 정의 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 음악 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "도돌이표 등으로 되돌아가 다시 연주할 때, 이 표시가 붙은 마디에서 사이를 건너뛰어 곡의 맺음 부분으로 넘어가라는 표시다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "악곡의 끝에 덧붙이는 종결부(coda)와 그 기호",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "음악 하는 사람은 알지만 일반인은 덜함",
+     "piece": "f08",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '음악 용어' 명시 · 끝 ○○ 도 기호/용어로 일치"
+    },
+    "blindQuestion": {
+     "guess": "코다",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "코다",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "코다",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1999",
+      "answer": "가나가와 조약",
+      "verdict": "diff",
+      "why": "코다와 가나가와 조약은 무관"
+     },
+     {
+      "old": "4043",
+      "answer": "물의 호흡",
+      "verdict": "diff",
+      "why": "코다와 물의 호흡은 무관"
+     },
+     {
+      "old": "609",
+      "answer": "다 카포",
+      "verdict": "diff",
+      "why": "코다(끝 마무리)와 다 카포(처음으로 돌아가기)는 서로 다른 악보 용어"
+     },
+     {
+      "old": "4573",
+      "answer": "아르페지오",
+      "verdict": "diff",
+      "why": "코다와 아르페지오는 다른 연주법·용어"
+     },
+     {
+      "old": "4575",
+      "answer": "루바토",
+      "verdict": "diff",
+      "why": "코다와 루바토는 다른 용어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/코다_(음악)",
+     "https://en.wikipedia.org/wiki/Coda_(music)"
+    ],
+    "facts": [
+     {
+      "claim": "이탈리아어 '꼬리' · 덧붙인 종결부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/코다_(음악)",
+      "note": "코다(이탈리아어: Coda '꼬리')는 이탈리아어의 '꼬리'에서 유래되어, 특별히 추가된 종결부를 뜻한다."
+     },
+     {
+      "claim": "곡을 끝맺는 부분 · 조준선 모양 기호",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Coda_(music)",
+      "note": "In music, a coda (; Italian for 'tail'; plural code) is a passage that brings a piece (or a movement) to an end. / the coda symbol, which resembles a set of crosshairs, is used as a navigation marker"
+     },
+     {
+      "claim": "반복 연주 때 기호 사이를 건너뜀",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/코다_(음악)",
+      "note": "모든 반복 기호에 의한 반복 연주시, 앞의 가 있는 마디에서 뒤의 가 있는 마디 사이는 생략하고 연주하라는 뜻이다."
+     },
+     {
+      "claim": "베토벤이 늘림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Coda_(music)",
+      "note": "One of the ways that Beethoven extended and intensified Classical practice was to expand the coda sections, producing a final section sometimes of equal musical weight to the foregoing exposition, development, and recapitulation sections"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/코다_(음악)",
+     "https://en.wikipedia.org/wiki/Coda_(music)"
+    ],
+    "hintNote": null,
+    "easiestCue": "이탈리아어 '꼬리' · 곡의 끝 마무리 부분",
+    "worthWhyGen": "악보 읽기의 기본 기호(교과 개념) + 이름의 유래가 질문 안에 — 2~3 경계",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '음악 용어' 예",
+     "unique": "곡 끝 종결부 + 기호 — 피날레(악장)와 갈림: 기호 단서로",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 도돌이표"
+    ],
+    "job": "job-32"
+   }
+  }
+ ]
+}

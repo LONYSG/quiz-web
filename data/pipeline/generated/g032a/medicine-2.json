@@ -1,0 +1,136 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "medicine/2",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/2#g032a-job-26-5",
+   "seed": {
+    "subject": "산소포화도",
+    "aspect": null,
+    "ref": "job-26-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "병원에서 손가락 끝에 빨간 불빛이 나는 집게를 끼워 재는 수치입니다. 피 속 헤모글로빈 가운데 폐에서 받은 기체를 싣고 있는 것이 몇 %인지를 나타냅니다. 건강한 사람은 96~100%이고, 90% 아래로 떨어지면 낮다고 봅니다. 이 수치는?",
+    "answer": "산소포화도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "집게 속 빛은 붉은빛과 적외선 두 가지입니다. 헤모글로빈이 기체를 실었는지에 따라 빛을 먹는 정도가 달라지는 점을 이용합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "손가락 끝에 빨간 불빛이 나는 집게를 끼워 재는 수치",
+     "difWhy": "2 — 병원 경험 · 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 건강 수치 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "숨이 가쁜 환자에게 맥박과 함께 재는 값으로, 너무 낮으면 뇌와 심장 같은 장기가 위험해져 곧바로 치료해야 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "혈액 헤모글로빈 중 산소와 결합한 비율(SpO2)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "코로나 시기 산소포화도 측정으로 익숙",
+     "piece": "f03",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=수치, 첫 문장에 '재는 수치'가 있다. '헤모글로빈'이 낯설어도 '기체를 싣고 있는 것' 풀이가 붙어 문장 뜻이 잡힌다."
+    },
+    "blindQuestion": {
+     "guess": "산소포화도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "산소포화도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "산소포화도",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2431",
+      "answer": "빈혈",
+      "verdict": "diff",
+      "why": "새=산소포화도; 빈혈은 헤모글로빈 부족 증상으로 다른 개념"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/산소포화도",
+     "https://en.wikipedia.org/wiki/Oxygen_saturation_(medicine)"
+    ],
+    "facts": [
+     {
+      "claim": "헤모글로빈이 산소로 포화된 비율 · 맥박산소측정법으로 잰다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/산소포화도",
+      "note": "산소 포화도(酸素飽和度, 영어: oxygen saturation)는 혈액의 헤모글로빈이 얼마나 산소로 포화되었는지에 대한 비율이다. 맥박산소측정법으로 측정한다."
+     },
+     {
+      "claim": "정상 96~100% · 90% 아래면 낮다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Oxygen_saturation_(medicine)",
+      "note": "Normal arterial blood oxygen saturation levels in humans are 96–100 percent. If the level is below 90 percent, it is considered low and called hypoxemia."
+     },
+     {
+      "claim": "손가락 등에 끼우는 작은 기기 · 붉은빛과 적외선",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Oxygen_saturation_(medicine)",
+      "note": "The pulse oximeter is a small device that clips to the body (typically a finger, an earlobe or an infant's foot) ... measure the absorption of red and infrared wavelengths"
+     },
+     {
+      "claim": "80% 아래면 뇌·심장 등 장기 기능 위협 · 곧바로 다뤄야",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Oxygen_saturation_(medicine)",
+      "note": "Arterial blood oxygen levels below 80 percent may compromise organ function, such as the brain and heart, and should be promptly addressed."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Oxygen_saturation_(medicine)"
+    ],
+    "hintNote": null,
+    "easiestCue": "손가락 집게로 재는 수치 · 96~100%",
+    "worthWhyGen": "병원·가정에서 흔히 보는 건강 수치의 뜻(일상 쓸모 3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '수치' 예",
+     "unique": "헤모글로빈이 싣는 기체 비율 → 산소포화도(맥박수와 가름)",
+     "hint12": "① 예(숨 가쁜 환자·맥박과 함께) ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

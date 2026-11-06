@@ -1,0 +1,132 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "religion/2",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/2#g032a-g032a-j02-12",
+   "seed": {
+    "subject": "아수라장",
+    "aspect": null,
+    "ref": "g032a-j02-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "여럿이 뒤엉켜 싸우거나 몹시 어지러운 곳을 이르는 말로, 불교에서 왔습니다. 싸움을 좋아하는 반신(半神) 무리가 제석천(인드라)과 전쟁을 벌이던 싸움터를 가리키던 말이 끔찍하게 뒤죽박죽된 현장을 뜻하게 되었습니다. 이 말은?",
+    "answer": "아수라장",
+    "acceptedAnswers": [
+     "수라장"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "불교는 생명이 지옥·아귀·축생·수라·인간·천신의 여섯 세계를 돌며 윤회한다고 봅니다. 아수라는 원래 인도 신화에서 신들에 맞선 무리입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "여럿이 뒤엉켜 싸우거나 몹시 어지러운 곳을 이르는 말",
+     "difWhy": "2 — 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "사고나 싸움으로 사람과 물건이 뒤엉켜 엉망이 된 현장을 이르는 말로, 앞부분은 불교 육도 중 '싸움의 세계'에 사는 존재다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "싸움 등으로 몹시 어지러운 곳 — 불교의 아수라 싸움터에서",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "일상 관용어",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 뜻과 출처(불교)를 같이 주고 반신·제석천은 괄호로 풀어 읽는 데 막힘 없음"
+    },
+    "blindQuestion": {
+     "guess": "아수라장",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아수라장",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아수라장",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아수라",
+     "https://maily.so/pepper.note/posts/d5ryw2x8z1w",
+     "https://www.diqt.net/en/words/1984464"
+    ],
+    "facts": [
+     {
+      "claim": "불교 — 인드라(제석천)와 아수라의 싸움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아수라",
+      "note": "불교에서 인드라와 아수라의 싸움을 생생하게 전하는 불경은 잡아함경이다. / 제석천으로 불리는 인드라"
+     },
+     {
+      "claim": "아수라장은 아수라들의 전쟁터에서 유래",
+      "where": "q",
+      "url": "https://maily.so/pepper.note/posts/d5ryw2x8z1w",
+      "note": "아수라장이라는 단어는 아수라들의 전쟁터에서 유래했습니다."
+     },
+     {
+      "claim": "(수)라장 = 아수라와 제석천이 싸운 곳 → 격렬한 다툼의 현장",
+      "where": "q",
+      "url": "https://www.diqt.net/en/words/1984464",
+      "note": "(검색 요약) 修羅場은 불교에서 아수라와 제석천이 싸웠다고 전해지는 곳 … 뜻이 넓어져 격렬한 다툼이나 살육이 벌어지는 현장"
+     },
+     {
+      "claim": "아수라 = 인간과 신의 혼혈 반신 · 육도 윤회",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아수라",
+      "note": "인도 신화에 등장하는 인간과 신의 혼혈인 반신이다. 인드라와 같은 신에 대적하는 악한 무리 / 지옥도-아귀도-축생도-수라도(아수라)-인간도-천신도의 육도 위계에 따라 윤회한다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아수라"
+    ],
+    "hintNote": null,
+    "easiestCue": "몹시 어지러운 곳을 이르는 말",
+    "worthWhyGen": "매일 쓰는 말의 불교 유래(일상 말 + 유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '말' + 불교 예",
+     "unique": "불교 싸움터 유래 — 난장판·야단법석(불교 법회 유래)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

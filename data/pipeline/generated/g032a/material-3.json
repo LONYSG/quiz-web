@@ -1,0 +1,150 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "material/3",
+  "midKey": "material",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "material/3#g032a-g032a-j17-2",
+   "seed": {
+    "subject": "레미콘",
+    "aspect": null,
+    "ref": "g032a-j17-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "공장에서 시멘트·모래·자갈·물을 미리 섞은 뒤, 굳기 전에 건설 현장으로 실어 나르는 콘크리트입니다. 통을 빙글빙글 돌리며 달리는 트럭에 실려 옵니다. 영어 이름을 일본식으로 줄여 부르는 이 말은?",
+    "answer": "레미콘",
+    "acceptedAnswers": [
+     "레디믹스트 콘크리트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1903년 독일에서 처음 전용 공장이 세워졌고, 한국 첫 공장은 1965년 서울 서빙고에 섰다. 순화한 말은 '반죽 콘크리트'다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "통을 빙글빙글 돌리며 달리는 트럭에 실려 옵니다",
+     "difWhy": "2 — 일상어 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래 · 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "만든 뒤 한 시간이 지나면 잘 흐르지 않게 되어 늦어도 90분 안에 현장에서 부어야 하는 재료",
+    "generalHintVersion": "hint-v7",
+    "identity": "레미콘 — 공장에서 배합해 현장으로 나르는 콘크리트(ready-mixed concrete의 일본식 줄임말)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "건설 현장 차량·뉴스",
+     "piece": "f05",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '콘크리트' 가 있고 영어 줄임 일본식 이름이라는 묻는 방향이 분명"
+    },
+    "blindQuestion": {
+     "guess": "레미콘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "레미콘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "레미콘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3033",
+      "answer": "양생",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "273",
+      "answer": "어스앵커 공법",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3036",
+      "answer": "타워크레인",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/레미콘",
+     "https://en.wikipedia.org/wiki/Ready-mix_concrete"
+    ],
+    "facts": [
+     {
+      "claim": "공장에서 미리 배합해 현장으로 운반 · 일본식 줄임말",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/레미콘",
+      "note": "시멘트와 골재 등을 공장에서 미리 배합하여 현장으로 운반하여 타설하는 콘크리트 ... 일본어로는 레디미쿠수토콘크리토(レディーミクストコンクリート)인데, 줄여서 레미콘(レミコン)으로 부른다."
+     },
+     {
+      "claim": "batch plant · gravel, sand, water, cement · barrel truck",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ready-mix_concrete",
+      "note": "Ready-mix concrete (RMC) is concrete that is manufactured in a batch plant ... then delivered to the job site ... Batch plants combine a precise amount of gravel, sand, water and cement ... the barrel truck or in-transit mixers."
+     },
+     {
+      "claim": "60분(최대 90분) 안에 타설",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/레미콘",
+      "note": "레미콘은 만든 후 1시간이 지나면 유동성이 급격히 떨어진다. 따라서 레미콘은 제조 후 60분 이내(최대 90분내)에 타설해야 한다."
+     },
+     {
+      "claim": "1903 독일 · 1965 서빙고 · 반죽 콘크리트",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/레미콘",
+      "note": "1903년 독일 스타른베르크에서 ... 세계 최초로 레미콘 플랜트를 만들어 ... 1965년 7월 쌍용양회공업(주)(당시 대한양회)이 서빙고 공장을 최초로 세웠다. ... 순화한 용어인 반죽 콘크리트(차)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/레미콘"
+    ],
+    "hintNote": null,
+    "easiestCue": "통을 돌리며 달리는 트럭에 실려 오는 콘크리트",
+    "worthWhyGen": "매일 보는 공사장 말 '레미콘'이 일본식 줄임말이라는 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '콘크리트' 예",
+     "unique": "미리 섞어 나르는 콘크리트 = 레미콘",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  }
+ ]
+}

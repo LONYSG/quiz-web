@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-history/2",
+  "midKey": "kr-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/2#g032a-g032a-j12-8",
+   "seed": {
+    "subject": "왕건",
+    "aspect": null,
+    "ref": "g032a-j12-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "918년 태봉의 왕 궁예를 몰아내고 새 나라를 세운 임금입니다. 고구려를 잇는다는 뜻으로 나라 이름을 '고려'라 했고, 936년 후삼국을 하나로 통일했습니다. 이 임금은 누구일까요?",
+    "answer": "왕건",
+    "acceptedAnswers": [
+     "태조 왕건",
+     "고려 태조"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "죽은 뒤 받은 묘호가 '태조'이고, 무덤은 개성에 있는 현릉이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "고구려를 잇는다는 뜻으로 나라 이름을 '고려'라 했고 936년 후삼국을 통일",
+     "difWhy": "1 — 고려 건국 임금은 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 한국사 기본 인물",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "송악(지금 개성)의 바닷길 무역 호족 집안에서 태어나 궁예 밑에서 장수로 이름을 떨쳤다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고려를 세운 임금(고려 태조)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "국사 필수, 드라마로도 접함",
+     "piece": "f03",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=임금, 첫 문장 끝이 '임금입니다'. 연도 둘이지만 문장마다 주어가 하나."
+    },
+    "blindQuestion": {
+     "guess": "왕건",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "왕건",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "왕건",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3004",
+      "answer": "사극",
+      "verdict": "unsure",
+      "why": "지식은 다름(왕건 건국 vs 사극 정의)이나 옛 힌트에 '태조 왕건'이 있어 새 정답 누설"
+     },
+     {
+      "old": "5047",
+      "answer": "관심법",
+      "verdict": "unsure",
+      "why": "지식은 다름(왕건 vs 궁예 관심법)이나 옛 질문에 '태조 왕건'과 궁예가 있어 새 정답·단서 누설"
+     },
+     {
+      "old": "4469",
+      "answer": "동명왕편",
+      "verdict": "diff",
+      "why": "왕건 vs 동명왕편"
+     },
+     {
+      "old": "3648",
+      "answer": "공민왕",
+      "verdict": "diff",
+      "why": "왕건 vs 공민왕"
+     },
+     {
+      "old": "5406",
+      "answer": "강조의 정변",
+      "verdict": "diff",
+      "why": "왕건 vs 강조의 정변"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고려_태조",
+     "https://en.wikipedia.org/wiki/Taejo_of_Goryeo"
+    ],
+    "facts": [
+     {
+      "claim": "918년 궁예 축출 · 고구려 계승 뜻으로 국호 고려",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고려_태조",
+      "note": "왕건은 918년 ... 궁예를 몰아내어 태봉을 멸망시키고 ... 고구려의 뒤를 잇는다는 뜻에서 국호를 고려로 하고 ... 고려를 건국한다."
+     },
+     {
+      "claim": "936년 후삼국 통일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Taejo_of_Goryeo",
+      "note": "was the founder of the Goryeo Dynasty of Korea. He ruled from 918 to 943, achieving unification of the Later Three Kingdoms in 936."
+     },
+     {
+      "claim": "송악의 해상 상인 호족 출신 · 태봉의 장군",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Taejo_of_Goryeo",
+      "note": "Wang Kŏn was born in 877 to a powerful maritime merchant family of Goguryeo descent based in Songak (modern Kaesong)"
+     },
+     {
+      "claim": "묘호 태조 · 능호 현릉",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/고려_태조",
+      "note": "묘호(廟號)는 태조(太祖) ... 능호는 현릉(顯陵)이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Taejo_of_Goryeo",
+     "https://ko.wikipedia.org/wiki/고려_태조"
+    ],
+    "hintNote": null,
+    "easiestCue": "나라 이름을 '고려'라 한 임금",
+    "worthWhyGen": "한국사 기본 인물 — 일반 상식(3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '임금' 예",
+     "unique": "918년 궁예 축출 + 고려 건국 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  }
+ ]
+}

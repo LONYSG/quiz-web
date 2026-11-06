@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-food/4",
+  "midKey": "world-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-food/4#g032a-g032a-j30-2",
+   "seed": {
+    "subject": "플람베",
+    "aspect": null,
+    "ref": "g032a-j30-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스에서 넘어온 조리 용어입니다. 조리 중인 요리에 브랜디나 럼 같은 독한 술을 붓고 불을 붙여, 짧은 시간에 알코올을 날려 버립니다. 이 조리법은?",
+    "answer": "플람베",
+    "acceptedAnswers": [
+     "플랑베"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "고기 누린내와 생선 비린내를 없애고 술의 향을 입힙니다. 1843년 디킨스의 '크리스마스 캐럴'에도 불붙은 푸딩이 나옵니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "브랜디나 럼 같은 독한 술을 붓고 불을 붙여",
+     "difWhy": "4 — 조리 용어 이름 · 일반인이 떠올리기 어려움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 요리 용어 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "레스토랑에서 손님 앞 팬 위로 파란 불길을 확 피워 올리는 '불 쇼'로 유명한 기술이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "요리에 술을 붓고 불을 붙여 알코올을 날리는 프랑스식 조리법",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "요리 프로·영화에서 일부 접함",
+     "piece": "f06",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '조리 용어' · 끝 '이 조리법' 과 일치 · 세 문장 짧음"
+    },
+    "blindQuestion": {
+     "guess": "플랑베",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "플람베",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "플람베",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "손님 앞 쇼 · 파란 불꽃",
+       "url": "https://en.wikipedia.org/wiki/Flambé",
+       "note": "tableside presentation ... results in a flare of blue-tinged flame / ko: 고객에게 보여주는 쇼로도 많이 사용"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "5628",
+      "answer": "수비드",
+      "verdict": "diff",
+      "why": "신규 '플람베'(다른 조리법) ≠ 옛 '수비드' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "201",
+      "answer": "수비드",
+      "verdict": "diff",
+      "why": "신규 '플람베'(다른 조리법) ≠ 옛 '수비드' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5627",
+      "answer": "테플론",
+      "verdict": "diff",
+      "why": "신규 '플람베'(다른 조리법) ≠ 옛 '테플론' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5629",
+      "answer": "분자 요리",
+      "verdict": "diff",
+      "why": "신규 '플람베'(다른 조리법) ≠ 옛 '분자 요리' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/플랑베",
+     "https://en.wikipedia.org/wiki/Flambé"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스에서 온 조리 용어 · 술을 첨가해 단시간에 알코올을 날리는 조리법",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/플랑베",
+      "note": "플랑베(프랑스어: flambé')는 프랑스에서 넘어온 조리 용어로, 조리 중인 요리 또는 소스에 센불에서 적당한 도수의 주류를 첨가하여 단시간에 알콜을 날리는 조리법"
+     },
+     {
+      "claim": "뜨거운 팬에 술을 넣어 불꽃을 일으킴 · 알코올을 태워 줄임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flambé",
+      "note": "a cooking procedure in which alcohol is added to a hot pan to create a burst of flames ... By partially burning off the volatile alcohol"
+     },
+     {
+      "claim": "손님 앞 쇼 · 파란 불꽃",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Flambé",
+      "note": "tableside presentation ... results in a flare of blue-tinged flame / ko: 고객에게 보여주는 쇼로도 많이 사용"
+     },
+     {
+      "claim": "누린내·비린내 제거 · 크리스마스 캐럴 1843 불붙은 푸딩",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Flambé",
+      "note": "The English Christmas pudding was served flaming in Charles Dickens' 1843 novel, A Christmas Carol / ko: 누린내, 비린내 등의 제거"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/플랑베",
+     "https://en.wikipedia.org/wiki/Flambé"
+    ],
+    "hintNote": null,
+    "easiestCue": "술을 붓고 불을 붙여 알코올을 날림",
+    "worthWhyGen": "2 — 요리 취미 영역의 조리 용어(쓸모 있는 기술 이름)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '조리 용어' — 예",
+     "unique": "술에 불을 붙이는 조리법은 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

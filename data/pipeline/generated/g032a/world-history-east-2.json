@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-east/2",
+  "midKey": "world-history-east",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-east/2#g032a-g032a-j23-3",
+   "seed": {
+    "subject": "쇼군",
+    "aspect": null,
+    "ref": "g032a-j23-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본 무사 정권인 막부의 우두머리를 부르던 칭호입니다. 천황이 임명했지만, 실제로 나라를 다스린 사람은 이 칭호를 받은 무사였습니다. 12세기 말부터 1868년까지 이어진 이 칭호는?",
+    "answer": "쇼군",
+    "acceptedAnswers": [
+     "정이대장군"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "정식 이름 '세이이타이쇼군'은 본래 동북쪽의 에미시를 치러 보낸 장군의 직함이었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "일본 무사 정권인 막부의 우두머리를 부르던 칭호",
+     "difWhy": "2 — 대중문화 · 역사 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 역사 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "2024년 미국 드라마 제목으로도 쓰였고, 에도 시대에는 도쿠가와 가문이 대대로 이어받은 자리다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일본 막부의 최고 지도자 칭호(세이이타이쇼군)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "일본사·영화·게임에서 자주 나옴",
+     "piece": "f04",
+     "genPct": 72
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '막부 우두머리 칭호' · 끝 ○○ = 칭호"
+    },
+    "blindQuestion": {
+     "guess": "쇼군",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "쇼군",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "쇼군",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5893",
+      "answer": "조선통신사",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1999",
+      "answer": "가나가와 조약",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6456",
+      "answer": "오사카성",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5635",
+      "answer": "사카모토 료마",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "92",
+      "answer": "에도 막부",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/쇼군",
+     "https://en.wikipedia.org/wiki/Shogun"
+    ],
+    "facts": [
+     {
+      "claim": "막부 수장 · 실질적 통치자 · 메이지 유신 뒤 폐지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쇼군",
+      "note": "가마쿠라 시대에 미나모토노 요리토모가 막부의 수장이 되었고, 이 시기부터 쇼군이라는 호칭은 조정을 통제하고 무가를 거느리는 일본의 실질적 통치자를 의미하게 되었다."
+     },
+     {
+      "claim": "1185~1868 · 천황이 임명 · 사실상의 통치자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shogun",
+      "note": "was the title of the military rulers of Japan during most of the period spanning from 1185 to 1868. Nominally appointed by the Emperor, shoguns were usually the de facto rulers of the country"
+     },
+     {
+      "claim": "이에야스 1603 취임 · 에도 막부",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/쇼군",
+      "note": "도쿠가와 이에야스는 … 게이쵸 8년(1603년)에 세이이타이쇼군에 취임하였다. … 이 도쿠가와 정권은 후에 에도 막부로 불리게 된다."
+     },
+     {
+      "claim": "본래 에미시 정벌 장군 직함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쇼군",
+      "note": "나라 시대, 헤이안 시대에는 동쪽 지역에 에미시 정벌을 위해 파견한 장군의 명칭이었는데"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/쇼군"
+    ],
+    "hintNote": null,
+    "easiestCue": "막부의 우두머리 칭호",
+    "worthWhyGen": "일본사의 바탕 개념 — 천황과 실권자가 갈린 까닭",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '막부의 우두머리 칭호' — 예",
+     "unique": "'칭호' · '막부의 우두머리' 로 다이묘·천황과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "ball-sports/4",
+  "midKey": "ball-sports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/4#g032a-g032a-j22-7",
+   "seed": {
+    "subject": "스크린 골프",
+    "aspect": null,
+    "ref": "g032a-j22-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "실내에서 즐기는 운동 놀이 시설입니다. 매트 위에서 진짜 공을 클럽으로 치면 센서가 방향과 거리를 읽어, 앞에 비친 영상 속 코스로 공이 날아가는 모습을 보여 줍니다. 필드에 나가지 않고 도심 건물 안에서 한 라운드를 도는 이것은?",
+    "answer": "스크린 골프",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "원래 1990년대 초 미국 등에서 공의 비거리와 탄도를 분석하는 연구용 장비로 시작했다고 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "실내에서 영상 속 코스로 공이 날아가는 골프",
+     "difWhy": "1 — 일상 시설",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 취미 시설 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "도심 상가마다 업소가 있어 퇴근 뒤 동료끼리 들르며, 기계가 발판 경사까지 만들어 주는 실내 라운딩이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "실내 골프 시뮬레이터 시설(스크린골프)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "국내 대중 레저로 매우 흔함",
+     "piece": "f03",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '운동 놀이 시설' 이 끝의 정답 종류(시설)와 맞음 · 문장 짧음"
+    },
+    "blindQuestion": {
+     "guess": "스크린골프",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스크린 골프",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "스크린 골프",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "773",
+      "answer": "18",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "779",
+      "answer": "14",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4270",
+      "answer": "세인트앤드루스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "772",
+      "answer": "딤플",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4269",
+      "answer": "멀리건",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/스크린골프",
+     "https://en.wikipedia.org/wiki/Golf_simulator"
+    ],
+    "facts": [
+     {
+      "claim": "실내 골프 시스템 · 센서가 탄도·방향·거리 판독 · 영상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스크린골프",
+      "note": "스크린골프는 골프를 실내에서 즐길 수 있도록 제작된 시스템이다. ... 센서: 플레이어가 친 공의 탄도,방향,거리,스피드,회전.등을 판독하여 데이터화 시키는 센서 / 스크린: 프로젝터가 보여주는 영상"
+     },
+     {
+      "claim": "실제 공을 화면에 쳐서 측정값으로 비행을 보여 줌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Golf_simulator",
+      "note": "A golf simulator is an indoor electronic simulator that allows to hit a physical golf ball into a projection screen. The system uses the measured data to calculate the ball's flight and display it on the screen."
+     },
+     {
+      "claim": "경사 구현 발판 · 골프방 창업",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/스크린골프",
+      "note": "스윙플레이트: 페어웨이나 러프의 라이에 따라 자동으로 경사를 구현하는 시스템 / 이 시스템을 이용한 일명 골프방이라고 하는 신규 창업아이템이 각광받고 있다."
+     },
+     {
+      "claim": "1990년대 초 미국 연구용",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/스크린골프",
+      "note": "1990년대 초 미국 등에서 시뮬레이션 기능을 골프에 적용한 것이 시초로 플레이어가 즐기는 용도가 아닌 비거리 및 탄도를 분석하기 위한 연구용으로 사용되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/스크린골프"
+    ],
+    "hintNote": null,
+    "easiestCue": "실내에서 영상 속 코스로 공을 치는 놀이",
+    "worthWhyGen": "3 — 생활 속 여가 문화 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '운동 놀이 시설' — 예 · '골프'·'스크린' 글자 쓰지 않음",
+     "unique": "실내 + 영상 + 라운드 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

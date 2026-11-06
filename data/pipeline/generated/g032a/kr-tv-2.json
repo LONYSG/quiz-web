@@ -1,0 +1,215 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-tv/2",
+  "midKey": "kr-tv",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/2#g032a-g032a-j01-1",
+   "seed": {
+    "subject": "먹방",
+    "aspect": null,
+    "ref": "g032a-j01-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2009년 무렵 한국 인터넷 개인 방송에서 시작돼 세계로 퍼진 방송 갈래의 이름입니다. 우리말 두 낱말의 앞 글자를 따 만든 줄임말인데, 영어권에서도 번역하지 않고 한국어 소리 그대로 부릅니다. 진행자가 카메라 앞에서 음식을 잔뜩 먹어 보이는 이 방송은?",
+    "answer": "먹방",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "아프리카TV(지금 SOOP)에서 처음 소개된 뒤 케이블·지상파로 번졌고, 2010년대 중반부터 해외로 퍼져 영어 낱말 'mukbang'이 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "진행자가 카메라 앞에서 음식을 잔뜩 먹어 보이는 방송",
+     "difWhy": "1 — 일상어 · 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "쯔양 같은 유튜버가 엄청난 양을 한자리에서 비우는 영상처럼, 보는 사람이 대리 만족을 느끼는 방송이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "음식을 먹는 모습을 보여 주는 방송 갈래(먹는 방송의 줄임말)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "예능·유튜브에서 일상어",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한국 인터넷 개인 방송 갈래 이름'이 끝 ○○=방송. 먹는 모습이 마지막에 나오나 분야는 앞서 분명."
+    },
+    "blindQuestion": {
+     "guess": "먹방",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "먹방",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "먹방",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5498",
+      "answer": "참 쉽죠",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(먹방 / 참 쉽죠)"
+     },
+     {
+      "old": "5497",
+      "answer": "나만 아니면 돼",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(먹방 / 나만 아니면 돼)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/먹방",
+     "https://en.wikipedia.org/wiki/Mukbang"
+    ],
+    "facts": [
+     {
+      "claim": "먹다+방송 합성 신조어",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/먹방",
+      "note": "먹방(영어: Mukbang 또는 Meokbang)은 먹는다는 뜻의 '먹'과 방송의 '방'이 합쳐진 신조어다."
+     },
+     {
+      "claim": "2009년 아프리카TV에서 처음 · 2010년대 중반 해외 확산 · 영어 낱말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mukbang",
+      "note": "It was first introduced on the real-time internet TV service AfreecaTV in 2009 ... before spreading internationally since the mid-2010s. ... Mukbang has been adopted as a word in the English language."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "진행자가 음식을 잔뜩 먹어 보이는 방송",
+    "worthWhyGen": "일상에서 쓰는 말의 짜임과 세계로 퍼진 까닭(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '방송 갈래' 예",
+     "unique": "줄임말 · 음식 먹는 방송 — 쿡방과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "kr-tv/2#g032a-g032a-j11-6",
+   "seed": {
+    "subject": "뇌섹남",
+    "aspect": null,
+    "ref": "g032a-j11-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2015년 무렵 크게 유행한 줄임말 신조어입니다. 겉모습보다 지식과 말솜씨, 재치로 매력을 풍기는 남자를 가리킵니다. 그해 시작한 tvN 퍼즐 예능 '문제적 남자'도 이 말의 앞부분을 정식 제목 앞머리에 넣었습니다. 이 신조어는?",
+    "answer": "뇌섹남",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 해 '심쿵' '웬열'과 함께 히트한 줄임말로 꼽혔고, 여자는 '뇌섹녀'라고 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "겉모습보다 지식과 말솜씨, 재치로 매력을 풍기는 남자",
+     "difWhy": "2 — 2015 유행어 · 세대 안",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 일화 — 유행어 세대 기억",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 1,
+     "worthKind": "일화"
+    },
+    "generalHint": "하석진·전현무처럼 퀴즈 예능에서 공부 잘하고 말 잘하는 출연자를 부르던 유행어다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'뇌가 섹시한 남자'를 줄인 신조어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "예능·유행어로 흔함",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://www.segye.com/newsView/20160119003943",
+     "https://ko.wikipedia.org/wiki/문제적_남자",
+     "https://keia.org/analysis/ten-useful-korean-dating-terms/"
+    ],
+    "facts": [
+     {
+      "claim": "지난해(2015) 히트한 신조어 · 뇌가 섹시한 남자",
+      "where": "q",
+      "url": "https://www.segye.com/newsView/20160119003943",
+      "note": "지난해 뇌섹남(뇌가 섹시한 남자), 웬열(웬일이니), 예지앞사(예전이나 지금이나 앞으로나 사랑해), 심쿵(심장이 쿵 뛸 정도로 놀람) 등 신조어가 히트했다."
+     },
+     {
+      "claim": "tvN 뇌섹시대 문제적 남자 2015.2.26~ · 퍼즐 프로그램 · 뇌섹 = 두뇌가 섹시하다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/문제적_남자",
+      "note": "《뇌섹시대 문제적 남자》는 2015년 2월 26일부터 2020년 2월 13일까지 tvN에서 방송되었던 텔레비전 퍼즐 프로그램이다. ... 뇌섹이란 \"두뇌가 섹시하다\"는 말을 줄인 것이다."
+     },
+     {
+      "claim": "지적인 매력이 있는 남성 · 여성형 뇌섹녀",
+      "where": "e",
+      "url": "https://keia.org/analysis/ten-useful-korean-dating-terms/",
+      "note": "WebSearch 요약: '주관이 뚜렷하고 유머러스하면서 지적인 매력까지 있는 남성' · 여성형 '뇌섹녀'"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "지식과 말솜씨로 매력을 풍기는 남자를 가리키는 2015년 신조어",
+    "worthWhyGen": "지금도 일상에서 쓰는 말 — 어디서 퍼졌는지(예능 제목) 유래",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '신조어' 예",
+     "unique": "'훈남' 등과 갈림 — 지식·말솜씨 매력 + 문제적 남자",
+     "hint12": "① 예 ② 예 (하석진·전현무 출연은 knowledge)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11",
+    "discarded": "알가치 1 (일화 · 유행어 세대 기억)"
+   }
+  }
+ ]
+}

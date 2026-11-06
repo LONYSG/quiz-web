@@ -1,0 +1,134 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "symbols/2",
+  "midKey": "symbols",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "symbols/2#g032a-g032a-j30-6",
+   "seed": {
+    "subject": "안전속도 5030",
+    "aspect": null,
+    "ref": "g032a-j30-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도시의 제한속도를 낮춘 교통 안전 정책입니다. 차와 사람이 함께 다니는 도심 일반도로와 주택가 이면도로의 제한속도를 각각 낮췄습니다. 두 속도 숫자를 이어 붙여 부르는 이 정책의 이름은?",
+    "answer": "안전속도 5030",
+    "acceptedAnswers": [
+     "5030"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "부산이 2019년 먼저 시행했고, 도심 일반도로 시속 50km · 이면도로 30km가 기준입니다. 흐름이 중요한 곳은 60km까지 허용합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "두 속도 숫자를 이어 붙여 부르는 이 정책의 이름",
+     "difWhy": "3 — 숫자 정확히 써야 함 · 단서는 구조뿐",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 운전·생활 규범",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "2021년 4월 전국에 시행된 도심 속도 낮추기 정책으로, '속도를 줄이면 사람이 보입니다'라는 표어로 알렸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도심 일반도로 시속 50km · 이면도로 30km 제한속도 정책",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "도로 표지·뉴스",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '교통 안전 정책', 끝 ○○=정책이라 일치. 문장마다 주어 하나."
+    },
+    "blindQuestion": {
+     "guess": "안전속도 5030",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "안전속도 5030",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "안전속도 5030",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 4,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://www.etoday.co.kr/news/view/2015779",
+     "https://news.seoul.go.kr/traffic/?p=503822",
+     "https://www.gangnam.go.kr/board/article/4062/view.do?mid=fm0503",
+     "https://www.korea.kr/special/policyCurationView.do?newsId=148897282"
+    ],
+    "facts": [
+     {
+      "claim": "안전속도 5030 = 도시 지역 일반도로 50km · 이면도로 30km · 2021-04-17 전국 시행",
+      "where": "q",
+      "url": "https://www.etoday.co.kr/news/view/2015779",
+      "note": "17일부터 시내 도로 속도 50㎞로 제한…'안전속도 5030' 전국 시행 (기사 제목 · WebSearch 요약)"
+     },
+     {
+      "claim": "도시 지역 일반도로 50km 이내 · 주택가 등 이면도로 30km 이하",
+      "where": "q",
+      "url": "https://news.seoul.go.kr/traffic/?p=503822",
+      "note": "도시 지역 일반도로는 시속 50km 이내, 주택가 등 이면도로는 시속 30km 이하로 제한 (WebSearch 요약)"
+     },
+     {
+      "claim": "표어 '속도를 줄이면 사람이 보입니다'",
+      "where": "h",
+      "url": "https://www.gangnam.go.kr/board/article/4062/view.do?mid=fm0503",
+      "note": "속도를 줄이면 사람이 보입니다! 안전속도 5030 (게시물 제목)"
+     },
+     {
+      "claim": "부산 2019년 11월 먼저 시행 · 예외 60km",
+      "where": "e",
+      "url": "https://www.korea.kr/special/policyCurationView.do?newsId=148897282",
+      "note": "부산에서는 2019년 11월 먼저 시행 · 원활한 교통 흐름이 필요한 곳은 예외적으로 60km 허용 (WebSearch 요약)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.etoday.co.kr/news/view/2015779",
+     "https://www.gangnam.go.kr/board/article/4062/view.do?mid=fm0503"
+    ],
+    "hintNote": null,
+    "easiestCue": "두 속도 숫자를 이어 붙인 정책 이름",
+    "worthWhyGen": "3 — 운전자·보행자 모두에게 해당하는 일상 교통 규범",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '정책' — 예",
+     "unique": "도심·이면도로 두 속도 숫자 이름 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

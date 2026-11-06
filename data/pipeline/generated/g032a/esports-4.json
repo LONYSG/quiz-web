@@ -1,0 +1,174 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "esports/4",
+  "midKey": "esports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "esports/4#g032a-g032a-j17-5",
+   "seed": {
+    "subject": "GG",
+    "aspect": null,
+    "ref": "g032a-j17-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "e스포츠와 온라인 게임에서 경기가 끝날 때 선수끼리 채팅창에 건네는 영어 머리글자 두 개짜리 인사입니다. 지고 있는 쪽이 먼저 치면 졌다고 인정하는 뜻으로 받아들여집니다. 일상에서도 '이제 끝났다'는 뜻으로 쓰는 이 말은?",
+    "answer": "GG",
+    "acceptedAnswers": [
+     "지지",
+     "굿 게임",
+     "굿게임"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "잘 싸웠다는 말을 덧붙인 'GGWP'도 쓰고, 상대를 깎아내리는 'GGEZ' 같은 꼴도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "영어 머리글자 두 개짜리 인사 … '이제 끝났다'는 뜻",
+     "difWhy": "2 — 게임 용어이나 일상 확산",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 게임 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "중계진이 승부가 기운 장면에서 '이건 사실상 끝났네요' 대신 외치기도 하는 스포츠맨십 인사말",
+    "generalHintVersion": "hint-v7",
+    "identity": "GG — 게임이 끝날 때 건네는 인사, 패배 인정의 뜻으로도 쓰는 게임 용어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "게임·온라인 채팅에서 흔히 씀",
+     "piece": "f03",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영어 머리글자 두 개짜리 인사' 가 끝 '이 말' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "GG",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "굿 게임",
+     "hit": false
+    },
+    "factCheck": {
+     "answer": "GG",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2906",
+      "answer": "항저우",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4886",
+      "answer": "3.3 혁명",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2908",
+      "answer": "온게임넷",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2907",
+      "answer": "프로게이머",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2910",
+      "answer": "광안리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Glossary_of_video_game_terms",
+     "https://thewiki.kr/w/GG"
+    ],
+    "facts": [
+     {
+      "claim": "경기 끝 인사 · 스포츠맨십",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Glossary_of_video_game_terms",
+      "note": "GG: Abbreviation meaning \"good game\". Typically exchanged as parting words at the end of a competitive game or match as a gesture of good sportsmanship."
+     },
+     {
+      "claim": "패배 인정·항복 신호로도 쓰임",
+      "where": "q",
+      "url": "https://thewiki.kr/w/GG",
+      "note": "(WebSearch 요약) GG는 경기가 끝난 뒤 건네는 인사이며 패배를 인정하고 게임을 포기한다는 뜻으로도 쓰인다 — 커뮤니티 위키라 약함"
+     },
+     {
+      "claim": "관전자가 승부가 기운 상황을 가리킬 때",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Glossary_of_video_game_terms",
+      "note": "it is sometimes said by spectators to denote a situation ... which suggests that a particular player's or team's victory appears inevitable (e.g. \"... that's a GG\")"
+     },
+     {
+      "claim": "GGWP · GGEZ",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Glossary_of_video_game_terms",
+      "note": "The variantions \"GGWP\" (\"good game, well played\") ... Insulting variations, such as \"GGEZ\" (\"good game, easy\")"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Glossary_of_video_game_terms"
+    ],
+    "hintNote": null,
+    "easiestCue": "경기가 끝날 때 채팅창에 치는 두 글자 인사",
+    "worthWhyGen": "일상에서도 'GG 쳤다'로 쓰는 말의 출처",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '인사' 예",
+     "unique": "두 글자 · 패배 인정 → GG",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-h GEN",
+      "before": {
+       "acceptedAnswers": [
+        "지지"
+       ]
+      },
+      "why": "blind '굿 게임' = 풀어 쓴 말 → 변형"
+     }
+    ],
+    "warn": [],
+    "job": "job-17"
+   }
+  }
+ ]
+}

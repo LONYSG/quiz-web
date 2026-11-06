@@ -1,0 +1,135 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "fashion/1",
+  "midKey": "fashion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "fashion/1#g032a-g032a-j30-9",
+   "seed": {
+    "subject": "와이셔츠",
+    "aspect": null,
+    "ref": "g032a-j30-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "양복 안에 받쳐 입고 넥타이를 매는, 깃 달린 윗옷을 한국에서 부르는 이름입니다. 원래 영어로 '흰색 윗옷'을 뜻하던 말이 일본식 발음을 거쳐 들어왔습니다. 그래서 색이 파랗거나 줄무늬여도 이렇게 부르는 이 옷은?",
+    "answer": "와이셔츠",
+    "acceptedAnswers": [
+     "Y셔츠",
+     "와이샤쓰"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영어권에서는 이런 옷을 '드레스 셔츠'라고 부릅니다. 일본에서 '와이'가 알파벳 Y와 소리가 같아 'Y셔츠'로도 적었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "양복 안에 받쳐 입고 넥타이를 매는, 깃 달린 윗옷",
+     "difWhy": "1 — 일상 옷 이름 · 흰색 윗옷 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "양복 재킷 안에 받쳐 입고 목에 넥타이를 매는 깃과 단추 달린 윗옷으로, 세탁소 다림질 단골인 출근 차림의 기본이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "양복 안에 입는 깃 달린 셔츠의 한국식 이름(white shirt에서)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 의복 이름",
+     "piece": "f05",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 옷의 쓰임과 '윗옷' 이 있고 이름 유래가 쉬운 말임"
+    },
+    "blindQuestion": {
+     "guess": "와이셔츠",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "와이셔츠",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "와이셔츠",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/와이셔츠",
+     "https://en.wiktionary.com/wiki/와이셔츠",
+     "https://brunch.co.kr/@dacos/113"
+    ],
+    "facts": [
+     {
+      "claim": "양복 안에 입는 윗옷 · 넥타이 맬 옷깃 · 영어 white shirts에서 유래 · 영어권은 dress shirt",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/와이셔츠",
+      "note": "와이셔츠는 양복안에 입는 윗옷으로 넥타이를 맬 수 있는 옷깃과 소매가 달려있다 ... 영어 화이트 셔츠(영어: white shirts)에서 유래된 말이며, 영어권에서는 이런 옷을 드레스 셔츠"
+     },
+     {
+      "claim": "일본어 ワイシャツ를 거쳐 white shirt에서",
+      "where": "q",
+      "url": "https://en.wiktionary.com/wiki/와이셔츠",
+      "note": "From Japanese ワイシャツ (wai-shatsu), from English white shirt."
+     },
+     {
+      "claim": "흰 셔츠 → 정장 속 셔츠로 뜻 변화 · Y셔츠 표기",
+      "where": "e",
+      "url": "https://brunch.co.kr/@dacos/113",
+      "note": "쇼와 시대 초기부터 남성 정장 안에 입는 셔츠라는 지금의 의미로 변형 · 와이샤쓰의 와이가 로마자 Y의 영어식 이름과 발음이 똑같아 Yシャツ라고도 표기 (WebSearch 요약)"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "양복 안에 받쳐 입고 넥타이를 매는 윗옷",
+    "worthWhyGen": "3 — 매일 쓰는 옷 이름이 '흰 셔츠'에서 왔다는 유래가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '윗옷' — 예",
+     "unique": "한국에서 부르는 이름 · 영어 '흰색 윗옷' → 와이셔츠(남방 배제)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "세탁소에 다림질을 맡기는 대표 옷으로, 직장인 출근 차림의 기본이다."
+      },
+      "why": "양복 안에 입는 깃 달린 윗옷이라는 정체를 앞세움"
+     }
+    ],
+    "warn": [
+     "crossans 넥타이"
+    ],
+    "job": "job-30"
+   }
+  }
+ ]
+}

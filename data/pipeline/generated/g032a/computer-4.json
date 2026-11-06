@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "computer/4",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/4#g032a-g032a-j06-8",
+   "seed": {
+    "subject": "이더넷",
+    "aspect": null,
+    "ref": "g032a-j06-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "컴퓨터를 케이블로 묶는 근거리 네트워크 기술의 이름입니다. 1973년 제록스 연구소의 로버트 메칼프가 이름을 붙였습니다. 옛 물리학에서 빛을 실어 나른다고 믿었던, 우주를 가득 채운 가상의 물질에서 따왔습니다. 이 기술은?",
+    "answer": "이더넷",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "메칼프는 1979년 제록스를 떠나 3Com으로 옮겼고, 1980년 DEC·인텔·제록스가 함께 이 기술의 표준(DIX)을 내놓았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "컴퓨터를 케이블로 묶는 근거리 네트워크 기술",
+     "difWhy": "3 — IT 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 기술 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "PC 뒤 랜 포트에 케이블을 꽂아 쓰는 유선 랜의 표준 규격으로, 윈도 네트워크 설정에서도 유선 연결이 이 이름으로 뜬다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "유선 랜(LAN)의 대표 규격",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "랜선·인터넷 설정에서 접함",
+     "piece": "f01",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '근거리 네트워크 기술' 이 있고 '가상의 물질' 풀이가 문장 안에 있음"
+    },
+    "blindQuestion": {
+     "guess": "이더넷",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "이더넷",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "이더넷",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6251",
+      "answer": "핑",
+      "verdict": "diff",
+      "why": "이더넷 vs 핑"
+     },
+     {
+      "old": "390",
+      "answer": "MAC 주소",
+      "verdict": "diff",
+      "why": "이더넷 vs MAC 주소"
+     },
+     {
+      "old": "395",
+      "answer": "라우터",
+      "verdict": "diff",
+      "why": "이더넷 vs 라우터"
+     },
+     {
+      "old": "394",
+      "answer": "와이파이",
+      "verdict": "diff",
+      "why": "이더넷 vs 와이파이"
+     },
+     {
+      "old": "387",
+      "answer": "아파넷",
+      "verdict": "diff",
+      "why": "이더넷 vs 아파넷"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ethernet",
+     "https://ko.wikipedia.org/wiki/이더넷"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 메칼프가 'Ether Network' 로 이름 · 빛을 나르는 luminiferous aether 에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ethernet",
+      "note": "In a 12-page memo written on May 22, 1973, Metcalfe named the concept \"The Ether Network.\" The name was inspired by the former idea that the universe was filled with a \"luminiferous aether\" that carried electromagnetic waves"
+     },
+     {
+      "claim": "이름은 빛의 매질로 여겨졌던 에테르에서 · 제록스 PARC 개발",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이더넷",
+      "note": "'이더넷'이라는 명칭(이름)은 빛의 매질로 여겨졌던 에테르(ether)에서 유래되었다. ... 이더넷은 1973년과 1974년 사이에 제록스 PARC에서 개발됐다."
+     },
+     {
+      "claim": "LAN 에서 가장 많이 쓰는 규격",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/이더넷",
+      "note": "일반적으로 LAN, MAN 및 WAN에서 가장 많이 활용되는 기술 규격이다."
+     },
+     {
+      "claim": "1979 3Com · 1980 DIX",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이더넷",
+      "note": "메칼프는 개인 컴퓨터와 LAN 사용을 촉진하기 위해 1979년에 제록스를 떠나 3Com으로 옮겼다. 그는 DEC, 인텔과 제록스와 1980년 9월 30일 이더넷 표준(DIX)을 촉진하기 위해서 공동 작업을"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이더넷"
+    ],
+    "hintNote": null,
+    "easiestCue": "케이블로 묶는 근거리 네트워크 기술",
+    "worthWhyGen": "흔히 보는 네트워크 이름의 유래(빛의 매질 에테르)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '네트워크 기술의 이름' 예",
+     "unique": "유선 근거리 규격 · 에테르 유래 — 와이파이와 갈림",
+     "hint12": "① 예 ② 예(윈도 표시는 knowledge)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  }
+ ]
+}

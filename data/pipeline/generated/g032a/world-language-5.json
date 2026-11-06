@@ -1,0 +1,309 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-language/5",
+  "midKey": "world-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-language/5#g032a-g032a-j08-10",
+   "seed": {
+    "subject": "아방가르드",
+    "aspect": null,
+    "ref": "g032a-j08-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "예술 쪽에서 자주 쓰는 프랑스어 낱말입니다. 원래는 본대보다 앞서 나가 땅을 살피던 군대의 선발대를 뜻했습니다. 19세기 개혁가들이 '예술가는 대중의 선발대가 되어야 한다'고 쓰면서 예술 말로 굳었습니다. 이 낱말은?",
+    "answer": "아방가르드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 뜻으로 처음 쓴 글로는 1825년 생시몽주의자 올랭드 로드리그의 수필 '예술가, 과학자, 그리고 산업가'가 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "본대보다 앞서 나가 땅을 살피던 군대의 선발대를 뜻하던 프랑스어",
+     "difWhy": "3 — 외래 예술 용어 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 예술 용어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "다다이즘·초현실주의·입체파처럼 기성 틀을 깨려 한 20세기 유럽의 실험 예술 운동을 통틀어 부르는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "실험적·급진적 예술(전위 예술)을 이르는 프랑스어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "예술·패션에서 자주 쓰는 말",
+     "piece": "f04",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '프랑스어 낱말' 이 있고 유래가 순서대로"
+    },
+    "blindQuestion": {
+     "guess": "아방가르드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아방가르드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아방가르드",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2640",
+      "answer": "바캉스",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2642",
+      "answer": "콩쿠르",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2637",
+      "answer": "앙코르",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2634",
+      "answer": "살롱",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2632",
+      "answer": "르네상스",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Avant-garde",
+     "https://ko.wikipedia.org/wiki/아방가르드"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스 군사 용어 = 본대 앞 정찰 부대 · 19세기 정치 개혁가 · 예술 말로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Avant-garde",
+      "note": "The French military term avant-garde (advanced guard) identified a reconnaissance unit who scouted the terrain ahead of the main force of the army. In 19th-century French politics, the term avant-garde (vanguard) identified left-wing political reformists ... By the mid-19th century, avant-garde referred to art"
+     },
+     {
+      "claim": "로드리그가 예술가들에게 대중의 전위 부대로 봉사하라고 요구 · 1825년",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아방가르드",
+      "note": "1825년에 발행된 생시몽주의자 벤자민 올랑드 로트리게스(Olinde Rodrigues)의 수필 <예술가, 과학자, 그리고 산업주의자> ... 현재의 관습적 의미로서의 아방가르드라는 말을 처음 사용한 기록물이다. 여기서 로트리게스는 예술가들에게 ‘(대중의) “전위 부대(avant-garde)”로서 봉사’하기를 요구하며"
+     },
+     {
+      "claim": "다다이즘·입체파·표현주의·초현실주의",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아방가르드",
+      "note": "아방가르드는 제1차 세계 대전 중에 생긴 다다이즘에서 시작되어 입체파, 표현주의와 초현실주의로 이어지면서 유럽에서 일어난 예술운동이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아방가르드"
+    ],
+    "hintNote": null,
+    "easiestCue": "예술에서 쓰는 프랑스어 · 원뜻 군대 선발대",
+    "worthWhyGen": "자주 쓰는 외래어의 유래 — 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '프랑스어 낱말' 예",
+     "unique": "프랑스어 낱말을 물어 '전위 예술' 은 받지 않음(B2)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 입체파/초현실주의"
+    ],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "world-language/5#g032a-g032a-j28-3",
+   "seed": {
+    "subject": "톨레랑스",
+    "aspect": null,
+    "ref": "g032a-j28-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스에서 온 말로, 나와 생각이 다른 사람의 의견도 존중하고 폭력 대신 토론으로 맞서는 태도를 뜻합니다. 1995년 망명객 홍세화가 '나는 빠리의 택시운전사'에서 소개하며 한국에 널리 알려졌습니다. 이 프랑스어 낱말은?",
+    "answer": "톨레랑스",
+    "acceptedAnswers": [
+     "똘레랑스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영국의 로크와 밀, 프랑스의 볼테르 같은 계몽주의 사상가들이 사회를 꾸리는 원리로 다듬었고, 오늘날 복수 정당제와 표현의 자유의 바탕이 되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "홍세화 『나는 빠리의 택시운전사』 로 알려진 프랑스어 낱말",
+     "difWhy": "3 — 책 일화에서 외래어로 건너야 함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 사회 개념어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "볼테르가 했다고 전하는 '나는 당신 말에 반대하지만, 그 말을 할 권리는 죽을 때까지 지키겠다'가 이 태도를 대표하는 문장이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "관용을 뜻하는 프랑스어 tolérance",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "뉴스·교양 글에서 흔히 쓰는 말",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '프랑스에서 온 말' 이 뜻풀이와 함께 나옴 · 홍세화 일화는 둘째 문장에서 단서로만 쓰임"
+    },
+    "blindQuestion": {
+     "guess": "톨레랑스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "톨레랑스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "톨레랑스",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4706",
+      "answer": "노블레스 오블리주",
+      "verdict": "diff",
+      "why": "신규 '톨레랑스'(다른 프랑스어 외래어) ≠ 옛 '노블레스 오블리주' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2640",
+      "answer": "바캉스",
+      "verdict": "diff",
+      "why": "신규 '톨레랑스'(다른 프랑스어 외래어) ≠ 옛 '바캉스' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2642",
+      "answer": "콩쿠르",
+      "verdict": "diff",
+      "why": "신규 '톨레랑스'(다른 프랑스어 외래어) ≠ 옛 '콩쿠르' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2634",
+      "answer": "살롱",
+      "verdict": "diff",
+      "why": "신규 '톨레랑스'(다른 프랑스어 외래어) ≠ 옛 '살롱' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2637",
+      "answer": "앙코르",
+      "verdict": "diff",
+      "why": "신규 '톨레랑스'(다른 프랑스어 외래어) ≠ 옛 '앙코르' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/관용",
+     "https://www.munhwa.com/article/11425003",
+     "https://ko.wikipedia.org/wiki/홍세화"
+    ],
+    "facts": [
+     {
+      "claim": "톨레랑스 = 의견이 다를 때 논쟁은 하되 폭력에 호소하지 않는 이념",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/관용",
+      "note": "관용(寬容, 영어: toleration) 또는 톨레랑스(프랑스어: tolérance)는 정치, 종교, 도덕, 학문, 사상, 양심 등의 영역에서 의견이 다를 때 논쟁은 하되 물리적 폭력에 호소하지는 말아야 한다는 이념을 말한다."
+     },
+     {
+      "claim": "1995년 '나는 빠리의 택시운전사'가 똘레랑스를 소개해 베스트셀러",
+      "where": "q",
+      "url": "https://www.munhwa.com/article/11425003",
+      "note": "1995년 초판 당시 이 책은 타인에 대한 상식적인 존중과 용인을 뜻하는 '똘레랑스'를 소개해 베스트셀러가 되었습니다. (WebSearch 요약 · kyobobook 책 소개와 같은 문장)"
+     },
+     {
+      "claim": "홍세화 · 남민전 사건 연루 프랑스 망명 · 1995년 책 발간",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/홍세화",
+      "note": "1979년에 벌어진 남민전 사건에 연루되어 프랑스로 망명했으며 ... 1995년 자서적 고백인 《나는 빠리의 택시운전사》를 발간하고"
+     },
+     {
+      "claim": "볼테르의 말로 전해지는 명구",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/관용",
+      "note": "관용에 관해서는 볼테르의 말로 전해지는 명구가 하나 있다. ... 나는 네가 말한 것을 비난하지만, 그것을 말할 네 권리를 나는 죽을 때까지 지키겠다."
+     },
+     {
+      "claim": "로크·밀·볼테르 · 계몽주의 · 복수정당제 · 표현의 자유",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/관용",
+      "note": "영국에서는 존 밀턴, 존 로크, 존 스튜어트 밀 등이 대표적인 관용론자이고, 프랑스에서는 볼테르를 들 수 있다. ... 현대 자유민주주의 체제는 예외 없이 복수정당제를 허용하는데, 이는 ... 관용의 표현이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/관용"
+    ],
+    "hintNote": null,
+    "easiestCue": "홍세화가 소개한 프랑스어 · 다른 생각 존중",
+    "worthWhyGen": "신문·토론에서 쓰는 외래어의 뜻과 한국에 들어온 내력(알가치 3 ③)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '프랑스에서 온 말' — 예",
+     "unique": "프랑스어 낱말을 요구(B2) — 관용은 받지 않음 · 똘레랑스 표기 받음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 당신"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

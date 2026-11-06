@@ -1,0 +1,138 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "chemistry/5",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/5#g032a-g032a-j04-11",
+   "seed": {
+    "subject": "드라이클리닝",
+    "aspect": null,
+    "ref": "g032a-j04-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "세탁소에서 하는 세탁 방법입니다. 이름은 '마른 세탁'이라는 뜻이지만, 옷은 실제로 액체가 든 기계 통에 푹 담가 빱니다. 그 액체가 물이 아닌 유기 용제라서 이렇게 부르는 이 세탁 방법은?",
+    "answer": "드라이클리닝",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "가장 흔한 용제는 퍼클로로에틸렌이고 예전에는 휘발유나 등유도 썼다. 1845년 파리에 첫 가게가 열렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "이름은 '마른 세탁'이라는 뜻이지만",
+     "difWhy": "1 — 세탁소 일상어 · 마른 세탁 뜻이 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름과 실제가 다른 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "물빨래하면 줄거나 모양이 틀어지는 양모 코트나 실크 블라우스를 맡길 때 고르는 세탁이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "물 대신 유기 용제로 하는 세탁(dry cleaning)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "세탁소 일상 용어",
+     "piece": "f05",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '세탁 방법' 이 있고 끝 ○○ 도 세탁 방법, '유기 용제' 는 액체라는 맥락으로 뜻이 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "드라이클리닝",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "드라이클리닝",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "드라이클리닝",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2924",
+      "answer": "울",
+      "verdict": "diff",
+      "why": "드라이클리닝 vs 울 섬유"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/드라이클리닝",
+     "https://en.wikipedia.org/wiki/Dry_cleaning"
+    ],
+    "facts": [
+     {
+      "claim": "물 대신 유기 용제로 세탁",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/드라이클리닝",
+      "note": "드라이 클리닝(영어: dry cleaning, 문화어: 화학세탁, 화학빨래)은 물 대신 유기 용제를 사용하여 세탁하는 방법이다."
+     },
+     {
+      "claim": "옷을 물 없는 액체 용제에 담금 · 전용 기계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dry_cleaning",
+      "note": "Dry cleaning is any cleaning process for clothing and textiles using a solvent other than water. Clothes are instead soaked in a water-free liquid organic solvent ... typically inside a specialised dry-cleaning machine."
+     },
+     {
+      "claim": "모·견 등 물에 손상되기 쉬운 직물에 적당",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/드라이클리닝",
+      "note": "빨랫감이 손상되지 않고 옷 모양이 변하지 않으며 ... 물로 세탁하면 손상되기 쉬운 모·견•레이온·아세테이트 등의 직물 세탁에 적당하다."
+     },
+     {
+      "claim": "퍼클로로에틸렌 · 옛 용제 휘발유·등유 · 1845년 파리 첫 가게",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dry_cleaning",
+      "note": "The most commonly used solvent is perchloroethylene ... Historical solvents include gasoline, kerosene ... He opened the first dry cleaning service in Paris in 1845."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/드라이클리닝"
+    ],
+    "hintNote": null,
+    "easiestCue": "세탁소 · '마른 세탁'이라는 뜻의 이름",
+    "worthWhyGen": "일상에서 쓰는 말이 왜 '드라이'인지(유래·까닭)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '세탁 방법' 예",
+     "unique": "하나",
+     "hint12": "① 예 ② 예 · 쉬운 쪽 — 등급은 낮게 나올 수 있음"
+    },
+    "history": [],
+    "warn": [
+     "crossans 실크"
+    ],
+    "job": "job-04"
+   }
+  }
+ ]
+}

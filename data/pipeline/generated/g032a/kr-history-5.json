@@ -1,0 +1,140 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-history/5",
+  "midKey": "kr-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/5#g032a-g032a-j01-5",
+   "seed": {
+    "subject": "구한말",
+    "aspect": null,
+    "ref": "g032a-j01-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 말기부터 1910년 나라를 잃기까지의 시기를 묶어 부르는 역사 용어입니다. 1897년 고종이 세운 나라 이름에서 한 글자를 따고, 그 앞에 '옛'을 뜻하는 한자를, 뒤에 '끝 무렵'을 뜻하는 한자를 붙였습니다. 이 말은?",
+    "answer": "구한말",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "고종이 정한 국호 '대한'은 삼한을 하나로 아우른다는 뜻이었고, 그 나라는 1910년 한일병합조약으로 사라졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "조선 말기부터 1910년 나라를 잃기까지의 시기",
+     "difWhy": "3 — 역사 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 역사 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "고종이 다스린 조선 마지막 시기로, 청일·러일 전쟁을 거쳐 일제에 국권을 빼앗기기 직전까지를 묶어 부른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "조선 말기~대한제국 시기를 이르는 말(舊韓末)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "국사 교과서·드라마 배경",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '역사 용어' 가 있고 한자 풀이가 괄호 없이도 뜻이 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "구한말",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "대한제국기",
+     "hit": false
+    },
+    "factCheck": {
+     "answer": "구한말",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "916",
+      "answer": "고종",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(구한말 / 고종)"
+     },
+     {
+      "old": "5900",
+      "answer": "경인선",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(구한말 / 경인선)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/구한말",
+     "https://ko.wikipedia.org/wiki/대한제국"
+    ],
+    "facts": [
+     {
+      "claim": "구한말(舊韓末) = 조선 말기~대한제국 시기 · 1910 병합",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/구한말",
+      "note": "구한말(舊韓末)은 조선 말기부터 대한제국까지의 시기를 가리키는 용어다. ... 1897년 고종은 대한제국을 선포하고 ... 1910년 일본은 한일병합조약을 통해 대한제국을 완전히 병합했다. 구한말은 서양 문물이 전래되어 한반도에 도입된 시기였다. 전차, 전화, 우편, ..."
+     },
+     {
+      "claim": "1897 대한국 선포 · 구한말 명칭 · 대한 = 삼한 통일",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한제국",
+      "note": "대한제국이 존재했던 기간과 그 주변 기간을 합쳐 구한말(舊韓末)이라고 부르기도 한다. ... 대한이라는 말은 '삼한(三韓)'에서 유래한 것으로 ... 그 삼한이 통일되었다는 의미에서 대한이라 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/구한말"
+    ],
+    "hintNote": null,
+    "easiestCue": "조선 말기부터 1910년까지를 묶어 부르는 역사 용어",
+    "worthWhyGen": "자주 쓰는 시대 이름이 왜 그렇게 생겼는지(옛 한 + 끝)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '역사 용어' 예",
+     "unique": "글자 짜임 한정 — 한말·조선 말기와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "서울에 전화·우편·전기가 처음 들어오던 고종 시대를 가리키는 말로, 드라마 '미스터 션샤인'의 배경이다."
+      },
+      "why": "개화기(문물 도입)보다 '망국까지의 말기'를 핵심으로"
+     }
+    ],
+    "warn": [
+     "crossans 고종"
+    ],
+    "job": "job-01"
+   }
+  }
+ ]
+}

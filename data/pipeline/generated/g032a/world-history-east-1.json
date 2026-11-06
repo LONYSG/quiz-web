@@ -1,0 +1,179 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-east/1",
+  "midKey": "world-history-east",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-east/1#g032a-g032a-j02-7",
+   "seed": {
+    "subject": "당나라",
+    "aspect": null,
+    "ref": "g032a-j02-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국의 한 왕조입니다. 7~10세기 동아시아에 이름을 크게 떨쳐, 그 뒤 해외로 나간 중국인들은 스스로를 이 왕조의 사람이라 불렀습니다. 그래서 세계 곳곳의 차이나타운을 중국어로 '탕런제', 곧 '이 왕조 사람들의 거리'라 부릅니다. 이 왕조는?",
+    "answer": "당나라",
+    "acceptedAnswers": [
+     "당",
+     "당 왕조"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "907년 절도사 출신 주전충이 황제를 몰아내고 후량을 세우며 끝났습니다. 안사의 난 뒤로 중앙의 힘이 기울었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "7~10세기 동아시아에 이름을 크게 떨쳐 … 탕런제",
+     "difWhy": "2 — 탕/당 단서로 한 번 건넘 · 학교 역사",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 차이나타운 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "수 왕조를 무너뜨린 이연이 세운 왕조로, 시인 이백·두보가 활약했고 신라와 손잡아 백제·고구려를 무너뜨렸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "618~907년 중국 통일 왕조",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "역사 상식",
+     "piece": "f01",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '중국의 왕조' · 탕런제 풀이를 곧바로 곁들여 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "당나라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "당나라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "당나라",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5883",
+      "answer": "매소성 전투",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(당나라 / 매소성 전투)"
+     },
+     {
+      "old": "6668",
+      "answer": "권토중래",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(당나라 / 권토중래)"
+     },
+     {
+      "old": "1705",
+      "answer": "발해",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(당나라 / 발해)"
+     },
+     {
+      "old": "4466",
+      "answer": "정림사지 오층석탑",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(당나라 / 정림사지 오층석탑)"
+     },
+     {
+      "old": "5587",
+      "answer": "현장",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(당나라 / 현장)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chinatown",
+     "https://ko.wikipedia.org/wiki/차이나타운",
+     "https://ko.wikipedia.org/wiki/당나라",
+     ""
+    ],
+    "facts": [
+     {
+      "claim": "차이나타운 = 唐人街(탕런제) '당 사람들의 거리' · 중국인이 스스로 당 사람이라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chinatown",
+      "note": "In Chinese, Chinatown is usually called 唐人街, … in Mandarin Tángrénjiē, … literally meaning \"Tang people's street(s)\". The Tang dynasty was a zenith of the Chinese civilization, after which some Chinese call themselves."
+     },
+     {
+      "claim": "차이나타운 = 당인가(唐人街)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/차이나타운",
+      "note": "차이나타운(Chinatown) 또는 당인가(중국어: 唐人街, 병음: tángrénjiē)"
+     },
+     {
+      "claim": "618~907 · 동아시아 각국 문화에 영향",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/당나라",
+      "note": "당(唐, 618년 ~ 907년) … 당나라는 발해, 신라, 베트남, 일본과 같은 동아시아 각국의 문화에도 영향을 미쳤다."
+     },
+     {
+      "claim": "이연 건국 · 이백·두보",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/당나라",
+      "note": "초대 황제인 이연은 … 수나라를 무너뜨리고 당나라를 건국했다. / 중국의 유명한 시인인 이백과 두보가 당나라 시대에 살았으며"
+     },
+     {
+      "claim": "신라와 손잡아 백제·고구려 멸망(나당 연합)",
+      "where": "h",
+      "url": "",
+      "note": "knowledge — 나당 연합군(660 백제 · 668 고구려)"
+     },
+     {
+      "claim": "주전충 907 후량 · 안사의 난 이후 쇠퇴",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/당나라",
+      "note": "주전충이 당 애제를 축출하고 907년 스스로 황제가 되어 후량을 건국함으로써 당나라는 멸망했다. / 안사의 난 이후 중앙집권체계가 쇠퇴하기 시작했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/당나라"
+    ],
+    "hintNote": null,
+    "easiestCue": "7~10세기 중국 왕조 + '탕'",
+    "worthWhyGen": "차이나타운의 중국어 이름이 왜 그런가(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '왕조' 예",
+     "unique": "7~10세기 + 탕런제 — 한·송과 갈림('탕' 소리가 단서)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 이백/두보"
+    ],
+    "job": "job-02"
+   }
+  }
+ ]
+}

@@ -1,0 +1,304 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "society/2",
+  "midKey": "society",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "society/2#g032a-job-03-11",
+   "seed": {
+    "subject": "검역",
+    "aspect": null,
+    "ref": "job-03-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전염병이 나라 밖에서 들어오지 못하게 공항과 항구에서 사람·동물·화물을 살피는 일입니다. 이 일의 영어 이름은 흑사병이 돌던 15세기 베네치아가 들어오는 배를 40일 동안 묶어 둔 데서, '40일'을 뜻하는 말에서 왔습니다. 우리말로 무엇일까요?",
+    "answer": "검역",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그보다 앞선 1377년, 라구사(지금의 두브로브니크)는 새로 온 사람을 30일 동안 따로 머물게 했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "전염병이 나라 밖에서 들어오지 못하게 공항과 항구에서 살피는 일",
+     "difWhy": "3 — 설명 → 이름 · 검역 용어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 사회 상식 · 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "해외에서 입국할 때 열화상 카메라로 열이 있는지 살피고 건강 상태 질문서를 받는 절차가 바로 이것이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "감염병 유입을 막으려 공항·항구에서 하는 검사 제도",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "코로나 시기 일상어",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '살피는 일' 로 정답 종류를 밝힘 · 둘째 문장이 길지만 영어 어원을 말할 뿐 주어는 하나"
+    },
+    "blindQuestion": {
+     "guess": "검역",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "검역",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "검역",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6028",
+      "answer": "비글",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(검역 / 비글)"
+     },
+     {
+      "old": "5593",
+      "answer": "구빈법",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(검역 / 구빈법)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/검역",
+     "https://en.wikipedia.org/wiki/Quarantine"
+    ],
+    "facts": [
+     {
+      "claim": "국외 감염병 유입 예방 위해 공항·항구에서 검사 · 동식물·화물 포함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/검역",
+      "note": "검역(檢疫, 영어: quarantine)은 국외 감염병이 국내로 유입되는 것을 예방하기 위해 공항, 항구 등에서 검사하는 것을 말한다. ... 자동차ㆍ배ㆍ비행기ㆍ화물 따위를 검진하고 소독하며 ... 동물이나 식물을 따로 보관하여"
+     },
+     {
+      "claim": "quarantine 은 베네치아어 quarantena '40일' · 1448년 베네치아 40일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Quarantine",
+      "note": "The word \"quarantine\" originates from quarantena, the Venetian language form, meaning \"forty days\". This is due to the 40-day isolation of ships and people practised as a measure of disease prevention related to the plague. ... In 1448 the Venetian Senate prolonged the waiting period to 40 days"
+     },
+     {
+      "claim": "1377년 라구사 30일",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Quarantine",
+      "note": "A document from 1377 states that before entering the city-state of Ragusa in Dalmatia (modern Dubrovnik in Croatia), newcomers had to spend 30 days (a trentine) in a restricted place"
+     },
+     {
+      "claim": "열화상 카메라 등 검역 장비",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/검역",
+      "note": "같이 보기: 열화상 카메라 · 의료용 온도계(체온계) · 적외선 온도계"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "공항과 항구에서 전염병을 막으려 살피는 일",
+    "worthWhyGen": "'quarantine'이 왜 '40'에서 왔는지 — 코로나 때 늘 쓴 말의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '~살피는 일' — 예",
+     "unique": "공항·항구 + 우리말 — 하나(격리는 따로 · 질문이 공항·항구 일로 한정)",
+     "hint12": "① 예 ② 예 · 첫 문장 정의로 쉬움 — 등급 5 는 어려울 수 있음"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "society/2#g032a-g032a-j23-9",
+   "seed": {
+    "subject": "기초연금",
+    "aspect": null,
+    "ref": "g032a-j23-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "노인 빈곤을 줄이려고 나라가 주는 연금입니다. 65세 이상 노인 가운데 소득과 재산이 적은 70%가 매달 받습니다. 2014년 7월부터 시행된 이 연금은 무엇일까요?",
+    "answer": "기초연금",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2012년 대선 때 '모든 노인에게 월 20만 원' 공약이 소득 하위 70%로 바뀌어 논란이 되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "65세 이상 노인 가운데 소득과 재산이 적은 70%가 매달 받습니다",
+     "difWhy": "2 — 사회 상식 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 누구에게나 닿는 복지 제도",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "공적연금 사각지대에 놓인 어르신의 노후 소득을 받쳐 주는 복지 급여로, 2024년 혼자 사는 어르신은 최대 월 33만 원대다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "65세 이상 소득 하위 70% 노인에게 매달 주는 공적 급여",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "노인 복지 뉴스에서 일상적",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '나라가 주는 연금' · 끝 ○○ = 연금, 짧고 명료"
+    },
+    "blindQuestion": {
+     "guess": "기초연금",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "기초연금",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "기초연금",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 2,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "65세 이상 소득·재산 적은 70% · 매달 지급",
+       "url": "https://ko.wikipedia.org/wiki/대한민국의_연금_제도",
+       "note": "65세 이상의 전체 노인 중 소득과 재산이 적은 70%의 노인에게 매달 일정액(20만원)의 연금을 지급하는 제도다."
+      },
+      {
+       "claim": "2014년 7월 시작 · 기초노령연금 개정",
+       "url": "https://ko.wikipedia.org/wiki/대한민국의_연금_제도",
+       "note": "2008년 1월부터 시행해 온 기존의 기초노령연금제도를 대폭 개정해 2014년 7월부터 2014년 7월 시작했다."
+      },
+      {
+       "claim": "공적연금 사각지대 · 2024년 단독가구 최대 월 33만 4810원",
+       "url": "https://ko.wikipedia.org/wiki/대한민국의_연금_제도",
+       "note": "수급액은 단독가구 월 최대 33만 4810원 … 기초연금은 공적연금 사각지대에 놓인 어르신들을 위해 노후소득 보장 및 생활안정 지원을 하고자"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "5592",
+      "answer": "메디케어",
+      "verdict": "diff",
+      "why": "새=기초연금(65세 노인 소득하위 70%); 옛 문항은 메디케어·본인부담금·공공부조 개념·포괄수가제·노인장기요양보험으로 다른 제도"
+     },
+     {
+      "old": "3221",
+      "answer": "본인부담금",
+      "verdict": "diff",
+      "why": "새=기초연금(65세 노인 소득하위 70%); 옛 문항은 메디케어·본인부담금·공공부조 개념·포괄수가제·노인장기요양보험으로 다른 제도"
+     },
+     {
+      "old": "3217",
+      "answer": "공공부조",
+      "verdict": "diff",
+      "why": "새=기초연금(65세 노인 소득하위 70%); 옛 문항은 메디케어·본인부담금·공공부조 개념·포괄수가제·노인장기요양보험으로 다른 제도"
+     },
+     {
+      "old": "4641",
+      "answer": "포괄수가제",
+      "verdict": "diff",
+      "why": "새=기초연금(65세 노인 소득하위 70%); 옛 문항은 메디케어·본인부담금·공공부조 개념·포괄수가제·노인장기요양보험으로 다른 제도"
+     },
+     {
+      "old": "3215",
+      "answer": "노인장기요양보험",
+      "verdict": "diff",
+      "why": "새=기초연금(65세 노인 소득하위 70%); 옛 문항은 메디케어·본인부담금·공공부조 개념·포괄수가제·노인장기요양보험으로 다른 제도"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대한민국의_연금_제도",
+     "https://ko.wikipedia.org/wiki/기초노령연금"
+    ],
+    "facts": [
+     {
+      "claim": "65세 이상 소득·재산 적은 70% · 매달 지급",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_연금_제도",
+      "note": "65세 이상의 전체 노인 중 소득과 재산이 적은 70%의 노인에게 매달 일정액(20만원)의 연금을 지급하는 제도다."
+     },
+     {
+      "claim": "2014년 7월 시작 · 기초노령연금 개정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_연금_제도",
+      "note": "2008년 1월부터 시행해 온 기존의 기초노령연금제도를 대폭 개정해 2014년 7월부터 2014년 7월 시작했다."
+     },
+     {
+      "claim": "소득 하위 70% 노인 대상 기초연금 추진",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기초노령연금",
+      "note": "소득 하위 70% 노인을 대상으로 하고, 지급액도 국민연금과 연계하는 방식으로 변경하여 기초연금 제도를 추진하였다."
+     },
+     {
+      "claim": "공적연금 사각지대 · 2024년 단독가구 최대 월 33만 4810원",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_연금_제도",
+      "note": "수급액은 단독가구 월 최대 33만 4810원 … 기초연금은 공적연금 사각지대에 놓인 어르신들을 위해 노후소득 보장 및 생활안정 지원을 하고자"
+     },
+     {
+      "claim": "2012년 대선 '모든 노인 월 20만원' 공약 → 하위 70%",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/기초노령연금",
+      "note": "\"소득에 관계 없이 모든 노인에게 월 20만원의 연금을 지급하겠다\"고 공약 … 그러나, 정부는 … 소득 하위 70% 노인을 대상으로 하고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/대한민국의_연금_제도"
+    ],
+    "hintNote": null,
+    "easiestCue": "65세 이상 소득 하위 70% 노인이 매달 받는 연금",
+    "worthWhyGen": "누구나 부모·자신의 노후에 닿는 제도(일반 상식)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '연금' — 예",
+     "unique": "'소득 하위 70% · 2014년 7월' 로 국민연금·기초생활보장과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

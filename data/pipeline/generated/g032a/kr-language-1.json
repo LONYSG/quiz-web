@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-language/1",
+  "midKey": "kr-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/1#g032a-g032a-j18-2",
+   "seed": {
+    "subject": "모음조화",
+    "aspect": null,
+    "ref": "g032a-j18-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우리말 소리에 관한 규칙입니다. '알록달록'과 '얼룩덜룩', '찰랑찰랑'과 '철렁철렁'처럼 ㅏ·ㅗ는 ㅏ·ㅗ끼리, ㅓ·ㅜ는 ㅓ·ㅜ끼리 어울리는 현상이 있습니다. 이 현상의 이름은?",
+    "answer": "모음조화",
+    "acceptedAnswers": [
+     "홀소리어울림"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "15세기 훈민정음 시절에는 엄격했지만 아래아(ㆍ)가 사라지면서 많이 깨졌습니다. 지금은 흉내 내는 말과 어미에 주로 남아 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "ㅏ·ㅗ는 ㅏ·ㅗ끼리 어울리는 현상",
+     "difWhy": "3 — 학교 국어 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 국어 교과 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "'잡아'와 '먹어'처럼 말끝에 붙는 어미까지 앞 음절 소리의 밝고 어두움을 따라 갈리는, 국어 시간에 배우는 음운 규칙이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "양성 모음은 양성끼리, 음성 모음은 음성끼리 어울리는 국어 음운 현상",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "국어 교과서에서 배움",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '우리말 소리 규칙' · 예시 단어로 현상이 보임 · 끝 ○○ = 현상"
+    },
+    "blindQuestion": {
+     "guess": "모음조화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "모음조화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "모음조화",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "438",
+      "answer": "두음법칙",
+      "verdict": "diff",
+      "why": "모음조화 vs 두음법칙 — 다른 규칙"
+     },
+     {
+      "old": "4489",
+      "answer": "말모이",
+      "verdict": "diff",
+      "why": "모음조화 vs 말모이 — 다른 지식"
+     },
+     {
+      "old": "5910",
+      "answer": "한글 맞춤법 통일안",
+      "verdict": "diff",
+      "why": "모음조화 vs 맞춤법 통일안 — 다른 지식"
+     },
+     {
+      "old": "6664",
+      "answer": "한글학회",
+      "verdict": "diff",
+      "why": "모음조화 vs 한글학회 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/모음조화",
+     "https://en.wikipedia.org/wiki/Vowel_harmony"
+    ],
+    "facts": [
+     {
+      "claim": "모음조화 = 낱말의 모음이 같은 모음군끼리 어울리는 현상 · 한국어에는 양성·음성·중성모음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/모음조화",
+      "note": "여러 음절로 된 낱말에서 첫음절의 모음에 속한 모음군에 따라 뒷음절의 모음이 바뀌면서 낱말 전체의 모음이 모두 같은 모음군에 속하게 되는 현상을 말한다. … 한국어에는 양성모음, 음성모음, 중성모음이 있다."
+     },
+     {
+      "claim": "현대 한국어는 의성·의태어, 활용 등에만 모음조화가 남음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vowel_harmony",
+      "note": "While Middle Korean had strong vowel harmony, modern Korean retains it only in certain cases such as onomatopoeia, adjectives, adverbs, conjugation, and interjections."
+     },
+     {
+      "claim": "15세기 엄격 → 아래아 소실로 깨짐 · 의태어·어미에 남음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/모음조화",
+      "note": "15세기에는 엄격한 모음조화가 있었지만(Ex.훈민정음), 조선 후기에 아래아(ㆍ)가 ㅡ를 비롯한 갖가지 홀소리로 바뀌게 되면서 모음조화가 깨졌다. 현대 한국어에서는 의태어, 강조어, 술어의 어간이나 어미에 모음조화가 남아 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/모음조화"
+    ],
+    "hintNote": null,
+    "easiestCue": "알록달록/얼룩덜룩 짝",
+    "worthWhyGen": "학교 국어 문법의 기본 개념이자 의태어를 만드는 원리(교과 개념 2)",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '우리말 소리 규칙' — 예",
+     "unique": "예시 두 짝이 모음 짝을 가리켜 자음 현상(된소리되기 등)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 음절"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

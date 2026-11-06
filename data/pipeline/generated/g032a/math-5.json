@@ -1,0 +1,409 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "math/5",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/5#g032a-g032a-j15-1",
+   "seed": {
+    "subject": "평",
+    "aspect": null,
+    "ref": "g032a-j15-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "넓이를 재는 우리 옛 단위입니다. 여섯 자 길이를 한 변으로 하는 정사각형의 넓이로, 약 3.3제곱미터입니다. 2007년부터 상거래에 쓰지 못하게 한 이 단위는 무엇일까요?",
+    "answer": "평",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1961년 미터법을 들이며 공식 단위에서 빠졌지만 효과가 적었고, 결국 과태료를 매기게 되었다. 일본의 쓰보, 대만의 핑도 같은 꼴의 단위다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "약 3.3제곱미터 · 2007년부터 상거래에 쓰지 못하게",
+     "difWhy": "2 — 집 넓이로 익숙 · 3.3㎡ 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 부동산에서 일상으로 쓰임",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "아파트나 원룸 크기를 말할 때 흔히 쓰는 단위로, 사람이 팔다리를 뻗고 누울 만한 넓이에서 왔다고 한다",
+    "generalHintVersion": "hint-v7",
+    "identity": "넓이 단위 평(坪) — 약 3.3㎡, 집·땅 넓이를 말할 때 흔히 쓰는 척관법 단위",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "아파트 평수로 일상에서 쓰는 단위",
+     "piece": "f02",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '넓이 옛 단위'가 끝 ○○=단위. 정의가 수치로 바로 풀려 있음."
+    },
+    "blindQuestion": {
+     "guess": "평",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "평",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "평",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j15-3",
+      "answer": "돈",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "g032a:g032a-j21-4",
+      "answer": "근",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2418",
+      "answer": "국제단위계",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/평_(단위)",
+     "https://en.wikipedia.org/wiki/Pyeong"
+    ],
+    "facts": [
+     {
+      "claim": "여섯 자 평방 · 약 3.3058㎡ · 보통 3.3㎡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/평_(단위)",
+      "note": "넓이 1평은 여섯 자 평방이며, 곧 길이 여섯 자를 한 변으로 하는 정사각형의 넓이를 나타내므로, “6자×6자”를 뜻한다. 미터법으로 환산하면 약 3.3058제곱미터(400/121 m2)이다. 보통 3.3제곱미터를 1평으로 본다."
+     },
+     {
+      "claim": "36 square Korean feet · 3.3058㎡",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pyeong",
+      "note": "A pyeong (abbreviation py) is a Korean unit of area and floorspace, equal to a square kan or 36 square Korean feet. ... a pyeong of 400/121 or 3.3058 m2."
+     },
+     {
+      "claim": "2007년 7월 1일부터 상거래 사용 금지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/평_(단위)",
+      "note": "대한민국 산업자원부는 2007년 7월 1일부터 평 단위 사용을 전면 금지하였으며, 이를 위반시 50만 원 이하 과태료를 부과한다."
+     },
+     {
+      "claim": "2007년부터 상거래 사용 처벌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pyeong",
+      "note": "In South Korea, the unit has been officially banned since 1961 but with little effect prior to the criminalization of its commercial use effective 1 July 2007."
+     },
+     {
+      "claim": "누울 수 있는 넓이에서 기원 · 아파트 넓이에 쓰임",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/평_(단위)",
+      "note": "이 단위는 한 사람이 팔과 다리를 벌리고 누울 수 있는 넓이에서 기원했다. ... 아파트나 주택 및 대지의 넓이를 나타낼 때 쓰였다."
+     },
+     {
+      "claim": "1961년 공식 금지 · 효과 적음 · 쓰보·핑",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pyeong",
+      "note": "officially banned since 1961 but with little effect ... The ping and tsubo are its equivalent Taiwanese and Japanese units"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/평_(단위)"
+    ],
+    "hintNote": null,
+    "easiestCue": "약 3.3제곱미터인 넓이 단위",
+    "worthWhyGen": "집 넓이를 말할 때 누구나 쓰는 일상 단위(19 §9-1 ① 일반 상식) — 3",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '넓이 단위' — 예",
+     "unique": "'우리 옛 단위' + 3.3㎡ 로 평만 남음(쓰보는 일본)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-15"
+   }
+  },
+  {
+   "seedId": "math/5#g032a-g032a-j15-3",
+   "seed": {
+    "subject": "돈",
+    "aspect": null,
+    "ref": "g032a-j15-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "무게를 재는 우리 옛 단위입니다. 하나가 약 3.75그램이며, 열이 모이면 1냥이 됩니다. 지금도 귀금속 무게를 말할 때 흔히 쓰는 이 단위는 무엇일까요?",
+    "answer": "돈",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2006년 조사에서 금은방의 71%가 여전히 이 단위를 썼고, 정부는 2007년부터 상거래에서 쓰면 과태료를 물리게 했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "지금도 귀금속 무게를 말할 때 흔히 쓰는 이 단위 · 열이 모이면 1냥",
+     "difWhy": "2 — 금 한 돈은 일상 · 숫자 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 일상에서 쓰는 단위",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "아기 돌잔치 선물로 흔한 금반지를 '한 ~짜리'로 부르고, 금은방 시세도 이것 하나 값으로 적는다",
+    "generalHintVersion": "hint-v7",
+    "identity": "무게 단위 돈 — 약 3.75g, 금 무게를 말할 때 쓰는 단위",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "금 거래 단위로 익숙",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '무게를 재는 옛 단위' 로 종류가 나오고 짧다"
+    },
+    "blindQuestion": {
+     "guess": "돈",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "돈",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "돈",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j15-1",
+      "answer": "평",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "g032a:g032a-j21-4",
+      "answer": "근",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/돈_(단위)",
+     "https://ko.wikipedia.org/wiki/냥_(단위)",
+     "https://en.wikipedia.org/wiki/Korean_units_of_measurement"
+    ],
+    "facts": [
+     {
+      "claim": "1돈 약 3.75g · 10돈 = 1냥",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/돈_(단위)",
+      "note": "돈(匁)은 무게의 단위로 1돈은 약 3.75g이다. 10돈은 1냥이다."
+     },
+     {
+      "claim": "1냥 = 10돈 = 37.5g",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/냥_(단위)",
+      "note": "냥(兩) 또는 량(兩)은 무게의 단위로서 냥쭝이라고도 부르며, 10돈 또는 37.5그램(g)이다."
+     },
+     {
+      "claim": "보석상의 돈 · 지금도 금은방에서 씀",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Korean_units_of_measurement",
+      "note": "the pyeong of floorspace and the jeweler's don ... A 2006 study found 88% of real estate companies and 71% of jewelers in 7 major markets were still using the pyeong and don"
+     },
+     {
+      "claim": "2006 조사 71% · 2007년부터 과태료",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Korean_units_of_measurement",
+      "note": "A 2006 study found ... 71% of jewelers ... were still using the pyeong and don, after which the government decided simply to criminalize further commercial use ... fines of up to ₩500,000 for commercial use of the pyeong and don"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Korean_units_of_measurement"
+    ],
+    "hintNote": null,
+    "easiestCue": "약 3.75그램 · 귀금속 무게 단위",
+    "worthWhyGen": "금 한 돈 — 돌반지·금값으로 누구나 쓰는 일상 단위(19 §9-1 ①) — 3",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '무게 단위' — 예",
+     "unique": "3.75g·10이면 1냥으로 돈만 남음(전錢은 화폐 단위로 별개)",
+     "hint12": "① 예 ② 예 — 힌트 '돌잔치 금반지'는 시세 사실(금은방 시세표)은 knowledge"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-15"
+   }
+  },
+  {
+   "seedId": "math/5#g032a-g032a-j21-4",
+   "seed": {
+    "subject": "근",
+    "aspect": null,
+    "ref": "g032a-j21-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고기나 한약재의 무게를 잴 때 쓰는 옛 단위입니다. 정육점에서 고기 '한 ○'은 600그램입니다. 그런데 채소나 과일을 잴 때는 같은 이름이 375그램을 뜻합니다. 이 단위는?",
+    "answer": "근",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "채소·과일 쪽 375그램은 한 관(3.75킬로그램)의 10분의 1입니다. 시대마다 무게가 달라 한나라 때는 약 233그램이었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "정육점에서 고기 한 ○은 600그램",
+     "difWhy": "2 — 일상 단위",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 생활 단위",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "16냥, 곧 160돈에 해당하는 무게로, 삼겹살 값을 매길 때 아직도 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "척관법의 무게 단위(고기 600g · 채소 375g)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "고기 한 근 등 일상 단위",
+     "piece": "f04",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '옛 단위' = 끝 ○○ '단위'. 빈칸 표기 '한 ○' 도 뜻이 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "근",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "근",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "근",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j15-3",
+      "answer": "돈",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "g032a:g032a-j15-1",
+      "answer": "평",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/근_(단위)",
+     "https://en.wikipedia.org/wiki/Catty"
+    ],
+    "facts": [
+     {
+      "claim": "고기 1근 = 16냥 약 600g · 과일·채소는 한 관의 1/10 = 375g",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/근_(단위)",
+      "note": "오늘날 고기를 측정할 때 1근은 16냥으로 약 600그램에 해당하고, 과일이나 채소 따위를 잴 때는 한 관의 10분의 1, 곧 1냥의 10배로 375그램에 해당한다. 약재의 경우 … 1근은 160돈이고 미터법으로는 약 600g이다."
+     },
+     {
+      "claim": "한국에서 근은 600g으로 반올림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Catty",
+      "note": "In Taiwan, Japan and Korea, the unit is rounded to 600 g."
+     },
+     {
+      "claim": "1근 = 16냥 = 160돈",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/근_(단위)",
+      "note": "근(斤)은 질량과 무게의 단위이며, 1근은 16냥 또는 160돈이며, 미터법으로는 600g이다."
+     },
+     {
+      "claim": "한나라 때 약 233g",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/근_(단위)",
+      "note": "한(漢) 때에는 약 233g이고, 당(唐) 때에는 이것의 약 3배였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/근_(단위)"
+    ],
+    "hintNote": null,
+    "easiestCue": "고기 '한 ○' 600그램",
+    "worthWhyGen": "장 볼 때 쓰는 말 · 고기와 채소의 한 단위가 다른 까닭",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '옛 단위' — 예",
+     "unique": "600g·375g 둘 다 맞는 단위는 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  }
+ ]
+}

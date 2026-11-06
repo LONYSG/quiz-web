@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-cinema/1",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/1#g032a-g032a-j32-5",
+   "seed": {
+    "subject": "할리우드",
+    "aspect": null,
+    "ref": "g032a-j32-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 로스앤젤레스 언덕에 큰 흰 글자로 세워진 유명한 간판의 지명을 묻습니다. 이 간판은 1923년 언덕 위 새 주택 단지를 알리는 부동산 광고로 세워져, 처음에는 지명 뒤에 'LAND' 네 글자가 더 붙어 있었습니다. 1949년 그 네 글자를 떼어 낸 이 간판의 지명은?",
+    "answer": "할리우드",
+    "acceptedAnswers": [
+     "헐리우드"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1978년 낡은 간판을 새로 세울 때 록 가수 앨리스 쿠퍼 등 후원자 아홉이 글자 하나씩 값을 댔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "로스앤젤레스 언덕에 큰 흰 글자로 세워진 유명한 간판",
+     "difWhy": "1 — 누구나 아는 간판",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 상식 · 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "미국 영화 산업 전체를 가리키는 말로도 쓰이며, 해마다 아카데미 시상식이 열리는 돌비 극장이 있는 로스앤젤레스의 동네다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 영화 산업의 중심지인 로스앤젤레스의 지역(할리우드 사인)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "영화 중심지로 누구나 앎",
+     "piece": "f03",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '간판' 과 '지명을 묻습니다' 로 종류가 분명, 끝 ○○ '지명' 과 맞음. 약간 메타 문장이나 해독 지장 없음"
+    },
+    "blindQuestion": {
+     "guess": "할리우드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "할리우드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "할리우드",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "481",
+      "answer": "로스앤젤레스",
+      "verdict": "diff",
+      "why": "할리우드 간판(지명)과 1984 올림픽 개최지 로스앤젤레스는 다른 사실"
+     },
+     {
+      "old": "6096",
+      "answer": "콥 샐러드",
+      "verdict": "diff",
+      "why": "할리우드 간판과 콥 샐러드는 다름"
+     },
+     {
+      "old": "6441",
+      "answer": "레오나르도 디카프리오",
+      "verdict": "diff",
+      "why": "할리우드 간판과 디카프리오는 다름"
+     },
+     {
+      "old": "2066",
+      "answer": "드림웍스",
+      "verdict": "diff",
+      "why": "할리우드 간판과 드림웍스는 다름"
+     },
+     {
+      "old": "2565",
+      "answer": "아카데미상",
+      "verdict": "diff",
+      "why": "할리우드 간판과 아카데미상은 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/할리우드_사인",
+     "https://en.wikipedia.org/wiki/Hollywood_Sign",
+     "https://en.wikipedia.org/wiki/Dolby_Theatre"
+    ],
+    "facts": [
+     {
+      "claim": "1923 부동산 광고 · 처음 HOLLYWOODLAND",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/할리우드_사인",
+      "note": "이 사인은 1923년에 'HOLLYWOODLAND'라고 하는 부동산회사의 광고로 ... 'HOLLYWOODLAND'라는 사인으로"
+     },
+     {
+      "claim": "1923 주택 단지 광고 · 1949년 LAND 제거",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hollywood_Sign",
+      "note": "The original sign was erected in 1923 and originally read \"HOLLYWOODLAND\" to promote the name of a new housing development in the hills above the Hollywood district of Los Angeles. / the last four letters \"LAND\" were removed in 1949."
+     },
+     {
+      "claim": "돌비 극장 · 아카데미 시상식 · 할리우드 동네",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Dolby_Theatre",
+      "note": "The Dolby Theatre ... on Hollywood Boulevard and Highland Avenue, in the Hollywood neighborhood of Los Angeles / Since its opening on November 9, 2001, it has been the venue of the annual Academy Awards ceremony."
+     },
+     {
+      "claim": "1978 후원자 9명 · 앨리스 쿠퍼",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hollywood_Sign",
+      "note": "Following the 1978 public campaign to restore the sign, the following nine donors gave $27,700 each / O: Alice Cooper (singer), who donated in memory of comedian Groucho Marx"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dolby_Theatre"
+    ],
+    "hintNote": null,
+    "easiestCue": "로스앤젤레스 언덕의 흰 글자 간판",
+    "worthWhyGen": "누구나 아는 간판이 왜 생겼나(부동산 광고 · LAND)의 유래가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '간판의 지명' 예",
+     "unique": "LA 언덕 흰 글자 간판 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

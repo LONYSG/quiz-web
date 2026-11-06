@@ -1,0 +1,252 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "medicine/3",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/3#g032a-g032a-j07-11",
+   "seed": {
+    "subject": "복제약",
+    "aspect": null,
+    "ref": "g032a-j07-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "약을 가리키는 말입니다. 처음 개발한 회사의 특허가 끝난 뒤, 다른 회사가 같은 유효 성분으로 만들어 파는 약을 이렇게 부릅니다. 개발비가 덜 들어 값이 싸고, 원래 약과 효과가 같은지는 생물학적 동등성 시험으로 확인합니다. 이런 약은?",
+    "answer": "복제약",
+    "acceptedAnswers": [
+     "제네릭",
+     "제네릭 의약품",
+     "카피약"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "일본에서는 '후발의약품'이라 부른다. 성분 말고 덩어리를 묶는 첨가물 등은 다를 수 있어 약효가 조금 차이 나기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "다른 회사가 같은 유효 성분으로 만들어 파는 약",
+     "difWhy": "2 — 복제약은 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 약을 살 때 바로 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "비아그라 특허가 2012년 끝나자 국내 회사들이 앞다투어 내놓은 '팔팔정' 같은 약이 대표적인 예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "특허 만료 뒤 같은 성분으로 만든 약(제네릭 의약품)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "약국·뉴스에서 흔함",
+     "piece": "f06",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '약을 가리키는 말' · 생물학적 동등성은 용어지만 뜻 파악에 필수 아님"
+    },
+    "blindQuestion": {
+     "guess": "제네릭 의약품",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "제네릭 의약품",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "복제약",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/제네릭_의약품",
+     "https://en.wikipedia.org/wiki/Generic_drug",
+     ""
+    ],
+    "facts": [
+     {
+      "claim": "이미 출시된 약을 그대로 만든 약 · 생물학적 동등성 시험",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제네릭_의약품",
+      "note": "복제약(複製藥) 또는 제네릭 의약품(generic drug)은 이미 출시된 약을 그대로 만들어낸 의약품을 말한다. … 생물학적으로 거의 동일한 효과를 낼 경우 생물학적 동등성 시험 인증을 받아"
+     },
+     {
+      "claim": "원 약 특허 만료 뒤 판매 허용 · 같은 성분",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Generic_drug",
+      "note": "A generic drug is a pharmaceutical drug that contains the same chemical substance as a proprietary drug that was originally protected by chemical patents. Generic drugs are allowed for sale after the patents on the original drugs expire."
+     },
+     {
+      "claim": "비아그라 특허 2012 만료 · 한미 팔팔정",
+      "where": "h",
+      "url": "",
+      "note": "knowledge — 2012년 5월 실데나필 물질특허 만료 뒤 한미약품 팔팔정 등 출시(기억 · 문서 미확인)"
+     },
+     {
+      "claim": "일본 후발의약품 · 첨가물 차이",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/제네릭_의약품",
+      "note": "일본의 경우 후발의약품(後発医薬品)으로 일컬어진다. … 덩어리를 결합시키기 위해 사용되는 여러 물질이 섞여있고, 이들 성분까지 동일하게 만들 수는 없기 때문에 유효성분 함량이 같더라도 약효가 차이가 날 수 있다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "특허 끝난 뒤 같은 성분으로 만든 약",
+    "worthWhyGen": "약국·보험에서 쓰는 말 — 알가치 3 ③",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '약' 예",
+     "unique": "복제약/제네릭/카피약 모두 변형 · '개량신약' 은 다름",
+     "hint12": "① 예 ② 예 · 힌트 사실 knowledge(팔팔정) — 약함"
+    },
+    "history": [],
+    "warn": [
+     "crossans 특허"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "medicine/3#g032a-job-26-6",
+   "seed": {
+    "subject": "미녹시딜",
+    "aspect": null,
+    "ref": "job-26-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "탈모 치료에 머리에 바르는 약으로 널리 쓰이는 성분입니다. 원래는 혈관을 넓혀 혈압을 낮추는 고혈압 약으로 1960년대에 개발되었습니다. 그런데 이 약을 쓴 환자들에게서 털이 자라는 뜻밖의 효과가 발견되어, 탈모약으로 다시 쓰이게 되었습니다. 이 성분은?",
+    "answer": "미녹시딜",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "털이 자라는 효과는 1971년 연구자들이 우연히 알아챘고, 탈모약으로는 1988년 승인되었습니다. 고양이와 개에게는 적은 양도 몹시 위험합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "탈모 치료에 머리에 바르는 약",
+     "difWhy": "2 — 탈모약 성분 이름 한 번 떠올림 · 일상 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 약 성분의 개발 유래 · 일상 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "두피에 쓰면 효과가 보이기까지 2~4달이 걸리고, 쓰다가 끊으면 새로 난 머리가 몇 달 안에 다시 빠진다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고혈압 약에서 출발한 대표 탈모 치료 성분(minoxidil)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "탈모약 광고·뉴스",
+     "piece": "f09",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '탈모 치료 바르는 약 성분' · 끝 ○○ = 성분, 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "미녹시딜",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "미녹시딜",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "미녹시딜",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5058",
+      "answer": "보툴리눔 독소",
+      "verdict": "diff",
+      "why": "새=미녹시딜; 보툴리눔 독소는 다른 약물"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/미녹시딜",
+     "https://en.wikipedia.org/wiki/Minoxidil"
+    ],
+    "facts": [
+     {
+      "claim": "항고혈압 혈관확장제로 개발된 탈모 치료제 · 바르는 제형",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미녹시딜",
+      "note": "미녹시딜(Minoxidil)은 항고혈압 혈관확장제로 개발된 남성형 탈모증 치료제이다 ... 미녹시딜 국소 도포제는 탈모 치료에 사용한다."
+     },
+     {
+      "claim": "1963년 발견 · 고혈압 약 · 우연히 털 성장 발견 → 탈모약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Minoxidil",
+      "note": "Minoxidil was discovered in 1963 and was introduced for treatment of high blood pressure in 1971. In 1971, researchers unexpectedly discovered that minoxidil causes hair growth, resulting in it being repurposed for treatment of hair loss and approved in topical form for this use in 1988."
+     },
+     {
+      "claim": "효과까지 2~4달 · 끊으면 다시 빠짐",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Minoxidil",
+      "note": "Minoxidil requires at least 2 to 4 months before the first benefits on hair growth can be observed. / discontinuation following long-term treatment resulting in rapid hair loss and similar hair density as placebo at 24 weeks post-discontinuation."
+     },
+     {
+      "claim": "고양이·개에게 소량도 매우 독함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Minoxidil",
+      "note": "minoxidil is extremely toxic to cats and dogs even in small amounts."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Minoxidil"
+    ],
+    "hintNote": null,
+    "easiestCue": "탈모 치료에 바르는 약 성분",
+    "worthWhyGen": "흔한 약이 부작용에서 쓰임을 찾은 까닭(유래·쓸모 3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '성분' 예",
+     "unique": "바르는 탈모약 + 고혈압 약 출발 → 미녹시딜(피나스테리드는 먹는 약·전립선 약 출발)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

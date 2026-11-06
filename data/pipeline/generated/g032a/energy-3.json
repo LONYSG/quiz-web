@@ -1,0 +1,300 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "energy/3",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/3#g032a-g032a-j08-4",
+   "seed": {
+    "subject": "옥탄가",
+    "aspect": null,
+    "ref": "g032a-j08-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "휘발유의 품질을 나타내는 수치입니다. 엔진 안에서 연료가 불꽃이 튀기 전에 저절로 터지며 '탁탁' 소리를 내는 노킹을 얼마나 잘 견디는지 뜻합니다. 노킹을 잘 견디는 한 탄화수소를 100, 잘 일으키는 헵테인을 0으로 잡아 정했습니다. 이 값은?",
+    "answer": "옥탄가",
+    "acceptedAnswers": [
+     "옥테인값",
+     "옥탄값",
+     "옥테인가"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "예전에는 테트라에틸납을 넣어 이 값을 끌어올렸다. 이 값은 연료가 내는 힘이나 열량과는 직접 관계가 없다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "휘발유의 품질을 나타내는 수치",
+     "difWhy": "3 — 학교 화학 용어 · 설명에서 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념 · 기본 2",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "주유소가 고급 휘발유를 팔 때 내세우는 바로 그 수치로, 압축비가 높은 고성능 차일수록 높은 값이 필요하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "휘발유가 노킹을 견디는 정도를 나타내는 값(옥테인값)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "주유소 고급유 표기로 접함",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '휘발유의 품질을 나타내는 수치' 가 끝 ○○(값)와 일치 · 노킹은 바로 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "옥탄가",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "옥탄가",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "옥탄가",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2882",
+      "answer": "우라늄",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2878",
+      "answer": "분별 증류",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2884",
+      "answer": "바이오에탄올",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2886",
+      "answer": "석유수출국기구",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/옥탄가",
+     "https://en.wikipedia.org/wiki/Octane_rating"
+    ],
+    "facts": [
+     {
+      "claim": "노킹 정도 측정값 · 아이소옥테인 100 · n-헵테인 0 · 높을수록 고급 휘발유 · 높은 압축비 엔진엔 높은 값",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/옥탄가",
+      "note": "옥탄가는 휘발유의 노킹 정도를 측정하는 값으로, 원래 2,2,4-트라이메틸펜테인(속칭 아이소옥테인)을 100, n-헵테인을 0으로 하여 ... 옥탄가가 높을수록, 노킹에 대한 저항성이 높을수록 고급 휘발유이다. 테트라에틸납이나 ... 첨가하면 옥탄가를 높일수 있다. ... 높은 압축비의 엔진에는 높은 옥탄가의 연료를 사용하여야 한다."
+     },
+     {
+      "claim": "노킹 견딤 · iso-octane/heptane 혼합비 · 출력·열량과 직접 관계없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Octane_rating",
+      "note": "a standard measure of a fuel's ability to withstand compression in an internal combustion engine without causing engine knocking. ... equivalent ratio of a blend of iso-octane and heptane ... Octane rating does not relate directly to the power output or the energy content of the fuel"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/옥탄가"
+    ],
+    "hintNote": null,
+    "easiestCue": "휘발유 품질 수치 · 노킹을 견디는 정도",
+    "worthWhyGen": "주유소에서 마주치는 말의 뜻(일상에서 쓰는 말)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초(노킹을 문장 안에서 풀었다) · ⑨ 첫 문장 '수치' 예",
+     "unique": "휘발유 · 노킹 — 세탄가(경유)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "energy/3#g032a-g032a-j29-6",
+   "seed": {
+    "subject": "LPG",
+    "aspect": null,
+    "ref": "g032a-j29-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "가정용 가스통이나 자동차에 쓰는 연료 가스입니다. 프로페인과 뷰테인이 주성분입니다. 기체가 되어도 공기보다 무거워, 새면 바닥이나 지하실처럼 낮은 곳에 고입니다. 이 연료는?",
+    "answer": "LPG",
+    "acceptedAnswers": [
+     "액화석유가스",
+     "LP가스",
+     "엘피지"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "본래 냄새도 색도 없어서, 샐 때 바로 알아채도록 불쾌한 냄새가 나는 메르캅탄류를 섞어 공급합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "가정용 가스통이나 자동차에 쓰는 연료 가스",
+     "difWhy": "2 — 약어 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 생활 안전 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "한국에서는 오랫동안 영업용 같은 일부 차에만 허용되다가 2019년 3월 법이 바뀌어 일반인도 이 연료 차를 살 수 있게 되었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "프로페인·뷰테인을 눌러 액체로 담은 연료 가스(액화석유가스)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "택시·차량 연료로 흔함",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=연료, 첫 문장이 '연료 가스'. 프로페인·뷰테인이 낯설어도 분야가 분명하고 문장 뜻은 잡힌다."
+    },
+    "blindQuestion": {
+     "guess": "LPG",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "LPG",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "LPG",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "주성분 프로페인·뷰테인 · 가정·자동차 사용",
+       "url": "https://ko.wikipedia.org/wiki/액화석유가스",
+       "note": "LPG의 주성분은 프로페인(C3H8 ...)과 뷰테인(C4H10)이며 ... 가정이나 영업 장소, 택시 및 승용차, 승합차 등 자동차에서 사용하는 LPG"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "4583",
+      "answer": "박인비",
+      "verdict": "diff",
+      "why": "신규 'LPG'(다른 연료·스포츠) ≠ 옛 '박인비' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5227",
+      "answer": "박세리",
+      "verdict": "diff",
+      "why": "신규 'LPG'(다른 연료·스포츠) ≠ 옛 '박세리' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "6244",
+      "answer": "유연 휘발유",
+      "verdict": "diff",
+      "why": "신규 'LPG'(다른 연료·스포츠) ≠ 옛 '유연 휘발유' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2883",
+      "answer": "수소",
+      "verdict": "diff",
+      "why": "신규 'LPG'(다른 연료·스포츠) ≠ 옛 '수소' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2880",
+      "answer": "셰일가스",
+      "verdict": "diff",
+      "why": "신규 'LPG'(다른 연료·스포츠) ≠ 옛 '셰일가스' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/액화석유가스",
+     "https://en.wikipedia.org/wiki/Liquefied_petroleum_gas"
+    ],
+    "facts": [
+     {
+      "claim": "주성분 프로페인·뷰테인 · 가정·자동차 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/액화석유가스",
+      "note": "LPG의 주성분은 프로페인(C3H8 ...)과 뷰테인(C4H10)이며 ... 가정이나 영업 장소, 택시 및 승용차, 승합차 등 자동차에서 사용하는 LPG"
+     },
+     {
+      "claim": "기체도 공기보다 무거워 낮은 곳에 고임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Liquefied_petroleum_gas",
+      "note": "LPG in its gaseous phase is still heavier than air, unlike natural gas, and thus will flow along floors and tend to settle in low spots, such as basements."
+     },
+     {
+      "claim": "2019년 3월 26일 일반인 판매 허용",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/액화석유가스",
+      "note": "수송용 LPG연료 사용제한을 완화하는 액화석유가스의 안전관리 및 사업법이 2019년 3월 26일부터 개정된 이후 일반인에게 LPG 차량의 판매 및 개조가 합법적으로 허용되었다."
+     },
+     {
+      "claim": "냄새·색 없음 · 메르캅탄류 첨가",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/액화석유가스",
+      "note": "냄새나 색이 없으며 ... 누설될 때 쉽게 감지하여 사고를 예방할 수 있는 불쾌한 냄새가 나는 메르캅탄류의 화학 물질을 섞어서 공급한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/액화석유가스"
+    ],
+    "hintNote": null,
+    "easiestCue": "프로페인·뷰테인 주성분 가스통 연료",
+    "worthWhyGen": "3 — 생활 연료 · 공기보다 무거워 바닥에 고인다는 안전 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '연료 가스' — 예",
+     "unique": "공기보다 무거움 → 도시가스(LNG)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 3월"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

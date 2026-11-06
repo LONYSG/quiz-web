@@ -1,0 +1,236 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-tradition/2",
+  "midKey": "kr-tradition",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/2#g032a-g032a-j01-9",
+   "seed": {
+    "subject": "고무신",
+    "aspect": null,
+    "ref": "g032a-j01-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년대에 들어와 짚신을 밀어내고 널리 퍼진 신발입니다. 남자 것은 가죽신(갖신), 여자 것은 비단신(당혜) 모양을 본떠 만들었습니다. 비 오는 날에도 신을 수 있고 쉽게 씻을 수 있어 사랑받았습니다. 재료가 곧 이름이 된 이 신발은?",
+    "answer": "고무신",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1922년 대륙고무공업회사의 '대장군표'가 나와 큰 인기를 끌었고, 처음 신은 사람으로 순종 황제가 꼽히기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "재료가 곧 이름이 된 이 신발",
+     "difWhy": "1 — 재료 단서가 곧 답 · 누구나 아는 신발",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 생활사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "군대 간 애인을 두고 마음이 바뀌는 일을 '이것을 거꾸로 신는다'고 하며, 지금은 절의 스님들이 즐겨 신는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고무로 만든 한국 전통 모양 신발",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "일상 상식",
+     "piece": "f07",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '신발' 이 있어 끝 ○○ '신발' 과 일치 · 괄호 갖신·당혜는 부연"
+    },
+    "blindQuestion": {
+     "guess": "고무신",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "고무신",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "고무신",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고무신",
+     "https://en.wikipedia.org/wiki/Gomusin",
+     "https://m.seoul.co.kr/news/2007/01/20/20070120401002"
+    ],
+    "facts": [
+     {
+      "claim": "갖신·당혜 본뜸 · 일제시대부터 · 스님",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고무신",
+      "note": "조선시대에 신던 갖신이나 당혜를 본따 일제시대부터 널리 신기 시작했다. ... 불교에서 스님이 신기도 한다."
+     },
+     {
+      "claim": "남자 갖신·여자 당혜 · 씻기 쉽고 비 올 때 신음 · 짚신 대체 · 순종",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gomusin",
+      "note": "Gomusin for men were modeled after gatsin, and ones for women were danghye. ... They were much easier to keep clean than danghye and jipsin (straw shoes) and they could be worn when it rains. Therefore, gomusin gained a popularity and replaced traditional shoes. ... It is purported that the first man to wear gomusin was Sunjong of Korea"
+     },
+     {
+      "claim": "1922 대륙고무 대장군표",
+      "where": "e",
+      "url": "https://m.seoul.co.kr/news/2007/01/20/20070120401002",
+      "note": "(검색 요약) 1922년 8월 5일 대륙고무공업회사가 '대장군표' 고무신을 내놓으면서 국내에 처음 등장했고 ... 순종에게 진상되었다는 기록"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/고무신"
+    ],
+    "hintNote": null,
+    "easiestCue": "재료가 곧 이름이 된 신발 · 짚신을 밀어냄",
+    "worthWhyGen": "생활 속 신발이 왜 그 모양으로 퍼졌는지(유래·까닭)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '신발' 예",
+     "unique": "1920년대 · 갖신·당혜 모양 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "kr-tradition/2#g032a-g032a-j28-5",
+   "seed": {
+    "subject": "족두리",
+    "aspect": null,
+    "ref": "g032a-j28-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 시대 여성이 예복을 입을 때 머리에 쓰던 검은 비단 관입니다. 챙 없는 작은 모자처럼 생겨 비녀를 질러 고정합니다. 오늘날에도 전통 혼례와 폐백 때 신부가 쓰는 이 관은 무엇일까요?",
+    "answer": "족두리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "겉은 검은 비단, 속은 솜을 넣은 붉은 천으로 만들며, 위는 대략 여섯 모가 지고 아래는 둥급니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "전통 혼례와 폐백 때 신부가 쓰는 이 관",
+     "difWhy": "2 — 혼례 단서 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 전통 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "몽골의 관모 '고고리'에서 비롯했다는 설이 일반적이며, 패물로 화려하게 꾸민 것이 혼례용으로 쓰인 여성의 예장용 쓰개다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "전통 혼례 때 신부가 쓰는 검은 비단의 작은 관",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "전통 혼례·사극에서 접함",
+     "piece": "f06",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '검은 비단 관' 이 있고 끝 '이 관' 과 같은 종류"
+    },
+    "blindQuestion": {
+     "guess": "족두리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "족두리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "족두리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/족두리",
+     "https://ko.wikipedia.org/wiki/쓰개"
+    ],
+    "facts": [
+     {
+      "claim": "조선 시대 예복 때 여성이 쓰던 관 · 검은 비단 · 챙 없는 작은 모자 · 비녀로 고정 · 오늘날 전통혼례·폐백",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/족두리",
+      "note": "족두리는 ... 조선 시대 예복을 입을 때에 여성들이 쓰던 관이다. 검은 비단으로 만들며 ... 챙이 없는 작은 모자처럼 생겨 비녀를 질러 고정시킨다. ... 오늘날에는 전통혼례에서 사용되는 것으로 그 맥을 이어가고 있다. ... 오늘날에도 결혼식 폐백 때 사용한다."
+     },
+     {
+      "claim": "예장용 쓰개 = 족두리·화관",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쓰개",
+      "note": "예장용 쓰개에는 족두리, 화관, 적관 등이 있고"
+     },
+     {
+      "claim": "몽골 관모 고고리 기원설 일반적 · 혼례용 패물 장식",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/족두리",
+      "note": "족두리의 기원을 몽골의 관모인 고고(또는 고고관, 고고리)으로 보는 설이 일반적이다. ... 패물로 화려하게 장식한 혼례용과 장식이 없는 상례 및 제례용"
+     },
+     {
+      "claim": "겉 검은 비단 · 속 솜 붉은색 · 위 여섯 모 아래 둥긂",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/족두리",
+      "note": "위는 대략 여섯 모가 지고 아래는 둥글다. ... 족두리는 속은 솜을 넣고 붉은 색으로 하고 겉은 검은 바단으로 만든다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/족두리",
+     "https://ko.wikipedia.org/wiki/쓰개"
+    ],
+    "hintNote": null,
+    "easiestCue": "전통 혼례·폐백 때 신부가 쓰는 관",
+    "worthWhyGen": "전통 혼례 차림의 기본 이름(일반 상식 — 알가치 3 ①)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '관' — 예",
+     "unique": "검은 비단 · 비녀 고정 · 폐백 — 족두리(화관은 꽃 장식 관)",
+     "hint12": "① 예 ② 예 · 가체(피할 목록) 각도는 쓰지 않음"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

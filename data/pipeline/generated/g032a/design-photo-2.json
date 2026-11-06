@@ -1,0 +1,167 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "design-photo/2",
+  "midKey": "design-photo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/2#g032a-g032a-j17-4",
+   "seed": {
+    "subject": "블루 마블",
+    "aspect": null,
+    "ref": "g032a-j17-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1972년 아폴로 17호 승무원이 달로 가던 길에 찍은 지구 사진입니다. 햇빛을 등지고 찍어 둥근 지구 전체가 환하게 담겼습니다. 역사상 가장 널리 퍼진 사진의 하나로 꼽히는 이 사진의 이름은?",
+    "answer": "블루 마블",
+    "acceptedAnswers": [
+     "푸른 구슬",
+     "Blue Marble",
+     "The Blue Marble"
+    ],
+    "originalTitleVariants": [
+     "Blue Marble",
+     "The Blue Marble"
+    ],
+    "explanation": "찍은 사람은 잭 슈미트로 보이며, 나사에 가장 많이 요청된 사진이 되었다. 2012년 나사는 위성 사진을 같은 이름으로 다시 내놓았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "아폴로 17호 승무원이 달로 가던 길에 찍은 지구 사진",
+     "difWhy": "3 — 사진은 알아도 이름 떠올리기 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 사진 이름 · 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "1970년대 환경 운동의 상징이 되어, 넓은 우주 속 외롭고 연약한 행성의 모습을 보여 준 사진",
+    "generalHintVersion": "hint-v7",
+    "identity": "블루 마블(푸른 구슬) — 1972년 아폴로 17호가 찍은 지구 전체 사진",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "지구 사진·교과서에서 접함",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '지구 사진' · 끝 ○○ = 사진 이름"
+    },
+    "blindQuestion": {
+     "guess": "블루 마블",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "블루 마블",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "블루 마블",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2810",
+      "answer": "지구돋이",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2809",
+      "answer": "네이팜탄 소녀",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2812",
+      "answer": "아프간 소녀",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3521",
+      "answer": "지구돋이",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/푸른_구슬",
+     "https://en.wikipedia.org/wiki/The_Blue_Marble"
+    ],
+    "facts": [
+     {
+      "claim": "1972 아폴로 17호 · 지구 사진 · 가장 널리 퍼진 사진",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/푸른_구슬",
+      "note": "1972년 12월 7일 아폴로 17호의 승무원이 ... 촬영한 지구 사진이다. 이 사진은 인류 역사상 가장 널리 퍼진 사진으로 꼽힌다."
+     },
+     {
+      "claim": "태양을 등져 지구 전체가 밝게",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/푸른_구슬",
+      "note": "사진을 촬영할 당시 승무원들은 태양을 등지고 있었기 때문에, 지구 전체가 밝게 드러난 몇 안 되는 사진 중 하나였다."
+     },
+     {
+      "claim": "among the most widely distributed images",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Blue_Marble",
+      "note": "The image became NASA's most requested image, and according to NASA archivist Mike Gentry, The Blue Marble is among the most widely distributed images in history."
+     },
+     {
+      "claim": "환경 운동 상징 · 연약함·고립",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/The_Blue_Marble",
+      "note": "became a symbol of the environmental movement, as a depiction of Earth's fragility, vulnerability, and isolation amid the vast expanse of space."
+     },
+     {
+      "claim": "잭 슈미트 · 2012 같은 이름",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/푸른_구슬",
+      "note": "잭 슈미트가 촬영자였던 것으로 보인다. ... 2012년 NASA는 또다른 고화질 지구 사진을 '푸른 구슬'이란 이름으로 공개하기도 하였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Blue_Marble"
+    ],
+    "hintNote": null,
+    "easiestCue": "1972년 아폴로 17호가 찍은 둥근 지구 전체 사진",
+    "worthWhyGen": "보드게임 이름으로도 익숙한 말의 원래 뜻 — 누구나 본 지구 사진의 이름",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '지구 사진' 예",
+     "unique": "1972 · 아폴로 17호 · 지구 전체 → 지구돋이(1968 달 지평선)·창백한 푸른 점(보이저)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  }
+ ]
+}

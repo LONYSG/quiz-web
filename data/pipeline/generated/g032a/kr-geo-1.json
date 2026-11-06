@@ -1,0 +1,150 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-geo/1",
+  "midKey": "kr-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/1#g032a-g032a-j01-7",
+   "seed": {
+    "subject": "압구정동",
+    "aspect": null,
+    "ref": "g032a-j01-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "서울 강남구 한강 가에 있는 동네입니다. 이름은 조선 세조 때 권신 한명회가 이곳에 지은 정자에서 왔습니다. 정자 이름은 '갈매기와 허물없이 노니는 정자'라는 뜻으로, 벼슬에서 물러나 물새를 벗 삼겠다는 다짐을 담았다고 합니다. 이 동네는?",
+    "answer": "압구정동",
+    "acceptedAnswers": [
+     "압구정"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한명회는 호도 이 정자 이름과 같게 썼지만, 정작 권세를 놓지 못해 끝내 물러나지 못했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "서울 강남구 한강 가에 있는 동네",
+     "difWhy": "2 — 강남 동네 이름 · 유래는 덤",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 지명 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1970년대 아파트 단지로 개발되어 현대아파트·현대백화점과 '오렌지족'으로 이름난 강남 부촌이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "서울 강남구의 동(한명회 정자에서 온 이름)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "서울 유명 지명",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '강남구 한강 가 동네' = 끝 ○○ '동네'. 인물은 둘째 문장에 와도 종류는 첫 문장에 있음"
+    },
+    "blindQuestion": {
+     "guess": "압구정",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "압구정",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "압구정동",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6292",
+      "answer": "을지로",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(압구정동 / 을지로)"
+     },
+     {
+      "old": "4939",
+      "answer": "영동",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(압구정동 / 영동)"
+     },
+     {
+      "old": "4942",
+      "answer": "장흥",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(압구정동 / 장흥)"
+     },
+     {
+      "old": "5380",
+      "answer": "문경",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(압구정동 / 문경)"
+     },
+     {
+      "old": "4935",
+      "answer": "동해시",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(압구정동 / 동해시)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/압구정동",
+     "https://ko.wikipedia.org/wiki/한명회"
+    ],
+    "facts": [
+     {
+      "claim": "지명이 한명회의 정자에서 유래 · 1970년대 개발 · 현대아파트·백화점",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/압구정동",
+      "note": "압구정이란 지명은 조선 세조 때 한명회가 자신의 호를 따서 지은 압구정이라는 정자가 있었던 데서 유래했다. ... 1970년대 개발되어 ... 현대아파트 ... 1985년 개장한 현대백화점"
+     },
+     {
+      "claim": "물새들이 희롱하는 정자 · 갈매기를 벗삼겠다 · 은퇴 못함 · 호 압구정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/한명회",
+      "note": "한명회는 정자의 이름을 '물새들이 희롱하는 정자'라는 뜻의 압구정이라고 지었다. 압구정동은 여기에서 유래한 것이다. / 그는 평소 자신이 은퇴하여 갈매기를 벗삼겠노라며 한성부 한복판에 압구정이라는 정자를 지었으나 그 자신은 은퇴할 수 없었다. / 호는 압구정(狎鷗亭)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/압구정동"
+    ],
+    "hintNote": null,
+    "easiestCue": "서울 강남구 · 한명회의 정자",
+    "worthWhyGen": "누구나 아는 동네 이름의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '동네' 예",
+     "unique": "강남구 · 한명회 정자 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  }
+ ]
+}

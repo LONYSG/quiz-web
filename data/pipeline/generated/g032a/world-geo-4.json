@@ -1,0 +1,291 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-geo/4",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/4#g032a-g032a-j04-3",
+   "seed": {
+    "subject": "38선",
+    "aspect": null,
+    "ref": "g032a-j04-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "광복 직후 한반도를 남북으로 가른 첫 경계선입니다. 1945년 8월 미국의 젊은 장교 두 명이 급히 정했는데, 한국 전문가와 의논 없이 내셔널 지오그래픽 지도를 보고 골랐습니다. 나라를 대략 반으로 나누면서 서울이 미국 쪽에 들도록 고른 이 선은?",
+    "answer": "38선",
+    "acceptedAnswers": [
+     "삼팔선",
+     "38도선",
+     "북위 38도선"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1953년 정전협정의 군사분계선은 비슷한 위도지만, 서쪽은 남으로 동쪽은 북으로 옮겨져 개성은 북에, 철원 일부는 남에 들었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "광복 직후 한반도를 남북으로 가른 첫 경계선",
+     "difWhy": "2 — 한국인 상식 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 분단 상식 · 일화 곁들임",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "일본군 무장 해제를 내세워 미국과 소련이 한반도를 나눠 점령한 경계로, 위도 한 줄을 그대로 따라 그었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1945년 미·소가 한반도를 분할 점령한 경계선(북위 38도선)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "한국사·분단 상식",
+     "piece": "f03",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한반도를 가른 경계선' = 끝 ○○ '선'. 경위 문장이 길지 않고 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "38선",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "38도선",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "38선",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j31-6",
+      "answer": "북방한계선",
+      "verdict": "diff",
+      "why": "38선 vs 북방한계선, 다른 경계"
+     },
+     {
+      "old": "5177",
+      "answer": "지브롤터",
+      "verdict": "diff",
+      "why": "무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/38선",
+     "https://en.wikipedia.org/wiki/Division_of_Korea"
+    ],
+    "facts": [
+     {
+      "claim": "본스틸 대령 · 러스크 중령이 내셔널 지오그래픽 벽걸이 지도에 그어 봄 · 서울·인천 점령 목적",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/38선",
+      "note": "제임스 던(J. Dunn)은 1945년 8월 11일에 육군부 작전국에 소련군의 남진에 대응하여 미국이 서울과 인천을 점령하도록 하는 군사분계선을 강구하라고 지시했다. 이에 미국 육군부 작전국의 본스틸(Charles H. Bonesteel) 대령과 미 육군장관 보좌관이었던 딘 러스크(Dean Rusk) 중령은 작전국에 걸려 있던 내셔널 지오그래픽사의 벽걸이 지도에 38선을 그어본 후"
+     },
+     {
+      "claim": "젊은 장교 둘 · 급히 · 지도 · 반으로 나누며 서울을 미국 쪽에 · 전문가와 의논 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Division_of_Korea",
+      "note": "On 10 August 1945 two young officers – Dean Rusk and Charles Bonesteel – were assigned to define an American occupation zone. Working on extremely short notice and completely unprepared, they used a National Geographic map to decide on the 38th parallel as the dividing line. They chose it because it divided the country approximately in half but would place the capital Seoul under American control. No experts on Korea were consulted."
+     },
+     {
+      "claim": "일본군 무장 해제를 위해 미·소가 위도 기준으로 그은 선",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/38선",
+      "note": "38선(삼팔선, 三八線)은 제2차 세계 대전 종전 이후 미국과 소련이 한반도의 일본군을 무장 해제시키기 위해 북위 38도를 기준으로 그은 군사분계선이다."
+     },
+     {
+      "claim": "정전협정 군사분계선은 서쪽 남하 · 동쪽 북상 · 개성 북 · 철원 남",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/38선",
+      "note": "38선과 비교해 서쪽 경계가 남하하였고 동쪽 경계가 북상하였다. 이에 따라 ... 경기도 개성시·개풍군은 조선민주주의인민공화국에, 38선 북동쪽의 경기도 연천군과 강원도 철원군·화천군·양구군·인제군·양양군은 대한민국에 속하게 되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/38선"
+    ],
+    "hintNote": null,
+    "easiestCue": "광복 직후 한반도를 남북으로 가른 첫 경계선",
+    "worthWhyGen": "분단선이 왜 그 자리에 그어졌는지(까닭)가 질문 안에 있음 — 일반 상식의 바탕",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '경계선' 예",
+     "unique": "'첫 경계선' · 1945년 — 휴전선(군사분계선)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "world-geo/4#g032a-g032a-j31-6",
+   "seed": {
+    "subject": "북방한계선",
+    "aspect": null,
+    "ref": "g032a-j31-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남북한 사이 서해 바다 위의 경계선입니다. 1953년 정전협정은 땅 위의 군사분계선만 정했을 뿐, 바다의 경계는 합의하지 못했습니다. 그래서 그해 8월 유엔군 사령관이 서해 5도와 북한 해안 사이에 그은 이 선은?",
+    "answer": "북방한계선",
+    "acceptedAnswers": [
+     "NLL"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "처음에는 정전에 반대하던 남한 쪽 배가 북쪽으로 올라가 충돌하는 것을 막으려고 그었다고 알려져 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "남북한 사이 서해 바다 위의 경계선",
+     "difWhy": "2 — 뉴스에 자주 나옴",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 안보 시사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1999년과 2002년 연평해전 같은 남북 해군 충돌이 잇따른 선으로, 북한은 1973년부터 그 효력을 문제 삼아 왔다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "남북한 사이의 사실상 해상 군사 경계선(NLL)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "NLL 뉴스에 자주 나옴",
+     "piece": "f07",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '서해 바다 위 경계선' 이 있어 끝 ○○ '선' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "북방한계선",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "북방한계선",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "북방한계선",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5876",
+      "answer": "연평도",
+      "verdict": "diff",
+      "why": "북방한계선과 연평도 설화·사당은 다른 지식(crossans)"
+     },
+     {
+      "old": "2341",
+      "answer": "백령도",
+      "verdict": "diff",
+      "why": "북방한계선(해상 경계)과 백령도 사곶해변은 다른 사실"
+     },
+     {
+      "old": "g032a:g032a-j04-3",
+      "answer": "38선",
+      "verdict": "diff",
+      "why": "북방한계선(서해)과 38선(광복 직후 분할)은 다른 경계"
+     },
+     {
+      "old": "5177",
+      "answer": "지브롤터",
+      "verdict": "diff",
+      "why": "북방한계선과 지브롤터는 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/북방한계선",
+     "https://en.wikipedia.org/wiki/Northern_Limit_Line"
+    ],
+    "facts": [
+     {
+      "claim": "정전협정 해상 경계 미합의 · 1953.8.30 유엔군 사령관 설정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/북방한계선",
+      "note": "정전협정 당시 육상의 군사분계선(MDL)은 합의되었으나, 해상 경계선에 관하여는 … 명확한 합의 없이 … 1953년 8월 30일, 마크 웨인 클라크 UN군 총사령관은 … 서해상으로는 … 서해 5도와 조선민주주의인민공화국 황해도 …"
+     },
+     {
+      "claim": "해상 경계 미합의 · UNC가 1953.8.30 설정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Northern_Limit_Line",
+      "note": "they did not agree on a maritime demarcation line … it is widely believed that the line was set by the UNC as a practical operational control measure a month after the armistice was signed, on 30 August 1953."
+     },
+     {
+      "claim": "1999·2002 충돌",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/북방한계선",
+      "note": "1999년, 2002년, 2009년 및 2010년에 NLL 인근 해상에서 대한…"
+     },
+     {
+      "claim": "1973년 북한 이의 제기",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Northern_Limit_Line",
+      "note": "North Korea did not explicitly dispute or actively violate the NLL until 1973."
+     },
+     {
+      "claim": "본디 남한의 북진 방지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Northern_Limit_Line",
+      "note": "The line was originally drawn to prevent South Korean incursions into the north that threatened the armistice."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/북방한계선",
+     "https://en.wikipedia.org/wiki/Northern_Limit_Line"
+    ],
+    "hintNote": null,
+    "easiestCue": "서해 5도와 북한 해안 사이 해상 경계선",
+    "worthWhyGen": "뉴스에 자주 나오는 선이 왜 생겼는가(까닭)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바다 위 경계선' 예",
+     "unique": "바다 · 유엔군 사령관이 그은 선 — 군사분계선(땅)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

@@ -1,0 +1,404 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-west/7",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/7#g032a-g032a-j06-10",
+   "seed": {
+    "subject": "파피루스",
+    "aspect": null,
+    "ref": "g032a-j06-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 이집트에서 글을 쓰던 재료입니다. 나일강 삼각주에 무성하던 같은 이름의 물풀 줄기를 얇게 갈라 겹치고 눌러서 만들었습니다. 영어에서 종이를 뜻하는 낱말 '페이퍼'도 이 이름에서 왔습니다. 무엇일까요?",
+    "answer": "파피루스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그리스인은 이 풀을 페니키아 항구 도시 비블로스의 이름으로도 불렀고, 여기서 성경을 뜻하는 '바이블'이라는 말이 나왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "영어에서 종이를 뜻하는 낱말 '페이퍼'도 이 이름에서",
+     "difWhy": "1 — 고대 이집트 종이 · 단서 강",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 단어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "이집트 무덤에서 나온 '사자의 서' 같은 두루마리 문서가 적힌, 종이가 나오기 전의 필기 재료다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 이집트의 필기 재료(같은 이름의 물풀로 만든 종이 대용품)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "이집트·세계사 교과서",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=재료, 첫 문장 '글을 쓰던 재료'. 만드는 법과 영어 어원이 차례로 이어져 막힘 없음."
+    },
+    "blindQuestion": {
+     "guess": "파피루스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "파피루스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "파피루스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6383",
+      "answer": "플라톤",
+      "verdict": "diff",
+      "why": "파피루스 재료 vs 플라톤"
+     },
+     {
+      "old": "6366",
+      "answer": "아누비스",
+      "verdict": "diff",
+      "why": "파피루스 vs 아누비스"
+     },
+     {
+      "old": "3766",
+      "answer": "사자의 서",
+      "verdict": "diff",
+      "why": "파피루스 vs 사자의 서"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/파피루스",
+     "https://en.wikipedia.org/wiki/Papyrus"
+    ],
+    "facts": [
+     {
+      "claim": "나일강 삼각주 식물 줄기를 압착해 만듦 · 영어 paper 의 어원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/파피루스",
+      "note": "같은 이름의 갈대과의 식물 줄기를 압착하고 이를 얇게 발라내어 만든다. ... 나일강 삼각주에는 이 식물이 풍성하기 때문에 ... Papyrus라는 단어는 영어 단어 paper의 어원이 되었다."
+     },
+     {
+      "claim": "이집트 필기 재료 · paper 의 어원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Papyrus",
+      "note": "first known to have been used in Egypt ... as the papyrus plant from which it was created was once abundant across the Nile Delta. ... Papyrus is also the etymon of 'paper', a similar substance."
+     },
+     {
+      "claim": "파피루스 문서 — 사자의 서 · 두루마리",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/파피루스",
+      "note": "파피루스 문서로는 의학서, 연대록, 사자(死者)의 서(書)·시문(詩文) 등 ... 시트를 옆으로 이어 붙여 책의 초기 형태인 두루마리로 말아 만든 문서"
+     },
+     {
+      "claim": "byblos — 비블로스 · bible",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Papyrus",
+      "note": "Greek has a second word for it, βύβλος (byblos), said to derive from the name of the Phoenician city of Byblos. ... βίβλος biblos, which finds its way into English in such words as 'bibliography', 'bibliophile', and 'bible'"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/파피루스"
+    ],
+    "hintNote": null,
+    "easiestCue": "고대 이집트 필기 재료",
+    "worthWhyGen": "'페이퍼'라는 일상 말의 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '글을 쓰던 재료' 예",
+     "unique": "이집트 물풀 필기 재료 — 양피지와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 사자의 서"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "world-history-west/7#g032a-g032a-j16-5",
+   "seed": {
+    "subject": "알파벳",
+    "aspect": null,
+    "ref": "g032a-j16-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영어나 프랑스어 같은 서양 말을 적는 글자를 우리는 흔히 이 이름으로 부릅니다. 고대 그리스 문자의 첫 두 글자 이름을 이어 붙여 만든 말입니다. 이 이름은 무엇일까요?",
+    "answer": "알파벳",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그리스 글자 이름은 다시 페니키아 문자의 첫 두 글자 '알레프(소)'와 '베트(집)'에서 왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "서양 말을 적는 글자 · 그리스 문자 첫 두 글자",
+     "difWhy": "1 — 누구나 아는 말",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "A부터 Z까지 26자로, 아이들이 'ABC 노래'로 처음 외우는 영어 글자를 통틀어 부르는 말이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "그리스 문자 첫 두 글자 이름에서 온, 로마자를 흔히 부르는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "누구나 아는 말",
+     "piece": "f08",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=이름(글자 이름), 첫 문장이 '서양 말을 적는 글자'로 종류를 준다. 지시어 '이 이름'이 글자 이름으로 분명하다."
+    },
+    "blindQuestion": {
+     "guess": "알파벳",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "알파벳",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "알파벳",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1365",
+      "answer": "음절문자",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4788",
+      "answer": "스크래블",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5188",
+      "answer": "마야 문자",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "1369",
+      "answer": "페니키아 문자",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "1947",
+      "answer": "VIN",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alphabet",
+     "https://ko.wikipedia.org/wiki/알파벳"
+    ],
+    "facts": [
+     {
+      "claim": "그리스 문자 첫 두 글자 알파·베타에서 만든 말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alphabet",
+      "note": "it was made from the first two letters of the Greek alphabet, alpha (α) and beta (β)."
+     },
+     {
+      "claim": "한국어에서 '알파벳'은 라틴 문자를 가리킴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/알파벳",
+      "note": "한국어에서 '알파벳'은, 세계에서 가장 널리 통용되고 있는 대표적인 알파벳인 라틴 문자를 가리킨다."
+     },
+     {
+      "claim": "페니키아 문자 aleph(소)·bet(집)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Alphabet",
+      "note": "The names for the Greek letters, in turn, came from the first two letters of the Phoenician alphabet: aleph, the word for ox, and bet, the word for house."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/알파벳"
+    ],
+    "hintNote": null,
+    "easiestCue": "서양 말을 적는 글자를 부르는 이름",
+    "worthWhyGen": "매일 쓰는 말의 유래(알가치 3 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '글자를 부르는 이름' — 예",
+     "unique": "'그리스 첫 두 글자 이름을 이어 붙인' 으로 로마자·라틴 문자와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "world-history-west/7#g032a-g032a-j25-4",
+   "seed": {
+    "subject": "지구라트",
+    "aspect": null,
+    "ref": "g032a-j25-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 메소포타미아의 도시마다 세운 거대한 신전 건축물입니다. 벽돌을 위로 갈수록 좁아지게 여러 층으로 쌓았고, 꼭대기 신전에는 신이 산다고 믿었습니다. 성경 속 바벨탑의 모델로 꼽히는 이 건축물은?",
+    "answer": "지구라트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름은 '높이 솟다'라는 아카드어에서 왔고, 바빌론의 것은 수메르어로 '하늘과 땅의 토대가 되는 집'이라 불렸습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "성경 속 바벨탑의 모델로 꼽히는 이 건축물",
+     "difWhy": "4 — 이름을 떠올려야 하는 세계사 용어 · 일반인은 이름을 못 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 고대사 건축물 이름 · 바벨탑 연결은 덤",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "이라크 남부 우르에서 우르남무 왕이 달의 신 난나에게 바친 것이 가장 이름난 예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "메소포타미아의 계단식 신전탑(ziggurat)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "세계사 교과서·게임에서 접함",
+     "piece": "f05",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '신전 건축물' 종류가 있고 단서가 짧음"
+    },
+    "blindQuestion": {
+     "guess": "지구라트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "지구라트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "지구라트",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/지구라트",
+     "https://en.wikipedia.org/wiki/Ziggurat"
+    ],
+    "facts": [
+     {
+      "claim": "메소포타미아의 거대 구조물 · 위로 갈수록 작아지는 계단식 · 꼭대기 신전에 신이 산다고 믿음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지구라트",
+      "note": "지구라트는 고대 메소포타미아에서 건설된 거대한 구조물의 한 종류이다. 위로 갈수록 작아지는 층들이 계단식으로 쌓인 형태를 띠고 있다. … 수메르인들은 신들이 지구라트 꼭대기의 신전에 산다고 믿었으며"
+     },
+     {
+      "claim": "바벨탑과 연관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ziggurat",
+      "note": "The biblical account of the Tower of Babel has been associated by modern scholars to the massive construction undertakings of the ziggurats of Mesopotamia, and in particular to the ziggurat of Etemenanki in Babylon"
+     },
+     {
+      "claim": "벽돌(햇볕에 말린 벽돌 중심부)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지구라트",
+      "note": "햇볕에 말린 벽돌이 지구라트의 중심부를 이루었고, 외부에는 구운 벽돌이"
+     },
+     {
+      "claim": "우르의 지구라트 · 우르남무 · 난나",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/지구라트",
+      "note": "우르의 지구라트는 우르남무 왕이 우르 제3왕조 시대인 기원전 21세기경 난나/신에게 헌정하여 지은 신수메르 지구라트이다."
+     },
+     {
+      "claim": "이름 유래 · 에테멘앙키 뜻",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ziggurat",
+      "note": "Akkadian: ziqqurratum, D-stem of zaqārum 'to protrude, to build high' … the ziggurat at Babylon was known as Etemenanki, which means \"House of the foundation of heaven and earth\" in Sumerian."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/지구라트",
+     "https://en.wikipedia.org/wiki/Ziggurat"
+    ],
+    "hintNote": null,
+    "easiestCue": "메소포타미아 계단식 신전 · 바벨탑 모델",
+    "worthWhyGen": "세계사 교과 개념(알가치 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '신전 건축물' — 예",
+     "unique": "메소포타미아 + 바벨탑 — 피라미드와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

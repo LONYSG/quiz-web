@@ -1,0 +1,144 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "design-photo/5",
+  "midKey": "design-photo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/5#g032a-g032a-j19-2",
+   "seed": {
+    "subject": "궁서체",
+    "aspect": null,
+    "ref": "g032a-j19-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 중기 이후 왕실 여성들이 한글을 빠르고 단정하게 쓰려고 다듬은 붓글씨에서 이름이 온 서체입니다. 《한중록》도 이 글씨체로 쓰였고, 지금은 컴퓨터 기본 글꼴로도 흔히 봅니다. 이 서체는?",
+    "answer": "궁서체",
+    "acceptedAnswers": [
+     "궁체"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "정자 · 반흘림 · 진흘림의 세 갈래가 있습니다. 20세기에는 남자 서예가들도 이 글씨를 익혔고, 김충현이 이름났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "지금은 컴퓨터 기본 글꼴로도 흔히 봅니다",
+     "difWhy": "2 — 글꼴 이름 · 단서가 간접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 글꼴 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "김유정역 역명판에도 쓰인, 붓으로 쓴 듯 맑고 곧은 선이 특징인 전통 한글 서체다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "궁궐 여성들이 쓰던 한글 붓글씨체 — 컴퓨터 기본 글꼴 '궁서'",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "컴퓨터 글꼴 궁서체 밈으로 유명",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '서체' 가 있고 짧은 문장 셋"
+    },
+    "blindQuestion": {
+     "guess": "궁체",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "궁서체",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "궁서체",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4366",
+      "answer": "코믹 산스",
+      "verdict": "diff",
+      "why": "궁서체 vs 코믹 산스 — 다른 서체"
+     },
+     {
+      "old": "4859",
+      "answer": "타임스 뉴 로먼",
+      "verdict": "diff",
+      "why": "궁서체 vs 타임스 뉴 로먼 — 다른 서체"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/궁서체",
+     "https://en.wikipedia.org/wiki/Korean_calligraphy"
+    ],
+    "facts": [
+     {
+      "claim": "조선 중기 이후 궁궐 여성들이 한글을 빠르고 유연하게 쓰려고 쓴 서체 · 컴퓨터로 널리 쓰임 · 한중록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/궁서체",
+      "note": "궁서체(宮書體) 또는 궁체(宮體)는 조선 중기 이후에 궁궐의 여성들이 한글을 더욱 빠르고 유연하게 쓰려고 사용한 한글 서체다. … 현재 궁서체는 컴퓨터의 운영체제로 통해서 널리 유포되고 많이 사용한다. … 《인현왕후전》,《서궁일기》, 《한중록》도 궁서체로 썼다."
+     },
+     {
+      "claim": "궁녀들이 만들고 표준화한 궁체 · 세 갈래",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Korean_calligraphy",
+      "note": "Palace style (궁체; 宮體; gungche) was developed by and standardized by palace maids (궁녀; 宮女; gungnyo) out of a need for uniformity for ease of communication. There are three main subtypes of gungche: regular(정자), semi-cursive(반흘림), full-cursive(진흘림)."
+     },
+     {
+      "claim": "선이 맑고 곧으며 단정 · 김유정역 역명판",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/궁서체",
+      "note": "선이 맑고 곧으며 단정하고 아담한 것이 특징이다. … 현재 역명판에 궁서체가 쓰인 곳은 김유정역과 홍성역, 전주역, 구례구역이 있다."
+     },
+     {
+      "claim": "20세기 남자 서예가 · 김충현",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/궁서체",
+      "note": "20세기에 들어 여성들뿐만 아니라 남자 서예가들도 글씨를 활용하며, 이 가운데 김충현 선생이 전문가로 유명하다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/궁서체"
+    ],
+    "hintNote": null,
+    "easiestCue": "컴퓨터 기본 글꼴 + 왕실 여성의 한글 붓글씨",
+    "worthWhyGen": "누구나 본 글꼴 이름이 궁궐 여성의 붓글씨에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '서체' — 예 · 정답 글자 '궁'을 질문·힌트에 쓰지 않음",
+     "unique": "왕실 여성 + 한글 붓글씨 + 컴퓨터 글꼴 — 하나(궁체는 변형)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

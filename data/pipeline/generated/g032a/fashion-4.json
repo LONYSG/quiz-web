@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "fashion/4",
+  "midKey": "fashion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "fashion/4#g032a-g032a-j30-10",
+   "seed": {
+    "subject": "스웨이드",
+    "aspect": null,
+    "ref": "g032a-j30-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "새끼 양이나 송아지 가죽의 안쪽 면을 보풀려 만든 부드러운 가죽입니다. 처음에는 여성용 장갑에 쓰였습니다. 그래서 이름도 '북유럽 한 나라의 장갑'이라는 프랑스어에서 왔습니다. 이 가죽은?",
+    "answer": "스웨이드",
+    "acceptedAnswers": [
+     "세무"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "프랑스어 'gants de Suède'는 '스웨덴의 장갑'이라는 뜻입니다. 한국에서 부르는 '세무'는 알프스산양을 뜻하는 '샤무아'에서 왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "'북유럽 한 나라의 장갑'이라는 프랑스어",
+     "difWhy": "2 — 스웨덴 단서로 스웨이드",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 소재 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "털 결이 보송하게 일어나 물에 젖으면 얼룩지기 쉬운, 구두·재킷·가방에 흔한 가죽이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "가죽 안쪽을 보풀려 만든 부드러운 가죽",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "스웨이드 신발·재킷",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '부드러운 가죽' · 끝 ○○ = 가죽, 이름 유래는 장식 단서"
+    },
+    "blindQuestion": {
+     "guess": "스웨이드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스웨이드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "스웨이드",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5614",
+      "answer": "충격과 공포",
+      "verdict": "diff",
+      "why": "신규 '스웨이드'(다른 직물·소재) ≠ 옛 '충격과 공포' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2921",
+      "answer": "캐시미어",
+      "verdict": "diff",
+      "why": "신규 '스웨이드'(다른 직물·소재) ≠ 옛 '캐시미어' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2926",
+      "answer": "벨벳",
+      "verdict": "diff",
+      "why": "신규 '스웨이드'(다른 직물·소재) ≠ 옛 '벨벳' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5347",
+      "answer": "메리노 울",
+      "verdict": "diff",
+      "why": "신규 '스웨이드'(다른 직물·소재) ≠ 옛 '메리노 울' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5346",
+      "answer": "플리스",
+      "verdict": "diff",
+      "why": "신규 '스웨이드'(다른 직물·소재) ≠ 옛 '플리스' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/스웨이드",
+     "https://en.wikipedia.org/wiki/Suede"
+    ],
+    "facts": [
+     {
+      "claim": "새끼 양·새끼 소 가죽을 부드럽게 보풀린 가죽 · 이름은 gants de Suède(스웨덴의 장갑)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스웨이드",
+      "note": "새끼 양이나 새끼 소 등의 가죽 ... 부드럽게 보풀려서 만든 것이다. ‘스웨이드’란 단어는 불어 ‘gants de Suède’에서 왔는데, 이는 ‘스웨덴의 장갑’이란 뜻이다."
+     },
+     {
+      "claim": "가죽 안쪽(underside) · 처음 여성 장갑에 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Suede",
+      "note": "Suede is made from the underside of the animal skin ... Suede was originally used for women's gloves, hence its etymology"
+     },
+     {
+      "claim": "물에 약하고 얼룩지기 쉬움 · 재킷·신발·가방",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Suede",
+      "note": "suede may become dirty and quickly absorb liquids · used for jackets, shoes, fabrics, purses / ko: 물에는 굉장히 약하므로"
+     },
+     {
+      "claim": "세무 ← 샤무아(알프스산양)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/스웨이드",
+      "note": "세무라고도 부르는데, 이는 알프스산양을 뜻하는 말인 샤무아(chamois)에서 온 말이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/스웨이드",
+     "https://en.wikipedia.org/wiki/Suede"
+    ],
+    "hintNote": null,
+    "easiestCue": "가죽 안쪽을 보풀린 부드러운 가죽",
+    "worthWhyGen": "3 — 흔한 소재 이름의 유래(스웨덴 장갑)가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '가죽' — 예",
+     "unique": "안쪽 보풀림 · 장갑 유래 → 스웨이드(누벅은 겉면 — 애매 적음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-lit/2",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/2#g032a-g032a-j12-4",
+   "seed": {
+    "subject": "피노키오",
+    "aspect": null,
+    "ref": "g032a-j12-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1883년 이탈리아 작가 카를로 콜로디가 펴낸 동화의 주인공으로, 나무로 깎아 만든 인형입니다. 거짓말을 하면 코가 길어집니다. 그래서 지금도 거짓말쟁이를 빗댈 때 이름이 불리는 이 인형은?",
+    "answer": "피노키오",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "처음에는 1881년부터 어린이 신문에 '어느 꼭두각시 이야기'라는 제목으로 연재됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "거짓말을 하면 코가 길어집니다",
+     "difWhy": "1 — 단서가 곧 피노키오",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 기본",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "가난한 목수 제페토가 장작을 깎아 만든 인형으로, 진짜 사람 아이가 되기를 꿈꾼다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "콜로디 동화 '피노키오의 모험'의 나무 인형 주인공",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "동화·디즈니 애니메이션",
+     "piece": "f05",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '동화의 주인공 · 나무 인형' 이 있고 끝 ○○ '인형' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "피노키오",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피노키오",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피노키오",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "507",
+      "answer": "죄와 벌",
+      "verdict": "diff",
+      "why": "피노키오 vs 죄와 벌"
+     },
+     {
+      "old": "5650",
+      "answer": "해저 2만 리",
+      "verdict": "diff",
+      "why": "피노키오 vs 해저 2만 리"
+     },
+     {
+      "old": "4709",
+      "answer": "제인 에어",
+      "verdict": "diff",
+      "why": "피노키오 vs 제인 에어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/피노키오의_모험",
+     "https://en.wikipedia.org/wiki/Pinocchio",
+     "https://en.wikipedia.org/wiki/The_Adventures_of_Pinocchio"
+    ],
+    "facts": [
+     {
+      "claim": "1883년 콜로디의 동화 · 장작 인형",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피노키오의_모험",
+      "note": "《피노키오의 모험》은 1883년 이탈리아의 극작가 카를로 콜로디의 동화이다. 소목장 제페토가 장작을 깎아서 인형을 만들어 피노키오라고 이름을 붙였다."
+     },
+     {
+      "claim": "거짓말하면 코가 길어짐 · 거짓말쟁이 긴 코 비유",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pinocchio",
+      "note": "He is known for his long nose, which grows when he lies."
+     },
+     {
+      "claim": "liar's long nose 라는 흔한 관념의 출처",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Adventures_of_Pinocchio",
+      "note": "it has inspired many works of fiction, such as Walt Disney's animated version, and commonplace ideas such as a liar's long nose."
+     },
+     {
+      "claim": "진짜 아이가 되기를 바람",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/The_Adventures_of_Pinocchio",
+      "note": "learns goodness before he achieves his heart's desire to become a real boy."
+     },
+     {
+      "claim": "1881년 연재 · '꼭두각시 이야기'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Adventures_of_Pinocchio",
+      "note": "originally published in serial form as The Story of a Puppet (La storia di un burattino) in the Giornale per i bambini between 7 July 1881 and 25 January 1883"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/피노키오의_모험",
+     "https://en.wikipedia.org/wiki/The_Adventures_of_Pinocchio"
+    ],
+    "hintNote": null,
+    "easiestCue": "거짓말하면 코가 길어지는 나무 인형",
+    "worthWhyGen": "거짓말쟁이 비유로 일상에서 쓰는 이름의 출처(일반 상식)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '동화 주인공 · 인형' 예",
+     "unique": "코가 길어지는 나무 인형 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  }
+ ]
+}

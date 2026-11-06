@@ -1,0 +1,269 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "chemistry/3",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/3#g032a-g032a-j04-10",
+   "seed": {
+    "subject": "니코틴",
+    "aspect": null,
+    "ref": "g032a-j04-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "담배 잎에 들어 있는 각성 물질입니다. 이 물질의 이름은 16세기 포르투갈에 머물던 프랑스 대사의 이름에서 왔습니다. 그가 담배와 씨앗을 파리로 보내 약으로 쓰라고 권했기 때문입니다. 이 물질은?",
+    "answer": "니코틴",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 대사는 장 니코로, 담배 식물의 학명 '니코티아나 타바쿰'에도 이름이 남았다. 당시 사람들은 담배가 흑사병을 막아 준다고 믿었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "담배 잎에 들어 있는 각성 물질",
+     "difWhy": "2 — 단서 직접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름의 유래 · 일상 물질",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "담배를 끊기 어렵게 만드는 주범으로, 금연 패치와 금연 껌이 이 물질을 조금씩 넣어 금단 증상을 줄인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "담배의 주된 중독성 알칼로이드(nicotine)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "담배 성분으로 일상 상식",
+     "piece": "f03",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=물질, 첫 문장이 '담배 잎의 각성 물질'. 둘째 문장의 '이 물질'이 첫 문장 물질을 가리켜 분명하다."
+    },
+    "blindQuestion": {
+     "guess": "니코틴",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "니코틴",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "니코틴",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5059",
+      "answer": "나이아신",
+      "verdict": "diff",
+      "why": "니코틴 어원 vs 나이아신"
+     },
+     {
+      "old": "848",
+      "answer": "수소결합",
+      "verdict": "diff",
+      "why": "무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/니코틴",
+     "https://en.wikipedia.org/wiki/Jean_Nicot",
+     "https://en.wikipedia.org/wiki/Nicotine"
+    ],
+    "facts": [
+     {
+      "claim": "담배 식물 학명 → 포르투갈 주재 프랑스 대사 장 니코 · 1560년 파리로 담배와 씨앗 · 의학적 사용 권장",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/니코틴",
+      "note": "니코틴은 니코티아나 타바쿰이라는 담배 식물종의 이름에서 따왔다. 니코티아나 타바쿰이라는 식물종의 명칭은 주 포르투갈 프랑스 대사였던 장 니코의 이름에서 따온 것인데 그는 브라질에서 파리로 1560년에 담배와 그 씨앗을 보내서 의학적 사용을 권장했었다."
+     },
+     {
+      "claim": "같은 사실 · 흑사병 예방 믿음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jean_Nicot",
+      "note": "Nicotine ... tobacco plant Nicotiana tabacum, which in turn is named after Jean Nicot de Villemain, who sent tobacco and seeds to Paris in 1560, presented it to the King Francis II, and who promoted their medicinal use. Smoking was believed to protect against illness, particularly the plague."
+     },
+     {
+      "claim": "담배 잎에 든 각성제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nicotine",
+      "note": "Nicotine is a stimulant and alkaloid found primarily in plants of the nightshade family, notably in tobacco"
+     },
+     {
+      "claim": "의존 · 금단 · 대체 요법 껌·패치",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Nicotine",
+      "note": "physical dependence, psychological dependence, and nicotine withdrawal symptoms ... Nicotine replacement ... gums, patches, and lozenges, deliver the compound in slower, lower doses that are less addictive and are used medically to help people quit smoking."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nicotine"
+    ],
+    "hintNote": null,
+    "easiestCue": "담배 잎에 들어 있는 각성 물질",
+    "worthWhyGen": "누구나 아는 물질 이름의 유래가 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '물질' 예",
+     "unique": "담배 잎 + 대사 이름 — 하나(타르는 사람 이름 아님)",
+     "hint12": "① 예 ② 예 · 쉬운 쪽 — 등급은 낮게 나올 수 있음"
+    },
+    "history": [],
+    "warn": [
+     "crossans 패치"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "chemistry/3#g032a-g032a-j18-5",
+   "seed": {
+    "subject": "아세톤",
+    "aspect": null,
+    "ref": "g032a-j18-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "생활에서 흔히 쓰는 화학 용매입니다. 손톱에 바른 매니큐어를 지울 때 솜에 묻혀 닦아 내며, 냄새가 강하고 금방 날아갑니다. 이 물질의 이름은 무엇일까요?",
+    "answer": "아세톤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "우리 몸에서도 대사 과정에서 조금씩 생겨 피와 오줌에 들어 있습니다. 끓는점이 56.5℃로 낮아 빨리 마릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "손톱에 바른 매니큐어를 지울 때",
+     "difWhy": "2 — 일상 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "물·알코올과 잘 섞이고 불이 잘 붙어 화기를 멀리해야 하는, 가장 간단한 꼴의 케톤 화합물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "가장 간단한 케톤으로, 매니큐어 제거제의 주성분인 휘발성 용매",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "매니큐어 제거제로 알려짐",
+     "piece": "f07",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "짧고 첫 문장 '화학 용매' 가 끝 ○○(물질)와 맞음 · 쓰임 단서가 일상어"
+    },
+    "blindQuestion": {
+     "guess": "아세톤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아세톤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아세톤",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "844",
+      "answer": "에탄올",
+      "verdict": "diff",
+      "why": "아세톤 vs 에탄올 — 다른 물질"
+     },
+     {
+      "old": "843",
+      "answer": "암모니아",
+      "verdict": "diff",
+      "why": "아세톤 vs 암모니아 — 다른 물질"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아세톤",
+     "https://en.wikipedia.org/wiki/Acetone"
+    ],
+    "facts": [
+     {
+      "claim": "용매·매니큐어 제거제로 쓰임 · 휘발성 강함 · 특유의 냄새",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아세톤",
+      "note": "상온에서 휘발성이 강하므로 인화성이 크다. … 특유의 냄새가 나고 무색이며, 물에 잘 녹을 뿐만 아니라 여러 탄소 화합물을 잘 녹인다. 용매, 매니큐어 제거제 등으로 쓰인다."
+     },
+     {
+      "claim": "매니큐어 제거제의 주성분",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Acetone",
+      "note": "Acetone is a main ingredient in many nail polish removers because it breaks down nail polish."
+     },
+     {
+      "claim": "가장 간단한 케톤 · 물·알코올과 잘 섞임 · 인화성",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아세톤",
+      "note": "가장 간단한 형태의 케톤이다. … 물, 알코올, 에테르 등 대부분의 용매와 잘 섞인다. 상온에서 휘발성이 강하므로 인화성이 크다."
+     },
+     {
+      "claim": "체내 대사로 생겨 피·소변에 존재 · 끓는점 56.5°C",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아세톤",
+      "note": "끓는점은 56.5°C … 아세톤은 체내의 일반적인 대사과정에서 만들어지고 배출된다. 보통 혈액과 소변에 존재하며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아세톤"
+    ],
+    "hintNote": null,
+    "easiestCue": "매니큐어를 지우는 물질",
+    "worthWhyGen": "생활 속 물질의 이름과 성질(인화성 주의) — 일반 상식(19 §9-1 ①)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '화학 용매' — 예",
+     "unique": "'물질의 이름'으로 '리무버'(제품 이름)와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-18"
+   }
+  }
+ ]
+}

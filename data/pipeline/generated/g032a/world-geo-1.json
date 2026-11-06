@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-geo/1",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/1#g032a-job-03-12",
+   "seed": {
+    "subject": "베네수엘라",
+    "aspect": null,
+    "ref": "job-03-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남아메리카 북쪽, 카리브해에 닿은 나라입니다. 1499년 이 해안을 찾은 탐험대가 마라카이보 호수 근처에서 물 위에 말뚝을 박고 지은 원주민 집들을 보았습니다. 아메리고 베스푸치는 이탈리아의 물의 도시를 떠올려, 이 땅에 '작은 그 도시'라는 뜻의 이름을 붙였다고 전합니다. 이 나라는?",
+    "answer": "베네수엘라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 탐험대의 엔시소는 원주민이 스스로를 '베네시웰라'라 불렀다고 적어, 원주민 말에서 왔다는 설도 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "이탈리아의 물의 도시를 떠올려, 이 땅에 '작은 그 도시'라는 뜻의 이름",
+     "difWhy": "3 — 작은 베네치아 단서 · 긴 지문에서 나라로 건너야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 나라 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 78",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "확인된 석유 매장량이 세계에서 가장 많은 나라로, 세계에서 가장 높은 앙헬 폭포가 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "남아메리카 북부의 나라, 수도 카라카스",
+    "familiarity": {
+     "judge": 3,
+     "pct": 78,
+     "why": "뉴스에서 자주 나오는 나라",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '남아메리카 북쪽 나라'가 끝 ○○=나라. '물의 도시'는 설명이 붙어 뜻이 잡힘."
+    },
+    "blindQuestion": {
+     "guess": "베네수엘라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "베네수엘라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "베네수엘라",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2886",
+      "answer": "석유수출국기구",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(베네수엘라 / 석유수출국기구)"
+     },
+     {
+      "old": "4685",
+      "answer": "엔젤 폭포",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(베네수엘라 / 엔젤 폭포)"
+     },
+     {
+      "old": "1389",
+      "answer": "러시아",
+      "verdict": "diff",
+      "why": "베네수엘라 지명 유래 vs 러시아 국경"
+     },
+     {
+      "old": "1318",
+      "answer": "브라질리아",
+      "verdict": "diff",
+      "why": "베네수엘라 vs 브라질리아 천도"
+     },
+     {
+      "old": "6446",
+      "answer": "스리랑카",
+      "verdict": "diff",
+      "why": "베네수엘라 vs 스리랑카 국기"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Venezuela",
+     "https://ko.wikipedia.org/wiki/베네수엘라"
+    ],
+    "facts": [
+     {
+      "claim": "1499년 오헤다 탐험대 · 마라카이보 호수 수상 가옥 · 베스푸치가 베네치아를 떠올려 '작은 베네치아'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Venezuela",
+      "note": "in 1499, an expedition led by Alonso de Ojeda visited the Venezuelan coast. The stilt houses in the area of Lake Maracaibo reminded the Italian navigator, Amerigo Vespucci, of the city of Venice, Italy, so he named the region Veneziola, or \"Little Venice\"."
+     },
+     {
+      "claim": "물위에 집을 짓는 마을 · 이탈리아어 '작은 베네치아'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/베네수엘라",
+      "note": "선원들은 물위에 집을 짓는 사람들이 사는 마을(팔라피토palafito)을 보게 되었다. 이를 본 베스푸치는 이탈리아 도시 베네치아를 떠올려 이 땅을 이탈리아어로 \"작은 베네치아\"를 뜻하는 Venezuola라고 이름 붙였던 것이다."
+     },
+     {
+      "claim": "세계 최대 확인 석유 매장량 · 앙헬 폭포 세계 최고",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Venezuela",
+      "note": "has the world's largest known oil reserves ... Angel Falls, the world's highest waterfall"
+     },
+     {
+      "claim": "엔시소: 원주민이 스스로를 Veneciuela 라 부름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Venezuela",
+      "note": "Martín Fernández de Enciso, a member of the Vespucci and Ojeda crew ... states that the crew found Indigenous peoples who called themselves the Veneciuela. Thus, the name \"Venezuela\" may have evolved from the native word."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Venezuela"
+    ],
+    "hintNote": null,
+    "easiestCue": "남아메리카 북쪽 카리브해 나라 + 작은 (베네치아)",
+    "worthWhyGen": "나라 이름이 왜 '작은 베네치아'인지 — 이름의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '나라' — 예",
+     "unique": "카리브해 남미 나라 + 물의 도시 이름 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  }
+ ]
+}

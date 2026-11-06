@@ -1,0 +1,298 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-east/4",
+  "midKey": "world-history-east",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-east/4#g032a-g032a-j13-2",
+   "seed": {
+    "subject": "예루살렘",
+    "aspect": null,
+    "ref": "g032a-j13-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "서아시아의 아주 오래된 도시입니다. 유대교·기독교·이슬람교 세 종교가 모두 이곳을 성지로 여깁니다. 유대교의 '통곡의 벽'과 이슬람의 '바위의 돔'이 한 구역에 붙어 있는 이 도시는?",
+    "answer": "예루살렘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "히브리어 이름은 흔히 '평화의 마을'로 풀이되고, 아랍어로는 '신성한'이라는 뜻의 '알쿠드스'라 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "유대교의 '통곡의 벽'과 이슬람의 '바위의 돔'",
+     "difWhy": "1 — 3대 종교 성지 · 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 세계 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "이스라엘은 수도라고 주장하지만 국제 사회 대부분은 인정하지 않아 늘 분쟁의 한가운데 서는 도시다",
+    "generalHintVersion": "hint-v7",
+    "identity": "유대교·기독교·이슬람교 공통 성지인 서아시아 도시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "성지로 뉴스·성경에 자주 나옴",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '서아시아의 오래된 도시'가 끝 ○○=도시와 일치. 통곡의 벽·바위의 돔은 단서 고유명사."
+    },
+    "blindQuestion": {
+     "guess": "예루살렘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "예루살렘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "예루살렘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j18-4",
+      "answer": "중동",
+      "verdict": "diff",
+      "why": "예루살렘 vs 중동 지역 이름(옛것 비활성)"
+     },
+     {
+      "old": "6060",
+      "answer": "사해 문서",
+      "verdict": "unsure",
+      "why": "지식은 다름(예루살렘 성지 vs 사해 문서)이나 옛 질문에 '예루살렘'이 그대로 있어 새 정답 누설"
+     },
+     {
+      "old": "6783",
+      "answer": "오스카 쉰들러",
+      "verdict": "unsure",
+      "why": "지식은 다름(예루살렘 vs 쉰들러)이나 옛 질문에 '예루살렘 시온산'이 있어 새 정답 누설"
+     },
+     {
+      "old": "6589",
+      "answer": "어쌔신 크리드",
+      "verdict": "unsure",
+      "why": "지식은 다름(예루살렘 vs 어쌔신 크리드)이나 옛 힌트에 '예루살렘'이 있어 새 정답 누설"
+     },
+     {
+      "old": "6753",
+      "answer": "통곡의 벽",
+      "verdict": "unsure",
+      "why": "통곡의 벽: 새 질문이 옛 정답을 말하고 옛 힌트가 '예루살렘'을 말함 - 같은 장소 다른 각도 + 상호 누설, GEN 이 읽을 것"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/예루살렘",
+     "https://en.wikipedia.org/wiki/Jerusalem"
+    ],
+    "facts": [
+     {
+      "claim": "기독교·유대교·이슬람교 세 종교의 성지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/예루살렘",
+      "note": "3대 아브라함 계통의 종교인 기독교, 유대교, 이슬람교의 성지이다."
+     },
+     {
+      "claim": "통곡의 벽(Western Wall)과 바위의 돔이 성전산 한 구역",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jerusalem",
+      "note": "the Old City is home to many sites of seminal religious importance, among them the Al-Aqsa Mosque Compound on the Temple Mount with its Western Wall, Dome of the Rock and Qibli (al-Aqsa) Mosque"
+     },
+     {
+      "claim": "이스라엘은 수도로 삼으나 국제 사회 불인정",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/예루살렘",
+      "note": "이스라엘의 경우 예루살렘을 수도로 삼고 있으나, 국제 사회상 인정하지 않고 텔아비브가 사실상 수도 역할을 하고 있다."
+     },
+     {
+      "claim": "평화의 마을 · 알쿠드스 = 신성한",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/예루살렘",
+      "note": "예루살렘은 히브리어로 \"평화의 마을\"을 뜻한다. … 아랍어 이름인 알-꾸드스(al-Quds)는 아랍어로 \"신성한\"을 뜻한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/예루살렘"
+    ],
+    "hintNote": null,
+    "easiestCue": "세 종교가 모두 성지로 여기는 도시",
+    "worthWhyGen": "중동 분쟁 뉴스의 바탕이 되는 일반 상식(3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '도시' 예",
+     "unique": "세 종교 공통 성지 + 통곡의 벽으로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "world-history-east/4#g032a-g032a-j18-4",
+   "seed": {
+    "subject": "중동",
+    "aspect": null,
+    "ref": "g032a-j18-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "서아시아와 북아프리카 일부를 함께 부르는 지역 이름입니다. 20세기 초 영국 쪽에서 널리 쓰기 시작했고, 유럽에서 본 방향을 기준으로 삼아 '유럽 중심의 이름'이라는 비판도 받습니다. 페르시아만 산유국이 모인 이 지역은?",
+    "answer": "중동",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1902년 미국 해군 전략가 머핸이 영국 잡지에 쓴 글로 널리 퍼졌습니다. 서유럽에서 부르던 '근동'과 거의 같은 범위이고 '극동'과 짝을 이룹니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "페르시아만 산유국이 모인 이 지역",
+     "difWhy": "2 — 중동은 일상어 · 단서 직접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 지역 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "유대교·기독교·이슬람교가 모두 태어난 곳으로, 사우디아라비아·이스라엘·이란이 자리한 지역이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "서아시아·북아프리카 일대를 부르는 지역 이름(Middle East)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "뉴스에서 매일 나오는 지역명",
+     "piece": "f09",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '지역 이름' 이 있고 단서 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "중동",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "중동",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "중동",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j13-2",
+      "answer": "예루살렘",
+      "verdict": "diff",
+      "why": "중동 지역명 vs 예루살렘 — 다른 지식"
+     },
+     {
+      "old": "4561",
+      "answer": "다마스쿠스강",
+      "verdict": "diff",
+      "why": "중동 vs 다마스쿠스강 — 다른 지식"
+     },
+     {
+      "old": "6070",
+      "answer": "사우디아라비아",
+      "verdict": "diff",
+      "why": "중동 vs 사우디 국기 일화 — 다른 지식"
+     },
+     {
+      "old": "2250",
+      "answer": "오일 쇼크",
+      "verdict": "diff",
+      "why": "중동 vs 오일 쇼크 — 다른 지식"
+     },
+     {
+      "old": "2518",
+      "answer": "아랍어",
+      "verdict": "diff",
+      "why": "중동 vs 꾸란 아랍어 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/중동",
+     "https://en.wikipedia.org/wiki/Middle_East"
+    ],
+    "facts": [
+     {
+      "claim": "'중동'이라는 용어는 1900년대 영국이 사용 · 근동과 동의어, 극동과 대비",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/중동",
+      "note": "중동이라는 말은 보통 근동이라는 말과 동의어로 쓰이며, 극동이라는 말과는 대비되는 의미다. … ‘중동’이라는 용어는 1900년대에 들어서 영국이 사용하였다."
+     },
+     {
+      "claim": "유럽 중심·식민주의 용어라는 비판 · 1902 머핸이 영국 잡지 National Review에",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Middle_East",
+      "note": "Since the late 20th century, scholars and journalists from the region … have criticized the use of \"Middle East\" as a Eurocentric and colonialist term. … Mahan first used the term in his September 1902 article \"The Persian Gulf and International Relations\" for the British journal National Review in London."
+     },
+     {
+      "claim": "세 종교의 역사적 발원지 · 페르시아만 주변 산유국",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/중동",
+      "note": "세계 주요종교[유대교, 기독교, 이슬람교]의 '역사적인 발원지'이기도 하다. … 페르시아만 주변 많은 국가는 '대부분 산유국'이며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/중동"
+    ],
+    "hintNote": null,
+    "easiestCue": "페르시아만 산유국이 모인 지역",
+    "worthWhyGen": "매일 뉴스에 나오는 지역 이름이 유럽 기준 방향에서 왔다는 유래(19 §9-1 ①②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '지역 이름' — 예",
+     "unique": "'영국에서 쓰기 시작한 이름'으로 서아시아·아랍과 가름 — '근동'을 칠 사람 소수",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 사우디아라비아"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

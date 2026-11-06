@@ -1,0 +1,264 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "human-body/5",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/5#g032a-g032a-j18-7",
+   "seed": {
+    "subject": "항원",
+    "aspect": null,
+    "ref": "g032a-j18-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "면역학의 기본 용어입니다. 세균·바이러스처럼 몸 밖에서 들어와 면역 반응을 일으키는 물질을 가리킵니다. 코로나19 때 콧속 검체로 몇십 분 만에 결과를 보던 '신속○○검사'의 빈칸에 들어가는 이 말은?",
+    "answer": "항원",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "주로 병원체의 단백질이지만 다당류나 몸속에 생긴 암세포도 될 수 있습니다. 몸은 이에 맞서 짝이 맞는 항체를 만듭니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "'신속○○검사' 의 빈칸에 들어가는 말",
+     "difWhy": "2 — 코로나 경험이 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 면역학 기본 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "백신은 이것을 미리 몸에 넣어 맞설 힘을 기르게 하며, 꽃가루처럼 알레르기를 부르는 것도 이것의 하나다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "면역 반응을 일으켜 항체를 만들게 하는 물질(antigen)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "교과서 면역 용어, 항원검사 뉴스",
+     "piece": "f07",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '면역학 용어' 로 분야가 서고, 신속○○검사 빈칸이 풀이와 맞물려 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "항원",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "항원",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "항원",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j27-4",
+      "answer": "히스타민",
+      "verdict": "diff",
+      "why": "항원 vs 히스타민 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/항원",
+     "https://en.wikipedia.org/wiki/Rapid_antigen_test"
+    ],
+    "facts": [
+     {
+      "claim": "항원 = 면역 반응을 일으켜 항체를 생산하게 하는 물질 · 주로 병원균·바이러스",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/항원",
+      "note": "항원(抗原, 영어: antigen)은 면역 반응을 일으켜 특히 항체를 생산하게끔 만드는 물질로써 … 항원은 주로 병원균이나 바이러스로서 단백질이지만 다당류, 인공적으로 합성된 물질, 부착소, 자신의 몸속에 생긴 변이세포(암세포)등의 다양한 것들도 항원이 될 수 있다."
+     },
+     {
+      "claim": "신속항원검사는 항원을 직접 찾고 5~30분에 결과 · 코로나19 때 널리 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rapid_antigen_test",
+      "note": "a rapid diagnostic test … that directly detects the presence or absence of an antigen. … Rapid tests generally give a result in 5 to 30 minutes … Rapid antigen tests for the detection of SARS-CoV-2 … have been commonly used since the COVID-19 pandemic."
+     },
+     {
+      "claim": "알레르겐도 항원의 한 유형",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/항원",
+      "note": "알레르겐(Allergen) - 알레르겐은 알레르기 반응을 일으키는 물질로서 소화, 흡입, 주사, 피부 접촉 등의 경로로 들어올 수 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/항원"
+    ],
+    "hintNote": null,
+    "easiestCue": "'신속○○검사' 빈칸",
+    "worthWhyGen": "코로나19로 모두가 겪은 검사 이름의 바탕 개념 — 일상 상식(19 §9-1 ①)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '면역학 용어' — 예",
+     "unique": "빈칸 2칸 + '몸 밖에서 들어와 반응을 일으키는 물질'로 항체와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 백신/알레르기"
+    ],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "human-body/5#g032a-g032a-j27-4",
+   "seed": {
+    "subject": "히스타민",
+    "aspect": null,
+    "ref": "g032a-j27-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우리 몸의 면역 반응에 쓰이는 화학 물질입니다. 꽃가루 같은 알레르기 원인이 들어오면 비만세포가 이 물질을 내놓습니다. 그러면 혈관이 넓어지고 가려움·재채기·콧물이 생깁니다. 이 물질은?",
+    "answer": "히스타민",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "상처 부위를 붉게 붓게 하는 염증 반응도 일으키며, 뇌에서는 잠을 깨우는 신경전달물질로도 일합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "알레르기에 비만세포가 내놓는 물질 · 가려움 재채기",
+     "difWhy": "3 — 생물 용어 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "비염·두드러기 약 대부분이 그 수용체를 막는 물질로, 그런 옛 약은 뇌에도 들어가 졸음을 부른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "알레르기·염증 반응을 일으키는 몸속 화학 물질(항히스타민제가 막는 대상)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "알레르기 약 광고·교과서",
+     "piece": "f05",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '화학 물질' 명시 · 비만세포는 문맥으로 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "히스타민",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "항히스타민제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "히스타민",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "505",
+      "answer": "알레르기",
+      "verdict": "diff",
+      "why": "새=히스타민; 알레르기(용어 발음 유래)·항원은 다른 면역 개념"
+     },
+     {
+      "old": "g032a:g032a-j18-7",
+      "answer": "항원",
+      "verdict": "diff",
+      "why": "새=히스타민; 알레르기(용어 발음 유래)·항원은 다른 면역 개념"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/히스타민",
+     "https://en.wikipedia.org/wiki/Histamine",
+     "https://ko.wikipedia.org/wiki/항히스타민제"
+    ],
+    "facts": [
+     {
+      "claim": "비만세포 등이 분비 · 염증 반응",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/히스타민",
+      "note": "상처가 난 곳이 붉게 부어오르며 통증을 느끼게되는 염증반응(inflammation)이 일어나게 하는 물질이다. 히스타민은 호염구,비만세포 등에서 분비한다. / 주변 모세혈관이 확장되어"
+     },
+     {
+      "claim": "알레르겐이 IgE에 붙으면 비만세포가 분비 · 가려움의 중심 매개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Histamine",
+      "note": "Histamine release occurs when allergens bind to mast-cell-bound IgE antibodies. / Histamine is involved in the inflammatory response and is a central mediator of itching."
+     },
+     {
+      "claim": "콧물·눈물 · 재채기 (항히스타민제가 막음)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/항히스타민제",
+      "note": "이는 콧물, 눈물과 같은 알레르기 반응의 대표적인 증상을 만들어낸다. … 코감각 신경의 히스타민 H1 수용체를 차단하면 가려움과 재채기를 막을 수 있다."
+     },
+     {
+      "claim": "1세대 항히스타민제 졸음 · 각성",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Histamine",
+      "note": "First-generation H1 antihistamines … are capable of crossing the blood–brain barrier and produce drowsiness … histamine H3 receptor antagonists increase wakefulness."
+     },
+     {
+      "claim": "뇌의 신경전달물질",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Histamine",
+      "note": "acting as a neurotransmitter for the brain, spinal cord, and uterus"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/항히스타민제",
+     "https://en.wikipedia.org/wiki/Histamine"
+    ],
+    "hintNote": null,
+    "easiestCue": "알레르기 때 비만세포가 내놓아 가려움·콧물을 일으키는 물질",
+    "worthWhyGen": "3 — '항히스타민제'로 약국에서 늘 듣는 말의 정체",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '화학 물질' — 예",
+     "unique": "비만세포 + 알레르기 증상 매개 물질 = 하나(세로토닌 등은 대표가 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

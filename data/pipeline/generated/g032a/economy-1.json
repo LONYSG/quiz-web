@@ -1,0 +1,450 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "economy/1",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/1#g032a-g032a-j10-2",
+   "seed": {
+    "subject": "골디락스",
+    "aspect": null,
+    "ref": "g032a-j10-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경제가 꾸준히 성장하면서도 물가는 안정된 이상적인 상태를 부르는 경제 용어입니다. 이름은 곰 세 마리의 집에 들어간 소녀가 나오는 영국 동화에서 왔습니다. 소녀는 너무 뜨겁지도 차갑지도 않은 수프를 골라 먹었습니다. 이 말은?",
+    "answer": "골디락스",
+    "acceptedAnswers": [
+     "골디락스 경제"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1992년 살로먼 브러더스 보고서가 퍼뜨렸고, 비싼·싼·중간 상품을 함께 놓아 중간을 고르게 하는 판매 전략 이름에도 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "곰 세 마리의 집에 들어간 소녀가 나오는 영국 동화",
+     "difWhy": "2 — 동화 단서로 이름 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 경제 용어 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "곰 세 마리 동화 속 소녀 이름을 딴 말로, 너무 뜨겁지도 차갑지도 않게 성장과 물가가 딱 알맞은 경제 상태를 뜻한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고성장·저물가의 적당한 경제 상태를 이르는 말(동화 주인공 이름)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "경제 뉴스에서 가끔",
+     "piece": "f01",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '경제 용어' 가 있고 동화 일화는 둘째 문장 이후"
+    },
+    "blindQuestion": {
+     "guess": "골디락스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "골디락스 경제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "골디락스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 2,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "동화 골디락스와 곰 세 마리 · 적당한 수프에서 유래",
+       "url": "https://ko.wikipedia.org/wiki/골디락스",
+       "note": "영국 전래동화 《골디락스와 곰 세 마리》에 등장하는 소녀의 이름 골디락스에서 유래한 것으로, 소녀는 곰이 끓인 세가지 스프 중 ... 적당한 것을 먹고 기뻐한 것에서 따온 말이다."
+      },
+      {
+       "claim": "1990년대 후반 미국 · IT 생산성 · 낮은 실업률",
+       "url": "https://ko.wikipedia.org/wiki/골디락스",
+       "note": "1990년대 후반이다. 당시 미국경제는 수년간 4%이상의 고성장을 달성하면서도 낮은 실업률과 인플레이션 상태를 유지 ... 정보기술(IT)등으로 대변되는 신기술의 발달"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "4873",
+      "answer": "필립스 곡선",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "4383",
+      "answer": "유동성 함정",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/골디락스",
+     "https://en.wikipedia.org/wiki/Goldilocks_economy"
+    ],
+    "facts": [
+     {
+      "claim": "동화 골디락스와 곰 세 마리 · 적당한 수프에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/골디락스",
+      "note": "영국 전래동화 《골디락스와 곰 세 마리》에 등장하는 소녀의 이름 골디락스에서 유래한 것으로, 소녀는 곰이 끓인 세가지 스프 중 ... 적당한 것을 먹고 기뻐한 것에서 따온 말이다."
+     },
+     {
+      "claim": "적당한 성장 + 낮은 인플레이션 · 동화에서 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Goldilocks_economy",
+      "note": "A Goldilocks economy is an economy that is not too hot or cold, in other words sustains moderate economic growth, and that has low inflation ... The name comes from the children's story Goldilocks and the Three Bears."
+     },
+     {
+      "claim": "1990년대 후반 미국 · IT 생산성 · 낮은 실업률",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/골디락스",
+      "note": "1990년대 후반이다. 당시 미국경제는 수년간 4%이상의 고성장을 달성하면서도 낮은 실업률과 인플레이션 상태를 유지 ... 정보기술(IT)등으로 대변되는 신기술의 발달"
+     },
+     {
+      "claim": "1992년 슐먼 보고서 · 골디락스 가격",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Goldilocks_economy",
+      "note": "The phrase was popularized and reformulated by Salomon Brothers' chief equity strategist David Shulman by his March 1992 report"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/골디락스"
+    ],
+    "hintNote": null,
+    "easiestCue": "곰 세 마리 동화 + 뜨겁지도 차갑지도 않은",
+    "worthWhyGen": "뉴스에 나오는 경제 말의 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '경제 용어' 예",
+     "unique": "고성장·저물가 + 동화 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "1990년대 후반 정보기술 덕에 고성장과 낮은 실업률 속에서도 인플레이션이 거의 없던 미국 호황을 부른 이름이다."
+      },
+      "why": "신경제(1990년대 미국 호황)와 가르는 동화 유래·뜻을 핵심으로"
+     }
+    ],
+    "warn": [
+     "crossans 동화"
+    ],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "economy/1#g032a-g032a-j13-9",
+   "seed": {
+    "subject": "환율",
+    "aspect": null,
+    "ref": "g032a-j13-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "두 나라의 돈을 서로 바꿀 때 적용하는 비율입니다. 이 값이 오르면 원화 가치가 떨어져, 같은 해외여행도 더 비싸집니다. 뉴스에서 '원·달러 ○○'로 자주 듣는 이 말은?",
+    "answer": "환율",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "돈끼리 바꾸는 비율은 명목환율, 두 나라 물건값까지 따져 견준 비율은 실질환율이라 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "뉴스에서 '원·달러 ○○'로 자주 듣는 이 말",
+     "difWhy": "1 — 뉴스 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 경제 기본",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "공항 환전소나 은행 전광판에 달러·엔·유로마다 날마다 바뀌어 걸리는 그 숫자다",
+    "generalHintVersion": "hint-v7",
+    "identity": "서로 다른 나라 돈의 교환 비율",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "뉴스·일상에서 매일 접함",
+     "piece": "f04",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '돈을 바꾸는 비율'이 곧 종류. 원·달러 ○○ 예시로 바로 잡힘."
+    },
+    "blindQuestion": {
+     "guess": "환율",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "환율",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "환율",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4388",
+      "answer": "플라자 합의",
+      "verdict": "unsure",
+      "why": "지식은 다름(환율 정의 vs 플라자 합의)이나 옛 힌트에 '환율'이 있어 새 정답 누설, 환율 지식 인접"
+     },
+     {
+      "old": "930",
+      "answer": "평가절하",
+      "verdict": "unsure",
+      "why": "평가절하 vs 환율: 옛 질문에 '고정환율제'가 있어 누설, 환율 지식 인접"
+     },
+     {
+      "old": "932",
+      "answer": "닉슨 쇼크",
+      "verdict": "unsure",
+      "why": "닉슨 쇼크 vs 환율: 옛 질문에 '고정환율'이 있어 누설"
+     },
+     {
+      "old": "935",
+      "answer": "변동환율제",
+      "verdict": "unsure",
+      "why": "변동환율제 vs 환율: 질문에 '환율'이 있고 힌트 '원·달러'가 새 질문과 겹쳐 같은 환율 지식 인접"
+     },
+     {
+      "old": "g032a:g032a-j23-6",
+      "answer": "실업률",
+      "verdict": "diff",
+      "why": "환율 vs 실업률(옛것 비활성)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/환율",
+     "https://en.wikipedia.org/wiki/Exchange_rate"
+    ],
+    "facts": [
+     {
+      "claim": "서로 다른 통화의 교환 비율 · 오르면 자국 화폐 가치 하락",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/환율",
+      "note": "환율(換率 … exchange rate)은 서로 다른 통화의 교환 비율이다. … 명목환율이 상승한다는 것은 자국 화폐의 가치가 외국 화폐 보다 상대적으로 떨어지는 것을 의미한다."
+     },
+     {
+      "claim": "exchange rate = 한 통화를 다른 통화로 바꾸는 비율",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Exchange_rate",
+      "note": "In finance, an exchange rate is the rate at which one currency will be exchanged for another currency."
+     },
+     {
+      "claim": "명목환율·실질환율",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/환율",
+      "note": "명목환율이란 한 나라의 화폐가 외국의 화폐와 교환되는 비율 … 실질환율이란 한 나라의 상품이 외국의 상품과 교환되는 비율을 말한다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "두 나라 돈을 바꾸는 비율",
+    "worthWhyGen": "생활·뉴스의 기본 경제 상식(일반 상식 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '비율' 예",
+     "unique": "빈칸 2칸 + 통화 교환 비율 = 환율",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 달러"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "economy/1#g032a-g032a-j23-6",
+   "seed": {
+    "subject": "실업률",
+    "aspect": null,
+    "ref": "g032a-j23-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "나라의 일자리 사정을 보여 주는 대표 경제 지표입니다. 일할 뜻과 능력이 있는 경제활동인구 가운데 일자리가 없는 사람이 차지하는 비율입니다. 취업을 아예 포기한 사람은 셈에서 빠지는 이 지표는?",
+    "answer": "실업률",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이렇게 통계에서 빠진 사람을 '구직 단념자'라 부릅니다. 학생·주부도 비경제활동인구라 셈에 들지 않습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "일자리가 없는 사람이 차지하는 비율",
+     "difWhy": "2 — 뉴스 지표",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 사회 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "경기가 나빠져 회사들이 사람을 덜 뽑으면 올라가고, 청년층 수치가 특히 자주 뉴스에 오르는 고용 지표다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "경제활동인구 대비 실업자 비율",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "경제 뉴스 기본",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '경제 지표' · 끝 ○○ = 지표, 경제활동인구가 용어지만 정의 안에서 이해됨"
+    },
+    "blindQuestion": {
+     "guess": "실업률",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "실업률",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "실업률",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2248",
+      "answer": "대공황",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "399",
+      "answer": "엥겔지수",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "397",
+      "answer": "기회비용",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "g032a:g032a-j13-9",
+      "answer": "환율",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5328",
+      "answer": "빅맥 지수",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/실업",
+     "https://ko.wikipedia.org/wiki/경제활동인구",
+     "https://en.wikipedia.org/wiki/Discouraged_worker"
+    ],
+    "facts": [
+     {
+      "claim": "경제활동인구 대비 실업자 수의 백분율",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/실업",
+      "note": "실업률은 경제활동인구(고용된 사람의 총수와 실업자를 합한 수) 대비 실업자 수의 백분율이다."
+     },
+     {
+      "claim": "경제활동인구 = 노동할 의사와 능력이 있는 15세 이상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/경제활동인구",
+      "note": "경제활동인구는 만 15세 이상 인구 중 … 노동을 제공할 의사와 능력이 있는 사람을 말한다."
+     },
+     {
+      "claim": "구직을 포기한 사람은 실업률 통계에서 빠짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Discouraged_worker",
+      "note": "A discouraged worker, since not actively seeking employment, has fallen out of the core statistics of the unemployment rate since they are neither working nor job-seeking."
+     },
+     {
+      "claim": "경기후퇴가 실업 원인",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/실업",
+      "note": "실업은 다음과 같은 다양한 원인을 가질 수 있다. 경기후퇴의 영향을 받을 수 있는 경제의 상태"
+     },
+     {
+      "claim": "주부·학생은 비경제활동인구",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/경제활동인구",
+      "note": "가사에 종사하는 주부, 학생, 연로자와 장애인 … 이 이에 포함된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/실업"
+    ],
+    "hintNote": null,
+    "easiestCue": "경제활동인구 가운데 일자리 없는 사람 비율",
+    "worthWhyGen": "뉴스에 늘 나오는 지표가 실제로 무엇을 세는지(체감과 다른 까닭)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '경제 지표' — 예",
+     "unique": "'일자리가 없는 사람 비율' 로 고용률과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

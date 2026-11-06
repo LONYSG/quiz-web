@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-language/4",
+  "midKey": "world-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-language/4#g032a-g032a-j30-5",
+   "seed": {
+    "subject": "광둥어",
+    "aspect": null,
+    "ref": "g032a-j30-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 남부에서 쓰이는 중국어 방언입니다. 베이징 표준어에서 사라진 옛 중국어 발음이 많이 남아 있어, 한국 한자음과 더 비슷하게 들린다고 합니다. 홍콩과 마카오에서 공용어로 쓰이는 이 방언은?",
+    "answer": "광둥어",
+    "acceptedAnswers": [
+     "광동어"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "고향을 떠난 화교가 많아 싱가포르·말레이시아·미국 등지에서도 1천만 명쯤이 모어로 씁니다. 전통적 구분으로는 성조를 아홉으로도 셉니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "홍콩과 마카오에서 공용어로 쓰이는 이 방언",
+     "difWhy": "2 — 홍콩 단서로 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 언어 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "주성치·주윤발이 나오는 옛 영화의 원래 대사 언어로, 성조가 여섯 개나 될 만큼 많다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "홍콩·마카오와 중국 광둥성에서 쓰는 중국어 방언",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "홍콩 영화·언어 뉴스",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '중국어 방언' 이 있고 문장 짧음"
+    },
+    "blindQuestion": {
+     "guess": "광둥어",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "광둥어",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "광둥어",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "241",
+      "answer": "포르투갈어",
+      "verdict": "diff",
+      "why": "신규 '광둥어'(다른 언어) ≠ 옛 '포르투갈어' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3329",
+      "answer": "로망슈어",
+      "verdict": "diff",
+      "why": "신규 '광둥어'(다른 언어) ≠ 옛 '로망슈어' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3324",
+      "answer": "프랑스어",
+      "verdict": "diff",
+      "why": "신규 '광둥어'(다른 언어) ≠ 옛 '프랑스어' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3332",
+      "answer": "말레이어",
+      "verdict": "diff",
+      "why": "신규 '광둥어'(다른 언어) ≠ 옛 '말레이어' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3323",
+      "answer": "스페인어",
+      "verdict": "diff",
+      "why": "신규 '광둥어'(다른 언어) ≠ 옛 '스페인어' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/광둥어",
+     "https://en.wikipedia.org/wiki/Cantonese"
+    ],
+    "facts": [
+     {
+      "claim": "한국 한자 발음은 보통화보다 광둥어와 비슷 · 옛 발음이 많이 남음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/광둥어",
+      "note": "광동어는 고대와 중세 한어(漢語)의 발음과 특징이 매우 많이 남아 있다 ... 그래서 대한민국에서 사용하는 한자 발음은 표준 중국어인 보통화보다 광둥어와 ... 훨씬 비슷하다."
+     },
+     {
+      "claim": "홍콩·마카오 공용어 · 중세 중국어 받침 -p -t -k 보존",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cantonese",
+      "note": "It is also the dominant and co-official language of Hong Kong and Macau. / greater syllable coda diversity in Cantonese (like syllables ending in -p, -t or -k)"
+     },
+     {
+      "claim": "홍콩 영화에 널리 사용 · 성조 6개(전통 9개)",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/광둥어",
+      "note": "현재도 홍콩 영화, 노래, 월극(粵劇) 등 ... 광둥어가 널리 사용되고 있다 · 크게 6개의 성조가 존재하는데, 입성을 별도로 처리하는 전통적 구분에서는 9개로도 여겨진다."
+     },
+     {
+      "claim": "해외 화교 1천만 명 모어",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/광둥어",
+      "note": "동남아시아(특히 싱가포르, 말레이시아), 미국, 캐나다 등 해외 화교 1천만 명도 광둥어를 모어로 사용한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/광둥어"
+    ],
+    "hintNote": null,
+    "easiestCue": "홍콩·마카오 공용어인 중국어 방언",
+    "worthWhyGen": "3 — 한국 한자음이 왜 북경어보다 광둥어와 닮았는지(까닭)가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '방언' — 예",
+     "unique": "홍콩·마카오 공용어인 방언 → 광둥어 하나(푸젠어 배제)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

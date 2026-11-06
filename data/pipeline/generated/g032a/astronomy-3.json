@@ -1,0 +1,170 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "astronomy/3",
+  "midKey": "astronomy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "astronomy/3#g032a-g032a-j29-2",
+   "seed": {
+    "subject": "멀티버스",
+    "aspect": null,
+    "ref": "g032a-j29-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우주론의 한 가설입니다. 우리가 사는 우주가 유일하지 않고, 물리 법칙이나 상수가 다를 수도 있는 수많은 우주가 함께 있다는 생각입니다. 관측으로 확인할 길이 없어 과학보다 철학에 가깝다는 비판도 받는 이 개념은?",
+    "answer": "멀티버스",
+    "acceptedAnswers": [
+     "다중우주",
+     "다중우주론"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1990년대 이 소재를 다룬 소설·영화가 인기를 끈 뒤 과학계 논의도 늘었습니다. 이 말 자체는 1895년 윌리엄 제임스가 다른 뜻으로 쓴 적이 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "우리가 사는 우주가 유일하지 않고 수많은 우주가 함께 있다는 생각",
+     "difWhy": "2 — 대중문화로 익숙",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "급팽창 이론이 말하는 거품 같은 우주들이나 양자역학의 다세계 해석처럼, 우리 우주 바깥에 다른 우주들이 있다고 보는 생각을 통틀어 이른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "우리 우주 밖에 여러 우주가 있다는 가설상의 우주들의 집합(다중우주)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "마블 영화·다중우주 이야기로 대중화",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '우주론의 한 가설' 로 종류가 나오고 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "다중우주",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "다중우주",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "멀티버스",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 4,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "multiverse = hypothetical set of universes · lacks testability",
+       "url": "https://en.wikipedia.org/wiki/Multiverse",
+       "note": "Critics argue that the multiverse concept lacks testability and falsifiability"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "285",
+      "answer": "우리은하",
+      "verdict": "diff",
+      "why": "신규 '멀티버스'(다른 천문 대상) ≠ 옛 '우리은하' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5217",
+      "answer": "안드로메다 은하",
+      "verdict": "diff",
+      "why": "신규 '멀티버스'(다른 천문 대상) ≠ 옛 '안드로메다 은하' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5218",
+      "answer": "소마젤란 은하",
+      "verdict": "diff",
+      "why": "신규 '멀티버스'(다른 천문 대상) ≠ 옛 '소마젤란 은하' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1447",
+      "answer": "나선은하",
+      "verdict": "diff",
+      "why": "신규 '멀티버스'(다른 천문 대상) ≠ 옛 '나선은하' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/다중우주",
+     "https://en.wikipedia.org/wiki/Multiverse"
+    ],
+    "facts": [
+     {
+      "claim": "모든 우주들의 가설상의 집합 · 물리 법칙·상수가 다를 수 있음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/다중우주",
+      "note": "다중우주(영어: multiverse, 멀티버스)는 모든 우주들의 가설상의 집합이다 ... 레벨 2: 물리 상수들이 다른 우주들"
+     },
+     {
+      "claim": "반증 불가능해 철학적 개념이라는 비판",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/다중우주",
+      "note": "일부 물리학자들은 다중우주가 한 과학적 가설이라기보다는 한 철학적 개념이며, 왜냐하면 그것은 경험적으로 반증할 수 없기 때문이라고 주장한다."
+     },
+     {
+      "claim": "multiverse = hypothetical set of universes · lacks testability",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Multiverse",
+      "note": "Critics argue that the multiverse concept lacks testability and falsifiability"
+     },
+     {
+      "claim": "급팽창 거품 · 다세계 해석",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/다중우주",
+      "note": "공간의 일부 영역들은 팽창을 멈추고 또한 뚜렷한 거품들을 형성한다 ... 레벨 3: 양자역학의 다세계 해석"
+     },
+     {
+      "claim": "1990년대 픽션 인기 뒤 과학 논의 증가 · 1895 윌리엄 제임스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Multiverse",
+      "note": "In the 1990s, after recent works of fiction about the concept gained popularity, scientific discussions about the multiverse ... gained prominence. / (ko) 윌리엄 제임스 1895 년에 \"다중우주\"라는 용어를 사용했지만, 다른 맥락에서였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/다중우주",
+     "https://en.wikipedia.org/wiki/Multiverse"
+    ],
+    "hintNote": null,
+    "easiestCue": "우리 우주 말고 수많은 우주가 함께 있다는 생각",
+    "worthWhyGen": "2 — 과학 개념이지만 영화·드라마로 일상어가 된 말",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '가설' — 예",
+     "unique": "평행우주(구성원)와 갈림 애매 — 집합 개념으로 질문",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

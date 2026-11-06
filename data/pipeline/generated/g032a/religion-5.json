@@ -1,0 +1,383 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "religion/5",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/5#g032a-g032a-j13-7",
+   "seed": {
+    "subject": "토테미즘",
+    "aspect": null,
+    "ref": "g032a-j13-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "특정 동물이나 식물을 자기 무리의 조상이나 수호신으로 여겨 섬기는 원시 신앙입니다. 단군 신화에서 곰과 호랑이를 이 신앙의 흔적으로 보는 해석도 있습니다. 이 신앙은 무엇일까요?",
+    "answer": "토테미즘",
+    "acceptedAnswers": [
+     "토템 신앙",
+     "토템 숭배"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "'토템'이라는 말은 오대호 근처에 살던 오지브웨족의 말에서 왔고, 씨족이나 가문을 나타내는 표지를 뜻했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "특정 동물이나 식물을 자기 무리의 조상이나 수호신으로 여겨 섬기는 원시 신앙",
+     "difWhy": "3 — 학교 용어(토테미즘) · 설명 → 이름 · 단군 신화 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과·인문 개념 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "곰이나 늑대 같은 동물을 자기 부족의 조상이자 수호신으로 여겨 신성하게 섬기는 원시 신앙이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "동식물을 부족의 조상·상징으로 섬기는 원시 신앙",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "교과서 종교 용어",
+     "piece": "f04",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '원시 신앙' 이 끝 ○○(신앙)와 일치 · 단군 신화 예도 쉽다"
+    },
+    "blindQuestion": {
+     "guess": "토테미즘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "토테미즘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "토테미즘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j16-11",
+      "answer": "샤머니즘",
+      "verdict": "diff",
+      "why": "토테미즘 vs 샤머니즘(옛것 비활성)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/토테미즘",
+     "https://ko.wikipedia.org/wiki/단군_신화",
+     "https://en.wikipedia.org/wiki/Totem"
+    ],
+    "facts": [
+     {
+      "claim": "동식물을 신성시 · 조상의 영혼 우상화하는 원시 신앙",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토테미즘",
+      "note": "토테미즘(영어: Totemism)은 토템 신앙의 대상, 기초로 숭배하는 신앙 형태를 말한다. 원시 사회에 … 동식물이나 … 자연물(自然物)을 … 신성시함으로써 … 이것은 숭배의 대상이나 조상의 영혼을 우상화한 것이다."
+     },
+     {
+      "claim": "단군 신화 곰·호랑이 = 토템 부족 해석",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/단군_신화",
+      "note": "또한 ‘곰’을 토템으로 삼았던 부족이 ‘호랑이’를 토템으로 삼았던 부족과 경쟁으로 국가로의 통합에서 정통성을 획득하였다는 의미로도 해석할 수 있다."
+     },
+     {
+      "claim": "북아메리카 원주민 토템 폴 — 동물을 새긴 기둥",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Totem",
+      "note": "The totem poles of the Pacific Northwestern Indigenous peoples of North America are carved, monumental poles featuring many different designs (bears, birds, frogs, people, and various supernatural beings and aquatic creatures)."
+     },
+     {
+      "claim": "토템은 오지브웨어 doodem에서 · 씨족 상징",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Totem",
+      "note": "A totem (from Ojibwe: … 'doodem') is a spirit being, sacred object, or symbol that serves as an emblem of a group of people, such as a family, clan, lineage, or tribe"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Totem"
+    ],
+    "hintNote": null,
+    "easiestCue": "동식물을 조상으로 섬기는 원시 신앙 + 단군 신화 곰·호랑이",
+    "worthWhyGen": "중학교 사회의 원시 신앙 개념(교과 개념 2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '원시 신앙' 예",
+     "unique": "동식물=조상·수호신 → 애니미즘(모든 자연에 영혼)·샤머니즘과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "북아메리카 원주민이 부족의 상징 동물들을 차곡차곡 새겨 세운 높은 나무 기둥이 대표적인 흔적이다"
+      },
+      "why": "토템 기둥(유물)이 아니라 신앙 자체를 정의로"
+     }
+    ],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "religion/5#g032a-g032a-j16-11",
+   "seed": {
+    "subject": "샤머니즘",
+    "aspect": null,
+    "ref": "g032a-j16-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주술사가 춤과 노래로 신령과 통해 병을 고치고 앞날을 점친다고 믿는 신앙입니다. 이름은 시베리아 퉁구스계 사람들이 주술사를 부르던 말에서 왔다는 설이 유력합니다. 이 신앙은 무엇일까요?",
+    "answer": "샤머니즘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "러시아인들이 시베리아 원주민에게서 이 말을 받아들였고, 17세기 말 네덜란드 정치가 비천의 여행기로 서유럽에 알려졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "주술사가 춤과 노래로 신령과 통해 병을 고치고",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 종교 상식·어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "굿판의 무당처럼, 넋이 나간 듯한 무아지경에서 신령의 말을 전하는 주술사 중심의 신앙이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "주술사(무당)를 중심으로 한 신앙 체계",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "교과서·미디어에서 흔함",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '주술사가 … 믿는 신앙'이 끝 ○○=신앙. 퉁구스계 설명은 단서."
+    },
+    "blindQuestion": {
+     "guess": "샤머니즘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "샤머니즘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "샤머니즘",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j13-7",
+      "answer": "토테미즘",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/샤머니즘",
+     "https://en.wikipedia.org/wiki/Shamanism"
+    ],
+    "facts": [
+     {
+      "claim": "무당 중심 신앙 · 신령과 교류해 예언·치병",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/샤머니즘",
+      "note": "신적인 존재를 불러들이는 무당(巫堂), 곧 샤먼(shaman)을 중심으로 한 신앙 체계이며 ... 예언, 탁선, 복점, 치병, 제의 등을 행하여 ... 샤먼이 춤·노래·주문 등을 반복하고"
+     },
+     {
+      "claim": "퉁구스계 '사만(주술사)'에서 유래한다는 설이 유력",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/샤머니즘",
+      "note": "'샤먼'이라는 말은 퉁구스계족에서 주술사를 의미하는 사만(Saman, saman)에서 유래한다는 설이 유력하다."
+     },
+     {
+      "claim": "러시아어 шаман ← 퉁구스어 samān(에벤키)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shamanism",
+      "note": "The Modern English word shamanism derives from the Russian word шаман, šamán, which itself comes from the word samān from a Tungusic language – possibly from the southwestern dialect of the Evenki"
+     },
+     {
+      "claim": "이상심리상태(엑스터시)에서 신령 정보 전달",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/샤머니즘",
+      "note": "엑스터시적 이상심리 상태로 몰입하고, 주장되길 초자연적 신령계에서 나오는 정보를 전달하거나 길흉을 점치고"
+     },
+     {
+      "claim": "러시아인 채택 · 비천 1692 책으로 서유럽",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shamanism",
+      "note": "The term was adopted by Russians interacting with the indigenous peoples in Siberia. ... brought to Western Europe twenty years later by the Dutch statesman Nicolaes Witsen ... (1692)."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/샤머니즘"
+    ],
+    "hintNote": null,
+    "easiestCue": "주술사가 신령과 통한다고 믿는 신앙",
+    "worthWhyGen": "흔히 쓰는 말의 유래(알가치 3 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '신앙' — 예",
+     "unique": "'퉁구스 말에서 온 이름' 으로 무속·애니미즘과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "religion/5#g032a-g032a-j28-8",
+   "seed": {
+    "subject": "애니미즘",
+    "aspect": null,
+    "ref": "g032a-j28-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "원시 신앙의 한 형태입니다. 해·달·강·바람 같은 자연물과 자연 현상에도 사람처럼 영혼이 깃들어 있다고 믿습니다. '숨, 생명, 영혼'을 뜻하는 라틴어에서 이름이 온 이 신앙은 무엇일까요?",
+    "answer": "애니미즘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "심리학자 피아제는 어린아이가 인형이나 물건을 살아 있는 것처럼 대하는 것도 같은 이름으로 불렀습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "자연물에도 사람처럼 영혼이 깃들어 있다고 믿는 신앙",
+     "difWhy": "3 — 종교 용어 · 정의 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "큰 나무나 바위, 산에 정령이 산다고 여겨 받드는 믿음이 대표 예로, 1871년 인류학자 타일러가 종교의 기원으로 정리한 개념이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "자연물에 영혼이 있다고 믿는 원시 신앙(animism)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "종교 상식, 교과서",
+     "piece": "f08",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '원시 신앙' 이 끝 ○○ '신앙' 과 일치 · 라틴어 뜻은 단서일 뿐"
+    },
+    "blindQuestion": {
+     "guess": "애니미즘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "애니미즘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "애니미즘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/애니미즘",
+     "https://en.wikipedia.org/wiki/Animism"
+    ],
+    "facts": [
+     {
+      "claim": "자연계 사물과 현상에 영혼이 있다고 믿는 원시 신앙 · 라틴어 anima(숨·생명·영혼)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애니미즘",
+      "note": "애니미즘(영어: animism ← 라틴어: anima('숨, 생명, 영혼'이라는 뜻)에서 파생)은 해, 달, 별, 강과 같은 자연계의 모든 사물과 불, 바람, 벼락, 폭풍우, 계절 등과 같은 무생물적 자연 현상과 생물(동·식물) 모두에 생명이 있다고 보고, 그것의 영혼을 인정하여 ... 믿는 세계관 또는 원시 신앙이다."
+     },
+     {
+      "claim": "라틴어 anima · 자연물에 영적 본질",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Animism",
+      "note": "Animism (from Latin: anima, meaning 'breath', 'spirit', or 'life') is the worldview or perception that various types of natural phenomena ... possess distinct spiritual essences, souls, or personhood."
+     },
+     {
+      "claim": "나무·바위·산의 정령 · 1871년 타일러가 정의",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Animism",
+      "note": "The accepted definition of animism was developed only in the late 19th century (1871) by Edward Tylor. ... soul, spirit, or sentience exists not only in humans but also in other animals, plants, rocks, geographic features (such as mountains and rivers) ... Examples include water spirits, vegetation deities, and tree spirits"
+     },
+     {
+      "claim": "피아제 — 아이들은 무생물을 의인화하는 애니미즘 세계관",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Animism",
+      "note": "Jean Piaget suggested that children were born with an innate animist worldview in which they anthropomorphized inanimate objects"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Animism"
+    ],
+    "hintNote": null,
+    "easiestCue": "자연물에 영혼이 깃들었다고 믿는 원시 신앙",
+    "worthWhyGen": "사회 교과의 원시 신앙 개념(알가치 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '원시 신앙' — 예",
+     "unique": "모든 자연물에 영혼 — 애니미즘(토테미즘은 특정 동식물 조상 · 이 라운드 다른 job 이 토테미즘·샤머니즘 씀)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

@@ -1,0 +1,306 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "aerospace/3",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/3#g032a-g032a-j08-3",
+   "seed": {
+    "subject": "나로호",
+    "aspect": null,
+    "ref": "g032a-j08-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국의 첫 우주발사체입니다. 2009년과 2010년 두 번 궤도에 오르지 못한 뒤, 2013년 1월 세 번째 발사에서 위성을 궤도에 올렸습니다. 이름은 발사장이 있는 전남 고흥의 지명에서 따왔습니다. 이 발사체는?",
+    "answer": "나로호",
+    "acceptedAnswers": [
+     "KSLV-I"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2단은 한국항공우주연구원이 만들었다. 2013년 성공으로 한국은 세계 11번째로 우주발사체 발사에 성공한 나라로 꼽혔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한국의 첫 우주발사체 · 전남 고흥",
+     "difWhy": "2 — 고흥 발사장 우주발사체는 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 한국 대표 사실",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1단 로켓은 러시아가 만들어 붙였고, 그 뒤를 순수 국산 발사체 누리호가 이었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "2013년 발사에 성공한 한국 첫 우주발사체(KSLV-I)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "뉴스·교과서에 자주 나온 한국 우주발사체",
+     "piece": "f03",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '한국의 첫 우주발사체' 로 종류를 밝히고 연도는 문장 하나에 모여 정리됨"
+    },
+    "blindQuestion": {
+     "guess": "나로호",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "나로호",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "나로호",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "247",
+      "answer": "누리호",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2043",
+      "answer": "다단 로켓",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "g032a:g032a-j32-1",
+      "answer": "대륙간 탄도 미사일",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2048",
+      "answer": "페이로드",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "2047",
+      "answer": "자전 속도",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Naro-1",
+     "https://ko.wikipedia.org/wiki/나로호"
+    ],
+    "facts": [
+     {
+      "claim": "한국 첫 발사체 · 2009·2010 실패 · 2013년 1월 30일 3번째 성공 · 이름은 발사장 지역 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Naro-1",
+      "note": "Naro-1 ... was South Korea's first carrier rocket ... Neither the maiden flight on 25 August 2009, nor the second flight on June 10, 2010, reached orbit. The third flight on 30 January 2013, successfully reached orbit. ... The official name ... is Naro, which is the name of the region in which Naro Space Center is located."
+     },
+     {
+      "claim": "2013년 1월 30일 3차 시도 만에 고흥 나로우주센터에서 성공",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/나로호",
+      "note": "2013년 1월 30일 3차 시도 만에 고흥군 나로우주센터에서 나로과학위성(STSAT-2C)을 나로호(KSLV-I)에 실어 지구 저궤도 ... 에 쏘아올리는 데 성공하였다. 이로써 대한민국은 세계 11번째로 ... 우주발사체를 성공적으로 발사한 국가가 되었다."
+     },
+     {
+      "claim": "1단 러시아 앙가라 개조 · 2단 KARI · 후계 누리호",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Naro-1",
+      "note": "The first stage was a modified Russian Angara URM. The solid-fuel second stage was built by KARI ... the South Korean government has announced the rocket Nuri as its replacement and successor."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Naro-1"
+    ],
+    "hintNote": null,
+    "easiestCue": "한국 첫 우주발사체 · 2013년 성공",
+    "worthWhyGen": "한국 우주 개발의 기본 상식(일반 상식 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '우주발사체' 예",
+     "unique": "첫 · 2013년 — 누리호와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 누리호"
+    ],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "aerospace/3#g032a-g032a-j32-1",
+   "seed": {
+    "subject": "대륙간 탄도 미사일",
+    "aspect": null,
+    "ref": "g032a-j32-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "로켓 기술로 만든 장거리 무기를 묻습니다. 사정거리가 5,500km를 넘고, 대기권 밖까지 솟았다가 다시 떨어지며 목표를 칩니다. 위성을 쏘는 우주 발사체와 기술이 거의 같아, 초기의 이 무기들은 여러 우주 발사체의 바탕이 되었습니다. 이 무기는?",
+    "answer": "대륙간 탄도 미사일",
+    "acceptedAnswers": [
+     "ICBM",
+     "대륙간 탄도탄",
+     "대륙간 탄도 유도탄"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "세계 첫 사례는 1957년 소련의 R-7으로, 같은 로켓이 그해 첫 인공위성 스푸트니크도 쏘아 올렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "사정거리가 5,500km를 넘고 대기권 밖까지",
+     "difWhy": "2 — 뉴스 용어 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 78",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "주로 핵탄두를 실어 지구 반대편 적국의 본토까지 노리는 전략 무기로, 북한이 이를 시험 발사할 때마다 큰 뉴스가 된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "사정거리 5,500km 이상의 탄도 미사일(ICBM) — 주로 핵탄두 운반용",
+    "familiarity": {
+     "judge": 3,
+     "pct": 78,
+     "why": "북한 뉴스에서 ICBM 자주 나옴",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '장거리 무기' 종류가 있고 문장 짧음"
+    },
+    "blindQuestion": {
+     "guess": "대륙간탄도미사일",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "대륙간탄도미사일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "대륙간 탄도 미사일",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j08-3",
+      "answer": "나로호",
+      "verdict": "diff",
+      "why": "ICBM과 나로호(한국 첫 발사체)는 다른 지식"
+     },
+     {
+      "old": "247",
+      "answer": "누리호",
+      "verdict": "diff",
+      "why": "ICBM과 누리호는 다른 지식"
+     },
+     {
+      "old": "2048",
+      "answer": "페이로드",
+      "verdict": "diff",
+      "why": "ICBM과 페이로드 용어는 다름"
+     },
+     {
+      "old": "2043",
+      "answer": "다단 로켓",
+      "verdict": "diff",
+      "why": "ICBM과 다단 로켓 구조는 다름"
+     },
+     {
+      "old": "2051",
+      "answer": "공력가열",
+      "verdict": "diff",
+      "why": "ICBM과 공력가열은 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대륙간_탄도_미사일",
+     "https://en.wikipedia.org/wiki/Intercontinental_ballistic_missile",
+     "https://ko.wikipedia.org/wiki/화성-17형"
+    ],
+    "facts": [
+     {
+      "claim": "사정거리 5,500km 이상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대륙간_탄도_미사일",
+      "note": "대륙간탄도미사일(大陸間彈道―)은 사거리가 5,500 km 이상인 탄도 미사일로, 주로 핵탄두를 탑재하기 위하여 개발되는 탄도 미사일이다."
+     },
+     {
+      "claim": "사정거리 · 우주 발사체의 바탕 · 재진입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Intercontinental_ballistic_missile",
+      "note": "An intercontinental ballistic missile (ICBM) is a ballistic missile with a range greater than 5,500 kilometres / Many have been adapted into space launch vehicles. / These early ICBMs also formed the basis of many space launch systems. / Reentry/Terminal phase, which lasts around two minutes starting at an altitude of 100 km"
+     },
+     {
+      "claim": "핵탄두 · 북한 시험 발사",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/화성-17형",
+      "note": "화성-17형(火星-17型)은 2021년 공개된 조선민주주의인민공화국의 ICBM이다. / 북한이 2017년 시험발사에 성공한 대륙간탄도미사일(ICBM) 화성 15호 / (ko 대륙간 탄도 미사일) 주로 핵탄두를 탑재하기 위하여 개발되는 탄도 미사일이다."
+     },
+     {
+      "claim": "R-7 · 스푸트니크",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Intercontinental_ballistic_missile",
+      "note": "The world's first ICBM was the R-7 Semyorka, tested in 1957. / It was the same R-7 launch vehicle that placed the first artificial satellite in space, Sputnik, on 4 October 1957."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/화성-17형",
+     "https://en.wikipedia.org/wiki/Intercontinental_ballistic_missile"
+    ],
+    "hintNote": null,
+    "easiestCue": "사정거리 5,500km · 우주 발사체와 같은 기술의 장거리 무기",
+    "worthWhyGen": "뉴스에 늘 나오는 무기(일반 상식) + 위성 발사와 미사일 기술이 왜 같은지(까닭)가 질문 안에 있음",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '장거리 무기' 예",
+     "unique": "5,500km 이상 — 중거리 탄도 미사일과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

@@ -1,0 +1,280 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "psychology/1",
+  "midKey": "psychology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "psychology/1#g032a-g032a-j09-11",
+   "seed": {
+    "subject": "리플리 증후군",
+    "aspect": null,
+    "ref": "g032a-j09-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "거짓말을 거듭하다 끝내 자기가 지어낸 허구를 진짜라고 믿어 버리는 상태를 이르는 말입니다. 1955년 미국 작가 퍼트리샤 하이스미스가 쓴 소설 속 주인공 이름에서 따왔지만, 의학계의 정식 병명은 아닙니다. 이 말은?",
+    "answer": "리플리 증후군",
+    "acceptedAnswers": [
+     "리플리 효과",
+     "리플리병"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2011년 같은 이름을 내건 MBC 드라마 '미스 리플리'가 방송됐고, 비슷한 실제 질환으로는 공상허언증이 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "거짓말을 거듭하다 끝내 자기가 지어낸 허구를 진짜라고 믿어 버리는 상태",
+     "difWhy": "3 — 설명 → 이름 · 소설 주인공 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 심리 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "'태양은 가득히'에서 부잣집 아들 행세를 한 주인공 이름을 딴 말로, 자기가 꾸민 거짓을 스스로 진짜로 믿어 버리는 심리 상태다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "허구를 진실로 믿고 거짓말을 되풀이하는 상태를 이르는 통속 심리 용어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "드라마·뉴스에서 자주 언급",
+     "piece": "f08",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 상태 설명과 '말' 로 시작 · 소설 이야기는 둘째 문장에서 보조로만 쓰임"
+    },
+    "blindQuestion": {
+     "guess": "리플리 증후군",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "리플리 증후군",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "리플리 증후군",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3846",
+      "answer": "베르테르 효과",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "g032a:g032a-j20-6",
+      "answer": "머피의 법칙",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1213",
+      "answer": "플라세보 효과",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/리플리_증후군",
+     "https://en.wikipedia.org/wiki/The_Talented_Mr._Ripley",
+     "https://ko.wikipedia.org/wiki/미스_리플리"
+    ],
+    "facts": [
+     {
+      "claim": "허구를 진실로 믿고 거짓을 반복 · 1955 하이스미스 소설에서 따옴 · 의학 병명 아님",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/리플리_증후군",
+      "note": "자신의 현실을 부정하면서 실제로는 존재하지 않는 허구의 세계를 진실이라 믿고 상습적으로 거짓된 말과 행동을 반복하는 … 소설 《재능 있는 리플리 씨》(The talented Mr. Ripley, 1955)에서 따온 말로 … 실제로 의학계에서 병명으로 사용되는 말은 아니다."
+     },
+     {
+      "claim": "하이스미스 소설 주인공 리플리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Talented_Mr._Ripley",
+      "note": "Ripley decides to murder Dickie and assume his identity."
+     },
+     {
+      "claim": "부잣집 아들 디키를 죽이고 행세 · 알랭 들롱 Plein Soleil(태양은 가득히)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/The_Talented_Mr._Ripley",
+      "note": "Plein Soleil (originally), also known as Purple Noon (1960), directed by René Clément, stars Alain Delon as Ripley"
+     },
+     {
+      "claim": "2011 MBC 미스 리플리 · 공상허언증",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/미스_리플리",
+      "note": "《미스 리플리》(Miss Ripley)는 2011년 5월 30일부터 2011년 7월 19일까지 방송된 MBC의 월화드라마이다. / (리플리 증후군 문서) 유사한 증상을 보이는 실제 질병으로는 공상허언증이 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Talented_Mr._Ripley"
+    ],
+    "hintNote": null,
+    "easiestCue": "거짓말을 거듭하다 허구를 진짜로 믿는 상태",
+    "worthWhyGen": "일상에서 쓰는 말의 유래와 '정식 병명이 아니다'는 바로잡기 — 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '상태를 이르는 말' — 예",
+     "unique": "공상허언증을 칠 사람이 있으나 '소설 주인공 이름에서 따온 말'로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "가난한 청년이 부잣집 아들을 죽이고 그 행세를 하는 소설의 주인공으로, 알랭 들롱 영화 '태양은 가득히'로 유명하다."
+      },
+      "why": "인물 이름이 아니라 그 이름을 딴 '심리 상태'를 정체로 세움"
+     }
+    ],
+    "warn": [],
+    "job": "job-09"
+   }
+  },
+  {
+   "seedId": "psychology/1#g032a-g032a-j20-6",
+   "seed": {
+    "subject": "머피의 법칙",
+    "aspect": null,
+    "ref": "g032a-j20-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "하려는 일이 꼭 원하지 않는 쪽으로만 꼬인다고 느낄 때 쓰는 말입니다. 내가 선 줄만 늦게 줄어들고, 세차한 날만 비가 오는 식입니다. 1949년 미국 공군 실험에 참여한 한 대위의 이름이 붙은 이 말은?",
+    "answer": "머피의 법칙",
+    "acceptedAnswers": [
+     "머피 법칙"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "사람이 급감속을 얼마나 견디는지 로켓 썰매로 잰 실험에서 나왔고, 일이 잘 풀리는 반대 경우는 '샐리의 법칙'이라 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "하려는 일이 꼭 원하지 않는 쪽으로만 꼬인다 · 세차한 날만 비",
+     "difWhy": "2 — 일상어 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "'잘못될 수 있는 일은 결국 잘못되고야 만다'는 한 문장으로 요약되어 세계에 퍼진 경험칙이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일이 나쁜 쪽으로만 꼬인다는 경험칙",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상 속담처럼 쓰임",
+     "piece": "f06",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '말' 과 뜻이 있고 줄·세차 예가 쉬워 한 번에 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "머피의 법칙",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "머피의 법칙",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "머피의 법칙",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j09-11",
+      "answer": "리플리 증후군",
+      "verdict": "diff",
+      "why": "머피의 법칙 vs 리플리 증후군 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/머피의_법칙",
+     "https://en.wikipedia.org/wiki/Murphy%27s_law"
+    ],
+    "facts": [
+     {
+      "claim": "일이 원하지 않는 방향으로만 진행 · 1949 미 공군 대위 에드워드 머피",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/머피의_법칙",
+      "note": "하려는 일이 항상 원하지 않는 방향으로만 진행되는 현상을 이르는 말이다. ... 1949년 미국 공군에서, 인간이 중력에 얼마나 견딜 수 있는지에 대한 실험을 할 때 대위로 있었던 에드워드 머피(Edward A. Murphy)의 이름을 따서 지어진 이름이다."
+     },
+     {
+      "claim": "1949년 · USAF 대위",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Murphy%27s_law",
+      "note": "the name \"Murphy's law\" originated in 1949 ... Murphy, a United States Air Force (USAF) captain and aeronautical engineer."
+     },
+     {
+      "claim": "Anything that can go wrong will go wrong",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Murphy%27s_law",
+      "note": "Murphy's law is an adage or epigram that is typically stated as: \"Anything that can go wrong will go wrong.\""
+     },
+     {
+      "claim": "로켓 썰매 · 급감속 실험 · 샐리의 법칙",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Murphy%27s_law",
+      "note": "originated from Murphy and his team following a mishap during rocket sled tests ... testing the human tolerance for g-forces during rapid deceleration. / (ko) 샐리의 법칙(Sally's law)은 ... 머피의 법칙(Murphy's Law)과는 반대되는 경우이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Murphy%27s_law"
+    ],
+    "hintNote": null,
+    "easiestCue": "일이 꼭 나쁜 쪽으로만 꼬인다는 말",
+    "worthWhyGen": "3 — 일상에서 쓰는 말의 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' — 예",
+     "unique": "나쁜 쪽 + 대위 이름 = 하나(샐리의 법칙은 반대)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  }
+ ]
+}

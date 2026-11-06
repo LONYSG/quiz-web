@@ -1,0 +1,291 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "plants/3",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/3#g032a-g032a-j07-10",
+   "seed": {
+    "subject": "키위",
+    "aspect": null,
+    "ref": "g032a-j07-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "원래 중국에서 자라던 덩굴 과일입니다. 20세기 초 뉴질랜드로 건너가 '차이니즈 구스베리'라는 이름으로 팔렸습니다. 그러다 1959년 한 뉴질랜드 수출 회사가 겉모습이 닮은 뉴질랜드 나라새의 이름을 붙여 지금 이름이 되었습니다. 이 과일은?",
+    "answer": "키위",
+    "acceptedAnswers": [
+     "참다래"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "따서 바로 먹으면 시어서 두고 익혀 먹는 후숙 과일이다. 2023년 기준 세계 생산의 절반 넘게를 중국이 차지한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "뉴질랜드 나라새 이름을 붙인 덩굴 과일",
+     "difWhy": "1 — 대중 과일 · 새 이름 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "초록 과육에 작고 까만 씨가 박힌 새콤한 과일로, 하나만 먹어도 하루 필요한 비타민 C가 넉넉하다고 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "갈색 털 껍질에 초록 과육의 과일(참다래)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "흔한 과일",
+     "piece": "f08",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '덩굴 과일' 이 끝 '이 과일' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "키위",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "키위",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "키위",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "195",
+      "answer": "비타민 C",
+      "verdict": "diff",
+      "why": "키위 유래 vs 비타민 C"
+     },
+     {
+      "old": "4684",
+      "answer": "질랜디아",
+      "verdict": "diff",
+      "why": "키위 vs 질랜디아"
+     },
+     {
+      "old": "6045",
+      "answer": "뉴질랜드",
+      "verdict": "diff",
+      "why": "키위 과일 vs 뉴질랜드 여성 시장"
+     },
+     {
+      "old": "4570",
+      "answer": "비타민",
+      "verdict": "diff",
+      "why": "키위 vs 비타민 어원"
+     },
+     {
+      "old": "5566",
+      "answer": "파인애플",
+      "verdict": "diff",
+      "why": "키위 vs 파인애플"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/키위_(과일)",
+     "https://en.wikipedia.org/wiki/Kiwifruit"
+    ],
+    "facts": [
+     {
+      "claim": "중국 원산 · 20세기 초 뉴질랜드 · 차이니즈 구즈베리 · 나라새 키위를 닮아",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/키위_(과일)",
+      "note": "키위는 원래 중국 남부에서 자라는 식물이었으나, 20세기 초에 뉴질랜드에 재배되기 시작했다. 때문에 초기에는 ‘차이니즈 구즈베리’란 이름으로 상품화되었다. … 키위란 이름은 뉴질랜드의 나라새인 키위와 닮았다 해서 붙여졌다."
+     },
+     {
+      "claim": "1959년 수출사 Turners & Growers 가 kiwifruit 이름 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kiwifruit",
+      "note": "In 1959, Turners & Growers, a major New Zealand exporter, began using the name \"kiwifruit\""
+     },
+     {
+      "claim": "과육 · 씨 · 비타민 C 1개로 하루 양",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/키위_(과일)",
+      "note": "주변은 연한 녹색이며 작고 검은 씨들이 박혀 있다. … 비타민 C가 풍부하여 열매 1개로 성인 1명이 필요로 하는 하루의 양이 충분하다고 한다."
+     },
+     {
+      "claim": "후숙 · 중국 55%(2023)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kiwifruit",
+      "note": "As of 2023, China accounted for 55% of the world's total kiwifruit production / (ko) 수확 후 충분한 숙성기간을 거치지 않으면 신맛이 강하다. 때문에 키위는 후숙 과일"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/키위_(과일)"
+    ],
+    "hintNote": null,
+    "easiestCue": "뉴질랜드 나라새 이름을 붙인 과일",
+    "worthWhyGen": "흔한 과일 이름의 유래 — 알가치 3 ②",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '과일' 예",
+     "unique": "하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 비타민 C/비타민/초록"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "plants/3#g032a-job-26-3",
+   "seed": {
+    "subject": "샤인머스캣",
+    "aspect": null,
+    "ref": "job-26-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본 국립 연구소가 1988년 교배한 묘목에서 골라 2006년 품종으로 등록한 청포도입니다. 일본이 해외 품종 보호 등록 기한을 놓치는 바람에, 한국과 중국 농가가 사용료 없이 길러 값이 크게 내려갔습니다. 껍질째 먹는 이 포도 품종은?",
+    "answer": "샤인머스캣",
+    "acceptedAnswers": [
+     "샤인머스켓",
+     "샤인머스캇"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "유럽 포도 머스캣 오브 알렉산드리아 계통에 미국 포도 스튜벤을 섞어, 향은 살리고 비에 잘 터지는 약점을 줄였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "껍질째 먹는 청포도",
+     "difWhy": "1 — 대중 과일",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 품종 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "2010년대 후반부터 경북을 중심으로 재배 면적이 몇 년 새 수십 배로 늘어난 연둣빛 고급 포도다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일본에서 육성한 껍질째 먹는 청포도 품종",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "마트·뉴스에서 인기 과일",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '청포도' 가 있고 주어가 일관됨"
+    },
+    "blindQuestion": {
+     "guess": "샤인머스캣",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "샤인머스캣",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "샤인머스캣",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 4,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "한국 재배 면적 2016 약 200ha → 2022 약 5,700ha · 영천·김천·상주",
+       "url": "https://ko.wikipedia.org/wiki/샤인머스캣",
+       "note": "2016년 전국 약 200ha 수준이던 재배면적 ... 2022년에는 샤인머스캣 재배면적이 약 5,700ha / (en) In South Korea, Yeongcheon, Gimcheon, Sangju, Gyeong"
+      }
+     ]
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Shine_Muscat",
+     "https://ko.wikipedia.org/wiki/샤인머스캣"
+    ],
+    "facts": [
+     {
+      "claim": "1988년 교배 묘목에서 선발 · 2006년 품종 등록",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shine_Muscat",
+      "note": "The grapes were selected from the seedlings of a cross between Akitsu No. 21 and Hakunan in 1988 ... registered on March 9, 2006, as Grape No. 13,891"
+     },
+     {
+      "claim": "해외 보호 기한을 놓쳐 한국·중국이 로열티 없이 재배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shine_Muscat",
+      "note": "its international protection lapsed because the variety was not registered for global protection within the six-year UPOV deadline. By 2012 ... allowing growers in countries such as China and South Korea to propagate it legally without paying royalties ... allowed for more affordable prices"
+     },
+     {
+      "claim": "일본 농연기구 육성 · 2006년 등록 · 무핵 재배 시 껍질째 먹는다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/샤인머스캣",
+      "note": "샤인머스캣은 일본의 농업·식품산업기술종합연구기구(NARO)가 육성한 포도 품종이다 ... 2006년 3월 9일 일본의 품종등록번호 제13891호로 등록되었다 ... 무핵 재배를 할 경우 껍질째 먹을 수 있다."
+     },
+     {
+      "claim": "한국 재배 면적 2016 약 200ha → 2022 약 5,700ha · 영천·김천·상주",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/샤인머스캣",
+      "note": "2016년 전국 약 200ha 수준이던 재배면적 ... 2022년에는 샤인머스캣 재배면적이 약 5,700ha / (en) In South Korea, Yeongcheon, Gimcheon, Sangju, Gyeongsan, and Gyeongju in Gyeongbuk are the regions which produce Shine Muscats"
+     },
+     {
+      "claim": "머스캣 오브 알렉산드리아 × 스튜벤 계통 · 유럽 포도는 비에 터짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shine_Muscat",
+      "note": "European grapes, including this species, are prone to cracking and disease in areas with heavy rainfall ... Steuben ... and Muscat of Alexandria were crossed, and Grape Akitsu 21 was born."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/샤인머스캣",
+     "https://en.wikipedia.org/wiki/Shine_Muscat"
+    ],
+    "hintNote": null,
+    "easiestCue": "껍질째 먹는 청포도 품종",
+    "worthWhyGen": "흔히 먹는 과일이 왜 한국에서 싸졌나 — 일상 상식의 까닭(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '청포도' 예",
+     "unique": "일본 육성 · 껍질째 먹는 청포도 → 샤인머스캣",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

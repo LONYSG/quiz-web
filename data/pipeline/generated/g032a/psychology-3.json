@@ -1,0 +1,170 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "psychology/3",
+  "midKey": "psychology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "psychology/3#g032a-g032a-j20-7",
+   "seed": {
+    "subject": "1만 시간의 법칙",
+    "aspect": null,
+    "ref": "g032a-j20-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어떤 분야에서 세계적인 전문가가 되려면 일정한 양의 연습이 쌓여야 한다는 주장입니다. 심리학자 앤더스 에릭슨의 연구를 바탕으로, 맬컴 글래드웰이 2008년 책 『아웃라이어』에서 널리 알렸습니다. 이 주장은 무엇일까요?",
+    "answer": "1만 시간의 법칙",
+    "acceptedAnswers": [
+     "만 시간의 법칙",
+     "10000시간의 법칙",
+     "1만 시간 법칙"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "글래드웰은 독일 함부르크 클럽에서 1,200번 넘게 공연한 비틀스의 사례를 들었지만, 에릭슨은 연습의 양만 강조했다며 비판했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "세계적인 전문가가 되려면 일정한 양의 연습이 쌓여야 한다는 주장",
+     "difWhy": "2 — 널리 알려진 말 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상에서 쓰는 유명한 말",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "비틀스와 빌 게이츠를 예로 들며, 타고난 재능보다 오랜 연습의 누적이 대가를 키운다고 본 대중 심리학 주장이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "전문가가 되려면 약 1만 시간 연습이 필요하다는 대중 심리 주장",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "1만 시간의 법칙 자기계발서·방송에서 유명",
+     "piece": "f02",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 곧 '주장' 의 내용이고 끝 ○○ 도 주장, 인물은 둘째 문장 출처 정보일 뿐"
+    },
+    "blindQuestion": {
+     "guess": "1만 시간의 법칙",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "1만 시간의 법칙",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "1만 시간의 법칙",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1896",
+      "answer": "재현 위기",
+      "verdict": "diff",
+      "why": "1만 시간 vs 재현 위기 — 다른 지식"
+     },
+     {
+      "old": "3848",
+      "answer": "밀그램 실험",
+      "verdict": "diff",
+      "why": "1만 시간 vs 밀그램 실험 — 다른 지식"
+     },
+     {
+      "old": "1892",
+      "answer": "피아제",
+      "verdict": "diff",
+      "why": "1만 시간 vs 피아제 — 다른 지식"
+     },
+     {
+      "old": "6059",
+      "answer": "스키너",
+      "verdict": "diff",
+      "why": "1만 시간 vs 스키너 — 다른 지식"
+     },
+     {
+      "old": "1891",
+      "answer": "욕구 단계 이론",
+      "verdict": "diff",
+      "why": "1만 시간 vs 욕구 단계 이론 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/맬컴_글래드웰",
+     "https://en.wikipedia.org/wiki/Outliers_(book)"
+    ],
+    "facts": [
+     {
+      "claim": "에릭슨 1993 논문 → 글래드웰 2008 아웃라이어",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/맬컴_글래드웰",
+      "note": "2008년에 발표한 《아웃라이어》라는 저서를 통하여 '1만시간의 법칙'(The 10,000 Hours Rule)을 대중에게 알림 ... 본래 '1만시간의 법칙'은 1993년 스웨덴 출신의 심리학자 앤더스 에릭슨(Anders Ericsson)이 발표한 논문에서 처음 등장한 개념"
+     },
+     {
+      "claim": "세계적 전문성의 열쇠 = 약 1만 시간 연습",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Outliers_(book)",
+      "note": "Gladwell repeatedly mentions the \"10,000-Hour Rule\", claiming that the key to achieving world-class expertise in any skill, is, to a large extent, a matter of practicing the correct way, for a total of around 10,000 hours"
+     },
+     {
+      "claim": "주 20시간 × 10년",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Outliers_(book)",
+      "note": "reaching the 10,000-Hour Rule ... is simply a matter of practicing a specific task that can be accomplished with 20 hours of work a week for 10 years."
+     },
+     {
+      "claim": "비틀스 함부르크 1,200회 · 에릭슨의 비판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Outliers_(book)",
+      "note": "The Beatles performed live in Hamburg, Germany over 1,200 times from 1960 to 1964 ... / (ko 글래드웰) 에릭슨 역시, 글래드웰이 지나치게 연습의 양적인 면을 강조한 것에 대해 비판을 가하였다."
+     },
+     {
+      "claim": "비틀스·빌 게이츠 예",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Outliers_(book)",
+      "note": "Gates met the 10,000-Hour Rule when he gained access to a high school computer in 1968 at the age of 13, and spent 10,000 hours programming on it."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Outliers_(book)"
+    ],
+    "hintNote": null,
+    "easiestCue": "전문가가 되려면 연습량이 쌓여야 한다 · 아웃라이어",
+    "worthWhyGen": "3 — 일상에서 자주 인용되는 말과 그 출처(연구)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '주장' — 예",
+     "unique": "아웃라이어 · 에릭슨 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  }
+ ]
+}

@@ -1,0 +1,298 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-tv/4",
+  "midKey": "kr-tv",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/4#g032a-g032a-j11-7",
+   "seed": {
+    "subject": "교통방송",
+    "aspect": null,
+    "ref": "g032a-j11-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "자동차 라디오로 많이 듣는 방송 갈래입니다. 어느 도로가 막히고 어디서 사고가 났는지를 그때그때 알려 줍니다. 1990년 서울시가 세운 방송국 TBS도 처음엔 이 이름으로 불렸습니다. 운전자를 위해 길 소식을 전하는 이 라디오 방송은?",
+    "answer": "교통방송",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "서울의 TBS는 1990년 라디오 방송만으로 출발해, 2005년에는 케이블 TV 채널도 열었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "운전자를 위해 길 소식을 전하는 이 라디오 방송",
+     "difWhy": "1 — 단서가 곧 교통방송",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "택시·화물차 기사들이 늘 켜 두는 라디오로, 지역마다 FM 주파수로 길 소식을 내보낸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도로 정체·사고 소식을 전하는 라디오 방송",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "운전 중 라디오로 접함",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '방송 갈래' 가 끝 '라디오 방송' 과 일치 · TBS 일화는 뒤에 한 줄"
+    },
+    "blindQuestion": {
+     "guess": "교통방송",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "교통방송",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "교통방송",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "589",
+      "answer": "경성방송국",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "6697",
+      "answer": "여성시대",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "593",
+      "answer": "기독교방송",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "5982",
+      "answer": "이종환",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "591",
+      "answer": "진폭 변조",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/교통방송",
+     "https://ko.wikipedia.org/wiki/서울특별시_미디어재단_TBS",
+     "https://ko.wikipedia.org/wiki/한국교통방송"
+    ],
+    "facts": [
+     {
+      "claim": "TBS 1990년 3월 20일부터 · 이전 이름 교통방송",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/교통방송",
+      "note": "TBS: 1990년 3월 20일부터 운영 중인 방송국. 이전 이름 교통방송"
+     },
+     {
+      "claim": "서울 시민 대상 교통 정보 · 1990 설립 · 서울시 산하",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서울특별시_미디어재단_TBS",
+      "note": "서울 시민을 대상으로 교통 정보를 포함해 다양한 정보를 전달하는 지역 민영 방송국이다. 1990년 3월 20일에 설립 ... 처음에는 라디오 방송만 송출하다가 ... 2005년 3월 3일에 케이블 채널인 TBS TV가 개국"
+     },
+     {
+      "claim": "도로교통공단 TBN · 교통정보 전문 FM · 1997 광주 · 부산",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/한국교통방송",
+      "note": "한국교통방송(Traffic Broadcasting Network)은 도로교통공단에서 운영했던 교통정보 전문 FM 방송이다. ... 1997년 12월 20일에는 광주교통방송부터 최초 개국 ... 1997년 12월 23일에는 부산교통방송"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/한국교통방송"
+    ],
+    "hintNote": "FM 교통정보 전문 방송(문서) · 택시·화물차 청취는 knowledge",
+    "easiestCue": "도로 정체·사고 소식을 알려 주는 라디오",
+    "worthWhyGen": "운전하는 누구나 쓰는 생활 매체 — 생활 상식",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '방송 갈래' 예",
+     "unique": "길 소식 라디오 = 교통방송 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 택시"
+    ],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "kr-tv/4#g032a-g032a-j19-8",
+   "seed": {
+    "subject": "팟캐스트",
+    "aspect": null,
+    "ref": "g032a-j19-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2004년 무렵 생겨난 인터넷 오디오 방송의 이름입니다. 애플의 MP3 플레이어 이름 일부와 '방송'을 뜻하는 영어 낱말 일부를 합쳐 지었습니다. 이 이름은?",
+    "answer": "팟캐스트",
+    "acceptedAnswers": [
+     "Podcast",
+     "팟캐스팅"
+    ],
+    "originalTitleVariants": [
+     "Podcast"
+    ],
+    "explanation": "애플은 2005년 아이튠즈에 이 기능을 넣었습니다. 이름과 달리 아이팟이 없어도 들을 수 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "애플의 MP3 플레이어 이름 일부와 '방송'을 뜻하는 영어 낱말 일부를 합쳐",
+     "difWhy": "2 — 일상어 · iPod+broadcast 단서에서 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "라디오처럼 시간 맞춰 켤 필요 없이, 구독한 프로그램의 새 회차를 앱으로 받아 아무 때나 듣는 방송이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "인터넷으로 내려받아 듣는 오디오 방송 — iPod + broadcast",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "일상 미디어 용어",
+     "piece": "f03",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '인터넷 오디오 방송 이름' · 끝 ○○ = 이름"
+    },
+    "blindQuestion": {
+     "guess": "팟캐스트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "팟캐스트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "팟캐스트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6699",
+      "answer": "지금은 라디오 시대",
+      "verdict": "diff",
+      "why": "팟캐스트 vs 지금은 라디오 시대 — 다른 지식"
+     },
+     {
+      "old": "5986",
+      "answer": "2시의 데이트",
+      "verdict": "diff",
+      "why": "팟캐스트 vs 2시의 데이트 — 다른 지식"
+     },
+     {
+      "old": "590",
+      "answer": "별이 빛나는 밤에",
+      "verdict": "diff",
+      "why": "팟캐스트 vs 별밤 — 다른 지식"
+     },
+     {
+      "old": "6694",
+      "answer": "AFKN",
+      "verdict": "diff",
+      "why": "팟캐스트 vs AFKN — 다른 지식"
+     },
+     {
+      "old": "5051",
+      "answer": "고스트스테이션",
+      "verdict": "diff",
+      "why": "팟캐스트 vs 고스트스테이션 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/팟캐스트",
+     "https://en.wikipedia.org/wiki/Podcast"
+    ],
+    "facts": [
+     {
+      "claim": "아이팟의 pod + broadcast의 cast",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/팟캐스트",
+      "note": "팟캐스트는 아이팟(iPod)의 pod와 방송(broadcast)의 cast가 합쳐진 단어이다."
+     },
+     {
+      "claim": "iPod + broadcast 합성 · 2004년 만들어진 말 · 해머슬리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Podcast",
+      "note": "a portmanteau of \"iPod\" and \"broadcast\" coined in 2004. … The earliest use of \"podcasting\" was traced to The Guardian columnist and BBC journalist Ben Hammersley, who coined it in early February 2004"
+     },
+     {
+      "claim": "2005년 6월 아이튠즈에 팟캐스팅 기능 · 아이팟이 반드시 필요하다는 오해",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/팟캐스트",
+      "note": "2005년 6월, 애플은 자사의 아이튠즈 소프트웨어에 팟캐스팅 기능을 추가하였는데 … 아이팟과 같은 MP3 플레이어가 반드시 있어야 하는 것처럼 오해하게 할 소지가 있다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/팟캐스트"
+    ],
+    "hintNote": null,
+    "easiestCue": "애플 MP3 플레이어 이름 + '방송' 영어 낱말을 합친 인터넷 오디오 방송",
+    "worthWhyGen": "흔히 쓰는 '팟캐스트'라는 말이 아이팟+브로드캐스트에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '인터넷 오디오 방송의 이름' — 예 · iPod/cast 글자는 질문에 없음",
+     "unique": "합성 유래까지 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

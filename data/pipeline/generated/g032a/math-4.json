@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "math/4",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/4#g032a-g032a-j18-8",
+   "seed": {
+    "subject": "퍼센트",
+    "aspect": null,
+    "ref": "g032a-j18-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "비율을 나타내는 수학 단위입니다. 이 단위의 기호는 중세 이탈리아 필사가들이 쓰던 줄임 표기가 조금씩 흘려 쓰이며 지금 꼴이 되었다고 합니다. 전체를 100으로 놓고 그중 얼마인지 나타내는 이 단위는?",
+    "answer": "퍼센트",
+    "acceptedAnswers": [
+     "백분율",
+     "프로"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "라틴어 per centum에서 온 말입니다. 네덜란드어 procent를 줄인 '프로'라는 말도 흔히 씁니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "전체를 100으로 놓고 그중 얼마인지 나타내는 단위",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 기호 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "할인율·금리·지지율을 말할 때 쓰는 단위로, 0.25를 이 단위로 나타내면 25가 된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "전체를 100으로 보고 비율을 나타내는 단위(%, 백분율)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "일상 단위",
+     "piece": "f01",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '비율을 나타내는 수학 단위'가 끝 ○○=단위. 기호 유래 서술 평이."
+    },
+    "blindQuestion": {
+     "guess": "퍼센트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "퍼센트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "퍼센트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 2,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "백분율·퍼센트는 수를 100과의 비로 나타냄 · 기호 % · 이탈리아어 cento에서 기호가 점진적으로",
+       "url": "https://ko.wikipedia.org/wiki/백분율",
+       "note": "백분율(百分率, 문화어: 백분률) 또는 퍼센트(percent)는 수를 100과의 비로 나타내는 방법이다. 비율에 100을 곱한 값이며 기호는 %이다. … “프로센트”(네덜란드어: procent)를 줄여 프로라고도 한"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "844",
+      "answer": "에탄올",
+      "verdict": "diff",
+      "why": "퍼센트 vs 에탄올 — 다른 지식"
+     },
+     {
+      "old": "1602",
+      "answer": "강수확률",
+      "verdict": "diff",
+      "why": "퍼센트 vs 강수확률 — 다른 지식"
+     },
+     {
+      "old": "1520",
+      "answer": "질소",
+      "verdict": "diff",
+      "why": "퍼센트 vs 질소 — 다른 지식"
+     },
+     {
+      "old": "1519",
+      "answer": "산소",
+      "verdict": "diff",
+      "why": "퍼센트 vs 산소 — 다른 지식"
+     },
+     {
+      "old": "294",
+      "answer": "원주율",
+      "verdict": "diff",
+      "why": "퍼센트 vs 원주율 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/백분율",
+     "https://en.wikipedia.org/wiki/Percent_sign"
+    ],
+    "facts": [
+     {
+      "claim": "백분율·퍼센트는 수를 100과의 비로 나타냄 · 기호 % · 이탈리아어 cento에서 기호가 점진적으로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/백분율",
+      "note": "백분율(百分率, 문화어: 백분률) 또는 퍼센트(percent)는 수를 100과의 비로 나타내는 방법이다. 비율에 100을 곱한 값이며 기호는 %이다. … “프로센트”(네덜란드어: procent)를 줄여 프로라고도 한다."
+     },
+     {
+      "claim": "필사가가 pc + 작은 고리로 줄여 쓴 것이 1650년쯤 % 꼴로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Percent_sign",
+      "note": "At some point, a scribe used the abbreviation pc with a tiny loop or circle … The pc with a loop eventually evolved into a horizontal fraction sign by 1650 … and thereafter lost the per."
+     },
+     {
+      "claim": "어원 라틴어 per centum",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/백분율",
+      "note": "\"퍼센트\"라는 용어는 \"백\" 또는 \"백 단위\"를 의미하는 라틴어 per centum에서 파생된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/백분율"
+    ],
+    "hintNote": null,
+    "easiestCue": "전체를 100으로 놓고 나타내는 단위",
+    "worthWhyGen": "매일 쓰는 % 기호가 필사가의 줄임 표기에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '수학 단위' — 예",
+     "unique": "'100으로 놓고'로 퍼밀·비율 일반과 가름 · 같은 대상 표기 백분율·프로는 변형(B1)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-18"
+   }
+  }
+ ]
+}

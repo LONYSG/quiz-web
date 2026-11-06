@@ -1,0 +1,138 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "theatre/3",
+  "midKey": "theatre",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "theatre/3#g032a-g032a-j28-1",
+   "seed": {
+    "subject": "탭댄스",
+    "aspect": null,
+    "ref": "g032a-j28-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "쇠붙이를 박은 신발로 바닥을 두드려, 발소리를 타악기처럼 쓰는 춤입니다. 미국에서 아일랜드 이민자들의 발 구르기 춤과 아프리카계 흑인의 춤이 섞이며 생겨났습니다. 이 춤은 무엇일까요?",
+    "answer": "탭댄스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "20세기에는 재즈 음악과 함께 자랐고, 흑인 무용수 빌 '보쟁글스' 로빈슨이 무대와 영화에서 세계적인 스타가 되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "쇠붙이를 박은 신발로 바닥을 두드려",
+     "difWhy": "1 — 단서가 곧 탭댄스",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 춤 종류 확인 · 취미 영역",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "영화 '해피 피트'에서 노래를 못하는 펭귄 멈블이 노래 대신 발을 빠르게 굴러 리듬을 만드는 바로 그 춤이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "금속 징을 박은 신발로 바닥을 두드리며 추는 미국에서 생긴 춤(tap dance)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "영화·공연에서 흔함",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '신발로 두드리는 춤' · 끝 ○○ = 춤"
+    },
+    "blindQuestion": {
+     "guess": "탭댄스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "탭댄스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탭댄스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6692",
+      "answer": "남자의 자격",
+      "verdict": "diff",
+      "why": "신규 '탭댄스'(예능 프로그램 사실) ≠ 옛 '남자의 자격' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탭댄스",
+     "https://en.wikipedia.org/wiki/Tap_dance"
+    ],
+    "facts": [
+     {
+      "claim": "징 박은 신발로 바닥을 쳐 소리를 타악기처럼 쓰는 춤 · 미국 남부 흑인 춤에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탭댄스",
+      "note": "탭댄스(tap dance)는 미국 남부의 흑인 춤에서 유래된 현대 무용 중 하나로 탭슈즈로 바닥을 치는 소리를 타악기처럼 사용하는 것이 특징이다. 탭댄스의 음색은 밑창의 앞쪽과 뒤쪽에 금속 \"탭\"(징)이 박힌 특수한 신발로 만들어진다."
+     },
+     {
+      "claim": "흑인 춤과 아일랜드 춤 전통이 섞여 생김 · 미국에서 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tap_dance",
+      "note": "Tap dance (or tap) is a form of dance originating from the United States ... Tap is a type of step dance that began with the combination of Black American and Irish dance traditions, such as the juba dance and Irish step dances."
+     },
+     {
+      "claim": "해피 피트 = 탭댄스 펭귄 영화",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Tap_dance",
+      "note": "Savion Glover helped bring tap dance into mainstream media by choreographing Happy Feet, a film about a tap dancing penguin."
+     },
+     {
+      "claim": "재즈와 함께 발전 · 빌 로빈슨 세계적 스타 · 영화 주연",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tap_dance",
+      "note": "In the 20th century, it evolved alongside jazz music. ... Bill \"Bojangles\" Robinson ... soon became a world-famous celebrity. He went on to have a leading role in many films"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tap_dance"
+    ],
+    "hintNote": null,
+    "easiestCue": "쇠붙이 박은 신발로 바닥을 두드리는 춤",
+    "worthWhyGen": "누구나 아는 춤의 정체와 생겨난 내력(알가치 3 ①②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '춤' — 예",
+     "unique": "신발 소리를 타악기처럼 쓰는 춤 — 탭댄스 하나(아이리시 댄스는 미국 혼합 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 펭귄/피트"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

@@ -1,0 +1,427 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "football/6",
+  "midKey": "football",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "football/6#g032a-g032a-j09-2",
+   "seed": {
+    "subject": "붉은 악마",
+    "aspect": null,
+    "ref": "g032a-j09-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대한민국 축구 국가대표팀의 공식 응원단 이름입니다. 1997년 PC 통신 축구 동호회 사람들이 모여 시작했습니다. 1983년 멕시코 세계청소년대회에서 4강에 오른 한국 팀을 외신이 부른 별명을 옮긴 데서 이름이 왔다고 전하는 이 응원단은?",
+    "answer": "붉은 악마",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "상징 깃발에는 치우천왕을 내세우는데, 그 도안은 신라의 귀면와(도깨비 얼굴 기와)를 바탕으로 했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "대한민국 축구 국가대표팀의 공식 응원단",
+     "difWhy": "1 — 붉은 악마 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "2002년 한일 월드컵 때 광화문 거리 응원과 '대~한민국' 구호로 세계에 알려진 국가대표팀 서포터스다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "대한민국 축구 국가대표팀 공식 서포터스 클럽",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "월드컵 응원단으로 유명",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '축구 국가대표팀의 공식 응원단' 이 끝 ○○(응원단)와 일치 · 마지막 문장이 길지만 주어는 한 팀"
+    },
+    "blindQuestion": {
+     "guess": "붉은 악마",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "붉은 악마",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "붉은 악마",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6601",
+      "answer": "맨체스터 유나이티드",
+      "verdict": "unsure",
+      "why": "옛 힌트에 새 정답 붉은 악마가 직접 나옴(별명 지식은 다름)"
+     },
+     {
+      "old": "5465",
+      "answer": "오 필승 코리아",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "g032a:g032a-j17-9",
+      "answer": "파도타기",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/붉은악마",
+     "https://magazine.hankyung.com/money/article/202101229935c"
+    ],
+    "facts": [
+     {
+      "claim": "1997년 PC 통신 축구 동호회에서 시작 · 1997년 8월 정식 명칭",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/붉은악마",
+      "note": "1997년 봄 PC 통신의 축구 관련 동호회에서 … 이후 정식명칭에 대한 공모를 통해서 1997년 8월 ‘붉은악마’를 정식 명칭으로 정했다."
+     },
+     {
+      "claim": "1983년 세계청소년대회 4강 외신 표현에서 유래(원문 미확인 → '전한다')",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/붉은악마",
+      "note": "1983년 멕시코에서 개최된 세계청소년축구대회에서 한국 U-20 대표팀이 4강에 진출하는 대이변을 일으켰는데 이를 보도한 외신 기사에 사용된 표현을 … '붉은 악마'로 번역하여 알려진 것이 유래이다."
+     },
+     {
+      "claim": "외신 'Red Furies' → 번역 과정에서 붉은 악마",
+      "where": "q",
+      "url": "https://magazine.hankyung.com/money/article/202101229935c",
+      "note": "(WebSearch 요약) 외국 언론은 한국팀의 빨간색 유니폼에 착안해 ‘붉은 악령(Red Furies)’으로 불렀다. 이 표현이 번역되는 과정에서 ‘붉은 악마(Red Devils)’가 됐고"
+     },
+     {
+      "claim": "2002년 세계에 알려짐 · 거리응원",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/붉은악마",
+      "note": "2002년 FIFA 월드컵이 개최되었을 때 처음으로 세계에 알려지게 되었다."
+     },
+     {
+      "claim": "치우천왕 상징 · 신라 귀면와 도안",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/붉은악마",
+      "note": "붉은악마에서는 공식적으로 치우천왕을 상징으로 채택하고 있다. … 도안은 신라의 귀면와를 토대로 한 것이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/붉은악마",
+     "https://ko.wikipedia.org/wiki/대한민국의_축구_응원_문화"
+    ],
+    "hintNote": null,
+    "easiestCue": "대한민국 축구 국가대표팀 공식 응원단",
+    "worthWhyGen": "누구나 아는 응원단 이름이 어디서 왔는지(1983 4강 외신 별명) — 유래 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '공식 응원단' — 예",
+     "unique": "국가대표팀 공식 응원단은 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 국가대표/광화문"
+    ],
+    "job": "job-09"
+   }
+  },
+  {
+   "seedId": "football/6#g032a-g032a-j17-9",
+   "seed": {
+    "subject": "파도타기",
+    "aspect": null,
+    "ref": "g032a-j17-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경기장 관중이 구역마다 차례로 일어섰다 앉으며, 그 움직임이 관중석을 따라 빙 돌게 만드는 응원입니다. 1986년 멕시코 월드컵 중계로 세계에 퍼져 영어권에서는 개최국 이름을 붙여 부르기도 합니다. 우리말로 이 응원은?",
+    "answer": "파도타기",
+    "acceptedAnswers": [
+     "파도타기 응원"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2002년 헝가리 연구진의 분석으로는 보통 시계 방향으로, 1초에 좌석 22개쯤을 지나는 빠르기로 퍼진다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "차례로 일어섰다 앉으며 관중석을 따라 빙 돌게 만드는 응원",
+     "difWhy": "1 — 동작 설명이 곧 파도",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 응원 문화 · 유래 세부",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "1981년 미국 프로야구장에서 치어리더 '크레이지 조지'가 이끈 장면이 처음 영상으로 남은 응원",
+    "generalHintVersion": "hint-v7",
+    "identity": "파도타기 응원 — 관중이 차례로 일어서며 만드는 물결 응원(Mexican wave)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "경기장 응원 흔함",
+     "piece": "f05",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '관중이 일어섰다 앉는 응원'이 끝 ○○=응원과 일치."
+    },
+    "blindQuestion": {
+     "guess": "파도타기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "파도타기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "파도타기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j09-2",
+      "answer": "붉은 악마",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "415",
+      "answer": "부부젤라",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5465",
+      "answer": "오 필승 코리아",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "g032a:g032a-j25-5",
+      "answer": "훌리건",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/파도타기_응원",
+     "https://en.wikipedia.org/wiki/Wave_(audience)"
+    ],
+    "facts": [
+     {
+      "claim": "1986 멕시코 월드컵 → Mexican wave",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/파도타기_응원",
+      "note": "파도타기 응원이 축구 경기에 널리 적용되기 시작한 것은 멕시코에서 열린 1986년 FIFA 월드컵이었다. 영어로 파도타기 응원을 'Mexican wave'라고 부르기도 하는 것은 여기에서 유래했다."
+     },
+     {
+      "claim": "1986 World Cup → name Mexican wave",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wave_(audience)",
+      "note": "Televised instances at many matches of the 1986 FIFA World Cup in Mexico brought it to a global audience and led to the name \"Mexican wave\" in English-speaking countries outside North America."
+     },
+     {
+      "claim": "1981-10-15 Oakland MLB · Krazy George · earliest video",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Wave_(audience)",
+      "note": "it was a Wave that Krazy George led on October 15, 1981, at a Major League Baseball game in Oakland, California, that became the earliest available intentional video recording of a Wave."
+     },
+     {
+      "claim": "시계 방향 · 1초 22석",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/파도타기_응원",
+      "note": "2002년에 헝가리 Eötvös 대학교의 Tamás Vicsek과 연구진들은 ... 파도타기가 일단 시작되면 보통 시계방향으로 약 12m/s의 속도(1초에 22개의 좌석을 지나는 속도)로 진행되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wave_(audience)",
+     "https://ko.wikipedia.org/wiki/파도타기_응원"
+    ],
+    "hintNote": null,
+    "easiestCue": "관중이 차례로 일어섰다 앉으며 관중석을 도는 응원",
+    "worthWhyGen": "누구나 해 본 응원의 이름과 '멕시칸 웨이브'라는 영어 이름의 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '응원' 예",
+     "unique": "우리말 요구 → 파도타기만(B2)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "football/6#g032a-g032a-j25-5",
+   "seed": {
+    "subject": "훌리건",
+    "aspect": null,
+    "ref": "g032a-j25-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "축구장 안팎에서 난동과 폭력을 일삼는 극성 관중을 가리키는 말입니다. 19세기 말 런던의 시끄러운 아일랜드계 불량배 집안의 성에서 왔다는 설이 유력합니다. 영국 축구에서 특히 악명이 높았던 이런 관중을 무엇이라 할까요?",
+    "answer": "훌리건",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 낱말이 처음 인쇄물에 나온 것은 1894년 런던 경찰 법정 기록으로, 램버스 지역 청소년 패거리의 이름이었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "축구장 난동 극성 관중",
+     "difWhy": "2 — 외래어 일상어 · 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1985년 헤이젤 경기장 참사를 일으켜 잉글랜드 클럽들이 1990년까지 유럽 대회에 나가지 못하게 만든 난동 관중을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "축구장에서 난동을 부리는 폭력 관중(hooligan)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "축구 뉴스에서 흔한 말",
+     "piece": "f06",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '극성 관중을 가리키는 말' 이 있어 둘째 문장 어원은 부연"
+    },
+    "blindQuestion": {
+     "guess": "훌리건",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "훌리건",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "훌리건",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j17-9",
+      "answer": "파도타기",
+      "verdict": "diff",
+      "why": "새=훌리건; 파도타기·부부젤라는 다른 응원 문화"
+     },
+     {
+      "old": "415",
+      "answer": "부부젤라",
+      "verdict": "diff",
+      "why": "새=훌리건; 파도타기·부부젤라는 다른 응원 문화"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/훌리건",
+     "https://en.wikipedia.org/wiki/Hooligan",
+     "https://en.wikipedia.org/wiki/Football_hooliganism"
+    ],
+    "facts": [
+     {
+      "claim": "스포츠에서 폭력을 휘두르는 관중 · 축구장 난동",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/훌리건",
+      "note": "훌리건(영어: hooligan)은 스포츠 등에서 폭력을 휘두르는 관중, 팬 등을 말한다. 축구 경기가 벌어지고 있는 축구장을 찾아가 난동을 부리는 사람으로"
+     },
+     {
+      "claim": "19세기 말 런던 아일랜드 출신 부랑아 패트릭 훌리건 설이 유력",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/훌리건",
+      "note": "19세기 말 런던의 밤거리를 휘어잡았던 아일랜드 출신의 부랑아 '패트릭 훌리건' (패트릭 훌리한)에서 유래됐다는 설이 가장 유력하다."
+     },
+     {
+      "claim": "시끄러운 아일랜드 가족의 성에서 유래 가능",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hooligan",
+      "note": "The Compact Oxford English Dictionary states that the word may have originated from the surname of a rowdy Irish family in a music hall song of the 1890s."
+     },
+     {
+      "claim": "헤이젤 참사 1985 · 잉글랜드 클럽 1990년까지 유럽 대회 금지",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Football_hooliganism",
+      "note": "At the Heysel Stadium disaster at Brussels, Belgium, in 1985 … As a result of Heysel and prior incidents, English clubs were banned from all European competitions until 1990"
+     },
+     {
+      "claim": "1894 런던 경찰 법정 기록 · 램버스 패거리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hooligan",
+      "note": "The word first appeared in print in London police court reports in 1894 referring to the name of a gang of youths in the Lambeth area of London—the Hooligan Boys"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Football_hooliganism"
+    ],
+    "hintNote": null,
+    "easiestCue": "축구장 난동 관중",
+    "worthWhyGen": "뉴스에 자주 나오는 말과 그 유래(알가치 3 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '관중을 가리키는 말' — 예",
+     "unique": "난동 관중 — 훌리건 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

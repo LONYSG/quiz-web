@@ -1,0 +1,149 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "computer/5",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/5#g032a-g032a-j07-12",
+   "seed": {
+    "subject": "스팸",
+    "aspect": null,
+    "ref": "g032a-j07-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "인터넷 용어 가운데 영국 코미디에서 온 말이 있습니다. 1970년 '몬티 파이선'의 한 촌극에서 식당 메뉴마다 같은 통조림 고기가 들어 있고, 손님들이 그 고기 상표를 끝없이 노래해 대화를 덮어 버립니다. 여기서 이름을 딴, 원치 않게 쏟아지는 광고 메시지는?",
+    "answer": "스팸",
+    "acceptedAnswers": [
+     "스팸 메일"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1980년대 채팅방에서 상표 이름을 수없이 쳐 남의 글을 화면 밖으로 밀어내던 장난이 시작이었다. 1998년 옥스퍼드 사전에 새 뜻이 실렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "원치 않게 쏟아지는 광고 메시지",
+     "difWhy": "2 — 일상 말 · 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "인터넷 게시판에 같은 글을 마구 도배하던 일을 가리키다가 이메일함 필터가 걸러 내는 불청객 메일로 뜻이 넓어진 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원치 않는 대량 광고 메시지(spam)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "스팸 메일·문자 일상 경험",
+     "piece": "f09",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '인터넷 용어' 가 끝 '광고 메시지' 와 이어짐 · 둘째 문장 길지만 주어 하나라 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "스팸",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스팸",
+     "hit": true
+    },
+    "factCheck": null,
+    "dupCheck": [
+     {
+      "old": "561",
+      "answer": "118",
+      "verdict": "diff",
+      "why": "스팸 vs 118"
+     },
+     {
+      "old": "3516",
+      "answer": "몬티 파이선",
+      "verdict": "same",
+      "why": "몬티 파이선 스팸 촌극에서 스팸 용어가 나왔다는 같은 지식을 정답만 뒤집어 물음"
+     },
+     {
+      "old": "4845",
+      "answer": "스턱스넷",
+      "verdict": "diff",
+      "why": "스팸 vs 스턱스넷"
+     },
+     {
+      "old": "885",
+      "answer": "방화벽",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Spamming",
+     "https://ko.wikipedia.org/wiki/스팸"
+    ],
+    "facts": [
+     {
+      "claim": "1970 몬티 파이선 'Spam' 촌극 · 식당 메뉴 · 바이킹 손님 노래",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Spamming",
+      "note": "The term spam is derived from the 1970 \"Spam\" sketch of the BBC sketch comedy television series Monty Python's Flying Circus. The sketch, set in a cafe, has a waitress reading out a menu where every item but one includes the Spam canned luncheon meat. … a chorus of Viking patrons drown out all conversations with a song"
+     },
+     {
+      "claim": "몬티 파이튼 스케치에서 '원하지 않는데 잔뜩 들어 있는 것'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스팸",
+      "note": "가장 주목할 만한 것으로 몬티 파이튼 스케치(Spam (Monty Python))에서 스팸을 '원하지 않는데 잔뜩 들어가 있는 것'으로 묘사한 것에 있으며, 이 스케치를 바탕으로"
+     },
+     {
+      "claim": "유즈넷 반복 게시",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Spamming",
+      "note": "It later came to be used on Usenet to mean excessive multiple posting—the repeated posting of the same message."
+     },
+     {
+      "claim": "1980년대 BBS·MUD 반복 입력 · 1998 옥스퍼드",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Spamming",
+      "note": "In the 1980s the term was adopted to describe certain abusive users who frequented BBSs and MUDs, who would repeat \"Spam\" a huge number of times to scroll other users' text off the screen. … In 1998, the New Oxford Dictionary of English … added a second definition"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Spamming"
+    ],
+    "hintNote": null,
+    "easiestCue": "원치 않게 쏟아지는 광고 메시지",
+    "worthWhyGen": "매일 쓰는 인터넷 말의 유래 — 알가치 3 ②",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '인터넷 용어' 예",
+     "unique": "하나",
+     "hint12": "① 예 ② 예 · 끝 문장만으로 풀려 등급 2~3 쪽일 수 있음"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07",
+    "discarded": "중복 같은 지식 3516 몬티 파이선 — 몬티 파이선 스팸 촌극에서 스팸 용어가 나왔다는 같은 지식을 정답만 뒤집어 물음"
+   }
+  }
+ ]
+}

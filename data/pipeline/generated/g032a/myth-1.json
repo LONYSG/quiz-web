@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "myth/1",
+  "midKey": "myth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "myth/1#g032a-g032a-j13-4",
+   "seed": {
+    "subject": "에로스",
+    "aspect": null,
+    "ref": "g032a-j13-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "그리스 신화에서 사랑을 일으키는 신입니다. 이 신의 금 화살을 맞으면 처음 본 상대를 사랑하게 되고, 납 화살을 맞으면 싫어하게 된다고 합니다. 로마 신화의 큐피드에 해당하는 이 신은?",
+    "answer": "에로스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그리스어로 '욕망'을 뜻하는 보통명사가 신이 된 것으로, 영어 'erotic(관능적인)'도 이 말에서 나왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "로마 신화의 큐피드에 해당하는 사랑의 신",
+     "difWhy": "2 — 큐피드에서 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 신화 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "미의 여신 아프로디테의 아들로, 인간 공주 프시케와의 사랑 이야기로 유명한 날개 달린 신이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "그리스 신화의 사랑의 신(로마의 큐피드)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "신화 교양, 에로스 단어 쓰임",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '그리스 신화에서 사랑을 일으키는 신' 이 끝 ○○(신)와 일치 · 이 신 지시어는 첫 문장 대상으로 분명"
+    },
+    "blindQuestion": {
+     "guess": "에로스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "에로스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "에로스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "7",
+      "answer": "헤라",
+      "verdict": "diff",
+      "why": "에로스 vs 헤라"
+     },
+     {
+      "old": "5524",
+      "answer": "헤라클레스",
+      "verdict": "diff",
+      "why": "에로스 vs 헤라클레스 일화"
+     },
+     {
+      "old": "6363",
+      "answer": "판도라의 상자",
+      "verdict": "diff",
+      "why": "에로스 vs 판도라의 상자"
+     },
+     {
+      "old": "113",
+      "answer": "포세이돈",
+      "verdict": "diff",
+      "why": "에로스 vs 포세이돈"
+     },
+     {
+      "old": "3756",
+      "answer": "아킬레우스",
+      "verdict": "diff",
+      "why": "에로스 vs 아킬레우스"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/에로스",
+     "https://en.wikipedia.org/wiki/Eros"
+    ],
+    "facts": [
+     {
+      "claim": "그리스 신화 연정의 신 · 금화살/납화살 · 로마 큐피드",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/에로스",
+      "note": "그리스 신화에 등장하는 연정과 성애의 남신이다. 로마 신화에서 아모르 또는 큐피드와 같다. … 금화살을 맞으면 맞은 직후로 처음 본 이를 사랑하게 된다. … 납화살은 그 반대로 맞은 직후로 처음 본 이를 싫어하게 되는 화살이다."
+     },
+     {
+      "claim": "로마인은 큐피드라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eros",
+      "note": "The Romans referred to him as Cupid or Amor."
+     },
+     {
+      "claim": "아프로디테의 아들 · 프시케와의 사랑",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/에로스",
+      "note": "아레스와 아프로디테 사이 태어난 아들 … 프시케를 사랑하게 됨과 동시에 청년 남신으로 성장하게 된다"
+     },
+     {
+      "claim": "욕망 뜻 보통명사의 신격화 · erotic 어원",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eros",
+      "note": "The Greek ἔρως, éros meaning 'desire' (whence eroticism) … / ko: 고대 그리스어로 주로 이성에 대한 강렬한 성적 욕구를 의미하는 보통명사가 신격화된 것이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/에로스"
+    ],
+    "hintNote": null,
+    "easiestCue": "로마 신화의 큐피드에 해당하는 그리스 신",
+    "worthWhyGen": "신화 대표 신 확인 — 규칙·신 이름 확인(헤라 2) 수준(2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '신' 예",
+     "unique": "그리스 신화 + 큐피드 대응으로 하나 · 큐피드는 질문에 있어 변형 아님(B9)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  }
+ ]
+}

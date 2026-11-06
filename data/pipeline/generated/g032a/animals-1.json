@@ -1,0 +1,310 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "animals/1",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/1#g032a-g032a-j07-7",
+   "seed": {
+    "subject": "북극곰",
+    "aspect": null,
+    "ref": "g032a-j07-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "털 색이 겉보기와 다른 동물입니다. 하얗게 보이는 털은 사실 속이 빈 투명한 털이고, 그 아래 피부는 검은색입니다. 육지에 사는 육식동물 가운데 몸집이 가장 큰 이 동물은?",
+    "answer": "북극곰",
+    "acceptedAnswers": [
+     "흰곰"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "속 빈 털은 열을 가두고 물에 뜨는 데도 도움이 되며, 두꺼운 지방층이 추위를 막는다. 다 자란 수컷은 300~800kg에 이른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "하얗게 보이는 털 … 육지에 사는 육식동물 가운데 몸집이 가장 큰",
+     "difWhy": "1 — 누구나 아는 동물 · 흰 털 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 동물 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "얼음 바다 위에서 바다표범을 사냥하는 동물로, 기후 위기를 알리는 광고에 녹는 빙하 위 모습으로 자주 나온다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "북극에 사는 흰 털의 큰 곰",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "기후변화 뉴스·동물원 상징",
+     "piece": "f02",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '동물' 이 있고 끝 ○○ 도 동물, 털 단서가 문장 둘로 단순하게 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "북극곰",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "북극곰",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "북극곰",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3354",
+      "answer": "고래",
+      "verdict": "diff",
+      "why": "북극곰 vs 고래"
+     },
+     {
+      "old": "g032a:g032a-j28-10",
+      "answer": "카피바라",
+      "verdict": "diff",
+      "why": "북극곰 vs 카피바라"
+     },
+     {
+      "old": "3353",
+      "answer": "낙타",
+      "verdict": "diff",
+      "why": "북극곰 vs 낙타"
+     },
+     {
+      "old": "4781",
+      "answer": "해달",
+      "verdict": "diff",
+      "why": "북극곰 vs 해달"
+     },
+     {
+      "old": "720",
+      "answer": "코끼리",
+      "verdict": "diff",
+      "why": "북극곰 vs 코끼리"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/북극곰",
+     "https://en.wikipedia.org/wiki/Polar_bear"
+    ],
+    "facts": [
+     {
+      "claim": "털은 투명 · 피부 검은색",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/북극곰",
+      "note": "몸 전체가 하얗게 보이는 털로 덮여 있으나 코와 피부는 검은색이다. 빛의 반사 때문에 하얗게 보이는 털은 실제로는 투명하다."
+     },
+     {
+      "claim": "가장 큰 육상 육식동물 · 속 빈 털 · 검은 피부",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Polar_bear",
+      "note": "The polar bear is the largest extant species of bear and land carnivore by body mass … white or yellowish-furred with black skin … the guard hairs are hollow, which allows the animals to trap heat and float in the water."
+     },
+     {
+      "claim": "바다표범 사냥",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Polar_bear",
+      "note": "They are mostly carnivorous and specialized for preying on seals, particularly ringed seals."
+     },
+     {
+      "claim": "수컷 300~800kg · 지방층",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Polar_bear",
+      "note": "adult males weighing 300–800 kg … with black skin and a thick layer of fat"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Polar_bear"
+    ],
+    "hintNote": null,
+    "easiestCue": "하얗게 보이는 털 + 가장 큰 육식동물",
+    "worthWhyGen": "누구나 아는 동물의 의외의 사실(흰 털이 아니다) — 알가치 3 ①",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '동물' 예",
+     "unique": "흰 털 + 최대 육상 육식동물 — 하나",
+     "hint12": "① 예 ② 예 · 등급은 3 쪽일 수 있음(대상이 쉬움)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "animals/1#g032a-g032a-j28-10",
+   "seed": {
+    "subject": "카피바라",
+    "aspect": null,
+    "ref": "g032a-j28-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남아메리카 물가에 사는 동물로, 지금 살아 있는 설치류 가운데 가장 큽니다. 이름은 원주민 투피어로 '가는 잎을 먹는 자', 곧 '풀을 먹는 자'라는 뜻입니다. 물에 코만 내밀고 잠들기도 하는 이 동물은?",
+    "answer": "카피바라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "소처럼 먹은 것을 되새김질하고, 풀을 잘 소화하려고 자기 배설물을 다시 먹기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "지금 살아 있는 설치류 가운데 가장 큰 남아메리카 물가 동물",
+     "difWhy": "2 — 인기 동물 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 동물 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "기니피그의 가까운 친척으로, 다른 동물이 등에 올라타도 태연한 느긋한 모습 덕에 인형과 영상으로 큰 인기를 끈 동물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "남아메리카의 세계 최대 설치류(capybara)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "방송·SNS에서 인기 동물",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '남아메리카 물가에 사는 동물' = 끝 ○○ '동물'. 어원 문장이 약간 길지만 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "카피바라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카피바라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카피바라",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3354",
+      "answer": "고래",
+      "verdict": "diff",
+      "why": "신규 '카피바라'(다른 동물 사실) ≠ 옛 '고래' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "g032a:g032a-j07-7",
+      "answer": "북극곰",
+      "verdict": "diff",
+      "why": "신규 '카피바라'(다른 동물 사실) ≠ 옛 '북극곰' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3353",
+      "answer": "낙타",
+      "verdict": "diff",
+      "why": "신규 '카피바라'(다른 동물 사실) ≠ 옛 '낙타' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "720",
+      "answer": "코끼리",
+      "verdict": "diff",
+      "why": "신규 '카피바라'(다른 동물 사실) ≠ 옛 '코끼리' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1387",
+      "answer": "기린",
+      "verdict": "diff",
+      "why": "신규 '카피바라'(다른 동물 사실) ≠ 옛 '기린' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/카피바라",
+     "https://en.wikipedia.org/wiki/Capybara"
+    ],
+    "facts": [
+     {
+      "claim": "남아메리카 · 현존 가장 큰 설치류 · 물가",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/카피바라",
+      "note": "카피바라 ... 는 남아메리카에 서식하는 현존하는 가장 큰 설치류이다. ... 물이 많은 수역 근처에 산다."
+     },
+     {
+      "claim": "투피어 '가는 잎을 먹는 자' / '풀을 먹는 자'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Capybara",
+      "note": "Its common name is derived from Tupi ka'apiûara ... meaning \"one who eats slender leaves\", or \"grass-eater\"."
+     },
+     {
+      "claim": "코만 내밀고 물속에서 잠",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/카피바라",
+      "note": "카피바라는 코만 내밀고 물속에서 잠을 잘 수 있다."
+     },
+     {
+      "claim": "가까운 친척 기니피그",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/카피바라",
+      "note": "가까운 친척으로는 기니피그와 바위캐비가 있으며"
+     },
+     {
+      "claim": "되새김 · 자기 배설물 먹음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/카피바라",
+      "note": "카피바라는 자신의 배설물을 먹는데 ... 셀룰로스를 소화하는 데 도움이 되는 ... 또한 소처럼 되새김질하여 음식을 다시 씹기도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/카피바라"
+    ],
+    "hintNote": null,
+    "easiestCue": "가장 큰 설치류",
+    "worthWhyGen": "요즘 인기 동물의 정체와 이름 뜻(동물 상식 — 알가치 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '동물' — 예",
+     "unique": "현존 최대 설치류 — 카피바라 하나",
+     "hint12": "① 예 ② 예 · 힌트 '인기' 부분은 knowledge"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

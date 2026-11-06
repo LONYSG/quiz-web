@@ -1,0 +1,304 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-cinema/7",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/7#g032a-g032a-j08-11",
+   "seed": {
+    "subject": "닥터 후",
+    "aspect": null,
+    "ref": "g032a-j08-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1963년 영국 BBC에서 시작한 SF 드라마입니다. 외계인 주인공이 타는 시간 여행선은 겉모습이 옛 런던의 경찰 전화박스입니다. 내리는 곳에 맞춰 모습을 바꾸는 장치가 고장 나 그 모양에 굳었다는 설정입니다. 기네스북에 가장 오래 방영된 SF 드라마로 오른 이 작품은?",
+    "answer": "닥터 후",
+    "acceptedAnswers": [
+     "Doctor Who"
+    ],
+    "originalTitleVariants": [
+     "Doctor Who"
+    ],
+    "explanation": "시간 여행선 이름 타디스는 '시간과 공간의 상대적 차원'을 뜻하는 영어 낱말들의 머리글자다. 겉보다 안이 훨씬 넓다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1963년 BBC SF 드라마 · 경찰 전화박스 시간 여행선",
+     "difWhy": "3 — 해외 드라마 · 세대 밖 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 해외 드라마 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "외계 종족 '타임로드'가 시공간을 누비는 영국 드라마로, '말살하라!'를 외치는 악당 달렉이 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "BBC의 장수 SF 드라마(시간 여행자 '닥터')",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "영국 드라마 팬 외엔 이름만 들어봄",
+     "piece": "f03",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 'BBC SF 드라마' 에 종류 · 끝 ○○ = 작품, 문장 짧고 주어 분명"
+    },
+    "blindQuestion": {
+     "guess": "닥터 후",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "닥터 후",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "닥터 후",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j22-11",
+      "answer": "CSI",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "4219",
+      "answer": "한자와 나오키",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "4221",
+      "answer": "셜록",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "4220",
+      "answer": "워킹 데드",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "4223",
+      "answer": "하이젠베르크",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/닥터_후",
+     "https://en.wikipedia.org/wiki/TARDIS"
+    ],
+    "facts": [
+     {
+      "claim": "1963년 BBC · 경찰 전화박스 모양 타임머신 · 기네스북 최장수 SF",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/닥터_후",
+      "note": "1963년 11월 23일에 첫 방송된 닥터 후는 기네스 북에 등재된 세계에서 가장 오랫동안 방영되고 있는 SF 드라마 시리즈 ... 옛 영국의 경찰 전화박스를 본딴 타임 머신, 타디스를 타고 여행"
+     },
+     {
+      "claim": "카멜레온 회로 고장으로 1960년대 런던 경찰 박스 모양",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/TARDIS",
+      "note": "TARDISes are built with a \"chameleon circuit\" ... The Doctor's TARDIS always resembles a 1960s London police box ... owing to a malfunction in the chameleon circuit before the events of the first episode"
+     },
+     {
+      "claim": "타임로드 · 달렉 'Exterminate!'",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/닥터_후",
+      "note": "닥터라 알려진 신비한 외계인 타임로드가 ... 가장 악랄한 악당으로 등장했던 달렉은 ... 달렉의 대사였던 'Exterminate! (말살시켜라!)'는 영국에서 유행어가 되었다."
+     },
+     {
+      "claim": "TARDIS 머리글자 · bigger on the inside",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/TARDIS",
+      "note": "TARDIS (acronym for \"Time And Relative Dimension(s) In Space\") ... Its interior is shown as being much larger than its exterior"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/닥터_후"
+    ],
+    "hintNote": null,
+    "easiestCue": "경찰 전화박스 모양 시간 여행선이 나오는 BBC SF 드라마",
+    "worthWhyGen": "세계 대중문화 아이콘의 설정 까닭 — 취미 영역 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 'SF 드라마' 예",
+     "unique": "1963년 BBC · 전화박스 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "world-cinema/7#g032a-g032a-j22-11",
+   "seed": {
+    "subject": "CSI",
+    "aspect": null,
+    "ref": "g032a-j22-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2000년부터 미국에서 방영된 범죄 수사 드라마입니다. 라스베이거스 감식반이 지문과 DNA 같은 증거로 사건을 풉니다. 배심원이 재판에서 과학 증거를 지나치게 기대하는 현상을 '○○○ 효과'라 부르게 만든 이 드라마는?",
+    "answer": "CSI",
+    "acceptedAnswers": [
+     "CSI 과학수사대"
+    ],
+    "originalTitleVariants": [
+     "CSI 과학수사대"
+    ],
+    "explanation": "그런 효과가 실제로 있는지는 연구마다 엇갈리며, 이 말은 2004년 미국 일간지 기사에서 처음 보도되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "라스베이거스 감식반이 지문과 DNA로 사건을 푸는 2000년 미국 범죄 수사 드라마",
+     "difWhy": "2 — 유명 드라마 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 드라마 취미 영역",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "제리 브룩하이머가 제작했고, '마이애미'·'뉴욕'·'사이버' 편으로도 이어진 미국 드라마 시리즈의 첫 작품이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 CBS 과학수사 드라마(CSI: Crime Scene Investigation)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "인기 미드로 유명",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '범죄 수사 드라마'가 끝 ○○=드라마. 감식반·배심원 문장 각각 주어 하나."
+    },
+    "blindQuestion": {
+     "guess": "CSI",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "CSI",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "CSI",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j08-11",
+      "answer": "닥터 후",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6213",
+      "answer": "와이파이",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4220",
+      "answer": "워킹 데드",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4223",
+      "answer": "하이젠베르크",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4221",
+      "answer": "셜록",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/CSI:_과학수사대",
+     "https://en.wikipedia.org/wiki/CSI_effect"
+    ],
+    "facts": [
+     {
+      "claim": "CBS 2000~2015 · 라스베이거스 무대 과학수사 드라마",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/CSI:_과학수사대",
+      "note": "《CSI: 과학수사대》는 미국 CBS에서 방영되고 있는 과학수사 관련 텔레비전 드라마로 제리 브룩하이머가 제작하고, 2000년 10월 6일부터 2015년 9월 27일까지 방영되었다. 본 시리즈는 라스베이거스를 무대로 하고 있으며 스핀오프 시리즈로는 CSI: 마이애미와 CSI: 뉴욕, CSI: 사이버가 있다."
+     },
+     {
+      "claim": "CSI 효과 = 배심원이 지문·DNA 같은 과학 증거를 기대",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/CSI_effect",
+      "note": "The CSI effect is a supposed shift in the attitudes of jurors due to the exaggerated portrayal of forensic science on television shows such as CSI: Crime Scene Investigation, which premiered in 2000. Jurors may expect large amounts of forensic evidence (such as fingerprinting and DNA analysis)"
+     },
+     {
+      "claim": "2004 USA Today 첫 보도 · 연구 엇갈림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/CSI_effect",
+      "note": "The term was first reported in a 2004 USA Today article ... some studies have suggested that crime shows are unlikely to cause such an effect"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/CSI:_과학수사대"
+    ],
+    "hintNote": null,
+    "easiestCue": "라스베이거스 과학수사 미드",
+    "worthWhyGen": "3 — 일상·뉴스에서 쓰는 'CSI 효과'라는 말의 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '드라마' — 예",
+     "unique": "라스베이거스 원작(마이애미·뉴욕 편 아님) — 빈칸 3칸",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

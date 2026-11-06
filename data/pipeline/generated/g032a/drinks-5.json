@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "drinks/5",
+  "midKey": "drinks",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "drinks/5#g032a-g032a-j30-4",
+   "seed": {
+    "subject": "마키아토",
+    "aspect": null,
+    "ref": "g032a-j30-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이탈리아 카페에서 시작된 커피입니다. 에스프레소 한 잔에 우유를 아주 조금만 더해, 진한 커피에 우유 자국이 남게 합니다. 이탈리아어로 '얼룩진'이라는 뜻의 이 커피는?",
+    "answer": "마키아토",
+    "acceptedAnswers": [
+     "마끼아또",
+     "카페 마키아토",
+     "에스프레소 마키아토"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "포르투갈에서는 '한 방울 떨군 커피'라는 뜻의 카페 핑가두라 부릅니다. 우유가 든 커피 가운데 에스프레소 비율이 가장 높습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "에스프레소에 우유를 아주 조금만 더한 이탈리아어로 '얼룩진' 커피",
+     "difWhy": "2 — 카페 메뉴 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 카페 메뉴 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "카페 메뉴판에서 '캐러멜'을 앞에 붙인 달콤한 메뉴로 가장 흔히 만나는 커피 이름이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "에스프레소에 우유를 조금 얹은 이탈리아 커피",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "카페 메뉴로 친숙",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이탈리아 카페에서 시작된 커피'가 끝 ○○=커피와 일치. 짧음."
+    },
+    "blindQuestion": {
+     "guess": "마키아토",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마키아토",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마키아토",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5326",
+      "answer": "플랫 화이트",
+      "verdict": "diff",
+      "why": "신규 '마키아토'(다른 커피) ≠ 옛 '플랫 화이트' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "4373",
+      "answer": "카푸치노",
+      "verdict": "diff",
+      "why": "신규 '마키아토'(다른 커피) ≠ 옛 '카푸치노' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "303",
+      "answer": "아메리카노",
+      "verdict": "diff",
+      "why": "신규 '마키아토'(다른 커피) ≠ 옛 '아메리카노' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5325",
+      "answer": "모카 포트",
+      "verdict": "diff",
+      "why": "신규 '마키아토'(다른 커피) ≠ 옛 '모카 포트' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3538",
+      "answer": "에스프레소",
+      "verdict": "diff",
+      "why": "신규 '마키아토'(다른 커피) ≠ 옛 '에스프레소' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마키아토",
+     "https://en.wikipedia.org/wiki/Caffè_macchiato"
+    ],
+    "facts": [
+     {
+      "claim": "마키아토 = '얼룩진' 뜻의 이탈리아어",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마키아토",
+      "note": "마키아토(이탈리아어: Macchiato) 또는 마끼아또는 \"표시한\"(\"marked\") 또는 \"얼룩진\"(\"stained\") 또는 \"낙서\"라는 뜻의 이탈리아어"
+     },
+     {
+      "claim": "에스프레소 + 우유 소량 · 'stained coffee'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Caffè_macchiato",
+      "note": "an espresso with a small amount of milk, usually foamed. In Italian, macchiato means 'stained' or 'spotted'"
+     },
+     {
+      "claim": "캐러멜 마키아토",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/마키아토",
+      "note": "캐러멜 마키아토 : 라테 마키아토에 캐러멜을 첨가한 커피 음료."
+     },
+     {
+      "claim": "포르투갈 café pingado · 에스프레소 비율 최고",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Caffè_macchiato",
+      "note": "the Portuguese name for the drink: café pingado, meaning 'coffee with a drop' · has the highest ratio of espresso to milk of any drink made with those ingredients"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/마키아토"
+    ],
+    "hintNote": null,
+    "easiestCue": "'얼룩진'이라는 뜻의 커피",
+    "worthWhyGen": "3 — 늘 보는 카페 메뉴 이름의 유래가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '커피' — 예",
+     "unique": "에스프레소+우유 조금+'얼룩진' → 하나(라테·코르타도 배제)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

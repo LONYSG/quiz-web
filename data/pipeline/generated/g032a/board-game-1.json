@@ -1,0 +1,250 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "board-game/1",
+  "midKey": "board-game",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "board-game/1#g032a-g032a-j19-3",
+   "seed": {
+    "subject": "자충수",
+    "aspect": null,
+    "ref": "g032a-j19-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바둑에서 온 말입니다. 내 돌이 숨 쉴 빈자리를 내가 메워 오히려 불리해지는 수를 뜻합니다. 요즘은 제 발등을 찍는 행동을 두고 '○○○를 두었다'고 흔히 씁니다. 이 말은?",
+    "answer": "자충수",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "상대 돌을 잡으려면 그 둘레 빈자리를 다 막아야 하는데, 이 수는 그 일을 상대 대신 해 주는 셈입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "제 발등을 찍는 행동을 두고 '○○○를 두었다'",
+     "difWhy": "2 — 일상 표현 · 단서가 직접적",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상에서 쓰는 말의 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 62",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "축구로 치면 제 편 골문에 공을 넣는 꼴이라, 이 한 수로 다 이긴 판을 지기도 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "바둑에서 스스로 수를 줄이는 수 — 일상에서 자기에게 불리한 행동",
+    "familiarity": {
+     "judge": 2,
+     "pct": 62,
+     "why": "자충수 뉴스·바둑 비유로 접함",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '바둑에서 온 말' 이 있고 뜻과 비유 쓰임이 짧게 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "자충수",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "자충수",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "자충수",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j19-4",
+      "answer": "복기",
+      "verdict": "diff",
+      "why": "자충수 vs 복기 — 다른 바둑 용어"
+     },
+     {
+      "old": "4291",
+      "answer": "빅",
+      "verdict": "diff",
+      "why": "자충수 vs 빅 — 다른 바둑 용어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/자충",
+     "https://ko.wiktionary.org/wiki/자충수"
+    ],
+    "facts": [
+     {
+      "claim": "자기 돌의 공배를 메워 스스로 활로를 줄이는 것 · 자책골과 같음 · 다 이긴 바둑을 패함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/자충",
+      "note": "자충(自充, reduce self liberties)은 자기 돌의 공배를 메워 '스스로 자기 돌의 활로를 줄이는 것'이다. 참고로, 자충수는 축구에서의 자책골과 같다. … 흑 1은 실전에서 나타난 자충수. 백2로 들어내 흑이 죽는다 이로써 흑은 다 이긴 바둑을 역으로 패하게 되었다."
+     },
+     {
+      "claim": "바둑에서 자기 수를 줄이는 수 · 자기에게 불리한 결과를 가져오는 일",
+      "where": "q",
+      "url": "https://ko.wiktionary.org/wiki/자충수",
+      "note": "바둑에서, 자기의 수를 스스로 줄이는 수. 또는 자기 행동이 자기에게 불리한 결과를 가져오는 일."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/자충"
+    ],
+    "hintNote": null,
+    "easiestCue": "제 발등을 찍는 행동을 두고 '○○○를 두었다'",
+    "worthWhyGen": "일상에서 쓰는 말이 바둑에서 왔다는 유래(19 §9-1 ③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바둑에서 온 말' — 예 · '자' 글자를 질문·힌트에 쓰지 않음",
+     "unique": "빈칸 3칸 + 제 발등 찍기 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  },
+  {
+   "seedId": "board-game/1#g032a-g032a-j19-4",
+   "seed": {
+    "subject": "복기",
+    "aspect": null,
+    "ref": "g032a-j19-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바둑에서 온 말입니다. 대국이 끝난 뒤 두 사람이 처음 둔 순서 그대로 돌을 하나씩 놓아 보며 잘잘못을 따지는 일을 가리킵니다. 지금은 선거나 경기에서 진 뒤 무엇이 문제였는지 되짚을 때도 씁니다. 이 말은?",
+    "answer": "복기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한자로는 '돌아올 복(復)'에 '바둑 기(棋)'를 씁니다. 장기와 체스에서도 같은 일을 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "대국 끝나고 돌을 놓아 보며 잘잘못을 따지는 일",
+     "difWhy": "2 — 일상어 · 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "프로 바둑에서는 대국 뒤 두 사람이 이것으로 의견을 나누는 것이 관례이고, 기록 없이 기억만으로도 해낸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "바둑을 마친 뒤 둔 순서대로 다시 놓아 보며 검토하는 일",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "바둑·일상에서도 쓰이는 말",
+     "piece": "f03",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '바둑에서 온 말' = 끝 ○○ '말'. 뜻 풀이가 한 문장에 하나"
+    },
+    "blindQuestion": {
+     "guess": "복기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "복기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "복기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j19-3",
+      "answer": "자충수",
+      "verdict": "diff",
+      "why": "복기 vs 자충수 — 다른 바둑 용어"
+     },
+     {
+      "old": "811",
+      "answer": "기보",
+      "verdict": "diff",
+      "why": "복기(되짚기) vs 기보(기록) — 다른 용어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/복기_(바둑)",
+     "https://thewiki.kr/w/복기",
+     "https://v.daum.net/v/20260627061703454"
+    ],
+    "facts": [
+     {
+      "claim": "대국 내용을 두 대국자가 수순대로 재연 · 전문 기사는 복기로 의견 교환이 관례",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/복기_(바둑)",
+      "note": "복기는 대국의 내용을 두 대국자가 수순대로 재연(리플레이)하는 것이다. … 전문 기사들의 대국에서는 복기를 통해 상호 의견을 교환하는 것이 관례로 되어 있다."
+     },
+     {
+      "claim": "한 판이 끝난 뒤 검토하려고 둔 순서를 되짚어 다시 둠 · 장기·체스에도 · 프로는 기억만으로",
+      "where": "q",
+      "url": "https://thewiki.kr/w/복기",
+      "note": "(WebSearch 요약) 한 판이 끝난 뒤 그 내용을 검토하려고 두었던 순서를 되짚어 다시 두어 보는 일 · 장기나 체스에도 같은 개념 · 프로 기사 중 상당수는 기보 없이 기억만으로 복기할 수 있다(thewiki 기보 항목)"
+     },
+     {
+      "claim": "한자 復棋",
+      "where": "e",
+      "url": "https://v.daum.net/v/20260627061703454",
+      "note": "(WebSearch 요약) [스포츠용어 산책] 왜 바둑에서는 '복기(復棋)'라고 말할까 — '다시 복(復)', '바둑 기(棋)'"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/복기_(바둑)",
+     "https://thewiki.kr/w/복기"
+    ],
+    "hintNote": null,
+    "easiestCue": "끝난 대국을 둔 순서대로 다시 놓아 보며 따지는 일",
+    "worthWhyGen": "선거·경기 분석에서 일상으로 쓰는 말이 바둑에서 왔다는 유래(19 §9-1 ③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바둑에서 온 말' — 예",
+     "unique": "대국 뒤 순서대로 다시 놓기 — 하나(기보는 기록 자체라 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

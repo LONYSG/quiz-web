@@ -1,0 +1,447 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "physics/4",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/4#g032a-g032a-j07-3",
+   "seed": {
+    "subject": "히트펌프",
+    "aspect": null,
+    "ref": "g032a-j07-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "에어컨과 같은 원리로 난방까지 하는 장치입니다. 냉매를 압축하고 풀어 주며 차가운 바깥 공기에서도 열을 모아 집 안으로 옮깁니다. 열을 새로 만들지 않고 옮기기만 하므로, 쓴 전기보다 더 많은 열을 집 안에 들일 수 있습니다. 이 장치는?",
+    "answer": "히트펌프",
+    "acceptedAnswers": [
+     "열펌프"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "효율은 성적계수(COP)로 나타내며 1보다 커서 전기 히터보다 에너지가 덜 든다. 지역난방에 쓰는 메가와트급 대형 기기도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "에어컨과 같은 원리로 난방까지 하는 장치",
+     "difWhy": "3 — 설명 → 이름 · 일반인은 이름이 가물",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "공기·땅속·물에서 열을 끌어와 쓰는 냉난방기로, 고효율 가스보일러보다 탄소 배출을 평균 45% 넘게 줄인다고 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "냉매로 열을 낮은 곳에서 높은 곳으로 옮기는 냉난방 장치(heat pump)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "에어컨·난방 광고 뉴스에서 접함",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '난방까지 하는 장치' 가 끝 ○○(장치)와 일치 · 냉매·압축은 곁에서 설명됨"
+    },
+    "blindQuestion": {
+     "guess": "히트펌프",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "히트펌프",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "히트펌프",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j14-2",
+      "answer": "결로",
+      "verdict": "diff",
+      "why": "히트펌프 vs 결로"
+     },
+     {
+      "old": "3129",
+      "answer": "열평형",
+      "verdict": "diff",
+      "why": "히트펌프 vs 열평형"
+     },
+     {
+      "old": "4607",
+      "answer": "맥스웰의 악마",
+      "verdict": "diff",
+      "why": "히트펌프 vs 맥스웰의 악마"
+     },
+     {
+      "old": "3130",
+      "answer": "열기관",
+      "verdict": "diff",
+      "why": "히트펌프 vs 열기관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/열펌프",
+     "https://en.wikipedia.org/wiki/Heat_pump"
+    ],
+    "facts": [
+     {
+      "claim": "추운 날 바깥 열을 옮겨 난방 · 열을 발생시키지 않고 전달해 효율적 · 냉매 압축",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열펌프",
+      "note": "추운 날씨에는 열 펌프가 시원한 실외의 열을 이동시켜 집을 따뜻하게 할 수 있다. … 열을 발생시키지 않고 열을 전달하기 때문에 집을 난방하거나 냉방하는 다른 방법보다 에너지 효율적이다. 기체 냉매가 압축되어 온도가 상승한다."
+     },
+     {
+      "claim": "COP > 1 — 일보다 내놓는 열이 많다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Heat_pump",
+      "note": "The coefficient of performance of a heat pump is greater than one so the work required is less than the heat released, making a heat pump a more efficient form of heating than electrical resistance heating."
+     },
+     {
+      "claim": "가스보일러 대비 배출 45% 넘게 절감",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Heat_pump",
+      "note": "the emissions savings of heat pumps compared with a high-efficiency gas boiler are on average above 45%"
+     },
+     {
+      "claim": "공기·지열·수원 열원",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/열펌프",
+      "note": "공기열원 히트펌프가 가장 일반적인 모델인 반면, 다른 유형에는 지열원 히트펌프, 수원열 펌프 및 배기열 히트펌프가 포함된다."
+     },
+     {
+      "claim": "대형 지역난방용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Heat_pump",
+      "note": "Large (megawatt-scale) heat pumps are used for district heating."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/열펌프",
+     "https://en.wikipedia.org/wiki/Heat_pump"
+    ],
+    "hintNote": null,
+    "easiestCue": "에어컨 원리로 난방까지 하는 장치",
+    "worthWhyGen": "보급이 늘어나는 냉난방 장치의 원리(왜 전기보다 많은 열) — 알가치 3 쪽(생활) · 2 일 수도",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '장치' 예",
+     "unique": "냉난방 겸용 + 열을 옮김 — 히트펌프(시스템 에어컨 냉난방기도 사실상 히트펌프라 겹침 낮음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 탄소/보일러"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "physics/4#g032a-g032a-j14-2",
+   "seed": {
+    "subject": "결로",
+    "aspect": null,
+    "ref": "g032a-j14-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "겨울철 집 안에서 자주 생기는 현상입니다. 난방으로 데워진 습한 공기가 차가운 유리창에 닿으면, 공기 속 수증기가 창에 물방울로 맺힙니다. 벽지 곰팡이의 원인이 되기도 하는 이 현상을 건축에서는 무엇이라 할까요?",
+    "answer": "결로",
+    "acceptedAnswers": [
+     "결로 현상"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "공기는 차가워질수록 머금을 수 있는 수증기가 줄어듭니다. 이슬이 생기는 원리도 같아서, 이슬이 맺히는 일 자체를 같은 이름으로 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "차가운 유리창에 수증기가 물방울로 맺힘 · 건축에서 부르는 이름",
+     "difWhy": "3 — 일상 현상 건축 용어 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 집 생활에 쓸모",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "창문을 자주 열어 환기하고 제습기를 돌리면 줄어드는, 창틀과 벽 모서리의 물기 문제다",
+    "generalHintVersion": "hint-v7",
+    "identity": "차가운 표면에 공기 중 수증기가 물방울로 맺히는 현상(건축·생활 용어)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "결로 현상은 집 곰팡이 문제로 접함",
+     "piece": "f09",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '집 안 현상' 이 있고 과정이 쉬운 말"
+    },
+    "blindQuestion": {
+     "guess": "결로",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "결로",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "결로",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4748",
+      "answer": "빌리 진 킹",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3157",
+      "answer": "선고유예",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6506",
+      "answer": "토론토 블루제이스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "1866",
+      "answer": "내각불신임",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5719",
+      "answer": "보비 피셔",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이슬",
+     "https://en.wikipedia.org/wiki/Condensation"
+    ],
+    "facts": [
+     {
+      "claim": "이슬이 맺히는 현상을 결로라 부른다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이슬",
+      "note": "이슬이 맺히는 현상은 결로(結露)라고 부른다."
+     },
+     {
+      "claim": "집 안 결로는 따뜻하고 습한 공기가 차가운 표면에 닿을 때 · 겨울 홑유리창에서 뚜렷 · 곰팡이 원인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Condensation",
+      "note": "Condensation in building construction is an unwanted phenomenon as it may cause dampness, mold health issues ... most condensation in the home occurs when warm, moisture heavy air comes into contact with a cool surface ... This is very apparent when central heating is used in combination with single glazed windows in winter."
+     },
+     {
+      "claim": "창문 열기·제습기로 줄인다",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Condensation",
+      "note": "This can be done in a number of ways, for example opening windows, turning on extractor fans, using dehumidifiers"
+     },
+     {
+      "claim": "공기가 식으면 수증기를 덜 머금는다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Condensation",
+      "note": "As the air is cooled, it can no longer hold as much water vapor."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Condensation"
+    ],
+    "hintNote": null,
+    "easiestCue": "겨울 유리창에 물방울이 맺히는 현상",
+    "worthWhyGen": "겨울철 집 관리에서 늘 쓰는 생활 말(일상 말 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '현상' — 예",
+     "unique": "'건축에서는' 으로 일반어 응결·응축과 가름 — 약함(응결 칠 사람 있을 수 있음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "physics/4#g032a-g032a-j20-9",
+   "seed": {
+    "subject": "섭씨",
+    "aspect": null,
+    "ref": "g032a-j20-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "물이 어는 온도를 0도, 끓는 온도를 100도로 정한 온도 눈금입니다. 1742년 스웨덴의 천문학자 셀시우스가 처음 제안했습니다. 우리말 이름은 그의 이름을 중국에서 한자로 옮긴 데서 왔습니다. 이 온도 눈금은?",
+    "answer": "섭씨",
+    "acceptedAnswers": [
+     "섭씨온도",
+     "섭씨 눈금"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "셀시우스는 처음에 끓는점을 0, 어는점을 100으로 거꾸로 정했고, 그가 죽은 무렵 다른 학자들이 지금처럼 뒤집었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "물이 어는 온도를 0도, 끓는 온도를 100도로 정한 온도 눈금",
+     "difWhy": "2 — 섭씨 이름을 한 번 떠올려야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어 섭씨의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "한국 날씨 뉴스가 '낮 최고 25도'처럼 기온을 알릴 때 쓰는 단위로, 기호는 ℃다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "물의 어는점 0 · 끓는점 100 온도 눈금(℃)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "섭씨 온도 일상 용어",
+     "piece": "f02",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '온도 눈금' 이 나오고 끝 ○○ 와 같음, 한자 표기 유래도 짧게 설명됨"
+    },
+    "blindQuestion": {
+     "guess": "섭씨",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "섭씨",
+     "hit": true
+    },
+    "factCheck": null,
+    "dupCheck": [
+     {
+      "old": "5292",
+      "answer": "크로스컨트리",
+      "verdict": "diff",
+      "why": "섭씨 vs 크로스컨트리 — 다른 지식"
+     },
+     {
+      "old": "1104",
+      "answer": "납땜",
+      "verdict": "diff",
+      "why": "섭씨 vs 납땜 — 다른 지식"
+     },
+     {
+      "old": "2420",
+      "answer": "켈빈",
+      "verdict": "diff",
+      "why": "섭씨 vs 켈빈 — 다른 눈금"
+     },
+     {
+      "old": "2419",
+      "answer": "-40",
+      "verdict": "diff",
+      "why": "섭씨 정의 vs -40 교차점 — 다른 지식"
+     },
+     {
+      "old": "2681",
+      "answer": "온도",
+      "verdict": "diff",
+      "why": "섭씨 vs 바다거북 성비 온도 — 다른 지식"
+     },
+     {
+      "old": 4563,
+      "answer": "셀시우스",
+      "verdict": "same",
+      "why": "GEN: 같은 지식(셀시우스 눈금) · 새 질문에 옛 정답 셀시우스가 그대로 — 정답·단서만 뒤집음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/섭씨",
+     "https://en.wikipedia.org/wiki/Celsius"
+    ],
+    "facts": [
+     {
+      "claim": "어는점 0 · 끓는점 100 · 1742 셀시우스 · 이름 유래 중국 음역",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/섭씨",
+      "note": "1 atm에서의 물의 어는점을 0도, 끓는점을 100도로 정한 온도 체계이며, 기호는 °C이다. 1742년 스웨덴의 천문학자 안데르스 셀시우스가 처음으로 제안하였으며 ... ‘섭씨(攝氏)’라는 이름은 셀시우스의 중국 음역어 ‘섭이수사’(중국어: 攝爾修斯 ...)에서 유래한다."
+     },
+     {
+      "claim": "1742 스웨덴 천문학자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Celsius",
+      "note": "It is named after the Swedish astronomer Anders Celsius (1701–1744), who proposed the first version of it in 1742."
+     },
+     {
+      "claim": "처음엔 거꾸로 · 1743 크리스탱 · 1744 린네가 뒤집음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Celsius",
+      "note": "In Celsius's initial proposal, the values were reversed: the boiling point was 0 degrees and the freezing point was 100 degrees. ... In 1743, the French physicist Jean-Pierre Christin ... inverted the Celsius temperature scale ... In 1744, coincident with the death of Anders Celsius, the Swedish botanist Carl Linnaeus (1707–1778) reversed Celsius's scale."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/섭씨"
+    ],
+    "hintNote": null,
+    "easiestCue": "어는점 0도 · 끓는점 100도 온도 눈금",
+    "worthWhyGen": "3 — 날마다 쓰는 단위 이름 '섭씨'의 유래가 질문 안에",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '온도 눈금' — 예",
+     "unique": "어는점 0 · 끓는점 100 = 하나(켈빈·화씨 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20",
+    "discarded": "중복 같은 지식 4563 셀시우스 — GEN: 같은 지식(셀시우스 눈금) · 새 질문에 옛 정답 셀시우스가 그대로 — 정답·단서만 뒤집음"
+   }
+  }
+ ]
+}

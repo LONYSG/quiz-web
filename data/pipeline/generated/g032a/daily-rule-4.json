@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "daily-rule/4",
+  "midKey": "daily-rule",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "daily-rule/4#g032a-g032a-j19-5",
+   "seed": {
+    "subject": "1339",
+    "aspect": null,
+    "ref": "g032a-j19-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "감염병이 의심되거나 질병 정보가 궁금할 때 거는 질병관리청 콜센터 번호입니다. 2020년 코로나19 초기에는 문의가 몰려 상담원을 수백 명으로 늘렸습니다. 이 네 자리 번호는?",
+    "answer": "1339",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "해외에서도 +82-2-2633-1339 유료 번호로 걸 수 있었습니다. 상담은 365일 24시간 이어졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "질병관리청 콜센터 번호 · 이 네 자리 번호",
+     "difWhy": "3 — 숫자 정답 · 코로나 때 들었어도 정확히 써야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 신고·문의 번호는 누구에게나 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "코로나19 초기, 열이 나면 병원에 바로 가지 말고 먼저 이 번호나 보건소에 전화해 선별진료소 안내를 받으라고 했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "질병관리청 콜센터 전화번호",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "코로나 때 방송으로 널리 알려짐",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '콜센터 번호' 가 종류 · 끝 ○○ = 번호"
+    },
+    "blindQuestion": {
+     "guess": "1339",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "1339",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "1339",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 1,
+     "found": 0,
+     "outside": 4,
+     "notFound": [
+      {
+       "claim": "1339 = 질병관리청 콜센터",
+       "url": "https://ko.wikipedia.org/wiki/대한민국의_전화번호_체계",
+       "note": "| 1339 || 질병관리청 콜센터"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "5318",
+      "answer": "112",
+      "verdict": "diff",
+      "why": "1339 vs 112 — 다른 번호"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대한민국의_전화번호_체계",
+     "https://kdca.go.kr/kdca/2777/subview.do",
+     "https://www.dailypharm.com/user/news/66127",
+     "https://www.mt.co.kr/future/2020/02/12/2020021118083955716",
+     "https://www.gangnam.go.kr/board/article/4286/view.do?mid=fm0503"
+    ],
+    "facts": [
+     {
+      "claim": "1339 = 질병관리청 콜센터",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_전화번호_체계",
+      "note": "| 1339 || 질병관리청 콜센터"
+     },
+     {
+      "claim": "감염병 의심 · 질병 정보 문의는 1339",
+      "where": "q",
+      "url": "https://kdca.go.kr/kdca/2777/subview.do",
+      "note": "(WebSearch 요약) 질병정보 궁금할 때, 감염병이 의심될 때 질병관리청 콜센터 ☎1339로 문의하세요!"
+     },
+     {
+      "claim": "2020년 초 문의 폭증 · 상담원 19명 → 596명",
+      "where": "q",
+      "url": "https://www.dailypharm.com/user/news/66127",
+      "note": "(WebSearch 요약) 1339 콜센터는 19명이던 상담원 수를 4일 기준 596명까지 늘렸다 · 질본 '1339' 상담센터, 인력 27명→170여명 확대"
+     },
+     {
+      "claim": "증상 있으면 의료기관 대신 1339나 보건소에 먼저 연락 · 상담원은 선별진료소로 안내",
+      "where": "h",
+      "url": "https://www.mt.co.kr/future/2020/02/12/2020021118083955716",
+      "note": "(WebSearch 요약) 콜센터 상담원은 전화를 건 의심환자가 보건소나 선별진료소가 있는 의료기관으로 가도록 안내하고 있다 · 지자체 공지: 증상이 있으면 의료기관을 바로 찾지 말고 1339나 관할 보건소에 먼저 연락"
+     },
+     {
+      "claim": "해외 유료 번호 · 365일 24시간",
+      "where": "e",
+      "url": "https://www.gangnam.go.kr/board/article/4286/view.do?mid=fm0503",
+      "note": "(WebSearch 요약) 해외→국내에서 이용 시, +82-2-2633-1339 … 이용가능(유료) · 365일 24시간 국내-해외 모두 상담 가능한 질병관리본부 1339 콜센터"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.gangnam.go.kr/board/article/4286/view.do?mid=fm0503",
+     "https://www.mt.co.kr/future/2020/02/12/2020021118083955716"
+    ],
+    "hintNote": null,
+    "easiestCue": "질병관리청 콜센터 번호",
+    "worthWhyGen": "감염병 때 누구나 써야 하는 번호와 그 쓰임(19 §9-1 ① 생활 상식)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '콜센터 번호' — 예",
+     "unique": "질병관리청 콜센터 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

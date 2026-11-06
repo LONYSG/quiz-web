@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-language/1",
+  "midKey": "world-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-language/1#g032a-job-26-10",
+   "seed": {
+    "subject": "에티켓",
+    "aspect": null,
+    "ref": "job-26-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스어에서 원래 벽에 붙이는 '쪽지·꼬리표'를 뜻하던 말이 있습니다. 프랑스 궁정에서는 이 쪽지에 입장이 허락된 사람들의 서열을 적어 붙였고, 여기서 궁정의 법도에 맞게 품위 있게 행동한다는 뜻이 생겼습니다. 오늘날 '예의범절'을 뜻하는 이 외래어는?",
+    "answer": "에티켓",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영어에는 1750년 무렵 들어갔습니다. 루이 14세는 베르사유 궁전에서 까다로운 궁정 예법으로 귀족들을 길들였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "오늘날 '예의범절'을 뜻하는 이 외래어",
+     "difWhy": "2 — 예의범절 외래어 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "공연장에선 휴대전화를 끄고, 지하철에선 내릴 사람이 먼저 내리게 하는 식으로 남을 배려하는 몸가짐을 이 말로 부른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "예의범절을 뜻하는 프랑스어 유래 외래어(etiquette)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 외래어",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에서 프랑스어 낱말임을 밝히고 끝 ○○ '외래어' 와 맞음. 유래 설명이 문장마다 한 주어로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "에티켓",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "에티켓",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "에티켓",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5647",
+      "answer": "마지노선",
+      "verdict": "diff",
+      "why": "새=에티켓 어원; 마지노선·정글·터부·보이콧·카스티야는 다른 낱말의 유래"
+     },
+     {
+      "old": "504",
+      "answer": "정글",
+      "verdict": "diff",
+      "why": "새=에티켓 어원; 마지노선·정글·터부·보이콧·카스티야는 다른 낱말의 유래"
+     },
+     {
+      "old": "503",
+      "answer": "터부",
+      "verdict": "diff",
+      "why": "새=에티켓 어원; 마지노선·정글·터부·보이콧·카스티야는 다른 낱말의 유래"
+     },
+     {
+      "old": "498",
+      "answer": "보이콧",
+      "verdict": "diff",
+      "why": "새=에티켓 어원; 마지노선·정글·터부·보이콧·카스티야는 다른 낱말의 유래"
+     },
+     {
+      "old": "4002",
+      "answer": "카스티야",
+      "verdict": "diff",
+      "why": "새=에티켓 어원; 마지노선·정글·터부·보이콧·카스티야는 다른 낱말의 유래"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/예의",
+     "https://en.wikipedia.org/wiki/Etiquette"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스어 étiquette 유래 · 벽에 붙인 쪽지 · 궁정 입장 허용자 항렬 · 품위 있게 행동한다는 뜻",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/예의",
+      "note": "에티켓이라는 단어는 벽 등에 붙인 쪽지(étiquette)에서 유래한다. 프랑스의 궁정에서는 쪽지에 궁정에 입장이 허용된 사람들의 항렬이 열거되어 있었다. 따라서 에티케트라는 단어에 왕정의 규범에 걸맞게 품위 있게 행동한다는 의미가 전이되어 지금의 에티켓이 되었다."
+     },
+     {
+      "claim": "프랑스어 étiquette = label and tag",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Etiquette",
+      "note": "In modern English usage, the French word étiquette (label and tag) dates from the year 1750 and also originates from the French word for \"ticket,\""
+     },
+     {
+      "claim": "루이 14세 · 베르사유 · 귀족 길들이기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Etiquette",
+      "note": "Louis XIV (1638–1715), King of France, used a codified etiquette to tame the French nobility ... at the seat of French government, the Palace of Versailles"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'예의범절'을 뜻하는 외래어",
+    "worthWhyGen": "매일 쓰는 외래어의 유래(일상 말 3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '프랑스어 … 말' 예",
+     "unique": "프랑스어 · 쪽지 유래 → 에티켓(매너는 영어·라틴 '손')",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

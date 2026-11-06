@@ -1,0 +1,311 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "math/6",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/6#g032a-g032a-j15-2",
+   "seed": {
+    "subject": "구구단",
+    "aspect": null,
+    "ref": "g032a-j15-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1부터 9까지 두 수를 곱한 결과를 외우는 곱셈표입니다. 옛날에는 9×9=81부터 거꾸로 외웠는데, 이 표의 이름도 거기서 왔다고 합니다. 이 곱셈표는 무엇일까요?",
+    "answer": "구구단",
+    "acceptedAnswers": [
+     "구구법"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "중국에서는 춘추전국 시대부터 썼고, 뒤에 고려와 일본으로 전해졌다고 한다. 일본에서는 8세기 목간에서도 이 표가 나왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "1부터 9까지 두 수를 곱한 결과를 외우는 곱셈표",
+     "difWhy": "1 — 누구나 아는 구구단",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래 · 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "'이일은 이, 이이는 사, 이삼은 육…' 하고 초등학생이 노래처럼 소리 내어 외우는 것이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "구구단 — 1~9 두 수의 곱을 외우는 곱셈표(九九)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "초등 수학 필수",
+     "piece": "f07",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '곱셈표' 로 정체가 바로 나옴 · 두 문장뿐"
+    },
+    "blindQuestion": {
+     "guess": "구구단",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "구구단",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "구구단",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 2,
+     "found": 2,
+     "outside": 4,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5821",
+      "answer": "토트넘",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6602",
+      "answer": "리버풀",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5359",
+      "answer": "FC 서울",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5820",
+      "answer": "맨체스터 시티",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5832",
+      "answer": "레알 마드리드",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/구구단",
+     "https://ja.wikipedia.org/wiki/九九",
+     "https://zh.wikipedia.org/wiki/九九乘法表"
+    ],
+    "facts": [
+     {
+      "claim": "1~9 두 수를 곱한 9×9 곱셈표",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/구구단",
+      "note": "구구단(九九段) 또는 구구법(九九法)은 1부터 9까지의 두 수를 곱한 9×9 곱셈표를 가리키며, 산수의 기본이 된다."
+     },
+     {
+      "claim": "원래 九九부터 외웠고 이름은 그 흔적",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/九九",
+      "note": "もともとは「九九」から唱え始めるのが普通であったが、のちに「一一」から唱えるようになった。九九と呼ばれるのはもともとは九九から唱えていた名残りである。"
+     },
+     {
+      "claim": "한나라 죽간 구구표가 九九八十一부터 시작 · 그래서 九九表라 부름",
+      "where": "q",
+      "url": "https://zh.wikipedia.org/wiki/九九乘法表",
+      "note": "是一个九九表的残简，从九乘九开始，读曰九九八十一，八九七十二……之所以以九开始……所以以九九开始為由，称为九九歌、九因歌、九九表。"
+     },
+     {
+      "claim": "외울 때 '2×1은 2, 2×2는 4' 순서로",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/구구단",
+      "note": "구구단을 외울 때는 ‘2×1은 2, 2×2는 4, …, 2×9는 18’과 같이 차근차근 순서대로 외운다."
+     },
+     {
+      "claim": "춘추전국부터 · 고려·일본으로 전파",
+      "where": "e",
+      "url": "https://zh.wikipedia.org/wiki/九九乘法表",
+      "note": "中国春秋战国时代就有了十进位制，并发明了九九表。九九表後来东传入高丽、日本"
+     },
+     {
+      "claim": "8세기 목간",
+      "where": "e",
+      "url": "https://ja.wikipedia.org/wiki/九九",
+      "note": "奈良市の平城宮跡で出土した「九九」を記した8世紀の木簡に…"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/구구단"
+    ],
+    "hintNote": null,
+    "easiestCue": "1부터 9까지 두 수를 곱한 결과를 외우는 곱셈표",
+    "worthWhyGen": "누구나 외운 기본 상식 + 이름이 9×9부터 거꾸로 외운 데서 왔다는 유래(19 §9-1 ①②) — 3",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '곱셈표' — 예",
+     "unique": "1~9 곱셈표는 구구단 하나(19단은 1~9 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-15"
+   }
+  },
+  {
+   "seedId": "math/6#g032a-g032a-j29-3",
+   "seed": {
+    "subject": "무한 원숭이 정리",
+    "aspect": null,
+    "ref": "g032a-j29-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "확률론의 유명한 정리입니다. 타자기 앞의 동물이 자판을 아무렇게나 두드려도, 시간만 무한히 주어지면 셰익스피어 전집 같은 글도 거의 확실히 쳐 낸다는 내용입니다. 1913년 프랑스 수학자 에밀 보렐이 든 비유로 알려진 이 정리는?",
+    "answer": "무한 원숭이 정리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "보렐은 통계역학에서 일어나기 힘든 사건을 쉽게 떠올리게 하려고 이 비유를 들었습니다. 여기서 '거의 확실하다'는 확률의 극한이 1이라는 뜻입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "타자기 앞의 동물이 … 셰익스피어 전집 같은 글도",
+     "difWhy": "2 — 원숭이 비유가 이름에 이어짐",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 확률 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "실제로는 관측 가능한 우주의 모든 양성자가 타자를 쳐도 『햄릿』 한 편조차 나올 확률이 사실상 0이라, 무한과 아주 큰 수의 차이를 보여 준다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "무작위 타자도 무한히 치면 어떤 글이든 거의 확실히 나온다는 확률 정리",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "인터넷·책에서 가끔 언급되나 정리 이름은 낯선 편",
+     "piece": "f08",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '확률론의 정리'가 끝 ○○=정리. 타자기 비유 내용이 바로 서술됨."
+    },
+    "blindQuestion": {
+     "guess": "무한 원숭이 정리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "무한 원숭이 정리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "무한 원숭이 정리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6707",
+      "answer": "가우스",
+      "verdict": "diff",
+      "why": "신규 '무한 원숭이 정리'(다른 수학 사실) ≠ 옛 '가우스' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1115",
+      "answer": "피보나치 수열",
+      "verdict": "diff",
+      "why": "신규 '무한 원숭이 정리'(다른 수학 사실) ≠ 옛 '피보나치 수열' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3741",
+      "answer": "쾨니히스베르크의 다리 문제",
+      "verdict": "diff",
+      "why": "신규 '무한 원숭이 정리'(다른 수학 사실) ≠ 옛 '쾨니히스베르크의 다리 문제' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1111",
+      "answer": "황금비",
+      "verdict": "diff",
+      "why": "신규 '무한 원숭이 정리'(다른 수학 사실) ≠ 옛 '황금비' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Infinite_monkey_theorem",
+     "https://ko.wikipedia.org/wiki/무한_원숭이_정리"
+    ],
+    "facts": [
+     {
+      "claim": "무작위 타자 · 무한한 시간 · 셰익스피어 전체 · 거의 확실",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Infinite_monkey_theorem",
+      "note": "a monkey hitting keys independently and at random on a typewriter keyboard for an infinite amount of time will almost surely type any given text, including the complete works of William Shakespeare"
+     },
+     {
+      "claim": "1913년 에밀 보렐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무한_원숭이_정리",
+      "note": "이를 처음으로 생각한 사람은 프랑스 수학자 에밀 보렐(Émile Borel)로, 1913년 논문인 〈Mécanique Statistique et Irréversibilité〉에 실렸다."
+     },
+     {
+      "claim": "우주의 모든 양성자가 타자를 쳐도 햄릿 확률 극히 작음",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Infinite_monkey_theorem",
+      "note": "Even if every proton in the observable universe ... were a monkey with a typewriter ... they would still need a far greater amount of time ... \"The probability of Hamlet is therefore zero in any operational sense of an event\""
+     },
+     {
+      "claim": "거의 확실 = 극한값 1 · 상상하기 쉽게 만드는 도구",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/무한_원숭이_정리",
+      "note": "‘거의 확실하다(almost surely)’라는 말은 수학적으로 확률의 극한값이 1이라는 것을 의미한다 ... 극히 일어나기 힘든 사건을 상상하게 하기 위한 도구였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Infinite_monkey_theorem"
+    ],
+    "hintNote": null,
+    "easiestCue": "타자기 앞 동물이 무한히 치면 셰익스피어 전집",
+    "worthWhyGen": "2 — 수학 개념이지만 '무한'을 설명할 때 두루 인용되는 비유",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '정리' — 예",
+     "unique": "정리 이름 하나",
+     "hint12": "① 예 ② 예 (정답 낱말 '원숭이' 안 씀)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

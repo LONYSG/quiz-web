@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "biology/4",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/4#g032a-g032a-j14-8",
+   "seed": {
+    "subject": "노로바이러스",
+    "aspect": null,
+    "ref": "g032a-j14-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "겨울철 식중독을 일으키는 대표 바이러스입니다. 덜 익힌 굴 같은 조개류나 오염된 물로 옮아 구토와 설사를 일으킵니다. 알코올 손 소독제로는 잘 없어지지 않아 비누로 손을 씻어야 하는 이 바이러스는?",
+    "answer": "노로바이러스",
+    "acceptedAnswers": [
+     "노로 바이러스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "백신이나 특별한 치료법은 없어서 물을 충분히 마시며 회복을 기다립니다. 증상은 보통 하루에서 사흘이면 가라앉습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "겨울철 식중독 대표 바이러스 · 굴",
+     "difWhy": "2 — 뉴스 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 생활 건강 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "가족·학교·유람선처럼 사람이 붐비는 곳에서 토사물을 통해 순식간에 번지는 장염 바이러스다",
+    "generalHintVersion": "hint-v7",
+    "identity": "겨울철 급성 위장염·식중독을 일으키는 바이러스",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "겨울 식중독 뉴스",
+     "piece": "f09",
+     "genPct": 88
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '식중독을 일으키는 바이러스' · 끝 '이 바이러스' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "노로바이러스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "노로바이러스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "노로바이러스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5715",
+      "answer": "에볼라",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4290",
+      "answer": "프리온",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2129",
+      "answer": "변이",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "219",
+      "answer": "박테리오파지",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2130",
+      "answer": "숙주",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/노로바이러스",
+     "https://en.wikipedia.org/wiki/Norovirus"
+    ],
+    "facts": [
+     {
+      "claim": "겨울철에 흔함 · 굴 등 조개류 식중독 원인 · 알코올 손 세정제 효과 적음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/노로바이러스",
+      "note": "노로바이러스 감염은 겨울철에 더 흔히 발생한다. ... 굴 등의 조개류에 의한 식중독의 원인이 되기도 하고 ... 노로바이러스는 외피로 싸이지 않은 바이러스이므로 알코올 기반의 손 세정제는 노로바이러스에 대해 효과적이지 못하다."
+     },
+     {
+      "claim": "위장염의 가장 흔한 원인 · winter vomiting · 덜 익힌 조개류 위험",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Norovirus",
+      "note": "is the most common cause of gastroenteritis. The infection, sometimes referred to informally as the winter vomiting disease ... Ingestion of shellfish that has not been sufficiently heated – under 75 °C (167 °F) – poses a high risk for norovirus"
+     },
+     {
+      "claim": "토사물 에어로졸 · 밀폐된 장소 · 크루즈선 집단 발병",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/노로바이러스",
+      "note": "감염된 환자의 토사물 에어로졸을 통해서도 전파될 수 있다. 감염의 위험 인자에는 비위생적인 음식 조리 과정이나 다수의 사람들이 모인 밀폐된 장소에 있는 것 등이 있다. (en: outbreaks of gastrointestinal illness – mostly caused by norovirus – on cruise ships)"
+     },
+     {
+      "claim": "백신·특별한 치료법 없음 · 1~3일이면 회복",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/노로바이러스",
+      "note": "노로바이러스에 대한 백신이나 특별한 치료법은 없다. ... 1~3일이 지나면 회복된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/노로바이러스",
+     "https://en.wikipedia.org/wiki/Norovirus"
+    ],
+    "hintNote": null,
+    "easiestCue": "겨울철 굴 식중독 바이러스",
+    "worthWhyGen": "겨울마다 뉴스에 나오는 생활 건강 상식(일반 상식 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바이러스' — 예",
+     "unique": "겨울 + 굴 + 알코올 소독제 안 들음 → 로타바이러스(어린이)와 대체로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

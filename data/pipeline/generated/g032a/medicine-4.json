@@ -1,0 +1,153 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "medicine/4",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/4#g032a-g032a-j25-9",
+   "seed": {
+    "subject": "식이섬유",
+    "aspect": null,
+    "ref": "g032a-j25-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사람의 소화 효소로는 완전히 분해되지 않는 식물성 음식 성분입니다. 물을 머금어 변의 부피를 늘려 변비를 막는 데 도움이 되고, 통곡물·채소·콩에 많습니다. 물에 녹는 것과 녹지 않는 것으로 나누는 이 성분은?",
+    "answer": "식이섬유",
+    "acceptedAnswers": [
+     "섬유질",
+     "식이섬유소"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "장 속 세균이 일부를 발효시키면 장 건강에 이로운 짧은 사슬 지방산이 생깁니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "변비를 막는 데 도움이 되고, 통곡물·채소·콩에 많습니다",
+     "difWhy": "2 — 일상 건강어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 누구에게나 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "사과 속 펙틴, 귀리의 베타글루칸, 채소의 셀룰로스가 대표적인 예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "소화되지 않는 식물성 음식 성분(dietary fiber)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "건강 상식·식품 광고에서 흔함",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '식물성 음식 성분' 종류가 있음"
+    },
+    "blindQuestion": {
+     "guess": "식이섬유",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "식이섬유",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "식이섬유",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5514",
+      "answer": "비타민 B12",
+      "verdict": "diff",
+      "why": "새=식이섬유; 비타민 B12·트랜스지방은 다른 영양소"
+     },
+     {
+      "old": "465",
+      "answer": "트랜스지방",
+      "verdict": "diff",
+      "why": "새=식이섬유; 비타민 B12·트랜스지방은 다른 영양소"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/식이섬유",
+     "https://en.wikipedia.org/wiki/Dietary_fiber"
+    ],
+    "facts": [
+     {
+      "claim": "소화 효소로 완전히 분해 안 되는 식물 유래 성분 · 수용성/불용성",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/식이섬유",
+      "note": "인간의 소화 효소에 의해 완전히 분해될 수 없는 식물 유래 음식 성분을 말한다. … 크게 두 가지 하위 유형인 수용성 섬유질과 불용성 섬유질로 나뉘며, 협과(콩류), 통곡물, 곡류, 채소, 과일 …의 구성 성분이다."
+     },
+     {
+      "claim": "물을 흡수해 배변 도움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/식이섬유",
+      "note": "셀룰로스 및 헤미셀룰로스(차전자 포함)와 같은 팽창성 섬유질은 물을 흡수하고 보유하여 규칙적인 배변"
+     },
+     {
+      "claim": "bulking · 변비 완화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dietary_fiber",
+      "note": "Dietary fibers make three primary contributions: bulking, viscosity and fermentation. … cellulose and wheat bran provide excellent bulking effects"
+     },
+     {
+      "claim": "셀룰로스·펙틴·베타글루칸 등으로 구성",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/식이섬유",
+      "note": "식이 섬유는 비녹말 다당류와 셀룰로스, 저항성 녹말, … 펙틴, 베타글루칸, 소당류 등의 기타 식물 성분으로 구성된다."
+     },
+     {
+      "claim": "발효로 짧은 사슬 지방산",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dietary_fiber",
+      "note": "due in part to the short-chain fatty acids produced with subsequent anti-inflammatory actions upon the bowel"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/식이섬유"
+    ],
+    "hintNote": null,
+    "easiestCue": "소화되지 않는 식물성 성분 · 변비",
+    "worthWhyGen": "건강 상식의 기본 성분(알가치 3 ①)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '음식 성분' — 예",
+     "unique": "식이섬유 하나(섬유질 받음)",
+     "hint12": "① 예 ② 예(사과 펙틴 등 예시)"
+    },
+    "history": [],
+    "warn": [
+     "crossans 사과"
+    ],
+    "job": "job-25"
+   }
+  }
+ ]
+}

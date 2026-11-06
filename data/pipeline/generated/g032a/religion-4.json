@@ -1,0 +1,302 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "religion/4",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/4#g032a-g032a-j20-5",
+   "seed": {
+    "subject": "요가",
+    "aspect": null,
+    "ref": "g032a-j20-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 인도에서 시작해 힌두교·불교·자이나교 전통에서 이어져 온 몸과 마음의 수행입니다. 이름은 산스크리트어로 '멍에를 씌우다, 잇다'라는 말에서 왔습니다. 오늘날 세계 곳곳에서 매트 위에서 하는 운동으로도 사랑받는 이것은?",
+    "answer": "요가",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "유엔 총회는 6월 21일을 이 수행의 국제 기념일로 정했고, 2015년부터 해마다 세계 곳곳에서 기념 행사가 열립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "매트 위에서 하는 운동으로도 사랑받는 이것",
+     "difWhy": "1 — 요가 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "몸을 굽히고 비트는 '아사나'라는 여러 자세에 호흡과 명상을 곁들이는 수련이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "인도에서 시작된 수행·운동",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "운동으로 매우 흔함",
+     "piece": "f02",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '수행' 종류가 있고 끝 '이것' 이 그 수행을 가리켜 헷갈림 없음"
+    },
+    "blindQuestion": {
+     "guess": "요가",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "요가",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "요가",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3189",
+      "answer": "베다",
+      "verdict": "diff",
+      "why": "요가 vs 베다 — 다른 지식"
+     },
+     {
+      "old": "2700",
+      "answer": "스머프",
+      "verdict": "diff",
+      "why": "요가 vs 스머프 — 다른 지식"
+     },
+     {
+      "old": "5545",
+      "answer": "양궁",
+      "verdict": "diff",
+      "why": "요가 vs 양궁 — 다른 지식"
+     },
+     {
+      "old": "5794",
+      "answer": "마오타이",
+      "verdict": "diff",
+      "why": "요가 vs 마오타이 — 다른 지식"
+     },
+     {
+      "old": "1190",
+      "answer": "무죄추정의 원칙",
+      "verdict": "diff",
+      "why": "요가 vs 무죄추정 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/요가",
+     "https://en.wikipedia.org/wiki/Yoga"
+    ],
+    "facts": [
+     {
+      "claim": "고대 인도 기원 · 힌두교·자이나교·불교 · '굴레/결합'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/요가",
+      "note": "산스크리트어: योग '요가' ... 직역: '굴레' or '결합')는 고유한 철학을 가지고 고대 인도에서 시작된 신체적, 정신적, 영적 수련 ... 힌두교, 자이나교, 불교 전통에서 행해지며"
+     },
+     {
+      "claim": "어근 yuj = 멍에를 씌우다, 잇다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yoga",
+      "note": "The Sanskrit noun योग yoga is derived from the root yuj (युज्) \"to attach, join, harness, yoke\"."
+     },
+     {
+      "claim": "아사나 중심의 현대 요가",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Yoga",
+      "note": "Much of the yoga in the Western world is a modern syncretised form consisting largely of asanas ... traditional yoga, which focuses on meditation"
+     },
+     {
+      "claim": "국제 요가의 날 6월 21일",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Yoga",
+      "note": "The United Nations General Assembly established 21 June as the International Day of Yoga, and it has been celebrated annually around the world since 2015."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Yoga"
+    ],
+    "hintNote": null,
+    "easiestCue": "매트 위에서 하는 인도 기원 운동",
+    "worthWhyGen": "3 — 누구나 아는 운동의 뿌리(종교 수행)와 이름 뜻",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '수행' — 예",
+     "unique": "인도 기원 + 매트 운동 = 하나(필라테스는 인도 기원 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  },
+  {
+   "seedId": "religion/4#g032a-g032a-j31-3",
+   "seed": {
+    "subject": "디아스포라",
+    "aspect": null,
+    "ref": "g032a-j31-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "유대교 역사에서 나온 말입니다. 바빌론 유수와 로마의 예루살렘 파괴 뒤, 유대인은 고향을 떠나 세계 곳곳에 흩어져 살았습니다. '흩뿌림'을 뜻하는 그리스어에서 온, 이렇게 흩어져 사는 민족 집단을 가리키는 말은?",
+    "answer": "디아스포라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그리스어로 옮긴 성경 신명기 28장의 '그대가 이 땅의 모든 왕국에 흩어지고'에 처음 나온다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "흩어져 사는 민족 집단을 가리키는 말",
+     "difWhy": "3 — 역사 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 사회·역사 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "요즘은 재일 동포나 중앙아시아 고려인처럼 고국을 떠나 자리 잡은 한민족 공동체에도 두루 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "본토를 떠나 다른 곳에 흩어져 사는 민족 집단(본디 유대인의 이산)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "뉴스·시사에서 쓰이는 단어, 뜻은 흐릿",
+     "piece": "f03",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '유대교 역사에서 나온 말' 로 종류 제시 · 바빌론 유수 같은 이름은 장면 설명 안에 풀려 있음"
+    },
+    "blindQuestion": {
+     "guess": "디아스포라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "디아스포라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "디아스포라",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3194",
+      "answer": "토라",
+      "verdict": "diff",
+      "why": "디아스포라(흩어진 민족)와 토라(경전)는 다른 개념"
+     },
+     {
+      "old": "3197",
+      "answer": "코셔",
+      "verdict": "diff",
+      "why": "디아스포라와 코셔(음식 율법)는 다름"
+     },
+     {
+      "old": "3865",
+      "answer": "탈무드",
+      "verdict": "diff",
+      "why": "디아스포라와 탈무드(문헌)는 다름"
+     },
+     {
+      "old": "3200",
+      "answer": "바르 미츠바",
+      "verdict": "diff",
+      "why": "디아스포라와 바르 미츠바(성인식)는 다름"
+     },
+     {
+      "old": "3195",
+      "answer": "탈무드",
+      "verdict": "diff",
+      "why": "디아스포라와 탈무드는 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/디아스포라",
+     "https://en.wikipedia.org/wiki/Jewish_diaspora"
+    ],
+    "facts": [
+     {
+      "claim": "바빌로니아·로마의 추방 뒤 유대인 이산을 가리키게 됨 · 그리스어 '흩뿌림'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/디아스포라",
+      "note": "'흩뿌리거나 퍼트리는 것' 을 뜻하는 고대 그리스어 단어 διασπορά에서 유래하였다. … 기원전 587-586년 바빌로니아인들이 이스라엘에서, 기원후 70년 로마 제국이 유대 지방에서 유대인들을 쫓아내는 부분에서 디아스포라라는 낱말이 쓰여"
+     },
+     {
+      "claim": "유대인 이산 · 그리스어 dispersion",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jewish_diaspora",
+      "note": "it refers to the expansive scattering of the Israelites out of their homeland … The Greek word διασπορά (dispersion) first appears as a neologism in the translation of the Old Testament known as the Septuagint"
+     },
+     {
+      "claim": "한국인 공동체(재일 등)",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/디아스포라",
+      "note": "=== 한국인 === 미국, 일본, 러시아, 중앙아시아, 중국, 캐나다 등지에 한국인 공동체가 있다."
+     },
+     {
+      "claim": "신명기 28:25",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/디아스포라",
+      "note": "디아스포라가 처음으로 언급되는 부분은 신명기 28:25의 추방에 대한 내용인 \"그대가 이 땅의 모든 왕국에 흩어지고\"이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/디아스포라"
+    ],
+    "hintNote": null,
+    "easiestCue": "세계 곳곳에 흩어져 사는 유대인 집단을 가리키는 말",
+    "worthWhyGen": "지금도 뉴스에서 쓰는 말(한인 공동체 등)의 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '유대교에서 나온 말' 예",
+     "unique": "그리스어 유래 + 흩어진 민족 집단 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

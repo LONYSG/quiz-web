@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "popular-music/6",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/6#g032a-g032a-j09-1",
+   "seed": {
+    "subject": "그래미 상",
+    "aspect": null,
+    "ref": "g032a-j09-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 음반 산업계가 1959년부터 해마다 여는 음악 시상식입니다. 수상자는 금빛 축음기 모양의 트로피를 받습니다. 축음기를 뜻하는 영어 낱말을 줄여 이름을 지은 이 시상식은?",
+    "answer": "그래미 상",
+    "acceptedAnswers": [
+     "그래미 어워드",
+     "그래미",
+     "Grammy"
+    ],
+    "originalTitleVariants": [
+     "Grammy"
+    ],
+    "explanation": "이름 후보로 축음기를 만든 에디슨을 기린 '에디'도 있었지만, 공모에서 약 300명이 보낸 이 이름이 뽑혔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "금빛 축음기 모양의 트로피를 받는 음악 시상식",
+     "difWhy": "2 — 축음기 트로피 시상식 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 기본 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 93",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "해마다 2월 무렵 열려 '올해의 앨범'을 뽑는, 영화의 아카데미상·방송의 에미상에 견주는 미국 음악상이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 레코딩 아카데미가 주는 음악상(그래미 어워드)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 93,
+     "why": "음악 시상식 뉴스",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '음악 시상식' · 끝 ○○ = 시상식"
+    },
+    "blindQuestion": {
+     "guess": "그래미 어워드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "그래미 어워드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "그래미 상",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "681",
+      "answer": "토니상",
+      "verdict": "unsure",
+      "why": "옛 질문에 새 정답 그래미상이 들어 있어 누출"
+     },
+     {
+      "old": "6442",
+      "answer": "오드리 헵번",
+      "verdict": "unsure",
+      "why": "옛 질문에 그래미상이 단서로 들어 있어 누출"
+     },
+     {
+      "old": "5577",
+      "answer": "에이미 와인하우스",
+      "verdict": "unsure",
+      "why": "옛 질문에 그래미상이 들어 있어 누출"
+     },
+     {
+      "old": "1876",
+      "answer": "MTV",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/그래미상",
+     "https://en.wikipedia.org/wiki/Grammy_Award"
+    ],
+    "facts": [
+     {
+      "claim": "1959년 첫 시상식 · 처음엔 그라모폰상이라 불림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/그래미상",
+      "note": "초기에는 그라모폰상(Gramophone Award)이라고 불렀다. … 첫 그래미상은 1959년 5월 4일 열렸다."
+     },
+     {
+      "claim": "트로피는 금빛 축음기 · 이름은 gramophone 의 줄임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Grammy_Award",
+      "note": "The trophy depicts a gilded gramophone … approximately 300 contestants submitted the name \"Grammy\" … as an abbreviated reference to Emile Berliner's invention, the gramophone."
+     },
+     {
+      "claim": "매년 2월 · 에미상·아카데미상과 견줌",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/그래미상",
+      "note": "그래미상은 텔레비전의 에미상, 연극의 토니상, 영화의 아카데미상과 같이 음악계에 있어서 가장 유명하고 권위 있는 상으로 평가되고 있다. 매년 2월 시상식이 열리며"
+     },
+     {
+      "claim": "에디 후보 · 약 300명 공모",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Grammy_Award",
+      "note": "One working title was the \"Eddie\", to honor Thomas Edison, the inventor of the phonograph. Eventually, the name was chosen after a mail-in contest whereby approximately 300 contestants submitted the name \"Grammy\""
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/그래미상"
+    ],
+    "hintNote": null,
+    "easiestCue": "1959년부터 열린 미국 음악 시상식 + 축음기 트로피",
+    "worthWhyGen": "누구나 아는 음악상 이름의 유래(축음기)를 묻는다 — 유래 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '음악 시상식' — 예",
+     "unique": "미국 음반 산업계 · 축음기 트로피 · 이름 유래로 빌보드 등과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 아카데미상"
+    ],
+    "job": "job-09"
+   }
+  },
+  {
+   "seedId": "popular-music/6#g032a-job-26-1",
+   "seed": {
+    "subject": "주크박스",
+    "aspect": null,
+    "ref": "job-26-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "동전을 넣고 곡을 고르면 안에 든 레코드를 골라 틀어 주는 음악 기계입니다. 1940~50년대 미국의 식당과 술집에서 크게 유행했습니다. 이름은 미국 남부 흑인들이 춤추고 술 마시던 허름한 술집을 부르던 말에서 왔는데, 평판이 나빠 제조사들은 한동안 이 이름을 피했습니다. 이 기계는?",
+    "answer": "주크박스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1889년 샌프란시스코의 한 술집에 놓인 동전식 축음기가 시초로 꼽힙니다. 1940년대 중반 미국에서 찍은 음반의 4분의 3이 이 기계로 들어갔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "동전을 넣고 곡을 고르면 안에 든 레코드를 골라 틀어 주는 음악 기계",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "아바 노래를 엮은 '맘마미아'처럼 옛 히트곡을 모아 만든 뮤지컬을 이 기계 이름을 따서 부른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "동전을 넣으면 고른 레코드를 틀어 주는 음악 기계(jukebox)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "음악 기계로 영화·가게에서 접함",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '음악 기계' · 끝 ○○ = 기계, 이름 유래 문장은 길지만 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "주크박스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "주크박스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "주크박스",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1931",
+      "answer": "맘마미아",
+      "verdict": "diff",
+      "why": "새=주크박스 기계; 맘마미아(뮤지컬)·LP는 다른 지식"
+     },
+     {
+      "old": "2504",
+      "answer": "LP",
+      "verdict": "diff",
+      "why": "새=주크박스 기계; 맘마미아(뮤지컬)·LP는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jukebox",
+     "https://en.wikipedia.org/wiki/Juke_joint",
+     "https://ko.wikipedia.org/wiki/주크박스"
+    ],
+    "facts": [
+     {
+      "claim": "이름은 juke joint(가라어 juke)에서 왔고 제조사들이 이름을 피했다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jukebox",
+      "note": "The term “jukebox” came into use in the United States beginning in 1940, referring to “juke joints”, itself derived from the Gullah word juke, which means “bawdy”. Manufacturers of jukeboxes tried to avoid using the term, associated with unreputable places, for many years."
+     },
+     {
+      "claim": "juke joint 는 남부 흑인 문화의 술집",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Juke_joint",
+      "note": "The term juke is believed to come from the Gullah word joog or jug, meaning rowdy or disorderly ... Juke joints are still a strong part of African American culture in Deep South locations"
+     },
+     {
+      "claim": "동전을 넣으면 음악을 연주하는 기계",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주크박스",
+      "note": "주크박스(jukebox)는 자동판매기의 일종으로 내부에 다수의 레코드가 내장되어 있다. 동전을 넣으면 임의의 음악을 연주한다."
+     },
+     {
+      "claim": "1889 샌프란시스코 술집 · 1940년대 중반 음반 3/4",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jukebox",
+      "note": "The first coin-operated phonograph was introduced by Louis Glass and William S. Arnold in 1889 at the Palais Royale Saloon in San Francisco. / By the middle of the 1940s, three-quarters of the records produced in America went into jukeboxes."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/맘마_미아!"
+    ],
+    "hintNote": null,
+    "easiestCue": "동전을 넣고 곡을 고르면 레코드를 틀어 주는 기계",
+    "worthWhyGen": "익숙한 기계 이름의 유래(19 §9-1 ② 유래·까닭)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '음악 기계' 예",
+     "unique": "레코드 · 동전 · 곡 고르기로 축음기와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 맘마미아/아바"
+    ],
+    "job": "job-26"
+   }
+  }
+ ]
+}

@@ -1,0 +1,406 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "psychology/2",
+  "midKey": "psychology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "psychology/2#g032a-g032a-j09-12",
+   "seed": {
+    "subject": "피터 팬 증후군",
+    "aspect": null,
+    "ref": "g032a-j09-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어른이 되어서도 책임을 피하고 아이처럼 지내고 싶어 하는 심리를 이르는 말입니다. 1983년 미국의 댄 카일리 박사가 같은 제목의 책을 내며 널리 퍼졌습니다. 영원히 자라지 않는 동화 속 소년에서 이름을 따온 이 말은?",
+    "answer": "피터 팬 증후군",
+    "acceptedAnswers": [
+     "피터 팬 콤플렉스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1970년대 후반 미국 젊은 남성에게서 먼저 보였고, 1980년대 일본 경기 침체기에도 젊은 남성 사이에 퍼졌다고 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "어른이 되어서도 아이처럼 지내고 싶어 하는 심리 · 영원히 자라지 않는 소년",
+     "difWhy": "2 — 소년 이름이 답에 들어감",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 심리 말",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "후크 선장과 싸우며 네버랜드에 사는 소년처럼, 현실 세계로 돌아가기를 거부하는 어른의 마음을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "어른이 되기를 거부하는 심리를 이르는 통속 심리 용어",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "심리 상식·대중매체에서 접함",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 심리를 이르는 말임을 밝힘 · 끝 ○○ = 말"
+    },
+    "blindQuestion": {
+     "guess": "피터팬 증후군",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피터팬 증후군",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피터 팬 증후군",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j23-5",
+      "answer": "중2병",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "g032a:g032a-j13-8",
+      "answer": "질풍노도",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/피터팬_증후군",
+     "https://en.wikipedia.org/wiki/Peter_Pan_syndrome"
+    ],
+    "facts": [
+     {
+      "claim": "성인이 되기를 거부하고 어린이로 남으려는 심리 · 카일리 박사가 명명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피터팬_증후군",
+      "note": "피터 팬 증후군(Peter Pan syndrome) 또는 피터 팬 콤플렉스는 어른이 몸은 성인이 되기를 거부하고 어린이나 소년이 되기를 원하는 심리상태 … D. 카일리 박사는 피터 팬 증후군이라고 명명하였다."
+     },
+     {
+      "claim": "1983년 카일리의 책 이후 쓰인 통속 심리 용어",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Peter_Pan_syndrome",
+      "note": "Peter Pan syndrome is a pop psychology term … since the 1983 publication of The Peter Pan Syndrome: Men Who Have Never Grown Up, by Dr. Dan Kiley."
+     },
+     {
+      "claim": "1970년대 후반 미국 · 1980년 이후 일본 확산",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/피터팬_증후군",
+      "note": "1970년대 후반 미국의 20대 젊은 남성을 중심으로 … 1980년 이후 일본에서도 경향이 나타나 서서히 확산되었는데"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/피터팬_증후군"
+    ],
+    "hintNote": null,
+    "easiestCue": "영원히 자라지 않는 동화 속 소년에서 따온 이름",
+    "worthWhyGen": "일상에서 쓰는 심리 말과 그 유래 — 3 (등급은 3 쪽으로 나올 수 있음)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '심리를 이르는 말' — 예",
+     "unique": "'키덜트'를 칠 사람 조금 — 책 제목·병명 꼴 '동화 속 소년' 으로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-09"
+   }
+  },
+  {
+   "seedId": "psychology/2#g032a-g032a-j13-8",
+   "seed": {
+    "subject": "질풍노도",
+    "aspect": null,
+    "ref": "g032a-j13-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "청소년기를 흔히 '○○○○의 시기'라고 부릅니다. 미국 심리학자 스탠리 홀이 이 시기를 감정이 거칠게 요동치는 때로 보고 붙인 표현에서 널리 퍼진 말입니다. 빈칸에 들어갈 말은?",
+    "answer": "질풍노도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 운동 이름은 극작가 클링거의 같은 제목 희곡에서 따왔습니다. 오늘날 심리학은 이런 격동을 모든 청소년의 공통 특징으로 보지는 않습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "청소년기를 흔히 '○○○○의 시기'",
+     "difWhy": "2 — 관용구 빈칸",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 관용구 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "원래 괴테와 실러가 젊은 시절 이끈 18세기 독일 문학 운동의 이름을 한자로 옮긴 말이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "청소년기의 격동을 이르는 말(독일 문학 운동 이름에서)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "질풍노도의 시기라는 표현을 교과서에서 접함",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 청소년기 빈칸이 바로 나오고 홀의 설명은 보조임"
+    },
+    "blindQuestion": {
+     "guess": "질풍노도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "질풍노도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "질풍노도",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "클링거 희곡에서 이름 · 오늘날 보편성 부정",
+       "url": "https://en.wikipedia.org/wiki/G._Stanley_Hall",
+       "note": "ko: 운동의 호칭은 프리드리히 막시밀리안 폰 클링거의 동명(同名) 희곡에서 딴 것 / en: Currently, psychologists do not accept storm and stress as universa"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "6403",
+      "answer": "아들러",
+      "verdict": "diff",
+      "why": "질풍노도 vs 아들러"
+     },
+     {
+      "old": "g032a:g032a-j09-12",
+      "answer": "피터 팬 증후군",
+      "verdict": "diff",
+      "why": "질풍노도 vs 피터 팬 증후군(옛것 비활성)"
+     },
+     {
+      "old": "6404",
+      "answer": "혈액형",
+      "verdict": "diff",
+      "why": "질풍노도 vs 혈액형 성격"
+     },
+     {
+      "old": "69",
+      "answer": "에이브러햄 매슬로",
+      "verdict": "diff",
+      "why": "질풍노도 vs 매슬로"
+     },
+     {
+      "old": "6405",
+      "answer": "IQ",
+      "verdict": "diff",
+      "why": "질풍노도 vs IQ"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/G._Stanley_Hall",
+     "https://ko.wikipedia.org/wiki/슈투름_운트_드랑"
+    ],
+    "facts": [
+     {
+      "claim": "스탠리 홀이 청소년기를 storm and stress로 부르며 퍼뜨림 · 독일 Sturm und Drang에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/G._Stanley_Hall",
+      "note": "Hall popularized the phrase \"storm and stress\" with reference to adolescence, taken from the German Sturm und Drang movement."
+     },
+     {
+      "claim": "Sturm und Drang = 질풍노도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/슈투름_운트_드랑",
+      "note": "슈투름 운트 드랑(독일어: Sturm und Drang) 또는 질풍노도(疾風怒濤)는 18세기 후반에 독일에서 일어난 문학 운동이다."
+     },
+     {
+      "claim": "괴테·실러 · 18세기 독일 문학 운동",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/슈투름_운트_드랑",
+      "note": "요한 고트프리트 헤르더, 요한 볼프강 폰 괴테, 프리드리히 실러 등이 이 문학양식으로 잘 알려져 있다."
+     },
+     {
+      "claim": "클링거 희곡에서 이름 · 오늘날 보편성 부정",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/G._Stanley_Hall",
+      "note": "ko: 운동의 호칭은 프리드리히 막시밀리안 폰 클링거의 동명(同名) 희곡에서 딴 것 / en: Currently, psychologists do not accept storm and stress as universal"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/슈투름_운트_드랑"
+    ],
+    "hintNote": null,
+    "easiestCue": "청소년기 = '○○○○의 시기'",
+    "worthWhyGen": "일상에서 쓰는 말의 유래(심리학자 홀 · 독일 문학 운동)(3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '청소년기' 예",
+     "unique": "빈칸 4칸 = 질풍노도 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "psychology/2#g032a-g032a-j23-5",
+   "seed": {
+    "subject": "중2병",
+    "aspect": null,
+    "ref": "g032a-j23-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사춘기 청소년의 허세를 놀리듯 부르는 신조어입니다. 1999년 일본의 한 라디오 진행자가 '나는 아직 이 병에 걸려 있다'고 말한 데서 퍼졌습니다. 이 신조어는 무엇일까요?",
+    "answer": "중2병",
+    "acceptedAnswers": [
+     "중이병"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국에서는 '북한이 남침하지 못하는 까닭은 이 학년이 무서워서'라는 우스갯소리도 생겼습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "사춘기 청소년의 허세를 놀리듯 부르는 신조어",
+     "difWhy": "1 — 일상 신조어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 말",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "자기만 특별한 힘이나 숨은 비밀을 가졌다고 믿는, 열너댓 살 무렵의 과장된 자의식을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "사춘기 청소년의 과장된 자의식·허세를 비꼬는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "유행어",
+     "piece": "f09",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '허세를 놀리는 신조어' · 끝 ○○ = 신조어"
+    },
+    "blindQuestion": {
+     "guess": "중2병",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "중2병",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "중2병",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j09-12",
+      "answer": "피터 팬 증후군",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/중2병",
+     "https://en.wikipedia.org/wiki/Chūnibyō"
+    ],
+    "facts": [
+     {
+      "claim": "사춘기를 비꼬는 인터넷 속어 · 1999년 이주인 히카루 라디오 발언",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/중2병",
+      "note": "1999년 진행자인 이주인 히카루는 방송에서 \"나는 아직 중2병에 걸려 있다\"고 말한 데서 유래하였다."
+     },
+     {
+      "claim": "1999년 이주인 히카루가 쓴 말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chūnibyō",
+      "note": "The term was used by Japanese comedian Hikaru Ijūin in 1999, who described the effect as if it were an illness he had contracted."
+     },
+     {
+      "claim": "숨은 지식·비밀 힘을 가졌다고 믿음",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Chūnibyō",
+      "note": "convince themselves that they have hidden knowledge or secret powers"
+     },
+     {
+      "claim": "남침 못 하는 이유 우스갯소리",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/중2병",
+      "note": "한국에서는 우스갯소리로 북한이 남침하지 못하는 이유를 '중2가 무서워서'라고 빗대기도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Chūnibyō"
+    ],
+    "hintNote": null,
+    "easiestCue": "사춘기 허세를 놀리는 신조어",
+    "worthWhyGen": "일상에서 쓰는 말과 그 유래(19 §9-1 ②③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '신조어' — 예",
+     "unique": "'이 병' · 1999년 라디오 유래로 다른 신조어와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-geo/2",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/2#g032a-g032a-j04-1",
+   "seed": {
+    "subject": "에게해",
+    "aspect": null,
+    "ref": "g032a-j04-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "그리스와 튀르키예 사이, 섬이 많은 바다입니다. 이름의 유래는 여러 설이 있습니다. 아테네 사람들은 한 왕이 아들이 죽은 줄 잘못 알고 이 바다에 몸을 던진 데서 왔다고 여겼습니다. 미노타우로스를 물리친 테세우스의 아버지 이름이 붙었다는 이 바다는?",
+    "answer": "에게해",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "테세우스가 괴물을 물리치면 흰 돛을 달고 돌아오기로 한 약속을 잊는 바람에 벌어진 일이라고 한다. '파도'를 뜻하는 그리스어에서 왔다는 설도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "그리스와 튀르키예 사이, 섬이 많은 바다",
+     "difWhy": "3 — 지리 이름 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 지리 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "산토리니·미코노스·크레타처럼 하얀 집과 파란 지붕으로 유명한 그리스 섬들이 흩어져 있는 바다다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "그리스와 튀르키예 사이의 지중해 일부 바다(Aegean Sea)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "지리·신화에서 접함",
+     "piece": "f01",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '섬 많은 바다' · 세 번째 문장이 좀 길지만 한 이야기로 이어져 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "에게해",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "에게해",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "에게해",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4693",
+      "answer": "델로스 동맹",
+      "verdict": "diff",
+      "why": "에게해 이름 유래 vs 델로스 동맹"
+     },
+     {
+      "old": "5211",
+      "answer": "사모트라케의 니케",
+      "verdict": "diff",
+      "why": "에게해 유래 vs 사모트라케 니케"
+     },
+     {
+      "old": "1838",
+      "answer": "밀",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "3793",
+      "answer": "밀",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "2601",
+      "answer": "홍해",
+      "verdict": "diff",
+      "why": "에게해 vs 홍해, 다른 바다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/에게해",
+     "https://en.wikipedia.org/wiki/Aegean_Sea"
+    ],
+    "facts": [
+     {
+      "claim": "아테네인들은 아이게우스가 투신해 바다 이름이 생겼다고 봄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/에게해",
+      "note": "특히 아테네인들 사이에서는 테세우스의 아버지인 아이게우스가 아들이 죽은 줄 착각하고 이 바다에 투신하여 그 이름에서 유래했다고 보기도 한다."
+     },
+     {
+      "claim": "테세우스의 아버지 아이게우스 · 흰 돛 약속",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aegean_Sea",
+      "note": "Aegeus, the father of Theseus, who is said to have drowned himself in the sea. According to the story, Aegeus instructed Theseus to raise white sails if he succeeded in killing the Minotaur, when Theseus forgot to do so, Aegeus believed his son had died and leapt into the sea."
+     },
+     {
+      "claim": "바다 안에 섬들 · 크레타",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Aegean_Sea",
+      "note": "The Aegean Islands are located within the sea and some bound it on its southern periphery, including Crete and Rhodes."
+     },
+     {
+      "claim": "'파도' 뜻 그리스어 설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/에게해",
+      "note": "또 한 가지는, \"파도\"를 뜻하는 그리스어 낱말 \"아이게스\"(αἶγες ...)에서 나왔다고도 하는데, 그리하여 \"파도치는 바다\"란 뜻이 된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Aegean_Sea"
+    ],
+    "hintNote": null,
+    "easiestCue": "테세우스의 아버지 이름이 붙은 그리스 쪽 바다",
+    "worthWhyGen": "익숙한 바다 이름의 유래(신화)가 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바다' 예",
+     "unique": "그리스-튀르키예 사이 + 테세우스 아버지 — 다른 바다 없음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  }
+ ]
+}

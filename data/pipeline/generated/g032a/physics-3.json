@@ -1,0 +1,260 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "physics/3",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/3#g032a-g032a-j04-6",
+   "seed": {
+    "subject": "신기루",
+    "aspect": null,
+    "ref": "g032a-j04-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바다나 사막에서 보이는 빛의 착시 현상입니다. 옛 중국 사람들은 바닷속 큰 조개가 기운을 내뿜어 공중에 누각(다락집)을 지은 것이라 여겼습니다. 그 믿음이 한자 이름에 그대로 남은 이 현상은?",
+    "answer": "신기루",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "환각과 달리 눈에 실제로 들어온 빛이 만든 영상이며, 수평선 너머의 배나 불빛이 떠 보이기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "바다나 사막에서 보이는 빛의 착시 현상",
+     "difWhy": "2 — 일상어지만 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 한자 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "뜨거운 사막이나 아스팔트 저 멀리 물이 고인 듯 보이다가, 다가가면 사라져 버리는 허상이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "공기층에서 빛이 굴절해 허상이 보이는 현상(mirage)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상 비유로도 흔한 말",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '빛의 착시 현상' 이 있고 누각은 괄호로 풀려 한자 이름 단서가 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "신기루",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "신기루",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "신기루",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4605",
+      "answer": "체렌코프 복사",
+      "verdict": "diff",
+      "why": "신기루 vs 체렌코프"
+     },
+     {
+      "old": "g032a:g032a-j06-2",
+      "answer": "편광",
+      "verdict": "diff",
+      "why": "신기루 vs 편광"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/신기루",
+     "https://en.wikipedia.org/wiki/Shen_(clam-monster)"
+    ],
+    "facts": [
+     {
+      "claim": "이름 = 큰 조개(신)가 기운을 토해 공중에 만든 누각",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신기루",
+      "note": "신기루라는 표현은 고대 중국에서 기원한 것으로, 대합, 또는 이무기의 일종인 신(蜃)이 기운(氣)을 토해내어 공중에 만들어낸 누각(樓)이라는 뜻이다."
+     },
+     {
+      "claim": "중국 신화의 蜃 = 큰 조개 · 신기루를 만든다고 믿음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shen_(clam-monster)",
+      "note": "In Chinese mythology, the shen or chen (Chinese: 蜃; ... lit. 'large clam') is a shapeshifting dragon or shellfish-type sea monster believed to create mirages."
+     },
+     {
+      "claim": "바다·사막 · 물이 고인 듯 · 수평선 너머 배와 불빛 · 환각과 다름",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/신기루",
+      "note": "바다나 사막 등에서 빛이 밀도가 다른 공기층을 통과하며 굴절해 실제 물체와 다른 위치에 상이 나타나는 현상이다. 지면에 물이 고인 것처럼 보이거나 수평선 너머의 배와 불빛이 보이는 것처럼 느껴질 수 있다. ... 관측자가 실제로 받은 빛으로 만들어진 영상이라는 점에서 단순한 환각과 다르지만"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/신기루"
+    ],
+    "hintNote": null,
+    "easiestCue": "바다나 사막에서 보이는 빛의 착시",
+    "worthWhyGen": "일상에서 쓰는 말의 한자 유래(왜 그런 이름)가 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '현상' 예",
+     "unique": "한자 이름 · 조개 전설 — 하나 (공중누각은 같은 대상 다른 이름이나 '이 현상' 이름으로 흔히 신기루)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "physics/3#g032a-g032a-j06-2",
+   "seed": {
+    "subject": "편광",
+    "aspect": null,
+    "ref": "g032a-j06-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "빛의 떨림 방향과 관련된 물리 현상입니다. 어떤 선글라스는 이 현상을 이용해 물 표면이나 유리에서 튀는 반사광을 걸러 눈부심을 줄입니다. 일부 3D 영화관 안경도 같은 원리로 왼쪽 눈과 오른쪽 눈에 서로 다른 화면을 보냅니다. 빛이 특정한 한 방향으로만 떨리게 되는 이 현상은?",
+    "answer": "편광",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "빛은 나아가는 쪽에 수직으로 떨리는 횡파라서 이런 성질을 가지며, 공기 속 소리처럼 나아가는 쪽으로 떨리는 종파에는 없다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "빛이 특정한 한 방향으로만 떨리게 되는 이 현상",
+     "difWhy": "3 — 학교 물리 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "떨림 방향이 맞는 빛만 통과시키는 필터의 원리로, 액정(LCD) 화면도 이런 필터 두 장 사이에 액정을 끼워 밝기를 조절한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "빛(횡파)의 진동 방향이 한쪽으로 정해지는 현상",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "편광 선글라스·물리 교과서",
+     "piece": "f04",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '빛의 떨림 방향과 관련된 물리 현상' 이 끝 ○○(현상)와 일치 · 선글라스·3D 안경 예가 쉬운 말"
+    },
+    "blindQuestion": {
+     "guess": "편광",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "편광",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "편광",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j04-6",
+      "answer": "신기루",
+      "verdict": "diff",
+      "why": "편광 vs 신기루"
+     },
+     {
+      "old": "4605",
+      "answer": "체렌코프 복사",
+      "verdict": "diff",
+      "why": "편광 vs 체렌코프"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/편광",
+     "https://en.wikipedia.org/wiki/Polarizer"
+    ],
+    "facts": [
+     {
+      "claim": "편광 필터는 유리·물 표면 반사광을 줄여 선글라스에 쓰인다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/편광",
+      "note": "편광 필터는 유리·물 표면에서 생기는 반사광을 줄여 피사체를 더 잘 보이게 하므로 사진과 선글라스에 쓰인다."
+     },
+     {
+      "claim": "3D 안경이 편광으로 좌우 눈 영상을 가른다 · 선글라스",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Polarizer",
+      "note": "are the lenses of the 3D glasses worn for viewing some stereoscopic movies (notably, the RealD 3D variety), where the polarization of light is used to differentiate which image should be seen by the left and right eye."
+     },
+     {
+      "claim": "LCD 는 편광판과 액정층으로 빛의 양 조절",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/편광",
+      "note": "액정 디스플레이는 서로 배치한 편광판과 액정층을 이용해 화소를 통과하는 빛의 양을 조절한다."
+     },
+     {
+      "claim": "종파는 편광 상태를 갖지 않는다",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/편광",
+      "note": "액체와 기체 속의 소리처럼 매질 입자의 변위가 진행 방향과 같은 종파는 편광 상태를 갖지 않는다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/편광"
+    ],
+    "hintNote": null,
+    "easiestCue": "반사광을 거르는 선글라스 · 3D 안경",
+    "worthWhyGen": "선글라스·3D 안경·LCD 에 쓰이는 교과 물리 개념(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '물리 현상' 예",
+     "unique": "'한 방향으로만 떨리게' — 굴절·산란과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  }
+ ]
+}

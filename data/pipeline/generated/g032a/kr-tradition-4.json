@@ -1,0 +1,140 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-tradition/4",
+  "midKey": "kr-tradition",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/4#g032a-g032a-j19-11",
+   "seed": {
+    "subject": "추임새",
+    "aspect": null,
+    "ref": "g032a-j19-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "판소리 공연에서 북을 치는 고수나 청중이 노래 사이사이에 '얼씨구', '좋다' 하고 넣는 소리입니다. 노래하는 사람의 흥을 돋우는 이 소리를 무엇이라 할까요?",
+    "answer": "추임새",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "말의 뿌리는 '정도 이상으로 칭찬하다'라는 뜻의 옛말 '추어주다'로 여겨집니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "'얼씨구', '좋다' 하고 넣는 소리",
+     "difWhy": "2 — 일상어 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 전통 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "요즘도 남의 말에 맞장구치며 분위기를 띄울 때 '~를 넣는다'고 흔히 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "판소리에서 고수·청중이 넣는 '얼씨구' 같은 흥 돋우는 소리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "판소리·일상 표현",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 곧 소리의 정체를 말하고 예시 '얼씨구·좋다' 가 있어 두 문장으로 끝남"
+    },
+    "blindQuestion": {
+     "guess": "추임새",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "추임새",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "추임새",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5471",
+      "answer": "이박사",
+      "verdict": "diff",
+      "why": "추임새 vs 이박사 — 다른 지식"
+     },
+     {
+      "old": "3728",
+      "answer": "고수",
+      "verdict": "diff",
+      "why": "추임새 vs 고수 — 다른 판소리 용어"
+     },
+     {
+      "old": "1773",
+      "answer": "장단",
+      "verdict": "diff",
+      "why": "추임새 vs 장단 — 다른 용어"
+     },
+     {
+      "old": "5036",
+      "answer": "동편제",
+      "verdict": "diff",
+      "why": "추임새 vs 동편제 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/추임새",
+     "https://ko.wikipedia.org/wiki/판소리"
+    ],
+    "facts": [
+     {
+      "claim": "판소리에서 관중이 장단에 맞춰 내는 소리 · 추어주다 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/추임새",
+      "note": "추임새란 판소리를 할 때 관중들이 장단에 맞춰 내는 소리이다. '정도 이상으로 칭찬해주다'라는 뜻의 '추어주다'가 이 말의 유래로 여겨진다."
+     },
+     {
+      "claim": "고수가 북 반주하며 '얼씨구', '좋다' 추임새 · 청중이나 고수가 흥을 돋움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/판소리",
+      "note": "고수는 광대의 소리에 북을 쳐서 반주하면서, 소리 중간중간에 '얼씨구', '좋다' 따위의 추임새를 하는 또 다른 중요한 연행자이다. … 추임새: 분위기를 조성하고 청중을 흥겹게 하려고 청중이나 고수가 '얼쑤', '좋다' 따위의 말을 하는 것을 뜻한다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'얼씨구', '좋다' 하고 넣는 소리",
+    "worthWhyGen": "판소리 용어이자 일상에서 '~를 넣다'로 쓰는 말(19 §9-1 ③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '판소리 … 넣는 소리' — 예",
+     "unique": "얼씨구·좋다 + 고수·청중 — 하나(장단과 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

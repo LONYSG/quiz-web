@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "theatre/4",
+  "midKey": "theatre",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "theatre/4#g032a-g032a-j22-3",
+   "seed": {
+    "subject": "스포트라이트",
+    "aspect": null,
+    "ref": "g032a-j22-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "공연장에서 쓰는 조명 장비입니다. 무대 위 한 사람만 좁고 강한 빛으로 동그랗게 비춥니다. 일상에서도 '세상의 주목을 받는다'는 뜻으로 '○○○○○○를 받다'라고 쓰는 이 조명은?",
+    "answer": "스포트라이트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영어로 '점'과 '빛'을 합친 말로, 원래 극장 장비 이름이던 것이 1910년대부터 '세상의 관심'이라는 비유로도 쓰였다고 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "'세상의 주목을 받는다'는 뜻으로 ○○○○○○를 받다",
+     "difWhy": "1 — 관용구가 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 관용구 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 93",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "무대 위 한 사람만 강하게 동그랗게 비추는 조명으로, 일상에서도 '세상의 주목을 받는다'는 뜻으로 '~를 받다'라고 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "무대의 한 곳·한 사람을 집중해 비추는 조명(spotlight)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 93,
+     "why": "공연·방송에서 흔함",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '조명 장비' 가 끝 '이 조명' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "스포트라이트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스포트라이트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "스포트라이트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6425",
+      "answer": "세종문화회관",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4660",
+      "answer": "프린지",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5155",
+      "answer": "볼쇼이 극장",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Spotlight_(theatre_lighting)",
+     "https://lingolandedu.com/ko/english-korean-dictionary/spotlight",
+     "https://www.etymonline.com/kr/word/spotlight"
+    ],
+    "facts": [
+     {
+      "claim": "공연장에서 한 사람을 밝게 비추는 강한 조명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Spotlight_(theatre_lighting)",
+      "note": "A spotlight (or followspot) is a powerful stage lighting instrument which projects a bright beam of light onto a performance space. Spotlights are controlled by a spotlight operator who tracks actors around the stage."
+     },
+     {
+      "claim": "좁고 강한 빛 · 비유적 뜻 '대중의 주목'",
+      "where": "q",
+      "url": "https://lingolandedu.com/ko/english-korean-dictionary/spotlight",
+      "note": "a lamp projecting a narrow, intense beam of light directly on to a place or person / intense public attention or scrutiny"
+     },
+     {
+      "claim": "spot + light · 원래 극장 장비 · 비유 1916년부터",
+      "where": "e",
+      "url": "https://www.etymonline.com/kr/word/spotlight",
+      "note": "원래는 극장 장비의 일종이었으며, 비유적인 의미는 1916년부터 증명됨."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Spotlight_(theatre_lighting)"
+    ],
+    "hintNote": null,
+    "easiestCue": "'○○○○○○를 받다' = 주목받다",
+    "worthWhyGen": "3 — 일상에서 쓰는 말이 무대 조명에서 왔다는 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '조명 장비' — 예",
+     "unique": "빈칸 6칸 = 스포트라이트",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "콘서트에서 객석 뒤 조명 기사가 직접 손으로 돌려 가며 움직이는 가수를 따라 비추는 빛이다."
+      },
+      "why": "팔로 스폿(조작 방식)이 아니라 조명 이름 자체와 관용 표현을 핵심으로"
+     }
+    ],
+    "warn": [
+     "힌트 question",
+     "crossans 주목"
+    ],
+    "job": "job-22"
+   }
+  }
+ ]
+}

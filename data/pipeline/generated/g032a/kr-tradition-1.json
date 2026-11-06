@@ -1,0 +1,118 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-tradition/1",
+  "midKey": "kr-tradition",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/1#g032a-g032a-j27-2",
+   "seed": {
+    "subject": "복조리",
+    "aspect": null,
+    "ref": "g032a-j27-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "설날에 얽힌 살림 도구입니다. 설날 이른 새벽, 쌀을 일 듯 한 해의 행운을 건져 담으라는 뜻으로 부엌이나 안방 벽에 걸어 두었습니다. 본래는 쌀에서 돌을 골라내던 도구입니다. 이것은?",
+    "answer": "복조리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "쌀을 이는 일상 도구 이름 앞에 '복' 자를 붙인 것으로, 정월 초하루에 그해 복을 일어 얻는다는 뜻을 담았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "설날 이른 새벽 한 해의 행운을 건져 담으라는 뜻으로 벽에 걸어 두던 것",
+     "difWhy": "2 — 복조리 풍습은 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 풍습의 까닭",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "싸리나 가는 대오리로 작은 삼태기 모양으로 엮은 새해 장식으로, 설 전날 밤 자정이 지나서 걸기도 했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "설날 새벽 복을 일어 담으라는 뜻으로 벽에 거는 조리(쌀 이는 도구)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "설 풍습으로 들어 봄",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '살림 도구' 종류가 있고 '쌀을 일 듯' 풀이가 문장 안에 있음"
+    },
+    "blindQuestion": {
+     "guess": "복조리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "복조리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "복조리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/복조리",
+     "https://ko.wikipedia.org/wiki/조리_(도구)"
+    ],
+    "facts": [
+     {
+      "claim": "많은 복을 받는다 해서 설날 이른 아침 벽에 거는 조리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/복조리",
+      "note": "복조리(福笊籬)는 많은 복을 받는다 해서 설날 이른 아침, 또는 섣달그믐날 밤 자정이 지나서 벽에 걸어두는 조리다."
+     },
+     {
+      "claim": "조리 = 쌀을 이는 기구 · 정월 초하루 새벽 복을 일어 얻는다는 뜻으로 부엌·안방 벽에 걸면 복조리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/조리_(도구)",
+      "note": "조리(笊籬)는 쌀을 이는 데에 쓰는 기구이다. 가는 대오리나 싸리 따위로 결어서 조그만 삼태기 모양으로 만든다. 음력 정월 초하룻날 새벽에, 그해의 복을 조리로 일어 얻는다는 뜻에서 부엌이나 안방, 마루 따위의 벽에 걸어 놓는 조리는 \"복조리\"라 부른다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/조리_(도구)",
+     "https://ko.wikipedia.org/wiki/복조리"
+    ],
+    "hintNote": null,
+    "easiestCue": "설날 새벽 벽에 거는 쌀 이는 도구",
+    "worthWhyGen": "3 — 설 풍속의 상식 · 이름의 까닭(복을 일어 담는다)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '살림 도구' — 예",
+     "unique": "설날 + 벽에 거는 + 쌀 이는 도구 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

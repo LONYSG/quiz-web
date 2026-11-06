@@ -1,0 +1,386 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "transport/3",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/3#g032a-g032a-j21-7",
+   "seed": {
+    "subject": "모노레일",
+    "aspect": null,
+    "ref": "g032a-j21-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "철도의 한 방식입니다. 굵은 콘크리트 빔 하나를 궤도로 삼아, 고무바퀴 열차가 그 위에 올라타 달리거나 아래에 매달려 달립니다. 우리나라에서는 대구 도시철도 3호선이 이 방식인데, 이 철도는?",
+    "answer": "모노레일",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "대구 3호선은 2015년 개통했고, 건설비가 기존 지하철의 절반쯤이라 이 방식을 골랐습니다. 열차는 무인 자동으로 달립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "굵은 콘크리트 빔 하나를 궤도로 삼아",
+     "difWhy": "2 — 한 줄 궤도 단서에서 모노레일로 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교통 방식 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "도시철도와 버스 사이만큼의 승객을 나르는 경전철로, 독일 부퍼탈에서는 1901년부터 달렸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "궤도 하나(빔) 위·아래를 달리는 철도",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "놀이공원·도시철도에서 접함",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '철도의 한 방식' = 끝 ○○ '철도'. 빔 위·아래 주행 설명이 구체적"
+    },
+    "blindQuestion": {
+     "guess": "모노레일",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "모노레일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "모노레일",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/모노레일",
+     "https://ko.wikipedia.org/wiki/대구_도시철도_3호선",
+     "https://en.wikipedia.org/wiki/Monorail"
+    ],
+    "facts": [
+     {
+      "claim": "한 개의 궤도거더 위를 고무타이어 열차가 운행 · 과좌식/현수식 · 국내 운행은 대구 도시철도 3호선",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/모노레일",
+      "note": "콘크리트나 철제 빔으로 이루어져 있는 한 개의 궤도거더 위를 고무타이어나 철륜이 달린 열차가 운행한다. 차량의 지지방식에 따라 과좌식(궤도 상부를 열차가 달리는 방식)과 현수식(열차가 궤도 하부에 매달려서 운행하는 방식)으로 나뉜다. … 대한민국에서 운행 중인 모노레일은 대구 도시철도 3호선이 있다."
+     },
+     {
+      "claim": "대구 3호선 = 과좌식 모노레일 · 바퀴는 고무타이어",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대구_도시철도_3호선",
+      "note": "과좌식 모노레일 대중교통 수단이다. … 과좌식은 알웨그식(ALWEG式)을 기본으로 하여 궤도빔을 크게 하고 … 바퀴는 고무타이어이다."
+     },
+     {
+      "claim": "단일 레일·빔 위를 달리거나 매달림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Monorail",
+      "note": "A monorail is a form of urban rail transit in which trains run on or are suspended from a single rail or beam."
+     },
+     {
+      "claim": "수송 규모 도시철도와 버스 중간 · 경전철 분류 · 부퍼탈 현수식 1901년 여객 영업",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/모노레일",
+      "note": "모노레일의 수송규모가 도시철도와 버스의 중간이기 때문에 … 경전철로 분류된다. … 독일의 부퍼탈시에 건설된 13.3km의 현수식 모노레일로, 1901년 여객영업을 시작하면서 등장하였다."
+     },
+     {
+      "claim": "2015년 개통 · 건설비 50% 절감 · 무인자동운전",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/대구_도시철도_3호선",
+      "note": "개통 시기를 당초 2014년 12월에서 2015년 4월로 연기 … 기존 도시 철도에 비해 건설비 50%, 운영비 25% 절감된다고 밝혔다. … 모노레일은 무인자동운전으로 운행되며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/모노레일"
+    ],
+    "hintNote": null,
+    "easiestCue": "대구 도시철도 3호선",
+    "worthWhyGen": "국내 도시에서 실제로 타는 교통수단의 이름과 원리",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '철도의 한 방식' — 예",
+     "unique": "빔 하나 궤도 · 대구 3호선으로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "transport/3#g032a-g032a-j21-13",
+   "seed": {
+    "subject": "스크린도어",
+    "aspect": null,
+    "ref": "g032a-j21-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지하철역 승강장 끝을 따라 세운 유리 칸막이 시설입니다. 평소에는 닫혀 있다가 열차가 서면 열차 출입구와 맞춰 열립니다. 사람이 선로로 떨어지는 사고를 막는 이 시설은?",
+    "answer": "스크린도어",
+    "acceptedAnswers": [
+     "안전문",
+     "승강장 안전문"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "세계 첫 설치는 1961년 소련 레닌그라드(지금 상트페테르부르크) 지하철입니다. 국내에서는 2002년 인천역에 시험 삼아 처음 달았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "지하철역 승강장 끝을 따라 세운 유리 칸막이 시설",
+     "difWhy": "1 — 일상 시설",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "서울 지하철에 들어선 뒤 선로 투신 사고가 크게 줄었고, 역 냉방 효율도 30% 좋아졌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "승강장과 선로 사이를 막는 자동문 칸막이(platform screen doors)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "지하철 일상",
+     "piece": "f01",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '유리 칸막이 시설' 종류가 있음"
+    },
+    "blindQuestion": {
+     "guess": "스크린도어",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스크린도어",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "스크린도어",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6776",
+      "answer": "런던",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1263",
+      "answer": "1호선",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/스크린도어",
+     "https://en.wikipedia.org/wiki/Platform_screen_doors"
+    ],
+    "facts": [
+     {
+      "claim": "철도역 승강장에 설치 · 평상시 닫혀 있다 열차 도착에 맞춰 개폐하는 안전 시설 · 2013년부터 '안전문' 권고",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스크린도어",
+      "note": "스크린도어(영어: Platform Screen Doors; PSD) 또는 안전문(安全門)은 철도역하고 전철역의 승강장에 설치되는 안전 시설의 일종으로, 평상시에는 닫혀 있다가 열차의 도착에 맞추어 자동 혹은 수동으로 출입문을 개폐하는 형태다. … 국립국어원의 권고에 따라 2013년부터 '안전문'이라는 표현을 사용하고 있다."
+     },
+     {
+      "claim": "선로 추락 방지 · 한국 철도 자살 89% 감소 · 서울 지하철 냉방 효율 30% 개선",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Platform_screen_doors",
+      "note": "Prevent people from accidentally falling onto the tracks, getting too close to moving trains, and committing suicide (by jumping) … Use of platform screen doors in South Korea has reduced rail related suicide by 89%. … Installation of platform screen doors on Seoul's subway improved cooling efficiency by 30%"
+     },
+     {
+      "claim": "1961년 상트페테르부르크(레닌그라드) 파르크 포베디역이 세계 첫 승강장 문",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Platform_screen_doors",
+      "note": "Park Pobedy … is a station of the Saint Petersburg Metro that was the first station in the world with platform doors. The station was opened in 1961. Later, nine more stations of this type were built in Leningrad (nowadays Saint Petersburg)"
+     },
+     {
+      "claim": "국내 첫 스크린도어 2002년 2월 인천역 실험 설치",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/스크린도어",
+      "note": "대한민국 최초의 스크린도어는 스크린도어 기술을 개발하던 피에스에스텍(PSS Tech)이 2002년 2월에 실험 목적으로 곡선이 심한 인천역에 설치한 것으로"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Platform_screen_doors"
+    ],
+    "hintNote": null,
+    "easiestCue": "승강장 유리 칸막이 · 열차가 서면 열림",
+    "worthWhyGen": "매일 타는 지하철의 안전 시설 이름 · 우리말 '안전문'",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '유리 칸막이 시설' — 예",
+     "unique": "승강장 칸막이 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "transport/3#g032a-g032a-j31-12",
+   "seed": {
+    "subject": "표준시",
+    "aspect": null,
+    "ref": "g032a-j31-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 나라나 넓은 지역이 함께 쓰는 시각 이야기입니다. 철도가 깔리기 전 영국 도시들은 저마다 해를 기준으로 한 시각을 써서, 역마다 시간이 몇 분씩 달랐습니다. 1840년 영국 철도가 시계를 하나로 맞춘 데서 퍼진 이 시간 제도는?",
+    "answer": "표준시",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1883년 미국·캐나다 철도 회사들도 전신 신호에 맞춰 시계를 시간대 체계로 일제히 고쳤다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "영국 철도가 시계를 하나로 맞춘 데서 퍼진 시간 제도",
+     "difWhy": "2 — 일상어 · 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 제도 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "한국은 영국 그리니치보다 9시간 빠른, 동경 135도를 기준으로 한 시각을 이 시간으로 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한 나라·지역이 공통으로 쓰는 시각(standard time)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "시차·지리 상식",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장은 모호하나 '시각' 이라는 종류가 있고 끝 ○○ '시간 제도' 로 곧 정리됨"
+    },
+    "blindQuestion": {
+     "guess": "표준시",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "표준시",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "표준시",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5738",
+      "answer": "사모아",
+      "verdict": "diff",
+      "why": "표준시와 사모아 날짜변경선 일화는 다름"
+     },
+     {
+      "old": "5414",
+      "answer": "자격루",
+      "verdict": "diff",
+      "why": "표준시와 자격루(물시계 복원)는 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Railway_time",
+     "https://en.wikipedia.org/wiki/Standard_time",
+     "https://ko.wikipedia.org/wiki/표준시"
+    ],
+    "facts": [
+     {
+      "claim": "1840 그레이트웨스턴 철도 · 첫 표준 시각 · 도시마다 지방시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Railway_time",
+      "note": "Railway time was the standardised time arrangement first applied by the Great Western Railway in England in November 1840, the first recorded occasion when different local mean times were synchronised and a single standard time applied. … confusion caused by having non-uniform local times in each town and station stop"
+     },
+     {
+      "claim": "영국 도시 지방시 → 철도가 GMT 채택 → 표준시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Standard_time",
+      "note": "Through the mid-19th century, cities in Great Britain maintained their own local time. As railroads were introduced, timetables listed multiple arrival and departure times based on these local time zones. … GMT was also given the name railway time … GMT became the legal standard time in 1880."
+     },
+     {
+      "claim": "표준시 정의",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/표준시",
+      "note": "표준시(標準時)는 한 국가 또는 넓은 지역이 공통으로 사용되는 지방시(地方時)를 말한다."
+     },
+     {
+      "claim": "1883 미국·캐나다 철도 시간대",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Standard_time",
+      "note": "on Sunday, November 18, 1883, all United States and Canadian railroads would readjust their clocks and watches to reflect the new five-zone system on a telegraph signal from the Allegheny Observatory"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "한 나라가 함께 쓰는 시각",
+    "worthWhyGen": "표준시가 왜 생겼는가 — 철도 때문(까닭)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '함께 쓰는 시각' 예",
+     "unique": "표준시 — 서머타임·세계협정시와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

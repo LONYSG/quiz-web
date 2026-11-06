@@ -1,0 +1,268 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-lit/5",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/5#g032a-g032a-j01-3",
+   "seed": {
+    "subject": "무릉도원",
+    "aspect": null,
+    "ref": "g032a-j01-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "속세를 떠난 이상향을 흔히 이 네 글자 말로 부릅니다. 중국 동진의 시인 도연명이 쓴 '도화원기'에서 왔습니다. 한 어부가 복숭아꽃 숲 끝의 동굴을 지나, 진나라 때 난리를 피해 숨어든 사람들의 평화로운 마을을 찾았다는 이야기입니다. 이 말은?",
+    "answer": "무릉도원",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "앞 두 글자는 그 어부가 살던 고장 이름이고, 중국에서는 '세외도원'이 뜻밖의 절경을 이르는 사자성어로 쓰인다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "속세를 떠난 이상향을 흔히 이 네 글자 말로 부릅니다",
+     "difWhy": "2 — 이상향 네 글자 말은 한 번 떠올리면 됨",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 사자성어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "어부가 나오며 길에 표시를 남겼지만 그 뒤 누구도 다시 찾지 못한 마을을 가리키며, 중국 후난성에는 이 이야기를 본뜬 국립공원도 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도연명 '도화원기'에서 온, 이상향을 이르는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "이상향 표현으로 널리 쓰임",
+     "piece": "f03",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '이상향을 부르는 네 글자 말' 로 종류(말)가 분명 · 이야기 요약은 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "무릉도원",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "무릉도원",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "무릉도원",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4714",
+      "answer": "금병매",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(무릉도원 / 금병매)"
+     },
+     {
+      "old": "6132",
+      "answer": "다케토리 이야기",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(무릉도원 / 다케토리 이야기)"
+     },
+     {
+      "old": "4025",
+      "answer": "아Q정전",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(무릉도원 / 아Q정전)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/무릉도원",
+     "https://en.wikipedia.org/wiki/Peach_Blossom_Spring"
+    ],
+    "facts": [
+     {
+      "claim": "도연명 도화원기 · 세속을 떠난 별천지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무릉도원",
+      "note": "도원향(桃源鄕)은 중국 동진 때 도연명이 언급한 이상향이다. 도연명(陶淵明)의 《도화원기》(桃花源記)에 나오는 선경(仙境) 이야기에서 나오는 세속을 떠난 별천지인 무릉도원(武陵桃源)을 가리키기도 한다."
+     },
+     {
+      "claim": "무릉 어부 · 복숭아꽃 숲 · 동굴 · 진나라 난리 피한 마을 · 다시 못 찾음 · 이백",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Peach_Blossom_Spring",
+      "note": "a fisherman from Wuling haphazardly sailed into a river in a forest made up entirely of blossoming peach trees ... the source turned out to be a Dongtian Grotto ... their ancestors escaped to this place during the civil unrest of the Qin dynasty ... others, who attempted repeatedly – but in vain – to locate it. ... Li Bai referenced the Peach Blossom Spring in his poem"
+     },
+     {
+      "claim": "세외도원 사자성어",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Peach_Blossom_Spring",
+      "note": "The expression shìwaì taóyuán (世外桃源) ... has become a popular four-character idiom (chengyu), meaning an unexpectedly fantastic place off the beaten path"
+     },
+     {
+      "claim": "후난성 국립공원",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Peach_Blossom_Spring",
+      "note": "Taohuayuan Scenic Area is a national park based on The Peach Blossom Spring located in Taoyuan County, Hunan, China."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Peach_Blossom_Spring"
+    ],
+    "hintNote": null,
+    "easiestCue": "속세를 떠난 이상향을 이르는 네 글자 말",
+    "worthWhyGen": "일상에서 쓰는 말(이상향)의 문학 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '네 글자 말' 예",
+     "unique": "네 글자 한정 — 도원경·도원향과 갈림(B2)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "world-lit/5#g032a-g032a-j12-5",
+   "seed": {
+    "subject": "무협 소설",
+    "aspect": null,
+    "ref": "g032a-j12-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국에서 이어져 온 소설 갈래입니다. 뛰어난 무술 솜씨와 의리를 갖춘 떠돌이 영웅들이 '강호'를 누비며 겨룹니다. 김용의 '의천도룡기'가 대표작인 이 소설 갈래는?",
+    "answer": "무협 소설",
+    "acceptedAnswers": [
+     "무협지",
+     "무협"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름의 '협(俠)'은 약한 사람을 돕는 의리를 뜻한다. 소설뿐 아니라 영화·드라마·게임으로도 널리 만들어진다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "뛰어난 무술 솜씨와 의리를 갖춘 떠돌이 영웅들이 '강호'를 누비며",
+     "difWhy": "2 — 강호·무술 단서가 곧 답에 가까움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 소설 갈래 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "'동양의 판타지'라고도 불리며, 오랜 수련으로 내공을 쌓은 고수들이 칼과 권법으로 겨룬다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "무술과 의리를 다루는 중국 전통의 소설 장르",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "영화·웹소설에서 흔함",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '소설 갈래' = 끝 ○○ '소설 갈래'. '강호' 는 따옴표 속 단서 용어이고 문장 뜻은 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "무협소설",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "무협",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "무협 소설",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/무협",
+     "https://en.wikipedia.org/wiki/Wuxia"
+    ],
+    "facts": [
+     {
+      "claim": "무술과 협의를 소재로 한 장르 · 동양의 판타지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무협",
+      "note": "무협(武俠)이란 '무술'과 '협의'를 소재로 하는 장르로, 수련과 전투가 주로 묘사된다. 판타지라는 관점에서는, “동양의 판타지”라는 뜻에서 오리엔털 판타지로도 불린다."
+     },
+     {
+      "claim": "중국 소설 장르 · 강호가 무대 · 떠도는 협객",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wuxia",
+      "note": "Wuxia (武俠, lit. 'martial arts and chivalry') is a genre of Chinese fiction ... youxia (遊俠, literally \"wandering xia\") ... Jianghu is the setting that wuxia stories inhabit."
+     },
+     {
+      "claim": "김용 원작 의천도룡기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무협",
+      "note": "김용 원작의 '의천도룡기'와 '신조협려'는 해마다 제작되면서 인기를 끌고 있다."
+     },
+     {
+      "claim": "내공 수련 · 병장기",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/무협",
+      "note": "오랜 수련과 단련을 통해 연마된 ... 내공의 힘과 그러한 힘을 병장기 등의 도구를 통해 외부의 무력으로 발산하는 외공의 힘이 등장하고"
+     },
+     {
+      "claim": "俠 = chivalrous/hero · 영화·드라마·게임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Wuxia",
+      "note": "xiá (俠, literally \"chivalrous\", \"vigilante\" or \"hero\") ... adapted for such diverse art forms as Chinese opera, manhua, television dramas, films, donghua, and video games."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/무협"
+    ],
+    "hintNote": null,
+    "easiestCue": "무술과 의리의 영웅이 강호를 누비는 중국 소설 갈래",
+    "worthWhyGen": "대중문화 장르 이름과 그 뜻(일반 상식)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '소설 갈래' 예",
+     "unique": "중국 · 강호 · 김용 — 하나(무협지·무협 같은 대상 변형)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  }
+ ]
+}

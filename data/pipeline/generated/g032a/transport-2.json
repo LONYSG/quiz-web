@@ -1,0 +1,177 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "transport/2",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/2#g032a-g032a-j29-5",
+   "seed": {
+    "subject": "테슬라",
+    "aspect": null,
+    "ref": "g032a-j29-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 전기자동차 회사입니다. 2003년 마틴 에버하드와 마크 타페닝이 세웠습니다. 회사 이름은 교류 전기 시대를 연 세르비아계 미국인 물리학자이자 전기공학자의 성에서 따왔습니다. 이 회사는?",
+    "answer": "테슬라",
+    "acceptedAnswers": [
+     "Tesla"
+    ],
+    "originalTitleVariants": [
+     "Tesla"
+    ],
+    "explanation": "머스크는 2004년 첫 투자를 이끌며 이사회 의장이 되었고 2008년 최고 경영자가 되었습니다. 2009년 합의로 다섯 사람이 공동 창업자를 자칭할 수 있게 되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "미국의 전기자동차 회사 … 세르비아계 미국인 물리학자",
+     "difWhy": "2 — 유명 기업 · 전기차 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 회사 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "일론 머스크가 이끄는 회사로, 모델 3·모델 Y 같은 전기차와 픽업트럭 사이버트럭을 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 전기자동차 회사(Tesla, Inc.) — 니콜라 테슬라를 기린 이름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "뉴스·주식에서 매우 유명",
+     "piece": "f06",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '전기자동차 회사' = 끝 ○○ '회사'. 이름 유래 문장의 수식이 길지만 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "테슬라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "테슬라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "테슬라",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 4,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "교류 전기 시대 — 전류 전쟁의 테슬라(활성 #3552 교류 질문과 같은 사실 배경)",
+       "url": "https://ko.wikipedia.org/wiki/니콜라_테슬라",
+       "note": "knowledge — 니콜라 테슬라는 교류 전력 시스템 개발로 알려진 세르비아계 미국인 발명가(일반 상식 · 활성 #3552 질문이 '테슬라·웨스팅하우스' 의 교류를 언급)"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "2865",
+      "answer": "탄소 배출권",
+      "verdict": "diff",
+      "why": "신규 '테슬라'(다른 자동차·전기 지식) ≠ 옛 '탄소 배출권' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3552",
+      "answer": "교류",
+      "verdict": "diff",
+      "why": "신규 '테슬라'(다른 자동차·전기 지식) ≠ 옛 '교류' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "6081",
+      "answer": "재규어",
+      "verdict": "diff",
+      "why": "신규 '테슬라'(다른 자동차·전기 지식) ≠ 옛 '재규어' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5156",
+      "answer": "마세라티",
+      "verdict": "diff",
+      "why": "신규 '테슬라'(다른 자동차·전기 지식) ≠ 옛 '마세라티' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3252",
+      "answer": "폭스바겐",
+      "verdict": "diff",
+      "why": "신규 '테슬라'(다른 자동차·전기 지식) ≠ 옛 '폭스바겐' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/테슬라_(기업)",
+     "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+     "https://ko.wikipedia.org/wiki/니콜라_테슬라"
+    ],
+    "facts": [
+     {
+      "claim": "2003년 마틴 에버하드·마크 타페닝 창업 · 이름은 니콜라 테슬라를 기림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/테슬라_(기업)",
+      "note": "2003년, 마틴 에버하드(CEO)와 마크 타페닝(CFO)이 창업했다 ... 회사 이름은 물리학자이자 전기공학자인 니콜라 테슬라를 기리기 위해 지었다."
+     },
+     {
+      "claim": "incorporated 2003 · tribute to Nikola Tesla",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+      "note": "The company was incorporated in July 2003 by Martin Eberhard and Marc Tarpenning as Tesla Motors. Its name is a tribute to the inventor and electrical engineer Nikola Tesla."
+     },
+     {
+      "claim": "교류 전기 시대 — 전류 전쟁의 테슬라(활성 #3552 교류 질문과 같은 사실 배경)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/니콜라_테슬라",
+      "note": "knowledge — 니콜라 테슬라는 교류 전력 시스템 개발로 알려진 세르비아계 미국인 발명가(일반 상식 · 활성 #3552 질문이 '테슬라·웨스팅하우스' 의 교류를 언급)"
+     },
+     {
+      "claim": "모델 3·Y · 사이버트럭 · 머스크",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+      "note": "the Model 3 sedan in 2017; the Model Y crossover in 2020; ... and the Cybertruck pickup truck in 2023."
+     },
+     {
+      "claim": "2004 투자·의장, 2008 CEO, 2009 합의",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+      "note": "In February 2004, Elon Musk led Tesla's first funding round and became the company's chairman ... in 2008, he was named chief executive officer. / A lawsuit settlement ... in September 2009 allows all five ... to call themselves co-founders."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tesla,_Inc."
+    ],
+    "hintNote": null,
+    "easiestCue": "전기차 회사 · 발명가 이름",
+    "worthWhyGen": "3 — 누구나 아는 브랜드의 이름 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '전기자동차 회사' — 예",
+     "unique": "전기차 회사 + 발명가 성 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

@@ -1,0 +1,307 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-east/3",
+  "midKey": "world-history-east",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-east/3#g032a-g032a-j13-1",
+   "seed": {
+    "subject": "인도차이나반도",
+    "aspect": null,
+    "ref": "g032a-j13-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "베트남·라오스·캄보디아·태국·미얀마가 자리 잡은 동남아시아의 큰 반도입니다. 이 땅이 서쪽과 북쪽의 두 큰 문명에게서 함께 영향을 받았다는 뜻으로, 19세기 유럽 학자들이 붙인 이름입니다. 이 반도는 무엇일까요?",
+    "answer": "인도차이나반도",
+    "acceptedAnswers": [
+     "인도차이나",
+     "인도지나반도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 1804년 무렵 덴마크 출신 지리학자 말트브룅 등이 처음 썼습니다. 오늘날에는 '대륙부 동남아시아'라는 말을 더 흔히 씁니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "베트남·라오스·캄보디아·태국·미얀마가 자리 잡은 동남아시아의 큰 반도",
+     "difWhy": "2 — 나라 목록 단서에서 이름이 이어짐",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 지리 상식 + 이름 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "프랑스가 이 지역에 세운 식민지 '프랑스령 ~'에도 그대로 쓰인 반도 이름이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "베트남·태국 등이 있는 동남아시아 대륙부 반도",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "지리·역사 교과서에서 접함",
+     "piece": "f07",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=반도, 첫 문장에 '큰 반도'와 나라 목록이 있다. 둘째 문장 '이 땅'은 첫 문장의 반도를 가리켜 헷갈리지 않는다."
+    },
+    "blindQuestion": {
+     "guess": "인도차이나반도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "인도차이나",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "인도차이나반도",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j20-1",
+      "answer": "태국",
+      "verdict": "diff",
+      "why": "인도차이나반도 vs 태국(옛것 비활성)"
+     },
+     {
+      "old": "3972",
+      "answer": "앙코르 와트",
+      "verdict": "diff",
+      "why": "인도차이나반도 vs 앙코르 와트"
+     },
+     {
+      "old": "3322",
+      "answer": "크메르 루주",
+      "verdict": "diff",
+      "why": "인도차이나반도 vs 크메르 루주"
+     },
+     {
+      "old": "5639",
+      "answer": "호찌민",
+      "verdict": "diff",
+      "why": "인도차이나반도 vs 호찌민 출국"
+     },
+     {
+      "old": "6460",
+      "answer": "호찌민",
+      "verdict": "diff",
+      "why": "인도차이나반도 vs 호찌민 유언"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/인도차이나반도",
+     "https://en.wikipedia.org/wiki/Mainland_Southeast_Asia"
+    ],
+    "facts": [
+     {
+      "claim": "베트남·라오스·캄보디아·태국·미얀마가 있는 반도 · 인도 동쪽 중국 남쪽 · 양쪽 문화 영향",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/인도차이나반도",
+      "note": "지정학적으로 인도의 동쪽, 중국 대륙의 남쪽에 자리잡고 있어 역사적으로 양쪽 문화의 영향을 깊게 받았다. … 인도차이나반도에 있는 나라들: 라오스 미얀마 베트남 캄보디아 태국"
+     },
+     {
+      "claim": "19세기 초 인도·중국 문명의 영향을 강조해 만든 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mainland_Southeast_Asia",
+      "note": "The term Indochina (originally Indo-China) was coined in the early nineteenth century, emphasizing the historical cultural influence of Indian and Chinese civilizations on the region."
+     },
+     {
+      "claim": "프랑스령 인도차이나 식민지 이름",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Mainland_Southeast_Asia",
+      "note": "The term was later adopted as the name of the colony of French Indochina"
+     },
+     {
+      "claim": "말트브룅 1804 · 오늘날 Mainland Southeast Asia 더 흔히",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mainland_Southeast_Asia",
+      "note": "The origins of the name Indo-China are usually attributed jointly to the Danish-French geographer Conrad Malte-Brun, who referred to the area as indo-chinois in 1804 … Today, the term Mainland Southeast Asia is more commonly used"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mainland_Southeast_Asia"
+    ],
+    "hintNote": null,
+    "easiestCue": "베트남·라오스·캄보디아·태국·미얀마가 있는 반도",
+    "worthWhyGen": "익숙한 지역 이름이 '인도+중국' 두 문명 사이라는 유래를 질문이 묻는다(유래 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '반도' 예",
+     "unique": "나라 다섯 + 반도로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "world-history-east/3#g032a-g032a-j20-1",
+   "seed": {
+    "subject": "태국",
+    "aspect": null,
+    "ref": "g032a-j20-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "동남아시아의 한 나라입니다. 19세기 서양 열강이 이 지역을 식민지로 나눠 가질 때, 이 나라만은 식민지가 되지 않고 독립을 지켰습니다. 옛 이름은 '시암'입니다. 이 나라는 어디일까요?",
+    "answer": "태국",
+    "acceptedAnswers": [
+     "타이"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영국과 프랑스가 두 식민지 사이의 완충 국가로 두기로 합의한 것도 독립을 지킨 까닭이고, 1939년 옛 이름 대신 지금 이름을 국호로 삼았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "옛 이름은 '시암'입니다",
+     "difWhy": "2 — 식민지 안 된 나라 · 시암에서 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 세계사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "수도는 방콕이며, 1932년 무혈 정변 뒤 지금까지 국왕이 있는 입헌 군주국으로 이어져 온 나라다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "동남아시아의 왕국(수도 방콕) — 옛 이름 시암",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "여행지로 유명한 나라",
+     "piece": "f07",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '동남아시아의 한 나라' 가 있어 끝 ○○ 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "태국",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "태국",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "태국",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "87",
+      "answer": "팟타이",
+      "verdict": "diff",
+      "why": "태국 시암 독립 vs 팟타이 — 다른 지식"
+     },
+     {
+      "old": "5752",
+      "answer": "무에타이",
+      "verdict": "diff",
+      "why": "태국 vs 무에타이 — 다른 지식"
+     },
+     {
+      "old": "1903",
+      "answer": "대승불교",
+      "verdict": "diff",
+      "why": "태국 vs 대승불교 — 다른 지식"
+     },
+     {
+      "old": "637",
+      "answer": "샴",
+      "verdict": "diff",
+      "why": "태국 vs 샴 고양이 — 다른 지식"
+     },
+     {
+      "old": "703",
+      "answer": "방콕",
+      "verdict": "diff",
+      "why": "태국 나라 vs 방콕 수도 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/태국",
+     "https://en.wikipedia.org/wiki/Thailand"
+    ],
+    "facts": [
+     {
+      "claim": "동남아에서 유일하게 서구 식민지가 되지 않음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/태국",
+      "note": "태국은 동남아시아에서 유일하게 서구 열강의 식민통치를 받지 않고 독립을 유지하였다."
+     },
+     {
+      "claim": "옛 이름 시암 · 식민지 안 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thailand",
+      "note": "Thailand, officially the Kingdom of Thailand, and formerly known as Siam ... Siam remained the only country in Southeast Asia to avoid colonisation by European powers"
+     },
+     {
+      "claim": "수도 방콕 · 1932 입헌군주정",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/태국",
+      "note": "수도이자 최대 도시는 방콕이다. / 1932년 6월 24일, 태국 인민당이 무혈쿠데타에 성공하며 권력을 국왕에게서 빼앗아 입헌군주정의 기틀을 닦았다."
+     },
+     {
+      "claim": "완충국 · 1939 국호 변경",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/태국",
+      "note": "영국과 프랑스가 태국을 사이에 두어 완충 국가로 만들기로 합의하면서 태국은 동남아에서 유일하게 서구 세력들에 의하여 식민화가 되지 않은 국가로 남아있을 수 있었다. / 1939년 6월에 국호를 시암에서 타이로 고쳤다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/태국"
+    ],
+    "hintNote": null,
+    "easiestCue": "동남아에서 유일하게 식민지가 되지 않은 나라 · 옛 이름 시암",
+    "worthWhyGen": "3 — 이웃 나라와 달리 식민지가 되지 않은 나라라는 세계사 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '나라' — 예",
+     "unique": "동남아 + 식민지 안 됨 + 시암 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  }
+ ]
+}

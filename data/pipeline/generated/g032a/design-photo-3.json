@@ -1,0 +1,129 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "design-photo/3",
+  "midKey": "design-photo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/3#g032a-g032a-j22-4",
+   "seed": {
+    "subject": "캘리그래피",
+    "aspect": null,
+    "ref": "g032a-j22-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "글씨를 그림처럼 아름답게 쓰는 손글씨 디자인입니다. 붓이나 펜으로 글자 모양을 자유롭게 바꿔 감정을 담아 냅니다. 그리스어로 '아름다움'과 '쓰기'를 합친 말에서 이름이 온 이 기술은?",
+    "answer": "캘리그래피",
+    "acceptedAnswers": [
+     "캘리그라피"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "서양에서는 영국의 에드워드 존스턴이 이 기술을 되살렸고, 요즘도 결혼 청첩장 같은 격식 있는 자리에 많이 쓰입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "글씨를 그림처럼 아름답게 쓰는 손글씨 디자인",
+     "difWhy": "2 — 손글씨 디자인 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 취미 영역 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "드라마 제목이나 소주병 상표처럼 붓으로 개성 있게 멋 내어 쓴 손글씨 문구를 만드는 일이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "글씨를 아름답게 쓰는 손글씨 예술·디자인(calligraphy)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "손글씨 디자인 유행",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '손글씨 디자인'이 끝 ○○=기술. 그리스어 풀이도 뜻이 직접 붙음."
+    },
+    "blindQuestion": {
+     "guess": "캘리그래피",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "캘리그라피",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "캘리그래피",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 2,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "에드워드 존스턴 부흥 · 청첩장",
+       "url": "https://en.wikipedia.org/wiki/Calligraphy",
+       "note": "(ko) 이것을 부흥시킨 사람은 영국의 에드워드 존스턴(Edward Johnston)이고 / (en) Modern Western calligraphy is mainly used in formal settings, i"
+      }
+     ]
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/캘리그래피",
+     "https://en.wikipedia.org/wiki/Calligraphy"
+    ],
+    "facts": [
+     {
+      "claim": "그리스어 아름다움+쓰기 · 글씨를 아름답게 쓰는 기술",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/캘리그래피",
+      "note": "캘리그래피(영어: calligraphy, 그리스어: κάλλος kallos '아름다움' + 그리스어: γραφή graphẽ '쓰기', 순화어: 멋글씨)는 손으로 그린 그림 문자라는 뜻으로 글씨를 아름답게 쓰는 기술을 뜻한다. 고유명사로 사용할 경우에 한하여 \"캘리그라피\"로 표기하기도 한다."
+     },
+     {
+      "claim": "beautiful writing · 펜·붓으로 쓰는 시각 예술",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Calligraphy",
+      "note": "Calligraphy (from Ancient Greek καλλιγραφία (kalligraphía) 'beautiful writing') is fine handwriting as a visual art. It involves the design and execution of lettering or characters using a pen, ink brush, or other writing instruments."
+     },
+     {
+      "claim": "에드워드 존스턴 부흥 · 청첩장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Calligraphy",
+      "note": "(ko) 이것을 부흥시킨 사람은 영국의 에드워드 존스턴(Edward Johnston)이고 / (en) Modern Western calligraphy is mainly used in formal settings, including wedding invitations and announcements"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "붓·펜으로 아름답게 쓰는 손글씨 디자인",
+    "worthWhyGen": "3 — 일상에서 쓰는 말과 그 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '손글씨 디자인' — 예",
+     "unique": "손글씨 + 아름다운 쓰기 → 하나(서예와 겹칠 수 있으나 그리스어 유래로 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

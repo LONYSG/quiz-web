@@ -1,0 +1,397 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "physics/2",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/2#g032a-g032a-j04-5",
+   "seed": {
+    "subject": "호박",
+    "aspect": null,
+    "ref": "g032a-j04-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영어로 전기를 뜻하는 '일렉트리시티'라는 말을 낳은 보석입니다. 지중해의 옛사람들은 이 보석을 고양이 털로 문지르면 깃털 같은 가벼운 것이 달라붙는 것을 알았습니다. 그래서 이 보석의 그리스어 이름 '엘렉트론'에서 전기라는 말이 나왔습니다. 이 보석은?",
+    "answer": "호박",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1600년 영국의 윌리엄 길버트가 '그것 같은'이라는 뜻의 라틴어 낱말을 새로 만들어, 문질러 생기는 끌림을 자석의 힘과 갈라 연구했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "그리스어 이름 엘렉트론에서 전기라는 말이 나왔습니다",
+     "difWhy": "3 — 보석 이름 호박을 설명에서 떠올려야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 전기 말의 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "나무의 끈적한 송진이 오랜 세월 땅속에서 굳어 된 노란 보석으로, 안에 곤충이 갇힌 채 발견되기도 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "나무 수지가 굳어 된 보석(amber)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "호박 보석·곤충 화석 이야기",
+     "piece": "f04",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '보석' · 끝 ○○ = 보석, 어원 설명이 단서"
+    },
+    "blindQuestion": {
+     "guess": "호박",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "호박",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "호박",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1694",
+      "answer": "울릉군",
+      "verdict": "diff",
+      "why": "호박(보석) vs 울릉군"
+     },
+     {
+      "old": "4542",
+      "answer": "마고자",
+      "verdict": "diff",
+      "why": "호박 보석 vs 마고자"
+     },
+     {
+      "old": "149",
+      "answer": "할로윈",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "2338",
+      "answer": "울릉도",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "3634",
+      "answer": "울릉도",
+      "verdict": "diff",
+      "why": "무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/전기",
+     "https://en.wikipedia.org/wiki/Amber",
+     "https://en.wikipedia.org/wiki/Electricity"
+    ],
+    "facts": [
+     {
+      "claim": "지중해 옛 문화: 호박을 고양이 털로 문지르면 깃털을 끌어당김",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/전기",
+      "note": "지중해 주변의 고대 문화에서는 특정한 물체. 예컨대 호박을 고양이 털로 문지르면 깃털 같은 가벼운 물체를 끌어당긴다는 것을 알고 있었다."
+     },
+     {
+      "claim": "그리스어 elektron(호박)에서 electricity 등이 나옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Amber",
+      "note": "their tears became elektron, amber. The word elektron gave rise to the words electric, electricity, and their relatives because of amber's ability to bear a charge of static electricity."
+     },
+     {
+      "claim": "길버트가 electricus 를 만들고 정전기와 자석을 구별",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Electricity",
+      "note": "In 1600, the English scientist William Gilbert wrote De Magnete, in which he made a careful study of electricity and magnetism, distinguishing the lodestone effect from static electricity produced by rubbing amber. He coined the Neo-Latin word electricus (\"of amber\" or \"like amber\", from ἤλεκτρον, elektron, the Greek word for \"amber\")"
+     },
+     {
+      "claim": "호박 = 나무 수지 화석 · 동식물이 갇힘",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Amber",
+      "note": "Amber is fossilized tree resin ... Because it originates as a soft, sticky tree resin, amber sometimes contains animal and plant material as inclusions."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Amber"
+    ],
+    "hintNote": null,
+    "easiestCue": "그리스어 이름 '엘렉트론'인 보석",
+    "worthWhyGen": "'전기'라는 말이 왜 생겼는지(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '보석' 예",
+     "unique": "보석으로 한정 — 채소 호박 아님 · 다른 보석 없음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "physics/2#g032a-g032a-j10-7",
+   "seed": {
+    "subject": "피뢰침",
+    "aspect": null,
+    "ref": "g032a-j10-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "높은 건물 꼭대기에 세우는 뾰족한 금속 막대 장치입니다. 흔히 번개를 막아 주는 것으로 알지만, 실은 번개를 먼저 끌어당깁니다. 그 전류를 도선을 따라 땅으로 흘려보내 건물이 불타지 않게 지킵니다. 이 장치는?",
+    "answer": "피뢰침",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1754년 체코의 신부 프로코프 디비시가 땅에 연결한 막대를 먼저 세웠다는 기록도 있어, 누가 처음인지는 논쟁이 이어진다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "높은 건물 꼭대기에 세우는 뾰족한 금속 막대 장치, 번개",
+     "difWhy": "1 — 번개 막대 하면 곧바로 피뢰침",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 흔한 오해를 바로잡는 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 93",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "벤저민 프랭클린이 1749년에 구상해 널리 퍼뜨린 발명품으로, 오늘날 쓰는 것도 대부분 그의 설계를 따른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "번개를 받아 땅으로 흘려보내는 건물 꼭대기의 금속 막대",
+    "familiarity": {
+     "judge": 3,
+     "pct": 93,
+     "why": "과학 시간·일상 지식",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '뾰족한 금속 막대 장치' 라는 종류와 쓰임 위치가 있어 바로 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "피뢰침",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피뢰침",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피뢰침",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4560",
+      "answer": "알루미늄",
+      "verdict": "unsure",
+      "why": "옛 질문에 피뢰침이 있어 누출"
+     },
+     {
+      "old": "5103",
+      "answer": "라이덴병",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/피뢰침",
+     "https://en.wikipedia.org/wiki/Lightning_rod"
+    ],
+    "facts": [
+     {
+      "claim": "번개 전류에 낮은 저항 경로 제공 · 땅으로 · 화재 위험 완화",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피뢰침",
+      "note": "피뢰 시스템은 낙뢰가 구조물에 가하는 화재 위험을 완화한다. ... 번개가 건물을 손상시키지 않고 땅에 도달하도록 충분히 낮은 임피던스 경로를 제공하는 것이다."
+     },
+     {
+      "claim": "지붕에 설치해 번개를 가로챔 · 접지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lightning_rod",
+      "note": "A system of lightning protection conductors and lightning rods are installed on the roof of the building to intercept any lightning before it strikes the building."
+     },
+     {
+      "claim": "프랭클린 1749 구상 · 오늘날 대부분 프랭클린 설계",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/피뢰침",
+      "note": "벤저민 프랭클린이 1749년 전기에 대한 그의 획기적인 탐구의 일환으로 고안했다. ... 오늘날 사용되는 대부분의 피뢰 시스템은 전통적인 벤저민 프랭클린 설계이다."
+     },
+     {
+      "claim": "디비시 1754 · 논쟁",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lightning_rod",
+      "note": "There is an ongoing debate over whether a \"meteorological machine\", invented by Premonstratensian priest Prokop Diviš and erected ... in June 1754, does count as an individual invention of the lightning rod."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/피뢰침"
+    ],
+    "hintNote": null,
+    "easiestCue": "건물 꼭대기 뾰족한 금속 막대 + 번개",
+    "worthWhyGen": "흔한 오해(막는다 → 끌어당긴다)를 바로잡는 일상 장치 원리",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '금속 막대 장치' 예",
+     "unique": "번개 + 꼭대기 막대 — 하나 (등급은 3 쪽일 수 있음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "physics/2#g032a-g032a-j23-12",
+   "seed": {
+    "subject": "변압기",
+    "aspect": null,
+    "ref": "g032a-j23-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전기 설비의 이름입니다. 전봇대 위에 달린 원통 모양 장치가 대표적입니다. 발전소에서 높은 전압으로 보내온 전기를 가정에서 쓰는 220V로 낮춰 줍니다. 이 설비는 무엇일까요?",
+    "answer": "변압기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "19세기 말 미국 웨스팅하우스가 교류 송전에 처음 썼고, 이것이 커지면서 변전소로 발전했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "전봇대 위에 달린 원통 모양 장치, 220V 로 낮춰 줍니다",
+     "difWhy": "2 — 전압 낮춤 단서로 이름이 이어짐",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 전기 설비 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "철심에 감은 두 코일 사이에서 전자기 유도로 전기를 넘겨주는 장치로, 교류에서만 작동한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "교류 전압을 높이거나 낮추는 장치",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "과학 교과서·전자제품",
+     "piece": "f04",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '전기 설비' 가 끝 '이 설비' 와 일치 · 220V 단서 분명"
+    },
+    "blindQuestion": {
+     "guess": "변압기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "변압기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "변압기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://encykorea.aks.ac.kr/Article/E0069032",
+     "https://en.wikipedia.org/wiki/Distribution_transformer",
+     "https://ko.wikipedia.org/wiki/변압기"
+    ],
+    "facts": [
+     {
+      "claim": "전봇대 위 장치가 220V로 낮춰 가정에 공급",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0069032",
+      "note": "전압을 높이고 낮추는 일을 하는 장치가 변압기이며 … 전압을 변환시킨 전기는 전봇대 위에 있는 변압기에서 다시 220V로 낮추어져 가정에 공급된다."
+     },
+     {
+      "claim": "전봇대에 달린 주상변압기가 배전 전압을 사용 전압으로 낮춤",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Distribution_transformer",
+      "note": "If mounted on a utility pole, they are called pole-mount transformers. … convert the overhead or underground distribution lines' high primary voltage to the lower secondary or utilization voltage inside the building."
+     },
+     {
+      "claim": "변화하는 전류 → 변화하는 자기장 → 2차 회로에 전압 유도",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/변압기",
+      "note": "처음 회로의 변화하는 전류는 변화하는 자기장을 만들어 낸다. 또, 이 자기장은 2차 회로에서 변화하는 전압을 유도한다."
+     },
+     {
+      "claim": "웨스팅하우스가 교류 송전에 처음 사용 · 변전소로 발전",
+      "where": "e",
+      "url": "https://encykorea.aks.ac.kr/Article/E0069032",
+      "note": "19세기 말 미국의 웨스팅하우스 일렉트릭에서 교류 송전을 위해 처음으로 변압기가 사용되었으며, 이러한 변압기가 대형화되면서 변전소로 발전하였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/변압기"
+    ],
+    "hintNote": null,
+    "easiestCue": "전봇대 위에서 전압을 220V로 낮추는 장치",
+    "worthWhyGen": "날마다 보는 설비의 정체 — 일상 쓸모",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '전기 설비' — 예",
+     "unique": "'전압을 낮춰 줌' 으로 차단기·계량기와 갈림",
+     "hint12": "① 예 ② 예 (원통 모양 = 상식 · 출처 문장엔 없음)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

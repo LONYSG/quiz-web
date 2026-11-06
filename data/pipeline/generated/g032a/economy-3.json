@@ -1,0 +1,284 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "economy/3",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/3#g032a-job-03-3",
+   "seed": {
+    "subject": "월스트리트",
+    "aspect": null,
+    "ref": "job-03-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "뉴욕 맨해튼 남쪽의 한 거리 이름입니다. 1653년 네덜란드 식민지 뉴암스테르담이 영국군의 침입을 막으려고, 마을 북쪽 끝에 흙과 나무판으로 방벽을 쌓았습니다. 이 방벽을 따라 난 길이 바로 이 거리입니다. 어디일까요?",
+    "answer": "월스트리트",
+    "acceptedAnswers": [
+     "월가"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "네덜란드인은 이 길을 '띠'라는 뜻의 헤트 싱얼이라 불렀습니다. 방벽은 1699년 헐렸고, 그 돌은 새 시청의 기초를 놓는 데 쓰였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "뉴욕 맨해튼 남쪽 거리 · 방벽(wall)",
+     "difWhy": "2 — 유명 지명 · 방벽 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 지명 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "뉴욕증권거래소가 자리한 거리로, 이 거리 이름이 곧 미국 금융계와 증권가를 통째로 가리키는 말로 쓰인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "뉴욕증권거래소가 있는 맨해튼 남쪽 거리, 미국 금융가의 대명사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "금융 뉴스와 영화",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '맨해튼 남쪽의 거리 이름' 이 끝 ○○(거리)와 일치 · 둘째 문장 방벽 이야기는 단서"
+    },
+    "blindQuestion": {
+     "guess": "월스트리트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "월스트리트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "월스트리트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6060",
+      "answer": "사해 문서",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(월스트리트 / 사해 문서)"
+     },
+     {
+      "old": "5668",
+      "answer": "크라이슬러 빌딩",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(월스트리트 / 크라이슬러 빌딩)"
+     },
+     {
+      "old": "3548",
+      "answer": "대공황",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(월스트리트 / 대공황)"
+     },
+     {
+      "old": "4874",
+      "answer": "블랙 스완",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(월스트리트 / 블랙 스완)"
+     },
+     {
+      "old": "6241",
+      "answer": "나스닥",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(월스트리트 / 나스닥)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Wall_Street",
+     "https://ko.wikipedia.org/wiki/월_스트리트"
+    ],
+    "facts": [
+     {
+      "claim": "1653년 스토이베산트가 영국군 침입을 막으려 북쪽 경계에 흙·나무판 방벽",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wall_Street",
+      "note": "The original wall was constructed under orders from ... Peter Stuyvesant at the start of the first Anglo-Dutch war soon after New Amsterdam was incorporated in 1653. Fearing an over land invasion of English troops ... he ordered a ditch and wooden palisade to be constructed on the northern boundary of the New Amsterdam settlement. The wall was built of dirt and 15-foot long wooden planks"
+     },
+     {
+      "claim": "성벽으로 둘러싸여 이름이 생김 · 뉴암스테르담 북부 경계",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/월_스트리트",
+      "note": "식민지 시대에 성벽으로 둘러싸여 있어 '월 스트리트'라는 이름이 생겼다. ... 월가라는 이름은 17세기에 뉴 암스테르담(New Amsterdam)의 북부 경계선을 이 거리로 정했다는 점에서 기원한다."
+     },
+     {
+      "claim": "Het Cingel('띠') · 1699년 철거 · 돌로 새 시청 기초",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Wall_Street",
+      "note": "the Dutch always called the street Het Cingel (\"the Belt\") ... The wall and its fortifications were eventually removed in 1699 ... A new City Hall was built at Wall and Nassau in 1700 using the stones from the bastions as materials for the foundation."
+     },
+     {
+      "claim": "뉴욕 증권거래소 소재지 · 금융세력의 환유",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/월_스트리트",
+      "note": "월가는 뉴욕 증권거래소의 소재지이며 ... 미국의 '영향력 있는 금융세력'을 환유적으로 말할 때 월 스트리트라는 말을 사용하기도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/월_스트리트"
+    ],
+    "hintNote": null,
+    "easiestCue": "맨해튼 + 네덜란드 방벽(wall)",
+    "worthWhyGen": "미국 금융가의 대명사가 왜 '벽 거리'인지 — 늘 쓰는 말의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '맨해튼 거리 이름' — 예",
+     "unique": "방벽을 따라 난 맨해튼 거리 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 뉴욕증권거래소"
+    ],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "economy/3#g032a-g032a-j10-3",
+   "seed": {
+    "subject": "서킷 브레이커",
+    "aspect": null,
+    "ref": "g032a-j10-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주가가 한꺼번에 크게 떨어질 때 증권 거래를 잠시 멈추는 증시 제도입니다. 이름은 전기 회로에 너무 센 전류가 흐르면 저절로 전기를 끊는 장치에서 빌려 왔습니다. 1987년 '검은 월요일' 폭락 뒤 미국이 들인 이 제도는?",
+    "answer": "서킷 브레이커",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "미국은 S&P 500 지수가 전날보다 7%·13% 떨어지면 15분씩 멈추고, 20%가 빠지면 그날 장을 닫는다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "주가가 크게 떨어질 때 증권 거래를 잠시 멈추는 제도 · 전류를 끊는 장치에서 이름을 빌림",
+     "difWhy": "3 — 경제 뉴스 용어 · 단서는 간접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래 · 뉴스 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "코로나19 공포가 덮친 2020년 3월 미국 증시에서 며칠 사이 네 번이나 발동돼 거래가 잠시 끊겼다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "주가 급락 때 거래를 일시 정지하는 증시 안전장치",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "증시 뉴스에서 자주 나옴",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '증시 제도' 가 있고 전기 차단 장치 비유로 이름 단서를 쉬운 말로 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "서킷 브레이커",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "서킷 브레이커",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "서킷 브레이커",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4875",
+      "answer": "정크 본드",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Trading_curb",
+     "https://ko.wikipedia.org/wiki/회로_차단기"
+    ],
+    "facts": [
+     {
+      "claim": "증시 급락 방지 거래 정지 · 서킷 브레이커라 부름 · 1987 블랙 먼데이 뒤 1988년 도입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trading_curb",
+      "note": "A trading curb (also known as a circuit breaker in Wall Street parlance) ... These limits were put in place beginning in January 1988 (weeks after Black Monday occurred in 1987)"
+     },
+     {
+      "claim": "회로 차단기 = 과부하 때 자동으로 회로를 끊는 장치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/회로_차단기",
+      "note": "회로 차단기는 전기 회로에서 과부하가 걸리거나 단락으로 인한 피해를 막기 위해 자동으로 회로를 정지시키는 장치이다."
+     },
+     {
+      "claim": "2020년 3월 9·12·16·18일 발동",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Trading_curb",
+      "note": "On March 9, 2020 ... the S&P 500 triggered a market shutdown for 15 minutes ... On March 12, and again on March 16 ... On March 18, the breaker was triggered again"
+     },
+     {
+      "claim": "7%·13%·20%",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Trading_curb",
+      "note": "Level 1 is 7%, Level 2 is 13%, and Level 3 is 20% ... A Level 3 decline will halt trading for the remainder of the day."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Trading_curb"
+    ],
+    "hintNote": null,
+    "easiestCue": "주가 급락 때 거래를 잠시 멈추는 제도",
+    "worthWhyGen": "증시 뉴스 말의 유래(전기 차단기)와 쓰임",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '증시 제도' 예",
+     "unique": "시장 전체 정지 + 회로 장치 이름 — 사이드카와 갈림(선물·프로그램 매매)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 3월"
+    ],
+    "job": "job-10"
+   }
+  }
+ ]
+}

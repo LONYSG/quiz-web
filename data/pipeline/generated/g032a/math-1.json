@@ -1,0 +1,272 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "math/1",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/1#g032a-g032a-j24-5",
+   "seed": {
+    "subject": "사사오입",
+    "aspect": null,
+    "ref": "g032a-j24-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어림수를 구할 때 4 이하는 버리고, 5 이상은 버린 뒤 윗자리에 1을 더하는 셈법이 있습니다. 흔히 '반올림'이라 부르는 이 셈법을 네 글자 한자어로는 무엇이라 할까요?",
+    "answer": "사사오입",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그때 찬성은 135표로 재적 203명의 3분의 2에 한 표 모자랐습니다. 정족수는 올림한 136명이 맞았다는 것이 일반적인 평가입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "'반올림'을 네 글자 한자어로",
+     "difWhy": "3 — 한자어 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 수학 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "1954년 개헌 정족수 135.33명을 135명으로 깎아 부결된 개헌안을 뒤집은 사건에 붙은 이름이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "반올림을 뜻하는 한자어(四捨五入) — 1954년 개헌 사건 이름으로도 유명",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "수학·한국사 용어",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 셈법 규칙이 설명돼 있고 묻는 것이 분명"
+    },
+    "blindQuestion": {
+     "guess": "사사오입",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "사사오입 개헌",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "사사오입",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "172",
+      "answer": "소수",
+      "verdict": "diff",
+      "why": "새=사사오입(반올림); 소수·음수는 다른 수 개념"
+     },
+     {
+      "old": "3041",
+      "answer": "음수",
+      "verdict": "diff",
+      "why": "새=사사오입(반올림); 소수·음수는 다른 수 개념"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/반올림",
+     "https://ko.wikipedia.org/wiki/사사오입_개헌"
+    ],
+    "facts": [
+     {
+      "claim": "사사오입 = 4 이하 버리고 5 이상 올림(반올림)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/반올림",
+      "note": "사사오입(四捨五入) 십진법에서는 다음과 같이 반올림을 한다. … 4 이하이면 0으로 버리고 5 이상이면 0으로 버린 후 윗자리에 1을 더한다."
+     },
+     {
+      "claim": "사사오입 = 반올림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/사사오입_개헌",
+      "note": "자유당이 사사오입(四捨五入, 반올림)을 내세워 당시 정족수 미달이었던 헌법 개정안을 통과시켜"
+     },
+     {
+      "claim": "1954년 · 135.33명을 135명으로 · 부결 번복",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/사사오입_개헌",
+      "note": "원래 재적의원 203명의 2/3은 135.33…명으로서 … 사사오입, 즉 반올림을 하는 것이 맞는다는 주장을 내세워 정족수를 135명으로 하여 가결된 것으로 정정 선포하였다."
+     },
+     {
+      "claim": "찬성 135표 · 가결정족수 136명 · 올림한 136명이 맞음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/사사오입_개헌",
+      "note": "가결정족수(可決定足數) 136명에서 한 명이 모자란 찬성 135표 … 정족수의 경우 이 숫자보다 많아야 하기 때문에 보통 올림한 숫자인 136명이 맞았다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/사사오입_개헌"
+    ],
+    "hintNote": null,
+    "easiestCue": "'반올림'을 네 글자 한자어로",
+    "worthWhyGen": "일상 셈법의 한자어 이름 — 현대사 사건 이름으로도 쓰이는 일반 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '셈법' 예",
+     "unique": "'네 글자 한자어'로 반올림·오사오입과 가름(B2 · 반올림은 질문에 있어 변형 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-24"
+   }
+  },
+  {
+   "seedId": "math/1#g032a-g032a-j27-7",
+   "seed": {
+    "subject": "할",
+    "aspect": null,
+    "ref": "g032a-j27-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "비율을 나타내는 단위입니다. 0.1, 곧 10%를 뜻하며 그 아래로 푼·리가 이어집니다. 야구에서 타율 0.300인 타자를 이 단위로 '3○ 타자'라 부릅니다. 이 단위는?",
+    "answer": "할",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "예전에는 은행이나 사채의 이자율도 '몇 부 이자'처럼 이 셈법으로 말했습니다. 1000분의 1인 리 아래로는 모·사가 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "야구에서 타율 0.300인 타자를 이 단위로 '3○ 타자'",
+     "difWhy": "3 — 단위 이름 · 숫자 · 한 번 더 생각",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 비율 단위",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "타율 0.345를 '삼 ~ 사 푼 오 리'로 읽을 때 맨 앞 자리에 붙는 단위로, 일본에서 들어온 비율 셈법이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "10분의 1을 나타내는 비율 단위(할푼리의 할)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "할푼리 야구·일상 표현",
+     "piece": "f07",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '비율을 나타내는 단위' 가 끝 '이 단위' 와 일치 · 아주 짧음"
+    },
+    "blindQuestion": {
+     "guess": "할",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "할",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "할",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6358",
+      "answer": "20진법",
+      "verdict": "diff",
+      "why": "새=할(비율 단위); 20진법·로마 숫자·이진법은 다른 수 체계 지식"
+     },
+     {
+      "old": "3045",
+      "answer": "로마 숫자",
+      "verdict": "diff",
+      "why": "새=할(비율 단위); 20진법·로마 숫자·이진법은 다른 수 체계 지식"
+     },
+     {
+      "old": "5510",
+      "answer": "이진법",
+      "verdict": "diff",
+      "why": "새=할(비율 단위); 20진법·로마 숫자·이진법은 다른 수 체계 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/할푼리",
+     "https://ko.wikipedia.org/wiki/타율"
+    ],
+    "facts": [
+     {
+      "claim": "10분의 1 = 할 · 100분의 1 푼 · 1000분의 1 리 · 야구 타율",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/할푼리",
+      "note": "10분의 1을 할(割)로, 100분의 1을 푼(分)으로, 1,000분의 1을 리(釐)로 나타낸다. … 일본이나 한국에서 야구의 타율을 나타내는 데에 흔히 사용된다."
+     },
+     {
+      "claim": ".300 타자 = 3할",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/타율",
+      "note": ".300인 선수는 \"3할을 치고 있다\"고 말한다."
+     },
+     {
+      "claim": "0.345 = 3할 4푼 5리 · 일본에서 유래",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/할푼리",
+      "note": "일본에서 유래한 방법이다. … 1에 대한 비율 0.345는 “3할 4푼 5리”라고 읽는다."
+     },
+     {
+      "claim": "이자율 · 모·사",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/할푼리",
+      "note": "예전에는 은행 등 금융기관이나 사채의 이자율을 나타내는 말로도 쓰여, “○부 이자(○分利子)” 등으로 말했다. / 그 이하로 모(毛)와 사(絲)를 쓴다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/할푼리"
+    ],
+    "hintNote": null,
+    "easiestCue": "3○ 타자",
+    "worthWhyGen": "3 — 야구·할인('2할')에서 매일 쓰는 비율 말",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '단위' — 예",
+     "unique": "0.1 단위 + 3○ 타자 = 할 하나(빈칸 1칸 한 번)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

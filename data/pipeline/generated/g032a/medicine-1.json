@@ -1,0 +1,149 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "medicine/1",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/1#g032a-g032a-j31-10",
+   "seed": {
+    "subject": "통풍",
+    "aspect": null,
+    "ref": "g032a-j31-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "관절에 갑자기 극심한 통증이 오는 질병입니다. 핏속 요산이 오래 높으면 바늘 모양 결정이 관절에 쌓여 염증을 일으키는데, 엄지발가락 뿌리에 가장 흔합니다. 기름진 음식·술과 얽혀 옛 서양에서 '왕의 병'이라 불린 이 병은?",
+    "answer": "통풍",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "발작 때 혈중 요산 수치가 정상으로 나오기도 해서, 관절액에서 결정을 찾아 진단을 굳힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "엄지발가락 뿌리에 가장 흔한 극심한 관절 통증, 요산",
+     "difWhy": "2 — 흔한 질병 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 건강 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "맥주·내장·멸치처럼 퓨린이 많은 음식을 피하라고 하는 병으로, 나이 든 남성에게 흔하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "요산 결정이 관절에 쌓여 생기는 염증성 관절염(gout)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "건강 상식으로 널리 알려짐",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '관절 통증 질병' · 요산 단서는 인과로 풀려 읽힘 · 끝 ○○ = 병"
+    },
+    "blindQuestion": {
+     "guess": "통풍",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "통풍",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "통풍",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4566",
+      "answer": "레지오넬라증",
+      "verdict": "diff",
+      "why": "통풍과 레지오넬라증은 다른 질병"
+     },
+     {
+      "old": "1786",
+      "answer": "비감염병",
+      "verdict": "diff",
+      "why": "통풍과 비감염병 분류는 다름"
+     },
+     {
+      "old": "1793",
+      "answer": "뇌졸중",
+      "verdict": "diff",
+      "why": "통풍과 뇌졸중은 다른 질병"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/통풍",
+     "https://en.wikipedia.org/wiki/Gout"
+    ],
+    "facts": [
+     {
+      "claim": "요산 결정 관절 침착 · 엄지발가락",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/통풍",
+      "note": "통풍(痛風, 영어: gout)은 요산이 체내에 축적되어 생기는 병이다. 관절의 연골, 힘줄, 주위조직에 날카로운 형태의 요산결정이 침착되어 … 남자의 엄지 발가락에서 제일 흔히 발병하지만"
+     },
+     {
+      "claim": "바늘 모양 결정 · 엄지발가락 뿌리 · 왕의 병",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gout",
+      "note": "caused by the deposition of needle-shaped crystals of the monosodium salt of uric acid … the joint at the base of the big toe is affected … Gout was historically known as \"the disease of kings\" or \"rich man's disease\" for its relationship to a rich diet and obesity."
+     },
+     {
+      "claim": "맥주·내장·멸치 퓨린 · 나이 든 남성",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Gout",
+      "note": "Gout occurs more commonly in those who regularly drink beer … eat foods that are high in purines such as liver, shellfish, or anchovies … Older males are most commonly affected."
+     },
+     {
+      "claim": "발작 때 요산 정상 가능 · 관절액 결정 진단",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gout",
+      "note": "Diagnosis of gout may be confirmed by the presence of crystals in the joint fluid … Blood uric acid levels may be normal during an attack."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gout",
+     "https://ko.wikipedia.org/wiki/통풍"
+    ],
+    "hintNote": null,
+    "easiestCue": "요산 결정 · 엄지발가락",
+    "worthWhyGen": "흔한 병의 원인과 생활 관리 — 일반 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '관절 질병' 예",
+     "unique": "요산 결정 — 류마티스 관절염과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

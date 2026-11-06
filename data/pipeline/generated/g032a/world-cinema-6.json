@@ -1,0 +1,438 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-cinema/6",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/6#g032a-g032a-j08-7",
+   "seed": {
+    "subject": "클래퍼보드",
+    "aspect": null,
+    "ref": "g032a-j08-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영화 촬영장에서 쓰는 도구입니다. 촬영을 시작할 때 장면과 테이크 번호를 적은 판을 카메라 앞에 들고, 위에 달린 막대를 '딱' 하고 내리칩니다. 영상과 소리는 따로 기록하므로, 편집할 때 그 소리와 막대가 닫히는 화면을 맞춰 둘을 맞춥니다. 이 도구는?",
+    "answer": "클래퍼보드",
+    "acceptedAnswers": [
+     "슬레이트",
+     "클래퍼",
+     "클랩보드"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "오스트레일리아 영화인 F. W. 스링이 고안했다고 전한다. 이 일을 맡는 스태프를 클래퍼 로더라고 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "장면과 테이크 번호를 적은 판을 카메라 앞에 들고, 위에 달린 막대를 '딱' 하고 내리",
+     "difWhy": "3 — 모습은 알아도 이름(클래퍼보드)이 잘 안 떠오름 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 영화 제작 용어 · 취미 영역",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "메이킹 영상마다 등장하는 흑백 빗금무늬 촬영 도구로, 영화 산업 자체를 상징하는 그림으로 널리 쓰인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "촬영 시작 때 딱 치는 장면 번호판(슬레이트)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "영화 촬영 도구 영상으로 접함",
+     "piece": "f04",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영화 촬영장에서 쓰는 도구' 가 끝 ○○(도구)와 일치 · 마지막 문장 '맞춰 둘을 맞춥니다' 가 약간 중복이나 읽는 데 지장 없음"
+    },
+    "blindQuestion": {
+     "guess": "슬레이트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "클래퍼보드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "클래퍼보드",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1296",
+      "answer": "롱테이크",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1300",
+      "answer": "달리 줌",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1302",
+      "answer": "로우 앵글",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "6787",
+      "answer": "아이맥스",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Clapperboard",
+     "https://ko.wikipedia.org/wiki/클래퍼보드"
+    ],
+    "facts": [
+     {
+      "claim": "영상·소리 동기화 · 장면·테이크 표시 · 딱 소리와 닫히는 화면을 맞춤 · 소리는 따로 기록",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Clapperboard",
+      "note": "a device used in filmmaking ... to assist in synchronizing of picture and sound, and to designate and mark the various scenes and takes ... The shutting of the clapper sticks is easily identified on the visual track, and the sharp \"clap\" noise is easily identified on the separate audio track. ... the audio track was always recorded by the audio engineer with a separate system"
+     },
+     {
+      "claim": "신·컷·테이크를 말하고 클랩 스틱을 침 · 사운드와 이미지를 맞추는 수단",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/클래퍼보드",
+      "note": "클래퍼보드(clapperboard)는 ... 슬레이트(slate), 사운드 마커(sound marker)라고도 한다. ... 신, 컷, 테이크를 크게 말하고 클랩 스틱을 친다. ... 편집과 녹음에서는 사운드와 이미지를 맞추려는 수단으로서 사용한다."
+     },
+     {
+      "claim": "영화 산업 상징 · F. W. Thring · clapper loader",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Clapperboard",
+      "note": "It is operated by the clapper loader. It is said to have been invented by Australian filmmaker F. W. Thring. ... has become an enduring symbol of the film industry as a whole."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Clapperboard"
+    ],
+    "hintNote": null,
+    "easiestCue": "촬영 시작 때 막대를 '딱' 내리치는 판",
+    "worthWhyGen": "누구나 본 장면의 까닭(소리와 화면 맞추기) — 유래·까닭 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '도구' 예",
+     "unique": "판+막대+동기화 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "world-cinema/6#g032a-g032a-j32-6",
+   "seed": {
+    "subject": "오마주",
+    "aspect": null,
+    "ref": "g032a-j32-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영화나 음악에서 존경하는 선배 작가의 장면·대사를 일부러 본떠 경의를 나타내는 것을 가리키는 프랑스어 말을 묻습니다. 이 말은 본래 중세 봉건 제도에서 신하가 영주에게 바치던 충성 서약을 뜻했습니다. 패러디나 표절과 구별해 쓰는 이 말은?",
+    "answer": "오마주",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "놀런 감독의 '인터스텔라'도 큐브릭의 '2001 스페이스 오디세이'에 영향을 받아 만든 작품으로 거론된다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "존경하는 선배 작가의 장면·대사를 일부러 본떠 경의를 나타내는",
+     "difWhy": "2 — 흔한 영화 용어 · 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 패러디와 구별되는 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "쿠엔틴 타란티노가 '저수지의 개들'에 오우삼 영화의 권총 액션 장면을 옮겨 넣은 것이 대표 예로 꼽힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "존경하는 작가·작품을 본떠 경의를 나타내는 것(hommage)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "영화 평론·방송에서 흔한 말",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '프랑스어 말을 묻습니다' 로 종류 명시 · 첫 문장이 약간 길지만 한 주어"
+    },
+    "blindQuestion": {
+     "guess": "오마주",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오마주",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오마주",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j32-7",
+      "answer": "프리퀄",
+      "verdict": "diff",
+      "why": "오마주와 프리퀄은 다른 용어(다음 세션 신규끼리 · 한 라운드 안)"
+     },
+     {
+      "old": "1297",
+      "answer": "미장센",
+      "verdict": "diff",
+      "why": "오마주(존경 모방)와 미장센(화면 구성)은 다름"
+     },
+     {
+      "old": "6788",
+      "answer": "스포일러",
+      "verdict": "diff",
+      "why": "오마주와 스포일러는 다름"
+     },
+     {
+      "old": "1304",
+      "answer": "프레임 레이트",
+      "verdict": "diff",
+      "why": "오마주와 프레임 레이트는 다름"
+     },
+     {
+      "old": "1298",
+      "answer": "맥거핀",
+      "verdict": "diff",
+      "why": "오마주와 맥거핀은 다른 용어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/오마주",
+     "https://en.wikipedia.org/wiki/Homage_(arts)"
+    ],
+    "facts": [
+     {
+      "claim": "존경 · 다른 이를 모방해 존경 표현 · 봉건 충성 서약 · 패러디·표절과 구분",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오마주",
+      "note": "오마주(프랑스어: hommage)는 존경(respect), 존중을 뜻하는 프랑스어로 ... 오마주는 본래 봉건 제도에서 봉신이 봉건 영주의 신하(프랑스어: homme)나 종속자가 되겠다고 맹세하는 충성 서약이었다. / 오마주는 존경의 의미를 담고 있다는 데서 패러디나 표절과는 구분된다."
+     },
+     {
+      "claim": "같은 내용(영문)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Homage_(arts)",
+      "note": "where one author or artist shows respect to another by allusion or imitation ... It was originally a declaration of fealty in the feudal system – swearing that one was the man (French: homme), or subordinate, of the feudal lord."
+     },
+     {
+      "claim": "타란티노 · 오우삼 권총 액션",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/오마주",
+      "note": "미국의 퀜틴 타란티노 감독은 오우삼(吳宇森)의 영향을 받아, 본인의 작품 《저수지의 개들》에서 오우삼 감독의 《첩혈쌍웅》(1989) 등에 나오는 권총 액션 장면을 각색하여 삽입하였다."
+     },
+     {
+      "claim": "놀런 · 인터스텔라 · 큐브릭",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/오마주",
+      "note": "크리스토퍼 놀런 감독은 스탠리 큐브릭의 영화 2001 스페이스 오디세이에 영향을 받아 인터스텔라를 제작했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/오마주"
+    ],
+    "hintNote": null,
+    "easiestCue": "존경하는 선배의 장면을 본떠 경의를 나타내는 것 · 패러디·표절과 구별",
+    "worthWhyGen": "일상·평론에서 쓰는 말 + 말의 유래(봉건 충성 서약)가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '프랑스어 말' 예",
+     "unique": "존경의 뜻 · 프랑스어 — 패러디·인용과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 타란티노/오우삼"
+    ],
+    "job": "job-32"
+   }
+  },
+  {
+   "seedId": "world-cinema/6#g032a-g032a-j32-7",
+   "seed": {
+    "subject": "프리퀄",
+    "aspect": null,
+    "ref": "g032a-j32-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "원작보다 앞선 시기의 이야기를 뒤늦게 만든 작품을 가리키는 영화·소설 용어를 묻습니다. 1999년 '스타워즈 에피소드 1'은 1977년 첫 편보다 22년 늦게 나왔지만, 이야기는 그보다 앞선 시대를 다룹니다. 이런 작품을 무엇이라 할까요?",
+    "answer": "프리퀄",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "옥스퍼드 영어사전은 1958년 한 SF 잡지 기사를 이 말이 인쇄물에 처음 나온 기록으로 든다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1999년 '스타워즈 에피소드 1'은 … 이야기는 그보다 앞선 시대",
+     "difWhy": "2 — 스타워즈 대중문화 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 기본 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "원작 주인공의 젊은 시절이나 악당이 생겨난 사연처럼, 원작 이전의 배경을 풀어 주는 작품을 말한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원작보다 앞선 시기를 다루는 작품(prequel)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "영화 용어로 자주 쓰임",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 용어를 묻는다고 밝히고 스타워즈 예시가 뜻을 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "프리퀄",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "프리퀄",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "프리퀄",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j32-6",
+      "answer": "오마주",
+      "verdict": "diff",
+      "why": "프리퀄과 오마주는 다른 용어"
+     },
+     {
+      "old": "1298",
+      "answer": "맥거핀",
+      "verdict": "diff",
+      "why": "프리퀄(앞선 시대 이야기)과 맥거핀은 다름"
+     },
+     {
+      "old": "1305",
+      "answer": "카메오",
+      "verdict": "diff",
+      "why": "프리퀄과 카메오는 다름"
+     },
+     {
+      "old": "2068",
+      "answer": "스톱모션",
+      "verdict": "diff",
+      "why": "프리퀄과 스톱모션은 다름"
+     },
+     {
+      "old": "1297",
+      "answer": "미장센",
+      "verdict": "diff",
+      "why": "프리퀄과 미장센은 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/프리퀄",
+     "https://en.wikipedia.org/wiki/Prequel"
+    ],
+    "facts": [
+     {
+      "claim": "원작보다 앞선 시기를 다루는 작품",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/프리퀄",
+      "note": "프리퀄(prequel)은 이전 작품의 이야기에 선행하는 사건에 초점을 맞춰 원작의 서사보다 앞선 시기를 다루는 문학이나 연극, 영화 작품을 말한다."
+     },
+     {
+      "claim": "스타워즈 에피소드 1(1999)은 오리지널 3부작(1977~)의 프리퀄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prequel",
+      "note": "For example, Star Wars: Episode I – The Phantom Menace (1999) is a prequel to the Star Wars original trilogy (1977–1983)"
+     },
+     {
+      "claim": "배경 이야기",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/프리퀄",
+      "note": "프리퀄은 선행 작품의 배경 이야기를 구성하는 작품이다. / 프리퀄은 대개 원작의 사건으로 이어지는 배경을 설명하지만"
+     },
+     {
+      "claim": "OED 첫 인쇄 1958",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/프리퀄",
+      "note": "《옥스퍼드 영어사전》에 따르면, \"프리퀄\"이라는 단어가 처음 인쇄물에 등장한 것은 1958년 《판타지 & SF 매거진》의 앤서니 부셔의 기사에서였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/프리퀄"
+    ],
+    "hintNote": null,
+    "easiestCue": "원작보다 앞선 시기의 이야기를 뒤늦게 만든 작품",
+    "worthWhyGen": "영화 이야기에서 흔히 쓰는 말(일상에 가까운 용어) — 2",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '영화·소설 용어' 예",
+     "unique": "앞선 시기 — 속편·리부트와 갈림",
+     "hint12": "① 예(힌트 '악당이 생겨난 사연' → 아는 사람 떠올림) ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

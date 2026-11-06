@@ -1,0 +1,126 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "math/3",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/3#g032a-g032a-j21-2",
+   "seed": {
+    "subject": "상관관계",
+    "aspect": null,
+    "ref": "g032a-j21-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "통계에서 두 값이 함께 오르내리는 성질을 가리키는 말입니다. 여름이면 아이스크림 판매량과 물놀이 사고가 함께 늘지만, 아이스크림이 사고를 부르지는 않습니다. 둘 다 더운 날씨 탓이기 때문입니다. 이 말은 무엇일까요?",
+    "answer": "상관관계",
+    "acceptedAnswers": [
+     "상관",
+     "상관성"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "통계학에는 '이것이 원인과 결과를 뜻하지는 않는다'는 격언이 있습니다. 함께 움직이는 두 값 뒤에 제3의 원인이 숨어 있을 수 있어서입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "통계에서 두 값이 함께 오르내리는 성질",
+     "difWhy": "3 — 학교 통계 용어 · 상관과 인과 구별에서 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 통계 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "-1에서 1 사이의 계수로 그 세기를 재며, 산점도의 점이 한 직선에 몰릴수록 강하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "두 변수가 함께 변하는 정도(통계 용어) — '인과관계가 아니다'라는 격언으로 유명",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "상관관계 인과관계 격언",
+     "piece": "f09",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=말(통계 용어), 첫 문장 '통계에서 ... 가리키는 말'. 아이스크림 예시가 뜻을 풀어 줌."
+    },
+    "blindQuestion": {
+     "guess": "상관관계",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "상관관계",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "상관관계",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/상관_분석",
+     "https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation"
+    ],
+    "facts": [
+     {
+      "claim": "관측된 상관만으로 인과를 결론지을 수 없음 · 기온이 아이스크림 판매를 함께 늘리는 공통 원인 예",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/상관_분석",
+      "note": "상관만으로 인과관계의 존재나 방향을 결정할 수는 없다. 기온 상승이 아이스크림 판매와 선풍기 사용을 함께 늘리는 예처럼, 두 변수가 공통 원인의 영향을 받을 수도 있다."
+     },
+     {
+      "claim": "아이스크림 판매와 익사 사고가 함께 늘지만 원인은 더운 계절의 물놀이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation",
+      "note": "As ice cream sales increase, the rate of drowning deaths increases sharply. Therefore, ice cream consumption causes drowning. This example fails to recognize the importance of time of year and temperature … The increased drowning deaths are simply caused by more exposure to water-based activities, not ice cream."
+     },
+     {
+      "claim": "상관계수는 -1~1 · 절댓값 1이면 모든 점이 한 직선 위",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/상관_분석",
+      "note": "표본 상관계수도 [−1,1]에 속하며, 절댓값이 1이면 모든 관측점이 기울기가 0이 아닌 한 직선 위에 놓인다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/상관_분석"
+    ],
+    "hintNote": null,
+    "easiestCue": "두 값이 함께 오르내리는 성질",
+    "worthWhyGen": "뉴스·광고의 통계를 읽을 때 쓰는 기본 개념(학교 통계 개념 → 2)",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '통계 … 말' — 예",
+     "unique": "'두 값이 함께 오르내리는 성질' — 허위 상관도 상관의 한 꼴이라 상관·상관성 변형",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  }
+ ]
+}

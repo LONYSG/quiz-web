@@ -1,0 +1,458 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "chemistry/1",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/1#g032a-g032a-j04-8",
+   "seed": {
+    "subject": "니켈",
+    "aspect": null,
+    "ref": "g032a-j04-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "은빛을 띠는 금속 원소입니다. 중세 독일 광부들은 구리 광석처럼 생긴 돌에서 구리가 나오지 않자, 요정이 장난을 쳤다며 그 돌을 '구리의 요정'이라고 불렀습니다. 그 광석 이름 뒷부분이 원소 이름이 되었습니다. 이 원소는?",
+    "answer": "니켈",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1751년 스웨덴의 크론스테트가 이 광석에서 구리를 뽑으려다 새 금속을 찾아냈다. 미국에서는 5센트 동전을 이 금속 이름으로 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "은빛을 띠는 금속 원소 · 광산의 장난꾸러기 요정",
+     "difWhy": "4 — 어원 단서만 있고 원소를 어림하기 어려움",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 원소 이름의 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "녹이 잘 슬지 않아 동전과 도금에 쓰이고, 세계 생산량의 대부분이 스테인리스강을 만드는 데 들어가는 금속이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 28의 금속 원소(Ni)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "동전·화학 시간에 접함",
+     "piece": "f01",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '은빛을 띠는 금속 원소' 가 끝 ○○(원소)를 바로 준다 · 광부 일화는 단서"
+    },
+    "blindQuestion": {
+     "guess": "코발트",
+     "hit": false
+    },
+    "blindHint": {
+     "guess": "니켈",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "니켈",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3386",
+      "answer": "스폰지밥",
+      "verdict": "diff",
+      "why": "니켈 원소 vs 스폰지밥"
+     },
+     {
+      "old": "3734",
+      "answer": "양은",
+      "verdict": "diff",
+      "why": "니켈 어원 vs 양은"
+     },
+     {
+      "old": "g032a:g032a-j28-9",
+      "answer": "리튬",
+      "verdict": "diff",
+      "why": "니켈 vs 리튬"
+     },
+     {
+      "old": "g032a:g032a-j10-8",
+      "answer": "크립톤",
+      "verdict": "diff",
+      "why": "니켈 vs 크립톤"
+     },
+     {
+      "old": "93",
+      "answer": "금",
+      "verdict": "diff",
+      "why": "니켈 vs 금"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Nickel",
+     "https://en.wikipedia.org/wiki/Nickeline"
+    ],
+    "facts": [
+     {
+      "claim": "독일 광부 · 구리 광석 같았으나 구리 안 나옴 · 장난꾸러기 요정 Nickel 탓 · Kupfernickel",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nickel",
+      "note": "In medieval Germany, a metallic yellow mineral was found in the Ore Mountains that resembled copper ore. But when miners were unable to get any copper from it, they blamed a mischievous sprite of German mythology, Nickel (similar to Old Nick), for besetting the copper. They called this ore Kupfernickel ... In 1751, Baron Axel Fredrik Cronstedt tried to extract copper from kupfernickel"
+     },
+     {
+      "claim": "같은 유래(광석 니켈린)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Nickeline",
+      "note": "the German Ore Mountains would sometimes find a red mineral, superficially resembling copper ore. Upon attempting extraction, no copper was produced ... They blamed a mischievous sprite of German mythology, Nickel (similar to Old Nick) for besetting the copper (German: Kupfer)."
+     },
+     {
+      "claim": "생산량 68% 스테인리스 · 동전 · 도금",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Nickel",
+      "note": "About 68% of world production is used in stainless steel ... 9% for plating ... Nickel is widely used in coins"
+     },
+     {
+      "claim": "5센트 동전을 nickel 로 부름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Nickel",
+      "note": "In 1866, the five-cent shield nickel (25% nickel, 75% copper) appropriated the designation, which has been used ever since for the subsequent 5-cent pieces."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Nickel"
+    ],
+    "hintNote": null,
+    "easiestCue": "은빛 금속 원소",
+    "worthWhyGen": "흔한 금속 이름이 왜 그렇게 붙었는지(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '원소' 예",
+     "unique": "요정 이름 유래 — 코발트(코볼트)도 비슷한 전설이 있으나 '구리가 안 나온 구리 광석'으로 니켈만",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-q GEN",
+      "before": {
+       "question": "은빛을 띠는 금속 원소입니다. 중세 독일 광부들은 구리 광석처럼 생긴 돌에서 구리가 나오지 않자, 광산의 장난꾸러기 요정이 훼방을 놓았다고 여겼습니다. 그 요정의 이름이 광석 이름을 거쳐 원소 이름이 되었습니다. 이 원소는?"
+      },
+      "why": "blind 코발트(같은 코볼트 요정 유래) — '구리의 요정' 광석 이름으로 가름"
+     }
+    ],
+    "warn": [
+     "crossans 스테인리스강/도금"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "chemistry/1#g032a-g032a-j10-8",
+   "seed": {
+    "subject": "크립톤",
+    "aspect": null,
+    "ref": "g032a-j10-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주기율표 36번의 비활성 기체 원소입니다. 1898년 영국의 램지와 트래버스가 액체 공기를 거의 다 증발시키고 남은 찌꺼기에서 찾아냈습니다. 공기 속에 아주 조금 숨어 있던 탓에, 이름도 그리스어로 '숨겨진 것'이라는 뜻을 땄습니다. 이 원소는?",
+    "answer": "크립톤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 연구자들이 몇 주 뒤 같은 방법으로 네온을 찾았고, 램지는 비활성 기체를 잇달아 발견한 공로로 1904년 노벨 화학상을 받았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "주기율표 36번의 비활성 기체 원소",
+     "difWhy": "3 — 학교 용어 · 36번과 숨겨진 것 뜻에서 떠올려야 함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 원소",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "형광등에 다른 희귀 기체와 함께 넣는 기체로, 만화 속 슈퍼맨이 태어난 고향 행성과 이름이 같다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 36, 기호 Kr의 비활성 기체 원소",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "슈퍼맨 크립톤 나이트로 접함",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '36번 비활성 기체 원소' 가 있고 끝 ○○ 도 원소, 발견 과정은 문장 하나씩"
+    },
+    "blindQuestion": {
+     "guess": "크립톤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "크립톤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "크립톤",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6274",
+      "answer": "헬륨",
+      "verdict": "unsure",
+      "why": "옛 질문에 크립톤이 있어 누출"
+     },
+     {
+      "old": "5366",
+      "answer": "네온",
+      "verdict": "unsure",
+      "why": "옛 질문에 크립톤이 있어 누출"
+     },
+     {
+      "old": "1546",
+      "answer": "슈퍼맨",
+      "verdict": "unsure",
+      "why": "옛 질문에 크립톤 행성이 있어 누출"
+     },
+     {
+      "old": "4316",
+      "answer": "폴로늄",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "g032a:g032a-j28-9",
+      "answer": "리튬",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Krypton",
+     "https://ko.wikipedia.org/wiki/크립톤"
+    ],
+    "facts": [
+     {
+      "claim": "그리스어 kryptos '숨겨진 것' · 원자 번호 36 · 비활성 기체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Krypton",
+      "note": "Krypton (from Ancient Greek: κρυπτός, romanized: kryptos 'the hidden one') is a chemical element; it has symbol Kr and atomic number 36. It is a colorless, odorless noble gas that occurs in trace amounts in the atmosphere"
+     },
+     {
+      "claim": "1898 램지·트래버스 · 액체 공기 증발 잔여물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Krypton",
+      "note": "Krypton was discovered in Britain in 1898 by William Ramsay, a Scottish chemist, and Morris Travers, an English chemist, in residue left from evaporating nearly all components of liquid air."
+     },
+     {
+      "claim": "원자 번호 36 · 1898 램지 발견 · 액체 공기 · 형광등",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/크립톤",
+      "note": "원자 번호는 36이다. 무색, 무취, 무미의 비활성 기체로 대기중에 미량이 존재하며, 액체 공기를 분별 증류하여 얻는다. 1898년 영국의 윌리엄 램지에 의해 처음 발견되었다. 다른 비활성 기체와 함께 형광등에 사용된다."
+     },
+     {
+      "claim": "몇 주 뒤 네온 · 1904 노벨상",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Krypton",
+      "note": "Neon was discovered by a similar procedure by the same workers just a few weeks later. William Ramsay was awarded the 1904 Nobel Prize in Chemistry for discovery of a series of noble gases, including krypton."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Krypton"
+    ],
+    "hintNote": null,
+    "easiestCue": "36번 비활성 기체 · '숨겨진 것'",
+    "worthWhyGen": "원소 이름의 유래(숨겨진 것)와 발견 까닭이 질문 안에",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '비활성 기체 원소' 예",
+     "unique": "36번 — 하나 · 원소 기호 Kr 은 H2 조각이라 힌트에 안 씀(L3 원소 기호와는 느슨)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 슈퍼맨"
+    ],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "chemistry/1#g032a-g032a-j28-9",
+   "seed": {
+    "subject": "리튬",
+    "aspect": null,
+    "ref": "g032a-j28-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "원소 기호가 Li인, 모든 금속 가운데 가장 가벼운 원소입니다. 동물의 피나 식물의 재에서 알려진 나트륨·칼륨과 달리, 이 원소는 단단한 광석에서 처음 찾았습니다. 그래서 '돌'을 뜻하는 그리스어에서 이름을 딴 이 원소는?",
+    "answer": "리튬",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1817년 스웨덴의 아르프베드손이 광석을 분석하다 찾아냈고, 이 원소의 염은 불꽃을 밝은 빨간색으로 물들입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "원소 기호가 Li인 가장 가벼운 금속",
+     "difWhy": "3 — 학교 원소 기호 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 원소",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "휴대폰과 전기차 배터리의 핵심 재료라서 '하얀 석유'라고도 불리는 금속 원소다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 3 알칼리 금속 Li(lithium)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "리튬 배터리로 뉴스·교과서에서 흔함",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '원소 기호 Li, 가장 가벼운 금속 원소'가 끝 ○○=원소와 일치."
+    },
+    "blindQuestion": {
+     "guess": "리튬",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "리튬",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "리튬",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5987",
+      "answer": "코발트",
+      "verdict": "diff",
+      "why": "신규 '리튬'(다른 원소·개념) ≠ 옛 '코발트' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1621",
+      "answer": "에너지 저장장치",
+      "verdict": "diff",
+      "why": "신규 '리튬'(다른 원소·개념) ≠ 옛 '에너지 저장장치' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2785",
+      "answer": "불꽃 반응",
+      "verdict": "diff",
+      "why": "신규 '리튬'(다른 원소·개념) ≠ 옛 '불꽃 반응' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3182",
+      "answer": "양극성 장애",
+      "verdict": "diff",
+      "why": "신규 '리튬'(다른 원소·개념) ≠ 옛 '양극성 장애' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "g032a:g032a-j10-8",
+      "answer": "크립톤",
+      "verdict": "diff",
+      "why": "신규 '리튬'(다른 원소·개념) ≠ 옛 '크립톤' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/리튬",
+     "https://en.wikipedia.org/wiki/Lithium"
+    ],
+    "facts": [
+     {
+      "claim": "기호 Li · 돌을 뜻하는 그리스어 리토스 · 나트륨·칼륨과 달리 광석에서 처음 발견",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/리튬",
+      "note": "기호는 Li ... 원자 번호는 3이다. 돌을 뜻하는 그리스어 리토스(λίθος, líthos)에서 이름이 유래되었는데, 이유는 나트륨이나 칼륨과는 달리 광석에서 처음으로 발견했기 때문이다."
+     },
+     {
+      "claim": "가장 밀도 낮은 금속 · 칼륨은 식물 재 · 나트륨은 동물 피 · 광물에서 발견해 lithos",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lithium",
+      "note": "it is the least dense metal ... Berzelius gave the alkaline material the name \"lithion/lithina\", from the Greek word λιθoς ... to reflect its discovery in a solid mineral, as opposed to potassium, which had been discovered in plant ashes, and sodium, which was known partly for its high abundance in animal blood."
+     },
+     {
+      "claim": "전지에 사용 · 하얀 석유",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/리튬",
+      "note": "합금으로 열전달이나 전지 등에 사용할 수 있으며 ... 하얀 석유라고 불린다."
+     },
+     {
+      "claim": "1817년 아르프베드손 · 불꽃 빨간색",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lithium",
+      "note": "it was not until 1817 that Johan August Arfwedson ... detected the presence of a new element while analyzing petalite ore. ... In 1818, Christian Gmelin was the first to observe that lithium salts give a bright red color to flame."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/리튬"
+    ],
+    "hintNote": null,
+    "easiestCue": "원소 기호 Li",
+    "worthWhyGen": "배터리로 매일 쓰는 원소 이름이 '돌'에서 온 까닭(유래 — 알가치 3 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '원소' — 예",
+     "unique": "기호 Li — 하나",
+     "hint12": "① 예 ② 예 · 기호 Li 가 쉬운 단서라 등급 2 가능"
+    },
+    "history": [],
+    "warn": [
+     "crossans 배터리"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

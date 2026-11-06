@@ -1,0 +1,305 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-language/2",
+  "midKey": "kr-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/2#g032a-g032a-j02-2",
+   "seed": {
+    "subject": "터무니",
+    "aspect": null,
+    "ref": "g032a-j02-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "집이나 건물을 세웠던 터의 자취를 이르는 순우리말입니다. 터의 흔적조차 없다는 데서, 근거가 전혀 없는 허황한 말을 나무랄 때 이 말 뒤에 '없다'를 붙여 씁니다. 이 낱말은?",
+    "answer": "터무니",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "지금은 거의 '없다'와 붙어서만 쓰입니다. 명사만 떼어 '이런 ~를 봤나'처럼 쓰는 것은 바른 어법이 아니라는 지적이 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "뒤에 '없다'를 붙여 씁니다",
+     "difWhy": "3 — 터무니없다에서 한 번 건너야 함 · 정의에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "'턱없다'와 바꿔 쓸 수 있는 형용사, 곧 허황해서 어이가 없다는 뜻의 말에서 '없다'를 뗀 앞부분이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'터를 잡은 자취'를 뜻하는 순우리말 명사 — '터무니없다'의 앞부분",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "터무니없다로 익숙하나 단독 뜻은 낯섦",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '순우리말' = 끝 ○○ '낱말'. 짧고 뜻 풀이 순서가 자연스러움"
+    },
+    "blindQuestion": {
+     "guess": "터무니",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "터무니",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "터무니",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 4,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4491",
+      "answer": "가시버시",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(터무니 / 가시버시)"
+     },
+     {
+      "old": "1031",
+      "answer": "는개",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(터무니 / 는개)"
+     },
+     {
+      "old": "g032a:g032a-j23-1",
+      "answer": "함박눈",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(터무니 / 함박눈)"
+     },
+     {
+      "old": "3667",
+      "answer": "윤슬",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(터무니 / 윤슬)"
+     }
+    ],
+    "sources": [
+     "https://www.khan.co.kr/article/201606232039005",
+     "https://sgsg.hankyung.com/article/2008032787351"
+    ],
+    "facts": [
+     {
+      "claim": "터무니 = 터를 잡은 자취",
+      "where": "q",
+      "url": "https://www.khan.co.kr/article/201606232039005",
+      "note": "‘터무니’는 ‘터를 잡은 자취’를 뜻한다."
+     },
+     {
+      "claim": "터무니 본래 뜻 = 터를 잡은 자취",
+      "where": "q",
+      "url": "https://sgsg.hankyung.com/article/2008032787351",
+      "note": "본래 '터무니'는 '터를 잡은 자취'를 뜻하는 말이다."
+     },
+     {
+      "claim": "턱없다와 바꿔 쓸 수 있음 · 허황하고 엉뚱하여 어이없다",
+      "where": "h",
+      "url": "https://www.khan.co.kr/article/201606232039005",
+      "note": "‘턱없다’와 바꾸어 쓸 수 있는 말이 ‘터무니없다’이다. / 허황하고 엉뚱하여 어이가 없다"
+     },
+     {
+      "claim": "명사만 떼어 쓰는 것은 바른 어법이 아님",
+      "where": "e",
+      "url": "https://sgsg.hankyung.com/article/2008032787351",
+      "note": "'어처구니'나 '터무니' 같은 말은 아직 그런 의미 이동이 일어나지 않았다 (명사만 떼어 쓰는 표현은 바른 어법이 아니라는 취지)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.khan.co.kr/article/201606232039005"
+    ],
+    "hintNote": null,
+    "easiestCue": "뒤에 '없다'를 붙여 허황한 말을 나무란다",
+    "worthWhyGen": "매일 쓰는 '터무니없다'의 뜻 유래(일상 말 + 유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '순우리말' 예",
+     "unique": "'없다'를 붙이는 + 터의 자취 — 어처구니(맷돌 손잡이 설)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "kr-language/2#g032a-g032a-j23-1",
+   "seed": {
+    "subject": "함박눈",
+    "aspect": null,
+    "ref": "g032a-j23-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "겨울 날씨를 나타내는 순우리말입니다. 눈 결정이 떨어지면서 서로 달라붙어 송이가 아주 커진 눈을 말합니다. 굵고 탐스럽게 내리는 이 눈을 무엇이라 할까요?",
+    "answer": "함박눈",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "지름은 보통 1cm 정도입니다. 작고 잘 부서지는 싸락눈과 견주면 훨씬 단단하게 뭉쳐집니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "송이가 아주 커진 눈",
+     "difWhy": "1 — 함박눈 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 우리말",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "습기를 머금어 잘 뭉치고 잘 쌓여서, 눈사람 만들기와 눈싸움에 딱 좋은 큼직한 송이로 펑펑 쏟아진다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "눈송이가 크고 탐스럽게 내리는 눈을 가리키는 순우리말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상 순우리말",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '겨울 날씨 순우리말'이 끝 ○○=눈과 맞음. 짧음."
+    },
+    "blindQuestion": {
+     "guess": "함박눈",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "함박눈",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "함박눈",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 2,
+     "outside": 1,
+     "notFound": [
+      {
+       "claim": "지름 1cm · 싸락눈보다 잘 뭉침 · 싸락눈은 잘 부서짐",
+       "url": "https://ko.wikipedia.org/wiki/싸라기눈",
+       "note": "함박눈의 지름은 보통 1cm 정도이며 … 싸락눈보다 잘 뭉쳐진다. / 싸락눈: 붙는 힘이 약해 잘 부서진다."
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "1028",
+      "answer": "시나브로",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1037",
+      "answer": "아름",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1029",
+      "answer": "하늬바람",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1038",
+      "answer": "뼘",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1032",
+      "answer": "여우비",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/함박눈",
+     "https://hangyo.com/mobile/article.html?no=66260",
+     "https://ko.wikipedia.org/wiki/싸라기눈"
+    ],
+    "facts": [
+     {
+      "claim": "눈 결정이 서로 달라붙어 송이가 매우 커진 눈",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/함박눈",
+      "note": "함박눈은 눈의 결정이 떨어지면서 서로 달라붙어서, 눈송이가 매우 커진 눈이다."
+     },
+     {
+      "claim": "굵고 탐스럽게 내리는 눈",
+      "where": "q",
+      "url": "https://hangyo.com/mobile/article.html?no=66260",
+      "note": "가늘고 성기게 내리는 '포슬눈'이 있는가 하면 굵고 탐스럽게 내리는 '함박눈'이 있다."
+     },
+     {
+      "claim": "습기가 많아 잘 뭉치고 잘 쌓임",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/함박눈",
+      "note": "습기가 많아 잘 뭉쳐지며 잘 쌓인다."
+     },
+     {
+      "claim": "지름 1cm · 싸락눈보다 잘 뭉침 · 싸락눈은 잘 부서짐",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/싸라기눈",
+      "note": "함박눈의 지름은 보통 1cm 정도이며 … 싸락눈보다 잘 뭉쳐진다. / 싸락눈: 붙는 힘이 약해 잘 부서진다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/함박눈"
+    ],
+    "hintNote": null,
+    "easiestCue": "굵고 탐스럽게 내리는 눈",
+    "worthWhyGen": "일상에서 늘 쓰는 날씨 말(19 §9-1 ③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '순우리말' — 예",
+     "unique": "'송이가 커진 · 굵고 탐스럽게' 로 싸락눈·진눈깨비와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "⑨ 종류 '눈' 첫 문장에 없음"
+    ],
+    "job": "job-23"
+   }
+  }
+ ]
+}

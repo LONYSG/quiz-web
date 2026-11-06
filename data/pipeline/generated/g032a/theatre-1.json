@@ -1,0 +1,280 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "theatre/1",
+  "midKey": "theatre",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "theatre/1#g032a-g032a-j22-1",
+   "seed": {
+    "subject": "방백",
+    "aspect": null,
+    "ref": "g032a-j22-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "연극 대사의 한 종류입니다. 무대 위에 다른 인물이 함께 있지만, 그들은 듣지 못한다고 약속하고 관객에게만 들려주는 말입니다. 혼자 길게 말하는 독백과 구별되는 이 대사는?",
+    "answer": "방백",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "대개 긴 연설이 아니라 짧은 한마디이고, 인물의 숨은 속셈을 관객만 알게 해 웃음을 만들기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "관객에게만 들려주는 말, 독백과 구별",
+     "difWhy": "3 — 연극 용어 · 정의 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 전공 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "드라마 '하우스 오브 카드'에서 주인공이 카메라를 보며 시청자에게 속마음을 털어놓는 대사가 이것이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "연극에서 다른 인물은 못 듣는 것으로 하고 관객에게만 하는 대사(aside)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "연극 용어, 국어·연극 시간에 접함",
+     "piece": "f07",
+     "genPct": 72
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '연극 대사의 한 종류' 가 끝 ○○ 와 일치하고 독백과 대비해 개념이 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "방백",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "방백",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "방백",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j22-2",
+      "answer": "애드리브",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6424",
+      "answer": "비극",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "311",
+      "answer": "햄릿",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "3880",
+      "answer": "데우스 엑스 마키나",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6422",
+      "answer": "경극",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/독백",
+     "https://en.wikipedia.org/wiki/Aside"
+    ],
+    "facts": [
+     {
+      "claim": "다른 인물은 들을 수 없는 것으로 하는 대사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/독백",
+      "note": "방백(aside)은 다른 등장인물들이 있는 중에 혼자 말하지만 논리적으로는 그 등장인물들에게도 들려야 하는 상황임에도 불구하고 그 등장인물들은 들을 수 없는 것을 뜻한다."
+     },
+     {
+      "claim": "관객에게 하는 말 · 다른 인물은 못 들음 · 짧은 한마디",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aside",
+      "note": "An aside is a dramatic device in which a character speaks to the audience. By convention, the audience is to realize that the character's speech is unheard by the other characters on stage. ... An aside is usually a brief comment rather than a speech, such as a monologue or soliloquy."
+     },
+     {
+      "claim": "하우스 오브 카드 프랭크 언더우드",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Aside",
+      "note": "The aside was used ... by Kevin Spacey's character Frank Underwood in the 2013 Netflix original series of the same name. It can be used to explain ... what the character's plans/emotions are or simply for humorous effect."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Aside"
+    ],
+    "hintNote": null,
+    "easiestCue": "다른 인물은 못 듣고 관객에게만 하는 대사",
+    "worthWhyGen": "2 — 국어 시간 희곡 갈래 개념(교과 개념)",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '연극 대사' — 예",
+     "unique": "독백과 구별 명시 → 방백 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  },
+  {
+   "seedId": "theatre/1#g032a-g032a-j22-2",
+   "seed": {
+    "subject": "애드리브",
+    "aspect": null,
+    "ref": "g032a-j22-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "연극과 방송에서 자주 쓰는 말입니다. 배우가 대본에 없는 대사나 몸짓을 그 자리에서 즉석으로 지어내는 것을 가리킵니다. '하고 싶은 대로'라는 뜻의 라틴어 표현을 줄인 이 말은?",
+    "answer": "애드리브",
+    "acceptedAnswers": [
+     "애드립"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "음악에서는 일정한 템포 안에서 연주자가 즉흥으로 연주하는 것도 이렇게 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "배우가 대본에 없는 대사나 몸짓을 즉석으로 지어내는 것",
+     "difWhy": "2 — 방송 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "예능에서 출연자가 준비 없이 받아친 한마디가 크게 웃길 때 '센스 만점'이라는 자막과 함께 칭찬받는 그것이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "대본에 없는 즉석 대사·연기(ad lib)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "방송·예능에서 자주 쓰는 말",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=연극 용어, 첫 문장 '연극과 방송에서 쓰는 말'. 둘째 문장에 뜻 풀이가 있어 해독에 막힘 없음."
+    },
+    "blindQuestion": {
+     "guess": "애드리브",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "애드리브",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "애드리브",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3249",
+      "answer": "즉흥극",
+      "verdict": "diff",
+      "why": "애드리브(대본 없는 대사 · ad libitum)와 즉흥극(장르 · Yes, and 규칙)은 용어와 알게 되는 사실이 다름"
+     },
+     {
+      "old": "3880",
+      "answer": "데우스 엑스 마키나",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "g032a:g032a-j22-1",
+      "answer": "방백",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아드_리비툼",
+     "https://en.wikipedia.org/wiki/Ad_libitum"
+    ],
+    "facts": [
+     {
+      "claim": "라틴어 '하고 싶은 대로' · 줄여서 ad lib · 연극에서 대본에 없는 대사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아드_리비툼",
+      "note": "아드 리비툼(Ad libitum)은 \"하고 싶은 대로\"(\"at one's pleasure\")라는 뜻의 라틴어로 줄여서 애드리브(ad lib)라고도 하며 다양한 형태의 즉흥을 가리킨다. ... 연극이나 드라마에서 대본에 없는 대사를 즉흥적으로 만들어내는 것을 말한다."
+     },
+     {
+      "claim": "Latin 'at one's pleasure' · 공연 중 대본에 없는 말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ad_libitum",
+      "note": "the phrase ad libitum (Latin for 'at one's pleasure' or 'as you desire'), often shortened to \"ad lib\" ... \"Ad-lib\" is used to describe individual moments during live theatre when an actor speaks through their character using words not found in the play's text."
+     },
+     {
+      "claim": "음악의 즉흥 연주",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아드_리비툼",
+      "note": "음악에서 일정한 템포에 맞추어 즉흥적으로 연주하는 것을 말한다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "대본에 없는 대사를 즉석에서",
+    "worthWhyGen": "3 — 일상에서 쓰는 말의 유래(라틴어)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' — 예",
+     "unique": "대사 하나 단위 즉석 지어냄 — 즉흥극(공연 전체)과 다름",
+     "hint12": "① 예 ② 예(약간 약함)"
+    },
+    "history": [],
+    "warn": [
+     "crossans 자막"
+    ],
+    "job": "job-22"
+   }
+  }
+ ]
+}

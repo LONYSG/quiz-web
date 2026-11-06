@@ -1,0 +1,282 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "earth/2",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/2#g032a-g032a-j06-5",
+   "seed": {
+    "subject": "액상화",
+    "aspect": null,
+    "ref": "g032a-j06-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지진 때 땅속에서 일어나는 현상입니다. 물을 머금은 모래층이 세게 흔들리면 모래 알갱이끼리 버티던 힘이 사라져 땅이 잠시 물처럼 됩니다. 한국에서는 2017년 포항 지진 때 관측 이래 처음으로 공식 확인되었고, 논에서 모래와 물이 솟아올랐습니다. 이 현상은?",
+    "answer": "액상화",
+    "acceptedAnswers": [
+     "토양 액상화",
+     "액상화 현상"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1918년 미국 캘러베러스 댐 붕괴를 설명하려고 앨런 헤이즌이 처음 쓴 말이며, 포항에서는 진앙 가까이 모래 분출 흔적 약 600개가 확인되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "물을 머금은 모래층이 세게 흔들리면 땅이 잠시 물처럼 됨",
+     "difWhy": "3 — 지진 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 지구과학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "지진 때 땅이 건물을 받치지 못해 건물이 비스듬히 기울고 땅속 맨홀이 떠오르게 만드는 지반 현상이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "지진 때 물 찬 모래 지반이 액체처럼 되는 현상(토양 액상화)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "포항 지진 뉴스에서 접함",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '지진 때 현상' 이 있고 작동 원리를 모래 알갱이 비유로 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "액상화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "액상화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "액상화",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j14-11",
+      "answer": "여진",
+      "verdict": "diff",
+      "why": "액상화 vs 여진"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/토양액상화",
+     "https://ko.wikipedia.org/wiki/2017년_포항_지진",
+     "https://en.wikipedia.org/wiki/Soil_liquefaction"
+    ],
+    "facts": [
+     {
+      "claim": "흙이 응력을 받아 강성을 잃고 액체처럼 됨 · 2017년 포항 지진 때 확인 · 지하수·모래 조건",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토양액상화",
+      "note": "토양이 응력을 받았을 때 강성과 전단강도를 상실하여 액체처럼 되는 현상이다. ... 대한민국에서는 2017년 포항 지진 당시 흥해읍, 망천리 ... 등에서 액상화 현상이 확인되었다."
+     },
+     {
+      "claim": "계기관측 이래 한국 처음 공식 확인 · 분출 대부분 논",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/2017년_포항_지진",
+      "note": "포항 지진에서는 1978년 계기관측이 시작된 이래 한국에서 처음으로 지진에 따른 액상화가 공식 확인되었다. ... 연구진은 분출이 대부분 논에서 일어나 액상화에 따른 큰 피해는 없었다고 보았으며"
+     },
+     {
+      "claim": "건물이 기울고 맨홀이 떠오름",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Soil_liquefaction",
+      "note": "Bridges and large buildings constructed on pile foundations may lose support from the adjacent soil and buckle or come to rest at a tilt. ... Buried tanks and manholes may float in the liquefied soil due to buoyancy."
+     },
+     {
+      "claim": "1918 헤이즌 첫 사용 · 포항 모래화산 약 600개",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/토양액상화",
+      "note": "액상화라는 말은 1918년 앨런 헤이즌이 캘리포니아의 캘러베러스 댐 붕괴를 설명하기 위해 최초로 사용했다. / 포항 문서: 진앙 반경 15 km 안에서 약 600개의 모래화산 등 지표 분출 퇴적물을 확인"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Soil_liquefaction"
+    ],
+    "hintNote": null,
+    "easiestCue": "땅이 잠시 물처럼 됨 · 포항 지진",
+    "worthWhyGen": "포항 지진으로 알려진 재난·건축 개념(교과 밖 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '지진 … 현상' 예",
+     "unique": "모래 지반이 물처럼 — 싱크홀·침하와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "earth/2#g032a-g032a-j14-11",
+   "seed": {
+    "subject": "여진",
+    "aspect": null,
+    "ref": "g032a-j14-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지진 뉴스에 자주 나오는 말입니다. 큰 지진이 일어난 뒤 같은 지역에서 이어서 일어나는 작은 지진들을 가리킵니다. 큰 지진은 '본진'이라 하고, 그 뒤에 따라오는 작은 지진들은 무엇이라 할까요?",
+    "answer": "여진",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "큰 지진 뒤에는 지진계로 잡히는 것만 수백에서 수천 번이 이어지기도 합니다. 몇 달이나 몇 년 뒤에 오기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "큰 지진은 '본진'이라 하고",
+     "difWhy": "1 — 본진 단서로 곧바로 여진",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 뉴스 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "큰 흔들림 뒤 어긋난 땅이 남은 힘을 마저 풀며 생기고, 시간이 갈수록 잦아드는 흔들림이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "큰 지진(본진) 뒤에 이어지는 작은 지진",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "지진 뉴스에서 흔히 접함",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '지진 뉴스의 말' · 끝 ○○ = 작은 지진들, 본진 풀이도 있음"
+    },
+    "blindQuestion": {
+     "guess": "여진",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "여진",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "여진",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5910",
+      "answer": "한글 맞춤법 통일안",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6163",
+      "answer": "번트",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6319",
+      "answer": "사돈",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6051",
+      "answer": "이매진",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2351",
+      "answer": "4군 6진",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/여진_(지진)",
+     "https://en.wikipedia.org/wiki/Aftershock"
+    ],
+    "facts": [
+     {
+      "claim": "여진 = 큰 지진 이후 발생하는 작은 지진 · 남은 탄성에너지 해소",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/여진_(지진)",
+      "note": "여진(餘震, Aftershock)은 지진학에서 큰 지진이 발생한 이후에 발생하는 작은 지진을 의미한다. 큰 지진의 영향으로 이동한 지구의 지각이 다시 재조정되며 이동하면서 남은 탄성에너지를 마저 해소하기 위해 발생한다."
+     },
+     {
+      "claim": "같은 지역 · main shock 뒤 작은 지진",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aftershock",
+      "note": "an aftershock is a smaller earthquake that follows a larger earthquake, in the same area of the main shock, caused as the displaced crust adjusts to the effects of the main shock."
+     },
+     {
+      "claim": "크기·빈도가 시간이 갈수록 감소",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/여진_(지진)",
+      "note": "일정한 패턴에 따라 이러한 여진의 크기와 빈도는 시간이 갈수록 감소하며"
+     },
+     {
+      "claim": "수백~수천 회 · 수 개월이나 수 년 후에도",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/여진_(지진)",
+      "note": "큰 지진이 발생한 이후에는 지진계로 감지할 수 있는 수백에서 수천 회의 여진이 발생하며 ... 본진 발생으로부터 수 개월이나 수 년 후에도 발생할 수 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/여진_(지진)"
+    ],
+    "hintNote": null,
+    "easiestCue": "큰 지진 뒤에 따라오는 작은 지진",
+    "worthWhyGen": "지진 뉴스에서 늘 듣는 말(일상 말 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' — 예",
+     "unique": "'뒤에' 따라옴 → 전진과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "myth/3",
+  "midKey": "myth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "myth/3#g032a-g032a-j16-10",
+   "seed": {
+    "subject": "파라오",
+    "aspect": null,
+    "ref": "g032a-j16-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 이집트의 왕을 부르던 칭호입니다. 이집트 사람들은 왕을 매의 신 호루스가 사람으로 나타난 존재로 여겼습니다. 본래 '큰 집', 곧 왕궁을 뜻하던 말이 왕을 가리키게 된 이 칭호는?",
+    "answer": "파라오",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 말이 왕 자신을 부르는 데 쓰인 가장 이른 확실한 예는 신왕국 시대 아크나톤 왕에게 보낸 편지입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "고대 이집트의 왕을 부르던 칭호",
+     "difWhy": "1 — 이집트 왕 하면 파라오",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일반 상식 + 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "투탕카멘·람세스 2세처럼 거대한 무덤과 황금 가면을 남긴 고대 이집트 왕들을 일컫는 말이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 이집트 왕의 칭호",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "역사·영화에서 흔함",
+     "piece": "f08",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이집트의 왕을 부르던 칭호' 가 끝 ○○(칭호)와 일치"
+    },
+    "blindQuestion": {
+     "guess": "파라오",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "파라오",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "파라오",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6209",
+      "answer": "유희왕",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6821",
+      "answer": "이집트 상형문자",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "1985",
+      "answer": "피라미드",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4582",
+      "answer": "토트",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6366",
+      "answer": "아누비스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/파라오",
+     "https://en.wikipedia.org/wiki/Pharaoh"
+    ],
+    "facts": [
+     {
+      "claim": "이집트어 pr ꜥꜣ '큰 집' · 왕궁 칭호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/파라오",
+      "note": "파라오라는 단어는 궁극적으로 이집트어 합성어 pr ꜥꜣ에서 유래하며, */ˌpaɾuwˈʕaʀ/는 \"큰 집\"을 의미한다. ... 이는 왕궁의 칭호였고"
+     },
+     {
+      "claim": "'great house' · 신왕국 무렵 왕을 부르는 말로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pharaoh",
+      "note": "The word pharaoh ultimately derives from the Egyptian compound pr ꜥꜣ (\"great house\") ... Sometime during the era of the New Kingdom, pharaoh became the form of address for a person who was king."
+     },
+     {
+      "claim": "왕 = 호루스의 신적 화신",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pharaoh",
+      "note": "During the Early Dynastic Period, the Pharaoh was represented as the divine incarnation of Horus, and the unifier of Upper and Lower Egypt."
+     },
+     {
+      "claim": "아크나톤에게 보낸 편지가 가장 이른 확실한 예",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pharaoh",
+      "note": "The earliest confirmed instance where pr ꜥꜣ is used specifically to address the ruler is in a letter to the eighteenth dynasty king, Akhenaten"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/파라오"
+    ],
+    "hintNote": null,
+    "easiestCue": "고대 이집트의 왕을 부르던 칭호",
+    "worthWhyGen": "누구나 아는 말의 유래(알가치 3 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '칭호' — 예",
+     "unique": "'이집트' · '칭호' 로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

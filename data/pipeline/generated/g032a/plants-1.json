@@ -1,0 +1,129 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "plants/1",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/1#g032a-g032a-j28-11",
+   "seed": {
+    "subject": "닥나무",
+    "aspect": null,
+    "ref": "g032a-j28-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "뽕나무과에 속하는 갈잎나무로, 우리 전통 종이인 한지의 주원료입니다. 껍질을 찌고 벗겨 삶고 두드려 얻은 질긴 섬유로 종이를 뜹니다. 이 나무는 무엇일까요?",
+    "answer": "닥나무",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "열매는 '저실'이라 하여 약재로 쓰고, 어린잎은 나물로 먹기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "뽕나무과에 속하는 갈잎나무로 한지의 주원료",
+     "difWhy": "3 — 식물 이름 떠올리기 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 전통 재료 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "고려의 종이를 송나라 사람들이 '고려지'라 부르며 최고로 쳤는데, 빛이 희고 윤이 나던 그 종이가 이 나무 껍질에서 나왔다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한지의 원료가 되는 뽕나무과 나무",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "한지 재료로 접하나 나무 자체는 덜 앎",
+     "piece": "f02",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '갈잎나무' 종류 명사 · 끝 '이 나무' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "닥나무",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "닥나무",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "닥나무",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/닥나무",
+     "https://ko.wikipedia.org/wiki/한지"
+    ],
+    "facts": [
+     {
+      "claim": "뽕나무과 · 낙엽 활엽 · 껍질이 종이 재료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/닥나무",
+      "note": "닥나무 ... 는 장미목 뽕나무과에 속하는 나무의 일종이다. 낙엽이 지는 활엽교목으로서 ... 나무껍질은 대한민국, 중국, 일본 등에서 종이를 만드는 재료가 되며"
+     },
+     {
+      "claim": "한지 주원료 닥나무 껍질 · 찌고 벗기고 삶고 두들김 · 질긴 섬유",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/한지",
+      "note": "한지의 주원료는 닥나무 껍질과 닥풀 ... 닥나무를 베고, 찌고, 삶고, 말리고, 벗기고, 다시 삶고, 두들기고 ... 질긴 속성을 가진 닥나무의 섬유를 손상 시키지 않고 만들기 때문에"
+     },
+     {
+      "claim": "중국인들이 고려지라 부름 · 희고 윤이 남",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/한지",
+      "note": "고려시대부터 그 명성이 높아 중국인들도 제일 좋은 종이를 ‘고려지(高麗紙)’라 불렀고, 송나라 손목(孫穆)은 《계림유사》에서 고려의 닥종이는 빛이 희고 윤이 나서 사랑스러울 정도라고 극찬하였다."
+     },
+     {
+      "claim": "열매 저실 약재 · 어린잎 먹음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/닥나무",
+      "note": "열매는 '저실' 또는 '구수자'라고 하여 약재로 쓰이고, 어린 잎은 먹기도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/한지"
+    ],
+    "hintNote": null,
+    "easiestCue": "한지의 주원료 나무",
+    "worthWhyGen": "전통 종이 한지가 무엇으로 만들어지는지(일반 상식 — 알가치 3 ①)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '갈잎나무' — 예",
+     "unique": "한지 주원료 — 닥나무(삼지닥나무·꾸지나무도 쓰이나 '주원료' 한정)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

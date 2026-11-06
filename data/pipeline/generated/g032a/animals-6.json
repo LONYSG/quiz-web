@@ -1,0 +1,423 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "animals/6",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/6#g032a-g032a-j06-4",
+   "seed": {
+    "subject": "되새김질",
+    "aspect": null,
+    "ref": "g032a-j06-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "소·양·기린·사슴 같은 초식 동물의 먹이 습성입니다. 첫째 위에서 미생물이 풀의 섬유질을 발효시키면, 그 덩어리를 입으로 다시 올려 한참 씹습니다. 사람이 지난 일을 곰곰이 곱씹을 때도 빗대어 쓰는 이 행동은?",
+    "answer": "되새김질",
+    "acceptedAnswers": [
+     "반추",
+     "되새김"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이런 동물을 반추동물이라 하며, 위가 네 칸으로 나뉘어 사람이 소화하지 못하는 셀룰로스를 미생물의 힘을 빌려 영양분으로 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "그 덩어리를 입으로 다시 올려 한참 씹습니다",
+     "difWhy": "1 — 누구나 아는 말 · 곱씹는 비유로 곧바로",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 습성 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "소가 누워 쉬는 동안에도 입을 쉬지 않고 우물우물 움직이는 까닭이 바로 이것이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "삼킨 먹이를 게워 다시 씹는 소·양 등의 습성(반추)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "소의 습성, 비유로도 흔히 씀",
+     "piece": "f03",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '초식 동물의 먹이 습성' 이 있고 끝 ○○ 가 행동이라 일치"
+    },
+    "blindQuestion": {
+     "guess": "반추",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "반추",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "되새김질",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/반추동물",
+     "https://en.wikipedia.org/wiki/Ruminant"
+    ],
+    "facts": [
+     {
+      "claim": "반추동물은 삼킨 먹이를 다시 게워 씹는다 · 기린 사슴 소 양 낙타",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/반추동물",
+      "note": "반추 위를 가지고 있으며, 한번 삼킨 먹이를 다시 게워 내어 씹는 특성을 가지고 있다. 되새김 동물이라고도 한다. ... 기린, 사슴, 소, 양, 낙타 등이 여기에 속한다."
+     },
+     {
+      "claim": "특수한 위에서 미생물 발효 뒤 게워 다시 씹음(rumination) · 첫째 위 rumen",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ruminant",
+      "note": "fermenting it in a specialized stomach prior to digestion, principally through microbial actions ... requires the fermented ingesta (known as cud) to be regurgitated and chewed again ... from rūmen, the first stomach."
+     },
+     {
+      "claim": "위가 네 칸 · 미생물 없이는 셀룰로스 이용 못 함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ruminant",
+      "note": "a three-compartment stomach instead of four like ruminants ... Without the help of microbes, ruminants would not be able to use nutrients from forages."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "삼킨 먹이를 다시 올려 씹는 소의 습성",
+    "worthWhyGen": "일상에서 '곱씹다·반추하다'로 쓰는 말의 바탕이 되는 동물 습성",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '먹이 습성' 예",
+     "unique": "다시 올려 씹는 행동 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "animals/6#g032a-g032a-j24-1",
+   "seed": {
+    "subject": "귀소 본능",
+    "aspect": null,
+    "ref": "g032a-j24-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "동물이 멀리 낯선 곳에 옮겨져도 원래 살던 집이나 둥지로 되돌아오는 타고난 성질을 가리키는 말입니다. 옛사람들은 비둘기의 이 성질을 이용해 다리에 편지를 묶어 소식을 전했습니다. 이 성질을 무엇이라 할까요?",
+    "answer": "귀소 본능",
+    "acceptedAnswers": [
+     "회귀 본능"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "비둘기 경주는 이 능력을 겨루는 경기로, 1,800km를 날아 돌아온 기록도 있습니다. 비둘기는 해와 지구 자기장 등을 길잡이로 쓴다고 봅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "원래 살던 집이나 둥지로 되돌아오는 타고난 성질 … 비둘기",
+     "difWhy": "3 — 생물 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 습성 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "연어가 넓은 바다를 돌다가 자기가 태어난 강으로 다시 거슬러 올라오는 것도 이 성질 덕분이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "낯선 곳에서도 제 집·둥지로 돌아오는 동물의 타고난 성질(homing instinct)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "교과서에서 접함",
+     "piece": "f08",
+     "genPct": 72
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '타고난 성질을 가리키는 말' = 끝 ○○ '성질'. 전서구 예시가 뜻을 보충"
+    },
+    "blindQuestion": {
+     "guess": "귀소본능",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "귀소 본능",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "귀소 본능",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j31-9",
+      "answer": "먹이사슬",
+      "verdict": "diff",
+      "why": "새=귀소 본능; 먹이사슬·의태·철새 자기장 감지·경계색·구애 행동은 다른 동물 지식"
+     },
+     {
+      "old": "2685",
+      "answer": "의태",
+      "verdict": "diff",
+      "why": "새=귀소 본능; 먹이사슬·의태·철새 자기장 감지·경계색·구애 행동은 다른 동물 지식"
+     },
+     {
+      "old": "2684",
+      "answer": "자기장",
+      "verdict": "diff",
+      "why": "새=귀소 본능; 먹이사슬·의태·철새 자기장 감지·경계색·구애 행동은 다른 동물 지식"
+     },
+     {
+      "old": "2686",
+      "answer": "경계색",
+      "verdict": "diff",
+      "why": "새=귀소 본능; 먹이사슬·의태·철새 자기장 감지·경계색·구애 행동은 다른 동물 지식"
+     },
+     {
+      "old": "2691",
+      "answer": "구애 행동",
+      "verdict": "diff",
+      "why": "새=귀소 본능; 먹이사슬·의태·철새 자기장 감지·경계색·구애 행동은 다른 동물 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/귀소_본능",
+     "https://ko.wikipedia.org/wiki/전서구",
+     "https://en.wikipedia.org/wiki/Homing_pigeon"
+    ],
+    "facts": [
+     {
+      "claim": "귀소본능 = 낯선 장소에서 원래 장소로 되돌아오는 동물의 태생적 성질",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/귀소_본능",
+      "note": "귀소본능(歸巢本能, homing instinct)은 친숙하지 않은 장소를 통해 원래의 장소를 향해 되돌아올 수 있는 동물의 태생적 성질이다."
+     },
+     {
+      "claim": "전서구 = 비둘기의 귀소본능을 이용한 통신",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/전서구",
+      "note": "전서구(傳書鳩)는 통신에 이용하기 위해 훈련된 비둘기를 말한다. 자신이 원래 있던 곳으로 돌아올 수 있는 비둘기의 귀소본능을 이용한 것이다."
+     },
+     {
+      "claim": "다리에 편지를 묶어 날려 보냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Homing_pigeon",
+      "note": "Messages were tied around the legs of the pigeon, which was freed and could reach its original nest."
+     },
+     {
+      "claim": "연어의 귀소",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/귀소_본능",
+      "note": "후각은 연어의 귀소에도 필수적이다."
+     },
+     {
+      "claim": "경주 비둘기 1,800km 기록 · 자기 감각/해 나침반",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Homing_pigeon",
+      "note": "Flights as long as 1,800 km (1,100 miles) have been recorded by birds in competitive homing pigeon racing … While the compass mechanism appears to rely on the sun … A prominent theory is that the birds are able to detect a magnetic field"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/귀소_본능"
+    ],
+    "hintNote": null,
+    "easiestCue": "비둘기 다리에 편지를 묶어 소식을 전함",
+    "worthWhyGen": "일상에서도 쓰는 말(귀소 본능)의 뜻 · 전서구·연어로 이어지는 생활 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장에 '성질을 가리키는 말' 예",
+     "unique": "'타고난 성질'로 각인·학습과 가름 · 회귀 본능은 같은 뜻으로 흔히 써 변형",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 연어"
+    ],
+    "job": "job-24"
+   }
+  },
+  {
+   "seedId": "animals/6#g032a-g032a-j31-9",
+   "seed": {
+    "subject": "먹이사슬",
+    "aspect": null,
+    "ref": "g032a-j31-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "생태계에서 생물이 먹고 먹히는 관계를 한 줄로 이은 것입니다. 풀에서 시작해 메뚜기, 개구리, 뱀으로 이어지고 맨 끝에는 최상위 포식자가 있습니다. 이 관계를 무엇이라 할까요?",
+    "answer": "먹이사슬",
+    "acceptedAnswers": [
+     "먹이 연쇄"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "10세기 아랍 철학자 알자히즈가 처음 다뤘고, 오늘날의 개념은 영국 생태학자 찰스 엘턴이 세웠다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "먹고 먹히는 관계를 한 줄로 이은 것",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "에너지가 생산자인 식물에서 1차·2차·3차 소비자로 옮겨 가는 길을 한 줄로 그린 것이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "생태계에서 먹고 먹히는 관계를 한 줄로 이은 것(food chain)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "교과서 기본 개념",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 생태계 개념이 있고 예가 직관적"
+    },
+    "blindQuestion": {
+     "guess": "먹이사슬",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "먹이 사슬",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "먹이사슬",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1412",
+      "answer": "플랑크톤",
+      "verdict": "diff",
+      "why": "먹이사슬 개념과 플랑크톤은 다른 질문(플랑크톤은 짧은 힌트로만 연결)"
+     },
+     {
+      "old": "3440",
+      "answer": "DDT",
+      "verdict": "diff",
+      "why": "먹이사슬과 DDT(살충제 축적)는 다른 사실"
+     },
+     {
+      "old": "g032a:g032a-j24-1",
+      "answer": "귀소 본능",
+      "verdict": "diff",
+      "why": "먹이사슬과 귀소 본능은 다름"
+     },
+     {
+      "old": "2683",
+      "answer": "동면",
+      "verdict": "diff",
+      "why": "먹이사슬과 동면은 다름"
+     },
+     {
+      "old": "2686",
+      "answer": "경계색",
+      "verdict": "diff",
+      "why": "먹이사슬과 경계색은 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/먹이_사슬",
+     "https://en.wikipedia.org/wiki/Food_chain"
+    ],
+    "facts": [
+     {
+      "claim": "생산자(풀)에서 최상위 포식자로 잇는 선형 관계",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/먹이_사슬",
+      "note": "먹이 사슬(food chains) 또는 먹이 연쇄는 먹이 그물 내 링크의 선형 네트워크로, 종종 독립영양생물(풀 또는 조류 (수생 생물) 등)과 같은 생산자에서 시작하여 일반적으로 최상위 포식자(회색곰 또는 범고래 등) … 에서 끝난다."
+     },
+     {
+      "claim": "같은 정의",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Food_chain",
+      "note": "A food chain is a linear network of links in a food web, often beginning with an autotroph (such as grass or algae), also called a producer, and typically ending at an apex predator"
+     },
+     {
+      "claim": "에너지가 영양 단계(소비자)로 옮겨 감",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Food_chain",
+      "note": "This energy then moves through the trophic levels. … Secondary consumers eat and obtain energy from primary consumers, tertiary consumers eat and obtain energy from secondary consumers"
+     },
+     {
+      "claim": "알자히즈 · 엘턴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Food_chain",
+      "note": "Food chains were first discussed by al-Jahiz, a 10th century Arab philosopher. The modern concepts of food chains and food webs were introduced by Charles Elton."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Food_chain"
+    ],
+    "hintNote": null,
+    "easiestCue": "먹고 먹히는 관계를 한 줄로",
+    "worthWhyGen": "일상에서도 쓰는 말('먹이사슬 꼭대기') · 생태 기본 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '생태계 관계' 예",
+     "unique": "한 줄 — 먹이 그물과 갈림 · 등급 2 가능성",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 생산자"
+    ],
+    "job": "job-31"
+   }
+  }
+ ]
+}

@@ -1,0 +1,300 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "politics/3",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/3#g032a-job-03-8",
+   "seed": {
+    "subject": "탈리오 법칙",
+    "aspect": null,
+    "ref": "job-03-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 법에서, 남에게 입힌 피해와 똑같은 방식으로 되갚게 한 처벌 원칙입니다. 흔히 잔인한 복수의 법으로 여기지만, 원래는 피해보다 더 크게 보복하지 못하도록 한도를 정하려던 것으로 봅니다. 이 원칙의 이름은?",
+    "answer": "탈리오 법칙",
+    "acceptedAnswers": [
+     "동해보복법",
+     "동태복수법",
+     "탈리오의 법칙",
+     "동해 보복의 원칙",
+     "동해보복 원칙"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "바빌로니아의 법 196조는 남의 눈을 상하게 하면 눈으로, 200조는 이를 상하게 하면 이로 갚게 했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "남에게 입힌 피해와 똑같은 방식으로 되갚게 한 처벌 원칙",
+     "difWhy": "4 — 눈에는 눈이 아닌 탈리오 이름 · 이걸 어떻게 알아",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 법 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "함무라비 법전과 구약 성경에 나오는 '눈에는 눈, 이에는 이'로 널리 알려진 원칙이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'눈에는 눈, 이에는 이' — 받은 피해만큼 같은 방식으로 갚는 고대 법 원칙(lex talionis)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "눈에는 눈 이에는 이, 함무라비 법전",
+     "piece": "f05",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '처벌 원칙' 이 있고 문장 구조가 단순"
+    },
+    "blindQuestion": {
+     "guess": "동해보복 원칙",
+     "hit": false
+    },
+    "blindHint": {
+     "guess": "탈리오 법칙",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탈리오 법칙",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Eye_for_an_eye",
+     "https://ko.wikipedia.org/wiki/함무라비_법전"
+    ],
+    "facts": [
+     {
+      "claim": "피해와 같은 정도로 벌함 · 원래 취지는 피해 가치로 한정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eye_for_an_eye",
+      "note": "The law of exact retaliation (Latin: lex talionis) ... a person who has injured another person is to be penalized to a similar degree ... The intent behind the principle was to restrict compensation to the value of the loss."
+     },
+     {
+      "claim": "보복이 범죄보다 크지 않게 제한",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eye_for_an_eye",
+      "note": "Babylonian law put a limit on such actions, restricting the retribution to be no worse than the crime"
+     },
+     {
+      "claim": "함무라비 법전의 기본 원칙 lex talionis '눈에는 눈'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/함무라비_법전",
+      "note": "이 법전의 기본 원칙으로 널리 받아들여지는 것 중 하나는 lex talionis, 즉 \"눈에는 눈\"이다."
+     },
+     {
+      "claim": "196조 눈 · 200조 이",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/함무라비_법전",
+      "note": "법률 196조와 200조는 각각 한 남자가 다른 남자의 눈을 상하게 했을 때 눈으로, 이를 상하게 했을 때 이로 갚는 것을 규정한다."
+     },
+     {
+      "claim": "모세 율법(언약 법전)에도 같은 원칙",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/함무라비_법전",
+      "note": "함무라비 법전과 언약 법전 사이에는 유사점이 있다: ... lex talionis(\"눈에는 눈\")와 같은 원칙"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/함무라비_법전"
+    ],
+    "hintNote": null,
+    "easiestCue": "피해와 똑같은 방식으로 되갚는 고대 법 원칙",
+    "worthWhyGen": "'눈에는 눈'이 사실은 복수를 줄이려던 원칙이었다는 까닭 — 흔한 말의 오해를 바로잡음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '처벌 원칙' — 예",
+     "unique": "같은 방식 되갚기 원칙 — 하나(동해보복법 변형)",
+     "hint12": "① 예 ② 예 · 정답 이름 친숙도 경계(30~40)"
+    },
+    "history": [
+     {
+      "step": "blind-q GEN",
+      "before": {
+       "acceptedAnswers": [
+        "동해보복법",
+        "동태복수법",
+        "탈리오의 법칙",
+        "동해 보복의 원칙"
+       ]
+      },
+      "why": "blind '동해보복 원칙' = 같은 것 → 변형"
+     }
+    ],
+    "warn": [
+     "crossans 함무라비 법전"
+    ],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "politics/3#g032a-g032a-j20-8",
+   "seed": {
+    "subject": "피고인",
+    "aspect": null,
+    "ref": "g032a-j20-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "형사 사건에서 수사를 받는 사람은 '피의자'라고 부릅니다. 검사가 이 사람을 재판에 넘기면(기소) 부르는 이름이 바뀝니다. 형사재판에서 재판을 받는 사람을 가리키는 이 말은 무엇일까요?",
+    "answer": "피고인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "민사소송에서 소송을 당한 쪽은 '피고'라고 해 이름이 다르며, 판결이 확정되기 전까지는 범인으로 단정할 수 없습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "검사가 재판에 넘기면 부르는 이름이 바뀝니다",
+     "difWhy": "2 — 뉴스 용어 · 피의자 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 법 규범",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "법정에서 검사와 맞서 변호인의 도움을 받아 자신의 무죄를 주장할 수 있는 형사재판의 당사자다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "형사재판에 넘겨진(공소가 제기된) 사람",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "재판 뉴스에서 흔히 사용",
+     "piece": "f07",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "피의자를 풀어 놓고 기소로 바뀐다고 설명해 낯선 법률어 문제 없음 · 첫 문장에 '사람' 종류가 있음"
+    },
+    "blindQuestion": {
+     "guess": "피고인",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피고인",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피고인",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3154",
+      "answer": "집행유예",
+      "verdict": "diff",
+      "why": "피고인 vs 집행유예 — 다른 용어"
+     },
+     {
+      "old": "3159",
+      "answer": "보석",
+      "verdict": "diff",
+      "why": "피고인 vs 보석 — 다른 용어"
+     },
+     {
+      "old": "3825",
+      "answer": "플리바게닝",
+      "verdict": "diff",
+      "why": "피고인 vs 플리바게닝 — 다른 용어"
+     },
+     {
+      "old": "1190",
+      "answer": "무죄추정의 원칙",
+      "verdict": "diff",
+      "why": "피고인 호칭 vs 무죄추정 원칙 — 다른 지식"
+     },
+     {
+      "old": "1198",
+      "answer": "국민참여재판",
+      "verdict": "diff",
+      "why": "피고인 vs 국민참여재판 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/피의자",
+     "https://ko.wikipedia.org/wiki/피고인"
+    ],
+    "facts": [
+     {
+      "claim": "공소 제기 전 피의자 → 공소 제기 후 피고인",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피의자",
+      "note": "피의자 ... 는 범죄의 혐의를 받아 수사기관에 의하여 수사의 대상이 되어 있으나, 아직 법원에 공소제기를 당하지 않은 자를 말한다. 그러나 공소제기를 당한 후에는 피고인이라 불리게 된다."
+     },
+     {
+      "claim": "공소가 제기된 자를 피고인으로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피고인",
+      "note": "형사소송에서 검사에 의하여 \"공소가 제기된 자를 피고인으로 한다\"는 형사소송법 규정에 의하여 형사재판에서 피고인이라고 하지만"
+     },
+     {
+      "claim": "검사와 대등 · 무죄 주장 · 변호인",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/피고인",
+      "note": "피고인은 검사와 대등한 입장에서 자신의 무죄를 주장할 수 있는 소송당사자로서의 지위를 법률로서 인정받는다. ... 피고인이 자신의 입장을 대변하기 위해 변호인을 선임할 수 있는 제도도 이 원칙에 근거하고 있다."
+     },
+     {
+      "claim": "민사 피고 · 확정 전 범인 단정 못함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/피고인",
+      "note": "소송을 제기하는 자(원고)의 상대방(피고)으로 ... 판결이 확정되기 전까지는 범인이라 단정할 수 없으므로"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/피고인"
+    ],
+    "hintNote": null,
+    "easiestCue": "피의자가 기소되면 바뀌는 호칭",
+    "worthWhyGen": "3 — 뉴스에서 매일 쓰는 법률 호칭의 구별(일상 말)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '부르는 이름(피의자)' — 예",
+     "unique": "형사재판 한정 → 민사 '피고'와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "⑨ 종류 '말' 첫 문장에 없음"
+    ],
+    "job": "job-20"
+   }
+  }
+ ]
+}

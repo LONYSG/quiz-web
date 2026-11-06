@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "animals/4",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/4#g032a-g032a-j07-8",
+   "seed": {
+    "subject": "하루살이",
+    "aspect": null,
+    "ref": "g032a-j07-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "물속에서 애벌레로 길게는 몇 년을 사는 곤충입니다. 그런데 날개를 달고 물 밖으로 나오면 입이 퇴화해 아무것도 먹지 못하고, 짝짓기와 알 낳기만 하다 곧 죽습니다. 이 곤충은?",
+    "answer": "하루살이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "애벌레는 아가미로 숨 쉬며 수십 번 허물을 벗는다. 번데기 없이 어른이 되는 불완전 변태 곤충이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "날개를 달고 물 밖으로 나오면 곧 죽습니다",
+     "difWhy": "1 — 하루살이 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "어른 시절이 무척 짧아 덧없음의 비유로 쓰이는 곤충으로, 짝짓기 철이면 물가 위에 떼 지어 날며 춤추듯 오르내린다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "어른벌레 수명이 아주 짧은 수서 곤충(하루살이목)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "흔한 곤충",
+     "piece": "f01",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=곤충, 첫 문장이 '애벌레로 사는 곤충입니다'. 둘째 문장은 '그런데'로 이어지는 같은 주어."
+    },
+    "blindQuestion": {
+     "guess": "하루살이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "하루살이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "하루살이",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6139",
+      "answer": "반딧불이",
+      "verdict": "diff",
+      "why": "하루살이 vs 반딧불이"
+     },
+     {
+      "old": "3369",
+      "answer": "여왕개미",
+      "verdict": "diff",
+      "why": "하루살이 vs 여왕개미"
+     },
+     {
+      "old": "3368",
+      "answer": "누에",
+      "verdict": "diff",
+      "why": "하루살이 vs 누에"
+     },
+     {
+      "old": "2061",
+      "answer": "누에",
+      "verdict": "diff",
+      "why": "하루살이 vs 누에"
+     },
+     {
+      "old": "251",
+      "answer": "완전변태",
+      "verdict": "diff",
+      "why": "하루살이 vs 완전변태"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/하루살이",
+     "https://en.wikipedia.org/wiki/Mayfly"
+    ],
+    "facts": [
+     {
+      "claim": "성충 입 퇴화 · 섭식 기능 없음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/하루살이",
+      "note": "입 구조는 퇴화하여 일반적으로 섭식 기능은 없다."
+     },
+     {
+      "claim": "어른은 먹지 않고 번식만 · 애벌레는 물속에서 여러 해",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mayfly",
+      "note": "The primary function of the adult is reproduction; adults do not feed and have only vestigial mouthparts / In contrast to their short lives as adults, they may live for several years in the water."
+     },
+     {
+      "claim": "물 위 떼 지어 혼인 비행 · 오르내림",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Mayfly",
+      "note": "most congregate in swarms a few metres above water … and perform a nuptial or courtship dance. Each insect has a characteristic up-and-down pattern of movement"
+     },
+     {
+      "claim": "아가미 · 탈피 10~40회 · 불완전 변태",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/하루살이",
+      "note": "애벌레 시기에는 탈피 횟수가 많아 일반적으로 10회 이상, 때로는 40회에 이르는 것도 있다. … 하루살이는 불완전 변태이며 번데기가 되지 않는다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mayfly"
+    ],
+    "hintNote": null,
+    "easiestCue": "어른벌레가 먹지 못하고 곧 죽는 곤충",
+    "worthWhyGen": "누구나 아는 곤충 이름의 까닭(왜 짧게 사나) — 알가치 3 ②",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '곤충' 예",
+     "unique": "물속 애벌레 + 어른 입 퇴화 — 하루살이(일부 나방도 입 퇴화지만 물속 애벌레로 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07"
+   }
+  }
+ ]
+}

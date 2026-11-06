@@ -1,0 +1,116 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "comics/2",
+  "midKey": "comics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "comics/2#g032a-g032a-j08-8",
+   "seed": {
+    "subject": "헐크",
+    "aspect": null,
+    "ref": "g032a-j08-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "마블 코믹스의 영웅입니다. 1962년 첫 호에서 이 영웅의 피부는 회색이었습니다. 스탠 리는 무섭고 어느 인종도 떠올리지 않는 색으로 회색을 골랐지만, 인쇄할 때 회색이 쪽마다 고르게 나오지 않았습니다. 그래서 2호부터 지금의 초록색으로 바꾼 이 영웅은?",
+    "answer": "헐크",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Hulk"
+    ],
+    "explanation": "1984년 뒤로 다시 찍은 첫 호는 원래의 회색으로 실렸고, 이야기 속 설정도 처음엔 회색이었던 것으로 정리됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "2호부터 지금의 초록색으로 바꾼 이 영웅",
+     "difWhy": "2 — 초록색 마블 영웅 단서",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 일화 — 제작 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 1,
+     "worthKind": "일화"
+    },
+    "generalHint": "물리학자 브루스 배너가 감마선을 쬔 뒤 화가 나면 변하는 거인으로, 영화 '어벤져스'에서는 마크 러펄로가 맡았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "마블 코믹스의 초록색 괴력 영웅",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "어벤져스 영화로 유명",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hulk",
+     "https://www.britannica.com/question/Was-the-original-Incredible-Hulk-green",
+     "https://ko.wikipedia.org/wiki/헐크"
+    ],
+    "facts": [
+     {
+      "claim": "첫 호 회색 · 무섭고 인종을 떠올리지 않는 색 · 회색 농도 문제 · 첫 호를 본 뒤 초록으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hulk",
+      "note": "In the debut, Lee chose gray for the Hulk because he thought gray was a scary color and he wanted a color that did not suggest any particular ethnic group. Colorist Stan Goldberg, however, had problems with the gray coloring, resulting in different shades of gray ... Lee chose to change the skin color to green. ... In Incredible Hulk #2, the Hulk started to appear with green skin"
+     },
+     {
+      "claim": "인쇄 문제로 2호부터 초록",
+      "where": "q",
+      "url": "https://www.britannica.com/question/Was-the-original-Incredible-Hulk-green",
+      "note": "(WebSearch 요약) 첫 호에서 회색이 쪽마다 고르게 나오지 않아 스탠 리가 2호부터 초록으로 바꿨다 — mentalfloss 'how faulty printer changed incredible hulk' 도 같은 내용"
+     },
+     {
+      "claim": "브루스 배너 · 감마선 · 마크 러펄로",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/헐크",
+      "note": "물리학자 로버트 브루스 배너 박사 ... 어벤져스 - 마크 러펄로 (en: accidental exposure to gamma rays ... Banner is physically transformed into the Hulk when subjected to emotional stress)"
+     },
+     {
+      "claim": "1984년부터 재판은 회색 · 설정상 처음 회색",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hulk",
+      "note": "Since December 1984, reprints of the first issue have displayed the original gray coloring, with the fictional canon specifying that the Hulk's skin had initially been gray."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/헐크",
+     "https://en.wikipedia.org/wiki/Hulk"
+    ],
+    "hintNote": null,
+    "easiestCue": "2호부터 초록색으로 바꾼 마블 영웅",
+    "worthWhyGen": "유명 캐릭터 색의 까닭(인쇄 문제) — 취미 영역 유래 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '마블 코믹스의 영웅' 예",
+     "unique": "회색→초록 — 하나뿐(레드 헐크·쉬헐크는 뒤에 나온 다른 인물)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08",
+    "discarded": "알가치 1 (일화 · 제작 일화)"
+   }
+  }
+ ]
+}

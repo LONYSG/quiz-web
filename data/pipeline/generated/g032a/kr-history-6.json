@@ -1,0 +1,140 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-history/6",
+  "midKey": "kr-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/6#g032a-g032a-j01-6",
+   "seed": {
+    "subject": "386세대",
+    "aspect": null,
+    "ref": "g032a-j01-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년대에 생긴 한국의 세대 이름입니다. 당시 30대이면서 80년대에 대학을 다니고 60년대에 태어난 사람들을, 그 무렵 최신이던 인텔 컴퓨터 칩 이름에 빗대 불렀습니다. 1980년대 민주화 운동의 주역이던 이 세대는?",
+    "answer": "386세대",
+    "acceptedAnswers": [
+     "86세대"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1980년대에는 고졸자의 30% 정도만 대학에 가던 시절이라, 이들 대학생은 이미 사회적 지식인으로 대접받았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "인텔 칩 이름에 빗댄 80년대 학번 60년대생 세대",
+     "difWhy": "2 — 숫자 조합이나 단서 풍부",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 세대 용어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "전두환 정부에 맞선 대학가 학생운동 출신이 많고, 김대중·노무현 정부 때 정치 주역으로 떠오른 세대다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1960년대생·80년대 학번 민주화 운동 세대",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "세대 명칭으로 뉴스에서 흔함",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '세대 이름' · 끝 ○○ = 세대, 조건 나열이 한 문장이지만 한 번에 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "386세대",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "86세대",
+     "hit": false
+    },
+    "factCheck": {
+     "answer": "386세대",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4979",
+      "answer": "다부동 전투",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(386세대 / 다부동 전투)"
+     },
+     {
+      "old": "6311",
+      "answer": "아웅산 테러",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(386세대 / 아웅산 테러)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/386세대",
+     "https://en.wikipedia.org/wiki/386_Generation"
+    ],
+    "facts": [
+     {
+      "claim": "30대·80년대 학번·60년대생 · 286/386 컴퓨터에서 온 조어",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/386세대",
+      "note": "\"386 세대\"라는 명칭은 원래, 80년대 이후 널리 사용되었던 인텔 80286 또는 인텔 80386 등의 마이크로프로세서를 탑재한 컴퓨터의 명칭이었던 286 컴퓨터, 386 컴퓨터 등의 용어에서 비롯된 조어다. ... 1980년대는 고졸자의 30% 정도만이 대학에 진학하던 시절이었고, 대학생은 이미 사회적 지식인으로 진입한다고 인정하던 시기였다."
+     },
+     {
+      "claim": "1990년대 초 생긴 말 · 당시 최신 인텔 386 · 민주화 운동 · 김대중·노무현",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/386_Generation",
+      "note": "The term was coined in the early 1990s, in reference to what was then the latest computer model, Intel's 386, and referring to people then in their 30s, having attended university in the 1980s, and born in the 1960s. ... instrumental in the democracy movement of the 1980s ... Kim Dae-jung benefitted from widespread 386er support ... the election of Roh Moo-hyun"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/386_Generation"
+    ],
+    "hintNote": null,
+    "easiestCue": "30대·80년대 학번·60년대생 + 인텔 칩 이름",
+    "worthWhyGen": "뉴스에 자주 나오는 세대 이름의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '세대 이름' 예",
+     "unique": "1990년대 당시 이름 한정(86세대는 뒤의 이름 · 변형으로 받지 않음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-h GEN",
+      "before": {
+       "acceptedAnswers": []
+      },
+      "why": "blind '86세대' = 같은 세대의 바뀐 이름 → 변형"
+     }
+    ],
+    "warn": [],
+    "job": "job-01"
+   }
+  }
+ ]
+}

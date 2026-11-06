@@ -1,0 +1,468 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "religion/3",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/3#g032a-job-03-1",
+   "seed": {
+    "subject": "알라",
+    "aspect": null,
+    "ref": "job-03-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아랍어로 '신'을 뜻하는 낱말입니다. 한 종교만의 고유한 이름이 아니어서, 아랍어를 쓰는 기독교인도 하느님을 이 말로 부릅니다. 그래서 말레이시아에서는 기독교 성경이 이 말을 써도 되는지를 두고 법정 다툼까지 벌어졌습니다. 이 말은?",
+    "answer": "알라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'신'을 뜻하는 일라에 정관사 '알'이 붙은 '알 일라'가 줄어든 말로 봅니다. 말레이시아의 비무슬림 사용 금지는 2021년 뒤집혔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "아랍어로 '신'을 뜻하는 낱말",
+     "difWhy": "2 — 알라는 널리 알려진 이름 · 첫 문장이 곧 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 종교 상식의 바탕",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "이슬람교 신자들이 섬기는 유일신을 부르는 이름으로, 무함마드가 이 신의 계시를 받았다고 믿는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "이슬람교에서 유일신을 부르는 이름이자, 아랍어로 '신'을 뜻하는 낱말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "뉴스·상식으로 누구나 앎",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '아랍어 · 신을 뜻하는 낱말' 로 종류와 뜻을 줌 · 법정 다툼은 부연"
+    },
+    "blindQuestion": {
+     "guess": "알라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "알라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "알라",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 7,
+     "found": 7,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5265",
+      "answer": "써모스",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(알라 / 써모스)"
+     },
+     {
+      "old": "6763",
+      "answer": "필리핀",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(알라 / 필리핀)"
+     },
+     {
+      "old": "4234",
+      "answer": "로빈 윌리엄스",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(알라 / 로빈 윌리엄스)"
+     },
+     {
+      "old": "205",
+      "answer": "아바스 왕조",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(알라 / 아바스 왕조)"
+     },
+     {
+      "old": "2030",
+      "answer": "천일야화",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(알라 / 천일야화)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/알라",
+     "https://en.wikipedia.org/wiki/Allah"
+    ],
+    "facts": [
+     {
+      "claim": "알라는 아랍어로 '신'을 뜻하는 말",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/알라",
+      "note": "알라(아랍어: اللّٰه Allāh)는 신을 의미하는 아랍어 호칭이다."
+     },
+     {
+      "claim": "아랍 기독교인도 신을 이 말로 부른다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Allah",
+      "note": "The Christian Arabs of today have no other word for \"God\" than \"Allah\"."
+     },
+     {
+      "claim": "말레이시아에서 기독교의 사용을 두고 법정 다툼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Allah",
+      "note": "The government of Malaysia in 2007 prohibited usage of the term Allah in any other but Muslim contexts, but the Malayan High Court in 2009 overturned the law ... In October 2013 the court ruled in favor of the government's ban."
+     },
+     {
+      "claim": "말레이시아 기독교·시크교도 사용이 법적 논쟁으로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/알라",
+      "note": "말레이시아 반도 지역의 기독교인과 시크교도들에 의한 비슷한 사용은 최근 정치적인 그리고 법적인 논쟁으로 이어지고 있다."
+     },
+     {
+      "claim": "'알 일라'의 단축형",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/알라",
+      "note": "'신'을 뜻하는 '이라'(إله) 에 아랍어의 정관사 '알'(ال)이 부가된 '알 이라'(الإله)의 단축형 또는 발음이 변이된 형태."
+     },
+     {
+      "claim": "금지 2021년 뒤집힘",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Allah",
+      "note": "The ban was overturned in 2021."
+     },
+     {
+      "claim": "무함마드가 이 신의 개념으로 알라를 사용",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/알라",
+      "note": "이슬람의 창시자인 무함마드는 이슬람의 신에 대한 개념을 나타내기 위해 알라라는 단어를 사용했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/알라"
+    ],
+    "hintNote": null,
+    "easiestCue": "아랍어로 '신'을 뜻하는 낱말",
+    "worthWhyGen": "'알라'가 고유 이름이 아니라 아랍어의 보통명사 '신'이라는 까닭 — 일상 오해를 바로잡는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '아랍어 낱말' — 예",
+     "unique": "아랍어 '신' + 기독교도 씀 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "religion/3#g032a-g032a-j13-6",
+   "seed": {
+    "subject": "메카",
+    "aspect": null,
+    "ref": "g032a-j13-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사우디아라비아에 있는 이슬람 최고의 성지로, 예언자 무함마드가 태어난 도시입니다. 이 도시 이름은 '영화의 ○○'처럼 어떤 분야의 중심지를 가리키는 말로도 쓰입니다. 이 도시는 어디일까요?",
+    "answer": "메카",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "사우디아라비아 정부는 1980년대에 공식 표기를 '마카(Makkah)'로 바꾸었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "사우디아라비아에 있는 이슬람 최고의 성지로, 예언자 무함마드가 태어난 도시",
+     "difWhy": "2 — 메카는 일상어 · 성지 설명에서 이름 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일반 상식의 기본 이름 + 말뜻('○○의 메카') 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "전 세계 무슬림이 어디에 있든 하루 다섯 번 예배할 때 몸을 돌려 향하는 도시다",
+    "generalHintVersion": "hint-v7",
+    "identity": "이슬람 최고 성지인 사우디아라비아 도시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "종교·지리 상식",
+     "piece": "f01",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이슬람 성지 · 도시' · 끝 ○○ = 도시"
+    },
+    "blindQuestion": {
+     "guess": "메카",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "메카",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "메카",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4764",
+      "answer": "동대문야구장",
+      "verdict": "unsure",
+      "why": "지식은 다름(메카 도시 vs 동대문야구장)이나 옛 힌트에 '메카'(관용 뜻)가 있어 새 정답 누설"
+     },
+     {
+      "old": "2609",
+      "answer": "헤지라",
+      "verdict": "unsure",
+      "why": "헤지라(메카→메디나) vs 메카: 질문·힌트에 '메카'가 있어 새 정답 누설, 이슬람사 같은 사실군"
+     },
+     {
+      "old": "6070",
+      "answer": "사우디아라비아",
+      "verdict": "unsure",
+      "why": "지식은 다름(사우디 국기 vs 메카)이나 옛 힌트에 '메카'가 있어 누설"
+     },
+     {
+      "old": "2619",
+      "answer": "이븐 바투타",
+      "verdict": "unsure",
+      "why": "지식은 다름(이븐 바투타 vs 메카)이나 옛 힌트에 '메카 순례'가 있어 누설"
+     },
+     {
+      "old": "3859",
+      "answer": "카바",
+      "verdict": "unsure",
+      "why": "카바(메카 안 건물) vs 메카: 옛 질문에 '메카'가 있어 누설 + 이슬람 성지 같은 사실군"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/메카",
+     "https://en.wikipedia.org/wiki/Mecca"
+    ],
+    "facts": [
+     {
+      "claim": "사우디아라비아 도시 · 무함마드 출생지 · 이슬람에서 가장 성스러운 도시 · 중요한 장소의 대명사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/메카",
+      "note": "메카는 무함마드의 출생지이기 때문에 … 이슬람 세계에서 메카는 가장 성스러운 도시이다. … 이 때문에 메카라는 말은 단순히 도시의 지명을 넘어서, 어떤 집단의 아주 중요한 장소를 가리키는 대명사가 되었다."
+     },
+     {
+      "claim": "이슬람 최고 성지 · 순례 중심",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mecca",
+      "note": "Mecca was declared the holiest site in Islam ordaining it as the center of Muslim pilgrimage (Hajj), one of the Islamic faith's Five Pillars."
+     },
+     {
+      "claim": "하루 다섯 번 메카 방향 예배",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/메카",
+      "note": "지구상 어디에 있든지 모든 무슬림은 … 메카의 카바 방향으로 하루에 다섯 번 예배를 드린다."
+     },
+     {
+      "claim": "1980년대 공식 표기 마카로 변경",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/메카",
+      "note": "1980년대 사우디아라비아 정부는 공식 표기를 \"메카\"에서 \"마카\"로 변경했는데"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/메카"
+    ],
+    "hintNote": null,
+    "easiestCue": "무함마드가 태어난 이슬람 최고 성지",
+    "worthWhyGen": "'○○의 메카'로 일상에서 쓰는 말의 뿌리(3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '성지·도시' 예",
+     "unique": "무함마드 출생지 + 최고 성지 = 메카(메디나와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "religion/3#g032a-g032a-j20-4",
+   "seed": {
+    "subject": "히잡",
+    "aspect": null,
+    "ref": "g032a-j20-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이슬람 여성이 머리에 두르는 천입니다. 머리카락과 목, 귀를 가리지만 얼굴은 드러냅니다. 이름은 아랍어로 '장막, 가림막'이라는 뜻입니다. 이 천은 무엇일까요?",
+    "answer": "히잡",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "온몸을 두르고 눈까지 망사로 가리는 부르카, 검은 외투처럼 온몸을 감싸는 차도르와는 가리는 범위가 다릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "이슬람 여성이 머리에 두르는 천",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 세계 문화 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "이란에서 이것을 쓰는 규정을 어겼다며 도덕 경찰에 붙잡힌 여성 마흐사 아미니가 숨져 큰 시위가 일었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "무슬림 여성의 머릿수건",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "뉴스에서 자주 접함",
+     "piece": "f03",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '머리에 두르는 천' · 끝 ○○ = 천"
+    },
+    "blindQuestion": {
+     "guess": "히잡",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "히잡",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "히잡",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5219",
+      "answer": "퀘이사",
+      "verdict": "diff",
+      "why": "히잡 vs 퀘이사 — 다른 지식"
+     },
+     {
+      "old": "3862",
+      "answer": "샤리아",
+      "verdict": "diff",
+      "why": "히잡 vs 샤리아 — 다른 지식"
+     },
+     {
+      "old": "2524",
+      "answer": "아라베스크",
+      "verdict": "diff",
+      "why": "히잡 vs 아라베스크 — 다른 지식"
+     },
+     {
+      "old": "5588",
+      "answer": "시아파",
+      "verdict": "diff",
+      "why": "히잡 vs 시아파 — 다른 지식"
+     },
+     {
+      "old": "3860",
+      "answer": "하지",
+      "verdict": "diff",
+      "why": "히잡 vs 하지 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hijab",
+     "https://ko.wikipedia.org/wiki/히잡"
+    ],
+    "facts": [
+     {
+      "claim": "머리카락·목·귀를 가리고 얼굴은 드러냄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hijab",
+      "note": "It is also commonly used today to refer simply to the headscarf worn by Muslim women that covers the hair, neck, and ears while leaving the face exposed."
+     },
+     {
+      "claim": "아랍어 뜻 '장막'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hijab",
+      "note": "The Arabic word hijab (Arabic: حجاب) (lit. 'curtain, cloth barrier')"
+     },
+     {
+      "claim": "무슬림 여성의 가리개 · 머리 부분만 가림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/히잡",
+      "note": "히잡(아랍어: حجاب, 영어: hijab)은 좁은 의미에선 무슬림 여성들이 착용하는 얼굴 가리개를 뜻하며 ... 히잡은 머리 부분만 가리지만"
+     },
+     {
+      "claim": "마흐사 아미니",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Hijab",
+      "note": "An Iranian woman, Mahsa Amini, died in custody of 'morality police' after they arrested her on new stricter hijab laws, which led to widespread protests."
+     },
+     {
+      "claim": "부르카·차도르",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/히잡",
+      "note": "차도르는 온몸에 두를 수 있을 정도로 큰 외투이다. ... 부르카는 ... 온몸을 두르게 된다. ... 눈만은 밖을 볼 수 있게 뚫려 있지만, 그마저도 망사로 가린다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hijab"
+    ],
+    "hintNote": null,
+    "easiestCue": "이슬람 여성 머릿수건 · 얼굴은 드러냄",
+    "worthWhyGen": "3 — 뉴스에 자주 나오는 이슬람 복장의 기본 이름과 구별",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '천' — 예",
+     "unique": "얼굴은 드러냄 → 부르카·니캅·차도르와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  }
+ ]
+}

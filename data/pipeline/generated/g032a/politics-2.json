@@ -1,0 +1,380 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "politics/2",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/2#g032a-job-03-7",
+   "seed": {
+    "subject": "로비",
+    "aspect": null,
+    "ref": "job-03-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이익 단체가 의원을 만나 법안을 통과시키거나 막아 달라고 움직이는 일을 가리키는 말입니다. 영국 의회 건물에서 회의 앞뒤로 의원들이 오가던 복도·대기실을 부르던 이름에서 왔습니다. 시민들이 거기서 의원을 붙잡고 부탁했기 때문입니다. 무엇일까요?",
+    "answer": "로비",
+    "acceptedAnswers": [
+     "로비 활동"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그랜트 대통령이 워싱턴 윌러드 호텔에서 이 말을 지어냈다는 이야기가 있지만, 1808년 펜실베이니아에서 이미 쓰인 기록이 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "이익 단체가 의원을 만나 법안을 통과시키거나 막아 달라고 움직이는 일",
+     "difWhy": "2 — 로비는 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "호텔에 들어서면 바로 나오는 넓은 홀을 부르는 말과 같은 낱말로, 이 일을 업으로 삼는 사람도 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "이익 단체가 의원·관청에 영향을 넣는 활동",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "뉴스에서 로비 활동으로 흔함",
+     "piece": "f08",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '움직이는 일을 가리키는 말' · 복도 어원 설명이 이어지지만 주어가 흐트러지지 않음"
+    },
+    "blindQuestion": {
+     "guess": "로비",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "로비",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "로비",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6222",
+      "answer": "사이렌",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로비 / 사이렌)"
+     },
+     {
+      "old": "1778",
+      "answer": "황금 직사각형",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로비 / 황금 직사각형)"
+     },
+     {
+      "old": "4402",
+      "answer": "라글란",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로비 / 라글란)"
+     },
+     {
+      "old": "903",
+      "answer": "안전띠",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로비 / 안전띠)"
+     },
+     {
+      "old": "4851",
+      "answer": "QR 코드",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로비 / QR 코드)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lobbying",
+     "https://ko.wikipedia.org/wiki/로비스트"
+    ],
+    "facts": [
+     {
+      "claim": "영국 의회 복도(lobbies)에 의원이 모이고 시민이 만나던 데서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lobbying",
+      "note": "an OED lexicographer has shown that \"lobbying\" finds its roots in the gathering of Members of Parliament and peers in the hallways (\"lobbies\") of the United Kingdom Houses of Parliament before and after parliamentary debates where members of the public can meet their representatives."
+     },
+     {
+      "claim": "로비는 원래 의회의 대합실·면회실 · 입법 촉진·저지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/로비스트",
+      "note": "압력단체의 이익을 위해서 의회에서 입법의 촉진이나 저지를 하고 ... 로비(Lobby)는 원래 의회(議會)의 대합실·면회실을 뜻하는 말인데"
+     },
+     {
+      "claim": "그랜트·윌러드 호텔 이야기 · 1808년 펜실베이니아 용례",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lobbying",
+      "note": "One story held that the term originated at the Willard Hotel in Washington, D.C., where it was supposedly used by President Ulysses S. Grant ... the OED cites numerous documented uses of the word well before Grant's presidency, including use in Pennsylvania as early as 1808."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/로비스트"
+    ],
+    "hintNote": null,
+    "easiestCue": "의원을 만나 법안을 부탁하는 일",
+    "worthWhyGen": "흔히 쓰는 '로비'가 왜 건물 복도 이름인지 — 일상 말의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '~을 가리키는 말' — 예",
+     "unique": "의원 상대 이익 활동 — 하나(청탁·압력은 다른 말)",
+     "hint12": "① 예 ② 예 · 첫 문장 정의가 쉬워 등급 5 는 어려울 수 있음"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "politics/2#g032a-g032a-j23-8",
+   "seed": {
+    "subject": "사전투표",
+    "aspect": null,
+    "ref": "g032a-j23-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "선거일에 투표하기 어려운 사람을 위한 투표 제도입니다. 선거일 며칠 전 이틀 동안, 신분증만 있으면 주소와 관계없이 전국 어느 투표소에서나 투표할 수 있습니다. 2014년 지방선거부터 전국에서 실시된 이 제도는?",
+    "answer": "사전투표",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "주소지 밖 투표소에서 하면 투표지를 회송용 봉투에 넣어 냅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "선거일 며칠 전 이틀 동안, 신분증만 있으면 전국 어느 투표소에서나",
+     "difWhy": "1 — 누구나 해 본 제도",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시민 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "본 선거일 전 금·토요일 이틀 동안 열려, 부재자 신고 없이도 한 표를 던질 수 있게 한 제도다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "선거일 전 이틀 동안 전국 어디서나 하는 투표",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "선거마다 뉴스",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '투표 제도' 가 끝 ○○(제도)와 일치 · 문장 모두 짧다"
+    },
+    "blindQuestion": {
+     "guess": "사전투표제",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "사전투표",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "사전투표",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/사전_투표",
+     "https://www.inews24.com/view/1099259",
+     "https://www.tsisalaw.com/news/article.html?no=29533"
+    ],
+    "facts": [
+     {
+      "claim": "선거일 5일 전부터 2일간 · 주소 상관없이 전국 어디서나 · 2014년 6회 지방선거 첫 전국 실시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/사전_투표",
+      "note": "선거권자는 누구든지 주소에 상관 없이 선거일 직전 5일 전부터 2일 동안 … 전국 어디에서든 사전 투표소에서 투표를 할 수 있게 되었다. 이 제도가 대한민국에서 전국적으로 실시된 첫 번째 선거는 2014년의 제6회 전국동시지방선거이다."
+     },
+     {
+      "claim": "신분증 지참 · 전국 어느 사전투표소",
+      "where": "q",
+      "url": "https://www.inews24.com/view/1099259",
+      "note": "사전투표는 통합선거인명부를 활용하기 때문에 주소지와 관계없이 전국 어느 사전투표소에서나 할 수 있다 … 신분증은 주민등록증이나 여권, 운전면허증 등 (검색 요약)"
+     },
+     {
+      "claim": "전에는 부재자 신고 필요",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/사전_투표",
+      "note": "이 제도가 실시되기 전에는 … 미리 서면으로 부재자 신고를 하고 부재자 투표를 해야 해서 투표하기가 불편했다."
+     },
+     {
+      "claim": "관외 투표 회송용 봉투",
+      "where": "e",
+      "url": "https://www.tsisalaw.com/news/article.html?no=29533",
+      "note": "주소지 관할 구·시·군 밖에서 투표하면 투표용지와 함께 회송용 봉투를 받는다 (검색 요약)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/사전_투표"
+    ],
+    "hintNote": null,
+    "easiestCue": "선거일 전 이틀 · 전국 어디서나 투표",
+    "worthWhyGen": "모든 유권자가 쓰는 제도(일반 상식)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '투표 제도' — 예",
+     "unique": "'신분증만 · 전국 어디서나 · 선거일 전' 으로 거소투표·부재자투표와 갈림",
+     "hint12": "① 예 ② 예 (금·토 = 수요일 선거일 기준 5일 전부터 2일)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  },
+  {
+   "seedId": "politics/2#g032a-g032a-j31-4",
+   "seed": {
+    "subject": "컨벤션 효과",
+    "aspect": null,
+    "ref": "g032a-j31-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "선거 뉴스에 자주 나오는 지지율 현상입니다. 정당이 전당대회나 경선 같은 큰 행사를 치르고 나면, 그 당과 후보의 지지율이 한동안 눈에 띄게 오르곤 합니다. 이 현상의 이름은?",
+    "answer": "컨벤션 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1992년 미국 민주당 대회 뒤 빌 클린턴은 지지율이 30%포인트 가까이 뛰었지만, 2004년 존 케리는 거의 오르지 않았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "전당대회나 경선 같은 큰 행사를 치르고 나면 지지율이 눈에 띄게 오르곤",
+     "difWhy": "3 — 시사 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 정치 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "후보를 확정하는 축제 같은 행사에 언론의 눈이 쏠리고 지지층이 결집하면서 생기는 반짝 상승이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "전당대회 등 정치 행사 직후 정당·후보 지지율이 오르는 현상",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "선거 뉴스에서 가끔 접함",
+     "piece": "f05",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '지지율 현상' = 끝 ○○ '현상'. 짧고 낯선 용어 없음"
+    },
+    "blindQuestion": {
+     "guess": "컨벤션 효과",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "컨벤션 효과",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "컨벤션 효과",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://pressian.com/pages/articles/53880",
+     "https://en.wikipedia.org/wiki/Convention_bounce",
+     "https://heraldk.com/?p=2413699"
+    ],
+    "facts": [
+     {
+      "claim": "전당대회·경선 행사 뒤 지지율 상승 현상",
+      "where": "q",
+      "url": "https://pressian.com/pages/articles/53880",
+      "note": "선거판에서 쓰는 심리학 용어인 컨벤션(convention) 효과는 전당대회나 경선행사 같은 정치 이벤트에서 승리한 대선후보나 해당 정당의 지지율이 이전에 비해 크게 오르는 현상을 가리킨다."
+     },
+     {
+      "claim": "전당대회 뒤 지지 상승(미국)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Convention_bounce",
+      "note": "A convention bounce or convention bump refers to an increase in support that U.S. presidential candidates … typically enjoy after the televised national convention of their party."
+     },
+     {
+      "claim": "지지층 결집",
+      "where": "h",
+      "url": "https://heraldk.com/?p=2413699",
+      "note": "흥행에 성공한 국민의힘 전당대회는 지지층 결집을 끌어내 대통령과 여당의 지지율 동반 상승 요인이 됐다"
+     },
+     {
+      "claim": "1992 클린턴 30포인트 · 2004 케리 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Convention_bounce",
+      "note": "Bill Clinton benefited from one of the largest bumps in history after the Democratic National Convention in 1992, climbing by as many as 30 points in the polls … Democratic candidate John Kerry did not get a convention bounce in 2004."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://pressian.com/pages/articles/53880"
+    ],
+    "hintNote": null,
+    "easiestCue": "전당대회 뒤 지지율이 오르는 현상",
+    "worthWhyGen": "선거철 뉴스에서 쓰는 말 — 일상에서 쓰는 말(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '지지율 현상' 예",
+     "unique": "행사 뒤 지지율 상승 — 밴드왜건(우세 쪽 쏠림)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

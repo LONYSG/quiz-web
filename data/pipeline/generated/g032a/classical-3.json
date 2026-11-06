@@ -1,0 +1,295 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "classical/3",
+  "midKey": "classical",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "classical/3#g032a-g032a-j12-2",
+   "seed": {
+    "subject": "프리마돈나",
+    "aspect": null,
+    "ref": "g032a-j12-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오페라에서 나온 말로, 극단의 주역을 맡는 으뜸 여가수를 가리킵니다. 이탈리아어로 '첫째 여인'이라는 뜻입니다. 지금은 떠받들어 주기를 바라며 까다롭게 구는 사람을 빗댈 때도 쓰는 이 말은?",
+    "answer": "프리마돈나",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 자리의 남자 주역은 17~18세기에는 주로 카스트라토가, 그 뒤에는 테너가 맡았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "이탈리아어로 '첫째 여인'이라는 뜻 … 까다롭게 구는 사람",
+     "difWhy": "2 — 일상어 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "마리아 칼라스처럼 한 오페라단의 간판 소프라노가 차지하던 자리를 부르는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "오페라의 주역 여가수를 이르는 이탈리아어(까다로운 사람의 비유로도 씀)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "비유로 흔히 씀",
+     "piece": "f01",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 오페라 주역 여가수가 바로 나옴"
+    },
+    "blindQuestion": {
+     "guess": "프리마돈나",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "프리마돈나",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "프리마돈나",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j16-8",
+      "answer": "디바",
+      "verdict": "same",
+      "why": "프리마돈나와 디바 - 오페라 으뜸 여가수 높임말, 까다로운 사람 비유까지 같은 지식(상위어/별칭 관계, 한 게임에서 서로 풀어 줌)"
+     },
+     {
+      "old": "5747",
+      "answer": "오텔로",
+      "verdict": "diff",
+      "why": "프리마돈나 vs 베르디 오텔로"
+     },
+     {
+      "old": "854",
+      "answer": "마술피리",
+      "verdict": "diff",
+      "why": "프리마돈나 vs 마술피리"
+     },
+     {
+      "old": "860",
+      "answer": "아리아",
+      "verdict": "diff",
+      "why": "프리마돈나 vs 아리아"
+     },
+     {
+      "old": "5744",
+      "answer": "라 보엠",
+      "verdict": "diff",
+      "why": "프리마돈나 vs 라 보엠"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Prima_donna",
+     "https://ko.wikipedia.org/wiki/프리마돈나"
+    ],
+    "facts": [
+     {
+      "claim": "오페라 주역 여가수 · 이탈리아어 '첫째 여인'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prima_donna",
+      "note": "In opera or commedia dell'arte, a prima donna (Italian for 'first woman') is the leading female singer in the company"
+     },
+     {
+      "claim": "까다로운 사람 비유로 퍼짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/프리마돈나",
+      "note": "이 용어는 오페라에서의 원래 용법에서 현대 용법으로 퍼져 까다롭거나 변덕스러운 방식으로 행동하거나 자신에 대해 과장된 견해를 갖는 사람을 지칭한다."
+     },
+     {
+      "claim": "보통 소프라노 · 칼라스 예",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Prima_donna",
+      "note": "The prima donna in opera was normally, but not necessarily, a soprano. ... The rivalry between the fans of Maria Callas and Renata Tebaldi"
+     },
+     {
+      "claim": "남자 주역은 카스트라토 → 테너",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/프리마돈나",
+      "note": "남성 주연(보통 17세기와 18세기에는 카스트라토, 이후에는 테너)에 해당하는 용어는 프리모 우오모(primo uomo)이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Prima_donna"
+    ],
+    "hintNote": null,
+    "easiestCue": "오페라 주역 여가수 · 까다로운 사람 비유",
+    "worthWhyGen": "일상에서 쓰는 말의 유래(19 §9-1 ③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '오페라에서 나온 말' 예",
+     "unique": "여가수 + 까다로운 사람 비유 — 디바와 겹칠 수 있음(이탈리아어 '첫째 여인'으로 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "classical/3#g032a-g032a-j16-8",
+   "seed": {
+    "subject": "디바",
+    "aspect": null,
+    "ref": "g032a-j16-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오페라에서 뛰어난 주역 여가수를 높여 부르던 이탈리아어입니다. 본래 라틴어로 '여신'을 뜻합니다. 요즘은 노래 실력이 뛰어난 팝 여가수를 가리킬 때도 흔히 쓰는 이 말은?",
+    "answer": "디바",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "남성형은 카루소 같은 최고의 테너에게 붙였고, 이탈리아에서는 영화배우 같은 인기인을 두루 이렇게 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "요즘은 노래 실력이 뛰어난 팝 여가수를 가리킬 때도 흔히 쓰는",
+     "difWhy": "2 — 일상어 · 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 어원",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "무대 밖에서 까다롭고 제멋대로인 여성 스타를 비꼴 때도 쓰는, 여왕급 여가수를 높이는 말이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "오페라의 명성 높은 여가수, 넓게는 여성 스타를 높여 부르는 말",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "가요계 '디바' 표현으로 익숙",
+     "piece": "f03",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이탈리아어' 호칭 · 끝 '이 말' 과 일치 · 두 번째 문장 라틴어 뜻풀이로 단서"
+    },
+    "blindQuestion": {
+     "guess": "디바",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "디바",
+     "hit": true
+    },
+    "factCheck": null,
+    "dupCheck": [
+     {
+      "old": "5521",
+      "answer": "첼로",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3599",
+      "answer": "골뱅이",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4427",
+      "answer": "전자레인지",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4871",
+      "answer": "소빙기",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "g032a:g032a-j12-2",
+      "answer": "프리마돈나",
+      "verdict": "same",
+      "why": "디바와 프리마돈나는 같은 오페라 으뜸 여가수 용어 — 질문·힌트 거의 동일"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Diva",
+     "https://ko.wikipedia.org/wiki/디바"
+    ],
+    "facts": [
+     {
+      "claim": "라틴어 '여신' · 오페라 등에서 뛰어난 여성을 높여 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Diva",
+      "note": "Diva (Italian: [ˈdiːva]), the Latin word for a goddess, has often been used as an honorific to refer to a celebrated woman of outstanding talent in the world of opera, theatre, cinema, fashion and popular music."
+     },
+     {
+      "claim": "여성 가수·배우를 가리키는 말",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/디바",
+      "note": "디바(diva)는 여성 가수나 배우를 가리키는 단어이다."
+     },
+     {
+      "claim": "까다로운 스타라는 뜻도",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Diva",
+      "note": "Diva can also refer to a person, especially one in show business, with a reputation for being temperamental or demanding."
+     },
+     {
+      "claim": "남성형 divo = 최고 테너(카루소) · 이탈리아에서 영화 스타",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Diva",
+      "note": "The male form divo exists in Italian and is usually reserved for the most prominent leading tenors, like Enrico Caruso ... In contemporary Italian, diva and divo simply denote much-admired celebrities, especially film actresses and actors"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Diva"
+    ],
+    "hintNote": null,
+    "easiestCue": "노래 잘하는 팝 여가수를 가리키는 말",
+    "worthWhyGen": "일상에서 쓰는 말의 오페라 쪽 유래(알가치 3 ③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '이탈리아어(말)' — 예",
+     "unique": "'여신' 으로 프리마 돈나와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16",
+    "discarded": "중복 같은 지식 g032a:g032a-j12-2 프리마돈나 — 디바와 프리마돈나는 같은 오페라 으뜸 여가수 용어 — 질문·힌트 거의 동일"
+   }
+  }
+ ]
+}

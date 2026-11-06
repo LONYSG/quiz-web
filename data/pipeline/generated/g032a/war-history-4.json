@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "war-history/4",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/4#g032a-g032a-j09-9",
+   "seed": {
+    "subject": "탈레반",
+    "aspect": null,
+    "ref": "g032a-j09-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아프가니스탄의 이슬람 무장 세력입니다. 1990년대 중반 이슬람 신학교(마드라사)에서 공부하던 젊은이들을 중심으로 일어났습니다. 그래서 이름도 파슈토어로 '학생들'이라는 뜻인 이 세력은?",
+    "answer": "탈레반",
+    "acceptedAnswers": [
+     "탈리반"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "지도자 무하마드 오마르는 '얼굴 없는 지도자'로 불렸고, 추종자들은 그를 성직자 호칭인 '물라'로 불렀다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "'학생들'이라는 뜻의 아프가니스탄 이슬람 무장 세력",
+     "difWhy": "1 — 뉴스 상식 · 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 기본 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "9·11 뒤 빈 라덴을 숨겨 준 탓에 미국 공격으로 쫓겨났다가, 2021년 미군이 떠나자 다시 카불을 차지한 세력이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "아프가니스탄의 이슬람 근본주의 무장 세력·정권",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "뉴스에 자주 나옴",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이슬람 무장 세력' 이 끝 ○○(세력)와 일치 · 마드라사는 괄호 풀이 있음"
+    },
+    "blindQuestion": {
+     "guess": "탈레반",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "탈레반",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탈레반",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3268",
+      "answer": "아프가니스탄 전쟁",
+      "verdict": "unsure",
+      "why": "옛 질문에 새 정답 탈레반이 있어 누출"
+     },
+     {
+      "old": "6434",
+      "answer": "빈 라덴",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "3267",
+      "answer": "알카에다",
+      "verdict": "unsure",
+      "why": "옛 힌트에 탈레반 정권이 나와 누출"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탈레반",
+     "https://en.wikipedia.org/wiki/Taliban"
+    ],
+    "facts": [
+     {
+      "claim": "이름은 마드라사 학생을 뜻하는 탈리브의 복수 · 1990년대 중반 활동 시작",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탈레반",
+      "note": "마드라사의 학생 또는 탐구자(students or seekers)를 가리키는 탈레브 … 또는 탈리브(파슈토어: طالب 탈리브)에 파슈토어 복수형 어미 ان 안을 붙여 만들었다. 탈레반은 1990년대 중반 활동을 시작"
+     },
+     {
+      "claim": "파슈토어 '학생들'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Taliban",
+      "note": "The word Taliban is Pashto, طَالِباَنْ (ṭālibān), meaning \"students\", the plural of ṭālib."
+     },
+     {
+      "claim": "9·11 뒤 빈 라덴 인도 요구 · 2001 축출 · 2021년 8월 카불 장악",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Taliban",
+      "note": "After the September 11 attacks in 2001, the United States demanded the Taliban surrender al-Qaeda leader Osama bin Laden … By mid-August 2021, the Taliban controlled every major city in Afghanistan; following the near seizure of the capital Kabul"
+     },
+     {
+      "claim": "오마르 '얼굴없는 지도자' · 물라 호칭",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/탈레반",
+      "note": "'얼굴없는 지도자', '애꾸눈 지도자'로 알려진 무하마드 오마르는 추종자들 사이에 '물라'(mulla;mullah)라는 호칭으로 불렸는데"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Taliban"
+    ],
+    "hintNote": null,
+    "easiestCue": "아프가니스탄의 이슬람 무장 세력",
+    "worthWhyGen": "뉴스에 자주 나오는 이름의 뜻('학생들')과 까닭 — 유래 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '무장 세력' — 예",
+     "unique": "알카에다·IS 와는 '아프가니스탄 · 신학교 학생 · 이름 뜻'으로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 빈 라덴"
+    ],
+    "job": "job-09"
+   }
+  }
+ ]
+}

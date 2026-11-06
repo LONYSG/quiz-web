@@ -1,0 +1,260 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "philosophy/5",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/5#g032a-g032a-j11-12",
+   "seed": {
+    "subject": "딜레마",
+    "aspect": null,
+    "ref": "g032a-j11-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "논리학에서 온 말입니다. 본래는 두 전제 가운데 어느 쪽을 받아들여도 똑같이 곤란한 결론에 이르는 논법을 가리켰습니다. 지금은 둘 중 무엇을 골라도 곤란한 처지를 두루 이릅니다. 이 말은?",
+    "answer": "딜레마",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "선택지가 셋이면 트릴레마라고 부른다. 그리스어 낱말을 15세기 학자 로렌초 발라가 라틴어로 되살렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "둘 중 무엇을 골라도 곤란한 처지를 두루 이릅니다",
+     "difWhy": "2 — 일상어 · 뜻풀이에서 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상에서 쓰는 말",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "공범 둘이 따로 갇혀 자백할지 버틸지 고민하는, 게임 이론의 유명한 '죄수의 ~'에 붙는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "어느 쪽을 골라도 곤란한 처지",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "일상 외래어",
+     "piece": "f08",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '논리학에서 온 말' 이 끝 ○○(말)와 일치 · 전제·논법이 낯설지만 뜻풀이가 다음 문장에 바로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "딜레마",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "딜레마",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "딜레마",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3113",
+      "answer": "선험적",
+      "verdict": "diff",
+      "why": "딜레마 vs 선험적(칸트)"
+     },
+     {
+      "old": "3114",
+      "answer": "너 자신을 알라",
+      "verdict": "diff",
+      "why": "딜레마 vs 너 자신을 알라"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/딜레마",
+     "https://en.wikipedia.org/wiki/Dilemma"
+    ],
+    "facts": [
+     {
+      "claim": "두 가지 중 어느 쪽도 바람직하지 못한 곤란한 상황 · 논리학 양도논법",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/딜레마",
+      "note": "선택해야 할 길은 두 가지 중 하나로 정해져 있는데, 그 어느 쪽을 선택해도 바람직하지 못한 결과가 나오게 되는 곤란한 상황을 가리킨다. ... 이러한 딜레마는 논리학에서 대전제가 두 개의 가언적 명제의 연언(連言) 명제로 되어 있고"
+     },
+     {
+      "claim": "그리스어 '두 명제' · 논리 용어 · 발라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dilemma",
+      "note": "A dilemma (from Ancient Greek δίλημμα (dílēmma) 'double proposition') is a problem offering two possibilities, neither of which is unambiguously acceptable or preferable. ... The term dilemma is attributed by Gabriel Nuchelmans to Lorenzo Valla in the 15th century"
+     },
+     {
+      "claim": "죄수의 딜레마 · 셋이면 트릴레마",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/딜레마",
+      "note": "세 가지의 경우는 트릴레마라고 한다. ... 죄수의 딜레마(또는 용의자의 딜레마)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/딜레마"
+    ],
+    "hintNote": null,
+    "easiestCue": "둘 중 무엇을 골라도 곤란한 처지",
+    "worthWhyGen": "일상에서 늘 쓰는 말의 철학·논리학 유래",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' 예",
+     "unique": "'진퇴양난'(사자성어)도 뜻이 같음 — '논리학에서 온 말' 한정어로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "philosophy/5#g032a-g032a-j18-1",
+   "seed": {
+    "subject": "유토피아",
+    "aspect": null,
+    "ref": "g032a-j18-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "현실에는 없는 완벽한 이상 사회를 가리키는 사상 용어입니다. 1516년 영국의 토머스 모어가 쓴 책 제목에서 왔고, 그리스어로 '어디에도 없는 곳'이라는 뜻을 담았습니다. 이 용어는 무엇일까요?",
+    "answer": "유토피아",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "소리가 같은 그리스어 '좋은 곳'(eutopia)과도 겹치게 지은 말장난입니다. 반대말은 감시·통제의 암울한 사회를 그린 디스토피아입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "현실에는 없는 완벽한 이상 사회",
+     "difWhy": "2 — 이상 사회 단서에서 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 93",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "모어의 책 속 섬나라에는 돈이 없어, 주민들이 시장에서 필요한 만큼 물건을 가져다 쓴다고 그렸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "현실에 없는 이상 사회를 뜻하는 말 — 토머스 모어의 책 제목(1516)에서 유래",
+    "familiarity": {
+     "judge": 3,
+     "pct": 93,
+     "why": "흔히 쓰는 말",
+     "piece": "f02",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이상 사회를 가리키는 사상 용어' = 끝 ○○ '용어'"
+    },
+    "blindQuestion": {
+     "guess": "유토피아",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "유토피아",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "유토피아",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3113",
+      "answer": "선험적",
+      "verdict": "diff",
+      "why": "유토피아 vs 선험적 — 다른 지식"
+     },
+     {
+      "old": "6387",
+      "answer": "카타르시스",
+      "verdict": "diff",
+      "why": "유토피아 vs 브로이어 카타르시스 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/유토피아",
+     "https://en.wikipedia.org/wiki/Utopia"
+    ],
+    "facts": [
+     {
+      "claim": "토머스 모어가 1516년 저작 《유토피아》에서 만든 말 · 그리스어 ou+topos '어디에도 없는 장소' · 현실에 없는 이상 사회",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/유토피아",
+      "note": "유토피아(utopia)는 영국의 사상가 토머스 모어가 1516년에 만들어낸 말로, 처음에 라틴어로 쓰인 그의 저작 《유토피아》에서 유래되었다. 그리스어의 ou(없다), topos(장소)를 조합한 말로서 \"어디에도 없는 장소\"라는 뜻으로 … 유토피아는 '현실에는 결코 존재하지 않는 이상적인 사회'를 일컫는 말이다."
+     },
+     {
+      "claim": "1516년 모어가 고대 그리스어로 만든 말 · ou-(no)+topos",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Utopia",
+      "note": "The word utopia was coined in 1516 from Ancient Greek by the Englishman Sir Thomas More for his Latin text Utopia. … \"utopia\" is a compound of the syllable ou-, meaning \"no\" and topos, meaning place."
+     },
+     {
+      "claim": "섬에는 화폐가 없고 필요한 만큼 가져다 씀",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/유토피아",
+      "note": "유토피아 섬에는 화폐가 없다. 주민들은 각자 시장에 가서 자기가 필요로 하는 만큼 물건을 가져다 쓰면 된다"
+     },
+     {
+      "claim": "eutopia(좋은 곳)와 발음 같아 이중 의미 · 반댓말 디스토피아",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Utopia",
+      "note": "the homophonic prefix eu-, meaning \"good\", also resonates in the word, with the implication that the perfectly \"good place\" is really \"no place\". / (ko) 반댓말로는 디스토피아가 있다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/유토피아"
+    ],
+    "hintNote": null,
+    "easiestCue": "현실에 없는 완벽한 이상 사회를 가리키는 말",
+    "worthWhyGen": "일상어 '유토피아'가 '어디에도 없는 곳'이라는 책 제목에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '사상 용어' — 예",
+     "unique": "'모어의 책 제목에서 온 말'로 이상향(우리말)과 가름(B2)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-18"
+   }
+  }
+ ]
+}

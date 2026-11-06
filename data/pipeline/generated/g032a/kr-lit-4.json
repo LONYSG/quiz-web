@@ -1,0 +1,113 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-lit/4",
+  "midKey": "kr-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-lit/4#g032a-g032a-j11-3",
+   "seed": {
+    "subject": "도가니",
+    "aspect": null,
+    "ref": "g032a-j11-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2009년 공지영이 쓴 장편 소설입니다. 광주의 한 청각장애인 학교에서 실제로 벌어진 성폭력 사건을 다뤘습니다. 2011년 영화로 나온 뒤 여론이 들끓어, 장애인과 13세 미만 아동 성폭행의 공소시효를 없앤 법이 생겼습니다. 그 법의 별명이 된 이 소설은?",
+    "answer": "도가니",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "사건은 2005년 일부 교직원이 장애인 성폭력 상담소에 제보하면서 처음 드러났다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "2011년 영화로 나온 뒤 여론이 들끓어",
+     "difWhy": "2 — 영화로 유명 · 설명에서 이름",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 작품 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "광주 인화학교 사건을 고발한 작품으로, 배우 공유가 주연한 영화로 더 널리 알려졌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "인화학교 성폭력 사건을 다룬 공지영 소설 · 영화",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "영화 도가니, 사회적 사건",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/도가니_(소설)",
+     "https://ko.wikipedia.org/wiki/광주인화학교_성폭력_사건",
+     ""
+    ],
+    "facts": [
+     {
+      "claim": "공지영 소설 · 광주인화학교 장애학생 성폭행 모티브 · 2011 영화화 · 도가니법 · 공소시효 폐지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/도가니_(소설)",
+      "note": "도가니는 작가 공지영의 소설이다. ... 광주인화학교에서 ... 장애학생들에게 실제로 자행된 ... 성폭행 ... 2011년, 동명의 영화로 영화화되어 사회적으로 큰 반향을 일으켰다. ... 일명 도가니법이 만들어졌다. 도가니법은 2011년 11월 17일부터 장애인과 13세 미만의 아동을 성폭행했을 경우 ... 공소시효도 폐지되었다."
+     },
+     {
+      "claim": "2009년 6월 소설 출간 · 청각장애 학교",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/광주인화학교_성폭력_사건",
+      "note": "2009년 6월, 소설 도가니가 출간되어 광주 인화학교 사건이 재조명받는 계기가 되었다. ... 재활사업 대상을 청각 언어장애에서 지적 장애로 넓히기 위해"
+     },
+     {
+      "claim": "2005년 6월 22일 교직원 최초 제보",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/도가니_(소설)",
+      "note": "이 사실은 2005년 6월 22일 일부 교직원들이 장애인 성폭력 상담소에 최초 제보하였다."
+     },
+     {
+      "claim": "영화 주연 공유",
+      "where": "h",
+      "url": "",
+      "note": "knowledge — 2011 영화 '도가니' 공유·정유미 주연(널리 알려진 사실)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/도가니_(소설)"
+    ],
+    "hintNote": null,
+    "easiestCue": "공지영 소설 · 법의 별명",
+    "worthWhyGen": "법 이름(도가니법)의 유래가 된 작품 — 사회 상식",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '장편 소설' 예",
+     "unique": "공지영 + 청각장애 학교 + 법 별명 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11",
+    "discarded": "알가치 1 (고유명사 · 작품 이름 확인)"
+   }
+  }
+ ]
+}

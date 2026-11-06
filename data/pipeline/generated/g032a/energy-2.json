@@ -1,0 +1,165 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "energy/2",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/2#g032a-g032a-j25-12",
+   "seed": {
+    "subject": "RE100",
+    "aspect": null,
+    "ref": "g032a-j25-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기업이 쓰는 전기를 모두 태양광·풍력 같은 재생에너지로 채우겠다고 약속하는 국제 캠페인입니다. 2014년 영국 비영리 단체 클라이밋 그룹과 탄소 공개 기구 CDP가 함께 시작했습니다. 영문 약자와 숫자로 된 이 캠페인 이름은?",
+    "answer": "RE100",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "뉴욕 기후 주간에 13개 회사로 출발해, 2017년에는 회원이 100곳에 이르렀습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "영문 약자와 숫자로 된 재생에너지 100% 캠페인",
+     "difWhy": "3 — 시사 용어 · 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 경제·환경 시사 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "가입 기업은 재생 전력 비율을 2030년 60%, 2040년 90%로 올려 늦어도 2050년에 목표를 이뤄야 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "기업 사용 전력 100% 재생에너지 전환 캠페인",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "ESG 뉴스에서 접함",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '국제 캠페인' 이 끝 '이 캠페인 이름' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "RE100",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "RE100",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "RE100",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4878",
+      "answer": "덕 커브",
+      "verdict": "diff",
+      "why": "새=RE100 캠페인; 덕 커브·간헐성·ESS·재생에너지 정의·광물 부담은 다른 개념"
+     },
+     {
+      "old": "1620",
+      "answer": "간헐성",
+      "verdict": "diff",
+      "why": "새=RE100 캠페인; 덕 커브·간헐성·ESS·재생에너지 정의·광물 부담은 다른 개념"
+     },
+     {
+      "old": "1621",
+      "answer": "에너지 저장장치",
+      "verdict": "diff",
+      "why": "새=RE100 캠페인; 덕 커브·간헐성·ESS·재생에너지 정의·광물 부담은 다른 개념"
+     },
+     {
+      "old": "1615",
+      "answer": "재생에너지",
+      "verdict": "diff",
+      "why": "새=RE100 캠페인; 덕 커브·간헐성·ESS·재생에너지 정의·광물 부담은 다른 개념"
+     },
+     {
+      "old": "1625",
+      "answer": "광물",
+      "verdict": "diff",
+      "why": "새=RE100 캠페인; 덕 커브·간헐성·ESS·재생에너지 정의·광물 부담은 다른 개념"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/RE100",
+     "https://www.wemeanbusinesscoalition.org/?p=26014",
+     "https://www.weforum.org/stories/energy-transition/re100/",
+     "https://cleantechnica.com/2017/07/11/re100-reaches-100-companies-committed-100-renewable-energy/"
+    ],
+    "facts": [
+     {
+      "claim": "모든 에너지를 재생에너지로 쓰자는 캠페인",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/RE100",
+      "note": "RE100(영어: 100% Renewable Energy), 즉 100% 재생 가능 에너지는 모든 에너지를 재생 가능 에너지로 사용하자는 캠페인으로"
+     },
+     {
+      "claim": "2014년 9월 22일 뉴욕 기후 주간 · Climate Group + CDP",
+      "where": "q",
+      "url": "https://www.wemeanbusinesscoalition.org/?p=26014",
+      "note": "(검색 요약) RE100 was launched at Climate Week NYC on September 22, 2014. Climate Group is responsible for day-to-day governance, while CDP acts as RE100's technical and disclosure partner."
+     },
+     {
+      "claim": "2030 60% · 2040 90% · 2050 100%",
+      "where": "h",
+      "url": "https://www.weforum.org/stories/energy-transition/re100/",
+      "note": "(검색 요약) RE100 companies must set targets that see them reach 60% renewable electricity by 2030, 90% by 2040 and 100% by 2050 at the latest."
+     },
+     {
+      "claim": "13개 기업 출발 · 2017년 100곳",
+      "where": "e",
+      "url": "https://cleantechnica.com/2017/07/11/re100-reaches-100-companies-committed-100-renewable-energy/",
+      "note": "(검색 요약) The campaign began with 13 companies representing 19 TWh of demand. By mid-2017 it had 100 members"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.wemeanbusinesscoalition.org/?p=26014",
+     "https://www.weforum.org/stories/energy-transition/re100/"
+    ],
+    "hintNote": null,
+    "easiestCue": "기업 전기를 모두 재생에너지로 — 영문 약자+숫자",
+    "worthWhyGen": "기업·무역 뉴스에 자주 나오는 말(알가치 3 ③)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '국제 캠페인' — 예",
+     "unique": "약자+숫자 캠페인 — RE100 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 전력"
+    ],
+    "job": "job-25"
+   }
+  }
+ ]
+}

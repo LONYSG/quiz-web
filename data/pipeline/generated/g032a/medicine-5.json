@@ -1,0 +1,277 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "medicine/5",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/5#g032a-g032a-j21-6",
+   "seed": {
+    "subject": "부목",
+    "aspect": null,
+    "ref": "g032a-j21-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "다친 사람에게 쓰는 응급처치 도구입니다. 팔다리에 골절이나 염좌가 있을 때, 다친 부위가 움직이지 않도록 임시로 대고 붕대로 묶는 나무 막대나 판입니다. 이것은 무엇일까요?",
+    "answer": "부목",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1870년 프로이센 군의관 에스마르히는 병사들에게 붕대 감기와 이것을 대는 기술을 가르쳐 다친 전우를 돌보게 했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "다친 부위가 움직이지 않도록 임시로 대고 붕대로 묶는 나무 막대나 판",
+     "difWhy": "3 — 응급처치 용어 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 응급 상황에 누구나 쓸모",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "석고를 굳히지 않고 바로 댈 수 있어, 구급대원이 환자를 옮기기 전에 흔히 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "골절·염좌 때 팔다리를 고정하려고 임시로 대는 나무(splint)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "골절 응급처치에서 접함",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '응급처치 도구' 가 있고 끝의 '이것' 이 바로 앞 설명을 가리켜 헷갈림 없음"
+    },
+    "blindQuestion": {
+     "guess": "부목",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "부목",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "부목",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1124",
+      "answer": "회복자세",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1128",
+      "answer": "RICE",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=부목",
+     "https://en.wikipedia.org/wiki/Splint_(medicine)",
+     "https://ko.wikipedia.org/wiki/응급처치"
+    ],
+    "facts": [
+     {
+      "claim": "부목: 팔다리 골절·염좌 때 고정하려고 일시적으로 대는 나무",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=부목",
+      "note": "부목3(副木) 『의학』 팔다리에 골절, 염좌, 염증 따위가 있을 때에 아픈 팔다리를 고정하기 위하여 일시적으로 대는 나무.=덧대."
+     },
+     {
+      "claim": "다친 부위를 고정·보호하는 장치 · 골절·염좌에 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Splint_(medicine)",
+      "note": "A splint is defined as … \"a rigid or flexible material used to protect, immobilize, or restrict motion in a part\". … a splint can be used for certain fractures, soft tissue sprains, tendon injuries"
+     },
+     {
+      "claim": "석고 기술 없이 빠르고 쉽게 댐 · 구급대가 이송 전 골절 팔다리를 임시 고정",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Splint_(medicine)",
+      "note": "Splints are quick and easy to apply and do not require a plastering technique. … By the emergency medical services or by volunteer first responders, to temporarily immobilize a fractured limb before transportation"
+     },
+     {
+      "claim": "1870년 에스마르히가 붕대 감기와 부목 기술 교육",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/응급처치",
+      "note": "1870년 프로이센 왕국의 군의관 프리드리히 폰 에스마르히는 … 병사들이 미리 배운 붕대 감기와 부목 기술을 활용해 부상당한 전우를 돌볼 수 있도록 교육했으며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Splint_(medicine)"
+    ],
+    "hintNote": null,
+    "easiestCue": "골절 때 움직이지 않게 대는 막대",
+    "worthWhyGen": "누구에게나 쓸모 있는 응급처치 기본 도구",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '응급처치 도구' — 예",
+     "unique": "'임시로 대고 붕대로 묶는 나무 막대나 판' — 깁스(석고)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "medicine/5#g032a-g032a-j25-10",
+   "seed": {
+    "subject": "과호흡 증후군",
+    "aspect": null,
+    "ref": "g032a-j25-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "불안하거나 놀랐을 때 숨을 너무 빠르고 깊게 몰아쉬어 생기는 증상입니다. 손끝과 입 주위가 저리고 손이 오그라들기도 합니다. 예전에는 종이봉투를 입에 대고 숨 쉬게 했지만 지금은 권하지 않는 이 증상은?",
+    "answer": "과호흡 증후군",
+    "acceptedAnswers": [
+     "과호흡",
+     "과환기 증후군",
+     "과호흡증"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "봉투 요법은 1951년 미국 의사가 처음 알렸지만, 천식이나 심장마비를 이 증상으로 잘못 알면 오히려 위험해 지금은 피합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "숨을 빠르고 깊게 몰아쉬어 손끝이 저림 · 종이봉투",
+     "difWhy": "2 — 뉴스 의료 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 응급 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "숨이 모자란 듯 느껴지지만 실은 피 속 이산화탄소가 너무 줄어든 상태라, 7초 들이쉬고 11초 내쉬듯 숨을 늦추면 가라앉는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "지나친 호흡으로 이산화탄소가 줄어 생기는 증상(hyperventilation syndrome)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "일상 건강 상식, 뉴스·드라마",
+     "piece": "f03",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '숨을 너무 빠르고 깊게 몰아쉬어 생기는 증상' 이 끝 ○○ 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "과호흡 증후군",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "과호흡",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "과호흡 증후군",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1127",
+      "answer": "코피",
+      "verdict": "diff",
+      "why": "새=과호흡 증후군; 코피 응급처치·쇼크는 다른 의학 지식"
+     },
+     {
+      "old": "1130",
+      "answer": "쇼크",
+      "verdict": "diff",
+      "why": "새=과호흡 증후군; 코피 응급처치·쇼크는 다른 의학 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hyperventilation_syndrome",
+     "https://ko.wikipedia.org/wiki/과호흡_증후군"
+    ],
+    "facts": [
+     {
+      "claim": "너무 깊게·빠르게 숨쉼 · 손끝·입 주위 저림 · 손 경련 · 공황과 동반",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hyperventilation_syndrome",
+      "note": "involving breathing too deeply or too rapidly (hyperventilation). HVS may present with chest pain and a tingling sensation in the fingertips and around the mouth (paresthesia), in some cases resulting in the hands \"locking up\" or cramping … HVS may accompany a panic attack."
+     },
+     {
+      "claim": "종이봉투 요법은 권하지 않음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hyperventilation_syndrome",
+      "note": "While traditional intervention for an acute episode has been to have the patient breathe into a paper bag … this is not advised."
+     },
+     {
+      "claim": "심리적 원인 · 손 오므림(산부인과 손)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/과호흡_증후군",
+      "note": "과환기 증후군(영어: Hyperventilation Syndrome). 심리적 갈등, 욕구가 원인이 되어 … 손이 마비된다고 하면서 손가락을 모으고 손바닥 쪽으로 오무린 모양의 손 모양을 한다."
+     },
+     {
+      "claim": "이산화탄소 부족 · 7–11 호흡",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Hyperventilation_syndrome",
+      "note": "People with HVS may feel that they cannot get enough air. In reality, they have about the same oxygenation … and too little carbon dioxide (hypocapnia) … This is sometimes referred to as \"7–11 breathing\", because a gentle inhalation is stretched out to take 7 seconds (or counts), and the exhalation is slowed to take 11 seconds."
+     },
+     {
+      "claim": "1951년 앨릭잰더 윈터 · 천식·심장마비 혼동 위험",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hyperventilation_syndrome",
+      "note": "was invented by New York City physician … Alexander Winter … published in the Journal of the American Medical Association in 1951. Because other medical conditions can be confused with hyperventilation, namely asthma and heart attacks, most medical studies advise against using a paper bag"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hyperventilation_syndrome"
+    ],
+    "hintNote": null,
+    "easiestCue": "숨을 너무 빨리 몰아쉼 · 종이봉투",
+    "worthWhyGen": "누구에게나 쓸모 있는 응급 상식 · 잘못 알려진 처치 바로잡기(알가치 3 ③)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '증상' — 예",
+     "unique": "공황 발작과 갈림 — 숨 몰아쉼 + 저림 + 봉투",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

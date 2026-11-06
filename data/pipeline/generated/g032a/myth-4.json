@@ -1,0 +1,151 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "myth/4",
+  "midKey": "myth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "myth/4#g032a-g032a-j20-3",
+   "seed": {
+    "subject": "봉황",
+    "aspect": null,
+    "ref": "g032a-j20-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 전설에 나오는 상상의 새입니다. 성군이 나거나 세상이 태평할 때 나타난다고 여겨, 조선에서는 임금의 상징으로 삼았습니다. 오늘날에도 대한민국 대통령을 상징하는 무늬로 쓰이는 이 새는?",
+    "answer": "봉황",
+    "acceptedAnswers": [
+     "봉황새"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "본래 수컷을 '봉', 암컷을 '황'이라 따로 불렀으며, 화투에서 11월 오동 광 패에 그려진 새도 이 새입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "대한민국 대통령을 상징하는 무늬로 쓰이는 이 새",
+     "difWhy": "2 — 대통령 상징 단서 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "모든 새의 우두머리로 불리며, 용과 짝을 이루어 궁궐 정전 천장에도 새겨진 상서로운 새다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "중국 전설의 상서로운 새 — 대통령 휘장의 새",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "대통령 상징으로 알려짐",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '상상의 새' 가 끝 '이 새' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "봉황",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "봉황",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "봉황",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "652",
+      "answer": "봉선화",
+      "verdict": "diff",
+      "why": "봉황 vs 봉선화 — 다른 지식"
+     },
+     {
+      "old": "1707",
+      "answer": "백제금동대향로",
+      "verdict": "diff",
+      "why": "봉황 vs 백제금동대향로 — 다른 지식"
+     },
+     {
+      "old": "3073",
+      "answer": "케찰코아틀",
+      "verdict": "diff",
+      "why": "봉황 vs 케찰코아틀 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/봉황",
+     "https://en.wikipedia.org/wiki/Fenghuang"
+    ],
+    "facts": [
+     {
+      "claim": "태평성대에 나타남 · 조선 임금 상징 · 대통령 상징 문양",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/봉황",
+      "note": "성군(聖君)이 출현하거나 세상이 태평성대일 때 나타난다고 알려져 있다. / 조선 시대에는 ... 임금의 상징으로 삼아 ... 지금도 대한민국의 대통령을 상징하는 문양으로 사용되고 있고"
+     },
+     {
+      "claim": "대통령 휘장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fenghuang",
+      "note": "Korea: two bonghwang (봉황, Korean pronunciation of 鳳凰) are used in the symbol of the Korean President."
+     },
+     {
+      "claim": "새의 우두머리 · 정전 천장",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/봉황",
+      "note": "봉황은 모든 새의 우두머리라고도 불리며 ... 황룡은 경복궁의 근정전에 있고, 봉황은 창덕궁 인정전에 있는 것이다. ... 근정전과 인정전처럼 정전의 천장에 새겨놓는 경우가 더 많다."
+     },
+     {
+      "claim": "수컷 봉 · 암컷 황 · 화투 오동 광",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fenghuang",
+      "note": "males and females were originally termed feng and huang respectively ... It is the light card (光札, hikari-fuda) of the paulownia suit, which is associated with the month of December in Japan and Hawaii, or November in Korea."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/봉황",
+     "https://en.wikipedia.org/wiki/Fenghuang"
+    ],
+    "hintNote": null,
+    "easiestCue": "대통령 상징 무늬의 상상의 새",
+    "worthWhyGen": "3 — 대통령 휘장·궁궐에서 늘 보는 상징의 정체(일반 상식)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '상상의 새' — 예",
+     "unique": "대통령 상징 새 = 하나(삼족오는 국새 후보였을 뿐)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  }
+ ]
+}

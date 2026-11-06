@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "math/2",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/2#g032a-g032a-j27-8",
+   "seed": {
+    "subject": "기하학",
+    "aspect": null,
+    "ref": "g032a-j27-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "수학의 한 분야입니다. 도형과 공간의 모양·크기·위치 관계를 연구합니다. 영어 이름은 '땅을 잰다'는 뜻의 그리스어에서 왔고, 고대 이집트 문서에도 밭의 넓이를 셈하는 문제가 남아 있습니다. 이 분야는?",
+    "answer": "기하학",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한자 이름은 1607년 마테오 리치와 서광계가 『원론』 앞 여섯 권을 중국어로 옮긴 『기하원본』에서 왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "도형과 공간의 모양·크기·위치 관계를 연구하는 수학의 분야",
+     "difWhy": "2 — 수학 분야 이름 한 번 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 교과 개념 + 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "유클리드가 점·선·면과 공준으로 체계를 세운 분야로, 피타고라스 정리와 삼각형의 합동이 대표 내용이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도형과 공간을 연구하는 수학 분야(geometry)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "학교 수학 분야",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '수학의 한 분야' = 끝 ○○ '분야'. 문장 셋 모두 단순"
+    },
+    "blindQuestion": {
+     "guess": "기하학",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "기하학",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "기하학",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5208",
+      "answer": "아르데코",
+      "verdict": "diff",
+      "why": "새=기하학 어원; 아르데코·데카르트(지수 표기)·복어 둥지(무늬 언급뿐)·아카데메이아·에셔는 다른 지식"
+     },
+     {
+      "old": "5991",
+      "answer": "데카르트",
+      "verdict": "diff",
+      "why": "새=기하학 어원; 아르데코·데카르트(지수 표기)·복어 둥지(무늬 언급뿐)·아카데메이아·에셔는 다른 지식"
+     },
+     {
+      "old": "6482",
+      "answer": "복어",
+      "verdict": "diff",
+      "why": "새=기하학 어원; 아르데코·데카르트(지수 표기)·복어 둥지(무늬 언급뿐)·아카데메이아·에셔는 다른 지식"
+     },
+     {
+      "old": "1164",
+      "answer": "아카데메이아",
+      "verdict": "diff",
+      "why": "새=기하학 어원; 아르데코·데카르트(지수 표기)·복어 둥지(무늬 언급뿐)·아카데메이아·에셔는 다른 지식"
+     },
+     {
+      "old": "5215",
+      "answer": "에셔",
+      "verdict": "diff",
+      "why": "새=기하학 어원; 아르데코·데카르트(지수 표기)·복어 둥지(무늬 언급뿐)·아카데메이아·에셔는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/기하학",
+     "https://en.wiktionary.org/wiki/geometry"
+    ],
+    "facts": [
+     {
+      "claim": "도형과 공간의 모양·크기·위치 관계 연구 · geometry = 그리스어 '땅의 측정' · 이집트 린드 파피루스 둥근 밭 넓이",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기하학",
+      "note": "기하학(幾何學, 영어: geometry)은 도형과 공간의 모양, 크기, 위치 관계와 구조를 연구하는 수학의 한 분야이다. 기하학의 영어 명칭인 ‘geometry’는 ‘땅의 측정’을 뜻하는 그리스어에서 유래하였다. … 고대 이집트의 린드 파피루스에는 둥근 밭의 넓이를 묻는 문제가 기록되어 있으며"
+     },
+     {
+      "claim": "γεωμετρία = land-survey · γῆ(땅) + μετρία(측정)",
+      "where": "q",
+      "url": "https://en.wiktionary.org/wiki/geometry",
+      "note": "from Ancient Greek γεωμετρία (geometry, land-survey), from γεωμέτρης (geometer, land measurer), from γῆ (earth, land, country) + -μετρία (measurement)"
+     },
+     {
+      "claim": "1607년 마테오 리치·서광계 『기하원본』",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/기하학",
+      "note": "1607년 마테오 리치와 서광계는 유클리드의 《원론》 가운데 처음 여섯 권을 중국어로 번역하여 《기하원본》(幾何原本)이라는 제목으로 출판하였다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/기하학"
+    ],
+    "hintNote": null,
+    "easiestCue": "도형과 공간을 연구하는 수학 분야",
+    "worthWhyGen": "3 — 학교에서 배운 분야 이름의 유래(땅 재기)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '분야' — 예",
+     "unique": "도형·공간 연구 수학 분야 = 하나(위상수학 등은 하위)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 피타고라스 정리/피타고라스"
+    ],
+    "job": "job-27"
+   }
+  }
+ ]
+}

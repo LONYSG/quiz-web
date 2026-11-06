@@ -1,0 +1,155 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "aerospace/2",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/2#g032a-job-26-8",
+   "seed": {
+    "subject": "면세점",
+    "aspect": null,
+    "ref": "job-26-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1947년 아일랜드의 섀넌 공항에 세계 처음으로 생긴 가게입니다. 대서양을 건너는 비행기가 연료를 넣으려 이 공항에 들르는 동안, 기다리는 승객들을 상대로 문을 열었습니다. 오늘날 출국 심사를 마친 뒤 술과 화장품을 싸게 사는 이 가게는?",
+    "answer": "면세점",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "섀넌의 가게는 브렌던 오리건이 추진했습니다. 1960년에는 홍콩에서 DFS가 문을 열어 세계 최대 여행 소매업체로 컸습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "출국 심사를 마친 뒤 술과 화장품을 싸게 사는 이 가게",
+     "difWhy": "2 — 마지막 문장이 답을 말해 줌",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 시설의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 96",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "시내 매장에서 산 물건은 출국 날 공항 인도장에서 받고, 들어올 때 정해진 한도를 넘으면 세관에 신고해야 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "여행자에게 세금을 면제하고 파는 가게(duty-free shop)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 96,
+     "why": "해외여행·공항 상식",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=가게, 첫 문장이 '세계 처음으로 생긴 가게입니다'. 공항 일화가 곧 가게 이야기라 일화 선행이 아니다."
+    },
+    "blindQuestion": {
+     "guess": "면세점",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "면세점",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "면세점",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2657",
+      "answer": "저비용 항공사",
+      "verdict": "diff",
+      "why": "새=면세점 기원; 저비용 항공사·시차증·마일리지는 다른 항공 지식"
+     },
+     {
+      "old": "2659",
+      "answer": "시차증",
+      "verdict": "diff",
+      "why": "새=면세점 기원; 저비용 항공사·시차증·마일리지는 다른 항공 지식"
+     },
+     {
+      "old": "2660",
+      "answer": "마일리지",
+      "verdict": "diff",
+      "why": "새=면세점 기원; 저비용 항공사·시차증·마일리지는 다른 항공 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Duty-free_shop",
+     "https://en.wikipedia.org/wiki/Shannon_Airport",
+     "https://ko.wikipedia.org/wiki/면세점"
+    ],
+    "facts": [
+     {
+      "claim": "1947 섀넌 공항 세계 첫 면세점 · 대서양 횡단 승객 · 급유 기착",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Duty-free_shop",
+      "note": "Brendan O'Regan established the world's first duty-free shop at Shannon Airport in Ireland in 1947 ... Designed to provide a service for trans-Atlantic airline passengers ... whose flights stopped for refuelling on outbound and inbound legs of their journeys"
+     },
+     {
+      "claim": "섀넌 = 1947 세계 첫 면세 공항",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shannon_Airport",
+      "note": "Shannon was the landing point for the first transatlantic proving flight in 1945 and became the world's first duty-free airport in 1947."
+     },
+     {
+      "claim": "출국 심사 뒤 대기장 · 시내 면세점은 인도장에서 수령",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/면세점",
+      "note": "출국 심사 후 출발 대기장에서 이용할 수 있다. / 시내 면세점 ... 공항 또는 항만에서 출국 심사를 받은 이후 면세품 수령처(인도장)에서 취득할 수 있다."
+     },
+     {
+      "claim": "1인당 면세 범위(한도)",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/면세점",
+      "note": "1인당 면세범위는 미화 800달러로 상향되었고"
+     },
+     {
+      "claim": "1960 DFS 홍콩 · 세계 최대 여행 소매업체",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Duty-free_shop",
+      "note": "Charles Feeney and Robert Warren Miller, founded what is now Duty Free Shoppers (DFS) on 7 November 1960. DFS started operations in Hong Kong ... it grew to become the world's largest travel retailer."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/면세점"
+    ],
+    "hintNote": null,
+    "easiestCue": "출국 심사 뒤 술·화장품을 싸게 사는 가게",
+    "worthWhyGen": "누구나 쓰는 공항 가게가 생긴 까닭(유래 3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '가게' 예",
+     "unique": "출국 심사 뒤 · 싸게 → 면세점",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

@@ -1,0 +1,278 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-geo/3",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/3#g032a-g032a-j04-2",
+   "seed": {
+    "subject": "아마존강",
+    "aspect": null,
+    "ref": "g032a-j04-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남아메리카를 가로질러 흐르는 큰 강입니다. 16세기 이 강을 따라 내려가던 스페인 원정대가 원주민 전사들의 공격을 받았습니다. 그 전사들을 여성이 이끌고 있어, 그리스 신화 속 여전사 부족이 떠올라 붙었다고 전하는 이 강의 이름은?",
+    "answer": "아마존강",
+    "acceptedAnswers": [
+     "아마존"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름이 '배 파괴자'를 뜻하는 원주민 투피어 낱말에서 왔다는 주장도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "남아메리카를 가로질러 흐르는 큰 강",
+     "difWhy": "2 — 아마존강은 대중 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "흘러 나가는 물의 양이 세계에서 가장 많은 강으로, 브라질의 넓은 열대 우림 한가운데를 흐른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "남아메리카의 큰 강(Amazon River)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "지리 상식",
+     "piece": "f01",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '남아메리카를 흐르는 큰 강'이 끝 ○○=강과 일치."
+    },
+    "blindQuestion": {
+     "guess": "아마존강",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아마존강",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아마존강",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4231",
+      "answer": "전기뱀장어",
+      "verdict": "diff",
+      "why": "아마존강 이름 유래 vs 전기뱀장어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아마존강",
+     "https://en.wikipedia.org/wiki/Amazon_River"
+    ],
+    "facts": [
+     {
+      "claim": "이름은 16세기 오레야나 원정대를 공격한, 여성이 이끈 전사들에서 유래 · 그리스 신화 연상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아마존강",
+      "note": "이름은 16세기 프란시스코 데 오레야나의 원정대를 공격했던 원주민 전사들로부터 유래했다고 전해진다. 전사들은 여성들이 이끌고 있었는데, 이는 데 오레야나에게 그리스 신화에 나오는 아마조네스를 떠올리게 했다."
+     },
+     {
+      "claim": "같은 유래 · 오레야나는 스페인 탐험가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Amazon_River",
+      "note": "The name Rio Amazonas was reportedly given after native warriors attacked a 16th-century expedition by Francisco de Orellana. The warriors were led by women, reminding de Orellana ... / Another Spanish explorer, Francisco de Orellana, made the first known transit ..."
+     },
+     {
+      "claim": "유량 세계 최대",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Amazon_River",
+      "note": "The Amazon River in South America is the largest river in the world by discharge volume of water"
+     },
+     {
+      "claim": "투피어 '배 파괴자' 설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아마존강",
+      "note": "이름이 \"배 파괴자\"를 의미하는 고대 투피어 단어 amassona에서 유래했다고 주장한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Amazon_River"
+    ],
+    "hintNote": null,
+    "easiestCue": "남아메리카의 큰 강",
+    "worthWhyGen": "누구나 아는 강 이름의 유래가 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '강' 예",
+     "unique": "남아메리카 큰 강 + 여전사 유래 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "world-geo/3#g032a-g032a-j07-2",
+   "seed": {
+    "subject": "하롱베이",
+    "aspect": null,
+    "ref": "g032a-j07-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "베트남 북부 바다에 석회암 섬 수천 개가 솟은 명승지입니다. 이름은 한자로 '용이 내려온 곳'이라는 뜻입니다. 침략자를 막으려 내려온 용들이 뱉은 보석이 섬이 되었다는 전설에서 왔습니다. 유네스코 세계자연유산인 이 만은?",
+    "answer": "하롱베이",
+    "acceptedAnswers": [
+     "할롱만",
+     "하롱만",
+     "할롱베이"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1994년 세계유산에 올랐다. 석회암이 오랜 세월 비바람에 깎여 지금 모양이 되었고, 수백 년 전에는 해적의 은신처였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "베트남 북부 바다에 석회암 섬 수천 개 · 유네스코 세계자연유산 만",
+     "difWhy": "2 — 베트남 대표 관광지",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 지명 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "하노이에서 차로 가 배를 타고 섬 사이를 도는 크루즈 관광으로 이름난 베트남 꽝닌성의 바다다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "베트남 북부의 석회암 섬 명승지(만)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "여행지로 유명",
+     "piece": "f01",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '바다의 명승지' 로 종류 제시 · 끝 ○○ '만' 이 같은 장소"
+    },
+    "blindQuestion": {
+     "guess": "하롱베이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "하롱베이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "하롱베이",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3566",
+      "answer": "비키니 환초",
+      "verdict": "diff",
+      "why": "하롱베이 vs 비키니 환초"
+     },
+     {
+      "old": "20",
+      "answer": "New York",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "1989",
+      "answer": "그레이트배리어리프",
+      "verdict": "diff",
+      "why": "하롱베이 vs 그레이트배리어리프"
+     },
+     {
+      "old": "1986",
+      "answer": "시드니 오페라 하우스",
+      "verdict": "diff",
+      "why": "하롱베이 vs 오페라 하우스"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ha_Long_Bay",
+     "https://ko.wikipedia.org/wiki/할롱_만"
+    ],
+    "facts": [
+     {
+      "claim": "이름 = 下龍 '내려오는 용'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ha_Long_Bay",
+      "note": "The name Hạ Long (chữ Hán: 下龍) means \"descending dragon\"."
+     },
+     {
+      "claim": "용 가족이 침공한 적을 물리치고 토한 보석이 섬이 됨 · 섬 3,000개 · 1994 유네스코",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/할롱_만",
+      "note": "전해 오는 말에 의하면, 중국이 베트남에 침공해 왔을 때 용 가족이 침공해온 적을 물리치고 입으로 토한 보석이 할롱만의 섬들이 되었다고 전하고 있다. / 크고 작은 3,000개의 기암괴석과 섬들이 존재한다. 1994년에 유네스코의 세계자연유산으로 지정되었다."
+     },
+     {
+      "claim": "하노이 당일 투어 · 크루즈 · 꽝닌성",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/할롱_만",
+      "note": "하노이에서 여러 여행사가 당일 투어 프로그램을 운영하고 있다. 할롱만 크루즈나 석회동굴 관광 등이 포함되어 있다."
+     },
+     {
+      "claim": "풍화 · 해적 은신처",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/할롱_만",
+      "note": "석회암 지역이 풍화 작용으로 깎여나가 현재의 모습이 되었다. / 수세기 전까지는 해적의 은신처로서 이용되었고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/할롱_만"
+    ],
+    "hintNote": null,
+    "easiestCue": "베트남 북부 석회암 섬 명승지",
+    "worthWhyGen": "유명 관광지 이름의 뜻과 유래 전설 — 알가치 3 ②",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '명승지' · 끝 '만' — 예",
+     "unique": "베트남 북부 + 용 전설 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07"
+   }
+  }
+ ]
+}

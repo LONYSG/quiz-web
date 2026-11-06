@@ -1,0 +1,274 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "philosophy/3",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/3#g032a-g032a-j11-10",
+   "seed": {
+    "subject": "피로사회",
+    "aspect": null,
+    "ref": "g032a-j11-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "독일에서 활동하는 한국 태생 철학자 한병철이 2010년 독일어로 낸 책입니다. 오늘날 사람들은 누가 시키지 않아도 성과를 내려고 스스로를 몰아붙이다 우울과 탈진에 빠진다고 진단했습니다. 2012년 한국어로 나와 널리 쓰이는 말이 된 이 책의 제목은?",
+    "answer": "피로사회",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한국어판은 철학책으로는 드물게 8개월 만에 4만 권이 팔렸고, 35개 넘는 언어로 옮겨졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "오늘날 사람들은 누가 시키지 않아도 성과를 내려고 스스로를 몰아붙이다 우울과 탈진에 빠진다",
+     "difWhy": "3 — 책 제목 떠올리기 · 한병철 책은 널리 알려졌으나 이름 회상 필요",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 사회 비평서 · 일상 말로 굳음",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "'해야 한다'는 명령보다 '할 수 있다'는 긍정의 압박이 사람을 더 지치게 한다고 본 책이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한병철의 책 · 성과 압박에 지친 현대 사회를 가리키는 말",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "베스트셀러·뉴스에서 자주 언급",
+     "piece": "f01",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한병철이 독일어로 낸 책' 이 끝 ○○(책)와 일치 · 마지막 문장 '널리 쓰이는 말이 된 이 책' 이 약간 길지만 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "피로사회",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피로사회",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피로사회",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6038",
+      "answer": "포퍼",
+      "verdict": "diff",
+      "why": "피로사회 vs 포퍼"
+     },
+     {
+      "old": "3102",
+      "answer": "포스트모더니즘",
+      "verdict": "diff",
+      "why": "피로사회 vs 포스트모더니즘"
+     },
+     {
+      "old": "3796",
+      "answer": "사르트르",
+      "verdict": "diff",
+      "why": "피로사회 vs 사르트르 계약결혼"
+     },
+     {
+      "old": "6039",
+      "answer": "하이데거",
+      "verdict": "diff",
+      "why": "피로사회 vs 하이데거"
+     },
+     {
+      "old": "1840",
+      "answer": "사르트르",
+      "verdict": "diff",
+      "why": "피로사회 vs 사르트르 실존주의"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/한병철",
+     "https://en.wikipedia.org/wiki/The_Burnout_Society",
+     ""
+    ],
+    "facts": [
+     {
+      "claim": "한국 태생 · 독일에서 활동 · 피로사회 2012년 3월 한국어판 · 8개월 4만 권",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/한병철",
+      "note": "한병철(1959년~)은 대한민국 태생으로 독일에서 활동하는 독일 국적 철학자이다. ... 2012년 3월에 주 저서인 《피로사회》가 한국어로 번역되어 출판되면서 ... 8개월만에 4만 권이 팔리는이례적 현상"
+     },
+     {
+      "claim": "성과를 위해 스스로를 과도하게 착취 · 우울·과로 · 규율사회→성과사회",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/한병철",
+      "note": "현대의 사회를 우울, 불안, 과로 등의 신경증적인 요소로 가득찬 사회로 특징지으면서 ... 개개인이 성과를 위해 스스로를 과도하게 착취하고 실패를 두려워하게 되는 것이 피로사회를 유발한다는 것으로 ... 규율사회로부터 성과사회로의 전환"
+     },
+     {
+      "claim": "독일어 원서 2010 · 35개 언어 이상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Burnout_Society",
+      "note": "The Burnout Society (original German title: Müdigkeitsgesellschaft) ... It was first released in German in 2010. It has since been translated into more than 35 languages"
+     },
+     {
+      "claim": "'할 수 있다' 긍정성 과잉이 '해야 한다' 규율보다 지치게 함",
+      "where": "h",
+      "url": "",
+      "note": "knowledge — 책의 '긍정성의 과잉 · Yes, we can' 논지(ko 문서의 규율사회→성과사회 전환과 같은 뜻)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/한병철"
+    ],
+    "hintNote": null,
+    "easiestCue": "한병철 · 성과 압박에 지친 사회",
+    "worthWhyGen": "일상에서 쓰는 말(피로사회)이 된 책 제목 — 말의 유래",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '책' 예",
+     "unique": "한병철 2010 책 — '투명사회' 등 다른 책과는 '성과·탈진'으로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "philosophy/3#g032a-g032a-j17-12",
+   "seed": {
+    "subject": "오리엔탈리즘",
+    "aspect": null,
+    "ref": "g032a-j17-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "서양이 중동과 아시아를 정체되고 뒤떨어진 곳으로 그려 온 시선을 비판하는 말입니다. 원래는 19세기 유럽 화가들이 중동과 북아프리카의 풍경과 풍속을 즐겨 그린 미술 경향을 가리켰습니다. 이 말은?",
+    "answer": "오리엔탈리즘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "사이드는 이 시선이 서양을 합리적이고 우월한 쪽으로 세우며 제국주의 지배에 봉사했다고 보았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "서양이 중동과 아시아를 정체되고 뒤떨어진 곳으로 그려 온 시선을 비판하는 말",
+     "difWhy": "3 — 인문 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 사상 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "팔레스타인 출신 미국 학자 에드워드 사이드가 1978년 같은 제목의 책으로 퍼뜨린 비판 개념",
+    "generalHintVersion": "hint-v7",
+    "identity": "오리엔탈리즘 — 서구가 동양을 왜곡해 본 시선, 에드워드 사이드의 비판 개념",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "사이드 책·사회 교양에서 들어봄, 뜻은 흐릿",
+     "piece": "f03",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '시선을 비판하는 말' 이라 종류가 있고 끝 ○○(말)와 일치 · 둘째 문장은 본래 의미"
+    },
+    "blindQuestion": {
+     "guess": "오리엔탈리즘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오리엔탈리즘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오리엔탈리즘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/오리엔탈리즘",
+     "https://en.wikipedia.org/wiki/Orientalism_(book)"
+    ],
+    "facts": [
+     {
+      "claim": "중동·아시아를 정적·미개발로 · 19세기 유럽 미술 경향",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오리엔탈리즘",
+      "note": "북아프리카나 근동(또는 서아시아)의 지중해 나라들을 여행하면서 얻은 요소들을 이용한 ... 19세기 프랑스 등 유럽 미술가들의 작품을 포괄적으로 이르는 말 ... 중동, 아시아, 북아프리카 사회에 대한 일반적인 고압적인 서구적 태도를 지칭 ... 이러한 사회를 정적이고 미개발된 것으로 본질화하여"
+     },
+     {
+      "claim": "Western depiction of the East · critical concept",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Orientalism_(book)",
+      "note": "Orientalism is a 1978 book by Edward Said, in which he establishes the term Orientalism as a critical concept to describe the Western world's commonly contemptuous depiction and portrayal of the Eastern world"
+     },
+     {
+      "claim": "1978 사이드 책",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/오리엔탈리즘",
+      "note": "에드워드 사이드의 오리엔탈리즘이 1978년에 출판된 이래로"
+     },
+     {
+      "claim": "서구 우월 · 제국주의 봉사",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/오리엔탈리즘",
+      "note": "제국주의적 권력에 봉사하기 위해 ... 서구 사회가 발전하고, 합리적이며, 유연하고, 우월하다는 생각이 내포되어 있다고 썼다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Orientalism_(book)"
+    ],
+    "hintNote": null,
+    "easiestCue": "서양이 중동·아시아를 뒤떨어진 곳으로 그린 시선",
+    "worthWhyGen": "뉴스·비평에서 흔히 쓰는 말의 뜻과 원래 미술 용어였다는 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '비판하는 말' 예",
+     "unique": "서양의 동방 왜곡 시선 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 사이드"
+    ],
+    "job": "job-17"
+   }
+  }
+ ]
+}

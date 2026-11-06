@@ -1,0 +1,318 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "comics/4",
+  "midKey": "comics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "comics/4#g032a-g032a-j21-12",
+   "seed": {
+    "subject": "만평",
+    "aspect": null,
+    "ref": "g032a-j21-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "신문 사설면에 주로 실리는 풍자 그림입니다. 정치인 같은 공인의 얼굴을 과장해 그리고, 그날의 정치·사회 문제를 비꼬아 신문의 의견을 드러냅니다. 이런 그림을 무엇이라 할까요?",
+    "answer": "만평",
+    "acceptedAnswers": [
+     "시사만화"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "18세기 말 영국의 제임스 길레이가 개척했습니다. 1841년 창간한 잡지 '펀치'가 자기 그림을 '카툰'이라 부르면서 그 말이 퍼졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "신문 사설면에 주로 실리는 풍자 그림",
+     "difWhy": "3 — 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 언론 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "김성환의 '고바우 영감'처럼 권력을 꼬집다 작가가 필화를 겪기도 한 신문 그림 꼴이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "신문에 실리는 시사 풍자 그림(editorial cartoon)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "신문 시사만평으로 접함",
+     "piece": "f09",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '풍자 그림' = 끝 ○○ '그림'. 짧고 용어 없음"
+    },
+    "blindQuestion": {
+     "guess": "시사만화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "시사만화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "만평",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6736",
+      "answer": "매카시즘",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "g032a:g032a-j29-10",
+      "answer": "클리프행어",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "533",
+      "answer": "말풍선",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "537",
+      "answer": "데포르메",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "542",
+      "answer": "기승전결",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/만평",
+     "https://en.wikipedia.org/wiki/Political_cartoon",
+     "DB 활성 #874 고바우 영감 문항"
+    ],
+    "facts": [
+     {
+      "claim": "신문 등에 실린 풍자 만화 · 공인의 캐리커처로 의견 표현 · 과장과 풍자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/만평",
+      "note": "만평(漫評) 또는 시사 만화(時事漫畫)는 신문 등에 실린 풍자 만화이다. 작가는 공인들의 캐리커처를 담은 카툰 그래픽을 통해 의견을 표현한다. … 예술적 기술, 과장 및 풍자를 결합하여 권위에 의문을 제기하거나"
+     },
+     {
+      "claim": "사설면에서 주로 찾을 수 있음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/만평",
+      "note": "만평은 많은 신문의 사설면에서 주로 찾을 수 있지만"
+     },
+     {
+      "claim": "editorial cartoon: 공인의 캐리커처로 작가의 의견 표현",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Political_cartoon",
+      "note": "A political cartoon, also known as an editorial cartoon, is a cartoon graphic with caricatures of public figures, expressing the artist's opinion."
+     },
+     {
+      "claim": "고바우 영감: 김성환의 시사만화 · 권력 풍자로 필화",
+      "where": "h",
+      "url": "DB 활성 #874 고바우 영감 문항",
+      "note": "신문에 오래 연재되며 권력을 풍자해 여러 차례 필화를 겪은 김성환의 네 칸 시사만화는?"
+     },
+     {
+      "claim": "길레이 개척 · 1841년 펀치가 '카툰' 용어 사용",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/만평",
+      "note": "18세기 후반 잉글랜드에서 발전한 시사 만평은 제임스 길레이에 의해 개척되었지만 … 1841년에 창간된 영국 정기 간행물 《펀치》는 카툰(만화)이라는 용어를 자사의 만평을 지칭하는 데 사용했고 이는 이 용어가 널리 쓰이는 계기가 되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/만평"
+    ],
+    "hintNote": null,
+    "easiestCue": "신문 사설면의 풍자 그림",
+    "worthWhyGen": "신문에서 늘 보는 형식의 이름",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '풍자 그림' — 예",
+     "unique": "'신문 사설면 · 의견' 한정 — 카툰·캐리커처보다 좁음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 고바우 영감/영감"
+    ],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "comics/4#g032a-g032a-j29-10",
+   "seed": {
+    "subject": "클리프행어",
+    "aspect": null,
+    "ref": "g032a-j29-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "연재 만화나 드라마에서 쓰는 이야기 기법입니다. 주인공이 큰 위기에 빠지거나 비밀이 드러나기 직전에 회차를 뚝 끊습니다. 독자가 다음 화를 못 참고 기다리게 만드는 이 기법을 영어로 무엇이라 할까요?",
+    "answer": "클리프행어",
+    "acceptedAnswers": [
+     "클리프 행어",
+     "cliffhanger"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "토머스 하디의 연재소설에서 한 인물이 낭떠러지 끝에 매달린 채 회차가 끝난 장면이 이름의 유래라는 설이 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "위기나 비밀이 드러나기 직전에 회차를 뚝 끊는 기법을 영어로",
+     "difWhy": "3 — 영어 서사 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 창작 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "『천일야화』의 셰에라자드가 매일 밤 이야기를 가장 흥미로운 대목에서 멈춘 것이 오래된 대표 예로 꼽힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "결정적 순간에 회차를 끊어 궁금증을 남기는 서사 기법(cliffhanger)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "드라마·웹툰 평에서 쓰는 말",
+     "piece": "f02",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이야기 기법' 이 끝 ○○(기법)와 일치 · 영어로 묻는다는 점이 마지막 문장에 분명"
+    },
+    "blindQuestion": {
+     "guess": "클리프행어",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "클리프행어",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "클리프행어",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j21-12",
+      "answer": "만평",
+      "verdict": "diff",
+      "why": "신규 '클리프행어'(다른 만화 용어) ≠ 옛 '만평' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3512",
+      "answer": "옐로 키드",
+      "verdict": "diff",
+      "why": "신규 '클리프행어'(다른 만화 용어) ≠ 옛 '옐로 키드' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "540",
+      "answer": "웹툰",
+      "verdict": "diff",
+      "why": "신규 '클리프행어'(다른 만화 용어) ≠ 옛 '웹툰' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "537",
+      "answer": "데포르메",
+      "verdict": "diff",
+      "why": "신규 '클리프행어'(다른 만화 용어) ≠ 옛 '데포르메' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "536",
+      "answer": "콘티",
+      "verdict": "diff",
+      "why": "신규 '클리프행어'(다른 만화 용어) ≠ 옛 '콘티' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/클리프행어",
+     "https://en.wikipedia.org/wiki/Cliffhanger"
+    ],
+    "facts": [
+     {
+      "claim": "절정·위기 직전에 갑자기 마무리해 궁금증 유발 · 다음 화 기대",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/클리프행어",
+      "note": "주인공이 급박한 위기에 처한 상황에서 갑작스럽게 마무리하여 궁금증을 유발하는 서사 기법을 뜻한다 ... 다음 화나 후속편에 대한 기대를 이끌어내는 것이 핵심이다."
+     },
+     {
+      "claim": "연재물(serial)에서 쓰는 기법",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cliffhanger",
+      "note": "Cliffhangers became prominent with the serial publication of narrative fiction, pioneered by Charles Dickens."
+     },
+     {
+      "claim": "천일야화 매일 밤 클리프행어",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cliffhanger",
+      "note": "Cliffhangers were used as literary devices in several works of the Middle Ages with One Thousand and One Nights ending on a cliffhanger each night."
+     },
+     {
+      "claim": "하디 '파란 눈동자' 절벽 장면 유래설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/클리프행어",
+      "note": "19세기 영국 소설가 토머스 하디의 연재 소설 '파란 눈동자'에서 주인공이 절벽 끝에 매달린 채 회차가 마무리된 것에서 유래했다는 설이 있으며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cliffhanger"
+    ],
+    "hintNote": null,
+    "easiestCue": "위기 직전에 회차를 끊는 기법 · 영어로",
+    "worthWhyGen": "3 — 웹툰·드라마 감상에서 늘 쓰는 말",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '이야기 기법' — 예",
+     "unique": "'영어로' 한정 → '절단신공' 등 우리말 속어 배제",
+     "hint12": "① 예 ② 예 (해설 '낭떠러지'는 이름 풀이라 해설에만 · 질문·힌트에 없음)"
+    },
+    "history": [],
+    "warn": [
+     "crossans 천일야화"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

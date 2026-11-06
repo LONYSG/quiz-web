@@ -1,0 +1,458 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "transport/5",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/5#g032a-g032a-j21-8",
+   "seed": {
+    "subject": "졸음쉼터",
+    "aspect": null,
+    "ref": "g032a-j21-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고속도로에 있는 작은 휴식 시설입니다. 휴게소 사이 거리가 먼 구간의 빈터에 주차 칸과 화장실 정도만 두고, 운전자가 잠깐 차를 세워 눈을 붙이고 가게 합니다. 2011년부터 생긴 이 시설은?",
+    "answer": "졸음쉼터",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2017년까지 고속국도 170곳, 일반 국도 50곳에 생겼습니다. 요금소 여유 공간에 푸드트럭을 곁들인 '행복드림쉼터'도 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "운전자가 잠깐 차를 세워 눈을 붙이고 가게 합니다",
+     "difWhy": "1 — 단서가 곧 졸음쉼터",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 운전자에게 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "깜빡 조는 운전을 막으려 한국도로공사가 들인 것으로, 고속도로 사망 사고를 줄였다고 평가된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고속도로 휴게소 사이에 둔 간이 휴식 공간(졸음운전 예방)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "고속도로 표지판",
+     "piece": "f09",
+     "genPct": 93
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '고속도로 작은 휴식 시설' 이 있고 끝 ○○ 도 시설, 설명이 짧음"
+    },
+    "blindQuestion": {
+     "guess": "졸음쉼터",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "졸음쉼터",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "졸음쉼터",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3264",
+      "answer": "중앙분리대",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "g032a:g032a-j21-14",
+      "answer": "갓길",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "g032a:job-26-7",
+      "answer": "구간단속",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "3262",
+      "answer": "유령 정체",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "3260",
+      "answer": "하이패스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/졸음쉼터",
+     "https://www.dailian.co.kr/news/view/1220793"
+    ],
+    "facts": [
+     {
+      "claim": "휴게소 간격이 먼 구간에 졸음운전 사고 예방을 위해 만든 시설 · 2011년 설치 시작 · 한국도로공사 도입",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/졸음쉼터",
+      "note": "졸음쉼터는 … 휴게소간 간격이 먼 구간에 졸음운전에 따른 사고의 예방을 위하여 … 만든 시설이다. … 한국도로공사 장석효 사장이 … 졸음운전을 예방하기 위해 도입하게 되었다. 2011년 한해 동안 휴게소 간 거리가 50㎞ 안팎인 곳들을 대상으로 우선 설치하기 시작해"
+     },
+     {
+      "claim": "2011년 휴게시설 간 거리가 먼 구간의 유휴부지 활용으로 시작",
+      "where": "q",
+      "url": "https://www.dailian.co.kr/news/view/1220793",
+      "note": "고속도로 대표 안전시설로 자리잡은 '졸음쉼터'는 2011년 휴게시설 간 거리가 먼 구간 내의 유휴부지를 활용하는 것으로 시작해 현재 전국 241개소가 운영 중에 있다."
+     },
+     {
+      "claim": "초창기 주차 공간 몇 대 · 화장실 추가 설치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/졸음쉼터",
+      "note": "초창기에 도입된 졸음쉼터는 겨우 몇 대의 주차 공간밖에 확보되지 않아 … 기존 졸음쉼터에 화장실과 주차장을 추가로 설치하고"
+     },
+     {
+      "claim": "설치 뒤 사망자 감소로 예방 효과 입증",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/졸음쉼터",
+      "note": "2011년 전체로 보았을 때 고속도로 교통사고 사망자가 265명으로 전년 대비 25%(88명) 감소한 것으로 나타나 졸음쉼터 설치가 교통사고 예방 효과가 뛰어나다는 것이 입증되었다."
+     },
+     {
+      "claim": "2017년까지 고속도로 170 · 국도 50 · 행복드림쉼터",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/졸음쉼터",
+      "note": "2017년까지 대한민국의 고속도로에는 졸음쉼터가 170개소, 대한민국의 일반 국도에는 50개소가 설치되어 있으며 … 기존 요금소 여유공간을 활용하여 고객쉼터 및 푸드트럭을 겸비한 졸음쉼터인 '행복드림쉼터'가"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/졸음쉼터"
+    ],
+    "hintNote": null,
+    "easiestCue": "휴게소 사이 · 잠깐 눈을 붙이는 곳",
+    "worthWhyGen": "운전하는 누구에게나 쓸모 있는 도로 시설",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '작은 휴식 시설' — 예",
+     "unique": "'휴게소 사이 · 주차 칸과 화장실만' — 휴게소와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "transport/5#g032a-g032a-j21-14",
+   "seed": {
+    "subject": "갓길",
+    "aspect": null,
+    "ref": "g032a-j21-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도로 맨 바깥쪽에 차로 하나보다 조금 좁게 둔 비상 공간입니다. 평소에는 차가 달리지 않고, 구급차나 경찰차가 막힌 길을 비켜 갈 때 쓰기도 합니다. 이 공간을 무엇이라 할까요?",
+    "answer": "갓길",
+    "acceptedAnswers": [
+     "길어깨",
+     "노견"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "국립국어원은 이 말을 표준어로 삼고, 한자어 '노견'은 표준어로 보지 않습니다. 영국에서는 포장된 것을 '단단한 어깨'라 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "도로 맨 바깥쪽 비상 공간",
+     "difWhy": "1 — 운전·일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 도로 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "고속도로에서 차가 고장 나거나 사고가 나면 비상등을 켜고 일단 피해 세우는 곳이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도로 가장자리의 비상 정지 차선(shoulder)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "고속도로 일상 용어",
+     "piece": "f02",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=공간, 첫 문장이 '도로 맨 바깥쪽 비상 공간'. 짧고 쓰임이 분명."
+    },
+    "blindQuestion": {
+     "guess": "갓길",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "갓길",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "갓길",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6563",
+      "answer": "정당방위",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "3259",
+      "answer": "회전교차로",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4662",
+      "answer": "혼잡통행료",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5157",
+      "answer": "브라에스의 역설",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "3262",
+      "answer": "유령 정체",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/갓길",
+     "https://en.wikipedia.org/wiki/Shoulder_(road)"
+    ],
+    "facts": [
+     {
+      "claim": "도로 가장자리에 둔 비상정지차선 · 응급 시 차량 대피",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/갓길",
+      "note": "갓길, 길어깨 또는 노견(路肩 …)은 도로의 주요구조부를 보호하거나 차도의 효용을 유지하기 위해 또는 응급상황 발생시 차량을 안전한 곳으로 대피시키기 위해 도로의 가장자리에 설치하는 비상정지차선(emergency stopping lane)이다."
+     },
+     {
+      "claim": "도로 바깥쪽 비상 정지 차선 · 차로보다 조금 좁음 · 일반 통행용 아님 · 구급차 등이 정체를 비켜 감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shoulder_(road)",
+      "note": "A shoulder … is an emergency stopping lane by the verge on the outer side of a road or motorway. … Shoulders are not intended for use by through traffic … Emergency vehicles such as ambulances, fire trucks and police cars may use the shoulder to bypass traffic congestion in some countries. … The shoulder is usually slightly narrower than a full traffic lane."
+     },
+     {
+      "claim": "고장·비상 시 갓길로 차를 빼 안전 확보",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Shoulder_(road)",
+      "note": "In the event of an emergency or breakdown, a motorist can pull into the shoulder to get out of the flow of traffic and obtain a greater degree of safety."
+     },
+     {
+      "claim": "국립국어원 등은 갓길을 표준어로 · 노견·길어깨는 비표준어",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/갓길",
+      "note": "국립국어원, 표준국어대사전, 우리말샘 등과 같은 곳에서는 갓길을 표준어로 제시하고 있으며, 노견과 길어깨 모두 불일치한 표현으로 보아 둘 다 비표준어로 지정된 상태이다."
+     },
+     {
+      "claim": "영국은 포장 갓길을 hard shoulder 라 부름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shoulder_(road)",
+      "note": "In Britain, motorway shoulders are now paved, but are still known as \"hard shoulders\"."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Shoulder_(road)"
+    ],
+    "hintNote": null,
+    "easiestCue": "도로 맨 바깥 비상 공간",
+    "worthWhyGen": "운전하는 누구에게나 쓰이는 도로 말·규범",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '비상 공간' — 예",
+     "unique": "도로 가장자리 비상 차선 하나 · 버스전용차로와 갈림(평소 차가 달리지 않음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "transport/5#g032a-job-26-7",
+   "seed": {
+    "subject": "구간단속",
+    "aspect": null,
+    "ref": "job-26-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고속도로에서 과속 차량을 잡아내는 방식의 하나입니다. 카메라 앞에서만 속도를 줄였다가 지나면 다시 밟는 이른바 '캥거루 운전'을 막으려고 생겼습니다. 정해진 두 지점을 지난 시각으로 평균 속력을 계산하는 이 방식은?",
+    "answer": "구간단속",
+    "acceptedAnswers": [
+     "구간 과속 단속"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "들어설 때와 빠져나갈 때의 순간 속력도 함께 재서, 평균까지 셋 가운데 가장 높은 값으로 판정합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "정해진 두 지점을 지난 시각으로 평균 속력을 계산",
+     "difWhy": "2 — 단서 직접 · 운전자 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 운전자에게 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "2007년 영동고속도로 일부에서 국내 처음 시행됐으며, 번호판을 읽는 카메라 두 대를 몇 km 떨어뜨려 세운다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "두 지점 통과 시각으로 평균 속력을 재는 과속 단속 방식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "운전자에게 익숙한 단속",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '과속 차량을 잡아내는 방식' = 끝 ○○ '방식'. '캥거루 운전' 은 바로 풀이됨"
+    },
+    "blindQuestion": {
+     "guess": "구간단속",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "구간 단속",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "구간단속",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j21-8",
+      "answer": "졸음쉼터",
+      "verdict": "diff",
+      "why": "새=구간단속; 졸음쉼터·루트 66·갓길·버스전용차로·유령 정체는 다른 도로 지식"
+     },
+     {
+      "old": "5611",
+      "answer": "루트 66",
+      "verdict": "diff",
+      "why": "새=구간단속; 졸음쉼터·루트 66·갓길·버스전용차로·유령 정체는 다른 도로 지식"
+     },
+     {
+      "old": "g032a:g032a-j21-14",
+      "answer": "갓길",
+      "verdict": "diff",
+      "why": "새=구간단속; 졸음쉼터·루트 66·갓길·버스전용차로·유령 정체는 다른 도로 지식"
+     },
+     {
+      "old": "3261",
+      "answer": "버스전용차로",
+      "verdict": "diff",
+      "why": "새=구간단속; 졸음쉼터·루트 66·갓길·버스전용차로·유령 정체는 다른 도로 지식"
+     },
+     {
+      "old": "3262",
+      "answer": "유령 정체",
+      "verdict": "diff",
+      "why": "새=구간단속; 졸음쉼터·루트 66·갓길·버스전용차로·유령 정체는 다른 도로 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/과속_단속",
+     "https://en.wikipedia.org/wiki/Speed_limit_enforcement"
+    ],
+    "facts": [
+     {
+      "claim": "시작·종점 통과 시각과 거리로 평균 속력 계산 · 캥거루 과속 방지 · 2007 영동고속도로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/과속_단속",
+      "note": "구간 단속 시작점에서의 통과 시각과 구간 단속 종점에서의 통과 시각, 시점부터 종점까지의 이동 거리를 기준으로 차량의 평균 속력을 계산하여 과속 여부를 판정하는 단속 방식 ... '캥거루 과속'을 방지하기 위해 새로이 등장한 방법이다. 대한민국에서는 2007년 12월 20일 영동고속도로의 일부 구간에서 처음 시행되었으며"
+     },
+     {
+      "claim": "번호판 인식 카메라를 수백 m~수 km 떨어진 두 지점에 두고 평균 속도 계산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Speed_limit_enforcement",
+      "note": "A computer system reads vehicle registration plates at two or more fixed points along a road, usually hundreds of meters or even kilometers apart, then uses the known distance between them to calculate a vehicle's average speed."
+     },
+     {
+      "claim": "시점·종점 통과속력도 재 셋 중 가장 높은 값 기준",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/과속_단속",
+      "note": "구간 단속 역시 시점과 종점에서 해당 지점에서의 통과속력을 측정하며, 셋 중에서 가장 높은 수치를 기준으로 삼는다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/과속_단속",
+     "https://en.wikipedia.org/wiki/Speed_limit_enforcement"
+    ],
+    "hintNote": null,
+    "easiestCue": "두 지점 통과 시각으로 평균 속력",
+    "worthWhyGen": "운전자라면 알아야 할 단속 원리와 생긴 까닭(일상 3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '방식' 예",
+     "unique": "평균 속력 · 두 지점 → 구간단속만(고정식·이동식과 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 번호판"
+    ],
+    "job": "job-26"
+   }
+  }
+ ]
+}

@@ -1,0 +1,176 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "animals/3",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/3#g032a-g032a-j25-7",
+   "seed": {
+    "subject": "명태",
+    "aspect": null,
+    "ref": "g032a-j25-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 사람이 즐겨 먹는 대구과의 바닷물고기입니다. 얼리면 동태, 바짝 말리면 북어, 겨울바람에 얼었다 녹았다 하며 말리면 황태, 새끼는 노가리라 부를 만큼 이름이 많습니다. 이 물고기는?",
+    "answer": "명태",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름은 함경도 명천에 사는 태씨 어부가 잡아 바쳤다는 이야기에서 왔다고 전합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "얼리면 동태, 바짝 말리면 북어, 황태, 새끼는 노가리",
+     "difWhy": "2 — 한국인 일상 음식 이름들이 곧 답 · 이름 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 생활 상식 · 이름 많은 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "알로는 빨간 젓갈을 담그는데, 동해에서 거의 사라져 2019년부터 우리 바다에서 잡는 것이 전면 금지된 물고기다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "동태·북어·황태·노가리로 불리는 대구과 물고기(Alaska pollock)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "동태·북어로 일상 식재료",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '대구과의 바닷물고기' · 끝 ○○ = 물고기"
+    },
+    "blindQuestion": {
+     "guess": "명태",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "명태",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "명태",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4716",
+      "answer": "뱀장어",
+      "verdict": "diff",
+      "why": "새=명태 이름들; 뱀장어·복어·전기뱀장어·흰동가리·연어는 다른 물고기 지식"
+     },
+     {
+      "old": "6482",
+      "answer": "복어",
+      "verdict": "diff",
+      "why": "새=명태 이름들; 뱀장어·복어·전기뱀장어·흰동가리·연어는 다른 물고기 지식"
+     },
+     {
+      "old": "4231",
+      "answer": "전기뱀장어",
+      "verdict": "diff",
+      "why": "새=명태 이름들; 뱀장어·복어·전기뱀장어·흰동가리·연어는 다른 물고기 지식"
+     },
+     {
+      "old": "3365",
+      "answer": "흰동가리",
+      "verdict": "diff",
+      "why": "새=명태 이름들; 뱀장어·복어·전기뱀장어·흰동가리·연어는 다른 물고기 지식"
+     },
+     {
+      "old": "3363",
+      "answer": "연어",
+      "verdict": "diff",
+      "why": "새=명태 이름들; 뱀장어·복어·전기뱀장어·흰동가리·연어는 다른 물고기 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/명태",
+     "https://lady.khan.co.kr/cooking/article/4224",
+     "https://www.wikitree.co.kr/articles/1017171"
+    ],
+    "facts": [
+     {
+      "claim": "대구과 · 동태 · 노가리 · 코다리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/명태",
+      "note": "명태(明太…)는 대구과에 딸린 물고기이다. … 어린 개체는 노가리라 부른다. … 얼어붙었으면 동태라고 불린다."
+     },
+     {
+      "claim": "북어 = 바짝 말린 명태 · 황태 = 말린 명태",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/명태",
+      "note": "황태(말린 명태) / 북어(바짝 말린 명태) - 북엇국, 북어찜 / 동태(얼린 명태) - 동태찌개, 동태전 / 노가리(말린 명태치어)"
+     },
+     {
+      "claim": "황태 = 바닷바람에 얼었다 녹았다 반복",
+      "where": "q",
+      "url": "https://lady.khan.co.kr/cooking/article/4224",
+      "note": "(검색 요약) 차가운 바닷바람에 말린 명태가 얼었다 녹았다를 반복하면서 만들어진 북어를 특별히 황태라 부른다."
+     },
+     {
+      "claim": "알 = 명란젓",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/명태",
+      "note": "알과 창자는 각각 명란젓, 창란젓으로 이용된다."
+     },
+     {
+      "claim": "어획량 급감 · 2019년부터 국내 어획 전면 금지",
+      "where": "h",
+      "url": "https://www.wikitree.co.kr/articles/1017171",
+      "note": "(검색 요약) 정부는 뒤늦게 2019년부터 국내 명태 어획을 전면 금지했다. / ko 위키: 2010년대에 들어서는 연평균 2톤가량의 어획량"
+     },
+     {
+      "claim": "명천 태씨 유래",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/명태",
+      "note": "관찰사는 명천의 첫글자인 명자와 태씨성을 가진 사람의 성인 태자를 따서 그 물고기의 이름을 명태(明太)라고 지었다고 전한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/명태",
+     "https://www.wikitree.co.kr/articles/1017171"
+    ],
+    "hintNote": null,
+    "easiestCue": "동태·북어·황태·노가리",
+    "worthWhyGen": "식탁의 생선 이름들이 한 물고기라는 생활 상식(알가치 3 ①)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '바닷물고기' — 예",
+     "unique": "동태·북어·황태 — 명태 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 젓갈"
+    ],
+    "job": "job-25"
+   }
+  }
+ ]
+}

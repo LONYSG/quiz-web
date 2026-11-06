@@ -1,0 +1,291 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "animals/5",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/5#g032a-g032a-j07-9",
+   "seed": {
+    "subject": "황소개구리",
+    "aspect": null,
+    "ref": "g032a-j07-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북아메리카에서 온, 몸길이 20cm 가까운 큰 개구리입니다. 우리나라에는 1970년 식용으로 들여왔습니다. 그런데 야생으로 퍼져 물고기와 뱀까지 잡아먹으며 토종 생태계를 위협했습니다. 이 개구리는?",
+    "answer": "황소개구리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "알덩이 하나에 알이 1만~2만 개 들어 있다. 이름은 밤에 내는 소리가 황소 울음 같아서 붙었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "1970년 식용으로 들여와 토종 생태계를 위협한 큰 개구리",
+     "difWhy": "1 — 널리 알려진 외래종",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 사회·생태 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "목의 큰 울음주머니로 밤마다 우렁차게 우는 동물로, 배스·블루길과 함께 생태계 교란 생물로 지정되어 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "북아메리카 원산의 대형 외래 개구리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "외래종 뉴스·교과서",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '큰 개구리' = 끝 ○○ '개구리'. 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "황소개구리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "황소개구리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "황소개구리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2116",
+      "answer": "외래종",
+      "verdict": "diff",
+      "why": "황소개구리 vs 외래종 개념(힌트 예시일 뿐)"
+     },
+     {
+      "old": "2673",
+      "answer": "올챙이",
+      "verdict": "diff",
+      "why": "황소개구리 vs 올챙이"
+     },
+     {
+      "old": "2678",
+      "answer": "피부 호흡",
+      "verdict": "diff",
+      "why": "황소개구리 vs 피부 호흡"
+     },
+     {
+      "old": "2679",
+      "answer": "독화살개구리",
+      "verdict": "diff",
+      "why": "황소개구리 vs 독화살개구리"
+     },
+     {
+      "old": "g032a:g032a-j25-8",
+      "answer": "맹꽁이",
+      "verdict": "diff",
+      "why": "황소개구리 vs 맹꽁이"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황소개구리",
+     "https://en.wikipedia.org/wiki/American_bullfrog"
+    ],
+    "facts": [
+     {
+      "claim": "1970년 식용 수입 · 야생 번식 · 생태계 파괴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황소개구리",
+      "note": "대한민국도 1970년 식용으로 수입하였는데, 야생에서 많이 번식하게 되어 천적이 없는 상태로 생태계 파괴의 주범으로 변모하였다. / 몸길이 20cm에다 750g / 먹이는 곤충, 물고기, 작은 개구리, 뱀, 가재"
+     },
+     {
+      "claim": "북아메리카 원산 · 식용으로 퍼짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/American_bullfrog",
+      "note": "The species is native to eastern North America. … Its use as a food source has led to the bullfrog being introduced outside of its native range."
+     },
+     {
+      "claim": "울음주머니 · 생태계 교란 야생생물 지정",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/황소개구리",
+      "note": "목에 큰 울음주머니가 있어 밤에 황소 울음 같은 소리를 낸다. / 현재 대한민국에서는 생태계 교란 야생생물로 지정되었다. (배스·블루길 지정은 knowledge)"
+     },
+     {
+      "claim": "알 1만~2만",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황소개구리",
+      "note": "알덩이는 커서 10000(1만) ~ 20000(2만)개의 알이 들어 있으며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황소개구리"
+    ],
+    "hintNote": null,
+    "easiestCue": "1970년 식용으로 들여온 큰 개구리",
+    "worthWhyGen": "외래종 문제의 대표 사례와 그 까닭 — 알가치 3 ①",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '개구리' 예",
+     "unique": "외래 대형 개구리 — 하나",
+     "hint12": "① 예 ② 예 · 등급 3 쪽일 수 있음"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "animals/5#g032a-g032a-j25-8",
+   "seed": {
+    "subject": "맹꽁이",
+    "aspect": null,
+    "ref": "g032a-j25-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "장마철 밤에만 땅 위로 나와 빗물 웅덩이에 알을 낳는, 몸이 둥글게 부푼 작은 개구리입니다. 천적을 만나면 복어처럼 몸을 빵빵하게 부풀립니다. 수컷의 울음소리를 흉내 낸 말이 그대로 이름이 된 이 동물은?",
+    "answer": "맹꽁이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "알은 낳은 지 하루 남짓이면 깨어나고, 30일쯤 지나면 변태를 마칩니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "수컷의 울음소리를 흉내 낸 말이 그대로 이름이 된",
+     "difWhy": "2 — 울음 흉내 단서가 곧 답에 가까움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 생태",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "꽉 막혀 답답한 사람을 놀릴 때도 부르는 이름으로, 지금은 멸종 위기 야생 생물 2급으로 보호받는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "장마철에 우는 한국의 작은 개구리(Kaloula borealis)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "맹꽁이 동요·표현으로 흔함",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '작은 개구리', 끝 ○○=동물. 짧고 단서 순서 자연스러움."
+    },
+    "blindQuestion": {
+     "guess": "맹꽁이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "맹꽁이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "맹꽁이",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j07-9",
+      "answer": "황소개구리",
+      "verdict": "diff",
+      "why": "새=맹꽁이; 황소개구리는 외래종 이야기로 다른 개구리"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/맹꽁이",
+     "https://www.kyeonggi.com/article/20230316580330",
+     "knowledge — 표준국어대사전 '맹꽁이' ②"
+    ],
+    "facts": [
+     {
+      "claim": "장마철 땅 위로 나와 웅덩이에 산란 · 몸통 둥글게 부풂",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/맹꽁이",
+      "note": "몸통이 둥글게 부풀어 올라 몸의 대부분을 차지한다. … 맹꽁이는 장마철에 만들어진 웅덩이나 고인 물에 산란하므로 … 연중 땅 속에서 생활하다가 밤중에 지표로 나와"
+     },
+     {
+      "claim": "위협받으면 복어처럼 부풂",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/맹꽁이",
+      "note": "천적에게 위협받으면 맹꽁이는 복어처럼 몸을 빵빵하게 부풀리고, 등에서 끈끈한 점액을 내뿜는다."
+     },
+     {
+      "claim": "이름은 수컷 울음소리 의성어에서",
+      "where": "q",
+      "url": "https://www.kyeonggi.com/article/20230316580330",
+      "note": "(검색 요약) '맹꽁이'는 수컷의 울음소리를 본딴 의성어에서 유래한 순우리말 명칭이다 / 이름도 울음소리에서 유래됐다 — ko 위키: 맹꽁이의 울음소리는 매앵~꽁 과 같은 소리이다."
+     },
+     {
+      "claim": "멸종위기 야생생물 2급",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/맹꽁이",
+      "note": "한국에서는 멸종 위기 야생 생물 II급으로 지정되어 있다."
+     },
+     {
+      "claim": "답답한 사람을 놀리는 말",
+      "where": "h",
+      "url": "knowledge — 표준국어대사전 '맹꽁이' ②",
+      "note": "야무지지 못하고 말이나 하는 짓이 답답한 사람을 놀림조로 이르는 말(사전 뜻 — 기억)"
+     },
+     {
+      "claim": "28~30시간 부화 · 30일 변태",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/맹꽁이",
+      "note": "산란된 알은 28-30시간 만에 부화되고 30일 정도 되면 변태가 끝난다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/맹꽁이"
+    ],
+    "hintNote": null,
+    "easiestCue": "장마철 · 울음소리가 이름 · 몸이 둥근 개구리",
+    "worthWhyGen": "흔히 쓰는 이름의 유래(알가치 3 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '개구리' — 예",
+     "unique": "울음소리 이름 + 장마철 + 부풂 — 맹꽁이(개구리는 avoid)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

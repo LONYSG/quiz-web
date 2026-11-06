@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "religion/6",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/6#g032a-g032a-j30-11",
+   "seed": {
+    "subject": "고해성사",
+    "aspect": null,
+    "ref": "g032a-j30-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "가톨릭 신자가 사제에게 자기 죄를 털어놓고 하느님의 용서를 받는 예식입니다. 한국 가톨릭에서는 성탄절과 부활절을 앞두고 꼭 하도록 정해 두었습니다. 이 예식을 무엇이라 할까요?",
+    "answer": "고해성사",
+    "acceptedAnswers": [
+     "고백성사"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "개신교는 만인제사장설에 따라 이를 성사로 인정하지 않습니다. 성탄·부활 전에 하는 것은 따로 판공성사라고 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "사제에게 자기 죄를 털어놓고 하느님의 용서를 받는 예식",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 종교 의식 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "성당 안 칸막이 방에서 무릎을 꿇고 사제에게 하는 것으로, 영화와 드라마에도 자주 나오는 장면이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "가톨릭에서 사제에게 죄를 고백하고 용서받는 성사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "영화·드라마에서 흔함",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '가톨릭 신자의 예식'이 끝 ○○=예식. 평이."
+    },
+    "blindQuestion": {
+     "guess": "고해성사",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "고해성사",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "고해성사",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3210",
+      "answer": "성호",
+      "verdict": "diff",
+      "why": "신규 '고해성사'(다른 가톨릭 의식) ≠ 옛 '성호' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "4637",
+      "answer": "재의 수요일",
+      "verdict": "diff",
+      "why": "고해성사(참회 예식)와 재의 수요일(사순 시기 첫날)은 다른 사실"
+     },
+     {
+      "old": "4636",
+      "answer": "메노라",
+      "verdict": "diff",
+      "why": "고해성사와 메노라(유대교 등잔대)는 무관"
+     },
+     {
+      "old": "3872",
+      "answer": "물고기",
+      "verdict": "diff",
+      "why": "고해성사와 물고기 상징은 무관"
+     },
+     {
+      "old": "3204",
+      "answer": "만자",
+      "verdict": "diff",
+      "why": "고해성사와 불교 만자 기호는 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고해성사",
+     "https://en.wikipedia.org/wiki/Confession_in_the_Catholic_Church"
+    ],
+    "facts": [
+     {
+      "claim": "죄를 뉘우치며 사제를 통해 하느님께 고백하고 용서받는 성사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고해성사",
+      "note": "그리스도인이 자신이 지은 죄를 진심으로 뉘우치면서 사제를 통해 하느님께 죄를 고백하고 용서의 은총을 받는 성사이다."
+     },
+     {
+      "claim": "한국 가톨릭은 성탄절·부활절 전 의무(판공성사)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고해성사",
+      "note": "한국 가톨릭에서는 성탄절과 부활절 전에 의무적으로 고해성사를 하도록 되어있으며 이를 판공성사(判功聖事, annual confession)라고 한다."
+     },
+     {
+      "claim": "고해소(칸막이) · 무릎 꿇고 칸막이 뒤에서",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Confession_in_the_Catholic_Church",
+      "note": "the penitent may choose to confess in a specially constructed confessional ... besides the previous practice of kneeling behind a screen"
+     },
+     {
+      "claim": "개신교는 만인제사장설로 인정 안 함",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/고해성사",
+      "note": "개신교에서는 만인제사장설 등의 교리적 이해에 따라 고해성사를 인정하지 않는다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Confession_in_the_Catholic_Church"
+    ],
+    "hintNote": null,
+    "easiestCue": "사제에게 죄를 털어놓고 용서받는 가톨릭 예식",
+    "worthWhyGen": "3 — 일상에서 비유로도 쓰는 말('고해성사하듯')·종교 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '예식' — 예",
+     "unique": "죄 고백 · 용서 · 성탄·부활 전 → 고해성사(판공성사는 그 하위 — 해설에만)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

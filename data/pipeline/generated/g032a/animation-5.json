@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "animation/5",
+  "midKey": "animation",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animation/5#g032a-g032a-j27-12",
+   "seed": {
+    "subject": "애니메이션",
+    "aspect": null,
+    "ref": "g032a-j27-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "그림이나 인형을 한 장면씩 찍어 이어 붙여 움직이는 것처럼 보이게 만든 영상을 부르는 말입니다. 이 이름은 '살아 있음'을 뜻하는 라틴어에서 왔습니다. 멈춘 그림에 생명을 불어넣는다는 뜻을 담은 이 말은?",
+    "answer": "애니메이션",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "우리말로는 간단히 동화(動畵)라고도 부르며, 투명한 셀에 손으로 그린 뒤 필름으로 찍는 것이 전통 방식이었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "그림이나 인형을 한 장면씩 찍어 움직이게 만든 영상",
+     "difWhy": "1 — 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "디즈니·지브리·픽사가 만드는 작품 갈래로, 사람을 직접 찍는 실사 영화와 짝을 이루는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "그림·인형·CG를 한 장면씩 이어 움직임을 만든 영상(만화영화)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "일상 매체 용어",
+     "piece": "f04",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영상을 부르는 말'이 끝 ○○=말. 어원 풀이는 라틴어 뜻으로 설명됨."
+    },
+    "blindQuestion": {
+     "guess": "애니메이션",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "애니메이션",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "애니메이션",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "729",
+      "answer": "아키라",
+      "verdict": "diff",
+      "why": "신규 '애니메이션'(다른 작품·제작 방식) ≠ 옛 '아키라' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "6145",
+      "answer": "땡땡",
+      "verdict": "diff",
+      "why": "신규 '애니메이션'(다른 작품·제작 방식) ≠ 옛 '땡땡' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "4394",
+      "answer": "다지리 사토시",
+      "verdict": "diff",
+      "why": "신규 '애니메이션'(다른 작품·제작 방식) ≠ 옛 '다지리 사토시' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "4722",
+      "answer": "형사 가제트",
+      "verdict": "diff",
+      "why": "신규 '애니메이션'(다른 작품·제작 방식) ≠ 옛 '형사 가제트' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1416",
+      "answer": "셀 애니메이션",
+      "verdict": "diff",
+      "why": "신규 '애니메이션'(다른 작품·제작 방식) ≠ 옛 '셀 애니메이션' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/애니메이션",
+     "https://en.wikipedia.org/wiki/Animation"
+    ],
+    "facts": [
+     {
+      "claim": "용어는 '살아있는'을 뜻하는 라틴어 anima에서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애니메이션",
+      "note": "이 용어는 \"살아있는\"을 뜻하는 라틴어 낱말 anima에서 비롯하였다."
+     },
+     {
+      "claim": "라틴어 animātiō = '생명을 부여함'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Animation",
+      "note": "The word animation comes from the Latin word animātiō, meaning 'bestowing of life'."
+     },
+     {
+      "claim": "실사와 대비",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/애니메이션",
+      "note": "애니메이션은 실사와 대비되지만, 두 영역이 고립되어 존재하는 것은 아니다."
+     },
+     {
+      "claim": "동화라고도 부름 · 투명한 셀에 손으로 그려 필름 촬영",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/애니메이션",
+      "note": "간단히 동화(動畵)라고도 부른다. / 전통적인 애니메이션에서는 이미지를 투명한 셀에 손으로 그리거나 색칠한 뒤 사진을 찍어 영화 필름으로 상영한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/애니메이션"
+    ],
+    "hintNote": null,
+    "easiestCue": "그림을 한 장면씩 찍어 움직이게 만든 영상",
+    "worthWhyGen": "3 — 누구나 쓰는 말의 유래(라틴어 '생명')",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' — 예",
+     "unique": "이름 유래를 묻는 B2 → 애니메이션만(만화영화·애니 변형 안 받음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 픽사/디즈니"
+    ],
+    "job": "job-27"
+   }
+  }
+ ]
+}

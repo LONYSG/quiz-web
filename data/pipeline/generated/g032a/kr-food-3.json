@@ -1,0 +1,285 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-food/3",
+  "midKey": "kr-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/3#g032a-g032a-j01-12",
+   "seed": {
+    "subject": "뻥튀기",
+    "aspect": null,
+    "ref": "g032a-j01-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "쌀이나 옥수수를 쇠통에 넣고 달군 뒤 뚜껑을 확 열면, 알갱이가 몇 배로 부풀어 나오는 옛 장터 간식입니다. 이름은 뚜껑을 열 때 나는 큰 소리에서 왔습니다. 그 모습 때문에 지금은 '사실을 과장해 크게 부풀린다'는 뜻으로도 쓰는 이 말은?",
+    "answer": "뻥튀기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "통 속 압력을 갑자기 낮추면 알갱이가 수 배로 부푸는데, 이렇게 만든 쌀을 팽화미라고도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "뚜껑을 확 열면 알갱이가 몇 배로 부풀어 나오는 간식 · 사실을 과장해 부풀린다",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "기계를 열기 전 장수가 미리 소리쳐 아이들이 귀를 막게 하던 1960~70년대 장터 풍경으로, 둥근 쌀과자 이름으로도 남았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "압력으로 곡물을 부풀린 과자(튀긴쌀)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "일상 간식·관용어",
+     "piece": "f09",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '옛 장터 간식' 이 있고 끝 ○○ 는 그 말, 문장 짧고 순서 자연스러움"
+    },
+    "blindQuestion": {
+     "guess": "뻥튀기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "뻥튀기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "뻥튀기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5274",
+      "answer": "사카린",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(뻥튀기 / 사카린)"
+     },
+     {
+      "old": "g032a:g032a-j06-1",
+      "answer": "솜사탕",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(뻥튀기 / 솜사탕)"
+     },
+     {
+      "old": "1686",
+      "answer": "달고나",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(뻥튀기 / 달고나)"
+     },
+     {
+      "old": "1687",
+      "answer": "혼분식 장려 운동",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(뻥튀기 / 혼분식 장려 운동)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/뻥튀기",
+     "https://sgsg.hankyung.com/article/2009032400161"
+    ],
+    "facts": [
+     {
+      "claim": "압력 용기 · 뚜껑 열면 부풂 · 뻥 소리 · 과장 비유 · 1960~70년대 장터",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뻥튀기",
+      "note": "뚜껑을 갑자기 열면 압력이 급히 떨어져서 쌀알이 수 배로 부풀게 된다. 이것을 튀긴쌀 또는 팽화미(膨化米)라 한다. 이 때 용기의 뚜껑을 열면 뻥하는 큰 소리가 나므로 뻥튀기라고도 한다. ... 1960년대부터 1970년대 사이에 걸쳐 장터에 소형 뻥튀기 기계를 들고 나와 ... 비유적으로는 어떤 사실이나 물건 따위를 과장하여 크게 부풀리는 일을 의미하는 말로도 사용된다."
+     },
+     {
+      "claim": "뻥 소리에서 이름 · 장수가 '뻥이요' 외침",
+      "where": "q",
+      "url": "https://sgsg.hankyung.com/article/2009032400161",
+      "note": "(검색 요약) 그것을 뻥 하는 소리와 함께 튀겨냈다고 해서 생긴 이름이 '뻥튀기'이다. / 장수는 기계를 돌리기 전 사람들이 놀라지 않도록 '뻥이요'하는 소리를 질렀다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/뻥튀기",
+     "https://sgsg.hankyung.com/article/2009032400161"
+    ],
+    "hintNote": null,
+    "easiestCue": "쇠통 뚜껑을 열면 부풀어 나오는 장터 간식 · 과장한다는 뜻",
+    "worthWhyGen": "일상에서 쓰는 말('부풀린다')의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '장터 간식' 예",
+     "unique": "하나(팝콘과 갈림 — 쇠통·장터·과장 뜻)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "kr-food/3#g032a-g032a-j06-1",
+   "seed": {
+    "subject": "솜사탕",
+    "aspect": null,
+    "ref": "g032a-j06-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "유원지와 길거리에서 파는 설탕 간식입니다. 이 간식을 뽑아내는 기계는 1897년 미국의 한 치과 의사가 과자 기술자와 함께 만들었습니다. 1904년 세인트루이스 박람회에서 '요정의 실'이라는 이름으로 팔려 큰 인기를 끌었습니다. 이 간식은?",
+    "answer": "솜사탕",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "지금의 영어 이름 'cotton candy'도 1921년 또 다른 치과 의사 조지프 라스코가 낸 기계 특허에서 퍼졌고, 오스트레일리아에서는 아직 '요정의 실'로 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "유원지와 길거리에서 파는 설탕 간식",
+     "difWhy": "1 — 길거리 설탕 간식은 바로 솜사탕",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 기계 발명 일화 위주",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "녹인 설탕을 빙빙 도는 통의 작은 구멍으로 뿜어 가는 실로 굳힌 뒤, 막대에 구름처럼 감아 주는 간식이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "녹인 설탕을 가는 실로 뽑아 막대에 감은 간식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "흔한 간식",
+     "piece": "f07",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '설탕 간식' · 기계 발명 이야기가 나와도 '이 간식' 지시어가 한 곳만 가리킴"
+    },
+    "blindQuestion": {
+     "guess": "솜사탕",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "솜사탕",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "솜사탕",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5145",
+      "answer": "분홍",
+      "verdict": "diff",
+      "why": "솜사탕 기원 vs 분홍 어원"
+     },
+     {
+      "old": "4236",
+      "answer": "빙봉",
+      "verdict": "diff",
+      "why": "솜사탕 vs 빙봉"
+     },
+     {
+      "old": "g032a:g032a-j01-12",
+      "answer": "뻥튀기",
+      "verdict": "diff",
+      "why": "솜사탕 vs 뻥튀기"
+     },
+     {
+      "old": "5373",
+      "answer": "번데기",
+      "verdict": "diff",
+      "why": "솜사탕 vs 번데기"
+     },
+     {
+      "old": "1682",
+      "answer": "호떡",
+      "verdict": "diff",
+      "why": "솜사탕 vs 호떡"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cotton_candy",
+     "https://ko.wikipedia.org/wiki/솜사탕"
+    ],
+    "facts": [
+     {
+      "claim": "1897년 치과 의사 모리슨과 과자 기술자 워튼이 기계 발명 · 1904년 박람회 Fairy Floss",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cotton_candy",
+      "note": "Machine-spun cotton candy was invented in 1897 by dentist William Morrison and confectioner John C. Wharton, and first introduced to a wide audience at the 1904 World's Fair as Fairy Floss with great success"
+     },
+     {
+      "claim": "1904년 세인트루이스 엑스포 Fairy Floss(요정의 실) · 기계는 모리슨과 워톤 발명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/솜사탕",
+      "note": "1904년 세인트루이스 엑스포에서 Fairy Floss(요정의 실)이라는 명칭으로 처음 등장하였다. ... 솜사탕을 만드는 기계는 윌리엄 모리슨(William J. Morrison, 1860 - 1926)과 존 C. 워톤이 발명했다."
+     },
+     {
+      "claim": "원심기 구멍으로 나가 굳어 젓가락에 감는다",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/솜사탕",
+      "note": "설탕이 녹아 회전하는 원심기 밖으로 나가고 외기에 닿으면서 결정화된다. 이것을 소독저에 여러 번 감아 완성한다."
+     },
+     {
+      "claim": "1921년 치과 의사 라스코 특허가 cotton candy 이름 · 호주는 fairy floss",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cotton_candy",
+      "note": "Joseph Lascaux, a dentist from New Orleans, Louisiana, invented a similar cotton candy machine in 1921. His patent named the sweet confection \"cotton candy\", eventually overtaking the name 'fairy floss', although it retains this name in Australia."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/솜사탕"
+    ],
+    "hintNote": null,
+    "easiestCue": "'요정의 실'이라는 이름 · 설탕 간식",
+    "worthWhyGen": "누구나 먹어 본 간식의 뜻밖의 유래(치과 의사가 만든 설탕 과자)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '설탕 간식' 예",
+     "unique": "기계로 뽑는 설탕 간식 · 요정의 실 — 다른 답 없음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  }
+ ]
+}

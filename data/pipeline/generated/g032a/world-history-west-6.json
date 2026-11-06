@@ -1,0 +1,267 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-west/6",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/6#g032a-g032a-j17-7",
+   "seed": {
+    "subject": "골드러시",
+    "aspect": null,
+    "ref": "g032a-j17-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1848년 미국 캘리포니아의 한 제재소 근처에서 금이 발견되었습니다. 이 소식에 미국 안팎에서 약 30만 명이 캘리포니아로 몰려들었습니다. 오늘날 돈 되는 곳에 사람이 한꺼번에 몰리는 현상을 빗댈 때도 쓰는 이 사건의 이름은?",
+    "answer": "골드러시",
+    "acceptedAnswers": [
+     "캘리포니아 골드러시"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그 무렵 작은 항구 마을이던 곳의 인구는 1848년 약 1,000명에서 1850년 2만 5,000명으로 늘었고, 캘리포니아는 1850년 31번째 주가 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "돈 되는 곳에 사람이 한꺼번에 몰리는 현상을 빗댈 때도 쓰는 이 사건",
+     "difWhy": "2 — 1848 캘리포니아 금 발견에서 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상에서 쓰는 말의 바탕 사건",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1849년에 몰려온 이들을 부르던 '포티나이너스'가 샌프란시스코 풋볼 팀 이름이 된 사건",
+    "generalHintVersion": "hint-v7",
+    "identity": "캘리포니아 골드러시 — 1848~1855년 금 발견으로 사람들이 몰려든 사건",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "세계사·비유 표현으로 흔함",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 금 발견이라는 사건이 곧바로 나오고 끝 ○○ '사건' 과 맞음"
+    },
+    "blindQuestion": {
+     "guess": "골드러시",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "골드러시",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "골드러시",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1976",
+      "answer": "사워도우",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2917",
+      "answer": "리바이스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/캘리포니아_골드_러시",
+     "https://en.wikipedia.org/wiki/California_gold_rush"
+    ],
+    "facts": [
+     {
+      "claim": "1848 제재소 근처 금 발견 · 약 30만 명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/캘리포니아_골드_러시",
+      "note": "제임스 마셜은 아메리칸 강가에 건설하고 있었던 제재소의 방수로에서 빛나는 사금을 발견했다. ... 미국의 각지, 그리고 해외에서 남녀노소를 비롯한 약 30만 명의 인구가 캘리포니아에 유입되었다."
+     },
+     {
+      "claim": "approximately 300,000 people",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/California_gold_rush",
+      "note": "began on January 24, 1848, when gold was found by James W. Marshall at Sutter's Mill ... The news of gold brought approximately 300,000 people from the rest of the United States and abroad to California"
+     },
+     {
+      "claim": "1849년 → 포티나이너스",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/캘리포니아_골드_러시",
+      "note": "초기 채굴자들 중 1849년에 캘리포니아로 향한 사람이 많았기 때문에 연도를 따서 포티나이너스라고 불렸다."
+     },
+     {
+      "claim": "샌프란시스코 인구 · 31번째 주",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/캘리포니아_골드_러시",
+      "note": "샌프란시스코 인구는 1848년 약 1,000명에서 1850년에는 25,000명까지 늘어났다. ... 이 해에 캘리포니아는 미국의 31번째 주로서 맞아들일 수 있게 되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/캘리포니아_골드_러시"
+    ],
+    "hintNote": null,
+    "easiestCue": "1848년 캘리포니아 금 발견으로 사람이 몰린 사건",
+    "worthWhyGen": "'○○ 골드러시'처럼 일상에서 빗대어 쓰는 말의 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 금 발견 장면 — 종류 명사 '사건'은 끝 문장(첫 문장이 곧 사건 장면)",
+     "unique": "1848 캘리포니아 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 샌프란시스코"
+    ],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "world-history-west/6#g032a-g032a-j25-3",
+   "seed": {
+    "subject": "금주법",
+    "aspect": null,
+    "ref": "g032a-j25-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년대 미국에서 수정 헌법 제18조로 시행된 법입니다. 술을 만들고 팔고 나르는 일을 막았지만, 오히려 밀주 거래가 번져 알 카포네 같은 갱단이 커졌습니다. 흔히 실패한 법의 대표로 꼽히는 이 법은?",
+    "answer": "금주법",
+    "acceptedAnswers": [
+     "금주령"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "다만 이 기간 미국의 알코올 소비는 절반 이하로 줄었다는 분석도 있어, 완전한 실패였는지는 의견이 갈립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1920년대 미국 수정 헌법 제18조 · 술을 만들고 팔고 나르는 일을 막음",
+     "difWhy": "2 — 미국 술 금지법 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 역사 상식의 바탕",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1933년 수정 헌법 제21조로 폐지되기까지, 몰래 술을 파는 무허가 술집 '스피크이지'가 뉴욕에만 수만 곳 생기게 만든 법이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1920~1933 미국의 술 제조·판매 금지(Prohibition)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "세계사·영화에서 접함",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '법' 이 있고 끝 ○○ '법' 과 맞음"
+    },
+    "blindQuestion": {
+     "guess": "금주법",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "금주법",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "금주법",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4680",
+      "answer": "시저 샐러드",
+      "verdict": "diff",
+      "why": "새=금주법; 시저 샐러드는 티후아나 음식 유래로 답과 지식이 다름(금주법은 배경일 뿐)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Prohibition_in_the_United_States",
+     "https://ko.wikipedia.org/wiki/금주법_시대"
+    ],
+    "facts": [
+     {
+      "claim": "1920~1933 · 수정 헌법 18조 · 제조·수입·운반·판매 금지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Prohibition_in_the_United_States",
+      "note": "The Prohibition era was the period from 1920 to 1933 when the United States prohibited the production, importation, transportation, and sale of alcoholic beverages. … introduced nationwide under the Eighteenth Amendment"
+     },
+     {
+      "claim": "범죄조직 성장 · 알 카포네 밀거래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/금주법_시대",
+      "note": "금주법은 알카포네가 대표적인 조직폭력배의 주류 밀거래, 무허가 술집 개업, 주류 사업 이익을 노린 폭력조직간의 살인사건 등의 부작용을 낳았다."
+     },
+     {
+      "claim": "통념상 실패한 악법",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/금주법_시대",
+      "note": "통념적으로 금주법은 실패로 돌아간 악법이라고들 생각하지만, 금주법이 시행된 1920년동안 미국의 알코올 소비량은 절반 이하로 줄어들었고"
+     },
+     {
+      "claim": "1933 수정 헌법 21조로 폐지 · 스피크이지 뉴욕 3만~10만",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Prohibition_in_the_United_States",
+      "note": "Prohibition ended with the ratification of the Twenty-first Amendment … on December 5, 1933. … By 1925, there were anywhere from 30,000 to 100,000 speakeasy clubs in New York City alone."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Prohibition_in_the_United_States",
+     "https://ko.wikipedia.org/wiki/금주법_시대"
+    ],
+    "hintNote": null,
+    "easiestCue": "1920년대 미국 · 술 금지 · 알 카포네",
+    "worthWhyGen": "선한 의도의 법이 낳은 부작용의 대표 사례(알가치 3 ①)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '법' — 예",
+     "unique": "1920년대 미국 수정 헌법 18조 — 금주법",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

@@ -1,0 +1,470 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "politics/1",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/1#g032a-job-03-6",
+   "seed": {
+    "subject": "좌파",
+    "aspect": null,
+    "ref": "job-03-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "정치 성향을 가르는 말 가운데 하나입니다. 1789년 프랑스 혁명 때 국민의회에서, 왕과 종교에 충성하는 의원들은 의장석 오른쪽에, 혁명을 지지하는 의원들은 왼쪽에 모여 앉았습니다. 이때 혁명파가 앉은 자리에서 나온 말은?",
+    "answer": "좌파",
+    "acceptedAnswers": [
+     "좌익"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "의원 고빌 남작은 반대편의 고함과 욕설을 피하려고 오른쪽에 모였다고 적었습니다. 1791년 입법의회에서도 이 배치는 이어졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "혁명을 지지하는 의원들은 왼쪽에 모여 앉았습니다",
+     "difWhy": "2 — 왼쪽이라는 단서가 답에 닿음 · 정치 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 정치어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "프랑스 혁명 때 혁명파 의원들이 모여 앉은 쪽 방향에서 나온 말로, 오늘날 평등을 위한 정부 개입을 주장하는 진보 진영을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "진보·평등 쪽 정치 성향을 가리키는 말(왼쪽)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "정치 뉴스에서 매일 나옴",
+     "piece": "f08",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '정치 성향 말' 이 있고 오른쪽·왼쪽 구분이 문장 안에서 분명"
+    },
+    "blindQuestion": {
+     "guess": "좌파",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "좌파",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "좌파",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2495",
+      "answer": "결선투표",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(좌파 / 결선투표)"
+     },
+     {
+      "old": "5568",
+      "answer": "하원의장",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(좌파 / 하원의장)"
+     },
+     {
+      "old": "4616",
+      "answer": "동거정부",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(좌파 / 동거정부)"
+     },
+     {
+      "old": "1868",
+      "answer": "공화국",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(좌파 / 공화국)"
+     },
+     {
+      "old": "1870",
+      "answer": "필리버스터",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(좌파 / 필리버스터)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Left–right_political_spectrum",
+     "https://ko.wikipedia.org/wiki/좌익과_우익"
+    ],
+    "facts": [
+     {
+      "claim": "1789년 국민의회 의장 오른쪽 구체제 지지 · 왼쪽 혁명 지지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Left–right_political_spectrum",
+      "note": "The terms \"left\" and \"right\" first appeared during the French Revolution of 1789 when members of the National Assembly divided into supporters of the Ancien Régime to the president's right side and supporters of the revolution to his left side. ... \"those who were loyal to religion and the king took up positions to the right of the chair\""
+     },
+     {
+      "claim": "국민 의회에서 혁명파 좌측 · 왕당파 우측",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/좌익과_우익",
+      "note": "이러한 표현은 프랑스 혁명 당시 국민 의회에서 혁명파는 좌측, 왕당파는 우측에 나뉘어 앉은 것에서 비롯되었다."
+     },
+     {
+      "claim": "고빌 남작: 고함·욕설을 피하려 오른쪽 · 1791 입법의회 계속",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Left–right_political_spectrum",
+      "note": "One deputy, the Baron de Gauville, explained: \"... took up positions to the right of the chair so as to avoid the shouts, oaths, and indecencies that enjoyed free rein in the opposing camp\". When the National Assembly was replaced in 1791 by a Legislative Assembly ... the divisions continued."
+     },
+     {
+      "claim": "좌익은 경제적 평등을 위한 정부 개입",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/좌익과_우익",
+      "note": "현대 국가에서 좌익은 일반적으로 경제적 평등을 위한 정부의 개입과 사회의 진보를 주장하고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/좌익과_우익"
+    ],
+    "hintNote": null,
+    "easiestCue": "혁명파는 왼쪽에 앉았다",
+    "worthWhyGen": "매일 쓰는 '좌파·우파'가 왜 왼쪽·오른쪽인지 — 일상 말의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '정치 성향을 가르는 말' — 예",
+     "unique": "혁명파 자리 = 왼쪽 — 하나(좌익 변형)",
+     "hint12": "① 예 ② 예 · 단 '왼쪽' 단서로 쉬워 등급 5 는 어려울 수 있음"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "오늘날 경제적 평등을 위해 정부가 적극 나서야 한다고 보는 진보 쪽 정치 성향을 가리킨다."
+      },
+      "why": "리버럴(이념 이름)과 가르는 '자리 방향에서 온 말'을 핵심에 넣음"
+     }
+    ],
+    "warn": [],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "politics/1#g032a-g032a-j10-5",
+   "seed": {
+    "subject": "선거인단",
+    "aspect": null,
+    "ref": "g032a-j10-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 대통령 선거의 독특한 제도입니다. 유권자는 후보가 아니라 주마다 이 사람들을 뽑고, 이들이 다시 대통령을 뽑습니다. 대부분의 주는 한 표라도 더 얻은 후보에게 그 주의 몫을 몽땅 줍니다. 그래서 전국 득표에서 지고도 당선되는 일이 생깁니다. 이 모임은?",
+    "answer": "선거인단",
+    "acceptedAnswers": [
+     "대통령 선거인단"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "메인주와 네브래스카주만 하원 선거구별로 나눠 뽑고, 1876·1888·2000·2016년에 득표 역전 당선이 있었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "유권자는 후보가 아니라 주마다 이 사람들을 뽑고, 이들이 대통령을 뽑습니다",
+     "difWhy": "3 — 제도 이름 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "상원 100명·하원 435명에 워싱턴 DC 3명을 더한 538명으로, 과반인 270명을 얻은 후보가 대통령이 된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 대통령을 간접 선출하는 주별 선거인의 모임",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "미국 대선 뉴스",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '대통령 선거의 제도' 가 있고 '이 사람들/이 모임' 지시어도 선거인을 가리켜 혼동 없음"
+    },
+    "blindQuestion": {
+     "guess": "선거인단",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "선거인단",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "선거인단",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6735",
+      "answer": "포퓰리즘",
+      "verdict": "unsure",
+      "why": "옛 질문에 선거인단 표가 나와 누출"
+     },
+     {
+      "old": "g032a:g032a-j23-7",
+      "answer": "단임제",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "5111",
+      "answer": "엽관제",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1871",
+      "answer": "거부권",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1875",
+      "answer": "감사원",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/미국_선거인단",
+     "https://en.wikipedia.org/wiki/United_States_Electoral_College"
+    ],
+    "facts": [
+     {
+      "claim": "유권자는 선거인단에 투표 · 대부분 승자독식",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미국_선거인단",
+      "note": "선거권자는 직접 대통령 후보에 투표하는 게 아니라 이미 특정 정, 부통령 후보를 지지하기로 서약한 선거인단에 투표하는 것이다. 대부분 주에서는 승자독식제(winner-takes-it-all)를 채택하고 있다."
+     },
+     {
+      "claim": "승자독식 · 메인·네브래스카 예외",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/United_States_Electoral_College",
+      "note": "mandate that the winner of the plurality of the statewide popular vote receives all of that state's electoral votes. In Maine and Nebraska, two electoral votes are assign..."
+     },
+     {
+      "claim": "538명 = 435+100+3",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/미국_선거인단",
+      "note": "미국 대선 선거인단 수는 538명인데, 이는 미국 하원(435명)과 미국 상원(100명) 숫자를 합한 535명에 워싱턴 D.C. 선거인단 3명을 합한 것이다."
+     },
+     {
+      "claim": "득표 역전 1876·1888·2000·2016",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/미국_선거인단",
+      "note": "1876년, 1888년, 2000년, 2016년 미국 대선에서 선거인단 승자가 전국적 일반 투표(popular vote)에서 과반수는커녕 최다득표도 얻지 못하는 현상이 발생했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/미국_선거인단"
+    ],
+    "hintNote": null,
+    "easiestCue": "미국 대선에서 유권자가 뽑는, 대통령을 다시 뽑는 사람들",
+    "worthWhyGen": "미국 대선 뉴스를 이해하는 기본 제도와 득표 역전의 까닭",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '미국 대통령 선거 제도' 예",
+     "unique": "미국 대선 간접 선거 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans DC"
+    ],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "politics/1#g032a-g032a-j23-7",
+   "seed": {
+    "subject": "단임제",
+    "aspect": null,
+    "ref": "g032a-j23-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 대통령의 임기 제도입니다. 1987년 헌법 개정으로 대통령은 5년 임기를 딱 한 번만 할 수 있고, 다시 대통령이 될 수 없게 되었습니다. 이 제도를 무엇이라 할까요?",
+    "answer": "단임제",
+    "acceptedAnswers": [
+     "5년 단임제",
+     "대통령 단임제",
+     "단임"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그 전 제5공화국 헌법은 선거인단이 뽑는 7년 임기였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "5년 임기를 딱 한 번만 할 수 있고",
+     "difWhy": "2 — 시사 상식 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 정치 제도 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1988년 노태우부터 역대 대통령이 모두 5년 임기를 마치면 다시 출마하지 못하고 물러나는 까닭인 대통령 임기 제도다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "대통령이 한 번의 임기만 맡을 수 있게 한 제도",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "대통령 임기 뉴스·교과서",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '대통령의 임기 제도' · 끝 ○○ = 제도"
+    },
+    "blindQuestion": {
+     "guess": "단임제",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "대통령 5년 단임제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "단임제",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4616",
+      "answer": "동거정부",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1871",
+      "answer": "거부권",
+      "verdict": "diff",
+      "why": "새=대통령 임기 단임제(1987 헌법), 옛 문항은 각각 거부권·선거인단·공화국 정의·엽관제로 지식이 다름"
+     },
+     {
+      "old": "g032a:g032a-j10-5",
+      "answer": "선거인단",
+      "verdict": "diff",
+      "why": "새=대통령 임기 단임제(1987 헌법), 옛 문항은 각각 거부권·선거인단·공화국 정의·엽관제로 지식이 다름"
+     },
+     {
+      "old": "1868",
+      "answer": "공화국",
+      "verdict": "diff",
+      "why": "새=대통령 임기 단임제(1987 헌법), 옛 문항은 각각 거부권·선거인단·공화국 정의·엽관제로 지식이 다름"
+     },
+     {
+      "old": "5111",
+      "answer": "엽관제",
+      "verdict": "diff",
+      "why": "새=대통령 임기 단임제(1987 헌법), 옛 문항은 각각 거부권·선거인단·공화국 정의·엽관제로 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대한민국의_대통령",
+     "https://ko.wikipedia.org/wiki/대한민국_제6공화국"
+    ],
+    "facts": [
+     {
+      "claim": "5년 단임 · 중임 불가",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_대통령",
+      "note": "대통령의 임기는 5년이며 중임할 수 없고 단임제다. / 1987년 헌법 개정으로 1988년 이후부터 임기가 5년 단임으로 고정되어"
+     },
+     {
+      "claim": "1987년 개헌 · 5년 단임 직선제",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_제6공화국",
+      "note": "1987년 10월 29일 5년 단임의 대통령 직선제로 하여, 민주적으로 개정된 헌법 제10호에 의해 성립되어"
+     },
+     {
+      "claim": "연장·중임 개헌은 제안 당시 대통령에게 효력 없음",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_대통령",
+      "note": "대통령의 임기를 연장하거나 중임으로 변경하는 개헌은 그 개정안 제안 당시의 대통령에 대해서는 효력이 없다."
+     },
+     {
+      "claim": "5공 헌법 = 선거인단 간선 7년 단임",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_제6공화국",
+      "note": "제5공화국의 헌법은 대통령 선거인단에 의한 간선제로 선출된 7년 단임의 대통령이"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/대한민국의_대통령"
+    ],
+    "hintNote": null,
+    "easiestCue": "5년 임기 한 번만",
+    "worthWhyGen": "지금 헌법의 바탕 제도 — 정치 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '임기 제도' — 예",
+     "unique": "'한 번만 · 다시 될 수 없음' 으로 중임제·연임제와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "임기를 늘리거나 연임하도록 헌법을 고쳐도, 그 개헌을 낸 대통령 본인에게는 효력이 없게 막아 두었다."
+      },
+      "why": "개헌 효력 제한 조항이 아니라 임기 제도 자체를 가리키게"
+     }
+    ],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

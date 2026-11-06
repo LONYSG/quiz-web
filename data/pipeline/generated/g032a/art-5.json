@@ -1,0 +1,274 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "art/5",
+  "midKey": "art",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "art/5#g032a-g032a-j21-9",
+   "seed": {
+    "subject": "물레",
+    "aspect": null,
+    "ref": "g032a-j21-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "솜에서 실을 자아내는 재래식 공예 기구입니다. 고려 말 문익점이 목화씨를 들여온 뒤 그 만드는 법이 퍼졌습니다. 이름이 문익점의 손자 '문래'에서 왔다는 이야기가 전하는 이 기구는?",
+    "answer": "물레",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "조선 후기 '농가월령가'에는 '물네'로 적혔습니다. 경상남도 창녕에서는 '물리'라고도 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "솜에서 실을 자아내는 재래식 기구 · 문익점",
+     "difWhy": "2 — 전통 도구 · 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 전통 상식·유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "씨아로 씨를 뺀 목화솜을, 손잡이로 큰 바퀴를 돌리며 가락에 감아 무명실로 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "솜·털에서 실을 뽑는 재래식 기구",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "옛 도구, 교과서·민속에서 접함",
+     "piece": "f08",
+     "genPct": 96
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '공예 기구' 가 끝 '이 기구' 와 일치 · 문익점 일화는 정체 뒤"
+    },
+    "blindQuestion": {
+     "guess": "물레",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "물레",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "물레",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1669",
+      "answer": "방적기",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6811",
+      "answer": "마리 앙투아네트",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6079",
+      "answer": "잠자는 숲속의 미녀",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4260",
+      "answer": "메조틴트",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=물레",
+     "https://ko.wikipedia.org/wiki/물레",
+     "https://ko.wikipedia.org/wiki/문익점"
+    ],
+    "facts": [
+     {
+      "claim": "물레: 섬유를 자아서 실을 만드는 재래식 기구 (공예)",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=물레",
+      "note": "「명사」 「1」『공예』 솜이나 털 따위의 섬유를 자아서 실을 만드는 간단한 재래식 기구."
+     },
+     {
+      "claim": "문익점의 손자 문래가 만든 틀을 문래라 부르다 물레로 변했다고 전함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/물레",
+      "note": "문익점(文益漸)의 손자 문래(文萊)가 목화씨에서 실을 자아내는 틀을 발명하였다고 하여 문래라 부른 것이 변이되어 물레가 되었다고 전한다."
+     },
+     {
+      "claim": "문익점 목화 재배 뒤 씨아·물레 만드는 법을 배워 보급 · 손자 문래 이름 유래설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/문익점",
+      "note": "씨를 빼는 씨아와 실을 뽑는 물레 만드는 법을 배워 실을 뽑아냈다. … 문익점은 정천익에게서 이를 배워 다시 시중에 보급시켰다. … 문익점의 손자 문래(文萊)하고 문영(文英)은 실 잣는 기구를 개량했다. 이 기구를 '물레'라고 부르는데 바로 발명자 '문래'의 이름에서 비롯된 이름이라고 한다."
+     },
+     {
+      "claim": "물레와 가락 등 면직 기구 · 무명",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/문익점",
+      "note": "목면으로 포근한 솜과 튼튼하고 땀을 잘 흡수하는 무명 옷감으로 … 물레와 가락, 날틀 같은 면직기구의 제작은 생산 도구 제작의 발전을 이루게 하였다."
+     },
+     {
+      "claim": "농가월령가 '물네' · 창녕 '물리'",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/물레",
+      "note": "<농가월령가>에는 ‘물네’, <월여농가>에는 ‘방차(紡車), 문레로 표기되었다. 경상남도 창녕에서는 ‘물리’라고도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/문익점"
+    ],
+    "hintNote": null,
+    "easiestCue": "솜에서 실을 자아내는 재래식 기구",
+    "worthWhyGen": "누구나 아는 기구 이름의 유래(문래 설)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '공예 기구' — 예",
+     "unique": "실 잣는 재래식 기구는 하나(씨아는 씨 빼기)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "art/5#g032a-job-26-9",
+   "seed": {
+    "subject": "칠보",
+    "aspect": null,
+    "ref": "job-26-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "금속 그릇이나 장신구 위에 유리질 유약을 올려 가마에 구워 색을 입히는 공예입니다. 조선 시대에는 유약 빛깔을 따 '파란'이라고 불렀습니다. 지금 이름은 불경에서 극락을 꾸민다는 금·은·유리·마노 같은 보배들을 한데 이르는 말에서 왔습니다. 이 공예는?",
+    "answer": "칠보",
+    "acceptedAnswers": [
+     "칠보공예"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "삼국 시대 금 장신구에서 처음 보이고, 처음엔 파랑 한 색이었다가 조선 때 노랑·감색·자주색으로 늘었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "유리질 유약을 올려 가마에 구워 색을 입히는 공예",
+     "difWhy": "3 — 공예 이름 떠올리기 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 공예 종류 · 유래는 덤, 사이면 낮은 쪽",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "가는 금줄이나 은줄로 무늬 칸을 나눈 뒤, 칸마다 다른 색 유약을 채워 굽는 방식이 대표적이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "금속 바탕에 유리질 유약을 구워 붙이는 공예(enamel)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "공예 용어, 칠보 공예",
+     "piece": "f01",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=공예, 첫 문장에 '공예입니다'가 있다. 마지막 단서(불경 보배)가 길지만 한 주어로 이어져 한 번에 읽힌다."
+    },
+    "blindQuestion": {
+     "guess": "칠보",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "칠보",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "칠보",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/칠보",
+     "http://dh.aks.ac.kr/~katd/wiki/index.php/복식사전:칠보"
+    ],
+    "facts": [
+     {
+      "claim": "금속 물체를 유약으로 장식하는 기법 · 가마에 구워 만든다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/칠보",
+      "note": "칠보(七寶)는 금속으로 된 물체를 장식하는 고대의 기법이며 ... 유약 분말을 풀로 접착시킨 뒤, 가마에 넣고 구워 만든다."
+     },
+     {
+      "claim": "불경 극락토의 일곱 보석에서 유래 · 조선 시대 '파란'",
+      "where": "q",
+      "url": "http://dh.aks.ac.kr/~katd/wiki/index.php/복식사전:칠보",
+      "note": "아미타경·법화경 등에 '극락토는 금(金), 은(銀), 유리(琉璃), 거거, 마노(瑪瑙) ... 일곱 가지 빛깔의 귀중한 보석으로 칠보장엄(七寶莊嚴)한다' 는 것에서 유래되었다. 우리나라 조선시대에는 '파란', '파랑'이라 불렀데, 이것은 유약의 색이 파란 색인 것에서 유래되었다."
+     },
+     {
+      "claim": "금줄·은줄을 붙이는 유선칠보",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/칠보",
+      "note": "유약으로 금줄이나 은줄을 붙이거나 (유선칠보) ... 몇몇 색으로 나뉜 유약이나 상감 세공 재료를 서로 조화시켜"
+     },
+     {
+      "claim": "삼국 시대 금 장신구 · 파랑 한 색 → 조선 황색·감색·벽색·자색",
+      "where": "e",
+      "url": "http://dh.aks.ac.kr/~katd/wiki/index.php/복식사전:칠보",
+      "note": "파란은 삼국시대의 금으로 만든 장신구에서 처음 볼 수 있으며, 처음에는 파랑 한 가지 색이다가 조선시대에 이르러 색상이 황색(黃色), 감색(紺色) ... 가지색(자색. 紫色) 으로 발전하였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/칠보"
+    ],
+    "hintNote": null,
+    "easiestCue": "금속에 유리질 유약을 구워 색을 입히는 공예",
+    "worthWhyGen": "공예 이름의 유래(불경 일곱 보배 · 19 §9-1 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '공예' 예",
+     "unique": "금속 + 유리질 유약 구움 → 칠보(나전·상감과 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

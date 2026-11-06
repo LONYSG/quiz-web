@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "architecture/1",
+  "midKey": "architecture",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "architecture/1#g032a-g032a-j16-4",
+   "seed": {
+    "subject": "아치",
+    "aspect": null,
+    "ref": "g032a-j16-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "건물이나 다리에서 윗부분이 둥글게 휜 구조입니다. 돌을 곡선으로 쌓으면 위에서 누르는 무게가 양옆으로 나뉘어, 가운데 기둥 없이도 넓은 통로를 낼 수 있습니다. 고대 로마인들이 수도교와 개선문에 널리 쓴 이 구조는?",
+    "answer": "아치",
+    "acceptedAnswers": [
+     "홍예"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "기둥과 보를 쓰는 짜임과 달리 누르는 힘만 받게 지어, 돌이나 콘크리트처럼 압축에 강한 재료와 잘 맞습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "고대 로마인들이 수도교와 개선문에 널리 쓴 이 구조",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 건축 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "꼭대기 한가운데에 '쐐기돌'을 마지막으로 끼워야 스스로 버티는 반원 모양 돌 구조다",
+    "generalHintVersion": "hint-v7",
+    "identity": "위가 둥글게 휜, 무게를 압축력으로 받치는 건축 구조",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "건축·일상에서 흔히 접함",
+     "piece": "f08",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '둥글게 휜 구조' = 끝 ○○ '구조'. 하중 분산 설명도 쉬운 말"
+    },
+    "blindQuestion": {
+     "guess": "아치",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아치",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아치",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4547",
+      "answer": "편경",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5282",
+      "answer": "월광 소나타",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6597",
+      "answer": "뉴발란스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6707",
+      "answer": "가우스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5572",
+      "answer": "특별검사",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아치",
+     "https://en.wikipedia.org/wiki/Arch"
+    ],
+    "facts": [
+     {
+      "claim": "개구부를 내며 하중을 압축으로 지지하는 곡선 구조 · 로마인이 채택한 뒤 널리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아치",
+      "note": "아치[arch, 홍예(虹蜺)]는 개구부를 확보하며 상당한 하중을 압축 응력으로 지지할 수 있도록 만든 곡선 형태의 구조물이다. ... 구조적으로 하중을 지탱하는 아치는 기원전 4세기 고대 로마인들이 이를 채택한 이후에야 널리 사용되기 시작했다."
+     },
+     {
+      "claim": "수직 하중을 양 끝의 수평·수직 반력으로 나눔 · 로마 개선문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Arch",
+      "note": "A true arch, due to its rise, resolves the vertical loads into horizontal and vertical reactions at the ends ... caused the need for heavy abutments (cf. Roman triumphal arch)."
+     },
+     {
+      "claim": "꼭대기 쐐기돌(키스톤)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Arch",
+      "note": "Keystone, the top block in an arch."
+     },
+     {
+      "claim": "인장 없이 압축만 · 돌·콘크리트에 유리 · 기둥-보 구조와 대비",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아치",
+      "note": "아치는 인장 응력이 작용하지 않도록 한 구조물이다. 모든 하중은 압축 응력으로 작용하게 된다. 이는 암석이나 주철, 콘크리트 등 압축에 강하지만 인장 ... 에는 약한 재료에 대해 유리하다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Arch"
+    ],
+    "hintNote": null,
+    "easiestCue": "윗부분이 둥글게 휜 구조 · 개선문",
+    "worthWhyGen": "흔히 보는 구조가 왜 버티는지 — 교과·공학 개념 2",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '구조' — 예",
+     "unique": "'통로' · '둥글게 휜' 으로 돔·볼트와 대체로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

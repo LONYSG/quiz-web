@@ -1,0 +1,137 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "human-body/1",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/1#g032a-g032a-j10-10",
+   "seed": {
+    "subject": "햄스트링",
+    "aspect": null,
+    "ref": "g032a-j10-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "넓적다리 뒤쪽에 있는 세 근육을 한데 묶어 부르는 이름입니다. 엉덩관절을 펴고 무릎을 굽히는 일을 맡습니다. 축구 선수가 전력으로 달리다 이곳을 다쳐 경기에서 빠졌다는 스포츠 뉴스가 잦습니다. 이 근육 무리는?",
+    "answer": "햄스트링",
+    "acceptedAnswers": [
+     "넙다리뒤근육",
+     "뒤넙다리근"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름의 앞부분은 먹는 고기가 아니라 무릎 뒤 오금을 가리키던 옛 영어이고, 뒷부분은 그곳의 줄 같은 힘줄을 뜻한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "넓적다리 뒤쪽에 있는 세 근육",
+     "difWhy": "2 — 햄스트링은 운동·뉴스로 흔함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 신체 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "운동 전 다리를 쭉 편 채 상체를 숙여 늘려 주는 허벅지 뒤 근육으로, 단거리 질주 때 특히 잘 다친다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "넙다리두갈래근·반힘줄근·반막근을 묶어 부르는 허벅지 뒤 근육",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "운동·스포츠 부상 뉴스에서 흔히 접함",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '세 근육을 한데 묶어 부르는 이름' · 끝 '근육 무리' 와 일치 · 엉덩관절은 맥락상 이해됨"
+    },
+    "blindQuestion": {
+     "guess": "햄스트링",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "햄스트링",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "햄스트링",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2276",
+      "answer": "골격근",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "4911",
+      "answer": "무릎뼈",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/햄스트링",
+     "https://en.wiktionary.org/wiki/hamstring"
+    ],
+    "facts": [
+     {
+      "claim": "넓적다리 뒤쪽 세 근육 통칭 · 부상 쉬움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/햄스트링",
+      "note": "햄스트링(hamstring)은 넓적다리 뒤쪽에 있는 넙다리두갈래근, 반힘줄근, 반막근의 세 개 근육을 통틀어 가리킨다. ... 햄스트링은 부상을 입기 쉬운 부위이다."
+     },
+     {
+      "claim": "무릎관절 굽힘 · 엉덩관절 폄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/햄스트링",
+      "note": "무릎관절의 굽힘과 엉덩관절의 폄에 관여하여야 한다."
+     },
+     {
+      "claim": "ham = 무릎 뒤 부위 · string",
+      "where": "e",
+      "url": "https://en.wiktionary.org/wiki/hamstring",
+      "note": "ham<t:region back of the knee joint> + string ... One of the great tendons situated in each side of the ham, or space back of the knee"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "넓적다리 뒤쪽 세 근육 + 스포츠 부상 뉴스",
+    "worthWhyGen": "스포츠 뉴스·운동에서 늘 쓰는 몸 이름",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '세 근육 묶은 이름' 예",
+     "unique": "허벅지 뒤 세 근육 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-10"
+   }
+  }
+ ]
+}

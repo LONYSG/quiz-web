@@ -1,0 +1,279 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-west/2",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/2#g032a-g032a-j02-5",
+   "seed": {
+    "subject": "로맨스",
+    "aspect": null,
+    "ref": "g032a-j02-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사랑 이야기를 뜻하는 영어 낱말로, 중세 유럽에서 생겼습니다. 학문과 교회가 라틴어를 쓰던 시절, 라틴어에서 갈라져 나온 프랑스어 같은 백성의 말로 쓴 기사들의 모험·사랑 이야기를 이렇게 불렀기 때문입니다. 이 말은?",
+    "answer": "로맨스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "옛 프랑스어 'romanz'는 그 언어와 그 언어로 쓴 작품을 함께 가리켰습니다. 아서왕과 원탁의 기사 이야기가 대표작입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "사랑 이야기를 뜻하는 영어 낱말",
+     "difWhy": "2 — 일상 외래어 · 뜻이 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "드라마·소설에서 남녀의 사랑을 그린 장르를 가리키는 말로, 웹소설·웹툰의 대표 갈래 이름이기도 하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "사랑 이야기·연애를 뜻하는 영어 낱말 — 중세 기사 이야기에서 유래",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 외래어",
+     "piece": "f01",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '사랑 이야기 영어 낱말'이 끝 ○○=말. 라틴어·속어 설명이 한 문장에 있으나 따라가짐."
+    },
+    "blindQuestion": {
+     "guess": "로맨스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "로맨스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "로맨스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4169",
+      "answer": "꽃보다 남자",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로맨스 / 꽃보다 남자)"
+     },
+     {
+      "old": "3164",
+      "answer": "레이디 가가",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로맨스 / 레이디 가가)"
+     },
+     {
+      "old": "3836",
+      "answer": "레이디 가가",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로맨스 / 레이디 가가)"
+     },
+     {
+      "old": "4168",
+      "answer": "시크릿 가든",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로맨스 / 시크릿 가든)"
+     },
+     {
+      "old": "5644",
+      "answer": "리처드 1세",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(로맨스 / 리처드 1세)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Romance_(love)",
+     "https://en.wikipedia.org/wiki/Chivalric_romance"
+    ],
+    "facts": [
+     {
+      "claim": "Romanice = 속어(라틴어 파생 언어)로 · 옛 프랑스어 romanz = 그 언어와 작품 · 중세에 기사도·사랑 이야기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Romance_(love)",
+      "note": "a Latin adverb Romanice (from Romanus) became used to mean \"in the vernacular\" … when Latin itself was used in more formal contexts … In Old French … romans or romanz, which referred both to the language itself, and also to works composed in it. In the Middle Ages, this romans/romanz took on a meaning as referring specifically to a type of narrative verse about chivalry and love"
+     },
+     {
+      "claim": "기사도 로맨스는 원래 옛 프랑스어 등으로 쓰임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chivalric_romance",
+      "note": "Originally, romance literature was written in Old French (including Anglo-Norman), Old Occitan, and Early Franco-Provençal"
+     },
+     {
+      "claim": "아서왕과 원탁의 기사 = 로맨스 대표 갈래",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chivalric_romance",
+      "note": "the \"Matter of Britain\" (the lives and deeds of King Arthur and the Knights of the Round Table …); medieval authors explicitly described these as comprising all romances."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "사랑 이야기를 뜻하는 영어 낱말",
+    "worthWhyGen": "매일 쓰는 외래어의 유래(중세 속어 문학) — 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '영어 낱말' 예",
+     "unique": "사랑 이야기 + 중세 속어 기사 이야기 — 멜로(그리스어 음악 유래)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "world-history-west/2#g032a-g032a-j19-12",
+   "seed": {
+    "subject": "기사도",
+    "aspect": null,
+    "ref": "g032a-j19-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중세 유럽에서 말을 탄 귀족 전사들이 지켜야 했던 행동 규범입니다. 용기와 충성, 신앙, 그리고 여성과 약한 이를 대하는 예의를 강조했습니다. 아서왕과 원탁 이야기가 널리 퍼뜨린 이 규범은?",
+    "answer": "기사도",
+    "acceptedAnswers": [
+     "기사도 정신"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1170~1220년 무렵 유럽에서 자리 잡았고, 카롤루스 대제의 기병을 이상으로 그린 데서 싹텄습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "아서왕과 원탁 이야기가 널리 퍼뜨린 이 규범",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 서양사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "싸움 실력에 경건함과 예의를 더한 중세 전사의 덕목으로, 지금도 여성을 정중히 대하는 신사다운 태도를 이른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "중세 유럽 기사의 행동 규범(chivalry)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "중세 기사 이야기·영화에서 접함",
+     "piece": "f03",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '행동 규범' 이 있고 단서 짧음"
+    },
+    "blindQuestion": {
+     "guess": "기사도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "기사도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "기사도",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3975",
+      "answer": "살라딘",
+      "verdict": "diff",
+      "why": "기사도 vs 살라딘 — 다른 지식"
+     },
+     {
+      "old": "g032a:g032a-j02-5",
+      "answer": "로맨스",
+      "verdict": "diff",
+      "why": "기사도 vs 로맨스 어원 — 다른 지식"
+     },
+     {
+      "old": "6468",
+      "answer": "마르코 폴로",
+      "verdict": "diff",
+      "why": "기사도 vs 마르코 폴로 — 다른 지식"
+     },
+     {
+      "old": "5644",
+      "answer": "리처드 1세",
+      "verdict": "diff",
+      "why": "기사도 vs 리처드 1세 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/기사도",
+     "https://en.wikipedia.org/wiki/Chivalry"
+    ],
+    "facts": [
+     {
+      "claim": "1170~1220년 유럽에서 발전한 행동 지침 · 중세 기독교 기사 제도 · 아서왕과 원탁의 기사 전설이 대중화",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기사도",
+      "note": "기사도(영어: chivalry) 또는 기사도 정신은 1170년에서 1220년 사이에 유럽에서 발전한 비공식적이고 다양한 행동 지침이다. 이는 중세 기독교 기사 (군사) 제도와 관련이 있으며 … 아서왕과 그의 원탁의 기사 전설을 대중화시켰다. … 카롤루스 제국에서 기병의 이상화에서 비롯되었는데 … 중세 후기에 이르러 기사도 정신은 전사 정신, 경건, 그리고 예의를 결합한 도덕 체계로"
+     },
+     {
+      "claim": "말 탄 사람(cheval) · 여성에 대한 의무가 가장 익숙한 면",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chivalry",
+      "note": "Originally, the term referred only to horse-mounted men, from the French word for horse, cheval, but later it became associated with knightly ideals. … Duties to women: this is probably the most familiar aspect of chivalry. … a general gentleness and graciousness to all women."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/기사도",
+     "https://en.wikipedia.org/wiki/Chivalry"
+    ],
+    "hintNote": null,
+    "easiestCue": "중세 유럽 말 탄 귀족 전사의 행동 규범",
+    "worthWhyGen": "지금도 '~ 정신'으로 쓰는 일반 상식 개념(19 §9-1 ①)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '행동 규범' — 예 · '기사' 글자 질문·힌트에 없음",
+     "unique": "중세 유럽 + 말 탄 귀족 전사 규범 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

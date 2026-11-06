@@ -1,0 +1,466 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "chemistry/2",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/2#g032a-g032a-j04-9",
+   "seed": {
+    "subject": "플루토늄",
+    "aspect": null,
+    "ref": "g032a-j04-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "원자 번호 94번의 방사성 원소입니다. 주기율표에서 바로 앞 두 원소는 천왕성과 해왕성에서 이름을 땄습니다. 그 순서를 이어, 당시 해왕성 다음 행성으로 여기던 별의 이름을 붙인 이 원소는?",
+    "answer": "플루토늄",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1940년 말 미국 버클리의 사이클로트론에서 처음 만들어졌지만, 전쟁 중 비밀이라 1948년에야 발표됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "천왕성과 해왕성에서 이름을 딴 … 해왕성 다음 행성으로 여기던 별의 이름",
+     "difWhy": "3 — 단서를 읽으면 명왕성 → 플루토늄 · 원소 이름은 학교 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 교과 화학 원소 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "1945년 나가사키에 떨어진 원자폭탄 '팻맨'의 핵심 재료로, 원자로에서 우라늄이 중성자를 받아 만들어진다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 94의 방사성 원소(Pu)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "핵무기·원소 뉴스",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '94번 방사성 원소' 로 종류가 나오고 끝 ○○ 도 원소라 일치"
+    },
+    "blindQuestion": {
+     "guess": "플루토늄",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "플루토늄",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "플루토늄",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "143",
+      "answer": "원자력 발전",
+      "verdict": "diff",
+      "why": "플루토늄 어원 vs 원자력 발전"
+     },
+     {
+      "old": "2489",
+      "answer": "핵분열",
+      "verdict": "diff",
+      "why": "플루토늄 vs 핵분열"
+     },
+     {
+      "old": "94",
+      "answer": "수소",
+      "verdict": "diff",
+      "why": "플루토늄 vs 수소"
+     },
+     {
+      "old": "3474",
+      "answer": "갈륨",
+      "verdict": "diff",
+      "why": "플루토늄 vs 갈륨"
+     },
+     {
+      "old": "g032a:g032a-j20-11",
+      "answer": "원자 번호",
+      "verdict": "diff",
+      "why": "플루토늄 vs 원자 번호 개념"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Plutonium",
+     "https://en.wikipedia.org/wiki/Neptunium",
+     "https://ko.wikipedia.org/wiki/플루토늄"
+    ],
+    "facts": [
+     {
+      "claim": "우라늄은 천왕성, 넵투늄은 해왕성 → 94번은 다음 행성 Pluto",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Plutonium",
+      "note": "Since uranium had been named after the planet Uranus and neptunium after the planet Neptune, element 94 was named after Pluto ... suggested that element 94, being the next element in the series, be named for what was then considered the next planet, Pluto."
+     },
+     {
+      "claim": "넵투늄 93번은 천왕성 다음 해왕성에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neptunium",
+      "note": "Neptunium is a chemical element; it has symbol Np and atomic number 93. ... It is named after Neptune, the planet beyond Uranus in the Solar System, which uranium is named after."
+     },
+     {
+      "claim": "원자번호 94 · 238U 중성자 조사로 생성",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/플루토늄",
+      "note": "원자번호 94, 기호는 Pu ... 원자로내서 우라늄 농축연료를 분열시키거나 238U에 중성자를 조사하여 플루토늄을 만들며"
+     },
+     {
+      "claim": "팻맨(나가사키) 플루토늄 코어",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Plutonium",
+      "note": "The Fat Man ... Nagasaki in August 1945, had plutonium cores."
+     },
+     {
+      "claim": "1940년 말 버클리 사이클로트론 · 1948년까지 발표 못함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Plutonium",
+      "note": "Plutonium was first synthesized and isolated in late 1940 and early 1941, by deuteron bombardment of uranium-238 in the 1.5-metre (60 in) cyclotron at the University of California, Berkeley. ... Wartime secrecy prevented the University of California team from publishing its discovery until 1948."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Plutonium",
+     "https://ko.wikipedia.org/wiki/플루토늄"
+    ],
+    "hintNote": null,
+    "easiestCue": "원자 번호 94번",
+    "worthWhyGen": "원소 이름이 행성 순서를 따른 까닭(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '원소' 예",
+     "unique": "94번 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 우라늄/이중성"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "chemistry/2#g032a-g032a-j20-11",
+   "seed": {
+    "subject": "원자 번호",
+    "aspect": null,
+    "ref": "g032a-j20-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주기율표에서 원소마다 붙은 번호입니다. 수소는 1, 헬륨은 2, 탄소는 6입니다. 이 번호는 원자핵 속 양성자의 수와 같습니다. 이 번호를 무엇이라 할까요?",
+    "answer": "원자 번호",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "멘델레예프는 처음에 원자량 순서로 표를 만들었고, 1913년 모즐리의 연구 뒤 지금처럼 양성자 수 순서로 정리되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "수소는 1, 헬륨은 2, 탄소는 6",
+     "difWhy": "2 — 학교 용어이나 예시가 강한 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "원소를 서로 가르는 기준이 되는 수로, 전하를 띠지 않은 원자에서는 전자의 수와도 같다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자핵 속 양성자 수 — 주기율표의 순서",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "과학 교과서",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '주기율표의 번호' = 끝 ○○ '번호'. 예시 수소·헬륨·탄소가 쉽게 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "원자번호",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "원자번호",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "원자 번호",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "멘델레예프 원자량 순 · 1913 모즐리",
+       "url": "https://en.wikipedia.org/wiki/Atomic_number",
+       "note": "(ko) 드미트리 멘델레예프는 처음에 원자량에 따라 원소들을 배열해 주기율표를 만들었다. / The experimental position improved dramatically after research by He"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "375",
+      "answer": "주석",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1099",
+      "answer": "크롬",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5272",
+      "answer": "아인슈타이늄",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1108",
+      "answer": "백금",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "94",
+      "answer": "수소",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/원자_번호",
+     "https://en.wikipedia.org/wiki/Atomic_number"
+    ],
+    "facts": [
+     {
+      "claim": "양성자 수 · 주기율표 배열 기준",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원자_번호",
+      "note": "원자 번호(原子番號, 영어: atomic number, Z)는 원자핵 속에 있는 양성자의 수 또는 원자핵의 전하수이다. ... 원자 번호에 따라 원소들을 나열한 표를 주기율표라고 부르며"
+     },
+     {
+      "claim": "proton number",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Atomic_number",
+      "note": "For ordinary nuclei composed of protons and neutrons, this is equal to the proton number (np) or the number of protons found in the nucleus of every atom of that element."
+     },
+     {
+      "claim": "원소 구별 기준 · 전자의 수",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/원자_번호",
+      "note": "원자 번호는 원소를 구별하는 기준이다. 전하를 띠지 않는 원자의 원자 번호는 그 원자가 가진 전자의 수와 일치한다."
+     },
+     {
+      "claim": "멘델레예프 원자량 순 · 1913 모즐리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Atomic_number",
+      "note": "(ko) 드미트리 멘델레예프는 처음에 원자량에 따라 원소들을 배열해 주기율표를 만들었다. / The experimental position improved dramatically after research by Henry Moseley in 1913."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/원자_번호"
+    ],
+    "hintNote": null,
+    "easiestCue": "수소 1 · 헬륨 2 · 탄소 6 — 주기율표 번호",
+    "worthWhyGen": "2 — 학교 과학의 기본 개념",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '번호' — 예",
+     "unique": "양성자 수 = 하나(질량수 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  },
+  {
+   "seedId": "chemistry/2#g032a-g032a-j31-8",
+   "seed": {
+    "subject": "알칼리 금속",
+    "aspect": null,
+    "ref": "g032a-j31-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주기율표 맨 왼쪽 1족에서 수소를 뺀 원소 무리입니다. 리튬·나트륨·칼륨이 여기에 들며, 칼로 쉽게 잘릴 만큼 무른 금속입니다. 공기와 물에 격렬하게 반응해 석유 속에 넣어 보관하는 이 무리는?",
+    "answer": "알칼리 금속",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "맨 위 원소의 이름을 따 리튬족이라고도 부른다. 자연에서는 홑원소 상태로 발견되지 않는다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "리튬·나트륨·칼륨이 여기에 들며",
+     "difWhy": "3 — 학교 화학 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "가장 바깥 껍질에 전자가 하나뿐이라 그 전자를 쉽게 내주고 +1 양이온이 되는 원소들이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "주기율표 1족(수소 제외)의 반응성 큰 금속 원소 무리",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "화학 시간에 배움, 이름은 기억",
+     "piece": "f03",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '원소 무리' 가 있고 리튬 등 예가 뜻을 잡아 줌"
+    },
+    "blindQuestion": {
+     "guess": "알칼리 금속",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "알칼리 금속",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "알칼리 금속",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "리튬족 · 자연에서 홑원소로 없음",
+       "url": "https://en.wikipedia.org/wiki/Alkali_metal",
+       "note": "(ko) 이 원소족은 선두 원소의 이름을 따서 리튬족으로도 알려져 있다. (en) they … are never found in elemental forms in nature."
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "3474",
+      "answer": "갈륨",
+      "verdict": "diff",
+      "why": "알칼리 금속과 갈륨은 다른 원소 지식"
+     },
+     {
+      "old": "5273",
+      "answer": "게르마늄",
+      "verdict": "diff",
+      "why": "알칼리 금속과 게르마늄 발견사는 다름"
+     },
+     {
+      "old": "94",
+      "answer": "수소",
+      "verdict": "diff",
+      "why": "알칼리 금속과 수소(1번 원소)는 다름"
+     },
+     {
+      "old": "g032a:g032a-j20-11",
+      "answer": "원자 번호",
+      "verdict": "diff",
+      "why": "알칼리 금속(1족)과 원자 번호 개념은 다름"
+     },
+     {
+      "old": "g032a:g032a-j04-9",
+      "answer": "플루토늄",
+      "verdict": "diff",
+      "why": "알칼리 금속과 플루토늄은 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/알칼리_금속",
+     "https://en.wikipedia.org/wiki/Alkali_metal"
+    ],
+    "facts": [
+     {
+      "claim": "1족(수소와 함께) · 리튬·나트륨·칼륨 · 칼로 자를 만큼 무름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/알칼리_금속",
+      "note": "알칼리 금속(Alkali metal)은 리튬 (Li), 나트륨 (Na), 칼륨 (K), 루비듐 (Rb), 세슘 (Cs), 프랑슘 (Fr)의 원소로 구성된다. 이 원소는 수소와 함께 1족을 구성하며 … 이들은 모두 무르기 때문에 칼로 쉽게 자를 수 있으며"
+     },
+     {
+      "claim": "반응성 큼 · 광유·등유(석유) 속 보관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alkali_metal",
+      "note": "The alkali metals are all shiny, soft, highly reactive metals … They can all be cut easily with a knife … they are usually stored in mineral oil or kerosene (paraffin oil)."
+     },
+     {
+      "claim": "바깥 s오비탈 전자 하나 · +1 양이온",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/알칼리_금속",
+      "note": "모든 알칼리 금속은 가장 바깥 s-오비탈에 전자를 하나 가지고 있으며 … 쉽게 가장 바깥쪽 전자를 잃고 +1의 전하를 가진 양이온을 형성한다."
+     },
+     {
+      "claim": "리튬족 · 자연에서 홑원소로 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Alkali_metal",
+      "note": "(ko) 이 원소족은 선두 원소의 이름을 따서 리튬족으로도 알려져 있다. (en) they … are never found in elemental forms in nature."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/알칼리_금속"
+    ],
+    "hintNote": null,
+    "easiestCue": "리튬·나트륨·칼륨이 든 1족 무리",
+    "worthWhyGen": "과학 교과 개념(물에 터지는 금속) — 2",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '원소 무리' 예",
+     "unique": "1족 수소 제외 — 알칼리 토금속(2족)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

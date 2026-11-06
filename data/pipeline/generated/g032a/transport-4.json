@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "transport/4",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/4#g032a-g032a-j25-11",
+   "seed": {
+    "subject": "좌현",
+    "aspect": null,
+    "ref": "g032a-j25-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "배에서 쓰는 방향 말입니다. 옛 배는 노처럼 생긴 키를 오른쪽에 달아, 항구에 댈 때는 반대쪽을 부두에 붙였습니다. 그래서 영어로 '포트(port)'라 부르게 된, 뱃머리를 볼 때 왼쪽 뱃전을 한자어로 무엇이라 할까요?",
+    "answer": "좌현",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "오른쪽 뱃전은 영어로 '스타보드'인데, 옛 영어로 '키(steer)를 단 쪽(bord)'이라는 뜻입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "뱃머리 볼 때 왼쪽 뱃전 · 포트",
+     "difWhy": "3 — 선박 용어 한자어 · 일상 밖",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 유래 포함 취미 지식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "배와 비행기는 승객이 타고 내리는 문을 대개 이쪽 옆구리에 둔다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "뱃머리를 볼 때 배의 왼쪽 뱃전(port side)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "좌현·우현 용어로 접함",
+     "piece": "f04",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '배에서 쓰는 방향 말' 이 종류 명사 · 끝 ○○ = 한자어 말, 포트 유래 설명이 단서로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "좌현",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "좌현",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "좌현",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "687",
+      "answer": "녹색",
+      "verdict": "diff",
+      "why": "새=좌현(port); 선박 녹색 우현등·도선사·만재흘수선·쇄빙선·스크루는 다른 선박 지식(우현등은 왼쪽 붉은색 반대편이라 관련 있어도 좌현 어원을 묻지 않음)"
+     },
+     {
+      "old": "692",
+      "answer": "도선사",
+      "verdict": "diff",
+      "why": "새=좌현(port); 선박 녹색 우현등·도선사·만재흘수선·쇄빙선·스크루는 다른 선박 지식(우현등은 왼쪽 붉은색 반대편이라 관련 있어도 좌현 어원을 묻지 않음)"
+     },
+     {
+      "old": "686",
+      "answer": "만재흘수선",
+      "verdict": "diff",
+      "why": "새=좌현(port); 선박 녹색 우현등·도선사·만재흘수선·쇄빙선·스크루는 다른 선박 지식(우현등은 왼쪽 붉은색 반대편이라 관련 있어도 좌현 어원을 묻지 않음)"
+     },
+     {
+      "old": "690",
+      "answer": "쇄빙선",
+      "verdict": "diff",
+      "why": "새=좌현(port); 선박 녹색 우현등·도선사·만재흘수선·쇄빙선·스크루는 다른 선박 지식(우현등은 왼쪽 붉은색 반대편이라 관련 있어도 좌현 어원을 묻지 않음)"
+     },
+     {
+      "old": "691",
+      "answer": "스크루",
+      "verdict": "diff",
+      "why": "새=좌현(port); 선박 녹색 우현등·도선사·만재흘수선·쇄빙선·스크루는 다른 선박 지식(우현등은 왼쪽 붉은색 반대편이라 관련 있어도 좌현 어원을 묻지 않음)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Port_and_starboard",
+     "https://ko.wikipedia.org/wiki/현측"
+    ],
+    "facts": [
+     {
+      "claim": "키(조타 노)를 오른쪽에 달아 왼쪽으로 접안 · 그래서 port",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Port_and_starboard",
+      "note": "Before ships had rudders, they were steered with a steering oar on the right hand side of the ship … Since the steering oar was on the right side of the boat, it would dock on the left side. … This side was also called port, since it was the docking side."
+     },
+     {
+      "claim": "뱃머리 쪽을 볼 때 왼쪽 현측 = 좌현(portside)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/현측",
+      "note": "배의 선교에서 현두 쪽을 보았을 때, 왼쪽 현측을 좌현(左舷, portside), 오른쪽 현측을 우현(右舷, starboard)이라고 한다."
+     },
+     {
+      "claim": "출입은 대개 port 쪽",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Port_and_starboard",
+      "note": "One asymmetric feature is where access to a boat, ship, or aircraft is at the side; it is usually only on the port side (hence the name)."
+     },
+     {
+      "claim": "starboard = steor + bord",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Port_and_starboard",
+      "note": "Starboard derives from the Old English steorbord, steor meaning steer, and bord meaning side."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Port_and_starboard"
+    ],
+    "hintNote": null,
+    "easiestCue": "왼쪽 뱃전을 한자어로",
+    "worthWhyGen": "포트·스타보드라는 말의 유래(알가치 3 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '방향 말' — 예",
+     "unique": "왼쪽 뱃전 한자어 — 좌현 하나",
+     "hint12": "① 예 ② 예(조금 약함 — 녹색 등은 활성 '녹색' 문항과 겹쳐 뺌)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

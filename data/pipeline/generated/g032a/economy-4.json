@@ -1,0 +1,260 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "economy/4",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/4#g032a-job-03-4",
+   "seed": {
+    "subject": "캐시카우",
+    "aspect": null,
+    "ref": "job-03-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기업의 사업을 가르는 경영 용어입니다. 보스턴 컨설팅 그룹은 사업을 시장 점유율과 성장률로 네 칸에 나눴는데, 점유율은 높지만 성장이 멈춘 사업을 이렇게 부릅니다. 돈을 더 들이지 않아도 젖소에서 우유를 짜듯 꾸준히 돈을 짜낼 수 있다고 해서 붙은 이름입니다. 무엇일까요?",
+    "answer": "캐시카우",
+    "acceptedAnswers": [
+     "현금 젖소"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "BCG는 시장 성장이 느려지면 별 사업도 결국 이 칸으로 옮겨 오고, 끝내는 개 사업이 된다고 봅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "젖소에서 우유를 짜듯 꾸준히 돈을 짜낼 수 있다고 붙은 이름",
+     "difWhy": "2 — 젖소 단서가 답 이름과 이어짐",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 흔한 경영 말의 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "번 돈으로 신사업을 먹여 살리는 효자 사업을 일컫는 말로, 별·물음표·개와 함께 BCG가 나눈 네 칸 가운데 하나다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "BCG 매트릭스에서 점유율 높고 성장 낮은, 꾸준히 현금을 버는 사업",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "경제 뉴스·경영 용어",
+     "piece": "f09",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '경영 용어' 가 끝 ○○(용어)와 일치 · 젖소 비유 풀이가 붙어 있음"
+    },
+    "blindQuestion": {
+     "guess": "캐시카우",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "캐시카우",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "캐시카우",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j10-4",
+      "answer": "메기 효과",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(캐시카우 / 메기 효과)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/BCG_매트릭스",
+     "https://en.wikipedia.org/wiki/Growth–share_matrix"
+    ],
+    "facts": [
+     {
+      "claim": "BCG가 점유율·성장률로 넷으로 나눔 · 점유율 높고 성장 어려운 사업",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/BCG_매트릭스",
+      "note": "BCG 매트릭스는 이 두 가지 요소를 기준으로 기업의 사업을 '스타(Star)사업', '현금젖소(Cash Cow) 사업', '물음표(Question Marks) 사업', '개(Dog) 사업'으로 나누었다. ... 점유율이 높아서 이윤이나 현금흐름은 양호하지만 앞으로 성장하기 어려운 사업이다."
+     },
+     {
+      "claim": "적은 투자로 계속 '젖을 짜듯' 현금을 거둠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Growth–share_matrix",
+      "note": "They are to be \"milked\" continuously with as little investment as possible, since such investment would be wasted in an industry with low growth. Cash \"milked\" is used to fund stars and question marks"
+     },
+     {
+      "claim": "별 사업이 성장 둔화로 이 칸이 되고 끝에 개가 됨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Growth–share_matrix",
+      "note": "When industry growth slows, if they remain a niche leader or are among the market leaders, stars become cash cows ... At the end of the cycle, the cash cow turns into a dog."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/BCG_매트릭스"
+    ],
+    "hintNote": null,
+    "easiestCue": "젖소에서 우유를 짜듯",
+    "worthWhyGen": "기업 기사에 흔한 '캐시카우'가 왜 젖소인지 — 일상 경제 말의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '경영 용어' — 예",
+     "unique": "BCG 네 칸 중 점유율↑ 성장↓ — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "economy/4#g032a-g032a-j10-4",
+   "seed": {
+    "subject": "메기 효과",
+    "aspect": null,
+    "ref": "g032a-j10-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "강한 경쟁자 하나를 들여 조직 전체를 분발하게 만드는 일을 이르는 경영 용어입니다. 노르웨이 어부가 정어리를 산 채로 옮기려고 수조에 천적 물고기를 함께 넣었다는 이야기에서 나왔다고 전합니다. 쫓기는 정어리들이 계속 헤엄쳐 오래 살았다는 것입니다. 이 효과는?",
+    "answer": "메기 효과",
+    "acceptedAnswers": [
+     "메기론"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "실제 실험에서는 포식자 스트레스로 면역이 약해져 사망률이 4배 넘게 오르기도 해, 이야기처럼 건강해진다는 근거는 없다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "강한 경쟁자 하나를 들여 조직 전체를 분발하게 만드는 일",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 경영 말의 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1993년 이건희 삼성 회장이 신경영 선언에서 내세워 유명해졌고, 한국판 이야기에서는 미꾸라지 연못이 무대다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "강력한 경쟁자의 등장이 기존 구성원의 경쟁력을 끌어올린다는 경영 이론",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "경영·뉴스에서 자주 인용",
+     "piece": "f01",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=효과(경영 용어), 첫 문장이 '경영 용어'. 일화는 둘째 문장 뒤에 오고 정체는 첫 문장에서 이미 잡힌다."
+    },
+    "blindQuestion": {
+     "guess": "메기 효과",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "메기 효과",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "메기 효과",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:job-03-4",
+      "answer": "캐시카우",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1609",
+      "answer": "블루오션",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Catfish_effect",
+     "https://ko.wikipedia.org/wiki/메기_효과"
+    ],
+    "facts": [
+     {
+      "claim": "노르웨이 정어리 운반선 전설 · 경쟁자 자극",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Catfish_effect",
+      "note": "The term allegedly originates from the fishing industry. In Norway, live sardines are sold several times more expensive ... there was a catfish in the fish tank, who keeps swimming and startles the caught sardines"
+     },
+     {
+      "claim": "강력한 경쟁자가 있을 때 경쟁력이 높아진다는 이론",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/메기_효과",
+      "note": "강력한 경쟁자가 있을 때 자극을 받아 경쟁력이 높아진다는 이론이다."
+     },
+     {
+      "claim": "이건희 1993 신경영 '메기론' · 미꾸라지 연못",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/메기_효과",
+      "note": "미꾸라지가 있는 연못에 메기를 풀어놓으면 ... 국내에서는 이건희 삼성그룹 회장이 1993년 신경영 선언 때 '메기론'을 주창하여 화제가 되었다."
+     },
+     {
+      "claim": "실험 미입증 · 사망률 4배",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/메기_효과",
+      "note": "입증되지 않았으며 포식자에 대한 스트레스로 인해 면역 약화로 개체의 사망률이 4배 이상 증가하기도 했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/메기_효과"
+    ],
+    "hintNote": null,
+    "easiestCue": "강한 경쟁자를 들여 조직을 분발시키는 경영 용어",
+    "worthWhyGen": "기업 뉴스에 쓰는 말과 그 유래 이야기(그리고 실험이 뒷받침하지 않는다는 점)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '경영 용어' 예",
+     "unique": "물고기 수조 이야기 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 삼성"
+    ],
+    "job": "job-10"
+   }
+  }
+ ]
+}

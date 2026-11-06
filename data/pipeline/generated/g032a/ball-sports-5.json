@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "ball-sports/5",
+  "midKey": "ball-sports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/5#g032a-g032a-j22-8",
+   "seed": {
+    "subject": "안세영",
+    "aspect": null,
+    "ref": "g032a-j22-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대한민국의 배드민턴 선수입니다. 2024년 파리 올림픽 여자 단식 결승에서 중국 선수를 2대 0으로 꺾고 금메달을 땄습니다. 1996년 방수현 이후 28년 만에 이 종목 금메달을 안긴 선수는?",
+    "answer": "안세영",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "중학생 때 국가대표 선발전에서 7명을 모두 꺾고 뽑혔고, 아버지는 권투 국가대표 출신입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "2024년 파리 올림픽 여자 단식 금메달 · 28년 만",
+     "difWhy": "2 — 최근 대표 스포츠 인물",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 스포츠 인물 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "2023년 한국 여자 선수로는 처음 세계선수권 단식을 제패하고 세계 랭킹 1위에 오른 선수다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "2024 올림픽 배드민턴 여자 단식 금메달리스트",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "올림픽 뉴스로 널리 알려짐",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '배드민턴 선수' 가 있고 일화 없이 바로 단서"
+    },
+    "blindQuestion": {
+     "guess": "안세영",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "안세영",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "안세영",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4756",
+      "answer": "박주봉",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5233",
+      "answer": "방수현",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5237",
+      "answer": "이용대",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4273",
+      "answer": "박주봉",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "2744",
+      "answer": "현정화",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/안세영",
+     "https://en.wikipedia.org/wiki/An_Se-young"
+    ],
+    "facts": [
+     {
+      "claim": "2024 올림픽 여자 단식 결승 허빙자오 2-0 · 방수현 이후 28년 만",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/안세영",
+      "note": "2024년 하계 올림픽에 출전, 여자 단식 결승전에서 중국의 허빙자오를 2-0으로 꺾고 금메달을 획득하며 1996년 하계 올림픽의 방수현 이후 28년 만에 여자 배드민턴 단식 금메달을 획득한 대한민국 선수가 되었다."
+     },
+     {
+      "claim": "2024 올림픽 여자 단식 금메달",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/An_Se-young",
+      "note": "An Se-young ... is a South Korean badminton player, who won the gold medal at the 2024 Summer Olympics in the women's singles event."
+     },
+     {
+      "claim": "2023 세계선수권 한국 여자 단식 첫 금 · 세계 랭킹 1위",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/안세영",
+      "note": "2023년 8월 BWF 세계 랭킹 1위에 오른 안세영은 대한민국 단식 선수로는 최초로 2023년 세계 배드민턴 선수권 대회 여자 단식 부문에서 우승을 차지했다."
+     },
+     {
+      "claim": "중학생 선발전 7명 · 아버지 권투 국가대표",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/안세영",
+      "note": "국가대표 선발전에서 이장미를 포함한 7명의 선수를 모두 꺾으며 중학생 선수로는 처음으로 자력으로 국가대표 선수로 발탁되었다. / 아버지인 안정현은 대한민국 국가대표 권투 선수로 활동했고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/안세영"
+    ],
+    "hintNote": null,
+    "easiestCue": "2024 올림픽 배드민턴 여자 단식 금메달",
+    "worthWhyGen": "2 — 최근 큰 화제가 된 스포츠 스타(취미 영역 확인)",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '배드민턴 선수' — 예",
+     "unique": "2024 여자 단식 금 = 한 명",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

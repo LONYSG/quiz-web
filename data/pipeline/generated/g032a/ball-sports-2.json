@@ -1,0 +1,165 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "ball-sports/2",
+  "midKey": "ball-sports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/2#g032a-g032a-j28-2",
+   "seed": {
+    "subject": "백어택",
+    "aspect": null,
+    "ref": "g032a-j28-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "배구에서 뒷줄에 선 선수가 하는 공격입니다. 뒷줄 선수는 네트에서 3m 떨어진 공격선 앞에서 뛰어올라 네트 위의 공을 때릴 수 없습니다. 그래서 이 선 뒤에서 뛰어올라 때리는 공격을 흔히 무엇이라 부를까요?",
+    "answer": "백어택",
+    "acceptedAnswers": [
+     "후위 공격"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "국제 규칙에서는 '백코트 공격'이라 하고, 뒷줄 가운데 선수가 하는 것은 '파이프 공격'이라 따로 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "이 선 뒤에서 뛰어올라 때리는 공격",
+     "difWhy": "3 — 배구 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 스포츠 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "라이트 공격수(아포짓 스파이커)가 뒷줄로 내려갔을 때 주로 쓰며, 선 뒤에서 뛰기만 하면 착지는 선 안쪽이어도 된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "배구에서 후위 선수가 3m 공격선 뒤에서 뛰어 때리는 공격",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "배구 중계에서 들어봄",
+     "piece": "f03",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '배구 뒷줄 공격' = 끝 ○○ '공격'. 공격선 규칙을 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "백어택",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "백어택",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "백어택",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2736",
+      "answer": "스파이크",
+      "verdict": "diff",
+      "why": "신규 '백어택'(다른 배구 용어·인물) ≠ 옛 '스파이크' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2734",
+      "answer": "블로킹",
+      "verdict": "diff",
+      "why": "신규 '백어택'(다른 배구 용어·인물) ≠ 옛 '블로킹' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2735",
+      "answer": "세터",
+      "verdict": "diff",
+      "why": "신규 '백어택'(다른 배구 용어·인물) ≠ 옛 '세터' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5691",
+      "answer": "리베로",
+      "verdict": "diff",
+      "why": "신규 '백어택'(다른 배구 용어·인물) ≠ 옛 '리베로' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5224",
+      "answer": "김연경",
+      "verdict": "diff",
+      "why": "신규 '백어택'(다른 배구 용어·인물) ≠ 옛 '김연경' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Volleyball",
+     "https://mobile.newsis.com/view/NISX20191104_0000818651"
+    ],
+    "facts": [
+     {
+      "claim": "네트에서 3m 공격선 · 후위 선수는 공격선 뒤에서 뛰면 스파이크 가능",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Volleyball",
+      "note": "A line 3 m (9.8 ft) from and parallel to the net is considered the \"attack line\". ... back-row or libero players spiking the ball or blocking (back-row players may spike the ball if they jump from behind the attack line)"
+     },
+     {
+      "claim": "백어택 = 후위 위치에서 구사하는 공격(한국 용어)",
+      "where": "q",
+      "url": "https://mobile.newsis.com/view/NISX20191104_0000818651",
+      "note": "라이트 공격수는 후위에 위치할 때 백어택을 주로 구사한다. (검색 요약 문장)"
+     },
+     {
+      "claim": "공격선 뒤에서 도약 · 착지는 선 앞이어도 됨",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Volleyball",
+      "note": "Backcourt (or back row): an attack performed by a back-row player. The player must jump from behind the 3-meter line before making contact with the ball, but may land in front of the 3-meter line. A Pipe Attack is when the center player in the back row attacks the ball."
+     },
+     {
+      "claim": "백코트 공격 · 파이프 공격",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Volleyball",
+      "note": "Backcourt (or back row): an attack performed by a back-row player. ... A Pipe Attack is when the center player in the back row attacks the ball."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://mobile.newsis.com/view/NISX20191104_0000818651",
+     "https://en.wikipedia.org/wiki/Volleyball"
+    ],
+    "hintNote": null,
+    "easiestCue": "공격선 뒤에서 뛰어올라 때리는 뒷줄 선수의 공격",
+    "worthWhyGen": "배구 중계에 늘 나오는 말의 규칙상 뜻(규칙 확인 — 알가치 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '배구 … 공격' — 예",
+     "unique": "흔히 부르는 이름 — 백어택(후위 공격 받음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 이어도"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

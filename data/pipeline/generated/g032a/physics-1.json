@@ -1,0 +1,414 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "physics/1",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/1#g032a-g032a-j10-6",
+   "seed": {
+    "subject": "각운동량 보존 법칙",
+    "aspect": null,
+    "ref": "g032a-j10-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "회전하는 물체에 관한 물리 법칙입니다. 피겨 선수가 돌다가 벌린 팔을 몸에 붙이면 회전이 확 빨라집니다. 몸의 질량이 회전축 가까이 모이면 그만큼 더 빨리 돌아야 하기 때문입니다. 큰 별이 쪼그라들어 생긴 중성자별이 엄청나게 빨리 도는 것도 같은 까닭입니다. 이 법칙은?",
+    "answer": "각운동량 보존 법칙",
+    "acceptedAnswers": [
+     "각운동량 보존",
+     "각운동량 보존의 법칙"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "지구와 달 사이에서도 이 양이 오가서, 지구 자전은 하루에 약 65나노초씩 느려지고 달은 해마다 약 3.8cm씩 멀어진다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "피겨 선수가 벌린 팔을 몸에 붙이면 회전이 확 빨라집니다",
+     "difWhy": "3 — 학교 물리 법칙 이름 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 물리 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "밖에서 돌림힘이 작용하지 않으면 회전의 양이 변하지 않는다는 법칙으로, 행성이 태양에 가까울 때 더 빨리 도는 까닭도 이것이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "외부 돌림힘이 없으면 회전의 양(각운동량)이 일정하다는 물리 법칙",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "물리 시간에 배움, 이름은 흐릿",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '물리 법칙' · 끝 ○○ = 법칙, 피겨 예시로 풀이됨"
+    },
+    "blindQuestion": {
+     "guess": "각운동량 보존 법칙",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "각운동량 보존 법칙",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "각운동량 보존 법칙",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1169",
+      "answer": "운동량 보존 법칙",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "79",
+      "answer": "관성",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1170",
+      "answer": "마찰력",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Angular_momentum",
+     "https://ko.wikipedia.org/wiki/각운동량"
+    ],
+    "facts": [
+     {
+      "claim": "스케이터가 팔·다리를 축에 모으면 관성 모멘트 감소 → 회전 빨라짐 · 중성자별 빠른 회전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Angular_momentum",
+      "note": "The conservation of angular momentum explains the angular acceleration of an ice skater as they bring their arms and legs close to the vertical axis of rotation ... The same phenomenon results in extremely fast spin of compact stars (like white dwarfs, neutron stars and black holes)"
+     },
+     {
+      "claim": "돌림힘이 없으면 각운동량 보존 · 행성 운동 분석",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/각운동량",
+      "note": "돌림힘이 작용하지 않으면 각운동량은 보존되는 양이 되기 때문이다. ... 일정한 각운동량을 갖는 이와 같은 경우는 행성, 위성, 보어의 원자모형등의 분석에 유용하게 사용된다."
+     },
+     {
+      "claim": "지구 자전 65.7ns/일 감속 · 달 3.82cm/년",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Angular_momentum",
+      "note": "slowing down of the rotation rate of Earth, at about 65.7 nanoseconds per day, and in gradual increase of the radius of Moon's orbit, at about 3.82 centimeters per year."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/각운동량"
+    ],
+    "hintNote": null,
+    "easiestCue": "피겨 선수가 팔을 붙이면 회전이 빨라지는 현상",
+    "worthWhyGen": "학교 물리 개념 — 일상 장면(피겨)으로 이해",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '물리 법칙' 예",
+     "unique": "회전 + 질량 축 가까이 — 운동량 보존(직선)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 회전"
+    ],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "physics/1#g032a-g032a-j14-1",
+   "seed": {
+    "subject": "원심력",
+    "aspect": null,
+    "ref": "g032a-j14-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "빙글빙글 도는 것 안에서 바깥쪽으로 밀려나는 듯 느껴지는 힘이 있습니다. 자동차가 왼쪽으로 급히 꺾으면 탄 사람의 몸이 오른쪽으로 쏠리는 것도 이 힘으로 설명합니다. 이 힘은 무엇일까요?",
+    "answer": "원심력",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "곧게 나아가려는 몸을 회전하는 쪽에서 보면 바깥으로 밀리는 것처럼 보입니다. 실제로 몸을 안쪽으로 당겨 도는 길을 만드는 힘은 구심력입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "바깥쪽으로 밀려나는 듯 느껴지는 힘",
+     "difWhy": "2 — 일상 체험 · 학교 용어이나 흔함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 93",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "실제로 미는 것은 없고, 함께 빙글빙글 도는 사람에게만 느껴지는 겉보기 힘이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "회전하는 물체 안에서 바깥쪽으로 작용하는 것처럼 느껴지는 겉보기 힘(관성력)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 93,
+     "why": "학교 물리·세탁기 탈수 등으로 흔함",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=힘, 첫 문장에 '밀려나는 듯 느껴지는 힘'. 자동차 예시의 방향(왼쪽 꺾기·오른쪽 쏠림)도 한 문장에 정리됨."
+    },
+    "blindQuestion": {
+     "guess": "원심력",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "원심력",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "원심력",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6733",
+      "answer": "부메랑",
+      "verdict": "diff",
+      "why": "원심력 vs 우주 부메랑"
+     },
+     {
+      "old": "1168",
+      "answer": "자유낙하",
+      "verdict": "diff",
+      "why": "원심력 vs 자유낙하"
+     },
+     {
+      "old": "g032a:g032a-j23-11",
+      "answer": "제동거리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3802",
+      "answer": "코리올리 힘",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": 1171,
+      "answer": "구심력",
+      "verdict": "diff",
+      "why": "원심력(겉보기 바깥 힘)과 구심력(실제 중심 향 힘)은 서로 반대 개념으로 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/원심력",
+     "https://en.wikipedia.org/wiki/Centrifugal_force"
+    ],
+    "facts": [
+     {
+      "claim": "회전하는 계에서 바깥쪽으로 작용하는 것처럼 보이는 가상의 힘",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원심력",
+      "note": "원심력은 회전하는 좌표계에서 관찰되는 관성력으로, 회전의 중심에서 바깥쪽으로 작용하는 것처럼 관찰된다. 하지만 다른 관성력과 마찬가지로 실제 존재하는 힘은 아니다."
+     },
+     {
+      "claim": "차가 왼쪽으로 꺾으면 탄 사람은 오른쪽으로 끌리는 힘을 느낀다 = 원심력",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Centrifugal_force",
+      "note": "If the car enters a curve that bends to the left, the passenger experiences an apparent force that seems to be pulling them towards the right. This is the fictitious centrifugal force."
+     },
+     {
+      "claim": "실제 존재하는 힘은 아니고 회전하는 계 안의 관찰자가 느끼는 가상의 힘",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/원심력",
+      "note": "원심력은 관성력 중에서도 회전하고 있는 계 안의 관찰자가 느끼는 가상의 힘이다."
+     },
+     {
+      "claim": "실제로 작용하는 것은 구심력(관성좌표계)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/원심력",
+      "note": "관성좌표계에서 관찰시, 회전하는 공에는 줄을 통하여 구심력이 작용되고 이로 인해 회전운동을 하게 된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/원심력"
+    ],
+    "hintNote": null,
+    "easiestCue": "도는 것 안에서 바깥쪽으로 밀려나는 힘",
+    "worthWhyGen": "커브길·회전 놀이에서 일상적으로 쓰는 말(일상 말 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장에 '힘' — 예",
+     "unique": "'힘'으로 물어 관성(힘 아님) 배제 · 구심력은 안쪽이라 갈림 · 단 구심력(#1171)과 같은 단원 — 다른 개념으로 봄",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "physics/1#g032a-g032a-j23-11",
+   "seed": {
+    "subject": "제동거리",
+    "aspect": null,
+    "ref": "g032a-j23-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "자동차 운전과 관련된 물리 개념입니다. 브레이크를 꽉 밟은 순간부터 차가 완전히 멈출 때까지 나아간 거리를 말합니다. 속도가 두 배가 되면 네 배로 늘어나는 이 거리는?",
+    "answer": "제동거리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "운동에너지가 속도의 제곱에 비례하기 때문입니다. 운전자가 반응하는 동안 달린 길을 더하면 정지거리가 됩니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "브레이크를 밟은 순간부터 멈출 때까지 나아간 거리",
+     "difWhy": "2 — 운전 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 운전 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "과속이 위험한 까닭으로 꼽히며, 빗길·빙판길처럼 타이어와 노면 사이 마찰이 작을수록 길어진다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "브레이크를 밟은 뒤 차가 멈출 때까지 가는 거리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "운전면허·교통안전에서 접함",
+     "piece": "f08",
+     "genPct": 88
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '물리 개념' · 끝 ○○ = 거리, 정의가 둘째 문장에 바로 나옴"
+    },
+    "blindQuestion": {
+     "guess": "제동거리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "제동거리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "제동거리",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j14-1",
+      "answer": "원심력",
+      "verdict": "diff",
+      "why": "새=제동거리 개념; 원심력·종단속도는 다른 물리 개념"
+     },
+     {
+      "old": "1175",
+      "answer": "종단속도",
+      "verdict": "diff",
+      "why": "새=제동거리 개념; 원심력·종단속도는 다른 물리 개념"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/제동거리",
+     "https://en.wikipedia.org/wiki/Braking_distance",
+     "https://peda.net/id/62149e72ea5"
+    ],
+    "facts": [
+     {
+      "claim": "브레이크를 완전히 밟은 시점부터 완전히 정지할 때까지의 거리 · 속도와 마찰 계수의 영향",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제동거리",
+      "note": "제동거리란 차량이 제동기(브레이크)를 완전히 밟은 시점부터 차량이 완전히 정지한 지점까지 주행할 수 있는 거리를 말한다. 이는 주로 차량의 원래 속도와 타이어와 노면 사이의 마찰 계수의 영향을 받으며"
+     },
+     {
+      "claim": "d = v²/(2μg) — 속도 제곱에 비례",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Braking_distance",
+      "note": "The braking distance … given an initial driving speed v is then found by putting W = E, from which it follows that d=v²/2μg."
+     },
+     {
+      "claim": "속도 2배 → 제동거리 4배",
+      "where": "q",
+      "url": "https://peda.net/id/62149e72ea5",
+      "note": "속도가 2배가 되면 제동거리는 4배로 늘어난다 (검색 요약)"
+     },
+     {
+      "claim": "운동에너지 · 반응거리 + 제동거리 = 정지거리",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/제동거리",
+      "note": "제동 거리는 총 정지 거리의 두 가지 주요 구성 요소 중 하나이다. 다른 구성요소는 반응 거리이며 … / E=½mv²"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Braking_distance"
+    ],
+    "hintNote": null,
+    "easiestCue": "브레이크 밟은 뒤 멈출 때까지 간 거리",
+    "worthWhyGen": "운전하는 누구에게나 닿는 쓸모 — 과속이 위험한 까닭",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '물리 개념' — 예",
+     "unique": "'브레이크를 밟은 순간부터' 로 정지거리(반응 포함)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

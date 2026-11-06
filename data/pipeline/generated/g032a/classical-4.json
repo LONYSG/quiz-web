@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "classical/4",
+  "midKey": "classical",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "classical/4#g032a-g032a-j12-3",
+   "seed": {
+    "subject": "아카펠라",
+    "aspect": null,
+    "ref": "g032a-j12-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "악기 반주 없이 여러 사람이 목소리만으로 화음을 맞춰 부르는 노래 방식입니다. 이름은 이탈리아어로 '교회식으로'라는 뜻입니다. 중세 교회에서 반주 없이 합창하던 데서 온 이 말은?",
+    "answer": "아카펠라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'카펠라'는 성당 안 작은 기도실을 가리키기도 하고, 교회 전례를 맡는 성가대를 뜻하기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "악기 반주 없이 여러 사람이 목소리만으로 화음을 맞춰 부르는",
+     "difWhy": "2 — 흔한 음악 용어 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "펜타토닉스 같은 그룹은 드럼 소리까지 입으로 내며 이 방식으로 노래한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "반주 없이 목소리로만 부르는 노래(방식)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "예능·음악 방송에서 흔함",
+     "piece": "f04",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '노래 방식' = 끝 ○○ '말'. 어원 설명은 둘째·셋째 문장에 짧게"
+    },
+    "blindQuestion": {
+     "guess": "아카펠라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아카펠라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아카펠라",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "108",
+      "answer": "보헤미안 랩소디",
+      "verdict": "unsure",
+      "why": "지식은 다름(퀸 곡 vs 아카펠라 정의)이나 옛 질문에 새 정답 '아카펠라'가 그대로 있어 한 게임에서 답 누설 - GEN 이 옛 질문 보존 여부·분리 판단"
+     },
+     {
+      "old": "2173",
+      "answer": "아다지오",
+      "verdict": "diff",
+      "why": "아카펠라 vs 아다지오"
+     },
+     {
+      "old": "g032a:g032a-j16-2",
+      "answer": "피날레",
+      "verdict": "diff",
+      "why": "아카펠라 vs 피날레(옛것 비활성)"
+     },
+     {
+      "old": "225",
+      "answer": "프레스토",
+      "verdict": "diff",
+      "why": "아카펠라 vs 프레스토"
+     },
+     {
+      "old": "2168",
+      "answer": "카덴차",
+      "verdict": "diff",
+      "why": "아카펠라 vs 카덴차"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아카펠라",
+     "https://en.wikipedia.org/wiki/A_cappella"
+    ],
+    "facts": [
+     {
+      "claim": "악기 없이 목소리로만 화음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아카펠라",
+      "note": "아카펠라(이탈리아어: a cappella)는 악기 없이 목소리로만 화음을 맞추어 부르는 노래, 또는 그렇게 부르는 방법이다."
+     },
+     {
+      "claim": "'교회식으로' · 중세 교회 무반주 합창에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아카펠라",
+      "note": "\"아카펠라\"의 문자 그대로의 뜻은 \"교회식으로(in the church style ...)\"이다. 중세 시대의 교회에서 대개 반주 없이 합창을 했던 데에서 유래하여"
+     },
+     {
+      "claim": "반주 없는 노래 · 'in the style of the chapel'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/A_cappella",
+      "note": "Music performed a cappella (lit. 'in [the style of] the chapel') ... is a style of music performed by a singer or a singing group without any instrumental accompaniment."
+     },
+     {
+      "claim": "카펠라 = 작은 기도실 · 성가대",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아카펠라",
+      "note": "그 공간들을 '카펠라'라고 부른다 ... 하지만 '카펠라'는 '교회전례를 위한 합창단이나 성가대'를 뜻하는 말이기도 하고"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "반주 없이 목소리만으로 부르는 노래",
+    "worthWhyGen": "흔히 쓰는 음악 말의 유래(교회식으로)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '노래 방식' 예",
+     "unique": "목소리만 · 이탈리아어 '교회식' — 무반주 합창(우리말)과 같은 대상이라 변형 아님(묻는 것이 그 말)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "classical/4#g032a-g032a-j16-2",
+   "seed": {
+    "subject": "피날레",
+    "aspect": null,
+    "ref": "g032a-j16-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "교향곡이나 소나타의 마지막 악장을 가리키는 음악 용어입니다. 이탈리아어로 '끝'을 뜻하는 말에서 왔습니다. 요즘은 행사나 공연을 화려하게 끝맺는 마지막 순서를 말할 때도 흔히 쓰는 이 말은?",
+    "answer": "피날레",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "오페라에서는 막이 끝날 때 여러 인물이 함께 노래하는 긴 장면을 가리키기도 하며, 글루크가 이런 장면을 넓혔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "행사나 공연을 화려하게 끝맺는 마지막 순서를 말할 때도 흔히 쓰는 말",
+     "difWhy": "2 — 일상어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 음악 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "쇼의 화려한 끝 무대를 \"그랜드 ~\"라 부르고, 드라마 시리즈의 마지막 회를 두고도 쓰는 말이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "악곡의 마지막 악장, 넓게는 행사의 마지막 순서를 뜻하는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "일상 외래어",
+     "piece": "f07",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '음악 용어' · 끝 ○○ = 말"
+    },
+    "blindQuestion": {
+     "guess": "피날레",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피날레",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피날레",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "225",
+      "answer": "프레스토",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "g032a:g032a-j12-3",
+      "answer": "아카펠라",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2173",
+      "answer": "아다지오",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "40",
+      "answer": "브리지",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2168",
+      "answer": "카덴차",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Finale_(music)",
+     "https://en.wiktionary.org/wiki/finale",
+     "https://ko.wikipedia.org/wiki/피날레"
+    ],
+    "facts": [
+     {
+      "claim": "소나타·교향곡·협주곡의 마지막 악장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Finale_(music)",
+      "note": "A finale is the last movement of a sonata, symphony, or concerto; ... or, a prolonged final sequence at the end of an act of an opera or work of musical theatre."
+     },
+     {
+      "claim": "이탈리아어 finale('끝')에서 · 쇼의 성대한 끝",
+      "where": "q",
+      "url": "https://en.wiktionary.org/wiki/finale",
+      "note": "From Italian finale (\"ending\"), from Late Latin fīnālis, from Latin fīnis (\"end; boundary, limit\"). Doublet of final. ... The grand end of something, especially of a show or piece of music."
+     },
+     {
+      "claim": "음악의 마지막 부분",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피날레",
+      "note": "피날레(Finale)는 음악의 마지막 부분이다."
+     },
+     {
+      "claim": "글루크가 여러 인물의 긴 피날레를 앞장서 씀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Finale_(music)",
+      "note": "In theatrical music, Christoph Willibald Gluck was an early proponent of extended finales, with multiple characters"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wiktionary.org/wiki/finale"
+    ],
+    "hintNote": null,
+    "easiestCue": "행사를 화려하게 끝맺는 마지막 순서",
+    "worthWhyGen": "일상에서 쓰는 말의 음악 쪽 유래(알가치 3 ③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '음악 용어' — 예",
+     "unique": "'마지막 악장' 으로 코다와 가름 · '이탈리아어 끝' 으로 대미와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

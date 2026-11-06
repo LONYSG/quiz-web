@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "aerospace/4",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/4#g032a-g032a-j32-2",
+   "seed": {
+    "subject": "아르테미스 계획",
+    "aspect": null,
+    "ref": "g032a-j32-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 항공우주국(NASA)이 사람을 다시 달에 보내려고 벌이는 달 탐사 사업을 묻습니다. 1960~70년대 달 착륙 사업이 그리스 신 아폴론의 이름을 땄기에, 이번에는 아폴론의 쌍둥이 누이이자 달의 여신 이름을 붙였습니다. 이 사업의 이름은?",
+    "answer": "아르테미스 계획",
+    "acceptedAnswers": [
+     "아르테미스",
+     "아르테미스 프로그램",
+     "아르테미스 프로젝트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국계 미국인 의사이자 해군 특수부대 장교 출신인 조니 킴도 이 사업의 우주인 13명에 뽑혔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "아폴론의 쌍둥이 누이이자 달의 여신 이름을 붙였습니다",
+     "difWhy": "2 — 달 탐사 뉴스 + 신화에서 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 시사 상식 · 이름 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "2022년 사람 없이 오리온 우주선을 달 궤도에 보냈고, 2026년에는 승무원 넷을 태워 반세기 만에 달 근처까지 다녀온 NASA 사업이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "아폴로 이후 사람을 다시 달에 보내려는 NASA 주도의 유인 달 탐사 계획",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "우주 뉴스",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '달 탐사 사업' 이 있고 아폴론 연결이 쉬운 말로 풀려 있음"
+    },
+    "blindQuestion": {
+     "guess": "아르테미스 계획",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아르테미스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아르테미스 계획",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6135",
+      "answer": "엔터프라이즈",
+      "verdict": "diff",
+      "why": "아르테미스 계획과 엔터프라이즈호(우주 왕복선 시험기)는 다른 사실"
+     },
+     {
+      "old": "713",
+      "answer": "소유스",
+      "verdict": "diff",
+      "why": "아르테미스 계획과 소유스는 다름"
+     },
+     {
+      "old": "714",
+      "answer": "우주 유영",
+      "verdict": "diff",
+      "why": "아르테미스 계획과 우주 유영은 다름"
+     },
+     {
+      "old": "710",
+      "answer": "이소연",
+      "verdict": "diff",
+      "why": "아르테미스 계획과 이소연은 다름"
+     },
+     {
+      "old": "708",
+      "answer": "미세중력",
+      "verdict": "diff",
+      "why": "아르테미스 계획과 미세중력은 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아르테미스_계획",
+     "https://en.wikipedia.org/wiki/Artemis_program"
+    ],
+    "facts": [
+     {
+      "claim": "아폴로의 쌍둥이 누이·달의 여신에서 따온 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아르테미스_계획",
+      "note": "계획의 이름은 아폴로 계획에 맞춰 그리스 신화에 등장하는 아폴로의 쌍둥이 누이이자 달의 여신인 아르테미스의 이름에서 따왔다."
+     },
+     {
+      "claim": "같은 내용(영문) · 아폴로 이후 귀환",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Artemis_program",
+      "note": "NASA Administrator Jim Bridenstine announced that the new program would be named Artemis, after the goddess of the Moon in Greek mythology who is the twin sister of Apollo, after which NASA's 1960's moon landing program was named. / aimed at returning humans to the Moon for the first time since the Apollo program"
+     },
+     {
+      "claim": "1호 마네킹 2022 · 2호 4명 2026 · 54년 만",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아르테미스_계획",
+      "note": "이번 임무에선 사람 대신 마네킹 3개가 실렸다. 발사는 2022년 11월 26일 / 2026년 4월 1일 ... 우주비행사 4명을 태운 아르테미스 2호가 발사되었다. 이로써 54년만에 유인 달탐사 임무가 재개되었고"
+     },
+     {
+      "claim": "조니 킴 · 13명",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아르테미스_계획",
+      "note": "아르테미스 계획의 우주인으로 13명이 선발되었으며 / 조니 킴은 한국계 미국인 남자 의사로, 네이비실 장교로 복무해"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아르테미스_계획"
+    ],
+    "hintNote": null,
+    "easiestCue": "아폴론의 쌍둥이 누이이자 달의 여신",
+    "worthWhyGen": "왜 그런 이름인가(아폴로 계획과 짝)가 질문 안에 — 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '달 탐사 사업' 예",
+     "unique": "NASA · 다시 달에 사람 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

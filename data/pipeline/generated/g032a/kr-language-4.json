@@ -1,0 +1,141 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-language/4",
+  "midKey": "kr-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/4#g032a-g032a-j12-9",
+   "seed": {
+    "subject": "작심삼일",
+    "aspect": null,
+    "ref": "g032a-j12-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "새해 첫날 '올해는 꼭 운동하겠다'고 다짐해 놓고 며칠 만에 그만두는 일이 흔합니다. 이처럼 굳게 먹은 마음이 사흘을 가지 못한다는 뜻의 사자성어는 무엇일까요?",
+    "answer": "작심삼일",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한자로는 '지을 작(作), 마음 심(心), 석 삼(三), 날 일(日)'을 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "굳게 먹은 마음이 사흘을 가지 못한다는 뜻",
+     "difWhy": "1 — 뜻풀이가 곧 답 · 누구나 아는 사자성어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 사자성어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "다이어트·금연·일기 쓰기처럼 시작만 하고 금방 손을 놓는 버릇을 놀릴 때 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "결심이 오래가지 못함을 이르는 사자성어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "흔한 사자성어",
+     "piece": "f01",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 새해 다짐 장면이고 끝의 ○○ 는 사자성어, 뜻풀이가 바로 이어져 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "작심삼일",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "작심삼일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "작심삼일",
+     "qFacts": 1,
+     "qSources": 1,
+     "checked": 0,
+     "found": 0,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4993",
+      "answer": "수불석권",
+      "verdict": "diff",
+      "why": "작심삼일 vs 수불석권"
+     },
+     {
+      "old": "4497",
+      "answer": "문경지교",
+      "verdict": "diff",
+      "why": "작심삼일 vs 문경지교"
+     },
+     {
+      "old": "4992",
+      "answer": "낙양지가",
+      "verdict": "diff",
+      "why": "작심삼일 vs 낙양지가"
+     },
+     {
+      "old": "4991",
+      "answer": "교토삼굴",
+      "verdict": "diff",
+      "why": "작심삼일 vs 교토삼굴"
+     },
+     {
+      "old": "1040",
+      "answer": "새옹지마",
+      "verdict": "diff",
+      "why": "작심삼일 vs 새옹지마"
+     }
+    ],
+    "sources": [
+     "https://ko.wiktionary.org/wiki/작심삼일"
+    ],
+    "facts": [
+     {
+      "claim": "확고했던 결심이 사흘을 넘기지 못함 · 作心三日",
+      "where": "q",
+      "url": "https://ko.wiktionary.org/wiki/작심삼일",
+      "note": "확고했던 결심이 사흘을 넘기지 못한다는 뜻이다. 어원: 한자 作心三日."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "굳게 먹은 마음이 사흘을 못 간다",
+    "worthWhyGen": "일상에서 늘 쓰는 말(19 §9-1 ③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장은 장면(새해 다짐) — 사자성어 종류 명사는 끝 문장(등급 1 이라 자연스러움 우선)",
+     "unique": "사흘 · 결심 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 사실 출처 2 미만"
+    ],
+    "job": "job-12"
+   }
+  }
+ ]
+}

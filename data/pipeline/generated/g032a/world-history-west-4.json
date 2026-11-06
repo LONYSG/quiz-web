@@ -1,0 +1,292 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-west/4",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/4#g032a-g032a-j12-12",
+   "seed": {
+    "subject": "마녀사냥",
+    "aspect": null,
+    "ref": "g032a-j12-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중세 말부터 근대 초까지 유럽에서 악마와 손잡았다는 혐의를 씌워 수많은 사람을 재판하고 처형한 일을 부르는 말입니다. 지금은 다수가 한 사람이나 집단을 근거 없이 몰아붙이는 일을 빗댈 때도 씁니다. 이 네 글자 말은?",
+    "answer": "마녀사냥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "처음에는 공동체에서 아이 받기나 병 치료를 맡던 여성들이 악마와 놀아난다는 낙인을 받으며 시작됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "다수가 한 사람이나 집단을 근거 없이 몰아붙이는 일을 빗댈 때도 씁니다",
+     "difWhy": "1 — 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "검은 고양이까지 악마의 동물로 몰려 죽던 시절에서 나온 말로, 인터넷 여론 몰이를 두고도 흔히 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "중세 말~근대 초 유럽의 마녀 재판·처형 · 지금은 집단 몰아붙이기의 비유",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "마녀사냥 비유를 뉴스에서 자주 씀",
+     "piece": "f02",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '일을 부르는 말' 로 종류를 밝히고 끝 ○○ '네 글자 말' 과 맞음"
+    },
+    "blindQuestion": {
+     "guess": "마녀사냥",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마녀사냥",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마녀사냥",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6736",
+      "answer": "매카시즘",
+      "verdict": "unsure",
+      "why": "지식은 다름(마녀사냥 어원 vs 매카시즘)이나 옛 힌트가 '마녀사냥'을 명시해 새 정답 누설"
+     },
+     {
+      "old": "6115",
+      "answer": "단두대",
+      "verdict": "diff",
+      "why": "마녀사냥 vs 단두대"
+     },
+     {
+      "old": "1356",
+      "answer": "로베스피에르",
+      "verdict": "diff",
+      "why": "마녀사냥 vs 로베스피에르"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마녀사냥",
+     "https://en.wikipedia.org/wiki/Witch_trials_in_the_early_modern_period"
+    ],
+    "facts": [
+     {
+      "claim": "중세 중기~근대 초 마녀 재판·형벌 · 지금은 표적 공격의 비유",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마녀사냥",
+      "note": "마녀사냥(영어: witch-hunt)은 중세 중기부터 근대 초기에 ... 마녀나 마법 행위에 대한 추궁과 재판부터 형벌에 이르는 일련의 행위를 말한다. ... 현대 언어에서는 주로 정치적으로 다른 견해를 지닌 인물에 대하여 다수 또는 기득권이 행하는 위협이나 표적 수사 등을 비유하는 표현으로 사용하며"
+     },
+     {
+      "claim": "근대 초 유럽의 마녀 재판 · 처형",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Witch_trials_in_the_early_modern_period",
+      "note": "Between 40,000 and 60,000 were executed, almost all in Europe."
+     },
+     {
+      "claim": "검은 고양이도 마녀의 동물로 처형",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/마녀사냥",
+      "note": "검은 고양이도 마녀의 동물이라 사람을 해친다고 믿어 수많은 사람들과 고양이들이 사형을 당했다."
+     },
+     {
+      "claim": "출산·질병 치료 맡던 이들이 악마와 놀아난다는 낙인",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/마녀사냥",
+      "note": "공동체 내에서 출산이나 질병 치료 같은 의료 기능을 담당하거나 ... 어느 날 악마와 놀아나면서 신앙을 해치고 공동체에 해악을 일으킨다고 낙인 찍히기 시작했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/마녀사냥"
+    ],
+    "hintNote": null,
+    "easiestCue": "다수가 근거 없이 한 사람을 몰아붙이는 일의 비유",
+    "worthWhyGen": "일상에서 쓰는 말의 유래(19 §9-1 ②③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '일을 부르는 말' 예",
+     "unique": "네 글자 · 유럽 재판 + 비유 — 마녀재판은 비유로 안 써서 변형에 넣지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "world-history-west/4#g032a-g032a-j18-3",
+   "seed": {
+    "subject": "미터법",
+    "aspect": null,
+    "ref": "g032a-j18-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "프랑스 혁명 무렵 만들어진 단위 제도입니다. 지방마다 제각각이던 길이·무게 단위를 하나로 묶으려고, 적도에서 북극까지 거리의 1천만분의 1을 길이의 기준으로 삼았습니다. 이 단위 제도는?",
+    "answer": "미터법",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1790년 탈레랑이 제안했지만 보급이 더뎌 프랑스에서도 1840년에야 강제로 시행했습니다. 1875년 국제 조약으로 세계 표준의 길이 열렸습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "길이·무게 단위를 하나로 묶으려고 … 프랑스 혁명",
+     "difWhy": "2 — 미터법은 일상어 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 단위 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "킬로그램·리터처럼 10배씩 묶는 단위 체계로, 지금은 미국 등 몇 나라를 빼고 세계 대부분이 공식으로 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미터·킬로그램·리터를 기본으로 하는 십진법 도량형 제도(프랑스 혁명기 기원)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "일상 도량형, 교과서",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '단위 제도' 종류가 있고 적도~북극 단서가 쉬운 말로 풀려 있음"
+    },
+    "blindQuestion": {
+     "guess": "미터법",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "미터법",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "미터법",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2422",
+      "answer": "야드파운드법",
+      "verdict": "diff",
+      "why": "미터법 기원 vs 야드파운드법 — 다른 지식"
+     },
+     {
+      "old": "8",
+      "answer": "1789",
+      "verdict": "diff",
+      "why": "미터법 vs 혁명 연도 — 다른 지식"
+     },
+     {
+      "old": "191",
+      "answer": "바스티유",
+      "verdict": "diff",
+      "why": "미터법 vs 바스티유 — 다른 지식"
+     },
+     {
+      "old": "5184",
+      "answer": "지롱드파",
+      "verdict": "diff",
+      "why": "미터법 vs 지롱드파 — 다른 지식"
+     },
+     {
+      "old": "6812",
+      "answer": "나폴레옹",
+      "verdict": "diff",
+      "why": "미터법 vs 나폴레옹 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/미터법",
+     "https://en.wikipedia.org/wiki/Metric_system"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스 혁명기 단위 통일 시도 · 적도~북극 거리의 1천만분의 1 = 1m",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미터법",
+      "note": "18세기 말, 프랑스는 자유, 평등, 박애를 부르짖는 시민 혁명이 한창이었다. … 그 당시 프랑스에는 약800개의 이름으로 25만개나 되는 도량단위가 쓰이고 있었다. 이를 통일하려고 시도한 것을 '미터법의 혁명'이라고 한다. … 결국에는 지리적으로 1m는 적도에서 극점까지 거리의 1000만분의 1로 기준으로 되었다."
+     },
+     {
+      "claim": "프랑스 혁명 초기에 고안, 1799년 시행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metric_system",
+      "note": "During the final days of France's Ancien régime (1775-1788) and the early days of the French Revolution (1789–99), the first metric system was devised … in 1799, the new system was launched in France."
+     },
+     {
+      "claim": "미국·미얀마·라이베리아 빼고 전 세계 공식 채택",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/미터법",
+      "note": "지금은 3국가(미국, 미얀마, 라이베리아)를 제외하고 전 세계가 공식 단위계로 채택하여 사용하고 있다."
+     },
+     {
+      "claim": "1790 탈레랑 제안 · 1840 강제 집행 · 1875 미터조약",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/미터법",
+      "note": "1790년 프랑스 정치가 탈레랑(C.M.Talleyrand)이 제안해서 … 미터법 보급은 순조롭지 않았고, 프랑스에서는 1840년 강제 집행하기에 이르렀다. 1875년 국제적인 미터조약이 성립되었고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/미터법"
+    ],
+    "hintNote": null,
+    "easiestCue": "적도에서 북극까지 거리의 1천만분의 1을 길이 기준으로",
+    "worthWhyGen": "매일 쓰는 단위 제도가 프랑스 혁명의 '모두를 위한 척도'에서 나왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '단위 제도' — 예",
+     "unique": "길이 기준 정의로 야드파운드법·국제단위계(SI)와 갈림 — SI 를 칠 사람 소수",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 킬로그램"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

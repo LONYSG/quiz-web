@@ -1,0 +1,142 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "religion/1",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/1#g032a-g032a-j09-10",
+   "seed": {
+    "subject": "달란트",
+    "aspect": null,
+    "ref": "g032a-j09-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "성경에 나오는 옛 무게·돈의 단위입니다. 예수의 비유에서 주인은 종들에게 이 돈을 맡기고 떠났는데, 굴려서 불린 종은 칭찬받고 땅에 묻어 둔 종은 꾸중을 들었습니다. 영어에서 '재능'을 뜻하는 낱말이 이 비유에서 나온 이 단위는?",
+    "answer": "달란트",
+    "acceptedAnswers": [
+     "탈란트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "아테네의 한 단위는 약 26kg, 신약 시대에 쓰인 무거운 단위는 58.9kg이었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "영어에서 '재능'을 뜻하는 낱말이 이 비유에서 나온 이 단위",
+     "difWhy": "3 — 성경 비유를 모르면 막힘 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 재능(talent) 어원 · 일상 말",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "본디 고대 서아시아와 그리스에서 금은의 무게를 재던 단위로, 한 단위가 수십 kg에 이를 만큼 큰 돈이었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 서아시아·그리스의 무게·화폐 단위(마태복음 달란트 비유)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "성경 달란트 비유와 재능 뜻",
+     "piece": "f04",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '성경의 옛 무게·돈 단위' = 끝 ○○ '단위'. 둘째 문장 '이 돈' 은 단위를 가리켜 헷갈리지 않음"
+    },
+    "blindQuestion": {
+     "guess": "탈란트",
+     "hit": false
+    },
+    "blindHint": {
+     "guess": "달란트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "달란트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Parable_of_the_talents_or_minas",
+     "https://en.wikipedia.org/wiki/Talent_(measurement)",
+     "https://ko.wikipedia.org/wiki/달란트"
+    ],
+    "facts": [
+     {
+      "claim": "달란트 비유 — 한 달란트 받은 종은 땅에 묻어 둠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Parable_of_the_talents_or_minas",
+      "note": "Then the one who had received the one talent also came forward, saying, \"Master, I knew that you were a harsh man … so I was afraid, and I went and hid your talent in the ground."
+     },
+     {
+      "claim": "영어 talent '재능'은 이 비유에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Talent_(measurement)",
+      "note": "The use of the word \"talent\" to mean \"gift or skill\" in English and other languages originated from an interpretation of this parable sometime late in the 13th century."
+     },
+     {
+      "claim": "고대 서아시아·그리스의 질량·화폐 단위",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/달란트",
+      "note": "고대 서아시아와 그리스(헬라)에서는 질량과 화폐의 단위로 쓰였다."
+     },
+     {
+      "claim": "아테네 26kg · 신약 시대 58.9kg",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/달란트",
+      "note": "그리스 혹 아테네의 한 달란트는 26kg … 신약시대에 사용된 무거운 달란트는 58.9kg이었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/달란트"
+    ],
+    "hintNote": null,
+    "easiestCue": "주인이 종들에게 돈을 맡긴 예수의 비유",
+    "worthWhyGen": "영어 '재능(talent)'의 유래가 성경 비유의 돈 단위 — 유래 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '단위' — 예",
+     "unique": "누가복음 판본의 '므나'를 칠 사람 조금 — '재능' 낱말 유래로 갈림",
+     "hint12": "① 예(교회 다닌 사람) ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-q GEN",
+      "before": {
+       "acceptedAnswers": []
+      },
+      "why": "blind '탈란트' = 표기 변형"
+     }
+    ],
+    "warn": [
+     "crossans 무게"
+    ],
+    "job": "job-09"
+   }
+  }
+ ]
+}

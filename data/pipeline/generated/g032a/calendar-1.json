@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "calendar/1",
+  "midKey": "calendar",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "calendar/1#g032a-g032a-j22-10",
+   "seed": {
+    "subject": "광군제",
+    "aspect": null,
+    "ref": "g032a-j22-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국의 기념일입니다. 11월 11일은 숫자 1이 네 개 나란히 선 모습이 혼자 사는 사람 같다고 해서 독신자를 기리는 날이 되었습니다. 알리바바가 이날 큰 할인 행사를 열면서 세계 최대 쇼핑 대목이 된 이 날은?",
+    "answer": "광군제",
+    "acceptedAnswers": [
+     "광군절"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1993년 난징의 대학생들이 연 솔로 축제에서 시작됐다고 하며, 정작 이날 결혼식을 올리는 연인도 많습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "11월 11일 독신자를 기리는 날, 알리바바 쇼핑",
+     "difWhy": "2 — 단서 충분 · 이름 한 번 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 세계 명절 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "2017년 하루 매출로 미국 최대 할인일인 블랙 프라이데이를 넘어선 중국 온라인 쇼핑 대목이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "중국의 독신자의 날(11월 11일) · 최대 온라인 쇼핑일",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "직구·쇼핑 뉴스에서 접함",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '중국의 기념일' · 끝 ○○ = 날, 유래가 순서대로 설명됨"
+    },
+    "blindQuestion": {
+     "guess": "광군제",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "광군제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "광군제",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4803",
+      "answer": "박싱 데이",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4801",
+      "answer": "추수감사절",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5737",
+      "answer": "망자의 날",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/광군제",
+     "https://en.wikipedia.org/wiki/Singles%27_Day"
+    ],
+    "facts": [
+     {
+      "claim": "독신 기념일 11월 11일 · 숫자 1 여러 개에서 유래 · 세계 최대 쇼핑 이벤트 · 알리바바",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/광군제",
+      "note": "광군제는 독신을 기념하기 위한 중국의 기념일로, 11월 11일이다. 매출액 기준으로 전 세계에서 가장 큰 쇼핑 이벤트이다. ... 홀로 있는 모습인 숫자 1이 여러 개 있다는 것에서 유래했다. ... 알리바바 대표 마윈은 여기서 착안하여, 쇼핑으로 외로움을 극복하자라는 모티프로 광군절 이벤트를 시작한다."
+     },
+     {
+      "claim": "four 1s = single people · Alibaba discounts · largest shopping day",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Singles%27_Day",
+      "note": "The four \"1\"s also refer to the demographic group of single people. ... in 2009 Alibaba's CEO Daniel Zhang began to use the day as a 24-hour holiday that offered online shopping discounts ... The holiday has now become the largest physical retail and online shopping day in the world"
+     },
+     {
+      "claim": "2017 블랙프라이데이 매출 넘음",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/광군제",
+      "note": "2017년 하루만에 미국의 블랙프라이데이 매출을 뛰어넘으며, 세계인들의 주목을 받기 시작한다."
+     },
+     {
+      "claim": "1993 남경대 솔로 축제 · 이날 결혼 많음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Singles%27_Day",
+      "note": "(ko) 1993년 중국의 남경대학교에서 열린 솔로의 축제를 계기로 만들어졌다. / (en) more than 4,000 couples got married in Beijing on this date in 2011, far greater than the daily average of 700 marriages."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/광군제"
+    ],
+    "hintNote": null,
+    "easiestCue": "중국 11월 11일 · 알리바바 할인",
+    "worthWhyGen": "3 — 날짜와 이름의 유래가 있는 세계 쇼핑 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '기념일' — 예",
+     "unique": "중국 + 11월 11일 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 블랙 프라이데이"
+    ],
+    "job": "job-22"
+   }
+  }
+ ]
+}

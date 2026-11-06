@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "society/3",
+  "midKey": "society",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "society/3#g032a-g032a-j13-11",
+   "seed": {
+    "subject": "베이비붐 세대",
+    "aspect": null,
+    "ref": "g032a-j13-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전쟁이 끝난 뒤 출생아가 크게 늘어난 시기에 태어난 사람들을 묶어 부르는 인구 집단 이름입니다. 미국은 제2차 세계 대전 뒤, 한국은 6·25 전쟁 뒤에 태어난 이들이 여기에 듭니다. 이 세대를 무엇이라 할까요?",
+    "answer": "베이비붐 세대",
+    "acceptedAnswers": [
+     "베이비부머"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국은 이 세대가 태어난 뒤 출산이 너무 늘자, 정부가 부부마다 자녀를 둘 이하로 낳도록 권했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "6·25 전쟁 뒤에 태어난 이들",
+     "difWhy": "2 — 사회 일상어 · 단서 직접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 사회 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "한국에서는 1955년생부터를 첫 무리로 보며, 흔히 밀레니얼 세대의 부모 세대로 꼽힌다",
+    "generalHintVersion": "hint-v7",
+    "identity": "전후 출생아 급증기에 태어난 세대",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "뉴스·교과서에서 자주 나옴",
+     "piece": "f04",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '인구 집단 이름'이 끝 ○○=세대. 미국·한국 예가 쉬움."
+    },
+    "blindQuestion": {
+     "guess": "베이비붐 세대",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "베이비붐 세대",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "베이비붐 세대",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1246",
+      "answer": "이촌향도",
+      "verdict": "diff",
+      "why": "베이비붐 세대 vs 이촌향도"
+     },
+     {
+      "old": "1248",
+      "answer": "인구 데드크로스",
+      "verdict": "diff",
+      "why": "베이비붐 세대 vs 인구 데드크로스"
+     },
+     {
+      "old": "5138",
+      "answer": "심슨의 역설",
+      "verdict": "diff",
+      "why": "베이비붐 세대 vs 심슨의 역설"
+     },
+     {
+      "old": "4642",
+      "answer": "대체출산율",
+      "verdict": "diff",
+      "why": "베이비붐 세대 vs 대체출산율"
+     },
+     {
+      "old": "1247",
+      "answer": "도시화율",
+      "verdict": "diff",
+      "why": "베이비붐 세대 vs 도시화율"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/베이비_붐_세대",
+     "https://en.wikipedia.org/wiki/Baby_boomers"
+    ],
+    "facts": [
+     {
+      "claim": "한국은 6·25 전쟁 여파로 베이비붐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/베이비_붐_세대",
+      "note": "대한민국에서는 6.25 전쟁 여파로 베이비붐이 일어났으며, 정부는 이후 부부당 자녀를 두 명 이하로 갖도록 권장했다."
+     },
+     {
+      "claim": "제2차 세계 대전 뒤 베이비붐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Baby_boomers",
+      "note": "These years span the mid-20th-century baby boom that followed the end of World War II."
+     },
+     {
+      "claim": "한국 1955년생부터 · 밀레니얼의 부모인 경우 많음",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/베이비_붐_세대",
+      "note": "대한민국에선 1955년부터 1974년생까지(순수기는 1955~1959) … 밀레니얼 세대의 부모인 경우가 많다."
+     },
+     {
+      "claim": "정부가 부부당 자녀 둘 이하 권장",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/베이비_붐_세대",
+      "note": "정부는 이후 부부당 자녀를 두 명 이하로 갖도록 권장했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/베이비_붐_세대"
+    ],
+    "hintNote": null,
+    "easiestCue": "전쟁 뒤 출생아가 크게 늘어난 시기에 태어난 세대",
+    "worthWhyGen": "고령화·은퇴 뉴스의 기본 상식(일반 상식 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '인구 집단' 예",
+     "unique": "전후 출생 급증 세대 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "⑨ 종류 '세대' 첫 문장에 없음"
+    ],
+    "job": "job-13"
+   }
+  }
+ ]
+}

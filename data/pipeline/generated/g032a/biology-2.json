@@ -1,0 +1,286 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "biology/2",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/2#g032a-g032a-j10-9",
+   "seed": {
+    "subject": "캄브리아기 대폭발",
+    "aspect": null,
+    "ref": "g032a-j10-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "약 5억 4천만 년 전에 일어난 생물 진화 사건입니다. 오늘날 동물 무리 대부분이 지질학적으로 짧은 기간에 한꺼번에 화석으로 나타났습니다. 그보다 앞선 조상 화석이 거의 없어 다윈도 자기 이론의 큰 약점으로 걱정했습니다. 웨일스의 라틴어 옛 이름이 붙은 시대에 일어난 이 사건은?",
+    "answer": "캄브리아기 대폭발",
+    "acceptedAnswers": [
+     "캄브리아 대폭발",
+     "캄브리아기 생물 대폭발"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "캐나다 버제스 셰일과 중국 청장 화석지에 부드러운 몸 동물까지 잘 남아, 이 시기를 밝히는 열쇠가 됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "웨일스의 라틴어 옛 이름이 붙은 시대에 일어난 이 사건",
+     "difWhy": "3 — 학교 과학 용어 · 설명에서 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "삼엽충이 번성하기 시작한 고생대 첫 시대에, 눈과 단단한 껍데기를 지닌 동물들이 한꺼번에 쏟아져 나온 일이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고생대 첫 시대에 다양한 동물 화석이 갑자기 나타난 사건",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "교과서·다큐에서 들어 본 용어",
+     "piece": "f01",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "긴 문장",
+     "reason": "첫 문장 '생물 진화 사건'은 끝 ○○=사건과 맞음. 다만 마지막 문장 '웨일스의 라틴어 옛 이름이 붙은 시대'가 한 번에 안 풀려 경계."
+    },
+    "blindQuestion": {
+     "guess": "캄브리아기 대폭발",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "캄브리아기 대폭발",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "캄브리아기 대폭발",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1485",
+      "answer": "화석",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "105",
+      "answer": "이명법",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/캄브리아기_대폭발",
+     "https://en.wikipedia.org/wiki/Cambrian_explosion",
+     "https://ko.wikipedia.org/wiki/캄브리아기"
+    ],
+    "facts": [
+     {
+      "claim": "5억 4200만 년 전 다양한 동물 화석 갑작스러운 출현 · 다윈 반대 근거 우려",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/캄브리아기_대폭발",
+      "note": "캄브리아기의 생물대폭발은 5억 4200만 년 전에 다양한 종류의 동물화석이 갑작스럽게 출현한 지질학적 사건 ... 찰스 다윈은 이 현상이 자신의 진화론에 의한 진화 이론에 대한 주요한 반대 근거로 창조론자들이 이용할 수 있다고 생각했다."
+     },
+     {
+      "claim": "다윈 종의 기원에서 '가장 중대한' 문제로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cambrian_explosion",
+      "note": "In On the Origin of Species, Darwin considered this sudden appearance of a solitary group of trilobites, with no apparent antecedents, and absent other fossils, to be \"undoubtedly of the gravest nature\""
+     },
+     {
+      "claim": "캄브리아 = 웨일스(Cymru)의 라틴어 Cambria",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/캄브리아기",
+      "note": "Cymru를 라틴어로 옮긴 Cambria에서 유래했다. 지질학적 명칭은 웨일스 북부의 지층을 조사한 애덤 세지윅이 1831년의 현장 연구를"
+     },
+     {
+      "claim": "삼엽충 등 · 버제스 셰일 · 청장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cambrian_explosion",
+      "note": "notable phyla including arthropods (most notably trilobites ...) ... The most significant Cambrian lagerstätten are the early Cambrian Maotianshan shale beds of Chengjiang (Yunnan, China) ... the middle Cambrian Burgess Shale (British Columbia"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cambrian_explosion"
+    ],
+    "hintNote": null,
+    "easiestCue": "5억 4천만 년 전 동물 화석이 한꺼번에 나타난 사건",
+    "worthWhyGen": "진화사의 대표 사건 · 시대 이름의 유래(교과 개념 — 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '생물 진화 사건' 예",
+     "unique": "5억 4천만 년 · 동물 무리 출현 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "biology/2#g032a-g032a-j14-6",
+   "seed": {
+    "subject": "양서류",
+    "aspect": null,
+    "ref": "g032a-j14-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "개구리·두꺼비·도롱뇽이 함께 속한 동물 무리입니다. 어릴 때는 물속에서 아가미로 숨을 쉽니다. 자라면 허파와 피부로 숨 쉬며 물과 땅을 오가는 이 척추동물 무리는?",
+    "answer": "양서류",
+    "acceptedAnswers": [
+     "양서강"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영어 이름 amphibian은 그리스어로 '두 가지 삶'이라는 뜻입니다. 피부 호흡에 많이 기대므로 늘 물가 가까이에서 지냅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "개구리·두꺼비·도롱뇽이 함께 속한 동물 무리",
+     "difWhy": "1 — 개구리 무리 이름은 바로 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 분류 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "올챙이 같은 어린 시절을 거쳐 어른이 되며, 거의 모두 물속에 알을 낳는 척추동물 무리다",
+    "generalHintVersion": "hint-v7",
+    "identity": "개구리·도롱뇽 등이 속한 척추동물의 한 강",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "학교 과학 상식",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '동물 무리' 가 있고 예가 분명"
+    },
+    "blindQuestion": {
+     "guess": "양서류",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "양서류",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "양서류",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6485",
+      "answer": "도롱뇽",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2679",
+      "answer": "독화살개구리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6484",
+      "answer": "개구리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3372",
+      "answer": "독화살개구리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/양서류",
+     "https://en.wikipedia.org/wiki/Amphibian"
+    ],
+    "facts": [
+     {
+      "claim": "개구리·두꺼비·도롱뇽 포함 · 유생은 아가미, 변태 후 허파 · 피부 호흡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/양서류",
+      "note": "양서류는 척삭동물의 한 강으로 개구리, 두꺼비, 도롱뇽 등을 포함한다. ... 허파 호흡과 거의 같은 양의 산소를 피부 호흡에 의존 ... 유생 때는 모두 물 속에서 생활하므로 아가미로 호흡하다가, 변태 후에는 허파가 생겨 물과 육지의 양 지역에서 생활한다."
+     },
+     {
+      "claim": "아가미 유생 → 허파 성체 변태 · 피부가 보조 호흡",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Amphibian",
+      "note": "[they] generally undergo metamorphosis from an aquatic larval form with gills to an air-breathing adult form with lungs. Amphibians use their skin as a secondary respiratory interface"
+     },
+     {
+      "claim": "대부분의 번식이 물속",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/양서류",
+      "note": "현재에도 거의 대부분의 번식이 물 속에서 이루어진다."
+     },
+     {
+      "claim": "amphibian = 'both kinds of life'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Amphibian",
+      "note": "The word amphibian is derived from the Ancient Greek term ἀμφίβιος (amphíbios), which means 'both kinds of life'"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/양서류"
+    ],
+    "hintNote": null,
+    "easiestCue": "개구리·두꺼비·도롱뇽이 속한 무리",
+    "worthWhyGen": "학교 생물 분류의 기본(교과 개념 2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '동물 무리' — 예",
+     "unique": "개구리·도롱뇽 + 아가미→허파 → 파충류와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 올챙이"
+    ],
+    "job": "job-14"
+   }
+  }
+ ]
+}

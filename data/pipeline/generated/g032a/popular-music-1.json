@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "popular-music/1",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/1#g032a-g032a-j21-10",
+   "seed": {
+    "subject": "헤비메탈",
+    "aspect": null,
+    "ref": "g032a-j21-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1960년대 말 영국과 미국에서 생겨난 록 음악의 한 갈래입니다. 크게 일그러진 전기기타 소리와 긴 기타 솔로, 시끄럽고 육중한 소리가 특징입니다. 팬들이 머리를 세차게 흔드는 '헤드뱅잉'으로도 유명한 이 장르는?",
+    "answer": "헤비메탈",
+    "acceptedAnswers": [
+     "메탈"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 말이 노래 가사에 처음 나온 곳은 스테판울프의 'Born to Be Wild'로, 오토바이를 가리키는 'heavy metal thunder'였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "크게 일그러진 전기기타 소리 … '헤드뱅잉'",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 음악 장르 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1968년 결성된 영국의 레드 제플린·블랙 사배스·딥 퍼플이 문을 열었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1960년대 말~70년대 초 생긴 묵직한 록 장르(heavy metal)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "록 음악 장르로 흔함",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '록 음악의 한 갈래' 가 있고 끝 ○○ 가 장르라 일치"
+    },
+    "blindQuestion": {
+     "guess": "헤비메탈",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "헤비메탈",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "헤비메탈",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2503",
+      "answer": "디스코",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "2500",
+      "answer": "브리티시 인베이전",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6741",
+      "answer": "Hey Jude",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "6740",
+      "answer": "Stairway to Heaven",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/헤비_메탈",
+     "https://en.wikipedia.org/wiki/Heavy_metal_music"
+    ],
+    "facts": [
+     {
+      "claim": "1960년대 말~70년대 초 영국·미국에서 발달한 록 장르 · 디스토션·긴 기타 솔로·시끄러운 육중한 사운드",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/헤비_메탈",
+      "note": "헤비 메탈(heavy metal)은 1960년대 말에서 1970년대 초, 영국과 미국 등지에서 발달한 록 장르 중 하나로서 … 고증폭된 디스토션과 더욱 길어진 기타 솔로, 강한 비트 그리고 전체적으로 시끄러워진 음악 등을 특징으로 굵고 육중한 사운드를 개발했다."
+     },
+     {
+      "claim": "1960년대 말 영국·미국 · 일그러진 기타의 육중한 소리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Heavy_metal_music",
+      "note": "Heavy metal (or simply metal) is a genre of rock music that developed in the late 1960s and early 1970s, largely in the United Kingdom and United States. … heavy metal bands developed a thick, monumental sound characterized by distorted guitars"
+     },
+     {
+      "claim": "공연에서 헤드뱅잉",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Heavy_metal_music",
+      "note": "When performing live, many metal musicians – as well as the audience for whom they're playing – engage in headbanging, which involves rhythmically beating time with the head"
+     },
+     {
+      "claim": "1968년 레드 제플린·블랙 사배스·딥 퍼플 결성 · 장르의 개척자",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Heavy_metal_music",
+      "note": "In 1968, three of the genre's most famous pioneers – British bands Led Zeppelin, Black Sabbath, and Deep Purple – were founded."
+     },
+     {
+      "claim": "가사 첫 사용: 스테판울프 'Born to Be Wild'(1968) 오토바이 가리킴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Heavy_metal_music",
+      "note": "The first use of \"heavy metal\" in a song lyric is in reference to a motorcycle in the Steppenwolf song \"Born to Be Wild\", also released that year: \"I like smoke and lightning / Heavy metal thunder"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Heavy_metal_music"
+    ],
+    "hintNote": null,
+    "easiestCue": "헤드뱅잉 · 일그러진 기타",
+    "worthWhyGen": "대중음악의 기본 장르 이름",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '록 음악의 한 갈래' — 예",
+     "unique": "1960년대 말 · 헤드뱅잉 — 하드 록과 겹칠 수 있으나 헤드뱅잉·육중한 소리로 헤비메탈 쪽",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 레드 제플린"
+    ],
+    "job": "job-21"
+   }
+  }
+ ]
+}

@@ -1,0 +1,409 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "philosophy/1",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/1#g032a-g032a-j01-2",
+   "seed": {
+    "subject": "형이상학",
+    "aspect": null,
+    "ref": "g032a-j01-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "존재 그 자체와 세계의 궁극적 근거를 따지는 철학 분야입니다. 서양 이름은 아리스토텔레스가 붙인 것이 아닙니다. 훗날 그의 원고를 정리한 사람이 이 주제의 책을 '자연학' 책 뒤에 놓아, '자연학 뒤의 것'이라 부르게 됐다고 흔히 설명합니다. 이 분야는?",
+    "answer": "형이상학",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 편집자는 로도스의 안드로니코스로 짐작되며, 이 말은 16세기 중반 라틴어를 거쳐 영어에 들어왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "존재 그 자체와 세계의 궁극적 근거를 따지는 철학 분야",
+     "difWhy": "3 — 철학 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 철학 개념 + 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "아리스토텔레스가 '제1철학'이라 부른 분야로, 신·영혼·자유의지처럼 눈으로 볼 수 없는 것들을 다룬다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "존재의 근본을 연구하는 철학 분야(metaphysics)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "철학 용어로 일반인도 들음",
+     "piece": "f06",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '철학 분야' 가 끝 '이 분야' 와 일치 · 아리스토텔레스 이야기가 정체 뒤에 옴"
+    },
+    "blindQuestion": {
+     "guess": "형이상학",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "형이상학",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "형이상학",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1155",
+      "answer": "중용",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(형이상학 / 중용)"
+     },
+     {
+      "old": "1164",
+      "answer": "아카데메이아",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(형이상학 / 아카데메이아)"
+     },
+     {
+      "old": "3791",
+      "answer": "소피스트",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(형이상학 / 소피스트)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/형이상학",
+     "https://en.wikipedia.org/wiki/Metaphysics"
+    ],
+    "facts": [
+     {
+      "claim": "자연학 뒤에 놓여 메타피지카라는 말이 쓰임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/형이상학",
+      "note": "그가 죽은 후 유고(遺稿)를 정리·편집함에 있어 제1철학에 관한 것이 \"자연학\" 뒤에 놓여 그때부터 메타피지카(metaphysica: 형이상학)라는 말이 쓰이게 되었다."
+     },
+     {
+      "claim": "아리스토텔레스 자신은 쓰지 않음 · 편집자(안드로니코스 추정)가 붙임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Metaphysics",
+      "note": "Aristotle himself did not use the term metaphysics but an editor of his works some two centuries later (likely Andronicus of Rhodes) coined it for the title, presumably to indicate that this book should be studied after Aristotle's book Physics"
+     },
+     {
+      "claim": "16세기 중반 라틴어를 거쳐 영어",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Metaphysics",
+      "note": "The term entered the English language in the mid 1500s through the Latin word metaphysica."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/형이상학"
+    ],
+    "hintNote": null,
+    "easiestCue": "존재 그 자체와 세계의 궁극적 근거를 따지는 철학 분야",
+    "worthWhyGen": "자주 쓰는 학문 이름이 '책 순서'에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '철학 분야' 예",
+     "unique": "자연학 뒤 · 존재 근거 — 존재론과 갈릴 수 있으나 이름 유래 한정어로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 아리스토텔레스"
+    ],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "philosophy/1#g032a-g032a-j11-8",
+   "seed": {
+    "subject": "플라토닉 러브",
+    "aspect": null,
+    "ref": "g032a-j11-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 그리스 철학자의 이름에서 온 영어 표현입니다. 그는 대화편 '향연'에서 아름다운 몸에 끌리는 마음이 점점 아름다움 그 자체를 사랑하는 데까지 올라가야 한다고 보았습니다. 이 철학자의 이름을 딴 사랑 표현은?",
+    "answer": "플라토닉 러브",
+    "acceptedAnswers": [
+     "플라토닉 사랑",
+     "플라톤적 사랑"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "라틴어 이름은 15세기 이탈리아 학자 피치노가 지었고, 영어에는 1630년대에 들어왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "고대 그리스 철학자의 이름을 딴 사랑 표현",
+     "difWhy": "2 — 플라토닉 러브는 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래 · 일상 표현",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "육체적 관계 없이 마음과 정신으로만 이어진 연인이나 친구 사이를 가리킬 때 흔히 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "육체적 관계 없는 정신적 사랑을 뜻하는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "일상 표현으로 흔함",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '철학자의 이름에서 온 영어 표현' · 끝 ○○(사랑 표현)도 첫 문장 범위 · 향연 설명이 긴 편이나 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "플라토닉 러브",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "플라토닉 러브",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "플라토닉 러브",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1157",
+      "answer": "헤라클레이토스",
+      "verdict": "diff",
+      "why": "플라톤 사랑 표현 vs 헤라클레이토스 변화설 - 지식 다름"
+     },
+     {
+      "old": "1158",
+      "answer": "데모크리토스",
+      "verdict": "diff",
+      "why": "플라토닉 러브 vs 데모크리토스 원자론"
+     },
+     {
+      "old": "5559",
+      "answer": "피타고라스",
+      "verdict": "diff",
+      "why": "플라토닉 러브 vs 피타고라스 일화"
+     },
+     {
+      "old": "1160",
+      "answer": "에피쿠로스 학파",
+      "verdict": "diff",
+      "why": "플라토닉 러브 vs 에피쿠로스 학파"
+     },
+     {
+      "old": "1154",
+      "answer": "소피스트",
+      "verdict": "diff",
+      "why": "플라톤 향연 사랑 개념 vs 소피스트 정의 - 지식 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Platonic_love",
+     "https://ko.wikipedia.org/wiki/플라토닉_러브"
+    ],
+    "facts": [
+     {
+      "claim": "플라톤 이름에서 · 향연 · 사다리처럼 몸에서 아름다움 자체로 올라감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Platonic_love",
+      "note": "The term is derived from the name of the Greek philosopher Plato ... Physical attraction to a particular beautiful body is only at the bottom; as the lover ascends the ladder, a love for absolute beauty itself is the ultimate inspiration at the top."
+     },
+     {
+      "claim": "비성적 사랑 · 향연편 · 정신적인 것",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/플라토닉_러브",
+      "note": "플라토닉 러브(platonic love), 플라톤 사랑은 순수하고 강한 형태의 비성적(非性的)인 사랑을 말한다. ... 플라톤의 '대화' <향연>편에 따르면 ... 정신적인 것에 집중하는 것이다."
+     },
+     {
+      "claim": "피치노 amor platonicus 15세기 · 영어 1630년대",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Platonic_love",
+      "note": "In the 15th century, a Latin term for Plato's idea of love, amor platonicus, was coined by Marsilio Ficino; \"platonic love\" then entered the English language in the 1630s"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/플라토닉_러브"
+    ],
+    "hintNote": null,
+    "easiestCue": "그리스 철학자 이름을 딴 사랑 표현",
+    "worthWhyGen": "일상에서 쓰는 말의 유래(철학자 이름)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '영어 표현' 예",
+     "unique": "철학자 이름 + 사랑 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "philosophy/1#g032a-g032a-j16-1",
+   "seed": {
+    "subject": "아이러니",
+    "aspect": null,
+    "ref": "g032a-j16-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "말과 속뜻이 반대인 표현, 또는 기대와 거꾸로 흘러가는 얄궂은 상황을 가리키는 낱말입니다. 소크라테스가 모르는 척 물으며 상대의 무지를 드러내던 태도를 부른 그리스어에서 왔습니다. 이 낱말은 무엇일까요?",
+    "answer": "아이러니",
+    "acceptedAnswers": [
+     "반어"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "더 거슬러 가면 그리스 희극에서 모르는 척하다가 허풍쟁이를 꺾는 꾀 많은 인물 에이론에서 나온 말입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "말과 속뜻이 반대인 표현",
+     "difWhy": "2 — 일상 외래어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "못한 사람에게 \"참 잘~ 했다\"고 비꼬거나, 소방서에 불이 난 것 같은 얄궂은 일을 두고 쓰는 말이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "반어 · 얄궂은 상황을 뜻하는 말(소크라테스의 에이로네이아에서)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상 외래어",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에서 정의를 바로 주고 끝 ○○ = 낱말"
+    },
+    "blindQuestion": {
+     "guess": "아이러니",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아이러니",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아이러니",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1154",
+      "answer": "소피스트",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "1153",
+      "answer": "산파술",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "6383",
+      "answer": "플라톤",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/반어",
+     "https://en.wikipedia.org/wiki/Irony"
+    ],
+    "facts": [
+     {
+      "claim": "실제와 반대되는 의미로 하는 말 · 소크라테스의 에이로네이아에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/반어",
+      "note": "반어(反語) 또는 아이러니(Irony)는 표현의 효과를 높이기 위해 실제와 반대되는 의미로 하는 말이다. ... 스스로는 무식한 체하면서 사람들의 아는 체하는 가면을 문답법으로 폭로한 소크라테스의 에이로네이아(짓궂음·야유)에서 유래하였다."
+     },
+     {
+      "claim": "그리스어 eironeia · 플라톤이 그린 소크라테스에서 새 뜻",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Irony",
+      "note": "Irony comes from the Greek eironeia and dates back to the 5th century BCE. ... in Plato's depiction of Socrates, eironeia came to acquire a new sense of \"an intended simulation which the audience or hearer was meant to recognise\"."
+     },
+     {
+      "claim": "희극 인물 에이론 · 허풍쟁이 알라존을 이김",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/반어",
+      "note": "‘아이러니’라는 용어는 그리스 아리스토파네스의 희극 중 등장인물인 ‘에이론’(Eiron)에서 나온 말이다. 영리한 에이론은 그의 재치로 적수인 허풍쟁이 등장인물인 ‘알라존’(Alazon)에 매번 승리를 거둔다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/반어"
+    ],
+    "hintNote": null,
+    "easiestCue": "말과 속뜻이 반대인 표현을 가리키는 낱말",
+    "worthWhyGen": "매일 쓰는 말의 철학 쪽 유래(알가치 3 ②·③)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 낱말 — 예",
+     "unique": "\"소크라테스 · 그리스어에서\" 로 역설과 가름(역설은 반대 뜻 표현이 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

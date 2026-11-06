@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "baseball/3",
+  "midKey": "baseball",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "baseball/3#g032a-g032a-j12-7",
+   "seed": {
+    "subject": "박찬호",
+    "aspect": null,
+    "ref": "g032a-j12-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1994년 한국 국적 선수로는 처음으로 미국 메이저리그 무대에 선 야구 투수입니다. 한양대를 다니다 미국으로 건너갔고, 메이저리그에서 통산 124승을 거뒀습니다. 이 선수는 누구일까요?",
+    "answer": "박찬호",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한국 선수로는 처음 미국 올스타에 뽑혔고, 한·미·일 세 리그에서 모두 선발승을 거둔 유일한 한국 선수다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "1994년 한국인 첫 MLB 투수 · 124승",
+     "difWhy": "1 — 국민 스포츠 인물",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중 기본 인물",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "LA 다저스에서 뛰었고, 2010년 노모 히데오를 넘어 아시아 투수 메이저리그 최다승을 세웠다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한국인 첫 메이저리거 투수",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "국민적 스포츠 스타",
+     "piece": "f05",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '야구 투수' 가 있고 문장이 짧아 단서가 바로 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "박찬호",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "박찬호",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "박찬호",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4773",
+      "answer": "노모 히데오",
+      "verdict": "diff",
+      "why": "박찬호 vs 노모 임의 은퇴 - 지식 다름(주의: 새 힌트에 옛 정답 '노모 히데오'가 있어 한 게임에서 새 힌트가 옛 문제 답을 누설)"
+     },
+     {
+      "old": "4774",
+      "answer": "이치로",
+      "verdict": "diff",
+      "why": "박찬호 vs 이치로"
+     },
+     {
+      "old": "2106",
+      "answer": "재키 로빈슨",
+      "verdict": "diff",
+      "why": "박찬호 vs 재키 로빈슨"
+     },
+     {
+      "old": "4768",
+      "answer": "재키 로빈슨",
+      "verdict": "diff",
+      "why": "박찬호 vs 재키 로빈슨 UCLA"
+     },
+     {
+      "old": "5698",
+      "answer": "LA 다저스",
+      "verdict": "unsure",
+      "why": "지식은 다름(박찬호 vs 다저스 구단 별명)이나 옛 힌트에 새 정답 '박찬호'가 있고 새 힌트에 옛 정답 'LA 다저스'가 있어 상호 누설"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/박찬호",
+     "https://en.wikipedia.org/wiki/Chan_Ho_Park"
+    ],
+    "facts": [
+     {
+      "claim": "한국 국적 최초 MLB · 1994년 데뷔 · 124승",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박찬호",
+      "note": "대한민국 국적 선수로는 최초로 메이저 리그 베이스볼(MLB)에서 활동했다. 1994년 로스앤젤레스 다저스 소속으로 MLB에 데뷔해 ... 2010년에는 124승을 거둬 노모 히데오를 제치고 메이저 리그 동양인 최다 승 투수로 기록됐다."
+     },
+     {
+      "claim": "한양대 중퇴 후 입단 · 한국 최초 MLB 진출",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/박찬호",
+      "note": "1994년 한양대학교 경영학과 2학년 재학 이후 대학교를 중퇴한 그는 LA 다저스에 입단하며 한국인으로는 최초로 MLB에 진출하는 기록을 세웠다."
+     },
+     {
+      "claim": "첫 한국 출신 MLB 선수 · 첫 한국 올스타",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chan_Ho_Park",
+      "note": "Park was the first South Korean-born player in MLB history, and the first South Korean player to be named an MLB All-Star."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/박찬호"
+    ],
+    "hintNote": null,
+    "easiestCue": "한국 선수 처음으로 메이저리그 무대에 선 투수",
+    "worthWhyGen": "한국 스포츠사의 대표 인물 확인 — 일반 상식(안중근 꼴) 3 또는 취미 2",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '야구 투수' 예",
+     "unique": "1994년 + 한국 국적 첫 메이저리거 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 노모 히데오/LA 다저스"
+    ],
+    "job": "job-12"
+   }
+  }
+ ]
+}

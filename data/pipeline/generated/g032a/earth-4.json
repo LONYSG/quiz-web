@@ -1,0 +1,465 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "earth/4",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/4#g032a-g032a-j24-3",
+   "seed": {
+    "subject": "적조",
+    "aspect": null,
+    "ref": "g032a-j24-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바다에서 플랑크톤이 갑자기 지나치게 불어나 바닷물 색이 붉거나 누렇게 변하는 현상입니다. 여름철 남해안에서 자주 생겨 양식장 물고기를 떼로 죽게 하기도 합니다. 이 현상은 무엇일까요?",
+    "answer": "적조",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1995년 8월에는 남해와 동해 연안 전체로 번져 어패류가 대량 폐사하고 764억 원의 피해를 냈습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "플랑크톤이 지나치게 불어나 바닷물 색이 붉거나 누렇게 변하는 현상",
+     "difWhy": "2 — 뉴스 현상 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 뉴스 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "황토를 바다에 뿌려 없애는 장면이 뉴스에 나오며, 육지에서 흘러든 질소·인 같은 영양분이 주된 원인이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "플랑크톤 대번식으로 바닷물이 붉게 변하는 현상(red tide)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "뉴스·교과서에서 자주 접함",
+     "piece": "f05",
+     "genPct": 88
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 곧 현상의 설명이라 끝 ○○ '현상' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "적조",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "적조",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "적조",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6050",
+      "answer": "호텔 캘리포니아",
+      "verdict": "diff",
+      "why": "새=적조 현상; 호텔 캘리포니아·스키너·스키너 상자·침묵의 봄·피아제는 무관한 지식"
+     },
+     {
+      "old": "6059",
+      "answer": "스키너",
+      "verdict": "diff",
+      "why": "새=적조 현상; 호텔 캘리포니아·스키너·스키너 상자·침묵의 봄·피아제는 무관한 지식"
+     },
+     {
+      "old": "1890",
+      "answer": "스키너 상자",
+      "verdict": "diff",
+      "why": "새=적조 현상; 호텔 캘리포니아·스키너·스키너 상자·침묵의 봄·피아제는 무관한 지식"
+     },
+     {
+      "old": "5332",
+      "answer": "침묵의 봄",
+      "verdict": "diff",
+      "why": "새=적조 현상; 호텔 캘리포니아·스키너·스키너 상자·침묵의 봄·피아제는 무관한 지식"
+     },
+     {
+      "old": "6751",
+      "answer": "피아제",
+      "verdict": "diff",
+      "why": "새=적조 현상; 호텔 캘리포니아·스키너·스키너 상자·침묵의 봄·피아제는 무관한 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/적조",
+     "https://en.wikipedia.org/wiki/Harmful_algal_bloom"
+    ],
+    "facts": [
+     {
+      "claim": "플랑크톤 이상 증식으로 바다가 변색 · 붉게 · 황색 등",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/적조",
+      "note": "적조(赤潮, Red tide)는 플랑크톤의 이상 증식으로 바다와 강, 운하, 호수 등이 변색하는 현상이다. … 물의 색깔은 원인이 되는 플랑크톤 색소에 따라 다르며, 황색, 적색, 적갈색, 다갈색 등을 나타낸다."
+     },
+     {
+      "claim": "양식 어패류 집단 폐사 · 여름철 유해 적조",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/적조",
+      "note": "적조현상이 발생하면 양식 어패류가 집단 폐사하는 등 큰 피해가 따른다. … 여름철에는 대형 편모조류가 유해 적조를 일으키고 있다."
+     },
+     {
+      "claim": "대번식 · 따뜻한 물 · 물고기 떼죽음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Harmful_algal_bloom",
+      "note": "Most blooms occur in warm waters with excessive nutrients. The harmful effects from such blooms are due to the toxins they produce or from using up oxygen in the water which can lead to fish die-offs."
+     },
+     {
+      "claim": "황토 살포 · 영양염류(질소·인) 유입이 원인",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/적조",
+      "note": "적조를 제거하는 방법으로는 황토를 뿌리거나 … 영양염류은 대표적으로 질소나 인이 주성분이다. 토양 오염으로 인한 지표 유출수와 도시 및 공장에서 정화되지 않은 폐수가 바다로 유입된다."
+     },
+     {
+      "claim": "1995년 8월 764억 원 피해",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/적조",
+      "note": "1995년 8월 Cochlodinium polykrikoides 적조가 남해와 동해 전 연안에 대량 발생하고 어패류가 대량 폐사하여 764억원의 최대 피해를 준 바 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/적조"
+    ],
+    "hintNote": null,
+    "easiestCue": "바닷물이 붉게 변함",
+    "worthWhyGen": "여름마다 뉴스에 나오는 바다 현상 — 일반 상식",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '바다 … 현상' 예",
+     "unique": "'바다에서 · 붉거나 누렇게'로 강·호수의 녹조와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 질소"
+    ],
+    "job": "job-24"
+   }
+  },
+  {
+   "seedId": "earth/4#g032a-g032a-j24-4",
+   "seed": {
+    "subject": "이안류",
+    "aspect": null,
+    "ref": "g032a-j24-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "해수욕장에서 부서진 파도의 물이 좁은 띠를 이루어 먼바다 쪽으로 빠르게 빠져나가는 물살입니다. 해운대에서는 이 물살에 휩쓸린 피서객이 한 해 100명 넘게 구조되기도 했습니다. 이 물살을 무엇이라 할까요?",
+    "answer": "이안류",
+    "acceptedAnswers": [
+     "역파도",
+     "립 커런트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "사람이 헤엄치는 속도보다 빠를 수 있지만 사람을 물속으로 끌어내리지는 않습니다. 부서지는 파도 너머에서 힘이 다합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "부서진 파도의 물이 좁은 띠를 이루어 먼바다 쪽으로 빠져나가는 물살",
+     "difWhy": "3 — 이름을 떠올리기 어려움 · 뉴스 단골",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 해수욕 안전에 쓸모",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "휩쓸리면 해안 쪽으로 맞서 헤엄치지 말고 해변과 나란히 옆으로 헤엄쳐 빠져나와야 하는 물살이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "해안에서 바다 쪽으로 좁고 빠르게 흐르는 물살(rip current)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "해수욕장 안전 뉴스에서 간혹 접함",
+     "piece": "f08",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=물살, 첫 문장이 '좁은 띠로 빠져나가는 물살입니다'로 종류와 특징을 함께 준다."
+    },
+    "blindQuestion": {
+     "guess": "이안류",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "이안류",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "이안류",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2853",
+      "answer": "조석",
+      "verdict": "diff",
+      "why": "새=이안류; 조석·염분·난류·열염순환·조경 수역은 다른 해양 개념"
+     },
+     {
+      "old": "2854",
+      "answer": "염분",
+      "verdict": "diff",
+      "why": "새=이안류; 조석·염분·난류·열염순환·조경 수역은 다른 해양 개념"
+     },
+     {
+      "old": "2850",
+      "answer": "난류",
+      "verdict": "diff",
+      "why": "새=이안류; 조석·염분·난류·열염순환·조경 수역은 다른 해양 개념"
+     },
+     {
+      "old": "2857",
+      "answer": "열염순환",
+      "verdict": "diff",
+      "why": "새=이안류; 조석·염분·난류·열염순환·조경 수역은 다른 해양 개념"
+     },
+     {
+      "old": "2856",
+      "answer": "조경 수역",
+      "verdict": "diff",
+      "why": "새=이안류; 조석·염분·난류·열염순환·조경 수역은 다른 해양 개념"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이안류",
+     "https://en.wikipedia.org/wiki/Rip_current"
+    ],
+    "facts": [
+     {
+      "claim": "해안에서 바다 방향 · 폭 좁고 빠름 · 역파도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이안류",
+      "note": "이안류(離岸流), 역조(逆潮), 거꾸로 파도, 립 커런트(영어: rip current 또는 rip)는 해안에서 바다 방향으로 흐르는 해류로, 역파도, 역물살이라고도 부른다. 폭이 좁고, 물살이 매우 빠르다."
+     },
+     {
+      "claim": "해운대 2008년 150명 · 2009년 106명 구조",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이안류",
+      "note": "대한민국 해운대해수욕장에서는 이안류로 인해서 2009년에는 106명, 2008년에는 150명이 파도에 떠내려가다 구조되는 상황이 발생한다."
+     },
+     {
+      "claim": "파도가 부서지는 해변 · 좁고 강한 바다 쪽 흐름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rip_current",
+      "note": "A rip current (or just rip) is a specific type of water current that can occur near beaches where waves break. A rip is a strong, localized, and narrow current of water that moves directly away from the shore"
+     },
+     {
+      "claim": "옆(해변과 나란히)으로 헤엄쳐 탈출",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Rip_current",
+      "note": "Swimmers can usually exit the rip easily by swimming at a right angle to the flow, parallel to the beach."
+     },
+     {
+      "claim": "사람을 아래로 끌지 않음 · 사람보다 빠름 · 파도 너머에서 소멸",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rip_current",
+      "note": "A fairly common misconception is that rip currents can pull a swimmer down … They can be as fast as 2.5 m/s (8.2 ft/s), which is faster than any human can swim. … The flow of the current fades out completely at the head of the rip, outside the zone of the breaking waves"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이안류",
+     "https://en.wikipedia.org/wiki/Rip_current"
+    ],
+    "hintNote": null,
+    "easiestCue": "해수욕장에서 바다 쪽으로 빠져나가는 물살 · 해운대",
+    "worthWhyGen": "여름 물놀이 안전 상식(빠져나오는 법까지) — 누구에게나 쓸모",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '흐름' 예(끝은 '물살')",
+     "unique": "'해수욕장 · 먼바다 쪽 · 좁은 띠'로 조류·해류 일반과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-24"
+   }
+  },
+  {
+   "seedId": "earth/4#g032a-g032a-j27-6",
+   "seed": {
+    "subject": "해양심층수",
+    "aspect": null,
+    "ref": "g032a-j27-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바다에서 얻는 물 자원입니다. 수심 200m보다 깊어 햇빛이 닿지 않는 곳의 바닷물로, 늘 차갑고 세균이 거의 없으며 미네랄이 풍부합니다. 강원도 고성 등에서 끌어올려 음료로 팝니다. 이 바닷물은?",
+    "answer": "해양심층수",
+    "acceptedAnswers": [
+     "심층수"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "표층 바닷물과 잘 섞이지 않아 산소는 적고, 온도는 섭씨 0~3도로 고르게 낮습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "수심 200m보다 깊어 햇빛이 닿지 않는 곳의 바닷물 … 음료로 팝니다",
+     "difWhy": "2 — 심층수라는 말이 일상에 쓰임 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 쓸모 — 상품 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "일본에서 음료·스파 상품으로 큰 시장을 이룬 물로, 지구 바다 전체 부피의 약 90%를 차지한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "수심 200m 아래 깊은 바다의 차고 깨끗한 바닷물(음료 등으로 개발)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "생수 광고·뉴스에서 접함",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '물 자원' 종류가 있고 특징이 쉬운 말로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "해양심층수",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "해양심층수",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "해양심층수",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2855",
+      "answer": "용승",
+      "verdict": "diff",
+      "why": "새=해양심층수; 용승·열염순환·조석·염분·적조는 다른 해양 현상"
+     },
+     {
+      "old": "2857",
+      "answer": "열염순환",
+      "verdict": "diff",
+      "why": "새=해양심층수; 용승·열염순환·조석·염분·적조는 다른 해양 현상"
+     },
+     {
+      "old": "2853",
+      "answer": "조석",
+      "verdict": "diff",
+      "why": "새=해양심층수; 용승·열염순환·조석·염분·적조는 다른 해양 현상"
+     },
+     {
+      "old": "2854",
+      "answer": "염분",
+      "verdict": "diff",
+      "why": "새=해양심층수; 용승·열염순환·조석·염분·적조는 다른 해양 현상"
+     },
+     {
+      "old": "g032a:g032a-j24-3",
+      "answer": "적조",
+      "verdict": "diff",
+      "why": "새=해양심층수; 용승·열염순환·조석·염분·적조는 다른 해양 현상"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/해양심층수",
+     "https://en.wikipedia.org/wiki/Deep_ocean_water"
+    ],
+    "facts": [
+     {
+      "claim": "수심 200m 아래 · 줄임말 심층수 · 햇빛이 닿지 않음 · 영양 염류 풍부 · 세균 거의 없음 · 미네랄 · 고성 강원심층수 음료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해양심층수",
+      "note": "해양심층수(海洋深層水)는 수심 200미터 아래의 깊은 바다에 있는 물이다. 줄임말로 심층수라고도 한다. … 햇빛이 충분히 닿지 않기 때문에 … 일반세균이 거의 존재하지 않고 … 미네랄이 풍부하고 … '강원심층수'가 강원도 고성군에 설립되었고, 심층수와 관련된 음료, 김치 등을"
+     },
+     {
+      "claim": "200m 아래 차갑고 짠 물 · 0~3℃ · 바다 부피 90%",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Deep_ocean_water",
+      "note": "Deep ocean water (DOW) is the name for cold, salty water found in the deep sea, starting at 200 m … Deep ocean water makes up about 90% of the volume of the oceans. Deep ocean water has a very uniform temperature, around 0–3 °C"
+     },
+     {
+      "claim": "일본 음료·스파 시장",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/해양심층수",
+      "note": "특히 일본에서는 해양심층수가 음료, 스파(spa)를 비롯한 각종 건강 상품으로 큰 시장이 형성되어 있는 상태다."
+     },
+     {
+      "claim": "표층수와 섞이기 어려워 용존 산소 적음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/해양심층수",
+      "note": "표면에 있는 물과도 섞이기 어렵기 때문에 용존 산소량 또한 적다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/해양심층수",
+     "https://en.wikipedia.org/wiki/Deep_ocean_water"
+    ],
+    "hintNote": null,
+    "easiestCue": "수심 200m 아래 바닷물 · 음료로 판매",
+    "worthWhyGen": "3 — 마트 생수·음료에서 보는 말의 정체(쓸모)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '물 자원' / 끝 '바닷물' — 예",
+     "unique": "200m 아래 + 음료 개발 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

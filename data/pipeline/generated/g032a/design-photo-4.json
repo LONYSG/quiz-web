@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "design-photo/4",
+  "midKey": "design-photo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/4#g032a-g032a-j19-1",
+   "seed": {
+    "subject": "다이슨",
+    "aspect": null,
+    "ref": "g032a-j19-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "날개 없는 선풍기와 먼지 봉투 없는 청소기로 유명한 영국 가전 회사입니다. 창업자는 제재소에서 쓰던 회오리 장치(사이클론)를 보고 이 청소기를 떠올렸습니다. 창업자의 성을 딴 이 회사는?",
+    "answer": "다이슨",
+    "acceptedAnswers": [
+     "Dyson"
+    ],
+    "originalTitleVariants": [
+     "Dyson"
+    ],
+    "explanation": "1993년 세운 회사로, 지금 본사는 싱가포르에 있습니다. 창업자는 2007년 영국 기사 작위를 받았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "날개 없는 선풍기와 먼지 봉투 없는 청소기로 유명한 영국 가전 회사",
+     "difWhy": "1 — 단서가 곧 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 브랜드 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "약 5,127개의 시제품을 만든 끝에 흡입력이 줄지 않는 청소기를 내놓은 브랜드다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "영국 가전 회사 — 제임스 다이슨이 세운, 봉투 없는 사이클론 청소기·날개 없는 선풍기",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "유명 가전 브랜드",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영국 가전 회사' 가 끝 '이 회사' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "다이슨",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "다이슨",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "다이슨",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5322",
+      "answer": "아이팟",
+      "verdict": "diff",
+      "why": "다이슨 vs 아이팟 — 다른 지식"
+     },
+     {
+      "old": "4858",
+      "answer": "베스파",
+      "verdict": "diff",
+      "why": "다이슨 vs 베스파 — 다른 지식"
+     },
+     {
+      "old": "2831",
+      "answer": "프로토타입",
+      "verdict": "diff",
+      "why": "다이슨 vs 프로토타입 용어 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/다이슨_(기업)",
+     "https://en.wikipedia.org/wiki/James_Dyson",
+     "https://en.wikipedia.org/wiki/Dyson_(company)",
+     "https://ko.wikipedia.org/wiki/제임스_다이슨"
+    ],
+    "facts": [
+     {
+      "claim": "날개 없는 선풍기(에어 멀티플라이어)를 만드는 영국 전자제품 기업",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/다이슨_(기업)",
+      "note": "다이슨(영어: Dyson Ltd.)은 1993년 제임스 다이슨이 설립한 영국의 전자제품 기업이다. 본사는 싱가포르에 있다. … 다이슨은 에어 멀티플라이어(Air Multiplier)라는 이름의 날개없는 선풍기를 만들어 판매하고 있다."
+     },
+     {
+      "claim": "봉투 없는 사이클론 청소기 · 제재소의 사이클론에서 착안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Dyson",
+      "note": "He is best known as the inventor of the bagless vacuum cleaner, which works on the principle of cyclonic separation. … The cyclone idea came from a sawmill that used cyclone technology."
+     },
+     {
+      "claim": "제재소의 사이클론 장비를 밤에 찾아가 측정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dyson_(company)",
+      "note": "He knew sawmills used this type of equipment, and investigated by visiting a local sawmill at night and taking measurements."
+     },
+     {
+      "claim": "약 5,127개 시제품 · 흡입력이 떨어지지 않는 청소기",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/James_Dyson",
+      "note": "Dyson had the idea of using cyclonic separation to create a vacuum cleaner that would not lose suction as it picked up dirt. … after five years and about 5,127 prototypes, Dyson launched the \"G-Force\" cleaner in 1983."
+     },
+     {
+      "claim": "2007년 기사 작위",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/제임스_다이슨",
+      "note": "2007년 기사작위(Knight Bachelor) 서임"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/James_Dyson"
+    ],
+    "hintNote": null,
+    "easiestCue": "날개 없는 선풍기 · 먼지 봉투 없는 청소기",
+    "worthWhyGen": "생활 가전의 대표 브랜드와 그 발명의 까닭(제재소 사이클론) — 일반 상식 + 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '영국 가전 회사' — 예",
+     "unique": "날개 없는 선풍기 + 봉투 없는 청소기 + 창업자 성 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

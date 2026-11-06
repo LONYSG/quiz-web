@@ -1,0 +1,166 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "astronomy/4",
+  "midKey": "astronomy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "astronomy/4#g032a-g032a-j25-2",
+   "seed": {
+    "subject": "슈퍼문",
+    "aspect": null,
+    "ref": "g032a-j25-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "달이 지구에 가장 가까워지는 근지점 무렵에 뜬 보름달을 가리키는 말입니다. 평소보다 크고 밝게 보여 뉴스에 자주 나오지만, 1979년 한 점성술사가 만든 말이라 천문학에서는 쓰지 않습니다. 이 보름달을 무엇이라 할까요?",
+    "answer": "슈퍼문",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이때는 밀물과 썰물의 차가 평소보다 커지지만, 지진이나 해일 같은 자연재해와는 관계가 없습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "평소보다 크고 밝게 보여 뉴스에 자주 나오는 보름달",
+     "difWhy": "2 — 뉴스 용어 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 용어 유래·오해",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "가장 멀리 있을 때의 보름달보다 지름이 약 14% 크고 약 30% 밝게 보여, 보름달 사진 뉴스의 단골 제목이 되는 달이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "근지점 무렵의 보름달을 부르는 말(supermoon)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "뉴스에서 자주 보도",
+     "piece": "f03",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '근지점 무렵의 보름달' 이 있고 점성술사 일화는 뒤에 와서 방해 없음"
+    },
+    "blindQuestion": {
+     "guess": "슈퍼문",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "슈퍼문",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "슈퍼문",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4262",
+      "answer": "복사점",
+      "verdict": "diff",
+      "why": "새=슈퍼문; 복사점·블루문(다른 보름달 용어)·외계 행성·월식·펄서는 다른 지식"
+     },
+     {
+      "old": "4263",
+      "answer": "블루문",
+      "verdict": "diff",
+      "why": "새=슈퍼문; 복사점·블루문(다른 보름달 용어)·외계 행성·월식·펄서는 다른 지식"
+     },
+     {
+      "old": "2727",
+      "answer": "외계 행성",
+      "verdict": "diff",
+      "why": "새=슈퍼문; 복사점·블루문(다른 보름달 용어)·외계 행성·월식·펄서는 다른 지식"
+     },
+     {
+      "old": "2723",
+      "answer": "월식",
+      "verdict": "diff",
+      "why": "새=슈퍼문; 복사점·블루문(다른 보름달 용어)·외계 행성·월식·펄서는 다른 지식"
+     },
+     {
+      "old": "5222",
+      "answer": "펄서",
+      "verdict": "diff",
+      "why": "새=슈퍼문; 복사점·블루문(다른 보름달 용어)·외계 행성·월식·펄서는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/슈퍼문",
+     "https://en.wikipedia.org/wiki/Supermoon"
+    ],
+    "facts": [
+     {
+      "claim": "근지점에 있을 때의 보름달",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/슈퍼문",
+      "note": "슈퍼문(supermoon)은 근지점에 있을 때의 달을 말한다. 특히, 근지점에 있을 때의 달 중에서, 그때의 달이 보름달일 때를 말한다."
+     },
+     {
+      "claim": "1979년 점성술사 리처드 놀이 만든 말 · 천문학 용어 아님",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Supermoon",
+      "note": "The name supermoon was coined by astrologer Richard Nolle in 1979 … Because the term supermoon is astrological in origin, it has no precise astronomical definition."
+     },
+     {
+      "claim": "천문학에서는 쓰지 않음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/슈퍼문",
+      "note": "1979년에 점성술사 Richard Nolle가 만든 단어이다. 천문학에서는 슈퍼문이라는 용어를 사용하지 않는다."
+     },
+     {
+      "claim": "미니문보다 14% 크고 30% 밝음",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/슈퍼문",
+      "note": "미니문 (Mini Moon) 일 때보다 약 14% 정도 더 크고, 약 30% 정도 더 밝다."
+     },
+     {
+      "claim": "조차 커지나 지진·해일과 무관",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/슈퍼문",
+      "note": "달이 지구와 가까워지면, 조차, 즉 조석간만의 차가 평소보다 커지지만, 지진이나 해일 등 자연재해와는 관련이 없다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/슈퍼문"
+    ],
+    "hintNote": null,
+    "easiestCue": "근지점 무렵의 보름달",
+    "worthWhyGen": "뉴스에 자주 나오는 말의 정체와 그 말이 점성술에서 왔다는 것(알가치 3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '보름달을 가리키는 말' — 예",
+     "unique": "근지점 보름달 — 슈퍼문 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "football/4",
+  "midKey": "football",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "football/4#g032a-g032a-j22-5",
+   "seed": {
+    "subject": "홍명보",
+    "aspect": null,
+    "ref": "g032a-j22-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대한민국 축구 국가대표팀의 주장을 지낸 수비수입니다. 2002년 한일 월드컵 스페인과의 8강 승부차기에서 마지막 키커로 나서 골을 넣어 4강 진출을 이끌었습니다. 뒤에 울산 현대 감독으로 K리그1 2연패도 이룬 이 사람은?",
+    "answer": "홍명보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "포항제철에서 데뷔한 1992년 곧바로 리그 MVP를 받았고, 국가대표로 136경기를 뛰었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "2002 월드컵 스페인전 마지막 승부차기 키커 · 울산 감독",
+     "difWhy": "2 — 대중 스포츠 인물",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 기본 인물",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "2012 런던 올림픽 축구 동메달을 이끈 감독이며, 2002 월드컵 활약으로 아시아 선수 처음 브론즈볼을 받았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "2002 월드컵 주장 · 대표팀 감독을 지낸 축구인",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "2002 월드컵·국대 감독 뉴스",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '축구 국가대표 주장 수비수' 가 있고 끝 ○○ '사람' 과 맞음"
+    },
+    "blindQuestion": {
+     "guess": "홍명보",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "홍명보",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "홍명보",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "416",
+      "answer": "승부차기",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "2929",
+      "answer": "4강",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4417",
+      "answer": "북한",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "2928",
+      "answer": "일본",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4418",
+      "answer": "페루자",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/홍명보",
+     "https://en.wikipedia.org/wiki/Hong_Myung-bo"
+    ],
+    "facts": [
+     {
+      "claim": "2002 주장 · 스페인 8강 승부차기 마지막 슛 · 울산 현대 K리그1 2연패",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/홍명보",
+      "note": "2002년 월드컵에서는 주장으로 참가하였으며 광주에서 열린 스페인과의 8강전 승부차기에서 마지막 슛을 성공시켜 대한민국의 4강 진출에 기여하였다. ... 2021년 울산 현대의 감독을 맡으며 현장으로 복귀했고 울산 현대에서 2022년과 2023년 K리그1 2연패를 달성했다."
+     },
+     {
+      "claim": "final penalty vs Spain quarter-final",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hong_Myung-bo",
+      "note": "He commanded South Korea's defensive line ... and scored the final penalty to secure a 5–3 shoot-out win in a quarter-final match against Spain."
+     },
+     {
+      "claim": "2012 올림픽 동메달 · 브론즈볼 아시아 최초",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/홍명보",
+      "note": "2012년 하계 올림픽 동메달 획득에 기여했다. ... 2002년 FIFA 월드컵에서의 활약으로 인해 아시아 선수로는 최초이자 유일하게 브론즈볼을 수상했다."
+     },
+     {
+      "claim": "1992 MVP · A매치 136경기",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/홍명보",
+      "note": "국제 A매치 136경기에 출전하여 ... 포항제철 아톰즈에 입단하여 프로 경력을 시작했다. 프로 데뷔 첫 해인 1992년에 리그 MVP를 수상하는 등"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/홍명보"
+    ],
+    "hintNote": null,
+    "easiestCue": "2002 스페인전 승부차기 마지막 키커 · 주장",
+    "worthWhyGen": "3 — 2002 월드컵을 대표하는 한국 축구의 기본 이름",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '수비수' — 예",
+     "unique": "마지막 키커 = 한 명",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

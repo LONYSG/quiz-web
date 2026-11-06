@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "war-history/3",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/3#g032a-g032a-j02-10",
+   "seed": {
+    "subject": "환타",
+    "aspect": null,
+    "ref": "g032a-j02-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "과일 맛 탄산음료 상표입니다. 제2차 세계대전 중 독일은 미국의 금수 조치로 콜라 원액을 들여올 수 없었습니다. 그래서 코카콜라 독일 지사가 사탕무·유청·사과 찌꺼기로 대신할 음료를 만들었고, '상상력을 발휘하라'는 독일어 말에서 이름을 땄습니다. 이 음료는?",
+    "answer": "환타",
+    "acceptedAnswers": [
+     "Fanta"
+    ],
+    "originalTitleVariants": [
+     "Fanta"
+    ],
+    "explanation": "지금의 오렌지맛은 1955년 이탈리아에서 개발되었습니다. 설탕이 귀하던 전쟁 중에는 수프나 스튜에 단맛을 내는 데도 쓰였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "과일 맛 탄산음료 상표",
+     "difWhy": "2 — 상표 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 상표 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "코카콜라 회사가 파는 과일 맛 탄산음료로, 주황색 병에 든 상큼한 제품이 가장 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "코카콜라 회사의 과일 맛 탄산음료 브랜드",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "흔한 음료 브랜드",
+     "piece": "f05",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '과일 맛 탄산음료 상표'가 끝 ○○=음료. 둘째 문장 이후 일화는 모두 정답 설명."
+    },
+    "blindQuestion": {
+     "guess": "환타",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "환타",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "환타",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3456",
+      "answer": "코카콜라",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(환타 / 코카콜라)"
+     },
+     {
+      "old": "g032a:g032a-j23-4",
+      "answer": "A급 전범",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(환타 / A급 전범)"
+     },
+     {
+      "old": "1276",
+      "answer": "에니그마",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(환타 / 에니그마)"
+     },
+     {
+      "old": "1281",
+      "answer": "벌지 전투",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(환타 / 벌지 전투)"
+     },
+     {
+      "old": "1273",
+      "answer": "진주만",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(환타 / 진주만)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fanta",
+     "https://ko.wikipedia.org/wiki/환타"
+    ],
+    "facts": [
+     {
+      "claim": "2차 대전 · 금수 조치로 코카콜라 시럽 수입 금지 · 사탕무·유청·사과박 · Fantasie에서 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fanta",
+      "note": "During the Second World War, Germany was under a United States trade embargo … the import of Coca-Cola syrup was thus prohibited. … using only ingredients available in Germany at the time, including sugar beet, whey, and apple pomace. … Keith's exhorting his team to \"use their imagination\" (Fantasie in German), to which one of his salesmen, Joe Knipp, retorted \"Fanta!\"."
+     },
+     {
+      "claim": "같은 내용(한국어)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/환타",
+      "note": "환타는 나치 독일에 대한 미국의 무역 금수 조치로 인해 코카콜라의 일반적인 원료를 공급받을 수 없게 되자, 코카콜라의 대체품으로 처음 만들어졌다. … \"상상력을 발휘하라(독일어로 Fantasie)\"고 독려하자 … \"환타!\"라고 외친 것에서 유래했다."
+     },
+     {
+      "claim": "1955 이탈리아 오렌지맛 · 수프·스튜에 단맛",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/환타",
+      "note": "현재의 오렌지맛 환타는 1955년 이탈리아에서 개발되었다. / 많은 병이 음료로 소비되지 않고 수프나 스튜에 단맛과 풍미를 더하는 요리 재료로 사용되기도 했다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "코카콜라 독일 지사가 만든 과일 맛 탄산음료",
+    "worthWhyGen": "누구나 마시는 음료가 왜 생겼나(유래 — 돔 페리뇽 꼴)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '탄산음료 상표' 예",
+     "unique": "2차 대전 독일 + 콜라 대체 — 스프라이트와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 코카콜라"
+    ],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "war-history/3#g032a-g032a-j23-4",
+   "seed": {
+    "subject": "A급 전범",
+    "aspect": null,
+    "ref": "g032a-j23-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제2차 세계대전이 끝난 뒤 도쿄 재판에서 일본 전쟁 지도자들에게 붙은 분류입니다. 죄의 무게가 아니라 종류를 나눈 것으로, 침략 전쟁을 계획하고 이끈 '평화에 대한 죄'를 뜻했습니다. 이 분류의 전쟁 범죄자는?",
+    "answer": "A급 전범",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "같은 재판에서 B급은 일반 전쟁 범죄, C급은 인도에 반한 죄를 가리켰습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "침략 전쟁을 계획하고 이끈 '평화에 대한 죄'",
+     "difWhy": "3 — 역사 용어 · 급의 뜻을 알아야 함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 역사 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "도조 히데키 등 14명이 1978년 야스쿠니 신사에 몰래 합사되어, 일본 총리 참배 때마다 논란이 되는 이들이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도쿄 재판에서 '평화에 대한 죄'로 분류된 일본 전쟁 지도자",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "교과서·야스쿠니 뉴스에서 접함",
+     "piece": "f03",
+     "genPct": 82
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '도쿄 재판에서 붙은 분류' 로 종류가 있고 풀이도 같이 줌 · 마지막 '이 분류의 전쟁 범죄자' 가 조금 어색하나 이해됨"
+    },
+    "blindQuestion": {
+     "guess": "A급 전범",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "A급 전범",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "A급 전범",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j02-10",
+      "answer": "환타",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1281",
+      "answer": "벌지 전투",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1276",
+      "answer": "에니그마",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1273",
+      "answer": "진주만",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "1271",
+      "answer": "전격전",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/A급_전범",
+     "https://en.wikipedia.org/wiki/International_Military_Tribunal_for_the_Far_East",
+     "https://ko.wikipedia.org/wiki/야스쿠니_신사"
+    ],
+    "facts": [
+     {
+      "claim": "극동국제군사재판(도쿄 재판)에서 유죄 판결을 받은 사람",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/A급_전범",
+      "note": "극동 국제 군사재판소 조례 제5조항에 정의된 전쟁 범죄에 관해 극동국제군사재판을 통해 유죄 판결을 받은 사람이다."
+     },
+     {
+      "claim": "Class A = 평화에 대한 죄(침략 전쟁) · 전쟁을 계획·지휘한 최고 지도자에게만",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Military_Tribunal_for_the_Far_East",
+      "note": "\"Class A\" charges covered crimes against peace, that is, waging a war of aggression against other nations, and only applied to Japan's top leaders who had planned and directed the war."
+     },
+     {
+      "claim": "A급 14명 · 도조 히데키 · 1978년 몰래 합사 · 참배 논란",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/야스쿠니_신사",
+      "note": "14명의 A급 전범들, 특히 태평양 전쟁을 시작한 도조 히데키 수상을 포함한 … 1978년에 몰래 합사하게 된다. / A급 전범이 안치되어 있는 야스쿠니 신사 참배는 인정할 수 없다며 …"
+     },
+     {
+      "claim": "B급 = 일반 전쟁 범죄 · C급 = 인도에 반한 죄",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/International_Military_Tribunal_for_the_Far_East",
+      "note": "\"Class B\" charges covered conventional war crimes … \"Class C\" charges covered crimes against humanity"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/야스쿠니_신사"
+    ],
+    "hintNote": null,
+    "easiestCue": "도쿄 재판 · 평화에 대한 죄로 분류된 전쟁 범죄자",
+    "worthWhyGen": "뉴스에 늘 나오는 말의 흔한 오해(등급이 아니라 죄의 종류)를 바로잡음",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '도쿄 재판 · 분류' — 예",
+     "unique": "'평화에 대한 죄' 로 B·C급과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

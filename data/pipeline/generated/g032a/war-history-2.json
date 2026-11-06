@@ -1,0 +1,310 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "war-history/2",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/2#g032a-g032a-j02-9",
+   "seed": {
+    "subject": "성형수술",
+    "aspect": null,
+    "ref": "g032a-j02-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "외과 수술의 한 갈래입니다. 제1차 세계대전의 기관총과 포탄은 코·턱·광대뼈를 잃고도 살아남은 병사를 수없이 낳았습니다. 영국 군의관 해럴드 길리스가 이들의 얼굴을 되살리며 기법을 세워 이 수술의 '현대의 아버지'로 불립니다. 이 수술은?",
+    "answer": "성형수술",
+    "acceptedAnswers": [
+     "성형외과"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영어 이름의 'plastic'은 합성수지가 아니라 '빚어 만든다'는 그리스어에서 왔습니다. 길리스의 병원에서만 5,000명 넘게 수술을 받았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "얼굴을 되살리는 외과 수술 갈래",
+     "difWhy": "2 — 정답 쉬움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 역사 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "망가진 몸의 모양을 되살리는 재건과, 쌍꺼풀·코처럼 외모를 다듬는 미용을 함께 아우르는 수술이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "몸의 모양을 고치거나 되살리는 수술(재건·미용)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 의료 용어",
+     "piece": "f05",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '외과 수술의 한 갈래' · 끝 ○○ = 수술, 길리스 일화는 정답 유래"
+    },
+    "blindQuestion": {
+     "guess": "성형외과",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "성형외과",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "성형수술",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1948",
+      "answer": "참호전",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(성형수술 / 참호전)"
+     },
+     {
+      "old": "g032a:g032a-j31-2",
+      "answer": "U보트",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(성형수술 / U보트)"
+     },
+     {
+      "old": "103",
+      "answer": "사라예보 사건",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(성형수술 / 사라예보 사건)"
+     },
+     {
+      "old": "5612",
+      "answer": "아라비아의 로렌스",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(성형수술 / 아라비아의 로렌스)"
+     },
+     {
+      "old": "6432",
+      "answer": "마타 하리",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(성형수술 / 마타 하리)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Harold_Gillies",
+     "https://en.wikipedia.org/wiki/Plastic_surgery",
+     "https://ko.wikipedia.org/wiki/미용성형"
+    ],
+    "facts": [
+     {
+      "claim": "길리스 = 1차 대전 부상병 얼굴 재건 기법으로 현대 성형수술의 아버지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Harold_Gillies",
+      "note": "Sir Harold Delf Gillies … was the father of modern plastic surgery for the techniques he devised to repair the faces of wounded soldiers returning from World War I."
+     },
+     {
+      "claim": "기관총·포탄으로 코·턱·광대뼈 잃은 채 살아남은 병사 급증",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Plastic_surgery",
+      "note": "The development of weapons such as machine guns and explosive shells during World War I led to a rapid increase in the number of mutilations … soldiers with facial injuries, alive but without noses, chins, cheekbones, or even eyes."
+     },
+     {
+      "claim": "미용성형은 성형외과 한 분야",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/미용성형",
+      "note": "미용성형(美容成形)은 성형외과의 한 분야이다. 미용 목적으로 얼굴이나 체형을 수술하는 것을 말하며"
+     },
+     {
+      "claim": "plastic = 그리스어 빚다 · 5,000명 넘게 11,000건",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Plastic_surgery",
+      "note": "comes from the Greek πλαστική (τέχνη), plastikē (tekhnē), \"the art of modelling\" of malleable flesh / more than 11,000 operations were performed on more than 5,000 men"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/미용성형"
+    ],
+    "hintNote": null,
+    "easiestCue": "얼굴을 되살리는 외과 수술",
+    "worthWhyGen": "흔한 수술이 왜 현대적으로 발달했나(까닭) — 일반 상식",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '외과 수술' 예",
+     "unique": "얼굴 되살리기 + 현대의 아버지 — 재건 수술(하위어)은 받지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "war-history/2#g032a-g032a-j31-2",
+   "seed": {
+    "subject": "U보트",
+    "aspect": null,
+    "ref": "g032a-j31-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제1차 세계대전 때 독일 해군의 잠수함을 부르던 이름입니다. 1915년 이 잠수함이 영국 여객선 루시타니아호를 어뢰로 가라앉혀 미국인 128명이 숨졌습니다. 미국 여론을 참전 쪽으로 돌린 이 독일 잠수함의 통칭은?",
+    "answer": "U보트",
+    "acceptedAnswers": [
+     "유보트",
+     "U-보트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 '수중 보트'를 뜻하는 독일어 운터제보트를 줄인 것이다. 미국은 2년 뒤인 1917년에야 독일에 선전포고했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "독일 해군의 잠수함을 부르던 이름",
+     "difWhy": "2 — U보트는 대중 상식",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 역사 용어 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "경고 없이 상선을 가라앉힌 '무제한 잠수함 작전'의 주인공으로, 2차 대전 대서양에서도 연합군 수송선을 노렸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1·2차 세계대전 때 독일 잠수함의 통칭",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "전쟁 영화·게임에서 접함",
+     "piece": "f05",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '독일 해군 잠수함을 부르던 이름' = 끝 ○○ '통칭'. 사건은 둘째 문장에 한 주어로"
+    },
+    "blindQuestion": {
+     "guess": "유보트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "유보트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "U보트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4663",
+      "answer": "갈리폴리 전투",
+      "verdict": "diff",
+      "why": "U보트(루시타니아호)와 갈리폴리 전투는 다른 사건"
+     },
+     {
+      "old": "1949",
+      "answer": "독가스",
+      "verdict": "diff",
+      "why": "U보트와 독가스는 같은 전쟁의 다른 무기"
+     },
+     {
+      "old": "5612",
+      "answer": "아라비아의 로렌스",
+      "verdict": "diff",
+      "why": "U보트와 아라비아의 로렌스는 무관"
+     },
+     {
+      "old": "g032a:g032a-j02-9",
+      "answer": "성형수술",
+      "verdict": "diff",
+      "why": "U보트와 성형수술 기원은 무관"
+     },
+     {
+      "old": "1953",
+      "answer": "삼국동맹",
+      "verdict": "diff",
+      "why": "U보트와 삼국동맹은 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/U보트",
+     "https://en.wikipedia.org/wiki/RMS_Lusitania"
+    ],
+    "facts": [
+     {
+      "claim": "U보트가 루시타니아 격침 · 미국 분노",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/U보트",
+      "note": "RMS 루시타니아를 포함한 3 척의 여객선을 침몰시켰다. 미국은 자국의 비무장 여객선이 잠수함 공격으로 침몰한 것에 분노하였으며"
+     },
+     {
+      "claim": "1915년 · 미국인 128명 · 참전 여론",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/RMS_Lusitania",
+      "note": "The German submarine U-20 hit her with a torpedo on 7 May 1915 … The sinking killed 128 US citizens and significantly increased American public support for entering the war, which occurred in 1917"
+     },
+     {
+      "claim": "무제한 잠수함 작전 · 경고 없이 격침",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/U보트",
+      "note": "독일은 교착상태를 타개하기 위해 무제한 잠수함 작전을 시작하였다. … 모든 상선을 경고 없이 격침할 수 있도록 하는 지침"
+     },
+     {
+      "claim": "이름 유래",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/U보트",
+      "note": "U보트라는 이름 자체가 \"수중 보트\"를 뜻하는 독일어 운터제보트(Unterseeboot)를 줄인 것"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/U보트"
+    ],
+    "hintNote": null,
+    "easiestCue": "루시타니아호를 가라앉힌 독일 잠수함",
+    "worthWhyGen": "미국이 1차 대전에 뛰어든 계기 — 세계사 기본 상식(2~3)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '독일 잠수함 이름' 예",
+     "unique": "통칭을 묻는다 — 'U-20' 같은 개별 함명과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 잠수함"
+    ],
+    "job": "job-31"
+   }
+  }
+ ]
+}

@@ -1,0 +1,302 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "aerospace/1",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/1#g032a-g032a-j08-2",
+   "seed": {
+    "subject": "비행운",
+    "aspect": null,
+    "ref": "g032a-j08-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사람이 만든 구름입니다. 비행기 엔진 배기가스 속 수증기가 높은 하늘의 찬 공기에서 얼음 알갱이로 바뀌며 생깁니다. 습한 날에는 몇 시간씩 남아 넓게 퍼지기도 하고, 과학자들은 이것이 기후 변화에 보탬이 된다고 봅니다. 이 구름의 이름은?",
+    "answer": "비행운",
+    "acceptedAnswers": [
+     "비행기구름",
+     "콘트레일"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "배기 속 그을음과 황 화합물이 물방울이 맺힐 씨앗 구실을 한다. 날개 끝 소용돌이의 기압 변화로 생기기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "비행기 엔진 배기가스 속 수증기가",
+     "difWhy": "2 — 비행기 구름 비행운은 일상어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 현상 이름 · 기본 2",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "맑은 날 높이 나는 제트 여객기 꽁무니를 따라 하늘에 길게 그어지는 하얀 줄이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "비행기가 지나간 자리에 생기는 줄 모양 구름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "하늘의 비행기 구름으로 친숙",
+     "piece": "f06",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '사람이 만든 구름' 이 끝 ○○ 와 일치, 생성 원리가 문장 하나씩"
+    },
+    "blindQuestion": {
+     "guess": "비행운",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "비행운",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "비행운",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3342",
+      "answer": "블랙박스",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1396",
+      "answer": "소닉붐",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1391",
+      "answer": "양력",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "5658",
+      "answer": "보잉 747",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "1400",
+      "answer": "이코노미클래스 증후군",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/비행운",
+     "https://en.wikipedia.org/wiki/Contrail"
+    ],
+    "facts": [
+     {
+      "claim": "엔진 배기 수증기 + 높은 고도의 낮은 온도로 생기는 빙정 구름 · 습도에 따라 수 시간 지속 · 기후변화",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비행운",
+      "note": "비행운은 주로 빙정 형태의 물로 구성된다. 항공기 엔진 배기 가스 속의 수증기와 고고도의 낮은 주변 온도가 결합하여 비행운이 형성된다. ... 온도와 습도에 따라, 몇 초나 몇 분 동안만 보이거나 수 시간 동안 지속되면서 폭이 수 킬로미터로 퍼져 ... 일부 지속되어 퍼지는 비행운은 기후변화에 기여한다."
+     },
+     {
+      "claim": "같은 내용 영문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Contrail",
+      "note": "The combination of water vapor in aircraft engine exhaust and the low ambient temperatures at high altitudes cause the trails' formation. ... may persist for hours ... Some persistent spreading contrails contribute to climate change."
+     },
+     {
+      "claim": "그을음·황 화합물이 응결핵 · 날개 끝 와류 기압 변화",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/비행운",
+      "note": "그을음과 황 화합물 ... 구름 응집핵 역할을 하는 입자를 제공한다. ... 비행운의 형성은 윙팁 와류나 날개 표면 전체의 공기압 변화에 의해서도 유발될 수 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/비행운"
+    ],
+    "hintNote": null,
+    "easiestCue": "비행기 엔진 배기가스로 생기는 구름",
+    "worthWhyGen": "늘 보는 하늘 현상의 원리(왜 생기나) — 과학 개념 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '구름' 예",
+     "unique": "배기가스·사람이 만든 — 자연 구름과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "aerospace/1#g032a-g032a-j27-9",
+   "seed": {
+    "subject": "마하",
+    "aspect": null,
+    "ref": "g032a-j27-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "비행기 속도를 나타낼 때 쓰는 단위입니다. 비행 속도가 소리의 속도의 몇 배인지를 나타내며, 1이면 음속과 같습니다. 충격파를 사진으로 찍어 연구한 오스트리아 물리학자의 이름을 땄습니다. 이 단위는?",
+    "answer": "마하",
+    "acceptedAnswers": [
+     "마하 수"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "음속은 공기의 온도와 밀도에 따라 달라서, 같은 속도로 날아도 조건에 따라 이 값이 바뀝니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "소리의 속도의 몇 배인지를 나타내며, 1이면 음속과 같습니다",
+     "difWhy": "2 — 음속 배수 단서 · 마하는 일상어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 단위 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "이 값이 1을 넘는 비행을 초음속 비행이라 하며, 공기 중에서 1은 시속 약 1,235km에 해당한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "속도를 음속과의 비로 나타내는 수(마하 1 = 음속)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "마하 속도 표현으로 흔함",
+     "piece": "f04",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '비행기 속도 단위', 끝 ○○=단위. 음속 비유 풀이가 곧바로 붙어 있음."
+    },
+    "blindQuestion": {
+     "guess": "마하",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마하",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마하",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "216",
+      "answer": "노르망디 상륙작전",
+      "verdict": "diff",
+      "why": "새=마하(음속 단위); 노르망디 작전·인도 국기·크로스워드 작전 암호명·포퓰리즘·자이나교는 무관"
+     },
+     {
+      "old": "6762",
+      "answer": "인도",
+      "verdict": "diff",
+      "why": "새=마하(음속 단위); 노르망디 작전·인도 국기·크로스워드 작전 암호명·포퓰리즘·자이나교는 무관"
+     },
+     {
+      "old": "6088",
+      "answer": "노르망디 상륙작전",
+      "verdict": "diff",
+      "why": "새=마하(음속 단위); 노르망디 작전·인도 국기·크로스워드 작전 암호명·포퓰리즘·자이나교는 무관"
+     },
+     {
+      "old": "6735",
+      "answer": "포퓰리즘",
+      "verdict": "diff",
+      "why": "새=마하(음속 단위); 노르망디 작전·인도 국기·크로스워드 작전 암호명·포퓰리즘·자이나교는 무관"
+     },
+     {
+      "old": "659",
+      "answer": "자이나교",
+      "verdict": "diff",
+      "why": "새=마하(음속 단위); 노르망디 작전·인도 국기·크로스워드 작전 암호명·포퓰리즘·자이나교는 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마하",
+     "https://en.wikipedia.org/wiki/Mach_number",
+     "https://en.wikipedia.org/wiki/Ernst_Mach"
+    ],
+    "facts": [
+     {
+      "claim": "음속에 대한 속도의 비 · 에른스트 마흐 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마하",
+      "note": "마하 수(Mach number)란 음속에 비하여 속도가 얼마나 되는지를 나타내는 수이다. 오스트리아의 과학자 에른스트 마흐(Ernst Mach)의 이름을 따 명명되었다."
+     },
+     {
+      "claim": "Mach 1 = 음속 · 오스트리아 물리학자 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mach_number",
+      "note": "It is named after Austrian physicist and philosopher Ernst Mach. … By definition, at Mach 1, the local flow velocity u is equal to the speed of sound."
+     },
+     {
+      "claim": "마흐가 충격파를 사진으로 찍음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ernst_Mach",
+      "note": "Mach's main contribution to physics involved his description and photographs of spark shock-waves and then ballistic shock-waves. … he and his son Ludwig photographed the shadows of the invisible shock waves."
+     },
+     {
+      "claim": "1 초과 = 초음속 비행 · 마하 1 = 시속 1,235km · 공기 밀도·온도로 음속 변화",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/마하",
+      "note": "마하 수 1.0을 넘는 경우(즉, 음속보다 빠른 속도로 비행하는 경우)를 초음속 비행이라고 말한다. 음속이 초당 343미터일 경우 마하 1.0은 시속 1,235km다. / 음속은 공기의 밀도 및 온도에 따라 변화하므로"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/마하"
+    ],
+    "hintNote": null,
+    "easiestCue": "음속의 몇 배인지 나타내는 비행 속도 단위",
+    "worthWhyGen": "3 — 뉴스·영화에서 늘 듣는 '마하 2' 의 뜻과 이름 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '단위' — 예",
+     "unique": "음속 기준 배수 = 하나(인물 이름 '마흐'는 질문에 안 씀)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

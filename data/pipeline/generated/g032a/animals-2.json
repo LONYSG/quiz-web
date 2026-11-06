@@ -1,0 +1,143 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "animals/2",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/2#g032a-job-26-2",
+   "seed": {
+    "subject": "원앙",
+    "aspect": null,
+    "ref": "job-26-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "금슬 좋은 부부를 빗대는 말로 쓰이는 오리과 물새입니다. 전통 혼례 선물로 이 새 한 쌍을 나무로 깎아 주고받기도 합니다. 그런데 실제로 수컷은 알을 품지 않고, 새끼가 깨어나기 전에 떠나 버립니다. 번식기 수컷의 깃이 유난히 화려한 이 새는?",
+    "answer": "원앙",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "중국어 이름의 두 글자는 각각 수컷과 암컷을 뜻합니다. 번식이 끝나면 수컷 깃도 암컷처럼 수수해지고 붉은 부리만 남습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "금슬 좋은 부부를 빗대는 말로 쓰이는 오리과 물새",
+     "difWhy": "2 — 금슬 단서가 곧 원앙",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 동물 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "신혼부부의 이불과 베개에 암수 한 쌍으로 수놓던 새로, 고궁 연못에서도 볼 수 있는 천연기념물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "오리과 물새, 금슬 좋은 부부의 상징(천연기념물)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "원앙 부부 비유로 흔함",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '오리과 물새' = 끝 ○○ '새'. 통념과 실제의 대비도 문장별로 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "원앙",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "원앙",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "원앙",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4460",
+      "answer": "화문석",
+      "verdict": "diff",
+      "why": "새=원앙; 화문석은 강화 특산 돗자리로 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/원앙",
+     "https://en.wikipedia.org/wiki/Mandarin_duck",
+     "https://www.khan.co.kr/article/201706052130005"
+    ],
+    "facts": [
+     {
+      "claim": "금슬 좋은 부부를 원앙이라 한다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원앙",
+      "note": "두 마리가 항상 함께 다닌다고 하여 금슬이 좋은 부부를 '원앙'이라고 한다."
+     },
+     {
+      "claim": "혼례 선물 나무 원앙 한 쌍 · 수컷은 알을 품지 않고 부화 전에 떠난다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mandarin_duck",
+      "note": "pairs of wooden-carved mandarin ducks called wedding ducks are often given as wedding gifts ... Although the male may defend the brooding female and his eggs during incubation, he himself does not incubate the eggs and leaves before they hatch."
+     },
+     {
+      "claim": "암컷이 알 품기에 들어서면 수컷은 떠난다",
+      "where": "q",
+      "url": "https://www.khan.co.kr/article/201706052130005",
+      "note": "수컷은 알을 품지 않습니다. 암컷이 알 품기에 들어서면 수컷은 아예 떠나버립니다."
+     },
+     {
+      "claim": "고궁·공원 못가에 산다 · 천연기념물 제327호",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/원앙",
+      "note": "고궁이나 공원, 숲이 있는 못가에 살며 ... 대한민국에서는 천연기념물 제327호로 지정되어 보호하고 있다."
+     },
+     {
+      "claim": "두 글자 = 수컷·암컷 · 번식 뒤 에클립스깃 · 붉은 부리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mandarin_duck",
+      "note": "'yuan' (鴛) and 'yang' (鴦) respectively stand for male and female mandarin ducks. / (ko) 번식이 끝나면 ... 온몸이 암컷과 비슷한 에클리프스깃색이 된다. 다만 이 시기에도 부리가 암컷과 다른 붉은색이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/원앙"
+    ],
+    "hintNote": null,
+    "easiestCue": "금슬 좋은 부부를 빗대는 오리과 물새",
+    "worthWhyGen": "누구나 아는 상징 뒤의 실제 습성 — 일반 상식 뒤집기(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '오리과 물새' 예",
+     "unique": "금슬 상징 · 혼례 나무 조각 → 원앙만(기러기는 혼례 기러기로 '부부 금슬' 비유 말이 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

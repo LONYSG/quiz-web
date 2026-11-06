@@ -1,0 +1,146 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "computer/3",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/3#g032a-g032a-j06-7",
+   "seed": {
+    "subject": "부팅",
+    "aspect": null,
+    "ref": "g032a-j06-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "컴퓨터를 켤 때 일어나는 과정을 가리키는 말입니다. 전원을 넣으면 작은 시작 프로그램이 먼저 돌아 운영 체제를 메모리에 불러옵니다. 이 말은 '제 장화 끈을 잡아당겨 스스로 몸을 들어 올린다'는 영어 표현에서 왔습니다. 이 과정은?",
+    "answer": "부팅",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1950년대 '부트스트랩 기법'이라는 이름으로 처음 기록되었고, 줄인 꼴 'boot'가 쓰인 가장 이른 기록은 1975년이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "컴퓨터를 켤 때 일어나는 과정",
+     "difWhy": "1 — 부팅 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 93",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "컴퓨터나 스마트폰이 켜지며 로고 화면을 띄우고 쓸 준비를 마칠 때까지 기다리는 바로 그 과정이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "컴퓨터를 켜 운영 체제를 불러오는 시동 과정",
+    "familiarity": {
+     "judge": 3,
+     "pct": 93,
+     "why": "컴퓨터 일상 용어",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '컴퓨터를 켤 때 과정' · 끝 ○○ = 과정, 운영 체제는 일상어 수준"
+    },
+    "blindQuestion": {
+     "guess": "부팅",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "부팅",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "부팅",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "95",
+      "answer": "SSD",
+      "verdict": "diff",
+      "why": "부팅 vs SSD"
+     },
+     {
+      "old": "2801",
+      "answer": "컴파일러",
+      "verdict": "diff",
+      "why": "부팅 vs 컴파일러"
+     },
+     {
+      "old": "2802",
+      "answer": "디버깅",
+      "verdict": "diff",
+      "why": "부팅 vs 디버깅"
+     },
+     {
+      "old": "2799",
+      "answer": "조건문",
+      "verdict": "diff",
+      "why": "부팅 vs 조건문"
+     },
+     {
+      "old": "2798",
+      "answer": "반복문",
+      "verdict": "diff",
+      "why": "부팅 vs 반복문"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Booting",
+     "https://ko.wikipedia.org/wiki/부팅"
+    ],
+    "facts": [
+     {
+      "claim": "bootstrap 의 줄임 · 'pull oneself up by one's bootstraps' 에서 유래 · 처음 소프트웨어를 불러오는 장치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Booting",
+      "note": "Booting was first described in the 1950s as the \"bootstrap technique\", so is short for bootstrap and derives from the phrase to pull oneself up by one's bootstraps. The earliest known recorded use of \"boot\" as the shortened form for \"bootstrap\" is 1975."
+     },
+     {
+      "claim": "부트스트랩의 약어 · 자력으로 해내다라는 문구에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/부팅",
+      "note": "부팅은 부트스트랩의 약어 또는 부트스트랩 로드이며, 자력으로 해내다라는 문구에서 유래한다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "컴퓨터를 켤 때 운영 체제를 불러오는 과정",
+    "worthWhyGen": "매일 쓰는 컴퓨터 말의 유래(장화 끈 표현)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '과정을 가리키는 말' 예",
+     "unique": "켤 때 과정 — 로그인·설치와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  }
+ ]
+}

@@ -1,0 +1,267 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "earth/1",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/1#g032a-g032a-j14-10",
+   "seed": {
+    "subject": "맨틀",
+    "aspect": null,
+    "ref": "g032a-j14-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지구 속을 이루는 층의 하나입니다. 지구는 겉에서부터 지각, 이 층, 외핵, 내핵 순으로 이루어져 있습니다. 지구 부피의 80% 넘게 차지하는, 지각과 외핵 사이의 이 두꺼운 암석층은?",
+    "answer": "맨틀",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "두께는 약 2,900km로 지구 반지름의 46%쯤이고, 지구 질량의 67%를 차지합니다. 지각과의 경계는 모호면이라 부릅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "지각, 이 층, 외핵, 내핵 순으로 … 지각과 외핵 사이",
+     "difWhy": "2 — 지각·외핵 사이 단서가 곧 답에 가까움 · 학교 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "주로 고체지만 아주 긴 시간에 걸쳐 캐러멜처럼 천천히 흘러, 그 위에 얹힌 판을 움직이는 층이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "지각과 외핵 사이의 지구 내부 암석층",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "지구 내부 구조 교과서",
+     "piece": "f03",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '지구 속을 이루는 층' 이 있고 순서 나열로 위치가 분명함"
+    },
+    "blindQuestion": {
+     "guess": "맨틀",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "맨틀",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "맨틀",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3120",
+      "answer": "대류",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2239",
+      "answer": "화강암",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2235",
+      "answer": "화성암",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/맨틀",
+     "https://en.wikipedia.org/wiki/Mantle_(geology)"
+    ],
+    "facts": [
+     {
+      "claim": "지각과 외핵 사이 규산염 암석층 · 부피 84%",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/맨틀",
+      "note": "지구의 맨틀은 지구의 지각과 외핵 사이에 있는 규산염 암석층이다. ... 두께는 2,900 km로 지구 반지름의 약 46%, 지구 부피의 84%를 차지한다."
+     },
+     {
+      "claim": "맨틀은 아래로 핵, 위로 지각에 맞닿은 층 · 가장 큰 층",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mantle_(geology)",
+      "note": "A mantle is a layer inside a planetary body bounded below by a core and above by a crust. Mantles are made of rock or ices, and are generally the largest and most massive layer of the planetary body."
+     },
+     {
+      "claim": "주로 고체이나 지질 시간에 점성 유체처럼 · 캐러멜 비유 · 판이 연약권 위에서 이동",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/맨틀",
+      "note": "주로 고체이지만, 지질 시대 척도에서는 점성 유체처럼 행동하며 때로는 캐러멜과 같은 농도를 가진다고 비유한다. ... 암석권 (즉, 암석권 맨틀과 그 위에 놓인 지각)은 판을 구성하며, 이들은 연약권 위에서 이동한다."
+     },
+     {
+      "claim": "질량 67% · 모호면",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/맨틀",
+      "note": "지구 질량의 67%를 차지한다. ... 이 경계는 현재 모호로비치치 불연속면 또는 \"모호면\"이라고 불린다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/맨틀"
+    ],
+    "hintNote": null,
+    "easiestCue": "지각과 외핵 사이의 층",
+    "worthWhyGen": "지구 구조의 기본(교과 개념 2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '층' — 예",
+     "unique": "지각과 외핵 사이로 하나뿐(상부·하부 맨틀은 하위어 — 변형 넣지 않음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "earth/1#g032a-g032a-j24-2",
+   "seed": {
+    "subject": "고령토",
+    "aspect": null,
+    "ref": "g032a-j24-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도자기, 특히 백자를 빚는 데 쓰는 흰 흙입니다. 이름은 중국의 도자기 고장 징더전 근처 한 마을에서 왔는데, 그 마을의 흙이 예부터 좋은 도자기 재료로 이름났기 때문입니다. 이 흙은 무엇일까요?",
+    "answer": "고령토",
+    "acceptedAnswers": [
+     "카올린"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영어 이름 카올린도 같은 마을 이름 '가오링(높은 고개)'을 18세기 프랑스 선교사가 옮겨 적은 데서 나왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "도자기, 특히 백자를 빚는 데 쓰는 흰 흙",
+     "difWhy": "3 — 학교 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 재료 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "장석 같은 광물이 비바람에 풍화되어 생긴 점토로, 본차이나의 주원료이고 종이·페인트에도 쓰인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도자기 원료가 되는 흰 점토(kaolin) — 징더전 근처 가오링 마을 이름에서",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "도자기 재료로 교과서에서 접함",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '백자를 빚는 흰 흙'이 끝 ○○=흙. 징더전 고유명사는 단서."
+    },
+    "blindQuestion": {
+     "guess": "고령토",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "고령토",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "고령토",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고령석",
+     "https://en.wikipedia.org/wiki/Kaolinite"
+    ],
+    "facts": [
+     {
+      "claim": "고령토 = 고령석이 풍부한 점토 · 이름은 징더전 부근 가오링 · 도자기 원료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고령석",
+      "note": "고령석이 풍부한 점토 물질을 고령토 또는 카올린(kaolin)이라고 한다. 이름은 중국 장시성 징더전 부근의 가오링(高嶺)에서 유래했으며, 이 지역의 점토는 도자기 원료로 널리 알려졌다."
+     },
+     {
+      "claim": "가오링 마을 · 징더전 도자기의 주 원료지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kaolinite",
+      "note": "taken from the name of the village of Gaoling (\"High Ridge\") near Ehu in Fuliang County, now part of Jiangxi Province's Jingdezhen Prefecture. The area around the village had become the main source of Jingdezhen's kaolin over the course of the Qing dynasty."
+     },
+     {
+      "claim": "흰색",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고령석",
+      "note": "고령석은 대체로 흰색이나 크림색이며"
+     },
+     {
+      "claim": "장석 풍화로 생성 · 본차이나 주원료 · 종이·페인트 충전재",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/고령석",
+      "note": "고령석은 장석과 같은 알루미늄 규산염 광물이 물과 산성 용액의 영향을 받아 화학적으로 풍화될 때 흔히 생성된다. … 고령토는 도자기와 본차이나의 주요 원료이며, 종이의 충전재와 코팅재, 페인트·고무·플라스틱의 충전재"
+     },
+     {
+      "claim": "kaolin 은 1712년 당트르콜(프랑스 예수회) 보고의 전사",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kaolinite",
+      "note": "The English name kaolin was borrowed in 1727 from François Xavier d'Entrecolles's 1712 French reports on the manufacture of Jingdezhen porcelain. D'Entrecolles was transcribing the Chinese term 高嶺土"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/고령석"
+    ],
+    "hintNote": null,
+    "easiestCue": "도자기·백자를 빚는 흰 흙",
+    "worthWhyGen": "유래 — 흔히 듣는 흙 이름이 중국 마을 이름에서 왔다는 '아~'",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '흰 흙' 예",
+     "unique": "'백자를 빚는 흰 흙' + 마을 이름 유래로 점토 일반과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-24"
+   }
+  }
+ ]
+}

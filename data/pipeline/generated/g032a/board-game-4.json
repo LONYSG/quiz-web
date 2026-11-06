@@ -1,0 +1,166 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "board-game/4",
+  "midKey": "board-game",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "board-game/4#g032a-g032a-j29-12",
+   "seed": {
+    "subject": "뱀과 사다리",
+    "aspect": null,
+    "ref": "g032a-j29-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주사위를 굴려 말을 옮기는 보드게임입니다. 고대 인도의 교훈 놀이에서 왔는데, 판 위로 올려 주는 길은 너그러움·믿음 같은 선행을, 아래로 미끄러뜨리는 동물은 악행을 뜻했습니다. 19세기 말 영국을 거쳐 세계로 퍼진 이 게임은?",
+    "answer": "뱀과 사다리",
+    "acceptedAnswers": [
+     "뱀 주사위 놀이",
+     "뱀 사다리 게임",
+     "뱀과 사다리 게임"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "인도에서는 '모크샤 파탐'(해탈 공부)이라 불렸습니다. 미국에서는 1943년부터 '슈트 앤드 래더스'라는 이름으로 팔렸습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "주사위를 굴려 말을 옮기는 … 판 위로 올려 주는 길과 아래로 미끄러뜨리는 동물",
+     "difWhy": "2 — 보드게임 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 게임 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "실력 없이 주사위 운만으로 1부터 100까지 칸을 먼저 오르는 아이들 놀이로, 한국에서도 종이 판에 그려 흔히 했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "주사위로 말을 옮기며 사다리로 오르고 뱀으로 내려가는 판놀이(Snakes and Ladders)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "보드게임으로 접했으나 한국명은 덜 쓰임",
+     "piece": "f08",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '주사위를 굴려 말을 옮기는 보드게임' 이 끝 ○○(게임)와 일치 · 둘째 문장은 길지만 선행/악행 대비로 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "뱀과 사다리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "뱀 사다리 게임",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "뱀과 사다리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5257",
+      "answer": "리스크",
+      "verdict": "diff",
+      "why": "신규 '뱀과 사다리'(다른 보드게임) ≠ 옛 '리스크' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1491",
+      "answer": "부루마불",
+      "verdict": "diff",
+      "why": "신규 '뱀과 사다리'(다른 보드게임) ≠ 옛 '부루마불' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "275",
+      "answer": "모노폴리",
+      "verdict": "diff",
+      "why": "신규 '뱀과 사다리'(다른 보드게임) ≠ 옛 '모노폴리' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5256",
+      "answer": "클루",
+      "verdict": "diff",
+      "why": "신규 '뱀과 사다리'(다른 보드게임) ≠ 옛 '클루' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "4296",
+      "answer": "루미큐브",
+      "verdict": "diff",
+      "why": "신규 '뱀과 사다리'(다른 보드게임) ≠ 옛 '루미큐브' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Snakes_and_ladders",
+     "https://ko.wikipedia.org/wiki/뱀과_사다리",
+     "https://damoang.net/free/1075844"
+    ],
+    "facts": [
+     {
+      "claim": "고대 인도 기원 · 1890년대 영국으로 · 사다리=선행(너그러움·믿음) 뱀=악행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Snakes_and_ladders",
+      "note": "The game originated in ancient India as Moksha Patam ('liberation lesson'), and was brought to the United Kingdom in the 1890s ... The ladders represented virtues such as generosity, faith, and humility, while the snakes r[epresented vices]"
+     },
+     {
+      "claim": "주사위로 전진 · 인도 발원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뱀과_사다리",
+      "note": "주사위 하나를 굴려 그 수만큼 더하여 해당하는 칸에 전진하는데, 뱀을 만나면 뱀을 따라 내려가고, 사다리를 만나면 사다리를 타고 올라간다 ... 이 놀이가 발원된 곳은 인도로"
+     },
+     {
+      "claim": "한국 이름 뱀주사위 · 100칸 판",
+      "where": "h",
+      "url": "https://damoang.net/free/1075844",
+      "note": "WebSearch 요약: 100칸으로 된 판에 뱀과 살모사를 그려 넣어 놀았다 ... 이 놀이를 '뱀주사위'라고 불렀다 (개인 회고 · ko.accio.com 상품명 '뱀주사위놀이')"
+     },
+     {
+      "claim": "Moksha Patam · Chutes and Ladders 1943",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Snakes_and_ladders",
+      "note": "sold under other names, such as the morality themed Chutes and Ladders published by the Milton Bradley Company starting in 1943."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Snakes_and_ladders",
+     "https://damoang.net/free/1075844"
+    ],
+    "hintNote": null,
+    "easiestCue": "주사위 · 오르는 길과 미끄러뜨리는 동물",
+    "worthWhyGen": "3 — 어릴 때 누구나 한 놀이의 교훈적 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '보드게임' — 예",
+     "unique": "정답 낱말(뱀·사다리)은 질문에서 감춤",
+     "hint12": "① 예(약간 약함) ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

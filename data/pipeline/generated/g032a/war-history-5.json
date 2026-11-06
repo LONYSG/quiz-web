@@ -1,0 +1,157 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "war-history/5",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/5#g032a-g032a-j07-1",
+   "seed": {
+    "subject": "수류탄",
+    "aspect": null,
+    "ref": "g032a-j07-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "군대에서 쓰는 무기 가운데 과일에서 이름이 온 것이 있습니다. 한자 이름의 가운데 글자는 '석류'를 뜻하고, 영어 이름도 '석류'를 뜻하는 프랑스어에서 왔다는 설이 널리 알려져 있습니다. 속에 화약을 채워 보병이 들고 다니는 이 무기는?",
+    "answer": "수류탄",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "터질 때 쇳조각을 흩뿌리는 세열수류탄 말고도 연막·섬광 등 여러 갈래가 있다. 사정거리가 짧은 약점을 메우려 유탄발사기가 나왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "한자 이름의 가운데 글자는 '석류'를 뜻하고 … 속에 화약을 채워 보병이 들고 다니는",
+     "difWhy": "1 — 누구나 아는 무기 · 이름 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "안전핀을 뽑고 손으로 던져 터뜨리는 보병의 작은 폭탄으로, 전쟁 영화에서 핀을 이로 물어 뽑는 장면이 흔하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "손으로 던져 터뜨리는 보병의 작은 폭탄",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "군대·영화에서 흔함",
+     "piece": "f04",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '군대 무기' · 끝 ○○ = 무기, 석류 단서 풀이됨"
+    },
+    "blindQuestion": {
+     "guess": "수류탄",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "수류탄",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "수류탄",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6022",
+      "answer": "사격",
+      "verdict": "diff",
+      "why": "수류탄 어원 vs 사격 종목"
+     },
+     {
+      "old": "897",
+      "answer": "안전핀",
+      "verdict": "diff",
+      "why": "수류탄 vs 안전핀"
+     },
+     {
+      "old": "6657",
+      "answer": "이봉창",
+      "verdict": "diff",
+      "why": "수류탄 어원 vs 이봉창"
+     },
+     {
+      "old": "5615",
+      "answer": "AK-47",
+      "verdict": "diff",
+      "why": "수류탄 vs AK-47"
+     }
+    ],
+    "sources": [
+     "https://ko.wiktionary.org/wiki/榴",
+     "https://en.wikipedia.org/wiki/Grenade",
+     "https://ko.wikipedia.org/wiki/수류탄"
+    ],
+    "facts": [
+     {
+      "claim": "한자 榴 = 석류 · 手榴彈/수류탄",
+      "where": "q",
+      "url": "https://ko.wiktionary.org/wiki/榴",
+      "note": "'석류' 등을 뜻하는 합성어를 이루는 형태소의 한자 표기 手榴彈/수류탄, 石榴/석류"
+     },
+     {
+      "claim": "영어 grenade 는 프랑스어 '석류'에서 왔다는 설(논란 있음)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Grenade",
+      "note": "The origin of the English word grenade is disputed. Some derive it from the French word spelled exactly the same, meaning \"pomegranate\", while others claim it is taken more directly from the Latin granatus"
+     },
+     {
+      "claim": "안전핀 · 고폭약",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/수류탄",
+      "note": "폭발을 방지하는 안전핀(safety pin)과 안전 클립, 안전손잡이로 구성되어 있다. 안쪽은 고폭약으로 가득 차 있고"
+     },
+     {
+      "claim": "세열수류탄 · 연막 · 섬광 · 유탄발사기",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/수류탄",
+      "note": "수류탄은 사람이 던지기 때문에 사정거리가 짧다. 이러한 단점을 보완하기 위해 유탄발사기, 박격포 등이 개발되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/수류탄"
+    ],
+    "hintNote": null,
+    "easiestCue": "속에 화약을 채워 보병이 들고 다니는 무기 + 석류",
+    "worthWhyGen": "누구나 아는 무기 이름의 유래(석류) — 알가치 3 ②",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '무기' 예",
+     "unique": "석류 유래 + 화약 + 보병 — 수류탄 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 안전핀"
+    ],
+    "job": "job-07"
+   }
+  }
+ ]
+}

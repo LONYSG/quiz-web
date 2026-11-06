@@ -1,0 +1,161 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "classical/1",
+  "midKey": "classical",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "classical/1#g032a-g032a-j12-1",
+   "seed": {
+    "subject": "안익태",
+    "aspect": null,
+    "ref": "g032a-j12-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대한민국 국가인 애국가의 지금 가락을 지은 작곡가입니다. 그전에는 애국가 가사를 스코틀랜드 민요 '올드 랭 사인' 가락에 붙여 불렀습니다. 1935년 새 가락을 지은 이 작곡가는 누구일까요?",
+    "answer": "안익태",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "평양에서 태어나 일본과 미국에서 첼로와 지휘를 배웠다. 일제강점기 행적 때문에 친일인명사전에도 올라 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "대한민국 국가인 애국가의 지금 가락을 지은 작곡가",
+     "difWhy": "3 — 인물 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 애국가는 상식 바탕",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "관현악과 합창으로 된 '한국 환상곡'을 지었고, 그 합창 부분의 중심에 애국가 가락이 나온다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "애국가를 작곡한 한국 작곡가·지휘자(1906~1965)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "애국가 작곡자로 교과서에 나옴",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '애국가 가락을 지은 작곡가'가 끝 ○○=작곡가와 일치."
+    },
+    "blindQuestion": {
+     "guess": "안익태",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "안익태",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "안익태",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3478",
+      "answer": "하이든",
+      "verdict": "diff",
+      "why": "애국가 작곡가 vs 독일 국가 선율 작곡가 - 다른 곡·다른 사람"
+     },
+     {
+      "old": "4813",
+      "answer": "사티",
+      "verdict": "diff",
+      "why": "안익태 vs 사티"
+     },
+     {
+      "old": "383",
+      "answer": "드뷔시",
+      "verdict": "diff",
+      "why": "안익태 vs 드뷔시"
+     },
+     {
+      "old": "4322",
+      "answer": "헨델",
+      "verdict": "diff",
+      "why": "안익태 vs 헨델 런던 집"
+     },
+     {
+      "old": "5823",
+      "answer": "헨델",
+      "verdict": "diff",
+      "why": "안익태 vs 헨델 챔스 주제가"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/애국가_(대한민국)",
+     "https://ko.wikipedia.org/wiki/안익태",
+     "https://ko.wikipedia.org/wiki/한국_환상곡"
+    ],
+    "facts": [
+     {
+      "claim": "1935년 안익태가 새 가락 작곡 · 그전엔 올드 랭 사인 가락",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애국가_(대한민국)",
+      "note": "처음 애국가는 가사에 스코틀랜드 가곡인 〈올드 랭 사인〉(Auld Lang Syne ...)의 가락을 붙여서 불렀으나, 새 곡을 써야 할 필요를 느낀 작곡가 안익태가 1935년 11월 사 장조로 된 새 가락을 작곡하였다."
+     },
+     {
+      "claim": "안익태가 애국가 작곡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/안익태",
+      "note": "그는 대한민국의 국가(國歌)인 애국가를 작곡했으며, 대표 작품으로 한국환상곡이 있다."
+     },
+     {
+      "claim": "한국 환상곡 합창 부분에 애국가 가락",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/한국_환상곡",
+      "note": "관현악단과 혼성 합창으로 구성된 단일 악장이다. ... 특히, 후반부의 합창 부분은 〈애국가〉의 가락이 중심을"
+     },
+     {
+      "claim": "평양 출생 · 일본 첼로 · 미국 지휘 · 친일인명사전",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/안익태",
+      "note": "1906년 평양에서 태어나 ... 도쿄 구니타치 고등음악학교에 입학해 첼로를 전공했고 ... 커티스 음악학교 ... 첼로와 지휘 등을 배웠고 ... 이 때문에 친일인명사전에 올라가 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/한국_환상곡"
+    ],
+    "hintNote": null,
+    "easiestCue": "애국가의 지금 가락을 지은 작곡가",
+    "worthWhyGen": "국가(國歌)의 작곡가 = 일반 상식의 바탕(안중근 꼴 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '작곡가' 예",
+     "unique": "지금 가락 + 1935년 — 작사자와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  }
+ ]
+}

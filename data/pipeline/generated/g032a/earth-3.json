@@ -1,0 +1,394 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "earth/3",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/3#g032a-g032a-j10-12",
+   "seed": {
+    "subject": "허리케인",
+    "aspect": null,
+    "ref": "g032a-j10-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북대서양과 북동태평양에서 생기는 강한 열대 저기압을 부르는 이름입니다. 이 말은 카리브해 원주민 타이노족이 믿던 폭풍을 일으키는 신의 이야기에서 나왔습니다. 그 폭풍을 부르던 말이 스페인어를 거쳐 영어가 되었습니다. 이 열대 저기압의 이름은?",
+    "answer": "허리케인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "최대 풍속이 시속 119km를 넘어야 이 이름을 얻고, 셰익스피어도 『리어 왕』에서 옛 철자로 이 말을 썼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "북대서양과 북동태평양에서 생기는 강한 열대 저기압",
+     "difWhy": "2 — 열대 저기압 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 흔한 말의 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "우리 쪽 북서태평양이라면 태풍이라 불렀을 폭풍으로, 2005년 미국 뉴올리언스를 물에 잠기게 한 카트리나가 대표다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "대서양·동태평양의 강한 열대 저기압(태풍과 같은 현상)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "뉴스·영화에서 흔함",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '강한 열대 저기압' = 끝 ○○ '열대 저기압의 이름'. 어원 이야기도 순서대로"
+    },
+    "blindQuestion": {
+     "guess": "허리케인",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "허리케인",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "허리케인",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6578",
+      "answer": "나비 효과",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/허리케인",
+     "https://en.wikipedia.org/wiki/Juracán"
+    ],
+    "facts": [
+     {
+      "claim": "북대서양·북동태평양 열대 저기압 · 폭풍의 신 후라칸에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/허리케인",
+      "note": "허리케인이란 북대서양, 북동태평양 등 다양한 지역에서 발생한 열대 저기압 중 최대 풍속이 시속 64kts(74마일, 119km) 이상인 것을 말한다, 허리케인은 폭풍의 신, 강대한 바람이란 뜻을 가진 후라칸이란 말에서 유래됐다."
+     },
+     {
+      "claim": "타이노 신화 · juracán → 스페인어 huracán → 영어",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Juracán",
+      "note": "conjuring storms known as \"juracán\" when displeased. The latter term was later used to name the climatological phenomenon that is now known as a hurricane ... The Spanish word huracán may be derived from juracán. The English word hurricane derives from the Spanish."
+     },
+     {
+      "claim": "리어 왕 hurricano",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Juracán",
+      "note": "The term made an early appearance in William Shakespeare's King Lear (Act 3, Scene 2)"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "북대서양 강한 열대 저기압",
+    "worthWhyGen": "뉴스에 늘 나오는 날씨 말의 유래(원주민 폭풍신)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '열대 저기압 이름' 예",
+     "unique": "북대서양·북동태평양 — 태풍·사이클론과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 뉴올리언스"
+    ],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "earth/3#g032a-g032a-j28-12",
+   "seed": {
+    "subject": "블랙 아이스",
+    "aspect": null,
+    "ref": "g032a-j28-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "겨울철 도로 표면에 생기는 아주 얇고 투명한 얼음막입니다. 얼음 아래 아스팔트가 그대로 비쳐 젖은 길처럼 보여 운전자가 알아채기 어렵습니다. 얼음 색이 아니라 비쳐 보이는 아스팔트 색에서 이름이 온 이것은?",
+    "answer": "블랙 아이스",
+    "acceptedAnswers": [
+     "도로 살얼음"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "교량은 위와 아래 모두 찬 공기에 닿아 일반 길보다 빨리 식기 때문에 먼저 얼어붙습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "겨울철 도로 표면에 생기는 아주 얇고 투명한 얼음막",
+     "difWhy": "2 — 뉴스 용어 · 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 운전자 누구에게나 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "다리 위나 터널 출입구, 그늘진 굽은 길에서 특히 잘 생겨 겨울철 고속도로 연쇄 추돌 사고의 주범으로 꼽힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도로 위 얇고 투명한 얼음(black ice)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "겨울철 교통 뉴스에 자주 나옴",
+     "piece": "f03",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '도로 표면 얼음막' 이 있고 이름 유래가 둘째 문장 뒤 쉬운 말임"
+    },
+    "blindQuestion": {
+     "guess": "블랙 아이스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "블랙 아이스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "블랙 아이스",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1597",
+      "answer": "열섬 현상",
+      "verdict": "diff",
+      "why": "신규 '블랙 아이스'(다른 기상 개념) ≠ 옛 '열섬 현상' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/블랙아이스",
+     "https://en.wikipedia.org/wiki/Black_ice"
+    ],
+    "facts": [
+     {
+      "claim": "도로 표면의 얇고 투명한 얼음막 · 검은 아스팔트가 비쳐 검게 보여 이름 · 식별 어려움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/블랙아이스",
+      "note": "블랙아이스(black ice 또는 clear ice) 또는 도로살얼음은 도로 표면에 매우 얇고 투명한 얼음막이 형성되는 현상을 말한다. 얼음 자체의 색이 검은 것은 아니지만, 검은색 아스팔트 노면이 투명한 얼음층 아래에서 그대로 비쳐 보이면서 마치 검은 얼음처럼 인식되기 때문에 블랙아이스라는 명칭이 사용된다."
+     },
+     {
+      "claim": "투명해 아래 포장 도로가 보임 · 눈으로 보기 힘듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Black_ice",
+      "note": "Black ice ... is a thin coating of glaze ice on a surface ... The ice itself is not black, but visually transparent, allowing the often black road below to be seen through it. (원문 tmp/g032/work-job-28/bi_en.txt)"
+     },
+     {
+      "claim": "젖은 것처럼 보임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/블랙아이스",
+      "note": "표면이 젖은 것처럼 보일 수 있어 운전자와 보행자가 존재를 알아차리기 어렵다."
+     },
+     {
+      "claim": "교량·터널 출입구·그늘진 도로 · 고속도로 대형 연쇄 추돌",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/블랙아이스",
+      "note": "교량 위는 ... 먼저 결빙되기 쉽다. 또한 터널 출입구는 ... 그늘진 도로 ... 특히 고속도로, 내리막길, 곡선 구간에서 발생할 경우 대형 연쇄 추돌 사고로 이어질 위험이 크며"
+     },
+     {
+      "claim": "교량은 위아래 찬 공기 노출로 빨리 식음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/블랙아이스",
+      "note": "교량과 고가도로는 위와 아래에서 모두 찬 공기에 노출되므로 일반 도로보다 빠르게 식는다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/블랙아이스"
+    ],
+    "hintNote": null,
+    "easiestCue": "겨울 도로의 투명한 얇은 얼음",
+    "worthWhyGen": "겨울 뉴스 단골 말의 정체와 이름이 붙은 까닭(알가치 3 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '얼음막' — 예",
+     "unique": "도로 위 투명 얼음 — 블랙 아이스(도로 살얼음 받음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  },
+  {
+   "seedId": "earth/3#g032a-g032a-j28-13",
+   "seed": {
+    "subject": "열대야",
+    "aspect": null,
+    "ref": "g032a-j28-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "여름밤 기온이 내려가지 않아 잠들기 어려운 밤을 가리키는 말입니다. 일본의 기상 캐스터 구라시마 아쓰시가 '싱가포르나 마닐라의 밤처럼 덥다'는 뜻으로 만들었습니다. 한국 기상청이 밤 최저 기온 25도 이상을 기준으로 삼는 이 밤은?",
+    "answer": "열대야",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "최저 기온이 30도 이상이면 '초열대야'라 부르는데, 한국에서는 2013년 강릉에서 처음 나타났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "여름밤 기온이 내려가지 않아 잠들기 어려운 밤",
+     "difWhy": "1 — 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "2024년 여름 서울에서만 48일, 제주시에서는 75일이나 이어진, 에어컨 없이는 잠들기 힘든 한여름 밤이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "밤 최저 기온 25도 이상인 무더운 밤",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "여름 뉴스에서 매년 접함",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '여름밤…밤을 가리키는 말' 이 있어 끝 '이 밤' 과 연결 · 일본 캐스터 일화는 뒤"
+    },
+    "blindQuestion": {
+     "guess": "열대야",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "열대야",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "열대야",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1597",
+      "answer": "열섬 현상",
+      "verdict": "diff",
+      "why": "신규 '열대야'(다른 기상 개념) ≠ 옛 '열섬 현상' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "4379",
+      "answer": "보퍼트 풍력 계급",
+      "verdict": "diff",
+      "why": "신규 '열대야'(다른 기상 개념) ≠ 옛 '보퍼트 풍력 계급' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "6579",
+      "answer": "일기 예보",
+      "verdict": "diff",
+      "why": "신규 '열대야'(다른 기상 개념) ≠ 옛 '일기 예보' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/열대야",
+     "https://en.wikipedia.org/wiki/Tropical_night"
+    ],
+    "facts": [
+     {
+      "claim": "구라시마 아쓰시가 만든 말 · 싱가포르·마닐라의 밤처럼 더워 잠자기 어렵다는 뜻",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열대야",
+      "note": "\"열대야\"라는 말은 일본의 기상 캐스터이자 수필가인 구라시마 아쓰시가 만든 신조어이다. 구라시마는 일 최저 기온이 25도이면 싱가포르나 마닐라의 밤처럼 더워서 잠을 자기 어렵다는 뜻으로 썼다."
+     },
+     {
+      "claim": "기상청 밤 최저 기온 기준(2009년부터)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열대야",
+      "note": "기상청은 2009년 7월 24일부터 하루 최저 기온이 아닌 밤 최저 기온(오후 6시1분부터 다음 날 오전 9시)으로 기준을 변경했다."
+     },
+     {
+      "claim": "열대야 = 밤 기온 높은 현상(다른 문서)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tropical_night",
+      "note": "Tropical night 문서: a night when the temperature does not fall below a threshold (20 °C in Europe; 25 °C in Japan/Korea) (원문 tmp/g032/work-job-28/yeol_en.txt)"
+     },
+     {
+      "claim": "2024년 서울 48일 · 제주시 75일",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/열대야",
+      "note": "2024년에는 열대야가 서울은 48일, 제주시는 75일이나 발생했다."
+     },
+     {
+      "claim": "초열대야 30도 · 2013년 강릉 처음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/열대야",
+      "note": "최저 기온이 30°C 이상인 밤을 \"초열대야\"라고 한다. ... 대한민국에서는 2013년 8월 8일 강릉에서 일 최저기온 30.9°C를 기록해 처음으로 초열대야 현상이 발생했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/열대야"
+    ],
+    "hintNote": null,
+    "easiestCue": "밤 최저 기온 25도 이상",
+    "worthWhyGen": "여름 뉴스 말의 기준과 그 말이 생긴 내력(알가치 3 ①②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '밤을 가리키는 말' — 예",
+     "unique": "25도 기준 밤 — 열대야 하나",
+     "hint12": "① 예 ② 예 · 여분 · 등급 2 쪽일 수 있음"
+    },
+    "history": [],
+    "warn": [
+     "crossans 에어컨"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

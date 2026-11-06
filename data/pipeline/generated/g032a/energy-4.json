@@ -1,0 +1,129 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "energy/4",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/4#g032a-g032a-j17-1",
+   "seed": {
+    "subject": "미세먼지",
+    "aspect": null,
+    "ref": "g032a-j17-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "공기 속을 떠다니다 숨 쉴 때 몸에 들어오는 아주 작은 알갱이 오염 물질입니다. 지름이 10마이크로미터 이하인 것을 가리킵니다. 국제암연구소는 공기 중의 이런 입자를 1군 발암물질로 분류합니다. 이 물질은?",
+    "answer": "미세먼지",
+    "acceptedAnswers": [
+     "PM10"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "자동차와 공장의 연료 연소에서 많이 나오지만, 화산·사막의 모래바람·산불 같은 자연에서도 생긴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "지름이 10마이크로미터 이하인 알갱이 오염 물질",
+     "difWhy": "1 — 일상 대기오염 말",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "공기질 예보가 '나쁨'이면 KF94 마스크를 쓰고 바깥 활동을 줄이라고 권하는 바로 그 대기 오염 물질",
+    "generalHintVersion": "hint-v7",
+    "identity": "미세먼지 — 지름 10㎛ 이하의 대기 오염 입자(PM10)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "매일 뉴스 날씨",
+     "piece": "f09",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '알갱이 오염 물질' 이 끝 '이 물질' 과 일치"
+    },
+    "blindQuestion": {
+     "guess": "미세먼지",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "미세먼지",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "미세먼지",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/미세먼지",
+     "https://en.wikipedia.org/wiki/Particulate_matter"
+    ],
+    "facts": [
+     {
+      "claim": "PM10 = 지름 10㎛ 이하",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미세먼지",
+      "note": "흡입 가능한 거친 입자로 지정된 PM10이 포함된다. 이는 직경이 10 마이크로미터(μm) 이하인 거친 입자이다."
+     },
+     {
+      "claim": "PM10 diameter ≤10μm · IARC Group 1",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Particulate_matter",
+      "note": "inhalable coarse particles, designated PM10, ... with a particle diameter of 10 micrometers (μm) or less ... Airborne particulate matter is a IARC Group 1 carcinogen."
+     },
+     {
+      "claim": "1군 발암물질",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미세먼지",
+      "note": "공기 중 입자상 물질은 1군 발암물질이다."
+     },
+     {
+      "claim": "자연 발생원(화산·모래바람·산불) · 연료 연소",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Particulate_matter",
+      "note": "comes from natural sources such as volcanoes, dust storms, forest and grassland fires ... major contributors to PM2.5 include residential energy use (40%), industrial processes (11.7%) ... all of which involve fuel combustion."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "지름 10마이크로미터 이하 대기 오염 입자",
+    "worthWhyGen": "매일 예보로 접하는 생활 상식 — 그 기준(10㎛)과 1군 발암물질이라는 점",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '오염 물질' 예",
+     "unique": "10㎛ 이하 기준 · 황사는 현상 이름이라 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  }
+ ]
+}

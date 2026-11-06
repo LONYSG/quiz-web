@@ -1,0 +1,136 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "popular-music/5",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/5#g032a-g032a-j27-11",
+   "seed": {
+    "subject": "피처링",
+    "aspect": null,
+    "ref": "g032a-j27-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대중음악, 특히 힙합에서 흔히 쓰는 말입니다. 한 가수의 곡에 다른 가수가 손님처럼 참여해 한 소절이나 랩 한 대목을 맡는 일을 가리킵니다. 곡 제목 옆 괄호에 참여한 가수 이름을 붙여 적는 이 말은?",
+    "answer": "피처링",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영미권에서도 객원 참여는 랩 음악에서 특히 흔해졌고, 이 관행이 록 음악가들에게도 번졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "한 가수의 곡에 다른 가수가 손님처럼 참여해 … 곡 제목 옆 괄호에 참여한 가수 이름",
+     "difWhy": "1 — 일상 대중음악 용어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 기본 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "유명 가수가 신인의 곡에 객원으로 나서 화제를 모으는 마케팅 수단이 되기도 하며, 보통 듀엣보다 비중이 작다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "다른 음악가의 곡에 객원으로 참여하는 일(feat.)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "음반 크레딧으로 흔함",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '대중음악에서 쓰는 말' · 둘째 문장이 뜻을 풀어 줌 · 짧다"
+    },
+    "blindQuestion": {
+     "guess": "피처링",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피처링",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피처링",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3174",
+      "answer": "EDM",
+      "verdict": "diff",
+      "why": "신규 '피처링'(다른 음악 용어/장르) ≠ 옛 'EDM' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "1881",
+      "answer": "힙합",
+      "verdict": "diff",
+      "why": "신규 '피처링'(다른 음악 용어/장르) ≠ 옛 '힙합' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/피처링",
+     "https://en.wikipedia.org/wiki/Guest_appearance"
+    ],
+    "facts": [
+     {
+      "claim": "게스트로 참가하는 사람·행위 · 곡명에 이름 부기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피처링",
+      "note": "피처링(영어: featuring)은 음악가 외에 게스트로 참가하는 사람 또는 참가하는 행위 (찬조출연)를 말한다. … 표기는 아티스트 이름에 추가되는 경우와 곡명에 부가될 수 있으며"
+     },
+     {
+      "claim": "랩 음악에서 특히 두드러짐 · 크레딧·곡 제목에 표기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Guest_appearance",
+      "note": "The custom of guest appearance has become especially prominent in rap music, and this influenced rock musicians. … Such a performer may be annotated in credits or even in song titles by the abbreviation feat. or further abbreviation ft."
+     },
+     {
+      "claim": "마케팅 수단 · 듀엣보다 비중 작음",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/피처링",
+      "note": "듀엣과의 명확한 차이는 없지만 일반적으로 듀엣보다는 비중이 작은 편이며 … 유명 가수가 피처링에 참여한다는 사실만으로도 화제가 되면서 마케팅 수단으로 활용된다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/피처링"
+    ],
+    "hintNote": null,
+    "easiestCue": "다른 가수가 곡에 손님처럼 참여하는 일",
+    "worthWhyGen": "3 — 음원 차트에서 매일 보는 'feat.' 의 뜻(일상 말)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' — 예",
+     "unique": "객원 참여 + 제목 옆 이름 표기 = 하나(듀엣·콜라보와는 표기로 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

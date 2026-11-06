@@ -1,0 +1,142 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-food/1",
+  "midKey": "world-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-food/1#g032a-g032a-j30-1",
+   "seed": {
+    "subject": "탄두리 치킨",
+    "aspect": null,
+    "ref": "g032a-j30-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "인도·파키스탄 펀자브 지방의 요리입니다. 요구르트와 향신료에 재운 닭을 원통 모양의 진흙 화덕에 넣어 굽습니다. 그 화덕의 이름을 따서 부르는 이 요리는?",
+    "answer": "탄두리 치킨",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "화덕 이름은 '탄두르'입니다. 1940년대 델리의 식당 모티 마할이 널리 알렸고, 남은 고기로 무르그 마카니 같은 커리도 만듭니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "원통 모양의 진흙 화덕에 넣어 굽습니다",
+     "difWhy": "2 — 인도 음식 · 설명에서 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 음식 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "인도 음식점에서 난과 함께 나오는 새빨간 화덕 구이로, 인도를 대표하는 요리로 세계에 알려졌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "요구르트·향신료에 재운 닭을 진흙 화덕 탄두르에 구운 남아시아 요리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "인도 음식점 대표 메뉴",
+     "piece": "f09",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '펀자브 지방의 요리' 가 끝 ○○(요리)와 일치 · 세 문장 모두 짧다"
+    },
+    "blindQuestion": {
+     "guess": "탄두리 치킨",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "탄두리 치킨",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탄두리 치킨",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4678",
+      "answer": "비리야니",
+      "verdict": "diff",
+      "why": "신규 '탄두리 치킨'(다른 요리) ≠ 옛 '비리야니' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "87",
+      "answer": "팟타이",
+      "verdict": "diff",
+      "why": "신규 '탄두리 치킨'(다른 요리) ≠ 옛 '팟타이' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탄두리_치킨",
+     "https://en.wikipedia.org/wiki/Tandoori_chicken"
+    ],
+    "facts": [
+     {
+      "claim": "펀자브 요리 · 다히·향신료에 재운 닭을 탄두르에 굽는다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탄두리_치킨",
+      "note": "대표적인 펀자브 요리로, 인도와 파키스탄 모두에서 즐겨 먹는다. 다히와 각종 향신료와 발효유에 재운 닭고기를 쇠꼬챙이에 꽂아 탄두르에 향기롭게 굽는 요리"
+     },
+     {
+      "claim": "이름 = 탄두르의 + 치킨 · 탄두르는 원통형 진흙 화덕",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tandoori_chicken",
+      "note": "marinated in yogurt and spices and roasted in a tandoor, a cylindrical clay oven / ko: \"탄두르의\"를 뜻하는 \"탄두리\"에 ... \"치킨\"을 붙인 말"
+     },
+     {
+      "claim": "빨간색 · 난과 함께 · 인도를 대표하는 음식",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/탄두리_치킨",
+      "note": "불타는 듯한 빨간색이 특징 · 난 등의 납작빵과 함께 낸다 · 세계 여러 나라에서 인도를 대표하는 음식으로 각인되었다"
+     },
+     {
+      "claim": "1940년대 후반 델리 모티 마할이 대중화 · 무르그 마카니",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/탄두리_치킨",
+      "note": "1940년대 후반 ... 펀자브 음식점인 모티 마할을 운영하던 ... 대중화시킨 것이다 · 무르그 마카니와 같이 크림으로 만든 커리에 들어가는 재료"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/탄두리_치킨"
+    ],
+    "hintNote": null,
+    "easiestCue": "요구르트에 재운 닭 · 진흙 화덕",
+    "worthWhyGen": "3 — 흔한 외식 메뉴 이름이 화덕 이름에서 왔다는 유래가 질문 안에",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '요리' — 예",
+     "unique": "닭 · 진흙 화덕 이름 → 난·치킨 티카와 구별(티카는 조각 꼬치라 애매 적음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

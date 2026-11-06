@@ -1,0 +1,115 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "architecture/2",
+  "midKey": "architecture",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "architecture/2#g032a-g032a-j17-3",
+   "seed": {
+    "subject": "비트루비우스",
+    "aspect": null,
+    "ref": "g032a-j17-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 로마의 건축가입니다. 그가 쓴 건축 책에는 사람 몸의 비례를 다룬 대목이 있습니다. 레오나르도 다빈치는 이를 바탕으로 원과 정사각형 안에 팔다리를 벌린 남자를 그렸고, 그 그림에 이 건축가의 이름이 붙었습니다. 누구일까요?",
+    "answer": "비트루비우스",
+    "acceptedAnswers": [
+     "마르쿠스 비트루비우스 폴리오"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "카이사르 군대에서 공병으로 일한 것으로 보이며, 그의 책은 1414년 피렌체에서 다시 발견돼 르네상스 시대에 널리 읽혔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "다빈치 비트루비안 맨 그림에 이름이 붙은 고대 로마 건축가",
+     "difWhy": "3 — 그림은 알지만 건축가 이름 떠올리기",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 생소한 인물 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "튼튼함·쓸모·아름다움을 건축의 세 요소로 꼽은 『건축십서』의 로마인 저자",
+    "generalHintVersion": "hint-v7",
+    "identity": "비트루비우스 — 『건축십서』를 쓴 고대 로마 건축가, 다빈치 '비트루비우스적 인간'의 이름",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "다빈치 그림 이름으로 접함",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/비트루비우스",
+     "https://en.wikipedia.org/wiki/Vitruvius"
+    ],
+    "facts": [
+     {
+      "claim": "고대 로마 건축가 · 다빈치 해부도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비트루비우스",
+      "note": "BC 1세기 경에 활약한 고대 로마의 기술자, 건축가이다. ... 레오나르도 다 빈치는 그의 영향을 받아 유명한 비트루비우스 해부도를 그렸다."
+     },
+     {
+      "claim": "인체 비례 → 원과 정사각형 속 Vitruvian Man",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vitruvius",
+      "note": "His discussion of perfect proportion in architecture and the human body led to the famous Renaissance drawing of the Vitruvian Man ... depicting a human body inscribed in a circle and a square"
+     },
+     {
+      "claim": "견고함·유용성·아름다움 세 본질",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/비트루비우스",
+      "note": "건축구조는 세 가지 본질을 반드시 갖추어야한다고 하였는데 그것은 견고함(firmitas)과 유용성(utilitas), 또 아름다움(venustas)이다."
+     },
+     {
+      "claim": "카이사르 군 건축기사 · 1414 피렌체 재발견",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/비트루비우스",
+      "note": "율리우스 카이사르 로마군단의 건축기사로 ... 복무한 것으로 보이며 ... 1414년 피렌체에서 재발견되어 르네상스 건축가들에 빠르게 각국 언어로 번역되어 널리 읽혔으며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/비트루비우스",
+     "https://en.wikipedia.org/wiki/Vitruvius"
+    ],
+    "hintNote": null,
+    "easiestCue": "다빈치의 원과 정사각형 속 남자 그림에 이름이 붙은 로마 건축가",
+    "worthWhyGen": "누구나 본 다빈치 그림 '비트루비우스적 인간'의 이름이 어디서 왔는지(유래)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '건축가' 예",
+     "unique": "그림에 이름이 붙은 로마 건축가는 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17",
+    "discarded": "알가치 1 (고유명사 · 생소한 인물 이름)"
+   }
+  }
+ ]
+}

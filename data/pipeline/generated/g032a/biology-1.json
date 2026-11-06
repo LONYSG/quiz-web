@@ -1,0 +1,306 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "biology/1",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/1#g032a-g032a-j06-3",
+   "seed": {
+    "subject": "클론",
+    "aspect": null,
+    "ref": "g032a-j06-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "생물학에서 유전적으로 똑같은 개체나 세포를 가리키는 말입니다. 1903년 미국 식물학자 허버트 웨버가 처음 썼는데, 그리스어로 '잔가지'를 뜻하는 낱말에서 따왔습니다. 잔가지를 꺾어 심으면 어미 나무와 똑같은 나무가 자라는 꺾꽂이에서 온 이 말은?",
+    "answer": "클론",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "원예에서는 20세기 초까지 끝 e 없이 'clon'으로 적었고, 요즘은 소프트웨어 저장소를 통째로 복사하는 일도 같은 말로 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "꺾꽂이에서 온 이 말",
+     "difWhy": "2 — 클론은 일상어 · 설명에서 이름으로 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념 · 일상어로 굳었으나 기본 2",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "일란성 쌍둥이나 체세포 핵을 옮겨 태어난 양 돌리처럼, 유전 정보가 원본과 똑같은 생물이나 세포를 부르는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "유전적으로 동일한 생물 개체·세포(복제 생물)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "복제 생물 영화·뉴스",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '생물학 · 말' 이 있고 꺾꽂이 풀이로 뜻이 잡힘 · 끝 ○○ '말' 도 첫 문장에 있음"
+    },
+    "blindQuestion": {
+     "guess": "클론",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "클론",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "클론",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5792",
+      "answer": "진판델",
+      "verdict": "diff",
+      "why": "클론 어원 vs 진판델"
+     },
+     {
+      "old": "6739",
+      "answer": "국경 없는 의사회",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "5951",
+      "answer": "현진영",
+      "verdict": "diff",
+      "why": "클론 용어 vs 현진영"
+     },
+     {
+      "old": "37",
+      "answer": "2",
+      "verdict": "diff",
+      "why": "클론 vs 유전자 2벌"
+     },
+     {
+      "old": "794",
+      "answer": "46",
+      "verdict": "diff",
+      "why": "클론 vs 염색체 46"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cloning",
+     "https://ko.wikipedia.org/wiki/클론"
+    ],
+    "facts": [
+     {
+      "claim": "1903년 허버트 웨버가 만든 말 · 그리스어 klōn(잔가지) · 꺾꽂이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cloning",
+      "note": "Coined by Herbert J. Webber in 1903, the term clone derives from the Ancient Greek word κλών (klōn), twig, which is the process whereby a new plant is created from a twig."
+     },
+     {
+      "claim": "그리스어 가지에서 유래 · 꺾꽂이",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/클론",
+      "note": "Clone이라는 말은 그리스어로 줄기, 가지를 뜻하는 κλῶνος에서 유래했는데, 잔가지를 이용해 꺾꽂이를 하는 전통적인 복제 방법을 뜻한다."
+     },
+     {
+      "claim": "일란성 쌍둥이는 자연 복제",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cloning",
+      "note": "It also occurs accidentally in the case of identical twins, which are formed when a fertilized egg splits, creating two or more embryos that carry identical DNA."
+     },
+     {
+      "claim": "원예에서 clon 표기 · 프로그래밍에서도 쓰임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cloning",
+      "note": "In horticulture, the spelling clon was used until the early twentieth century ... / ko: '클로닝'은 복제 분기의 의미로 컴퓨터 프로그래밍이나 소프트웨어에서도 종종 쓰이는 단어이기도 하다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cloning"
+    ],
+    "hintNote": null,
+    "easiestCue": "유전적으로 똑같은 개체를 가리키는 말",
+    "worthWhyGen": "일상에서도 쓰는 말의 유래(잔가지 → 꺾꽂이)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '생물학 … 말' 예",
+     "unique": "그리스어 '잔가지'에서 온 말 — '복제'(우리말)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "biology/1#g032a-g032a-j14-5",
+   "seed": {
+    "subject": "일란성 쌍둥이",
+    "aspect": null,
+    "ref": "g032a-j14-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "쌍둥이의 한 종류입니다. 엄마 배 속에서 수정란 하나가 둘로 갈라져 두 아기로 자랍니다. 이렇게 태어난 쌍둥이를 무엇이라 할까요?",
+    "answer": "일란성 쌍둥이",
+    "acceptedAnswers": [
+     "일란성",
+     "일란성 쌍생아"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "난자 두 개가 따로 수정되어 자라면 이란성입니다. 세계에 이렇게 한 수정란에서 나온 쌍은 약 천만 쌍으로 추산됩니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "수정란 하나가 둘로 갈라져 두 아기로 자란 쌍둥이",
+     "difWhy": "1 — 쌍둥이 종류 이름 · 일상어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 생물 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "유전자가 거의 같아 성별도 같고 얼굴도 꼭 닮았지만, 지문만은 서로 다른 쌍둥이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "한 수정란이 나뉘어 생긴 쌍둥이",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "상식 용어",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "문장 셋뿐이고 첫 문장에 '쌍둥이' 종류가 있어 바로 들어옴"
+    },
+    "blindQuestion": {
+     "guess": "일란성 쌍둥이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "일란성 쌍둥이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "일란성 쌍둥이",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6207",
+      "answer": "나루토",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "804",
+      "answer": "크리스퍼",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "37",
+      "answer": "2",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "801",
+      "answer": "줄기세포",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "793",
+      "answer": "이중나선",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Twin",
+     "https://ko.wikipedia.org/wiki/쌍둥이"
+    ],
+    "facts": [
+     {
+      "claim": "일란성 = 한 수정란(zygote)이 갈라져 두 배아",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Twin",
+      "note": "Twins can be either monozygotic ('identical'), meaning that they develop from one zygote, which splits and forms two embryos, or dizygotic ('non-identical' or 'fraternal'), meaning that each twin develops from a separate egg"
+     },
+     {
+      "claim": "쌍둥이는 일란성·이란성으로 나뉜다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쌍둥이",
+      "note": "쌍둥이는 일란성 쌍둥이(MZ:monozygotic) 혹은 이란성 쌍둥이(DZ:dizygotic)로 분류된다."
+     },
+     {
+      "claim": "유전적으로 거의 같고 동성 · 지문은 다름",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/쌍둥이",
+      "note": "일란성 쌍둥이는 수정되고 분리될 때 돌연변이가 일어나지 않는 이상 유전적으로 거의 비슷하며, 동성이다. ... 일란성 쌍둥이는 지문까지는 아니지만 외모가 비슷하다."
+     },
+     {
+      "claim": "약 천만 쌍 추산",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쌍둥이",
+      "note": "전 세계적으로, 약 천만 쌍의 일란성 쌍둥이가 있다고 추산된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/쌍둥이",
+     "https://en.wikipedia.org/wiki/Twin"
+    ],
+    "hintNote": null,
+    "easiestCue": "수정란 하나가 둘로 갈라짐",
+    "worthWhyGen": "누구나 쓰는 생활 상식(일반 상식 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '쌍둥이' — 예",
+     "unique": "수정란 하나 → 이란성과 갈림 · 질문의 '수정란 하나'가 곧 정의(쉬움은 의도 · 등급 1)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

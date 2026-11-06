@@ -1,0 +1,411 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "chemistry/4",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/4#g032a-g032a-j07-5",
+   "seed": {
+    "subject": "갈변",
+    "aspect": null,
+    "ref": "g032a-j07-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "깎아 둔 사과나 감자가 공기에 닿아 누르스름하게 변하는 현상입니다. 레몬즙을 뿌려 두면 덜 생기는데, 신맛을 내는 산이 이 변화를 일으키는 효소의 활동을 막기 때문입니다. 이 현상은 무엇일까요?",
+    "answer": "갈변",
+    "acceptedAnswers": [
+     "갈변 현상",
+     "효소적 갈변"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "새우 머리가 검게 변하는 것도 이 효소 작용이다. 빵·스테이크가 구워지며 색이 나는 마이야르 반응은 효소 없이 열로 일어난다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "깎아 둔 사과나 감자가 공기에 닿아 누르스름하게 변하는 현상",
+     "difWhy": "3 — 갈변 이름은 일상에서 잘 안 씀",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 요리 생활 현상의 까닭",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "과일 속 폴리페놀 산화 효소가 산소와 만나 색소를 만드는 반응으로, 사과주스가 금세 거뭇해지는 것도 같은 일이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "과일·채소가 산소와 만나 색이 변하는 현상(효소적 갈변)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "사과·바나나 변색 설명",
+     "piece": "f05",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '사과·감자가 누르스름해지는 현상'이 끝 ○○=현상과 일치."
+    },
+    "blindQuestion": {
+     "guess": "갈변",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "갈변",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "갈변",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Food_browning",
+     "https://en.wikipedia.org/wiki/Polyphenol_oxidase"
+    ],
+    "facts": [
+     {
+      "claim": "효소적 갈변은 산소 노출이 필요 · 산미료(구연산·아스코르브산)가 갈변 방지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Food_browning",
+      "note": "Enzymatic browning (also called oxidation of foods) requires exposure to oxygen. / Acidulants, such as citric acid, ascorbic acid, and glutathione, are used as anti-browning agents."
+     },
+     {
+      "claim": "사과 썬 면 갈변 · PPO",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Polyphenol_oxidase",
+      "note": "PPO is the major enzyme responsible for enzymatic browning of apples. … slicing apples induces PPO activity, leading to browning of the cut surfaces"
+     },
+     {
+      "claim": "사과주스·퓌레도 갈변",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Polyphenol_oxidase",
+      "note": "Browning also occurs in apple juices and purees"
+     },
+     {
+      "claim": "새우 흑변 · 마이야르 = 비효소적",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Food_browning",
+      "note": "Oxidation of polyphenols is the major cause of melanosis in crustaceans such as shrimp. / forms of non-enzymatic browning are caramelization and the Maillard reaction … Examples of foods that undergo Maillard reaction include breads, steaks, and potatoes."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Polyphenol_oxidase"
+    ],
+    "hintNote": null,
+    "easiestCue": "깎은 사과가 변하는 현상",
+    "worthWhyGen": "부엌에서 매일 보는 현상의 까닭과 막는 법 — 알가치 3 ②③",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '현상' 예",
+     "unique": "'산화'로 칠 사람 있음(L3 기존 정답 '산화' — 더 넓은 말) — 묻는 문장 '이 현상' 으로 색 변화 한정 · 등급 3 쪽일 수 있음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 산화"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "chemistry/4#g032a-g032a-j14-4",
+   "seed": {
+    "subject": "리트머스 종이",
+    "aspect": null,
+    "ref": "g032a-j14-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "과학 시간에 산성과 염기성을 가리는 종이입니다. 푸른색 종이는 산성 용액에서 붉게 변하고, 붉은색 종이는 염기성 용액에서 푸르게 변합니다. 지의류(이끼처럼 바위에 붙어 사는 생물)에서 뽑은 색소로 만드는 이 종이는?",
+    "answer": "리트머스 종이",
+    "acceptedAnswers": [
+     "리트머스",
+     "리트머스지",
+     "리트머스 시험지"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 '색깔 이끼'를 뜻하는 고대 노르드어에서 왔습니다. 색이 바뀌는 범위는 pH 4.5~8.3쯤이고, 중성 종이는 보라색입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "산성과 염기성을 가리는 종이",
+     "difWhy": "2 — 학교 실험 · 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "식초 같은 산에 대면 빨개지고 암모니아 같은 염기에 대면 파래지는, 과학실 대표 지시약이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "산·염기를 색으로 가리는 지시약 종이",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "과학 시간 실험 도구",
+     "piece": "f05",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '산성·염기성 가리는 종이' · 지의류는 괄호 풀이 있음"
+    },
+    "blindQuestion": {
+     "guess": "리트머스 시험지",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "리트머스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "리트머스 종이",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2776",
+      "answer": "중화",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5741",
+      "answer": "솔베이 공정",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3476",
+      "answer": "하버-보슈법",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/리트머스",
+     "https://en.wikipedia.org/wiki/Litmus"
+    ],
+    "facts": [
+     {
+      "claim": "푸른 리트머스 종이는 산성에서 붉게, 붉은 종이는 염기성에서 푸르게 · 지의류 염료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/리트머스",
+      "note": "리트머스(litmus)는 지의류에서 추출한 다양한 염료의 수용성 혼합물이다. ... 산성 매질에서 푸른색 리트머스 종이는 붉은색으로 변하며, 염기성 또는 알칼리성 매질에서 붉은색 리트머스 종이는 푸른색으로 변한다."
+     },
+     {
+      "claim": "같은 내용 en",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Litmus",
+      "note": "Litmus is a water-soluble mixture of different dyes extracted from lichens. ... In an acidic medium, blue litmus paper turns red, while in a basic or alkaline medium, red litmus paper turns blue."
+     },
+     {
+      "claim": "암모니아 기체는 붉은 리트머스를 푸르게 · 식초가 산성인 것은 상식",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/리트머스",
+      "note": "예를 들어, 염기성인 암모니아 기체는 붉은색 리트머스 종이를 푸른색으로 변화시킨다."
+     },
+     {
+      "claim": "이름 유래 · pH 범위 · 중성은 보라",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/리트머스",
+      "note": "\"리트머스(litmus)\"라는 단어는 \"색깔 이끼\" 또는 \"착색 이끼\"를 의미하는 고대 노르드어 \"litmosi\"에서 유래했다. ... pH 범위 4.5~8.3 사이에서 일어난다. 중성 리트머스 종이는 보라색이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/리트머스"
+    ],
+    "hintNote": null,
+    "easiestCue": "푸른 종이가 산성에서 붉게 변함",
+    "worthWhyGen": "학교 과학 대표 실험 도구(교과 개념 2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '종이' — 예",
+     "unique": "'종이' + 푸름↔붉음 두 방향 · 페놀프탈레인(용액)·BTB 와 갈림",
+     "hint12": "① 예 ② 예 — 단 H3: 질문의 색 변화 방향을 예시(식초·암모니아)로 다시 말함"
+    },
+    "history": [],
+    "warn": [
+     "crossans 암모니아/염기"
+    ],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "chemistry/4#g032a-g032a-j18-6",
+   "seed": {
+    "subject": "지시약",
+    "aspect": null,
+    "ref": "g032a-j18-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "화학 실험에서 쓰는 물질입니다. 페놀프탈레인처럼 용액이 산성인지 염기성인지에 따라 색이 바뀌어, 그 성질을 눈으로 보여 줍니다. 이런 물질을 통틀어 무엇이라 할까요?",
+    "answer": "지시약",
+    "acceptedAnswers": [
+     "산염기 지시약",
+     "pH 지시약"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "보라색 양배추 즙에 든 안토시아닌도 같은 구실을 해, 집에서 만들어 보는 화학 실험으로 자주 쓰입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "페놀프탈레인처럼 산성인지 염기성인지에 따라 색이 바뀌는 물질",
+     "difWhy": "3 — 학교 화학 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "BTB 용액·메틸 오렌지가 대표 예로, 적정 실험에서 중화가 끝나는 순간을 색 변화로 잡아낸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "용액의 산성·염기성 등에 따라 색이 바뀌어 반응의 끝을 알려 주는 물질",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "학교 과학 시간",
+     "piece": "f01",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '화학 실험에서 쓰는 물질' · 페놀프탈레인은 예시로 붙어 뜻이 잡힌다"
+    },
+    "blindQuestion": {
+     "guess": "지시약",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "지시약",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "지시약",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4318",
+      "answer": "테르밋 반응",
+      "verdict": "diff",
+      "why": "지시약 vs 테르밋 — 다른 지식"
+     },
+     {
+      "old": "206",
+      "answer": "산화",
+      "verdict": "diff",
+      "why": "지시약 vs 산화 — 다른 지식"
+     },
+     {
+      "old": "2777",
+      "answer": "촉매",
+      "verdict": "diff",
+      "why": "지시약 vs 촉매 — 다른 지식"
+     },
+     {
+      "old": "2780",
+      "answer": "환원",
+      "verdict": "diff",
+      "why": "지시약 vs 환원 — 다른 지식"
+     },
+     {
+      "old": "2782",
+      "answer": "앙금",
+      "verdict": "diff",
+      "why": "지시약 vs 앙금 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/지시약",
+     "https://en.wikipedia.org/wiki/PH_indicator"
+    ],
+    "facts": [
+     {
+      "claim": "지시약은 색 변화로 반응 종말점을 확인하는 물질 · 산염기 지시약의 예 페놀프탈레인(염기성에서 붉은색)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지시약",
+      "note": "주로 용액의 색의 변화를 기준으로 하여 종말점을 확인한다. … 산염기반응의 지시약은 페놀프탈레인, 브로모페놀블루 용액, 메틸 오렌지 … 페놀프탈레인 변색 범위(8.2~10.2), 즉 염기성에서 붉은색으로 변한다."
+     },
+     {
+      "claim": "pH 지시약은 용액의 pH에 따라 색이 바뀌는 물질",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/PH_indicator",
+      "note": "Extracting anthocyanins from household plants, especially red cabbage, to form a crude pH indicator is a popular introductory chemistry demonstration."
+     },
+     {
+      "claim": "BTB 용액: 산성 노랑·중성 녹색·염기성 파랑",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/지시약",
+      "note": "BTB용액(bromothymol-blue) 산성일 때 노란색(0~6.2) 중성일 때 녹색(6.2~7.6) 염기성(7.6~14)일 때 파란색을 띤다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/지시약"
+    ],
+    "hintNote": null,
+    "easiestCue": "페놀프탈레인처럼 산성·염기성에 따라 색이 바뀌는 물질",
+    "worthWhyGen": "중학 과학의 기본 개념(교과 개념 2)",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '물질' — 예",
+     "unique": "'통틀어'로 개별 이름(리트머스 등)과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 중화"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

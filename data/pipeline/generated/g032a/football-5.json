@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "football/5",
+  "midKey": "football",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "football/5#g032a-g032a-j22-6",
+   "seed": {
+    "subject": "옐로카드",
+    "aspect": null,
+    "ref": "g032a-j22-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "축구 심판이 반칙한 선수에게 경고를 줄 때 꺼내는 카드입니다. 영국 심판 켄 애스턴이 신호등을 보다가, 말이 통하지 않아도 색으로 알리자는 생각을 떠올렸다고 전합니다. 1970년 월드컵부터 쓰인 이 카드는?",
+    "answer": "옐로카드",
+    "acceptedAnswers": [
+     "노란 카드",
+     "노란색 카드"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1966년 잉글랜드와 아르헨티나의 8강에서 심판의 경고와 퇴장 판정을 선수와 관중이 제대로 알지 못한 일이 계기였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "반칙한 선수에게 경고를 줄 때 꺼내는 카드",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 상식과 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "한 경기에서 두 장을 받으면 곧바로 빨간 카드가 나와 그 선수는 경기장 밖으로 나가야 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "축구 등에서 경고를 뜻하는 노란 카드",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "축구 경기에서 매우 흔함",
+     "piece": "f02",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '축구 심판 카드' = 끝 ○○ '카드'. 일화는 둘째 문장이고 종류는 이미 밝혀짐"
+    },
+    "blindQuestion": {
+     "guess": "옐로카드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "옐로카드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "옐로카드",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6259",
+      "answer": "주심",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "2267",
+      "answer": "마라카낭",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "4910",
+      "answer": "웸블리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "2265",
+      "answer": "헤이젤 참사",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5831",
+      "answer": "코린치앙스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Penalty_card",
+     "https://en.wikipedia.org/wiki/Ken_Aston",
+     "https://ko.wikipedia.org/wiki/옐로카드"
+    ],
+    "facts": [
+     {
+      "claim": "켄 애스턴 · 신호등 원리 · 언어 장벽 · 1970 월드컵 첫 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Penalty_card",
+      "note": "The idea of using a universal language ... originated in association football, with English referee Ken Aston. ... Aston realised that a colour-coding scheme based on the same principle as used on traffic lights ... would transcend language barriers ... yellow cards to indicate a caution and red cards to indicate an expulsion were used for the first time in the 1970 FIFA World Cup in Mexico."
+     },
+     {
+      "claim": "신호등 교차로에서 떠올림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ken_Aston",
+      "note": "On the trip, as he stopped at a traffic light junction at Kensington High Street, Aston realised that a colour-coding scheme based on the same amber/yellow ('stop if safe to do so') - red (Stop) principle as used on traffic lights would traverse language barriers"
+     },
+     {
+      "claim": "경고 · 두 번이면 퇴장",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/옐로카드",
+      "note": "옐로카드는 ... 선수들이 반칙을 했을 때 경고를 의미하는 표시이다. ... 한 시합에서 옐로카드를 두 번 받으면 퇴장과 다음 경기 출전 정지 처분이 주어진다."
+     },
+     {
+      "claim": "1966 잉글랜드-아르헨티나 8강 혼란",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Penalty_card",
+      "note": "In the quarter-finals, England played Argentina at Wembley Stadium. After the match, newspaper reports stated that referee Rudolf Kreitlein had cautioned ... The referee had not made his decision clear during the game"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/옐로카드"
+    ],
+    "hintNote": null,
+    "easiestCue": "축구 심판의 경고 카드",
+    "worthWhyGen": "3 — 모두 아는 규칙 도구의 유래(신호등)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '카드' — 예",
+     "unique": "경고 = 옐로카드(레드카드는 퇴장)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

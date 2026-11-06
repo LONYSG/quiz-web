@@ -1,0 +1,140 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "computer/1",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/1#g032a-g032a-j31-11",
+   "seed": {
+    "subject": "주사율",
+    "aspect": null,
+    "ref": "g032a-j31-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "모니터 사양표에 나오는 성능 수치입니다. 화면이 1초에 몇 번 새로 그려지는지를 헤르츠(Hz)로 나타내며, 보통은 60Hz입니다. 2010년대부터 게임용 모니터가 이 값을 크게 높여 왔는데, 이 수치는?",
+    "answer": "주사율",
+    "acceptedAnswers": [
+     "화면 재생 빈도",
+     "재생률"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영사기는 초당 24프레임을 돌리지만 한 장을 두세 번씩 비추어 48~72Hz가 된다. 그래서 프레임 레이트와는 구별한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "화면이 1초에 몇 번 새로 그려지는지를 헤르츠(Hz)로 나타냄",
+     "difWhy": "2 — 모니터 사양 용어 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 쓸모 — 사는 사람에게만 쓸모",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "높을수록 화면 움직임이 매끄러워 보이며, 옛 브라운관 모니터는 이 값이 낮으면 화면이 깜박여 눈이 피로했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "화면이 1초에 몇 번 새로 그려지는지 나타내는 값(refresh rate)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "모니터·폰 사양에서 접함",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '모니터 사양표 성능 수치', 끝 ○○=수치. 헤르츠 풀이 바로 붙음."
+    },
+    "blindQuestion": {
+     "guess": "주사율",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "주사율",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "주사율",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1556",
+      "answer": "CPU",
+      "verdict": "diff",
+      "why": "주사율과 CPU는 다른 사양 용어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/화면_재생_빈도",
+     "https://en.wikipedia.org/wiki/Refresh_rate"
+    ],
+    "facts": [
+     {
+      "claim": "1초에 화면을 몇 번 비추는지 · 주사율",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/화면_재생_빈도",
+      "note": "화면 재생 빈도(refresh rate, 또는 주사율, 화면재생률 …)는 화면이 1초에 얼마큼 비추는지를 나타내는 값이다."
+     },
+     {
+      "claim": "표준 60Hz · 2010년대 게임용 고주사율",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Refresh_rate",
+      "note": "Beginning in the 2010s, competitive video gaming prompted manufacturers to develop displays with higher refresh rates than the standard 60 Hz."
+     },
+     {
+      "claim": "CRT 깜박임 · 눈 피로",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Refresh_rate",
+      "note": "On CRT displays, higher refresh rates produce less flickering, thereby reducing eye strain."
+     },
+     {
+      "claim": "영사기 24프레임 · 48/72Hz · 프레임 레이트와 구별",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/화면_재생_빈도",
+      "note": "영사기는 초당 24 프레임을 실행하지만 48 또는 72 헤르츠의 화면 재생 빈도를 가진다. … 프레임 레이트에서 측정하는 바와는 구별한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/화면_재생_빈도",
+     "https://en.wikipedia.org/wiki/Refresh_rate"
+    ],
+    "hintNote": null,
+    "easiestCue": "화면이 1초에 몇 번 새로 그려지는지 Hz",
+    "worthWhyGen": "모니터·휴대폰 고를 때 쓰는 말(쓸모)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '모니터 성능 수치' 예",
+     "unique": "Hz · 1초 몇 번 — 해상도·응답 속도와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

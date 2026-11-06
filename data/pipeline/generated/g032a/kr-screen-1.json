@@ -1,0 +1,342 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-screen/1",
+  "midKey": "kr-screen",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-screen/1#g032a-g032a-j11-4",
+   "seed": {
+    "subject": "애마부인",
+    "aspect": null,
+    "ref": "g032a-j11-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1982년 개봉한 한국 성인 영화입니다. 원래 제목에 쓴 '말 마(馬)' 자가 저속하다며 검열에서 '삼 마(麻)' 자로 바뀌었습니다. 야간 통행금지가 풀린 그해 서울극장 심야 관객을 모았고, 열 편 넘는 속편이 나왔습니다. 이 영화는?",
+    "answer": "애마부인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "제목 소리는 그 무렵 한국에서 인기를 끈 프랑스 영화 '엠마뉴엘'을 떠올리게 한다는 풀이가 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1982년 개봉 · 야간 통행금지가 풀린 그해 서울극장 심야 관객",
+     "difWhy": "3 — 세대 밖 영화 · 설명 → 이름",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 영화 이름 암기",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "배우 안소영이 주연을 맡아 1980년대 에로 영화 붐을 연 대표 시리즈다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1982년 안소영 주연 한국 에로 영화 시리즈",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "한국 영화사 유명 시리즈 이름",
+     "piece": "f04",
+     "genPct": 80
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/애마부인",
+     "https://en.wikipedia.org/wiki/Madame_Aema",
+     "https://www.heraldk.com/article/2025092318223819085"
+    ],
+    "facts": [
+     {
+      "claim": "1982 개봉 · 愛馬夫人 → 愛麻夫人 제목 저속하다 하여 변경 · 시리즈 13편(1996)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애마부인",
+      "note": "원래 제목은 '愛馬夫人'으로 하려 했으나, 제목이 저속하다하여 '愛麻夫人'으로 바꿨다. 1982년에 개봉한 이후로 폭발적인 인기를 얻어서 이후 시리즈로 제작되었으며 ... 1996년에 13번째 시리즈가 개봉"
+     },
+     {
+      "claim": "검열이 제목 한자를 바꿈 · 속편 10편 이상 · 엠마뉴엘 암시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Madame_Aema",
+      "note": "The government censors insisted that the characters in the title be changed from \"愛馬夫人\" (lit. Horse-Loving Lady) to \"愛麻夫人\" (lit. Hemp-Loving Lady). Both versions of the title are pronounced, \"Aema Buin\", a hint at the French film Emmanuelle (1974), which had been popular in Korea. ... The film inspired at least 10 sequels"
+     },
+     {
+      "claim": "1월 통금 해제 · 1982.2.6 서울극장 개봉 · 심야에 보는 영화",
+      "where": "q",
+      "url": "https://www.heraldk.com/article/2025092318223819085",
+      "note": "1982년은 1월에 통금해제가 되면서 82년 2월 6일 서울극장에서 개봉한 '애마부인'은 심야에 애인과 함께 보는 영화가 됐다."
+     },
+     {
+      "claim": "안소영 주연 · 80년대 에로영화 시작",
+      "where": "h",
+      "url": "https://www.heraldk.com/article/2025092318223819085",
+      "note": "그 시작이 1982년 나온 에로영화인 '애마부인'이라 할 수 있다. ... 여배우 안소영이"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Madame_Aema"
+    ],
+    "hintNote": null,
+    "easiestCue": "1982년 성인 영화 · 열 편 넘는 속편",
+    "worthWhyGen": "통금 해제·검열 시대의 대중문화 상징 — 제목이 바뀐 까닭(유래)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '성인 영화' 예",
+     "unique": "1982 · 제목 한자 변경 · 시리즈 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11",
+    "discarded": "알가치 1 (고유명사 · 영화 이름 암기)"
+   }
+  },
+  {
+   "seedId": "kr-screen/1#g032a-g032a-j19-7",
+   "seed": {
+    "subject": "미워도 다시 한 번",
+    "aspect": null,
+    "ref": "g032a-j19-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1968년 개봉해 국도극장 한 곳에서만 37만 명을 모은 정소영 감독의 멜로 영화입니다. 유부남과 사이에서 낳은 아이를 그 집에 보냈다가 되찾아 오는 엄마(문희)의 이야기로 관객을 울렸습니다. 지금도 실망했지만 또 믿어 보자는 뜻으로 흔히 빌려 쓰는 이 영화 제목은?",
+    "answer": "미워도 다시 한 번",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한국적 멜로드라마의 전형으로 꼽히며, 제12회 부일상에서 감독상과 여우 조연상을 받았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "실망했지만 또 믿어 보자는 뜻으로 빌려 쓰는 제목",
+     "difWhy": "4 — 세대 밖 영화 제목 · 설명 → 이름",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 작품 이름 암기",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "신영균·문희가 주연했고, 감독이 해마다 속편을 내 '대완결편'까지 이어진 1960년대 최루성 멜로 대표작이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1968년 정소영 감독 · 신영균·문희 주연 한국 신파 멜로 영화",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "고전 영화 제목으로 이름 들어 본 사람 있음",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": null,
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/미워도_다시_한_번",
+     "https://encykorea.aks.ac.kr/Article/E0068048",
+     "https://jjan.kr/article/20090427308541",
+     "https://sports.khan.co.kr/article/200708212109183"
+    ],
+    "facts": [
+     {
+      "claim": "1968년 7월 16일 국도극장 단관 개봉 · 370,005명 · 정소영 감독 · 한국적 멜로 드라마의 전형 · 부일상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미워도_다시_한_번",
+      "note": "\"미워도 다시 한 번\"은 정소영이 감독한 대한민국의 영화이다. 1968년 7월 16일에 국도극장에서 단관 개봉되어 370,005명의 관객을 동원하였다. 한국적인 멜로 드라마의 전형으로 … 제12회 부일상에서 감독상과 여우 조연상(전계현)을 수상했다."
+     },
+     {
+      "claim": "국도극장 개봉 65일간 37만 명 · 최루성 멜로드라마 대표작",
+      "where": "q",
+      "url": "https://encykorea.aks.ac.kr/Article/E0068048",
+      "note": "(WebSearch 요약) 1960년대 후반에 다수 제작된 최루성 멜로드라마의 대표작 … 1968년 7월 16일 국도극장에서 개봉하여 65일간 37만명의 관객을 동원"
+     },
+     {
+      "claim": "줄거리 — 유부남 신호와 혜영 · 아이를 신호에게 보냈다가 다시 데려감 · 신영균·문희 주연",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미워도_다시_한_번",
+      "note": "혜영은 아이의 장래를 위해 신호에게 아이를 보내기로 결심하고 … 혜영은 아이를 자신이 길러야겠다고 결심하고 아이를 다시 시골로 데려간다. … 신영균: 신호 역 / 문희: 혜영 역"
+     },
+     {
+      "claim": "제목을 빌려 쓰는 용례(칼럼 제목)",
+      "where": "q",
+      "url": "https://jjan.kr/article/20090427308541",
+      "note": "(WebSearch 요약) 2009년 칼럼 제목 '미워도 다시 한 번?' — 관용 쓰임을 정의한 문서 문장은 못 찾음(약함 · 널리 알려진 용법)"
+     },
+     {
+      "claim": "해마다 속편 · 대완결편",
+      "where": "h",
+      "url": "https://sports.khan.co.kr/article/200708212109183",
+      "note": "(WebSearch 요약) 정소영 감독은 1968년부터 1년에 한편씩 '미워도 다시 한번' '미워도 다시 한번(속)' '미워도 다시 한번(3편)' '미워도 다시 한번(대완결편)'을 내놓았고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://encykorea.aks.ac.kr/Article/E0068048",
+     "https://ko.wikipedia.org/wiki/미워도_다시_한_번"
+    ],
+    "hintNote": null,
+    "easiestCue": "실망했지만 또 믿어 보자는 뜻으로 빌려 쓰는 1968년 영화 제목",
+    "worthWhyGen": "일상에서 빌려 쓰는 말이 1968년 신파 영화 제목에서 왔다는 유래(19 §9-1 ③) — lowWorthField 각도",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '멜로 영화' — 예 · 제목 낱말(미워/다시/한 번) 질문·힌트에 없음",
+     "unique": "1968 · 정소영 · 문희 — 하나(속편과의 갈림은 '1968년 개봉'으로)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19",
+    "discarded": "알가치 1 (고유명사 · 작품 이름 암기)"
+   }
+  },
+  {
+   "seedId": "kr-screen/1#g032a-job-26-12",
+   "seed": {
+    "subject": "충무로",
+    "aspect": null,
+    "ref": "job-26-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 영화계를 통째로 가리키는 말로 쓰이는 서울의 거리 이름입니다. 1990년대 이전까지 이곳에 극장과 영화사, 필름 현상소, 포스터 인쇄소가 모여 있었습니다. 그래서 '이곳에 입성했다'는 말이 영화계에 들어갔다는 뜻이 되었습니다. 이 거리는?",
+    "answer": "충무로",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1990년대 영화사들이 강남으로 옮기고 현상소도 디지털화로 사라져 지금은 상징으로 남았습니다. 거리 이름은 이순신의 시호에서 왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한국 영화계를 가리키는 서울의 거리",
+     "difWhy": "2 — 한국인 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "명동 바로 옆 거리로, 대한극장이 서 있고 같은 이름의 지하철역이 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한국 영화계의 대명사가 된 서울 중구의 거리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "한국 영화계 상징으로 흔히 쓰임",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '서울의 거리 이름' · 끝 ○○ = 거리, 현상소 등 나열은 한 갈래 정보"
+    },
+    "blindQuestion": {
+     "guess": "충무로",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "충무로",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "충무로",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 2,
+     "found": 2,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6682",
+      "answer": "은행나무 침대",
+      "verdict": "diff",
+      "why": "새=충무로(영화계 별칭); 은행나무 침대는 특정 영화로 다름"
+     }
+    ],
+    "sources": [
+     "https://news.tf.co.kr/read/ogmeta/1780557.htm",
+     "https://mediahub.seoul.go.kr/archives/1200513",
+     "https://www.segye.com/newsView/20131205004307",
+     "https://ko.wikipedia.org/wiki/충무로"
+    ],
+    "facts": [
+     {
+      "claim": "극장 · 영화사 · 현상소 · 인쇄소 번성 · 1990년대 강남 이전",
+      "where": "q",
+      "url": "https://news.tf.co.kr/read/ogmeta/1780557.htm",
+      "note": "충무로는 극장과 함께 영화사, 현상소, 인쇄소 등도 번성했다. / 1990년대 많은 영화사가 돈과 유행에 민감한 강남 지역으로 둥지를 옮겼고, 필름 현상소들은 디지털화된 영화산업으로 인해 충무로에서 사라졌다."
+     },
+     {
+      "claim": "현상소·포스터 인쇄소 흥성 · 영화 아이콘",
+      "where": "q",
+      "url": "https://mediahub.seoul.go.kr/archives/1200513",
+      "note": "또한, 현상소, 편집실, 기획사는 물론 ... 영화 포스터와 홍보물을 출력하는 인쇄소도 흥성했다고 하네요."
+     },
+     {
+      "claim": "'충무로 입성' = 영화계 진출",
+      "where": "q",
+      "url": "https://www.segye.com/newsView/20131205004307",
+      "note": "'충무로 입성' '충무로 진출' 등의 표현은 충무로로 이사했다는 뜻이 아니라 영화계에 진출했다는 의미다."
+     },
+     {
+      "claim": "명동 · 대한극장 · 충무로역",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/충무로",
+      "note": "충무로1가 및 2가는 명동 번화가의 일부로서 잘 알려져 있다 ... 충무로4가 일대는 대한민국의 영화 아이콘을 상징하는 곳이기 때문에 대한극장, 극동극장을 비롯하여 ... 충무로역은 3호선과 환승이 가능한"
+     },
+     {
+      "claim": "이순신 시호 충무에서 이름",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/충무로",
+      "note": "1946년 10월 1일 : 일본식 동명(洞名)정리 사업에 따라, 이곳의 길을 이순신(李舜臣)의 시호인 충무(忠武)를 따서 도로명 및 법정동명에 붙였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/충무로"
+    ],
+    "hintNote": null,
+    "easiestCue": "한국 영화계를 가리키는 서울 거리 이름",
+    "worthWhyGen": "'충무로'가 왜 한국 영화계를 뜻하나 — 일상에서 쓰는 말의 까닭(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '거리 이름' 예",
+     "unique": "영화계 대명사 거리 → 충무로만",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

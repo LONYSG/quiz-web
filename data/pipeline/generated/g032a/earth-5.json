@@ -1,0 +1,403 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "earth/5",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/5#g032a-g032a-j06-6",
+   "seed": {
+    "subject": "그린워싱",
+    "aspect": null,
+    "ref": "g032a-j06-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기업 광고를 비판할 때 쓰는 환경 시사 용어입니다. 1986년 미국 환경운동가 제이 웨스터벨드가 처음 썼습니다. 호텔이 '환경을 지키자'며 수건 재사용을 권하면서, 정작 에너지 절약에는 손 놓은 채 세탁비만 아끼는 모습을 꼬집은 말이었습니다. 무엇일까요?",
+    "answer": "그린워싱",
+    "acceptedAnswers": [
+     "녹색분칠"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "잘못을 흰 칠로 덮는다는 'whitewashing'에 'green'을 합친 말로, 우리말로는 '녹색분칠'이라고도 옮긴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "기업 광고를 비판할 때 쓰는 환경 시사 용어 · 수건 재사용",
+     "difWhy": "3 — 시사 용어 · 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 시사 용어와 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "감시 단체 코프워치가 해마다 4월 22일에 명단을 발표하는, 친환경 이미지로 실상을 가리는 기업의 겉치레 홍보다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "실제와 달리 친환경인 척 꾸미는 기업 홍보(위장 환경주의)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "환경 뉴스에서 간간이 접함",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '기업 광고를 비판할 때 쓰는 환경 시사 용어' · 호텔 수건 예가 장면으로 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "그린워싱",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "그린워싱",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "그린워싱",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6238",
+      "answer": "지구 온난화",
+      "verdict": "diff",
+      "why": "그린워싱 vs 지구 온난화 용어"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Greenwashing",
+     "https://ko.wikipedia.org/wiki/그린워싱"
+    ],
+    "facts": [
+     {
+      "claim": "1986년 제이 웨스터벨드가 호텔 수건 재사용 안내를 두고 만든 말 · 세탁비 절감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Greenwashing",
+      "note": "The term \"greenwashing\" was coined by New York environmentalist Jay Westerveld in a 1986 essay about the hotel industry's hypocritical practice of placing notices in bedrooms promoting the reuse of towels to \"save the environment\". He noted that these institutions often made little or no effort toward reducing energy waste, although towel reuse saved them laundry costs."
+     },
+     {
+      "claim": "친환경 이미지를 내세우는 기업 행위 · green+whitewashing · 녹색분칠",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/그린워싱",
+      "note": "그린워싱(Greenwashing, green + white washing의 혼성어) 또는 녹색분칠은 기업이 실제로는 환경에 악영향을 끼치는 제품을 생산하면서도 광고 등을 통해 친환경적인 이미지를 내세우는 행위를 말한다."
+     },
+     {
+      "claim": "코프워치가 매년 지구의 날 선정 발표",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/그린워싱",
+      "note": "코프워치(CorpWatch)는 매년 4월 22일 지구의 날에 '그린워싱 기업'을 선정하여 발표하고 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/그린워싱"
+    ],
+    "hintNote": null,
+    "easiestCue": "환경 시사 용어 · 호텔 수건 재사용",
+    "worthWhyGen": "뉴스에 자주 나오는 말의 유래(호텔 수건 안내문)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '환경 시사 용어' 예",
+     "unique": "기업의 위장 환경 홍보 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "earth/5#g032a-g032a-j14-12",
+   "seed": {
+    "subject": "탄소발자국",
+    "aspect": null,
+    "ref": "g032a-j14-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기후 변화와 관련된 환경 지표입니다. 어떤 제품을 만들고 쓰고 버리기까지, 또는 한 사람이 생활하며 내놓는 온실가스의 양을 이산화탄소 양으로 바꾸어 나타냅니다. 이 지표를 무엇이라 할까요?",
+    "answer": "탄소발자국",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이산화탄소뿐 아니라 메테인·아산화질소 같은 다른 기체도 이산화탄소 양으로 환산해 더합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "온실가스의 양을 이산화탄소 양으로 바꾸어 나타냅니다",
+     "difWhy": "2 — 환경 일상어 · 발자국 비유로 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 환경 일상어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "제품에 이 수치를 적은 라벨을 붙여, 소비자가 온실가스를 덜 내는 물건을 고르게 돕는 지표다",
+    "generalHintVersion": "hint-v7",
+    "identity": "활동·제품·사람이 내놓는 온실가스 총량을 CO2 로 나타낸 지표",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "환경 뉴스·교과서에서 접함",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '환경 지표' 가 끝의 '지표' 와 일치, 설명이 한 문장에 정리됨"
+    },
+    "blindQuestion": {
+     "guess": "탄소발자국",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "탄소발자국",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탄소발자국",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4871",
+      "answer": "소빙기",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4381",
+      "answer": "밀란코비치 주기",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2859",
+      "answer": "온실효과",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2863",
+      "answer": "IPCC",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5327",
+      "answer": "아레니우스",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탄소_발자국",
+     "https://en.wikipedia.org/wiki/Carbon_footprint"
+    ],
+    "facts": [
+     {
+      "claim": "활동·제품·회사·국가가 대기에 더하는 온실가스 총량 · 생산부터 폐기까지(전 과정)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탄소_발자국",
+      "note": "탄소발자국은 활동, 제품, 회사 또는 국가가 대기에 추가하는 온실가스의 총량을 비교할 수 있게 해주는 계산된 값 또는 지수이다. ... 공급사슬을 따라 생산된 것부터 최종 소비 및 폐기까지 이어진다."
+     },
+     {
+      "claim": "같은 정의 en · 개인도 대상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carbon_footprint",
+      "note": "A carbon footprint (or greenhouse gas footprint) is a calculated value or index that allows the comparison of the total amount of greenhouse gases that an activity, product, company or country adds to the atmosphere. ... They depend on whether the focus is on a country, organization, product or individual person."
+     },
+     {
+      "claim": "제품 라벨 → 소비자 선택",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/탄소_발자국",
+      "note": "제품에 탄소 발자국 라벨을 부착하면 소비자가 기후 변화 완화하는 데 도움이 되고 싶다면 탄소 발자국이 낮은 제품을"
+     },
+     {
+      "claim": "CO2 등가로 모든 온실가스 합산 · 메테인·아산화질소",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/탄소_발자국",
+      "note": "비교 단위당 이산화탄소 등가 배출량은 탄소 발자국을 표현하는 데 적합한 방법이다. 이것은 모든 온실 가스 배출량을 합산한다. ... 여기에는 메테인 및 아산화 질소와 같은"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/탄소_발자국"
+    ],
+    "hintNote": null,
+    "easiestCue": "제품·사람이 내놓는 온실가스를 이산화탄소 양으로",
+    "worthWhyGen": "기후 뉴스·제품 라벨의 생활 말(일상 말 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '지표' — 예",
+     "unique": "탄소 배출권(거래 제도)·탄소중립(목표)과 갈림 · 생태발자국은 땅 넓이라 다름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "earth/5#g032a-g032a-j29-1",
+   "seed": {
+    "subject": "열돔",
+    "aspect": null,
+    "ref": "g032a-j29-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기후 변화와 함께 뉴스에 자주 나오는 기상 현상입니다. 강한 고기압이 한곳에 오래 머물며 뜨거운 공기를 뚜껑처럼 눌러 가둡니다. 2021년 캐나다 브리티시컬럼비아에 기록적인 폭염을 부른 이 현상은?",
+    "answer": "열돔",
+    "acceptedAnswers": [
+     "히트 돔"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "브리티시컬럼비아에서는 이때 595명이 숨졌습니다. 언론은 모든 폭염을 이 말로 부르기도 하지만, 정체된 고기압이 원인일 때만 정확한 표현입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "강한 고기압이 뜨거운 공기를 뚜껑처럼 눌러 가둠",
+     "difWhy": "3 — 기상 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 기후 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "고기압 아래 갇힌 공기가 눌려 압축되며 스스로 더 뜨거워지고 구름도 생기지 못해, 폭염이 며칠씩 이어지게 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "정체된 고기압이 더운 공기를 가둬 극심한 폭염을 부르는 기상 현상(heat dome)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "여름 폭염 뉴스에서 접함",
+     "piece": "f05",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '기상 현상' 이 끝 ○○ 와 일치, 뚜껑 비유로 원리가 쉽게 풀림"
+    },
+    "blindQuestion": {
+     "guess": "열돔",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "열돔",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "열돔",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2859",
+      "answer": "온실효과",
+      "verdict": "diff",
+      "why": "신규 '열돔'(온실효과와 다른 현상) ≠ 옛 '온실효과' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/열돔",
+     "https://en.wikipedia.org/wiki/Heat_dome"
+    ],
+    "facts": [
+     {
+      "claim": "강한 고기압이 오래 정체해 뜨거운 공기를 뚜껑처럼 가둠",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열돔",
+      "note": "열돔은 강력한 고기압 기상 조건이 비정상적으로 오랜 시간 동안 정체하여 대류와 강수를 막고 뜨거운 공기를 특정 지역에 '가두어' 발생한다."
+     },
+     {
+      "claim": "뚜껑처럼 가둠 · 2021 북서부 열돔",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Heat_dome",
+      "note": "caused when the atmosphere traps hot air as if bounded by a lid or cap ... The 2021 Northwest heat dome was formed in this way"
+     },
+     {
+      "claim": "기후 변화와 관련",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/열돔",
+      "note": "연구에 따르면 인간에 의한 기후 변화는 열돔 형성에 중요한 역할을 하는데"
+     },
+     {
+      "claim": "압축되며 온도 상승 · 구름 형성 방해",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/열돔",
+      "note": "공기는 그 다음 압축되며, 순열이 더 작은 부피에 있게 되면서 온도가 증가한다 ... 구름 형성을 방해했다"
+     },
+     {
+      "claim": "BC 595명 사망 · 미디어 용어 확대",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/열돔",
+      "note": "브리티시컬럼비아를 기반으로 한 기록적인 열돔으로 인해 595명의 지역사회 사망자가 발생 ... 이 용어는 일반적으로 모든 폭염 상황에 대한 미디어 용어로 확대되지만"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/열돔",
+     "https://en.wikipedia.org/wiki/Heat_dome"
+    ],
+    "hintNote": null,
+    "easiestCue": "고기압이 뜨거운 공기를 뚜껑처럼 가둠",
+    "worthWhyGen": "3 — 여름마다 뉴스에 나오는 일상 기상 용어",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '기상 현상' — 예",
+     "unique": "정체 고기압·가둠 → 일반 폭염과 구별",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 구름"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

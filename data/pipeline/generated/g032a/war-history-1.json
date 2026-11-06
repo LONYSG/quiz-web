@@ -1,0 +1,435 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "war-history/1",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/1#g032a-g032a-j02-8",
+   "seed": {
+    "subject": "피로스의 승리",
+    "aspect": null,
+    "ref": "g032a-j02-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이기고도 너무 큰 희생을 치러 사실상 진 것과 다름없는 승리를 이르는 서양 표현입니다. 기원전 279년 로마군을 이긴 에페이로스의 왕이 '이런 승리를 한 번 더 했다간 우리가 망한다'고 말했다는 데서 왔습니다. 이 표현은?",
+    "answer": "피로스의 승리",
+    "acceptedAnswers": [
+     "피루스의 승리",
+     "피로스 승리"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "로마군은 사상자가 더 많았지만 병력을 금세 채웠고, 왕은 지휘관 대부분을 잃고 시칠리아로 물러났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "에페이로스의 왕이 '이런 승리를 한 번 더 했다간 우리가 망한다'",
+     "difWhy": "3 — 서양 고사 표현 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 쓰이는 표현의 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "흔히 '상처뿐인 영광'과 뜻이 통한다고 하는 서양 표현으로, 앞부분이 그 승리를 거둔 그리스계 왕의 이름이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "막대한 희생으로 얻어 패배나 다름없는 승리",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "관용 표현으로 가끔 접함",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '승리를 이르는 서양 표현' 으로 종류가 있고 끝 ○○(표현)와 일치 · 왕 일화는 둘째 문장의 유래"
+    },
+    "blindQuestion": {
+     "guess": "피로스의 승리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피로스의 승리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피로스의 승리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6087",
+      "answer": "알레시아 전투",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(피로스의 승리 / 알레시아 전투)"
+     },
+     {
+      "old": "2547",
+      "answer": "칸나이 전투",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(피로스의 승리 / 칸나이 전투)"
+     },
+     {
+      "old": "5158",
+      "answer": "마라톤 전투",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(피로스의 승리 / 마라톤 전투)"
+     },
+     {
+      "old": "3894",
+      "answer": "살라미스 해전",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(피로스의 승리 / 살라미스 해전)"
+     },
+     {
+      "old": "102",
+      "answer": "포에니 전쟁",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(피로스의 승리 / 포에니 전쟁)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/피로스의_승리",
+     "https://en.wikipedia.org/wiki/Pyrrhic_victory"
+    ],
+    "facts": [
+     {
+      "claim": "기원전 279년 아스쿨룸 전투 · 한 번 더 이기면 망한다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피로스의_승리",
+      "note": "이 표현은 에페이로스의 피로스가 기원전 279년 아스쿨룸 전투에서 로마인들을 상대로 거둔 승리에서 유래하였다. … 이와 같은 승리가 한 번 더 있다면 완전히 패망할 것이라고 대답했다고 한다."
+     },
+     {
+      "claim": "같은 내용(영문)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pyrrhic_victory",
+      "note": "After his victory against the Romans in the Battle of Asculum in 279 BC, Plutarch reports that Pyrrhus exclaimed \"If we are victorious in one more battle with the Romans, then we shall be utterly ruined!\""
+     },
+     {
+      "claim": "로마 사상자 두 배지만 쉽게 보충 · 지휘관 대부분 잃고 시칠리아로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pyrrhic_victory",
+      "note": "the Romans, though suffering twice as many casualties, could easily replenish their ranks. Pyrrhus lost most of his commanders and a great part of the forces he had brought to Italy, and he withdrew to Sicily."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "이기고도 진 것과 다름없는 승리",
+    "worthWhyGen": "뉴스·일상에서 쓰는 관용 표현의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '서양 표현' 예",
+     "unique": "로마군을 이긴 왕 + 기원전 279 — 카드메이아 승리(덜 쓰임)와 갈림",
+     "hint12": "① 예 ② 예(힌트 약할 수 있음 — '상처뿐인 영광' 이 오답 유도 아닌지 판정 필요)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "war-history/1#g032a-g032a-j13-3",
+   "seed": {
+    "subject": "투석기",
+    "aspect": null,
+    "ref": "g032a-j13-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대와 중세의 전쟁에서 성을 공격할 때 쓰던 무기입니다. 꼬인 밧줄이나 무거운 추에 힘을 모았다가 한꺼번에 풀어, 큰 돌을 성벽 너머로 날려 보냈습니다. 화약이 없던 시대의 이 공성 무기는?",
+    "answer": "투석기",
+    "acceptedAnswers": [
+     "캐터펄트",
+     "발석차"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "중국에서는 기원전 5세기 무렵 여러 사람이 줄을 잡아당겨 쏘는 견인식 투석기가 나타났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "큰 돌을 성벽 너머로 날려 보낸 화약 이전의 공성 무기",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 역사 무기 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "영어로는 아이들 새총과 항공모함의 비행기 발사 장치까지 같은 이름으로 부르는 무기다",
+    "generalHintVersion": "hint-v7",
+    "identity": "돌을 날려 성을 공격하던 고대·중세 공성 무기",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "게임·영화에서 접함",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '성을 공격할 때 쓰던 무기' 가 끝 '공성 무기' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "투석기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "캐터펄트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "투석기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2551",
+      "answer": "장궁",
+      "verdict": "diff",
+      "why": "투석기 vs 장궁"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/투석기",
+     "https://en.wikipedia.org/wiki/Catapult"
+    ],
+    "facts": [
+     {
+      "claim": "돌을 던져 공격하는 공성무기 · 무게추식 · 성벽을 허무는 데 씀",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/투석기",
+      "note": "투석기(投石器, catapult) 혹은 발석차(發石車) … 돌을 던져서 공격하는 공성무기이다. … 투석기의 종류에는 무게추식 투석기와 인력식 투석기가 있다. 공성전에서 성벽을 허물거나 성문을 부수기 위해서 사용되었다."
+     },
+     {
+      "claim": "화약 없이 · 고대·중세 공성 엔진 · 꼬인 밧줄 등에 모은 힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Catapult",
+      "note": "A catapult is a ballistic device used to launch a projectile at a great distance without the aid of gunpowder or other propellants – particularly various types of ancient and medieval siege engines. … via springs, bows, twisted rope, elastic"
+     },
+     {
+      "claim": "새총 · 항공모함 비행기 발사 장치도 catapult",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Catapult",
+      "note": "In modern times the term can apply to devices ranging from a simple hand-held implement (also called a \"slingshot\") to a mechanism for launching aircraft from a ship."
+     },
+     {
+      "claim": "기원전 5세기 중국 망고넬(견인식)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Catapult",
+      "note": "In the 5th century BC the mangonel appeared in ancient China, a type of traction trebuchet"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Catapult"
+    ],
+    "hintNote": null,
+    "easiestCue": "큰 돌을 성벽 너머로 날려 보낸 공성 무기",
+    "worthWhyGen": "전쟁사의 대표 무기 확인 · 범위 좁음(2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '무기' 예",
+     "unique": "돌을 날리는 공성 무기 — 하위 종류(트레뷰셋)는 변형에 넣지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 항공모함"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "war-history/1#g032a-g032a-j28-7",
+   "seed": {
+    "subject": "콘스탄티노플 함락",
+    "aspect": null,
+    "ref": "g032a-j28-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1453년 동로마(비잔티움) 제국이 끝내 멸망한 공성전입니다. 오스만 제국의 메흐메트 2세는 만 입구가 쇠사슬로 막히자, 기름칠한 통나무 위로 함대를 굴려 뭍을 넘어 만 안으로 들여보냈습니다. 천 년 넘게 이어진 로마 제국의 수도가 무너진 이 사건은?",
+    "answer": "콘스탄티노플 함락",
+    "acceptedAnswers": [
+     "콘스탄티노폴리스 함락",
+     "콘스탄티노플 공방전",
+     "콘스탄티노폴리스 공방전"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "방어군은 7~8천 명뿐이었지만 8~10만 명의 오스만군에 맞서 55일을 버텼고, 메흐메트 2세는 '정복자'라는 칭호를 얻었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1453년 동로마(비잔티움) 제국이 끝내 멸망한 공성전",
+     "difWhy": "3 — 세계사 사건 이름 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 역사 사건 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "이 일로 그리스 고전 학자들이 대거 이탈리아로 건너가 르네상스의 계기 중 하나가 되었고, 흔히 중세의 끝으로 꼽힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1453년 오스만 제국이 동로마 수도를 점령한 사건",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "세계사 교과서 유명 사건",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '공성전' 이 끝 ○○ '사건' 과 맞고 배를 굴리는 장면이 구체적임"
+    },
+    "blindQuestion": {
+     "guess": "콘스탄티노폴리스 함락",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "콘스탄티노폴리스 함락",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "콘스탄티노플 함락",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2554",
+      "answer": "팔랑크스",
+      "verdict": "diff",
+      "why": "신규 '콘스탄티노플 함락'(다른 전투·대형) ≠ 옛 '팔랑크스' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2546",
+      "answer": "살라미스 해전",
+      "verdict": "diff",
+      "why": "신규 '콘스탄티노플 함락'(다른 전투·대형) ≠ 옛 '살라미스 해전' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3894",
+      "answer": "살라미스 해전",
+      "verdict": "diff",
+      "why": "신규 '콘스탄티노플 함락'(다른 전투·대형) ≠ 옛 '살라미스 해전' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "6086",
+      "answer": "크레시 전투",
+      "verdict": "diff",
+      "why": "신규 '콘스탄티노플 함락'(다른 전투·대형) ≠ 옛 '크레시 전투' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2547",
+      "answer": "칸나이 전투",
+      "verdict": "diff",
+      "why": "신규 '콘스탄티노플 함락'(다른 전투·대형) ≠ 옛 '칸나이 전투' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/콘스탄티노폴리스_함락",
+     "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+    ],
+    "facts": [
+     {
+      "claim": "1453년 동로마 수도가 오스만에 함락 · 천 년 넘게 존속한 로마 제국 최종 멸망",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/콘스탄티노폴리스_함락",
+      "note": "콘스탄티노폴리스 함락은 1453년 동로마 제국의 수도 콘스탄티노폴리스가 오스만 제국에 의해 함락된 사건이다. ... 아우구스투스 이래로 천 년 넘게 존속했던 로마 제국은 최종적으로 멸망했고"
+     },
+     {
+      "claim": "만 입구 봉쇄 · 기름칠한 통나무로 함대를 굴려 금각만으로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/콘스탄티노폴리스_함락",
+      "note": "메흐메트의 함선은 금각만 안으로 들어갈 수 없었는데 동로마 제국 측이 만입구를 봉쇄하였기 때문이었다. 메흐메트는 이를 우회하여 금각만 북쪽면으로 기름칠한 통나무를 늘어놓고 그의 함대를 굴려서 금각만으로 들여보냈다."
+     },
+     {
+      "claim": "입구의 쇠사슬",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+      "note": "the Ottoman fleet under Baltoghlu could not enter the Golden Horn due to the chain across the entrance."
+     },
+     {
+      "claim": "그리스 학자 이주 → 르네상스 · 중세의 끝",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+      "note": "For many modern historians, the fall of Constantinople marks the end of the medieval period ... \"Many modern scholars also agree that the exodus of Greeks to Italy as a result of this event marked the end of the Middle Ages and the beginning of the Renaissance\"."
+     },
+     {
+      "claim": "방어군 7~8천 · 적군 8~10만 · 55일 · 정복자 칭호",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/콘스탄티노폴리스_함락",
+      "note": "이 공성전은 1453년 4월 6일에 시작되어 55일째인 5월 29일에 도시의 함락으로 종결되었다. ... 총 7~8천명의 비잔틴군은 8~10만명과 120척 이상의 함대로 이루어진 적군과 비교했을 때 ... 메흐메트 2세는 \"정복자\"라는 칭호를 얻으며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/콘스탄티노폴리스_함락",
+     "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+    ],
+    "hintNote": null,
+    "easiestCue": "1453년 동로마 제국 멸망",
+    "worthWhyGen": "세계사 교과의 중세 끝 사건(교과 — 알가치 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '공성전' — 예",
+     "unique": "1453 동로마 수도 — 하나 · 함락/공방전 표기 받음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "힌트 partial-mid:리스",
+     "힌트 partial-mid:리스",
+     "crossans 르네상스"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

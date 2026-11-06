@@ -1,0 +1,148 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "society/1",
+  "midKey": "society",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "society/1#g032a-g032a-j27-3",
+   "seed": {
+    "subject": "자유학기제",
+    "aspect": null,
+    "ref": "g032a-j27-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우리나라 중학교의 교육 제도입니다. 중학생이 약 반년 동안 중간고사·기말고사를 치르지 않고, 토론·실습 수업과 진로 체험 활동에 집중합니다. 2016년부터 모든 중학교에서 시행된 이 제도는?",
+    "answer": "자유학기제",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2013년 일부 학교의 시범 운영으로 시작했고, 교과 수업 시간이 줄어 학력이 떨어진다는 걱정도 함께 나왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "중간고사·기말고사를 치르지 않고 토론·실습 수업과 진로 체험",
+     "difWhy": "2 — 학교 제도 · 단서가 곧 이름(자유)",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 교육 제도 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "주입식 수업 대신 동아리·주제선택·예술·체육 활동으로 학생이 적성과 '꿈과 끼'를 찾게 하려는 제도다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "중학교 한 학기 동안 지필 시험 없이 진로 탐색·체험 중심으로 운영하는 제도",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "교육 뉴스, 자녀 세대 제도",
+     "piece": "f07",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '중학교의 교육 제도'가 끝 ○○=제도. 단서 평이."
+    },
+    "blindQuestion": {
+     "guess": "자유학기제",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "자유학기제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "자유학기제",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1908",
+      "answer": "의무교육",
+      "verdict": "diff",
+      "why": "새=자유학기제; 의무교육·졸업정원제·6-3-3-4 학제는 다른 교육 제도"
+     },
+     {
+      "old": "4638",
+      "answer": "졸업정원제",
+      "verdict": "diff",
+      "why": "새=자유학기제; 의무교육·졸업정원제·6-3-3-4 학제는 다른 교육 제도"
+     },
+     {
+      "old": "1909",
+      "answer": "6-3-3-4 학제",
+      "verdict": "diff",
+      "why": "새=자유학기제; 의무교육·졸업정원제·6-3-3-4 학제는 다른 교육 제도"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/자유학기제",
+     "https://www.khan.co.kr/article/201506092122375/amp"
+    ],
+    "facts": [
+     {
+      "claim": "중학생이 한 학기 동안 시험에서 벗어나 진로탐색 활동 · 2016년 모든 학교 시행 · 중간·기말고사 없음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/자유학기제",
+      "note": "자유학기제는 대한민국의 중학생이 한 학기 동안 일반교과 중심의 시험에서 벗어나, 다양한 학생 주도 활동과 진로탐색 활동을 진행하도록 하는 제도이다. … 2016년 입학생부터는 모든 학교가 시행되었다. … 자유학기제를 적용하는 학기 동안에는 중간고사와 기말고사가 없으나"
+     },
+     {
+      "claim": "2016년 3월 전국 중학교 전면 실시 · 토론·발표·탐방 중심 수업",
+      "where": "q",
+      "url": "https://www.khan.co.kr/article/201506092122375/amp",
+      "note": "2016년 3월 전국 중학교에서 자유학기제를 전면 실시 · 중간고사나 기말고사 같은 필기시험 부담이 대폭 줄고 토론, 발표, 탐방 중심의 수업 (WebSearch 요약)"
+     },
+     {
+      "claim": "동아리·주제선택·예술·체육·진로탐색 · 꿈과 끼 찾기",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/자유학기제",
+      "note": "월요일에는 동아리, 화요일에는 주제선택, 수요일과 목요일에는 예술·체육 A·B, 금요일에는 진로탐색활동 / == 꿈과 끼 찾기 == / 주입식 교육에서 벗어나"
+     },
+     {
+      "claim": "2013년 시범 · 학력 저하 우려",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/자유학기제",
+      "note": "2013년 입학생부터 극히 일부분 한정 시범적으로 시작했으며 / === 학력 저하 === … 학력이 떨어질 수밖에 없다는 우려가 나온다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/자유학기제"
+    ],
+    "hintNote": null,
+    "easiestCue": "중학교 · 반년 동안 중간·기말고사 없음 · 진로 체험",
+    "worthWhyGen": "3 — 지금 학부모·학생에게 바탕이 되는 사회 제도 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '교육 제도' — 예",
+     "unique": "'반년' 한정으로 1년짜리 자유학년제와 가름(정답 글자 '학기' 노출 피함)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

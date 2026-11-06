@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "plants/4",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/4#g032a-g032a-j10-11",
+   "seed": {
+    "subject": "이팝나무",
+    "aspect": null,
+    "ref": "g032a-j10-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "5월 무렵 가지마다 흰 꽃이 소복이 덮여 거리를 하얗게 만드는 가로수입니다. 흰 꽃송이가 사발에 수북이 담은 쌀밥처럼 보인다 하여 '쌀밥 나무'라는 뜻의 이름이 붙었다고 흔히 전합니다. 이 나무는?",
+    "answer": "이팝나무",
+    "acceptedAnswers": [
+     "이밥나무"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "꽃이 피는 때가 여름 들머리 절기인 입하 무렵이라 '입하나무'가 바뀐 이름이라는 설도 있다. 학명도 '눈 같은 꽃'이라는 뜻이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "쌀밥처럼 보이는 흰 꽃 가로수 '쌀밥 나무'",
+     "difWhy": "2 — 단서가 풍부",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "흰 쌀밥을 옛말로 부르던 이름에서 왔다는 나무로, 서울에서만 2만 5천 그루 가까이 심은 5월의 흰 꽃 가로수다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "물푸레나무과의 흰 꽃 가로수, 꽃이 쌀밥 같다는 이름",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "가로수·이름 유래로 알려짐",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '가로수' 로 끝 ○○ '나무' 와 맞고 쌀밥 비유가 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "이팝나무",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "이팝나무",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "이팝나무",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "650",
+      "answer": "며느리밥풀꽃",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "g032a:job-26-4",
+      "answer": "데이지",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "3820",
+      "answer": "할미꽃",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이팝나무",
+     "https://jjan.kr/article/20210512732151"
+    ],
+    "facts": [
+     {
+      "claim": "꽃이 쌀밥 같아 이밥나무 → 이팝나무",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이팝나무",
+      "note": "국명 '이팝나무'는 꽃의 모양이 마치 쌀밥 같다 하여 이밥나무라 부르는 것에서 세월이 흘러 변형된 것이다."
+     },
+     {
+      "claim": "흰 꽃이 쌀밥(이밥)을 수북이 담은 듯 · 입하 설 · 5월 초 개화",
+      "where": "q",
+      "url": "https://jjan.kr/article/20210512732151",
+      "note": "(검색 요약) 흰 꽃이 만개한 모습이 쌀밥(이밥)을 수북이 담은 모습 같다고 해 이팝나무 · 입하 무렵에 꽃이 피어서 '입하목' · 5월 초 입하 전후 20여 일 핀다"
+     },
+     {
+      "claim": "5~6월 흰 꽃 · 가로수 · 서울 24,980그루",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/이팝나무",
+      "note": "꽃은 5~6월에 흰색으로 ... 최근에는 가로수로 많이 쓰이고 있다. 서울특별시에는 2022년 기준 총 24,980그루의 이팝나무가 가로수로 쓰이고 있으며"
+     },
+     {
+      "claim": "학명 Chionanthus = 눈 + 꽃",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이팝나무",
+      "note": "속명 키오나나투스(Chionanathus)는 눈(雪)이라는 뜻의 키온(chion)과 꽃이라는 뜻의 안토스(antos)를 합친 말로 하얀 꽃이 마치 흰 눈과 같다는데서 유래"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이팝나무"
+    ],
+    "hintNote": null,
+    "easiestCue": "5월 흰 꽃 가로수 + 쌀밥",
+    "worthWhyGen": "흔히 보는 가로수 이름의 유래(쌀밥 · 입하)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '가로수' 예",
+     "unique": "쌀밥 같은 흰 꽃 — 조팝나무(좁쌀밥·4월 관목)와 '가로수'로 갈림",
+     "hint12": "① 예 ② 예 · '이밥' 언급은 H2 조각 우려 — '옛말로 부르던 이름' 으로만"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "plants/4#g032a-job-26-4",
+   "seed": {
+    "subject": "데이지",
+    "aspect": null,
+    "ref": "job-26-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "흰 꽃잎이 노란 가운데를 둘러싼, 잔디밭에 흔한 국화과 꽃입니다. 밤에는 꽃을 오므렸다가 아침이면 다시 펴서, 옛 영어로 '낮의 눈'이라 부르던 말이 줄어 지금 이름이 되었습니다. 이 꽃은?",
+    "answer": "데이지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "중세 영국에서는 '성모 마리아의 장미'라고도 불렀습니다. 프랑스어로 비슷한 꽃을 마르그리트라 해, 마거릿의 애칭으로도 쓰입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "흰 꽃잎이 노란 가운데를 둘러싼, 잔디밭에 흔한 국화과 꽃",
+     "difWhy": "2 — 흔한 꽃 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 꽃 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "디즈니에서 도널드 덕의 여자친구, 마리오 게임에서 피치와 함께 나오는 공주의 이름이기도 하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "흰 꽃잎·노란 가운데의 국화과 꽃(daisy)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "흔한 꽃 이름",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '국화과 꽃' 이 있어 끝 ○○(꽃)와 일치 · 생김새 → 습성 → 어원 순서가 자연스럽다"
+    },
+    "blindQuestion": {
+     "guess": "데이지",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "데이지",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "데이지",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5195",
+      "answer": "위대한 개츠비",
+      "verdict": "diff",
+      "why": "새=데이지; 위대한 개츠비·마르게리타 피자·목련·진달래·이팝나무는 다른 지식(마르게리타의 데이지 뜻은 힌트 수준 곁가지이며 피자 문항 답을 풀지 못함)"
+     },
+     {
+      "old": "3927",
+      "answer": "마르게리타",
+      "verdict": "diff",
+      "why": "새=데이지; 위대한 개츠비·마르게리타 피자·목련·진달래·이팝나무는 다른 지식(마르게리타의 데이지 뜻은 힌트 수준 곁가지이며 피자 문항 답을 풀지 못함)"
+     },
+     {
+      "old": "5110",
+      "answer": "목련",
+      "verdict": "diff",
+      "why": "새=데이지; 위대한 개츠비·마르게리타 피자·목련·진달래·이팝나무는 다른 지식(마르게리타의 데이지 뜻은 힌트 수준 곁가지이며 피자 문항 답을 풀지 못함)"
+     },
+     {
+      "old": "651",
+      "answer": "진달래",
+      "verdict": "diff",
+      "why": "새=데이지; 위대한 개츠비·마르게리타 피자·목련·진달래·이팝나무는 다른 지식(마르게리타의 데이지 뜻은 힌트 수준 곁가지이며 피자 문항 답을 풀지 못함)"
+     },
+     {
+      "old": "g032a:g032a-j10-11",
+      "answer": "이팝나무",
+      "verdict": "diff",
+      "why": "새=데이지; 위대한 개츠비·마르게리타 피자·목련·진달래·이팝나무는 다른 지식(마르게리타의 데이지 뜻은 힌트 수준 곁가지이며 피자 문항 답을 풀지 못함)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bellis_perennis",
+     "https://en.wiktionary.org/wiki/daisy",
+     "https://ko.wikipedia.org/wiki/데이지"
+    ],
+    "facts": [
+     {
+      "claim": "이름은 day's eye 가 줄어든 것 · 밤에 닫고 아침에 연다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bellis_perennis",
+      "note": "The name \"daisy\", possibly originating with this plant, is considered a corruption of \"day's eye\", because the whole head closes at night and opens in the morning."
+     },
+     {
+      "claim": "고대 영어 dæġes ēage = day's eye",
+      "where": "q",
+      "url": "https://en.wiktionary.org/wiki/daisy",
+      "note": "from dæġes ēage (lit. day's eye) due to the flowers closing their blossoms during night."
+     },
+     {
+      "claim": "잔디밭 데이지(lawn daisy) · 국화과",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bellis_perennis",
+      "note": "Bellis perennis, the daisy, is a European species of the family Asteraceae ... common daisy, lawn daisy or English daisy."
+     },
+     {
+      "claim": "데이지 덕 · 데이지 공주",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/데이지",
+      "note": "데이지 덕은 디즈니 애니메이션 캐릭터이다. / 데이지 공주는 닌텐도의 마리오 시리즈에 나온다."
+     },
+     {
+      "claim": "Mary's Rose · 마거릿 애칭(marguerite)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bellis_perennis",
+      "note": "In medieval times, Bellis perennis or the English Daisy was commonly known as \"Mary's Rose\". ... Daisy is used ... as a nickname for people named Margaret, after the French name for the oxeye daisy, marguerite."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/데이지"
+    ],
+    "hintNote": null,
+    "easiestCue": "흰 꽃잎 노란 가운데의 국화과 꽃",
+    "worthWhyGen": "흔한 꽃 이름의 유래(19 §9-1 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '국화과 꽃' 예",
+     "unique": "'낮의 눈' 유래 → 데이지만(마거리트는 다른 꽃)",
+     "hint12": "① 예 ② 예(이름이 꽃에서 왔다는 연결)"
+    },
+    "history": [],
+    "warn": [
+     "crossans 마리오/디즈니"
+    ],
+    "job": "job-26"
+   }
+  }
+ ]
+}

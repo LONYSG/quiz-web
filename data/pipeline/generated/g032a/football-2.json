@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "football/2",
+  "midKey": "football",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "football/2#g032a-g032a-j29-11",
+   "seed": {
+    "subject": "카타르",
+    "aspect": null,
+    "ref": "g032a-j29-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "월드컵 개최국 이야기입니다. 이 나라는 6~7월 평균 기온이 40도를 넘나들어, 2022년 대회가 처음으로 여름이 아닌 11~12월에 열렸습니다. 중동에서 처음 월드컵을 연 이 나라는?",
+    "answer": "카타르",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그 바람에 유럽 리그들이 시즌 도중에 쉬어야 했습니다. 결승전이 열린 12월 18일은 이 나라의 국경일이었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "중동에서 처음 월드컵을 연 이 나라",
+     "difWhy": "2 — 2022 월드컵 대중 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "아라비아반도에서 페르시아만 쪽으로 튀어나온 작은 반도 나라로, 수도는 도하이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "2022년 FIFA 월드컵 개최국(중동 첫 개최)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "2022 월드컵 개최국",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '월드컵 개최국' 이 끝 '이 나라' 와 일치 · 지시어 '이 나라' 가 바로 앞 개최국"
+    },
+    "blindQuestion": {
+     "guess": "카타르",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카타르",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카타르",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6603",
+      "answer": "파리 생제르맹",
+      "verdict": "diff",
+      "why": "신규 '카타르'(다른 월드컵 사실) ≠ 옛 '파리 생제르맹' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "199",
+      "answer": "AFC 아시안컵",
+      "verdict": "diff",
+      "why": "신규 '카타르'(다른 월드컵 사실) ≠ 옛 'AFC 아시안컵' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "3576",
+      "answer": "도하의 기적",
+      "verdict": "diff",
+      "why": "신규 '카타르'(다른 월드컵 사실) ≠ 옛 '도하의 기적' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "6260",
+      "answer": "아르헨티나",
+      "verdict": "diff",
+      "why": "신규 '카타르'(다른 월드컵 사실) ≠ 옛 '아르헨티나' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "86",
+      "answer": "우루과이",
+      "verdict": "diff",
+      "why": "신규 '카타르'(다른 월드컵 사실) ≠ 옛 '우루과이' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/2022년_FIFA_월드컵",
+     "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup"
+    ],
+    "facts": [
+     {
+      "claim": "6~7월 평균 40~50도 · 겨울 개최안",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/2022년_FIFA_월드컵",
+      "note": "카타르는 6월 ~ 7월의 평균 기온이 섭씨 40 ~ 50도에 육박하기 때문에 여름에 개최할 경우에는 ... 겨울 개최안이 나왔다."
+     },
+     {
+      "claim": "11~12월 · 처음으로 연말 개최 · 중동 첫 개최",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+      "note": "It was the first World Cup to be held in the Middle East ... To avoid the extremes of Qatar's hot climate in summers, the event was held in November and December, becoming the first to take place in the end of the year"
+     },
+     {
+      "claim": "유럽 리그 일정 중단 · 결승 12월 18일 국경일",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+      "note": "the World Cup was unusually staged in the middle of the seasons of many domestic association football leagues ... The final was played on 18 December 2022, National Day"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "2022년 월드컵 · 11~12월 · 중동",
+    "worthWhyGen": "3 — 왜 겨울에 열렸나가 질문 안에 있는 대중 스포츠 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '개최국' — 예",
+     "unique": "2022 · 중동 첫 → 하나",
+     "hint12": "① 예 ② 예 (수도 도하 — 지식)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

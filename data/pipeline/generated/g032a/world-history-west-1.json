@@ -1,0 +1,465 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-history-west/1",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/1#g032a-g032a-j02-4",
+   "seed": {
+    "subject": "아레나",
+    "aspect": null,
+    "ref": "g032a-j02-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "실내 경기장이나 대형 공연장을 가리키는 말로, 고대 로마의 원형 경기장에서 왔습니다. 원래 라틴어로 '모래'라는 뜻인데, 검투사들이 흘린 피를 빨아들이도록 경기장 바닥에 고운 모래를 깔았기 때문입니다. 이 말은?",
+    "answer": "아레나",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1만 석 미만은 '홀', 3만 석이 넘으면 '스타디움'급이라 부르기도 합니다. 축구 경기는 보통 스타디움에서 열립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "원래 라틴어로 '모래'라는 뜻",
+     "difWhy": "3 — 말은 쓰나 모래 어원에서 떠올리기 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "주로 1만~2만 석 규모의 실내 원형 경기장·공연장을 가리키며, 농구·아이스하키 경기와 대형 콘서트가 열리는 곳이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "관람석이 중앙 무대를 둘러싼 경기장·공연장 — 라틴어 harena(모래)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "아레나 경기장·게임 용어로 흔함",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '경기장 · 공연장을 가리키는 말' 이 있고 어원 설명이 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "아레나",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아레나",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아레나",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "1만 석 미만 홀 · 그 이상 스타디움 · 축구는 스타디움",
+       "url": "https://ko.wikipedia.org/wiki/아레나",
+       "note": "1만석 미만은 '홀'급, 3만석 정도는 슈퍼아레나급, 그 이상은 스타디움급 / Football … is typically played in a stadium"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "6605",
+      "answer": "바이에른 뮌헨",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(아레나 / 바이에른 뮌헨)"
+     },
+     {
+      "old": "g032a:g032a-j23-2",
+      "answer": "검투사",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(아레나 / 검투사)"
+     },
+     {
+      "old": "78",
+      "answer": "삼두정치",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(아레나 / 삼두정치)"
+     },
+     {
+      "old": "3983",
+      "answer": "그라쿠스 형제",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(아레나 / 그라쿠스 형제)"
+     },
+     {
+      "old": "491",
+      "answer": "팍스 로마나",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(아레나 / 팍스 로마나)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아레나",
+     "https://en.wikipedia.org/wiki/Arena"
+    ],
+    "facts": [
+     {
+      "claim": "라틴어 harena = 모래 · 검투사 피를 흡수하도록 모래를 깔아서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아레나",
+      "note": "라틴어 '아레나'(harena)는 원래 모래라는 뜻으로, 검투사들이 싸우면서 흘리는 피를 흡수하기 좋도록 모래를 깔아놓는 데에서 지금의 뜻으로 발전했다."
+     },
+     {
+      "claim": "콜로세움 등 고대 경기장 바닥의 고운 모래",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Arena",
+      "note": "The word derives from Latin harena, a particularly fine-grained sand that covered the floor of ancient arenas such as the Colosseum in Rome, Italy, to absorb blood."
+     },
+     {
+      "claim": "1만~2만 석 실내 원형 경기장 · 농구·아이스하키",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아레나",
+      "note": "주로 1만석~2만석 규모의 실내 원형 경기장을 아레나급이라 하며 / basketball, volleyball, handball, and ice hockey are typically played in an arena"
+     },
+     {
+      "claim": "1만 석 미만 홀 · 그 이상 스타디움 · 축구는 스타디움",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아레나",
+      "note": "1만석 미만은 '홀'급, 3만석 정도는 슈퍼아레나급, 그 이상은 스타디움급 / Football … is typically played in a stadium"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아레나",
+     "https://en.wikipedia.org/wiki/Arena"
+    ],
+    "hintNote": null,
+    "easiestCue": "실내 경기장·대형 공연장을 가리키는 말",
+    "worthWhyGen": "흔히 쓰는 말의 뜻밖의 유래(모래 → 경기장)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '말' + 정체 예",
+     "unique": "라틴어 '모래' 유래 — 스타디움(길이 단위 유래)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 규모/아이스하키"
+    ],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "world-history-west/1#g032a-g032a-j12-11",
+   "seed": {
+    "subject": "히포크라테스 선서",
+    "aspect": null,
+    "ref": "g032a-j12-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "의사가 되는 사람이 지키겠다고 다짐하는 의료 윤리 맹세입니다. 고대 그리스 의학 문헌에서 나왔고, '의학의 아버지'로 불리는 그리스 의사의 이름이 붙어 있습니다. 환자에게 해를 끼치지 않겠다고 약속하는 이 맹세는?",
+    "answer": "히포크라테스 선서",
+    "acceptedAnswers": [
+     "히포크라테스의 선서",
+     "히포크라테스 맹세"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "환자의 비밀을 지키는 일도 이 맹세에 담긴 원칙으로, 지금까지 의료 윤리의 바탕으로 이어진다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "의사가 되는 사람이 지키겠다고 다짐하는 맹세 · 의학의 아버지",
+     "difWhy": "1 — 의사 맹세는 바로 히포크라테스",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "의대 졸업식에서 흔히 읽는 의사 윤리의 상징으로, 아폴론 등 치유의 신들에게 맹세하며 시작한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 그리스에서 전하는 의사의 윤리 맹세",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "의사 맹세로 교과서·뉴스에 자주 나옴",
+     "piece": "f04",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '의료 윤리 맹세' 가 있어 끝 ○○ '맹세' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "히포크라테스 선서",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "히포크라테스 선서",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "히포크라테스 선서",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3981",
+      "answer": "스파르타",
+      "verdict": "diff",
+      "why": "히포크라테스 선서 vs laconic 스파르타"
+     },
+     {
+      "old": "492",
+      "answer": "스파르타",
+      "verdict": "diff",
+      "why": "히포크라테스 선서 vs 스파르타 교육"
+     },
+     {
+      "old": "494",
+      "answer": "파르테논 신전",
+      "verdict": "diff",
+      "why": "히포크라테스 선서 vs 파르테논"
+     },
+     {
+      "old": "6463",
+      "answer": "알렉산드로스 대왕",
+      "verdict": "diff",
+      "why": "히포크라테스 선서 vs 알렉산드로스 애마"
+     },
+     {
+      "old": "489",
+      "answer": "헬레니즘",
+      "verdict": "diff",
+      "why": "히포크라테스 선서 vs 헬레니즘"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hippocratic_Oath",
+     "https://ko.wikipedia.org/wiki/히포크라테스_선서"
+    ],
+    "facts": [
+     {
+      "claim": "의사의 윤리 선서 · 그리스 의학 문헌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hippocratic_Oath",
+      "note": "The Hippocratic Oath is an oath of ethics historically taken by physicians. It is one of the most widely known of Greek medical texts."
+     },
+     {
+      "claim": "해를 끼치지 않음 · 비밀 유지 원칙",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hippocratic_Oath",
+      "note": "These include the principles of medical confidentiality and non-maleficence."
+     },
+     {
+      "claim": "히포크라테스 = 고대 의사의 전형 · 선서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/히포크라테스_선서",
+      "note": "히포크라테스 선서(Hippocratic Oath)는 의사의 윤리 등에 대한 선서문으로 ... 히포크라테스는 고대 의사의 전형으로 기록되고 있으며"
+     },
+     {
+      "claim": "치유의 신들에게 맹세(아폴론)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Hippocratic_Oath",
+      "note": "In its original form, it requires a new physician to swear, by a number of healing gods ... (원문: ὄμνυμι Ἀπόλλωνα ἰητρὸν καὶ Ἀσκληπιὸν — ko 문서)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hippocratic_Oath",
+     "https://ko.wikipedia.org/wiki/히포크라테스_선서"
+    ],
+    "hintNote": null,
+    "easiestCue": "의사가 되는 사람의 의료 윤리 맹세",
+    "worthWhyGen": "일상에서 쓰는 말·규범의 유래(누구나 아는 의사 윤리)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '맹세' 예",
+     "unique": "그리스 의사 이름 — 제네바 선언과 갈림",
+     "hint12": "① 예 ② 예 (졸업식 낭독은 knowledge)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "world-history-west/1#g032a-g032a-j23-2",
+   "seed": {
+    "subject": "검투사",
+    "aspect": null,
+    "ref": "g032a-j23-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 로마의 원형 경기장에서 관중의 볼거리로 목숨을 걸고 싸우던 사람들입니다. 대부분 전쟁 포로나 노예 출신이었습니다. 콜로세움의 주인공이었던 이들을 무엇이라 부를까요?",
+    "answer": "검투사",
+    "acceptedAnswers": [
+     "글래디에이터"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영어로 부르는 글래디에이터는 라틴어 '글라디우스(칼)'에서 온 말입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "콜로세움에서 목숨을 걸고 싸우던 사람들",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 세계사 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "러셀 크로가 노예로 팔려 간 로마 장군을 연기한 2000년 영화의 제목이 이 사람들을 가리키는 영어 이름이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 로마 원형 경기장에서 싸우던 투사(글래디에이터)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "영화 글래디에이터·로마사",
+     "piece": "f04",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 장소와 '싸우던 사람들' 이 있고 콜로세움 언급까지 짧게 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "검투사",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "글래디에이터",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "검투사",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "283",
+      "answer": "콜로세움",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "5537",
+      "answer": "콜로세움",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "g032a:g032a-j02-4",
+      "answer": "아레나",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "3981",
+      "answer": "스파르타",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     },
+     {
+      "old": "3980",
+      "answer": "수도교",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(다른 사실·다른 정답)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/검투사",
+     "https://en.wikipedia.org/wiki/Gladiator"
+    ],
+    "facts": [
+     {
+      "claim": "투기장에서 관중을 위해 싸운 투사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/검투사",
+      "note": "투사(라틴어: gladius, 글라디우스)는 고대 로마의 볼거리 중 하나로 투기장에서 싸우는 투사를 뜻한다."
+     },
+     {
+      "claim": "대부분 전쟁 포로나 노예 출신",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/검투사",
+      "note": "투사가 되는 자의 대부분은 전쟁 포로나 노예시장에서 사고팔리던 자들이라…"
+     },
+     {
+      "claim": "대부분 노예 · 관중 앞에서 싸움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gladiator",
+      "note": "A gladiator … entertained audiences in the Roman Republic and Roman Empire in violent confrontations … Most were despised as slaves"
+     },
+     {
+      "claim": "콜로세움에서 투기 대회",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/검투사",
+      "note": "티투스 황제는 이 콜로세움의 준공식으로 대규모 투기 대회를 개최하였으며, 맹수 사냥과 투사 시합 …"
+     },
+     {
+      "claim": "gladiator 는 gladius(칼)에서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gladiator",
+      "note": "gladiator 'swordsman', from Latin gladius 'sword'"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "로마 원형 경기장에서 목숨 걸고 싸우던 사람",
+    "worthWhyGen": "로마 하면 떠오르는 상식의 바탕(콜로세움 · 영화)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '원형 경기장 · 싸우던 사람' — 예",
+     "unique": "로마 경기장의 싸움꾼 — 다른 답 없음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 러셀"
+    ],
+    "job": "job-23"
+   }
+  }
+ ]
+}

@@ -1,0 +1,319 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "energy/1",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/1#g032a-g032a-j18-9",
+   "seed": {
+    "subject": "태양열 발전",
+    "aspect": null,
+    "ref": "g032a-j18-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "신재생 에너지 발전 방식의 하나입니다. 수많은 거울로 햇빛을 한곳에 모으고, 그 열로 물을 끓여 증기 터빈을 돌려 전기를 만듭니다. 전지판에서 바로 전기를 얻는 방식과 구별되는 이 발전 방식은?",
+    "answer": "태양열 발전",
+    "acceptedAnswers": [
+     "태양열",
+     "집광형 태양열 발전"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2010~2013년 스페인이 이런 발전소를 40곳 넘게 지었습니다. 다만 지금 세계 설비는 전지판 방식에 크게 못 미칩니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "거울로 햇빛을 모으고 열로 물을 끓여 증기 터빈",
+     "difWhy": "2 — 단서가 방식을 말해 줌",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 기술 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "모아 둔 열을 녹은 소금 같은 저장소에 담아 두었다가 어두운 밤에도 터빈을 돌릴 수 있는 발전이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "햇빛을 모아 얻은 열로 증기 터빈을 돌리는 발전 방식(CSP)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "재생에너지 상식",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '신재생 발전 방식' = 끝 ○○ '발전 방식'. 구별 대상(전지판) 명시"
+    },
+    "blindQuestion": {
+     "guess": "태양열 발전",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "태양열 발전",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "태양열 발전",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j27-10",
+      "answer": "열병합 발전",
+      "verdict": "diff",
+      "why": "태양열 발전 vs 열병합 발전 — 다른 방식"
+     },
+     {
+      "old": "2258",
+      "answer": "화력 발전",
+      "verdict": "diff",
+      "why": "태양열 vs 화력 발전 — 다른 방식"
+     },
+     {
+      "old": "2257",
+      "answer": "양수 발전",
+      "verdict": "diff",
+      "why": "태양열 vs 양수 발전 — 다른 방식"
+     },
+     {
+      "old": "2260",
+      "answer": "송전 손실",
+      "verdict": "diff",
+      "why": "태양열 vs 송전 손실 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/태양열_발전",
+     "https://en.wikipedia.org/wiki/Concentrated_solar_power"
+    ],
+    "facts": [
+     {
+      "claim": "거울로 태양열을 한 점에 모아 물을 끓여 증기터빈을 돌려 전기 생산",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/태양열_발전",
+      "note": "대부분 태양열을 모아서 거울을 통해 한 점(집열장치)으로 집중시켜 발생한 열에너지로 물을 끓여서 발생하는 증기로 증기터빈을 돌리는 방식으로 전기를 생산한다."
+     },
+     {
+      "claim": "거울로 햇빛을 모아 열로 바꿔 증기터빈 구동 · 광전지(태양광)가 주류",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Concentrated_solar_power",
+      "note": "by using mirrors to concentrate a large area of sunlight toward a receiver. Electricity is generated when the concentrated light is converted to heat (solar thermal energy), which drives a heat engine, either Stirling engine or a steam turbine … photovoltaics, the predominant solar power technology"
+     },
+     {
+      "claim": "녹은 소금 등으로 열 저장 → 밤낮 전기 공급",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Concentrated_solar_power",
+      "note": "A CSP plant can incorporate thermal energy storage, which stores energy either in the form of sensible heat or as latent heat (for example, using molten salt), which enables these plants to continue supplying electricity whenever it is needed, day or night."
+     },
+     {
+      "claim": "2010~2013 스페인 40곳 넘게 · 설비 태양광의 1% 미만",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Concentrated_solar_power",
+      "note": "Between 2010 and 2013, Spain built over 40 parabolic trough systems … By comparison, as of 2021, global installed capacity was less than 1% as concentrated solar power stood at only 6.8 GW."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Concentrated_solar_power"
+    ],
+    "hintNote": null,
+    "easiestCue": "거울로 햇빛을 모아 그 열로 터빈",
+    "worthWhyGen": "신재생 발전 방식의 구별(교과·시사 개념 2)",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '발전 방식' — 예",
+     "unique": "'전지판 방식과 구별'로 태양광 발전과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 터빈"
+    ],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "energy/1#g032a-g032a-j27-10",
+   "seed": {
+    "subject": "열병합 발전",
+    "aspect": null,
+    "ref": "g032a-j27-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "발전 방식의 하나입니다. 보통 화력 발전소는 전기를 만들고 남은 열을 버리지만, 이 방식은 그 열로 데운 물을 아파트 단지에 보내 난방과 온수에 씁니다. 전기와 열을 한꺼번에 만드는 이 방식은?",
+    "answer": "열병합 발전",
+    "acceptedAnswers": [
+     "열병합"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국지역난방공사 같은 곳이 이렇게 만든 온수를 단열 배관으로 보내며, 남은 열로 흡수식 냉방을 하기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "전기와 열을 한꺼번에 만드는 방식",
+     "difWhy": "3 — 설명→이름 · 생활 속 개념",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 에너지 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "발전기를 돌리고 남은 열을 버리지 않고 동네 아파트 난방과 온수로 돌려 써서 연료 효율을 크게 높인 발전 방식이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "전기를 만들며 나온 열까지 난방에 쓰는 발전(CHP · 지역 난방의 열원)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "에너지 뉴스, 지역난방",
+     "piece": "f05",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '발전 방식'이 끝 ○○=방식. 화력 발전과의 대비가 평이."
+    },
+    "blindQuestion": {
+     "guess": "열병합 발전",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "지역난방 열병합발전",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "열병합 발전",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "한국지역난방공사 · 흡수식 냉방",
+       "url": "https://ko.wikipedia.org/wiki/열병합",
+       "note": "지역 난방 공급 업체 현황: 한국지역난방공사 … / (en Cogeneration) By-product heat at moderate temperatures … can also be used in absorption"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j18-9",
+      "answer": "태양열 발전",
+      "verdict": "diff",
+      "why": "새=열병합 발전; 태양열 발전은 다른 발전 방식"
+     },
+     {
+      "old": "2257",
+      "answer": "양수 발전",
+      "verdict": "diff",
+      "why": "신규 '열병합 발전'(발전 방식·시설이 다른 별개 지식) ≠ 옛 '양수 발전' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "5800",
+      "answer": "지열 발전",
+      "verdict": "diff",
+      "why": "신규 '열병합 발전'(발전 방식·시설이 다른 별개 지식) ≠ 옛 '지열 발전' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "6586",
+      "answer": "체르노빌",
+      "verdict": "diff",
+      "why": "신규 '열병합 발전'(발전 방식·시설이 다른 별개 지식) ≠ 옛 '체르노빌' — 맞히는 지식이 다름"
+     },
+     {
+      "old": "2256",
+      "answer": "터빈",
+      "verdict": "diff",
+      "why": "신규 '열병합 발전'(발전 방식·시설이 다른 별개 지식) ≠ 옛 '터빈' — 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cogeneration",
+     "https://ko.wikipedia.org/wiki/지역_난방",
+     "https://ko.wikipedia.org/wiki/열병합"
+    ],
+    "facts": [
+     {
+      "claim": "전기와 쓸모 있는 열을 동시에 생산 · 버려질 열을 난방에",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cogeneration",
+      "note": "Cogeneration or combined heat and power (CHP) is the use of a heat engine or power station to generate electricity and useful heat at the same time. … because otherwise-wasted heat from electricity generation is put to some productive use. … The resulting low-temperature waste heat is then used for water or space heating."
+     },
+     {
+      "claim": "지역 난방 열은 열병합발전소에서 얻는 경우가 많음 · 주거용 난방·온수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지역_난방",
+      "note": "지역 난방(District heating)은 공간 난방 및 온수 난방과 같은 주거용 및 상업용 난방 요구 사항을 위해 단열 파이프 시스템을 통해 중앙 위치에서 생성된 열을 분배하는 시스템이다. 열은 화석연료나 바이오매스를 연소하는 열병합발전소에서 얻는 경우가 많지만"
+     },
+     {
+      "claim": "가스·증기 터빈 · 연료 효율 · 탄소 배출 줄이는 저렴한 방법",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cogeneration",
+      "note": "The supply of high-temperature heat first drives a gas or steam turbine-powered generator. / Cogeneration is a more efficient use of fuel / (ko 지역 난방) 열병합 발전을 이용한 지역난방(CHPDH)은 탄소 배출을 줄이는 가장 저렴한 방법"
+     },
+     {
+      "claim": "한국지역난방공사 · 흡수식 냉방",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/열병합",
+      "note": "지역 난방 공급 업체 현황: 한국지역난방공사 … / (en Cogeneration) By-product heat at moderate temperatures … can also be used in absorption refrigerators for cooling."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cogeneration",
+     "https://ko.wikipedia.org/wiki/지역_난방"
+    ],
+    "hintNote": null,
+    "easiestCue": "전기와 열을 함께 만들어 아파트 난방에 씀",
+    "worthWhyGen": "3 — 지역 난방 아파트 관리비 고지서에서 보는 말의 정체",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '발전 방식' — 예",
+     "unique": "전기 + 열 동시 생산 = 하나(지역 난방은 배분 체계라 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "가스·증기 터빈으로 발전기를 돌린 뒤 남은 열을 회수하는 방식으로, 연료를 아끼고 탄소 배출을 줄이는 방법으로 꼽힌다."
+      },
+      "why": "복합화력(가스+증기 터빈)과 가르는 '남은 열로 난방' 쓰임을 핵심으로"
+     }
+    ],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

@@ -1,0 +1,391 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "religion/7",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/7#g032a-g032a-j06-11",
+   "seed": {
+    "subject": "삼신할머니",
+    "aspect": null,
+    "ref": "g032a-j06-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "출산과 아기의 운명을 맡는다고 믿어 온 한국 민속의 여신입니다. 아기가 태어나면 스무하루 동안 금줄을 치고, 안방에 이 신의 단지를 모셔 치성을 드렸습니다. 아기 엉덩이의 푸른 몽고반점도 이 신이 아기를 엄마 배에서 나오라고 찬 자국이라는 이야기가 있습니다. 이 여신은?",
+    "answer": "삼신할머니",
+    "acceptedAnswers": [
+     "삼신할미",
+     "삼신"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름 첫 글자를 숫자 셋이 아니라 아기를 밴다는 뜻의 우리말로 보는 해석(이능화)이 있지만, 실제로 신 셋을 모시는 집도 있었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "출산과 아기의 운명을 맡는 한국 민속의 여신",
+     "difWhy": "2 — 민속 상식 · 설명→이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 전통 상식·유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "안방 가장 따뜻한 자리를 이 여신의 몫으로 여겼고, 아이가 일곱 살이 될 때까지 지켜 준다고 믿었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한국 민속에서 아기와 출산을 맡는 여신",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "민속·드라마 소재로 익숙",
+     "piece": "f03",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '민속의 여신' 이 있고 마지막 문장이 조금 길어도 주어가 하나"
+    },
+    "blindQuestion": {
+     "guess": "삼신할머니",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "삼신할머니",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "삼신할머니",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:job-26-11",
+      "answer": "솟대",
+      "verdict": "diff",
+      "why": "삼신할머니 vs 솟대"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/삼신할미",
+     "https://ko.wikipedia.org/wiki/몽골반"
+    ],
+    "facts": [
+     {
+      "claim": "출산과 운명을 관장하는 여신 · 삼칠일 금줄 · 안방 삼신단지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼신할미",
+      "note": "삼신할미 또는 삼신할머니, 삼승할망은 한국 신화에서 출산과 운명을 관장하는 여신을 말한다. ... 삼칠일이 되면 산모의 속옷을 개어 안방 삼신단지에 놓고 ... 삼신단지가 보관된 방은 삼칠일 동안 금줄로 봉인되었다."
+     },
+     {
+      "claim": "몽고반은 삼신할미가 걷어찬 자국이라 생각",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/몽골반",
+      "note": "대한민국에서는 몽고반은 삼신할미가 아이를 어머니의 뱃속에서 나오도록 걷어찰 때 생긴 자국이라 생각한다."
+     },
+     {
+      "claim": "안방 가장 따뜻한 자리 · 일곱 살까지 보호",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/삼신할미",
+      "note": "삼신할머니는 태어날 때부터 일곱 살이 될 때까지의 모든 아이들을 보호했고 ... 오늘날에도 한국인들은 안방에서 가장 따뜻한 자리를 삼신할머니의 것으로 여기고"
+     },
+     {
+      "claim": "삼 = 포태 해석(이능화) · 셋을 모시기도",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/삼신할미",
+      "note": "이능화의 해석에 따르면 삼신할미는 세 여신이 아닌 단일한 산신으로, 삼신의 삼은 한국어로 포태(胞胎)를 뜻한다. ... 삼신 셋을 모시기도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/삼신할미"
+    ],
+    "hintNote": null,
+    "easiestCue": "몽고반점이 이 신이 찬 자국",
+    "worthWhyGen": "누구나 들어 본 민속 신과 몽고반점 이야기(일상 상식의 바탕)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '민속의 여신' 예",
+     "unique": "출산 여신 · 몽고반점 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "religion/7#g032a-g032a-j17-8",
+   "seed": {
+    "subject": "서낭당",
+    "aspect": null,
+    "ref": "g032a-j17-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 민속 신앙에서 마을을 지키는 신을 모시던 곳입니다. 마을 어귀나 고갯길에 돌무더기로 쌓고, 금줄이나 종이띠를 둘렀습니다. 길손은 이곳에 돌을 얹으며 무사히 가기를 빌었습니다. 이곳은?",
+    "answer": "서낭당",
+    "acceptedAnswers": [
+     "성황당"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "고려 문종 때 새로 쌓은 성 안에 사당을 지어 봄가을로 제사하게 했다는 《고려사》 기록이 가장 오래된 문헌 기록이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "마을 어귀나 고갯길에 돌무더기로 쌓고 금줄을 두른 곳",
+     "difWhy": "3 — 민속 이름 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 민속 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "몽골 초원의 돌탑 '오보'와 꼭 닮아 몽골에서 건너왔다는 설도 있는 마을 수호신의 자리",
+    "generalHintVersion": "hint-v7",
+    "identity": "서낭당 — 마을 수호신 서낭신을 모신 돌무더기·나무 신당",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "민속·국어 교과서에서 접함",
+     "piece": "f05",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '신을 모시던 곳' 이 있고 단서가 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "서낭당",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "서낭당",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "서낭당",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:job-26-11",
+      "answer": "솟대",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/서낭당",
+     "https://en.wikipedia.org/wiki/Seonangdang"
+    ],
+    "facts": [
+     {
+      "claim": "마을 수호 · 어귀·고갯길 돌무더기 · 금줄·종이띠 · 행인 안전",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/서낭당",
+      "note": "마을을 수호하는 서낭신을 모시는 돌무더기인 서낭당은 마을 입구나 고갯길, 동네 어귀 ... 돌무더기에는 금줄이나 종이띠가 둘러쳐져 있으며 ... 행인들의 여행 안전을 기원하기 위한 노신 신앙과 관련되어 보인다."
+     },
+     {
+      "claim": "길손이 돌 얹고 무사 기원",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seonangdang",
+      "note": "On trails, travelers and wanderers placed three additional stones on the tower, and prayed for safety on the path"
+     },
+     {
+      "claim": "몽골 오보와 닮음 · 전래설",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Seonangdang",
+      "note": "The other theory is that seonangdangs are the Korean variety of Ovoo, or Mongolian stone towers. The Mongolian worship of Ovoo are strikingly similar ... According to this theory, the seonangdang cult followed the Mongol invasions"
+     },
+     {
+      "claim": "고려사 문종 기록",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/서낭당",
+      "note": "문헌 기록에 등장하는 가장 오래된 기록은 《고려사》에, 고려 문종 때에 선덕진에 쌓은 새로운 성 안에 성황사를 지어 봄과 가을에 제사를 지내게 했다는 기록"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Seonangdang",
+     "https://ko.wikipedia.org/wiki/서낭당"
+    ],
+    "hintNote": null,
+    "easiestCue": "마을 어귀 돌무더기 신당 · 돌을 얹으며 비는 곳",
+    "worthWhyGen": "지금도 고갯길 돌탑에서 보는 민속 풍습의 정체",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '신을 모시던 곳' 예",
+     "unique": "돌무더기 · 마을 어귀 · 길손 → 서낭당(성황당은 같은 대상 별칭으로 변형)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "religion/7#g032a-job-26-11",
+   "seed": {
+    "subject": "솟대",
+    "aspect": null,
+    "ref": "job-26-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "마을 어귀나 마당에 세우던 민속 신앙물입니다. 긴 나무 장대 끝에 나무로 깎은 새를 얹었는데, 가장 흔한 새는 오리입니다. 철 따라 오가는 물새가 하늘과 땅을 이어 준다고 여겼다는 설이 있습니다. 풍년과 마을의 평안을 빌던 이 장대는?",
+    "answer": "솟대",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "전라도에서는 소줏대, 강원도에서는 솔대라고도 불렀습니다. 삼한 시대 제사 터인 소도에서 비롯했다는 설이 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "긴 나무 장대 끝에 나무로 깎은 새를 얹은 민속 신앙물",
+     "difWhy": "3 — 민속 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 민속 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 62",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "과거 급제를 기려 세울 때는 붉게 칠한 장대 끝에 새 대신 푸른 용을 얹었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "장대 끝에 나무 새를 얹은 민속 신앙물",
+    "familiarity": {
+     "judge": 2,
+     "pct": 62,
+     "why": "민속 마을·교과서에서 접함",
+     "piece": "f06",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '민속 신앙물' · 끝 '이 장대' 는 둘째 문장에 장대가 나와 지시 분명"
+    },
+    "blindQuestion": {
+     "guess": "솟대",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "솟대",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "솟대",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "지역 이름 소줏대·솔대 · 소도 유래설",
+       "url": "https://ko.wikipedia.org/wiki/솟대",
+       "note": "삼한 시대의 소도에서 유래한 것으로 보인다 ... 지방에 따라 '소줏대', '솔대', '별신대' 등으로 불리며 / (en) sojutdae (소줏대) in Jeolla Province, soldae (솔대) in G"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j17-8",
+      "answer": "서낭당",
+      "verdict": "diff",
+      "why": "새=솟대; 서낭당·삼신할머니는 다른 민속 신앙"
+     },
+     {
+      "old": "g032a:g032a-j06-11",
+      "answer": "삼신할머니",
+      "verdict": "diff",
+      "why": "새=솟대; 서낭당·삼신할머니는 다른 민속 신앙"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/솟대",
+     "https://en.wikipedia.org/wiki/Sotdae"
+    ],
+    "facts": [
+     {
+      "claim": "풍년 기원·마을 수호 · 긴 장대 끝 나무 새 · 오리·기러기 · 철새가 천상과 마을을 잇는 전령이라는 설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/솟대",
+      "note": "솟대는 민속신앙에서 새해의 풍년을 기원하며 세우거나 마을 입구에 마을의 수호신의 상징으로 세운 긴 나무 장대이다 ... 솟대의 끝에는 오리나 기러기 등이 올려지는데, 옛날 솟대의 새들은 천상계의 신들과 마을의 주민을 연결해주는 일종의 전령조였다는 설이 있다."
+     },
+     {
+      "claim": "마을 입구 · 번영과 안녕 · 오리가 가장 흔함 · 철새",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sotdae",
+      "note": "it was usually erected near the entrance of a village to ward off evil spirits as well as to represent villagers' wishes for prosperity and well-being ... ducks are the most common ... Ducks, as migratory birds, had various religious symbols"
+     },
+     {
+      "claim": "과거 급제 축하 — 주홍 장대 위 푸른 용",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/솟대",
+      "note": "과거 급제를 축하하기 위해서 마을 입구에 꼭대기에 푸른 색 용을 붙인 주홍색 장대를 세우기도 했다."
+     },
+     {
+      "claim": "지역 이름 소줏대·솔대 · 소도 유래설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/솟대",
+      "note": "삼한 시대의 소도에서 유래한 것으로 보인다 ... 지방에 따라 '소줏대', '솔대', '별신대' 등으로 불리며 / (en) sojutdae (소줏대) in Jeolla Province, soldae (솔대) in Gangwon Province"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/솟대",
+     "https://en.wikipedia.org/wiki/Sotdae"
+    ],
+    "hintNote": null,
+    "easiestCue": "장대 끝에 나무 오리를 얹은 민속 신앙물",
+    "worthWhyGen": "왜 장대 위에 오리를 얹었나 — 민속의 까닭(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '민속 신앙물' 예",
+     "unique": "장대 끝 새 → 솟대(장승은 사람 얼굴 기둥)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

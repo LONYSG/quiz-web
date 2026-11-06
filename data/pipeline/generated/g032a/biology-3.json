@@ -1,0 +1,443 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "biology/3",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/3#g032a-g032a-j04-12",
+   "seed": {
+    "subject": "카나리아",
+    "aspect": null,
+    "ref": "g032a-j04-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "생물이 환경의 위험을 먼저 알려 주는 대표 예로 꼽히는 새입니다. 20세기까지 영국과 미국의 광부들은 이 작은 새를 탄광에 데려갔습니다. 몸이 작고 숨이 빨라 유독가스에 사람보다 먼저 쓰러졌기 때문입니다. '위험의 조기 경보'를 뜻하는 말에 이름이 남은 이 새는?",
+    "answer": "카나리아",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "탄광에 온혈 동물을 데려가 일산화탄소를 알아내자는 생각은 1895년 존 스콧 홀데인이 처음 내놓았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "'위험의 조기 경보'를 뜻하는 말에 이름이 남은 탄광의 새",
+     "difWhy": "2 — 탄광 새는 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 표현의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "노란 깃털과 맑은 울음소리로 수백 년 동안 집에서 길러 온 되새과의 작은 애완 새다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "노란 애완용 되새과 새(canary)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "새 이름·광산 카나리아 비유로 접함",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '새입니다' 로 끝 ○○ '새' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "카나리아",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카나리아",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카나리아",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "226",
+      "answer": "포스트잇",
+      "verdict": "diff",
+      "why": "카나리아 탄광 vs 포스트잇"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sentinel_species",
+     "https://en.wikipedia.org/wiki/Domestic_canary",
+     "https://ko.wikipedia.org/wiki/카나리아"
+    ],
+    "facts": [
+     {
+      "claim": "광부들이 20세기까지 탄광에 카나리아를 데려감 · 영국·미국·캐나다 · 조기 경보",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sentinel_species",
+      "note": "Countries such as Britain, the United States, and Canada used canaries as a sentinel species. Well into the 20th century, coal miners brought canaries into coal mines as an early-warning signal for toxic gases, primarily carbon monoxide."
+     },
+     {
+      "claim": "카나리아가 탄광 파수꾼 종으로 쓰임(죽음으로 유독가스 알림)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Domestic_canary",
+      "note": "Sacrificial female canaries were formerly used in coal mines as a sentinel species, whose deaths there indicated the presence of carbon monoxide or other toxic gases."
+     },
+     {
+      "claim": "빠른 호흡 · 작은 몸 · 먼저 쓰러짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sentinel_species",
+      "note": "The bird's rapid breathing rate, small size, and high metabolism, compared to other small animals or the miners, led birds in dangerous mines to succumb before the miners were affected"
+     },
+     {
+      "claim": "노란 빛깔 · 울음소리 · 수백 년 애완 · 되새과",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/카나리아",
+      "note": "카나리아(Atlantic canary)는 되새과에 속하는 애완용 새이다. ... 귀여운 모습과 아름다운 털, 생동감 있는 울음소리로 수백년 동안 전 세계에서 애완용 새로 길러진다. ... 애완용은 주로 몸 빛깔이 밝은 노란색을 띠지만"
+     },
+     {
+      "claim": "1895년 홀데인 처음 제안",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sentinel_species",
+      "note": "The idea of placing a warm-blooded animal in a mine to detect carbon monoxide was first proposed by John Scott Haldane in 1895, and canaries were used as early as 1896."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/카나리아"
+    ],
+    "hintNote": null,
+    "easiestCue": "광부들이 탄광에 데려간 작은 새",
+    "worthWhyGen": "'탄광 속 카나리아'라는 일상 비유가 생긴 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '새' 예",
+     "unique": "탄광 새 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "biology/3#g032a-g032a-j07-6",
+   "seed": {
+    "subject": "생태통로",
+    "aspect": null,
+    "ref": "g032a-j07-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "야생동물을 위한 시설입니다. 캐나다 밴프 국립공원에서는 고속도로 위에 흙을 덮고 나무를 심은 다리를 놓아, 곰과 엘크가 차를 피해 건너다닙니다. 길에 끊긴 서식지를 다시 잇는 이런 다리나 굴을 우리말로 무엇이라 할까요?",
+    "answer": "생태통로",
+    "acceptedAnswers": [
+     "생태이동통로"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "서식지가 작게 쪼개지면 근친 교배가 늘어 유전적 다양성이 줄어든다. 동물이 이 시설에 익숙해지는 데는 시간이 걸린다고 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "곰과 엘크가 차를 피해 건너다니는 다리 · 끊긴 서식지를 잇는",
+     "difWhy": "2 — 우리말 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 환경 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "도로에서 동물이 차에 치여 죽는 로드킬을 줄이려고 고속도로 곳곳에 만들어 두는 시설이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도로·철도로 끊긴 서식지를 잇는 야생동물 이동 시설",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "뉴스·교과서에 나옴",
+     "piece": "f07",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '야생동물을 위한 시설' = 끝 ○○ '다리나 굴'. 밴프 예시가 시설을 구체화"
+    },
+    "blindQuestion": {
+     "guess": "생태통로",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "생태이동통로",
+     "hit": false
+    },
+    "factCheck": {
+     "answer": "생태통로",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "로드킬",
+       "url": "https://ko.wikipedia.org/wiki/생태통로",
+       "note": "(문서 '로드킬' 절)"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "2116",
+      "answer": "외래종",
+      "verdict": "diff",
+      "why": "생태통로 vs 외래종"
+     },
+     {
+      "old": "218",
+      "answer": "생산자",
+      "verdict": "diff",
+      "why": "생태통로 vs 생산자"
+     },
+     {
+      "old": "2113",
+      "answer": "먹이 그물",
+      "verdict": "diff",
+      "why": "생태통로 vs 먹이 그물"
+     },
+     {
+      "old": "2118",
+      "answer": "기생",
+      "verdict": "diff",
+      "why": "생태통로 vs 기생"
+     },
+     {
+      "old": "1407",
+      "answer": "상리공생",
+      "verdict": "diff",
+      "why": "생태통로 vs 상리공생"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/생태통로",
+     "https://en.wikipedia.org/wiki/Wildlife_crossing"
+    ],
+    "facts": [
+     {
+      "claim": "끊긴 서식지를 잇는 통로 형태 구조물",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/생태통로",
+      "note": "야생생물의 서식지가 단절되었을 때, 단절된 서식지들 사이의 연결이 가능하도록 개발하지 않고 남겨두거나 인공적으로 조성한 가늘고 긴 통로 형태의 환경 또는 구조물이다."
+     },
+     {
+      "claim": "밴프 트랜스캐나다 고속도로 위 육교 · 곰·엘크",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wildlife_crossing",
+      "note": "overpasses provide safe passage over the Trans-Canada Highway for bears, moose, deer, wolves, elk, and many other species. The 24 wildlife crossings in Banff"
+     },
+     {
+      "claim": "로드킬",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/생태통로",
+      "note": "(문서 '로드킬' 절)"
+     },
+     {
+      "claim": "근친 · 유전적 다양성 · 학습 곡선",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/생태통로",
+      "note": "서식지 크기가 작아지면 근친상간 확률이 높아져 유전적 다양성이 저해되는 등 / (en) animals need time to acclimate to the structures before they feel comfortable using them"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/생태통로"
+    ],
+    "hintNote": null,
+    "easiestCue": "동물이 길을 건너는 다리·굴",
+    "worthWhyGen": "고속도로에서 보는 시설의 쓸모 — 알가치 3 ①",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '시설' 예",
+     "unique": "'에코브리지'(육교만)를 칠 사람 있음 — 묻는 문장 '다리나 굴' 로 넓힘",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-h GEN",
+      "before": {
+       "acceptedAnswers": []
+      },
+      "why": "blind '생태이동통로' = 같은 것 → 변형"
+     }
+    ],
+    "warn": [],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "biology/3#g032a-g032a-j14-7",
+   "seed": {
+    "subject": "천적",
+    "aspect": null,
+    "ref": "g032a-j14-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "생태계에서 어떤 생물을 잡아먹거나 죽여 그 수를 줄이는 다른 생물을 가리키는 말입니다. 흔히 '고양이는 쥐의 ○○이다'처럼 씁니다. 빈칸에 들어갈 이 말은 무엇일까요?",
+    "answer": "천적",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "황소개구리에게는 수리부엉이·가물치·메기 같은 생물이 이것입니다. 이런 관계는 한 생물이 지나치게 불어나는 것을 막아 줍니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "'고양이는 쥐의 ○○이다'처럼 씁니다",
+     "difWhy": "1 — 빈칸 예문이 곧 답",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 생태 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "농약 대신 진딧물을 없애려고 무당벌레를 풀어 놓는 것처럼, 해충 방제에도 쓰는 관계다",
+    "generalHintVersion": "hint-v7",
+    "identity": "어떤 생물을 잡아먹거나 죽이는 다른 생물",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "생태 교과서·일상어",
+     "piece": "f05",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=생태계 용어(말), 첫 문장이 '잡아먹는 다른 생물을 가리키는 말'로 종류를 바로 준다. 예문 빈칸이 이해를 돕는다."
+    },
+    "blindQuestion": {
+     "guess": "천적",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "천적",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "천적",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "320",
+      "answer": "도도새",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "2687",
+      "answer": "보호색",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3372",
+      "answer": "독화살개구리",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "3771",
+      "answer": "가루다",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "4232",
+      "answer": "매미",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/천적",
+     "https://en.wikipedia.org/wiki/Biological_pest_control"
+    ],
+    "facts": [
+     {
+      "claim": "천적 = 특정 생물을 죽이거나 먹이로 삼는 생물 · 쥐는 고양이 등에게 잡아먹힌다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/천적",
+      "note": "천적(天敵)은 특정 생물을 죽이거나 먹이로 삼는 생물을 말하며 ... 쥐는 고양이, 여우, 족제비 ... 에게 잡아먹힌다."
+     },
+     {
+      "claim": "생물로 해충을 다스리는 방법은 포식에 기댄다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biological_pest_control",
+      "note": "Biological control or biocontrol is a method of controlling pests ... by using other organisms. It relies on predation, parasitism, and herbivory"
+     },
+     {
+      "claim": "진딧물의 천적 무당벌레 · 농약보다 효과",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/천적",
+      "note": "천적은 특정 생물이 너무 많이 늘어나는 것을 막는 긍정적인 효과가 있고, 농약보다 더 효과가 뛰어나다. 그 실례로 장미, 딸기 등의 원예작물의 즙을 빨아먹는 진딧물은 무당벌레의 어른벌레와 애벌레 ... 천적이며"
+     },
+     {
+      "claim": "황소개구리의 천적",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/천적",
+      "note": "또 황소개구리에게는 수리부엉이, 물장군, 해오라기, 개구리매, 가물치, 메기 등이 천적이고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/천적"
+    ],
+    "hintNote": null,
+    "easiestCue": "'고양이는 쥐의 ○○'",
+    "worthWhyGen": "일상에서도 '앙숙'의 뜻으로 쓰는 말(일상 말 3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' — 예",
+     "unique": "빈칸 2칸 → 포식자(3자)·앙숙(뜻 다름)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

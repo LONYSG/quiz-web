@@ -1,0 +1,175 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-screen/3",
+  "midKey": "kr-screen",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-screen/3#g032a-g032a-j09-3",
+   "seed": {
+    "subject": "시트콤",
+    "aspect": null,
+    "ref": "g032a-j09-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "텔레비전 코미디의 한 갈래입니다. 한국에서는 1993년 SBS '오박사네 사람들'이 가족을 소재로 한 첫 작품으로 꼽힙니다. 고정된 인물들이 집이나 직장에서 우스운 상황을 헤쳐 가고, 관객 웃음소리를 깔기도 하는 이 갈래는?",
+    "answer": "시트콤",
+    "acceptedAnswers": [
+     "시추에이션 코미디"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국 TV에 이 갈래가 처음 소개된 것은 1987년 KBS가 방영한 미국 작품 '코스비 가족 만세'였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "관객 웃음소리를 깔기도 하는 이 갈래",
+     "difWhy": "1 — 시트콤 누구나 앎",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 방송 갈래 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "'순풍 산부인과'·'거침없이 하이킥' 시리즈가 대표작인, 한 집안이나 일터를 무대로 한 코미디 드라마다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고정 인물·배경의 상황 희극 TV 드라마 갈래",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "TV 장르 용어로 일상적",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '텔레비전 코미디의 한 갈래' 가 끝 ○○(갈래)와 정확히 일치"
+    },
+    "blindQuestion": {
+     "guess": "시트콤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "시트콤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "시트콤",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 4,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "고정 출연진 · 일정한 배경 · 웃음 트랙",
+       "url": "https://en.wikipedia.org/wiki/Sitcom",
+       "note": "(ko 같은 문장) 집, 직장, 지역 사회와 같은 일정한 배경 안에서 우스꽝스러운 상황을 헤쳐 나가는 고정된 등장인물들을 중심으로 전개된다. … 웃음 트랙도 시트콤의 특징 중 하나로 꼽힌다."
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "4721",
+      "answer": "스프링필드",
+      "verdict": "unsure",
+      "why": "옛 질문에 시트콤이 들어 있어 누출"
+     },
+     {
+      "old": "4227",
+      "answer": "테디",
+      "verdict": "unsure",
+      "why": "옛 질문에 시트콤이 들어 있어 누출"
+     },
+     {
+      "old": "6443",
+      "answer": "프렌즈",
+      "verdict": "unsure",
+      "why": "옛 질문에 시트콤이 들어 있어 누출"
+     },
+     {
+      "old": "4224",
+      "answer": "피벗",
+      "verdict": "unsure",
+      "why": "옛 질문에 시트콤이 들어 있어 누출"
+     },
+     {
+      "old": "4226",
+      "answer": "바징가",
+      "verdict": "unsure",
+      "why": "옛 질문에 시트콤이 들어 있어 누출"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/오박사네_사람들",
+     "https://ko.wikipedia.org/wiki/시트콤",
+     "https://en.wikipedia.org/wiki/Sitcom"
+    ],
+    "facts": [
+     {
+      "claim": "1993년 SBS 오박사네 사람들 — 가족 소재 한국 최초 시트콤",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오박사네_사람들",
+      "note": "《오박사네 사람들》은 SBS에서 1993년 2월 18일(목요일)부터 … 방송한 시트콤이다. … 가족을 소재로 다룬 대한민국 최초의 시트콤으로"
+     },
+     {
+      "claim": "한국은 1993년 오박사네 사람들로 시작",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/시트콤",
+      "note": "대한민국에서는 1993년에 SBS 《오박사네 사람들》 로 시트콤을 처음 시작하였으며"
+     },
+     {
+      "claim": "고정 출연진 · 일정한 배경 · 웃음 트랙",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sitcom",
+      "note": "(ko 같은 문장) 집, 직장, 지역 사회와 같은 일정한 배경 안에서 우스꽝스러운 상황을 헤쳐 나가는 고정된 등장인물들을 중심으로 전개된다. … 웃음 트랙도 시트콤의 특징 중 하나로 꼽힌다."
+     },
+     {
+      "claim": "대표 한국 시트콤 하이킥 시리즈",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/시트콤",
+      "note": "대표적인 한국 시트콤으로는 여러 스핀오프를 낳은 하이킥 시리즈가 있다."
+     },
+     {
+      "claim": "1987년 KBS 코스비 가족 만세로 첫 등장",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/시트콤",
+      "note": "이에 앞서 1987년 KBS를 통해 방영된 《코스비 가족 만세》를 통해 해당 장르(시트콤)가 한국 TV에 첫 등장했다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/시트콤"
+    ],
+    "hintNote": null,
+    "easiestCue": "고정 인물이 우스운 상황을 헤쳐 가는 TV 코미디 + 관객 웃음소리",
+    "worthWhyGen": "대중문화의 기본 갈래 이름 — 일반 상식 3(한국 첫 작품 세부로 등급을 올림 · lowWorthField 라 이름 떠올리기 대신 갈래 정체)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '코미디의 한 갈래' — 예",
+     "unique": "스케치 코미디·개그 프로와는 고정 인물·이어지는 상황으로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-09"
+   }
+  }
+ ]
+}

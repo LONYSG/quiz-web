@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-food/4",
+  "midKey": "kr-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/4#g032a-g032a-j02-1",
+   "seed": {
+    "subject": "물회",
+    "aspect": null,
+    "ref": "g032a-j02-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "포항이 원조로 꼽히는 동해안의 여름 향토 음식입니다. 조업에 바빠 끼니 챙길 틈도 없던 어부들이 갓 잡은 생선을 썰어 고추장에 버무리고, 찬물을 부어 마시듯 먹던 데서 생겼다고 전합니다. 이 음식은?",
+    "answer": "물회",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1960년대 포항 덕산동의 한 식당이 팔기 시작하며 외식 메뉴로 퍼졌다고 알려져 있습니다. 경상남도는 된장, 경상북도는 고추장으로 양념하는 편입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "갓 잡은 생선을 썰어 고추장에 버무리고 찬물을 부어 먹는 음식",
+     "difWhy": "2 — 설명이 곧 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 음식 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "날생선을 채소·매콤한 양념과 함께 살얼음 육수에 말아 먹는 여름 별미로, 제주에서는 자리돔으로 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "잘게 썬 날생선·해산물과 채소를 양념해 찬 육수를 부어 먹는 한국 음식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "여름철 흔한 음식",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '향토 음식' 이 있고 끝 ○○ 도 음식, 유래 한 문장이 길지만 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "물회",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "물회",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "물회",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5346",
+      "answer": "플리스",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(물회 / 플리스)"
+     },
+     {
+      "old": "6628",
+      "answer": "닭한마리",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(물회 / 닭한마리)"
+     },
+     {
+      "old": "6625",
+      "answer": "동래파전",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(물회 / 동래파전)"
+     },
+     {
+      "old": "2940",
+      "answer": "돼지국밥",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(물회 / 돼지국밥)"
+     },
+     {
+      "old": "5851",
+      "answer": "아귀찜",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(물회 / 아귀찜)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/물회",
+     "https://www.journalist.or.kr/m/m_article.html?no=58133"
+    ],
+    "facts": [
+     {
+      "claim": "바쁜 어부들이 배 위에서 무친 회를 물에 부어 먹던 데서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/물회",
+      "note": "일이 바쁜 어부들이 배 위에서 식사를 간편하게 해결하기 위해 고추장이나 된장에 무친 회를 물에 부어 마시듯이 먹었던 것에서 유래하였다."
+     },
+     {
+      "claim": "포항 원조 · 조업 나간 어부들이 생선을 썰어 고추장을 풀고 물을 부어 마셨던 데서 유래",
+      "where": "q",
+      "url": "https://www.journalist.or.kr/m/m_article.html?no=58133",
+      "note": "(검색 요약) 조업 나간 어부들이 갓 잡은 생선을 썰어 고추장을 풀고 물을 부어 마셨던 데서 유래했다고 전해집니다 · 물회 하면 포항이 원조"
+     },
+     {
+      "claim": "제주 자리돔 물회",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/물회",
+      "note": "자리돔이나 한치가 들어가며, 된장으로 양념을 한다."
+     },
+     {
+      "claim": "1960년대 포항 덕산동 영남물회 원조 · 경남 된장 경북 고추장",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/물회",
+      "note": "1960년대부터 … 허복수 씨가 포항시 덕산동에서 ‘영남물회’를 열고 물회를 팔기 시작한 것이 원조로 알려져 있다. / 경상남도는 된장을, 경상북도는 고추장을 주로 쓴다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/물회"
+    ],
+    "hintNote": null,
+    "easiestCue": "포항 · 생선을 썰어 찬물을 부어 먹는 음식",
+    "worthWhyGen": "흔히 먹는 향토 음식이 왜 생겼는가(유래) — 일반 상식 + 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '향토 음식' 예",
+     "unique": "생선 + 찬물 + 포항 원조 — 냉국·회덮밥과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

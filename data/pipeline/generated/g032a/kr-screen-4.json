@@ -1,0 +1,441 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "kr-screen/4",
+  "midKey": "kr-screen",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-screen/4#g032a-g032a-j11-5",
+   "seed": {
+    "subject": "독립영화",
+    "aspect": null,
+    "ref": "g032a-j11-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영화를 만드는 방식에 따라 부르는 말입니다. 큰 영화사나 대기업의 투자와 배급에 기대지 않고, 감독이 적은 돈으로 자기 뜻대로 만든 영화를 가리킵니다. 이런 영화를 무엇이라 할까요?",
+    "answer": "독립영화",
+    "acceptedAnswers": [
+     "인디 영화",
+     "인디영화"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1980년대 할리우드에서 짐 자머시의 '천국보다 낯선' 같은 작품이 나오며 크게 주목받았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "대기업 투자 없이 감독이 적은 돈으로 자기 뜻대로 만든 영화",
+     "difWhy": "1 — 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 영화 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "쿠엔틴 타란티노의 '저수지의 개들'처럼 저예산으로 찍어 작은 극장과 영화제로 먼저 알려지는 영화다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "대형 영화사 자본 밖에서 만든 저예산 영화",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "영화 뉴스에서 흔히 접함",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영화를 만드는 방식에 따라 부르는 말' = 끝 ○○ '영화'. 두 문장 정의형"
+    },
+    "blindQuestion": {
+     "guess": "독립영화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "독립영화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "독립영화",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4674",
+      "answer": "선댄스 영화제",
+      "verdict": "unsure",
+      "why": "옛 힌트에 독립 영화의 등용문이 나옴"
+     },
+     {
+      "old": "g032a:g032a-j27-1",
+      "answer": "GV",
+      "verdict": "unsure",
+      "why": "옛 질문에 독립·예술영화가 나와 누출"
+     },
+     {
+      "old": "583",
+      "answer": "벌새",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     },
+     {
+      "old": "6685",
+      "answer": "똥파리",
+      "verdict": "unsure",
+      "why": "옛 질문에 독립영화가 나와 누출"
+     },
+     {
+      "old": "5958",
+      "answer": "송환",
+      "verdict": "diff",
+      "why": "정답이 다르고 맞히는 지식도 다르며 옛 질문·힌트에 새 정답이 없음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/독립_영화",
+     "https://en.wikipedia.org/wiki/Independent_film"
+    ],
+    "facts": [
+     {
+      "claim": "주요 제작사의 체계 밖에서 · 자본과 권력으로부터 독립",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/독립_영화",
+      "note": "독립 영화(獨立映畵), 또는 인디 영화(Independent Film)는 일반 상업 영화의 체계, 영화의 제작·배급·선전을 통제하는 주요 제작사의 소수 독점의 관행으로부터 벗어나 제작된 영화를 의미한다. 즉, 자본과 권력으로부터 독립하여 작가 정신에 충실한 작품을 추구"
+     },
+     {
+      "claim": "메이저 스튜디오 밖 · 훨씬 적은 예산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Independent_film",
+      "note": "produced outside the major film studio system ... Usually, independent films are made with considerably lower budgets than major studio films."
+     },
+     {
+      "claim": "1980년대 부각 · 천국보다 낯선 · 저수지의 개들",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/독립_영화",
+      "note": "독립 영화는 1980년대부터 부각되기 시작하였다. 짐 자머시의 〈천국보다 낯선〉(1984) ... 쿠엔틴 타란티노의 〈저수지의 개들〉(1992)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/독립_영화"
+    ],
+    "hintNote": null,
+    "easiestCue": "큰 영화사 투자 없이 감독 뜻대로 만든 영화",
+    "worthWhyGen": "영화 뉴스·극장에서 늘 쓰는 기본 말 — 일반 상식",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '부르는 말'(영화 갈래) 예",
+     "unique": "예술영화와 겹칠 수 있음 — 기준이 '자본·배급 밖' 이라 독립영화",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 타란티노"
+    ],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "kr-screen/4#g032a-g032a-j17-10",
+   "seed": {
+    "subject": "전주국제영화제",
+    "aspect": null,
+    "ref": "g032a-j17-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2000년에 처음 열린 한국의 국제영화제입니다. 독립·실험 영화를 관객에게 소개하고, 대안적인 영화의 흐름을 보여 주는 것을 목표로 삼습니다. 전북특별자치도의 한 도시에서 해마다 열리는 이 영화제는?",
+    "answer": "전주국제영화제",
+    "acceptedAnswers": [
+     "전주영화제",
+     "JIFF"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1회 때부터 감독 세 명에게 제작비를 대 30분 안팎의 디지털 단편을 찍게 하는 '디지털 삼인삼색'을 이어 왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "전북특별자치도의 한 도시에서 해마다 열리는 이 영화제",
+     "difWhy": "2 — 단서가 곧 도시 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 영화제 이름 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "한옥마을로 이름난 전북의 도시에서 해마다 봄에 열리는, 독립 영화를 앞세운 국제 영화 축제",
+    "generalHintVersion": "hint-v7",
+    "identity": "전주국제영화제 — 2000년 시작한 독립·대안 영화 중심의 국제영화제",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "영화제 뉴스로 접함",
+     "piece": "f07",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '국제영화제' 가 있고 문장 짧음"
+    },
+    "blindQuestion": {
+     "guess": "전주국제영화제",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "전주국제영화제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "전주국제영화제",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "586",
+      "answer": "부산국제영화제",
+      "verdict": "diff",
+      "why": "맞히는 지식이 다름(정답·사실 무관)"
+     },
+     {
+      "old": "5958",
+      "answer": "송환",
+      "verdict": "diff",
+      "why": "전주영화제 vs 다큐 송환 — 다른 지식"
+     },
+     {
+      "old": "4536",
+      "answer": "똥파리",
+      "verdict": "diff",
+      "why": "전주영화제 vs 똥파리 — 다른 지식"
+     },
+     {
+      "old": "g032a:g032a-j27-1",
+      "answer": "GV",
+      "verdict": "diff",
+      "why": "전주영화제 vs GV 용어 — 다른 지식"
+     },
+     {
+      "old": "583",
+      "answer": "벌새",
+      "verdict": "diff",
+      "why": "전주영화제 vs 벌새 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/전주국제영화제",
+     "https://en.wikipedia.org/wiki/Jeonju_International_Film_Festival"
+    ],
+    "facts": [
+     {
+      "claim": "2000년 1회 · 독립·실험영화 · 대안적 흐름 · 전북",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/전주국제영화제",
+      "note": "대한민국 전북특별자치도 전주시에서 개최되는 국제영화제 ... 모토는 동시대 영화 예술의 대안적 흐름과 독립•실험영화의 최전선에 놓인 작품들을 소개하는 것이다. ... 2000년 제1회 전주국제영화제를 시작으로 매년 개최"
+     },
+     {
+      "claim": "launched 2000 · independent and experimental films",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jeonju_International_Film_Festival",
+      "note": "It was launched in 2000 as a non-competitive film festival seeking to introduce independent and experimental films to the general public"
+     },
+     {
+      "claim": "봄(4~5월) 개최",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Jeonju_International_Film_Festival",
+      "note": "1st Jeonju International Film Festival (2000) Apr 28 – May 4, 2000"
+     },
+     {
+      "claim": "디지털 삼인삼색",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/전주국제영화제",
+      "note": "디지털 삼인삼색은 ... 3명의 감독에게 5천만 원의 제작비를 지원하여 각각 약 30분 분량의 디지털 영화를 제작하도록 하는 프로젝트로 2000년 제1회 전주국제영화제부터 시작된"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Jeonju_International_Film_Festival"
+    ],
+    "hintNote": null,
+    "easiestCue": "전북에서 열리는 독립·실험 영화 중심 국제영화제",
+    "worthWhyGen": "한국 독립영화를 소개하는 대표 영화제(취미 영역 — 알가치 2)",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '국제영화제' 예",
+     "unique": "전북 · 2000년 → 하나(부산·부천과 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "kr-screen/4#g032a-g032a-j27-1",
+   "seed": {
+    "subject": "GV",
+    "aspect": null,
+    "ref": "g032a-j27-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 영화관에서 흔히 쓰는 말입니다. 독립·예술영화 상영이 끝나면 감독이나 배우가 무대에 올라 관객의 질문에 답하는 시간을 따로 마련하곤 합니다. 영화 팬들이 알파벳 두 글자로 줄여 부르는 이 행사는?",
+    "answer": "GV",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "흔히 영어 'Guest Visit'의 머리글자로 풀지만 영미권에서는 쓰지 않는 콩글리시입니다. 무례한 질문을 하는 관객은 'GV 빌런'이라 부르기도 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "알파벳 두 글자로 줄여 부르는 이 행사",
+     "difWhy": "3 — 영화 팬 용어 · 일반인 낯섦",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 영화 팬 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "영화제 부대 행사에서 퍼진 한국식 영어 약칭으로, 상영 뒤 감독에게 연출 의도를 직접 묻고 들을 수 있는 자리다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "영화 상영 뒤 감독·배우가 관객과 질의응답을 하는 행사를 이르는 한국식 영어 약칭",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "영화 팬 사이 용어",
+     "piece": "f01",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영화관에서 쓰는 말' · 끝 ○○ = 행사, 정의 문장이 바로 뒤"
+    },
+    "blindQuestion": {
+     "guess": "GV",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "GV",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "GV",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j11-5",
+      "answer": "독립영화",
+      "verdict": "diff",
+      "why": "새=GV(관객과의 대화); 독립영화 정의·전주영화제·똥파리·벌새·부산영화제는 다른 지식"
+     },
+     {
+      "old": "g032a:g032a-j17-10",
+      "answer": "전주국제영화제",
+      "verdict": "diff",
+      "why": "새=GV(관객과의 대화); 독립영화 정의·전주영화제·똥파리·벌새·부산영화제는 다른 지식"
+     },
+     {
+      "old": "4536",
+      "answer": "똥파리",
+      "verdict": "diff",
+      "why": "새=GV(관객과의 대화); 독립영화 정의·전주영화제·똥파리·벌새·부산영화제는 다른 지식"
+     },
+     {
+      "old": "583",
+      "answer": "벌새",
+      "verdict": "diff",
+      "why": "새=GV(관객과의 대화); 독립영화 정의·전주영화제·똥파리·벌새·부산영화제는 다른 지식"
+     },
+     {
+      "old": "586",
+      "answer": "부산국제영화제",
+      "verdict": "diff",
+      "why": "새=GV(관객과의 대화); 독립영화 정의·전주영화제·똥파리·벌새·부산영화제는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://thewiki.kr/w/GV",
+     "https://www.marieclairekorea.com/?p=350946"
+    ],
+    "facts": [
+     {
+      "claim": "GV = 상영 뒤 감독·배우가 무대에 올라 관객과 질의응답하는 행사",
+      "where": "q",
+      "url": "https://thewiki.kr/w/GV",
+      "note": "감독이나 관계자가 상영 중에 찾아와 작품을 설명하고 관객과 질의응답을 주고받는 무대 (WebSearch 요약)"
+     },
+     {
+      "claim": "GV(관객과의 대화)라는 표기가 영화제 일정 안내에 쓰임",
+      "where": "q",
+      "url": "https://www.marieclairekorea.com/?p=350946",
+      "note": "2024 마리끌레르 영화제 GV(관객과의 대화) 일정을 공개합니다"
+     },
+     {
+      "claim": "영미권에서 쓰지 않는 콩글리시 · 영화제 부대 행사로 시작 · GV 빌런",
+      "where": "e",
+      "url": "https://thewiki.kr/w/GV",
+      "note": "GV가 영미권에서 쓰지 않는 콩글리시 · 한 기사는 영화제의 부대 행사로 시작되었다고 설명 · 'GV 빌런'은 부적절하거나 무례한 질문을 하는 사람 (WebSearch 요약)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://thewiki.kr/w/GV",
+     "https://www.marieclairekorea.com/?p=350946"
+    ],
+    "hintNote": null,
+    "easiestCue": "상영 뒤 감독·배우가 관객 질문에 답하는 행사 · 알파벳 두 글자",
+    "worthWhyGen": "2 — 영화 관람 문화에서 실제로 쓰는 말(취미 영역 일상어) · 이름 떠올리기 아님",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' — 예",
+     "unique": "알파벳 두 글자 한정 → '관객과의 대화'·무대인사 배제",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

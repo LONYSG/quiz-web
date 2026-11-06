@@ -1,0 +1,318 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "world-geo/5",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/5#g032a-g032a-j04-4",
+   "seed": {
+    "subject": "필라델피아",
+    "aspect": null,
+    "ref": "g032a-j04-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 펜실베이니아주에서 사람이 가장 많은 도시입니다. 종교 박해를 겪은 퀘이커 교도 윌리엄 펜이 누구나 자유롭게 예배하는 곳을 꿈꾸며 이름을 지었습니다. 그리스어로 '형제의 사랑'이라는 뜻이라 '형제애의 도시'라는 별칭이 붙은 이 도시는?",
+    "answer": "필라델피아",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "펜은 이곳 원주민 레나페족의 추장 태머니와 느릅나무 아래에서 우호 조약을 맺었다고 전한다. 줄여서 '필리'라고도 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "그리스어로 '형제의 사랑'이라는 뜻이라 '형제애의 도시'라는 별칭",
+     "difWhy": "2 — 별칭이 이름에 가까움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 도시 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "1776년 미국 독립선언서가 채택된 곳으로, 미국이 처음 나라를 세울 때 중심이 된 동부 도시다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 펜실베이니아주 최대 도시(Philadelphia)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "영화 록키·미국 도시로 유명",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '도시' 가 있고 끝 ○○ '도시' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "필라델피아",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "필라델피아",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "필라델피아",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5242",
+      "answer": "진흙",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "1877",
+      "answer": "라이브 에이드",
+      "verdict": "diff",
+      "why": "필라델피아 도시 유래 vs 라이브 에이드"
+     },
+     {
+      "old": "4790",
+      "answer": "칠교놀이",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "6581",
+      "answer": "달러",
+      "verdict": "diff",
+      "why": "무관"
+     },
+     {
+      "old": "6561",
+      "answer": "소화전",
+      "verdict": "diff",
+      "why": "무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Philadelphia",
+     "https://ko.wikipedia.org/wiki/필라델피아"
+    ],
+    "facts": [
+     {
+      "claim": "필라델피아 = 그리스어 '형제의 사랑' · 펜이 이름 지음 · 퀘이커 박해 경험 · 누구나 예배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Philadelphia",
+      "note": "Penn named the city Philadelphia, which is Greek for 'brotherly love' ... As a Quaker, Penn had experienced religious persecution and wanted his colony to be a place where anyone could worship freely."
+     },
+     {
+      "claim": "'우애의 도시' 별칭은 그리스어 이름을 번역한 것",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/필라델피아",
+      "note": "필리는 필라델피아를 줄여서 부른 별칭이고, 우애의 도시는 ‘필라델피아’가 그리스어 우정, 사랑, 우애를 의미하는 ‘필로스’(φίλος)와 형제 ... 그리스어를 영어로 번역한 별칭이다."
+     },
+     {
+      "claim": "펜실베이니아주 최대 인구 도시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Philadelphia",
+      "note": "Philadelphia, colloquially referred to as Philly, is the most populous city in the U.S. state of Pennsylvania"
+     },
+     {
+      "claim": "1776년 독립선언",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Philadelphia",
+      "note": "Declaration of Independence on July 4, 1776."
+     },
+     {
+      "claim": "레나페 추장 태머니와 느릅나무 아래 우호 조약",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Philadelphia",
+      "note": "Penn made a treaty of friendship with Lenape chief Tammany under an elm tree at Shackamaxon"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Philadelphia"
+    ],
+    "hintNote": null,
+    "easiestCue": "펜실베이니아주 최대 도시",
+    "worthWhyGen": "익숙한 도시 이름의 뜻과 별칭이 생긴 까닭(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '도시' 예",
+     "unique": "펜실베이니아 최대 + 형제애 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "world-geo/5#g032a-g032a-j31-7",
+   "seed": {
+    "subject": "피렌체",
+    "aspect": null,
+    "ref": "g032a-j31-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이탈리아 토스카나 지방의 도시로, 르네상스가 꽃핀 곳입니다. 로마 시대 이 도시의 라틴어 이름은 '꽃피다·번영하다'라는 말에서 왔습니다. 메디치 가문이 오래 다스린 이 도시는?",
+    "answer": "피렌체",
+    "acceptedAnswers": [
+     "플로렌스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "기원전 59년 로마군 주둔지로 세워졌다. 단테와 보카치오가 쓴 이 지방 말은 표준 이탈리아어의 바탕이 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "토스카나의 르네상스가 꽃핀 도시 · 메디치",
+     "difWhy": "2 — 세계 지리 상식",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 세계 도시 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "붉은 돔의 산타 마리아 델 피오레 대성당과 우피치 미술관으로 이름난 르네상스의 요람이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "이탈리아 토스카나의 주도, 르네상스의 중심 도시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "여행·미술사 도시",
+     "piece": "f05",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '토스카나 지방의 도시' 가 끝 ○○(도시)와 일치"
+    },
+    "blindQuestion": {
+     "guess": "피렌체",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "피렌체",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "피렌체",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4579",
+      "answer": "크리스토포리",
+      "verdict": "diff",
+      "why": "피렌체 도시와 크리스토포리(피아노 발명)는 다른 사실"
+     },
+     {
+      "old": "6125",
+      "answer": "데카메론",
+      "verdict": "diff",
+      "why": "피렌체와 데카메론은 다른 지식(crossans)"
+     },
+     {
+      "old": "5183",
+      "answer": "사보나롤라",
+      "verdict": "diff",
+      "why": "피렌체 도시와 사보나롤라 인물은 다른 지식"
+     },
+     {
+      "old": "6394",
+      "answer": "특허",
+      "verdict": "diff",
+      "why": "피렌체와 특허 제도는 다른 지식"
+     },
+     {
+      "old": "3990",
+      "answer": "메디치 가문",
+      "verdict": "diff",
+      "why": "피렌체 도시와 메디치 가문(우피치 소장품)은 도시/집안으로 다른 사실"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/피렌체",
+     "https://en.wikipedia.org/wiki/Florence"
+    ],
+    "facts": [
+     {
+      "claim": "라틴어 이름 Florentia ← florere(꽃피다·번영하다)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/피렌체",
+      "note": "피렌체의 라틴어 이름은 \"번영하는 마을\"을 뜻하는 Florentia로, \"번영하다 또는 꽃피우다\"를 뜻하는 라틴어: florēre에서 유래했다."
+     },
+     {
+      "claim": "같은 유래",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Florence",
+      "note": "Florence's Latin name was Florentia, meaning \"the Flourishing Town\", from Latin: florēre, lit. 'to flourish or blossom'."
+     },
+     {
+      "claim": "메디치 가문 통치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Florence",
+      "note": "history includes periods of rule by the powerful Medici family"
+     },
+     {
+      "claim": "산타 마리아 델 피오레 돔",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Florence",
+      "note": "The dome of Santa Maria del Fiore remains the largest brick construction of its kind in the world."
+     },
+     {
+      "claim": "기원전 59년 로마 주둔지 · 단테·보카치오 · 표준 이탈리아어",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Florence",
+      "note": "Florence was founded as a Roman garrison in 59 BC … Thanks especially to the works of the Tuscans Dante, Petrarch and Boccaccio, the Florentine dialect, above all … became the basis of the Italian language"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Florence"
+    ],
+    "hintNote": null,
+    "easiestCue": "르네상스가 꽃핀 토스카나 도시 · 메디치",
+    "worthWhyGen": "유명 도시 이름의 유래(꽃의 도시)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '이탈리아 도시' 예",
+     "unique": "토스카나 + 메디치 + 꽃 유래 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 르네상스"
+    ],
+    "job": "job-31"
+   }
+  }
+ ]
+}

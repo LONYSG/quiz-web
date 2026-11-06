@@ -1,0 +1,411 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "politics/5",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/5#g032a-job-03-10",
+   "seed": {
+    "subject": "린치",
+    "aspect": null,
+    "ref": "job-03-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "법 절차 없이 사람을 붙잡아 벌하는 폭력을 가리키는 말입니다. 미국 독립 전쟁 때 버지니아의 한 판사가 영국 편에 선 사람들을 재판 없이 가두고 벌했는데, 그의 성이 이 말이 되었다는 설이 가장 유력합니다. 이 말은?",
+    "answer": "린치",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그는 1780년 대륙회의를 설득해, 전쟁 중 법정을 거치지 않고 사람을 가둔 일을 용서받는 법을 얻어 냈습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "법 절차 없이 사람을 붙잡아 벌하는 폭력",
+     "difWhy": "2 — 린치는 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "미국 남부에서 군중이 흑인을 재판 없이 매달아 죽인 사건들로 악명 높아진, 집단 사적 폭력을 뜻하는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "법적 절차 없이 무리가 가하는 사적 제재·폭력",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "뉴스·영화에서 사적 제재 의미로 사용",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 뜻이 있고 둘째 문장에 일화이나 정체가 이미 첫 문장에서 드러남"
+    },
+    "blindQuestion": {
+     "guess": "린치",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "린치",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "린치",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3049",
+      "answer": "최빈값",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(린치 / 최빈값)"
+     },
+     {
+      "old": "6573",
+      "answer": "잭 다니엘",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(린치 / 잭 다니엘)"
+     },
+     {
+      "old": "103",
+      "answer": "사라예보 사건",
+      "verdict": "diff",
+      "why": "정답·알아야 할 지식이 다름(린치 / 사라예보 사건)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lynching",
+     "https://en.wikipedia.org/wiki/Charles_Lynch_(jurist)",
+     "https://ko.wikipedia.org/wiki/린치"
+    ],
+    "facts": [
+     {
+      "claim": "독립 전쟁 무렵 버지니아의 찰스 린치가 유력한 기원 · 영국 편(토리)에 적용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lynching",
+      "note": "it likely originated during the American Revolution. The verb comes from the phrase Lynch Law, a term for a punishment without trial. ... Charles Lynch is more likely to have coined the phrase ... his assistant had administered Lynch's law to Tories"
+     },
+     {
+      "claim": "카운티 법원장으로 왕당파를 가둠",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Charles_Lynch_(jurist)",
+      "note": "headed a county court in Virginia which imprisoned Loyalists during the American Revolutionary War"
+     },
+     {
+      "claim": "린치 = 법적 절차 없이 폭력 · 치안판사 린치의 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/린치",
+      "note": "린치(lynch) 또는 사형(私刑)은 법적 절차 없이 폭력을 가하는 것을 말한다. ... 치안판사 린치의 이름을 따 적법한 절차를 밟지 않고 사람에게 폭력을 가하는 행위를 '린치를 가하다'라고 표현하게 되었다."
+     },
+     {
+      "claim": "1780년 대륙회의 설득 · 재판 없는 구금 용서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lynching",
+      "note": "In 1780, he persuaded the Continental Congress to pass Lynch's Law to forgive extrajudicial wartime imprisonment of Loyalists."
+     },
+     {
+      "claim": "1883~1941 희생자 4,467 중 흑인 3,265",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Lynching",
+      "note": "From 1883 to 1941 there were 4,467 victims of lynching. ... 3,265 were black"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lynching"
+    ],
+    "hintNote": null,
+    "easiestCue": "법 절차 없이 사람을 벌하는 폭력",
+    "worthWhyGen": "흔히 쓰는 '린치'가 사람의 성에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '~폭력을 가리키는 말' — 예",
+     "unique": "사람 성에서 온 사적 제재 말 — 하나(사형(私刑)은 死刑과 헷갈려 변형 안 넣음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "politics/5#g032a-g032a-j13-10",
+   "seed": {
+    "subject": "위자료",
+    "aspect": null,
+    "ref": "g032a-j13-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "법원 판결 뉴스에 자주 나오는 배상금 이름입니다. 남의 잘못된 행위로 몸이나 재산이 아니라 마음에 고통을 입었을 때, 그 정신적 손해를 갚으라며 받는 돈입니다. 이 돈을 무엇이라 할까요?",
+    "answer": "위자료",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'위로한다'는 뜻의 한자어 '위자(慰藉)'에 값을 뜻하는 '료(料)'를 붙인 말입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "마음에 고통을 입었을 때 정신적 손해를 갚는 돈",
+     "difWhy": "2 — 뉴스 법률 용어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 일상 법률 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "이혼 소송에서 결혼을 깨뜨린 책임이 있는 배우자에게 재산 분할과 따로 청구하곤 하는 돈이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "정신적 손해에 대한 배상금",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "이혼·소송 뉴스에서 흔함",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '배상금' 이 있고 설명이 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "위자료",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "위자료",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "위자료",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3826",
+      "answer": "알리바이",
+      "verdict": "diff",
+      "why": "위자료 vs 알리바이"
+     },
+     {
+      "old": "3825",
+      "answer": "플리바게닝",
+      "verdict": "diff",
+      "why": "위자료 vs 플리바게닝"
+     },
+     {
+      "old": "3161",
+      "answer": "상고",
+      "verdict": "diff",
+      "why": "위자료 vs 상고"
+     },
+     {
+      "old": "3156",
+      "answer": "기소",
+      "verdict": "diff",
+      "why": "위자료 vs 기소"
+     }
+    ],
+    "sources": [
+     "https://ko.wiktionary.org/wiki/위자료",
+     "https://ko.wikipedia.org/wiki/손해배상"
+    ],
+    "facts": [
+     {
+      "claim": "정신적 피해에 대한 손해 배상금",
+      "where": "q",
+      "url": "https://ko.wiktionary.org/wiki/위자료",
+      "note": "위자료 (wijaryo) (한자 慰藉料) 정신적 피해에 대한 손해 배상금."
+     },
+     {
+      "claim": "불법행위로 인한 정신적 손해 배상 = 위자료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/손해배상",
+      "note": "민법 제750조와 제751조 제1항은 일반 불법행위로 인한 정신적 손해에 대한 배상 근거를 마련하여 위자료 청구와 산정의 법적 토대를 이룬다."
+     },
+     {
+      "claim": "혼인 파탄 책임 배우자에게 정신적 손해 배상(위자료)",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/손해배상",
+      "note": "제806조는 혼인 파탄에 책임이 있는 배우자에게 재산상 손해와 정신적 손해에 대한 배상(위자료)을 청구할 수 있도록 규정하고"
+     },
+     {
+      "claim": "한자 慰藉料",
+      "where": "e",
+      "url": "https://ko.wiktionary.org/wiki/위자료",
+      "note": "한자어 ‘慰藉料’에서 유래."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/손해배상"
+    ],
+    "hintNote": null,
+    "easiestCue": "정신적 손해를 갚으라며 받는 돈",
+    "worthWhyGen": "흔히 '이혼할 때 받는 돈'으로만 아는 일상 법률 말의 바른 뜻(3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '배상금' 예",
+     "unique": "정신적 손해 배상금 = 위자료(손해배상은 상위어라 받지 않음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "⑨ 종류 '돈' 첫 문장에 없음"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "politics/5#g032a-g032a-j13-14",
+   "seed": {
+    "subject": "심신미약",
+    "aspect": null,
+    "ref": "g032a-j13-14",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "형법에 나오는 용어입니다. 정신 장애 때문에 옳고 그름을 가리거나 스스로 행동을 정하는 능력이 약해진 상태를 말합니다. 범죄를 저질렀을 때 이 상태로 인정되면 형을 줄일 수 있어 강력 사건마다 논란이 되는 이 말은?",
+    "answer": "심신미약",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "다만 위험을 내다보고도 일부러 그런 상태를 만든 경우에는 감경 규정을 적용하지 않습니다(같은 조 3항).",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "정신 장애로 판단 능력이 약해진 상태 · 형 감경",
+     "difWhy": "2 — 뉴스 법률 용어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 뉴스 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "형법 제10조 2항에 적힌 상태로, 판단 능력이 아예 없어 벌하지 않는 1항의 경우보다 한 단계 가볍다",
+    "generalHintVersion": "hint-v7",
+    "identity": "판단·의사결정 능력이 약해져 형이 감경될 수 있는 상태(형법 용어)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "형사 사건 뉴스에서 자주 나옴",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○=형법 용어, 첫 문장 '형법에 나오는 용어'. 둘째 문장이 뜻을 풀어 주어 용어 부담이 없다. 마지막 문장은 다소 길지만 읽힌다."
+    },
+    "blindQuestion": {
+     "guess": "심신미약",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "심신미약",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "심신미약",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3158",
+      "answer": "정당방위",
+      "verdict": "diff",
+      "why": "심신미약 vs 정당방위"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/심신미약",
+     "https://ko.wikipedia.org/wiki/대한민국_형법_제10조"
+    ],
+    "facts": [
+     {
+      "claim": "심신장애로 사물 변별·의사 결정 능력이 미약한 상태 · 형법 10조 2항 감경",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/심신미약",
+      "note": "심신미약(心神微弱 …)은 심신장애로 인하여 사물을 변별할 능력이나 의사를 결정할 능력이 미약한 상태를 말한다. 책임능력이 떨어진다고 보아 대한민국 형법 제10조 2항에 의해 처벌이 감경될 수 있다."
+     },
+     {
+      "claim": "형법 10조 2항 — 형을 감경할 수 있다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_형법_제10조",
+      "note": "② 심신장애로 인하여 전항의 능력이 미약한 자의 행위는 형을 감경 할 수 있다."
+     },
+     {
+      "claim": "1항 = 능력 없으면 벌하지 않음(심신상실)",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_형법_제10조",
+      "note": "① 심신장애로 인하여 사물을 변별할 능력이 없거나 의사를 결정할 능력이 없는 자의 행위는 벌하지 아니한다."
+     },
+     {
+      "claim": "3항 원인에 있어서 자유로운 행위",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_형법_제10조",
+      "note": "③ (원인에 있어서 자유로운 행위) 위험의 발생을 예견하고 자의로 심신장애를 야기한 자의 행위에는 전 2항의 규정을 적용하지 아니한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/대한민국_형법_제10조"
+    ],
+    "hintNote": null,
+    "easiestCue": "범죄 때 인정되면 형을 줄이는 정신 상태 — 뉴스 논란",
+    "worthWhyGen": "강력 사건 뉴스에서 늘 듣는 법률 말의 정확한 뜻(3)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 예 · ⑨ 첫 문장 '용어' 예",
+     "unique": "능력이 '약해진' 상태 = 심신미약(없음 = 심신상실과 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  }
+ ]
+}

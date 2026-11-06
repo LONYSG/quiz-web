@@ -1,0 +1,291 @@
+{
+ "_meta": {
+  "round": "g032a",
+  "subId": "philosophy/2",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032a(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/2#g032a-g032a-j11-9",
+   "seed": {
+    "subject": "생각하는 갈대",
+    "aspect": null,
+    "ref": "g032a-j11-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "17세기 프랑스 사상가 파스칼이 '팡세'에서 사람을 빗댄 말입니다. 사람은 자연에서 가장 약한 존재지만 스스로의 약함을 깨닫는 힘이 있어 존엄하다고 했습니다. 사람을 무엇에 빗댄 이 말은?",
+    "answer": "생각하는 갈대",
+    "acceptedAnswers": [
+     "인간은 생각하는 갈대다",
+     "인간은 생각하는 갈대"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "파스칼은 압력 연구로도 이름을 남겨, 압력의 국제 단위 이름이 그에게서 왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "파스칼이 '팡세'에서 사람을 빗댄 말",
+     "difWhy": "2 — 유명한 말 · 설명에서 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 교양 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "'공간으로는 우주가 나를 삼키지만 사고로는 내가 우주를 품는다'는 대목과 이어지는 비유다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "파스칼 '팡세'의 인간 비유",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "교과서 유명 구절",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '사람을 빗댄 말' 이 있어 ○○ '말' 이 바로 잡힘. 약함을 깨닫는 존엄이 단서로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "생각하는 갈대",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "생각하는 갈대",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "생각하는 갈대",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4599",
+      "answer": "스피노자",
+      "verdict": "diff",
+      "why": "파스칼 비유 vs 스피노자"
+     },
+     {
+      "old": "3795",
+      "answer": "사르트르",
+      "verdict": "diff",
+      "why": "생각하는 갈대 vs 사르트르 존재와 무"
+     },
+     {
+      "old": "67",
+      "answer": "르네 데카르트",
+      "verdict": "diff",
+      "why": "파스칼 vs 데카르트 명제"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/팡세",
+     "https://en.wikipedia.org/wiki/Blaise_Pascal"
+    ],
+    "facts": [
+     {
+      "claim": "팡세 · 인간은 생각하는 갈대 · 약한 존재 · 존엄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/팡세",
+      "note": "\"인간은 생각하는 갈대다\"라든지 ... 알려진 <팡세> ... 인간은 광대무변한 우주에 비하면 겨우 하나의 점과 같은 갈대처럼 약한 존재이다. 그러나 그것은 '생각하는 갈대'이다. \"공간에 의해서 우주는 나를 싸고, 하나의 점으로서 나를 삼킨다. 그러나 사고(思考)에 의해서 나는 우주를 싼다\"는 점에 인간의 존엄성이 있다. 인간은 자기의 비참을 이해하는 점에서 위대하다."
+     },
+     {
+      "claim": "the weakest in nature, but a thinking reed",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blaise_Pascal",
+      "note": "Man is only a reed, the weakest in nature, but he is a thinking reed."
+     },
+     {
+      "claim": "압력 SI 단위 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blaise_Pascal",
+      "note": "The SI unit for pressure is named for Pascal."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/팡세"
+    ],
+    "hintNote": null,
+    "easiestCue": "파스칼이 '팡세'에서 사람을 빗댄 말",
+    "worthWhyGen": "일상에서 인용하는 명언 — 말의 출처와 뜻",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '빗댄 말' 예",
+     "unique": "파스칼의 인간 비유 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "philosophy/2#g032a-g032a-j17-11",
+   "seed": {
+    "subject": "아는 것이 힘이다",
+    "aspect": null,
+    "ref": "g032a-j17-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국 철학자 프랜시스 베이컨의 주장에서 나온 격언입니다. 원인을 알아야 원하는 결과를 낼 수 있으니, 자연을 관찰해 얻은 지식을 쓸모 있게 부리자는 뜻을 담았습니다. 배움을 권할 때 흔히 쓰는 이 격언은?",
+    "answer": "아는 것이 힘이다",
+    "acceptedAnswers": [
+     "아는 것이 힘",
+     "아는 게 힘이다",
+     "지식은 힘이다"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "베이컨의 1597년 글에 '지식 그 자체가 힘'이라는 라틴어 문장이 있고, 지금 꼴의 라틴어 문장은 그의 비서였던 홉스가 처음 썼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "배움을 권할 때 흔히 쓰는 베이컨의 격언",
+     "difWhy": "1 — 유명 격언",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 격언 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "소설 『1984』 속 독재 정부가 '전쟁은 평화'와 함께 내건 구호 하나가 비튼 원래 격언",
+    "generalHintVersion": "hint-v7",
+    "identity": "'아는 것이 힘이다' — 프랜시스 베이컨에게서 나온 격언(scientia potentia est)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "유명한 격언",
+     "piece": "f02",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '격언' 이 있고 뜻풀이가 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "아는 것이 힘이다",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아는 것이 힘이다",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아는 것이 힘이다",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3794",
+      "answer": "니체",
+      "verdict": "diff",
+      "why": "아는 것이 힘이다 vs 니체 일화 — 다른 지식"
+     },
+     {
+      "old": "6385",
+      "answer": "로크",
+      "verdict": "diff",
+      "why": "격언 vs 로크 일화 — 다른 지식"
+     },
+     {
+      "old": "4599",
+      "answer": "스피노자",
+      "verdict": "diff",
+      "why": "격언 vs 스피노자 — 다른 지식"
+     },
+     {
+      "old": "3795",
+      "answer": "사르트르",
+      "verdict": "diff",
+      "why": "격언 vs 사르트르 — 다른 지식"
+     },
+     {
+      "old": "3793",
+      "answer": "밀",
+      "verdict": "diff",
+      "why": "격언 vs 밀 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아는_것이_힘이다",
+     "https://en.wikipedia.org/wiki/Scientia_potentia_est"
+    ],
+    "facts": [
+     {
+      "claim": "베이컨 주장에 근거 · 원인을 모르면 결과를 낼 수 없다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아는_것이_힘이다",
+      "note": "16세기부터 17세기에 걸친 잉글랜드의 철학자 프랜시스 베이컨의 주장에 근거하는 격언이다. ... 인간의 지식과 힘은 일치한다, 왜냐하면, 원인을 모르면, 결과를 낳는 것도 할 수 없기 때문이다"
+     },
+     {
+      "claim": "commonly attributed to Francis Bacon",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scientia_potentia_est",
+      "note": "\"scientia potentia est\" ... is a Latin aphorism meaning \"knowledge is power\", commonly attributed to Sir Francis Bacon."
+     },
+     {
+      "claim": "1984 '무지는 힘' 패러디",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아는_것이_힘이다",
+      "note": "조지 오웰의 디스토피아 소설 《1984년》에서는, 작중의 정부는 '무지(無知)는 힘이다'(Ignorance is strength)를 슬로건으로 하고 있다. 이는, '아는 것이 힘이다'의 패러디이다."
+     },
+     {
+      "claim": "1597 Meditationes Sacrae · 홉스 1668 · 비서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Scientia_potentia_est",
+      "note": "\"ipsa scientia potestas est\" ('knowledge itself is power') occurs in Bacon's Meditationes Sacrae (1597). The exact phrase \"scientia potentia est\" ... was written for the first time in the 1668 version of Leviathan by Thomas Hobbes, who was a secretary to Bacon as a young man."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아는_것이_힘이다"
+    ],
+    "hintNote": null,
+    "easiestCue": "베이컨에게서 나온, 배움을 권하는 격언",
+    "worthWhyGen": "누구나 쓰는 격언의 출처(유래 · 일상에서 쓰는 말)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '격언' 예",
+     "unique": "베이컨 격언 · 배움 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  }
+ ]
+}
