@@ -1074,6 +1074,14 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 57. ★★★ R077 — 로비 카드 넘침 settings-overflow · 소수파 선택지 = 인원 − 1 (D-327)
+
+- 묶음 `r077`(`UICHECK_NO_BUILD=1 node scripts/ui-check-bundles.mjs r077` · `R077_ONLY=overflow|minority` · `R077_TAG=before|after` = 그림 · JSON 꼬리).
+- **settings-overflow** — 방장 + 손님(미니게임만 · 14개 고름) × 크기(lap2 1536×695 @1.25 · pc 1280×720 · m360 터치) × 테마 순환(처음 → pastel → office → pastel → night → office → pastel · ⚙ 단추 — Alt+T 는 R043 A-9 로 꺼져 있음 · 모바일은 setTheme 과 같은 일). 단계마다 `.lobby-card` · `.seats-left/right` · `.chat-card` 안 요소 rect 와 글자 줄(Range)이 카드 밖으로 1px 넘게 나간 것(조상이 overflow 로 잘라 내면 뺌). 판정 = 전부 0. 전(이름 줄 있던 빌드) 손님 lap2 사무실 185px · pc 64/386px · m360 509/826px → 후 0. JSON docs/design/r077/settings-overflow-{before,after}.json · 그림 mg-names-overflow-before · settings-guest-lap2-{before,after}.
+- **minority** — 실제 연습 판 3 · 4 · 6명(방장 PC 1280 · 손님 m360 터치 · 나머지 소켓 손님): 규칙 줄 "1~n 중" · 조작 줄 "1 ~ n 키" · 카드 n 장(PC · m360) · 키 n+1 무시 · 키 n 고름 · 톡 1 고름 · 결과 막대 n 개 · 가로 넘침 0. 3 → 2 · 4 → 3 · 6 → 5. 그림 minority-{3,4,6}p-{pc,m360}(-result) · minority-3p-rules-pc.
+- r066 C1 · C2 는 이름 줄 대신 손님 "미니게임 보기" 버튼 title(이름 · 줄 요소 없음)을 본다. 봇 mgminority 에 5명 → 1~4 · 3명 → 1~2 · 5명 판 5 보냄 = 받지 않음(안 고름) 을 더함. 단위: shared r053.test(n 계산 · minorityResult n=2) · server defs.test(buildRounds n · parseInput 경계 · finalizeRound).
+- 왜 R066 이 못 잡았나: D-281 검사는 이름 줄의 글자만 읽었다 — 줄이 카드 안에 있는지 · 다른 테마 글꼴에서 폭이 어떤지를 재지 않았다.
+
 ## 56. ★★ R076 — 문제 카드 세로 흔들림 card-jitter (D-326)
 
 - 묶음 `r076`(`R076_TAG=before|after` · `R076_ONLY=reduced`): 방장 PC(1280 · 1536×730) · 손님 터치(m360 · m390) · 테마 pastel · night · office 마다 한 문제 판 — 시작 · 힌트 · 초성 · 마지막 5초 · 공개에서 2초 동안 프레임마다 `.question-card` · `.q-text` top/height · 지문 style/data-wrap 바뀜(MutationObserver) · 지문 크기 바뀜(ResizeObserver). 변형: office + 시간 막대 숨김 · pastel + prefers-reduced-motion · office 같은 문제 위 옛 1ms 전이 A/B.

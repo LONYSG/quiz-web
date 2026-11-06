@@ -1,0 +1,79 @@
+===========================================
+ROUND: R077
+DATE: 2026-11-06 (23:20 ~ KST)
+TASK: 소수파 선택지 = 인원 − 1 · 로비 손님 미니게임 이름 한 줄 없앰(넘침 재현 · settings-overflow) · 앱 제보 #112~#115 (D-327)
+STATUS: 완료
+MODEL: Opus 5.5 (claude-opus-5-5)
+===========================================
+
+[cmd 창 요약]
+R077 끝 — 소수파 n = clamp(인원 − 1, 2, 5)(3명 1~2 · 4명 1~3 · 5명 1~4 · 6명+ 1~5) · 로비 손님 이름 한 줄 삭제(넘침 원인 = .preset-row flex min-width auto)
+settings-overflow 전 손님 pc 64/386px · m360 509/826px(사무실이 큼) → 후 0 · #115 handle · #113 = 데이터 탓(G033)
+실 DB 쓰기 = 제보 #115 처리 표시 1건(브리핑 지시)뿐 · 마이그레이션 0 · 실 3000 서버 재시작 0(꺼져 있었음) · ★ 서버 코드 바뀜 → 메뉴 1 필요
+
+-------------------------------------------
+0. 찬종이 볼 것
+-------------------------------------------
+① ★ **메뉴 1 필요**(소수파는 서버 코드) — 친구들과 플레이가 끝난 뒤 메뉴 1(또는 3 → 1). 실 3000 서버는 이 라운드 시작 때 이미 꺼져 있었다(curl 000) — 건드리지 않음. 빌드는 했다.
+② 체감 = 13 A104: 소수파 3명이면 카드 둘 · 로비 손님 화면에 이름 줄 없음 · ⚙ 테마 왔다 갔다 해도 안 튀어나감.
+
+■ §B 넘침 표(settings-overflow · 미니게임만 · 14개 고름 · 넘친 px = 카드 오른쪽 밖으로 나간 양)
+  크기 · 누구               처음/파스텔   사무실   밤     (전 = 이름 줄 있던 빌드)      후
+  lap2 1536×695@1.25 손님   0            185px    0      .preset-row · .mg-set-names    0 (일곱 단계 전부)
+  pc 1280×720 손님          64px         386px    64px   〃                            0
+  m360 터치 손님            509px        826px    509px  〃                            0
+  방장(세 크기)              0            0        0      (방장은 이름 줄 없음)          0
+  ★ 테마 순서: 처음 → pastel → office → pastel → night → office → pastel — 같은 테마면 같은 값(왔다 갔다 해서 "남는" 것 없음)
+■ 원인 한 줄: .mg-set-names 는 nowrap · ellipsis 였지만 부모 .preset-row 가 .set-row(flex)의 항목이라 min-width auto = 이름 한 줄 전체 폭 → 카드보다 길면 줄째 카드 밖(줄임표가 안 걸림) · 사무실은 고정폭 글꼴이라 폭이 커 더 많이 · 찬종 사진(파스텔 lap2)은 그 폭에서 이름이 더 길었던 경우로 추정.
+■ 고침: 이름 줄 요소 · CSS · D-281 검사 삭제 · 이름 전체는 "미니게임 보기 N/M" 버튼 title · 상설 settings-overflow(r077).
+  그림: docs/design/r077/mg-names-overflow-before.png(사무실 pc — 줄이 채팅 카드 위까지) · settings-guest-lap2-{before,after}.png
+
+■ §A n 표(인원 → 선택지) — 판 시작 때 한 번 · 다섯 판 같은 n
+  인원   1~2(연습)  3     4     5     6     10
+  n      2          2     3     4     5     5
+  ui-check r077 minority(실제 연습 판): 3명 → 카드 2/2(PC/m360) · 4명 → 3/3 · 6명 → 5/5 · 규칙 줄 "1~n 중 하나" · 조작 "1 ~ n 키" · 키 n+1 무시 · 결과 막대 n · 넘침 0
+  봇 mgminority 11/11: 5명 연습 → 선택지 1~4 · b5 가 5 를 보냄 = 받지 않음(안 고름 · 0) · 3명 퀴즈 판 → 1~2 · 보상 그대로 · 2명 = 자리 없음 · 연습은 됨
+  그림: docs/design/r077/minority-{3,4,6}p-{pc,m360}(-result).png · minority-3p-rules-pc.png
+
+■ §C 제보
+  #115 상식짱상기 "팀전 만들어줘요" → reports:handle(아이디어 보관(팀전) — 설계 next.md · R077) ✔
+  #113 GIDP #21 "(영어로)" 한글 인정 → **데이터 탓**: question_answers 에 'Paris'(primary) + '파리'(변형) 가 있다 · answer_lang='en' 열은 서버 · shared 코드가 읽지 않는다(answerFlex 에 한글 ↔ 로마자 동일시 규칙 없음) → G033(변형 '파리' 빼기)
+  #112 #3402 중복 · #114 #6565 힌트 의존 → G033 몫(손대지 않음 · handle 안 함)
+
+-------------------------------------------
+1. 원칙 메모 · 브리핑 확인(원칙 7)
+-------------------------------------------
+- 맞음: defs.ts minority choices 고정 [1..5] · buildRounds(seed) 가 ctx 를 안 받았다(인터페이스는 (seed, ctx) — 이름만 생략) · minPlayers 3 · R053Games MinorityPick 카드 · 키 상수 5 · 결과 막대 상수 [1..5] · minorityResult counts 1~5 고정 · .mg-set-names CSS(7877) · ui-check D-281 검사(7106~7113 — 브리핑 7007 은 줄이 밀림) · reports:handle 꼴 · 07 마지막 D-326 · 10 56절 · 13 A103.
+- 인원 셈 집합: engine.ts startMinigame 의 participants = room.players 전부(joinOrder 순) — minPlayers 판정(room.players.size)과 같은 집합 · 봇 · 소켓 손님도 사람으로 셈(사람/봇 구분 없음) · BuildCtx.participants.length 로 넘김.
+- 다름: 실 3000 서버는 꺼져 있었다(브리핑 "켜짐" 과 다름) — 켜지 않음. Alt+T 테마 단축키는 R043 A-9 로 꺼져 있어 테마 순환은 ⚙ 단추로 쟀다.
+- 고르기 창 · 테마 · 점수 규칙 · minPlayers · 다른 미니게임 · R075·R076 결과 그대로.
+
+-------------------------------------------
+2. 바꾼 파일
+-------------------------------------------
+- shared/src/minigame/r053.ts — minorityChoiceCount · minorityChoices · minorityLine · minorityControlsPc · minorityResult(picks, n=5)
+- shared/src/minigame.ts — minority oneLine "인원보다 하나 적은 숫자 중 하나" · controlsPc "숫자 키"
+- server/src/minigame/defs.ts — buildRounds(seed, ctx) choices · parseInput pick ≤ n · finalizeRound n
+- client/src/minigame/R053Games.tsx — 카드 · 키 · 도움말 params.choices · --n
+- client/src/minigame/MinigameStage.tsx — 규칙 줄 · 조작 줄 n · 결과 막대 params.choices
+- client/src/GameSettings.tsx — 이름 줄 삭제 · 버튼 title
+- client/src/styles.css — .mg-set-names 삭제 · .minority-cards/.minority-bars repeat(var(--n))
+- 테스트: shared r053.test · server defs.test · scripts/bot.mjs(mgminority) · scripts/ui-check.mjs(r077 · r066 C1·C2) · scripts/ui-check-bundles.mjs(r077)
+- 문서: 07 D-327 · D-281 한 줄 · 10 57절 · 13 A104 · 01(고르기 · 소수파 줄 · 고르기 창 줄) · PLAY-GUIDE 35 · 05 · 06 · README(바꿀 줄 없음 — 기능 목록 · ui-check 명령이 README 에 없다)
+
+-------------------------------------------
+3. 끝 점검
+-------------------------------------------
+- npm test 39 파일 630 통과 · typecheck 0 · build 통과
+- ui-check 묶음(UICHECK_NO_BUILD · 검사 DB · 자기 서버): main-behavior 326/326 · r077 5/5(settings-overflow · minority · 골라 하기 3번) · r076 1/1(card-jitter) · r075 7/7 · r066 16/16(C1·C2 = 버튼 title 로 바꾼 뒤)
+- 봇: mgminority 11/11 · signup 8/8 · shop 28/28 · smoke(--no-build) 11/11
+- 시작 전 · 끝 3101~ 남은 서버 없음 · 실 3000 꺼짐 그대로
+- 실 DB: 제보 #115 처리 표시 1건 외 변경 0 · 마이그레이션 0
+
+-------------------------------------------
+7. 남은 것 · 설계 몫
+-------------------------------------------
+- 메뉴 1 필요(서버 바뀜) — 찬종이 친구들과 플레이 중이면 끝난 뒤.
+- 소수파 n 은 판 시작 때 정해 다섯 판 그대로 — 중간에 나가 인원 < n + 1 이 되면 모두 다른 수가 가능해진다(브리핑대로 그대로 둠).
+- "(영어로)" 정책 후보(설계): answer_lang='en' 문항에서 한글 변형을 받지 않게 하는 길이 둘 — ① 데이터(G033 — 변형에서 한글 빼기 · 지금 방식) ② 코드(answer_lang 이 en 이면 한글 입력 거부) · 지금 코드는 answer_lang 을 안 본다.
+- 실 DB 쓰기: 제보 #115 처리 표시 1건(reports:handle — 브리핑 지시) · 문항 데이터 0.
