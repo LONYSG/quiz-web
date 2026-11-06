@@ -4604,6 +4604,143 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R076 — 문제 카드 세로 흔들림 card-jitter (D-326 · 찬종 11-06 "사무실 모드 문제 부분이 위아래로 미친듯이 흔들려")
+//   (UICHECK_R076=1 · 묶음 r076 · docs/design/r076) · R076_TAG = before | after
+//   테마 셋 × 크기(PC 1280 · 1536×730 / m360 · m390 터치) × 상태(시작 · 힌트 · 초성 · 마지막 5초 · 공개) — 2초 동안 프레임마다 카드 · 지문 top/height ·
+//   지문 style/data-wrap 바뀜 수 · 지문 크기 바뀜(ResizeObserver) 수
+// =============================================================================
+const R076_TAG = process.env.R076_TAG ? `-${process.env.R076_TAG}` : '';
+const R076_SAMPLE = (ms) => `new Promise((done) => {
+  const card = () => document.querySelector('.question-card');
+  const qt = () => document.querySelector('.question-card .q-text');
+  const rows = [];
+  let mut = 0;
+  let ro = 0;
+  const q0 = qt();
+  const mo = new MutationObserver((l) => { mut += l.length; });
+  if (q0) mo.observe(q0, { attributes: true, attributeFilter: ['style', 'data-wrap'] });
+  const rob = new ResizeObserver(() => { ro += 1; });
+  if (q0) rob.observe(q0);
+  const t0 = performance.now();
+  const tick = () => {
+    const c = card()?.getBoundingClientRect();
+    const q = qt()?.getBoundingClientRect();
+    rows.push([c ? Math.round(c.top * 10) / 10 : null, c ? Math.round(c.height * 10) / 10 : null, q ? Math.round(q.top * 10) / 10 : null, q ? Math.round(q.height * 10) / 10 : null, qt()?.style.getPropertyValue('--q-px') ?? '', qt()?.dataset.wrap ?? '']);
+    if (performance.now() - t0 < ${ms}) requestAnimationFrame(tick);
+    else {
+      mo.disconnect();
+      rob.disconnect();
+      const ch = (i) => { let n = 0; let amp = 0; for (let k = 1; k < rows.length; k += 1) { if (rows[k][i] !== rows[k - 1][i] && rows[k][i] !== null && rows[k - 1][i] !== null) { n += 1; amp = Math.max(amp, Math.abs(rows[k][i] - rows[k - 1][i])); } } return [n, Math.round(amp * 10) / 10]; };
+      const vals = (i) => [...new Set(rows.map((r) => r[i]))].slice(0, 6);
+      done(JSON.stringify({ frames: rows.length, cardTop: ch(0), cardH: ch(1), qTop: ch(2), qH: ch(3), px: vals(4), wrap: vals(5), mut, ro: Math.max(0, ro - 1) }));
+    }
+  };
+  requestAnimationFrame(tick);
+})`;
+async function r076Flow(browser) {
+  const H = await newPage(browser, 'R076-host', true);
+  await H.setViewport(1536, 730);
+  await signUp(H, 'jh', '흔들방장');
+  const roomId = await createRoom(H, 'R076 흔들림');
+  const G = await newPage(browser, 'R076-g', true);
+  await signUp(G, 'jg', '흔들손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const PCS = [{ w: 1280, h: 720, n: 'pc' }, { w: 1536, h: 730, n: 'lap2' }];
+  const MOBS = [{ w: 360, h: 740, n: 'm360' }, { w: 390, h: 844, n: 'm390' }];
+  const table = [];
+  const sample = async (theme, phase, extra = '') => {
+    for (let i = 0; i < 2; i += 1) {
+      await H.setViewport(PCS[i].w, PCS[i].h);
+      await r068Touch(G, MOBS[i].w, MOBS[i].h, true);
+      await sleep(250);
+      const [a, b] = await Promise.all([H.evaluate(R076_SAMPLE(1800)), G.evaluate(R076_SAMPLE(1800))]);
+      table.push({ theme: theme + extra, phase, size: PCS[i].n, ...JSON.parse(a) });
+      table.push({ theme: theme + extra, phase, size: MOBS[i].n, ...JSON.parse(b) });
+    }
+  };
+  const remain = (P) => P.evaluate("Number(document.querySelector('.q-timer')?.innerText.replace(/[^0-9]/g, '') || 0)");
+  const untilRemain = async (s) => { for (let k = 0; k < 400; k += 1) { if ((await remain(H)) <= s) return; await sleep(100); } };
+  const game = async (theme, extra = '') => {
+    await pickTheme(H, theme);
+    await pickTheme(G, theme);
+    // ★ '+줄인움직임' = OS 설정 "애니메이션 효과 끔"(prefers-reduced-motion) — 같은 1ms 규칙이 있다
+    const rm = extra === '+줄인움직임';
+    await H.send('Emulation.setEmulatedMedia', { features: rm ? [{ name: 'prefers-reduced-motion', value: 'reduce' }] : [] });
+    await G.send('Emulation.setEmulatedMedia', { features: [{ name: 'hover', value: 'none' }, { name: 'pointer', value: 'coarse' }, ...(rm ? [{ name: 'prefers-reduced-motion', value: 'reduce' }] : [])] });
+    await setQuestionCount(H, 1).catch(() => {});
+    await sleep(300);
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.replace(/[\\[\\] ]/g, '').trim() === '게임시작')?.click()");
+    await H.waitFor("document.querySelector('.room')?.dataset.state === 'QUESTION_ACTIVE'", 30000).catch(() => false);
+    if (extra === '+막대숨김') for (const P of [H, G]) await P.evaluate("(() => { const s = document.createElement('style'); s.id = 'r076-nobar'; s.textContent = '.q-timebar{display:none !important}'; document.head.appendChild(s); })()");
+    await sleep(500);
+    if (theme === 'office' && !extra) {
+      for (const [P, n] of [[H, 'lap2'], [G, 'm360']]) {
+        if (n === 'lap2') await H.setViewport(1536, 730);
+        else await r068Touch(G, 360, 740, true);
+        for (let t = 0; t < 3; t += 1) {
+          await snap(P, `jitter-office-${n}-t${t}${R076_TAG}`);
+          await sleep(60);
+        }
+      }
+    }
+    await sample(theme, '시작', extra);
+    // ★ 같은 문제 위 A/B — 옛 규칙(모든 속성 1ms 전이)만 다시 넣고 PC 둘을 잰다(원인 확인)
+    if (theme === 'office' && !extra) {
+      await H.evaluate("(() => { const s = document.createElement('style'); s.id = 'r076-old'; s.textContent = \"[data-theme='office'] *:not(.mg-card, .mg-card *) { transition: all 1ms !important; }\"; document.head.appendChild(s); })()");
+      for (const sz of PCS) {
+        await H.setViewport(sz.w, sz.h);
+        await sleep(250);
+        table.push({ theme: 'office+옛1ms(AB)', phase: '시작', size: sz.n, ...JSON.parse(await H.evaluate(R076_SAMPLE(1800))) });
+      }
+      await H.evaluate("document.getElementById('r076-old')?.remove()");
+      await H.setViewport(1536, 730);
+      await sleep(250);
+      table.push({ theme: 'office+옛규칙뺌', phase: '시작', size: 'lap2', ...JSON.parse(await H.evaluate(R076_SAMPLE(1800))) });
+    }
+    if (extra) {
+      for (const P of [H, G]) await P.evaluate("document.getElementById('r076-nobar')?.remove()");
+      await H.evaluate("document.querySelector('.host-tools button, .paused-card button') && [...document.querySelectorAll('.host-tools button')].find((b) => /종료/.test(b.innerText))?.click()");
+      await sleep(300);
+      await confirmFirst(H).catch(() => {});
+    } else {
+      await untilRemain(29);
+      await sleep(400);
+      await sample(theme, '힌트');
+      await untilRemain(14);
+      await sleep(400);
+      await sample(theme, '초성');
+      await untilRemain(5);
+      await sleep(200);
+      await sample(theme, '마지막5초');
+      await H.waitFor("document.querySelector('.reveal') !== null", 15000).catch(() => false);
+      await sleep(400);
+      await sample(theme, '공개');
+    }
+    await H.waitFor("document.querySelector('.room')?.dataset.state === 'GAME_RESULT'", 30000).catch(() => false);
+    await sleep(500);
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => /로비로/.test(b.innerText))?.click()");
+    await H.waitFor("document.querySelector('.room')?.dataset.state === 'LOBBY'", 15000).catch(() => false);
+    await sleep(600);
+  };
+  const only = process.env.R076_ONLY ?? '';
+  if (!only) for (const th of ['pastel', 'night', 'office']) await game(th);
+  if (!only) await game('office', '+막대숨김');
+  if (!only || only === 'reduced') await game('pastel', '+줄인움직임');
+  await pickTheme(H, 'pastel');
+  await pickTheme(G, 'pastel');
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r076', `card-jitter${R076_TAG}.json`), JSON.stringify(table, null, 1));
+  console.log('  [r076] 테마 · 상태 · 크기 — 카드 top 바뀜(번 · 최대px) · 카드 높이 · 지문 높이 · 지문 style/wrap 바뀜 · 지문 크기 바뀜 · px · wrap · 프레임');
+  for (const r of table) console.log(`    ${r.theme.padEnd(14)} ${r.phase.padEnd(6)} ${r.size.padEnd(5)} top ${r.cardTop.join('/')} · H ${r.cardH.join('/')} · qH ${r.qH.join('/')} · mut ${r.mut} · ro ${r.ro} · px ${r.px.join(',')} · wrap ${r.wrap.join(',')} · f ${r.frames}`);
+  // 마지막 5초 표본은 둘째 크기가 시간 종료(공개로 바뀜)에 걸린다 — 카드 높이 한 번은 그 전환
+  const bad = table.filter((r) => !/AB/.test(r.theme) && r.phase !== '공개' && (r.cardTop[0] > 0 || r.cardH[0] > (r.phase === '마지막5초' ? 1 : 0) || r.qH[0] > 0 || r.mut > 2));
+  record('★★★ R076 card-jitter — 테마 셋 × PC 둘 · 모바일 둘 × 시작 · 힌트 · 초성 · 마지막 5초 — 2초 동안 카드 top · 높이 · 지문 높이 바뀜 0 · 지문 재측정(style/wrap) ≤ 2', bad.length === 0, JSON.stringify(bad.map((r) => `${r.theme}/${r.phase}/${r.size}:top${r.cardTop[0]}·H${r.cardH[0]}·qH${r.qH[0]}·mut${r.mut}`)).slice(0, 600));
+  G.close();
+  H.close();
+}
+
+// =============================================================================
 // ★★★ R075 — 단축키 문구(§A · D-324) · 사무실 모드 2판 office-palette(§B · D-322 2판) · 모바일 화면 움직임 mobile-motion(§C · D-325)
 //   (UICHECK_R075=1 · 묶음 r075 · docs/design/r075) · R075_ONLY = shortcut | office | motion (없으면 전부)
 //   R075_TAG = before | after → 그림 이름 꼬리(고치기 전 빌드로 먼저 돌려 "전" 그림 · 수를 남긴다)
@@ -7808,6 +7945,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R074) {
     await closeAllTabs(browser);
     await r074Flow(browser);
+  }
+  // ★ R076 — 문제 카드 세로 흔들림(card-jitter)
+  if (process.env.UICHECK_R076) {
+    await closeAllTabs(browser);
+    await r076Flow(browser);
   }
   // ★ R075 — 단축키 문구 · 사무실 모드 2판(office-palette) · 모바일 화면 움직임(mobile-motion)
   if (process.env.UICHECK_R075) {
