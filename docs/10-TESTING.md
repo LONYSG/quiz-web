@@ -1074,6 +1074,15 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 55. ★★★ R075 — 단축키 문구 · 사무실 모드 2판 · 모바일 화면 움직임 (D-324 · D-322 2판 · D-325)
+
+- 묶음 `r075`(`UICHECK_NO_BUILD=1 node scripts/ui-check-bundles.mjs r075` · `R075_ONLY=shortcut|office|motion` · `R075_TAG=before|after` = 그림 이름 꼬리 · `R075_KB_MODE=resize|visual`).
+- **shortcut** — 카드 · ⓘ 이모티콘 탭 · 투어 ④ (PC 1280 · 1536×730): 새 문구 · 줄마다 한 줄 · 옛 축약("Alt+1~0" · "1~0 도" · "Alt도 넣기") 없음.
+- **office-palette** — 사무실 테마로 로비 · 😊 · 특별 · ⚙ · 포인트샵 · 게임 · 공개 · 결과 × (1280 · 1536×730 · 360) 에서 보이는 모든 요소(+ ::before/::after)의 color · background · border · outline · box-shadow · text-shadow · svg stroke/fill · gradient · drop-shadow · 체크박스 accent · 색 그림 글자(Emoji_Presentation — 흑백 필터 밖)를 모아 팔레트 6색(#0c0c0c · #151515 · #262626 · #cccccc · #808080 · #f2f2f2) 밖이면 선택자 · 색으로 센다(미니게임 판 안 · 투명 제외). 고치기 전 109종(화면마다 24~55) → 0. 이모티콘 `:이름:` 다섯 곳(채팅 · 내 자리 · 10칸 · 목록 · 특별) 글자 ≥ 0.85rem · 잘림 · 줄임표 · 조상 상자에 잘림 0. 파비콘 = 검은 네모 하나.
+- **mobile-motion** — 손님 m360 · m390 · m430(터치 · hover none) · 방장 PC · 한 판 5문제(힌트 · 초성 · 공개 중 소감). 손님 쪽 프레임마다(값이 바뀔 때만) 상태 · scrollY · 넘침 · visualViewport · kbDropped · --qs · fitOver · 문제 카드 · 입력창 · 내 자리 top · PerformanceObserver layout-shift(원인 요소)를 남기고 상태 × 크기 표로. 키보드 흉내: resize = 입력창 포커스 때 높이 −320px + 입력창 scrollIntoView(안드로이드 옛 꼴) · visual = 화면 그대로 두고 밀림을 계산(iOS · 새 크롬 꼴 — 흉내 못 함 · 추정). 판정: 판 중 scrollY 변화 0 · 넘침 0 · 카드 top 변화 ≤ 8px(문제가 바뀔 때 · 키보드 오르내림 0.4초 빼고) · 판 중 키보드 내림 0 · 올림 ≤ 2 · 같은 화면 안 CLS < 0.05(채팅 줄만 움직인 것 · 화면 전환 0.8초 뺌). 전/후 JSON = docs/design/r075/mobile-motion-{resize,visual}-{before,after}.json.
+- **왜 R074 까지 못 잡았나**: ① 모바일 검사는 모두 setViewport/touchDevice 로 높이를 고정한 채 찍었다 — 키보드가 오르내리는 것(높이 변화)과 그때 브라우저가 화면을 미는 것을 한 번도 재지 않았다(R040 C-3 은 "내렸나" 만 봤다 — 내리는 것이 움직임의 원인이었다). ② 사무실 1판 검사는 "글자로 바뀌었나"(`:이름:` 정규식)만 봤다 — 글자 크기 · 잘림 · 줄임표를 안 재 "안 보임" 을 놓쳤고, 색은 테마 하나씩 눈으로만 봤다. ③ R040 C-4 는 R073 까지 main-behavior 가 222 에서 멈춰 돈 적이 없었다(R074 3-2 에서 처음 실패 1).
+- R040 C-4(`--long`) m360 공개 #5700 16px · #5601 52px → 0(squeeze2). 대신 #5601 문제 화면 m360 글자가 0.92 → 0.8(힌트 줄 자리 미리 잡은 값).
+
 ## 54. ★★★ R074 — 사진 공개 레이아웃 · 내 자리 · 팝업 아래 끝 · 등록 안내 넷 · 사무실 모드 · 밤 다크 · play:stats · 백업 keep 5 · 0029 (D-321 ~ D-323 · D-278 이어서)
 
 ★ 전부 검사 DB(quizweb_test — 0029 는 여기에만 적용) · 자기 서버(ui-check 3101). 실 DB 쓰기 0 · 실 3000 서버(꺼져 있음) 그대로 — 빌드만.
