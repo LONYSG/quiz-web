@@ -243,6 +243,15 @@ OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은
 ★ R021 612건 적재 (확정 손실률 12.7%). ★ R022 702건은 **후보 31쌍 판정 대기(VERIFY)·미적재**.
 ★ 2회차는 계획만 있다 — `seed-r2-v2` / Q-99.
 
+### ★★ G032 — 생성 재개 프롬프트 (DG-070)
+
+| 무엇 | 파일 | 결정 |
+|---|---|---|
+| 문제 생성(질문 · 힌트 hint-v7 · 해설 · 변형 · 사실 출처) | `pipeline/prompts/deep-v6.md` (deep-v5 유지) | DG-070 |
+| 채점(등급 1~5 · 알가치 worth 1~3 · 친숙도 — 19 정본) | `pipeline/prompts/score-v4.md` (score-v3 유지) | DG-070 |
+| 산출 → 적재 파일 / 알가치 쓰기 | `scripts/g032-build.mjs` · `scripts/g032-apply-worth.mjs` | DG-070 |
+| pending 적재 | `npm run pipeline:load -- --round g032a,g032b --pending` | DG-070 |
+
 ### ★★ R022 에서 바뀐 도구·프롬프트
 
 | 무엇 | 파일 | 결정 |

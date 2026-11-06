@@ -86,6 +86,14 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-07 — 생성 재개 707 → pending 647 (G032, GEN)
+
+- **무엇을**: gen-next2.md — 19 §5 · 15 §6-1 표대로 700 생성(deep-v6 · score-v4) · 활성은 건드리지 않고 pending 적재.
+- **어떻게**: tmp/g032/tools(ctx · central · stage · fix · dup · factcheck · wiki) · 두 묶음 a · b · 단계마다 하위 에이전트(생성 Opus · 판정 sonnet · 동시 3 이하) · scripts/g032-build.mjs → pipeline-load --pending → g032-apply-worth.mjs.
+- **결정**: DG-070.
+- **검증**: 활성 6,506 · 백업 대조 활성 행 해시 같음 · gate-only 647 · npm test 630 · criteria-sync --check · 표본 재독 40(고침 0 · 사실 의심 2 → V035).
+- **남은 것**: 등급 4·5 못 채움(28 · 0) · V035 표본 163 · crossans · 출처 1개 11 — G032.txt 7절. 사용량 한도로 두 번 멈춤.
+
 ## 2026-11-06 — 등급 1·2 힌트 1,728 · 활성 전부 힌트 (G031, GEN)
 
 - **무엇을**: 찬종 "권장대로"(15 H0 · H13 — 등급 1·2 에도 단다) → 힌트 없던 등급 1·2 1,728 에 핵심 한 줄(알가치 1 은 + 연결 고리) · 빈 해설 14.
