@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "computer/1",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/1#g032b-g032b-j16-9",
+   "seed": {
+    "subject": "아두이노",
+    "aspect": null,
+    "ref": "g032b-j16-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전자 공작에 널리 쓰이는 작은 회로 기판이 있습니다. 2005년 이탈리아 이브레아의 인터랙션 디자인 학교에서 학생용 도구로 처음 만들어졌습니다. 이름은 개발자들이 자주 모이던 동네 술집에서 따왔는데, 그 술집 이름은 11세기 초 이탈리아 왕이 된 이 고장의 영주에게서 왔습니다. 이 기판은?",
+    "answer": "아두이노",
+    "acceptedAnswers": [
+     "Arduino"
+    ],
+    "originalTitleVariants": [
+     "Arduino"
+    ],
+    "explanation": "2011년 중반까지 공식 보드만 30만 개 넘게 팔린 것으로 추산되며, 지금은 퀄컴이 회사를 가지고 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "전자 공작에 널리 쓰이는 작은 회로 기판 · 2005년 이탈리아",
+     "difWhy": "3 — 취미 전자 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 취미 영역 세부",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "센서와 모터를 연결하고 간단한 코드를 올려 로봇이나 온도 조절기를 만들어 보는 교육용 마이크로컨트롤러 보드다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "이탈리아에서 시작된 오픈 소스 마이크로컨트롤러 보드",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "공대·메이커 사이에서 알려짐",
+     "piece": "f03",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '작은 회로 기판' 이 끝 ○○(기판) 와 일치, 이름 유래 문장이 조금 겹쳐도 주어 흐름 유지"
+    },
+    "blindQuestion": {
+     "guess": "아두이노",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아두이노",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아두이노",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6555",
+      "answer": "씽크패드",
+      "verdict": "diff",
+      "why": "아두이노 vs 씽크패드 — 이탈리아 겹침만"
+     },
+     {
+      "old": "1563",
+      "answer": "반도체",
+      "verdict": "diff",
+      "why": "아두이노 보드 vs 반도체 일반 개념 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Arduino",
+     "https://en.wikipedia.org/wiki/Arduin_of_Ivrea",
+     "https://ko.wikipedia.org/wiki/아두이노"
+    ],
+    "facts": [
+     {
+      "claim": "2005년 이브레아 인터랙션 디자인 학교 학생용 도구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Arduino",
+      "note": "The Arduino project began in 2005 as a tool for students at the Interaction Design Institute Ivrea, Italy"
+     },
+     {
+      "claim": "이름 = 창업자들이 모이던 술집 Bar di Re Arduino · 아르두인 왕에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Arduino",
+      "note": "The name Arduino comes from the Bar di Re Arduino, where some of the project's founders used to meet. This bar is in Ivrea, Italy and was named after Arduin."
+     },
+     {
+      "claim": "아르두인 — 990년 이브레아 변경백 · 1002년 이탈리아 왕",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Arduin_of_Ivrea",
+      "note": "Arduin (Italian: Arduino; c. 955 – 14 December 1015) was an Italian nobleman who was king of Italy from 1002 until 1014. In 990 Arduin became margrave of Ivrea"
+     },
+     {
+      "claim": "2005년 이탈리아 IDII",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아두이노",
+      "note": "2005년 이탈리아의 IDII(Interaction Design Institutelvera)에서 ... 2005년, 이탈리아 Ivrea에서 초기 프로젝트가 만들어졌다."
+     },
+     {
+      "claim": "센서·액추에이터 · 로봇·온도조절기 · 마이크로컨트롤러",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Arduino",
+      "note": "designs and manufactures single-board microcontrollers ... to create devices that interact with their environment using sensors and actuators. Common examples of such devices intended for makers include simple robots, thermostats, and motion detectors."
+     },
+     {
+      "claim": "2011년 중반 30만 개 · 퀄컴 소유",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Arduino",
+      "note": "Arduino () is an Italian open-source hardware and software company (now owned by Qualcomm) ... It was estimated in mid-2011 that over 300,000 official Arduinos had been commercially produced"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Arduino"
+    ],
+    "hintNote": null,
+    "easiestCue": "2005년 이탈리아 학생용 회로 기판",
+    "worthWhyGen": "흔한 공작 보드 이름이 술집과 중세 왕에게서 왔다는 유래 — 유래 3",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '회로 기판' 예",
+     "unique": "2005 이탈리아 → 하나(라즈베리 파이는 영국)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 162자"
+    ],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "computer/1#g032b-g032b-j31-11",
+   "seed": {
+    "subject": "웹캠",
+    "aspect": null,
+    "ref": "g032b-j31-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1991년 영국 케임브리지 대학교 컴퓨터 연구실에서 처음 선보였다는 장치입니다. 연구원들이 '트로이 방'의 커피 주전자가 비었는지 헛걸음하지 않고 보려고 카메라를 연결했습니다. 1993년부터는 이 영상을 인터넷으로 누구나 볼 수 있었습니다. 이렇게 시작된, 영상을 인터넷으로 실시간 보내는 카메라는?",
+    "answer": "웹캠",
+    "acceptedAnswers": [
+     "웹카메라",
+     "웹 카메라"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 커피 주전자 영상은 2001년 8월 22일 꺼졌고, 마지막 커피 기계는 이베이 경매에서 3,350파운드에 팔렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "영상을 인터넷으로 실시간 보내는 카메라는",
+     "difWhy": "2 — 마지막 문장이 거의 답 · 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 커피 주전자 때문에 생긴 웹캠의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "노트북 화면 위 가장자리에 달려 화상 회의나 인터넷 방송에 쓰이는 작은 장치다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "컴퓨터에 연결해 영상을 실시간으로 인터넷에 보내는 카메라(webcam)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "화상회의·일상 기기",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '처음 선보였다는 장치' 로 종류가 나오고 끝에서 '카메라' 로 좁혀 준다."
+    },
+    "blindQuestion": {
+     "guess": "웹캠",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "웹캠",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "웹캠",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1565",
+      "answer": "에니악",
+      "verdict": "diff",
+      "why": "웹캠 vs 에니악: 다른 장치"
+     },
+     {
+      "old": "6555",
+      "answer": "씽크패드",
+      "verdict": "diff",
+      "why": "웹캠 vs 씽크패드: 무관"
+     },
+     {
+      "old": "95",
+      "answer": "SSD",
+      "verdict": "diff",
+      "why": "웹캠 vs SSD: 무관"
+     },
+     {
+      "old": "1556",
+      "answer": "CPU",
+      "verdict": "diff",
+      "why": "웹캠 vs CPU: 무관"
+     },
+     {
+      "old": "4351",
+      "answer": "폰 노이만 구조",
+      "verdict": "diff",
+      "why": "웹캠 vs 폰 노이만 구조: 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Trojan_Room_coffee_pot",
+     "https://ko.wikipedia.org/wiki/웹캠"
+    ],
+    "facts": [
+     {
+      "claim": "1991년 케임브리지 컴퓨터 연구실 · 세계 첫 웹캠 · 커피 주전자 빈 것 헛걸음 방지 · 1993년 인터넷 공개",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trojan_Room_coffee_pot",
+      "note": "It was the subject of the world's first webcam, created by Quentin Stafford-Fraser and Paul Jardetzky in 1991. To save people working in the building the disappointment of finding the coffee machine empty after making the trip to the room, a camera was set up ... the live picture became available via HTTP in November of the same year [1993]"
+     },
+     {
+      "claim": "1991 처음 개발 · 케임브리지 트로이 목마 방 커피포트",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/웹캠",
+      "note": "1991년에 처음 개발된 웹캠은 케임브리지 대학교 컴퓨터 과학과에 있는 트로이 목마 방 커피포트를 향해 설치되었다(초기에는 웹이 아닌 로컬 네트워크를 통해 작동)."
+     },
+     {
+      "claim": "2001년 8월 22일 꺼짐 · 이베이 3,350파운드",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Trojan_Room_coffee_pot",
+      "note": "the camera was eventually switched off, at 09:54 UTC on 22 August 2001. ... The last of the four or five coffee machines seen online, a Krups, was auctioned on eBay for £3,350"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "영상을 인터넷으로 실시간 보내는 카메라",
+    "worthWhyGen": "매일 쓰는 장치의 뜻밖의 시작(커피 주전자)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '장치' 예",
+     "unique": "인터넷 실시간 카메라 — CCTV와 갈림(인터넷으로)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 167자",
+     "crossans 화상"
+    ],
+    "job": "job-31"
+   }
+  }
+ ]
+}

@@ -1,0 +1,149 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-lit/3",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/3#g032b-g032b-j14-4",
+   "seed": {
+    "subject": "캐치-22",
+    "aspect": null,
+    "ref": "g032b-j14-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영어에서 흔히 쓰는 한 표현은 1961년 미국 작가 조지프 헬러의 전쟁 소설 제목에서 왔습니다. 소설 속 군 규정에 따르면 미친 사람은 출격을 면할 수 있지만, 면제를 신청하는 것 자체가 제정신이라는 증거가 됩니다. 빠져나갈 길이 없는 모순된 상황을 가리키는 이 말은?",
+    "answer": "캐치-22",
+    "acceptedAnswers": [
+     "캐치 22",
+     "Catch-22"
+    ],
+    "originalTitleVariants": [
+     "Catch-22"
+    ],
+    "explanation": "처음 제목의 숫자는 18이었지만, 같은 해 나온 리언 유리스의 전쟁 소설 '밀라 18'과 헷갈리지 않게 바꿨습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "출격 면제를 신청하는 것 자체가 제정신이라는 증거 … 빠져나갈 길이 없는 모순",
+     "difWhy": "3 — 캐치-22 표현 아는 사람 일부 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 영어 표현 유래 · 작품 곁가지",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "제2차 세계 대전 때 이탈리아의 섬에 머문 미군 폭격기 조종사 요사리안이 주인공인 소설의 제목이기도 하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "조지프 헬러의 1961년 소설이자, 빠져나갈 수 없는 모순 상황을 뜻하는 영어 표현",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "모순 상황 표현으로 들어 봤을 법함",
+     "piece": "f04",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영어 표현', 끝 ○○ '이 말' 일치; 군 규정 모순을 풀어서 설명"
+    },
+    "blindQuestion": {
+     "guess": "캐치-22",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "캐치-22",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "캐치-22",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5652",
+      "answer": "호밀밭의 파수꾼",
+      "verdict": "diff",
+      "why": "새 정답 캐치-22 과 옛 정답 호밀밭의 파수꾼 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Catch-22_(logic)",
+     "https://ko.wikipedia.org/wiki/캐치-22"
+    ],
+    "facts": [
+     {
+      "claim": "1961년 조지프 헬러 소설에서 처음 쓰인 말 · 모순된 규칙 때문에 빠져나갈 수 없는 상황",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Catch-22_(logic)",
+      "note": "A catch-22 is a paradoxical situation from which an individual cannot escape because of contradictory rules or limitations. The term was first used by Joseph Heller in his 1961 novel Catch-22."
+     },
+     {
+      "claim": "광기 판정 신청 자체가 제정신의 증거",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Catch-22_(logic)",
+      "note": "any pilot requesting mental evaluation for insanity—hoping to be found not sane enough to fly and thereby escape dangerous missions—demonstrates his own sanity in creating the request and thus cannot be declared insane."
+     },
+     {
+      "claim": "영어에서 진퇴양난을 가리키는 말로 자리잡음(두 번째 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/캐치-22",
+      "note": "소설 속에서의 사용으로 인해 \"Catch-22(캐치-22)\"라는 표현은 영어에서 진퇴양난의 상황을 가리키는 말로 자리잡았다."
+     },
+     {
+      "claim": "2차대전 · B-25 폭격기 조종사 요사리안 · 이탈리아 피아노사섬",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/캐치-22",
+      "note": "소설은 제2차 세계 대전을 배경으로 가상의 미국 육군 항공대 B-25 폭격기 편대의 조종사 요사리안을 비롯한 ... 이탈리아 서부의 피아노사섬에 배치된 상태에서 일어난다."
+     },
+     {
+      "claim": "처음 Catch-18 · 밀라 18과 혼동 피하려 바꿈",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/캐치-22",
+      "note": "정식 출판 이전, 소설의 한 장이 잡지에 Catch-18이라는 제목으로 실린 적이 있었다. ... 1961년에 2차대전을 주제로 한 리언 유리스의 소설 《밀라 18》이 출판되었는데, ... 이 소설과 혼동되지 않도록 소설의 제목을 바꾸자고 제안했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/캐치-22"
+    ],
+    "hintNote": null,
+    "easiestCue": "조지프 헬러 소설 + 출격 면제 모순(작가·소설을 알아야 풀림)",
+    "worthWhyGen": "영어권 일상 표현 '캐치-22'가 소설 속 군 규정에서 왔다는 유래 — 이름 떠올리기가 아니라 말의 뜻·유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '표현' 종류 명사 — 예",
+     "unique": "헬러 소설 + 모순 상황 표현 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 제2차 세계대전"
+    ],
+    "job": "job-14"
+   }
+  }
+ ]
+}

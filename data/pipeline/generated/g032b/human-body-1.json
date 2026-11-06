@@ -1,0 +1,134 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "human-body/1",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/1#g032b-g032b-j15-10",
+   "seed": {
+    "subject": "테니스 엘보",
+    "aspect": null,
+    "ref": "g032b-j15-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "팔에 생기는 흔한 통증 질환이 있습니다. 1873년 독일 의사 룽게가 처음 기록할 때는 '글 쓰는 사람의 경련'이라 불렀고, 뒤에는 빨래하는 여성의 병으로도 불렸습니다. 지금 이름은 1883년 영국의 의학 논문들에서 굳었는데, 정작 환자 대부분은 그 운동을 하지 않습니다. 이 질환은?",
+    "answer": "테니스 엘보",
+    "acceptedAnswers": [
+     "외측상과염",
+     "상완골외상과염"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "해마다 어른의 1~3%가 겪고 40~60대에 흔하며, 요즘 미국에선 피클볼 유행으로 '피클볼 엘보'라는 말도 생겼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "정작 환자 대부분은 그 운동을 하지 않습니다",
+     "difWhy": "2 — 팔 통증 질환에 테니스 암시 · 이름 한 번 생각",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 흔한 질환 이름의 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "팔 관절 바깥쪽 뼈 돌기에 붙은 손목 펴는 힘줄이 되풀이된 사용으로 상해, 물병을 따르거나 손목을 젖힐 때 아픈 병이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "팔꿈치 바깥쪽 힘줄 통증(외측상과염)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "흔한 통증 이름",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '팔에 생기는 통증 질환', 끝 ○○ '이 질환' 일치"
+    },
+    "blindQuestion": {
+     "guess": "테니스 엘보",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "테니스 엘보",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "테니스 엘보",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tennis_elbow",
+     "https://ko.wikipedia.org/wiki/테니스_엘보"
+    ],
+    "facts": [
+     {
+      "claim": "1873 룽게 writer's cramp · washer women's · 1883 랜싯 등",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tennis_elbow",
+      "note": "German physician F. Runge is usually credited for the first description of the condition, calling it \"writer's cramp\" (Schreibekrampf) in 1873. Later, it was called as \"washer women's elbow\". British surgeon Henry Morris published an article in The Lancet describing \"lawn tennis arm\" in 1883. The popular term \"tennis elbow\" first appeared the same year in a paper by H. P. Major"
+     },
+     {
+      "claim": "테니스 안 치는 사람에게도 · 1883 첫 보고",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/테니스_엘보",
+      "note": "테니스를 즐기지 않는 사람에게도 생길 수 있는 증상이다. 의학용어로는 상완골외상과염 ... 1883년 학계에 처음 보고되었다."
+     },
+     {
+      "claim": "바깥 돌출 뼈 · 손목 젖힐 때 · 물병",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/테니스_엘보",
+      "note": "팔꿈치 바깥쪽 돌출된 뼈 부분 주변 ... 손목을 젖히는 동작을 할 때 특히 통증이 심함 (예: 무거운 물건을 들때, 물병의 물을 따를 때 등)"
+     },
+     {
+      "claim": "1~3% · 40~60 · 피클볼 엘보",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tennis_elbow",
+      "note": "affect 1% to 3% of adults each year ... most common between ages 40 and 60 ... the growth of pickleball participation led to the term, pickleball elbow."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/테니스_엘보"
+    ],
+    "hintNote": null,
+    "easiestCue": "환자 대부분이 그 운동을 하지 않는 팔 통증",
+    "worthWhyGen": "흔한 병명이 운동 이름을 달았지만 환자 대부분은 그 운동과 무관하다는 까닭(3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '질환' 예",
+     "unique": "1873·1883 역사 → 테니스 엘보(골프 엘보는 안쪽 · 역사 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 힘줄"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

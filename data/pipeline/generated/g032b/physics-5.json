@@ -1,0 +1,320 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "physics/5",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/5#g032b-g032b-j04-9",
+   "seed": {
+    "subject": "라듐",
+    "aspect": null,
+    "ref": "g032b-j04-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어둠 속에서 빛나는 시계 도료에 섞던 방사성 원소가 있습니다. 1917년 무렵 미국 뉴저지의 공장에서 여성 노동자들이 이 도료로 숫자판을 칠했는데, 감독관은 붓끝을 뾰족하게 하려면 입술로 다듬으라고 시켰습니다. 많은 이가 턱뼈가 썩는 병을 얻은 까닭이 된 이 원소는?",
+    "answer": "라듐",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "공장 도료의 상표명은 '언다크'였다. 여성 노동자들의 잇따른 소송은 미국과 유럽의 노동법에 오래 영향을 남겼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "어둠 속에서 빛나는 시계 도료의 방사성 원소 · 턱뼈가 썩는 병",
+     "difWhy": "3 — 라듐 걸스 일화 · 방사성 원소 라듐은 학교 지식",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 과학사 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "1898년 퀴리 부부가 우라늄 광석 피치블렌드에서 폴로늄과 함께 찾아낸 원소로, 1950년대까지 암 치료에도 쓰였다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1898년 퀴리 부부가 발견한 방사성 원소(radium)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "퀴리 부인 교과서 내용",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '방사성 원소'가 끝 '이 원소'와 일치."
+    },
+    "blindQuestion": {
+     "guess": "라듐",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "라듐",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "라듐",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "418",
+      "answer": "마리 퀴리",
+      "verdict": "diff",
+      "why": "라듐 시계 도료 노동자 피해 vs 마리 퀴리 두 번 노벨상 — 인물 대 사건, 새 사실 필요"
+     },
+     {
+      "old": "3606",
+      "answer": "마리 퀴리",
+      "verdict": "diff",
+      "why": "라듐 걸스 사건 vs 퀴리 판테온 안장 — 다른 지식"
+     },
+     {
+      "old": "1521",
+      "answer": "방사성 붕괴",
+      "verdict": "diff",
+      "why": "라듐 시계 도료 사건 vs 방사성 붕괴 정의 — 다른 지식"
+     },
+     {
+      "old": "4609",
+      "answer": "마이스너 효과",
+      "verdict": "diff",
+      "why": "라듐 vs 마이스너 효과 — 무관"
+     },
+     {
+      "old": "g032a:g032a-j04-7",
+      "answer": "힉스 입자",
+      "verdict": "diff",
+      "why": "라듐 vs 힉스 입자 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Radium_Girls",
+     "https://ko.wikipedia.org/wiki/라듐",
+     "DB #4316 (폴로늄)"
+    ],
+    "facts": [
+     {
+      "claim": "1917년 무렵 뉴저지 오렌지 공장 · 시계 숫자판 · 입술로 붓끝 다듬기 지시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Radium_Girls",
+      "note": "one in Orange, New Jersey, beginning around 1917 ... the women in each facility ingested deadly amounts of radium after being instructed to \"point\" their brushes on their lips in order to give them a fine tip. ... the USRC supervisors encouraged their workers to shape the brushes' point with their lips (\"lip, dip, paint\")"
+     },
+     {
+      "claim": "턱뼈 괴사(라듐 턱)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Radium_Girls",
+      "note": "Many of the women developed anemia, bone fractures, and necrosis of the jaw, a condition now known as radium jaw."
+     },
+     {
+      "claim": "시계 숫자판 도료 · 공장 노동자 피폭 사망",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/라듐",
+      "note": "라듐은 1900년대 중반 손목 시계와 괘종 시계의 시계 바늘과 숫자들을 도색하는 페인트로 사용되었다. ... 형광시계의 문자판을 생산하는 공장에서 라듐을 다루는 몇몇 노동자들이 방사선을 지나치게 흡수해 사망하기도 했다."
+     },
+     {
+      "claim": "1898년 퀴리 부부 피치블렌드에서 발견 · 1950년대 중반까지 암 치료",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/라듐",
+      "note": "베몽이 1898년에 우라늄 광석인 피치블렌드에서 라듐을 발견했다. ... 1950년대 중반까지 암 치료에 널리 이용되었고"
+     },
+     {
+      "claim": "폴로늄도 1898년 피치블렌드에서",
+      "where": "h",
+      "url": "DB #4316 (폴로늄)",
+      "note": "1898년 퀴리 부부는 우라늄 광석인 피치블렌드를 연구하다 새 원소를 찾아냈습니다 ... 원소 기호가 Po인 이 원소"
+     },
+     {
+      "claim": "상표명 Undark · 노동법 영향",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Radium_Girls",
+      "note": "luminous paints, which were marketed under the brand name \"Undark\". ... The Radium Girls had lasting effects on the labor laws in the United States and Europe"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/라듐"
+    ],
+    "hintNote": null,
+    "easiestCue": "어둠에서 빛나는 시계 도료의 방사성 원소(야광 시계 이야기를 알면)",
+    "worthWhyGen": "왜 여공들이 병들었나 — 입술로 붓끝을 다듬게 한 지시 · 산업 안전의 계기(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '방사성 원소' 예",
+     "unique": "시계 도료 + 1917 뉴저지 = 라듐 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 우라늄/폴로늄"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "physics/5#g032b-g032b-j12-4",
+   "seed": {
+    "subject": "중력파",
+    "aspect": null,
+    "ref": "g032b-j12-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "물리 현상입니다. 2015년 9월 14일 미국의 두 관측소가, 13억 광년 떨어진 곳에서 블랙홀 두 개가 합쳐지며 보낸 신호를 처음으로 직접 잡았습니다. 이 신호는 관측 장치의 길이를 양성자 지름의 천분의 일쯤 늘였다 줄였습니다. 2017년 노벨 물리학상을 안긴 이 현상은 무엇일까요?",
+    "answer": "중력파",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "관측소 이름은 라이고(LIGO)이며, 노벨상은 라이너 바이스·배리 배리시·킵 손 세 사람이 받았습니다. 두 관측소는 약 3,000km 떨어져 있어 신호가 닿는 시각 차이로 방향을 가늠합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "블랙홀 두 개가 합쳐지며 보낸 신호 / 2017 노벨 물리학상",
+     "difWhy": "2 — 중력파 뉴스 노출 많음 · 이름 한 번 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "아인슈타인이 일반 상대성 이론으로 예측한, 무거운 천체가 움직일 때 시공간이 출렁이며 빛의 속도로 퍼져 나가는 것이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "질량의 가속 운동으로 시공간이 출렁여 퍼지는 것(일반 상대성 이론의 예측)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "노벨상 뉴스·인터스텔라",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '물리 현상', 끝 ○○ '이 현상' 일치; 관측 설명이 짧은 문장들로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "중력파",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "중력파",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "중력파",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2484",
+      "answer": "일반 상대성 이론",
+      "verdict": "diff",
+      "why": "새 정답 중력파 과 옛 정답 일반 상대성 이론 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1622",
+      "answer": "광전효과",
+      "verdict": "diff",
+      "why": "새 정답 중력파 과 옛 정답 광전효과 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2485",
+      "answer": "질량-에너지 등가",
+      "verdict": "diff",
+      "why": "새 정답 중력파 과 옛 정답 질량-에너지 등가 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2489",
+      "answer": "핵분열",
+      "verdict": "diff",
+      "why": "새 정답 중력파 과 옛 정답 핵분열 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5105",
+      "answer": "터널 효과",
+      "verdict": "diff",
+      "why": "중력파 관측 사실과 터널 효과는 전혀 다른 물리 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/First_observation_of_gravitational_waves",
+     "https://ko.wikipedia.org/wiki/중력파",
+     "https://en.wikipedia.org/wiki/LIGO"
+    ],
+    "facts": [
+     {
+      "claim": "2015-09-14 첫 직접 관측 · 블랙홀 쌍 합병 · 길이 변화 양성자 폭의 천분의 일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/First_observation_of_gravitational_waves",
+      "note": "The first direct observation of gravitational waves was made on 14 September 2015 ... merger of two black holes ... changed the length of a 1,120 km LIGO effective span by a thousandth of the width of a proton"
+     },
+     {
+      "claim": "13억 광년 · 두 블랙홀 · 2017 노벨 물리학상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/중력파",
+      "note": "LIGO에서는 지구로부터 13억 광년 떨어져 있는 2개의 블랙홀이 결합하면서 발생하는 중력파를 직접 검출하였다고 발표하였다. / 세 인물(라이너 바이스, 배리 배리시, 킵 손)은 2017년 10월 노벨 물리학상을 수상하였다."
+     },
+     {
+      "claim": "미국 두 관측소(리빙스턴·핸퍼드)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/LIGO",
+      "note": "LIGO operates two gravitational wave observatories in unison: the LIGO Livingston Observatory ... and the LIGO Hanford Observatory"
+     },
+     {
+      "claim": "두 관측소 약 3,000km · 도착 시각 차이로 위치",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/LIGO",
+      "note": "These sites are separated by 3002 km straight line distance through the earth ... With the difference in arrival times at three different facilities one can trilaterate the source of the wave."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/중력파"
+    ],
+    "hintNote": null,
+    "easiestCue": "2015년 블랙홀 합병 신호 첫 직접 관측(2016년 크게 보도)",
+    "worthWhyGen": "알가치 2 — 과학 개념 · 큰 과학 뉴스",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '물리 현상' 예",
+     "unique": "블랙홀 합병 신호 직접 관측 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 빛의 속도/일반 상대성 이론/아인슈타인"
+    ],
+    "job": "job-12"
+   }
+  }
+ ]
+}

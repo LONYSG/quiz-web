@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "board-game/4",
+  "midKey": "board-game",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "board-game/4#g032b-g032b-j29-12",
+   "seed": {
+    "subject": "다이아몬드 게임",
+    "aspect": null,
+    "ref": "g032b-j29-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "구슬 말을 건너뛰어 맞은편 진지로 모두 옮기면 이기는 보드게임이 있습니다. 1892년 독일에서 '슈테른할마(별 할마)'라는 이름으로 나왔고, 1928년 미국 회사가 판매를 위해 '중국'이 들어간 이름을 붙였습니다. 한국에서 흔히 부르는 이 게임의 이름은?",
+    "answer": "다이아몬드 게임",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'중국'은 사실과 상관없는 이름이며, 한국·일본판은 판이 더 작고 규칙도 조금 다르다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "구슬 말을 건너뛰어 맞은편 진지로 모두 옮기면 이기는 보드게임",
+     "difWhy": "2 — 한국 흔한 보드게임 · 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 보드게임 이름과 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "빨강·파랑·노랑 구슬을 든 두세 사람이 120도씩 떨어진 꼭짓점에서 출발해 겨루는 추억의 놀이판이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "별 모양 판에서 말을 건너뛰어 옮기는 보드게임(중국식 체커의 한·일 변형)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "어릴 적 보드게임으로 접함",
+     "piece": "f09",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '보드게임' 이 끝 ○○ '게임' 과 일치 · 독일어 이름은 괄호 풀이가 있음"
+    },
+    "blindQuestion": {
+     "guess": "다이아몬드 게임",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "다이아몬드 게임",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "다이아몬드 게임",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4295",
+      "answer": "모노폴리",
+      "verdict": "diff",
+      "why": "다이아몬드 게임 vs 모노폴리 — 다른 게임"
+     },
+     {
+      "old": "5256",
+      "answer": "클루",
+      "verdict": "diff",
+      "why": "다이아몬드 게임 vs 클루 — 다른 게임"
+     },
+     {
+      "old": "1495",
+      "answer": "올해의 게임상",
+      "verdict": "diff",
+      "why": "다이아몬드 게임 vs 올해의 게임상 — 다른 지식"
+     },
+     {
+      "old": "3451",
+      "answer": "부루마불",
+      "verdict": "diff",
+      "why": "다이아몬드 게임 vs 부루마불 — 다른 게임"
+     },
+     {
+      "old": "5257",
+      "answer": "리스크",
+      "verdict": "diff",
+      "why": "다이아몬드 게임 vs 리스크 — 다른 게임"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chinese_checkers",
+     "https://ko.wikipedia.org/wiki/다이아몬드_게임"
+    ],
+    "facts": [
+     {
+      "claim": "1892년 독일 '슈테른할마' · 별 모양 판",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chinese_checkers",
+      "note": "The game was invented in Germany in 1892 under the name \"Stern-Halma\" as a variation of the older American game Halma. … The Stern (German for 'star') refers to the board's star shape"
+     },
+     {
+      "claim": "1928년 미국 Pressman 마케팅 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chinese_checkers",
+      "note": "The name \"Chinese checkers\" originated in the United States as a marketing scheme by Bill and Jack Pressman in 1928."
+     },
+     {
+      "claim": "다이아몬드 게임 = 한국·일본의 변형",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chinese_checkers",
+      "note": "Diamond game (Japanese: ダイヤモンドゲーム) is a variant of Chinese checkers played in South Korea and Japan."
+     },
+     {
+      "claim": "중국식 체커와 비슷 · 2~3인 · 120도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/다이아몬드_게임",
+      "note": "다이아몬드 게임(영어: Diamond game, 문화어: 별꼬니)은 2~3인이 할 수 있는 추상전략 보드게임이다. 중국식 체커하고 비슷하지만 … 다이아몬드 게임은 중심을 기준으로 120도 떨어진 곳에서 시작한다."
+     },
+     {
+      "claim": "판 크기가 다름",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/다이아몬드_게임",
+      "note": "중국식 체커하고 판의 모양은 다윗의 별 모양으로 같지만, 그 크기가 다르다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/다이아몬드_게임"
+    ],
+    "hintNote": null,
+    "easiestCue": "구슬 말을 건너뛰어 맞은편 진지로 옮기는 보드게임",
+    "worthWhyGen": "'중국'이라는 이름이 마케팅이었다는 유래 · 추억의 놀이",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '보드게임' 예",
+     "unique": "'한국에서 흔히 부르는 이름'으로 한정(B2) — 중국식 체커는 받지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 빨강/노랑/파랑"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

@@ -1,0 +1,449 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "aerospace/1",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/1#g032b-g032b-j07-5",
+   "seed": {
+    "subject": "에어포스 원",
+    "aspect": null,
+    "ref": "g032b-j07-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 항공 관제에서 쓰는 호출 부호입니다. 1974년 8월 사임한 닉슨을 태우고 캘리포니아로 가던 공군기는 미주리주 상공에서 호출 부호를 'SAM 27000'으로 바꿨습니다. 그사이 포드가 취임 선서를 마쳐 기내에 현직 대통령이 없게 됐기 때문입니다. 그때까지 이 비행기가 쓰던 호출 부호는?",
+    "answer": "에어포스 원",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1953년 대통령기 'Air Force 8610'과 이스턴 항공 8610편이 같은 하늘에 들어선 일을 계기로 조종사 윌리엄 드레이퍼가 제안했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "사임한 닉슨을 태우고 · 현직 대통령이 없게 됐기 때문",
+     "difWhy": "2 — 대통령 전용기 호출 부호 에어포스 원 유명",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대통령 전용기 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "미국 대통령이 탄 미 공군기에만 붙는 호출 부호로, 1997년 같은 이름의 할리우드 액션 영화도 나왔다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 대통령이 탄 미 공군기에 붙는 항공 관제 호출 부호(Air Force One)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "영화·뉴스에서 자주 접함",
+     "piece": "f09",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '호출 부호'가 끝 ○○와 일치. 둘째 문장이 길지만 사건 설명이 이어져 읽힘."
+    },
+    "blindQuestion": {
+     "guess": "에어포스 원",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "에어포스 원",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "에어포스 원",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j27-9",
+      "answer": "스텔스기",
+      "verdict": "diff",
+      "why": "에어포스 원 vs 스텔스기 격추 — 무관"
+     },
+     {
+      "old": "1391",
+      "answer": "양력",
+      "verdict": "diff",
+      "why": "에어포스 원 vs 양력 — 무관"
+     },
+     {
+      "old": "3342",
+      "answer": "블랙박스",
+      "verdict": "diff",
+      "why": "에어포스 원 vs 블랙박스 — 무관"
+     },
+     {
+      "old": "4229",
+      "answer": "코메트",
+      "verdict": "diff",
+      "why": "에어포스 원 vs 코메트 — 무관"
+     },
+     {
+      "old": "g032b:g032b-j13-2",
+      "answer": "A380",
+      "verdict": "diff",
+      "why": "에어포스 원 vs A380 이름 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Air_Force_One",
+     "https://ko.wikipedia.org/wiki/에어_포스_원",
+     ""
+    ],
+    "facts": [
+     {
+      "claim": "대통령 탑승 미 공군기의 관제 호출 부호 · 닉슨 사임 뒤 캘리포니아행 · 포드 취임 뒤 SAM 27000 으로 · 미주리 제퍼슨시티 상공 · 1953 이스턴 8610 · 드레이퍼 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Air_Force_One",
+      "note": "Air Force One is the official air traffic control–designated call sign for a United States Air Force aircraft carrying the President ... After announcing his intention to resign the presidency, Nixon boarded SAM 27000 (with call sign \"Air Force One\") to travel to California. ... after Gerald Ford was sworn in as president, the plane had to be redesignated as SAM 27000, indicating no president was on board the aircraft. Over Jefferson City, Missouri, Albertazzie radioed ... After a 1953 incident in which a commercial flight, Eastern Air Lines 8610, crossed paths with Air Force 8610, which was carrying President Eisenhower ... pilot William G. Draper suggested the standardized designation"
+     },
+     {
+      "claim": "대통령이 탄 미 공군기면 기종에 관계없이 붙는 호출 부호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/에어_포스_원",
+      "note": "에어 포스 원(영어: Air Force One)은 미국의 항공 교통 관제 호출 부호(call sign)인데 미국의 대통령이 탑승하고 있는 미국 공군기라면 기종에 관계없이 부여된다."
+     },
+     {
+      "claim": "1997년 영화 에어 포스 원(해리슨 포드)",
+      "where": "h",
+      "url": "",
+      "note": "knowledge — 1997년 볼프강 페테르젠 감독 영화 'Air Force One'"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/에어_포스_원"
+    ],
+    "hintNote": null,
+    "easiestCue": "'닉슨·포드 · 현직 대통령이 없게 돼 바꾼 호출 부호' — 대통령 전용기 이름을 아는 사람이면 풀림(등급 3 가능)",
+    "worthWhyGen": "왜 대통령 전용기라는 이름이 비행기가 아니라 '호출 부호' 인가 — 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '호출 부호' 예",
+     "unique": "호출 부호를 물어 'VC-25'(기종) 답을 막음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 163자"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "aerospace/1#g032b-g032b-j13-2",
+   "seed": {
+    "subject": "A380",
+    "aspect": null,
+    "ref": "g032b-j13-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "여객기 기종 이름 하나에 얽힌 이야기입니다. 에어버스는 2000년 개발을 시작한 이 기종의 이름에 일부러 숫자 8을 넣었습니다. 8이 2층 객실 동체의 단면을 닮았고, 판매를 노린 동아시아에서 행운의 숫자였기 때문입니다. 2005년 4월 프랑스 툴루즈에서 첫 비행을 한 이 여객기는?",
+    "answer": "A380",
+    "acceptedAnswers": [
+     "에어버스 A380"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "생산은 2021년에 끝나 모두 251대가 인도되었고, 최대 853명까지 태울 수 있게 인증받았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "일부러 숫자 8을 넣었다 · 2005년 툴루즈 첫 비행",
+     "difWhy": "3 — 숫자 정확히 써야 하고 기종 이름 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 항공기 기종 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "보잉 747에 맞서 만든 세계에서 가장 큰 여객기로, 에미레이트 항공이 가장 많이 띄운다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "에어버스의 2층 초대형 여객기 기종",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "초대형 여객기 뉴스",
+     "piece": "f02",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '여객기 기종 이름' 이 끝 ○○ '여객기' 와 일치 · 8의 까닭을 바로 풀어 줘 따라가기 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "A380",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "에어버스 A380",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "A380",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "131",
+      "answer": "콩코드",
+      "verdict": "diff",
+      "why": "새 정답 A380 과 옛 정답 콩코드 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5658",
+      "answer": "보잉 747",
+      "verdict": "diff",
+      "why": "새 정답 A380 과 옛 정답 보잉 747 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4229",
+      "answer": "코메트",
+      "verdict": "diff",
+      "why": "새 정답 A380 과 옛 정답 코메트 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032b:g032b-j07-5",
+      "answer": "에어포스 원",
+      "verdict": "diff",
+      "why": "새 정답 A380 과 옛 정답 에어포스 원 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032a:g032a-j08-2",
+      "answer": "비행운",
+      "verdict": "diff",
+      "why": "새 정답 A380 과 옛 정답 비행운 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Airbus_A380",
+     "https://ko.wikipedia.org/wiki/에어버스_A380"
+    ],
+    "facts": [
+     {
+      "claim": "8은 2층 단면을 닮고 동아시아 행운의 숫자라 고름 · 2000년 12월 착수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A380",
+      "note": "On 19 December 2000, the supervisory board of newly restructured Airbus voted to launch ... the A3XX, re-designated as A380 ... It was chosen because the number 8 resembles the double-deck cross section, and is a lucky number in many East Asian countries where the aircraft was being marketed."
+     },
+     {
+      "claim": "2000년 12월 19일 개발 착수 · 2005년 4월 27일 툴루즈 첫 비행 · 2층 구조",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/에어버스_A380",
+      "note": "에어버스 A380은 에어버스가 개발한 2층 구조의 초대형 4발 항공기이다. 대형 항공기 시장을 독점하고 있는 보잉 747에 대항하기 위해 2000년 12월 19일 개발에 착수했으며, 2005년 4월 27일 에어버스의 본사가 있는 프랑스 오트가론주 툴루즈에서 첫 비행을 성공적으로 마쳤다."
+     },
+     {
+      "claim": "세계 최대 여객기 · 보잉 747 대항 · 에미레이트 최대 운용(116대)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A380",
+      "note": "It is the world's largest passenger airliner and the only full-length double-deck jet airliner. ... to challenge the dominance of the Boeing 747 ... with Emirates being by far the largest operator with 116 A380s in its fleet."
+     },
+     {
+      "claim": "2021년 생산 끝 · 251대 인도 · 최대 853명 인증",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A380",
+      "note": "manufacturing of the aircraft ending in 2021 ... There were 189 aircraft (of 251 delivered) ... a maximum certified capacity for 853 passengers."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Airbus_A380"
+    ],
+    "hintNote": null,
+    "easiestCue": "에어버스 기종 이름에 숫자 8 · 2층",
+    "worthWhyGen": "기종 이름의 8이 2층 단면 모양과 행운의 숫자에서 왔다는 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '여객기 기종 이름' 예",
+     "unique": "8을 넣은 에어버스 2층 기종은 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 보잉 747"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "aerospace/1#g032b-g032b-j27-9",
+   "seed": {
+    "subject": "스텔스기",
+    "aspect": null,
+    "ref": "g032b-j27-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "군용기의 한 갈래입니다. 1999년 3월 코소보 전쟁 때 유고슬라비아군이 옛 소련제 지대공 미사일로 미국의 F-117 나이트호크를 떨어뜨렸습니다. 이 갈래의 비행기가 격추된 것은 이때가 처음이었습니다. F-117 같은 이런 비행기를 무엇이라 할까요?",
+    "answer": "스텔스기",
+    "acceptedAnswers": [
+     "스텔스 항공기",
+     "스텔스 전투기",
+     "스텔스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "격추된 기체 잔해는 러시아가 살펴봤고, 중국도 현지에서 부품을 사들였다는 말이 전한다. 조종사는 탈출해 8시간 뒤 구조됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "F-117 같은 이런 비행기",
+     "difWhy": "2 — F-117 단서로 스텔스기 쉬움",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 군사 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "전파를 빨아들이는 도료와 모난 몸체로 레이더에 거의 잡히지 않게 만든 비행기로, F-22·F-35가 대표",
+    "generalHintVersion": "hint-v7",
+    "identity": "레이더 등에 잘 탐지되지 않도록 설계한 군용 항공기",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "전투기 뉴스, F-35",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '군용기의 한 갈래' 가 종류. 끝에서 'F-117 같은 이런 비행기' 로 대상을 다시 짚는다."
+    },
+    "blindQuestion": {
+     "guess": "스텔스기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스텔스기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "스텔스기",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1391",
+      "answer": "양력",
+      "verdict": "diff",
+      "why": "스텔스기 vs 양력 — 다름"
+     },
+     {
+      "old": "1395",
+      "answer": "난기류",
+      "verdict": "diff",
+      "why": "스텔스기 vs 난기류 — 다름"
+     },
+     {
+      "old": "3342",
+      "answer": "블랙박스",
+      "verdict": "diff",
+      "why": "스텔스기 vs 블랙박스 — 다름"
+     },
+     {
+      "old": "1396",
+      "answer": "소닉붐",
+      "verdict": "diff",
+      "why": "스텔스기 vs 소닉붐 — 다름"
+     },
+     {
+      "old": "g032b:g032b-j07-5",
+      "answer": "에어포스 원",
+      "verdict": "diff",
+      "why": "스텔스기 vs 에어포스 원 — 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/1999_F-117A_shootdown",
+     "https://ko.wikipedia.org/wiki/스텔스_기술"
+    ],
+    "facts": [
+     {
+      "claim": "1999-03-27 코소보 전쟁 · 유고군 S-125 미사일로 F-117 격추 · 첫 격추",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1999_F-117A_shootdown",
+      "note": "On 27 March 1999, during the NATO bombing of Yugoslavia amid the Kosovo War, a Yugoslav Army unit shot down a Lockheed F-117 Nighthawk stealth ground attack aircraft ... by firing an S-125 Neva/Pechora surface-to-air missile. It was the first ever shootdown of a stealth aircraft."
+     },
+     {
+      "claim": "소련제 S-125 체계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1999_F-117A_shootdown",
+      "note": "equipped with a Yugoslav version of the Soviet Isayev S-125 \"Neva\" missile system"
+     },
+     {
+      "claim": "스텔스 = 레이더 탐지 회피 · 전파 흡수 도료 · 형태 수정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스텔스_기술",
+      "note": "레이더에 의한 항공기, 미사일의 조기 발견을 곤란하게 하는 기술. 날개, 동체 등에 특수 페인트를 도포하거나 ... 전파를 흡수하여 반사를 적게 하는 방법 ... 기체 구조상의 형태를 수정하여 전파가 온 방향으로의 반사를 가능한 한 줄이는 방식"
+     },
+     {
+      "claim": "잔해 러시아 조사 · 중국 부품 구입 설 · 조종사 8시간 뒤 구조",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1999_F-117A_shootdown",
+      "note": "Russian officials later confirmed they had examined the wreckage ... China also allegedly purchased wreckage parts / The pilot ejected safely and was rescued eight hours later"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/스텔스_기술"
+    ],
+    "hintNote": null,
+    "easiestCue": "F-117 나이트호크(이름을 알면 바로)",
+    "worthWhyGen": "뉴스에 자주 나오는 군사 기술 말 · 그 '불패' 신화가 처음 깨진 사건(2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '군용기의 한 갈래' 예",
+     "unique": "F-117 같은 갈래 — 하나(전투기·공격기는 넓은 말이라 갈래 이름 요구)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

@@ -1,0 +1,137 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "theatre/2",
+  "midKey": "theatre",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "theatre/2#g032b-g032b-j08-10",
+   "seed": {
+    "subject": "마이 페어 레이디",
+    "aspect": null,
+    "ref": "g032b-j08-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1956년 브로드웨이에서 초연해 토니상 최우수 뮤지컬을 받은 작품이 있습니다. 제작 중에는 다른 가제로 불렸지만, 작사가 앨런 제이 러너는 영국 동요 '런던 다리가 무너진다'의 절마다 끝에 붙는 구절을 제목으로 골랐습니다. 이 뮤지컬은 무엇일까요?",
+    "answer": "마이 페어 레이디",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "My Fair Lady"
+    ],
+    "explanation": "원작은 버나드 쇼의 희곡 '피그말리온'이며, 초연과 런던 공연 모두 렉스 해리슨과 줄리 앤드루스가 주연을 맡았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1956년 브로드웨이 토니상 · 런던 다리가 무너진다 구절",
+     "difWhy": "3 — 뮤지컬 작품 이름 · 제목 유래 단서가 간접",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 작품 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "꽃 파는 처녀 일라이자가 음성학자 히긴스 교수에게 상류층 말씨를 배우는 뮤지컬로, 영화판에서는 오드리 헵번이 주연했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "버나드 쇼 '피그말리온' 원작의 브로드웨이 뮤지컬",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "유명 뮤지컬·영화",
+     "piece": "f06",
+     "genPct": 50
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "마이 페어 레이디",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마이 페어 레이디",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마이 페어 레이디",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마이_페어_레이디",
+     "https://en.wikipedia.org/wiki/My_Fair_Lady",
+     "knowledge"
+    ],
+    "facts": [
+     {
+      "claim": "1956 브로드웨이 초연 · 토니상 최우수 뮤지컬",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마이_페어_레이디",
+      "note": "1956년 브로드웨이 초연은 주목할 만한 비평적, 대중적 성공을 거두어 최우수 뮤지컬을 포함한 6개의 토니상을 수상하였다."
+     },
+     {
+      "claim": "가제 My Lady Liza · 러너가 동요 London Bridge 마지막 줄에서 제목",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/My_Fair_Lady",
+      "note": "the show [was] typically referred to as My Lady Liza ... Lerner preferred My Fair Lady, relating both to one of Shaw's provisional titles for Pygmalion and to the final line of every verse of the nursery rhyme \"London Bridge Is Falling Down\"."
+     },
+     {
+      "claim": "일라이자 · 히긴스 · 말하기 교습",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/마이_페어_레이디",
+      "note": "코크니 억양을 가진 꽃 파는 소녀 일라이자 둘리틀이 상류층에 진출하기 위해 음성학자 헨리 히긴스 교수에게 말하기 교습을 받는 내용"
+     },
+     {
+      "claim": "1964 영화 오드리 헵번 주연",
+      "where": "h",
+      "url": "knowledge",
+      "note": "1964년 영화판(아카데미 작품상) 일라이자 역 오드리 헵번 — 지식"
+     },
+     {
+      "claim": "피그말리온 원작 · 렉스 해리슨·줄리 앤드루스",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/마이_페어_레이디",
+      "note": "조지 버나드 쇼의 1913년 연극 《피그말리온》 ... 렉스 해리슨과 줄리 앤드루스가 두 제작에 모두 주연으로 출연하였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/마이_페어_레이디"
+    ],
+    "hintNote": null,
+    "easiestCue": "'런던 다리가 무너진다' 후렴 구절이 제목인 1956년 뮤지컬",
+    "worthWhyGen": "유명 뮤지컬 제목이 동요 구절에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '작품'(뮤지컬은 '토니상 최우수 뮤지컬'로 첫 문장에) 예",
+     "unique": "1956 토니 최우수 뮤지컬로 유일",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 오드리 헵번"
+    ],
+    "job": "job-08",
+    "discarded": "알가치 1 (고유명사 · 작품 이름 확인)"
+   }
+  }
+ ]
+}

@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-geo/1",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/1#g032b-g032b-j03-10",
+   "seed": {
+    "subject": "바레인",
+    "aspect": null,
+    "ref": "g032b-j03-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중동의 한 나라 이름은 아랍어로 '두 바다'라는 뜻입니다. 두 바다가 무엇인지는 아직 의견이 갈리는데, 둘레의 짠 바닷물과 땅속이나 바다 밑에서 솟는 민물을 함께 가리킨다는 풀이가 그 하나입니다. 1986년 사우디아라비아와 약 25km 길이의 다리로 이어진 이 나라는?",
+    "answer": "바레인",
+    "acceptedAnswers": [
+     "바레인 왕국"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "옛 아랍 사람들은 이 섬을 '아왈'이라 불렀습니다. 지금은 주민의 절반 넘게가 외국에서 온 사람입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "사우디아라비아와 25km 다리 · 아랍어로 두 바다",
+     "difWhy": "3 — 중동 소국 이름 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 국가 이름 일반 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "수도는 마나마이며, 섬 33개로 이루어진 페르시아만의 왕국으로 아시아에서 몰디브·싱가포르 다음으로 작은 나라다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "페르시아만의 섬나라 바레인",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "F1·월드컵·뉴스에서 접함",
+     "piece": "f03",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '중동의 한 나라' 가 끝 ○○(나라) 와 일치, 이름 풀이 문장도 쉽게 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "바레인",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "바레인",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "바레인",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1325",
+      "answer": "카자흐스탄",
+      "verdict": "diff",
+      "why": "새 정답 바레인의 지식(유래·사실)과 옛 정답 카자흐스탄의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "3940",
+      "answer": "러시아",
+      "verdict": "diff",
+      "why": "새 정답 바레인의 지식(유래·사실)과 옛 정답 러시아의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6444",
+      "answer": "아이슬란드",
+      "verdict": "diff",
+      "why": "새 정답 바레인의 지식(유래·사실)과 옛 정답 아이슬란드의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1326",
+      "answer": "이스탄불",
+      "verdict": "diff",
+      "why": "새 정답 바레인의 지식(유래·사실)과 옛 정답 이스탄불의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bahrain",
+     "https://ko.wikipedia.org/wiki/바레인",
+     "https://en.wikipedia.org/wiki/King_Fahd_Causeway"
+    ],
+    "facts": [
+     {
+      "claim": "이름 = 아랍어 '두 바다' · 어느 바다인지 다툼 · 짠물과 민물 설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bahrain",
+      "note": "al-Bahrayn originally means \"the two seas\". ... It remains disputed which \"two seas\" the name Bahrayn originally refers to. ... Today, Bahrain's \"two seas\" are generally taken to be the bay east and west of the island, the seas north and south of the island, or the salt and fresh water present above and below the ground. In addition to wells, there are areas of the sea north of Bahrain where fresh water bubbles up in the middle of the saltwater"
+     },
+     {
+      "claim": "국명 '두 개의 바다'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/바레인",
+      "note": "국명 \"바레인\"은 아랍어로 \"두 개의 바다\"를 뜻한다."
+     },
+     {
+      "claim": "킹 파드 코즈웨이 25km · 1986년 11월 26일 개통",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/King_Fahd_Causeway",
+      "note": "The King Fahd Causeway ... is a 25 km (15.5 mi) long series of bridges and causeways connecting Khobar, Saudi Arabia, and Al Jasra, Bahrain ... On 26 November 1986, the causeway was officially inaugurated"
+     },
+     {
+      "claim": "수도 마나마 · 섬 33개 · 아시아에서 몰디브·싱가포르 다음으로 작음",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Bahrain",
+      "note": "the country comprises a small archipelago of 33 natural islands ... is the third-smallest nation in Asia after the Maldives and Singapore. The capital and largest city is Manama."
+     },
+     {
+      "claim": "옛 이름 아왈 · 외국인 53.4%",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bahrain",
+      "note": "originally known to the Arabs as Awal. / 848,934 are expatriates (53.4% of the population)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bahrain"
+    ],
+    "hintNote": null,
+    "easiestCue": "사우디와 다리로 이어진 중동 나라",
+    "worthWhyGen": "나라 이름이 왜 '두 바다'인지(바다 속 민물샘)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '나라' 예",
+     "unique": "사우디와 1986 다리 — 바레인 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  }
+ ]
+}

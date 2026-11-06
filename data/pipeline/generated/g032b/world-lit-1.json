@@ -1,0 +1,167 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-lit/1",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/1#g032b-g032b-j30-12",
+   "seed": {
+    "subject": "신데렐라",
+    "aspect": null,
+    "ref": "g032b-j30-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 그리스 지리학자 스트라본이 남긴 이야기가 있습니다. 목욕하던 여인의 신 한 짝을 독수리가 물고 날아가, 야외에서 재판하던 이집트 왕의 무릎에 떨어뜨립니다. 왕은 신 주인을 찾아 그녀와 결혼합니다. 이 이야기를 가장 오래된 원형으로 꼽는 동화는?",
+    "answer": "신데렐라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "주인공 로도피스는 이집트에 살던 그리스 출신 노예였다고 전합니다. 비슷한 이야기는 세계에서 천 편 가까이 모였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "신 한 짝을 독수리가 물고 / 신 주인과 결혼 동화",
+     "difWhy": "3 — 신데렐라 쉬우나 스트라본 단서로 풀이 · 이야기 속 신 한 짝이 곧 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 유명 동화의 원형 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "자정이 되면 마법이 풀려, 무도회장을 급히 빠져나오다 유리 구두 한 짝을 잃는 아가씨의 이야기다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "유리 구두로 유명한 유럽 민담·동화",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "대표 동화",
+     "piece": "f01",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '스트라본이 남긴 이야기'가 곧 단서의 종류, 끝 ○○(동화)와 이어짐. 이야기 자체가 단서."
+    },
+    "blindQuestion": {
+     "guess": "신데렐라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "신데렐라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "신데렐라",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1421",
+      "answer": "디즈니 프린세스",
+      "verdict": "diff",
+      "why": "신데렐라 원형(스트라본) vs 디즈니 프린세스 — 다른 지식"
+     },
+     {
+      "old": "2028",
+      "answer": "이솝 우화",
+      "verdict": "diff",
+      "why": "신데렐라 vs 이솝 우화 — 다른 지식"
+     },
+     {
+      "old": "2030",
+      "answer": "천일야화",
+      "verdict": "diff",
+      "why": "신데렐라 vs 천일야화 — 다른 지식"
+     },
+     {
+      "old": "6125",
+      "answer": "데카메론",
+      "verdict": "diff",
+      "why": "스트라본의 신데렐라 원형 vs 데카메론 자필본: 지식 무관"
+     },
+     {
+      "old": "4708",
+      "answer": "캔터베리 이야기",
+      "verdict": "diff",
+      "why": "신데렐라 원형 vs 캔터베리 이야기 구성: 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cinderella",
+     "https://en.wikipedia.org/wiki/Rhodopis",
+     "https://ko.wikipedia.org/wiki/신데렐라"
+    ],
+    "facts": [
+     {
+      "claim": "스트라본 기록 로도피스 이야기 = 가장 오래된 신데렐라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cinderella",
+      "note": "The earliest known version of the Cinderella story is usually considered to be the Greek story of Rhodopis, as described by the scholar Strabo ... about a Greek slave girl who marries the king of Egypt."
+     },
+     {
+      "claim": "목욕 중 독수리가 신을 채 가 야외 재판 중인 왕 무릎에",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cinderella",
+      "note": "when [Rhodopis] was bathing, an eagle snatched one of her sandals from her maid and carried it to Memphis; and while the king was administering justice in the open air, the eagle ... flung the sandal into his lap"
+     },
+     {
+      "claim": "같은 이야기 · 가장 오래된 변형으로 여겨짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rhodopis",
+      "note": "Strabo and Aelian both tell a story about Rhodopis that, while she was taking a bath, an eagle stole her sandal and dropped it in the lap of the king ... It is sometimes considered the earliest known version of the Cinderella story."
+     },
+     {
+      "claim": "자정·유리 구두 한 짝",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/신데렐라",
+      "note": "다만 자정이 지나면 모든 마술이 사라진다고 말했다 ... 너무 서두른 바람에 신데렐라는 유리 구두 한 짝을 잃어 버리고 만다."
+     },
+     {
+      "claim": "수집된 이야기 천 편 가까이",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/신데렐라",
+      "note": "현재까지 수집된 신데렐라 이야기는 천 편에 가깝다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/신데렐라"
+    ],
+    "hintNote": null,
+    "easiestCue": "신 한 짝으로 주인을 찾아 왕이 결혼하는 이야기",
+    "worthWhyGen": "누구나 아는 동화의 원형(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '이야기' — 종류 명사(동화)는 끝 문장",
+     "unique": "신 한 짝·결혼 → 신데렐라 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

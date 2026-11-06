@@ -1,0 +1,279 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "plants/2",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/2#g032b-g032b-j05-10",
+   "seed": {
+    "subject": "에델바이스",
+    "aspect": null,
+    "ref": "g032b-j05-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "높은 산 바위틈에 피는 한 꽃은 1856년 오스트리아 황제 프란츠 요제프 1세가 가파른 바위에서 손수 꺾어 황후 엘리자베트에게 바치면서 널리 사랑받았습니다. 얻기 어려워 '이 꽃을 가진 것은 남다른 용기의 증거'라는 말까지 퍼졌고, 1907년 황제는 이 꽃을 산악 부대의 휘장으로 정했습니다. 이 꽃은?",
+    "answer": "에델바이스",
+    "acceptedAnswers": [
+     "서양솜다리"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 독일어로 '고귀한 흰색'이라는 뜻이다. 빽빽한 털은 추위와 건조, 자외선을 막아 주는 것으로 보인다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "높은 산 바위틈에 피는 꽃 / 황제가 황후에게 / 산악 부대 휘장",
+     "difWhy": "2 — 산악 부대 휘장 꽃 · 에델바이스 대중적, 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 유명한 꽃의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "알프스 높은 바위 지대에서 자라는, 흰 솜털에 덮인 별 모양 꽃으로 '사운드 오브 뮤직'의 노래로 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "알프스 고산 바위 지대의 흰 솜털 꽃 — 오스트리아·스위스 등의 상징",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "노래·사운드 오브 뮤직",
+     "piece": "f01",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '꽃'이 나오고 끝 ○○(꽃)과 같음, 연도 둘이어도 주어 하나씩"
+    },
+    "blindQuestion": {
+     "guess": "에델바이스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "에델바이스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "에델바이스",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3884",
+      "answer": "사운드 오브 뮤직",
+      "verdict": "diff",
+      "why": "에델바이스 꽃·황제 일화 vs 뮤지컬 사운드 오브 뮤직 — 꽃 지식과 뮤지컬 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Leontopodium_nivale",
+     "https://ko.wikipedia.org/wiki/에델바이스"
+    ],
+    "facts": [
+     {
+      "claim": "1856년 황제가 가파른 바위에서 꺾어 황후(시시)에게 · 이로 관심",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leontopodium_nivale",
+      "note": "an incident from 1856, when the Austrian Emperor Franz Joseph I went on a mountain hike to the Pasterzen Glacier on the Großglockner with his wife Sisi. There the emperor picked his wife an edelweiss from the steep rock"
+     },
+     {
+      "claim": "'가진 것은 남다른 용기의 증거' (1861 소설) · 1907년 산악 부대 휘장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leontopodium_nivale",
+      "note": "the possession of one is a proof of unusual daring. ... The edelweiss was established in 1907 as the sign of the Imperial-Royal Mountain Troops by Emperor Franz Joseph I."
+     },
+     {
+      "claim": "알피니즘의 상징 · 사랑하는 이에게 주는 것은 헌신의 약속 · 1,800~3,000m 암석지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/에델바이스",
+      "note": "알프스와 카르파티아 산맥과 관련된 투박한 아름다움과 순수함을 나타내는 알피니즘의 상징으로 사용되었다. ... 민속 전통에 따르면 이 꽃을 사랑하는 사람에게 주는 것은 헌신의 약속이다."
+     },
+     {
+      "claim": "이름 = 독일어 edel(고귀한)+weiß(흰) · 털이 추위·건조·자외선 막음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Leontopodium_nivale",
+      "note": "is a compound of edel \"noble\" and weiß \"white\". ... Its leaves and flowers are covered with dense hairs, which appear to protect the plant from cold, aridity, and ultraviolet radiation."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/에델바이스"
+    ],
+    "hintNote": null,
+    "easiestCue": "오스트리아 황제·산악 부대 휘장 꽃 — 알프스 꽃 = 이것으로 떠올릴 수 있어 4 쪽일 수 있음",
+    "worthWhyGen": "이 꽃이 왜 용기·알프스·산악 부대의 상징이 되었나 — 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '꽃' 예",
+     "unique": "1856 · 1907 산악 부대 휘장 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 169자",
+     "crossans 사운드 오브 뮤직"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "plants/2#g032b-g032b-j27-5",
+   "seed": {
+    "subject": "은방울꽃",
+    "aspect": null,
+    "ref": "g032b-j27-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "봄에 피는 흰 꽃입니다. 프랑스에서는 5월 1일 노동절에 이 꽃 한 다발을 서로 건네는 풍습이 있습니다. 크리스챤 디올이 가장 좋아한 꽃이라 1956년 이 꽃 향을 본뜬 향수 '디오리시모'도 나왔습니다. 이 꽃은 무엇일까요?",
+    "answer": "은방울꽃",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "학명 Convallaria는 '골짜기의 백합'이라는 뜻이다. 윌리엄 왕세손과 케이트 미들턴의 결혼식 부케에도 이 꽃이 들어갔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "프랑스 5월 1일 노동절 · 디오리시모",
+     "difWhy": "3 — 풍습·향수 단서에서 꽃 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 꽃 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "5월 산속 그늘에서 향기로운 흰 꽃이 고개 숙여 피지만, 꽃·잎·빨간 열매 모두 맹독이 있는 우리 들꽃",
+    "generalHintVersion": "hint-v7",
+    "identity": "5월에 작은 흰 꽃이 늘어져 피는 향기로운 독초(Convallaria majalis)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "꽃·향수 이름으로 들어 봄",
+     "piece": "f01",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '봄에 피는 흰 꽃' 이 끝 ○○ '꽃' 과 일치 · 짧음"
+    },
+    "blindQuestion": {
+     "guess": "은방울꽃",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "은방울꽃",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "은방울꽃",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1181",
+      "answer": "국화",
+      "verdict": "diff",
+      "why": "은방울꽃 vs 국화 — 다름"
+     },
+     {
+      "old": "g032a:g032a-j27-5",
+      "answer": "코스모스",
+      "verdict": "diff",
+      "why": "은방울꽃 vs 코스모스 — 다름"
+     },
+     {
+      "old": "1185",
+      "answer": "백합",
+      "verdict": "diff",
+      "why": "은방울꽃 vs 백합 — 다른 꽃"
+     },
+     {
+      "old": "1177",
+      "answer": "장미",
+      "verdict": "diff",
+      "why": "은방울꽃 vs 장미 — 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Convallaria_majalis",
+     "https://fr.wikipedia.org/wiki/Muguet",
+     "https://ko.wikipedia.org/wiki/은방울꽃"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스 5월 1일 노동절에 파는 전통 · 디올이 가장 좋아한 꽃 · 1956 디오리시모",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Convallaria_majalis",
+      "note": "it became tradition in France to sell lily-of-the-valley on international Labour Day, 1 May (also called La Fête du Muguet) ... / In 1956, the French firm Dior produced a fragrance simulating lily-of-the-valley, which was Christian Dior's favourite flower. Diorissimo"
+     },
+     {
+      "claim": "muguet는 5월 1일과 결부",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Muguet",
+      "note": "Muguet de mai (Convallaria majalis) ... plante ornementale vivace associée, dans certains pays européens, au 1er mai."
+     },
+     {
+      "claim": "5월경 흰 꽃이 밑으로 늘어져 핌 · 향기 · 산지 숲 · 전체 맹독 · 빨간 열매",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/은방울꽃",
+      "note": "산지의 숲속에서 자란다. ... 꽃은 흰색으로, 5월 경이 되면 꽃 줄기 끝에 밑으로 늘어져 피는데 향기가 좋다. ... '독초' 로써 꽃과 뿌리, 줄기, 잎, 열매에 맹독이 있다. / (en) The fruit is a poisonous small orange-red berry"
+     },
+     {
+      "claim": "Convallaria = 골짜기의 백합 · 윌리엄·케이트 결혼 부케",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/은방울꽃",
+      "note": "Convallaria는 convallis(골짜기)와 leirion(백합)의 라틴어 합성어로 산골짜기의 백합이라는 뜻 / (en) Lily-of-the-valley was featured in the bridal bouquet at the wedding of Prince William and Catherine Middleton."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/은방울꽃",
+     "https://en.wikipedia.org/wiki/Convallaria_majalis"
+    ],
+    "hintNote": null,
+    "easiestCue": "디올이 좋아한 흰 꽃 · 프랑스 5월 1일",
+    "worthWhyGen": "흔한 들꽃에 얽힌 나라 풍습·향수 이야기(취미 세부 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '흰 꽃' 예",
+     "unique": "5월 1일 프랑스 · 디오리시모 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

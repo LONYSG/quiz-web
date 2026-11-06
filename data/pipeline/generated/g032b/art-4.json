@@ -1,0 +1,126 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "art/4",
+  "midKey": "art",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "art/4#g032b-g032b-j17-7",
+   "seed": {
+    "subject": "단색화",
+    "aspect": null,
+    "ref": "g032b-j17-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 현대 미술의 한 흐름이 있습니다. 1975년 도쿄화랑에서 한국 작가 다섯 명이 연 전시 '다섯 가지의 흰색'이 그 바탕을 만들었다고 꼽힙니다. 지금의 이름은 2000년 광주 비엔날레 특별전을 기획한 평론가 윤진섭이 처음 썼다고 알려져 있습니다. 이 미술 흐름은 무엇일까요?",
+    "answer": "단색화",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "그때는 '한국적 미니멀리즘'으로 불렸다. 영어 표기도 한동안 Tansaekhwa와 Dansaekhwa가 함께 쓰였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "1975년 다섯 가지의 흰색 전시 · 윤진섭이 이름 붙임",
+     "difWhy": "4 — 미술 사조 이름은 설명 → 이름 · 일반인 낯섦",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 미술 사조 이름 암기",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "박서보·윤형근·정상화·하종현 같은 화가들이 1970년대에 그린 한국 추상화 흐름으로, 2010년대 중반 국내외에 열풍이 불었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1970년대 한국 추상회화 흐름(박서보·윤형근·하종현)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "미술 뉴스·전시, 박서보",
+     "piece": "f02",
+     "genPct": 40
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "단색화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "단색화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "단색화",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/단색화",
+     "https://en.wikipedia.org/wiki/Dansaekhwa"
+    ],
+    "facts": [
+     {
+      "claim": "2000년 광주 비엔날레 특별전 기획 윤진섭이 처음 쓴 용어 · 1975 도쿄화랑 '다섯가지의 흰색' 전 영향",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/단색화",
+      "note": "2000년 제3회 광주 비엔날레의 특별전으로 열린 <한일 현대미술의 단면>전을 기획·큐레이팅한 미술평론가 윤진섭이 처음 사용하기 시작한 용어로 알려져 있다. ... 1975년 일본 도쿄화랑에서 권영우, 박서보, 서승원, 허황, 이동엽의 작품으로 기획한 <다섯가지의 흰색(白):한국 5인의 작가>전이 백색을 중심으로 한국 현대미술의 단색조 개념을 만드는데 영향을 끼쳤다고 알려져 있다."
+     },
+     {
+      "claim": "도쿄화랑 전시가 첫 주요 전시 · 다섯 작가 · 2000년 광주 전시가 국제 용어 사용의 출처",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dansaekhwa",
+      "note": "...as the first major exhibition of works that were later identified as part of Dansaekhwa. The five featured artists were Kwon Young-woo, Park Seo-Bo, Suh Seung-Won, Lee Dong-Youb, and Hur Hwang. ... Gwangju Museum of Art in 2000. A 2017 collection of primary documents on Dansaekhwa ... also credits the use of \"Dansaekhwa\" in the international art world to this show."
+     },
+     {
+      "claim": "1세대 박서보·윤형근·정상화·정창섭·하종현 · 1970년대 · 2010년 중반 열풍",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/단색화",
+      "note": "소위 '단색화 1세대'라고 통칭되는 작가들 중에는 박서보, 윤형근, 정상화, 정창섭, 하종현 등이 있다. / 1970년대 한국 현대미술의 중심을 이룬 ... 추상회화 / 2010년 중반 '단색화 열풍' 이후"
+     },
+     {
+      "claim": "당시 '한국적 미니멀리즘' · 영어 표기 병용",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/단색화",
+      "note": "당시에는 '한국적 미니멀리즘' 혹은 '한국 모노크롬 회화'로 불렸다. ... 영어권 표기는 한동안 'Tansaekhwa'와 'Dansaekhwa'가 병용되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/단색화"
+    ],
+    "hintNote": null,
+    "easiestCue": "'다섯 가지의 흰색' 전시 — 흰색 쪽 연상, 미술 관심층만",
+    "worthWhyGen": "해외에서 재조명된 한국 현대미술의 대표 흐름과 그 이름이 나중에 붙었다는 사실(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '미술의 한 흐름' 예",
+     "unique": "도쿄화랑 1975 · 윤진섭 2000 → 하나",
+     "hint12": "① 예 ② 예 — 친숙도 1 위험 있음(정답만 보면 30~40 어림)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17",
+    "discarded": "알가치 1 (고유명사 · 미술 사조 이름 암기)"
+   }
+  }
+ ]
+}

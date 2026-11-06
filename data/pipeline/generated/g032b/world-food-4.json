@@ -1,0 +1,246 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-food/4",
+  "midKey": "world-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-food/4#g032b-g032b-j09-11",
+   "seed": {
+    "subject": "레토르트",
+    "aspect": null,
+    "ref": "g032b-j09-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "통조림을 대신하려고 만든 식품 포장·살균 방식입니다. 지금 꼴의 포장재는 미국 육군 나틱 연구소 등이 함께 개발해 1978년 상을 받았고, 1968년 일본 오쓰카 식품이 카레로 세계 처음 상품화했습니다. 이름은 봉지째 데워 살균하는 고압 솥의 이름에서 왔는데, 그 말은 본디 목이 아래로 꺾인 실험용 증류 그릇입니다. 이 방식은?",
+    "answer": "레토르트",
+    "acceptedAnswers": [
+     "레토르트 식품",
+     "레토르트 파우치"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국에서는 1981년 오뚜기 '3분 요리'가 시초로 꼽히며, 캔보다 가볍고 납작해 보관이 쉽다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "통조림을 대신하려고 만든 식품 포장·살균 방식 · 봉지째 데워 살균하는 고압 솥",
+     "difWhy": "3 — 레토르트 일상어이나 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 포장 방식 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "카레·짜장을 봉지째 끓는 물이나 전자레인지에 데워 먹는 즉석식품처럼, 알루미늄 겹 봉지에 담아 살균하는 방식이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "조리한 음식을 금속·플라스틱 겹 봉지에 넣어 고온·고압으로 살균하는 포장 방식(retort pouch)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "레토르트 식품으로 흔히 들음",
+     "piece": "f03",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '식품 포장·살균 방식', 끝 ○○ '이 방식' 일치; 184자에 연도가 많으나 문장별 주어는 하나, 증류 그릇 풀이도 있음"
+    },
+    "blindQuestion": {
+     "guess": "레토르트 파우치",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "레토르트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "레토르트",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5627",
+      "answer": "테플론",
+      "verdict": "diff",
+      "why": "레토르트 포장과 테플론은 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Retort_pouch",
+     "https://en.wikipedia.org/wiki/Retort",
+     "https://ko.wikipedia.org/wiki/레토르트_식품"
+    ],
+    "facts": [
+     {
+      "claim": "통조림 대안 · 나틱 연구소 등 1978년 상 · 1968년 오쓰카 식품 본 카레 세계 첫 상품화 · 레토르트(오토클레이브)에서 가열",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Retort_pouch",
+      "note": "used as an alternative to traditional industrial canning methods ... In 1968 Otsuka Foods Company of Japan became the first company in the world to commercialize a retort food product. The product was a Japanese curry called \"Bon Curry\". ... invented by the United States Army Natick Soldier Research, Development and Engineering Center, Reynolds Metals Company, and Continental Flexible Packaging, who jointly received the Food Technology Industrial Achievement Award for its invention in 1978. ... The pouch is then heated ... under high pressure inside a retort or autoclave machine."
+     },
+     {
+      "claim": "레토르트 = 실험실 증류 그릇 · 목이 아래로 · 산업용 밀폐 가열 용기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Retort",
+      "note": "In a chemistry laboratory, a retort is a device used for distillation or dry distillation of substances. It consists of a spherical vessel with a long downward-pointing neck. ... In the chemical industry, a retort is an airtight vessel in which substances are heated"
+     },
+     {
+      "claim": "다층 포장 · 가열 살균 · 1981 오뚜기 3분 요리 시초 · 캔보다 가볍고 납작",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/레토르트_식품",
+      "note": "유연한 플라스틱필름과 금속호일을 여러 층으로 접착하여 만든 포장재 ... 가열 살균 또는 멸균한 제품 ... 오뚜기의 창업자인 故 함태호 회장이 1981년에 개발 및 출시한 '오뚜기 3분 요리'가 레토르트 식품의 시초였다. ... 캔,병보다 가볍고 납작한 모양새로 보관이 용이하며, 전자레인지 혹은 뜨거운 물로 데우는"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/레토르트_식품"
+    ],
+    "hintNote": null,
+    "easiestCue": "통조림 대신 · 1968년 카레 상품화",
+    "worthWhyGen": "늘 먹는 즉석 카레 봉지의 이름이 왜 '레토르트'인가(실험 그릇·살균 솥)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '식품 포장·살균 방식' 예",
+     "unique": "1968 오쓰카 · 나틱 연구소로 한정(통조림·진공 포장과 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 184자",
+     "crossans 카레/전자레인지/알루미늄"
+    ],
+    "job": "job-09"
+   }
+  },
+  {
+   "seedId": "world-food/4#g032b-g032b-j30-2",
+   "seed": {
+    "subject": "웍",
+    "aspect": null,
+    "ref": "g032b-j30-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 광둥 요리사들은 센 불 위에서 재료를 재빨리 볶을 때 배는 그을린 향을 '이 팬의 숨결'이라는 말로 부릅니다. 코팅된 팬으로는 이 향이 잘 나지 않는다고 합니다. 바닥이 둥글고 깊은 이 중국식 팬은?",
+    "answer": "웍",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 이름은 광둥어에서 왔고, 표준 중국어로는 '궈(鍋)'라고 합니다. 볶기뿐 아니라 찌기·튀기기·훈제에도 두루 씁니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "바닥이 둥글고 깊은 이 중국식 팬",
+     "difWhy": "2 — 웍은 요리 도구로 흔함 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 쓸모 — 조리 도구 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "중국집 주방에서 짜장 소스와 볶음밥을 센 불에 휘저어 볶는, 손잡이 달린 무쇠 팬이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "바닥이 둥글고 깊은 중국식 볶음 팬",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "조리도구 광고·요리 방송",
+     "piece": "f03",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 주어가 광둥 요리사지만 '이 팬의 숨결'에 종류 명사 팬이 붙어 있고 끝 ○○도 팬"
+    },
+    "blindQuestion": {
+     "guess": "웍",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "웍",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "웍",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Wok",
+     "https://ko.wikipedia.org/wiki/웍"
+    ],
+    "facts": [
+     {
+      "claim": "광둥 요리의 '웍의 숨결'(wok hei) — 센 불에 볶을 때 생기는 그을린 향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wok",
+      "note": "is the distinct charred, smoky flavor resulting from stir-frying foods over an open flame in Cantonese cuisine ... Wok hei refers to the flavor, taste, and \"essence\" imparted by a hot wok on food during stir frying."
+     },
+     {
+      "claim": "웍 헤이 = 웍의 숨결 · 코팅 웍은 이 맛을 못 냄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/웍",
+      "note": "문자 그대로 \"웍의 숨결\"을 의미하며, 광둥 요리에서 직화 위에 놓인 길들여진 웍에서 음식을 볶을 때 발생하는 ... 논스틱 웍은 웍 헤이 특유의 맛이나 느낌을 주지 못한다."
+     },
+     {
+      "claim": "광둥어 이름 · 표준 중국어 궈",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Wok",
+      "note": "Wok is a Cantonese word; the Mandarin is Guō."
+     },
+     {
+      "claim": "볶기·찌기·튀기기·훈제 등에 씀",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/웍",
+      "note": "웍은 볶기, 찌기, 지짐, 튀기기, 수자, 끓이기, 브레이징, 시어링, 스튜 만들기, 수프 만들기, 훈제 및 견과류 로스팅을 포함"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "바닥이 둥글고 깊은 중국식 팬",
+    "worthWhyGen": "흔히 쓰는 조리 도구 · '불맛'의 정체",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '광둥 요리사'·'팬' — 예",
+     "unique": "둥근 바닥·깊음·중국식 → 웍 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

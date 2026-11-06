@@ -1,0 +1,150 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "design-photo/2",
+  "midKey": "design-photo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/2#g032b-g032b-j24-3",
+   "seed": {
+    "subject": "청사진",
+    "aspect": null,
+    "ref": "g032b-j24-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "'앞날의 계획이나 구상'을 뜻하는 말로 흔히 쓰이는 이 낱말은 본래 도면을 베끼는 인화법을 가리켰습니다. 1842년 영국 과학자 존 허셜이 빛을 받으면 색이 변하는 철 화합물로 만든 방법입니다. 컴퓨터 설계가 나오기 전까지 건축 설계도를 뜨는 데 한 세기 넘게 쓰인 이것은 무엇일까요?",
+    "answer": "청사진",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "약품이 빛을 받아 프러시안 블루라는 파란 색소가 생기므로, 파란 바탕에 흰 선이 남는 데서 이름이 붙었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "'앞날의 계획이나 구상'을 뜻하는 말",
+     "difWhy": "2 — 청사진은 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "옛 건축 사무소에서 원본 도면을 감광지에 겹쳐 햇볕에 쬐어 뽑아낸 도면 사본",
+    "generalHintVersion": "hint-v7",
+    "identity": "설계도 복사용 시아노타입 인화물 — 지금은 '미래 계획'을 뜻하는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "청사진 비유 흔함, 설계도",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '이 낱말'로 뜻과 본래 쓰임을 함께 줘 종류가 잡힘; 끝 ○○ '이것'은 도면 복사법으로 이어짐; 철 화합물은 풀이돼 있음"
+    },
+    "blindQuestion": {
+     "guess": "청사진",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "청사진",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "청사진",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3524",
+      "answer": "프러시안 블루",
+      "verdict": "diff",
+      "why": "청사진 vs 프러시안 블루 — 안료 유래 vs 인화법, 다름"
+     },
+     {
+      "old": "6566",
+      "answer": "아인슈타인",
+      "verdict": "diff",
+      "why": "청사진 vs 아인슈타인 사진 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/청사진",
+     "https://en.wikipedia.org/wiki/Blueprint",
+     "https://en.wikipedia.org/wiki/Cyanotype"
+    ],
+    "facts": [
+     {
+      "claim": "본래 시아노타입으로 건축 도면을 복제한 결과물 · 지금은 미래 계획의 은유",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청사진",
+      "note": "청사진(靑寫眞, blueprint)은 본래 시아노타입이라는 특정 화학 인화법을 사용하여 건축 도면이나 기계 설계도 등 기술 도면을 복제한 결과물을 지칭하는 용어였다. ... \"어떤 일에 대한 미래의 상세한 계획이나 구상, 또는 그 계획을 담은 밑그림\"을 의미하는 강력한 은유적 표현"
+     },
+     {
+      "claim": "1842년 존 허셜 · 철 화합물 감광 · 한 세기 넘게 쓰임 · CAD로 대체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blueprint",
+      "note": "a contact print process on light-sensitive sheets introduced by Sir John Herschel in 1842 ... It was widely used for over a century for the reproduction of specification drawings used in construction and industry. ... superseded by digital computer-aided construction drawings."
+     },
+     {
+      "claim": "철 화합물(구연산철암모늄·페리시안화칼륨)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cyanotype",
+      "note": "The cyanotype process was discovered and named by Sir John Herschel. Herschel's investigation of the effects of light on iron compounds was published in 1842."
+     },
+     {
+      "claim": "트레이싱지 원본을 감광지 위에 두고 햇빛에 노출",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Blueprint",
+      "note": "The tracing paper drawing is placed on top of the sensitized paper, and both are clamped under glass, in a daylight exposure frame ... The frame is put out into daylight"
+     },
+     {
+      "claim": "프러시안 블루 · 파란 바탕 흰 선 → 이름",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/청사진",
+      "note": "이 방식은 결과물이 푸른색 바탕(프러시안 블루)에 흰색 선으로 나타나기 때문에 푸른색 사진 즉, 청사진이라는 이름이 붙었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Blueprint",
+     "https://ko.wikipedia.org/wiki/청사진"
+    ],
+    "hintNote": null,
+    "easiestCue": "'앞날의 계획'을 뜻하는 말 · 건축 설계도",
+    "worthWhyGen": "매일 쓰는 말이 사진 인화법에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '낱말' 예",
+     "unique": "계획 뜻 + 설계도 인화법 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-24"
+   }
+  }
+ ]
+}

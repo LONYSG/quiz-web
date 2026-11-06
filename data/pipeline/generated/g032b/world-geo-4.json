@@ -1,0 +1,485 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-geo/4",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/4#g032b-g032b-j04-3",
+   "seed": {
+    "subject": "크림반도",
+    "aspect": null,
+    "ref": "g032b-j04-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1954년 2월, 소련 최고회의 간부회는 러시아 공화국에 속해 있던 한 주를 우크라이나 공화국으로 넘겼습니다. 1654년 우크라이나와 러시아가 손잡은 페레야슬라우 협정의 300주년을 기념하는 상징적인 조치였습니다. 이때 우크라이나 땅이 된 이 주는 어디일까요?",
+    "answer": "크림반도",
+    "acceptedAnswers": [
+     "크림",
+     "크림주",
+     "크름반도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2차 대전 뒤 소련은 독일에 협력했다는 이유로 이곳의 타타르인 전부를 강제로 옮겼다. 2022년 이후 러시아는 이 땅을 자국 영토로 인정하라고 요구한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1954년 우크라이나로 넘긴 주 · 상징적 조치",
+     "difWhy": "3 — 크림 이양 역사 · 시사로 알려졌으나 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사·영토 필수 배경",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "흑해 북쪽 바다로 쑥 내민 땅으로, 2014년 러시아가 병합을 선언했고 1945년 얄타 회담이 열린 곳이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "흑해 북쪽 연안의 반도(Crimea) — 1954년 우크라이나로 이관, 2014년 러시아가 병합 선언",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "2014년 병합 뉴스·우크라이나 전쟁 보도",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '한 주'가 나오고 끝 ○○ '주'. 소련 행정 용어는 문맥으로 풀림"
+    },
+    "blindQuestion": {
+     "guess": "크림반도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "크림반도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "크림반도",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 7,
+     "found": 6,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "얄타 회담은 크림반도 리바디아 궁전",
+       "url": "https://ko.wikipedia.org/wiki/얄타_회담",
+       "note": "DB #3901: 크림반도에 있는 옛 러시아 황제의 여름 궁전 리바디아 궁전에서 열린 연합국 정상들의 모임 (얄타 회담 1945년 2월)"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "1277",
+      "answer": "얄타 회담",
+      "verdict": "diff",
+      "why": "새 정답 크림반도의 지식(유래·사실)과 옛 정답 얄타 회담의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6789",
+      "answer": "흑해",
+      "verdict": "diff",
+      "why": "새 정답 크림반도의 지식(유래·사실)과 옛 정답 흑해의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "3275",
+      "answer": "하이브리드전",
+      "verdict": "diff",
+      "why": "새 정답 크림반도의 지식(유래·사실)과 옛 정답 하이브리드전의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "3901",
+      "answer": "얄타 회담",
+      "verdict": "diff",
+      "why": "1954 크림 이관(페레야슬라우 300주년) vs 얄타 회담 — 크림반도는 장소 언급일 뿐 맞히는 지식 다름"
+     },
+     {
+      "old": "3303",
+      "answer": "쿠릴 열도",
+      "verdict": "diff",
+      "why": "크림반도 이관 vs 쿠릴 열도 영유권 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/1954_transfer_of_Crimea",
+     "https://ko.wikipedia.org/wiki/크림반도",
+     "https://ko.wikipedia.org/wiki/얄타_회담"
+    ],
+    "facts": [
+     {
+      "claim": "1954년 2월 19일 간부회 결정으로 러시아 SFSR → 우크라이나 SSR 이관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1954_transfer_of_Crimea",
+      "note": "On 19 February 1954, the Presidium of the Supreme Soviet of the Soviet Union issued a decree transferring the Crimean Oblast from the Russian Soviet Federative Socialist Republic to the Ukrainian Soviet Socialist Republic."
+     },
+     {
+      "claim": "페레야슬라우 협정 300주년 기념 · 상징적 조치",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1954_transfer_of_Crimea",
+      "note": "The transfer of the Crimean oblast to Ukraine has been described as a \"symbolic gesture\", marking the 300th anniversary of the 1654 Treaty of Pereyaslav"
+     },
+     {
+      "claim": "1954년 페레야슬라프 조약 300주년 기념 이관",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/크림반도",
+      "note": "1954년 : 니키타 흐루쇼프의 제안에 따라 페레야슬라프 조약 체결 300주년을 기념하고 소련이 크림주를 우크라이나 소비에트 사회주의 공화국에 양도함."
+     },
+     {
+      "claim": "흑해 북부 반도 · 2014 위기와 러시아 합병",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/크림반도",
+      "note": "흑해 북부 연안에 위치한 반도이다. ... 러시아의 크림반도 합병을 승인하지 않는다는 내용을 담은 결의안"
+     },
+     {
+      "claim": "얄타 회담은 크림반도 리바디아 궁전",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/얄타_회담",
+      "note": "DB #3901: 크림반도에 있는 옛 러시아 황제의 여름 궁전 리바디아 궁전에서 열린 연합국 정상들의 모임 (얄타 회담 1945년 2월)"
+     },
+     {
+      "claim": "크림 타타르인 전원 강제 이주(독일 협력 혐의)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1954_transfer_of_Crimea",
+      "note": "Because of alleged collaboration with the Germans by Crimean Tatars during World War II, all Crimean Tatars were deported by the Soviet regime"
+     },
+     {
+      "claim": "러시아는 영토 인정을 협상 조건으로 요구",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1954_transfer_of_Crimea",
+      "note": "the Russian government has stated that the Ukrainians must recognize Russia's sovereignty over the territory as part of any negotiated settlement to end the Russian invasion of Ukraine, which began in 2022."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/크림반도",
+     "https://ko.wikipedia.org/wiki/얄타_회담"
+    ],
+    "hintNote": null,
+    "easiestCue": "1954년 러시아 → 우크라이나 이관(2014년 뉴스에서 '흐루쇼프의 선물' 을 본 사람)",
+    "worthWhyGen": "지금 분쟁의 땅이 왜 우크라이나 땅이었나 — 협정 300주년 기념 선물(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '한 주' 예(종류 명사만)",
+     "unique": "1954 이관 + 300주년 = 크림 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 얄타 회담/흑해"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "world-geo/4#g032b-g032b-j19-7",
+   "seed": {
+    "subject": "간도",
+    "aspect": null,
+    "ref": "g032b-j19-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "두만강 북쪽 만주의 한 지역입니다. 1712년 세운 백두산정계비의 '동위토문'을 두고, 조선과 청은 토문강이 어느 강인지 서로 달리 풀었습니다. 1909년 일본은 안봉선 철도 부설권 등을 얻는 대가로 이곳을 청의 땅으로 인정했습니다. 이 지역은?",
+    "answer": "간도",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1903년 대한제국은 이범윤을 관리사로 보내 이곳을 실제로 다스리려 했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "두만강 북쪽 만주 · 1909년 안봉선 대가로 청 땅 인정",
+     "difWhy": "3 — 역사 용어 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 역사 교과 지명",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "오늘날 중국 연변 조선족 자치주 일대를 흔히 가리키며, 19세기 후반부터 조선 농민이 강을 건너 옮겨 가 살았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "두만강 북쪽 만주의 조선인 거주 지역(지금의 연변 일대)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "교과서의 간도 협약·간도 문제",
+     "piece": "f04",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '만주의 한 지역', 끝 ○○ '지역'. 정계비·토문강은 이름일 뿐 문장 뜻은 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "간도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "간도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "간도",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1012",
+      "answer": "청산리 대첩",
+      "verdict": "diff",
+      "why": "간도 지식(백두산정계비·간도 귀속)은 청산리 대첩·승부차기·정계비 건립 경위·토지 줄거리·별 헤는 밤과 맞히는 사실이 다르다(5-4 정계비는 같은 대상이나 간도 영유권 vs 비 이동 경위로 다름)"
+     },
+     {
+      "old": "5354",
+      "answer": "승부차기",
+      "verdict": "diff",
+      "why": "간도 지식(백두산정계비·간도 귀속)은 청산리 대첩·승부차기·정계비 건립 경위·토지 줄거리·별 헤는 밤과 맞히는 사실이 다르다(5-4 정계비는 같은 대상이나 간도 영유권 vs 비 이동 경위로 다름)"
+     },
+     {
+      "old": "5891",
+      "answer": "백두산정계비",
+      "verdict": "diff",
+      "why": "간도 지식(백두산정계비·간도 귀속)은 청산리 대첩·승부차기·정계비 건립 경위·토지 줄거리·별 헤는 밤과 맞히는 사실이 다르다(5-4 정계비는 같은 대상이나 간도 영유권 vs 비 이동 경위로 다름)"
+     },
+     {
+      "old": "3684",
+      "answer": "토지",
+      "verdict": "diff",
+      "why": "간도 지식(백두산정계비·간도 귀속)은 청산리 대첩·승부차기·정계비 건립 경위·토지 줄거리·별 헤는 밤과 맞히는 사실이 다르다(5-4 정계비는 같은 대상이나 간도 영유권 vs 비 이동 경위로 다름)"
+     },
+     {
+      "old": "453",
+      "answer": "별 헤는 밤",
+      "verdict": "diff",
+      "why": "간도 지식(백두산정계비·간도 귀속)은 청산리 대첩·승부차기·정계비 건립 경위·토지 줄거리·별 헤는 밤과 맞히는 사실이 다르다(5-4 정계비는 같은 대상이나 간도 영유권 vs 비 이동 경위로 다름)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/간도",
+     "https://ko.wikipedia.org/wiki/간도협약"
+    ],
+    "facts": [
+     {
+      "claim": "1712년 정계비 '동위토문' · 토문 해석 다툼",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/간도",
+      "note": "1712년(숙종 38년) ... 백두산정계비가 세워졌다. 정계비에는 조·청 양국의 경계를 '서위압록 동위토문(西爲鴨綠 東爲土門)'이라 하고 ... 조선과 청나라가 백두산정계비에 쓰여진 토문(土門)을 서로 달리 해석하면서"
+     },
+     {
+      "claim": "1909.9.4 일·청 협약 · 간도를 청 영토로 인정 · 같은 날 안봉선 철도부설권",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/간도협약",
+      "note": "1909년 9월 4일 청나라와 체결하였다. 이 조약은 도문강(圖們江, 두만강)을 한(韓)ㆍ청(淸) 사이의 국경으로 정하여 간도를 청나라 영토로 인정하는 것을 주요 내용으로 ... 간도 협약이 체결된 당일, 일제(日帝)는 안봉선의 철도부설권 등을 청나라로부터 획득"
+     },
+     {
+      "claim": "연변 조선족 자치주 지역 · 조선인 이주 1881년 1만명",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/간도",
+      "note": "일반적으로 간도라 하면 현재의 연변 조선족 자치주 지역을 가리키며 ... 간도(間島)로 이주하기 시작하여 1881년에는 연변 지역의 조선인이 1만명에 이르렀다."
+     },
+     {
+      "claim": "1903년 이범윤 간도관리사 파견",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/간도",
+      "note": "1903년에는 이범윤을 간도관리사로 파견하여 간도에 대한 실효적 지배를 시도하기도 했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/간도"
+    ],
+    "hintNote": null,
+    "easiestCue": "1909년 일본이 철도 부설권과 맞바꿔 청 땅으로 인정한 곳",
+    "worthWhyGen": "한국사 영토 문제의 기본 이름 — 상식 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '지역' 예",
+     "unique": "정계비 토문 다툼 + 1909 협약 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  },
+  {
+   "seedId": "world-geo/4#g032b-g032b-j31-6",
+   "seed": {
+    "subject": "대마도",
+    "aspect": null,
+    "ref": "g032b-j31-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국과 일본 사이 해협에 있는 일본의 섬입니다. 부산과는 약 49.5km 떨어져 있어 규슈 본토(약 132km)보다 한반도에 훨씬 가깝습니다. 1948년 이승만 대통령은 이 섬이 우리 땅이니 돌려 달라고 요구했습니다. 이 섬은 어디일까요?",
+    "answer": "대마도",
+    "acceptedAnswers": [
+     "쓰시마",
+     "쓰시마섬"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "부산항에서 배로 1시간 남짓이면 닿아, 이곳을 찾는 관광객은 대부분 한국인이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한국과 일본 사이 해협에 있는 일본의 섬 · 부산과 49.5km",
+     "difWhy": "2 — 부산 가까운 일본 섬 → 대마도 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 영토·역사 기본 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "일본 나가사키현에 속한 섬으로, 조선 시대에는 섬의 지배자 소 씨가 조선과의 무역과 외교를 도맡았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "부산 남동쪽 대한해협의 일본 섬(쓰시마)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "뉴스와 지리에서 흔함",
+     "piece": "f05",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '일본의 섬' 종류가 있고 끝 ○○(섬)과 일치, 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "쓰시마(대마도)",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "쓰시마",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "대마도",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5894",
+      "answer": "안용복",
+      "verdict": "diff",
+      "why": "대마도 vs 안용복: 독도 인물, 다른 사실"
+     },
+     {
+      "old": "g032a:g032a-j04-3",
+      "answer": "38선",
+      "verdict": "diff",
+      "why": "대마도 vs 38선: 무관"
+     },
+     {
+      "old": "3306",
+      "answer": "칼리닌그라드",
+      "verdict": "diff",
+      "why": "대마도 vs 칼리닌그라드: 무관"
+     },
+     {
+      "old": "5177",
+      "answer": "지브롤터",
+      "verdict": "diff",
+      "why": "대마도 vs 지브롤터: 무관"
+     },
+     {
+      "old": "5632",
+      "answer": "관타나모만",
+      "verdict": "diff",
+      "why": "대마도 vs 관타나모만: 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/쓰시마섬",
+     "https://en.wikipedia.org/wiki/Tsushima_Island"
+    ],
+    "facts": [
+     {
+      "claim": "부산 약 49.5km · 규슈 약 132km",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쓰시마섬",
+      "note": "규슈 본토에서 ... 약 132km, 한반도 부산과의 거리는 쓰시마 해협 서수도(西水道, 대한해협)을 끼고 약 49.5km이다."
+     },
+     {
+      "claim": "1948년 이승만 반환 요구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쓰시마섬",
+      "note": "대한민국의 초대 대통령 이승만은 정부 수립 직후인 1948년 8월 18일 성명에서 '대마도는 우리 땅'이니 일본은 속히 반환하라고 했다."
+     },
+     {
+      "claim": "1948년 한국 정부 요구 · 1949 맥아더 거부",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tsushima_Island",
+      "note": "The South Korean government made a claim in 1948, but it was rejected by US Gen. Douglas MacArthur"
+     },
+     {
+      "claim": "나가사키현 · 소 씨 조선 교역·외교",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/쓰시마섬",
+      "note": "쓰시마 후추(府中, 현재의 나가사키현 쓰시마시 이즈하라) ... 외교면에서는 쇄국체제 아래 일본에서 조선통신사를 맞이하는 등 조일외교의 중개자로써의 역할을 맡았다. 소 씨가 장악한 대조선 교역권"
+     },
+     {
+      "claim": "부산에서 배로 1시간 10분 · 관광객 대부분 한국인",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쓰시마섬",
+      "note": "부산항여객터미널에서 배로 약 1시간 10분(히타카츠항)에서 2시간(이즈하라항)이면 도착하는 거리 ... 대마도 관광객에는 한국인 관광객이 대부분이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/쓰시마섬"
+    ],
+    "hintNote": null,
+    "easiestCue": "부산에서 49.5km 떨어진 일본 섬",
+    "worthWhyGen": "가장 가까운 외국 땅과 영토 주장의 역사",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '일본의 섬' 예",
+     "unique": "부산 49.5km · 이승만 반환 요구 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

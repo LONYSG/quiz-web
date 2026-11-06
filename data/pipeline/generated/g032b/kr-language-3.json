@@ -1,0 +1,157 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-language/3",
+  "midKey": "kr-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-language/3#g032b-g032b-j02-7",
+   "seed": {
+    "subject": "오지랖",
+    "aspect": null,
+    "ref": "g032b-j02-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "웃옷이나 겉옷의 앞자락을 가리키는 순우리말이 있습니다. 앞자락이 넓으면 안에 입은 다른 옷까지 덮어 버리지요. 그 모습을 사람의 성격에 빗댄 관용 표현으로 널리 쓰이는 이 말은 무엇일까요?",
+    "answer": "오지랖",
+    "acceptedAnswers": [
+     "오지랖이 넓다"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "참견이 지나친 사람을 낮추는 말로 흔히 쓰지만, 이웃 일을 잘 챙긴다는 좋은 뜻으로 보기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "앞자락이 넓으면 … 사람의 성격에 빗댄 관용 표현",
+     "difWhy": "2 — 오지랖 넓다 일상어 · 순우리말 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 관용어의 말뜻",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "남의 일에 쓸데없이 참견하는 사람을 두고 '~이 넓다'고 핀잔할 때 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "웃옷의 앞자락 — 관용구 '오지랖이 넓다'(남의 일에 참견)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 관용어",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '앞자락을 가리키는 순우리말' 이 끝 ○○(말) 와 일치, 세 문장 모두 짧음"
+    },
+    "blindQuestion": {
+     "guess": "오지랖",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오지랖",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오지랖",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3668",
+      "answer": "단골",
+      "verdict": "diff",
+      "why": "새 정답 오지랖의 지식(유래·사실)과 옛 정답 단골의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4988",
+      "answer": "야단법석",
+      "verdict": "diff",
+      "why": "새 정답 오지랖의 지식(유래·사실)과 옛 정답 야단법석의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1723",
+      "answer": "산통",
+      "verdict": "diff",
+      "why": "새 정답 오지랖의 지식(유래·사실)과 옛 정답 산통의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1722",
+      "answer": "시치미",
+      "verdict": "diff",
+      "why": "새 정답 오지랖의 지식(유래·사실)과 옛 정답 시치미의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4987",
+      "answer": "개차반",
+      "verdict": "diff",
+      "why": "새 정답 오지랖의 지식(유래·사실)과 옛 정답 개차반의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=오지랖",
+     "https://www.kbmaeil.com/article/20260707500310",
+     "https://jjan.kr/article/20210317728487"
+    ],
+    "facts": [
+     {
+      "claim": "오지랖 = 웃옷이나 윗도리에 입는 겉옷의 앞자락",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=오지랖",
+      "note": "오지랖 「명사」 웃옷이나 윗도리에 입는 겉옷의 앞자락."
+     },
+     {
+      "claim": "앞자락이 넓으면 다른 옷을 덮음 → 남의 일 간섭 비유",
+      "where": "q",
+      "url": "https://www.kbmaeil.com/article/20260707500310",
+      "note": "(검색 요약) 옷의 앞자락이 필요 이상으로 넓으면 다른 옷이나 신체를 덮어버리듯, 이 일 저 일에 관심이 많고 참견하기를 좋아하는 사람을 오지랖 넓은 사람이라 부른다 — 국회도서관 자료(dl.nanet.go.kr MONO12023000047796)도 같은 설명"
+     },
+     {
+      "claim": "좋은 뜻으로도 봄",
+      "where": "e",
+      "url": "https://jjan.kr/article/20210317728487",
+      "note": "(검색 요약) 공동체 의식으로 이웃에 관심을 보이는 경우는 미덕으로 보인다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=오지랖"
+    ],
+    "hintNote": null,
+    "easiestCue": "'앞자락이 넓으면 다른 옷까지 덮는다 → 성격' 에서 '오지랖이 넓다'를 떠올려야",
+    "worthWhyGen": "매일 쓰는 '오지랖 넓다'의 오지랖이 옷 앞자락이라는 유래(19 §9-1 ②·③)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '순우리말' 예",
+     "unique": "'앞자락' 낱말 — 섶·자락 같은 옷 낱말이 갈릴 수 있으나 '성격에 빗댄 관용 표현'으로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

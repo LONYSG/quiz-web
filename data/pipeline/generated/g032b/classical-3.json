@@ -1,0 +1,294 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "classical/3",
+  "midKey": "classical",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "classical/3#g032b-g032b-j22-1",
+   "seed": {
+    "subject": "브라보",
+    "aspect": null,
+    "ref": "g032b-j22-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "오페라 극장에서 아리아가 끝나면 객석에서 터져 나오는 이탈리아어 감탄사입니다. 본래 '솜씨 좋다·훌륭하다'는 뜻의 형용사라, 이탈리아에서는 여자 가수에게 끝소리를 바꿔 외칩니다. 우리도 '잘했다'는 뜻으로 흔히 외치는 이 말은?",
+    "answer": "브라보",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "여러 사람에게는 형태가 또 바뀌어, 남자 여럿이나 남녀가 섞이면 '브라비', 여자 여럿에게는 '브라베'라고 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "우리도 '잘했다'는 뜻으로 흔히 외치는 이 말",
+     "difWhy": "1 — 브라보 즉시 떠오름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 외래 감탄사 말뜻",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "봄여름가을겨울의 노래 '~ 마이 라이프' 제목 앞머리에도 붙은, 박수와 함께 외치는 환호",
+    "generalHintVersion": "hint-v7",
+    "identity": "공연·연주가 끝났을 때 외치는 이탈리아어 칭찬 감탄사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "공연 감탄사로 일상적",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '이탈리아어 감탄사'가 있고 끝 ○○('이 말')과 일치, 문장 셋 모두 짧다"
+    },
+    "blindQuestion": {
+     "guess": "브라보",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "브라보",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "브라보",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "854",
+      "answer": "마술피리",
+      "verdict": "diff",
+      "why": "브라보 어원은 마술피리·오텔로·라 보엠·리골레토·세비야의 이발사와 다른 오페라 지식이다"
+     },
+     {
+      "old": "5747",
+      "answer": "오텔로",
+      "verdict": "diff",
+      "why": "브라보 어원은 마술피리·오텔로·라 보엠·리골레토·세비야의 이발사와 다른 오페라 지식이다"
+     },
+     {
+      "old": "5744",
+      "answer": "라 보엠",
+      "verdict": "diff",
+      "why": "브라보 어원은 마술피리·오텔로·라 보엠·리골레토·세비야의 이발사와 다른 오페라 지식이다"
+     },
+     {
+      "old": "4328",
+      "answer": "리골레토",
+      "verdict": "diff",
+      "why": "브라보 어원은 마술피리·오텔로·라 보엠·리골레토·세비야의 이발사와 다른 오페라 지식이다"
+     },
+     {
+      "old": "856",
+      "answer": "세비야의 이발사",
+      "verdict": "diff",
+      "why": "브라보 어원은 마술피리·오텔로·라 보엠·리골레토·세비야의 이발사와 다른 오페라 지식이다"
+     }
+    ],
+    "sources": [
+     "https://en.wiktionary.org/wiki/bravo",
+     "https://ko.wikipedia.org/wiki/브라보"
+    ],
+    "facts": [
+     {
+      "claim": "이탈리아어 형용사 뜻 good, skilful · 감탄사(연극) · 여성형 brava",
+      "where": "q",
+      "url": "https://en.wiktionary.org/wiki/bravo",
+      "note": "Italian — Adjective: good, skilful, capable, clever, fine ... Interjection (feminine brava, masculine plural bravi, feminine plural brave): well done!, good show! (theatre) bravo!"
+     },
+     {
+      "claim": "영어에서도 공연자에게 쓰는 칭찬 · 여성에게 brava",
+      "where": "q",
+      "url": "https://en.wiktionary.org/wiki/bravo",
+      "note": "Used to express acclaim, especially to a performer. ... Sometimes the (non-anglicized) Italian feminine form brava is used for a woman or girl"
+     },
+     {
+      "claim": "칭찬의 뜻이 담긴 감탄사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/브라보",
+      "note": "브라보(Bravo)는 다음과 같은 뜻이 있다. 칭찬의 뜻이 담긴 감탄사"
+     },
+     {
+      "claim": "남성 복수 bravi · 여성 복수 brave",
+      "where": "e",
+      "url": "https://en.wiktionary.org/wiki/bravo",
+      "note": "the Italian plural forms brave are used for female referents only, and bravi are used for male only or two or more male and female referents."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "오페라 아리아가 끝나면 외치는 감탄사 · '잘했다'는 뜻",
+    "worthWhyGen": "누구나 외치는 감탄사가 이탈리아어 형용사이고 성별에 따라 바뀐다는 유래(19 §9-1 ②·③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '감탄사' 예",
+     "unique": "이탈리아어 · 공연 뒤 칭찬 감탄사 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  },
+  {
+   "seedId": "classical/3#g032b-g032b-j23-8",
+   "seed": {
+    "subject": "소프라노",
+    "aspect": null,
+    "ref": "g032b-j23-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사람 목소리 가운데 가장 높은 음역으로, 오페라에서는 주인공 여성 역을 흔히 맡습니다. 이 이름은 이탈리아어로 '위에, 맨 위'를 뜻하는 말에서 왔습니다. 여성 성악가가 부르는 이 높은 음역은 무엇일까요?",
+    "answer": "소프라노",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "16~18세기에는 거세한 남성 가수 카스트라토가 이 음역을 불렀고, 같은 음역을 내는 남성 카운터테너는 '소프라니스트'라 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "사람 목소리 가운데 가장 높은 음역 · 여성 성악가",
+     "difWhy": "1 — 소프라노는 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일반 상식 확인 + 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "합창의 네 성부 가운데 알토·테너·베이스와 함께 부르며 대개 주선율을 맡는 여성 성부다",
+    "generalHintVersion": "hint-v7",
+    "identity": "사람 목소리 가운데 가장 높은 음역(주로 여성)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "음악 기본 용어",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '사람 목소리 가운데 가장 높은 음역', 끝 ○○ '높은 음역' 일치"
+    },
+    "blindQuestion": {
+     "guess": "소프라노",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "소프라노",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "소프라노",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6116",
+      "answer": "라 마르세예즈",
+      "verdict": "diff",
+      "why": "소프라노 음역 vs 라 마르세예즈 유래 — 다름"
+     },
+     {
+      "old": "5748",
+      "answer": "카스트라토",
+      "verdict": "diff",
+      "why": "소프라노 vs 카스트라토 녹음 — 다른 가수 부류"
+     },
+     {
+      "old": "5747",
+      "answer": "오텔로",
+      "verdict": "diff",
+      "why": "소프라노 vs 오텔로 오페라 — 다름"
+     },
+     {
+      "old": "g032a:g032a-j12-2",
+      "answer": "프리마돈나",
+      "verdict": "diff",
+      "why": "소프라노(음역) vs 프리마돈나(주역 가수) — 같은 오페라 어휘지만 음역과 역할 호칭으로 지식 다름"
+     },
+     {
+      "old": "854",
+      "answer": "마술피리",
+      "verdict": "diff",
+      "why": "소프라노 vs 마술피리 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/소프라노",
+     "https://en.wikipedia.org/wiki/Soprano"
+    ],
+    "facts": [
+     {
+      "claim": "가장 높은 음역 · 이탈리아어 sopra(위) · 오페라 주연 여성 역",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/소프라노",
+      "note": "\"소프라노\"라는 단어는 이탈리아어 sopra(\"위\", \"위에\", \"맨 위\")에서 유래했는데, 소프라노가 가장 높은 음역의 인간 목소리이며, 종종 오페라에서 주연 여성 역할에 주어진다."
+     },
+     {
+      "claim": "같은 내용 · 4성부에서 가장 높은 부분, 선율",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Soprano",
+      "note": "The word \"soprano\" comes from the Italian word sopra (above, over, on top of), as the soprano is the highest pitch human voice, often given to the leading female roles in operas. … In four-part chorale style harmony, the soprano takes the highest part, which often encompasses the melody."
+     },
+     {
+      "claim": "카스트라토 · 소프라니스트",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/소프라노",
+      "note": "\"소프라니스트\"는 소프라노 음역으로 노래할 수 있는 남성 카운터테너를 지칭하며, 카스트라토는 16세기, 17세기, 18세기에 일반적이었던 거세된 남성 가수를 지칭하고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Soprano"
+    ],
+    "hintNote": null,
+    "easiestCue": "사람 목소리 가운데 가장 높은 음역",
+    "worthWhyGen": "알가치 3 — 누구나 아는 음악 말의 유래(sopra)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '가장 높은 음역'",
+     "unique": "'가장 높은' — 메조소프라노·알토와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

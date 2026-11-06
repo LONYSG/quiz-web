@@ -1,0 +1,242 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "art/5",
+  "midKey": "art",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "art/5#g032b-g032b-j08-3",
+   "seed": {
+    "subject": "무라노",
+    "aspect": null,
+    "ref": "g032b-j08-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "베네치아 석호에 있는 한 섬의 이야기입니다. 1291년 베네치아 공화국은 나무 건물이 많은 도시에 큰불이 날까 두려워, 유리 공방의 가마를 모두 이 섬으로 옮기게 했습니다. 기술 비밀이 새지 않도록 장인들은 허락 없이 섬을 떠날 수 없었습니다. 이 섬은 어디일까요?",
+    "answer": "무라노",
+    "acceptedAnswers": [
+     "무라노섬"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1612년 피렌체의 사제 안토니오 네리가 제조 비법을 책으로 펴내면서 이 섬 유리의 독점은 차츰 무너졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "베네치아 석호 … 유리 공방의 가마를 모두 이 섬으로",
+     "difWhy": "4 — 무라노 이름 이걸 어떻게 알아 · 베네치아 섬 중 선택",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 유리 공예 지명",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 15",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "샹들리에와 알록달록한 꽃무늬 유리구슬로 이름난 유리 공예의 고향으로, 그 섬 이름을 단 유리 기념품이 관광객에게 팔린다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "베네치아 유리 공예로 유명한 섬",
+    "familiarity": {
+     "judge": 1,
+     "pct": 15,
+     "why": "베네치아 작은 섬, 마이너",
+     "piece": "f07",
+     "genPct": 35
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "무라노",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Murano",
+     "https://en.wikipedia.org/wiki/Murano_glass"
+    ],
+    "facts": [
+     {
+      "claim": "1291년 화재가 두려워 유리 가마를 섬으로 옮김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Murano",
+      "note": "Murano's reputation as a center for glassmaking was born when the Venetian Republic, fearing fire and the destruction of the city's mostly wooden buildings, ordered glassmakers to move their furnaces to Murano in 1291."
+     },
+     {
+      "claim": "비밀 유지 · 허락 없이 섬을 떠나지 못함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Murano_glass",
+      "note": "The move also kept the technology of glassmaking, and the glassmakers, confined to Murano. ... Glassmakers were not allowed to leave the island without permission from the government."
+     },
+     {
+      "claim": "샹들리에 · 밀레피오리 · 구슬",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Murano_glass",
+      "note": "Among them are Murano beads, cristallo, lattimo, chandeliers, and mirrors. Additional refinements or creations are goldstone, multicolored glass (millefiori)"
+     },
+     {
+      "claim": "1612 네리 L'Arte Vetraria 비법 공개",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Murano_glass",
+      "note": "In 1612 the Florentine priest Antonio Neri published L’Arte Vetraria (The Art of Glass), which revealed all the secrets of Venetian glass production to the outside world"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Murano_glass"
+    ],
+    "hintNote": null,
+    "easiestCue": "1291년 유리 공방을 모은 베네치아의 섬",
+    "worthWhyGen": "유리 섬이 생긴 까닭(화재 · 기술 비밀)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '섬' 예",
+     "unique": "베네치아 유리 섬은 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08",
+    "discarded": "친숙도 1 (pct 15 · 베네치아 작은 섬, 마이너)"
+   }
+  },
+  {
+   "seedId": "art/5#g032b-g032b-j26-9",
+   "seed": {
+    "subject": "본차이나",
+    "aspect": null,
+    "ref": "g032b-j26-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도자기의 한 종류입니다. 1748년 런던 동쪽 보우의 도자기 공장에서 토머스 프라이가 처음 만들었는데, 공장이 가축 시장과 도살장 바로 곁이라 재료를 구하기 쉬웠습니다. 1790년대 조사이어 스포드가 다듬어 영국을 대표하는 그릇이 된 이 자기는?",
+    "answer": "본차이나",
+    "acceptedAnswers": [
+     "골회자기"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "20세기 후반까지 거의 영국에서만 만들었지만, 지금은 중국이 세계에서 가장 많이 생산한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "조사이어 스포드가 다듬어 영국을 대표하는 그릇이 된 이 자기",
+     "difWhy": "3 — 설명 → 이름 · 도자기 종류 이름 생각해야 함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 도자기 종류 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "웨지우드·로열 덜튼 같은 영국 그릇 회사들이 만드는, 소뼈 태운 재를 섞어 얇고 희며 빛이 비치는 고급 찻잔용 자기다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "소뼈를 태운 재(골회)를 섞어 구운 반투명 자기(bone china)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "식기 브랜드로 흔히 들음",
+     "piece": "f04",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '도자기의 한 종류' 가 끝 ○○ '자기' 와 일치 · 도살장 이야기는 재료 설명이라 방해 없음"
+    },
+    "blindQuestion": {
+     "guess": "본 차이나",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "본차이나",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "본차이나",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4737",
+      "answer": "마이센",
+      "verdict": "diff",
+      "why": "본차이나 vs 마이센 — 다른 자기"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bone_china",
+     "https://ko.wikipedia.org/wiki/본차이나"
+    ],
+    "facts": [
+     {
+      "claim": "1748 보우 · 토머스 프라이 · 가축 시장·도살장 근처 · 스포드 1789~1793",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bone_china",
+      "note": "The first development of what would become known as bone china was made in 1748 by Thomas Frye at his Bow porcelain factory near Bow, East London. His factory was located very close to the cattle markets and slaughterhouses of London and Essex, and hence had easy access to animal bones. ... Josiah Spode in Stoke-on-Trent further developed the concept between 1789 and 1793"
+     },
+     {
+      "claim": "프라이 1748 보우 · 도살장 · 스포드",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/본차이나",
+      "note": "본차이나라고 알려진 것을 최초로 발명한 사람은 토마스 프라이(Thomas Frye)로 1748년 런던 동쪽의 보우(Bow)에 있는 보우 도자기 공장에서였다. 그의 공장은 가축 시장과 에섹스 도살장과 매운 가까운 곳에 위치해 ... 이후 1789년에서 1793년 사이에 조지아 스포드가 스토크에서 그 개념을 더 발달시켜서"
+     },
+     {
+      "claim": "웨지우드·로열 덜튼 · 반투명 · 얇게",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Bone_china",
+      "note": "Most major English firms made or still make it, including Spode, Royal Worcester, Royal Crown Derby, Royal Doulton, Wedgwood, and Mintons. / known for its high levels of whiteness and translucency. Its high strength allows it to be produced in thinner cross-sections"
+     },
+     {
+      "claim": "20세기 후반까지 영국 · 지금 중국 최대",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bone_china",
+      "note": "up to the latter part of the 20th century, bone china was almost exclusively an English product ... China is now the world's largest manufacturer."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bone_china"
+    ],
+    "hintNote": null,
+    "easiestCue": "도살장 곁이라 재료 구하기 쉬웠던 영국 자기",
+    "worthWhyGen": "흔한 그릇 이름(본차이나)이 뼈를 넣은 데서 온 까닭(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '도자기 종류' 예",
+     "unique": "보우·프라이·스포드로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

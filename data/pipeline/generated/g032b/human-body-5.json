@@ -1,0 +1,254 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "human-body/5",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/5#g032b-g032b-j05-3",
+   "seed": {
+    "subject": "인터페론",
+    "aspect": null,
+    "ref": "g032b-j05-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바이러스와 싸우는 한 면역 단백질은 1957년 런던 국립의학연구소의 앨릭 아이작스와 장 린덴만이 처음 보고했습니다. 열로 죽인 독감 바이러스를 먼저 만난 세포에서는 살아 있는 독감 바이러스가 잘 자라지 못했는데, 이 현상을 연구하다 찾았습니다. 그래서 '방해하다'를 뜻하는 영어 낱말에서 이름을 땄는데, 이 단백질은?",
+    "answer": "인터페론",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "실험은 달걀 속 닭 배아의 막에서 했다. 한 종류(베타)는 다발경화증 치료에도 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "방해하다를 뜻하는 영어 낱말에서 이름을 땄는데 이 단백질",
+     "difWhy": "3 — 면역 단백질 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 면역 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "세포가 바이러스에 감염되면 내보내 이웃 세포를 지키는 면역 신호 물질로, B형·C형 간염 치료제로 쓰였다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "바이러스에 감염된 세포가 내보내 바이러스 증식을 막는 면역 신호 단백질(간염 치료제로도 쓰임)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "코로나 때 뉴스와 의학 상식으로 접함",
+     "piece": "f05",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '면역 단백질'이 있고 끝 '이 단백질'과 일치. 발견 일화가 이어지지만 같은 대상 이야기."
+    },
+    "blindQuestion": {
+     "guess": "인터페론",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "인터페론",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "인터페론",
+     "qFacts": 3,
+     "qSources": 1,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6270",
+      "answer": "NK세포",
+      "verdict": "diff",
+      "why": "인터페론 발견 vs NK세포 발견 — 다른 면역 물질"
+     },
+     {
+      "old": "2935",
+      "answer": "항체",
+      "verdict": "diff",
+      "why": "인터페론 vs 항체 — 다른 단백질"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Interferon"
+    ],
+    "facts": [
+     {
+      "claim": "1957년 런던 국립의학연구소 아이작스·린덴만이 처음 기술 · 바이러스 간섭 연구에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Interferon",
+      "note": "Interferons were first described in 1957 by Alick Isaacs and Jean Lindenmann at the National Institute for Medical Research in London; the discovery was a result of their studies of viral interference."
+     },
+     {
+      "claim": "열로 비활성화한 독감 바이러스가 살아 있는 독감 바이러스 증식을 막음(닭 배아 막)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Interferon",
+      "note": "Isaacs and Lindenmann were working with a system that involved the inhibition of the growth of live influenza virus in chicken embryo chorioallantoic membranes by heat-inactivated influenza virus."
+     },
+     {
+      "claim": "이름 = 바이러스 복제를 'interfere' 하는 능력에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Interferon",
+      "note": "Interferons are named for their ability to \"interfere\" with viral replication by protecting cells from virus infections."
+     },
+     {
+      "claim": "B·C형 간염 치료(IFN-α) · 다발경화증(IFN-β)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Interferon",
+      "note": "Overall, IFN-α can be used to treat hepatitis B and C infections, while IFN-β can be used to treat multiple sclerosis."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Interferon"
+    ],
+    "hintNote": null,
+    "easiestCue": "'방해하다' 영어 낱말에서 온 이름의 항바이러스 단백질 — interfere 를 떠올리고 인터페론을 들어 봤어야 풂",
+    "worthWhyGen": "간염 약으로 알려진 물질이 왜 '방해'라는 이름인가 — 발견 까닭이 이름(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '면역 단백질' 예",
+     "unique": "1957 · 바이러스 간섭 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 177자"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "human-body/5#g032b-g032b-j27-4",
+   "seed": {
+    "subject": "혈우병",
+    "aspect": null,
+    "ref": "g032b-j27-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "유럽 왕가들에 퍼졌던 유전병이 있습니다. 영국 빅토리아 여왕의 딸 앨리스와 베아트리스를 거쳐 러시아·스페인·독일 왕실로 이어져 '왕실병'이라고도 불렸습니다. 러시아의 마지막 황태자 알렉세이도 이 병을 앓아, 치료를 맡은 라스푸틴이 궁정에서 힘을 키웠습니다. 이 병은?",
+    "answer": "혈우병",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "로마노프 가족 유해를 DNA로 검사해 보니, 여왕 집안의 것은 비교적 드문 B형이었다. B형은 '크리스마스 병'이라고도 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "빅토리아 여왕 · 왕실병 · 알렉세이 · 라스푸틴",
+     "difWhy": "2 — 병 이름 한 번 · 역사 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 의학·역사 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "피를 굳히는 응고 인자가 모자라 작은 상처에도 피가 잘 멈추지 않는, 주로 남자에게 나타나는 유전병",
+    "generalHintVersion": "hint-v7",
+    "identity": "응고 인자가 모자라 피가 잘 멈추지 않는 X 염색체 열성 유전병",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "유전병으로 교과서·드라마",
+     "piece": "f07",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '유전병', 끝 ○○ '병'. 인물 나열은 많으나 문장 뜻 분명"
+    },
+    "blindQuestion": {
+     "guess": "혈우병",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "혈우병",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "혈우병",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/혈우병",
+     "https://en.wikipedia.org/wiki/Haemophilia_in_European_royalty"
+    ],
+    "facts": [
+     {
+      "claim": "빅토리아 여왕 딸 베아트리스·앨리스 통해 유럽 왕가 · 알렉세이 · 라스푸틴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/혈우병",
+      "note": "영국 빅토리아 여왕이 낳은 딸 베아트리스와 앨리스를 통해 유럽의 왕가들로 혈우병이 퍼져나갔다. 러시아 제국에서는 니콜라이 2세가 혈우병 보인자인 알렉산드라를 맞아 혈우병을 앓고 있는 장남 알렉세이를 낳게되어 이를 치료하기 위해 라스푸틴을 초청했는데"
+     },
+     {
+      "claim": "스페인·독일·러시아 왕가 · 'royal disease'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Haemophilia_in_European_royalty",
+      "note": "through two of their five daughters – Princess Alice and Princess Beatrice – passed the mutation to various royal houses across the continent, including the royal families of Spain, Germany and Russia. ... the condition once popularly termed the 'royal disease.'"
+     },
+     {
+      "claim": "응고 인자 부족 · 피가 잘 멈추지 않음 · X 염색체 · 남성에 많음",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/혈우병",
+      "note": "혈액을 응고해 주는 인자가 부족하여 피가 잘 멈추지 않는 병으로, 유전성 질환에 속한다. / 열성 유전이며, X 염색체에 존재한다. 따라서 이 유전병은 남성에게서 많이 발병하며"
+     },
+     {
+      "claim": "로마노프 유해 검사 → B형 · B형 = 크리스마스 병",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Haemophilia_in_European_royalty",
+      "note": "Tests on the remains of the Romanov imperial family show that the specific form of haemophilia passed down by Queen Victoria was probably the relatively rare haemophilia B. / (ko) 혈우병 B형은 크리스마스 병으로 부르기도 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/혈우병"
+    ],
+    "hintNote": null,
+    "easiestCue": "'왕실병' · 알렉세이 · 라스푸틴",
+    "worthWhyGen": "누구나 아는 병이 러시아 제정 몰락의 한 원인이 된 이야기(일반 상식 + 유래 3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '유전병' 예",
+     "unique": "왕가에 퍼진 유전병 · 알렉세이 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

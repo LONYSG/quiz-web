@@ -1,0 +1,165 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "physics/1",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/1#g032b-g032b-j15-6",
+   "seed": {
+    "subject": "자이로스코프",
+    "aspect": null,
+    "ref": "g032b-j15-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "물리 실험 장치 하나에 얽힌 이야기입니다. 1852년 프랑스 물리학자 레옹 푸코가 지구의 자전을 보여 주는 실험에 쓰면서 지금의 이름을 붙였습니다. 처음 만든 독일의 요한 보넨베르거는 1817년 이것을 그저 '기계'라고 불렀습니다. 허블 우주 망원경과 잠수함의 관성 항법에도 쓰이는 이 장치는?",
+    "answer": "자이로스코프",
+    "acceptedAnswers": [
+     "자이로"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "푸코의 실험은 마찰로 회전이 느려지기 전인 8~10분 동안만 지구 자전의 효과를 볼 수 있었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "푸코 · 지구의 자전 · 허블과 잠수함 관성 항법",
+     "difWhy": "3 — 장치 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 장치",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "빠르게 도는 바퀴나 원판이 틀이 기울어도 축 방향을 그대로 지키는 성질을 쓴 장치로, 전자기기 속 작은 회전 센서로도 들어간다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "빠르게 도는 회전체로 방향을 유지·측정하는 장치",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "이름은 들어 봤으나 정체 흐림",
+     "piece": "f01",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '물리 실험 장치'가 끝 '이 장치'와 일치."
+    },
+    "blindQuestion": {
+     "guess": "자이로스코프",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "자이로스코프",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "자이로스코프",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6479",
+      "answer": "오토파일럿",
+      "verdict": "diff",
+      "why": "자이로스코프 유래 vs 오토파일럿 항공 사실 — 맞히는 지식 다름"
+     },
+     {
+      "old": "5102",
+      "answer": "마그누스 효과",
+      "verdict": "diff",
+      "why": "푸코·자이로 vs 마그누스 효과 — 다른 현상"
+     },
+     {
+      "old": "5563",
+      "answer": "뉴턴의 요람",
+      "verdict": "diff",
+      "why": "자이로스코프 vs 뉴턴의 요람 — 다른 장치"
+     },
+     {
+      "old": "6733",
+      "answer": "부메랑",
+      "verdict": "diff",
+      "why": "자이로스코프 vs 무중력 부메랑 — 다른 사물"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gyroscope",
+     "https://ko.wikipedia.org/wiki/자이로스코프"
+    ],
+    "facts": [
+     {
+      "claim": "1852 푸코 · 지구 자전 실험 · 이름을 붙임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gyroscope",
+      "note": "In 1852, Foucault used it in an experiment demonstrating the rotation of the Earth. It was Foucault who gave the device its modern name"
+     },
+     {
+      "claim": "1817 보넨베르거 '기계'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/자이로스코프",
+      "note": "역사적으로 알려져 있는 최초의 자이로스코프는 요한 보넨베르거(Johann Bohnenberger)가 1817년 만든 것인데, 그 당시 자이로스코프는 단지 '기계(machine)'라 불렀다."
+     },
+     {
+      "claim": "허블 · 잠수함 관성 항법",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gyroscope",
+      "note": "Applications of gyroscopes include inertial navigation systems, such as in the Hubble Space Telescope, or inside the steel hull of a submerged submarine."
+     },
+     {
+      "claim": "MEMS 소형 자이로 전자기기",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Gyroscope",
+      "note": "A microelectromechanical systems (MEMS) gyroscope is a miniaturized gyroscope found in electronic devices."
+     },
+     {
+      "claim": "8~10분 한계",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gyroscope",
+      "note": "which was visible in the 8 to 10 minutes before friction slowed the spinning rotor."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Gyroscope"
+    ],
+    "hintNote": null,
+    "easiestCue": "허블 망원경·잠수함 관성 항법 장치",
+    "worthWhyGen": "익숙한 센서 이름이 푸코의 지구 자전 실험에서 붙었다는 유래(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '장치' 예",
+     "unique": "푸코가 이름 붙인 장치 → 자이로스코프(푸코 진자와 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 164자",
+     "crossans 회전"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

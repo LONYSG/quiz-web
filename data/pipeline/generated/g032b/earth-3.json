@@ -1,0 +1,392 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "earth/3",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/3#g032b-g032b-j05-12",
+   "seed": {
+    "subject": "무역풍",
+    "aspect": null,
+    "ref": "g032b-j05-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "범선들이 수백 년 동안 대양을 건너는 데 타고 다닌 한 바람이 있습니다. 이 바람의 영어 이름 첫 낱말은 14세기 영어에서 '길·자취'를 뜻해, 늘 같은 길로 분다는 뜻이었습니다. 그 낱말이 뒤에 다른 뜻으로 굳으면서 우리말 이름도 그 뜻을 따라 옮겨졌는데, 이 바람은?",
+    "answer": "무역풍",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "사하라 사막의 먼지를 카리브해와 라틴아메리카까지 실어 나른다. 이 바람이 약해질수록 주변 땅에는 비가 더 온다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "영어 이름 첫 낱말 trade 14세기 길·자취",
+     "difWhy": "4 — 영어 어원 단서 · 무역풍 이름 떠올리기 어려움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 교과 지리 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "아열대 고압대에서 적도 쪽으로 부는 동풍으로, 북반구에서는 북동풍, 남반구에서는 남동풍이 된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "아열대 고압대에서 적도 쪽으로 늘 부는 동풍(trade wind)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "지리 교과서",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '한 바람'이 있고 끝 ○○(바람)와 일치, 어원 설명은 낱말 하나를 풀어 주어 읽기엔 걸림 없음"
+    },
+    "blindQuestion": {
+     "guess": "무역풍",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "무역풍",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "무역풍",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Trade_winds",
+     "https://ko.wikipedia.org/wiki/무역풍"
+    ],
+    "facts": [
+     {
+      "claim": "영어 이름 trade = 14세기 '길·자취'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trade_winds",
+      "note": "The term originally derives from the early fourteenth century sense of trade (in late Middle English) still often meaning \"path\" or \"track\"."
+     },
+     {
+      "claim": "범선 선장들이 수백 년 대양 횡단에 씀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trade_winds",
+      "note": "Trade winds have been used by captains of sailing ships to cross the world's oceans for centuries."
+     },
+     {
+      "claim": "우리말 이름 貿易風 · 뱃사람들이 항로 개척과 무역에 활용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무역풍",
+      "note": "무역풍(貿易風, trade wind)은 ... 대항해시대 이후 뱃사람들이 이 바람에 많이 의존해 구대륙에서 신대륙으로 향하는 항로 개척과 무역에 활용하였다."
+     },
+     {
+      "claim": "북반구 북동풍 · 남반구 남동풍 · 아열대 고압대→적도",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/무역풍",
+      "note": "북반구에서는 북동풍, 남반구에서는 남동풍이 적도 방향으로 강하게 부는 바람으로 ... 북위와 남위 30° 부근의 아열대 고압대에서"
+     },
+     {
+      "claim": "사하라 먼지 운반 · 약해질수록 비 증가",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Trade_winds",
+      "note": "The trade winds also transport nitrate- and phosphate-rich Saharan dust to all Latin America, the Caribbean Sea ... The weaker the trade winds become, the more rainfall can be expected in the neighboring landmasses."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/무역풍"
+    ],
+    "hintNote": null,
+    "easiestCue": "범선이 대양을 건널 때 탄 바람 — 중학 지리 수준이라 3~4 로 내려갈 수 있음",
+    "worthWhyGen": "'무역' 바람이 원래 장사와 무관한 '늘 같은 길' 뜻이었다는 이름의 오해 — 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '바람' 예",
+     "unique": "범선 대양 횡단 바람 · 이름 유래 — 편서풍도 범선이 탔으나 '같은 길' 유래로 가름(약함)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 적도"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "earth/3#g032b-g032b-j15-12",
+   "seed": {
+    "subject": "백엽상",
+    "aspect": null,
+    "ref": "g032b-j15-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기상 관측 장비 하나에 얽힌 이야기입니다. 이 장비를 설계한 스코틀랜드 기술자 토머스 스티븐슨은 등대를 서른 곳 넘게 지었고, 영어권에서는 지금도 이 장비를 그의 이름으로 부릅니다. 그의 아들은 '보물섬'을 쓴 소설가 로버트 루이스 스티븐슨입니다. 예전 학교 운동장 한쪽에 서 있던 이 장비는?",
+    "answer": "백엽상",
+    "acceptedAnswers": [
+     "스티븐슨 스크린"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "일본 기상청은 자동 관측 기기가 퍼지자 1993년 이 장비로 하던 관측을 그만두었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "예전 학교 운동장 한쪽에 서 있던 기상 관측 장비",
+     "difWhy": "3 — 학교 용어 백엽상 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 기상 장비 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "온도계와 습도계를 햇빛과 비에서 가리고 바람만 통하게 만든 겹 비늘살 나무 시설로, 문을 북쪽으로 내어 땅에서 1.5m쯤 높이에 세운다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "온도계·습도계를 넣어 두는 흰 기상 관측함",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "교과서·초등 과학에서 접함",
+     "piece": "f09",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '기상 관측 장비' 명시, 아들 일화는 셋째 문장이지만 정체가 이미 잡혀 있음"
+    },
+    "blindQuestion": {
+     "guess": "백엽상",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "백엽상",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "백엽상",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6579",
+      "answer": "일기 예보",
+      "verdict": "diff",
+      "why": "백엽상 vs 일기 예보 유래 — 같은 분야지만 다른 사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Stevenson_screen",
+     "https://en.wikipedia.org/wiki/Thomas_Stevenson",
+     "https://ko.wikipedia.org/wiki/백엽상"
+    ],
+    "facts": [
+     {
+      "claim": "토머스 스티븐슨 설계 · 아들 로버트 루이스 스티븐슨 · Stevenson screen",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Stevenson_screen",
+      "note": "The Stevenson screen was designed by Thomas Stevenson (1818–1887), a Scottish civil engineer who designed many lighthouses and was the father of author Robert Louis Stevenson."
+     },
+     {
+      "claim": "등대 30곳 넘게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Stevenson",
+      "note": "a pioneering Scottish civil engineer, lighthouse designer and meteorologist, who designed over thirty lighthouses in and around Scotland, as well as the Stevenson screen used in meteorology."
+     },
+     {
+      "claim": "백엽상 = Stevenson screen · 학교 운동장 설치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/백엽상",
+      "note": "백엽상(百葉箱, 영어: white-painted instrument shelter or Stevenson screen ...) ... 전국의 초등학교 운동장에 설치되게 된 것은 ..."
+     },
+     {
+      "claim": "햇빛·비 가림 · 통풍 · 북쪽 문 · 1.2~1.5m",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/백엽상",
+      "note": "바람 통기를 좋게 하고, 햇빛과 비의 침입을 방지하기 위해 ... 문은 북반구에서는 북쪽 방향으로 ... 일반적으로 지상 1.2 ~ 1.5 m 높이에 설치한다."
+     },
+     {
+      "claim": "일본 1993 관측 폐지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/백엽상",
+      "note": "1993년 1월 일본 기상청은 자동 관측 기기의 보급에 따라 백엽상에서 관측을 폐지했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/백엽상"
+    ],
+    "hintNote": null,
+    "easiestCue": "예전 학교 운동장에 서 있던 기상 관측 장비",
+    "worthWhyGen": "학교 운동장의 그 장비를 '보물섬' 작가의 아버지가 설계했다는 이야깃거리(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '장비' 예",
+     "unique": "스티븐슨 설계 기상 장비 → 백엽상",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 164자"
+    ],
+    "job": "job-15"
+   }
+  },
+  {
+   "seedId": "earth/3#g032b-g032b-j28-12",
+   "seed": {
+    "subject": "황사",
+    "aspect": null,
+    "ref": "g032b-j28-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "봄철에 자주 나타나는 기상 현상입니다. 삼국사기에는 174년 신라 아달라왕 때 흙이 비처럼 떨어졌다는 '우토(雨土)' 기록이 있습니다. 한국에서 이 현상을 적은 가장 오래된 기록으로 꼽히는데, 이 현상은 무엇일까요?",
+    "answer": "황사",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "중국에는 기원전 1150년 무렵 상나라 때 박 땅에 흙비가 내렸다는 더 이른 기록이 전한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "봄철 흙이 비처럼 떨어졌다는 '우토(雨土)'",
+     "difWhy": "2 — 봄 흙비 → 황사",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 기상 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "중국과 몽골의 사막에서 일어난 먼지가 편서풍을 타고 날아와, 봄마다 주의보와 경보가 내려지는 현상이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "봄철 중국·몽골 사막의 모래먼지가 날아오는 현상",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "매년 봄 뉴스 일기예보에 나옴",
+     "piece": "f06",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '기상 현상', 끝 ○○ '이 현상' 일치; 우토는 '흙이 비처럼'으로 풀려 있음"
+    },
+    "blindQuestion": {
+     "guess": "황사",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "황사",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "황사",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2394",
+      "answer": "젊은 날의 초상",
+      "verdict": "diff",
+      "why": "황사 기록 vs 이문열 소설 — 무관"
+     },
+     {
+      "old": "3343",
+      "answer": "제트기류",
+      "verdict": "diff",
+      "why": "황사(우토 기록) vs 제트기류 풍선 폭탄 — 편서풍 언급뿐, 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황사",
+     "https://en.wikipedia.org/wiki/Asian_Dust"
+    ],
+    "facts": [
+     {
+      "claim": "한국 최초 기록 신라 아달라왕 21년(174년) 우토",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황사",
+      "note": "한국에서 나타나는 황사에 관한 최초의 기록은 삼국시대에서 찾을 수 있다. 당시 신라시대의 아달라왕 21년(174년) 에 우토(雨土)라는 기록이 나온다. ... 삼국사기에는 이 해에 우물이 마르는 등 가물었다고 기록되어있다."
+     },
+     {
+      "claim": "174년 신라 우토 · 한국 첫 기록 · 봄철",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Asian_Dust",
+      "note": "Asian Dust ... especially during the spring months. ... The first known record of an Asian Dust event in Korea was in 174 AD during the Silla dynasty. The dust was known as \"Uto (우토, 雨土)\", meaning 'Raining Dirt/Earth'"
+     },
+     {
+      "claim": "중국·몽골 사막 · 편서풍 · 황사주의보·경보",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/황사",
+      "note": "주로 봄철에 중국이나 몽골의 사막에 있는 모래와 먼지가 상승하여 편서풍을 타고 멀리 날아가 서서히 가라앉는 현상을 말한다. ... 황사경보 ... 황사주의보"
+     },
+     {
+      "claim": "기원전 1150년 상나라 박 땅 우토 기록",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Asian_Dust",
+      "note": "in the fifth year of Di Xin (1150 BC, Di Xin was the Era Name of the King Di Xin of Shang dynasty), it rained dust at Bo"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황사"
+    ],
+    "hintNote": null,
+    "easiestCue": "흙이 비처럼 떨어진 봄철 기상 현상",
+    "worthWhyGen": "매년 겪는 현상이 삼국시대에도 기록됐다는 이야깃거리 — 일반 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '기상 현상' 예",
+     "unique": "흙이 비처럼 — 황사(미세먼지와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 경보"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

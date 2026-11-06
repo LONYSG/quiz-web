@@ -1,0 +1,463 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "aerospace/4",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/4#g032b-g032b-j07-7",
+   "seed": {
+    "subject": "스카이랩",
+    "aspect": null,
+    "ref": "g032b-j07-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 첫 우주정거장입니다. 1974년 마지막 승무원이 떠난 뒤 1980년대 초까지 궤도에 머물 것으로 보였지만, 1979년 7월 예상보다 일찍 대기권으로 떨어졌습니다. 태양 활동이 활발해져 대기 바깥층이 데워지고 부풀면서 끌림이 커졌기 때문입니다. 파편이 떨어진 오스트레일리아 에스페란스가 쓰레기 투기 벌금 400달러를 매긴 이 정거장은?",
+    "answer": "스카이랩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "발사 때 운석 방호판과 태양 전지판 한쪽이 뜯겨 나가, 첫 승무원이 선체 밖으로 나가 고친 뒤에야 제대로 쓸 수 있었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "미국의 첫 우주정거장 · 1979년 7월 대기권으로 추락",
+     "difWhy": "4 — 우주정거장 이름 떠올리기 · 국제우주정거장과 구별",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 우주 개발 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "아폴로 달 탐사에 쓰던 새턴 V 로켓의 3단을 고쳐 만들었고, 1973~74년 세 팀 9명이 차례로 머물렀다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "NASA가 1973~79년 운용한 미국 첫 우주정거장(Skylab)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "추락 뉴스·우주사 교과",
+     "piece": "f03",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '미국의 첫 우주정거장' 이 끝 ○○ '정거장' 과 일치 · 끌림 · 대기 바깥층은 원인 설명이 붙어 막히지 않음"
+    },
+    "blindQuestion": {
+     "guess": "스카이랩",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스카이랩",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "스카이랩",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j17-3",
+      "answer": "컬럼비아호",
+      "verdict": "diff",
+      "why": "스카이랩 vs 컬럼비아호 — 다른 대상"
+     },
+     {
+      "old": "708",
+      "answer": "미세중력",
+      "verdict": "diff",
+      "why": "스카이랩 vs 미세중력 — 무관"
+     },
+     {
+      "old": "g032a:g032a-j32-2",
+      "answer": "아르테미스 계획",
+      "verdict": "diff",
+      "why": "스카이랩 vs 아르테미스 계획 — 무관"
+     },
+     {
+      "old": "705",
+      "answer": "아폴로 13호",
+      "verdict": "diff",
+      "why": "스카이랩 vs 아폴로 13호 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/스카이랩",
+     "https://en.wikipedia.org/wiki/Skylab"
+    ],
+    "facts": [
+     {
+      "claim": "미국 최초 우주정거장 · 태양 활동으로 대기 팽창 · 공기 저항 증가 · 예상보다 빠른 1979-07-11 재돌입 · 에스페란스 400달러 벌금 청구 · 1973~74 3회 9명",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스카이랩",
+      "note": "미국 최초의 우주 정거장 ... 1973년 ~ 1974년에 걸쳐 3회, 9명의 우주비행사가 체류했다. ... 태양의 활동이 활발하게 진행되었고, 그 결과 지구의 대기를 따뜻하게 할 수 있어 대기권이 팽창했기 때문에, 기체에 발생하는 공기 저항이 증가했다. 그 때문에 당초 예상되고 있었던 것보다 빠른 1979년 7월 11일 ... 에스페란스 지방은 미국 정부에 쓰레기를 흩뿌렸다는 명목으로 400 달러의 벌금을 청구했지만"
+     },
+     {
+      "claim": "1980년대 초까지 머물 것으로 예상 · 예상보다 강한 태양 활동이 대기 바깥층을 데워 끌림 증가 · 새턴 V 3단 개조 · 발사 때 운석 방호판·태양 전지판 손상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Skylab",
+      "note": "Skylab was left in a parking orbit ... that was expected to last until at least the early 1980s ... Greater-than-expected solar activity heated the outer layers of Earth's atmosphere and increased drag on Skylab. ... It was launched uncrewed into low Earth orbit by a Saturn V rocket ... with Skylab itself being the repurposed third stage."
+     },
+     {
+      "claim": "발사 때 미소 운석 방어벽·태양광 가림판·태양 전지 패널 손상 · 2호 승무원 선외 활동으로 수리",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/스카이랩",
+      "note": "미소 운석 방어벽·태양광 가림판 및 좌측의 태양 전지 패널이 벗겨져 버렸다. ... 스카이랩 2호의 3명의 승무원은, 선외 활동에 의해서 고장난 곳을 수리했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Skylab",
+     "https://ko.wikipedia.org/wiki/스카이랩"
+    ],
+    "hintNote": null,
+    "easiestCue": "'미국 첫 우주정거장' — 이름을 아는 사람만 풀림",
+    "worthWhyGen": "왜 예상보다 일찍 떨어졌나(태양 활동 → 대기 팽창) + 벌금 일화 — 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '우주정거장' 예",
+     "unique": "미국 첫 · 1979 추락 — 미르·ISS 와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 190자"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "aerospace/4#g032b-g032b-j17-3",
+   "seed": {
+    "subject": "컬럼비아호",
+    "aspect": null,
+    "ref": "g032b-j17-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 우주왕복선 다섯 대 가운데 가장 먼저 우주를 난 왕복선입니다. 1981년 4월 첫 비행에 나섰고, 이름은 18세기 말 미국 배로는 처음 세계를 한 바퀴 돈 범선에서 따왔습니다. 2003년 마지막 비행에는 이스라엘의 첫 우주인 일란 라몬이 탔습니다. 이 왕복선은 무엇일까요?",
+    "answer": "컬럼비아호",
+    "acceptedAnswers": [
+     "컬럼비아",
+     "콜롬비아호",
+     "컬럼비아 우주왕복선"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1986년 챌린저호에 이어 두 번째로 승무원 일곱 명을 모두 잃은 왕복선 참사였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "가장 먼저 우주를 난 왕복선 … 2003년 마지막 비행",
+     "difWhy": "3 — 컬럼비아호 사고로 아는 사람 많으나 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 우주왕복선 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "2003년 2월 대기권으로 돌아오다 텍사스 상공에서 부서진 왕복선으로, 발사 때 떨어진 단열재가 왼쪽 날개를 깬 탓이었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 우주왕복선 컬럼비아(첫 비행 1981 · 2003년 귀환 중 참사)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "우주왕복선 참사 뉴스·다큐",
+     "piece": "f08",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '우주왕복선', 끝 ○○ '왕복선'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "컬럼비아호",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "컬럼비아호",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "컬럼비아호",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j07-7",
+      "answer": "스카이랩",
+      "verdict": "diff",
+      "why": "컬럼비아호 vs 스카이랩 — 다른 우주 시설"
+     },
+     {
+      "old": "6135",
+      "answer": "엔터프라이즈",
+      "verdict": "diff",
+      "why": "컬럼비아호 vs 엔터프라이즈 — 다른 왕복선"
+     },
+     {
+      "old": "708",
+      "answer": "미세중력",
+      "verdict": "diff",
+      "why": "컬럼비아호 vs 미세중력 — 다른 지식"
+     },
+     {
+      "old": "5201",
+      "answer": "버즈 올드린",
+      "verdict": "diff",
+      "why": "컬럼비아호 vs 버즈 올드린 — 다른 지식"
+     },
+     {
+      "old": "713",
+      "answer": "소유스",
+      "verdict": "diff",
+      "why": "컬럼비아호 vs 소유스 — 다른 우주선"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Space_Shuttle_Columbia",
+     "https://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster"
+    ],
+    "facts": [
+     {
+      "claim": "다섯 대 가운데 처음 우주 비행 · 1981년 4월 12일 첫 비행 · 미국 배로 첫 세계 일주한 범선 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Space_Shuttle_Columbia",
+      "note": "Named after the first American ship to circumnavigate the globe, and the female personification of the United States, Columbia was the first of five Space Shuttle orbiters to fly in space, debuting the Space Shuttle launch vehicle on its maiden flight on April 12, 1981 / named after the American sloop Columbia Rediviva which, from 1787 to 1793, under the command of Captain Robert Gray"
+     },
+     {
+      "claim": "마지막 비행(STS-107)에 이스라엘 첫 우주인 일란 라몬",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster",
+      "note": "Ilan Ramon, a colonel in the Israeli Air Force and the first Israeli astronaut"
+     },
+     {
+      "claim": "2003년 2월 1일 텍사스·루이지애나 상공에서 부서짐 · 발사 때 단열재가 왼쪽 날개 타일을 침",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster",
+      "note": "On February 1, 2003, Space Shuttle Columbia disintegrated as it re-entered the atmosphere over Texas and Louisiana ... During launch, a piece of the insulating foam broke off from the Space Shuttle external tank and struck the thermal protection system tiles on the orbiter's left wing."
+     },
+     {
+      "claim": "챌린저(1986)에 이은 두 번째 참사 · 일곱 명 모두 숨짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster",
+      "note": "killing all seven astronauts on board. It was the second of two Space Shuttle missions to end in disaster, after the loss of Challenger and crew in 1986."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster"
+    ],
+    "hintNote": null,
+    "easiestCue": "첫 우주왕복선(1981) — 챌린저·디스커버리와 헷갈릴 만함 · 참사는 힌트로만",
+    "worthWhyGen": "우주왕복선 시대의 시작과 끝을 함께 품은 기체(교과·상식 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '왕복선' 예",
+     "unique": "가장 먼저 우주를 난 왕복선 = 컬럼비아 하나(엔터프라이즈는 우주 비행 안 함)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "aerospace/4#g032b-g032b-j32-2",
+   "seed": {
+    "subject": "제미니 계획",
+    "aspect": null,
+    "ref": "g032b-j32-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "머큐리 계획과 아폴로 계획 사이, 1961~1966년에 진행된 미국의 두 번째 유인 우주 비행 계획입니다. 달 왕복에 필요한 8일보다 긴, 14일 가까운 비행을 이때 해냈습니다. 우주선에 두 사람이 타서 쌍둥이 별 카스토르와 폴룩스의 별자리에서 이름을 딴 이 계획은?",
+    "answer": "제미니 계획",
+    "acceptedAnswers": [
+     "제미니",
+     "제미니 프로그램",
+     "제미나이 계획",
+     "제미나이"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "우주선 안은 보통 승용차의 운전석과 조수석만 한 넓이였다. 이름을 어떻게 읽을지 갈리자 NASA는 '제-미-니'를 공식 발음으로 정했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "머큐리와 아폴로 사이 … 쌍둥이 별자리에서 이름",
+     "difWhy": "3 — 쌍둥이 단서로 제미니 · 계획 이름은 우주 상식",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 우주 개발사 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "1965년 에드 화이트가 미국인 처음으로 우주선 밖에 나가 떠다닌 우주선 시리즈로, 아폴로에 앞서 도킹하는 법을 익혔다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "머큐리와 아폴로 사이 미국의 2인승 유인 우주 비행 계획",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "우주 개발사 상식",
+     "piece": "f05",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '유인 우주 비행 계획'이 있어 끝 '이 계획'과 일치. 쌍둥이 별 설명 풀이 있음."
+    },
+    "blindQuestion": {
+     "guess": "제미니 계획",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "제미니 계획",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "제미니 계획",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 7,
+     "found": 7,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "713",
+      "answer": "소유스",
+      "verdict": "diff",
+      "why": "제미니 계획 vs 소유스: 다른 계열"
+     },
+     {
+      "old": "6135",
+      "answer": "엔터프라이즈",
+      "verdict": "diff",
+      "why": "제미니 vs 엔터프라이즈: 무관"
+     },
+     {
+      "old": "714",
+      "answer": "우주 유영",
+      "verdict": "diff",
+      "why": "제미니 vs 우주 유영: 다른 개념"
+     },
+     {
+      "old": "710",
+      "answer": "이소연",
+      "verdict": "diff",
+      "why": "제미니 vs 이소연: 무관"
+     },
+     {
+      "old": "g032a:g032a-j32-2",
+      "answer": "아르테미스 계획",
+      "verdict": "diff",
+      "why": "제미니 vs 아르테미스: 다른 계획"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Project_Gemini",
+     "https://ko.wikipedia.org/wiki/제미니_계획"
+    ],
+    "facts": [
+     {
+      "claim": "머큐리 다음 · 아폴로 전 · 미국 두 번째 유인 계획 · 1961~1966 · 2인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Project_Gemini",
+      "note": "Project Gemini was the second United States human spaceflight program to fly. It was conducted after the first American crewed space program, Project Mercury, while the Apollo program was still in early development. Gemini was conceived in 1961 and concluded in 1966. The Gemini spacecraft carried a two-astronaut crew."
+     },
+     {
+      "claim": "2번째 유인 계획 · 2인승 · 1961~1966",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제미니_계획",
+      "note": "미국 항공우주국에 의해 이루어진 미국의 2번째 유인 우주 비행 계획이다. 라틴어로 '쌍둥이'라는 뜻의 제미니 계획은 ... 1961년부터 1966년까지 진행되었다. 제미니 우주선은 2인승 유인 우주선이다."
+     },
+     {
+      "claim": "8일보다 긴 14일 가까운 비행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Project_Gemini",
+      "note": "demonstrating mission endurance up to just under 14 days, longer than the eight days required for a round trip to the Moon"
+     },
+     {
+      "claim": "2인 계획 → 쌍둥이 · 카스토르와 폴룩스 별자리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Project_Gemini",
+      "note": "NASA approved the two-man / two-vehicle program rechristened Project Gemini (Latin for \"twins\"), in reference to the third constellation of the Zodiac with its twin stars Castor and Pollux, on December 7, 1961."
+     },
+     {
+      "claim": "에드 화이트 미국인 첫 우주 유영 · 도킹",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Project_Gemini",
+      "note": "On Gemini 4, Ed White became the first American to make an extravehicular activity (EVA, or \"spacewalk\") on June 3, 1965. ... the orbital maneuvers necessary to achieve rendezvous and docking with another spacecraft."
+     },
+     {
+      "claim": "선내 넓이 승용차 앞좌석",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/제미니_계획",
+      "note": "선내의 넓이는, 보통 승용차의 운전석과 조수석 정도이다."
+     },
+     {
+      "claim": "1965년 발음 공식 발표",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Project_Gemini",
+      "note": "NASA's public affairs office then issued a statement in 1965 declaring \"Jeh'-mih-nee\" the \"official\" pronunciation."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Project_Gemini",
+     "https://ko.wikipedia.org/wiki/제미니_계획"
+    ],
+    "hintNote": null,
+    "easiestCue": "머큐리와 아폴로 사이 계획 + 쌍둥이 별자리",
+    "worthWhyGen": "우주 계획 이름의 까닭(두 사람 → 쌍둥이자리) · 달 착륙 전 단계",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '유인 우주 비행 계획' 예",
+     "unique": "머큐리와 아폴로 사이 미국 계획 = 제미니 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

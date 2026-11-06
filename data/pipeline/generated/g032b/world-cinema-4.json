@@ -1,0 +1,278 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-cinema/4",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/4#g032b-g032b-j08-8",
+   "seed": {
+    "subject": "앨프리드 히치콕",
+    "aspect": null,
+    "ref": "g032b-j08-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1927년 한 영국 영화감독의 스릴러 '하숙인'에는, 신문사 사무실 책상에 등을 돌리고 앉아 전화를 받는 남자가 잠깐 나옵니다. 그 역을 맡을 배우가 오지 않아 감독이 직접 앉았다고 그는 말했습니다. 이것이 그 뒤 그의 영화마다 이어진 습관의 시작이 된 이 감독은 누구일까요?",
+    "answer": "앨프리드 히치콕",
+    "acceptedAnswers": [
+     "히치콕",
+     "알프레드 히치콕"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그는 아카데미 감독상 후보에 다섯 번 올랐지만 끝내 받지 못했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "영화마다 직접 나온 영국 감독 · 스릴러 하숙인",
+     "difWhy": "2 — 카메오 습관 유명 · 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 영화 감독 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "'사이코'·'이창'·'새'를 만들어 '서스펜스의 거장'이라 불린 감독이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'서스펜스의 거장' 영국 출신 영화감독",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "유명 감독",
+     "piece": "f05",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '영국 영화감독'이 있어 끝 ○○(감독)와 맞고 영화 '하숙인' 일화가 곧바로 감독 이야기"
+    },
+    "blindQuestion": {
+     "guess": "앨프리드 히치콕",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "알프레드 히치콕",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "앨프리드 히치콕",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6091",
+      "answer": "팀 버튼",
+      "verdict": "diff",
+      "why": "히치콕 카메오와 팀 버튼은 다른 감독"
+     },
+     {
+      "old": "4673",
+      "answer": "왕가위",
+      "verdict": "diff",
+      "why": "히치콕과 왕가위는 다른 감독"
+     },
+     {
+      "old": "1962",
+      "answer": "고다르",
+      "verdict": "diff",
+      "why": "히치콕과 고다르는 다른 감독"
+     },
+     {
+      "old": "g032b:g032b-j17-10",
+      "answer": "장이머우",
+      "verdict": "diff",
+      "why": "히치콕과 장이머우는 다른 감독"
+     },
+     {
+      "old": "250",
+      "answer": "스티븐 스필버그",
+      "verdict": "diff",
+      "why": "히치콕과 스필버그는 다른 감독"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+     "https://en.wikipedia.org/wiki/The_Lodger:_A_Story_of_the_London_Fog"
+    ],
+    "facts": [
+     {
+      "claim": "하숙인(1927) 신문사 사무실 첫 카메오",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+      "note": "In a strategy for self-publicity, The Lodger saw him make his first cameo appearance in a film, where he sat in a newsroom."
+     },
+     {
+      "claim": "등 돌리고 전화 · 배우가 오지 않아 직접 · 이후 관행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Lodger:_A_Story_of_the_London_Fog",
+      "note": "Alfred Hitchcock's cameo occurs when he is sitting at a desk in the newsroom with his back to the camera and operating a telephone ... This is Hitchcock's first recognisable film cameo, and it became a standard practice for the remainder of his films. Hitchcock said that his cameo came about because the actor who was supposed to play the part of the telephone operator failed to appear, so Hitchcock filled in for him."
+     },
+     {
+      "claim": "Master of Suspense · 사이코 · 이창",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+      "note": "Known as the \"Master of Suspense\" ... Rear Window (1954) and Psycho (1960)"
+     },
+     {
+      "claim": "감독상 다섯 번 후보 · 수상 못 함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Hitchcock",
+      "note": "although he never won the award for Best Director, despite five nominations."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Alfred_Hitchcock"
+    ],
+    "hintNote": null,
+    "easiestCue": "자기 영화마다 잠깐 나오는 습관(카메오)의 감독",
+    "worthWhyGen": "히치콕 카메오가 생긴 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '영화감독' 예",
+     "unique": "하숙인 감독으로 유일",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 사이코"
+    ],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "world-cinema/4#g032b-g032b-j17-10",
+   "seed": {
+    "subject": "장이머우",
+    "aspect": null,
+    "ref": "g032b-j17-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국의 영화감독입니다. 감독이 되기 전에는 첸카이거의 영화 '황토지'를 찍은 촬영 기사였고, 배우로 나선 영화로 도쿄 국제영화제 남우주연상도 받았습니다. 1988년 첫 연출작 '붉은 수수밭'으로 베를린 영화제 금곰상을 받은 이 감독은 누구일까요?",
+    "answer": "장이머우",
+    "acceptedAnswers": [
+     "장예모"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그는 14년 뒤 겨울 대회의 개·폐회식도 연출했다. 대학 동기 첸카이거와 함께 중국 '5세대'의 중심으로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1988년 첫 연출작 '붉은 수수밭' 베를린 금곰상",
+     "difWhy": "3 — 영화감독 이름 떠올리기",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 인물 이름 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "공리와 '홍등'·'귀주 이야기'를 찍었고, 2008년 베이징 올림픽 개막식 총감독을 맡은 감독이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "중국 5세대 영화감독(붉은 수수밭 · 홍등 · 베이징 올림픽 개막식)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "올림픽 개막식·영화 감독으로 접함",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "장이머우",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "장이머우",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "장이머우",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Zhang_Yimou",
+     "https://ko.wikipedia.org/wiki/장이머우"
+    ],
+    "facts": [
+     {
+      "claim": "황토지(1984) 촬영 · Old Well 로 도쿄 영화제 남우주연상 · 1988 붉은 수수밭 데뷔 금곰상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zhang_Yimou",
+      "note": "cameraman in Chen's Yellow Earth (1984) ... He made his acting debut in Old Well (1987), for which he won the Best Actor at the Tokyo International Film Festival, and made his directorial debut with Red Sorghum (1988), which won the Golden Bear"
+     },
+     {
+      "claim": "카메라맨 출신 · 황토지 촬영 · 1988 금곰상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/장이머우",
+      "note": "뒤이어 첸카이거 감독과 함께 《황토지》 ... 촬영하였다 ... 장이머우는 1988년 영화 《붉은 수수밭》으로 ... 베를린국제영화제에서 금곰상을 받으며"
+     },
+     {
+      "claim": "공리 · 홍등(1991) · 귀주 이야기 · 2008 베이징 올림픽 개막식",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Zhang_Yimou",
+      "note": "Red Sorghum, starring Chinese actress Gong Li in her first leading role ... Raise the Red Lantern (1991) ... opening and closing ceremonies of the 2008 Summer Olympics in Beijing / (ko) 《붉은 수수밭》, 《귀주 이야기》, 《영웅》"
+     },
+     {
+      "claim": "2022 동계 올림픽 개·폐회식 · 1982 졸업 동기 첸카이거 · 5세대",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zhang_Yimou",
+      "note": "He also directed the opening and closing ceremonies of the 2022 Winter Olympics ... He graduated with the BFA class of 1982, which also included Chen Kaige ... The class went on to form the core of the Fifth Generation"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Zhang_Yimou",
+     "https://ko.wikipedia.org/wiki/장이머우"
+    ],
+    "hintNote": null,
+    "easiestCue": "'붉은 수수밭' 금곰상 — 영화 관심층만",
+    "worthWhyGen": "중국 영화를 세계에 알린 감독의 출발(촬영 기사 → 감독) — 취미 영역 세부 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '영화감독' 예",
+     "unique": "붉은 수수밭 데뷔 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 공리"
+    ],
+    "job": "job-17",
+    "discarded": "알가치 1 (고유명사 · 인물 이름 확인)"
+   }
+  }
+ ]
+}

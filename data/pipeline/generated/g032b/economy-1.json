@@ -1,0 +1,144 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "economy/1",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/1#g032b-g032b-j15-2",
+   "seed": {
+    "subject": "립스틱 효과",
+    "aspect": null,
+    "ref": "g032b-j15-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경제 용어 하나에 얽힌 이야기입니다. 화장품 회사 에스티 로더의 회장 레너드 로더는 2001년 9·11 테러 뒤 자기 회사의 한 제품 판매가 오른 것을 보고 이를 경기 지표로 내세웠습니다. 미국 대공황 때도 화장품 판매가 25% 늘었다고 전합니다. 이 용어는 무엇일까요?",
+    "answer": "립스틱 효과",
+    "acceptedAnswers": [
+     "립스틱 지수"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "2008년 금융 위기 때는 화장품 판매도 줄어 지표로서 쓸모는 낮다고 보며, 코로나 시기에는 '마스카라 지수'라는 말도 나왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "자기 회사의 한 제품 판매가 오른 것을 경기 지표로 내세웠습니다",
+     "difWhy": "3 — 경제 용어 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 경제 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "경기가 나빠지면 비싼 옷이나 가방 대신 값이 덜 드는 작은 사치품을 사며 기분을 내는 소비 경향을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "불황에 값싼 사치품 소비가 느는 현상을 가리키는 경제 용어",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "경제 뉴스·교양에서 접함",
+     "piece": "f06",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '경제 용어'가 끝 ○○(용어)와 일치. 로더 일화가 단서."
+    },
+    "blindQuestion": {
+     "guess": "립스틱 효과",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "립스틱 효과",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "립스틱 효과",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4872",
+      "answer": "래퍼 곡선",
+      "verdict": "diff",
+      "why": "새 정답 립스틱 효과 과 옛 정답 래퍼 곡선 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "6240",
+      "answer": "낙수 효과",
+      "verdict": "diff",
+      "why": "새 정답 립스틱 효과 과 옛 정답 낙수 효과 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lipstick_effect",
+     "https://en.wikipedia.org/wiki/Leonard_Lauder"
+    ],
+    "facts": [
+     {
+      "claim": "로더 · 2001년 테러 뒤 립스틱 판매 상승 · 대공황 때 화장품 25% 증가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lipstick_effect",
+      "note": "Leonard Lauder, chairman of Estée Lauder ... Lauder said that after the 2001 terrorist attacks, a \"Leading Lipstick Index\" of lipstick sales across all Estée Lauder brands went up. Across the country, lipstick sales were up 11% in the last quarter of 2001, echoing the 25% increase in cosmetic sales during the Great Depression. Lauder made the claim that lipstick sales could be an economic indicator"
+     },
+     {
+      "claim": "로더가 2001년 립스틱 지수를 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leonard_Lauder",
+      "note": "Lauder gained notoriety in 2001 for creating the Lipstick index, a since-discredited economic indicator, meant to reflect a proclivity to spend money on luxury items, even in the face of crisis."
+     },
+     {
+      "claim": "값싼 사치품을 산다는 가설",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Lipstick_effect",
+      "note": "Instead of buying expensive purses and fur coats, for example, people will buy expensive cosmetics, such as high-end brands of lipstick."
+     },
+     {
+      "claim": "뒤 불황에선 반대 증거 · 마스카라 지수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lipstick_effect",
+      "note": "Subsequent recessions, including the late-2000s recession, provided controverting evidence ... as sales fell ... During the coronavirus pandemic ... suggesting a mascara index."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lipstick_effect"
+    ],
+    "hintNote": null,
+    "easiestCue": "에스티 로더 회장이 내세운 경기 지표",
+    "worthWhyGen": "뉴스에서 쓰는 불황 소비 용어의 출처(일상에서 쓰는 말 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '경제 용어' 예",
+     "unique": "로더·화장품·불황 → 립스틱 효과(지수도 받음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-15"
+   }
+  }
+ ]
+}

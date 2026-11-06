@@ -1,0 +1,323 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-cinema/5",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/5#g032b-g032b-j08-9",
+   "seed": {
+    "subject": "백상예술대상",
+    "aspect": null,
+    "ref": "g032b-j08-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1965년 1회를 연 한국의 종합 예술상입니다. 처음에는 '한국연극영화예술상'이라 불렸고, 1987년부터 지금 이름을 씁니다. 그 이름은 1954년 한국일보를 세운 언론인 장기영의 호에서 따왔습니다. 이 상은 무엇일까요?",
+    "answer": "백상예술대상",
+    "acceptedAnswers": [
+     "백상"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1974년 TV 시상이 생겼고, 2002년 빠졌던 연극 부문은 2020년부터 다시 상을 준다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1965년 1회를 연 한국의 종합 예술상 · 한국일보 장기영",
+     "difWhy": "2 — 한국 시상식 · 한국일보 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 시상식 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "해마다 봄에 영화와 방송 부문을 함께 시상하는 한국의 대표 종합 예술상으로, 지금은 JTBC 계열 채널이 중계한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "영화·방송 부문을 함께 시상하는 한국 종합 예술상",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "매년 시상식 방송",
+     "piece": "f06",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한국의 종합 예술상' 이 끝 ○○(상) 와 일치, 짧은 문장 셋"
+    },
+    "blindQuestion": {
+     "guess": "백상예술대상",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "백상예술대상",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "백상예술대상",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5476",
+      "answer": "별에서 온 그대",
+      "verdict": "diff",
+      "why": "백상예술대상과 별에서 온 그대 드라마 지식은 무관"
+     },
+     {
+      "old": "2569",
+      "answer": "골든글로브",
+      "verdict": "diff",
+      "why": "백상예술대상과 골든글로브는 다른 시상식"
+     },
+     {
+      "old": "g032a:g032a-j08-6",
+      "answer": "영국 아카데미 영화상",
+      "verdict": "diff",
+      "why": "백상예술대상과 영국 아카데미 시상식은 다른 시상식"
+     },
+     {
+      "old": "1967",
+      "answer": "칸",
+      "verdict": "diff",
+      "why": "백상예술대상과 칸 영화제는 다른 시상식"
+     },
+     {
+      "old": "2565",
+      "answer": "아카데미상",
+      "verdict": "diff",
+      "why": "백상예술대상과 아카데미상은 다른 시상식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/백상예술대상",
+     "knowledge"
+    ],
+    "facts": [
+     {
+      "claim": "1965년 1회 · 이름은 1954년 한국일보 창립자 장기영의 호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/백상예술대상",
+      "note": "1965년 1회를 시작으로 ... 상 이름은 1954년 한국일보를 창립한 장기영의 호인 백상(百想)에서 따온 것이다."
+     },
+     {
+      "claim": "1983년까지 한국연극영화예술상 · 1987년부터 백상예술대상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/백상예술대상",
+      "note": "1983년(19회)까지는 한국연극영화예술상, 1985년(21회)까지는 한국연극영화TV예술상, 1986년(22회) 때는 한국백상예술대상으로 명칭이 바뀌었다가, 1987년(23회)부터 백상예술대상으로 변경되어"
+     },
+     {
+      "claim": "장기영 한국일보 창간(호 백상) — 지식 보강",
+      "where": "q",
+      "url": "knowledge",
+      "note": "장기영(1916~1977) 한국일보 창간인, 호 백상 — 둘째 문서 미확인"
+     },
+     {
+      "claim": "봄 · 영화·방송 부문 · JTBC 계열",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/백상예술대상",
+      "note": "매년 봄에 실시되며 ... 영화, 방송 부문의 작품을 심사대상 ... 2012년(제48회) 이후 시상식 방송은 지상파가 아닌 JTBC 계열 채널에서 한다."
+     },
+     {
+      "claim": "1974 TV 신설 · 2002 연극 제외 · 2020 연극 재개",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/백상예술대상",
+      "note": "1974년부터 TV 부문을 신설했다 ... 2002년(38회) 시상식부터 연극 부문을 제외 ... 2020년(56회)부터는 ... 폐지됐던 연극 부문 시상이 다시 이루어졌으며"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/백상예술대상"
+    ],
+    "hintNote": null,
+    "easiestCue": "한국일보 창립자 장기영의 호를 딴 예술상",
+    "worthWhyGen": "익숙한 시상식 이름 '백상'의 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '종합 예술상' 예",
+     "unique": "유일",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "world-cinema/5#g032b-g032b-j13-6",
+   "seed": {
+    "subject": "토론토 국제영화제",
+    "aspect": null,
+    "ref": "g032b-j13-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "북아메리카의 한 영화제입니다. 1976년 세계 여러 영화제의 좋은 작품을 모아 보여 주는 '축제 중의 축제(Festival of Festivals)'로 출발했습니다. 관객 투표로 주는 관객상을 받은 '킹스 스피치', '그린 북', '노매드랜드'가 뒤이어 아카데미 작품상까지 받았습니다. 이 영화제는?",
+    "answer": "토론토 국제영화제",
+    "acceptedAnswers": [
+     "토론토 영화제",
+     "TIFF"
+    ],
+    "originalTitleVariants": [
+     "TIFF"
+    ],
+    "explanation": "첫해에는 할리우드 스튜디오들이 이곳 관객이 너무 촌스러울까 봐 출품을 거둬들였다는 일화가 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1976년 축제 중의 축제로 출발 · 관객상 뒤 작품상",
+     "difWhy": "3 — 영화제 이름 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 영화제 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "매년 9월 열흘 동안 열리며, 칸 영화제 다음으로 영향력이 크다는 평을 받은 캐나다의 영화제다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "매년 9월 캐나다 토론토에서 열리는 국제 영화제",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "영화제 뉴스로 접함",
+     "piece": "f07",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '북아메리카의 한 영화제', 끝 ○○ '이 영화제' 일치; 영화 이름 셋은 고유명사 나열일 뿐"
+    },
+    "blindQuestion": {
+     "guess": "토론토 국제영화제",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "토론토 국제영화제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "토론토 국제영화제",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2566",
+      "answer": "황금사자상",
+      "verdict": "diff",
+      "why": "새 정답 토론토 국제영화제 과 옛 정답 황금사자상 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2568",
+      "answer": "유럽",
+      "verdict": "diff",
+      "why": "새 정답 토론토 국제영화제 과 옛 정답 유럽 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2571",
+      "answer": "국제장편영화상",
+      "verdict": "diff",
+      "why": "새 정답 토론토 국제영화제 과 옛 정답 국제장편영화상 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2572",
+      "answer": "라즈베리상",
+      "verdict": "diff",
+      "why": "새 정답 토론토 국제영화제 과 옛 정답 라즈베리상 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1967",
+      "answer": "칸",
+      "verdict": "diff",
+      "why": "새 정답 토론토 국제영화제 과 옛 정답 칸 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+     "https://ko.wikipedia.org/wiki/토론토_국제_영화제"
+    ],
+    "facts": [
+     {
+      "claim": "1976년 Festival of Festivals로 출발 · 다른 영화제 좋은 작품 모음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+      "note": "The Toronto International Film Festival was first launched as the Toronto Festival of Festivals, collecting the best films from other film festivals around the world ... the inaugural event took place from October 18 through 24, 1976."
+     },
+     {
+      "claim": "1976년 시작 · '축제 중의 축제'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토론토_국제_영화제",
+      "note": "토론토 국제영화제는 \"축제 중의 축제\"로 불리며 윈소르 암스 호텔에서 1976년 그 첫삽을 올렸다."
+     },
+     {
+      "claim": "관객 투표 People's Choice Award · 킹스 스피치(2010) · 그린 북(2018) · 노매드랜드(2020) 수상 · 아카데미 지표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+      "note": "The TIFF People's Choice Award – which is based on audience balloting – has emerged as an indicator of success during awards season, especially at the Academy Awards. Past recipients of this award include Oscar-winning films, such as ... The King's Speech (2010) ... Green Book (2018) ... Nomadland (2020)"
+     },
+     {
+      "claim": "9월 노동절 지나 목요일 시작 · 10일 · 버라이어티: 칸 다음 영향력",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/토론토_국제_영화제",
+      "note": "9월 첫째주 월요일 노동절이 지나고 나서 목요일 밤에 축제가 시작되며 10일 동안 열린다. ... TIFF가 칸 영화제에 이어 2번째의 영향력을 갖고 있다고 말했다."
+     },
+     {
+      "claim": "할리우드 스튜디오 첫해 출품 철회",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+      "note": "Ironically, however, Hollywood studios withdrew their submissions from TIFF due to concerns that Toronto audiences would be too parochial for their feature releases."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/토론토_국제_영화제"
+    ],
+    "hintNote": null,
+    "easiestCue": "관객상 → 아카데미 작품상(킹스 스피치 · 그린 북)",
+    "worthWhyGen": "오스카 시즌 뉴스에 나오는 '관객상 = 오스카 풍향계' 영화제",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '영화제' 예",
+     "unique": "Festival of Festivals · 관객상 세 편 — 선댄스 등과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 167자"
+    ],
+    "job": "job-13"
+   }
+  }
+ ]
+}

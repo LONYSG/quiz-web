@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "symbols/3",
+  "midKey": "symbols",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "symbols/3#g032b-g032b-j18-9",
+   "seed": {
+    "subject": "옐로 저널리즘",
+    "aspect": null,
+    "ref": "g032b-j18-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "언론을 가리키는 말이 있습니다. 1890년대 뉴욕에서 퓰리처의 '뉴욕 월드'와 허스트의 '뉴욕 저널'이 부수 경쟁을 벌였습니다. 허스트가 인기 만화가 아웃콜트를 빼 가자, 퓰리처는 다른 화가에게 같은 주인공을 계속 그리게 했습니다. 두 신문에 함께 실린 그 잠옷 차림 꼬마의 별명에서 온 이 말은?",
+    "answer": "옐로 저널리즘",
+    "acceptedAnswers": [
+     "황색 저널리즘",
+     "황색 언론",
+     "옐로우 저널리즘"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 말을 처음 지면에 쓴 사람은 '뉴욕 프레스'의 편집자 어빈 워드먼으로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "뉴욕 월드와 뉴욕 저널 · 잠옷 차림 꼬마의 별명",
+     "difWhy": "3 — 역사 일화에서 용어 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 언론 용어 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "범죄·추문을 부풀린 선정적 기사로 부수를 늘리려는 언론을 낮춰 부르는 말로, 쿠바를 둘러싼 미국·스페인 전쟁 여론몰이가 대표 사례다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "선정적 기사로 독자를 끄는 언론(황색 언론)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "황색 언론이라는 말로 익숙",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '언론을 가리키는 말' 이 끝 ○○(말) 의 종류를 줌, 일화는 그 뒤라 순서 무리 없음"
+    },
+    "blindQuestion": {
+     "guess": "옐로 저널리즘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "옐로 저널리즘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "옐로 저널리즘",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j30-7",
+      "answer": "블루칼라",
+      "verdict": "diff",
+      "why": "옐로 저널리즘 vs 블루칼라 — 색 이름 표현만 겹침"
+     },
+     {
+      "old": "g032b:g032b-j30-7",
+      "answer": "백의민족",
+      "verdict": "diff",
+      "why": "옐로 저널리즘 vs 백의민족 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Yellow_journalism",
+     "https://ko.wikipedia.org/wiki/황색_언론"
+    ],
+    "facts": [
+     {
+      "claim": "퓰리처 뉴욕 월드 vs 허스트 뉴욕 저널 부수 경쟁 · 말이 '옐로 키드' 만화에서 옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yellow_journalism",
+      "note": "Joseph Pulitzer purchased the New York World in 1883 ... William Randolph Hearst then purchased the rival New York Journal in 1895. They engaged in an intense circulation war ... The term \"yellow journalism\" originated from the innovative popular \"Yellow Kid\" comic strip that was published first in the World and later in the Journal."
+     },
+     {
+      "claim": "허스트가 아웃콜트 영입 · 퓰리처가 조지 럭스에게 계속 그리게 · 노란 잠옷 대머리 아이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yellow_journalism",
+      "note": "Hogan's Alley, a comic strip revolving around a bald child in a yellow nightshirt (nicknamed The Yellow Kid) ... When Hearst hired Outcault away, Pulitzer asked artist George Luks to continue the strip with his characters, giving the city two Yellow Kids."
+     },
+     {
+      "claim": "황색언론 = 옐로 저널리즘 · 1900년 무렵 뉴욕 신문 경쟁",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황색_언론",
+      "note": "황색언론(黃色言論) 또는 옐로 저널리즘(영어: yellow journalism)은 ... 흥미 본위의 보도를 함으로써 선정주의적 경향을 띠는 저널리즘이다. ... 이 용어는 1900년 발행 부수를 놓고 경쟁하던 뉴욕의 특정 주요 신문을 설명하는 데에"
+     },
+     {
+      "claim": "쿠바 반란 · 허스트 전쟁 선동",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Yellow_journalism",
+      "note": "Hearst became a war hawk after a rebellion broke out in Cuba in 1895. Stories of Cuban virtue and Spanish brutality soon dominated his front page."
+     },
+     {
+      "claim": "어빈 워드먼",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Yellow_journalism",
+      "note": "The coinage of the term is mostly atrributed to Ervin Wardman, the editor of the New York Press. Wardman was the first to publish the term"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Yellow_journalism",
+     "https://ko.wikipedia.org/wiki/황색_언론"
+    ],
+    "hintNote": null,
+    "easiestCue": "퓰리처·허스트의 부수 경쟁에서 나온 언론 용어",
+    "worthWhyGen": "자주 쓰는 언론 비판 말의 색깔이 어디서 왔나(유래 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '언론을 가리키는 말' 예",
+     "unique": "만화 꼬마 별명에서 온 언론 말 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 166자"
+    ],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "symbols/3#g032b-g032b-j30-7",
+   "seed": {
+    "subject": "백의민족",
+    "aspect": null,
+    "ref": "g032b-j30-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한민족을 가리키는 별칭 하나는 옛 옷차림에서 나왔습니다. 독일인 오페르트는 조선을 다녀온 뒤 책 '조선기행'에 '옷감 빛깔은 남자나 여자나 다 희다'고 적었습니다. 중국 역사서 '삼국지' 위서 동이전도 부여 사람들이 흰옷을 귀하게 여겼다고 기록합니다. 이 별칭은?",
+    "answer": "백의민족",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "흰색은 깨끗함과 빛·해를 상징한다고 여겨졌습니다. 염색하지 않은 흰 한복은 1950년대까지 서민이 가장 많이 입던 옷이었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한민족을 가리키는 별칭 하나는 옛 옷차림에서 나왔습니다. / 흰옷을 귀하게 여겼다",
+     "difWhy": "2 — 흰옷 단서가 곧 백의민족, 이름 한 번 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 우리 별칭의 까닭, 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "조선 조정과 일제가 흰옷을 막고 물감 들인 옷을 권했지만 끝내 바꾸지 못했다는, 한민족을 가리키는 별칭이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "흰옷을 즐겨 입은 데서 나온 한민족의 별칭",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "한민족 별칭으로 교과서에 나옴",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "일화 선행",
+     "reason": "끝 ○○는 '별칭'인데 첫 문장 주인공은 오페르트 인용, 둘째는 삼국지 기록 — 정체(한민족의 별칭)는 끝 문장에서야 나옴. 다만 흰옷 단서라 경계."
+    },
+    "blindQuestion": {
+     "guess": "백의민족",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "백의민족",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "백의민족",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j30-7",
+      "answer": "블루칼라",
+      "verdict": "diff",
+      "why": "백의민족 vs 블루칼라 — 다른 지식"
+     },
+     {
+      "old": "g032b:g032b-j18-9",
+      "answer": "옐로 저널리즘",
+      "verdict": "diff",
+      "why": "백의민족 vs 옐로 저널리즘 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/백의민족",
+     "https://en.wikipedia.org/wiki/Hanbok"
+    ],
+    "facts": [
+     {
+      "claim": "오페르트 '조선기행' 인용 · 삼국지 위서 동이전 부여 흰옷",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/백의민족",
+      "note": "오페르트는 그의 저서 《조선기행》에서 “옷감 빛깔은 남자나 여자나 다 희다.”고 적었으며 ... 중국《삼국지》 위서 동이전에서는 “부여에서는 흰색 옷을 중시하므로"
+     },
+     {
+      "claim": "한국인이 오래 흰 한복을 선호",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hanbok",
+      "note": "For thousands of years, many Koreans have preferred white hanbok, a color considered pure and symbolizing light and the sun."
+     },
+     {
+      "claim": "조선·일제 강점기 흰옷 금지 시도 실패",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Hanbok",
+      "note": "during the Joseon dynasty (1392–1897) and the Japanese occupation of Korea (1910–1945), there was also an attempt to ban white clothes and to encourage non-bleached dyed clothes, which ultimately failed."
+     },
+     {
+      "claim": "흰 한복이 1950년대까지 서민에게 가장 흔함",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hanbok",
+      "note": "Undyed white hanbok ... was the most popular style among commoners from antiquity until the 1950s"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Hanbok"
+    ],
+    "hintNote": null,
+    "easiestCue": "흰옷 차림에서 나온 한민족 별칭",
+    "worthWhyGen": "한국인이면 아는 상징어의 근거(일반 상식)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 일화(오페르트) — ⑨ 종류 명사는 끝 문장, 짧아서 바로 읽힘",
+     "unique": "한민족 별칭 + 흰옷 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "독일인 오페르트는 조선을 다녀온 뒤 책 '조선기행'에 '옷감 빛깔은 남자나 여자나 다 희다'고 적었습니다. 중국 역사서 '삼국지' 위서 동이전도 부여 사람들이 흰옷을 귀하게 여겼다고 기록합니다. 이런 옷차림에서 나온 한민족의 별칭은?"
+      },
+      "why": "⑨ 첫 문장에 '한민족의 별칭' · 인용은 뒤로"
+     }
+    ],
+    "warn": [
+     "crossans 조정"
+    ],
+    "job": "job-30"
+   }
+  }
+ ]
+}

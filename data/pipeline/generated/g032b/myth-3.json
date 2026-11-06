@@ -1,0 +1,282 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "myth/3",
+  "midKey": "myth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "myth/3#g032b-g032b-j19-4",
+   "seed": {
+    "subject": "이슈타르",
+    "aspect": null,
+    "ref": "g032b-j19-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "메소포타미아의 여신입니다. 기원전 6세기 바빌론의 왕 네부카드네자르 2세는 도성 북쪽에 파란 유약 벽돌로 덮은 성문을 세워 이 여신에게 바쳤습니다. 그 성문은 20세기 초 독일 발굴단이 캐내 지금 베를린 페르가몬 박물관에 다시 세워져 있습니다. 사자를 상징 동물로 둔 이 여신은?",
+    "answer": "이슈타르",
+    "acceptedAnswers": [
+     "이쉬타르",
+     "이시타르"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 문을 지나는 행렬 길 양옆 벽에는 사자·황소·용·꽃 그림 약 120점이 노랑·검정 유약 벽돌로 새겨져 있었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "파란 유약 벽돌 성문을 바친 사자를 상징 동물로 둔 메소포타미아 여신",
+     "difWhy": "4 — 이슈타르 신화 세부 · 이걸 어떻게 알아",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 신화 인물 이름 암기",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "사랑과 전쟁을 함께 맡은 바빌론의 여신으로, 새벽과 저녁에 빛나는 금성이 이 여신의 별로 여겨졌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "메소포타미아(바빌론)의 사랑·전쟁의 여신",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "게임과 신화에서 접함",
+     "piece": "f05",
+     "genPct": 40
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "이슈타르",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "이슈타르",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "이슈타르",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ishtar_Gate",
+     "https://ko.wikipedia.org/wiki/이슈타르의_문",
+     "https://ko.wikipedia.org/wiki/이슈타르"
+    ],
+    "facts": [
+     {
+      "claim": "네부카드네자르 2세 · 북쪽 · 이슈타르에게 바침 · 파란 유약 벽돌 · 페르가몬 박물관",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ishtar_Gate",
+      "note": "It was constructed c. 569 BC by order of King Nebuchadnezzar II on the north side of the city. ... The walls were finished in glazed bricks mostly in blue ... German archaeologist Robert Koldewey led the excavation of the site from 1904 to 1914. ... the smaller frontal gate was reconstructed in the Pergamon Museum in Berlin. ... dedicated it to the Babylonian goddess Ishtar."
+     },
+     {
+      "claim": "네부카드네자르 2세 · 정북방 · 푸른 벽돌 · 20세기 초 발굴 · 페르가몬 복원 · 이슈타르 여신에게 바침",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이슈타르의_문",
+      "note": "기원전 575년에 네부카드네자르 2세의 지시에 의해 도시의 정북방 ... 성문은 매끄러운 푸른색 벽돌로 이루어졌다. ... 20세기 초에 바빌론에서 발굴되었으며, 독일 페르가몬 박물관에서 ... 다시 복원하였다. ... 이 성문을 이슈타르 여신에게 바쳤고"
+     },
+     {
+      "claim": "상징 사자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이슈타르",
+      "note": "그녀의 가장 두드러진 상징은 사자와 팔각 별이다."
+     },
+     {
+      "claim": "전쟁·사랑 여신 · 금성",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/이슈타르",
+      "note": "이슈타르 또는 인안나는 고대 메소포타미아의 전쟁, 사랑, 풍요의 여신이다. ... 이슈타르와 동일시되는 행성 금성과 특별히 연관되게 되었다."
+     },
+     {
+      "claim": "행렬 길 벽 사자·황소·용·꽃 약 120 · 노랑·검정 유약 벽돌",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ishtar_Gate",
+      "note": "Through the gate ran the Processional Way, which was lined with walls showing about 120 lions, bulls, dragons, and flowers on yellow and black glazed bricks"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이슈타르"
+    ],
+    "hintNote": null,
+    "easiestCue": "이름 붙은 바빌론 성문(페르가몬 박물관)",
+    "worthWhyGen": "세계사 교과서의 바빌론 성문과 박물관 이야기 — 신화·역사 취미 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '여신' 예",
+     "unique": "바빌론 성문을 바친 여신 · 사자 상징 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 금성"
+    ],
+    "job": "job-19",
+    "discarded": "알가치 1 (고유명사 · 신화 인물 이름 암기)"
+   }
+  },
+  {
+   "seedId": "myth/3#g032b-g032b-j23-10",
+   "seed": {
+    "subject": "오벨리스크",
+    "aspect": null,
+    "ref": "g032b-j23-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 이집트 신전 입구에 한 쌍으로 세우던, 한 덩이 돌을 깎아 끝을 피라미드처럼 뾰족하게 만든 높은 돌기둥입니다. 이집트 신화에서는 태양신 라를 상징했습니다. 이름은 '꼬챙이'를 뜻하는 그리스어에서 온 이 돌기둥은?",
+    "answer": "오벨리스크",
+    "acceptedAnswers": [
+     "방첨탑"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이집트 사람들은 '테케누'라 불렀고, 대부분 한 덩이 돌로 깎았지만 근대에 세운 것은 여러 돌을 쌓은 것이 많습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "고대 이집트 신전 입구 한 쌍 뾰족한 돌기둥",
+     "difWhy": "2 — 오벨리스크 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 고대 유물 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "파리 콩코르드, 로마 성 베드로 대성당 앞, 런던 템스강 가에 옮겨 세운 이집트 돌기둥이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 이집트의 끝이 뾰족한 네모 돌기둥",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "이집트·유럽 광장 기념탑으로 흔히 접함",
+     "piece": "f08",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '돌기둥'의 모양까지 설명, 끝 ○○ '돌기둥'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "오벨리스크",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오벨리스크",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오벨리스크",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1812",
+      "answer": "라",
+      "verdict": "diff",
+      "why": "오벨리스크 vs 태양신 라 — 라는 단서일 뿐 다른 지식"
+     },
+     {
+      "old": "4582",
+      "answer": "토트",
+      "verdict": "diff",
+      "why": "오벨리스크 vs 토트 신 — 다름"
+     },
+     {
+      "old": "5525",
+      "answer": "오시리스",
+      "verdict": "diff",
+      "why": "오벨리스크 vs 오시리스 — 다름"
+     },
+     {
+      "old": "g032a:g032a-j16-10",
+      "answer": "파라오",
+      "verdict": "diff",
+      "why": "오벨리스크 vs 파라오 칭호 — 다름"
+     },
+     {
+      "old": "1811",
+      "answer": "깃털",
+      "verdict": "diff",
+      "why": "오벨리스크 vs 깃털 심판 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/오벨리스크",
+     "https://en.wikipedia.org/wiki/Obelisk"
+    ],
+    "facts": [
+     {
+      "claim": "신전 입구에 쌍으로 · 끝이 피라미드 모양 · 그리스어 '꼬치' · 한 덩이 돌",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오벨리스크",
+      "note": "ὀβελός (obelós) '꼬치, 못, 뾰족한 기둥'의 지소사 … 끝이 피라미드 모양이거나 피라미디온 형태인 높고 가늘며 점점 좁아지는 기념건축물이다. … 이집트 신전 입구에 쌍으로 배치되어 종교적으로 중요한 역할을 했다."
+     },
+     {
+      "claim": "태양신 라 상징",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오벨리스크",
+      "note": "이집트 신화에서 오벨리스크는 태양신 라를 상징했으며"
+     },
+     {
+      "claim": "바티칸 · 런던·뉴욕 클레오파트라의 바늘 · 파리 콩코르드",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Obelisk",
+      "note": "the iconic … Vatican obelisk at Saint Peter's Square … Cleopatra's Needles in London, England … and New York City … and the … Luxor Obelisk at the Place de la Concorde in Paris, France."
+     },
+     {
+      "claim": "테케누 · 고대는 단일체, 현대는 여러 돌",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/오벨리스크",
+      "note": "원래 고대 이집트인들이 건설하여 테케누(tekhenu)라고 불렀는데 … 고대 오벨리스크는 단일체로 하나의 돌로 이루어져 있으며, 대부분의 현대 오벨리스크는 여러 개의 돌로 만들어진다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Obelisk"
+    ],
+    "hintNote": null,
+    "easiestCue": "이집트 신전 입구의 끝이 피라미드처럼 뾰족한 돌기둥",
+    "worthWhyGen": "알가치 2 — 세계 여러 광장에서 보는 기념물의 정체와 이집트 신앙",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '돌기둥입니다'",
+     "unique": "한 덩이 돌 · 끝이 피라미드꼴 — 스핑크스·피라미드와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

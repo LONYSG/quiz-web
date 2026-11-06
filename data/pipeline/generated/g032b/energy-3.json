@@ -1,0 +1,417 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "energy/3",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/3#g032b-g032b-j07-10",
+   "seed": {
+    "subject": "브렌트유",
+    "aspect": null,
+    "ref": "g032b-j07-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "국제 유가 뉴스에 자주 나오는 원유 이름입니다. 1971년 셸이 스코틀랜드 셰틀랜드 제도 앞바다에서 찾은 한 유전에서 왔습니다. 셸은 영국 유전마다 바닷새 이름을 알파벳 차례로 붙였는데, 바다쇠오리(Auk) 다음인 이 유전은 흑기러기의 영어 이름을 받았습니다. 이 원유는?",
+    "answer": "브렌트유",
+    "acceptedAnswers": [
+     "브렌트 원유",
+     "브렌트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "유전 이름은 스코틀랜드 호수 이름을 딴 지층 Broom·Rannoch·Etive·Ness·Tarbert 의 머리글자로도 풀린다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "국제 유가 뉴스에 자주 나오는 원유 · 흑기러기 영어 이름",
+     "difWhy": "3 — 뉴스 용어 · 흑기러기 단서는 영어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 경제 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "서부 텍사스산 원유(WTI)·두바이유와 함께 흔히 세계 3대 기준 유가로 꼽히며, 런던 ICE 선물로 거래된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "북해산 기준 원유(Brent Crude)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "유가 뉴스에서 두바이유·WTI와 함께 나옴",
+     "piece": "f08",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '원유 이름', 끝 ○○ '이 원유' 일치; 유전 이름 짓는 방식을 설명해 흐름이 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "브렌트유",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "브렌트유",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "브렌트유",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6790",
+      "answer": "북해",
+      "verdict": "diff",
+      "why": "브렌트유 명명 유래 vs 북해 헐 사건 — 북해는 다른 사실, 브렌트유는 힌트 속 단어"
+     },
+     {
+      "old": "2885",
+      "answer": "배럴",
+      "verdict": "diff",
+      "why": "브렌트유 vs 배럴 단위 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Brent_oilfield",
+     "https://en.wikipedia.org/wiki/Brent_Crude",
+     "https://ko.wikipedia.org/wiki/브렌트유"
+    ],
+    "facts": [
+     {
+      "claim": "1971 셸 발견 · 셰틀랜드 북동쪽 북해 · 셸이 영국 유전에 바닷새 이름을 발견 순 알파벳 차례(Auk, Brent, Cormorant...) · brent goose · 지층 머리글자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Brent_oilfield",
+      "note": "186 kilometres (116 mi) north-east of Lerwick in the Shetland Islands, Scotland. The Brent oilfield was discovered in 1971 ... drilled by the Shell owned 'Staflo' ... Shell initially named all of its UK oil fields after seabirds in alphabetical order by discovery – Auk, Brent, Cormorant, Dunlin, Eider, Fulmar and so on. Brent refers to the brent goose, and in turn gave its initials to the geologic subdivisions ... Broom, Rannoch, Etive, Ness and Tarbert formations, with each name representing a loch in the Scottish Highlands."
+     },
+     {
+      "claim": "브렌트유는 브렌트 유전에서 · 이름은 셸의 새 이름 정책(brent goose)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Brent_Crude",
+      "note": "Originally Brent Crude was produced from the Brent Oilfield. The name \"Brent\" comes from the naming policy of Shell UK Exploration and Production ... which originally named all of its fields after birds (in this case the brent goose)."
+     },
+     {
+      "claim": "북해 브렌트 유전 원유 · ICE 브렌트유 선물",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/브렌트유",
+      "note": "원래의 브렌트유는 1976년 북해의 브렌트 유전에서 처음 추출된 경질 저유황 원유의 거래 분류를 지칭했다. ... 일상적으로 브렌트유는 보통 ICE(Intercontinental Exchange) 브렌트유 선물 계약의 가격"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/브렌트유"
+    ],
+    "hintNote": null,
+    "easiestCue": "'유가 뉴스의 원유 + 스코틀랜드 앞바다' — 북해산 = 브렌트를 아는 사람은 풀림(등급 3~4 가능)",
+    "worthWhyGen": "뉴스에 매일 나오는 원유 이름이 왜 새 이름인가 — 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '원유 이름' 예",
+     "unique": "스코틀랜드 앞바다 — WTI·두바이유와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "energy/3#g032b-g032b-j13-4",
+   "seed": {
+    "subject": "코크스",
+    "aspect": null,
+    "ref": "g032b-j13-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "쇠를 만드는 데 쓰는 연료 하나에 얽힌 이야기입니다. 1709년 영국의 에이브러햄 다비는 숯 대신 이 연료로 용광로를 때 철을 뽑아내는 데 성공했습니다. 그는 젊은 시절 맥아 굽는 가마에서 이 연료를 쓰는 것을 보았는데, 석탄의 황 냄새가 맥주에 배지 않게 하려는 것이었습니다. 이 연료는?",
+    "answer": "코크스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "중국 황허 유역의 제철공들은 이미 11세기 초에 나무가 귀해지자 이 연료로 쇠를 녹였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "숯 대신 이 연료로 용광로를 때 철을 뽑아냈다 · 석탄의 황 냄새",
+     "difWhy": "3 — 설명 → 이름 · 석탄 가공품 학교 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 제철 연료",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "석탄을 공기 없이 높은 온도로 구워 불순물을 날린, 구멍이 숭숭 난 회색 덩어리 연료다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "석탄을 공기 없이 구워 만든, 제철에 쓰는 탄소 연료",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "제철 교과서·과학 시간에 들어 봄",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '쇠를 만드는 데 쓰는 연료'가 끝 ○○(연료)와 같고 다비 일화는 둘째 문장부터 연료 이야기"
+    },
+    "blindQuestion": {
+     "guess": "코크스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "코크스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "코크스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2880",
+      "answer": "셰일가스",
+      "verdict": "diff",
+      "why": "새 정답 코크스 과 옛 정답 셰일가스 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "262",
+      "answer": "석탄",
+      "verdict": "diff",
+      "why": "코크스(용광로 연료로 쓴 다비의 이야기)와 석탄(화석 연료의 정의)은 맞히는 지식이 다름"
+     },
+     {
+      "old": "2884",
+      "answer": "바이오에탄올",
+      "verdict": "diff",
+      "why": "새 정답 코크스 과 옛 정답 바이오에탄올 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Abraham_Darby_I",
+     "https://en.wikipedia.org/wiki/Coke_(fuel)",
+     "https://ko.wikipedia.org/wiki/코크스"
+    ],
+    "facts": [
+     {
+      "claim": "다비 · 숯 대신 이 연료로 용광로 · 1709년 · 맥아 가마에서 황이 맥주를 더럽히지 않게 쓰는 것을 봄",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Abraham_Darby_I",
+      "note": "Darby developed a method of producing pig iron in a blast furnace fuelled by coke rather than charcoal. ... Here Darby would have seen the use of coke to fuel malting ovens, not only preventing the sulphur content of coal from contaminating the resulting beer ... The combination of these two insights was to lead to Darby's development of the coke-fuelled blast furnace in 1709."
+     },
+     {
+      "claim": "맥아 굽기에 이 연료 · 석탄 황 연기가 맥주 맛을 망침",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Coke_(fuel)",
+      "note": "coke was used for roasting malt in Derbyshire; previously, brewers had used wood, as uncoked coal cannot be used in brewing because its sulphurous fumes would impart a foul taste to the beer."
+     },
+     {
+      "claim": "석탄을 공기 없이 가열 · 회색 · 단단 · 다공성",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Coke_(fuel)",
+      "note": "Coke is a grey, hard, and porous coal-based fuel with a high carbon content. It is made by heating coal or petroleum in the absence of air."
+     },
+     {
+      "claim": "석탄 원료 · 회색 · 다공성",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/코크스",
+      "note": "대개 석탄을 원료로 해서 만든다. 석탄에서 만들어진 코크스는 회색을 띠며 단단하고 다공성이다."
+     },
+     {
+      "claim": "11세기 초 황허 유역 제철",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Coke_(fuel)",
+      "note": "By the first decades of the 11th century, Chinese ironworkers in the Yellow River valley began to fuel their furnaces with coke, solving their fuel problem in that tree-sparse region."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/코크스",
+     "https://en.wikipedia.org/wiki/Coke_(fuel)"
+    ],
+    "hintNote": null,
+    "easiestCue": "숯 대신 용광로를 땐 연료",
+    "worthWhyGen": "산업혁명 제철 연료가 맥주 맛을 지키려던 데서 왔다는 까닭",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '연료' 예",
+     "unique": "숯 대신 용광로 + 맥아 가마 — 석탄(피할 목록)과 갈림: 석탄 그대로는 황 냄새라 못 씀",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 162자",
+     "crossans 석탄"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "energy/3#g032b-g032b-j29-6",
+   "seed": {
+    "subject": "연탄",
+    "aspect": null,
+    "ref": "g032b-j29-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "처음에는 구멍이 아홉 개라 '구공탄'이라고도 불린 연료입니다. 지금 가정에서 흔히 쓰는 2호는 구멍이 22개입니다. 1988년 우리나라 가정의 78%가 주연료로 썼던 이것은?",
+    "answer": "연탄",
+    "acceptedAnswers": [
+     "구멍탄"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "기름·가스 보일러가 퍼지며 1993년 33%, 2001년 2% 남짓으로 줄었고, 요즘은 고깃집과 비닐하우스에서 주로 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "구공탄 / 구멍 22개 / 가정 주연료",
+     "difWhy": "1 — 구공탄 단서가 연탄과 곧바로 이어짐",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "겨울마다 광에 쌓아 두고 아궁이에 갈아 넣던 검은 원통으로, 다 쓴 하얀 재는 빙판길에 뿌렸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "무연탄 가루를 원통형으로 찍어 낸 난방·취사 연료",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "난방 연료로 흔히 알려짐",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '연료'가 있고 끝도 '이것'이 연료를 가리킴. 짧고 주어 하나."
+    },
+    "blindQuestion": {
+     "guess": "연탄",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "연탄",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "연탄",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5848",
+      "answer": "언양불고기",
+      "verdict": "diff",
+      "why": "연탄 vs 언양불고기 — 다른 지식"
+     },
+     {
+      "old": "3616",
+      "answer": "동치미",
+      "verdict": "diff",
+      "why": "연탄 vs 동치미 민간요법 — 다른 지식"
+     },
+     {
+      "old": "5384",
+      "answer": "태백",
+      "verdict": "diff",
+      "why": "연탄 vs 태백시 설립 — 다른 지식"
+     },
+     {
+      "old": "6280",
+      "answer": "떡볶이",
+      "verdict": "diff",
+      "why": "연탄 vs 떡볶이 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/연탄",
+     "https://en.wikipedia.org/wiki/Yeontan"
+    ],
+    "facts": [
+     {
+      "claim": "구멍 아홉 개라 구공탄 · 22개 규격",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연탄",
+      "note": "구공탄이라고도 부르며, 원래 가운데 구멍 하나와 방사형으로 네 방향으로 두 개씩 구멍이 아홉 개 뚫려 있다고 하여 붙은 이름이다. … 1970년대부터는 구멍 22개 규격을 많이 쓰기 시작했다."
+     },
+     {
+      "claim": "1988년 78% · 2호 22구멍",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yeontan",
+      "note": "By 1988, 78% of South Korean households used yeontan … The standard briquette has 22 holes … Earlier briquettes used to have 9 holes."
+     },
+     {
+      "claim": "1988년 78%(한국어)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연탄",
+      "note": "1988년에는 대한민국 가정의 78%가 연탄을 주연료로 사용했다."
+     },
+     {
+      "claim": "1993 33% · 2001 2% · 음식점·비닐하우스",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/연탄",
+      "note": "하지만 1993년에는 33% 정도로 줄었다. … 2001년에는 2%정도로 추측된다. 최근에는 … 음식점의 요리용 연료로 … 주로 농작물을 재배하는 비닐하우스에서 많이 쓴다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'구공탄'이라고도 불린 연료",
+    "worthWhyGen": "구공탄이라는 말의 유래 · 한국 생활사 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '연료' 예",
+     "unique": "구공탄 = 같은 대상 · 연료로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

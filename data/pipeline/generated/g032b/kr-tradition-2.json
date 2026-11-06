@@ -1,0 +1,293 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-tradition/2",
+  "midKey": "kr-tradition",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/2#g032b-g032b-j01-9",
+   "seed": {
+    "subject": "조끼",
+    "aspect": null,
+    "ref": "g032b-j01-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한복을 입을 때 저고리 위에 덧입는 옷입니다. 원래 우리 옷에는 없던 것으로, 1900년 무렵 서양 옷이 들어오면서 생겼습니다. 저고리에 주머니가 없는 불편을 덜려고 앞길에 주머니를 달았다는 이 옷은?",
+    "answer": "조끼",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "왼쪽 앞에 둘, 오른쪽에 하나를 다는 것이 흔했고, 계절에 따라 모시·명주·베로 지었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "저고리 위에 덧입는 옷 · 앞길에 주머니",
+     "difWhy": "2 — 한복 덧옷, 조끼로 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 옷의 유래 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "소매 없이 몸통만 감싸는 옷으로, 양복 쓰리피스 정장의 세 번째 조각이기도 하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "소매 없는 몸통 겉옷(한복·양복 모두)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "일상 의복",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '저고리 위에 덧입는 옷', 끝 ○○ '이 옷'과 일치; 짧고 단서가 선명"
+    },
+    "blindQuestion": {
+     "guess": "조끼",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "조끼",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "조끼",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4650",
+      "answer": "주황",
+      "verdict": "diff",
+      "why": "새 정답 조끼의 지식(유래·사실)과 옛 정답 주황의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1078",
+      "answer": "동정",
+      "verdict": "diff",
+      "why": "새 정답 조끼의 지식(유래·사실)과 옛 정답 동정의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1079",
+      "answer": "두루마기",
+      "verdict": "diff",
+      "why": "새 정답 조끼의 지식(유래·사실)과 옛 정답 두루마기의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4542",
+      "answer": "마고자",
+      "verdict": "diff",
+      "why": "새 정답 조끼의 지식(유래·사실)과 옛 정답 마고자의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032b:g032b-j28-5",
+      "answer": "노리개",
+      "verdict": "diff",
+      "why": "새 정답 조끼의 지식(유래·사실)과 옛 정답 노리개의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/조끼",
+     "https://en.wikipedia.org/wiki/Hanbok"
+    ],
+    "facts": [
+     {
+      "claim": "저고리 위 · 원래 한복에 없음 · 양복 유입 때 생김 · 주머니 보완 · 1900년 무렵",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/조끼",
+      "note": "한복에서 말하는 조끼란 저고리 위에 입는 남성용 상의로 원래의 한복에 존재하던 양식은 아니다. 조끼는 양복이 한반도로 유입되는 과정에서 생겨났고 저고리에 주머니가 없는 점을 보완 ... 1900년 무렵 서양복식의 영향을 받아 입게 된 조끼는 ... 왼쪽 앞길에는 2개, 오른쪽에는 1개의 주머니를 달았다."
+     },
+     {
+      "claim": "조선 말 서양 문화 영향으로 생김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hanbok",
+      "note": "Jokki (조끼) is a type of vest ... The jokki was created around the late Joseon dynasty, as Western culture began to affect Korea."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/조끼"
+    ],
+    "hintNote": null,
+    "easiestCue": "저고리 위에 덧입는, 주머니 단 옷",
+    "worthWhyGen": "전통 옷처럼 여겨지는 것이 실은 개화기 서양 옷에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '옷' 예",
+     "unique": "1900년 무렵 서양 영향 · 주머니 — 마고자(만주 옷 유래)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "kr-tradition/2#g032b-g032b-j28-5",
+   "seed": {
+    "subject": "노리개",
+    "aspect": null,
+    "ref": "g032b-j28-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한복을 입은 여성이 저고리 고름이나 치마허리에 차던 장신구입니다. 고려 시대까지는 허리춤에 달았지만, 고려 말부터 저고리가 짧아지면서 고름 쪽으로 올라왔습니다. 세 개를 한데 묶어 차면 '삼작'이라 부르던 이 장신구는?",
+    "answer": "노리개",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "모양과 재료가 가풍을 나타낸다 하여 부유한 양반 집안에서는 자손에게 물려주기도 했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한복을 입은 여성이 저고리 고름이나 치마허리에 차던 장신구",
+     "difWhy": "2 — 한복 장신구 · 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 전통 의복 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "매듭과 술 사이에 매미·가지·천도복숭아 모양 패물을 달아, 부귀와 아들 많기를 빌던 한복 장식이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한복 저고리 고름에 다는 술 달린 여성 장신구",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "한복 장신구로 알려짐",
+     "piece": "f05",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '한복 · 장신구' 로 종류 명시 · '삼작' 은 단서 속 고유 이름으로 해독에 지장 없음"
+    },
+    "blindQuestion": {
+     "guess": "노리개",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "노리개",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "노리개",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1078",
+      "answer": "동정",
+      "verdict": "diff",
+      "why": "노리개 vs 동정 — 다른 한복 부분"
+     },
+     {
+      "old": "g032b:g032b-j01-9",
+      "answer": "조끼",
+      "verdict": "diff",
+      "why": "노리개 vs 조끼 — 다른 한복 물건"
+     },
+     {
+      "old": "1079",
+      "answer": "두루마기",
+      "verdict": "diff",
+      "why": "노리개 vs 두루마기 — 다른 지식"
+     },
+     {
+      "old": "4542",
+      "answer": "마고자",
+      "verdict": "diff",
+      "why": "노리개 vs 마고자 — 다른 지식"
+     },
+     {
+      "old": "1086",
+      "answer": "색동",
+      "verdict": "diff",
+      "why": "노리개 vs 색동 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/노리개",
+     "https://en.wikipedia.org/wiki/Norigae"
+    ],
+    "facts": [
+     {
+      "claim": "고려까지 허리춤 · 고려 말 저고리 짧아져 고름으로 · 저고리 고름·치마허리 · 삼작",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/노리개",
+      "note": "일반적으로 고려 시대까지 허리춤에 위치하던 노리개는 고려 말부터 저고리가 짧아지면서 저고리 밑으로 올라오게 되었다. ... 주로 한복 저고리의 고름이나 치마허리 등에 차는 것으로 ... 세 단작 노리개를 합쳐 차는 것을 삼작노리개라고 한다."
+     },
+     {
+      "claim": "저고리 고름이나 치마에 다는 한복 장신구 · 부·아들 기원 · 대물림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Norigae",
+      "note": "Norigae ... is a typical, traditional Korean accessory used in Hanbok, which can be hung on goreum (coat strings) of a woman's jeogori or on her chima. ... a good-luck charm hoped to bring something such as eternal youth, wealth or many sons ... the norigae from the parents' or in-laws' home was passed down to descendants."
+     },
+     {
+      "claim": "띠돈·패물·매듭·술 · 박쥐·가지·천도 모양 · 부귀다남",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/노리개",
+      "note": "부귀다남 등 여러 여인들의 소망이 담긴 장신구 ... 노리개는 띠돈(帶金)· 패물· 매듭· 술로 구성되어 있다. ... 그 모양은 매미, 박쥐, 가지, 천도, 투호 등 아주 다양하다."
+     },
+     {
+      "claim": "가풍 상징 · 양반가 대물림",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/노리개",
+      "note": "노리개는 그 형태와 재료 등이 가풍을 상징한다 하여 부유한 양반 가문에서는 자제에게 이를 물려주는 풍습이 있었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/노리개",
+     "https://en.wikipedia.org/wiki/Norigae"
+    ],
+    "hintNote": null,
+    "easiestCue": "한복 저고리 고름에 차던 여성 장신구",
+    "worthWhyGen": "한복의 대표 장신구 — 전통 의식주 상식과 고름으로 올라온 까닭",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '장신구' 예",
+     "unique": "고름·치마허리에 차는 장신구 · 삼작 — 노리개 하나(비녀·댕기는 머리)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 매미"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

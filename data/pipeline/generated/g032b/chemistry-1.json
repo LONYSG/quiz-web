@@ -1,0 +1,432 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "chemistry/1",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/1#g032b-g032b-j04-7",
+   "seed": {
+    "subject": "셀레늄",
+    "aspect": null,
+    "ref": "g032b-j04-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1817년 스웨덴 화학자 베르셀리우스가 황산 공장 납 방에 쌓인 붉은 찌꺼기에서 찾아낸 원소가 있습니다. 앞서 발견된 텔루륨과 성질이 닮았는데, 텔루륨은 '지구'에서 이름을 따왔습니다. 그래서 그 짝으로 '달'의 여신에게서 이름을 따온 이 원소는 무엇일까요?",
+    "answer": "셀레늄",
+    "acceptedAnswers": [
+     "셀렌"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "빛을 받으면 전기 저항이 줄어드는 성질이 있어 복사기와 광전지에 쓰였다. 원소 기호는 Se, 원자 번호는 34이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 5,
+     "easiestCue": "텔루륨은 지구, 짝은 달의 여신",
+     "difWhy": "5 — 베르셀리우스 1817 원소 발견 · 셀레늄 어원은 마니아",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 원소 어원, 교과 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "비듬 샴푸에 이황화 화합물 꼴로 들어가는 원소로, 브라질너트에 특히 많아 영양제로도 챙겨 먹는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 34 · 기호 Se 인 비금속 원소(selenium)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "영양제·원소 주기율표에서 접함",
+     "piece": "f04",
+     "genPct": 45
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "셀레늄",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "셀레늄",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "셀레늄",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Selenium",
+     "https://ko.wikipedia.org/wiki/셀레늄"
+    ],
+    "facts": [
+     {
+      "claim": "1817년 베르셀리우스 발견 · 텔루륨(지구 이름)과 닮아 달에서 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Selenium",
+      "note": "Selenium (from σελήνη 'moon') was discovered in 1817 by Jöns Jacob Berzelius, who noted the similarity of the new element to the previously discovered tellurium (named for the Earth). ... Because of its similarity to tellurium, named for the Earth, Berzelius named the new element after the Moon."
+     },
+     {
+      "claim": "황산 공장 납 방의 붉은 침전물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Selenium",
+      "note": "Both chemists owned a chemistry plant near Gripsholm, Sweden, producing sulfuric acid by the lead chamber process. Pyrite samples from the Falun Mine produced a red solid precipitate in the lead chambers"
+     },
+     {
+      "claim": "같은 내용(ko) — 달의 여신 셀레네",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/셀레늄",
+      "note": "셀레늄(그리스어 σελήνη, 달이라는 뜻임)은 1817년 베르셀리우스와 요한 고틀리브 간이 발견하였다. ... 텔루륨은 지구에서 이름을 따 왔으므로 그와 비슷한 성질을 지닌 셀레늄은 그리스 달의 여신을 뜻하는 셀레네(Selene)에서 이름을 따왔다고 한다."
+     },
+     {
+      "claim": "비듬 샴푸(이황화셀레늄) · 브라질너트",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Selenium",
+      "note": "Selenium is used in some anti-dandruff shampoos in the form of selenium disulfide ... Brazil nuts are the richest dietary source"
+     },
+     {
+      "claim": "빛에 따라 저항 변화 · 복사·광전지 · Se 34",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Selenium",
+      "note": "Selenium is a chemical element; it has symbol Se and atomic number 34. ... Its photovoltaic and photoconductive properties are still useful in photocopying, photocells, light meters and solar cells."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Selenium"
+    ],
+    "hintNote": null,
+    "easiestCue": "'달'의 여신에서 온 원소 이름(셀레네를 알면) · 텔루륨의 짝",
+    "worthWhyGen": "원소 이름이 왜 '달' 인가 — 먼저 '지구' 이름을 받은 텔루륨의 짝이라서(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '원소' 예",
+     "unique": "1817 베르셀리우스 · 달 이름 = 셀레늄 하나(그가 찾은 세륨·토륨은 다른 이름 유래)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 샴푸"
+    ],
+    "job": "job-04",
+    "discarded": "등급 5 알가치 2 (원소 어원, 교과 개념)"
+   }
+  },
+  {
+   "seedId": "chemistry/1#g032b-g032b-j15-8",
+   "seed": {
+    "subject": "제논",
+    "aspect": null,
+    "ref": "g032b-j15-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "원자 번호 54번 원소입니다. 1898년 윌리엄 램지와 모리스 트래버스가 액체 공기를 증발시키고 남은 찌꺼기에서 찾았고, 그리스어로 '낯선 것'이라는 뜻의 이름을 붙였습니다. 1962년에는 비활성 기체 가운데 처음으로 이 원소의 화합물이 만들어졌습니다. 카메라 플래시와 우주선 이온 엔진에 쓰이는 이 원소는?",
+    "answer": "제논",
+    "acceptedAnswers": [
+     "크세논"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1951년 미국에서 수술 마취제로 처음 쓰였지만 값이 비싸 널리 쓰이지는 않는다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "원자 번호 54번 · 카메라 플래시와 이온 엔진",
+     "difWhy": "4 — 원자 번호 → 원소 이름, 숫자 정확히 · 표기도 헷갈림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 원소 교과 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "공기 속에 2천만분의 1쯤 섞인 무거운 기체로, 자동차 HID 전조등과 영화관 영사기 램프의 햇빛 같은 빛을 낸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 54의 비활성 기체 원소(Xe)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "원소 이름이나 제논 램프로 들어 봄",
+     "piece": "f08",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '원자 번호 54번 원소' 로 종류와 대상이 모두 나온다. 끝 '이 원소는?' 과 맞는다."
+    },
+    "blindQuestion": {
+     "guess": "제논(크세논)",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "제논",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "제논",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j10-8",
+      "answer": "크립톤",
+      "verdict": "diff",
+      "why": "제논(54번) vs 크립톤(36번) — 같은 발견 일화지만 원소가 다르고 단서도 다름"
+     },
+     {
+      "old": "3790",
+      "answer": "스토아 학파",
+      "verdict": "diff",
+      "why": "제논 원소 vs 스토아 학파 — 이름만 겹침"
+     },
+     {
+      "old": "1159",
+      "answer": "스토아 학파",
+      "verdict": "diff",
+      "why": "제논 원소 vs 스토아 학파 — 다른 지식"
+     },
+     {
+      "old": "g032a:g032a-j28-9",
+      "answer": "리튬",
+      "verdict": "diff",
+      "why": "제논 vs 리튬 — 다른 원소"
+     },
+     {
+      "old": "g032b:g032b-j04-7",
+      "answer": "셀레늄",
+      "verdict": "diff",
+      "why": "제논 vs 셀레늄 — 다른 원소"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Xenon",
+     "https://ko.wikipedia.org/wiki/크세논"
+    ],
+    "facts": [
+     {
+      "claim": "1898 램지·트래버스 · 액체 공기 찌꺼기 · '낯선' 그리스어",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Xenon",
+      "note": "Xenon was discovered in England by the Scottish chemist William Ramsay and English chemist Morris Travers on July 12, 1898 ... They found xenon in the residue left over from evaporating components of liquid air. Ramsay suggested the name xenon for this gas from the Greek word ξένον ... meaning 'foreign(er)', 'strange(r)', or 'guest'."
+     },
+     {
+      "claim": "원자 번호 54 · 1962 비활성 기체 첫 화합물 · 카메라 플래시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/크세논",
+      "note": "원자 번호는 54이다. ... 1962년 비활성 기체 중에서는 처음으로 제논 화합물이 만들어졌다. ... 보통 크세논이라고 하며, 카메라의 플래시나 등대의 플래시로 쓰인다."
+     },
+     {
+      "claim": "이온 추진기 연료",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Xenon",
+      "note": "Xenon is also used ... as a propellant for ion thrusters in spacecraft."
+     },
+     {
+      "claim": "대기 중 2천만분의 1 · HID 전조등 · 영사기",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Xenon",
+      "note": "Ramsay estimated the proportion of xenon in the Earth's atmosphere to be one part in 20 million. ... color temperature closely approximating noon sunlight ... used in movie projectors ... automotive HID headlights"
+     },
+     {
+      "claim": "1951 마취제 · 비쌈",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Xenon",
+      "note": "Xenon was first used as a surgical anesthetic in 1951 by American anesthesiologist Stuart C. Cullen ... it is more expensive than conventional anesthetics."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Xenon"
+    ],
+    "hintNote": null,
+    "easiestCue": "카메라 플래시 · 이온 엔진 원소",
+    "worthWhyGen": "원소 이름이 '낯선 손님'이라는 유래와 일상 쓰임(3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '원소' 예",
+     "unique": "54번 → 제논 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 172자"
+    ],
+    "job": "job-15"
+   }
+  },
+  {
+   "seedId": "chemistry/1#g032b-g032b-j28-9",
+   "seed": {
+    "subject": "마그네슘",
+    "aspect": null,
+    "ref": "g032b-j28-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "원소 기호가 Mg인 가볍고 은백색인 금속입니다. 이름은 그리스 테살리아 지방의 한 지명에서 왔는데, 자철석과 망가니즈의 이름도 같은 곳에서 나왔습니다. 가루를 태우면 눈부신 흰빛을 내 초기 사진 촬영의 조명으로 쓰인 이 원소는?",
+    "answer": "마그네슘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1808년 영국의 험프리 데이비가 처음 분리했으며, 그가 맨 처음 제안한 이름은 '마그늄'이었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "원소 기호 Mg",
+     "difWhy": "2 — Mg 곧바로 마그네슘 · 교과 원소",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 원소 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "식물 엽록소 한가운데 들어 있어 광합성에 꼭 필요하고, 사람에게는 근육 경련을 막는 영양제로 흔히 먹는 원소다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 12, 원소 기호 Mg 인 가벼운 금속 원소",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "영양제와 주기율표로 익숙",
+     "piece": "f05",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '원소 기호 Mg · 금속' 이 곧 종류 · 끝 ○○ '원소' 와 일치 · 지명 이야기는 둘째 문장이지만 정체가 이미 드러남"
+    },
+    "blindQuestion": {
+     "guess": "마그네슘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마그네슘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마그네슘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5262",
+      "answer": "랜드로버",
+      "verdict": "diff",
+      "why": "마그네슘 원소 어원 vs 랜드로버 — 합금 언급뿐"
+     },
+     {
+      "old": "g032a:g032a-j28-9",
+      "answer": "리튬",
+      "verdict": "diff",
+      "why": "마그네슘 vs 리튬 — 다른 원소"
+     },
+     {
+      "old": "3473",
+      "answer": "키프로스",
+      "verdict": "diff",
+      "why": "마그네슘 vs 구리 기호/키프로스 — 다른 원소"
+     },
+     {
+      "old": "93",
+      "answer": "금",
+      "verdict": "diff",
+      "why": "마그네슘 vs 금 — 다른 원소"
+     },
+     {
+      "old": "4808",
+      "answer": "인",
+      "verdict": "diff",
+      "why": "마그네슘 vs 인 — 다른 원소"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마그네슘",
+     "https://en.wikipedia.org/wiki/Magnesium"
+    ],
+    "facts": [
+     {
+      "claim": "기호 Mg · 은백색 가벼운 금속 · 테살리아 마그네시아 지명 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마그네슘",
+      "note": "기호는 Mg ... 실온에서 은백색의 가벼운 금속으로 존재한다. ... 마그네슘이라는 이름은 그리스 테살리아 지방의 마그네시아에서 나는 마그네시아석의 이름에서 유래하였다."
+     },
+     {
+      "claim": "마그네시아 지명 · magnetite·manganese도 같은 곳 · 초기 사진 플래시 가루",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Magnesium",
+      "note": "The name magnesium originates from the Greek word for locations related to the tribe of the Magnetes, either a district in Thessaly called Magnesia or Magnesia ad Sipylum ... It is related to magnetite and manganese, which also originated from this area ... Magnesium powder (flash powder) was used for subject illumination in the early days of photography."
+     },
+     {
+      "claim": "엽록소 · 광합성 · 경련 안정",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/마그네슘",
+      "note": "식물의 엽록소에도 마그네슘 이온이 포함되어 있어 광합성에 중요한 역할을 한다. 마그네슘 화합물들은 의학적으로 ... 비정상적인 신경 자극 또는 혈관 경련을 안정화하는 데 사용된다."
+     },
+     {
+      "claim": "1808 데이비 분리 · magnium 제안",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Magnesium",
+      "note": "The metal itself was first isolated by Sir Humphry Davy in England in 1808. ... Davy's first suggestion for a name was 'magnium'"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/마그네슘"
+    ],
+    "hintNote": null,
+    "easiestCue": "원소 기호 Mg",
+    "worthWhyGen": "흔히 먹는 영양소 이름이 그리스 지명에서 왔고 자석(자철석)과 이름 뿌리가 같다는 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '금속' — 끝 '원소' 와 같은 대상",
+     "unique": "Mg — 마그네슘 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 엽록소"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

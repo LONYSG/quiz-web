@@ -1,0 +1,246 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "medicine/3",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/3#g032b-g032b-j12-11",
+   "seed": {
+    "subject": "활명수",
+    "aspect": null,
+    "ref": "g032b-j12-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "소화제입니다. 1897년 대한제국 궁중 선전관 민병호가 궁중의 비방에 서양 의학을 더해 만들었다고 전하며, 한국 최초의 양약으로 소개되곤 합니다. 그가 아들 민강과 함께 세운 약방은 지금까지 같은 상호의 제약회사로 이어지고, 이 약은 최장수 의약품으로 기네스북에 올랐습니다. 이 약은 무엇일까요?",
+    "answer": "활명수",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 약을 만든 동화약품은 1897년 9월 25일 문을 연 한국 최장수 제약회사입니다. 그 상표는 한국 최초의 등록상표로도 기네스북에 올라 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한국 최초의 양약 · 소화제 · 최장수 의약품",
+     "difWhy": "2 — 소화제 단서로 바로",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "'부채표'를 상표로 단 물약 소화제로, 1967년 탄산가스를 넣은 제품이 나와 체했을 때 마시는 약의 대명사가 되었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "동화약품의 액상 소화제(1897년~)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "국민 소화제 광고",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '소화제입니다', 끝 ○○ '이 약' 일치; 약방 이야기가 곁들여지나 주어 정리됨"
+    },
+    "blindQuestion": {
+     "guess": "활명수",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "활명수",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "활명수",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동화약품",
+     "https://m.go.seoul.co.kr/news/plan/founder-secret-notebook/2026/09/21/20260921500091"
+    ],
+    "facts": [
+     {
+      "claim": "1897년 궁중 선전관 민병호 · 최초 신약 · 기네스 최장수 의약품",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동화약품",
+      "note": "1897년 궁중 선전관 민병호, 대한민국 최초 신약 '활명수' 출시. 민강 '동화약방' 창업. / 최장수 제조 회사이자 제약회사, 대한민국 최초의 등록상표 부채표와 최장수 의약품 활명수 4개 부문에서 기네스북에 등재되어 있다."
+     },
+     {
+      "claim": "궁중 비방 + 서양 의학 · 최초 양약 · 아들 민강과 동화약방",
+      "where": "q",
+      "url": "https://m.go.seoul.co.kr/news/plan/founder-secret-notebook/2026/09/21/20260921500091",
+      "note": "(웹 검색 요약) 활명수는 1897년 궁중 선전관을 지낸 민병호 선생이 개발 · 궁중 비방에 서양 의학을 접목해 개발한 대한민국 최초의 양약 · 아들 민강 선생과 함께 동화약방을 세우고 활명수 대중화에 나섰다"
+     },
+     {
+      "claim": "1967년 발포성 '까스 활명수' · 부채표",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/동화약품",
+      "note": "1967년 발포성 소화제 '까스 활명수' 출시. / 1959년 부채표 활명수 흑백 TV-CF 광고 개시"
+     },
+     {
+      "claim": "1897-09-25 창립 · 최초 등록상표 기네스",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동화약품",
+      "note": "동화약품 ... 는 1897년 9월 25일에 창립된 제약회사다. / 대한민국 최초의 등록상표 부채표 ... 기네스북에 등재"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동화약품"
+    ],
+    "hintNote": null,
+    "easiestCue": "1897년부터 이어진 한국 최장수 소화제(대부분 바로 떠올림 — 등급 3 가능성 큼)",
+    "worthWhyGen": "알가치 3 — 누구나 아는 상비약의 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '소화제' 예",
+     "unique": "1897 민병호 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 165자",
+     "⑨ 종류 '약' 첫 문장에 없음"
+    ],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "medicine/3#g032b-g032b-j26-6",
+   "seed": {
+    "subject": "정로환",
+    "aspect": null,
+    "ref": "g032b-j26-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "목크레오소트가 주성분인 검고 둥근 설사·배탈 환약입니다. 러일전쟁 때 일본 육군은 이 약을 병사들에게 날마다 먹였는데, 그때 이름의 첫 글자는 '러시아를 친다'는 뜻의 한자였습니다. 전쟁 뒤 그 글자를 소리가 같은 다른 한자로 바꾼 이 약은?",
+    "answer": "정로환",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "일본 육군은 만병통치약처럼 여겼지만, 제대한 병사들 입을 타고 널리 퍼진 효능은 설사와 치통을 누그러뜨리는 것이었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "검고 둥근 설사·배탈 환약 · 러일전쟁",
+     "difWhy": "3 — 상비약 이름 떠올리기, 단서는 역사 쪽",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 약 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "1972년부터 동성제약이 팔아 온 지사제로, 코를 찌르는 특유의 약 냄새 때문에 냄새 없는 당의정이 따로 나왔을 정도다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "목크레오소트가 주성분인 환약 지사제(正露丸 · 옛 征露丸)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "상비약, 광고로 유명",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '환약', 끝 ○○ '이 약' 일치; 목크레오소트는 낯설지만 분야(설사약)가 첫 문장에서 분명"
+    },
+    "blindQuestion": {
+     "guess": "정로환",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "정로환",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "정로환",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Seirogan",
+     "https://ja.wikipedia.org/wiki/正露丸",
+     "https://ko.wikipedia.org/wiki/동성제약"
+    ],
+    "facts": [
+     {
+      "claim": "목크레오소트 주성분 지사제 · 옛 이름 征露丸('Conquer Russia pills') · 러일전쟁 때 육군이 날마다 배급",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seirogan",
+      "note": "Seirogan (Japanese: 正露丸, formerly 征露丸) is a pharmaceutical drug ... whose main active ingredient is wood-tar creosote. / the army distributed vast quantities of Seirogan ... among the troops to be administered daily throughout the Russo-Japanese War of 1904–05. ... the name Seirogan (征露丸; \"Conquer Russia pills\")"
+     },
+     {
+      "claim": "목크레오소트 주성분 위장약(지사제) · 옛 이름 征露丸",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/正露丸",
+      "note": "正露丸（せいろがん）は医薬品であり、木クレオソート（別名日局クレオソート）を主成分とした胃腸薬（止瀉薬）である。旧称は『征露丸』。"
+     },
+     {
+      "claim": "1972 동성제약 출시 · 냄새 없는 당의정",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/동성제약",
+      "note": "1972년: 일본 다이코신약과의 기술도입제휴로 지사제 '정로환' 출시 ... 1987년: 약 냄새가 안 나는 정로환당의정 출시"
+     },
+     {
+      "claim": "만병통치약 · 제대 병사들이 지사·치통 효능을 퍼뜨림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Seirogan",
+      "note": "employed as a panacea (cure-all) of sorts / the antidiarrheal and toothache-soothing properties of the pill were passed on, in somewhat exaggerated fashion, by repatriated war veterans."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동성제약"
+    ],
+    "hintNote": null,
+    "easiestCue": "러일전쟁 때 '러시아를 친다'는 뜻의 이름이던 설사약",
+    "worthWhyGen": "흔한 상비약 이름이 전쟁에서 온 까닭(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '환약' 예",
+     "unique": "목크레오소트·러일전쟁으로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 냄새"
+    ],
+    "job": "job-26"
+   }
+  }
+ ]
+}

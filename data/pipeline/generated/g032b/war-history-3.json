@@ -1,0 +1,151 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "war-history/3",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/3#g032b-g032b-j02-6",
+   "seed": {
+    "subject": "그렘린",
+    "aspect": null,
+    "ref": "g032b-j02-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "제2차 세계대전 무렵 영국 공군 조종사들 사이에 퍼진 상상 속 존재가 있습니다. 까닭 모를 비행기 고장이 나면 조종사들은 이 작은 장난꾸러기 탓으로 돌렸습니다. 공군 출신 작가 로알드 달은 이 존재를 주인공으로 첫 어린이 책을 써 1943년 펴냈습니다. 이 존재는 무엇일까요?",
+    "answer": "그렘린",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1920년대 몰타·중동·인도의 영국 공군 속어에서 처음 쓰였고 1929년 시가 가장 이른 기록이다. 서로 탓하지 않게 해 사기를 지켰다는 평도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "까닭 모를 비행기 고장을 이 작은 장난꾸러기 탓으로 돌렸습니다",
+     "difWhy": "2 — 영화 그렘린으로 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1984년 영화에서 물에 닿으면 불어나고 자정 넘어 먹이를 먹으면 귀여운 모과이가 변해 마을을 쑥대밭으로 만드는 괴물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "기계를 고장 내는 장난꾸러기 상상 속 존재(gremlin) — 1984년 영화 '그렘린'",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "영화 그렘린으로 유명",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '상상 속 존재', 끝 ○○ '이 존재' 일치; 둘째 문장에서 '작은 장난꾸러기'로 구체화"
+    },
+    "blindQuestion": {
+     "guess": "그렘린",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "그렘린",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "그렘린",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1276",
+      "answer": "에니그마",
+      "verdict": "diff",
+      "why": "새 정답 그렘린의 지식(유래·사실)과 옛 정답 에니그마의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j23-4",
+      "answer": "A급 전범",
+      "verdict": "diff",
+      "why": "새 정답 그렘린의 지식(유래·사실)과 옛 정답 A급 전범의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j02-10",
+      "answer": "환타",
+      "verdict": "diff",
+      "why": "새 정답 그렘린의 지식(유래·사실)과 옛 정답 환타의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1281",
+      "answer": "벌지 전투",
+      "verdict": "diff",
+      "why": "새 정답 그렘린의 지식(유래·사실)과 옛 정답 벌지 전투의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1273",
+      "answer": "진주만",
+      "verdict": "diff",
+      "why": "새 정답 그렘린의 지식(유래·사실)과 옛 정답 진주만의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gremlin"
+    ],
+    "facts": [
+     {
+      "claim": "항공기 고장을 설명하려 만든 존재 · 2차대전 중·후 특히 유행 · 영국 공군 승무원이 설명 못 할 사고를 탓함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gremlin",
+      "note": "A gremlin is a mischievous fictional creature invented ... originally to explain malfunctions in aircraft ... especially popular during and after World War II. ... The flight crews blamed gremlins for otherwise inexplicable accidents"
+     },
+     {
+      "claim": "로알드 달 · 영국 공군 복무 · 첫 어린이 책 The Gremlins · 1943년 랜덤하우스 책",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gremlin",
+      "note": "Dahl had ... carried out his military service in 80 Squadron of the Royal Air Force ... he wrote his first children's novel, The Gremlins ... The 1943 publication of The Gremlins by Random House consisted of 50,000 copies"
+     },
+     {
+      "claim": "1920년대 몰타·중동·인도 RAF 속어 · 1929년 4월 10일 시가 첫 기록 · 사기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gremlin",
+      "note": "first arose in Royal Air Force (RAF) slang among British pilots stationed in Malta, the Middle East and India in the 1920s, with the earliest printed record in a poem published in the journal Aeroplane in Malta on 10 April 1929. ... Morale among the R.A.F. pilots would have suffered if they pointed the finger of blame at each other."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "비행기 고장을 탓하던 장난꾸러기 존재 — 영화 '그렘린'을 떠올려야",
+    "worthWhyGen": "기계 고장을 '그렘린 탓'이라 하는 말이 영국 공군 조종사 속어에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '상상 속 존재' 예",
+     "unique": "'영국 공군 · 로알드 달 첫 책' 으로 고블린 등과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

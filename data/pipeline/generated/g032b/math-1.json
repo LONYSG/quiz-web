@@ -1,0 +1,381 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "math/1",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/1#g032b-g032b-j06-3",
+   "seed": {
+    "subject": "더하기 기호",
+    "aspect": null,
+    "ref": "g032b-j06-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "산수에서 쓰는 한 기호입니다. 1489년 독일 요하네스 비트만의 상업 산수 책에 처음 인쇄되었는데, 이때는 셈에 쓰지 않고 장사 셈에서 남는 양을 표시했습니다. 이 꼴은 라틴어로 '그리고'를 뜻하는 낱말 et 를 줄여 쓰던 데서 왔다고 봅니다. 이 기호는?",
+    "answer": "더하기 기호",
+    "acceptedAnswers": [
+     "+",
+     "플러스",
+     "덧셈 기호",
+     "더하기표"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "비트만은 이 기호를 독일어로 '더'에 해당하는 mer 라고 읽었고, 지금처럼 셈에 쓴 기록은 1518년 책에 나온다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "산수에서 쓰는 기호 · 라틴어 et 를 줄여 쓰던 데서",
+     "difWhy": "2 — 기호 이름은 쉬우나 단서가 간접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 기호의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "'3 ~ 4 = 7'의 물결표 자리에 들어가는 십자 모양 기호로, 짝인 마이너스 부호와 함께 1557년 영국에 들어왔다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "덧셈과 양수를 나타내는 기호(+)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "기초 수학 기호",
+     "piece": "f04",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '산수에서 쓰는 한 기호', 끝 ○○ '이 기호' 일치; 셋째 문장 '이 꼴'이 기호를 가리킴"
+    },
+    "blindQuestion": {
+     "guess": "플러스 기호(+)",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "플러스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "더하기 기호",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Plus_and_minus_signs",
+     "https://www.scienceabc.com/pure-sciences/start-using-math-symbols"
+    ],
+    "facts": [
+     {
+      "claim": "+ 는 라틴어 et 를 간추린 꼴 · 1489년 비트만 · 셈이 아니라 남음(surplus)·모자람 표시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Plus_and_minus_signs",
+      "note": "The + sign is a simplification of the Latin: et (comparable to the evolution of the ampersand &). In his 1489 treatise, Johannes Widmann referred to the symbols − and + as minus and mer ... They were not used for addition and subtraction in the treatise, but were used to indicate surplus and deficit; usage in the modern sense is attested in a 1518 book by Henricus Grammateus."
+     },
+     {
+      "claim": "et 를 줄여 쓰던 필사 약자 · 비트만 상업 산수가 첫 인쇄 · 남음 표시",
+      "where": "q",
+      "url": "https://www.scienceabc.com/pure-sciences/start-using-math-symbols",
+      "note": "WebSearch 요약: the plus sign started out as an abbreviated scribes' way of writing the Latin et, 'and' · Johannes Widmann's commercial arithmetic is the first printed appearance ... to mark surplus (+) and deficit (–)"
+     },
+     {
+      "claim": "1557년 레코드가 영국에 들여옴",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Plus_and_minus_signs",
+      "note": "WebSearch 요약(같은 문서): Robert Recorde introduced both signs to Britain in 1557 in The Whetstone of Witte"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Plus_and_minus_signs"
+    ],
+    "hintNote": null,
+    "easiestCue": "라틴어 '그리고'(et) 에서 온 산수 기호",
+    "worthWhyGen": "매일 쓰는 기호의 꼴이 낱말 'et' 에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '산수 기호' 예",
+     "unique": "et 에서 온 산수 기호 = 하나(앰퍼샌드 & 는 산수 기호 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "math/1#g032b-g032b-j16-3",
+   "seed": {
+    "subject": "소인수분해",
+    "aspect": null,
+    "ref": "g032b-j16-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "수학의 계산 하나가 인터넷 보안을 떠받칩니다. 공개 키 암호 RSA는 아주 큰 수에서는 이 계산을 끝내기가 사실상 불가능하다는 점에 기댑니다. 1994년 미국 수학자 피터 쇼어는 양자컴퓨터라면 이 계산을 빠르게 해낼 수 있다는 알고리즘을 내놓았습니다. 이 계산은?",
+    "answer": "소인수분해",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2019년 연구진은 240자리 수 하나를 푸는 데 컴퓨터 약 900코어년을 썼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "RSA는 아주 큰 수에서 이 계산이 사실상 불가능",
+     "difWhy": "3 — 학교 수학 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 수학 개념과 보안 연결",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "2001년 IBM 양자컴퓨터가 15를 3×5로 나눠 보인 바로 그 계산으로, 중학교에서 12 = 2²×3 처럼 배운다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "자연수를 소수들의 곱으로 나타내는 계산",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "중학교 수학 필수",
+     "piece": "f07",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '수학의 계산 하나' 가 끝 ○○(계산) 와 일치, RSA·알고리즘은 이름만 나오고 문장 뜻은 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "소인수분해",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "소인수분해",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "소인수분해",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3046",
+      "answer": "구골",
+      "verdict": "diff",
+      "why": "소인수분해 vs 구골 — 다른 지식"
+     },
+     {
+      "old": "6358",
+      "answer": "20진법",
+      "verdict": "diff",
+      "why": "소인수분해 vs 20진법 — 다른 지식"
+     },
+     {
+      "old": "5509",
+      "answer": "피보나치",
+      "verdict": "diff",
+      "why": "소인수분해 vs 피보나치 — 다른 지식"
+     },
+     {
+      "old": "172",
+      "answer": "소수",
+      "verdict": "diff",
+      "why": "소인수분해(RSA·쇼어) vs 소수 정의 — 소수는 힌트에만 겹치고 맞히는 지식 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Integer_factorization",
+     "https://en.wikipedia.org/wiki/Shor%27s_algorithm"
+    ],
+    "facts": [
+     {
+      "claim": "RSA 는 큰 정수 인수분해의 어려움에 기댐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Integer_factorization",
+      "note": "When the numbers are sufficiently large, no efficient non-quantum integer factorization algorithm is known. ... The presumed difficulty of this problem is important for the algorithms used in cryptography such as RSA public-key encryption"
+     },
+     {
+      "claim": "1994년 피터 쇼어 · 양자 알고리즘 · 소인수 찾기",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shor%27s_algorithm",
+      "note": "Shor's algorithm is a quantum algorithm for finding the prime factors of an integer. It was developed in 1994 by the American mathematician Peter Shor."
+     },
+     {
+      "claim": "2001년 IBM 15 = 3×5",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Shor%27s_algorithm",
+      "note": "In 2001, Shor's algorithm was demonstrated by a group at IBM, who factored 15 into 3×5, using an NMR implementation of a quantum computer with seven qubits."
+     },
+     {
+      "claim": "2019년 240자리 · 약 900코어년",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Integer_factorization",
+      "note": "In 2019, a 240-digit (795-bit) number (RSA-240) was factored by a team of researchers including Paul Zimmermann, utilizing approximately 900 core-years of computing power."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Shor%27s_algorithm"
+    ],
+    "hintNote": null,
+    "easiestCue": "RSA 암호가 기대는 어려운 계산",
+    "worthWhyGen": "학교에서 배운 계산이 인터넷 암호의 바탕이라는 쓸모(교과 개념 + 쓸모 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '수학의 계산' 예",
+     "unique": "RSA · 쇼어 → 소인수분해 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "math/1#g032b-g032b-j27-7",
+   "seed": {
+    "subject": "무량대수",
+    "aspect": null,
+    "ref": "g032b-j27-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "만·억·조·경·해로 이어지는 한자 수 단위 사다리의 맨 꼭대기 이름입니다. 바로 아래 단위는 '불가사의', 그 아래는 '나유타'입니다. 한자 문화권에서 가장 큰 이 수 단위는 무엇일까요?",
+    "answer": "무량대수",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "시대와 사람에 따라 10의 88제곱이나 128제곱으로 보기도 한다. 옛 한국에서는 '무량수'라 적었다고 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "바로 아래 단위는 '불가사의', 그 아래는 '나유타'",
+     "difWhy": "3 — 수 단위 순서 정확히 · 아는 사람은 바로",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 숫자 — 수 단위 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "숫자"
+    },
+    "generalHint": "흔히 10의 68제곱, 곧 1 뒤에 0이 68개 붙는 수를 가리키는 단위",
+    "generalHintVersion": "hint-v7",
+    "identity": "한자 문화권 수 단위 가운데 가장 큰 것(흔히 10의 68제곱)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "가장 큰 수 퀴즈로 유명",
+     "piece": "f07",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '수 단위 사다리의 맨 꼭대기 이름', 끝 ○○ '수 단위'. 짧음"
+    },
+    "blindQuestion": {
+     "guess": "무량대수",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "무량대수",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "무량대수",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "나유타 10^60 · 불가사의 10^64 · 무량대수 10^68 순서",
+       "url": "https://ko.wikipedia.org/wiki/큰_수",
+       "note": "항하사: 10^52 / 아승기: 10^56 / 나유타: 10^60 / 불가사의: 10^64 / 무량대수: 10^68"
+      }
+     ]
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/무량대수",
+     "https://ko.wikipedia.org/wiki/큰_수"
+    ],
+    "facts": [
+     {
+      "claim": "한자 문화권 수의 단위 중 가장 큰 단위",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/무량대수",
+      "note": "무량대수(無量大數)란 한자 문화권에서 사용되는 수의 단위이다. 한자 문화권에서 사용되는 수의 단위 중 가장 그 값이 큰 단위이기도 하다."
+     },
+     {
+      "claim": "나유타 10^60 · 불가사의 10^64 · 무량대수 10^68 순서",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/큰_수",
+      "note": "항하사: 10^52 / 아승기: 10^56 / 나유타: 10^60 / 불가사의: 10^64 / 무량대수: 10^68"
+     },
+     {
+      "claim": "일반적으로 10의 68제곱",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/무량대수",
+      "note": "일반적으로는 10의 68제곱(10^68)을 가리키지만, 10의 88제곱(10^88), 10의 128제곱(10^128)을 가리키기도 한다."
+     },
+     {
+      "claim": "원래 한국은 무량수",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/무량대수",
+      "note": "원래 한국에서는 무량수(無量數)로 나타내었으나 일본식 명수법의 영향을 받은 것으로 보인다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/무량대수"
+    ],
+    "hintNote": null,
+    "easiestCue": "'불가사의' 위 단위 · 가장 큰 수 단위",
+    "worthWhyGen": "조·경 다음 큰 수 단위 — 수 상식 확인(과학·수 개념 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '맨 꼭대기 이름' 예",
+     "unique": "가장 큰 단위 · 불가사의 다음 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

@@ -1,0 +1,313 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "chemistry/3",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/3#g032b-g032b-j04-10",
+   "seed": {
+    "subject": "아스파탐",
+    "aspect": null,
+    "ref": "g032b-j04-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우연히 단맛이 알려진 화합물이 있습니다. 1965년 미국 제약 회사의 화학자 제임스 슐래터는 위궤양 약 후보를 시험할 호르몬 조각을 만들다가 그 중간 물질을 얻었습니다. 그것이 묻은 줄 모르고 종이를 집으려 손가락을 핥았다가 단맛을 느꼈습니다. 이 화합물은 무엇일까요?",
+    "answer": "아스파탐",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "페닐알라닌이 들어 있어 미국에서는 페닐케톤뇨증 환자를 위한 경고 문구를 붙여야 한다. 1974년 승인이 잠시 취소됐다가 1981년 다시 승인됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "우연히 단맛이 알려진 화합물 · 손가락을 핥았다가 단맛",
+     "difWhy": "3 — 감미료 이름은 알아도 일화에서 떠올려야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 우연한 발견의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "설탕보다 약 200배 단 합성 감미료로, 2023년 국제암연구소가 '암을 일으킬 가능성이 있는' 2B군으로 분류해 화제가 됐다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "설탕보다 약 200배 단 합성 감미료(aspartame)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "제로 음료 뉴스",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '단맛이 알려진 화합물' 이 종류. 끝 '이 화합물은?' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "아스파탐",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아스파탐",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아스파탐",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5274",
+      "answer": "사카린",
+      "verdict": "diff",
+      "why": "아스파탐 발견 vs 사카린 발견 — 다른 감미료, 다른 일화"
+     },
+     {
+      "old": "30",
+      "answer": "H2O",
+      "verdict": "diff",
+      "why": "아스파탐 vs 물의 화학식 — 무관"
+     },
+     {
+      "old": "4809",
+      "answer": "니트로글리세린",
+      "verdict": "diff",
+      "why": "아스파탐 vs 니트로글리세린 — 무관"
+     },
+     {
+      "old": "g032a:g032a-j18-5",
+      "answer": "아세톤",
+      "verdict": "diff",
+      "why": "아스파탐 vs 아세톤 — 무관"
+     },
+     {
+      "old": "3475",
+      "answer": "벤젠",
+      "verdict": "diff",
+      "why": "아스파탐 vs 벤젠 케쿨레 꿈 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Aspartame",
+     "https://ko.wikipedia.org/wiki/아스파탐"
+    ],
+    "facts": [
+     {
+      "claim": "1965년 12월 슐래터가 우연히 발견 · 종이를 집으려 손가락을 핥음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aspartame",
+      "note": "Aspartame was discovered by accident in December 1965 by James M. Schlatter, a chemist working for G.D. Searle & Company in Skokie, Illinois. ... He discovered its sweet taste when he licked his finger, which had become contaminated with aspartame, to lift up a piece of paper."
+     },
+     {
+      "claim": "가스트린 펩타이드를 만드는 중간 단계 · 위궤양 약 후보 시험용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aspartame",
+      "note": "Schlatter had synthesized aspartame as an intermediate step in generating a tetrapeptide of the hormone gastrin, for use in assessing an anti-ulcer drug candidate."
+     },
+     {
+      "claim": "설탕 약 200배 합성 감미료",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아스파탐",
+      "note": "합성 감미료의 일종인 ... 일반 설탕인 자당의 약 200배의 단맛을 낸다."
+     },
+     {
+      "claim": "2023년 7월 IARC 2B군",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Aspartame",
+      "note": "In July 2023, scientists for the International Agency for Research on Cancer (IARC) ... classifying the sweetener as Group 2B (possibly carcinogenic)."
+     },
+     {
+      "claim": "페닐케톤뇨증 경고 · 1974 승인 · 1981 재승인",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Aspartame",
+      "note": "foods containing aspartame sold in the US must state: \"Phenylketonurics: Contains Phenylalanine\" ... approved by the US Food and Drug Administration (FDA) in 1974 and re-approved in 1981 after its initial approval was briefly revoked."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Aspartame",
+     "https://ko.wikipedia.org/wiki/아스파탐"
+    ],
+    "hintNote": null,
+    "easiestCue": "손가락을 핥아 단맛을 알게 된 화합물(발견 일화를 알면) — 감미료라는 말은 질문에 없음",
+    "worthWhyGen": "제로 음료에 든 감미료가 왜 생겼나 — 위궤양 약을 만들다 손가락을 핥은 우연(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '화합물' 예",
+     "unique": "1965 슐래터 = 아스파탐 하나(사카린 1879 · 수크랄로스 1976 은 다른 일화)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "chemistry/3#g032b-g032b-j19-9",
+   "seed": {
+    "subject": "프레온",
+    "aspect": null,
+    "ref": "g032b-j19-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년대 말 미국 제너럴 모터스의 토머스 미즐리가 합성한 화합물입니다. 독성도 없고 불도 붙지 않는다는 것을 보이려고, 그는 1930년 미국화학회에서 이 기체를 들이마셨다가 내쉬어 촛불을 껐습니다. 듀폰과 함께 판 상표 이름으로 더 널리 알려진 이 기체는?",
+    "answer": "프레온",
+    "acceptedAnswers": [
+     "프레온 가스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "미즐리는 휘발유에 납 화합물을 넣어 엔진 노킹을 줄이는 방법도 만들었는데, 두 발명 모두 뒤에 사용이 금지되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "듀폰과 함께 판 상표 이름 · 촛불을 끈 기체",
+     "difWhy": "3 — 프레온은 오존층 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 화학 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "냉장고·에어컨 냉매와 에어로졸 분사제로 널리 쓰이다가 오존층을 파괴해 몬트리올 의정서로 퇴출된 기체다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "염화플루오린화탄소(CFC)의 상표명 — 냉매·분사제, 오존층 파괴 물질",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "오존층 뉴스·교과서",
+     "piece": "f07",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '합성한 화합물'이 있고 끝 ○○ '기체'와 한 분야로 이어짐. 문장마다 주어 하나."
+    },
+    "blindQuestion": {
+     "guess": "프레온 가스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "프레온",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "프레온",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1592",
+      "answer": "오존층",
+      "verdict": "diff",
+      "why": "프레온 합성·시연 일화는 오존층·아스파탐·오존 발견·니트로글리세린·풀러렌과 다른 지식이다"
+     },
+     {
+      "old": "g032b:g032b-j04-10",
+      "answer": "아스파탐",
+      "verdict": "diff",
+      "why": "프레온 합성·시연 일화는 오존층·아스파탐·오존 발견·니트로글리세린·풀러렌과 다른 지식이다"
+     },
+     {
+      "old": "6817",
+      "answer": "오존",
+      "verdict": "diff",
+      "why": "프레온 합성·시연 일화는 오존층·아스파탐·오존 발견·니트로글리세린·풀러렌과 다른 지식이다"
+     },
+     {
+      "old": "4809",
+      "answer": "니트로글리세린",
+      "verdict": "diff",
+      "why": "프레온 합성·시연 일화는 오존층·아스파탐·오존 발견·니트로글리세린·풀러렌과 다른 지식이다"
+     },
+     {
+      "old": "4317",
+      "answer": "풀러렌",
+      "verdict": "diff",
+      "why": "프레온 합성·시연 일화는 오존층·아스파탐·오존 발견·니트로글리세린·풀러렌과 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
+     "https://en.wikipedia.org/wiki/Thomas_Midgley_Jr."
+    ],
+    "facts": [
+     {
+      "claim": "GM 미즐리 첫 CFC 합성 · 1928 특허 · 1930 들이마셔 촛불 끔 · GM·듀폰 Freon 생산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
+      "note": "Thomas Midgley Jr. of General Motors is credited for synthesizing the first chlorofluorocarbons. The Frigidaire corporation was issued the first patent ... on 31 December 1928. In a demonstration for the American Chemical Society, Midgley flamboyantly demonstrated all these properties by inhaling a breath of the gas and using it to blow out a candle in 1930. ... General Motors and Du Pont formed the Kinetic Chemical Company to produce Freon"
+     },
+     {
+      "claim": "무독성·불연 대체물 찾음 · 상표명 Freon",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Midgley_Jr.",
+      "note": "some of the first chlorofluorocarbons (CFCs), better known in the United States by the brand name Freon ... sought a non-toxic, non-flammable alternative to these refrigerants. ... the first chlorofluorocarbon (CFC), which they named \"Freon\"."
+     },
+     {
+      "claim": "냉매·분사제 · 오존 파괴 · 몬트리올 의정서",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Chlorofluorocarbon",
+      "note": "Many CFCs have been widely used as refrigerants, propellants (in aerosol ... CFCs were phased out via the Montreal Protocol due to their part in ozone depletion."
+     },
+     {
+      "claim": "납 휘발유(테트라에틸납) 노킹 방지 · 둘 다 금지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Thomas_Midgley_Jr.",
+      "note": "He played a major role in developing leaded gasoline (tetraethyl lead) and some of the first chlorofluorocarbons ... both products were later banned from common use ... the addition of tetraethyllead (TEL) to gasoline prevented knocking"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Chlorofluorocarbon"
+    ],
+    "hintNote": null,
+    "easiestCue": "독성 없고 불붙지 않는 기체 · 상표 이름",
+    "worthWhyGen": "일상어 '프레온 가스'의 정체와 그 발명 일화 — 환경 상식 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '화합물' 예",
+     "unique": "상표 이름을 물음 — B2 로 CFC 계열 일반명은 받지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 몬트리올 의정서/에어컨/오존층"
+    ],
+    "job": "job-19"
+   }
+  }
+ ]
+}

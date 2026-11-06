@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "comics/2",
+  "midKey": "comics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "comics/2#g032b-g032b-j13-8",
+   "seed": {
+    "subject": "원더우먼",
+    "aspect": null,
+    "ref": "g032b-j13-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 코믹스 주인공 하나가 태어난 이야기입니다. 이 주인공을 만든 심리학자 윌리엄 몰턴 마스턴은 거짓말 탐지기의 한 요소가 된 수축기 혈압 검사를 만든 사람입니다. 1940년대 초 그가 주먹이 아니라 사랑으로 이기는 영웅을 구상하자, 아내 엘리자베스가 '좋아요, 그런데 여자로 해요'라고 했다고 전합니다. 이 주인공은?",
+    "answer": "원더우먼",
+    "acceptedAnswers": [
+     "Wonder Woman"
+    ],
+    "originalTitleVariants": [
+     "Wonder Woman"
+    ],
+    "explanation": "마스턴은 '찰스 몰턴'이라는 필명으로 이 만화를 썼고, 아내와 동반자 올리브 번이 인물 구상에 큰 영향을 주었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "사랑으로 이기는 영웅 / 여자로 해요",
+     "difWhy": "2 — 코믹스 주인공 중 여성 영웅 · 단서로 원더우먼 곧 연상",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 대중문화 유명 캐릭터 탄생 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "진실을 말하게 하는 황금 올가미를 휘두르는 아마존 섬의 공주로, 영화에서는 갤 가돗이 맡았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "DC 코믹스의 대표 여성 슈퍼히어로",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "영화로 유명",
+     "piece": "f04",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '코믹스 주인공', 끝 ○○ '이 주인공' 일치; 둘째 문장 마스턴 약력이 길지만 정체는 이미 첫 문장에 있음"
+    },
+    "blindQuestion": {
+     "guess": "원더우먼",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "원더우먼",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "원더우먼",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3505",
+      "answer": "크립토나이트",
+      "verdict": "diff",
+      "why": "새 정답 원더우먼 과 옛 정답 크립토나이트 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4063",
+      "answer": "울버린",
+      "verdict": "diff",
+      "why": "새 정답 원더우먼 과 옛 정답 울버린 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4064",
+      "answer": "타노스",
+      "verdict": "diff",
+      "why": "새 정답 원더우먼 과 옛 정답 타노스 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1552",
+      "answer": "크립토나이트",
+      "verdict": "diff",
+      "why": "새 정답 원더우먼 과 옛 정답 크립토나이트 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032a:g032a-j08-8",
+      "answer": "헐크",
+      "verdict": "diff",
+      "why": "새 정답 원더우먼 과 옛 정답 헐크 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/William_Moulton_Marston",
+     "https://ko.wikipedia.org/wiki/원더_우먼"
+    ],
+    "facts": [
+     {
+      "claim": "심리학자 · 수축기 혈압 검사 → 현대 거짓말 탐지기의 한 요소 · 이 주인공의 창작자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Moulton_Marston",
+      "note": "William Moulton Marston ... was an American psychologist who, with his wife Elizabeth Holloway, invented an early prototype of the polygraph. He was also known as a self-help author and comic book writer who created the character Wonder Woman. ... Marston was the creator of the systolic blood pressure test, which became one component of the modern polygraph"
+     },
+     {
+      "claim": "주먹이 아니라 사랑으로 이기는 영웅 · 아내 'but make her a woman'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Moulton_Marston",
+      "note": "Marston recommended an idea for a new kind of superhero, one who would conquer not with fists or firepower, but with love. \"Fine,\" said Elizabeth, \"but make her a woman.\""
+     },
+     {
+      "claim": "DC 코믹스 · 1941년 12월 첫 등장 · 아마존족 여왕의 딸",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원더_우먼",
+      "note": "원더우먼(영어: Wonder Woman)은 DC 코믹스의 슈퍼히어로 캐릭터이자 작품 타이틀이다. 1941년 12월, 《올 스타 코믹스》 8호에 처음 등장하였다. 그녀는 올림포스 신들의 왕인 제우스와 아마존족의 여왕인 히폴리테의 딸입니다"
+     },
+     {
+      "claim": "필명 찰스 몰턴 · 올리브 번 영향",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/William_Moulton_Marston",
+      "note": "also known by the pen name Charles Moulton ... Two women, his wife Elizabeth Holloway Marston and their polyamorous partner, Olive Byrne, greatly influenced Wonder Woman's creation."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "거짓말 탐지기 · '여자로 해요'",
+    "worthWhyGen": "진실의 올가미가 거짓말 탐지기 발명자에게서 나왔다는 유래(취미 영역)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '미국 코믹스 주인공' 예",
+     "unique": "마스턴이 만든 여성 영웅은 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 178자"
+    ],
+    "job": "job-13"
+   }
+  }
+ ]
+}

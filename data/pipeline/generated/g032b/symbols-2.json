@@ -1,0 +1,454 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "symbols/2",
+  "midKey": "symbols",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "symbols/2#g032b-g032b-j18-7",
+   "seed": {
+    "subject": "옐로카펫",
+    "aspect": null,
+    "ref": "g032b-j18-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "어린이 교통안전 시설이 있습니다. 서울 성북구 길음뉴타운의 학부모 모임과 국제아동인권센터 등이 머리를 맞대 고안했고, 2015년 4월 길음동 길원초등학교 등에서 처음 깔렸습니다. 횡단보도 앞 대기 공간의 벽과 바닥에 칠하는 이 표시는?",
+    "answer": "옐로카펫",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "한 초등학교에서는 설치 뒤 횡단보도 시인성이 34%에서 95%로 올랐다는 결과가 교통학회 세미나에서 나왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "횡단보도 앞 대기 공간의 벽과 바닥에 칠하는 이 표시",
+     "difWhy": "4 — 2015년 제도 이름 · 일반인이 이름을 못 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 쓸모 — 어린이 안전 시설 · 일부에게 해당",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "밝은 색 삼각꼴 표시와 밤용 태양광 램프로 공간을 갈라, 아이는 차도 대신 그 안에서 기다리고 운전자 눈에는 잘 띄게 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "횡단보도 앞 대기 공간 벽·바닥을 노랗게 칠한 어린이 보행 안전 시설",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "어린이 안전 시설로 뉴스에 나옴",
+     "piece": "f05",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '어린이 교통안전 시설' 이 종류 명사 · 끝 문장에서 '표시' 로 좁혀 줘 무엇을 묻는지 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "노란 발자국",
+     "hit": false
+    },
+    "blindHint": {
+     "guess": "옐로카펫",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "옐로카펫",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 4,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4647",
+      "answer": "양보",
+      "verdict": "diff",
+      "why": "옐로카펫 vs 양보 표지 — 다른 지식"
+     },
+     {
+      "old": "667",
+      "answer": "파란색",
+      "verdict": "diff",
+      "why": "옐로카펫 vs 지시 표지 파란색 — 다른 지식"
+     },
+     {
+      "old": "5143",
+      "answer": "스웨덴",
+      "verdict": "diff",
+      "why": "옐로카펫 vs 스웨덴 통행 전환 — 다른 지식"
+     },
+     {
+      "old": "669",
+      "answer": "서행",
+      "verdict": "diff",
+      "why": "옐로카펫 vs 노란 점멸 서행 — 다른 지식"
+     },
+     {
+      "old": "672",
+      "answer": "비보호좌회전",
+      "verdict": "diff",
+      "why": "옐로카펫 vs 비보호좌회전 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://newstomato.com/ReadNews.aspx?no=688081",
+     "https://mediahub.seoul.go.kr/archives/978318"
+    ],
+    "facts": [
+     {
+      "claim": "성북구 길음뉴타운 학부모 모임 + 초록우산어린이재단·국제아동인권센터 고안 · 2015년 4월(기사 2016) 길음동 길원초 등에서 시작",
+      "where": "q",
+      "url": "https://newstomato.com/ReadNews.aspx?no=688081",
+      "note": "성북구 길음뉴타운 학부모 모임에서 어린이 안전요소로 횡단보도 교통사고를 꼽았고, 여기에 초록우산어린이재단과 국제아동인권센터 등이 머리를 맞대자 옐로 카펫이라는 아이디어가 탄생했다. ... 지난해 4월 서울 성북구 길음동 길원초등학교 등에서 시작한 이래"
+     },
+     {
+      "claim": "횡단보도 대기 공간 벽면·바닥 노란 노면표시 · 국제아동인권센터",
+      "where": "q",
+      "url": "https://mediahub.seoul.go.kr/archives/978318",
+      "note": "'옐로카펫'은 보행자가 횡단보도 앞에서 안전하게 대기하고, 운전자는 주의해서 운전할 수 있도록 횡단보도 대기 공간 벽면과 바닥에 노란색 노면표시를 설치하는 것을 말합니다. ... 서울시와 (사)국제아동인권센터는"
+     },
+     {
+      "claim": "삼각꼴 · 태양광 램프 · 아이들이 그 안에서 대기",
+      "where": "h",
+      "url": "https://newstomato.com/ReadNews.aspx?no=688081",
+      "note": "횡단보도 앞 벽면과 바닥면에 노란색 삼각꼴로 표시를 하고 야간 조명용 태양광 램프를 하나 설치하는 것이 전부다. ... 아이들은 차도로 나가는 대신 옐로 카펫에서 신호를 기다리고"
+     },
+     {
+      "claim": "시인성 34% → 95%",
+      "where": "e",
+      "url": "https://newstomato.com/ReadNews.aspx?no=688081",
+      "note": "지난 2월 교통학회 세미나에서는 옐로카펫을 설치한 후 횡단보도 시인성이 봉래초등학교에서는 34%에서 95%로 올라갔다고 발표할 정도다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://newstomato.com/ReadNews.aspx?no=688081"
+    ],
+    "hintNote": null,
+    "easiestCue": "횡단보도 앞 대기 공간 벽과 바닥에 칠하는 어린이 안전 표시",
+    "worthWhyGen": "동네 학교 앞에서 늘 보는 시설의 이름과 쓸모(일상 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '교통안전 시설' 예",
+     "unique": "횡단보도 앞 대기 공간 벽·바닥 → 하나(노면 색깔 유도선과 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "symbols/2#g032b-g032b-j18-8",
+   "seed": {
+    "subject": "중앙선",
+    "aspect": null,
+    "ref": "g032b-j18-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "도로에 칠하는 선이 있습니다. 1911년 미국 미시간주 웨인 카운티의 도로위원 에드워드 하인스는 우유가 새는 마차가 길 위에 하얀 자국을 남기며 가는 것을 보고 이것을 떠올렸다고 전합니다. 그해 트렌턴의 리버 로드에 처음 칠해진, 마주 오는 차들을 가르는 이 선은?",
+    "answer": "중앙선",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1917년 캘리포니아의 의사 준 매캐럴은 트럭 때문에 길 밖으로 밀려난 뒤 손수 길 한복판에 흰 줄을 칠했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "마주 오는 차들을 가르는 이 선",
+     "difWhy": "2 — 단서가 곧 답 · 길게 읽을 필요 없음",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 도로 표시 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "미국은 1971년부터 이 선을 모두 노란색으로 칠하게 해, 노랑은 반대 방향을 가르고 흰색은 같은 방향 차로를 가르는 색이 되었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도로 가운데 그어 반대 방향 차로를 가르는 선",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "도로에서 매일 보는 선",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '도로에 칠하는 선', 끝 ○○ '선'. 에드워드 하인스 일화는 정답의 유래라 무관하지 않음"
+    },
+    "blindQuestion": {
+     "guess": "중앙선",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "중앙선",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "중앙선",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6074",
+      "answer": "정지",
+      "verdict": "diff",
+      "why": "중앙선 기원 vs 정지 표지 기원 — 다른 지식"
+     },
+     {
+      "old": 668,
+      "answer": "노란색",
+      "verdict": "diff",
+      "why": "중앙선 유래(하인스 1911) vs 중앙선 색(노랑): 같은 선이나 유래와 색깔로 다른 사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Road_surface_marking",
+     "https://en.wikipedia.org/wiki/Edward_N._Hines"
+    ],
+    "facts": [
+     {
+      "claim": "1911년 웨인 카운티 트렌턴 리버 로드 · 에드워드 하인스 · 우유 새는 마차",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Road_surface_marking",
+      "note": "the first documented use of a painted centre line was in 1911 along Trenton's River Road in Wayne County, Michigan. ... conceived in 1911 by Edward N. Hines, the chairman of the Wayne County Board of Roads, after watching a leaky milk wagon leave a white trail along a road."
+     },
+     {
+      "claim": "하인스 · 반대 방향 차를 가르는 중앙선 착안 · 1911 리버 로드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Edward_N._Hines",
+      "note": "Hines originated the concept of painting a line down the center of a road to separate traffic in opposing directions. The idea came to him after watching a leaky milk wagon leave a trail down the street. Painted center lines were first used in 1911 on River Road in Trenton, in Wayne County."
+     },
+     {
+      "claim": "1971 MUTCD 노란 중앙선 의무 · 노랑 반대 방향 · 흰색 같은 방향",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Road_surface_marking",
+      "note": "The 1971 edition of the MUTCD mandated yellow as the standard colour of all centre lines ... yellow would always delineate opposing traffic flows and white would always delineate traffic flowing in the same direction."
+     },
+     {
+      "claim": "준 매캐럴 1917 손수 흰 줄",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Road_surface_marking",
+      "note": "In the fall of 1917, June McCarroll of Indio, California ... after she was run off the road by a truck ... She then took it upon herself to hand-paint a white stripe down the middle of the road"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Road_surface_marking"
+    ],
+    "hintNote": null,
+    "easiestCue": "마주 오는 차들을 가르는 선",
+    "worthWhyGen": "매일 보는 선이 우유 자국에서 나왔다는 유래(3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '도로에 칠하는 선' 예",
+     "unique": "마주 오는 차 가름 → 중앙선(차선과 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 노랑/노란색"
+    ],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "symbols/2#g032b-g032b-j30-6",
+   "seed": {
+    "subject": "대각선 횡단보도",
+    "aspect": null,
+    "ref": "g032b-j30-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "교차로 신호가 바뀌면 모든 방향의 차를 한꺼번에 세우는 건널목 방식이 있습니다. 1940년대 말 미국 덴버의 교통 기술자 헨리 반스가 널리 퍼뜨려, 미국에서는 '반스 댄스'라고도 부릅니다. 보행자가 어느 방향으로든, 비스듬히도 건널 수 있게 그은 이 건널목을 무엇이라 할까요?",
+    "answer": "대각선 횡단보도",
+    "acceptedAnswers": [
+     "X자 횡단보도",
+     "X자형 횡단보도",
+     "스크램블 횡단보도",
+     "스크램블 교차로",
+     "스크램블 교차"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국에서는 1984년 서울 동대문구 용두동 삼거리에 처음 생겼다고 알려져 있습니다. 일본에서는 1969년 구마모토에 처음 놓였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "모든 방향의 차를 세우고 비스듬히도 건너는 건널목",
+     "difWhy": "4 — 이름 떠올리기 · 반스 댄스는 낯섦, 단서는 정의 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교통 시설 이름, 범위 좁음",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "도쿄 시부야역 앞에서 수천 명이 사방으로 한꺼번에 엇갈려 건너는 장면으로 유명한 건널목 방식이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "교차로를 사선으로도 건너게 한 횡단보도",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "교차로에서 흔히 봄",
+     "piece": "f02",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '건널목 방식'이 끝 ○○(건널목)와 일치. 반스 일화는 둘째 문장이지만 정체는 첫 문장에서 이미 드러남."
+    },
+    "blindQuestion": {
+     "guess": "스크램블 교차로",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "스크램블 교차로",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "대각선 횡단보도",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4648",
+      "answer": "암펠만",
+      "verdict": "diff",
+      "why": "대각선 횡단보도 vs 암펠만 신호등 — 다른 지식"
+     },
+     {
+      "old": "4646",
+      "answer": "노면 색깔 유도선",
+      "verdict": "diff",
+      "why": "대각선 횡단보도 vs 노면 색깔 유도선 — 다른 지식"
+     },
+     {
+      "old": "672",
+      "answer": "비보호좌회전",
+      "verdict": "diff",
+      "why": "대각선 횡단보도 vs 비보호좌회전 — 다른 지식"
+     },
+     {
+      "old": "5142",
+      "answer": "파란색",
+      "verdict": "diff",
+      "why": "대각선 횡단보도 vs 일본 신호 파란색 — 다른 지식"
+     },
+     {
+      "old": "671",
+      "answer": "안전지대",
+      "verdict": "diff",
+      "why": "대각선 횡단보도 vs 안전지대 노면 — 다른 지식"
+     },
+     {
+      "old": 5783,
+      "answer": "횡단보도",
+      "verdict": "diff",
+      "why": "대각선 횡단보도(스크램블) vs 횡단보도·벨리샤 비컨: 스크램블 방식 vs 영국 횡단보도 시설, 다른 사실이며 상하위어로 겹치지 않음"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pedestrian_scramble",
+     "https://ko.wikipedia.org/wiki/대각선_횡단보도"
+    ],
+    "facts": [
+     {
+      "claim": "헨리 반스 · 덴버 · 1940년대 말 · Barnes Dance",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pedestrian_scramble",
+      "note": "The name \"Barnes Dance\" commemorates traffic engineer Henry Barnes ... He first introduced it in his home city of Denver in the late 1940s."
+     },
+     {
+      "claim": "모든 방향 차 정지 · 보행자 어느 방향으로든 · 1940년대 말 미국·캐나다",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대각선_횡단보도",
+      "note": "신호등의 신호가 바뀌면 모든 차량 통행을 일시 정지시켜 보행자들이 어느 방향으로든 동시에 건너갈 수 있도록 한다 ... 1940년대 말 미국과 캐나다에서 처음 생겨났으나"
+     },
+     {
+      "claim": "시부야역 앞 3,000명 넘는 행인",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/대각선_횡단보도",
+      "note": "일본에서 가장 크고 유명한 스크램블 교차로는 도쿄 시부야역 외부에 있는 횡단보도로 3,000명이 넘는 행인이 한꺼번에 지나가는 진풍경으로"
+     },
+     {
+      "claim": "한국 1984년 용두동 · 일본 1969년 구마모토",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/대각선_횡단보도",
+      "note": "가장 오래된 대각선 횡단보도는 지난 1984년 서울특별시 동대문구 용두동 오스카 극장앞 삼거리 ... 1969년 구마모토현에 처음으로 설치된 이래"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/대각선_횡단보도"
+    ],
+    "hintNote": null,
+    "easiestCue": "어느 방향으로든 비스듬히 건너는 건널목",
+    "worthWhyGen": "도시에서 흔히 보는 교통 시설 · 이름의 내력",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '건널목 방식' — 예",
+     "unique": "비스듬히 → 대각선 횡단보도 하나 · 일반 횡단보도(#5783)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-q GEN",
+      "before": {
+       "acceptedAnswers": [
+        "X자 횡단보도",
+        "X자형 횡단보도",
+        "스크램블 횡단보도"
+       ]
+      },
+      "why": "blind '스크램블 교차로' = 같은 방식의 다른 이름 → 변형"
+     }
+    ],
+    "warn": [
+     "crossans 건널목"
+    ],
+    "job": "job-30"
+   }
+  }
+ ]
+}

@@ -1,0 +1,147 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-food/5",
+  "midKey": "world-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-food/5#g032b-g032b-j09-12",
+   "seed": {
+    "subject": "굴소스",
+    "aspect": null,
+    "ref": "g032b-j09-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 요리에 두루 쓰는 소스입니다. 1888년 광둥성 주하이에서 삶은 해산물을 팔던 작은 식당 주인 이금상이, 삶을 때 나오는 국물에 감칠맛이 많다는 것을 알고 이 소스의 원형을 만들었다고 전합니다. 그가 세운 회사 '이금기'는 지금도 이 소스로 이름난데, 이 소스는?",
+    "answer": "굴소스",
+    "acceptedAnswers": [
+     "굴 소스",
+     "오이스터 소스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이금상은 1902년 마카오로 회사를 옮겨 생산을 늘렸고, 1932년에는 홍콩에 지사를 세웠다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "이금기 / 중국 요리에 두루 쓰는 소스 / 삶은 해산물 국물",
+     "difWhy": "2 — 굴소스 가정 요리 재료 · 이금기 단서로 연결",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 식재료 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "청경채 볶음이나 볶음면 같은 중국식 볶음 요리에 감칠맛을 더하는 걸쭉한 짙은 갈색 소스로, 채식용은 버섯으로 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "굴을 끓인 국물로 만든 중국식 갈색 소스",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "요리 양념으로 흔함",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '중국 요리 소스' 가 끝 ○○ '소스' 와 같음 · 창업자 일화는 둘째 문장에 있지만 정체는 이미 앞서 나옴"
+    },
+    "blindQuestion": {
+     "guess": "굴소스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "굴소스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "굴소스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1314",
+      "answer": "MSG",
+      "verdict": "diff",
+      "why": "굴소스와 MSG는 다른 조미료"
+     },
+     {
+      "old": "6103",
+      "answer": "디종 머스터드",
+      "verdict": "diff",
+      "why": "굴소스와 디종 머스터드는 다른 소스"
+     },
+     {
+      "old": "1312",
+      "answer": "발사믹 식초",
+      "verdict": "diff",
+      "why": "굴소스와 발사믹 식초는 다른 소스"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/굴소스",
+     "https://en.wikipedia.org/wiki/Lee_Kum_Kee"
+    ],
+    "facts": [
+     {
+      "claim": "1888년 주하이 이금상이 제조 과정 국물의 감칠맛을 알고 원형을 만듦 · 1902 마카오 이금기 · 1932 홍콩",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/굴소스",
+      "note": "1888년 광둥성 주하이 시의 이금상이 제조과정에서 나오는 국물에 감칠맛이 많이 나는 것을 알게 되었고, 이를 이용하여 굴소스의 원형을 만들게 된다. 이금상은 1902년 마카오에서 이금기유한공사라는 식품회사를 세워서 굴소스 생산을 시작하고, 1932년에는 홍콩에 지사를 설립하게 된다."
+     },
+     {
+      "claim": "이금상 · 주하이 난수이의 익힌 굴을 파는 작은 식당 · 1888년 회사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lee_Kum_Kee",
+      "note": "The company was founded by Lee Kum Sheung, an owner of a small eatery in Nanshui, Zhuhai, Guangdong that sold cooked oysters. In 1888, he formed the Lee Kum Kee company to market his version of oyster sauce"
+     },
+     {
+      "claim": "볶음 요리 · 채식용 버섯 굴소스",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/굴소스",
+      "note": "볶음요리, 조림, 튀김 등으로 두루 쓰이고 ... 채식주의자들을 위해 버섯으로 만든 굴소스도 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/굴소스"
+    ],
+    "hintNote": null,
+    "easiestCue": "회사 '이금기'",
+    "worthWhyGen": "흔한 소스가 어떻게 생겼나(국물의 감칠맛 발견)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '소스' 예",
+     "unique": "이금상·이금기로 한정(호이신 소스와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 감칠맛"
+    ],
+    "job": "job-09"
+   }
+  }
+ ]
+}

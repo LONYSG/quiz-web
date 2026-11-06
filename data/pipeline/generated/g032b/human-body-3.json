@@ -1,0 +1,179 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "human-body/3",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/3#g032b-g032b-j05-1",
+   "seed": {
+    "subject": "색맹",
+    "aspect": null,
+    "ref": "g032b-j05-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "눈에 관한 한 증상은 프랑스어·스페인어에서 화학자 존 돌턴의 이름으로 부릅니다. 1794년 돌턴이 자기 눈을 연구해 이 증상을 처음 과학 논문으로 보고했기 때문입니다. 그는 원인을 눈알 속 액체 탓으로 짐작했지만, 1995년 보존된 그의 눈을 유전자 검사해 진짜 원인이 밝혀졌습니다. 이 증상은?",
+    "answer": "색맹",
+    "acceptedAnswers": [
+     "색각 이상",
+     "적록색맹"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "돌턴은 형도 같은 증상이어서 유전된다는 것을 알아챘다. 1995년 검사로 그는 초록 빛을 느끼는 유전자가 없는 제2색각이상으로 밝혀졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "눈에 관한 한 증상 · 돌턴의 이름으로 부릅니다",
+     "difWhy": "2 — 돌턴과 눈 증상에서 색맹 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 건강 상식과 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "빨강과 초록 같은 빛깔을 잘 가려 보지 못하는 눈 상태로, 남성에게 훨씬 흔한 유전 증상이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "빛깔(특히 빨강·초록)을 잘 구별하지 못하는 눈 증상 — 유럽 몇 언어에서 돌터니즘(Daltonism)이라 부름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "학교 검사·일상",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '눈에 관한 증상', 끝 ○○ '증상'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "색맹",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "색맹",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "색맹",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2284",
+      "answer": "간상세포",
+      "verdict": "diff",
+      "why": "돌턴 색맹 보고 vs 간상세포 — 색맹은 증상, 시세포 지식과 다름"
+     },
+     {
+      "old": "3588",
+      "answer": "감칠맛",
+      "verdict": "diff",
+      "why": "색맹 vs 감칠맛 — 무관"
+     },
+     {
+      "old": "5362",
+      "answer": "귀지",
+      "verdict": "diff",
+      "why": "색맹 vs 귀지 — 무관"
+     },
+     {
+      "old": "4425",
+      "answer": "유스타키오관",
+      "verdict": "diff",
+      "why": "색맹 vs 유스타키오관 — 무관"
+     },
+     {
+      "old": "g032a:g032a-j05-1",
+      "answer": "골전도",
+      "verdict": "diff",
+      "why": "색맹 vs 골전도 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/John_Dalton",
+     "https://en.wikipedia.org/wiki/Color_blindness",
+     "https://ko.wikipedia.org/wiki/색각_이상"
+    ],
+    "facts": [
+     {
+      "claim": "유럽 몇 언어에서 돌턴 이름(Daltonism)으로 부름 · 첫 과학적 기술",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Dalton",
+      "note": "His investigations into his own color blindness led to the first scientific description of the condition—which in several languages is still known as Daltonism ... 'daltonien' is the French adjectival equivalent of 'colour-blind', and 'daltónico'/'daltonica' is the Spanish and the Italian."
+     },
+     {
+      "claim": "1794년 논문 · 1995년 보존된 눈 유전자 검사",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Color_blindness",
+      "note": "The phenomenon only came to be scientifically studied in 1794, when English chemist John Dalton gave the first account of color blindness in a paper ... Genetic analysis of Dalton's preserved eyeball confirmed him as having deuteranopia in 1995, some 150 years after his death."
+     },
+     {
+      "claim": "원인을 눈 속 액체(유리체)로 짐작 · 죽은 뒤 부검으로 틀림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Color_blindness",
+      "note": "I was led to conjecture that one of the humours of my eye must be a transparent, but coloured, medium ... I suppose it must be the vitreous humor. An autopsy of his eye after his death in 1844 showed this to be definitively untrue"
+     },
+     {
+      "claim": "형도 색맹 → 유전이라 봄",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/John_Dalton",
+      "note": "As both he and his brother were colour blind, he recognised that the condition must be hereditary."
+     },
+     {
+      "claim": "초록(중파장) 시각 유전자 없는 제2색각이상(deuteranopia)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/John_Dalton",
+      "note": "Examination of his preserved eyeball in 1995 demonstrated that Dalton had deuteranopia, a type of congenital red-green color blindness in which the gene for medium wavelength sensitive (green) photopsins is missing."
+     },
+     {
+      "claim": "적록은 반성 유전으로 남성에게 주로",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/색각_이상",
+      "note": "유전성 질환이며, 적색맹(제1색각이상)과 녹색맹(제2색각이상)의 경우 반성 유전으로 남성에게 주로 나타난다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/색각_이상"
+    ],
+    "hintNote": null,
+    "easiestCue": "돌턴 이름으로 부르는 눈 증상 — 돌터니즘을 알아야 풂(원자설 돌턴만 알면 못 풂)",
+    "worthWhyGen": "흔한 증상이 왜 유럽에서 화학자 이름으로 불리는가(자기 눈을 연구한 첫 보고) — 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '눈에 관한 한 증상' 예",
+     "unique": "돌턴·1794·자기 눈 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 165자",
+     "crossans 빨강/초록"
+    ],
+    "job": "job-05"
+   }
+  }
+ ]
+}

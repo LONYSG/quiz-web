@@ -1,0 +1,131 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-history/2",
+  "midKey": "kr-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/2#g032b-g032b-j22-8",
+   "seed": {
+    "subject": "고려장",
+    "aspect": null,
+    "ref": "g032b-j22-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "늙은 부모를 지게에 지고 산에 가 버렸다는 옛 풍습을 가리키는 말입니다. 그런데 정작 그 왕조의 법은 부모를 봉양하지 않는 자식을 징역 2년에 처했습니다. 그래서 실제 풍습이 아니라 다른 나라에서 건너온 설화로 봅니다. 이 말은?",
+    "answer": "고려장",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "아들이 버린 노모의 지게를 도로 가져오려 해 아버지가 뉘우치는 이야기는 중국 '효자전'에서 왔다고 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "늙은 부모를 지게에 지고 산에 가 버렸다는 옛 풍습",
+     "difWhy": "2 — 지게 풍습은 고려장으로 바로",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 사실 오해를 바로잡는 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1963년 김기영 감독의 영화 제목으로도 쓰였고, 오늘날 노인 학대를 빗댈 때 자주 쓰는 말",
+    "generalHintVersion": "hint-v7",
+    "identity": "늙은 부모를 산에 버렸다는, 고려 시대 풍습으로 잘못 알려진 설화 속 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "설화·교과서에서 유명",
+     "piece": "f07",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '옛 풍습을 가리키는 말', 끝 ○○ '이 말' 일치; '그 왕조'가 조선을 가리킴이 앞 맥락상 이해됨"
+    },
+    "blindQuestion": {
+     "guess": "고려장",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "고려장",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "고려장",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고려장",
+     "https://en.wikipedia.org/wiki/Senicide",
+     "https://en.wikipedia.org/wiki/Goryeojang"
+    ],
+    "facts": [
+     {
+      "claim": "지게에 지고 산에 버림 · 법: 공양 안 하면 징역 2년 · 노인 학대 비유",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고려장",
+      "note": "고려장(高麗葬)은 고려 시대에 늙고 병든 사람을 지게에 지고 산에 가서 버렸다는 ... 《고려사》에 “조부모나 부모가 살아있는데, 아들과 손자가 재산을 달리하고 공양을 하지 않을 때는 징역 두해에 처한다”고 하였다. ... 노인학대 등을 가리킬 때 비유적으로 매우 자주 쓰이는 단어"
+     },
+     {
+      "claim": "설화 요소는 한국이 아니라 중국·일본 이야기에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Senicide",
+      "note": "According to Korean folklore, a practice called \"Goryeojang\" ... The folklore element has been traced to Chinese and Japanese stories rather than Korean origin"
+     },
+     {
+      "claim": "지게 이야기 출처 중국 효자전",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/고려장",
+      "note": "노모를 지게에 진 채 산에 올라 ... 아버지가 자신의 어리석음을 깨닫게 된다는 이야기는 본래 중국의 〈효자전〉이 이야기의 출처고"
+     },
+     {
+      "claim": "1963년 김기영 영화",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Goryeojang",
+      "note": "Goryeojang (Korean: 고려장) is a 1963 South Korean drama film edited, written, produced and directed by Kim Ki-young."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/고려장",
+     "https://en.wikipedia.org/wiki/Goryeojang"
+    ],
+    "hintNote": null,
+    "easiestCue": "늙은 부모를 지게에 지고 산에 버렸다는 풍습",
+    "worthWhyGen": "누구나 아는 말이 실제 역사가 아니라 건너온 설화라는 까닭(19 §9-1 ②)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '풍습·말' 예",
+     "unique": "하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

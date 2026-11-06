@@ -1,0 +1,252 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "animals/4",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/4#g032b-g032b-j05-7",
+   "seed": {
+    "subject": "투구게",
+    "aspect": null,
+    "ref": "g032b-j05-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바다에 사는 한 절지동물의 피는 백신과 주사제에 세균 독소가 섞였는지 가려내는 시험약의 원료입니다. 피 속 세포가 세균 독소를 만나면 곧바로 엉겨 굳기 때문입니다. 그래서 해마다 50만 마리쯤 잡아 피를 뽑고 바다로 돌려보냅니다. 2억 5천만 년 전쯤부터 모습이 거의 그대로인 이 동물은?",
+    "answer": "투구게",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름과 달리 갑각류가 아니고 거미·전갈에 더 가깝다. 피를 뽑힌 뒤 죽는 비율은 연구에 따라 3%에서 30%까지 갈린다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "2억 5천만 년 전쯤부터 모습이 거의 그대로인 이 동물",
+     "difWhy": "3 — 설명 → 이름 · 살아 있는 화석 단서 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 지식 · 의학 쓰임 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "말발굽 모양의 둥근 등딱지와 칼처럼 뾰족한 꼬리를 가졌고, 구리 성분 탓에 피가 파란 '살아 있는 화석'이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "말발굽 모양 등딱지에 뾰족한 꼬리를 가진 바다 절지동물(살아 있는 화석)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "살아 있는 화석으로 다큐·뉴스에 등장",
+     "piece": "f04",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '바다에 사는 한 절지동물' 이 끝 ○○(동물) 을 바로 줌, 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "투구게",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "투구게",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "투구게",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Horseshoe_crab",
+     "https://en.wikipedia.org/wiki/Limulus_amebocyte_lysate",
+     "https://ko.wikipedia.org/wiki/투구게"
+    ],
+    "facts": [
+     {
+      "claim": "피(LAL)로 세균 내독소 검출",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Horseshoe_crab",
+      "note": "Horseshoe crabs are often caught for their blood, which contains Limulus amebocyte lysate, a chemical used to detect bacterial endotoxins."
+     },
+     {
+      "claim": "혈구가 내독소를 만나면 응고",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Limulus_amebocyte_lysate",
+      "note": "the animal's blood cells, mobile cells called amebocytes, contain granules with a clotting factor known as coagulogen; this is released outside the cell when bacterial endotoxins are encountered."
+     },
+     {
+      "claim": "해마다 약 50만 마리 채혈 · 대부분 살아 돌아감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Horseshoe_crab",
+      "note": "Approximately 500,000 Limulus are harvested annually for this purpose. ... Most of the animals survive the process"
+     },
+     {
+      "claim": "약 2억 5천만 년 전 나타난 뒤 거의 변하지 않음 · 살아있는 화석",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/투구게",
+      "note": "투구게류는 약 2억 5천만 년 전에 처음 나타난 이후로 거의 변한 것이 없어, '살아있는 화석'으로 불린다."
+     },
+     {
+      "claim": "구리 기반 헤모시아닌 → 파란 피 · 말발굽 모양",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Horseshoe_crab",
+      "note": "horseshoe crabs transport oxygen with a copper-based protein called hemocyanin, giving its blood a bright blue color."
+     },
+     {
+      "claim": "게가 아니라 거미류에 가까움 · 채혈 뒤 폐사율 3~15% ~ 10~30%",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Horseshoe_crab",
+      "note": "Despite their name, they are not crabs or even crustaceans; they are chelicerates, more closely related to arachnids like spiders, ticks, and scorpions. ... Estimates of mortality rates following blood harvesting vary from 3–15% to 10–30%."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Horseshoe_crab"
+    ],
+    "hintNote": null,
+    "easiestCue": "피가 세균 독소 검사약 원료인 바다 절지동물 — '살아 있는 화석' 은 여럿(실러캔스 등)이라 그것만으론 못 풂",
+    "worthWhyGen": "백신 안전 검사에 왜 이 동물 피를 쓰는가(독소를 만나면 굳는다) — 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '절지동물' 예",
+     "unique": "LAL 원료 — 하나뿐(아시아 투구게도 같은 이름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 161자",
+     "crossans 화석"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "animals/4#g032b-g032b-j12-8",
+   "seed": {
+    "subject": "코치닐",
+    "aspect": null,
+    "ref": "g032b-j12-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "선인장에 붙어 사는 작은 곤충입니다. 1788년 영국의 첫 오스트레일리아 이주 선단은 이 곤충으로 붉은 염료 산업을 일으키려고, 곤충이 붙은 선인장을 브라질에서 실어 갔습니다. 곤충은 곧 죽었지만 선인장은 살아남아 동부 오스트레일리아를 뒤덮었습니다. 지금도 립스틱과 음식의 붉은 색소로 쓰이는 이 곤충은 무엇일까요?",
+    "answer": "코치닐",
+    "acceptedAnswers": [
+     "연지벌레"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "아즈텍 사람들은 이 색소로 옷감을 물들였고, 16세기 스페인이 유럽으로 실어 가며 중요한 수출품이 되었습니다. 영국군의 붉은 군복도 이 색소로 물들였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "지금도 립스틱과 음식의 붉은 색소로 쓰이는 이 곤충",
+     "difWhy": "4 — 색소 곤충 이름은 이걸 어떻게 알아 · 선인장 단서뿐",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 붉은 색소 곤충 · 범위 좁은 쓸모",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 15",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "암컷을 말려 빻은 데서 카민산을 뽑아 만드는 붉은 색소로, 식품 성분표에 'E120' 이나 '카민'으로 적힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "선인장에 사는 깍지벌레로, 붉은 색소(카민·E120)를 얻는 곤충",
+    "familiarity": {
+     "judge": 1,
+     "pct": 15,
+     "why": "붉은 색소 곤충, 식품 성분 지식",
+     "piece": "f02",
+     "genPct": 35
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "코치닐",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cochineal",
+     "https://en.wikipedia.org/wiki/Carmine"
+    ],
+    "facts": [
+     {
+      "claim": "1788년 아서 필립 · 브라질에서 곤충 붙은 선인장 · 곤충은 죽고 선인장이 동부 호주를 뒤덮음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cochineal",
+      "note": "Opuntia species ... were first brought to Australia in an attempt to start a cochineal dye industry in 1788. Captain Arthur Phillip collected a number of cochineal-infested plants from Brazil on his way to establish the first European settlement at Botany Bay ... the Brazilian cochineal insects soon died off, but the cacti thrived, eventually overrunning about 100,000 sq mi (259,000 km2) of eastern Australia."
+     },
+     {
+      "claim": "선인장에 붙어 삶 · 립스틱·식품 색소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carmine",
+      "note": "American civilizations ... crushed the bugs present on cacti to extract the carmine they contain. / It can be found in lipstick, eye shadow, nail polish."
+     },
+     {
+      "claim": "카민산 · E120 · 식품·립스틱",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cochineal",
+      "note": "Carminic acid, typically 17–24% of dried insects' weight, can be extracted ... to make carmine dye, also known as cochineal. Today, carmine is primarily used as a colorant in food and in lipstick (E120 or Natural Red 4)."
+     },
+     {
+      "claim": "아즈텍 직물 · 16세기 수출 · 영국군 붉은 군복",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Carmine",
+      "note": "Carmine pigment was extensively used by the Aztec civilization to dye textiles. / (Cochineal) became an important export good in the 16th century ... it was used to color the British soldiers' red coats"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cochineal",
+     "https://en.wikipedia.org/wiki/Carmine"
+    ],
+    "hintNote": null,
+    "easiestCue": "립스틱·음식의 붉은 색소로 쓰는 곤충",
+    "worthWhyGen": "알가치 3 — 먹는 음식 성분표에 있는 색소의 정체(쓸모가 누구에게나) + 호주 선인장 사건",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '곤충' 예",
+     "unique": "붉은 색소 곤충 — 하나(케르메스는 거의 모름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 176자"
+    ],
+    "job": "job-12",
+    "discarded": "친숙도 1 (pct 15 · 붉은 색소 곤충, 식품 성분 지식)"
+   }
+  }
+ ]
+}

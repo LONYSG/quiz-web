@@ -1,0 +1,151 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "drinks/5",
+  "midKey": "drinks",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "drinks/5#g032b-g032b-j30-4",
+   "seed": {
+    "subject": "아인슈페너",
+    "aspect": null,
+    "ref": "g032b-j30-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "19세기 오스트리아 빈의 마부들이 즐겨 마셨다고 전하는 커피입니다. 진한 커피 위에 크림을 듬뿍 얹어, 추운 날 커피가 빨리 식지 않게 했습니다. 독일어로 '말 한 마리가 끄는 마차'를 뜻하는 이름의 이 커피는?",
+    "answer": "아인슈페너",
+    "acceptedAnswers": [
+     "아인슈패너"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "마부들은 마차에서 내리기 어려워 한 손에 고삐를 쥔 채 이 커피를 마셨다고 전합니다. 곧 빈 커피하우스의 단골 메뉴가 되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "진한 커피 위에 크림 · 마차 이름",
+     "difWhy": "2 — 카페 메뉴 아인슈페너 흔함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 음료 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "멜랑슈와 함께 빈의 대표 크림 커피로 꼽히며, 머그잔이 아닌 유리잔에 담아 내는 것이 전통이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "빈에서 유래한 크림 얹은 커피",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "카페 메뉴로 흔함",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '커피'가 있고 끝 ○○도 커피. 독일어 뜻은 단서로 풀려 있음."
+    },
+    "blindQuestion": {
+     "guess": "아인슈페너",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아인슈페너",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아인슈페너",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j30-4",
+      "answer": "마키아토",
+      "verdict": "diff",
+      "why": "아인슈페너 vs 마키아토 — 다른 커피"
+     },
+     {
+      "old": "913",
+      "answer": "얼그레이",
+      "verdict": "diff",
+      "why": "아인슈페너 vs 얼그레이 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Einspänner",
+     "https://ko.wikipedia.org/wiki/아인슈페너"
+    ],
+    "facts": [
+     {
+      "claim": "이름 = 말 한 마리가 끄는 마차 · 19세기 빈 마부를 위한 음료",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Einspänner",
+      "note": "In German, an \"Einspänner\" is a kind of carriage pulled by a single horse (one-horse carriage). The drink's name refers to the carriages that were common in Vienna in the 19th century, as it was intended for the drivers."
+     },
+     {
+      "claim": "크림이 커피를 덮어 추운 날 따뜻하게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Einspänner",
+      "note": "Whipped cream was used to insulate the coffee on cold days, keeping it warm for as long as possible."
+     },
+     {
+      "claim": "빈 마부들이 고삐를 쥔 채 크림 얹은 커피를 마심",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아인슈페너",
+      "note": "과거 마차에서 내리기 힘들었던 오스트리아 빈의 마부들이 한 손에는 고삐를 들고 한 손에는 피곤을 풀기 위해 설탕과 생크림을 듬뿍 얹은 진한"
+     },
+     {
+      "claim": "멜랑슈와 함께 빈 크림 커피 · 유리잔",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아인슈페너",
+      "note": "크림을 올린 커피로, 멜랑슈와 함께 비엔나 커피(영어: Vienna coffee)로 불리는 커피 음료의 하나이다. / en: It is traditionally served in a glass rather than a mug or a coffee cup."
+     },
+     {
+      "claim": "빈 커피하우스의 단골이 됨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Einspänner",
+      "note": "quickly became a staple of Vienna's coffee houses."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Einspänner",
+     "https://ko.wikipedia.org/wiki/아인슈페너"
+    ],
+    "hintNote": null,
+    "easiestCue": "빈 · 크림 얹은 커피 · 마차 이름",
+    "worthWhyGen": "카페에서 흔히 보는 메뉴 이름의 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '커피' — 예",
+     "unique": "'말 한 마리 마차' 뜻 이름 → 아인슈페너만(비엔나 커피는 B2 로 제외)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

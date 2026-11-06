@@ -1,0 +1,265 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "economy/4",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/4#g032b-g032b-j03-12",
+   "seed": {
+    "subject": "식스 시그마",
+    "aspect": null,
+    "ref": "g032b-j03-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 품질 경영 기법은 1986년 미국 모토로라의 엔지니어 빌 스미스가 처음 내놓았습니다. 1995년 GE의 잭 웰치가 회사 전략의 중심에 두면서 큰 기업마다 퍼졌습니다. 이름은 제품 100만 개를 만들 때 불량을 3.4개 아래로 줄인다는 통계 목표에서 왔습니다. 이 기법은?",
+    "answer": "식스 시그마",
+    "acceptedAnswers": [
+     "6시그마",
+     "6σ"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "모토로라는 1991년 이 이름을 서비스표로 등록했습니다. GE는 1998년 이것으로 3억 5천만 달러를 아꼈다고 밝혔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "제품 100만 개를 만들 때 불량을 3.4개 아래로 줄인다는 통계 목표",
+     "difWhy": "3 — 식스 시그마 경영 용어 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 경영 기법 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "실력에 따라 직원에게 무술처럼 '그린 벨트'·'블랙 벨트' 자격을 주고, 정의·측정·분석·개선·관리 다섯 단계로 공정의 흔들림을 줄이는 경영 기법이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "모토로라·GE의 품질 경영 기법 Six Sigma",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "경영·직장 용어로 들어 본 사람 많음",
+     "piece": "f06",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '품질 경영 기법' 이 끝 ○○ '기법' 과 같음 · 인명 둘은 단서의 고유명사일 뿐 해독을 막지 않음"
+    },
+    "blindQuestion": {
+     "guess": "식스 시그마",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "식스 시그마",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "식스 시그마",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j15-4",
+      "answer": "캐즘",
+      "verdict": "diff",
+      "why": "새 정답 식스 시그마의 지식(유래·사실)과 옛 정답 캐즘의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Six_Sigma",
+     "https://ko.wikipedia.org/wiki/식스_시그마"
+    ],
+    "facts": [
+     {
+      "claim": "1986 모토로라 빌 스미스 · 1995 잭 웰치 GE 전략 중심",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Six_Sigma",
+      "note": "It was introduced by American engineer Bill Smith while working at Motorola in 1986. ... As GE's CEO, in 1995 Jack Welch made it central to his business strategy."
+     },
+     {
+      "claim": "1986 모토로라 빌 스미스 정립 · 1995 웰치 GE 도입",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/식스_시그마",
+      "note": "1986년 모토로라의 엔지니어인 빌 스미스가 정립하였다. ... 6 시그마는 1995년 잭 웰치가 제너럴 일렉트릭에 도입하면서 한층 더 알려지고 발전하였다."
+     },
+     {
+      "claim": "이름은 통계에서 · 100만 기회당 불량 3.4",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Six_Sigma",
+      "note": "The term Six Sigma comes from statistics, specifically from the field of statistical quality control ... assumed to produce long-term defect levels below 3.4 defects per million opportunities (DPMO)."
+     },
+     {
+      "claim": "블랙 벨트·그린 벨트 · DMAIC 다섯 단계",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Six_Sigma",
+      "note": "Master Black Belts ... guiding Black Belts and Green Belts. / The DMAIC project methodology has five phases"
+     },
+     {
+      "claim": "1991 서비스표 등록 · 1998 GE 3억 5천만 달러 절감",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Six_Sigma",
+      "note": "It registered Six Sigma as a service mark on June 11, 1991 ... In 1998, GE announced $350 million in cost savings thanks to Six Sigma"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Six_Sigma"
+    ],
+    "hintNote": null,
+    "easiestCue": "모토로라 · GE 잭 웰치의 품질 경영 기법",
+    "worthWhyGen": "회사에서 흔히 듣는 경영 기법 이름이 왜 그런지(100만 개에 3.4개 불량)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '품질 경영 기법' 예",
+     "unique": "모토로라 1986 · GE 1995 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "economy/4#g032b-g032b-j15-4",
+   "seed": {
+    "subject": "캐즘",
+    "aspect": null,
+    "ref": "g032b-j15-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경영 용어 하나에 얽힌 이야기입니다. 1991년 미국 컨설턴트 제프리 무어가 첨단 제품 마케팅 책의 제목에 넣으면서 널리 퍼졌습니다. 출판사는 5,000부쯤 팔리리라 봤지만 2002년까지 30만 부 넘게 팔렸습니다. 2024년 한국 언론은 전기차 판매가 주춤하자 이 말을 자주 썼습니다. 이 용어는?",
+    "answer": "캐즘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "정작 '혁신 확산' 이론을 만든 에버렛 로저스는 수용자 무리 사이에 뚜렷한 끊김은 없다고 반박했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "전기차 판매 주춤 때 언론이 쓴 말 / 제프리 무어",
+     "difWhy": "3 — 시사 용어 캐즘 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 경제 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 30",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "새 기술 제품이 얼리어답터에게는 잘 팔리다가, 실용을 따지는 대중 시장으로 넘어가기 직전 수요가 한동안 멈추는 구간을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "신제품이 초기 시장에서 대중 시장으로 넘어가기 전 수요 정체 구간",
+    "familiarity": {
+     "judge": 2,
+     "pct": 30,
+     "why": "경제·스타트업 기사에서 가끔 보임",
+     "piece": "f08",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '경영 용어', 끝 ○○ '이 용어' 일치; 부수 수치가 있으나 문장당 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "캐즘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "캐즘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "캐즘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j03-12",
+      "answer": "식스 시그마",
+      "verdict": "diff",
+      "why": "새 정답 캐즘 과 옛 정답 식스 시그마 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Crossing_the_Chasm",
+     "https://www.ajunews.com/view/20240421120729210"
+    ],
+    "facts": [
+     {
+      "claim": "1991 무어 책 · 5,000부 예상 · 2002년 30만 부",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Crossing_the_Chasm",
+      "note": "Crossing the Chasm ... (1991, revised 1999 and 2014), is a marketing book by Geoffrey A. Moore ... Moore and his publisher originally thought that the book would sell around 5,000 copies. By 2002, ten years after the first publication, more than 300,000 copies had been sold."
+     },
+     {
+      "claim": "2024년 한국 언론 '전기차 캐즘'",
+      "where": "q",
+      "url": "https://www.ajunews.com/view/20240421120729210",
+      "note": "[김광석의 경제 읽어주는 남자] 캐즘에 빠진 전기차 .. '성장통' 이겨내려면 (2024-04-21) · 머니투데이 2024-08-31 '전기차 가격 떨어지고, 금리도 인하?…'캐즘'의 출구로 가는 길'"
+     },
+     {
+      "claim": "얼리어답터와 초기 다수 사이 틈",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Crossing_the_Chasm",
+      "note": "there is a chasm between the early adopters of the product (the technology enthusiasts and visionaries) and the early majority (the pragmatists)"
+     },
+     {
+      "claim": "로저스의 반박",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Crossing_the_Chasm",
+      "note": "Everett Rogers, creator of diffusion of innovations, challenged the chasm concept saying: Past research shows no support for this claim of a chasm between certain adopter categories."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Crossing_the_Chasm"
+    ],
+    "hintNote": null,
+    "easiestCue": "2024년 전기차 판매 주춤 뉴스에 자주 나온 말",
+    "worthWhyGen": "요즘 뉴스에서 쓰는 경영 용어와 그 출처(일상에서 쓰는 말 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '경영 용어' 예",
+     "unique": "무어 책 제목 + 전기차 뉴스 → 캐즘",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 167자"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

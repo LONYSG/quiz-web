@@ -1,0 +1,268 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "music-theory/2",
+  "midKey": "music-theory",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "music-theory/2#g032b-g032b-j13-5",
+   "seed": {
+    "subject": "블루 노트",
+    "aspect": null,
+    "ref": "g032b-j13-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "재즈에서 쓰는 음 하나를 부르는 말입니다. 영어로는 '걱정스러운 음(worried note)'이라고도 하고, 아일랜드 음악에서는 '긴 음(long note)'이라 부릅니다. 장조 곡 위에 이 음을 섞으면 장조도 단조도 아닌 묘한 소리가 납니다. 이 음은?",
+    "answer": "블루 노트",
+    "acceptedAnswers": [
+     "blue note"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "낮추는 폭은 피아노처럼 반음일 수도, 목소리나 기타처럼 반음보다 덜한 미분음일 수도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "재즈의 음 · 걱정스러운 음 · 장조도 단조도 아닌 묘한 소리",
+     "difWhy": "4 — 음악 이론 이름 떠올리기 · 어렵다",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 음악 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "음계의 셋째·다섯째·일곱째 음을 반음쯤 낮춰 재즈 특유의 구슬프고 끈적한 맛을 내는 음이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "재즈·블루스에서 음계의 3·5·7음을 살짝 낮춰 내는 음",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "재즈 팬이 아니면 낯섦",
+     "piece": "f01",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '재즈에서 쓰는 음 하나' 가 종류. 영어·아일랜드식 별명은 단서이고 끝 '이 음은?' 과 맞는다."
+    },
+    "blindQuestion": {
+     "guess": "블루 노트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "블루 노트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "블루 노트",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j08-5",
+      "answer": "5음 음계",
+      "verdict": "diff",
+      "why": "새 정답 블루 노트 과 옛 정답 5음 음계 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Blue_note",
+     "https://ko.wikipedia.org/wiki/블루_노트"
+    ],
+    "facts": [
+     {
+      "claim": "worried note · 아일랜드에서는 long notes",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue_note",
+      "note": "In jazz and blues, a blue note (or worried note) is a note that—for expressive purposes—is sung or played at a slightly different pitch from standard. ... Bent or \"blue notes\", called in Ireland \"long notes\", play a vital part in Irish music."
+     },
+     {
+      "claim": "장조 위에 쓰면 조성이 부딪침 · neutral(장도 단도 아닌)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blue_note",
+      "note": "Here one may speak of neutral intervals, neither major nor minor. ... it is commonly 'forced' over major-key chord changes, resulting in a distinctively dissonant conflict of tonalities"
+     },
+     {
+      "claim": "재즈·블루스에서 3·5·7음을 반음 낮춤",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/블루_노트",
+      "note": "블루 노트(영어: blue note)는 재즈나 블루스 등에서 사용되는 장음계이다. 그 중 제3음과 5음, 7음을 반음 낮추는 것을 의미한다."
+     },
+     {
+      "claim": "낮추는 폭: 4분음~반음 · 건반은 반음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blue_note",
+      "note": "Typically the alteration is between a quartertone and a semitone ... On the other hand, the lowering may be by a full semitone—as it must be, of course, on keyboard instruments."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/블루_노트"
+    ],
+    "hintNote": null,
+    "easiestCue": "재즈에서 쓰는 음 · 장조도 단조도 아닌 소리",
+    "worthWhyGen": "재즈·블루스 특유의 맛이 어디서 나는지 — 음악 교과 밖 개념",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '음 하나를 부르는 말' 예",
+     "unique": "worried note · long note 별칭은 이 음 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "music-theory/2#g032b-g032b-j29-8",
+   "seed": {
+    "subject": "조옮김",
+    "aspect": null,
+    "ref": "g032b-j29-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "가수가 '키를 두 단계 낮춰 주세요'라고 하면, 반주자는 악보의 모든 음을 같은 간격만큼 내려서 칩니다. 선율의 모양은 그대로 두고 곡 전체의 높이만 바꾸는 것입니다. 이 일을 음악 용어로 무엇이라 할까요?",
+    "answer": "조옮김",
+    "acceptedAnswers": [
+     "이조"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "클라리넷처럼 악보에 적힌 음과 실제 소리가 다른 악기를 부는 사람도 악보를 보며 머릿속으로 이 일을 할 때가 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "키를 두 단계 낮춰 주세요 · 모든 음을 같은 간격만큼",
+     "difWhy": "2 — 일상 장면 · 용어 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 음악 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "노래방 리모컨의 '키 업·키 다운' 버튼이 반주 전체에 한 번에 해 주는 일이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "곡 전체를 다른 높이(조)로 옮기는 일(transposition)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "음악 시간·노래방 키 조절로 접함",
+     "piece": "f08",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 '키를 낮춰 주세요' 장면이라 음악임이 바로 보이고 끝 ○○(음악 용어)도 둘째 문장에서 풀이됨. 짧음."
+    },
+    "blindQuestion": {
+     "guess": "이조",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "조옮김",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "조옮김",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1804",
+      "answer": "음자리표",
+      "verdict": "diff",
+      "why": "조옮김 vs 음자리표 — 다른 음악 용어"
+     },
+     {
+      "old": "1798",
+      "answer": "옥타브",
+      "verdict": "diff",
+      "why": "조옮김 vs 옥타브 — 다른 용어"
+     },
+     {
+      "old": "1801",
+      "answer": "삼화음",
+      "verdict": "diff",
+      "why": "조옮김 vs 삼화음 — 다른 용어"
+     },
+     {
+      "old": "1808",
+      "answer": "절대음감",
+      "verdict": "diff",
+      "why": "조옮김 vs 절대음감 — 다른 용어"
+     },
+     {
+      "old": "1802",
+      "answer": "불협화음",
+      "verdict": "diff",
+      "why": "조옮김 vs 불협화음 — 다른 용어"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/조옮김",
+     "https://en.wikipedia.org/wiki/Transposition_(music)"
+    ],
+    "facts": [
+     {
+      "claim": "음 구조를 유지한 채 다른 높이로 옮김",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/조옮김",
+      "note": "선율, 화성 진행 또는 음악 작품 전체를 동일한 음 구조, 즉 온음과 반음의 동일한 연속 및 나머지 선율적 음정을 유지하면서 다른 조로 바꾸는 것."
+     },
+     {
+      "claim": "가수가 다른 키를 청해 반주자가 함 · 이조 악기 연주자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Transposition_(music)",
+      "note": "Musicians who play transposing instruments sometimes have to do this (for example when encountering an unusual transposition, such as clarinet in C), as well as singers' accompanists, since singers sometimes request a different key than the one printed in the music to better fit their vocal range"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "키를 낮춰 곡 전체 높이를 바꾸는 일(정의)",
+    "worthWhyGen": "노래방 '키 조절'로 매일 쓰는 일의 음악 용어",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장이 장면(키 낮추기) — 종류 명사는 끝 문장 '음악 용어'",
+     "unique": "곡 전체 높이를 바꾸는 일 — 조바꿈(전조)은 곡 중간에 조가 바뀌는 것이라 '반주자가 통째로'로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

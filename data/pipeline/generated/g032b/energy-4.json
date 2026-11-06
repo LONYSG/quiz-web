@@ -1,0 +1,505 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "energy/4",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/4#g032b-g032b-j07-11",
+   "seed": {
+    "subject": "이타이이타이병",
+    "aspect": null,
+    "ref": "g032b-j07-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본의 한 공해병입니다. 1912년 무렵부터 도야마현 진즈강 하류 마을에서 뼈가 약해져 기침만 해도 부러지는 환자들이 나왔습니다. 상류 광산이 흘려보낸 중금속이 논과 물을 거쳐 몸에 쌓인 탓이었지만, 원인을 밝히는 데 50년 넘게 걸렸습니다. 환자들이 등뼈와 관절의 통증에 내지르던 말이 그대로 이름이 된 이 병은?",
+    "answer": "이타이이타이병",
+    "acceptedAnswers": [
+     "이타이이타이"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "주민들이 미쓰이 금속을 상대로 낸 소송에서 1971년 이겼고, 일본 4대 공해 가운데 소송으로 오염 정화를 거의 이뤄 낸 유일한 사례로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "환자들이 통증에 내지르던 말이 그대로 이름이 된 이 병",
+     "difWhy": "3 — 일본 4대 공해병 · 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 공해병 이름과 사례",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "카드뮴 중독으로 뼈가 물러지고 신장이 상하는 병으로, 1968년 일본 정부가 공해병으로 인정했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일본 도야마현의 카드뮴 중독 공해병(itai-itai disease)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "공해병, 교과서",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '공해병', 끝 ○○ '이 병' 일치; 176자지만 문장마다 주어가 하나라 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "이타이이타이병",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "이타이이타이병",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "이타이이타이병",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "577",
+      "answer": "미나마타 협약",
+      "verdict": "diff",
+      "why": "이타이이타이병(카드뮴 공해병 유래)과 미나마타 협약(수은 규제 조약)은 다른 사건·지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이타이이타이병",
+     "https://en.wikipedia.org/wiki/Itai-itai_disease"
+    ],
+    "facts": [
+     {
+      "claim": "1912년경 도야마현 진즈강 하류 · 카드뮴 · 뼈 · 기침만으로 골절 · 1968 공해병 인정 · 신장장애",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이타이이타이병",
+      "note": "\"아파아파\"라는 의미의 일본어에서 유래된 것으로, 1912년 일본 도야마현의 진즈강 하류에서 발생한 대량의 카드뮴이 뼈에 축적되어 발생한 공해병 ... 1968년 일본정부에서는 '카드뮴에 의해 뼈 속 칼슘분이 녹아서 생긴 신장장애와 골연화증'이라고 발표했고, 그해 공해병으로 인정하였다. ... 심지어는 기침만으로도 골절을 유발할 수 있다."
+     },
+     {
+      "claim": "이름은 등뼈·관절 통증에 지역 주민이 붙임 · 1912 첫 보고 뒤 원인 밝히기까지 55년 · 1968 소송 · 1971 승소 · 4대 공해병 중 소송으로 거의 완전한 오염 통제는 이것뿐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Itai-itai_disease",
+      "note": "The term \"itai-itai disease\" was coined by locals for the severe pains (Japanese: 痛い itai) people with the condition felt in the spine and joints. ... After the first reports of Itai-Itai in 1912, it took 55 years for the epidemiological investigation to discover that the disease was due to cadmium poisoning. ... sued the Mitsui Mining and Smelting Co. in 1968 ... In June 1971, the court found the Mitsui Mining and Smelting Co. guilty. ... Out of the four major pollution events, it was only in the case of itai-itai disease that those affected succeeded in accomplishing almost complete pollution control through legal action."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/이타이이타이병"
+    ],
+    "hintNote": null,
+    "easiestCue": "'일본 도야마 · 뼈가 부러지는 공해병' — 교과서(카드뮴 = 이타이이타이)를 기억하면 풀림(등급 3 가능)",
+    "worthWhyGen": "공해병 이름이 왜 그런가(환자의 비명) + 원인 규명 지연 — 유래·까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '공해병' 예",
+     "unique": "도야마 · 뼈 — 미나마타병(수은 · 신경)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 176자"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "energy/4#g032b-g032b-j17-5",
+   "seed": {
+    "subject": "런던 스모그",
+    "aspect": null,
+    "ref": "g032b-j17-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1952년 12월 한 도시에서 닷새 동안 이어진 대기 오염 사건이 있습니다. 유난히 추운 날씨에 사람들이 질 낮은 석탄을 평소보다 많이 땠고, 바람마저 없어 연기가 도시를 덮었습니다. 당시 정부는 4,000명이 숨졌다고 했지만, 뒤의 연구는 1만 2천 명 안팎으로 봅니다. 1956년 청정대기법을 낳은 이 사건은 무엇일까요?",
+    "answer": "런던 스모그",
+    "acceptedAnswers": [
+     "그레이트 스모그",
+     "런던 대스모그",
+     "1952년 런던 스모그"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "연기가 실내까지 스며 공연과 영화 상영이 멈출 정도였다. 자동차 배기가스가 햇빛에 바뀌어 생기는 LA형과 달리 아황산가스가 주범이었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1952년 12월 · 1956년 청정대기법",
+     "difWhy": "3 — 환경사 사건 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 환경 역사 교과 사건",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "석탄 연기와 짙은 안개가 엉겨 지하철 말고는 대중교통이 멈춘 사건으로, 넷플릭스 '더 크라운' 1시즌 4화의 소재다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1952년 12월 영국 런던의 석탄 연기 대기 오염 참사",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "환경 사건으로 교과서·드라마에 언급",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '대기 오염 사건' 이 끝 ○○ '사건' 과 일치 · 원인과 사망자 수를 문장 셋으로 나눠 서술"
+    },
+    "blindQuestion": {
+     "guess": "런던 스모그",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "런던 스모그",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "런던 스모그",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+     "https://en.wikipedia.org/wiki/Clean_Air_Act_1956"
+    ],
+    "facts": [
+     {
+      "claim": "1952년 12월 5~9일 · 추위 · 바람 없음 · 석탄 · 정부 추산 4,000명 · 뒤 연구 1만~1만 2천",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+      "note": "The Great Smog was a severe air pollution event that affected London, England, in December 1952. A period of unusually cold weather, combined with an anticyclone and windless conditions, collected airborne pollutants—mostly arising from the use of coal ... It lasted from Friday, 5 December, to Tuesday, 9 December 1952 ... estimated that up to 4,000 people had died ... More recent research suggests ... between 10,000 and 12,000 deaths."
+     },
+     {
+      "claim": "질 낮은 석탄을 더 많이 땜",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+      "note": "A period of unusually cold weather preceding and during the Great Smog led Londoners to burn much more coal than usual to keep themselves warm. ... post-war domestic coal tended to be of a relatively low-grade, sulphurous variety"
+     },
+     {
+      "claim": "1956년 청정대기법은 1952년 런던 그레이트 스모그에 대한 대응",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Clean_Air_Act_1956",
+      "note": "The Clean Air Act 1956 ... was an act of the Parliament of the United Kingdom enacted principally in response to London's Great Smog of 1952."
+     },
+     {
+      "claim": "지하철 외 대중교통 멈춤 · 더 크라운 시즌 1 4화",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+      "note": "Public transport other than the London Underground was halted ... The Great Smog is the central focus of season 1, episode 4 of Netflix's The Crown."
+     },
+     {
+      "claim": "실내까지 스며 공연·영화 상영 취소 · 아황산가스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Great_Smog_of_London",
+      "note": "The smog was so dense that it even seeped indoors, resulting in the cancellation or abandonment of concerts and film screenings ... 370 tonnes of sulphur dioxide"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Great_Smog_of_London"
+    ],
+    "hintNote": null,
+    "easiestCue": "1952년 석탄 연기 대기 오염 — 사건 이름을 들어 본 사람만",
+    "worthWhyGen": "대기 오염 규제(청정대기법)를 낳은 대표 사건 · 교과 개념(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '대기 오염 사건' 예",
+     "unique": "1952 · 청정대기법 → 하나(LA 스모그는 1940~50년대 자동차 · 광화학)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 181자",
+     "crossans 석탄/안개/연기"
+    ],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "energy/4#g032b-g032b-j24-1",
+   "seed": {
+    "subject": "석면",
+    "aspect": null,
+    "ref": "g032b-j24-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "불에 타지 않고 열을 잘 막아 한때 슬레이트 지붕과 천장재, 단열재에 널리 쓰인 광물 섬유입니다. 그 가루를 마시면 수십 년 뒤 폐암이나 악성 중피종이 생길 수 있습니다. 그래서 우리나라는 2009년부터 이것이 든 제품의 제조와 사용을 막았는데, 이 광물 섬유는 무엇일까요?",
+    "answer": "석면",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영어 이름 asbestos는 그리스어로 '꺼지지 않는'이라는 뜻으로, 다 타 버리지 않는 등잔 심지로 쓰인 데서 왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "슬레이트 지붕 · 폐암이나 악성 중피종",
+     "difWhy": "2 — 석면은 뉴스로 자주 나옴",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 생활 건강 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "국제암연구소가 1군 발암물질로 정해, 낡은 건물을 고치거나 헐 때 전문 업체가 따로 걷어 내는 물질",
+    "generalHintVersion": "hint-v7",
+    "identity": "불에 강해 건축 자재로 쓰였으나 1군 발암물질로 금지된 섬유 모양 광물",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "철거·발암물질 뉴스로 흔함",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '광물 섬유'가 있고 끝 ○○도 '광물 섬유' — 같은 종류. 문장마다 주어 하나."
+    },
+    "blindQuestion": {
+     "guess": "석면",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "석면",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "석면",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j17-1",
+      "answer": "미세먼지",
+      "verdict": "diff",
+      "why": "석면 vs 미세먼지 — 다른 물질"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/석면",
+     "https://en.wikipedia.org/wiki/Asbestos"
+    ],
+    "facts": [
+     {
+      "claim": "WHO 국제암연구소 1군 발암물질 · 20~40년 잠복 뒤 폐암·악성 중피종 · 슬레이트 지붕",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/석면",
+      "note": "석면은 세계보건기구(WHO) 산하 국제암연구소(IARC) 지정 1군 발암물질로 호흡을 통해 그 가루를 마시면 20년에서 40년의 잠복기를 거쳐 폐암이나 석면폐, 늑막이나 흉막에 암이 생기는 악성 중피종을 일으킬 위험이 있다. ... 석면 슬레이트 지붕이 사용된 집들이 아직도 존재"
+     },
+     {
+      "claim": "2009년부터 0.1% 이상 함유 제품 제조·수입·사용 전면 금지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/석면",
+      "note": "2009년 1월 1일부터 ... 석면이 0.1% 이상 함유된 건축자재 등의 제품에 대해 제조, 수입, 사용이 전면 금지되었다. / 대한민국 노동부는 조기 사용금지 계획 대상제품(2009년부터~)"
+     },
+     {
+      "claim": "불에 견디는 물건 · 천장 단열 · 지붕 · 중피종",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Asbestos",
+      "note": "Asbestos has been used for thousands of years to create flexible objects that resist fire ... ceiling insulation, fireproof drywall, flooring, roofing ... Inhalation of asbestos fibres can lead to various dangerous lung conditions, including mesothelioma, asbestosis, and lung cancer."
+     },
+     {
+      "claim": "철거·개보수 때 규제 대상",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Asbestos",
+      "note": "Renovation and demolition of asbestos-contaminated buildings are subject to EPA NESHAP and OSHA Regulations."
+     },
+     {
+      "claim": "어원 '꺼지지 않는' · 심지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Asbestos",
+      "note": "derives from the Ancient Greek: ἄσβεστος, meaning \"unquenchable\" or \"inextinguishable\". The name reflects use of the substance for wicks that would never burn up."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/석면",
+     "https://en.wikipedia.org/wiki/Asbestos"
+    ],
+    "hintNote": null,
+    "easiestCue": "슬레이트 지붕 · 폐암 · 2009년 금지된 광물 섬유",
+    "worthWhyGen": "오래된 집·학교 철거 뉴스에 늘 나오는 생활 안전 상식(19 §9-1 ①)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '광물 섬유' 예",
+     "unique": "광물 섬유 · 발암 · 2009년 금지 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-24"
+   }
+  },
+  {
+   "seedId": "energy/4#g032b-g032b-j24-9",
+   "seed": {
+    "subject": "환경호르몬",
+    "aspect": null,
+    "ref": "g032b-j24-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "몸속에서 성장과 생식을 조절하는 화학 신호를 흉내 내거나 가로막는 바깥 물질을 흔히 이르는 말입니다. 플라스틱 원료인 비스페놀 A와 프탈레이트, 살충제 DDT 같은 것이 꼽힙니다. 젖병이나 식품 용기를 고를 때 자주 듣는 이 말은 무엇일까요?",
+    "answer": "환경호르몬",
+    "acceptedAnswers": [
+     "내분비계 교란물질",
+     "내분비 교란물질"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1970년대 초 금지되기 전까지 유산을 막는다며 임신부 최대 500만 명에게 처방된 약 DES가 대표 사례로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "젖병이나 식품 용기를 고를 때 자주 듣는 이 말",
+     "difWhy": "2 — 일상에서 쓰는 말",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 일상 생활에 직접 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "영수증 감열지와 플라스틱 식품 용기 등에서 나와 생식·발달을 흐트러뜨린다고 걱정하는 화학 물질들",
+    "generalHintVersion": "hint-v7",
+    "identity": "몸의 호르몬 작용을 어지럽히는 화학 물질(내분비계 교란물질)의 흔한 이름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "뉴스·교과서에서 흔한 말",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '화학 신호를 흉내 내거나 가로막는 바깥 물질'이 곧 끝 ○○(말)의 뜻. 비스페놀·DDT는 예시 나열이라 해독을 막지 않음."
+    },
+    "blindQuestion": {
+     "guess": "환경호르몬",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "환경호르몬",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "환경호르몬",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5332",
+      "answer": "침묵의 봄",
+      "verdict": "diff",
+      "why": "환경호르몬 vs 침묵의 봄 — 개념 vs 책, 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Endocrine_disruptor",
+     "https://ko.wikipedia.org/wiki/비스페놀_A"
+    ],
+    "facts": [
+     {
+      "claim": "호르몬 체계를 방해하는 화학 물질 · 생식·발달 · 생활용품",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Endocrine_disruptor",
+      "note": "Endocrine disruptors ... are chemicals that can interfere with endocrine (or hormonal) systems. ... interfere with the synthesis, secretion, transport, binding, action, or elimination of natural hormones in the body that are responsible for development, behavior, fertility"
+     },
+     {
+      "claim": "대표 물질 DDT · PCB · 비스페놀 A · 프탈레이트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Endocrine_disruptor",
+      "note": "Chemicals commonly detected in people include DDT, polychlorinated biphenyls (PCBs), bisphenol A (BPA), polybrominated diphenyl ethers (PBDEs), and a variety of phthalates."
+     },
+     {
+      "claim": "BPA = 내분비 교란물질 · 플라스틱 병·식품 용기 · 유아용 캔",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비스페놀_A",
+      "note": "비스페놀 A(Bisphenol A)는 플라스틱 병, 플라스틱 식품 용기, 치과 재료, 금속 식품과 유아용 캔의 내부 벽면에서 흔히 발견된다. ... BPA는 잘 알려진 내분비 교란물질로"
+     },
+     {
+      "claim": "영수증 용지",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/비스페놀_A",
+      "note": "식료품점과 식당에서 흔히 사용되는 영수증 용지에서도 BPA가 노출될 수 있다."
+     },
+     {
+      "claim": "DES 1970년대 초 금지 · 임신부 최대 500만 명 처방",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Endocrine_disruptor",
+      "note": "Prior to its ban in the early 1970s, doctors prescribed DES to as many as five million pregnant women to block spontaneous abortion"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/비스페놀_A",
+     "https://en.wikipedia.org/wiki/Endocrine_disruptor"
+    ],
+    "hintNote": null,
+    "easiestCue": "젖병·식품 용기 · 비스페놀 A",
+    "worthWhyGen": "생활용품을 고를 때 늘 듣는 말의 정체 — 생활 상식(19 §9-1 ①)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바깥 물질을 이르는 말' 예",
+     "unique": "흔히 이르는 말 — 정식 이름 변형으로 받음(B1)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-24"
+   }
+  }
+ ]
+}

@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "popular-music/5",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/5#g032b-g032b-j27-11",
+   "seed": {
+    "subject": "믹스테이프",
+    "aspect": null,
+    "ref": "g032b-j27-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "힙합에서 쓰는 음반 갈래의 이름입니다. 1970년대 힙합이 막 생겨날 무렵 그랜드마스터 플래시 같은 DJ들이 클럽 공연 녹음을 카세트에 담아 나눠 준 데서 시작했습니다. 그 카세트들을 부르던 말이 굳은 이 갈래는 무엇일까요?",
+    "answer": "믹스테이프",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "앨범과의 경계가 흐릿해, 스트리밍 서비스는 어느 쪽인지 가수 쪽이 정하게 둔다. 1979년 워크맨이 나오며 들고 다니기 쉬워졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "힙합 음반 갈래 / 카세트에 담아 나눠 준 데서",
+     "difWhy": "4 — 믹스테이프 힙합 팬 용어, 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 힙합 용어 세부",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "정규 앨범보다 부담 없이, 흔히 무료로 푸는 래퍼의 곡 묶음으로 신인이 이름을 알리는 통로",
+    "generalHintVersion": "hint-v7",
+    "identity": "정규 앨범보다 가볍게 내는 힙합 음악 묶음(원래 DJ 카세트 편집본)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "힙합 팬 외에는 반쯤 앎",
+     "piece": "f01",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '힙합에서 쓰는 음반 갈래' 가 종류. 끝 '이 갈래는' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "믹스테이프",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "믹스테이프",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "믹스테이프",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1881",
+      "answer": "힙합",
+      "verdict": "diff",
+      "why": "믹스테이프 vs 힙합 장르 — 갈래 전체 vs 음반 형식, 다름"
+     },
+     {
+      "old": "3175",
+      "answer": "하우스",
+      "verdict": "diff",
+      "why": "믹스테이프 vs 하우스 — 다름"
+     },
+     {
+      "old": "3168",
+      "answer": "브레이킹",
+      "verdict": "diff",
+      "why": "믹스테이프 vs 브레이킹 — 다름"
+     },
+     {
+      "old": "3177",
+      "answer": "그래피티",
+      "verdict": "diff",
+      "why": "믹스테이프 vs 그래피티 — 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mixtape",
+     "https://ko.wikipedia.org/wiki/믹스테이프"
+    ],
+    "facts": [
+     {
+      "claim": "1970년대 힙합 탄생과 함께 · 그랜드마스터 플래시 등 DJ가 클럽 공연 녹음을 카세트로 배포 · 그것이 믹스테이프로 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mixtape",
+      "note": "The idea of mixtapes was conceived in the early 1970s with the genesis of hip-hop. In the 1970s, DJs such as Grandmaster Flash and the Furious Five, Afrika Bambaataa, and DJ Hollywood would often distribute recordings of their club performances through cassette tapes ... These cassettes eventually became colloquially known as mixtapes."
+     },
+     {
+      "claim": "힙합 문화의 하나 · 카세트테이프",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/믹스테이프",
+      "note": "주로 힙합, 랩, R&B, 레게 등의 음악 장르에서 ... 길거리 등에서 발매하는 카세트 테이프이다. 일종의 힙합 문화의 하나라고도 하며"
+     },
+     {
+      "claim": "앨범보다 느슨한 프로젝트 · 신인 · 홍보",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Mixtape",
+      "note": "a mixtape is a musical project, typically with looser constraints than that of an album ... less commercial pressure / Mixtape was then defined loosely as any musical project by an up-and-coming artist. Now, mixtapes have become a label of promotion"
+     },
+     {
+      "claim": "경계 흐릿 · 스트리밍은 가수가 정함 · 1979 워크맨",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mixtape",
+      "note": "\"the line between an album and a mixtape can be blurry\", and that streaming services rely on the artist to make that determination. / The introduction of the Sony Walkman in 1979"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mixtape"
+    ],
+    "hintNote": null,
+    "easiestCue": "힙합 음반 갈래 + 카세트",
+    "worthWhyGen": "힙합 기사·래퍼 소개에 늘 나오는 말의 유래(19 §9-1 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '음반 갈래' 예",
+     "unique": "DJ 카세트에서 온 갈래 — 하나(EP·정규는 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

@@ -1,0 +1,170 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-history-west/1",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/1#g032b-g032b-j02-1",
+   "seed": {
+    "subject": "시니컬",
+    "aspect": null,
+    "ref": "g032b-j02-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 그리스의 한 철학 학파 이름에서 온 외래어가 있습니다. 이 학파 사람들은 재산과 체면을 버리고 길에서 먹고 자서, 그리스어로 '개 같은 자들'이라 불렸습니다. 18~19세기 영어에서 이 이름의 뜻이 바뀌었는데, 오늘날 우리말에서도 형용사로 쓰는 이 외래어는 무엇일까요?",
+    "answer": "시니컬",
+    "acceptedAnswers": [
+     "시니컬하다"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 개를 뜻하는 그리스어 키온에서 왔고 한자어로는 견유학파라 옮긴다. 옛 학파는 덕만이 행복의 조건이라 보았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "'개 같은 자들'이라 불린 학파에서 온 형용사 외래어",
+     "difWhy": "3 — 어원 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상어 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "남의 선의를 믿지 않고 비꼬는 말투를 두고 '~하다'고 하는 외래어로, 통 속에 살던 디오게네스가 이 학파의 대표 인물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "남을 믿지 않고 비웃는 태도를 이르는 외래어 형용사(cynical) — 견유학파(키니코스 학파) 이름에서 옴",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "일상 외래어",
+     "piece": "f05",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '철학 학파 이름에서 온 외래어'로 종류가 있고 끝 ○○(외래어)와 일치"
+    },
+    "blindQuestion": {
+     "guess": "시니컬",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "시니컬",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "시니컬",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3981",
+      "answer": "스파르타",
+      "verdict": "diff",
+      "why": "새 정답 시니컬의 지식(유래·사실)과 옛 정답 스파르타의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "492",
+      "answer": "스파르타",
+      "verdict": "diff",
+      "why": "새 정답 시니컬의 지식(유래·사실)과 옛 정답 스파르타의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j12-11",
+      "answer": "히포크라테스 선서",
+      "verdict": "diff",
+      "why": "새 정답 시니컬의 지식(유래·사실)과 옛 정답 히포크라테스 선서의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j23-2",
+      "answer": "검투사",
+      "verdict": "diff",
+      "why": "새 정답 시니컬의 지식(유래·사실)과 옛 정답 검투사의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6465",
+      "answer": "클레오파트라",
+      "verdict": "diff",
+      "why": "새 정답 시니컬의 지식(유래·사실)과 옛 정답 클레오파트라의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cynicism_(philosophy)",
+     "https://ko.wikipedia.org/wiki/키니코스_학파"
+    ],
+    "facts": [
+     {
+      "claim": "학파 이름이 그리스어 '개 같은'에서 옴 · 거리에서 살고 관습을 버려 '개'라 불림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cynicism_(philosophy)",
+      "note": "The term cynic derives from Ancient Greek κυνικός (kynikos) 'dog-like' ... the word dog was also thrown at the first Cynics as an insult for their shameless rejection of conventional manners, and their decision to live on the streets."
+     },
+     {
+      "claim": "견유 = 개",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/키니코스_학파",
+      "note": "\"견유\"라고 번역된 이름은 그리스어로 개를 의미하는 \"Κύνος에서 왔다."
+     },
+     {
+      "claim": "18세기 말~19세기 초 지금 뜻(남의 동기를 불신)이 생김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cynicism_(philosophy)",
+      "note": "Emphasis on this aspect of their teachings led, in the late 18th and early 19th centuries, to the modern understanding of cynicism as \"an attitude of scornful or jaded negativity, especially a general distrust of the integrity or professed motives of others.\""
+     },
+     {
+      "claim": "디오게네스가 대표 · 통에서 잠",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cynicism_(philosophy)",
+      "note": "Diogenes, in particular, was referred to as the \"Dog\" ... sleep in tubs and at crossroads."
+     },
+     {
+      "claim": "덕만이 행복의 조건",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cynicism_(philosophy)",
+      "note": "The classical Greek and Roman Cynics regarded virtue as the only necessity for happiness"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cynicism_(philosophy)"
+    ],
+    "hintNote": null,
+    "easiestCue": "'개 같은 자들'이라 불린 그리스 학파 → 영어 형용사(키니코스=시닉을 알아야 함)",
+    "worthWhyGen": "늘 쓰는 외래어 '시니컬'이 '개 같은 자들'이라는 학파 별명에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '외래어' 예",
+     "unique": "'형용사로 쓰는 외래어' — 냉소적(한자어)은 B2 로 받지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 디오게네스"
+    ],
+    "job": "job-02"
+   }
+  }
+ ]
+}

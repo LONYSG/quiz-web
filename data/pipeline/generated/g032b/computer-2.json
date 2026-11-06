@@ -1,0 +1,448 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "computer/2",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/2#g032b-g032b-j06-9",
+   "seed": {
+    "subject": "매킨토시",
+    "aspect": null,
+    "ref": "g032b-j06-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "애플의 한 개인용 컴퓨터입니다. 1979년 이 개발 계획을 시작한 제프 래스킨은 자신이 가장 좋아하는 사과 품종의 이름을 붙였습니다. 1981년 한 잡지는 애플의 비밀 계획 '리사'와 함께 이 계획을 그 품종의 철자 그대로 적어 보도했습니다. 이 컴퓨터는?",
+    "answer": "매킨토시",
+    "acceptedAnswers": [
+     "맥"
+    ],
+    "originalTitleVariants": [
+     "Macintosh",
+     "Mac"
+    ],
+    "explanation": "첫 제품은 1984년 1월 리들리 스콧이 연출한 슈퍼볼 광고 '1984'로 세상에 알려졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "애플의 개인용 컴퓨터 · 사과 품종 이름",
+     "difWhy": "2 — 애플 컴퓨터 → 맥 · 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 브랜드 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "마우스와 아이콘 화면을 대중에게 널리 퍼뜨린 애플 컴퓨터로, 스티브 잡스가 이어받아 완성했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "애플의 개인용 컴퓨터 계열(Macintosh · 1984)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "맥 컴퓨터 이름으로 앎",
+     "piece": "f07",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '애플의 개인용 컴퓨터', 끝 ○○ '컴퓨터'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "매킨토시",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "매킨토시",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "매킨토시",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4652",
+      "answer": "커맨드 키",
+      "verdict": "diff",
+      "why": "매킨토시 이름 유래 vs 커맨드 키 기호 — 다른 사실"
+     },
+     {
+      "old": "3458",
+      "answer": "애플",
+      "verdict": "diff",
+      "why": "매킨토시 vs 애플 무지개 로고 — 다른 사실"
+     },
+     {
+      "old": "5309",
+      "answer": "유닉스",
+      "verdict": "diff",
+      "why": "매킨토시 vs 유닉스 — 무관"
+     },
+     {
+      "old": "2209",
+      "answer": "가상화",
+      "verdict": "diff",
+      "why": "매킨토시 vs 가상화 — 무관"
+     },
+     {
+      "old": "2208",
+      "answer": "버그",
+      "verdict": "diff",
+      "why": "매킨토시 vs 버그 어원 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jef_Raskin",
+     "https://en.wikipedia.org/wiki/Macintosh_128K"
+    ],
+    "facts": [
+     {
+      "claim": "래스킨이 1979년 계획 시작 · 가장 좋아하는 사과 품종 이름을 고름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jef_Raskin",
+      "note": "Raskin started the Macintosh project in 1979 ... This included selecting the name of his favorite apple, writing the mission document The Book of Macintosh"
+     },
+     {
+      "claim": "1981년 인포월드가 비밀 계획 Lisa 와 'McIntosh' 보도 · 1979 래스킨 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Macintosh_128K",
+      "note": "InfoWorld in September 1981 reported on the existence of the secret Lisa and \"McIntosh\" projects at Apple. ... At the same time that the Lisa was becoming a GUI machine in 1979, Jef Raskin began the Macintosh project."
+     },
+     {
+      "claim": "1984 광고 리들리 스콧 · 슈퍼볼",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Macintosh_128K",
+      "note": "The Macintosh was introduced by a television commercial titled \"1984\" during Super Bowl XVIII on January 22, 1984, directed by Ridley Scott."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Macintosh_128K"
+    ],
+    "hintNote": null,
+    "easiestCue": "애플 컴퓨터 + 사과 품종 이름",
+    "worthWhyGen": "유명한 컴퓨터 이름이 사과 품종에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '컴퓨터' 예",
+     "unique": "래스킨 1979 · 리사와 함께 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 마우스/애플"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "computer/2#g032b-g032b-j16-10",
+   "seed": {
+    "subject": "파워포인트",
+    "aspect": null,
+    "ref": "g032b-j16-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사무용 프로그램 하나는 1987년 4월 애플 매킨토시용으로 처음 나왔습니다. 만든 곳은 실리콘밸리의 작은 회사 포서트였고, 애플이 새로 만든 투자 기금의 첫 투자처이기도 했습니다. 석 달 뒤 마이크로소프트가 약 1,400만 달러에 사들였는데, 이것이 마이크로소프트의 첫 대형 인수였습니다. 이 프로그램은?",
+    "answer": "파워포인트",
+    "acceptedAnswers": [
+     "PowerPoint",
+     "PPT",
+     "피피티",
+     "마이크로소프트 파워포인트"
+    ],
+    "originalTitleVariants": [
+     "PowerPoint"
+    ],
+    "explanation": "개발 중 이름은 '프레젠터'였지만, 출시 직전 이미 남이 쓰는 상표라 등록이 막혀 이름을 바꿨다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "사무용 프로그램 1987 애플 매킨토시용 / 마이크로소프트 첫 대형 인수",
+     "difWhy": "3 — 사무 프로그램 단서 · 포서트 모르나 파워포인트 연상 가능",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 일화 — 일상 소프트웨어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "일화"
+    },
+    "generalHint": "회의나 강의 때 화면에 한 장씩 넘겨 가며 보여 줄 발표 슬라이드를 만드는 마이크로소프트 오피스 프로그램이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "마이크로소프트 오피스의 발표 자료 프로그램",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "직장·학교에서 매일 씀",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '사무용 프로그램'이 끝 ○○(프로그램)과 일치, 회사 이름들은 단서 고유명사일 뿐"
+    },
+    "blindQuestion": {
+     "guess": "파워포인트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "파워포인트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "파워포인트",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j29-4",
+      "answer": "윈도 95",
+      "verdict": "diff",
+      "why": "파워포인트 인수 vs 윈도 95 광고곡 — 다른 지식"
+     },
+     {
+      "old": "2203",
+      "answer": "운영체제",
+      "verdict": "diff",
+      "why": "파워포인트 vs 운영체제 정의 — 다른 지식"
+     },
+     {
+      "old": "2211",
+      "answer": "확장자",
+      "verdict": "diff",
+      "why": "파워포인트 vs 확장자 — 다른 지식"
+     },
+     {
+      "old": "2208",
+      "answer": "버그",
+      "verdict": "diff",
+      "why": "파워포인트 vs 버그 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Microsoft_PowerPoint"
+    ],
+    "facts": [
+     {
+      "claim": "포서트 · 1987년 4월 20일 매킨토시 전용 · 석 달 뒤 약 1,400만 달러 · MS 첫 주요 인수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Microsoft_PowerPoint",
+      "note": "It was originally created by Robert Gaskins, Tom Rudkin, and Dennis Austin at a software company named Forethought, Inc. It was released on April 20, 1987, initially for Macintosh computers only. Microsoft acquired PowerPoint for about $14 million three months after it appeared. This was Microsoft's first significant acquisition"
+     },
+     {
+      "claim": "실리콘밸리 스타트업 · 애플 전략 투자 그룹의 첫 투자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Microsoft_PowerPoint",
+      "note": "PowerPoint was created by Robert Gaskins and Dennis Austin at a software startup in Silicon Valley named Forethought, Inc. ... a new Apple Computer venture capital fund, called Apple's Strategic Investment Group, selected PowerPoint to be its first investment."
+     },
+     {
+      "claim": "개발명 Presenter · 상표 거절",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Microsoft_PowerPoint",
+      "note": "Throughout this development period, the product was called \"Presenter\". Then, just before release ... \"Presenter\" was unexpectedly rejected because it had already been used by someone else."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Microsoft_PowerPoint"
+    ],
+    "hintNote": null,
+    "easiestCue": "마이크로소프트가 사들인 사무용 프로그램",
+    "worthWhyGen": "누구나 쓰는 프로그램이 마이크로소프트가 만든 것이 아니라 사들인 것이라는 뒷이야기(취미·업무 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '사무용 프로그램' 예",
+     "unique": "1987 · 포서트 → 하나(워드·엑셀은 MS 자체 개발)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 170자"
+    ],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "computer/2#g032b-g032b-j29-4",
+   "seed": {
+    "subject": "윈도 95",
+    "aspect": null,
+    "ref": "g032b-j29-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "마이크로소프트는 이 운영체제를 내놓으며 광고 노래로 롤링 스톤스의 'Start Me Up'을 썼습니다. 이 운영체제에 처음 들어간 '시작' 버튼을 가리킨 곡이었고, 노래 값으로 800만~1,400만 달러를 냈다고 전합니다. 이 운영체제의 이름은?",
+    "answer": "윈도 95",
+    "acceptedAnswers": [
+     "윈도우 95",
+     "Windows 95"
+    ],
+    "originalTitleVariants": [
+     "Windows 95"
+    ],
+    "explanation": "작업 표시줄·시작 메뉴·바탕 화면 바로 가기가 이때 생겨, 그 뒤 나온 판들에도 거의 그대로 이어졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "'시작' 버튼이 처음 들어간 운영체제",
+     "difWhy": "2 — 윈도 시작 버튼 단서 · 숫자 95만 정확히",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중 IT 상식과 광고 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "1990년대 중반 PC를 대중화한 마이크로소프트 운영체제로, 3년 뒤 후속판 98이 나왔다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1995년 나온 마이크로소프트의 PC 운영체제",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "유명한 윈도 운영체제",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이 운영체제'에 종류 명사가 붙어 있고 끝 ○○(운영체제)와 같음"
+    },
+    "blindQuestion": {
+     "guess": "윈도우 95",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "윈도우 95",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "윈도 95",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j16-10",
+      "answer": "파워포인트",
+      "verdict": "diff",
+      "why": "윈도 95 vs 파워포인트 인수 — 다른 제품"
+     },
+     {
+      "old": "96",
+      "answer": "리눅스",
+      "verdict": "diff",
+      "why": "윈도 95 vs 리눅스 — 다른 운영체제"
+     },
+     {
+      "old": "3513",
+      "answer": "리눅스",
+      "verdict": "diff",
+      "why": "윈도 95 vs 안드로이드의 리눅스 커널 — 다른 지식"
+     },
+     {
+      "old": "2204",
+      "answer": "커널",
+      "verdict": "diff",
+      "why": "윈도 95 vs 커널 용어 — 다른 지식"
+     },
+     {
+      "old": "5309",
+      "answer": "유닉스",
+      "verdict": "diff",
+      "why": "윈도 95 vs 유닉스 탄생 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Windows_95",
+     "https://ko.wikipedia.org/wiki/윈도우_95"
+    ],
+    "facts": [
+     {
+      "claim": "Start Me Up 광고 · 시작 버튼 · 800만~1,400만 달러",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Windows_95",
+      "note": "The Windows 95 release included a commercial featuring The Rolling Stones' 1981 single \"Start Me Up\" (a reference to the Start button). It was widely reported that Microsoft paid the Rolling Stones between US$8 and US$14 million"
+     },
+     {
+      "claim": "롤링 스톤스 · 시작 버튼 · 금액(한국어)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/윈도우_95",
+      "note": "윈도우 95 릴리스에는 롤링 스톤스의 1981년 싱글 \"Start Me Up\"(시작 버튼 참조)이 포함된 광고가 포함되어 있다. 마이크로소프트가 … 800만 달러에서 1,400만 달러를 지불했다는 사실이 널리 알려졌다."
+     },
+     {
+      "claim": "시작 메뉴·작업 표시줄을 처음 포함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/윈도우_95",
+      "note": "윈도우 95는 최신 윈도우의 느낌(작업 표시줄, 시작 메뉴)을 포함하는 마이크로소프트 윈도우의 첫 번째 버전이다."
+     },
+     {
+      "claim": "뒤 판에도 그대로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Windows_95",
+      "note": "Some of the user interface elements introduced in Windows 95, such as the desktop, taskbar, Start menu and Windows Explorer file manager, remained fundamentally unchanged on future versions of Windows."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/윈도우_95"
+    ],
+    "hintNote": null,
+    "easiestCue": "'시작' 버튼을 처음 들인 마이크로소프트 운영체제",
+    "worthWhyGen": "지금도 쓰는 '시작' 버튼의 출발과 광고 일화",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '운영체제' 예",
+     "unique": "시작 버튼을 처음 들인 판 — 하나(98 이후는 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 운영체제"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

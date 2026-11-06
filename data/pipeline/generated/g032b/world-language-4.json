@@ -1,0 +1,176 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-language/4",
+  "midKey": "world-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-language/4#g032b-g032b-j30-5",
+   "seed": {
+    "subject": "타갈로그어",
+    "aspect": null,
+    "ref": "g032b-j30-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "필리핀 인구의 약 4분의 1이 모어로 쓰는 언어입니다. 스페인 사람들이 오기 전에는 '바이바인'이라는 고유 문자로 적었습니다. 1937년 국어의 바탕으로 뽑혔고, 오늘날 그 표준형은 '필리핀어'라는 이름으로 영어와 함께 공용어입니다. 이 언어는?",
+    "answer": "타갈로그어",
+    "acceptedAnswers": [
+     "타갈로그"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "오스트로네시아어족에 속하며, 동사를 문장 맨 앞에 두는 어순을 흔히 씁니다. 1593년 마닐라에서 나온 '도크트리나 크리스티아나'가 이 말을 처음 인쇄한 책으로 꼽힙니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "필리핀 인구의 약 4분의 1 … 필리핀어의 바탕",
+     "difWhy": "3 — 타갈로그어 이름 한 번 떠올려야",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 세계 언어 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "마닐라를 비롯한 루손섬 중남부 사람들의 말로, 필리핀 사람 대부분이 제2언어로 익혀 나라 안에서 두루 통한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "필리핀 국어(필리핀어)의 바탕이 된 언어",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "필리핀 언어로 들어 봄, 세계 언어 상식",
+     "piece": "f02",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '언어', 끝 ○○ '언어'. 필리핀어와의 관계도 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "타갈로그어",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "타갈로그어",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "타갈로그어",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3323",
+      "answer": "스페인어",
+      "verdict": "diff",
+      "why": "타갈로그어 vs 스페인어(중남미) — 다른 언어"
+     },
+     {
+      "old": "5648",
+      "answer": "카탈루냐어",
+      "verdict": "diff",
+      "why": "타갈로그어 vs 카탈루냐어 — 다른 언어"
+     },
+     {
+      "old": "3330",
+      "answer": "바스크어",
+      "verdict": "diff",
+      "why": "타갈로그어 vs 바스크어 — 다른 언어"
+     },
+     {
+      "old": "241",
+      "answer": "포르투갈어",
+      "verdict": "diff",
+      "why": "타갈로그어 vs 브라질 포르투갈어 — 다른 언어"
+     },
+     {
+      "old": "3326",
+      "answer": "힌디어",
+      "verdict": "diff",
+      "why": "타갈로그어 vs 힌디어 — 다른 언어"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tagalog_language",
+     "https://ko.wikipedia.org/wiki/타갈로그어"
+    ],
+    "facts": [
+     {
+      "claim": "인구 4분의 1이 모어 · 다수가 제2언어 · 표준형 필리핀어 · 영어와 공용어",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tagalog_language",
+      "note": "spoken as a first language by the ethnic Tagalog people, who make up a quarter of the population of the Philippines, and as a second language by the majority. Its standardized and codified form, Filipino, is the national language of the Philippines, and is one language of the nation's two official languages, alongside English."
+     },
+     {
+      "claim": "같은 내용(한국어 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/타갈로그어",
+      "note": "필리핀 인구의 약 1/4이 모어로 사용하고 인구의 다수가 제2언어로 구사하는 ... 필리핀어(Filipino)라고 명명된 그 표준형은 헌법에 정해진 국어로서의 명칭 ... 이 '필리핀어'와 영어를 국가의 공용어로 규정하고 있다."
+     },
+     {
+      "claim": "1937년 국어의 바탕으로 선정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tagalog_language",
+      "note": "President Manuel L. Quezon then, on December 30, 1937, proclaimed the selection of the Tagalog language to be used as the basis for the evolution and adoption of the national language of the Philippines."
+     },
+     {
+      "claim": "스페인 이전 바이바인 문자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tagalog_language",
+      "note": "Prior to the arrival of the Spanish in 1521 and the beginning of their colonization in 1565, Tagalog was written in an abugida—or alphasyllabary—called Baybayin."
+     },
+     {
+      "claim": "루손섬 중남부 · 메트로 마닐라",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Tagalog_language",
+      "note": "central to southern parts of the island Luzon — particularly in Aurora, Bataan, Batangas, Bulacan, Cavite, Laguna, Metro Manila, Nueva Ecija, Quezon, and Rizal."
+     },
+     {
+      "claim": "동사-주어-목적어 어순 · 1593년 Doctrina Christiana",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tagalog_language",
+      "note": "Tagalog, like other Austronesian languages, commonly uses verb-subject-object order ... Doctrina Christiana (Christian Doctrine), printed in 1593."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tagalog_language"
+    ],
+    "hintNote": null,
+    "easiestCue": "필리핀 인구 4분의 1의 모어 · 표준형이 필리핀어",
+    "worthWhyGen": "이웃 나라 국어의 정체(교과·지리 개념 수준 → 2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '언어' — 예",
+     "unique": "'필리핀어'는 질문에 있어 B9 로 제외, 바탕 언어를 묻는다",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 필리핀"
+    ],
+    "job": "job-30"
+   }
+  }
+ ]
+}

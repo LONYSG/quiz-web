@@ -1,0 +1,255 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "math/3",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/3#g032b-g032b-j06-4",
+   "seed": {
+    "subject": "막대그래프",
+    "aspect": null,
+    "ref": "g032b-j06-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "통계에서 쓰는 한 그래프입니다. 1786년 스코틀랜드 출신 윌리엄 플레이페어가 '상업과 정치 지도책'에서 처음 선보였습니다. 그는 잉글랜드 무역은 여러 해의 흐름을 선으로 그렸지만, 스코틀랜드는 여러 해 기록이 없었습니다. 그래서 한 해 동안 17개 나라와 한 수출입을 나란히 견주려고 새로 만든 이 그래프는?",
+    "answer": "막대그래프",
+    "acceptedAnswers": [
+     "바 차트",
+     "바 그래프",
+     "막대 도표"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그는 1801년 부분과 전체의 비율을 보여 주는 둥근 그래프도 처음 선보인 것으로 보이며, 통계 그래프의 창시자로 불린다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "한 해 동안 17개 나라와 한 수출입을 나란히 견주려고 새로 만든 그래프",
+     "difWhy": "3 — 막대그래프로 건너는 추리 · 원그래프 혼동",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 통계 교과 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "선거 개표 방송에서 후보별 득표율을 나란히 세워 견주는 그래프로, 꺾은선그래프와 함께 초등학교에서 배운다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "값을 직사각형 막대 길이로 나타내는 그래프(bar chart)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "초등 수학",
+     "piece": "f02",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '통계에서 쓰는 한 그래프' 가 끝 ○○(그래프) 와 일치, 셋째 문장 대비 구조가 약간 길지만 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "막대그래프",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "막대그래프",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "막대그래프",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1238",
+      "answer": "인구 피라미드",
+      "verdict": "diff",
+      "why": "막대그래프 기원(플레이페어) vs 인구 피라미드 — 다른 그래프"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/William_Playfair",
+     "https://ko.wikipedia.org/wiki/막대_그래프"
+    ],
+    "facts": [
+     {
+      "claim": "1786년 상업과 정치 지도책 · 스코틀랜드 여러 해 자료 없음 · 한 해 17개 나라 · 처음 선보임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Playfair",
+      "note": "These timelines likely inspired Playfair's invention of the bar chart, which first appeared in his Commercial and Political Atlas, published in 1786. Because Playfair lacked the necessary series data for Scotland, he graphed its trade data for a single year as a series of 34 bars, one for each of 17 trading partners."
+     },
+     {
+      "claim": "플레이페어 발명 · 1780~1781 한 해 스코틀랜드 수출입 그래프가 최초",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/막대_그래프",
+      "note": "수많은 출처에 따르면 윌리엄 플레이페어(1759-1824년)가 막대 그래프를 발명한 것으로 간주하며, 그의 상업정치도해(The Commercial and Political Atlas)의 크리스마스 1780년부터 크리스마스 1781년 사이 1년 간 스코틀랜드와 여러 지역 간 수출입 ... 그래프가 역사상 최초의 막대 그래프로 간주된다."
+     },
+     {
+      "claim": "잉글랜드 무역은 선 그래프 · 1801년 원그래프 · 창시자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/William_Playfair",
+      "note": "he depicted in a line chart the balance of trade between England and other nations ... The founder of graphical methods of statistics ... in 1801 he published what were likely the first pie chart and circle graph"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1786년 플레이페어가 만든 그래프",
+    "worthWhyGen": "흔한 그래프가 '자료가 모자라서' 생겼다는 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '그래프' 예",
+     "unique": "한 해 17개 나라를 나란히 견준 1786 그래프 = 막대(선 그래프는 여러 해 흐름 쪽)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 173자"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "math/3#g032b-g032b-j16-4",
+   "seed": {
+    "subject": "생존 편향",
+    "aspect": null,
+    "ref": "g032b-j16-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "통계에서 빠지기 쉬운 함정 하나가 있습니다. 2차 세계대전 때 미국 컬럼비아 대학의 통계학자 에이브러햄 왈드는, 임무를 마치고 돌아온 폭격기에 남은 탄흔만으로 기체 각 부분의 취약도를 어림하는 방법을 1943년 보고서로 냈습니다. 이 일화로 흔히 설명되는 통계의 함정은?",
+    "answer": "생존 편향",
+    "acceptedAnswers": [
+     "생존자 편향"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "왈드는 당시 미국 국적이 없어 비밀 자료를 볼 수 없었는데, 연방 법원이 심리를 앞당겨 귀화시키며 풀렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "탄흔 남은 폭격기 / 통계 함정",
+     "difWhy": "4 — 생존 편향 이름 떠올리기, 왈드 일화 단서만",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 개념 — 일상 판단에 쓰이는 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 3,
+     "worthKind": "개념"
+    },
+    "generalHint": "사라진 실패 사례는 보지 못한 채 남은 성공 사례만으로 판단하는 오류로, '중퇴하고 성공한 창업자' 이야기가 대표 예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "선택 과정을 통과한 것만 보고 탈락한 것을 빠뜨려 생기는 논리 오류",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "생존자 편향이라는 말로 퍼짐",
+     "piece": "f05",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '통계의 함정', 끝 ○○ '함정'. 둘째 문장이 길지만 주어 하나이고 장면이 선명"
+    },
+    "blindQuestion": {
+     "guess": "생존자 편향",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "생존자 편향",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "생존 편향",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6359",
+      "answer": "조지 갤럽",
+      "verdict": "diff",
+      "why": "생존 편향(왈드) vs 조지 갤럽 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Survivorship_bias",
+     "https://en.wikipedia.org/wiki/Abraham_Wald",
+     "https://ko.wikipedia.org/wiki/생존_편향"
+    ],
+    "facts": [
+     {
+      "claim": "2차 대전 · 컬럼비아 통계연구그룹 · 돌아온 기체 손상으로 취약도 어림 · 생존 편향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Survivorship_bias",
+      "note": "During World War II, the statistician Abraham Wald described methods of estimating the vulnerability of various parts of an aircraft based on damage to surviving planes. The Statistical Research Group (SRG) at Columbia University, of which Wald was a member ... this work directly addresses the issue of survivorship bias."
+     },
+     {
+      "claim": "폭격기 · 1943년 보고서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Abraham_Wald",
+      "note": "One of his well-known statistical works was written during World War II on how to minimize the damage to bomber aircraft and took into account the survivorship bias in his calculations. ... A Method of Estimating Plane Vulnerability Based on Damage of Survivors by Abraham Wald, Defense Technical Information Center 1943"
+     },
+     {
+      "claim": "통과한 것만 보고 통과 못 한 것을 간과",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/생존_편향",
+      "note": "생존 편향(Survivorship bias)은 선택 과정을 통과한 개체에만 집중하고 통과하지 못한 개체를 간과하는 논리적 오류이다."
+     },
+     {
+      "claim": "적국인이라 비밀 자료 금지 · 법원이 귀화",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Abraham_Wald",
+      "note": "the work was secret and Wald was officially an enemy alien and, as such, barred from access to restricted matter. ... resolved when a federal court granted him a hearing long before his turn on the docket and promptly naturalized him."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/생존_편향"
+    ],
+    "hintNote": null,
+    "easiestCue": "돌아온 폭격기만으로 판단한 일화",
+    "worthWhyGen": "일상 판단에서도 쓰는 말(성공담만 보는 착각) — 쓰는 말 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '통계의 함정' 예",
+     "unique": "왈드 폭격기 일화 → 생존 편향(선택 편향의 한 꼴이지만 이 일화의 이름은 이것)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

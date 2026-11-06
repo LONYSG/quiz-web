@@ -1,0 +1,335 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-music/1",
+  "midKey": "kr-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-music/1#g032b-g032b-j23-9",
+   "seed": {
+    "subject": "새마을 노래",
+    "aspect": null,
+    "ref": "g032b-j23-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1972년 박정희 대통령이 직접 노랫말을 쓰고 곡을 붙였다는 노래입니다. '새벽종이 울렸네 새 아침이 밝았네'로 시작하며, 1970년대에는 방송을 타고 아침저녁으로 흘러나왔습니다. 이 노래의 제목은?",
+    "answer": "새마을 노래",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "노랫말은 시조 시인 이은상이 다듬었고, 4절은 '싸우면서 일하고 일하면서 싸워서'로 이어집니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "새벽종이 울렸네 새 아침이 밝았네로 시작",
+     "difWhy": "2 — 첫 소절이 단서 · 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 현대사 노래 · 세대 밖",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "근면·자조·협동을 내걸고 1970년대 정부가 이끈 농촌 개발 운동을 북돋우려 만든 노래다",
+    "generalHintVersion": "hint-v7",
+    "identity": "1970년대 새마을 운동의 노래",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "'새벽종이 울렸네' 노래로 친숙",
+     "piece": "f03",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '노래입니다' 로 종류 명시 · 가사 첫 줄이 직접 나와 있어 바로 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "새마을 노래",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "새마을 노래",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "새마을 노래",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 1,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "1972년 박정희 작사·작곡 · 새벽종이 울렸네",
+       "url": "https://ko.wikipedia.org/wiki/새마을_노래",
+       "note": "《새마을 노래》는 1972년 4월 21일 박정희 대통령이 작사하고 작곡한 노래로 … 새벽종이 울렸네, 새 아침이 밝았네"
+      },
+      {
+       "claim": "근면·자조·협동",
+       "url": "https://ko.wikipedia.org/wiki/새마을_노래",
+       "note": "새마을 운동 정신인 근면, 자조, 협동의 의미가 고스란히 담겨 있으며"
+      },
+      {
+       "claim": "이은상 감수 · 4절 가사",
+       "url": "https://ko.wikipedia.org/wiki/새마을_노래",
+       "note": "작사한 글은 이은상에 의해 감수를 받았다. … 우리 모두 굳세게 싸우면서 일하고 / 일하면서 싸워서 새 조국을 만드세"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j16-9",
+      "answer": "님과 함께",
+      "verdict": "diff",
+      "why": "새마을 노래 vs 님과 함께 — 다른 노래"
+     },
+     {
+      "old": "1022",
+      "answer": "협동",
+      "verdict": "diff",
+      "why": "새마을 노래 vs 새마을운동 표어 협동 — 노래 제목 vs 표어 세 낱말, 다른 사실"
+     },
+     {
+      "old": "2964",
+      "answer": "돌아와요 부산항에",
+      "verdict": "diff",
+      "why": "새마을 노래 vs 돌아와요 부산항에 — 다른 노래"
+     },
+     {
+      "old": "6672",
+      "answer": "굳세어라 금순아",
+      "verdict": "diff",
+      "why": "새마을 노래 vs 굳세어라 금순아 — 다른 노래"
+     },
+     {
+      "old": "2967",
+      "answer": "금지곡",
+      "verdict": "diff",
+      "why": "새마을 노래 vs 금지곡 제도 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/새마을_노래",
+     "https://ko.wikipedia.org/wiki/새마을_운동"
+    ],
+    "facts": [
+     {
+      "claim": "1972년 박정희 작사·작곡 · 새벽종이 울렸네",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/새마을_노래",
+      "note": "《새마을 노래》는 1972년 4월 21일 박정희 대통령이 작사하고 작곡한 노래로 … 새벽종이 울렸네, 새 아침이 밝았네"
+     },
+     {
+      "claim": "방송매체로 아침·저녁에 나옴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/새마을_운동",
+      "note": "'새마을노래'는 방송매체를 통해 아침, 저녁에 방영되었고 국민운동화된 새마을 운동의 성공 사례는 일간신문에 소개되기도 하였다."
+     },
+     {
+      "claim": "근면·자조·협동",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/새마을_노래",
+      "note": "새마을 운동 정신인 근면, 자조, 협동의 의미가 고스란히 담겨 있으며"
+     },
+     {
+      "claim": "이은상 감수 · 4절 가사",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/새마을_노래",
+      "note": "작사한 글은 이은상에 의해 감수를 받았다. … 우리 모두 굳세게 싸우면서 일하고 / 일하면서 싸워서 새 조국을 만드세"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/새마을_노래"
+    ],
+    "hintNote": null,
+    "easiestCue": "'새벽종이 울렸네 새 아침이 밝았네'",
+    "worthWhyGen": "알가치 3 — 1970년대 한국 사회를 대표하는 노래(시대 상식)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '…노래입니다'",
+     "unique": "가사 첫 줄로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 협동"
+    ],
+    "job": "job-23"
+   }
+  },
+  {
+   "seedId": "kr-music/1#g032b-g032b-j31-1",
+   "seed": {
+    "subject": "이미자",
+    "aspect": null,
+    "ref": "g032b-j31-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1959년 '열아홉 순정'으로 데뷔한 트로트 여가수입니다. 1966년 KBS 라디오 주제가 '섬마을 선생님'은 나온 지 일주일 만에 크게 히트했습니다. 평생 2,500여 곡을 녹음했다고 전하는 이 가수는 누구일까요?",
+    "answer": "이미자",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1964년 대히트곡을 녹음할 때 임신 9개월이었다고 하며, 그 곡은 가요 프로그램에서 35주 동안 1위를 지켰다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "열아홉 순정 데뷔 · 섬마을 선생님 트로트 여가수",
+     "difWhy": "2 — 노래 제목이 곧 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 가수 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "'동백아가씨'를 불러 '엘레지의 여왕'이라는 별명을 얻은 한국 트로트의 대표 여가수다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1959년 데뷔한 한국 트로트의 대표 여가수('엘레지의 여왕')",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "엘레지의 여왕, 방송에서 자주 언급",
+     "piece": "f08",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '트로트 여가수' 로 사람의 종류가 바로 나오고 끝 ○○ '가수' 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "이미자",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "이미자",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "이미자",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1186",
+      "answer": "동백",
+      "verdict": "diff",
+      "why": "이미자 데뷔·섬마을 선생님 vs 동백꽃 낙화 성질: 무관"
+     },
+     {
+      "old": "6675",
+      "answer": "하춘화",
+      "verdict": "diff",
+      "why": "이미자 데뷔 이력 vs 하춘화 이리역 사고: 다른 가수·사건"
+     },
+     {
+      "old": "1065",
+      "answer": "동백아가씨",
+      "verdict": "diff",
+      "why": "이미자 이력 vs 동백아가씨 방송 금지: 질문이 이미자를 주어 노래를 묻는 것, 알아야 할 사실이 다름"
+     },
+     {
+      "old": "3707",
+      "answer": "동백아가씨",
+      "verdict": "diff",
+      "why": "이미자 이력 vs 동백아가씨 작곡·엘레지의 여왕 별명: 노래 쪽 지식, 가수 이력과 다름"
+     },
+     {
+      "old": "5948",
+      "answer": "펄시스터즈",
+      "verdict": "diff",
+      "why": "이미자 vs 펄시스터즈: 다른 가수"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/이미자",
+     "https://en.wikipedia.org/wiki/Lee_Mi-ja"
+    ],
+    "facts": [
+     {
+      "claim": "1958년 '열아홉 순정'으로 공식 데뷔(앨범 1959)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이미자",
+      "note": "당시 유명한 작곡가 나화랑 ... 에게 스카우트되어 《열아홉 순정》(반야월/나화랑)으로 가수로 공식 데뷔하였다."
+     },
+     {
+      "claim": "1959년 데뷔",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lee_Mi-ja",
+      "note": "Lee debuted in 1959 and rose to stardom with her 1964 best-selling song, \"Camellia Girl.\""
+     },
+     {
+      "claim": "1966년 KBS 라디오 주제가 섬마을 선생님 일주일 만에 빅히트",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이미자",
+      "note": "1966년 KBS 라디오 주제가 《섬마을 선생님》도 발표한지 불과 일주일만에 빅히트를 기록했다."
+     },
+     {
+      "claim": "2500여 곡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이미자",
+      "note": "그 이후로도 음반을 몇장 더 냈으니, 지금은 2500여곡으로 늘어났다."
+     },
+     {
+      "claim": "엘레지의 여왕 · 동백아가씨",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Lee_Mi-ja",
+      "note": "known as the \"Queen of Elegy\" ... 1964 best-selling song, \"Camellia Girl.\""
+     },
+     {
+      "claim": "임신 9개월 녹음 · 35주 1위",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/이미자",
+      "note": "1964년에는 영화 주제가 《동백아가씨》를 ... 임신 9개월인 상태에서 불러 국내가요사상 최초로 가요프로그램에서 35주 동안 1위를 기록"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lee_Mi-ja",
+     "https://ko.wikipedia.org/wiki/이미자"
+    ],
+    "hintNote": null,
+    "easiestCue": "'섬마을 선생님'을 부른 트로트 여가수",
+    "worthWhyGen": "한국 대중가요사의 기본 이름(대중문화 일반 상식)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '트로트 여가수' 예",
+     "unique": "열아홉 순정 데뷔 + 섬마을 선생님으로 한 사람",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 트로트/동백아가씨"
+    ],
+    "job": "job-31"
+   }
+  }
+ ]
+}

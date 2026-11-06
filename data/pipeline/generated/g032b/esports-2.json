@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "esports/2",
+  "midKey": "esports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "esports/2#g032b-g032b-j09-6",
+   "seed": {
+    "subject": "드래곤 퀘스트",
+    "aspect": null,
+    "ref": "g032b-j09-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본의 롤플레잉 게임 시리즈입니다. 1988년 셋째 편이 나온 날 하루 만에 100만 개 넘게 팔렸고, 게임을 사려고 학교를 빠진 학생 300명 안팎이 붙잡혔습니다. 그 뒤 새 편은 주말에 나오게 되었는데, 흔히 일본 정부가 법으로 정했다고 알려졌지만 실제로는 회사가 스스로 정했습니다. 이 시리즈는?",
+    "answer": "드래곤 퀘스트",
+    "acceptedAnswers": [
+     "드래곤 워리어",
+     "드퀘"
+    ],
+    "originalTitleVariants": [
+     "Dragon Quest"
+    ],
+    "explanation": "북미에서는 2005년까지 다른 제목으로 나왔고, 셋째 편 무렵 게임을 빼앗는 일이 잇따라 국회 청문회까지 열렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1988년 셋째 편 · 하루 만에 100만 개 · 일본 RPG",
+     "difWhy": "2 — 대표 게임 시리즈",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 게임 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "에닉스가 내고 토리야마 아키라가 캐릭터를 그린 롤플레잉 게임 시리즈로, 파란 물방울 모양 괴물 '슬라임'이 마스코트다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "에닉스(스퀘어 에닉스)의 일본 국민 롤플레잉 게임 시리즈",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "유명 게임 시리즈, 드퀘",
+     "piece": "f04",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '일본의 롤플레잉 게임 시리즈'가 끝 '이 시리즈'와 일치."
+    },
+    "blindQuestion": {
+     "guess": "드래곤 퀘스트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "드래곤 퀘스트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "드래곤 퀘스트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4343",
+      "answer": "토리야마 아키라",
+      "verdict": "diff",
+      "why": "드래곤 퀘스트 시리즈와 토리야마 아키라는 다른 지식(작품 vs 디자이너 인물)"
+     },
+     {
+      "old": "6588",
+      "answer": "동물의 숲",
+      "verdict": "diff",
+      "why": "드래곤 퀘스트와 동물의 숲은 다른 게임"
+     },
+     {
+      "old": "6591",
+      "answer": "철권",
+      "verdict": "diff",
+      "why": "드래곤 퀘스트와 철권은 다른 게임"
+     },
+     {
+      "old": "6590",
+      "answer": "마리오 카트",
+      "verdict": "diff",
+      "why": "드래곤 퀘스트와 마리오 카트는 다른 게임"
+     },
+     {
+      "old": "25",
+      "answer": "코지마 히데오",
+      "verdict": "diff",
+      "why": "드래곤 퀘스트와 코지마 히데오(메탈기어)는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dragon_Quest_III",
+     "https://en.wikipedia.org/wiki/Dragon_Quest"
+    ],
+    "facts": [
+     {
+      "claim": "첫날 100만 개 이상 · 무단결석 체포 거의 300명 · 법으로 막았다는 것은 오해, 에닉스가 주말 발매 결정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dragon_Quest_III",
+      "note": "Dragon Quest III sold over one million copies on the first day, with almost 300 arrests for truancy among students absent from school to purchase the game. ... It is often mistakenly thought that in 1988 the game's success caused the Japanese government to outlaw further releases of Dragon Quest games on school days. In truth, Enix themselves decided to hold off the release of future Dragon Quest games until weekends."
+     },
+     {
+      "claim": "300명 넘는 학생 무단결석 체포 · 법은 만들어지지 않음(도시 전설)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dragon_Quest",
+      "note": "There is an urban myth that the release of Dragon Quest III caused a law to be passed in Japan banning the sale ... except on certain days such as weekends or national holidays. When III was released in Japan, over 300 schoolchildren were arrested for truancy ... there were hearings in the Japanese Diet, no law was ever passed."
+     },
+     {
+      "claim": "토리야마 아키라 캐릭터 · 슬라임 마스코트 · 에닉스",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Dragon_Quest",
+      "note": "character designer Akira Toriyama ... published by Square Enix (formerly Enix) ... recurring monsters, including the Slime, which became the series' mascot ... A Slime is a small blue blob, shaped like a water droplet, with a face."
+     },
+     {
+      "claim": "북미 2005년까지 Dragon Warrior · 강탈로 국회 청문회",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dragon_Quest",
+      "note": "Dragon Quest, previously published as Dragon Warrior in North America until 2005 ... muggings of Dragon Quest titles became so widespread that there were hearings in the Japanese Diet"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dragon_Quest"
+    ],
+    "hintNote": null,
+    "easiestCue": "1988년 셋째 편 · 무단결석 체포 · 주말 발매",
+    "worthWhyGen": "왜 이 게임은 주말에만 나오나 — 법이라는 오해와 실제 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '롤플레잉 게임 시리즈' 예",
+     "unique": "1988 셋째 편 · 주말 발매로 한정(파이널 판타지와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 168자",
+     "crossans 아키라/토리야마 아키라"
+    ],
+    "job": "job-09"
+   }
+  }
+ ]
+}

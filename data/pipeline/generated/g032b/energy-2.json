@@ -1,0 +1,405 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "energy/2",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/2#g032b-g032b-j07-9",
+   "seed": {
+    "subject": "땅콩기름",
+    "aspect": null,
+    "ref": "g032b-j07-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "식물성 기름 하나에 얽힌 이야기입니다. 1900년 파리 만국박람회에서 광유용으로 만든 작은 디젤 엔진이 아무것도 고치지 않고 이 기름으로 매끄럽게 돌아갔습니다. 프랑스 정부가 아프리카 식민지에서 많이 나는 이 작물을 동력원으로 쓸 수 있을지 보려고 부탁한 시험이었습니다. 흔히 견과로 먹는 이 작물에서 짠 기름은?",
+    "answer": "땅콩기름",
+    "acceptedAnswers": [
+     "땅콩유",
+     "낙화생유"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "디젤은 1912년 연설에서 식물성 기름이 언젠가 석유만큼 중요해질 수 있다고 말했고, 오늘날 바이오디젤의 뿌리로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "흔히 견과로 먹는 이 작물에서 짠 기름",
+     "difWhy": "2 — 마지막 단서가 곧 땅콩",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 디젤 엔진 연료 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "발연점이 높아 감자튀김을 대량으로 튀길 때 많이 쓰고, 정제하지 않은 것은 참기름처럼 향을 내는 데 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "땅콩 씨에서 짠 식용유(peanut oil)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "땅콩 알레르기와 식용유로 익숙",
+     "piece": "f05",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '식물성 기름' 이 끝 ○○(작물에서 짠 기름) 과 맞음 · 광유 같은 말은 있으나 뜻 파악에 지장 없음"
+    },
+    "blindQuestion": {
+     "guess": "땅콩기름",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "땅콩기름",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "땅콩기름",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j17-4",
+      "answer": "바이오디젤",
+      "verdict": "same",
+      "why": "1900 파리 박람회에서 디젤 엔진을 땅콩기름으로 돌린 같은 사건 — 정답만 땅콩기름↔바이오디젤로 바꾼 같은 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Biodiesel",
+     "https://en.wikipedia.org/wiki/Rudolf_Diesel",
+     "https://en.wikipedia.org/wiki/Peanut_oil"
+    ],
+    "facts": [
+     {
+      "claim": "1900 파리 박람회 · 오토사 작은 디젤 엔진 · 프랑스 정부 요청 · 아라시드(땅콩) 기름 · 광유용 엔진을 고치지 않고 · 아프리카 식민지에서 많이 남 · 1912 연설",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biodiesel",
+      "note": "Diesel's engine, initially designed for mineral oil, successfully ran on peanut oil at the 1900 Paris Exposition. ... \"at the Paris Exhibition in 1900 ... there was shown by the Otto Company a small Diesel engine, which, at the request of the French government ran on arachide (earth-nut or pea-nut) oil ... The engine was constructed for using mineral oil, and was then worked on vegetable oil without any alterations being made. The French Government at the time thought of testing the applicability to power production of the Arachide, or earth-nut, which grows in considerable quantities in their African colonies\" ... In a 1912 speech Diesel said, \"the use of vegetable oils for engine fuels may seem insignificant today but such oils may become, in the course of time, as important as petroleum"
+     },
+     {
+      "claim": "1900 오토사 · 프랑스 정부 제안 · 땅콩기름 · 고치지 않고",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rudolf_Diesel",
+      "note": "In 1900 a small Diesel engine was exhibited by the Otto company which, on the suggestion of the French Government, was run on arachide [peanut] oil, and operated so well that very few people were aware of the fact. The motor was built for ordinary oils, and without any modification was run on vegetable oil."
+     },
+     {
+      "claim": "발연점 높아 튀김 · 감자튀김 대량 · 비정제는 참기름처럼 향",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Peanut_oil",
+      "note": "Peanut oil has a high smoke point relative to many other cooking oils, so is favorable for frying foods. Unrefined peanut oil is used as a flavorant for dishes akin to sesame oil. Refined peanut oil is commonly used for frying volume batches of foods like French fries"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Peanut_oil"
+    ],
+    "hintNote": null,
+    "easiestCue": "'아프리카 식민지 작물 · 견과로 먹는 작물 기름' — 마지막 문장으로 좁혀짐(등급 3~4 가능)",
+    "worthWhyGen": "바이오디젤이 왜 시작됐나(식민지 작물로 동력 자립) — 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '식물성 기름' 예",
+     "unique": "'견과로 먹는 작물' 로 팜유와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 175자",
+     "crossans 발연점"
+    ],
+    "job": "job-07",
+    "discarded": "중복 같은 지식 g032b:g032b-j17-4 바이오디젤 — 1900 파리 박람회에서 디젤 엔진을 땅콩기름으로 돌린 같은 사건 — 정답만 땅콩기름↔바이오디젤로 바꾼 같은 지식"
+   }
+  },
+  {
+   "seedId": "energy/2#g032b-g032b-j17-4",
+   "seed": {
+    "subject": "바이오디젤",
+    "aspect": null,
+    "ref": "g032b-j17-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "재생 가능한 자동차 연료가 있습니다. 1900년 파리 만국박람회에서는 프랑스 정부의 제안으로 작은 엔진 하나를 땅콩기름으로 돌려 보였는데, 이 연료의 앞선 예로 꼽힙니다. 1977년에는 브라질 과학자 엑스페지투 파렌치가 이 연료를 공업적으로 만드는 첫 공정의 특허를 냈습니다. 이 연료는 무엇일까요?",
+    "answer": "바이오디젤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "인화점이 약 150℃로 경유(64℃)보다 높아 불이 잘 붙지 않는다. 대신 추위에 굳기 쉬워 대개 경유와 함께 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "재생 가능한 자동차 연료 · 땅콩기름",
+     "difWhy": "3 — 바이오디젤과 에탄올 구별 필요",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 에너지 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "콩기름·유채기름이나 폐식용유를 메탄올과 반응시켜 만든 연료로, 한국은 2006년부터 주유소 차량 연료에 섞어 판다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "식물성 기름·동물성 지방으로 만든 경유 대체 연료",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "주유소·뉴스에서 접함",
+     "piece": "f03",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '재생 가능한 자동차 연료'가 있고 끝 ○○(연료)와 같음"
+    },
+    "blindQuestion": {
+     "guess": "바이오디젤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "바이오디젤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "바이오디젤",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j07-9",
+      "answer": "땅콩기름",
+      "verdict": "diff",
+      "why": "바이오디젤(연료 일반·파렌치 특허) vs 땅콩기름 박람회 시험 — 같은 1900년 일화가 겹치나 정답 대상·핵심 사실이 다름(비활성이라 GEN이 필요시 확인)"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rudolf_Diesel",
+     "https://en.wikipedia.org/wiki/Biodiesel",
+     "https://ko.wikipedia.org/wiki/바이오디젤"
+    ],
+    "facts": [
+     {
+      "claim": "1900년 파리 박람회에서 프랑스 정부 제안으로 작은 디젤 엔진이 땅콩기름으로 돎",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rudolf_Diesel",
+      "note": "In 1900 a small Diesel engine was exhibited by the Otto company which, on the suggestion of the French Government, was run on arachide [peanut] oil"
+     },
+     {
+      "claim": "같은 사실 · 식물성 기름 연료의 가능성을 보인 일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biodiesel",
+      "note": "Diesel's engine, initially designed for mineral oil, successfully ran on peanut oil at the 1900 Paris Exposition. This landmark event highlighted the potential of vegetable oils as an alternative fuel source."
+     },
+     {
+      "claim": "1977년 브라질 엑스페지투 파렌치 첫 산업 공정 특허",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biodiesel",
+      "note": "More recently, in 1977, Brazilian scientist Expedito Parente invented and submitted for patent, the first industrial process for the production of biodiesel."
+     },
+     {
+      "claim": "한국 2006년 7월부터 경유에 섞어 판매 · 메탄올로 에스터 교환",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/바이오디젤",
+      "note": "대한민국에서는 2006년 7월 1일부터 일반경유에 0.5퍼센트의 바이오디젤이 섞인 혼합 경유를 판매하고 있고 (2018년부터는 3.0%) / 메틸 에스터를 제조하기 위해서는 대개 메탄올을 사용"
+     },
+     {
+      "claim": "인화점 150℃ vs 경유 64℃ · 추위에 약해 혼합 사용",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/바이오디젤",
+      "note": "150 °C의 인화점을 가진 바이오디젤은 경유(64 °C)에 비해 불이 잘 붙지 않고 ... 100%의 바이오디젤(BD100)을 사용하는 것보다 경유와 혼합하여 사용하게 된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/바이오디젤",
+     "https://en.wikipedia.org/wiki/Biodiesel"
+    ],
+    "hintNote": null,
+    "easiestCue": "땅콩기름으로 돈 엔진 → 식물성 기름 연료 — 이어서 떠올려야 함",
+    "worthWhyGen": "주유소 경유에 섞여 있는 연료의 뿌리(교과·생활 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '연료' 예",
+     "unique": "식물성 기름 엔진 + 파렌치 공정 → 바이오디젤(바이오에탄올은 기름이 아니라 당 발효)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 167자",
+     "crossans 판다"
+    ],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "energy/2#g032b-g032b-j25-12",
+   "seed": {
+    "subject": "그린 수소",
+    "aspect": null,
+    "ref": "g032b-j25-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "물을 전기로 분해해 얻는 연료 가운데, 그 전기를 태양광·풍력 같은 재생 에너지로 만든 것을 부르는 이름입니다. 같은 연료라도 석탄이나 천연가스 같은 화석연료로 만들어 이산화탄소를 내는 것은 '브라운'이나 '그레이'라고 부릅니다. 만들 때 탄소를 내지 않는 이 연료는?",
+    "answer": "그린 수소",
+    "acceptedAnswers": [
+     "녹색 수소"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "재생 전기의 높은 생산 단가와 전기분해 설비의 낮은 효율이 널리 쓰이기 위해 풀어야 할 숙제로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "재생 에너지로 만든 수소 / 브라운 그레이",
+     "difWhy": "2 — 색깔 구분(브라운, 그레이)이 단서, 그린이 곧바로 연상",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 에너지 시사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "생산 과정 전체에서 이산화탄소를 내지 않아 가장 친환경적인 방식으로 꼽히는, 수전해로 만든 연료전지차의 연료다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "재생 전기로 물을 전기분해해 만든 수소(green hydrogen)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "에너지 뉴스에 자주 나옴",
+     "piece": "f07",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '물을 전기로 분해해 얻는 연료'가 있고 끝 ○○ '이 연료' 일치; 브라운·그레이는 대비로 이해됨"
+    },
+    "blindQuestion": {
+     "guess": "그린 수소",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "그린수소",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "그린 수소",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1624",
+      "answer": "발전 단가",
+      "verdict": "diff",
+      "why": "그린 수소 vs 발전 단가 — 다름"
+     },
+     {
+      "old": "1615",
+      "answer": "재생에너지",
+      "verdict": "diff",
+      "why": "그린 수소 vs 재생에너지 정의 — 단서 낱말일 뿐 다른 지식"
+     },
+     {
+      "old": "1620",
+      "answer": "간헐성",
+      "verdict": "diff",
+      "why": "그린 수소 vs 간헐성 — 다름"
+     },
+     {
+      "old": "g032a:g032a-j25-12",
+      "answer": "RE100",
+      "verdict": "diff",
+      "why": "그린 수소 vs RE100 — 다름"
+     },
+     {
+      "old": "144",
+      "answer": "태양광 발전",
+      "verdict": "diff",
+      "why": "그린 수소 vs 태양광 발전 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/그린_수소",
+     "https://en.wikipedia.org/wiki/Green_hydrogen"
+    ],
+    "facts": [
+     {
+      "claim": "재생 에너지 전력으로 물을 전기분해 · 브라운·그레이는 이산화탄소 배출",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/그린_수소",
+      "note": "태양광, 풍력 등 신재생 에너지 및 원자력 에너지를 통해 얻은 전력으로 물에 전기에너지를 가해 생산하는 수전해 방식으로 추출한다. 화석연료를 통해 생산되는 브라운 수소, 그레이 수소 등의 경우 생산과정에서 이산화탄소를 배출하지만, 그린 수소의 경우 생산과정에서 이산화탄소 배출이 없다. 즉, 가장 친환경적인 생산방식을 거쳐 생산되는 수소이다."
+     },
+     {
+      "claim": "재생 전기로 물을 전기분해 · 그레이는 화석연료",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Green_hydrogen",
+      "note": "Green hydrogen (GH2 or GH2) is hydrogen produced by the electrolysis of water using renewable electricity. … grey hydrogen, which is derived from fossil fuels without carbon capture."
+     },
+     {
+      "claim": "해결 과제: 높은 재생 전력 단가 · 낮은 수전해 효율",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/그린_수소",
+      "note": "높은 신재생 에너지 전력의 생산 단가 / 낮은 수전해 설비 전력 생산 효율"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/그린_수소"
+    ],
+    "hintNote": null,
+    "easiestCue": "'브라운·그레이'와 짝을 이루는 색 이름 + 재생 전기로 물을 분해한 연료",
+    "worthWhyGen": "탄소중립 뉴스에 자주 나오는 에너지 용어(2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '연료 … 부르는 이름' 예(질문에 '수소'를 쓰지 않음)",
+     "unique": "재생 전기 + 이산화탄소 없음으로 한정 — 블루(탄소 포집)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

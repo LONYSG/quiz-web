@@ -1,0 +1,165 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "war-history/4",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/4#g032b-g032b-j14-9",
+   "seed": {
+    "subject": "토마호크",
+    "aspect": null,
+    "ref": "g032b-j14-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 해군 함정과 잠수함에서 쏘는 미사일입니다. 1991년 1월 17일 걸프 전쟁 첫 공격 때 구축함 폴 F. 포스터함이 첫 일제 사격을 했고, 이 전쟁에서만 288발이 발사되었습니다. 1998년 8월 알카에다의 대사관 폭탄 테러에 대한 보복으로 아프가니스탄과 수단에 79발을 쏜 이 순항 미사일은?",
+    "answer": "토마호크",
+    "acceptedAnswers": [
+     "토마호크 미사일"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1998년 아프가니스탄에 떨어진 뒤 회수된 이 미사일을 파키스탄이 역설계해 '바부르' 미사일을 만들었다고 전합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "미국 해군 함정·잠수함에서 쏘는 순항 미사일 · 걸프 전쟁",
+     "difWhy": "2 — 토마호크 흔히 들음",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 군사 세부",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "제너럴 다이내믹스가 1970년대에 개발해 지형을 따라 낮게 날아가는 미국의 대표 장거리 순항 미사일이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국의 장거리 아음속 순항 미사일(1970년대 개발)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "뉴스·게임·영화에서 미사일 이름으로 접함",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '해군 함정과 잠수함에서 쏘는 미사일'이 끝 '순항 미사일'과 일치."
+    },
+    "blindQuestion": {
+     "guess": "토마호크",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "토마호크",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "토마호크",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j09-9",
+      "answer": "탈레반",
+      "verdict": "diff",
+      "why": "새 정답 토마호크 과 옛 정답 탈레반 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "217",
+      "answer": "걸프 전쟁",
+      "verdict": "diff",
+      "why": "토마호크 미사일과 걸프 전쟁 개요는 다른 지식(전쟁은 배경일 뿐)"
+     },
+     {
+      "old": "3902",
+      "answer": "사막의 폭풍",
+      "verdict": "diff",
+      "why": "토마호크 미사일과 작전명 사막의 폭풍은 다른 지식"
+     },
+     {
+      "old": "6434",
+      "answer": "빈 라덴",
+      "verdict": "diff",
+      "why": "새 정답 토마호크 과 옛 정답 빈 라덴 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tomahawk_(missile)",
+     "https://ko.wikipedia.org/wiki/토마호크_(미사일)"
+    ],
+    "facts": [
+     {
+      "claim": "걸프전 288발 · 첫 일제 사격 USS 폴 F. 포스터 1991-01-17",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tomahawk_(missile)",
+      "note": "In the 1991 Gulf War, 288 Tomahawks were launched, 12 from submarines and 276 from surface ships. The first salvo was fired by the destroyer USS Paul F. Foster on 17 January 1991."
+     },
+     {
+      "claim": "1998-08-20 대사관 폭탄 테러 보복 79발 아프가니스탄·수단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tomahawk_(missile)",
+      "note": "20 August 1998: 79 Tomahawk missiles were fired simultaneously at two targets in Afghanistan and Sudan in retaliation for the bombings of American embassies by Al-Qaeda."
+     },
+     {
+      "claim": "걸프전 288발 · 함정·잠수함 발사(두 번째 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토마호크_(미사일)",
+      "note": "해군용은 구축함 등에서 발사할 수 있는 함대지 미사일, 잠수중인 ... 잠대지 미사일 버전이 있다. ... 지상용은 1991년 걸프전에서 모두 288발을 사용하였으며"
+     },
+     {
+      "claim": "제너럴 다이내믹스 1970년대 개발 · 저고도 · 지형 대조 유도",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Tomahawk_(missile)",
+      "note": "the Tomahawk emerged in the 1970s as a modular cruise missile first manufactured by General Dynamics. ... a medium- to long-range, low-altitude missile ... terrain contour matching."
+     },
+     {
+      "claim": "1998년 회수 미사일 역설계 → 파키스탄 바부르",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tomahawk_(missile)",
+      "note": "Babur, a nuclear capable cruise missile developed by the National Defence Complex (NDC) based on reverse-engineered copies of Tomahawk missiles recovered by Pakistani intelligence after a 1998 U.S. strike in Afghanistan."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tomahawk_(missile)",
+     "https://ko.wikipedia.org/wiki/토마호크_(미사일)"
+    ],
+    "hintNote": null,
+    "easiestCue": "마지막 '미국 해군 순항 미사일' — 패트리엇·스커드와 헷갈리기 쉬워 이름을 알아야 함",
+    "worthWhyGen": "냉전 뒤 미국 공습의 상징 무기가 걸프 전쟁에서 처음 크게 쓰였다는 사실 — 전쟁사 세부(알가치 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '미사일' 종류 명사 — 예",
+     "unique": "걸프전 첫 공격 + 1998 아프간·수단 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 167자"
+    ],
+    "job": "job-14"
+   }
+  }
+ ]
+}

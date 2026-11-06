@@ -1,0 +1,134 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "psychology/2",
+  "midKey": "psychology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "psychology/2#g032b-g032b-j14-12",
+   "seed": {
+    "subject": "A형 성격",
+    "aspect": null,
+    "ref": "g032b-j14-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "심장병과 이어 연구된 성격 유형입니다. 1950년대 미국 심장 전문의 마이어 프리드먼과 레이 로즈먼은 가구 수선공에게서, 대기실 의자가 팔걸이와 앉는 자리 앞 끝만 닳았다는 말을 들었습니다. 환자들이 초조하게 기다린다는 뜻이었습니다. 경쟁심이 강하고 늘 서두르는 이 성격 유형은?",
+    "answer": "A형 성격",
+    "acceptedAnswers": [
+     "A형 행동 유형",
+     "A유형",
+     "A형",
+     "타입 A"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "훗날 담배 회사들이 이 연구에 돈을 대, 심장병 원인을 흡연 대신 성격으로 돌리려 했다는 연구가 2012년 나왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "경쟁심이 강하고 늘 서두르는 이 성격 유형",
+     "difWhy": "3",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 심리 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "느긋한 B형과 맞세운 유형으로, 연구자들은 이런 사람의 관상동맥 심장병 위험이 두 배 넘게 높다고 보았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "경쟁적이고 조급한 성격 유형(프리드먼·로즈먼, 심장병 위험과 연결)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "성격 유형 이야기에서 흔함",
+     "piece": "f09",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '성격 유형', 끝 ○○ '이 성격 유형' 일치; 의자 닳음 일화가 뜻과 함께 풀려 있음"
+    },
+    "blindQuestion": {
+     "guess": "A형 성격",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "A형 행동 유형",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "A형 성격",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Type_A_and_Type_B_personality_theory",
+     "https://en.wikipedia.org/wiki/Meyer_Friedman"
+    ],
+    "facts": [
+     {
+      "claim": "1950년대 프리드먼·로즈먼 · 가구 수선공이 대기실 의자 팔걸이·앞 끝만 닳았다고 알림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Type_A_and_Type_B_personality_theory",
+      "note": "Type A personality behavior was first described as a potential risk factor for heart disease in the 1950s by cardiologists Meyer Friedman and Ray Rosenman. They credit their insight to an upholsterer who called to their attention the peculiar fact that the chairs in their waiting rooms were worn out only on the arms and on the front edge of the seat."
+     },
+     {
+      "claim": "프리드먼·로즈먼의 Type A 가설 · 발견은 가구에서 우연히(두 번째 문서)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Meyer_Friedman",
+      "note": "developed, with colleague Ray H. Rosenman, the hypothesis that the \"Type A\" behavior of chronically angry and impatient people increases their risk of heart disease. ... The discovery of the Type A behavior was accidental and involved furniture."
+     },
+     {
+      "claim": "경쟁적·조급 = A형, 느긋 = B형 · 위험 두 배 이상",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Type_A_and_Type_B_personality_theory",
+      "note": "people who are habitually competitive and impatient are labeled Type A, while more relaxed people are labeled Type B. / Friedman and Rosenman estimated that Type A behavior more than doubled the risk of coronary heart disease"
+     },
+     {
+      "claim": "2012년 연구 — 담배 업계가 연구에 관여",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Type_A_and_Type_B_personality_theory",
+      "note": "a study from 2012 – based on searching the Truth Tobacco Industry Documents – suggests ... partly explained by the tobacco industry's involvement in TABP research to undermine the scientific evidence on smoking and health."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Type_A_and_Type_B_personality_theory"
+    ],
+    "hintNote": null,
+    "easiestCue": "마지막 문장 '경쟁심 강하고 늘 서두르는 성격 유형' — 말은 친숙하나 혈액형과 헷갈려 망설일 수 있음",
+    "worthWhyGen": "흔히 쓰는 'A형 성격'이 혈액형이 아니라 심장병 연구에서 왔고, 닳은 의자에서 시작됐다는 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '성격 유형' 종류 명사 — 예",
+     "unique": "프리드먼·로즈먼 + 조급 성격 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

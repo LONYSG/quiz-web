@@ -1,0 +1,130 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-history/6",
+  "midKey": "kr-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/6#g032b-g032b-j01-6",
+   "seed": {
+    "subject": "굴렁쇠 소년",
+    "aspect": null,
+    "ref": "g032b-j01-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 서울 올림픽 개막식의 한 장면에서 나온 별명입니다. 이어령 교수의 아이디어로 기획된 이 장면에서, 초등학교 1학년 아이가 약 2분 동안 고요한 주 경기장 한가운데로 홀로 들어왔습니다. 서울의 올림픽 개최가 확정된 날 태어난 이 아이를 부르던 별명은?",
+    "answer": "굴렁쇠 소년",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "서울은 1981년 9월 30일 서독 바덴바덴 IOC 총회에서 52 대 27로 일본 나고야를 제치고 개최지가 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1988년 서울 올림픽 개막식 · 고요한 주 경기장 홀로 들어온 아이",
+     "difWhy": "2 — 올림픽 장면 별명 · 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 한국 현대 대중 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "둥근 테를 막대로 밀며 잔디밭을 가로지른 아이로, 훗날 배우가 된 윤태웅이 그 주인공이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "서울 올림픽 개막식에서 굴렁쇠를 굴리며 경기장을 가로지른 아이(윤태웅)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "88올림픽 상징 장면, 교과서·방송",
+     "piece": "f02",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '개막식 장면에서 나온 별명', 끝 ○○ '별명'. 이어령 이름은 장식이나 지장 없음"
+    },
+    "blindQuestion": {
+     "guess": "굴렁쇠 소년",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "굴렁쇠 소년",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "굴렁쇠 소년",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j01-6",
+      "answer": "386세대",
+      "verdict": "diff",
+      "why": "새 정답 굴렁쇠 소년의 지식(유래·사실)과 옛 정답 386세대의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/1988년_하계_올림픽",
+     "https://ko.wikipedia.org/wiki/윤태웅"
+    ],
+    "facts": [
+     {
+      "claim": "개막식 · 초등학교 1학년 · 약 2분 고요 · 이어령 아이디어 · 개최 확정일 출생",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/1988년_하계_올림픽",
+      "note": "개막식 행사에서 윤태웅 군(1981년생, 당시 초등학교 1학년)이 홀로 굴렁쇠를 굴리며 주 경기장 한가운데로 들어오는 퍼포먼스가 있었다. 약 2분 동안 경기장에는 이명 소리만이 들리는 가운데 ... 이어령 교수가 낸 아이디어이다. 한편 이 소년은 올림픽 개최가 확정된 날에 태어났다."
+     },
+     {
+      "claim": "1981년 9월 30일생 · 굴렁쇠 소년으로 알려짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/윤태웅",
+      "note": "윤태웅(尹泰雄, 1981년 9월 30일 ~ )은 대한민국의 배우이다. 1988년 서울 올림픽 개막식의 굴렁쇠 소년으로 잘 알려져 있다."
+     },
+     {
+      "claim": "1981.9.30 바덴바덴 · 서울 52 나고야 27",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/1988년_하계_올림픽",
+      "note": "1981년 9월 30일, 서독 바덴바덴에서 열린 제84차 국제 올림픽 위원회 총회에서 ... 서울이 52표, 나고야 27표로"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/윤태웅"
+    ],
+    "hintNote": null,
+    "easiestCue": "서울 올림픽 개막식에 홀로 들어온 아이의 별명",
+    "worthWhyGen": "모두 기억하는 장면의 아이가 개최 확정일에 태어났다는 이야깃거리",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '개막식 장면의 별명' 예",
+     "unique": "서울 올림픽 개막식 홀로 등장한 아이 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  }
+ ]
+}

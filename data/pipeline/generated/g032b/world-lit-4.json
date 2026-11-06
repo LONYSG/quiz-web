@@ -1,0 +1,166 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-lit/4",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/4#g032b-g032b-j14-5",
+   "seed": {
+    "subject": "샤일록",
+    "aspect": null,
+    "ref": "g032b-j14-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "셰익스피어 희극에 나오는 유대인 대금업자입니다. 그는 3,000더컷을 빌려주며, 기한 안에 갚지 못하면 상대의 살 1파운드를 떼어 가겠다는 증서를 받습니다. 영어에서는 그 이름이 악덕 고리대금업자를 가리키는 말이 된 이 인물은?",
+    "answer": "샤일록",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "결국 재산 절반을 내놓고 기독교로 개종하라는 명령까지 받습니다. 그 전에 딸 제시카는 아버지의 재물을 들고 집을 떠났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "살 1파운드를 떼어 가겠다는 증서를 받는 유대인 대금업자",
+     "difWhy": "2 — 베니스의 상인 유명 · 이름 한 번 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 문학 인물이지만 말로 굳음",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "'베니스의 상인'에서 안토니오에게 돈을 빌려준 악역으로, 살은 떼되 피는 흘리지 말라는 포샤의 판결에 진다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "셰익스피어 '베니스의 상인'의 유대인 고리대금업자",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "고리대금업자 대명사, 문학 교과서",
+     "piece": "f02",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '희극에 나오는 대금업자'가 끝 ○○(인물)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "샤일록",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "샤일록",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "샤일록",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5655",
+      "answer": "햄릿",
+      "verdict": "diff",
+      "why": "새 정답 샤일록 과 옛 정답 햄릿 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "278",
+      "answer": "햄릿",
+      "verdict": "diff",
+      "why": "새 정답 샤일록 과 옛 정답 햄릿 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1384",
+      "answer": "소네트",
+      "verdict": "diff",
+      "why": "새 정답 샤일록 과 옛 정답 소네트 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1385",
+      "answer": "하이쿠",
+      "verdict": "diff",
+      "why": "새 정답 샤일록 과 옛 정답 하이쿠 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4020",
+      "answer": "로미오와 줄리엣",
+      "verdict": "diff",
+      "why": "새 정답 샤일록 과 옛 정답 로미오와 줄리엣 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Shylock",
+     "https://ko.wikipedia.org/wiki/베니스의_상인"
+    ],
+    "facts": [
+     {
+      "claim": "베네치아 유대인 대금업자 · 3,000더컷 · 담보 살 1파운드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shylock",
+      "note": "Shylock is a Jewish moneylender who loans 3,000 ducats to his Christian rival Antonio, setting the security at a pound of Antonio's flesh."
+     },
+     {
+      "claim": "그 이름이 고리대금업자의 동의어가 됨",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shylock",
+      "note": "Since Shakespeare's time, the character's name has become a synonym for loan shark, and as a verb to shylock means to lend money at exorbitant rates."
+     },
+     {
+      "claim": "셰익스피어 희극 · 유대인 고리대금업자 샤일록 · 가슴살 1파운드(두 번째 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/베니스의_상인",
+      "note": "유대인 고리대금업자 샤일록에게 돈을 빌리려 한다. ... 돈을 돌려주지 못한다면 안토니오의 가슴살 1파운드를 베어가겠다는 제안을 하고 거래가 성립된다."
+     },
+     {
+      "claim": "포샤의 판결 — 살만 1파운드, 피는 흘리지 않게",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/베니스의_상인",
+      "note": "재판관으로 변장하여 지혜로운 판결로 안토니오의 목숨을 구하는 인물.살만 1파운드,피는 흘리지 않게 판정을 내린다."
+     },
+     {
+      "claim": "재산 절반 · 개종 명령 · 딸 제시카가 재물을 들고 떠남",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Shylock",
+      "note": "Shylock's daughter, Jessica, falls in love with Antonio's friend Lorenzo and converts to Christianity, leaves Shylock's house and steals vast riches from him ... Shylock is then ordered to surrender half of his wealth ... he is to immediately convert to Christianity."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/베니스의_상인"
+    ],
+    "hintNote": null,
+    "easiestCue": "살 1파운드 증서(작품 '베니스의 상인'은 떠올라도 악역 이름은 기억이 흐린 사람이 많다)",
+    "worthWhyGen": "'샤일록 같은 사채업자'처럼 쓰이는 말이 셰익스피어 희곡 인물에서 왔다는 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '유대인 대금업자' 종류 명사 — 예",
+     "unique": "셰익스피어 + 살 1파운드 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

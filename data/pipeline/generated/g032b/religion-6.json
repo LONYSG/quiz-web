@@ -1,0 +1,165 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "religion/6",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/6#g032b-g032b-j30-11",
+   "seed": {
+    "subject": "염주",
+    "aspect": null,
+    "ref": "g032b-j30-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "절에서 기도할 때 손에 쥐고 돌리는 물건과 이름이 같은 풀이 있습니다. 이 풀은 율무와 같은 종에 속하는 벼과 한해살이풀입니다. 야생종은 열매 껍질이 아주 단단하고 반들반들해서, 구멍을 뚫어 기도용 구슬로 꿰었습니다. 풀과 물건이 함께 쓰는 이 이름은?",
+    "answer": "염주",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "율무는 이 풀의 재배 변종으로 껍질이 무릅니다. 영어로는 '욥의 눈물'이라 부르며, 서양에서도 가톨릭 기도 구슬로 썼습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "절에서 기도할 때 손에 쥐고 돌리는 물건과 이름이 같은 풀이 있습니다.",
+     "difWhy": "2 — 첫 문장이 염주로 이어짐, 풀 정보는 몰라도 됨",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 풀 이름 지식, 범위 좁은 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "불교 신자가 알을 하나씩 넘기며 부처 이름을 부르거나 절한 횟수를 세는 구슬 꿰미다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "불교에서 기도할 때 쓰는 구슬 꿰미",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "불교 용품으로 흔함",
+     "piece": "f01",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "지시어",
+     "reason": "끝 ○○=물건(염주) 인데 첫 문장 주인공은 풀이고 '물건' 은 마지막 문장에서야 나옴, 다만 설명이 짧아 읽는 데는 지장 적음"
+    },
+    "blindQuestion": {
+     "guess": "염주",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "염주",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "염주",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1904",
+      "answer": "108",
+      "verdict": "diff",
+      "why": "염주 이름 유래(염주풀) vs 108 번뇌 수 — 다른 지식"
+     },
+     {
+      "old": "4038",
+      "answer": "앉아",
+      "verdict": "diff",
+      "why": "염주 vs 이누야샤 '앉아' — 다른 지식"
+     },
+     {
+      "old": "4061",
+      "answer": "렌고쿠",
+      "verdict": "diff",
+      "why": "염주 vs 귀멸의 칼날 렌고쿠(염주 동음) — 다른 지식"
+     },
+     {
+      "old": "3203",
+      "answer": "묵주",
+      "verdict": "diff",
+      "why": "염주(불교) vs 묵주(가톨릭) — 서로 다른 종교 용구"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/염주_(식물)",
+     "https://ko.wikipedia.org/wiki/염주",
+     "https://en.wikipedia.org/wiki/Coix_lacryma-jobi"
+    ],
+    "facts": [
+     {
+      "claim": "같은 이름의 벼과 한해살이풀 · 율무는 그 변종",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/염주_(식물)",
+      "note": "염주(念珠, 학명: Coix lacryma-jobi) 는 벼과의 한해살이풀이다 ... 종내 분류군: 율무 C. lacryma-jobi var. ma-yuen"
+     },
+     {
+      "claim": "불교 법구와 풀이 같은 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/염주",
+      "note": "염주(念珠)는 불교에서 기도를 할 때 쓰는 법구이다. 염주(念珠)는 벼과의 한해살이풀이다."
+     },
+     {
+      "claim": "야생종 열매는 단단·반들 → 기도 구슬",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Coix_lacryma-jobi",
+      "note": "The wild variety ... has hard-shelled pseudocarps—very hard, pearly white, oval structures used as beads for making prayer beads or rosaries, necklaces"
+     },
+     {
+      "claim": "재배 변종(율무)은 껍질이 무름 · Job's tears",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Coix_lacryma-jobi",
+      "note": "The cultivated variety Coix lacryma-jobi var. ma-yuen is harvested as a cereal crop, has a soft shell ... Job's tears (Coix lacryma-jobi)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/염주"
+    ],
+    "hintNote": null,
+    "easiestCue": "절에서 기도할 때 손에 쥐고 돌리는 물건",
+    "worthWhyGen": "흔한 물건과 같은 이름의 풀 — 이름이 겹친 까닭",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '벼과 풀' — 정답(물건)의 종류는 셋째 문장, 짧아 바로 읽힘",
+     "unique": "절·불교 → 묵주(#3203)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "율무와 같은 종에 속하는 벼과 한해살이풀이 있습니다. 이 풀의 야생종은 열매 껍질이 아주 단단하고 반들반들해서, 구멍을 뚫어 기도용 구슬로 꿰었습니다. 그래서 풀 이름도 절에서 기도할 때 손에 쥐고 돌리는 이 물건과 같습니다. 이 물건은?"
+      },
+      "why": "⑨ 첫 문장에 '기도할 때 쥐는 물건' · 지시어 정리"
+     }
+    ],
+    "warn": [
+     "crossans 횟수"
+    ],
+    "job": "job-30"
+   }
+  }
+ ]
+}

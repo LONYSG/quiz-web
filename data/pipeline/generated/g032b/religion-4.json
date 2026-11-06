@@ -1,0 +1,166 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "religion/4",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/4#g032b-g032b-j31-3",
+   "seed": {
+    "subject": "구루",
+    "aspect": null,
+    "ref": "g032b-j31-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "힌두교에서 제자를 이끄는 영적 스승을 부르는 산스크리트어 낱말입니다. 흔히 '어둠을 몰아내는 사람'이라는 뜻으로 풀이됩니다. 시크교도 창시자 나나크를 이 칭호로 불렀는데, 이 말은 무엇일까요?",
+    "answer": "구루",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "본래 산스크리트어 형용사로는 '무거운'이라는 뜻이며, 지식과 지혜로 무게가 있는 사람이라는 의미로 풀기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "힌두교에서 제자를 이끄는 영적 스승 · 어둠을 몰아내는 사람",
+     "difWhy": "2 — 구루는 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상에서 쓰는 말의 뜻과 어원",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1960~70년대 서양 젊은이들이 인도에서 찾아 따른 영적 스승을 부르는 말로, 요즘은 한 분야의 전문가·명인을 높여 부를 때도 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "힌두교 등 인도 전통의 영적 스승 — 오늘날 '분야의 대가'를 뜻하는 외래어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "분야 대가란 뜻으로 일상 사용",
+     "piece": "f09",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '영적 스승을 부르는 산스크리트어 낱말'로 종류 분명. 짧음"
+    },
+    "blindQuestion": {
+     "guess": "구루",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "구루",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "구루",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3189",
+      "answer": "베다",
+      "verdict": "diff",
+      "why": "구루 vs 베다: 다른 산스크리트어 낱말"
+     },
+     {
+      "old": "6403",
+      "answer": "아들러",
+      "verdict": "diff",
+      "why": "구루 vs 아들러: 무관"
+     },
+     {
+      "old": "456",
+      "answer": "비타민 D",
+      "verdict": "diff",
+      "why": "구루 vs 구루병 비타민 D: 낱말만 겹침"
+     },
+     {
+      "old": "657",
+      "answer": "시크교",
+      "verdict": "diff",
+      "why": "구루 어원 vs 시크교 계율: 시크교 일반 지식, 칭호 어원과 다름"
+     },
+     {
+      "old": "3868",
+      "answer": "시크교",
+      "verdict": "diff",
+      "why": "구루 vs 시크교 경전 스승: 종교 이름 vs 스승 칭호 낱말, 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/구루",
+     "https://en.wikipedia.org/wiki/Guru"
+    ],
+    "facts": [
+     {
+      "claim": "산스크리트어 · 스승 · 힌두교 베다 문헌",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/구루",
+      "note": "구루(산스크리트어: गुरु)는 산스크리트어로 특정 지식이나 분야의 \"멘토, 가이드, 전문가, 또는 명인\"을 일컫는 용어이다. ... 구루의 개념에 대한 가장 오래된 언급은 힌두교의 초기 베다 문헌에서 발견된다."
+     },
+     {
+      "claim": "어둠을 없애는 사람이라는 통속 풀이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Guru",
+      "note": "A popular etymological theory considers the term \"guru\" to be based on the syllables gu (गु) and ru (रु), which it claims stands for darkness and \"light that dispels it\", respectively."
+     },
+     {
+      "claim": "시크교 창시자 구루 나나크",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/구루",
+      "note": "시크교에서 구루 전통은 15세기 창립 이래 핵심적인 역할을 해 왔으며, 그 창시자는 구루 나나크(Guru Nanak)"
+     },
+     {
+      "claim": "형용사로 '무거운'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Guru",
+      "note": "As an adjective, it means 'heavy,' or 'weighty,' in the sense of \"heavy with knowledge,\""
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "힌두교의 영적 스승을 부르는 산스크리트어",
+    "worthWhyGen": "일상에서 쓰는 '○○의 구루'라는 말의 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '산스크리트어 낱말' 예",
+     "unique": "영적 스승 + 시크교 나나크 칭호 — 스와미·리시와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "요즘 '경영의 ~', '투자의 ~'처럼 한 분야의 최고 권위자를 높여 부를 때도 쓰는 말이다."
+      },
+      "why": "대가 ← 우리말 낱말로 샘 · 인도 영적 스승(서양 유행)으로 외래어임을 가름 (en Guru: 1960s-70s gurus · mentor, guide, expert, master)"
+     }
+    ],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

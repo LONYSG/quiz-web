@@ -1,0 +1,260 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "invention/2",
+  "midKey": "invention",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "invention/2#g032b-g032b-j06-12",
+   "seed": {
+    "subject": "쇼핑 카트",
+    "aspect": null,
+    "ref": "g032b-j06-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "20세기의 한 발명품입니다. 1937년 미국 오클라호마의 슈퍼마켓 주인 실번 골드먼이 접이식 나무 의자를 보고 착상해 만들었습니다. 처음엔 손님들이 쓰려 하지 않았는데, 남자들은 사내답지 못해 보인다며 꺼렸다고 전합니다. 그래서 그는 모델들을 고용해 이것을 쓰며 장 보는 시늉을 하게 했습니다. 이 발명품은?",
+    "answer": "쇼핑 카트",
+    "acceptedAnswers": [
+     "쇼핑 트롤리"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그는 이것을 '접는 바구니 운반기'라 불렀고, 널리 퍼진 뒤 큰 부자가 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "모델들을 고용해 이것을 쓰며 장 보는 시늉을 하게 했습니다",
+     "difWhy": "2 — 장 보는 도구 · 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 물건의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "대형 마트 입구에서 동전을 넣어 빼 쓰는 바퀴 달린 장바구니 수레로, 아이를 앉히는 자리가 붙은 것도 많다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "마트에서 물건을 담아 미는 바퀴 달린 수레",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "마트에서 매일 쓰는 물건",
+     "piece": "f06",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '20세기의 한 발명품' 이 종류. 끝 '이 발명품은?' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "쇼핑카트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "쇼핑카트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "쇼핑 카트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j08-1",
+      "answer": "볼펜",
+      "verdict": "diff",
+      "why": "쇼핑 카트 vs 볼펜 — 다른 발명품"
+     },
+     {
+      "old": "4916",
+      "answer": "청색 LED",
+      "verdict": "diff",
+      "why": "쇼핑 카트 vs 청색 LED — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Shopping_cart",
+     "https://www.smithsonianmag.com/history/industrious-grocer-1930s-wanted-make-easier-customers-buy-more-just-needed-push-180987633/",
+     "https://ko.wikipedia.org/wiki/쇼핑카트"
+    ],
+    "facts": [
+     {
+      "claim": "1937년 6월 4일 · 오클라호마 험프티 덤프티 슈퍼마켓 주인 골드먼 · 접이식 나무 의자 · 모델 고용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shopping_cart",
+      "note": "One of the first shopping carts was introduced on June 4, 1937, the invention of Sylvan Goldman, owner of the Humpty Dumpty supermarket chain in Oklahoma. He found a wooden folding chair and put a basket on the seat and wheels on the legs. ... Goldman called his carts \"folding basket carriers\". After Goldman hired several male and female models to push his new invention around his store ... Goldman became a multimillionaire."
+     },
+     {
+      "claim": "손님들이 싫어함 · 남자들은 여성스럽다고 봄 · 모델 고용",
+      "where": "q",
+      "url": "https://www.smithsonianmag.com/history/industrious-grocer-1930s-wanted-make-easier-customers-buy-more-just-needed-push-180987633/",
+      "note": "WebSearch 요약(NPR·Smithsonian 등): unveiled June 4, 1937 ... And they hated it. Men thought that they were effeminate. ... he also hired models, male and female, to walk about the store, going through the motions of shopping"
+     },
+     {
+      "claim": "동전 보증금 · 아이 의자",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/쇼핑카트",
+      "note": "손잡이 바로 너머에는 어린 아이를 한 명 또는 두 명 앉힐 수 있는 의자가 있는 경우가 많다. ... 100원 또는 500원 주화를 보증금으로 넣고 사용할 수 있는 쇼핑카트가 널리 쓰였으나"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/쇼핑카트"
+    ],
+    "hintNote": null,
+    "easiestCue": "1937년 슈퍼마켓 주인의 발명품",
+    "worthWhyGen": "흔한 물건이 처음엔 '사내답지 못해' 외면받았다는 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '발명품' 예",
+     "unique": "1937 골드먼 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 172자"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "invention/2#g032b-g032b-j13-1",
+   "seed": {
+    "subject": "룸바",
+    "aspect": null,
+    "ref": "g032b-j13-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2002년 9월 미국 아이로봇이 내놓은 가전 상표가 있습니다. 이 회사는 MIT 인공지능 연구실 출신 세 사람이 1990년에 세웠고, 이라크와 아프가니스탄에서 폭발물을 처리한 군용 로봇 '팩봇'을 만든 곳입니다. 이 상표의 첫 구상은 1989년 MIT 엔지니어 조 존스가 레고 블록으로 만든 시제품이었습니다. 이 상표는?",
+    "answer": "룸바",
+    "acceptedAnswers": [
+     "Roomba"
+    ],
+    "originalTitleVariants": [
+     "Roomba"
+    ],
+    "explanation": "처음 나온 1세대 제품에는 방 크기를 고르는 버튼 세 개만 있었고, 요즘 모델은 카메라로 집 안 지도를 그린다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "2002년 아이로봇이 내놓은 가전 상표",
+     "difWhy": "2 — 로봇청소기로 룸바 도달",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 가전 상표 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "스스로 집 안을 돌아다니며 바닥 먼지를 빨아들이는 원반 모양 로봇 청소기의 대명사다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "아이로봇의 로봇 청소기 상표",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "로봇 청소기 대명사, 광고·가전",
+     "piece": "f02",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '가전 상표' 가 끝 ○○ '상표' 와 일치 · 회사 이력이 두 문장 이어지나 주어가 일관"
+    },
+    "blindQuestion": {
+     "guess": "룸바",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "룸바",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "룸바",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2295",
+      "answer": "월드 와이드 웹",
+      "verdict": "diff",
+      "why": "새 정답 룸바 과 옛 정답 월드 와이드 웹 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Roomba",
+     "https://en.wikipedia.org/wiki/IRobot"
+    ],
+    "facts": [
+     {
+      "claim": "2002년 9월 아이로봇이 처음 내놓음 · 1989년 조 존스 MIT 구상 · 레고 시제품",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Roomba",
+      "note": "A Roomba is an autonomous robotic vacuum cleaner made by the company iRobot, and was first introduced in September 2002. ... Engineer Joe Jones first conceived the idea for what eventually became the Roomba in 1989 while working at the MIT Computer Science and Artificial Intelligence Laboratory. The initial design, using LEGO bricks, stemmed from a design challenge between Jones and his colleagues."
+     },
+     {
+      "claim": "1990년 MIT AI 연구실 출신 3명 창업 · 팩봇 · 이라크·아프가니스탄 폭발물 처리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/IRobot",
+      "note": "It was founded in 1990 by three members of MIT's Artificial Intelligence Lab, who designed robots for space exploration and military defense. The company's products include a range of autonomous home vacuum cleaners (Roomba) ... In addition to deployment as bomb-disposal units with the US military in Iraq and Afghanistan, PackBots have been used"
+     },
+     {
+      "claim": "1세대 버튼 셋 · 최신 모델 카메라 지도",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Roomba",
+      "note": "Introduced in September 2002, the first-generation Roomba had three buttons for room size. ... Newer models also have a camera, which works in conjunction with onboard mapping and navigation software"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Roomba"
+    ],
+    "hintNote": null,
+    "easiestCue": "아이로봇의 가전 상표",
+    "worthWhyGen": "집 안의 로봇 청소기가 군용 폭발물 처리 로봇 회사에서 나왔다는 뒷이야기(취미 영역 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '가전 상표' 예",
+     "unique": "2002년 아이로봇 가전 상표는 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 179자",
+     "crossans 로봇"
+    ],
+    "job": "job-13"
+   }
+  }
+ ]
+}

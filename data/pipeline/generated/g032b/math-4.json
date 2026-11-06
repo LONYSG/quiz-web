@@ -1,0 +1,142 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "math/4",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/4#g032b-g032b-j16-5",
+   "seed": {
+    "subject": "벤 다이어그램",
+    "aspect": null,
+    "ref": "g032b-j16-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "수학 시간에 자주 쓰는 그림 하나가 있습니다. 1880년 영국의 한 논리학자가 『철학 잡지』 논문에서 정리했지만, 정작 그는 이 그림을 자기 이름이 아니라 앞선 수학자 오일러의 이름으로 불렀습니다. 루이스 캐럴도 1896년 논리학 책 부록에 이 방법을 실었습니다. 이 그림은?",
+    "answer": "벤 다이어그램",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 그림 이름이 책에 쓰인 이른 예는 1918년 미국 논리학자 클래런스 어빙 루이스의 책이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "수학 시간에 자주 쓰는 그림 · 오일러 · 루이스 캐럴",
+     "difWhy": "3 — 단서가 인물 일화로 간접 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 수학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "집합끼리 겹치는 부분을 겹쳐 그린 동그라미로 보여 주는 그림으로, 교집합·합집합을 배울 때 처음 만난다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "집합 사이의 관계를 겹친 원으로 나타내는 그림",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "학교 수학 시간에 배움",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '수학 시간에 자주 쓰는 그림' 이 끝 ○○(그림) 와 일치, '그' 는 논리학자 하나만 가리킴"
+    },
+    "blindQuestion": {
+     "guess": "벤 다이어그램",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "벤 다이어그램",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "벤 다이어그램",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5991",
+      "answer": "데카르트",
+      "verdict": "diff",
+      "why": "벤 다이어그램 vs 데카르트 지수 표기 — 다른 지식"
+     },
+     {
+      "old": "602",
+      "answer": "자연상수",
+      "verdict": "diff",
+      "why": "벤 다이어그램 vs 자연상수 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Venn_diagram",
+     "https://ko.wikipedia.org/wiki/벤_다이어그램"
+    ],
+    "facts": [
+     {
+      "claim": "1880년 논문 『Philosophical Magazine』",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Venn_diagram",
+      "note": "Venn diagrams were introduced in 1880 by John Venn in a paper entitled \"On the Diagrammatic and Mechanical Representation of Propositions and Reasonings\" in the Philosophical Magazine and Journal of Science"
+     },
+     {
+      "claim": "벤은 이 이름을 쓰지 않고 'Eulerian Circles' 라 부름 · 루이스 캐럴 1896 부록",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Venn_diagram",
+      "note": "Venn did not use the term \"Venn diagram\" and referred to the concept as \"Eulerian Circles\". ... Charles L. Dodgson (Lewis Carroll) includes \"Venn's Method of Diagrams\" and \"Euler's Method of Diagrams\" in an \"Appendix, Addressed to Teachers\" of his book Symbolic Logic (4th edition published in 1896)."
+     },
+     {
+      "claim": "1880년 존 벤 고안 · 집합 관계",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/벤_다이어그램",
+      "note": "벤 다이어그램(Venn diagram)은 서로 다른 집합들 사이의 관계를 표현하는 다이어그램이다. ... 1880년에 존 벤에 의해 처음 고안되었다."
+     },
+     {
+      "claim": "1918년 C. I. 루이스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Venn_diagram",
+      "note": "The term \"Venn diagram\" was later used by Clarence Irving Lewis in 1918, in his book A Survey of Symbolic Logic."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/벤_다이어그램"
+    ],
+    "hintNote": null,
+    "easiestCue": "수학 시간에 쓰는 논리 그림 · 오일러",
+    "worthWhyGen": "누구나 아는 그림의 주인이 정작 자기 이름을 쓰지 않았다는 이야깃거리(교과 2~3)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '그림' 예",
+     "unique": "오일러 다이어그램과 헷갈릴 수 있음 → '1880년 영국 논리학자'로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

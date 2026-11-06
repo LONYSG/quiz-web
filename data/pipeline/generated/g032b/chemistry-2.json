@@ -1,0 +1,428 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "chemistry/2",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/2#g032b-g032b-j04-8",
+   "seed": {
+    "subject": "할로젠",
+    "aspect": null,
+    "ref": "g032b-j04-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주기율표의 한 원소 무리(족)의 이름을 묻습니다. 이 이름은 그리스어로 '소금을 낳는 것'이라는 뜻입니다. 1811년 독일 화학자 요한 슈바이거가 한 기체 원소의 이름으로 처음 내놓았습니다. 1826년 베르셀리우스가 이 이름을 원소 무리 전체에 붙였습니다. 이 원소 무리는?",
+    "answer": "할로젠",
+    "acceptedAnswers": [
+     "할로겐",
+     "할로젠 원소",
+     "할로겐 원소",
+     "할로겐족"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 무리가 금속과 만나면 식탁 소금인 염화 나트륨, 사진 필름의 브로민화 은 같은 염이 생긴다. 데이비가 붙인 이름은 그대로 염소로 남았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "그리스어로 '소금을 낳는 것'이라는 뜻입니다.",
+     "difWhy": "4 — 학교 화학 용어, 정의 → 이름 꼴이라 일반인은 떠올리기 어려움(할로젠)",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 화학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "자동차 전조등 전구 이름에도 붙는 17족 원소 무리로, 이 원소를 조금 넣은 백열전구는 더 하얗고 오래간다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "주기율표 17족 원소 무리(halogen)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "화학 교과서 용어",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "잡다한 사실 나열",
+     "reason": "첫 문장 '원소 무리(족)' 로 종류는 분명하나 둘째 문장에서 '데이비의 새 기체 이름 대신' 이 뜬금없이 끼고 '이 이름' 이 가리키는 바가 한 번에 안 잡힌다."
+    },
+    "blindQuestion": {
+     "guess": "할로젠",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "할로겐",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "할로젠",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j31-8",
+      "answer": "동위원소",
+      "verdict": "diff",
+      "why": "할로젠 명명(슈바이거) vs 동위원소 명명(소디·토드) — 다른 용어"
+     },
+     {
+      "old": "g032b:g032b-j19-8",
+      "answer": "스트론튬",
+      "verdict": "diff",
+      "why": "할로젠 vs 스트론튬 — 다른 원소·사실"
+     },
+     {
+      "old": "3474",
+      "answer": "갈륨",
+      "verdict": "diff",
+      "why": "할로젠 vs 갈륨(에카알루미늄) — 다른 지식"
+     },
+     {
+      "old": "1515",
+      "answer": "족",
+      "verdict": "diff",
+      "why": "할로젠 어원 vs 주기율표 세로줄 '족' 일반 개념 — 새 어원 사실이 따로 필요"
+     },
+     {
+      "old": "94",
+      "answer": "수소",
+      "verdict": "diff",
+      "why": "할로젠 vs 수소 원자번호 1 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Halogen",
+     "https://ko.wikipedia.org/wiki/할로젠"
+    ],
+    "facts": [
+     {
+      "claim": "1811년 슈바이거가 '소금 낳는 것' 이름을 데이비의 '염소' 대신 제안 · 1826년 베르셀리우스가 원소 무리에 붙임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Halogen",
+      "note": "In 1811, the German chemist Johann Schweigger proposed that the name \"halogen\" – meaning \"salt producer\", from αλς [hals] \"salt\" and γενειν [genein] \"to beget\" – replace the name \"chlorine\", which had been proposed by the English chemist Humphry Davy. However, in 1826, the Swedish chemist Baron Jöns Jacob Berzelius proposed the term \"halogen\" for the elements fluorine, chlorine, and iodine"
+     },
+     {
+      "claim": "같은 내용(ko)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/할로젠",
+      "note": "1811년 독일 화학자 요한 슈바이거는 \"소금 생성자\"를 의미하는 \"할로젠\"이라는 이름 ... 험프리 데이비가 제안한 \"염소\"라는 이름을 대체할 것을 제안했다. 그러나 1826년 스웨덴의 화학자 옌스 야코브 베르셀리우스 남작은 플루오린, 염소, 아이오딘 원소에 대해 \"할로젠\"이라는 용어를 제안했는데"
+     },
+     {
+      "claim": "17족 · 할로겐 램프(백열전구에 할로젠 첨가, 더 하얗고 수명 김)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Halogen",
+      "note": "this group is known as group 17. ... Halogen lamps are a type of incandescent lamp ... bulbs that have small amounts of a halogen ... a bulb that has a much greater life. ... with a whiter colour than other incandescent bulbs."
+     },
+     {
+      "claim": "금속과 반응해 염화 나트륨·브로민화 은 등 염 생성",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/할로젠",
+      "note": "할로젠이 금속과 반응하면 플루오린화 칼슘, 염화 나트륨 (일반적인 식탁용 소금), 브로민화 은, 아이오딘화 칼륨을 포함한 다양한 염을 생성한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Halogen"
+    ],
+    "hintNote": null,
+    "easiestCue": "'소금을 낳는 것' 이라는 원소 무리 이름(화학 시간 기억이 있으면)",
+    "worthWhyGen": "할로겐 전구로 늘 듣는 말이 왜 '소금을 낳는 것' 인가(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '원소 무리(족)' 예",
+     "unique": "'소금을 낳는' 족 = 하나 · 17족은 B2(이름을 묻는다)로 받지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "주기율표의 한 원소 무리(족)의 이름은 1811년 독일 화학자 요한 슈바이거가 처음 내놓았습니다. 그는 데이비가 붙인 새 기체 이름 대신 그리스어로 '소금을 낳는 것'이라는 이름을 쓰자고 했습니다. 1826년 베르셀리우스가 이 이름을 원소 무리 전체에 붙였는데, 이 무리는 무엇일까요?"
+      },
+      "why": "뜬금없는 '데이비 이름 대신' 문장 정리 · 한 문장 한 정보 · '이 이름' 지시 분명히"
+     }
+    ],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "chemistry/2#g032b-g032b-j19-8",
+   "seed": {
+    "subject": "스트론튬",
+    "aspect": null,
+    "ref": "g032b-j19-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주기율표 2족에 속한 금속 원소입니다. 1790년 스코틀랜드의 한 마을 근처에서 찾은 광물에서 나왔고, 그 마을 이름을 따 원소 이름이 붙었습니다. 1808년 험프리 데이비가 전기 분해로 처음 금속을 뽑아냈습니다. 원자 번호 38인 이 원소는?",
+    "answer": "스트론튬",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "브라운관 TV가 한창일 때는 미국 소비량의 75%까지가 화면 앞유리를 만드는 데 쓰였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "주기율표 2족 · 원자 번호 38 · 스코틀랜드 마을 이름",
+     "difWhy": "4 — 원소 번호 정확 · 일반인은 못 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 화학 원소",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 25",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "불꽃놀이에서 새빨간 빛을 내는 원소로, 핵실험 낙진 속 방사성 동위 원소 90은 칼슘처럼 뼈에 쌓인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호 38 알칼리 토금속(불꽃놀이 붉은빛 · 방사성 낙진 Sr-90)",
+    "familiarity": {
+     "judge": 1,
+     "pct": 25,
+     "why": "주기율표 원소, 일반인 낯섦",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "스트론튬",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Strontium",
+     "https://ko.wikipedia.org/wiki/스트론튬"
+    ],
+    "facts": [
+     {
+      "claim": "스코틀랜드 마을 Strontian · 1790 광물 · 1808 데이비 전기분해 · 원자번호 38",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Strontium",
+      "note": "Strontium is a chemical element; it has symbol Sr and atomic number 38. ... Both strontium and strontianite are named after Strontian, a village in Scotland near which the mineral was discovered in 1790 ... Strontium was first isolated as a metal in 1808 by Humphry Davy using the then newly discovered process of electrolysis."
+     },
+     {
+      "claim": "이름 = 1790년 스코틀랜드 스트론티안 마을 · 칼슘·바륨과 같은 족",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스트론튬",
+      "note": "스트론튬이라는 이름은 1790년 스트론튬을 포함한 광물인 스트론티아니아트가 발견된 스코틀랜드의 스트론티안(Strontian)이라는 마을에서 따 온 것이다. ... 같은 족 원소인 칼슘과 바륨과는 물리적, 화학적 성질이 비슷하다."
+     },
+     {
+      "claim": "불꽃놀이 붉은빛 · Sr-90 낙진 · 뼈에 축적",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/스트론튬",
+      "note": "휘발성의 스트론튬 화합물은 연소할 때 밝은 빨간색 빛을 방출하므로 불꽃놀이 폭죽이나 섬광탄 등의 제조에 ... 방사성 낙진에는 반감기가 28.78년인 스트론튬-90(90Sr)이 포함 ... 뼈에서 칼슘을 대체하고"
+     },
+     {
+      "claim": "브라운관 시절 미국 소비 75% 앞유리",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Strontium",
+      "note": "At the peak of production of television cathode-ray tubes, as much as 75% of strontium consumption in the United States was used for the faceplate glass."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/스트론튬",
+     "https://en.wikipedia.org/wiki/Strontium"
+    ],
+    "hintNote": null,
+    "easiestCue": "원자 번호 38",
+    "worthWhyGen": "원소 이름이 시골 마을에서 왔다는 유래 + 원전 뉴스로 듣는 원소 — 과학 개념 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '금속 원소' 예",
+     "unique": "원자 번호 38 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19",
+    "discarded": "친숙도 1 (pct 25 · 주기율표 원소, 일반인 낯섦)"
+   }
+  },
+  {
+   "seedId": "chemistry/2#g032b-g032b-j31-8",
+   "seed": {
+    "subject": "동위원소",
+    "aspect": null,
+    "ref": "g032b-j31-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주기율표와 얽힌 과학 용어입니다. 1913년 영국 화학자 프레더릭 소디는 화학적으로 똑같아 떼어 낼 수 없는데 무게만 다른 원자들을 연구했습니다. 스코틀랜드 의사 마거릿 토드가 이들이 주기율표의 '같은 자리'를 차지한다는 뜻의 그리스어 이름을 지어 주었습니다. 이 과학 용어는 무엇일까요?",
+    "answer": "동위원소",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "화학적 성질은 거의 같지만 질량이 달라서, 화학 반응이 아니라 물리적 방법으로는 서로 떼어 낼 수 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "화학적으로 똑같아 떼어 낼 수 없는데 무게만 다른 원자들",
+     "difWhy": "3 — 학교 과학 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "양성자 수는 같고 중성자 수가 다른 원자로, 수소의 중수소나 연대 측정에 쓰는 탄소-14가 대표적인 예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원자 번호는 같고 질량수가 다른 원자(isotope)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "중고교 화학 교과서",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '주기율표와 얽힌 과학 용어' = 끝 ○○(과학 용어). 낯선 개념은 '화학적으로 똑같은데 무게만 다른 원자'로 풀려 있음."
+    },
+    "blindQuestion": {
+     "guess": "동위원소",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "동위원소",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "동위원소",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2667",
+      "answer": "큐리오시티",
+      "verdict": "diff",
+      "why": "동위원소 vs 큐리오시티: 무관"
+     },
+     {
+      "old": "g032b:g032b-j04-8",
+      "answer": "할로젠",
+      "verdict": "diff",
+      "why": "동위원소 vs 할로젠: 다른 용어"
+     },
+     {
+      "old": "g032b:g032b-j19-8",
+      "answer": "스트론튬",
+      "verdict": "diff",
+      "why": "동위원소 vs 스트론튬: 다른 원소"
+     },
+     {
+      "old": "g032a:g032a-j20-11",
+      "answer": "원자 번호",
+      "verdict": "diff",
+      "why": "동위원소 vs 원자 번호: 다른 개념"
+     },
+     {
+      "old": "g032a:g032a-j04-9",
+      "answer": "플루토늄",
+      "verdict": "diff",
+      "why": "동위원소 vs 플루토늄: 다른 원소"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Isotope",
+     "https://ko.wikipedia.org/wiki/동위_원소"
+    ],
+    "facts": [
+     {
+      "claim": "isotope = 그리스어 isos + topos '같은 자리' · 마거릿 토드 1913 제안 · 소디",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Isotope",
+      "note": "The term isotope comes from the Greek roots isos (ἴσος \"equal\") and topos (τόπος \"place\"), meaning \"the same place\": different isotopes of an element occupy the same place on the periodic table. It was coined by Scottish doctor and writer Margaret Todd in a 1913 suggestion to the British chemist Frederick Soddy"
+     },
+     {
+      "claim": "소디 1913 · 떼어 낼 수 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Isotope",
+      "note": "The existence of isotopes was first suggested in 1913 by the radiochemist Frederick Soddy ... Soddy had shown in 1910 that mesothorium ..., radium ..., and thorium X ... are impossible to separate."
+     },
+     {
+      "claim": "원자 번호 같고 질량수 다름 · 화학적 성질 같음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동위_원소",
+      "note": "동위 원소 (同位元素, Isotope)는 원자 번호가 같지만 질량수가 다른 원소를 말한다. ... 동위 원소의 화학적 성질은 원래 원소와 같다."
+     },
+     {
+      "claim": "중수소 · 탄소-14",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Isotope",
+      "note": "carbon-12, carbon-13, and carbon-14 are three isotopes of the element carbon ... protium (1H), deuterium (2H), and tritium (3H)"
+     },
+     {
+      "claim": "물리적 방법으로 분리 가능",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/동위_원소",
+      "note": "중성자의 수가 달라서 질량이 다르므로 물리적 방법으로 분리할 수 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동위_원소",
+     "https://en.wikipedia.org/wiki/Isotope"
+    ],
+    "hintNote": null,
+    "easiestCue": "주기율표의 '같은 자리'를 차지하는 무게만 다른 원자",
+    "worthWhyGen": "교과서 용어의 이름 뜻(같은 자리)과 그 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '과학 용어' 예",
+     "unique": "같은 자리 · 무게만 다름 — 동중원소와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 161자",
+     "crossans 수소/탄소"
+    ],
+    "job": "job-31"
+   }
+  }
+ ]
+}

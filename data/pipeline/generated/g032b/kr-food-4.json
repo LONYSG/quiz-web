@@ -1,0 +1,145 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-food/4",
+  "midKey": "kr-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/4#g032b-g032b-j02-9",
+   "seed": {
+    "subject": "감자옹심이",
+    "aspect": null,
+    "ref": "g032b-j02-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "강원도 정선·영월 등지에서 먹기 시작한 향토 음식이 있습니다. 이름 뒤쪽은 팥죽에 넣는 찹쌀 경단 '새알심'을 이르는 사투리입니다. 처음엔 새알처럼 동글동글 빚었지만 손이 많이 가서, 요즘은 수제비처럼 얇게 떼어 넣기도 하는 이 음식은?",
+    "answer": "감자옹심이",
+    "acceptedAnswers": [
+     "감자옹시미"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "강릉시가 전통 음식으로 골랐다. 쌀이 귀하던 강원도에서 감자는 구황 작물로 널리 심었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "강원도 정선·영월 · 새알심 사투리 · 수제비처럼 떼어 넣는",
+     "difWhy": "2 — 향토 음식 이름 · 옹심이 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 생활 음식 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "강원도 밭작물을 강판에 갈아 녹말과 함께 빚은 쫄깃한 덩이를 멸치 육수에 끓여, 칼국수를 넣어 함께 내기도 하는 음식이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "간 감자를 빚어 육수에 끓인 강원도 향토 음식",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "강원도 음식으로 알려짐",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '향토 음식' 이 끝 ○○(음식) 와 일치, '새알심' 은 풀이가 붙어 있음"
+    },
+    "blindQuestion": {
+     "guess": "감자옹심이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "감자옹심이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "감자옹심이",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5853",
+      "answer": "수원갈비",
+      "verdict": "diff",
+      "why": "새 정답 감자옹심이의 지식(유래·사실)과 옛 정답 수원갈비의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6628",
+      "answer": "닭한마리",
+      "verdict": "diff",
+      "why": "새 정답 감자옹심이의 지식(유래·사실)과 옛 정답 닭한마리의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/감자옹심이",
+     "https://ko.wikipedia.org/wiki/새알심",
+     "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=새알심"
+    ],
+    "facts": [
+     {
+      "claim": "강원도 향토 음식 · 정선군·영월군 등지 · 옹심이 = 새알심의 방언 · 처음엔 새알심처럼 동글동글 → 수제비처럼 얇고 크게",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/감자옹심이",
+      "note": "강원특별자치도의 향토 음식으로 정선군, 영월군 등지에서 먹기 시작했다. 옹심이는 '옹시미'로 쓰기도 하는데, 모두 '새알심'의 방언이다. ... 처음에는 팥죽에 넣어 먹는 새알심처럼 작고 동글동글하게 만들었으나, 시간이 오래 걸리고 일손도 부족해 수제비처럼 얇고 크게 떼어 넣다 보니"
+     },
+     {
+      "claim": "새알심 = 찹쌀가루 덩어리 · 사투리 옹심이 · 팥죽에 넣음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/새알심",
+      "note": "새알심은 찹쌀가루나 수수가루로 동그랗게 만든 새알만한 덩어리이다. 사투리로 '새알, 옹심이, 옹시미라고도 부른다. 팥죽, 호박죽 ... 등에 넣어 먹기도 한다."
+     },
+     {
+      "claim": "새알심 사전 뜻",
+      "where": "q",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=새알심",
+      "note": "새알심 「명사」 팥죽 따위에 넣어 먹는 새알만 한 덩이. 보통 찹쌀가루나 수수 가루로 동글동글하게 만든다."
+     },
+     {
+      "claim": "간 감자+녹말 반죽 · 멸치 육수 · 칼국수와 함께 · 강릉시 전통 음식 · 구황 작물",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/감자옹심이",
+      "note": "간 감자와 녹말을 반죽하여 ... 멸치와 다시마를 넣고 끓여 육수를 만들고 ... 옹심이와 메밀국수, 칼국수를 같이 끓여 내기도 한다. ... 강릉시에서는 전통 음식으로 감자옹심이를 선정하였다. ... 쌀에 대한 구황작물로서 감자를 이용했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/감자옹심이"
+    ],
+    "hintNote": null,
+    "easiestCue": "강원도 + 새알심 사투리 + 수제비처럼 — 음식을 알면 바로 풀림",
+    "worthWhyGen": "옹심이가 팥죽 새알심의 강원 사투리라는 이름 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '향토 음식' 예",
+     "unique": "'새알심 사투리' 로 감자수제비와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

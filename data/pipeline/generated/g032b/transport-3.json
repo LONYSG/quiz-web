@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "transport/3",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/3#g032b-g032b-j07-3",
+   "seed": {
+    "subject": "KTX-산천",
+    "aspect": null,
+    "ref": "g032b-j07-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2010년 운행을 시작한 한국의 고속열차입니다. 처음에는 기존 고속열차의 뒤를 잇는다는 임시 이름으로 불렸습니다. 공기 저항을 줄이려고 앞머리를 한 토종 민물고기의 유선형을 본떠 만들었고, 운행 직전 공모로 정한 새 이름도 그 물고기에서 따왔습니다. 이 열차의 이름은?",
+    "answer": "KTX-산천",
+    "acceptedAnswers": [
+     "산천"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "앞머리 디자인은 프랑스 디자인 회사 MBD 디자인이 맡았고, 두 편성을 자동 연결기로 이어 붙여 함께 달릴 수 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "2010년 운행 한국 고속열차 · 민물고기 유선형",
+     "difWhy": "3 — KTX 와 구별되는 산천 이름이 관건 · 오답 KTX",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 열차 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "시험차 HSR-350x를 바탕으로 현대로템이 만든 국산 고속열차의 양산형이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "한국철도공사가 2010년부터 운용하는 국산 고속열차(이름은 산천어에서)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "KTX는 일상, 산천은 익숙",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한국의 고속열차'가 끝 ○○(열차)와 같고 임시 이름·새 이름 서술도 열차 하나만 다룸"
+    },
+    "blindQuestion": {
+     "guess": "KTX-산천",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "KTX-산천",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "KTX-산천",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6774",
+      "answer": "새마을호",
+      "verdict": "diff",
+      "why": "KTX-산천 vs 새마을호 — 다른 열차"
+     },
+     {
+      "old": "6083",
+      "answer": "오리엔트 특급",
+      "verdict": "diff",
+      "why": "KTX-산천 vs 오리엔트 특급 — 무관"
+     },
+     {
+      "old": "1259",
+      "answer": "KTX",
+      "verdict": "diff",
+      "why": "KTX-산천(개량형 이름 유래) vs KTX 도입 — 다른 사실"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/KTX-산천",
+     "https://en.wikipedia.org/wiki/KTX-Sancheon"
+    ],
+    "facts": [
+     {
+      "claim": "처음 KTX-II · 공모로 2010-03-01 명칭 확정 · 산천어 모티브 유선형(공기 저항) · HSR-350x 바탕 · 현대로템 · 양산형",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/KTX-산천",
+      "note": "기존 KTX의 후계 차량이라는 점에서 초기에는 'KTX-II'로 불리었으나 한국철도공사의 공모전 결과 2010년 3월 1일 'KTX-산천'으로 명칭이 확정되었다. ... 시험차량 HSR-350x의 시험 결과를 반영하여 설계되었으며, 모든 차량이 현대로템에서 제작되었다. ... 공기 저항을 줄이기 위해 몸체는 산천어를 모티브로 유선형으로 제작되었다. ... 양산형 차량인 KTX-산천은"
+     },
+     {
+      "claim": "앞모양은 산천어(토종 물고기)에서 · 2010-02-11 첫 승객 시운행 뒤 공모 · 이름은 산천어에서 · MBD Design · Scharfenberg 연결기로 두 편성 연결",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/KTX-Sancheon",
+      "note": "The vehicles received a new exterior front shape, designed by French design studio MBD Design. The aerodynamic shape was inspired by the cherry salmon, an indigenous fish. ... the KTX-II carried its first passengers in a preview run on February 11, 2010. After a naming competition held in the next ten days, the KTX-II was officially renamed as KTX-Sancheon (KTX 산천). Sancheon comes from sancheoneo (산천어), the Korean word for cherry salmon ... Two sets can be coupled together with automatic couplers of the Scharfenberg type."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/KTX-산천"
+    ],
+    "hintNote": null,
+    "easiestCue": "'2010년 한국 고속열차 + 물고기에서 딴 이름' — 산천어 축제를 떠올리면 이름이 나옴",
+    "worthWhyGen": "자주 타는 열차 이름의 유래(물고기 모양 앞머리) — 유래·까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '고속열차' 예",
+     "unique": "2010 운행 · 물고기 이름 — KTX-이음·SRT 와 갈림",
+     "hint12": "① 예(아는 사람) ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "transport/3#g032b-g032b-j31-12",
+   "seed": {
+    "subject": "협궤",
+    "aspect": null,
+    "ref": "g032b-j31-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "철도 선로의 한 종류입니다. 1937년 소래 지역의 소금을 나르려고 놓인 수인선은 1995년까지 이런 선로 위로 작은 열차가 다녔습니다. 오늘날 KTX가 달리는 표준 선로보다 두 레일 사이 폭이 좁은 이런 철길을 무엇이라 할까요?",
+    "answer": "협궤",
+    "acceptedAnswers": [
+     "협궤철도",
+     "협궤 철도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "수인선은 52km 전 구간을 까는 데 1년도 채 걸리지 않았다고 하며, 1972년 수려선이 없어진 뒤로 국내 유일의 이런 노선이었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "표준 선로보다 두 레일 사이 폭이 좁은 이런 철길",
+     "difWhy": "3 — 정의 → 철도 용어 · 수인선 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 철도 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "공사비가 싸고 급커브를 낼 수 있어, 일본 재래선(1,067mm)처럼 산이 많은 나라나 옛 식민지 철도에 널리 쓰였다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "표준궤(1,435mm)보다 궤간이 좁은 철도 선로",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "수인선 협궤열차 등으로 들어 봄",
+     "piece": "f08",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '철도 선로의 한 종류', 끝 ○○ '철길'. 수인선 예시가 정답과 직결"
+    },
+    "blindQuestion": {
+     "guess": "협궤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "협궤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "협궤",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6774",
+      "answer": "새마을호",
+      "verdict": "diff",
+      "why": "협궤 vs 새마을호: 무관"
+     },
+     {
+      "old": "1270",
+      "answer": "복선",
+      "verdict": "diff",
+      "why": "협궤 vs 복선: 다른 선로 용어"
+     },
+     {
+      "old": "1268",
+      "answer": "장대레일",
+      "verdict": "diff",
+      "why": "협궤 vs 장대레일: 다른 선로 용어"
+     },
+     {
+      "old": "1259",
+      "answer": "KTX",
+      "verdict": "diff",
+      "why": "협궤 vs KTX: KTX는 단서에 쓰인 낱말, 알아야 할 지식 다름"
+     },
+     {
+      "old": "6775",
+      "answer": "TGV",
+      "verdict": "diff",
+      "why": "협궤 vs TGV: 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/수인선",
+     "https://ko.wikipedia.org/wiki/협궤"
+    ],
+    "facts": [
+     {
+      "claim": "1937년 조선경동철도 소래 소금 수송 목적 부설 · 1995년 마지막 운행",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/수인선",
+      "note": "1937년 8월 5일: 사설 철도 회사인 조선경동철도가 소래 지역의 소금을 수송하려는 목적으로 부설 ... 1995년 12월 31일: 수인선 협궤 동차 마지막 운행"
+     },
+     {
+      "claim": "협궤 = 표준궤보다 폭이 좁은 궤간",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/협궤",
+      "note": "협궤(狹軌 ...) 또는 좁은 철길은 표준궤보다 폭이 좁은 궤간을 가진 철도 선로를 말한다."
+     },
+     {
+      "claim": "수인선 협궤 철도",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/수인선",
+      "note": "과거 대한민국 철도청 시절에는 수원역과 남인천역을 잇는 협궤 철도였으며"
+     },
+     {
+      "claim": "싸고 급격한 선형 · 식민지·산악 · 일본 케이프 궤간 1,067mm",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/협궤",
+      "note": "부설의 용이성과 저렴함을 배경으로 ... 옛 식민지 지역 ... 산악 등 지형이 열악한 구간의 철도 부설에 널리 이용되었다. 일본 ... 등이 케이프 궤간을 ... 1,067mm(케이프 궤간) ... 더 급격한 선형을 적용할 수 있으며"
+     },
+     {
+      "claim": "52km 1년 미만 · 1972 수려선 폐선 뒤 유일",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/수인선",
+      "note": "1972년 수려선 폐선 이후 대한민국의 유일한 협궤 노선으로 남았다가 ... (협궤 문서: 수인선의 경우 52km 전 구간을 부설하는데 1년도 채 걸리지 않았다.)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/협궤"
+    ],
+    "hintNote": null,
+    "easiestCue": "표준 선로보다 폭이 좁은 철길",
+    "worthWhyGen": "수인선 꼬마 열차로 아는 철도 개념",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '선로의 한 종류' 예",
+     "unique": "표준보다 좁은 — 광궤와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "fashion/1",
+  "midKey": "fashion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "fashion/1#g032b-g032b-j30-9",
+   "seed": {
+    "subject": "몸뻬",
+    "aspect": null,
+    "ref": "g032b-j30-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본 도호쿠 지방 농촌 여성들이 입던 헐렁한 작업 바지입니다. 제2차 세계 대전 무렵 일제는 조선 여성에게도 이 바지를 입으라고 강요했습니다. 1944년에는 이 바지를 입지 않은 여성이 버스·전차를 타거나 관공서에 드나드는 것까지 막았습니다. 이 바지는?",
+    "answer": "몸뻬",
+    "acceptedAnswers": [
+     "몸빼"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "우리말 순화어로는 '일바지'·'왜바지'를 권합니다. 일본은 1942년 전시 여성 표준복을 정했는데, 일곱 가지 가운데 활동복인 이 바지만 널리 퍼졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "헐렁한 작업 바지 · 일제가 조선 여성에게 강요",
+     "difWhy": "2 — 단서 충분 · 옛 어른 어휘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 역사 속 의복",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "허벅지까지 통이 넓고 발목으로 갈수록 좁아지며 허리를 고무줄로 조이는, 지금도 중장년 여성이 흔히 입는 바지다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일제 강점기에 퍼진 여성용 헐렁한 일바지",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "어르신 바지, 일상 어휘",
+     "piece": "f07",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '작업 바지' 가 종류. 끝 '이 바지는?' 이 곧바로 이어진다."
+    },
+    "blindQuestion": {
+     "guess": "몸뻬",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "몸뻬",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "몸뻬",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4888",
+      "answer": "더플코트",
+      "verdict": "diff",
+      "why": "몸뻬 vs 더플코트 — 다른 의류"
+     },
+     {
+      "old": "5343",
+      "answer": "발라클라바",
+      "verdict": "diff",
+      "why": "몸뻬 vs 발라클라바 — 다른 의류"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/몸뻬",
+     "https://en.wikipedia.org/wiki/Monpe"
+    ],
+    "facts": [
+     {
+      "claim": "도호쿠 지방 전통 · 2차 대전 때 일제가 조선 부녀자에게 강제 보급",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/몸뻬",
+      "note": "원래는 일본 도호쿠 지방에서 전통적으로 쓰였으나 제2차 세계 대전 즈음에 일본 각지로 퍼졌으며, 당시 일제에 의해 일본과 조선의 부녀자들에게 강제적으로 보급된 바지의 한 종류이다."
+     },
+     {
+      "claim": "1944년 미착용 여성 버스·전차·관공서·극장 금지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/몸뻬",
+      "note": "1944년에는, 왜바지를 입지 않은 여성은 버스, 전차등을 타거나 관공서, 극장에 가는 것을 금지했다."
+     },
+     {
+      "claim": "일본 농촌 여성 작업 바지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Monpe",
+      "note": "an umbrella term for a traditional style of loose agricultural work-trouser in Japan ... most commonly worn by female labourers, especially farm workers in agricultural and mountain villages."
+     },
+     {
+      "claim": "모양 · 고무줄 · 중장년 여성",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/몸뻬",
+      "note": "허리와 허벅지까지 통이 아주 크며, 발목으로 내려갈수록 통이 좁아지는 모양 ... 고무줄이나 끈으로 동여맬 수 있게 ... 아직도 중장년층 여성들에겐 흔히 볼 수 있는 옷이다."
+     },
+     {
+      "claim": "순화어 일바지·왜바지 · 1942년 부인표준복 7종 중 활동복",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/몸뻬",
+      "note": "우리말 순화집에서 권장하는 이름은 일바지 또는 왜바지이다 ... 1942년에는 전시 여성복으로 ‘부인표준복’을 제정했다. 모두 7종류의 표준복이 있었으나, 활동복으로 지정된 몸뻬만이 거의 모든 일본 여성에게 확산됐다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/몸뻬"
+    ],
+    "hintNote": null,
+    "easiestCue": "일제가 조선 여성에게 강요한 헐렁한 작업 바지",
+    "worthWhyGen": "지금도 쓰는 옷 이름의 내력(일제 강점기)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '작업 바지' — 예",
+     "unique": "일본 기원 여성 작업 바지 → 몸뻬 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

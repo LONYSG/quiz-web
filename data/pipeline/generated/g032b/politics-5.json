@@ -1,0 +1,125 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "politics/5",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/5#g032b-g032b-j03-11",
+   "seed": {
+    "subject": "메건법",
+    "aspect": null,
+    "ref": "g032b-j03-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 한 법은 1994년 7월 뉴저지주에서 일어난 사건에서 이름이 왔습니다. 일곱 살 소녀가 길 건너편에 살던 이웃에게 살해됐는데, 그는 어린 여자아이를 성폭행한 죄로 두 번 처벌받은 사람이었습니다. 부모는 그 사실을 알았더라면 딸이 살았을 것이라며 법을 바꾸자고 나섰습니다. 1996년 클린턴 대통령이 서명한 연방법이 된 이 법은?",
+    "answer": "메건법",
+    "acceptedAnswers": [
+     "메건 법",
+     "메건스 로"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "뉴저지주는 사건 89일 만에 주법을 만들었습니다. 그 전까지 이런 전과자의 등록을 의무로 둔 주는 다섯 곳뿐이었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1994년 뉴저지 일곱 살 소녀 · 1996년 클린턴 서명",
+     "difWhy": "3 — 법률 용어, 사건 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 법 이름 유래",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 25",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "출소한 성범죄자의 이름·사진·주소를 이웃 주민이 알 수 있게 공개하도록 한 법으로, 우리나라 성범죄자 신상 공개 제도와 같은 생각이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국의 성범죄자 신상 공개법 Megan's Law",
+    "familiarity": {
+     "judge": 1,
+     "pct": 25,
+     "why": "미국 법률 이름, 일반인엔 낯섦",
+     "piece": "f06",
+     "genPct": 35
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "메건법",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Murder_of_Megan_Kanka",
+     "https://en.wikipedia.org/wiki/Megan%27s_Law"
+    ],
+    "facts": [
+     {
+      "claim": "1994년 7월 29일 뉴저지 해밀턴 · 7살 메건 캉카 · 이웃 · 전과",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Murder_of_Megan_Kanka",
+      "note": "On July 29, 1994, in Hamilton Township, New Jersey, seven-year-old Megan Nicole Kanka was raped and murdered by her neighbor, Jesse Timmendequas ... Timmendequas had previously been convicted of child molestation. ... subsequently led to the introduction of \"Megan's Law\" / Jesse K. Timmendequas ... had two previous convictions for sexually assaulting young girls."
+     },
+     {
+      "claim": "길 건너편 · 부모 '알았다면 살았을 것' · 1996년 5월 17일 클린턴 서명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Megan%27s_Law",
+      "note": "a sex offender with two previous convictions of sex crimes against small children who resided across the street from Megan, her parents Richard and Maureen Kanka worked to change the law ... They said that Megan would still be alive had they known of the criminal history of Timmendequas. ... On May 17, 1996, President Clinton signed federal Megan's Law"
+     },
+     {
+      "claim": "성범죄자 정보 공개(이름·사진·주소)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Megan%27s_Law",
+      "note": "requiring law enforcement authorities to make information available to the public regarding registered sex offenders ... Commonly included information is the offender's name, picture, address"
+     },
+     {
+      "claim": "89일 만에 주법 · 그 전 등록 의무 주 다섯",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Megan%27s_Law",
+      "note": "89 days after Megan was murdered, New Jersey enacted Megan's Law ... Before Megan's death, only five states required sex offenders to register with local law enforcement"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Megan%27s_Law"
+    ],
+    "hintNote": null,
+    "easiestCue": "1994 뉴저지 일곱 살 소녀 사건에서 이름이 온 미국 법",
+    "worthWhyGen": "성범죄자 신상 공개 제도가 왜 생겼는지",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '법' 예",
+     "unique": "1994 뉴저지 · 1996 연방법 — 제시카법(2005 플로리다)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 187자"
+    ],
+    "job": "job-03",
+    "discarded": "친숙도 1 (pct 25 · 미국 법률 이름, 일반인엔 낯섦)"
+   }
+  }
+ ]
+}

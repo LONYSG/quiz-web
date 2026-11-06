@@ -1,0 +1,165 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-cinema/2",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/2#g032b-g032b-j08-7",
+   "seed": {
+    "subject": "블레이드 러너",
+    "aspect": null,
+    "ref": "g032b-j08-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1982년 개봉한 미국 SF 영화입니다. 필립 K. 딕의 소설이 원작이지만, 제목은 앨런 E. 누스의 1974년 소설에서 빌려 왔습니다. 각본가 햄프턴 팬처가 윌리엄 버로스가 그 소설을 영화용으로 옮긴 글을 찾아냈고, 감독이 그 이름을 마음에 들어 해 제작자가 제목 권리를 샀습니다. 이 영화는?",
+    "answer": "블레이드 러너",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Blade Runner"
+    ],
+    "explanation": "개봉 때는 흥행이 부진했지만 뒤에 컬트 영화가 되었고, 한국에는 1993년 감독판이 처음 정식 개봉했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1982년 필립 K. 딕 원작 SF · 햄프턴 팬처 각본",
+     "difWhy": "3 — 제목 유래 일화에서 영화 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 영화 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "해리슨 포드가 도망친 복제인간 '리플리컨트'를 쫓는 데커드로 나온 리들리 스콧 감독의 사이버펑크 영화이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "리들리 스콧의 1982년 SF 영화",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "유명 SF 고전 영화",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 'SF 영화'가 끝 '이 영화'와 일치. 인물이 많으나 문장 뜻은 잡힘."
+    },
+    "blindQuestion": {
+     "guess": "블레이드 러너",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "블레이드 러너",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "블레이드 러너",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4207",
+      "answer": "나 홀로 집에",
+      "verdict": "diff",
+      "why": "블레이드 러너와 나 홀로 집에는 다른 영화"
+     },
+     {
+      "old": "4208",
+      "answer": "포레스트 검프",
+      "verdict": "diff",
+      "why": "블레이드 러너와 포레스트 검프는 다른 영화"
+     },
+     {
+      "old": "5165",
+      "answer": "노스트로모",
+      "verdict": "diff",
+      "why": "블레이드 러너와 에이리언 노스트로모호는 다른 영화(감독만 같음)"
+     },
+     {
+      "old": "4206",
+      "answer": "인터스텔라",
+      "verdict": "diff",
+      "why": "블레이드 러너와 인터스텔라는 다른 영화"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Blade_Runner",
+     "https://ko.wikipedia.org/wiki/블레이드_러너"
+    ],
+    "facts": [
+     {
+      "claim": "1982년 SF 영화 · 필립 K. 딕 소설 각색",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+      "note": "Blade Runner is a 1982 science fiction film directed by Ridley Scott ... it is an adaptation of the 1968 novel Do Androids Dream of Electric Sheep? by Philip K. Dick."
+     },
+     {
+      "claim": "제목은 누스 소설 · 버로스 영화용 글 · 팬처 발견 · 스콧이 이름 마음에 들어 제목 권리 구입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+      "note": "Fancher found a cinema treatment by William S. Burroughs for Alan E. Nourse's novel The Bladerunner (1974), titled Blade Runner (a movie). Scott liked the name, so Deeley obtained the rights to the titles."
+     },
+     {
+      "claim": "한국 1993년 감독판 정식 개봉",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/블레이드_러너",
+      "note": "한국의 경우 1993년 5월 8일에 《서기 2019 블레이드 러너》란 제목으로 감독판이 정식 개봉했다."
+     },
+     {
+      "claim": "흥행 부진 뒤 컬트",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+      "note": "Blade Runner initially underperformed in North American theaters ... Blade Runner later became a cult film"
+     },
+     {
+      "claim": "해리슨 포드 · 리플리컨트 · 데커드",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Blade_Runner",
+      "note": "Starring Harrison Ford ... synthetic humans known as replicants ... former cop Rick Deckard (Ford)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Blade_Runner"
+    ],
+    "hintNote": null,
+    "easiestCue": "1982년 필립 K. 딕 원작 미국 SF 영화",
+    "worthWhyGen": "유명 영화 제목이 원작과 무관한 다른 소설에서 왔다는 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ(넷째 문장 다소 김) · ⑨ 첫 문장 'SF 영화' 예",
+     "unique": "1982 + 딕 원작으로 유일",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 165자",
+     "crossans 포드"
+    ],
+    "job": "job-08"
+   }
+  }
+ ]
+}

@@ -1,0 +1,157 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "earth/1",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/1#g032b-j20-2",
+   "seed": {
+    "subject": "활석",
+    "aspect": null,
+    "ref": "j20-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "광물 한 종류입니다. 1892년 존슨앤드존슨의 과학 책임자 프레더릭 킬머는 반창고 때문에 피부가 짓무른 환자에게 이 광물의 가루를 권했습니다. 이 가루가 이듬해부터 베이비파우더로 팔렸습니다. 2020년 회사는 석면 오염 소송이 잇따르자 이 광물로 만든 베이비파우더를 북미에서 그만 팔았습니다. 이 광물은 무엇일까요?",
+    "answer": "활석",
+    "acceptedAnswers": [
+     "탈크",
+     "탤크"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이것이 대부분인 변성암은 동석(소프스톤)이라 해 조각이나 실험대 상판에 쓴다. 우리나라에서는 충주 활옥동굴 일대가 옛 산지다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "반창고 환자에게 권한 광물 가루 · 베이비파우더",
+     "difWhy": "4 — 탈크는 알아도 한자어 활석을 떠올리기 어려움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 광물 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "모스 굳기계에서 굳기 1의 기준이 되는 가장 무른 광물로, 손톱에도 긁히고 비누처럼 미끄럽다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "모스 굳기 1의 무른 마그네슘 규산염 광물(talc) — 베이비파우더·화장품 원료",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "모스 굳기 1로 교과서에서 접함",
+     "piece": "f04",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '광물 한 종류'가 끝 '이 광물'과 일치. 문장마다 주어가 하나."
+    },
+    "blindQuestion": {
+     "guess": "활석",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "활석",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "활석",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "155",
+      "answer": "다이아몬드",
+      "verdict": "diff",
+      "why": "활석(베이비파우더·석면 소송)과 모스 굳기계 10등급 다이아몬드는 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Johnson%27s_Baby",
+     "https://en.wikipedia.org/wiki/Frederick_Barnett_Kilmer",
+     "https://en.wikipedia.org/wiki/Talc",
+     "https://ko.wikipedia.org/wiki/활석"
+    ],
+    "facts": [
+     {
+      "claim": "1892년 킬머가 반창고로 피부가 상한 환자에게 탈컴(활석) 가루를 권함 · 1893년 베이비파우더 판매",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johnson%27s_Baby",
+      "note": "Johnson's Baby Powder was an invention of Dr. Frederick B. Kilmer, the company's first director of scientific affairs. In 1892, he responded to a letter from a physician about a patient suffering skin irritations after using medicated plasters. Kilmer suggested to use scented Italian talcum powder … In 1893 the talc was packaged in a box"
+     },
+     {
+      "claim": "킬머의 제안 → 1893년 첫 베이비파우더",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Frederick_Barnett_Kilmer",
+      "note": "the company made medicated plasters which could irritate when removed. He suggested sending customers a small container of Italian talc to soothe their skin … in 1893 the company sold the first tins of the famous baby powder."
+     },
+     {
+      "claim": "2020년 활석 베이비파우더 미국·캐나다 판매 중단(석면 소송)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Johnson%27s_Baby",
+      "note": "the company announced on May 20, 2020 that its talc-based Baby Powder would be discontinued in the United States and Canada, following declining sales and backlash from recent lawsuits over allegations that the product contained asbestos"
+     },
+     {
+      "claim": "2020년 판매 중단(2)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Talc",
+      "note": "in 2020 the company stopped selling its baby powder in the US and Canada"
+     },
+     {
+      "claim": "모스 굳기 1 기준 · 손톱에 긁힘 · 비누 같은 촉감",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/활석",
+      "note": "모스 굳기계에서 굳기 1의 기준 광물로 쓰일 만큼 매우 무르다 … 비누처럼 미끄러운 촉감 … 손톱에도 긁히는 낮은 굳기"
+     },
+     {
+      "claim": "동석(소프스톤) · 실험대 상판 · 충주 활옥동굴",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/활석",
+      "note": "활석이 우세한 변성암은 일반적으로 동석 또는 소프스톤(soapstone)이라고 하며, 조각·내열재·건축재로 이용 / 충주시 종민동의 충주 활옥동굴 일대가 활석 광산으로 알려져 있다 / en Talc: surfaces of laboratory table tops"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/활석",
+     "https://en.wikipedia.org/wiki/Talc"
+    ],
+    "hintNote": null,
+    "easiestCue": "베이비파우더 원료 + 석면 소송 — 2009년 '탈크 석면 파동' 뉴스를 기억하는 사람은 풀 수 있음",
+    "worthWhyGen": "베이비파우더의 유래와 석면 논란 — 일상 제품의 원료 · 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '광물' — 예 (정의 단서 '무르다'는 질문에서 뺌)",
+     "unique": "베이비파우더 원료 광물 + 석면 오염 소송 → 활석 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 176자",
+     "crossans 모스 굳기계/모스"
+    ],
+    "job": "job-20"
+   }
+  }
+ ]
+}

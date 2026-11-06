@@ -1,0 +1,307 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-language/1",
+  "midKey": "world-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-language/1#g032b-g032b-j10-2",
+   "seed": {
+    "subject": "바리캉",
+    "aspect": null,
+    "ref": "g032b-j10-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본을 거쳐 우리말에 들어온, 도구를 가리키는 말이 있습니다. 그 유래는 오랫동안 몰랐는데, 도쿄제국대학 정문 앞 이발소 주인이 날에 새겨진 글자에서 파리의 한 기계 제조사 이름을 찾아내며 밝혀졌습니다. 재봉틀과 소총 부품도 만들던 그 회사 이름이 그대로 도구 이름이 된 이 말은 무엇일까요?",
+    "answer": "바리캉",
+    "acceptedAnswers": [
+     "바리깡"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1883년 프랑스 주재 일본 공사관 서기관이 들여왔고, 1873년 징병령 뒤 병사들을 까까머리로 깎으면서 널리 퍼졌습니다. 언어학자 긴다이치 교스케가 외래어 사전을 만들며 이 유래를 확인했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "도쿄제국대학 앞 이발소 · 파리 기계 제조사",
+     "difWhy": "3 — 이발기 이름을 유래 단서로 떠올려야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 외래어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "군에 들어갈 때 머리를 바싹 밀던 손 기계로, 톱니 모양 날 두 장이 좌우로 오가며 머리카락을 자른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "머리를 짧게 미는 이발 기계를 한국·일본에서 부르는 말(프랑스 회사 Bariquand et Marre에서 옴)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "이발기 흔한 말, 어원은 몰라도 들음",
+     "piece": "f02",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '도구를 가리키는 말' 이 끝 ○○ '말' 과 맞음 · 이발소 일화가 길지만 주어가 이어져 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "바리캉",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "바리캉",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "바리캉",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 1,
+     "found": 1,
+     "outside": 4,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j26-10",
+      "answer": "메리야스",
+      "verdict": "diff",
+      "why": "바리캉 외래어 유래와 메리야스는 다른 낱말"
+     },
+     {
+      "old": "505",
+      "answer": "알레르기",
+      "verdict": "diff",
+      "why": "바리캉과 알레르기는 다른 낱말"
+     },
+     {
+      "old": "500",
+      "answer": "독일어",
+      "verdict": "diff",
+      "why": "바리캉과 아르바이트는 다른 낱말"
+     },
+     {
+      "old": "123",
+      "answer": "포르투갈어",
+      "verdict": "diff",
+      "why": "바리캉과 빵 포르투갈어 유래는 다른 낱말"
+     },
+     {
+      "old": "501",
+      "answer": "일본어",
+      "verdict": "diff",
+      "why": "바리캉과 쓰나미 일본어는 다른 낱말"
+     }
+    ],
+    "sources": [
+     "https://ja.wikipedia.org/wiki/バリカン",
+     "https://ko.wikipedia.org/wiki/이발기",
+     "https://fr.wikipedia.org/wiki/Bariquand_et_Marre"
+    ],
+    "facts": [
+     {
+      "claim": "유래는 오랫동안 불명 · 도쿄제국대학 정문 앞 이발소 기타도코 2대 주인이 날의 각인에서 프랑스 Bariquand et Marre 이름을 발견 · 회사 이름이 도구 이름이 됨",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/バリカン",
+      "note": "その語源は長らく不明だった。しかし、金田一京助が三省堂書店で『日本外来語辞典』作成時の調査で、東京帝国大学（東京大学）正門前の理髪店「喜多床」の二代目店主舩越景輝が刃の刻印からフランスのバリカン・エ・マール製作所（仏語：Bariquand et Marre…）の名を発見、社名が名称として広まったものと確認した。"
+     },
+     {
+      "claim": "한국과 일본에서 바리캉이라 부르며 프랑스 회사 바리캉 마르 이름에서 옴",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이발기",
+      "note": "한국과 일본에서는 보통 바리캉(일본어: バリカン)이라고 불리는데, 이는 1883년 일본에 이발기를 처음 소개한 프랑스 회사인 바리캉 마르(Bariquand et Marre)라는 회사 이름에서 딴 이름이다."
+     },
+     {
+      "claim": "파리 회사 · 재봉틀 · 샤스포 소총 부품 제조 · 일본에서 일반어가 됨",
+      "where": "q",
+      "url": "https://fr.wikipedia.org/wiki/Bariquand_et_Marre",
+      "note": "La Maison Bariquand fut fondée en 1834 par Jules Bariquand dans un atelier situé au 127 de la rue Oberkampf à Paris. / En 1860, débute la fabrication de machines à coudre. / pièces pour les fusils Chassepot et Gras / Le terme Barikan (バリカン) est devenu le terme usuel au Japon pour désigner une tondeuse à cheveux"
+     },
+     {
+      "claim": "톱니 날 두 장이 좌우로 오가며 머리를 자름",
+      "where": "h",
+      "url": "https://ja.wikipedia.org/wiki/バリカン",
+      "note": "山形の2枚の刃を左右に往復させて毛髪を切る理容器具である。"
+     },
+     {
+      "claim": "1873년 징병령 · 병사 머리 위생상 바싹 깎음 · 1883년 공사관 서기관이 들여옴",
+      "where": "e",
+      "url": "https://ja.wikipedia.org/wiki/バリカン",
+      "note": "1873年（明治6年）の徴兵令の公布で、入営した兵士の頭髪を衛生上の理由から丸刈りとしたこと… / 1883年（明治16年）に、フランス駐在の日本公使館書記官・長田桂太郎が持ち帰り"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ja.wikipedia.org/wiki/バリカン"
+    ],
+    "hintNote": null,
+    "easiestCue": "이발소 + 날에 새겨진 파리 제조사 이름 → 회사 이름이 된 도구 말(이발 도구 외래어라는 점을 떠올려야 함)",
+    "worthWhyGen": "흔히 쓰는 바리캉이 프랑스 회사 이름이었다는 유래 — 질문 안에 왜 그런 이름인지가 있다",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 — 첫 문장 '도구를 가리키는 말' · 예(세 문장 · 셋째가 약간 김)",
+     "unique": "회사 이름이 그대로 도구 이름 → 이발기 아닌 바리캉",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 163자"
+    ],
+    "job": "job-10"
+   }
+  },
+  {
+   "seedId": "world-language/1#g032b-g032b-j26-10",
+   "seed": {
+    "subject": "메리야스",
+    "aspect": null,
+    "ref": "g032b-j26-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본을 거쳐 우리말에 들어온 옷감·옷 이름입니다. 17세기 후반 스페인·포르투갈 사람들이 일본에 들여온 뜨개 양말을 그 나라 말로 부르던 데서 왔습니다. 스페인어 원말은 지금도 양말·스타킹을 뜻하는데, 이 말은 무엇일까요?",
+    "answer": "메리야스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "일본에서는 크기에 맞춰 늘어난다는 뜻으로 '대소가 없다'는 한자 '莫大小'를 붙여 쓰기도 했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "뜨개 양말을 스페인어로 부르던 데서 온 옷 이름",
+     "difWhy": "3 — 어원 단서 → 이름, 일반인은 막힘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 외래어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "아버지 세대가 와이셔츠 속에 받쳐 입던, 잘 늘어나는 면 편직 천의 희고 얇은 속옷을 이르던 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "신축성 있게 짠 편직 천, 또는 그 천으로 만든 흰 속옷 상의",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "속옷 이름으로 일상에서 흔히 듣는다",
+     "piece": "f08",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '옷감·옷 이름'이 끝 ○○(말)와 맞음. 짧고 어원 단서가 분명."
+    },
+    "blindQuestion": {
+     "guess": "메리야스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "메리야스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "메리야스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4002",
+      "answer": "카스티야",
+      "verdict": "diff",
+      "why": "메리야스 vs 카스텔라 유래 — 다름"
+     },
+     {
+      "old": "g032b:g032b-j10-2",
+      "answer": "바리캉",
+      "verdict": "diff",
+      "why": "메리야스 vs 바리캉 — 다른 일본 경유 외래어"
+     },
+     {
+      "old": "500",
+      "answer": "독일어",
+      "verdict": "diff",
+      "why": "메리야스 vs 아르바이트 — 다름"
+     },
+     {
+      "old": "498",
+      "answer": "보이콧",
+      "verdict": "diff",
+      "why": "메리야스 vs 보이콧 — 다름"
+     },
+     {
+      "old": "g032a:job-26-10",
+      "answer": "에티켓",
+      "verdict": "diff",
+      "why": "메리야스 vs 에티켓 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ja.wikipedia.org/wiki/メリヤス",
+     "https://brunch.co.kr/@insightbank/149"
+    ],
+    "facts": [
+     {
+      "claim": "17세기 후반 스페인·포르투갈에서 양말 형태로 들어옴 · 포르투갈어 meias/스페인어 medias(양말) → 편물 전체",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/メリヤス",
+      "note": "17世紀後半の延宝 - 元禄年間（1673年 - 1704年）に、スペインやポルトガルなどから靴下などの形で編地がもたらされた。そこで、ポルトガル語やスペイン語で「靴下」を意味するポルトガル語の「メイアシュ」（meias）やスペイン語の「メディアス」（medias）から転訛した「メリヤス」が、編み物全般を指すようになった。"
+     },
+     {
+      "claim": "스페인어 medias에서 · 지금도 양말·스타킹 · 셔츠 안 흰 속옷",
+      "where": "q",
+      "url": "https://brunch.co.kr/@insightbank/149",
+      "note": "보통 셔츠 안에 받쳐 입던 희고 얇은 속옷을 이르는 메리야스 ... 스페인어 'medias'에서 왔다 ... 지금도 해당 어권에서는 양말이나 스타킹을 지칭하는 말로 사용 (WebSearch 요약 + 본문 일부 확인)"
+     },
+     {
+      "claim": "莫大小 = 대소가 없다는 설",
+      "where": "e",
+      "url": "https://ja.wikipedia.org/wiki/メリヤス",
+      "note": "「莫大小」という漢字は、伸縮性があり「大小がない」こととする説がある。"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://brunch.co.kr/@insightbank/149"
+    ],
+    "hintNote": null,
+    "easiestCue": "스페인어로 양말을 뜻하는 말에서 온 옷 이름",
+    "worthWhyGen": "윗세대 일상어(속옷 이름)의 뜻밖의 어원(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '옷감·옷 이름' 예",
+     "unique": "스페인·포르투갈 양말 어원 + 일본 경유로 하나(스타킹·니트와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

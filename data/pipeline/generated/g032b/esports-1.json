@@ -1,0 +1,281 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "esports/1",
+  "midKey": "esports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "esports/1#g032b-g032b-j09-5",
+   "seed": {
+    "subject": "파이널 판타지",
+    "aspect": null,
+    "ref": "g032b-j09-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1987년 패밀리 컴퓨터로 첫 편이 나온 일본 롤플레잉 게임 시리즈입니다. 처음 정한 제목이 영국 게임북 시리즈와 겹쳐 바꿔야 했고, 제작진은 같은 알파벳 두 글자로 줄여 부를 이름을 원했습니다. 만든 사카구치 히로노부가 '안 팔리면 업계를 떠나 대학으로 돌아가겠다'는 심정을 담았다고도 전하는 이 시리즈는?",
+    "answer": "파이널 판타지",
+    "acceptedAnswers": [
+     "FF"
+    ],
+    "originalTitleVariants": [
+     "Final Fantasy"
+    ],
+    "explanation": "원래 후보는 '파이팅 판타지'였고, 회사가 파산 위기여서 붙인 이름이라는 설도 널리 퍼져 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1987년 패밀리 컴퓨터 … 같은 알파벳 두 글자로 줄여 부를 이름 (FF)",
+     "difWhy": "2 — 파이널 판타지는 대중적 · 두 글자 약칭 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 게임 시리즈 유래 · 취미 영역",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "스퀘어 에닉스의 대표 롤플레잉 게임 시리즈로, 노란 새 '초코보'와 7편 주인공 클라우드가 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "스퀘어(스퀘어 에닉스)의 일본 롤플레잉 게임 시리즈",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "유명 게임 시리즈",
+     "piece": "f05",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '롤플레잉 게임 시리즈'가 끝 ○○(시리즈)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "파이널 판타지",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "파이널 판타지",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "파이널 판타지",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2888",
+      "answer": "플레이스테이션",
+      "verdict": "diff",
+      "why": "파이널 판타지 시리즈와 플레이스테이션 게임기는 다른 지식"
+     },
+     {
+      "old": "4085",
+      "answer": "세피로스",
+      "verdict": "diff",
+      "why": "파이널 판타지 시리즈와 세피로스 악역은 다른 사실(시리즈 vs 캐릭터)"
+     },
+     {
+      "old": "4080",
+      "answer": "철권",
+      "verdict": "diff",
+      "why": "파이널 판타지와 철권은 다른 시리즈"
+     },
+     {
+      "old": "6247",
+      "answer": "킹 오브 파이터즈",
+      "verdict": "diff",
+      "why": "파이널 판타지와 킹 오브 파이터즈는 다른 시리즈"
+     },
+     {
+      "old": "5335",
+      "answer": "록맨",
+      "verdict": "diff",
+      "why": "파이널 판타지와 록맨은 다른 게임"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Final_Fantasy",
+     "https://en.wikipedia.org/wiki/Final_Fantasy_(video_game)",
+     "https://ko.wikipedia.org/wiki/파이널_판타지"
+    ],
+    "facts": [
+     {
+      "claim": "1987년 NES/패미컴 · 사카구치 · 안 팔리면 업계를 떠나 대학으로 · 'FF' 약칭 원함 · Fighting Fantasy 상표 문제",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Final_Fantasy",
+      "note": "In 1987, Square designer Hironobu Sakaguchi chose to create a new fantasy role-playing game for the cartridge-based NES ... had the game not sold well, he would have quit the business and gone back to college. ... In 2015, Sakaguchi explained the name's origin: the team wanted a title that would abbreviate to \"FF\" ... The name was originally going to be Fighting Fantasy, but due to concerns over trademark conflicts with the roleplaying gamebook series of the same name"
+     },
+     {
+      "claim": "원제 Fighting Fantasy · 같은 이름 게임북 · FF 약칭 · 대학 복귀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Final_Fantasy_(video_game)",
+      "note": "In 2015, Sakaguchi revealed that, from the beginning, the team had wished for a name that could be shortened to FF ... The original working title ... was Fighting Fantasy, but was changed to avoid issues with a gamebook series of the same name ... he would have quit the game industry and gone back to university had the game not sold well"
+     },
+     {
+      "claim": "1987년 12월 18일 패밀리 컴퓨터용 첫 게임 · 스퀘어 에닉스",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/파이널_판타지",
+      "note": "시리즈 첫 게임은 1987년 12월 18일 패밀리 컴퓨터용으로 출시된 동명의 게임 파이널 판타지로"
+     },
+     {
+      "claim": "초코보 스핀오프",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Final_Fantasy",
+      "note": "The spin-off Chocobo series ... also include multiple Final Fantasy elements."
+     },
+     {
+      "claim": "파산 위기 설",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Final_Fantasy",
+      "note": "Though often attributed to the company allegedly facing bankruptcy ... publications have also attributed the name to the company's hopes that the project would solve its financial troubles."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Final_Fantasy"
+    ],
+    "hintNote": null,
+    "easiestCue": "사카구치 히로노부 · 같은 알파벳 두 글자 약칭",
+    "worthWhyGen": "유명 게임 이름이 왜 그렇게 붙었나(약칭 FF · 상표 충돌 · 마지막 각오)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '롤플레잉 게임 시리즈' 예",
+     "unique": "1987 패미컴 · 사카구치로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 172자",
+     "crossans 클라우드"
+    ],
+    "job": "job-09"
+   }
+  },
+  {
+   "seedId": "esports/1#g032b-g032b-j18-4",
+   "seed": {
+    "subject": "프린세스 메이커",
+    "aspect": null,
+    "ref": "g032b-j18-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "PC 게임 시리즈가 있습니다. 1991년 일본의 애니메이션 회사 가이낙스가 처음 내놓았고, 아카이 다카미가 감독과 캐릭터 디자인을 맡았습니다. 마왕을 물리친 용사가 한 소녀를 맡아 18살까지 키우는데, 기르는 방식에 따라 장래가 갈립니다. 일본에서 '미혼 아버지가 급증했다'는 말까지 나온 이 게임은?",
+    "answer": "프린세스 메이커",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Princess Maker"
+    ],
+    "explanation": "4편부터는 다른 회사가 개발을 맡았고, 아카이 다카미는 감수로만 참여했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "마왕을 물리친 용사가 한 소녀를 맡아 18살까지 키웁니다",
+     "difWhy": "3 — 90년대 게임 · 세대 단서",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 게임 이름 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "딸의 일정을 공부·무사 수행·아르바이트로 짜 능력치를 키우는 게임으로, '육성 시뮬레이션' 장르를 굳힌 대표작이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "가이낙스의 딸 키우기 육성 시뮬레이션 게임 시리즈",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "고전 게임, 세대 한정",
+     "piece": "f01",
+     "genPct": 50
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "프린세스 메이커",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "프린세스 메이커",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "프린세스 메이커",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/프린세스_메이커",
+     "https://en.wikipedia.org/wiki/Princess_Maker"
+    ],
+    "facts": [
+     {
+      "claim": "가이낙스 제작 · 아카이 다카미 감독·캐릭터 디자인 · 영웅이 소녀를 딸로 양육 · 18세 결말 · 미혼 아버지 급증",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/프린세스_메이커",
+      "note": "가이낙스에서 제작, 발표한 육성 시뮬레이션 게임 시리즈다. '육성 시뮬레이션 게임'이라는 장르를 확립한 대표적인 작품이며, 감독 및 캐릭터 디자인에 참여한 아카이 다카미 ... 마왕으로부터 왕국을 구한 영웅이 아버지가 되어 소녀를 ... 양육 ... 딸이 18세가 되었을 때는 ... 일본 현지에서는 '전국적으로 미혼의 아버지가 급증'이라 불릴 정도였다."
+     },
+     {
+      "claim": "1991년 첫 작 · Gainax · 아카이 다카미 창작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Princess_Maker",
+      "note": "Following the release of the original Princess Maker in 1991 ... original series creator Takami Akai continued to participate in a supervisory capacity"
+     },
+     {
+      "claim": "4편 GeneX 개발 · 아카이 감수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Princess_Maker",
+      "note": "Unlike past installments, Princess Maker 4 was developed by GeneX, although Takami Akai (original series creator) remained on hand as a supervisor."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/프린세스_메이커"
+    ],
+    "hintNote": null,
+    "easiestCue": "용사가 소녀를 18살까지 키우는 게임",
+    "worthWhyGen": "1990년대 PC 게임 세대의 대표작 · 장르를 연 작품(취미 영역 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 'PC 게임 시리즈' 예",
+     "unique": "가이낙스 1991 딸 키우기 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 168자",
+     "crossans 아르바이트/바이트"
+    ],
+    "job": "job-18",
+    "discarded": "알가치 1 (고유명사 · 게임 이름 확인)"
+   }
+  }
+ ]
+}

@@ -1,0 +1,309 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "physics/3",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/3#g032b-g032b-j04-6",
+   "seed": {
+    "subject": "홀로그램",
+    "aspect": null,
+    "ref": "g032b-j04-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1947년 영국의 한 전기 회사가 특허를 낸 빛 기록 기술이 있습니다. 헝가리 출신 물리학자 데니스 가보르가 전자 현미경의 흐릿한 상을 선명하게 할 방법을 찾다가 뜻밖에 얻은 것입니다. 1960년 레이저가 나온 뒤에야 제대로 쓰였고, 가보르는 1971년 노벨 물리학상을 받았습니다. 이 기술로 만든 상을 무엇이라 할까요?",
+    "answer": "홀로그램",
+    "acceptedAnswers": [
+     "홀로그래피"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "가보르의 원래 방식은 지금도 전자 현미경 분야에서 쓰인다. 1962년 소련과 미국 연구진이 처음으로 실물을 담은 3차원 상을 만들었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "레이저 / 가보르 노벨상 / 빛 기록 기술로 만든 상",
+     "difWhy": "3 — 홀로그램 일상어 · 가보르 단서 거쳐 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 기술 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "지폐의 위조 방지 띠처럼 보는 각도에 따라 그림이 입체로 바뀌어 보이는 상으로, 레이저 빛의 간섭 무늬를 기록해 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "빛의 간섭 무늬를 기록해 입체 상을 되살리는 상(hologram) · 기술은 홀로그래피",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "콘서트·SF·뉴스에서 흔히 씀",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '빛 기록 기술' 이 종류 명사. 끝 '이 기술로 만든 상' 은 그 기술을 바로 이어 받는다."
+    },
+    "blindQuestion": {
+     "guess": "홀로그램",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "홀로그램",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "홀로그램",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4606",
+      "answer": "클라드니 도형",
+      "verdict": "diff",
+      "why": "홀로그램(가보르) vs 클라드니 도형 — 무관"
+     },
+     {
+      "old": "4605",
+      "answer": "체렌코프 복사",
+      "verdict": "diff",
+      "why": "홀로그램 vs 체렌코프 복사 — 무관"
+     },
+     {
+      "old": "2471",
+      "answer": "굴절",
+      "verdict": "diff",
+      "why": "홀로그램 vs 빛의 굴절 — 무관"
+     },
+     {
+      "old": "2476",
+      "answer": "가시광선",
+      "verdict": "diff",
+      "why": "홀로그램 vs 가시광선 — 무관"
+     },
+     {
+      "old": "2472",
+      "answer": "도플러 효과",
+      "verdict": "diff",
+      "why": "홀로그램 vs 도플러 효과 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Holography",
+     "https://en.wikipedia.org/wiki/Dennis_Gabor"
+    ],
+    "facts": [
+     {
+      "claim": "가보르가 전자 현미경 해상도를 높이려다 발명 · 1947년 12월 BTH 특허",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holography",
+      "note": "The Hungarian-British physicist Dennis Gabor invented holography in 1948 while he was looking for a way to improve image resolution in electron microscopes. ... an unexpected result of Gabor's research into improving electron microscopes at the British Thomson-Houston Company (BTH) in Rugby, England, and the company filed a patent in December 1947"
+     },
+     {
+      "claim": "1971년 노벨 물리학상 — 홀로그래피 발명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dennis_Gabor",
+      "note": "Dennis Gabor ... was a Hungarian-British physicist who received the Nobel Prize in Physics in 1971 for his invention of holography."
+     },
+     {
+      "claim": "1960년 레이저 개발 뒤에야 발전",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Holography",
+      "note": "Optical holography did not really advance until the development of the laser in 1960."
+     },
+     {
+      "claim": "지폐 위조 방지(한국 5천·1만·5만 원권 포함) · 간섭 무늬 기록 · 3D",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Holography",
+      "note": "Holograms are often used for security ... South Korean 5000, 10,000, and 50,000-won notes ... A hologram is a recording of an interference pattern that can reproduce a 3D light field using diffraction."
+     },
+     {
+      "claim": "원래 방식은 전자 현미경에서 쓰임 · 1962년 첫 실물 3D",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Holography",
+      "note": "The technique as originally invented is still used in electron microscopy ... the first practical optical holograms that recorded 3D objects to be made in 1962 by Yuri Denisyuk in the Soviet Union and by Emmett Leith and Juris Upatnieks at the University of Michigan"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Holography"
+    ],
+    "hintNote": null,
+    "easiestCue": "레이저가 나온 뒤 쓰인 빛 기록 기술 · 가보르 노벨상(아는 사람만)",
+    "worthWhyGen": "흔히 보는 상이 왜 생겼나 — 전자 현미경을 고치려다 뜻밖에 나온 발명(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '빛 기록 기술' 예(묻는 문장은 그 상)",
+     "unique": "가보르 1971 노벨 = 홀로그래피 하나 · 상/기술 둘 다 받음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 179자",
+     "crossans 레이저"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "physics/3#g032b-g032b-j11-2",
+   "seed": {
+    "subject": "맥놀이",
+    "aspect": null,
+    "ref": "g032b-j11-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "소리에 관한 물리 현상입니다. 성덕대왕신종을 치고 10초쯤 지나면 64.06Hz와 64.38Hz처럼 아주 가까운 두 소리만 남습니다. 종이 완전한 대칭이 아니어서 생기는 일로, 이 때문에 종소리가 '웅~웅~' 물결치듯 길게 이어집니다. 이 현상은 무엇일까요?",
+    "answer": "맥놀이",
+    "acceptedAnswers": [
+     "맥놀이 현상"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한 번 출렁이는 빠르기는 두 진동수의 차이와 같습니다. 성덕대왕신종은 그 차이가 약 0.3Hz라 3초 남짓마다 소리가 오르내립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "가까운 두 소리 · 웅~웅~ 물결치듯 이어짐",
+     "difWhy": "3 — 학교 물리 용어 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "진동수가 조금 다른 두 소리가 겹쳐 소리 세기가 주기적으로 커졌다 작아지는 현상으로, 악기 조율 때 이 떨림이 멎을 때까지 줄을 맞춘다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "진동수가 조금 다른 두 소리가 겹쳐 세기가 주기적으로 오르내리는 현상(beat)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "물리 교과서 용어, 이름은 들어 봄",
+     "piece": "f02",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '소리에 관한 물리 현상' 이 종류. 끝 '이 현상은?' 과 같고 Hz 수치는 쉽게 지나간다."
+    },
+    "blindQuestion": {
+     "guess": "맥놀이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "맥놀이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "맥놀이",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2481",
+      "answer": "작아진다",
+      "verdict": "diff",
+      "why": "맥놀이 현상과 파장-진동수 관계는 다른 지식"
+     },
+     {
+      "old": "4605",
+      "answer": "체렌코프 복사",
+      "verdict": "diff",
+      "why": "맥놀이와 체렌코프 복사는 다른 현상"
+     },
+     {
+      "old": "g032a:g032a-j06-2",
+      "answer": "편광",
+      "verdict": "diff",
+      "why": "맥놀이와 편광은 다른 현상"
+     },
+     {
+      "old": "g032a:g032a-j04-6",
+      "answer": "신기루",
+      "verdict": "diff",
+      "why": "맥놀이와 신기루는 다른 현상"
+     }
+    ],
+    "sources": [
+     "https://koreascience.or.kr/article/JAKO199715875841672.page",
+     "https://ko.wikipedia.org/wiki/맥놀이"
+    ],
+    "facts": [
+     {
+      "claim": "10초 이후 64.06Hz·64.38Hz 한 쌍에 의한 맥놀이 · 종의 축 비대칭 때문",
+      "where": "q",
+      "url": "https://koreascience.or.kr/article/JAKO199715875841672.page",
+      "note": "10초 이후에는 한쌍의 저주파 성분(64.06Hz, 64.38Hz)에 의한 맥놀이 현상이 나타남을 확인할 수 있다. ... 맥놀이 현상은 종의 축에 대한 비대칭 현상에 의해 근접한 고유진동수를 가지기 때문에 발생하며"
+     },
+     {
+      "claim": "맥놀이 = 약간 다른 진동수 두 소리의 간섭, 주기적 볼륨 변화",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/맥놀이",
+      "note": "음향학에서 맥놀이 또는 비트(beat)는 약간 다른 진동수를 가진 두 소리 사이의 간섭 패턴으로, 주기적인 볼륨 변화로 인지되며, 그 변화율은 두 진동수의 차이이다."
+     },
+     {
+      "claim": "조율 때 유니즌에 가까워질수록 맥놀이가 느려짐",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/맥놀이",
+      "note": "지속적인 음을 낼 수 있는 조율 악기로 맥놀이를 쉽게 인식할 수 있다. ... 두 음이 점차 유니즌에 가까워질수록 맥놀이는 느려지고, 너무 느려져서 인지할 수 없게 될 수도 있다."
+     },
+     {
+      "claim": "맥놀이 진동수 = f1 − f2 (64.38−64.06≈0.32Hz)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/맥놀이",
+      "note": "fbeat=f1−f2."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/맥놀이"
+    ],
+    "hintNote": null,
+    "easiestCue": "성덕대왕신종 '웅~웅~' 여운 — 에밀레종 맥놀이를 들어 본 사람만",
+    "worthWhyGen": "에밀레종 소리가 길게 출렁이는 까닭 — 유래·까닭(3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '물리 현상' 예",
+     "unique": "가까운 두 진동수가 겹쳐 출렁임 = 맥놀이 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "material/4",
+  "midKey": "material",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "material/4#g032b-g032b-j08-2",
+   "seed": {
+    "subject": "테트라포드",
+    "aspect": null,
+    "ref": "g032b-j08-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1950년 프랑스 그르노블의 한 수리 연구소에서 피에르 다넬 등이 특허를 낸 콘크리트 블록이 있습니다. 처음에는 모로코 카사블랑카의 화력 발전소가 바닷물을 끌어들이는 취수구를 지키려고 놓았습니다. 물이 정면으로 부딪치지 않고 블록 사이로 돌아 흐르게 만든 이 블록은?",
+    "answer": "테트라포드",
+    "acceptedAnswers": [
+     "테트라포트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "일본에서 특히 많이 쓰여 오키나와 남부에서는 손대지 않은 해변을 찾기 어려울 정도라는 말이 나온다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "물이 정면으로 부딪치지 않고 블록 사이로 돌아 흐르게 만든 이 블록",
+     "difWhy": "3 — 방파제 블록 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 토목 구조물 이름",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "방파제 앞에 겹겹이 쌓여 파도 힘을 흩뜨리는 콘크리트 덩어리로, 그 위에서 낚시하다 틈새로 떨어지는 사고가 잦다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "방파제에 쌓는 다리 넷 달린 콘크리트 소파 블록",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "방파제 사진·상표명으로 흔히 봄",
+     "piece": "f03",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '콘크리트 블록' 이 있어 끝 ○○(블록) 와 일치, 첫 문장이 길지만 주어는 하나"
+    },
+    "blindQuestion": {
+     "guess": "테트라포드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "테트라포드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "테트라포드",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "274",
+      "answer": "제방",
+      "verdict": "diff",
+      "why": "테트라포드 특허와 제방 정의는 다른 지식"
+     },
+     {
+      "old": "2410",
+      "answer": "철근콘크리트",
+      "verdict": "diff",
+      "why": "테트라포드와 철근콘크리트의 원리는 다른 지식"
+     },
+     {
+      "old": "5054",
+      "answer": "후버 댐",
+      "verdict": "diff",
+      "why": "테트라포드와 후버 댐 건설은 다른 지식"
+     },
+     {
+      "old": "6356",
+      "answer": "싼샤 댐",
+      "verdict": "diff",
+      "why": "테트라포드와 싼샤 댐은 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tetrapod_(structure)",
+     "https://ko.wikipedia.org/wiki/테트라포드"
+    ],
+    "facts": [
+     {
+      "claim": "1950년 그르노블 연구소 다넬 등 특허 · 카사블랑카 발전소 취수구에 처음 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tetrapod_(structure)",
+      "note": "Tetrapods were originally developed in 1950 by Pierre Danel and Paul Anglès d'Auriac of Laboratoire Dauphinois d'Hydraulique (now Artelia) in Grenoble, France, who received a patent for the design. ... Tetrapods were first used at the thermal power station in Roches Noires in Casablanca, Morocco, to protect the sea water intake."
+     },
+     {
+      "claim": "물이 정면이 아니라 둘레로 흐르게 해 파도 힘을 흩뜨림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tetrapod_(structure)",
+      "note": "use a tetrahedral shape to dissipate the force of incoming waves by allowing water to flow around rather than against them, and to reduce displacement by interlocking."
+     },
+     {
+      "claim": "방파제 침식 방지 콘크리트 블록 · 추락 사고 빈번",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/테트라포드",
+      "note": "방파제 또는 방조제의 침식을 방지하기 위해 사용하는 다리 네 개 달린 콘크리트 블록이다. 아파트 2~3층 높이의 테트라포드는 부주의로 인한 추락 사고가 빈번하고"
+     },
+     {
+      "claim": "일본·오키나와",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tetrapod_(structure)",
+      "note": "Their proliferation on the island of Okinawa ... has made it difficult for tourists to find unaltered beaches and shoreline, especially in the southern half of the island."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/테트라포드"
+    ],
+    "hintNote": null,
+    "easiestCue": "바닷물 취수구를 지키는 콘크리트 블록 · 물이 사이로 흐름",
+    "worthWhyGen": "바닷가에서 늘 보는 블록이 왜·어디서 생겼는지(발전소 취수구 보호)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '콘크리트 블록' 예",
+     "unique": "카사블랑카·1950 특허로 다른 소파 블록과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  }
+ ]
+}

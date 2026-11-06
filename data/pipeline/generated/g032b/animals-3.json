@@ -1,0 +1,312 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "animals/3",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/3#g032b-g032b-j05-6",
+   "seed": {
+    "subject": "임연수어",
+    "aspect": null,
+    "ref": "g032b-j05-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "찬 바다에 사는 한 생선의 이름에는 사람 이름이 들어 있다는 이야기가 전합니다. 1820년쯤 서유구가 쓴 『난호어목지』에 따르면, 이 물고기를 잘 낚던 사람의 이름이 그대로 붙었다고 합니다. 일본에서는 '홋케'라 부르는 이 생선은 무엇일까요?",
+    "answer": "임연수어",
+    "acceptedAnswers": [
+     "이면수",
+     "임연수",
+     "이면수어"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "가장 오래된 기록인 『동국여지승람』(1481)에는 소리는 같고 한자가 다른 臨淵水魚로 적혔다. 민간 어원이며 어획이 늘던 시대를 반영한 이야기로 보기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "일본에서는 홋케 / 서유구 난호어목지",
+     "difWhy": "4 — 홋케를 일반인은 모름, 생선은 알아도 단서가 어려움",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 생선 이름의 유래, 일상 음식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "노란 바탕에 검은 세로띠가 있는 쥐노래미 무리의 찬물 생선으로, 구이로 흔히 먹고 껍질이 특히 고소하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "쥐노래미과의 찬물 생선 — 구이·껍질쌈으로 먹음",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "생선구이집 메뉴로 접함",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '찬 바다에 사는 한 생선' 이 끝 ○○ '생선' 과 일치 · 『난호어목지』는 서명일 뿐 뜻 해독을 막지 않음"
+    },
+    "blindQuestion": {
+     "guess": "임연수어",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "임연수어",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "임연수어",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5427",
+      "answer": "도루묵",
+      "verdict": "diff",
+      "why": "임연수어 이름 유래 vs 도루묵 — 다른 생선"
+     },
+     {
+      "old": "4231",
+      "answer": "전기뱀장어",
+      "verdict": "diff",
+      "why": "임연수어 vs 전기뱀장어 — 무관"
+     },
+     {
+      "old": "1404",
+      "answer": "연어",
+      "verdict": "diff",
+      "why": "임연수어 vs 연어 회귀 — 무관"
+     },
+     {
+      "old": "3363",
+      "answer": "연어",
+      "verdict": "diff",
+      "why": "임연수어 vs 연어와 곰 — 무관"
+     },
+     {
+      "old": "6482",
+      "answer": "복어",
+      "verdict": "diff",
+      "why": "임연수어 vs 복어 해저 둥지 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/임연수어",
+     "https://en.wikipedia.org/wiki/Okhotsk_atka_mackerel"
+    ],
+    "facts": [
+     {
+      "claim": "『난호어목지』(1820년경)에 林延壽魚 · 임연수라는 사람이 잘 낚아 이름이 붙었다는 민간어원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/임연수어",
+      "note": "林延壽魚라는 표기는 《난호어목지》(1820년경)에 등장하며, 임연수라는 사람이 물고기를 잘 낚아서 이름이 유래했다는 민간어원도 같이 기록되어 있다."
+     },
+     {
+      "claim": "일본 이름 홋케 · 한국 이름 임연수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Okhotsk_atka_mackerel",
+      "note": "It is commonly known as hokke (ホッケ) in Japan and imyeonsu in Korean."
+     },
+     {
+      "claim": "노랑 바탕 검은 세로띠 · 쥐노래미와 비슷",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/임연수어",
+      "note": "몸길이 45cm 가량으로 모양이 쥐노래미와 비슷하나 ... 몸빛은 노랑 바탕에 다섯 줄의 검은색 세로띠가 있다."
+     },
+     {
+      "claim": "동국여지승람(1481) 臨淵水魚 · 어획 발전의 설화화 풀이",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/임연수어",
+      "note": "임연수어가 등장하는 가장 오래된 문헌은 《동국여지승람》(1481)에 기록된 臨淵水魚이다. ... 김양섭은 이것이 당시 어획 기술의 발전에 따라 조업량이 늘어났던 사실이 설화로 표현된 것이라고 풀이했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/임연수어"
+    ],
+    "hintNote": null,
+    "easiestCue": "사람 이름이 붙었다는 동해 생선 — 이 유래를 알면 풂",
+    "worthWhyGen": "밥상에 흔한 생선 이름이 사람 이름에서 왔다는 유래(민간어원) — 19 §9-1 ②",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '생선' 예",
+     "unique": "난호어목지 · 사람 이름 · 홋케 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "animals/3#g032b-g032b-j25-7",
+   "seed": {
+    "subject": "개복치",
+    "aspect": null,
+    "ref": "g032b-j25-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바다에 사는 커다란 물고기입니다. 린네가 붙인 학명 '몰라(Mola)'는 라틴어로 '맷돌'을 뜻하는데, 둥글고 거친 잿빛 몸이 맷돌을 닮았기 때문입니다. 한 번에 3억 개가 넘는 알을 낳아, 알을 가장 많이 낳는 척추동물로 꼽히는 이 물고기는?",
+    "answer": "개복치",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "살아남은 새끼는 어른이 되기까지 몸무게가 6천만 배까지 늘어, 척추동물 가운데 가장 크게 자라는 축에 든다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "알을 가장 많이 낳는 척추동물 · 둥글고 거친 잿빛 몸",
+     "difWhy": "2 — 개복치 밈으로 유명 · 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 동물 사실",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "꼬리지느러미가 사라져 몸 뒤가 잘린 듯 뭉툭한 둥글넓적한 거대 바닷물고기로, 해파리를 주로 먹고 해수면에 떠올라 몸을 데운다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "몸이 둥글납작하고 꼬리가 짧은 큰 바닷물고기(Mola mola)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "밈과 수족관으로 유명",
+     "piece": "f01",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '바다에 사는 커다란 물고기', 끝 ○○ '물고기'. 학명 설명이 풀이됨"
+    },
+    "blindQuestion": {
+     "guess": "개복치",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "개복치",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "개복치",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1404",
+      "answer": "연어",
+      "verdict": "diff",
+      "why": "개복치 vs 연어 — 다른 물고기·특성"
+     },
+     {
+      "old": "246",
+      "answer": "해마",
+      "verdict": "diff",
+      "why": "개복치 vs 해마 — 다름"
+     },
+     {
+      "old": "3363",
+      "answer": "연어",
+      "verdict": "diff",
+      "why": "개복치 vs 연어 거름 — 다름"
+     },
+     {
+      "old": "4231",
+      "answer": "전기뱀장어",
+      "verdict": "diff",
+      "why": "개복치 vs 전기뱀장어 — 다름"
+     },
+     {
+      "old": "1408",
+      "answer": "흰동가리",
+      "verdict": "diff",
+      "why": "개복치 vs 흰동가리 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/개복치",
+     "https://en.wikipedia.org/wiki/Ocean_sunfish"
+    ],
+    "facts": [
+     {
+      "claim": "린네 학명 Mola mola = 라틴어 맷돌 · 3억 개 넘는 알",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/개복치",
+      "note": "18세기에 린네는 개복치의 학명을 Mola mola라고 지었는데 이는 라틴어로 맷돌을 뜻한다. … 알을 가장 많이 낳는 어류이기도 한데 한 번에 3억 개가 넘는 알을 낳는다."
+     },
+     {
+      "claim": "mola = millstone(회색·거친 질감·둥근 몸) · 척추동물 중 가장 많은 알 3억",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ocean_sunfish",
+      "note": "its epithet mola is Latin for \"millstone\", which the fish resembles because of its gray color, rough texture, and rounded body. … Females of the species can produce more eggs than any other known vertebrate, up to 300 million at a time."
+     },
+     {
+      "claim": "몸이 납작",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/개복치",
+      "note": "몸은 크기가 매우 크고 납작하고 넓으며"
+     },
+     {
+      "claim": "6천만 배 성장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ocean_sunfish",
+      "note": "The fry that survive can grow up to 60 million times their original weight before reaching adult proportions, arguably the most extreme size growth of any vertebrate animal."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "알을 가장 많이 낳는 척추동물(3억 개)",
+    "worthWhyGen": "누구나 아는 '멘탈 개복치'의 진짜 모습과 이름 뜻(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '커다란 물고기' 예",
+     "unique": "학명 Mola + 3억 개 알로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "작은 일에도 쉽게 죽는다는 이야기 때문에 한국 인터넷에서 '마음 약한 사람'의 별명이 된 납작한 물고기다."
+      },
+      "why": "밴댕이 ← '마음 약한' 만으론 밴댕이 소갈딱지로 샘 · 꼬리 없는 잘린 몸(en Ocean sunfish clavus · truncated) · 해파리 주식 · 해수면 떠오름(ko 개복치)으로 가름 · 출처 없는 '마음 약한' 별명은 뺌"
+     }
+    ],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

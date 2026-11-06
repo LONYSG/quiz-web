@@ -1,0 +1,453 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "classical/4",
+  "midKey": "classical",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "classical/4#g032b-g032b-j22-2",
+   "seed": {
+    "subject": "오케스트라",
+    "aspect": null,
+    "ref": "g032b-j22-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "교향곡을 연주하는 큰 악단을 가리키는 말입니다. 이 말은 본래 고대 그리스 극장에서 무대 앞, 합창단이 노래하고 춤추던 마당의 이름이었습니다. 이 말은 무엇일까요?",
+    "answer": "오케스트라",
+    "acceptedAnswers": [
+     "관현악단"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "17세기 말 다시 쓰이기 시작한 이 낱말은 18세기 초 프랑스에서 연주자를 뜻하게 되었다. 큰 편성은 70명에서 100명이 넘기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "교향곡을 연주하는 큰 악단",
+     "difWhy": "1 — 단서가 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 어원 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "지휘자의 손짓에 맞춰 바이올린·트럼펫·팀파니 연주자 수십 명이 함께 소리를 내는 단체",
+    "generalHintVersion": "hint-v7",
+    "identity": "관악기·현악기·타악기 연주자가 모인 서양 음악의 큰 연주 단체",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 단어",
+     "piece": "f02",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "세 문장 모두 짧고 첫 문장에 '악단' 이 있어 끝 ○○ 와 일치"
+    },
+    "blindQuestion": {
+     "guess": "오케스트라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오케스트라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오케스트라",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5277",
+      "answer": "드보르자크",
+      "verdict": "diff",
+      "why": "오케스트라 어원(그리스 극장 마당)은 드보르자크·코러스·튜바·오보에·팀파니와 다른 지식이다"
+     },
+     {
+      "old": "1386",
+      "answer": "코러스",
+      "verdict": "diff",
+      "why": "오케스트라 어원(그리스 극장 마당)은 드보르자크·코러스·튜바·오보에·팀파니와 다른 지식이다"
+     },
+     {
+      "old": "1139",
+      "answer": "튜바",
+      "verdict": "diff",
+      "why": "오케스트라 어원(그리스 극장 마당)은 드보르자크·코러스·튜바·오보에·팀파니와 다른 지식이다"
+     },
+     {
+      "old": "236",
+      "answer": "오보에",
+      "verdict": "diff",
+      "why": "오케스트라 어원(그리스 극장 마당)은 드보르자크·코러스·튜바·오보에·팀파니와 다른 지식이다"
+     },
+     {
+      "old": "1388",
+      "answer": "팀파니",
+      "verdict": "diff",
+      "why": "오케스트라 어원(그리스 극장 마당)은 드보르자크·코러스·튜바·오보에·팀파니와 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Orchestra",
+     "https://ko.wikipedia.org/wiki/관현악단"
+    ],
+    "facts": [
+     {
+      "claim": "그리스 극장에서 합창단을 위한 무대 앞 자리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Orchestra",
+      "note": "The term orchestra derives from the Greek ὀρχήστρα (orchestra), the name for the area in front of a stage in ancient Greek theatre reserved for the Greek chorus."
+     },
+     {
+      "claim": "합창단이 노래하고 춤추던 장소 · 17세기 말 부활 · 18세기 초 프랑스 연주자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/관현악단",
+      "note": "'오케스트라(ορχήστρα)'라는 말은 본래 고대 그리스 합창단이 노래하고 춤추던 장소를 뜻하였다. 이 낱말은 17세기 말에 다시 부활하여 18세기 초 프랑스에서는 연주자를 의미하게 되었다."
+     },
+     {
+      "claim": "70명~100명 넘게",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Orchestra",
+      "note": "The number of musicians employed in a given performance may vary from seventy to over one hundred"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Orchestra"
+    ],
+    "hintNote": null,
+    "easiestCue": "교향곡을 연주하는 큰 악단",
+    "worthWhyGen": "매일 쓰는 낱말이 그리스 극장의 춤 마당 이름에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '악단·말' 예",
+     "unique": "큰 악단 — 관현악단은 변형(같은 대상)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 트럼펫/팀파니"
+    ],
+    "job": "job-22"
+   }
+  },
+  {
+   "seedId": "classical/4#g032b-g032b-j22-3",
+   "seed": {
+    "subject": "세레나데",
+    "aspect": null,
+    "ref": "g032b-j22-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "해 질 녘 사랑하는 여인의 창가 아래에서 남자가 기타 같은 악기를 타며 부르던 사랑 노래를 가리키는 음악 용어입니다. 이름은 이탈리아어에서 왔고, '저녁'이라는 낱말의 영향을 받았다고 합니다. 이 말은?",
+    "answer": "세레나데",
+    "acceptedAnswers": [
+     "소야곡"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "18세기에는 해거름 야외 여흥을 위해 여러 악장으로 짠 기악곡도 이 이름으로 불렀다. 바로크 시대에는 밤에 야외에서 불빛 아래 공연하는 칸타타풍 작품을 가리키기도 했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "창가 아래에서 남자가 부르던 사랑 노래",
+     "difWhy": "2 — 음악 용어 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 음악 용어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "모차르트의 '아이네 클라이네 나흐트무지크', 슈베르트의 같은 이름 가곡이 대표곡인 갈래",
+    "generalHintVersion": "hint-v7",
+    "identity": "연인의 창가에서 부르는 저녁 사랑 노래 · 그런 갈래의 악곡(소야곡)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "클래식·소야곡 어휘",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '사랑 노래를 가리키는 음악 용어'로 종류가 분명, 이탈리아어 어원 한 줄"
+    },
+    "blindQuestion": {
+     "guess": "세레나데",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "세레나데",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "세레나데",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j16-2",
+      "answer": "피날레",
+      "verdict": "diff",
+      "why": "세레나데는 피날레·프레스토·아카펠라·황제 현악 사중주·오케스트라와 다른 음악 용어다"
+     },
+     {
+      "old": "225",
+      "answer": "프레스토",
+      "verdict": "diff",
+      "why": "세레나데는 피날레·프레스토·아카펠라·황제 현악 사중주·오케스트라와 다른 음악 용어다"
+     },
+     {
+      "old": "g032a:g032a-j12-3",
+      "answer": "아카펠라",
+      "verdict": "diff",
+      "why": "세레나데는 피날레·프레스토·아카펠라·황제 현악 사중주·오케스트라와 다른 음악 용어다"
+     },
+     {
+      "old": "6193",
+      "answer": "현악 사중주",
+      "verdict": "diff",
+      "why": "세레나데는 피날레·프레스토·아카펠라·황제 현악 사중주·오케스트라와 다른 음악 용어다"
+     },
+     {
+      "old": "g032b:g032b-j22-2",
+      "answer": "오케스트라",
+      "verdict": "diff",
+      "why": "세레나데는 피날레·프레스토·아카펠라·황제 현악 사중주·오케스트라와 다른 음악 용어다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Serenade",
+     "https://ko.wikipedia.org/wiki/세레나데"
+    ],
+    "facts": [
+     {
+      "claim": "창가에서 연인에게 · 저녁에 · 기타·류트 반주",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Serenade",
+      "note": "a serenade is a musical greeting performed for a lover ... The classic usage would be from a lover to his lady love through a window. It was considered an evening piece ... typically sung by one person accompanying himself on a portable instrument, most likely a guitar, lute"
+     },
+     {
+      "claim": "이탈리아어 serenata · sera '저녁' 영향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Serenade",
+      "note": "The term comes from the Italian word serenata, which itself derives from the Latin serenus. The sense was influenced by Italian sera \"evening\""
+     },
+     {
+      "claim": "해거름 창가에서 남성이 부르는 사랑의 노래 · 소야곡 · 저녁음악",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/세레나데",
+      "note": "세레나데(영어: serenade, 이탈리아어: serenata; 소야곡) ... '저녁음악'이라는 뜻 ... 성악의 세레나데에서는 해거름에 사랑하는 여성이 기대고 있는 창가에서 남성이 부르는 사랑의 노래이며"
+     },
+     {
+      "claim": "모차르트 13곡 · 아이네 클라이네 나흐트무지크 · 기악 여흥",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/세레나데",
+      "note": "기악에서도 해거름의 휴식 때에 사람들에게 들려주기 위하여 만든 음악을 세레나데라고 한다 ... 모차르트의 13곡의 세레나데(13번인 《아이네 클라이네 나흐트무지크》 포함)는 이 종류의 전형적인 형태이다."
+     },
+     {
+      "claim": "바로크: 밤 야외 · 인공 불빛 · 칸타타풍",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Serenade",
+      "note": "In the Baroque era, a serenata ... was a typically celebratory or eulogistic dramatic cantata for two or more singers and orchestra, performed outdoors in the evening by artificial light."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/세레나데"
+    ],
+    "hintNote": null,
+    "easiestCue": "여인의 창가 아래에서 부르는 사랑 노래",
+    "worthWhyGen": "흔히 쓰는 '사랑의 ~' 말의 본뜻과 '저녁' 유래(19 §9-1 ②·③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '음악 용어' 예",
+     "unique": "창가 사랑 노래 — 하나 · 소야곡은 같은 대상 우리말 변형",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 슈베르트/모차르트"
+    ],
+    "job": "job-22"
+   }
+  },
+  {
+   "seedId": "classical/4#g032b-g032b-j23-2",
+   "seed": {
+    "subject": "랩소디",
+    "aspect": null,
+    "ref": "g032b-j23-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "형식이 자유롭고 분위기가 크게 바뀌는 한 악장짜리 기악곡을 가리키는 음악 용어가 있습니다. 이 말은 고대 그리스에서 호메로스의 서사시를 읊으며 떠돌던 낭송가를 뜻하는 말에서 왔습니다. 리스트가 헝가리 집시 선율로 여러 곡을 남긴 이 형식은?",
+    "answer": "랩소디",
+    "acceptedAnswers": [
+     "광시곡"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 제목을 단 첫 피아노 독주곡은 1810년 체코의 토마셰크가 낸 15곡으로 알려져 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "리스트가 헝가리 집시 선율로 여러 곡을 남긴 이 형식",
+     "difWhy": "3 — 음악 형식 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 음악 용어 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "퀸의 '보헤미안 ~'와 거슈윈의 '~ 인 블루'처럼 곡 제목에 붙는 자유로운 형식의 이름이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "자유로운 형식의 한 악장 기악곡(광시곡)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "보헤미안 랩소디 등 이름은 익숙하나 장르 의미는 모호",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한 악장짜리 기악곡을 가리키는 음악 용어' 가 종류. 끝 '이 형식은?' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "랩소디",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "랩소디",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "랩소디",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4323",
+      "answer": "라흐마니노프",
+      "verdict": "diff",
+      "why": "랩소디 어원은 라흐마니노프·라이브 에이드·클라리넷(랩소디 인 블루)·피날레와 다른 지식이다"
+     },
+     {
+      "old": "1877",
+      "answer": "라이브 에이드",
+      "verdict": "diff",
+      "why": "랩소디 어원은 라흐마니노프·라이브 에이드·클라리넷(랩소디 인 블루)·피날레와 다른 지식이다"
+     },
+     {
+      "old": "3745",
+      "answer": "클라리넷",
+      "verdict": "diff",
+      "why": "랩소디 어원은 라흐마니노프·라이브 에이드·클라리넷(랩소디 인 블루)·피날레와 다른 지식이다"
+     },
+     {
+      "old": "3831",
+      "answer": "라이브 에이드",
+      "verdict": "diff",
+      "why": "랩소디 어원은 라흐마니노프·라이브 에이드·클라리넷(랩소디 인 블루)·피날레와 다른 지식이다"
+     },
+     {
+      "old": "g032a:g032a-j16-2",
+      "answer": "피날레",
+      "verdict": "diff",
+      "why": "랩소디 어원은 라흐마니노프·라이브 에이드·클라리넷(랩소디 인 블루)·피날레와 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/광시곡",
+     "https://en.wikipedia.org/wiki/Rhapsode",
+     "https://en.wikipedia.org/wiki/Rhapsody_(music)"
+    ],
+    "facts": [
+     {
+      "claim": "형식 자유 · 대조적 분위기 · 단일 악장 · 그리스어 서사시 낭송가에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/광시곡",
+      "note": "랩소디(rhapsody) 또는 광시곡(狂詩曲)은 음악에서 에피소드적이지만 통합되어 있고, 형식이 자유로우며, 매우 대조적인 분위기, 색채, 조성의 범위를 특징으로 하는 단일 악장 형식의 작품이다. … 랩소디라는 단어는 서사시를 낭송하는 사람을 뜻하는 그리스어 ῥαψῳδός(rhapsōidos)에서 유래했으며"
+     },
+     {
+      "claim": "랍소도스 = 호메로스 서사시를 읊는 떠돌이 낭송가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rhapsode",
+      "note": "Rhapsodes notably performed the epics of Homer (Iliad and Odyssey) … implying that rhapsodes were itinerant performers, moving from town to town."
+     },
+     {
+      "claim": "리스트 · 집시(Romani) 바이올린 양식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rhapsody_(music)",
+      "note": "a large-scale nationalistic orchestral \"epic\"—a fashion initiated by Franz Liszt. Interest in Romani violin playing beginning in the mid-19th century led to a number of important pieces in that style, in particular by Liszt"
+     },
+     {
+      "claim": "첫 피아노 독주곡 토마셰크 15곡 1810",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rhapsody_(music)",
+      "note": "The first solo piano compositions with the title, however, were Václav Jan Tomášek’s fifteen Rhapsodies, the first of which appeared in 1810."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "리스트의 헝가리 ~ · 자유로운 형식의 한 악장 기악곡",
+    "worthWhyGen": "알가치 3 — '보헤미안 랩소디' 로 누구나 아는 말의 유래(서사시 낭송가)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '…기악곡을 가리키는 음악 용어'",
+     "unique": "리스트·헝가리 — 헝가리 무곡(브람스)과 갈림 · 질문은 형식 이름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

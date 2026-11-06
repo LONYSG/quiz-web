@@ -1,0 +1,145 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "politics/3",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/3#g032b-g032b-j03-7",
+   "seed": {
+    "subject": "로 대 웨이드",
+    "aspect": null,
+    "ref": "g032b-j03-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 1월 미국 연방대법원이 7대 2로 내린 한 판결이 있습니다. 소송을 낸 텍사스 여성 노마 매코비는 신원을 감추려 법정용 가명을 썼고, 상대는 댈러스 카운티 지방검사였습니다. 판결 이름은 그 가명의 성과 검사의 성을 이은 것입니다. 2022년 돕스 판결로 뒤집힌 이 판결은?",
+    "answer": "로 대 웨이드",
+    "acceptedAnswers": [
+     "로 대 웨이드 사건",
+     "로 대 웨이드 판결"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "매코비는 판결 전에 아이를 낳아 입양 보냈습니다. 뒤에 낙태 반대 운동에 나섰지만, 죽기 전 다큐멘터리에서 돈을 받고 한 일이었다고 털어놓았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "2022년 돕스 판결로 뒤집힌 이 판결",
+     "difWhy": "3 — 낙태 판결 이름 · 법 지식 있으면 바로, 아니면 힌트",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 미국 법 판례 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "미국 헌법이 임신을 중단할지 고를 여성의 권리를 보호한다고 본 판결로, 반세기 동안 미국 낙태 논쟁의 한가운데 있었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1973년 미국 연방대법원의 낙태권 판결 Roe v. Wade",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "미국 뉴스에서 낙태권 판결로 자주 언급",
+     "piece": "f04",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '판결'이 종류 명사, 끝 ○○ '판결'. 가명·검사 설명이 이름 구성 단서"
+    },
+    "blindQuestion": {
+     "guess": "로 대 웨이드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "로 대 웨이드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "로 대 웨이드",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5114",
+      "answer": "명백하고 현존하는 위험",
+      "verdict": "diff",
+      "why": "새 정답 로 대 웨이드의 지식(유래·사실)과 옛 정답 명백하고 현존하는 위험의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Roe_v._Wade",
+     "https://ko.wikipedia.org/wiki/로_대_웨이드_사건"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 1월 7대 2 · 노마 매코비 가명 · 상대 댈러스 지방검사 헨리 웨이드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Roe_v._Wade",
+      "note": "The case was brought by Norma McCorvey—under the legal pseudonym \"Jane Roe\" ... filed a lawsuit ... against her local district attorney, Henry Wade ... In January 1973, the Supreme Court issued a 7–2 decision in McCorvey's favor / Henry Wade, who represented the State of Texas as the Dallas County District Attorney."
+     },
+     {
+      "claim": "2022 돕스 판결로 뒤집힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Roe_v._Wade",
+      "note": "the Supreme Court overruled Roe in 2022 in Dobbs v. Jackson Women's Health Organization."
+     },
+     {
+      "claim": "가명 제인 로(본명 노마 매코비) · 7대 2 · 2022년 6월 24일 도브스 판결로 무효",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/로_대_웨이드_사건",
+      "note": "2022년 6월 24일에 도브스 대 잭슨 여성 건강 기구 사건에 대한 판결에 의하여 무효화되었다. ... 1973년 연방 대법원은 다수의견 7, 소수의견 2로 원고승소판결을 했다. ... 제소인인 제인 로 (Jane Roe)의 본명은 노마 매코비(Norma McCorvey)"
+     },
+     {
+      "claim": "임신 중단 선택권을 헌법이 보호",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Roe_v._Wade",
+      "note": "the Court ruled that the Constitution of the United States protected the right of pregnant women to choose to have an abortion before the point of fetal viability."
+     },
+     {
+      "claim": "아이 출산 후 입양 · 낙태 반대 운동 · 다큐에서 돈 받았다고",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/로_대_웨이드_사건",
+      "note": "그녀는 낙태하기 원했던 아이를 낳았고 수십년 후에는 낙태 반대운동에 앞장선 것으로 알려져 왔으나 죽기 직전 다큐멘터리에서 한 인터뷰에서 그것은 낙태 반대 운동단체들에게 돈을 받아 그런 것이며 / en: the baby was adopted by a couple in Texas three days after her birth"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Roe_v._Wade"
+    ],
+    "hintNote": null,
+    "easiestCue": "2022년에 뒤집힌 1973년 미국 대법원 판결",
+    "worthWhyGen": "뉴스에 자주 나온 판결 이름이 왜 '로'와 '웨이드'인지",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '판결' 예",
+     "unique": "1973 · 2022 뒤집힘 — 하나(같은 날 도 대 볼턴은 조지아)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  }
+ ]
+}

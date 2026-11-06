@@ -1,0 +1,324 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "politics/4",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/4#g032b-g032b-j03-8",
+   "seed": {
+    "subject": "국제앰네스티",
+    "aspect": null,
+    "ref": "g032b-j03-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1961년 런던에서 시작된 한 인권 단체가 있습니다. 변호사 피터 베넨슨은 포르투갈 대학생 둘이 '자유를 위하여' 건배했다는 까닭으로 7년형을 받았다는 기사를 읽었다고 회고했습니다. 그는 그해 5월 신문 '옵서버'에 '잊힌 수인들'이라는 호소문을 실었고, 그 호소의 제목에서 단체 이름이 나왔습니다. 1977년 노벨 평화상을 받은 이 단체는?",
+    "answer": "국제앰네스티",
+    "acceptedAnswers": [
+     "앰네스티",
+     "앰네스티 인터내셔널",
+     "국제사면위원회"
+    ],
+    "originalTitleVariants": [
+     "Amnesty International"
+    ],
+    "explanation": "1962년 9월 30일 지금 이름이 정식으로 붙었습니다. 베넨슨은 1966년 영국 정보기관이 단체에 스며들었다고 주장하며 회장에서 물러났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1977년 노벨 평화상을 받은 이 단체",
+     "difWhy": "3 — 긴 일화 속에서 단체 이름을 떠올려야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 유명 국제 인권 단체 이름과 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "철조망에 둘러싸인 촛불을 로고로 쓰며, 생각과 신념 때문에 갇힌 '양심수' 석방과 사형 폐지 운동으로 알려진 단체다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "양심수 석방 운동으로 알려진 국제 인권 단체 Amnesty International",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "뉴스에 자주 나오는 인권 단체",
+     "piece": "f05",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '인권 단체'가 끝 ○○(단체)와 일치. 베넨슨 일화가 길지만 모두 이 단체 이야기."
+    },
+    "blindQuestion": {
+     "guess": "국제앰네스티",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "국제앰네스티",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "국제앰네스티",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j31-5",
+      "answer": "국제원자력기구",
+      "verdict": "diff",
+      "why": "새 정답 국제앰네스티의 지식(유래·사실)과 옛 정답 국제원자력기구의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6739",
+      "answer": "국경 없는 의사회",
+      "verdict": "diff",
+      "why": "새 정답 국제앰네스티의 지식(유래·사실)과 옛 정답 국경 없는 의사회의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:job-03-9",
+      "answer": "유니세프",
+      "verdict": "diff",
+      "why": "새 정답 국제앰네스티의 지식(유래·사실)과 옛 정답 유니세프의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6047",
+      "answer": "남극 조약",
+      "verdict": "diff",
+      "why": "새 정답 국제앰네스티의 지식(유래·사실)과 옛 정답 남극 조약의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j31-5",
+      "answer": "OECD",
+      "verdict": "diff",
+      "why": "새 정답 국제앰네스티의 지식(유래·사실)과 옛 정답 OECD의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Amnesty_International",
+     "https://ko.wikipedia.org/wiki/국제_앰네스티"
+    ],
+    "facts": [
+     {
+      "claim": "1961 런던 · 베넨슨 · 포르투갈 학생 둘 '자유를 위해 건배' 7년형 기사 · 옵서버 '잊힌 수인들' · 1977 노벨 평화상",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Amnesty_International",
+      "note": "AI was founded in London in 1961 by the lawyer Peter Benenson. In what he called \"The Forgotten Prisoners\" and \"An Appeal for Amnesty\", which appeared on the front page of the British newspaper The Observer, Benenson wrote about two students who toasted to freedom in Portugal ... In 1977, it was awarded the Nobel Peace Prize."
+     },
+     {
+      "claim": "베넨슨 본인 회고 · 7년형 · 기사 출처는 찾지 못함 · 1961년 5월 28일 게재 · 'Appeal for Amnesty' 에서 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Amnesty_International",
+      "note": "According to Benenson's own account ... he read that two Portuguese students from Coimbra had been sentenced to seven years of imprisonment in Portugal for allegedly \"having drunk a toast to liberty\". Researchers have never traced the alleged newspaper article in question. ... on 28 May 1961, published Benenson's article \"The Forgotten Prisoners\" ... It marked the launch of \"Appeal for Amnesty, 1961\" ... the organization had been known simply as \"Amnesty\"."
+     },
+     {
+      "claim": "영국인 변호사 베넨슨 등이 설립 · 촛불·철조망 로고",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/국제_앰네스티",
+      "note": "영국사람인 페터 베넨슨(1921년-2005년)변호사, 에릭 베이커, 루이스 쿠트너가 설립하였다. 앰네스티의 로고는 철조망에 둘러싸인 촛불 모양이다."
+     },
+     {
+      "claim": "양심수 · 사형 폐지 운동",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/국제_앰네스티",
+      "note": "활동 분야: 사형 폐지 운동 ... 양심수 등에 대한 인권 옹호 운동"
+     },
+     {
+      "claim": "1962년 9월 30일 정식 이름 · 1966 베넨슨 사임(정보기관 침투 주장)",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Amnesty_International",
+      "note": "On 30 September 1962, it was officially named \"Amnesty International\". / Benenson resigned as Amnesty's president on the grounds that it was bugged and infiltrated by the secret services"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/국제_앰네스티"
+    ],
+    "hintNote": null,
+    "easiestCue": "1977년 노벨 평화상을 받은 1961년 런던의 인권 단체",
+    "worthWhyGen": "잘 아는 인권 단체가 왜·어떻게 생겼는지(건배 한 번에 7년형)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '인권 단체' 예",
+     "unique": "1961 런던 · 1977 노벨 평화상 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 191자"
+    ],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "politics/4#g032b-g032b-j31-5",
+   "seed": {
+    "subject": "국제원자력기구",
+    "aspect": null,
+    "ref": "g032b-j31-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1953년 아이젠하워 미국 대통령의 유엔 연설 '평화를 위한 원자'를 계기로 1957년 세워진 국제기구입니다. 본부는 오스트리아 빈에 있습니다. 2005년 당시 사무총장 엘바라데이와 함께 노벨 평화상을 받은 이 기구는 무엇일까요?",
+    "answer": "국제원자력기구",
+    "acceptedAnswers": [
+     "IAEA"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "한국은 창설 회원국이고, 북한은 1974년 가입했다가 1994년 탈퇴를 선언했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "원자를 평화를 위해 / 본부 빈 / 엘바라데이와 노벨 평화상",
+     "difWhy": "3 — 국제기구 이름 설명 → 이름, IAEA 뉴스 노출",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 국제기구 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "북한·이란 같은 나라의 핵시설을 사찰해 핵물질이 무기로 쓰이지 않는지 감시하는 유엔 산하 독립 단체다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "핵의 군사적 이용을 막고 평화적 이용을 돕는 유엔 산하 독립 기구(IAEA)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "IAEA 뉴스, 북핵·원전",
+     "piece": "f02",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 끝에 '국제기구입니다'로 종류가 있고 끝 ○○(기구)와 같음"
+    },
+    "blindQuestion": {
+     "guess": "국제원자력기구(IAEA)",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "국제원자력기구",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "국제원자력기구",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j03-8",
+      "answer": "국제앰네스티",
+      "verdict": "diff",
+      "why": "IAEA vs 국제앰네스티: 다른 기구"
+     },
+     {
+      "old": "g032a:job-03-9",
+      "answer": "유니세프",
+      "verdict": "diff",
+      "why": "IAEA vs 유니세프: 다른 기구"
+     },
+     {
+      "old": "4620",
+      "answer": "국제형사재판소",
+      "verdict": "diff",
+      "why": "IAEA vs 국제형사재판소: 다른 기구"
+     },
+     {
+      "old": "5115",
+      "answer": "인터폴",
+      "verdict": "diff",
+      "why": "IAEA vs 인터폴: 다른 기구"
+     },
+     {
+      "old": "g032a:g032a-j31-5",
+      "answer": "OECD",
+      "verdict": "diff",
+      "why": "IAEA vs OECD: 다른 기구"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/국제원자력기구",
+     "https://en.wikipedia.org/wiki/International_Atomic_Energy_Agency"
+    ],
+    "facts": [
+     {
+      "claim": "1953년 아이젠하워 Atoms for Peace 연설 계기 · 1957년 설립 · 빈 본부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/국제원자력기구",
+      "note": "1957년 7월 29일에 설립된 유엔 산하 독립기구이다. 본부는 오스트리아 빈에 있다. ... 1953년 드와이트 D. 아이젠하워 미국 대통령의 유엔 총회 연설 “평화를 위한 원자력”(Atoms for Peace)를 계기로"
+     },
+     {
+      "claim": "Atoms for Peace 연설이 설립 촉매 · 1957 · 빈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Atomic_Energy_Agency",
+      "note": "Eisenhower's \"Atoms for Peace\" speech ... is credited with catalyzing the formation of the IAEA, whose treaty came into force on 29 July 1957 ... headquartered at the UN Office at Vienna, Austria."
+     },
+     {
+      "claim": "2005 노벨 평화상 엘바라데이와 함께",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/International_Atomic_Energy_Agency",
+      "note": "In 2005, the IAEA and its administrative head, Director General Mohamed ElBaradei, were awarded the Nobel Peace Prize"
+     },
+     {
+      "claim": "핵사찰 · 군사적 이용 방지",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/국제원자력기구",
+      "note": "원자력을 군사적인 목적으로 이용하는 것을 막고 ... 1993년 2월 IAEA가 특별핵사찰을 요구한 데 대해"
+     },
+     {
+      "claim": "한국 창설 회원국 · 북한 1974 가입 1994 탈퇴 선언",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/국제원자력기구",
+      "note": "대한민국은 1956년 창설 회원국으로 가입하였고, 북한은 1974년에 가입했다가 ... 1994년 6월에 IAEA 탈퇴를 선언했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/국제원자력기구"
+    ],
+    "hintNote": null,
+    "easiestCue": "빈에 본부가 있는 2005년 노벨 평화상 국제기구",
+    "worthWhyGen": "북핵 뉴스에 늘 나오는 기구가 생긴 까닭",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '국제기구' 예",
+     "unique": "1957 · 빈 · 2005 노벨 평화상 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

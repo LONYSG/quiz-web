@@ -1,0 +1,149 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "economy/5",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/5#g032b-g032b-j03-4",
+   "seed": {
+    "subject": "연방준비제도",
+    "aspect": null,
+    "ref": "g032b-j03-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 한 금융 기관은 1907년 금융 공황에서 시작되었습니다. 예금 인출 사태가 번지자 은행가 J. P. 모건이 자기 서재에 은행가들을 모아 문을 잠그고 구제 자금을 내게 해 겨우 불을 껐습니다. 한 사람의 힘에 기대야 했던 이 일을 겪고 1913년 의회가 법으로 세운 이 기관은?",
+    "answer": "연방준비제도",
+    "acceptedAnswers": [
+     "연준",
+     "미국 연방준비제도",
+     "연방준비제도이사회",
+     "연방준비은행"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1910년 조지아주 지킬섬에서 은행가들이 몰래 모여 설계안을 짰고, 1913년 12월 23일 법이 통과됐습니다. 미국 곳곳에 지역 은행 12곳을 둡니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1913년 의회가 법으로 세운 기관 · J. P. 모건",
+     "difWhy": "3 — 경제사 기관 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 까닭 있는 기관 설립 배경, 경제 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "기준 금리를 올리고 내려 달러 흐름을 조절하는 미국의 중앙은행으로, 의장의 금리 발표 한마디에 세계 증시가 출렁인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 중앙은행 체계 Federal Reserve(연준)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "금리 뉴스에 연준으로 자주 나옴",
+     "piece": "f06",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '미국의 한 금융 기관'이 끝 ○○(기관)와 일치. 모건 일화는 같은 기관의 배경."
+    },
+    "blindQuestion": {
+     "guess": "연방준비제도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "연방준비제도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "연방준비제도",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2250",
+      "answer": "오일 쇼크",
+      "verdict": "diff",
+      "why": "새 정답 연방준비제도의 지식(유래·사실)과 옛 정답 오일 쇼크의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4388",
+      "answer": "플라자 합의",
+      "verdict": "diff",
+      "why": "새 정답 연방준비제도의 지식(유래·사실)과 옛 정답 플라자 합의의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Panic_of_1907",
+     "https://ko.wikipedia.org/wiki/연방준비제도"
+    ],
+    "facts": [
+     {
+      "claim": "1907 공황 · 모건 서재 · 은행가들을 가두고 열쇠를 챙김",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Panic_of_1907",
+      "note": "As discussion ensued, the bankers realized that Morgan had locked them in the library and pocketed the key to force a solution ... he persuaded the unofficial leader of the trust companies to sign the agreement"
+     },
+     {
+      "claim": "1907 공황이 모건 개인의 역할 문제를 드러내 연방준비제도 창설로 이어짐 · 1913년 12월 23일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Panic_of_1907",
+      "note": "The frequency of crises and the severity of the 1907 panic added to concern about the outsized role of J.P. Morgan ... it was not until December 23, 1913, that Congress passed the Federal Reserve Act ... creating the Federal Reserve System."
+     },
+     {
+      "claim": "1907년 공황 → 국가화폐위원회 → 연방준비법(1913)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/연방준비제도",
+      "note": "1907년 공황을 맞게 된 미국 의회는 ... 국가화폐위원회(National Monetary Commission)라는 특별위원회를 신설하기로 했다. / 1913년 12월 23일 미 의회를 통과한 연방준비법(Federal Reserve Act)에 의해 설립되었다."
+     },
+     {
+      "claim": "지킬섬 비밀 회동 1910 · 지역 연방준비은행 12곳",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Panic_of_1907",
+      "note": "Aldrich convened a secret conference ... at the Jekyll Island Club, off the coast of Georgia ... in November 1910. / ko: 미국 각지에 연방준비은행(Federal Reserve Banks) 12개 지점"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/연방준비제도"
+    ],
+    "hintNote": null,
+    "easiestCue": "1913년 미국 의회가 세운 금융 기관",
+    "worthWhyGen": "뉴스에 매일 나오는 연준이 왜 생겼는지",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '금융 기관' 예",
+     "unique": "1913 · 1907 공황 계기 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 달러/기준금리"
+    ],
+    "job": "job-03"
+   }
+  }
+ ]
+}

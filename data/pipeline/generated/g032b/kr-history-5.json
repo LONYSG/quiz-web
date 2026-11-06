@@ -1,0 +1,146 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-history/5",
+  "midKey": "kr-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/5#g032b-g032b-j01-5",
+   "seed": {
+    "subject": "세브란스병원",
+    "aspect": null,
+    "ref": "g032b-j01-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "서울의 한 대학병원 이름에 얽힌 이야기입니다. 1885년 문을 연 조선 첫 서양식 국립병원 제중원은 뒤에 미국 북장로회 선교부가 운영을 맡았습니다. 1904년 남대문 밖에 새 건물을 지으며, 큰돈을 기부한 미국 석유 사업가의 이름을 붙인 이 병원은?",
+    "answer": "세브란스병원",
+    "acceptedAnswers": [
+     "세브란스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1962년 지금 자리로 옮겼으며, 제중원의 뿌리를 두고는 서울대학교병원과 정통성 논란이 이어지고 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1904년 큰돈을 기부한 미국 석유 사업가 이름을 붙인 병원",
+     "difWhy": "2 — 서울 대학병원 이름 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 병원 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "오늘날 서울 신촌에 있는 연세대학교 의료원의 대표 병원으로, 기부자는 스탠더드 오일의 초대 회계 책임자였다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "제중원을 이은 서울 신촌의 연세대 대학병원",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "유명 병원",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '서울의 대학병원 이름' 이 끝 ○○ '병원' 과 일치 · 제중원 이력은 연도순으로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "세브란스병원",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "세브란스병원",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "세브란스병원",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4483",
+      "answer": "손탁호텔",
+      "verdict": "diff",
+      "why": "새 정답 세브란스병원의 지식(유래·사실)과 옛 정답 손탁호텔의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "5904",
+      "answer": "중명전",
+      "verdict": "diff",
+      "why": "새 정답 세브란스병원의 지식(유래·사실)과 옛 정답 중명전의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4480",
+      "answer": "우정총국",
+      "verdict": "diff",
+      "why": "새 정답 세브란스병원의 지식(유래·사실)과 옛 정답 우정총국의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/세브란스병원",
+     "https://ko.wikipedia.org/wiki/제중원",
+     "https://en.wikipedia.org/wiki/Louis_Henry_Severance"
+    ],
+    "facts": [
+     {
+      "claim": "1885 제중원 · 1904 남대문 밖 이전하며 개칭 · 미국 사업가 기부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/세브란스병원",
+      "note": "1904년 9월 3일 남대문 밖 붕숭아골 (현 서울특별시 용산구)로 병원을 이전하면서 세브란스병원으로 개칭 ... 미국의 사업가였던 루이스 헨리 세버런스의 기부금으로 제중원의 이전과 증축이 진행되었다."
+     },
+     {
+      "claim": "조선 정부 첫 서양식 병원 · 운영권 미국북장로회 · 1904 세브란스 지원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제중원",
+      "note": "제중원은 조선 정부가 1885년 4월 14일 최초로 설립한 서양식 병원이며 ... 운영권을 미국북장로회 선교부로 이관하였다. 1904년 미국북장로회 선교부는 미국 사업가 세브란스의 지원을 받아 세브란스병원을 설립하였고"
+     },
+     {
+      "claim": "석유 사업가 · 스탠더드 오일 초대 회계 책임자 · 병원 이름",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Louis_Henry_Severance",
+      "note": "an American oilman and philanthropist who was ... the first treasurer of Standard Oil ... Severance Hospital in Seoul is named in his honor."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Louis_Henry_Severance",
+     "https://ko.wikipedia.org/wiki/세브란스병원"
+    ],
+    "hintNote": null,
+    "easiestCue": "제중원을 이어 1904년 미국 기부자 이름을 붙인 병원",
+    "worthWhyGen": "누구나 아는 병원 이름이 미국 석유 사업가의 이름이라는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '대학병원 이름' 예",
+     "unique": "제중원 · 1904 · 기부자 이름 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  }
+ ]
+}

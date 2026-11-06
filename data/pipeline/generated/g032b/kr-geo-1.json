@@ -1,0 +1,134 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-geo/1",
+  "midKey": "kr-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/1#g032b-g032b-j01-7",
+   "seed": {
+    "subject": "용산구",
+    "aspect": null,
+    "ref": "g032b-j01-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "서울 한가운데에 있는 한 자치구입니다. 1882년 임오군란 때 청나라 군대가 이곳 땅을 썼고, 1910년부터 1945년까지는 일본군의 조선 주둔 사령부가 자리 잡았습니다. 광복 뒤에도 다른 나라 군대의 기지로 오래 쓰인 이 구는?",
+    "answer": "용산구",
+    "acceptedAnswers": [
+     "용산"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "미군 기지가 평택으로 옮겨 가면서, 남는 터를 국가공원으로 만드는 계획이 추진되고 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "서울 한가운데 자치구 · 일본군 조선 주둔 사령부 · 다른 나라 군대 기지",
+     "difWhy": "2 — 미군 기지 용산 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 지역·역사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "호남선·전라선 KTX가 떠나는 역과 국립중앙박물관이 있는, 한강 북쪽의 서울 자치구다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "서울의 자치구(옛 미군 기지가 있던 곳)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "서울 자치구, 뉴스에 매일 나옴",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '서울 한가운데 자치구', 끝 ○○ '구'. 간결"
+    },
+    "blindQuestion": {
+     "guess": "용산구",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "용산구",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "용산구",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1074",
+      "answer": "돌아가는 삼각지",
+      "verdict": "diff",
+      "why": "새 정답 용산구의 지식(유래·사실)과 옛 정답 돌아가는 삼각지의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Yongsan_Garrison",
+     "https://ko.wikipedia.org/wiki/용산구"
+    ],
+    "facts": [
+     {
+      "claim": "1882 임오군란 청군 · 1910~1945 일본군 사령부",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yongsan_Garrison",
+      "note": "In 1882, Qing troops used it during the Imo Incident. The Imperial Japanese Army formally established the garrison and from 1910 to 1945 it served as its headquarters in Korea."
+     },
+     {
+      "claim": "미군 기지 · 평택 이전 · 국가공원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/용산구",
+      "note": "용산미군기지가 평택으로 옮겨지면 용산 부지는 2027년까지 국가공원으로 조성될 예정이다."
+     },
+     {
+      "claim": "호남선·전라선 계통 열차는 용산역",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/용산구",
+      "note": "호남선, 장항선, 전라선 계통의 열차는 용산역에서 이용할 수 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/용산구"
+    ],
+    "hintNote": null,
+    "easiestCue": "광복 뒤 외국 군대 기지가 있던 서울의 구",
+    "worthWhyGen": "서울 한복판 땅에 140년 가까이 외국 군대가 이어 머문 까닭(역사 상식)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '서울 자치구' 예",
+     "unique": "청군·일본군 사령부·이후 외국 기지 — 용산 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans KTX/자치구"
+    ],
+    "job": "job-01"
+   }
+  }
+ ]
+}

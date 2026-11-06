@@ -1,0 +1,143 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "board-game/3",
+  "midKey": "board-game",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "board-game/3#g032b-g032b-j18-3",
+   "seed": {
+    "subject": "솔리테어",
+    "aspect": null,
+    "ref": "g032b-j18-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "카드 게임이 있습니다. 1988년 여름 마이크로소프트의 인턴 웨스 체리가 컴퓨터판을 만들었고, 1990년 윈도우 3.0에 기본으로 실렸습니다. 회사는 그래픽 화면이 낯선 사람들이 카드를 끌어다 놓으며 마우스에 익숙해지길 바랐다고 합니다. 이 게임은?",
+    "answer": "솔리테어",
+    "acceptedAnswers": [
+     "카드놀이",
+     "클론다이크",
+     "솔리테르"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "체리는 상사가 오면 가짜 엑셀 화면으로 바꾸는 '보스 키'를 넣으려 했지만, 출시 전에 빼라는 요청을 받았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "1990년 윈도우 3.0 기본 카드 게임 · 마우스에 익숙",
+     "difWhy": "1 — 윈도 카드 게임은 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 기본 게임의 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "일곱 줄로 늘어놓은 카드를 빨강·검정 번갈아 내림차순으로 옮겨 쌓는, 윈도우에 오래 깔려 있던 혼자 하는 카드 게임이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "혼자 카드를 순서대로 쌓는 카드 게임(윈도우 기본 게임으로 유명)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "윈도우 솔리테어",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '카드 게임' 이 끝 ○○(게임) 와 같고 문장이 짧음"
+    },
+    "blindQuestion": {
+     "guess": "솔리테어",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카드 솔리테어",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "솔리테어",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2143",
+      "answer": "블랙잭",
+      "verdict": "diff",
+      "why": "솔리테어 vs 블랙잭 — 다른 카드 게임"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Solitaire_(Windows)",
+     "https://ko.wikipedia.org/wiki/솔리테어"
+    ],
+    "facts": [
+     {
+      "claim": "1988년 여름 인턴 웨스 체리 · 윈도우 3.0(1990)부터",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Solitaire_(Windows)",
+      "note": "Microsoft has included the game as part of its Windows product line since Windows 3.0, starting from 1990. The game was developed during the summer of 1988 by the intern Wes Cherry."
+     },
+     {
+      "claim": "마우스 끌어다 놓기에 익숙해지게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Solitaire_(Windows)",
+      "note": "Microsoft intended Solitaire \"to soothe people intimidated by the operating system,\" and ... it proved useful in familiarizing them with the use of a mouse, such as the drag-and-drop technique required for moving cards."
+     },
+     {
+      "claim": "윈도우 3.0부터 클론다이크를 솔리테어 이름으로 번들",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/솔리테어",
+      "note": "마이크로소프트 윈도우 3.0부터 클론다이크(Klondike)를 구현한 게임이 솔리테어(Solitaire)라는 이름으로 번들되었다."
+     },
+     {
+      "claim": "보스 키 제거",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Solitaire_(Windows)",
+      "note": "Cherry's version was to include a boss key that would have switched the game to a fake Microsoft Excel spreadsheet, but he was asked to remove this from the final release."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Solitaire_(Windows)",
+     "https://ko.wikipedia.org/wiki/솔리테어"
+    ],
+    "hintNote": null,
+    "easiestCue": "윈도우 3.0에 기본으로 실린 카드 게임",
+    "worthWhyGen": "누구나 해 본 윈도우 카드 게임이 왜 들어갔는가(유래·까닭 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '카드 게임' 예",
+     "unique": "윈도우 3.0 기본 카드 게임 → 하나(프리셀은 뒤에 들어옴)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 빨강/검정"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

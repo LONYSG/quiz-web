@@ -1,0 +1,166 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-tv/4",
+  "midKey": "kr-tv",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/4#g032b-g032b-j21-7",
+   "seed": {
+    "subject": "청취율",
+    "aspect": null,
+    "ref": "g032b-j21-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "텔레비전 프로그램을 얼마나 많은 사람이 봤는지는 시청률로 잽니다. 그렇다면 라디오 프로그램을 얼마나 많은 사람이 들었는지를 나타내는 수치는 무엇일까요?",
+    "answer": "청취율",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "라디오 조사는 표본 응답자가 15분 단위로 들은 방송을 적는 일지 방식이 오래 쓰였고, 결과는 보통 분기마다 나온다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "라디오 프로그램을 얼마나 많은 사람이 들었는지를 나타내는 수치 (시청률 대응)",
+     "difWhy": "1 — 시청률 대응 즉답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 말",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "방송사와 광고주가 프로그램 개편과 광고 자리를 정할 때 보는 라디오 인기 성적표다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "라디오 프로그램의 청취자 규모를 나타내는 수치",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "방송 용어, 라디오 청취율 뉴스",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "시청률 비유로 곧바로 '라디오의 수치'를 묻는 두 문장; 종류가 첫 문장에 있음"
+    },
+    "blindQuestion": {
+     "guess": "청취율",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "청취율",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "청취율",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "라디오 청취율 · 텔레비전 시청률",
+       "url": "https://ko.wikipedia.org/wiki/청중_측정",
+       "note": "청중 측정(audience measurement, rating)은 라디오 청취율 및 텔레비전 시청률과 관련하여, 그리고 신문 및 잡지 열독률과 ... 관객 규모를 측정한다."
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "590",
+      "answer": "별이 빛나는 밤에",
+      "verdict": "diff",
+      "why": "청취율은 별이 빛나는 밤·FM 음악도시·굿모닝 팝스·밤을 잊은 그대에게·싱글벙글쇼 프로그램 이름과 다른 지식이다"
+     },
+     {
+      "old": "5985",
+      "answer": "FM 음악도시",
+      "verdict": "diff",
+      "why": "청취율은 별이 빛나는 밤·FM 음악도시·굿모닝 팝스·밤을 잊은 그대에게·싱글벙글쇼 프로그램 이름과 다른 지식이다"
+     },
+     {
+      "old": "5984",
+      "answer": "굿모닝 팝스",
+      "verdict": "diff",
+      "why": "청취율은 별이 빛나는 밤·FM 음악도시·굿모닝 팝스·밤을 잊은 그대에게·싱글벙글쇼 프로그램 이름과 다른 지식이다"
+     },
+     {
+      "old": "6695",
+      "answer": "밤을 잊은 그대에게",
+      "verdict": "diff",
+      "why": "청취율은 별이 빛나는 밤·FM 음악도시·굿모닝 팝스·밤을 잊은 그대에게·싱글벙글쇼 프로그램 이름과 다른 지식이다"
+     },
+     {
+      "old": "4559",
+      "answer": "싱글벙글쇼",
+      "verdict": "diff",
+      "why": "청취율은 별이 빛나는 밤·FM 음악도시·굿모닝 팝스·밤을 잊은 그대에게·싱글벙글쇼 프로그램 이름과 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/청중_측정",
+     "https://en.wikipedia.org/wiki/Audience_measurement"
+    ],
+    "facts": [
+     {
+      "claim": "라디오 청취율 · 텔레비전 시청률",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/청중_측정",
+      "note": "청중 측정(audience measurement, rating)은 라디오 청취율 및 텔레비전 시청률과 관련하여, 그리고 신문 및 잡지 열독률과 ... 관객 규모를 측정한다."
+     },
+     {
+      "claim": "radio listenership · television viewership",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Audience_measurement",
+      "note": "Audience measurement calculates how many people are in an audience, usually in relation to radio listenership and television viewership"
+     },
+     {
+      "claim": "방송사·광고주가 활용",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Audience_measurement",
+      "note": "The term is sometimes used with regard to practices that help broadcasters and advertisers determine who is listening"
+     },
+     {
+      "claim": "일지 15분 단위 · 분기마다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Audience_measurement",
+      "note": "Radio surveys, still used for radio ratings in a number of countries, are normally available quarterly. ... diarists participating in a radio sample will accurately record their listening at 15-minute intervals"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Audience_measurement"
+    ],
+    "hintNote": null,
+    "easiestCue": "시청률과 짝이 되는 라디오 수치",
+    "worthWhyGen": "방송 뉴스에서 늘 쓰는 기본 낱말이지만 범위 좁은 용어라 2",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '시청률' 대비 · 예",
+     "unique": "라디오 듣는 사람 비율 — 하나('점유율'은 다른 지표)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  }
+ ]
+}

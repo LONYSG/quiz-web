@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "popular-music/4",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/4#g032b-g032b-j08-5",
+   "seed": {
+    "subject": "AC/DC",
+    "aspect": null,
+    "ref": "g032b-j08-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 오스트레일리아 시드니에서 맬컴과 앵거스 영 형제가 만든 록 밴드입니다. 밴드 이름은 누나 마거릿이 보여 준 재봉틀 전원 어댑터의 표시에서 따왔습니다. 형제는 그 표시가 밴드의 거친 에너지를 닮았다고 여겼습니다. 이 밴드는?",
+    "answer": "AC/DC",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "AC/DC"
+    ],
+    "explanation": "이름은 교류와 직류를 함께 적는 전기 약자이며, 오스트레일리아에서는 '아카 다카'라는 별명으로도 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1973년 시드니에서 맬컴과 앵거스 영 형제가 만든 록 밴드",
+     "difWhy": "3 — 밴드 이름 · 호주 형제 단서로 팬만 바로",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 이름 유래이나 밴드 확인 · 사이면 낮은 쪽",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "교복 반바지 차림으로 기타를 치는 앵거스와 번개 로고로 유명하며, 'Highway to Hell'·'Back in Black'을 부른 하드 록 밴드이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'Highway to Hell'의 오스트레일리아 하드 록 밴드",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "록 팬이 아니어도 로고·노래는 들어 봄",
+     "piece": "f06",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '록 밴드', 끝 ○○ '이 밴드'와 일치; 형제 이름은 고유명사일 뿐 해독을 안 막음"
+    },
+    "blindQuestion": {
+     "guess": "AC/DC",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "AC/DC",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "AC/DC",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4628",
+      "answer": "오아시스",
+      "verdict": "diff",
+      "why": "AC/DC 결성과 오아시스 해체는 다른 밴드·사실"
+     },
+     {
+      "old": "6747",
+      "answer": "백스트리트 보이즈",
+      "verdict": "diff",
+      "why": "AC/DC와 백스트리트 보이즈는 다른 그룹"
+     },
+     {
+      "old": "6056",
+      "answer": "콜드플레이",
+      "verdict": "diff",
+      "why": "AC/DC와 콜드플레이는 다른 밴드"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/AC/DC",
+     "https://ko.wikipedia.org/wiki/AC/DC"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 시드니 영 형제 결성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/AC/DC",
+      "note": "In November 1973, brothers Malcolm and Angus Young formed AC/DC in Sydney"
+     },
+     {
+      "claim": "누나 마거릿 재봉틀 AC 어댑터 표시 · 거친 에너지 상징",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/AC/DC",
+      "note": "Malcolm and Angus developed the band's name after their sister Margaret pointed out the symbol \"AC/DC\" on the AC adapter of her sewing machine. ... The brothers felt that this name symbolised the band's raw energy"
+     },
+     {
+      "claim": "같은 내용(한국어)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/AC/DC",
+      "note": "밴드 결성 당시 맬컴과 앵거스는 누나 마거릿이 재봉틀의 AC 어댑터에 적힌 \"AC/DC\" 표시를 보여주면서 밴드명을 정하게 되었다."
+     },
+     {
+      "claim": "교복 의상 · 번개 로고 · Highway to Hell",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/AC/DC",
+      "note": "Angus first wore his characteristic school-uniform stage outfit in April 1974 ... stylised with a lightning bolt separating the AC from DC ... Highway to Hell (1979)"
+     },
+     {
+      "claim": "Acca Dacca",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/AC/DC",
+      "note": "A.C./D.C. is an abbreviation for alternating current/direct current electricity. ... colloquially known as Acca Dacca in Australia."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/AC/DC"
+    ],
+    "hintNote": null,
+    "easiestCue": "재봉틀 어댑터의 전기 표시에서 딴 밴드 이름",
+    "worthWhyGen": "유명 밴드 이름이 전기 표시에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '록 밴드' 예",
+     "unique": "영 형제·시드니로 유일",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08"
+   }
+  }
+ ]
+}

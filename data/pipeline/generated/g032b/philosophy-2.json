@@ -1,0 +1,178 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "philosophy/2",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/2#g032b-g032b-j21-9",
+   "seed": {
+    "subject": "에세이",
+    "aspect": null,
+    "ref": "g032b-j21-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "자유로운 산문 한 갈래의 이름은 16세기 프랑스 사상가 몽테뉴의 책 제목에서 왔습니다. 몽테뉴는 자기 생각을 자유롭게 적은 글을 묶어 1580년에 책으로 펴냈습니다. 책 제목은 프랑스어로 '시도'라는 뜻이었습니다. 이 산문 갈래는?",
+    "answer": "에세이",
+    "acceptedAnswers": [
+     "수필"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "몽테뉴는 죽을 때까지 이 책을 고쳐 쓰며 판을 거듭했고, 슬픔과 양심부터 냄새까지 주제가 다양했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "자유로운 산문 한 갈래의 이름은 16세기 프랑스 사상가 몽테뉴의 책 제목에서 왔습니다.",
+     "difWhy": "2 — 자유로운 산문 갈래 + 몽테뉴로 에세이에 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말 에세이의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "피천득의 '인연'처럼 글쓴이가 겪은 일과 생각을 편하게 풀어낸 짧은 글이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "자유로운 형식의 산문 갈래(수필) — 몽테뉴 '수상록(Essais)'에서 온 이름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상 어휘",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "일화 선행",
+     "reason": "첫 문장 주인공은 몽테뉴이고 정답 종류 '산문 갈래'는 끝 문장에서야 나옴. 다만 세 문장 모두 짧고 '책 제목'이 이어져 한 번에 읽힘."
+    },
+    "blindQuestion": {
+     "guess": "수필",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "수필",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "에세이",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4876",
+      "answer": "파킨슨의 법칙",
+      "verdict": "diff",
+      "why": "에세이(몽테뉴 수상록)는 파킨슨 법칙·시시포스·우신예찬·X세대·데카르트와 다른 지식이다"
+     },
+     {
+      "old": "468",
+      "answer": "시시포스",
+      "verdict": "diff",
+      "why": "에세이(몽테뉴 수상록)는 파킨슨 법칙·시시포스·우신예찬·X세대·데카르트와 다른 지식이다"
+     },
+     {
+      "old": "2008",
+      "answer": "우신예찬",
+      "verdict": "diff",
+      "why": "에세이(몽테뉴 수상록)는 파킨슨 법칙·시시포스·우신예찬·X세대·데카르트와 다른 지식이다"
+     },
+     {
+      "old": "6760",
+      "answer": "X세대",
+      "verdict": "diff",
+      "why": "에세이(몽테뉴 수상록)는 파킨슨 법칙·시시포스·우신예찬·X세대·데카르트와 다른 지식이다"
+     },
+     {
+      "old": "67",
+      "answer": "르네 데카르트",
+      "verdict": "diff",
+      "why": "에세이(몽테뉴 수상록)는 파킨슨 법칙·시시포스·우신예찬·X세대·데카르트와 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Essays_(Montaigne)",
+     "https://en.wikipedia.org/wiki/Essay",
+     "https://ko.wikipedia.org/wiki/미셸_드_몽테뉴",
+     "https://ko.wikipedia.org/wiki/수필"
+    ],
+    "facts": [
+     {
+      "claim": "몽테뉴 Essais 1580 · essai = attempts",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Essays_(Montaigne)",
+      "note": "The Essays were first published in 1580 and cover a wide range of topics. ... The name itself comes from the French word essais, meaning \"attempts\" or \"tests\""
+     },
+     {
+      "claim": "몽테뉴가 처음 essay 라 부름 · 현대 에세이의 선조",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Essay",
+      "note": "The word essay derives from the French infinitive essayer, \"to try\" or \"to attempt\". ... Michel de Montaigne (1533–1592) was the first author to describe his work as essays ... widely regarded as the predecessor of the modern essay."
+     },
+     {
+      "claim": "프랑스 사상가 · 1580년 수상록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/미셸_드_몽테뉴",
+      "note": "미셸 에켐 드 몽테뉴 (1533년 2월 28일 - 1592년 9월 13일)는 프랑스 철학자, 사상가, 수필가이다. ... 1580년 유명한 <수상록>을 완성시켰는데"
+     },
+     {
+      "claim": "수필(에세이) = 생각을 자유롭게 표현한 산문",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/수필",
+      "note": "수필(隨筆) 또는 에세이(essay)는 생각을 자유롭게 표현한 산문 문학이다."
+     },
+     {
+      "claim": "평생 고쳐 씀 · 슬픔·양심·냄새",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Essays_(Montaigne)",
+      "note": "For the rest of his life, he continued revising previously published essays (Essay 문서) / titles ranging from \"Of Sadness and Sorrow\" and \"Of Conscience\" to \"Of Smells\""
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/수필"
+    ],
+    "hintNote": null,
+    "easiestCue": "자유로운 산문 한 갈래의 이름",
+    "worthWhyGen": "누구나 아는 갈래 이름이 '시도'라는 뜻의 책 제목에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '사상가' — 묻는 것은 갈래(⑨ 기계 경고 날 수 있음)",
+     "unique": "몽테뉴 1580 · 산문 갈래 — 하나(수필은 변형)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "16세기 프랑스 사상가 몽테뉴는 자기 생각을 자유롭게 적은 글을 묶어 1580년에 책으로 펴냈습니다. 책 제목은 프랑스어로 '시도'라는 뜻이었습니다. 이 제목이 오늘날 자유로운 산문 한 갈래의 이름이 되었는데, 그 갈래는?"
+      },
+      "why": "⑨ 첫 문장에 '산문 갈래' · 묻는 문장 짧게"
+     }
+    ],
+    "warn": [],
+    "job": "job-21"
+   }
+  }
+ ]
+}

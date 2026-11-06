@@ -1,0 +1,146 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-lit/4",
+  "midKey": "kr-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-lit/4#g032b-g032b-j21-3",
+   "seed": {
+    "subject": "마당을 나온 암탉",
+    "aspect": null,
+    "ref": "g032b-j21-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "황선미가 2000년에 펴낸 동화입니다. 알만 낳던 양계장 암탉이 꽃을 피워 내는 잎사귀처럼 살겠다며 스스로 '잎싹'이라는 이름을 짓고, 주운 청둥오리 알을 품어 키웁니다. 2011년 애니메이션으로도 나온 이 작품은?",
+    "answer": "마당을 나온 암탉",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "원작은 한국 작가의 작품으로는 처음으로 영문판이 나온 지 한 달 만에 영국 베스트셀러 1위에 올랐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "황선미 · 양계장 암탉 잎싹 · 청둥오리 알 · 2011년 애니메이션",
+     "difWhy": "2 — 유명 동화·애니",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 작품 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "국산 장편 애니메이션 흥행 기록을 새로 쓰며 관객 200만 명을 넘겼고, 배우 문소리가 주인공 목소리를 맡았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "황선미의 2000년 동화 · 2011년 한국 애니메이션(관객 220만)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "유명 애니·동화",
+     "piece": "f01",
+     "genPct": 80
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "마당을 나온 암탉",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마당을 나온 암탉",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마당을 나온 암탉",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 6,
+     "found": 5,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "잎싹 목소리 문소리",
+       "url": "https://ko.wikipedia.org/wiki/마당을_나온_암탉_(영화)",
+       "note": "잎싹 - 문소리"
+      }
+     ]
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마당을_나온_암탉",
+     "https://ko.wikipedia.org/wiki/마당을_나온_암탉_(영화)",
+     "https://en.wikipedia.org/wiki/Leafie,_A_Hen_into_the_Wild"
+    ],
+    "facts": [
+     {
+      "claim": "2000년 출간 동화 · 2011년 애니메이션",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마당을_나온_암탉",
+      "note": "동화 《마당을 나온 암탉》은 2000년 5월 29일에 사계절출판사를 통해 처음 출간되었다. ... 2011년 7월 28일에 원작 동화를 바탕으로 명필름과 오돌또기가 애니메이션으로 제작하였고"
+     },
+     {
+      "claim": "잎싹 = 꽃을 피우는 건 잎싹(이름 뜻)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마당을_나온_암탉_(영화)",
+      "note": "원작에서 '잎싹'이라는 이름의 의미는 '꽃을 피우는 건 잎싹, 즉 소시민의 위대한 힘'이었으나"
+     },
+     {
+      "claim": "양계장 암탉 · 오리 알을 품어 키움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leafie,_A_Hen_into_the_Wild",
+      "note": "It depicts the freedom, will and instinctive motherly love of a hen as she raises an adopted duckling."
+     },
+     {
+      "claim": "220만 관객 · 한국 애니메이션 최다(그 전엔 100만도 없음)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Leafie,_A_Hen_into_the_Wild",
+      "note": "The film made box office history by drawing over 2.2 million viewers, the largest audience for a home-grown animated film in South Korea. ... No domestic animated film had ever achieved 1 million viewers."
+     },
+     {
+      "claim": "잎싹 목소리 문소리",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/마당을_나온_암탉_(영화)",
+      "note": "잎싹 - 문소리"
+     },
+     {
+      "claim": "영문판 한 달 만에 영국 베스트셀러 1위",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/마당을_나온_암탉",
+      "note": "이 책은 한국 작가의 작품으로는 처음으로 영문판 출간 한달만에 영국 베스트셀러 1위에 올랐다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Leafie,_A_Hen_into_the_Wild",
+     "https://ko.wikipedia.org/wiki/마당을_나온_암탉_(영화)"
+    ],
+    "hintNote": null,
+    "easiestCue": "주인공 암탉 '잎싹' · 2011년 애니메이션",
+    "worthWhyGen": "한국 대표 동화·애니메이션 흥행작이자 '잎싹' 이름에 담긴 뜻(유래) — 다만 작품 이름 확인이라 2",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '동화' 예",
+     "unique": "황선미 · 잎싹 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21",
+    "discarded": "알가치 1 (고유명사 · 작품 이름 확인)"
+   }
+  }
+ ]
+}

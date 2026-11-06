@@ -1,0 +1,431 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "symbols/5",
+  "midKey": "symbols",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "symbols/5#g032b-g032b-j18-10",
+   "seed": {
+    "subject": "궁수자리",
+    "aspect": null,
+    "ref": "g032b-j18-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "여름철 남쪽 하늘의 별자리가 있습니다. 우리 은하의 중심이 이 별자리 쪽에 있어, 은하수가 이 부근에서 가장 짙고 밝게 보입니다. 동아시아에서는 이 별자리의 밝은 별 여섯을 국자 모양 '남두육성'으로 보았습니다. 서양에서는 그 별들이 찻주전자 모양을 이룬다고 보는 이 별자리는?",
+    "answer": "궁수자리",
+    "acceptedAnswers": [
+     "사수자리"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "우리 은하 한가운데 있는 초대질량 블랙홀도 이 별자리 이름에 'A*'를 붙인 이름으로 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "서양에서는 그 별들이 찻주전자 모양을 이룬다고 보는 이 별자리",
+     "difWhy": "3 — 별자리 이름 · 남두육성은 낯섦, 찻주전자가 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 별자리 상식 · 취미 쪽",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "황도 12궁의 하나로, 반은 사람이고 반은 말인 켄타우로스의 모습으로 그리며 전갈자리 바로 동쪽에 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "황도 12궁의 하나 · 켄타우로스 궁수 모양 별자리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "별자리 운세로 친숙",
+     "piece": "f03",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '여름철 남쪽 하늘의 별자리' 가 종류. 끝 '이 별자리는?' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "궁수자리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "궁수자리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "궁수자리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4741",
+      "answer": "와우 신호",
+      "verdict": "diff",
+      "why": "궁수자리 vs 와우 신호 — 다른 지식"
+     },
+     {
+      "old": "1255",
+      "answer": "은하수",
+      "verdict": "diff",
+      "why": "궁수자리 별자리 vs 은하수 정의 — 다른 지식"
+     },
+     {
+      "old": "5599",
+      "answer": "뱀주인자리",
+      "verdict": "diff",
+      "why": "궁수자리 vs 뱀주인자리 — 다른 별자리"
+     },
+     {
+      "old": "6420",
+      "answer": "전갈자리",
+      "verdict": "diff",
+      "why": "궁수자리 vs 전갈자리 — 다른 별자리"
+     },
+     {
+      "old": "1251",
+      "answer": "세차운동",
+      "verdict": "diff",
+      "why": "궁수자리 vs 세차운동 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/궁수자리",
+     "https://en.wikipedia.org/wiki/Sagittarius_(constellation)"
+    ],
+    "facts": [
+     {
+      "claim": "은하 중심이 이 별자리 · 은하수 가장 짙음 · 남두육성 국자 모양",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/궁수자리",
+      "note": "우리 은하의 중심이 이 별자리 부근에 있다. ... 별자리의 밝은 별들(ζ, τ, σ, φ, λ, μ)은 쉽게 알아볼 수 있는 뒤집어진 작은 국자 모양의 남두육성을 그리고 있다. ... 지구에서 볼 때에 은하수의 가장 짙은 곳이 궁수자리를 지나며"
+     },
+     {
+      "claim": "찻주전자 · 은하 중심 · 남두(南斗)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sagittarius_(constellation)",
+      "note": "the constellation's brighter stars form an easily recognizable asterism known as \"the Teapot\". ... The Milky Way is visibly densest and brightest in this region, as the Galactic Center lies in Sagittarius. ... the Southern Dipper (南斗, Nandou) in contrast to the Northern Dipper."
+     },
+     {
+      "claim": "황도 12궁 · 전갈자리 동쪽 · 켄타우로스",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/궁수자리",
+      "note": "황도 12궁의 하나이며, 전갈자리의 동쪽, 염소자리의 서쪽에 있는 별자리이다. 흔히 활을 당기는 켄타우로스로 묘사된다."
+     },
+     {
+      "claim": "Sagittarius A* · 은하 중심 초대질량 블랙홀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sagittarius_(constellation)",
+      "note": "Astronomers believe that one of its components, known as Sagittarius A*, is associated with a supermassive black hole at the center of the galaxy"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/궁수자리"
+    ],
+    "hintNote": null,
+    "easiestCue": "우리 은하 중심이 있는 별자리 · 찻주전자",
+    "worthWhyGen": "탄생 별자리로 아는 이름이 은하 중심 방향이라는 천문 기본(교과 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '별자리' 예",
+     "unique": "은하 중심 · 남두육성 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 전갈자리/황도 12궁"
+    ],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "symbols/5#g032b-g032b-j24-6",
+   "seed": {
+    "subject": "백말띠",
+    "aspect": null,
+    "ref": "g032b-j24-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1990년 경오년에 태어난 여자아이는 '팔자가 드세다'는 띠 속설 탓에 꺼려졌습니다. 남아선호까지 겹쳐 이해 출생성비는 여아 100명당 남아 116.5명으로, 통계 작성 이래 가장 기울었습니다. 이 속설이 붙은 1990년의 띠를 색깔까지 넣어 부르면 무엇일까요?",
+    "answer": "백말띠",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 무렵 태어난 남성들이 결혼 적령기에 들면서, 성비 불균형으로 짝을 찾기 어렵다는 이야기가 나왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1990년 경오년 · 팔자가 드세다는 띠 속설",
+     "difWhy": "2 — 백말띠 속설 잘 알려짐",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 속설·통계 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "60갑자 일곱째 경오년의 띠를 천간 '경'이 뜻하는 빛깔까지 붙여 부른 이름으로, '이 띠 여자는 기가 세다'는 속설에 1990년 여아 낙태가 늘었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "경오년(1990 등) 띠를 부르는 속칭 — 여자는 팔자가 세다는 속설",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "백말띠 속설 많이 들어봄",
+     "piece": "f09",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○ 는 '띠' 이고 첫 문장에 '경오년 … 띠 속설' 로 나온다. 경오년 한자어는 있으나 뜻은 잡힌다."
+    },
+    "blindQuestion": {
+     "guess": "백말띠",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "백말띠",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "백말띠",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j30-8",
+      "answer": "병오",
+      "verdict": "diff",
+      "why": "백말띠(1990 경오) vs 병오(2026) — 같은 띠 속설이나 해·간지가 달라 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://v.daum.net/v/20170830145207491",
+     "https://www.pressian.com/pages/articles/2022022519554223284",
+     "https://ko.wikipedia.org/wiki/남초"
+    ],
+    "facts": [
+     {
+      "claim": "1990년 출생성비 116.5 최악 · '백말띠 여자들은 기가 세다' · 백말띠 해 1990",
+      "where": "q",
+      "url": "https://v.daum.net/v/20170830145207491",
+      "note": "\"백말띠 여자들은 기가 세다\" ... 116.5명(여아 100명당 남자 신생아 수)이라는 최악의 성비를 기록한 1990년 ... 통계청이 인구동향조사를 시작한 1970년부터 ... 범띠 해인 1986년(111.7명)과 용띠 해인 1988년(113.2명), '백말띠' 해인 1990년(116.5명)이다."
+     },
+     {
+      "claim": "1990년 '백말띠' 여자아이들 사건(성감별 낙태)",
+      "where": "q",
+      "url": "https://www.pressian.com/pages/articles/2022022519554223284",
+      "note": "1990년 그 사건, '백말띠' 여자 아이들이 다시 만난 세계"
+     },
+     {
+      "claim": "1980~90년대 출생 성비 불균형 · 여아 낙태 · 결혼 적령기 불편",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/남초",
+      "note": "1980년대부터 1990년대까지 출생한 아이들의 성비는 매우 불균형이 심하다 ... 이 시기에 태어난 남성들은 2010년대 들어 현재 20~30대 결혼 적령기에 접어들었는데 성비 불균형이 워낙 심해서 결혼 문제에 있어서 심각한 불편을 겪고 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://v.daum.net/v/20170830145207491"
+    ],
+    "hintNote": null,
+    "easiestCue": "1990년 경오년 · 여자 팔자가 드세다는 띠 속설",
+    "worthWhyGen": "띠 속설이 실제 출생성비를 바꾼 사회사 — 알고 나면 남는 이야기(19 §9-1 ①②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '띠 속설' 예",
+     "unique": "색깔까지 넣은 띠 이름 — 말띠(B7 상위어)는 안 받음",
+     "hint12": "① 예 ② 예(속설의 무게)"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "1986년 범띠·1988년 용띠보다도 남아 출생이 더 치우쳤던, 남아선호 시절 대표 띠 속설"
+      },
+      "why": "말띠 ← 빛깔 단서 없음 · 경(庚)=백(白)(ko 경오)으로 색을 가리킴(글자는 안 씀)"
+     }
+    ],
+    "warn": [
+     "힌트 84자(등급 1·2 40~80)"
+    ],
+    "job": "job-24"
+   }
+  },
+  {
+   "seedId": "symbols/5#g032b-g032b-j30-8",
+   "seed": {
+    "subject": "병오",
+    "aspect": null,
+    "ref": "g032b-j30-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본에는 이 간지의 해에 태어난 여자는 기가 세서 남편의 명을 줄인다는 미신이 있습니다. 그 탓에 1966년 일본의 출생률은 전해보다 25% 떨어졌습니다. 2026년이 바로 이 간지의 해인데, 이 간지는 무엇일까요?",
+    "answer": "병오",
+    "acceptedAnswers": [
+     "병오년"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "에도 시대의 '이해에는 불이 많이 난다'는 속설이, 이해에 태어났다고 믿어진 야오야 오시치 이야기와 얽혀 혼인 미신으로 바뀌었다고 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "2026년이 바로 이 간지의 해",
+     "difWhy": "3 — 올해 간지를 한자 이름(병오)으로 정확히 써야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 간지 상식과 일상 화제",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "을사년 다음, 정미년 앞에 오는 육십간지의 마흔세 번째 간지로 말띠 해다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "육십간지의 43번째 간지(말띠)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "병오년·붉은 말 띠 뉴스",
+     "piece": "f02",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '이 간지' 로 지시어지만 '간지' 라는 종류 명사가 붙어 있고 끝 묻는 말도 '이 간지는'."
+    },
+    "blindQuestion": {
+     "guess": "병오년",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "병오",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "병오",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 1,
+     "outside": 1,
+     "notFound": [
+      {
+       "claim": "불 말의 해 여자 미신 · 1966년 출생 25% 감소",
+       "url": "https://en.wikipedia.org/wiki/Fire_horse",
+       "note": "There is a superstition that \"a woman born in the year of the fire horse has a strong temperament, shortens her husband'"
+      },
+      {
+       "claim": "43번째 · 앞은 을사(Wood Snake) 뒤는 정미(Fire Goat) · 오=말",
+       "url": "https://en.wikipedia.org/wiki/Fire_horse",
+       "note": "is the 43rd combination of the sexagenary cycle. It is preceded by Wood Snake and followed by Fire Goat ... wǔ (午) corre"
+      },
+      {
+       "claim": "에도 시대 화재 속설 → 야오야 오시치로 혼인 미신",
+       "url": "https://en.wikipedia.org/wiki/Fire_horse",
+       "note": "the superstition in the early Edo period that \"there are many fires in the year of the fire horse\", changed to a superst"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j24-6",
+      "answer": "백말띠",
+      "verdict": "diff",
+      "why": "병오 일본 출생률 vs 백말띠 한국 1990 성비: 속설 소재만 같고 연도·나라·간지 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Fire_horse",
+     "https://ja.wikipedia.org/wiki/丙午",
+     "https://ko.wikipedia.org/wiki/병오"
+    ],
+    "facts": [
+     {
+      "claim": "불 말의 해 여자 미신 · 1966년 출생 25% 감소",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Fire_horse",
+      "note": "There is a superstition that \"a woman born in the year of the fire horse has a strong temperament, shortens her husband's life ...\" ... the birth rate in 1966 dropped 25% from the previous year."
+     },
+     {
+      "claim": "1966년 출생률 전년 대비 25% 하락(일본어 문서)",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/丙午",
+      "note": "1966年（昭和41年）の出生率は前年に比べて25％下がった。"
+     },
+     {
+      "claim": "2026년 = 병오년 (서력 ÷60 나머지 46 · 2026÷60 나머지 46)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/병오",
+      "note": "병오년(丙午年)은 '육십간지' 가운데의 43번째 해에 속하고, 이는 서력 기원의 연도를 60으로 나눠, 나머지가 46인 해가 해당된다."
+     },
+     {
+      "claim": "43번째 · 앞은 을사(Wood Snake) 뒤는 정미(Fire Goat) · 오=말",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Fire_horse",
+      "note": "is the 43rd combination of the sexagenary cycle. It is preceded by Wood Snake and followed by Fire Goat ... wǔ (午) corresponds to the Horse zodiac."
+     },
+     {
+      "claim": "에도 시대 화재 속설 → 야오야 오시치로 혼인 미신",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Fire_horse",
+      "note": "the superstition in the early Edo period that \"there are many fires in the year of the fire horse\", changed to a superstition about women's marriage because Yaoya Oshichi was believed to have been born during the fire horse."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Fire_horse",
+     "https://ko.wikipedia.org/wiki/병오"
+    ],
+    "hintNote": null,
+    "easiestCue": "2026년의 간지",
+    "worthWhyGen": "올해(2026)의 간지와 그에 얽힌 출산 미신 — 뉴스·일상 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '간지' 종류 명사 — 예",
+     "unique": "2026년 간지 → 병오 하나 · 백말띠(경오·한국 1990, 라운드)와 다른 해·다른 사실",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

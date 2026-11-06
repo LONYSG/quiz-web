@@ -1,0 +1,273 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "astronomy/3",
+  "midKey": "astronomy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "astronomy/3#g032b-g032b-j16-2",
+   "seed": {
+    "subject": "암흑 에너지",
+    "aspect": null,
+    "ref": "g032b-j16-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우주를 이루는 성분 하나가 있습니다. 1998년 두 연구팀은 멀리 있는 Ia형 초신성들이 예상보다 희미하게 보인다는 관측을 내놓았고, 이 발견으로 2011년 노벨 물리학상을 받았습니다. 지금 계산으로 우주 전체 질량·에너지의 약 68%를 차지한다는 이것은?",
+    "answer": "암흑 에너지",
+    "acceptedAnswers": [
+     "다크 에너지"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 1998년 우주론자 마이클 터너가 붙였다. 밀도가 아주 낮아 실험실에서 직접 잡아내기는 어렵다고 본다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "우주 전체 질량·에너지의 약 68%를 차지한다는 이것",
+     "difWhy": "3 — 천문 용어 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 우주론 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "우주가 점점 빠르게 커지도록 밀어내는 정체불명의 성분으로, 빈 공간 자체에 깃든 힘이라는 '우주 상수'가 유력한 후보다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "우주의 가속 팽창을 일으킨다고 보는 정체불명의 성분",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "우주 다큐·과학 뉴스",
+     "piece": "f01",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '우주를 이루는 성분', 끝 ○○ '이것'이 성분과 이어짐. Ia형 초신성은 이름뿐"
+    },
+    "blindQuestion": {
+     "guess": "암흑 에너지",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "암흑 에너지",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "암흑 에너지",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dark_energy",
+     "https://ko.wikipedia.org/wiki/암흑_에너지"
+    ],
+    "facts": [
+     {
+      "claim": "1998년 Ia형 초신성 관측 · 2011년 노벨 물리학상(펄머터·슈밋·리스)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dark_energy",
+      "note": "In 1998, the High-Z Supernova Search Team published observations of Type Ia (\"one-A\") supernovae. In 1999, the Supernova Cosmology Project followed by suggesting that the expansion of the universe is accelerating. The 2011 Nobel Prize in Physics was awarded to Saul Perlmutter, Brian P. Schmidt, and Adam G. Riess for their leadership in the discovery."
+     },
+     {
+      "claim": "우주 총 에너지의 68%",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/암흑_에너지",
+      "note": "2013년 기준, 최고의 당시 측정들은 암흑 에너지가 오늘날 관측 가능한 우주의 총 에너지의 68%를 차지한다는 것을 나타낸다. ... 첫 번째 직접적인 증거는 1998년 애덤 리스 등과 솔 펄머터 등의 연구에서 나왔으며"
+     },
+     {
+      "claim": "가속 팽창 · 우주 상수 후보 · 아인슈타인",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Dark_energy",
+      "note": "Its primary effect is to drive the accelerating expansion of the universe. ... The main candidates are a cosmological constant ... The cosmological constant was first proposed by Einstein ... Einstein reportedly referred to his failure to predict the idea of a dynamic universe ... as his greatest blunder."
+     },
+     {
+      "claim": "용어 1998 마이클 터너 · 실험실 검출 어려움",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dark_energy",
+      "note": "The term \"dark energy\" was coined by cosmologist Michael S. Turner in 1998 ... Since it is rarefied and un-massive—roughly 10−27 kg/m3—it is unlikely to be detectable in laboratory experiments."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dark_energy"
+    ],
+    "hintNote": null,
+    "easiestCue": "우주 질량·에너지의 약 68%",
+    "worthWhyGen": "우주의 대부분이 정체불명이라는 우주론의 기본 개념(교과·전공 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '우주를 이루는 성분' 예",
+     "unique": "68% → 암흑물질(27%)과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "astronomy/3#g032b-g032b-j29-2",
+   "seed": {
+    "subject": "웜홀",
+    "aspect": null,
+    "ref": "g032b-j29-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우주의 먼 두 곳을 지름길로 잇는다고 상상하는 시공간의 통로입니다. 1935년 아인슈타인과 로젠이 논문으로 내놓아 '아인슈타인-로젠 다리'라고도 부릅니다. 1957년 물리학자 존 휠러가 지금의 영어 이름을 붙인 이것은?",
+    "answer": "웜홀",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1916년 루트비히 플람이 먼저 찾은 해를 아인슈타인과 로젠이 다시 찾았고, 사람이 실제로 지나갈 수 있는지는 아직 이론으로만 다룬다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "먼 두 곳을 지름길로 잇는 시공간의 통로",
+     "difWhy": "2 — SF로 익숙 · 설명→이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "영화 '인터스텔라'에서 토성 근처에 열려 우주선이 다른 은하로 건너가는 통로다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "시공간의 먼 두 지점을 잇는 가상의 통로(wormhole)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "영화·SF에서 자주 나옴",
+     "piece": "f07",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '시공간의 통로'가 있고 끝 지시어 '이것'은 그 통로를 가리켜 헷갈리지 않음"
+    },
+    "blindQuestion": {
+     "guess": "웜홀",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "웜홀",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "웜홀",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4206",
+      "answer": "인터스텔라",
+      "verdict": "diff",
+      "why": "웜홀 개념 vs 인터스텔라 영화 — 영화 줄거리 지식과 물리 개념은 다름(crossans 허용)"
+     },
+     {
+      "old": "1455",
+      "answer": "페르미 역설",
+      "verdict": "diff",
+      "why": "웜홀 vs 페르미 역설 — 다른 지식"
+     },
+     {
+      "old": "1446",
+      "answer": "블랙홀",
+      "verdict": "diff",
+      "why": "웜홀 vs 블랙홀 — 다른 천체 개념"
+     },
+     {
+      "old": "1445",
+      "answer": "우주 팽창",
+      "verdict": "diff",
+      "why": "웜홀 vs 우주 팽창 — 다른 지식"
+     },
+     {
+      "old": "1454",
+      "answer": "중력 렌즈",
+      "verdict": "diff",
+      "why": "웜홀 vs 중력 렌즈 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/웜홀",
+     "https://en.wikipedia.org/wiki/Wormhole"
+    ],
+    "facts": [
+     {
+      "claim": "1935년 아인슈타인·로젠 발표 · 아인슈타인-로젠 다리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/웜홀",
+      "note": "아인슈타인 – 로젠 다리는 1916년에 루드비히 플램에 의해 발견되었는데 … 알베르트 아인슈타인과 그의 동료 네이선 로젠에 의해 재발견되었으며, 그는 1935년에 결과를 발표했다."
+     },
+     {
+      "claim": "휠러가 1957년 '웜홀' 용어",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/웜홀",
+      "note": "미국의 이론물리학자 존 아치볼드 휠러(바일의 작업에서 영감을 받음) 찰스 미스너가 공동 저술한 1957년 논문에서 \"웜홀\"이라는 용어를 만들었다."
+     },
+     {
+      "claim": "휠러가 용어 사용 · 1935년 7월 논문",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Wormhole",
+      "note": "American theoretical physicist John Archibald Wheeler (inspired by Weyl's work) used the term \"wormhole\". … The original Einstein–Rosen bridge was described in an article published in July 1935."
+     },
+     {
+      "claim": "1916 플람",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Wormhole",
+      "note": "The Einstein–Rosen bridge was discovered by Ludwig Flamm in 1916, a few months after Schwarzschild published his solution"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "우주의 먼 두 곳을 잇는 지름길 통로(정의)",
+    "worthWhyGen": "SF·영화로 익숙한 말의 과학 출처(아인슈타인-로젠)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '시공간의 통로' 예",
+     "unique": "두 곳을 잇는 통로 — 블랙홀은 잇지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 토성/인터스텔라"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

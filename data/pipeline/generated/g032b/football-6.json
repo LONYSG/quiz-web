@@ -1,0 +1,258 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "football/6",
+  "midKey": "football",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "football/6#g032b-g032b-j14-2",
+   "seed": {
+    "subject": "세븐 네이션 아미",
+    "aspect": null,
+    "ref": "g032b-j14-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "축구장 응원가로 널리 쓰이는 록 음악이 있습니다. 2003년 10월 이탈리아에서 AC 밀란과 맞붙은 벨기에 클럽 브뤼허 팬들이 이 곡의 기타 리프를 '오' 소리로 따라 부르기 시작했습니다. 2006년 월드컵을 앞두고 이탈리아 대표팀 팬들이 '포 포 포' 노래라 부르며 퍼뜨린 이 곡은?",
+    "answer": "세븐 네이션 아미",
+    "acceptedAnswers": [
+     "Seven Nation Army"
+    ],
+    "originalTitleVariants": [
+     "Seven Nation Army"
+    ],
+    "explanation": "그 리프는 베이스가 아니라 기타 소리의 음높이를 낮추는 장치로 낸 것입니다. 이 곡은 제46회 그래미 최우수 록 노래상을 받았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "2006년 월드컵 이탈리아 팬들이 '포 포 포' 노래라 부른 곡",
+     "difWhy": "4 — 곡명을 못 떠올림 · 노래는 알아도 제목은 모름",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 곡명 암기",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "미국 록 듀오 화이트 스트라이프스의 2003년 곡으로, '오~ 오오오오 오~' 하는 리프가 유럽 선수권과 월드컵 경기장마다 울린다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 록 듀오 화이트 스트라이프스의 2003년 곡 — 경기장 응원 리프로 유명",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "응원 리프로 유명한 곡",
+     "piece": "f05",
+     "genPct": 35
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "세븐 네이션 아미",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "Seven Nation Army",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "세븐 네이션 아미",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Seven_Nation_Army",
+     "https://ko.wikipedia.org/wiki/화이트_스트라이프스"
+    ],
+    "facts": [
+     {
+      "claim": "2003년 10월 이탈리아 챔피언스리그 경기에서 클럽 브뤼허 팬들이 AC 밀란전에서 리프를 부르기 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seven_Nation_Army",
+      "note": "This phenomenon has its roots in a UEFA Champions League football match in Italy in October 2003, during which fans of Belgium's Club Brugge began singing the riff in a game against Italy's AC Milan."
+     },
+     {
+      "claim": "2006 월드컵 앞두고 이탈리아 대표팀 팬들 · 'po po po po po' 노래",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seven_Nation_Army",
+      "note": "Fans of the Italy national football team proceeded to chant the riff at games leading up to the 2006 FIFA World Cup, and \"Seven Nation Army\"—known as the \"po po po po po\" song among Italians—became the team's \"unofficial theme\"."
+     },
+     {
+      "claim": "화이트 스트라이프스 곡 · 그래미 최우수 록 노래(두 번째 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/화이트_스트라이프스",
+      "note": "Grammy Awards : Best Rock Song for \"Seven Nation Army\""
+     },
+     {
+      "claim": "2003년 화이트 스트라이프스 곡 · 유로 대회마다 · 2018 월드컵",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Seven_Nation_Army",
+      "note": "\"Seven Nation Army\" is a song by the American rock duo the White Stripes, released ... on February 17, 2003 / It has been played at each UEFA European Football Championship since 2008, and it was played prior to the start of each game during the 2018 FIFA World Cup."
+     },
+     {
+      "claim": "베이스 라인은 기타를 피치 시프트 효과에 통과시킨 소리 · 제46회 그래미 최우수 록 노래",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Seven_Nation_Army",
+      "note": "a bass line created by playing a guitar through a pitch shift effect / It won Best Rock Song at the 46th Annual Grammy Awards"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Seven_Nation_Army"
+    ],
+    "hintNote": null,
+    "easiestCue": "축구장 응원 록 음악 + 이탈리아 '포 포 포'(곡 이름을 알아야 함 — 멜로디는 알아도 제목은 모르는 사람이 많다)",
+    "worthWhyGen": "경기장마다 들리는 '오~ 오오오오' 응원이 어디서 왔는지 — 응원 문화의 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '록 음악' 종류 명사 — 예",
+     "unique": "2003 브뤼허 팬 + 2006 이탈리아 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14",
+    "discarded": "알가치 1 (고유명사 · 곡명 암기)"
+   }
+  },
+  {
+   "seedId": "football/6#g032b-g032b-j25-5",
+   "seed": {
+    "subject": "카드섹션",
+    "aspect": null,
+    "ref": "g032b-j25-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "관중석에서 펼치는 단체 응원 방식입니다. 한국에서는 1967년 전국체전 때부터 했다고 전하며, 북한에서는 '배경대'라 부릅니다. 저마다 정해진 색깔 판을 들어 올려 스탠드 전체에 커다란 글자나 그림을 만드는 이 응원은?",
+    "answer": "카드섹션",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "북한 아리랑 축제는 이 응원을 넘김책처럼 바꿔 들어 한 시간 넘게 움직이는 그림을 보여 주는 것으로 유명하다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "저마다 정해진 색깔 판을 들어 올려 스탠드 전체에 글자나 그림",
+     "difWhy": "2 — 카드섹션 설명→이름 쉬움",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 응원 문화 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "2002년 한일 월드컵 때 붉은악마가 관중석에 'AGAIN 1966' 같은 큰 글귀를 만들어 보인 응원이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "관중이 색깔 판을 들어 글자·그림을 만드는 단체 응원(card section)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "월드컵·응원 문화로 흔함",
+     "piece": "f06",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '단체 응원 방식'이 끝 '이 응원'과 일치."
+    },
+    "blindQuestion": {
+     "guess": "카드섹션",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카드섹션",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카드섹션",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j17-9",
+      "answer": "파도타기",
+      "verdict": "diff",
+      "why": "카드섹션 vs 파도타기 — 다른 응원 방식"
+     },
+     {
+      "old": "g032a:g032a-j09-2",
+      "answer": "붉은 악마",
+      "verdict": "diff",
+      "why": "카드섹션 vs 붉은 악마 — 다름"
+     },
+     {
+      "old": "5465",
+      "answer": "오 필승 코리아",
+      "verdict": "diff",
+      "why": "카드섹션 vs 오 필승 코리아 — 다름"
+     },
+     {
+      "old": "g032b:g032b-j14-2",
+      "answer": "세븐 네이션 아미",
+      "verdict": "diff",
+      "why": "카드섹션 vs 세븐 네이션 아미 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/카드섹션",
+     "https://en.wikipedia.org/wiki/Card_stunt"
+    ],
+    "facts": [
+     {
+      "claim": "1967년 전국체전부터 · 북한 배경대 · 글자나 그림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/카드섹션",
+      "note": "일정한 간격으로 앉은 사람들이 다양한 색깔의 종이나 천을 이용하여 글자나 그림을 표현하는 것으로 한국에서는 1967년 전국체전 때부터 실시하였는데 … 조선민주주의인민공화국에서는 배경대(背景臺)라고 한다."
+     },
+     {
+      "claim": "관중이 카드를 들어 그림을 만듦 · 아리랑 축제의 넘김 카드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Card_stunt",
+      "note": "Card stunts are a planned, coordinated sequence of actions performed by an audience, whose members raise cards that, in the aggregate, create a recognizable image. … The North Korean mass games Arirang Festival, however, were the first to extend the card stunt to an art form, using flip-book cards to produce enormous hour-long animated sequences."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "색깔 판을 들어 스탠드에 글자·그림을 만드는 응원",
+    "worthWhyGen": "월드컵 응원의 대표 장면 — 응원 문화 상식(2~3)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '단체 응원 방식' 예",
+     "unique": "색깔 판·글자 그림으로 한정 — 파도타기와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

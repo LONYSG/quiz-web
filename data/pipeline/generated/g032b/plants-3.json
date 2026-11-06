@@ -1,0 +1,437 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "plants/3",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/3#g032b-g032b-j05-11",
+   "seed": {
+    "subject": "카사바",
+    "aspect": null,
+    "ref": "g032b-j05-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "남아메리카가 원산인 한 덩이뿌리 작물은 날로 먹으면 청산(사이안화물) 중독을 일으킬 수 있습니다. 그래서 서아프리카에서는 껍질을 벗겨 간 뿌리를 이틀에서 사흘 물에 담가 삭혀 독을 뺍니다. 그런데도 농민들은 독이 훨씬 많은 '쓴 품종'을 일부러 고르기도 하는데, 작물을 덜 잃기 때문입니다. 이 작물은?",
+    "answer": "카사바",
+    "acceptedAnswers": [
+     "마니옥"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "열대에서 쌀·옥수수 다음가는 탄수화물 공급원이다. 가뭄 때 자란 뿌리는 독이 더 많아진다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "남아메리카 원산 덩이뿌리 … 청산 중독 … 서아프리카",
+     "difWhy": "3 — 카사바 이름 떠올리기 · 타피오카 연결 필요",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 작물 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "고구마처럼 굵은 덩이뿌리를 먹는 열대 작물로, 이 녹말로 만든 타피오카 펄이 버블티 알갱이가 된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "열대의 덩이뿌리 작물 — 녹말이 타피오카",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "타피오카 원료로 알려짐",
+     "piece": "f04",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '덩이뿌리 작물'이 있어 끝 '이 작물'과 일치. 청산은 괄호 풀이 있음."
+    },
+    "blindQuestion": {
+     "guess": "카사바",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카사바",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카사바",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3818",
+      "answer": "옥수수",
+      "verdict": "diff",
+      "why": "카사바 vs 옥수수 — 무관"
+     },
+     {
+      "old": "3140",
+      "answer": "안데스",
+      "verdict": "diff",
+      "why": "카사바 vs 안데스 감자 — 무관"
+     },
+     {
+      "old": "5566",
+      "answer": "파인애플",
+      "verdict": "diff",
+      "why": "카사바 vs 파인애플 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cassava",
+     "https://ko.wikipedia.org/wiki/카사바"
+    ],
+    "facts": [
+     {
+      "claim": "남미 원산 · 잘못 손질하면 사이안화물 중독",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cassava",
+      "note": "native to South America ... Cassava has to be prepared carefully for consumption, as improperly prepared material can contain sufficient cyanide to cause poisoning."
+     },
+     {
+      "claim": "서아프리카(나이지리아) — 껍질 벗겨 갈고 48~72시간 물에 담가 발효",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cassava",
+      "note": "In many West African regions, especially Nigeria, bitter cassava roots are traditionally detoxified in a lengthy process. The roots are peeled and grated. The moist pulp is soaked (or \"retted\") in water for 48 to 72 hours to initiate spontaneous fermentation."
+     },
+     {
+      "claim": "쓴 품종이 독 훨씬 많음 · 농민이 작물 손실을 줄이려 쓴 품종을 고름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cassava",
+      "note": "Cassava is grown in sweet and bitter varieties; both contain toxins, but the bitter varieties have them in much larger amounts. ... Farmers may also choose bitter cultivars to minimise crop losses."
+     },
+     {
+      "claim": "남미 원산 · 사이안화물 독 · 먹기 전 독 제거 필수 · 타피오카 펄 재료",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/카사바",
+      "note": "카사바(영어: cassava) 또는 마니옥(영어: manioc)은 남아메리카가 원산지인 ... 사이안화물 계열의 독성 물질이 함유되어 있으므로 음식으로 섭취 전에는 충분한 독의 제거 과정이 필수적이며 ... 버블티에 들어있는 타피오카 펄은 카사바 녹말로 만든 것이다."
+     },
+     {
+      "claim": "열대 탄수화물 공급 3위(쌀·옥수수 다음) · 가뭄 때 독 증가",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cassava",
+      "note": "Cassava is the third-largest source of carbohydrates in food in the tropics, after rice and maize ... Cassavas grown during drought are especially high in these toxins."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/카사바"
+    ],
+    "hintNote": null,
+    "easiestCue": "날로 먹으면 청산 중독인 남미 덩이뿌리 작물 — 이 사실을 알면 풂",
+    "worthWhyGen": "왜 독이 많은 품종을 일부러 심는가(작물 손실을 줄이려) · 왜 오래 담가 먹나 — 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '덩이뿌리 작물' 예",
+     "unique": "청산 독 남미 덩이뿌리 — 카사바 하나(고구마·감자 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 169자",
+     "crossans 고구마/버블티"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "plants/3#g032b-g032b-j12-10",
+   "seed": {
+    "subject": "자몽",
+    "aspect": null,
+    "ref": "g032b-j12-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "감귤류 과일입니다. 18세기 카리브해의 바베이도스에서 포멜로와 단오렌지가 우연히 섞여 처음 생겼습니다. 1989년 한 약리학 연구진은 술과 약의 상호작용을 시험하며 술맛을 감추려고 이 과일의 주스를 섞었다가, 주스가 약의 흡수를 크게 바꾼다는 것을 우연히 알아냈습니다. 이 과일은 무엇일까요?",
+    "answer": "자몽",
+    "acceptedAnswers": [
+     "그레이프프루트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "주스 속 푸라노쿠마린이 장에서 약을 분해하는 효소 CYP3A4를 망가뜨리기 때문이며, 효소가 다 회복되기까지 사흘쯤 걸립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "포멜로와 단오렌지가 섞여 생긴 감귤류 · 약 흡수에 영향",
+     "difWhy": "2 — 일상 과일 · 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 약 복용 때 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "쌉쌀한 맛이 도는 큼직한 열매로, 붉은 속살 품종을 에이드로 즐겨 마시며 일부 콜레스테롤약 설명서에 함께 먹지 말라고 적힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "쌉쌀한 맛의 큰 감귤류 과일(그레이프프루트)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "흔한 과일·에이드",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '감귤류 과일', 끝 ○○ '과일'과 일치. 셋째 문장이 길지만 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "자몽",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "자몽",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "자몽",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5566",
+      "answer": "파인애플",
+      "verdict": "diff",
+      "why": "새 정답 자몽 과 옛 정답 파인애플 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032a:g032a-j07-10",
+      "answer": "키위",
+      "verdict": "diff",
+      "why": "새 정답 자몽 과 옛 정답 키위 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Grapefruit",
+     "https://ko.wikipedia.org/wiki/자몽",
+     "https://en.wikipedia.org/wiki/Grapefruit–drug_interactions"
+    ],
+    "facts": [
+     {
+      "claim": "18세기 바베이도스 · 단오렌지×포멜로 우연 교잡",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Grapefruit",
+      "note": "Grapefruits originated in Barbados in the 18th century. They are a citrus hybrid that was created through an accidental cross between the sweet orange (C. × sinensis) and the pomelo (C. maxima)"
+     },
+     {
+      "claim": "바베이도스 자연교잡(한국어)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/자몽",
+      "note": "바베이도스에서 단오렌지(C. × sinensis, 오렌지)와 포멜로(C. maxima)의 자연교잡을 통해 처음 생겨났다."
+     },
+     {
+      "claim": "1989년 술맛을 감추려 자몽 주스 → 우연히 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Grapefruit–drug_interactions",
+      "note": "The effect of grapefruit juice on drug absorption was discovered in 1989 by a group led by pharmacologist David Bailey. ... The effect was discovered accidentally in 1989, when a test of drug interactions with alcohol used grapefruit juice to hide the taste of the ethanol."
+     },
+     {
+      "claim": "일부 스타틴과 상호작용 · 라벨 경고",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Grapefruit–drug_interactions",
+      "note": "Affected drugs typically have an auxiliary label saying \"Do not take with grapefruit\" / Some statins, including atorvastatin (Lipitor), lovastatin (Mevacor), and simvastatin"
+     },
+     {
+      "claim": "푸라노쿠마린 · CYP3A4 · 72시간 회복",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Grapefruit–drug_interactions",
+      "note": "These chemicals inhibit key drug metabolizing enzymes, such as cytochrome P450 3A4 (CYP3A4). ... it can take 72 hours for the enzyme activity to completely return to baseline."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Grapefruit",
+     "https://en.wikipedia.org/wiki/Grapefruit–drug_interactions"
+    ],
+    "hintNote": null,
+    "easiestCue": "약과 함께 먹으면 안 되는 과일(알려진 상식)",
+    "worthWhyGen": "알가치 3 — 약 먹을 때 누구에게나 쓸모 있는 사실 + 우연한 발견",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '감귤류 과일' 예",
+     "unique": "포멜로×오렌지 교잡 · 약 상호작용 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 163자"
+    ],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "plants/3#g032b-g032b-j26-3",
+   "seed": {
+    "subject": "라임",
+    "aspect": null,
+    "ref": "g032b-j26-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "초록 껍질에 신맛이 강한 귤속 열매입니다. 19세기 영국 해군은 괴혈병을 막으려고 수병의 물 탄 럼주에 처음엔 레몬즙을 타다가, 식민지에서 기르던 이 열매의 즙으로 바꿨습니다. 이 일로 북미에서는 영국 사람을 이 열매에서 온 속어로 낮춰 불렀는데, 이 열매는?",
+    "answer": "라임",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "정작 이 열매의 비타민 C는 레몬의 절반쯤이어서, 그 즙을 탄 그로그로는 괴혈병을 잘 막지 못했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "초록 껍질에 신맛이 강한 귤속 열매",
+     "difWhy": "2 — 레몬과 갈릴 수 있으나 초록 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 라이미 속어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "모히토에 민트와 함께 짜 넣고 태국·멕시코 요리에 곁들이는, 레몬보다 작고 초록빛인 과일이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "초록색의 신 귤속 열매(lime)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "모히토·음료 재료로 흔함",
+     "piece": "f09",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '귤속 열매' 가 종류, 끝 '이 열매는?' 과 같다. 마지막 문장이 길지만 장면은 하나."
+    },
+    "blindQuestion": {
+     "guess": "라임",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "라임",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "라임",
+     "qFacts": 4,
+     "qSources": 4,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "87",
+      "answer": "팟타이",
+      "verdict": "diff",
+      "why": "라임 vs 팟타이 — 다름"
+     },
+     {
+      "old": "195",
+      "answer": "비타민 C",
+      "verdict": "diff",
+      "why": "라임 vs 비타민 C — 괴혈병 연관이나 열매 vs 영양소, 지식 다름"
+     },
+     {
+      "old": "6584",
+      "answer": "리먼 브라더스",
+      "verdict": "diff",
+      "why": "라임 vs 리먼 브라더스 — 무관"
+     },
+     {
+      "old": "2835",
+      "answer": "데킬라",
+      "verdict": "diff",
+      "why": "라임 vs 데킬라 — 다름"
+     },
+     {
+      "old": "2582",
+      "answer": "쌀국수",
+      "verdict": "diff",
+      "why": "라임 vs 쌀국수 — 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Limey",
+     "https://en.wikipedia.org/wiki/Scurvy",
+     "https://en.wikipedia.org/wiki/Grog",
+     "https://ko.wikipedia.org/wiki/라임"
+    ],
+    "facts": [
+     {
+      "claim": "괴혈병 예방 · 그로그에 레몬즙 → 식민지 라임으로 바꿈 · limey",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Limey",
+      "note": "It derives from the Royal Navy's practice, since the beginning of the 19th century, of adding lemon juice or lime juice to the sailors' daily ration of watered-down rum (known as grog), in order to prevent scurvy. Initially, lemon juice ... was used ... but that was later switched to limes, which were grown in British colonies. It was not understood that limes contain only half as much vitamin C as lemons."
+     },
+     {
+      "claim": "lime or lemon juice 배급 → limey (영국 사람 전체로)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Scurvy",
+      "note": "required all ships of the Royal Navy and Merchant Navy to provide a daily \"lime or lemon juice\" ration ... hence the term \"limey\", first for British sailors, then for English immigrants ... and finally, in old American slang, all British people"
+     },
+     {
+      "claim": "그로그 = 물 탄 럼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Grog",
+      "note": "The mixture of rum and water became known as a \"grog\"."
+     },
+     {
+      "claim": "초록 신맛 · 레몬보다 덜 닮",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/라임",
+      "note": "흔히 열매가 녹색이고 신맛이 나는 품종을 일컫는 말이다. ... 레몬보다 덜 달다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "초록 껍질의 신 귤속 열매(레몬 아닌)",
+    "worthWhyGen": "영국인을 부르는 속어가 생긴 까닭(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '귤속 열매' 예",
+     "unique": "레몬에서 바꾼 열매로 묻는 문장 안에 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

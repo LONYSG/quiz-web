@@ -1,0 +1,298 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "material/3",
+  "midKey": "material",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "material/3#g032b-g032b-j08-1",
+   "seed": {
+    "subject": "포틀랜드 시멘트",
+    "aspect": null,
+    "ref": "g032b-j08-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1824년 영국의 벽돌공 조지프 애스프딘이 특허를 낸 건축 재료가 있습니다. 굳은 빛깔이 세인트폴 대성당과 대영 박물관에 쓰인 남부 해안 섬의 희고 고운 석회암을 닮았다고 해서, 그 섬의 이름이 붙었습니다. 오늘날 공사장에서 가장 흔히 쓰는 이 결합재의 이름은?",
+    "answer": "포틀랜드 시멘트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "아들 윌리엄 애스프딘이 1840년대에 개량한 것을 오늘날 쓰는 형태의 출발점으로 본다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "세인트폴 대성당 석회암 섬의 이름이 붙은 결합재",
+     "difWhy": "3 — 시멘트는 쉬우나 포틀랜드 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "영국 도싯의 섬에서 나는 건축용 석회암을 닮아 그 섬 이름이 붙은, 석회석과 점토를 구워 빻아 콘크리트를 만드는 가장 흔한 회색 가루",
+    "generalHintVersion": "hint-v7",
+    "identity": "콘크리트·모르타르의 기본 재료인 가장 흔한 시멘트",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "건설 상식으로 이름만 들어 본 정도",
+     "piece": "f08",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '건축 재료', 끝 ○○ '결합재' 일치; 섬 이름이 정답 단서로 풀이돼 있음"
+    },
+    "blindQuestion": {
+     "guess": "포틀랜드 시멘트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "포틀랜드 시멘트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "포틀랜드 시멘트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3032",
+      "answer": "거푸집",
+      "verdict": "diff",
+      "why": "포틀랜드 시멘트 발명과 거푸집 정의는 다른 지식"
+     },
+     {
+      "old": "3033",
+      "answer": "양생",
+      "verdict": "diff",
+      "why": "포틀랜드 시멘트 발명과 양생 정의는 다른 지식"
+     },
+     {
+      "old": "5988",
+      "answer": "철근 콘크리트",
+      "verdict": "diff",
+      "why": "포틀랜드 시멘트 특허와 철근 콘크리트 모니에 특허는 서로 다른 재료·사실"
+     },
+     {
+      "old": "3035",
+      "answer": "모듈러 건축",
+      "verdict": "diff",
+      "why": "포틀랜드 시멘트와 모듈러 건축은 무관"
+     },
+     {
+      "old": "3034",
+      "answer": "프리캐스트",
+      "verdict": "diff",
+      "why": "포틀랜드 시멘트와 프리캐스트 공법은 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Portland_cement",
+     "https://ko.wikipedia.org/wiki/포틀랜드_시멘트"
+    ],
+    "facts": [
+     {
+      "claim": "1824년 애스프딘 특허 · 포틀랜드 스톤과 닮아 이름 붙음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Portland_cement",
+      "note": "The cement was so named by Joseph Aspdin, who obtained a patent for it in 1824, because, once hardened, it resembled the fine, pale limestone known as Portland stone, quarried from the windswept cliffs of the Isle of Portland in Dorset. Portland stone was prized for centuries in British architecture and used in iconic structures such as St Paul's Cathedral and the British Museum."
+     },
+     {
+      "claim": "영국 벽돌공 아습딘 · 포틀랜드섬 석회석 색이 비슷해 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/포틀랜드_시멘트",
+      "note": "1824년 영국의 벽돌공 조지프 아습딘(Joseph Aspdin, 1779 ~ 1855)이 “인조석 제조법의 개량”으로 특허를 얻어 포틀랜드 시멘트란 이름을 붙인 것에서 유래하였다. 당시 건축용 석재로 쓰이던 영국 남단부의 포틀랜드섬의 석회석인 포틀랜드 석재(Portland stone)의 색이 회백색으로 비슷해서"
+     },
+     {
+      "claim": "석회석·점토를 구워 클링커 · 콘크리트 기본 재료",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Portland_cement",
+      "note": "It is a fine powder, produced by heating limestone and clay minerals in a kiln to form clinker ... most common type of cement in general use around the world as a basic ingredient of concrete, mortar"
+     },
+     {
+      "claim": "아들 윌리엄이 1840년대 현대식 개량",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Portland_cement",
+      "note": "His son William Aspdin is regarded as the inventor of \"modern\" Portland cement due to his developments in the 1840s."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Portland_cement"
+    ],
+    "hintNote": null,
+    "easiestCue": "가장 흔히 쓰는 결합재(시멘트 종류를 아는 사람은 바로)",
+    "worthWhyGen": "매일 보는 시멘트 이름이 영국 섬의 돌에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '건축 재료' 예",
+     "unique": "정식 이름을 묻는다 — '시멘트'만 치면 오답일 수 있음(질문에 '이름' 명시)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "석회석과 점토를 가마에 구워 빻은 가루로, 모래·자갈·물과 섞으면 콘크리트가 되는 가장 흔한 재료이다."
+      },
+      "why": "시멘트 ← 종류 이름이 빠짐 · 핵심이 이름 유래(H6)라 섬 이름 유래를 힌트로 · Isle of Portland in Dorset(en Portland cement)"
+     }
+    ],
+    "warn": [
+     "crossans 석회암"
+    ],
+    "job": "job-08"
+   }
+  },
+  {
+   "seedId": "material/3#g032b-g032b-j24-2",
+   "seed": {
+    "subject": "무량판 구조",
+    "aspect": null,
+    "ref": "g032b-j24-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기둥이 천장 바닥판을 곧바로 떠받치는 건물 공법입니다. 공사비와 공간을 아끼기 좋지만, 기둥 둘레에 보강 철근을 빠뜨리면 바닥판이 무너질 수 있습니다. 2023년 4월 인천 검단 아파트 지하 주차장 붕괴로 널리 알려진 이 공법은 무엇일까요?",
+    "answer": "무량판 구조",
+    "acceptedAnswers": [
+     "무량판",
+     "무량판 공법"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "사고 뒤 LH가 안전점검 대상에서 빠뜨린 같은 공법 단지 10곳이 더 나와, 점검 대상은 101개 단지로 늘었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "기둥이 바닥판을 곧바로 떠받치는 건물 공법 · 검단 아파트 붕괴",
+     "difWhy": "4 — 건설 공법 이름은 일반인이 못 떠올림 · 뉴스 단서만",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 건설 개념 · 시사",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "국토부 전수 조사에서 LH 아파트 15개 단지의 지하 주차장 기둥에 보강 철근이 빠진 것으로 드러난 공법",
+    "generalHintVersion": "hint-v7",
+    "identity": "보 없이 기둥이 슬래브를 직접 받치는 건축 구조 — 2023년 LH 철근 누락 사태",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "LH 사태 뉴스로 접함",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '건물 공법' 이 끝 ○○(공법) 와 일치, 단서가 짧은 세 문장"
+    },
+    "blindQuestion": {
+     "guess": "무량판 구조",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "무량판 구조",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "무량판 구조",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 4,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5988",
+      "answer": "철근 콘크리트",
+      "verdict": "diff",
+      "why": "무량판 구조 vs 철근 콘크리트 발명 — 다름"
+     },
+     {
+      "old": "3036",
+      "answer": "타워크레인",
+      "verdict": "diff",
+      "why": "무량판 구조 vs 타워크레인 — 다름"
+     }
+    ],
+    "sources": [
+     "https://www.ytn.co.kr/_ln/0102_202308011300540952",
+     "https://m.seoul.co.kr/news/2023/08/09/20230809500131"
+    ],
+    "facts": [
+     {
+      "claim": "보 없이 기둥이 슬래브를 바로 지지 · 기둥 주변 전단 보강근 · 경제성·공간 효율",
+      "where": "q",
+      "url": "https://www.ytn.co.kr/_ln/0102_202308011300540952",
+      "note": "무량판 구조는 상부의 무게를 떠받치는 보 없이 기둥이 슬래브를 바로 지지하기 때문에 슬래브가 뚫리는 것을 막기 위해 기둥 주변에 전단 보강근을 설치하는데 ... 이 구조는 경제성과 공간 효율성이 뛰어나지만"
+     },
+     {
+      "claim": "2023년 4월 인천 검단 아파트 지하주차장 붕괴 → 전수조사",
+      "where": "q",
+      "url": "https://m.seoul.co.kr/news/2023/08/09/20230809500131",
+      "note": "앞서 지난 4월 발생한 인천 검단 아파트 지하주차장 붕괴 사고를 계기로 LH가 2017년 이후 발주한 아파트를 전수조사한 결과 무량판 구조를 적용한 단지는 91개이고, 이 중에 15개 단지에서 철근 누락이 발견됐다"
+     },
+     {
+      "claim": "91개 단지 중 15개 단지 보강 철근 누락(국토부 발표)",
+      "where": "h",
+      "url": "https://www.ytn.co.kr/_ln/0102_202308011300540952",
+      "note": "국토부는 LH 발주 아파트 중 지하주차장에 무량판 구조를 적용한 91개 단지를 전수 조사한 결과 15개 단지에서 보강 철근이 빠져 있었다고 전날 발표했습니다."
+     },
+     {
+      "claim": "누락 10개 단지 추가 · 101개 단지",
+      "where": "e",
+      "url": "https://m.seoul.co.kr/news/2023/08/09/20230809500131",
+      "note": "무량판 구조가 적용된 아파트 10개 단지가 추가로 확인됐다. 안전점검 대상이 101개 단지여야 했는데 이를 빠뜨린 것이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.ytn.co.kr/_ln/0102_202308011300540952",
+     "https://m.seoul.co.kr/news/2023/08/09/20230809500131"
+    ],
+    "hintNote": null,
+    "easiestCue": "2023년 검단 아파트 지하 주차장 붕괴",
+    "worthWhyGen": "'순살 아파트' 뉴스로 온 국민이 들은 건설 공법 — 일반 상식(19 §9-1 ①)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '건물 공법' 예",
+     "unique": "검단 붕괴 · 기둥이 바닥판 직접 지지 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-24"
+   }
+  }
+ ]
+}

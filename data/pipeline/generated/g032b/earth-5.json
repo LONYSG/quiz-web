@@ -1,0 +1,284 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "earth/5",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/5#g032b-g032b-j11-6",
+   "seed": {
+    "subject": "북서항로",
+    "aspect": null,
+    "ref": "g032b-j11-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "캐나다 북쪽 섬들 사이를 지나 대서양과 태평양을 잇는 뱃길입니다. 1845년 영국의 프랭클린 탐험대가 이 뱃길을 찾다 얼음에 갇혀 돌아오지 못했고, 1906년 노르웨이의 아문센이 처음 배로 끝까지 지났습니다. 2007년 8월 바다 얼음이 줄어 쇄빙선 없이 지날 수 있게 된 이 뱃길은?",
+    "answer": "북서항로",
+    "acceptedAnswers": [
+     "서북항로"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "아문센은 빚쟁이들을 피해 출항했고, 작은 청어잡이 배 '이외아'에 선원 여섯만 태워 3년 만에 지났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "캐나다 북쪽 섬들 사이 … 프랭클린 탐험대 … 쇄빙선 없이",
+     "difWhy": "4 — 북서항로 이름 지리 교양 밖 · 이걸 어떻게 알아",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 지리 탐험사 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "유럽에서 아시아로 가는 지름길을 찾던 탐험가들이 수백 년 매달린 북아메리카 북쪽 바닷길로, 기후 변화로 열리며 새 무역로로 주목받는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "북아메리카 북쪽 북극해를 지나 대서양과 태평양을 잇는 항로",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "세계지리·탐험 이야기에서 들어 봤을 정도",
+     "piece": "f06",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '뱃길', 끝 ○○ '뱃길'. 연도 많지만 문장마다 한 주제"
+    },
+    "blindQuestion": {
+     "guess": "북서항로",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "북서항로",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "북서항로",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j29-1",
+      "answer": "열돔",
+      "verdict": "diff",
+      "why": "북서항로와 열돔은 무관"
+     },
+     {
+      "old": "2863",
+      "answer": "IPCC",
+      "verdict": "diff",
+      "why": "북서항로와 IPCC는 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/북서항로",
+     "https://en.wikipedia.org/wiki/Northwest_Passage"
+    ],
+    "facts": [
+     {
+      "claim": "대서양에서 북아메리카 북쪽 해안을 따라 태평양에 이르는 항로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/북서항로",
+      "note": "북서항로(北西航路)는 대서양에서 북아메리카의 북쪽 해안을 따라 태평양에 이르는 항로이다."
+     },
+     {
+      "claim": "1845년 프랭클린 탐험대 · 얼음에 갇힘 · 돌아오지 못함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Northwest_Passage",
+      "note": "In 1845, a lavishly equipped two-ship expedition led by Sir John Franklin sailed to the Canadian Arctic ... When the ships failed to return ... the ships were ice-locked in 1846 near King William Island"
+     },
+     {
+      "claim": "1906년 아문센 처음 배로만 통과",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Northwest_Passage",
+      "note": "In 1906, the Norwegian explorer Roald Amundsen was the first to complete the passage solely by ship, from Greenland to Alaska in the sloop Gjøa."
+     },
+     {
+      "claim": "2007년 8월 21일 쇄빙선 없이 열림 · 기후 변화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Northwest_Passage",
+      "note": "major changes to the ice pack due to climate change ... On August 21, 2007, the Northwest Passage became open to ships without the need of an icebreaker."
+     },
+     {
+      "claim": "아시아로 가는 무역로를 찾던 탐험",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Northwest_Passage",
+      "note": "European explorers, beginning with Christopher Columbus in 1492, sought a navigable passage as a possible trade route to Asia"
+     },
+     {
+      "claim": "빚쟁이 피해 출항 · 청어잡이 배 · 선원 6",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Northwest_Passage",
+      "note": "In a three-year journey between 1903 and 1906, Amundsen explored the passage with a crew of six. Amundsen, who had sailed to escape creditors ... herring boat Gjøa."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Northwest_Passage",
+     "https://ko.wikipedia.org/wiki/북서항로"
+    ],
+    "hintNote": null,
+    "easiestCue": "캐나다 북쪽 · 대서양~태평양 뱃길 · 아문센",
+    "worthWhyGen": "기후 변화가 바꾸는 바닷길 — 탐험사와 오늘의 무역로를 잇는 교과 밖 지식(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '뱃길' 예",
+     "unique": "캐나다 북쪽 섬 사이 = 북서항로(북동항로 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "earth/5#g032b-g032b-j29-1",
+   "seed": {
+    "subject": "탄소세",
+    "aspect": null,
+    "ref": "g032b-j29-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1973년 데이비드 고든 윌슨이 처음 제안한 세금입니다. 2024년 덴마크는 소·돼지 같은 가축이 내뿜는 온실가스에도 이 세금을 매기기로 해, 그렇게 하는 첫 나라가 되었습니다. 2030년부터 가축에도 걷는 이 세금은?",
+    "answer": "탄소세",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "오염을 일으키는 쪽에 그 사회적 비용을 물리자는 경제학자 피구의 생각을 잇는 세금으로, 2019년 기준 25개국이 시행했거나 시행할 예정이었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "가축이 내뿜는 온실가스에도 매기는 세금",
+     "difWhy": "2 — 온실가스 세금은 탄소세로 바로 이어짐",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 · 기후 일반 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "석탄·석유·휘발유처럼 태우면 지구를 덥히는 연료의 값을 올려 덜 쓰게 만드는 환경세다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "온실가스 배출(화석연료)에 매기는 환경세",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "환경 뉴스에 자주 나옴",
+     "piece": "f04",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '제안한 세금' 이 종류, 끝 '이 세금은?' 과 같다. 문장이 짧다."
+    },
+    "blindQuestion": {
+     "guess": "탄소세",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "탄소세",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탄소세",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2860",
+      "answer": "킬링 곡선",
+      "verdict": "diff",
+      "why": "탄소세(덴마크 가축세) vs 킬링 곡선 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탄소세",
+     "https://en.wikipedia.org/wiki/Carbon_tax",
+     "https://www.npr.org/2024/06/27/nx-s1-5021147/denmark-carbon-tax-cows-pigs-farms-worlds-first"
+    ],
+    "facts": [
+     {
+      "claim": "1973년 데이비드 고든 윌슨이 처음 제안",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탄소세",
+      "note": "탄소세는 오염세의 일종으로 1973년 데이비드 고든 윌슨(David Gordon Wilson)이 처음 제안했다."
+     },
+     {
+      "claim": "1973년 윌슨 제안(영문)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carbon_tax",
+      "note": "David Gordon Wilson first proposed this type of tax in 1973."
+     },
+     {
+      "claim": "덴마크가 가축 배출을 탄소세에 넣은 첫 나라",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carbon_tax",
+      "note": "Denmark is the first country to include livestock emissions in their carbon tax system."
+     },
+     {
+      "claim": "2024년 6월 발표 · 2030년부터 · 세계 처음",
+      "where": "q",
+      "url": "https://www.npr.org/2024/06/27/nx-s1-5021147/denmark-carbon-tax-cows-pigs-farms-worlds-first",
+      "note": "Gassy cows and pigs will face a carbon tax in Denmark, the first country to do so (2024-06-27) — will introduce a tax on livestock carbon dioxide emissions from 2030"
+     },
+     {
+      "claim": "피구세 · 2019년 25개국",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/탄소세",
+      "note": "부정적인 외부효과에 대한 세금을 피구비안 세금(Pigovian Tax)이라고 하며 … 2019년 기준, 탄소세는 25개국에서 시행되었거나 시행 예정이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/탄소세"
+    ],
+    "hintNote": null,
+    "easiestCue": "가축이 내뿜는 온실가스에 매기는 세금(덴마크 뉴스)",
+    "worthWhyGen": "기후 정책 뉴스에 자주 나오는 말 · 가축에까지 매긴다는 새 사실",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '세금' 예",
+     "unique": "온실가스·가축에 매기는 세금 — 탄소 배출권(거래제)은 세금이 아님",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 석탄"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

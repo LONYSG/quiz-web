@@ -1,0 +1,148 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "transport/4",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/4#g032b-g032b-j25-11",
+   "seed": {
+    "subject": "평형수",
+    "aspect": null,
+    "ref": "g032b-j25-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "큰 배가 짐을 내린 뒤 기울거나 뒤집히지 않게 배 밑 탱크에 채우는 바닷물입니다. 이 물을 다른 나라 항구에서 버리면 그 속 생물이 낯선 바다로 퍼집니다. 흑해·카스피해의 얼룩말홍합이 미국 오대호에 퍼진 것도 이 물 탓으로, 국제해사기구가 2004년 관리 협약을 만든 이 물은?",
+    "answer": "평형수",
+    "acceptedAnswers": [
+     "선박평형수",
+     "밸러스트수"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 협약은 2017년 9월 발효되었고, 배마다 이 물 속 생물을 없애는 처리 장치(BWMS)를 갖추게 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "배 밑 탱크에 채우는 바닷물 · 국제해사기구 협약",
+     "difWhy": "3 — 전문 용어 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 선박 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "짐을 실으면 빼내고 짐을 내리면 채워 넣어, 배의 무게중심을 낮추고 좌우 균형을 맞추는 물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "배의 안정을 위해 탱크에 채우는 바닷물(ballast water)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "선박 뉴스에서 접했으나 뜻은 흐림",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '배 밑 탱크에 채우는 바닷물', 끝 ○○ '이 물' 일치; 지시어 '이 물'이 첫 문장 대상을 가리킴"
+    },
+    "blindQuestion": {
+     "guess": "선박평형수",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "밸러스트수",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "평형수",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "686",
+      "answer": "만재흘수선",
+      "verdict": "diff",
+      "why": "평형수 vs 만재흘수선 — 다름"
+     },
+     {
+      "old": "685",
+      "answer": "흘수",
+      "verdict": "diff",
+      "why": "평형수 vs 흘수 — 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ballast_water_discharge_and_the_environment",
+     "https://ko.wikipedia.org/wiki/세월호_침몰_사고",
+     "https://ko.wikipedia.org/wiki/에스엔시스"
+    ],
+    "facts": [
+     {
+      "claim": "짐을 내린 뒤 채우고 다음 항구에서 버림 · 외래종 피해 · 얼룩말홍합(카스피해·흑해) · IMO 2004 협약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ballast_water_discharge_and_the_environment",
+      "note": "ballast water, which is often taken on in the coastal waters in one region after ships discharge wastewater or unload cargo, and discharged at the next port of call … non-native, nuisance, and exotic species … The zebra mussel, which is native to the Caspian and Black Seas, arrived in Lake St. … the International Maritime Organization (IMO) adopted in 2004 the \"International Convention for the Control and Management of Ships' Ballast Water and Sediments\""
+     },
+     {
+      "claim": "해수를 담아 배의 좌우 균형 · 배 밑 탱크",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/세월호_침몰_사고",
+      "note": "평형수 탱크는 선박 가장 아래 부분에 위치하는데, 좌우 3개씩 모두 6개의 물탱크로 이루어져 있다. 평형수는 해수를 담아 배의 좌우 균형을 맞춰준다."
+     },
+     {
+      "claim": "2017년 9월 발효",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ballast_water_discharge_and_the_environment",
+      "note": "governed globally under the Ballast Water Management Convention, since its entry into force in September 2017."
+     },
+     {
+      "claim": "평형수 처리 시스템(BWMS)",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/에스엔시스",
+      "note": "배전반 및 전기 자동제어반, 평형수 처리 시스템(BWMS), LNG 기자재 … 등을 개발, 설계, 생산한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/세월호_침몰_사고"
+    ],
+    "hintNote": null,
+    "easiestCue": "배가 기울지 않게 배 밑 탱크에 채우는 바닷물",
+    "worthWhyGen": "배의 안전 원리와 외래종 문제를 잇는 상식(2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바닷물' 예 · 191자",
+     "unique": "배 밑 탱크 바닷물로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 무게중심"
+    ],
+    "job": "job-25"
+   }
+  }
+ ]
+}

@@ -1,0 +1,303 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-geo/5",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/5#g032b-g032b-j04-4",
+   "seed": {
+    "subject": "텔아비브",
+    "aspect": null,
+    "ref": "g032b-j04-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지중해 바닷가의 한 도시에는 1930년대에 지은 건물 4,000여 채가 모여 있습니다. 나치를 피해 독일에서 건너온 유대인 건축가들이 바우하우스 양식으로 지은 하얀 건물들입니다. 이 건물들 덕분에 '하얀 도시'라 불리며 2003년 세계유산에 오른 이 도시는?",
+    "answer": "텔아비브",
+    "acceptedAnswers": [
+     "텔아비브야파",
+     "텔아비브-야파"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "도시 설계는 스코틀랜드 출신 패트릭 게디스가 1925년부터 맡았다. 이 양식 건물이 세계에서 가장 많은 도시로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "하얀 도시 · 바우하우스 양식 건물 4,000여 채 · 지중해",
+     "difWhy": "3 — 도시 별칭 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 지리 지식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "이스라엘 지중해 연안의 최대 경제 도시로, 1948년 전쟁 때 예루살렘을 대신해 임시 수도 구실을 했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "이스라엘 지중해 연안의 최대 경제 도시(Tel Aviv)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "뉴스에서 자주 나옴",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '지중해 바닷가의 한 도시' 가 종류, 끝 '이 도시는?' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "텔아비브",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "텔아비브",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "텔아비브",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 7,
+     "found": 7,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "21",
+      "answer": "Paris",
+      "verdict": "diff",
+      "why": "텔아비브 하얀 도시 vs 파리 빛의 도시 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/White_City_(Tel_Aviv)",
+     "https://ko.wikipedia.org/wiki/텔아비브"
+    ],
+    "facts": [
+     {
+      "claim": "1930년대 건물 4,000여 채 · 나치를 피한 독일 유대인 건축가 · 바우하우스(국제주의 양식)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/White_City_(Tel_Aviv)",
+      "note": "The White City ... is a collection of over 4,000 buildings in Tel Aviv from the 1930s built in a unique form of the International Style, commonly known as Bauhaus, by German Jewish architects who fled to the British Mandate of Palestine ... after the rise to power of the Nazis."
+     },
+     {
+      "claim": "2003년 유네스코 세계유산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/White_City_(Tel_Aviv)",
+      "note": "In 2003, the United Nations Educational, Scientific and Cultural Organization (UNESCO) proclaimed Tel Aviv's White City a World Cultural Heritage site"
+     },
+     {
+      "claim": "하얀 건물이 많아 화이트 시티 · 2003 세계유산 · 나치 탈출 건축가 바우하우스",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/텔아비브",
+      "note": "하얗고 밝은 색상의 건물들이 많아서 화이트 시티로 불린다. 나치 독일을 탈출한 건축가들이 모던주의의 영향을 받아 건물들을 전부 바우하우스식이나 국제주의식으로 지었다."
+     },
+     {
+      "claim": "이스라엘 지중해 연안 · 경제 중심",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/텔아비브",
+      "note": "이스라엘 서부 지중해 연안에 있는 도시이다. ... 이스라엘의 경제적인 중심지가 되어 있다."
+     },
+     {
+      "claim": "전쟁 중 임시 수도",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/텔아비브",
+      "note": "전쟁당시 요르단이 예루살렘을 점령하여 텔아비브는 이스라엘의 임시수도가 되었다."
+     },
+     {
+      "claim": "게디스 1925년 설계 착수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/White_City_(Tel_Aviv)",
+      "note": "Scottish urban planner Patrick Geddes ... Geddes began work in 1925 on the plan, which was accepted in 1929."
+     },
+     {
+      "claim": "바우하우스 양식 건물 수 세계 최다",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/White_City_(Tel_Aviv)",
+      "note": "Tel Aviv has the largest number of buildings in the Bauhaus/International Style of any city in the world."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/텔아비브"
+    ],
+    "hintNote": null,
+    "easiestCue": "나치를 피한 유대인 건축가(→ 이스라엘) · 지중해 도시 — 예루살렘은 지중해가 아님",
+    "worthWhyGen": "도시 별칭 '하얀 도시' 가 왜 붙었나 — 나치를 피한 건축가들의 바우하우스 건물(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '도시' 예",
+     "unique": "지중해 · 1930년대 바우하우스 4,000채 · 2003 세계유산 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "world-geo/5#g032b-g032b-j31-7",
+   "seed": {
+    "subject": "오사카",
+    "aspect": null,
+    "ref": "g032b-j31-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "에도 시대 일본의 물류·상업 중심지였던 도시입니다. 여러 번(藩)이 이곳에 창고 저택을 두어, 전국의 물자가 일단 이곳에 모였다가 다시 전국으로 나갔습니다. 그래서 흔히 '천하의 부엌'이라 불리는 이 상인의 도시는 어디일까요?",
+    "answer": "오사카",
+    "acceptedAnswers": [
+     "오사카시"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "에도 시대 문서에는 '여러 지방의 부엌'이라는 표현이 보이고, 그 별명 그대로 적은 기록은 아직 찾지 못했다는 연구도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "천하의 부엌이라 불리는 일본 상인의 도시",
+     "difWhy": "2 — 오사카는 흔한 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 도시 별칭의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "도요토미 히데요시가 큰 성을 쌓은 곳이자 도톤보리 먹자 거리로 유명한 간사이 지방의 대도시다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일본 간사이 지방의 중심 대도시",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "여행지로 매우 유명",
+     "piece": "f09",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '도시입니다' 가 끝 ○○(도시) 와 일치, 번(藩) 은 한자 병기돼 있음"
+    },
+    "blindQuestion": {
+     "guess": "오사카",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오사카",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오사카",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2077",
+      "answer": "안도 다다오",
+      "verdict": "diff",
+      "why": "오사카 천하의 부엌 vs 안도 다다오: 무관"
+     },
+     {
+      "old": "6523",
+      "answer": "샤프",
+      "verdict": "diff",
+      "why": "오사카 vs 샤프 창업사: 다른 지식(회사)"
+     },
+     {
+      "old": "2000",
+      "answer": "폐번치현",
+      "verdict": "diff",
+      "why": "오사카 vs 폐번치현: 무관"
+     },
+     {
+      "old": "5168",
+      "answer": "타코야키",
+      "verdict": "diff",
+      "why": "오사카 vs 타코야키 유래: 음식 유래, 에도 시대 물류와 다름"
+     },
+     {
+      "old": "6084",
+      "answer": "신칸센",
+      "verdict": "diff",
+      "why": "오사카 vs 신칸센: 무관"
+     }
+    ],
+    "sources": [
+     "https://ja.wikipedia.org/wiki/天下の台所",
+     "https://ko.wikipedia.org/wiki/오사카시"
+    ],
+    "facts": [
+     {
+      "claim": "에도 시대 물류·상업 중심지 · 번의 창고 저택(구라야시키) · 물자 집산 · 천하의 부엌",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/天下の台所",
+      "note": "天下の台所は、江戸時代に物流、商業の中心地であった大坂（大阪）を指したとされる異名。... 全国の藩が大坂に蔵屋敷などを設け、生活物資の多くが一旦生産地より大坂に集められて、再度全国の消費地に送られた"
+     },
+     {
+      "claim": "오랜 세월 경제 중심지 · 상인 계층",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오사카시",
+      "note": "오랜 세월 동안 오사카는 일본의 경제 중심지로 기능해 인구의 상당수가 상인 계층에 속했다."
+     },
+     {
+      "claim": "히데요시 오사카성 · 도톤보리",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/오사카시",
+      "note": "1593년에 도요토미 히데요시가 오사카성을 이시야마 혼간지 부지에 축조하였다. ... 대게로 유명한 도톤보리와 그 주변의 유흥가"
+     },
+     {
+      "claim": "'천하의 부엌'이라 직접 적은 에도 문헌은 없다",
+      "where": "e",
+      "url": "https://ja.wikipedia.org/wiki/天下の台所",
+      "note": "江戸時代の文献に大坂を「諸国之台所」「日本の賄い所」と評する記述は存在するが、「天下之台所」と直接記述した文献は存在しない。"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/오사카시"
+    ],
+    "hintNote": null,
+    "easiestCue": "'천하의 부엌'이라 불린 일본 상인 도시",
+    "worthWhyGen": "잘 아는 도시 별명의 까닭(물자 집산지)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '도시' 예",
+     "unique": "에도 시대 물자 집산 · 천하의 부엌 — 하나(에도=도쿄와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 도요토미 히데요시"
+    ],
+    "job": "job-31"
+   }
+  }
+ ]
+}

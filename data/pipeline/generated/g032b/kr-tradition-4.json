@@ -1,0 +1,138 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-tradition/4",
+  "midKey": "kr-tradition",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/4#g032b-g032b-j19-3",
+   "seed": {
+    "subject": "부채춤",
+    "aspect": null,
+    "ref": "g032b-j19-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 무용의 한 갈래입니다. 1954년 서울시공관에서 무용가 김백봉이 혼자 추는 창작 무대로 처음 선보였습니다. 1968년 멕시코 올림픽 세계민속예술축전에서는 여럿이 추는 군무로 다시 짜여 무대에 올랐습니다. 오랜 전통춤처럼 보이지만 1950년대에 새로 만든 이 춤은?",
+    "answer": "부채춤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "김백봉은 최승희 무용연구소에서 춤을 배운 최승희의 수제자로, 머리에 화관을 쓰고 추는 화관무도 만들었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1954년 김백봉 · 한국 무용 · 군무",
+     "difWhy": "2 — 한국 무용 부채 이름 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 전통예술 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "한복 차림 무용수들이 분홍 모란이 그려진 큰 소품을 펼쳐 꽃·나비·물결 모양을 만드는 군무다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "모란 그림 큰 부채를 들고 추는 한국 무용(1954 김백봉 창작)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "학교 행사·외국인 공연에서 흔함",
+     "piece": "f06",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한국 무용의 한 갈래' 로 종류 명시. 끝 '이 춤은?' 과 맞는다."
+    },
+    "blindQuestion": {
+     "guess": "부채춤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "부채춤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "부채춤",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/부채춤",
+     "https://en.wikipedia.org/wiki/Buchaechum",
+     "https://en.wikipedia.org/wiki/Kim_Baek-bong"
+    ],
+    "facts": [
+     {
+      "claim": "1954년 서울시공관 김백봉 독무대 창작 · 1968년 멕시코 올림픽 세계민속예술축전 군무",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/부채춤",
+      "note": "1954년 서울시공관에서 무용가 김백봉에 의해 독무대로 선보인 창작 작품이다. 1968년 멕시코 올림픽의 세계민속예술축전에서 군무로 재구성되어 선보였다."
+     },
+     {
+      "claim": "1954년 김백봉이 만듦 · 전통 무용에서 영향",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Buchaechum",
+      "note": "Buchaechum was created in 1954 by dancer Kim Baek-bong, who drew influences from both Korean shamanic ritual dances and traditional Joseon court and folk dances."
+     },
+     {
+      "claim": "1968 멕시코시티 올림픽 공연",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kim_Baek-bong",
+      "note": "The work gained massive international recognition when it was performed at the 1968 Mexico City Olympics, Expo '70 in Osaka"
+     },
+     {
+      "claim": "분홍 모란 그림 큰 부채 · 새·꽃·나비·용·물결 대형 · 한복",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Buchaechum",
+      "note": "Dancers use large fans painted with pink peony blossoms to create various formations that represent images such as birds, flowers, butterflies, dragons and waves. The dancers wear brightly coloured hanbok"
+     },
+     {
+      "claim": "최승희 수제자 · 화관무 창작",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kim_Baek-bong",
+      "note": "She is globally recognized for creating Buchaechum (the Korean Fan Dance) and Hwagwanmu (the Floral Coronet Dance) ... Kim quickly excelled, becoming Choi's premier disciple."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Buchaechum"
+    ],
+    "hintNote": null,
+    "easiestCue": "1950년대 새로 만든 한국 춤 · 1968 올림픽 군무",
+    "worthWhyGen": "누구나 옛 전통춤으로 아는 춤이 1954년 창작이라는 반전 — 아는 대상의 모르는 사실(유래)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '한국 무용' 예",
+     "unique": "1954년 김백봉 첫 무대 — 같은 이가 만든 화관무와는 해·무대로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 분홍/모란"
+    ],
+    "job": "job-19"
+   }
+  }
+ ]
+}

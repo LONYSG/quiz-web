@@ -1,0 +1,252 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "medicine/5",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/5#g032b-g032b-j06-8",
+   "seed": {
+    "subject": "링거액",
+    "aspect": null,
+    "ref": "g032b-j06-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "병원에서 혈관에 넣는 한 용액입니다. 1880년대 런던의 한 생리학자는 몸에서 떼어 낸 개구리 심장이 소금물 속에서 오래 뛰는 것을 보고 놀랐습니다. 조수가 증류수 대신 칼슘이 섞인 수돗물로 용액을 만든 덕분이었다고 전합니다. 이 일로 칼슘의 쓸모를 밝힌 그의 이름이 붙은 이 용액은?",
+    "answer": "링거액",
+    "acceptedAnswers": [
+     "링거",
+     "링거 용액"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1930년대에는 락트산 나트륨을 더한 '유산화' 용액이 나와 지금도 수술과 탈수 치료에 쓰인다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "병원에서 혈관에 넣는 한 용액",
+     "difWhy": "2 — 링거는 일상어 · 생리학자 일화에서 이름 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 링거 이름의 까닭 · 일상 말",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "피 대신 혈관에 넣을 수 있게 체액과 농도를 맞춘 수액으로, 병원 침대 곁 걸대에 매달아 팔로 똑똑 떨어뜨려 맞는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "체액과 농도를 맞춘 염류 수액(Ringer's solution)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "병원 수액으로 흔한 이름",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '혈관에 넣는 한 용액'이 끝 ○○(용액)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "링거액",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "링거",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "링거액",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ringer%27s_solution",
+     "https://litfl.com/sydney-ringer/",
+     "https://en.wikipedia.org/wiki/Sydney_Ringer",
+     "https://ko.wikipedia.org/wiki/링거액"
+    ],
+    "facts": [
+     {
+      "claim": "시드니 링거 · 1882~1885 개구리 심장 · 나트륨·칼륨·칼슘 염",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ringer%27s_solution",
+      "note": "Ringer's solution is named after British clinician, physiologist and pharmacologist Sydney Ringer, who in 1882–1885 determined that a solution perfusing a frog's heart must contain sodium, potassium and calcium salts in a definite proportion if the heart is to be kept beating for long."
+     },
+     {
+      "claim": "조수가 증류수 대신 수돗물(New River Water Company) 사용 — 전하는 이야기",
+      "where": "q",
+      "url": "https://litfl.com/sydney-ringer/",
+      "note": "WebSearch 요약: Ringer's lab assistant reportedly used tap water from the New River Water Company instead of distilled water ... (출처 간 세부가 달라 질문은 '~라고 전합니다') · en Sydney Ringer 문서 참고문헌 \"Sydney Ringer: Water supplied by the new river water company\""
+     },
+     {
+      "claim": "칼슘이 심근 수축에 필요함을 처음 밝힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sydney_Ringer",
+      "note": "His demonstration of the necessity for extracellular calcium to sustain cardiac muscle contraction in the spontaneously beating frog heart was the first to reveal the physiological importance of calcium"
+     },
+     {
+      "claim": "혈액 대신 쓰는 용액 · 이름 = 시드니 링거 · 1930년대 락트산 나트륨 추가",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/링거액",
+      "note": "링거액은 혈액 대신 사용되는 용액을 말한다. 링거라는 이름은 시드니 링거에서 따왔다. 이 용액은 더 나아가 1930년대에 락트산 나트륨을 추가하게 되었으며, 이를 유산화 링거액이라 부른다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/링거액"
+    ],
+    "hintNote": null,
+    "easiestCue": "병원에서 혈관에 넣는 용액 + 사람 이름",
+    "worthWhyGen": "누구나 맞아 본 수액 이름이 실수 실험에서 나온 사람 이름이라는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '용액' 예",
+     "unique": "생리학자 이름이 붙은 수액 = 하나(하트만 용액은 1930년대 소아과 의사)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "medicine/5#g032b-g032b-j25-10",
+   "seed": {
+    "subject": "지혈대",
+    "aspect": null,
+    "ref": "g032b-j25-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "팔다리의 큰 출혈을 멈추는 응급 도구입니다. 제2차 세계대전 뒤 미군은 치료받기까지 시간이 길어, 피가 끊겨 생기는 손상이 더 크다며 이것을 덜 쓰게 했습니다. 그러나 이라크·아프가니스탄 전쟁에서는 미군 2천 명의 목숨을 살렸다고 평가받은 이 도구는?",
+    "answer": "지혈대",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "기원전 4세기 알렉산드로스 3세의 원정 때도 다친 병사를 살리려고 썼다는 기록이 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "팔다리의 큰 출혈을 멈추는 응급 도구",
+     "difWhy": "2 — 첫 문장이 답을 가리킴 · 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 누구에게나 해당하는 응급 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "상처보다 심장에 가까운 쪽 팔다리를 띠로 꽉 조여 피가 더 흐르지 못하게 하는 도구다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "팔다리를 조여 피의 흐름을 막는 응급 도구(tourniquet)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "응급처치와 군대 교육에서 접함",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '응급 도구'가 끝 '이 도구'와 일치하고 짧음."
+    },
+    "blindQuestion": {
+     "guess": "지혈대",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "지혈대",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "지혈대",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j21-6",
+      "answer": "부목",
+      "verdict": "diff",
+      "why": "지혈대 vs 부목 — 다른 응급 도구"
+     },
+     {
+      "old": "1130",
+      "answer": "쇼크",
+      "verdict": "diff",
+      "why": "지혈대 vs 쇼크 — 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tourniquet",
+     "https://ko.wikipedia.org/wiki/지혈대"
+    ],
+    "facts": [
+     {
+      "claim": "2차 대전 뒤 미군 사용 축소 까닭 · 2005~2011 이라크·아프간 2,000명 구함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tourniquet",
+      "note": "After World War II, the US military reduced use of the tourniquet because the time between application and reaching medical attention was so long that the damage from stopped circulation was worse than that from blood loss. … Between 2005 and 2011, tourniquets saved 2,000 American lives from the wars in Iraq and Afghanistan."
+     },
+     {
+      "claim": "팔다리에 압박을 주어 피의 공급을 끊는 응급 장치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지혈대",
+      "note": "지혈대는 피의 공급을 중단시키기 위해 팔다리에 압박을 주는 목적으로 사용되는 장치이다. 응급상황, 외과수술, 수술 후 회복 시에 사용할 수 있다."
+     },
+     {
+      "claim": "알렉산드로스 3세 원정 때 사용",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/지혈대",
+      "note": "기원전 4세기 알렉산드로스 3세의 군사작전 시기에 상해를 입은 병사들을 지혈시키기 위해 지혈대가 사용되었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/지혈대"
+    ],
+    "hintNote": null,
+    "easiestCue": "팔다리 큰 출혈을 멈추는 응급 도구",
+    "worthWhyGen": "누구나 알아 둘 응급처치 도구와 그 쓰임의 까닭(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '응급 도구' 예",
+     "unique": "팔다리 큰 출혈 도구 — 붕대·압박붕대와 갈림(미군 일화)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

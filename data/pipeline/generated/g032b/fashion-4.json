@@ -1,0 +1,265 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "fashion/4",
+  "midKey": "fashion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "fashion/4#g032b-g032b-j18-11",
+   "seed": {
+    "subject": "네오프렌",
+    "aspect": null,
+    "ref": "g032b-j18-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "합성 소재가 있습니다. 1930년 4월 미국 듀폰의 과학자들이 노터데임 대학교의 신부이자 화학자인 줄리어스 뉴랜드의 연구를 바탕으로 만든 합성 고무입니다. 날씨와 기름에 강해 전선 피복과 자동차 벨트에도 쓰는 이 소재는?",
+    "answer": "네오프렌",
+    "acceptedAnswers": [
+     "폴리클로로프렌",
+     "클로로프렌 고무"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1931년 처음 팔 때 이름은 '듀프렌'이었고, 고약한 냄새를 내는 부산물을 없애는 공정을 새로 만든 뒤에야 널리 팔렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "날씨와 기름에 강해 전선 피복과 자동차 벨트에도 쓰는 합성 고무",
+     "difWhy": "4 — 소재 이름 떠올리기 · 일반인에게 이걸 어떻게 알아",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 소재 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "질소 거품을 품은 스펀지 꼴로 만들어 서퍼와 잠수부의 웻슈트, 노트북 파우치, 손목 보호대에 쓰는 말랑한 고무다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "듀폰이 만든 합성 고무(잠수복·노트북 파우치 소재)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "잠수복·파우치 소재로 이름 들어 봄",
+     "piece": "f08",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '합성 소재' 가 끝 ○○(소재) 와 일치, 신부 겸 화학자 소개가 길어도 둘째 문장 안에서 정리됨"
+    },
+    "blindQuestion": {
+     "guess": "네오프렌",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "네오프렌",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "네오프렌",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Neoprene",
+     "https://ko.wikipedia.org/wiki/폴리클로로프렌",
+     "https://en.wikipedia.org/wiki/Wetsuit"
+    ],
+    "facts": [
+     {
+      "claim": "1930년 4월 17일 듀폰 · 뉴랜드(노터데임) 강의·연구",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neoprene",
+      "note": "Neoprene was invented by DuPont scientists on April 17, 1930, after Elmer K. Bolton of DuPont attended a lecture by Fr Julius Arthur Nieuwland, a professor of chemistry at the University of Notre Dame."
+     },
+     {
+      "claim": "뒤퐁 합성 고무 · 상품명 네오프렌 · 내후성·내유성 · 전선 피복",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/폴리클로로프렌",
+      "note": "뒤퐁사의 캐로더스가 개발한 합성 고무이며 ... 상품명은 네오프렌(영어: neoprene)이다. ... 내후성, 내노화성, 내유성이 뛰어나므로 전선케이블의 피복이나 차량의 공기 용수철, 토목공사용 고무벨트 등에 널리 쓰이고 있다."
+     },
+     {
+      "claim": "노트북 슬리브 · 보호대 · 자동차 팬벨트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Neoprene",
+      "note": "used in a wide variety of commercial applications, such as laptop sleeves, orthopaedic braces (wrist, knee, etc.), electrical insulation ... and automotive fan belts."
+     },
+     {
+      "claim": "웻슈트 = 발포 네오프렌 · 질소 거품",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Wetsuit",
+      "note": "It is usually made of foamed neoprene, and is worn by surfers, divers ... Wetsuits are made of closed-cell foam neoprene, a synthetic rubber that contains small bubbles of nitrogen gas"
+     },
+     {
+      "claim": "1931 DuPrene · 악취 공정 개선",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/폴리클로로프렌",
+      "note": "듀퐁은 처음으로 1931년 화합물을 마케팅하였고, 그 이름은 DuPrene이다. ... 제품은 악취로 함께 남겨졌다. 냄새를 일으키는 부산물을 제거하고 생산 비용을 반으로 줄이는 새로운 공정이 개발되어"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Wetsuit",
+     "https://en.wikipedia.org/wiki/Neoprene"
+    ],
+    "hintNote": null,
+    "easiestCue": "듀폰이 1930년에 만든 합성 고무",
+    "worthWhyGen": "잠수복·파우치로 흔히 만지는 소재의 이름과 내력(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '합성 소재' 예",
+     "unique": "1930 듀폰 합성 고무 → 하나(나일론은 섬유)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 스펀지/질소"
+    ],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "fashion/4#g032b-g032b-j30-10",
+   "seed": {
+    "subject": "큐빅",
+    "aspect": null,
+    "ref": "g032b-j30-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년대 초 소련 모스크바의 레베데프 물리연구소 연구진이 대량으로 키우는 기술을 완성한 인공 결정입니다. 소련에서는 연구소 약칭을 따 '피아니트'라 불렀습니다. 이 결정을 깎아 만든 값싼 인공 보석을 우리나라에서는 흔히 무엇이라 부를까요?",
+    "answer": "큐빅",
+    "acceptedAnswers": [
+     "큐빅 지르코니아"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1937년 독일 광물학자들이 지르콘 속 아주 작은 알갱이로 자연에서도 찾아냈습니다. 천연 광물인 지르콘과는 다른 물질입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "인공 보석을 우리나라에서는 흔히 무엇",
+     "difWhy": "3 — 큐빅은 일상어이나 첫 문장은 레베데프 연구소로 어려움, 끝 문장 단서로 풀림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 장신구 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1976년 상업 생산이 시작된 뒤 가장 흔한 모조 다이아몬드가 되어, 반지·귀걸이에 값싸게 박히는 보석이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "다이아몬드 모조품으로 쓰는 인공 보석(입방정 산화 지르코늄)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "액세서리 큐빅으로 일상",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '인공 결정'이 있고 끝은 보석 이름을 묻는 짧은 글. 주인공이 하나라 헷갈리지 않음."
+    },
+    "blindQuestion": {
+     "guess": "큐빅",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "큐빅 지르코니아",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "큐빅",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6257",
+      "answer": "폴리에스터",
+      "verdict": "diff",
+      "why": "큐빅(인공 결정) vs 폴리에스터 — 다른 지식"
+     },
+     {
+      "old": "6256",
+      "answer": "선글라스",
+      "verdict": "diff",
+      "why": "큐빅 vs 선글라스 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cubic_zirconia",
+     "https://ko.wikipedia.org/wiki/큐빅_지르코니아"
+    ],
+    "facts": [
+     {
+      "claim": "소련 레베데프 물리연구소에서 기술 완성 · 피아니트(FIAN) · 1973년 발표",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cubic_zirconia",
+      "note": "Soviet scientists under V. V. Osiko in the Laser Equipment Laboratory at the Lebedev Physical Institute in Moscow perfected the technique ... They named the jewel Fianit after the institute's name FIAN ... Their breakthrough was published in 1973, and commercial production began in 1976."
+     },
+     {
+      "claim": "모조 다이아몬드로 널리 합성 · 1976년부터",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/큐빅_지르코니아",
+      "note": "큐빅 지르코니아는 싸고 오래가며 다이아몬드와 비슷하기 때문에 1976년부터 중요한 모조 다이아몬드로 쓰이기 시작했다."
+     },
+     {
+      "claim": "1937년 자연산 발견 · 지르콘과 다름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cubic_zirconia",
+      "note": "In 1937, German mineralogists M. V. Stackelberg and K. Chudoba discovered naturally occurring cubic zirconia in the form of microscopic grains included in metamict zircon ... It should not be confused with zircon, which is a zirconium silicate"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/큐빅_지르코니아",
+     "https://en.wikipedia.org/wiki/Cubic_zirconia"
+    ],
+    "hintNote": null,
+    "easiestCue": "값싼 인공 보석(우리나라 통칭)",
+    "worthWhyGen": "액세서리에서 늘 보는 보석의 정체와 내력",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '인공 결정' — 예 (연구소 이름은 한정어)",
+     "unique": "소련 피아니트 → 큐빅 하나(모이사나이트와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 다이아몬드"
+    ],
+    "job": "job-30"
+   }
+  }
+ ]
+}

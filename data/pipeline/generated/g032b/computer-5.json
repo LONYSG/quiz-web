@@ -1,0 +1,157 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "computer/5",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/5#g032b-g032b-j12-12",
+   "seed": {
+    "subject": "HTTPS",
+    "aspect": null,
+    "ref": "g032b-j12-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "웹 통신 방식입니다. 1994년 넷스케이프가 자사 브라우저 '내비게이터'를 위해 만들었고, 처음엔 같은 회사 수석 과학자 타헤르 엘가말이 개발한 SSL 위에서 돌아갔습니다. 구글은 2018년 7월부터 크롬에서 이것을 쓰지 않는 사이트를 '안전하지 않음'으로 표시하겠다고 밝혔습니다. 이 통신 방식은 무엇일까요?",
+    "answer": "HTTPS",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2016년 무료 인증서 '렛츠 인크립트'가 나오며 빠르게 퍼졌고, 2018년부터 보안 없는 방식보다 더 많이 쓰이게 되었습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "크롬에서 이것을 쓰지 않는 사이트를 '안전하지 않음'으로 표시",
+     "difWhy": "2 — 주소창 자물쇠 경험으로 도달",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 누구나 쓰는 웹 보안",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "주고받는 내용을 암호화해 엿보기와 변조를 막는 웹 통신 규약으로, 이를 쓰는 사이트는 주소창에 자물쇠 아이콘이 떴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "SSL/TLS 로 암호화한 HTTP(웹 주소 https://)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "웹 주소와 브라우저에서 늘 봄",
+     "piece": "f05",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '웹 통신 방식'이 끝 '이 통신 방식'과 같음. SSL은 단서이고 문장 뜻은 잡힘."
+    },
+    "blindQuestion": {
+     "guess": "HTTPS",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "HTTPS",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "HTTPS",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "888",
+      "answer": "공개키",
+      "verdict": "diff",
+      "why": "새 정답 HTTPS 과 옛 정답 공개키 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "893",
+      "answer": "무차별 대입 공격",
+      "verdict": "diff",
+      "why": "새 정답 HTTPS 과 옛 정답 무차별 대입 공격 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "890",
+      "answer": "디도스",
+      "verdict": "diff",
+      "why": "새 정답 HTTPS 과 옛 정답 디도스 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "884",
+      "answer": "랜섬웨어",
+      "verdict": "diff",
+      "why": "새 정답 HTTPS 과 옛 정답 랜섬웨어 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/HTTPS",
+     "https://ko.wikipedia.org/wiki/HTTPS"
+    ],
+    "facts": [
+     {
+      "claim": "1994 넷스케이프 내비게이터용 · 엘가말의 SSL · 2018년 7월 크롬 '안전하지 않음'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/HTTPS",
+      "note": "Netscape Communications created HTTPS in 1994 for its Netscape Navigator web browser. Originally, HTTPS was used with the SSL protocol. The original SSL protocol was developed by Taher Elgamal, chief scientist at Netscape Communications. ... Google announced in February 2018 that its Chrome browser would mark HTTP sites as \"Not Secure\" after July 2018."
+     },
+     {
+      "claim": "같은 내용(한국어)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/HTTPS",
+      "note": "넷스케이프 커뮤니케이션즈는 1994년 자사의 넷스케이프 내비게이터 웹 브라우저를 위해 HTTPS를 개발했다. ... 구글은 2018년 2월, 2018년 7월 이후로 크롬 브라우저가 HTTP 사이트를 \"안전하지 않음\"으로 표시할 것이라고 발표했다."
+     },
+     {
+      "claim": "감청·변조 방지 · 자물쇠 아이콘",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/HTTPS",
+      "note": "protects the communications against eavesdropping and tampering / Prior to version 117, Google Chrome displayed a lock icon in the address bar"
+     },
+     {
+      "claim": "렛츠 인크립트 2016 · 2018년부터 HTTP 보다 많이",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/HTTPS",
+      "note": "Let's Encrypt, launched in April 2016, provides a free and automated service ... HTTPS has since 2018 been used more often by web users than non-secure HTTP"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/HTTPS",
+     "https://ko.wikipedia.org/wiki/HTTPS"
+    ],
+    "hintNote": null,
+    "easiestCue": "크롬의 '안전하지 않음' 표시 기준",
+    "worthWhyGen": "알가치 3 — 매일 보는 주소창의 말 · 보안 상식",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '웹 통신 방식' 예",
+     "unique": "SSL 은 질문에 따로 나와 답과 구별 · TLS 로 칠 사람 가능(약점)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 173자"
+    ],
+    "job": "job-12"
+   }
+  }
+ ]
+}

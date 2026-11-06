@@ -1,0 +1,150 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "transport/1",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/1#g032b-g032b-j07-2",
+   "seed": {
+    "subject": "세단",
+    "aspect": null,
+    "ref": "g032b-j07-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "자동차 차체 모양 하나를 가리키는 이름입니다. 17세기 유럽 도시에는 창문 달린 1인용 상자 의자를 두 짐꾼이 앞뒤에서 장대로 메고 다니는 가마가 있었는데, 그 가마의 이름에서 왔습니다. 1912년 미국 자동차 잡지들이 스튜드베이커의 새 차를 이렇게 부르며 자동차 말이 됐습니다. 이 차체 모양의 이름은?",
+    "answer": "세단",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 가마는 1630년대 영국에 들어왔고, 런던에서는 가마를 메는 짐꾼을 '체어맨'이라 불렀다. 마차가 못 들어가는 좁은 길도 다닐 수 있어 쓰였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1인용 상자 의자 가마 · 스튜드베이커",
+     "difWhy": "3 — 차체 이름, 가마 유래로 건너야 함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "엔진·사람·짐 칸이 따로 나뉜 '3박스' 꼴의 지붕 닫힌 승용차로, 쏘나타·그랜저가 대표적이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "엔진·승객·짐 칸이 나뉜 지붕 닫힌 승용차 차체(sedan)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "자동차 차종 용어로 흔함",
+     "piece": "f09",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '자동차 차체 모양' 이 끝 ○○ 와 일치 · 둘째 문장이 길지만 주어(가마) 하나로 따라가짐"
+    },
+    "blindQuestion": {
+     "guess": "세단",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "세단",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "세단",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "247",
+      "answer": "누리호",
+      "verdict": "diff",
+      "why": "세단 어원 vs 누리호 — 무관"
+     },
+     {
+      "old": "5156",
+      "answer": "마세라티",
+      "verdict": "diff",
+      "why": "세단 어원 vs 마세라티 — 세단은 힌트 속 단어"
+     },
+     {
+      "old": "4727",
+      "answer": "경회루",
+      "verdict": "diff",
+      "why": "세단 vs 경회루 — 무관"
+     },
+     {
+      "old": "6519",
+      "answer": "벤츠",
+      "verdict": "diff",
+      "why": "세단 어원 vs 벤츠 로고 — 세단은 힌트 속 단어"
+     },
+     {
+      "old": "3255",
+      "answer": "롤스로이스",
+      "verdict": "diff",
+      "why": "세단 어원 vs 롤스로이스 — 세단은 힌트 속 단어"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sedan_(automobile)",
+     "https://en.wikipedia.org/wiki/Litter_(vehicle)"
+    ],
+    "facts": [
+     {
+      "claim": "세단 이름은 17세기 1인용 상자 가마 sedan chair에서 · 1912년 스튜드베이커 모델을 잡지가 sedan으로 부름 · 3박스 정의",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sedan_(automobile)",
+      "note": "The sedan name derives from the 17th-century litter known as a \"sedan chair\", a one-person enclosed box with windows carried by porters. ... This designation was applied when the Studebaker Four and Studebaker Six models were marketed and described in automotive magazine articles as sedans. ... most often characterized by a \"three-box\" configuration with separate compartments for the engine, passengers, and cargo."
+     },
+     {
+      "claim": "sedan chair = 1인용 창 달린 가마 · 앞뒤 짐꾼 장대 · 런던 짐꾼 chairmen · 1630년대 영국 도입 · 좁은 길",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Litter_(vehicle)",
+      "note": "Another form, commonly called a sedan chair, consists of a chair or windowed cabin suitable for a single occupant, also carried by at least two porters, one in front and one behind, using wooden rails ... These porters were known in London as \"chairmen\". ... Sir Saunders Duncombe introduced sedans to England in the 1630s ... One reason sedan chairs were useful was because they could pass in streets too narrow for a carriage."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sedan_(automobile)"
+    ],
+    "hintNote": null,
+    "easiestCue": "'자동차 차체 모양 + 1인용 가마' — 세단 체어를 아는 사람만 바로 연결(쿠페·리무진으로 헷갈림)",
+    "worthWhyGen": "매일 보는 자동차 말 '세단' 의 뜻밖의 유래 — 유래·까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '차체 모양' 예",
+     "unique": "쿠페는 말이 끄는 마차에서 — '짐꾼이 메는 가마' 로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 170자"
+    ],
+    "job": "job-07"
+   }
+  }
+ ]
+}

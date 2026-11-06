@@ -1,0 +1,428 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-tradition/3",
+  "midKey": "kr-tradition",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/3#g032b-g032b-j01-10",
+   "seed": {
+    "subject": "고무줄놀이",
+    "aspect": null,
+    "ref": "g032b-j01-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1950년대 이후 한국 골목에서 크게 유행하다 1990년대 말부터 사라져 간 아이들 놀이입니다. 전쟁 뒤에는 반공 교육의 영향으로 군가를 부르며 하기도 했습니다. 영어권에서는 '프렌치 스키핑', 중국에서는 '탸오피진'이라 부르는 이 놀이는?",
+    "answer": "고무줄놀이",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'딱따구리구리 마요네즈'처럼 이것만을 위해 지어져 입에서 입으로 전해진 노래도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한국 골목 아이들 놀이 · 군가를 부르며",
+     "difWhy": "2 — 골목 놀이 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 전통·세대 놀이 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "노래에 맞춰 길게 맨 끈을 뛰어넘거나 다리에 걸며, 그 높이를 발목에서 머리 위까지 올려 가는 골목 유희다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "노래에 맞춰 긴 고무줄을 넘고 거는 아이들 놀이",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "어릴 적 흔한 놀이",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '아이들 놀이'가 있고 끝 ○○(놀이)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "고무줄놀이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "고무줄놀이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "고무줄놀이",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j01-10",
+      "answer": "술래",
+      "verdict": "diff",
+      "why": "새 정답 고무줄놀이의 지식(유래·사실)과 옛 정답 술래의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j28-6",
+      "answer": "자치기",
+      "verdict": "diff",
+      "why": "새 정답 고무줄놀이의 지식(유래·사실)과 옛 정답 자치기의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1098",
+      "answer": "공기놀이",
+      "verdict": "diff",
+      "why": "새 정답 고무줄놀이의 지식(유래·사실)과 옛 정답 공기놀이의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1091",
+      "answer": "제기차기",
+      "verdict": "diff",
+      "why": "새 정답 고무줄놀이의 지식(유래·사실)과 옛 정답 제기차기의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고무줄놀이",
+     "https://en.wikipedia.org/wiki/French_skipping"
+    ],
+    "facts": [
+     {
+      "claim": "1950년대 이후 보급 · 1990년대까지 유행 · 1990년대 말 이후 쇠퇴 · 반공 교육 영향 군가 · 프렌치 스키핑 · 跳皮筋",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고무줄놀이",
+      "note": "한국 역시 1950년대 이후에 널리 보급되었고 1990년대까지 크게 유행하였다 ... 1990년대 말 이후 어린이 놀이가 급격히 쇠퇴 ... 한국의 경우 전쟁 이후 반공 교육의 영향으로 군가가 불리기도 하였지만 ... 영어권에서는 종종 프랜치 스키핑(French skipping)으로 부르며 ... 중국에서는 티아오피진(跳皮筋)으로 부르며"
+     },
+     {
+      "claim": "영어권 이름(French skipping / Chinese jump rope)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/French_skipping",
+      "note": "Chinese jump rope is a children's game resembling hopscotch and jump rope. (Instead of using a regular jump rope, you can use a Chinese jump rope that is made of a stretchy material, sort of like a large rubber band."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/고무줄놀이"
+    ],
+    "hintNote": null,
+    "easiestCue": "군가를 부르며 하던 골목 놀이 · 프렌치 스키핑",
+    "worthWhyGen": "추억의 놀이에 군가가 불린 까닭과 세계 곳곳의 같은 놀이",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '아이들 놀이' 예",
+     "unique": "프렌치 스키핑 · 跳皮筋 — 줄넘기와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "kr-tradition/3#g032b-g032b-j14-6",
+   "seed": {
+    "subject": "줄타기",
+    "aspect": null,
+    "ref": "g032b-j14-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "국가무형문화재 제58호인 한국 전통 연희입니다. '어름'이라고도 부르고, 대보름·단오·추석 같은 명절이나 궁중 잔치에서 판을 벌였습니다. 외국의 비슷한 재주와 달리 노래와 재담을 곁들이며, 연희자와 어릿광대·악사가 함께 판을 이끄는 이 놀이는?",
+    "answer": "줄타기",
+    "acceptedAnswers": [
+     "줄얼음타기"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "기술은 40가지가 넘습니다. 한쪽 무릎을 꿇었다가 뛰어올라 책상다리로 앉는 재주도 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "어름 / 노래와 재담 / 어릿광대 / 연희",
+     "difWhy": "2 — 줄 위 재주 전통 놀이는 널리 알려짐 · 이름 한 번 생각",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 전통 놀이 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "광대가 허공 높이 매단 외가닥 위를 걷고, 앉고, 뛰며 재주를 부리는 곡예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "공중에 맨 줄 위에서 재담·노래를 곁들여 재주를 부리는 한국 전통 연희",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "영화 왕의 남자 등 전통 연희",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한국 전통 연희' 가 끝 ○○(놀이) 의 종류를 줌, 마지막 문장이 약간 길지만 해독 가능"
+    },
+    "blindQuestion": {
+     "guess": "줄타기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "줄타기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "줄타기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5487",
+      "answer": "연날리기",
+      "verdict": "diff",
+      "why": "새 정답 줄타기 과 옛 정답 연날리기 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1090",
+      "answer": "액막이연",
+      "verdict": "diff",
+      "why": "새 정답 줄타기 과 옛 정답 액막이연 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1094",
+      "answer": "쥐불놀이",
+      "verdict": "diff",
+      "why": "새 정답 줄타기 과 옛 정답 쥐불놀이 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1095",
+      "answer": "차전놀이",
+      "verdict": "diff",
+      "why": "새 정답 줄타기 과 옛 정답 차전놀이 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5035",
+      "answer": "쌍륙",
+      "verdict": "diff",
+      "why": "새 정답 줄타기 과 옛 정답 쌍륙 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/줄타기",
+     "https://en.wikipedia.org/wiki/Jultagi"
+    ],
+    "facts": [
+     {
+      "claim": "'어름'이라고도 부름 · 명절 공연 · 노래와 재담을 곁들이는 것이 외국과 다름 · 국가무형문화재 제58호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/줄타기",
+      "note": "‘어름’ 또는 ‘줄얼음타기’라고도 부른다. 이전에는 주로 음력 4월 15일이나 단오날, 추석 등 명절날에 공연이 이루어졌으며 ... 우리나라의 줄타기는 외국의 줄타기와 달리 줄만 타는 몸 기술에 머무르지 않고, 노래와 재담을 곁들여 ... 국가무형문화재 제58호로 지정하여 보호하고 있다."
+     },
+     {
+      "claim": "대보름·단오·추석 · 궁중 행사 · 줄광대·어릿광대·악사로 구성",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jultagi",
+      "note": "Jultagi is held on public holidays in South Korea like Daeboreum, Dano and Chuseok holidays. ... It was also performed in events held in the royal palace ... The tightrope walking performance is composed of a rope player, a clown and musical instrument players."
+     },
+     {
+      "claim": "40가지 넘는 기술 · 한 무릎 꿇었다 뛰어올라 책상다리로 앉기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jultagi",
+      "note": "There are more than 40 kinds of Jultagi techniques ... jumping up after kneeling on the tightrope with one knee and then landing on the rope in a cross-legged sitting position."
+     },
+     {
+      "claim": "공중에 맨 줄 위에서 재주를 부리는 놀이",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/줄타기",
+      "note": "줄타기는 공중에 맨 줄 위에서 재미있는 이야기와 발림을 섞어가며 갖가지 재주를 부리는 놀이이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/줄타기"
+    ],
+    "hintNote": null,
+    "easiestCue": "'어름' · 어릿광대와 재담(어름을 아는 사람만 바로) — 정답 친숙도가 높아 3 으로 내려갈 수 있음",
+    "worthWhyGen": "익숙한 줄타기가 외국 곡예와 달리 노래·재담을 곁들인 연희라는 점 · 옛 이름 '어름'",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '전통 연희' 종류 명사 — 예",
+     "unique": "어름 + 재담 + 어릿광대 = 하나(남사당놀이는 여섯 마당 묶음이라 '이 놀이'로 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "kr-tradition/3#g032b-g032b-j28-6",
+   "seed": {
+    "subject": "달집태우기",
+    "aspect": null,
+    "ref": "g032b-j28-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "정월 대보름날 저녁에 하던 민속놀이입니다. 나무와 짚, 솔가지로 원뿔처럼 쌓은 더미를 세워 두었다가 달이 떠오를 때 불을 붙입니다. 불길이 잘 타오르면 그해 풍년, 꺼지면 흉년이 든다고 점쳤던 이 놀이는?",
+    "answer": "달집태우기",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "속에 대나무를 넣으면 탈 때 터지는 소리가 잡귀를 내쫓는다고 여겼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "정월 대보름날 저녁 · 달이 떠오를 때 불을 붙입니다",
+     "difWhy": "2 — 대보름 달집은 한국인에게 익숙",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 전통 풍습 이름 확인 · 사이면 낮은 쪽",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "풍물패가 짚더미 둘레를 돌며 흥을 돋우다 횃불로 불을 놓고, 그 불에 절하며 한 해 액운을 쫓던 대보름 풍속이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "정월 대보름에 짚·나무 더미를 쌓아 태우는 풍속",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "정월대보름 풍습으로 앎",
+     "piece": "f09",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '민속놀이' 가 끝 ○○(놀이) 와 같고 장면 묘사가 짧고 분명"
+    },
+    "blindQuestion": {
+     "guess": "달집태우기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "달집태우기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "달집태우기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1094",
+      "answer": "쥐불놀이",
+      "verdict": "diff",
+      "why": "달집태우기 vs 쥐불놀이 — 서로 다른 대보름 풍속"
+     },
+     {
+      "old": "1090",
+      "answer": "액막이연",
+      "verdict": "diff",
+      "why": "달집태우기 vs 액막이연 — 다른 풍속"
+     },
+     {
+      "old": "5487",
+      "answer": "연날리기",
+      "verdict": "diff",
+      "why": "달집태우기 vs 연날리기 — 다른 놀이"
+     },
+     {
+      "old": "5488",
+      "answer": "고싸움놀이",
+      "verdict": "diff",
+      "why": "달집태우기 vs 고싸움놀이 — 다른 놀이"
+     },
+     {
+      "old": "g032a:g032a-j28-6",
+      "answer": "자치기",
+      "verdict": "diff",
+      "why": "달집태우기 vs 자치기 — 다른 놀이"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/달집태우기",
+     "https://ko.wikipedia.org/wiki/정월_대보름"
+    ],
+    "facts": [
+     {
+      "claim": "정월 대보름 달 떠오를 때 나무·짚 더미에 불 · 세 막대 꼭대기 묶음 · 소나무 가지 · 잘 타면 풍년 꺼지면 흉년",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/달집태우기",
+      "note": "달집태우기는 정월 대보름날 달이 떠오를 때 나무나 짚으로 만든 달집에 불을 질러 주위를 밝히는 놀이이다. ... 3개의 막대기를 ... 세워 꼭대기를 하나로 모아 묶은 다음 ... 소나무 가지 등을 함께 넣는 때도 많다. ... 달집이 활활 잘 타오르면 그해에 풍년이 들고 잘 타지 않거나 꺼져 버리면 흉년이 든다고 한다."
+     },
+     {
+      "claim": "달이 떠오를 때 태우며 풍년을 빎",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/정월_대보름",
+      "note": "달집태우기 - 달집을 만들어 달이 떠오를 때에 태우면서 풍년을 빈다."
+     },
+     {
+      "claim": "풍악대가 주위를 돌고 횃불로 불 · 절하면 부스럼 없음 · 액을 쫓음",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/달집태우기",
+      "note": "액을 쫓고 복을 부르려고 한다. ... 달집을 태우면서 절을 하면 1년 내내 부스럼이 나지 않고 ... 달집을 태우기 전에 풍악대와 사람들이 달짚 주위를 맴돌고, 달이 뜨면 횃불에 불을 붙여 달집을 타오르게 한다."
+     },
+     {
+      "claim": "대나무 터지는 소리가 잡귀를 쫓음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/달집태우기",
+      "note": "달집에는 대나무를 넣어 탈 때 나는 소리가 잡귀를 내쫓는다고 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/달집태우기"
+    ],
+    "hintNote": null,
+    "easiestCue": "정월 대보름 달 뜰 때 짚더미에 불을 붙이는 놀이",
+    "worthWhyGen": "지금도 지역 축제로 이어지는 대보름 세시 풍속과 그 뜻(풍흉 점)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '민속놀이' 예",
+     "unique": "대보름 · 쌓은 더미를 달 뜰 때 태움 — 달집태우기(쥐불놀이는 논둑 불·깡통)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

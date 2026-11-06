@@ -1,0 +1,153 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-cinema/1",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/1#g032b-g032b-j32-5",
+   "seed": {
+    "subject": "필름 누아르",
+    "aspect": null,
+    "ref": "g032b-j32-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1940~50년대 할리우드 범죄 영화를 묶어 부르는 장르 이름입니다. 1946년 프랑스 평론가 니노 프랑크가 처음 썼는데, 정작 이 영화들을 만든 미국 영화인들은 당시 이 말을 거의 몰랐습니다. 《말타의 매》, 《이중 배상》이 대표작인 이 장르는?",
+    "answer": "필름 누아르",
+    "acceptedAnswers": [
+     "누아르",
+     "누아르 영화",
+     "필름 느와르",
+     "느와르"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "프랑크는 1945년 프랑스에서 나온 범죄 소설 총서 '세리 누아르'에서 이 말을 얻었다고 여겨진다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "《말타의 매》, 《이중 배상》이 대표작인 이 장르",
+     "difWhy": "3 — 영화 장르 용어 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 영화 장르 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "짙은 그림자 조명 아래 범죄와 배신, 지친 탐정과 팜 파탈을 그린 어둡고 냉소적인 범죄 영화 갈래다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1940~50년대 할리우드의 어둡고 냉소적인 범죄 영화 장르",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "영화 장르로 들어봄",
+     "piece": "f09",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '장르 이름', 끝 ○○ '이 장르' 일치; 프랑스 평론가 이야기는 둘째 문장이나 장르가 이미 나옴"
+    },
+    "blindQuestion": {
+     "guess": "필름 누아르",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "필름 누아르",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "필름 누아르",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1294",
+      "answer": "헤이스 코드",
+      "verdict": "diff",
+      "why": "필름 누아르 vs 헤이스 코드: 다른 지식"
+     },
+     {
+      "old": "1290",
+      "answer": "사랑은 비를 타고",
+      "verdict": "diff",
+      "why": "필름 누아르 vs 사랑은 비를 타고: 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Film_noir",
+     "https://ko.wikipedia.org/wiki/누아르_영화"
+    ],
+    "facts": [
+     {
+      "claim": "1946년 니노 프랑크가 처음 · 당시 미국 영화인 대부분 몰랐음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Film_noir",
+      "note": "The term film noir ... was first applied to Hollywood films by French critic Nino Frank in 1946, but was unrecognized by most American film industry professionals of that era."
+     },
+     {
+      "claim": "1946년 니노 프랑크 처음 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/누아르_영화",
+      "note": "1946년 프랑스의 비평가 니노 프랑크(Nino Frank)가 이 용어를 처음 사용하였다."
+     },
+     {
+      "claim": "말타의 매(1941) · 이중 배상(1944) 고전 누아르",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Film_noir",
+      "note": "The classic film noirs The Maltese Falcon (1941) and The Glass Key (1942) were based on novels by Hammett; Cain's novels provided the basis for Double Indemnity (1944)"
+     },
+     {
+      "claim": "범죄·폭력 · 도덕적 해이 · 악녀(팜 파탈)",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/누아르_영화",
+      "note": "범죄와 폭력을 다루면서, 현대 사회의 모순성과 도덕적 해이 현상에 대한 초점을 맞추는 일종의 장르물 ... 악녀가 등장하는 누아르 영화로서 유명한 작품들로는"
+     },
+     {
+      "claim": "세리 누아르(1945)에서 영감",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Film_noir",
+      "note": "Frank is believed to have been inspired by the French literary publishing imprint Série noire, founded in 1945."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/누아르_영화"
+    ],
+    "hintNote": null,
+    "easiestCue": "1940~50년대 할리우드 범죄 영화 장르 + 프랑스 평론가가 붙인 이름",
+    "worthWhyGen": "미국 영화 장르 이름이 왜 프랑스어인가 — 만든 사람들은 몰랐다는 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '장르 이름' 예",
+     "unique": "프랑크가 붙인 할리우드 범죄 영화 장르 = 필름 누아르",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

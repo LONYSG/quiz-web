@@ -1,0 +1,147 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "combat-athletics/4",
+  "midKey": "combat-athletics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "combat-athletics/4#g032b-g032b-j09-2",
+   "seed": {
+    "subject": "드래곤 보트",
+    "aspect": null,
+    "ref": "g032b-j09-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 남부에서 2,000년 넘게 이어 온 수상 경기입니다. 초나라 시인 굴원을 기린다고 전하는 음력 5월 5일 명절에 벌였는데, 19세기 유럽인들이 이 명절의 뜻을 모른 채 경주 장면을 보고 붙인 이름이 서양에 퍼졌습니다. 2010년 광저우 아시안 게임 정식 종목이 된 이 경기는?",
+    "answer": "드래곤 보트",
+    "acceptedAnswers": [
+     "용선",
+     "용주",
+     "드래곤 보트 레이스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "국제 스포츠로는 1976년 홍콩에서 시작되었고, 세계 대회에서는 북잡이가 실제로 북을 치지 않으면 벌칙을 받는다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "음력 5월 5일 명절 · 광저우 아시안 게임 정식 종목",
+     "difWhy": "2 — 용선 경기 영문 이름으로 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 스포츠 종목 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "화려한 머리·꼬리 장식을 단 긴 배에 스무 명 남짓이 타고, 뱃머리 북잡이의 북소리에 맞춰 함께 노를 젓는 경주다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "중국 단오에 유래한, 여럿이 긴 배를 저어 겨루는 수상 경기(용선)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "용선 경기로 접함",
+     "piece": "f05",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '수상 경기' 가 끝 ○○(경기) 와 일치, 명절 문장이 약간 길지만 주어는 하나"
+    },
+    "blindQuestion": {
+     "guess": "용선 경기(드래곤 보트)",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "용선 경주",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "드래곤 보트",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4832",
+      "answer": "조오련",
+      "verdict": "diff",
+      "why": "드래곤 보트 경기와 조오련 수영은 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dragon_boat",
+     "https://ko.wikipedia.org/wiki/굴원",
+     "https://ko.wikipedia.org/wiki/드래곤_보트"
+    ],
+    "facts": [
+     {
+      "claim": "2000년 넘게 이어진 남중국 경주 · 단오에 벌임 · 19세기 유럽인이 뜻을 모르고 'dragon boat festival'이라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dragon_boat",
+      "note": "The sport of dragon boat racing has its roots in an ancient folk ritual of contending villagers, which dates back 2000 years throughout southern China ... Not understanding the significance of Duanwu, 19th-century European observers of the racing ritual referred to the associated spectacle as a \"dragon boat festival\". This is the term that has become known in the West. ... Duanwu is reckoned as the fifth day of the fifth lunar month"
+     },
+     {
+      "claim": "단오는 굴원을 기념해 시작되었다고 전함",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/굴원",
+      "note": "단오절이 굴원을 기념하기 위하여 시작되었다고 전한다."
+     },
+     {
+      "claim": "2010년 아시안 게임 정식 종목 · 용주·용선",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/드래곤_보트",
+      "note": "용주(龍舟) 또는 용선(龍船)이라고도 한다. ... 2010년 아시안 게임에서 정식종목으로 채택되었다."
+     },
+     {
+      "claim": "머리·꼬리 장식 · 18~20명 · 북잡이",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Dragon_boat",
+      "note": "dragon boats are generally rigged with decorative Chinese dragon heads and tails ... For races, there are 18-20 people in a standard boat ... the drummer"
+     },
+     {
+      "claim": "1976 홍콩 · 북을 치지 않으면 벌칙",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dragon_boat",
+      "note": "began as a modern international sport in Hong Kong in 1976 ... In official competitions, such as world championships, drummers must physically beat the drum, else the team may be issued a penalty."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dragon_boat"
+    ],
+    "hintNote": null,
+    "easiestCue": "굴원·음력 5월 5일 명절의 수상 경기",
+    "worthWhyGen": "서양식 이름이 단오의 뜻을 모른 유럽인에게서 나왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '수상 경기' 예",
+     "unique": "단오·굴원·2010 아시안 게임으로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-09"
+   }
+  }
+ ]
+}

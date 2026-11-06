@@ -1,0 +1,285 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "earth/4",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/4#g032b-g032b-j06-1",
+   "seed": {
+    "subject": "멕시코 만류",
+    "aspect": null,
+    "ref": "g032b-j06-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대서양을 흐르는 한 해류입니다. 1768년 런던에 있던 벤저민 프랭클린은 영국 우편선이 미국 상선보다 대서양을 건너는 데 몇 주나 더 걸린다는 불평을 들었습니다. 고래잡이 선장인 사촌은 상선은 이 해류를 가로질러 피하지만 우편선은 거슬러 달리기 때문이라고 답했습니다. 프랭클린이 그 흐름을 지도에 그려 퍼뜨린 이 해류는?",
+    "answer": "멕시코 만류",
+    "acceptedAnswers": [
+     "걸프 스트림"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "프랭클린의 해류 지도는 1769년 런던에서 찍혔지만 영국 선장들은 대체로 무시했고, 1786년 필라델피아에서 다시 펴냈다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "프랭클린이 지도에 그려 퍼뜨린 대서양 해류",
+     "difWhy": "3 — 지리 용어 · 일화에서 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 지리 개념과 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "카리브해 쪽에서 미국 동해안을 따라 북대서양으로 올라가는 거대한 난류로, 서유럽의 겨울을 같은 위도보다 따뜻하게 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "멕시코만에서 나와 미국 동해안을 따라 북대서양으로 흐르는 큰 난류(Gulf Stream)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "지리 교과서 난류",
+     "piece": "f07",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '대서양을 흐르는 한 해류' 가 끝 ○○ '해류' 와 일치 · 일화가 길어도 주어가 프랭클린으로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "멕시코 만류",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "멕시코 만류",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "멕시코 만류",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3544",
+      "answer": "사르가소해",
+      "verdict": "diff",
+      "why": "멕시코 만류 vs 사르가소해 — 다른 대상"
+     },
+     {
+      "old": "g032b:g032b-j27-6",
+      "answer": "너울",
+      "verdict": "diff",
+      "why": "멕시코 만류 vs 너울 — 무관"
+     },
+     {
+      "old": "2853",
+      "answer": "조석",
+      "verdict": "diff",
+      "why": "멕시코 만류 vs 조석 — 무관"
+     },
+     {
+      "old": "2855",
+      "answer": "용승",
+      "verdict": "diff",
+      "why": "멕시코 만류 vs 용승 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gulf_Stream",
+     "https://ko.wikipedia.org/wiki/멕시코_만류"
+    ],
+    "facts": [
+     {
+      "claim": "1768년 영국에서 우편선이 상선보다 몇 주 늦는다는 불평을 들음 · 고래잡이 선장 사촌 폴저 · 상선은 해류를 가로지르고 우편선은 거슬러 감 · 지도에 그림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gulf_Stream",
+      "note": "In 1768, while in England, Franklin heard a curious complaint from the Colonial Board of Customs: \"Why did it take British packets several weeks longer to reach New York ... Franklin asked his cousin Timothy Folger, a Nantucket Island whaling captain ... merchant ships routinely crossed the current ... while the mail packet captains ran against it. Franklin had Folger sketch the path of the current on a chart"
+     },
+     {
+      "claim": "대서양의 해류 · 영어 Gulf stream · 서유럽이 같은 위도보다 따뜻한 까닭",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/멕시코_만류",
+      "note": "멕시코 만류는 대서양의 해류로 북대서양 환류의 일부이다. 영어로는 '걸프 스트림(Gulf stream)'이라고 한다. ... 미국과 뉴펀들랜드섬의 동쪽 해안을 따라 흐른다. ... 서유럽이 같은 위도의 다른 곳에 비해 따뜻한 것은 이 해류 때문이다."
+     },
+     {
+      "claim": "1769년 런던 인쇄 · 영국 선장들 무시 · 1786년 필라델피아판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gulf_Stream",
+      "note": "Franklin's Gulf Stream chart was printed in 1769 in London, but it was mostly ignored by British sea captains. ... a third version was published by Franklin in Philadelphia in 1786."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/멕시코_만류"
+    ],
+    "hintNote": null,
+    "easiestCue": "대서양 해류 + 프랭클린이 지도로 그림",
+    "worthWhyGen": "왜 영국 우편선이 늦었나 — 유명한 해류가 지도에 오른 까닭(유래·까닭)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '대서양 해류' 예",
+     "unique": "프랭클린이 지도로 그린 대서양 해류 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 179자"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "earth/4#g032b-g032b-j27-6",
+   "seed": {
+    "subject": "너울",
+    "aspect": null,
+    "ref": "g032b-j27-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바다 물결의 한 종류입니다. 먼바다 폭풍에서 생긴 물결이 바람 부는 곳을 벗어나 멀리까지 달려온 것입니다. 마루가 둥글고 파장이 길며, 해안의 바람과 상관없이 밀려옵니다. 기상 예보에서 흔히 '○○성 파도'로 듣는 이 물결의 우리말 이름은?",
+    "answer": "너울",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "주기가 길어 해안 구조물에 부딪히면 위력이 크게 세지고, 높이만 보고는 위험을 가늠하기 어렵다. 서퍼들은 이 물결을 기다린다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "먼바다 폭풍에서 생긴 물결 · ○○성 파도 · 우리말 이름",
+     "difWhy": "3 — 기상 용어 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일기예보 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "바람 한 점 없는 맑은 날에도 동해안 방파제와 갯바위를 갑자기 덮쳐 해경이 출입 자제를 당부하는 파도",
+    "generalHintVersion": "hint-v7",
+    "identity": "먼바다에서 생겨 멀리 퍼져 온, 마루가 둥글고 파장이 긴 파도(swell)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "파도 뉴스·너울성 파도 보도",
+     "piece": "f09",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '바다 물결의 한 종류' 가 종류. 끝 '이 물결' 과 같고 짧다."
+    },
+    "blindQuestion": {
+     "guess": "너울",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "너울성 파도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "너울",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j24-4",
+      "answer": "이안류",
+      "verdict": "diff",
+      "why": "너울 vs 이안류 — 다른 바다 현상"
+     },
+     {
+      "old": "g032a:g032a-j24-3",
+      "answer": "적조",
+      "verdict": "diff",
+      "why": "너울 vs 적조 — 다름"
+     },
+     {
+      "old": "g032b:g032b-j06-1",
+      "answer": "멕시코 만류",
+      "verdict": "diff",
+      "why": "너울 vs 멕시코 만류 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/너울",
+     "https://en.wikipedia.org/wiki/Swell_(ocean)",
+     "https://www.kma.go.kr/marine/marine_08/pdf/data_201410.pdf",
+     "https://www.wikitree.co.kr/articles/1142969"
+    ],
+    "facts": [
+     {
+      "claim": "풍랑이 바람 지역을 벗어나 감쇠 · 파고 둥긂 · 파장 길어 멀리 전파",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/너울",
+      "note": "너울(swell)은 풍랑이 바람이 부는 지역을 벗어나 더 이상 진폭이 발달하지 않고 감쇠해가는 파도다. 파고가 뾰족한 풍랑에 비해 파고가 둥글며, 파장이 길어 멀리까지 전파된다."
+     },
+     {
+      "claim": "먼 기상계에서 온 물결 · 그 자리 바람 영향 적음 · 긴 파장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Swell_(ocean)",
+      "note": "the consequence of dispersion of wind waves from distant weather systems ... a swell consists of wind-generated waves that are not greatly affected by the local wind at that time. Swell waves often have a relatively long wavelength"
+     },
+     {
+      "claim": "맑고 바람 없어도 발생 · 방파제·갯바위 출입 자제 권고",
+      "where": "h",
+      "url": "https://www.kma.go.kr/marine/marine_08/pdf/data_201410.pdf",
+      "note": "(기상청 자료 · WebSearch 요약) 얕은 해안으로 밀려오는 현상으로 맑은 날 바람이 없는 경우에도 발생할 수 있어 / (동해해경) 월파 및 추락사고 위험이 있는 방파제, 갯바위 등은 출입을 자제"
+     },
+     {
+      "claim": "구조물에 부딪히면 위력 커짐 · 높이로 판단 어려움",
+      "where": "e",
+      "url": "https://www.wikitree.co.kr/articles/1142969",
+      "note": "(WebSearch 요약) 파장과 주기가 긴 너울성 파도는 방파제 등 해안 구조물에 부딪히면 위력이 수십 배 커져 / 너울성 파도의 위험성은 파도의 높이만으로 판단하기 어렵다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.wikitree.co.kr/articles/1142969",
+     "https://www.kma.go.kr/marine/marine_08/pdf/data_201410.pdf"
+    ],
+    "hintNote": null,
+    "easiestCue": "'○○성 파도' 빈칸(예보 표현)",
+    "worthWhyGen": "여름·겨울 뉴스에 늘 나오는 바다 안전 말(19 §9-1 ③)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '바다 물결' 예",
+     "unique": "우리말 이름 · ○○ 두 칸 — 하나(스웰은 영어)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

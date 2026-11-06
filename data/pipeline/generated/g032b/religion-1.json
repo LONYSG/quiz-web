@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "religion/1",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/1#g032b-g032b-j14-10",
+   "seed": {
+    "subject": "황금률",
+    "aspect": null,
+    "ref": "g032b-j14-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "기독교 윤리의 한 원칙을 가리키는 이름입니다. 예수가 산상수훈에서 한 '무엇이든지 남에게 대접을 받고자 하는 대로 너희도 남을 대접하라'는 가르침을 이렇게 부릅니다. 1604년 무렵 영국 성공회 신학자들의 글에 처음 보이는 이 이름은 무엇일까요?",
+    "answer": "황금률",
+    "acceptedAnswers": [
+     "골든 룰"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "레위기 19장 18절의 '네 이웃 사랑하기를 네 자신과 같이 사랑하라'도 같은 정신을 담은 구절로 꼽힙니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "남을 대접하라는 가르침을 이렇게 부릅니다",
+     "difWhy": "3 — 황금률 이름 떠올리기 · 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 윤리 규범 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "유교에서는 공자의 '내가 하기 싫은 일은 남에게 시키지 말라'(기소불욕 물시어인)로 나타난다고 보는 윤리 원칙이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'남에게 대접받고자 하는 대로 남을 대접하라'는 윤리 원칙",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "윤리 시간에 배운 원칙, 이름은 덜 쓰임",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '기독교 윤리의 한 원칙' 이 종류 · 끝 ○○ '이름' 과 맞고 성경 구절을 직접 인용해 줌"
+    },
+    "blindQuestion": {
+     "guess": "황금률",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "황금률",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "황금률",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1231",
+      "answer": "삼위일체",
+      "verdict": "diff",
+      "why": "새 정답 황금률 과 옛 정답 삼위일체 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1230",
+      "answer": "부활절",
+      "verdict": "diff",
+      "why": "새 정답 황금률 과 옛 정답 부활절 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1236",
+      "answer": "아멘",
+      "verdict": "diff",
+      "why": "새 정답 황금률 과 옛 정답 아멘 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5585",
+      "answer": "킹 제임스 성경",
+      "verdict": "diff",
+      "why": "새 정답 황금률 과 옛 정답 킹 제임스 성경 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1227",
+      "answer": "사복음서",
+      "verdict": "diff",
+      "why": "새 정답 황금률 과 옛 정답 사복음서 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/황금률",
+     "https://en.wikipedia.org/wiki/Golden_Rule"
+    ],
+    "facts": [
+     {
+      "claim": "예수 산상수훈 '남에게 대접을 받고자 하는 대로 너희도 남을 대접하라'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/황금률",
+      "note": "기독교에서는 예수가 산상수훈 가운데 보인 기독교의 기본 윤리관으로 나타난다. \"그러므로 무엇이든지 남에게 대접을 받고자 하는 대로 너희도 남을 대접하라. 이것이 율법이요. 선지자니라\""
+     },
+     {
+      "claim": "17세기 초 영국 성공회 신학자 · 최초 용례 1604년",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Golden_Rule",
+      "note": "The term \"Golden Rule\", or \"Golden law\", began to be used widely in the early 17th century in Britain by Anglican theologians and preachers; the earliest known usage is that of Anglicans Charles Gibbon and Thomas Jackson in 1604."
+     },
+     {
+      "claim": "유교 — 기소불욕 물시어인",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/황금률",
+      "note": "《논어》에서 공자는 자기가 하고싶은 것이 아니면 다른사람에게 시키지 말라고 말한다. 기소불욕 물시어인(己所不欲勿施於人)"
+     },
+     {
+      "claim": "레위기 19장 18절",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/황금률",
+      "note": "또, 레위기 19장 18절에 따르면 \"네 이웃 사랑하기를 네 자신과 같이 사랑하라\"라는 표현이 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/황금률"
+    ],
+    "hintNote": null,
+    "easiestCue": "산상수훈 구절 인용 — 구절은 유명하지만 그 이름(황금률)까지 떠올려야 함",
+    "worthWhyGen": "성경 구절이 '황금률'이라는 이름으로 불리게 된 내력 — 일상·윤리에서 쓰는 말",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '원칙을 가리키는 이름' 종류 명사 — 예",
+     "unique": "산상수훈 그 구절의 이름 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 공자"
+    ],
+    "job": "job-14"
+   }
+  }
+ ]
+}

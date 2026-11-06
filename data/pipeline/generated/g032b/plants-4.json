@@ -1,0 +1,239 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "plants/4",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/4#g032b-g032b-j15-11",
+   "seed": {
+    "subject": "쥐똥나무",
+    "aspect": null,
+    "ref": "g032b-j15-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "물푸레나무과의 떨기나무가 있습니다. 공해에 강해 도시의 산울타리로 많이 심고, 5~6월에 향기 진한 흰 꽃이 핍니다. 가을이면 작은 타원형 열매가 까맣게 익는데, 북한에서는 '검정알나무'라고 부릅니다. 남쪽 이름은 이 열매가 무엇을 닮았다 해서 붙었습니다. 이 나무는?",
+    "answer": "쥐똥나무",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "남부 지방의 광나무는 열매가 거의 똑같지만 늘푸른나무이고 여름에 꽃이 피어 서로 가른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "작은 타원형 열매가 까맣게 익는데 남쪽 이름은 이 열매가 무엇을 닮았다 해서 붙었습니다",
+     "difWhy": "3 — 이름 풀이로 추리 · 식물 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 식물 이름 유래 · 좁은 영역",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 20",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "학교와 아파트 화단 둘레에 가지를 다듬어 촘촘히 세우는 울타리감으로, 미국에서는 들판으로 퍼지는 침입종으로 꼽힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "산울타리로 흔한 물푸레나무과 떨기나무",
+    "familiarity": {
+     "judge": 1,
+     "pct": 20,
+     "why": "산울타리 식물, 이름은 낯섦",
+     "piece": "f04",
+     "genPct": 50
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "쥐똥나무",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/쥐똥나무",
+     "https://parks.seoul.go.kr/file/info/downloadFile.do?fIdx=23942",
+     "https://en.wikipedia.org/wiki/Ligustrum_obtusifolium"
+    ],
+    "facts": [
+     {
+      "claim": "물푸레나무과 떨기나무 · 5~6월 흰 꽃 향기 · 검게 익는 타원형 열매 · 문화어 검정알나무 · 열매 모양에서 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/쥐똥나무",
+      "note": "쥐똥나무(문화어: 검정알나무 ...)는 물푸레나무과에 속하며 겨울에 잎이 지는 떨기나무이다. ... 5~6월에 꽃이 핀다. ... 흰색 꽃이 모여 핀다. 향기가 진하다. 9~10월에 ... 타원형의 열매가 여는데 검게 익는다. 이 모양이 쥐똥처럼 생겨서 쥐똥나무라고 부른다."
+     },
+     {
+      "claim": "공해에 강해 도시 울타리로 많이 심음 · 열매 모양 유래",
+      "where": "q",
+      "url": "https://parks.seoul.go.kr/file/info/downloadFile.do?fIdx=23942",
+      "note": "열매가 까맣고 쥐의 똥처럼 생겨서 이름이 붙었어요 · (imaeil) '쥐똥나무'는 원래 야생화지만 공해에 강해 도시에서 울타리로 많이 심는다."
+     },
+     {
+      "claim": "미국에서 침입종",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Ligustrum_obtusifolium",
+      "note": "The species is considered invasive in parts of the United States."
+     },
+     {
+      "claim": "광나무 비교",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/쥐똥나무",
+      "note": "광나무 - 난대 지방에 서식하며 열매가 쥐똥나무와 똑같이 생겼다. 쥐똥나무와 달리 여름에 꽃이 피고 상록수이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Ligustrum_obtusifolium"
+    ],
+    "hintNote": null,
+    "easiestCue": "도시 산울타리 나무 · 검은 열매가 무엇을 닮은 이름",
+    "worthWhyGen": "늘 보는 울타리 나무 이름의 까닭이 질문 안에(유래 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '떨기나무' 예",
+     "unique": "검정알나무(문화어) → 쥐똥나무 하나",
+     "hint12": "① 예(울타리감) ② 예 — 정답 낱말 조각을 피하느라 다소 약함"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-15",
+    "discarded": "친숙도 1 (pct 20 · 산울타리 식물, 이름은 낯섦)"
+   }
+  },
+  {
+   "seedId": "plants/4#g032b-g032b-j26-4",
+   "seed": {
+    "subject": "며느리밑씻개",
+    "aspect": null,
+    "ref": "g032b-j26-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "줄기와 잎자루에 아래로 굽은 가시가 촘촘한 마디풀과 덩굴풀입니다. 시어머니가 미운 식구에게 이 풀로 뒤를 닦게 했다는 이야기로 알려졌지만, 일본 이름 '의붓자식의 엉덩이 닦개'를 옮기며 식구만 바꿨다는 것이 정설입니다. 옛 우리 이름이 '사광이아재비'인 이 풀은?",
+    "answer": "며느리밑씻개",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "어린잎은 데쳐 나물로 무쳐 먹고, 한방에서는 '낭인'이라 하여 치질·습진에 약으로 썼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "시어머니가 미운 식구에게 이 풀로 뒤를 닦게 했다는 이야기",
+     "difWhy": "2 — 며느리밑씻개 이야기로 알려짐 · 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 식물 이름 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "길가 습한 빈터에 1~2m로 덩굴지며 네모진 줄기의 가시가 옷에 걸리고, 7~8월 연분홍 꽃이 모여 피는 풀이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "가시가 많은 마디풀과 한해살이 덩굴풀(Persicaria senticosa)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "독특한 이름이라 들어봤을 법함",
+     "piece": "f05",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '마디풀과 덩굴풀'이 끝 ○○(풀)와 일치. '마디풀과'가 낯설어도 '덩굴풀'로 종류가 잡힘. 둘째 문장이 길지만 주어 하나."
+    },
+    "blindQuestion": {
+     "guess": "며느리배꼽",
+     "hit": false
+    },
+    "blindHint": {
+     "guess": "며느리밑씻개",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "며느리밑씻개",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "650",
+      "answer": "며느리밥풀꽃",
+      "verdict": "diff",
+      "why": "며느리밑씻개 vs 며느리밥풀꽃 — 다른 식물"
+     },
+     {
+      "old": "652",
+      "answer": "봉선화",
+      "verdict": "diff",
+      "why": "며느리밑씻개 vs 봉선화 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/며느리밑씻개",
+     "https://ja.wikipedia.org/wiki/ママコノシリヌグイ"
+    ],
+    "facts": [
+     {
+      "claim": "시어머니 이야기 · 일본 이름 '의붓자식의 밑씻개'가 정설 · 옛 이름 사광이아재비",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/며느리밑씻개",
+      "note": "화장지가 귀하던 시절에 시어머니가 며느리를 미워하여 부드러운 풀잎 대신 가시가 있는 이 풀로 뒤를 닦도록 했다는 데서 유래했다는 설 도 있으나 일본 꽃이름 '의붓자식의 밑씻개'(ママコノシリヌグイ)에서 왔다는 것이 정설이다. ... 일제 강점기 이전 이름은 '사광이아재비'"
+     },
+     {
+      "claim": "일본 이름 継子の尻拭い · 한국 이름 '며느리 밑씻개 풀' · 마디풀(여뀌)과 · 역방향 가시",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/ママコノシリヌグイ",
+      "note": "ママコノシリヌグイ（継子の尻拭い、学名: Persicaria senticosa）は、タデ科イヌタデ属 ... 和名は、この草の棘だらけの茎や葉から、憎い継子の尻をこの草で拭くという想像から来ている。韓国では「嫁の尻拭き草」と呼ばれる。 ... 稜に沿って逆向きの鋭い棘が並んでいる。"
+     },
+     {
+      "claim": "습한 길가 · 1~2m · 네모진 줄기 · 7~8월 연분홍 · 나물 · 낭인",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/며느리밑씻개",
+      "note": "길가나 빈터 같이 습한 곳에서 덩굴져 자란다. ... 길이 1-2m쯤 되며 ... 줄기는 네모진다. ... 꽃은 7~8월에 줄기 끝에 모여 핀다. 꽃잎처럼 보이는 꽃받침이 연분홍색 / 어린잎을 살짝 데치거나 생채를 나물로 무쳐 먹는다. ... 낭인(廊茵)이라 하며 ... 치질, 습진 등의 증상에 쓴다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/며느리밑씻개"
+    ],
+    "hintNote": null,
+    "easiestCue": "시어머니가 미운 식구에게 이 풀로 뒤를 닦게 했다는 이야기",
+    "worthWhyGen": "민망한 풀 이름의 진짜 유래(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '덩굴풀' 예",
+     "unique": "사광이아재비·일본 이름 유래로 하나(며느리배꼽과 갈림)",
+     "hint12": "① 예(생김새) ② 예 — 핵심 유래는 질문이 이미 말해 생김새로"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

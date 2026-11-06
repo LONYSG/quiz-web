@@ -1,0 +1,282 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "chemistry/5",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/5#g032b-g032b-j04-11",
+   "seed": {
+    "subject": "불소",
+    "aspect": null,
+    "ref": "g032b-j04-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "마시는 물에 든 한 성분이 있습니다. 1901년 콜로라도스프링스에 문을 연 치과 의사 프레더릭 매케이는 주민 다수의 이에 '콜로라도 갈색 얼룩'이 있는 것을 보았는데, 얼룩진 이는 잘 썩지 않았습니다. 30년 연구 끝에 원인으로 밝혀졌고, 1945년 그랜드래피즈가 수돗물에 일부러 넣기 시작한 이 성분은?",
+    "answer": "불소",
+    "acceptedAnswers": [
+     "플루오린",
+     "플루오르",
+     "불화물",
+     "플루오린화물"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "너무 많이 먹으면 이에 얼룩이 생기는 반점치(치아 플루오린증)가 된다. 이 얼룩은 이가 잇몸 밖으로 나오기 전에 생긴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1945년 수돗물에 일부러 넣기 시작한 성분 · 치과",
+     "difWhy": "2 — 충치 예방 불소는 흔함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 치아 · 수돗물 생활 지식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "충치를 막으려고 치약에 넣거나 치과에서 이에 직접 바르는 성분으로, 일부 나라는 소금이나 우유에도 넣는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "충치 예방에 쓰는 원소 플루오린(불소) · 그 화합물(fluoride)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "치약·충치 예방 불소",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '마시는 물에 든 한 성분' 이 끝 ○○(성분) 와 일치, 셋째 문장이 길지만 시간 순이라 따라감"
+    },
+    "blindQuestion": {
+     "guess": "불소(플루오린)",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "불소",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "불소",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6544",
+      "answer": "왁스",
+      "verdict": "diff",
+      "why": "수돗물 불소화 역사 vs 스키 왁스(불소 금지) — 불소는 단서일 뿐, 다른 지식"
+     },
+     {
+      "old": "3022",
+      "answer": "테플론",
+      "verdict": "diff",
+      "why": "수돗물 불소 vs 테플론 불소 수지 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dental_fluorosis",
+     "https://en.wikipedia.org/wiki/Water_fluoridation"
+    ],
+    "facts": [
+     {
+      "claim": "1901년 콜로라도스프링스 개업 · 주민 다수 얼룩 '콜로라도 갈색 얼룩'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dental_fluorosis",
+      "note": "In the United States of America, a dentist, Frederick McKay, set up practice in Colorado Springs in 1901 and discovered a high proportion of the residents had stained teeth, locally termed the \"Colorado brown stain\"."
+     },
+     {
+      "claim": "30년 연구 · 얼룩졌지만 충치 없는 이 · 원인 플루오린화물",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Water_fluoridation",
+      "note": "McKay spent thirty years investigating the cause of what was then known as the Colorado brown stain, which produced mottled but also cavity-free teeth; with the help of G.V. Black and other researchers, he established that the cause was fluoride."
+     },
+     {
+      "claim": "1945년 1월 25일 그랜드래피즈 수돗물 불소화 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Water_fluoridation",
+      "note": "Dean and his colleagues conducted a controlled experiment by fluoridating the water in Grand Rapids, Michigan, starting 25 January 1945."
+     },
+     {
+      "claim": "치약 · 치과 도포 · 소금·우유 불소화",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Water_fluoridation",
+      "note": "fluoridation of low fluoride water (or of milk or salt) as well as topical fluoride preparations including fluoridated toothpastes ... professionally applied or prescribed gel, foam, or varnish."
+     },
+     {
+      "claim": "반점치 = 치아 플루오린증 · 이가 나기 전 생김",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Water_fluoridation",
+      "note": "observed mottled enamel (now called severe dental fluorosis) ... McKay's work had established that fluorosis occurred before tooth eruption."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Water_fluoridation"
+    ],
+    "hintNote": null,
+    "easiestCue": "수돗물에 일부러 넣는 성분(수돗물 불소화 논란을 알면) — 충치·치약은 질문에 없음",
+    "worthWhyGen": "왜 수돗물·치약에 그 성분을 넣게 되었나 — 얼룩졌지만 안 썩는 이의 수수께끼(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '성분' 예",
+     "unique": "콜로라도 갈색 얼룩 + 1945 수돗물 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 170자"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "chemistry/5#g032b-g032b-j19-10",
+   "seed": {
+    "subject": "비스페놀 A",
+    "aspect": null,
+    "ref": "g032b-j19-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "플라스틱을 만드는 데 쓰는 화합물입니다. 1891년 러시아 화학자 알렉산드르 디아닌이 처음 보고했습니다. 오늘날 생산량의 대부분은 폴리카보네이트와 에폭시 수지를 만드는 데 들어갑니다. 원료인 아세톤에서 이름 끝 알파벳 한 글자를 따온 이 화합물은?",
+    "answer": "비스페놀 A",
+    "acceptedAnswers": [
+     "BPA"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1930년대 초 영국 생화학자 에드워드 찰스 도즈가 인공 에스트로겐 약으로 시험했지만, 끝내 약으로 쓰이지는 않았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "폴리카보네이트와 에폭시 수지 원료 / 아세톤에서 한 글자",
+     "difWhy": "4 — 화학 용어 · 이름 떠올리기, 단서에 아세톤 연계 어려움",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 환경호르몬 이슈로 일상 관련",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "몸속에서 여성 호르몬처럼 작용할 수 있어 여러 나라가 젖병에 쓰지 못하게 한 물질로, 영수증 감열지에도 들어 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "폴리카보네이트·에폭시 원료 화합물(내분비 교란 논란 · 'BPA 프리')",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "BPA 프리 제품 표기로 접함",
+     "piece": "f07",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '플라스틱을 만드는 화합물'이 끝 '이 화합물'과 일치. 폴리카보네이트 등 용어는 이름일 뿐 뜻이 막히지 않음."
+    },
+    "blindQuestion": {
+     "guess": "비스페놀 A",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "비스페놀A",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "비스페놀 A",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4321",
+      "answer": "베이클라이트",
+      "verdict": "diff",
+      "why": "비스페놀 A 유래는 베이클라이트·질산은 잉크와 다른 물질 지식이다"
+     },
+     {
+      "old": "4811",
+      "answer": "질산은",
+      "verdict": "diff",
+      "why": "비스페놀 A 유래는 베이클라이트·질산은 잉크와 다른 물질 지식이다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bisphenol_A",
+     "https://ko.wikipedia.org/wiki/비스페놀_A"
+    ],
+    "facts": [
+     {
+      "claim": "1891 디아닌 · 폴리카보네이트 65~70% · 에폭시 25~30% · 아세톤이라 A",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bisphenol_A",
+      "note": "Bisphenol A was first reported in 1891 by the Russian chemist Aleksandr Dianin. ... BPA's largest single application is as a co-monomer in the production of polycarbonates, which accounts for 65–70% ... epoxy resins and vinyl ester resins account for 25–30% ... The condensation of acetone (hence the suffix 'A' in the name)"
+     },
+     {
+      "claim": "플라스틱 병·용기 등에 쓰임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/비스페놀_A",
+      "note": "비스페놀 A(Bisphenol A)는 플라스틱 병, 플라스틱 식품 용기, 치과 재료, 금속 식품과 유아용 캔의 내부 벽면에서 흔히 발견된다."
+     },
+     {
+      "claim": "에스트로겐 흉내 · 젖병 금지 · 영수증",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Bisphenol_A",
+      "note": "BPA is a xenoestrogen, exhibiting hormone-like properties that mimic the effects of estrogen in the body. ... leading to bans on the use of BPA in baby bottles and related products by the US, Canada, and EU ... BPA is used as a developing agent in thermal paper (shop receipts)."
+     },
+     {
+      "claim": "도즈 1930년대 초 인공 에스트로겐 시험 · 약으로 안 쓰임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bisphenol_A",
+      "note": "The British biochemist Edward Charles Dodds tested BPA as an artificial estrogen in the early 1930s. ... BPA was never used as a drug."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bisphenol_A",
+     "https://ko.wikipedia.org/wiki/비스페놀_A"
+    ],
+    "hintNote": null,
+    "easiestCue": "이름 끝 알파벳 한 글자 · 플라스틱 원료",
+    "worthWhyGen": "젖병·영수증 'BPA 프리' 로 누구나 마주치는 물질의 정체와 이름 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '화합물' 예",
+     "unique": "아세톤 → A · 1891 디아닌 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  }
+ ]
+}

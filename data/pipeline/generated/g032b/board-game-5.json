@@ -1,0 +1,144 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "board-game/5",
+  "midKey": "board-game",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "board-game/5#g032b-g032b-j09-4",
+   "seed": {
+    "subject": "한붓그리기",
+    "aspect": null,
+    "ref": "g032b-j09-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "점과 선으로 된 그림 퍼즐이 있습니다. 1736년 수학자 오일러는 프로이센 쾨니히스베르크의 다리 일곱 개를 모두 한 번씩만 건너는 산책길이 없음을 증명했고, 이것이 그래프 이론의 시작으로 꼽힙니다. 그 결론대로, 홀수 개의 선이 모이는 점이 0개나 2개일 때만 풀리는 이 퍼즐은?",
+    "answer": "한붓그리기",
+    "acceptedAnswers": [
+     "한 붓 그리기"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이름은 붓 한 번에 긋는 모양에 빗댄 것이며, 오일러의 논문은 1741년 상트페테르부르크 학술지에 실렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "점과 선으로 된 그림 퍼즐",
+     "difWhy": "2 — 한붓그리기는 어릴 적 놀이 · 이름 한 번 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 수학 개념(오일러 경로)",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "별 모양이나 봉투 모양 도형을, 펜을 종이에서 떼지 않고 같은 선을 다시 지나지 않게 완성하는 놀이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "도형을 펜을 떼지 않고 같은 선을 두 번 지나지 않게 그리는 퍼즐(오일러 경로)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "어릴 때 퍼즐로 접함",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '점과 선으로 된 그림 퍼즐'이 끝 ○○(퍼즐)와 같고 오일러 일화는 둘째 문장이지만 종류는 이미 나옴"
+    },
+    "blindQuestion": {
+     "guess": "한붓그리기",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "한붓그리기",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "한붓그리기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "519",
+      "answer": "직소 퍼즐",
+      "verdict": "diff",
+      "why": "한붓그리기(오일러)와 직소 퍼즐 기원은 다른 퍼즐"
+     },
+     {
+      "old": "5259",
+      "answer": "스도쿠",
+      "verdict": "diff",
+      "why": "한붓그리기와 스도쿠는 다른 퍼즐"
+     },
+     {
+      "old": "4298",
+      "answer": "하노이의 탑",
+      "verdict": "diff",
+      "why": "한붓그리기와 하노이의 탑은 다른 퍼즐"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/한붓그리기",
+     "https://en.wikipedia.org/wiki/Seven_Bridges_of_Königsberg"
+    ],
+    "facts": [
+     {
+      "claim": "1736년 오일러가 쾨니히스베르크 다리 문제를 풀려고 도입 · 그래프 이론의 시초",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/한붓그리기",
+      "note": "1736년에 레온하르트 오일러가 쾨니히스베르크의 다리 문제를 풀기 위하여 도입하였다. 이는 그래프 이론의 시초로 여겨진다. ... G는 연결 그래프이며, G의 홀수 차수 꼭짓점의 수는 0 또는 2이다."
+     },
+     {
+      "claim": "7개 다리 한 번씩 · 불가능 증명 · 그래프 이론의 기초 · 홀수 차수 0 또는 2",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seven_Bridges_of_Königsberg",
+      "note": "Its mathematical formalization and proof of impossibility by Leonhard Euler, in 1736, laid the foundations of graph theory ... the graph be connected and have exactly zero or two nodes of odd degree."
+     },
+     {
+      "claim": "1741년 논문 게재 · 이름 유래",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Seven_Bridges_of_Königsberg",
+      "note": "published as Solutio problematis ad geometriam situs pertinentis ... in the journal Commentarii academiae scientiarum Petropolitanae in 1741. / ko: \"한붓그리기\"라는 이름은 그래프를 붓으로 종이 위에 그리는 것에 빗댄 것이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/한붓그리기"
+    ],
+    "hintNote": null,
+    "easiestCue": "쾨니히스베르크 다리 문제",
+    "worthWhyGen": "누구나 해 본 그림 놀이가 왜 어떤 그림은 안 되는지(홀수 점 규칙) — 그래프 이론의 출발",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '그림 퍼즐' 예",
+     "unique": "홀수 점 0·2개 조건으로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-09"
+   }
+  }
+ ]
+}

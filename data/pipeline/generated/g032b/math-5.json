@@ -1,0 +1,284 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "math/5",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/5#g032b-g032b-j06-5",
+   "seed": {
+    "subject": "에이커",
+    "aspect": null,
+    "ref": "g032b-j06-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "넓이를 재는 한 단위입니다. 중세 잉글랜드에서는 소가 끄는 쟁기로 하루 동안 갈 수 있는 땅의 넓이로 여겼습니다. 그래서 길이 약 200m, 너비 약 20m 의 긴 띠 모양 밭이 기준이 되었습니다. 오늘날 약 4,047㎡ 로 정해진 이 단위는?",
+    "answer": "에이커",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 말은 '갈아 놓은 밭'을 뜻하는 옛 스칸디나비아 말에서 왔고, 영국은 2010년 이후 이 단위를 법정 단위로 쓰지 않는다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "약 4,047㎡ 로 정해진 넓이 단위",
+     "difWhy": "3 — 단위 이름 떠올리기 · 외국 단위",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 단위 지식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "미국·영국에서 땅이나 농장 넓이를 말할 때 쓰는 단위로, 약 1,224평이며 축구장 절반을 조금 넘는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "영미권 토지 넓이 단위(acre · 약 4,047㎡)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "부동산·해외 단위로 흔히 접함",
+     "piece": "f09",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '넓이를 재는 한 단위' 가 끝 ○○(단위) 와 일치, 수치는 단서 구실"
+    },
+    "blindQuestion": {
+     "guess": "에이커",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "에이커",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "에이커",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j15-1",
+      "answer": "평",
+      "verdict": "diff",
+      "why": "에이커 vs 평 — 다른 단위"
+     },
+     {
+      "old": "g032a:g032a-j15-3",
+      "answer": "돈",
+      "verdict": "diff",
+      "why": "에이커 vs 돈(무게) — 무관"
+     },
+     {
+      "old": "g032a:g032a-j21-4",
+      "answer": "근",
+      "verdict": "diff",
+      "why": "에이커 vs 근 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/에이커",
+     "https://en.wikipedia.org/wiki/Acre"
+    ],
+    "facts": [
+     {
+      "claim": "중세에 한 사람이 소로 하루 동안 경작할 수 있는 넓이 · 약 4,047㎡",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/에이커",
+      "note": "전통적으로 중세 시대에 에이커는 한 사람이 여덟 마리 소로 하루 동안 경작할 수 있는 토지 면적으로 생각되었다. ... 약 4,047 m2 ... 2010년 이후 영국에서는 그렇지 않고"
+     },
+     {
+      "claim": "40퍼치(660ft) × 4퍼치(66ft) 띠 모양 · 소 한 쌍이 하루에 갈 넓이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Acre",
+      "note": "Originally, an acre was understood as a strip of land sized at forty perches (660 ft, or 1 furlong) long and four perches (66 ft) wide; this may have also been understood as an approximation of the amount of land a yoke of oxen could plough in one day"
+     },
+     {
+      "claim": "어원 스칸디나비아 akr '경작지'",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Acre",
+      "note": "Acre dates back to the old Scandinavian akr \"cultivated field, ploughed land\""
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/에이커"
+    ],
+    "hintNote": null,
+    "easiestCue": "소가 하루 동안 가는 땅의 넓이 단위",
+    "worthWhyGen": "뉴스의 땅 넓이 단위가 왜 그 크기인가(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '넓이 단위' 예",
+     "unique": "4,047㎡ 로 하나로 정함(모르겐은 아침나절 · 독일)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "math/5#g032b-g032b-j16-6",
+   "seed": {
+    "subject": "마일",
+    "aspect": null,
+    "ref": "g032b-j16-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "길이 단위 하나는 로마 군대의 걸음에서 왔습니다. 로마 사람들은 두 걸음을 한 걸음으로 쳐 1,000걸음을 하나로 셌고, 이는 로마 피트로 5,000피트였습니다. 1593년 엘리자베스 1세 때 영국 의회는 이 단위를 펄롱 8개, 곧 5,280피트로 정했습니다. 이 단위는?",
+    "answer": "마일",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1959년 여섯 나라 협정으로 야드를 0.9144m로 맞추면서 정확히 1.609344km가 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "5,280피트로 정했습니다",
+     "difWhy": "3 — 마일은 쉬우나 피트·로마 걸음 단서에서 단위를 떠올려야 함 · 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 단위 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "약 1.6킬로미터에 해당하며, 미국·영국 도로 표지판의 거리와 제한 속도를 나타내는 단위다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "약 1.6km에 해당하는 영미권 거리 단위",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "영화·일상에서 흔한 단위",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '길이 단위', 끝 ○○ '단위'. 숫자가 많아도 계산이 아니라 사실 서술"
+    },
+    "blindQuestion": {
+     "guess": "마일",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마일",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2661",
+      "answer": "항공 동맹",
+      "verdict": "diff",
+      "why": "길이 단위 마일 유래 vs 항공 동맹 — 무관"
+     },
+     {
+      "old": "5701",
+      "answer": "쿠어스 필드",
+      "verdict": "diff",
+      "why": "마일 유래 vs 쿠어스 필드 — 무관"
+     },
+     {
+      "old": "5791",
+      "answer": "피노 누아",
+      "verdict": "diff",
+      "why": "마일 유래 vs 사이드웨이 피노 누아 — 무관"
+     },
+     {
+      "old": "4336",
+      "answer": "로저 배니스터",
+      "verdict": "diff",
+      "why": "마일 단위 유래 vs 배니스터의 4분 벽 — 다른 사실"
+     },
+     {
+      "old": "4625",
+      "answer": "Lose Yourself",
+      "verdict": "diff",
+      "why": "마일 유래 vs 영화 8마일 주제가 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mile",
+     "https://ko.wikipedia.org/wiki/마일"
+    ],
+    "facts": [
+     {
+      "claim": "로마 마일 = 1,000걸음(두 걸음마다 한 번 셈) · 5,000 로마 피트",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mile",
+      "note": "The Roman mile (mille passus, lit. \"thousand paces\" ...) consisted of a thousand paces as measured by every other step—as in the total distance of the left foot hitting the ground 1,000 times. ... An Imperial Roman mile thus denoted 5,000 Roman feet."
+     },
+     {
+      "claim": "1593년 8펄롱 = 5,280피트",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마일",
+      "note": "로마인은 마일을 5,000 페데스 (직역: '피트')로 나누었지만, 엘리자베스 시대 잉글랜드에서 펄롱의 중요성이 커지면서 법정 마일은 1593년에 8 펄롱 또는 5,280 피트와 동일하게 만들어졌다."
+     },
+     {
+      "claim": "엘리자베스 1세 · 의회 법",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mile",
+      "note": "The English statute mile was established by a Weights and Measures Act of Parliament in 1593 during the reign of Queen Elizabeth I."
+     },
+     {
+      "claim": "1959년 협정 · 1.609344km · 6개국",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mile",
+      "note": "The international mile is precisely equal to 1.609344 km ... It was established as part of the 1959 international yard and pound agreement reached by the United States, the United Kingdom, Canada, Australia, New Zealand, and the Union of South Africa"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mile"
+    ],
+    "hintNote": null,
+    "easiestCue": "5,280피트",
+    "worthWhyGen": "익숙한 단위의 유래(로마 1,000걸음)와 5,280이라는 어중간한 수의 까닭 — 유래 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '길이 단위' 예",
+     "unique": "5,280피트 → 법정 마일 하나(해리와 가름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}

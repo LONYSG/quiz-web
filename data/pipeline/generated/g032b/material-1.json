@@ -1,0 +1,157 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "material/1",
+  "midKey": "material",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "material/1#g032b-g032b-j07-12",
+   "seed": {
+    "subject": "구리",
+    "aspect": null,
+    "ref": "g032b-j07-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 금속의 이름에 얽힌 이야기입니다. 로마 시대에 이 금속은 주로 지중해의 키프로스섬에서 캐냈습니다. 그래서 라틴어로 '키프로스의 금속'이라 불렸고, 이 말이 줄어 오늘날 영어 이름과 원소 기호의 뿌리가 됐습니다. 고대인들이 그 섬을 성지로 삼은 여신 아프로디테와 짝지은 이 금속은?",
+    "answer": "구리",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "로마는 기원전 6~3세기 이 금속 덩어리를 돈으로 썼고, 로마의 채굴·제련 규모는 산업 혁명 전까지 다시 없었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "키프로스의 금속 … 원소 기호의 뿌리",
+     "difWhy": "3 — Cu·cuprum 연결을 해야 구리 · 라틴어 어원 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 원소 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "전기를 잘 통해 전선에 가장 많이 쓰이는 붉은빛 금속으로, 주석과 섞으면 청동이 된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "원소 기호 Cu 인 붉은빛 금속(copper)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "원소·동전·전선 소재로 일상적",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '금속의 이름', 끝 ○○ '금속'. 마지막 문장이 '짝지은'으로 약간 어색하나 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "구리",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "구리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "구리",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "375",
+      "answer": "주석",
+      "verdict": "diff",
+      "why": "구리 어원(키프로스)과 주석 원소기호·청동·통조림 지식은 다름"
+     },
+     {
+      "old": "5835",
+      "answer": "췌장",
+      "verdict": "diff",
+      "why": "구리 어원과 췌장 발견 지식은 무관"
+     },
+     {
+      "old": "6647",
+      "answer": "성덕대왕신종",
+      "verdict": "diff",
+      "why": "구리 어원과 성덕대왕신종 일화는 무관"
+     },
+     {
+      "old": "5238",
+      "answer": "안재형",
+      "verdict": "diff",
+      "why": "구리 어원과 안재형 탁구 선수는 무관"
+     },
+     {
+      "old": "2672",
+      "answer": "변온동물",
+      "verdict": "diff",
+      "why": "구리 어원과 변온동물 개념은 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Copper",
+     "https://ko.wikipedia.org/wiki/구리",
+     ""
+    ],
+    "facts": [
+     {
+      "claim": "로마 시대 aes Cyprium(키프로스의 금속) → cuprum → copper · Cu 기호 · 키프로스에서 많이 캠 · 키프로스는 아프로디테의 성지 · 아프로디테/비너스와 짝 · 로마 구리 덩어리 화폐 · 산업혁명 전까지 넘지 못한 규모",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Copper",
+      "note": "it has symbol Cu (from Latin cuprum) ... The name of the metal derives from aes cyprium meaning 'metal of Cyprus' in Latin. ... In Roman times, it was known as aes Cyprium ... Cyprium from Cyprus, where much copper was mined. The phrase was simplified to cuprum, hence the English copper. Aphrodite (Venus in Rome) represented copper in mythology and alchemy ... Cyprus, the source of copper, was sacred to the goddess. ... Romans in the 6th through 3rd centuries BC used copper lumps as money. ... Roman copper mining and smelting activities reached a scale unsurpassed until the time of the Industrial Revolution"
+     },
+     {
+      "claim": "로마 시대 키프로스에서 채굴 · 키프로스의 금속 aes cyprium → cuprum → copper",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/구리",
+      "note": "로마 시대에 구리는 주로 키프로스에서 채굴되었는데, 이로부터 '키프로스의 금속'이라는 뜻하는 단어 aes cyprium가 생겨났으며, 나중에 cuprum으로 변형되었다."
+     },
+     {
+      "claim": "전선 · 청동(구리+주석)",
+      "where": "h",
+      "url": "",
+      "note": "knowledge — 구리는 전기 전도도가 높아 전선에 널리 쓰이고 주석과의 합금이 청동"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Copper"
+    ],
+    "hintNote": null,
+    "easiestCue": "'키프로스 + 원소 기호의 뿌리' — Cu 와 키프로스를 잇는 사람만(금속 고르기라 짐작도 가능)",
+    "worthWhyGen": "흔한 금속의 원소 기호·영어 이름이 왜 그런가 — 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '금속' 예",
+     "unique": "키프로스 · 아프로디테 — 청동(합금)은 '원소 기호' 로 막음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 주석"
+    ],
+    "job": "job-07"
+   }
+  }
+ ]
+}

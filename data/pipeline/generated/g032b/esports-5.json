@@ -1,0 +1,301 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "esports/5",
+  "midKey": "esports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "esports/5#g032b-g032b-j09-8",
+   "seed": {
+    "subject": "트롤",
+    "aspect": null,
+    "ref": "g032b-j09-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "인터넷 게시판과 온라인 게임에서 널리 쓰는 영어 말입니다. 옥스퍼드 영어 사전이 찾은 이 뜻의 가장 이른 기록은 1992년으로, 그 무렵 유즈넷 게시판에서 '신참을 낚는다'는 표현에 쓰였습니다. 본디 움직이는 배에서 미끼를 천천히 끌며 물고기를 낚는 낚시법을 가리키는 말에서 왔다고 하는데, 이 말은?",
+    "answer": "트롤",
+    "acceptedAnswers": [
+     "인터넷 트롤",
+     "트롤링"
+    ],
+    "originalTitleVariants": [
+     "troll"
+    ],
+    "explanation": "1972년 무렵 베트남전 미 해군 조종사들이 미끼 비행으로 적기를 꾀어내는 일을 'trolling for MiGs'라 부른 기록도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "인터넷 게시판과 온라인 게임에서 신참을 낚는다",
+     "difWhy": "2 — 인터넷 용어 트롤 흔함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 단어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "일부러 엉뚱한 플레이로 팀 게임을 망치거나, 게시판에 약 올리는 글을 올려 남의 화를 돋우는 사람과 그런 짓을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일부러 남을 자극하거나 게임을 망치는 사람·행위를 가리키는 인터넷·게임 속어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "게임·인터넷 속어",
+     "piece": "f02",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '인터넷 게시판과 온라인 게임에서 쓰는 영어 말' 로 분야 분명 · 끝 ○○ '말'"
+    },
+    "blindQuestion": {
+     "guess": "트롤링",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "트롤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "트롤",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4240",
+      "answer": "스너프킨",
+      "verdict": "diff",
+      "why": "트롤(인터넷 용어)과 스너프킨은 무관"
+     },
+     {
+      "old": "3391",
+      "answer": "무민",
+      "verdict": "diff",
+      "why": "트롤 용어와 무민 작가 유래는 다른 지식"
+     },
+     {
+      "old": "2705",
+      "answer": "무민",
+      "verdict": "diff",
+      "why": "트롤 용어와 무민 캐릭터는 다른 지식"
+     },
+     {
+      "old": "2895",
+      "answer": "위",
+      "verdict": "diff",
+      "why": "트롤 용어와 닌텐도 위는 무관"
+     },
+     {
+      "old": "3555",
+      "answer": "패미컴",
+      "verdict": "diff",
+      "why": "트롤 용어와 패미컴은 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Troll_(slang)",
+     "https://ko.wikipedia.org/wiki/트롤_(인터넷)"
+    ],
+    "facts": [
+     {
+      "claim": "OED 최초 기록 1992년 · 낚시법 trolling · 유즈넷 'trolling for newbies'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Troll_(slang)",
+      "note": "\"trolling\" may describe the fishing technique of slowly dragging a lure or baited hook from a moving boat ... the earliest known attestation according to the Oxford English Dictionary is in 1992. The first usage of the term was on Usenet in the early 1990s as in the phrase \"trolling for newbies\""
+     },
+     {
+      "claim": "트롤링(낚시)에서 비롯",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/트롤_(인터넷)",
+      "note": "영어로 제물낚시를 ‘트롤링(trolling)’이라고 부르는 것에서 비롯되었다."
+     },
+     {
+      "claim": "1972 trolling for MiGs",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Troll_(slang)",
+      "note": "by 1972 the term \"trolling for MiGs\" was documented in use by US Navy pilots in Vietnam. It referred to use of \"decoys, with the mission of drawing ... fire away\"."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/트롤_(인터넷)"
+    ],
+    "hintNote": null,
+    "easiestCue": "'신참을 낚는다' · 낚시법 이름",
+    "worthWhyGen": "매일 쓰는 게임 속어가 괴물이 아니라 낚시법에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '인터넷·게임에서 쓰는 영어 말' 예",
+     "unique": "1992 OED · 유즈넷 · 낚시법으로 한정(어그로와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 168자"
+    ],
+    "job": "job-09"
+   }
+  },
+  {
+   "seedId": "esports/5#g032b-g032b-j11-9",
+   "seed": {
+    "subject": "던전",
+    "aspect": null,
+    "ref": "g032b-j11-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "게임에서 흔히 쓰는 말입니다. 본래 프랑스어로 중세 성 한가운데의 가장 튼튼한 탑을 뜻하던 낱말이 영어로 건너가 13세기 무렵 '성 안의 감옥'이라는 뜻을 얻었습니다. 프랑스어에서는 지금도 탑을 뜻해, 한 유명 롤플레잉 게임의 프랑스판 제목에도 그 뜻으로 쓰입니다. 이 말은?",
+    "answer": "던전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "프랑스어 'donjon'은 영어와 뜻이 갈라져 '거짓 친구'로 꼽힙니다. 실제 성의 감옥이라던 방 가운데 상당수는 물탱크나 변소였다고 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "성 안의 감옥 / 롤플레잉 게임",
+     "difWhy": "3 — 게임 용어 어원 설명 → 이름, 게이머는 알지만 일반인은 단서가 어원뿐",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 게임 용어 유래, 취미 영역",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "몬스터와 함정이 가득한 지하 미궁 같은 곳으로, 플레이어가 파티를 꾸려 들어가 우두머리를 잡고 보물을 얻는 공략 장소다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "게임에서 몬스터가 있는 지하 미궁·공략 장소(dungeon)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "게임 용어로 일상화",
+     "piece": "f01",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '게임에서 흔히 쓰는 말' 로 종류가 나오고 끝 '이 말은?' 과 맞는다."
+    },
+    "blindQuestion": {
+     "guess": "던전",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "던전",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "던전",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j06-9",
+      "answer": "어그로",
+      "verdict": "diff",
+      "why": "던전 어원과 어그로 어원은 다른 낱말"
+     },
+     {
+      "old": "4099",
+      "answer": "호라드릭 큐브",
+      "verdict": "diff",
+      "why": "던전 어원과 호라드릭 큐브는 다른 지식"
+     },
+     {
+      "old": "1913",
+      "answer": "서당",
+      "verdict": "diff",
+      "why": "던전 어원과 서당은 무관"
+     },
+     {
+      "old": "4884",
+      "answer": "리로이 젠킨스",
+      "verdict": "diff",
+      "why": "던전 어원과 리로이 젠킨스 밈은 다른 지식"
+     },
+     {
+      "old": "5475",
+      "answer": "말죽거리 잔혹사",
+      "verdict": "diff",
+      "why": "던전 어원과 말죽거리 잔혹사는 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dungeon",
+     "https://en.wikipedia.org/wiki/Keep"
+    ],
+    "facts": [
+     {
+      "claim": "고대 프랑스어 donjon = 성의 주탑(keep) · 13세기 '성 안의 감옥' 뜻",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dungeon",
+      "note": "The word dungeon derives from the Anglo-Norman donjun, meaning \"keep of a castle\" or \"keep used as a prison\". This in turn derives from the Old French donjon, meaning exclusively \"keep\" ... The sense of \"prison in a castle\" is first attested in the 13th century Anglo-Norman."
+     },
+     {
+      "claim": "프랑스어에서는 지금도 탑 · 게임 프랑스판 제목",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dungeon",
+      "note": "In French, the term donjon still refers to a keep. Donjon is therefore a false friend to dungeon (although the game Dungeons & Dragons is titled Donjons et Dragons in its French editions)."
+     },
+     {
+      "claim": "keep 을 donjon 이라고도 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Keep",
+      "note": "some academics prefer to use the term donjon"
+     },
+     {
+      "claim": "실제 감옥이라던 방 다수는 물탱크·변소",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dungeon",
+      "note": "Many chambers described as dungeons or oubliettes were in fact water-cisterns or even latrines."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "롤플레잉 게임 제목 + 성 안의 감옥 — D&D를 떠올리면 풀림",
+    "worthWhyGen": "게임에서 늘 쓰는 말이 '성의 탑'에서 '감옥'으로 바뀐 유래가 질문 안에(3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '게임에서 쓰는 말' 예",
+     "unique": "성의 탑→감옥→게임 = 던전 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  }
+ ]
+}

@@ -1,0 +1,340 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "transport/2",
+  "midKey": "transport",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "transport/2#g032b-g032b-j16-12",
+   "seed": {
+    "subject": "미니",
+    "aspect": null,
+    "ref": "g032b-j16-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국 자동차 하나는 1956년 수에즈 위기에서 나왔습니다. 석유 배급제로 큰 차가 팔리지 않자 설계자 알렉 이시고니스가 엔진을 가로로 눕혀, 차 바닥 넓이의 80%를 사람과 짐에 내준 차를 1959년에 내놓았습니다. 1964년 몬테카를로 랠리에서도 우승한 이 차는?",
+    "answer": "미니",
+    "acceptedAnswers": [
+     "MINI",
+     "미니 쿠퍼"
+    ],
+    "originalTitleVariants": [
+     "MINI"
+    ],
+    "explanation": "앞바퀴굴림에 엔진을 가로로 둔 이 배치는 혼다·닛산·피아트 같은 회사의 작은 차들이 뒤따랐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "엔진을 가로로 눕혀 … 몬테카를로 랠리에서도 우승한 이 차",
+     "difWhy": "3 — 이시고니스·수에즈 위기는 모르지만 미니는 아는 사람 많음 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 자동차 취미 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "1969년 영화 '이탈리안 잡'의 금괴 추격전에 나온 영국 차로, 2000년부터는 BMW가 이 상표를 가지고 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1959년 영국 BMC가 내놓은 소형차 · 지금은 BMW의 브랜드",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "미니 쿠퍼 브랜드",
+     "piece": "f01",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영국 자동차 하나' 가 끝 ○○(차) 와 일치, 설계 문장은 쉼표 적어 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "미니",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "미니",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "미니",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6147",
+      "answer": "로코코",
+      "verdict": "diff",
+      "why": "미니 자동차 vs 로코코 — 무관"
+     },
+     {
+      "old": "4743",
+      "answer": "할렘 글로브트로터스",
+      "verdict": "diff",
+      "why": "미니 자동차 vs 할렘 글로브트로터스 — 무관"
+     },
+     {
+      "old": "5183",
+      "answer": "사보나롤라",
+      "verdict": "diff",
+      "why": "미니 자동차 vs 사보나롤라 — 무관"
+     },
+     {
+      "old": "5665",
+      "answer": "일루미네이션",
+      "verdict": "diff",
+      "why": "미니 자동차 vs 일루미네이션 — 무관"
+     },
+     {
+      "old": "4100",
+      "answer": "내셔 남작",
+      "verdict": "diff",
+      "why": "미니 자동차 vs 내셔 남작 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mini",
+     "https://en.wikipedia.org/wiki/Mini_(marque)"
+    ],
+    "facts": [
+     {
+      "claim": "1956 수에즈 위기 연료 부족 · 배급 · 큰 차 판매 급감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mini",
+      "note": "The Mini came about because of a fuel shortage caused by the 1956 Suez Crisis. Petrol was once again rationed in the UK, sales of large cars slumped"
+     },
+     {
+      "claim": "이시고니스 설계 · 가로 엔진 · 바닥 80% · 1964 몬테카를로 랠리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mini",
+      "note": "This distinctive two-door car was designed for BMC by Sir Alec Issigonis. Its space-saving transverse engine ... allowing 80% of the area of the car's floorpan to be used for passengers and luggage ... winning the Monte Carlo Rally in 1964, 1965, and 1967."
+     },
+     {
+      "claim": "1959년 8월 출시 · 이시고니스",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mini_(marque)",
+      "note": "Launched in August 1959, the Mark 1 Mini ... This distinctive two-door car was designed for BMC by Sir Alec Issigonis."
+     },
+     {
+      "claim": "1969 이탈리안 잡 · 2000년부터 BMW",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Mini_(marque)",
+      "note": "In 1969, the original British Mini was featured in the gold-heist film The Italian Job ... marketed by German multinational automotive company BMW since 2000"
+     },
+     {
+      "claim": "혼다 N360 · 닛산 체리 · 피아트 127 이 배치를 따름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mini",
+      "note": "The front-wheel-drive, transverse-engine layout were used in many other \"supermini\" style car designs such as Honda N360 (1967), Nissan Cherry (1970), and Fiat 127 (1971)."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Mini_(marque)"
+    ],
+    "hintNote": null,
+    "easiestCue": "1964년 몬테카를로 랠리 우승 영국 차",
+    "worthWhyGen": "작은 차가 석유 위기에서 태어났다는 까닭 — 유래 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '영국 자동차' 예",
+     "unique": "수에즈·이시고니스 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans BMW"
+    ],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "transport/2#g032b-g032b-j29-5",
+   "seed": {
+    "subject": "마쓰다",
+    "aspect": null,
+    "ref": "g032b-j29-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년 일본 히로시마에서 코르크 공장으로 출발한 자동차 회사입니다. 회사 이름은 조로아스터교에서 섬기는 지혜와 조화의 신 이름에서 따왔습니다. 1991년 로터리 엔진 차 787B로 르망 24시간 경주에서 우승한 이 회사는?",
+    "answer": "마쓰다",
+    "acceptedAnswers": [
+     "마즈다",
+     "마츠다",
+     "Mazda"
+    ],
+    "originalTitleVariants": [
+     "Mazda"
+    ],
+    "explanation": "회사 쪽은 창업자 마쓰다 주지로의 성과 소리가 비슷하다는 점도 이름을 고른 까닭으로 든다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1991년 로터리 엔진 차 787B로 르망 24시간 우승",
+     "difWhy": "3 — 일본 자동차 회사 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 자동차 브랜드 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "2인승 오픈 스포츠카 MX-5(로드스터)와 스포츠카 RX-7로 이름난 일본 자동차 회사다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "히로시마에 본사를 둔 일본 자동차 회사(Mazda)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "자동차 브랜드로 흔히 접함",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '자동차 회사'가 있고 끝 ○○ '이 회사'와 일치, 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "마쓰다",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마쓰다",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마쓰다",
+     "qFacts": 5,
+     "qSources": 3,
+     "checked": 6,
+     "found": 6,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3890",
+      "answer": "페라리",
+      "verdict": "diff",
+      "why": "마쓰다 vs 페라리 — 다른 회사"
+     },
+     {
+      "old": "819",
+      "answer": "봉고",
+      "verdict": "diff",
+      "why": "마쓰다 회사사 vs 기아 봉고 — 힌트에 마쓰다 언급뿐"
+     },
+     {
+      "old": "3867",
+      "answer": "조로아스터교",
+      "verdict": "diff",
+      "why": "마쓰다 회사 vs 조로아스터교 장례 — 다른 지식"
+     },
+     {
+      "old": "5156",
+      "answer": "마세라티",
+      "verdict": "diff",
+      "why": "마쓰다 vs 마세라티 — 다른 회사"
+     },
+     {
+      "old": "3888",
+      "answer": "폭스바겐",
+      "verdict": "diff",
+      "why": "마쓰다 vs 폭스바겐 — 다른 회사"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Mazda",
+     "https://ko.wikipedia.org/wiki/마쓰다",
+     "https://www.mazda.com/en/innovation/mazda-stories/mazda/behind/"
+    ],
+    "facts": [
+     {
+      "claim": "1920년 히로시마 코르크 공장",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mazda",
+      "note": "Ltd, as a cork-making factory founded in Hiroshima, Japan, January 30, 1920."
+     },
+     {
+      "claim": "1920년 동양코르크공업",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마쓰다",
+      "note": "마쓰다는 1920년 ㈜동양코르크공업으로 설립되어 … 본사는 히로시마현에 있다."
+     },
+     {
+      "claim": "이름 = 아후라 마즈다(조화·지혜의 신)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mazda",
+      "note": "Mazda comes from Ahura Mazda, the god of harmony, intelligence and wisdom from the earliest civilization in West Asia."
+     },
+     {
+      "claim": "공식 사이트의 이름 유래",
+      "where": "q",
+      "url": "https://www.mazda.com/en/innovation/mazda-stories/mazda/behind/",
+      "note": "A Story Behind the Name of \"Mazda\" — \"Mazda\" comes from Ahura Mazda, the god of harmony, intelligence and wisdom (검색 결과 요약)"
+     },
+     {
+      "claim": "1991 르망 787B 로터리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Mazda",
+      "note": "winning the 24 Hours of Le Mans in 1991 with the rotary-powered Mazda 787B."
+     },
+     {
+      "claim": "RX-7",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/마쓰다",
+      "note": "1978년에 발매한 로터리엔진 스포츠카 RX-7이 인기를 얻고"
+     },
+     {
+      "claim": "창업자 이름에서도",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Mazda",
+      "note": "The company's website further notes that the name also derives from the name of the company's founder, Jujiro Matsuda."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/마쓰다"
+    ],
+    "hintNote": null,
+    "easiestCue": "1991년 르망에서 우승한 일본 로터리 엔진 회사",
+    "worthWhyGen": "익숙한 자동차 브랜드 이름이 조로아스터교 신에서 왔다는 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '자동차 회사' 예",
+     "unique": "르망 우승 로터리 엔진 일본 회사 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

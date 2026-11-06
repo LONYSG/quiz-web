@@ -1,0 +1,328 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "drinks/4",
+  "midKey": "drinks",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "drinks/4#g032b-g032b-j13-9",
+   "seed": {
+    "subject": "모주",
+    "aspect": null,
+    "ref": "g032b-j13-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 왕실 이야기에서 이름이 왔다고 전하는 전통주가 있습니다. 광해군 때 인목대비가 폐위되자 그 어머니 노씨 부인은 제주로 귀양을 갔습니다. 부인이 술지게미로 이 술을 빚어 팔며 살았는데, 처음에는 앞에 '대비' 두 글자를 붙여 불렀다고 합니다. 전주 콩나물국밥집에서 흔히 내는 이 술은?",
+    "answer": "모주",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "도수가 1%도 안 되어 술이라기보다 해장 음료에 가깝고, 마시기 직전 계핏가루를 뿌려 낸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "전주 콩나물국밥집에서 흔히 내는 술 · 술지게미",
+     "difWhy": "3 — 전통주 이름, 전주 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "막걸리에 생강·대추·감초 같은 한약재를 넣고 오래 끓여 알코올을 거의 날린 해장술이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "막걸리에 한약재를 넣고 끓인 전주의 해장술",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "전주 콩나물국밥집 등에서 들어 본 사람이 있음",
+     "piece": "f08",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '전통주'가 있고 끝 ○○(술)와 일치, 일화는 정답 이름 유래라 단서 구실"
+    },
+    "blindQuestion": {
+     "guess": "모주",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "모주",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "모주",
+     "qFacts": 3,
+     "qSources": 1,
+     "checked": 1,
+     "found": 1,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5842",
+      "answer": "콩나물국밥",
+      "verdict": "diff",
+      "why": "새 정답 모주 과 옛 정답 콩나물국밥 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "999",
+      "answer": "콩나물국밥",
+      "verdict": "diff",
+      "why": "모주(광해군·인목대비 유래 술)와 콩나물국밥은 다른 대상·지식"
+     },
+     {
+      "old": "2843",
+      "answer": "동동주",
+      "verdict": "diff",
+      "why": "모주 유래와 동동주 이름 유래는 별개 술의 별개 사실"
+     },
+     {
+      "old": "4371",
+      "answer": "소주",
+      "verdict": "diff",
+      "why": "새 정답 모주 과 옛 정답 소주 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2849",
+      "answer": "두견주",
+      "verdict": "diff",
+      "why": "새 정답 모주 과 옛 정답 두견주 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": 2842,
+      "answer": "막걸리",
+      "verdict": "diff",
+      "why": "모주(노씨 부인 유래) vs 막걸리 일반 정의: 다른 술"
+     },
+     {
+      "old": 3534,
+      "answer": "막걸리",
+      "verdict": "diff",
+      "why": "모주 vs 막걸리 무형문화재 지정: 다른 술"
+     }
+    ],
+    "sources": [
+     "https://www.jjan.kr/article/20240716580091",
+     "https://ko.wikipedia.org/wiki/모주"
+    ],
+    "facts": [
+     {
+      "claim": "인목대비 어머니 노씨 · 광해군 때 폐위 · 제주 귀양 · 술지게미로 빚어 팔아 생활 · 처음 '대비모주' → '모주'",
+      "where": "q",
+      "url": "https://www.jjan.kr/article/20240716580091",
+      "note": "1946년에 간행된 <조선문화총화> ... 인목대비의 어머니요 연흥부원군 김제남의 부인인 노씨가 광해 때 인목대비가 폐위됨에 따라 제주로 귀양을 갔을 때 ... 술지게미를 얻어서 모주를 만들어 내고 다시 그것을 팔아서 생활을 해 간 것으로 처음에는 '대비모주'라 부르다가 후에 '대비' 두 글자를 빼버리고 그냥 '모주'라 부른다는 것이다"
+     },
+     {
+      "claim": "송자대전 노씨 부인 묘지명: 제주 백성들이 '대비 어머니의 술'을 사 감 (같은 기고)",
+      "where": "q",
+      "url": "https://www.jjan.kr/article/20240716580091",
+      "note": "탐라도 백성들은 다투어 재물을 주고 그 술을 사며 말하기를 대비 어머니의 술이 참 맛있다고 했다"
+     },
+     {
+      "claim": "전주 콩나물국밥과 함께",
+      "where": "q",
+      "url": "https://www.jjan.kr/article/20240716580091",
+      "note": "전주에 오면 한 번쯤은 먹어보는 콩나물국밥과 함께 등장하는 것이 모주이다."
+     },
+     {
+      "claim": "전주 모주: 막걸리 + 생강·대추·감초 등 한약재 끓임 · 해장술 · 1% 미만 · 계핏가루",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/모주",
+      "note": "전주 지역의 모주는 막걸리에 생강, 대추, 감초, 인삼, 칡 등 여덟 가지 한약재를 넣고 끓여 양이 절반 정도로 줄고 알코올이 거의 없어졌을 때 계핏가루를 넣어 먹는 해장술이다. 알코올 도수는 1% 미만이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/모주"
+    ],
+    "hintNote": null,
+    "easiestCue": "전주 콩나물국밥집에서 내는 술",
+    "worthWhyGen": "흔히 마시는 해장술 이름이 왕실 비극에서 왔다는 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '전통주' 예",
+     "unique": "'대비'를 붙여 부르던 술 + 전주 국밥집 — 막걸리와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 161자",
+     "crossans 막걸리"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "drinks/4#g032b-g032b-j30-3",
+   "seed": {
+    "subject": "진도 홍주",
+    "aspect": null,
+    "ref": "g032b-j30-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전라남도 남서쪽 섬 고을에서 대대로 빚어 온 전통 증류주입니다. 마지막 술을 받아낼 때 잘게 썬 지초(지치) 뿌리를 삼베에 올려 거르기 때문에, 술에 붉은빛과 향이 뱁니다. 그래서 '지초주'라고도 부르는 이 술은?",
+    "answer": "진도 홍주",
+    "acceptedAnswers": [
+     "홍주"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "보관하는 동안 자홍색이 검붉게 바뀌는 것은 숙성 때문이고, 바닥에 깔리는 찌꺼기는 지초입니다. 전라남도 무형문화재로 지정되어 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "지초 뿌리로 거르는 전남 섬 고을 증류주 · 지초주",
+     "difWhy": "3 — 전통주 이름 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 전통주 지식 · 취미 영역",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "조선 시대 임금에게 진상품으로 올라갔다고 전하는 남도의 명주로, 알코올 도수 40도 안팎의 독한 소주다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "전남 진도에서 지초로 붉게 물들여 빚는 전통 소주",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "전통주 소개·예능에서 간혹 접함",
+     "piece": "f03",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '전통 증류주'가 끝 ○○(술)과 같고 지초는 괄호로 지치라고 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "진도 홍주",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "홍주",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "진도 홍주",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 2,
+     "found": 1,
+     "outside": 4,
+     "notFound": [
+      {
+       "claim": "전라남도 무형문화재 제26호",
+       "url": "https://ko.wikipedia.org/wiki/진도군",
+       "note": "진도홍주(제26호) — 진도군 문서의 무형문화재 목록"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j13-9",
+      "answer": "모주",
+      "verdict": "diff",
+      "why": "진도 홍주 vs 모주 — 다른 술"
+     },
+     {
+      "old": "2847",
+      "answer": "문배주",
+      "verdict": "diff",
+      "why": "진도 홍주 vs 문배주 — 다른 술"
+     },
+     {
+      "old": "2848",
+      "answer": "복분자주",
+      "verdict": "diff",
+      "why": "진도 홍주 vs 복분자주 — 다른 술"
+     }
+    ],
+    "sources": [
+     "https://m.seoul.co.kr/news/2004/06/10/20040610065001",
+     "https://www.mt.co.kr/policy/2025/02/11/2025021013437886294",
+     "https://ko.wikipedia.org/wiki/지치",
+     "https://ko.wikipedia.org/wiki/진도군"
+    ],
+    "facts": [
+     {
+      "claim": "지초 뿌리를 삼베에 올려 증류주를 통과 → 색·향",
+      "where": "q",
+      "url": "https://m.seoul.co.kr/news/2004/06/10/20040610065001",
+      "note": "지초는 홍주의 붉은 색깔을 내는 주 재료인데,진도에서 자생한다 ... 최종 증류주를 받아낼 때 삼베에 잘게 썬 지초 뿌리를 올려 놓고 통과시키면 향과 색이 밴 홍주(알코올농도 40∼45%)가 빚어진다."
+     },
+     {
+      "claim": "지초주라고도 부름",
+      "where": "q",
+      "url": "https://m.seoul.co.kr/news/2004/06/10/20040610065001",
+      "note": "그래서 홍주는 지초주(芝草酒)라고도 하며"
+     },
+     {
+      "claim": "조선 시대 지초주로 불리며 진상품",
+      "where": "q",
+      "url": "https://www.mt.co.kr/policy/2025/02/11/2025021013437886294",
+      "note": "조선시대에 진도 홍주는 '지초주'로 불리며 최고급 진상품으로 임금에게까지 전해졌다."
+     },
+     {
+      "claim": "지초 = 지치(자초)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지치",
+      "note": "뿌리가 보랏빛을 띤다고 자초(紫草)라 한 것이 지초(芝草)로 결국 지치로 부르게 되었다."
+     },
+     {
+      "claim": "숙성으로 검붉게 · 찌꺼기는 지초",
+      "where": "e",
+      "url": "https://m.seoul.co.kr/news/2004/06/10/20040610065001",
+      "note": "자홍색이 검붉은 색으로 변한다.이는 술의 숙성에 따른 현상이며 밑에 깔리는 찌꺼기는 지초다."
+     },
+     {
+      "claim": "전라남도 무형문화재 제26호",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/진도군",
+      "note": "진도홍주(제26호) — 진도군 문서의 무형문화재 목록"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.mt.co.kr/policy/2025/02/11/2025021013437886294",
+     "https://m.seoul.co.kr/news/2004/06/10/20040610065001"
+    ],
+    "hintNote": null,
+    "easiestCue": "전남 섬 고을 · 붉은 증류주",
+    "worthWhyGen": "대표 지역 전통주가 왜 붉은지(까닭)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '전통 증류주' — 예",
+     "unique": "지초·섬 고을 → 진도 홍주 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-30"
+   }
+  }
+ ]
+}

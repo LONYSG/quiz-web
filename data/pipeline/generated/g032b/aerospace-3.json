@@ -1,0 +1,312 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "aerospace/3",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/3#g032b-g032b-j13-3",
+   "seed": {
+    "subject": "케네디 우주센터",
+    "aspect": null,
+    "ref": "g032b-j13-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 항공우주국(NASA)의 로켓 발사 기지입니다. 1962년 플로리다주 메리트섬의 감귤 농장 땅을 사들여 '발사 운영 센터'라는 이름으로 세웠습니다. 1963년 11월 29일 린든 존슨 대통령의 행정명령으로 지금 이름이 붙은 이 기지는?",
+    "answer": "케네디 우주센터",
+    "acceptedAnswers": [
+     "존 F. 케네디 우주센터",
+     "케네디 스페이스센터"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "처음엔 이웃한 공군 발사장까지 한 이름으로 묶여 혼란이 생겼고, 공군 쪽은 한동안 '케이프 케네디 공군기지'로 따로 불렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "NASA 로켓 발사 기지 / 플로리다 / 존슨 대통령 행정명령",
+     "difWhy": "3 — 케네디 우주센터 설명 → 이름, 케이프커내버럴로 오답 가능",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 시설 이름 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "아폴로 11호와 우주왕복선을 쏘아 올린 39번 발사대가 있는, 플로리다 동쪽 바닷가의 미국 우주 기지다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "미국 플로리다주에 있는 NASA의 대표 유인 우주선 발사 기지",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "NASA 뉴스·영화",
+     "piece": "f02",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 'NASA의 로켓 발사 기지'가 끝 '이 기지'와 일치. 짧고 한 주어."
+    },
+    "blindQuestion": {
+     "guess": "케네디 우주센터",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "케네디 우주센터",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "케네디 우주센터",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j32-1",
+      "answer": "새턴 V",
+      "verdict": "diff",
+      "why": "새 정답 케네디 우주센터 과 옛 정답 새턴 V 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5200",
+      "answer": "고더드",
+      "verdict": "diff",
+      "why": "새 정답 케네디 우주센터 과 옛 정답 고더드 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "6134",
+      "answer": "스페이스X",
+      "verdict": "diff",
+      "why": "새 정답 케네디 우주센터 과 옛 정답 스페이스X 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2046",
+      "answer": "고체",
+      "verdict": "diff",
+      "why": "새 정답 케네디 우주센터 과 옛 정답 고체 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kennedy_Space_Center",
+     "https://ko.wikipedia.org/wiki/존_F._케네디_우주_센터"
+    ],
+    "facts": [
+     {
+      "claim": "원래 이름 Launch Operations Center · 1962년 7월 · 메리트섬 · 감귤 농장 매입",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kennedy_Space_Center",
+      "note": "On July 1, 1962, the Launch Operations Directorate was separated from MSFC to become the Launch Operations Center (LOC). ... the decision was made to build a new LOC site located adjacent to Cape Canaveral on Merritt Island. ... Much of the land NASA acquired was in agricultural use, particularly for citrus farming."
+     },
+     {
+      "claim": "1963년 11월 29일 존슨 대통령 행정명령 11129로 명명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kennedy_Space_Center",
+      "note": "On November 29, 1963, the facility was named by President Lyndon B. Johnson under Executive Order 11129."
+     },
+     {
+      "claim": "NASA가 플로리다 메리트 섬에 설치한 우주선 발사 시설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/존_F._케네디_우주_센터",
+      "note": "존 F. 케네디 우주 센터 ... 미국 항공우주국이 미국 플로리다주 브레바드 메리트 섬에 설치한, 우주선 발사 시설 및 발사 통제 센터(우주 공항)이다."
+     },
+     {
+      "claim": "39번 발사대 · 아폴로 11호 · 우주왕복선",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Kennedy_Space_Center",
+      "note": "Apollo 11, launched from Pad A on July 16, 1969 ... LC-39 has been used to launch every NASA human space flight, including ... the Space Shuttle program (1981–2011)."
+     },
+     {
+      "claim": "공군 쪽은 Cape Kennedy Air Force Station",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kennedy_Space_Center",
+      "note": "spawning some confusion joining the two in the public mind ... the Air Force issued a general order renaming the military launch site Cape Kennedy Air Force Station."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Kennedy_Space_Center"
+    ],
+    "hintNote": null,
+    "easiestCue": "1963년 11월 29일 존슨 대통령이 붙인 이름(일주일 전 암살된 전임 대통령)",
+    "worthWhyGen": "달 착륙 로켓이 떠난 곳이 왜 그 이름인지 — 암살 일주일 뒤 붙은 이름",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '로켓 발사 기지' 예",
+     "unique": "메리트섬 · 발사 운영 센터 · 1963 명명 — 케이프커내버럴 공군기지와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "aerospace/3#g032b-g032b-j32-1",
+   "seed": {
+    "subject": "새턴 V",
+    "aspect": null,
+    "ref": "g032b-j32-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국이 아폴로 계획을 위해 만든 거대 로켓입니다. 1967~1973년 13번 발사되어 아폴로 8호부터 17호까지 우주비행사들을 달로 보냈습니다. 앞서 만든 '주피터' 로켓을 잇는다는 뜻으로 목성 다음 행성의 이름을 붙인 이 로켓은?",
+    "answer": "새턴 V",
+    "acceptedAnswers": [
+     "새턴 5호",
+     "새턴 5"
+    ],
+    "originalTitleVariants": [
+     "Saturn V"
+    ],
+    "explanation": "2026년 SLS가 나오기 전까지 저궤도 너머로 우주비행사를 보낸 로켓은 이것뿐이었고, 마지막 발사에는 우주정거장 스카이랩을 실었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "주피터 로켓을 잇는다는 뜻으로 목성 다음 행성의 이름",
+     "difWhy": "3 — 목성 다음 행성 추리 · 아폴로 로켓",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 우주 개발 세부",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "아폴로 11호를 달로 쏘아 올린, 지금까지 사람을 달에 내려 준 유일한 미국의 3단 로켓이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "아폴로 우주선을 달로 보낸 미국의 대형 3단 로켓",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "아폴로 로켓으로 접함",
+     "piece": "f07",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '아폴로 계획을 위해 만든 거대 로켓' 으로 종류 명시 · 끝 ○○ '로켓' 일치"
+    },
+    "blindQuestion": {
+     "guess": "새턴 V",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "새턴 V",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "새턴 V",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j13-3",
+      "answer": "케네디 우주센터",
+      "verdict": "diff",
+      "why": "새턴 V vs 케네디 우주센터: 다른 대상"
+     },
+     {
+      "old": "5200",
+      "answer": "고더드",
+      "verdict": "diff",
+      "why": "새턴 V vs 고더드: 다른 인물"
+     },
+     {
+      "old": 4230,
+      "answer": "폰 브라운",
+      "verdict": "diff",
+      "why": "새턴 V 로켓 vs 폰 브라운: 로켓 자체 이력 vs 설계 책임자 인물, 맞히는 지식이 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Saturn_V",
+     "https://ko.wikipedia.org/wiki/새턴_V",
+     "https://en.wikipedia.org/wiki/Saturn_(rocket_family)"
+    ],
+    "facts": [
+     {
+      "claim": "1967~1973년 13번 발사 · 아폴로 8호~17호 달로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Saturn_V",
+      "note": "Thirteen Saturn V vehicles were launched, from 1967 to 1973, all from Kennedy Space Center Launch Complex 39, nine of which launched 24 astronauts toward the Moon from Apollo 8 to Apollo 17."
+     },
+     {
+      "claim": "총 13회 비행",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/새턴_V",
+      "note": "새턴 V의 총 13회의 비행은 광범위하게 걸쳐 분석되어 각각의 임무마다 상세한 보고서가 제출"
+     },
+     {
+      "claim": "주피터 로켓을 잇는 뜻으로 토성 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Saturn_V",
+      "note": "The Saturn rocket family was named after the planet Saturn because the design of the various Saturn rockets evolved from the earlier Jupiter vehicles, which were named after the planet Jupiter."
+     },
+     {
+      "claim": "새턴 이름 = 주피터 계열의 후계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Saturn_(rocket_family)",
+      "note": "Von Braun proposed the Saturn name in October 1958 as a logical successor to the Jupiter series as well as the Roman god's powerful position."
+     },
+     {
+      "claim": "SLS 전까지 저궤도 너머 유인 유일 · 마지막 발사 스카이랩",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Saturn_V",
+      "note": "The Saturn V was the first launch vehicle to carry humans beyond low Earth orbit (LEO), with the only other to do so being the Space Launch System (SLS) for the Artemis II lunar flyby in 2026. ... Its final launch was Skylab"
+     },
+     {
+      "claim": "3단 로켓 · 달 착륙 임무를 모두 발사(SLS는 근접 비행만)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Saturn_V",
+      "note": "The rocket was human-rated, had three stages, and was liquid-fueled. ... nine of which launched 24 astronauts toward the Moon from Apollo 8 to Apollo 17. ... the only other to do so being the Space Launch System (SLS) for the Artemis II lunar flyby in 2026."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/새턴_V",
+     "https://en.wikipedia.org/wiki/Saturn_V"
+    ],
+    "hintNote": null,
+    "easiestCue": "아폴로 우주비행사를 달로 보낸 로켓 + 목성 다음 행성 이름",
+    "worthWhyGen": "인류를 달에 보낸 로켓 이름과 그 이름의 까닭(주피터 다음)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '거대 로켓' 예",
+     "unique": "아폴로 우주비행사를 달로 보낸 로켓은 새턴 V 하나(새턴 IB는 지구 궤도)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

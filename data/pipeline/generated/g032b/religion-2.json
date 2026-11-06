@@ -1,0 +1,134 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "religion/2",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/2#g032b-g032b-j02-10",
+   "seed": {
+    "subject": "현관",
+    "aspect": null,
+    "ref": "g032b-j02-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "본래 도교와 선종에서 '깊고 오묘한 도로 들어가는 관문'을 뜻하던 한자어가 있습니다. 일본에서는 선종 절에서 주지가 머무는 방장의 입구를 이렇게 불렀습니다. 에도 시대 격식 있는 저택의 출입구를 거쳐, 메이지 시대 이후 모든 집과 건물의 출입구를 가리키게 된 이 말은?",
+    "answer": "현관",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "중국 문헌의 '무릇 이것은 지극히 깊고 오묘한 기관이다'라는 구절에서 왔다. 동아시아 여러 곳에서 이 자리에서 신을 벗는 문화가 흔하다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "모든 집과 건물의 출입구를 가리키게 된 말",
+     "difWhy": "2 — 현관은 일상어 · 한자 풀이 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "집에 들어서면 신발을 벗어 두는 자리로, 아파트 도어록 비밀번호를 누르고 들어서면 바로 나오는 곳이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "집·건물의 출입구 공간(玄關) — 본래 선종·도교 용어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "집 출입구로 누구나 아는 말",
+     "piece": "f08",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한자어'로 말 종류가 나오고 방장은 '주지가 머무는'으로 풀림. 끝 ○○(말)와 맞음."
+    },
+    "blindQuestion": {
+     "guess": "현관",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "현관",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "현관",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 0,
+     "found": 0,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6224",
+      "answer": "어안 렌즈",
+      "verdict": "diff",
+      "why": "새 정답 현관의 지식(유래·사실)과 옛 정답 어안 렌즈의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "5586",
+      "answer": "달라이 라마",
+      "verdict": "diff",
+      "why": "새 정답 현관의 지식(유래·사실)과 옛 정답 달라이 라마의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ja.wikipedia.org/wiki/玄関",
+     "https://zh.wikipedia.org/wiki/玄關"
+    ],
+    "facts": [
+     {
+      "claim": "본래 도교·선종 용어 · '玄妙の道に入る關門' · 일본 선종 절 방장 입구 · 에도 시대 식대 갖춘 출입구 · 메이지 이후 모든 건물 출입구",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/玄関",
+      "note": "本来、中国の道教 ... 禅 ... などの用語で「玄関」とは「玄妙の道に入る關門」ことである。日本では禅寺の方丈に設けられる入口 や書院造で邸宅への正式の出入口 ... 江戸時代には式台を構えている出入口を「玄関」と称した。明治時代以降は形式を問わず住居・公共建築の出入口を指す"
+     },
+     {
+      "claim": "같은 내용(zh) · '夫玄關者，至玄至妙之機關也'",
+      "where": "q",
+      "url": "https://zh.wikipedia.org/wiki/玄關",
+      "note": "本來，玄關是在中國道教...、禪宗...等思想使用的用語，來源是「夫玄關者，至玄至妙之機關也。」 ... 在日本，玄關指的是設置在禪寺方丈的入口 ... 明治時代以後，逐漸演變成代指任何形式的住居、公共建築的出入口。"
+     },
+     {
+      "claim": "동아시아 여러 곳에서 현관에서 신을 벗음",
+      "where": "e",
+      "url": "https://zh.wikipedia.org/wiki/玄關",
+      "note": "在日本、朝鮮半島、兩岸三地、越南、琉球一進到玄關幾乎都必須脫下鞋子。"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "'모든 집과 건물의 출입구를 가리키게 된 한자어' — 끝 문장만으로도 풀림(등급 낮게 나올 것)",
+    "worthWhyGen": "날마다 쓰는 '현관'이 선종의 '오묘한 도로 드는 관문'에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '한자어' 예",
+     "unique": "'모든 집과 건물의 출입구' — 대문·출입구와 갈릴 수 있으나 '한자어 · 방장 입구' 로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

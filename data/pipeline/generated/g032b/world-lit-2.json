@@ -1,0 +1,239 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-lit/2",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/2#g032b-g032b-j19-1",
+   "seed": {
+    "subject": "타임머신",
+    "aspect": null,
+    "ref": "g032b-j19-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국 작가 H. G. 웰스가 1895년에 펴낸 소설입니다. 주인공은 서기 80만 2701년에 닿아, 지상의 엘로이와 땅속의 몰록이라는 두 종족을 만납니다. 웰스가 처음 만든 이 제목은 지금 누구나 쓰는 낱말이 되었습니다. 이 소설의 제목은?",
+    "answer": "타임머신",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "The Time Machine"
+    ],
+    "explanation": "웰스는 1888년 대학 신문에 실은 단편 '크로닉 아르고노츠'에서 이 착상을 먼저 다뤘고, 이를 고쳐 써 이 소설을 냈다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "웰스가 처음 만든 이 제목은 지금 누구나 쓰는 낱말",
+     "difWhy": "2 — 누구나 쓰는 낱말이라 답이 곧 단서",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 소설 제목 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "과거와 미래를 오가게 해 주는 탈것으로, 영화 '백 투 더 퓨처'에서는 드로리언 자동차가 이 노릇을 했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "H. G. 웰스의 1895년 과학 소설 — 과거·미래를 오가는 탈것을 가리키는 낱말의 출처",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "타임머신이라는 단어와 소설 모두 유명",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "타임머신",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "타임머신",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "타임머신",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Time_Machine",
+     "https://ko.wikipedia.org/wiki/타임머신_(소설)"
+    ],
+    "facts": [
+     {
+      "claim": "1895년 웰스 · 802,701년 · 엘로이·몰록 · 웰스가 만든 말",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Time_Machine",
+      "note": "The Time Machine is an 1895 dystopian science fiction novella by H. G. Wells about a Victorian scientist known as the Time Traveller who travels to the year 802,701. ... The term \"time machine\", coined by Wells, is now almost universally used to refer to such a vehicle or device."
+     },
+     {
+      "claim": "1895년 간행 · 80만 2701년 · 엘로이인 · 몰록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/타임머신_(소설)",
+      "note": "타임 머신(The Time Machine)은 영국의 H. G. 웰스가 쓴 과학 소설이다. 1895년에 간행되었다. ... 80만 2701년의 세계에 도착한다. ... 아름답고 화려한 엘로이인과 지하에서 기계를 조작하며 ... 몰록"
+     },
+     {
+      "claim": "과거·미래로 가는 탈것(vehicle)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/The_Time_Machine",
+      "note": "popularization of the concept of time travel by using a vehicle or device to travel intentionally and selectively forward or backward through time"
+     },
+     {
+      "claim": "1888년 단편 The Chronic Argonauts · 대학 신문 · 바탕",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Time_Machine",
+      "note": "Wells had considered the notion of time travel before, in a short story titled \"The Chronic Argonauts\" (1888). This work, published in his college newspaper, was the foundation for The Time Machine."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Time_Machine"
+    ],
+    "hintNote": null,
+    "easiestCue": "서기 80만 2701년에 닿은 주인공(시간 여행)",
+    "worthWhyGen": "누구나 쓰는 낱말이 한 소설 제목에서 나왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '소설' 예",
+     "unique": "웰스 1895 · 엘로이/몰록 · 낱말이 된 제목 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 백 투 더 퓨처"
+    ],
+    "job": "job-19",
+    "discarded": "알가치 1 (고유명사 · 소설 제목 확인)"
+   }
+  },
+  {
+   "seedId": "world-lit/2#g032b-g032b-j22-4",
+   "seed": {
+    "subject": "삼총사",
+    "aspect": null,
+    "ref": "g032b-j22-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1844년 프랑스 작가 알렉상드르 뒤마가 신문에 연재한 모험 소설입니다. 시골 청년이 파리로 올라와 왕의 근위대원들과 우정을 맺습니다. '하나는 모두를 위하여, 모두는 하나를 위하여'라는 구호도 이 소설로 널리 퍼졌습니다. 이 소설의 제목은?",
+    "answer": "삼총사",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "뒤마는 대필 작가 오귀스트 마케와 함께 썼고, 주인공은 실존한 프랑스 남서부 출신 귀족 장교를 모델로 삼았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "뒤마 · 하나는 모두를 위하여, 모두는 하나를 위하여",
+     "difWhy": "1 — 구호가 곧 제목",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 문학 작품 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "아토스·포르토스·아라미스와 가스코뉴 청년 다르타냥이 리슐리외 추기경 일당에 맞서는 이야기",
+    "generalHintVersion": "hint-v7",
+    "identity": "알렉상드르 뒤마의 1844년 소설 — 다르타냥과 아토스·포르토스·아라미스",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "유명 소설·영화",
+     "piece": "f08",
+     "genPct": 92
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "삼총사",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "삼총사",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "삼총사",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/삼총사",
+     "https://en.wikipedia.org/wiki/Unus_pro_omnibus,_omnes_pro_uno",
+     "https://en.wikipedia.org/wiki/The_Three_Musketeers"
+    ],
+    "facts": [
+     {
+      "claim": "1844년 뒤마 · 신문 연재 · 시골 청년이 근위대 총사가 되려 파리로",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/삼총사",
+      "note": "《삼총사》 ... 1844년 프랑스 작가 알렉상드르 뒤마가 쓴 프랑스 역사 모험 소설이다. ... 1844년 3월부터 7월까지 신문 《세기》에 연재되었다. ... 근위대 총사가 되기를 희망하며 파리로 떠난 다르타냥이라는 가스코뉴 출신 하급 귀족 청년"
+     },
+     {
+      "claim": "Un pour tous, tous pour un — 뒤마 1844 소설이 유명하게 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Unus_pro_omnibus,_omnes_pro_uno",
+      "note": "A French version, Un pour tous, tous pour un, was made famous by Alexandre Dumas in the 1844 novel The Three Musketeers. ... In the novel, it was the motto of a group of French musketeers named Athos, Porthos, Aramis and d'Artagnan"
+     },
+     {
+      "claim": "1844 · 뒤마 · 다르타냥 파리행 · 리슐리외",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Three_Musketeers",
+      "note": "The Three Musketeers ... written and published in 1844 by French author Alexandre Dumas. ... D'Artagnan leaves his family in Gascony and travels to Paris to join the Musketeers of the Guard ... Cardinal Richelieu"
+     },
+     {
+      "claim": "대필 작가 마케 · 실존 인물 모델",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/삼총사",
+      "note": "대필 작가 오귀스트 마케와 협업하여 집필했다 ... (샤를 드 바츠카스텔모르 다르타냥을 모델로 한 인물)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/삼총사"
+    ],
+    "hintNote": null,
+    "easiestCue": "'하나는 모두를 위하여, 모두는 하나를 위하여' 구호",
+    "worthWhyGen": "누구나 쓰는 구호의 출처가 이 소설이라는 유래(19 §9-1 ②)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '소설' 예",
+     "unique": "뒤마 1844 · 구호 — 하나(몬테크리스토 백작 등은 구호 없음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22",
+    "discarded": "알가치 1 (고유명사 · 문학 작품 이름 확인)"
+   }
+  }
+ ]
+}

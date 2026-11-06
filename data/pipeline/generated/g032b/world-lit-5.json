@@ -1,0 +1,242 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-lit/5",
+  "midKey": "world-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-lit/5#g032b-g032b-j01-3",
+   "seed": {
+    "subject": "퇴고",
+    "aspect": null,
+    "ref": "g032b-j01-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 당나라 시인의 일화에서 온 한자어입니다. 시인 가도는 길을 가다 '스님은 달 아래 문을 …' 구절의 마지막 동사 한 글자를 두고 고민하다가, 고관이던 문인 한유의 행차와 부딪혔습니다. 한유가 꾸짖는 대신 글자를 골라 주었다는 이 일화에서 온 말은?",
+    "answer": "퇴고",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "가도가 망설인 두 글자는 '밀다'와 '두드리다'였고, 한유는 '두드리다'가 낫다고 했다고 전한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "스님은 달 아래 문을 …(밀다/두드리다) 가도와 한유",
+     "difWhy": "2 — 고사성어 퇴고 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "초고를 다시 읽으며 빠진 곳을 채우고 군더더기를 덜어 내는, 글쓰기의 마지막 다듬기 과정이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "글을 고치고 다듬는 일을 뜻하는 한자어(推敲)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "글쓰기·국어 시간에 흔한 말",
+     "piece": "f08",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '일화에서 온 한자어', 끝 ○○ '말'. 일화가 정답 유래라 정답에 닿음"
+    },
+    "blindQuestion": {
+     "guess": "퇴고",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "퇴고",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "퇴고",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3339",
+      "answer": "이백",
+      "verdict": "diff",
+      "why": "새 정답 퇴고의 지식(유래·사실)과 옛 정답 이백의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "3340",
+      "answer": "두보",
+      "verdict": "diff",
+      "why": "새 정답 퇴고의 지식(유래·사실)과 옛 정답 두보의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/퇴고",
+     "https://www.etoday.co.kr/news/view/2231015"
+    ],
+    "facts": [
+     {
+      "claim": "당나라 시인 가도 · 스님은 달 아래 문을 · 글자 고민 일화에서 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/퇴고",
+      "note": "'퇴고'라는 말은 당나라의 시인 가도가 \"새는 못가 나무에 자고 중은 달빛 아래 문을 미는구나\"라는 시구에서 퇴(推:밀다)라는 어구를 고(敲:두드리다)로 바꾸면 어떨까 하고 고민하였다는 《당시고사》에 실린 일화에서 비롯되었다."
+     },
+     {
+      "claim": "고민하다 한유의 행차와 부딪힘 · 한유가 꾸짖지 않고 '敲' 조언",
+      "where": "q",
+      "url": "https://www.etoday.co.kr/news/view/2231015",
+      "note": "결구를 밀다(推)로 해야 할지, 두드리다(敲)로 해야 할지 고민하다 자신을 향해 오는 고관의 행차와 부딪쳤다. 바로 한유의 행차였다. 한유는 그를 나무라기는커녕 ... \"내 생각에는 '두드리네(敲)'가 좋을 듯하군\""
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/퇴고"
+    ],
+    "hintNote": null,
+    "easiestCue": "가도와 한유의 행차 일화",
+    "worthWhyGen": "글쓰기에서 매일 쓰는 말이 어떤 일화에서 왔는지(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '한자어' 예",
+     "unique": "가도·한유 일화의 말 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "world-lit/5#g032b-g032b-j22-5",
+   "seed": {
+    "subject": "출사표",
+    "aspect": null,
+    "ref": "g032b-j22-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 삼국시대 촉한의 승상이 북쪽 위나라를 치러 떠나기 전 황제에게 올린 글입니다. 읽고 울지 않으면 충신이 아니라는 말이 전할 만큼 이름났습니다. 오늘날에는 선거나 경기에 나설 뜻을 밝힐 때 '이것을 던졌다'고 씁니다. 이 글은 무엇일까요?",
+    "answer": "출사표",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "227년에 올린 것을 전출사표, 이듬해 것을 후출사표라 부르며, 후출사표는 후세 사람이 지어냈다는 평도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "선거나 경기에 나설 뜻을 밝힐 때 '이것을 던졌다'",
+     "difWhy": "2 — 출사표를 던지다 관용구가 단서 · 제갈량 글 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 관용구 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "제갈량이 유비의 은혜를 되새기며 어린 황제 유선에게 북벌의 뜻을 밝힌 상소문",
+    "generalHintVersion": "hint-v7",
+    "identity": "제갈량이 북벌에 앞서 촉한 황제 유선에게 올린 글 — '○○○를 던지다' 관용구의 바탕",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "출사표 관용구·삼국지",
+     "piece": "f07",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '황제에게 올린 글' 이 끝 ○○ '글' 과 일치 · 인물 이름 없이 설명만 있어도 장면이 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "출사표",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "출사표",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "출사표",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/출사표",
+     "https://en.wikipedia.org/wiki/Chu_Shi_Biao",
+     "https://khan.co.kr/article/201410012106345"
+    ],
+    "facts": [
+     {
+      "claim": "촉한 승상 제갈량 · 북벌 앞서 황제 유선에게 · 울지 않으면 충신 아님",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/출사표",
+      "note": "중국 삼국시대 촉한의 제갈량이 북벌에 앞서 황제 유선에게 두 차례 올린 것이 널리 알려져 있다. ... 후세 사람들이 이 글을 보고 울지 않으면 충신이 아니라고 전해지며"
+     },
+     {
+      "claim": "위나라를 치러 떠나기 전 227년 · 유선",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chu_Shi_Biao",
+      "note": "The first Chu Shi Biao ... was presented in 227 before Zhuge Liang embarked on the first of a series of military campaigns against Shu's rival state, Wei."
+     },
+     {
+      "claim": "'출사표를 던지다' = 경기·경쟁에 참가 의사를 밝히다(표준국어대사전 익은말)",
+      "where": "q",
+      "url": "https://khan.co.kr/article/201410012106345",
+      "note": "국립국어원 표준국어대사전에도 '경기, 경쟁 따위에 참가 의사를 밝히다'란 뜻으로 쓰는 익은말로 올려놓은 상태 (검색 요약)"
+     },
+     {
+      "claim": "후출사표 228 · 위작 논란",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chu_Shi_Biao",
+      "note": "The second, known as the \"Later Chu Shi Biao\", was purportedly submitted in 228 ... The authenticity of the Later Chu Shi Biao is disputed and many scholars believe that it was not written by Zhuge Liang."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/출사표"
+    ],
+    "hintNote": null,
+    "easiestCue": "선거·경기에 나설 때 '이것을 던졌다'",
+    "worthWhyGen": "매일 뉴스에 나오는 관용구 '○○○를 던지다'의 출처(19 §9-1 ③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '글' 예",
+     "unique": "북벌 상소문 + 관용구 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

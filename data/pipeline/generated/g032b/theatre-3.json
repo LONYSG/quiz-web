@@ -1,0 +1,172 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "theatre/3",
+  "midKey": "theatre",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "theatre/3#g032b-g032b-j28-1",
+   "seed": {
+    "subject": "튀튀",
+    "aspect": null,
+    "ref": "g032b-j28-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고전 발레 무용수가 입는 치마 모양의 무대 의상입니다. 1832년 파리 오페라의 '라 실피드'에서 마리 탈리오니가 입은, 발목이 드러나는 하얀 종 모양 치마가 그 시초로 꼽힙니다. 19세기 말부터는 다리 동작이 잘 보이게 점점 짧아졌는데, 이 의상의 이름은?",
+    "answer": "튀튀",
+    "acceptedAnswers": [
+     "튜튜"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "튈·거즈·실크 같은 얇은 천으로 만들며, 이름이 어디서 왔는지는 분명하지 않아 프랑스 아이들 말에서 왔다는 설 등이 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "고전 발레 무용수가 입는 치마 모양 의상",
+     "difWhy": "2 — 발레 치마 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 발레 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "'백조의 호수' 무대에서 발레리나의 허리둘레에 접시처럼 빳빳하게 펼쳐진 여러 겹의 망사 치마를 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "발레리나가 입는 짧고 빳빳한 망사 치마 의상(tutu)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "발레 의상이지만 이름은 덜 알려짐",
+     "piece": "f05",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '발레 무용수가 입는 치마 모양 무대 의상'이 끝 '이 의상'과 일치."
+    },
+    "blindQuestion": {
+     "guess": "튀튀",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "튜튜",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "튀튀",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6078",
+      "answer": "코펠리아",
+      "verdict": "diff",
+      "why": "튀튀(의상) vs 코펠리아(1870 초연 발레) — 다른 지식"
+     },
+     {
+      "old": "5153",
+      "answer": "피나 바우슈",
+      "verdict": "diff",
+      "why": "튀튀 vs 피나 바우슈(탄츠테아터) — 다른 지식"
+     },
+     {
+      "old": "5154",
+      "answer": "호두까기 인형",
+      "verdict": "diff",
+      "why": "튀튀 vs 호두까기 인형 초연 — 다른 지식"
+     },
+     {
+      "old": "2538",
+      "answer": "파드되",
+      "verdict": "diff",
+      "why": "튀튀(치마) vs 파드되(짝 춤) — 다른 용어"
+     },
+     {
+      "old": "2534",
+      "answer": "백조의 호수",
+      "verdict": "diff",
+      "why": "튀튀 vs 백조의 호수 — 의상과 작품, 힌트 속 언급뿐"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/튀튀",
+     "https://en.wikipedia.org/wiki/Tutu_(clothing)"
+    ],
+    "facts": [
+     {
+      "claim": "고전 발레에서 입는 스커트 모양 무대 의상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/튀튀",
+      "note": "튀튀(tutu)는 주로 고전 발레에서 착용되는 스커트 모양의 무대 의상이다."
+     },
+     {
+      "claim": "1832년 파리 오페라 라 실피드 탈리오니 · 발목 드러남 · 19세기 말부터 점점 짧아짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tutu_(clothing)",
+      "note": "the skirt that became known specifically as the romantic tutu made its first appearance in 1832 at the Paris Opera, where Marie Taglioni wore a gauzy white skirt cut to reveal her ankles, designed by Eugene Lami in La Sylphide. From the late 19th century onwards, the tutu was steadily shortened, for ease of movement and to show off the dancer's legs."
+     },
+     {
+      "claim": "종 모양(로맨틱) · 허리에서 수평으로 뻗는 클래식 튀튀",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Tutu_(clothing)",
+      "note": "the Romantic tutu is soft and bell-shaped, reaching the calf or ankle; the Classical tutu is short and stiff, projecting horizontally from the waist and hip."
+     },
+     {
+      "claim": "재료 · 어원 불분명 · 프랑스 아이들 속어설",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tutu_(clothing)",
+      "note": "It may be made of tarlatan, muslin, silk, tulle, gauze, or nylon. ... The derivation of the word tutu is unknown. ... A second theory is that the word comes from the slang of French children that refers to the buttocks (cul)."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tutu_(clothing)"
+    ],
+    "hintNote": null,
+    "easiestCue": "고전 발레 무용수의 치마 모양 무대 의상",
+    "worthWhyGen": "발레 하면 떠오르는 의상의 이름과 그 모양이 생긴 까닭(다리 동작을 보이려고 짧아짐) — 취미 영역 세부",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '무대 의상' 예",
+     "unique": "발레 치마 의상 · 1832 라 실피드 — 튀튀 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-h GEN",
+      "before": {
+       "acceptedAnswers": []
+      },
+      "why": "blind '튜튜' = 표기 변형"
+     }
+    ],
+    "warn": [
+     "crossans 백조의 호수"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

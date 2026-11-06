@@ -1,0 +1,248 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "politics/2",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/2#g032b-g032b-j03-6",
+   "seed": {
+    "subject": "브래들리 효과",
+    "aspect": null,
+    "ref": "g032b-j03-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "선거 여론조사와 실제 결과가 어긋나는 한 현상의 이름은 1982년 미국 캘리포니아 주지사 선거에서 왔습니다. 흑인 후보였던 로스앤젤레스 시장은 여론조사와 출구조사에서 앞섰고, 한 신문은 그의 승리를 예측한 제목까지 실었습니다. 그러나 그는 근소한 차로 졌고, 이 현상에는 그의 성이 붙었습니다. 이 현상은?",
+    "answer": "브래들리 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "오바마가 2008·2012년 두 번 대선에서 이기자 이제는 사라졌다는 말도 나왔습니다. 부재자 투표를 빠뜨린 조사 잘못일 뿐이라는 반론도 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "1982년 캘리포니아 주지사 선거 … 흑인 후보였던 로스앤젤레스 시장",
+     "difWhy": "4 — 브래들리 효과 정치학 세부 · 이걸 어떻게 알아",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 선거 여론조사 개념",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 5",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "백인 유권자가 인종 편견을 숨기려고 조사 때는 흑인 후보를 지지한다고 답하고, 실제 투표에서는 다른 후보를 찍는다는 가설이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "유색 인종 후보가 여론조사보다 실제 득표가 낮게 나오는 현상",
+    "familiarity": {
+     "judge": 1,
+     "pct": 5,
+     "why": "정치학 전문 용어",
+     "piece": "f08",
+     "genPct": 35
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "브래들리 효과",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bradley_effect",
+     "https://ko.wikipedia.org/wiki/브래들리_효과"
+    ],
+    "facts": [
+     {
+      "claim": "1982 캘리포니아 주지사 선거 · LA 시장 톰 브래들리 · 여론조사 앞서다 패배 · 그의 이름을 땀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bradley_effect",
+      "note": "The theory is named after Los Angeles Mayor Tom Bradley, an African-American who lost the 1982 California gubernatorial election to California attorney general George Deukmejian ... despite being ahead in voter polls going into the elections."
+     },
+     {
+      "claim": "출구조사로 승리 예측 · 신문 제목 'Bradley Win Projected' · 근소한 차 패배",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bradley_effect",
+      "note": "Based on exit polls, a number of media outlets projected Bradley as the winner and early editions of the next day's San Francisco Chronicle featured a headline proclaiming \"Bradley Win Projected.\" However ... Bradley narrowly lost the overall race once absentee ballots were included."
+     },
+     {
+      "claim": "여론조사·출구조사에서 앞섰지만 패배 · 백인이 편견을 숨기려 거짓 응답 · 이름을 따 브래들리 효과",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/브래들리_효과",
+      "note": "흑인인 토머스 브래들리(당시 로스앤젤레스 시장)는 여론조사와 출구조사에서 백인인 공화당 후보 조지 듀크미지언 ... 을 앞섰지만, 실제 선거 결과에서는 브래들리가 패배했다. 이에 대해 학자들은 일부 백인들이 인종적 편견을 숨기기 위해 ... 거짓으로 진술한 것으로 분석했다. ... 브래들리 후보의 이름을 따서 브래들리 효과라고 부르게 되었다."
+     },
+     {
+      "claim": "오바마 2008·2012 · 조사 잘못 반론 · 부재자 투표",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bradley_effect",
+      "note": "Others have argued that it may have existed in past elections, but not in more recent ones, such as when the African-American Barack Obama was elected President of the United States in 2008 and 2012, both times against white opponents. / the exit polling failed to consider absentee balloting ... the \"Bradley effect\" was simply an attempt to come up with an excuse"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/브래들리_효과"
+    ],
+    "hintNote": null,
+    "easiestCue": "1982 캘리포니아 주지사 선거에서 진 흑인 LA 시장의 성",
+    "worthWhyGen": "선거 때마다 나오는 '여론조사 빗나감' 말이 왜 그 이름인지",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '현상' 예",
+     "unique": "1982 · LA 시장 성 — 샤이 보수 등과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 171자"
+    ],
+    "job": "job-03",
+    "discarded": "친숙도 1 (pct 5 · 정치학 전문 용어)"
+   }
+  },
+  {
+   "seedId": "politics/2#g032b-g032b-j31-4",
+   "seed": {
+    "subject": "교섭단체",
+    "aspect": null,
+    "ref": "g032b-j31-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "국회에서 의사 일정 같은 중요한 안건을 정당끼리 미리 협의하는 창구가 되는 의원 단체입니다. 우리 국회법은 의원 20명 이상이면 이 단체를 꾸릴 수 있다고 정합니다. 국고보조금의 절반을 이런 단체들이 먼저 나눠 받는데, 이 단체는 무엇일까요?",
+    "answer": "교섭단체",
+    "acceptedAnswers": [
+     "원내교섭단체"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "20석이 안 되는 정당끼리 손잡아 만들기도 하는데, 2018년 민주평화당과 정의당의 '평화와 정의의 의원 모임'이 그 예다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "의원 20명 이상이면 이 단체를 꾸릴 수 있다",
+     "difWhy": "3 — 정치 용어 · 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 정치 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "이 단체를 대표하는 의원을 흔히 '원내대표'라 부르며, 예전에는 '원내총무'라 했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "국회에서 20인 이상 의원으로 구성해 의사 진행을 협의하는 의원 단체",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "정치 뉴스에 나옴",
+     "piece": "f05",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '의원 단체'가 끝 ○○(단체)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "교섭단체",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "교섭단체",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "교섭단체",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5113",
+      "answer": "애로의 불가능성 정리",
+      "verdict": "diff",
+      "why": "교섭단체 vs 애로의 불가능성 정리: 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/교섭단체",
+     "https://ko.wikipedia.org/wiki/원내대표"
+    ],
+    "facts": [
+     {
+      "claim": "의사진행 중요 안건 협의 · 정파간 교섭 창구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/교섭단체",
+      "note": "국회에서 의사진행에 관한 중요한 안건을 협의하기 위하여 일정한 수 이상의 의원들로 구성된 의원단체를 말한다. ... 정파간 교섭의 창구역할을 하도록 하는 것이다."
+     },
+     {
+      "claim": "국회법 제33조 20인 이상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/교섭단체",
+      "note": "대한민국 국회법 제33조는 당적에 관계없이 20인 이상의 의원만 모이면 교섭단체를 구성할 수 있다는 요건을 명시하고 있다."
+     },
+     {
+      "claim": "국고보조금 50% 교섭단체 우선 배분",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/교섭단체",
+      "note": "국고보조금의 50%를 교섭단체 수로 나누어 우선적으로 지급받는다."
+     },
+     {
+      "claim": "교섭단체 대표의원 = 원내대표 · 예전 원내총무",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원내대표",
+      "note": "대한민국에서는 그 동안 교섭단체 대표의원을 '원내총무'라 불러왔지만, 2003년 민주당은 ... 원내총무를 '원내대표'라는 직위로 격상시켜"
+     },
+     {
+      "claim": "2018년 평화와 정의의 의원 모임",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/교섭단체",
+      "note": "2018년 제20대 국회의 '평화와 정의의 의원 모임'(민주평화당 14석, 정의당 6석)처럼 군소정당간 정치연합을 통해 공동 교섭단체를 구성한 사례도 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/원내대표"
+    ],
+    "hintNote": null,
+    "easiestCue": "의원 20명 이상이면 꾸리는 국회 단체",
+    "worthWhyGen": "정치 뉴스에 늘 나오는 말의 실제 요건과 뜻",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '의원 단체' 예",
+     "unique": "20인 이상 · 국고보조금 우선 — 정당·상임위와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-31"
+   }
+  }
+ ]
+}

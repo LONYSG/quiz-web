@@ -1,0 +1,138 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-history/3",
+  "midKey": "kr-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-history/3#g032b-g032b-j19-2",
+   "seed": {
+    "subject": "신기전",
+    "aspect": null,
+    "ref": "g032b-j19-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 전기의 화약 무기입니다. 1474년 《국조오례서례》 '병기도설'에 치수까지 적힌 설계도가 남아 있었지만, 오랫동안 무엇을 그린 것인지 몰랐습니다. 1975년 채연석의 연구로 정체가 밝혀져 1993년 대전에서 복원 발사되었습니다. 세종 30년(1448년)에 지금 이름이 붙은 이 무기는?",
+    "answer": "신기전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "임진왜란 때 권율은 행주산성을 지켜 낸 공을 이 무기에 돌렸다고 전한다. 다만 화약이 많이 들고 잘 맞지 않는다는 한계도 있었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "세종 30년 이름이 붙은 조선 전기 화약 무기",
+     "difWhy": "2 — 국사 교과 신기전",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 한국사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "문종 때 만든 수레 '화차'에 100발씩 꽂아 한꺼번에 쏘던 조선의 로켓 화살이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "조선 세종 때의 로켓 추진 화살(화차로 여러 발을 쏨)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "영화 '신기전'과 교과서에서 접함",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '조선 전기의 화약 무기', 끝 ○○ '이 무기' 일치; 서적명·연도 나열이나 해독은 막지 않음"
+    },
+    "blindQuestion": {
+     "guess": "신기전",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "신기전",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "신기전",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/신기전",
+     "https://en.wikipedia.org/wiki/Singijeon"
+    ],
+    "facts": [
+     {
+      "claim": "1448년 세종 30년 이름 · 병기도설 · 1975년 채연석 · 1993년 대전 복원 발사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신기전",
+      "note": "세종 30년(1448년)에는 신기전(神機箭)으로 이름이 바뀌어 사용된다. 신기전의 상세한 자료는 1474년 편찬된 《국조오례서례》(國朝五禮序例)의 〈병기도설〉(兵器圖說)에 남아 있다. ... 채연석의 연구에 의해 1975년 처음 밝혀졌다 ... 1993년 4월 27일 대전의 갑천변에서 처음 공개 발사시험을 하였다."
+     },
+     {
+      "claim": "국조오례서례 부록 설계도를 무엇인지 모르다가 채연석이 밝힘 · 치수 0.3mm 단위",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Singijeon",
+      "note": "Korean historians had found the schematics added as an appendix in the book Gukjo Orye Seorye ... but did not realize what they were until the academic Chae Yeon-suk identified them as the lost schematics of the sin'gijŏn. The schematics detail the lengths of wooden materials, using units down to 0.3 mm"
+     },
+     {
+      "claim": "1451년 문종 화차 · 100발",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/신기전",
+      "note": "1451년 문종(文宗)때 화차(火車)가 개발되면서 한 번에 100발씩 쏠 수 있도록 개량됐다."
+     },
+     {
+      "claim": "권율 행주산성 공을 돌림",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Singijeon",
+      "note": "During the Imjin War, General Kwŏn Yul attributed his successful defense of the fortress Haengjusanseong against numerically superior Japanese forces to the singijeon."
+     },
+     {
+      "claim": "화약 사용량 많고 명중률 낮음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/신기전",
+      "note": "신기전은 화약의 사용량이 너무 많고 명중률이 떨어지는 탓에 효용성은 떨어졌다고 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/신기전"
+    ],
+    "hintNote": null,
+    "easiestCue": "조선 화약 무기 · 복원 발사",
+    "worthWhyGen": "조선 과학기술의 대표 성과를 설계도 재발견이라는 뒷이야기로 — 한국사 상식 2~3",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '화약 무기' 예",
+     "unique": "1448년 이름 — 1451년 화차와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 162자",
+     "crossans 수레"
+    ],
+    "job": "job-19"
+   }
+  }
+ ]
+}

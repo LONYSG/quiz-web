@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "astronomy/4",
+  "midKey": "astronomy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "astronomy/4#g032b-g032b-j25-2",
+   "seed": {
+    "subject": "사건의 지평선",
+    "aspect": null,
+    "ref": "g032b-j25-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "블랙홀을 둘러싼 경계면을 가리키는 천문학 용어입니다. 이 경계 안에서 일어난 일은 바깥에 아무 영향도 줄 수 없습니다. 빛조차 한번 넘어 들어가면 다시 빠져나오지 못하는 이 경계를 무엇이라 할까요?",
+    "answer": "사건의 지평선",
+    "acceptedAnswers": [
+     "사상의 지평선"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "그 크기는 블랙홀의 질량에 비례하며, 회전하지 않는 블랙홀에서는 슈바르츠실트 반지름이 곧 이 면이 된다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "빛조차 한번 넘어 들어가면 다시 빠져나오지 못하는 이 경계",
+     "difWhy": "3 — 천문 용어 사건의 지평선 · 설명→이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 천문 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "블랙홀 둘레에서 빛조차 다시 나올 수 없게 되는 경계면을 가리키는 천문 용어로, 윤하의 2022년 역주행 노래 제목이기도 하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "블랙홀의 바깥 경계 — 안의 사건이 밖에 영향을 줄 수 없는 경계면(event horizon)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "블랙홀 사진·영화 인터스텔라",
+     "piece": "f09",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '블랙홀 경계면 용어', 끝 ○○ '이 경계'와 일치; 짧고 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "사건의 지평선",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "사건의 지평선",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "사건의 지평선",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j25-2",
+      "answer": "슈퍼문",
+      "verdict": "diff",
+      "why": "사건의 지평선 vs 슈퍼문 — 다름"
+     },
+     {
+      "old": "4262",
+      "answer": "복사점",
+      "verdict": "diff",
+      "why": "사건의 지평선 vs 복사점 — 다름"
+     },
+     {
+      "old": "2727",
+      "answer": "외계 행성",
+      "verdict": "diff",
+      "why": "사건의 지평선 vs 외계 행성 — 다름"
+     },
+     {
+      "old": "4740",
+      "answer": "퉁구스카 대폭발",
+      "verdict": "diff",
+      "why": "사건의 지평선 vs 퉁구스카 — 다름"
+     },
+     {
+      "old": "2728",
+      "answer": "전파 망원경",
+      "verdict": "diff",
+      "why": "사건의 지평선 vs 전파 망원경 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/사건의_지평선",
+     "https://en.wikipedia.org/wiki/Event_horizon"
+    ],
+    "facts": [
+     {
+      "claim": "안의 사건이 밖에 영향을 줄 수 없는 경계 · 블랙홀 바깥 경계 · 빛도 빠져나갈 수 없음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/사건의_지평선",
+      "note": "그 내부에서 일어난 사건이 그 외부에 영향을 줄 수 없는 경계면이다. … 가장 흔한 예는 블랙홀의 바깥 경계 … 내부로 들어온 물질이나 빛은 사건의 지평선(이벤트 호라이즌)으로해서 외부로 빠져나갈 수 없게 된다."
+     },
+     {
+      "claim": "블랙홀 경계 · 빛 탈출 불가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Event_horizon",
+      "note": "The surface at the Schwarzschild radius acts as an event horizon in a non-rotating body that fits inside this radius … even light cannot escape."
+     },
+     {
+      "claim": "슈바르츠실트 반지름 · 질량에 비례",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Event_horizon",
+      "note": "The Schwarzschild radius of an object is proportional to its mass."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "블랙홀의 경계면 + 빛도 못 빠져나옴",
+    "worthWhyGen": "블랙홀 상식의 기본 개념이자 노래 제목으로 일상에 들어온 말(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '천문학 용어' 예",
+     "unique": "블랙홀 경계면 — 슈바르츠실트 반지름(길이)과 갈림",
+     "hint12": "① 예 ② 예(노래와 개념이 이어짐)"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "윤하가 부른 2022년 역주행 노래의 제목으로도 널리 알려진 천문학 용어다."
+      },
+      "why": "블랙홀 ← 노래 단서만으론 대상 자체로 샘 · 경계면 정체를 핵심에"
+     }
+    ],
+    "warn": [
+     "crossans 블랙홀/역주행"
+    ],
+    "job": "job-25"
+   }
+  }
+ ]
+}

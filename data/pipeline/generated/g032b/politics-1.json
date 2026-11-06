@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "politics/1",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/1#g032b-g032b-j03-5",
+   "seed": {
+    "subject": "웨스트민스터 궁전",
+    "aspect": null,
+    "ref": "g032b-j03-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "런던 템스강 가의 한 궁전은 1834년 10월 16일 큰불로 대부분 타 버렸습니다. 재무부가 옛 장부로 쓰던 나무 막대(탤리 스틱) 두 수레를 지하 난로에서 한꺼번에 태우다 굴뚝에 불이 옮겨붙은 것이 원인이었습니다. 1836년 공모로 뽑힌 찰스 배리의 고딕 양식 설계로 다시 지은 이 궁전은?",
+    "answer": "웨스트민스터 궁전",
+    "acceptedAnswers": [
+     "웨스트민스터 궁",
+     "영국 국회의사당",
+     "영국 의회 의사당"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "중세의 큰 홀은 소방대 덕에 살아남아 새 건물에 그대로 들어갔습니다. 풍경화가 터너는 이 불을 보고 그림 두 점을 남겼습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1834년 큰불 · 찰스 배리의 고딕 양식으로 다시 지은 템스강 가의 궁전",
+     "difWhy": "3 — 빅벤이 있는 국회의사당 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 유명 건물 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "상원과 하원이 모여 법을 만드는 곳으로, 북쪽 끝 시계탑의 큰 종 '빅 벤'으로 더 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "영국 의회가 쓰는 런던의 웨스트민스터 궁전",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "빅벤·영국 의회 사진으로 접함",
+     "piece": "f03",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 주어 '템스강 가의 한 궁전'이 끝 ○○(궁전)와 같음. '탤리 스틱'은 괄호로 풀려 있음."
+    },
+    "blindQuestion": {
+     "guess": "웨스트민스터 궁전",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "영국 국회의사당",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "웨스트민스터 궁전",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5776",
+      "answer": "카툰",
+      "verdict": "diff",
+      "why": "새 정답 웨스트민스터 궁전의 지식(유래·사실)과 옛 정답 카툰의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6493",
+      "answer": "빅벤",
+      "verdict": "diff",
+      "why": "새 정답 웨스트민스터 궁전의 지식(유래·사실)과 옛 정답 빅벤의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j10-5",
+      "answer": "선거인단",
+      "verdict": "diff",
+      "why": "새 정답 웨스트민스터 궁전의 지식(유래·사실)과 옛 정답 선거인단의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Burning_of_Parliament",
+     "https://ko.wikipedia.org/wiki/웨스트민스터_궁전"
+    ],
+    "facts": [
+     {
+      "claim": "1834년 10월 16일 화재 · 재무부 탤리 스틱을 상원 아래 난로 둘에서 태우다 굴뚝 화재",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Burning_of_Parliament",
+      "note": "The Palace of Westminster ... was largely destroyed by fire on 16 October 1834. The blaze was caused by the burning of small wooden tally sticks which had been used as part of the accounting procedures of the Exchequer until 1826. The sticks were disposed of carelessly in the two furnaces under the House of Lords, which caused a chimney fire"
+     },
+     {
+      "claim": "두 수레 분량",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Burning_of_Parliament",
+      "note": "By the time the replacement process had finished, there were two cart-loads of old tally sticks awaiting disposal."
+     },
+     {
+      "claim": "1834 대화재 · 1836 왕립위원회가 찰스 배리의 고딕 설계안 채택",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/웨스트민스터_궁전",
+      "note": "1834년 10월 16일에 문서를 태우는 용도로 사용되던 화로에서 불이 났고 ... 1836년 왕립 위원회는 97가지 설계안을 검토한 후, 건축가 찰스 베리가 설계한 고딕 양식의 설계안을 최종적으로 채용하였다."
+     },
+     {
+      "claim": "북쪽 끝 빅벤",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/웨스트민스터_궁전",
+      "note": "궁전의 북쪽 끝에는 빅벤이라 불리는 대형 탑시계가 있다."
+     },
+     {
+      "claim": "웨스트민스터 홀 생존 · 터너 그림 두 점",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Burning_of_Parliament",
+      "note": "The actions of Superintendent James Braidwood ... ensured that Westminster Hall and a few other parts of the old Houses of Parliament survived the blaze. ... J. M. W. Turner, the landscape painter, who later produced two pictures of the fire"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/웨스트민스터_궁전"
+    ],
+    "hintNote": null,
+    "easiestCue": "템스강 가 고딕 궁전",
+    "worthWhyGen": "영국 의사당이 왜 19세기 고딕 건물인지(낡은 장부 막대가 낸 불)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '궁전' 예",
+     "unique": "템스강 · 1834 화재 · 배리 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 163자"
+    ],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "politics/1#g032b-g032b-j15-5",
+   "seed": {
+    "subject": "주민소환제",
+    "aspect": null,
+    "ref": "g032b-j15-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 지방자치의 한 제도입니다. 2006년 법률로 만들어져 2007년 7월부터 시행되었습니다. 미국 캘리포니아주에서는 2003년 같은 성격의 투표로 주지사 그레이 데이비스가 물러나고, 아널드 슈워제네거가 그 자리를 이었습니다. 이 제도는 무엇일까요?",
+    "answer": "주민소환제",
+    "acceptedAnswers": [
+     "주민소환",
+     "주민소환 제도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "미국에서 주지사가 이렇게 물러난 첫 사례는 1921년 노스다코타의 린 프레이저였고, 데이비스는 두 번째였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "주지사 그레이 데이비스가 물러나고 슈워제네거가 그 자리를 이었습니다",
+     "difWhy": "3 — 제도 이름 · 소환 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시민 제도 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "선거로 뽑힌 시장·군수·지방의원을 임기 도중 그 지역 유권자가 직접 투표로 물러나게 하는 제도로, 2009년 헌법 소원에서 합헌 결정을 받았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "선출직 지방 공직자를 주민 투표로 임기 중 해임하는 제도",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "뉴스·선거 제도",
+     "piece": "f02",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '지방자치의 한 제도' 가 끝 ○○(제도) 와 일치, 캘리포니아 문장은 비교 단서로 별개 문장이라 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "주민소환제",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "주민소환제",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "주민소환제",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j10-5",
+      "answer": "선거인단",
+      "verdict": "diff",
+      "why": "새 정답 주민소환제 과 옛 정답 선거인단 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032a:g032a-j23-7",
+      "answer": "단임제",
+      "verdict": "diff",
+      "why": "주민소환제(지방자치·캘리포니아 소환) vs 대통령 단임제 — 서로 다른 제도"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/주민소환제",
+     "https://en.wikipedia.org/wiki/2003_California_gubernatorial_recall_election"
+    ],
+    "facts": [
+     {
+      "claim": "2006년 제정 · 2007년 7월 시행 · 2003 데이비스 소환 성공",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주민소환제",
+      "note": "2006년 5월 24일 법률 제7958호로 주민소환제에 관한 법률이 신규제정되어 2007년 7월부터 시행되었다. ... 소환에 성공한 사례 ... 2003년, 캘리포니아주 주지사 Gray Davis"
+     },
+     {
+      "claim": "데이비스 → 슈워제네거",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/2003_California_gubernatorial_recall_election",
+      "note": "It resulted in voters replacing incumbent Democratic Governor Gray Davis with Arnold Schwarzenegger, a Republican."
+     },
+     {
+      "claim": "2009 헌재 합헌",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/주민소환제",
+      "note": "헌법재판소 판례 2009.3.26. 2007헌마843[기각] · 지자체장 주민소환 법률 합헌 법률신문 2009-03-27"
+     },
+     {
+      "claim": "1921 프레이저 첫 사례 · 데이비스 두 번째",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/2003_California_gubernatorial_recall_election",
+      "note": "making Davis the first governor recalled in the history of California, and just the second in U.S. history (the first was North Dakota's 1921 recall of Lynn Frazier)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/주민소환제"
+    ],
+    "hintNote": null,
+    "easiestCue": "슈워제네거가 주지사가 된 2003년 투표와 같은 성격",
+    "worthWhyGen": "시민이 쓸 수 있는 지방자치 제도(사회 상식 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '제도' 예",
+     "unique": "한국 지방자치 + 2007년 시행 → 주민소환제",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 헌법소원"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

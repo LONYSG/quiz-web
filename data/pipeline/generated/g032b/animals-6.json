@@ -1,0 +1,453 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "animals/6",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/6#g032b-g032b-j05-8",
+   "seed": {
+    "subject": "주머니쥐",
+    "aspect": null,
+    "ref": "g032b-j05-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영어에는 북아메리카에 사는 한 동물의 이름을 넣어 '죽은 척하다'라는 뜻으로 쓰는 관용구가 있습니다. 이 동물은 위협을 받으면 옆으로 쓰러져 입과 눈을 벌리고 혀를 내민 채, 고약한 냄새를 풍기며 몇 시간까지 꼼짝하지 않기 때문입니다. 세계에서 가장 북쪽까지 사는 유대류인 이 동물은?",
+    "answer": "주머니쥐",
+    "acceptedAnswers": [
+     "오포섬",
+     "버지니아주머니쥐"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "길에서 다가오는 차 앞에서도 이렇게 굳어 버려 차에 치여 죽는 일이 잦다. 호주의 '포섬'은 이 동물과 닮아 이름을 빌렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "세계에서 가장 북쪽까지 사는 유대류 · 죽은 척하다 관용구",
+     "difWhy": "3 — 오포섬을 주머니쥐로 연결해야 함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 동물 습성 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "캥거루처럼 배의 육아낭에서 새끼를 키우는 북미 동물로, 이빨이 50개나 되고 미국 도시의 쓰레기통을 뒤지며 새끼들을 등에 업고 다닌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "북아메리카의 유대류(버지니아주머니쥐 · 오포섬) — 죽은 척하는 습성으로 유명",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "오포섬 죽은 척 습성으로 접함, 한국명은 낯섦",
+     "piece": "f05",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '북아메리카에 사는 한 동물'이 있고 끝 ○○(동물)와 일치"
+    },
+    "blindQuestion": {
+     "guess": "오포섬",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오포섬",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "주머니쥐",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2685",
+      "answer": "의태",
+      "verdict": "diff",
+      "why": "주머니쥐 죽은 척 vs 의태 — 개념 정의와 특정 동물, 지식 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Apparent_death",
+     "https://en.wikipedia.org/wiki/Virginia_opossum"
+    ],
+    "facts": [
+     {
+      "claim": "'playing possum' = 죽은 척하다 · 버지니아주머니쥐의 죽은 척에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Apparent_death",
+      "note": "\"Playing possum\" is an idiomatic phrase which means \"pretending to be dead\". It comes from a characteristic of the Virginia opossum, which is famous for reacting with a death-like posture when threatened."
+     },
+     {
+      "claim": "옆으로 쓰러져 입·눈 벌리고 혀 내밂 · 고약한 냄새 액 · 몇 시간까지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Virginia_opossum",
+      "note": "In this inactive state it lies limp and motionless on its side, mouth and eyes open, tongue hanging out, and feet clenched. ... release a green fluid from its anus with a putrid odor that repels predators. ... This is the genesis of the term \"playing possum\" ... it can last for several hours."
+     },
+     {
+      "claim": "캐나다 남부~코스타리카 북부 · 세계 최북단 유대류",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Virginia_opossum",
+      "note": "found from southern Canada to northern Costa Rica, making it the northernmost marsupial in the world."
+     },
+     {
+      "claim": "털 없는 감는 꼬리 · 새끼를 등에 업음 · 고양이 크기 야행성",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Virginia_opossum",
+      "note": "Opossums have long, hairless, prehensile tails, which can be used to grab branches ... The young then climb onto the mother's back ... a solitary nocturnal animal about the size of a domestic cat"
+     },
+     {
+      "claim": "차 앞에서 죽은 척 → 로드킬 · 호주 포섬 이름은 이 종과 닮아서",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Virginia_opossum",
+      "note": "\"Playing possum\" in response to threats from oncoming traffic often results in death. ... The possums of Australia, whose name derives from their similarity to the American species"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Virginia_opossum"
+    ],
+    "hintNote": null,
+    "easiestCue": "'죽은 척하다' 영어 관용구(playing possum)를 알면 풂 · 북미 유대류",
+    "worthWhyGen": "영어 관용구 '죽은 척'이 왜 이 동물 이름으로 되었나 — 습성에서 온 말의 유래(19 §9-1 ②·③)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '동물' 예(관용구 장면 먼저)",
+     "unique": "북미 · 최북단 유대류 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindh",
+      "before": {
+       "hint": "흰 얼굴에 털 없는 긴 꼬리로 나뭇가지를 감고, 새끼들을 등에 업고 다니는 고양이만 한 야행성 동물이다."
+      },
+      "why": "올빼미원숭이 ← 야행성·꼬리만으론 영장류로 샘 · 육아낭(유대류) · 50개 이빨 · 쓰레기통(en Virginia opossum)으로 가름"
+     }
+    ],
+    "warn": [
+     "crossans 쓰레기/캥거루"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "animals/6#g032b-g032b-j11-4",
+   "seed": {
+    "subject": "군집 붕괴 현상",
+    "aspect": null,
+    "ref": "g032b-j11-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "꿀벌 무리에 생기는 현상입니다. 벌통에 여왕벌과 꿀, 애벌레는 그대로 남아 있는데 일벌 대부분이 죽은 몸도 남기지 않고 사라집니다. 2006년 말 미국 펜실베이니아의 보고를 시작으로 퍼지며 이름이 붙은 이 현상은?",
+    "answer": "군집 붕괴 현상",
+    "acceptedAnswers": [
+     "봉군 붕괴 증후군",
+     "벌집 군집 붕괴 현상",
+     "꿀벌 군집 붕괴 현상",
+     "CCD"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "예전에도 '사라짐병' 같은 여러 이름으로 드문드문 보고됐습니다. 원인 하나가 밝혀지지 않아 여러 요인이 겹친 결과로 봅니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "일벌 대부분이 사라지는 현상 · 2006년 미국",
+     "difWhy": "3 — 꿀벌 실종 뉴스는 알지만 용어 이름은 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 생태 현상 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "진드기·농약·바이러스 등이 원인으로 꼽히는 꿀벌 실종 사태로, 작물의 꽃가루받이를 꿀벌에 기대는 농업에 큰 손실을 줄 수 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일벌이 갑자기 사라져 벌 무리가 무너지는 현상(Colony Collapse Disorder)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "꿀벌 실종 뉴스로 접했을 법함",
+     "piece": "f05",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '꿀벌 무리에 생기는 현상'이 끝 '이 현상'과 일치. 짧음."
+    },
+    "blindQuestion": {
+     "guess": "군집 붕괴 현상",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "벌집군집붕괴현상",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "군집 붕괴 현상",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 5,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "벌집에서 일벌이 사라지는 현상(한국어 문서)",
+       "url": "https://ko.wikipedia.org/wiki/봉군붕괴증후군",
+       "note": "봉군붕괴증후군(CCD: Colony Collapse Disorder)은 세계적으로 벌집에서 일벌이 사라지는 현상을 말한다."
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "2685",
+      "answer": "의태",
+      "verdict": "diff",
+      "why": "군집 붕괴 현상과 의태는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Colony_collapse_disorder",
+     "https://ko.wikipedia.org/wiki/봉군붕괴증후군"
+    ],
+    "facts": [
+     {
+      "claim": "일벌 대부분이 사라지고 여왕·먹이·소수 보모벌만 남음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Colony_collapse_disorder",
+      "note": "Colony collapse disorder (CCD) is an abnormal phenomenon that occurs when the majority of worker bees in a honey bee colony disappear, leaving behind a queen, plenty of food, and a few nurse bees to care for the remaining immature bees."
+     },
+     {
+      "claim": "죽은 벌이 거의 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Colony_collapse_disorder",
+      "note": "few if any dead bees are found in or near the hive"
+     },
+     {
+      "claim": "2006년 11월 펜실베이니아 첫 보고 · 2006~2007년 용어 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Colony_collapse_disorder",
+      "note": "The first report classified as CCD was in mid-November 2006 by a Pennsylvania ... in late 2006 and early 2007, the rate of attrition was alleged to have reached new proportions, and people began to use the term colony collapse"
+     },
+     {
+      "claim": "벌집에서 일벌이 사라지는 현상(한국어 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/봉군붕괴증후군",
+      "note": "봉군붕괴증후군(CCD: Colony Collapse Disorder)은 세계적으로 벌집에서 일벌이 사라지는 현상을 말한다."
+     },
+     {
+      "claim": "원인 후보: 농약·진드기·병원체 등 · 꽃가루받이 의존 작물 손실",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Colony_collapse_disorder",
+      "note": "many causes are currently being considered, such as pesticides, mites, fungi ... / Colony collapse disorder could cause significant economic losses because many agricultural crops worldwide depend on pollination by western honey bees."
+     },
+     {
+      "claim": "옛 이름 disappearing disease 등 · 단일 원인 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Colony_collapse_disorder",
+      "note": "previously given many different names (among them \"disappearing disease\" ...) / The current scientific consensus is that no single factor is causing CCD"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Colony_collapse_disorder"
+    ],
+    "hintNote": null,
+    "easiestCue": "여왕벌은 남고 일벌만 사라짐 — 뉴스로 '꿀벌 실종'을 들은 사람",
+    "worthWhyGen": "식량·농업과 닿는 생태 뉴스 용어 — 일상에서 쓰는 말(3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '현상' 예",
+     "unique": "일벌 집단 실종 = 하나 · 이름 표기가 여럿이라 변형 4",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "animals/6#g032b-g032b-j31-9",
+   "seed": {
+    "subject": "탁란",
+    "aspect": null,
+    "ref": "g032b-j31-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "뻐꾸기의 번식 습성 이야기입니다. 암컷은 개개비나 때까치 같은 작은 새의 둥지에서 알 하나를 밀어 떨어뜨리고 그 자리에 제 알을 낳습니다. 먼저 깬 새끼는 둥지의 다른 알마저 밀어내고 가짜 어미에게 먹이를 받아먹습니다. 이런 습성을 무엇이라 할까요?",
+    "answer": "탁란",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "뻐꾸기 암컷은 대개 자기를 길러 준 새와 같은 종의 둥지를 찾아가 알을 낳는다고 알려져 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "암컷은 작은 새의 둥지에서 알 하나를 밀어 떨어뜨리고 제 알을 낳습니다",
+     "difWhy": "3 — 정의 → 용어 · 뻐꾸기 단서는 쉬움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 생물 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "새·물고기·곤충에서 보이는 기생의 한 형태로, 숙주 부모가 남의 새끼를 제 새끼로 알고 키우게 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "다른 종의 둥지에 알을 낳아 대신 기르게 하는 번식 기생(brood parasitism)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "뻐꾸기 습성, 과학 상식",
+     "piece": "f02",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '번식 습성 이야기' 가 끝 ○○(습성) 를 줌, 행동 묘사가 문장 둘로 나뉘어 있음"
+    },
+    "blindQuestion": {
+     "guess": "탁란",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "탁란",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탁란",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j24-1",
+      "answer": "귀소 본능",
+      "verdict": "diff",
+      "why": "탁란 vs 귀소 본능: 다른 습성"
+     },
+     {
+      "old": "g032a:g032a-j31-9",
+      "answer": "먹이사슬",
+      "verdict": "diff",
+      "why": "탁란 vs 먹이사슬: 다른 개념"
+     },
+     {
+      "old": "2683",
+      "answer": "동면",
+      "verdict": "diff",
+      "why": "탁란 vs 동면: 다른 습성"
+     },
+     {
+      "old": "2685",
+      "answer": "의태",
+      "verdict": "diff",
+      "why": "탁란 vs 의태: 다른 습성"
+     },
+     {
+      "old": "2686",
+      "answer": "경계색",
+      "verdict": "diff",
+      "why": "탁란 vs 경계색: 다른 습성"
+     },
+     {
+      "old": 317,
+      "answer": "뻐꾸기",
+      "verdict": "same",
+      "why": "탁란 습성 vs 뻐꾸기: 뻐꾸기가 남의 둥지에 알 낳는 같은 지식을 답과 단서만 뒤집음"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/뻐꾸기",
+     "https://ko.wikipedia.org/wiki/탁란"
+    ],
+    "facts": [
+     {
+      "claim": "뻐꾸기 암컷이 숙주 알 하나 밀어 떨어뜨리고 산란 · 새끼가 다른 알·새끼 밀어냄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뻐꾸기",
+      "note": "암컷은 가짜 어미새의 알 한 개를 부리로 밀어 떨어뜨리고 둥지 가장자리에 자기 알을 낳는다. ... 부화한 새끼는 1~2일 사이에 같은 둥지 속에 있는 가짜 어미새의 알과 새끼를 밀어 떨어뜨린다."
+     },
+     {
+      "claim": "개개비·때까치 등 둥지 · 탁란",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/뻐꾸기",
+      "note": "다른 작은 새(멧새·때까치·종달새·노랑할미새·알락할미새·개개비 등)의 둥지에 알을 맡기는 탁란의 습성"
+     },
+     {
+      "claim": "탁란 정의 · 뻐꾸기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탁란",
+      "note": "다른 종의 둥지에 알을 낳아 그 종으로 하여금 새끼를 기르게 하는 것이다. 탁란을 하는 새로는 유라시아와 오스트리아에 서식하는 뻐꾸기"
+     },
+     {
+      "claim": "새·물고기·곤충 기생 형태",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/탁란",
+      "note": "탁란(托卵, 영어: brood parasitism)은 새, 물고기, 곤충 등에서 볼 수 있는 기생의 한 형태로"
+     },
+     {
+      "claim": "길러 준 새와 같은 종 둥지",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/뻐꾸기",
+      "note": "가짜 어미새로부터 자란 뻐꾸기는 커서 알을 낳을 때 자신을 키워준 가짜 어미와 같은 종류의 새의 둥지에 알을 낳는다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/탁란"
+    ],
+    "hintNote": null,
+    "easiestCue": "뻐꾸기가 남의 둥지에 알을 낳는 습성",
+    "worthWhyGen": "자주 듣는 생물 용어(비유로도 쓰임)의 실제 모습",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '번식 습성' 예",
+     "unique": "남의 둥지 산란 습성 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 기생/숙주"
+    ],
+    "job": "job-31",
+    "discarded": "중복 같은 지식 317 뻐꾸기 — 탁란 습성 vs 뻐꾸기: 뻐꾸기가 남의 둥지에 알 낳는 같은 지식을 답과 단서만 뒤집음"
+   }
+  }
+ ]
+}

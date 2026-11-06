@@ -1,0 +1,412 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-history-west/7",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/7#g032b-g032b-j11-10",
+   "seed": {
+    "subject": "히타이트",
+    "aspect": null,
+    "ref": "g032b-j11-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 서아시아의 한 제국입니다. 기원전 1259년 무렵 이 나라의 왕 하투실리 3세는 이집트의 람세스 2세와 평화 조약을 맺었는데, 지금 남아 있는 가장 오래된 평화 조약으로 꼽힙니다. 그 복제본이 뉴욕 유엔 본부 벽에 걸려 있는 이 나라는?",
+    "answer": "히타이트",
+    "acceptedAnswers": [
+     "히타이트 제국",
+     "히타이트 왕국"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "기원전 1274년 무렵 두 나라는 시리아의 카데시에서 맞붙었지만 승부가 갈리지 않았고, 그 뒤 50년 가까이 평화가 이어졌다고 전합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "람세스 2세와 평화 조약을 맺은 하투실리 3세의 제국",
+     "difWhy": "3 — 세계사 교과 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 고대 문명 교과 사실",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "지금의 튀르키예 땅 아나톨리아에 하투샤를 수도로 세운 청동기 제국으로, 한때 철 다루는 기술을 독점했다고 여겨졌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "청동기 시대 아나톨리아(지금 튀르키예)의 고대 제국",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "세계사와 게임에서 접함",
+     "piece": "f05",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '고대 서아시아의 한 제국' 이 끝 ○○(나라) 를 줌"
+    },
+    "blindQuestion": {
+     "guess": "히타이트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "히타이트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "히타이트",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j06-10",
+      "answer": "파피루스",
+      "verdict": "diff",
+      "why": "히타이트 조약과 파피루스는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Egyptian–Hittite_peace_treaty",
+     "https://en.wikipedia.org/wiki/Hattusili_III",
+     "https://ko.wikipedia.org/wiki/히타이트",
+     "https://ko.wikipedia.org/wiki/람세스_2세"
+    ],
+    "facts": [
+     {
+      "claim": "기원전 1259년경 람세스 2세와 하투실리 3세의 평화 조약 · 가장 오래된 현존 평화 조약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Egyptian–Hittite_peace_treaty",
+      "note": "was concluded between Ramesses II of the Egyptian Empire and Ḫattušili III of the Hittite Empire around 1259 BC. It is the oldest known surviving peace treaty"
+     },
+     {
+      "claim": "유엔 본부 벽에 복제본",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Egyptian–Hittite_peace_treaty",
+      "note": "A copy of the treaty is prominently displayed on a wall at the Headquarters of the United Nations."
+     },
+     {
+      "claim": "하투실리 3세와 람세스 2세의 첫 기록 평화 조약",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hattusili_III",
+      "note": "Hattusili III began a correspondence with Egyptian Pharaoh Ramesses II that culminated in the first ever recorded peace treaty, the Eternal"
+     },
+     {
+      "claim": "아나톨리아 · 하투샤 · 철공예 독점설",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/히타이트",
+      "note": "히타이트인들은 자신들의 왕국을 하투샤 ... 학자들은 한때 철 제련의 발달을 히타이트인들에게 귀속시켰고, 히타이트인들이 청동기 시대에 철공예를 독점했다고 믿었다."
+     },
+     {
+      "claim": "카데시 전투 기원전 1274년 · 결과 불확실 · 50년 평화",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/람세스_2세",
+      "note": "기원전 1274년 카데쉬 전투에서 ... 히타이트와 휴전을 맺어 50년 동안 평화를 유지했다. / (ko 히타이트) 카데시 전투의 결과는 불확실하지만"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/히타이트"
+    ],
+    "hintNote": null,
+    "easiestCue": "람세스 2세와 평화 조약을 맺은 상대",
+    "worthWhyGen": "유엔 본부에 걸린 가장 오래된 평화 조약의 상대 — 역사 상식 세부(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '제국' 예",
+     "unique": "람세스 2세 평화 조약 상대 = 히타이트 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "world-history-west/7#g032b-g032b-j23-5",
+   "seed": {
+    "subject": "원로원",
+    "aspect": null,
+    "ref": "g032b-j23-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 로마에서 귀족 출신 어른들이 모여 나랏일을 의논하던 기구입니다. 라틴어 이름 '세나투스'는 '노인'을 뜻하는 말 '세넥스'에서 왔습니다. 오늘날 미국 상원을 가리키는 영어 'Senate'의 뿌리이기도 한 이 로마의 기구는?",
+    "answer": "원로원",
+    "acceptedAnswers": [
+     "로마 원로원"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "제국 시대에 들어 입법 기능을 사실상 잃었지만, 콘스탄티노폴리스의 동로마 쪽 기구는 13세기 초까지 이어졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "귀족 출신 어른들이 모여 나랏일을 의논하던 기구",
+     "difWhy": "3 — 세계사 교과 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 역사 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "왕정 때는 왕에게 조언하던 회의였고, 공화정 때는 집정관과 함께 로마를 이끈 귀족 회의체다",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 로마의 귀족 회의 기구",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "세계사 교과서",
+     "piece": "f09",
+     "genPct": 82
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '고대 로마 귀족 모임 기구', 끝 ○○ '이 로마의 기구' 일치"
+    },
+    "blindQuestion": {
+     "guess": "원로원",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "원로원",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "원로원",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6462",
+      "answer": "카이사르",
+      "verdict": "diff",
+      "why": "원로원(세나투스 어원)은 카이사르·호민관·아우구스투스·파피루스·함무라비 법전과 다른 지식이다"
+     },
+     {
+      "old": "487",
+      "answer": "호민관",
+      "verdict": "diff",
+      "why": "원로원(세나투스 어원)은 카이사르·호민관·아우구스투스·파피루스·함무라비 법전과 다른 지식이다"
+     },
+     {
+      "old": "490",
+      "answer": "아우구스투스",
+      "verdict": "diff",
+      "why": "원로원(세나투스 어원)은 카이사르·호민관·아우구스투스·파피루스·함무라비 법전과 다른 지식이다"
+     },
+     {
+      "old": "g032a:g032a-j06-10",
+      "answer": "파피루스",
+      "verdict": "diff",
+      "why": "원로원(세나투스 어원)은 카이사르·호민관·아우구스투스·파피루스·함무라비 법전과 다른 지식이다"
+     },
+     {
+      "old": "5570",
+      "answer": "함무라비 법전",
+      "verdict": "diff",
+      "why": "원로원(세나투스 어원)은 카이사르·호민관·아우구스투스·파피루스·함무라비 법전과 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/로마_원로원",
+     "https://ko.wikipedia.org/wiki/원로원",
+     "https://en.wikipedia.org/wiki/Roman_Senate"
+    ],
+    "facts": [
+     {
+      "claim": "senex '노인'에서 유래 · 원로들의 회의",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/로마_원로원",
+      "note": "원로원이라는 단어는 \"노인\"을 의미하는 라틴어 단어인 senex에서 유래했으며, 따라서 이 단어는 \"원로들의 회의\"를 의미한다."
+     },
+     {
+      "claim": "senate 의 어원 · 오늘날 상원 이름의 유래",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/원로원",
+      "note": "이 이름은 고대 로마의 로마 원로원(라틴어: Senatus)에서 유래했는데, 이는 연장자(라틴어: senex는 \"연장자\" 또는 \"노인\"을 의미)들이 모인 집단으로 여겨졌"
+     },
+     {
+      "claim": "senatus, borrowed into English as senate",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Roman_Senate",
+      "note": "The Latin word senatus, borrowed into English as senate, is derived from senex 'old man'; the word thus means 'assembly of elders'."
+     },
+     {
+      "claim": "왕정 때 왕의 자문",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Roman_Senate",
+      "note": "During the days of the Roman Kingdom, the Senate was generally little more than an advisory council to the king."
+     },
+     {
+      "claim": "제국 시대 입법 기능 상실 · 동방 원로원 13세기 초까지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Roman_Senate",
+      "note": "The Eastern Senate survived in Constantinople into the early 13th century."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Roman_Senate"
+    ],
+    "hintNote": null,
+    "easiestCue": "고대 로마 나랏일을 의논하던 기구 · Senate",
+    "worthWhyGen": "알가치 3 — 'Senate(상원)'라는 말의 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '고대 로마 … 기구'",
+     "unique": "로마의 기구 + 노인 어원 — 민회·호민관과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  },
+  {
+   "seedId": "world-history-west/7#g032b-g032b-j25-4",
+   "seed": {
+    "subject": "바빌론의 공중정원",
+    "aspect": null,
+    "ref": "g032b-j25-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 세계 7대 불가사의 가운데 하나입니다. 신바빌로니아의 네부카드네자르 2세가 고향의 푸른 산을 그리워한 왕비 아미티스를 위해 지었다고 전합니다. 7대 불가사의 중 유일하게 자리가 확인되지 않아, 실은 아시리아의 수도 니네베에 있었다는 주장까지 나온 이것은?",
+    "answer": "바빌론의 공중정원",
+    "acceptedAnswers": [
+     "공중정원",
+     "바빌론 공중정원"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "헤로도토스는 『역사』에서 바빌론을 자세히 적고도 이것은 언급하지 않았고, 바빌로니아 기록에도 나오지 않는다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "네부카드네자르 2세가 왕비 아미티스를 위해 지었다고 전합니다",
+     "difWhy": "3 — 7대 불가사의 중 선택 · 아미티스 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 세계사 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "흙벽돌 단마다 나무와 덩굴을 층층이 심어, 멀리서 보면 초록빛 산처럼 보였다고 전하는 불가사의다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 세계 7대 불가사의의 하나인 바빌론의 계단식 정원",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "7대 불가사의 교과서",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '고대 세계 7대 불가사의 가운데 하나' 가 곧 종류. 끝 '이것' 도 그것을 가리킨다."
+    },
+    "blindQuestion": {
+     "guess": "바빌론의 공중정원",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "바빌론의 공중정원",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "바빌론의 공중정원",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/바빌론의_공중정원",
+     "https://en.wikipedia.org/wiki/Hanging_Gardens_of_Babylon"
+    ],
+    "facts": [
+     {
+      "claim": "7대 불가사의 · 아미티스 전설 · 유일하게 위치 미확인",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/바빌론의_공중정원",
+      "note": "고대의 세계 7대 불가사의 중 하나 … 당시 왕비였던 '아미티스'가 고향의 울창한 녹음과 수목들을 그리워했기 때문에 네부카드네자르 2세가 그녀를 위해 지었다고 알려진다. … 세계 7대 불가사의 중 유일하게 그 위치가 정확하게 규명되지 않은 곳이다."
+     },
+     {
+      "claim": "아미티스 · 니네베 설(아시리아 센나케리브)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hanging_Gardens_of_Babylon",
+      "note": "by the Neo-Babylonian King Nebuchadnezzar II … for his Median wife, Queen Amytis, because she missed the green hills and valleys of her homeland. … third, that the legend refers to a well-documented garden that the Assyrian King Sennacherib (704–681 BC) built in his capital city of Nineveh"
+     },
+     {
+      "claim": "층층이 심은 계단식 · 초록빛 산처럼",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/바빌론의_공중정원",
+      "note": "각종 나무, 관목, 덩굴 식물들을 층층이 심은 계단식 정원으로, 기록에 따르면 그 장대한 규모로 인해 진흙 벽돌로 이루어진 초록빛 산과 같이 보였다고 전해지고 있다."
+     },
+     {
+      "claim": "헤로도토스 언급 없음 · 바빌로니아 기록 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hanging_Gardens_of_Babylon",
+      "note": "Herodotus, who describes Babylon in his Histories, does not mention the Hanging Gardens … (ko: 그 어떤 바빌로니아 기록에서도 정원에 대한 기록이 없고)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/바빌론의_공중정원"
+    ],
+    "hintNote": null,
+    "easiestCue": "7대 불가사의 + 네부카드네자르 2세 · 왕비 아미티스",
+    "worthWhyGen": "누구나 아는 7대 불가사의가 실제로 있었는지조차 모른다는 까닭(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '7대 불가사의' 예",
+     "unique": "자리 미확인 · 네부카드네자르로 한정(피라미드·등대와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

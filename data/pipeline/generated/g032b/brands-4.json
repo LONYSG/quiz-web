@@ -1,0 +1,191 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "brands/4",
+  "midKey": "brands",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "brands/4#g032b-g032b-j10-1",
+   "seed": {
+    "subject": "브리지스톤",
+    "aspect": null,
+    "ref": "g032b-j10-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1930년 고무 밑창을 댄 작업용 버선을 만들던 한 회사의 타이어 부서에서 출발한 타이어 회사가 있습니다. 창업자는 자기 성을 영어로 옮겼는데, 그대로는 어감이 나빠 두 낱말의 순서를 뒤집어 회사 이름으로 삼았습니다. 이 회사는 어디일까요?",
+    "answer": "브리지스톤",
+    "acceptedAnswers": [
+     "브릿지스톤",
+     "Bridgestone"
+    ],
+    "originalTitleVariants": [
+     "Bridgestone"
+    ],
+    "explanation": "창업자 이시바시 쇼지로의 성 '石橋'는 '돌다리'라는 뜻입니다. 당시 세계 일류였던 미국 파이어스톤처럼 되고 싶다는 바람도 담겼는데, 이 회사는 1988년 그 파이어스톤을 사들였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "고무 밑창 작업용 버선 · 성을 영어로 옮겨 순서를 뒤집어",
+     "difWhy": "3 — 기업 유래 설명→이름 · 일본 기업",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 사명 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "세계 최대 규모로 꼽히는 일본 타이어 회사로, F1 경주에 오랫동안 타이어를 대 왔고 골프공도 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일본 도쿄에 본사를 둔 세계 최대급 타이어 회사(1931년 구루메 창립)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "타이어 브랜드 광고",
+     "piece": "f07",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 끝이 '타이어 회사가 있습니다'로 종류가 나오고 끝 ○○(회사)와 일치"
+    },
+    "blindQuestion": {
+     "guess": "브리지스톤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "브리지스톤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "브리지스톤",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 3,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5734",
+      "answer": "빅토리녹스",
+      "verdict": "diff",
+      "why": "브리지스톤 유래와 빅토리녹스는 다른 회사"
+     },
+     {
+      "old": "4308",
+      "answer": "휠라",
+      "verdict": "diff",
+      "why": "브리지스톤과 휠라는 다른 회사"
+     },
+     {
+      "old": "4799",
+      "answer": "볼보",
+      "verdict": "diff",
+      "why": "브리지스톤과 볼보는 다른 회사"
+     },
+     {
+      "old": "6181",
+      "answer": "몽블랑",
+      "verdict": "diff",
+      "why": "브리지스톤과 몽블랑은 다른 회사"
+     },
+     {
+      "old": "3465",
+      "answer": "네슬레",
+      "verdict": "diff",
+      "why": "브리지스톤과 네슬레는 다른 회사"
+     }
+    ],
+    "sources": [
+     "https://ja.wikipedia.org/wiki/ブリヂストン",
+     "https://en.wikipedia.org/wiki/Bridgestone",
+     "https://ko.wikipedia.org/wiki/브리지스톤"
+    ],
+    "facts": [
+     {
+      "claim": "1930년 일본 지카타비 회사(日本足袋)의 타이어 부서로 출발, 1931년 독립",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/ブリヂストン",
+      "note": "1930年に、ゴム産業が盛んであった福岡県久留米市で日本足袋（現アサヒシューズ）のタイヤ部門として発足し、1931年にブリッヂストンタイヤ株式会社として分社独立した。"
+     },
+     {
+      "claim": "첫 타이어는 1930년 지카타비를 만들던 타비 회사의 타이어 부서가 생산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bridgestone",
+      "note": "The first Bridgestone tire was produced on 9 April 1930, by the Japanese \"Tabi\" Socks Tire Division (which actually made jika-tabi)."
+     },
+     {
+      "claim": "창업자 성을 영어로 옮기고 어감이 나빠 순서를 뒤집음",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/ブリヂストン",
+      "note": "姓を直訳して「ストーンブリッジ」では語呂が悪いので、逆さにして「ブリヂストン」とした。"
+     },
+     {
+      "claim": "이름은 창업자 성의 번역과 순서 뒤바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bridgestone",
+      "note": "The name Bridgestone comes from a calque translation and transposition of the founder's surname, meaning 'stone bridge' in Japanese."
+     },
+     {
+      "claim": "세계 최대 매출·생산 타이어 회사",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/브리지스톤",
+      "note": "특히 미쉐린을 제치고 타이어 부문에서 세계 최대의 매출과 생산을 올리는 것으로 유명하다."
+     },
+     {
+      "claim": "F1 등 모터스포츠 타이어 공급 · 골프 용품",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Bridgestone",
+      "note": "has supplied tires for motorsport events including Formula One, Le Mans, and Grand Prix motorcycle racing / Bridgestone has been producing golf-related products since 1935."
+     },
+     {
+      "claim": "파이어스톤 같은 일류 기업이 되고 싶다는 뜻도 담김",
+      "where": "e",
+      "url": "https://ja.wikipedia.org/wiki/ブリヂストン",
+      "note": "また当時、タイヤの世界的ブランドだったファイアストンのような一流企業になりたいという思いも込められた。"
+     },
+     {
+      "claim": "1988년 파이어스톤 인수",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bridgestone",
+      "note": "Bridgestone purchased the Firestone Tire and Rubber Company in 1988"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bridgestone",
+     "https://ko.wikipedia.org/wiki/브리지스톤"
+    ],
+    "hintNote": null,
+    "easiestCue": "타이어 회사 + 창업자 성을 영어로 옮겨 순서를 뒤집은 이름(창업자 성 이시바시 = 石橋를 알아야 풀림)",
+    "worthWhyGen": "익숙한 타이어 상표가 일본 회사이고 창업자 성 '돌다리'를 뒤집은 이름이라는 유래 — 질문 안에 '왜 그런 이름' 이 있다",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 — 첫 문장 '타이어 회사' 종류 명사 · 예",
+     "unique": "타이어 회사 + 창업자 성 번역·순서 뒤집기 = 하나",
+     "hint12": "① 예(일본 최대 타이어·F1) ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-10"
+   }
+  }
+ ]
+}

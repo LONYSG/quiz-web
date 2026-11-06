@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "invention/1",
+  "midKey": "invention",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "invention/1#g032b-g032b-j06-11",
+   "seed": {
+    "subject": "자전거",
+    "aspect": null,
+    "ref": "g032b-j06-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 탈것의 시작에 얽힌 이야기입니다. 1817년 독일 만하임의 카를 드라이스가 나무로 만든 '달리는 기계'를 처음 타고 나섰습니다. 1815년 탐보라 화산이 터진 뒤 '여름 없는 해'의 흉작으로 말들이 굶어 죽자, 말을 대신할 탈것을 찾은 것이라고 그의 전기 작가는 봅니다. 드라이스의 이 발명품은 오늘날 무엇의 시초로 꼽힐까요?",
+    "answer": "자전거",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "드라이스의 탈것은 두 발로 땅을 차며 달렸고, 평지에서 걷기의 두 배쯤인 시속 16km를 냈다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "드라이스의 이 발명품은 오늘날 무엇의 시초",
+     "difWhy": "2 — 나무 달리는 기계 → 자전거 쉬움",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 탈것의 시작 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 100",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "두 바퀴를 앞뒤로 달고 페달을 밟아 굴리는 탈것으로, 따릉이처럼 도시에서 빌려 타기도 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "두 바퀴를 페달로 굴리는 탈것",
+    "familiarity": {
+     "judge": 3,
+     "pct": 100,
+     "why": "일상 물건",
+     "piece": "f03",
+     "genPct": 100
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한 탈것' 이 끝 ○○(시초가 된 것=탈것) 와 맞음, 탐보라 화산 문장이 길지만 인과가 한 줄로 이어짐"
+    },
+    "blindQuestion": {
+     "guess": "자전거",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "자전거",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "자전거",
+     "qFacts": 4,
+     "qSources": 4,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3714",
+      "answer": "바보들의 행진",
+      "verdict": "diff",
+      "why": "드라이스 자전거 vs 영화 바보들의 행진 — 자전거는 힌트 속 단어"
+     },
+     {
+      "old": "4830",
+      "answer": "아이언맨",
+      "verdict": "diff",
+      "why": "드라이스 자전거 기원 vs 아이언맨 대회 — 다른 지식"
+     },
+     {
+      "old": "4955",
+      "answer": "상주",
+      "verdict": "diff",
+      "why": "자전거 기원 vs 상주 지리 — 힌트에 단어만 겹침"
+     },
+     {
+      "old": "5261",
+      "answer": "푸조",
+      "verdict": "diff",
+      "why": "자전거 발명 vs 푸조 회사 역사 — 다른 지식"
+     },
+     {
+      "old": "5391",
+      "answer": "상주",
+      "verdict": "diff",
+      "why": "자전거 기원 vs 낙양 상주 — 힌트에 단어만 겹침"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dandy_horse",
+     "https://en.wikipedia.org/wiki/Karl_Drais",
+     "https://www.thelocal.de/20190613/how-a-giant-volcano-led-to-the-creation-of-germanys-first-bike",
+     "https://ko.wikipedia.org/wiki/자전거"
+    ],
+    "facts": [
+     {
+      "claim": "1817년 드라이스 '달리는 기계'(Laufmaschine) · 최초의 자전거로 여김 · 탐보라·여름 없는 해·말 죽음 · 말 대체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dandy_horse",
+      "note": "as the first two-wheeled vehicle, is regarded as the first bicycle. It was invented by Karl Drais, who called it a Laufmaschine ... 'running machine' in 1817 ... Drais was inspired, at least in part, by the need to develop a form of transit that did not rely on the horse. After the 1815 eruption of Mount Tambora and the Year Without a Summer (1816) ... resulted in the deaths of tens of thousands of horses"
+     },
+     {
+      "claim": "1817년 6월 12일 만하임 첫 주행",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Karl_Drais",
+      "note": "His first reported ride from Mannheim to the \"Schwetzinger Relaishaus\" ... took place on 12 June 1817"
+     },
+     {
+      "claim": "전기 작가 레싱이 정황으로 추론(흉작·말 굶주림)",
+      "where": "q",
+      "url": "https://www.thelocal.de/20190613/how-a-giant-volcano-led-to-the-creation-of-germanys-first-bike",
+      "note": "WebSearch 요약: Drais's biographer Hans-Erhard Lessing reasoned from circumstantial evidence that Drais wanted an alternative to horses, which were starving after the 1816 crop failure"
+     },
+     {
+      "claim": "드라이스 드라이지네",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/자전거",
+      "note": "독일에서 카를 폰 드라이스(Karl Drais)가 만들어 1818년 공개한 드라이지네는 ... 달리면서 방향을 바꿀 수 있게 고안한 것이었다."
+     },
+     {
+      "claim": "발로 땅을 참 · 시속 약 16km",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dandy_horse",
+      "note": "The dandy horse is powered by the rider's feet on the ground ... capable of more than doubling the average walking speed, to around 10 mph (16 km/h) on level ground."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "말을 대신할 사람 힘 탈것(1817 드라이스)",
+    "worthWhyGen": "화산 폭발이 자전거를 낳았다는 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '탈것' 예",
+     "unique": "드라이스 1817 = 자전거의 시초(묻는 것은 '무엇의 시초')",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 184자"
+    ],
+    "job": "job-06"
+   }
+  }
+ ]
+}

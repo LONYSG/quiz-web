@@ -1,0 +1,582 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "plants/1",
+  "midKey": "plants",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "plants/1#g032b-g032b-j05-9",
+   "seed": {
+    "subject": "회화나무",
+    "aspect": null,
+    "ref": "g032b-j05-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선 궁궐 정문 안쪽에 일부러 심던 한 나무가 있습니다. 중국 『주례』에 따르면 조정 뜰에서 삼공(세 정승)이 앉는 자리에 이 나무를 심어 표시로 삼았기 때문입니다. 그래서 높은 벼슬과 큰 학자를 뜻하는 나무가 되었습니다. 창덕궁 돈화문 안 여덟 그루가 천연기념물인 이 나무는?",
+    "answer": "회화나무",
+    "acceptedAnswers": [
+     "홰나무"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "집에 심으면 큰 인물이 난다 하여 길상목으로 불렸고, 임금이 관리에게 내리기도 했다. 꽃봉오리는 약재와 천연염료로 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "조선 궁궐 정문 안 / 삼공 자리 / 창덕궁 돈화문 여덟 그루",
+     "difWhy": "4 — 회화나무 이름 떠올리기 어려움 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 나무의 상징 유래, 교양",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "여름에 연노란 꽃이 원뿔 모양으로 모여 피는 콩과 나무로, 영어로 '중국 학자 나무'라 부른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "콩과의 큰 나무(Sophora/Styphnolobium japonicum) — 영어로 Chinese scholar tree",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "가로수·천연기념물로 접함",
+     "piece": "f09",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '궁궐 정문 안쪽에 심던 나무', 끝 ○○ '이 나무' 일치; 주례 삼공은 괄호 풀이"
+    },
+    "blindQuestion": {
+     "guess": "회화나무",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "회화나무",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "회화나무",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1856",
+      "answer": "엽록소",
+      "verdict": "diff",
+      "why": "회화나무 vs 엽록소 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/창덕궁_회화나무_군",
+     "https://ko.wikipedia.org/wiki/회화나무",
+     "https://en.wikipedia.org/wiki/Styphnolobium_japonicum"
+    ],
+    "facts": [
+     {
+      "claim": "주례 — 외조 삼공 자리에 이 나무를 심어 표지로 · 궁궐 입구에 심음 · 창덕궁 돈화문 안 8그루 천연기념물",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/창덕궁_회화나무_군",
+      "note": "「주례(周禮)」에 따르면 외조(外朝)는 왕이 삼공(三公)과 ... 만나는 장소로서 이 중 삼공(三公)의 자리에는 회화나무(槐)를 심어 삼공(三公) 좌석의 표지(標識)로 삼았다고 하며 ... 창덕궁 회화나무 군은 창덕궁 돈화문 안에 있는 회화나무 여덟 그루이다."
+     },
+     {
+      "claim": "큰 학자가 나온다 하여 길상목 · 학자를 나타냄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/회화나무",
+      "note": "예부터 회화나무를 집에 심으면 가문에 큰 인물이나 큰 학자가 나온다고 하여 길상목으로 불렸다. 그로 인해 임금이 관리에게 회화나무를 하사하기도 하였다. ... 학자를 나타낸다."
+     },
+     {
+      "claim": "영어 이름 Chinese scholar tree",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Styphnolobium_japonicum",
+      "note": "Styphnolobium japonicum, the Japanese pagoda tree (also known as the Chinese scholar tree and pagoda tree"
+     },
+     {
+      "claim": "콩과 · 8월부터 연노란 원추꽃차례 · 꽃봉오리 염료·약재",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/회화나무",
+      "note": "콩과에 속하는 나무이다. ... 꽃은 8월부터 개화하며 그 모양은 연한 노란색으로 새 가지 끝에서 길이 20∼30 cm의 원추꽃차례로 핀다. ... 꽃봉오리는 천연염료 및 약재로 많이 이용된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/회화나무",
+     "https://en.wikipedia.org/wiki/Styphnolobium_japonicum"
+    ],
+    "hintNote": null,
+    "easiestCue": "삼공 자리에 심은 나무 · 학자 나무 — 삼괴(三槐) 고사를 알아야 풂",
+    "worthWhyGen": "궁궐·서원에 왜 이 나무를 심었나(삼공 자리 표시 → 학자 나무) — 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '나무' 예",
+     "unique": "창덕궁 돈화문 천연기념물 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "plants/1#g032b-j20-1",
+   "seed": {
+    "subject": "녹나무",
+    "aspect": null,
+    "ref": "j20-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "늘 푸른 큰키나무 한 종류입니다. 일본 오사카부 가야시마역 승강장에는 수령 700년쯤 된 이 나무가 지붕을 뚫고 서 있습니다. 주민들이 옮기기를 반대해 역을 나무 둘레에 지었다고 합니다. 애니메이션 '이웃집 토토로'에서 토토로가 사는 거대한 나무도 이 나무입니다. 이 나무는 무엇일까요?",
+    "answer": "녹나무",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "벌레가 먹지 않고 잘 썩지 않아 옛날 귀족의 관이나 절의 목어를 깎는 고급 목재로 쓰였다. 일본어로는 '구스노키'라 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "이웃집 토토로가 사는 거대한 나무",
+     "difWhy": "3 — 토토로 단서는 쉬우나 나무 이름 녹나무를 모르는 사람 많음",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 애니메이션 연계 나무 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "줄기와 뿌리를 증류해 방충제·향료 원료인 장뇌를 얻는 나무로, 우리나라에서는 제주도에 자생한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "장뇌를 얻는 녹나뭇과 늘푸른 큰키나무(camphor tree) — 제주에 자생",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "장뇌·제주 나무로 들어 본 사람이 있음",
+     "piece": "f08",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '늘 푸른 큰키나무', 끝 ○○ '나무'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "녹나무",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "녹나무",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "녹나무",
+     "qFacts": 4,
+     "qSources": 4,
+     "checked": 5,
+     "found": 5,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5567",
+      "answer": "아보카도",
+      "verdict": "diff",
+      "why": "녹나무(가야시마역·토토로)는 아보카도·셀룰로이드·세쿼이아·소나무(정이품송)·편백과 다른 대상이다"
+     },
+     {
+      "old": "3735",
+      "answer": "셀룰로이드",
+      "verdict": "diff",
+      "why": "녹나무(가야시마역·토토로)는 아보카도·셀룰로이드·세쿼이아·소나무(정이품송)·편백과 다른 대상이다"
+     },
+     {
+      "old": "3808",
+      "answer": "세쿼이아",
+      "verdict": "diff",
+      "why": "녹나무(가야시마역·토토로)는 아보카도·셀룰로이드·세쿼이아·소나무(정이품송)·편백과 다른 대상이다"
+     },
+     {
+      "old": "3806",
+      "answer": "소나무",
+      "verdict": "diff",
+      "why": "녹나무(가야시마역·토토로)는 아보카도·셀룰로이드·세쿼이아·소나무(정이품송)·편백과 다른 대상이다"
+     },
+     {
+      "old": "g032b:j20-3",
+      "answer": "편백",
+      "verdict": "diff",
+      "why": "녹나무(가야시마역·토토로)는 아보카도·셀룰로이드·세쿼이아·소나무(정이품송)·편백과 다른 대상이다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Kayashima_Station",
+     "https://en.wikipedia.org/wiki/Camphora_officinarum",
+     "https://en.wikipedia.org/wiki/My_Neighbor_Totoro",
+     "https://ja.wikipedia.org/wiki/となりのトトロ",
+     "https://ko.wikipedia.org/wiki/녹나무"
+    ],
+    "facts": [
+     {
+      "claim": "가야시마역은 수령 약 700년의 녹나무(신목) 둘레에 지어졌다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kayashima_Station",
+      "note": "it has a large camphor sacred tree growing in the middle of it which is considered sacred to the local people. The station was built around it. The tree is estimated to be around 700 years old"
+     },
+     {
+      "claim": "주민 반대로 역을 나무 둘레에 지었다 · 승강장과 지붕을 뚫고 자란다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Camphora_officinarum",
+      "note": "the enshrined 700-year old camphor growing in the middle of Kayashima Station. Locals protested against moving the tree when the railway station had to be expanded, so the station was built around it. / ja 萱島駅: クスノキが、ホームと屋根を突き抜けて生えている。樹齢700年"
+     },
+     {
+      "claim": "토토로는 거대한 녹나무(구멍)에 산다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/My_Neighbor_Totoro",
+      "note": "Mei discovers two small spirits that lead her into the hollow of a large camphor tree."
+     },
+     {
+      "claim": "토토로는 거대한 녹나무에 산다(2)",
+      "where": "q",
+      "url": "https://ja.wikipedia.org/wiki/となりのトトロ",
+      "note": "巨大なクスノキ（の穴の中）にすんでいる生き物"
+     },
+     {
+      "claim": "장뇌는 둥치·뿌리를 수증기 증류해 얻고 방충제·향료 원료 · 제주 자생",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/녹나무",
+      "note": "장뇌는 이 나무의 둥치나 뿌리를 수증기로 증류시켜 얻은 기름으로서, 향료를 비롯한 방충제·살충제·강심제를 만드는 원료가 된다. / 제주도 삼성혈 부근의 숲에 자생하며"
+     },
+     {
+      "claim": "관재·목어 재료 · 일본명 kusunoki",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/녹나무",
+      "note": "벌레가 먹지 않고 썩지 않으며 보존성이 높아 예로부터 왕후귀족의 관재(棺材)로 많이 사용되었다 … 특히 사찰의 목어(木魚)를 만드는 데는 최고급재가 된다. / en: In Japan, where the tree is called kusunoki"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/녹나무"
+    ],
+    "hintNote": null,
+    "easiestCue": "'이웃집 토토로'에서 토토로가 사는 나무 — 종류까지 아는 사람은 적다",
+    "worthWhyGen": "익숙한 애니메이션 속 나무 · 역이 나무를 피해 지어진 이야기 · 힌트로 장뇌(방충제) 원료임을 배움 — 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '큰키나무' 종류 명사 — 예",
+     "unique": "가야시마역 신목 · 토토로 나무 둘 다 녹나무 하나로 닫힘",
+     "hint12": "① 예(장뇌 = 녹나무) ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  },
+  {
+   "seedId": "plants/1#g032b-j20-3",
+   "seed": {
+    "subject": "편백",
+    "aspect": null,
+    "ref": "j20-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "늘 푸른 바늘잎나무 한 종류입니다. 일본 이세 신궁은 20년마다 옆 터에 신전을 똑같이 새로 짓습니다. 처음부터 그 재목으로 쓴 나무가 이 나무이고, 기소 지방에서 자라 이 일에 쓰이는 것은 '신의 나무'라 불립니다. 나라의 옛 절 호류지도 이 나무로 지었습니다. 이 나무는 무엇일까요?",
+    "answer": "편백",
+    "acceptedAnswers": [
+     "편백나무",
+     "히노키",
+     "히노끼"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "목재는 레몬 향이 나고 잘 썩지 않아 일본에서는 궁궐과 노 극장, 탁구 라켓의 판에도 쓴다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "이세 신궁 · 기소 지방 '신의 나무' · 호류지",
+     "difWhy": "4 — 히노키(편백) vs 삼나무 헷갈림 · 이걸 어떻게 알아",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 식물·건축 세부",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "잎과 목재에 피톤치드가 많아 숲 치유·베개·도마 재료로 인기이고, 향이 좋아 목욕통으로도 이름난 나무다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "일본 원산 측백나뭇과 늘푸른 바늘잎나무(hinoki) — 피톤치드·편백숲",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "편백숲·피톤치드 인기",
+     "piece": "f09",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '늘 푸른 바늘잎나무'가 끝 ○○(나무)와 일치. 이후는 단서 나열."
+    },
+    "blindQuestion": {
+     "guess": "편백",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "편백나무",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "편백",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:j20-1",
+      "answer": "녹나무",
+      "verdict": "diff",
+      "why": "편백(이세 신궁·호류지)은 녹나무·소나무·주목·느티나무·메타세쿼이아와 다른 나무다"
+     },
+     {
+      "old": "3806",
+      "answer": "소나무",
+      "verdict": "diff",
+      "why": "편백(이세 신궁·호류지)은 녹나무·소나무·주목·느티나무·메타세쿼이아와 다른 나무다"
+     },
+     {
+      "old": "6041",
+      "answer": "주목",
+      "verdict": "diff",
+      "why": "편백(이세 신궁·호류지)은 녹나무·소나무·주목·느티나무·메타세쿼이아와 다른 나무다"
+     },
+     {
+      "old": "g032b:g032b-j28-11",
+      "answer": "느티나무",
+      "verdict": "diff",
+      "why": "편백(이세 신궁·호류지)은 녹나무·소나무·주목·느티나무·메타세쿼이아와 다른 나무다"
+     },
+     {
+      "old": "5106",
+      "answer": "메타세쿼이아",
+      "verdict": "diff",
+      "why": "편백(이세 신궁·호류지)은 녹나무·소나무·주목·느티나무·메타세쿼이아와 다른 나무다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ise_Grand_Shrine",
+     "https://en.wikipedia.org/wiki/Chamaecyparis_obtusa",
+     "https://ko.wikipedia.org/wiki/이세_신궁",
+     "https://ko.wikipedia.org/wiki/편백"
+    ],
+    "facts": [
+     {
+      "claim": "이세 신궁은 20년마다 옆 터에 새로 짓는다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ise_Grand_Shrine",
+      "note": "old shrines are dismantled and new ones built on an adjacent site to exacting specifications every 20 years"
+     },
+     {
+      "claim": "처음에 편백(히노키)으로 지었다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ise_Grand_Shrine",
+      "note": "Initially, the shrine was constructed of locally sourced Hinoki wood"
+     },
+     {
+      "claim": "기소 히노키 = 신의 나무(고신보쿠) · 호류지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chamaecyparis_obtusa",
+      "note": "Horyuji Temple and Osaka Castle are built from hinoki wood. The hinoki grown in Kiso, used for building Ise Shrine, are called 御神木 go-shin-boku, or \"divine trees\"."
+     },
+     {
+      "claim": "20년마다 새로 짓는다(2)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이세_신궁",
+      "note": "20년에 한번씩 신궁을 새로 짓는데, 이를 \"식년천궁\""
+     },
+     {
+      "claim": "피톤치드 · 도마 · 일본어 히노키",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/편백",
+      "note": "편백나무에는 피톤치드라는 천연 항균물질이 다량 함유되어 있어 … 최근 도마 재질로 많이 사용 / 일본어로는 히노끼(히노키)"
+     },
+     {
+      "claim": "욕조 · 궁궐 · 노 극장 · 탁구 라켓 · 레몬 향 · 썩지 않음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Chamaecyparis_obtusa",
+      "note": "used as a material for building palaces, temples, shrines, traditional noh theatres, baths, table tennis blades and masu. The wood is lemon-scented … highly rot-resistant"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/편백"
+    ],
+    "hintNote": null,
+    "easiestCue": "이세 신궁·호류지 재목 — 일본 건축을 아는 사람은 '히노키'로 바로 감(변형으로 받음)",
+    "worthWhyGen": "익숙한 나무가 일본 신궁 건축의 재목이라는 이야기 · 힌트로 피톤치드 쓰임 — 2",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '바늘잎나무' — 예",
+     "unique": "이세 신궁·호류지 재목 → 편백(삼나무와는 '신궁 재목'으로 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-20"
+   }
+  },
+  {
+   "seedId": "plants/1#g032b-g032b-j28-11",
+   "seed": {
+    "subject": "느티나무",
+    "aspect": null,
+    "ref": "g032b-j28-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "예부터 한국에서 마을 어귀나 정자 곁에 심어, 마을을 지켜 주는 나무로 여겨 온 활엽수입니다. 가지가 넓게 퍼져 그늘이 깊고, 팽나무와 함께 대표적인 정자나무로 꼽힙니다. 1989년 산림청 조사에서 500살 넘은 나무 가운데 가장 많았던 이 나무는?",
+    "answer": "느티나무",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "천연기념물로 지정된 것만 열 그루가 넘고, 오래된 것은 나이가 천 년을 넘는 것으로 추정된다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "팽나무와 함께 대표적인 정자나무 · 마을 어귀",
+     "difWhy": "3 — 정자나무 설명 → 이름, 팽나무와 헷갈림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 식물 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "한반도가 원산인 느릅나무과의 큰 낙엽수로, 마을 사람들이 당산나무로 모시고 제를 올리던 나무다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "마을 정자나무로 흔한 한국의 큰 낙엽 활엽수(Zelkova serrata)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "정자나무로 익숙한 이름",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '마을 어귀에 심는 활엽수', 끝 ○○ '이 나무' 일치"
+    },
+    "blindQuestion": {
+     "guess": "느티나무",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "느티나무",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "느티나무",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:j20-3",
+      "answer": "편백",
+      "verdict": "diff",
+      "why": "느티나무 vs 편백 — 다른 나무"
+     },
+     {
+      "old": "g032a:g032a-j28-11",
+      "answer": "닥나무",
+      "verdict": "diff",
+      "why": "느티나무 vs 닥나무 — 다른 나무"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/느티나무",
+     "https://en.wikipedia.org/wiki/Zelkova_serrata"
+    ],
+    "facts": [
+     {
+      "claim": "마을을 지키는 상징 · 가지 넓게 퍼져 그늘 · 정자 근처 · 정자나무",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/느티나무",
+      "note": "한민족은 예부터 오래된 느티나무를 마을을 지켜주는 상징으로 여겨 왔다. 가지가 넓게 퍼지는 특성이 있어 그늘이 많아 정자 근처에 많이 심었다. 느티나무, 팽나무, 은행나무를 6대 정자나무라고 말한다."
+     },
+     {
+      "claim": "마을 보호 상징 · 정자 곁 · 1989 산림청 500년 이상 최다",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zelkova_serrata",
+      "note": "In Korea, Zelkova serrata has been considered a symbol of protection for villages since ancient times ... The trees often stand next to small pavilions ... According to data investigated by Korea Forest Service in 1989, the largest number of trees over 500 years old were specimens of Zelkova serrata"
+     },
+     {
+      "claim": "한반도 원산 · 느릅나무과 교목 · 나무에 기도·제물 의례",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/느티나무",
+      "note": "느티나무는 장미문의 느릅나무과의 교목이다. 느티나무는 한반도가 원산지이다. (en: spaces for traditional rituals and ceremonies involving prayer and offerings to the tree)"
+     },
+     {
+      "claim": "천연기념물 10그루 이상 · 1000년 넘는 것 추정",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zelkova_serrata",
+      "note": "The oldest of these trees are estimated to be in excess of 1,000 years in age, and are protected as natural monuments by Korean law. ... among which more than ten have been registered as Natural Monuments of Korea."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/느티나무",
+     "https://en.wikipedia.org/wiki/Zelkova_serrata"
+    ],
+    "hintNote": null,
+    "easiestCue": "마을 어귀 정자나무 · 마을을 지키는 나무",
+    "worthWhyGen": "동네마다 보는 정자나무의 이름 — 일반 상식",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '활엽수' 예",
+     "unique": "500살 넘은 나무 최다 + 팽나무와 함께 정자나무 — 느티나무(은행나무와 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

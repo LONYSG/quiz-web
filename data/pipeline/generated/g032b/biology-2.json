@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "biology/2",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/2#g032b-g032b-j15-9",
+   "seed": {
+    "subject": "루시",
+    "aspect": null,
+    "ref": "g032b-j15-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1974년 11월 에티오피아 하다르에서 약 320만 년 전 인류 조상의 화석이 나왔습니다. 뼈 수백 조각이 한 개체 뼈대의 40%쯤 되었고, 골반 모양으로 보아 여성이었습니다. 발굴 첫날 밤 캠프에서 비틀스의 1967년 노래가 녹음기로 되풀이해 흘렀고, 그 노래 제목에서 별명이 붙었습니다. 이 화석의 별명은?",
+    "answer": "루시",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "에티오피아에서는 '너는 놀랍다'는 뜻의 '딩크네시'라 부르며, 진품은 미국 순회 전시를 마치고 2013년 에티오피아로 돌아갔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "비틀스의 1967년 노래 제목에서 별명이 붙은 화석",
+     "difWhy": "3 — 루시는 유명하나 설명에서 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 인류 진화 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "오스트랄로피테쿠스 아파렌시스의 화석으로, 뇌는 작은데 두 발로 곧게 걸어 직립 보행이 뇌가 커지기보다 먼저였음을 보여 준다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1974년 에티오피아에서 발견된 오스트랄로피테쿠스 화석 별명",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "교과서·박물관 화석",
+     "piece": "f01",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '인류 조상의 화석'이 끝 ○○(화석)와 일치. 문장마다 화석 이야기."
+    },
+    "blindQuestion": {
+     "guess": "루시",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "루시",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "루시",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2446",
+      "answer": "카혼",
+      "verdict": "diff",
+      "why": "화석 루시 vs 카혼 타악기 — 이름만 겹침"
+     },
+     {
+      "old": "6139",
+      "answer": "반딧불이",
+      "verdict": "diff",
+      "why": "화석 루시 vs 반딧불이 — 무관"
+     },
+     {
+      "old": "6777",
+      "answer": "한니발",
+      "verdict": "diff",
+      "why": "화석 루시 vs 한니발 — 무관"
+     },
+     {
+      "old": "4211",
+      "answer": "도비",
+      "verdict": "diff",
+      "why": "화석 루시 vs 도비 — 무관"
+     },
+     {
+      "old": "1318",
+      "answer": "브라질리아",
+      "verdict": "diff",
+      "why": "화석 루시 vs 브라질리아 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)",
+     "https://en.wikipedia.org/wiki/Australopithecus_afarensis"
+    ],
+    "facts": [
+     {
+      "claim": "1974 하다르 · 320만 년 · 40% · 여성(골반)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)",
+      "note": "It was discovered in 1974 in Ethiopia, at Hadar ... lived around 3.2 million years ago ... 40% of a hominin skeleton was recovered ... Johanson assessed it as female based on the one complete pelvic bone"
+     },
+     {
+      "claim": "첫날 밤 비틀스 1967 노래를 녹음기로 틀어 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Australopithecus_afarensis",
+      "note": "On 24 November 1974, Johanson and graduate student Tom Gray discovered the extremely well-preserved skeleton AL 288–1, commonly referred to as \"Lucy\" (named after the 1967 Beatles song Lucy in the Sky with Diamonds which was playing on their tape recorder that evening)."
+     },
+     {
+      "claim": "작은 머리 · 두 발 보행 → 직립이 뇌 확대보다 먼저",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)",
+      "note": "The skeleton presents a small skull ... plus evidence of a walking-gait that was bipedal and upright ... supports the view of human evolution that bipedalism preceded increase in brain size."
+     },
+     {
+      "claim": "딩크네시 · 2013 반환",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)",
+      "note": "Dinkʼinesh (Amharic ... lit. 'you are marvellous') ... The original fossils were returned to Ethiopia in 2013"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)"
+    ],
+    "hintNote": null,
+    "easiestCue": "1974년 에티오피아 인류 조상 화석 · 비틀스 노래",
+    "worthWhyGen": "가장 유명한 인류 화석 이름이 비틀스 노래에서 왔다는 유래(3)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '화석' 예",
+     "unique": "AL 288-1 별명 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 173자"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

@@ -1,0 +1,286 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "popular-music/3",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/3#g032b-g032b-j08-4",
+   "seed": {
+    "subject": "위켄드",
+    "aspect": null,
+    "ref": "g032b-j08-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "에티오피아 이민자 가정에서 태어난 캐나다 가수 에이블 테스페이의 예명입니다. 열일곱 살에 학교를 그만두고 토론토 파크데일 동네로 옮겨 간 날에서 따왔습니다. 캐나다에 이미 같은 이름의 록 밴드가 있어, 상표 문제를 피하려고 철자 한 글자를 뺐습니다. 이 예명은?",
+    "answer": "위켄드",
+    "acceptedAnswers": [
+     "더 위켄드"
+    ],
+    "originalTitleVariants": [
+     "The Weeknd",
+     "Weeknd"
+    ],
+    "explanation": "빠진 글자는 영어 낱말 끝의 e이며, 그는 2023년 이 예명을 내려놓고 본명으로 활동하겠다는 뜻을 밝혔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "에티오피아 이민자 가정 캐나다 가수 에이블 테스페이의 예명",
+     "difWhy": "3 — 가수 이름 아는 사람은 바로, 철자 한 글자 뺀 단서",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 가수 예명 이름 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "'Blinding Lights'·'Starboy'를 부른 가수로, 2021년 미국 슈퍼볼 하프타임 쇼 무대에 섰다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'Blinding Lights'의 캐나다 R&B 가수",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "Blinding Lights 인기로 팝 팬은 앎",
+     "piece": "f08",
+     "genPct": 50
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "더 위켄드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "위켄드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "위켄드",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Weeknd",
+     "https://ko.wikipedia.org/wiki/위켄드"
+    ],
+    "facts": [
+     {
+      "claim": "17세 자퇴 · 파크데일로 이사한 날에서 예명 · 캐나다 밴드 the Weekend 상표 피해 e 뺌",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Weeknd",
+      "note": "At seventeen, Tesfaye dropped out of school and relocated to an apartment in the neighbourhood of Parkdale ... He adopted his stage name because he moved to Parkdale on a weekend; he removed the last 'e' in 'weekend' to avoid trademark issues with the Canadian pop rock band the Weekend."
+     },
+     {
+      "claim": "에티오피아 이민자 부모 · 캐나다 가수",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Weeknd",
+      "note": "known by his stage name the Weeknd, is a Canadian singer ... The only child of Ethiopian immigrants Makkonen Tesfaye and Samrawit Hailu"
+     },
+     {
+      "claim": "위켄드(The Weeknd)는 캐나다 가수",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/위켄드",
+      "note": "위켄드(The Weeknd, 1990 - )는 캐나다의 가수이다."
+     },
+     {
+      "claim": "Starboy · Blinding Lights · 슈퍼볼 LV 하프타임",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/The_Weeknd",
+      "note": "Starboy (2016) ... performed \"Blinding Lights\" ... Super Bowl LV halftime show ... February 7, 2021, as the Weeknd Day to commemorate Tesfaye's Super Bowl halftime performance."
+     },
+     {
+      "claim": "2023년 예명 은퇴 뜻",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Weeknd",
+      "note": "On May 8, Tesfaye stated that he was intending to retire the moniker of \"the Weeknd\" in favor of performing under his birth name"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/The_Weeknd"
+    ],
+    "hintNote": null,
+    "easiestCue": "에이블 테스페이의 예명(본명을 아는 사람만)",
+    "worthWhyGen": "유명 가수 예명의 유래와 철자가 이상한 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '예명' 예",
+     "unique": "예명 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-08",
+    "discarded": "알가치 1 (고유명사 · 가수 예명 이름 확인)"
+   }
+  },
+  {
+   "seedId": "popular-music/3#g032b-g032b-j17-8",
+   "seed": {
+    "subject": "리한나",
+    "aspect": null,
+    "ref": "g032b-j17-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "카리브해의 섬나라 바베이도스 출신 여성 가수입니다. 2021년 이 나라 총리 미아 모틀리가 그를 '국가 영웅'으로 선포했습니다. 2017년에는 자기 성을 딴 화장품 브랜드 '펜티 뷰티'를 세웠고, 여성 음악가로는 처음 억만장자가 되었습니다. 이 가수는 누구일까요?",
+    "answer": "리한나",
+    "acceptedAnswers": [
+     "리아나",
+     "Rihanna"
+    ],
+    "originalTitleVariants": [
+     "Rihanna"
+    ],
+    "explanation": "본명은 로빈 리애나 펜티다. 영어 철자를 그대로 읽은 '리한나'가 한국에서 굳은 이름이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "바베이도스 출신 · 펜티 뷰티 · 억만장자",
+     "difWhy": "2 — 펜티 뷰티 단서 · 설명→이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 대중 가수 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "2007년 제이지와 부른 'Umbrella'로 빌보드 핫 100 1위에 오르고, 2023년 슈퍼볼 하프타임 쇼를 이끈 가수다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "바베이도스 출신 팝 가수('Umbrella')",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "Umbrella로 유명한 세계적 팝스타",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '여성 가수'가 있고 끝 ○○(가수)와 일치"
+    },
+    "blindQuestion": {
+     "guess": "리한나",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "리한나",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "리한나",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6398",
+      "answer": "빌리 아일리시",
+      "verdict": "diff",
+      "why": "리한나 vs 빌리 아일리시 — 다른 가수"
+     },
+     {
+      "old": "g032b:g032b-j08-4",
+      "answer": "위켄드",
+      "verdict": "diff",
+      "why": "리한나 vs 위켄드 — 다른 가수"
+     },
+     {
+      "old": "5578",
+      "answer": "브루노 마스",
+      "verdict": "diff",
+      "why": "리한나 vs 브루노 마스 — 다른 가수"
+     },
+     {
+      "old": "222",
+      "answer": "아델",
+      "verdict": "diff",
+      "why": "리한나 vs 아델 — 다른 가수"
+     },
+     {
+      "old": "5577",
+      "answer": "에이미 와인하우스",
+      "verdict": "diff",
+      "why": "리한나 vs 에이미 와인하우스 — 다른 가수"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rihanna",
+     "https://ko.wikipedia.org/wiki/리한나"
+    ],
+    "facts": [
+     {
+      "claim": "2018년 바베이도스 대사 · 2021년 국가 영웅 · 펜티 뷰티 · 여성 음악가 첫 억만장자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rihanna",
+      "note": "The first female musician to achieve billionaire status, Rihanna founded the nonprofit Clara Lionel Foundation, the cosmetics brand Fenty Beauty ... declared a National Hero of Barbados in 2021. / Prime Minister Mia Mottley declared Rihanna a National Hero / In 2017, Rihanna launched her cosmetics line Fenty Beauty"
+     },
+     {
+      "claim": "본명 Robyn Rihanna Fenty · 바베이도스 · 펜티 뷰티 설립",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/리한나",
+      "note": "펜티(영어: Robyn Rihanna Fenty ...)는 리아나(영어: Rihanna ..., 대한민국에서 영어 철자를 그대로 발음한 '리한나'로 알려져 있음) ... 펜티 뷰티, 그리고 LVMH 산하에서 패션 브랜드 펜티를 설립 ... 바베이도스 정부로부터 대사로 임명"
+     },
+     {
+      "claim": "Umbrella(제이지 피처링) 핫 100 1위 7주 · 2023년 2월 슈퍼볼 LVII 하프타임",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Rihanna",
+      "note": "The lead single from Good Girl Gone Bad was \"Umbrella\", featuring Jay-Z. It topped the charts ... spending ten and seven consecutive weeks at number one on the UK Singles Chart and Billboard Hot 100 ... On February 12, 2023, she headlined the Super Bowl LVII"
+     },
+     {
+      "claim": "본명 · 한국 표기 리한나",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/리한나",
+      "note": "대한민국에서 영어 철자를 그대로 발음한 '리한나'로 알려져 있음"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Rihanna"
+    ],
+    "hintNote": null,
+    "easiestCue": "바베이도스 출신 여성 가수 — 출신지를 아는 사람만",
+    "worthWhyGen": "세계적 팝스타의 출신지와 사업가로서의 면모(취미 영역 세부 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '여성 가수' 예",
+     "unique": "바베이도스 국가 영웅 가수 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 빌보드 핫 100"
+    ],
+    "job": "job-17"
+   }
+  }
+ ]
+}

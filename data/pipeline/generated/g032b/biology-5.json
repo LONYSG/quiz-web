@@ -1,0 +1,238 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "biology/5",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/5#g032b-g032b-j19-11",
+   "seed": {
+    "subject": "타감작용",
+    "aspect": null,
+    "ref": "g032b-j19-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "식물들 사이에서 일어나는 현상입니다. 기원전 300년 무렵 테오프라스토스는 비름이 자주개자리의 자람을 막는다고 적었습니다. 북아메리카의 흑호두나무는 잎과 뿌리에서 주글론을 내어 여러 식물을 잘 자라지 못하게 합니다. 1937년 오스트리아 식물학자 한스 몰리슈가 이름 붙인 이 현상은?",
+    "answer": "타감작용",
+    "acceptedAnswers": [
+     "알렐로파시"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "다만 흑호두나무의 효과도 증거 대부분이 실험실 결과라, 들판에서 얼마나 힘을 쓰는지는 아직 논란이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "잎과 뿌리에서 주글론을 내어 여러 식물을 잘 자라지 못하게 하는 현상",
+     "difWhy": "4 — 정의 → 학교 생물 용어 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 생물 개념",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 22",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "한 식물이 뿌리·잎 등에서 화학 물질을 내보내 이웃 식물의 싹트기와 자람을 막는 일로, 많은 침입 식물이 퍼지는 비결로도 꼽힌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "식물이 화학 물질을 내어 이웃 식물의 발아·생장을 막는 현상(allelopathy)",
+    "familiarity": {
+     "judge": 1,
+     "pct": 22,
+     "why": "생물 전문 용어",
+     "piece": "f07",
+     "genPct": 35
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "타감작용",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Allelopathy",
+     "https://ko.wikipedia.org/wiki/타감작용",
+     "https://en.wikipedia.org/wiki/Juglone"
+    ],
+    "facts": [
+     {
+      "claim": "1937 오스트리아 한스 몰리슈 처음 씀 · 테오프라스토스 기원전 300년 비름 → 알팔파",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Allelopathy",
+      "note": "was first used in 1937 by the Austrian professor Hans Molisch ... Theophrastus, who lived around 300 BCE noticed the inhibitory effects of pigweed on alfalfa."
+     },
+     {
+      "claim": "1937 몰리쉬 정립 · 흑호두나무 주글론",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/타감작용",
+      "note": "1937년 한스 몰리쉬(Hans Molisch)가 정립한 원래 개념은 ... 흑호두나무(흑호두나무)는 타감 물질인 주글론을 생성하는데"
+     },
+     {
+      "claim": "주글론 잎·뿌리 등 · 여러 식물 생장 저해",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Juglone",
+      "note": "Juglone occurs naturally in the leaves, roots, husks, fruit (the epicarp), and bark of plants in the Juglandaceae family, particularly the black walnut (Juglans nigra), and is toxic or growth-stunting to many types of plants."
+     },
+     {
+      "claim": "발아·생장 억제 화학물질 · 침입 식물 성공 요인",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Allelopathy",
+      "note": "certain species release chemical compounds into the environment that inhibit the germination, growth, or reproduction of neighboring organisms ... thought to be important in the success of many invasive plants."
+     },
+     {
+      "claim": "주글론 증거 대부분 실험실 · 야외 영향 논란",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Allelopathy",
+      "note": "most of the evidence for allelopathic effects of juglone comes from laboratory assays, and it thus remains controversial to what extent juglone affects the growth of competitors under field conditions."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Allelopathy",
+     "https://ko.wikipedia.org/wiki/타감작용"
+    ],
+    "hintNote": null,
+    "easiestCue": "다른 식물의 자람을 막는 현상(예 둘)",
+    "worthWhyGen": "교과 생물 개념 — 식물도 화학 무기로 다툰다(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '현상' 예",
+     "unique": "몰리슈 1937 이름 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19",
+    "discarded": "친숙도 1 (pct 22 · 생물 전문 용어)"
+   }
+  },
+  {
+   "seedId": "biology/5#g032b-g032b-j23-3",
+   "seed": {
+    "subject": "고로쇠나무",
+    "aspect": null,
+    "ref": "g032b-j23-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이른 봄, 밤에는 얼고 낮에는 녹는 날이 이어지면 이 나무의 줄기에 구멍을 뚫어 수액을 받아 마십니다. 도선국사가 이 나무의 수액을 마시고 굳은 무릎이 펴졌다 하여 '뼈에 이로운 나무(골리수)'라 불렀다는 이야기가 전합니다. 단풍나무 무리인 이 나무는?",
+    "answer": "고로쇠나무",
+    "acceptedAnswers": [
+     "고로쇠"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "낮 기온이 영하 위로 오르면 겨우내 뿌리에 저장해 둔 당분이 줄기를 타고 올라와, 달큼한 수액이 흘러나옵니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "이른 봄 줄기에 구멍을 뚫어 수액을 받아 마십니다",
+     "difWhy": "2 — 수액 마시는 나무 단서에서 이름 한 번 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래(골리수)와 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "캐나다의 메이플 시럽 나무와 같은 무리인 한국 산의 나무로, 봄철 건강 음료가 되는 수액으로 이름났다",
+    "generalHintVersion": "hint-v7",
+    "identity": "봄에 수액을 받아 마시는 한국의 단풍나무 무리 나무",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "고로쇠 수액으로 뉴스·마트에서 접함",
+     "piece": "f06",
+     "genPct": 88
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '이 나무의 줄기'로 나무임이 바로 나옴. 끝 ○○ '나무'와 같음."
+    },
+    "blindQuestion": {
+     "guess": "고로쇠나무",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "고로쇠나무",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "고로쇠나무",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/고로쇠나무",
+     "https://en.wikipedia.org/wiki/Maple_syrup"
+    ],
+    "facts": [
+     {
+      "claim": "수액을 받아 마심 · 골리수 유래 · 도선국사 무릎",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/고로쇠나무",
+      "note": "수액을 받아서 음료로 마시거나 농축시켜서 시럽으로 만들어 먹는다. … 도선국사가 좌선을 마치고 일어서는데 무릎이 펴지지 않았다. … 수액이 떨어지는 것을 보고 받아 마시니 무릎이 펴지고 원기가 회복되었다고 한다. 그래서 이 나무를 뼈에 유익한 나무라는 뜻으로 골리수(骨利樹)라고 부르기 시작하였다."
+     },
+     {
+      "claim": "단풍나무속 수액은 봄의 얼고 녹는 순환에 나옴 · 낮 영상일 때 흐름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Maple_syrup",
+      "note": "they require less extreme diurnal temperature changes to trigger freeze–thaw cycles … the sap flows during the day when the temperature is above freezing."
+     },
+     {
+      "claim": "뿌리에 저장한 당분이 줄기로 올라옴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Maple_syrup",
+      "note": "During the day, sucrose stored in the roots for the winter rises through the trunk as sugary sap."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/고로쇠나무",
+     "https://en.wikipedia.org/wiki/Maple_syrup"
+    ],
+    "hintNote": null,
+    "easiestCue": "이른 봄 줄기에 구멍을 뚫어 수액을 받아 마시는 나무",
+    "worthWhyGen": "알가치 3 — 생활 상식(봄 수액)과 이름 유래(골리수)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '이 나무의 줄기' — 나무임이 바로 보임",
+     "unique": "봄 수액을 마시는 단풍나무 무리 — 자작나무 수액과는 '단풍나무 무리'로 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

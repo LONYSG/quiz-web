@@ -1,0 +1,408 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "economy/2",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/2#g032b-g032b-j03-2",
+   "seed": {
+    "subject": "페소",
+    "aspect": null,
+    "ref": "g032b-j03-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 화폐 단위의 약자가 달러 기호 '$'의 뿌리라는 설이 가장 널리 받아들여집니다. 18세기 말 손으로 쓴 장부에서 그 약자의 두 글자가 차츰 겹쳐 지금 모양이 되었다는 것입니다. 1792년 미국 달러가 값을 맞춘 스페인 은화를 세던 이 단위는?",
+    "answer": "페소",
+    "acceptedAnswers": [
+     "스페인 페소"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "필리핀은 이 화폐에 '₱' 기호를 따로 쓰지만 멕시코 등은 지금도 '$'를 씁니다. 은화 한 닢이 8레알이라 영어로 '피스 오브 에이트'라고도 불렀습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1792년 미국 달러가 값을 맞춘 스페인 은화를 세던 단위",
+     "difWhy": "3 — 달러 기호 유래, 단위 이름 떠올리기",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 기호의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "지금도 멕시코·아르헨티나·칠레·필리핀처럼 옛 스페인 식민지였던 나라들이 쓰는 화폐 이름이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "스페인·중남미 은화의 단위, 오늘날 멕시코 등의 화폐 이름",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "멕시코·필리핀 화폐로 들어봄",
+     "piece": "f09",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '화폐 단위의 약자'가 끝 ○○(단위)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "페소",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "페소",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "페소",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1157",
+      "answer": "헤라클레이토스",
+      "verdict": "diff",
+      "why": "새 정답 페소의 지식(유래·사실)과 옛 정답 헤라클레이토스의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "936",
+      "answer": "리디노미네이션",
+      "verdict": "diff",
+      "why": "새 정답 페소의 지식(유래·사실)과 옛 정답 리디노미네이션의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Dollar_sign",
+     "https://ko.wikipedia.org/wiki/달러_기호"
+    ],
+    "facts": [
+     {
+      "claim": "$는 ps(페소) 약자에서 왔다는 설이 가장 널리 받아들여짐 · 18세기 말 필사본에서 s가 p 위에 겹쳐짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dollar_sign",
+      "note": "The most widely accepted theory holds that ... the dollar sign developed out of an abbreviation for the Spanish and Spanish-American ps for pesos. A study of late 18th- and early 19th-century manuscripts shows that the s gradually came to be written over the p, developing into a close equivalent to the '$' mark."
+     },
+     {
+      "claim": "$는 18세기 말 스페인·멕시코 페소 표시로 처음 쓰임",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/달러_기호",
+      "note": "$는 18세기 말 스페인과 멕시코의 페소를 표시하기 위한 기호로 처음 쓰였다."
+     },
+     {
+      "claim": "1792년 주화법이 달러를 스페인 은화 값으로 정함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dollar_sign",
+      "note": "With the Coinage Act of 1792, the United States Congress created the U.S. dollar, defining \"each to be of the value of a Spanish milled dollar as the same is now current\""
+     },
+     {
+      "claim": "필리핀 페소는 ₱ · 피스 오브 에이트",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dollar_sign",
+      "note": "The sign is also generally used for the many currencies called \"peso\" (except the Philippine peso, which uses the symbol \"₱\"). ... the Spanish American peso, also known as \"Spanish dollar\" or \"piece of eight\""
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Dollar_sign"
+    ],
+    "hintNote": null,
+    "easiestCue": "스페인 은화의 단위",
+    "worthWhyGen": "매일 보는 $ 기호가 왜 그 모양인지",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '화폐 단위' 예",
+     "unique": "스페인 은화의 단위 — 레알과 갈림: 1792 달러 기준 은화(8레알 한 닢)를 세는 단위 · 약자 두 글자",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 필리핀"
+    ],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "economy/2#g032b-g032b-j19-5",
+   "seed": {
+    "subject": "환",
+    "aspect": null,
+    "ref": "g032b-j19-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "대한민국의 옛 화폐 단위입니다. 6·25 전쟁 중이던 1953년 2월 15일, 정부는 치솟는 물가를 잡으려고 100원을 새 단위 1로 바꾸었습니다. 1962년 6월 다시 10 대 1의 비율로 '원'이 돌아올 때까지 9년 남짓 쓰인 이 단위는?",
+    "answer": "환",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 단위의 10·50 주화는 원으로 바뀐 뒤에도 1975년 3월까지 1원·5원 노릇을 했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "1953년 100원을 1로 / 1962년 원으로 돌아옴",
+     "difWhy": "4 — 환 화폐 단위 옛 사실 · 숫자 단서 · 세대 밖",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 숫자 — 화폐 역사 사실",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 2,
+     "worthKind": "숫자"
+    },
+    "generalHint": "1950년대 지폐에 적힌 돈 단위로, 1959년 처음 나온 10·50·100 짜리 동전은 미국 필라델피아 조폐국이 찍었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1953~1962년 대한민국 화폐 단위",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "옛 화폐 단위, 사극·교과서",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '옛 화폐 단위' 가 끝 ○○ '단위' 와 일치 · 짧고 사건 순서대로 서술"
+    },
+    "blindQuestion": {
+     "guess": "환",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "환",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "환",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6581",
+      "answer": "달러",
+      "verdict": "diff",
+      "why": "옛 화폐 환 vs 달러 기호 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/대한민국_환",
+     "https://en.wikipedia.org/wiki/South_Korean_hwan"
+    ],
+    "facts": [
+     {
+      "claim": "1953.2.15 ~ 1962.6.9 · 6·25 여파 물가 급등 · 100원 → 1",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_환",
+      "note": "환(圜)은 1953년 2월 15일부터 1962년 6월 9일까지 사용되던 대한민국의 통화 단위이다. ... 6.25 전쟁의 여파로 ... 물가가 급등하는 등 ... 1953년 2월 15일 화폐 단위를 원(圓)에서 환으로 변경(100원(圓) → 1환) 하는 긴급통화조치를 단행하였다."
+     },
+     {
+      "claim": "1 hwan = 100 won · 1962 1 won = 10 hwan",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/South_Korean_hwan",
+      "note": "the hwan was introduced in 1953 at the rate of 1 hwan = 100 won ... In 1962, the second South Korean won was reintroduced at a rate of 1 won = 10 hwan"
+     },
+     {
+      "claim": "1959년 10·50·100 동전 · 필라델피아",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_환",
+      "note": "1959년에 10환, 50환, 100환 동전을 소개했다.이 당시에는 한국의 제조기술이 부족해서 미국 필라델피아민트에서 주조하였다."
+     },
+     {
+      "claim": "10·50 동전 1975.3.22까지 1원·5원으로 통용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/South_Korean_hwan",
+      "note": "The 10 and 50 hwan coins continued to circulate until March 22, 1975, accepted as if it were 1 and 5 won coins, respectively."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/대한민국_환",
+     "https://en.wikipedia.org/wiki/South_Korean_hwan"
+    ],
+    "hintNote": null,
+    "easiestCue": "1953~1962 대한민국 옛 화폐 단위",
+    "worthWhyGen": "옛 영화·어른들 말에 나오는 돈 단위의 정체와 화폐 개혁 — 한국 생활사",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '화폐 단위' 예",
+     "unique": "1953~1962 대한민국 단위 — 하나(질문에 '환' 글자 없음 확인)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  },
+  {
+   "seedId": "economy/2#g032b-g032b-j23-12",
+   "seed": {
+    "subject": "엽전",
+    "aspect": null,
+    "ref": "g032b-j23-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "조선의 상평통보처럼 둥글고 납작하며 가운데 네모난 구멍이 뚫린 옛 놋쇠 돈을 통틀어 부르는 말입니다. 거푸집에서 꺼내면 나뭇가지에 잎이 달린 것처럼 붙어 나왔다 하여 이런 이름이 붙었다고 합니다. 이 옛 동전은?",
+    "answer": "엽전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "우리나라에서는 996년 고려 성종 때 건원중보를 처음 만들었고, 뒤에 상평통보·대동전 등이 나왔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "상평통보처럼 둥글고 가운데 네모난 구멍이 뚫린 옛 놋쇠 돈",
+     "difWhy": "1 — 엽전은 누구나 앎",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름 유래 일상 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "옛 주막에서 '한 냥, 두 냥' 세어 내던 쇠붙이 돈으로, 구멍에 끈을 꿰어 꾸러미로 들고 다녔다",
+    "generalHintVersion": "hint-v7",
+    "identity": "가운데 네모 구멍이 뚫린 옛 동전",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "사극·교과서 옛 돈",
+     "piece": "f07",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '옛 놋쇠 돈'(끝 ○○=동전) 이 있고 둘째 문장은 이름 유래라 한 번에 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "엽전",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "엽전",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "엽전",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3694",
+      "answer": "신중현",
+      "verdict": "diff",
+      "why": "엽전 vs 신중현 펜더 기타 — 무관"
+     },
+     {
+      "old": "432",
+      "answer": "상평통보",
+      "verdict": "same",
+      "why": "엽전 vs 상평통보 — 상평통보↔엽전 단서와 정답만 뒤집은 같은 사실(상평통보는 엽전)"
+     },
+     {
+      "old": "1091",
+      "answer": "제기차기",
+      "verdict": "diff",
+      "why": "엽전 vs 제기차기 — 놀이 도구, 다른 지식"
+     },
+     {
+      "old": "6581",
+      "answer": "달러",
+      "verdict": "diff",
+      "why": "엽전 vs 달러 기호 — 다름"
+     },
+     {
+      "old": "5796",
+      "answer": "그레셤의 법칙",
+      "verdict": "diff",
+      "why": "엽전 vs 그레셤의 법칙 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/엽전",
+     "https://en.wikipedia.org/wiki/Cash_(Chinese_coin)"
+    ],
+    "facts": [
+     {
+      "claim": "놋쇠 · 둥글고 납작 · 가운데 네모 구멍 · 상평통보",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/엽전",
+      "note": "엽전(葉錢)은 놋쇠로 만든 옛날의 주화이다. 대체로 둥글고 납작하며 가운데 네모난 모양의 구멍이 있다. … 그 후 상평통보·팔방통보·대동전 등이 만들어졌다."
+     },
+     {
+      "claim": "거푸집에서 가지에 잎처럼 달려 나와 '잎 돈'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cash_(Chinese_coin)",
+      "note": "In Korea cash coins are known as yeopjeon (葉錢 \"leaf coins\") because of the way that they resemble leaves on a branch when they were being cast in the mould."
+     },
+     {
+      "claim": "끈에 꿰어 유통",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cash_(Chinese_coin)",
+      "note": "After this process, the coins were strung together and brought into circulation."
+     },
+     {
+      "claim": "996년 성종 건원중보",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/엽전",
+      "note": "한국에는 996년 성종때 최초로 건원중보를 주조하였다. 그 후 상평통보·팔방통보·대동전 등이 만들어졌다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cash_(Chinese_coin)"
+    ],
+    "hintNote": null,
+    "easiestCue": "가운데 네모 구멍이 뚫린 옛 놋쇠 돈",
+    "worthWhyGen": "알가치 3 — 누구나 아는 말의 이름 유래(잎 葉)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '옛 놋쇠 돈을 통틀어 부르는 말'",
+     "unique": "통틀어 부르는 말 — 상평통보(개별 이름)와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23",
+    "discarded": "중복 같은 지식 432 상평통보 — 엽전 vs 상평통보 — 상평통보↔엽전 단서와 정답만 뒤집은 같은 사실(상평통보는 엽전)"
+   }
+  }
+ ]
+}

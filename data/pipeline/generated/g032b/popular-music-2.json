@@ -1,0 +1,137 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "popular-music/2",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/2#g032b-g032b-j29-7",
+   "seed": {
+    "subject": "셀린 디옹",
+    "aspect": null,
+    "ref": "g032b-j29-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1988년 아일랜드 더블린에서 열린 유로비전 송 콘테스트에서 스위스 대표가 프랑스어 노래로 우승했습니다. 그 무대에 선 가수는 스위스 사람이 아니라 캐나다 퀘벡 출신이었습니다. 지금까지 프랑스어 노래로 우승한 마지막 가수인 그는 누구일까요?",
+    "answer": "셀린 디옹",
+    "acceptedAnswers": [
+     "셀린 디온"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "우승곡은 'Ne partez pas sans moi'로, '나를 두고 떠나지 마세요'라는 뜻이며 스위스의 두 번째 우승이었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "캐나다 퀘벡 출신 가수 · 1988 유로비전 스위스 대표",
+     "difWhy": "2 — 퀘벡 출신 가수 단서로 셀린 디옹",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 가수 이름 · 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "영화 '타이타닉' 주제가 'My Heart Will Go On'을 부른 가수다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "캐나다 퀘벡 출신 팝 가수(Celine Dion)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "타이타닉 주제가로 유명",
+     "piece": "f05",
+     "genPct": 80
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "셀린 디옹",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "셀린 디옹",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "셀린 디옹",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Eurovision_Song_Contest_1988",
+     "https://en.wikipedia.org/wiki/Ne_partez_pas_sans_moi",
+     "https://ko.wikipedia.org/wiki/셀린_디옹"
+    ],
+    "facts": [
+     {
+      "claim": "1988 더블린 · 스위스 우승 · 디옹이 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eurovision_Song_Contest_1988",
+      "note": "held on 30 April 1988 at the RDS Simmonscourt Pavilion in Dublin, Ireland … The winner was Switzerland with the song \"Ne partez pas sans moi\" … performed by Céline Dion. It was Switzerland's second contest win, and remains as of 2026 the last winning song to be performed in French."
+     },
+     {
+      "claim": "캐나다 가수 · 스위스 대표 · 마지막 프랑스어 우승",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ne_partez_pas_sans_moi",
+      "note": "a song recorded by Canadian singer Celine Dion … It represented Switzerland in the Eurovision Song Contest 1988, held in Dublin, where it won. It remains the most recent French-language entry to win the contest."
+     },
+     {
+      "claim": "퀘벡 출신",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/셀린_디옹",
+      "note": "캐나다 퀘벡주 사를마뉴의 빈곤한 가정에서 태어나"
+     },
+     {
+      "claim": "타이타닉 주제가",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/셀린_디옹",
+      "note": "1997년작 영화 《타이타닉》의 주제가인 〈My Heart Will Go On〉으로 세계적인 명성을 얻었다."
+     },
+     {
+      "claim": "곡 제목 뜻 · 스위스 두 번째 우승",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ne_partez_pas_sans_moi",
+      "note": "\"Ne partez pas sans moi\" (lit. 'Don't leave without me')"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/셀린_디옹"
+    ],
+    "hintNote": null,
+    "easiestCue": "프랑스어로 노래하는 캐나다 퀘벡 출신 가수",
+    "worthWhyGen": "세계적 가수의 잘 모르는 출발점(유로비전 · 스위스 대표)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장이 유로비전 장면 — 가수를 묻는다는 건 둘째 문장에서 드러남(약간 아쉬움)",
+     "unique": "1988 우승 가수 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 타이타닉"
+    ],
+    "job": "job-29",
+    "discarded": "알가치 1 (고유명사 · 가수 이름 · 일화)"
+   }
+  }
+ ]
+}

@@ -1,0 +1,379 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "animals/2",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/2#g032b-g032b-j05-5",
+   "seed": {
+    "subject": "물총새",
+    "aspect": null,
+    "ref": "g032b-j05-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 새의 부리는 일본 고속열차 신칸센 500계의 길쭉한 앞코의 본이 되었습니다. 빠른 열차가 터널에 들어가면 앞에서 눌린 공기가 반대쪽 출구에서 '쾅' 하는 굉음으로 터지는데, 이를 줄이려는 것이었습니다. 이 새가 물속으로 뛰어들 때 물보라가 거의 일지 않는 데서 착안했다고 합니다. 이 새는?",
+    "answer": "물총새",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 설계로 전력은 15% 덜 쓰고 속도는 10% 올렸다. 새끼에게 하루 50마리 안팎의 물고기를 잡아 먹인다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "물속으로 뛰어들 때 물보라가 거의 일지 않는 새",
+     "difWhy": "3 — 신칸센 일화에서 새를 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 일화 — 모방 설계 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "일화"
+    },
+    "generalHint": "청록빛 등과 주황빛 배를 가진 작은 새로, 냇가 가지에 앉았다가 쏜살같이 내리꽂혀 잡은 고기를 삼킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "물가에서 물속으로 내리꽂혀 물고기를 잡는 청록·주황빛 작은 새(kingfisher)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "동물 다큐·도감에서 접함",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한 새의 부리' 로 끝 ○○(새) 를 줌, 터널 굉음 문장이 길지만 인과가 한 줄"
+    },
+    "blindQuestion": {
+     "guess": "물총새",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "물총새",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "물총새",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:job-26-2",
+      "answer": "원앙",
+      "verdict": "diff",
+      "why": "물총새 신칸센 vs 원앙 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/500_Series_Shinkansen",
+     "https://en.wikipedia.org/wiki/Biomimetics",
+     "https://www.jrpass.com/blog/why-do-shinkansen-have-such-long-noses-the-design-story",
+     "https://ko.wikipedia.org/wiki/물총새"
+    ],
+    "facts": [
+     {
+      "claim": "500계 앞모양이 물총새 부리를 본뜸 · 소음 줄임 · 전력 15% 절감 · 속도 10%",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/500_Series_Shinkansen",
+      "note": "It used biomimicry to reduce energy consumption by 15%, increase speeds by 10% and reduce noise levels while increasing passenger comfort. This was done by designing the train's front to mimic the shape of a kingfisher's beak."
+     },
+     {
+      "claim": "500계 공기역학 설계가 물총새 부리를 본뜸",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Biomimetics",
+      "note": "The aerodynamics of streamlined design of improved Japanese high speed train Shinkansen 500 Series were modelled after the beak of Kingfisher bird."
+     },
+     {
+      "claim": "터널 출구 굉음(터널 붐) 문제 · 물총새가 물보라 적게 뛰어듦에서 착안",
+      "where": "q",
+      "url": "https://www.jrpass.com/blog/why-do-shinkansen-have-such-long-noses-the-design-story",
+      "note": "(WebSearch 요약) tunnel booms come from air pushed ahead of a fast train, which emerges at the far end as a loud pressure wave ... the kingfisher slicing into water with minimal splash"
+     },
+     {
+      "claim": "물속에 뛰어들어 물고기 사냥 · 하루 50여 마리 · 등 청색 광택",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/물총새",
+      "note": "빠른 속도로 물속에 뛰어들어서 물고기, 올챙이, 개구리 등을 잡아먹는다. ... 하루에 50여마리 정도의 물고기를 사냥한다. ... 몸통 윗면은 금속 광택이 나는 청색이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/물총새"
+    ],
+    "hintNote": null,
+    "easiestCue": "물에 뛰어드는 새 + 신칸센 앞코 — 생체모방 사례를 알면 풂(물에 뛰어드는 새는 여럿)",
+    "worthWhyGen": "고속열차 앞코가 왜 길쭉한가(터널 굉음 · 새 부리 본뜸) — 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '새' 예",
+     "unique": "신칸센 500계 본보기 새 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 164자"
+    ],
+    "job": "job-05"
+   }
+  },
+  {
+   "seedId": "animals/2#g032b-g032b-j19-12",
+   "seed": {
+    "subject": "가마우지",
+    "aspect": null,
+    "ref": "g032b-j19-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "새 이름이 들어간 한국 경제 용어가 있습니다. 경제학자 김영호가 1982년 일본 와세다 대학 심포지엄에서 처음 쓴 말입니다. 일본에서 부품·소재를 사다 완제품을 팔아도 남는 것이 적은 한국 경제를, 이 새를 부리는 옛 낚시법에 빗댔습니다. 이 새는?",
+    "answer": "가마우지",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "일본 기후현 나가라강에서는 이 새를 부려 은어를 잡는 일이 1,300년 동안 끊이지 않고 이어져 왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "부품·소재를 사다 팔아도 남는 것이 적은 · 새를 부리는 옛 낚시법",
+     "difWhy": "3 — 경제 용어 + 낚시법 새 → 가마우지",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 경제 용어 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "어부가 목 아래를 끈으로 묶어 큰 물고기를 삼키지 못하게 한 채 강에서 부리는 검은 물새다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "잠수해 물고기를 잡는 검은 물새(가마우지 낚시 · '가마우지 경제')",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "새 이름, 가마우지 경제 뉴스",
+     "piece": "f02",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○ 는 '새' 이고 첫 문장 '새 이름이 들어간 한국 경제 용어' 에 나온다."
+    },
+    "blindQuestion": {
+     "guess": "가마우지",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "가마우지",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "가마우지",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3362",
+      "answer": "따오기",
+      "verdict": "diff",
+      "why": "가마우지 경제 용어와 따오기 학명은 다른 새·다른 사실이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/가마우지_경제",
+     "https://en.wikipedia.org/wiki/Cormorant_fishing",
+     "https://ko.wikipedia.org/wiki/가마우지"
+    ],
+    "facts": [
+     {
+      "claim": "김영호 1982 와세다 100주년 심포지엄 처음 사용 · 일본 부품·소재 의존 구조 · 가마우지 낚시 비유",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/가마우지_경제",
+      "note": "해당 표현을 최초로 사용한 인물은 김영호 전 산업자원부 장관이다. 김영호 전 장관은 1982년에 열린 일본 와세다 대학 100주년 기념 심포지엄에서 가마우지 경제론을 주장하였다. ... 일본에서 부품과 소재를 구매하여 완제품을 판매하는 구조적 문제로 ... 가마우지 낚시에 비유적으로 표현한 어구이다."
+     },
+     {
+      "claim": "어부가 가마우지를 부리는 낚시(중국·일본)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cormorant_fishing",
+      "note": "Cormorant fishing is a traditional fishing technique in which fishermen use trained cormorants to catch fish in rivers. Historically, cormorant fishing has taken place in China and Japan"
+     },
+     {
+      "claim": "목 아래 올가미 · 큰 물고기 못 삼킴",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cormorant_fishing",
+      "note": "To control the birds, the fishermen tie a loose snare near the base of the bird's throat. The snare does not stop the bird from swallowing small fish, but prevents the bird from swallowing larger fish"
+     },
+     {
+      "claim": "몸 검은색 · 목을 밧줄로 묶어 어업",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/가마우지",
+      "note": "몸은 전체적으로 광택이 있는 검은색을 띠고 ... 어부들이 바다가마우지를 길들여, 물고기를 삼키지 못할 정도로 목을 밧줄로 묶은 다음"
+     },
+     {
+      "claim": "기후 나가라강 1,300년 · 은어",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cormorant_fishing",
+      "note": "The most famous location is Gifu, Gifu Prefecture, home to cormorant fishing on the Nagara River, which has continued uninterrupted for the past 1,300 years. ... enjoyed seeing cormorant fishing and eating ayu."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cormorant_fishing",
+     "https://ko.wikipedia.org/wiki/가마우지"
+    ],
+    "hintNote": null,
+    "easiestCue": "새 이름이 든 한국 경제 용어(대일 부품 의존)",
+    "worthWhyGen": "뉴스에 나오는 경제 말 '가마우지 경제'의 유래 — 일상에서 쓰는 말(19 §9-1 ③)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '새' 예",
+     "unique": "경제 용어 속 새 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-19"
+   }
+  },
+  {
+   "seedId": "animals/2#g032b-g032b-j26-2",
+   "seed": {
+    "subject": "꿩",
+    "aspect": null,
+    "ref": "g032b-j26-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 산과 들에 사는 텃새입니다. 우리말에서는 수컷을 '장끼', 암컷을 '까투리', 새끼를 '꺼병이'라고 따로 부릅니다. 용인·원주·하남이 시의 새로 삼은 이 새는 무엇일까요?",
+    "answer": "꿩",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1885년 거문도를 점령한 영국군이 상하이에서 들여와 풀어 놓은 무리가 '거문도꿩'으로 남았다고 전한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "수컷을 '장끼', 암컷을 '까투리'",
+     "difWhy": "2 — 장끼·까투리에서 이름 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 우리말 · 시의 새",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "닭과 같은 무리로 수컷은 붉은 얼굴에 긴 꼬리가 화려하며, 사냥감이자 만둣국·냉면 육수 고기로 쓰던 새다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "닭목 꿩과의 텃새(Phasianus colchicus)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "흔한 새, 속담",
+     "piece": "f07",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '텃새'가 끝 ○○(새)와 일치. 짧고 명확."
+    },
+    "blindQuestion": {
+     "guess": "꿩",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "꿩",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "꿩",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/꿩",
+     "https://ko.wikipedia.org/wiki/장끼전"
+    ],
+    "facts": [
+     {
+      "claim": "수컷 장끼 · 암컷 까투리 · 새끼 꺼병이 · 용인·원주·하남 시의 새",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/꿩",
+      "note": "꿩(학명: Phasianus colchicus)은 닭목 꿩과 꿩속에 속하는 텃새이다. 수컷은 장끼, 암컷은 까투리, 새끼는 꺼병이라고 한다. ... 다음의 지자체는 각각 꿩을 '시의 새'(市鳥)로 삼고 있다. 용인시 원주시 하남시"
+     },
+     {
+      "claim": "장끼·까투리 = 수꿩·암꿩(장끼전)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/장끼전",
+      "note": "엄동설한에 굶주림을 이기지 못한 장끼가 까투리의 만류를 듣지 않고 붉은 콩을 먹다가 덫에 걸려 죽자, 홀로 된 까투리에게 각종 새들이 와서 구혼(求婚)을 하지만"
+     },
+     {
+      "claim": "수컷 화려 · 꿩만둣국 · 사냥",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/꿩",
+      "note": "깃은 금속광택이 있는 녹색 ... 암컷에 비해 화려하다. / 사람들은 스포츠로 꿩 사냥을 즐기며 / 평양의 전통요리 가운데 꿩만둣국이 있는데"
+     },
+     {
+      "claim": "거문도꿩 1885 영국군",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/꿩",
+      "note": "거문도꿩은 1885년 거문도를 점령한 영국군이 상하이에서 구입해온 17마리의 꿩을 풀어 놓은 것이 계기이며 이후 자연 번식으로 개체가 많이 늘어 났다고 한다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/꿩"
+    ],
+    "hintNote": null,
+    "easiestCue": "장끼·까투리",
+    "worthWhyGen": "일상·속담에 나오는 새의 암수·새끼 이름(일상 말)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '텃새' 예",
+     "unique": "장끼·까투리로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 냉면"
+    ],
+    "job": "job-26"
+   }
+  }
+ ]
+}

@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-screen/3",
+  "midKey": "kr-screen",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-screen/3#g032b-g032b-j14-3",
+   "seed": {
+    "subject": "신파",
+    "aspect": null,
+    "ref": "g032b-j14-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 드라마를 두고 자주 쓰는 평가의 말입니다. 본래는 19세기 말 일본에서 서양 연극의 영향을 받아 생긴 근대 연극 갈래의 이름이었습니다. 한국에서는 1912년 임성구 일행 혁신단의 공연 광고에 처음 쓰였습니다. 오늘날 눈물을 억지로 짜내는 줄거리를 낮춰 부를 때 쓰는 이 말은?",
+    "answer": "신파",
+    "acceptedAnswers": [
+     "신파극"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "일본에서 가부키를 '구파'라 하고 새 연극을 이렇게 불러 맞세운 데서 나온 이름입니다. 광복 뒤에는 왜색으로 여겨져 무대에서 사라졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "눈물을 억지로 짜내는 줄거리를 낮춰 부를 때 쓰는 이 말",
+     "difWhy": "2 — 신파 일상어 · 설명→이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "임선규의 '사랑에 속고 돈에 울고'가 대표작으로 꼽히는, 1930년대 동양극장에서 전성기를 맞은 연극 갈래다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "눈물 짜내는 감상적 줄거리를 낮춰 부르는 말 — 일제강점기 신파극에서 옴",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "신파라는 말을 일상에서 씀",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '평가의 말'이 끝 ○○(말)와 일치. 연극 갈래 이력은 이어 풀려 있음."
+    },
+    "blindQuestion": {
+     "guess": "신파",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "신파극",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "신파",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4534",
+      "answer": "장준혁",
+      "verdict": "diff",
+      "why": "새 정답 신파 과 옛 정답 장준혁 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5024",
+      "answer": "우르크",
+      "verdict": "diff",
+      "why": "새 정답 신파 과 옛 정답 우르크 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4177",
+      "answer": "애기야 가자",
+      "verdict": "diff",
+      "why": "새 정답 신파 과 옛 정답 애기야 가자 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5026",
+      "answer": "유의태",
+      "verdict": "diff",
+      "why": "새 정답 신파 과 옛 정답 유의태 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2999",
+      "answer": "겨울연가",
+      "verdict": "diff",
+      "why": "새 정답 신파 과 옛 정답 겨울연가 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/신파극",
+     "https://en.wikipedia.org/wiki/Shinpa"
+    ],
+    "facts": [
+     {
+      "claim": "일본에서 처음 쓴 신극 용어 · 구파극 가부키에 맞선 칭호 · 서양 연극 영향",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신파극",
+      "note": "신파극(新派劇)이란 일본에서 서양 연극의 영향을 받아 발생한 근현대 연극의 한 종류이다. '신파(新派)'란 말은 원래 일본에서 처음 쓴 신극용어의 하나로서 일본의 구파극(舊派劇)인 가부키(歌舞伎) 연극에 대립하는 칭호로 사용하였던 것이다."
+     },
+     {
+      "claim": "1880년대 시작 · 가부키와 대비 · 멜로드라마",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Shinpa",
+      "note": "Shinpa (新派) (also rendered shimpa) is a modern form of theater in Japan usually featuring melodramatic stories, contrasted with the more traditional kabuki style. Taking its start in the 1880s"
+     },
+     {
+      "claim": "1912년 매일신보 혁신단 광고 '신파연극 원조'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/신파극",
+      "note": "한국에서 신파란 용어를 처음 사용한 것은 1912년 2월 18일자 《매일신보(每日申報)》에서 임성구(林聖九) 일행의 혁신단(革新團)이 낸 제 2회 공연 광고를 '신파연극 원조(新派演劇元祖)'라고 이름지은 것이 그 시초다."
+     },
+     {
+      "claim": "1935 동양극장 이후 전성기 · 대표작 '사랑에 속고 돈에 울고'",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/신파극",
+      "note": "1935년 동양극장 설립 이후 체계적인 공연 체제를 가동하면서 상업적인 성공으로 전성기를 맞았다. ... 이 시기의 대표작은 흥행에 크게 성공한 임선규의 《사랑에 속고 돈에 울고》이다."
+     },
+     {
+      "claim": "광복 뒤 왜색으로 치부되어 소멸",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/신파극",
+      "note": "일제강점기에서 해방되어 광복을 맞이함과 동시에 왜색으로 치부되어 소멸했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/신파극"
+    ],
+    "hintNote": null,
+    "easiestCue": "마지막 문장 '눈물을 억지로 짜내는 줄거리를 낮춰 부르는 말' — 말 자체는 친숙(친숙도 3)이라 등급 3 이 될 수 있음",
+    "worthWhyGen": "드라마 평에서 매일 쓰는 '신파'가 일본 근대 연극 갈래 이름에서 왔다는 유래(일상 말의 유래)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '평가의 말' 종류 명사 — 예",
+     "unique": "1912 혁신단 + 눈물 줄거리 = 신파 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "ball-sports/2",
+  "midKey": "ball-sports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "ball-sports/2#g032b-g032b-j28-2",
+   "seed": {
+    "subject": "족구",
+    "aspect": null,
+    "ref": "g032b-j28-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국에서 처음 생겨난 구기 종목입니다. 1960년대 공군 비행단 장병들이 배구 규칙을 바탕으로 즐기기 시작했고, 다른 부대로 옮긴 장병들을 따라 널리 퍼졌습니다. 한 팀 네 명이 네트를 사이에 두고 겨루는 이 종목은?",
+    "answer": "족구",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "공이 바닥에 한 번 튀기는 것을 허용하며, 말레이시아에서 유래한 세팍타크로와 닮은 경기다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "한 팀 네 명이 네트를 사이에 두고 겨루는 한국 구기",
+     "difWhy": "2 — 군대 스포츠 족구는 대부분 앎 · 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 한국 생활 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "손을 쓰지 않고 발과 머리로만 공을 받아 네트 너머로 넘기는, 군대에서 흔히 즐기는 운동이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "발과 머리로 네트 너머로 공을 넘기는 한국에서 생긴 구기",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "군대·학교에서 흔한 운동",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장이 곧 '한국에서 생긴 구기 종목'으로 끝 ○○(종목)와 일치, 짧고 쉬움"
+    },
+    "blindQuestion": {
+     "guess": "족구",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "족구",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "족구",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5223",
+      "answer": "스팔딩",
+      "verdict": "diff",
+      "why": "족구 기원 vs 스팔딩 배구공 회사 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/족구",
+     "https://en.wikipedia.org/wiki/Jokgu"
+    ],
+    "facts": [
+     {
+      "claim": "한국에서 처음 시작된 구기 · 1960년대 공군 비행단 · 배구 규칙 바탕 · 전속 장병으로 보급 · 팀 4명 네트",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/족구",
+      "note": "각 팀 4명 ... 경계(네트)를 사이에 두고, 발과 머리만 ... 사용 하여 ... 대한민국에서 최초로 시작된 구기종목이다. ... 1960년대 말 경에, 대한민국 대구 지역[제11전투 비행단]에서 처음 실시되었다. 처음에는 배구(경기)의 규칙과 거의 같은 족구 규칙이 만들어졌으며, 각 비행단에서 실시되다가 다른 부대로 전속 받은 장병들에 의해 차츰 널리 보급되어"
+     },
+     {
+      "claim": "한국 공군이 1960년대 군 기지에서 고안 · 군대에서 흔한 운동 · 팀 4명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jokgu",
+      "note": "Jokgu was invented by members of the Republic of Korea Air Force in 1960 as a way to promote exercise on military bases. ... It is also one of the most common ways to pass time in the military. ... Teams are made up of four people on each side of the net"
+     },
+     {
+      "claim": "한 번 튀기기 허용 · 세팍타크로와 비슷",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Jokgu",
+      "note": "Players are allowed three contacts per side with one bounce between contacts. (ko: 비슷한 스포츠로 ... 말레이시아에서 유래한 세팍타크로(sepaktakraw) 등이 있다.)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/족구",
+     "https://en.wikipedia.org/wiki/Jokgu"
+    ],
+    "hintNote": null,
+    "easiestCue": "공군 장병들이 배구 규칙으로 즐긴 · 한국에서 생긴 구기",
+    "worthWhyGen": "누구나 아는 군대 운동이 한국 공군에서 생겼다는 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '구기 종목' 예",
+     "unique": "한국에서 생김 · 공군 · 4명 네트 — 족구 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

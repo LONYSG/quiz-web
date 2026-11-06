@@ -1,0 +1,291 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "popular-music/6",
+  "midKey": "popular-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "popular-music/6#g032b-g032b-j14-1",
+   "seed": {
+    "subject": "골드 레코드",
+    "aspect": null,
+    "ref": "g032b-j14-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "음반 판매량 인증의 한 단계입니다. 1942년 2월 미국 음반사 RCA 빅터가 글렌 밀러 악단의 'Chattanooga Choo Choo'가 120만 장 팔린 것을 기념해 처음 건넸습니다. 1958년부터 미국음반산업협회가 공식 인증으로 주기 시작한 이것은 무엇일까요?",
+    "answer": "골드 레코드",
+    "acceptedAnswers": [
+     "골드 디스크",
+     "골드",
+     "골드 음반"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "벽에 거는 기념패 속 음반은 대개 진공에서 금속을 입혀 색을 낸 비닐 음반이라, 홈에 새겨진 소리가 상 받은 곡과 다를 수도 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "음반 판매량 인증 한 단계 / 글렌 밀러 120만 장",
+     "difWhy": "3 — 골드 레코드 이름 떠올리기, 플래티넘 오답 가능",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 음반 산업 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "플래티넘 바로 아래 단계의 음반 판매 인증으로, 1976년부터 미국에서는 앨범 50만 장이 기준이 되었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "음반 판매량 인증 단계(플래티넘 아래) — 금빛 기념 음반 패를 주는 인증",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "음반 인증으로 뉴스·팝 문화에서 접함",
+     "piece": "f06",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '음반 판매량 인증의 한 단계'가 끝 '이것'과 일치. 짧음."
+    },
+    "blindQuestion": {
+     "guess": "골드 디스크",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "골드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "골드 레코드",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1884",
+      "answer": "빌보드 핫 100",
+      "verdict": "diff",
+      "why": "새 정답 골드 레코드 과 옛 정답 빌보드 핫 100 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Music_recording_certification",
+     "https://en.wikipedia.org/wiki/Chattanooga_Choo_Choo"
+    ],
+    "facts": [
+     {
+      "claim": "1942년 2월 10일 RCA 빅터가 글렌 밀러 악단에 'Chattanooga Choo Choo' 120만 장 기념 첫 골드 레코드",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Music_recording_certification",
+      "note": "The first literal gold record award was presented to Glenn Miller and His Orchestra by RCA Victor (for subsidiary label Bluebird Records) on February 10, 1942, celebrating the sale of 1.2 million copies of the single, \"Chattanooga Choo Choo\"."
+     },
+     {
+      "claim": "같은 사실(두 번째 문서)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Chattanooga_Choo_Choo",
+      "note": "became the first to be certified a gold disc on February 10, 1942, for 1,200,000 sales."
+     },
+     {
+      "claim": "1958년 RIAA 공식 골드 레코드 제도",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Music_recording_certification",
+      "note": "The first official designation of a \"gold record\" by the Recording Industry Association of America (RIAA) was established for singles in 1958 ... On 14 March 1958, the RIAA certified its first gold record, Perry Como's hit single \"Catch a Falling Star\"."
+     },
+     {
+      "claim": "1976년 플래티넘 신설 · 골드 = 앨범 50만 장",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Music_recording_certification",
+      "note": "In 1976, the RIAA introduced the platinum certification for the sale of one million units for albums and two million for singles, with the gold certification redefined for sales of 500,000 units for albums"
+     },
+     {
+      "claim": "기념패 음반은 진공 증착 비닐 · 홈의 음악이 다를 수 있음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Music_recording_certification",
+      "note": "Most gold and platinum records are actually vinyl records which have been vacuum metallized and tinted ... The music in the grooves on the record may not match the actual recording being awarded."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Music_recording_certification"
+    ],
+    "hintNote": null,
+    "easiestCue": "음반 판매 인증의 단계 + 가장 이른 1942년 기념(실버·골드·플래티넘 중 골라야 함)",
+    "worthWhyGen": "음악 뉴스에 늘 나오는 '골드·플래티넘' 인증이 1942년 한 곡의 기념 음반에서 시작됐다는 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '음반 판매량 인증의 한 단계' 종류 명사 — 예",
+     "unique": "1942 첫 기념 + 1958 RIAA 공식 = 골드 하나(플래티넘은 1976)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  },
+  {
+   "seedId": "popular-music/6#g032b-g032b-j26-1",
+   "seed": {
+    "subject": "카세트테이프",
+    "aspect": null,
+    "ref": "g032b-j26-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "음악을 담아 팔고 녹음도 하던 매체입니다. 1963년 네덜란드 필립스가 베를린 라디오 전시회에서 처음 선보였고, 원래는 받아쓰기용 녹음기에 쓰려고 만든 것이었습니다. 소니의 요구에 필립스가 특허를 다른 회사들에 무료로 내주면서 세계 표준이 된 이 매체는?",
+    "answer": "카세트테이프",
+    "acceptedAnswers": [
+     "카세트",
+     "콤팩트 카세트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "개발을 이끈 사람은 필립스 기술자 루 오텐스였고, 처음에는 음질이 낮아 회의 녹취 같은 업무용으로 주로 쓰였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "음악을 담아 팔고 녹음도 하던 매체",
+     "difWhy": "2 — 카세트테이프는 세대에 익숙",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 매체의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "A면을 다 들으면 꺼내 뒤집어 B면을 듣고, 워크맨에 넣어 다니며 라디오 노래를 녹음하던 손바닥만 한 음반이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "필립스가 만든 손바닥만 한 자기 녹음 테이프 매체(콤팩트 카세트)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "추억의 매체로 널리 알려짐",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '음악을 담아 팔고 녹음도 하던 매체', 끝 ○○ '매체'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "카세트테이프",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카세트테이프",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카세트테이프",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3467",
+      "answer": "필립스",
+      "verdict": "diff",
+      "why": "카세트테이프 vs 필립스 PSV — 다름"
+     },
+     {
+      "old": "3834",
+      "answer": "CD",
+      "verdict": "diff",
+      "why": "카세트테이프 vs CD — 다른 매체"
+     },
+     {
+      "old": "1883",
+      "answer": "워크맨",
+      "verdict": "diff",
+      "why": "카세트테이프 vs 워크맨 — 다른 제품"
+     },
+     {
+      "old": "5576",
+      "answer": "냅스터",
+      "verdict": "diff",
+      "why": "카세트테이프 vs 냅스터 — 다름"
+     },
+     {
+      "old": "3833",
+      "answer": "워크맨",
+      "verdict": "diff",
+      "why": "카세트테이프 vs 워크맨(이부카 창안) — 다른 제품"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cassette_tape",
+     "https://ko.wikipedia.org/wiki/콤팩트_카세트"
+    ],
+    "facts": [
+     {
+      "claim": "1963년 8월 필립스 · 베를린 라디오 쇼 · 무료 라이선스 · 소니의 압박",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cassette_tape",
+      "note": "Invented by Lou Ottens and his team at the Dutch company Philips, the Compact Cassette was introduced in August 1963, and Philips freely licensed the patented format to other manufacturers from 1966. / introduced ... in Europe on 28 August 1963 at the Berlin Radio Show / After yielding to pressure from Sony to license the Compact Cassette format to them free of charge, Philips' format achieved market dominance"
+     },
+     {
+      "claim": "필립스가 호환성을 위해 기술 공개 · 받아쓰기(업무용)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/콤팩트_카세트",
+      "note": "1962년 필립스는 콤팩트 카세트를 개발하며 다른 회사 제품과의 호환성을 위해 이 기술을 공개했다. ... 초창기에는 성능이 좋지 않아 회의 녹취록 같은 업무용으로 기업에서만 주로 사용되었다."
+     },
+     {
+      "claim": "원래 받아쓰기 기계용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cassette_tape",
+      "note": "The Compact Cassette originally was intended for use in dictation machines."
+     },
+     {
+      "claim": "루 오텐스",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cassette_tape",
+      "note": "a team in Hasselt led by Lou Ottens developed a two-hole cassette"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "필립스가 특허를 무료로 내준 음악·녹음 매체",
+    "worthWhyGen": "누구나 쓰던 매체가 특허 무료 공개로 표준이 된 까닭(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '음악 매체' 예",
+     "unique": "1963 필립스·받아쓰기·무료 특허로 CD·LP와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 워크맨"
+    ],
+    "job": "job-26"
+   }
+  }
+ ]
+}

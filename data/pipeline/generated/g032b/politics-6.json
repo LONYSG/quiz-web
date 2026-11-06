@@ -1,0 +1,270 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "politics/6",
+  "midKey": "politics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "politics/6#g032b-g032b-j11-12",
+   "seed": {
+    "subject": "핫라인",
+    "aspect": null,
+    "ref": "g032b-j11-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "외교·안보에서 쓰는 말입니다. 1962년 쿠바 미사일 위기 때 흐루쇼프의 긴 전문을 받아 해독하는 데 12시간 가까이 걸린 일을 계기로, 1963년 8월 워싱턴과 모스크바 사이에 이것이 개통되었습니다. 첫 시험 문장은 알파벳을 모두 담은 'The quick brown fox…'였습니다. 이것은?",
+    "answer": "핫라인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영화에서는 빨간 전화기로 그려지지만 실제로는 전화였던 적이 없고, 처음엔 텔레타이프였습니다. 첫 실제 사용은 1967년 6일 전쟁 때였습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "워싱턴과 모스크바 사이 개통된 것 · 쿠바 미사일 위기",
+     "difWhy": "2 — 핫라인은 흔한 말",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 일반 상식 · 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "우발적인 전쟁을 막으려고 두 나라 수뇌가 대사관을 거치지 않고 곧바로 연락하도록 깔아 둔 비상 직통 연락선이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "적대국 정상·당국이 우발 충돌을 막으려 둔 비상 직통 연락선",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "뉴스·영화에서 흔한 말",
+     "piece": "f04",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장은 '외교·안보에서 쓰는 말'로 분야는 주되 끝은 지시어 '이것'. 그러나 둘째 문장에 개통·전문 해독이 있어 곧 통신 수단임이 잡혀 읽기 지장 없음."
+    },
+    "blindQuestion": {
+     "guess": "핫라인",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "핫라인",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "핫라인",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j06-12",
+      "answer": "마타도어",
+      "verdict": "diff",
+      "why": "핫라인과 마타도어는 다른 용어"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Moscow–Washington_hotline",
+     "https://ko.wikipedia.org/wiki/핫라인"
+    ],
+    "facts": [
+     {
+      "claim": "쿠바 미사일 위기 때 흐루쇼프 메시지 수신·해독에 12시간 가까이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Moscow–Washington_hotline",
+      "note": "During the crisis, the United States took nearly twelve hours to receive and decode Nikita Khrushchev's 3,000-word-initial settlement message"
+     },
+     {
+      "claim": "1963년 8월 30일 개통 (한국어 문서 8월 31일)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Moscow–Washington_hotline",
+      "note": "Installed on August 30, 1963, it was first used in 1967 by President Lyndon B. Johnson during the Six-Day War."
+     },
+     {
+      "claim": "미·소 핫라인 1963년 개통",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/핫라인",
+      "note": "미국과 소련 간 핫라인은 1963년 8월 31일에 개통되었으며"
+     },
+     {
+      "claim": "첫 메시지 THE QUICK BROWN FOX… (팬그램)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Moscow–Washington_hotline",
+      "note": "Washington sent Moscow the text: \"THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG’S BACK 1234567890\" (a pangram to test printing of each character in the alphabet)."
+     },
+     {
+      "claim": "우발 전쟁 방지 · 대사관 거치지 않고 양 수뇌 직접",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/핫라인",
+      "note": "핫라인(Hotline)은 사고나 오해로 인한 우발적인 전쟁을 방지하기 위하여 긴급 비상용으로 쓰는 직통 전화를 뜻하는 단어이다. ... 본국－대사관－상대국이라는 절차가 아니라 미·소의 양 수뇌가 직접통화하는 시스템이다."
+     },
+     {
+      "claim": "빨간 전화로 그려지나 전화선이었던 적 없음 · 텔레타이프 · 1967년 첫 사용",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Moscow–Washington_hotline",
+      "note": "the hotline between Washington and Moscow is represented by a red phone, although the real hotline has never been a telephone line. / === Teletype === / first used in 1967 ... during the Six-Day War."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/핫라인"
+    ],
+    "hintNote": null,
+    "easiestCue": "1963년 워싱턴–모스크바 사이 개통 — 냉전 직통선",
+    "worthWhyGen": "뉴스에서 늘 듣는 '핫라인'이 생긴 까닭(쿠바 위기 때 연락 지연)이 질문 안에(3)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '외교·안보 말' 예",
+     "unique": "1963년 미·소 직통 연락선 = 핫라인 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 165자"
+    ],
+    "job": "job-11"
+   }
+  },
+  {
+   "seedId": "politics/6#g032b-g032b-j25-6",
+   "seed": {
+    "subject": "패스트트랙",
+    "aspect": null,
+    "ref": "g032b-j25-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "국회법에 '안건의 신속처리'로 적힌 제도를 흔히 영어로 부르는 이름입니다. 2012년 국회선진화법 개정 때 생겨, 상임위원회에서 막힌 법안도 정한 기간이 지나면 본회의에 올라가게 했습니다. 2019년 선거법·공수처법을 여기에 올리다 '동물국회' 몸싸움이 벌어진 이 제도는?",
+    "answer": "패스트트랙",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "최장 330일(상임위 180·법사위 90·본회의 60일)이던 기한은 2026년 8월 국회법 개정으로 90일로 줄었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "안건의 신속처리 · 동물국회 몸싸움 · 영어로 부르는 이름",
+     "difWhy": "2 — 뉴스에서 자주 나옴",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 시사 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "여야가 합의하지 못한 법안을 정한 기한 뒤 본회의 표결까지 가게 하는, 뉴스에 자주 나오는 국회 지정 절차다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "국회법 제85조의2 안건 신속처리 제도의 흔한 이름(fast track)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "정치 뉴스에 자주 등장",
+     "piece": "f09",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '안건의 신속처리' 제도임이 있고 끝 '이 제도'와 일치."
+    },
+    "blindQuestion": {
+     "guess": "패스트트랙",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "패스트트랙",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "패스트트랙",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6738",
+      "answer": "브렉시트",
+      "verdict": "diff",
+      "why": "패스트트랙 vs 브렉시트 조어 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/패스트_트랙",
+     "https://ko.wikipedia.org/wiki/국회법",
+     "https://m.seoul.co.kr/news/2019/04/29/20190429004008",
+     "https://biz.sbs.co.kr/amp/article/20000332074"
+    ],
+    "facts": [
+     {
+      "claim": "국회법 제85조의2(안건의 신속처리)의 별칭",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/패스트_트랙",
+      "note": "대한민국 국회법 제85조 2(안건의 신속처리) 조항의 별칭"
+     },
+     {
+      "claim": "2012년 국회법 개정 = 국회선진화법",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/국회법",
+      "note": "2012년 18대 국회 막판에 국회 폭력사태의 예방과 준예산 방지 등을 위해 국회법이 개정되었다. 흔히 이 개정안을 국회 선진화법이라고 한다."
+     },
+     {
+      "claim": "2019년 4월 공수처법·선거법 패스트트랙 지정 몸싸움 · 선진화법 이후 7년 만의 '동물 국회'",
+      "where": "q",
+      "url": "https://m.seoul.co.kr/news/2019/04/29/20190429004008",
+      "note": "WebSearch 요약(서울신문 2019-04-29 '빠루·육탄전에 무너진 국회의 품격' · 뉴시스 2025-12-19 1심 선고): 2019년 4월 공수처법과 선거법 개정안의 신속처리안건 지정 과정에서 몸싸움 … 2012년 국회 선진화법 이후 7년여 만에 '동물 국회'"
+     },
+     {
+      "claim": "330일(180·90·60) → 90일 개정 · 2026년 8월 본회의 의결",
+      "where": "e",
+      "url": "https://biz.sbs.co.kr/amp/article/20000332074",
+      "note": "WebSearch 요약(SBS Biz '패스트트랙 330일→90일…개정 국회법 공포안 국무회의 의결' · 경향 2026-08-20): 국회 본회의는 2026년 8월 20일 … 의결, 심사 기한은 기존 330일(상임위 180일, 법사위 90일, 본회의 60일)에서 90일(위원회 60일, 법사위 30일)로 단축"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/패스트_트랙"
+    ],
+    "hintNote": null,
+    "easiestCue": "'안건의 신속처리'를 영어로 부르는 이름",
+    "worthWhyGen": "뉴스에서 늘 쓰는 정치 용어(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '제도를 영어로 부르는 이름' 예",
+     "unique": "B2 — 영어 이름을 묻으므로 '신속처리안건'은 변형에 넣지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

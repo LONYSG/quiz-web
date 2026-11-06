@@ -1,0 +1,129 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-tradition/1",
+  "midKey": "kr-tradition",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tradition/1#g032b-g032b-j27-2",
+   "seed": {
+    "subject": "토정비결",
+    "aspect": null,
+    "ref": "g032b-j27-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "새해 정초에 많이 펼쳐 보는 옛 책이 있습니다. 지은이로 전하는 조선 중기 학자는 마포 강가에 흙으로 집을 쌓고 그 위에 정자를 지어 살아 호를 얻었습니다. 그 호가 이름 앞에 붙은 이 책은 무엇일까요?",
+    "answer": "토정비결",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "동국세시기에는 정초 오행점만 적혀 있어 이 책을 보는 풍습은 조선 말기에 자리 잡은 듯하고, 1970년대부터 거리 점복사가 늘었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "새해 정초에 많이 펼쳐 보는 옛 책 · 호가 이름 앞에 붙은",
+     "difWhy": "2 — 정초 책과 호 토정에서 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 풍습 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "태어난 해·달·날로 괘를 뽑아 한 해 열두 달의 신수를 풀어 보는, 신년 운세의 대명사인 책",
+    "generalHintVersion": "hint-v7",
+    "identity": "정초에 한 해 신수를 보는 조선의 점술서(이지함 지음으로 전함)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "정초 운세로 널리 알려짐",
+     "piece": "f05",
+     "genPct": 88
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '새해 정초에 펼쳐 보는 옛 책' 이 종류. 둘째 문장 학자는 단서 설명이고 끝 '이 책' 과 이어진다."
+    },
+    "blindQuestion": {
+     "guess": "토정비결",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "토정비결",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "토정비결",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/토정비결",
+     "https://ko.wikipedia.org/wiki/이지함"
+    ],
+    "facts": [
+     {
+      "claim": "이지함이 지은 도참서 · 마포 강변 흙집 · 토정이라는 호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/토정비결",
+      "note": "토정비결(土亭秘訣)은 조선 중기의 학자 토정(土亭) 이지함(李之菡)이 지은 도참서 ... 생애의 대부분을 마포 강변의 흙담 움막집에서 청빈하게 지내 토정이라는 호가 붙었다."
+     },
+     {
+      "claim": "흙으로 집을 쌓고 위에 정자 → 토정",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/이지함",
+      "note": "'토정'이라는 호는 그가 마포 나루에 자기가 사는 집을 흙으로 쌓고 그 위를 평평하게 해서 정자를 지은 것에서 비롯된 것이다."
+     },
+     {
+      "claim": "연·월·일 세 가지로 열두 달 신수 · 정초",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/토정비결",
+      "note": "개인의 사주 중 태어난 연·월·일 세 가지로 육십갑자를 이용하여 일년 동안의 신수를 열두 달별로 알아보는 방식 / 지금도 정초에 거리에서 《토정비결》로 1년의 신수를 점치는 것을 흔히 볼 수 있다."
+     },
+     {
+      "claim": "동국세시기 오행점 · 조선 말기 · 1970년대 거리 점복사",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/토정비결",
+      "note": "《동국세시기》에는 오행점으로 한 해의 신수를 본다고 적혀 있어, 정조 이후인 조선 말기부터 세시풍속으로 자리잡은 듯하다 ... 1970년대 이후부터는 거리에 토정비결을 봐주는 점복사들이 본격적으로 등장"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/토정비결"
+    ],
+    "hintNote": null,
+    "easiestCue": "정초에 펼쳐 보는 옛 책 + 흙·정자 호(土亭)",
+    "worthWhyGen": "누구나 아는 신년 운세 책 이름의 유래(19 §9-1 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '옛 책' 예",
+     "unique": "정초 책 + 마포 흙집 정자 호 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

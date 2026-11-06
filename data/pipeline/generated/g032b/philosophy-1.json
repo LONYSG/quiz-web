@@ -1,0 +1,450 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "philosophy/1",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/1#g032b-g032b-j01-2",
+   "seed": {
+    "subject": "아틀란티스",
+    "aspect": null,
+    "ref": "g032b-j01-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 그리스 철학자 플라톤이 대화편 '티마이오스'와 '크리티아스'에서 이야기한 전설 속 나라입니다. 플라톤은 솔론이 이집트에서 전해 들은 이야기라며, 헤라클레스의 기둥 바깥에 있던 강대한 해군 국가가 옛 아테네와 싸웠다고 썼습니다. 오늘날 학자들이 실제로 있던 곳이 아니라고 보는 이 나라는?",
+    "answer": "아틀란티스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "19세기 도넬리의 책이 인기를 끌며 실제로 찾으려는 시도가 이어졌고, 산토리니섬 화산 폭발에서 영감을 얻었다는 가설도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "플라톤이 이야기한 전설 속 나라 · 헤라클레스의 기둥 바깥",
+     "difWhy": "1 — 잃어버린 대륙 유명",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 92",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "신의 노여움을 사 바닷속으로 가라앉았다는 전설의 대륙으로, 디즈니 애니메이션 등 수많은 작품의 소재다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "플라톤이 전한, 바다에 가라앉았다는 전설의 섬나라",
+    "familiarity": {
+     "judge": 3,
+     "pct": 92,
+     "why": "전설의 섬, 대중문화에 흔함",
+     "piece": "f07",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '전설 속 나라', 끝 ○○ '나라'. 솔론·헤라클레스의 기둥은 고유명사일 뿐 뜻 잡힘"
+    },
+    "blindQuestion": {
+     "guess": "아틀란티스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아틀란티스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아틀란티스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j21-8",
+      "answer": "심포지엄",
+      "verdict": "diff",
+      "why": "새 정답 아틀란티스의 지식(유래·사실)과 옛 정답 심포지엄의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1160",
+      "answer": "에피쿠로스 학파",
+      "verdict": "diff",
+      "why": "새 정답 아틀란티스의 지식(유래·사실)과 옛 정답 에피쿠로스 학파의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1154",
+      "answer": "소피스트",
+      "verdict": "diff",
+      "why": "새 정답 아틀란티스의 지식(유래·사실)과 옛 정답 소피스트의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "66",
+      "answer": "이데아",
+      "verdict": "diff",
+      "why": "새 정답 아틀란티스의 지식(유래·사실)과 옛 정답 이데아의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1157",
+      "answer": "헤라클레이토스",
+      "verdict": "diff",
+      "why": "새 정답 아틀란티스의 지식(유래·사실)과 옛 정답 헤라클레이토스의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/아틀란티스",
+     "https://en.wikipedia.org/wiki/Atlantis"
+    ],
+    "facts": [
+     {
+      "claim": "티마이오스·크리티아스 · 해군력 · 아테네 · 학자들은 사실이 아니라고 봄",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아틀란티스",
+      "note": "아틀란티스는 플라톤의 저작 《티마이오스》와 《크리티아스》에 언급된 전설상의 섬이자 그 섬에 있던 국가이다. 강대한 해군력을 바탕으로 아테네를 제외한 대부분의 세계를 정복했다고 묘사되었다. ... 현대의 고고학자들과 지질학자들은 아틀란티스 자체는 사실이 아니나, 플라톤이 ... 창작했을 것이라고"
+     },
+     {
+      "claim": "솔론 이집트 · 헤라클레스의 기둥 바깥과 전쟁",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Atlantis",
+      "note": "The dialogues claim to quote Solon, who visited Egypt between 590 and 580 BC ... a war took place between those outside the Pillars of Hercules at the Strait of Gibraltar and those who dwelt within them."
+     },
+     {
+      "claim": "신의 분노로 대서양 속으로 가라앉음 · 도넬리 · 산토리니 가설",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아틀란티스",
+      "note": "결국 신의 분노를 사 대서양 속으로 가라앉아 버렸다 ... 이그나티우스 도넬리가 쓴 '아틀란티스 - 대홍수 이전의 세계'와 같은 책들이 대거 인기 ... 산토리니섬의 화산 대폭발"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아틀란티스"
+    ],
+    "hintNote": null,
+    "easiestCue": "플라톤이 이야기한 헤라클레스의 기둥 바깥의 전설 속 해양 국가",
+    "worthWhyGen": "누구나 아는 '전설의 대륙'이 철학자 플라톤의 대화편에서 나왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '전설 속 나라' 예",
+     "unique": "플라톤 두 대화편 · 아테네와 싸운 나라 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 163자",
+     "crossans 디즈니"
+    ],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "philosophy/1#g032b-g032b-j21-8",
+   "seed": {
+    "subject": "심포지엄",
+    "aspect": null,
+    "ref": "g032b-j21-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 그리스에서 저녁 식사 뒤 함께 술을 마시며 음악을 듣고 토론하던 자리가 있었습니다. 플라톤의 대화편 '향연'은 이 자리에서 사랑을 두고 나눈 이야기입니다. 오늘날 학술 토론회를 가리키는 이 말은?",
+    "answer": "심포지엄",
+    "acceptedAnswers": [
+     "심포지움"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "참석자들은 벽에 붙여 놓은 긴 의자에 비스듬히 기대어 마셨고, 로마에서는 같은 자리를 라틴어로 콘비비움이라 불렀다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "오늘날 학술 토론회를 가리키는 이 말",
+     "difWhy": "2 — 학술 토론회 → 심포지엄 쉬움",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 82",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "대학이나 학회가 한 주제로 발표자 여럿을 모아 여는 행사 포스터에 '국제 ~'처럼 자주 붙는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 그리스의 술자리 토론 모임 — 오늘날 학술 토론회를 뜻하는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 82,
+     "why": "학술 행사 명칭으로 흔함",
+     "piece": "f03",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '자리'가 있고 끝 ○○(말)는 그 자리의 이름, 플라톤은 보조 단서"
+    },
+    "blindQuestion": {
+     "guess": "심포지엄",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "심포지엄",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "심포지엄",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j01-2",
+      "answer": "아틀란티스",
+      "verdict": "diff",
+      "why": "심포지엄(향연 유래)은 아틀란티스·소피스트·플라토닉 러브·이데아·아카데메이아와 다른 개념이다(52 플라토닉 러브는 향연이 겹치나 사랑 개념 vs 토론회 말뜻이라 다름)"
+     },
+     {
+      "old": "1154",
+      "answer": "소피스트",
+      "verdict": "diff",
+      "why": "심포지엄(향연 유래)은 아틀란티스·소피스트·플라토닉 러브·이데아·아카데메이아와 다른 개념이다(52 플라토닉 러브는 향연이 겹치나 사랑 개념 vs 토론회 말뜻이라 다름)"
+     },
+     {
+      "old": "g032a:g032a-j11-8",
+      "answer": "플라토닉 러브",
+      "verdict": "diff",
+      "why": "심포지엄(향연 유래)은 아틀란티스·소피스트·플라토닉 러브·이데아·아카데메이아와 다른 개념이다(52 플라토닉 러브는 향연이 겹치나 사랑 개념 vs 토론회 말뜻이라 다름)"
+     },
+     {
+      "old": "66",
+      "answer": "이데아",
+      "verdict": "diff",
+      "why": "심포지엄(향연 유래)은 아틀란티스·소피스트·플라토닉 러브·이데아·아카데메이아와 다른 개념이다(52 플라토닉 러브는 향연이 겹치나 사랑 개념 vs 토론회 말뜻이라 다름)"
+     },
+     {
+      "old": "1164",
+      "answer": "아카데메이아",
+      "verdict": "diff",
+      "why": "심포지엄(향연 유래)은 아틀란티스·소피스트·플라토닉 러브·이데아·아카데메이아와 다른 개념이다(52 플라토닉 러브는 향연이 겹치나 사랑 개념 vs 토론회 말뜻이라 다름)"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/심포지엄",
+     "https://en.wikipedia.org/wiki/Symposium_(ancient_Greece)",
+     "https://en.wikipedia.org/wiki/Symposium_(Plato)"
+    ],
+    "facts": [
+     {
+      "claim": "식사 후 술 · 음악·대화 · 플라톤 향연 · 현대 학술회의",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/심포지엄",
+      "note": "심포지엄(고대 그리스어: συμπόσιον 심포지온)는 음악, 춤, 리사이틀 또는 대화가 수반되는 즐거움을 위해 술을 마실 때 식사 후에 열리는 연회의 일부였다. ... 플라톤의 향연과 크세노폰의 심포지엄 ... 현대적 용법에서는 학술회의나 과학회의와 같은 모임을 의미하게 되었다."
+     },
+     {
+      "claim": "after the meal · Plato's Symposium",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Symposium_(ancient_Greece)",
+      "note": "the symposium ... was the part of a banquet that took place after the meal, when drinking for pleasure was accompanied by music, dancing, recitals, or conversation. Literary works that describe or take place at a symposium include two Socratic dialogues, Plato's Symposium and Xenophon's Symposium"
+     },
+     {
+      "claim": "향연 = 사랑(에로스) 찬미 대화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Symposium_(Plato)",
+      "note": "(문서 첫머리) The Symposium is a Socratic dialogue by Plato ... depicting a friendly contest of extemporaneous speeches given by a group of notable Athenian men attending a banquet ... in praise of Eros"
+     },
+     {
+      "claim": "긴 의자에 기대어 · 로마 콘비비움",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Symposium_(ancient_Greece)",
+      "note": "The participants, or \"symposiasts\", would recline on pillowed couches arrayed against the three walls of the room ... / 로마 사회에서 그리스 심포지엄에 해당하는 것은 라틴어 콘비비움(convivium)이다.(ko)"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/심포지엄"
+    ],
+    "hintNote": null,
+    "easiestCue": "오늘날 학술 토론회를 가리키는 말",
+    "worthWhyGen": "흔히 쓰는 외래어가 고대 그리스 술자리에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '자리(모임)' 예",
+     "unique": "그리스 술자리 + 학술 토론회 — 하나('세미나'·'포럼'은 그리스 술자리 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  },
+  {
+   "seedId": "philosophy/1#g032b-g032b-j23-1",
+   "seed": {
+    "subject": "사원소설",
+    "aspect": null,
+    "ref": "g032b-j23-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 그리스 철학자 엠페도클레스가 내세운 학설입니다. 그는 세상 만물이 네 가지 '뿌리'로 이루어졌고, 이 넷이 사랑과 미움의 힘으로 섞이고 나뉘며 사물이 생긴다고 보았습니다. 물·불·공기·흙을 그 네 가지로 꼽은 이 학설은 무엇일까요?",
+    "answer": "사원소설",
+    "acceptedAnswers": [
+     "4원소설",
+     "사원소",
+     "4원소"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "엠페도클레스는 물속에 거꾸로 넣은 양동이 안에 공기가 갇히는 것을 보고, 공기가 따로 있는 물질이라고 보았다고 합니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "물·불·공기·흙을 네 가지로 꼽은 학설",
+     "difWhy": "3 — 단서에 네 원소가 나와 있어 이름만 붙이면 됨 · 교과 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 철학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "아리스토텔레스가 이어받아 하늘을 이루는 다섯째 물질 '에테르'를 덧붙인, 만물의 바탕에 관한 고대 학설이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "만물이 물·불·공기·흙으로 이루어졌다는 고대 그리스의 학설",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "윤리·세계사 교과서에서 접함",
+     "piece": "f08",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '엠페도클레스가 내세운 학설' 로 종류가 나온다. 끝 '이 학설은?' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "4원소설",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "4원소설",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "사원소설",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1158",
+      "answer": "데모크리토스",
+      "verdict": "diff",
+      "why": "사원소설(엠페도클레스)은 데모크리토스·플라토닉 러브·헤라클레이토스·에피쿠로스 학파·피타고라스와 다른 철학자·학설이다"
+     },
+     {
+      "old": "g032a:g032a-j11-8",
+      "answer": "플라토닉 러브",
+      "verdict": "diff",
+      "why": "사원소설(엠페도클레스)은 데모크리토스·플라토닉 러브·헤라클레이토스·에피쿠로스 학파·피타고라스와 다른 철학자·학설이다"
+     },
+     {
+      "old": "1157",
+      "answer": "헤라클레이토스",
+      "verdict": "diff",
+      "why": "사원소설(엠페도클레스)은 데모크리토스·플라토닉 러브·헤라클레이토스·에피쿠로스 학파·피타고라스와 다른 철학자·학설이다"
+     },
+     {
+      "old": "1160",
+      "answer": "에피쿠로스 학파",
+      "verdict": "diff",
+      "why": "사원소설(엠페도클레스)은 데모크리토스·플라토닉 러브·헤라클레이토스·에피쿠로스 학파·피타고라스와 다른 철학자·학설이다"
+     },
+     {
+      "old": "5559",
+      "answer": "피타고라스",
+      "verdict": "diff",
+      "why": "사원소설(엠페도클레스)은 데모크리토스·플라토닉 러브·헤라클레이토스·에피쿠로스 학파·피타고라스와 다른 철학자·학설이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/4원소설",
+     "https://en.wikipedia.org/wiki/Classical_element"
+    ],
+    "facts": [
+     {
+      "claim": "엠페도클레스가 처음 주장 · 물불공기흙 · 사랑과 미움",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/4원소설",
+      "note": "엠페도클레스는 모든 물질이 물, 불, 공기, 흙이라는 4가지 원소들의 합성물이며 … '사랑(Philia)'과 '미움(Neikos)'이라는 두 힘이 상호작용하여 4원소들을 결합·분리하게 되는데"
+     },
+     {
+      "claim": "네 가지 '뿌리'(rhizomata)라 부름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Classical_element",
+      "note": "The Greek philosopher Empedocles (c. 450 BC) was the first to propose the four classical elements as a set: fire, earth, air, and water. He called them the four \"roots\" (ῥιζώματα, rhizōmata)."
+     },
+     {
+      "claim": "아리스토텔레스가 다섯째 원소 에테르를 더함",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Classical_element",
+      "note": "Aristotle added a fifth element, aether (αἰθήρ aither), as the quintessence … the stars cannot be made out of any of the four elements but must be made of a different, unchangeable, heavenly substance."
+     },
+     {
+      "claim": "양동이 실험",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Classical_element",
+      "note": "Empedocles also proved (at least to his own satisfaction) that air was a separate substance by observing that a bucket inverted in water did not become filled with water, a pocket of air remaining trapped inside."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Classical_element"
+    ],
+    "hintNote": null,
+    "easiestCue": "물·불·공기·흙 네 가지",
+    "worthWhyGen": "알가치 2 — 교과 개념(고대 물질관)이지만 게임·판타지의 불·물·흙·바람 속성의 바탕",
+    "targetGrade": 2,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '엠페도클레스가 내세운 학설'",
+     "unique": "엠페도클레스·물불공기흙 — 다른 답 없음(원자론 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 아리스토텔레스"
+    ],
+    "job": "job-23"
+   }
+  }
+ ]
+}

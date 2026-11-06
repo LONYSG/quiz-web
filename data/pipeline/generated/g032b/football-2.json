@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "football/2",
+  "midKey": "football",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "football/2#g032b-g032b-j29-11",
+   "seed": {
+    "subject": "자블라니",
+    "aspect": null,
+    "ref": "g032b-j29-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2010년 남아프리카공화국 월드컵의 공인구입니다. 이름은 줄루어로 '기뻐하라'는 뜻입니다. 대회 내내 공이 흔들리며 엉뚱하게 날아간다는 선수들의 불만이 쏟아졌고, NASA 연구소도 이 공의 '무회전 공' 효과를 확인했습니다. 이 공은?",
+    "answer": "자블라니",
+    "acceptedAnswers": [
+     "자불라니"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "조각 수를 2006년 대회 공 팀가이스트의 14개에서 8개로 줄였는데, 대회 뒤 2년 만에 생산이 끝났다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "이름은 줄루어로 기뻐하라는 뜻 · 2010년 남아공 월드컵 공인구",
+     "difWhy": "3 — 공인구 이름 · 세대 대중 스포츠 세부",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 월드컵 공인구",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "열한 가지 색을 써서 남아공의 11개 공식 언어와 선발 선수 11명을 나타낸 아디다스 공이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "2010 남아공 월드컵 공인구(아디다스 Jabulani)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "월드컵 공인구로 화제였음",
+     "piece": "f04",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '월드컵의 공인구' 가 끝 ○○ '공' 과 일치 · 무회전 공은 '흔들린다' 로 설명이 따라붙음"
+    },
+    "blindQuestion": {
+     "guess": "자불라니",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "자불라니",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "자블라니",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4902",
+      "answer": "미국",
+      "verdict": "diff",
+      "why": "자블라니 공인구 vs 1950 미국 대 잉글랜드 — 다른 지식"
+     },
+     {
+      "old": "6260",
+      "answer": "아르헨티나",
+      "verdict": "diff",
+      "why": "자블라니 vs 1934 결승 공 다툼 아르헨티나 — 다른 지식"
+     },
+     {
+      "old": "408",
+      "answer": "줄리메 컵",
+      "verdict": "diff",
+      "why": "자블라니 vs 줄리메 컵 — 다른 지식"
+     },
+     {
+      "old": "5355",
+      "answer": "베른의 기적",
+      "verdict": "diff",
+      "why": "자블라니 vs 베른의 기적 — 다른 지식"
+     },
+     {
+      "old": "4411",
+      "answer": "마테라치",
+      "verdict": "diff",
+      "why": "자블라니 vs 마테라치 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Adidas_Jabulani",
+     "https://ko.wikipedia.org/wiki/자블라니"
+    ],
+    "facts": [
+     {
+      "claim": "2010 월드컵 공인구 · 줄루어 '기뻐하라' · 비행 불만 · NASA 너클볼",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Adidas_Jabulani",
+      "note": "It was the official match ball for the 2010 FIFA World Cup. … The Jabulani had a mixed reception during the World Cup due to its unusual flight pattern. The NASA Ames Research Center studied its performance … found it had a noticeable \"knuckleball\" effect. Jabulani, meaning \"be happy!\" in Zulu"
+     },
+     {
+      "claim": "아디다스 · 줄루어 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/자블라니",
+      "note": "자블라니(줄루어: Jabulani)는 아디다스에서 만든 축구공이다. 자블라니는 남아공 공식 언어인 줄루어로 '축제를 위하여'라는 뜻이다."
+     },
+     {
+      "claim": "11색 = 11 공식 언어 · 11 선수",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Adidas_Jabulani",
+      "note": "11 different colours were used; representing the 11 starting players in a football squad, the 11 official languages of South Africa"
+     },
+     {
+      "claim": "8조각(14에서) · 2년 뒤 생산 중단",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Adidas_Jabulani",
+      "note": "eight (down from 14 in the 2006 World Cup) thermally bonded … panels … production ceased after two years."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Adidas_Jabulani"
+    ],
+    "hintNote": null,
+    "easiestCue": "2010 남아공 월드컵 공인구",
+    "worthWhyGen": "월드컵 공 논란 · 이름 뜻(축구 팬 상식)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '공인구' 예",
+     "unique": "2010 월드컵 공인구 — 하나(결승용 조불라니는 다른 이름이지만 거의 안 알려짐)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 아디다스"
+    ],
+    "job": "job-29"
+   }
+  }
+ ]
+}

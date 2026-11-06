@@ -1,0 +1,172 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-history-west/5",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/5#g032b-g032b-j02-8",
+   "seed": {
+    "subject": "체크포인트 찰리",
+    "aspect": null,
+    "ref": "g032b-j02-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "냉전 시대 베를린의 프리드리히 거리에 있던 연합군 검문소가 있습니다. 서베를린으로 드는 아우토반의 다른 연합군 검문소는 '알파'와 '브라보'라 불렸습니다. 이곳은 나토 음성 알파벳의 세 번째 글자에서 이름을 땄는데, 1961년 10월 미군과 소련군 전차가 마주 섰던 이 검문소는?",
+    "answer": "체크포인트 찰리",
+    "acceptedAnswers": [
+     "찰리 검문소"
+    ],
+    "originalTitleVariants": [
+     "Checkpoint Charlie"
+    ],
+    "explanation": "소련은 그냥 프리드리히 거리 검문소라 불렀다. 1990년 걷어 낸 미국 쪽 경비 막사는 베를린의 연합군 박물관에 전시돼 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "나토 음성 알파벳의 세 번째 글자 · 1961년 미군과 소련군 전차",
+     "difWhy": "3 — 냉전 검문소 이름, 알파벳 단서로 찰리 도달",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 역사 개념 이름",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "베를린 장벽에서 외국인 관광객·외교관·연합군만 지나던 통로로, 지금은 옛 초소를 본뜬 복제품이 선 관광 명소다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "냉전기 동·서베를린 사이의 미군 관할 검문소(Checkpoint Charlie)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "냉전 역사·영화에서 접함",
+     "piece": "f04",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '연합군 검문소'가 끝 ○○(검문소)와 일치. 알파·브라보는 비교 단서."
+    },
+    "blindQuestion": {
+     "guess": "찰리 검문소",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "체크포인트 찰리",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "체크포인트 찰리",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6119",
+      "answer": "베를린 장벽",
+      "verdict": "diff",
+      "why": "새 정답 체크포인트 찰리의 지식(유래·사실)과 옛 정답 베를린 장벽의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "299",
+      "answer": "베를린 장벽",
+      "verdict": "diff",
+      "why": "새 정답 체크포인트 찰리의 지식(유래·사실)과 옛 정답 베를린 장벽의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6469",
+      "answer": "아나스타샤",
+      "verdict": "diff",
+      "why": "새 정답 체크포인트 찰리의 지식(유래·사실)과 옛 정답 아나스타샤의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6120",
+      "answer": "프라하의 봄",
+      "verdict": "diff",
+      "why": "새 정답 체크포인트 찰리의 지식(유래·사실)과 옛 정답 프라하의 봄의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2625",
+      "answer": "냉전",
+      "verdict": "diff",
+      "why": "새 정답 체크포인트 찰리의 지식(유래·사실)과 옛 정답 냉전의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Checkpoint_Charlie",
+     "https://ko.wikipedia.org/wiki/체크포인트_찰리"
+    ],
+    "facts": [
+     {
+      "claim": "이름 = 나토 음성 알파벳 C · 헬름슈테트 체크포인트 알파 · 드라이린덴 체크포인트 브라보",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Checkpoint_Charlie",
+      "note": "The name Charlie came from the letter C in the NATO phonetic alphabet; similarly for other Allied checkpoints on the Autobahn from the West: Checkpoint Alpha at Helmstedt and its counterpart Checkpoint Bravo at Dreilinden"
+     },
+     {
+      "claim": "같은 내용(ko)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/체크포인트_찰리",
+      "note": "찰리라는 이름은 NATO(북대서양 조약기구)의 음성 기호 문자 C에서부터 왔다.; 마찬가지로 ... 체크포인트 알파, ... 체크포인트 브라보가 있다."
+     },
+     {
+      "claim": "1961년 10월 22일부터 미·소 전차 대치 · 프리드리히 거리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Checkpoint_Charlie",
+      "note": "Soon after the construction of the Berlin Wall in August 1961, a stand-off occurred between US and Soviet tanks on either side of Checkpoint Charlie. It began on 22 October ... located at the junction of Friedrichstraße with Zimmerstraße"
+     },
+     {
+      "claim": "외국인 관광객·외교관·연합군 전용 통로 · 초소 복제",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Checkpoint_Charlie",
+      "note": "the only \"designated crossing point for foreign tourists and dignitaries and for members of the Allied armed forces\" ... A copy of the guard house and the sign that once marked the border crossing was reconstructed later on roughly the same site."
+     },
+     {
+      "claim": "소련 호칭 · 1990년 철거 초소 연합군 박물관",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Checkpoint_Charlie",
+      "note": "The Soviets simply called it the Friedrichstraße Crossing Point ... The guard house on the American side was removed in 1990; it is now on display in the open-air museum of the Allied Museum in Berlin-Zehlendorf."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Checkpoint_Charlie"
+    ],
+    "hintNote": null,
+    "easiestCue": "알파·브라보 다음 세 번째(C=찰리) 검문소 — 음성 알파벳을 알아도 '체크포인트'까지 떠올려야",
+    "worthWhyGen": "영화·뉴스에 나오는 냉전 상징 검문소 이름이 '세 번째 검문소(C)'라는 뜻이라는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '검문소' 예",
+     "unique": "'세 번째 글자 · 1961년 전차 대치' 로 보른홀머 등 다른 검문소와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 베를린 장벽"
+    ],
+    "job": "job-02"
+   }
+  }
+ ]
+}

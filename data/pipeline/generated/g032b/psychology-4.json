@@ -1,0 +1,171 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "psychology/4",
+  "midKey": "psychology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "psychology/4#g032b-g032b-j15-1",
+   "seed": {
+    "subject": "기면증",
+    "aspect": null,
+    "ref": "g032b-j15-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1880년 프랑스 의사 장바티스트 젤리노가 처음 이름을 붙인 병이 있습니다. 이 병을 앓는 도베르만이나 래브라도 개는 먹이를 보고 신이 나면 갑자기 힘이 풀려 쓰러지곤 합니다. 2010년 핀란드는 신종플루 백신 '판뎀릭스'와 이 병의 관련이 의심되자 접종 중단을 권고했습니다. 이 병은 무엇일까요?",
+    "answer": "기면증",
+    "acceptedAnswers": [
+     "기면병"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "보건복지부는 2009년 이 병을 희귀·난치성 질환으로 지정했고, 환자는 잠든 지 몇 분 만에 렘수면에 들어간다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "먹이를 보고 신이 나면 갑자기 힘이 풀려 쓰러지곤 합니다",
+     "difWhy": "4 — 설명 → 병 이름 · 개의 증상과 판뎀릭스는 일반인이 연결 못함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 질환 이름 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "밤에 충분히 자도 낮에 참을 수 없는 졸음이 갑자기 덮치는 수면장애로, 뇌의 각성 물질 하이포크레틴이 모자라 생긴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "낮에 참을 수 없는 졸음이 덮치는 수면장애",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "수면장애로 뉴스와 드라마에서 접함",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '병', 끝 ○○ '병'. 판뎀릭스 백신은 고유명사 단서일 뿐 해독 방해 아님"
+    },
+    "blindQuestion": {
+     "guess": "기면증",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "기면증",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "기면증",
+     "qFacts": 4,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6407",
+      "answer": "가면 증후군",
+      "verdict": "diff",
+      "why": "새 정답 기면증 과 옛 정답 가면 증후군 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5128",
+      "answer": "스탕달 증후군",
+      "verdict": "diff",
+      "why": "새 정답 기면증 과 옛 정답 스탕달 증후군 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "182",
+      "answer": "외상 후 스트레스 장애",
+      "verdict": "diff",
+      "why": "새 정답 기면증 과 옛 정답 외상 후 스트레스 장애 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "3179",
+      "answer": "공황장애",
+      "verdict": "diff",
+      "why": "새 정답 기면증 과 옛 정답 공황장애 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Narcolepsy",
+     "https://ko.wikipedia.org/wiki/기면증"
+    ],
+    "facts": [
+     {
+      "claim": "1880년 젤리노가 이름을 처음 씀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Narcolepsy",
+      "note": "The French term was first used in 1880 by Jean-Baptiste-Édouard Gélineau"
+     },
+     {
+      "claim": "도베르만·래브라도 개 · 먹이에 반응한 탈력발작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Narcolepsy",
+      "note": "Narcolepsy with cataplexy was identified in breeds including Labrador retrievers and Doberman pinschers ... severe cataplexy in response to food and interactions with humans or other animals."
+     },
+     {
+      "claim": "2010년 핀란드 판뎀릭스 접종 중단 권고",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Narcolepsy",
+      "note": "In 2010, Finland's National Institute of Health and Welfare recommended that Pandemrix vaccinations be suspended pending further investigation into narcolepsy."
+     },
+     {
+      "claim": "웃거나 화낼 때 힘이 빠지는 탈력발작",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/기면증",
+      "note": "웃거나 화를 낼 때, 갑자기 렘수면상태로 빠져 들면서 신체근육의 힘이 빠지는 현상을 탈력발작(Cataplexy)이라고 한다."
+     },
+     {
+      "claim": "하이포크레틴 결함",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/기면증",
+      "note": "1형 기면병의 경우 하이포크레틴 결함이 병인으로 설명되고 있으며"
+     },
+     {
+      "claim": "2009년 희귀·난치성 지정 · 5분 안 렘수면",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/기면증",
+      "note": "2009년 5월, 보건복지부는 기면증을 희귀·난치성 질환으로 지정하였다. / (en) Those with narcolepsy generally experience the REM stage of sleep within five minutes of falling asleep"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/기면증",
+     "https://en.wikipedia.org/wiki/Narcolepsy"
+    ],
+    "hintNote": null,
+    "easiestCue": "개가 먹이를 보고 흥분하면 힘이 풀려 쓰러지는 병",
+    "worthWhyGen": "이름은 들어 본 병의 개 연구·백신 논란 뒷이야기(교과 밖 의학 상식 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '병' 예",
+     "unique": "개 탈력발작 + 판뎀릭스 → 기면증 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 166자"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

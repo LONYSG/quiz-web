@@ -1,0 +1,302 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "computer/4",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/4#g032b-g032b-j06-10",
+   "seed": {
+    "subject": "야후",
+    "aspect": null,
+    "ref": "g032b-j06-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 인터넷 회사입니다. 1994년 1월 스탠퍼드 대학원생 둘이 만든 웹사이트 목록 '제리와 데이비드의 월드 와이드 웹 가이드'에서 출발했습니다. 두 달 뒤 바꾼 지금 이름은 '무례하고 세련되지 못하다'는 뜻의 속어에서 골랐다고 하는데, 그 말은 걸리버 여행기 속 종족 이름에서 왔습니다. 이 회사는?",
+    "answer": "야후",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Yahoo",
+     "Yahoo!"
+    ],
+    "explanation": "이 이름을 'Yet Another Hierarchical Officious Oracle'의 머리글자로 풀기도 하지만, 나중에 맞춘 풀이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "걸리버 여행기 속 종족 이름에서 왔습니다",
+     "difWhy": "3 — 회사 설명 → 이름 · 걸리버 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 기업 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1990년대 말 한국에서도 검색 1위를 다툰 미국 포털로, 2012년 말 한국 서비스를 접었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1990년대를 이끈 미국 인터넷 포털·검색 회사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "90~2000년대 대표 포털",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '한 인터넷 회사'가 끝 '이 회사'와 일치. 이름 유래 문장이 조금 겹치지만 해독에 지장 없음."
+    },
+    "blindQuestion": {
+     "guess": "야후",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "야후",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "야후",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "392",
+      "answer": "최상위 도메인",
+      "verdict": "diff",
+      "why": "야후 vs 최상위 도메인 — 무관"
+     },
+     {
+      "old": "3515",
+      "answer": "CERN",
+      "verdict": "diff",
+      "why": "야후 vs CERN 웹 — 무관"
+     },
+     {
+      "old": "5310",
+      "answer": "위키",
+      "verdict": "diff",
+      "why": "야후 어원 vs 위키 어원 — 서로 다른 이름 유래"
+     },
+     {
+      "old": "393",
+      "answer": "쿠키",
+      "verdict": "diff",
+      "why": "야후 vs 쿠키 — 무관"
+     },
+     {
+      "old": "6213",
+      "answer": "와이파이",
+      "verdict": "diff",
+      "why": "야후 vs 와이파이 특허 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/야후",
+     "https://en.wikipedia.org/wiki/Yahoo"
+    ],
+    "facts": [
+     {
+      "claim": "1994년 1월 스탠퍼드 대학원생 제리 양·데이비드 파일로 · '제리와 데이비드의 월드 와이드 웹 가이드' · 속어 뜻 · 걸리버 여행기 종족",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/야후",
+      "note": "1994년 1월, 스탠퍼드 대학교에서 전기공학 대학원생이었던 제리 양과 데이비드 파일로는 \"제리와 데이비드의 월드 와이드 웹 가이드\"라는 웹사이트를 만들었다. ... \"무례하고, 세련되지 못하며, 교양 없는\"이라는 뜻 때문에 이 이름을 선택했다고 주장한다. 이 의미는 걸리버 여행기에 등장하는 가상의 종족인 야후에서 유래했다."
+     },
+     {
+      "claim": "1994년 3월 개명 · 속어 · 걸리버 · 머리글자 풀이(backronym)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Yahoo",
+      "note": "In March 1994, \"Jerry and David's Guide to the World Wide Web\" was renamed \"Yahoo!\" ... The word \"yahoo\" is a backronym for \"Yet another Hierarchically Organized Oracle\" or \"Yet Another Hierarchical Officious Oracle\". However, founders Filo and Yang insist they mainly selected the name because they liked the slang definition ... This meaning derives from the Yahoo race of fictional beings from Gulliver's Travels."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "1994 스탠퍼드 대학원생 둘의 웹 목록",
+    "worthWhyGen": "유명 회사 이름이 '무례한 촌뜨기' 속어·걸리버 여행기에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '인터넷 회사' 예",
+     "unique": "1994 스탠퍼드 웹 목록 → 걸리버 종족 이름 = 하나(구글은 1998)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 167자"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "computer/4#g032b-g032b-j11-8",
+   "seed": {
+    "subject": "해저 케이블",
+    "aspect": null,
+    "ref": "g032b-j11-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "통신 설비 하나입니다. 1858년 8월 빅토리아 여왕이 미국 뷰캐넌 대통령에게 보낸 98단어 축하 전보가 처음으로 이것을 타고 대서양을 건넜는데, 보내는 데만 16시간이 걸렸습니다. 지금은 광섬유로 바뀌어 대륙 사이 인터넷 데이터를 실어 나르는 이것은?",
+    "answer": "해저 케이블",
+    "acceptedAnswers": [
+     "해저 통신 케이블",
+     "해저 광케이블"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "전보가 닿자 이튿날 뉴욕에서는 축포 100발이 울렸지만, 이 첫 선은 그해 9월 끊겼습니다. 1866년에 대형 증기선 그레이트 이스턴호가 새로 깔았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "대서양을 건넌 전보 · 광섬유로 바뀌어 대륙 사이 인터넷 데이터",
+     "difWhy": "2 — 해저 케이블은 일상 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 통신 기술 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "대륙과 대륙 사이 국제 통신을 잇는 선으로, 배의 닻이나 지진에 끊기면 전용 수리선이 나가고 상어가 물어 손상되기도 한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "바다 밑에 깔아 대륙 사이 통신을 잇는 케이블",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "인터넷 뉴스·다큐에서 접함",
+     "piece": "f06",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '통신 설비' 가 종류 명사 · 끝 '광섬유로 바뀐 이것' 으로 지시어가 첫 문장 대상과 연결됨"
+    },
+    "blindQuestion": {
+     "guess": "대서양 횡단 해저 케이블",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "해저 케이블",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "해저 케이블",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "391",
+      "answer": "패킷",
+      "verdict": "diff",
+      "why": "해저 케이블과 패킷은 다른 지식"
+     },
+     {
+      "old": "395",
+      "answer": "라우터",
+      "verdict": "diff",
+      "why": "해저 케이블과 라우터는 다른 지식"
+     },
+     {
+      "old": "392",
+      "answer": "최상위 도메인",
+      "verdict": "diff",
+      "why": "해저 케이블과 최상위 도메인은 다른 지식"
+     },
+     {
+      "old": "387",
+      "answer": "아파넷",
+      "verdict": "diff",
+      "why": "해저 케이블과 아파넷은 다른 지식"
+     },
+     {
+      "old": "g032b:g032b-j06-10",
+      "answer": "야후",
+      "verdict": "diff",
+      "why": "해저 케이블과 야후는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Transatlantic_telegraph_cable",
+     "https://ko.wikipedia.org/wiki/해저_통신_케이블"
+    ],
+    "facts": [
+     {
+      "claim": "빅토리아 여왕이 뷰캐넌 대통령에게 축하 전보 · 98단어 16시간",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Transatlantic_telegraph_cable",
+      "note": "a congratulatory telegram from Queen Victoria to President James Buchanan ... Queen Victoria's message of 98 words took 16 hours to send."
+     },
+     {
+      "claim": "첫 공식 통신 1858년 8월 16일",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Transatlantic_telegraph_cable",
+      "note": "The first communications occurred on August 16, 1858, but the line speed was poor."
+     },
+     {
+      "claim": "첫 해저 케이블은 전보 · 현대는 광섬유로 인터넷",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/해저_통신_케이블",
+      "note": "최초의 해저 통신 케이블은 전보 트래픽을 전달하였다. ... 현대의 모든 케이블은 광섬유 기술을 이용하여 디지털 신호를 전달한다. 이로써 전화 트래픽뿐 아니라 인터넷 ... 전송하는 데 이용한다."
+     },
+     {
+      "claim": "닻·지진·상어로 손상 · 수리 선박",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/해저_통신_케이블",
+      "note": "케이블은 트롤망, 닻, 지진, 해저 눈사태로 부서질 수 있으며, 심지어는 상어가 케이블을 무는 경우에도 손상을 입을 수 있다. 이러한 케이블을 수리하는 선박이 별도로 존재한다."
+     },
+     {
+      "claim": "축포 100발 · 1858년 9월 고장 · 1866년 그레이트 이스턴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Transatlantic_telegraph_cable",
+      "note": "The next morning a grand salute of 100 guns resounded in New York City / In September 1858 ... the cable failed altogether. / It was laid from the ship SS Great Eastern ... In July 1866 a third cable was laid"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/해저_통신_케이블"
+    ],
+    "hintNote": null,
+    "easiestCue": "대서양을 건넌 전보 + 지금 인터넷 데이터 — 무엇을 타고 건넜나",
+    "worthWhyGen": "인터넷이 대륙을 건너는 실제 길 — 일상 상식의 바탕(3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '통신 설비' 예",
+     "unique": "대서양 횡단 + 인터넷 = 해저 케이블(위성 아님 — 1858년)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  }
+ ]
+}

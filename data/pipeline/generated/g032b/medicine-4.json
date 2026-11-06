@@ -1,0 +1,417 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "medicine/4",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/4#g032b-g032b-j06-7",
+   "seed": {
+    "subject": "콜레스테롤",
+    "aspect": null,
+    "ref": "g032b-j06-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "사람 몸속에서도 만들어지는 한 물질입니다. 18세기 프랑스에서 쓸개에 생긴 돌인 담석에서 처음 고체로 얻어졌습니다. 1815년 화학자 미셸 외젠 셰브뢸이 이 물질에 이름을 붙였는데, 처음 찾은 그 돌의 재료인 쓸개즙에서 이름을 따왔습니다. 이 물질은 무엇일까요?",
+    "answer": "콜레스테롤",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "몸은 이 물질로 세포막과 성호르몬을 만들고, 뇌에서는 별아교세포가 직접 만들어 신경세포로 보낸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "담석에서 처음 고체로 얻어졌습니다 … 쓸개즙에서 이름을 따왔습니다",
+     "difWhy": "2 — 콜레스테롤은 건강 상식 · 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 건강 용어 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "혈관 벽에 쌓여 동맥경화를 부르는 물질로, 피검사에서 '나쁜' LDL과 '좋은' HDL로 나눠 잰다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "세포막을 이루는 지질 · 혈중 수치로 건강을 재는 물질",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "건강검진에서 흔한 말",
+     "piece": "f03",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '몸속에서도 만들어지는 물질'이 끝 ○○(물질)와 맞고 담석·쓸개즙 풀이가 문장 안에 있음"
+    },
+    "blindQuestion": {
+     "guess": "콜레스테롤",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "콜레스테롤",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "콜레스테롤",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Cholesterol",
+     "https://ko.wikipedia.org/wiki/콜레스테롤"
+    ],
+    "facts": [
+     {
+      "claim": "1769년 풀티에 드 라 살이 담석에서 고체로 처음 확인 · 1815년 셰브뢸이 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Cholesterol",
+      "note": "François Poulletier de la Salle first identified cholesterol in solid form in gallstones in 1769. In 1815, chemist Michel Eugène Chevreul named the compound \"cholesterine\". The word cholesterol comes from Ancient Greek χολή (kholḗ , 'bile') and στερεός (stereos, 'solid')"
+     },
+     {
+      "claim": "담석에서 처음 발견 · 이름 = 담즙 + 고체",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/콜레스테롤",
+      "note": "1784년에 최초로 담석에서 발견되었으며 콜레스테롤이라는 이름은 각각 담즙과 고체를 의미하는 그리스어 chole- 와 stereos ... (연도가 en 과 달라 질문은 '18세기')"
+     },
+     {
+      "claim": "LDL 나쁜 콜레스테롤 · 심혈관 위험",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Cholesterol",
+      "note": "Elevated levels of cholesterol in the blood, especially when bound to low-density lipoprotein (LDL, often referred to as \"bad cholesterol\"), may increase the risk of cardiovascular disease."
+     },
+     {
+      "claim": "뇌에서 별아교세포가 만들어 신경세포로",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Cholesterol",
+      "note": "In the brain, astrocytes produce cholesterol and transport it to neurons."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Cholesterol"
+    ],
+    "hintNote": null,
+    "easiestCue": "담석에서 처음 얻은 몸속 물질",
+    "worthWhyGen": "건강 검진마다 보는 물질 이름이 왜 '쓸개'에서 왔나(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '몸속 물질' 예",
+     "unique": "담석에서 처음 얻고 쓸개즙에서 이름 = 하나(빌리루빈은 이름 유래 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "medicine/4#g032b-g032b-j16-8",
+   "seed": {
+    "subject": "트립토판",
+    "aspect": null,
+    "ref": "g032b-j16-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영양소 하나가 추수감사절 식탁의 오해와 얽혀 있습니다. 미국과 영국에서는 칠면조를 많이 먹으면 졸린 까닭이 고기에 이 성분이 많아서라고 흔히 말하지만, 실제 함량은 다른 가금류와 비슷합니다. 1901년 영국 생화학자 프레더릭 홉킨스가 우유 단백질 카세인에서 처음 분리한 이 아미노산은?",
+    "answer": "트립토판",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "명절 뒤의 졸음은 함께 먹는 탄수화물이 인슐린 분비를 늘린 탓일 수 있다는 설명이 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "칠면조를 먹으면 졸린 까닭이라 말하는 아미노산",
+     "difWhy": "3 — 트립토판 이름 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 영양 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "몸에서 만들지 못해 음식으로 먹어야 하는 필수 아미노산으로, 행복 호르몬 세로토닌과 수면 호르몬 멜라토닌의 원료다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "세로토닌·멜라토닌의 원료가 되는 필수 아미노산",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "건강 정보·영양제에서 접함",
+     "piece": "f09",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영양소 하나'가 끝 ○○(아미노산)와 같은 계열. 속설은 오해 설명이지 해독 방해 없음."
+    },
+    "blindQuestion": {
+     "guess": "트립토판",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "트립토판",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "트립토판",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "462",
+      "answer": "필수아미노산",
+      "verdict": "diff",
+      "why": "트립토판(분리·칠면조 오해) vs 필수아미노산 정의 — 상위 개념 일반 정의와 구체 사실은 다른 지식"
+     },
+     {
+      "old": "4570",
+      "answer": "비타민",
+      "verdict": "diff",
+      "why": "트립토판 vs 비타민 어원 — 다른 영양소"
+     },
+     {
+      "old": "461",
+      "answer": "지방",
+      "verdict": "diff",
+      "why": "트립토판 vs 3대 영양소 지방 — 다른 지식"
+     },
+     {
+      "old": "g032b:g032b-j25-9",
+      "answer": "글루텐",
+      "verdict": "diff",
+      "why": "트립토판 vs 글루텐 — 다른 단백질"
+     },
+     {
+      "old": "463",
+      "answer": "엽산",
+      "verdict": "diff",
+      "why": "트립토판 vs 엽산 — 다른 영양소"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Tryptophan",
+     "https://ko.wikipedia.org/wiki/트립토판"
+    ],
+    "facts": [
+     {
+      "claim": "칠면조 졸음 속설 · 함량은 다른 고기와 비슷",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tryptophan",
+      "note": "A common assertion in the US and the UK is that heavy consumption of turkey meat—as seen during Thanksgiving and Christmas—results in drowsiness, due to high levels of tryptophan contained in turkey. However, the amount of tryptophan in turkey is comparable with that of other meats."
+     },
+     {
+      "claim": "칠면조 함량은 가금류 수준",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/트립토판",
+      "note": "조리된 칠면조에는 트립토판이 풍부하다는 일반적인 믿음과는 달리 칠면조의 트립토판 함량은 전형적인 가금류에서 볼 수 있는 함량이다."
+     },
+     {
+      "claim": "1901년 홉킨스 카세인에서 분리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tryptophan",
+      "note": "The isolation of tryptophan was first reported by Frederick Hopkins in 1901. Hopkins recovered tryptophan from hydrolysed casein"
+     },
+     {
+      "claim": "필수 아미노산 · 세로토닌·멜라토닌 전구체",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/트립토판",
+      "note": "트립토판은 사람에게 필수적인 아미노산으로 인체에서 합성되지 않으며 음식을 통해 섭취해야 한다. 트립토판은 또한 신경전달물질인 세로토닌, 호르몬인 멜라토닌 및 비타민 B3의 전구체이다."
+     },
+     {
+      "claim": "졸음은 탄수화물 · 인슐린 탓일 수 있음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Tryptophan",
+      "note": "Drowsiness after eating may be caused by other foods eaten with the turkey, particularly carbohydrates. Ingestion of a meal rich in carbohydrates triggers the release of insulin."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/트립토판"
+    ],
+    "hintNote": null,
+    "easiestCue": "칠면조를 먹으면 졸린 까닭으로 꼽히는 성분",
+    "worthWhyGen": "흔한 속설(칠면조 졸음)이 틀렸다는 상식 — 일반 상식·까닭 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '영양소' 예",
+     "unique": "칠면조 속설 · 홉킨스 1901 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 세로토닌/필수아미노산"
+    ],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "medicine/4#g032b-g032b-j25-9",
+   "seed": {
+    "subject": "글루텐",
+    "aspect": null,
+    "ref": "g032b-j25-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "밀가루 음식에 든 단백질 성분입니다. 밀가루에 물을 넣고 반죽하면 두 단백질이 엉겨 얇은 막을 만들고, 이 막이 이스트가 낸 가스를 붙잡아 빵을 부풀립니다. 셀리악병 환자가 피해야 하는 이 성분은?",
+    "answer": "글루텐",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "밀에서 이 성분만 뭉쳐 만든 세이탄은 소고기나 닭고기 맛을 흉내 내는 채식 요리 재료로 쓰인다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "셀리악병 환자가 피해야 하는 밀가루 단백질",
+     "difWhy": "2 — 글루텐 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 식생활에 쓸모",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "강력분·중력분·박력분을 가르는 기준이 되고, 빵과 국수의 쫄깃한 식감을 만드는 밀 단백질이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "밀·보리 등에 든 불용성 단백질 — 반죽의 쫄깃함을 만든다",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "글루텐프리로 널리 알려짐",
+     "piece": "f05",
+     "genPct": 80
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '밀가루 음식에 든 단백질 성분'이 끝 ○○(성분)와 일치, 짧음"
+    },
+    "blindQuestion": {
+     "guess": "글루텐",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "글루텐",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "글루텐",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j25-9",
+      "answer": "식이섬유",
+      "verdict": "diff",
+      "why": "글루텐 vs 식이섬유 — 다름"
+     },
+     {
+      "old": "462",
+      "answer": "필수아미노산",
+      "verdict": "diff",
+      "why": "글루텐 vs 필수아미노산 — 다름"
+     },
+     {
+      "old": "g032b:g032b-j16-8",
+      "answer": "트립토판",
+      "verdict": "diff",
+      "why": "글루텐 vs 트립토판 — 다름"
+     },
+     {
+      "old": "461",
+      "answer": "지방",
+      "verdict": "diff",
+      "why": "글루텐 vs 지방 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/글루텐",
+     "https://en.wikipedia.org/wiki/Gluten"
+    ],
+    "facts": [
+     {
+      "claim": "글루테닌+글리아딘이 반죽으로 결합해 피막 · 이산화탄소를 붙잡아 빵을 부풀림",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/글루텐",
+      "note": "밀가루에 물을 가하여 반죽 하면 … 글루테닌과 글리아딘이 서로 결합하면서 탄력성 있는 얇은 피막을 형성하게 되는데 이것이 글루텐이다. 글루텐의 피막은 이스트나 베이킹파우더에 의해 생성되는 이산화탄소를 포집하여 빵이나 케이크 등을 부풀게 하고"
+     },
+     {
+      "claim": "셀리악병",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gluten",
+      "note": "In people who have celiac disease, the peptides trigger an immune response that causes injury of the intestines"
+     },
+     {
+      "claim": "강력분·중력분·박력분 구분 · 쫄깃함",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/글루텐",
+      "note": "반죽을 쫄깃하게 하고 … 글루텐 함유량에 따라 밀가루를 강력분, 중력분, 박력분 등으로 구분한다."
+     },
+     {
+      "claim": "세이탄 · 모조 고기",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gluten",
+      "note": "Gluten, especially wheat gluten (seitan), is often the basis for imitation meats resembling beef, chicken, duck (see mock duck), fish and pork."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/글루텐"
+    ],
+    "hintNote": null,
+    "easiestCue": "셀리악병 환자가 피하는 밀 성분",
+    "worthWhyGen": "'○○ 프리' 식품으로 일상에 자리 잡은 영양 상식(3)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '단백질 성분' 예",
+     "unique": "밀 반죽 막 · 셀리악병으로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 단백질/식감"
+    ],
+    "job": "job-25"
+   }
+  }
+ ]
+}

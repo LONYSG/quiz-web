@@ -1,0 +1,129 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-cinema/3",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/3#g032b-g032b-j17-9",
+   "seed": {
+    "subject": "와호장룡",
+    "aspect": null,
+    "ref": "g032b-j17-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2000년에 나온 중화권 무협 영화입니다. 제목은 '눈에 띄지 않는 고수가 숨어 있는 곳'을 가리키는 중국 성어로, 남북조 시대 시인 유신의 시구에서 나왔습니다. 미국에서 1억 달러를 넘게 번 첫 비영어 영화인 이 영화는 무엇일까요?",
+    "answer": "와호장룡",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "제목 속 범과 용은 두 연인 주인공 나소호와 옥교룡의 이름 글자와도 겹친다. 원작은 왕두루의 소설이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "2000년 중화권 무협 영화 … 1억 달러 넘게 번 첫 비영어 영화",
+     "difWhy": "2 — 와호장룡 대중문화 · 성어 단서",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 작품 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "리안 감독이 주윤발·양자경·장쯔이와 찍어 2001년 아카데미 외국어 영화상을 받은 작품이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "리안 감독의 2000년 무협 영화(주윤발·양자경·장쯔이)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "유명 영화",
+     "piece": "f01",
+     "genPct": 60
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "와호장룡",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "와호장룡",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "와호장룡",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Crouching_Tiger,_Hidden_Dragon",
+     "https://ko.wikipedia.org/wiki/와호장룡"
+    ],
+    "facts": [
+     {
+      "claim": "제목 = 숨은 고수가 가득한 곳을 뜻하는 성어 · 유신(513~581)의 시",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Crouching_Tiger,_Hidden_Dragon",
+      "note": "The title \"Crouching Tiger, Hidden Dragon\" is a literal translation of the Chinese idiom \"臥虎藏龍\" which describes a place or situation that is full of unnoticed masters. It is from a poem of the ancient Chinese poet Yu Xin (513–581)"
+     },
+     {
+      "claim": "미국에서 1억 달러 넘긴 첫 비영어 영화",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Crouching_Tiger,_Hidden_Dragon",
+      "note": "The film was the first non-English language film to break the $100 million mark in the United States."
+     },
+     {
+      "claim": "2000년 리안 감독 무술 영화 · 주윤발·양자경·장쯔이 · 외국어 영화상",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/와호장룡",
+      "note": "2000년에 개봉한 리안 감독의 무술 영화이다. 이 영화에는 주윤발, 양자경, 장쯔이와 장첸을 포함한 ... 미국 아카데미상에서 최우수 외국어 영화상을 받았고"
+     },
+     {
+      "claim": "제목이 두 인물 Lo Xiaohu · Yu Jiaolong 과 이어짐 · 원작 왕두루",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Crouching_Tiger,_Hidden_Dragon",
+      "note": "The title Crouching Tiger, Hidden Dragon relates largely to the film's two characters, Lo Xiaohu and Yu Jiaolong / (ko) 왕두루의 동명 소설을 원작으로"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/와호장룡",
+     "https://en.wikipedia.org/wiki/Crouching_Tiger,_Hidden_Dragon"
+    ],
+    "hintNote": null,
+    "easiestCue": "2000년 중화권 무협 영화 + 1억 달러 — 영화 관심층은 떠올림",
+    "worthWhyGen": "제목 성어의 뜻과 출처(유래 3)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '무협 영화' 예",
+     "unique": "2000 · 1억 달러 첫 비영어 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 장쯔이"
+    ],
+    "job": "job-17",
+    "discarded": "알가치 1 (고유명사 · 작품 이름 확인)"
+   }
+  }
+ ]
+}

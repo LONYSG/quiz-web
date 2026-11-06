@@ -1,0 +1,377 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "medicine/2",
+  "midKey": "medicine",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "medicine/2#g032b-g032b-j06-6",
+   "seed": {
+    "subject": "파킨슨병",
+    "aspect": null,
+    "ref": "g032b-j06-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "뇌 신경이 서서히 망가지는 한 병입니다. 1817년 런던의 한 의사가 거리에서 본 환자를 포함해 여섯 사람의 사례를 모아 짧은 책을 냈습니다. 1877년 프랑스 신경학자 장마르탱 샤르코는 그 책이 붙인 병 이름이 모든 환자에게 맞지는 않는다며, 대신 그 의사의 이름으로 바꿔 불렀습니다. 이 병은?",
+    "answer": "파킨슨병",
+    "acceptedAnswers": [
+     "파킨슨",
+     "파킨슨씨병"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "책의 원래 병 이름은 '떨림 마비(shaking palsy)'였는데, 떨림이 없는 환자도 있어 샤르코가 이름을 바꿨다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "뇌 신경이 서서히 망가지는 병 / 의사 이름으로 바꿔 부름",
+     "difWhy": "3 — 파킨슨병 유명, 의사 이름 유래 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 질병 이름 유래, 건강 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "손 떨림과 굳은 근육, 느린 움직임이 오는 퇴행성 뇌 질환으로, 권투 선수 무하마드 알리가 앓았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "손 떨림·근육 경직·느린 동작이 오는 퇴행성 신경 질환",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "흔한 퇴행성 질환, 뉴스에 자주 나옴",
+     "piece": "f05",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '뇌 신경이 서서히 망가지는 병'이 끝 '이 병'과 일치."
+    },
+    "blindQuestion": {
+     "guess": "파킨슨병",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "파킨슨병",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "파킨슨병",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "973",
+      "answer": "도파민",
+      "verdict": "diff",
+      "why": "파킨슨병 명명 vs 도파민 — 병 이름 유래와 신경전달물질, 다른 지식"
+     },
+     {
+      "old": "5995",
+      "answer": "청진기",
+      "verdict": "diff",
+      "why": "파킨슨병 vs 청진기 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Parkinson%27s_disease",
+     "https://en.wikipedia.org/wiki/James_Parkinson"
+    ],
+    "facts": [
+     {
+      "claim": "1817년 제임스 파킨슨 '떨림 마비에 관한 에세이' · 여섯 사례 · 셋은 런던 거리에서 · 1877년 샤르코가 떨림이 모두에게 있지 않아 개명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Parkinson%27s_disease",
+      "note": "In 1817, English physician James Parkinson published the first full medical description of the disease ... An Essay on the Shaking Palsy. He presented six clinical cases, including three he had observed on the streets near Hoxton Square in London. ... In 1877, Charcot renamed the disease after Parkinson, as the tremor suggested by \"shaking palsy\" is not present in all."
+     },
+     {
+      "claim": "샤르코가 나중에 파킨슨병으로 이름을 바꿈",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Parkinson",
+      "note": "He is best known for his 1817 work An Essay on the Shaking Palsy, in which he was the first to describe \"paralysis agitans\", a condition that was later renamed Parkinson's disease by Jean-Martin Charcot."
+     },
+     {
+      "claim": "무하마드 알리",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Parkinson%27s_disease",
+      "note": "Boxer Muhammad Ali showed signs of PD when he was 38 ... he has been called the \"world's most famous Parkinson's patient\"."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Parkinson%27s_disease"
+    ],
+    "hintNote": null,
+    "easiestCue": "의사 이름이 붙은 신경 질환(1817 런던)",
+    "worthWhyGen": "잘 아는 병 이름이 왜 사람 이름이 되었나(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '병' 예",
+     "unique": "1817 런던 · 샤르코 개명 = 하나(알츠하이머는 1906 독일)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 166자",
+     "crossans 무하마드 알리"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "medicine/2#g032b-g032b-j16-7",
+   "seed": {
+    "subject": "초음파 검사",
+    "aspect": null,
+    "ref": "g032b-j16-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "병원 검사 하나가 보일러 공장에서 시작되었습니다. 1955년 7월 스코틀랜드 글래스고 대학의 이언 도널드 교수는 환자에게서 떼어 낸 혹들을 들고 한 보일러 회사 공장을 찾았습니다. 용접부의 금과 흠을 찾던 그곳 장비로 물혹과 단단한 종양을 가를 수 있는지 시험한 것입니다. 이 검사는?",
+    "answer": "초음파 검사",
+    "acceptedAnswers": [
+     "초음파",
+     "초음파 진단"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "도널드가 1958년 『랜싯』에 낸 논문은 이 검사를 의학에 널리 알린 이정표로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "용접부의 금과 흠을 찾던 장비로 물혹과 종양을 가를 수 있는지 시험",
+     "difWhy": "2 — 초음파 검사는 산부인과 등으로 아는 것 · 단서 간접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 의학 검사 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "배에 젤을 바르고 탐촉자를 대어 뱃속 태아의 모습을 화면으로 보는 검사로, 사람 귀에 들리지 않는 높은 소리의 메아리를 쓴다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "높은 주파수의 소리 반사로 몸속을 보는 영상 검사",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "병원 검사, 임신 초음파",
+     "piece": "f07",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '병원 검사 하나'가 끝 ○○(검사)와 일치, 의사 일화가 곧 검사의 기원"
+    },
+    "blindQuestion": {
+     "guess": "초음파 검사",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "초음파 검사",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "초음파 검사",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Ian_Donald",
+     "https://en.wikipedia.org/wiki/Obstetric_ultrasonography"
+    ],
+    "facts": [
+     {
+      "claim": "보일러 회사 Babcock & Wilcox 공장 · 용접 균열 검사용 산업 장비 · 1955년 7월 21일 · 섬유종·난소 낭종 가져감 · 낭종과 고형 종양 구별",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ian_Donald",
+      "note": "The patient's husband was the director of the boiler fabrication company Babcock and Wilcox ... The Renfrew company was a large user of industrial ultrasound that was used to check for crack and flaws in welds. Donald's purpose in making the visit to Renfrew on 21 July 1955 was to determine if the industrial detecting equipment could be used to differentiate types of tissue. He arrived at the plant with a number of fibroids and a large ovarian cyst ... a cyst produced echoes only at depth from the near and far walls, whereas a solid tumour progressively attenuated echoes"
+     },
+     {
+      "claim": "글래스고 대학 교수 · 1958 랜싯 논문 · 의료 초음파 선구자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Obstetric_ultrasonography",
+      "note": "Scottish physician Ian Donald was one of the pioneers of medical use of ultrasound. His article \"Investigation of Abdominal Masses by Pulsed Ultrasound\" was published in The Lancet in 1958. Donald was Regius Professor of Midwifery at the University of Glasgow."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Obstetric_ultrasonography"
+    ],
+    "hintNote": null,
+    "easiestCue": "용접부 금을 찾던 산업 장비로 몸속 혹을 가름",
+    "worthWhyGen": "누구나 받는 검사가 보일러 공장의 용접 검사에서 왔다는 유래 — 유래 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '병원 검사' 예",
+     "unique": "산업용 결함 탐지 = 초음파(엑스선은 활성 avoid · 다른 원리)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  },
+  {
+   "seedId": "medicine/2#g032b-g032b-j26-5",
+   "seed": {
+    "subject": "내시경",
+    "aspect": null,
+    "ref": "g032b-j26-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "몸속을 들여다보는 의료 기구입니다. 1868년 독일 의사 아돌프 쿠스마울은 칼을 목구멍 깊이 삼키는 곡예사에게 47cm 길이의 곧은 관과 거울, 등불을 넣어 식도와 위 윗부분을 살폈습니다. 칼 삼키기 곡예사 덕에 첫걸음을 뗀 이 기구는 무엇일까요?",
+    "answer": "내시경",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이 기구의 영어 이름은 1855년 프랑스 광학 기술자 샤를 슈발리에가 처음 썼다고 전한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "몸속을 들여다보는 의료 기구 · 식도와 위 윗부분을 살폈습니다",
+     "difWhy": "2 — 설명 → 이름 한 번",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 의료 기구의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "건강검진 때 수면 상태로 받기도 하며, 카메라 달린 가는 관을 입이나 항문으로 넣어 위와 대장 속을 직접 보는 검사 도구다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "입·항문 같은 구멍으로 넣어 몸속을 보는 검사 도구(endoscope)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "건강검진",
+     "piece": "f02",
+     "genPct": 97
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '몸속을 들여다보는 의료 기구'가 끝 ○○(기구)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "내시경",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "내시경",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "내시경",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1663",
+      "answer": "대장",
+      "verdict": "diff",
+      "why": "내시경 vs 대장 — 다름"
+     },
+     {
+      "old": "4567",
+      "answer": "심전도",
+      "verdict": "diff",
+      "why": "내시경 vs 심전도 — 다름"
+     },
+     {
+      "old": "2427",
+      "answer": "청진기",
+      "verdict": "diff",
+      "why": "내시경 vs 청진기 — 다른 의료 기구"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sword_swallowing",
+     "https://en.wikipedia.org/wiki/Endoscopy",
+     "https://ko.wikipedia.org/wiki/내시경"
+    ],
+    "facts": [
+     {
+      "claim": "1868 쿠스마울 · 칼 삼키는 사람 · 47cm 곧은 관 · 거울 · 등불 · 식도와 위 윗부분",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sword_swallowing",
+      "note": "In 1868, Adolf Kussmaul of Freiburg, Germany, performed an esophagoscopy on a sword-swallower using a rigid 47 cm (19 in) tube, mirrors, and a gasoline lamp. The apparatus, an early endoscope, allowed him to examine the esophagus and the fundus of the stomach."
+     },
+     {
+      "claim": "쿠스마울이 칼 삼키는 곡예사에게서 영감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Endoscopy",
+      "note": "Adolf Kussmaul was fascinated by sword swallowers who would insert a sword down their throat without gagging. This drew inspiration to insert a hollow tube for observation"
+     },
+     {
+      "claim": "입·항문 등 구멍으로 신체 깊숙한 곳 관찰",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/내시경",
+      "note": "입이나 항문 등의 구멍을 통해 신체의 깊숙한 곳을 살펴보는 데 사용된다."
+     },
+     {
+      "claim": "endoscope 용어 1855 슈발리에",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Endoscopy",
+      "note": "The term endoscope was first used on February 7, 1855, by engineer-optician Charles Chevalier"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/내시경"
+    ],
+    "hintNote": null,
+    "easiestCue": "몸속을 들여다보는 의료 기구 + 칼 삼키는 곡예사",
+    "worthWhyGen": "흔한 검진 도구가 곡예사 덕에 생긴 까닭(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '의료 기구' 예",
+     "unique": "목으로 관을 넣어 식도·위를 봄 — 청진기·엑스선과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 대장"
+    ],
+    "job": "job-26"
+   }
+  }
+ ]
+}

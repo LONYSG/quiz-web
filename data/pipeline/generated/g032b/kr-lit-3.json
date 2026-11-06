@@ -1,0 +1,158 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-lit/3",
+  "midKey": "kr-lit",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-lit/3#g032b-g032b-j21-2",
+   "seed": {
+    "subject": "술 권하는 사회",
+    "aspect": null,
+    "ref": "g032b-j21-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "현진건이 1921년 잡지 '개벽'에 발표한 단편소설입니다. 일본 유학까지 다녀온 남편이 밤마다 취해 돌아와, 자기를 이렇게 만드는 것은 조선이라는 세상이라고 아내에게 말합니다. 지금도 한국의 음주 문화를 꼬집을 때 자주 빌려 쓰는 이 소설의 제목은?",
+    "answer": "술 권하는 사회",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "현진건은 같은 해 1월 '개벽'에 가난한 부부 이야기 '빈처'를 먼저 실어 문단의 호평을 받았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "자기를 이렇게 만드는 것은 조선이라는 세상 / 음주 문화",
+     "difWhy": "3 — 교과 문학 작품 · 제목이 관용구로 쓰여 힌트",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 문학 작품 이름 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "세상의 부조리를 알면서도 끝내 맞서지 못하는 일제강점기 지식인의 무력함을 꼬집은 단편이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "현진건의 1921년 단편소설 — 음주 문화를 꼬집는 관용 표현이 된 제목",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "교과서·관용 표현",
+     "piece": "f01",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '단편소설'이 끝 ○○(소설)와 일치. 줄거리 단서가 짧게 이어짐."
+    },
+    "blindQuestion": {
+     "guess": "술 권하는 사회",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "술 권하는 사회",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "술 권하는 사회",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 2,
+     "found": 2,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5005",
+      "answer": "표본실의 청개구리",
+      "verdict": "diff",
+      "why": "술 권하는 사회는 표본실의 청개구리·무영탑·김유정·날개와 다른 작품·작가 지식이다"
+     },
+     {
+      "old": "5449",
+      "answer": "무영탑",
+      "verdict": "diff",
+      "why": "술 권하는 사회는 표본실의 청개구리·무영탑·김유정·날개와 다른 작품·작가 지식이다"
+     },
+     {
+      "old": "g032a:g032a-j11-2",
+      "answer": "김유정",
+      "verdict": "diff",
+      "why": "술 권하는 사회는 표본실의 청개구리·무영탑·김유정·날개와 다른 작품·작가 지식이다"
+     },
+     {
+      "old": "1739",
+      "answer": "날개",
+      "verdict": "diff",
+      "why": "술 권하는 사회는 표본실의 청개구리·무영탑·김유정·날개와 다른 작품·작가 지식이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/술_권하는_사회",
+     "https://ko.wikipedia.org/wiki/현진건",
+     "https://www.nhis.or.kr/static/alim/paper/oldpaper/202212/sub/01.html",
+     "https://www.dailypharm.com/user/news/187810"
+    ],
+    "facts": [
+     {
+      "claim": "현진건 · 1921년 개벽 발표 단편",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/술_권하는_사회",
+      "note": "〈술 권하는 사회〉는 현진건이 1921년 발표한 단편소설이다. 현진건 작가의 초기작으로, 1921년 잡지 개벽에 발표되었다."
+     },
+     {
+      "claim": "1921년 11월 개벽 · 나약한 지식인 풍자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/현진건",
+      "note": "1921년 1월에 현진건은 다시 『개벽』에 단편소설 「빈처」를 발표하였는데 ... 11월에는 다시 『개벽』에 단편 「술 권하는 사회」를 발표하였고 ... 작품 술 권하는 사회에서 그는 사회의 부조리함을 알면서도 저항하지 못하는 나약한 지식인상을 풍자하였다."
+     },
+     {
+      "claim": "음주 문화 기사·칼럼이 제목을 빌려 씀",
+      "where": "q",
+      "url": "https://www.nhis.or.kr/static/alim/paper/oldpaper/202212/sub/01.html",
+      "note": "(WebSearch 요약) 소설 발표 이후 100여 년이 지났지만 한국 사회가 여전히 술을 권하는 사회라고 진단 · 데일리팜 '연말에 더 술 권하는 사회'(2010) · 중앙일보 2026-08 기사도 소설 대사 인용"
+     },
+     {
+      "claim": "회식·송년회 칼럼 제목",
+      "where": "h",
+      "url": "https://www.dailypharm.com/user/news/187810",
+      "note": "연말에 더 술 권하는 사회 — 연말 송년회와 회식이 음주를 부추긴다는 점을 지적"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/현진건"
+    ],
+    "hintNote": null,
+    "easiestCue": "현진건 1921년 단편 · 남편이 밤마다 취해 들어옴",
+    "worthWhyGen": "지금도 쓰는 관용 표현('○○ 권하는 사회')의 출처(19 §9-1 ③) — 작품 이름 확인만은 아님",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '단편소설' 예",
+     "unique": "현진건 1921 개벽 · 취한 남편 — 하나(같은 해 '빈처'는 가난한 아내 이야기)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "힌트 partial-mid:하는"
+    ],
+    "job": "job-21"
+   }
+  }
+ ]
+}

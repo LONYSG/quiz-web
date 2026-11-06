@@ -1,0 +1,163 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "design-photo/1",
+  "midKey": "design-photo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/1#g032b-g032b-j18-1",
+   "seed": {
+    "subject": "HDR",
+    "aspect": null,
+    "ref": "g032b-j18-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "스마트폰 카메라에서 켜고 끄는 촬영 기능이 있습니다. 밝기를 달리해 찍은 여러 장을 한 장으로 합쳐, 눈부신 하늘과 어두운 그늘을 함께 살립니다. 1850년대 프랑스 사진가 귀스타브 르 그레가 바다와 하늘을 따로 찍은 음화 두 장으로 바다 사진 한 장을 인화한 것도 같은 생각이었습니다. 이 기능의 영문 약칭은?",
+    "answer": "HDR",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "컴퓨터 그래픽스 쪽에서는 폴 데베벡이 사물을 사실적으로 렌더링하는 데 이 기법의 맵을 처음 썼다고 알려져 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "스마트폰 카메라 … 눈부신 하늘과 어두운 그늘을 함께 살립니다 (영문 약칭)",
+     "difWhy": "2 — HDR 스마트폰 기능으로 흔함",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 쓸모 — 스마트폰 일상 기능",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "쓸모"
+    },
+    "generalHint": "역광 속 인물처럼 밝기 차가 큰 장면에서 쓰는 기능으로, 요즘은 텔레비전과 영상의 화질 규격 이름으로도 붙는다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "노출이 다른 여러 장을 합쳐 밝고 어두운 곳을 함께 살리는 촬영 기법(하이 다이내믹 레인지)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "TV·스마트폰 카메라 기능으로 익숙",
+     "piece": "f08",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '촬영 기능' 이 끝 ○○(기능) 와 일치, 르 그레 문장은 곁가지지만 같은 원리로 연결"
+    },
+    "blindQuestion": {
+     "guess": "HDR",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "HDR",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "HDR",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1569",
+      "answer": "ISO",
+      "verdict": "diff",
+      "why": "HDR vs ISO — 다른 카메라 용어"
+     },
+     {
+      "old": "5320",
+      "answer": "니콘",
+      "verdict": "diff",
+      "why": "HDR vs 니콘 — 다른 지식"
+     },
+     {
+      "old": "4854",
+      "answer": "폴라로이드",
+      "verdict": "diff",
+      "why": "HDR vs 폴라로이드 — 다른 지식"
+     },
+     {
+      "old": "4361",
+      "answer": "라이카",
+      "verdict": "diff",
+      "why": "HDR vs 라이카 — 다른 지식"
+     },
+     {
+      "old": "1576",
+      "answer": "삼분할 구도",
+      "verdict": "diff",
+      "why": "HDR vs 삼분할 구도 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/High-dynamic-range_imaging",
+     "https://ko.wikipedia.org/wiki/하이_다이내믹_레인지_이미징",
+     "https://en.wikipedia.org/wiki/Gustave_Le_Gray"
+    ],
+    "facts": [
+     {
+      "claim": "여러 노출을 합쳐 동적 범위를 넓힘",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/High-dynamic-range_imaging",
+      "note": "a technique, commonly named high dynamic range (HDR) ... consists of capturing multiple frames of the same scene but with different exposures and then combining them into one"
+     },
+     {
+      "claim": "서로 다른 노출의 여러 장으로 HDR 사진",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/하이_다이내믹_레인지_이미징",
+      "note": "이후 서로 다른 노출을 주어 찍은 여러 장의 사진으로부터 높은 동적 범위를 갖는 사진을 얻는 방법이 개발되었다."
+     },
+     {
+      "claim": "르 그레 · 바다용 음화와 하늘용 음화 합성 인화 · 1856~58 바다 사진",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gustave_Le_Gray",
+      "note": "Combination printing, creating seascapes by using one negative for the water and one negative for the sky. ... His most famous work dates from this period, 1856 to 1858, especially his seascapes."
+     },
+     {
+      "claim": "폴 데베벡 HDRI 맵 최초",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/하이_다이내믹_레인지_이미징",
+      "note": "컴퓨터 그래픽스에서 높은 동적 범위 이미징은 폴 데베벡이 개발하였다. 데베벡은 사물을 사실적으로 렌더링하고 애니메이션을 만드는 데 HDRI 맵을 최초로 이용한 것으로 알려져 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/High-dynamic-range_imaging"
+    ],
+    "hintNote": null,
+    "easiestCue": "밝기를 달리해 찍은 여러 장을 합쳐 하늘과 그늘을 함께 살리는 스마트폰 기능",
+    "worthWhyGen": "스마트폰·TV에서 늘 보는 말의 정체(교과·취미 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '촬영 기능' 예",
+     "unique": "영문 약칭 → HDR 하나(B2)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 174자"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

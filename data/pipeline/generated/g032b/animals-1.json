@@ -1,0 +1,465 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "animals/1",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/1#g032b-g032b-j05-4",
+   "seed": {
+    "subject": "아르마딜로",
+    "aspect": null,
+    "ref": "g032b-j05-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아메리카에 사는 한 포유동물은 사람 말고 한센병(나병)에 온몸이 걸리는 몇 안 되는 동물입니다. 체온이 34도 안팎으로 낮아, 사람 피부처럼 서늘한 곳에서 잘 자라는 한센병균이 살기 좋기 때문입니다. 그래서 실험실에서 키우기 어려운 이 균을 연구하는 데 쓰입니다. 이 동물은 무엇일까요?",
+    "answer": "아르마딜로",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름은 스페인어로 '갑옷 입은 작은 것'이라는 뜻이다. 15세기 말 유럽인이 오기 전 아메리카에는 한센병이 없었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "사람 말고 한센병에 온몸이 걸리는 아메리카 동물 · 체온 34도",
+     "difWhy": "3 — 한센병 연구 동물 지식 · 갑옷 동물 아르마딜로로 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 상식 · 범위 좁음",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "등과 몸통을 띠 모양의 단단한 딱지가 덮고, 위협받으면 몸을 공처럼 둥글게 마는 종도 있는 동물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "등이 띠 모양 딱지로 덮인 아메리카 포유동물(피갑목)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "동물 이름으로 널리 알려짐",
+     "piece": "f05",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '아메리카에 사는 포유동물', 끝 ○○ '동물'. 한센병은 괄호 풀이됨"
+    },
+    "blindQuestion": {
+     "guess": "아르마딜로",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아르마딜로",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아르마딜로",
+     "qFacts": 2,
+     "qSources": 1,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5055",
+      "answer": "한센병",
+      "verdict": "same",
+      "why": "아르마딜로가 한센병균 배양·연구에 쓰이는 같은 사실을 정답만 뒤집음(한센병↔아르마딜로)"
+     },
+     {
+      "old": "g032b:g032b-j12-7",
+      "answer": "천산갑",
+      "verdict": "diff",
+      "why": "아르마딜로 vs 천산갑 — 공처럼 마는 것만 겹침, 다른 동물"
+     },
+     {
+      "old": "g032a:g032a-j07-7",
+      "answer": "북극곰",
+      "verdict": "diff",
+      "why": "아르마딜로 vs 북극곰 털 — 무관"
+     },
+     {
+      "old": "4781",
+      "answer": "해달",
+      "verdict": "diff",
+      "why": "아르마딜로 vs 해달 — 무관"
+     },
+     {
+      "old": "3355",
+      "answer": "박쥐",
+      "verdict": "diff",
+      "why": "아르마딜로 vs 박쥐 복 무늬 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Armadillo",
+     "https://ko.wikipedia.org/wiki/아르마딜로"
+    ],
+    "facts": [
+     {
+      "claim": "한센병에 온몸으로 걸리는 몇 안 되는 동물 · 낮은 체온(34도)이 균에 알맞음 · 균 배양 어려움",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Armadillo",
+      "note": "Armadillos are often used in the study of leprosy, since they ... are among the few known species that can contract the disease systemically. They are particularly susceptible due to their unusually low body temperature ... (The leprosy bacterium is difficult to culture and armadillos have a body temperature of 34 °C (93 °F), similar to human skin.)"
+     },
+     {
+      "claim": "사람이 만지거나 먹어서 옮기도 함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Armadillo",
+      "note": "Humans can acquire a leprosy infection from armadillos by handling them or consuming armadillo meat."
+     },
+     {
+      "claim": "띠 모양 딱지 · 몸을 둥글게 맒",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아르마딜로",
+      "note": "거북의 등딱지(귀갑)와 비슷한 띠모양의 딱지가 몸 등쪽의 거의 전부를 덮는 ... 세띠아르마딜로는 공처럼 완전히 몸을 둥글게 할 수 있는데"
+     },
+     {
+      "claim": "이름 = 스페인어 '갑옷 입은 작은 것' · 유럽인 오기 전 신대륙에 한센병 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Armadillo",
+      "note": "The word armadillo means 'little armored one' in Spanish ... Prior to the arrival of Europeans in the late 15th century, leprosy was unknown in the New World."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아르마딜로"
+    ],
+    "hintNote": null,
+    "easiestCue": "한센병 연구에 쓰는 아메리카 포유동물 — 이 사실을 알아야 풂",
+    "worthWhyGen": "왜 이 동물이 한센병에 걸리는가(낮은 체온) — 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '포유동물' 예",
+     "unique": "한센병 연구 동물로는 이것이 대표(쥐 발바닥 등은 국소) — '온몸이' 로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-05",
+    "discarded": "중복 같은 지식 5055 한센병 — 아르마딜로가 한센병균 배양·연구에 쓰이는 같은 사실을 정답만 뒤집음(한센병↔아르마딜로)"
+   }
+  },
+  {
+   "seedId": "animals/1#g032b-g032b-j12-7",
+   "seed": {
+    "subject": "천산갑",
+    "aspect": null,
+    "ref": "g032b-j12-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아시아와 아프리카의 열대에 사는 포유류입니다. 몸을 덮은 비늘은 사람 손톱과 같은 케라틴으로 되어 있고, 위협을 받으면 몸을 공처럼 맙니다. 이가 없어 삼킨 작은 돌로 위에서 먹이를 갈아 소화합니다. 비늘이 약재로 팔려 세계에서 가장 많이 밀거래되는 포유류로 꼽히는 이 동물은 무엇일까요?",
+    "answer": "천산갑",
+    "acceptedAnswers": [
+     "판골린"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "겉모습은 아르마딜로와 닮았지만 가까운 친척이 아니며, 둘은 따로따로 비늘을 갖게 된 수렴 진화의 예입니다. 지금 여덟 종 모두 멸종 위협 등급에 올라 있습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "몸을 덮은 비늘 · 위협을 받으면 몸을 공처럼 맙니다",
+     "difWhy": "3 — 단서는 많으나 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 지식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "솔방울 같은 몸으로 개미와 흰개미를 긴 혀로 핥아 먹는 동물로, 코로나19 초기에 바이러스 중간 숙주 후보로 지목되었다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "비늘로 덮인 개미·흰개미 먹는 포유류(유린목)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "코로나 때 뉴스·동물 방송",
+     "piece": "f01",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '열대에 사는 포유류' 가 종류, 끝 '이 동물' 과 맞는다. 마지막 문장이 길지만 주어는 하나."
+    },
+    "blindQuestion": {
+     "guess": "천산갑",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "천산갑",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "천산갑",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j28-10",
+      "answer": "하이에나",
+      "verdict": "diff",
+      "why": "새 정답 천산갑 과 옛 정답 하이에나 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "3357",
+      "answer": "코끼리",
+      "verdict": "diff",
+      "why": "새 정답 천산갑 과 옛 정답 코끼리 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032b:g032b-j05-4",
+      "answer": "아르마딜로",
+      "verdict": "diff",
+      "why": "새 정답 천산갑 과 옛 정답 아르마딜로 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4781",
+      "answer": "해달",
+      "verdict": "diff",
+      "why": "새 정답 천산갑 과 옛 정답 해달 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "724",
+      "answer": "하마",
+      "verdict": "diff",
+      "why": "새 정답 천산갑 과 옛 정답 하마 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Pangolin",
+     "https://ko.wikipedia.org/wiki/천산갑"
+    ],
+    "facts": [
+     {
+      "claim": "케라틴 비늘(손톱과 같은 물질) · 공처럼 말기 · 위석",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pangolin",
+      "note": "They are made of keratin, the same material from which human fingernails and tetrapod claws are made ... It can curl up into a ball when threatened ... without teeth, pangolins cannot chew; so while foraging, they ingest small stones (gastroliths)"
+     },
+     {
+      "claim": "세계에서 가장 많이 밀거래되는 포유류 · 비늘 약재",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Pangolin",
+      "note": "Pangolins are threatened by poaching (for their meat and scales, which are used in traditional medicine) ... and are also the most trafficked mammals in the world."
+     },
+     {
+      "claim": "아프리카·아시아 열대 · 큰 비늘 · 몸을 둥글게 맒",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/천산갑",
+      "note": "천산갑류는 몸에 큰 비늘이 있으며, 아프리카와 아시아의 열대 지역에 분포한다. ... 천산갑은 낮 동안에는 몸을 둥글게 만 채 잠을 잔다."
+     },
+     {
+      "claim": "솔방울 · 긴 혀로 개미·흰개미 · 코로나 중간 숙주 후보",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Pangolin",
+      "note": "The pangolin's scaled body is comparable in appearance to a pine cone. / diet consists of mainly ants and termites, which they capture using their long tongues / prior to infecting humans, was circulating among pangolins (hypothesized)"
+     },
+     {
+      "claim": "아르마딜로와 수렴 진화 · 8종 모두 위협 등급",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Pangolin",
+      "note": "they are not closely related to armadillos, having both evolved scales by convergent evolution. / there are eight species of pangolin whose conservation status is listed in the threatened tier."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Pangolin",
+     "https://ko.wikipedia.org/wiki/천산갑"
+    ],
+    "hintNote": null,
+    "easiestCue": "비늘로 덮인 포유류",
+    "worthWhyGen": "알가치 2 — 동물 세부 · 밀거래·코로나 뉴스로 알려진 동물",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '포유류' 예",
+     "unique": "비늘 포유류 — 하나(아르마딜로는 비늘이 케라틴 판이 아닌 골판)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 161자",
+     "crossans 숙주/흰개미",
+     "⑨ 종류 '동물' 첫 문장에 없음"
+    ],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "animals/1#g032b-g032b-j28-10",
+   "seed": {
+    "subject": "하이에나",
+    "aspect": null,
+    "ref": "g032b-j28-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "주로 아프리카에 사는 육식 포유류입니다. 생김새와 사냥 방식은 개를 닮았지만, 분류로는 고양이와 사향고양이에 더 가까운 고양이아목에 속합니다. 점박이 종은 암컷이 수컷보다 크고 무리를 이끄는 이 동물은?",
+    "answer": "하이에나",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "현생 종은 넷뿐이며, 그 가운데 땅늑대는 큰 먹이 대신 벌레를 주로 먹는다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "점박이 종은 암컷이 수컷보다 크고 개를 닮은 아프리카 육식 동물",
+     "difWhy": "2 — 점박이 단서로 바로",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 지식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "사자가 남긴 고기를 노리는 청소동물로 유명하지만, 강한 턱으로 직접 사냥도 잘하고 웃음 같은 울음소리를 낸다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "아프리카 초원의 개 닮은 육식 포유류(hyena)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "동물 다큐·만화 라이온킹",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '아프리카 육식 포유류'가 끝 '이 동물'과 일치. 고양이아목은 사향고양이로 풀이됨."
+    },
+    "blindQuestion": {
+     "guess": "하이에나",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "하이에나",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "하이에나",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "청소동물로 알려졌지만 사냥에 능함 · 강한 치악력 · 웃음 같은 소리",
+       "url": "https://ko.wikipedia.org/wiki/하이에나",
+       "note": "사자보다 강한 치악력을 가지고 있어 ... 청소동물로 알려져 있지만 지구력과 협동을 통한 사냥에도 매우 능하다. (en: producing a number of different sounds consisting of"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j12-7",
+      "answer": "천산갑",
+      "verdict": "diff",
+      "why": "하이에나 vs 천산갑 — 다른 동물"
+     },
+     {
+      "old": "3354",
+      "answer": "고래",
+      "verdict": "diff",
+      "why": "하이에나 vs 하마의 친척 고래 — 다른 지식"
+     },
+     {
+      "old": "724",
+      "answer": "하마",
+      "verdict": "diff",
+      "why": "하이에나 vs 하마 — 다른 동물"
+     },
+     {
+      "old": "g032a:g032a-j28-10",
+      "answer": "카피바라",
+      "verdict": "diff",
+      "why": "하이에나 vs 카피바라 — 다른 동물"
+     },
+     {
+      "old": "1387",
+      "answer": "기린",
+      "verdict": "diff",
+      "why": "하이에나 vs 기린 — 다른 동물"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/하이에나",
+     "https://en.wikipedia.org/wiki/Hyena"
+    ],
+    "facts": [
+     {
+      "claim": "고양이아목 · 고양이·사향고양이에 더 가까움 · 개과와 닮음(수렴 진화) · 점박이 암컷이 크고 우두머리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/하이에나",
+      "note": "하이에나(Hyena ...)는 식육목 고양이아목에 속하는 하이에나과 동물의 총칭이다. ... 하이에나는 분류계통학상 고양이와 사향고양이에 더욱 가깝지만 행동학상, 그리고 형태학상으로는 수렴진화 때문에 일부 요소에서 개과 동물들과 닮은 점이 있다. ... 점박이하이에나는 암컷이 수컷보다 크며 무리의 우두머리다."
+     },
+     {
+      "claim": "feliform · 고양이과·사향고양이과에 더 가까움 · 개과와 행동·형태 닮음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hyena",
+      "note": "Hyenas ... are feliform carnivoran mammals ... Although phylogenetically closer to felines and viverrids, hyenas are behaviourally and morphologically similar to canids in several elements due to convergent evolution"
+     },
+     {
+      "claim": "청소동물로 알려졌지만 사냥에 능함 · 강한 치악력 · 웃음 같은 소리",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/하이에나",
+      "note": "사자보다 강한 치악력을 가지고 있어 ... 청소동물로 알려져 있지만 지구력과 협동을 통한 사냥에도 매우 능하다. (en: producing a number of different sounds consisting of whoops, grunts, ... giggles, yells, growls, laughs and whines)"
+     },
+     {
+      "claim": "현생 4종 · 땅늑대 벌레",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Hyena",
+      "note": "With just four extant species (each in its own genus) ... (ko: 이 혈통은 벌레를 잡아먹던 땅늑대(aardwolf)만이 살아남아)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/하이에나",
+     "https://en.wikipedia.org/wiki/Hyena"
+    ],
+    "hintNote": null,
+    "easiestCue": "아프리카 · 개를 닮은 육식 포유류 · 점박이",
+    "worthWhyGen": "개처럼 보이는 동물이 실은 고양이 쪽이라는 반전 — 동물 상식",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '육식 포유류' — 끝 '동물'",
+     "unique": "개 닮음 + 고양이아목 + 점박이 암컷 우두머리 — 하이에나 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28"
+   }
+  }
+ ]
+}

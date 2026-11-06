@@ -1,0 +1,142 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "society/1",
+  "midKey": "society",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "society/1#g032b-g032b-j27-3",
+   "seed": {
+    "subject": "국민학교",
+    "aspect": null,
+    "ref": "g032b-j27-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우리나라 초등 6년 과정의 옛 이름입니다. 1941년 일제가 소학교를 고쳐 만들며 '황국의 도'에 따른 기초 교육을 목적으로 내세웠습니다. 광복 뒤에도 50년 넘게 쓰이다가 1996년 '초등학교'로 바뀐 이 이름은?",
+    "answer": "국민학교",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "독일어 Volksschule를 옮긴 이름이라는 설도 있다. 북한은 '인민학교'를 쓰다가 2002년 '소학교'로 이름을 바꿨다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "1996년 초등학교로 바뀐 이 이름",
+     "difWhy": "1 — 초등학교 옛 이름 · 바로 떠오름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 교육 제도 상식과 일상어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "1990년대 중반 이전에 초등 과정을 다닌 어른들의 졸업장에 찍혀 있고 지금도 입버릇처럼 나오는 옛 이름",
+    "generalHintVersion": "hint-v7",
+    "identity": "1996년 초등학교로 바뀌기 전 초등 과정의 이름(일제 1941년 국민학교령에서 옴)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "세대가 직접 겪은 이름",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '초등 6년 과정의 옛 이름'이 곧 끝 '이 이름'. 짧고 명확."
+    },
+    "blindQuestion": {
+     "guess": "국민학교",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "국민학교",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "국민학교",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1908",
+      "answer": "의무교육",
+      "verdict": "diff",
+      "why": "국민학교 vs 의무교육 — 다름"
+     },
+     {
+      "old": "1909",
+      "answer": "6-3-3-4 학제",
+      "verdict": "diff",
+      "why": "국민학교 vs 6-3-3-4 학제 — 다름"
+     },
+     {
+      "old": "6412",
+      "answer": "유치원",
+      "verdict": "diff",
+      "why": "국민학교 vs 유치원 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/국민학교",
+     "https://ko.wikipedia.org/wiki/초등학교"
+    ],
+    "facts": [
+     {
+      "claim": "1941년 국민학교령 · 소학교 개편 · 황국의 도에 입각한 초등보통교육",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/국민학교",
+      "note": "본래 심상소학교와 고등소학교로 이루어져 있던 소학교 제도를 개편한 것으로, 1941년 국민학교령에 따라 설립되었다. / 국민학교는 황국의 도에 입각하여 초등보통교육을 베풀어 국민의 기초적 연성을 행함을 목적으로 함"
+     },
+     {
+      "claim": "광복 뒤에도 사용 · 1996년 초등학교로 변경",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/초등학교",
+      "note": "한국의 경우 1941년 일본 제국에서 도입된 국민학교(國民學校)라는 이름이 광복 이후로도 계속 사용되다가 1996년 김영삼 정부 당시 일제 잔재 청산 차원에서 서양식 표현인 초등학교로 명칭을 변경"
+     },
+     {
+      "claim": "1996년 3월부터 초등학교 · 북한 인민학교 → 2002 소학교 · Volksschule 설",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/국민학교",
+      "note": "독일어 Volksschule(...)의 번역이라는 설이 있다. / 1996년 3월부터 초등학교로 개칭하였다. 조선민주주의인민공화국에서도 ... '인민학교'로 호칭하며 계속 써오다 2002년 9월을 기해 '소학교'로 이름을 바꿨다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/초등학교"
+    ],
+    "hintNote": null,
+    "easiestCue": "1996년 '초등학교'로 바뀐 옛 이름",
+    "worthWhyGen": "누구나 들어 본 옛 이름이 일제 '황국신민' 교육에서 왔다는 까닭(19 §9-1 ②)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '옛 이름' 예",
+     "unique": "1996년 초등학교로 바뀐 이름 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-27"
+   }
+  }
+ ]
+}

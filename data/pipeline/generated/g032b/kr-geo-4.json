@@ -1,0 +1,170 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-geo/4",
+  "midKey": "kr-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-geo/4#g032b-g032b-j01-8",
+   "seed": {
+    "subject": "풍기",
+    "aspect": null,
+    "ref": "g032b-j01-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경상북도 영주시에 있는 한 읍입니다. 1541년 이 고을 군수로 온 주세붕이 산삼 씨앗을 받아 밭에 심게 하면서, 우리나라 재배 인삼이 시작된 곳으로 꼽힙니다. 주세붕이 우리나라 첫 서원인 백운동 서원을 세운 고을이기도 한 이 읍은?",
+    "answer": "풍기",
+    "acceptedAnswers": [
+     "풍기읍"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "삼국사기에는 734년 신라가 당 현종에게 이 고장 산삼 200근을 보냈다는 기록도 전한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "우리나라 재배 인삼이 시작된 곳 · 백운동 서원",
+     "difWhy": "3 — 풍기 인삼 연결 · 지명 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 지역 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "고장 이름을 딴 인삼으로 이름난 경북 영주의 읍으로, 해마다 인삼축제가 열리고 인견 직물로도 알려졌다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "인삼으로 이름난 경북 영주시의 읍",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "풍기인삼으로 들어 본 사람이 있음",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '영주시에 있는 읍', 끝 ○○ '읍'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "풍기읍",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "풍기읍",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "풍기",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 1,
+     "outside": 2,
+     "notFound": [
+      {
+       "claim": "풍기읍 · 풍기인삼",
+       "url": "https://ko.wikipedia.org/wiki/풍기읍",
+       "note": "풍기인삼 (문서 항목)"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "3703",
+      "answer": "슈퍼스타K",
+      "verdict": "diff",
+      "why": "새 정답 풍기의 지식(유래·사실)과 옛 정답 슈퍼스타K의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6817",
+      "answer": "오존",
+      "verdict": "diff",
+      "why": "새 정답 풍기의 지식(유래·사실)과 옛 정답 오존의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2960",
+      "answer": "전주",
+      "verdict": "diff",
+      "why": "새 정답 풍기의 지식(유래·사실)과 옛 정답 전주의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2954",
+      "answer": "보성",
+      "verdict": "diff",
+      "why": "새 정답 풍기의 지식(유래·사실)과 옛 정답 보성의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "203",
+      "answer": "남원시",
+      "verdict": "diff",
+      "why": "새 정답 풍기의 지식(유래·사실)과 옛 정답 남원시의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://www.imaeil.com/page/view/2008091111522127430",
+     "https://ko.wikipedia.org/wiki/주세붕",
+     "https://ko.wikipedia.org/wiki/풍기읍",
+     "https://www.kukinews.com/article/view/kuk201710120163"
+    ],
+    "facts": [
+     {
+      "claim": "1541년 풍기군수 주세붕 · 산삼 종자로 인삼 재배 시작 · 재배 인삼의 효시",
+      "where": "q",
+      "url": "https://www.imaeil.com/page/view/2008091111522127430",
+      "note": "1541년 풍기군수로 부임한 신제 주세붕이 ... 풍기 지역이 인삼재배에 가장 적합한 곳이라는 것을 확인 ... 산삼의 종자를 채취하여 밭에 심으면서 시작 (매일신문 · 검색 요약)"
+     },
+     {
+      "claim": "주세붕 풍기 군수 · 백운동 서원 = 한국 최초의 서원",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/주세붕",
+      "note": "풍기 군수로 있을 때 ... 1542년(중종 37) 백운동에 고려 말의 학자 안향의 사당을 세웠다. 이듬해 백운동 서원(소수 서원)을 창설하였는데, 이것이 한국 최초의 서원이다."
+     },
+     {
+      "claim": "풍기읍 · 풍기인삼",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/풍기읍",
+      "note": "풍기인삼 (문서 항목)"
+     },
+     {
+      "claim": "734년 풍기산삼 200근",
+      "where": "e",
+      "url": "https://www.kukinews.com/article/view/kuk201710120163",
+      "note": "서기 734년 (신라 성덕왕33년) 당 현종에게 하정사를 보내 풍기산삼 200근을 선물했다는 내용이 삼국사기에 있고 (검색 요약)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://www.imaeil.com/page/view/2008091111522127430"
+    ],
+    "hintNote": null,
+    "easiestCue": "주세붕이 인삼 재배를 시작한 영주의 읍",
+    "worthWhyGen": "특산 인삼이 왜 이 고장에서 시작되었는지(군수가 산삼 씨앗을 밭에 심음)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '영주시의 읍' 예",
+     "unique": "영주시 읍 · 주세붕 · 인삼 — 풍기 하나(순흥은 서원 자리지만 읍 아님 · 인삼 아님)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  }
+ ]
+}

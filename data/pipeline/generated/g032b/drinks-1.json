@@ -1,0 +1,172 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "drinks/1",
+  "midKey": "drinks",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "drinks/1#g032b-g032b-j18-6",
+   "seed": {
+    "subject": "시라즈",
+    "aspect": null,
+    "ref": "g032b-j18-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "적포도 품종이 있습니다. 페르시아의 옛 도시와 이름이 같아 그곳에서 건너왔다는 전설이 오래 돌았습니다. 그러나 1998년 미국 캘리포니아 대학교 데이비스의 연구팀이 DNA를 분석해, 프랑스 남동부의 잘 알려지지 않은 두 품종이 부모임을 밝혔습니다. 오늘날 호주에서 가장 많이 심는 이 품종은?",
+    "answer": "시라즈",
+    "acceptedAnswers": [
+     "시라",
+     "쉬라즈"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1968년 프랑스의 재배 면적은 2,700헥타르뿐이었지만, 1999년 조사에서는 5만 700헥타르로 늘었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "오늘날 호주에서 가장 많이 심는 적포도 품종",
+     "difWhy": "4 — 와인 품종 세부 · 마니아 영역",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 와인 품종 취미",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "프랑스 론 지방 에르미타주·코트 로티 와인의 주품종이자, 호주 바로사 밸리를 대표하는 진하고 후추 향 도는 레드 와인 품종이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "프랑스 론 지방 원산의 적포도 품종(호주 이름 시라즈 · 프랑스 이름 시라)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "와인 좋아하는 사람만 앎",
+     "piece": "f01",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '적포도 품종' 이 종류. 끝 '이 품종은?' 과 같아 일화가 앞서지 않는다."
+    },
+    "blindQuestion": {
+     "guess": "시라즈",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "시라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "시라즈",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3528",
+      "answer": "카베르네 소비뇽",
+      "verdict": "diff",
+      "why": "시라즈 vs 카베르네 소비뇽 — 다른 품종"
+     },
+     {
+      "old": "5791",
+      "answer": "피노 누아",
+      "verdict": "diff",
+      "why": "시라즈 vs 피노 누아 — 다른 품종"
+     },
+     {
+      "old": "5792",
+      "answer": "진판델",
+      "verdict": "diff",
+      "why": "시라즈 vs 진판델 — 다른 품종"
+     },
+     {
+      "old": "4860",
+      "answer": "파리의 심판",
+      "verdict": "diff",
+      "why": "시라즈 DNA 연구 vs 파리의 심판 — 다른 사건"
+     },
+     {
+      "old": "1582",
+      "answer": "샴페인",
+      "verdict": "diff",
+      "why": "시라즈 vs 샴페인 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Syrah",
+     "https://ko.wikipedia.org/wiki/시라_(포도)"
+    ],
+    "facts": [
+     {
+      "claim": "페르시아 시라즈 기원 전설 · 1998 UC 데이비스 메러디스 연구팀 DNA · 부모 두레자·몽되즈 블랑슈(프랑스 남동부)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Syrah",
+      "note": "A 1998 study conducted by Carole Meredith's research group ... University of California, Davis used DNA typing ... to conclude that Syrah was the offspring of the grape varieties Dureza (father) and Mondeuse blanche (mother). ... Legends of Syrah's origins often connect it with the city of Shiraz in ancient Iran."
+     },
+     {
+      "claim": "시라 = 시라즈 · 프랑스 남동부 두 품종의 자손",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/시라_(포도)",
+      "note": "시라 또는 시라즈(Shiraz)는 ... 포도 품종 ... 유전학적으로 1999년에 시라(Syrah)는 프랑스 중남부 아르데슈주의 두레자와 프랑스 남동부의 몽되즈 블랑슈의 두 가지 포도 품종의 자손으로 밝혀졌다."
+     },
+     {
+      "claim": "호주에서 가장 많이 심는 적포도 · 호주에선 Shiraz",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Syrah",
+      "note": "The name \"Shiraz\" has been used primarily in Australia in modern times, where it has long been established as the most grown dark-skinned variety."
+     },
+     {
+      "claim": "코트 로티·에르미타주 · 바로사 · 후추 향",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Syrah",
+      "note": "appellations ... such as Cote-Rotie, Crozes-Hermitage or Hermitage ... In the Barossa Valley ... Shiraz vines ... \"Shiraz\"-labelled wines ... peppery rather than smokey"
+     },
+     {
+      "claim": "1968 2,700ha → 1999 50,700ha",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Syrah",
+      "note": "In 1968, there existed only 2,700 hectares (6,700 acres) of Syrah vineyards in France ... the 1999 viticultural survey found 50,700 hectares"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Syrah"
+    ],
+    "hintNote": null,
+    "easiestCue": "호주에서 가장 많이 심는 적포도 품종",
+    "worthWhyGen": "이름 때문에 생긴 전설과 DNA로 밝힌 진짜 고향(유래 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '적포도 품종' 예",
+     "unique": "호주 최다 적포도 → 하나 · 시라/시라즈는 같은 품종이라 변형",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 163자",
+     "crossans 후추"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

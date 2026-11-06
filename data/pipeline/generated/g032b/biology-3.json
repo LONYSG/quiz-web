@@ -1,0 +1,317 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "biology/3",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/3#g032b-g032b-j04-12",
+   "seed": {
+    "subject": "참새",
+    "aspect": null,
+    "ref": "g032b-j04-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1958년 중국이 쥐·파리·모기와 함께 '네 가지 해로운 것'으로 정해 없애려 한 동물이 있습니다. 사람들은 냄비와 북을 두드려 이 동물이 쉬지 못하고 지쳐 떨어지게 했습니다. 그러자 해충을 잡아먹던 천적이 사라져 생태계 균형이 무너졌습니다. 1960년 그 목록에서 빠진 이 동물은?",
+    "answer": "참새",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1960년 조류학자 정쭤신이 이 동물이 곡식뿐 아니라 벌레도 많이 먹는다고 지적한 것이 방향을 돌렸다. 대약진 운동 시기의 대기근으로 수천만 명이 굶어 죽었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1958년 중국 네 가지 해로운 것 / 쥐·파리·모기와 함께",
+     "difWhy": "2 — 사대해 일화 널리 알려짐 · 참새는 쉬운 동물",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 일화 — 생태계 교훈 유명 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "일화"
+    },
+    "generalHint": "가을 들판의 허수아비가 쫓아내는 작은 갈색 날짐승으로, '방앗간을 그냥 지나랴' 라는 속담의 주인공이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "곡식 낟알과 벌레를 먹는 작은 텃새(sparrow) — 중국 제사해 운동의 표적",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "흔한 새",
+     "piece": "f07",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '동물' 이 있어 끝 ○○(동물) 와 일치, 사건 순서대로 읽힘"
+    },
+    "blindQuestion": {
+     "guess": "참새",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "참새",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "참새",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6240",
+      "answer": "낙수 효과",
+      "verdict": "diff",
+      "why": "중국 4해 참새 박멸 vs 낙수 효과 '말과 참새' — 참새는 비유 속 낱말일 뿐"
+     },
+     {
+      "old": "4618",
+      "answer": "과잉금지 원칙",
+      "verdict": "diff",
+      "why": "참새 박멸 vs 과잉금지 원칙 속담 — 무관"
+     },
+     {
+      "old": "2114",
+      "answer": "분해자",
+      "verdict": "diff",
+      "why": "참새 박멸 사건 vs 분해자 개념 — 다른 지식"
+     },
+     {
+      "old": "2120",
+      "answer": "숲",
+      "verdict": "diff",
+      "why": "참새 박멸 vs 탄소 저장고 숲 — 무관"
+     },
+     {
+      "old": "g032a:g032a-j14-7",
+      "answer": "천적",
+      "verdict": "diff",
+      "why": "참새 박멸 사건 vs 천적 용어 정의 — 사건과 개념, 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Four_Pests_campaign",
+     "https://ko.wikipedia.org/wiki/제사해_운동"
+    ],
+    "facts": [
+     {
+      "claim": "1958년 제사해 운동 — 쥐·파리·모기·참새",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Four_Pests_campaign",
+      "note": "Authorities targeted four \"pests\" for elimination: rats, flies, mosquitoes, and sparrows. ... the campaign would not be officially launched until February 12, 1958."
+     },
+     {
+      "claim": "냄비·후라이팬·북을 두드려 내려앉지 못하고 지쳐 죽게 함 · 천적 사라져 해충 창궐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/제사해_운동",
+      "note": "새가 땅에 내려앉지 못하고 계속 하늘을 날다가 지쳐 죽게 만들기 위해 냄비와 후라이팬, 북을 두드리며 스트레스를 가했다. ... 천적인 참새가 없어지자 메뚜기 개체수가 급격하게 폭발적으로 증가했고"
+     },
+     {
+      "claim": "생태 불균형 · 1960년 표적에서 빠짐",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Four_Pests_campaign",
+      "note": "The extermination of sparrows ... resulted in severe ecological imbalance ... In 1960, the campaign against sparrows ended, and bed bugs replaced them as an official target."
+     },
+     {
+      "claim": "정쭤신 지적 · 벌레도 먹음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Four_Pests_campaign",
+      "note": "By April 1960, Chinese Communist Party leaders changed their opinion ... due to the influence of ornithologist Tso-hsin Cheng who pointed out that sparrows ate a large number of insects, as well as grains."
+     },
+     {
+      "claim": "대기근 수천만 명 아사",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Four_Pests_campaign",
+      "note": "one of the causes of the Great Chinese Famine which lasted from 1959 to 1961, with an estimated death toll due to starvation ranging in the tens of millions"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "냄비를 두드려 쉬지 못하게 한 동물 · 해충의 천적(새라는 짐작)",
+    "worthWhyGen": "천적을 없애면 생태계가 어떻게 되나 — 대기근으로 이어진 까닭(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '동물' 예",
+     "unique": "제사해 운동의 네 번째 = 참새 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "biology/3#g032b-g032b-j12-6",
+   "seed": {
+    "subject": "가이아 이론",
+    "aspect": null,
+    "ref": "g032b-j12-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지구 생태계를 다룬 과학 가설입니다. 1960년대 미국 나사(NASA)에서 화성의 생명을 찾는 방법을 연구하던 영국 과학자 제임스 러브록이 처음 내놓았습니다. 가설의 이름은 같은 마을에 살던 '파리대왕'의 작가 윌리엄 골딩이 지어 주었습니다. 이 가설은 무엇일까요?",
+    "answer": "가이아 이론",
+    "acceptedAnswers": [
+     "가이아 가설",
+     "가이아"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "러브록은 검은 데이지와 흰 데이지만 자라는 가상 행성 '데이지월드' 모형으로 이를 설명했습니다. 그는 2022년 자신의 103번째 생일에 세상을 떠났습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "제임스 러브록 / 지구 생태계 가설 / 파리대왕 작가가 이름",
+     "difWhy": "3 — 이름은 알려졌으나 러브록 단서 필요 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 가설 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "지구의 생물·대기·바다가 하나의 생명체처럼 맞물려 살기 알맞은 환경을 스스로 조절한다는 생각으로, 환경 운동에서 자주 인용된다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "지구를 스스로 조절하는 하나의 생명체 같은 체계로 보는 러브록의 가설",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "가이아 이론, 교양",
+     "piece": "f07",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '과학 가설', 끝 ○○ '이 가설' 일치; 인물 둘이 나오나 역할이 문장마다 분명"
+    },
+    "blindQuestion": {
+     "guess": "가이아 가설",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "가이아 이론",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "가이아 이론",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2114",
+      "answer": "분해자",
+      "verdict": "diff",
+      "why": "새 정답 가이아 이론 과 옛 정답 분해자 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032a:g032a-j14-7",
+      "answer": "천적",
+      "verdict": "diff",
+      "why": "새 정답 가이아 이론 과 옛 정답 천적 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2113",
+      "answer": "먹이 그물",
+      "verdict": "diff",
+      "why": "새 정답 가이아 이론 과 옛 정답 먹이 그물 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "218",
+      "answer": "생산자",
+      "verdict": "diff",
+      "why": "새 정답 가이아 이론 과 옛 정답 생산자 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2115",
+      "answer": "핵심종",
+      "verdict": "diff",
+      "why": "새 정답 가이아 이론 과 옛 정답 핵심종 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/James_Lovelock",
+     "https://en.wikipedia.org/wiki/Gaia_hypothesis",
+     "https://ko.wikipedia.org/wiki/가이아_이론"
+    ],
+    "facts": [
+     {
+      "claim": "NASA 화성 생명 탐지 연구 중 1960년대 착안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/James_Lovelock",
+      "note": "Lovelock first formulated the Gaia hypothesis in the 1960s resulting from his work for NASA concerned with detecting life on Mars ... Named after the Greek goddess Gaia at the suggestion of novelist William Golding"
+     },
+     {
+      "claim": "같은 마을에 살던 골딩이 이름 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gaia_hypothesis",
+      "note": "James Lovelock gave this name to his hypothesis after a suggestion from the novelist William Golding, who was living in the same village as Lovelock at the time (Bowerchalke, Wiltshire, UK)."
+     },
+     {
+      "claim": "1965년 JPL 화성 생명 탐지",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gaia_hypothesis",
+      "note": "Lovelock started defining the idea of a self-regulating Earth controlled by the community of living organisms in September 1965, while working at the Jet Propulsion Laboratory in California on methods of detecting life on Mars."
+     },
+     {
+      "claim": "생물·무생물 상호작용 하나의 생명체 · 환경주의 인용",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/가이아_이론",
+      "note": "생물과 무생물이 상호작용하면서 스스로 진화하고 변화해 나가는 하나의 생명체이자 유기체임을 강조한다. / 환경주의와 관련해서는 끊임없이 인용되고 있다."
+     },
+     {
+      "claim": "데이지월드 · 103번째 생일 사망",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/James_Lovelock",
+      "note": "He died at his home in Abbotsbury, Dorset, on his 103rd birthday in 2022 / (Gaia hypothesis) Daisyworld examines ... black daisies and white daisies"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/가이아_이론",
+     "https://en.wikipedia.org/wiki/Gaia_hypothesis"
+    ],
+    "hintNote": null,
+    "easiestCue": "제임스 러브록(이름을 아는 사람은 바로 앎)",
+    "worthWhyGen": "알가치 3 — 이름의 유래(골딩이 지음)가 질문 안에 · 환경 담론의 기본 말",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '과학 가설' 예",
+     "unique": "러브록·골딩 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  }
+ ]
+}

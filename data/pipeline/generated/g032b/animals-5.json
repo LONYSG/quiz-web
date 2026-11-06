@@ -1,0 +1,273 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "animals/5",
+  "midKey": "animals",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "animals/5#g032b-g032b-j12-9",
+   "seed": {
+    "subject": "도마뱀붙이",
+    "aspect": null,
+    "ref": "g032b-j12-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "작은 파충류입니다. 영어 이름은 말레이어에서 왔는데, 그 말은 이 무리의 한 종이 내는 울음소리를 흉내 낸 것입니다. 대부분 눈꺼풀이 없어 혀로 눈을 핥아 닦고, 발가락의 수백만 개 미세한 털 덕분에 유리창에도 붙어 오릅니다. 한국에서는 남부 지방과 제주에 사는 이 동물은 무엇일까요?",
+    "answer": "도마뱀붙이",
+    "acceptedAnswers": [
+     "게코",
+     "게코도마뱀"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "이 접착력은 오래 판데르발스 힘으로 설명되었지만, 2014년 한 연구는 접촉으로 생긴 정전기가 더 크게 작용한다고 보았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "혀로 눈을 핥아 닦고 유리창에도 붙어 오릅니다",
+     "difWhy": "3 — 설명→이름 · 도마뱀과 혼동 쉬움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 이름 확인",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "밤에 집 벽과 천장을 거꾸로 붙어 다니며 벌레를 잡아먹는 동물로, 반려동물로도 흔히 기르고 꼬리를 끊고 달아난다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "벽·천장에 붙어 다니는 야행성 작은 도마뱀 무리(게코)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "게코로 더 알려져 이름은 반쯤 낯섦",
+     "piece": "f01",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '작은 파충류' 가 종류. 둘째 문장 '그 말' 은 영어 이름을 가리켜 헷갈리지 않는다."
+    },
+    "blindQuestion": {
+     "guess": "도마뱀붙이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "도마뱀붙이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "도마뱀붙이",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j25-8",
+      "answer": "맹꽁이",
+      "verdict": "diff",
+      "why": "새 정답 도마뱀붙이 과 옛 정답 맹꽁이 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032b:g032b-j25-8",
+      "answer": "장수거북",
+      "verdict": "diff",
+      "why": "새 정답 도마뱀붙이 과 옛 정답 장수거북 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Gecko",
+     "https://en.wikipedia.org/wiki/Gecko_feet",
+     "https://ko.wikipedia.org/wiki/도마뱀붙이"
+    ],
+    "facts": [
+     {
+      "claim": "영어 이름은 말레이어에서, 울음소리 흉내",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gecko",
+      "note": "The Neo-Latin gekko and English 'gecko' stem from Malaysian gēkoq, a Malay word borrowed from Malay, from tokek, which imitates the sounds that some species like Tokay gecko make."
+     },
+     {
+      "claim": "눈꺼풀 없음 · 혀로 핥아 닦음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gecko",
+      "note": "All geckos, except species in the family Eublepharidae, lack eyelids ... species without eyelids generally lick their own brilles when they need to clear them of dust and dirt"
+     },
+     {
+      "claim": "수백만 개 강모",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gecko_feet",
+      "note": "The bottom surface of a gecko's foot will consist of millions of hairy structures called setae."
+     },
+     {
+      "claim": "한국 남부·제주 분포 · 벽·천장 · 강모 · 꼬리 재생",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/도마뱀붙이",
+      "note": "인가 부근에 살며 천장·벽 위에 있는 곤충·거미 등을 잡아먹는다. ... 주로 밤에 활동 ... 발가락 판에는 ... 수천 개의 강모가 있다. 꼬리가 잘 절단되나 금방 재생되고 / 한국(남부지방, 제주도), 일본, 중국, 대만 등지에 분포한다."
+     },
+     {
+      "claim": "2014 정전기 설",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gecko",
+      "note": "However, a 2014 study suggests that gecko adhesion is in fact mainly determined by electrostatic interaction (caused by contact electrification), not van der Waals or capillary forces."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/도마뱀붙이"
+    ],
+    "hintNote": null,
+    "easiestCue": "유리창에 붙어 오르는 작은 파충류",
+    "worthWhyGen": "알가치 3 — 이름의 유래(울음소리)가 질문 안에 · 흔한 반려 파충류",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '파충류' 예",
+     "unique": "도마뱀붙이 무리 — 게코 변형으로 받음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "⑨ 종류 '동물' 첫 문장에 없음"
+    ],
+    "job": "job-12"
+   }
+  },
+  {
+   "seedId": "animals/5#g032b-g032b-j25-8",
+   "seed": {
+    "subject": "장수거북",
+    "aspect": null,
+    "ref": "g032b-j25-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바다에 사는 파충류입니다. 등이 딱딱한 비늘판 대신 두꺼운 가죽 같은 피부로 덮여 있고, 같은 무리에서 지금 살아 있는 가장 큰 종입니다. 해파리를 주로 먹어, 바다에 뜬 비닐봉지를 해파리로 알고 삼키는 피해가 큰 이 동물은?",
+    "answer": "장수거북",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "학명 Dermochelys coriacea도 '가죽 피부 거북'이라는 뜻으로, 등의 생김새를 그대로 이름에 담았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "가죽 같은 피부 / 가장 큰 바다거북 / 해파리",
+     "difWhy": "3 — 장수거북 이름 떠올리기, 바다거북 오답 쉬움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 동물 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "열대 해변 모래밭에 알을 낳으러 올라오고, 먹이를 찾아 1,280m 깊이까지 잠수한 기록이 있는 대형 바다 동물이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "등이 가죽 피부로 덮인 가장 큰 바다거북(leatherback)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "다큐에서 접할 만함",
+     "piece": "f04",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '바다에 사는 파충류' 가 끝 ○○(동물) 의 종류를 줌, 단서 문장이 짧음"
+    },
+    "blindQuestion": {
+     "guess": "장수거북",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "장수거북",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "장수거북",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j12-9",
+      "answer": "도마뱀붙이",
+      "verdict": "diff",
+      "why": "장수거북 vs 도마뱀붙이 — 다름"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/장수거북",
+     "https://en.wikipedia.org/wiki/Leatherback_sea_turtle"
+    ],
+    "facts": [
+     {
+      "claim": "현존 거북 중 가장 큰 종 · 등이 뼈가 아닌 살 · 주식 해파리",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/장수거북",
+      "note": "현존하는 거북 중에서 가장 큰 종이며 … 대부분 거북들과는 달리 등이 뼈로 이루어지지 않고, 살로 이루어져있다. … 주식은 해파리며 … 장수거북은 최대 1,280미터까지 잠수할 수 있다."
+     },
+     {
+      "claim": "비늘판 대신 가죽 피부 · 비닐봉지를 해파리로 오인",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Leatherback_sea_turtle",
+      "note": "Instead of scutes, it has thick, leathery skin with embedded minuscule osteoderms. … Pacific leatherback sea turtles mistake these plastic bags for jellyfish; an estimated one-third of adults have ingested plastic."
+     },
+     {
+      "claim": "열대 지방에서 산란 · 1,280m 잠수",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/장수거북",
+      "note": "열대지방에서 주로 산란하지만 … 최대 1,280미터까지 잠수할 수 있다."
+     },
+     {
+      "claim": "학명 = Leathery Skin-turtle",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Leatherback_sea_turtle",
+      "note": "Dermochelys coriacea literally translates to \"Leathery Skin-turtle\""
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/장수거북",
+     "https://en.wikipedia.org/wiki/Leatherback_sea_turtle"
+    ],
+    "hintNote": null,
+    "easiestCue": "가죽 같은 등 + 같은 무리에서 가장 큰 종",
+    "worthWhyGen": "해양 플라스틱 문제의 대표 피해 동물 — 생물 상식(2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바다 파충류' 예(정답 낱말 '거북'을 질문·힌트에서 뺌)",
+     "unique": "가죽 등 · 가장 큰 종으로 한정 — 다른 바다거북과 갈림",
+     "hint12": "① 예 ② 보통(힌트가 생김새 대신 생활을 말함)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-25"
+   }
+  }
+ ]
+}

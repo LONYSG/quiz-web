@@ -1,0 +1,345 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "esports/4",
+  "midKey": "esports",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "esports/4#g032b-g032b-j09-7",
+   "seed": {
+    "subject": "스위스 방식",
+    "aspect": null,
+    "ref": "g032b-j09-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "여러 팀이나 선수가 겨루는 대회의 대진 방식입니다. 1895년 한 체스 대회에서 처음 쓰였고, 그 대회가 열린 나라의 이름이 붙었습니다. e스포츠에서는 정해진 승수를 채우면 다음 단계로 오르고, 정해진 패수에 닿으면 떨어지는 꼴로 바꿔 씁니다. 이 방식은?",
+    "answer": "스위스 방식",
+    "acceptedAnswers": [
+     "스위스 시스템",
+     "스위스 스테이지",
+     "스위스식"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "처음 쓰인 곳은 취리히 체스 대회였고, 승수·패수로 끊는 꼴은 2016년 카운터스트라이크 대회 예선에서 처음 쓰였다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "그 대회가 열린 나라의 이름이 붙었습니다",
+     "difWhy": "4 — e스포츠 대회 방식 이름 · 일반인은 모르고 방 사람도 나라 추리가 필요",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — e스포츠 대진 방식 · 취미 영역",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 25",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "한 번 져도 끝나지 않고 승패가 같은 상대끼리 라운드마다 새로 짝을 짓는 방식으로, 2023년부터 롤드컵 본선 첫 단계에 쓰인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "성적이 비슷한 상대끼리 라운드마다 짝을 짓는 대회 대진 방식(Swiss system)",
+    "familiarity": {
+     "judge": 1,
+     "pct": 25,
+     "why": "e스포츠·체스 대회 방식, 일반인에겐 낯섦",
+     "piece": "f06",
+     "genPct": 40
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "스위스 방식",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Swiss-system_tournament",
+     "https://en.wikipedia.org/wiki/2023_League_of_Legends_World_Championship"
+    ],
+    "facts": [
+     {
+      "claim": "1895년 취리히 체스 대회에서 처음 · 그래서 'Swiss system' · e스포츠 변형(정해진 승·패수)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Swiss-system_tournament",
+      "note": "The system was first employed at a chess tournament in Zürich in 1895 by Julius Müller, hence the name \"Swiss system\" ... A variation of Swiss system common in esports tournaments sees participants play until reaching the preset number of wins or losses ... This system was used for the first time in Counter-Strike: Global Offensive by ESL during qualifying rounds for the ESL One Cologne 2016 tournament."
+     },
+     {
+      "claim": "2023 롤드컵 본선 첫 단계 스위스 방식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/2023_League_of_Legends_World_Championship",
+      "note": "main event's first stage was changed from a double round-robin group stage to a Swiss format. ... 16 teams play in Swiss-system format with five rounds."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/2023_League_of_Legends_World_Championship"
+    ],
+    "hintNote": null,
+    "easiestCue": "e스포츠 승수·패수 진출 방식(롤드컵 시청자)",
+    "worthWhyGen": "롤드컵 본선 방식 이름이 왜 '스위스'인가 — 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '대진 방식' 예",
+     "unique": "1895 체스 · 나라 이름 · 승·패수 꼴로 한정(더블 엘리미네이션과 갈림)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 롤드컵"
+    ],
+    "job": "job-09",
+    "discarded": "친숙도 1 (pct 25 · e스포츠·체스 대회 방식, 일반인에겐 낯섦)"
+   }
+  },
+  {
+   "seedId": "esports/4#g032b-g032b-j18-5",
+   "seed": {
+    "subject": "프로리그",
+    "aspect": null,
+    "ref": "g032b-j18-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국의 e스포츠 대회가 있습니다. 2003년 3월 온게임넷에서 KTF 매직엔스와 AMD 드림팀의 개막전으로 막을 올렸습니다. 2005년 MBC게임의 팀리그와 합쳐 한국e스포츠협회가 맡는 통합 대회가 되었고, 2016년 10월 종료가 선언되었습니다. 기업 팀끼리 겨루던 이 스타크래프트 대회는?",
+    "answer": "프로리그",
+    "acceptedAnswers": [
+     "스타크래프트 프로리그",
+     "SK플래닛 프로리그"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "통합 첫해에는 1대1과 2대2 경기를 번갈아 했지만, 2대2는 2008년에 없어졌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "2003년 3월 온게임넷 KTF 매직엔스와 AMD 드림팀 개막전",
+     "difWhy": "4 — 스타 리그 이름 세대 밖·팬 영역 · 프로리그 일반인이 못 떠올림",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 취미세부 — e스포츠 대회 이름 세대 기억",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 65",
+     "worth": 1,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "게임단끼리 한 경기를 5전 3선승제로 맞붙던 팀 단위 리그로, 2012년부터는 스타크래프트 II로 치렀다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "2003~2016년 한국 스타크래프트 프로게임단 팀 단위 리그",
+    "familiarity": {
+     "judge": 2,
+     "pct": 65,
+     "why": "스타크래프트 프로리그 방송으로 알려짐",
+     "piece": "f05",
+     "genPct": 45
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "프로리그",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "프로리그",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "프로리그",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/스타크래프트_프로리그",
+     "https://en.wikipedia.org/wiki/Proleague"
+    ],
+    "facts": [
+     {
+      "claim": "2003년 3월 1일 온게임넷 · KTF 매직엔스 vs AMD 드림팀 개막 · 2005 MBC게임 팀리그와 통합 KeSPA 주관 · 2016년 10월 18일 종료 선언",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/스타크래프트_프로리그",
+      "note": "2003년 3월 1일 KTF 매직엔스와 AMD 드림팀의 개막전으로 프로리그 역사의 장대한 막을 열었다. 온게임넷의 단독으로 치러진 프로리그가 2005년, 2기 KeSPA가 출범하면서 MBC게임의 팀리그와 통합되어 KeSPA의 주관으로 통합리그로 ... 2016년 10월 18일 KeSPA에서 프로리그 종료를 선언"
+     },
+     {
+      "claim": "2003 시작 · 2016 종료 · 팀 리그 · KeSPA",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Proleague",
+      "note": "the most prestigious team league. Hosted by the Korean eSports Association (KeSPA) ... Proleague began in 2003 with the game StarCraft: Brood War before switching over to StarCraft II in 2012 and then discontinued in 2016."
+     },
+     {
+      "claim": "5전 3선승제",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/스타크래프트_프로리그",
+      "note": "1경기당 모든 경기는 5전 3선승제로 치러진다."
+     },
+     {
+      "claim": "1대1·2대2 번갈아 · 2008년 2대2 폐지",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Proleague",
+      "note": "the Proleague format had the teams alternate between 1vs1 and 2vs2 games ... However, the 2vs2 matches were discontinued in 2008"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/스타크래프트_프로리그",
+     "https://en.wikipedia.org/wiki/Proleague"
+    ],
+    "hintNote": null,
+    "easiestCue": "기업 팀끼리 겨루던 스타크래프트 대회",
+    "worthWhyGen": "한국 e스포츠 역사의 대표 리그(취미 영역 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 'e스포츠 대회' 예",
+     "unique": "기업 팀 · 2003~2016 → 하나(MBC 팀리그는 통합 전 별개)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 163자",
+     "crossans 스타크래프트"
+    ],
+    "job": "job-18",
+    "discarded": "알가치 1 (취미세부 · e스포츠 대회 이름 세대 기억)"
+   }
+  },
+  {
+   "seedId": "esports/4#g032b-g032b-j24-5",
+   "seed": {
+    "subject": "중요한 건 꺾이지 않는 마음",
+    "aspect": null,
+    "ref": "g032b-j24-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2022년 리그 오브 레전드 월드 챔피언십 조별리그 첫 경기에서 진 DRX의 원거리 딜러 데프트는 '우리끼리만 안 무너지면 충분히 이길 수 있다'고 말했습니다. 이 말을 줄인 기사 속 문구가 팬들 사이에 퍼졌고, DRX는 그해 대회에서 우승했습니다. 기자가 줄여 쓴 이 문구는 무엇일까요?",
+    "answer": "중요한 건 꺾이지 않는 마음",
+    "acceptedAnswers": [
+     "중꺾마",
+     "중요한 것은 꺾이지 않는 마음",
+     "꺾이지 않는 마음"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "데프트는 우승 기자회견에서도 우승팀에게 가장 필요한 것이 바로 그것이라며 같은 말을 다시 꺼냈다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "DRX 우승 · 우리끼리만 안 무너지면 충분히 이길 수 있다",
+     "difWhy": "2 — 중꺾마는 2022 유행어",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 일화 — 유행어 세대 기억 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 1,
+     "worthKind": "일화"
+    },
+    "generalHint": "2022 카타르 월드컵 때 16강에 오른 축구 대표팀 응원에도 쓰인, 밀려도 끝내 버티는 태도를 기리는 유행어",
+    "generalHintVersion": "hint-v7",
+    "identity": "2022년 롤드컵 데프트 인터뷰에서 퍼진 유행어 '중꺾마'",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "중꺾마 유행어로 널리 퍼짐",
+     "piece": "f09",
+     "genPct": 80
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "중꺾마",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "중꺾마",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "중요한 건 꺾이지 않는 마음",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/데프트",
+     "https://en.wikipedia.org/wiki/Deft_(gamer)"
+    ],
+    "facts": [
+     {
+      "claim": "조별리그 1차전 로그전 패배 뒤 인터뷰 · 기자가 축약 · 팬들에게 화제 · DRX 우승",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/데프트",
+      "note": "조별리그 1차전인 로그와의 경기에서 패배를 기록하게 되었는데 이 경기 이후 데프트는 \"... 오늘 지긴 했지만 우리끼리만 안 무너지면 충분히 이길 수 있다\"라고 인터뷰를 남겼다. 이 인터뷰를 작성한 기자는 데프트의 말을 축약하며 \"꺾이지 않는 마음\"이라고 작성하게 되었고 ... 리그 오브 레전드 팬들에게 해당 기사가 알려지며 화제를 모았다. ... DRX는 팀 역사상 처음으로 월즈 우승"
+     },
+     {
+      "claim": "DRX 2022 우승 · 인터뷰 문구가 유행어 · 카타르 월드컵 대표팀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Deft_(gamer)",
+      "note": "DRX won the Season 12 World Championship, winning against T1 3–2. ... \"The important thing is an unbreakable heart,\" which was left in an interview with a media outlet by Deft ... emerged as a buzzword, citing the Korean national soccer team that participated in the Qatar World Cup."
+     },
+     {
+      "claim": "2022 월드컵 16강 진출 과정에서 다시 화제",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/데프트",
+      "note": "2022년 FIFA 월드컵에서 대한민국 축구 국가대표팀이 낮은 확률의 경우의 수를 뚫고 16강전에 진출하는 과정에서 해당 발언이 언급되며 다시 한 번 화제가 되었다."
+     },
+     {
+      "claim": "우승 기자회견에서 다시 언급",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/데프트",
+      "note": "우승 이후 데프트는 우승 기자회견에서 우승팀에게 가장 중요한 것은 바로 꺾이지 않는 마음일 것이라며 해당 발언을 다시 언급하였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/데프트",
+     "https://en.wikipedia.org/wiki/Deft_(gamer)"
+    ],
+    "hintNote": null,
+    "easiestCue": "데프트 · 2022 롤드컵 · 기자가 줄여 쓴 문구",
+    "worthWhyGen": "2022년 온 국민이 쓴 말이 e스포츠 대회 인터뷰에서 나왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 대회·선수 장면(종류 '문구'는 끝에) — 반쯤",
+     "unique": "기자가 줄여 쓴 데프트 문구 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 161자",
+     "⑨ 종류 '문구' 첫 문장에 없음"
+    ],
+    "job": "job-24",
+    "discarded": "알가치 1 (일화 · 유행어 세대 기억 확인)"
+   }
+  }
+ ]
+}

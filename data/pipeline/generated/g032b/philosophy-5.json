@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "philosophy/5",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/5#g032b-g032b-j21-12",
+   "seed": {
+    "subject": "모순",
+    "aspect": null,
+    "ref": "g032b-j21-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "초나라의 한 무기 상인이 어떤 방패도 뚫는 창과 어떤 창도 막는 방패를 함께 자랑했습니다. '그 창으로 그 방패를 찌르면 어찌 되오?'라는 물음에 그는 말문이 막혔습니다. 이 고사에서 나온, 앞뒤가 맞지 않는다는 뜻의 말은?",
+    "answer": "모순",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "엄밀히 따지면 두 장담은 둘 다 거짓일 수도 있어, 대당 사각형이 말하는 엄격한 뜻과는 조금 어긋난다고 보기도 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "어떤 방패도 뚫는 창과 어떤 창도 막는 방패",
+     "difWhy": "1 — 고사성어 모순, 이야기 자체가 답을 줌",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상에서 쓰는 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "법가 사상가 한비의 책 '한비자'에 실린 고사로, 논리학에서는 동시에 참일 수 없는 두 명제를 이른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "앞뒤가 맞지 않음 — 창과 방패 고사(한비자)에서 온 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "일상 한자성어",
+     "piece": "f04",
+     "genPct": 98
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○는 '말'인데 첫 문장부터 고사 자체가 단서라 일화 선행이 아님. 문장 쉬움."
+    },
+    "blindQuestion": {
+     "guess": "모순",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "모순",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "모순",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1120",
+      "answer": "불완전성 정리",
+      "verdict": "diff",
+      "why": "모순 고사는 불완전성 정리·한비자·제논의 역설·페르미 역설과 다른 지식이다"
+     },
+     {
+      "old": "5101",
+      "answer": "한비자",
+      "verdict": "diff",
+      "why": "모순 고사는 불완전성 정리·한비자·제논의 역설·페르미 역설과 다른 지식이다"
+     },
+     {
+      "old": "1161",
+      "answer": "제논의 역설",
+      "verdict": "diff",
+      "why": "모순 고사는 불완전성 정리·한비자·제논의 역설·페르미 역설과 다른 지식이다"
+     },
+     {
+      "old": "1455",
+      "answer": "페르미 역설",
+      "verdict": "diff",
+      "why": "모순 고사는 불완전성 정리·한비자·제논의 역설·페르미 역설과 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/모순",
+     "https://en.wikipedia.org/wiki/Irresistible_force_paradox"
+    ],
+    "facts": [
+     {
+      "claim": "초나라 상인 창·방패 고사 · 한비자",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/모순",
+      "note": "초나라에서 무기를 파는 상인이 있었다. 그 상인은 자신의 창을 들어 보이며 그 어떤 방패도 뚫을 수 있는 창이라고 선전했고 ... 상인은 아무 대답도 하지 못했다. 《한비자 난(難)1》"
+     },
+     {
+      "claim": "Han Feizi spear and shield story → contradiction",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Irresistible_force_paradox",
+      "note": "the origin of the Chinese word for contradiction (矛盾 ... 'spear-shield'). This term originates from a story ... in the 3rd century BC philosophical book Han Feizi. ... the seller could not answer."
+     },
+     {
+      "claim": "논리학 — 동시에 성립할 수 없는 명제",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/모순",
+      "note": "고전 논리에서는 ... 동시에 성립할 수 없는 여러 명제가 동시에 제시된 경우를 가리킨다."
+     },
+     {
+      "claim": "두 장담은 동시에 거짓일 수 있어 대당 사각형의 모순 아님",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/모순",
+      "note": "엄밀히 말해서 이 고사의 창과 방패 이야기는 아리스토텔레스 논리학 대당 사각형에서 말하는 모순이 아니다. 왜냐하면 ... 동시에 거짓일 수 있기 때문이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/모순"
+    ],
+    "hintNote": null,
+    "easiestCue": "창과 방패 이야기 · 앞뒤가 맞지 않는다는 뜻",
+    "worthWhyGen": "매일 쓰는 말의 유래 고사(19 §9-1 ②)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 장면(상인) — 묻는 것은 말 · 대체로 예",
+     "unique": "창·방패 고사 — 하나('자가당착'은 고사가 다름 · '역설'과 다름)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 한비자/법가"
+    ],
+    "job": "job-21"
+   }
+  }
+ ]
+}

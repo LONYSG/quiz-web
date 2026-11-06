@@ -1,0 +1,255 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-cinema/6",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/6#g032b-g032b-j13-7",
+   "seed": {
+    "subject": "예고편",
+    "aspect": null,
+    "ref": "g032b-j13-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영화관에서 트는 짧은 필름 한 갈래의 이야기입니다. 1913년 11월 미국 마커스 로 극장 체인의 광고 담당 닐스 그랜런드가 브로드웨이 뮤지컬을 알리는 짧은 필름을 만들었습니다. 처음에는 본편이 끝난 뒤에 틀어 '뒤따라오는 것'이라는 영어 이름이 붙었지만, 관객이 곧장 자리를 떠 앞으로 옮겼습니다. 이 필름은?",
+    "answer": "예고편",
+    "acceptedAnswers": [
+     "트레일러"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1960년대에는 스탠리 큐브릭이 '닥터 스트레인지러브' 등에서 대사 없는 빠른 편집 몽타주 꼴을 유행시켰다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "뒤따라오는 것 … 본편 앞으로 옮겼습니다 (짧은 필름)",
+     "difWhy": "2 — 예고편 일상어 · 영어 trailer 뜻이 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 예고편 이름의 까닭",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "곧 개봉할 영화의 주요 장면을 짧게 엮어 미리 보여 주는 광고 영상으로, 요즘은 본편 시작 전 약 20분을 차지한다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "곧 개봉할 영화를 알리려고 미리 보여 주는 짧은 광고 영상",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "영화 일상 단어",
+     "piece": "f02",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '짧은 필름', 끝 ○○ '필름'. 일화 인물이 정답의 기원이라 무관하지 않음"
+    },
+    "blindQuestion": {
+     "guess": "예고편",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "예고편",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "예고편",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Trailer_(promotion)",
+     "https://ko.wikipedia.org/wiki/예고편"
+    ],
+    "facts": [
+     {
+      "claim": "1913년 11월 · 마커스 로 극장 체인 광고 담당 닐스 그랜런드 · 브로드웨이 뮤지컬 홍보 필름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Trailer_(promotion)",
+      "note": "The first trailer shown in an American film theater was in November 1913, when Nils Granlund, the advertising manager for the Marcus Loew theater chain, produced a short promotional film for the musical The Pleasure Seekers, opening at the Winter Garden Theatre on Broadway."
+     },
+     {
+      "claim": "'뒷따라다니는 것' · 본편 끝에 틀어서 유래 · 관객이 자리를 떠서 오래가지 않음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/예고편",
+      "note": "트레일러라는 용어는 \"뒷따라다니는 것\"을 뜻하는데, 본래 장편 극영화의 상영 끝부분에 해당 영상이 뒤따르는 데에서 유래한 것이다. 이러한 전통은 그리 오래가지 않았는데 관객들이 영화가 끝나면 바로 자리를 뜨면 전혀 홍보가 되지 않기 때문이다."
+     },
+     {
+      "claim": "본편 앞으로 옮김 · 상영 시각 뒤 약 20분",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Trailer_(promotion)",
+      "note": "Later, exhibitors changed their practice so that trailers were shown before the main feature ... about the first 20 minutes after the posted showtime is devoted to trailers."
+     },
+     {
+      "claim": "큐브릭 몽타주 예고편 · 닥터 스트레인지러브",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Trailer_(promotion)",
+      "note": "In the early 1960s ... Textless, montage trailers and quick-editing became popular ... Among the trend setters were Stanley Kubrick with his montage trailers for Lolita (1962), Dr. Strangelove"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Trailer_(promotion)"
+    ],
+    "hintNote": null,
+    "easiestCue": "본편 뒤에 틀다 앞으로 옮긴 짧은 필름 · '뒤따라오는 것'",
+    "worthWhyGen": "본편 앞에 트는데 왜 '뒤따라오는 것(트레일러)'이라 부르는지 — 이름의 까닭",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '짧은 필름 한 갈래' 예",
+     "unique": "본편 뒤→앞으로 옮긴 홍보 필름은 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 174자"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "world-cinema/6#g032b-g032b-j32-6",
+   "seed": {
+    "subject": "B급 영화",
+    "aspect": null,
+    "ref": "g032b-j32-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "할리우드 고전기 극장들은 표 한 장으로 영화 두 편을 잇달아 트는 동시 상영을 했습니다. 스튜디오들은 대작과 함께 트는 둘째 영화를 따로 싼값에 찍어 댔습니다. 이렇게 붙여 틀던 저예산 영화를 가리키던 말로, 지금은 적은 돈으로 빨리 찍은 영화를 두루 이르는 말은?",
+    "answer": "B급 영화",
+    "acceptedAnswers": [
+     "B급",
+     "B무비",
+     "B 무비",
+     "비급 영화"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1950년대 텔레비전이 퍼지며 동시 상영용 둘째 영화는 사라졌다. 더 싸게 만든 것은 C급, 그 아래는 Z급 영화라 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "적은 돈으로 빨리 찍은 영화를 두루 이르는 말",
+     "difWhy": "2 — B급 영화는 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "괴수·좀비 영화처럼 허술해도 엉뚱한 재미가 있는 싸구려 영화를 이를 때 흔히 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "저예산·단기간에 만든 영화를 이르는 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "일상 용어",
+     "piece": "f04",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '극장 동시 상영 영화' 로 분야가 잡히고 끝 ○○(말) 는 마지막 문장에서 분명히 묻는다"
+    },
+    "blindQuestion": {
+     "guess": "B급 영화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "B급 영화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "B급 영화",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/B_movie",
+     "https://ko.wikipedia.org/wiki/B급_영화"
+    ],
+    "facts": [
+     {
+      "claim": "고전기 동시 상영의 둘째 영화를 가리키던 말 · 저예산",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/B_movie",
+      "note": "A B movie, or B film, is a type of low-budget commercial motion picture. Originally, during the Golden Age of Hollywood, this term specifically referred to films meant to be shown as the lesser-known second half of a double feature"
+     },
+     {
+      "claim": "메이저 스튜디오가 B 부서를 두어 둘째 영화 공급",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/B_movie",
+      "note": "The major studios, at first resistant to the double feature, soon adapted; all established B units to provide films for the expanding second-feature market."
+     },
+     {
+      "claim": "저예산 B급 영화를 본래 영화와 함께 상영",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/B급_영화",
+      "note": "B급 영화는 단기간 촬영과 저예산으로 제작된 영화이다. ... 마이너 영화사들의 저비용 B급 영화를 메이저 영화사는 자신들이 제작한 본래의 상영영화와 함께 극장관람객에서 제공하였다."
+     },
+     {
+      "claim": "1950년대 말 텔레비전으로 둘째 영화 쇠퇴",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/B_movie",
+      "note": "the production of such films as \"second features\" in the United States largely declined by the end of the 1950s. This shift was due to the rise of commercial television"
+     },
+     {
+      "claim": "C급 · Z급",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/B급_영화",
+      "note": "C급 영화(C movie)는 B급 영화 중 더 저예산인 영화 등급을 의미한다. ... Z급 영화(Z movie, grade-Z movie)는 대부분의 B급, 심지어는 C급 영화 아래로"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/B급_영화"
+    ],
+    "hintNote": null,
+    "easiestCue": "저예산으로 빨리 찍은 영화를 두루 이르는 말",
+    "worthWhyGen": "일상에서 쓰는 'B급' 이란 말의 유래(동시 상영 둘째 영화)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장은 극장 장면 — 종류(영화 용어)는 끝 문장 · 첫 문장에 '영화' 있음",
+     "unique": "저예산 둘째 영화 = B급 영화",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-32"
+   }
+  }
+ ]
+}

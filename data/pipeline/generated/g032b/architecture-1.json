@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "architecture/1",
+  "midKey": "architecture",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "architecture/1#g032b-g032b-j23-4",
+   "seed": {
+    "subject": "한옥",
+    "aspect": null,
+    "ref": "g032b-j23-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "우리 전통 집을 가리키는 이 말은 1907년 서울 정동길 일대를 그린 약도에 처음 나온다고 합니다. 그때는 '주가'나 '제택'이라는 말을 더 흔히 썼습니다. 1970년대 아파트가 늘면서 서양식 집 '양옥'과 맞서는 이름으로 굳은 이 말은?",
+    "answer": "한옥",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1975년 삼성 새우리말 큰사전에 처음 낱말로 실렸고, 일제강점기에는 '조선주택'이라는 말로도 불렀습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "우리 전통 집 · 서양식 집 '양옥'과 맞서는 이름",
+     "difWhy": "1 — 전통 집은 한옥, 바로 떠오름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 99",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "기와나 초가지붕 아래 온돌방과 마루를 두고 마당을 둘러 지은 우리나라 고유의 집이다",
+    "generalHintVersion": "hint-v7",
+    "identity": "한국 전통 방식으로 지은 집",
+    "familiarity": {
+     "judge": 3,
+     "pct": 99,
+     "why": "누구나 아는 전통 가옥",
+     "piece": "f03",
+     "genPct": 99
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '우리 전통 집을 가리키는 말' 이 끝 ○○ '말' 과 맞음 · '이 말' 지시어는 첫 문장에서 종류가 바로 붙음"
+    },
+    "blindQuestion": {
+     "guess": "한옥",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "한옥",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "한옥",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1082",
+      "answer": "처마",
+      "verdict": "diff",
+      "why": "한옥 명칭 유래는 처마·창호지·사랑채·팔작지붕 구조 지식 및 12음 기법과 다르다"
+     },
+     {
+      "old": "1083",
+      "answer": "창호지",
+      "verdict": "diff",
+      "why": "한옥 명칭 유래는 처마·창호지·사랑채·팔작지붕 구조 지식 및 12음 기법과 다르다"
+     },
+     {
+      "old": "1085",
+      "answer": "사랑채",
+      "verdict": "diff",
+      "why": "한옥 명칭 유래는 처마·창호지·사랑채·팔작지붕 구조 지식 및 12음 기법과 다르다"
+     },
+     {
+      "old": "4249",
+      "answer": "팔작지붕",
+      "verdict": "diff",
+      "why": "한옥 명칭 유래는 처마·창호지·사랑채·팔작지붕 구조 지식 및 12음 기법과 다르다"
+     },
+     {
+      "old": "1807",
+      "answer": "12음 기법",
+      "verdict": "diff",
+      "why": "한옥 명칭 유래는 처마·창호지·사랑채·팔작지붕 구조 지식 및 12음 기법과 다르다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/한옥",
+     "https://en.wikipedia.org/wiki/Hanok"
+    ],
+    "facts": [
+     {
+      "claim": "1907년 정동길 약도에 처음 · 주가·제택을 흔히 씀",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/한옥",
+      "note": "'한옥'이라는 말이 처음으로 나오는 것은 융희 2년(1907년) 4월 23일에 쓴 '가사에 관한 조복문서'인데, 돈의문에서 배재학당에 이르는 정동길 주변을 기록한 약도에서 이 말이 쓰이고 있다. 당시에는 '주가'(住家)나, '제택'(第宅) 등과 같은 용어가 흔히 쓰였는데"
+     },
+     {
+      "claim": "양옥의 반대말 · 1970년대 아파트 늘며 전통 집 이름으로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hanok",
+      "note": "The specific word \"hanok\" appeared in the Samsung Korean dictionary in 1975, where it was defined as an antonym of \"western house\" … After the 1970s, with urban development, many apartments and terraced houses were built in South Korea … From that time on, a hanok was only called a \"Korean traditional house\"."
+     },
+     {
+      "claim": "1975년 사전 · 조선주택",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/한옥",
+      "note": "'한옥'이라는 낱말은 1975년 삼성 새우리말 큰사전에 등장하는데 … 일본식 영단주택이나 문화주택과 구별하여 '조선주택'(朝鮮住宅) 등의 표현을 썼다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "우리 전통 집 · '양옥'과 맞서는 이름",
+    "worthWhyGen": "알가치 3 — 누구나 쓰는 말이 생각보다 새로 굳은 이름이라는 유래",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '우리 전통 집을 가리키는 이 말'",
+     "unique": "양옥과 맞서는 말 — 한옥 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  }
+ ]
+}

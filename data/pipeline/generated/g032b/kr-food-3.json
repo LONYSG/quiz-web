@@ -1,0 +1,306 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-food/3",
+  "midKey": "kr-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-food/3#g032b-g032b-j01-12",
+   "seed": {
+    "subject": "탕후루",
+    "aspect": null,
+    "ref": "g032b-j01-12",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 화베이 지역의 대표적인 겨울 길거리 간식입니다. 남송 황제 광종이 아끼던 황귀비가 병들자, 한 의원이 산사 열매를 설탕과 달여 먹으라 처방했다는 이야기가 그 시작으로 전합니다. 실제로는 송나라 때부터 만들어 온 것으로 보는 이 간식은?",
+    "answer": "탕후루",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름은 꼬챙이에 꿴 열매들이 호리병박을 닮아 '설탕 박'이라는 뜻에서 왔다고 한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "겨울 길거리 간식 · 산사 열매를 설탕과",
+     "difWhy": "2 — 산사 설탕 간식 → 탕후루, 유행",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 음식 유래 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "과일을 꼬치에 꿰어 설탕 시럽을 얇게 입혀 굳힌 간식으로, 2020년대 한국 10대 사이에서도 크게 유행했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "과일 꼬치에 설탕 시럽을 입혀 굳힌 중국 간식",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "최근 유행한 간식",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '겨울 길거리 간식' 이 종류. 황제·황귀비 일화는 둘째 문장이지만 정체는 이미 드러남."
+    },
+    "blindQuestion": {
+     "guess": "탕후루",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "탕후루",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "탕후루",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5374",
+      "answer": "쥐포",
+      "verdict": "diff",
+      "why": "새 정답 탕후루의 지식(유래·사실)과 옛 정답 쥐포의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j06-1",
+      "answer": "솜사탕",
+      "verdict": "diff",
+      "why": "새 정답 탕후루의 지식(유래·사실)과 옛 정답 솜사탕의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032b:g032b-j11-1",
+      "answer": "십원빵",
+      "verdict": "diff",
+      "why": "새 정답 탕후루의 지식(유래·사실)과 옛 정답 십원빵의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "281",
+      "answer": "떡볶이",
+      "verdict": "diff",
+      "why": "새 정답 탕후루의 지식(유래·사실)과 옛 정답 떡볶이의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "5373",
+      "answer": "번데기",
+      "verdict": "diff",
+      "why": "새 정답 탕후루의 지식(유래·사실)과 옛 정답 번데기의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탕후루",
+     "https://en.wikipedia.org/wiki/Tanghulu"
+    ],
+    "facts": [
+     {
+      "claim": "화베이 대표 겨울 간식 · 광종 황귀비 · 산사를 설탕과 달여 처방 이야기",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탕후루",
+      "note": "베이징과 톈진을 포함하는 화베이 지역의 대표적인 겨울 간식이며 ... 송나라 황제 광종의 후궁 황귀비는 몸이 허약해 ... 한 의원이 내린 산사를 설탕과 달여 식전에 먹으라는 처방을 따른 후 병이 나았다는 이야기가 있다."
+     },
+     {
+      "claim": "송나라 때부터 · 민담은 남송 광종 황귀비",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tanghulu",
+      "note": "Tanghulu has been made since the Song dynasty and remains popular throughout northern China. ... Folklore attributes its origin to the Southern Song dynasty, when the emperor Song Guangzong (宋光宗) had a beloved imperial concubine named Huang Guifei."
+     },
+     {
+      "claim": "이름 = 설탕 박 · 호리병박 모양",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/탕후루",
+      "note": "\"설탕 박\"이라는 뜻이다. 산사를 꼬챙이에 꿴 모습이 호리병박과 비슷하게 생겨 이런 이름이 붙었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/탕후루"
+    ],
+    "hintNote": null,
+    "easiestCue": "산사 열매와 설탕 — 중국 겨울 길거리 간식",
+    "worthWhyGen": "요즘 유행한 간식이 800년 넘은 중국 간식이고 이런 전설이 있다는 이야깃거리",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '길거리 간식' 예",
+     "unique": "광종 황귀비 전설 · 산사 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "kr-food/3#g032b-g032b-j11-1",
+   "seed": {
+    "subject": "십원빵",
+    "aspect": null,
+    "ref": "g032b-j11-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "경주의 길거리 간식입니다. 2019년 12월 황리단길에서 팔기 시작해 명물이 되었는데, 한국은행이 화폐 도안을 돈벌이에 쓰는 것은 규정 위반이라며 모양을 바꾸라고 요구했습니다. 2024년 9월 기준이 바뀌어 지금 모양 그대로 팔 수 있게 된 이 빵은?",
+    "answer": "십원빵",
+    "acceptedAnswers": [
+     "10원빵"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "제주의 한 업체가 오징어 모양 '한치빵'에 이어 지역마다 다른 모양을 구상하다 경주에 맞춰 고른 것이라고 전합니다. 2022년에는 일본에도 건너갔습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "경주 황리단길 · 한국은행 화폐 도안 · 이 빵",
+     "difWhy": "1 — 십원 도안 단서가 곧 답",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 유행 간식 이야기",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "불국사 다보탑이 새겨진 동전을 그대로 본뜬 모양에, 속에 든 모차렐라 치즈가 쭉 늘어나는 풀빵이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "10원 동전 모양에 치즈를 넣은 경주 길거리 빵",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "경주 길거리 간식으로 방송·SNS에서 유명",
+     "piece": "f06",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '경주의 길거리 간식', 끝 ○○ '이 빵' 일치; 사건이 시간 순서로 정리됨"
+    },
+    "blindQuestion": {
+     "guess": "십원빵",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "십원빵",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "십원빵",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j06-1",
+      "answer": "솜사탕",
+      "verdict": "diff",
+      "why": "십원빵과 솜사탕은 다른 간식"
+     },
+     {
+      "old": "5374",
+      "answer": "쥐포",
+      "verdict": "diff",
+      "why": "십원빵과 쥐포는 다른 간식"
+     },
+     {
+      "old": "g032b:g032b-j01-12",
+      "answer": "탕후루",
+      "verdict": "diff",
+      "why": "십원빵과 탕후루는 다른 간식"
+     },
+     {
+      "old": "5373",
+      "answer": "번데기",
+      "verdict": "diff",
+      "why": "십원빵과 번데기는 다른 간식"
+     },
+     {
+      "old": "g032a:g032a-j01-12",
+      "answer": "뻥튀기",
+      "verdict": "diff",
+      "why": "십원빵과 뻥튀기는 다른 간식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/10_won_bread",
+     "https://kbmaeil.com/article/202408290404002"
+    ],
+    "facts": [
+     {
+      "claim": "2019년 12월 경주 황리단길에서 판매 시작",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/10_won_bread",
+      "note": "who began selling the dish in December 2019 at Gyeongju's Hwangnidan-gil shopping street."
+     },
+     {
+      "claim": "한국은행이 영리 목적 화폐 도안 사용이라며 디자인 변경 요청",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/10_won_bread",
+      "note": "Around 2022 and 2023, the South Korean Bank of Korea asked the makers of 10 won bread to change the design of the bread in order to abide by laws that prevent the for-profit use of the coin's design."
+     },
+     {
+      "claim": "도안 이용기준 개정 2024년 9월 1일 시행 · 십원빵 영리 이용 가능",
+      "where": "q",
+      "url": "https://kbmaeil.com/article/202408290404002",
+      "note": "경주 ‘십원빵’과 화폐 티셔츠 등 영리 목적의 화폐도안 이용이 가능해진다. 29일 한국은행에 따르면 ‘한국은행권 및 주화의 도안 이용기준’을 개정해 오는 9월 1일부터 시행한다."
+     },
+     {
+      "claim": "다보탑 10원 동전 모양 · 모차렐라 치즈",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/10_won_bread",
+      "note": "It is a bread or waffle in the shape of a South Korean 10 won coin that contains stretchy mozzarella cheese. / the coin's reverse side shows an image of the Dabotap pagoda in Gyeongju's famous temple Bulguksa."
+     },
+     {
+      "claim": "제주 업체의 한치빵에서 출발 · 2022년 일본 전파",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/10_won_bread",
+      "note": "The dish was reportedly invented by a Jeju Province-based company (제주한치빵). It began making a similar cheese-filled bread dish called Hanchi bread in 2016, which was shaped like a squid. ... chose the 10 won coin for Gyeongju. / In 2022, it spread to Japan as 10 yen bread."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/10_won_bread"
+    ],
+    "hintNote": null,
+    "easiestCue": "경주 + 화폐 도안을 쓴 빵(10원 동전 다보탑을 떠올려야 풀림)",
+    "worthWhyGen": "흔히 보는 길거리 빵이 화폐 도안 규정에 걸렸다가 풀린 까닭 — 일상 상식·뉴스",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '길거리 간식' 예",
+     "unique": "경주 + 화폐 도안 빵 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 다보탑/불국사"
+    ],
+    "job": "job-11"
+   }
+  }
+ ]
+}

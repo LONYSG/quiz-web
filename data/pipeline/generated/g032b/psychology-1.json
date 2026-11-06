@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "psychology/1",
+  "midKey": "psychology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "psychology/1#g032b-g032b-j14-11",
+   "seed": {
+    "subject": "링겔만 효과",
+    "aspect": null,
+    "ref": "g032b-j14-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "집단 심리의 한 현상입니다. 프랑스의 한 농업공학자는 사람들에게 밧줄을 당기게 하고 그 힘을 쟀습니다. 1913년 발표한 결과에서, 함께 당기는 사람이 늘수록 한 사람이 내는 힘은 오히려 줄었습니다. 그 학자의 이름을 딴 이 현상은 무엇일까요?",
+    "answer": "링겔만 효과",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "개미는 예외처럼 보입니다. 군대개미 무리는 나눠서는 한 마리도 옮기지 못할 큰 짐을 함께 옮깁니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "밧줄을 당기게 하고 힘을 잼 · 사람이 늘수록 한 사람 힘 줄어듦",
+     "difWhy": "2 — 줄다리기 실험 → 링겔만 효과",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 심리 상식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 30",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "사람이 많을수록 '나 하나쯤이야' 하고 덜 애쓰게 되는 사회적 태만을 보여 주며, 조별 과제의 무임승차가 대표 예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "집단 규모가 커질수록 구성원 한 사람의 기여가 줄어드는 현상",
+    "familiarity": {
+     "judge": 2,
+     "pct": 30,
+     "why": "줄다리기 실험 사례로 교양서·방송에 나옴",
+     "piece": "f08",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '집단 심리의 한 현상' 이 끝 ○○(현상) 와 일치, 실험 서술이 짧음"
+    },
+    "blindQuestion": {
+     "guess": "링겔만 효과",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "링겔만 효과",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "링겔만 효과",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1215",
+      "answer": "방관자 효과",
+      "verdict": "diff",
+      "why": "링겔만 효과(밧줄 당기기 실험)와 방관자 효과(목격자 책임 분산)는 서로 다른 현상"
+     },
+     {
+      "old": "1222",
+      "answer": "스톡홀름 증후군",
+      "verdict": "diff",
+      "why": "새 정답 링겔만 효과 과 옛 정답 스톡홀름 증후군 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5126",
+      "answer": "파파게노 효과",
+      "verdict": "diff",
+      "why": "새 정답 링겔만 효과 과 옛 정답 파파게노 효과 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "6749",
+      "answer": "데자뷔",
+      "verdict": "diff",
+      "why": "새 정답 링겔만 효과 과 옛 정답 데자뷔 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1223",
+      "answer": "깨진 유리창 이론",
+      "verdict": "diff",
+      "why": "새 정답 링겔만 효과 과 옛 정답 깨진 유리창 이론 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/링겔만_효과",
+     "https://en.wikipedia.org/wiki/Ringelmann_effect"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스 농업공학자 링겔만 · 줄다리기(밧줄 당기기) · 집단이 클수록 개인 노력 감소",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/링겔만_효과",
+      "note": "이 효과는 프랑스의 농업공학자 막시밀리앙 링겔만(1861~1931)에 의해 발견되었으며 ... (예: 줄다리기에서 밧줄을 당기는 행위)가 개별적으로 행동할 때보다 실제로는 상당히 적은 노력을 기울이게 된다는 사실을 발견하였다."
+     },
+     {
+      "claim": "Ringelmann (1913) — pulling a rope",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Ringelmann_effect",
+      "note": "Ringelmann (1913) found that having group members work together on a task (e.g., pulling a rope) actually results in significantly less effort than when individual members are acting alone."
+     },
+     {
+      "claim": "사회적 태만",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/링겔만_효과",
+      "note": "동기 상실(motivation loss), 또는 사회적 태만(social loafing)은 사람들이 혼자 일할 때보다 집단 내에서 일할 때 개인이 기울이는 노력이 감소하는 현상을 의미한다."
+     },
+     {
+      "claim": "군대개미 초효율성",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Ringelmann_effect",
+      "note": "army ant teams could cooperatively transport loads so large that if they were cut into equally sized pieces to distribute to individuals, the individuals could not carry them."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/링겔만_효과"
+    ],
+    "hintNote": null,
+    "easiestCue": "밧줄 당기기 실험 + 학자 이름을 딴 현상(이름을 알아야 풀림)",
+    "worthWhyGen": "회사·조별 과제에서 쓰는 '링겔만 효과'의 유래가 줄다리기 실험이라는 점",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '현상' 종류 명사 — 예",
+     "unique": "밧줄 실험 + 농업공학자 이름 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-14"
+   }
+  }
+ ]
+}

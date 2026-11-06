@@ -1,0 +1,147 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "comics/4",
+  "midKey": "comics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "comics/4#g032b-g032b-j29-10",
+   "seed": {
+    "subject": "학습만화",
+    "aspect": null,
+    "ref": "g032b-j29-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "재미보다 지식 전달을 앞세워 그리는 만화 갈래를 묻습니다. 서유기를 바탕으로 한자를 익히게 한 '마법천자문'이 대표 작품입니다. 과학 원리를 이야기로 푼 예림당의 'Why?'도 이 갈래입니다. 이 만화 갈래는?",
+    "answer": "학습만화",
+    "acceptedAnswers": [
+     "교육만화"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "'Why?'는 2025년 KBS 2TV 애니메이션으로도 만들어졌고, 교리나 이념을 가르치는 데 쓰인 같은 갈래 만화도 있다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "서유기를 바탕으로 한자를 익히게 한 '마법천자문'이 대표 작품입니다.",
+     "difWhy": "1 — 마법천자문·Why?는 누구나 알고 갈래 이름이 곧 답",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 대중문화 기본 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 88",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "'먼 나라 이웃 나라'나 '살아남기' 시리즈처럼 초등학생 책장과 학교 도서관을 채우는 만화책 갈래다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "어린이·청소년의 지식 습득을 위한 만화 갈래",
+    "familiarity": {
+     "judge": 3,
+     "pct": 88,
+     "why": "Why? 시리즈 등 어린 시절",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "기타",
+     "reason": "첫 문장은 작품 이름만 나열하고 '만화'라는 종류는 끝 문장에서야 나옴. 다만 짧고(약 80자) 작품이 유명해 읽기엔 지장 적음"
+    },
+    "blindQuestion": {
+     "guess": "학습만화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "학습만화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "학습만화",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j29-10",
+      "answer": "클리프행어",
+      "verdict": "diff",
+      "why": "학습만화 갈래 vs 클리프행어 기법 — 다른 지식"
+     },
+     {
+      "old": "533",
+      "answer": "말풍선",
+      "verdict": "diff",
+      "why": "학습만화 vs 말풍선 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/학습_만화",
+     "https://ko.wikipedia.org/wiki/마법천자문",
+     "https://ko.wikipedia.org/wiki/WHY?_(애니메이션)"
+    ],
+    "facts": [
+     {
+      "claim": "학습만화 정의 · Why? · 마법천자문 · 살아남기 목록",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/학습_만화",
+      "note": "학습 만화(學習 漫畵)는 어린이나 청소년의 학습을 위한 만화이다. 주로 지식 전달을 위해서 제작된 만화들이 많지만, 교리 학습이나 이념 학습을 위한 수단으로 쓰이기도 한다. … Why? 살아남기 … 마법천자문"
+     },
+     {
+      "claim": "마법천자문 = 서유기 모티브 학습만화",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마법천자문",
+      "note": "《마법천자문》(魔法千字文)은 대한민국의 출판사 아울북에서 출간한 학습만화이다. 1탄은 중국의 서유기를 … 모티브로"
+     },
+     {
+      "claim": "Why? = 예림당 과학학습만화 · 2025 KBS2 애니",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/WHY?_(애니메이션)",
+      "note": "《WHY?》는 예림당의 과학학습만화인 Why?를 원작으로 한 대한민국의 애니메이션으로, 2025년 1월 22일부터 … KBS 2TV에서 방영했다가"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/학습_만화"
+    ],
+    "hintNote": null,
+    "easiestCue": "마법천자문·Why? 같은 만화 갈래",
+    "worthWhyGen": "누구나 읽어 본 만화 갈래의 이름(일반 상식)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장은 대표작 — '만화 갈래' 는 끝 문장(쉬움 쪽 · 등급 2 나올 수 있음)",
+     "unique": "지식 전달 만화 갈래 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "서유기를 바탕으로 한자를 익히게 한 '마법천자문', 과학 원리를 이야기로 푼 예림당의 'Why?'가 대표 작품입니다. 재미보다 지식 전달을 앞세워 그리는 이 만화 갈래는?"
+      },
+      "why": "⑨ 첫 문장에 '만화 갈래' · 작품 나열은 뒤로"
+     }
+    ],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

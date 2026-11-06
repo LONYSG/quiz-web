@@ -1,0 +1,165 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-history-west/2",
+  "midKey": "world-history-west",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-west/2#g032b-g032b-j02-2",
+   "seed": {
+    "subject": "부르주아",
+    "aspect": null,
+    "ref": "g032b-j02-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중세 서유럽 도시에서 생긴 프랑스어 계층 이름이 있습니다. 11세기 무렵 성벽을 두른 장터 마을이 상업 도시로 자라면서, 그 안에 사는 상인과 장인이 농민과 영주 사이의 계층이 되었습니다. '장터 마을 사람'이라는 뜻에서 출발해 근대에 뜻이 넓어진 이 계층 이름은 무엇일까요?",
+    "answer": "부르주아",
+    "acceptedAnswers": [
+     "부르주아지",
+     "부르조아"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "어원은 옛 프랑크어 burg(도시)다. 독일어 뷔르거도 같은 뿌리이며, 이 도시민은 도시 특허장으로 자치를 인정받았다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "상인과 장인이 농민과 영주 사이 계층 / 근대에 뜻이 넓어진",
+     "difWhy": "2 — 부르주아 교과 상식, 일상어로 굳음",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상에서 쓰는 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "마르크스가 노동자 계급 프롤레타리아와 맞세운 자본가 계급을 이르며, 부유층의 생활 취향을 가리킬 때도 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "유산 시민·자본가 계급(bourgeois) — 본래 중세 성곽 도시 주민",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "교과서와 일상 어휘",
+     "piece": "f05",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '프랑스어 계층 이름', 끝 ○○ '계층 이름'. 풀이도 본문에 있음"
+    },
+    "blindQuestion": {
+     "guess": "부르주아",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "부르주아",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "부르주아",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1352",
+      "answer": "카롤루스 대제",
+      "verdict": "diff",
+      "why": "새 정답 부르주아의 지식(유래·사실)과 옛 정답 카롤루스 대제의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j02-5",
+      "answer": "로맨스",
+      "verdict": "diff",
+      "why": "새 정답 부르주아의 지식(유래·사실)과 옛 정답 로맨스의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "5644",
+      "answer": "리처드 1세",
+      "verdict": "diff",
+      "why": "새 정답 부르주아의 지식(유래·사실)과 옛 정답 리처드 1세의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1341",
+      "answer": "봉건제",
+      "verdict": "diff",
+      "why": "새 정답 부르주아의 지식(유래·사실)과 옛 정답 봉건제의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "3984",
+      "answer": "카롤루스 대제",
+      "verdict": "diff",
+      "why": "새 정답 부르주아의 지식(유래·사실)과 옛 정답 카롤루스 대제의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bourgeoisie",
+     "https://ko.wikipedia.org/wiki/부르주아지"
+    ],
+    "facts": [
+     {
+      "claim": "중세 프랑스어 bourgeois = 성벽 두른 장터 마을(bourg) 주민 · 상인·장인 · 농민과 영주 사이 계층",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bourgeoisie",
+      "note": "Historically, the medieval French word bourgeois denoted the inhabitants of the bourgs (walled market-towns), the craftsmen, artisans, merchants ... They were the socio-economic class between the peasants and the landlords"
+     },
+     {
+      "claim": "11세기 bourg 가 상업·수공업 도시로",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bourgeoisie",
+      "note": "The bourgeoisie emerged as a historical and political phenomenon in the 11th century when the bourgs of Central and Western Europe developed into cities dedicated to commerce and crafts."
+     },
+     {
+      "claim": "원래 '성 안 사람' · 지금은 자본가 계급 · 반의어 프롤레타리아",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/부르주아지",
+      "note": "원래 성 안 사람이란 뜻이었으나 마르크스주의 이후 현대에는 유산시민(有產市民), 자본가 계급을 뜻한다. ... 반의어는 무산자를 뜻하는 프롤레타리아이다."
+     },
+     {
+      "claim": "어원 burg · 독일어 Bürger · 도시 특허장",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bourgeoisie",
+      "note": "derived from bourg ('market town'), from the Old Frankish burg ('town'); ... the German Bürger ... recognised as such by their urban charters"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/부르주아지"
+    ],
+    "hintNote": null,
+    "easiestCue": "중세 성벽 도시의 상인·장인 계층 이름(프랑스어)",
+    "worthWhyGen": "자본가 계급 이름이 '성안 장터 마을 사람'에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '계층 이름' 예",
+     "unique": "'프랑스어 · 장터 마을 사람' 으로 길드·시민과 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 마르크스"
+    ],
+    "job": "job-02"
+   }
+  }
+ ]
+}

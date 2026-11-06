@@ -1,0 +1,153 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "aerospace/5",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/5#g032b-g032b-j07-8",
+   "seed": {
+    "subject": "오퍼튜니티",
+    "aspect": null,
+    "ref": "g032b-j07-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "2004년 화성에 내린 미국의 탐사 로버입니다. 90솔(화성의 하루) 동안만 움직이도록 설계됐지만, 화성의 바람이 이따금 태양 전지판의 먼지를 털어 준 덕에 14년 넘게 일했습니다. 2018년 행성 전체를 덮은 먼지 폭풍에 갇혀 연락이 끊긴 이 로버는?",
+    "answer": "오퍼튜니티",
+    "acceptedAnswers": [
+     "오퍼튜니티호",
+     "오퍼튜니티 로버"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "설계 수명의 55배 넘게 일하며 45km를 달렸고, NASA는 2019년 2월 1,000번 넘는 호출에도 답이 없자 임무가 끝났다고 알렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "2004년 화성에 내린 미국의 탐사 로버 … 2018년 먼지 폭풍",
+     "difWhy": "4 — 로버 이름은 일반인이 못 떠올림 · 큐리오시티와 혼동",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 우주 탐사 상식 · 범위 좁음",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "NASA 화성 로버로, 마지막 신호를 '배터리가 떨어지고 어두워지고 있어'로 옮긴 글이 퍼져 많은 이가 애도했다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "NASA 화성 탐사 로버 MER-B(Opportunity), 2004~2018",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "화성 탐사 뉴스·영화 마션 관련",
+     "piece": "f03",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '탐사 로버', 끝 ○○ '로버'. '솔'은 괄호 풀이됨"
+    },
+    "blindQuestion": {
+     "guess": "오퍼튜니티",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오퍼튜니티",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오퍼튜니티",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2667",
+      "answer": "큐리오시티",
+      "verdict": "diff",
+      "why": "오퍼튜니티 vs 큐리오시티 착륙 — 다른 로버"
+     },
+     {
+      "old": "3350",
+      "answer": "큐리오시티",
+      "verdict": "diff",
+      "why": "오퍼튜니티 vs 큐리오시티 생일 노래 — 다른 로버"
+     },
+     {
+      "old": "3351",
+      "answer": "뉴호라이즌스",
+      "verdict": "diff",
+      "why": "오퍼튜니티 vs 뉴호라이즌스 — 무관"
+     },
+     {
+      "old": "2663",
+      "answer": "보이저 1호",
+      "verdict": "diff",
+      "why": "오퍼튜니티 vs 보이저 1호 — 무관"
+     },
+     {
+      "old": "2670",
+      "answer": "카시니",
+      "verdict": "diff",
+      "why": "오퍼튜니티 vs 카시니 — 무관"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Opportunity_(rover)",
+     "https://ko.wikipedia.org/wiki/오퍼튜니티_로버"
+    ],
+    "facts": [
+     {
+      "claim": "2004-01-25 착륙 · 계획 90솔 · 5111솔(14년 이상) · 태양 전지 · 바람이 먼지 털어 준 적 있음 · 2018 행성 규모 먼지 폭풍 · 2018-06-10 마지막 교신 · 2019-02-13 종료 · 1,000회 신호 · 45.16km · 마지막 신호 번역 트윗",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Opportunity_(rover)",
+      "note": "it landed in Meridiani Planum on January 25, 2004 ... With a planned 90-sol duration of activity ... Opportunity was operational on Mars for 5111 sols (14 years, 138 days on Earth) ... In early June 2018, a large planetary-scale dust storm developed ... last contact on June 10, 2018 ... a windy period between November 2018 and January 2019 might clear the dust from its solar panels, as had happened before. ... Opportunity lasted 55 times longer than its 90 sol planned lifetime ... failed to respond to over 1,000 signals ... translation of the last data transmission ... as \"My battery is low and it's getting dark.\" The phrase struck a chord with the public, inspiring a period of mourning"
+     },
+     {
+      "claim": "2004-01-25 착륙 · 90화성일 예상 · 2018 모래 폭풍 · 2019-02-13 임무 완료 · 1,000번 이상 신호",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오퍼튜니티_로버",
+      "note": "화성에는 2004년 1월 25일 메리디아니 평원에 착륙했는데 ... 원래 약 90일 화성에서 일하는 동안 운행할 것으로 예상했으나 ... 2018년 여름에 발생한 역대 최대 규모의 모래 폭풍 탓에 오퍼튜니티는 2018년 6월 12일부터 모든 활동을 중지하고 동면 상태에 돌입했다. ... 2019년 2월 13일 NASA는 해당 탐사차가 2018년 8월 이후 보낸 1,000번 이상의 신호에 응답을 실패한 이후 오퍼튜니티의 임무는 완료되었다고 선언하였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Opportunity_(rover)"
+    ],
+    "hintNote": null,
+    "easiestCue": "'2004년 화성 · 14년 넘게 일한 로버' — 이름을 아는 사람만(큐리오시티로 헷갈림)",
+    "worthWhyGen": "왜 90일짜리가 14년을 버텼나(바람이 먼지를 털어 줌) — 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '탐사 로버' 예",
+     "unique": "14년 · 2018 먼지 폭풍 — 쌍둥이 스피릿(2010 끝)·큐리오시티와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 화성/배터리"
+    ],
+    "job": "job-07"
+   }
+  }
+ ]
+}

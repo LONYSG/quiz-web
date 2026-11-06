@@ -1,0 +1,144 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "physics/4",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/4#g032b-g032b-j12-3",
+   "seed": {
+    "subject": "바이메탈",
+    "aspect": null,
+    "ref": "g032b-j12-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "온도를 다루는 부품입니다. 18세기 영국 시계공 존 해리슨은 바다에서 경도를 재는 시계를 만들다가, 기온에 따라 시계가 빨라지거나 느려지는 문제를 막으려고 이것을 처음 고안했다고 알려져 있습니다. 그의 세 번째 해상 시계 'H3'에 처음 들어간 이 부품은 무엇일까요?",
+    "answer": "바이메탈",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "해리슨은 처음엔 두 띠를 리벳으로 고정했고, 뒤에는 녹인 놋쇠를 강철 위에 바로 입혔습니다. 2006년 웨스트민스터 사원에 세운 그의 기념판에도 이 발명이 새겨졌습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "기온에 따라 시계가 빨라지거나 느려지는 문제를 막으려 처음 고안한 온도 부품",
+     "difWhy": "3 — 바이메탈 학교 용어 · 해리슨 일화에서 떠올림",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 부품 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "놋쇠와 강철처럼 늘어나는 정도가 다른 띠를 맞붙여 데우면 휘게 만든 것으로, 다리미·전기주전자의 온도 조절 스위치에 쓰인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "열팽창률이 다른 두 금속을 붙여 온도에 따라 휘게 한 부품",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "과학 시간에 접함",
+     "piece": "f08",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '온도를 다루는 부품'이 끝 '이 부품'과 일치."
+    },
+    "blindQuestion": {
+     "guess": "바이메탈",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "바이메탈",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "바이메탈",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3120",
+      "answer": "대류",
+      "verdict": "diff",
+      "why": "새 정답 바이메탈 과 옛 정답 대류 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Bimetallic_strip",
+     "https://en.wikipedia.org/wiki/John_Harrison",
+     "https://ko.wikipedia.org/wiki/바이메탈"
+    ],
+    "facts": [
+     {
+      "claim": "해리슨이 H3 를 위해 발명했다고 일반적으로 인정 · 온도 보정",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bimetallic_strip",
+      "note": "The invention of the bimetallic strip is generally credited to John Harrison, an eighteenth-century clockmaker who made it for his third marine chronometer (H3) of 1759 to compensate for temperature-induced changes in the balance spring."
+     },
+     {
+      "claim": "H3 가 남긴 유산 = 바이메탈 · 경도 시계",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_Harrison",
+      "note": "Certainly with this machine Harrison left the world two enduring legacies–the bimetallic strip and the caged roller bearing."
+     },
+     {
+      "claim": "가정용 전기기구 온도 조절",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/바이메탈",
+      "note": "전기다리미, 전기주전자와 같은 가정용 전기기구 등 온도조절이 필요한 각 방면에 널리 사용하고 있으며"
+     },
+     {
+      "claim": "리벳 → 놋쇠를 강철 위에 녹여 붙임",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Bimetallic_strip",
+      "note": "His earliest examples had two individual metal strips joined by rivets but he also invented the later technique of directly fusing molten brass onto a steel substrate."
+     },
+     {
+      "claim": "2006년 웨스트민스터 사원 기념판",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/John_Harrison",
+      "note": "A memorial tablet to Harrison was unveiled in Westminster Abbey on 24 March 2006 ... to highlight Harrison's most widespread invention, the bimetallic strip thermometer."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Bimetallic_strip",
+     "https://ko.wikipedia.org/wiki/바이메탈"
+    ],
+    "hintNote": null,
+    "easiestCue": "'온도를 다루는 부품' + 기온에 따른 오차 보정",
+    "worthWhyGen": "알가치 3 — 집 안 전기기구에 늘 들어 있는 부품의 유래(경도 시계)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '부품' 예",
+     "unique": "해리슨 H3 온도 보정 — 하나(석쇠 진자와 혼동 가능성 낮음)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-12"
+   }
+  }
+ ]
+}

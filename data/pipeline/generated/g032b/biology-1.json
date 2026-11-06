@@ -1,0 +1,171 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "biology/1",
+  "midKey": "biology",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "biology/1#g032b-g032b-j11-3",
+   "seed": {
+    "subject": "아폽토시스",
+    "aspect": null,
+    "ref": "g032b-j11-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "세포에 관한 생물학 용어입니다. 1972년 영국 애버딘 대학의 세 연구자는 그리스어 교수의 제안을 받아, 나무에서 잎이 떨어지거나 꽃잎이 지는 모습을 뜻하는 그리스어 낱말을 이 용어로 골랐습니다. 다쳐서 터져 죽는 '괴사'와 구별하려고 붙인 이 용어는 무엇일까요?",
+    "answer": "아폽토시스",
+    "acceptedAnswers": [
+     "세포자살",
+     "세포자멸사",
+     "아포토시스"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "올챙이가 개구리가 될 때 꼬리와 아가미가 없어지는 것도 이 현상입니다. 어른 몸에서는 하루 500억~700억 개가 이렇게 사라집니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "잎이 떨어지는 모습을 뜻하는 그리스어 / 괴사와 구별",
+     "difWhy": "4 — 아폽토시스 전공 용어, 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 생물학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "몸이 쓸모없어진 세포를 유전자 신호에 따라 조용히 없애는 일로, 태아의 손가락 사이 살이 사라져 손가락이 갈라지는 것이 대표 예다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "유전적으로 짜인 대로 세포가 스스로 사라지는 세포 죽음(세포자살)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "생물 교과·건강 기사에서 접함",
+     "piece": "f03",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '세포에 관한 생물학 용어' 가 끝 ○○(용어) 와 일치, 괴사는 풀이가 붙음"
+    },
+    "blindQuestion": {
+     "guess": "아포토시스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "세포자멸사",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아폽토시스",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j06-3",
+      "answer": "클론",
+      "verdict": "diff",
+      "why": "아폽토시스와 클론 용어는 다른 용어"
+     },
+     {
+      "old": "37",
+      "answer": "2",
+      "verdict": "diff",
+      "why": "아폽토시스와 유전자 쌍(2개) 지식은 무관"
+     },
+     {
+      "old": "804",
+      "answer": "크리스퍼",
+      "verdict": "diff",
+      "why": "아폽토시스와 크리스퍼는 다른 기술"
+     },
+     {
+      "old": "4286",
+      "answer": "PCR",
+      "verdict": "diff",
+      "why": "아폽토시스와 PCR은 다른 기술"
+     },
+     {
+      "old": "6513",
+      "answer": "돌리",
+      "verdict": "diff",
+      "why": "아폽토시스와 복제양 돌리는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Apoptosis",
+     "https://ko.wikipedia.org/wiki/세포자살"
+    ],
+    "facts": [
+     {
+      "claim": "1972년 Kerr·Wyllie·Currie 논문에서 명명 · 애버딘 대학 그리스어 교수 Cormack 제안",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Apoptosis",
+      "note": "In 1972, the trio published a seminal article in the British Journal of Cancer. ... Kerr, Wyllie and Currie credited James Cormack, a professor of Greek language at University of Aberdeen, with suggesting the term apoptosis."
+     },
+     {
+      "claim": "그리스어로 꽃잎·나뭇잎이 떨어지는 것",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Apoptosis",
+      "note": "The word \"apoptosis\" (ἀπόπτωσις) is used in Greek to describe the \"dropping off\" or \"falling off\" of petals from flowers, or leaves from trees."
+     },
+     {
+      "claim": "괴사(Necrosis)와 대조",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/세포자살",
+      "note": "갑작스럽게 세포가 피해를 입어 야기되는 세포사인 괴사(Necrosis)와 대조적으로 세포자살은 생물체에 해를 끼치지 않으며"
+     },
+     {
+      "claim": "손가락 형성이 대표 사례",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/세포자살",
+      "note": "인간 배(胚, embryo)의 분화 과정에서 손가락과 발가락, 각 10개의 형성은 세포자살이 작용하는 대표적 사례이다."
+     },
+     {
+      "claim": "올챙이 꼬리·아가미 · 어른 하루 500억~700억",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Apoptosis",
+      "note": "stimulate the spectacular apoptosis of the cells of the larval gills, tail and fins in amphibian's metamorphosis / The average adult human loses 50 to 70 billion cells each day to apoptosis."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Apoptosis",
+     "https://ko.wikipedia.org/wiki/세포자살"
+    ],
+    "hintNote": null,
+    "easiestCue": "괴사와 구별되는 세포 죽음 — 생명과학을 배운 사람이면 '세포자살'로 풀 수 있음",
+    "worthWhyGen": "'세포자살'의 영어 이름이 '떨어지는 잎'에서 왔다는 이름 유래가 질문 안에 있음",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '생물학 용어' 예",
+     "unique": "괴사와 구별되는 세포 죽음 이름 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  }
+ ]
+}

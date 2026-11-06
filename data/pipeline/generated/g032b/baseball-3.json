@@ -1,0 +1,156 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "baseball/3",
+  "midKey": "baseball",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "baseball/3#g032b-g032b-j22-7",
+   "seed": {
+    "subject": "마이너리그",
+    "aspect": null,
+    "ref": "g032b-j22-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 프로야구에서 최상위 무대 아래에 있는 하위 단계들을 통틀어 부르는 말입니다. 트리플 A, 더블 A처럼 단계가 나뉘고, 유망주는 여기서 실력을 키워 최상위 무대로 올라갑니다. 이 말은?",
+    "answer": "마이너리그",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [
+     "Minor League Baseball"
+    ],
+    "explanation": "1921년 큰 구단이 아래 팀을 소유할 수 있게 되자 세인트루이스 카디널스의 브랜치 리키가 이런 선수 키우기 체계(팜 시스템)를 꾸렸다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "트리플 A, 더블 A처럼 단계가 나뉘고",
+     "difWhy": "2 — 야구 팬은 바로 · 일반인도 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 야구 용어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "박찬호도 데뷔 직후 내려가 실력을 다진, MLB 구단마다 거느린 육성용 팀들의 무대",
+    "generalHintVersion": "hint-v7",
+    "identity": "MLB 아래의 미국 프로야구 하위 리그 체계(MiLB)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "야구 중계에서 흔함",
+     "piece": "f03",
+     "genPct": 88
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '미국 프로야구 … 하위 단계들을 통틀어 부르는 말' 이 있고 끝 '이 말은?' 과 같다. 매우 짧다."
+    },
+    "blindQuestion": {
+     "guess": "마이너리그",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "마이너리그",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "마이너리그",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4765",
+      "answer": "박철순",
+      "verdict": "diff",
+      "why": "마이너리그 개념은 박철순·월드 시리즈·니그로 리그·사이영상·LA 다저스와 다른 지식이다"
+     },
+     {
+      "old": "2104",
+      "answer": "월드 시리즈",
+      "verdict": "diff",
+      "why": "마이너리그 개념은 박철순·월드 시리즈·니그로 리그·사이영상·LA 다저스와 다른 지식이다"
+     },
+     {
+      "old": "4772",
+      "answer": "니그로 리그",
+      "verdict": "diff",
+      "why": "마이너리그 개념은 박철순·월드 시리즈·니그로 리그·사이영상·LA 다저스와 다른 지식이다"
+     },
+     {
+      "old": "4771",
+      "answer": "사이영상",
+      "verdict": "diff",
+      "why": "마이너리그 개념은 박철순·월드 시리즈·니그로 리그·사이영상·LA 다저스와 다른 지식이다"
+     },
+     {
+      "old": "5698",
+      "answer": "LA 다저스",
+      "verdict": "diff",
+      "why": "마이너리그 개념은 박철순·월드 시리즈·니그로 리그·사이영상·LA 다저스와 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/마이너_리그_베이스볼",
+     "https://en.wikipedia.org/wiki/Minor_League_Baseball"
+    ],
+    "facts": [
+     {
+      "claim": "MLB 아래 단계 · 트리플 A·더블 A 등",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/마이너_리그_베이스볼",
+      "note": "마이너 리그 베이스볼(Minor League Baseball)은 ... 메이저 리그 아래 단계이며 세부적으로 트리플 A, 더블 A, 싱글 A ... 루키 등으로 나뉜다."
+     },
+     {
+      "claim": "MLB 아래 · 유망주가 단계별로 올라감",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Minor_League_Baseball",
+      "note": "Minor League Baseball (MiLB) is a group of professional baseball organizations below Major League Baseball (MLB) ... MLB prospects play at each level, typically beginning at the lowest level and earning promotion to higher levels. ... AA (or Double-A) and AAA (or Triple-A)."
+     },
+     {
+      "claim": "1921 소유 허용 · 브랜치 리키 팜 시스템",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Minor_League_Baseball",
+      "note": "In 1921, MLB and MiLB signed an agreement allowing Major League teams to own Minor League teams. St. Louis Cardinals executive Branch Rickey used this agreement to develop a farm system for his team"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Minor_League_Baseball"
+    ],
+    "hintNote": null,
+    "easiestCue": "트리플 A·더블 A로 나뉜 하위 단계",
+    "worthWhyGen": "야구·일상에서 '2군·하위 무대' 뜻으로 두루 쓰는 말의 본뜻(취미 영역 — 2)",
+    "targetGrade": 1,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '말' 예",
+     "unique": "MLB 하위 단계 총칭 — 하나",
+     "hint12": "① 예 ② 예 · 박찬호 1994 데뷔 뒤 마이너행은 knowledge"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

@@ -1,0 +1,261 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "religion/5",
+  "midKey": "religion",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "religion/5#g032b-g032b-j23-11",
+   "seed": {
+    "subject": "여호와의 증인",
+    "aspect": null,
+    "ref": "g032b-j23-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1870년 미국에서 찰스 테이즈 러셀의 성서 연구 모임으로 시작한 기독교 계열 종교 단체입니다. '피를 멀리하라'는 성경 구절을 근거로 신도들이 수혈을 받지 않는 것으로 잘 알려져 있습니다. 이 종교 단체는?",
+    "answer": "여호와의 증인",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "'파수대'와 '깨어라!'라는 잡지를 수백 개 언어로 펴내며, 한국에는 1912년 선교인 홀리스터가 처음 전했습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "신도들이 수혈을 받지 않는 것으로 잘 알려진 종교 단체",
+     "difWhy": "2 — 수혈 거부 단서로 바로 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 사회 상식",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "신도들이 총을 들 수 없다며 군 복무를 거부해, 양심적 병역거부로 오래 논란이 된 종교다",
+    "generalHintVersion": "hint-v7",
+    "identity": "수혈 거부·병역 거부로 알려진 기독교 계열 종교 단체",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "수혈 거부·전도로 널리 알려짐",
+     "piece": "f06",
+     "genPct": 92
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '종교 단체'가 끝 ○○와 일치. 두 문장뿐."
+    },
+    "blindQuestion": {
+     "guess": "여호와의 증인",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "여호와의 증인",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "여호와의 증인",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6061",
+      "answer": "마니교",
+      "verdict": "diff",
+      "why": "여호와의 증인 vs 마니교 위구르 개종 — 다름"
+     },
+     {
+      "old": "655",
+      "answer": "조로아스터교",
+      "verdict": "diff",
+      "why": "여호와의 증인 vs 조로아스터교 — 다른 종교"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/여호와의_증인",
+     "https://en.wikipedia.org/wiki/Jehovah%27s_Witnesses_and_blood_transfusions"
+    ],
+    "facts": [
+     {
+      "claim": "1870년 러셀이 미국에서 성서 연구생 운동 조직",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/여호와의_증인",
+      "note": "1870년 찰스 테이즈 러셀에 의해 미국에서 성서 연구생 운동이 조직되면서부터 시작되었으며"
+     },
+     {
+      "claim": "피를 멀리하라 구절 근거 수혈 거부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/여호와의_증인",
+      "note": "사도행전 15:20의 \"목매어 죽인 것과 피를 멀리하라\"라는 내용 등을 근거로 수혈 치료를 거부하고 있다."
+     },
+     {
+      "claim": "수혈 거부가 가장 잘 알려진 교리",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jehovah%27s_Witnesses_and_blood_transfusions",
+      "note": "Their interpretation of scripture is unusual and is one of the doctrines for which Jehovah's Witnesses are best known. Their literature teaches that refusal of transfusions of whole blood is a non-negotiable religious stand"
+     },
+     {
+      "claim": "양심적 병역거부",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/여호와의_증인",
+      "note": "대부분 천황숭배 거부 및 양심에 따른 병역거부로 옥고를 치렀다. … \"다른 나라에 있는 자신의 형제나 자매를 죽이는 전쟁에 결단코 참여하지 않을 것\""
+     },
+     {
+      "claim": "파수대·깨어라 · 1912년 홀리스터",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/여호와의_증인",
+      "note": "주요 출판물로는 … 파수대와 깨어라 지가 있다. … 357개 언어 … 한반도에는 1912년 여호와의 증인 선교인 R. R. 홀리스터에 의해 전파되기 시작하여"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/여호와의_증인"
+    ],
+    "hintNote": null,
+    "easiestCue": "신도들이 수혈을 받지 않는 종교",
+    "worthWhyGen": "알가치 3 — 뉴스·사회 상식(수혈 거부·병역거부)",
+    "targetGrade": 2,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '종교 단체입니다'",
+     "unique": "수혈 거부 + 러셀 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-23"
+   }
+  },
+  {
+   "seedId": "religion/5#g032b-g032b-j28-8",
+   "seed": {
+    "subject": "드루이드",
+    "aspect": null,
+    "ref": "g032b-j28-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "고대 갈리아와 브리타니아의 켈트족 사회에서 제사와 재판, 가르침을 함께 맡은 계층입니다. 가르침을 글로 남기지 않아, 그 모습은 주로 카이사르의 '갈리아 전기' 같은 로마 쪽 기록으로 전해집니다. 이름이 '참나무를 아는 사람'이라는 뜻으로 풀이되는 이 켈트족 사제들은?",
+    "answer": "드루이드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "로마 황제 티베리우스와 클라우디우스 때 탄압을 받아 2세기 무렵에는 자취를 감추었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "켈트족 제사·재판·가르침 계층 · 참나무를 아는 사람",
+     "difWhy": "3 — 판타지로 익숙 · 역사 용어",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 고대 종교 지식",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 50",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "흰 옷을 입고 황금 낫으로 참나무의 겨우살이를 베는 모습으로 그려지며, 판타지 게임의 자연 마법사 직업으로도 익숙하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "고대 켈트족의 사제·재판관 계급(druid)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 50,
+     "why": "게임·판타지에서 접함",
+     "piece": "f09",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '켈트족 사회 … 계층' 이 종류. 끝 '이 켈트족 사제들은?' 과 맞는다."
+    },
+    "blindQuestion": {
+     "guess": "드루이드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "드루이드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "드루이드",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/드루이드",
+     "https://en.wikipedia.org/wiki/Druid"
+    ],
+    "facts": [
+     {
+      "claim": "켈트족 고위 계급 · 성직자·재판관 · 글로 남기지 않음 · 카이사르 갈리아 전기 · 참나무-아는 사람",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/드루이드",
+      "note": "드루이드 ... 고대 켈트족의 고위 전문직 계급이다. 성직자로 가장 널리 알려져 있지만 ... 법조인, 심판관 ... 자신들의 지식을 문자로 써서 남기는 것이 교리상 금지되었다. ... 율리우스 카이사르가 쓴 『갈리아 전기』에서 처음으로 상세한 설명이 이루어진다. ... 그 사전적 의미는 \"참나무-아는 사람(영어: oak-knower)\"이다."
+     },
+     {
+      "claim": "갈리아·브리튼의 학식 계층 · 사제·교사·재판관 · 'oak-knower' · 기록은 외부 관찰자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Druid",
+      "note": "A druid (Gaulish: druides, from Proto-Celtic *druwides, 'oak-knower' or '[priest with] strong insight') was a member of the learned class of the ancient Celtic peoples of Gaul and Britain, described by Greek and Roman writers as a priest, teacher, judge ... Because the druids committed nothing of their teaching to writing ... almost everything known about them comes from outside observers."
+     },
+     {
+      "claim": "흰 옷 · 참나무 숲 · 겨우살이 · 황금 낫 이미지",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Druid",
+      "note": "The familiar modern image of white robes, oak groves, mistletoe and a golden sickle derives largely from a single passage of Pliny the Elder."
+     },
+     {
+      "claim": "티베리우스·클라우디우스 탄압 · 2세기 소멸",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/드루이드",
+      "note": "기원후 1세기 황제들인 티베리우스와 클라우디우스 치하에서 드루이드교는 탄압당했고, 2세기가 되면 완전히 사라진다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Druid"
+    ],
+    "hintNote": null,
+    "easiestCue": "켈트족 사제 계층 · '참나무를 아는 사람'",
+    "worthWhyGen": "게임·판타지로 익숙한 이름의 실제 정체와 이름 뜻(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '계층' — 끝 문장 '사제들' 과 같은 대상",
+     "unique": "켈트족 사제 — 드루이드 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 겨우살이"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

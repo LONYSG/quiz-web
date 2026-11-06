@@ -1,0 +1,173 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-music/4",
+  "midKey": "kr-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-music/4#g032b-g032b-j14-8",
+   "seed": {
+    "subject": "보아",
+    "aspect": null,
+    "ref": "g032b-j14-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일본에서 크게 활동한 한국 여가수입니다. 2005년 일본에서 낸 베스트 앨범 'Best of Soul'이 100만 장 넘게 팔렸는데, 외국 가수 앨범이 일본에서 다시 100만 장을 넘기기까지 16년이 걸렸습니다. 2009년에는 영어 앨범으로 K팝 가수 처음 빌보드 200에 오른 이 가수는 누구일까요?",
+    "answer": "보아",
+    "acceptedAnswers": [
+     "BoA"
+    ],
+    "originalTitleVariants": [
+     "BoA"
+    ],
+    "explanation": "일본 첫 정규 앨범 'Listen to My Heart'(2002)는 한국 가수 앨범으로 처음 오리콘 주간 1위에 올랐습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "2009년 영어 앨범으로 K팝 가수 처음 빌보드 200에 오른 일본 활동 가수",
+     "difWhy": "2 — 보아는 20~30대에 익숙",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 고유명사 — 가수 이름 확인",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "SM엔터테인먼트에서 2000년 'ID; Peace B'로 데뷔했고, 2002년 'No.1'으로 큰 인기를 끈 가수다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "SM엔터테인먼트 소속 한국 여가수(2000년 데뷔) — 일본 오리콘에서 성공",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "유명 가수",
+     "piece": "f04",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '한국 여가수'가 있고 끝 ○○(가수)와 일치, 앨범·판매 수치는 문장당 하나씩"
+    },
+    "blindQuestion": {
+     "guess": "보아",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "보아",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "보아",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4684",
+      "answer": "질랜디아",
+      "verdict": "diff",
+      "why": "새 정답 보아 과 옛 정답 질랜디아 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "6255",
+      "answer": "손목시계",
+      "verdict": "diff",
+      "why": "새 정답 보아 과 옛 정답 손목시계 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "1964",
+      "answer": "작가주의",
+      "verdict": "diff",
+      "why": "새 정답 보아 과 옛 정답 작가주의 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2176",
+      "answer": "TKO",
+      "verdict": "diff",
+      "why": "새 정답 보아 과 옛 정답 TKO 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "2241",
+      "answer": "모스 굳기계",
+      "verdict": "diff",
+      "why": "새 정답 보아 과 옛 정답 모스 굳기계 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/BoA",
+     "https://ko.wikipedia.org/wiki/보아"
+    ],
+    "facts": [
+     {
+      "claim": "Best of Soul 100만 장 이상 · 외국 가수 마지막 밀리언, 16년 뒤 2021년 방탄소년단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/BoA",
+      "note": "Her first compilation album, Best of Soul (February 2005), however, sold over a million copies ... It remained the last album by a foreign artist to have sold over a million copies in Japan for 16 years, until BTS in 2021."
+     },
+     {
+      "claim": "2009 영어 앨범 · K팝 첫 빌보드 200",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/BoA",
+      "note": "Her self-titled English album (2009) became the first record by a K-pop artist to appear on the Billboard 200, debuting at number 127."
+     },
+     {
+      "claim": "같은 사실(두 번째 문서)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/보아",
+      "note": "2005년 발매한 일본 베스트 음반 《Best Of Soul》이 100만 장을 넘겼다. ... 미국 첫 정규 음반 《BoA》를 발매해 한국 가수로 최초로 빌보드 200 127위에 진입했다."
+     },
+     {
+      "claim": "SM 발탁 · 2000년 ID; Peace B 데뷔 · 2002 No.1",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/BoA",
+      "note": "BoA was discovered by SM Entertainment talent agents ... made her debut with ID; Peace B (2000). / her second Korean studio album, No. 1, a month later on April 12, 2002. The album sold around 544,853 units"
+     },
+     {
+      "claim": "Listen to My Heart 한국 가수 첫 오리콘 앨범 1위",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/보아",
+      "note": "2002년 3월 13일 첫 일본 정규 앨범 LISTEN TO MY HEART을 발매해 한국 가수로는 처음으로 오리콘 일간, 주간 앨범 차트 1위를 했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/BoA",
+     "https://ko.wikipedia.org/wiki/보아"
+    ],
+    "hintNote": null,
+    "easiestCue": "첫 문장 '일본에서 크게 활동한 한국 여가수' — 보아가 바로 떠오를 수 있어 등급 3 이 될 수 있음",
+    "worthWhyGen": "K팝 해외 진출의 첫 기록들(일본 밀리언 · 빌보드 200) — 아이돌 취미 영역 세부",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · 첫 문장 '한국 여가수' 종류 명사 — 예",
+     "unique": "Best of Soul + 빌보드 200 첫 K팝 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 168자"
+    ],
+    "job": "job-14"
+   }
+  }
+ ]
+}

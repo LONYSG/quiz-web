@@ -1,0 +1,162 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "philosophy/3",
+  "midKey": "philosophy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "philosophy/3#g032b-g032b-j21-10",
+   "seed": {
+    "subject": "아우라",
+    "aspect": null,
+    "ref": "g032b-j21-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "독일 사상가 발터 벤야민이 예술 작품의 성질을 가리켜 쓴 말입니다. 그는 1935년, 사진·영화처럼 작품을 똑같이 찍어 내는 기술이 원본만 지닌 고유한 분위기를 잃게 한다고 썼습니다. 오늘날 '그 사람에게서 풍기는 남다른 기운'이라는 뜻으로도 흔히 쓰는 이 말은?",
+    "answer": "아우라",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "벤야민은 나치가 집권하던 때 이 글 '기술복제시대의 예술작품'을 썼고, 미디어 이론의 고전으로 꼽힌다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "'그 사람에게서 풍기는 남다른 기운'이라는 뜻으로도 흔히 쓰는 이 말은?",
+     "difWhy": "3 — 일상어(아우라)지만 벤야민 철학 맥락에서 설명 → 이름, 마지막 문장이 단서",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상에서 쓰는 말의 본뜻",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "'무대에 서기만 해도 ~가 느껴지는 배우'처럼, 범접하기 어려운 분위기를 말할 때 쓰는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "벤야민이 말한 예술 작품 원본의 고유한 분위기 — 일상에서 '풍기는 기운'",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "일상어로 쓰임",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "일화 선행",
+     "reason": "첫 문장 주어는 벤야민이고 정답 종류 '말'은 끝 문장에서야 나옴. 다만 문장이 두 개뿐이고 '분위기'가 첫 문장에 있어 해독은 되는 경계."
+    },
+    "blindQuestion": {
+     "guess": "아우라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아우라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아우라",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j11-10",
+      "answer": "피로사회",
+      "verdict": "diff",
+      "why": "아우라(벤야민)는 피로사회·구조주의·실용주의·판옵티콘·아렌트와 다른 사상 지식이다"
+     },
+     {
+      "old": "3101",
+      "answer": "구조주의",
+      "verdict": "diff",
+      "why": "아우라(벤야민)는 피로사회·구조주의·실용주의·판옵티콘·아렌트와 다른 사상 지식이다"
+     },
+     {
+      "old": "3100",
+      "answer": "실용주의",
+      "verdict": "diff",
+      "why": "아우라(벤야민)는 피로사회·구조주의·실용주의·판옵티콘·아렌트와 다른 사상 지식이다"
+     },
+     {
+      "old": "3103",
+      "answer": "판옵티콘",
+      "verdict": "diff",
+      "why": "아우라(벤야민)는 피로사회·구조주의·실용주의·판옵티콘·아렌트와 다른 사상 지식이다"
+     },
+     {
+      "old": "6727",
+      "answer": "한나 아렌트",
+      "verdict": "diff",
+      "why": "아우라(벤야민)는 피로사회·구조주의·실용주의·판옵티콘·아렌트와 다른 사상 지식이다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/The_Work_of_Art_in_the_Age_of_Mechanical_Reproduction",
+     "https://ko.wikipedia.org/wiki/아우라"
+    ],
+    "facts": [
+     {
+      "claim": "1935 벤야민 · 기계 복제가 작품의 aura(고유성)를 떨어뜨림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/The_Work_of_Art_in_the_Age_of_Mechanical_Reproduction",
+      "note": "\"The Work of Art in the Age of Mechanical Reproduction\" (... 1935), by Walter Benjamin, is an essay of cultural criticism which proposes and explains that mechanical reproduction devalues the aura (uniqueness) of a work of art"
+     },
+     {
+      "claim": "아우라 = 벤야민 '기술복제시대의 예술작품' 개념 · 몸에서 발산되는 기운",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아우라",
+      "note": "아우라는 발터 벤야민의 저서 기술복제시대의 예술작품에서 소개한 개념이다. 아우라는 인체로부터 발산되는 영혼적인 에너지다."
+     },
+     {
+      "claim": "나치 시기 집필 · 미디어 이론의 기초",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/The_Work_of_Art_in_the_Age_of_Mechanical_Reproduction",
+      "note": "The essay was written during the Nazi régime (1933–1945) in Germany. ... it has become a foundational theoretical resource in the fields of art history and architectural theory, cultural studies, and media theory."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아우라"
+    ],
+    "hintNote": null,
+    "easiestCue": "'풍기는 남다른 기운'이라는 일상 뜻",
+    "worthWhyGen": "일상에서 쓰는 말이 벤야민의 예술 이론에서 왔다는 유래(19 §9-1 ②·③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장은 장면(벤야민) — 첫 문장에 '분위기' 있음 · 대체로 예",
+     "unique": "벤야민 + 풍기는 기운 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "1935년 독일 사상가 발터 벤야민은 사진·영화처럼 작품을 똑같이 찍어 내는 기술이 원본만 지닌 고유한 분위기를 잃게 한다고 썼습니다. 오늘날 '그 사람에게서 풍기는 남다른 기운'이라는 뜻으로도 흔히 쓰는 이 말은?"
+      },
+      "why": "⑨ 첫 문장에 '말'(종류) · 일화는 둘째 문장"
+     }
+    ],
+    "warn": [],
+    "job": "job-21"
+   }
+  }
+ ]
+}

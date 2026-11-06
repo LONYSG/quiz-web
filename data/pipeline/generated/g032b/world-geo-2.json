@@ -1,0 +1,323 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-geo/2",
+  "midKey": "world-geo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-geo/2#g032b-g032b-j04-1",
+   "seed": {
+    "subject": "아드리아해",
+    "aspect": null,
+    "ref": "g032b-j04-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "지중해의 한 바다는 에트루리아인이 세운 옛 항구 도시에서 이름을 얻었습니다. 그 도시는 강이 실어 온 흙이 쌓이면서 지금은 바다에서 22km쯤 떨어진 내륙 마을이 되었습니다. 동쪽 해안에 1,300개가 넘는 섬이 흩어져 있는 이 바다는 어디일까요?",
+    "answer": "아드리아해",
+    "acceptedAnswers": [
+     "아드리아 해"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "도시 이름은 일리리아어로 물·바다를 뜻하는 말에서 왔다는 설이 있다. 지중해로 드는 민물의 3분의 1을 모아 지중해보다 덜 짜다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "동쪽 해안에 1,300개가 넘는 섬 · 지중해의 한 바다",
+     "difWhy": "3 — 설명 → 이름, 에트루리아 도시는 단서 약함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 지리 교과",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "이탈리아반도와 발칸반도 사이에 끼인 바다로, 북쪽 끝에 물의 도시 베네치아가 있고 건너편은 크로아티아 해안이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "이탈리아반도와 발칸반도 사이의 지중해 일부 바다(Adriatic Sea)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "지리 상식, 여행",
+     "piece": "f02",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '지중해의 한 바다' 가 끝 ○○ '바다' 와 같음 · '그 도시' 는 바로 앞 문장 도시를 가리켜 헷갈리지 않음"
+    },
+    "blindQuestion": {
+     "guess": "아드리아해",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "아드리아해",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "아드리아해",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 7,
+     "found": 7,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6725",
+      "answer": "말티즈",
+      "verdict": "diff",
+      "why": "새 정답 아드리아해의 지식(유래·사실)과 옛 정답 말티즈의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6789",
+      "answer": "흑해",
+      "verdict": "diff",
+      "why": "새 정답 아드리아해의 지식(유래·사실)과 옛 정답 흑해의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j04-1",
+      "answer": "에게해",
+      "verdict": "diff",
+      "why": "새 정답 아드리아해의 지식(유래·사실)과 옛 정답 에게해의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2601",
+      "answer": "홍해",
+      "verdict": "diff",
+      "why": "새 정답 아드리아해의 지식(유래·사실)과 옛 정답 홍해의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2607",
+      "answer": "지브롤터 해협",
+      "verdict": "diff",
+      "why": "새 정답 아드리아해의 지식(유래·사실)과 옛 정답 지브롤터 해협의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Adriatic_Sea",
+     "https://en.wikipedia.org/wiki/Adria",
+     "https://ko.wikipedia.org/wiki/아드리아해"
+    ],
+    "facts": [
+     {
+      "claim": "바다 이름이 에트루리아인의 정착지(항구) 아드리아에서 옴",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Adriatic_Sea",
+      "note": "The origins of the name Adriatic are linked to the Etruscan settlement of Adria, which probably derives its name from Illyrian adur 'water, sea'."
+     },
+     {
+      "claim": "에트루리아의 항구 아드리아가 바다 이름을 줌 · 지금은 바다에서 22km",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Adria",
+      "note": "the famous harbor of the Tuscan town of Atria which formerly gave the name of Atriatic to the sea now called the Adriatic ... The sea is now about 22 kilometres (14 miles) from Adria."
+     },
+     {
+      "claim": "강(포강) 하구 퇴적 · 아디제강과 포강 하구 사이",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Adria",
+      "note": "situated between the mouths of the rivers Adige and Po ... The Etruscans built the port and settlement of Adria after the channel gradually started to run dry."
+     },
+     {
+      "claim": "섬 1,300개 이상, 대부분 동쪽(크로아티아) 해안",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/아드리아해",
+      "note": "아드리아해에는 1,300개 이상의 섬이 있으며, 대부분은 아드리아해 동부 해안의 크로아티아 주변에 산재해 있다."
+     },
+     {
+      "claim": "이탈리아반도와 발칸반도 사이 · 동쪽은 크로아티아 등",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/아드리아해",
+      "note": "지중해 북쪽의 이탈리아반도와 발칸반도 사이에 있는 바다이다. ... 동쪽 해안은 북쪽으로부터 슬로베니아, 크로아티아 ..."
+     },
+     {
+      "claim": "북부는 베네치아만",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Adriatic_Sea",
+      "note": "the entire sea was also known as the Gulf of Venice (Italian: golfo di Venezia), although that name is now informally applied only to the northern area of the sea"
+     },
+     {
+      "claim": "지중해 민물 1/3 · 염분 낮음",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/아드리아해",
+      "note": "아드리아해의 염분도는 지중해보다 낮다. 왜냐하면 아드리아해는 지중해로 유입되는 담수의 1/3을 모아 희석분지 역할을 하기 때문이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/아드리아해",
+     "https://en.wikipedia.org/wiki/Adriatic_Sea"
+    ],
+    "hintNote": null,
+    "easiestCue": "동쪽 해안 섬 1,300개(크로아티아 해안을 알아야) · 에트루리아(이탈리아) — 티레니아해와 헷갈릴 수 있음",
+    "worthWhyGen": "바다 이름이 지금은 내륙이 된 옛 항구 도시에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '바다' 예",
+     "unique": "에트루리아 항구 이름 + 동쪽 해안 섬 1,300 — 티레니아해(에트루리아인 이름)·에게해 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 베네치아"
+    ],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "world-geo/2#g032b-g032b-j19-6",
+   "seed": {
+    "subject": "오호츠크해",
+    "aspect": null,
+    "ref": "g032b-j19-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "겨울마다 얼어붙는 바다 가운데 북반구에서 가장 남쪽에 있는 바다로 꼽힙니다. 아무르강이 쏟아 내는 민물 덕에 바닷물이 덜 짜서 잘 언다고 봅니다. 서쪽에 사할린섬, 동쪽에 캄차카반도를 둔 이 바다는?",
+    "answer": "오호츠크해",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "이름은 바닷가에 러시아가 처음 세운 도시 오호츠크에서 왔고, 그 도시 이름은 '넓은 강'이라는 오호타강에서 왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "서쪽에 사할린섬, 동쪽에 캄차카반도를 둔 이 바다",
+     "difWhy": "3 — 지리 지명 · 사할린·캄차카 위치로 한 번 건너야 함",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 지리 교과 개념(바다 이름)",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "이 바다 위에서 생긴 차고 습한 기단이 초여름 한반도 동쪽에 자리 잡고, 북태평양 기단과 부딪쳐 장마를 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "사할린·캄차카·쿠릴 열도로 둘러싸인 북서태평양의 바다",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "지리 교과서에서 접함",
+     "piece": "f07",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '얼어붙는 바다' 로 종류가 나온다. 끝 '이 바다는?' 이고 사할린·캄차카가 위치 단서."
+    },
+    "blindQuestion": {
+     "guess": "오호츠크해",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오호츠크해",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오호츠크해",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "1030",
+      "answer": "높새바람",
+      "verdict": "diff",
+      "why": "오호츠크해 vs 높새바람 — 다른 지식"
+     },
+     {
+      "old": "2597",
+      "answer": "대서양",
+      "verdict": "diff",
+      "why": "오호츠크해 vs 대서양 — 다른 바다"
+     },
+     {
+      "old": "2606",
+      "answer": "그린란드",
+      "verdict": "diff",
+      "why": "오호츠크해 vs 그린란드 — 다른 지식"
+     },
+     {
+      "old": "3945",
+      "answer": "지중해",
+      "verdict": "diff",
+      "why": "오호츠크해 vs 지중해 — 다른 바다"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sea_of_Okhotsk",
+     "https://ko.wikipedia.org/wiki/오호츠크해",
+     "https://ko.wikipedia.org/wiki/오호츠크해_기단"
+    ],
+    "facts": [
+     {
+      "claim": "북반구에서 계절적으로 어는 가장 남쪽 바다 · 동 캄차카 · 서 사할린",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sea_of_Okhotsk",
+      "note": "It is the southernmost sea in the Northern Hemisphere that freezes over seasonally. ... located between Russia's Kamchatka Peninsula on the east ... the island of Sakhalin along the west"
+     },
+     {
+      "claim": "북반구 해빙 가장 저위도 · 아무르강 하천수 유입 요인",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오호츠크해",
+      "note": "아무르강의 물이 유입되는 하구 부근에는 염분의 농도가 낮고 ... 동해 북부와 함께 오호츠크해가 북반구 해빙이 분포하는 해역에서 가장 저위도인데, 이는 아무르강의 하천수 유입에서 비롯하는 요인이 크다."
+     },
+     {
+      "claim": "오호츠크해 기단 · 장마철 한반도 동쪽 · 북태평양 기단과 부딪쳐 장마",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/오호츠크해_기단",
+      "note": "하층은 저온 다습하지만 ... 장마나 가을비가 내리는 시기에 한반도 동쪽에는 주로 이 기단이 자리잡는다. 장마가 생기는 이유는 북태평양 기단과 부딪치기 때문이다."
+     },
+     {
+      "claim": "이름 = 도시 오호츠크 ← 오호타강 '넓은 강'",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/오호츠크해",
+      "note": "오호츠크해의 명칭은 오호츠크해 주변에 최초로 건설된 러시아의 식민지 도시였던 오호츠크에서 유래하였다. ... 여기서 오호타는 “넓은 강”을 의미하였다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/오호츠크해_기단"
+    ],
+    "hintNote": null,
+    "easiestCue": "사할린과 캄차카반도 사이 바다",
+    "worthWhyGen": "일기 예보의 '오호츠크해 기단'으로 늘 듣는 바다 + 왜 그렇게 남쪽까지 어는가(까닭)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '바다' 예",
+     "unique": "사할린 서·캄차카 동 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 장마"
+    ],
+    "job": "job-19"
+   }
+  }
+ ]
+}

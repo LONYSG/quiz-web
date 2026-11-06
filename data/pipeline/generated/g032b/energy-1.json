@@ -1,0 +1,130 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "energy/1",
+  "midKey": "energy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "energy/1#g032b-g032b-j27-10",
+   "seed": {
+    "subject": "조류 발전",
+    "aspect": null,
+    "ref": "g032b-j27-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "바닷물의 힘으로 전기를 얻는 방식의 하나입니다. 2009년 전남 진도 울돌목에 시험 발전소가 들어섰는데, 이순신이 명량 해전에서 이용한 그 빠른 물살로 물속 터빈을 돌립니다. 방조제로 물을 가두는 시화호 발전소와 달리 댐이 필요 없는 이 발전 방식은?",
+    "answer": "조류 발전",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "울돌목은 물살이 초속 5m를 넘고, 물이 암초에 부딪히는 소리가 바다가 우는 것 같다 해서 붙은 이름이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "울돌목 물살로 터빈을 돌리는 · 댐이 필요 없는",
+     "difWhy": "3 — 울돌목 단서 있으나 발전 방식 이름 떠올리기",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 에너지 개념",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 25",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "바닷속에 세운 '물속 풍차'를 물살로 돌리는 방식으로, 공기보다 훨씬 무거운 물 덕에 느린 흐름으로도 큰 힘을 낸다",
+    "generalHintVersion": "hint-v7",
+    "identity": "밀물·썰물 때 생기는 빠른 바닷물 흐름으로 물속 터빈을 돌리는 발전(조력 발전과 구별)",
+    "familiarity": {
+     "judge": 1,
+     "pct": 25,
+     "why": "조력 발전보다 훨씬 낯선 용어",
+     "piece": "f08",
+     "genPct": 45
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "조류 발전",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 1,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/울돌목",
+     "https://koreascience.kr/article/CFKO200935161992963.pdf",
+     "https://ko.wikipedia.org/wiki/조력_발전",
+     "https://en.wikipedia.org/wiki/Tidal_stream_generator"
+    ],
+    "facts": [
+     {
+      "claim": "울돌목 빠른 조류 · 명량 해전 · 2008년부터 조류발전소 건설",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/울돌목",
+      "note": "조류가 5m/s 이상으로 매우 빠르다. 이를 이용하여 정유재란 당시 명량 해전에서 이순신이 이끄는 조선군이 승리하였다. ... 2008년부터, 빠른 조류를 이용한 조류발전소의 건설이 진행되고 있다."
+     },
+     {
+      "claim": "2009년 5월 울돌목 1MW 시험조류발전소 준공",
+      "where": "q",
+      "url": "https://koreascience.kr/article/CFKO200935161992963.pdf",
+      "note": "(WebSearch 요약 · 한국신·재생에너지학회 2009 추계) Uldolmok tidal current power plant was constructed on May 2009 at Jindo Gun in Korea / 2009년 5월 1,000kW급 시험조류발전소가 준공"
+     },
+     {
+      "claim": "시화호 = 방조제 조력발전 254MW",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/조력_발전",
+      "note": "한국수자원공사가 시화호 방조제에 총 시설 용량 254MW급의 조력 발전소를 지었다. / 유입한 바닷물을 높은곳의 저수지에 가두어 두었다가 ... 낙차를 얻을 때 물을 방수하여"
+     },
+     {
+      "claim": "물속 풍차처럼 작동 · 물 밀도 공기의 약 800배 · 느린 흐름으로도 큰 힘",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Tidal_stream_generator",
+      "note": "function very much like underwater wind turbines ... The higher density of water relative to air (water is about 800 times the density of air) means that a single generator can provide significant power at low tidal flow velocities"
+     },
+     {
+      "claim": "울돌목 이름 유래 · 초속 5m",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/울돌목",
+      "note": "물길이 암초에 부딪혀 튕겨 나오는 소리가 매우 커 바다가 우는 것 같다고 하여 울돌목이라고도 불린다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tidal_stream_generator"
+    ],
+    "hintNote": null,
+    "easiestCue": "댐 없이 물살로 터빈 · 시화호와 다름",
+    "worthWhyGen": "조력과 헷갈리는 재생에너지 방식을 가르는 교과·뉴스 개념(2)",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '전기를 얻는 방식' 예",
+     "unique": "댐 없음 · 시화호와 다름 → 조력 발전 배제 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 돌리"
+    ],
+    "job": "job-27",
+    "discarded": "친숙도 1 (pct 25 · 조력 발전보다 훨씬 낯선 용어)"
+   }
+  }
+ ]
+}

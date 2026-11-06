@@ -1,0 +1,272 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "invention/4",
+  "midKey": "invention",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "invention/4#g032b-g032b-j07-1",
+   "seed": {
+    "subject": "비아그라",
+    "aspect": null,
+    "ref": "g032b-j07-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "알약 하나에 얽힌 이야기입니다. 1989년 영국 샌드위치에 있던 화이자 연구소가 협심증(심장에 피가 모자라 가슴이 조이는 병)을 고치려고 한 성분을 합성했습니다. 그런데 임상시험에서 심장에는 별 효과가 없고 뜻밖의 다른 효과가 두드러졌습니다. 그래서 1998년 전혀 다른 병의 약으로 승인된 이 약은?",
+    "answer": "비아그라",
+    "acceptedAnswers": [
+     "실데나필"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "사이먼 캠벨이 이끈 화학자들이 만든 성분으로, 첫 임상시험은 웨일스 스완지의 모리스턴 병원에서 했다. 2008년 한 해 매출이 19억 달러를 넘었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1998년 다른 병의 약으로 승인된 화이자의 알약",
+     "difWhy": "2 — 비아그라는 널리 알려짐",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 약 개발의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "미국에서 처음 승인된 먹는 발기부전 치료제로, 기존 약을 다른 병에 다시 쓰는 '신약 재창출'의 대표 사례다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "화이자의 먹는 발기부전 치료제(성분 실데나필) — 원래 협심증 약으로 개발",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "유명 약 이름",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '알약 하나' 가 끝 ○○(약) 와 일치, 협심증은 괄호 풀이가 붙어 있음"
+    },
+    "blindQuestion": {
+     "guess": "비아그라",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "비아그라",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "비아그라",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6618",
+      "answer": "HIV",
+      "verdict": "diff",
+      "why": "비아그라 vs HIV — 무관"
+     },
+     {
+      "old": "5839",
+      "answer": "페니실린",
+      "verdict": "diff",
+      "why": "비아그라 vs 페니실린 대량 생산 — 다른 약"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Sildenafil",
+     "https://ko.wikipedia.org/wiki/실데나필"
+    ],
+    "facts": [
+     {
+      "claim": "1989년 화이자 샌드위치 연구소 합성 · 협심증 연구 · 협심증엔 효과 적고 발기 효과 · 1998-03-27 FDA 승인 · 미국 첫 먹는 발기부전 치료 · 신약 재창출 사례",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Sildenafil",
+      "note": "Sildenafil (compound UK-92,480) was synthesized in 1989 by a group of pharmaceutical chemists led by Simon Campbell working at Pfizer's Sandwich, Kent, research facility in England. It was initially studied for use in hypertension (high blood pressure) and angina pectoris ... suggested the drug had little effect on angina, but it could induce marked penile erections. Pfizer therefore decided to market it for erectile dysfunction, rather than for angina; this decision became an often-cited example of drug repositioning. ... approved for use in erectile dysfunction by the FDA on 27 March 1998, becoming the first oral treatment approved to treat erectile dysfunction in the United States"
+     },
+     {
+      "claim": "처음엔 협심증 치료제로 임상 → 발기 효과 확인 → 발기부전 치료제",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/실데나필",
+      "note": "처음에는 이 약을 협심증 치료제로 사용하려고 임상실험을 했으나, 그 임상실험에서 남성의 음경이 발기되도록 하는 데 탁월한 효과가 있는 것을 확인해 발기부전 치료제로 만들어졌다."
+     },
+     {
+      "claim": "첫 임상 모리스턴 병원(스완지) · 2008년 매출 19.34억 달러",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Sildenafil",
+      "note": "The first clinical trials were conducted in Morriston Hospital in Swansea. ... annual sales of Viagra peaked in 2008 at US$1.934 billion."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Sildenafil"
+    ],
+    "hintNote": null,
+    "easiestCue": "협심증 약으로 개발하다 뜻밖의 효과로 다른 병 약이 됨(유명한 잡학이라 등급 3~4 로 내려갈 수 있음)",
+    "worthWhyGen": "왜 그 약이 생겼나(뜻밖의 부작용 → 용도 전환) — 유래·까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '알약' 예",
+     "unique": "1989 화이자 · 협심증 · 1998 승인 — 시알리스 등 다른 약과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 168자"
+    ],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "invention/4#g032b-g032b-j16-11",
+   "seed": {
+    "subject": "DNA 지문",
+    "aspect": null,
+    "ref": "g032b-j16-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "생명과학 기법 하나는 한 장의 X선 필름에서 시작되었습니다. 1984년 9월 영국 레스터 대학의 유전학자 알렉 제프리스는 연구실 기술자 가족의 실험 결과를 보다가 이 방법을 떠올렸습니다. 이듬해 이 기법은 가나 출신 가족의 이민 분쟁에서 한 소년이 그 집 아들임을 증명했습니다. 이 기법은?",
+    "answer": "DNA 지문",
+    "acceptedAnswers": [
+     "DNA 지문 분석",
+     "유전자 지문",
+     "DNA 감식",
+     "유전자 감식",
+     "DNA 프로파일링"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1986년 살인을 자백한 용의자의 무죄를 처음 밝혔고, 이듬해 같은 사건의 진범 콜린 피치포크를 찾아냈다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "알렉 제프리스 · 이민 분쟁에서 아들임을 증명",
+     "difWhy": "3 — 설명 → 이름 · 유전자 감식 개념",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 생명과학 발견",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "머리카락이나 핏자국에서 뽑은 유전 정보의 무늬를 견주어 범인이나 친자 관계를 가려내는 과학 수사 기법이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "사람마다 다른 DNA 패턴으로 개인·친족을 식별하는 기법",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "범죄 수사 드라마에서 접함",
+     "piece": "f09",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '생명과학 기법 하나'가 끝 '이 기법'과 일치."
+    },
+    "blindQuestion": {
+     "guess": "DNA 지문 감식",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "DNA 감식",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "DNA 지문",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5792",
+      "answer": "진판델",
+      "verdict": "diff",
+      "why": "DNA 지문 기법 vs 진판델 품종 — 단어만 겹침"
+     },
+     {
+      "old": "6618",
+      "answer": "HIV",
+      "verdict": "diff",
+      "why": "DNA 지문 vs HIV 발견 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Alec_Jeffreys",
+     "https://en.wikipedia.org/wiki/DNA_profiling"
+    ],
+    "facts": [
+     {
+      "claim": "1984년 9월 10일 레스터 연구실 · X선 필름 · 기술자 가족",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alec_Jeffreys",
+      "note": "Jeffreys says he had a \"eureka moment\" in his lab in Leicester after looking at the X-ray film image of a DNA experiment on 10 September 1984, which unexpectedly showed both similarities and differences between the DNA of different members of his technician's family."
+     },
+     {
+      "claim": "1985년 가나 출신 가족 이민 분쟁",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alec_Jeffreys",
+      "note": "Jeffreys's DNA method was first put to use in 1985 when he was asked to help in a disputed immigration case to confirm the identity of a British boy whose family was originally from Ghana."
+     },
+     {
+      "claim": "1984년 레스터 대학 유전학과에서 개발",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/DNA_profiling",
+      "note": "British geneticist Sir Alec Jeffreys independently developed a process for DNA profiling in 1984 while working in the Department of Genetics at the University of Leicester."
+     },
+     {
+      "claim": "1986년 버클랜드 무죄 · 이듬해 피치포크",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/DNA_profiling",
+      "note": "In 1986, Richard Buckland was exonerated, despite having admitted to the rape and murder of a teenager near Leicester ... This was the first use of DNA fingerprinting in a criminal investigation, and the first to prove a suspect's innocence. The following year Colin Pitchfork was identified as the perpetrator of the same murder"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/DNA_profiling"
+    ],
+    "hintNote": null,
+    "easiestCue": "가족 관계를 증명한 생명과학 기법",
+    "worthWhyGen": "과학 수사의 기본 도구가 우연한 필름 한 장에서 나왔다는 이야기 — 일반 상식 3",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '생명과학 기법' 예",
+     "unique": "제프리스 1984 → 하나 · 표기 여럿이라 변형 5",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 162자"
+    ],
+    "job": "job-16"
+   }
+  }
+ ]
+}

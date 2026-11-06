@@ -1,0 +1,158 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "design-photo/4",
+  "midKey": "design-photo",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "design-photo/4#g032b-g032b-j09-1",
+   "seed": {
+    "subject": "지포",
+    "aspect": null,
+    "ref": "g032b-j09-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 금속 라이터 상표입니다. 1932년 펜실베이니아주 브래드퍼드에서 조지 블레이즈델이 회사를 세우고, 오스트리아 회사의 라이터를 본떠 이듬해 첫 제품을 냈습니다. 그는 옷을 여미는 장치 이름의 소리가 마음에 들어, 그 말을 더 현대적으로 들리게 바꿔 이름을 지었습니다. 이 라이터는?",
+    "answer": "지포",
+    "acceptedAnswers": [
+     "지포 라이터"
+    ],
+    "originalTitleVariants": [
+     "Zippo"
+    ],
+    "explanation": "모든 제품에 평생 무상 수리를 약속하며, 2012년에 5억 번째 라이터를 만들었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "옷을 여미는 장치 이름의 소리가 마음에 들어 이름을 지었습니다",
+     "difWhy": "3 — 라이터 상표 · 지퍼 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 상표 유래 · 취미 영역",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "뚜껑을 열 때 '딸깍' 소리가 나고 바람에도 잘 꺼지지 않는 미국 금속 라이터로, 2차 세계 대전 때 미군이 즐겨 썼다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1933년부터 나온 미국의 금속제 방풍 라이터 상표",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "지포 라이터는 흔히 접함",
+     "piece": "f04",
+     "genPct": 60
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '미국의 금속 라이터 상표'가 끝 ○○(라이터)와 일치, 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "지포",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "지포 라이터",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "지포",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4844",
+      "answer": "플래시 메모리",
+      "verdict": "diff",
+      "why": "지포 라이터 상표와 플래시 메모리 발명은 무관"
+     },
+     {
+      "old": "2699",
+      "answer": "루니 툰",
+      "verdict": "diff",
+      "why": "지포 라이터와 루니 툰은 무관"
+     },
+     {
+      "old": "1558",
+      "answer": "GPU",
+      "verdict": "diff",
+      "why": "지포 라이터와 GPU는 무관"
+     },
+     {
+      "old": "5322",
+      "answer": "아이팟",
+      "verdict": "diff",
+      "why": "지포 라이터와 아이팟 작명은 다른 제품"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Zippo",
+     "https://ko.wikipedia.org/wiki/지포"
+    ],
+    "facts": [
+     {
+      "claim": "1932년 블레이즈델 창업 · 1933년 첫 라이터 · 오스트리아 IMCO 라이터에서 착안 · 'zipper' 소리가 좋아 더 현대적인 'zippo'",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Zippo",
+      "note": "American inventor George G. Blaisdell founded Zippo Manufacturing Company in 1932 and produced the first Zippo lighter in early 1933, being inspired by an Austrian cigarette lighter of similar design made by IMCO. It got its name because Blaisdell liked the sound of the word \"zipper,\" and \"zippo\" sounded more modern."
+     },
+     {
+      "claim": "펜실베이니아 브래드퍼드 · 오스트리아 임코 라이터 영향 · 1932년 창사",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/지포",
+      "note": "지포(Zippo)는 미국 펜실베이니아 브래드퍼드 시에 소재한 지포 제조회사에서 만드는 금속제 재사용 가능식 라이터다. 오스트리아의 임코 라이터의 영향을 받았다. 1932년 창사 이래"
+     },
+     {
+      "claim": "방풍 · 딸깍 소리 · 2차 대전 미군",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Zippo",
+      "note": "Zippo lighters became popular in the United States military, especially during World War II ... making the Zippo lighter's click officially one of the most recognised sounds in the world. ... gained popularity as \"windproof\" lighters"
+     },
+     {
+      "claim": "평생 보증 · 2012년 5억 번째",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Zippo",
+      "note": "All Zippo windproof lighters carry an unlimited lifetime guarantee ... On June 5, 2012, the company manufactured its 500,000,000th lighter"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Zippo"
+    ],
+    "hintNote": null,
+    "easiestCue": "미국 금속 라이터 상표(1932 펜실베이니아)",
+    "worthWhyGen": "누구나 아는 라이터 이름이 '지퍼' 소리에서 왔다는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '금속 라이터 상표' 예",
+     "unique": "1932 브래드퍼드 · 블레이즈델로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-09"
+   }
+  }
+ ]
+}

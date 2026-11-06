@@ -1,0 +1,167 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-history-east/1",
+  "midKey": "world-history-east",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-history-east/1#g032b-g032b-j02-3",
+   "seed": {
+    "subject": "동파육",
+    "aspect": null,
+    "ref": "g032b-j02-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중국 항저우를 대표하는 돼지고기 요리가 있습니다. 북송의 시인 소식은 귀양지에서 값싼 돼지고기를 술과 간장에 약한 불로 오래 졸여 먹고, 돼지고기를 기리는 시까지 지었다고 전합니다. 그가 그 무렵 스스로 지어 부른 호에서 이름을 딴 이 요리는 무엇일까요?",
+    "answer": "동파육",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1956년 저장성이 항저우 대표 요리 36가지에 넣었다. 일본의 가쿠니, 오키나와의 라후테가 이 요리와 이어진다고 본다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "항저우를 대표하는 돼지고기 요리 · 소식의 호",
+     "difWhy": "2 — 동파육은 중식 상식 · 한 번 건넘",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 음식 이름의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "네모난 삼겹살 덩어리를 소흥주와 간장으로 붉게 조린 중국 요리로, 타이베이 고궁박물원의 '고기 모양 돌'이 이를 닮았다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "소동파의 이름을 딴 중국 항저우의 돼지고기 조림 요리",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "중식당 메뉴로 흔함",
+     "piece": "f04",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '항저우 돼지고기 요리'가 끝 '이 요리'와 일치."
+    },
+    "blindQuestion": {
+     "guess": "동파육",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "동파육",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "동파육",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 3,
+     "outside": 0,
+     "notFound": [
+      {
+       "claim": "1956년 항저우 36대 대표 요리 · 가쿠니·라후테",
+       "url": "https://en.wikipedia.org/wiki/Dongpo_pork",
+       "note": "1956년 저장성이 인정한 항저우 36대 대표요리에 선정됐다.(ko) / The dish is also related to Japanese kakuni, and the Okinawan rafute.(en)"
+      }
+     ]
+    },
+    "dupCheck": [
+     {
+      "old": "6110",
+      "answer": "안사의 난",
+      "verdict": "diff",
+      "why": "새 정답 동파육의 지식(유래·사실)과 옛 정답 안사의 난의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "6797",
+      "answer": "양귀비",
+      "verdict": "diff",
+      "why": "새 정답 동파육의 지식(유래·사실)과 옛 정답 양귀비의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4690",
+      "answer": "정강의 변",
+      "verdict": "diff",
+      "why": "새 정답 동파육의 지식(유래·사실)과 옛 정답 정강의 변의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "3963",
+      "answer": "자금성",
+      "verdict": "diff",
+      "why": "새 정답 동파육의 지식(유래·사실)과 옛 정답 자금성의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "1334",
+      "answer": "대운하",
+      "verdict": "diff",
+      "why": "새 정답 동파육의 지식(유래·사실)과 옛 정답 대운하의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/동파육",
+     "https://en.wikipedia.org/wiki/Dongpo_pork"
+    ],
+    "facts": [
+     {
+      "claim": "항저우 대표 요리 · 소동파 이름에서 · 좌천된 뒤 스스로 동파거사라 칭함 · 돼지고기 예찬 시",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/동파육",
+      "note": "저장성 항저우의 대표적인 전통 요리로 ... 당파 다툼에 밀려 지방으로 좌천된 그는 스스로를 동파거사라 칭했으며, ... '돼지고기 예찬'이라는 시까지 쓸 정도로"
+     },
+     {
+      "claim": "귀양지(황저우)에서 황주·간장에 약한 불로 몇 시간 졸임 · 값싼 고기 · 'Ode to Pork' · 송나라 시인 소식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dongpo_pork",
+      "note": "According to legend, while facing financial hardship during his exile in Huangzhou ... marinated the pork in a mixture of huangjiu (yellow wine), rock sugar, and soy sauce, and simmered it on low heat for a few hours. He also composed a poem titled \"Ode to Pork\", where he described that pork was the most affordable meat source locally"
+     },
+     {
+      "claim": "껍데기 붙은 삼겹살 · 소흥주 · 붉은 빛 · 육형석",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/동파육",
+      "note": "껍데기가 붙어있는 삼겹살(오겹살) 덩어리를 소흥 지방의 명주인 소흥주를 넣고 ... 고기가 붉은 빛이 돌면서 ... 육형석 - 동파육을 본뜬 조각이며, 현재 중화민국 타이베이시 국립고궁박물원에 소장"
+     },
+     {
+      "claim": "1956년 항저우 36대 대표 요리 · 가쿠니·라후테",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dongpo_pork",
+      "note": "1956년 저장성이 인정한 항저우 36대 대표요리에 선정됐다.(ko) / The dish is also related to Japanese kakuni, and the Okinawan rafute.(en)"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/동파육",
+     "https://en.wikipedia.org/wiki/Dongpo_pork"
+    ],
+    "hintNote": null,
+    "easiestCue": "소식이 스스로 지은 호(동파)를 알아야 풀림",
+    "worthWhyGen": "중식당에서 보는 요리 이름이 소동파의 호에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '돼지고기 요리' 예",
+     "unique": "'소식의 호에서 이름' 으로 다른 항저우 요리와 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  }
+ ]
+}

@@ -1,0 +1,167 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-cinema/7",
+  "midKey": "world-cinema",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-cinema/7#g032b-g032b-j13-11",
+   "seed": {
+    "subject": "X파일",
+    "aspect": null,
+    "ref": "g032b-j13-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국 TV 드라마 하나에 얽힌 이야기입니다. 제작자 크리스 카터는 두 주인공 가운데 남자를 초자연 현상을 믿는 쪽, 여자를 의심하는 과학자 쪽으로 정해 흔한 성 역할을 뒤집었습니다. 여주인공의 성은 카터가 좋아한 LA 다저스 중계 캐스터에게서 땄습니다. 1993년부터 폭스 방송에서 방영한 이 드라마는?",
+    "answer": "X파일",
+    "acceptedAnswers": [
+     "엑스파일",
+     "The X-Files"
+    ],
+    "originalTitleVariants": [
+     "The X-Files"
+    ],
+    "explanation": "이 인물을 보고 과학·의학·수사 분야로 간 여성이 늘었다는 '스컬리 효과'라는 말도 생겼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1993년 폭스 / 초자연 현상 믿는 남자와 의심하는 여자 과학자",
+     "difWhy": "2 — X파일 대중문화 유명 · 설명 → 이름 한 번",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 해외 드라마 제작 일화",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "FBI 요원 멀더와 스컬리가 외계인·초자연 현상이 얽힌 미해결 사건을 쫓는 드라마로, '진실은 저 너머에'라는 문구가 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "FBI 요원 두 사람이 초자연 사건을 쫓는 미국 SF 드라마(1993~)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "유명 미드, 멀더와 스컬리",
+     "piece": "f08",
+     "genPct": 70
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '미국 TV 드라마'가 끝 '이 드라마'와 일치. 제작자 일화는 그 드라마 얘기."
+    },
+    "blindQuestion": {
+     "guess": "엑스파일",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "X파일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "X파일",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j08-11",
+      "answer": "닥터 후",
+      "verdict": "diff",
+      "why": "새 정답 X파일 과 옛 정답 닥터 후 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "g032a:g032a-j22-11",
+      "answer": "CSI",
+      "verdict": "diff",
+      "why": "새 정답 X파일 과 옛 정답 CSI 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4219",
+      "answer": "한자와 나오키",
+      "verdict": "diff",
+      "why": "새 정답 X파일 과 옛 정답 한자와 나오키 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4220",
+      "answer": "워킹 데드",
+      "verdict": "diff",
+      "why": "새 정답 X파일 과 옛 정답 워킹 데드 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "4223",
+      "answer": "하이젠베르크",
+      "verdict": "diff",
+      "why": "새 정답 X파일 과 옛 정답 하이젠베르크 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/X_파일",
+     "https://en.wikipedia.org/wiki/Dana_Scully"
+    ],
+    "facts": [
+     {
+      "claim": "크리스 카터 · 성 역할 고정관념 뒤집기(남 신봉자 · 여 회의론자) · 1993년 폭스",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/X_파일",
+      "note": "《엑스파일》(The X-Files)은 크리스 카터가 창작한 미국의 SF 드라마 텔레비전 시리즈이다. 원작 시리즈는 1993년 9월 10일부터 2002년 5월 19일까지 폭스 방송사를 통해 방영되었으며 ... 크리스 카터는 주인공 설정에서 성 역할 고정관념을 뒤집고자, 남성인 멀더를 신봉자로, 여성인 스컬리를 회의론자로 설정했다."
+     },
+     {
+      "claim": "스컬리 이름은 다저스 캐스터 빈 스컬리에서 · 회의론자 과학자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Dana_Scully",
+      "note": "Chris Carter named Scully after his favorite sportscaster, Vin Scully of the Los Angeles Dodgers. ... In contrast to Mulder's credulous \"believer\" character, Scully is the skeptic, choosing to base her beliefs on what science can prove."
+     },
+     {
+      "claim": "멀더와 스컬리 · 초자연 현상 미해결 사건 조사",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/X_파일",
+      "note": "미연방수사국(FBI) 소속 특수요원 폭스 멀더(데이비드 듀코브니)와 데이나 스컬리(질리언 앤더슨)가 초자연적 현상과 관련된 미해결 사건, 이른바 엑스파일(X-Files)을 조사하는 과정을 중심으로 전개된다."
+     },
+     {
+      "claim": "스컬리 효과",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Dana_Scully",
+      "note": "a phenomenon referred to as \"The Scully Effect,\" as the character's role as a medical doctor and FBI Special Agent inspired many young women to pursue careers in science, medicine, engineering, and law enforcement"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/X_파일"
+    ],
+    "hintNote": null,
+    "easiestCue": "1993년 폭스 · 남자는 초자연을 믿고 여자는 의심하는 두 주인공",
+    "worthWhyGen": "회의론자 과학자 여주인공 설정이 일부러 성 역할을 뒤집은 것이라는 까닭",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '미국 TV 드라마' 예",
+     "unique": "카터 · 1993 폭스 · 두 주인공 설정 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 169자"
+    ],
+    "job": "job-13"
+   }
+  }
+ ]
+}

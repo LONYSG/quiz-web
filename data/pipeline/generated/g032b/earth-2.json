@@ -1,0 +1,173 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "earth/2",
+  "midKey": "earth",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "earth/2#g032b-g032b-j11-5",
+   "seed": {
+    "subject": "크라카타우",
+    "aspect": null,
+    "ref": "g032b-j11-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "인도네시아 순다 해협의 화산섬입니다. 1883년 8월 이 섬이 크게 폭발했을 때, 그 소리는 4,800km 떨어진 인도양 로드리게스섬에서도 들렸다고 합니다. 그 뒤 몇 달 동안 세계 곳곳의 노을이 붉게 타올라, 뉴욕에서는 불이 난 줄 알고 소방차가 나갔습니다. 이 화산섬은?",
+    "answer": "크라카타우",
+    "acceptedAnswers": [
+     "크라카토아",
+     "크라카타우산",
+     "크라카타우섬"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "뭉크의 그림 '절규' 속 붉은 하늘이 이 분화 뒤 이어진 붉은 노을의 기억이라는 설도 있습니다. 1927년 그 자리에서 새 섬이 솟았습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1883년 순다 해협 화산섬 폭발",
+     "difWhy": "3 — 크라카타우 학교 지리·세계사 상식, 설명 → 이름",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 일화 — 유명 화산 폭발 일화, 상식 바탕",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 3,
+     "worthKind": "일화"
+    },
+    "generalHint": "자와섬과 수마트라섬 사이에 있으며, 1883년 분화와 쓰나미로 3만 6천 명 넘게 숨진 역사상 손꼽히는 화산 재해의 섬이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "1883년 대분화로 유명한 인도네시아 순다 해협의 화산섬",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "화산 폭발로 유명, 영화 등",
+     "piece": "f04",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '화산섬', 끝 ○○ '화산섬'. 일치"
+    },
+    "blindQuestion": {
+     "guess": "크라카타우",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "크라카타우",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "크라카타우",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 6,
+     "found": 6,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "4869",
+      "answer": "탐보라산",
+      "verdict": "diff",
+      "why": "크라카타우와 탐보라산은 다른 화산"
+     },
+     {
+      "old": "920",
+      "answer": "지진해일",
+      "verdict": "diff",
+      "why": "크라카타우와 지진해일 정의는 다른 지식"
+     },
+     {
+      "old": "927",
+      "answer": "화산재",
+      "verdict": "diff",
+      "why": "크라카타우와 화산재 항공 피해는 다른 지식"
+     },
+     {
+      "old": "919",
+      "answer": "불의 고리",
+      "verdict": "diff",
+      "why": "크라카타우와 불의 고리는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+     "https://ko.wikipedia.org/wiki/크라카타우섬"
+    ],
+    "facts": [
+     {
+      "claim": "폭발음이 4,800km 떨어진 로드리게스섬에서 들림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+      "note": "The explosion was heard 3,110 kilometres (1,930 mi) away in Perth, Western Australia, and Rodrigues near Mauritius, 4,800 kilometres (3,000 mi) away."
+     },
+     {
+      "claim": "로드리게스섬까지 들림(한국어 문서 4,780km)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/크라카타우섬",
+      "note": "이 대격변적인 폭발음은 ... 서쪽으로 4,780 km 떨어진 모리셔스 근처 로드리게스섬에서도 들렸다."
+     },
+     {
+      "claim": "붉은 노을에 뉴욕 등에서 소방차 출동",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+      "note": "The ash caused \"such vivid red sunsets that fire engines were called out in New York, Poughkeepsie and New Haven to quench the apparent conflagration\"."
+     },
+     {
+      "claim": "순다 해협 · 자와섬과 수마트라섬 사이",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/크라카타우섬",
+      "note": "인도네시아 람풍주의 자와섬과 수마트라섬 사이 순다 해협에 있는 칼데라이다."
+     },
+     {
+      "claim": "사망자 3만 6,417명 이상",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+      "note": "At least 36,417 deaths are attributed to the eruption and the tsunamis it created."
+     },
+     {
+      "claim": "절규 영감설 · 1927년 새 섬",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+      "note": "The explosion has been theorized to be a source of inspiration for Edvard Munch's 1893 painting The Scream. / (ko) 1927년에는 네 번째 섬인 아낙 크라카타우 ... 1883년 형성된 칼데라에서 솟아났다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+     "https://ko.wikipedia.org/wiki/크라카타우섬"
+    ],
+    "hintNote": null,
+    "easiestCue": "1883년 인도네시아 화산섬 대폭발",
+    "worthWhyGen": "역사상 가장 큰 소리 · 전 세계 붉은 노을을 남긴 분화 — 까닭이 있는 이야깃거리",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '화산섬' 예",
+     "unique": "1883년 순다 해협 화산섬 = 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 화산재"
+    ],
+    "job": "job-11"
+   }
+  }
+ ]
+}

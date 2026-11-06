@@ -1,0 +1,439 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-tv/2",
+  "midKey": "kr-tv",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-tv/2#g032b-g032b-j01-1",
+   "seed": {
+    "subject": "개그맨",
+    "aspect": null,
+    "ref": "g032b-j01-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 방송에서 생겨나 직업 이름으로 굳은 한국식 영어입니다. 1969년 코미디 작가로 방송에 들어온 전유성이 처음 쓴 말로 알려져 있습니다. 특히 1980년대 이후 데뷔한 젊은 희극 배우들을 이렇게 불렀는데, 영어권에서는 거의 쓰지 않는 이 직업 이름은?",
+    "answer": "개그맨",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "영어권에서는 보통 '코미디언'이라 부르며, 전유성은 이 말을 대중화한 인물로 평가된다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "젊은 희극 배우들을 이렇게 불렀는데, 영어권에서는 거의 쓰지 않는 이 직업 이름은?",
+     "difWhy": "2 — 희극 배우 직업 이름이 곧 개그맨, 일상어",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 말의 유래(한국식 영어)",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "이경규·유재석·신동엽처럼 TV 코미디 프로그램에서 웃음을 주는 사람을 부르는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "웃음을 주는 희극 연예인을 부르는 한국식 영어(gagman)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "일상 단어",
+     "piece": "f02",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '직업 이름으로 굳은 한국식 영어'로 종류가 있고 끝 ○○(직업 이름)와 같음"
+    },
+    "blindQuestion": {
+     "guess": "탤런트",
+     "hit": false
+    },
+    "blindHint": {
+     "guess": "개그맨",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "개그맨",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6683",
+      "answer": "고래사냥",
+      "verdict": "diff",
+      "why": "새 정답 개그맨의 지식(유래·사실)과 옛 정답 고래사냥의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4204",
+      "answer": "컬투쇼",
+      "verdict": "diff",
+      "why": "새 정답 개그맨의 지식(유래·사실)과 옛 정답 컬투쇼의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "4198",
+      "answer": "이주일",
+      "verdict": "diff",
+      "why": "새 정답 개그맨의 지식(유래·사실)과 옛 정답 이주일의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "g032a:g032a-j01-1",
+      "answer": "먹방",
+      "verdict": "diff",
+      "why": "새 정답 개그맨의 지식(유래·사실)과 옛 정답 먹방의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "5497",
+      "answer": "나만 아니면 돼",
+      "verdict": "diff",
+      "why": "새 정답 개그맨의 지식(유래·사실)과 옛 정답 나만 아니면 돼의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/희극_배우",
+     "https://ko.wikipedia.org/wiki/전유성"
+    ],
+    "facts": [
+     {
+      "claim": "한국어식 영어 · 1980년대 이후 데뷔한 젊은 배우 · 전유성이 처음 사용",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/희극_배우",
+      "note": "대한민국에서는 한국어식 영어인 개그맨(영어: gagman) 또는 개그우먼(영어: gagwoman)이라 부르는 경우가 많다. 특히 1980년대 이후 데뷔한 젊은 배우들을 개그맨/개그우먼으로 부른다. 개그맨/개그우먼이라는 말은 전유성이 처음 사용한 것으로 알려져 있다."
+     },
+     {
+      "claim": "1969년 코미디 작가로 방송 입문 · 용어 대중화",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/전유성",
+      "note": "1969년에는 곽규석이 진행하는 TBC 쇼쇼쇼의 특채 코미디 작가로 방송계에 입문하였고 ... 특히 '개그맨'이라는 용어를 대중화하였고"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "전유성이 처음 쓴 직업 이름(한국식 영어)",
+    "worthWhyGen": "매일 쓰는 직업 이름이 한국에서 만든 영어라는 유래",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '직업 이름 · 한국식 영어' 예",
+     "unique": "한국식 영어로 한정 — 코미디언(진짜 영어)과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blindq",
+      "before": {
+       "question": "한국 방송에서 생겨나 직업 이름으로 굳은 한국식 영어입니다. 1969년 코미디 작가로 방송에 들어온 전유성이 처음 쓴 말로 알려져 있습니다. 특히 1980년대 이후 TV로 데뷔한 젊은 연예인들을 이렇게 불렀는데, 영어권에서는 거의 쓰지 않는 이 직업 이름은?"
+      },
+      "why": "guess 탤런트(TV 연기자 한국식 영어)도 'TV로 데뷔한 젊은 연예인'에 맞음 → 출처(희극 배우 문서) 그대로 '젊은 희극 배우들'로 좁힘"
+     }
+    ],
+    "warn": [
+     "crossans 신동엽"
+    ],
+    "job": "job-01"
+   }
+  },
+  {
+   "seedId": "kr-tv/2#g032b-g032b-j18-13",
+   "seed": {
+    "subject": "복불복",
+    "aspect": null,
+    "ref": "g032b-j18-13",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "운에 맡겨 벌칙 받을 사람을 가리는 놀이를 두루 부르는 말이 있습니다. 본래는 사람의 운수를 가리키던 옛 한자어입니다. 2007년 정식 코너가 된 KBS 예능 '1박 2일'에서 멤버들은 밥과 잠자리를 걸고 이 게임을 벌였습니다. 이 말은?",
+    "answer": "복불복",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "MBC '무한도전'도 'YES OR NO 인생극장' 특집에서 이 방식을 썼고, MBC every1에는 이 이름을 단 쇼도 있었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1박 2일에서 멤버들은 밥과 잠자리를 걸고 이 게임을 벌였습니다.",
+     "difWhy": "2 — 1박 2일·벌칙 놀이에서 복불복이 바로 나옴",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 상식 — 일상 유행어, 대중문화 기본",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 3,
+     "worthKind": "상식"
+    },
+    "generalHint": "여러 잔 가운데 하나만 까나리 액젓인 식으로, 걸린 사람만 벌칙을 받는 운 맡기기 게임을 부르는 말이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "운수에 따라 결과가 갈림 · 1박 2일의 벌칙 게임",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "예능에서 자주 쓰는 말",
+     "piece": "f06",
+     "genPct": 90
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "지시어",
+     "reason": "첫 문장 '옛 한자어'가 종류지만 둘째 문장 '이 게임'이 한자어를 가리키는지 헷갈려 한 번 더 읽게 됨"
+    },
+    "blindQuestion": {
+     "guess": "복불복",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "복불복",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "복불복",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5497",
+      "answer": "나만 아니면 돼",
+      "verdict": "diff",
+      "why": "복불복 어원·게임 vs '나만 아니면 돼' 구호 — 다른 지식"
+     },
+     {
+      "old": "3006",
+      "answer": "1박 2일",
+      "verdict": "diff",
+      "why": "복불복(말) vs 1박 2일(프로그램) — 정답 대상 다름, 단서 뒤집기 수준을 넘는 다른 사실"
+     },
+     {
+      "old": "5043",
+      "answer": "까나리카노",
+      "verdict": "diff",
+      "why": "복불복 vs 까나리카노 — 다른 지식"
+     },
+     {
+      "old": "5499",
+      "answer": "1등만 기억하는 더러운 세상",
+      "verdict": "diff",
+      "why": "복불복 vs 개콘 유행어 — 무관"
+     },
+     {
+      "old": "4199",
+      "answer": "소는 누가 키울 거야",
+      "verdict": "diff",
+      "why": "복불복 vs 개콘 유행어 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/복불복",
+     "https://ko.wikipedia.org/wiki/1박_2일"
+    ],
+    "facts": [
+     {
+      "claim": "한자어 · 사람의 운수 · 벌칙자 선발 · 1박 2일",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/복불복",
+      "note": "복불복(福不福)은 '복이 오거나 안 오거나'라는 뜻으로 사람의 운수를 일컫는 말이다. 벌칙자를 선발하거나 식사, 상품 등에서 제외시킬 때 사용된다. ... 《1박 2일》에서 벌칙자를 선발하기 위해 이용되기도 한다."
+     },
+     {
+      "claim": "2007년 8월 5일 정식 코너 · 밥·잠자리 걸고 복불복",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/1박_2일",
+      "note": "2007년 8월 5일부터 《1박 2일》이라는 정식 코너명으로 편성되면서 ... 멤버들이 1박 2일 동안 전국 각지를 돌아다니며 복불복 게임을 하고, 밥을 걸고 경쟁하고, 잠자리까지 놓고 몸으로 부딪히는 것이었다."
+     },
+     {
+      "claim": "무한도전 인생극장 · MBC every1 복불복 쇼",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/복불복",
+      "note": "MBC every1의 버라이어티 쇼 프로그램 《복불복 쇼》 ... MBC의 리얼 버라이어티 쇼 프로그램 무한도전에서 “YES OR NO 인생극장 특집”에 복불복 시스템을 사용하기도 했으며"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/복불복"
+    ],
+    "hintNote": null,
+    "easiestCue": "1박 2일에서 밥과 잠자리를 걸고 벌인 게임",
+    "worthWhyGen": "예능이 되살려 일상어가 된 옛 한자어(일상 말 3)",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '옛 한자어' 예",
+     "unique": "1박 2일 운 게임 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "사람의 운수를 가리키던 옛 한자어가 있습니다. 2007년 정식 코너가 된 KBS 예능 '1박 2일'에서 멤버들은 밥과 잠자리를 걸고 이 게임을 벌였습니다. 그 뒤 운에 맡겨 벌칙 받을 사람을 가리는 놀이를 두루 부르는 말이 된 이것은?"
+      },
+      "why": "⑨ 첫 문장에 '놀이를 부르는 말' · '이 게임' 지시어 혼동 풀기"
+     }
+    ],
+    "warn": [],
+    "job": "job-18"
+   }
+  },
+  {
+   "seedId": "kr-tv/2#g032b-g032b-j21-6",
+   "seed": {
+    "subject": "멘붕",
+    "aspect": null,
+    "ref": "g032b-j21-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "너무 당황해 정신이 무너질 지경이라는 뜻의 줄임말입니다. 2000년대 스타크래프트 게임 동호회에서 쓰이기 시작해, 개그 프로그램 코너 이름에까지 들어갈 만큼 퍼졌습니다. 이 말은?",
+    "answer": "멘붕",
+    "acceptedAnswers": [
+     "멘탈 붕괴"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "게임이 잘 안 풀릴 때 게이머들이 쓰던 말이었지만, 뒤에는 정치·사회 같은 무거운 뉴스에도 쓰이게 됐다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "너무 당황해 정신이 무너질 지경이라는 뜻의 줄임말",
+     "difWhy": "1 — 일상 유행어, 뜻풀이가 곧 답",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 유행어의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 90",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "황당한 일을 겪고 '나 지금 완전 ~ 왔어'라고 할 때 쓰는, 2012년 무렵 가장 널리 퍼진 유행어다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "'멘탈 붕괴'의 줄임말 — 2010년대 초 크게 유행한 신조어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 90,
+     "why": "유행어로 널리 쓰임",
+     "piece": "f08",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '줄임말' 과 뜻풀이가 있고 끝 '이 말은?' 과 맞는다. 짧고 단순."
+    },
+    "blindQuestion": {
+     "guess": "멘붕",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "멘붕",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "멘붕",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 1,
+     "found": 1,
+     "outside": 2,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6342",
+      "answer": "궁금하면 500원",
+      "verdict": "diff",
+      "why": "멘붕 유래는 궁금하면 500원·김기사 운전해·뇌섹남·개그맨·느낌 아니까와 다른 유행어다"
+     },
+     {
+      "old": "6344",
+      "answer": "김기사 운전해",
+      "verdict": "diff",
+      "why": "멘붕 유래는 궁금하면 500원·김기사 운전해·뇌섹남·개그맨·느낌 아니까와 다른 유행어다"
+     },
+     {
+      "old": "g032a:g032a-j11-6",
+      "answer": "뇌섹남",
+      "verdict": "diff",
+      "why": "멘붕 유래는 궁금하면 500원·김기사 운전해·뇌섹남·개그맨·느낌 아니까와 다른 유행어다"
+     },
+     {
+      "old": "g032b:g032b-j01-1",
+      "answer": "개그맨",
+      "verdict": "diff",
+      "why": "멘붕 유래는 궁금하면 500원·김기사 운전해·뇌섹남·개그맨·느낌 아니까와 다른 유행어다"
+     },
+     {
+      "old": "6345",
+      "answer": "느낌 아니까",
+      "verdict": "diff",
+      "why": "멘붕 유래는 궁금하면 500원·김기사 운전해·뇌섹남·개그맨·느낌 아니까와 다른 유행어다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/멘붕",
+     "https://kyeonggi.com/article/201208160468263",
+     "https://namu.moe/w/%EB%A9%98%EB%B6%95"
+    ],
+    "facts": [
+     {
+      "claim": "멘탈 붕괴 줄임말 · 2000년대 디시인사이드 스타크래프트 갤러리에서 시작 · 개그 코너 '멘붕스쿨'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/멘붕",
+      "note": "멘붕은 '멘탈 붕괴'의 줄임말로, 2000년대 디시인사이드의 스타크래프트 갤러리에서 사용되기 시작해 널리 퍼져 나갔다. ... \"멘붕스쿨\"이라는 개그프로그램의 코너도 생겨났다."
+     },
+     {
+      "claim": "게이머들이 게임이 잘 안될 때 쓰기 시작 · 이후 정치·사회에도 쓰여 가장 흔한 유행어",
+      "where": "q",
+      "url": "https://kyeonggi.com/article/201208160468263",
+      "note": "(WebSearch 요약) 경기일보 칼럼(2012-08) — 일부 게이머들이 게임이 잘 안될 때 쓰기 시작한 말 · 이후 정치·사회 등 무거운 주제에도 쓰이면서 가장 흔한 유행어가 됨"
+     },
+     {
+      "claim": "2012년 신조 유행어 1위",
+      "where": "h",
+      "url": "https://namu.moe/w/%EB%A9%98%EB%B6%95",
+      "note": "(WebSearch 요약) 2012년에 쓰이는 신조 유행어 중 널리 쓰인 1위"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://kyeonggi.com/article/201208160468263"
+    ],
+    "hintNote": null,
+    "easiestCue": "'정신이 무너질 지경'이라는 뜻의 줄임말",
+    "worthWhyGen": "매일 쓰는 신조어가 어디서 왔는지(게임 동호회) 유래(19 §9-1 ②·③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '줄임말' 예",
+     "unique": "줄임말 + 스타크래프트 동호회 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-21"
+   }
+  }
+ ]
+}

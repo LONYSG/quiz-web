@@ -1,0 +1,145 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "chemistry/4",
+  "midKey": "chemistry",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "chemistry/4#g032b-g032b-j12-5",
+   "seed": {
+    "subject": "자연발화",
+    "aspect": null,
+    "ref": "g032b-j12-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "불이 나는 한 방식입니다. 아마인유나 니스를 닦은 헝겊을 뭉쳐 두면, 기름이 공기 속 산소와 반응하며 낸 열이 빠져나가지 못하고 쌓여 불이 날 수 있습니다. 축축한 건초 더미나 환기가 안 되는 석탄 더미도 같은 까닭으로 불이 붙곤 합니다. 불씨를 대지 않았는데 이렇게 불이 붙는 현상은 무엇일까요?",
+    "answer": "자연발화",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1937년 미국 뉴저지에 있던 영화사 폭스의 필름 창고 화재도 낡은 질산염 필름이 이렇게 불붙어 일어났습니다. 그래서 기름 묻은 걸레는 펼쳐 말리거나 물에 담가 버립니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "불씨를 대지 않았는데 불이 붙는 현상",
+     "difWhy": "2 — 자연발화 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 화학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "안에 쌓인 열만으로 불이 붙는 온도에 이르러 타는 것으로, 퇴비 더미나 큰 거름 더미에서 난 불의 흔한 원인이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "외부 불씨 없이 물질 내부 발열이 쌓여 불이 붙는 현상",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "뉴스·과학 상식에서 들어 봤으나 정확한 뜻은 흐림",
+     "piece": "f03",
+     "genPct": 75
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '불이 나는 한 방식' 이 끝 ○○ '현상' 과 이어지고 원리를 쉬운 말로 풀어 줌"
+    },
+    "blindQuestion": {
+     "guess": "자연발화",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "자연발화",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "자연발화",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2775",
+      "answer": "발화점",
+      "verdict": "diff",
+      "why": "새 정답 자연발화 과 옛 정답 발화점 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "3476",
+      "answer": "하버-보슈법",
+      "verdict": "diff",
+      "why": "새 정답 자연발화 과 옛 정답 하버-보슈법 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Spontaneous_combustion",
+     "https://ko.wikipedia.org/wiki/자연발화"
+    ],
+    "facts": [
+     {
+      "claim": "건성유·니스 헝겊 · 건초 · 석탄 환기 부족",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Spontaneous_combustion",
+      "note": "Hay and compost piles may self-ignite because of heat produced by bacterial fermentation ... Rags soaked with drying oils or varnish can oxidize rapidly due to the large surface area ... Coal can ignite spontaneously when exposed to oxygen ... when there is insufficient ventilation for cooling."
+     },
+     {
+      "claim": "산화로 생긴 열이 빠져나가지 못해 온도 상승",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/자연발화",
+      "note": "습기나 공기에 의한 산화, 열을 내는 세균 발효 등 여러 방법으로 발생할 수 있다. 이 열은 빠져나가지 못하여 물질의 온도가 상승하게 된다."
+     },
+     {
+      "claim": "퇴비·거름 더미 자연발화",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Spontaneous_combustion",
+      "note": "Hay and compost piles may self-ignite ... Large manure piles can spontaneously combust during conditions of extreme heat."
+     },
+     {
+      "claim": "1937 폭스 필름 창고 화재 = 질산염 필름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Spontaneous_combustion",
+      "note": "Nitrate film, when improperly stored, can deteriorate into an extremely flammable condition and combust. The 1937 Fox vault fire was caused by spontaneously combusting nitrate film."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Spontaneous_combustion"
+    ],
+    "hintNote": null,
+    "easiestCue": "'불씨를 대지 않았는데 불이 붙는 현상'(묻는 문장 자체가 정체를 거의 말함)",
+    "worthWhyGen": "알가치 3 — 생활 안전에 쓰는 말·까닭",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '불이 나는 한 방식' 예",
+     "unique": "하나(인화·폭발과 구별)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 166자",
+     "crossans 퇴비"
+    ],
+    "job": "job-12"
+   }
+  }
+ ]
+}

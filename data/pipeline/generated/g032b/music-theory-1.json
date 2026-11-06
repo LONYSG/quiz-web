@@ -1,0 +1,149 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "music-theory/1",
+  "midKey": "music-theory",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "music-theory/1#g032b-g032b-j32-4",
+   "seed": {
+    "subject": "내림표",
+    "aspect": null,
+    "ref": "g032b-j32-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "중세 성가 악보에서 높낮이가 바뀔 수 있는 음은 '시(B)' 하나뿐이었습니다. 이 음을 낮춰 부를 때는 둥근 소문자 b로, 본래 높이로 부를 때는 네모난 b로 적었습니다. 네모난 b는 올림표와 제자리표가 되었는데, 둥근 b에서 나온 악보 기호는?",
+    "answer": "내림표",
+    "acceptedAnswers": [
+     "플랫",
+     "♭"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "독일에서는 지금도 B가 '시♭'을, 네모난 b가 변한 글자 H가 본래의 '시'를 가리킨다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "네모난 b 는 올림표와 제자리표 · 둥근 b 에서 나온 기호",
+     "difWhy": "3 — 음악 기호 이름 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 악보 기호 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "음표 앞에 붙어 그 음을 반음 낮추라는 기호로, 피아노에서는 대개 바로 왼쪽 검은 건반을 친다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "음을 반음 낮추는 악보의 변화표(♭)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "음악 시간 기초 기호",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '성가 악보'와 음 이름 시(B)가 나와 악보 이야기임이 바로 잡힘. 끝 ○○ '악보 기호'."
+    },
+    "blindQuestion": {
+     "guess": "내림표(플랫)",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "플랫",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "내림표",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "616",
+      "answer": "임시표",
+      "verdict": "diff",
+      "why": "내림표 유래 vs 임시표: 다른 기호 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Accidental_(music)",
+     "https://en.wikipedia.org/wiki/Flat_(music)",
+     "https://ko.wikipedia.org/wiki/임시표",
+     "https://ko.wikipedia.org/wiki/내림표"
+    ],
+    "facts": [
+     {
+      "claim": "바뀔 수 있는 유일한 음 B · 둥근 b → ♭ · 네모 b → ♯·♮",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Accidental_(music)",
+      "note": "The modern accidental signs derive from the two forms of the lower-case letter b used in Gregorian chant manuscripts to signify the two pitches of B, the only note that could be altered. The \"round\" b became the flat sign, while the \"square\" b diverged into the sharp and natural signs."
+     },
+     {
+      "claim": "♭ = 둥근 b",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Flat_(music)",
+      "note": "The symbol ♭ is a stylised lowercase b, derived from Italian be molle for \"soft B\""
+     },
+     {
+      "claim": "내림표는 소문자 b 변형 · 네모진 b → 올림표·제자리표",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/임시표",
+      "note": "고대에 B음을 한 키 내리기 위해 소문자 비(b)가 변형된 내림표 기호가 쓰인 것이다. ... 올림표(♯) 표시는 문제의 주어진 음이 B♮ (즉, 기본값의 B음)인 네모진 b의 변형에서 파생되었다."
+     },
+     {
+      "claim": "음을 반음 내리는 기호",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/내림표",
+      "note": "내림표 또는 플랫(Flat)은 음악의 기보법에서 변화표 중 하나로, 음을 반음 내리는 것을 뜻하는 기호이며 ♭로 표시한다."
+     },
+     {
+      "claim": "독일 B = B♭, H = B♮",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Accidental_(music)",
+      "note": "In German music notation, the letter B or b always designates B♭ while the letter H or h – a deformation of a square b – designates B♮."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/내림표"
+    ],
+    "hintNote": null,
+    "easiestCue": "둥근 b에서 나온 악보 기호(♭ 모양)",
+    "worthWhyGen": "누구나 본 ♭ 기호가 왜 b 모양인지 — 유래",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장은 중세 악보 장면 — 종류 명사 '악보 기호'는 끝 문장(첫 문장에 '악보' 있음)",
+     "unique": "둥근 b → ♭ 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 반음"
+    ],
+    "job": "job-32"
+   }
+  }
+ ]
+}

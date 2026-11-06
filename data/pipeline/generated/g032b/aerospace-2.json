@@ -1,0 +1,434 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "aerospace/2",
+  "midKey": "aerospace",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "aerospace/2#g032b-g032b-j07-6",
+   "seed": {
+    "subject": "존 F. 케네디 국제공항",
+    "aspect": null,
+    "ref": "g032b-j07-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "뉴욕의 한 국제공항입니다. 1948년 문을 열 때 밀려난 골프장 이름을 따 흔히 '아이들와일드'라 불렸고, 공항 코드도 IDL이었습니다. 1963년 12월 24일, 한 달쯤 전 세상을 떠난 인물을 기려 지금의 이름으로 바뀌었습니다. 이 공항은?",
+    "answer": "존 F. 케네디 국제공항",
+    "acceptedAnswers": [
+     "JFK 공항",
+     "케네디 공항",
+     "JFK 국제공항",
+     "케네디 국제공항",
+     "존 F. 케네디 공항"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1943년 퀸스 출신 장군의 이름을 딴 '앤더슨'이 정식 이름이 되기도 했지만, 사람들은 끝까지 옛 골프장 이름으로 불렀다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "1963년 한 달쯤 전 세상을 떠난 인물을 기려 이름 바뀜",
+     "difWhy": "2 — 케네디 암살로 한 번 건넘",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 공항 이름 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "뉴욕 퀸스 자메이카만에 붙은 공항으로, 라과디아·뉴어크와 함께 뉴욕을 맡는 세 공항 가운데 가장 붐빈다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "뉴욕 퀸스의 주 국제공항(JFK)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "JFK 공항 영화·뉴스",
+     "piece": "f01",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '뉴욕의 한 국제공항'이 끝 ○○(공항)와 같고 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "존 F. 케네디 국제공항",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "존 F. 케네디 국제공항",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "존 F. 케네디 국제공항",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j26-8",
+      "answer": "델타 항공",
+      "verdict": "diff",
+      "why": "JFK 공항 vs 델타 항공 — 무관"
+     },
+     {
+      "old": "2656",
+      "answer": "허브 공항",
+      "verdict": "diff",
+      "why": "JFK 공항 vs 허브 공항 개념 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/John_F._Kennedy_International_Airport",
+     "https://ko.wikipedia.org/wiki/존_F._케네디_국제공항"
+    ],
+    "facts": [
+     {
+      "claim": "1948 개항 · 밀려난 아이들와일드 비치 골프장 이름으로 흔히 불림 · IATA IDL · 1963-12-24 까지 · 1963년 말 암살된 케네디 기려 개명 · 퀸스 자메이카만 · 뉴욕 세 공항 중 가장 붐빔 · 1943 앤더슨 이름",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/John_F._Kennedy_International_Airport",
+      "note": "opened in 1948 as New York International Airport though it was commonly known as Idlewild Airport (IATA: IDL ...) after the Idlewild Beach Golf Course that it displaced. ... The project was renamed Major General Alexander E. Anderson Airport in 1943 after a Queens resident ... in common usage, the airport was still called \"Idlewild\" ... the common name remained \"Idlewild\" until December 24, 1963. ... located ... in Queens, New York City, bordering Jamaica Bay. It is the busiest of the three airports in the New York airport system"
+     },
+     {
+      "claim": "1963-12-24 케네디 추모 정식 명칭 결정 · 1963-11-22 댈러스 암살",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/존_F._케네디_국제공항",
+      "note": "1963년 12월 24일 : 동년 11월 22일 텍사스 댈러스에서 암살된 존 F. 케네디 대통령을 추모하기 위하여 동공항의 정식 명칭을 존 F. 케네디 국제공항(JFK)로 하는 것을 결정했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/John_F._Kennedy_International_Airport"
+    ],
+    "hintNote": null,
+    "easiestCue": "'뉴욕 국제공항 + 1963년 말 세상을 떠난 인물' — 케네디 암살 연도를 알면 풀림(등급 3~4 가능)",
+    "worthWhyGen": "세계적 공항 이름의 까닭과 옛 이름 — 유래·까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '국제공항' 예",
+     "unique": "뉴욕 · 옛 이름 아이들와일드 — 라과디아·뉴어크와 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-07"
+   }
+  },
+  {
+   "seedId": "aerospace/2#g032b-g032b-j17-2",
+   "seed": {
+    "subject": "콴타스",
+    "aspect": null,
+    "ref": "g032b-j17-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1920년에 세워진 한 항공사가 있습니다. 1988년 영화 '레인 맨'에서 더스틴 호프먼이 맡은 레이먼드는 여러 항공사의 추락 사고를 줄줄이 꼽으며 이 항공사만은 추락한 적이 없다고 말합니다. 다른 항공사들이 기내 상영 때 이 장면을 잘라 낸 것과 달리, 이 항공사는 그대로 틀었습니다. 이 항공사는 어디일까요?",
+    "answer": "콴타스",
+    "acceptedAnswers": [
+     "콴타스 항공",
+     "Qantas"
+    ],
+    "originalTitleVariants": [
+     "Qantas"
+    ],
+    "explanation": "실제로는 프로펠러기 시절인 1951년까지 사망 사고가 있었다. 사고가 없는 것은 제트기 쪽이다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "레인 맨 / 추락한 적이 없다고 말한 항공사",
+     "difWhy": "3 — 영화 일화에서 항공사 이름 · 콴타스 호주 항공사로 알려짐",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 일화 — 유명 항공사와 영화 일화",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 3,
+     "worthKind": "일화"
+    },
+    "generalHint": "붉은 꼬리날개에 흰 캥거루를 그려 '날아다니는 캥거루'라 불리는 오스트레일리아의 국적 항공사다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "오스트레일리아의 국적 항공사(캥거루 꼬리 로고)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "항공사 이름으로 여행·뉴스에서 접함",
+     "piece": "f06",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '항공사', 끝 ○○ '이 항공사' 일치; 영화 속 인물 이름이 나오지만 주어가 흐트러지지 않음"
+    },
+    "blindQuestion": {
+     "guess": "콴타스 항공",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "콴타스 항공",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "콴타스",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5199",
+      "answer": "팬암",
+      "verdict": "diff",
+      "why": "콴타스 vs 팬암 — 다른 항공사"
+     },
+     {
+      "old": "g032b:g032b-j26-8",
+      "answer": "델타 항공",
+      "verdict": "diff",
+      "why": "콴타스 vs 델타 — 다른 항공사"
+     },
+     {
+      "old": "2657",
+      "answer": "저비용 항공사",
+      "verdict": "diff",
+      "why": "콴타스 vs 저비용 항공사 개념 — 다른 지식"
+     },
+     {
+      "old": "2661",
+      "answer": "항공 동맹",
+      "verdict": "diff",
+      "why": "콴타스 vs 항공 동맹 — 다른 지식"
+     },
+     {
+      "old": "6133",
+      "answer": "히스로 공항",
+      "verdict": "diff",
+      "why": "콴타스 vs 히스로 공항 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Rain_Man",
+     "https://en.wikipedia.org/wiki/List_of_Qantas_fatal_accidents",
+     "https://en.wikipedia.org/wiki/Qantas"
+    ],
+    "facts": [
+     {
+      "claim": "레인 맨의 레이먼드가 '추락한 적 없는' 유일한 항공사로 꼽음 · 다른 항공사 기내판은 장면을 잘랐고 콴타스는 그대로 상영",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Rain_Man",
+      "note": "...versions of Rain Man that omitted the scene involving Raymond's refusal to fly, mentioning the crashes of American Airlines Flight 625, Delta Air Lines Flight 191 and Continental Airlines Flight 1713, except on Australia-based Qantas. ... the scene was shown intact on flights of Qantas and commentators noted that Raymond mentions it as the only airline whose planes have \"never crashed\"."
+     },
+     {
+      "claim": "1920년 11월 설립 · 제트기 사망 사고 없음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/List_of_Qantas_fatal_accidents",
+      "note": "While Qantas has never had a fatal jet airliner accident, the Australian national airline suffered losses in its early days before the widespread adoption of jets in civilian aviation. / (Qantas) originally founded in November 1920"
+     },
+     {
+      "claim": "별명 Flying Kangaroo · 캥거루 로고",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Qantas",
+      "note": "It is popularly nicknamed \"The Flying Kangaroo\" ... Qantas' kangaroo logo was first used on the \"Kangaroo Route\""
+     },
+     {
+      "claim": "마지막 사망 사고 1951년 · 제트기 사고 없음",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Rain_Man",
+      "note": "Qantas aircraft have been involved in a number of fatal accidents since the airline's founding in 1920 (although none involving jet aircraft, with the last incident taking place in December 1951)."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Qantas"
+    ],
+    "hintNote": null,
+    "easiestCue": "레인 맨의 '추락한 적 없는 항공사' 대사 — 영화를 기억하는 사람만",
+    "worthWhyGen": "유명 영화 대사로 알려진 항공사 안전 기록과 그 실제(취미 영역 세부 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '항공사' 예",
+     "unique": "레인 맨 대사의 항공사 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 174자",
+     "crossans 캥거루"
+    ],
+    "job": "job-17"
+   }
+  },
+  {
+   "seedId": "aerospace/2#g032b-g032b-j26-8",
+   "seed": {
+    "subject": "델타 항공",
+    "aspect": null,
+    "ref": "g032b-j26-8",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "미국의 큰 항공사 가운데 하나입니다. 1920년대 목화를 갉아 먹는 바구미를 잡으려고 비행기로 농약을 뿌리던 회사 '허프 댈런드 더스터스'가 그 뿌리입니다. 1928년 미시시피강 유역의 지역 이름을 따 새 이름을 얻은 이 항공사는?",
+    "answer": "델타 항공",
+    "acceptedAnswers": [
+     "델타",
+     "Delta Air Lines"
+    ],
+    "originalTitleVariants": [
+     "Delta Air Lines"
+    ],
+    "explanation": "1991년에는 무너지던 팬암의 대서양 횡단 노선 대부분을 사들여, 대서양을 오가는 1위 항공사가 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "허프 댈런드 더스터스 · 미시시피강 유역 지역 이름",
+     "difWhy": "3 — 기업 유래 단서가 간접 · 미국 항공사",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 기업 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 72",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "애틀랜타에 본사를 두고 대한항공·에어프랑스 등과 함께 스카이팀을 세운 미국 항공사다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "애틀랜타에 본사를 둔 미국 대형 항공사(Delta Air Lines)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 72,
+     "why": "해외여행·항공사로 유명",
+     "piece": "f07",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '미국의 큰 항공사' 가 끝 ○○ '항공사' 와 일치 · 옛 회사 이름은 따옴표 속 고유명사"
+    },
+    "blindQuestion": {
+     "guess": "델타 항공",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "델타항공",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "델타 항공",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5199",
+      "answer": "팬암",
+      "verdict": "diff",
+      "why": "델타 항공 vs 팬암 — 다름"
+     },
+     {
+      "old": "g032b:g032b-j17-2",
+      "answer": "콴타스",
+      "verdict": "diff",
+      "why": "델타 항공 vs 콴타스 — 다름"
+     },
+     {
+      "old": "2660",
+      "answer": "마일리지",
+      "verdict": "diff",
+      "why": "델타 항공 vs 마일리지 — 다름"
+     },
+     {
+      "old": "2657",
+      "answer": "저비용 항공사",
+      "verdict": "diff",
+      "why": "델타 항공 vs 저비용 항공사 — 다름"
+     },
+     {
+      "old": "2661",
+      "answer": "항공 동맹",
+      "verdict": "diff",
+      "why": "델타 항공 vs 항공 동맹 — 다름"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Delta_Air_Lines",
+     "https://ko.wikipedia.org/wiki/델타_항공"
+    ],
+    "facts": [
+     {
+      "claim": "첫 항공 방제 회사 Huff Daland Dusters · 목화 바구미 · 1928 Delta Air Service · Mississippi Delta 지명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Delta_Air_Lines",
+      "note": "The history of the predecessor companies of Delta Air Lines begins with the world's first aerial crop dusting operation called Huff Daland Dusters, Inc. The company was founded on March 2, 1925 ... designed to combat the boll weevil infestation of cotton crops. ... Delta Air Service was incorporated on December 3, 1928, and was named after the Mississippi Delta region."
+     },
+     {
+      "claim": "농약 살포 항공사로 설립 · 1928 매각 후 델타에어 서비스",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/델타_항공",
+      "note": "1924년 뉴욕에서 허프 댈런드 더스터스(Huff-Daland Dusters)란 농약 살포를 전문으로 하는 항공사로 설립되었다. 1928년 루이지애나의 기업인에게 매각되어 델타에어 서비스(영어: Delta Air Service)라는 회사가 되었다."
+     },
+     {
+      "claim": "애틀랜타 본사 · 스카이팀 창립 회원",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Delta_Air_Lines",
+      "note": "headquartered in Atlanta, Georgia ... At the turn of the 21st century it was a founding member of SkyTeam, an airline alliance."
+     },
+     {
+      "claim": "1991 팬암 대서양 노선 인수 · 대서양 1위",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Delta_Air_Lines",
+      "note": "In 1991, it acquired substantially all of Pan Am's trans-Atlantic routes and the Pan Am Shuttle ... Delta was now the leading airline across the Atlantic."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Delta_Air_Lines"
+    ],
+    "hintNote": null,
+    "easiestCue": "미시시피강 유역의 지역 이름을 딴 미국 항공사",
+    "worthWhyGen": "큰 항공사가 농약 살포 회사에서 시작했고 이름이 지명에서 온 까닭(유래)",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '항공사' 예",
+     "unique": "농약 살포 뿌리·미시시피 지명으로 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-26"
+   }
+  }
+ ]
+}

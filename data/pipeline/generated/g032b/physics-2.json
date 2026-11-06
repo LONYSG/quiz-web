@@ -1,0 +1,289 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "physics/2",
+  "midKey": "physics",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "physics/2#g032b-g032b-j04-5",
+   "seed": {
+    "subject": "테이저건",
+    "aspect": null,
+    "ref": "g032b-j04-5",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1969년 미국 항공우주국(NASA) 연구원 잭 커버가 만들기 시작해 1974년 완성한 전기 장비가 있습니다. 그는 어린 시절 영웅이 나오는 1911년 소년 모험 소설의 제목에서 머리글자를 느슨하게 따 이름을 지었습니다. 커버가 이름 붙인 이 장비는 무엇일까요?",
+    "answer": "테이저건",
+    "acceptedAnswers": [
+     "테이저",
+     "테이저 건"
+    ],
+    "originalTitleVariants": [
+     "Taser",
+     "TASER"
+    ],
+    "explanation": "소설은 '톰 스위프트와 그의 전기 소총'이다. 제작사는 이 효과를 '근육신경 불능'이라 부르고, 국제사면위원회는 오용 사례를 보고해 왔다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "전기 장비 · 1969년 NASA 연구원 잭 커버",
+     "difWhy": "3 — 전기 충격 장비를 떠올려야 하나 단서가 간접",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 이름이 소설 제목 머리글자에서 왔다는 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "경찰이 쏘면 전선 달린 침 두 개가 날아가 박혀, 센 전류로 근육을 마음대로 못 움직이게 해 상대를 쓰러뜨리는 진압 장비다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "전선 달린 침을 쏘아 전류로 상대를 제압하는 진압 장비(Taser)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "뉴스·영화에서 자주 나옴",
+     "piece": "f01",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '전기 장비', 끝 ○○ '장비'. 인물은 만든 사람이라 정답에 닿음"
+    },
+    "blindQuestion": {
+     "guess": "테이저",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "테이저건",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "테이저건",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Taser",
+     "https://ko.wikipedia.org/wiki/테이저건"
+    ],
+    "facts": [
+     {
+      "claim": "NASA 연구원 잭 커버 1969년 개발 시작 · 1974년 완성 · 1911년 소설 제목에서 느슨한 머리글자",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Taser",
+      "note": "Jack Cover, a NASA researcher, began developing the first Taser in 1969. By 1974, Cover had completed the device, which he named Taser, using a loose acronym inspired by the title of the 1911 novel Tom Swift and His Electric Rifle ... featuring Cover's childhood hero, Tom Swift."
+     },
+     {
+      "claim": "같은 내용(ko)",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/테이저건",
+      "note": "NASA의 연구원 인 '잭 커버(Jack Cover)'는 1969년에 테이저를 개발하기 시작했다. 1974년 커버는 그의 어린 시절의 영웅 인 '톰 스위프트의 '톰 스위프트 그의 전기 라이플\"이라는 책을 통해 이름을 지었다."
+     },
+     {
+      "claim": "전선 달린 침을 쏨 · 근육 수축",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Taser",
+      "note": "A Taser device fires multiple small dart-like electrodes, which stay connected to the main unit by thin insulated copper wire ... strong involuntary long muscle contractions, causing \"neuromuscular incapacitation\""
+     },
+     {
+      "claim": "경찰용 · 근육 통제 붕괴",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/테이저건",
+      "note": "근육의 자율적인 통제를 붕괴시키는 전류를 발생시키는데 사용되는 전기충격기 ... 현재 경찰용으로 M26, X26 두가지 모델이 존재한다."
+     },
+     {
+      "claim": "근육신경 불능 · 국제사면위원회 보고",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/테이저건",
+      "note": "제작사인 《테이저 인터내셔널》은 그러한 효과를 《근육신경 불능》 ... 국제사면위원회는 ... 오용의 사례를 여러 건의 사고를 통해 보고했다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Taser",
+     "https://ko.wikipedia.org/wiki/테이저건"
+    ],
+    "hintNote": null,
+    "easiestCue": "NASA 연구원 잭 커버 · 소설 제목 머리글자(트리비아를 알아야)",
+    "worthWhyGen": "흔히 듣는 장비 이름이 왜 그렇게 붙었나 — 1911년 소년 소설 제목의 머리글자(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '전기 장비' 예",
+     "unique": "잭 커버 1974 완성 = 하나 · 전기충격기(일반어)는 B2 로 받지 않음",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-04"
+   }
+  },
+  {
+   "seedId": "physics/2#g032b-g032b-j15-7",
+   "seed": {
+    "subject": "전자기 유도",
+    "aspect": null,
+    "ref": "g032b-j15-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "전기와 자기 사이의 한 현상에 얽힌 이야기입니다. 1831년 8월 29일 마이클 패러데이는 쇠고리 양쪽에 전선을 감고, 한쪽에 전지를 이을 때와 끊을 때만 다른 쪽에 순간 전류가 흐르는 것을 보았습니다. 미국의 조지프 헨리도 이듬해 따로 이 현상을 찾았습니다. 발전기와 변압기가 기대는 이 현상은?",
+    "answer": "전자기 유도",
+    "acceptedAnswers": [
+     "전자유도"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "맥스웰이 이를 수식으로 정리했고, 생기는 전류의 방향은 렌츠의 법칙이 알려 준다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "쇠고리 양쪽에 전선 / 전지 연결·끊을 때 순간 전류 / 발전기·변압기",
+     "difWhy": "3 — 교과 물리 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 물리 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 60",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "코일을 지나는 자기장이 변할 때 전류가 생기는 현상으로, 자석을 코일 속에 넣었다 뺐다 하면 전류계 바늘이 움직인다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "자기 선속 변화가 전류를 만드는 현상",
+    "familiarity": {
+     "judge": 2,
+     "pct": 60,
+     "why": "학교 물리에서 배움",
+     "piece": "f05",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '전기와 자기 사이의 한 현상' 이 종류, 끝 '이 현상은?' 과 맞는다. 둘째 문장은 길지만 장면 하나."
+    },
+    "blindQuestion": {
+     "guess": "전자기 유도",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "전자기 유도",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "전자기 유도",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "3603",
+      "answer": "패러데이",
+      "verdict": "diff",
+      "why": "전자기 유도 현상 vs 촛불의 과학 강연자(패러데이) — 다른 사실"
+     },
+     {
+      "old": "1851",
+      "answer": "오른손 법칙",
+      "verdict": "diff",
+      "why": "전자기 유도 vs 오른손 법칙 — 다른 지식"
+     },
+     {
+      "old": "1852",
+      "answer": "전자기파",
+      "verdict": "diff",
+      "why": "전자기 유도 vs 전자기파(맥스웰) — 다른 개념"
+     },
+     {
+      "old": "5104",
+      "answer": "와전류",
+      "verdict": "diff",
+      "why": "전자기 유도 vs 와전류 — 다른 개념"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+     "https://ko.wikipedia.org/wiki/전자기_유도"
+    ],
+    "facts": [
+     {
+      "claim": "1831년 8월 29일 쇠고리 두 전선 · 이을 때와 끊을 때 순간 전류",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+      "note": "In Faraday's first experimental demonstration, on August 29, 1831, he wrapped two wires around opposite sides of an iron ring ... He saw a transient current ... when he connected the wire to the battery and another when he disconnected it."
+     },
+     {
+      "claim": "헨리 1832 독립 발견",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+      "note": "It was discovered independently by Joseph Henry in 1832."
+     },
+     {
+      "claim": "발전기·변압기의 기반 · 헨리 독립 연구",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/전자기_유도",
+      "note": "조지프 헨리도 독립적으로 비슷한 현상을 연구했다. ... 이후 이 원리는 ... 발전기, ... 변압기의 이론적 기반이 되었다."
+     },
+     {
+      "claim": "자석을 코일 안팎으로 움직이면 전류",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/전자기_유도",
+      "note": "자석을 코일 안팎으로 움직일 때에도 전류가 유도되었다."
+     },
+     {
+      "claim": "맥스웰 수식 · 렌츠의 법칙 방향",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+      "note": "James Clerk Maxwell mathematically described it as Faraday's law of induction. Lenz's law describes the direction of the induced field."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/전자기_유도"
+    ],
+    "hintNote": null,
+    "easiestCue": "발전기와 변압기가 기대는 현상",
+    "worthWhyGen": "학교에서 배운 개념의 첫 실험 장면(교과 개념 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '현상' 예",
+     "unique": "패러데이 1831 · 발전기 원리 → 전자기 유도",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 166자",
+     "crossans 자기장/바늘"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

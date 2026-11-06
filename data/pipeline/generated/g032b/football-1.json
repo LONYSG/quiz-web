@@ -1,0 +1,159 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "football/1",
+  "midKey": "football",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "football/1#g032b-g032b-j18-2",
+   "seed": {
+    "subject": "배니싱 스프레이",
+    "aspect": null,
+    "ref": "g032b-j18-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "축구 주심이 허리에 차고 다니는 도구가 있습니다. 2000년 브라질의 한 발명가가 포르투갈어 '거품'에서 딴 '스푸니'라는 이름으로 처음 만들었습니다. 2014년 브라질 월드컵 개막전에서 일본인 주심 니시무라 유이치가 월드컵 경기에서 처음 쓴 이 도구는?",
+    "answer": "배니싱 스프레이",
+    "acceptedAnswers": [
+     "베니싱 스프레이",
+     "배니싱 폼"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "통 속은 물 약 80%와 부탄가스 약 17%로, 뿜어 나온 부탄이 곧바로 날아가며 방울을 만든다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "2014년 브라질 월드컵 개막전에서 처음 쓴 도구",
+     "difWhy": "3 — 축구 아는 사람만 바로 · 일반인 기준 3",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 축구 규칙 도구, 취미 영역",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "프리킥 때 주심이 공 놓는 자리와 9.15m 떨어진 수비벽 자리를 잔디 위에 표시하는 흰 거품 깡통이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "프리킥 때 주심이 잔디에 뿌려 거리를 표시하는, 잠시 뒤 사라지는 거품 스프레이",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "월드컵 중계에서 봄",
+     "piece": "f07",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '주심이 차고 다니는 도구'가 끝 '이 도구'와 일치. 스푸니 어원은 풀이됨."
+    },
+    "blindQuestion": {
+     "guess": "베니싱 스프레이",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "베니싱 스프레이",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "배니싱 스프레이",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "960",
+      "answer": "해트트릭",
+      "verdict": "diff",
+      "why": "배니싱 스프레이 vs 해트트릭 — 다른 지식"
+     },
+     {
+      "old": "968",
+      "answer": "오각형",
+      "verdict": "diff",
+      "why": "배니싱 스프레이 vs 축구공 오각형 — 다른 지식"
+     },
+     {
+      "old": "3574",
+      "answer": "신호등",
+      "verdict": "diff",
+      "why": "배니싱 스프레이 vs 카드·신호등 — 다른 지식"
+     },
+     {
+      "old": "4407",
+      "answer": "간접 프리킥",
+      "verdict": "diff",
+      "why": "배니싱 스프레이 vs 백패스 규칙·간접 프리킥 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Vanishing_spray",
+     "https://ko.wikipedia.org/wiki/배니싱_스프레이"
+    ],
+    "facts": [
+     {
+      "claim": "2000년 브라질 발명가 Heine Allemagne · 'Spuni'(espuma = 포르투갈어 거품)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vanishing_spray",
+      "note": "In 2000, Brazilian inventor Heine Allemagne developed the spray under the name \"Spuni\" (from espuma, the Portuguese word for foam)."
+     },
+     {
+      "claim": "2014 월드컵 개막전 브라질-크로아티아 · 니시무라 유이치 첫 사용",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vanishing_spray",
+      "note": "The first World Cup match to feature the vanishing spray was the opening game of the 2014 FIFA World Cup between Brazil and Croatia on 12 June, used by referee Yuichi Nishimura."
+     },
+     {
+      "claim": "주심이 프리킥 최소 거리와 킥 지점 표시 · 9.15m · 1분 안에 사라짐",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/배니싱_스프레이",
+      "note": "심판이 직접 프리킥이 진행되는 동안 수비 팀이 ... 최소 거리를 표시하고 킥을 하는 지점을 표시하기 위해 가장 자주 사용된다. ... 10야드(9.15m)"
+     },
+     {
+      "claim": "허리 홀스터 · 물 80% 부탄 17%",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vanishing_spray",
+      "note": "Vanishing spray is applied from an aerosol can carried by the referee in a holster secured to their shorts. ... The can contains water (~80%), butane gas (~17%) ... The butane evaporates instantly, forming bubbles of gas"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Vanishing_spray"
+    ],
+    "hintNote": null,
+    "easiestCue": "주심이 허리에 차는 도구 + '거품'",
+    "worthWhyGen": "축구 중계에서 늘 보는 장비의 이름과 내력(취미 영역 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '주심 도구' 예",
+     "unique": "2014 월드컵 첫 사용 · 거품 → 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 주심"
+    ],
+    "job": "job-18"
+   }
+  }
+ ]
+}

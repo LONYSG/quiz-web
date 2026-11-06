@@ -1,0 +1,152 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "society/2",
+  "midKey": "society",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "society/2#g032b-g032b-j03-9",
+   "seed": {
+    "subject": "점자 블록",
+    "aspect": null,
+    "ref": "g032b-j03-9",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "길바닥에 까는 한 시설물은 1965년 일본 기술자 미야케 세이이치가 자기 돈을 들여 처음 만들었습니다. 눈이 점점 나빠지던 친구를 돕고 싶었기 때문입니다. 1967년 3월 18일 오카야마시의 한 거리에 처음 깔렸고, 지금 일본에서는 그날을 이것의 기념일로 삼습니다. 이 시설물은?",
+    "answer": "점자 블록",
+    "acceptedAnswers": [
+     "점자 보도블록",
+     "시각장애인 유도 블록",
+     "점자 보도 블록"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "10년쯤 뒤 일본 국철이 역마다 쓰게 하면서 퍼졌고, 지금은 서울 지하철역에도 깔려 있습니다. 2019년 3월 18일 구글 두들이 그를 기렸습니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 2,
+     "easiestCue": "길바닥에 까는 시설물 · 눈이 나빠지던 친구를 돕고 싶었음",
+     "difWhy": "2 — 시각장애 단서로 점자 블록",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 생활 시설의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 95",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "볼록한 점은 '멈춤·주의', 긴 줄은 '이 방향으로 가도 된다'를 발바닥과 지팡이 끝으로 알려 주는, 눈이 불편한 사람을 위한 노란 바닥 표시다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "시각장애인을 위해 길에 까는 돌기 있는 노란 블록",
+    "familiarity": {
+     "judge": 3,
+     "pct": 95,
+     "why": "길거리에서 흔히 봄",
+     "piece": "f07",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '길바닥에 까는 한 시설물' 이 종류, 끝 '이 시설물은?' 과 같다."
+    },
+    "blindQuestion": {
+     "guess": "점자 블록",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "점자블록",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "점자 블록",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5592",
+      "answer": "메디케어",
+      "verdict": "diff",
+      "why": "새 정답 점자 블록의 지식(유래·사실)과 옛 정답 메디케어의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "5136",
+      "answer": "호스피스",
+      "verdict": "diff",
+      "why": "새 정답 점자 블록의 지식(유래·사실)과 옛 정답 호스피스의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Seiichi_Miyake",
+     "https://en.wikipedia.org/wiki/Tactile_paving"
+    ],
+    "facts": [
+     {
+      "claim": "1965 미야케 자기 돈으로 발명 · 시력 잃어 가던 친구 · 1967년 3월 18일 오카야마 처음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seiichi_Miyake",
+      "note": "In 1965, Seiichi Miyake used his own money to create tactile bricks ... He invented the blocks to help a friend who was starting to have visual impairment. ... on 18 March 1967, Okayama City (western Japan) was the first place to install this invention"
+     },
+     {
+      "claim": "1965 미야케 개발 · 1967 오카야마 거리 처음",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Tactile_paving",
+      "note": "Tactile paving was first developed in 1965 by Seiichi Miyake ... The paving was first introduced in a street in Okayama, Japan, in 1967."
+     },
+     {
+      "claim": "3월 18일 기념일 등록(2010)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Seiichi_Miyake",
+      "note": "In 2010, the Okayama Prefectural Association for the Visually Impaired registered March 18 as the Day of the Tenji Block with the Japan Anniversary Association."
+     },
+     {
+      "claim": "점형=경고 · 선형=방향 · 노란색",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Seiichi_Miyake",
+      "note": "raised dots or blisters for \"caution\", or long parallel strips for \"safe to move ahead\" ... The former alerts the visually impaired of danger while the bars provide directional cues. / Tactile: yellow tactile paving is ubiquitous in Japan"
+     },
+     {
+      "claim": "10년 뒤 국철 의무 · 서울 지하철역 · 2019 구글 두들",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Seiichi_Miyake",
+      "note": "Ten years later ... the use of tactile bricks became mandatory in the Japan National Railway. / On 18 March 2019, Google Doodle honoured him / Tactile paving: Many tactile tiles have been installed at subway stations and on sidewalks in Seoul, Korea."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Tactile_paving"
+    ],
+    "hintNote": null,
+    "easiestCue": "눈이 나빠지던 친구를 위해 만든 길바닥 시설물",
+    "worthWhyGen": "매일 밟는 노란 블록이 누가 왜 만들었는지",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '시설물' 예",
+     "unique": "길바닥 · 눈 나쁜 친구 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-03"
+   }
+  }
+ ]
+}

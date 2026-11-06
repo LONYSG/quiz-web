@@ -1,0 +1,253 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "war-history/1",
+  "midKey": "war-history",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "war-history/1#g032b-g032b-j02-4",
+   "seed": {
+    "subject": "반달리즘",
+    "aspect": null,
+    "ref": "g032b-j02-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한 게르만 부족의 이름에서 온 낱말이 있습니다. 이 부족은 455년 왕 가이세리크를 따라 로마를 약탈했습니다. 1794년 프랑스 블루아의 주교 앙리 그레구아르는 혁명 뒤 예술품이 마구 부서지는 일을 이 부족 이름으로 불렀습니다. 오늘날에도 쓰는 이 낱말은 무엇일까요?",
+    "answer": "반달리즘",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "실제 이 부족이 다른 침입자보다 특히 더 파괴적이었는지는 분명하지 않다. 계몽주의 시대에 로마가 이상화되며 야만의 상징이 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "455년 로마 약탈 / 예술품이 마구 부서지는 일",
+     "difWhy": "3 — 반달리즘 일상어 · 부족명 단서 거쳐 떠올림",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 쓰는 말의 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 75",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "낙서나 공공 기물·문화재를 일부러 망가뜨리는 행위를 이르는 말로, 위키백과 문서를 장난삼아 지우는 일도 이렇게 부른다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "공공 기물·문화재를 일부러 파괴하는 행위(vandalism) — 반달족 이름에서",
+    "familiarity": {
+     "judge": 3,
+     "pct": 75,
+     "why": "일상에서 쓰이는 단어",
+     "piece": "f03",
+     "genPct": 55
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '게르만 부족 이름에서 온 낱말', 끝 ○○ '이 낱말' 일치"
+    },
+    "blindQuestion": {
+     "guess": "반달리즘",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "반달리즘",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "반달리즘",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6086",
+      "answer": "크레시 전투",
+      "verdict": "diff",
+      "why": "새 정답 반달리즘의 지식(유래·사실)과 옛 정답 크레시 전투의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2550",
+      "answer": "백년전쟁",
+      "verdict": "diff",
+      "why": "새 정답 반달리즘의 지식(유래·사실)과 옛 정답 백년전쟁의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2551",
+      "answer": "장궁",
+      "verdict": "diff",
+      "why": "새 정답 반달리즘의 지식(유래·사실)과 옛 정답 장궁의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "3895",
+      "answer": "헤이스팅스 전투",
+      "verdict": "diff",
+      "why": "새 정답 반달리즘의 지식(유래·사실)과 옛 정답 헤이스팅스 전투의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Vandalism",
+     "https://ko.wikipedia.org/wiki/반달리즘"
+    ],
+    "facts": [
+     {
+      "claim": "455년 겐세리크 아래 로마 약탈 · 1794년 블루아 주교 앙리 그레구아르가 혁명 뒤 예술품 파괴를 두고 만듦",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Vandalism",
+      "note": "The Vandals ... are associated with senseless destruction as a result of their sack of Rome under King Genseric in 455. ... The term Vandalisme was coined in 1794 by Henri Grégoire, bishop of Blois, to describe the destruction of artwork following the French Revolution."
+     },
+     {
+      "claim": "반달족 이름에서 유래한 프랑스 말",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/반달리즘",
+      "note": "아프리카에 왕국을 세운 반달족이 지중해 연안에서 로마에 이르는 지역까지 약탈과 파괴를 거듭한 민족이라고 잘못 알려진 데에서 유래된 프랑스 말이다."
+     },
+     {
+      "claim": "공공·사유 재산 고의 파괴 · 위키백과 문서 훼손",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/반달리즘",
+      "note": "공공의 재산이나 사유 재산을 고의적으로 파괴하거나 해를 끼치는 행위 ... 위키백과의 반달리즘 - 문서 훼손을 말한다."
+     },
+     {
+      "claim": "더 파괴적이었는지 불분명 · 계몽주의 로마 이상화",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Vandalism",
+      "note": "During the Enlightenment, Rome was idealized, while the Goths and Vandals were blamed for its destruction. The Vandals may not have been any more destructive than other invaders of ancient times"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/반달리즘"
+    ],
+    "hintNote": null,
+    "easiestCue": "455년 로마를 약탈한 게르만 부족(반달족)을 알아야 풀림",
+    "worthWhyGen": "일상어 '반달리즘'이 로마를 약탈한 부족 이름에서 왔다는 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '낱말' 예",
+     "unique": "'부족 이름에서 온 낱말' — 고딕(고트족)은 455년·가이세리크·그레구아르로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-02"
+   }
+  },
+  {
+   "seedId": "war-history/1#g032b-g032b-j28-7",
+   "seed": {
+    "subject": "탈라스 전투",
+    "aspect": null,
+    "ref": "g032b-j28-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "751년 중앙아시아의 한 강가에서 당나라 군대와 아바스 왕조 군대가 맞붙은 전투입니다. 당군을 이끈 장수는 고구려 출신의 고선지였습니다. 이때 붙잡힌 당나라 포로를 통해 종이 만드는 기술이 이슬람 세계로 전해졌다고 하는 이 전투는?",
+    "answer": "탈라스 전투",
+    "acceptedAnswers": [
+     "탈라스강 전투"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "당은 곧이어 안사의 난이라는 큰 내란을 겪으면서 더는 중앙아시아 원정에 나서지 못했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 4,
+     "easiestCue": "751년 당나라와 아바스 / 고선지 / 종이 기술 전파",
+     "difWhy": "4 — 탈라스 전투 세계사 세부, 고선지·종이 단서",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 교과 역사 사건",
+     "acc": 1,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 22",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "동맹이던 카를루크 군이 등을 돌려 당군이 크게 졌고, 이 패배로 당의 서쪽 진출이 멈춘 싸움이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "751년 고선지의 당군과 아바스 왕조가 싸운 중앙아시아 전투",
+    "familiarity": {
+     "judge": 1,
+     "pct": 22,
+     "why": "고선지와 관련된 한국사 전문 지식",
+     "piece": "f05",
+     "genPct": 40
+    },
+    "read": null,
+    "blindQuestion": null,
+    "blindHint": null,
+    "factCheck": {
+     "answer": "탈라스 전투",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/탈라스_전투",
+     "https://en.wikipedia.org/wiki/Battle_of_Talas"
+    ],
+    "facts": [
+     {
+      "claim": "751년 고구려 출신 고선지의 당군 · 아바스 · 탈라스강 · 카를루크 배신 · 제지 기술자 → 이슬람 세계 제지술 전파",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/탈라스_전투",
+      "note": "탈라스 전투(Battle of Talas)는 751년 7월 ~ 8월 사이에 고구려 출신 ... 고선지 장군이 지휘하는 당군이 ... 중간에 고선지의 동맹군이던 카를루크가 배신하여 이슬람측에 붙는 바람에 ... 패전한다. ... 당나라의 기술자가 아바스 왕조로 갔는데, 그들 중에 종이를 만드는 기술을 갖고 있는 제지 기술자가 포함되어 있기에 제지술이 이슬람 세계에 전파되게 되는 직접적인 계기가 되었다."
+     },
+     {
+      "claim": "751년 탈라스강 당 vs 아바스 · 고선지 · 포로가 제지술을 서아시아에 전했다고 함(논란) · 당 서진 중단",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Talas",
+      "note": "In July of that year, the Tang and Abbasid armies clashed at the Talas River ... The Tang army under Gao Xianzhi was defeated ... The defeat marked the end of Tang influence in Transoxiana and halted Tang westward expansion. ... Chinese prisoners captured at Talas in 751 are said to have introduced papermaking to the peoples of West Asia, although this account is disputed by several findings."
+     },
+     {
+      "claim": "안사의 난으로 원정 중단",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/탈라스_전투",
+      "note": "당나라는 탈라스 전투 직후 안사의 난이라는 거대한 내전이 발발하면서 더 이상의 중앙 아시아 원정을 중단해야 됐다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/탈라스_전투",
+     "https://en.wikipedia.org/wiki/Battle_of_Talas"
+    ],
+    "hintNote": null,
+    "easiestCue": "고선지가 이끈 당군 · 751년 · 제지술 전파",
+    "worthWhyGen": "종이 만드는 법이 서쪽으로 퍼진 계기로 전하는 전투 — 고선지와 함께 교과서에 나오는 세계사 고리",
+    "targetGrade": 3,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '전투' 예",
+     "unique": "751년 당 vs 아바스 — 탈라스 전투 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-28",
+    "discarded": "친숙도 1 (pct 22 · 고선지와 관련된 한국사 전문 지식)"
+   }
+  }
+ ]
+}

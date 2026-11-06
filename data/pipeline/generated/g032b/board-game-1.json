@@ -1,0 +1,161 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "board-game/1",
+  "midKey": "board-game",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "board-game/1#g032b-g032b-j09-3",
+   "seed": {
+    "subject": "오목",
+    "aspect": null,
+    "ref": "g032b-j09-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "판 위에 돌을 놓는 놀이입니다. 1994년 컴퓨터 과학자 빅토르 알리스는 아무 제한 없이 두면 먼저 두는 흑이 반드시 이길 수 있음을 컴퓨터 탐색으로 증명했습니다. 그전부터 흑이 유리하다고 알려져, 일본에서 발달한 '렌주' 규칙은 흑에게만 몇 가지 수를 금지합니다. 이 놀이는?",
+    "answer": "오목",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2001년에는 시작 제한이 없는 렌주에서도 흑의 필승법이 인정되어, 세계 대회는 시작 배치 규칙으로 균형을 맞춘다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "판 위에 돌을 놓는 놀이 / 렌주 규칙 / 흑 필승",
+     "difWhy": "3 — 오목은 쉬우나 단서가 렌주·알리스로 간접, 바둑으로 오답 쉬움",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 취미세부 — 게임 규칙 이야기",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 97",
+     "worth": 2,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "바둑판과 바둑돌로 두며, 같은 색 돌을 가로·세로·대각선 한 줄로 먼저 늘어놓으면 이기는 놀이로 '삼삼' 금지가 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "같은 색 돌 다섯 개를 한 줄로 먼저 놓으면 이기는 판 놀이",
+    "familiarity": {
+     "judge": 3,
+     "pct": 97,
+     "why": "흔한 놀이",
+     "piece": "f03",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '판 위에 돌을 놓는 놀이' 가 종류. 끝 '이 놀이는?' 과 같고 렌주 설명도 한 줄기."
+    },
+    "blindQuestion": {
+     "guess": "오목",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오목",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오목",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "317",
+      "answer": "뻐꾸기",
+      "verdict": "diff",
+      "why": "오목(알리스 증명)과 뻐꾸기 탁란은 무관"
+     },
+     {
+      "old": "6000",
+      "answer": "스틸팬",
+      "verdict": "diff",
+      "why": "오목 게임과 스틸팬은 무관"
+     },
+     {
+      "old": "2716",
+      "answer": "에칭",
+      "verdict": "diff",
+      "why": "오목 게임과 에칭 판화는 무관"
+     },
+     {
+      "old": "1150",
+      "answer": "성화 봉송",
+      "verdict": "diff",
+      "why": "오목 게임과 성화 봉송은 무관"
+     },
+     {
+      "old": "6610",
+      "answer": "뇌하수체",
+      "verdict": "diff",
+      "why": "오목 게임과 뇌하수체는 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/오목",
+     "https://en.wikipedia.org/wiki/Gomoku",
+     "https://en.wikipedia.org/wiki/Renju"
+    ],
+    "facts": [
+     {
+      "claim": "알리스가 제한 없는 경기에서 흑 필승 증명 · 렌주는 흑에게만 삼삼·사사·장목 금지",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오목",
+      "note": "오목에서 흑이 유리하다는 것은 빅토르 알리스가 아무 제한이 없는 오목에서 흑이 언제나 이긴다는 사실을 증명을 하기 전에 이미 잘 알려져 있었다. ... 일본에서는 공정한 게임을 위해 렌주 규칙이 발달하였다. 렌주는 흑에게만 삼삼, 사사, 장목이 금지된다."
+     },
+     {
+      "claim": "1994년 알리스 증명(탐색 알고리즘)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Gomoku",
+      "note": "In 1994, L. Victor Allis raised the algorithm of proof-number search (pn-search) and dependency-based search (db-search), and proved that when starting from an empty 15×15 board, the first player has a winning strategy using these searching algorithms."
+     },
+     {
+      "claim": "렌주는 흑에게만 제한",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Renju",
+      "note": "The rule of renju weakens the advantages for the first player (Black) in gomoku by adding special restrictions for Black."
+     },
+     {
+      "claim": "2001년 렌주에도 적용 · 대회는 Swap2 시작 규칙",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Gomoku",
+      "note": "In 2001, Allis's winning strategy was also approved for renju, a variation of gomoku, when there was no limitation on the opening stage. ... The tournament rule used for the gomoku world championships since 2009 is the Swap2 opening rule."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/오목"
+    ],
+    "hintNote": null,
+    "easiestCue": "렌주 규칙(흑에게만 금지수)",
+    "worthWhyGen": "왜 흑에게만 금지수가 있는가(먼저 두면 필승) — 누구나 둬 본 놀이의 까닭",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '판 위에 돌을 놓는 놀이' 예",
+     "unique": "흑 필승 증명·렌주로 바둑과 갈림",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-09"
+   }
+  }
+ ]
+}

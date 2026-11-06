@@ -1,0 +1,255 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "baseball/2",
+  "midKey": "baseball",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "baseball/2#g032b-g032b-j01-4",
+   "seed": {
+    "subject": "빠던",
+    "aspect": null,
+    "ref": "g032b-j01-4",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "한국 프로야구에서 1990년대부터 이어져 온 타자의 몸짓을 부르는 속어입니다. 미국 메이저리그에서는 상대 투수를 자극한다며 금기로 여겨, 했다가는 다음 타석에서 몸에 맞는 공으로 보복당하기 쉽다고 합니다. 한국에서는 흔한 볼거리인, 홈런 뒤 이 몸짓을 부르는 줄임말은?",
+    "answer": "빠던",
+    "acceptedAnswers": [
+     "배트 플립",
+     "배트플립",
+     "빠따 던지기"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "영어로는 '배트 플립'이라 하며, 한국뿐 아니라 일본·대만·중남미 야구에서도 흔하지만 메이저리그만 유독 꺼린다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "홈런 뒤 이 몸짓을 부르는 줄임말",
+     "difWhy": "3 — 스포츠 속어 정확한 표기를 알아야 함",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 취미세부 — 야구 속어 · 세대 유행어",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 70",
+     "worth": 1,
+     "worthKind": "취미세부"
+    },
+    "generalHint": "홈런을 직감한 타자가 1루로 가며 손에 든 것을 뒤로 휙 넘기는 동작으로, 2015년 프리미어 12 한일전 오재원 장면이 유명하다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "홈런 뒤 타자가 방망이를 던지는 배트 플립의 한국 속어",
+    "familiarity": {
+     "judge": 3,
+     "pct": 70,
+     "why": "야구 중계·밈",
+     "piece": "f01",
+     "genPct": 45
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "빠던",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "배트 플립",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "빠던",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/배트_플립",
+     "https://en.wikipedia.org/wiki/Bat_flip"
+    ],
+    "facts": [
+     {
+      "claim": "MLB에서 상대 투수를 자극한다는 이유로 금기 · 한국어 속어 빠던",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/배트_플립",
+      "note": "북아메리카(미국 & 캐나다)의 메이저 리그 베이스볼(MLB)에서는 상대 투수를 자극한다는 이유로 금기시되고 있다. ... 한국어에서는 이를 ... 빠던이라는 속어를 사용하기도 한다."
+     },
+     {
+      "claim": "1990년대부터 · 한국에선 무례로 보지 않음 · 미국이면 다음 타석 몸에 맞는 공 보복",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Bat_flip",
+      "note": "In South Korea, the bat flipping tradition dates to the 1990s ... It is not considered disrespectful and there is no retaliation in the Korean League. ... would likely face retaliation in a subsequent at bat, such as being hit by a pitch."
+     },
+     {
+      "claim": "2015 프리미어 12 한일전 오재원",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/배트_플립",
+      "note": "2015년 WBSC 프리미어 12 한국 대 일본의 준결승전에서 9회초 2아웃 상황에서 오재원이 타격을 마치고 배트 플립을 선보인 일이 있었다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/배트_플립"
+    ],
+    "hintNote": null,
+    "easiestCue": "메이저리그에서는 보복을 부르는, 한국에선 흔한 홈런 뒤 몸짓의 줄임말",
+    "worthWhyGen": "같은 몸짓이 한국과 미국에서 정반대로 받아들여지는 까닭(문화 차이)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '타자의 몸짓 속어' 예",
+     "unique": "줄임말로 한정(배트 플립은 받지 않음 — B2)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "blind-h GEN",
+      "before": {
+       "acceptedAnswers": []
+      },
+      "why": "blind '배트 플립' = 같은 동작의 영어 이름 → 변형"
+     }
+    ],
+    "warn": [],
+    "job": "job-01",
+    "discarded": "알가치 1 (취미세부 · 야구 속어 · 세대 유행어)"
+   }
+  },
+  {
+   "seedId": "baseball/2#g032b-g032b-j22-6",
+   "seed": {
+    "subject": "가을야구",
+    "aspect": null,
+    "ref": "g032b-j22-6",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "KBO 리그에서 정규 시즌을 마친 뒤 상위 다섯 팀만 나서는 포스트시즌을 팬들이 흔히 부르는 말입니다. 와일드카드 결정전부터 한국시리즈까지 이어지며, 열리는 철을 따서 이렇게 부릅니다. 이 말은?",
+    "answer": "가을야구",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "2020년 한국시리즈에서는 NC 다이노스가 두산 베어스를 4승 2패로 꺾고 2011년 창단 뒤 첫 우승을 차지했다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 1,
+     "easiestCue": "열리는 철을 따서 이렇게 부릅니다 · 포스트시즌",
+     "difWhy": "1 — 철 이름이 답",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 상식 — 야구 대중 용어 · 사이면 낮은 쪽",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "상식"
+    },
+    "generalHint": "응원 팀이 진출을 확정하면 팬들이 '올해는 간다!'며 반기는, 단풍 드는 철의 단기전 무대",
+    "generalHintVersion": "hint-v7",
+    "identity": "KBO 포스트시즌을 이르는 팬들의 말",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "야구 팬·뉴스 흔한 말",
+     "piece": "f02",
+     "genPct": 85
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 KBO 포스트시즌과 '부르는 말'이 나와 종류가 바로 잡힘. 짧음"
+    },
+    "blindQuestion": {
+     "guess": "가을야구",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "가을야구",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "가을야구",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2111",
+      "answer": "와일드카드",
+      "verdict": "diff",
+      "why": "가을야구(포스트시즌 별칭)는 와일드카드·한국시리즈·골든글러브와 다른 지식이다"
+     },
+     {
+      "old": "2746",
+      "answer": "한국시리즈",
+      "verdict": "diff",
+      "why": "가을야구(포스트시즌 별칭)는 와일드카드·한국시리즈·골든글러브와 다른 지식이다"
+     },
+     {
+      "old": "6165",
+      "answer": "골든글러브",
+      "verdict": "diff",
+      "why": "가을야구(포스트시즌 별칭)는 와일드카드·한국시리즈·골든글러브와 다른 지식이다"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/KBO_포스트시즌",
+     "https://ko.wikipedia.org/wiki/KBO_한국시리즈",
+     "https://ko.wikipedia.org/wiki/2020년_한국시리즈"
+    ],
+    "facts": [
+     {
+      "claim": "정규시즌 뒤 상위 5팀 포스트시즌",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/KBO_포스트시즌",
+      "note": "KBO 포스트시즌(KBO Post season)은 KBO 리그 정규시즌이 끝난 뒤 리그 상위 5팀을 대상으로 치르는 경기이다."
+     },
+     {
+      "claim": "포스트시즌 = 이른바 '가을야구' · 한국시리즈가 하이라이트",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/KBO_한국시리즈",
+      "note": "이는 포스트시즌, 즉 이른바 '가을야구'의 하이라이트로 간주되며, 정규시즌 1위 팀과 플레이오프 승리 팀이 맞붙는다."
+     },
+     {
+      "claim": "가을야구 맞대결 · 2020 NC 첫 우승",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/2020년_한국시리즈",
+      "note": "포스트시즌 전체로는 2017년 플레이오프 이후 3년만에 가을야구 맞대결이다. 결과는 총 6차전을 치른 끝에 4승 2패로 NC 다이노스가 창단 첫 우승을 차지했다. 2011년 창단 이후 9년 만이자"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "KBO 포스트시즌을 팬들이 부르는 말",
+    "worthWhyGen": "야구 뉴스·일상 대화에서 늘 쓰는 말(19 §9-1 ③)",
+    "targetGrade": 1,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 'KBO·포스트시즌' 예",
+     "unique": "KBO 포스트시즌 별칭 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-22"
+   }
+  }
+ ]
+}

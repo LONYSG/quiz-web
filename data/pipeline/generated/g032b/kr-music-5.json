@@ -1,0 +1,116 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "kr-music/5",
+  "midKey": "kr-music",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "kr-music/5#g032b-g032b-j01-11",
+   "seed": {
+    "subject": "소양강 처녀",
+    "aspect": null,
+    "ref": "g032b-j01-11",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1970년대 김태희가 불러 큰 인기를 얻은 트로트입니다. 작사가 반야월이 1968년 춘천의 가수 지망생 윤기순과 강에서 조각배를 탔던 인상을 노랫말에 담았다고 전합니다. 1992년 노래방 인기 순위 1위에도 오른 이 노래 제목은?",
+    "answer": "소양강 처녀",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "작곡은 이호가 맡았고, 반야월은 '울고 넘는 박달재'·'단장의 미아리고개' 등 수천 곡을 지은 작사가다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "작사가 반야월이 춘천의 가수 지망생 윤기순과 강에서 조각배",
+     "difWhy": "3 — 세대 밖 트로트 제목 · 춘천 강 단서",
+     "wor": 1,
+     "worWhy": "알가치(worth) 1 · 고유명사 — 노래 제목 이름 떠올리기",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 1,
+     "worthKind": "고유명사"
+    },
+    "generalHint": "'해 저문 ~에 황혼이 지면'으로 시작하는 노래로, 춘천 강변에 노래비와 아가씨 동상이 서 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "반야월 작사 · 김태희 노래의 트로트(1970)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "국민 트로트",
+     "piece": "f01",
+     "genPct": 75
+    },
+    "read": null,
+    "blindQuestion": {
+     "guess": "소양강 처녀",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "소양강 처녀",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "소양강 처녀",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 2,
+     "found": 2,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/소양강_처녀",
+     "https://ko.wikipedia.org/wiki/반야월_(작사가)"
+    ],
+    "facts": [
+     {
+      "claim": "1969 작곡 · 1970년대 김태희 · 반야월 1968 춘천 출신 윤기순과 조각배 · 1992 노래방 1위",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/소양강_처녀",
+      "note": "《소양강 처녀》는 1969년에 작곡되어 1970년대에 김태희(본명: 김영옥)가 부른 대한민국의 노래이다. 이 노래는 반야월이 1968년에 춘천 출신의 윤기순과 소양강에서 조각배를 타며 느낀 인상을 노랫말에 담아 탄생하였다. ... 1992년 노래방 인기순위 1위에 올랐다."
+     },
+     {
+      "claim": "반야월 작사 · 김태희 노래 · 작곡 이호 · 노래비",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/반야월_(작사가)",
+      "note": "<소양강처녀>를 부른 가수는 김태희이며 작곡자는 이호이다. ... 소양강처녀, 삼천포아가씨 등의 노래비가 전국 곡곡에 세워져 있다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/반야월_(작사가)"
+    ],
+    "hintNote": null,
+    "easiestCue": "반야월 작사 · 김태희 노래 · 춘천 강",
+    "worthWhyGen": "누구나 따라 부르는 노래가 어떤 장면에서 나왔는지(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '트로트' 예",
+     "unique": "반야월 · 김태희 · 1992 노래방 1위 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 춘천"
+    ],
+    "job": "job-01",
+    "discarded": "알가치 1 (고유명사 · 노래 제목 이름 떠올리기)"
+   }
+  }
+ ]
+}

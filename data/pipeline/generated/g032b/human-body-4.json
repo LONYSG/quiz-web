@@ -1,0 +1,168 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "human-body/4",
+  "midKey": "human-body",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "human-body/4#g032b-g032b-j05-2",
+   "seed": {
+    "subject": "멜라토닌",
+    "aspect": null,
+    "ref": "g032b-j05-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "뇌에서 나오는 한 호르몬은 1958년 미국 예일대 피부과 교수 에런 러너의 연구팀이 소의 뇌 속 작은 샘에서 처음 뽑아냈습니다. 이 물질은 개구리 피부를 밝게 만들었는데, 그래서 '검다'는 뜻의 그리스어를 넣어 '검어지는 것을 막는 것'이라는 뜻으로 이름을 지었습니다. 이 호르몬은?",
+    "answer": "멜라토닌",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "첫 단서는 1917년, 소의 송과선 추출물을 먹인 올챙이 피부가 밝아진 실험이었다. 미국·캐나다에서는 처방 없이 산다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "검다는 뜻의 그리스어를 넣어 이름을 지은 뇌 호르몬",
+     "difWhy": "3 — 멜라토닌은 수면 호르몬으로 알려졌으나 어원 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 호르몬 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 80",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "밤이 되어 어두워지면 많이 나와 졸음을 부르는 호르몬으로, 시차 적응이나 불면에 먹는 보조제로도 팔린다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "어두워지면 솔방울샘에서 나와 잠과 생체 리듬을 조절하는 호르몬(수면 보조제로도 쓰임)",
+    "familiarity": {
+     "judge": 3,
+     "pct": 80,
+     "why": "수면 보조제로 흔히 들음",
+     "piece": "f04",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '호르몬' 이 있고 끝 '이 호르몬은?' 과 같다. 연도·인명이 있어도 문장마다 주어가 하나."
+    },
+    "blindQuestion": {
+     "guess": "멜라토닌",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "멜라토닌",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "멜라토닌",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j05-2",
+      "answer": "엔도르핀",
+      "verdict": "diff",
+      "why": "멜라토닌 명명 vs 엔도르핀 명명 — 어원 구조만 비슷, 다른 물질"
+     },
+     {
+      "old": "6613",
+      "answer": "송과선",
+      "verdict": "same",
+      "why": "러너의 1958년 소 송과선 추출·개구리/올챙이 피부 밝아짐 일화가 똑같음 — 정답만 멜라토닌↔송과선으로 뒤집은 같은 사실"
+     },
+     {
+      "old": "3590",
+      "answer": "시냅스",
+      "verdict": "diff",
+      "why": "멜라토닌 vs 시냅스 — 무관"
+     },
+     {
+      "old": "980",
+      "answer": "세로토닌",
+      "verdict": "diff",
+      "why": "멜라토닌 vs 세로토닌 — 다른 물질"
+     },
+     {
+      "old": "6612",
+      "answer": "아세틸콜린",
+      "verdict": "diff",
+      "why": "멜라토닌 vs 아세틸콜린 발견 — 다른 물질"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Melatonin",
+     "https://en.wikipedia.org/wiki/Aaron_B._Lerner",
+     "https://ko.wikipedia.org/wiki/멜라토닌"
+    ],
+    "facts": [
+     {
+      "claim": "1958년 러너(예일대 피부과 교수)팀이 소의 송과선에서 분리 · 개구리 피부를 밝게",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Melatonin",
+      "note": "It was discovered in 1958 by Aaron B. Lerner and colleagues in substance from the pineal gland of cows that could induce skin lightening in common frogs. ... Lerner, a dermatology professor, and his team at Yale University."
+     },
+     {
+      "claim": "이름 = 그리스어 melas(검다) + tonos · 피부가 검어지는 것을 막는 작용에서",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Melatonin",
+      "note": "The etymology of melatonin stems from its skin-lightening properties. ... proposed the name melatonin, derived from the Greek words melas, meaning 'black' or 'dark', and tonos ... Melatonin was thus aptly named to reflect its role in preventing the darkening of the skin"
+     },
+     {
+      "claim": "러너가 1958년 멜라토닌을 분리·이름 붙임",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Aaron_B._Lerner",
+      "note": "Lerner is perhaps best known for leading the team of researchers who isolated and named, in 1958, the hormone melatonin."
+     },
+     {
+      "claim": "1917년 소 송과선 추출물 → 올챙이 피부 밝아짐",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Melatonin",
+      "note": "In 1917, Carey Pratt McCord and Floyd P. Allen found that feeding extracts from the pineal glands of cows caused the skin of tadpoles to lighten"
+     },
+     {
+      "claim": "불면 약 · 미국·캐나다 일반의약품",
+      "where": "h",
+      "url": "https://ko.wikipedia.org/wiki/멜라토닌",
+      "note": "불면증을 위한 약으로 사용되지만. 멜라토닌은 미국과 캐나다에서 일반의약품으로 판매된다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/멜라토닌"
+    ],
+    "hintNote": null,
+    "easiestCue": "뇌 속 작은 샘 + '검다' 그리스어 이름 — 멜라닌을 떠올리면 풀릴 수 있음(가장 쉬운 단서)",
+    "worthWhyGen": "수면 보조제로 흔한 호르몬이 왜 '검어지는 것을 막는' 이름인가 — 유래(19 §9-1 ②)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '호르몬' 예",
+     "unique": "1958 러너 · 소 뇌샘 — 하나뿐",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-05",
+    "discarded": "중복 같은 지식 6613 송과선 — 러너의 1958년 소 송과선 추출·개구리/올챙이 피부 밝아짐 일화가 똑같음 — 정답만 멜라토닌↔송과선으로 뒤집은 같은 사실"
+   }
+  }
+ ]
+}

@@ -1,0 +1,151 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "computer/3",
+  "midKey": "computer",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "computer/3#g032b-g032b-j11-7",
+   "seed": {
+    "subject": "애자일",
+    "aspect": null,
+    "ref": "g032b-j11-7",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "소프트웨어 개발 방식을 가리키는 말입니다. 2001년 미국 유타주 스노버드의 한 리조트에 개발자 17명이 모였습니다. 이들은 '계획을 따르기보다 변화에 대응하기를' 같은 네 가지 가치를 담은 선언을 내놓았는데, 그 선언의 이름에 들어간 이 말은 무엇일까요?",
+    "answer": "애자일",
+    "acceptedAnswers": [
+     "애자일 개발",
+     "애자일 방법론"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "선언문은 왼쪽 것(공정과 도구·문서·계약·계획)도 가치가 있지만 오른쪽 것을 더 높이 친다고 덧붙입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "2001년 유타주 스노버드 개발자 17명 … 선언의 이름에 들어간 말",
+     "difWhy": "3 — 애자일 개발 용어 · 일반인은 모를 수 있음",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — IT 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 55",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "몇 달이 아닌 몇 주 단위로 돌아가는 소프트웨어를 자주 내놓고 고객과 함께 고쳐 나가는 개발 방식으로, 스크럼이 대표다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "짧은 주기로 만들고 고쳐 나가는 소프트웨어 개발 방식(Agile)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 55,
+     "why": "직장·IT 용어",
+     "piece": "f02",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '소프트웨어 개발 방식을 가리키는 말' 이 종류. 끝 '선언의 이름에 들어간 이 말' 도 같은 대상."
+    },
+    "blindQuestion": {
+     "guess": "애자일",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "애자일",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "애자일",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032a:g032a-j06-7",
+      "answer": "부팅",
+      "verdict": "diff",
+      "why": "애자일 선언과 부팅 용어는 다른 지식"
+     },
+     {
+      "old": "2802",
+      "answer": "디버깅",
+      "verdict": "diff",
+      "why": "애자일과 디버깅은 다른 지식"
+     },
+     {
+      "old": "6557",
+      "answer": "Y2K",
+      "verdict": "diff",
+      "why": "애자일과 Y2K는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Agile_software_development",
+     "https://ko.wikipedia.org/wiki/애자일_소프트웨어_개발"
+    ],
+    "facts": [
+     {
+      "claim": "2001년 유타 스노버드 리조트에 개발자 17명",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Agile_software_development",
+      "note": "In 2001, seventeen software developers met at a resort in Snowbird, Utah to discuss lightweight development methods."
+     },
+     {
+      "claim": "애자일 소프트웨어 개발 선언 · '계획을 따르기보다 변화에 대응하기를'",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/애자일_소프트웨어_개발",
+      "note": "애자일 소프트웨어 개발 선언 ... 계획을 따르기보다 변화에 대응하기를 가치있게 여긴다."
+     },
+     {
+      "claim": "몇 주 단위로 작동하는 소프트웨어를 자주 · 스크럼",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Agile_software_development",
+      "note": "Deliver working software frequently (weeks rather than months). / The practitioners cite inspiration from new practices at the time including extreme programming, scrum"
+     },
+     {
+      "claim": "왼쪽 것도 가치 있지만 오른쪽에 더 높은 가치",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/애자일_소프트웨어_개발",
+      "note": "이 말은, 왼쪽에 있는 것들도 가치가 있지만, 우리는 오른쪽에 있는 것들에 더 높은 가치를 둔다는 것이다."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Agile_software_development"
+    ],
+    "hintNote": null,
+    "easiestCue": "'변화에 대응하기' 가치를 담은 2001년 개발 선언",
+    "worthWhyGen": "회사·조직에서 널리 쓰는 말의 출처 — 취미·전공 영역 세부(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 예 · ⑨ 첫 문장 '개발 방식 말' 예",
+     "unique": "2001년 스노버드 선언 = 애자일 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-11"
+   }
+  }
+ ]
+}

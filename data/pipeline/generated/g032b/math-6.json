@@ -1,0 +1,154 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "math/6",
+  "midKey": "math",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "math/6#g032b-g032b-j29-3",
+   "seed": {
+    "subject": "푸앵카레 추측",
+    "aspect": null,
+    "ref": "g032b-j29-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "러시아 수학자 그리고리 페렐만은 이 문제를 푼 공로로 2006년 필즈상 수상자에 뽑혔지만 받지 않았습니다. 2010년 클레이 수학연구소가 준 100만 달러 상금도 거절했습니다. 밀레니엄 문제 가운데 처음으로 풀린 이것은?",
+    "answer": "푸앵카레 추측",
+    "acceptedAnswers": [
+     "푸앵카레의 추측"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "페렐만은 리처드 해밀턴의 기여가 자기 몫과 같다며 상금을 사양했고, 5차원 이상과 4차원 경우는 이미 스메일과 프리드먼이 풀었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "밀레니엄 문제 가운데 처음으로 풀린 이것",
+     "difWhy": "3 — 페렐만 일화는 알려졌으나 문제 이름은 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 수학 난제 이름 · 교과 밖 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "공 위에 감은 고무줄을 벗기지 않고 한 점으로 줄일 수 있느냐로 3차원 구를 가려내는 위상수학 난제다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "3차원 구를 가려내는 위상수학 난제(2003년 페렐만 증명)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "수학 난제, 뉴스·교양서",
+     "piece": "f07",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "끝 ○○ 는 '문제' 이고 첫 문장 '이 문제를 푼 공로로 … 필즈상' 에 있다. 지시어지만 종류 명사가 붙고 수학자가 분야를 알려 준다."
+    },
+    "blindQuestion": {
+     "guess": "푸앵카레 추측",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "푸앵카레 추측",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "푸앵카레 추측",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6707",
+      "answer": "가우스",
+      "verdict": "diff",
+      "why": "푸앵카레 추측 vs 가우스 — 다른 지식"
+     },
+     {
+      "old": "1113",
+      "answer": "골드바흐 추측",
+      "verdict": "diff",
+      "why": "푸앵카레 추측 vs 골드바흐 추측 — 다른 난제"
+     },
+     {
+      "old": "g032a:g032a-j29-3",
+      "answer": "무한 원숭이 정리",
+      "verdict": "diff",
+      "why": "푸앵카레 추측 vs 무한 원숭이 정리 — 다른 지식"
+     },
+     {
+      "old": "3741",
+      "answer": "쾨니히스베르크의 다리 문제",
+      "verdict": "diff",
+      "why": "푸앵카레 추측 vs 쾨니히스베르크 다리 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/푸앵카레_추측",
+     "https://en.wikipedia.org/wiki/Poincaré_conjecture"
+    ],
+    "facts": [
+     {
+      "claim": "2006 필즈상 거부 · 2010 밀레니엄상 거부",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/푸앵카레_추측",
+      "note": "페렐만을 2006년 필즈상 수상자로 선정하였으나, 페렐만은 수상을 거부하였다. 같은 업적으로 페렐만은 2010년 3월 18일 밀레니엄상의 수상자로도 선정되었으나, 밀레니엄상 역시 거부하였다."
+     },
+     {
+      "claim": "밀레니엄 문제 중 처음 해결",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/푸앵카레_추측",
+      "note": "밀레니엄 문제 중 최초로 해결되었다."
+     },
+     {
+      "claim": "클레이 100만 달러 · 거절 · 유일하게 검증된 해결",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Poincaré_conjecture",
+      "note": "offered Perelman their prize of US$1 million in 2010 … He declined the award, saying that Hamilton's contribution had been equal to his own. As of 2026, the Poincaré conjecture is the only Millennium Prize Problem with a verified solution."
+     },
+     {
+      "claim": "스메일 5차원 이상 · 프리드먼 4차원",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/푸앵카레_추측",
+      "note": "5차원 이상인 경우를 … 스티븐 스메일이 증명해서 1966년 필즈상을 수상하였으며, 4차원에 대한 문제는 마이클 프리드먼이 증명해서 1986년 필즈상을 수상하였다."
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "페렐만이 상을 거절한 문제",
+    "worthWhyGen": "상금을 거절한 수학자 일화로 뉴스에 오른 대표 난제",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장에 '이 문제' 예",
+     "unique": "밀레니엄 문제 중 처음 풀린 것 — 하나뿐",
+     "hint12": "① 예 ② 예(고무줄 비유)"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-29"
+   }
+  }
+ ]
+}

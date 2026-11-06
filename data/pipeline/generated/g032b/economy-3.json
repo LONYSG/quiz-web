@@ -1,0 +1,270 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "economy/3",
+  "midKey": "economy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "economy/3#g032b-g032b-j03-3",
+   "seed": {
+    "subject": "로이즈",
+    "aspect": null,
+    "ref": "g032b-j03-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "영국 런던의 한 보험 시장은 17세기 말 타워 스트리트의 커피하우스에서 시작했습니다. 주인은 선주와 상인에게 믿을 만한 배 소식을 알려 손님을 모았고, 곧 이곳에서 배 보험을 사고팔게 되었습니다. 그 커피하우스 주인의 성이 그대로 이름이 된 이 보험 시장은?",
+    "answer": "로이즈",
+    "acceptedAnswers": [
+     "로이즈 오브 런던",
+     "로이드",
+     "런던 로이즈"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1691년 롬바드 스트리트로 옮겼고, 지금 건물은 리처드 로저스가 설계해 1986년 완공했습니다. 회사가 아니라 여러 보험 인수인이 모인 시장입니다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "런던 보험 시장 · 17세기 커피하우스 주인의 성",
+     "difWhy": "3 — 이름 떠올리기 · 경제 상식 세부",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 금융 시장 유래",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 40",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "1912년 타이타닉호의 보험을 맡았던 런던의 보험 거래소로, 배가 가라앉으면 한 번 울리던 '루틴 종'이 지금도 걸려 있다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "런던의 보험 시장 Lloyd's of London",
+    "familiarity": {
+     "judge": 2,
+     "pct": 40,
+     "why": "보험·금융 뉴스에 가끔 등장",
+     "piece": "f03",
+     "genPct": 35
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '런던의 한 보험 시장'이 끝 ○○(시장)와 일치."
+    },
+    "blindQuestion": {
+     "guess": "로이즈",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "로이즈 오브 런던",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "로이즈",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6241",
+      "answer": "나스닥",
+      "verdict": "diff",
+      "why": "새 정답 로이즈의 지식(유래·사실)과 옛 정답 나스닥의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2869",
+      "answer": "상장지수펀드",
+      "verdict": "diff",
+      "why": "새 정답 로이즈의 지식(유래·사실)과 옛 정답 상장지수펀드의 지식이 달라 서로 못 풀어 줌"
+     },
+     {
+      "old": "2874",
+      "answer": "선물",
+      "verdict": "diff",
+      "why": "새 정답 로이즈의 지식(유래·사실)과 옛 정답 선물의 지식이 달라 서로 못 풀어 줌"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Lloyd%27s_of_London",
+     "https://ko.wikipedia.org/wiki/로이즈_오브_런던"
+    ],
+    "facts": [
+     {
+      "claim": "타워 스트리트 커피하우스에서 시작 · 해상 보험 · 배 소식",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Lloyd%27s_of_London",
+      "note": "The market began in Lloyd's Coffee House, owned by Edward Lloyd, on Tower Street in the City of London. ... The establishment was a popular place for sailors, merchants, and ship-owners, and Lloyd catered to them with reliable shipping news. The coffee house soon became recognised as an ideal place for obtaining marine insurance."
+     },
+     {
+      "claim": "창립자 에드워드 로이드의 타워 스트리트 커피 거래소가 시초",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/로이즈_오브_런던",
+      "note": "창립자인 에드워드 로이드가 17세기 타워 스트릿에 위치한 자신의 커피 거래소에서 모임을 가졌던 것이 시초다."
+     },
+     {
+      "claim": "타이타닉 보험 · 루틴 종(가라앉으면 한 번)",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Lloyd%27s_of_London",
+      "note": "A year later in April 1912 Lloyd's suffered perhaps its most famous loss: the sinking of the Titanic. ... the Lutine bell ... If the ship was safe, the bell would be rung twice; if it had sunk, the bell would be rung once."
+     },
+     {
+      "claim": "1691 롬바드 스트리트 · 로저스 설계 1986 · 회사가 아님",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Lloyd%27s_of_London",
+      "note": "Just after Christmas 1691, the small club of marine insurance underwriters relocated to No. 16 Lombard Street ... The present Lloyd's building, at 1 Lime Street, was designed by architect Richard Rogers and was completed in 1986. / ko: 회사의 형태는 아니다"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Lloyd%27s_of_London"
+    ],
+    "hintNote": null,
+    "easiestCue": "런던 보험 시장 + 커피하우스 주인 이름",
+    "worthWhyGen": "세계 보험 시장의 이름이 왜 커피집 주인 성인지",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · 첫 문장 '보험 시장' 예",
+     "unique": "런던 · 커피하우스 주인 성",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 타이타닉"
+    ],
+    "job": "job-03"
+   }
+  },
+  {
+   "seedId": "economy/3#g032b-g032b-j15-3",
+   "seed": {
+    "subject": "헤지펀드",
+    "aspect": null,
+    "ref": "g032b-j15-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "1949년 경제지 '포춘'에 글을 쓰던 미국 사회학자 앨프리드 윈슬로 존스가 처음 짠 투자 조합의 꼴이 있습니다. 운용 보수 2%에 수익의 20%를 떼는 '2와 20' 보수도 그가 만들었습니다. 1998년에는 노벨 경제학상 수상자 둘이 이사로 있던 같은 꼴의 회사 LTCM이 무너질 뻔해 뉴욕 연방준비은행이 구제를 주선했습니다. 이 투자 조합의 종류는?",
+    "answer": "헤지펀드",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "존스의 방식은 1966년 포춘 기사로 널리 알려졌고, 그 뒤 3년 사이 이런 회사가 적어도 130곳 새로 생겼다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "운용 보수 2%에 수익의 20% · LTCM",
+     "difWhy": "3 — 금융 상식 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 금융 개념",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 85",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "소수의 부자와 기관에게서 돈을 모아 공매도와 빚까지 써 가며 시장이 내려도 수익을 노리며, 조지 소로스의 '퀀텀'이 대표적이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "공매도·차입으로 절대 수익을 노리는 사모 투자 조합",
+    "familiarity": {
+     "judge": 3,
+     "pct": 85,
+     "why": "경제 뉴스에 자주 나옴",
+     "piece": "f04",
+     "genPct": 65
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장에 '투자 조합의 꼴' 이 있어 끝 ○○(종류) 와 일치, 인명·연도 많아도 문장마다 주어가 하나"
+    },
+    "blindQuestion": {
+     "guess": "헤지펀드",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "헤지펀드",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "헤지펀드",
+     "qFacts": 3,
+     "qSources": 3,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Hedge_fund",
+     "https://en.wikipedia.org/wiki/Alfred_Winslow_Jones",
+     "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+    ],
+    "facts": [
+     {
+      "claim": "1949년 존스 · 사회학자 · 2-and-20",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Hedge_fund",
+      "note": "The sociologist Alfred W. Jones is credited with coining the phrase \"hedged fund\" and is credited with creating the first hedge fund structure in 1949. ... Jones also developed the popular 2-and-20 structure of hedge funds"
+     },
+     {
+      "claim": "1940년대 포춘에서 일함",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Winslow_Jones",
+      "note": "During the 1940s Jones worked for Fortune magazine ... In 1941, he earned a doctorate in sociology at Columbia University."
+     },
+     {
+      "claim": "LTCM 1998 · 숄스·머턴 이사 · 1997 노벨 · 뉴욕 연준 주선",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management",
+      "note": "LTCM was an American hedge fund ... In 1998 when LTCM was on the verge of collapse, the fund received a $3.6 billion bailout from a group of 14 banks, in a deal brokered and put together by the Federal Reserve Bank of New York ... Members of LTCM's board of directors included Myron Scholes and Robert C. Merton, who three years later in 1997 shared the Nobel Prize"
+     },
+     {
+      "claim": "1966 포춘 기사 · 3년 새 130개 · 소로스 퀀텀",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Alfred_Winslow_Jones",
+      "note": "This led to a flurry of interest in hedge funds and within the next three years at least 130 hedge funds were started, including George Soros's Quantum Fund"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Alfred_Winslow_Jones",
+     "https://en.wikipedia.org/wiki/Hedge_fund"
+    ],
+    "hintNote": null,
+    "easiestCue": "LTCM · '2와 20' 보수",
+    "worthWhyGen": "뉴스에 늘 나오는 금융 상품이 사회학자·기자의 실험에서 시작했다는 뒷이야기(2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '투자 조합' 예",
+     "unique": "존스·2와 20·LTCM → 헤지펀드 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "질문 197자",
+     "crossans 공매도/소수"
+    ],
+    "job": "job-15"
+   }
+  }
+ ]
+}

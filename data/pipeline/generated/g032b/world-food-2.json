@@ -1,0 +1,164 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-food/2",
+  "midKey": "world-food",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-food/2#g032b-g032b-j09-10",
+   "seed": {
+    "subject": "카르파초",
+    "aspect": null,
+    "ref": "g032b-j09-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "이탈리아의 전채 요리입니다. 1950년 베네치아 '해리스 바'의 주인 주세페 치프리아니가, 의사에게서 특별한 식단을 권고받은 한 백작 부인을 위해 처음 냈다고 합니다. 이름은 붉은색과 흰색을 즐겨 쓴 베네치아 화가에게서 따왔는데, 이 요리는?",
+    "answer": "카르파초",
+    "acceptedAnswers": [
+     "카르파치오"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "치프리아니는 그해 베네치아에서 열린 이 화가의 큰 전시회에서 영감을 받았다고 전한다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "붉은색과 흰색을 즐겨 쓴 베네치아 화가에게서 딴 전채 요리",
+     "difWhy": "3 — 화가 이름 연결 필요",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 유래 — 요리 이름 유래 · 취미",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "유래"
+    },
+    "generalHint": "소고기를 종이처럼 얇게 저며 날것 그대로 접시에 펼치고 올리브유·레몬·파르메산 치즈를 뿌린 요리로, 연어·참치로도 만든다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "얇게 저민 날고기·생선에 올리브유 등을 뿌린 이탈리아 전채 요리",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "이탈리안 레스토랑 메뉴에서 접함",
+     "piece": "f06",
+     "genPct": 45
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '이탈리아의 전채 요리'가 끝 ○○(요리)와 일치. 바 이름·인명이 여럿이나 단서의 고유명사일 뿐."
+    },
+    "blindQuestion": {
+     "guess": "카르파초",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카르파초",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카르파초",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "5169",
+      "answer": "카르보나라",
+      "verdict": "diff",
+      "why": "카르파초 유래와 카르보나라는 다른 요리"
+     },
+     {
+      "old": "1968",
+      "answer": "마르게리타",
+      "verdict": "diff",
+      "why": "카르파초와 마르게리타 피자는 다른 요리"
+     },
+     {
+      "old": "5170",
+      "answer": "비너 슈니첼",
+      "verdict": "diff",
+      "why": "카르파초와 비너 슈니첼은 다른 요리"
+     },
+     {
+      "old": "3928",
+      "answer": "티라미수",
+      "verdict": "diff",
+      "why": "카르파초와 티라미수는 다른 요리"
+     },
+     {
+      "old": "1970",
+      "answer": "알 덴테",
+      "verdict": "diff",
+      "why": "카르파초와 알 덴테 용어는 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Carpaccio",
+     "https://ko.wikipedia.org/wiki/카르파초"
+    ],
+    "facts": [
+     {
+      "claim": "1950년 해리스 바 창업자 치프리아니 · 의사가 날고기를 권한 백작 부인 · 붉은색·흰색의 베네치아 화가 비토레 카르파초",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Carpaccio",
+      "note": "It was invented in 1950 by Giuseppe Cipriani, founder of Harry's Bar in Venice ... originally prepared the dish for countess Amalia Nani Mocenigo when he learned that her doctors had recommended that she eat raw meat. The dish was named carpaccio after Vittore Carpaccio, the Venetian painter known for the characteristic red and white tones of his work."
+     },
+     {
+      "claim": "이탈리아 전채 요리 · 날고기·연어·참치",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/카르파초",
+      "note": "카르파초(이탈리아어: carpaccio)는 익히지 않은 쇠고기, 송아지고기, 사슴고기, 연어, 참치 등에 소스를 뿌려 내는 이탈리아의 전채 요리이다."
+     },
+     {
+      "claim": "레몬·올리브유·파르메산",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Carpaccio",
+      "note": "The beef was served with lemon, olive oil and white truffle or Parmesan cheese."
+     },
+     {
+      "claim": "큰 전시회에서 영감",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Carpaccio",
+      "note": "Cipriani was reportedly inspired by Carpaccio's red-and-white paintings because of the major exhibit of the artist's"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Carpaccio"
+    ],
+    "hintNote": null,
+    "easiestCue": "해리스 바 · 붉은색과 흰색의 베네치아 화가",
+    "worthWhyGen": "요리 이름이 왜 화가 이름인가(날고기의 붉은색·흰색)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '이탈리아 전채 요리' 예",
+     "unique": "1950 해리스 바 · 화가 이름으로 한정",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 올리브/연어"
+    ],
+    "job": "job-09"
+   }
+  }
+ ]
+}

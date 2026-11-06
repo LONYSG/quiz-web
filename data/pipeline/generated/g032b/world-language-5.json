@@ -1,0 +1,307 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "world-language/5",
+  "midKey": "world-language",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "world-language/5#g032b-g032b-j13-10",
+   "seed": {
+    "subject": "징크스",
+    "aspect": null,
+    "ref": "g032b-j13-10",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "일상에서 자주 쓰는 외래어 하나는 딱따구리 무리의 새 '개미잡이'를 부르던 그리스어 이름에서 왔습니다. 고대에는 이 새를 주문을 걸고 점을 치는 데 썼습니다. 떠난 연인을 되돌리려 줄에 매어 돌리기도 했습니다. 1911년 미국에서 나온 야구 소설집 제목에도 쓰인 이 말은?",
+    "answer": "징크스",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "새의 학명 속 이름(Jynx)도 같은 그리스어에서 왔고, 영어 이름 'wryneck'은 뱀처럼 목을 비트는 몸짓에서 붙었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1911년 미국에서 나온 야구 소설집 제목에도 쓰인 이 말은?",
+     "difWhy": "3 — 징크스는 일상어지만 개미잡이새·야구 소설집 단서에서 이름을 떠올려야 함(설명 → 이름)",
+     "wor": 5,
+     "worWhy": "알가치(worth) 3 · 유래 — 일상 외래어의 어원 유래",
+     "acc": 3,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 98",
+     "worth": 3,
+     "worthKind": "유래"
+    },
+    "generalHint": "시험 날 미역국을 피하거나 이긴 날 입은 옷을 계속 입는 것처럼, 불운이 따른다고 믿는 조짐이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "재수 없는 일이 따른다고 믿는 불길한 조짐이나 습관",
+    "familiarity": {
+     "judge": 3,
+     "pct": 98,
+     "why": "일상 대화에서 흔한 말",
+     "piece": "f06",
+     "genPct": 95
+    },
+    "read": {
+     "verdict": "unsure",
+     "form": "기타",
+     "reason": "첫 문장은 '외래어 하나' 라 종류는 잡히나 그 말이 어떤 뜻의 말인지 단서가 새 이야기뿐이라 무엇을 대답해야 할지 한 번에 안 선다 · 읽기보다 단서 성격 문제라 경계"
+    },
+    "blindQuestion": {
+     "guess": "징크스",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "징크스",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "징크스",
+     "qFacts": 4,
+     "qSources": 3,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "6064",
+      "answer": "평균으로의 회귀",
+      "verdict": "diff",
+      "why": "새 정답 징크스 과 옛 정답 평균으로의 회귀 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "3768",
+      "answer": "미라",
+      "verdict": "diff",
+      "why": "새 정답 징크스 과 옛 정답 미라 은 맞히는 지식이 다른 별개 대상·사실"
+     },
+     {
+      "old": "5191",
+      "answer": "모라토리엄",
+      "verdict": "diff",
+      "why": "새 정답 징크스 과 옛 정답 모라토리엄 은 맞히는 지식이 다른 별개 대상·사실"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Jinx",
+     "https://ko.wikipedia.org/wiki/징크스",
+     "https://en.wikipedia.org/wiki/Eurasian_wryneck"
+    ],
+    "facts": [
+     {
+      "claim": "라틴어 iynx ← 개미잡이의 그리스어 이름 iunx · 주문·점술에 씀",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jinx",
+      "note": "The Latin iynx came from the Greek name of the wryneck, iunx, associated with sorcery; not only was the bird used in the casting of spells and in divination"
+     },
+     {
+      "claim": "어원 — 마법과 연관된 개미잡이의 그리스어 이름",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/징크스",
+      "note": "라틴어 'iynx'는 마법과 연관된 개미잡이의 그리스어 이름인 'iunx'에서 왔다. 이 새는 주문을 걸거나 점복을 하는 데 사용되었을 뿐만 아니라"
+     },
+     {
+      "claim": "딱따구리과 · 떠난 연인을 되돌리는 부적으로 줄에 매어 돌림",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Eurasian_wryneck",
+      "note": "The Eurasian wryneck ... is a species of wryneck in the woodpecker family. ... The bird was used as a charm to bring back an errant lover, the bird being tied to a piece of string and whirled around."
+     },
+     {
+      "claim": "1911년 야구 소설집 The Jinx: Stories of the Diamond",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Jinx",
+      "note": "in the short story The Jinx (1910) – later collected in the book The Jinx: Stories of the Diamond (1911) – Allen Sangree wrote"
+     },
+     {
+      "claim": "학명 Jynx ← 그리스어 iunx · wryneck = 비트는 몸짓",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Eurasian_wryneck",
+      "note": "The genus name Jynx is from the Ancient Greek name for this bird, iunx. ... The English \"wryneck\" refers to the same twisting movement"
+     }
+    ],
+    "hintBasis": "knowledge",
+    "hintSources": [],
+    "hintNote": null,
+    "easiestCue": "주문·점술에 쓰던 새 이름에서 온 외래어 · 야구",
+    "worthWhyGen": "매일 쓰는 말 '징크스'가 마법에 쓰던 새 이름이라는 유래",
+    "targetGrade": 4,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '외래어' 예",
+     "unique": "새 이름 뿌리 + 야구 소설집 — 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [
+     {
+      "step": "readfix",
+      "before": {
+       "question": "일상에서 자주 쓰는 외래어 하나의 뿌리 이야기입니다. 이 말은 딱따구리 무리의 새 '개미잡이'를 부르던 그리스어 이름에서 왔습니다. 고대에는 이 새를 주문을 걸고 점을 치는 데 썼고, 떠난 연인을 되돌리려 줄에 매어 돌리기도 했습니다. 1911년 미국에서 나온 야구 소설집 제목에도 쓰인 이 말은?"
+      },
+      "why": "⑨ 첫 문장 '외래어' + 어원 단서를 한 문장으로 · 긴 문장 쪼갬"
+     }
+    ],
+    "warn": [
+     "crossans 미역국"
+    ],
+    "job": "job-13"
+   }
+  },
+  {
+   "seedId": "world-language/5#g032b-g032b-j28-3",
+   "seed": {
+    "subject": "데탕트",
+    "aspect": null,
+    "ref": "g032b-j28-3",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "냉전 시기의 국제 정세를 가리키는 프랑스어 외교 용어입니다. 1969년 취임한 미국 닉슨 대통령이 베트남전에서 발을 빼려고 소련과 관계 개선에 나서며 본격화했습니다. 1979년 소련의 아프가니스탄 침공으로 무너진, 미국과 소련 사이의 긴장 완화를 무엇이라 할까요?",
+    "answer": "데탕트",
+    "acceptedAnswers": [],
+    "originalTitleVariants": [],
+    "explanation": "1962년 쿠바 미사일 위기로 핵전쟁 직전까지 갔던 경험이 이런 흐름의 바탕이 되었다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1979년 소련 아프간 침공으로 무너진 미소 긴장 완화",
+     "difWhy": "3 — 세계사 용어 · 설명 → 이름",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 역사 교과 용어",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 35",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "1972년 탄도탄 요격 미사일 조약처럼 두 초강대국이 무기 경쟁을 조약으로 묶으며 대화하던 냉전 속 화해 국면을 가리킨다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "냉전기 미국·소련의 긴장 완화를 가리키는 프랑스어 외교 용어(détente)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 35,
+     "why": "국사·세계사 교과 용어",
+     "piece": "f03",
+     "genPct": 50
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '프랑스어 외교 용어' 가 종류. 끝 묻는 말은 '긴장 완화' 로 같은 대상."
+    },
+    "blindQuestion": {
+     "guess": "데탕트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "데탕트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "데탕트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 4,
+     "found": 4,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "2642",
+      "answer": "콩쿠르",
+      "verdict": "diff",
+      "why": "데탕트(냉전 외교) vs 콩쿠르 — 프랑스어 외래어일 뿐 다른 지식"
+     },
+     {
+      "old": "2640",
+      "answer": "바캉스",
+      "verdict": "diff",
+      "why": "데탕트 vs 바캉스 — 다른 지식"
+     },
+     {
+      "old": "2632",
+      "answer": "르네상스",
+      "verdict": "diff",
+      "why": "데탕트 vs 르네상스 — 다른 지식"
+     },
+     {
+      "old": "2637",
+      "answer": "앙코르",
+      "verdict": "diff",
+      "why": "데탕트 vs 앙코르 — 다른 지식"
+     },
+     {
+      "old": "2634",
+      "answer": "살롱",
+      "verdict": "diff",
+      "why": "데탕트 vs 살롱 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/데탕트",
+     "https://en.wikipedia.org/wiki/Détente"
+    ],
+    "facts": [
+     {
+      "claim": "프랑스어 낱말 · 미소 긴장 완화",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/데탕트",
+      "note": "데탕트(Détente ...)는 프랑스어로 ‘긴장 완화’를 뜻하는 낱말로, 1960년대 말부터 1970년대 이후 ... 미소 간의 긴장이 완화되던 현상이다. ... 1969년 취임한 닉슨 대통령이 베트남 전쟁의 조기 철군을 공약했고, 그 실현을 위해서는 북베트남 정권을 지원하던 소련과의 관계 개선이 필요했기 때문이었다."
+     },
+     {
+      "claim": "1969년 닉슨 외교 · 1979년 12월 아프가니스탄 침공으로 끝남",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Détente",
+      "note": "Détente began in 1969 as a core element of the foreign policy of U.S. president Richard Nixon. ... its definitive end came with the Soviet Invasion of Afghanistan (December 1979)."
+     },
+     {
+      "claim": "1972년 ABM 조약",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Détente",
+      "note": "In 1972, the Biological Weapons Convention and the Anti-Ballistic Missile Treaty were concluded, and talks on SALT II began the same year."
+     },
+     {
+      "claim": "쿠바 미사일 위기 · 핵전쟁 직전",
+      "where": "e",
+      "url": "https://ko.wikipedia.org/wiki/데탕트",
+      "note": "1962년의 쿠바 미사일 위기로 정점에 도달하여 핵전쟁 직전까지 갔다. 그리하여 미국과 소련은 핵전쟁 방지에 공통의 이익을 발견하게 되고"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Détente"
+    ],
+    "hintNote": null,
+    "easiestCue": "미국과 소련 사이의 긴장 완화를 부르는 프랑스어 외교 용어",
+    "worthWhyGen": "뉴스·역사에 자주 나오는 외교 말 — 냉전의 한 시기를 가리킴",
+    "targetGrade": 3,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '외교 용어' 예",
+     "unique": "프랑스어 · 미소 · 1969~1979 — 데탕트 하나",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 냉전"
+    ],
+    "job": "job-28"
+   }
+  }
+ ]
+}

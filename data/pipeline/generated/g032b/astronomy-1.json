@@ -1,0 +1,310 @@
+{
+ "_meta": {
+  "round": "g032b",
+  "subId": "astronomy/1",
+  "midKey": "astronomy",
+  "questionPrompt": "deep-v6",
+  "scorePrompt": "score-v4",
+  "hintPrompt": "hint-v7(deep-v6 안)",
+  "familiarityJudge": "scripts/g032-familiarity.mjs (V022 꼴)",
+  "generator": "claude-opus-5-5",
+  "questionGenerator": "claude-opus-5-5",
+  "judge": "claude-sonnet-5-5",
+  "stage": "deep",
+  "note": "G032 — 생성 재개 g032b(deep-v6 · score-v4 · 친숙도 · 읽기 · 사실 · blind 둘 · 중복 3겹). pipeline-load --pending 으로 비활성 적재 — 활성은 V035 표본 판정 뒤 다음 GEN"
+ },
+ "items": [
+  {
+   "seedId": "astronomy/1#g032b-g032b-j06-2",
+   "seed": {
+    "subject": "카이퍼 벨트",
+    "aspect": null,
+    "ref": "g032b-j06-2",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "태양계 바깥쪽의 한 영역입니다. 1951년 네덜란드계 미국 천문학자가 그 언저리에 작은 천체들이 원반 모양으로 흩어져 있다고 주장했고, 그래서 이 영역에 그의 이름이 붙었습니다. 1992년 두 천문학자가 5년을 뒤진 끝에 이곳의 천체를 찾아내 그 주장을 뒷받침했습니다. 이 영역은?",
+    "answer": "카이퍼 벨트",
+    "acceptedAnswers": [
+     "카이퍼대",
+     "카이퍼 띠",
+     "에지워스-카이퍼 벨트"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "1943년 케네스 에지워스가 먼저 비슷한 생각을 내놓아 '에지워스-카이퍼대'라고도 부른다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "1992년 두 천문학자가 5년을 뒤진 끝에 이곳의 천체를 찾아냄",
+     "difWhy": "3 — 설명 → 이름 · 해왕성 바깥 영역",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 천문 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 38",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "해왕성 궤도 바깥에 수많은 얼음 천체가 도넛처럼 모인 원반 모양 영역으로, 명왕성도 이곳 천체 가운데 하나로 본다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "해왕성 바깥에 얼음 소천체가 원반 모양으로 모인 태양계 영역",
+    "familiarity": {
+     "judge": 2,
+     "pct": 38,
+     "why": "과학 뉴스·교양에서 들어 봄",
+     "piece": "f03",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '태양계 바깥쪽의 한 영역', 끝 ○○ '이 영역' 일치; 문장마다 주어 하나"
+    },
+    "blindQuestion": {
+     "guess": "카이퍼 벨트",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "카이퍼 벨트",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "카이퍼 벨트",
+     "qFacts": 2,
+     "qSources": 2,
+     "checked": 3,
+     "found": 3,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j16-1",
+      "answer": "오르트 구름",
+      "verdict": "diff",
+      "why": "카이퍼 벨트 vs 오르트 구름 — 다른 영역"
+     },
+     {
+      "old": "3351",
+      "answer": "뉴호라이즌스",
+      "verdict": "diff",
+      "why": "카이퍼 벨트 vs 톰보 유골 뉴호라이즌스 — 카이퍼 벨트는 힌트 속 단어"
+     },
+     {
+      "old": "2668",
+      "answer": "뉴호라이즌스",
+      "verdict": "diff",
+      "why": "카이퍼 벨트 vs 2015 명왕성 탐사선 — 다른 지식"
+     },
+     {
+      "old": "339",
+      "answer": "타이탄",
+      "verdict": "diff",
+      "why": "카이퍼 벨트 vs 타이탄 — 무관"
+     },
+     {
+      "old": "5676",
+      "answer": "화성",
+      "verdict": "diff",
+      "why": "카이퍼 벨트 vs 화성 위성 발견 — 무관"
+     }
+    ],
+    "sources": [
+     "https://ko.wikipedia.org/wiki/카이퍼_벨트",
+     "https://en.wikipedia.org/wiki/Kuiper_belt"
+    ],
+    "facts": [
+     {
+      "claim": "1951년 네덜란드계 미국 천문학자 카이퍼가 원반 모양 소천체 분포를 주장 · 이름 유래 · 입증",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/카이퍼_벨트",
+      "note": "1951년에 이미 네덜란드계 미국인 천문학자 제러드 카이퍼가 태양에서 상당히 멀리 떨어진 거리에 수많은 소천체들이 원반 모양으로 분포한다고 주장하였는데, 이로써 그의 주장이 입증된 것이다. '카이퍼 띠'라는 명칭은 여기서 유래한 것이다."
+     },
+     {
+      "claim": "1951년 논문 · 1992년 5년 탐색 끝 발견(주잇·루)",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Kuiper_belt",
+      "note": "In 1951, in a paper in Astrophysics: A Topical Symposium, Gerard Kuiper speculated on a similar disc ... Finally, after five years of searching, Jewitt and Luu announced on 30 August 1992 the \"Discovery of the candidate Kuiper belt object 1992 QB1\"."
+     },
+     {
+      "claim": "1943년 에지워스 · 에지워스-카이퍼대 이름",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Kuiper_belt",
+      "note": "In 1943, ... Kenneth Edgeworth hypothesized ... Astronomers sometimes use the alternative name Edgeworth–Kuiper belt to credit Edgeworth"
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://ko.wikipedia.org/wiki/카이퍼_벨트"
+    ],
+    "hintNote": null,
+    "easiestCue": "태양계 바깥 영역 + 1951년 천문학자 이름",
+    "worthWhyGen": "뉴스에 나오는 태양계 가장자리 이름이 누구의 예측에서 왔나(유래)",
+    "targetGrade": 5,
+    "targetWorth": 3,
+    "selfCheck": {
+     "read": "ⓐ 3초 · ⑨ 첫 문장 '태양계 바깥 영역' 예",
+     "unique": "1951년 예측자 이름 + 1992년 확인 — 오르트 구름(1950 오르트)과 갈리지만 원반·1992 로 가름",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [
+     "crossans 명왕성/해왕성"
+    ],
+    "job": "job-06"
+   }
+  },
+  {
+   "seedId": "astronomy/1#g032b-g032b-j16-1",
+   "seed": {
+    "subject": "오르트 구름",
+    "aspect": null,
+    "ref": "g032b-j16-1",
+    "pairedWith": null
+   },
+   "question": {
+    "ok": true,
+    "mode": "나",
+    "pairedWith": null,
+    "question": "아직 아무도 직접 본 적이 없는 태양계의 한 영역이 있습니다. 1950년 네덜란드의 한 천문학자는 장주기 혜성이 끊임없이 새로 나타나는 까닭을 설명하려고, 아주 먼 곳에 얼음 천체 수십억 개가 태양을 둘러싸고 있다고 보았습니다. 그 천문학자의 이름이 붙은 이 영역은?",
+    "answer": "오르트 구름",
+    "acceptedAnswers": [
+     "오르트의 구름"
+    ],
+    "originalTitleVariants": [],
+    "explanation": "가장 멀리 간 탐사선 보이저 1호도 이곳에 닿으려면 약 300년, 다 지나가려면 약 3만 년이 걸린다고 본다.",
+    "score": {
+     "version": "score-v4",
+     "dif": 3,
+     "easiestCue": "장주기 혜성 · 네덜란드 천문학자 이름이 붙은 영역",
+     "difWhy": "3 — 학교 천문 용어 · 사람 이름이 답에 들어감",
+     "wor": 3,
+     "worWhy": "알가치(worth) 2 · 개념 — 과학 개념",
+     "acc": 2,
+     "accWhy": "정답 친숙도(15 §5-4) — 판정자 pct 45",
+     "worth": 2,
+     "worthKind": "개념"
+    },
+    "generalHint": "카이퍼 벨트보다 훨씬 바깥에서 태양계 전체를 공 모양으로 감싸고 있다고 보는 얼음 천체의 껍질이다.",
+    "generalHintVersion": "hint-v7",
+    "identity": "태양계 가장 바깥을 둘러싼 것으로 여겨지는 얼음 천체 무리(장주기 혜성의 근원)",
+    "familiarity": {
+     "judge": 2,
+     "pct": 45,
+     "why": "과학 교양·다큐에서 들어 봤을 법함",
+     "piece": "f06",
+     "genPct": 40
+    },
+    "read": {
+     "verdict": "ok",
+     "form": null,
+     "reason": "첫 문장 '태양계의 한 영역', 끝 ○○ '이 영역'과 일치; 장주기 혜성은 이유가 곁에 설명됨"
+    },
+    "blindQuestion": {
+     "guess": "오르트 구름",
+     "hit": true
+    },
+    "blindHint": {
+     "guess": "오르트 구름",
+     "hit": true
+    },
+    "factCheck": {
+     "answer": "오르트 구름",
+     "qFacts": 3,
+     "qSources": 2,
+     "checked": 5,
+     "found": 5,
+     "outside": 0,
+     "notFound": []
+    },
+    "dupCheck": [
+     {
+      "old": "g032b:g032b-j06-2",
+      "answer": "카이퍼 벨트",
+      "verdict": "diff",
+      "why": "오르트 구름 vs 카이퍼 벨트 — 다른 영역·다른 천문학자"
+     },
+     {
+      "old": "342",
+      "answer": "해왕성",
+      "verdict": "diff",
+      "why": "오르트 구름 vs 해왕성 예측 — 다른 지식"
+     },
+     {
+      "old": "5678",
+      "answer": "수성",
+      "verdict": "diff",
+      "why": "오르트 구름 vs 수성 관측 — 다른 지식"
+     },
+     {
+      "old": "339",
+      "answer": "타이탄",
+      "verdict": "diff",
+      "why": "오르트 구름 vs 타이탄 — 다른 지식"
+     },
+     {
+      "old": "3422",
+      "answer": "금성",
+      "verdict": "diff",
+      "why": "오르트 구름 vs 금성 자전 — 다른 지식"
+     }
+    ],
+    "sources": [
+     "https://en.wikipedia.org/wiki/Oort_cloud",
+     "https://ko.wikipedia.org/wiki/오르트_구름"
+    ],
+    "facts": [
+     {
+      "claim": "1950년 네덜란드 천문학자 얀 오르트 제안 · 장주기 혜성 공급 · 수십억 얼음 천체",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Oort_cloud",
+      "note": "The Oort cloud ... is theorized to be a cloud of billions of icy planetesimals surrounding the Sun ... Its existence was proposed in 1950 by the Dutch astronomer Jan Oort, in whose honor the idea was later named. Oort proposed that the bodies in this cloud replenish and keep constant the number of long-period comets entering the inner Solar System"
+     },
+     {
+      "claim": "직접 관측 불가",
+      "where": "q",
+      "url": "https://en.wikipedia.org/wiki/Oort_cloud",
+      "note": "No direct observation of the Oort cloud is possible with present imaging technology."
+     },
+     {
+      "claim": "1950년 얀 오르트가 혜성 궤도 역설을 풀려고 다시 내놓음",
+      "where": "q",
+      "url": "https://ko.wikipedia.org/wiki/오르트_구름",
+      "note": "1950년에 그 생각은 네덜란드의 천문학자인 얀 오르트에 의해 ... 역설을 해결하기 위한 수단으로 다시 환기되었다."
+     },
+     {
+      "claim": "카이퍼 벨트보다 바깥 · 구형",
+      "where": "h",
+      "url": "https://en.wikipedia.org/wiki/Oort_cloud",
+      "note": "Comets ... stored in two separate areas, the Kuiper belt and the Oort cloud ... This explains the nearly spherical shape of the outer Oort cloud."
+     },
+     {
+      "claim": "보이저 1호 약 300년 · 통과 약 3만 년",
+      "where": "e",
+      "url": "https://en.wikipedia.org/wiki/Oort_cloud",
+      "note": "Voyager 1, the most distant spacecraft, will not reach the Oort cloud for about 300 years and would take about 30,000 years to pass through it."
+     }
+    ],
+    "hintBasis": "web",
+    "hintSources": [
+     "https://en.wikipedia.org/wiki/Oort_cloud"
+    ],
+    "hintNote": null,
+    "easiestCue": "장주기 혜성이 새로 나타나는 까닭을 설명하려는 먼 얼음 천체 무리",
+    "worthWhyGen": "혜성이 어디서 오는지라는 태양계 구조의 기본 개념(교과·전공 2)",
+    "targetGrade": 4,
+    "targetWorth": 2,
+    "selfCheck": {
+     "read": "ⓐ · ⑨ 첫 문장 '태양계의 한 영역' 예",
+     "unique": "장주기 혜성 · 1950 네덜란드 → 하나(카이퍼 벨트는 단주기)",
+     "hint12": "① 예 ② 예"
+    },
+    "history": [],
+    "warn": [],
+    "job": "job-16"
+   }
+  }
+ ]
+}
