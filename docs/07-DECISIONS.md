@@ -10,6 +10,17 @@
 
 ---
 
+## DG-071. G032 표본 활성 + 표기 지정 괄호 문구 삭제 (G033 · 기술 판단 — 설계 브리핑 gen.md 와 찬종 결정을 옮김 · 생성 없음)
+
+- **근거(설계 인용)**: V035 CV-146 권장 (b) "163 은 적용 뒤 먼저 활성해도 됨 · 나머지 484 는 같은 눈으로 판정한 뒤" · CV-147 (a) 등급 그대로 · ★ 찬종 2026-11-07 **"영어로 같은건 빼자"** → 설계 해석: 질문의 표기 지정 괄호 문구((영어로) · (한자로) …)를 뺀다 · 같은 이름의 다른 표기(Paris ↔ 파리)는 둘 다 받는다.
+- **B(163)**: V035 제안을 GEN 이 읽고 반영 — 질문 25 · 힌트 37(blind 처음 34/37 → 다시 씀 3 → 37/37) · 해설 46(웹으로 못 닫은 문장 삭제 · 제안 속 새 사실 14 웹 재확인: true 11 · false 2 · unverified 1 → 고침) · 변형 +66(번역·일반어·다른 개념은 안 받음 — 52 사유) → **활성 162**(is_active true · status approved) · 6895 귀밝이술 rejected(307 정월대보름과 같은 지식) · 등급·알가치 그대로.
+- **C(V034)**: `scripts/hint-crossans.mjs` COMMON +12 · R1(여러 낱말 일치는 낱말 경계에서 시작·끝) · R2(따옴표 제목 안 · 라틴 대문자 한두 글자 이웃 · 더 긴 정답 일치 안) — crossans 3481 → 3269(같은 활성 6506) · fix 9 · 열린 답 2 · 재판정 2 · G029 반대 2.
+- **D(V035 나머지)**: G031 힌트 fix 47 · 사실 7 · unsure 8 · 변형 12 · G030 5.
+- **E**: 활성 전수 대조 — 괄호형 지정은 **#21 하나**(설계 추정 약 30 은 넓은 정규식 수) → 뺌 · 문장형 4 그대로 · "영문 약어로" 문장 지정 20 은 괄호가 아니라 이번 범위 밖(G033 7절).
+- **F**: 제보 #112 #3402 비활성(#1425 와 같은 정답·같은 지식 — 뒤에 들어온 쪽) · #113 = E · #114 그대로(등급 4 설계대로).
+- **끝 점검**: 백업(quizweb-20261107-120317) 대조 — question_text 34 · general_hint 97 · explanation 55 · difficulty_score 3 · is_active 163 · status 163 · inactive_reason 2 · question_answers +101 −5 뿐 · pending 484 바뀐 것 0 · 활성 6,667 · hint-check-active 막힘 0 · checkAnswerSet 막힘 0 · npm test 633.
+- **되돌리기**: `node scripts/g033-apply-pending.mjs --undo`(g033-undo-pending.json 337행) · `node scripts/g033-apply-active.mjs --undo`(g033-undo-active.json — C·D·F) · `--notation --undo`(g033-undo-notation.json) · 백업 `backups/quizweb-20261107-120317.dump`.
+
 ## DG-070. 생성 재개 — 700 목표 · deep-v6 · score-v4 · 중복 3겹 · pending 적재 647 (G032 · 기술 판단 — 설계 브리핑 gen-next2.md 를 옮김)
 
 - **근거(설계 인용)**: 19 §5 공급 — 고급만 하면 등급 5 가 81판 · 우선순위 5 > 1 > 2 · 알가치 3 · 15 §6-1 제작 표 → 700(등급 1 100 · 2 200 · 3 180 · 4 120 · 5 100 · 알가치 2·3 · 등급 5 는 3 만).

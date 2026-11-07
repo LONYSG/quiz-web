@@ -100,6 +100,14 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-07 — V034 · V035 적용 · G032 표본 162 활성 (G033, GEN)
+
+- **무엇을**: gen.md — V035 G032 163 고침 → 162 활성 · V034 CV-141~145 · V035 CV-148~151 · 찬종 "영어로 같은건 빼자" · 제보 #112~#114.
+- **어떻게**: scripts/g033-apply-lib(결정 json · 멱등 · before 같을 때만 · 반영 뒤 검사) + g033-apply-pending · g033-apply-active · 고친 힌트는 blind(sonnet 하나) · 제안 속 새 사실은 웹 재확인(하나) · 동시 2 이하.
+- **결정**: DG-071.
+- **검증**: 백업 대조 바뀐 열 목록(DG-071) · pending 484 그대로 · hint-check-active 막힘 0 · checkAnswerSet 막힘 0 · undo dry-run 전부 · npm test 633 · criteria-sync --check.
+- **남은 것**: crossans addon ≈420 · "영문 약어로" 문장 지정 20 · blind miss 2 · 484 활성(V036 뒤) — G033.txt 7절.
+
 ## 2026-11-07 — 생성 재개 707 → pending 647 (G032, GEN)
 
 - **무엇을**: gen-next2.md — 19 §5 · 15 §6-1 표대로 700 생성(deep-v6 · score-v4) · 활성은 건드리지 않고 pending 적재.
