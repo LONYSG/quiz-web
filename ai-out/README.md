@@ -60,6 +60,7 @@
 | V033.txt | 등급 1·2 hint-v7 표본 판정 171(+해설 54) VERIFY — ok 144(84.2%) · fix 18 · unsure 9 · 해설 fix 2 · 변형 12(accept 11 · reject 1) · 사실 4 · 질문 읽기 60(rewrite 8) · V031 unsure 반대 1 → `audit/v033-*.json` · CV-135~140 · C88 |
 | V034.txt | crossans 표본 100 · 👎 38 · 열린 답 2 · 실측 대조 첫 회(67판 · 재판정 23) · G029 blind 28 VERIFY — crossans 핵심 65 · 덧붙임 17 · 오탐 18(규칙 R1·R2) · 👎 fix 9 · 실측 change 2 · 반대 2 → `audit/v034-*.json` · CV-141~145 · C89 (조각 0 · 13/README/05/06 은 V035 가 2026-11-07 메움) |
 | V035.txt | G032 pending 163 일곱 눈 판정 + G031 힌트 표본 197 + 변형 22 + G030 남긴 것 VERIFY — keep 57 · fix 105 · drop 1 · 독립 등급 일치 74%(편향 없음) · G031 ok 72.1% · 사실 틀림 7 → `audit/v035-*.json` · CV-146~152 · C91 |
+| V036.txt | G032 pending 나머지 484 일곱 눈 전수 VERIFY — keep 252 · fix 232 · drop 0 · 질문/힌트 사실 틀림 4 · 독립 등급 일치 70%(647 합산 편향 없음 · v4 3·4 후함) · WebFetch 779 · fix 전부 재독 → `audit/v036-g032.json` · CV-153~156 · C93 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
