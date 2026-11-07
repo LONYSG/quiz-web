@@ -24,7 +24,31 @@ export const COMMON = [
   '소리', '유럽', '사랑', '로마', '파리', '작가', '뉴욕', '영어', '거리', '비극', '날개', '런던', '몸통', '소금', '지방', '소련', '자라', '기관', '과학', '생물',
   '골프', '신화', '전자', '산소', '맥주', '태양', '유엔', '북한', '군주', '임금', '헌법', '대륙', '껍질', '온도', '한강', '웹툰', '깃털', '행성', '보석', '중세',
   '괴물', '잡지', '식초', '평균', '세균', '흰색', '김치', '왼쪽', '심장', '부모', '현장', '되어', '앉아', '단골', '양력', '하지', '유도', '광주', '대구', '전주',
+  // G033 — V034 CV-141 오탐 중 흔한 낱말 12
+  '파랑', '파란색', '무지개', '타자기', '번호판', '티셔츠', '기네스', '비누', '단백질', '냉장고', '수석', '녹색',
 ];
+
+/** 낱말 나누기(원문) — 공백 · 문장 부호 */
+const SEP = /[\s·,.'"“”‘’()「」『』[\]~!?\-:;/]+/;
+/** 따옴표 묶음(제목 · 이름) — 그 안의 일치가 묶음보다 짧으면 긴 이름의 일부(R2) */
+const QUOTE = /'[^']+'|"[^"]+"|‘[^’]+’|“[^”]+”|「[^」]+」|『[^』]+』/g;
+/** R1 — 여러 낱말에 걸친 일치의 끝 낱말에 남아도 되는 꼬리(조사) */
+const TAIL = /^(은|는|이|가|을|를|의|에|와|과|도|로|으로|에서|에게|까지|부터|처럼|보다|만|이다|이며|였다|이고|와의|과의|에서의|라는|이라는|란|이란|들|들이|들을|들의|에는|에도|으로는|로는|이나|나|랑|이랑)$/;
+
+/** 원문을 낱말로 — 정규화 문자열 위치(s · e) · 원문 위치(os · oe) · 따옴표 묶음 번호 */
+function tokens(hint) {
+  const quotes = []; for (const m of String(hint).matchAll(QUOTE)) quotes.push([m.index, m.index + m[0].length]);
+  const out = []; let pos = 0; const re = new RegExp(SEP.source, 'g'); let last = 0; const raw = [];
+  for (const m of String(hint).matchAll(re)) { if (m.index > last) raw.push([last, m.index]); last = m.index + m[0].length; }
+  if (last < String(hint).length) raw.push([last, String(hint).length]);
+  for (const [os, oe] of raw) {
+    const w = String(hint).slice(os, oe); const n = normalizeAnswer(w); if (!n) continue;
+    const qi = quotes.findIndex(([a, b]) => os >= a && oe <= b);
+    out.push({ w, n, s: pos, e: pos + n.length, os, oe, q: qi });
+    pos += n.length;
+  }
+  return out;
+}
 
 /** 낱말 끝 조사(2글자 정답을 낱말 단위로 볼 때 뗀다) */
 const JOSA = /(은|는|이|가|을|를|의|에|와|과|도)$/;
@@ -40,12 +64,37 @@ export function crossAnswers(q, answers, opt = {}) {
   const h = normalizeAnswer(q.hint ?? '');
   if (!h) return [];
   const words = new Set(String(q.hint).split(/[\s·,.'"“”‘’()「」[\]~!?-]+/).filter(Boolean).flatMap((w) => [w, w.replace(JOSA, '')]).map((w) => normalizeAnswer(w)));
-  const seen = new Map();
+  const tk = tokens(q.hint); const hh = tk.map((t) => t.n).join('');
+  const seen = new Map(); const spans = [];
   for (const a of answers) {
     if (String(a.id) === String(q.id) || a.norm === q.answerNorm) continue;
     const n = [...a.norm].length;
     if (n < 2 || common.has(a.norm) || seen.has(a.norm) || (n === 2 && /^[0-9]+$/.test(a.norm))) continue;
-    if (n === 2 ? words.has(a.norm) : h.includes(a.norm)) seen.set(a.norm, { id: String(a.id), answer: a.answer });
+    if (n === 2 && !words.has(a.norm)) continue;
+    if (n > 2 && !h.includes(a.norm)) continue;
+    // ★ G033 R1 · R2(V034 CV-141) — 일치 자리마다 본다 · 하나라도 통과하면 센다
+    const cands = [];
+    if (n === 2) { for (let k = 0; k < tk.length; k++) if (tk[k].n === a.norm || tk[k].n.replace(JOSA, '') === a.norm) cands.push([tk[k].s, tk[k].s + a.norm.length]); }
+    else for (let at = hh.indexOf(a.norm); at >= 0; at = hh.indexOf(a.norm, at + 1)) cands.push([at, at + a.norm.length]);
+    if (n === 2 && !cands.length) { seen.set(a.norm, { id: String(a.id), answer: a.answer }); continue; } // 낱말 대조와 낱말 나누기가 다를 때 — 옛 동작
+    for (const [at, end] of cands) {
+      const i = tk.findIndex((t) => at >= t.s && at < t.e); const j = tk.findIndex((t) => end > t.s && end <= t.e);
+      if (i < 0 || j < 0) continue;
+      const tail = tk[j].n.slice(end - tk[j].s); const tailOk = tail === '' || TAIL.test(tail);
+      // R1 — 여러 낱말에 걸친 일치는 낱말 처음에서 시작하고 낱말 끝(또는 조사 꼬리)에서 끝나야 한다(사바나와 "달리 아시아" ≠ 달리아)
+      if (j > i && (at !== tk[i].s || !tailOk)) continue;
+      // R2 — 긴 이름의 일부: ① 따옴표 묶음(제목) 안인데 묶음이 더 길다('브레이킹 배드' · '슈퍼 마리오 브라더스' · '슈퍼맨이 돌아왔다')
+      const qi = tk[i].q;
+      if (qi >= 0 && tk[j].q === qi) { const inQ = tk.filter((t) => t.q === qi); if (inQ[0].s < at || inQ.at(-1).e > (tailOk ? tk[j].e : end)) continue; }
+      // ② 바로 옆 낱말이 라틴 대문자·숫자 한두 글자(케니 G)
+      const nx = tk[j + 1]; const pv = tk[i - 1];
+      if (end === tk[j].e && nx && /^[A-Z0-9]{1,2}$/.test(nx.w) && /^\s+$/.test(String(q.hint).slice(tk[j].oe, nx.os))) continue;
+      if (at === tk[i].s && pv && /^[A-Z0-9]{1,2}$/.test(pv.w) && /^\s+$/.test(String(q.hint).slice(pv.oe, tk[i].os))) continue;
+      seen.set(a.norm, { id: String(a.id), answer: a.answer }); spans.push({ norm: a.norm, s: at, e: end });
+      break;
+    }
   }
+  // R2 ③ — 더 긴 다른 정답 일치 안에 든 짧은 일치는 뺀다(미키 마우스 ⊃ 마우스)
+  for (const x of spans) if (spans.some((y) => y !== x && y.s <= x.s && y.e >= x.e && y.e - y.s > x.e - x.s)) seen.delete(x.norm);
   return [...seen.values()];
 }

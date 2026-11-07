@@ -31,7 +31,7 @@ export async function run({ tag, decFile, undoFile, steps, mode, note }) {
   const c = await connect();
   try {
     if (mode === 'undo' || mode === 'undo-dry') return await undo(c, { tag, undoFile, steps, dry: mode === 'undo-dry' });
-    const ids = sel.map(([id]) => Number(id));
+    const ids = sel.map(([id, d]) => Number(d.id ?? id)); // 키 '7373#2' 꼴(같은 행 두 번째 결정)은 d.id 로 행을 가리킨다
     const db = (await c.query(`select q.id::int, q.is_active, q.status, q.inactive_reason, q.question_text, q.display_answer, q.explanation, q.general_hint, q.general_hint_version, q.difficulty_score,
       coalesce((select array_agg(answer_text order by id) from question_answers x where x.question_id=q.id and not x.is_primary),'{}') variants
       from questions q where q.id = any($1::bigint[])`, [ids])).rows;
@@ -40,7 +40,7 @@ export async function run({ tag, decFile, undoFile, steps, mode, note }) {
     const todo = []; const skipped = []; const problems = []; const warns = []; const notTaken = []; let done = 0; const cnt = {};
     const k = (x) => { cnt[x] = (cnt[x] ?? 0) + 1; };
     for (const [sid, d] of sel) {
-      const id = Number(sid); const cur = D.get(id); if (!cur) { problems.push(`${id}: 없음`); continue; }
+      const id = Number(d.id ?? sid); const cur = D.get(id); if (!cur) { problems.push(`${id}: 없음`); continue; }
       for (const n of d.notTaken ?? []) notTaken.push({ id, step: d.step, cv: d.cv, ...n });
       const b = d.before ?? {};
       const after = { question_text: cur.question_text, explanation: cur.explanation, general_hint: cur.general_hint, display_answer: cur.display_answer, variants: [...cur.variants] };
@@ -128,8 +128,9 @@ export async function run({ tag, decFile, undoFile, steps, mode, note }) {
         rows.push({ id, field: 'state', before: bf, after: x.st });
       }
       if (d.report) { want++; n += (await c.query(`update app_reports set note = coalesce(note || ' · ', '') || $2 where id=$1 and coalesce(note,'') not like '%' || $2 || '%'`, [d.report, `${tag} 고침`])).rowCount; rows.push({ id, field: 'report', report: d.report }); }
+      for (const r of rows) if (!r._d) r._d = d;
     }
-    for (const r of rows) { const d = all[r.id]; r.step = d.step; r.cv = d.cv; r.why = d.why; }
+    for (const r of rows) { const d = r._d; delete r._d; r.step = d.step; r.cv = d.cv; r.why = d.why; }
     if (n !== want) { await c.query('rollback'); console.error(`★ 쓴 수 ${n}/${want} — 되돌렸다`); process.exitCode = 1; return; }
     await c.query('commit');
     const u = existsSync(AUD(undoFile)) ? JSON.parse(readFileSync(AUD(undoFile), 'utf8')) : { round: 'G033', note, steps: {} };
