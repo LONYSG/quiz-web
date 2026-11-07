@@ -36,6 +36,7 @@ export async function run({ tag, decFile, undoFile, steps, mode, note }) {
       coalesce((select array_agg(answer_text order by id) from question_answers x where x.question_id=q.id and not x.is_primary),'{}') variants
       from questions q where q.id = any($1::bigint[])`, [ids])).rows;
     const D = new Map(db.map((r) => [r.id, r]));
+    const repNoted = new Set((await c.query(`select id::int from app_reports where coalesce(note,'') like '%' || $1 || '%'`, [`${tag} 고침`])).rows.map((r) => r.id));
     const prim = (await c.query(`select id::int, display_answer from questions where is_active`)).rows.map((r) => ({ id: r.id, norm: normalizeAnswer(r.display_answer), answer: r.display_answer }));
     const todo = []; const skipped = []; const problems = []; const warns = []; const notTaken = []; let done = 0; const cnt = {};
     const k = (x) => { cnt[x] = (cnt[x] ?? 0) + 1; };
@@ -95,7 +96,8 @@ export async function run({ tag, decFile, undoFile, steps, mode, note }) {
           }
         }
       }
-      if (t.length || finalAdd.length || remove.length || score || st || d.report) todo.push({ id, d, t, add: finalAdd, remove, score, st, cur });
+      const rep = d.report && !repNoted.has(Number(d.report)); if (d.report && !rep) done++;
+      if (t.length || finalAdd.length || remove.length || score || st || rep) todo.push({ id, d, t, add: finalAdd, remove, score, st, cur, rep });
     }
     console.log(`[${tag}] 결정 ${sel.length} · 쓸 행 ${todo.length} · 이미 됨 ${done} · 건너뜀 ${skipped.length} · 안 받음 ${notTaken.length} · ${JSON.stringify(cnt)}`);
     for (const s of skipped) console.log('  건너뜀', s);
@@ -127,7 +129,7 @@ export async function run({ tag, decFile, undoFile, steps, mode, note }) {
         else n += (await c.query('update questions set is_active=false, inactive_reason=$2, updated_at=now() where id=$1 and is_active', [id, x.st.reason])).rowCount;
         rows.push({ id, field: 'state', before: bf, after: x.st });
       }
-      if (d.report) { want++; n += (await c.query(`update app_reports set note = coalesce(note || ' · ', '') || $2 where id=$1 and coalesce(note,'') not like '%' || $2 || '%'`, [d.report, `${tag} 고침`])).rowCount; rows.push({ id, field: 'report', report: d.report }); }
+      if (x.rep) { want++; n += (await c.query(`update app_reports set note = coalesce(note || ' · ', '') || $2 where id=$1 and coalesce(note,'') not like '%' || $2 || '%'`, [d.report, `${tag} 고침`])).rowCount; rows.push({ id, field: 'report', report: d.report }); }
       for (const r of rows) if (!r._d) r._d = d;
     }
     for (const r of rows) { const d = r._d; delete r._d; r.step = d.step; r.cv = d.cv; r.why = d.why; }
