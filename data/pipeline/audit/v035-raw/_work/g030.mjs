@@ -1,0 +1,13 @@
+import pg from 'pg';
+const db=new pg.Client({connectionString:'postgresql://quiz:quizlocal@localhost:5434/quizweb'});await db.connect();
+const show=async ids=>{for(const x of (await db.query(`select id,question_text,display_answer,general_hint,explanation,difficulty_score from questions where id=any($1) order by id`,[ids])).rows)console.log(`#${x.id} g${x.difficulty_score} [${x.display_answer}]\nQ(${x.question_text.length}): ${x.question_text}\nH: ${x.general_hint}\nE: ${x.explanation}\n`)};
+console.log('=== reads');await show([6207,6145,5998]);
+console.log('=== unsure');await show([1316,1845,2047,2277,2944,3535,4162,6219,6236,6542,684,6578]);
+console.log('=== facts');await show([6416,5243,6159,4794]);
+const c=async (re,l)=>{const r=await db.query(`select count(*) n from questions where is_active and question_text ~ $1`,[re]);console.log(l,r.rows[0].n)};
+await c('^[^.?!]{0,40}한 [^ ]{1,8}\s*이야기입니다','한 ○○ 이야기입니다 (앞 40자)');
+await c('^[^.]{0,60}한 [^ ]{1,10} ?이야기입니다\.','한 ○○ 이야기입니다. 문장 시작쪽');
+await c('^[^.]{0,80}한 [^ .]{1,12}입니다\.','…한 ○○입니다. 첫 문장');
+await c('이야기입니다','이야기입니다 전체');
+const tot=(await db.query(`select count(*) n from questions where is_active`)).rows[0].n;console.log('active',tot);
+await db.end();
