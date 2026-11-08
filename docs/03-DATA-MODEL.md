@@ -407,6 +407,15 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 
 - ★ R081 — 마이그레이션 없음: 순서대로는 `topic_items.year`(0031 그대로)를 읽고 · 경험은 `minigame_item_experiences`(minigame_key order/bingo · item_key `topic:<slug>`).
 
+## ★★★ 라이어 게임 (R082 / 0032 — D-339)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `games.mode` | CHECK ('quiz' · 'minigame' · **'liar'**) | 열은 0021 · 0032 는 CHECK 만 넓힘 |
+| `liar_rounds` | id · game_id(FK · UNIQUE(game_id, round)) · round · topic · item_id · keyword · liar_account_id · participants · turn_order · says · votes(jsonb — 단계별 [{stage, accusedNo, votes, result}]) · outcome(caught · escaped · notfound) · accused · keyword_guess · guess_ok · scores · created_at | 라운드 하나 한 행 · 서버가 공개 때 쓴다(fire-and-forget) |
+
+- 경험: `minigame_item_experiences`(minigame_key 'liar' · item_key = topic_items.id · run_id NULL). 점수는 game_players.final_score(포인트 아님).
+
 ## ★★ 근접 오답 (R058 / 0022 — D-252 · A83 (나))
 
 | 표 · 열 | 형식 | 규칙 |

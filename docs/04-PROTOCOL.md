@@ -1026,6 +1026,22 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
 
+## ★ R082 — 바뀐 것 (D-339 · 방식 · 라이어 · 0032)
+
+| 항목 | 내용 |
+|------|------|
+| 설정 `mode` | `'quiz' \| 'minigame' \| 'liar'` — 보낸 것이 이긴다 · minigameOnly 만 보내면 그것으로 정함 · 라이어 = minigameRounds 2~10 · teamMode 같이 `BAD_REQUEST` |
+| 방 상태 | `LIAR` 더함 |
+| `game.start` 거부 | 라이어 3명 미만 `BAD_REQUEST` "라이어 게임은 3명부터 할 수 있어요." · 제시어 0 "제시어가 없어요(주제 세트 적재 전) — 다른 방식으로 해 주세요." |
+| `game.started` · `game.result` | `mode: 'liar'` |
+| `liar.state` (S→C · 사람마다) | `{ state, liar: LiarView \| null }` — round · rounds · phase(assign · describe · vote · revote · tally · defense · final · guess · reveal) · phaseStartedAt/EndsAt · topic · nameKo · keyword(시민 · 공개 뒤만) · amLiar · spectating · participants · order · turn · says · myVote · votedCount · candidates · accused · accusedTried · lastTally{stage, votes, counts, top} · myFinal · lastFinal{yes,no,eligible,passed} · liar/outcome(guess · reveal 때) · guess/guessOk/scores(reveal 때). 스냅샷 `liar` 같은 꼴 |
+| `chat.send` (LIAR) | 설명 · 항변은 차례인 사람만 · 키워드 담은 글 거부 → 본인에게 `liar.chatRejected { reason: 'not_turn' \| 'keyword' \| 'too_long', message }` · 차례 말은 기록되고 다음 차례로 |
+| `liar.vote` (C→S) | `{ target }` — vote/revote 때 · 자기 · 지목됐던 사람 · 후보 밖 거름 |
+| `liar.final` (C→S) | `{ yes: boolean }` — final 때 · 지목된 사람 거름 |
+| `liar.guess` (C→S) | `{ text }` — guess 때 · 라이어만 · 한 번 |
+| 거름 | 때가 아니거나 이상한 값 → 본인에게 `liar.rejected { reason }`(오류 창 없음) |
+| `host.forceEnd` | LIAR 에서도 됨 |
+
 ## ★ R081 — 바뀐 것 (D-338 · 순서대로 · 빙고 · 마이그레이션 없음)
 
 | 항목 | 내용 |
