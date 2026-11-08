@@ -7857,10 +7857,13 @@ async function mgTopicTrio(bots, host) {
   expect('★★★ 객관식 — 맞힌 수 b1 10 · b2 0 · b3 0(첫 문항 7초 넘김 = 안 냄)', [b1, b2, b3].map((b) => cRounds.filter((rr) => rowOf(rr.rows, b)?.points === 1).length), [10, 0, 0]);
   expect('★★ 객관식 첫 문항 b3 = 미제출', rowOf(cRounds[0]?.rows ?? [], b3)?.submitted, false);
   // ── 경험 · 결과
-  const exp = await withDb(async (c) =>
-    (await c.query(`SELECT e.minigame_key k, e.item_key i FROM minigame_item_experiences e JOIN minigame_runs r ON r.id = e.run_id WHERE r.game_id = $1 GROUP BY 1, 2 ORDER BY 1, 2`, [gid])).rows,
-  );
-  expect('★★★ 경험 — topic:<slug>(많이 말하기 1 · 겹치면 무효 3) · 객관식은 없음', [exp.filter((r) => r.k === 'many').map((r) => r.i), exp.filter((r) => r.k === 'unique').length, exp.filter((r) => r.k === 'choice').length], [[`topic:${seen.many?.topic}`], 3, 0]);
+  // ★ R082 — 경험 PK 는 (계정 · 키 · 항목): 예전 판에서 본 주제는 옛 run_id 로 남는다 → 많이 말하기 · 겹치면 무효는 계정 · 주제로 · 객관식은 이 판 run 으로
+  const exp = await withDb(async (c) => [
+    ...(await c.query(`SELECT e.minigame_key k, e.item_key i FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.minigame_key IN ('many', 'unique') AND e.item_key = ANY($2) GROUP BY 1, 2 ORDER BY 1, 2`, [b1.loginId, [seen.many?.topic, ...seen.unique].map((t) => `topic:${t}`)])).rows,
+    ...(await c.query(`SELECT e.minigame_key k, e.item_key i FROM minigame_item_experiences e JOIN minigame_runs r ON r.id = e.run_id WHERE r.game_id = $1 AND e.minigame_key = 'choice' GROUP BY 1, 2`, [gid])).rows,
+  ]);
+  const has = (k, t) => exp.some((r) => r.k === k && r.i === `topic:${t}`);
+  expect('★★★ 경험 — topic:<slug>(많이 말하기 1 · 겹치면 무효 3) · 객관식은 없음', [has('many', seen.many?.topic), seen.unique.filter((t) => has('unique', t)).length, exp.filter((r) => r.k === 'choice').length], [true, 3, 0]);
   const allTopics = [seen.many?.topic, ...seen.unique];
   expect('★★ 한 게임 안 쓴 주제 안 겹침(4)', new Set(allTopics).size, 4);
   expectTrue('★★ 결과 — 미니게임만 3/3 completed', res.mode === 'minigame' && res.minigameSeries?.done === 3 && res.endReason === 'completed', JSON.stringify({ m: res.mode, s: res.minigameSeries }));
