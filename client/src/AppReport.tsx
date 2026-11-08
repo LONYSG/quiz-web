@@ -53,6 +53,9 @@ interface QTarget {
   at?: number | null;
   /** 창 머리 이름(미니게임 이름 등) */
   name?: string;
+  /** ★ R080 — 미리 채울 글 · 사유(많이 말하기 "이건 왜 정답 아냐?") */
+  initialText?: string;
+  initialReasons?: string[];
   /** 연 때 맥락 */
   frozen: Frozen;
 }
@@ -267,9 +270,45 @@ export function QReportButton({ questionId = null, minigameItem = null, question
   );
 }
 
+/**
+ * ★★ R080 (D-330 ⑺ · D-337) — 많이 말하기 결과의 "이건 왜 정답 아냐?" — 문항 피드백 창(kind question · 사유 '답이 틀렸거나 다른 답도 맞을 듯')을
+ *   "주제 ○○ · 내 답 '…'(정답 아님 처리)" 가 채워진 채 연다. 제보 목록(reports:report)에 미니게임 키 many · 그 판과 함께 보인다.
+ */
+export function TopicReportButton({ topic, wrong, minigameKey = 'many' }: { topic: string; wrong: readonly string[]; minigameKey?: string }) {
+  const mobile = useUiMode() === 'mobile';
+  const current = useCurrentPopup();
+  const list = wrong.slice(0, 20).map((w) => `'${w}'`).join(', ');
+  return (
+    <button
+      type="button"
+      className="ghost tiny topic-report-btn"
+      data-topic-report
+      onMouseDown={keepFocus}
+      onClick={() =>
+        openQReport(
+          {
+            questionId: null,
+            minigameItem: null,
+            questionIndex: null,
+            minigameKey,
+            at: Date.now(),
+            name: `${minigameInfo(minigameKey as MinigameKey)?.name ?? '미니게임'} · ${topic}`,
+            initialText: wrong.length ? `주제 ${topic} · 내 답 ${list} — 정답 아님 처리됨. 이건 왜 정답 아니에요?` : `주제 ${topic} · `,
+            initialReasons: ['answer'],
+            frozen: freeze(mobile),
+          },
+          current,
+        )
+      }
+    >
+      <Icon icon={NotebookPen} /> 이건 왜 정답 아냐?
+    </button>
+  );
+}
+
 function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => void }) {
-  const [reasons, setReasons] = useState<string[]>([]);
-  const [text, setText] = useState('');
+  const [reasons, setReasons] = useState<string[]>(target.initialReasons ?? []);
+  const [text, setText] = useState(target.initialText ?? '');
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const label = target.questionId ? `#${target.questionId}` : (target.minigameItem ?? '');

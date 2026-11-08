@@ -56,6 +56,7 @@ export * from './minigame/circle.js';
 export * from './minigame/angle.js';
 // ★★★ R052 — 퀴즈류 미니게임
 export * from './minigame/quiz.js';
+export * from './minigame/topics.js';
 // ★★★ R053 — 미니게임 3차
 export * from './minigame/r053.js';
 export * from './minigame/oddone-pairs.js';

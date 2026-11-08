@@ -9511,3 +9511,250 @@ button.preset.shake {
 :where(.ui-mobile) .room .ranking.two {
   grid-template-columns: minmax(0, 1fr);
 }
+
+/* =============================================================================
+   ★★★ R080 — 미니게임 1차 (D-330 · D-337): 많이 말하기 · 겹치면 무효 · 객관식 10연속
+   상태는 색 + 글자/기호(사무실 테마 흑백 — D-324): 나만 말한 답 = ★ · 겹침/정답 아님 = 글 꼬리표 · 정답 보기 = ✓
+   ============================================================================= */
+.topic-title {
+  margin: 4px 0 2px;
+  font-size: 1.15rem;
+  text-align: center;
+  word-break: keep-all;
+}
+.topic-title strong {
+  font-size: 1.3rem;
+}
+.topic-left {
+  font-weight: 900;
+  color: var(--accent);
+}
+.topic-form .quiz-num-input {
+  width: min(320px, 100%);
+}
+.topic-fb {
+  min-height: 1.5em;
+}
+.topic-mine {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  max-height: 128px;
+  overflow-y: auto;
+}
+.topic-count {
+  flex: none;
+  font-weight: 900;
+}
+.topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 0;
+}
+.topic-chip {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+.topic-chip.ok {
+  background: var(--ok-soft);
+}
+.topic-chip.only {
+  background: var(--accent);
+  color: var(--accent-ink, #fff);
+  font-weight: 700;
+}
+.topic-chip.only::before {
+  content: '★ ';
+}
+.topic-chip.miss {
+  background: transparent;
+  border: 1px dashed var(--line, currentColor);
+  color: var(--text-dim);
+}
+.topic-reveal {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+.topic-reveal-title {
+  margin: 0;
+  text-align: center;
+}
+.many-people,
+.unique-people {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+.many-people li {
+  display: grid;
+  grid-template-columns: minmax(64px, auto) auto 1fr;
+  gap: 8px;
+  align-items: start;
+  padding: 4px 6px;
+  border-radius: 10px;
+}
+.many-people li.me,
+.unique-people li.me {
+  background: var(--surface-2);
+}
+.topic-missed summary {
+  cursor: pointer;
+  color: var(--text-dim);
+}
+.topic-missed .topic-chips {
+  margin-top: 4px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+.topic-report-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+}
+.unique-people li {
+  display: grid;
+  grid-template-columns: minmax(64px, auto) 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 10px;
+}
+.unique-ans {
+  font-weight: 700;
+  word-break: keep-all;
+}
+.unique-tag {
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+.u-win .unique-tag {
+  color: var(--ok);
+}
+.u-dup .unique-tag,
+.u-bad .unique-tag {
+  color: var(--bad);
+}
+.u-dup .unique-ans {
+  text-decoration: line-through;
+}
+.choice-q {
+  margin: 4px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  word-break: keep-all;
+}
+.choice-cat {
+  font-size: 0.75rem;
+  vertical-align: middle;
+}
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+.choice-opt {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 3px solid transparent;
+  font: inherit;
+  font-weight: 800;
+  color: inherit;
+  text-align: center;
+  word-break: keep-all;
+  cursor: pointer;
+}
+.choice-opt:disabled {
+  cursor: default;
+}
+.choice-opt.picked {
+  border-color: var(--accent);
+}
+.choice-opt.other {
+  opacity: 0.55;
+}
+.choice-opt.answer {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+.choice-opt.wrong {
+  border-color: var(--bad);
+  border-style: dashed;
+}
+.choice-key {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.choice-answers {
+  margin: 6px 0 0;
+  padding-left: 1.6em;
+  display: grid;
+  gap: 2px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+  text-align: left;
+}
+.choice-answers li {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+.choice-answers li.bad .choice-a-a::after {
+  content: ' ✗';
+  color: var(--bad);
+}
+.choice-answers li.ok .choice-a-a::after {
+  content: ' ✓';
+  color: var(--ok);
+}
+.choice-a-q {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-dim);
+}
+.choice-a-a {
+  flex: none;
+}
+@media (max-width: 520px) {
+  .choice-grid {
+    gap: 6px;
+  }
+  .choice-opt {
+    min-height: 46px;
+    font-size: 0.95rem;
+  }
+  .many-people li {
+    grid-template-columns: auto auto;
+  }
+  .many-people li .topic-chips {
+    grid-column: 1 / -1;
+  }
+}

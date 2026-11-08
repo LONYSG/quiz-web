@@ -32,7 +32,11 @@ export type MinigameKey =
   | 'balloon'
   | 'tap'
   // ★ R068 — 사진 연도(docs/18 §8)
-  | 'photoyear';
+  | 'photoyear'
+  // ★★★ R080 — 미니게임 1차(D-330 · D-337): 주제 세트 둘 + 퀴즈 문항 보기
+  | 'many'
+  | 'unique'
+  | 'choice';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -52,7 +56,7 @@ export interface MinigameInfo {
   /** 값이 작을수록 좋은가(케이크 — 오차) · 클수록 좋은가(균형 — 작은 쪽 %) */
   better: 'low' | 'high';
   /** 표시 단위 */
-  unit: '초' | '%' | 'ms' | '°' | '년';
+  unit: '초' | '%' | 'ms' | '°' | '년' | '개' | '점';
   /** ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?) */
   scoring?: 'rank' | 'correct';
   /**
@@ -73,6 +77,50 @@ export interface MinigameInfo {
 
 /** ★ 순서가 표시 순서다 */
 export const MINIGAMES: readonly MinigameInfo[] = [
+  // ★★★ R080 (D-330 · D-337 · 찬종 "여태 나온 아이디어는 전부 샘플로") — 새것 먼저(표시 순서 = 카탈로그 · 기본 선택 포함)
+  {
+    key: 'many',
+    name: '많이 말하기',
+    oneLine: '주제 하나 — 30초 동안 떠오르는 정답을 최대한 많이 치세요! 남의 답은 끝나야 보여요',
+    controlsPc: '입력 → Enter (계속 치기 · 맞으면 ✓)',
+    controlsMobile: '입력 → 확인 (계속 치기 · 맞으면 ✓)',
+    kind: 'quiz',
+    rounds: 1,
+    estSec: 60,
+    better: 'high',
+    unit: '개',
+    fixedDecimals: 0,
+  },
+  {
+    key: 'unique',
+    name: '겹치면 무효',
+    oneLine: '주제에 맞는 답 하나 — 남과 겹치면 0점! 나만 낸 정답이 1점 · 3판',
+    controlsPc: '입력 → Enter (바꿔도 돼요 — 마지막 답)',
+    controlsMobile: '입력 → 확인 (바꿔도 돼요 — 마지막 답)',
+    kind: 'quiz',
+    rounds: 3,
+    estSec: 75,
+    better: 'high',
+    unit: '점',
+    fixedDecimals: 0,
+    scoring: 'correct',
+    tiebreak: 'none',
+    minPlayers: 2,
+  },
+  {
+    key: 'choice',
+    name: '객관식 10연속',
+    oneLine: '퀴즈 문제 10개를 보기 넷 중에서 — 7초 안에! 많이 맞히고, 같으면 빠른 사람',
+    controlsPc: '1 ~ 4 키 또는 클릭',
+    controlsMobile: '보기를 톡',
+    kind: 'quiz',
+    rounds: 10,
+    estSec: 110,
+    better: 'low',
+    unit: 'ms',
+    fixedDecimals: 0,
+    scoring: 'correct',
+  },
   {
     key: 'cake',
     // ★ R063 (D-261 · 찬종 #13 "고기 같은게 생고기로 시작해서 점점 익어가고" — 키 cake 그대로 · 이름 · 그림만)

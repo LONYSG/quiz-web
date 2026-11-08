@@ -84,6 +84,9 @@ import {
   balloonAfter,
 } from '@quiz/shared';
 import type { QuizData, QuizItem } from '../db/minigameItems.js';
+import type { TopicStore } from '../db/topics.js';
+import type { PoolQuestion } from '../db/questionPool.js';
+import { choice, many, unique } from './topicGames.js';
 
 export interface RoundSpec {
   /** 항목 · 패턴 키 (기록 · 퀴즈류의 경험 기록에 쓴다 — 퀴즈류는 문항 id) */
@@ -136,7 +139,9 @@ export interface BuildCtx {
   /** 참가자 계정 */
   participants: string[];
   /** 게임에 올려 둔 퀴즈류 문항 · 경험(연습 · 미니게임 포함이 꺼진 게임이면 null) */
-  quiz: { data: QuizData; experienced: Map<string, Set<string>>; used?: Set<string> } | null;
+  quiz: { data: QuizData; experienced: Map<string, Set<string>>; used?: Set<string>; /** ★ R080 — 주제 세트 · 이 게임에서 쓴 주제 */ topics?: TopicStore | null; usedTopics?: Set<string> } | null;
+  /** ★ R080 — 객관식 10연속: 이 판의 출제 풀 · 쓴 문항 · 쓴 정답(연습 · 게임 밖이면 없음) */
+  game?: { pool: PoolQuestion[]; usedQuestionIds: Set<string>; usedAnswerNorms: Set<string> } | null;
   now: number;
   /** ★ R066 (D-282) — 고른 미니게임이 모두 소재가 떨어졌을 때 한 번 더(모두 본 문항도) */
   ignoreSeen?: boolean;
@@ -168,6 +173,8 @@ export interface MinigameDef {
    *   임시(provisional) 값이 하나라도 오면 "냈다" 로 센다. 그렇지 않으면 놀이 내내 0명으로 보인다.
    */
   countProvisional?: boolean;
+  /** ★ R080 — 퀴즈류지만 문항 경험을 남기지 않는다(객관식 10연속 — 보기로 본 것은 푼 게 아니다) */
+  noItemExperience?: boolean;
   /**
    * ★ 입력 검사 · 판정 값 계산 (서버). 이상한 값이면 null(받지 않음).
    *   provisional = true 면 "아직 확정 아님"(균형 — 움직이는 동안 보내는 값 · 마감 때 마지막 것을 쓴다)
@@ -251,7 +258,7 @@ const balance: MinigameDef = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** 기기 시간 공통 검사 — 음수 · 판 길이 넘음 · 실제로 흐른 것보다 긴 값(미리 계산해 보내기) 거부 */
-function deviceElapsed(obj: Record<string, unknown> | null, spec: RoundSpec, ctx: { serverElapsedMs: number }, capLate = false): number | null {
+export function deviceElapsed(obj: Record<string, unknown> | null, spec: RoundSpec, ctx: { serverElapsedMs: number }, capLate = false): number | null {
   const elapsed = num(obj?.elapsedMs);
   if (elapsed === null || elapsed < 0) return null;
   // ★★ R064 (D-265 · 찬종 #29 사진 중 BAD_REQUEST) — "빨리 낼수록 이김" 게임(사진 · 타자 · 둘 중 · 다른 하나)은
@@ -879,4 +886,4 @@ const tap: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, many, unique, choice, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };

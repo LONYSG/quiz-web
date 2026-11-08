@@ -48,9 +48,15 @@ import WhichPick from './WhichPick.js';
 import PhotoYear from './PhotoYear.js';
 import { GaugeStop, MinorityPick, OddOneGrid, twemoji } from './R053Games.js';
 import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
+import { ChoiceAnswers, ChoicePick, ChoiceReveal, ManyFinalReport, ManyReveal, ManyTalk, UniquePick, UniqueReveal, rememberRound, topicValueText } from './TopicGames.js';
+import { MINIGAME_ICONS } from './MinigameCatalog.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
 const PLAY = {
+  // ★★★ R080 — 미니게임 1차(D-337)
+  many: ManyTalk,
+  unique: UniquePick,
+  choice: ChoicePick,
   cake: CakeWait,
   balance: BalanceGuard,
   reaction: ReactionTap,
@@ -76,7 +82,8 @@ const PLAY = {
 const R053_KEYS = new Set(['minority', 'oddone', 'gauge', 'balloon', 'tap']);
 const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear']);
 /** 진행 중 "n / m명 …" 의 말 */
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
+const TOPIC_KEYS = new Set(['many', 'unique', 'choice']);
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { many: '참여', unique: '냄', choice: '고름', cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
 
 interface Props {
   socket: Socket;
@@ -159,6 +166,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
   const nameOf = (id: string) => view.participants.find((p) => p.accountId === id) ?? players.find((p) => p.accountId === id);
   const roundNo = view.roundIndex + 1;
   const lastResult = view.roundResults[view.roundResults.length - 1];
+  // ★ R080 — 주제 이름 · 객관식 문항을 판 기록에(최종 결과 단계는 round 가 비어 있다)
+  rememberRound(view);
 
   return (
     // ★ R074 (§A) — --mg-n = 참가자 수(정답 공개 표 줄 수) · PC 그림 높이 예산이 이 수만큼 줄을 뺀다(styles R074 절)
@@ -254,7 +263,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
       )}
       {view.phase === 'play' && view.key !== 'typing' && <PlayView socket={socket} view={view} serverNow={serverNow} mobile={mobile} />}
 
-      {view.phase === 'play' && !view.spectating && (
+      {/* ★ R080 — 많이 말하기는 남의 참여도 안 보인다(D-330 ⑺ "남의 개수도 안 보임") */}
+      {view.phase === 'play' && !view.spectating && view.key !== 'many' && (
         <p className="mg-submitted dim">
           {view.submittedCount} / {view.participants.length}명 {SUBMIT_WORD[view.key]}
         </p>
@@ -289,7 +299,9 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
               );
             })}
           </ol>
-          {view.key === 'which' && <WhichSummary view={view} nameOf={nameOf} />}
+          {(view.key === 'which' || view.key === 'choice') && <WhichSummary view={view} nameOf={nameOf} />}
+          {view.key === 'choice' && <ChoiceAnswers view={view} myAccountId={myAccountId} />}
+          {view.key === 'many' && <ManyFinalReport view={view} myAccountId={myAccountId} />}
           <p className="dim mg-final-note">
             {view.practice ? '연습' : `${bonusRanks(view.participants.length)}는 포인트도!`}
           </p>
@@ -341,6 +353,12 @@ function AsOfNote({ view }: { view: MinigameView }) {
 function readyDesc(view: MinigameView): string {
   const p = view.round?.params ?? {};
   switch (view.key) {
+    case 'many':
+      return `${String(p.nameKo ?? '')} — ${String(p.timeSec ?? 30)}초 동안 최대한 많이!`;
+    case 'unique':
+      return `${String(p.nameKo ?? '')} — 남과 안 겹칠 답 하나`;
+    case 'choice':
+      return '';
     case 'cake': {
       const sp = Number(p.speed ?? 1);
       return `${p.durationSec}초${sp !== 1 ? ` · ${sp}배속` : ''} · ${p.hideAfterSec}초 뒤 가려져요`;
@@ -383,6 +401,17 @@ function readyDesc(view: MinigameView): string {
 /** 규칙 안내 그림 */
 function RulesArt({ k }: { k: MinigameView['key'] }) {
   switch (k) {
+    case 'many':
+    case 'unique':
+    case 'choice':
+      return (
+        <div className="mg-rules-icon" aria-hidden="true">
+          <Icon icon={MINIGAME_ICONS[k]} className="mg-rules-big" />
+          <span className="quiz-rules-tag">
+            <Icon icon={BookOpenCheck} /> 퀴즈류
+          </span>
+        </div>
+      );
     case 'cake':
       return <CakeArt open={false} small />;
     case 'balance':
@@ -493,6 +522,7 @@ function RoundResult({
   const valueText = (r: MinigameRoundRow) => {
     // ★ R052 — 퀴즈류는 입력 값 · % · 시간 · 맞음/틀림
     if (QUIZ_KEYS.has(view.key)) return quizValueText(view, r);
+    if (TOPIC_KEYS.has(view.key)) return topicValueText(view, r);
     // ★ R053
     if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)} ${r.extra.win ? '· 소수파!' : ''}` : '안 고름';
     if (view.key === 'oddone') return r.value !== null && r.submitted ? `${(r.value / 1000).toFixed(2)}초${r.extra?.wrong ? ` (+${Number(r.extra.wrong) * 2})` : ''}` : r.extra?.wrong ? `못 찾음 (${String(r.extra.wrong)}번 틀림)` : '못 찾음';
@@ -522,8 +552,14 @@ function RoundResult({
     }
   };
   return (
-    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) ? ' wide' : ''}`}>
-      {QUIZ_KEYS.has(view.key) ? (
+    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) ? ' wide' : ''}`}>
+      {view.key === 'many' ? (
+        <ManyReveal view={view} rows={result.rows} myAccountId={myAccountId} nameOf={nameOf} />
+      ) : view.key === 'unique' ? (
+        <UniqueReveal view={view} rows={result.rows} myAccountId={myAccountId} nameOf={nameOf} />
+      ) : view.key === 'choice' ? (
+        <ChoiceReveal view={view} mine={view.spectating ? undefined : mine} />
+      ) : QUIZ_KEYS.has(view.key) ? (
         <>
           <QuizReveal view={view} mine={view.spectating ? undefined : mine} />
           {/* ★ R061 — 미니게임 문항 번호(minigame_items.item_id · 누르면 복사) · ★ R065 📝 뺌 → 제보 메뉴 */}

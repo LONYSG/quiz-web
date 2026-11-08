@@ -33,6 +33,8 @@ import { config } from '../config.js';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { loadAllItemExperiences, loadQuizData } from '../db/minigameItems.js';
+import { loadTopicStore } from '../db/topics.js';
+import { TOPIC_KEYS } from '../minigame/topicGames.js';
 import { isQuizMinigameKey } from '../minigame/defs.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
 import { setGamePlayerDevices } from '../db/minigames.js';
@@ -294,12 +296,21 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   let minigameQuiz;
   try {
     [pool, experienced, minigameQuiz] = await Promise.all([
-      // ★ R057 — 미니게임만은 퀴즈 풀이 필요 없다
-      mgOnly ? Promise.resolve([]) : loadQuestionPool(settings),
+      // ★ R057 — 미니게임만은 퀴즈 풀이 필요 없다 · ★ R080 — 객관식 10연속을 골랐으면 보기 재료로 읽는다(실패해도 시작은 한다)
+      mgOnly
+        ? settings.minigameKeys.includes('choice')
+          ? loadQuestionPool(settings).catch(() => [])
+          : Promise.resolve([])
+        : loadQuestionPool(settings),
       loadExperienced(participantIds(room)),
       // ★ R052 — 퀴즈류 미니게임 문항 · 경험 (켜져 있고 퀴즈류를 골랐을 때만)
-      (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k))
-        ? Promise.all([loadQuizData(), loadAllItemExperiences(participantIds(room))]).then(([data, exp]) => ({ data, experienced: exp }))
+      //   ★ R080 — 주제 세트 게임(많이 말하기 · 겹치면 무효)도 같은 자리(경험 'topic:<slug>' · 주제 세트 저장소)
+      (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k) || TOPIC_KEYS.has(k))
+        ? Promise.all([
+            loadQuizData(),
+            loadAllItemExperiences(participantIds(room)),
+            settings.minigameKeys.some((k) => TOPIC_KEYS.has(k)) ? loadTopicStore() : Promise.resolve(null),
+          ]).then(([data, exp, topics]) => ({ data, experienced: exp, topics }))
         : Promise.resolve(null),
     ]);
   } catch (err) {

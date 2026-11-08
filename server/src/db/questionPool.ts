@@ -43,6 +43,8 @@ export interface PoolQuestion {
   /** ★★ R069 — 등급(difficulty_score 1~5 · 비율 출제) · 알가치(questions.worth 1~3 · 판정 전 null = 2 로 친다) */
   grade: number;
   worth: number | null;
+  /** ★ R080 — 중분류 id(category_tree.mid_id — 객관식 10연속 보기). 트리가 없으면 null */
+  categoryMid?: string | null;
 }
 
 /**
@@ -99,6 +101,7 @@ export async function loadQuestionPool(
     answers_raw: string[];
     grade: number;
     worth: number | null;
+    category_mid: string | null;
   }>(
     `SELECT q.id::text                        AS id,
             q.question_text,
@@ -109,6 +112,7 @@ export async function loadQuestionPool(
             q.explanation,
             q.difficulty_score                AS grade,
             ${worthExpr}                      AS worth,
+            ${hasTree ? 't.mid_id::text' : 'NULL::text'} AS category_mid,
             -- ★ 정답을 한 번의 쿼리로 모은다. 문제마다 따로 조회하면 N+1 이 된다
             coalesce(a.norms, '{}')           AS answers_norm,
             coalesce(a.raws,  '{}')           AS answers_raw
@@ -150,6 +154,7 @@ export async function loadQuestionPool(
       answersRaw: (r.answers_raw ?? []).filter((s) => typeof s === 'string' && s.length > 0),
       grade: Number(r.grade),
       worth: r.worth === null || r.worth === undefined ? null : Number(r.worth),
+      categoryMid: r.category_mid ?? null,
     });
   }
   return out;

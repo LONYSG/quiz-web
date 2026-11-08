@@ -20,6 +20,7 @@ import { randomInt } from 'node:crypto';
 import { config } from '../config.js';
 import {
   MINIGAME_TIMING,
+  UNIQUE_ROUNDS,
   decimalsFor,
   minigameReward,
   minigameSlots,
@@ -43,6 +44,8 @@ import type { Player, Room } from '../rooms/types.js';
 import { beginQuestion, broadcastPlayers, finishGame } from '../game/question.js';
 import { setBeforeNextQuestion } from '../game/hooks.js';
 import { MINIGAME_DEFS, type ParsedInput, type RoundSpec } from './defs.js';
+import { TOPIC_KEYS } from './topicGames.js';
+import { playableTopics } from '../db/topics.js';
 import { checkAchievements } from '../achievements.js';
 
 /** ★ R074 (§A) — params 안의 그림 id(imageId · a.imageId · b.imageId)마다 [폭, 높이] 를 params.imageDims 로 */
@@ -218,7 +221,8 @@ function broadcast(room: Room): void {
 /** 이번 판에서 켜진 미니게임 중 하나 — 한 바퀴 다 나오기 전에는 겹치지 않는다 */
 export function pickMinigameKey(room: Room): MinigameKey | null {
   const game = room.game;
-  const keys = room.settings.minigameKeys.filter((k) => MINIGAME_DEFS[k]);
+  // ★ R080 (D-337) — 적재된 주제 세트가 없으면 많이 말하기 · 겹치면 무효는 뽑지 않는다(안내 없이 다른 게임 · 객관식은 데이터 0 이라 늘 된다)
+  const keys = room.settings.minigameKeys.filter((k) => MINIGAME_DEFS[k] && topicReady(room, k));
   if (keys.length === 0) return null;
   if (!game) return keys[randomInt(keys.length)]!;
   game.minigameBag = game.minigameBag.filter((k) => keys.includes(k));
@@ -235,6 +239,14 @@ export function pickMinigameKey(room: Room): MinigameKey | null {
   const key = game.minigameBag.shift()!;
   game.lastMinigameKey = key;
   return key;
+}
+
+/** ★ R080 — 주제 세트 게임을 낼 수 있나(게임 밖 · 연습은 더미라 늘 된다) */
+function topicReady(room: Room, k: MinigameKey): boolean {
+  if (!TOPIC_KEYS.has(k) || !room.game) return true;
+  const q = room.game.minigameQuiz;
+  const need = k === 'unique' ? UNIQUE_ROUNDS : 1;
+  return playableTopics(q?.topics).filter((s) => !q?.usedTopics?.has(s.topic)).length >= need;
 }
 
 export function startMinigame(
@@ -259,6 +271,7 @@ export function startMinigame(
     practice: opts.practice,
     participants: participants.map((p) => p.accountId),
     quiz: opts.practice ? null : (room.game?.minigameQuiz ?? null),
+    game: opts.practice ? null : room.game,
     now,
     ignoreSeen: opts.ignoreSeen,
   });
@@ -527,7 +540,7 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
     ),
   );
   // ★ 퀴즈류(R052) — 정답이 공개되는 순간 접속 중인 참가자에게 경험 기록(01 12장) · 이 게임 메모리에도(다음 미니게임 선정)
-  if (def.info.kind === 'quiz' && !run.practice) {
+  if (def.info.kind === 'quiz' && !run.practice && !def.noItemExperience) {
     const witnesses = run.participants.filter((p) => room.players.get(p.accountId)?.connected).map((p) => p.accountId);
     const itemKey = run.rounds[idx]!.itemKey;
     const mq = room.game?.minigameQuiz;

@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  ArrowLeftRight, Balloon, Beef, CalendarClock, Check, Circle, Gauge, Globe, Hand, Image as ImageIcon, Keyboard, Ruler, Scale, ScanSearch, Tag, TriangleRight, Users, Zap,
+  ArrowLeftRight, Balloon, ListChecks, MessagesSquare, Shuffle, Beef, CalendarClock, Check, Circle, Gauge, Globe, Hand, Image as ImageIcon, Keyboard, Ruler, Scale, ScanSearch, Tag, TriangleRight, Users, Zap,
   type LucideIcon,
 } from 'lucide-react';
 import { MINIGAMES, MINIGAME_EXAMPLES, type MinigameKey } from '@quiz/shared';
@@ -20,6 +20,9 @@ import PopupClose from '../PopupClose.js';
 import { isReportOpen } from '../reportGuard.js';
 
 export const MINIGAME_ICONS: Record<MinigameKey, LucideIcon> = {
+  many: MessagesSquare,
+  unique: Shuffle,
+  choice: ListChecks,
   cake: Beef,
   balance: Scale,
   reaction: Zap,
