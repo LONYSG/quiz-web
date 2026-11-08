@@ -187,13 +187,17 @@ export function BingoPlay({ socket, view, serverNow, mobile }: Props) {
   const t = useTimer(view, serverNow);
   const priv = privOf(view);
   const [fb, setFb] = useState<{ key: string; result: string; label?: string; text?: string } | null>(null);
+  // ★ 채우기 중에는 판이 다시 오지 않는다(내 입력은 나에게만 — 방 전체 알림 없음) → 내 판정(cell · label)으로 바로 채워 보인다
+  const [local, setLocal] = useState<{ key: string; cells: Record<number, string> } | null>(null);
   const [pick, setPick] = useState<{ key: string; cell: number } | null>(null);
   const myPick = pick?.key === t.key ? pick.cell : null;
   const myFb = fb?.key === t.key ? fb : null;
   useEffect(() => {
-    const on = (f: { token: string; roundIndex: number; result: string; label?: string; text?: string }) => {
+    const on = (f: { token: string; roundIndex: number; result: string; label?: string; text?: string; cell?: number }) => {
       if (f.token !== view.token || f.roundIndex !== view.roundIndex) return;
-      setFb({ key: `${f.token}:${f.roundIndex}`, result: f.result, label: f.label, text: f.text });
+      const k = `${f.token}:${f.roundIndex}`;
+      setFb({ key: k, result: f.result, label: f.label, text: f.text });
+      if (f.result === 'ok' && typeof f.cell === 'number') setLocal((s) => ({ key: k, cells: { ...(s?.key === k ? s.cells : {}), [f.cell as number]: f.label ?? '' } }));
       sfx(f.result === 'ok' ? 'mg-tap' : 'mg-foul');
     };
     socket.on('minigame.feedback', on);
@@ -208,7 +212,8 @@ export function BingoPlay({ socket, view, serverNow, mobile }: Props) {
     sfx('mg-tap');
     socket.emit('minigame.submit', { token: view.token, roundIndex: view.roundIndex, input: { cell } });
   };
-  const board = priv?.board ?? Array.from({ length: size * size }, () => null);
+  const mineLocal = local?.key === t.key ? local.cells : {};
+  const board: Cell[] = (priv?.board ?? Array.from({ length: size * size }, () => null)).map((c, i) => c ?? (mineLocal[i] !== undefined ? { id: `local-${i}`, label: mineLocal[i]!, marked: false } : null));
   const filled = board.filter(Boolean).length;
   const lastRound = Math.max(0, ...(priv?.history ?? []).map((h) => h.round));
   return (

@@ -99,8 +99,13 @@ export interface TopicItemLite {
 
 /** 화면에 보일 이름 */
 export function topicLabel(it: Pick<TopicItemLite, 'name' | 'label'>): string {
-  return it.label && it.label.trim() ? it.label : it.name;
+  if (it.label && it.label.trim()) return it.label;
+  // ★ R081 — label 이 없는 긴 묶음 이름("달러(미국 · 캐나다 · …)")은 괄호 앞만 보인다(판정은 name 그대로 · 18 §9 label 이 채워지면 그것)
+  const m = /^(.+?)\s*\(.+\)$/.exec(it.name);
+  return it.name.length > TOPIC_LABEL_MAX && m ? m[1]! : it.name;
 }
+/** label 없는 이름을 줄여 보이는 길이 기준 */
+export const TOPIC_LABEL_MAX = 14;
 
 /** 한 표기의 판정 열쇠들 — 정규화 · flexCanon(괄호 · 관사 · 가운뎃점 지움) */
 function keysOf(s: string): string[] {

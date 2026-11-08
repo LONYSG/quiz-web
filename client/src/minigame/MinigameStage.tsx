@@ -563,7 +563,7 @@ function RoundResult({
     }
   };
   return (
-    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) ? ' wide' : ''}`}>
+    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) || ORDER_BINGO.has(view.key) ? ' wide' : ''}`}>
       {view.key === 'order' ? (
         <OrderReveal view={view} mine={view.spectating ? undefined : mine} />
       ) : view.key === 'bingo' ? (
@@ -611,7 +611,8 @@ function RoundResult({
           )}
         </div>
       )}
-      <ol className="mg-table">
+      {/* ★ R081 — 빙고는 판(호명)마다 점수가 없다(끝난 판에서만) — 표 대신 판 · 호명 띠 · 최종 결과 */}
+      {view.key !== 'bingo' && <ol className="mg-table">
         {result.rows.map((r) => {
           const p = nameOf(r.accountId);
           return (
@@ -628,7 +629,7 @@ function RoundResult({
             </li>
           );
         })}
-      </ol>
+      </ol>}
       {(view.key === 'circle' || view.key === 'angle') && (
         <div className="mg-thumbs" aria-label="모두의 결과">
           {result.rows.map((r) => (

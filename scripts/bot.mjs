@@ -130,7 +130,7 @@ const SCENARIO_ENV = {
   achievements: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
-  topicsets: { MINIGAME_PHASE_SCALE: '0.05' },
+  topicsets: { MINIGAME_PHASE_SCALE: '0.05', TOPIC_CACHE_MS: '0' },
   mgcount: { MINIGAME_PHASE_SCALE: '0.05', DISCONNECT_REMOVE_MS: '1500' },
   // ★ R060 — 둘이서 16 게임(놀이 시간은 줄지 않는다 — 판 사이만 짧게)
   mgduo: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
@@ -7732,6 +7732,8 @@ async function scenarioMgOnly() {
   late.leave();
   await sleep(300);
   await mgTopicTrio(bots, host);
+  // ★★★ R081 — 순서대로 · 빙고
+  await mgOrderBingo(bots, host);
   for (const b of all) {
     b.leave();
     await sleep(40);
@@ -7745,7 +7747,9 @@ async function scenarioMgOnly() {
 //   봇은 quizweb_test 의 topic_items 에서 정답을 읽어 친다 · 객관식은 questions 에서 질문 글로 정답을 찾는다
 // =============================================================================
 async function topicItemsOf(topic) {
-  return withDb(async (c) => (await c.query(`SELECT id, name, variants FROM topic_items WHERE topic = $1 AND active ORDER BY seq`, [topic])).rows);
+  // ★ R081 — 긴 이름(통화 "달러(미국 · …)")은 입력칸 40자를 넘는다 → 괄호 앞만(사람도 그렇게 친다 · 판정은 괄호를 지운 꼴로 맞춘다)
+  const rows = await withDb(async (c) => (await c.query(`SELECT id, name, variants FROM topic_items WHERE topic = $1 AND active ORDER BY seq`, [topic])).rows);
+  return rows.map((r) => ({ ...r, name: r.name.length > 30 ? r.name.replace(/\s*\(.*$/, '') : r.name }));
 }
 async function answerOfQuestion(text) {
   return withDb(async (c) => (await c.query(`SELECT display_answer FROM questions WHERE question_text = $1 LIMIT 1`, [text])).rows[0]?.display_answer ?? null);
@@ -7867,6 +7871,113 @@ async function mgTopicTrio(bots, host) {
 }
 
 // =============================================================================
+// ★★★ R081 — 순서대로 · 빙고 (미니게임만 2개 — mgonly 뒤에 이어서 · 같은 방 · 봇 셋)
+//   순서대로: b1 정답 순서 · b2 뒤집은 순서 · b3 안 냄 → 쌍 10 · 0 · 없음
+//   빙고: b1 · b2 같은 16 항목을 같은 순서로 채움 · b3 안 채움(자동) · 부르기는 b1 · b2 가 한 줄 + 한 열 차례로 · b3 안 부름(자동)
+// =============================================================================
+async function mgOrderBingo(bots, host) {
+  log('\n[R081] 순서대로 · 빙고 (미니게임만 2개)');
+  const ag = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(ag, 'game.countdownStarted').length > 0, 8000, '다시 하기(R081)');
+  host.socket.emit('game.cancelCountdown', {});
+  await sleep(400);
+  const [b1, b2, b3] = bots;
+  const states = [];
+  const fb = new Map(bots.map((b) => [b, []]));
+  const fbOn = new Map();
+  for (const b of bots) {
+    const h = (f) => fb.get(b).push(f);
+    fbOn.set(b, h);
+    b.socket.on('minigame.feedback', h);
+  }
+  const plan = [0, 1, 2, 3, 4, 8, 12, 5, 6, 7, 9, 10, 11, 13, 14, 15];
+  const seen = { order: [], bingoTopic: null };
+  for (const b of bots) {
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (b === host && mg) states.push(mg);
+      if (!mg || mg.phase !== 'play' || mg.spectating || !mg.round) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      void (async () => {
+        const p = mg.round.params;
+        if (mg.key === 'order') {
+          const years = await withDb(async (c) => new Map((await c.query(`SELECT id, year FROM topic_items WHERE id = ANY($1)`, [p.cards.map((x) => x.id)])).rows.map((r) => [r.id, r.year])));
+          const right = [...p.cards].sort((x, y) => years.get(x.id) - years.get(y.id)).map((x) => x.id);
+          if (b === b1) {
+            seen.order.push(p.topic);
+            // 한 번 틀리게 눌렀다가 처음 카드를 다시 눌러 취소 → 정답(마지막 상태)
+            b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { order: [right[4]] } });
+            await sleep(150);
+            b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { order: right } });
+          } else if (b === b2) b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { order: [...right].reverse() } });
+        } else if (mg.key === 'bingo' && p.phase === 'fill') {
+          if (b === b3) return;
+          if (b === b1) seen.bingoTopic = p.topic;
+          const items = await topicItemsOf(p.topic);
+          for (const it of [items[0], ...items.slice(0, 16)]) {
+            b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { text: it.name } });
+            await sleep(60);
+          }
+        } else if (mg.key === 'bingo' && p.phase === 'call') {
+          if (b === b3) return;
+          const board = mg.round.private?.board ?? [];
+          const offset = b === b1 ? 0 : 1;
+          const open = plan.filter((i) => board[i] && !board[i].marked);
+          const cell = open[offset] ?? open[0];
+          if (cell !== undefined) b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { cell } });
+        }
+      })();
+    };
+  }
+  const m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 2, minigameKeys: ['order', 'bingo'] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameKeys?.join() === 'bingo,order' || e.settings?.minigameKeys?.join() === 'order,bingo'), 4000, '설정(둘)');
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  const gid = host.since(g, 'game.started')[0].gameId;
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 300000, '결과(둘)');
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.id, r.login_id])));
+  const rowOf = (rows, b) => rows.find((r) => ids.get(r.accountId) === b.loginId);
+  const keys = await withDb(async (c) => (await c.query(`SELECT minigame_key k, end_reason e FROM minigame_runs WHERE game_id = $1 ORDER BY id`, [gid])).rows);
+  expectTrue('★★★ 둘 다 한 번씩 · 끝까지', keys.length === 2 && new Set(keys.map((r) => r.k)).size === 2 && keys.every((r) => r.e === 'completed'), JSON.stringify(keys));
+  // ── 순서대로
+  const of = states.filter((v) => v.key === 'order' && v.phase === 'final')[0];
+  const oR = of?.roundResults ?? [];
+  expectTrue('★★★ 순서대로 — 3판 · 판마다 다른 세트(연도 있는 것)', oR.length === 3 && new Set(seen.order).size === 3 && !seen.order.includes('element'), JSON.stringify(seen.order));
+  expect('★★★ 순서대로 — 쌍 점수 b1 10 · b2 0 · b3 안 냄(마지막 상태 = 정답)', [b1, b2, b3].map((b) => oR.map((rr) => rowOf(rr.rows, b)?.value ?? null).join(',')), ['10,10,10', '0,0,0', ',,']);
+  expect('★★ 순서대로 — 판 점수 3 · 2 · 0', [b1, b2, b3].map((b) => oR.map((rr) => rowOf(rr.rows, b)?.points).join('')), ['333', '222', '000']);
+  const oPlay = states.find((v) => v.key === 'order' && v.phase === 'play');
+  expectTrue('★★ 순서대로 — 판 중 카드 5 · 연도 · 정답 안 보냄', oPlay?.round?.params?.cards?.length === 5 && !oPlay.round.reveal && !JSON.stringify(oPlay.round.params).includes('year'), JSON.stringify(oPlay?.round?.params?.cards?.[0] ?? null));
+  // ── 빙고
+  const fills = fb.get(b1).filter((f) => f.filled !== undefined).map((f) => f.result);
+  expect('★★★ 빙고 채우기 — ✓ · 이미 있음 · ✓ … (16칸 다 차면 full)', [fills[0], fills[1], fills.filter((x) => x === 'ok').length], ['ok', 'dup', 16]);
+  const bf = states.filter((v) => v.key === 'bingo' && v.phase === 'roundResult');
+  const fillRes = bf.find((v) => v.round?.reveal?.phase === 'fill');
+  expect('★★ 빙고 — 직접 채운 칸 b1 16 · b3 0(전부 자동)', [fillRes?.round?.reveal?.manual?.[[...ids].find(([, l]) => l === b1.loginId)?.[0]], fillRes?.round?.reveal?.manual?.[[...ids].find(([, l]) => l === b3.loginId)?.[0]]], [16, 0]);
+  const fin = states.filter((v) => v.key === 'bingo' && v.phase === 'final')[0];
+  const last = fin?.roundResults?.[fin.roundResults.length - 1]?.rows ?? [];
+  const at = [b1, b2, b3].map((b) => rowOf(last, b)?.extra?.bingoAt ?? null);
+  expectTrue('★★★ 빙고 — 같은 판 b1 · b2 같은 호명에 함께 빙고(공동) · 4번 안 · 한 명 남아 끝', at[0] !== null && at[0] === at[1] && at[0] <= 4 && (fin?.roundResults?.length ?? 0) - 1 === at[0], JSON.stringify({ at, rounds: fin?.roundResults?.length }));
+  expect('★★ 빙고 — 최종 b1 · b2 공동 1위', [b1, b2].map((b) => fin?.final?.find((f) => ids.get(f.accountId) === b.loginId)?.rank), [1, 1]);
+  const calls = states.filter((v) => v.key === 'bingo' && v.phase === 'roundResult' && v.round?.reveal?.phase === 'call').flatMap((v) => v.round.reveal.calls);
+  const b3id = [...ids].find(([, l]) => l === b3.loginId)?.[0];
+  expectTrue('★★ 빙고 — 안 부른 b3 는 자동 호명 · 같은 판 항목은 2판에 있음', calls.filter((c) => c.accountId === b3id).every((c) => c.auto) && calls.some((c) => c.accountId === b3id) && calls.filter((c) => c.accountId !== b3id).every((c) => c.onBoards >= 2), JSON.stringify(calls.slice(0, 4)));
+  // ★ 경험은 (계정 · 키 · 항목) 하나 — 같은 봇이 예전 판에서 본 주제는 옛 run_id 로 남는다 → 계정 · 주제로 본다
+  const exp = await withDb(async (c) =>
+    (await c.query(`SELECT e.minigame_key k, e.item_key i FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.item_key = ANY($2) GROUP BY 1, 2 ORDER BY 1, 2`, [b1.loginId, [...seen.order, seen.bingoTopic].map((t) => `topic:${t}`)])).rows,
+  );
+  expect('★★ 경험 — order 3 · bingo 1(topic:<slug>)', [exp.filter((r) => r.k === 'order').length, exp.filter((r) => r.k === 'bingo').map((r) => r.i)], [3, [`topic:${seen.bingoTopic}`]]);
+  for (const b of bots) {
+    b.onMinigame = null;
+    b.socket.off('minigame.feedback', fbOn.get(b));
+  }
+}
+
+// =============================================================================
 // ★★★ R080 — 주제 세트 적재(topics-load) · 적재 없으면 많이 말하기 · 겹치면 무효가 빠진다
 // =============================================================================
 function topicsLoad(args, url = DATABASE_URL) {
@@ -7913,6 +8024,22 @@ async function scenarioTopicSets() {
     expect('★★★ 적재 세트 0 — 많이 말하기 · 겹치면 무효 빠지고 객관식만(2개)', keys, ['choice', 'choice']);
     const used = await withDb(async (c) => (await c.query(`SELECT count(DISTINCT item_key)::int n FROM minigame_rounds d JOIN minigame_runs r ON r.id = d.run_id WHERE r.game_id = $1`, [gid])).rows[0].n);
     expect('★★ 객관식 둘 — 한 게임 안 문항 겹치지 않음(20)', used, 20);
+    // ★ R081 — 연도 없는 세트 · 40 미만 세트만 있으면 순서대로 · 빙고는 안 뽑힘(많이 말하기는 됨 — 대조)
+    await withDb((c) => c.query(`UPDATE topic_sets SET active = (topic IN ('seoul-gu', 'kleague-team'))`));
+    const ag = host.mark();
+    host.socket.emit('game.again', {});
+    await host.waitFor(() => host.since(ag, 'game.countdownStarted').length > 0, 8000, '다시 하기(R081)');
+    host.socket.emit('game.cancelCountdown', {});
+    await sleep(400);
+    host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 2, minigameKeys: ['order', 'bingo', 'many'] });
+    await sleep(500);
+    const g2 = host.mark();
+    host.socket.emit('game.start', {});
+    await host.waitFor(() => host.since(g2, 'game.started').length > 0, 12000, '시작(R081)');
+    const gid2 = host.since(g2, 'game.started')[0].gameId;
+    await host.waitFor(() => host.since(g2, 'game.result').length > 0, 120000, '결과(R081)');
+    const keys2 = await withDb(async (c) => (await c.query(`SELECT minigame_key k FROM minigame_runs WHERE game_id = $1 ORDER BY id`, [gid2])).rows.map((x) => x.k));
+    expect('★★★ 연도 없음 · 40 미만 세트만 — 순서대로 · 빙고 빠지고 많이 말하기만(2개 · 세트 둘)', keys2, ['many', 'many']);
     for (const b of bots) {
       b.leave();
       b.disconnect();

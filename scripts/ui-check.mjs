@@ -4604,6 +4604,164 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R081 — 순서대로 · 빙고 화면 (D-338) (UICHECK_R081=1 · 묶음 r081 · docs/design/r081)
+//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 2개(순서대로 · 빙고)
+//   순서대로: 카드 번호 ①~⑤ · 다시 눌러 취소 · 공개(정답 · 연도 · 맞은 쌍 10) / 빙고: 채우기 입력 → 판 · 직접 n칸 · 호명(칸 누르기) · 칠함 · 호명 띠 · 결과 · 세 테마 · m360 4×4 넘침 0
+// =============================================================================
+async function r081Flow(browser) {
+  const H = await newPage(browser, 'R081-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'obh', '순서방장');
+  const roomId = await createRoom(H, 'R081 미니게임');
+  const G = await newPage(browser, 'R081-g', true);
+  await signUp(G, 'obg', '빙고손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'obs');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r081] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const over = (P) => P.evaluate('document.documentElement.scrollWidth - innerWidth');
+  const itemsOf = (topic) => withPg(async (c) => (await c.query(`SELECT name FROM topic_items WHERE topic = $1 AND active ORDER BY seq`, [topic])).rows.map((r) => (r.name.length > 30 ? r.name.replace(/\s*\(.*$/, '') : r.name)));
+  const stateOf = (P) => P.evaluate("(() => { const c = document.querySelector('.mg-card'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; const k = [...c.classList].find((x) => x.startsWith('mg-') && !x.startsWith('mg-phase') && x !== 'mg-card'); return `${k?.slice(3)}:${c.dataset.phase}:${document.querySelector('.mg-round')?.innerText ?? ''}`; })()");
+
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(300);
+  const picked = await selectMinigames(H, ['order', 'bingo']);
+  await sleep(300);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const done = new Set();
+  const res = { order: [], bingo: { calls: [] } };
+  const t0 = Date.now();
+  while (Date.now() - t0 < 300000) {
+    const st = await stateOf(H);
+    if (st === 'result') break;
+    if (!st || done.has(st)) {
+      await sleep(150);
+      continue;
+    }
+    done.add(st);
+    const [key, phase] = st.split(':');
+    if (key === 'order' && phase === 'rules') await snap(H, 'order-rules-pc');
+    if (key === 'order' && phase === 'play') {
+      const ids = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('[data-order-card]')].map((b) => b.dataset.orderCard))"));
+      const years = await withPg(async (c) => new Map((await c.query(`SELECT id, year FROM topic_items WHERE id = ANY($1)`, [ids])).rows.map((r) => [r.id, r.year])));
+      const right = [...ids].sort((a, b) => years.get(a) - years.get(b));
+      const first = res.order.length === 0;
+      if (first) {
+        for (const id of right.slice(0, 3)) await realClick(H, `[data-order-card="${id}"]`);
+        await sleep(200);
+        const nums = await H.evaluate("[...document.querySelectorAll('[data-order-card]')].map((b) => b.dataset.orderAt).join(',')");
+        await snap(H, 'order-play-pc');
+        await realClick(H, `[data-order-card="${right[1]}"]`);
+        await sleep(150);
+        const after = await H.evaluate("[...document.querySelectorAll('[data-order-at]')].filter((b) => b.dataset.orderAt).length");
+        res.order.push({ nums, cancelLeft: after });
+        for (const id of right.slice(1)) await realClick(H, `[data-order-card="${id}"]`);
+        await tapOn(G, `[data-order-card="${right[4]}"]`).catch(() => {});
+        await tapOn(G, `[data-order-card="${right[0]}"]`).catch(() => {});
+        await sleep(200);
+        res.gOrder = JSON.parse(await G.evaluate("JSON.stringify({ over: document.documentElement.scrollWidth - innerWidth, n: document.querySelectorAll('[data-order-card]').length, inView: [...document.querySelectorAll('[data-order-card]')].every((b) => { const r = b.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth + 1; }) })"));
+        await snap(G, 'order-play-m360');
+      } else {
+        for (const id of right) await realClick(H, `[data-order-card="${id}"]`);
+        res.order.push({});
+      }
+    }
+    if (key === 'order' && phase === 'roundResult' && !res.orderReveal) {
+      await sleep(300);
+      res.orderReveal = JSON.parse(await H.evaluate("JSON.stringify({ rows: document.querySelectorAll('.order-answer li').length, ok: document.querySelectorAll('.order-answer li.ok').length, pairs: document.querySelector('[data-order-pairs]')?.dataset.orderPairs ?? '' })"));
+      await snap(H, 'order-reveal-pc');
+      await snap(G, 'order-reveal-m360');
+      await theme(H, 'office');
+      await sleep(200);
+      await snap(H, 'order-reveal-office-pc');
+      await theme(H, 'pastel');
+    }
+    if (key === 'bingo' && phase === 'rules') await snap(H, 'bingo-rules-pc');
+    if (key === 'bingo' && phase === 'play' && st.includes('채우기')) {
+      const topic = await H.evaluate("document.querySelector('[data-topic]')?.dataset.topic ?? ''");
+      const names = await itemsOf(topic);
+      const enter = async (P, t) => {
+        await P.setInput('[data-topic-input]', t);
+        await P.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
+        await sleep(120);
+      };
+      for (const n of names.slice(0, 6)) await enter(H, n);
+      await snap(H, 'bingo-fill-pc');
+      for (const n of names.slice(6, 16)) await enter(H, n);
+      for (const n of [names[0], names[20], names[21]]) await enter(G, n);
+      await sleep(300);
+      res.bingo.fillH = await H.evaluate("[...document.querySelectorAll('[data-bingo-cell]')].filter((c) => !c.classList.contains('empty')).length");
+      res.bingo.fillG = JSON.parse(await G.evaluate("JSON.stringify({ filled: [...document.querySelectorAll('[data-bingo-cell]')].filter((c) => !c.classList.contains('empty')).length, over: document.documentElement.scrollWidth - innerWidth, board: (() => { const r = document.querySelector('[data-bingo-board]')?.getBoundingClientRect(); return r ? [Math.round(r.left), Math.round(r.right), innerWidth] : null; })() })"));
+      await snap(G, 'bingo-fill-m360');
+    }
+    if (key === 'bingo' && phase === 'roundResult' && st.includes('채우기')) {
+      await sleep(300);
+      res.bingo.fillReveal = await G.evaluate("document.querySelector('[data-bingo-mine]')?.innerText ?? ''");
+      await snap(H, 'bingo-filled-pc');
+      await snap(G, 'bingo-filled-m360');
+    }
+    if (key === 'bingo' && phase === 'play' && st.includes('호명')) {
+      await realClick(H, '[data-bingo-cell]:not([data-on="1"]):not(:disabled)').catch(() => {});
+      await tapOn(G, '[data-bingo-cell]:not([data-on="1"]):not(:disabled)').catch(() => {});
+      if (res.bingo.calls.length === 0) {
+        await sleep(200);
+        await snap(H, 'bingo-call-pc');
+        await snap(G, 'bingo-call-m360');
+      }
+    }
+    if (key === 'bingo' && phase === 'roundResult' && st.includes('호명')) {
+      await sleep(250);
+      const r = JSON.parse(await H.evaluate("JSON.stringify({ band: Number(document.querySelector('[data-bingo-band]')?.dataset.bingoBand ?? 0), on: document.querySelectorAll('[data-bingo-cell][data-on=\"1\"]').length, newB: document.querySelector('[data-bingo-new]') !== null })"));
+      res.bingo.calls.push(r);
+      if (res.bingo.calls.length === 1) {
+        await snap(H, 'bingo-reveal-pc');
+        await snap(G, 'bingo-reveal-m360');
+        await theme(G, 'office');
+        await sleep(200);
+        await snap(G, 'bingo-reveal-office-m360');
+        await theme(G, 'night');
+        await sleep(200);
+        await snap(G, 'bingo-reveal-night-m360');
+        await theme(G, 'pastel');
+      }
+    }
+    if (key === 'bingo' && phase === 'final') {
+      await sleep(300);
+      res.bingo.final = await H.evaluate("document.querySelectorAll('.mg-final li').length");
+      await snap(H, 'bingo-final-pc');
+      await snap(G, 'bingo-final-m360');
+      res.bingo.overG = await over(G);
+    }
+    await sleep(100);
+  }
+  note('순서대로', { order: res.order, reveal: res.orderReveal, g: res.gOrder });
+  note('빙고', res.bingo);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r081'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r081'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r081', 'r081.json'), JSON.stringify(rows, null, 1));
+  const o0 = res.order[0] ?? {};
+  const b = res.bingo;
+  record('★★★ R081 순서대로 — 누른 차례 ①②③ · 둘째를 다시 누르면 그것과 뒤 취소(1장 남음)', /1/.test(o0.nums ?? '') && (o0.nums ?? '').split(',').filter(Boolean).length === 3 && o0.cancelLeft === 1, JSON.stringify(o0));
+  record('★★ R081 순서대로 m360 — 카드 5 · 화면 안 · 넘침 0', res.gOrder?.n === 5 && res.gOrder.inView && res.gOrder.over <= 1, JSON.stringify(res.gOrder));
+  record('★★★ R081 순서대로 공개 — 정답 5줄 · 내 자리 다 맞음 · 맞은 쌍 10', res.orderReveal?.rows === 5 && res.orderReveal.ok === 5 && res.orderReveal.pairs === '10', JSON.stringify(res.orderReveal));
+  record('★★★ R081 빙고 채우기 — 방장 16칸 · 손님 3칸(m360 판 화면 안 · 넘침 0)', b.fillH === 16 && b.fillG?.filled === 3 && b.fillG.over <= 1 && b.fillG.board && b.fillG.board[0] >= 0 && b.fillG.board[1] <= b.fillG.board[2], JSON.stringify({ h: b.fillH, g: b.fillG }));
+  record('★★ R081 빙고 — 판 완성 뒤 "직접 채운 3칸 · 나머지 13칸은 자동"', /직접 채운 3칸/.test(b.fillReveal ?? ''), b.fillReveal ?? '');
+  record('★★★ R081 빙고 호명 — 띠 3명 · 칠한 칸이 늘어남 · 끝', b.calls.length >= 1 && b.calls[0].band === 3 && b.calls[b.calls.length - 1].on > b.calls[0].on - 1 && b.calls[0].on >= 1, JSON.stringify(b.calls.slice(0, 3)));
+  record('★★ R081 빙고 최종 — 3명 · m360 넘침 0', b.final === 3 && b.overG <= 1, JSON.stringify({ f: b.final, o: b.overG }));
+  record('★ R081 설정 — 둘 고름', picked.split(',').length === 2, picked);
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R080 — 미니게임 1차 화면 (D-330 · D-337) (UICHECK_R080=1 · 묶음 r080 · docs/design/r080)
 //   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 3개(많이 말하기 · 겹치면 무효 · 객관식 10연속)
 //   많이 말하기: 입력 ✓ / 이미 말함 / ✗ · 판 중 남의 답·참여 수 없음 · 공개(나만 · 못 말한 것) · 제보 버튼(채워진 글) · 모바일 입력
@@ -4627,7 +4785,8 @@ async function r080Flow(browser) {
   };
   const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
   const over = (P) => P.evaluate('document.documentElement.scrollWidth - innerWidth');
-  const itemsOf = (topic) => withPg(async (c) => (await c.query(`SELECT name, variants FROM topic_items WHERE topic = $1 AND active ORDER BY seq`, [topic])).rows);
+  // ★ R081 — 긴 이름(통화)은 괄호 앞만(입력칸 40자)
+  const itemsOf = (topic) => withPg(async (c) => (await c.query(`SELECT name, variants FROM topic_items WHERE topic = $1 AND active ORDER BY seq`, [topic])).rows.map((r) => ({ ...r, name: r.name.length > 30 ? r.name.replace(/\s*\(.*$/, '') : r.name })));
   const answerOf = (text) => withPg(async (c) => (await c.query(`SELECT display_answer FROM questions WHERE question_text = $1 LIMIT 1`, [text])).rows[0]?.display_answer ?? null);
   const stateOf = (P) => P.evaluate("(() => { const c = document.querySelector('.mg-card'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; const k = [...c.classList].find((x) => x.startsWith('mg-') && !x.startsWith('mg-phase') && x !== 'mg-card'); return `${k?.slice(3)}:${c.dataset.phase}:${document.querySelector('.mg-round')?.innerText ?? ''}`; })()");
   let sMg = null;
@@ -8442,6 +8601,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R081 — 순서대로 · 빙고
+  if (process.env.UICHECK_R081) {
+    await closeAllTabs(browser);
+    await r081Flow(browser);
   }
   // ★ R080 — 미니게임 1차 셋
   if (process.env.UICHECK_R080) {

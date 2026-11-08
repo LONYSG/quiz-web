@@ -33,7 +33,8 @@ export interface TopicStore {
 }
 
 let cache: TopicStore | null = null;
-const TTL_MS = 60_000;
+// ★ R081 — 검사(봇 topicsets)는 0 으로 — 세트를 바꿔 가며 연달아 본다
+const TTL_MS = Number(process.env.TOPIC_CACHE_MS ?? 60_000);
 
 export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' | 'open'; timeSec?: number | null }, items: { id: string; name: string; label?: string | null; variants?: string[]; year?: number | null }[]): TopicSet {
   const its = items.map((x) => ({ id: x.id, name: x.name, label: topicLabel(x), variants: x.variants ?? [], year: Number.isInteger(x.year) ? (x.year as number) : null }));
