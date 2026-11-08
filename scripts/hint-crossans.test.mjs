@@ -32,7 +32,7 @@ describe('crossAnswers — G033 R1 · R2 · COMMON(V034 오탐 18 중 6 · core 
     { id: 2331, norm: '압록강', answer: '압록강' }, { id: 727, norm: '미야자키하야오', answer: '미야자키 하야오' }, { id: 4102, norm: '페이커', answer: '페이커' },
     { id: 752, norm: '바로크', answer: '바로크' }, { id: 2118, norm: '기생', answer: '기생' },
   ];
-  const ids = (id, hint) => crossAnswers({ id, hint, answerNorm: 'x' }, B).map((x) => x.id);
+  const ids = (id, hint) => crossAnswers({ id, hint, answerNorm: 'x' }, B, { skip: new Set() }).map((x) => x.id); // G038: 실제 오탐 명단(crossans-skip.json)과 떼어 규칙만 본다
   it('오탐 6 을 거른다', () => {
     expect(ids(4593, '아프리카 서벌 피를 섞은 사바나와 달리 아시아 삵의 피를 이었다.')).toEqual([]);
     expect(ids(1420, "'라이온 킹'이 잇따라 크게 흥행하며 미키 마우스 회사의 손그림 애니메이션이 최고 전성기를 누린 시기다.")).toEqual(['5203']);
@@ -60,7 +60,7 @@ describe('crossAnswers — G034 COMMON 13', () => {
     { id: 6838, norm: '애니메이션', answer: '애니메이션' }, { id: 7299, norm: '고려가요', answer: '고려가요' },
     { id: 7046, norm: '피고인', answer: '피고인' }, { id: 7188, norm: '카이퍼벨트', answer: '카이퍼 벨트' },
   ];
-  const ids = (id, hint) => crossAnswers({ id, hint, answerNorm: 'x' }, B).map((x) => x.id);
+  const ids = (id, hint) => crossAnswers({ id, hint, answerNorm: 'x' }, B, { skip: new Set() }).map((x) => x.id); // G038: 실제 오탐 명단(crossans-skip.json)과 떼어 규칙만 본다
   it('갈래·일반어는 세지 않는다', () => {
     expect(ids(1420, "'라이온 킹'이 흥행하며 손그림 애니메이션이 전성기를 누린 시기다.")).toEqual([]);
     expect(ids(4510, '지은이가 밝혀진 유일한 고려가요로, 궁중 음악으로 불렸다.')).toEqual([]);
