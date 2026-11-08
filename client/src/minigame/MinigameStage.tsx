@@ -637,7 +637,8 @@ function RoundResult({
         </div>
       )}
       {/* ★ R081 — 빙고는 판(호명)마다 점수가 없다(끝난 판에서만) — 표 대신 판 · 호명 띠 · 최종 결과 */}
-      {view.key !== 'bingo' && <ol className="mg-table">
+      {/* ★ R084 — 노래가 재생 실패로 건너뛴 판은 표 없이(전원 0 · "1위" 셋이 어색하다) */}
+      {view.key !== 'bingo' && !(SONG_KEYS.has(view.key) && view.round?.reveal?.skipped === true) && <ol className="mg-table">
         {result.rows.map((r) => {
           const p = nameOf(r.accountId);
           return (

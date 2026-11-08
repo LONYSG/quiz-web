@@ -129,8 +129,9 @@ export function unlockSongAudio(): void {
 export function installSongUnlock(): void {
   if (installed) return;
   installed = true;
+  // ★ 막힌 곡(blocked)도 — 입력칸에 치거나 어디를 누르면 그 조작 안에서 다시 튼다(버튼을 못 본 사람도 소리가 난다)
   const wake = () => {
-    if (!unlocked && !state.url) unlockSongAudio();
+    if ((!unlocked && !state.url) || state.status === 'blocked') unlockSongAudio();
   };
   for (const ev of ['pointerup', 'touchend', 'click', 'keydown'] as const) window.addEventListener(ev, wake, { capture: true, passive: true });
 }

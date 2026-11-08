@@ -7736,6 +7736,8 @@ async function scenarioMgOnly() {
   await mgTopicTrio(bots, host);
   // ★★★ R081 — 순서대로 · 빙고
   await mgOrderBingo(bots, host);
+  // ★★★ R084 — 노래 둘
+  await mgSongPair(bots, host);
   for (const b of all) {
     b.leave();
     await sleep(40);
@@ -7869,6 +7871,166 @@ async function mgTopicTrio(bots, host) {
   const allTopics = [seen.many?.topic, ...seen.unique];
   expect('★★ 한 게임 안 쓴 주제 안 겹침(4)', new Set(allTopics).size, 4);
   expectTrue('★★ 결과 — 미니게임만 3/3 completed', res.mode === 'minigame' && res.minigameSeries?.done === 3 && res.endReason === 'completed', JSON.stringify({ m: res.mode, s: res.minigameSeries }));
+  for (const b of bots) {
+    b.onMinigame = null;
+    b.socket.off('minigame.feedback', fbOn.get(b));
+  }
+}
+
+// =============================================================================
+// ★★★ R084 — 노래 맞히기 · 이 노래 몇 년도? (미니게임만 2개 — mgonly 뒤에 이어서 · 같은 방 · 봇 셋)
+//   봇은 오디오를 못 튼다 → 서버 이벤트로만: 제목 · 가수 · 둘 다 · 이미 맞힘 · 오답 · 재생 실패 보고(과반 → 건너뜀) · 연도(바꾸기)
+//   정답은 quizweb_test minigame_items(game 'song' — R084 A 가 candidate 로 적재)의 payload 에서 읽는다
+//   노래 맞히기: 판1 b1 제목→가수(둘 다) · b2 가수 · b3 오답 → 제목(전원 맞힘 → 일찍 공개) = 4 · 2 · 1 / 판2 b2 · b3 실패 → 건너뜀(전원 0) /
+//     판3 b3 → b2 → b1 제목 = 1 · 2 · 3  → 합 5 · 4 · 4
+//   몇 년도: 판1 b1 정확 · b2 +3 → +1(마지막) · b3 안 냄 = 3 · 2 · 0 / 판2 실패 과반 건너뜀 / 판3 b1 −5 · b2 정확 · b3 +2 = 1 · 3 · 2
+// =============================================================================
+async function songItem(itemId) {
+  return withDb(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [itemId])).rows[0]?.payload ?? null);
+}
+async function mgSongPair(bots, host) {
+  log('\n[R084] 노래 둘 — 노래 맞히기 · 이 노래 몇 년도? (미니게임만 2개)');
+  const ag = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(ag, 'game.countdownStarted').length > 0, 8000, '다시 하기(R084)');
+  host.socket.emit('game.cancelCountdown', {});
+  await sleep(400);
+  const [b1, b2, b3] = bots;
+  const nSong = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_items WHERE game = 'song' AND active`)).rows[0].n);
+  if (nSong < 6) {
+    expectTrue('★ 노래 항목이 검사 DB 에 있어야 한다(minigame-load --game song --allow-candidate --apply)', false, `song 활성 ${nSong}`);
+    return;
+  }
+  const sub = (b, mg, input) => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input });
+  const states = [];
+  const fb = new Map(bots.map((b) => [b, []]));
+  const fbOn = new Map();
+  const during = new Map();
+  const items = new Map();
+  for (const b of bots) {
+    const h = (f) => fb.get(b).push(f);
+    fbOn.set(b, h);
+    b.socket.on('minigame.feedback', h);
+  }
+  // 아래 보낼 연도 — 정답과 겹치지 않게 · 범위(1950 ~ 올해) 안
+  const yOff = (y, d) => (y + d <= 2026 ? y + d : y - d);
+  for (const b of bots) {
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (b === host && mg) states.push(mg);
+      if (!mg || mg.phase !== 'play' || mg.spectating || !mg.round) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      void (async () => {
+        const id = mg.round.itemId;
+        const it = items.get(id) ?? (await songItem(id));
+        items.set(id, it);
+        const r = mg.roundIndex;
+        // 순서를 지키려고 사람마다 기다렸다 보낸다(기기 시간은 서버가 흐른 시간으로 자른다 — 작게 보낸다)
+        if (mg.key === 'song') {
+          if (r === 0) {
+            if (b === b1) {
+              await sleep(300);
+              sub(b, mg, { text: it.title, elapsedMs: 10 });
+              await sleep(150);
+              sub(b, mg, { text: it.title, elapsedMs: 20 }); // 이미 맞힘
+              await sleep(500);
+              sub(b, mg, { text: it.artist, elapsedMs: 30 }); // 둘 다
+            } else if (b === b2) {
+              await sleep(600);
+              sub(b, mg, { text: String(it.artistVariants?.[0] ?? it.artist).toLowerCase(), elapsedMs: 15 });
+            } else {
+              await sleep(700);
+              sub(b, mg, { text: '이건노래아님zz', elapsedMs: 18 });
+              await sleep(800);
+              during.set('song0', host.snapshot?.minigame?.submittedCount ?? -1);
+              sub(b, mg, { text: it.title, elapsedMs: 40 });
+            }
+          } else if (r === 1) {
+            if (b === b1) {
+              await sleep(300);
+              sub(b, mg, { text: it.title, elapsedMs: 10 });
+            } else {
+              await sleep(b === b2 ? 600 : 800);
+              sub(b, mg, { fail: true });
+            }
+          } else {
+            await sleep(b === b3 ? 300 : b === b2 ? 700 : 1100);
+            sub(b, mg, { text: it.title, elapsedMs: b === b3 ? 10 : b === b2 ? 20 : 30 });
+          }
+        } else if (mg.key === 'songyear') {
+          const y = it.year;
+          if (r === 0) {
+            if (b === b1) sub(b, mg, { value: y, elapsedMs: 500 });
+            else if (b === b2) {
+              sub(b, mg, { value: yOff(y, 3), elapsedMs: 500 });
+              await sleep(300);
+              sub(b, mg, { value: yOff(y, 1), elapsedMs: 800 });
+              await sleep(300);
+              sub(b, mg, { value: 1900, elapsedMs: 900 }); // 범위 밖(1950~) — 거름
+            }
+          } else if (r === 1) {
+            if (b !== b1) {
+              await sleep(300);
+              sub(b, mg, { fail: true });
+            }
+          } else sub(b, mg, { value: b === b1 ? y - 5 : b === b2 ? y : yOff(y, 2), elapsedMs: 500 });
+        }
+      })();
+    };
+  }
+  const m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 2, minigameKeys: ['song', 'songyear'] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameKeys?.join() === 'song,songyear'), 4000, '설정(노래)');
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  const gid = host.since(g, 'game.started')[0].gameId;
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 240000, '결과(노래)');
+  const res = host.since(g, 'game.result')[0].payload;
+  await sleep(500);
+  const runs = await withDb(async (c) => (await c.query(`SELECT r.id, r.minigame_key k, r.end_reason e, array_agg(d.item_id ORDER BY d.round_index) items FROM minigame_runs r JOIN minigame_rounds d ON d.run_id = r.id WHERE r.game_id = $1 GROUP BY r.id ORDER BY r.id`, [gid])).rows);
+  expectTrue('★★★ 노래 둘 한 번씩 · 3곡씩 · 끝까지', runs.length === 2 && new Set(runs.map((r) => r.k)).size === 2 && runs.every((r) => r.items.length === 3 && r.e === 'completed'), JSON.stringify(runs.map((r) => [r.k, r.items, r.e])));
+  const allItems = runs.flatMap((r) => r.items);
+  expect('★★ 같은 판 두 게임이 같은 곡을 안 냄(6곡 다름)', new Set(allItems).size, 6);
+  const pools = await withDb(async (c) => (await c.query(`SELECT item_id, payload->>'pool' p FROM minigame_items WHERE item_id = ANY($1)`, [allItems])).rows);
+  const poolOf = new Map(pools.map((x) => [x.item_id, x.p]));
+  expectTrue('★★ 한 게임 3곡이 한 pool 만은 아님', runs.every((r) => new Set(r.items.map((i) => poolOf.get(i))).size > 1), JSON.stringify(runs.map((r) => r.items.map((i) => poolOf.get(i)))));
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.id, r.login_id])));
+  const rowOf = (rows, b) => rows.find((r) => ids.get(r.accountId) === b.loginId);
+  const fbText = (b, tok, r) => fb.get(b).filter((f) => f.token === tok && f.roundIndex === r && f.result).map((f) => `${f.result}${f.part ? `:${f.part}` : ''}`);
+  // ── 노래 맞히기
+  const sTok = states.find((v) => v.key === 'song')?.token;
+  const sPlay = states.filter((v) => v.key === 'song' && v.phase === 'play' && v.round);
+  expectTrue('★★ 판 중 params = 미리듣기 주소뿐(제목 · 가수 · 그림 없음) · reveal null', sPlay.length > 0 && sPlay.every((v) => typeof v.round.params.previewUrl === 'string' && v.round.params.previewUrl.startsWith('https://') && !('title' in v.round.params) && !('artworkUrl' in v.round.params) && !v.round.reveal), JSON.stringify(sPlay[0]?.round));
+  expect('★★★ 노래 — b1 판정(나에게만): 제목 ✓ · 이미 · 가수 ✓', fbText(b1, sTok, 0), ['ok:title', 'dup:title', 'ok:artist']);
+  expect('★★ 노래 — b3 오답 → 제목 ✓ · b2 는 남의 판정을 못 받음', [fbText(b3, sTok, 0), fb.get(b2).filter((f) => f.text === '이건노래아님zz').length], [['wrong', 'ok:title'], 0]);
+  expect('★★ 노래 — 판 중 남의 진행 안 보임(submittedCount 0)', during.get('song0'), 0);
+  const sFinal = states.filter((v) => v.key === 'song' && v.phase === 'final')[0];
+  const sr = sFinal?.roundResults ?? [];
+  expect('★★★ 노래 판1 — 먼저 3 · 2 · 1 + 둘 다 1 = 4 · 2 · 1', [b1, b2, b3].map((b) => rowOf(sr[0]?.rows ?? [], b)?.points), [4, 2, 1]);
+  const sPlay0 = states.find((v) => v.key === 'song' && v.phase === 'play' && v.roundIndex === 0);
+  const sRes0 = states.find((v) => v.key === 'song' && v.phase === 'roundResult' && v.roundIndex === 0);
+  expectTrue('★★ 판1 전원 맞힘 → 30초 전에 공개(일찍)', sRes0 && sPlay0 && sRes0.phaseStartedAt - sPlay0.phaseStartedAt < 15000, String((sRes0?.phaseStartedAt ?? 0) - (sPlay0?.phaseStartedAt ?? 0)));
+  expectTrue('★★ 공개 — 제목 · 가수 · 연도 · 앨범 그림', Boolean(sRes0?.round?.reveal?.title && sRes0.round.reveal.artist && Number.isInteger(sRes0.round.reveal.year) && /^https:/.test(sRes0.round.reveal.artworkUrl ?? '')), JSON.stringify(sRes0?.round?.reveal));
+  const sRes1 = states.find((v) => v.key === 'song' && v.phase === 'roundResult' && v.roundIndex === 1);
+  expect('★★★ 노래 판2 — 재생 실패 과반(2/3) → 건너뜀 · 전원 0 · reveal.skipped', [sRes1?.round?.reveal?.skipped, sRes1?.round?.reveal?.fails, [b1, b2, b3].map((b) => rowOf(sr[1]?.rows ?? [], b)?.points).join('')], [true, 2, '000']);
+  expect('★★★ 노래 판3 — b3 · b2 · b1 순 = 1 · 2 · 3', [b1, b2, b3].map((b) => rowOf(sr[2]?.rows ?? [], b)?.points), [1, 2, 3]);
+  expect('★★★ 노래 합 5 · 4 · 4 · 공동 2위', [b1, b2, b3].map((b) => { const f = sFinal?.final?.find((x) => ids.get(x.accountId) === b.loginId); return [f?.total, f?.rank]; }), [[5, 1], [4, 2], [4, 2]]);
+  // ── 이 노래 몇 년도?
+  const yFinal = states.filter((v) => v.key === 'songyear' && v.phase === 'final')[0];
+  const yr = yFinal?.roundResults ?? [];
+  expect('★★★ 몇 년도 판1 — 오차 0 · 1(바꾼 마지막 답 · 범위 밖 거름) · 안 냄 → 3 · 2 · 0', [b1, b2, b3].map((b) => [rowOf(yr[0]?.rows ?? [], b)?.value ?? null, rowOf(yr[0]?.rows ?? [], b)?.points]), [[0, 3], [1, 2], [null, 0]]);
+  const yRes1 = states.find((v) => v.key === 'songyear' && v.phase === 'roundResult' && v.roundIndex === 1);
+  expect('★★ 몇 년도 판2 — 실패 과반 건너뜀 · 전원 0', [yRes1?.round?.reveal?.skipped, [b1, b2, b3].map((b) => rowOf(yr[1]?.rows ?? [], b)?.points).join('')], [true, '000']);
+  expect('★★★ 몇 년도 판3 — 오차 5 · 0 · 2 → 1 · 3 · 2', [b1, b2, b3].map((b) => [rowOf(yr[2]?.rows ?? [], b)?.value, rowOf(yr[2]?.rows ?? [], b)?.points]), [[5, 1], [0, 3], [2, 2]]);
+  const yPlay = states.find((v) => v.key === 'songyear' && v.phase === 'play' && v.round);
+  expectTrue('★★ 몇 년도 — 판 중 범위(1950 ~ 올해)만 · 연도 안 보냄', Boolean(yPlay && yPlay.round.params.min === 1950 && yPlay.round.params.max >= 2026 && !yPlay.round.reveal && !('year' in yPlay.round.params)), JSON.stringify(yPlay?.round?.params));
+  // ── 경험 · 결과
+  const exp = await withDb(async (c) => (await c.query(`SELECT e.minigame_key k, count(DISTINCT e.item_key)::int n FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.item_key = ANY($2) GROUP BY 1 ORDER BY 1`, [b1.loginId, allItems])).rows.map((r) => [r.k, r.n]));
+  expect('★★ 경험 — song|<id> 3 · songyear|<id> 3', exp, [['song', 3], ['songyear', 3]]);
+  expectTrue('★★ 결과 — 미니게임만 2/2 completed', res.mode === 'minigame' && res.minigameSeries?.done === 2 && res.endReason === 'completed', JSON.stringify({ m: res.mode, s: res.minigameSeries }));
   for (const b of bots) {
     b.onMinigame = null;
     b.socket.off('minigame.feedback', fbOn.get(b));

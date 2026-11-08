@@ -84,7 +84,7 @@ export function SongSound({ socket, view, serverNow }: { socket: Socket; view: M
           <Icon icon={Headphones} /> {failed ? '미리듣기를 못 불러왔어요' : st.status === 'playing' ? '듣는 중' : st.status === 'loading' ? '불러오는 중…' : early ? '소리 준비됨' : ''}
         </span>
       )}
-      {(early && !st.unlocked) || blocked ? <span className="song-sound-help dim">{blocked ? '소리가 막혔어요 — 눌러 주세요' : '소리를 켜 주세요 — 한 번만 누르면 돼요'}</span> : null}
+      {(early && !st.unlocked) || blocked ? <span className="song-sound-help dim">{blocked ? '소리가 막혔어요 — 눌러 주세요' : '한 번 누르면 소리가 나요'}</span> : null}
       <label className="song-vol">
         <Icon icon={Volume2} />
         <input

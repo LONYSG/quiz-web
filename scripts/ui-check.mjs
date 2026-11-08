@@ -4604,6 +4604,214 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R084 — 노래 둘 화면 (D-341) (UICHECK_R084=1 · 묶음 r084 · docs/design/r084)
+//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 2개(노래 맞히기 · 이 노래 몇 년도?)
+//   [▶ 듣기] 버튼 · audio 요소 src = previewUrl · 입력 · ✓ 제목/가수 칸 · 공개 카드(앨범 그림 · 표기) · 연도 입력(바꾸기) ·
+//   재생 실패(화면 audio error) → 건너뜀 · 세 테마 · m360 넘침. ★ 소리가 실제로 나는지는 검사하지 않는다(찬종 A111) — 상태만 적는다
+// =============================================================================
+async function r084Flow(browser) {
+  const H = await newPage(browser, 'R084-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'sgh', '노래방장');
+  const roomId = await createRoom(H, 'R084 노래');
+  const G = await newPage(browser, 'R084-g', true);
+  await signUp(G, 'sgg', '노래손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'sgs');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r084] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const over = (P) => P.evaluate('document.documentElement.scrollWidth - innerWidth');
+  const stateOf = (P) => P.evaluate("(() => { const c = document.querySelector('.mg-card'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; const k = [...c.classList].find((x) => x.startsWith('mg-') && !x.startsWith('mg-phase') && x !== 'mg-card'); return `${k?.slice(3)}:${c.dataset.phase}:${document.querySelector('.mg-round')?.innerText ?? ''}`; })()");
+  const itemOf = (id) => withPg(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [id])).rows[0]?.payload ?? null);
+  const audioOf = (P) => P.evaluate("JSON.stringify({ src: document.querySelector('[data-song-audio]')?.getAttribute('src') ?? null, sound: document.querySelector('[data-song-sound]')?.dataset.songSound ?? null, unlocked: document.querySelector('[data-song-sound]')?.dataset.songUnlocked ?? null, listen: !!document.querySelector('[data-song-listen]'), vol: document.querySelector('[data-song-volume]')?.value ?? null })").then((s) => JSON.parse(s));
+  const enterText = async (P, t) => {
+    await P.setInput('[data-topic-input]', t);
+    await P.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
+    await sleep(300);
+  };
+  const enterYear = async (P, y) => {
+    await P.setInput('[data-songyear-input]', String(y));
+    await P.evaluate("document.querySelector('[data-songyear-input]')?.closest('form')?.requestSubmit()");
+    await sleep(300);
+  };
+  let sMg = null;
+  S.on('minigame.state', (p) => (sMg = p.minigame));
+  const subS = (input) => S.emit('minigame.submit', { token: sMg?.token, roundIndex: sMg?.roundIndex, input });
+
+  // ── 설정 — 미니게임만 · 2개 · 노래 둘 (고르기 창 그림)
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(300);
+  await realClick(H, '[data-mg-catalog-open]');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 4000).catch(() => false);
+  await sleep(300);
+  const cat = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('.mg-cat-card')].slice(0, 2).map((c) => c.dataset.key + ':' + (c.querySelector('svg') ? 'icon' : '-')))"));
+  await snap(H, 'catalog-pc');
+  await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+  await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+  await sleep(300);
+  const picked = await selectMinigames(H, ['song', 'songyear']);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const done = new Set();
+  const res = { rules: null, play: null, reveal: null, year: null, yearReveal: null, skipped: null, themes: [], result: null };
+  const t0 = Date.now();
+  while (Date.now() - t0 < 300000) {
+    const st = await stateOf(H);
+    if (st === 'result') break;
+    if (!st || done.has(st)) {
+      await sleep(150);
+      continue;
+    }
+    done.add(st);
+    const [key, phase, roundTxt] = st.split(':');
+    const round = Number((roundTxt ?? '').split('/')[0].trim()) || 0;
+    if (key === 'song' && phase === 'rules') {
+      await sleep(300);
+      const h0 = await audioOf(H);
+      const g0 = await audioOf(G);
+      await snap(H, 'song-rules-pc');
+      await snap(G, 'song-rules-m360');
+      await realClick(H, '[data-song-listen]').catch(() => undefined);
+      await realClick(G, '[data-song-listen]').catch(() => undefined);
+      await sleep(400);
+      res.rules = { h0, g0, h1: await audioOf(H), g1: await audioOf(G) };
+    }
+    if (key === 'song' && phase === 'play') {
+      await sleep(400);
+      const id = sMg?.round?.itemId;
+      const it = id ? await itemOf(id) : null;
+      const url = sMg?.round?.params?.previewUrl ?? null;
+      if (round === 1) {
+        const a0 = { h: await audioOf(H), g: await audioOf(G) };
+        await enterText(H, '아무노래아님');
+        const wrongFb = await H.evaluate("document.querySelector('.topic-fb')?.dataset.feedback ?? ''");
+        await enterText(H, it?.title ?? '');
+        const parts1 = await H.evaluate("[...document.querySelectorAll('[data-song-part]')].map((e) => e.dataset.songPart + e.dataset.ok).join(',')");
+        await enterText(G, it?.artist ?? '');
+        const gParts = await G.evaluate("[...document.querySelectorAll('[data-song-part]')].map((e) => e.dataset.songPart + e.dataset.ok).join(',')");
+        await sleep(1500);
+        const a1 = { h: await audioOf(H), g: await audioOf(G) };
+        const submittedLine = await H.evaluate("document.querySelector('.mg-submitted') !== null");
+        await snap(H, 'song-play-pc');
+        await snap(G, 'song-play-m360');
+        res.themes.push(['song-play m360', await over(G)]);
+        await theme(G, 'office');
+        await sleep(200);
+        await snap(G, 'song-play-office-m360');
+        await theme(G, 'pastel');
+        await enterText(H, it?.artist ?? ''); // 둘 다
+        const parts2 = await H.evaluate("[...document.querySelectorAll('[data-song-part]')].map((e) => e.dataset.songPart + e.dataset.ok).join(',') + (document.querySelector('.song-both') ? ',both' : '')");
+        res.play = { url, a0, a1, wrongFb, parts1, gParts, parts2, submittedLine };
+        subS({ text: it?.title ?? '' });
+      } else {
+        await enterText(H, it?.title ?? '');
+        await enterText(G, it?.title ?? '');
+        subS({ text: it?.artist ?? '' });
+      }
+    }
+    if (key === 'song' && phase === 'roundResult' && round === 1) {
+      await sleep(900);
+      const rv = JSON.parse(await H.evaluate("JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', year: document.querySelector('[data-song-year]')?.dataset.songYear ?? '', art: (() => { const i = document.querySelector('[data-song-art]'); return i ? { w: i.naturalWidth, src: i.getAttribute('src') } : null; })(), credit: document.querySelector('.song-credit')?.innerText ?? '', mine: document.querySelector('[data-song-mine]')?.innerText ?? '', rows: [...document.querySelectorAll('.mg-table li .mg-points')].map((e) => e.innerText).join(' '), audioStill: document.querySelector('[data-song-audio]')?.getAttribute('src') ?? null })"));
+      res.reveal = rv;
+      await snap(H, 'song-reveal-pc');
+      await snap(G, 'song-reveal-m360');
+      res.themes.push(['song-reveal m360', await over(G)]);
+      for (const th of ['office', 'night']) {
+        await theme(H, th);
+        await sleep(200);
+        await snap(H, `song-reveal-${th}-pc`);
+      }
+      await theme(H, 'pastel');
+    }
+    if (key === 'songyear' && phase === 'play') {
+      await sleep(400);
+      const id = sMg?.round?.itemId;
+      const it = id ? await itemOf(id) : null;
+      const y = Number(it?.year ?? 2000);
+      if (round === 1) {
+        await enterYear(H, y + 3 > 2026 ? y - 3 : y + 3);
+        await enterYear(H, y);
+        const sent = await H.evaluate("document.querySelector('[data-songyear-sent]')?.dataset.songyearSent ?? ''");
+        await enterYear(G, 1900);
+        const gOut = await G.evaluate("document.querySelector('.songyear-stage .quiz-num-help')?.className ?? ''");
+        await enterYear(G, y - 2);
+        const count = await H.evaluate("document.querySelector('.mg-submitted')?.innerText ?? ''");
+        await snap(H, 'songyear-play-pc');
+        await snap(G, 'songyear-play-m360');
+        res.themes.push(['songyear-play m360', await over(G)]);
+        res.year = { y, sent, gOut, count };
+        subS({ value: y + 1 > 2026 ? y - 1 : y + 1 });
+      } else if (round === 2) {
+        // 재생 실패 — 손님 화면의 audio 에서 error(실제 경로) + 소켓 손님 보고 → 2/3 과반 건너뜀
+        await G.evaluate("document.querySelector('[data-song-audio]')?.dispatchEvent(new Event('error'))");
+        await sleep(400);
+        const gState = await G.evaluate("document.querySelector('[data-song-state]')?.innerText ?? ''");
+        await snap(G, 'songyear-fail-m360');
+        subS({ fail: true });
+        res.skipped = { gState };
+      } else {
+        await enterYear(H, y);
+        await enterYear(G, y);
+      }
+    }
+    if (key === 'songyear' && phase === 'roundResult') {
+      await sleep(700);
+      const rv = JSON.parse(await H.evaluate("JSON.stringify({ state: document.querySelector('[data-song-reveal]')?.dataset.songReveal ?? '', mine: document.querySelector('[data-song-mine]')?.innerText ?? '', skippedLine: document.querySelector('[data-song-skipped]')?.innerText ?? '', vals: [...document.querySelectorAll('.mg-table li .mg-value')].map((e) => e.innerText).join(' | ') })"));
+      if (round === 1) {
+        res.yearReveal = rv;
+        await snap(H, 'songyear-reveal-pc');
+        await snap(G, 'songyear-reveal-m360');
+        res.themes.push(['songyear-reveal m360', await over(G)]);
+      } else if (round === 2) {
+        res.skipped = { ...(res.skipped ?? {}), ...rv };
+        await snap(H, 'songyear-skipped-pc');
+      }
+    }
+    if (key === 'songyear' && phase === 'final') {
+      await sleep(300);
+      res.finalAudio = await audioOf(H);
+      await snap(H, 'songyear-final-pc');
+    }
+    await sleep(100);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 20000).catch(() => false);
+  await sleep(500);
+  res.result = await H.evaluate("document.querySelectorAll('.ranking li').length");
+  await snap(H, 'result-pc');
+  await snap(G, 'result-m360');
+  note('고르기 창', { cat, picked });
+  note('규칙(듣기)', res.rules);
+  note('노래 판', res.play);
+  note('노래 공개', res.reveal);
+  note('연도 판', res.year);
+  note('연도 공개', res.yearReveal);
+  note('건너뜀', res.skipped);
+  note('최종 소리', res.finalAudio);
+  note('넘침', res.themes);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r084'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r084'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r084', 'r084.json'), JSON.stringify(rows, null, 1));
+  const p = res.play;
+  record('★★ R084 고르기 창 — 맨 앞 노래 맞히기 · 이 노래 몇 년도?(아이콘) · 둘 고름', cat.join() === 'song:icon,songyear:icon' && /song/.test(picked), JSON.stringify({ cat, picked }));
+  record('★★★ R084 규칙 — 아직 안 열린 화면(m360)은 [▶ 듣기] · 누르면 열림(버튼 사라짐) · 이미 조작한 PC 는 버튼 없이 열림 · 볼륨 70', Boolean(res.rules && res.rules.g0.listen && res.rules.g0.unlocked === '0' && res.rules.g1.unlocked === '1' && !res.rules.g1.listen && (res.rules.h0.listen || res.rules.h1.unlocked === '1') && res.rules.h0.vol === '70'), JSON.stringify(res.rules).replace(/data:audio[^"]+/g, 'data:…'));
+  record('★★★ R084 노래 판 — audio src = previewUrl(PC · m360) · ✗ → ✓ 제목 · 손님 ✓ 가수 · 둘 다 +1 · 남의 진행 줄 없음', Boolean(p && p.url && p.a0.h.src === p.url && p.a0.g.src === p.url && p.wrongFb === 'wrong' && p.parts1 === 'title1,artist0' && p.gParts === 'title0,artist1' && p.parts2 === 'title1,artist1,both' && !p.submittedLine), JSON.stringify(p));
+  record('★★★ R084 노래 공개 — 앨범 그림 · 제목 · 연도 · "Apple Music 미리듣기" · 내 줄 · 공개 동안 노래 계속', Boolean(res.reveal && res.reveal.art && /300x300bb/.test(res.reveal.art.src ?? '') && res.reveal.title && /^\d{4}$/.test(res.reveal.year) && /Apple Music/.test(res.reveal.credit) && /맞힘/.test(res.reveal.mine) && res.reveal.audioStill), JSON.stringify(res.reveal));
+  record('★★★ R084 연도 판 — 바꾼 마지막 답 · 범위 밖 안내 · 낸 사람 수 줄', Boolean(res.year && Number(res.year.sent) === res.year.y && /bad/.test(res.year.gOut) && /명/.test(res.year.count)), JSON.stringify(res.year));
+  record('★★★ R084 연도 공개 — 정확 · 표에 연도(정확/±)', Boolean(res.yearReveal && /정확/.test(res.yearReveal.mine) && /정확/.test(res.yearReveal.vals)), JSON.stringify(res.yearReveal));
+  record('★★★ R084 재생 실패(audio error) → "못 불러왔어요" · 과반 → 건너뜀 줄', Boolean(res.skipped && /못 불러왔어요/.test(res.skipped.gState) && res.skipped.state === 'skipped' && /넘어가요/.test(res.skipped.skippedLine)), JSON.stringify(res.skipped));
+  record('★★ R084 최종 — 노래 멈춤(src 없음) · 결과 3명 · m360 넘침 0', Boolean(res.finalAudio && !res.finalAudio.src && res.result === 3 && res.themes.every(([, o]) => o <= 1)), JSON.stringify({ f: res.finalAudio, r: res.result, t: res.themes }));
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R083 — 캐치마인드 화면 (D-340) (UICHECK_R083=1 · 묶음 r083 · docs/design/r083)
 //   방장 PC 1280×720(1라운드 출제 — 마우스로 그림) · 손님 m360 터치(2라운드 출제 — 손가락) · 소켓 손님 1 · 2라운드
 //   설정 네 버튼 · 캔버스 + 도구(출제자만) · 채팅 줄임 · 선이 다른 화면에 · 정답 시스템 줄 · 공개 · 결과 · 세 테마 · m360
@@ -8915,6 +9123,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R084 — 노래 둘
+  if (process.env.UICHECK_R084) {
+    await closeAllTabs(browser);
+    await r084Flow(browser);
   }
   // ★ R083 — 캐치마인드
   if (process.env.UICHECK_R083) {
