@@ -26,6 +26,7 @@
 //   그러지 않으면 tick 이 밀려 "정확히 30초" 가 깨진다.
 // =============================================================================
 
+import { checkLiar } from './liar/engine.js';
 import { RULES } from '@quiz/shared';
 import { config } from './config.js';
 import { startFromCountdown } from './game/start.js';
@@ -97,6 +98,8 @@ function tick(): void {
       advanceAfterResolved(room, now);
       // ★★ R050 — 미니게임 진행 (상태 MINIGAME 에서만)
       checkMinigame(room, now);
+      // ★★★ R082 — 라이어 판 진행 (상태 LIAR 에서만)
+      checkLiar(room, now);
       checkHostTransfer(room, now);
       checkDisconnectDisplay(room, now);
       checkAway(room, now);

@@ -16,6 +16,9 @@ export interface TopicItem {
   variants: string[];
   /** ★ R081 — 연도(순서대로) */
   year: number | null;
+  /** ★ R082 — 라이어 제시어로 좋은가 · 그림으로 그릴 수 있나(캐치마인드 — R083) */
+  liar: boolean;
+  draw: boolean;
 }
 
 export interface TopicSet {
@@ -36,8 +39,8 @@ let cache: TopicStore | null = null;
 // ★ R081 — 검사(봇 topicsets)는 0 으로 — 세트를 바꿔 가며 연달아 본다
 const TTL_MS = Number(process.env.TOPIC_CACHE_MS ?? 60_000);
 
-export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' | 'open'; timeSec?: number | null }, items: { id: string; name: string; label?: string | null; variants?: string[]; year?: number | null }[]): TopicSet {
-  const its = items.map((x) => ({ id: x.id, name: x.name, label: topicLabel(x), variants: x.variants ?? [], year: Number.isInteger(x.year) ? (x.year as number) : null }));
+export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' | 'open'; timeSec?: number | null }, items: { id: string; name: string; label?: string | null; variants?: string[]; year?: number | null; liar?: boolean; draw?: boolean }[]): TopicSet {
+  const its = items.map((x) => ({ id: x.id, name: x.name, label: topicLabel(x), variants: x.variants ?? [], year: Number.isInteger(x.year) ? (x.year as number) : null, liar: x.liar === true, draw: x.draw === true }));
   return { topic: h.topic, nameKo: h.nameKo, kind: h.kind, timeSec: h.timeSec && h.timeSec > 0 ? h.timeSec : 30, items: its, matcher: buildTopicMatcher(its) };
 }
 
@@ -46,15 +49,15 @@ export async function loadTopicStore(force = false): Promise<TopicStore> {
   try {
     const [s, it] = await Promise.all([
       query<{ topic: string; name_ko: string; kind: 'closed' | 'open'; time_sec: number }>(`SELECT topic, name_ko, kind, time_sec FROM topic_sets WHERE active ORDER BY topic`),
-      query<{ id: string; topic: string; name: string; label: string | null; variants: string[]; year: number | null }>(
-        `SELECT id, topic, name, label, variants, year FROM topic_items WHERE active ORDER BY topic, seq`,
+      query<{ id: string; topic: string; name: string; label: string | null; variants: string[]; year: number | null; liar: boolean; draw: boolean }>(
+        `SELECT id, topic, name, label, variants, year, liar, draw FROM topic_items WHERE active ORDER BY topic, seq`,
       ),
     ]);
-    const by = new Map<string, { id: string; name: string; label: string | null; variants: string[]; year: number | null }[]>();
+    const by = new Map<string, { id: string; name: string; label: string | null; variants: string[]; year: number | null; liar: boolean; draw: boolean }[]>();
     for (const r of it.rows) {
       let arr = by.get(r.topic);
       if (!arr) by.set(r.topic, (arr = []));
-      arr.push({ id: r.id, name: r.name, label: r.label, variants: Array.isArray(r.variants) ? r.variants : [], year: r.year });
+      arr.push({ id: r.id, name: r.name, label: r.label, variants: Array.isArray(r.variants) ? r.variants : [], year: r.year, liar: r.liar, draw: r.draw });
     }
     cache = { sets: s.rows.map((r) => makeTopicSet({ topic: r.topic, nameKo: r.name_ko, kind: r.kind, timeSec: r.time_sec }, by.get(r.topic) ?? [])), loadedAt: Date.now() };
   } catch (err) {
@@ -85,6 +88,11 @@ export function orderTopics(store: TopicStore | null | undefined): TopicSet[] {
 /** ★ R081 — 빙고: closed · 항목 TOPIC_BINGO_MIN 이상 */
 export function bingoTopics(store: TopicStore | null | undefined): TopicSet[] {
   return (store?.sets ?? []).filter((s) => s.kind === 'closed' && s.items.length >= TOPIC_BINGO_MIN);
+}
+
+/** ★ R082 — 라이어 제시어가 있는 세트(liar 항목 1개 이상 · open/closed 둘 다) */
+export function liarTopics(store: TopicStore | null | undefined): TopicSet[] {
+  return (store?.sets ?? []).filter((s) => s.items.some((x) => x.liar));
 }
 
 /** 게임 키 → 쓸 수 있는 세트 */

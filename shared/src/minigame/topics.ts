@@ -40,7 +40,7 @@ export const TOPIC_TEXT_MAX = 40;
 /** 순서대로 — 쓰지 않는 세트(원소 발견 연도는 상식 밖 — D-338) */
 export const ORDER_EXCLUDE: readonly string[] = ['element'];
 /** 순서대로 — 세트에 서로 다른 연도가 이만큼 있어야 쓴다 */
-export const ORDER_MIN_YEARS = 8;
+export const ORDER_MIN_YEARS = 6;
 export const ORDER_CARDS = 5;
 export const ORDER_ROUNDS = 3;
 export const ORDER_PLAY_MS = 20_000;

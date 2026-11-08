@@ -74,6 +74,8 @@ export interface RoomSettings {
   minigameRounds: number;
   /** ★★★ R079 — 팀전 (기본 꺼짐 · D-329) */
   teamMode: boolean;
+  /** ★★★ R082 — 방식 'quiz' · 'minigame' · 'liar' (D-339 — minigameOnly 와 맞춰 둔다) */
+  mode: import('@quiz/shared').RoomMode;
 }
 
 /**
@@ -150,6 +152,8 @@ export interface ActiveGame {
    *   total = 할 미니게임 수 · done = 끝난 수 · totals = 계정 → 순위 점수 합(미니게임마다 참가자 수 − 최종 순위 + 1) · lastRank = 마지막 미니게임의 최종 순위(동점 가르기)
    */
   mgSeries: { total: number; done: number; totals: Map<string, number>; lastRank: Map<string, number> } | null;
+  /** ★★★ R082 — 라이어 판(방식 liar · D-339). 다른 방식이면 null */
+  liar: import('../liar/engine.js').LiarRun | null;
   /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
   resolution: Resolution | null;
   /**
@@ -499,7 +503,7 @@ export interface GameResultData {
   endedQuestionCount: number;
   totalQuestions: number;
   /** ★★★ R057 — 'minigame' = 미니게임만 판(점수 = 순위 점수 합 · 동점은 마지막 미니게임 순위) · 그때 한 수 / 정한 수 */
-  mode: 'quiz' | 'minigame';
+  mode: 'quiz' | 'minigame' | 'liar';
   minigameSeries: { done: number; total: number } | null;
   /** ★★★ R079 — 팀전 판이면 팀 점수 · 승패 · 보너스(D-335) · 아니면 null */
   teams: import('@quiz/shared').TeamResult | null;

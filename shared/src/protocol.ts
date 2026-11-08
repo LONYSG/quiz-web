@@ -18,7 +18,9 @@ export type RoomState =
   | 'PAUSED'
   | 'GAME_RESULT'
   /** ★★ R050 — 미니게임 (퀴즈 판 중간 · 로비 연습). 일시정지 대상이 아니다 (D-234) */
-  | 'MINIGAME';
+  | 'MINIGAME'
+  /** ★★★ R082 — 라이어 게임 판(방식 liar · D-339). 일시정지 대상이 아니다 */
+  | 'LIAR';
 
 /**
  * 게임 종료 사유.

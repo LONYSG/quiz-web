@@ -85,6 +85,8 @@ describe('validateRoomSettings — 형식 방어', () => {
       'minigameOnly',
       'minigameRounds',
       'minigames',
+      // ★ R082 — 방식
+      'mode',
       'questionCount',
       'startMode',
       // ★ R079 — 팀전

@@ -69,3 +69,4 @@ export * from './feedback.js';
 export * from './report.js';
 // ★★★ R079 — 팀전 1차 (D-329 · D-335)
 export * from './team.js';
+export * from './liar.js';

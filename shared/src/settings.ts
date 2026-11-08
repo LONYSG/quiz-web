@@ -12,6 +12,7 @@
 
 import { RULES } from './protocol.js';
 import { MINIGAME_KEYS, isMinigameKey, type MinigameKey } from './minigame.js';
+import { LIAR, LIAR_TEAM_BLOCK, isRoomMode, type RoomMode } from './liar.js';
 
 export type StartMode = 'instant' | 'countdown';
 
@@ -180,13 +181,19 @@ export interface RoomSettingsInput {
   minigameRounds: number;
   /** ★★★ R079 — 팀전(블루 · 레드 · D-329) — 기본 꺼짐 · 다시 하기 · 로비로 이어받음 · 퀴즈 · 미니게임만 어느 쪽과도 */
   teamMode: boolean;
+  /**
+   * ★★★ R082 — 방식(D-339): 'quiz' · 'minigame'(= 옛 minigameOnly) · 'liar'.
+   *   ★ minigameOnly 는 호환으로 남는다 — 읽을 때 mode 가 없으면 minigameOnly 로 정하고, 쓸 때는 mode === 'minigame' 과 맞춘다.
+   *   라이어의 라운드 수 = minigameRounds(2~10).
+   */
+  mode: RoomMode;
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode' | 'mode';
       message: string;
     };
 
@@ -302,6 +309,18 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     return { ok: false, field: 'teamMode', message: '팀전 설정 형식이 올바르지 않습니다.' };
   }
 
+  // ── ★★★ R082 — 방식(mode). 없으면 옛 minigameOnly 로 정한다
+  if (raw.mode !== undefined && !isRoomMode(raw.mode)) {
+    return { ok: false, field: 'mode', message: '방식 설정 형식이 올바르지 않습니다.' };
+  }
+  const mode: RoomMode = isRoomMode(raw.mode) ? raw.mode : raw.minigameOnly === true ? 'minigame' : 'quiz';
+  if (mode === 'liar' && (minigameRounds < LIAR.ROUNDS.MIN || minigameRounds > LIAR.ROUNDS.MAX)) {
+    return { ok: false, field: 'minigameRounds', message: `라이어 게임 라운드 수는 ${LIAR.ROUNDS.MIN}~${LIAR.ROUNDS.MAX} 사이여야 합니다.` };
+  }
+  if (mode === 'liar' && raw.teamMode === true) {
+    return { ok: false, field: 'teamMode', message: LIAR_TEAM_BLOCK };
+  }
+
   return {
     ok: true,
     settings: {
@@ -312,9 +331,10 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       topics,
       minigames: raw.minigames === true,
       minigameKeys,
-      minigameOnly: raw.minigameOnly === true,
+      minigameOnly: mode === 'minigame',
       minigameRounds,
       teamMode: raw.teamMode === true,
+      mode,
     },
   };
 }

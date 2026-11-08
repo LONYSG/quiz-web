@@ -97,6 +97,7 @@ import { emojiIdOfChar, isEmojiId, isSpecialEmoji, ownedEmojiIds, ownedEmojiIdsC
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
+import { liarChatGate, liarFinal, liarGuess, liarVote } from '../liar/engine.js';
 import {
   on,
   onRoom,
@@ -460,6 +461,15 @@ function registerRoomHandlers(socket: Socket): void {
 
       let rawNfc = payload.text.normalize('NFC');
 
+      // ── ★★★ R082 — 라이어 판: 설명 · 항변은 차례인 사람만 · 키워드를 담은 글은 거부(본인에게만 알림) · 차례 말은 기록하고 다음 차례로
+      if (room.state === 'LIAR') {
+        const gate = liarChatGate(room, player.accountId, rawNfc.trim());
+        if (!gate.ok) {
+          s.emit('liar.chatRejected', { reason: gate.reason, message: gate.message });
+          return;
+        }
+      }
+
       // ── ★★★ R057 (D-250) — 이모티콘 토큰: 가지지 않은 특별 토큰 · 10개 넘는 토큰을 버린다
       //   ★ 가진 목록은 메모리 사본을 쓴다(판정 경로가 기다리지 않게). 사본이 없을 때만 한 번 읽는다 — 판정 블록보다 **앞**이다
       if (/:sp:\d/.test(rawNfc)) {
@@ -692,6 +702,8 @@ function registerRoomHandlers(socket: Socket): void {
         minigameRounds: room.settings.minigameRounds,
         // ★ R079 — 팀전도
         teamMode: room.settings.teamMode,
+        // ★ R082 — 방식도(옛 클라이언트 · 봇이 minigameOnly 만 보내면 그것으로 정한다)
+        mode: 'minigameOnly' in payload && !('mode' in payload) ? undefined : room.settings.mode,
         ...payload,
       });
       if (!valid.ok) {
@@ -922,7 +934,7 @@ function registerRoomHandlers(socket: Socket): void {
     {
       requireHost: true,
       // ★ PAUSED 에서도 강제 종료할 수 있다 (T13 / 04-PROTOCOL 3장)
-      allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED', 'MINIGAME'],
+      allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED', 'MINIGAME', 'LIAR'],
     },
     ({ socket: s, room }) => {
       // ★★ R050 — 미니게임 중: 연습이면 로비로 · 퀴즈 판이면 미니게임을 닫고(보상 없음 — final 전이면) 게임을 끝낸다
@@ -984,6 +996,47 @@ function registerRoomHandlers(socket: Socket): void {
         );
       }
     },
+  );
+
+  // ── ★★★ R082 — 라이어 판 입력: 투표(사람) · 찬반 · 키워드 맞히기(라이어만). 때가 아니거나 이상한 값은 조용히 거름(liar.rejected — 본인에게만)
+  const liarReply = (s: typeof socket, r: string) => {
+    if (r !== 'ok') s.emit('liar.rejected', { reason: r });
+  };
+  onRoom<{ target: string }>(
+    socket,
+    'liar.vote',
+    {
+      allowedStates: ['LIAR'],
+      parse: (raw) => {
+        const target = parseString(parseObject(raw)?.target, 1, 32);
+        return target === null ? null : { target };
+      },
+    },
+    ({ socket: s, room, session, payload }) => liarReply(s, liarVote(room, session.accountId, payload.target)),
+  );
+  onRoom<{ yes: boolean }>(
+    socket,
+    'liar.final',
+    {
+      allowedStates: ['LIAR'],
+      parse: (raw) => {
+        const yes = parseObject(raw)?.yes;
+        return typeof yes === 'boolean' ? { yes } : null;
+      },
+    },
+    ({ socket: s, room, session, payload }) => liarReply(s, liarFinal(room, session.accountId, payload.yes)),
+  );
+  onRoom<{ text: string }>(
+    socket,
+    'liar.guess',
+    {
+      allowedStates: ['LIAR'],
+      parse: (raw) => {
+        const text = parseString(parseObject(raw)?.text, 1, 40);
+        return text === null ? null : { text };
+      },
+    },
+    ({ socket: s, room, session, payload }) => liarReply(s, liarGuess(room, session.accountId, payload.text)),
   );
 
   // ── ★★★ R050 — 로비 "미니게임 골라 하기" (방장 · 로비에서만 · 방 사람 전원 참가 · 연습 — 점수 · 포인트 없음)
@@ -1395,7 +1448,7 @@ function attachToRoom(
 
 /** 게임이 진행 중인 상태 (카운트다운 · 문제 · 정답 공개 · 일시정지) */
 function isInGame(room: Room): boolean {
-  return room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED' || room.state === 'MINIGAME';
+  return room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED' || room.state === 'MINIGAME' || room.state === 'LIAR';
 }
 
 /** 빠지는 까닭 — 자의(left) · 타의 끊김 60초(timeout) · 강퇴(kick) · 차단(ban) */

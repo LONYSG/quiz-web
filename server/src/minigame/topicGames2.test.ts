@@ -11,7 +11,7 @@ const set = (topic: string, n: number, years: (i: number) => number | null) =>
 
 describe('세트 거름', () => {
   const store = { sets: [set('yr', 10, (i) => 1900 + i), set('few', 30, (i) => (i < 7 ? 1900 + i : null)), set('element', 50, (i) => 1700 + i), set('big', 45, () => null)], loadedAt: 0 };
-  it('순서대로 = 서로 다른 연도 8 이상 · element 제외', () => expect(orderTopics(store).map((s) => s.topic)).toEqual(['yr']));
+  it('순서대로 = 서로 다른 연도 6 이상(R082) · element 제외', () => expect(orderTopics(store).map((s) => s.topic)).toEqual(['yr', 'few']));
   it('빙고 = 40 이상', () => expect(bingoTopics(store).map((s) => s.topic)).toEqual(['element', 'big']));
   it('usedTopics 는 게임끼리 같이 쓴다', () => {
     const used = new Set(['element']);

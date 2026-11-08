@@ -20,6 +20,7 @@ import { RULES, skipThreshold } from '@quiz/shared';
 import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount, deviceOf } from './registry.js';
 import { minigameView } from '../minigame/engine.js';
+import { liarView } from '../liar/engine.js';
 import type { CurrentQuestion, ExperienceRate, GameResultData, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
@@ -100,6 +101,7 @@ export interface RoomSnapshot {
   paused: PausedView | null;
   /** ★ R050 */
   minigame: import('../minigame/engine.js').MinigameView | null;
+  liar: import('../liar/engine.js').LiarView | null;
 }
 
 export interface PausedView {
@@ -307,6 +309,8 @@ export function buildSnapshot(
     paused: buildPausedView(room, viewerAccountId),
     // ★★ R050 — 미니게임 (상태 MINIGAME 에서만 — 재접속 · 중간 입장도 같은 화면)
     minigame: minigameView(room, viewerAccountId),
+    // ★★★ R082 — 라이어 판(사람마다 다름 — 시민만 키워드)
+    liar: liarView(room, viewerAccountId),
   };
 }
 

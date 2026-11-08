@@ -226,7 +226,7 @@ export interface GameResultView {
   endedQuestionCount: number;
   totalQuestions: number;
   /** ★★★ R057 — 미니게임만 판이면 'minigame'(점수 = 순위 점수 합) */
-  mode?: 'quiz' | 'minigame';
+  mode?: 'quiz' | 'minigame' | 'liar';
   minigameSeries?: { done: number; total: number } | null;
   /** ★★★ R079 — 팀전 판의 팀 점수 · 승패 · 보너스(D-335) */
   teams?: TeamResult | null;
