@@ -10,6 +10,12 @@
 
 ---
 
+## DG-076. crossans 전수 — 호스트 2,724 판정 · 덧붙임·누설 2,315 힌트 다시 쓰기 · 오탐 명단 · COMMON (G038 · 기술 판단 — 설계 브리핑 gen-next.md · CV-162 (a)+(b) 를 옮김 · DB 쓰기 · 힌트만)
+- **판정**: sonnet 조각 28 · V038 두 문장 + 경계 규칙("핵심이라도 그 문항의 답을 그대로 알려 주면 누설") · 첫 판정만 — 핵심 161 · 덧붙임 712 · 누설 1,596 · 오탐 255. 고칠 비율 85%(V038 표본 54%) — 판정자가 경계 규칙을 넓게 씀(→ V040 표본으로 확인).
+- **다시 쓰기**: 이름을 이름으로 바꾸지 않는다(G037 12 의 교훈 — 지시서) · 기계 거르기(checkHint · 새 crossans · 대상 남음 · 120자) 걸리면 한 번 더 · 그래도 걸리면 옛 힌트(5). blind 힌트만 250 = 89~90%(등급별 ≥82%) · 미스 20 은 다시 쓰고 그래도 미스 11 은 질문+힌트(9/11).
+- **오탐**: 쌍 명단 crossans-skip.json +380 · COMMON +13(3회 이상 나온 일반어). 결과 crossans 3,616 → 360쌍(306 힌트 — 핵심만 남음 · 서버 R050 shownNorm 이 뒤로 미룸).
+- 한계: GEN 재독 L 25%(브리프 "전부" 미달 — 숨기지 않음). 근거: ai-out/G038.txt.
+
 ## D-337. 미니게임 1차 구현 — 주제 세트 적재(0031 · 메뉴 1 자동) + 많이 말하기 · 겹치면 무효 · 객관식 10연속 (R080 · D-330 구현)
 - **적재**: 0031 `topic_sets`(머리 + loaded_at · active) · `topic_items`(id `<slug>-NNN` · seq · name · label · variants · tags · year · draw · liar · qid · note · active). `scripts/topics-load.mjs`(`npm run topics:load` — 기본 dry-run · `--apply`) = 파일 status **verified(옛 loaded)만** · topics-check 의 `checkTopic` 을 import 해 막힘 있는 세트는 통째로 안 넣음(§9 의 `label` 칸은 topics-check 가 아직 몰라 그 막힘 하나만 풀고 "글 · 빈칸 아님" 을 따로 본다 · timeSec 10~120) · 같은 id 갱신 · 빠졌거나 verified 가 아니게 된 세트 · 항목 active=false(지우지 않음) · **파일은 안 쓴다**(loaded = DB). `--allow-candidate` 는 DB 이름 quizweb_test · quizweb_dev(또는 QUIZ_DEV_SERVER)만 — **이름이 quizweb 이면 연결 전에 exit 2**. 메뉴 1(play.mjs)이 **빌드 뒤**(이미 켜진 서버면 migrate 뒤) `--apply` 를 플레이 트리에서 한 번 — 실패해도 서버는 뜬다(한 줄 경고). ★ 브리핑은 "migrate 뒤" 였으나 정규화 함수가 shared/dist 에 있어 빌드 뒤로 옮겼다(새 코드로 처음 켤 때 dist 가 옛것이면 import 가 깨진다).
 - **TopicStore**(server/db/topics.ts): 게임 시작 때 active 세트 · 항목을 메모리로(60초 캐시 · 표 없으면(42P01) 빈 저장소) · 세트마다 판정 맵 = name · 변형의 `normalizeAnswer` + `flexCanon` → 항목 id · 입력도 같은 두 열쇠 + 끝맺음 뗀 꼴(2자 이상) — 퀴즈가 받는 꼴은 여기서도 받는다. 쓸 수 있는 세트 = kind closed · 항목 20 이상. 고르기 = 이 게임에서 쓴 주제 제외(`minigameQuiz.usedTopics`) → 참가자 중 그 세트를 본 사람(경험 `many|topic:<slug>` 또는 `unique|topic:<slug>`)이 적은 순 → 시드. **쓸 세트가 모자라면 pickMinigameKey 가 많이 말하기 · 겹치면 무효를 거른다**(안내 없이 다른 게임 · 겹치면 무효는 3개 필요). 경험 기록 = minigame_item_experiences(키 many/unique · item_key `topic:<slug>` — 세트 단위 · 공개 순간 접속자).
