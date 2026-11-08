@@ -9530,7 +9530,9 @@ button.preset.shake {
   color: var(--accent);
 }
 .topic-form .quiz-num-input {
-  width: min(320px, 100%);
+  width: min(360px, 100%);
+  text-align: center;
+  font-size: 1.15rem;
 }
 .topic-fb {
   min-height: 1.5em;
@@ -9553,9 +9555,10 @@ button.preset.shake {
   min-width: 0;
 }
 .topic-chip {
-  padding: 1px 8px;
+  padding: 0 8px;
   border-radius: 999px;
-  background: var(--surface-2);
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--text-dim) 35%, transparent);
   font-size: 0.85rem;
   line-height: 1.5;
   word-break: keep-all;
@@ -9564,6 +9567,7 @@ button.preset.shake {
   background: var(--ok-soft);
 }
 .topic-chip.only {
+  border-color: var(--accent);
   background: var(--accent);
   color: var(--accent-ink, #fff);
   font-weight: 700;
@@ -9715,15 +9719,15 @@ button.preset.shake {
   padding-left: 1.6em;
   display: grid;
   gap: 2px;
-  max-height: 200px;
+  max-height: 132px;
   overflow-y: auto;
   font-size: 0.85rem;
   text-align: left;
 }
 .choice-answers li {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
-  justify-content: space-between;
 }
 .choice-answers li.bad .choice-a-a::after {
   content: ' ✗';
@@ -9752,7 +9756,7 @@ button.preset.shake {
     font-size: 0.95rem;
   }
   .many-people li {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
   }
   .many-people li .topic-chips {
     grid-column: 1 / -1;

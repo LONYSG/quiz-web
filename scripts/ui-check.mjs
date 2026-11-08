@@ -4604,6 +4604,191 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R080 — 미니게임 1차 화면 (D-330 · D-337) (UICHECK_R080=1 · 묶음 r080 · docs/design/r080)
+//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 3개(많이 말하기 · 겹치면 무효 · 객관식 10연속)
+//   많이 말하기: 입력 ✓ / 이미 말함 / ✗ · 판 중 남의 답·참여 수 없음 · 공개(나만 · 못 말한 것) · 제보 버튼(채워진 글) · 모바일 입력
+//   겹치면 무효: 같은 답 둘 = 겹침 · 혼자 = +1 · 객관식: 보기 넷 · 정답 표시 · 최종 10문제 정답 · 세 테마 · 넘침 0
+// =============================================================================
+async function r080Flow(browser) {
+  const H = await newPage(browser, 'R080-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'mgh', '말하기방장');
+  const roomId = await createRoom(H, 'R080 미니게임');
+  const G = await newPage(browser, 'R080-g', true);
+  await signUp(G, 'mgg', '모바일손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'mgs');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r080] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const over = (P) => P.evaluate('document.documentElement.scrollWidth - innerWidth');
+  const itemsOf = (topic) => withPg(async (c) => (await c.query(`SELECT name, variants FROM topic_items WHERE topic = $1 AND active ORDER BY seq`, [topic])).rows);
+  const answerOf = (text) => withPg(async (c) => (await c.query(`SELECT display_answer FROM questions WHERE question_text = $1 LIMIT 1`, [text])).rows[0]?.display_answer ?? null);
+  const stateOf = (P) => P.evaluate("(() => { const c = document.querySelector('.mg-card'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; const k = [...c.classList].find((x) => x.startsWith('mg-') && !x.startsWith('mg-phase') && x !== 'mg-card'); return `${k?.slice(3)}:${c.dataset.phase}:${document.querySelector('.mg-round')?.innerText ?? ''}`; })()");
+  let sMg = null;
+  S.on('minigame.state', (p) => (sMg = p.minigame));
+
+  // ── 설정 — 미니게임만 · 3개 · 셋만
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '3');
+  await sleep(300);
+  const picked = await selectMinigames(H, ['many', 'unique', 'choice']);
+  await sleep(300);
+  await snap(H, 'settings-pc');
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const done = new Set();
+  const res = { many: null, unique: [], choice: [], report: null, themes: [] };
+  const t0 = Date.now();
+  while (Date.now() - t0 < 240000) {
+    const st = await stateOf(H);
+    if (st === 'result') break;
+    if (!st || done.has(st)) {
+      await sleep(150);
+      continue;
+    }
+    done.add(st);
+    const [key, phase] = st.split(':');
+    if (key === 'many' && phase === 'rules') await snap(H, 'many-rules-pc');
+    if (key === 'many' && phase === 'play') {
+      const topic = await H.evaluate("document.querySelector('[data-topic]')?.dataset.topic ?? ''");
+      const its = await itemsOf(topic);
+      const enter = async (P, t) => {
+        await P.setInput('[data-topic-input]', t);
+        await P.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
+        await sleep(250);
+      };
+      for (const t of [its[0].name, its[1].name, its[0].name, '정답아닌말']) await enter(H, t);
+      const fbH = await H.evaluate("document.querySelector('.topic-fb')?.dataset.feedback ?? ''");
+      await enter(H, its[2].name);
+      await enter(G, its[0].name);
+      await enter(G, its[3].name);
+      S.emit('minigame.submit', { token: sMg?.token, roundIndex: 0, input: { text: its[4].name } });
+      await sleep(400);
+      const mid = JSON.parse(await H.evaluate("JSON.stringify({ count: Number(document.querySelector('[data-many-count]')?.dataset.manyCount ?? -1), chips: document.querySelectorAll('.topic-mine .topic-chip').length, submittedLine: document.querySelector('.mg-submitted') !== null, focus: document.activeElement?.matches?.('[data-topic-input]') ?? false })"));
+      const gMid = JSON.parse(await G.evaluate("JSON.stringify({ count: Number(document.querySelector('[data-many-count]')?.dataset.manyCount ?? -1), over: document.documentElement.scrollWidth - innerWidth, inputIn: (() => { const r = document.querySelector('[data-topic-input]')?.getBoundingClientRect(); return r ? r.right <= innerWidth + 1 && r.left >= 0 : false; })() })"));
+      res.many = { topic, fbH, mid, gMid };
+      await snap(H, 'many-play-pc');
+      await snap(G, 'many-play-m360');
+    }
+    if (key === 'many' && phase === 'roundResult') {
+      await sleep(400);
+      const rv = JSON.parse(await H.evaluate("JSON.stringify({ rows: [...document.querySelectorAll('[data-many-row]')].map((r) => Number(r.dataset.manyRow)), only: document.querySelectorAll('.many-reveal [data-only]').length, missed: Number(document.querySelector('[data-missed]')?.dataset.missed ?? -1), report: document.querySelector('[data-topic-report]') !== null })"));
+      res.many.rv = rv;
+      await snap(H, 'many-reveal-pc');
+      await snap(G, 'many-reveal-m360');
+      res.themes.push(['many-reveal m360', await over(G)]);
+      await theme(H, 'office');
+      await sleep(200);
+      await snap(H, 'many-reveal-office-pc');
+      await theme(H, 'night');
+      await sleep(200);
+      await snap(H, 'many-reveal-night-pc');
+      await theme(H, 'pastel');
+      await realClick(H, '[data-topic-report]');
+      await H.waitFor("document.querySelector('.qreport-modal') !== null", 3000).catch(() => false);
+      await sleep(250);
+      res.report = JSON.parse(await H.evaluate("JSON.stringify({ title: document.querySelector('.qreport-modal .pop-title')?.innerText ?? '', text: document.querySelector('.qreport-modal textarea')?.value ?? '', reason: document.querySelector('.qreport-modal [data-reason=\"answer\"]')?.getAttribute('aria-pressed') })"));
+      await snap(H, 'many-report-pc');
+      await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+      await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+      await sleep(200);
+    }
+    if (key === 'many' && phase === 'final') await snap(H, 'many-final-pc');
+    if (key === 'unique' && phase === 'play') {
+      const topic = await H.evaluate("document.querySelector('[data-topic]')?.dataset.topic ?? ''");
+      const its = await itemsOf(topic);
+      await H.setInput('[data-topic-input]', '정답아님');
+      await H.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
+      await sleep(300);
+      const bad = await H.evaluate("document.querySelector('[data-unique-mine]')?.closest('.topic-fb')?.dataset.feedback ?? ''");
+      await H.setInput('[data-topic-input]', its[0].name);
+      await H.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
+      await G.setInput('[data-topic-input]', its[0].name);
+      await G.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
+      S.emit('minigame.submit', { token: sMg?.token, roundIndex: sMg?.roundIndex, input: { text: its[1].name } });
+      await sleep(400);
+      const ok = await H.evaluate("document.querySelector('.topic-fb')?.dataset.feedback ?? ''");
+      res.unique.push({ bad, ok });
+      if (res.unique.length === 1) {
+        await snap(H, 'unique-play-pc');
+        await snap(G, 'unique-play-m360');
+      }
+    }
+    if (key === 'unique' && phase === 'roundResult') {
+      await sleep(300);
+      const states = await H.evaluate("[...document.querySelectorAll('[data-unique-state]')].map((x) => x.dataset.uniqueState).sort().join(',')");
+      res.unique[res.unique.length - 1].states = states;
+      if (res.unique.length === 1) {
+        await snap(H, 'unique-reveal-pc');
+        await snap(G, 'unique-reveal-m360');
+        await theme(G, 'office');
+        await sleep(200);
+        await snap(G, 'unique-reveal-office-m360');
+        await theme(G, 'pastel');
+      }
+    }
+    if (key === 'choice' && phase === 'play') {
+      const text = await H.evaluate("document.querySelector('.choice-q')?.innerText.replace(/^\\S+\\s/, '') ?? ''");
+      const opts = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('[data-choice]')].map((b) => b.innerText.replace(/^\\d\\s*/, '').trim()))"));
+      const q = sMg?.round?.params;
+      const ans = await answerOf(String(q?.text ?? text));
+      const idx = (q?.options ?? opts).indexOf(ans);
+      if (res.choice.length === 0) await snap(H, 'choice-play-pc');
+      await realClick(H, `[data-choice="${Math.max(0, idx)}"]`);
+      await tapOn(G, `[data-choice="${(Math.max(0, idx) + 1) % 4}"]`).catch(() => {});
+      S.emit('minigame.submit', { token: sMg?.token, roundIndex: sMg?.roundIndex, input: { choice: 0, elapsedMs: 900 } });
+      res.choice.push({ n: opts.length, idx });
+      if (res.choice.length === 1) {
+        await sleep(150);
+        await snap(G, 'choice-play-m360');
+      }
+    }
+    if (key === 'choice' && phase === 'roundResult' && res.choice.length === 1) {
+      await sleep(150);
+      await snap(H, 'choice-reveal-pc');
+      res.choiceReveal = await H.evaluate("document.querySelectorAll('[data-choice-answer]').length");
+    }
+    if (key === 'choice' && phase === 'final') {
+      await sleep(300);
+      res.choiceFinal = JSON.parse(await H.evaluate("JSON.stringify({ answers: document.querySelectorAll('[data-choice-answers] li').length, ok: document.querySelectorAll('[data-choice-answers] li.ok').length })"));
+      await snap(H, 'choice-final-pc');
+      await snap(G, 'choice-final-m360');
+      res.themes.push(['choice-final m360', await over(G)]);
+      await theme(H, 'office');
+      await sleep(200);
+      await snap(H, 'choice-final-office-pc');
+      await theme(H, 'pastel');
+    }
+    await sleep(100);
+  }
+  note('많이 말하기', res.many);
+  note('제보 창', res.report);
+  note('겹치면 무효', res.unique);
+  note('객관식', { n: res.choice.length, reveal: res.choiceReveal, final: res.choiceFinal });
+  note('넘침', res.themes);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r080'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r080'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r080', 'r080.json'), JSON.stringify(rows, null, 1));
+  const m = res.many;
+  record('★★★ R080 많이 말하기 — ✓ 셋 · 이미 말함 · ✗ · 내 칩 3 · 입력칸 포커스 유지 · 참여 수 줄 없음', m && m.mid.count === 3 && m.mid.chips === 3 && !m.mid.submittedLine && m.mid.focus && m.fbH === 'wrong', JSON.stringify(m?.mid));
+  record('★★ R080 많이 말하기 m360 — 입력칸 화면 안 · 넘침 0 · 내 개수 2', m && m.gMid.inputIn && m.gMid.over <= 1 && m.gMid.count === 2, JSON.stringify(m?.gMid));
+  record('★★★ R080 많이 말하기 공개 — 사람 셋(3 · 2 · 1) · 나만 말한 답 · 못 말한 것 · 제보 버튼', m?.rv && m.rv.rows.slice().sort().join() === '1,2,3' && m.rv.only >= 3 && m.rv.missed > 0 && m.rv.report, JSON.stringify(m?.rv));
+  record('★★★ R080 "이건 왜 정답 아냐?" — 제보 창 머리 주제 · 내 오답 채움 · 사유 "답" 켜짐', res.report && /많이 말하기/.test(res.report.title) && /정답아닌말/.test(res.report.text) && res.report.reason === 'true', JSON.stringify(res.report));
+  record('★★★ R080 겹치면 무효 — 3판 · 오답 ✗ → 바꾼 답 ✓ · 공개 겹침 둘 + 혼자 하나', res.unique.length === 3 && res.unique.every((u) => u.bad === 'wrong' && u.ok === 'ok' && u.states === 'dup,dup,win'), JSON.stringify(res.unique));
+  record('★★★ R080 객관식 — 10문항 · 보기 4 · 정답 표시 · 최종 정답 10줄(방장 다 맞힘)', res.choice.length === 10 && res.choice.every((c) => c.n === 4 && c.idx >= 0) && res.choiceReveal === 1 && res.choiceFinal?.answers === 10 && res.choiceFinal?.ok === 10, JSON.stringify({ c: res.choice.slice(0, 2), r: res.choiceReveal, f: res.choiceFinal }));
+  record('★★ R080 모바일 넘침 0(공개 · 최종)', res.themes.every(([, o]) => o <= 1), JSON.stringify(res.themes));
+  record('★ R080 설정 — 셋 고름', picked === 'many,unique,choice' || picked.split(',').length === 3, picked);
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R079 — 팀전 1차 화면 (D-329 · D-335) (UICHECK_R079=1 · 묶음 r079 · docs/design/r079)
 //   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 5 (7명) — 토글 → 두 색 칸 · 끌기 전후 · 6:1 칸 · 👥 사람 카드 팀 버튼(모바일) ·
 //   자동 배정 · 세 테마(사무실 B/R 글자) · 판 중 막대(PC · m360) · 결과 팀 줄 + 보너스 · 넘침 0(R077_OVERFLOW)
@@ -8257,6 +8442,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R080 — 미니게임 1차 셋
+  if (process.env.UICHECK_R080) {
+    await closeAllTabs(browser);
+    await r080Flow(browser);
   }
   // ★ R076 — 문제 카드 세로 흔들림(card-jitter)
   if (process.env.UICHECK_R076) {
