@@ -1,0 +1,30 @@
+import fs from 'node:fs';import pg from 'pg';
+import { crossAnswers } from '../../../../../scripts/hint-crossans.mjs';
+import { checkHint } from '../../../../../scripts/hint-check.mjs';
+process.loadEnvFile?.('.env');
+const A='data/pipeline/audit/';const J=f=>JSON.parse(fs.readFileSync(A+f,'utf8'));
+const smp=J('v040-raw/sample.json');const agg=J('g038-raw/agg.json').all;const dec=J('g038-decisions.json').items;
+const byId={};for(const v of Object.values(agg))byId[v.id]=v;
+const c=new pg.Client({connectionString:process.env.DATABASE_URL??'postgresql://quiz:quizlocal@localhost:5434/quizweb'});await c.connect();
+const prim=(await c.query(`select a.question_id::text id, a.answer_norm norm, q.display_answer answer from question_answers a join questions q on q.id=a.question_id and q.is_active where a.is_primary`)).rows;
+const normOf=new Map(prim.map(p=>[p.id,p.norm]));
+const ids=[...smp.changed,...smp.core].map(x=>x.id);
+const rows=(await c.query(`select q.id::text id,q.question_text,q.display_answer,q.explanation,q.general_hint,q.difficulty_score g,q.is_active,coalesce((select array_agg(answer_text) from question_answers x where x.question_id=q.id and not x.is_primary),'{}') variants from questions q where q.id=any($1::bigint[])`,[ids])).rows;
+const R=Object.fromEntries(rows.map(r=>[r.id,r]));await c.end();
+const mk=(x,kind)=>{const r=R[x.id];const a=byId[x.id]||{};const d=dec[x.id];
+ const hint=r.general_hint;const o={id:x.id,kind,grade:r.g,answer:r.display_answer,variants:r.variants,question:r.question_text,explanation:r.explanation};
+ if(kind==='changed'){o.before=d.before.general_hint;o.after=hint;o.dbMatchesDecision=hint===d.general_hint;o.g038cls=x.cls;o.g038why=d.why;
+   o.crossOriginal=(a.crossIn||[]).map(z=>({crossId:z.crossId,crossAnswer:z.crossAnswer,crossQuestion:(z.crossQuestion||'').slice(0,110)}));
+   o.machineAfter=crossAnswers({id:x.id,hint,answerNorm:normOf.get(x.id)},prim).map(z=>`#${z.id} ${z.answer}`);
+   o.machineBefore=crossAnswers({id:x.id,hint:o.before,answerNorm:normOf.get(x.id)},prim).map(z=>`#${z.id} ${z.answer}`);
+   const ck=checkHint({hint,answer:r.display_answer,variants:r.variants,question:r.question_text,explanation:r.explanation??''});o.checkAfter={block:ck.block,warn:ck.warn.map(w=>w.kind+':'+(w.frag||''))};}
+ else{o.hint=hint;o.g038why=a.why;o.crossOriginal=(a.crossIn||[]).map(z=>({crossId:z.crossId,crossAnswer:z.crossAnswer,crossQuestion:(z.crossQuestion||'').slice(0,110)}));
+   o.machineNow=crossAnswers({id:x.id,hint,answerNorm:normOf.get(x.id)},prim).map(z=>`#${z.id} ${z.answer}`);}
+ return o};
+const ch=smp.changed.map(x=>mk(x,'changed')),co=smp.core.map(x=>mk(x,'core'));
+console.log('mismatch',ch.filter(x=>!x.dbMatchesDecision).length,'inactive',[...ch,...co].filter(x=>!R[x.id].is_active).length);
+console.log('machineAfter nonempty',ch.filter(x=>x.machineAfter.length).length,'block',ch.filter(x=>x.checkAfter.block.length).length,'core machineNow',co.filter(x=>x.machineNow.length).length);
+const w=(n,a)=>fs.writeFileSync(A+'v040-raw/in/'+n+'.json',JSON.stringify(a,null,1));
+const g=n=>ch.filter(x=>x.grade===n);
+w('p01',g(3));w('p02',[...g(1),...g(2)]);w('p03',[...g(4),...g(5)]);w('p04',co.slice(0,81));w('p05',co.slice(81));
+console.log(['p01','p02','p03','p04','p05'].map(n=>n+':'+JSON.parse(fs.readFileSync(A+'v040-raw/in/'+n+'.json')).length).join(' '));
