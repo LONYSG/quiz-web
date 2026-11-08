@@ -39,7 +39,10 @@ export type MinigameKey =
   | 'choice'
   // ★★★ R081 — 미니게임 2차(D-338)
   | 'order'
-  | 'bingo';
+  | 'bingo'
+  // ★★★ R084 — 노래 둘(D-341 · docs/18 §10)
+  | 'song'
+  | 'songyear';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -60,8 +63,11 @@ export interface MinigameInfo {
   better: 'low' | 'high';
   /** 표시 단위 */
   unit: '초' | '%' | 'ms' | '°' | '년' | '개' | '점' | '쌍' | '줄';
-  /** ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?) */
-  scoring?: 'rank' | 'correct';
+  /**
+   * ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?)
+   *   ★ R084 'value' — 판 값이 곧 판 점수(노래 맞히기 3 · 2 · 1 + 둘 다 1)
+   */
+  scoring?: 'rank' | 'correct' | 'value';
   /**
    * ★ 최종 동점 가르기: 'none'(공동 순위 — rank 기본) · 'timeSum'(맞힌 문항 시간 합 — correct 기본).
    *   ★★ R060 (D-253 · 찬종 "점수 같으면 공동 순위") — 한 미니게임 안에서는 마지막 판 순위로 가르지 않는다(R053 'lastRank' 없앰).
@@ -80,6 +86,35 @@ export interface MinigameInfo {
 
 /** ★ 순서가 표시 순서다 */
 export const MINIGAMES: readonly MinigameInfo[] = [
+  // ★★★ R084 (D-330 ⑻ · D-341) — 노래 둘(새것 먼저) · 소리는 각 화면이 Apple 미리듣기를 스트리밍
+  {
+    key: 'song',
+    name: '노래 맞히기',
+    oneLine: '30초 듣고 제목이나 가수를 치세요! 먼저 맞힐수록 3 · 2 · 1점 — 둘 다 맞히면 +1 · 3곡',
+    controlsPc: '입력 → Enter (계속 쳐도 돼요 · 맞으면 ✓) · 소리를 켜 주세요',
+    controlsMobile: '입력 → 확인 (계속 쳐도 돼요 · 맞으면 ✓) · 소리를 켜 주세요',
+    kind: 'quiz',
+    rounds: 3,
+    estSec: 130,
+    better: 'high',
+    unit: '점',
+    fixedDecimals: 0,
+    scoring: 'value',
+    tiebreak: 'none',
+  },
+  {
+    key: 'songyear',
+    name: '이 노래 몇 년도?',
+    oneLine: '20초 듣고 노래가 나온 해를 맞혀 보세요! 가장 가까운 사람이 1등 · 3곡',
+    controlsPc: '연도 4자리 입력 → Enter (바꿔도 돼요 — 마지막) · 소리를 켜 주세요',
+    controlsMobile: '연도 4자리 입력 → 확인 (바꿔도 돼요 — 마지막) · 소리를 켜 주세요',
+    kind: 'quiz',
+    rounds: 3,
+    estSec: 100,
+    better: 'low',
+    unit: '년',
+    fixedDecimals: 0,
+  },
   // ★★★ R081 (D-330 ⑹ ⑽ · D-338) — 빙고 · 순서대로(새것 먼저)
   {
     key: 'bingo',

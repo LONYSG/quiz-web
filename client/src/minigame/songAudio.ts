@@ -1,0 +1,202 @@
+// =============================================================================
+// ★★★ R084 — 노래 미니게임 소리 (D-341 · docs/18 §10)
+//
+// ★ 각 화면이 Apple 미리듣기(previewUrl · 30초 m4a)를 **하나의 <audio> 요소**로 스트리밍한다(저장 · 캐시 안 함 · 서버는 판 시작 시각만).
+// ★ 자동 재생(iOS · 모바일): 사용자 조작 안에서 이 요소를 한 번 재생해야 그 뒤 곡을 코드로 틀 수 있다 →
+//   (1) 아무 조작(누르기 · 키)이 있을 때 요소가 비어 있으면 무음을 한 번 재생해 연다(효과음 잠금 해제와 같은 꼴 — sound.ts installAudioUnlock)
+//   (2) 그래도 막히면(NotAllowedError) 화면이 [▶ 듣기] 버튼을 보인다 — 누르면 그 자리에서 다시 튼다(같은 요소 → 그 뒤 곡은 자동)
+// ★ 볼륨은 효과음 · 배경음악 설정과 **별개**(노래는 게임 내용 — 끄면 게임이 안 된다) · 기본 70% · 이 기기에 남는다.
+// ★ 실패: 'error' 이벤트 · 재생 거절(막힘 말고) · 8초 안에 소리가 안 나면 'failed' → 화면이 서버에 한 번 보고한다(과반이면 그 곡 건너뜀).
+// =============================================================================
+
+import { useSyncExternalStore } from 'react';
+import { SONG_VOLUME_DEFAULT } from '@quiz/shared';
+
+export type SongStatus = 'idle' | 'loading' | 'playing' | 'blocked' | 'failed';
+
+const VOL_KEY = 'quiz.songVolume';
+const STALL_MS = 8_000;
+
+let el: HTMLAudioElement | null = null;
+let unlocked = false;
+let installed = false;
+let state: { url: string | null; status: SongStatus; volume: number; unlocked: boolean } = { url: null, status: 'idle', volume: readVolume(), unlocked: false };
+let stallTimer = 0;
+let wantOffsetSec = 0;
+const subs = new Set<() => void>();
+
+function readVolume(): number {
+  try {
+    const v = Number(localStorage.getItem(VOL_KEY));
+    if (localStorage.getItem(VOL_KEY) !== null && Number.isFinite(v)) return Math.max(0, Math.min(1, v));
+  } catch {
+    // 저장소가 막힌 창 — 기본값
+  }
+  return SONG_VOLUME_DEFAULT;
+}
+
+function set(patch: Partial<typeof state>): void {
+  state = { ...state, ...patch };
+  for (const f of subs) f();
+}
+
+/** 무음 WAV(0.05초) — 조작 안에서 요소를 열 때만 쓴다 */
+let silentUrl = '';
+function silent(): string {
+  if (silentUrl) return silentUrl;
+  const n = 400;
+  const buf = new Uint8Array(44 + n);
+  const dv = new DataView(buf.buffer);
+  const w = (o: number, s: string) => [...s].forEach((c, i) => dv.setUint8(o + i, c.charCodeAt(0)));
+  w(0, 'RIFF');
+  dv.setUint32(4, 36 + n, true);
+  w(8, 'WAVE');
+  w(12, 'fmt ');
+  dv.setUint32(16, 16, true);
+  dv.setUint16(20, 1, true);
+  dv.setUint16(22, 1, true);
+  dv.setUint32(24, 8000, true);
+  dv.setUint32(28, 8000, true);
+  dv.setUint16(32, 1, true);
+  dv.setUint16(34, 8, true);
+  w(36, 'data');
+  dv.setUint32(40, n, true);
+  buf.fill(128, 44);
+  let bin = '';
+  for (const b of buf) bin += String.fromCharCode(b);
+  silentUrl = `data:audio/wav;base64,${btoa(bin)}`;
+  return silentUrl;
+}
+
+/** 하나뿐인 요소(문서에 붙여 둔다 — ui-check 가 src 를 본다) */
+export function songEl(): HTMLAudioElement {
+  if (el) return el;
+  el = document.createElement('audio');
+  el.preload = 'auto';
+  el.setAttribute('data-song-audio', '');
+  el.setAttribute('playsinline', '');
+  el.style.display = 'none';
+  el.volume = state.volume;
+  el.addEventListener('playing', () => {
+    if (state.url && el?.src === state.url) {
+      clearTimeout(stallTimer);
+      set({ status: 'playing' });
+    }
+  });
+  el.addEventListener('error', () => {
+    if (state.url && el?.getAttribute('src') === state.url) fail();
+  });
+  el.addEventListener('loadedmetadata', () => {
+    if (!el || !state.url || el.getAttribute('src') !== state.url) return;
+    if (wantOffsetSec > 0.5 && Number.isFinite(el.duration) && wantOffsetSec < el.duration) {
+      try {
+        el.currentTime = wantOffsetSec;
+      } catch {
+        // 못 옮기면 처음부터
+      }
+    }
+  });
+  document.body.appendChild(el);
+  return el;
+}
+
+function fail(): void {
+  clearTimeout(stallTimer);
+  set({ status: 'failed' });
+}
+
+/** ★ 조작 안에서 부른다 — 요소를 연다(비어 있을 때만 무음 · 곡이 걸려 있으면 그 곡을 다시 튼다) */
+export function unlockSongAudio(): void {
+  const a = songEl();
+  if (state.url) {
+    void startPlay(a);
+    return;
+  }
+  if (unlocked) return;
+  a.src = silent();
+  const p = a.play();
+  void p?.then(
+    () => {
+      unlocked = true;
+      set({ unlocked: true });
+      if (!state.url) a.pause();
+    },
+    () => undefined,
+  );
+}
+
+/** 아무 조작에서나 연다(한 번 열리면 그만) — 노래 미니게임 화면이 처음 붙을 때 설치 */
+export function installSongUnlock(): void {
+  if (installed) return;
+  installed = true;
+  const wake = () => {
+    if (!unlocked && !state.url) unlockSongAudio();
+  };
+  for (const ev of ['pointerup', 'touchend', 'click', 'keydown'] as const) window.addEventListener(ev, wake, { capture: true, passive: true });
+}
+
+function startPlay(a: HTMLAudioElement): Promise<void> {
+  clearTimeout(stallTimer);
+  set({ status: 'loading' });
+  stallTimer = window.setTimeout(() => {
+    if (state.status === 'loading') fail();
+  }, STALL_MS);
+  const p = a.play();
+  if (!p) return Promise.resolve();
+  return p.then(
+    () => {
+      unlocked = true;
+      if (!state.unlocked) set({ unlocked: true });
+    },
+    (err: unknown) => {
+      clearTimeout(stallTimer);
+      const name = (err as { name?: string } | null)?.name;
+      if (name === 'NotAllowedError') set({ status: 'blocked' });
+      else if (name !== 'AbortError') fail();
+    },
+  );
+}
+
+/** 곡 틀기 — offsetSec = 판 시작부터 흐른 초(늦게 들어온 사람은 그 자리부터) */
+export function playSong(url: string, offsetSec = 0): void {
+  const a = songEl();
+  if (state.url === url && (state.status === 'playing' || state.status === 'loading' || state.status === 'failed')) return;
+  wantOffsetSec = offsetSec;
+  if (a.getAttribute('src') !== url) {
+    a.src = url;
+    set({ url });
+  } else if (state.url !== url) set({ url });
+  void startPlay(a);
+}
+
+/** 멈춤(준비 · 최종 · 나감) */
+export function stopSong(): void {
+  clearTimeout(stallTimer);
+  if (el) {
+    el.pause();
+    if (state.url) {
+      el.removeAttribute('src');
+      el.load();
+    }
+  }
+  if (state.url || state.status !== 'idle') set({ url: null, status: 'idle' });
+}
+
+export function setSongVolume(v: number): void {
+  const x = Math.max(0, Math.min(1, v));
+  if (el) el.volume = x;
+  try {
+    localStorage.setItem(VOL_KEY, String(x));
+  } catch {
+    // 저장 못 해도 지금 판은 바뀐다
+  }
+  set({ volume: x });
+}
+
+function subscribe(f: () => void): () => void {
+  subs.add(f);
+  return () => subs.delete(f);
+}
+export function useSongAudio() {
+  return useSyncExternalStore(subscribe, () => state);
+}

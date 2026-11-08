@@ -39,6 +39,7 @@ import { startLiarGame } from '../liar/engine.js';
 import { DRAW, DRAW_START_BLOCK, LIAR, LIAR_START_BLOCK } from '@quiz/shared';
 import { TOPIC_KEYS } from '../minigame/topicGames.js';
 import { isQuizMinigameKey } from '../minigame/defs.js';
+import { SONG_KEYS } from '../minigame/songGames.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
 import { setGamePlayerDevices } from '../db/minigames.js';
 import { deviceOf } from '../rooms/registry.js';
@@ -332,7 +333,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       loadExperienced(participantIds(room)),
       // ★ R052 — 퀴즈류 미니게임 문항 · 경험 (켜져 있고 퀴즈류를 골랐을 때만)
       //   ★ R080 — 주제 세트 게임(많이 말하기 · 겹치면 무효)도 같은 자리(경험 'topic:<slug>' · 주제 세트 저장소)
-      !topicMode && (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k) || TOPIC_KEYS.has(k))
+      !topicMode && (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k) || TOPIC_KEYS.has(k) || SONG_KEYS.has(k)) // ★ R084 — 이 노래 몇 년도?(songyear)도 song 항목을 쓴다
         ? Promise.all([
             loadQuizData(),
             loadAllItemExperiences(participantIds(room)),

@@ -401,6 +401,15 @@ export function submitMinigame(
   if (!parsed) return 'bad_input';
   subs.set(accountId, parsed);
   if (parsed.feedback) onFeedback?.(parsed.feedback);
+  // ★ R084 — 임시 입력으로도 판이 끝날 수 있는 게임(노래 — 전원이 하나라도 맞힘 · 접속자 과반 재생 실패)
+  const early = MINIGAME_DEFS[run.key].earlyEnd;
+  if (early) {
+    const connected = run.participants.filter((p) => room.players.get(p.accountId)?.connected).map((p) => p.accountId);
+    if (early(spec, subs, connected)) {
+      endRound(room, run, Date.now());
+      return 'ok';
+    }
+  }
   // ★ R066 (D-276) — 소수파 · 연타는 첫 임시 값에서 제출 수를 알린다(명수가 오르게)
   if (parsed.provisional && !prev && MINIGAME_DEFS[run.key].countProvisional) broadcast(room);
   if (!parsed.provisional) {
@@ -509,11 +518,13 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
     def.info.better,
   );
   const correctMode = def.info.scoring === 'correct';
+  // ★ R084 — 판 값이 곧 판 점수(노래 맞히기)
+  const valueMode = def.info.scoring === 'value';
   const rows: RoundResultRow[] = ranked.map((r) => {
     const s = subs.get(r.accountId);
     const exp = seen.has(r.accountId);
     // 맞히기 방식(어느 쪽?) — 맞히면 1점 · 순위는 빠른 순 표시만
-    const points = exp ? 0 : correctMode ? (r.value !== null ? 1 : 0) : r.points;
+    const points = exp ? 0 : correctMode ? (r.value !== null ? 1 : 0) : valueMode ? Math.max(0, Math.round(r.value ?? 0)) : r.points;
     const value = exp ? (s?.value ?? null) : r.value;
     return {
       accountId: r.accountId,

@@ -51,9 +51,13 @@ import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
 import { BingoPlay, BingoReveal, OrderPick, OrderReveal, orderBingoValueText } from './OrderBingo.js';
 import { ChoiceAnswers, ChoicePick, ChoiceReveal, ManyFinalReport, ManyReveal, ManyTalk, UniquePick, UniqueReveal, rememberRound, topicValueText } from './TopicGames.js';
 import { MINIGAME_ICONS } from './MinigameCatalog.js';
+import { SONG_KEYS, SongGuess, SongReveal, SongSound, SongYearPlay, songValueText } from './SongGames.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
 const PLAY = {
+  // ★★★ R084 — 노래 둘(D-341)
+  song: SongGuess,
+  songyear: SongYearPlay,
   // ★★★ R080 — 미니게임 1차(D-337)
   bingo: BingoPlay,
   order: OrderPick,
@@ -87,7 +91,7 @@ const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which', 
 /** 진행 중 "n / m명 …" 의 말 */
 const TOPIC_KEYS = new Set(['many', 'unique', 'choice']);
 const ORDER_BINGO = new Set(['order', 'bingo']);
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { bingo: '부름', order: '고름', many: '참여', unique: '냄', choice: '고름', cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { song: '맞힘', songyear: '냄', bingo: '부름', order: '고름', many: '참여', unique: '냄', choice: '고름', cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
 
 interface Props {
   socket: Socket;
@@ -132,7 +136,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         if (QUIZ_KEYS.has(view.key)) preloadQuizImages(view);
         if (view.preload) void preloadAll(view.preload);
         // ★ 케이크는 리듬을 들어야 한다 — 판 동안 배경음악을 끈다
-        if (view.key === 'cake' || view.key === 'reaction' || view.key === 'gauge') setMusicMode('quiet');
+        // ★ R084 — 노래 둘도(노래가 곧 게임 — 공개까지 배경음악 끔)
+        if (view.key === 'cake' || view.key === 'reaction' || view.key === 'gauge' || SONG_KEYS.has(view.key)) setMusicMode('quiet');
         else setMusicMode('minigame'); // ★ R066 — 중간에 들어온 사람(재접속 · 스냅샷)도
         sfx('mg-ready');
         break;
@@ -144,7 +149,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         if (view.key !== 'typing' && !isReportOpen()) (document.activeElement as HTMLElement | null)?.blur?.();
         break;
       case 'roundResult':
-        setMusicMode('minigame');
+        if (!SONG_KEYS.has(view.key)) setMusicMode('minigame');
         if (view.key === 'balance') sfx('mg-cut');
         else if (view.key !== 'which') sfx('mg-round');
         break;
@@ -207,6 +212,9 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         <AsOfNote view={view} />
       </header>
 
+      {/* ★★★ R084 — 노래 둘: 소리 띠(듣기 버튼 · 상태 · 볼륨) — 규칙 ~ 공개 내내 같은 자리(떼어지면 노래 멈춤) */}
+      {SONG_KEYS.has(view.key) && view.phase !== 'final' && view.phase !== 'outro' && <SongSound socket={socket} view={view} serverNow={serverNow} />}
+
       {view.phase === 'intro' && (
         <div className="mg-intro">
           <p className="mg-intro-pop">
@@ -268,7 +276,8 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
       {view.phase === 'play' && view.key !== 'typing' && <PlayView socket={socket} view={view} serverNow={serverNow} mobile={mobile} />}
 
       {/* ★ R080 — 많이 말하기는 남의 참여도 안 보인다(D-330 ⑺ "남의 개수도 안 보임") */}
-      {view.phase === 'play' && !view.spectating && view.key !== 'many' && !(view.key === 'bingo' && view.roundIndex === 0) && (
+      {/* ★ R084 — 노래 맞히기도 남의 진행이 안 보인다 */}
+      {view.phase === 'play' && !view.spectating && view.key !== 'many' && view.key !== 'song' && !(view.key === 'bingo' && view.roundIndex === 0) && (
         <p className="mg-submitted dim">
           {view.submittedCount} / {view.participants.length}명 {SUBMIT_WORD[view.key]}
         </p>
@@ -363,6 +372,10 @@ function readyDesc(view: MinigameView): string {
       return p.phase === 'fill' ? `${String(p.nameKo ?? '')} — 내 판 채우기` : `호명 ${String(p.call ?? '')}`;
     case 'many':
       return `${String(p.nameKo ?? '')} — ${String(p.timeSec ?? 30)}초 동안 최대한 많이!`;
+    case 'song':
+      return '곧 노래가 나와요 — 제목이나 가수!';
+    case 'songyear':
+      return '곧 노래가 나와요 — 몇 년도?';
     case 'unique':
       return `${String(p.nameKo ?? '')} — 남과 안 겹칠 답 하나`;
     case 'choice':
@@ -409,6 +422,8 @@ function readyDesc(view: MinigameView): string {
 /** 규칙 안내 그림 */
 function RulesArt({ k }: { k: MinigameView['key'] }) {
   switch (k) {
+    case 'song':
+    case 'songyear':
     case 'order':
     case 'bingo':
     case 'many':
@@ -533,6 +548,7 @@ function RoundResult({
     // ★ R052 — 퀴즈류는 입력 값 · % · 시간 · 맞음/틀림
     if (QUIZ_KEYS.has(view.key)) return quizValueText(view, r);
     if (TOPIC_KEYS.has(view.key)) return topicValueText(view, r);
+    if (SONG_KEYS.has(view.key)) return songValueText(view, r);
     if (ORDER_BINGO.has(view.key)) return orderBingoValueText(view, r);
     // ★ R053
     if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)} ${r.extra.win ? '· 소수파!' : ''}` : '안 고름';
@@ -563,8 +579,17 @@ function RoundResult({
     }
   };
   return (
-    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) || ORDER_BINGO.has(view.key) ? ' wide' : ''}`}>
-      {view.key === 'order' ? (
+    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) || ORDER_BINGO.has(view.key) || SONG_KEYS.has(view.key) ? ' wide' : ''}`}>
+      {SONG_KEYS.has(view.key) ? (
+        <>
+          <SongReveal view={view} mine={view.spectating ? undefined : mine} />
+          {view.round?.itemId && (
+            <p className="mg-item-id">
+              <QNo id={view.round.itemId} raw />
+            </p>
+          )}
+        </>
+      ) : view.key === 'order' ? (
         <OrderReveal view={view} mine={view.spectating ? undefined : mine} />
       ) : view.key === 'bingo' ? (
         <BingoReveal view={view} rows={result.rows} myAccountId={myAccountId} nameOf={nameOf} />

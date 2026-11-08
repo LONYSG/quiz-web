@@ -88,6 +88,7 @@ import type { TopicStore } from '../db/topics.js';
 import type { PoolQuestion } from '../db/questionPool.js';
 import { choice, many, unique } from './topicGames.js';
 import { bingo, order } from './topicGames2.js';
+import { song, songyear } from './songGames.js';
 
 export interface RoundSpec {
   /** 항목 · 패턴 키 (기록 · 퀴즈류의 경험 기록에 쓴다 — 퀴즈류는 문항 id) */
@@ -178,6 +179,11 @@ export interface MinigameDef {
   noItemExperience?: boolean;
   /** ★ R081 — 판 결과 뒤 미니게임을 여기서 끝낼까(빙고 — 한 명 빼고 전원 빙고). 없으면 판을 다 돈다 */
   isOver?(spec: RoundSpec): boolean;
+  /**
+   * ★ R084 — 입력(임시 포함)이 들어올 때마다 "이 판을 지금 끝낼까"(노래 — 전원이 하나라도 맞힘 · 접속자 과반 재생 실패).
+   *   connected = 접속 중인 참가자. true 면 엔진이 바로 판을 끝낸다(정산은 finalizeRound)
+   */
+  earlyEnd?(spec: RoundSpec, subs: ReadonlyMap<string, ParsedInput & { provisional: boolean }>, connected: readonly string[]): boolean;
   /** ★ R081 — 판을 일찍 끝낼 때 기다리지 않을 사람(빙고 — 이미 빙고한 사람은 호명하지 않는다) */
   skipWait?(spec: RoundSpec, accountId: string): boolean;
   /**
@@ -891,4 +897,4 @@ const tap: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, bingo, order, many, unique, choice, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, song, songyear, bingo, order, many, unique, choice, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };
