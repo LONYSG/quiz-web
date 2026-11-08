@@ -8,6 +8,15 @@
 
 ---
 
+## 2026-11-08 — 미니게임 1차 셋 · 주제 세트 적재 (R080, MAIN · 마이그레이션 0031 — 파일만)
+
+- [x] A 적재 — 0031 topic_sets · topic_items · `scripts/topics-load.mjs`(verified 만 · checkTopic 막힘 세트 제외 · 멱등 · active=false · 파일 안 씀 · --allow-candidate 는 test/dev 만) · `npm run topics:load` · 메뉴 1 빌드 뒤 자동 · 단위 테스트 5 · quizweb_test/dev 30 세트 — 570ed68c
+- [x] B~D 게임 — TopicStore(판정 맵 · closed ≥20 · usedTopics · 경험 topic:<slug> · 세트 없으면 안 뽑힘) · 많이 말하기 · 겹치면 무효 · 객관식 10연속(출제 풀 · 같은 중분류 보기 · 쓴 문항에 넣음 · 경험 안 남김) · 제보 버튼 · MINIGAMES 맨 앞 · 봇 mgonly +17 · topicsets 7 — e2b877e1
+- [x] E ui-check r080 8/8 · 그림 보고 고침(글 입력칸 · 칩 · 모바일 줄 · 객관식 정답 잘림 · 숫자 보기) — 2ee5a45f
+- [x] G 문서 — 07 D-337 · 01 16-R080 · 03 주제 세트 절 · 04 R080 · 10 60절 · 11 · 18 §9 적재 줄 · 13 A107 · 05 · README · R080.txt
+- 왜: 찬종 2026-11-08 "특정 주제에 관해 관련 정답을 최대한 많이 말하는 사람이 이기는 것" · ⑽ "여태 나온 아이디어는 전부 샘플로 조금씩 구현 → 친구들과 플레이" (D-330)
+- 남은 것: 실 DB 0030 · 0031 · 적재 = 찬종 메뉴 1 [1] · 체감 A106 · A107 · R081(빙고 · 순서대로 · OX)은 설계
+
 ## 2026-11-08 — V038 반영 · 재정비 2묶음 127 + crossans 보정 (G037, GEN)
 
 - **무엇을**: gen.md — V038 fix 127(질문) + flags(사실 12 · 변형 32 · 비유일 10 · 힌트 6 · 분야 3) + crossans 오탐 보정(CV-162 (c)) + V038 crossans 54 + question-check.mjs + criteria-sync HINT.

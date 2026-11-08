@@ -1026,6 +1026,21 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
 
+## ★ R080 — 바뀐 것 (D-337 · 미니게임 1차 셋 · 0031)
+
+| 항목 | 내용 |
+|------|------|
+| 미니게임 키 | `many`(많이 말하기) · `unique`(겹치면 무효) · `choice`(객관식 10연속) — `settings.minigameKeys` 기본에 포함 · MINIGAMES 맨 앞 |
+| `minigame.submit` input — many | `{ text, elapsedMs? }`(글 40자) — 몇 번이고 보낸다(늘 임시 값 · 300번 상한). 빈 글 = 거름(`minigame.rejected`) |
+| `minigame.feedback` — many (본인에게만) | `{ token, roundIndex, result: 'ok' \| 'dup' \| 'wrong', label?, text, id?, count }` — count = 지금까지 맞힌 수. 남에게는 아무것도 안 간다 · `submittedCount` 도 오르지 않는다 |
+| `minigame.submit` · feedback — unique | `{ text, elapsedMs? }` → `{ result: 'ok' \| 'wrong', label, text }`(정답 목록 안인지만) · 다시 보내면 바뀐다(마지막 것) · 제출 수는 첫 입력부터 센다(countProvisional) |
+| `minigame.submit` — choice | `{ choice: 0~3, elapsedMs }` — 한 번만 |
+| 판 params | many `{ topic, nameKo, timeSec, total }` · unique `{ topic, nameKo }` · choice `{ text, category, options[4] }` (연습은 `dummy: true`) — 정답은 안 보낸다 |
+| 판 reveal(정답 공개 때만) | many `{ nameKo, total, labels: {itemId: label}, missed: label[] }` · unique `{ nameKo }` · choice `{ answer, answerText, questionId }` |
+| 판 결과 rows[].extra | many `{ found: itemId[], wrong: text[], count, tries, only: itemId[] }` · unique `{ text, itemId, label, dup, win, valid }` · choice `{ choice, correct }` |
+| 제보 | 새 종류 없음 — `POST /api/reports` kind `question` · reasons `['answer']` · minigameKey `many` · at(연 시각) · 글 채움(화면) |
+| DB (0031) | `topic_sets` · `topic_items` — 03 "주제 세트" 절 · 적재 `npm run topics:load [-- --apply]` |
+
 ## ★ R079 — 바뀐 것 (D-335 · 팀전 1차 · 0030)
 
 | 항목 | 내용 |

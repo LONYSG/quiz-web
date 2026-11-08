@@ -392,6 +392,19 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - 팀 점수 · 승패는 저장하지 않는다 — game_players.final_score + team 으로 언제든 다시 센다. 보너스는 point_grants(위).
 - ★ 0030 없는 DB: insertGame · insertGamePlayers 가 42703 을 한 번 보면 옛 꼴로 쓰고(팀 기록 · 보너스 없이) 게임은 그대로 시작한다.
 
+## ★★★ 주제 세트 (R080 / 0031 — D-330 · D-337 · docs/18 §9)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `topic_sets.topic` | text PK | 파일 이름 slug(`seoul-gu`) |
+| `topic_sets.name_ko · kind · version · as_of · status · liar · draw · time_sec · tags · count · source · verify` | 파일 머리 그대로(kind CHECK closed/open · tags · source · verify jsonb) | status = 적재 때 파일 값(실 DB 는 verified 만) |
+| `topic_sets.loaded_at · active` | timestamptz · boolean | 마지막 적재 시각(= §9 의 "loaded" — 파일은 안 바꾼다) · 파일에서 빠졌거나 verified 가 아니면 false |
+| `topic_items.id` | text PK `<slug>-NNN` | 영구 · FK topic → topic_sets(ON DELETE CASCADE) · seq = 파일 순서 |
+| `topic_items.name · label · variants · tags · year · draw · liar · qid · note · active` | name 정본 · label 화면용(null = name) · variants · tags jsonb · year int · qid int(퀴즈 대표 정답 문항) | 판정 = name + variants(퀴즈 정규화) |
+
+- 적재 = `scripts/topics-load.mjs`(메뉴 1 이 자동) · 멱등 · 지우지 않음. 경험 기록은 새 표 없이 `minigame_item_experiences`(minigame_key many/unique · item_key `topic:<slug>`). 객관식 10연속은 표가 없다(퀴즈 문항 · 경험 기록 안 함).
+- 되돌리기: `DROP TABLE IF EXISTS topic_items; DROP TABLE IF EXISTS topic_sets;`(0031 머리) — 표가 없으면 서버는 빈 저장소로 두 게임만 뺀다.
+
 ## ★★ 근접 오답 (R058 / 0022 — D-252 · A83 (나))
 
 | 표 · 열 | 형식 | 규칙 |

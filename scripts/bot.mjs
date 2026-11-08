@@ -7890,8 +7890,9 @@ async function scenarioTopicSets() {
   r = topicsLoad(['--apply']);
   const c2 = await cnt();
   expectTrue(`★★★ verified 만 넣기 — 활성 세트 = verified 파일 수(${verified}) · 나머지는 지우지 않고 쉬게 함`, c2.s === verified && c2.all_s === files.length, JSON.stringify(c2) + ' ' + r.out.trim().split('\n').pop());
-  // ── 적재된 세트가 모자라면 많이 말하기 · 겹치면 무효는 뽑히지 않는다(안내 없이 다른 게임)
-  if (verified === 0) {
+  // ── 적재된 세트가 모자라면 많이 말하기 · 겹치면 무효는 뽑히지 않는다(안내 없이 다른 게임) — 파일 상태와 무관하게 검사 DB 에서 전부 쉬게 하고 본다
+  await withDb((c) => c.query(`UPDATE topic_sets SET active = false`));
+  {
     const { bots, host } = await mgRoom(2, 'R080 주제 없음');
     for (const b of bots) {
       b.__d = new Set();
@@ -7916,7 +7917,7 @@ async function scenarioTopicSets() {
       b.leave();
       b.disconnect();
     }
-  } else log(`  (verified ${verified} 세트가 있어 "세트 0" 확인은 건너뜀)`);
+  }
   r = topicsLoad(['--apply', '--allow-candidate']);
   const c3 = await cnt();
   expect('★★ 되돌림 — 다시 전부(봇 · ui-check 용)', c3.s, files.length);
