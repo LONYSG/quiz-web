@@ -1,0 +1,114 @@
+#!/usr/bin/env node
+// =============================================================================
+// G036 — 미니게임 "주제 세트" 검사 (docs/18 §9 형식 · D-330)
+//   data/minigame/topics/<slug>.json 전부(또는 인자로 준 파일)를 본다.
+//   막힘(error): 머리 칸 · 항목 칸 · id 꼴(<slug>-NNN · 001 부터 이어서) · count = items.length
+//                · 세트 안 유일성(name 정규화 겹침 · 변형이 다른 항목의 name/변형과 겹침) · 변형 특수문자
+//                · open 수(60~120) · open 세트를 closed 로 표시하지 않음
+//   경고(warn): 변형이 제 name 과 정규화로 같음(죽은 변형) · 라틴 변형(§9 게이트 예외 — 사람·작품 이름만) 수
+//                · closed 수가 20 미만 / 400 넘음(§9 의 50~250 은 기준 · 주제마다 공식 목록 전부가 원칙)
+//   판정 꼴은 퀴즈와 같다: flexCanon(괄호 · 관사 · 가운뎃점 지움 → normalizeAnswer)
+//   --fill-qid : 활성 퀴즈 대표 정답(정규화 일치)으로 qid 를 채워 파일에 쓴다(DB 읽기만)
+//   --json     : 결과를 JSON 으로
+// 사용: node scripts/topics-check.mjs [files…] [--fill-qid] [--json]
+// =============================================================================
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { flexCanon, normalizeAnswer } from '../shared/dist/index.js';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const DIR = path.join(ROOT, 'data/minigame/topics');
+const args = process.argv.slice(2);
+const FILL = args.includes('--fill-qid');
+const JSONOUT = args.includes('--json');
+let files = args.filter((a) => !a.startsWith('--'));
+if (!files.length) files = existsSync(DIR) ? readdirSync(DIR).filter((f) => f.endsWith('.json')).sort().map((f) => path.join(DIR, f)) : [];
+
+const HEAD = ['topic', 'nameKo', 'kind', 'version', 'asOf', 'createdRound', 'status', 'source', 'liar', 'draw', 'timeSec', 'tags', 'count', 'items', 'verify'];
+const ITEM_OK = new Set(['id', 'name', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note']);
+const STATUS = new Set(['candidate', 'verified', 'rejected', 'loaded']);
+const SPECIAL = /[^\p{L}\p{N} .·'\-&:!?]/u; // 변형에 허용: 공백 · 마침표 · 가운뎃점 · 따옴표 · 하이픈 · & · : · ! · ? (판정이 지우거나 정규화가 다룬다)
+const LATIN = /[A-Za-z]/;
+const HANGUL = /[가-힣]/;
+export const canon = (s) => flexCanon(String(s ?? ''));
+
+export function checkTopic(t, file) {
+  const err = []; const warn = []; const stat = { latinVariants: 0, deadVariants: 0 };
+  const slug = path.basename(file, '.json');
+  for (const k of HEAD) if (!(k in t)) err.push(`머리 칸 없음: ${k}`);
+  if (t.topic !== slug) err.push(`topic(${t.topic}) ≠ 파일 이름(${slug})`);
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) err.push(`slug 꼴: ${slug}`);
+  if (!['closed', 'open'].includes(t.kind)) err.push(`kind: ${t.kind}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(t.asOf ?? '')) err.push(`asOf: ${t.asOf}`);
+  if (!STATUS.has(t.status)) err.push(`status: ${t.status}`);
+  if (!Array.isArray(t.source) || !t.source.length || t.source.some((s) => !s.url || !s.fetchedAt)) err.push('source: [{url, note, fetchedAt}] 하나 이상');
+  for (const k of ['liar', 'draw']) if (typeof t[k] !== 'boolean') err.push(`${k}: boolean`);
+  if (typeof t.timeSec !== 'number') err.push('timeSec: number');
+  if (!Array.isArray(t.tags)) err.push('tags: []');
+  const items = Array.isArray(t.items) ? t.items : [];
+  if (t.count !== items.length) err.push(`count ${t.count} ≠ items ${items.length}`);
+  if (t.kind === 'open' && (items.length < 60 || items.length > 120)) err.push(`open 수 ${items.length}(60~120)`);
+  if (t.kind === 'closed' && (items.length < 20 || items.length > 400)) warn.push(`closed 수 ${items.length}(기준 50~250 · 공식 목록 전부가 원칙)`);
+  const byName = new Map(); const byVar = new Map();
+  items.forEach((it, i) => {
+    const want = `${slug}-${String(i + 1).padStart(3, '0')}`;
+    if (it.id !== want) err.push(`id ${it.id} — 기대 ${want}`);
+    for (const k of Object.keys(it)) if (!ITEM_OK.has(k)) err.push(`${it.id}: 모르는 칸 ${k}`);
+    if (typeof it.name !== 'string' || !it.name.trim()) err.push(`${it.id}: name`);
+    if (!Array.isArray(it.variants)) err.push(`${it.id}: variants []`);
+    if (!Array.isArray(it.tags)) err.push(`${it.id}: tags []`);
+    for (const k of ['draw', 'liar']) if (typeof it[k] !== 'boolean') err.push(`${it.id}: ${k} boolean`);
+    if (!(it.qid === null || Number.isInteger(it.qid))) err.push(`${it.id}: qid null|정수`);
+    if ('year' in it && !Number.isInteger(it.year)) err.push(`${it.id}: year 정수`);
+    const n = canon(it.name);
+    if (!n) err.push(`${it.id}: name 정규화가 빔`);
+    if (byName.has(n)) err.push(`유일성: name 겹침 ${it.id} '${it.name}' = ${byName.get(n)}`); else byName.set(n, it.id);
+    for (const v of it.variants ?? []) {
+      if (typeof v !== 'string' || !v.trim()) { err.push(`${it.id}: 빈 변형`); continue; }
+      if (SPECIAL.test(v)) err.push(`${it.id}: 변형 특수문자 '${v}'`);
+      if (LATIN.test(v) && !HANGUL.test(v)) stat.latinVariants++;
+      const c = canon(v);
+      if (c === n) { stat.deadVariants++; warn.push(`${it.id}: 죽은 변형 '${v}'(name 과 같음)`); continue; }
+      if (byVar.has(c) && byVar.get(c) !== it.id) err.push(`유일성: 변형 겹침 '${v}' ${it.id} ↔ ${byVar.get(c)}`);
+      byVar.set(c, it.id);
+    }
+  });
+  for (const [c, id] of byVar) if (byName.has(c) && byName.get(c) !== id) err.push(`유일성: ${id} 의 변형이 ${byName.get(c)} 의 name 과 같음`);
+  if (t.kind === 'open' && t.topic && items.some((it) => it.liar === false && it.draw === false)) warn.push('open 인데 liar · draw 둘 다 false 인 항목이 있음');
+  stat.items = items.length; stat.liar = items.filter((x) => x.liar).length; stat.draw = items.filter((x) => x.draw).length; stat.qid = items.filter((x) => x.qid != null).length;
+  return { file: slug, kind: t.kind, err, warn, stat };
+}
+
+async function fillQid(list) {
+  const pg = (await import('pg')).default;
+  process.loadEnvFile?.(path.join(ROOT, '.env'));
+  const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
+  try {
+    const rows = (await c.query(`select q.id::int id, q.display_answer from questions q where q.is_active order by q.id`)).rows;
+    const m = new Map(); for (const r of rows) { const k = normalizeAnswer(r.display_answer); if (!m.has(k)) m.set(k, r.id); }
+    for (const { file, t } of list) {
+      let n = 0; for (const it of t.items) { const q = m.get(normalizeAnswer(it.name)) ?? null; if (it.qid !== q) { it.qid = q; n++; } }
+      writeFileSync(file, JSON.stringify(t, null, 1) + '\n');
+      if (!JSONOUT) console.log(`[qid] ${path.basename(file)} 바꿈 ${n} · 매핑 ${t.items.filter((x) => x.qid != null).length}`);
+    }
+  } finally { await c.end(); }
+}
+
+if (process.argv[1]?.replace(/\\/g, '/').endsWith('scripts/topics-check.mjs')) {
+  const list = files.map((f) => ({ file: f, t: JSON.parse(readFileSync(f, 'utf8')) }));
+  if (FILL) await fillQid(list);
+  const res = list.map(({ file, t }) => checkTopic(t, file));
+  if (JSONOUT) console.log(JSON.stringify(res, null, 1));
+  else {
+    for (const r of res) {
+      console.log(`${r.err.length ? '★' : 'ok'} ${r.file} [${r.kind}] 항목 ${r.stat.items} · liar ${r.stat.liar} · draw ${r.stat.draw} · qid ${r.stat.qid} · 라틴 변형 ${r.stat.latinVariants} · 경고 ${r.warn.length}`);
+      for (const e of r.err) console.log('   막힘', e);
+      for (const w of r.warn.slice(0, 5)) console.log('   경고', w);
+      if (r.warn.length > 5) console.log(`   경고 … 외 ${r.warn.length - 5}`);
+    }
+    const bad = res.filter((r) => r.err.length).length;
+    console.log(`[topics-check] 세트 ${res.length} · 막힘 있는 세트 ${bad} · 항목 ${res.reduce((a, r) => a + r.stat.items, 0)}`);
+  }
+  if (res.some((r) => r.err.length)) process.exitCode = 1;
+}
