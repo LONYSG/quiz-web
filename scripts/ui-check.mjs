@@ -4906,7 +4906,7 @@ async function r082Flow(browser) {
   note('결과', result);
   if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082'), { recursive: true });
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082', 'r082.json'), JSON.stringify(rows, null, 1));
-  record('★★★ R082 설정 — 방식 세 버튼(라이어 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김 · 라운드 2', setting.modes === 'quiz,minigame,liar*' && setting.note && !setting.quizRows && setting.team === true && setting.rounds === '2', JSON.stringify(setting));
+  record('★★★ R082 설정 — 방식 세 버튼(라이어 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김 · 라운드 2', ['quiz,minigame,liar*', 'quiz,minigame,liar*,draw'].includes(setting.modes) && setting.note && !setting.quizRows && setting.team === true && setting.rounds === '2', JSON.stringify(setting));
   record('★★★ R082 배정 — 주제 · 내 카드(시민 = 키워드 / 라이어 = 카드) · m360 넘침 0', res.assign && res.assign.topic && (res.assign.me === 'liar' ? res.assign.kw === null : !!res.assign.kw) && res.assignG?.me && res.assignG.over <= 1, JSON.stringify({ a: res.assign, g: res.assignG }));
   record('★★ R082 설명 — 차례 아닌 채팅은 알림 "○○ 님 차례예요"', /차례예요/.test(res.notice ?? ''), res.notice ?? '');
   record('★★★ R082 투표 — 사람 카드 3(나 빼고) · m360 3 · 고른 카드 표시', res.vote?.n === 3 && res.vote.gN === 3 && res.vote.gOver <= 1 && !!res.picked, JSON.stringify({ v: res.vote, p: res.picked }));

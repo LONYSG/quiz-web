@@ -1026,6 +1026,19 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
 
+## ★ R083 — 바뀐 것 (D-340 · 캐치마인드 · 0033)
+
+| 항목 | 내용 |
+|------|------|
+| 설정 `mode` | `'draw'` 더함 — 라운드 2~10 · teamMode 같이 `BAD_REQUEST` |
+| 방 상태 | `DRAW` 더함 · `game.started` · `game.result` mode 'draw' |
+| `game.start` 거부 | 1명 "캐치마인드는 2명부터 할 수 있어요." · 제시어 0 |
+| `draw.state` (S→C · 사람마다) | `{ state, draw: DrawView \| null }` — round · rounds · phase(draw · reveal) · phaseStartedAt/EndsAt · topic · nameKo · keyword(출제자 · 공개 뒤만) · drawer · amDrawer · spectating · participants · solved[{accountId, ms}] · mySolved · canReroll · strokes[{id, color, width, pts}] · scores(공개 때). 스냅샷 `draw` 같은 꼴(늦게 들어온 사람은 선 전부) |
+| `draw.stroke` (C→S 출제자 · S→C 전원) | C→S `{ id, color('#111111' \| '#e5383b' \| '#2563eb' \| '#16a34a' \| 'erase'), width(1~60), pts: [x, y, …] 0~1000 정수 · 조각 ≤ 400점 }` — 같은 id 는 이어 붙임 · S→C `{ round, id, color, width, pts(이번 조각) }` |
+| `draw.clear` · `draw.reroll` (C→S 출제자) | `{}` — 지우기 → S→C `draw.clear { round }` · 다른 제시어(10초 · 선 없음 · 1회) → `draw.state` |
+| `chat.send` (DRAW) | 맞힌 정답은 채팅으로 안 나가고 시스템 줄 · 출제자 키워드 · 글자 수 힌트 / 맞힌 사람 · 구경꾼 키워드 → 본인에게 `draw.chatRejected { reason: 'keyword' \| 'length_hint', message }` |
+| 거름 | 출제자 아님 · 때 아님 · 이상한 점 → 본인에게 `draw.rejected { reason }` |
+
 ## ★ R082 — 바뀐 것 (D-339 · 방식 · 라이어 · 0032)
 
 | 항목 | 내용 |

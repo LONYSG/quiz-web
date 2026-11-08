@@ -416,6 +416,15 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 
 - 경험: `minigame_item_experiences`(minigame_key 'liar' · item_key = topic_items.id · run_id NULL). 점수는 game_players.final_score(포인트 아님).
 
+## ★★★ 캐치마인드 (R083 / 0033 — D-340)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `games.mode` | CHECK + **'draw'** | |
+| `draw_rounds` | id · game_id(UNIQUE(game_id, round)) · round · drawer_account_id · topic · item_id · keyword · rerolled · strokes_count · participants · solved(jsonb [{accountId, ms}]) · outcome(all · some · none) · scores · created_at | 그림 하나 한 행 · 그림(선 좌표)은 저장 안 함 |
+
+- 경험: minigame_item_experiences('draw' · 항목 id · run_id NULL).
+
 ## ★★ 근접 오답 (R058 / 0022 — D-252 · A83 (나))
 
 | 표 · 열 | 형식 | 규칙 |
