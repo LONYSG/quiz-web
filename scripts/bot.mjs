@@ -8481,6 +8481,196 @@ async function scenarioEmoji() {
   return checkSummary();
 }
 
+// =============================================================================
+// ★★★ R079 — 팀전 1차 (D-329 · D-335): 토글 · 자동 배정 · 팀 바꾸기 권한 · 시작 조건 · 중간 입장 · 결과 teams · 보너스 point_grants · 멱등 · 다시 하기
+// =============================================================================
+async function scenarioTeam() {
+  log('시나리오 team — ★★★ 팀전 1차 (R079)');
+  await clearExperiences(PREFIX);
+  const sh = await mgShared();
+  const bots = await makeBots(4);
+  const [host, b2, b3, b4] = bots;
+  for (const b of bots) await b.connect();
+  host.createRoom('R079 팀전');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  const err = (bot, m) => { const e = bot.since(m, 'error')[0]; return e ? { ...e, message: `${e.message ?? ''} ${e.detail ?? ''}` } : null; };
+  const teamsOf = (bot) => Object.fromEntries((bot.snapshot?.players ?? []).map((p) => [p.accountId, p.team ?? null]));
+  const idOf = (b) => b.snapshot.me.accountId;
+
+  // ── [1] 혼자면 켜지지 않는다
+  let m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, teamMode: true });
+  await sleep(300);
+  expectTrue('★ 혼자 팀전 켜기 → BAD_REQUEST(2명 이상)', err(host, m)?.code === 'BAD_REQUEST' && /2명/.test(err(host, m)?.message ?? ''), JSON.stringify(err(host, m)));
+  for (const b of [b2, b3, b4]) {
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+  }
+  await sleep(300);
+  expectTrue('★ 팀전 꺼짐 — 스냅샷 team 전부 null', Object.values(teamsOf(host)).every((t) => t === null), JSON.stringify(teamsOf(host)));
+
+  // ── [2] 켜면 joinOrder 번갈아(블루부터)
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, teamMode: true });
+  await host.waitFor(() => Object.values(teamsOf(host)).every((t) => t !== null), 4000, '자동 배정');
+  const ids = bots.map(idOf);
+  expect('★★★ 켜는 순간 자동 배정 2:2 — 입장 순서 블루 · 레드 · 블루 · 레드', ids.map((id) => teamsOf(host)[id]), ['blue', 'red', 'blue', 'red']);
+  await b4.waitFor(() => b4.snapshot.players.every((p) => p.team), 3000, '손님 화면 팀');
+  expectTrue('★ 설정 teamMode true · 손님 스냅샷에도 팀', host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.teamMode === true), '');
+
+  // ── [3] 한 팀을 비우면 시작 거부 → 되돌림
+  host.socket.emit('lobby.setTeam', { accountId: ids[1], team: 'blue' });
+  host.socket.emit('lobby.setTeam', { accountId: ids[3], team: 'blue' });
+  await host.waitFor(() => Object.values(teamsOf(host)).every((t) => t === 'blue'), 4000, '블루로 몰기');
+  m = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(500);
+  expectTrue('★★ 한 팀이 비면 game.start 거부 + "두 팀에 한 명 이상"', err(host, m)?.code === 'BAD_REQUEST' && /두 팀에 한 명 이상/.test(err(host, m)?.message ?? '') && host.snapshot.room.state === 'LOBBY', JSON.stringify(err(host, m)));
+  host.socket.emit('lobby.autoTeams', {});
+  await host.waitFor(() => teamsOf(host)[ids[1]] === 'red' && teamsOf(host)[ids[3]] === 'red', 4000, '자동 배정 다시');
+  expect('★★ 자동 배정 다시 = 같은 결과(결정적)', ids.map((id) => teamsOf(host)[id]), ['blue', 'red', 'blue', 'red']);
+
+  // ── [4] 손님 — 자기 팀 OK · 남의 팀 BAD_REQUEST · 자동 배정 NOT_HOST
+  m = b3.mark();
+  b3.socket.emit('lobby.setTeam', { accountId: ids[2], team: 'red' });
+  await b3.waitFor(() => teamsOf(b3)[ids[2]] === 'red', 4000, '손님 자기 팀');
+  expect('★★ 손님이 자기 팀 바꾸기 OK', teamsOf(host)[ids[2]], 'red');
+  b3.socket.emit('lobby.setTeam', { accountId: ids[1], team: 'blue' });
+  await sleep(300);
+  expectTrue('★★ 손님이 남의 팀 바꾸기 → BAD_REQUEST', err(b3, m)?.code === 'BAD_REQUEST' && teamsOf(host)[ids[1]] === 'red', JSON.stringify(err(b3, m)));
+  m = b3.mark();
+  b3.socket.emit('lobby.autoTeams', {});
+  await sleep(300);
+  expect('★ 손님 자동 배정 → NOT_HOST', err(b3, m)?.code, 'NOT_HOST');
+  b3.socket.emit('lobby.setTeam', { accountId: ids[2], team: 'blue' });
+  await host.waitFor(() => teamsOf(host)[ids[2]] === 'blue', 4000, '되돌림');
+  m = host.mark();
+  host.socket.emit('lobby.setTeam', { accountId: ids[1], team: 'green' });
+  await sleep(300);
+  expect('★ 없는 팀 → BAD_REQUEST', err(host, m)?.code, 'BAD_REQUEST');
+
+  // ── [5] 판: 퀴즈 5 + 미니게임(균형 — 3번째 뒤) · 1번 방장(블루) · 2번 b2(레드) · 3번 방장(블루) · 나머지 넘김 · 중간 입장 → 적은 팀
+  const order = new Map(bots.map((b, i) => [b.loginId, i]));
+  const late = new Bot('09');
+  await late.auth();
+  await late.connect();
+  for (const b of [...bots, late]) {
+    driveMinigame(b, (bot, mg) => {
+      const p = mg.round.params;
+      const x = balanceHalfX(sh, p.kind, p.itemSeed);
+      const off = (order.get(bot.loginId) ?? 5) * 2.5;
+      return { delayMs: 30, input: { top: x + off, bottom: x + off, final: true } };
+    });
+  }
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigames: true, minigameKeys: ['balance'] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.questionCount === 5 && e.settings?.teamMode === true), 4000, '설정');
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  const gameId = host.since(g, 'game.started')[0].gameId;
+  const q1 = await host.waitQuestion(1, 15000);
+  m = host.mark();
+  host.socket.emit('lobby.setTeam', { accountId: ids[1], team: 'blue' });
+  host.socket.emit('lobby.autoTeams', {});
+  await sleep(300);
+  expectTrue('★★ 판 중 setTeam · autoTeams → BAD_REQUEST', host.since(m, 'error').length === 2 && host.since(m, 'error').every((e) => e.code === 'BAD_REQUEST'), JSON.stringify(host.since(m, 'error')));
+  // 2:2 에서 레드 b4 가 나가면 레드가 적다 → 중간 입장은 레드
+  b4.leave();
+  await sleep(300);
+  late.join(roomId);
+  await late.waitFor(() => late.snapshot?.room.id === roomId, 6000, '중간 입장');
+  await sleep(300);
+  const lateId = late.snapshot.me.accountId;
+  expect('★★ 중간 입장 = 적은 팀(레드 1 < 블루 2)', teamsOf(host)[lateId], 'red');
+  const answer = async (bot, q) => {
+    const a = await answersForText(q.text);
+    const f = bot.mark();
+    bot.chat(a[0], q.epoch);
+    await bot.waitFor(() => bot.since(f, 'question.resolved').length > 0, 8000, `${q.index}번 판정`);
+  };
+  await answer(host, q1);
+  await answer(b2, await b2.waitQuestion(2, 15000));
+  await answer(host, await host.waitQuestion(3, 15000));
+  let skipped = 3;
+  const until = Date.now() + 120000;
+  while (Date.now() < until && host.since(g, 'game.result').length === 0) {
+    const q = host.snapshot?.question;
+    if (host.snapshot?.room.state === 'QUESTION_ACTIVE' && q && q.index > skipped) {
+      skipped = q.index;
+      host.forceSkip(q.epoch);
+    }
+    await sleep(25);
+  }
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 5000, '결과');
+  const res = host.since(g, 'game.result')[0].payload;
+  const t = res.teams;
+  const scoreOf = (id) => res.ranking.find((r) => r.accountId === id)?.score ?? 0;
+  expectTrue('★★★ result.teams 있음 · 블루 [방장 · b3] · 레드 [b2 · 중간 입장] (나간 b4 빠짐)', Boolean(t) && [...t.blue.members].sort().join() === [ids[0], ids[2]].sort().join() && [...t.red.members].sort().join() === [ids[1], lateId].sort().join(), JSON.stringify(t));
+  expectTrue('★★★ 팀 점수 = 팀원 score 합 (미니게임 순위 점수 포함)', t && t.blue.score === scoreOf(ids[0]) + scoreOf(ids[2]) && t.red.score === scoreOf(ids[1]) + scoreOf(lateId), JSON.stringify({ t, rk: res.ranking.map((r) => [r.nickname, r.score]) }));
+  const mgRuns = await runsOfGame(gameId);
+  expectTrue('★ 미니게임 1번(3번째 뒤) · 점수 합 > 맞힌 3문제', mgRuns.length === 1 && mgRuns[0].after_question_index === 3 && res.ranking.reduce((s, r) => s + r.score, 0) > 3, JSON.stringify({ runs: mgRuns.map((r) => r.after_question_index), sum: res.ranking.reduce((s, r) => s + r.score, 0) }));
+  const win = !t || t.blue.score === t.red.score ? null : t.blue.score > t.red.score ? 'blue' : 'red';
+  expect('★★ winner', t?.winner, win);
+  const want = win ? Math.min(5, Math.max(1, Math.ceil(t[win].score / 4))) : 0;
+  expect('★★★ 보너스 = clamp(ceil(이긴 팀 점수 / 4), 1, 5) · completed', [res.endReason, t?.bonus], ['completed', want]);
+  await sleep(800);
+  const grants = await withDb(async (c) => (await c.query(`SELECT account_id::text a, amount, ref_type, seen_at IS NOT NULL seen FROM point_grants WHERE reason = 'team_win' AND ref_id = $1 ORDER BY account_id`, [gameId])).rows);
+  const winners = win ? [...t[win].members].sort() : [];
+  expectTrue('★★★ point_grants team_win 행 = 이긴 팀 인원 · 금액 · ref game · 접속자는 seen', grants.length === winners.length && grants.length > 0 && grants.every((r) => r.amount === want && r.ref_type === 'game' && r.seen) && grants.map((r) => r.a).sort().join() === winners.join(), JSON.stringify(grants));
+  const dup = await withDb(async (c) =>
+    (await c.query(`INSERT INTO point_grants (account_id, amount, reason, ref_type, ref_id) SELECT account_id, amount, reason, ref_type, ref_id FROM point_grants WHERE reason = 'team_win' AND ref_id = $1 ON CONFLICT (ref_type, ref_id, account_id) WHERE reason = 'team_win' DO NOTHING`, [gameId])).rowCount,
+  );
+  expect('★★ 같은 판 두 번 지급 → 0행(부분 유일 인덱스 · 멱등)', dup, 0);
+  const dbRows = await withDb(async (c) => ({
+    mode: (await c.query(`SELECT team_mode FROM games WHERE id = $1`, [gameId])).rows[0]?.team_mode,
+    gp: (await c.query(`SELECT account_id::text a, team, is_midgame_join m FROM game_players WHERE game_id = $1 ORDER BY account_id`, [gameId])).rows,
+  }));
+  const wantTeam = { [ids[0]]: 'blue', [ids[1]]: 'red', [ids[2]]: 'blue', [ids[3]]: 'red', [lateId]: 'red' };
+  expectTrue('★★ games.team_mode true · game_players.team (중간 입장 포함 · 나간 b4 행도 레드)', dbRows.mode === true && dbRows.gp.length === 5 && dbRows.gp.every((r) => r.team === wantTeam[r.a]), JSON.stringify(dbRows));
+  m = host.mark();
+  host.socket.emit('lobby.setTeam', { accountId: ids[1], team: 'blue' });
+  await sleep(300);
+  expect('★ 결과 화면에서 setTeam → BAD_REQUEST', err(host, m)?.code, 'BAD_REQUEST');
+
+  // ── [6] 다시 하기 — teamMode · 팀 유지 → 강제 종료 판은 보너스 0 · 지급 0
+  const before = teamsOf(host);
+  const a = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(a, 'game.countdownStarted').length > 0, 8000, '다시 하기');
+  expectTrue('★★ 다시 하기 — teamMode 이어받음 · 팀 그대로', host.since(a, 'game.countdownStarted')[0].settings?.teamMode === true && JSON.stringify(teamsOf(host)) === JSON.stringify(before), JSON.stringify({ before, after: teamsOf(host) }));
+  await host.waitFor(() => host.since(a, 'game.started').length > 0, 12000, '다시 시작');
+  const gid2 = host.since(a, 'game.started')[0].gameId;
+  const qa = await host.waitQuestion(1, 15000);
+  await answer(host, qa);
+  await host.waitQuestion(2, 15000);
+  host.socket.emit('host.forceEnd', {});
+  await host.waitFor(() => host.since(a, 'game.result').length > 0, 8000, '강제 종료');
+  const r2 = host.since(a, 'game.result')[0].payload;
+  await sleep(600);
+  const g2 = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM point_grants WHERE reason = 'team_win' AND ref_id = $1`, [gid2])).rows[0].n);
+  expectTrue('★★ 강제 종료 판 — 블루가 이겨도 보너스 0 · 지급 0행', r2.endReason === 'force_ended' && r2.teams?.winner === 'blue' && r2.teams?.bonus === 0 && g2 === 0, JSON.stringify({ e: r2.endReason, t: r2.teams, g2 }));
+
+  // ── [7] 로비로 → 팀전 끄면 스냅샷 team null · 다시 켜면 자동
+  await backToLobby(host, []);
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, teamMode: false });
+  await host.waitFor(() => Object.values(teamsOf(host)).every((x) => x === null), 4000, '끄기');
+  expect('★ 끄면 team 안 보냄(null)', Object.values(teamsOf(host)).filter(Boolean).length, 0);
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, teamMode: true });
+  await host.waitFor(() => Object.values(teamsOf(host)).every((x) => x !== null), 4000, '다시 켜기');
+  const cnt = Object.values(teamsOf(host)).reduce((o, x) => ({ ...o, [x]: (o[x] ?? 0) + 1 }), {});
+  expectTrue('★ 다시 켜면 다시 자동(4명 2:2)', cnt.blue === 2 && cnt.red === 2, JSON.stringify(cnt));
+
+  for (const b of [host, b2, b3, late]) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  b4.disconnect();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -8569,6 +8759,8 @@ const SCENARIOS = {
   grant: scenarioGrant,
   report: scenarioReport,
   signup: scenarioSignup,
+  // ★★★ R079 — 팀전 1차
+  team: scenarioTeam,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
 };

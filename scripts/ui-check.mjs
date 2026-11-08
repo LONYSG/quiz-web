@@ -4604,6 +4604,149 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R079 — 팀전 1차 화면 (D-329 · D-335) (UICHECK_R079=1 · 묶음 r079 · docs/design/r079)
+//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 5 (7명) — 토글 → 두 색 칸 · 끌기 전후 · 6:1 칸 · 👥 사람 카드 팀 버튼(모바일) ·
+//   자동 배정 · 세 테마(사무실 B/R 글자) · 판 중 막대(PC · m360) · 결과 팀 줄 + 보너스 · 넘침 0(R077_OVERFLOW)
+// =============================================================================
+async function r079Flow(browser) {
+  const H = await newPage(browser, 'R079-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'tmh', '블루방장');
+  const roomId = await createRoom(H, 'R079 팀전');
+  const G = await newPage(browser, 'R079-g', true);
+  await signUp(G, 'tmg', '레드손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const socks = await socketGuests(roomId, 5, 'tm');
+  await sleep(600);
+  const ids = await withPg(async (c) => (await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1) ORDER BY login_id`, [[0, 1, 2, 3, 4].map((i) => `${ACCOUNT_PREFIX}_tm${i}`.toLowerCase())])).rows.map((r) => r.id));
+  const sides = (P) =>
+    P.evaluate("JSON.stringify({ blue: document.querySelectorAll('[data-team-side=\"blue\"] .seat-card:not(.empty)').length, red: document.querySelectorAll('[data-team-side=\"red\"] .seat-card:not(.empty)').length, rows: [...document.querySelectorAll('[data-team-side]')].map((a) => a.children.length), tags: [...document.querySelectorAll('.seat-card [data-team-tag]')].map((t) => t.innerText).join(''), bar: document.querySelector('[data-team-bar]') ? [Number(document.querySelector('[data-team-bar]').dataset.blue), Number(document.querySelector('[data-team-bar]').dataset.red)] : null, over: document.documentElement.scrollWidth - innerWidth })").then((s) => JSON.parse(s));
+  const overflow = async (P) => JSON.parse(await P.evaluate(R077_OVERFLOW));
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r079] ${k}: ${JSON.stringify(v)}`);
+  };
+
+  // ── 1. 토글 전 · 후
+  await snap(H, 'lobby-off-pc');
+  await realClick(H, 'button[data-team-toggle]');
+  await H.waitFor("document.querySelectorAll('[data-team-side] .seat-card:not(.empty)').length === 7", 5000).catch(() => false);
+  await sleep(400);
+  const on = await sides(H);
+  note('켬 — 블루 · 레드 · 칸 수 · 태그', on);
+  await snap(H, 'lobby-on-pc');
+  const ov1 = await overflow(H);
+  // ── 2. 방장 끌기 — 블루의 소켓 손님 하나 → 레드 칸
+  const dragSel = `[data-team-side="blue"] .seat-card[data-account="${ids[0]}"]`;
+  const d = await dragTo(H, dragSel, '[data-team-side="red"] .seat-card.empty', { onMid: () => snap(H, 'drag-mid-pc') });
+  await sleep(500);
+  const dragged = await sides(H);
+  const draggedTeam = await H.evaluate(`document.querySelector('.seat-card[data-account="${ids[0]}"]')?.dataset.team ?? ''`);
+  note('끌기 뒤', { ...dragged, draggedTeam, ok: d.ok });
+  await snap(H, 'drag-after-pc');
+  // 끌고 난 칸을 눌러도 사람 카드가 안 열린다(끌기 뒤 클릭 막기)
+  const cardAfterDrag = await H.evaluate("document.querySelector('.person-card') !== null");
+  // ── 3. 6:1 — 레드 소켓 손님들이 스스로 블루로(본인 자기 팀)
+  for (const i of [0, 1, 2, 3, 4]) socks[i].emit('lobby.setTeam', { accountId: ids[i], team: 'blue' });
+  await H.waitFor("document.querySelectorAll('[data-team-side=\"blue\"] .seat-card:not(.empty)').length === 6", 5000).catch(() => false);
+  await sleep(400);
+  const six = await sides(H);
+  note('6:1 — 칸 수 6 · 5', six);
+  await snap(H, 'lobby-6to1-pc');
+  const ov6 = await overflow(H);
+  // ── 4. 자동 배정
+  await realClick(H, 'button[data-team-auto]');
+  await H.waitFor("document.querySelectorAll('[data-team-side=\"blue\"] .seat-card:not(.empty)').length === 4", 5000).catch(() => false);
+  await sleep(300);
+  const auto = await sides(H);
+  note('자동 배정', auto);
+  // ── 5. 모바일 손님 — 👥 → 내 줄 → 사람 카드 "블루로"
+  await snap(G, 'lobby-m360');
+  await tapOn(G, '#people-btn');
+  await G.waitFor("document.querySelector('.people-modal') !== null", 3000).catch(() => false);
+  await sleep(300);
+  await snap(G, 'people-m360');
+  const peopleTags = await G.evaluate("document.querySelectorAll('.people-modal [data-team-tag]').length");
+  await tapOn(G, '.people-modal li .people-row.pickable:has(.badge.me)');
+  await G.waitFor("document.querySelector('.person-card [data-act^=\"team-\"]') !== null", 3000).catch(() => false);
+  await sleep(300);
+  await snap(G, 'person-card-m360');
+  const btn = await G.evaluate("document.querySelector('.person-card [data-act^=\"team-\"]')?.dataset.act ?? ''");
+  await tapOn(G, '.person-card [data-act^="team-"]');
+  await sleep(600);
+  const gTeam = await H.evaluate("[...document.querySelectorAll('.seat-card')].find((c) => c.innerText.includes('레드손님'))?.dataset.team ?? ''");
+  note('모바일 사람 카드 버튼 → 내 팀', { peopleTags, btn, gTeam });
+  // 되돌림(레드로) — 결과 줄에서 레드 승을 만들 손님
+  await tapOn(G, '#people-btn').catch(() => {});
+  await sleep(300);
+  await tapOn(G, '.people-modal li .people-row.pickable:has(.badge.me)').catch(() => {});
+  await sleep(300);
+  await tapOn(G, '.person-card [data-act="team-red"]').catch(() => {});
+  await sleep(500);
+  // ── 6. 세 테마 — 로비 그림 · 넘침
+  const themeRows = [];
+  for (const th of ['night', 'office', 'pastel']) {
+    await pickTheme(H, th);
+    await pickTheme(G, th);
+    await sleep(300);
+    themeRows.push({ th, pc: await overflow(H), m: await overflow(G), tagColor: await H.evaluate("getComputedStyle(document.querySelector('.seat-card [data-team-tag]')).backgroundColor") });
+    await snap(H, `lobby-${th}-pc`);
+    if (th === 'office') await snap(G, 'lobby-office-m360');
+  }
+  note('테마 — 넘침 · 태그 바탕', themeRows.map((r) => [r.th, r.pc.length, r.m.length, r.tagColor]));
+  // ── 7. 판 — 1문제(손님이 맞힘 → 레드 승 1:0 · 보너스 1P)
+  await setQuestionCount(H, 1);
+  await sleep(300);
+  await H.click('게임 시작');
+  await H.waitFor("document.querySelector('.q-timebar') !== null && document.querySelector('[data-team-bar]') !== null", 20000).catch(() => false);
+  await sleep(500);
+  const g0 = await sides(H);
+  await snap(H, 'game-bar-pc');
+  await G.waitFor("document.querySelector('[data-team-bar]') !== null", 5000).catch(() => false);
+  await snap(G, 'game-bar-m360');
+  const gBar = await G.evaluate("(() => { const b = document.querySelector('[data-team-bar]'); if (!b) return null; const r = b.getBoundingClientRect(); return { h: Math.round(r.height), w: Math.round(r.width), vw: innerWidth, lines: Math.round(r.height / parseFloat(getComputedStyle(b).lineHeight || '20')) }; })()");
+  const text = await H.evaluate("document.querySelector('.question-card .q-text')?.dataset.text ?? ''");
+  const ans = await withPg(async (c) => (await c.query(`SELECT a.answer_text FROM questions q JOIN question_answers a ON a.question_id = q.id WHERE q.question_text = $1 ORDER BY a.is_primary DESC, a.id LIMIT 1`, [text])).rows[0]?.answer_text ?? '');
+  await G.setInput('.chat-card input', ans);
+  await G.click('전송');
+  await H.waitFor("document.querySelector('[data-team-bar]')?.dataset.red === '1'", 5000).catch(() => false);
+  const g1 = await sides(H);
+  await snap(H, 'game-bar-scored-pc');
+  // ── 8. 결과
+  await H.waitFor("document.querySelector('[data-team-result]') !== null", 30000).catch(() => false);
+  await sleep(600);
+  const res = JSON.parse(await H.evaluate("JSON.stringify({ text: document.querySelector('[data-team-result]')?.innerText.replace(/\\s+/g, ' ') ?? '', winner: document.querySelector('[data-team-result]')?.dataset.winner, bonus: document.querySelector('[data-team-result]')?.dataset.bonus, rowTags: document.querySelectorAll('.ranking li [data-team-tag]').length, over: document.documentElement.scrollWidth - innerWidth })"));
+  note('결과 줄', res);
+  for (const th of ['pastel', 'night', 'office']) {
+    await pickTheme(H, th);
+    await sleep(250);
+    await snap(H, `result-${th}-pc`);
+  }
+  await pickTheme(H, 'pastel');
+  await G.waitFor("document.querySelector('[data-team-result]') !== null", 5000).catch(() => false);
+  await snap(G, 'result-m360');
+  const gRes = await G.evaluate("(() => { const p = document.querySelector('[data-team-result]'); if (!p) return null; const r = p.getBoundingClientRect(); return { in: r.left >= 0 && r.right <= innerWidth + 1, over: document.documentElement.scrollWidth - innerWidth }; })()");
+  note('결과 줄 m360', gRes);
+
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r079'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r079'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r079', 'r079.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R079 토글 — 7명 블루 4 · 레드 3 · 칸 5+5 · 태그 B/R 7', on.blue === 4 && on.red === 3 && on.rows.join() === '5,5' && on.tags.length === 7 && /^[BR]+$/.test(on.tags), JSON.stringify(on));
+  record('★★★ R079 방장 PC 끌기 — 블루 → 레드 칸에 놓기 · 끌기 뒤 사람 카드 안 열림', d.ok && dragged.blue === 3 && dragged.red === 4 && draggedTeam === 'red' && !cardAfterDrag, JSON.stringify({ dragged, draggedTeam, cardAfterDrag }));
+  record('★★ R079 6:1 — 블루 칸 6줄 · 레드 5 · 넘침 0', six.blue === 6 && six.red === 1 && six.rows.join() === '6,5' && ov6.length === 0 && six.over <= 1, JSON.stringify({ six, ov6 }));
+  record('★★ R079 자동 배정 버튼 — 4:3', auto.blue === 4 && auto.red === 3, JSON.stringify(auto));
+  record('★★ R079 모바일 👥 팀 태그 · 내 사람 카드 "블루로" → 블루', peopleTags === 7 && btn === 'team-blue' && gTeam === 'blue', JSON.stringify({ peopleTags, btn, gTeam }));
+  record('★★ R079 세 테마 로비 넘침 0 (PC · m360) · 사무실 태그 무채색', ov1.length === 0 && themeRows.every((r) => r.pc.length === 0 && r.m.length === 0) && /204, 204, 204/.test(themeRows.find((r) => r.th === 'office').tagColor), JSON.stringify(themeRows.map((r) => [r.th, r.pc, r.m, r.tagColor])).slice(0, 600));
+  record('★★★ R079 판 중 막대 — 0:0 → 레드 1 · 모바일 한 줄', g0.bar?.join() === '0,0' && g1.bar?.join() === '0,1' && gBar && gBar.h <= 40 && gBar.w <= gBar.vw, JSON.stringify({ g0: g0.bar, g1: g1.bar, gBar }));
+  record('★★★ R079 결과 줄 — 레드 승 1 : 0 · 보너스 +1P · 행 태그 7 · m360 안', res.winner === 'red' && res.bonus === '1' && /레드 승 1 : 0/.test(res.text) && /\+1P/.test(res.text) && res.rowTags === 7 && res.over <= 1 && gRes?.in && gRes.over <= 1, JSON.stringify({ res, gRes }));
+  for (const s of socks) s.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R077 — 로비 카드 넘침 settings-overflow (D-327 · 찬종 11-06 "사무실 왔다갔다 해도 저 글자가 튀어나가")
 //   (UICHECK_R077=1 · 묶음 r077 · docs/design/r077) · R077_TAG = before | after · R077_ONLY = overflow | minority
 //   손님 · 방장 × 크기(lap2 1536×695 @1.25 · pc 1280×720 · m360 터치) × 테마 순환(처음 → pastel → office → pastel → night → office → pastel · Alt+T 는 R043 A-9 로 꺼져 있어 ⚙ 단추로)
@@ -8109,6 +8252,11 @@ async function minigameFlow(browser) {
     await closeAllTabs(browser);
     if (process.env.R077_ONLY !== 'minority') await r077Overflow(browser);
     if (process.env.R077_ONLY !== 'overflow') await r077Minority(browser);
+  }
+  // ★ R079 — 팀전 1차 화면
+  if (process.env.UICHECK_R079) {
+    await closeAllTabs(browser);
+    await r079Flow(browser);
   }
   // ★ R076 — 문제 카드 세로 흔들림(card-jitter)
   if (process.env.UICHECK_R076) {

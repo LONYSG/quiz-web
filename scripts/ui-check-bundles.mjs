@@ -86,6 +86,8 @@ export const BUNDLES = [
   { id: 'r074', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R074: '1', SHOT_DIR: 'r074', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R077 — 로비 카드 넘침 settings-overflow(테마 셋 순환 · 손님/방장 × lap2@1.25 · pc · m360) · 소수파 선택지 = 인원 − 1 (R077_ONLY=overflow|minority · R077_TAG=before|after)
   { id: 'r077', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R077: '1', SHOT_DIR: 'r077', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },
+  // ★ R079 — 팀전 1차(토글 · 두 색 칸 · PC 끌기 · 6:1 · 자동 배정 · 모바일 👥 사람 카드 팀 버튼 · 세 테마 · 사무실 B/R · 판 중 막대 · 결과 팀 줄 · 넘침 0)
+  { id: 'r079', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R079: '1', SHOT_DIR: 'r079', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '1500' }) },
   // ★ R076 — 문제 카드 세로 흔들림 card-jitter(테마 셋 × PC 둘 · 모바일 둘 × 상태 다섯 · R076_TAG=before|after)
   { id: 'r076', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R076: '1', SHOT_DIR: 'r076', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '8000' }) },
   // ★ R075 — 단축키 문구(§A) · 사무실 모드 2판 office-palette(§B) · 모바일 화면 움직임 mobile-motion(§C) (R075_ONLY=shortcut|office|motion · R075_TAG=before|after · R075_KB_MODE=resize|visual)

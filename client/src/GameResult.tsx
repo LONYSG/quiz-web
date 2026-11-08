@@ -101,7 +101,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
           <li
             key={r.accountId}
             className={
-              [r.connected ? '' : 'offline', r.rank === 1 && r.score > 0 ? 'first' : '', r.accountId === myAccountId ? 'mine' : '']
+              [r.connected ? '' : 'offline', r.rank === 1 && r.score > 0 ? 'first' : '', r.accountId === myAccountId ? 'mine' : '', teams && teamOf(r.accountId) ? `team-${teamOf(r.accountId)}` : '']
                 .filter(Boolean)
                 .join(' ') || undefined
             }

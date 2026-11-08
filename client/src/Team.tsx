@@ -54,8 +54,17 @@ export function TeamResultLine({ teams, mine }: { teams: TeamResult; mine: Team 
       ) : (
         <strong>무승부</strong>
       )}{' '}
+      {/* ★ 이긴 팀 점수를 앞에("블루 승 17 : 12") · 무승부는 블루 : 레드 */}
       <span className="mono team-result-score">
-        <span className="tr-blue">{teams.blue.score}</span> : <span className="tr-red">{teams.red.score}</span>
+        {w === 'red' ? (
+          <>
+            <span className="tr-red">{teams.red.score}</span> : <span className="tr-blue">{teams.blue.score}</span>
+          </>
+        ) : (
+          <>
+            <span className="tr-blue">{teams.blue.score}</span> : <span className="tr-red">{teams.red.score}</span>
+          </>
+        )}
       </span>
       {w && teams.bonus > 0 ? (
         <span className={mine === w ? 'team-result-bonus mine' : 'team-result-bonus'}> · 보너스 +{teams.bonus}P</span>
@@ -104,6 +113,7 @@ export function useSeatDrag(enabled: boolean, onDrop: (accountId: string, team: 
       if (!p.active && Math.hypot(e.clientX - p.x0, e.clientY - p.y0) < 6) return;
       p.active = true;
       e.preventDefault();
+      window.getSelection()?.removeAllRanges();
       setDrag({ id: p.id, nick: p.nick, from: p.from, x: e.clientX, y: e.clientY, over: teamAt(e.clientX, e.clientY) });
     };
     const up = (e: PointerEvent) => {
@@ -133,6 +143,8 @@ export function useSeatDrag(enabled: boolean, onDrop: (accountId: string, team: 
 
   const start = (e: React.PointerEvent, p: { accountId: string; nickname: string; team: Team }) => {
     if (!enabled || e.button !== 0 || e.pointerType === 'touch') return;
+    // ★ 누른 채 움직일 때 페이지 글자가 선택(파란 칠)되지 않게 — 마우스 누름의 기본 동작(글자 선택 시작)만 막는다(클릭은 그대로 온다)
+    e.preventDefault();
     press.current = { id: p.accountId, nick: p.nickname, from: p.team, x0: e.clientX, y0: e.clientY, active: false };
   };
   const suppressed = () => performance.now() < suppressUntil.current;

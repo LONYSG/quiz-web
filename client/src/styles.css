@@ -9493,3 +9493,21 @@ button.preset.shake {
   gap: 6px;
   padding: 3px 8px;
 }
+/* 결과 행 — 왼쪽 팀 띠(사무실은 레드 = 점선) · 모바일 2열은 태그를 빼고 띠만(닉네임 자리) */
+.ranking li.team-blue {
+  box-shadow: inset 4px 0 0 var(--team-blue);
+}
+.ranking li.team-red {
+  box-shadow: inset 4px 0 0 var(--team-red);
+}
+[data-theme='office'] .ranking li.team-blue {
+  border-left: 3px solid var(--text) !important;
+}
+[data-theme='office'] .ranking li.team-red {
+  border-left: 3px dashed var(--text) !important;
+}
+/* ★ R079 발견 — 모바일 결과 순위는 1열(2168 줄 규칙)이어야 하는데 3526 줄 ".room .ranking.two { 2열 }" 이 같은 무게로 뒤에 와서 덮었다
+   → 6명 이상이면 360 폭에 2열 · 닉네임이 세로로 뭉갬. 모바일 1열로 되돌린다(뒤에 둔다) */
+:where(.ui-mobile) .room .ranking.two {
+  grid-template-columns: minmax(0, 1fr);
+}
