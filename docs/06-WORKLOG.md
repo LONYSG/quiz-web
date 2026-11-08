@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-08 — 노래 미니게임 둘 (R084, MAIN · D-341 · 실 DB 쓰기 0)
+- **무엇**: 노래 맞히기(song) · 이 노래 몇 년도?(songyear) — G040 293곡(V041 verified 278)을 minigame_items 로 적재(새 표 없음) · 각 화면이 Apple 미리듣기를 스트리밍.
+- **왜**: 찬종 2026-11-08 ⑻ "30초 듣고 제목·가수 + 이 노래 몇 년도?" · 18 §10 게임 규칙 줄(설계).
+- **어떻게**: A 적재(minigame-load song · --allow-candidate 빗장 · 메뉴 1 훅) → B·C 서버 songGames(곡 고르기 · 판정 맵 · 3·2·1+1 · earlyEnd 훅 · scoring 'value') + 화면(songAudio 하나의 audio · 듣기 버튼 · 볼륨 · 실패 보고 · SongGuess · SongYearPlay · 공개 카드) → D 봇 mgonly +19 · ui-check r084 8 · 그림 보고 고침 4.
+- **결정**: D-341(소리 정책 · 두 게임 한 항목 · 실패 과반 건너뜀 · 막힌 곡을 아무 조작으로 다시 틀기 — 브리핑에 더함).
+- **검증**: ai-out/R084.txt 4절(typecheck · vitest 697 · build · smoke · 봇 · ui-check r084 · r083 · main-behavior).
+- **남은 것**: A111(폰 소리 · 30초 · 점수 체감) · 미리듣기 주소 만료 시 lookup 재조회(뒤 라운드) · G043 가 V041 fix 14 반영하면 다시 적재(메뉴 1 자동).
+
 ## 2026-11-08 — V040 작은 적용 (G042, GEN · DB 쓰기 — 힌트 15행)
 ## 2026-11-08 — 노래 293 메타 대조 + us-state 50 (V041, VERIFY · DB 없음 · 웹 있음)
 ## 2026-11-08 — OX 400 전수 판정 (V042, VERIFY · DB 없음 · 웹 있음)

@@ -1026,6 +1026,21 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
 
+## ★ R084 — 바뀐 것 (D-341 · 노래 둘 · 마이그레이션 없음)
+
+| 항목 | 내용 |
+|------|------|
+| 미니게임 키 | `'song'`(노래 맞히기) · `'songyear'`(이 노래 몇 년도?) — MINIGAMES 맨 앞 · `minigameKeys` 기본에 들어감 |
+| `MinigameInfo.scoring` | `'value'` 더함 — 판 값이 곧 판 점수(노래 맞히기) |
+| `minigame.state` round.params | song · songyear = `{ previewUrl }`(+ songyear `min` 1950 · `max` 올해) · 연습은 `dummy: true` — 제목 · 가수 · 연도 · 그림 없음 |
+| round.reveal (공개) | `{ title, artist, year, artworkUrl }` · 건너뛴 곡 `{ …, skipped: true, fails }` |
+| `minigame.submit` input | song `{ text, elapsedMs }`(여러 번) · songyear `{ value, elapsedMs }`(여러 번 — 마지막) · 둘 다 `{ fail: true }`(재생 실패 보고 · 판마다 한 번 — 두 번째는 `minigame.rejected`) |
+| `minigame.feedback` (본인에게만) | song `{ result: 'ok' \| 'dup' \| 'wrong', part?: 'title' \| 'artist', text, title?, artist? }` · songyear `{ result: 'set', value }` |
+| 판 결과 행 extra | song `{ title, artist, firstMs, bothMs, tries, points, fail? }` · songyear `{ guess, off, fail? }` · 건너뜀 `{ skipped: true }` |
+| 판 일찍 끝 | song — 접속 참가자 전원이 하나라도 맞힘 · 둘 다 — 접속자 과반 실패 보고(엔진 `earlyEnd` 훅) |
+| 경험 | `minigame_item_experiences` 키 `song` · `songyear` · item_key = `song-NNNN` |
+| 적재 | `minigame_items.game = 'song'`(0018 재사용) · `scripts/minigame-load.mjs --game song [--allow-candidate]` |
+
 ## ★ R083 — 바뀐 것 (D-340 · 캐치마인드 · 0033)
 
 | 항목 | 내용 |
