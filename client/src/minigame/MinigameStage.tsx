@@ -52,9 +52,12 @@ import { BingoPlay, BingoReveal, OrderPick, OrderReveal, orderBingoValueText } f
 import { ChoiceAnswers, ChoicePick, ChoiceReveal, ManyFinalReport, ManyReveal, ManyTalk, UniquePick, UniqueReveal, rememberRound, topicValueText } from './TopicGames.js';
 import { MINIGAME_ICONS } from './MinigameCatalog.js';
 import { SONG_KEYS, SongGuess, SongReveal, SongSound, SongYearPlay, songValueText } from './SongGames.js';
+import { OxAnswers, OxPick, OxReveal, oxValueText, rememberOx } from './OxGames.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
 const PLAY = {
+  // ★★★ R085 — OX 10연속(D-342)
+  ox: OxPick,
   // ★★★ R084 — 노래 둘(D-341)
   song: SongGuess,
   songyear: SongYearPlay,
@@ -91,7 +94,7 @@ const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which', 
 /** 진행 중 "n / m명 …" 의 말 */
 const TOPIC_KEYS = new Set(['many', 'unique', 'choice']);
 const ORDER_BINGO = new Set(['order', 'bingo']);
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { song: '맞힘', songyear: '냄', bingo: '부름', order: '고름', many: '참여', unique: '냄', choice: '고름', cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { ox: '고름', song: '맞힘', songyear: '냄', bingo: '부름', order: '고름', many: '참여', unique: '냄', choice: '고름', cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
 
 interface Props {
   socket: Socket;
@@ -177,6 +180,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
   const lastResult = view.roundResults[view.roundResults.length - 1];
   // ★ R080 — 주제 이름 · 객관식 문항을 판 기록에(최종 결과 단계는 round 가 비어 있다)
   rememberRound(view);
+  rememberOx(view);
 
   return (
     // ★ R074 (§A) — --mg-n = 참가자 수(정답 공개 표 줄 수) · PC 그림 높이 예산이 이 수만큼 줄을 뺀다(styles R074 절)
@@ -312,8 +316,9 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
               );
             })}
           </ol>
-          {(view.key === 'which' || view.key === 'choice') && <WhichSummary view={view} nameOf={nameOf} />}
+          {(view.key === 'which' || view.key === 'choice' || view.key === 'ox') && <WhichSummary view={view} nameOf={nameOf} />}
           {view.key === 'choice' && <ChoiceAnswers view={view} myAccountId={myAccountId} />}
+          {view.key === 'ox' && <OxAnswers view={view} myAccountId={myAccountId} />}
           {view.key === 'many' && <ManyFinalReport view={view} myAccountId={myAccountId} />}
           <p className="dim mg-final-note">
             {view.practice ? '연습' : `${bonusRanks(view.participants.length)}는 포인트도!`}
@@ -372,6 +377,8 @@ function readyDesc(view: MinigameView): string {
       return p.phase === 'fill' ? `${String(p.nameKo ?? '')} — 내 판 채우기` : `호명 ${String(p.call ?? '')}`;
     case 'many':
       return `${String(p.nameKo ?? '')} — ${String(p.timeSec ?? 30)}초 동안 최대한 많이!`;
+    case 'ox':
+      return '';
     case 'song':
       return '곧 노래가 나와요 — 제목이나 가수!';
     case 'songyear':
@@ -422,6 +429,7 @@ function readyDesc(view: MinigameView): string {
 /** 규칙 안내 그림 */
 function RulesArt({ k }: { k: MinigameView['key'] }) {
   switch (k) {
+    case 'ox':
     case 'song':
     case 'songyear':
     case 'order':
@@ -549,6 +557,7 @@ function RoundResult({
     if (QUIZ_KEYS.has(view.key)) return quizValueText(view, r);
     if (TOPIC_KEYS.has(view.key)) return topicValueText(view, r);
     if (SONG_KEYS.has(view.key)) return songValueText(view, r);
+    if (view.key === 'ox') return oxValueText(r);
     if (ORDER_BINGO.has(view.key)) return orderBingoValueText(view, r);
     // ★ R053
     if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)} ${r.extra.win ? '· 소수파!' : ''}` : '안 고름';
@@ -579,8 +588,10 @@ function RoundResult({
     }
   };
   return (
-    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) || ORDER_BINGO.has(view.key) || SONG_KEYS.has(view.key) ? ' wide' : ''}`}>
-      {SONG_KEYS.has(view.key) ? (
+    <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) || ORDER_BINGO.has(view.key) || SONG_KEYS.has(view.key) || view.key === 'ox' ? ' wide' : ''}`}>
+      {view.key === 'ox' ? (
+        <OxReveal view={view} mine={view.spectating ? undefined : mine} />
+      ) : SONG_KEYS.has(view.key) ? (
         <>
           <SongReveal view={view} mine={view.spectating ? undefined : mine} />
           {view.round?.itemId && (

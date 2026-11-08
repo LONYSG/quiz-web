@@ -89,6 +89,7 @@ import type { PoolQuestion } from '../db/questionPool.js';
 import { choice, many, unique } from './topicGames.js';
 import { bingo, order } from './topicGames2.js';
 import { song, songyear } from './songGames.js';
+import { ox } from './oxGame.js';
 
 export interface RoundSpec {
   /** 항목 · 패턴 키 (기록 · 퀴즈류의 경험 기록에 쓴다 — 퀴즈류는 문항 id) */
@@ -897,4 +898,4 @@ const tap: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, song, songyear, bingo, order, many, unique, choice, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, ox, song, songyear, bingo, order, many, unique, choice, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };

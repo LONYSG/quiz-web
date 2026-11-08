@@ -11,8 +11,9 @@
 import { seededRandom } from '../balance.js';
 
 // ★ R084 — 'song' 은 적재본(minigame_items.game)의 키다. 노래 맞히기(song) · 이 노래 몇 년도?(songyear) 둘이 같은 항목을 쓴다
-export type QuizMinigameKey = 'price' | 'worldprice' | 'photo' | 'estimate' | 'which' | 'photoyear' | 'song';
-export const QUIZ_MINIGAME_KEYS: readonly QuizMinigameKey[] = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear', 'song'];
+// ★ R085 — 'ox'(OX 10연속 · 문장)
+export type QuizMinigameKey = 'price' | 'worldprice' | 'photo' | 'estimate' | 'which' | 'photoyear' | 'song' | 'ox';
+export const QUIZ_MINIGAME_KEYS: readonly QuizMinigameKey[] = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear', 'song', 'ox'];
 
 /** 한 미니게임의 문항 수 · 문항당 입력 시간(ms) · 정답 공개(ms) · 문항 사이 준비(ms) */
 /**
@@ -34,6 +35,8 @@ export const QUIZ_SPEC: Record<QuizMinigameKey, { items: number; playMs: number;
   photoyear: { items: 5, playMs: 20_000, revealMs: 4_000, readyMs: 1_500 },
   // ★ R084 — 노래(값은 shared/minigame/song.ts 가 정본 — 여기는 자리만: 3곡 · 30초 · 공개 6초 · 준비 2초)
   song: { items: 3, playMs: 30_000, revealMs: 6_000, readyMs: 2_000 },
+  // ★ R085 — OX(값은 shared/minigame/ox.ts 가 정본)
+  ox: { items: 10, playMs: 5_000, revealMs: 2_500, readyMs: 300 },
 };
 
 /** ★ R068 — 사진 연도 입력 범위(1800 ~ 올해) */

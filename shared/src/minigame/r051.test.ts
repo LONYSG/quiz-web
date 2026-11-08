@@ -24,8 +24,8 @@ describe('★★ Q-110 (가) 확정 — 10문제 판은 5번째 뒤 1회 · 혼�
 
 describe('★★ 미니게임 목록 — 피지컬 여섯 · 판 수 3~5', () => {
   // ★ R080 — 새 셋(많이 말하기 · 겹치면 무효 · 객관식 10연속)이 맨 앞(표시 순서 = 새것 먼저)
-  it('키 여섯 + 퀴즈류 다섯(R052) + 사진 연도(R068) + R080 셋 + R084 노래 둘(맨 앞)', () =>
-    expect(MINIGAMES.map((m) => m.key)).toEqual(['song', 'songyear', 'bingo', 'order', 'many', 'unique', 'choice', 'cake', 'balance', 'reaction', 'typing', 'circle', 'angle', 'price', 'worldprice', 'photo', 'estimate', 'photoyear', 'which', 'minority', 'oddone', 'gauge', 'balloon', 'tap']));
+  it('키 여섯 + 퀴즈류 다섯(R052) + 사진 연도(R068) + R080 셋 + R084 노래 둘 + R085 OX(맨 앞)', () =>
+    expect(MINIGAMES.map((m) => m.key)).toEqual(['ox', 'song', 'songyear', 'bingo', 'order', 'many', 'unique', 'choice', 'cake', 'balance', 'reaction', 'typing', 'circle', 'angle', 'price', 'worldprice', 'photo', 'estimate', 'photoyear', 'which', 'minority', 'oddone', 'gauge', 'balloon', 'tap']));
   it('피지컬 판 수 3~5 · 예상 1~2분', () => {
     for (const m of MINIGAMES.filter((x) => x.kind === 'physical')) {
       expect(m.rounds).toBeGreaterThanOrEqual(3);

@@ -10388,3 +10388,172 @@ button.preset.shake {
     text-align: center;
   }
 }
+
+/* =============================================================================
+   ★★★ R085 — OX 10연속 (D-342): 문장 · O / X 큰 버튼 · 공개(정답 · 해설) · 최종 목록
+   상태는 색 + 글자(O · X · ✓ · ✗) — 사무실 테마 흑백(D-324)에서도 읽힌다
+   ============================================================================= */
+.ox-statement {
+  margin: 6px 0 8px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.45;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.ox-statement.small {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+.ox-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: min(520px, 100%);
+}
+.ox-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 96px;
+  border-radius: 18px;
+  border: 3px solid transparent;
+  background: var(--surface-2);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.ox-btn:disabled {
+  cursor: default;
+}
+.ox-btn.o .ox-mark {
+  color: var(--ok);
+}
+.ox-btn.x .ox-mark {
+  color: var(--bad);
+}
+.ox-btn.picked {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface-2));
+}
+.ox-btn.other {
+  opacity: 0.5;
+}
+.ox-mark {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.ox-mark.o {
+  color: var(--ok);
+}
+.ox-mark.x {
+  color: var(--bad);
+}
+.ox-key {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+.ox-reveal {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  width: 100%;
+}
+.ox-answer {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ox-mark.big {
+  font-size: 3.4rem;
+}
+.ox-my {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+}
+.ox-my.ok {
+  color: var(--ok);
+}
+.ox-my.bad {
+  color: var(--bad);
+}
+.ox-my.none {
+  color: var(--text-dim);
+}
+.ox-expl {
+  margin: 0;
+  max-width: 640px;
+  text-align: center;
+  font-weight: 700;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.ox-answers {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+  text-align: left;
+}
+.ox-answers li {
+  display: grid;
+  grid-template-columns: 1.6em minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+  padding: 3px 6px;
+  border-radius: 8px;
+}
+.ox-answers li.bad {
+  background: color-mix(in srgb, var(--bad) 8%, transparent);
+}
+.ox-answers .ox-mark {
+  font-size: 1.1rem;
+}
+.ox-a-text {
+  display: grid;
+  min-width: 0;
+}
+.ox-a-q {
+  font-weight: 700;
+  word-break: keep-all;
+}
+.ox-a-e {
+  font-size: 0.8rem;
+  word-break: keep-all;
+}
+.ox-answers li.ok .ox-a-mine {
+  color: var(--ok);
+  font-weight: 900;
+}
+.ox-answers li.bad .ox-a-mine {
+  color: var(--bad);
+  font-weight: 900;
+}
+[data-theme='office'] .ox-btn.picked {
+  border-width: 4px;
+  border-style: double;
+}
+@media (max-width: 520px) {
+  .ox-statement {
+    font-size: 1.05rem;
+  }
+  .ox-btn {
+    min-height: 84px;
+  }
+  .ox-mark.big {
+    font-size: 2.6rem;
+  }
+}

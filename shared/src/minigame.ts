@@ -42,7 +42,9 @@ export type MinigameKey =
   | 'bingo'
   // ★★★ R084 — 노래 둘(D-341 · docs/18 §10)
   | 'song'
-  | 'songyear';
+  | 'songyear'
+  // ★★★ R085 — OX 10연속(D-342 · docs/18 §11)
+  | 'ox';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -86,6 +88,21 @@ export interface MinigameInfo {
 
 /** ★ 순서가 표시 순서다 */
 export const MINIGAMES: readonly MinigameInfo[] = [
+  // ★★★ R085 (D-330 ⑴ · D-342) — OX 10연속(새것 먼저 · choice 꼴)
+  {
+    key: 'ox',
+    name: 'OX 10연속',
+    oneLine: '문장 10개 — 맞으면 O, 틀리면 X! 5초 안에 · 많이 맞히고, 같으면 빠른 사람',
+    controlsPc: 'O · X 키 (또는 ← →) · 클릭 — 바꿔도 돼요(마지막)',
+    controlsMobile: 'O · X 버튼 톡 — 바꿔도 돼요(마지막)',
+    kind: 'quiz',
+    rounds: 10,
+    estSec: 90,
+    better: 'low',
+    unit: 'ms',
+    fixedDecimals: 0,
+    scoring: 'correct',
+  },
   // ★★★ R084 (D-330 ⑻ · D-341) — 노래 둘(새것 먼저) · 소리는 각 화면이 Apple 미리듣기를 스트리밍
   {
     key: 'song',
