@@ -28,7 +28,7 @@
 //   · ★ 출제 풀과 경험 기록을 게임 시작 때 메모리로 올린다 (D-054 성능 항목)
 // =============================================================================
 
-import { MINIGAMES, NICKNAME_LIMIT_HINT, levelInfo, nicknameFits, pickRateAsk, planGrades, validateRoomSettings } from '@quiz/shared';
+import { MINIGAMES, NICKNAME_LIMIT_HINT, levelInfo, nicknameFits, pickRateAsk, planGrades, teamStartBlock, validateRoomSettings } from '@quiz/shared';
 import { config } from '../config.js';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
@@ -108,6 +108,11 @@ export async function requestStart(room: Room): Promise<StartResult> {
     room.settings = { ...valid.settings };
 
     if (activeCount(room) < 1) return { ok: false, reason: 'no_active' };
+    // ★★★ R079 (D-335) — 팀전은 두 팀 모두 1명 이상(홀수는 합산 그대로 · 안내 없음 — 찬종)
+    if (room.settings.teamMode) {
+      const teamBlock = teamStartBlock([...room.players.values()]);
+      if (teamBlock) return { ok: false, reason: 'settings', message: teamBlock };
+    }
     const longNames = nicknamesToChange(room);
     if (longNames.length > 0) return { ok: false, reason: 'nickname', nicknames: longNames };
 
@@ -253,6 +258,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     colorIndex: p.colorIndex,
     // 시작 시점 참가자는 전원 중간 참가가 아니다 (guide 32절)
     isMidgameJoin: false,
+    // ★ R079 — 팀전이면 팀(0030 game_players.team)
+    team: settings.teamMode ? p.team : null,
   }));
 
   // ── 1. ★ DB 준비. 실패하면 게임을 시작하지 않는다
@@ -266,6 +273,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       plannedQuestionCount: availableAtStart,
       mode: mgOnly ? 'minigame' : 'quiz',
       settingMinigameRounds: mgOnly ? settings.minigameRounds : null,
+      teamMode: settings.teamMode,
     });
     await insertGamePlayers(gameId, roster);
     // ★ R050 — 참가자의 기기 종류 (🖥/📱 — 기록만)

@@ -20,7 +20,7 @@
 // =============================================================================
 
 import { randomBytes, randomInt } from 'node:crypto';
-import { DEFAULT_LEVEL, DEFAULT_TOPICS, MINIGAME_KEYS, MINIGAME_ONLY_ROUNDS, RULES } from '@quiz/shared';
+import { DEFAULT_LEVEL, DEFAULT_TOPICS, MINIGAME_KEYS, MINIGAME_ONLY_ROUNDS, RULES, smallerTeam } from '@quiz/shared';
 import type { ChatEntry, Player, Room, RoomSettings } from './types.js';
 
 const rooms = new Map<string, Room>();
@@ -59,6 +59,8 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   // ★★★ R057 — 미니게임만은 기본 꺼짐 · 5개 (D-249)
   minigameOnly: false,
   minigameRounds: MINIGAME_ONLY_ROUNDS.DEFAULT,
+  // ★★★ R079 — 팀전 기본 꺼짐 (D-329)
+  teamMode: false,
 };
 
 /**
@@ -230,6 +232,8 @@ export function addPlayer(
     score: 0,
     avatarV,
     awayMs: 0,
+    // ★★★ R079 — 팀전 중이면 적은 팀(같으면 블루) · 로비 · 중간 참가 모두 (D-335)
+    team: room.settings.teamMode ? smallerTeam([...room.players.values()]) : null,
   };
   room.players.set(accountId, player);
   accountRoom.set(accountId, room.id);

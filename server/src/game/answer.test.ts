@@ -28,6 +28,7 @@ function player(over: Partial<Player> = {}): Player {
     disconnectedAt: null,
     score: 0,
     awayMs: 0,
+    team: null,
     avatarV: null,
     ...over,
   };

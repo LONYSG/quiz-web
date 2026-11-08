@@ -178,13 +178,15 @@ export interface RoomSettingsInput {
   minigameOnly: boolean;
   /** ★ R057 — 미니게임만 모드의 미니게임 수 (2~10 · 기본 5) */
   minigameRounds: number;
+  /** ★★★ R079 — 팀전(블루 · 레드 · D-329) — 기본 꺼짐 · 다시 하기 · 로비로 이어받음 · 퀴즈 · 미니게임만 어느 쪽과도 */
+  teamMode: boolean;
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode';
       message: string;
     };
 
@@ -295,6 +297,11 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     };
   }
 
+  // ── ★★★ R079 — 팀전 (없으면 꺼짐)
+  if (raw.teamMode !== undefined && typeof raw.teamMode !== 'boolean') {
+    return { ok: false, field: 'teamMode', message: '팀전 설정 형식이 올바르지 않습니다.' };
+  }
+
   return {
     ok: true,
     settings: {
@@ -307,6 +314,7 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       minigameKeys,
       minigameOnly: raw.minigameOnly === true,
       minigameRounds,
+      teamMode: raw.teamMode === true,
     },
   };
 }

@@ -14,7 +14,7 @@ import { isTourPending } from './Tour.js';
 interface Grant {
   id: string;
   amount: number;
-  reason: 'feedback_adopted' | 'feedback_monthly_top' | 'admin' | 'signup';
+  reason: 'feedback_adopted' | 'feedback_monthly_top' | 'admin' | 'signup' | 'rate' | 'team_win';
   question: string | null;
 }
 
@@ -24,6 +24,8 @@ export function grantToastText(grants: readonly Grant[]): { title: string; detai
   const adopted = grants.filter((g) => g.reason === 'feedback_adopted');
   // ★ R063 (D-260) — 가입 선물(새 회원 · 기존 회원 소급)만이면 그 말 그대로
   if (grants.every((g) => g.reason === 'signup')) return { title: `가입 선물 +${total}P`, detail: '포인트샵에서 써 보세요' };
+  // ★★★ R079 (D-335) — 팀전 승리 보너스만이면 그 말 그대로(판이 끝날 때 끊겨 있던 사람이 다음 로그인 때 본다)
+  if (grants.every((g) => g.reason === 'team_win')) return { title: `팀전 승리 보너스 +${total}P`, detail: grants.length > 1 ? `${grants.length}판` : '' };
   const q = adopted.find((g) => g.question)?.question ?? null;
   const qText = q ? `'${q}${[...q].length >= 30 ? '…' : ''}'` : '';
   if (adopted.length === grants.length) {
@@ -37,6 +39,7 @@ export function grantToastText(grants: readonly Grant[]): { title: string; detai
     grants.some((g) => g.reason === 'feedback_monthly_top') ? '이달의 제보왕' : null,
     grants.some((g) => g.reason === 'admin') ? '운영자 지급' : null,
     grants.some((g) => g.reason === 'signup') ? '가입 선물' : null,
+    grants.some((g) => g.reason === 'team_win') ? '팀전 승리' : null,
   ].filter(Boolean);
   return { title: `보너스 포인트 +${total}P`, detail: parts.join(' · ') };
 }

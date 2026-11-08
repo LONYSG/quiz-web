@@ -17,6 +17,7 @@
 import { randomUUID } from 'node:crypto';
 import type { Server, Socket } from 'socket.io';
 import {
+  autoAssignTeams,
   capEmojiTokens,
   countEmojiTokens,
   EMOJI_ONLY_BIG_MAX,
@@ -24,6 +25,7 @@ import {
   emojiOnlyTokens,
   INLINE_EMOJI_MAX,
   isMinigameKey,
+  isTeam,
   maskAnswers,
   NICKNAME_LIMIT_HINT,
   nicknameFits,
@@ -32,6 +34,7 @@ import {
   stripEmojiTokens,
   validateRoomSettings,
   type MinigameKey,
+  type Team,
 } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } from '../db/rooms.js';
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
@@ -687,10 +690,19 @@ function registerRoomHandlers(socket: Socket): void {
         // ★ R057 — 미니게임만도
         minigameOnly: room.settings.minigameOnly,
         minigameRounds: room.settings.minigameRounds,
+        // ★ R079 — 팀전도
+        teamMode: room.settings.teamMode,
         ...payload,
       });
       if (!valid.ok) {
         sendError(s, 'BAD_REQUEST', valid.message);
+        return;
+      }
+      // ★★★ R079 (D-335) — 팀전은 2명 이상일 때만 켠다 · 켜는 순간 joinOrder 번갈아 자동 배정(블루부터)
+      const teamTurnedOn = valid.settings.teamMode && !room.settings.teamMode;
+      const teamTurnedOff = !valid.settings.teamMode && room.settings.teamMode;
+      if (teamTurnedOn && room.players.size < 2) {
+        sendError(s, 'BAD_REQUEST', '팀전은 2명 이상일 때 켤 수 있어요.');
         return;
       }
 
@@ -710,8 +722,56 @@ function registerRoomHandlers(socket: Socket): void {
       // ★★ R025 / R034 — 난이도·분야는 출제 가능 수를 바꾼다. 바뀐 경우에만 다시 센다.
       //   ★ 결과는 refreshLobbyInfo 가 lobby.settingsUpdated 로 다시 보낸다
       if (diffChanged) void refreshLobbyInfo(room);
+      // ★ R079 — 팀이 화면에 나타나거나(켬 — 자동 배정) 사라진다(끔 — 값은 남고 안 보냄)
+      if (teamTurnedOn) applyAutoTeams(room);
+      if (teamTurnedOn || teamTurnedOff) broadcastPlayers(room);
     },
   );
+
+  // ── ★★★ R079 (D-335) — 팀 바꾸기: 방장은 누구나 · 본인은 자기만 · 로비 · 카운트다운에서만 (판 중 BAD_REQUEST)
+  onRoom<{ accountId: string; team: Team }>(
+    socket,
+    'lobby.setTeam',
+    {
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        if (!obj) return null;
+        const accountId = parseString(obj.accountId, 1, 32);
+        if (accountId === null || !isTeam(obj.team)) return null;
+        return { accountId, team: obj.team };
+      },
+    },
+    ({ socket: s, room, session, payload }) => {
+      const block = teamChangeBlock(room);
+      if (block) {
+        sendError(s, 'BAD_REQUEST', block);
+        return;
+      }
+      if (payload.accountId !== session.accountId && room.hostAccountId !== session.accountId) {
+        sendError(s, 'BAD_REQUEST', '다른 사람의 팀은 방장만 바꿀 수 있어요.');
+        return;
+      }
+      const target = room.players.get(payload.accountId);
+      if (!target) {
+        sendError(s, 'BAD_REQUEST', '대상을 찾을 수 없습니다.');
+        return;
+      }
+      if (target.team === payload.team) return;
+      target.team = payload.team;
+      broadcastPlayers(room);
+    },
+  );
+
+  // ── ★★★ R079 — 자동 배정 다시 (방장 · joinOrder 번갈아 · 결정적)
+  onRoom(socket, 'lobby.autoTeams', { requireHost: true }, ({ socket: s, room }) => {
+    const block = teamChangeBlock(room);
+    if (block) {
+      sendError(s, 'BAD_REQUEST', block);
+      return;
+    }
+    applyAutoTeams(room);
+    broadcastPlayers(room);
+  });
 
   // ── 게임 시작 (T01)
   onRoom(
@@ -1000,6 +1060,9 @@ function registerRoomHandlers(socket: Socket): void {
         });
       } else if (r.reason === 'nickname') {
         emitRoom(room, 'error', { code: 'NICKNAME_CHANGE_REQUIRED', message: nicknameBlockMessage(r.nicknames), detail: r.nicknames.join(',') });
+      } else if (r.reason === 'settings') {
+        // ★ R079 — 팀이 비었다 등 이유를 그대로 (접속 종료자가 빠져 한 팀이 빌 수 있다)
+        emitRoom(room, 'error', { code: 'BAD_REQUEST', message: `다시 하기를 시작하지 못했습니다. ${r.message}`, detail: 'settings' });
       } else if (r.reason !== 'busy' && r.reason !== 'invalid_state') {
         emitRoom(room, 'error', {
           code: 'INVALID_STATE',
@@ -1137,6 +1200,19 @@ function returnToLobby(room: NonNullable<ReturnType<typeof getRoom>>): void {
 }
 
 // -----------------------------------------------------------------------------
+/** ★★★ R079 — 팀을 바꿀 수 없는 이유(없으면 null): 팀전 꺼짐 · 판 중 */
+function teamChangeBlock(room: Room): string | null {
+  if (!room.settings.teamMode) return '팀전이 꺼져 있어요.';
+  if (room.state !== 'LOBBY' && room.state !== 'COUNTDOWN') return '팀은 로비에서만 바꿀 수 있어요.';
+  return null;
+}
+
+/** ★★★ R079 — 자동 배정(joinOrder 번갈아 · 블루부터) */
+function applyAutoTeams(room: Room): void {
+  const assigned = autoAssignTeams([...room.players.values()]);
+  for (const p of room.players.values()) p.team = assigned.get(p.accountId) ?? null;
+}
+
 function playerViews(room: ReturnType<typeof getRoom> & object) {
   const now = Date.now();
   return [...room.players.values()]
@@ -1158,7 +1234,7 @@ function playerViews(room: ReturnType<typeof getRoom> & object) {
  */
 async function onMidgameJoin(
   room: NonNullable<ReturnType<typeof getRoom>>,
-  player: { accountId: string; colorIndex: number },
+  player: { accountId: string; colorIndex: number; team?: Team | null },
 ): Promise<void> {
   const game = room.game;
   if (!game) return;
@@ -1168,6 +1244,7 @@ async function onMidgameJoin(
         gameId: game.gameId,
         accountId: player.accountId,
         colorIndex: player.colorIndex,
+        team: room.settings.teamMode ? (player.team ?? null) : null,
       });
     }
     const loaded = await loadExperienced([player.accountId]);
@@ -1256,6 +1333,8 @@ function attachToRoom(
     const saved = room.departedScores.get(session.accountId);
     if (saved && room.game && saved.gameId === room.game.gameId && isInGame(room)) {
       added.player.score = saved.score;
+      // ★ R079 — 같은 판에 돌아오면 팀도 그대로(적은 팀 배정을 덮는다)
+      if (room.settings.teamMode && saved.team) added.player.team = saved.team;
       restored = true;
     }
     room.departedScores.delete(session.accountId);
@@ -1347,7 +1426,7 @@ export function ejectPlayer(room: Room, accountId: string, reason: EjectReason):
   const nextHost = room.hostAccountId === accountId ? nextHostCandidate(room, accountId) : null;
 
   // ★ 점수 되살림은 **타의(끊김)로 빠진 사람이 같은 게임에 돌아올 때만** (건우 확정). 그 밖에는 지운다(0점부터)
-  if (reason === 'timeout' && inGame && room.game) room.departedScores.set(accountId, { gameId: room.game.gameId, score: target.score });
+  if (reason === 'timeout' && inGame && room.game) room.departedScores.set(accountId, { gameId: room.game.gameId, score: target.score, team: target.team });
   else room.departedScores.delete(accountId);
   if (reason === 'ban') room.bannedAccountIds.add(accountId);
 

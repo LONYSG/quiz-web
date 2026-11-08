@@ -9,7 +9,7 @@
 //   여기서 게임 판정이나 상태 전환을 하지 않는다.
 // =============================================================================
 
-import type { DifficultyLevel, GameTopic } from '@quiz/shared';
+import type { DifficultyLevel, GameTopic, Team, TeamResult } from '@quiz/shared';
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import type { MinigameKey, MinigamePhase } from '@quiz/shared';
@@ -27,6 +27,8 @@ export interface PlayerView {
   avatarV?: number | null;
   /** ★ R050 — 기기 종류 (🖥 pc / 📱 mobile). 아직 모르면 null */
   device?: 'pc' | 'mobile' | null;
+  /** ★★★ R079 — 팀전 팀(팀전이 꺼져 있으면 null) */
+  team?: Team | null;
 }
 
 export interface ChatView {
@@ -67,6 +69,8 @@ export interface RoomSettings {
   /** ★★★ R057 — 미니게임만 · 미니게임 수(2~10) */
   minigameOnly?: boolean;
   minigameRounds?: number;
+  /** ★★★ R079 — 팀전 (블루 · 레드) */
+  teamMode?: boolean;
 }
 
 /** ★★★ R050 — 미니게임 화면 상태 (서버 minigame/engine.ts MinigameView 와 같은 꼴) */
@@ -224,6 +228,8 @@ export interface GameResultView {
   /** ★★★ R057 — 미니게임만 판이면 'minigame'(점수 = 순위 점수 합) */
   mode?: 'quiz' | 'minigame';
   minigameSeries?: { done: number; total: number } | null;
+  /** ★★★ R079 — 팀전 판의 팀 점수 · 승패 · 보너스(D-335) */
+  teams?: TeamResult | null;
 }
 
 /** ★ 일시정지 (Phase 5). PAUSED 에서만 값이 있다 */

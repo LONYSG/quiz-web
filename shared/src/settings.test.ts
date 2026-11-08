@@ -87,6 +87,8 @@ describe('validateRoomSettings — 형식 방어', () => {
       'minigames',
       'questionCount',
       'startMode',
+      // ★ R079 — 팀전
+      'teamMode',
       // ★ R034 — 분야
       'topics',
     ]);
@@ -233,5 +235,18 @@ describe('★★★ 미니게임만 (R057)', () => {
   });
   it('boolean 이 아니면 거부', () => {
     expect(validateRoomSettings({ ...base, minigameOnly: 'yes' }).ok).toBe(false);
+  });
+});
+
+describe('R079 — teamMode', () => {
+  const base = { questionCount: 10, startMode: 'countdown', countdownSec: 5 };
+  it('없으면 꺼짐 · true 통과 · 형식 틀리면 거부', () => {
+    const a = validateRoomSettings(base);
+    expect(a.ok && a.settings.teamMode).toBe(false);
+    const b = validateRoomSettings({ ...base, teamMode: true });
+    expect(b.ok && b.settings.teamMode).toBe(true);
+    const c = validateRoomSettings({ ...base, teamMode: 'yes' });
+    expect(c.ok).toBe(false);
+    if (!c.ok) expect(c.field).toBe('teamMode');
   });
 });

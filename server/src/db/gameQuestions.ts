@@ -12,6 +12,7 @@
 // =============================================================================
 
 import { query } from './pool.js';
+import { insertGamePlayers } from './games.js';
 import type { AnswerRejectReason, QuestionResolution } from '@quiz/shared';
 
 /** ★ R071 — 0028(target_grade · grade · worth)이 아직 안 돈 DB 면 false 로 바꾸고 옛 꼴로 쓴다(마이그레이션 전에 새 빌드가 떠도 기록이 빠지지 않게) */
@@ -216,13 +217,11 @@ export async function insertMidgamePlayer(input: {
   gameId: string;
   accountId: string;
   colorIndex: number;
+  /** ★ R079 — 팀전 팀 (0030) */
+  team?: 'blue' | 'red' | null;
 }): Promise<void> {
-  await query(
-    `INSERT INTO game_players (game_id, account_id, color_index, is_midgame_join)
-     VALUES ($1, $2, $3, true)
-     ON CONFLICT (game_id, account_id) DO NOTHING`,
-    [input.gameId, input.accountId, input.colorIndex],
-  );
+  // ★ R079 — 팀 열은 insertGamePlayers(중간 참가 한 줄)로 같이 쓴다(0030 없는 DB 폴백도 거기)
+  await insertGamePlayers(input.gameId, [{ accountId: input.accountId, colorIndex: input.colorIndex, isMidgameJoin: true, team: input.team ?? null }]);
 }
 
 /** ★ R074 (0029) — 이 판의 이 문항이 평가 요청 문항이었나(DB) · 0029 전 DB 나 행이 없으면 false */

@@ -45,6 +45,11 @@ export interface Player {
    *   DISCONNECT_REMOVE_MS 에 닿으면 나간 것과 똑같이 빠진다. 다시 붙으면 0.
    */
   awayMs: number;
+  /**
+   * ★★★ R079 (D-335) — 팀전 팀. 팀전을 켜는 순간 joinOrder 번갈아 자동 · 새 입장은 적은 팀.
+   *   팀전을 끄면 값은 남되 화면에는 안 보낸다(snapshot 이 teamMode 일 때만 보냄 · 다시 켜면 다시 자동).
+   */
+  team: import('@quiz/shared').Team | null;
 }
 
 export interface RoomSettings {
@@ -67,6 +72,8 @@ export interface RoomSettings {
   /** ★★★ R057 — 미니게임만 (기본 꺼짐 — D-249) · 그때의 미니게임 수(2~10) */
   minigameOnly: boolean;
   minigameRounds: number;
+  /** ★★★ R079 — 팀전 (기본 꺼짐 · D-329) */
+  teamMode: boolean;
 }
 
 /**
@@ -403,7 +410,7 @@ export interface Room {
    * ★★ R046 — 끊겨서(타의) 빠진 사람의 그 게임 점수. 같은 게임에 다시 들어오면 되살린다 (건우 확정).
    *   ★ 자의(나가기 · 옮기기)나 강퇴 · 차단으로 빠진 사람은 지운다(0점부터). 게임이 끝나 로비로 가면 비운다.
    */
-  departedScores: Map<string, { gameId: string | null; score: number }>;
+  departedScores: Map<string, { gameId: string | null; score: number; /** ★ R079 — 같은 판에 돌아오면 팀도 */ team?: import('@quiz/shared').Team | null }>;
   /** ★ R046 — 끊긴 시간을 세는 tick 의 마지막 시각 */
   awayTickAt: number | null;
 
@@ -494,6 +501,8 @@ export interface GameResultData {
   /** ★★★ R057 — 'minigame' = 미니게임만 판(점수 = 순위 점수 합 · 동점은 마지막 미니게임 순위) · 그때 한 수 / 정한 수 */
   mode: 'quiz' | 'minigame';
   minigameSeries: { done: number; total: number } | null;
+  /** ★★★ R079 — 팀전 판이면 팀 점수 · 승패 · 보너스(D-335) · 아니면 null */
+  teams: import('@quiz/shared').TeamResult | null;
 }
 
 /** 참가자 한 명의 경험률 (guide 6절 표기: "1,234문제 중 153문제 (12.4%)") */

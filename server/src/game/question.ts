@@ -31,9 +31,9 @@
 // =============================================================================
 
 import { checkAchievements } from '../achievements.js';
-import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, flexAnswerSet, generateHint, levelScores, nearestAnswer, normalizeAnswer, rankFinal, skipThreshold } from '@quiz/shared';
+import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, buildTeamResult, flexAnswerSet, generateHint, levelScores, nearestAnswer, normalizeAnswer, rankFinal, skipThreshold, teamLabel } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
-import { endGame } from '../db/games.js';
+import { endGame, grantTeamWin } from '../db/games.js';
 import { insertNearMiss } from '../db/nearMisses.js';
 import { config } from '../config.js';
 import { runBeforeNextQuestion } from './hooks.js';
@@ -616,6 +616,8 @@ export function finishGame(
     totalQuestions: game.totalQuestions,
     mode: series ? 'minigame' : 'quiz',
     minigameSeries: series ? { done: series.done, total: series.total } : null,
+    // ★★★ R079 (D-335) — 팀전 판: 팀 점수 = 팀원 score 합(방에 남은 사람 — 끊긴 사람 포함 · 나간 사람 빠짐) · 보너스는 끝까지 간 판만
+    teams: room.settings.teamMode ? buildTeamResult(rows.map((r) => ({ accountId: r.accountId, team: room.players.get(r.accountId)?.team ?? null, score: r.score })), endReason === 'completed') : null,
   };
 
   room.state = 'GAME_RESULT';
@@ -645,6 +647,21 @@ export function finishGame(
       ),
     );
     fireAndForget('games 종료', endGame(game.gameId, endReason, game.endedQuestionCount));
+    // ★★★ R079 — 팀 승리 보너스(이긴 팀 전원 · 멱등 — 0030 부분 유일 인덱스)
+    const teams = result.teams;
+    if (teams && teams.winner && teams.bonus > 0) {
+      const w = teams.winner;
+      fireAndForget(
+        'team_win',
+        grantTeamWin({
+          gameId: game.gameId,
+          accountIds: teams[w].members,
+          amount: teams.bonus,
+          note: `팀전 승리 ${teamLabel(w)} ${teams[w].score}:${teams[w === 'blue' ? 'red' : 'blue'].score}`,
+          seenIds: rows.filter((r) => r.connected && teams[w].members.includes(r.accountId)).map((r) => r.accountId),
+        }),
+      );
+    }
   }
 }
 

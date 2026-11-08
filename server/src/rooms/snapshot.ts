@@ -37,6 +37,8 @@ export interface PlayerView {
   avatarV: number | null;
   /** ★ R050 — 기기 종류 (🖥 pc / 📱 mobile). 아직 안 알렸으면 null */
   device: 'pc' | 'mobile' | null;
+  /** ★★★ R079 — 팀전 팀 (팀전이 꺼져 있으면 null — 값이 남아 있어도 안 보낸다) */
+  team: import('@quiz/shared').Team | null;
 }
 
 export interface RoomSnapshot {
@@ -207,6 +209,7 @@ export function toPlayerView(room: Room, player: Player, now = Date.now()): Play
     score: player.score,
     avatarV: player.avatarV,
     device: deviceOf(player.accountId),
+    team: room.settings.teamMode ? player.team : null,
   };
 }
 
