@@ -42,7 +42,7 @@ export function rememberRound(view: MinigameView): void {
   }
 }
 
-function useTimer(view: MinigameView, serverNow: () => number) {
+export function useTimer(view: MinigameView, serverNow: () => number) {
   const playing = view.phase === 'play';
   const { key, t0 } = usePlayT0(view, serverNow);
   const now = useFrameNow(playing);
@@ -55,7 +55,7 @@ function useTimer(view: MinigameView, serverNow: () => number) {
 type Fb = { result: 'ok' | 'dup' | 'wrong'; label?: string | null; text?: string; count?: number };
 
 /** 글 입력칸 하나(퀴즈 입력칸과 같은 꼴) — 보내도 비우기만 하고 포커스는 그대로 */
-function TopicInput({ canPlay, mobile, placeholder, onSend, resetKey, label }: { canPlay: boolean; mobile: boolean; placeholder: string; onSend: (t: string) => void; resetKey: string; label: string }) {
+export function TopicInput({ canPlay, mobile, placeholder, onSend, resetKey, label }: { canPlay: boolean; mobile: boolean; placeholder: string; onSend: (t: string) => void; resetKey: string; label: string }) {
   const [text, setText] = useState('');
   const ref = useRef<HTMLInputElement>(null);
   useEffect(() => {

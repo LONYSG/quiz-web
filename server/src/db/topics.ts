@@ -6,7 +6,7 @@
 // ★ 표가 없으면(0031 미적용) 빈 저장소 — 많이 말하기 · 겹치면 무효만 빠진다(게임 시작은 막지 않는다).
 // =============================================================================
 
-import { TOPIC_MIN_ITEMS, buildTopicMatcher, topicLabel } from '@quiz/shared';
+import { ORDER_EXCLUDE, ORDER_MIN_YEARS, TOPIC_BINGO_MIN, TOPIC_MIN_ITEMS, buildTopicMatcher, topicLabel } from '@quiz/shared';
 import { query } from './pool.js';
 
 export interface TopicItem {
@@ -14,6 +14,8 @@ export interface TopicItem {
   name: string;
   label: string;
   variants: string[];
+  /** ★ R081 — 연도(순서대로) */
+  year: number | null;
 }
 
 export interface TopicSet {
@@ -33,8 +35,8 @@ export interface TopicStore {
 let cache: TopicStore | null = null;
 const TTL_MS = 60_000;
 
-export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' | 'open'; timeSec?: number | null }, items: { id: string; name: string; label?: string | null; variants?: string[] }[]): TopicSet {
-  const its = items.map((x) => ({ id: x.id, name: x.name, label: topicLabel(x), variants: x.variants ?? [] }));
+export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' | 'open'; timeSec?: number | null }, items: { id: string; name: string; label?: string | null; variants?: string[]; year?: number | null }[]): TopicSet {
+  const its = items.map((x) => ({ id: x.id, name: x.name, label: topicLabel(x), variants: x.variants ?? [], year: Number.isInteger(x.year) ? (x.year as number) : null }));
   return { topic: h.topic, nameKo: h.nameKo, kind: h.kind, timeSec: h.timeSec && h.timeSec > 0 ? h.timeSec : 30, items: its, matcher: buildTopicMatcher(its) };
 }
 
@@ -43,15 +45,15 @@ export async function loadTopicStore(force = false): Promise<TopicStore> {
   try {
     const [s, it] = await Promise.all([
       query<{ topic: string; name_ko: string; kind: 'closed' | 'open'; time_sec: number }>(`SELECT topic, name_ko, kind, time_sec FROM topic_sets WHERE active ORDER BY topic`),
-      query<{ id: string; topic: string; name: string; label: string | null; variants: string[] }>(
-        `SELECT id, topic, name, label, variants FROM topic_items WHERE active ORDER BY topic, seq`,
+      query<{ id: string; topic: string; name: string; label: string | null; variants: string[]; year: number | null }>(
+        `SELECT id, topic, name, label, variants, year FROM topic_items WHERE active ORDER BY topic, seq`,
       ),
     ]);
-    const by = new Map<string, { id: string; name: string; label: string | null; variants: string[] }[]>();
+    const by = new Map<string, { id: string; name: string; label: string | null; variants: string[]; year: number | null }[]>();
     for (const r of it.rows) {
       let arr = by.get(r.topic);
       if (!arr) by.set(r.topic, (arr = []));
-      arr.push({ id: r.id, name: r.name, label: r.label, variants: Array.isArray(r.variants) ? r.variants : [] });
+      arr.push({ id: r.id, name: r.name, label: r.label, variants: Array.isArray(r.variants) ? r.variants : [], year: r.year });
     }
     cache = { sets: s.rows.map((r) => makeTopicSet({ topic: r.topic, nameKo: r.name_ko, kind: r.kind, timeSec: r.time_sec }, by.get(r.topic) ?? [])), loadedAt: Date.now() };
   } catch (err) {
@@ -70,4 +72,21 @@ export function clearTopicCache(): void {
 /** 많이 말하기 · 겹치면 무효에 쓸 수 있는 세트(closed · 항목 20 이상) */
 export function playableTopics(store: TopicStore | null | undefined): TopicSet[] {
   return (store?.sets ?? []).filter((s) => s.kind === 'closed' && s.items.length >= TOPIC_MIN_ITEMS);
+}
+
+/** ★ R081 — 순서대로: closed · 서로 다른 연도 ORDER_MIN_YEARS 이상 · ORDER_EXCLUDE 아님 */
+export function orderTopics(store: TopicStore | null | undefined): TopicSet[] {
+  return (store?.sets ?? []).filter(
+    (s) => s.kind === 'closed' && !ORDER_EXCLUDE.includes(s.topic) && new Set(s.items.map((x) => x.year).filter((y) => y !== null)).size >= ORDER_MIN_YEARS,
+  );
+}
+
+/** ★ R081 — 빙고: closed · 항목 TOPIC_BINGO_MIN 이상 */
+export function bingoTopics(store: TopicStore | null | undefined): TopicSet[] {
+  return (store?.sets ?? []).filter((s) => s.kind === 'closed' && s.items.length >= TOPIC_BINGO_MIN);
+}
+
+/** 게임 키 → 쓸 수 있는 세트 */
+export function topicsForKey(key: string, store: TopicStore | null | undefined): TopicSet[] {
+  return key === 'order' ? orderTopics(store) : key === 'bingo' ? bingoTopics(store) : playableTopics(store);
 }

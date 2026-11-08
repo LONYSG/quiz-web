@@ -20,7 +20,6 @@ import { randomInt } from 'node:crypto';
 import { config } from '../config.js';
 import {
   MINIGAME_TIMING,
-  UNIQUE_ROUNDS,
   decimalsFor,
   minigameReward,
   minigameSlots,
@@ -44,8 +43,8 @@ import type { Player, Room } from '../rooms/types.js';
 import { beginQuestion, broadcastPlayers, finishGame } from '../game/question.js';
 import { setBeforeNextQuestion } from '../game/hooks.js';
 import { MINIGAME_DEFS, type ParsedInput, type RoundSpec } from './defs.js';
-import { TOPIC_KEYS } from './topicGames.js';
-import { playableTopics } from '../db/topics.js';
+import { TOPIC_KEYS, TOPIC_NEED } from './topicGames.js';
+import { topicsForKey } from '../db/topics.js';
 import { checkAchievements } from '../achievements.js';
 
 /** ★ R074 (§A) — params 안의 그림 id(imageId · a.imageId · b.imageId)마다 [폭, 높이] 를 params.imageDims 로 */
@@ -245,8 +244,8 @@ export function pickMinigameKey(room: Room): MinigameKey | null {
 function topicReady(room: Room, k: MinigameKey): boolean {
   if (!TOPIC_KEYS.has(k) || !room.game) return true;
   const q = room.game.minigameQuiz;
-  const need = k === 'unique' ? UNIQUE_ROUNDS : 1;
-  return playableTopics(q?.topics).filter((s) => !q?.usedTopics?.has(s.topic)).length >= need;
+  // ★ R081 — 게임별 쓸 수 있는 세트(순서대로 = 연도 · 빙고 = 40 이상) · 필요한 수(순서대로 · 겹치면 무효 3 · 나머지 1)
+  return topicsForKey(k, q?.topics).filter((s) => !q?.usedTopics?.has(s.topic)).length >= (TOPIC_NEED[k] ?? 1);
 }
 
 export function startMinigame(
@@ -416,9 +415,12 @@ export function submitMinigame(
 function maybeEndPlayEarly(room: Room, run: MinigameRun, now: number): void {
   if (run.phase !== 'play') return;
   const subs = run.submissions[run.roundIndex]!;
+  const spec = run.rounds[run.roundIndex]!;
+  const skip = MINIGAME_DEFS[run.key].skipWait;
   const waiting = run.participants.filter((p) => {
     const pl = room.players.get(p.accountId);
     if (!pl || !pl.connected) return false;
+    if (skip?.(spec, p.accountId)) return false;
     const s = subs.get(p.accountId);
     return !s || s.provisional;
   });
@@ -454,7 +456,9 @@ export function checkMinigame(room: Room, now: number): void {
       break;
     case 'rules':
     case 'roundResult':
-      if (run.roundIndex + 1 >= run.rounds.length) {
+      // ★ R081 — 빙고처럼 판을 다 돌기 전에 끝나는 게임(isOver)
+      const overSpec = run.phase === 'roundResult' ? run.rounds[run.roundIndex] : undefined;
+      if (run.roundIndex + 1 >= run.rounds.length || (overSpec && MINIGAME_DEFS[run.key].isOver?.(overSpec))) {
         enterFinal(room, run, now);
         break;
       }
@@ -495,6 +499,8 @@ function endRound(room: Room, run: MinigameRun, now: number): void {
     for (const [a, v] of fin.values) {
       const prev = subs.get(a);
       if (prev) subs.set(a, { ...prev, value: v.value, error: v.error ?? prev.error, extra: { ...(prev.extra ?? {}), ...(v.extra ?? {}) } });
+      // ★ R081 — 안 낸 사람에게도 값이 정해지는 게임(빙고 — 자동 호명 · 끝난 판의 순위 값)
+      else subs.set(a, { input: {}, value: v.value, error: v.error ?? null, elapsedMs: null, extra: v.extra ?? {}, provisional: false, submitted: false });
     }
     if (fin.reveal) spec.reveal = fin.reveal;
   }

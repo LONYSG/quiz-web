@@ -48,12 +48,15 @@ import WhichPick from './WhichPick.js';
 import PhotoYear from './PhotoYear.js';
 import { GaugeStop, MinorityPick, OddOneGrid, twemoji } from './R053Games.js';
 import { BalloonArt, BalloonBlow, TapRush } from './R054Games.js';
+import { BingoPlay, BingoReveal, OrderPick, OrderReveal, orderBingoValueText } from './OrderBingo.js';
 import { ChoiceAnswers, ChoicePick, ChoiceReveal, ManyFinalReport, ManyReveal, ManyTalk, UniquePick, UniqueReveal, rememberRound, topicValueText } from './TopicGames.js';
 import { MINIGAME_ICONS } from './MinigameCatalog.js';
 
 /** ★ 판 진행 화면 — 미니게임 키 → 컴포넌트 */
 const PLAY = {
   // ★★★ R080 — 미니게임 1차(D-337)
+  bingo: BingoPlay,
+  order: OrderPick,
   many: ManyTalk,
   unique: UniquePick,
   choice: ChoicePick,
@@ -83,7 +86,8 @@ const R053_KEYS = new Set(['minority', 'oddone', 'gauge', 'balloon', 'tap']);
 const QUIZ_KEYS = new Set(['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear']);
 /** 진행 중 "n / m명 …" 의 말 */
 const TOPIC_KEYS = new Set(['many', 'unique', 'choice']);
-const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { many: '참여', unique: '냄', choice: '고름', cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
+const ORDER_BINGO = new Set(['order', 'bingo']);
+const SUBMIT_WORD: Record<keyof typeof PLAY, string> = { bingo: '부름', order: '고름', many: '참여', unique: '냄', choice: '고름', cake: '누름', balance: '확정', reaction: '누름', typing: '완성', circle: '그림', angle: '확정', price: '냄', worldprice: '냄', photo: '맞힘', estimate: '냄', which: '고름', photoyear: '냄', minority: '고름', oddone: '찾음', gauge: '멈춤', balloon: '멈춤', tap: '참여' }; // ★ R066 — 연타는 누르기 시작한 사람(D-276)
 
 interface Props {
   socket: Socket;
@@ -185,7 +189,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
         )}
         {view.roundIndex >= 0 && view.phase !== 'final' && view.phase !== 'outro' && (
           <span className="mg-round mono">
-            {roundNo} / {view.roundCount}판
+            {view.key === 'bingo' ? (view.roundIndex === 0 ? '채우기' : `호명 ${view.roundIndex}`) : `${roundNo} / ${view.roundCount}판`}
           </span>
         )}
         {view.practice && <span className="badge mg-practice">연습</span>}
@@ -264,7 +268,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
       {view.phase === 'play' && view.key !== 'typing' && <PlayView socket={socket} view={view} serverNow={serverNow} mobile={mobile} />}
 
       {/* ★ R080 — 많이 말하기는 남의 참여도 안 보인다(D-330 ⑺ "남의 개수도 안 보임") */}
-      {view.phase === 'play' && !view.spectating && view.key !== 'many' && (
+      {view.phase === 'play' && !view.spectating && view.key !== 'many' && !(view.key === 'bingo' && view.roundIndex === 0) && (
         <p className="mg-submitted dim">
           {view.submittedCount} / {view.participants.length}명 {SUBMIT_WORD[view.key]}
         </p>
@@ -353,6 +357,10 @@ function AsOfNote({ view }: { view: MinigameView }) {
 function readyDesc(view: MinigameView): string {
   const p = view.round?.params ?? {};
   switch (view.key) {
+    case 'order':
+      return `${String(p.nameKo ?? '')} — 오래된 것부터 차례로`;
+    case 'bingo':
+      return p.phase === 'fill' ? `${String(p.nameKo ?? '')} — 내 판 채우기` : `호명 ${String(p.call ?? '')}`;
     case 'many':
       return `${String(p.nameKo ?? '')} — ${String(p.timeSec ?? 30)}초 동안 최대한 많이!`;
     case 'unique':
@@ -401,6 +409,8 @@ function readyDesc(view: MinigameView): string {
 /** 규칙 안내 그림 */
 function RulesArt({ k }: { k: MinigameView['key'] }) {
   switch (k) {
+    case 'order':
+    case 'bingo':
     case 'many':
     case 'unique':
     case 'choice':
@@ -523,6 +533,7 @@ function RoundResult({
     // ★ R052 — 퀴즈류는 입력 값 · % · 시간 · 맞음/틀림
     if (QUIZ_KEYS.has(view.key)) return quizValueText(view, r);
     if (TOPIC_KEYS.has(view.key)) return topicValueText(view, r);
+    if (ORDER_BINGO.has(view.key)) return orderBingoValueText(view, r);
     // ★ R053
     if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)} ${r.extra.win ? '· 소수파!' : ''}` : '안 고름';
     if (view.key === 'oddone') return r.value !== null && r.submitted ? `${(r.value / 1000).toFixed(2)}초${r.extra?.wrong ? ` (+${Number(r.extra.wrong) * 2})` : ''}` : r.extra?.wrong ? `못 찾음 (${String(r.extra.wrong)}번 틀림)` : '못 찾음';
@@ -553,7 +564,11 @@ function RoundResult({
   };
   return (
     <div className={`mg-result${QUIZ_KEYS.has(view.key) || R053_KEYS.has(view.key) || TOPIC_KEYS.has(view.key) ? ' wide' : ''}`}>
-      {view.key === 'many' ? (
+      {view.key === 'order' ? (
+        <OrderReveal view={view} mine={view.spectating ? undefined : mine} />
+      ) : view.key === 'bingo' ? (
+        <BingoReveal view={view} rows={result.rows} myAccountId={myAccountId} nameOf={nameOf} />
+      ) : view.key === 'many' ? (
         <ManyReveal view={view} rows={result.rows} myAccountId={myAccountId} nameOf={nameOf} />
       ) : view.key === 'unique' ? (
         <UniqueReveal view={view} rows={result.rows} myAccountId={myAccountId} nameOf={nameOf} />

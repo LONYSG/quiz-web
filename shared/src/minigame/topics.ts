@@ -34,9 +34,64 @@ export const CHOICE_MAX_GRADE = 3;
 /** 입력 글 상한 */
 export const TOPIC_TEXT_MAX = 40;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R081 — 순서대로 · 빙고 상수(플레이 뒤 바꾸기 쉽게 한 곳)
+// ─────────────────────────────────────────────────────────────────────────────
+/** 순서대로 — 쓰지 않는 세트(원소 발견 연도는 상식 밖 — D-338) */
+export const ORDER_EXCLUDE: readonly string[] = ['element'];
+/** 순서대로 — 세트에 서로 다른 연도가 이만큼 있어야 쓴다 */
+export const ORDER_MIN_YEARS = 8;
+export const ORDER_CARDS = 5;
+export const ORDER_ROUNDS = 3;
+export const ORDER_PLAY_MS = 20_000;
+export const ORDER_REVEAL_MS = 5_000;
+/** 순서대로 — 안내 한 줄의 기준 말 */
+export const ORDER_BASIS: Readonly<Record<string, string>> = {
+  'joseon-king': '즉위',
+  'kr-president': '취임',
+  'ghibli-film': '개봉',
+  'mcu-film': '개봉',
+  'disney-animated-film': '개봉',
+  'worldcup-host': '개최',
+  'kbo-team': '창단',
+};
+/** 빙고 — 세트 최소 항목 수(18 §9 minItems) · 판 한 변 · 이길 줄 수 · 채우기 · 호명 시간 · 호명 라운드 상한 */
+export const TOPIC_BINGO_MIN = 40;
+export const BINGO_SIZE = 4;
+export const BINGO_LINES_TO_WIN = 2;
+export const BINGO_FILL_MS = 30_000;
+export const BINGO_FILL_REVEAL_MS = 4_000;
+export const BINGO_CALL_MS = 8_000;
+export const BINGO_CALL_REVEAL_MS = 2_500;
+export const BINGO_CALL_ROUNDS = 12;
+
+/** ★ 순서대로 쌍 점수 — 낸 순서에서 앞뒤가 맞은 쌍 수(5장이면 0~10) */
+export function orderPairs(order: readonly string[], yearOf: (id: string) => number): number {
+  let n = 0;
+  for (let i = 0; i < order.length; i += 1) for (let j = i + 1; j < order.length; j += 1) if (yearOf(order[i]!) < yearOf(order[j]!)) n += 1;
+  return n;
+}
+
+/** ★ 빙고 줄(칸 번호 목록) — 가로 · 세로 · 대각 둘 */
+export function bingoLines(size: number = BINGO_SIZE): number[][] {
+  const out: number[][] = [];
+  for (let r = 0; r < size; r += 1) out.push(Array.from({ length: size }, (_, c) => r * size + c));
+  for (let c = 0; c < size; c += 1) out.push(Array.from({ length: size }, (_, r) => r * size + c));
+  out.push(Array.from({ length: size }, (_, i) => i * size + i));
+  out.push(Array.from({ length: size }, (_, i) => i * size + (size - 1 - i)));
+  return out;
+}
+
+/** 다 칠해진 줄 수 */
+export function bingoLineCount(marked: readonly boolean[], size: number = BINGO_SIZE): number {
+  return bingoLines(size).filter((l) => l.every((i) => marked[i])).length;
+}
+
 export interface TopicItemLite {
   id: string;
   name: string;
+  /** ★ R081 — 연도(순서대로 · 없으면 null) */
+  year?: number | null;
   /** 화면용 짧은 이름(없으면 name) */
   label?: string | null;
   variants?: readonly string[];
@@ -153,6 +208,14 @@ export const TOPIC_DUMMY: readonly { topic: string; nameKo: string; items: Topic
       ['월요일'], ['화요일'], ['수요일'], ['목요일'], ['금요일'], ['토요일'], ['일요일'], ['봄'], ['여름'], ['가을'], ['겨울'],
     ]),
   },
+];
+
+/** ★ R081 — 순서대로 연습 더미(연도 있는 세트 셋 · 실제 세트를 스포하지 않는다) */
+const dy = (slug: string, rows: [string, number][]): TopicItemLite[] => rows.map(([name, year], i) => ({ id: `${slug}-${String(i + 1).padStart(3, '0')}`, name, year }));
+export const ORDER_DUMMY: readonly { topic: string; nameKo: string; items: TopicItemLite[] }[] = [
+  { topic: 'dummy-event', nameKo: '한국 근현대 사건', items: dy('dummy-event', [['3·1 운동', 1919], ['광복', 1945], ['6·25 전쟁', 1950], ['4·19 혁명', 1960], ['서울 올림픽', 1988], ['한일 월드컵', 2002]]) },
+  { topic: 'dummy-invent', nameKo: '발명품', items: dy('dummy-invent', [['전화', 1876], ['전구', 1879], ['비행기', 1903], ['텔레비전', 1927], ['월드와이드웹', 1989], ['아이폰', 2007]]) },
+  { topic: 'dummy-sport', nameKo: '대회 첫 개최', items: dy('dummy-sport', [['근대 올림픽', 1896], ['동계 올림픽', 1924], ['FIFA 월드컵', 1930], ['아시안 게임', 1951], ['KBO 리그', 1982]]) },
 ];
 
 /** 객관식 연습 더미 3문항(보기 4 · 정답 첫 칸 — 서버가 섞는다) */

@@ -36,7 +36,10 @@ export type MinigameKey =
   // ★★★ R080 — 미니게임 1차(D-330 · D-337): 주제 세트 둘 + 퀴즈 문항 보기
   | 'many'
   | 'unique'
-  | 'choice';
+  | 'choice'
+  // ★★★ R081 — 미니게임 2차(D-338)
+  | 'order'
+  | 'bingo';
 
 export interface MinigameInfo {
   key: MinigameKey;
@@ -56,7 +59,7 @@ export interface MinigameInfo {
   /** 값이 작을수록 좋은가(케이크 — 오차) · 클수록 좋은가(균형 — 작은 쪽 %) */
   better: 'low' | 'high';
   /** 표시 단위 */
-  unit: '초' | '%' | 'ms' | '°' | '년' | '개' | '점';
+  unit: '초' | '%' | 'ms' | '°' | '년' | '개' | '점' | '쌍' | '줄';
   /** ★ R052 — 판 점수 방식: 'rank'(판 순위 점수 — 기본) · 'correct'(맞히면 1점 · 최종 동점은 맞힌 문항 시간 합이 작은 쪽 — 어느 쪽?) */
   scoring?: 'rank' | 'correct';
   /**
@@ -77,6 +80,34 @@ export interface MinigameInfo {
 
 /** ★ 순서가 표시 순서다 */
 export const MINIGAMES: readonly MinigameInfo[] = [
+  // ★★★ R081 (D-330 ⑹ ⑽ · D-338) — 빙고 · 순서대로(새것 먼저)
+  {
+    key: 'bingo',
+    name: '빙고',
+    oneLine: '주제의 정답으로 4×4 판을 직접 채우고, 돌아가며 동시에 하나씩 불러요 — 2줄 먼저 빙고!',
+    controlsPc: '채우기: 입력 → Enter · 부르기: 내 판의 칸 클릭',
+    controlsMobile: '채우기: 입력 → 확인 · 부르기: 내 판의 칸 톡',
+    kind: 'quiz',
+    rounds: 1,
+    estSec: 150,
+    better: 'high',
+    unit: '줄',
+    fixedDecimals: 0,
+    minPlayers: 2,
+  },
+  {
+    key: 'order',
+    name: '순서대로',
+    oneLine: '카드 다섯 장 — 오래된 것부터 차례로 누르세요! 앞뒤가 맞은 쌍만큼 점수 · 3판',
+    controlsPc: '카드 클릭 또는 1 ~ 5 키(누른 순서대로 번호 · 다시 누르면 취소)',
+    controlsMobile: '카드를 차례로 톡(다시 톡하면 취소)',
+    kind: 'quiz',
+    rounds: 3,
+    estSec: 90,
+    better: 'high',
+    unit: '쌍',
+    fixedDecimals: 0,
+  },
   // ★★★ R080 (D-330 · D-337 · 찬종 "여태 나온 아이디어는 전부 샘플로") — 새것 먼저(표시 순서 = 카탈로그 · 기본 선택 포함)
   {
     key: 'many',

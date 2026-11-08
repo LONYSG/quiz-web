@@ -87,6 +87,7 @@ import type { QuizData, QuizItem } from '../db/minigameItems.js';
 import type { TopicStore } from '../db/topics.js';
 import type { PoolQuestion } from '../db/questionPool.js';
 import { choice, many, unique } from './topicGames.js';
+import { bingo, order } from './topicGames2.js';
 
 export interface RoundSpec {
   /** 항목 · 패턴 키 (기록 · 퀴즈류의 경험 기록에 쓴다 — 퀴즈류는 문항 id) */
@@ -175,6 +176,10 @@ export interface MinigameDef {
   countProvisional?: boolean;
   /** ★ R080 — 퀴즈류지만 문항 경험을 남기지 않는다(객관식 10연속 — 보기로 본 것은 푼 게 아니다) */
   noItemExperience?: boolean;
+  /** ★ R081 — 판 결과 뒤 미니게임을 여기서 끝낼까(빙고 — 한 명 빼고 전원 빙고). 없으면 판을 다 돈다 */
+  isOver?(spec: RoundSpec): boolean;
+  /** ★ R081 — 판을 일찍 끝낼 때 기다리지 않을 사람(빙고 — 이미 빙고한 사람은 호명하지 않는다) */
+  skipWait?(spec: RoundSpec, accountId: string): boolean;
   /**
    * ★ 입력 검사 · 판정 값 계산 (서버). 이상한 값이면 null(받지 않음).
    *   provisional = true 면 "아직 확정 아님"(균형 — 움직이는 동안 보내는 값 · 마감 때 마지막 것을 쓴다)
@@ -886,4 +891,4 @@ const tap: MinigameDef = {
   },
 };
 
-export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, many, unique, choice, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };
+export const MINIGAME_DEFS: Record<MinigameKey, MinigameDef> = { ...MINIGAME_DEFS_PHYSICAL, bingo, order, many, unique, choice, price, worldprice, photo, estimate, which, photoyear, minority, oddone, gauge, balloon, tap };

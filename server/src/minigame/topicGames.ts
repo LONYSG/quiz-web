@@ -24,6 +24,7 @@ import {
   MANY_MAX_TRIES,
   MANY_REVEAL_MS,
   MANY_WRONG_KEEP,
+  ORDER_ROUNDS,
   TOPIC_DUMMY,
   TOPIC_TEXT_MAX,
   UNIQUE_PLAY_MS,
@@ -36,11 +37,13 @@ import {
   seededRandom,
   uniqueResult,
 } from '@quiz/shared';
-import { makeTopicSet, playableTopics, type TopicSet } from '../db/topics.js';
+import { makeTopicSet, topicsForKey, type TopicSet } from '../db/topics.js';
 import type { BuildCtx, MinigameDef, RoundSpec } from './defs.js';
 import { deviceElapsed } from './defs.js';
 
-export const TOPIC_KEYS = new Set(['many', 'unique']);
+export const TOPIC_KEYS = new Set(['many', 'unique', 'order', 'bingo']);
+/** ★ R081 — 주제 세트 게임이 한 판에 쓰는 세트 수 */
+export const TOPIC_NEED: Readonly<Record<string, number>> = { many: 1, unique: UNIQUE_ROUNDS, order: ORDER_ROUNDS, bingo: 1 };
 const num = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null);
 
 function shuffle<T>(arr: T[], rnd: () => number): T[] {
@@ -61,7 +64,8 @@ export function pickTopicSets(
   used: ReadonlySet<string>,
 ): TopicSet[] | null {
   const rnd = seededRandom((seed ^ 0x70b1c) >>> 0);
-  const seen = (s: TopicSet) => participants.filter((a) => experienced.get(a)?.has(`many|topic:${s.topic}`) || experienced.get(a)?.has(`unique|topic:${s.topic}`)).length;
+  // ★ R081 — 네 게임(많이 말하기 · 겹치면 무효 · 순서대로 · 빙고) 어느 것으로 봤어도 본 것
+  const seen = (s: TopicSet) => participants.filter((a) => [...TOPIC_KEYS].some((k) => experienced.get(a)?.has(`${k}|topic:${s.topic}`))).length;
   const pool = shuffle(sets.filter((s) => !used.has(s.topic)), rnd)
     .map((s, i) => ({ s, k: seen(s), i }))
     .sort((a, b) => a.k - b.k || a.i - b.i)
@@ -69,12 +73,13 @@ export function pickTopicSets(
   return pool.length >= n ? pool.slice(0, n) : null;
 }
 
-function topicsFor(n: number, seed: number, ctx: BuildCtx): TopicSet[] | null {
+export function topicsFor(n: number, seed: number, ctx: BuildCtx, key = 'many'): TopicSet[] | null {
   if (ctx.practice) return TOPIC_DUMMY.slice(0, n).map((d) => makeTopicSet({ topic: d.topic, nameKo: d.nameKo, kind: 'closed', timeSec: MANY_DEFAULT_SEC }, d.items.map((x) => ({ id: x.id, name: x.name, variants: [...(x.variants ?? [])] }))));
   const q = ctx.quiz;
   if (!q) return null;
   const used = (q.usedTopics ??= new Set<string>());
-  const pick = pickTopicSets(playableTopics(q.topics), n, seed, ctx.participants, q.experienced, used);
+  // ★ R081 — usedTopics 는 네 게임이 같이 쓴다(한 판 안 같은 주제가 두 게임에 안 나옴 — D-330 ⑸)
+  const pick = pickTopicSets(topicsForKey(key, q.topics), n, seed, ctx.participants, q.experienced, used);
   if (pick) for (const s of pick) used.add(s.topic);
   return pick;
 }
@@ -171,7 +176,7 @@ export const unique: MinigameDef = {
   key: 'unique',
   info: minigameInfo('unique'),
   buildRounds(seed, ctx) {
-    const sets = topicsFor(UNIQUE_ROUNDS, seed, ctx);
+    const sets = topicsFor(UNIQUE_ROUNDS, seed, ctx, 'unique');
     if (!sets) return null;
     return sets.map((s, i) => ({
       itemKey: `topic:${s.topic}`,

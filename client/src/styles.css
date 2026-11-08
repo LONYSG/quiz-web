@@ -9762,3 +9762,154 @@ button.preset.shake {
     grid-column: 1 / -1;
   }
 }
+
+/* =============================================================================
+   ★★★ R081 — 순서대로 · 빙고 (D-338) — 상태는 색 + 기호(①~⑤ · ✓ — 사무실 흑백 D-324)
+   ============================================================================= */
+.order-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+.order-card {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  align-content: center;
+  min-height: 88px;
+  padding: 10px 6px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 3px solid transparent;
+  font: inherit;
+  font-weight: 800;
+  color: inherit;
+  text-align: center;
+  word-break: keep-all;
+  cursor: pointer;
+}
+.order-card:disabled {
+  cursor: default;
+}
+.order-card.picked {
+  border-color: var(--accent);
+}
+.order-num {
+  min-height: 1.4em;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+.order-label {
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+.order-answer {
+  margin: 0;
+  padding-left: 1.6em;
+  display: grid;
+  gap: 3px;
+}
+.order-answer li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+.order-answer li.ok .order-mine {
+  color: var(--ok);
+}
+.order-answer li.bad .order-mine {
+  color: var(--bad);
+}
+.order-year {
+  font-weight: 900;
+}
+.bingo-board {
+  display: grid;
+  gap: 5px;
+  width: min(420px, 100%);
+  margin: 4px auto;
+}
+.bingo-cell {
+  position: relative;
+  aspect-ratio: 1.35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 2px solid transparent;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: inherit;
+  text-align: center;
+  word-break: keep-all;
+  overflow: hidden;
+  cursor: pointer;
+}
+.bingo-cell:disabled {
+  cursor: default;
+}
+.bingo-cell.empty {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--text-dim) 40%, transparent);
+  background: transparent;
+}
+.bingo-cell.on {
+  background: var(--ok-soft);
+  border-color: var(--ok);
+}
+.bingo-cell.picked {
+  border-color: var(--accent);
+}
+.bingo-label {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bingo-check {
+  position: absolute;
+  top: 1px;
+  right: 4px;
+  font-size: 0.75rem;
+  color: var(--ok);
+}
+.bingo-band {
+  list-style: none;
+  margin: 2px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+.bingo-new {
+  margin: 0;
+  text-align: center;
+  font-weight: 900;
+  color: var(--accent);
+}
+.bingo-left {
+  margin: 0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+@media (max-width: 520px) {
+  .order-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .order-card {
+    min-height: 64px;
+  }
+  .bingo-cell {
+    font-size: 0.72rem;
+    aspect-ratio: 1.15;
+  }
+}
