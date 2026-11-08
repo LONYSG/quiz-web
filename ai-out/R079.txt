@@ -1,0 +1,96 @@
+===========================================
+ROUND: R079
+DATE: 2026-11-08 (12:40 ~ KST)
+TASK: 팀전 1차(D-329) — 설정 "팀전" 토글 · 블루(왼쪽) / 레드(오른쪽) · 방장 끌기 + 자동 배정 + 각자 고르기 · 판 중 막대 · 결과 팀 줄 · 이긴 팀 보너스 · 0030 + §F r061 포커스
+STATUS: 완료
+MODEL: Opus 5.5 (claude-opus-5-5)
+===========================================
+
+[cmd 창 요약]
+R079 끝 — 팀전 1차: [팀전] 토글 · 블루/레드 칸 · PC 끌기 · 사람 카드 [블루로/레드로] · 자동 배정 · 막대 · 결과 줄 · 보너스 clamp(ceil(팀 점수/4),1,5)P
+0030 은 파일만(quizweb_test · quizweb_dev 적용) — 실 DB 는 찬종 메뉴 1 [1] · 실 DB 쓰기 0
+§F 제보 포커스(D-336) r061 6/6 · 함께 고침: 끌기 중 글자 선택 · 모바일 결과 순위 1열(옛 CSS 덮임)
+끝 점검(단계별): typecheck · vitest 649 · build · smoke 12/12 · 봇 team 25 · mgonly 16 · result 31 · again · late · ui-check r079 8/8 · r061 6/6 · main-behavior 326
+
+-------------------------------------------
+0. 찬종이 볼 것
+-------------------------------------------
+① ★ **다음 플레이 때 메뉴 1 [1] → "적용 대상 1개: 0030_team_mode.sql" 확인 → A106**(13 — 팀전 체감 8가지).
+   0030 을 건너뛰어도 게임은 시작된다(팀 기록 · 보너스만 빠짐 — 서버 창에 "0030(팀전 열)이 없는 DB" 한 줄).
+② 쓰는 법 — 방장: 설정 카드 맨 위 "방식" 줄 오른쪽 **[팀전]**(2명 이상일 때) → 왼쪽 칸 블루 / 오른쪽 칸 레드로 갈림.
+   팀 바꾸기 = PC 방장은 **자리 카드를 반대쪽 칸으로 끌어다 놓기** · 누구나 **자기 칸(폰은 👥 → 내 줄)을 눌러 [블루로]/[레드로]**
+   · 방장은 남의 카드에서도 · **[자동 배정]** = 입장 순서대로 번갈아. 한 팀이 비면 시작이 안 된다("두 팀에 한 명 이상").
+③ ★ 보너스(D-335 — MAIN 이 정함 · 바꾸기 쉬움 `shared/src/team.ts TEAM_BONUS`): 이긴 팀 **전원**에게 **팀 점수 ÷ 4 올림 · 최소 1 · 최대 5P**
+   (팀 점수 4 → 1P · 6 → 2P · 12 → 3P · 20 이상 → 5P) · 무승부 0 · **끝까지 간 판만**(강제 종료 · 조기 종료 0).
+   이유: 20문제 2~4명이면 이긴 팀 합이 10~20 → 3~5P — 맞힌 문제 1개 = 1P 보다 덤 정도. 너무 작/크면 말해 주면 숫자만 바꾼다.
+④ 그림: docs/design/r079 (lobby-on-pc · drag-mid-pc · lobby-6to1-pc · person-card-m360 · game-bar-pc/m360 · result-*-pc · result-m360 · 사무실).
+⑤ ★ 덧붙인 판단(되돌리기 쉽다): 사람 카드의 팀 버튼은 "반대 팀으로" **한 버튼**(지금 팀은 이름 옆 태그) · 결과 줄은 **이긴 팀 점수를 앞에**("레드 승 1 : 0")
+   · 사무실 테마 레드 = 테두리만 태그 · 결과 행 레드 = 점선 띠 · 판 끝에 끊겨 있던 이긴 팀원은 다음 로그인 때 알림(접속자는 결과 줄로 이미 봄).
+⑥ 브리핑 전제와 다른 것: point_grants reason CHECK 는 셋이 아니라 **다섯**(signup · rate 포함) → 0030 은 여섯으로. (2절)
+⑦ 함께 고친 옛 결함: 모바일 결과 화면이 6명 이상이면 순위가 2열로 그려져 닉네임이 세로로 뭉갬(R041 의 1열 규칙을 뒤 CSS 가 덮음) → 1열로.
+
+-------------------------------------------
+1. 한 것 (A~G)
+-------------------------------------------
+| 단계 | 커밋 | 내용 |
+|---|---|---|
+| A·B | 02620e72 | shared/src/team.ts(자동 배정 · 적은 팀 · 시작 조건 · 합 · 승자 · 보너스 · 결과 요약 + 테스트 5) · settings.teamMode · Player.team · registry addPlayer 적은 팀 · socket updateSettings(2명 이상 · 켜는 순간 자동 · 켜기/끄기 → playersUpdated) · lobby.setTeam · lobby.autoTeams · 같은 판 복귀 팀 유지 · 다시 하기 실패 이유 · start.ts 두 팀 ≥1 · roster team · games.ts team_mode · team · grantTeamWin(ON CONFLICT 부분 인덱스) · 42703 폴백 · 중간 참가 team · finishGame teams + 보너스 · snapshot team · GrantToast team_win · 0030 |
+| C | 955e36b0 | client/src/Team.tsx(TeamTag · TeamBar(memo) · TeamResultLine · useSeatDrag) · GameSettings 팀전 토글 + 자동 배정 · Lobby 팀 칸(팀별 max(5, 인원)) · 끌기 · 이름표 · 사람 카드 팀 버튼(내 칸도 열림) · Seat 태그 · PeoplePanel 팀순 + 태그 · GameResult 팀 줄 + 행 태그 + 잔액 다시 읽기 · CSS(세 테마 토큰 · 사무실 흑백) |
+| D | 73ba50db | 봇 team(25) · ui-check r079(8) + 묶음 · 그림 보고 고침 3(끌기 중 글자 선택 · 결과 줄 순서 · 모바일 결과 1열 + 행 팀 띠) |
+| F | e61097e9 | AppReport useReturnFocus — "창 바깥" = 어느 팝업에도 속하지 않은 곳 (D-336) |
+| G | (이 커밋) | 07 D-335 · D-336 · 01 §15 · 16-R079 · 03 팀전 절 + point_grants · 04 "R079 — 바뀐 것" + updateSettings 행 · 10 59절 · 13 A106 · 05 머리 · 06 · README R 표 · 이 보고서 |
+
+설계 결정 ①~⑧ 중 바꾼 것(⑥ 꼴):
+- ② 사람 카드 버튼: "블루로 / 레드로" 둘 대신 **반대 팀 한 버튼**(지금 팀은 이름 옆 태그로 보임 — 버튼 나열 금지 원칙).
+- ② 본인 바꾸기(PC): 브리핑은 사람 카드 버튼 — 그런데 내 칸은 원래 눌리지 않았다(R063 canPick = 남만) → **팀전 로비에서만 내 칸도 눌러 내 카드(팀 버튼만)** 가 열리게.
+- ④ 칸 머리띠: 머리 줄(칸 높이를 먹는다) 대신 **칸 바탕 옅은 팀 색 + 자리 카드 팀 띠 + B/R 태그**(모든 테마 — 색맹 · 사무실에도 같은 글자).
+- ④ 막대 이모지 🔵🔴 대신 B/R 태그(사무실 흑백 규칙 D-324 — 색 이모지 없음).
+- ⑥ seen_at: 결과 화면을 본 접속자는 지급과 동시에 seen(결과 줄이 이미 알렸다 — 다음 로그인 때 또 토스트가 뜨면 중복) · 끊겨 있던 사람만 GrantToast.
+- ⑦ 0030 없는 DB 폴백(42703 → 옛 꼴) 덧붙임 — 메뉴 1 에서 migrate 를 건너뛰어도 판이 안 깨지게(R074 rate_ask 와 같은 꼴).
+- ③ 카운트다운 중 한 팀이 비면(나감) 그대로 시작(합만) — 시작 조건은 game.start 때 한 번.
+
+-------------------------------------------
+2. 원칙 메모 · 브리핑 확인(원칙 7)
+-------------------------------------------
+- R078 마지막 번호: D-334 · A105 · 10 58절 · 0029 — 맞음. 07 맨 위는 DG-072 → 그 위에 D-336 · D-335(GEN 이 DG-073 을 위에 더할 수 있음).
+- seats-left / right = slots.slice(0, half) / slice(half) · half = ceil(10/2) = 5 — 맞음. maxPlayers 10(RULES.MAX_PLAYERS) — 맞음.
+- POINTS_SQL 이 point_grants 합을 더함 — 맞음(server/src/db/points.ts · 바꾸지 않음).
+- ★ 다름: point_grants reason CHECK 는 **다섯**(feedback_adopted · feedback_monthly_top · admin · signup(0025) · rate(0026)) — 브리핑은 셋. 0030 은 여섯(+ team_win).
+- ref_type CHECK = question_feedback 하나 — 맞음(0023 인라인 · 이름 point_grants_ref_type_check) → + game.
+- GrantToast = POST /api/me/grants/claim(claimUnseenGrants) — 맞음. 단 **마운트(로그인) 때 한 번만** 읽는다 → 판 중 지급은 그 자리 토스트가 안 뜬다 → 결과 줄이 알리고 접속자는 seen 처리(1절 ⑥).
+- 봇 표 8485~ — 맞음(SCENARIOS 8486 → team 추가 뒤 8763).
+- tmp/ops/play.json dir = C:\work\quiz-web-play ≠ 이 트리 · pid 28208 — 빌드 · 검사 자유(실제로 smoke 12/12 · build 여러 번 · 3000 영향 없음). 3000 열린 판은 확인 안 함(실 DB 안 읽음 — 이 라운드 실 DB 쓰기 0).
+- 남는 메모리 5.7~6.5GB(1.5GB 규칙 충족) · GEN G035 · VERIFY V038 같은 트리에서 커밋 중(ec7686ef · 84cefd86 — 내 파일만 add).
+- 기타: `lobby.updateSettings` 는 questionCount 를 늘 함께 보내야 한다(서버가 현재 값으로 채우지 않는 칸) — 봇 첫 실행에서 걸림 · 화면은 늘 전체를 보내 문제 없음(04 에 적음).
+
+-------------------------------------------
+3. 바꾼 파일
+-------------------------------------------
+- shared: src/team.ts(새) · team.test.ts(새) · settings.ts(teamMode) · settings.test.ts · index.ts
+- server: rooms/types.ts · registry.ts · snapshot.ts · socket/index.ts · game/start.ts · game/question.ts · db/games.ts · db/gameQuestions.ts · db/grants.ts · game/answer.test.ts · pause.test.ts(Player.team)
+- client: Team.tsx(새) · Lobby.tsx · Seat.tsx · GameSettings.tsx · GameResult.tsx · PersonCard.tsx · PeoplePanel.tsx · GrantToast.tsx · useRoom.ts · AppReport.tsx(§F) · styles.css
+- migrations/0030_team_mode.sql
+- scripts: bot.mjs(team) · ui-check.mjs(r079Flow) · ui-check-bundles.mjs(r079)
+- docs: 01 · 03 · 04 · 05 · 06 · 07 · 10 · 13 · design/r079/* · ai-out/README · R079.txt
+
+-------------------------------------------
+4. 끝 점검 (quizweb_test · 단계별 — 한 번에 아님)
+-------------------------------------------
+- typecheck 통과 · vitest 42 파일 649/649
+- build 통과(3000 플레이 트리 서버 떠 있는 채 — 빗장 허용)
+- smoke 12/12
+- 봇: team 25/25 · mgonly 16/16 · result 31/31 · again 16/16 · late 12/12
+- ui-check: r079 8/8 · r061 6/6(§F 뒤 — 고치기 전 5/6 재현) · main-behavior 326/326(230초)
+- quizweb_test · quizweb_dev 에 0030 적용(db:test-init · db:dev-init — "적용 대상 1개: 0030_team_mode.sql" · OK). 메뉴 15(개발 서버 3001)로 손 확인은 하지 않음 — 같은 빌드를 ui-check 가 검사 DB 로 띄워 확인.
+
+-------------------------------------------
+5. 새로 생긴 결정 필요 항목
+-------------------------------------------
+- 없음(보너스 크기는 A106 ⑧ 체감 뒤 찬종이 말하면 TEAM_BONUS 숫자만).
+- 2차 후보(R080 이후 · 브리핑 범위 밖): 팀 승리 업적 · 팀 이름 · 밴픽(D-329 2차).
+
+-------------------------------------------
+6. 고친 문서
+-------------------------------------------
+07 D-335 · D-336 / 01 §15 한 줄 · 16-R079 새 절 / 03 point_grants 0030 줄 · "팀전" 절 / 04 lobby.updateSettings 행 · "R079 — 바뀐 것" /
+10 59절 / 13 A106 / 05 머리 / 06 R079 / ai-out/README R 표 / 이 파일

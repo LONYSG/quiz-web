@@ -1074,6 +1074,18 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 59. ★★★ R079 — 팀전 1차 (D-335) · 제보 포커스 (D-336)
+
+| 무엇 | 어떻게 | 결과 |
+|---|---|---|
+| 순수 함수 | `shared/src/team.test.ts` 5 — 자동 배정(joinOrder 번갈아 · 결정적) · 적은 팀 · 시작 조건 · 보너스 clamp · 결과 요약(completed 아니면 0) · `settings.test.ts` teamMode 1 | vitest 649 |
+| 봇 **team** (새 · 25) | 4명 + 중간 입장: 혼자 켜기 거부 · 꺼짐 = team null · 켜기 → 블루·레드·블루·레드 · 한 팀 비우기 → game.start 거부 문구 · 자동 배정 다시(결정적) · 손님 자기 팀 OK / 남의 팀 BAD_REQUEST / 자동 NOT_HOST · 없는 팀 · 판 중 setTeam·autoTeams BAD_REQUEST · 레드 1명 나감 → 중간 입장 레드 · 퀴즈 5 + 균형(3번째 뒤) · teams 합 = 팀원 score 합 · winner · 보너스 식 · point_grants 행 = 이긴 팀 인원 · seen · **같은 판 두 번 지급 0행** · games.team_mode · game_players.team(나간 사람 · 중간 입장 포함) · 결과 화면 setTeam 거부 · 다시 하기 이어받음 · **강제 종료 판 보너스 0 · 지급 0** · 끄기/다시 켜기 | 25/25 |
+| ui-check **r079** (새 · 8) | 방장 PC 1280 · 손님 m360 터치 · 소켓 5(7명): 토글 → 4:3 · 칸 5+5 · 태그 7 · **진짜 마우스 끌기**(dragTo — 블루 → 레드 빈 칸 · 끌기 뒤 사람 카드 안 열림) · 6:1(칸 6줄 · 넘침 0) · [자동 배정] · m360 👥 태그 7 · 내 줄 → 사람 카드 [블루로] · 세 테마 넘침 0(R077_OVERFLOW · PC · m360) · 사무실 태그 무채색 · 판 중 막대 0:0 → 0:1 · 모바일 막대 한 줄 · 결과 줄 "레드 승 1 : 0 · 보너스 +1P" · 행 태그 · m360 안 | 8/8 · 그림 docs/design/r079 |
+| ui-check **r061** | Alt+B → ⚙ 제보 탭 → 일반 제보 → 보내기 뒤 포커스 = 채팅칸 | 고치기 전 5/6(R078 과 같음) → 6/6 |
+
+- **검사가 왜 못 잡았나 / 새로 잡은 것**: ① 끌기 중 **페이지 글자 선택(파란 칠)** — 처음 r079 그림에서 봄(검사 숫자는 다 OK). 포인터 끌기는 mousedown 의 글자 선택을 막아야 한다 → `start` 에서 preventDefault + 움직일 때 선택 지움. ② **모바일 결과 순위 2열** — 1열 규칙(R041 · 2168 줄)을 뒤 `.room .ranking.two`(3526 줄)가 같은 무게로 덮어 6명 이상이면 360 폭에서 닉네임이 세로로 뭉갰다. 옛 검사는 모바일 결과를 5명 이하로만 찍었다 → r079 가 7명 m360 결과를 찍는다(result-m360).
+- 끝 점검 R079: 아래 R079.txt 4절(단계별).
+
 ## 58. ★★ R078 — 플레이 트리 / 개발 서버 실연 · 빌드 빗장 (D-331~334)
 
 - 단위: `scripts/play-tree.test.mjs`(태그 이름 · 메뉴 1 질문 분기 · npm ci 조건 · 경로 비교 · 빌드 빗장 7경우) · `scripts/dev-env.test.mjs`(3001 · quizweb_dev · .env.dev < DEV_*) · `server/src/db/testGuard.test.ts`(개발 서버 실 DB 거부 · 쿠키 -dev).

@@ -380,6 +380,18 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - ★ 포인트 = answer_events.accepted 수 + minigame_rewards 합 + **point_grants 합** − point_spends 합(server/src/db/points.ts POINTS_SQL 넷째 항). 전적 · 업적은 minigame_rewards 만 읽는다(지급은 전적이 아니다).
 - ★ 이관(0023): 2026-10-21 수동 지급을 넣은 가짜 미니게임 판(minigame_key 'admin-grant' · #274 · #463 · #466 → 70 · 200 · 200)을 point_grants('admin' · seen_at 채움)로 옮기고 그 판을 지웠다 — 잔액 그대로(123qwe 97 · yuja0218 2).
 
+- ★★★ **R079 / 0030 · point_grants** — reason 에 `'team_win'`(팀전 승리 보너스 — **서버가 쓴다**(finishGame · completed 만) · clamp(ceil(이긴 팀 점수/4),1,5)P · 결과를 본 접속자는 seen_at 채움) · ref_type 에 `'game'`(ref_id = games.id) · **부분 유일 인덱스 `point_grants_team_win_uq (ref_type, ref_id, account_id) WHERE reason = 'team_win'`**(한 판 한 사람 한 번 · ON CONFLICT DO NOTHING). reason CHECK 전체 = feedback_adopted · feedback_monthly_top · admin · signup(0025) · rate(0026) · team_win(0030).
+
+## ★★★ 팀전 (R079 / 0030 — D-329 · D-335)
+
+| 표 · 열 | 형식 | 규칙 |
+|---------|------|------|
+| `games.team_mode` | boolean NOT NULL DEFAULT false | 팀전 판이었나(시작 때 설정 그대로 · 옛 판 false) |
+| `game_players.team` | text null · CHECK (null · 'blue' · 'red') | 시작 때 · 중간 참가 때 그 사람 팀(팀전 아닌 판 · 옛 행 null) · 판 중에는 바뀌지 않는다(바꾸기는 로비 · 카운트다운만) |
+
+- 팀 점수 · 승패는 저장하지 않는다 — game_players.final_score + team 으로 언제든 다시 센다. 보너스는 point_grants(위).
+- ★ 0030 없는 DB: insertGame · insertGamePlayers 가 42703 을 한 번 보면 옛 꼴로 쓰고(팀 기록 · 보너스 없이) 게임은 그대로 시작한다.
+
 ## ★★ 근접 오답 (R058 / 0022 — D-252 · A83 (나))
 
 | 표 · 열 | 형식 | 규칙 |

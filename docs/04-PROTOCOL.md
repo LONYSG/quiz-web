@@ -597,7 +597,7 @@ Cloudflare 터널 경유 RTT 133~257ms / 오프셋 −21 ~ +49.5ms.
 | `host.kickDisconnected` | C→S | `{ accountId }` (방장) | ✅ |
 | `state.resync` | C→S | `{}` → 서버가 `room.state` 응답 | ✅ |
 | `error` | S→C | `{ code, message, detail }` | ✅ |
-| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec, difficulties?, topics? }` (방장) | ✅ ★★ R033: `startMode`·`countdownSec` 은 **무엇을 보내도 거부하지 않고 `countdown` / `5` 로 맞춘다** (Q-11 개정 — 형식은 그대로 둔다). 게임 시작 직전에도 한 번 더 맞춘다. ★ R025: `difficulties` 는 `('easy'\|'medium'\|'hard')[]`. **보내지 않으면 지금 값을 유지한다.** 빈 배열·모르는 값은 `BAD_REQUEST`. 바뀌면 서버가 출제 가능 수를 다시 세어 `lobby.settingsUpdated` 로 한 번 더 보낸다. ★★ R034: `topics` 는 `('korea'\|'history'\|'science'\|'arts'\|'sports'\|'life'\|'media')[]` — 난이도와 같은 규칙(안 보내면 유지 / 빈 배열·모르는 값 `BAD_REQUEST` / 바뀌면 다시 셈). 출제 가능 수는 **난이도 × 분야** |
+| `lobby.updateSettings` | C→S | `{ questionCount, startMode, countdownSec, difficulties?, topics? }` (방장) | ✅ ★★ R033: `startMode`·`countdownSec` 은 **무엇을 보내도 거부하지 않고 `countdown` / `5` 로 맞춘다** (Q-11 개정 — 형식은 그대로 둔다). 게임 시작 직전에도 한 번 더 맞춘다. ★ R025: `difficulties` 는 `('easy'\|'medium'\|'hard')[]`. **보내지 않으면 지금 값을 유지한다.** 빈 배열·모르는 값은 `BAD_REQUEST`. 바뀌면 서버가 출제 가능 수를 다시 세어 `lobby.settingsUpdated` 로 한 번 더 보낸다. ★★ R034: `topics` 는 `('korea'\|'history'\|'science'\|'arts'\|'sports'\|'life'\|'media')[]` — 난이도와 같은 규칙(안 보내면 유지 / 빈 배열·모르는 값 `BAD_REQUEST` / 바뀌면 다시 셈). 출제 가능 수는 **난이도 × 분야** · ★★★ R079 `teamMode: boolean`(안 보내면 유지 · 켜기는 2명 이상 — 아니면 `BAD_REQUEST` · 켜는 순간 자동 배정 → `room.playersUpdated`) — 아래 "R079 — 바뀐 것" |
 | `lobby.settingsUpdated` | S→C | `{ settings, settingsLocked, availableQuestionCount }` | ✅ |
 | `lobby.experienceRates` | S→C | `{ rates: [{ accountId, experienced, total }] }` | ✅ |
 
@@ -1025,3 +1025,16 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `GET /api/me/points` | `{ ok, earned, correct, rewards, spent, balance }` — earned = correct(맞힌 수) + rewards(미니게임 보상). 샵 잔액도 같은 식 |
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
+
+## ★ R079 — 바뀐 것 (D-335 · 팀전 1차 · 0030)
+
+| 항목 | 내용 |
+|------|------|
+| 설정 `teamMode` | `boolean`(기본 false) — `lobby.updateSettings` 는 보낸 필드만 바꾼다(★ 서버가 채워 주는 칸은 level · topics · minigame* · teamMode — **questionCount 는 늘 함께 보낸다**) · 켜기는 2명 이상(아니면 `BAD_REQUEST` "팀전은 2명 이상일 때 켤 수 있어요.") · false → true 순간 joinOrder 번갈아 자동 배정 + `room.playersUpdated` · 끄면 `room.playersUpdated`(team 모두 null) · 다시 하기 · 로비로 이어받음 |
+| `lobby.setTeam` (C→S · 새) | `{ accountId, team: 'blue' \| 'red' }` — 방장은 누구나 · 본인은 자기만(남이면 `BAD_REQUEST` "다른 사람의 팀은 방장만 바꿀 수 있어요.") · LOBBY · COUNTDOWN 에서만(그 밖 `BAD_REQUEST` "팀은 로비에서만 바꿀 수 있어요.") · 팀전 꺼짐 `BAD_REQUEST` · 형식 틀림 `BAD_REQUEST` · 바뀌면 `room.playersUpdated` |
+| `lobby.autoTeams` (C→S · 새) | `{}` — 방장(아니면 `NOT_HOST`) · 조건은 setTeam 과 같다 · joinOrder 번갈아(블루부터 · 결정적) → `room.playersUpdated` |
+| 스냅샷 · 참가자 보기 | `players[].team: 'blue' \| 'red' \| null` — 팀전이 꺼져 있으면 늘 null(서버 메모리 값은 남는다). `room.state` · `room.playerJoined` · `room.playersUpdated` · `game.returnedToLobby` 모두 같은 꼴 |
+| `game.start` 거부 | teamMode 인데 한 팀이 0명 → `BAD_REQUEST` "팀전은 두 팀에 한 명 이상 있어야 해요." · `game.again` 이 같은 이유로 못 시작하면 방 전체에 `error { code: BAD_REQUEST, message: "다시 하기를 시작하지 못했습니다. …", detail: 'settings' }` |
+| `game.result` · 스냅샷 `result` | `teams: { blue: { score, members: accountId[] }, red: {…}, winner: 'blue' \| 'red' \| null, bonus: number } \| null` — 팀전 판만 · score = 결과 순간 방에 있는 팀원 점수 합 · bonus = 이긴 팀 한 사람당 P(completed 만 · 무승부 0) |
+| 보너스 기록 | 서버가 `point_grants`(reason 'team_win' · ref 'game' · games.id) 에 이긴 팀 전원 한 행씩 · 접속자는 seen_at 채움 · 끊긴 사람은 `POST /api/me/grants/claim` 이 다음 로그인 때 돌려준다(reason 'team_win') |
+| DB (0030) | `games.team_mode` · `game_players.team` · point_grants CHECK(reason + team_win · ref_type + game) · 부분 유일 인덱스 — 03 "팀전" 절 |

@@ -10,6 +10,25 @@
 
 ---
 
+## D-336. 제보 창이 돌려줄 포커스 = 어느 팝업에도 속하지 않은 마지막 자리 (R079 §F · R078 0절 ⑦)
+- **증상**: PC 방 안에서 채팅칸 → Alt+B → ⚙ 창 [일반 제보] → 보내기 뒤 포커스가 채팅칸으로 안 돌아왔다(ui-check r061 5/6 — R078 에서 처음 봄).
+- **원인**: R067(D-300)부터 PC 방 안 Alt+B 는 제보 창이 아니라 **⚙ 창의 제보 탭**을 연다. 제보 창의 useReturnFocus 는 "`.report-modal` 밖에서 마지막으로 포커스된 것" 을 돌아갈 자리로 기억했는데, 그게 ⚙ 창 안의 [일반 제보] 버튼이었다 — ⚙ 창이 닫히며 그 버튼이 사라져 돌려줄 곳이 없었다.
+- **결정**: "창 바깥" = `.report-modal · .modal-back · .popup-back · [role=dialog]` 어디에도 속하지 않은 곳(body 제외). ⚙ 창을 거쳐도 채팅칸(마지막 바깥 자리)으로 돌아간다. D-317 포커스 규칙(채팅칸이 집)과 같은 방향. 화면 구조 변경 없음.
+- 검사: r061 6/6(고치기 전 빌드로 5/6 재현 → 고친 뒤 6/6). 되돌리기: `client/src/AppReport.tsx` inPopup 을 옛 `.report-modal` 한 줄로.
+
+## D-335. 팀전 1차 구현 — teamMode · 블루/레드 · 끌기 + 자동 + 각자 · 이긴 팀 보너스 clamp(ceil(팀 점수/4), 1, 5)P · point_grants team_win · 0030 (R079 · D-329 구현)
+- **설정**: `RoomSettingsInput.teamMode`(기본 false · 다시 하기 · 로비로 이어받음) · 설정 카드 **방식 줄 오른쪽 [팀전] 토글**(퀴즈 · 미니게임만 어느 쪽과도) — 켜져 있으면 옆에 [자동 배정] · 손님은 칩 "팀전". **2명 이상일 때만 켠다**(혼자면 토글 비활성 + 서버도 BAD_REQUEST). 연습(골라 하기)은 팀 없음(판이 아니다 — 막대 · 결과 줄 없음).
+- **배정**: `Player.team`(메모리) — 켜는 순간 joinOrder 순 블루 · 레드 번갈아(블루부터 · 결정적) · 새 입장(로비 · 중간 참가) = **적은 팀**(같으면 블루) · 끊겨 빠졌다 같은 판에 돌아오면 팀도 되살림 · 끄면 값은 남되 스냅샷에 안 보냄(null — 화면 옛 모습) · 다시 켜면 다시 자동. 바꾸기 셋: (가) 방장 PC — 자리 카드를 **반대쪽 칸으로 끌어 놓기**(포인터 끌기 · 6px · 반대 칸 점선/테두리 · 이름표가 따라옴 · 끌기 뒤 클릭 무시) (나) 사람 카드 **"블루로 / 레드로"** 한 버튼(방장 = 누구나 · 본인 = 자기 칸도 눌러 연다 · 모바일은 👥 창에서) (다) [자동 배정](방장). 소켓 `lobby.setTeam {accountId, team}` · `lobby.autoTeams` — LOBBY · COUNTDOWN 에서만(그 밖 BAD_REQUEST "팀은 로비에서만 바꿀 수 있어요") · 팀전 꺼짐 BAD_REQUEST · 손님이 남의 팀 BAD_REQUEST · 자동 배정 손님 NOT_HOST · 바뀌면 `room.playersUpdated`.
+- **시작 조건**: 두 팀 모두 ≥ 1 — 아니면 game.start 거부 BAD_REQUEST "팀전은 두 팀에 한 명 이상 있어야 해요."(다시 하기에서 접속 종료자가 빠져 한 팀이 비면 같은 문구로 방 전체에). 홀수는 합산 그대로 · 안내 없음(찬종). 카운트다운 중 한 팀이 비어도 그대로 시작(합만).
+- **화면**: 왼쪽 칸 = 블루 전원(이어서 빈 칸) · 오른쪽 = 레드 · 칸 수 = 팀별 max(5, 인원)(6:1 이면 6줄) · 칸 바탕 옅은 팀 색 · 자리 카드 팀 띠 + **B/R 태그**(모든 테마 — 사무실은 흑백: 블루 = 채운 칸 · 레드 = 테두리) · 판 중 center-main 맨 위 **한 줄 막대 "B 블루 n ━━ m 레드 R"**(비율 · 앞선 쪽 숫자 색 · 같은 합이면 다시 안 그림(memo) · 미니게임 · 일시정지 중에도) · 결과 순위 위 **"B 블루 승 17 : 12 · 보너스 +3P"**(이긴 팀 점수 먼저 · 무승부 "무승부 0 : 0 · 보너스 없음") · 순위 행 팀 태그 + 왼쪽 띠 · 닉네임 색 그대로 · 채팅 공용.
+- **점수**: 팀 점수 = 결과 순간 방에 있는 팀원 score 합(끊긴 사람 포함 · 나간 사람 빠짐 — 합만 줄어듦) · 미니게임 순위 점수도 이미 score 에 있다. `GameResultData.teams = { blue{score, members[]}, red{…}, winner, bonus } | null`.
+- **보너스(MAIN 확정)**: 이긴 팀 **전원**(결과에 남은 팀원 — 끊긴 사람 포함) 에게 `clamp(ceil(이긴 팀 점수 / 4), 1, 5)` P — 팀 점수 4 → 1P · 6 → 2P · 12 → 3P · 20↑ → 5P. 무승부 0 · **end_reason completed 만**(force_ended · no_questions · abandoned · server_restart 0). 왜 /4 · 상한 5: 실판 20문제 2~4명이면 이긴 팀 합이 대략 10~20 → 3~5P — 맞힌 문제 1개 = 1P(개인) 보다 작게(개인 플레이가 주인공 · 팀 승리는 덤) · 상한이 없으면 50문제 판에서 한 판 보너스가 이모티콘 뽑기 값을 넘는다. 상수는 `shared/src/team.ts TEAM_BONUS` 한 곳.
+- **저장 = point_grants**(설계 (가) 채택): reason `'team_win'` · ref_type `'game'` · ref_id = games.id · note "팀전 승리 블루 17:12" · 결과를 본 접속자는 seen_at = now()(결과 줄이 이미 알림) · 끊겨 있던 사람은 null → 다음 로그인 GrantToast "팀전 승리 보너스 +nP" · **부분 유일 인덱스 `point_grants_team_win_uq (ref_type, ref_id, account_id) WHERE reason = 'team_win'`** + ON CONFLICT DO NOTHING(두 번 끝내도 1행). 잔액 식(POINTS_SQL) 그대로. (나) 새 표 안은 버림 — 지급 알림 · 잔액 · 운영 보고가 이미 point_grants 를 읽는다.
+- **DB 0030**: games.team_mode boolean NOT NULL DEFAULT false · game_players.team text CHECK(blue/red/null) · point_grants reason CHECK 에 'team_win' · ref_type CHECK 에 'game' · 위 인덱스. ★ 0030 없는 DB 에서도 판이 시작되게 insertGame · insertGamePlayers 는 42703(열 없음)을 한 번 보면 옛 꼴로 다시 쓴다(R074 rate_ask 꼴 · 보너스는 건너뜀). 실 DB 적용 = 찬종 메뉴 1 [1].
+- **확인한 브리핑 전제와 다른 것**: point_grants reason CHECK 는 셋이 아니라 **다섯**(0025 'signup' · 0026 'rate' 추가) — 0030 은 여섯으로. `lobby.updateSettings` 는 questionCount 를 늘 함께 보내야 한다(서버가 현재 값을 채워 주지 않는 칸 — 봇은 함께 보낸다 · 화면은 늘 전체를 보낸다).
+- 함께 고친 옛 결함: 모바일 결과 순위 1열 규칙(R041)을 뒤의 `.room .ranking.two`(2열)가 덮어 6명 이상이면 360 폭에서 닉네임이 세로로 뭉갬 → 모바일 1열로(styles.css 끝).
+- 되돌리기: 토글을 끄면 옛 화면(열은 남음). 코드 — `shared/src/team.ts` · settings.teamMode · socket lobby.setTeam/autoTeams · finishGame teams · games.ts grantTeamWin · client Team.tsx · 0030(DROP 문은 파일 머리).
+
 ## DG-073. V037 재정비 1묶음 358 적용 — GEN 재독 뒤 질문 · 힌트 다시 6 · 변형 +18 · 사실 4 · 알가치·등급 그대로 (G035 · 기술 판단 — 설계 CV-157 (a) · CV-158 (b)(찬종 "재판정 굳이")를 옮김 · 생성 없음)
 - **질문 358**: V037 fix_text 를 GEN 이 한 줄씩 다시 읽고 적용 — 그대로 329 · 손질 29(원문에 없던 종류 단서 17 · 정답 조각 2 · 비유일 2 · 주어·어색 8) · 사실 고침 4(웹). 종류 단서는 원문 정보로만(⑴(e)) — 원문에 없으면 빈 채로 둠(6565 · 6255). 유일성 한정어는 원문에 없어도 남김(6525 '기독교 명절').
 - **힌트**: 다시 6 — refit 9 중 5 는 질문 쪽 새 단서를 빼서 겹침이 사라져 그대로. blind 4/6 → 다시 2 → 질문+힌트 판정(CV-152 꼴).
