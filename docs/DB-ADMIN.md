@@ -355,6 +355,18 @@ docker exec -it quiz-web-db psql -U quiz -d quizweb_test
 docker exec quiz-web-db dropdb -U quiz --force quizweb_test
 ```
 
+### ★★ 개발 DB quizweb_dev (R078 · D-333)
+- 개발 서버(`npm run dev` · ops 메뉴 15 · **3001**)는 **quizweb_dev** 를 쓴다 — 실 DB 로는 개발 서버가 뜨지 않는다(`QUIZ_DEV_SERVER` 빗장 · server/src/db/testGuard.ts `devServerRefusal`). `.env` 는 플레이용 그대로 — dev.mjs 가 자식 env 만 덮는다(`DEV_PORT` · `DEV_DATABASE_URL` · 있으면 `.env.dev`).
+- 만들기: `npm run db:dev-init`(= `db-test-init.mjs --dev` · 없으면 지금 quizweb 를 통째 복사 → migrate · 있으면 migrate 만 · 20초 안팎) · 새로: ops 메뉴 17(= `-- --refresh` · 개발 서버를 먼저 끈다) · 백업에서: `-- --refresh --from backups/quizweb-….dump`. 알가치 seed 는 검사 DB 만(개발 DB 는 실 데이터 그대로).
+- 개발 서버는 뜰 때마다 dev DB 에 migrate(적용할 것 있을 때만) — 새 마이그레이션은 **개발 DB 에 먼저**, 실 DB(quizweb)에는 ops 메뉴 1 로 플레이 트리가 그 커밋으로 올라갈 때 들어간다.
+- 개발 DB 는 마음대로 지워도 된다(가입 · 판은 거기만 쌓인다).
+```sql
+-- 개발 DB 에 붙기
+docker exec -it quiz-web-db psql -U quiz -d quizweb_dev
+-- 통째 지우기(다시 만들려면 npm run db:dev-init)
+docker exec quiz-web-db dropdb -U quiz --force quizweb_dev
+```
+
 ## 4. 서버가 켜진 상태에서 바꾸면 — 언제 반영되나
 
 | 바꾼 것 | 바로 반영 | 반영 안 되는 곳 |

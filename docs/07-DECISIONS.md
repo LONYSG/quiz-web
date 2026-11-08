@@ -19,6 +19,27 @@
 - **crossans(E)**: 막힘 0 · COMMON +13(애니메이션 · 할리우드 · 고려가요 …) · 484 낀 경고 297 은 고치지 않고 목록(`audit/g034-crossans-left.json` — V037).
 - 근거 · 수치: `ai-out/G034.txt` · `audit/g034-{plan,decisions,notation,undo-*,crossans-left}.json`.
 
+## D-334. 빌드 빗장 = "3000 이 이 트리에서 떴는가" — tmp/ops/play.json (dir · pid) (R078 · D-331 구현)
+- **결정**: `scripts/test-db.mjs` `liveServerUp()` 은 3000 이 살아 있어도 **play.json 의 dir 이 이 트리가 아니고 · play.json pid 와 /healthz pid 가 같으면** 빌드를 허용한다(`play-tree.mjs buildAllowedWithLive` · 단위 테스트 7). 파일 없음(옛 방식으로 켠 서버) · dir == 이 트리(`--here`) · pid 다름은 거부 + 이유 + "메뉴 3 → 18 → 1" 안내. smoke · ui-check-bundles 메시지 갱신.
+- **왜 pid 까지**: 브리핑은 dir 만 보라고 했다. dir 만 보면 play.json 이 남아 있는 채 누군가 이 트리에서 3000 을 손으로 띄웠을 때 빌드가 열린다 — healthz 에 이미 pid 가 있으니(R070) 비용 없이 한 겹 더(설계 판단을 MAIN 이 덧붙임 · 되돌리기 쉽다 — `buildAllowedWithLive` 의 pid 줄 삭제).
+- **왜 healthz 에 트리 경로를 안 넣었나**: 터널로 밖에 열린 엔드포인트라 PC 경로를 내보내지 않는다.
+- 실측(R078 D ④): 3000 이 플레이 트리에서 떠 있는 채 `node scripts/smoke.mjs` 가 빌드까지 12/12.
+
+## D-333. 개발 서버 = 이 트리 · 3001 · quizweb_dev · QUIZ_DEV_SERVER 빗장 · 쿠키 qw_session-dev (R078 · D-331 구현)
+- **결정**: `npm run dev`(scripts/dev.mjs)는 `.env` 를 손대지 않고 **자식 env 만** 덮는다 — `PORT = DEV_PORT ?? .env.dev PORT ?? 3001` · `DATABASE_URL = DEV_DATABASE_URL ?? .env.dev ?? (.env 의 URL 에서 DB 이름만 quizweb_dev)` · `QUIZ_DEV_SERVER=1`(scripts/dev-env.mjs). 셸의 PORT · DATABASE_URL 은 보지 않는다(.env 를 읽은 ops 창에서 띄워도 3000 · quizweb 로 새지 않게). 뜨기 전에 dev DB migrate(적용할 것 있을 때만 · DB 가 없으면 "먼저 npm run db:dev-init").
+- **서버 빗장**: `devServerRefusal()`(testGuard.ts) — QUIZ_DEV_SERVER=1 + DB 이름 quizweb(또는 못 읽음) → 부팅 정리 전에 거부. `/healthz` 에 `devServer`.
+- **쿠키**: localhost 는 포트가 달라도 쿠키를 공유한다 → QUIZ_DEV_SERVER=1 이면 세션 쿠키 이름 `qw_session-dev`(`sessionCookieName()` · session.ts 의 SESSION_COOKIE 한 곳). 실측: 3001 가입 → `Set-Cookie: qw_session-dev=…` · 두 쿠키를 같이 보내면 3001 은 로그인 · 3000 은 401(자기 쿠키만 본다).
+- `npm run db:dev-init` = `db-test-init.mjs --dev`(복제 대신 플래그 — 같은 복사 · migrate 경로를 한 곳에서 · 알가치 seed 는 검사 DB 만). Vite 프록시(npm run dev:client)도 3001(`DEV_PORT`).
+- ops 메뉴 15 켜기(새 창 quiz-web-dev · ops-run kind `dev` · tmp/ops/dev.log) · 16 끄기 · 17 개발 DB 새로 복사. ★ 메뉴 15 는 이미 R074 "오래된 백업 정리" 였다 — 브리핑 번호(15~18)를 지키고 백업 정리를 **19** 로 옮겼다(R078 0절).
+
+## D-332. 플레이 트리 = git worktree + 로컬 태그 · 메뉴 1 이 코드를 묻는다 (R078 · D-331 구현)
+- **결정**: `scripts/play.mjs` 는 플레이 서버(3000)를 **플레이 트리**(`QUIZ_PLAY_DIR` · 기본 이 트리 옆 `quiz-web-play`)에서 켠다 — migrate(그 트리의 migrations) · `npm run build` · `npm start` · 터널(그 트리의 dev-tunnel.mjs) 모두 cwd = 플레이 트리. 창 래퍼는 이 트리의 ops-run.mjs `--cwd=<플레이 트리>`(로그는 늘 이 트리 tmp/ops — 메뉴 4 · 14).
+- **코드 고르기**(`--code=latest|keep|<ref>` · ops 메뉴 1 이 [1][2][3] 로 묻고 넘긴다 · 메뉴 2 = keep + --no-build): latest = `git fetch origin main`(실패하면 경고 · 아는 origin/main) → 플레이 트리 `checkout --detach` → 그 커밋에 `play/*` 태그가 없으면 `play/YYYYMMDD-HHmm`(겹치면 -2 · 로컬 · push 안 함). 서버가 이미 떠 있으면 코드 고르기 · npm ci · 빌드를 전부 건너뛴다(떠 있는 서버 밑의 파일 · node_modules 를 바꾸지 않는다). 플레이 트리에 고친 파일이 있으면 checkout 거부(읽기 전용 취급). 코드가 바뀌었거나 dist 가 없으면 --no-build 여도 빌드한다.
+- `.env` 는 없을 때만 이 트리에서 복사(값 그대로 · .env.dev 는 안 복사). `npm ci` 는 node_modules 가 없거나 package-lock 해시가 바뀌었을 때만 — 해시는 **플레이 트리 node_modules/.quizweb-lockhash**(브리핑은 play.json 에 두라 했으나 npm ci 가 node_modules 를 지우면 같이 사라져 어긋날 일이 없고, 메뉴 18 → 1 사이에 play.json 이 없어도 된다 · play.json 의 lockHash 는 기록용).
+- 켜면 이 트리의 `tmp/ops/play.json` = `{ dir, head, tag, port, pid, startedAt, lockHash, here }`(3000 일 때만) → D-334 빗장. 메뉴 18(`--tree`) = 없으면 만들기(origin/main · .env · npm ci) · 있으면 상태. 3000 이 아닌 포트(검사)는 옛 방식대로 이 트리.
+- **되돌리기**: 옛 코드 = 메뉴 1 → [3] → 옛 태그(`git tag -l "play/*"`). 옛 방식 = 메뉴 3 → `node scripts/play.mjs --here`(이 트리에서 3000 · play.json dir = 이 트리 → 빌드 빗장이 다시 선다) · 플레이 트리 제거 = `git worktree remove C:\work\quiz-web-play`(태그는 남는다 — `git tag -d`).
+- 실측(R078 D): 메뉴 18 23초(worktree · .env · npm ci 14초 · 237 패키지) → 메뉴 1 [1] 빌드 · 서버 1.5초 · 터널 밖에서 열림 9.4초.
+
 ## DG-071. G032 표본 활성 + 표기 지정 괄호 문구 삭제 (G033 · 기술 판단 — 설계 브리핑 gen.md 와 찬종 결정을 옮김 · 생성 없음)
 
 - **근거(설계 인용)**: V035 CV-146 권장 (b) "163 은 적용 뒤 먼저 활성해도 됨 · 나머지 484 는 같은 눈으로 판정한 뒤" · CV-147 (a) 등급 그대로 · ★ 찬종 2026-11-07 **"영어로 같은건 빼자"** → 설계 해석: 질문의 표기 지정 괄호 문구((영어로) · (한자로) …)를 뺀다 · 같은 이름의 다른 표기(Paris ↔ 파리)는 둘 다 받는다.

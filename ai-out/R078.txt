@@ -1,0 +1,94 @@
+===========================================
+ROUND: R078
+DATE: 2026-11-08 (09:55 ~ KST)
+TASK: 플레이 서버 / 개발 환경 분리 — 플레이(3000 · quizweb · 터널) = worktree C:\work\quiz-web-play(로컬 태그 고정) · 개발 = 이 트리 3001 · quizweb_dev · 빌드 빗장 play.json · ops 메뉴 15~18 (D-331 → D-332~334)
+STATUS: 완료
+MODEL: Opus 5.5 (claude-opus-5-5)
+===========================================
+
+[cmd 창 요약]
+R078 끝 — 플레이 3000 은 C:\work\quiz-web-play(worktree · 태그 play/20261108-1008)에서 뜸 · 개발 = 이 트리 3001 · quizweb_dev
+이 트리 npm run build 앞뒤 3000 index.html 해시 · PID 그대로 · smoke 가 3000 떠 있는 채 빌드 12/12 · 3001 쿠키 qw_session-dev
+메뉴: 1 = 코드 질문 [1][2][3] · 15 개발 켜기 · 16 끄기 · 17 개발 DB 복사 · 18 플레이 트리 · ★ 백업 정리 15 → 19
+실 DB 쓰기 0(rooms · games · minigame_runs 앞뒤 같음) · 마이그레이션 0 · 게임 코드 변경 0
+끝 점검: typecheck · vitest 641 · smoke 12/12 · 봇 mgonly 16/16 · main-behavior 326/326 · r061 5/6(옛 포커스 기대 — R078 무관 · 0절 ⑦)
+
+-------------------------------------------
+0. 찬종이 볼 것
+-------------------------------------------
+① ★ **처음 한 번은 이미 해 둠** — 플레이 트리(C:\work\quiz-web-play)를 만들었고(메뉴 18 · 23초) 실연에서 메뉴 1 [1] 로 한 번 켰다가 끄고 왔다(⑥).
+   다음 플레이 때는 **메뉴 1 → [1](엔터)** 만. 서버가 이미 켜져 있으면 질문 없이 건너뛴다(새 코드는 3 → 1).
+② 바뀐 메뉴 표
+   1  서버 켜기 — "어느 코드로 켤까요? [1] main 최신(기본) [2] 지금 플레이 트리 그대로 [3] 태그·커밋 입력(되돌리기)"
+   2  서버 켜기 — 빌드 건너뜀(= [2] 그대로)
+   3  끄기 (그대로) · 4 상태 — 플레이 트리 HEAD · 태그 · 개발 트리 "플레이보다 n 커밋 앞" · 개발 서버(3001) 줄 추가
+   15 개발 서버 켜기(새 창 quiz-web-dev · http://localhost:3001 · 개발 DB)   16 개발 서버 끄기
+   17 개발 DB 새로 복사(지금 quizweb 통째 · 20초)   18 플레이 트리 만들기 / 상태
+   ★ 19 오래된 백업 정리 — **전에는 15** 였다(R074). 브리핑이 15~18 을 개발 서버 · 플레이 트리로 정해서 19 로 옮김.
+③ 개발 서버 쓰는 법: 메뉴 15 → 브라우저 http://localhost:3001 (개발 DB 는 오늘 10:09 quizweb 복사본 — 같은 아이디 로그인 가능 ·
+   여기서 한 판 · 가입은 실 DB 에 안 남는다). 같은 브라우저에서 3000 · 3001 각각 로그인해도 서로 안 풀린다(쿠키 이름이 다름).
+④ 되돌리기: 옛 코드 = 메뉴 1 → [3] → 옛 태그(목록이 뜬다). 옛 방식(이 트리에서 3000) = 메뉴 3 → `node scripts/play.mjs --here`.
+⑤ 체감 = 13 A105.
+⑦ ★ ui-check r061 1건 FAIL — PC 에서 Alt+B 로 제보를 보낸 뒤 포커스가 채팅 입력칸으로 안 돌아온다(검사 기대). R078 은 client/src 를 안 바꿨고
+   r061 은 R065 뒤 처음 돈 것이라 R067(제보 → ⚙ 탭) 이후 생긴 차이로 추정(확인 필요) — 이번엔 화면 수정 금지라 안 고침 · 다음 MAIN 후보.
+⑧ 브리핑 §G(main-behavior 낡은 기대 4) 는 이미 R074 가 고쳤다(R075 에서 326/326) — 이번에 다시 돌려 326/326 · 고칠 것 없음.
+⑥ 판단(되돌리기 쉽다): 빌드 빗장에 PID 비교를 덧붙임(D-334) · npm ci 해시는 play.json 이 아니라 플레이 트리 node_modules/.quizweb-lockhash(D-332) ·
+   db:dev-init 은 복제 대신 db-test-init --dev 플래그(D-333) · vite 프록시(dev:client)도 3001.
+
+-------------------------------------------
+1. 실측 (D ①~⑥) — 10 58절과 같은 표
+-------------------------------------------
+| | 한 것 | 결과 |
+|---|---|---|
+| ① | 메뉴 18(`play.mjs --tree`) → 메뉴 1 [1](`--code=latest`) | worktree `C:\work\quiz-web-play` @273caa70 · .env 복사 · npm ci 14초(237) · 23초 / 태그 play/20261108-1008 · migrate 적용할 것 없음 · 빌드 · 서버 1.5초(PID 28208 · 창 첫 줄 `트리 C:\work\quiz-web-play`) · DB 확인 quizweb 열린 판 0 · 터널 밖에서 열림 9.4초 |
+| ② | 이 트리 `npm run build` | 3000 의 index.html 해시 265d3728531e → 같음 · GET / 해시 같음 · PID 28208 → 같음(이 트리 index 517354bdd686 — 다른 산출물) |
+| ③ | `db:dev-init`(16초 · questions 7468 · games 1771) → 메뉴 15 | 3001 healthz devServer true · 창 머리 PORT 3001 · DB quizweb_dev · 3001 가입 → `Set-Cookie: qw_session-dev` · 두 쿠키를 같이 보내면 3001 로그인 · 3000 401 · quizweb 에 그 계정 0 |
+| ④ | play.json 있는 채 `node scripts/smoke.mjs` | 빌드 포함 12/12 (3000 떠 있음) |
+| ⑤ | quizweb rooms · games · minigame_runs · 열린 판 · 마이그레이션(D 전체 앞뒤) | 2326 · 1771 · 583 · 0 · 0029 → 같음 |
+| ⑥ | 메뉴 16 → 메뉴 3 | 3001 비움(창 1) · 3000 비움 0.7초(창 2) |
+
+-------------------------------------------
+2. 원칙 메모 · 브리핑 확인(원칙 7)
+-------------------------------------------
+- R077 마지막 번호: D-327 · A104 · 10 57절 · 0029 — 맞음. 07 에 설계 D-328~331 있음 → D-332~334 사용.
+- git worktree list = 이 트리 하나(시작 때) · 디스크 여유 18GB(df) / 17GB(메뉴 18 — 플레이 트리 node_modules 328MB 정도 뒤) · tmp/ops 있음.
+- 3000: 시작 때 꺼져 있음(찬종 플레이 아님) · 열린 판 0 · 남는 메모리 5.2~5.5GB(1.5GB 규칙 충족).
+- 세션 쿠키 이름: server/src/auth/session.ts SESSION_COOKIE 한 곳 — 맞음(봇 · ui-check 는 'qw_session=' 를 찾지만 검사 서버엔 QUIZ_DEV_SERVER 가 없다).
+- ★ 다름: ops 메뉴 **15 는 이미 "오래된 백업 정리"(R074)** — 브리핑의 "10~14 는 그대로" 는 맞지만 15 가 비어 있다는 전제는 틀림 → 19 로 옮김.
+- ★ 다름: ai-out/README R 표에 R077 줄이 없었다 → 이번에 R077 · R078 두 줄 넣음.
+- GEN G034 · VERIFY V037 창: g034-raw · v037-raw 가 작업 트리에 생기고 있음(add 안 함).
+- 실 DB 마이그레이션: 메뉴 1 실연 때 "적용할 것 없음"(0029 까지) — 정상.
+
+-------------------------------------------
+3. 바꾼 파일
+-------------------------------------------
+- scripts/play.mjs (플레이 트리 · 코드 고르기 · 태그 · .env · npm ci · play.json · --here · --tree) · scripts/play-tree.mjs(새 · 순수 함수) · play-tree.test.mjs(5)
+- scripts/ops.mjs (메뉴 1 질문 · 2 keep · 4 상태 · 15 · 16 · 17 · 18 · 19) · ops-run.mjs(--cwd= · kind dev 머리 줄) · ops-lib.mjs(gitHead(dir))
+- scripts/dev.mjs (3001 · quizweb_dev · dev DB migrate) · dev-env.mjs(새) · dev-env.test.mjs(2) · db-test-init.mjs(--dev) · test-db.mjs(DEV 상수 · liveServerUp ← play.json)
+- scripts/smoke.mjs · ui-check-bundles.mjs (빗장 메시지) · package.json(db:dev-init) · client/vite.config.ts(프록시 3001)
+- server/src/db/testGuard.ts(+ isDevServer · devServerRefusal · sessionCookieName) · .test.ts · auth/session.ts(쿠키 이름) · index.ts(빗장 · healthz devServer)
+- (G) 고친 것 없음 — main-behavior 가 이미 326/326(아래 4절 · 0절 ⑧)
+
+-------------------------------------------
+4. 끝 점검 (quizweb_test · 단계별)
+-------------------------------------------
+단계별(한 번에 아님):
+- typecheck 통과 · vitest 41 파일 641/641
+- smoke 12/12 (빌드 포함 · 3000 플레이 트리 서버가 떠 있는 채 — 실연 ④)
+- 봇 mgonly 16/16
+- ui-check main-behavior 326/326 (UICHECK_NO_BUILD=1 · 233초)
+- ui-check r061 5/6 ✗ — "🐞 PC … 포커스 돌려줌" 하나(hFocus false · 두 번 같음). 다른 조건(맥락 줄 · 토스트 · 행)은 맞음. 그림은 되돌림(커밋 안 함).
+
+-------------------------------------------
+5. 문서
+-------------------------------------------
+07 D-332~334 · 13 A105 · 10 58절 · 11 §2(표 전부 · 처음 한 번 · 빗장 · 되돌리기) · DB-ADMIN "개발 DB" · 16 §6 환경 한 줄 · 05 · 06 · README(R077 · R078)
+
+-------------------------------------------
+7. 자기 점검
+-------------------------------------------
+- ③ "같은 브라우저 동시 로그인" 은 실제 브라우저가 아니라 curl 로: 3001 가입 → Set-Cookie qw_session-dev · 두 쿠키를 같이 보내면 3001 로그인 · 3000 401.
+  3000 에 실제 로그인은 하지 않았다(quizweb 세션 쓰기 금지 — 브리핑 DB 쓰기 없음). 실기기 확인은 A105 ③.
+- 메뉴 1 의 대화형 질문 화면은 ops.mjs 에 표준 입력을 흘려 넣어 15 · 4 만 돌렸다 — [1][2][3] 분기는 단위 테스트(parseCodeChoice) + play.mjs --code=latest 실연. [3] 옛 태그로 되돌리기 · --here 는 실연 안 함(태그가 하나뿐).
+- 메뉴 18 첫 실연은 npm ci 해시 표시를 play.json 에 두던 판 → 고친 뒤 표시 파일을 손으로 한 번 썼다(같은 해시 3a3f264e211e). 다음 메뉴 1 부터는 스크립트가 쓴다.
+- dev 창(quiz-web-dev) · 서버 · 터널 창은 실연 끝에 모두 닫음(⑥).

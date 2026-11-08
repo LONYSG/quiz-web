@@ -1074,6 +1074,23 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 58. ★★ R078 — 플레이 트리 / 개발 서버 실연 · 빌드 빗장 (D-331~334)
+
+- 단위: `scripts/play-tree.test.mjs`(태그 이름 · 메뉴 1 질문 분기 · npm ci 조건 · 경로 비교 · 빌드 빗장 7경우) · `scripts/dev-env.test.mjs`(3001 · quizweb_dev · .env.dev < DEV_*) · `server/src/db/testGuard.test.ts`(개발 서버 실 DB 거부 · 쿠키 -dev).
+- 실연(2026-11-08 10:07~10:20 · 찬종 플레이 아님 · 열린 판 0 · 남는 메모리 5.2~5.5GB):
+
+| | 한 것 | 결과 |
+|---|---|---|
+| ① | 메뉴 18(`play.mjs --tree`) → 메뉴 1 [1](`--code=latest`) | worktree `C:\work\quiz-web-play` @273caa70 · .env 복사 · npm ci 14초(237) · 23초 / 태그 play/20261108-1008 · migrate 적용할 것 없음 · 빌드 · 서버 1.5초(PID 28208 · 창 첫 줄 `트리 C:\work\quiz-web-play`) · DB 확인 quizweb 열린 판 0 · 터널 밖에서 열림 9.4초 |
+| ② | 이 트리 `npm run build` | 3000 의 index.html 해시 265d3728531e → 같음 · GET / 해시 같음 · PID 28208 → 같음(이 트리 index 517354bdd686 — 다른 산출물) |
+| ③ | `db:dev-init`(16초 · questions 7468 · games 1771) → 메뉴 15 | 3001 healthz devServer true · 창 머리 PORT 3001 · DB quizweb_dev · 3001 가입 → `Set-Cookie: qw_session-dev` · 두 쿠키를 같이 보내면 3001 로그인 · 3000 401 · quizweb 에 그 계정 0 |
+| ④ | play.json 있는 채 `node scripts/smoke.mjs` | 빌드 포함 12/12 (3000 떠 있음) |
+| ⑤ | quizweb rooms · games · minigame_runs · 열린 판 · 마이그레이션(D 전체 앞뒤) | 2326 · 1771 · 583 · 0 · 0029 → 같음 |
+| ⑥ | 메뉴 16 → 메뉴 3 | 3001 비움(창 1) · 3000 비움 0.7초(창 2) |
+
+- 끝 점검(quizweb_test): typecheck · vitest 41 파일 641 · smoke 12/12 · 봇 mgonly 16/16 · ui-check **main-behavior 326/326**(R078 §G — R073 의 낡은 기대 4 는 R074 가 이미 고쳤고 R075 에서 326/326 — 이번에 다시 끝까지) · **r061 5/6**(FAIL 1 = 🐞 PC 제보 뒤 채팅 입력칸으로 포커스 안 돌아옴 — 두 번 같음 · R078 은 client/src 를 안 바꿨다 · r061 의 마지막 실행은 R065 → R067 이 제보를 ⚙ 탭으로 옮긴 뒤 처음 → 다음 MAIN 후보).
+- 왜 전에 못 잡았나: 빌드 빗장(R060)은 "3000 이 떠 있나" 만 봤다 — 어느 트리의 dist 인지 몰라 늘 막거나(검사) 늘 열어야(QUIZ_BUILD_WITH_LIVE) 했다. 이제 play.json(dir · pid)이 그 질문에 답한다.
+
 ## 57. ★★★ R077 — 로비 카드 넘침 settings-overflow · 소수파 선택지 = 인원 − 1 (D-327)
 
 - 묶음 `r077`(`UICHECK_NO_BUILD=1 node scripts/ui-check-bundles.mjs r077` · `R077_ONLY=overflow|minority` · `R077_TAG=before|after` = 그림 · JSON 꼬리).

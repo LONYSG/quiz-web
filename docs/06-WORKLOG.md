@@ -8,6 +8,17 @@
 
 ---
 
+## 2026-11-08 — 플레이 서버 / 개발 환경 분리 (R078, MAIN · 게임 규칙 코드 변경 없음)
+
+- **무엇을**: 찬종 11-08 "개발용 서버를 따로 운용해야 하나? … 배포용 서버와 개발 서버를 두는 게 효율적일까" → D-331(같은 PC · dev 서버 + dev DB · 브랜치 아니라 태그 + worktree). 플레이 3000 은 `C:\work\quiz-web-play` worktree 에서 태그로 고정 · 개발은 이 트리 3001 · quizweb_dev.
+  - [x] A 플레이 트리 — play.mjs(worktree · fetch · checkout --detach · 태그 · .env 복사 · npm ci 조건 · cwd 전부 플레이 트리 · play.json · --here · --tree) · ops 메뉴 1 질문 · 2 = keep · 18 · play-tree 단위 5 (23ccd877)
+  - [x] B 개발 서버 — dev.mjs 3001 · quizweb_dev · dev DB migrate · QUIZ_DEV_SERVER 빗장 · 쿠키 qw_session-dev · db:dev-init · 메뉴 15 · 16 · 17 · 4 상태 · vite 프록시 3001 (6bd9893c)
+  - [x] C 빌드 빗장 — liveServerUp ← play.json(dir · pid) (273caa70)
+  - [x] D 실연 ①~⑥ (10 58절) · npm ci 해시 표시를 node_modules 로 옮김
+  - [x] E 끝 점검 — typecheck · vitest 41 파일 641 · smoke 12/12(3000 떠 있는 채 빌드) · 봇 mgonly 16/16 · ui-check r061 · main-behavior(G)
+  - [x] F 문서 · G main-behavior 낡은 기대
+- **찾은 것**: 메뉴 15 는 이미 R074 "오래된 백업 정리" — 브리핑 번호를 지키고 백업 정리를 19 로. 세션 쿠키 이름은 session.ts 한 곳(SESSION_COOKIE) — 봇 · ui-check 는 `qw_session=` 를 찾지만 검사 서버는 QUIZ_DEV_SERVER 가 없어 그대로.
+
 ## 2026-11-06 — 소수파 선택지 = 인원 − 1 · 로비 이름 줄 넘침 · 제보 #112~#115 (R077, MAIN)
 
 - **무엇을**: 찬종 11-06 저녁(친구들과 플레이 중) "소수파 고르기에서 인원 수보다 선택지가 적게 · 사무실 모드 하면 글자가 깨져(로비 설정 카드 미니게임 이름 줄이 카드 밖) · 굳이 저렇게 안 보여줘도 · 팝업으로 확인하잖아" + 앱 제보 4.
