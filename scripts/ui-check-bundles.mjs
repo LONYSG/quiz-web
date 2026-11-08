@@ -88,6 +88,8 @@ export const BUNDLES = [
   { id: 'r077', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R077: '1', SHOT_DIR: 'r077', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },
   // ★ R079 — 팀전 1차(토글 · 두 색 칸 · PC 끌기 · 6:1 · 자동 배정 · 모바일 👥 사람 카드 팀 버튼 · 세 테마 · 사무실 B/R · 판 중 막대 · 결과 팀 줄 · 넘침 0)
   { id: 'r079', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R079: '1', SHOT_DIR: 'r079', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '1500' }) },
+  // ★ R085 — OX 10연속(고르기 창 · 큰 O/X · 키 바꾸기 · m360 버튼 · 가장 긴 문장 넘침 · 공개 · 최종 목록 · 세 테마)
+  { id: 'r085', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R085: '1', SHOT_DIR: 'r085', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R084 — 노래 둘(고르기 창 · [▶ 듣기] · audio src · ✓ 제목/가수 · 공개 카드 · 연도 바꾸기 · 재생 실패 건너뜀 · 세 테마 · m360) — 소리 자체는 검사 안 함(A111)
   { id: 'r084', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R084: '1', SHOT_DIR: 'r084', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R083 — 캐치마인드(방식 네 버튼 · 캔버스 · 도구 · 채팅 줄임 · 마우스/손가락 선 · 정답 시스템 줄 · 공개 · 결과 · 세 테마 · m360)

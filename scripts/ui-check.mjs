@@ -4604,6 +4604,149 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R085 — OX 10연속 화면 (D-342) (UICHECK_R085=1 · 묶음 r085 · docs/design/r085)
+//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 1개(OX)
+//   큰 O/X 두 버튼 · 키(O · →) · 바꾸기 · m360 버튼 화면 안 · 가장 긴 문장 넘침 0 · 공개(정답 · 해설) · 최종 목록 10 · 세 테마
+// =============================================================================
+async function r085Flow(browser) {
+  const H = await newPage(browser, 'R085-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'oxh', 'OX방장');
+  const roomId = await createRoom(H, 'R085 OX');
+  const G = await newPage(browser, 'R085-g', true);
+  await signUp(G, 'oxg', 'OX손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'oxs');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r085] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const over = (P) => P.evaluate('document.documentElement.scrollWidth - innerWidth');
+  const stateOf = (P) => P.evaluate("(() => { const c = document.querySelector('.mg-card'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; const k = [...c.classList].find((x) => x.startsWith('mg-') && !x.startsWith('mg-phase') && x !== 'mg-card'); return `${k?.slice(3)}:${c.dataset.phase}:${document.querySelector('.mg-round')?.innerText ?? ''}`; })()");
+  const answerOf = (id) => withPg(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [id])).rows[0]?.payload ?? null);
+  const key = async (P, k, code) => {
+    await P.send('Input.dispatchKeyEvent', { type: 'keyDown', key: k, code, windowsVirtualKeyCode: k.length === 1 ? k.toUpperCase().charCodeAt(0) : 39 });
+    await P.send('Input.dispatchKeyEvent', { type: 'keyUp', key: k, code, windowsVirtualKeyCode: k.length === 1 ? k.toUpperCase().charCodeAt(0) : 39 });
+  };
+  let sMg = null;
+  S.on('minigame.state', (p) => (sMg = p.minigame));
+  // 가장 긴 문장(넘침 확인용 — 화면에 직접 넣어 본다)
+  const longest = await withPg(async (c) => (await c.query(`SELECT payload->>'statement' s FROM minigame_items WHERE game = 'ox' AND active ORDER BY length(payload->>'statement') DESC LIMIT 1`)).rows[0]?.s ?? '');
+
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(300);
+  await realClick(H, '[data-mg-catalog-open]');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 4000).catch(() => false);
+  await sleep(300);
+  const first = await H.evaluate("document.querySelector('.mg-cat-card')?.dataset.key ?? ''");
+  await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+  await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+  await sleep(300);
+  const picked = await selectMinigames(H, ['ox']);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const done = new Set();
+  const res = { play: null, gPlay: null, reveal: null, final: null, themes: [] };
+  const t0 = Date.now();
+  let tok = null;
+  while (Date.now() - t0 < 300000) {
+    const st = await stateOf(H);
+    if (st === 'result') break;
+    if (!st || done.has(st)) {
+      await sleep(120);
+      continue;
+    }
+    done.add(st);
+    const [k, phase, roundTxt] = st.split(':');
+    const round = Number((roundTxt ?? '').split('/')[0].trim()) || 0;
+    if (k !== 'ox') continue;
+    if (phase === 'play') {
+      tok ??= sMg?.token;
+      if (sMg?.token !== tok) continue; // 둘째 판은 그냥 흘려 보낸다
+      await sleep(250);
+      const it = sMg?.round?.itemId ? await answerOf(sMg.round.itemId) : null;
+      const ans = it?.answer === true;
+      if (round === 1) {
+        // 방장: 틀린 쪽 키 → 맞는 쪽 키로 바꿈 · 손님: 맞는 쪽 톡
+        await key(H, ans ? 'x' : 'o', ans ? 'KeyX' : 'KeyO');
+        await sleep(250);
+        const first = await H.evaluate("document.querySelector('[data-ox-mine]')?.dataset.oxMine ?? ''");
+        await key(H, ans ? 'o' : 'x', ans ? 'KeyO' : 'KeyX');
+        await sleep(250);
+        const second = await H.evaluate("JSON.stringify({ mine: document.querySelector('[data-ox-mine]')?.dataset.oxMine ?? '', pressed: [...document.querySelectorAll('.ox-btn')].map((b) => b.dataset.ox + (b.getAttribute('aria-pressed') === 'true' ? '*' : '')).join(','), stmt: document.querySelector('[data-ox-statement]')?.innerText ?? '' })");
+        await realClick(G, `.ox-btn[data-ox="${ans ? 'O' : 'X'}"]`);
+        await sleep(250);
+        res.play = { ans: ans ? 'O' : 'X', first, ...JSON.parse(second) };
+        res.gPlay = JSON.parse(await G.evaluate("JSON.stringify({ mine: document.querySelector('[data-ox-mine]')?.dataset.oxMine ?? '', btnIn: [...document.querySelectorAll('.ox-btn')].every((b) => { const r = b.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth + 1 && r.height >= 70; }), count: document.querySelector('.mg-submitted')?.innerText ?? '' })"));
+        await snap(H, 'ox-play-pc');
+        await snap(G, 'ox-play-m360');
+        // 가장 긴 문장을 넣어 m360 넘침
+        await G.evaluate(`(() => { const e = document.querySelector('[data-ox-statement]'); if (e) e.lastChild.textContent = ' ' + ${JSON.stringify(longest)}; })()`);
+        await sleep(150);
+        res.themes.push(['ox-play-long m360', await over(G)]);
+        await snap(G, 'ox-play-long-m360');
+        await theme(G, 'office');
+        await sleep(150);
+        await snap(G, 'ox-play-office-m360');
+        await theme(G, 'pastel');
+        S.emit('minigame.submit', { token: sMg.token, roundIndex: sMg.roundIndex, input: { pick: !ans, elapsedMs: 900 } });
+      } else {
+        await realClick(H, `.ox-btn[data-ox="${ans ? 'O' : 'X'}"]`).catch(() => undefined);
+      }
+    }
+    if (phase === 'roundResult' && round === 1 && sMg?.token === tok) {
+      await sleep(200);
+      res.reveal = JSON.parse(await H.evaluate("JSON.stringify({ ans: document.querySelector('[data-ox-reveal]')?.dataset.oxReveal ?? '', my: document.querySelector('[data-ox-my]')?.dataset.oxMy ?? '', expl: document.querySelector('[data-ox-expl]')?.innerText ?? '' })"));
+      await snap(H, 'ox-reveal-pc');
+      await snap(G, 'ox-reveal-m360');
+      res.themes.push(['ox-reveal m360', await over(G)]);
+      await theme(H, 'night');
+      await sleep(150);
+      await snap(H, 'ox-reveal-night-pc');
+      await theme(H, 'pastel');
+    }
+    if (phase === 'final' && !res.final) {
+      await sleep(250);
+      res.final = JSON.parse(await H.evaluate("JSON.stringify({ rows: document.querySelectorAll('[data-ox-row]').length, ok: document.querySelectorAll('[data-ox-row=\"ok\"]').length, expl: document.querySelectorAll('.ox-a-e').length, summary: !!document.querySelector('.which-summary') })"));
+      await snap(H, 'ox-final-pc');
+      await snap(G, 'ox-final-m360');
+      res.themes.push(['ox-final m360', await over(G)]);
+      await theme(H, 'office');
+      await sleep(150);
+      await snap(H, 'ox-final-office-pc');
+      await theme(H, 'pastel');
+    }
+    await sleep(80);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 30000).catch(() => false);
+  await sleep(400);
+  const result = await H.evaluate("document.querySelectorAll('.ranking li').length");
+  await snap(H, 'result-pc');
+  note('고르기 창', { first, picked });
+  note('판', { play: res.play, g: res.gPlay, longest: [...longest].length });
+  note('공개', res.reveal);
+  note('최종', res.final);
+  note('넘침', res.themes);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r085'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r085'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r085', 'r085.json'), JSON.stringify(rows, null, 1));
+  const p = res.play;
+  record('★★ R085 고르기 창 — 맨 앞 OX 10연속 · 고름', first === 'ox' && picked === 'ox', JSON.stringify({ first, picked }));
+  record('★★★ R085 판 — 문장 · 키로 틀린 쪽 → 맞는 쪽 바꿈(눌림 표시 하나)', Boolean(p && p.stmt && p.first && p.first !== p.ans && p.mine === p.ans && p.pressed.split(',').filter((x) => x.endsWith('*')).length === 1), JSON.stringify(p));
+  record('★★★ R085 m360 — 손님 톡 · 두 버튼 화면 안 · 높이 70 이상 · 낸 수 줄', Boolean(res.gPlay && res.gPlay.mine && res.gPlay.btnIn && /명/.test(res.gPlay.count)), JSON.stringify(res.gPlay));
+  record('★★★ R085 공개 — 정답 · 내 답 맞음 · 해설', Boolean(res.reveal && res.reveal.ans === p?.ans && res.reveal.my === 'ok' && res.reveal.expl.length > 5), JSON.stringify(res.reveal));
+  record('★★★ R085 최종 — 10 문장 목록 · 해설 · 문항별 표', Boolean(res.final && res.final.rows === 10 && res.final.expl >= 9 && res.final.summary), JSON.stringify(res.final));
+  record('★★ R085 넘침 0(가장 긴 문장 m360 · 공개 · 최종) · 결과 3명', res.themes.every(([, o]) => o <= 1) && result === 3, JSON.stringify({ t: res.themes, result }));
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R084 — 노래 둘 화면 (D-341) (UICHECK_R084=1 · 묶음 r084 · docs/design/r084)
 //   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 2개(노래 맞히기 · 이 노래 몇 년도?)
 //   [▶ 듣기] 버튼 · audio 요소 src = previewUrl · 입력 · ✓ 제목/가수 칸 · 공개 카드(앨범 그림 · 표기) · 연도 입력(바꾸기) ·
@@ -9123,6 +9266,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R085 — OX 10연속
+  if (process.env.UICHECK_R085) {
+    await closeAllTabs(browser);
+    await r085Flow(browser);
   }
   // ★ R084 — 노래 둘
   if (process.env.UICHECK_R084) {

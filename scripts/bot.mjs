@@ -7738,6 +7738,8 @@ async function scenarioMgOnly() {
   await mgOrderBingo(bots, host);
   // ★★★ R084 — 노래 둘
   await mgSongPair(bots, host);
+  // ★★★ R085 — OX 10연속
+  await mgOxTen(bots, host);
   for (const b of all) {
     b.leave();
     await sleep(40);
@@ -7875,6 +7877,103 @@ async function mgTopicTrio(bots, host) {
     b.onMinigame = null;
     b.socket.off('minigame.feedback', fbOn.get(b));
   }
+}
+
+// =============================================================================
+// ★★★ R085 — OX 10연속 (미니게임만 1개 — mgonly 뒤에 이어서 · 같은 방 · 봇 셋)
+//   정답은 quizweb_test minigame_items(game 'ox')의 payload. b1 = 늘 맞힘(첫 문장은 틀렸다가 바꿈) · b2 = 늘 틀림 · b3 = 짝수 문장만 맞힘 · 홀수 안 누름
+//   확인: 10 문장 · 앞 5 grade 1 · 뒤 5 grade ≥ 2 · 같은 pairId 없음 · 대분류 ≤ 3 · 판 중 정답 안 보냄 · 바꾼 마지막 답 · 맞힌 수 10 · 0 · 5 · 경험 10
+// =============================================================================
+async function mgOxTen(bots, host) {
+  log('\n[R085] OX 10연속 (미니게임만 1개)');
+  const ag = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(ag, 'game.countdownStarted').length > 0, 8000, '다시 하기(R085)');
+  host.socket.emit('game.cancelCountdown', {});
+  await sleep(400);
+  const [b1, b2, b3] = bots;
+  const nOx = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_items WHERE game = 'ox' AND active`)).rows[0].n);
+  if (nOx < 10) {
+    expectTrue('★ OX 항목이 검사 DB 에 있어야 한다(minigame-load --game ox --allow-candidate --apply)', false, `ox 활성 ${nOx}`);
+    return;
+  }
+  const sub = (b, mg, input) => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input });
+  const states = [];
+  const items = new Map();
+  const during = [];
+  for (const b of bots) {
+    b.__mgDone = new Set();
+    b.onMinigame = (mg) => {
+      if (b === host && mg) states.push(mg);
+      if (!mg || mg.phase !== 'play' || mg.spectating || !mg.round) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__mgDone.has(k)) return;
+      b.__mgDone.add(k);
+      void (async () => {
+        const id = mg.round.itemId;
+        const it = items.get(id) ?? (await withDb(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [id])).rows[0]?.payload ?? null));
+        items.set(id, it);
+        const r = mg.roundIndex;
+        if (b === host) during.push({ r, params: mg.round.params, reveal: mg.round.reveal ?? null });
+        if (b === b1) {
+          if (r === 0) {
+            sub(b, mg, { pick: !it.answer, elapsedMs: 300 });
+            await sleep(400);
+          }
+          sub(b, mg, { pick: it.answer, elapsedMs: r === 0 ? 900 : 600 });
+        } else if (b === b2) sub(b, mg, { pick: !it.answer, elapsedMs: 500 });
+        else if (r % 2 === 0) {
+          await sleep(200);
+          sub(b, mg, { pick: it.answer, elapsedMs: 700 });
+        }
+        if (b === host && r === 3) {
+          await sleep(500);
+          during.find((d) => d.r === 3).count = host.snapshot?.minigame?.submittedCount ?? -1;
+        }
+      })();
+    };
+  }
+  const m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameOnly: true, minigameRounds: 2, minigameKeys: ['ox'] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.minigameKeys?.join() === 'ox'), 4000, '설정(OX)');
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  const gid = host.since(g, 'game.started')[0].gameId;
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 300000, '결과(OX)');
+  const res = host.since(g, 'game.result')[0].payload;
+  await sleep(500);
+  const runs = await withDb(async (c) => (await c.query(`SELECT r.id, r.minigame_key k, r.end_reason e, array_agg(d.item_id ORDER BY d.round_index) items FROM minigame_runs r JOIN minigame_rounds d ON d.run_id = r.id WHERE r.game_id = $1 GROUP BY r.id ORDER BY r.id`, [gid])).rows);
+  expectTrue('★★★ OX 두 번 · 10 문장씩 · 끝까지', runs.length === 2 && runs.every((r) => r.k === 'ox' && r.items.length === 10 && r.e === 'completed'), JSON.stringify(runs.map((r) => [r.k, r.items.length, r.e])));
+  const all = runs.flatMap((r) => r.items);
+  expect('★★ 같은 게임 두 판이 같은 문장을 안 냄(20 다름)', new Set(all).size, 20);
+  const meta = new Map((await withDb(async (c) => (await c.query(`SELECT item_id, (payload->>'grade')::int g, payload->>'pairId' p, payload->'category'->>'l1' l1 FROM minigame_items WHERE item_id = ANY($1)`, [all])).rows)).map((x) => [x.item_id, x]));
+  const shape = runs.map((r) => {
+    const ms = r.items.map((i) => meta.get(i));
+    const pairs = ms.map((x) => x.p).filter(Boolean);
+    const per = {};
+    for (const x of ms) per[x.l1] = (per[x.l1] ?? 0) + 1;
+    return { front: ms.slice(0, 5).every((x) => x.g === 1), back: ms.slice(5).every((x) => x.g >= 2), pairOk: new Set(pairs).size === pairs.length, l1Max: Math.max(...Object.values(per)) };
+  });
+  expectTrue('★★★ 앞 5 grade 1 · 뒤 5 grade 2·3 · 같은 pairId 없음 · 대분류 ≤ 3', shape.every((s) => s.front && s.back && s.pairOk && s.l1Max <= 3), JSON.stringify(shape));
+  const tok1 = states.find((v) => v.key === 'ox')?.token;
+  const d1 = during.filter((d) => d.params && !('answer' in d.params));
+  expectTrue('★★ 판 중 params = 문장 · 대분류뿐(정답 없음) · reveal null', d1.length >= 10 && d1.every((d) => typeof d.params.statement === 'string' && !d.reveal), JSON.stringify(during[0]));
+  expectTrue('★★ 판 중 낸 수 = 임시 값도 셈(3명 다 냄)', during.find((d) => d.r === 3)?.count >= 2, JSON.stringify(during.find((d) => d.r === 3)?.count));
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.id, r.login_id])));
+  const rowOf = (rows, b) => rows.find((r) => ids.get(r.accountId) === b.loginId);
+  const fin = states.filter((v) => v.token === tok1 && v.phase === 'final')[0];
+  const rr = fin?.roundResults ?? [];
+  expect('★★★ 맞힌 수 b1 10(첫 문장 바꿈) · b2 0 · b3 5(짝수만)', [b1, b2, b3].map((b) => rr.filter((x) => rowOf(x.rows, b)?.points === 1).length), [10, 0, 5]);
+  expect('★★ 첫 문장 b1 — 바꾼 마지막 답 · 바꾼 횟수 1', [rowOf(rr[0]?.rows ?? [], b1)?.extra?.correct, rowOf(rr[0]?.rows ?? [], b1)?.extra?.changes], [true, 1]);
+  expect('★★ 홀수 문장 b3 = 안 고름(미제출)', rowOf(rr[1]?.rows ?? [], b3)?.submitted, false);
+  const rv = states.find((v) => v.token === tok1 && v.phase === 'roundResult' && v.round?.reveal);
+  expectTrue('★★ 공개 — 정답(불리언) · 해설', typeof rv?.round?.reveal?.answer === 'boolean' && typeof rv.round.reveal.explanation === 'string' && rv.round.reveal.explanation.length > 0, JSON.stringify(rv?.round?.reveal));
+  expect('★★ 최종 — b1 1위', fin?.final?.find((f) => ids.get(f.accountId) === b1.loginId)?.rank, 1);
+  const exp = await withDb(async (c) => (await c.query(`SELECT count(DISTINCT e.item_key)::int n FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.minigame_key = 'ox' AND e.item_key = ANY($2)`, [b1.loginId, all])).rows[0].n);
+  expect('★★ 경험 — ox|<id> 20', exp, 20);
+  expectTrue('★★ 결과 — 미니게임만 2/2 completed', res.mode === 'minigame' && res.minigameSeries?.done === 2 && res.endReason === 'completed', JSON.stringify({ m: res.mode, s: res.minigameSeries }));
+  for (const b of bots) b.onMinigame = null;
 }
 
 // =============================================================================
@@ -8137,7 +8236,7 @@ async function mgOrderBingo(bots, host) {
   const exp = await withDb(async (c) =>
     (await c.query(`SELECT e.minigame_key k, e.item_key i FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.item_key = ANY($2) GROUP BY 1, 2 ORDER BY 1, 2`, [b1.loginId, [...seen.order, seen.bingoTopic].map((t) => `topic:${t}`)])).rows,
   );
-  expect('★★ 경험 — order 3 · bingo 1(topic:<slug>)', [exp.filter((r) => r.k === 'order').length, exp.filter((r) => r.k === 'bingo').map((r) => r.i)], [3, [`topic:${seen.bingoTopic}`]]);
+  expect('★★ 경험 — order 3 · bingo 1(topic:<slug>)', [exp.filter((r) => r.k === 'order' && seen.order.some((t) => r.i === `topic:${t}`)).length, exp.filter((r) => r.k === 'bingo').map((r) => r.i)], [3, [`topic:${seen.bingoTopic}`]]); // ★ R085 — 빙고 주제를 예전 판에서 순서대로로도 봤으면 order 행이 하나 더(옛 run) → 이 판의 순서대로 주제만 센다
   for (const b of bots) {
     b.onMinigame = null;
     b.socket.off('minigame.feedback', fbOn.get(b));
