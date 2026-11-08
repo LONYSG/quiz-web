@@ -10120,7 +10120,8 @@ button.preset.shake {
   justify-content: center;
 }
 .draw-canvas {
-  width: min(100%, 50vh);
+  /* ★ 채팅 입력칸이 화면 안에 남게 — 높이에서 머리 · 도구 · 줄인 채팅을 뺀 만큼(720 높이 PC ≈ 260) */
+  width: min(100%, max(200px, calc(100dvh - 480px)));
   aspect-ratio: 1;
   background: #ffffff;
   border-radius: 12px;
@@ -10176,12 +10177,26 @@ button.preset.shake {
 }
 @media (max-width: 520px) {
   .draw-canvas {
-    width: 100%;
+    width: min(100%, max(220px, calc(100dvh - 440px)));
+  }
+  /* 도구 띠 한 줄(넘치면 옆으로 밀기) · 도움말 줄 숨김 */
+  .draw-tools {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
   }
   .draw-tool {
+    flex: none;
     min-height: 30px;
-    padding: 2px 7px;
-    font-size: 0.78rem;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+  }
+  .draw-swatch {
+    width: 14px;
+    height: 14px;
+  }
+  .draw-card .liar-help {
+    display: none;
   }
   .room[data-state='DRAW'] .chat-card {
     height: 150px;

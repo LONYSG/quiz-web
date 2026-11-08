@@ -95,7 +95,8 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
     if (!c) return undefined;
     const fit = () => {
       const w = Math.round(c.getBoundingClientRect().width * (window.devicePixelRatio || 1));
-      if (w > 0 && c.width !== w) {
+      // ★ 높이도 같이 본다 — 폭이 이미 같으면 높이가 기본 150 에 남아 남의 화면에서 그림이 세로로 늘어났다(그림에서 찾음)
+      if (w > 0 && (c.width !== w || c.height !== w)) {
         c.width = w;
         c.height = w;
         redraw();
@@ -172,7 +173,10 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
         {view.keyword ? (
           <>
             {' '}
-            · {view.phase === 'reveal' ? '정답' : '그릴 것'} <strong className="draw-keyword" data-draw-keyword>{view.keyword}</strong>
+            · {view.phase === 'reveal' ? '정답' : '그릴 것'}{' '}
+            <strong className="draw-keyword" data-draw-keyword title={view.amDrawer && view.phase === 'draw' ? '채팅은 돼요 — 제시어 · 글자 수는 말할 수 없어요' : undefined}>
+              {view.keyword}
+            </strong>
           </>
         ) : view.mySolved ? (
           <span className="draw-mine-ok"> · ✓ 맞혔어요!</span>
@@ -236,7 +240,6 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
           </span>
         ) : null}
       </p>
-      {view.amDrawer && view.phase === 'draw' && <p className="liar-help dim">채팅은 돼요 — 제시어 · 글자 수는 말할 수 없어요</p>}
     </section>
   );
 }

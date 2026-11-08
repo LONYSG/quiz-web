@@ -88,6 +88,8 @@ export const BUNDLES = [
   { id: 'r077', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R077: '1', SHOT_DIR: 'r077', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '0.5', RESOLVED_WAIT_MS: '500' }) },
   // ★ R079 — 팀전 1차(토글 · 두 색 칸 · PC 끌기 · 6:1 · 자동 배정 · 모바일 👥 사람 카드 팀 버튼 · 세 테마 · 사무실 B/R · 판 중 막대 · 결과 팀 줄 · 넘침 0)
   { id: 'r079', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R079: '1', SHOT_DIR: 'r079', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '1500' }) },
+  // ★ R083 — 캐치마인드(방식 네 버튼 · 캔버스 · 도구 · 채팅 줄임 · 마우스/손가락 선 · 정답 시스템 줄 · 공개 · 결과 · 세 테마 · m360)
+  { id: 'r083', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R083: '1', SHOT_DIR: 'r083', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R082 — 라이어 게임(방식 세 버튼 · 배정 카드 · 설명 차례 · 투표 · 집계 · 항변 · 찬반 · 공개 · 결과 · 세 테마 · m360)
   { id: 'r082', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R082: '1', SHOT_DIR: 'r082', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R081 — 순서대로(카드 번호 · 취소 · 공개) · 빙고(채우기 · 판 · 호명 띠 · 결과) · 세 테마 · m360 — 단계 시간 그대로

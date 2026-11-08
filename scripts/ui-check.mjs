@@ -4604,6 +4604,128 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R083 — 캐치마인드 화면 (D-340) (UICHECK_R083=1 · 묶음 r083 · docs/design/r083)
+//   방장 PC 1280×720(1라운드 출제 — 마우스로 그림) · 손님 m360 터치(2라운드 출제 — 손가락) · 소켓 손님 1 · 2라운드
+//   설정 네 버튼 · 캔버스 + 도구(출제자만) · 채팅 줄임 · 선이 다른 화면에 · 정답 시스템 줄 · 공개 · 결과 · 세 테마 · m360
+// =============================================================================
+async function r083Flow(browser) {
+  const H = await newPage(browser, 'R083-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'dwh', '그림방장');
+  const roomId = await createRoom(H, 'R083 캐치마인드');
+  const G = await newPage(browser, 'R083-g', true);
+  await signUp(G, 'dwg', '그림손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'dws');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r083] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const say = (P, text) => P.setInput('.chat-card input', text).then(() => P.click('전송'));
+  const canvasRect = (P) => P.evaluate("JSON.stringify((() => { const r = document.querySelector('[data-draw-canvas]').getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height, vw: innerWidth }; })())").then((s) => JSON.parse(s));
+  const mousePath = async (P, pts) => {
+    await P.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: pts[0][0], y: pts[0][1] });
+    await P.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: pts[0][0], y: pts[0][1], button: 'left', buttons: 1, clickCount: 1 });
+    for (const [x, y] of pts.slice(1)) {
+      await P.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y, button: 'left', buttons: 1 });
+      await sleep(30);
+    }
+    const [lx, ly] = pts[pts.length - 1];
+    await P.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: lx, y: ly, button: 'left', buttons: 0, clickCount: 1 });
+  };
+  const touchPath = async (P, pts) => {
+    await P.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: pts[0][0], y: pts[0][1] }] });
+    for (const [x, y] of pts.slice(1)) {
+      await P.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x, y }] });
+      await sleep(30);
+    }
+    await P.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  };
+  const circle = (r, n = 18) => Array.from({ length: n + 1 }, (_, i) => [r.x + r.w / 2 + Math.cos((i / n) * Math.PI * 2) * r.w * 0.3, r.y + r.h / 2 + Math.sin((i / n) * Math.PI * 2) * r.h * 0.3]);
+
+  // ── 설정
+  await realClick(H, 'button[data-mode="draw"]');
+  await H.waitFor("document.querySelector('[data-draw-note]') !== null", 4000).catch(() => false);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(400);
+  const setting = JSON.parse(await H.evaluate("JSON.stringify({ modes: [...document.querySelectorAll('[data-mode]')].map((b) => b.dataset.mode + (b.getAttribute('aria-pressed') === 'true' ? '*' : '')).join(','), note: !!document.querySelector('[data-draw-note]'), quizRows: !!document.querySelector('.settings .count-input:not(.mg-rounds-input)'), team: document.querySelector('[data-team-toggle]')?.disabled ?? null })"));
+  await snap(H, 'settings-draw-pc');
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null", 20000).catch(() => false);
+  await sleep(600);
+  // ── 1라운드 — 방장 출제(마우스)
+  const r1 = JSON.parse(await H.evaluate("JSON.stringify({ tools: !!document.querySelector('[data-draw-tools]'), kw: document.querySelector('[data-draw-keyword]')?.innerText ?? '', chatH: Math.round(document.querySelector('.chat-card').getBoundingClientRect().height) })"));
+  const gTools = await G.evaluate("!!document.querySelector('[data-draw-tools]')");
+  const rect = await canvasRect(H);
+  await mousePath(H, circle(rect));
+  await realClick(H, '[data-draw-color="#e5383b"]');
+  await mousePath(H, [[rect.x + rect.w * 0.2, rect.y + rect.h * 0.8], [rect.x + rect.w * 0.5, rect.y + rect.h * 0.6], [rect.x + rect.w * 0.8, rect.y + rect.h * 0.8]]);
+  await sleep(800);
+  const gStrokes = await G.evaluate("Number(document.querySelector('[data-draw-canvas]')?.dataset.strokes ?? -1)");
+  await snap(H, 'draw-drawer-pc');
+  await snap(G, 'draw-guesser-m360');
+  const gRect = await canvasRect(G);
+  await say(G, '혹시모를오답');
+  await sleep(300);
+  await say(G, r1.kw);
+  await sleep(500);
+  const gSolved = await G.evaluate("!!document.querySelector('.draw-mine-ok')");
+  const sysLine = await H.evaluate("(document.querySelector('.chat-log')?.innerText ?? '').split(String.fromCharCode(10)).filter((l) => l.includes('정답!')).join(' | ')");
+  await snap(H, 'draw-solved-pc');
+  S.emit('chat.send', { text: r1.kw, epoch: null });
+  await H.waitFor("document.querySelector('[data-draw-phase=\"reveal\"]') !== null", 8000).catch(() => false);
+  await sleep(300);
+  const rev = JSON.parse(await H.evaluate("JSON.stringify({ kw: document.querySelector('[data-draw-keyword]')?.innerText ?? '', solved: Number(document.querySelector('[data-draw-solved]')?.dataset.drawSolved ?? -1) })"));
+  await snap(H, 'reveal-pc');
+  await snap(G, 'reveal-m360');
+  for (const th of ['office', 'night']) {
+    await theme(H, th);
+    await sleep(200);
+    await snap(H, `reveal-${th}-pc`);
+  }
+  await theme(H, 'pastel');
+  // ── 2라운드 — 손님(m360) 출제(손가락)
+  await G.waitFor("document.querySelector('[data-draw-tools]') !== null", 15000).catch(() => false);
+  await sleep(500);
+  const g2 = JSON.parse(await G.evaluate("JSON.stringify({ tools: !!document.querySelector('[data-draw-tools]'), kw: document.querySelector('[data-draw-keyword]')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth, toolsIn: (() => { const r = document.querySelector('[data-draw-tools]')?.getBoundingClientRect(); return r ? r.right <= innerWidth + 1 : false; })() })"));
+  const gr = await canvasRect(G);
+  await touchPath(G, circle(gr, 14));
+  await sleep(800);
+  const hStrokes = await H.evaluate("Number(document.querySelector('[data-draw-canvas]')?.dataset.strokes ?? -1)");
+  await snap(G, 'draw-drawer-m360');
+  await theme(G, 'office');
+  await sleep(200);
+  await snap(G, 'draw-drawer-office-m360');
+  await theme(G, 'pastel');
+  await snap(H, 'draw-guesser-pc');
+  await say(H, g2.kw);
+  S.emit('chat.send', { text: g2.kw, epoch: null });
+  await H.waitFor("document.querySelector('.ranking') !== null", 20000).catch(() => false);
+  await sleep(600);
+  const result = await H.evaluate("document.querySelectorAll('.ranking li').length");
+  await snap(H, 'result-pc');
+  await snap(G, 'result-m360');
+  note('설정', setting);
+  note('1라운드', { r1, gTools, gStrokes, gRect, gSolved, sysLine, rev });
+  note('2라운드', { g2, hStrokes, result });
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083', 'r083.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R083 설정 — 방식 네 버튼(캐치마인드 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김', setting.modes === 'quiz,minigame,liar,draw*' && setting.note && !setting.quizRows && setting.team === true, JSON.stringify(setting));
+  record('★★★ R083 출제자(PC) — 도구 · 제시어 · 채팅 줄임(≤ 230px) · 맞히는 쪽은 도구 없음', r1.tools && !!r1.kw && r1.chatH <= 230 && !gTools, JSON.stringify({ r1, gTools }));
+  record('★★★ R083 마우스로 그린 선 2개가 손님(m360) 캔버스에 · m360 캔버스 화면 안', gStrokes === 2 && gRect.x >= 0 && gRect.x + gRect.w <= gRect.vw + 1, JSON.stringify({ gStrokes, gRect }));
+  record('★★★ R083 채팅 정답 — 맞힘 표시 · 시스템 줄 "정답!" · 공개 키워드 · 맞힌 2', gSolved && /정답!/.test(sysLine) && rev.kw === r1.kw && rev.solved === 2, JSON.stringify({ gSolved, sysLine, rev }));
+  record('★★ R083 손님(m360) 출제 — 도구 한 줄 화면 안 · 손가락 선이 PC 에 · 넘침 0', g2.tools && g2.toolsIn && g2.over <= 1 && hStrokes >= 1, JSON.stringify({ g2, hStrokes }));
+  record('★★ R083 결과 — 3명', result === 3, String(result));
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R082 — 라이어 게임 화면 (D-339) (UICHECK_R082=1 · 묶음 r082 · docs/design/r082)
 //   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 2(4명) · 2라운드
 //   설정 방식 세 버튼 · 주제/키워드 카드 · 라이어 카드 · 설명 차례(차례 아닌 채팅 알림) · 투표 카드 · 집계 · 항변 · 찬반 · 공개 · 결과 · 세 테마 · m360
@@ -8793,6 +8915,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R083 — 캐치마인드
+  if (process.env.UICHECK_R083) {
+    await closeAllTabs(browser);
+    await r083Flow(browser);
   }
   // ★ R082 — 라이어 게임
   if (process.env.UICHECK_R082) {
