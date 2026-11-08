@@ -339,6 +339,7 @@ export default function App() {
     const POPUP_SCREEN: Record<string, string> = { shop: 'shop', profile: 'profile', prefs: 'settings', friends: 'friends', info: 'info' };
     let screen = !account ? 'auth' : account.mustChangePassword ? 'password-change' : !snap ? 'lobby' : 'room';
     if (mg) screen = `minigame:${mg.key}:${mg.phase}`;
+    else if (st === 'LIAR') screen = `liar:${snap?.liar?.phase ?? ''}`;
     else if (st === 'QUESTION_ACTIVE') screen = 'game:question';
     else if (st === 'QUESTION_RESOLVED') screen = 'game:reveal';
     else if (st === 'PAUSED') screen = 'game:paused';

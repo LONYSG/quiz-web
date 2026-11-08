@@ -53,6 +53,7 @@ import { BellButton, FriendsButton } from './SocialPopups.js';
 import ProfilePanel from './ProfilePanel.js';
 import ShopPanel, { useShopDot } from './ShopPanel.js';
 import MinigameStage from './minigame/MinigameStage.js';
+import LiarStage from './LiarStage.js';
 import MinigamePicker from './minigame/MinigamePicker.js';
 import { LastGameFeedback } from './QuestionFeedback.js';
 import { fetchLastFeedbackGame } from './api.js';
@@ -366,7 +367,7 @@ export default function Lobby({
    */
   // ★★ R043 A-6 (건우) — "돌이키기 힘든 결정은 반드시 확인 팝업". 로비·결과에서도 나가기는 확인한다 (옛 Q-82: 게임 중에만)
   const inGameForLeave =
-    state === 'COUNTDOWN' || state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED' || isPaused;
+    state === 'COUNTDOWN' || state === 'QUESTION_ACTIVE' || state === 'QUESTION_RESOLVED' || isPaused || state === 'LIAR';
   const leaveWithConfirm = () => setConfirmLeave(true);
   /**
    * ★★ R045 B — 내가 나가면 방이 사라지는가 (서버 leaveRoom 과 같은 기준)
@@ -1011,6 +1012,11 @@ export default function Lobby({
               />
             )}
 
+            {/* ── ★★★ R082 — 라이어 게임 판 */}
+            {state === 'LIAR' && snapshot.liar && !snapshot.result && (
+              <LiarStage socket={socket} view={snapshot.liar} players={snapshot.players} myAccountId={snapshot.me.accountId} serverNow={serverNow} />
+            )}
+
             {/* ── ★★ 문제 화면 (카드 하나) */}
             {snapshot.question && !snapshot.result && !snapshot.paused && !snapshot.minigame && (
               <Question
@@ -1065,7 +1071,7 @@ export default function Lobby({
             )}
 
             {/* ★ 게임이 시작됐는데 문제가 아직 없는 짧은 순간 — 빈 화면을 보여주지 않는다 */}
-            {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && !snapshot.minigame && (
+            {snapshot.game && !snapshot.question && !snapshot.result && !snapshot.paused && !snapshot.minigame && state !== 'LIAR' && (
               <section className="card">
                 <p className="big dim">문제를 준비하고 있습니다…</p>
               </section>
@@ -1226,6 +1232,8 @@ function stateLabel(state: string): string {
       return '결과';
     case 'MINIGAME':
       return '미니게임';
+    case 'LIAR':
+      return '라이어 게임';
     default:
       return state;
   }

@@ -71,6 +71,39 @@ export interface RoomSettings {
   minigameRounds?: number;
   /** ★★★ R079 — 팀전 (블루 · 레드) */
   teamMode?: boolean;
+  /** ★★★ R082 — 방식(퀴즈 · 미니게임만 · 라이어) */
+  mode?: 'quiz' | 'minigame' | 'liar';
+}
+
+/** ★★★ R082 — 라이어 판 보기(서버 liar/engine.ts LiarView 와 같은 꼴 · 사람마다 다름) */
+export interface LiarView {
+  round: number;
+  rounds: number;
+  phase: 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'reveal';
+  phaseStartedAt: number;
+  phaseEndsAt: number;
+  topic: string;
+  nameKo: string;
+  keyword: string | null;
+  amLiar: boolean;
+  spectating: boolean;
+  participants: string[];
+  order: string[];
+  turn: string | null;
+  says: { accountId: string; text: string; auto: boolean }[];
+  myVote: string | null;
+  votedCount: number;
+  candidates: string[] | null;
+  accused: string | null;
+  accusedTried: string[];
+  lastTally: { stage: 'vote' | 'revote'; votes: Record<string, string>; counts: Record<string, number>; top: string[] } | null;
+  myFinal: boolean | null;
+  lastFinal: { yes: number; no: number; eligible: number; passed: boolean } | null;
+  liar: string | null;
+  outcome: 'caught' | 'escaped' | 'notfound' | null;
+  guess: string | null;
+  guessOk: boolean | null;
+  scores: Record<string, number> | null;
 }
 
 /** ★★★ R050 — 미니게임 화면 상태 (서버 minigame/engine.ts MinigameView 와 같은 꼴) */
@@ -280,6 +313,8 @@ export interface RoomSnapshot {
   paused: PausedView | null;
   /** ★★ R050 — 미니게임 (상태 MINIGAME 에서만) */
   minigame?: MinigameView | null;
+  /** ★★★ R082 — 라이어 판 (상태 LIAR 에서만) */
+  liar?: LiarView | null;
 }
 
 export interface SocketErrorPayload {
@@ -698,6 +733,9 @@ export function useRoom(socket: Socket | null): RoomHook {
       if (m && m.phase === 'play') noteRecentMinigame(m.token, m.roundIndex, m.key, m.round?.itemId ?? null);
       setSnapshot((prev) => (prev ? { ...prev, room: { ...prev.room, state: p.state }, minigame: p.minigame ? { ...p.minigame, receivedAt } : null } : prev));
     };
+    const onLiarState = (p: { state: string; liar: LiarView | null }) => {
+      setSnapshot((prev) => (prev ? { ...prev, room: { ...prev.room, state: p.state }, liar: p.liar } : prev));
+    };
     const onMinigameEnded = (p: { state: string; practice: boolean; settingsLocked?: boolean }) => {
       setSnapshot((prev) =>
         prev
@@ -798,6 +836,7 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('game.returnedToLobby', onReturnedToLobby);
     socket.on('chat.throttled', onThrottled);
     socket.on('minigame.state', onMinigameState);
+    socket.on('liar.state', onLiarState);
     socket.on('minigame.ended', onMinigameEnded);
     socket.on('game.paused', onPaused);
     socket.on('game.pauseStatus', onPauseStatus);
@@ -857,6 +896,7 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('game.returnedToLobby', onReturnedToLobby);
       socket.off('chat.throttled', onThrottled);
       socket.off('minigame.state', onMinigameState);
+      socket.off('liar.state', onLiarState);
       socket.off('minigame.ended', onMinigameEnded);
       socket.off('game.paused', onPaused);
       socket.off('game.pauseStatus', onPauseStatus);

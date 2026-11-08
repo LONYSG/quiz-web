@@ -9914,3 +9914,174 @@ button.preset.shake {
     aspect-ratio: 1.15;
   }
 }
+
+/* =============================================================================
+   ★★★ R082 — 라이어 게임 (D-339) — 상태는 글자 + 기호(▶ 차례 · ● 지목 · ✓ 내 표 — 사무실 흑백 D-324)
+   ============================================================================= */
+.liar-card {
+  display: grid;
+  gap: 8px;
+}
+.liar-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.liar-round {
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.liar-left {
+  font-weight: 900;
+  color: var(--accent);
+}
+.liar-word {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  font-size: 1.05rem;
+}
+.liar-topic strong,
+.liar-mine strong {
+  font-size: 1.25rem;
+}
+.liar-mine.liar strong {
+  color: var(--bad);
+}
+.liar-mine.citizen strong {
+  color: var(--accent);
+}
+.liar-order {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+  max-height: 210px;
+  overflow-y: auto;
+}
+.liar-order li {
+  display: grid;
+  grid-template-columns: minmax(70px, auto) 1fr;
+  gap: 4px 10px;
+  align-items: baseline;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+.liar-order li.turn {
+  background: var(--surface-2);
+  outline: 2px solid var(--accent);
+}
+.liar-order li.accused .liar-nick::after {
+  content: ' ●';
+}
+.liar-nick {
+  font-weight: 800;
+  word-break: keep-all;
+}
+.liar-say {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.liar-say.defense {
+  grid-column: 2;
+  font-weight: 700;
+}
+.liar-help {
+  margin: 0;
+  text-align: center;
+  font-size: 0.92rem;
+}
+.liar-help.mine {
+  font-weight: 800;
+  color: var(--accent);
+}
+.liar-people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+.liar-person {
+  position: relative;
+  min-width: 84px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 3px solid transparent;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.liar-person.picked {
+  border-color: var(--accent);
+}
+.liar-check {
+  margin-left: 4px;
+  color: var(--accent);
+}
+.liar-tally ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+.liar-result-line,
+.liar-reveal-main {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 1.05rem;
+}
+.liar-final,
+.liar-guess,
+.liar-reveal {
+  text-align: center;
+}
+.liar-final-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.liar-final-btns .picked {
+  outline: 3px solid var(--accent);
+}
+.liar-scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  justify-content: center;
+  margin: 4px 0 0;
+  font-weight: 800;
+}
+.liar-notice {
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+  color: var(--bad);
+}
+.set-note {
+  margin: -2px 0 4px;
+  font-size: 0.85rem;
+}
+@media (max-width: 520px) {
+  .liar-word {
+    font-size: 0.95rem;
+  }
+  .liar-person {
+    min-width: 0;
+    flex: 1 1 calc(50% - 6px);
+  }
+  .liar-order {
+    max-height: 170px;
+  }
+}

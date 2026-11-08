@@ -16,6 +16,7 @@
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import {
+  LIAR,
   DIFFICULTY_LEVELS,
   GAME_TOPICS,
   MINIGAMES,
@@ -111,7 +112,12 @@ export default function GameSettings({
   };
   const topics = shown.topics ?? [];
   const allTopics = topics.length === GAME_TOPICS.length;
-  const mgOnly = shown.minigameOnly === true;
+  // ★★★ R082 — 방식 세 버튼(퀴즈 · 미니게임만 · 라이어 — D-339). 옛 설정(mode 없음)은 minigameOnly 로
+  const mode = shown.mode ?? (shown.minigameOnly === true ? 'minigame' : 'quiz');
+  const liar = mode === 'liar';
+  const mgOnly = mode === 'minigame';
+  const roundsMax = liar ? LIAR.ROUNDS.MAX : MINIGAME_ONLY_ROUNDS.MAX;
+  const clampRounds = (n: number | undefined) => Math.min(LIAR.ROUNDS.MAX, Math.max(LIAR.ROUNDS.MIN, Number.isFinite(n) ? (n as number) : LIAR.ROUNDS.DEFAULT));
   const mgRounds = shown.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT;
   const keysOf = (s: RoomSettings) => s.minigameKeys ?? [...MINIGAME_KEYS];
   // ★★★ R079 — 팀전 토글(방식 줄 오른쪽 · 퀴즈 · 미니게임만 어느 쪽과도) · 켜져 있으면 [자동 배정]
@@ -129,9 +135,9 @@ export default function GameSettings({
               <button
                 type="button"
                 data-mode="quiz"
-                aria-pressed={!mgOnly}
-                className={!mgOnly ? 'preset active' : 'preset'}
-                onClick={() => mgOnly && push({ ...draft, minigameOnly: false })}
+                aria-pressed={mode === 'quiz'}
+                className={mode === 'quiz' ? 'preset active' : 'preset'}
+                onClick={() => mode !== 'quiz' && push({ ...draft, mode: 'quiz', minigameOnly: false })}
               >
                 퀴즈
               </button>
@@ -140,13 +146,23 @@ export default function GameSettings({
                 data-mode="minigame"
                 aria-pressed={mgOnly}
                 className={mgOnly ? 'preset active' : 'preset'}
-                onClick={() => !mgOnly && push({ ...draft, minigameOnly: true, minigameKeys: keysOf(draft), minigameRounds: draft.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT })}
+                onClick={() => !mgOnly && push({ ...draft, mode: 'minigame', minigameOnly: true, minigameKeys: keysOf(draft), minigameRounds: draft.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT })}
               >
                 미니게임만
               </button>
+              <button
+                type="button"
+                data-mode="liar"
+                aria-pressed={liar}
+                className={liar ? 'preset active' : 'preset'}
+                title={`라이어 1명 · 한마디씩 → 투표 · ${LIAR.MIN_PLAYERS}명부터`}
+                onClick={() => !liar && push({ ...draft, mode: 'liar', minigameOnly: false, teamMode: false, minigameRounds: clampRounds(draft.minigameRounds) })}
+              >
+                라이어
+              </button>
             </>
           ) : (
-            <span className="chip on">{mgOnly ? '미니게임만' : '퀴즈'}</span>
+            <span className="chip on">{liar ? '라이어' : mgOnly ? '미니게임만' : '퀴즈'}</span>
           )}
           <span className="team-sep" aria-hidden="true" />
           {editable ? (
@@ -155,7 +171,7 @@ export default function GameSettings({
                 type="button"
                 data-team-toggle
                 aria-pressed={teamOn}
-                disabled={teamDisabled}
+                disabled={teamDisabled || liar}
                 title={teamDisabled ? '2명 이상일 때 켤 수 있어요' : teamOn ? '팀전 끄기' : '블루 · 레드 두 팀으로'}
                 className={teamOn ? 'preset active team-toggle' : 'preset team-toggle'}
                 onClick={() => push({ ...draft, teamMode: !teamOn })}
@@ -174,9 +190,15 @@ export default function GameSettings({
         </div>
       </div>
 
-      {mgOnly && (
+      {/* ★ R082 — 라이어: 한 줄 설명(규칙 전부는 01 16-R082) */}
+      {liar && (
+        <p className="set-note dim" data-liar-note>
+          라이어 1명 · 주제만 알고 한마디씩 → 투표 · 최후의 항변 → 찬반 · {LIAR.MIN_PLAYERS}명부터
+        </p>
+      )}
+      {(mgOnly || liar) && (
         <div className="set-row">
-          <span className="set-label">미니게임 수</span>
+          <span className="set-label">{liar ? '라운드 수' : '미니게임 수'}</span>
           {editable ? (
             <div className="preset-row">
               <input
@@ -184,12 +206,12 @@ export default function GameSettings({
                 className="count-input mg-rounds-input"
                 inputMode="numeric"
                 min={MINIGAME_ONLY_ROUNDS.MIN}
-                max={MINIGAME_ONLY_ROUNDS.MAX}
-                aria-label={`미니게임 수 (${MINIGAME_ONLY_ROUNDS.MIN}~${MINIGAME_ONLY_ROUNDS.MAX})`}
+                max={roundsMax}
+                aria-label={`${liar ? '라운드 수' : '미니게임 수'} (${MINIGAME_ONLY_ROUNDS.MIN}~${roundsMax})`}
                 value={Number.isFinite(draft.minigameRounds) ? draft.minigameRounds : ''}
                 onChange={(e) => push({ ...draft, minigameRounds: Number.parseInt(e.target.value, 10) })}
               />
-              {MG_PRESETS.map((n) => (
+              {MG_PRESETS.filter((n) => n <= roundsMax).map((n) => (
                 <button
                   key={n}
                   type="button"
@@ -202,12 +224,12 @@ export default function GameSettings({
               ))}
             </div>
           ) : (
-            <span className="set-value mono">{mgRounds}개</span>
+            <span className="set-value mono">{mgRounds}{liar ? '라운드' : '개'}</span>
           )}
         </div>
       )}
 
-      {!mgOnly && (
+      {mode === 'quiz' && (
         <>
           <div className="set-row">
             <span className="set-label">문제 수</span>
@@ -334,7 +356,7 @@ export default function GameSettings({
       )}
 
       {/* ★★★ R050 — 미니게임 포함 (기본 꺼짐 · 10문제마다 · 5~9문제는 가운데 한 번 · 마지막 문제 뒤에는 없음 — D-234) */}
-      <div className="set-row mg-set-row">
+      {!liar && <div className="set-row mg-set-row">
         <span className="set-label">미니게임</span>
         <div className="preset-row">
           {mgOnly ? null : editable ? (
@@ -382,7 +404,7 @@ export default function GameSettings({
             <span className="dim mg-set-note">문제 5개 이상이면 사이사이 나와요</span>
           )}
         </div>
-      </div>
+      </div>}
 
       {lastHint === 'topic' && (
         <p className="form-error" data-last-hint>
