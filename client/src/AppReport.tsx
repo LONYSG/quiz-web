@@ -164,11 +164,17 @@ const writeDraft = (d: { kind: string; text: string } | null) => {
 /** 열기 전 포커스 자리를 기억했다가 닫을 때 돌려준다
  *  ★ 창 안 글칸의 autoFocus 가 effect 보다 먼저 돈다 → "창 바깥에서 마지막으로 포커스된 것" 을 늘 기억해 둔다 */
 let lastOutside: HTMLElement | null = null;
+/**
+ * ★ R079 §F (D-336) — "창 바깥" = 어느 팝업(⚙ 창 · 메뉴 · 대화 상자)에도 속하지 않은 곳.
+ *   R067 부터 PC 방 안 Alt+B 는 ⚙ 창의 제보 탭 → [일반 제보] 를 거쳐 제보 창이 열린다. 옛 규칙(".report-modal 밖")은
+ *   ⚙ 창 안의 [일반 제보] 버튼을 돌아갈 자리로 기억했고, 그 버튼은 ⚙ 창이 닫히며 사라져 포커스가 채팅칸으로 안 돌아왔다(r061 5/6).
+ */
+const inPopup = (t: HTMLElement) => Boolean(t.closest?.('.report-modal, .modal-back, .popup-back, [role="dialog"]'));
 function useReturnFocus(open: boolean) {
   useEffect(() => {
     const onIn = (e: FocusEvent) => {
       const t = e.target as HTMLElement | null;
-      if (t && !t.closest?.('.report-modal')) lastOutside = t;
+      if (t && t !== document.body && !inPopup(t)) lastOutside = t;
     };
     document.addEventListener('focusin', onIn);
     return () => document.removeEventListener('focusin', onIn);
@@ -176,7 +182,7 @@ function useReturnFocus(open: boolean) {
   useEffect(() => {
     if (!open) return undefined;
     const prev = document.activeElement as HTMLElement | null;
-    const back = prev && !prev.closest?.('.report-modal') ? prev : lastOutside;
+    const back = prev && prev !== document.body && !inPopup(prev) ? prev : lastOutside;
     return () => {
       if (back && document.contains(back) && typeof back.focus === 'function') back.focus({ preventScroll: true });
     };
