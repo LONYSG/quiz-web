@@ -10,6 +10,15 @@
 
 ## 2026-11-08 — V040 작은 적용 (G042, GEN · DB 쓰기 — 힌트 15행)
 ## 2026-11-08 — 노래 293 메타 대조 + us-state 50 (V041, VERIFY · DB 없음 · 웹 있음)
+## 2026-11-08 — OX 400 전수 판정 (V042, VERIFY · DB 없음 · 웹 있음)
+
+- **무엇을**: verify-next.md — G041 의 OX 문장 400(참 200 · 거짓 200)의 사실 · 거의 맞는 거짓 · 애매 · 문장 · 쌍 · grade 표본 판정 + verify · status 쓰기.
+- **어떻게**: 분야별 7조각(sonnet · 웹 확인 400/400) · 판정 기준 한 파일 · 한국 조각 전부 읽고 기준 맞춘 뒤 나머지 · 재독 fix 16 전부 + 거짓 ok 46 + 참 ok 20 · 파일은 한 번에 쓰기(verify · status 만 · 다른 칸 diff 0 · ox-check 막힘 0).
+- **문제**: 사실 오류는 없었으나 해설 2건 틀림 · 연도 함정 2건 약함 · 거짓이 터무니없는 "쉬운 함정" 10.
+- **결정**: verified 384 · fix 16(candidate). 설계 확인 CV-171.
+- **검증**: 키 400 = items 400 · 다른 칸 diff 0 · 재독 뒤집음 0.
+- **남은 것**: CV-170(G043 적용).
+
 
 - **무엇을**: verify.md — G040 이 iTunes US 로 모은 노래 293(실제 항목 기준 strong 197 · weak 96 — G040 보고의 206 은 빠진 곡 포함 수) 의 미리듣기 · 곡 대응 · 연도 · 판본 · 변형 · 차트를 대조하고 verify · status 를 쓴다 + us-state 50 을 ko 위키와 1:1.
 - **어떻게**: previewUrl HEAD 293(3초 간격 · scripts v041-raw/_work/head.mjs) · 멜론 연도별 21 페이지를 받아 파싱해 차트 167 전수 대조 · weak 96 + strong 197 눈 전수 · iTunes 캐시/search/lookup 으로 대체 trackId 찾기 · 웹 검색 14건 · ko.wikipedia 미국의 주 raw 로 이름 · 가입일 · 지역 50 기계 대조 · 파일은 한 번에 쓰고(verify · status 만 · 다른 칸 diff 0 · song-check 막힘 0 · topics-check 막힘 0).
