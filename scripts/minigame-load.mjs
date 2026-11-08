@@ -7,6 +7,8 @@
 //   node scripts/minigame-load.mjs --mark       ← 적재한 항목의 파일 status 를 'loaded' 로 (★ G010 몫 — MAIN 은 쓰지 않는다)
 //   [--game price,photo]  게임 고르기
 //   ★ G021: photoyear(18 §8)는 게임 코드가 없어 적재를 막았다 → ★ R068 게임을 만들고 GAMES_ALL 에 넣었다
+//   ★ R084: song(18 §10 — 노래 맞히기 · 이 노래 몇 년도? 가 같은 항목을 쓴다 · 그림 없음 · 소리는 previewUrl 스트리밍) 추가
+//   [--allow-candidate]  candidate 도 넣는다 — ★ 검사 DB(quizweb_test · quizweb_dev) 또는 QUIZ_DEV_SERVER 만(실 quizweb 은 연결 전 exit 2 · topics-load 빗장 그대로)
 //
 // ★ 읽는 것: data/minigame/<game>/items*.json 전부(묶음 파일) + worldprice/products.json · 그림 assets/minigame/<game>/…
 // ★ 형식 검사: docs/18 0~5절(g008-check 와 같은 규칙) — 모르는 칸 · 빠진 칸 · 숫자형 · 날짜 · id 꼴 · 게임별 규칙. 걸리면 그 항목 거부(목록)
@@ -21,12 +23,15 @@ import { readFileSync, readdirSync, existsSync, statSync, writeFileSync } from '
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
+import { SONG_FIELDS, SONG_OPTIONAL, loadableStatus, songProblems } from './minigame-song.mjs';
+import { candidateGate, dbNameOf } from './topics-load.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
 const APPLY = args.includes('--apply');
 const MARK = args.includes('--mark');
-const GAMES_ALL = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear'];
+const ALLOW_CANDIDATE = args.includes('--allow-candidate');
+const GAMES_ALL = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear', 'song'];
 const GAMES = args.includes('--game') ? args[args.indexOf('--game') + 1].split(',') : GAMES_ALL;
 
 const COMMON = ['id', 'status', 'createdRound', 'sources', 'image', 'tags', 'verify'];
@@ -37,8 +42,11 @@ const FIELDS = {
   estimate: ['kind', 'question', 'value', 'unit', 'displayDecimals', 'asOf', 'explanation'],
   which: ['kind', 'stem', 'a', 'b', 'answer', 'unit', 'margin', 'asOf'],
   photoyear: ['year', 'yearKind', 'yearRange', 'title', 'place', 'region', 'difficulty', 'cues'],
+  song: SONG_FIELDS,
 };
-const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [], photoyear: [] };
+const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [], photoyear: [], song: SONG_OPTIONAL };
+// ★ R084 — song 은 그림 칸이 없다(앨범 그림 = itunes.artworkUrl100 · 공개 때만)
+const commonOf = (g) => (g === 'song' ? COMMON.filter((k) => k !== 'image') : COMMON);
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const PRICE_CAT = ['식품', '생활', '가전', '패션', '뷰티', '취미', '자동차', '사치품', '해외', '기타'];
 const PHOTO_CAT = ['person', 'place', 'object', 'everyday', 'food', 'animal', 'logo'];
@@ -76,8 +84,9 @@ function imageOf(g, img) {
 function problems(g, it, products) {
   const p = [];
   if (!new RegExp(`^${g}-\\d{4}$`).test(it.id ?? '')) p.push('id 꼴');
-  for (const k of [...COMMON, ...FIELDS[g]]) if (it[k] === undefined) p.push(`칸 없음 ${k}`);
+  for (const k of [...commonOf(g), ...FIELDS[g]]) if (it[k] === undefined) p.push(`칸 없음 ${k}`);
   for (const k of Object.keys(it)) if (![...COMMON, ...FIELDS[g], ...OPTIONAL[g]].includes(k)) p.push(`모르는 칸 ${k}`);
+  if (g === 'song') p.push(...songProblems(it));
   if (!STATUS.includes(it.status)) p.push(`status ${it.status}`);
   if (!Array.isArray(it.tags)) p.push('tags 배열');
   if (g === 'price') {
@@ -168,7 +177,7 @@ for (const g of GAMES) {
         continue;
       }
       seen.add(it.id);
-      if (it.status !== 'verified' && it.status !== 'loaded') continue;
+      if (!loadableStatus(it.status, ALLOW_CANDIDATE)) continue;
       const pr = problems(g, it, products);
       if (pr.length) {
         rejected.push(`${it.id}: ${pr.join(' · ')}`);
@@ -185,7 +194,7 @@ for (const g of GAMES) {
         else if (r.problem) bad = r.problem;
         else if (r.image) imgs.push(r.image);
       };
-      take(it.image);
+      if (g !== 'song') take(it.image);
       if (g === 'which') {
         take(it.a.image);
         take(it.b.image);
@@ -217,7 +226,16 @@ for (const g of GAMES) {
 
 // ── 표
 const pad = (s, n) => String(s).padEnd(n);
-console.log(`[minigame-load] ${APPLY ? '★ 쓰기(--apply)' : 'dry-run (DB 를 쓰지 않는다)'}`);
+const DB_URL = process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb';
+// ★ R084 — candidate 허용은 검사 DB 만(연결 전에 막는다 — topics-load 와 같은 빗장)
+if (ALLOW_CANDIDATE) {
+  const gate = candidateGate(DB_URL);
+  if (!gate.ok) {
+    console.error(`[minigame-load] ★ 거부: ${gate.why}`);
+    process.exit(2);
+  }
+}
+console.log(`[minigame-load] ${APPLY ? '★ 쓰기(--apply)' : 'dry-run (DB 를 쓰지 않는다)'} · DB ${dbNameOf(DB_URL)}${ALLOW_CANDIDATE ? ' · candidate 허용' : ''}`);
 console.log(`${pad('게임', 11)}${pad('파일', 14)}${pad('전체', 6)}${pad('verified', 9)}${pad('candidate', 10)}${pad('rejected', 9)}${pad('loaded', 7)}${pad('형식거부', 9)}${pad('그림없음', 9)}넣을 것`);
 for (const t of table) console.log(`${pad(t.game, 11)}${pad(t.files, 14)}${pad(t.total, 6)}${pad(t.verified, 9)}${pad(t.candidate, 10)}${pad(t.rejected, 9)}${pad(t.loaded ?? 0, 7)}${pad(t.bad, 9)}${pad(t.noImage, 9)}${t.put}`);
 console.log(`합: 넣을 항목 ${rows.length} · 그림 ${new Set(rows.flatMap((r) => r.images.map((i) => i.imageId))).size + productImages.length} · 품목 ${products.size}`);
@@ -240,7 +258,7 @@ if (MARK) {
 
 if (!APPLY) process.exit(0);
 
-const db = new pg.Client({ connectionString: process.env.DATABASE_URL ?? 'postgresql://quiz:quizlocal@localhost:5434/quizweb' });
+const db = new pg.Client({ connectionString: DB_URL });
 await db.connect();
 try {
   await db.query('BEGIN');
@@ -268,10 +286,11 @@ try {
     for (const im of r.images) await putImage(im);
     await db.query(
       `INSERT INTO minigame_items (item_id, game, status, payload, image_ids, attribution, as_of, tags, source_file, active)
-       VALUES ($1,$2,'loaded',$3,$4,$5,$6,$7,$8,true)
-       ON CONFLICT (item_id) DO UPDATE SET game=EXCLUDED.game, status='loaded', payload=EXCLUDED.payload, image_ids=EXCLUDED.image_ids,
+       VALUES ($1,$2,$9,$3,$4,$5,$6,$7,$8,true)
+       ON CONFLICT (item_id) DO UPDATE SET game=EXCLUDED.game, status=EXCLUDED.status, payload=EXCLUDED.payload, image_ids=EXCLUDED.image_ids,
          attribution=EXCLUDED.attribution, as_of=EXCLUDED.as_of, tags=EXCLUDED.tags, source_file=EXCLUDED.source_file, active=true, loaded_at=now()`,
-      [r.id, r.game, r.payload, r.images.map((i) => i.imageId), r.attribution, r.asOf, r.tags, r.file],
+      // ★ R084 — candidate(검사 DB 만)는 status 'candidate' 그대로 · 나머지는 'loaded'
+      [r.id, r.game, r.payload, r.images.map((i) => i.imageId), r.attribution, r.asOf, r.tags, r.file, r.status === 'candidate' ? 'candidate' : 'loaded'],
     );
   }
   // 이번에 넣지 않은 항목(파일에서 빠짐 · verified 아님) → 쉬게 한다(지우지 않는다)
