@@ -1,0 +1,69 @@
+V041 — 노래 293 메타 대조 + us-state 50 (VERIFY · Sonnet 5.5 · 2026-11-08 · DB 없음 · 웹 있음)
+
+0. ★ 찬종이 볼 것
+ ① 판정: verified 278 · fix(candidate 그대로) 14 · rejected 1 = 293.
+    → ★ 지금 실 DB 에 적재되는 노래 = 278 (verified 만 · 메뉴 1 자동). 나머지 15 는 G043 이 고친 뒤 verified 로.
+    pool 별: kpop-year 167 = verified 160 · fix 6 · rejected 1 / kpop-classic 38 = 34 · 4 / pop 60 = 56 · 4 / jpop 28 = 28 · 0.
+    (kpop-year fix 6 = 2006 셋 · 2008 · 2011 · 2019 / rejected 1 = 2005 세글자 → 2005 는 verified 7곡. 연도별 verified 가 8 미만인 해: 2005 7 · 2006 5 · 2008 7 · 2011 7 · 2019 7 · 2022 7(원래 7).)
+ ② 미리듣기 HEAD 293/293 = 200 (audio/x-m4p 292 · m4a 1) — 만료·404 0. 3초 간격, UA quiz-web-v041/1.0.
+ ③ weak 96 전부 눈으로 재독: 같은 곡이 아닌 것 0 · 판본/연도 문제 4(바이브 「그 남자 그 여자」 year 2004 → 2006 · 마크툽 「오늘도 빛나는 너에게」 "(2022)" 판 · 김건모 「핑계」 「잘못된 만남」 2024 Remaster) · 나머지 92 ok.
+    확인된 약한 대응: 엠씨더맥스 「넘쳐흘러」 = "After You've Gone" 맞음(en.wiki MC the Max discography · Circular 2019-01). 영문은 아무도 안 쳐서 변형 빼기만 제안.
+    ★ 정작 다른 곡은 strong 쪽에서 나왔다: 브아걸 「Love」(멜론 2008 연간 3위 · 2008-01) 자리에 SG워너비와 부른 「Must Have Love」(2006-11 싱글)를 붙였다 → 강/약 구분은 정확도와 상관이 없었다(CV-169 ⑨).
+ ④ 연도 어긋남 예(iTunes releaseDate ↔ year):
+    - 개똥벌레 2000(베스트 모음) ↔ 1987 · 거리에서 1996 ↔ 1988 · 나도야 간다 1994 ↔ 1984 — G040 이 원곡 연도로 고친 3곡. 모음집 판 날짜라 맞게 고침(지식 근거 — 웹 대조 못 함, 7절).
+    - 그 남자 그 여자: year 2004(iTunes 2004-07-29) ↔ 실제 2006(3집 싱글 · 멜론 2006 연간 8위) → fix.
+    - Time to Say Goodbye: 1995(보첼리 솔로 연도) ↔ 고른 판은 브라이트만 듀엣 1996 → fix.
+    - Love(브아걸): 2006(Must Have Love 날짜) ↔ 2008 → 다른 곡이라 fix.
+    - 메모만(통과): Dido Thank You 1998(영화 사운드트랙 첫 수록) vs 2000 싱글 · Maria Maria 1999 앨범 vs 2000 싱글 · Funkytown 1979 vs 1980 싱글.
+ ⑤ us-state 50: verified(fixes 1) — 이름 50/50 · 연방 가입 연도 50/50 · 지역 태그 50/50 · 중복 변형 1건(매사추세츠주 "매사추세츠" 두 번).
+
+1. 실제 판정 건수 · 빠진 것
+ - 노래 293 전부 판정(키 293 = items 293 · 누락 0). 같은 항목 두 번 판정 없음.
+ - 미리듣기 HEAD 293 · 차트 대조 167(kpop-year 전부 — 멜론 연도별 21 페이지를 직접 받아 파싱) · 눈 대조: weak 96 전부 + strong 197 전부(곡명·가수 대응은 전수로 훑음 — 표본 40 이 아니라 전수. 단 연도는 지식).
+ - 웹 대조(검색/페이지): 약 14건 — 넘쳐흘러 · 그 남자 그 여자 · Must Have Love · 도시인(확정 못 함) · 비몽(확정 못 함) · Dido · Time to Say Goodbye · 마지막 인사 · 멜론 2008 · 멜론 21 페이지 · ko.wikipedia 미국의 주 전문(raw).
+ - 못 한 것: 소리 듣기 0 · classic 38 · pop 60 의 연도는 대부분 지식(웹 대조 2~3건 외).
+ - 못 쓴 것: 파일에는 verify 칸 + status 만 썼다(다른 칸 diff 0 — 코드로 대조). 제안(proposal)은 audit/v041-song.json 과 항목 verify.proposal 에.
+
+2. 종류별 결과 (293)
+ - ok 278: verified.
+ - fix 14 (candidate 그대로):
+   · 다른 곡 1 — song-0027 「Love」(브아걸) ← 「Must Have Love」 → trackId 365430197 · year 2008.
+   · 리믹스/믹스 판 6 — 0009 내 사람(Ivy Mix → 1647285582 Partner for Life) · 0011 여인의 향기(Ivy Mix → 1656854205 Scent of a Woman) · 0200 아틀란티스 소녀(Just Fiction 2003 Mix → 1061503105) · 0238 I Knew I Loved You(7" Mini Me Mix → 157390097) · 0240 Because of You(Josh Harris Radio Edit → 1440757476) · 0243 Poker Face(Glam As You Radio Mix → 1440818665).
+   · 언어/연주 판 2 — 0053 UGLY(JP Ver. → 1338689928) · 0174 그댄 봄비를 무척 좋아하나요("(경음악)" → 1619946631).
+   · 리마스터 2 — 0184 핑계(→ 1728633018) · 0188 잘못된 만남(→ 1728627771).
+   · 다른 판 표기 1 — 0120 오늘도 빛나는 너에게("(2022)" → 1649505183 · 근거 약함).
+   · 연도 2 — 0015 그 남자 그 여자(2004 → 2006) · 0228 Time to Say Goodbye(1995 → 1996).
+ - rejected 1 — 0006 세글자(엠투엠 · 멜론 2005 6위): iTunes US 에 원곡이 없고 「Ivy Mix」(Ivy Mega Mix 2006 리믹스 모음)뿐.
+ - 판본 필터(4): Instrumental · Karaoke · Sped Up · MR · Live 꼴 0(기계 + 눈). 걸린 것은 위 표시 전부. 통과시킨 것: 0031 「사랑과 전쟁 (하하 Narration Version)」 = 멜론 2008 연간 7위 곡명이 「사랑과 전쟁 (Narr. 하하)」 라 차트곡 그대로 · 0236 「Radio Mix」(싱글 편집 · 리믹서 판 아님) · 0284 「Director's Edit Version」(TV 컷) · 0286 「Movie Ver.」(영화 삽입 녹음 = 원곡) · 0255 · 0159(Remixes EP 에 같은 원곡 이름으로 들어간 판 — 비블로킹으로 앨범 판 제안).
+ - 차트 대조(167): 순위 번호가 틀린 것 14 — 2019 #5~9 ← 실제 6~10 · 2020 #9~10 ← 10~11 · 2021 #3 ← 4 · #5~7 ← 6~8 · #9 ← 10 · #11 ← 12 · #12 ← 13. 같은 제목이 앞 해에 이미 있는 곡(모든 날, 모든 순간 · 작은 것들을 위한 시 · 넘쳐흘러…)을 건너뛰고 번호를 매기다 한 칸씩 밀림. 곡·가수는 모두 그 해 차트에 있음(0 어긋남). → 비블로킹 fix.
+ - 변형 제안(비블로킹): titleVariants 영문 번역 빼기 70곡 · artistVariants 한글 표기 보탬 95곡(전부 항목 verify.notes + audit/v041-song.json minor).
+
+3. fix · drop 전부 (현재 / 제안 / 사유 / 출처)
+ audit/v041-song.json 이 정본(293 키 · verdict · category · proposal · reason · sources). 위 2절 목록에 현재(고른 trackId) → 제안 trackId · 사유가 한 줄씩 있다. 출처 = iTunes lookup(`/lookup?id=<id>&country=US`) · 멜론 연도별 차트 페이지 · en.wiki(Vibe · Con te partirò · MC the Max discography). 모든 제안 trackId 는 US 스토어에 previewUrl 이 있는 것만 골랐다(캐시/search/lookup 에서 확인).
+ - 0027: 현재 trackId 1804698947 「Must Have Love」 → 제안 365430197 「Love」 With L.O.V.E Brown Eyed Girls 2008-01-17.
+ - 0120: 근거 약함 — Space Opera (Red Moon : Complete Edition) 모음집 수록이라 G043 이 lookup 으로 원판인지 확인 뒤 적용.
+ - 0006: 대체 = 같은 연도(2005) 차트 9위 이후 곡 또는 그대로 7곡(연도별 7곡은 2022 와 같은 형태).
+
+4. unsure · 경계선 · 미확인 주장
+ - 도시인(넥스트) year 1993 — 1집 Home 은 1992 발매로 알고 있으나 검색으로 확정 못 함(통과 ±1).
+ - 비몽(코요태) year 2002 — 검색 결과에 원곡 연도 없음(통과).
+ - Thank You(디도) 1998 · Maria Maria 1999 · Funkytown 1979 — 첫 발매 vs 대중 인지(싱글) 기준 차이(CV-169 ②).
+ - 0120 「(2022)」 = 재발매 표기인지 재녹음인지 못 가림.
+ - us-state qid 19(알래스카) — DB 없어 문항 대조 못 함.
+ - 국민가요 3곡 연도(개똥벌레 1987 · 거리에서 1988 · 나도야 간다 1984)는 웹 대조 안 함 — 지식으로 맞음.
+ - 약한 jpop 인지도 근거: Novelbright 「Walking with You」 · natori 「Propose」(메모만 — status 안 내림). jpop 나머지 26 은 한국 차트/애니 OP/틱톡 근거로 보임.
+ - pop 10 · classic 10 인지도 표본: 이상 없음(전부 한국 방송/CF/OST 단골).
+
+5. 같은 정답 누적 분포
+ 해당 없음(노래 — 같은 제목 두 곡 0 · song-check 가 정규화 비교).
+
+6. 반복 오류 유형 (G 라운드/수집 규칙에 넣을 것) — CV-169
+ ① 같은 이름 다른 곡(strong 에서도 나옴) ② 리믹스 모음/믹스 판이 "관련도 1순위"로 잡힘 ③ 한글 "(경음악)" · "JP Ver." · "Remaster" 꼴이 필터를 통과 ④ iTunes releaseDate 가 모음집/재발매 날짜(바이브 2004, 개똥벌레 2000) ⑤ 차트 순위 번호 밀림 ⑥ 팝송 가수의 한글 표기 변형 없음(마이클 잭슨 같은 한글 입력이 막힘) ⑦ 영문 번역 제목 변형이 많음(실제로 아무도 안 침).
+
+7. 자기 점검
+ - ★ 소리는 한 곡도 듣지 않았다. HEAD 200 은 파일이 있다는 뜻일 뿐 "그 곡이 맞다"는 아니다 — 찬종 표본 청취(A 항목)가 마지막 방어선.
+ - 곡명 대응은 영문/한글 이름 대조(눈 전수)였지, 같은 녹음인지 소리로 확인한 것이 아니다. strong 197 은 "곡명·가수가 같아 보이면 통과"로 훑었다 — 그 결과 Love 1건을 잡았으나 같은 종류가 더 숨어 있을 수 있다(한글 곡명 = 영문 곡명 의미까지 대조한 것은 아님).
+ - classic 38 · pop 60 연도는 지식 근거 + iTunes releaseDate 일치 확인만(웹은 2~3곡). 두 연도 어긋남(그 남자 그 여자 · Time to Say Goodbye)은 iTunes 날짜 ↔ 차트/위키 대조로 잡았다 — 같은 류가 다른 곳에 있다면 못 잡았을 수 있다.
+ - 차트 순위는 21 페이지 전수(기계) — 파싱 오류 가능성은 곡·가수 이름이 14 곳 외 153곳 모두 일치로 상쇄.
+ - 변형 제안(영문 번역 70 · 가수 한글 95)은 내 기준(한국에서 아무도 안 치는 번역 영문 빼기 · 가수 한글 보탬)이라 G043 이 같은 기준으로 기계 적용할지는 설계 몫. KEEP 19곡(Gangnam Style 등 실제 영문 제목)은 audit json 의 규칙 코드에 있다.
+ - 새 파일 만들기 · 다른 칸 고치기 · DB · 코드 · song-check.mjs · 18 · 13 A · C106 · CV-166 · CV-167 · ox(V042): 하지 않았다.

@@ -65,6 +65,7 @@
 | V038.txt | ★ **재정비 2묶음**(알가치 3 등급 1·2 · 읽기 blind R · 주어 S · 축약 C 두 단계) VERIFY 368 — 새 기준 132(문장 70자 · 한 문장 90자 초과) + G034 활성 176 + 대조 60 · fix 127(35%: ① 73% · ② 18% · ③ 0%) · blind 전후 98.5 → 97.7%(천장) + **crossans 표본 100**(핵심 38 · 덧붙임 24 · 누설 30 · 오탐 8 → 약 1,500 힌트) + **등급 폴백 실측**(판 12 · 폴백 0) · CV-161~163 · C97 · DB 쓰기 없음 — 적용은 G037 |
 | V039.txt | ★ **미니게임 주제 세트 30 출처 대조**(위키 · Data Dragon · PokeAPI 직접 받음 · 닫힌 24 전수 + 열린 6 검토) VERIFY — **verified 21(항목 1,442) · candidate 9(fixes 54) · rejected 0** · 빠짐 17(지하철 5호선 5역 · 국가하천 5 · 통화 3 · 인천 구 4) · 더함 3(인천 옛 구) · 표기 24 · `data/minigame/topics/*.json` verify · status 만 씀 → `audit/v039-topics.json` · CV-164~165 · C100 · DB 쓰기 없음 — 적용은 G039 |
 | V040.txt | ★ **G038 다시 쓴 힌트 표본 + 주제 G039 뒤 재대조** VERIFY — 바뀐 힌트 250: ok 238 · fix 12 · revert 0 · 핵심 161 중 사실은 누설 137(85%) · 태양계 32 · 국가하천(+3) verified → 적재 세트 30 · 7 세트 44 fixes 어긋남 0 · 원소 Tin 1 · C103 · CV-166 · CV-167 |
+| V041.txt | ★ **노래 293 메타 대조 + us-state 50** VERIFY — HEAD 293/293 200 · 멜론 21 페이지 차트 167 대조 · verified 278(실 DB 적재) · fix 14 · rejected 1 · weak 96 다른 곡 0 · strong 1(Love) · us-state verified 50/50 · C107 · CV-168 · CV-169 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 

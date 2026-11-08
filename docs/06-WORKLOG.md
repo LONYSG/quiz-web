@@ -9,6 +9,15 @@
 ---
 
 ## 2026-11-08 — V040 작은 적용 (G042, GEN · DB 쓰기 — 힌트 15행)
+## 2026-11-08 — 노래 293 메타 대조 + us-state 50 (V041, VERIFY · DB 없음 · 웹 있음)
+
+- **무엇을**: verify.md — G040 이 iTunes US 로 모은 노래 293(실제 항목 기준 strong 197 · weak 96 — G040 보고의 206 은 빠진 곡 포함 수) 의 미리듣기 · 곡 대응 · 연도 · 판본 · 변형 · 차트를 대조하고 verify · status 를 쓴다 + us-state 50 을 ko 위키와 1:1.
+- **어떻게**: previewUrl HEAD 293(3초 간격 · scripts v041-raw/_work/head.mjs) · 멜론 연도별 21 페이지를 받아 파싱해 차트 167 전수 대조 · weak 96 + strong 197 눈 전수 · iTunes 캐시/search/lookup 으로 대체 trackId 찾기 · 웹 검색 14건 · ko.wikipedia 미국의 주 raw 로 이름 · 가입일 · 지역 50 기계 대조 · 파일은 한 번에 쓰고(verify · status 만 · 다른 칸 diff 0 · song-check 막힘 0 · topics-check 막힘 0).
+- **문제**: 약한 대응(weak 96)은 다른 곡 0 이었으나 강한 대응(strong) 쪽에서 다른 곡 1 — 브아걸 「Love」 자리에 Must Have Love(2006) · 리믹스 모음(Ivy Mix) · Radio Mix · JP Ver. · 경음악 · Remaster 가 판본 필터를 통과 · 차트 순위 번호 14 밀림.
+- **결정**: 판정 verified 278 · fix 14 · rejected 1 · 비블로킹 제안(변형 · 순위)은 notes 로. 설계 확인 CV-169.
+- **검증**: HEAD 293/293 200 · 차트 곡·가수 이름 153/167 일치 + 14 순위만 어긋남 · 파일 다른 칸 diff 0 · us-state 이름 50/50 · 연도 50/50 · 지역 50/50.
+- **남은 것**: CV-168(G043 적용) · 소리는 듣지 못함 — 찬종 표본 청취.
+
 
 - **무엇을**: gen.md — V040 fix 12(CV-166) + 핵심 덧붙임 3(CV-167 (a)) 힌트 · crossans-skip 1 · 주제 2(국가하천 +3 · 원소 Tin).
 - **어떻게**: VERIFY 제안문을 checkHint · crossans · 정답 글자 · 해설 중복으로 거름 → 그대로 7 · 다듬음 3 · 다시 씀 5 · 웹 5 · scripts/g042-apply-active.mjs(lib G033) · scripts/g042-topics-fix.mjs(g039 applyFixes).
