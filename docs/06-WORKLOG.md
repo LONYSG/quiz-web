@@ -8,6 +8,13 @@
 
 ---
 
+## 2026-11-09 — OX 10연속 (R085, MAIN · D-342 · 실 DB 쓰기 0)
+- **무엇**: OX 10연속(ox) — G041 400 문장(V042 verified 384)을 minigame_items 로 적재 · 문장 10 · O/X · 5초.
+- **왜**: 찬종 2026-11-08 ⑴ "OX 퀴즈 — 문장은 새로 생성" · 18 §11 게임 규칙 줄(설계).
+- **어떻게**: A 적재(minigame-ox.mjs · 메뉴 1 --game song,ox) → B shared pickOxItems · server oxGame · 화면 OxPick/OxReveal/OxAnswers → C 봇 mgonly +11 · ui-check r085 6 · 그림 보고 고침.
+- **검증**: ai-out/R085.txt 4절.
+- **남은 것**: A112(5초 · 문장 품질 · 폰 버튼) · V042 candidate 16 이 고쳐지면 다음 메뉴 1 에서 자동 적재.
+
 ## 2026-11-08 — 노래 미니게임 둘 (R084, MAIN · D-341 · 실 DB 쓰기 0)
 - **무엇**: 노래 맞히기(song) · 이 노래 몇 년도?(songyear) — G040 293곡(V041 verified 278)을 minigame_items 로 적재(새 표 없음) · 각 화면이 Apple 미리듣기를 스트리밍.
 - **왜**: 찬종 2026-11-08 ⑻ "30초 듣고 제목·가수 + 이 노래 몇 년도?" · 18 §10 게임 규칙 줄(설계).

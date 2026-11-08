@@ -10,6 +10,15 @@
 
 ---
 
+## D-342. OX 10연속 — 문장 10 · O/X 두 버튼 · 5초 · 앞 5 grade 1 · 같은 쌍 금지 · minigame_items 재사용 (R085 · D-330 ⑴ 구현 · 18 §11)
+- **적재(새 표 · 마이그레이션 없음)**: `minigame-load.mjs` 에 `ox`(칸 검사 `scripts/minigame-ox.mjs` — statement 10~120자 · answer 불리언 · explanation · category{l1, l2} · grade 1~3 · trap 여섯 · **참 = none / 거짓 = 한 축** · pairId 글/null · factClaim 받음 · 그림 없음) · verified 만 · 메뉴 1 은 노래와 한 줄 `--game song,ox`(끝 줄 "노래 n · OX m 적재") · 실 DB 에 들어갈 OX = V042 verified **384**(dry-run).
+- **고르기(shared `pickOxItems`)**: 10 문장 · **앞 5 = grade 1 · 뒤 5 = grade 2·3 섞기**(그 칸이 모자라면 다른 grade 로 채움) · **같은 pairId 한 판 금지** · 같은 대분류 ≤ 3(모자라면 이 상한만 푼다) · 참가자 중 본 사람 적은 문장 먼저(경험 `ox|<id>`) · 전원 본 문장은 맨 뒤(400 이라 금방 돌아 — 모자라면 다시 낸다) · **이번 게임에서 낸 문장은 피함**(미니게임만에서 OX 가 두 번 나와도 20 다름) · 활성 10 미만이면 안 뽑힘.
+- **판**(choice 꼴 · scoring 'correct' · 동점 = 맞힌 문장 시간 합): 문장마다 **5초** · O / X 큰 버튼(PC: O · X 키 또는 ← →) · **누르면 바꿀 수 있음(마지막)** — 그래서 임시 값으로 "n명 고름" 을 세고 5초를 다 돈다(일찍 끝내지 않음) · 맞히면 1 · 값 = 마지막으로 누른 ms · 공개 2.5초(정답 O/X · 해설 한 줄 · 내 답) · 최종 = **10 문장 정답 + 해설 목록**(틀린 것 표시) + 문항별 정리 표 · 판 중에는 정답 안 보냄 · 경험 기록 남김.
+- **연습**: 누가 봐도 연습 문장 셋(1 + 1 · 일주일 · 물 어는점).
+- **카탈로그**: MINIGAMES 맨 앞(ox → song · songyear → …) · 아이콘 CircleCheckBig · 기본 선택에 들어감.
+- 브리핑과 다르게 한 것: 공개 2.5초(브리핑 숫자 없음 — 해설 한 줄 읽을 시간) · 한글 자판 상태의 ㅐ · ㅌ 도 O · X 로 받음. 숫자(10 · 5초 · 앞 5)는 그대로.
+- 되돌리기: 설정에서 끄면 끝 · 적재 더하기만 · 코드 shared/minigame/ox.ts · server/minigame/oxGame.ts · client/minigame/OxGames.tsx.
+
 ## D-341. 노래 미니게임 둘 — 노래 맞히기(song) · 이 노래 몇 년도?(songyear) · minigame_items 재사용 · 각 화면이 Apple 미리듣기 스트리밍 · 실패 과반이면 그 곡 건너뜀 (R084 · D-330 ⑻ 구현 · 18 §10)
 - **적재(새 표 없음 · 마이그레이션 없음)**: `minigame-load.mjs` 게임 목록에 `song`(18 §10 칸 · image 칸 없어도 됨 · 칸 검사 `scripts/minigame-song.mjs` — previewUrl · artworkUrl100 https · year 정수 · pool 넷 · qid 숫자/글/null) · payload = 항목 그대로(verify 뺌) · **verified 만** · 메뉴 1 이 주제 세트 적재 바로 뒤 `--game song --apply`(실패 = 한 줄 경고 · 서버는 뜬다) · `--allow-candidate` 는 quizweb_test · dev 만(실 quizweb 은 연결 전 exit 2 · DB status 'candidate' 그대로). 실 DB 에 들어갈 곡 = V041 verified **278**(dry-run 확인 · 메뉴 1 때).
 - **두 게임이 한 항목**: 서버 적재본 키 `song` 하나를 노래 맞히기 · 이 노래 몇 년도? 가 같이 쓴다 · 경험 `song|<id>` · `songyear|<id>`(엔진 그대로) — 고를 때는 **둘 중 어느 쪽으로 들었어도 들은 곡**(같은 노래를 연도로 또 들으면 김빠진다) · 같은 게임(판) 안에서 한 게임이 낸 곡은 다른 게임이 안 낸다(쓴 소재 `song|<id>` 공유) · 한 판 3곡이 한 pool 만 되지 않게 시드를 바꿔 다시 고름(최대 12번 · 안 되면 그대로) · 활성 < 3 이면 안 뽑힘(다른 미니게임). `songyear` 만 골라도 게임 시작 때 항목을 올린다(start.ts).

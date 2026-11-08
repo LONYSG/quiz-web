@@ -1026,6 +1026,19 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
 
+## ★ R085 — 바뀐 것 (D-342 · OX 10연속 · 마이그레이션 없음)
+
+| 항목 | 내용 |
+|------|------|
+| 미니게임 키 | `'ox'`(OX 10연속) — MINIGAMES 맨 앞 · 기본 선택에 들어감 · scoring 'correct' |
+| round.params | `{ statement, category }`(대분류) · 연습 `dummy: true` — 정답 없음 |
+| round.reveal | `{ answer: boolean, explanation, statement }` |
+| `minigame.submit` input | `{ pick: true(O) \| false(X), elapsedMs }` — 5초 안 여러 번(마지막) · 그 밖은 `minigame.rejected` |
+| `minigame.feedback` | `{ result: 'set', pick }` (본인에게만) |
+| 판 결과 행 | value = 맞으면 마지막으로 누른 ms(아니면 null) · extra `{ pick, correct, changes }` · 안 누르면 submitted false |
+| 경험 | `minigame_item_experiences` 키 `ox` · item_key = `ox-NNNN` |
+| 적재 | `minigame_items.game = 'ox'`(0018 재사용) · `minigame-load.mjs --game ox` · 메뉴 1 `--game song,ox` |
+
 ## ★ R084 — 바뀐 것 (D-341 · 노래 둘 · 마이그레이션 없음)
 
 | 항목 | 내용 |

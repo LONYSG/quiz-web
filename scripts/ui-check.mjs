@@ -4795,7 +4795,8 @@ async function r084Flow(browser) {
   await realClick(H, '[data-mg-catalog-open]');
   await H.waitFor("document.querySelector('.mg-cat') !== null", 4000).catch(() => false);
   await sleep(300);
-  const cat = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('.mg-cat-card')].slice(0, 2).map((c) => c.dataset.key + ':' + (c.querySelector('svg') ? 'icon' : '-')))"));
+  // ★ R085 — OX 가 맨 앞에 와서 노래 둘은 OX 다음(ox 를 빼고 앞 둘)
+  const cat = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('.mg-cat-card')].filter((c) => c.dataset.key !== 'ox').slice(0, 2).map((c) => c.dataset.key + ':' + (c.querySelector('svg') ? 'icon' : '-')))"));
   await snap(H, 'catalog-pc');
   await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
   await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
