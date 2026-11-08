@@ -3164,8 +3164,8 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:14:51.336Z",
+  "round": "V040",
+  "checkedAt": "2026-11-08T11:35:10.106Z",
   "sources": [
    {
     "url": "https://ko.wikipedia.org/wiki/대한민국의_기초자치단체_목록",
@@ -3173,93 +3173,117 @@
     "count": 228
    }
   ],
-  "missing": [
-   "영종구",
-   "제물포구",
-   "서해구",
-   "검단구"
-  ],
-  "extra": [
-   {
-    "id": "kr-municipality-051",
-    "name": "인천 중구"
-   },
-   {
-    "id": "kr-municipality-052",
-    "name": "인천 동구"
-   },
-   {
-    "id": "kr-municipality-058",
-    "name": "인천 서구"
-   }
-  ],
+  "missing": [],
+  "extra": [],
   "rename": [],
   "variantNotes": [
-   "페이지는 인천광역시 2026-07-01 행정체제 개편(중구·동구·서구 → 영종구 · 제물포구 · 서해구 · 검단구)을 반영 — 파일은 옛 3구",
-   "광주 동·서·남·북구: 페이지는 \"전남광주통합특별시 ○구\" — 파일 \"광주 ○구\" 로 통용 표기, 수용",
-   "페이지 표에 템플릿 오류 줄(\"틀:나라자료\") 3줄 섞임 — 수 228 은 중복 포함"
+   "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
+   "변형 표본 2건 확인(문제 없음)"
   ],
-  "tagNotes": [
-   "태그(liar/draw) 없음 — 지명 세트라 정상"
-  ],
-  "fixes": [
-   {
-    "op": "remove",
-    "id": "kr-municipality-051",
-    "why": "2026-07-01 개편으로 폐지(영종구·제물포구)",
-    "applied": "G039"
-   },
-   {
-    "op": "remove",
-    "id": "kr-municipality-052",
-    "why": "동일(제물포구)",
-    "applied": "G039"
-   },
-   {
-    "op": "remove",
-    "id": "kr-municipality-058",
-    "why": "동일(서해구·검단구)",
-    "applied": "G039"
-   },
-   {
-    "op": "add",
-    "name": "영종구",
-    "variants": [
-     "영종"
-    ],
-    "why": "페이지 신설 구",
-    "applied": "G039"
-   },
-   {
-    "op": "add",
-    "name": "제물포구",
-    "variants": [
-     "제물포"
-    ],
-    "why": "페이지 신설 구",
-    "applied": "G039"
-   },
-   {
-    "op": "add",
-    "name": "서해구",
-    "variants": [
-     "서해"
-    ],
-    "why": "페이지 신설 구",
-    "applied": "G039"
-   },
-   {
-    "op": "add",
-    "name": "검단구",
-    "variants": [
-     "검단"
-    ],
-    "why": "페이지 신설 구",
-    "applied": "G039"
-   }
-  ],
+  "tagNotes": [],
+  "fixes": [],
   "verdict": "verified",
-  "why": "226 → 인천 개편 반영 시 227. 7건 (제거 3 · 추가 4) → candidate. 개편 날짜 2026-07-01 은 페이지 서술(공식 고시 대조는 못 함)",
-  "appliedRound": "G039"
+  "why": "G039 기계 적용 대조 어긋남 0",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:14:51.336Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_기초자치단체_목록",
+      "read": true,
+      "count": 228
+     }
+    ],
+    "missing": [
+     "영종구",
+     "제물포구",
+     "서해구",
+     "검단구"
+    ],
+    "extra": [
+     {
+      "id": "kr-municipality-051",
+      "name": "인천 중구"
+     },
+     {
+      "id": "kr-municipality-052",
+      "name": "인천 동구"
+     },
+     {
+      "id": "kr-municipality-058",
+      "name": "인천 서구"
+     }
+    ],
+    "rename": [],
+    "variantNotes": [
+     "페이지는 인천광역시 2026-07-01 행정체제 개편(중구·동구·서구 → 영종구 · 제물포구 · 서해구 · 검단구)을 반영 — 파일은 옛 3구",
+     "광주 동·서·남·북구: 페이지는 \"전남광주통합특별시 ○구\" — 파일 \"광주 ○구\" 로 통용 표기, 수용",
+     "페이지 표에 템플릿 오류 줄(\"틀:나라자료\") 3줄 섞임 — 수 228 은 중복 포함"
+    ],
+    "tagNotes": [
+     "태그(liar/draw) 없음 — 지명 세트라 정상"
+    ],
+    "fixes": [
+     {
+      "op": "remove",
+      "id": "kr-municipality-051",
+      "why": "2026-07-01 개편으로 폐지(영종구·제물포구)",
+      "applied": "G039"
+     },
+     {
+      "op": "remove",
+      "id": "kr-municipality-052",
+      "why": "동일(제물포구)",
+      "applied": "G039"
+     },
+     {
+      "op": "remove",
+      "id": "kr-municipality-058",
+      "why": "동일(서해구·검단구)",
+      "applied": "G039"
+     },
+     {
+      "op": "add",
+      "name": "영종구",
+      "variants": [
+       "영종"
+      ],
+      "why": "페이지 신설 구",
+      "applied": "G039"
+     },
+     {
+      "op": "add",
+      "name": "제물포구",
+      "variants": [
+       "제물포"
+      ],
+      "why": "페이지 신설 구",
+      "applied": "G039"
+     },
+     {
+      "op": "add",
+      "name": "서해구",
+      "variants": [
+       "서해"
+      ],
+      "why": "페이지 신설 구",
+      "applied": "G039"
+     },
+     {
+      "op": "add",
+      "name": "검단구",
+      "variants": [
+       "검단"
+      ],
+      "why": "페이지 신설 구",
+      "applied": "G039"
+     }
+    ],
+    "verdict": "verified",
+    "why": "226 → 인천 개편 반영 시 227. 7건 (제거 3 · 추가 4) → candidate. 개편 날짜 2026-07-01 은 페이지 서술(공식 고시 대조는 못 함)",
+    "appliedRound": "G039"
+   }
+  ]
  }
 }
