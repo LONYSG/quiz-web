@@ -316,6 +316,15 @@ async function main() {
       sh('node scripts/migrate.mjs', { cwd: TREE });
     } else log('적용할 마이그레이션 없음 → migrate 건너뜀');
   };
+  // ★★ R080 (D-337 · docs/18 §9) — 주제 세트 적재: 파일 status verified 만 · 멱등 · 파일은 쓰지 않는다. 실패해도 서버는 뜬다(한 줄 경고)
+  //   shared/dist 가 필요하다(정규화) → 빌드 뒤(또는 이미 켜진 서버면 migrate 뒤)에 부른다
+  const loadTopics = () => {
+    const r = sh('node scripts/topics-load.mjs --apply', { quiet: true, check: false, cwd: TREE });
+    const lines = `${r.stdout ?? ''}`.split(String.fromCharCode(10)).map((l) => l.trim());
+    const line = lines.find((l) => l.startsWith('주제 세트'));
+    if (r.status === 0 && line) log(line);
+    else log(`★ 주제 세트 적재 실패(서버는 그대로 뜬다 — 미니게임 '많이 말하기 · 겹치면 무효' 만 빠진다): ${`${r.stderr ?? ''}${r.stdout ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
+  };
 
   // 4) 서버
   const h = await health(2000);
@@ -332,7 +341,10 @@ async function main() {
     if (MAIN_PORT && pj && !HERE && pj.pid && h.pid && String(pj.pid) !== String(h.pid)) {
       log(`★ tmp/ops/play.json 의 PID(${pj.pid})와 떠 있는 서버 PID(${h.pid})가 다름 — 이 트리 빌드 빗장이 섭니다(메뉴 3 → 1 로 바로잡힘)`);
     }
-    if (HERE || treeExists()) migrate();
+    if (HERE || treeExists()) {
+      migrate();
+      loadTopics();
+    }
     log('★ 새 빌드로 바꾸려면: 메뉴 3(끄기) → 1(켜기) (하던 판이 끊기니 게임 중에는 하지 않기)');
   } else {
     const stale = portPids(PORT);
@@ -360,6 +372,7 @@ async function main() {
       sh('npm run build', { cwd: TREE });
       log('빌드 끝');
     }
+    loadTopics();
     log(`서버 새 창(${SERVER_TITLE})으로 시작 (npm start — 감시 없음 · 로그 ${rel(SERVER_LOG)})`);
     const since = Date.now();
     openWindow(
