@@ -33,9 +33,10 @@ import { config } from '../config.js';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { loadAllItemExperiences, loadQuizData } from '../db/minigameItems.js';
-import { liarTopics, loadTopicStore } from '../db/topics.js';
+import { drawTopics, liarTopics, loadTopicStore } from '../db/topics.js';
+import { startDrawGame } from '../draw/engine.js';
 import { startLiarGame } from '../liar/engine.js';
-import { LIAR, LIAR_START_BLOCK } from '@quiz/shared';
+import { DRAW, DRAW_START_BLOCK, LIAR, LIAR_START_BLOCK } from '@quiz/shared';
 import { TOPIC_KEYS } from '../minigame/topicGames.js';
 import { isQuizMinigameKey } from '../minigame/defs.js';
 import { insertGame, insertGamePlayers } from '../db/games.js';
@@ -133,7 +134,14 @@ export async function requestStart(room: Room): Promise<StartResult> {
       const store = await loadTopicStore();
       if (liarTopics(store).length === 0) return { ok: false, reason: 'settings', message: '제시어가 없어요(주제 세트 적재 전) — 다른 방식으로 해 주세요.' };
     }
-    const noQuiz = mgOnly || liarMode;
+    // ── ★★★ R083 — 캐치마인드: 2명부터 · 제시어(draw 항목)
+    const drawMode = room.settings.mode === 'draw';
+    if (drawMode) {
+      if (room.players.size < DRAW.MIN_PLAYERS) return { ok: false, reason: 'settings', message: DRAW_START_BLOCK };
+      const store = await loadTopicStore();
+      if (drawTopics(store).length === 0) return { ok: false, reason: 'settings', message: '제시어가 없어요(주제 세트 적재 전) — 다른 방식으로 해 주세요.' };
+    }
+    const noQuiz = mgOnly || liarMode || drawMode;
 
     // ── 2. ★ 출제 가능 수 재검증 (Q-21). 캐시를 믿지 않고 지금 조회한다.
     const wanted = noQuiz ? 0 : room.settings.questionCount;
@@ -160,7 +168,7 @@ export async function requestStart(room: Room): Promise<StartResult> {
     room.countdownEndsAt = Date.now() + room.settings.countdownSec * 1000;
     console.log(
       `[game] ${room.id} 카운트다운 시작 ${room.settings.countdownSec}초 ` +
-        (liarMode ? `(라이어 ${room.settings.minigameRounds}라운드)` : mgOnly ? `(미니게임만 ${room.settings.minigameRounds}개)` : `(문제 ${wanted}개 / 가능 ${available}개)`),
+        (drawMode ? `(캐치마인드 ${room.settings.minigameRounds}라운드)` : liarMode ? `(라이어 ${room.settings.minigameRounds}라운드)` : mgOnly ? `(미니게임만 ${room.settings.minigameRounds}개)` : `(문제 ${wanted}개 / 가능 ${available}개)`),
     );
     emitRoom(room, 'game.countdownStarted', {
       endsAt: room.countdownEndsAt,
@@ -211,7 +219,7 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
     // ★ 카운트다운 중 신규 입장이 허용되므로(Q-11) 참가자 집합이 바뀌었을 수 있다.
     //   출제 가능 수를 다시 확인한다. 사람이 늘면 수가 늘고, 나가면 줄어든다.
     // ★★★ R057 — 미니게임만은 출제 가능 수를 보지 않는다(인원이 줄어 할 게 없으면 첫 미니게임에서 끝난다)
-    const noQuiz = room.settings.minigameOnly || room.settings.mode === 'liar';
+    const noQuiz = room.settings.minigameOnly || room.settings.mode === 'liar' || room.settings.mode === 'draw';
     const wanted = noQuiz ? 0 : room.settings.questionCount;
     const available = noQuiz ? 0 : await countAvailableQuestions(participantIds(room), room.settings);
     if (!noQuiz) room.availableQuestionCount = available;
@@ -267,7 +275,10 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   const mgOnly = settings.minigameOnly;
   // ★★★ R082 — 라이어 판: 문제 · 미니게임 없이 라이어 라운드(minigameRounds)
   const liarMode = settings.mode === 'liar';
-  const noQuiz = mgOnly || liarMode;
+  // ★★★ R083 — 캐치마인드 판(라이어와 같은 꼴 — 주제 세트 · 라운드)
+  const drawMode = settings.mode === 'draw';
+  const topicMode = liarMode || drawMode;
+  const noQuiz = mgOnly || topicMode;
   const roster = [...room.players.values()].map((p) => ({
     accountId: p.accountId,
     colorIndex: p.colorIndex,
@@ -286,7 +297,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       settingStartMode: 'countdown',
       settingCountdownSec: settings.countdownSec,
       plannedQuestionCount: availableAtStart,
-      mode: liarMode ? 'liar' : mgOnly ? 'minigame' : 'quiz',
+      mode: drawMode ? 'draw' : liarMode ? 'liar' : mgOnly ? 'minigame' : 'quiz',
       settingMinigameRounds: noQuiz ? settings.minigameRounds : null,
       teamMode: settings.teamMode,
     });
@@ -311,7 +322,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   try {
     [pool, experienced, minigameQuiz, liarData] = await Promise.all([
       // ★ R057 — 미니게임만은 퀴즈 풀이 필요 없다 · ★ R080 — 객관식 10연속을 골랐으면 보기 재료로 읽는다(실패해도 시작은 한다)
-      liarMode
+      topicMode
         ? Promise.resolve([])
         : mgOnly
         ? settings.minigameKeys.includes('choice')
@@ -321,7 +332,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       loadExperienced(participantIds(room)),
       // ★ R052 — 퀴즈류 미니게임 문항 · 경험 (켜져 있고 퀴즈류를 골랐을 때만)
       //   ★ R080 — 주제 세트 게임(많이 말하기 · 겹치면 무효)도 같은 자리(경험 'topic:<slug>' · 주제 세트 저장소)
-      !liarMode && (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k) || TOPIC_KEYS.has(k))
+      !topicMode && (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k) || TOPIC_KEYS.has(k))
         ? Promise.all([
             loadQuizData(),
             loadAllItemExperiences(participantIds(room)),
@@ -329,7 +340,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
           ]).then(([data, exp, topics]) => ({ data, experienced: exp, topics }))
         : Promise.resolve(null),
       // ★★★ R082 — 라이어: 제시어(주제 세트 liar 항목) · 경험('liar|항목 id')
-      liarMode ? Promise.all([loadTopicStore(), loadAllItemExperiences(participantIds(room))]).then(([store, exp]) => ({ store, exp })) : Promise.resolve(null),
+      topicMode ? Promise.all([loadTopicStore(), loadAllItemExperiences(participantIds(room))]).then(([store, exp]) => ({ store, exp })) : Promise.resolve(null),
     ]);
   } catch (err) {
     console.error(`[game] ★★ ${room.id} 출제 풀 로드 실패 — 게임을 시작하지 않는다:`, (err as Error).message);
@@ -349,7 +360,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   // ── 3. 동기 전이 구간. ★ 여기에 await 를 넣지 않는다.
   const now = Date.now();
   // ★ R057 — 미니게임만은 바로 미니게임 상태(첫 미니게임이 아래에서 시작한다)
-  room.state = liarMode ? 'LIAR' : mgOnly ? 'MINIGAME' : 'QUESTION_ACTIVE';
+  room.state = drawMode ? 'DRAW' : liarMode ? 'LIAR' : mgOnly ? 'MINIGAME' : 'QUESTION_ACTIVE';
   room.settingsLocked = true;
   room.countdownEndsAt = null;
   room.result = null;
@@ -380,6 +391,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     minigameQuiz: minigameQuiz ?? null,
     mgSeries: mgOnly ? { total: settings.minigameRounds, done: 0, totals: new Map(), lastRank: new Map() } : null,
     liar: null,
+    draw: null,
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,
@@ -403,8 +415,11 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     gameId,
     totalQuestions: room.game.totalQuestions,
     state: room.state,
-    mode: liarMode ? 'liar' : mgOnly ? 'minigame' : 'quiz',
+    mode: drawMode ? 'draw' : liarMode ? 'liar' : mgOnly ? 'minigame' : 'quiz',
   });
+
+  // ── ★★★ R083 — 캐치마인드: 첫 그림
+  if (drawMode) return liarData ? startDrawGame(room, liarData.store, liarData.exp) : false;
 
   // ── ★★★ R082 — 라이어: 첫 라운드(못 하면 startLiarGame 이 판을 끝낸다)
   if (liarMode) return liarData ? startLiarGame(room, liarData.store, liarData.exp) : false;

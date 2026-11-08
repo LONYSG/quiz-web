@@ -614,7 +614,7 @@ export function finishGame(
     abortedNote,
     endedQuestionCount: game.endedQuestionCount,
     totalQuestions: game.totalQuestions,
-    mode: game.liar ? 'liar' : series ? 'minigame' : 'quiz',
+    mode: game.draw ? 'draw' : game.liar ? 'liar' : series ? 'minigame' : 'quiz',
     minigameSeries: series ? { done: series.done, total: series.total } : null,
     // ★★★ R079 (D-335) — 팀전 판: 팀 점수 = 팀원 score 합(방에 남은 사람 — 끊긴 사람 포함 · 나간 사람 빠짐) · 보너스는 끝까지 간 판만
     teams: room.settings.teamMode ? buildTeamResult(rows.map((r) => ({ accountId: r.accountId, team: room.players.get(r.accountId)?.team ?? null, score: r.score })), endReason === 'completed') : null,

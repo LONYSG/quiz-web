@@ -154,6 +154,8 @@ export interface ActiveGame {
   mgSeries: { total: number; done: number; totals: Map<string, number>; lastRank: Map<string, number> } | null;
   /** ★★★ R082 — 라이어 판(방식 liar · D-339). 다른 방식이면 null */
   liar: import('../liar/engine.js').LiarRun | null;
+  /** ★★★ R083 — 캐치마인드 판(방식 draw · D-340). 다른 방식이면 null */
+  draw: import('../draw/engine.js').DrawRun | null;
   /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
   resolution: Resolution | null;
   /**
@@ -503,7 +505,7 @@ export interface GameResultData {
   endedQuestionCount: number;
   totalQuestions: number;
   /** ★★★ R057 — 'minigame' = 미니게임만 판(점수 = 순위 점수 합 · 동점은 마지막 미니게임 순위) · 그때 한 수 / 정한 수 */
-  mode: 'quiz' | 'minigame' | 'liar';
+  mode: 'quiz' | 'minigame' | 'liar' | 'draw';
   minigameSeries: { done: number; total: number } | null;
   /** ★★★ R079 — 팀전 판이면 팀 점수 · 승패 · 보너스(D-335) · 아니면 null */
   teams: import('@quiz/shared').TeamResult | null;

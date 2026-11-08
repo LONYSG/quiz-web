@@ -340,6 +340,7 @@ export default function App() {
     let screen = !account ? 'auth' : account.mustChangePassword ? 'password-change' : !snap ? 'lobby' : 'room';
     if (mg) screen = `minigame:${mg.key}:${mg.phase}`;
     else if (st === 'LIAR') screen = `liar:${snap?.liar?.phase ?? ''}`;
+    else if (st === 'DRAW') screen = `draw:${snap?.draw?.phase ?? ''}`;
     else if (st === 'QUESTION_ACTIVE') screen = 'game:question';
     else if (st === 'QUESTION_RESOLVED') screen = 'game:reveal';
     else if (st === 'PAUSED') screen = 'game:paused';

@@ -27,6 +27,7 @@
 // =============================================================================
 
 import { checkLiar } from './liar/engine.js';
+import { checkDraw } from './draw/engine.js';
 import { RULES } from '@quiz/shared';
 import { config } from './config.js';
 import { startFromCountdown } from './game/start.js';
@@ -100,6 +101,8 @@ function tick(): void {
       checkMinigame(room, now);
       // ★★★ R082 — 라이어 판 진행 (상태 LIAR 에서만)
       checkLiar(room, now);
+      // ★★★ R083 — 캐치마인드 진행 (상태 DRAW 에서만)
+      checkDraw(room, now);
       checkHostTransfer(room, now);
       checkDisconnectDisplay(room, now);
       checkAway(room, now);

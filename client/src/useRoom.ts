@@ -72,7 +72,34 @@ export interface RoomSettings {
   /** ★★★ R079 — 팀전 (블루 · 레드) */
   teamMode?: boolean;
   /** ★★★ R082 — 방식(퀴즈 · 미니게임만 · 라이어) */
-  mode?: 'quiz' | 'minigame' | 'liar';
+  mode?: 'quiz' | 'minigame' | 'liar' | 'draw';
+}
+
+/** ★★★ R083 — 캐치마인드 판 보기(서버 draw/engine.ts DrawView) */
+export interface DrawStrokeView {
+  id: string;
+  color: string;
+  width: number;
+  pts: number[];
+}
+export interface DrawView {
+  round: number;
+  rounds: number;
+  phase: 'draw' | 'reveal';
+  phaseStartedAt: number;
+  phaseEndsAt: number;
+  topic: string;
+  nameKo: string;
+  keyword: string | null;
+  drawer: string;
+  amDrawer: boolean;
+  spectating: boolean;
+  participants: string[];
+  solved: { accountId: string; ms: number }[];
+  mySolved: boolean;
+  canReroll: boolean;
+  strokes: DrawStrokeView[];
+  scores: Record<string, number> | null;
 }
 
 /** ★★★ R082 — 라이어 판 보기(서버 liar/engine.ts LiarView 와 같은 꼴 · 사람마다 다름) */
@@ -259,7 +286,7 @@ export interface GameResultView {
   endedQuestionCount: number;
   totalQuestions: number;
   /** ★★★ R057 — 미니게임만 판이면 'minigame'(점수 = 순위 점수 합) */
-  mode?: 'quiz' | 'minigame' | 'liar';
+  mode?: 'quiz' | 'minigame' | 'liar' | 'draw';
   minigameSeries?: { done: number; total: number } | null;
   /** ★★★ R079 — 팀전 판의 팀 점수 · 승패 · 보너스(D-335) */
   teams?: TeamResult | null;
@@ -315,6 +342,8 @@ export interface RoomSnapshot {
   minigame?: MinigameView | null;
   /** ★★★ R082 — 라이어 판 (상태 LIAR 에서만) */
   liar?: LiarView | null;
+  /** ★★★ R083 — 캐치마인드 판 (상태 DRAW 에서만) */
+  draw?: DrawView | null;
 }
 
 export interface SocketErrorPayload {
@@ -736,6 +765,9 @@ export function useRoom(socket: Socket | null): RoomHook {
     const onLiarState = (p: { state: string; liar: LiarView | null }) => {
       setSnapshot((prev) => (prev ? { ...prev, room: { ...prev.room, state: p.state }, liar: p.liar } : prev));
     };
+    const onDrawState = (p: { state: string; draw: DrawView | null }) => {
+      setSnapshot((prev) => (prev ? { ...prev, room: { ...prev.room, state: p.state }, draw: p.draw } : prev));
+    };
     const onMinigameEnded = (p: { state: string; practice: boolean; settingsLocked?: boolean }) => {
       setSnapshot((prev) =>
         prev
@@ -837,6 +869,7 @@ export function useRoom(socket: Socket | null): RoomHook {
     socket.on('chat.throttled', onThrottled);
     socket.on('minigame.state', onMinigameState);
     socket.on('liar.state', onLiarState);
+    socket.on('draw.state', onDrawState);
     socket.on('minigame.ended', onMinigameEnded);
     socket.on('game.paused', onPaused);
     socket.on('game.pauseStatus', onPauseStatus);
@@ -897,6 +930,7 @@ export function useRoom(socket: Socket | null): RoomHook {
       socket.off('chat.throttled', onThrottled);
       socket.off('minigame.state', onMinigameState);
       socket.off('liar.state', onLiarState);
+      socket.off('draw.state', onDrawState);
       socket.off('minigame.ended', onMinigameEnded);
       socket.off('game.paused', onPaused);
       socket.off('game.pauseStatus', onPauseStatus);

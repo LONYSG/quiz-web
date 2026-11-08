@@ -21,6 +21,7 @@ import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount, deviceOf } from './registry.js';
 import { minigameView } from '../minigame/engine.js';
 import { liarView } from '../liar/engine.js';
+import { drawView } from '../draw/engine.js';
 import type { CurrentQuestion, ExperienceRate, GameResultData, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
@@ -102,6 +103,7 @@ export interface RoomSnapshot {
   /** ★ R050 */
   minigame: import('../minigame/engine.js').MinigameView | null;
   liar: import('../liar/engine.js').LiarView | null;
+  draw: import('../draw/engine.js').DrawView | null;
 }
 
 export interface PausedView {
@@ -311,6 +313,8 @@ export function buildSnapshot(
     minigame: minigameView(room, viewerAccountId),
     // ★★★ R082 — 라이어 판(사람마다 다름 — 시민만 키워드)
     liar: liarView(room, viewerAccountId),
+    // ★★★ R083 — 캐치마인드(출제자만 키워드 · 선 전부 — 늦게 들어온 사람도)
+    draw: drawView(room, viewerAccountId),
   };
 }
 

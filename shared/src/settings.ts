@@ -13,6 +13,7 @@
 import { RULES } from './protocol.js';
 import { MINIGAME_KEYS, isMinigameKey, type MinigameKey } from './minigame.js';
 import { LIAR, LIAR_TEAM_BLOCK, isRoomMode, type RoomMode } from './liar.js';
+import { DRAW, DRAW_TEAM_BLOCK } from './draw.js';
 
 export type StartMode = 'instant' | 'countdown';
 
@@ -319,6 +320,13 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   }
   if (mode === 'liar' && raw.teamMode === true) {
     return { ok: false, field: 'teamMode', message: LIAR_TEAM_BLOCK };
+  }
+  // ── ★★★ R083 — 캐치마인드: 라운드(그림 수) 2~10 · 팀전과 같이 안 됨
+  if (mode === 'draw' && (minigameRounds < DRAW.ROUNDS.MIN || minigameRounds > DRAW.ROUNDS.MAX)) {
+    return { ok: false, field: 'minigameRounds', message: `캐치마인드 라운드 수는 ${DRAW.ROUNDS.MIN}~${DRAW.ROUNDS.MAX} 사이여야 합니다.` };
+  }
+  if (mode === 'draw' && raw.teamMode === true) {
+    return { ok: false, field: 'teamMode', message: DRAW_TEAM_BLOCK };
   }
 
   return {

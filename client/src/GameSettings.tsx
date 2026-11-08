@@ -16,6 +16,7 @@
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import {
+  DRAW,
   LIAR,
   DIFFICULTY_LEVELS,
   GAME_TOPICS,
@@ -115,8 +116,11 @@ export default function GameSettings({
   // ★★★ R082 — 방식 세 버튼(퀴즈 · 미니게임만 · 라이어 — D-339). 옛 설정(mode 없음)은 minigameOnly 로
   const mode = shown.mode ?? (shown.minigameOnly === true ? 'minigame' : 'quiz');
   const liar = mode === 'liar';
+  // ★★★ R083 — 캐치마인드(라운드 수 · 팀전 잠금 · 문제/미니게임 줄 숨김은 라이어와 같다)
+  const drawM = mode === 'draw';
+  const topicM = liar || drawM;
   const mgOnly = mode === 'minigame';
-  const roundsMax = liar ? LIAR.ROUNDS.MAX : MINIGAME_ONLY_ROUNDS.MAX;
+  const roundsMax = topicM ? LIAR.ROUNDS.MAX : MINIGAME_ONLY_ROUNDS.MAX;
   const clampRounds = (n: number | undefined) => Math.min(LIAR.ROUNDS.MAX, Math.max(LIAR.ROUNDS.MIN, Number.isFinite(n) ? (n as number) : LIAR.ROUNDS.DEFAULT));
   const mgRounds = shown.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT;
   const keysOf = (s: RoomSettings) => s.minigameKeys ?? [...MINIGAME_KEYS];
@@ -160,9 +164,19 @@ export default function GameSettings({
               >
                 라이어
               </button>
+              <button
+                type="button"
+                data-mode="draw"
+                aria-pressed={drawM}
+                className={drawM ? 'preset active' : 'preset'}
+                title={`출제자가 돌아가며 그림 · 채팅으로 정답 · ${DRAW.MIN_PLAYERS}명부터`}
+                onClick={() => !drawM && push({ ...draft, mode: 'draw', minigameOnly: false, teamMode: false, minigameRounds: clampRounds(draft.minigameRounds) })}
+              >
+                캐치마인드
+              </button>
             </>
           ) : (
-            <span className="chip on">{liar ? '라이어' : mgOnly ? '미니게임만' : '퀴즈'}</span>
+            <span className="chip on">{drawM ? '캐치마인드' : liar ? '라이어' : mgOnly ? '미니게임만' : '퀴즈'}</span>
           )}
           <span className="team-sep" aria-hidden="true" />
           {editable ? (
@@ -171,7 +185,7 @@ export default function GameSettings({
                 type="button"
                 data-team-toggle
                 aria-pressed={teamOn}
-                disabled={teamDisabled || liar}
+                disabled={teamDisabled || topicM}
                 title={teamDisabled ? '2명 이상일 때 켤 수 있어요' : teamOn ? '팀전 끄기' : '블루 · 레드 두 팀으로'}
                 className={teamOn ? 'preset active team-toggle' : 'preset team-toggle'}
                 onClick={() => push({ ...draft, teamMode: !teamOn })}
@@ -196,9 +210,14 @@ export default function GameSettings({
           라이어 1명 · 주제만 알고 한마디씩 → 투표 · 최후의 항변 → 찬반 · {LIAR.MIN_PLAYERS}명부터
         </p>
       )}
-      {(mgOnly || liar) && (
+      {drawM && (
+        <p className="set-note dim" data-draw-note>
+          출제자가 돌아가며 그림 · 나머지는 채팅으로 정답 · 빨리 맞힐수록 3 · 2 · 1점 · {DRAW.MIN_PLAYERS}명부터
+        </p>
+      )}
+      {(mgOnly || topicM) && (
         <div className="set-row">
-          <span className="set-label">{liar ? '라운드 수' : '미니게임 수'}</span>
+          <span className="set-label">{topicM ? '라운드 수' : '미니게임 수'}</span>
           {editable ? (
             <div className="preset-row">
               <input
@@ -207,7 +226,7 @@ export default function GameSettings({
                 inputMode="numeric"
                 min={MINIGAME_ONLY_ROUNDS.MIN}
                 max={roundsMax}
-                aria-label={`${liar ? '라운드 수' : '미니게임 수'} (${MINIGAME_ONLY_ROUNDS.MIN}~${roundsMax})`}
+                aria-label={`${topicM ? '라운드 수' : '미니게임 수'} (${MINIGAME_ONLY_ROUNDS.MIN}~${roundsMax})`}
                 value={Number.isFinite(draft.minigameRounds) ? draft.minigameRounds : ''}
                 onChange={(e) => push({ ...draft, minigameRounds: Number.parseInt(e.target.value, 10) })}
               />
@@ -224,7 +243,7 @@ export default function GameSettings({
               ))}
             </div>
           ) : (
-            <span className="set-value mono">{mgRounds}{liar ? '라운드' : '개'}</span>
+            <span className="set-value mono">{mgRounds}{topicM ? '라운드' : '개'}</span>
           )}
         </div>
       )}
@@ -356,7 +375,7 @@ export default function GameSettings({
       )}
 
       {/* ★★★ R050 — 미니게임 포함 (기본 꺼짐 · 10문제마다 · 5~9문제는 가운데 한 번 · 마지막 문제 뒤에는 없음 — D-234) */}
-      {!liar && <div className="set-row mg-set-row">
+      {!topicM && <div className="set-row mg-set-row">
         <span className="set-label">미니게임</span>
         <div className="preset-row">
           {mgOnly ? null : editable ? (

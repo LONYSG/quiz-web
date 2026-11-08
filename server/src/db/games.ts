@@ -54,7 +54,7 @@ export interface NewGame {
   /** 시작 시점 출제 가능 수 검증 결과 (Q-21) */
   plannedQuestionCount: number;
   /** ★★★ R057 — 'minigame' = 미니게임만 판(0021) · 그때 미니게임 수 */
-  mode: 'quiz' | 'minigame' | 'liar';
+  mode: 'quiz' | 'minigame' | 'liar' | 'draw';
   settingMinigameRounds: number | null;
   /** ★★★ R079 — 팀전 판 (0030 games.team_mode) */
   teamMode?: boolean;

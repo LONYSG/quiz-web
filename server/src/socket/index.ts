@@ -98,6 +98,7 @@ import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import { liarChatGate, liarFinal, liarGuess, liarVote } from '../liar/engine.js';
+import { drawChatGate, drawClear, drawReroll, drawStroke } from '../draw/engine.js';
 import {
   on,
   onRoom,
@@ -468,6 +469,15 @@ function registerRoomHandlers(socket: Socket): void {
           s.emit('liar.chatRejected', { reason: gate.reason, message: gate.message });
           return;
         }
+      }
+      // ── ★★★ R083 — 캐치마인드: 맞힌 글은 채팅에 안 보이고 시스템 줄 · 출제자 키워드 · 글자 수 힌트 거부(본인에게만)
+      if (room.state === 'DRAW') {
+        const gate = drawChatGate(room, player.accountId, rawNfc.trim());
+        if (!gate.ok) {
+          s.emit('draw.chatRejected', { reason: gate.reason, message: gate.message });
+          return;
+        }
+        if (gate.consumed) return;
       }
 
       // ── ★★★ R057 (D-250) — 이모티콘 토큰: 가지지 않은 특별 토큰 · 10개 넘는 토큰을 버린다
@@ -934,7 +944,7 @@ function registerRoomHandlers(socket: Socket): void {
     {
       requireHost: true,
       // ★ PAUSED 에서도 강제 종료할 수 있다 (T13 / 04-PROTOCOL 3장)
-      allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED', 'MINIGAME', 'LIAR'],
+      allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED', 'MINIGAME', 'LIAR', 'DRAW'],
     },
     ({ socket: s, room }) => {
       // ★★ R050 — 미니게임 중: 연습이면 로비로 · 퀴즈 판이면 미니게임을 닫고(보상 없음 — final 전이면) 게임을 끝낸다
@@ -1038,6 +1048,26 @@ function registerRoomHandlers(socket: Socket): void {
     },
     ({ socket: s, room, session, payload }) => liarReply(s, liarGuess(room, session.accountId, payload.text)),
   );
+
+  // ── ★★★ R083 — 캐치마인드 입력(출제자만): 선 조각 · 전체 지우기 · 다른 제시어. 이상하거나 때가 아니면 조용히(draw.rejected — 본인에게만)
+  const drawReply = (s: typeof socket, r: string) => {
+    if (r !== 'ok') s.emit('draw.rejected', { reason: r });
+  };
+  onRoom<{ id: string; color: unknown; width: unknown; pts: unknown }>(
+    socket,
+    'draw.stroke',
+    {
+      allowedStates: ['DRAW'],
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        const id = parseString(obj?.id, 1, 32);
+        return obj && id !== null ? { id, color: obj.color, width: obj.width, pts: obj.pts } : null;
+      },
+    },
+    ({ socket: s, room, session, payload }) => drawReply(s, drawStroke(room, session.accountId, payload)),
+  );
+  onRoom<Record<string, never>>(socket, 'draw.clear', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawClear(room, session.accountId)));
+  onRoom<Record<string, never>>(socket, 'draw.reroll', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawReroll(room, session.accountId)));
 
   // ── ★★★ R050 — 로비 "미니게임 골라 하기" (방장 · 로비에서만 · 방 사람 전원 참가 · 연습 — 점수 · 포인트 없음)
   onRoom<{ key: string }>(
@@ -1448,7 +1478,7 @@ function attachToRoom(
 
 /** 게임이 진행 중인 상태 (카운트다운 · 문제 · 정답 공개 · 일시정지) */
 function isInGame(room: Room): boolean {
-  return room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED' || room.state === 'MINIGAME' || room.state === 'LIAR';
+  return room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED' || room.state === 'MINIGAME' || room.state === 'LIAR' || room.state === 'DRAW';
 }
 
 /** 빠지는 까닭 — 자의(left) · 타의 끊김 60초(timeout) · 강퇴(kick) · 차단(ban) */

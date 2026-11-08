@@ -36,6 +36,10 @@ describe('설정 — 방식(mode)', () => {
     expect(c.ok && [c.settings.mode, c.settings.minigameOnly]).toEqual(['liar', false]);
     expect(validateRoomSettings({ ...base, mode: 'liar', minigameRounds: LIAR.ROUNDS.MAX + 1 }).ok).toBe(false);
     expect(validateRoomSettings({ ...base, mode: 'liar', teamMode: true }).ok).toBe(false);
-    expect(validateRoomSettings({ ...base, mode: 'draw' }).ok).toBe(false);
+    expect(validateRoomSettings({ ...base, mode: 'oops' }).ok).toBe(false);
+    // ★ R083 — 캐치마인드
+    const d = validateRoomSettings({ ...base, mode: 'draw', minigameRounds: 3 });
+    expect(d.ok && [d.settings.mode, d.settings.minigameOnly]).toEqual(['draw', false]);
+    expect(validateRoomSettings({ ...base, mode: 'draw', teamMode: true }).ok).toBe(false);
   });
 });

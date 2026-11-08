@@ -10086,3 +10086,104 @@ button.preset.shake {
     max-height: 170px;
   }
 }
+
+/* =============================================================================
+   ★★★ R083 — 캐치마인드 (D-340) — 판 자리 = 정사각 캔버스 · 채팅 높이를 줄여 자리 확보(찬종 ⑵)
+   캔버스 바탕은 모든 테마에서 흰색(색 4 가 늘 같은 뜻) · 상태는 글자 + 기호(✓ 맞힘 · ✎ 출제자 — D-324)
+   ============================================================================= */
+.draw-card {
+  display: grid;
+  gap: 6px;
+}
+.draw-who {
+  font-size: 0.95rem;
+}
+.draw-word {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.02rem;
+}
+.draw-keyword {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+.draw-mine-ok {
+  color: var(--ok);
+  font-weight: 800;
+}
+.draw-wrap {
+  display: flex;
+  justify-content: center;
+}
+.draw-canvas {
+  width: min(100%, 50vh);
+  aspect-ratio: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 2px solid color-mix(in srgb, var(--text-dim) 40%, transparent);
+  touch-action: none;
+  display: block;
+}
+.draw-canvas.can {
+  cursor: crosshair;
+}
+.draw-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+.draw-tool {
+  min-height: 34px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 2px solid transparent;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: inherit;
+  cursor: pointer;
+}
+.draw-tool.on {
+  border-color: var(--accent);
+}
+.draw-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.draw-solved {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+/* 채팅을 줄인다 — 최근 몇 줄 + 입력칸 */
+.room[data-state='DRAW'] .chat-card {
+  flex: 0 0 auto;
+  height: 210px;
+  min-height: 0;
+}
+@media (max-width: 520px) {
+  .draw-canvas {
+    width: 100%;
+  }
+  .draw-tool {
+    min-height: 30px;
+    padding: 2px 7px;
+    font-size: 0.78rem;
+  }
+  .room[data-state='DRAW'] .chat-card {
+    height: 150px;
+  }
+}

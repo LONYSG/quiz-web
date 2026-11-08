@@ -47,7 +47,7 @@ export function statusOf(accountId: string): FriendStatus {
   const room = getRoomOfAccount(accountId);
   const player = room?.players.get(accountId);
   if (!room || !player?.connected) return { kind: 'online' };
-  const inGame = room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED' || room.state === 'MINIGAME' || room.state === 'LIAR';
+  const inGame = room.state === 'COUNTDOWN' || room.state === 'QUESTION_ACTIVE' || room.state === 'QUESTION_RESOLVED' || room.state === 'PAUSED' || room.state === 'MINIGAME' || room.state === 'LIAR' || room.state === 'DRAW';
   return { kind: inGame ? 'game' : 'lobby', count: room.players.size, roomId: room.id };
 }
 const key = (s: FriendStatus) => `${s.kind}:${s.count ?? ''}:${s.roomId ?? ''}`;

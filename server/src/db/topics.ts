@@ -95,6 +95,11 @@ export function liarTopics(store: TopicStore | null | undefined): TopicSet[] {
   return (store?.sets ?? []).filter((s) => s.items.some((x) => x.liar));
 }
 
+/** ★ R083 — 캐치마인드 제시어가 있는 세트(draw 항목 1개 이상) */
+export function drawTopics(store: TopicStore | null | undefined): TopicSet[] {
+  return (store?.sets ?? []).filter((s) => s.items.some((x) => x.draw));
+}
+
 /** 게임 키 → 쓸 수 있는 세트 */
 export function topicsForKey(key: string, store: TopicStore | null | undefined): TopicSet[] {
   return key === 'order' ? orderTopics(store) : key === 'bingo' ? bingoTopics(store) : playableTopics(store);

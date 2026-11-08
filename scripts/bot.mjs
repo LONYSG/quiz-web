@@ -131,6 +131,8 @@ const SCENARIO_ENV = {
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
   topicsets: { MINIGAME_PHASE_SCALE: '0.05', TOPIC_CACHE_MS: '0' },
+  // ★ R083 — 캐치마인드 그림 90초 → 8초(아무도 못 맞히는 판)
+  draw: { DRAW_ROUND_MS: '8000' },
   mgcount: { MINIGAME_PHASE_SCALE: '0.05', DISCONNECT_REMOVE_MS: '1500' },
   // ★ R060 — 둘이서 16 게임(놀이 시간은 줄지 않는다 — 판 사이만 짧게)
   mgduo: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
@@ -8187,6 +8189,119 @@ async function scenarioLiar() {
 }
 
 // =============================================================================
+// ★★★ R083 — 캐치마인드 (D-340) — 봇 3 + 중간 입장 1 · 3라운드(DRAW_ROUND_MS 8초)
+//   R1 출제 host: 다른 제시어 1회 · 선 조각 2 · 출제자 키워드/글자 수 거부 · b2 · b3 차례로 맞힘(3 · 2 · 출제 2) · 맞힌 글은 채팅에 안 보임 · 중간 입장 = 선 스냅샷 · 구경꾼 정답 거부
+//   R2 출제 b2: 아무도 못 맞힘(0) · R3 출제 b3: host 오답(보통 채팅) → 정답(3 · 출제 1)
+//   + 1명 시작 블록 · draw_rounds 3행 · 결과 mode draw
+// =============================================================================
+async function scenarioDraw() {
+  log('시나리오 draw — ★★★ 캐치마인드 (R083)');
+  const bots = await makeBots(3);
+  const [host, b2, b3] = bots;
+  for (const b of bots) await b.connect();
+  host.createRoom('R083 캐치마인드');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  let m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, mode: 'draw', minigameRounds: 3 });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.mode === 'draw'), 4000, '설정(캐치마인드)');
+  m = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(500);
+  expectTrue('★★ 1명 → 시작 블록 "캐치마인드는 2명부터"', host.since(m, 'error').some((e) => /2명부터/.test(`${e.message} ${e.detail ?? ''}`)), JSON.stringify(host.since(m, 'error')));
+  for (const b of [b2, b3]) {
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+  }
+  await sleep(300);
+  const late = new Bot('19');
+  await late.auth();
+  await late.connect();
+  const all = [...bots, late];
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [all.map((b) => b.loginId)])).rows.map((r) => [r.login_id, r.id])));
+  const idOf = (b) => ids.get(b.loginId);
+  const views = new Map(all.map((b) => [b, []]));
+  const strokesGot = new Map(all.map((b) => [b, 0]));
+  const rejected = new Map(all.map((b) => [b, []]));
+  const chats = [];
+  for (const b of all) {
+    b.socket.on('draw.state', (p) => p.draw && views.get(b).push(p.draw));
+    b.socket.on('draw.stroke', () => strokesGot.set(b, strokesGot.get(b) + 1));
+    b.socket.on('draw.chatRejected', (p) => rejected.get(b).push(p.reason));
+    if (b === host) b.socket.on('chat.message', (p) => chats.push(p));
+  }
+  const lastView = (b) => views.get(b)[views.get(b).length - 1];
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '시작');
+  const started = host.since(g, 'game.started')[0];
+  // ── R1 — 출제 host
+  await host.waitFor(() => lastView(host)?.round === 1, 8000, 'R1');
+  const kw0 = lastView(host).keyword;
+  host.socket.emit('draw.reroll', {});
+  await host.waitFor(() => lastView(host)?.keyword && lastView(host).keyword !== kw0, 3000, '다른 제시어').catch(() => {});
+  const kw1 = lastView(host).keyword;
+  expectTrue('★★ 다른 제시어 1회 — 키워드 바뀜 · 다시는 안 됨(canReroll false)', kw1 && kw1 !== kw0 && lastView(host).canReroll === false, JSON.stringify({ kw0, kw1 }));
+  expectTrue('★★ 출제자만 키워드 · 나머지는 null', lastView(host).amDrawer && lastView(b2).keyword === null && lastView(b2).amDrawer === false, JSON.stringify({ b2: lastView(b2)?.keyword }));
+  host.socket.emit('draw.stroke', { id: 's1', color: '#111111', width: 6, pts: [100, 100, 200, 200, 300, 250] });
+  host.socket.emit('draw.stroke', { id: 's1', color: '#111111', width: 6, pts: [400, 300] });
+  host.socket.emit('draw.stroke', { id: 's2', color: '#e5383b', width: 18, pts: [500, 500, 600, 650] });
+  b2.socket.emit('draw.stroke', { id: 'x', color: '#111111', width: 6, pts: [1, 1, 2, 2] }); // 출제자 아님 → 거름
+  await sleep(400);
+  expectTrue('★★★ 선 조각 중계 — 다른 사람에게 3조각 · 출제자 아닌 선은 거름', strokesGot.get(b2) === 3 && strokesGot.get(b3) === 3, JSON.stringify([...strokesGot.values()]));
+  host.chat(`${kw1} 그려요`);
+  await sleep(200);
+  host.chat('3글자예요');
+  await sleep(300);
+  expect('★★★ 출제자 채팅 — 키워드 · 글자 수 힌트 거부', rejected.get(host), ['keyword', 'length_hint']);
+  late.join(roomId);
+  await late.waitFor(() => late.snapshot?.room.id === roomId, 6000, '중간 입장');
+  await sleep(300);
+  expectTrue('★★★ 중간 입장 — 스냅샷에 선 2개(이어 붙인 점 포함) · 구경 중', late.snapshot?.draw?.strokes?.length === 2 && late.snapshot.draw.strokes[0].pts.length === 8 && late.snapshot.draw.spectating === true, JSON.stringify(late.snapshot?.draw?.strokes?.map((s) => s.pts.length)));
+  late.chat(kw1);
+  await sleep(300);
+  expect('★★ 구경꾼이 정답을 치면 거부(스포)', rejected.get(late), ['keyword']);
+  const c0 = chats.length;
+  b2.chat(kw1);
+  await sleep(300);
+  b3.chat(kw1);
+  await host.waitFor(() => lastView(host)?.phase === 'reveal' && lastView(host).round === 1, 5000, 'R1 공개');
+  const r1 = lastView(host);
+  expect('★★★ R1 — 맞힌 순서 b2 · b3 · 점수 3 · 2 · 출제 2 · 모두 맞혀 바로 공개', [r1.solved.map((s) => s.accountId), r1.scores], [[idOf(b2), idOf(b3)], { [idOf(b2)]: 3, [idOf(b3)]: 2, [idOf(host)]: 2 }]);
+  const newChats = chats.slice(c0);
+  expectTrue('★★★ 맞힌 글은 채팅에 안 보이고 시스템 줄 "정답!" 둘', !newChats.some((c) => c.text === kw1) && newChats.filter((c) => c.system && /정답!/.test(c.text)).length === 2, JSON.stringify(newChats.map((c) => c.text)));
+  // ── R2 — 출제 b2 · 아무도 못 맞힘
+  await host.waitFor(() => lastView(host)?.round === 2 && lastView(host).phase === 'draw', 10000, 'R2');
+  expect('★★ R2 출제자 = 입장순 다음(b2) · 중간 입장자도 참가', [lastView(host).drawer, lastView(late)?.spectating], [idOf(b2), false]);
+  await host.waitFor(() => lastView(host)?.round === 2 && lastView(host).phase === 'reveal', 15000, 'R2 공개');
+  expect('★★ R2 — 아무도 못 맞힘 · 점수 없음', [lastView(host).solved.length, lastView(host).scores], [0, {}]);
+  // ── R3 — 출제 b3 · host 오답 → 정답
+  await host.waitFor(() => lastView(host)?.round === 3 && lastView(host).phase === 'draw', 10000, 'R3');
+  await sleep(200);
+  const kw3 = lastView(b3).keyword;
+  const c1 = chats.length;
+  host.chat('혹시이건가zz');
+  await sleep(300);
+  host.chat(kw3);
+  await host.waitFor(() => lastView(host)?.round === 3 && lastView(host).phase === 'reveal', 15000, 'R3 공개');
+  expectTrue('★★ R3 — 오답은 보통 채팅으로 보임', chats.slice(c1).some((c) => c.text === '혹시이건가zz' && !c.system), JSON.stringify(chats.slice(c1).map((c) => c.text)));
+  expect('★★★ R3 — host 3 · 출제 b3 1(맞힌 1명)', lastView(host).scores, { [idOf(host)]: 3, [idOf(b3)]: 1 });
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 15000, '결과');
+  const res = host.since(g, 'game.result')[0].payload;
+  const got = Object.fromEntries(res.ranking.map((r) => [r.accountId, r.score]));
+  expect('★★★ 결과 점수 합 — host 5 · b2 3 · b3 3 · 중간 입장 0', [host, b2, b3, late].map((b) => got[idOf(b)] ?? null), [5, 3, 3, 0]);
+  expect('★★ 결과 mode draw · completed', [res.mode, res.endReason], ['draw', 'completed']);
+  const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, rerolled, strokes_count s, drawer_account_id::text d FROM draw_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
+  expect('★★★ draw_rounds 3행 — 결과 · 다른 제시어 · 선 수 · 출제자', rows.map((r) => [r.round, r.outcome, r.rerolled, r.s, r.d]), [[1, 'all', true, 2, idOf(host)], [2, 'none', false, 0, idOf(b2)], [3, 'some', false, 0, idOf(b3)]]);
+  for (const b of all) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+// =============================================================================
 // ★★★ R057 — 이모티콘 나열(인라인) (D-250): 토큰 섞인 채팅 · 판정은 글자로 · 가지지 않은 특별 토큰 버림 · 상한 10 · 1~3개만 = 반응 꼴 · 도배
 // =============================================================================
 async function scenarioEmojiInline() {
@@ -9203,6 +9318,7 @@ const SCENARIOS = {
   mgonly: scenarioMgOnly,
   topicsets: scenarioTopicSets,
   liar: scenarioLiar,
+  draw: scenarioDraw,
   mgcount: scenarioMgCount,
   mgduo: scenarioMgDuo,
   emojiinline: scenarioEmojiInline,
