@@ -53,3 +53,20 @@ describe('crossAnswers — G033 R1 · R2 · COMMON(V034 오탐 18 중 6 · core 
     expect(ids(5920, '남원 기생의 딸이 이몽룡과의 사랑을 지키는 이야기다.')).toEqual(['2118']);
   });
 });
+
+// G034 — 484 활성 뒤 COMMON 13(설명에 꼭 쓰이는 갈래·일반어)
+describe('crossAnswers — G034 COMMON 13', () => {
+  const B = [
+    { id: 6838, norm: '애니메이션', answer: '애니메이션' }, { id: 7299, norm: '고려가요', answer: '고려가요' },
+    { id: 7046, norm: '피고인', answer: '피고인' }, { id: 7188, norm: '카이퍼벨트', answer: '카이퍼 벨트' },
+  ];
+  const ids = (id, hint) => crossAnswers({ id, hint, answerNorm: 'x' }, B).map((x) => x.id);
+  it('갈래·일반어는 세지 않는다', () => {
+    expect(ids(1420, "'라이온 킹'이 흥행하며 손그림 애니메이션이 전성기를 누린 시기다.")).toEqual([]);
+    expect(ids(4510, '지은이가 밝혀진 유일한 고려가요로, 궁중 음악으로 불렸다.')).toEqual([]);
+    expect(ids(3159, '피고인이나 변호인이 청구하면 법원이 허가하는 석방 제도다.')).toEqual([]);
+  });
+  it('고유 이름은 그대로 잡는다', () => {
+    expect(ids(2668, '명왕성을 지난 뒤 카이퍼 벨트 천체 아로코스까지 찍었다.')).toEqual(['7188']);
+  });
+});
