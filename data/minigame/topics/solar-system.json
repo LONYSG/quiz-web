@@ -1,16 +1,17 @@
 {
  "topic": "solar-system",
- "nameKo": "태양계 행성과 주요 위성",
+ "nameKo": "태양계 행성 · 왜행성 · 둥근 위성",
  "kind": "closed",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-08",
  "createdRound": "G036",
  "status": "candidate",
  "source": [
   {
-   "url": "https://ko.wikipedia.org/wiki/태양계",
-   "note": "★ 조각이 페이지를 받지 않고 대부분 지식으로 작성(G036) — V039 가 이 페이지로 대조 필요 · 행성 8 + 주요 위성 21(달 · 화성 2 · 목성 갈릴레이 4 · 토성 7 · 천왕성 5 · 해왕성 트리톤 · 명왕성의 카론). 명왕성은 왜소행성이라 항목에서 뺌(카론은 명왕성 위성 태그). 에이전트 지식",
-   "fetchedAt": "2026-11-08"
+   "url": "https://en.wikipedia.org/wiki/List_of_gravitationally_rounded_objects_of_the_Solar_System",
+   "note": "G039 범위 재정의(CV-165 ④) — ko.wikipedia \"중력적으로 둥근 천체 목록\" 없음(404) → en 페이지 · 행성 8 + IAU 왜행성 5 + 둥근 위성 19 = 32 · 포보스 · 데이모스(비구형) 뺌",
+   "fetchedAt": "2026-11-08",
+   "read": true
   }
  ],
  "liar": true,
@@ -20,7 +21,7 @@
   "과학",
   "천문"
  ],
- "count": 29,
+ "count": 32,
  "items": [
   {
    "id": "solar-system-001",
@@ -121,32 +122,6 @@
    "draw": true,
    "liar": true,
    "qid": 15
-  },
-  {
-   "id": "solar-system-010",
-   "name": "포보스",
-   "variants": [],
-   "tags": [
-    "위성",
-    "화성"
-   ],
-   "draw": false,
-   "liar": false,
-   "qid": null
-  },
-  {
-   "id": "solar-system-011",
-   "name": "데이모스",
-   "variants": [
-    "디모스"
-   ],
-   "tags": [
-    "위성",
-    "화성"
-   ],
-   "draw": false,
-   "liar": false,
-   "qid": null
   },
   {
    "id": "solar-system-012",
@@ -375,6 +350,65 @@
    "draw": false,
    "liar": false,
    "qid": null
+  },
+  {
+   "id": "solar-system-030",
+   "name": "명왕성",
+   "variants": [
+    "플루토"
+   ],
+   "tags": [
+    "왜행성"
+   ],
+   "draw": true,
+   "liar": true,
+   "qid": null
+  },
+  {
+   "id": "solar-system-031",
+   "name": "세레스",
+   "variants": [
+    "케레스"
+   ],
+   "tags": [
+    "왜행성"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "solar-system-032",
+   "name": "에리스",
+   "variants": [],
+   "tags": [
+    "왜행성"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "solar-system-033",
+   "name": "하우메아",
+   "variants": [],
+   "tags": [
+    "왜행성"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "solar-system-034",
+   "name": "마케마케",
+   "variants": [],
+   "tags": [
+    "왜행성"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
   }
  ],
  "verify": {
@@ -409,7 +443,8 @@
     "variants": [
      "플루토"
     ],
-    "why": "왜행성이나 모두가 \"행성\" 으로 답함 — 빠지면 오답 시비"
+    "why": "왜행성이나 모두가 \"행성\" 으로 답함 — 빠지면 오답 시비",
+    "applied": "G039"
    },
    {
     "op": "add",
@@ -417,28 +452,33 @@
     "variants": [
      "케레스"
     ],
-    "why": "동일 목록의 왜행성"
+    "why": "동일 목록의 왜행성",
+    "applied": "G039"
    },
    {
     "op": "add",
     "name": "에리스",
     "variants": [],
-    "why": "동일"
+    "why": "동일",
+    "applied": "G039"
    },
    {
     "op": "add",
     "name": "하우메아",
     "variants": [],
-    "why": "동일"
+    "why": "동일",
+    "applied": "G039"
    },
    {
     "op": "add",
     "name": "마케마케",
     "variants": [],
-    "why": "동일"
+    "why": "동일",
+    "applied": "G039"
    }
   ],
   "verdict": "candidate",
-  "why": "주제 정의(\"주요 위성\")가 임의라 closed 경계가 흐림. 중력적으로 둥근 천체 목록과 대조해 왜행성 5 추가 권고(>3) — 또는 주제를 \"태양계 행성과 둥근 위성\"으로 이름 바꿈(CV-165)"
+  "why": "주제 정의(\"주요 위성\")가 임의라 closed 경계가 흐림. 중력적으로 둥근 천체 목록과 대조해 왜행성 5 추가 권고(>3) — 또는 주제를 \"태양계 행성과 둥근 위성\"으로 이름 바꿈(CV-165)",
+  "note": "G039 범위 재정의 → V040 재대조(status candidate 그대로)"
  }
 }

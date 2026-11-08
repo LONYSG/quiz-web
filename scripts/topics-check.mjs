@@ -2,7 +2,7 @@
 // =============================================================================
 // G036 — 미니게임 "주제 세트" 검사 (docs/18 §9 형식 · D-330)
 //   data/minigame/topics/<slug>.json 전부(또는 인자로 준 파일)를 본다.
-//   막힘(error): 머리 칸 · 항목 칸 · id 꼴(<slug>-NNN · 001 부터 이어서) · count = items.length
+//   막힘(error): 머리 칸 · 항목 칸 · id 꼴(<slug>-NNN · 번호가 늘어남 — G039: 지운 번호 재사용 안 함) · count = items.length
 //                · 세트 안 유일성(name 정규화 겹침 · 변형이 다른 항목의 name/변형과 겹침) · 변형 특수문자
 //                · open 수(60~120) · open 세트를 closed 로 표시하지 않음
 //   경고(warn): 변형이 제 name 과 정규화로 같음(죽은 변형) · 라틴 변형(§9 게이트 예외 — 사람·작품 이름만) 수
@@ -52,9 +52,14 @@ export function checkTopic(t, file) {
   if (t.kind === 'open' && (items.length < 60 || items.length > 120)) err.push(`open 수 ${items.length}(60~120)`);
   if (t.kind === 'closed' && (items.length < 20 || items.length > 400)) warn.push(`closed 수 ${items.length}(기준 50~250 · 공식 목록 전부가 원칙)`);
   const byName = new Map(); const byVar = new Map();
+  let lastNum = 0;
   items.forEach((it, i) => {
-    const want = `${slug}-${String(i + 1).padStart(3, '0')}`;
-    if (it.id !== want) err.push(`id ${it.id} — 기대 ${want}`);
+    // ★ G039: id 는 <slug>-NNN · 앞 항목보다 큰 번호(지운 번호는 다시 안 씀 · 더한 항목은 마지막 번호 + 1 — 18 §9)
+    const idm = String(it.id ?? '').startsWith(slug + '-') ? String(it.id).slice(slug.length + 1) : '';
+    const num = /^\d{3,}$/.test(idm) ? Number(idm) : NaN;
+    if (Number.isNaN(num)) err.push(`id 꼴 ${it.id} — <slug>-NNN`);
+    else if (i > 0 && !(num > lastNum)) err.push(`id ${it.id} — 앞 번호(${lastNum})보다 커야 함`);
+    lastNum = num;
     for (const k of Object.keys(it)) if (!ITEM_OK.has(k)) err.push(`${it.id}: 모르는 칸 ${k}`);
     if (typeof it.name !== 'string' || !it.name.trim()) err.push(`${it.id}: name`);
     if (!Array.isArray(it.variants)) err.push(`${it.id}: variants []`);

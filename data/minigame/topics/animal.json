@@ -2,7 +2,7 @@
  "topic": "animal",
  "nameKo": "동물",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-08",
  "createdRound": "G036",
  "status": "verified",
@@ -19,7 +19,7 @@
  "tags": [
   "생물"
  ],
- "count": 83,
+ "count": 81,
  "items": [
   {
    "id": "animal-001",
@@ -107,9 +107,7 @@
   {
    "id": "animal-010",
    "name": "판다",
-   "variants": [
-    "판다곰"
-   ],
+   "variants": [],
    "tags": [],
    "draw": true,
    "liar": true,
@@ -581,15 +579,6 @@
    "qid": null
   },
   {
-   "id": "animal-062",
-   "name": "북극곰",
-   "variants": [],
-   "tags": [],
-   "draw": true,
-   "liar": true,
-   "qid": 6828
-  },
-  {
    "id": "animal-063",
    "name": "물개",
    "variants": [],
@@ -772,15 +761,6 @@
    "draw": true,
    "liar": true,
    "qid": null
-  },
-  {
-   "id": "animal-083",
-   "name": "공룡",
-   "variants": [],
-   "tags": [],
-   "draw": true,
-   "liar": true,
-   "qid": 6169
   }
  ],
  "verify": {
@@ -808,12 +788,14 @@
    {
     "op": "remove",
     "id": "animal-083",
-    "why": "현생 동물 아님"
+    "why": "현생 동물 아님",
+    "applied": "G039"
    },
    {
     "op": "remove",
     "id": "animal-062",
-    "why": "곰의 하위"
+    "why": "곰의 하위",
+    "applied": "G039"
    },
    {
     "op": "variant-remove",
@@ -821,7 +803,8 @@
     "variants": [
      "판다곰"
     ],
-    "why": "곰과 변형 충돌"
+    "why": "곰과 변형 충돌",
+    "applied": "G039"
    }
   ],
   "verdict": "verified",
