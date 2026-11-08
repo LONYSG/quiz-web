@@ -1,25 +1,21 @@
-[MAIN R083 — ★ 방식 **캐치마인드**(D-330 ⑵ · 찬종 "R082 라이어 → R083 캐치마인드") — 방식 `draw` · 출제자 돌아가며 그림 · 나머지는 채팅으로 정답(퀴즈 판정 그대로) · 제시어 = 주제 세트 `draw` 항목 · **그리기 자리는 채팅창을 줄여** 확보(⑵) · 0033(draw_rounds) · 하루 · 실 DB 쓰기 0 · R082 와 같은 창에서 이어서]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
-TASK: 찬종 2026-11-08 2차 답 ⑵ "캐치마인드 · 라이어 게임은 미니게임이 아니라 방 설정 '방식' 에 추가 … **캐치마인드 그리기 자리는 채팅창을 줄여 확보**(이모티콘 자리에 채팅을 보이는 안도 후보)" · ⑷ "제시어 = 주제 세트 항목의 draw/liar 태그 …" · ⑽ 샘플. plan-20261107 §6-3 "캐치마인드 — 캔버스(완벽한 원) + 정답 입력 판정 있음 · 손+머리 · 매번 다름 · 사람 게임". R082 가 만든 방식 틀(`mode`) · 제시어 풀(TopicStore liar · draw) · 라운드 기록 꼴 위에 얹는다.
-실행 모델: Opus 5.5 (R082 와 같은 창 — 이어서)
+[MAIN R085 — ★ **OX 10연속** `ox`(D-330 ⑴ · 18 §11 · G041 400 문장) — 문장 10 · O/X 두 버튼 · 5초 · 앞 5 는 grade 1 · 같은 pairId 한 판 금지 · 공개 때 explanation · 적재 = `minigame-load.mjs` 에 `ox`(minigame_items 재사용 · verified 만 · 메뉴 1 자동) · 반나절 · 실 DB 쓰기 0 · R084 와 같은 창에서 이어서]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
+TASK: 찬종 2026-11-08 2차 답 ⑴ "**OX 퀴즈**를 만든다 — 문장은 새로 생성". 데이터 = G041 `data/minigame/ox/items.json` **400**(참 200 · 거짓 200 · grade 165/158/77 · trap 5축 · pairId 쌍 44 · 전부 candidate — **VERIFY V042 가 전수 판정 중**(V041 뒤) · 실 DB 에는 verified 만). 형식 docs/18 **§11**(설계가 "게임 규칙(R085)" 줄을 더함 — G041 결정 ①②③ 설계 답: ① 10 문장 · 5초 ② 쌍 같은 판 금지 ③ **앞 5 문장 grade 1 · 뒤 5 는 2·3 섞기**). 객관식 10연속(R080 `choice` — "문항 하나 = 판 하나 × 10" · CHOICE_* 상수 · 보기 → 여기선 두 버튼)을 그대로 본뜬다.
+실행 모델: Opus 5.5 (R084 와 같은 창)
 
-■ 고정 규칙: docs/16 그대로 (번호 — R082 다음 · R082 보고서에서 확인: **D-34x** · **A110** · 마이그레이션 **0033** · 10 **63절** · 01 **16-R083** · 04 "R083"). 하위 에이전트 0. quizweb_test · 메뉴 15. 환경 R078 그대로. 동시 라운드(G040/G041 · V040/V041 — 파일 · 힌트 · topics)와 겹침 없음 · 문서 분담은 R082 와 같다(R083 = 07 D · 13 A110 · 10 · 01 · 03 · 04 · README R).
+■ 고정 규칙: docs/16 그대로 (번호 — R084 다음 · R084 보고서에서 확인: **D-342** · **A112** · 마이그레이션 없음 · 10 **65절** · 01 **16-R085** · 04 "R085"). 하위 에이전트 0. quizweb_test · 메뉴 15. 동시 라운드(G042/G043 · V041/V042) 와 겹침 없음 — ox 파일은 **읽기만**(V042 가 verify · status 를 쓴다 · 쓰는 중이면 1분 뒤). 문서 분담은 R084 와 같다(R085 = 07 D · 13 A112 · 10 · 01 · 04 · 18 §11 적재 한 줄 · README R).
 
-■ 먼저 읽기: `ai-out/R082.txt`(0절 · 방식 틀 · 제시어 풀 · liar_rounds 꼴) · docs/07 D-330 ⑵ ⑷ · R082 의 D-339 · `client/src/minigame/CircleDraw.tsx`(포인터 그리기 — 선 묶음 꼴) · `shared/src/answerFlex.ts` · `server/src/game/answer.ts`(채팅 정답 판정 — 맞힌 사람 가리기 · 근접 오답) · `client/src/App*.tsx` 의 채팅 패널 · 이모티콘 자리(R06x) · docs/01 §16 레이아웃 · 10 62절.
+■ 먼저 읽기: `ai-out/R084.txt` · `ai-out/G041.txt`(0절 ① 표 · ③ 예 · 5절 결정) · docs/18 **§11**(칸 · ★ 게임 규칙 줄) · `server/src/minigame/topicGames.ts` choice 320~(판 흐름 · CHOICE_READY/PLAY/REVEAL · 쓴 문항 집합 · 경험 안 남김 → OX 는 **경험 남김**(item 단위 — 데이터 항목이라)) · `client/src/minigame/TopicGames.tsx` ChoicePick/ChoiceReveal/ChoiceAnswers · `scripts/minigame-load.mjs`(R084 가 song 을 넣은 꼴) · docs/10 64절.
 
-■ 설계 결정 (구현 단위 — MAIN 판단 · 되돌리기 쉽다 · 상수는 `shared/src/draw.ts`)
-① **방식 `draw`**: settings `mode` 에 더함(R082 틀) · 설정 화면 네 버튼(퀴즈 · 미니게임만 · 라이어 · 캐치마인드) · 참가자 **2 이상** · 라운드 수 = `minigameRounds` 재사용(기본 5 · **라운드 = 출제자 한 바퀴**가 아니라 그림 하나 — 출제자는 입장순 돌아가며) · teamMode 와 같이 못 켬(1차).
-② **제시어**: 적재 세트의 **`draw: true` 항목**(open 음식 78 · 동물 83 · 악기 63 · 장소 69 · 직업 50 · 스포츠 67 + closed 포켓몬 148 · 올림픽 28 · 별자리 11 · 원소 9 · 태양계 10 · 디즈니 16 — 2026-11-08 파일 실측 · 코드는 DB 에서 셈) · 출제자에게만 키워드(label) · 모두에게 주제(nameKo) · 경험 `draw|<itemId>` · 한 판 안 같은 세트 연속 안 뽑음 · 출제자는 **"다른 제시어"** 1회(10초 안) 가능.
-③ **그리기**: 캔버스(정사각 · 논리 좌표 0~1000 — 기기 크기 무관) · 포인터 그리기(CircleDraw 꼴 · 터치 · 마우스) · 도구 = 색 4(검정 · 빨강 · 파랑 · 초록) · 굵기 2 · 지우개 · 전체 지우기 · **선 단위 전송**(pointerdown~up 한 선 = 점 배열 · 서버가 그대로 전원에게 · 60fps 아님 — 선 끝날 때 또는 200ms 마다 조각) · 늦게 들어온 사람은 지금까지 선 전부(스냅샷) · 출제자 외 입력 불가 · **90초**.
-④ **정답**: 참가자는 **채팅에 그대로 친다** → 서버가 퀴즈 판정(normalizeAnswer · answerFlex · 세트 name/variants)으로 맞으면 **그 글은 채팅에 안 보이고** 전원에게 "○○ 정답!" 시스템 줄 · 틀리면 보통 채팅(힌트 겸 — 출제자도 본다) · 출제자는 채팅으로 글자를 못 준다(키워드 · 변형 · 글자 수 거부 — 라이어의 키워드 거부 꼴 · 그 밖 채팅은 허용) · **맞힌 사람 순서대로 3 · 2 · 1 … (최소 1)** · 출제자 = 맞힌 사람 수(상한 3) · 아무도 못 맞히면 출제자 0 · 모두 맞히거나 90초면 공개(키워드 · 그림 그대로 남김 5초).
-⑤ **레이아웃(⑵)**: PC = 가운데 캔버스(판 자리) · 채팅은 오른쪽 그대로지만 **높이를 줄여**(최근 6줄 + 입력칸) · 이모티콘 자리 없음(1차 — "이모티콘 자리에 채팅" 안은 보류 · 0절에) · 모바일 360 = 캔버스 전체 너비 정사각 + 아래 채팅 3줄 + 입력칸 · 출제자 모바일은 도구 띠 한 줄 · 세 테마 · 사무실(D-324).
-⑥ **기록(0033)**: `draw_rounds`(game_id · round · drawer_account_id · topic · item_id · strokes_count · solved jsonb[{account, ms}] · outcome · scores jsonb · created_at) · 그림 자체는 저장 안 함(1차 · 크기 — 0절에).
-⑦ **봇 · ui-check**: `bot.mjs` 시나리오 **`draw`**(봇 3 · 출제자 돌아감 · 선 전송 · 늦게 들어온 봇 스냅샷 · 맞힘 순서 점수 3/2/1 · 출제자 글자 거부 · 아무도 못 맞힘 0 · 90초 · draw_rounds 행) · ui-check **r083**(설정 네 버튼 · 캔버스 + 도구 · 채팅 줄임 · 정답 시스템 줄 · 공개 · m360 · 세 테마) → docs/design/r083.
-⑧ 되돌리기: 방식 퀴즈 · 0033 DROP 머리.
+■ 설계 결정 (MAIN 판단 · 상수는 `shared/src/minigame/ox.ts`)
+① **적재**: minigame-load GAMES_ALL 에 `ox`(칸 = §11 — statement · answer · explanation · category · grade · trap · pairId · image 없음) · verified 만 · --allow-candidate(R084 빗장 그대로) · 메뉴 1 훅의 `--game song` → `--game song,ox` · test/dev 에 400 candidate.
+② **게임**(`ox` · 이름 "OX 10연속" · kind 'quiz' · rounds **10**(문장 하나 = 판 하나) · scoring 'correct' · tiebreak 'timeSum' · better 'low' · unit 'ms' — choice 꼴): 판 시작 때 서버가 10 문장 고름 — **앞 5 = grade 1 · 뒤 5 = grade 2 · 3 섞기**(모자라면 채움) · **같은 pairId 둘 금지** · 분야 섞기(같은 l1 ≤ 3) · 경험(item 단위 `ox|<id>` · 전원 본 것 뒤로) · 문장마다 **5초** · O / X 두 버튼(PC: O · X 키 또는 ← →) · 누르면 바꿀 수 있음(마지막) · 맞히면 1 · 끝나면 10 문장 **정답 + explanation 목록**(틀린 것 표시 · 거짓이면 "실제로는 …") · 경험 기록 남김(본 문장은 다시 안 나옴 — 400 이라 금방 돎 · 전원 경험 뒤 다시 허용) · 항목 < 10 이면 안 뽑힘.
+③ **카탈로그**: 맨 앞(ox → song · songyear → …) · oneLine · controls · 아이콘 · 세 테마 · m360(두 버튼 크게).
+④ **봇 · ui-check**: 봇(O/X 누름 · 안 누름 · 바꿈 · 10 문장 · pairId 금지 확인 · grade 순서 · 경험) · ui-check **r085**(두 버튼 · 문장 길이 90자 m360 넘침 0 · 공개 목록 · 세 테마) → docs/design/r085.
+⑤ 되돌리기: 끄면 끝 · 적재 더하기만.
 
-■ 할 일: A 방식 draw + 제시어 풀 + 0033 (커밋 1) · B 서버(선 중계 · 판정 · 점수 · 기록) (2) · C 화면(캔버스 · 도구 · 레이아웃 PC/모바일) (3) · D 봇 · ui-check r083 · 그림 보고 고침 (4) · E 끝 점검(단계별 — typecheck · vitest · build · smoke · 봇 draw · liar · mgonly · result · ui-check r083 + r082 · main-behavior · 메모리) · F 문서(07 D · 01 16-R083 · 03 0033 · 04 · 10 63절 · 13 **A110**(체감 — 그리기 손맛(폰 · PC) · 선 끊김 · 90초 · 점수 3/2/1 · 채팅 줄인 게 불편한지 · 제시어 그릴 만한지(draw 태그 품질) · 사무실) · 05 · 06 · README R · `ai-out/R083.txt` 0절 첫 줄 "메뉴 1 [1] → 적용 대상 0030~0033 → A106~A110").
-■ 시간이 모자라면: 도구를 검정 1색 · 굵기 1 · 전체 지우기만으로 줄이고 0절에 — 선 중계 · 판정 · 점수 · 기록은 끝까지.
-■ DB 쓰기: quizweb 없음 · dev/test 자유. ■ 하지 말 것: 그림 저장 · 이모티콘 자리 채팅 · OX · 노래 · 밴픽 · 포인트 · 업적 · topics · song 파일 · questions · hint-*.mjs · `.env` · 태그 · force push · 플레이 트리 커밋 · 실 DB 마이그레이션.
-■ 확인할 것 (원칙 7): R082 마지막 번호(D · A109 · 0032 · 62절) · 07 맨 위 · `mode` 타입에 'draw' 없음 · TopicStore draw 읽음(R082) · quizweb_test draw true 항목 수 · CircleDraw 포인터 꼴 · 채팅 정답 판정 함수 자리 · 열린 판 0 · 남는 메모리 · GEN · VERIFY 돎.
-■ 커밋: 1~4 + F · fetch → rebase --autostash → push · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-■ ★ 이어서: 끝나면 멈춘다(main-next2.md 없음). 터미널 마지막 줄 "R083 끝 — 다음 브리핑 대기 · /clear 가능".
+■ 할 일: A 적재 ox(커밋 1) · B 게임(서버 · 화면 · 공개)(2) · C 봇 · ui-check r085 · 그림 보고 고침(3) · D 끝 점검(단계별 — typecheck · vitest · build · smoke · 봇 mgonly · result · ui-check r085 + r084 · main-behavior · 메모리) · E 문서(07 D · 01 16-R085 · 04 · 10 65절 · 11 · 18 §11 적재 줄 · 13 **A112**(체감 — 5초가 맞는지 · 문장이 애매한 것(제보로) · grade 순서 체감 · explanation 읽을 시간 · 두 버튼 폰) · 05 · 06 · README R · `ai-out/R085.txt` 0절 첫 줄 "메뉴 1 [1] → 적재 줄(노래 n · OX m) → A106~A112" · 실 DB OX 수 = V042 verified 수).
+■ DB 쓰기: quizweb 없음 · test/dev 자유. ■ 하지 말 것: ox 파일 쓰기(V042 것) · 노래 · topics · questions · hint · `.env` · 태그 · force push · 플레이 트리 커밋 · 실 DB 적재 · 새 마이그레이션.
+■ 확인할 것 (원칙 7): R084 마지막 번호 · 07 맨 위 · ox 400 · status(candidate 또는 V042 verified 몇) · grade 분포 165/158/77 · pairId 44 쌍 · minigame-load song 꼴 · choice 코드 꼴 · 열린 판 0 · 남는 메모리.
+■ 커밋: 1~3 + E · fetch → rebase --autostash → push · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+■ ★ 이어서: 끝나면 멈춘다(main-next2.md 없음). 터미널 마지막 줄 "R085 끝 — 다음 브리핑 대기 · /clear 가능".
 ■ 답변: 한국어 · 터미널 5줄 이내.
