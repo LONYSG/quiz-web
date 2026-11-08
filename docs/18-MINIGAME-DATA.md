@@ -24,6 +24,7 @@ assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .giti
   | `image` | `{file, sourceUrl, license, attribution, width, height, bytes}` 또는 `null`. `file` 은 `assets/minigame/<game>/<id>.<ext>` |
   | `tags` | 자유 태그 `[]`(소재 균형 집계용 — 예: `["식품","라면"]`) |
   | `verify` | VERIFY 가 채운다 `{round, verdict: ok|fix|drop, reason, proposal, checked:[…]}`. GEN 은 비워 둔다(`null`) |
+- ★ **verified 전환 규칙(설계 2026-11-09 — §9 의 규칙을 §0 에도)**: VERIFY 가 `verify.proposal`(또는 fixes)로 적은 것을 **G 라운드가 기계로 그대로 적용한 항목은 그 G 라운드가 `status` 를 verified 로 바꾼다**(`verify.appliedRound` 기록 · 제안은 지우지 않음) · 범위·출처가 바뀐 항목은 candidate 그대로 → 다음 VERIFY. 첫 적용 = G043(노래 14 · OX 16).
 - **그림 규칙**: 긴 변 1024px 이하 · 500KB 이하(sharp 로 줄인다 — `scripts/emoji-import.mjs` 꼴) · 워터마크 없음 · 정답 글자가 그림 안에 보이면 안 된다(상표 로고·가격표·캡션 포함 — 사진 게임은 특히). 정본은 G009 적재 뒤 DB(bytea · 백업 포함). 그때까지는 찬종 PC 파일뿐이므로 GEN 은 라운드 끝에 `assets/minigame/` 을 `backups/minigame-<날짜>.zip` 으로도 묶는다.
 - **저작권**(찬종 2026-10-16 "상업 이용 안 할거니까 그냥 다운 및 표시는 해도 됨" · 공개 저장소에는 넣지 않는다):
   - `photo`(사진 이름 맞히기)는 **자유 라이선스만**(위키미디어 공용 CC0 · CC BY · CC BY-SA · 퍼블릭 도메인) — 화면에 작게 출처를 붙일 수 있게 `attribution` 을 꼭 채운다.
