@@ -155,7 +155,7 @@ function buildIfNeeded() {
   const distT = (f) => (existsSync(f) ? statSync(f).mtimeMs : 0);
   const dist = Math.min(distT(path.join(ROOT, 'server/dist/index.js')), distT(path.join(ROOT, 'client/dist/index.html')));
   if (dist > src) return 'skip(dist 가 새것)';
-  if (LIVE) throw new Error(`실 서버가 ${LIVE.port} 에 떠 있다 — 빌드하면 실 서버가 다시 뜨며 판이 닫힌다(R060). UICHECK_NO_BUILD=1 로(지금 dist 로) 또는 실 서버를 끈 뒤에`);
+  if (LIVE) throw new Error(`실 서버가 ${LIVE.port} 에 떠 있고 이 트리에서 뜬 서버다(${LIVE.why}) — 빌드하면 그 서버의 화면이 바뀐다(R060 · R073). UICHECK_NO_BUILD=1 로(지금 dist 로) · 또는 ${LIVE.hint}`);
   console.log('[bundles] 소스가 dist 보다 새것 — 한 번 빌드');
   const r = spawnSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], { cwd: ROOT, stdio: 'inherit', shell: process.platform === 'win32' });
   if (r.status !== 0) throw new Error('빌드 실패');

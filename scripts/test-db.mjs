@@ -55,17 +55,30 @@ export async function useTestDb(tag) {
   return process.env.DATABASE_URL;
 }
 
-/** 사람이 쓰는 서버가 떠 있는가(LIVE_PORT · 기본 3000) — 떠 있으면 { port } · QUIZ_BUILD_WITH_LIVE=1 이면 무시 */
+/**
+ * 사람이 쓰는 서버가 떠 있고 **이 트리의 빌드가 그 서버에 닿는가**(LIVE_PORT · 기본 3000) — 닿으면 { port, why } · QUIZ_BUILD_WITH_LIVE=1 이면 무시
+ * ★ R078 (D-332) — 3000 이 플레이 트리(worktree)에서 떴으면(tmp/ops/play.json 의 dir ≠ 이 트리 · pid 같음) 빌드 허용(null).
+ *   play.json 이 없거나 dir == 이 트리(--here · 옛 방식)거나 pid 가 다르면 지금처럼 거부(과도기 안전).
+ */
 export async function liveServerUp() {
   if (process.env.QUIZ_BUILD_WITH_LIVE === '1') return null;
   const port = Number(process.env.LIVE_PORT ?? 3000);
+  let body;
   try {
     const r = await fetch(`http://localhost:${port}/healthz`, { signal: AbortSignal.timeout(1500) });
-    const body = await r.json();
-    return body?.testServer === true ? null : { port };
+    body = await r.json();
   } catch {
     return null;
   }
+  const { buildAllowedWithLive, readPlayJson } = await import('./play-tree.mjs');
+  const playJson = readPlayJson();
+  if (buildAllowedWithLive({ health: body ?? {}, playJson })) return null;
+  const why = !playJson
+    ? 'tmp/ops/play.json 없음(옛 방식으로 켠 서버)'
+    : playJson.here || !playJson.dir
+      ? '이 트리에서 켠 서버(--here)'
+      : `play.json PID ${playJson.pid} ≠ 떠 있는 PID ${body?.pid}`;
+  return { port, why, hint: '플레이 트리로 옮기면(ops 메뉴 3 → 18 → 1) 이 트리의 빌드가 자유롭다' };
 }
 
 /** 이미 떠 있는 서버 — /healthz 의 testServer 가 true 가 아니면(실 서버 · 옛 빌드) 쓰지 않는다 */
