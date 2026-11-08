@@ -1,0 +1,13 @@
+import pg from 'pg';
+const db=new pg.Client({connectionString:'postgresql://quiz:quizlocal@localhost:5434/quizweb'});await db.connect();
+const q=async(s,p)=>(await db.query(s,p)).rows;
+console.log('games cols',(await q(`select column_name from information_schema.columns where table_name='games' order by ordinal_position`)).map(r=>r.column_name).join(','));
+console.log('schema_migrations last',JSON.stringify(await q(`select * from schema_migrations order by 1 desc limit 2`)));
+const base=await q(`select count(*)::int rows, count(distinct game_id)::int games, count(*) filter (where target_grade is not null)::int with_target, count(*) filter (where grade is not null)::int with_grade, min(started_at) mn, max(started_at) mx from game_questions where target_grade is not null`);
+console.log('base',JSON.stringify(base));
+console.log('stage dist',JSON.stringify(await q(`select selection_stage, count(*)::int n, count(*) filter (where grade<>target_grade)::int diff, count(*) filter (where grade is null)::int gnull from game_questions where target_grade is not null group by 1 order by 1`)));
+console.log('by target',JSON.stringify(await q(`select target_grade, count(*)::int n, count(*) filter (where grade=target_grade)::int same, count(*) filter (where grade<>target_grade)::int diff, count(*) filter (where grade is null)::int gnull from game_questions where target_grade is not null group by 1 order by 1`)));
+console.log('target x grade',JSON.stringify(await q(`select target_grade t, grade g, count(*)::int n from game_questions where target_grade is not null group by 1,2 order by 1,2`)));
+console.log('worth',JSON.stringify(await q(`select worth, count(*)::int n from game_questions where target_grade is not null group by 1 order by 1`)));
+console.log('rate_ask',JSON.stringify(await q(`select rate_ask, count(*)::int n from game_questions where target_grade is not null group by 1 order by 1`)));
+await db.end();

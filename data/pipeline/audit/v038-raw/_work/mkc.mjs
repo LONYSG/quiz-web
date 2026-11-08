@@ -1,0 +1,20 @@
+import fs from 'node:fs';import pg from 'pg';
+const P='data/pipeline/audit/';const D=P+'v038-raw/';
+const fix358=new Set(JSON.parse(fs.readFileSync(P+'v037-refurb.json','utf8')).items.filter(i=>i.verdict==='fix').map(i=>String(i.id)));
+const left=JSON.parse(fs.readFileSync(P+'g034-crossans-left.json','utf8')).items;
+const key=(a,b)=>a+'>'+b;const leftSet=new Set(left.map(x=>key(x.id,x.crossId)));
+const all=fs.readFileSync(D+'crossans/hca-list.txt','utf8').split('\n').map(l=>l.match(/^\s+\[crossans\] #(\d+) (.*?) → #(\d+) (.*?) \| /)).filter(Boolean).map(m=>({id:+m[1],crossId:+m[3]}));
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const rnd=rng(20261109);const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const used=new Set();const pick=(arr,n)=>{const o=[];for(const x of shuffle(arr)){if(used.has(x.id))continue;used.add(x.id);o.push(x);if(o.length===n)break}return o};
+const L=pick(left.filter(x=>!fix358.has(String(x.id))),60).map(x=>({id:x.id,crossId:x.crossId,src:'left297'}));
+const O=pick(all.filter(x=>!leftSet.has(key(x.id,x.crossId))&&!fix358.has(String(x.id))),40).map(x=>({...x,src:'other'}));
+const items=[...L,...O];
+const db=new pg.Client({connectionString:'postgresql://quiz:quizlocal@localhost:5434/quizweb'});await db.connect();
+const ids=[...new Set(items.flatMap(x=>[x.id,x.crossId]))];
+const rows=(await db.query(`select id::int id,question_text,display_answer,general_hint,difficulty_score g from questions where id=any($1::bigint[])`,[ids])).rows;
+await db.end();const m=new Map(rows.map(r=>[r.id,r]));
+const snap=new Date().toISOString();
+const out=items.map((x,i)=>({n:i+1,src:x.src,id:x.id,answer:m.get(x.id).display_answer,question:m.get(x.id).question_text,hint:m.get(x.id).general_hint,crossId:x.crossId,crossAnswer:m.get(x.crossId).display_answer,crossQuestion:m.get(x.crossId).question_text}));
+fs.writeFileSync(D+'crossans/sample100.json',JSON.stringify({snapshotAt:snap,left_total:left.length,left_excl358:left.filter(x=>!fix358.has(String(x.id))).length,all_total:all.length,items:out},null,1));
+console.log(snap,'left',left.length,'excl358',left.filter(x=>!fix358.has(String(x.id))).length,'all',all.length,'sample',out.length,L.length,O.length,'fix358',fix358.size);
