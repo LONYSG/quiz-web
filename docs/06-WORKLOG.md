@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-08 — V038 반영 · 재정비 2묶음 127 + crossans 보정 (G037, GEN)
+
+- **무엇을**: gen.md — V038 fix 127(질문) + flags(사실 12 · 변형 32 · 비유일 10 · 힌트 6 · 분야 3) + crossans 오탐 보정(CV-162 (c)) + V038 crossans 54 + question-check.mjs + criteria-sync HINT.
+- **어떻게**: GEN 이 127 재독(손질 10) · 웹 재확인 6 검색 · 54 는 제안 그대로 + 기계 거르기(새 crossans 12 안 받음) · blind(sonnet 4 조각) · g033 lib 그대로(scripts/g037-apply-active.mjs + 분야 K 단계).
+- **결정**: DG-075.
+- **검증**: 활성 7,151 · hint-check-active 막힘 0 · checkAnswerSet 막힘 0 · blank 0 · 240자 0 · 127 안 70자 0 · undo dry-run 194/194 + 2/2 · npm test 665/666(실패 1 = MAIN 미커밋 미니게임 코드).
+- **남은 것**: G038 crossans 전수(+ 54 중 12 제안문) · question-check 결과로 재정비 3묶음 범위(설계).
+
 ## 2026-11-08 — 미니게임 주제 세트 1차 (G036, GEN · 파일만)
 
 - **무엇을**: gen-next.md — D-330 "많이 말하기" 등이 나눠 쓸 주제 세트 30(closed 24 · open 6) 을 18 §9 형식으로.
