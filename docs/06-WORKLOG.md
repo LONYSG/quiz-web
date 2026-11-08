@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-08 — 미니게임 2차 순서대로 · 빙고 (R081, MAIN · 마이그레이션 없음)
+
+- [x] A~C — TopicStore year · orderTopics · bingoTopics · ORDER_EXCLUDE · usedTopics 네 게임 공유 · topicReady 게임별 · 순서대로(카드 5 · 누르기/취소 · 쌍 점수) · 빙고(채우기 · 자동 채움 · 동시 호명 · 2줄 · 끝 조건) · 엔진 isOver · skipWait · 단위 테스트 10 — 7267f089
+- [x] D — 봇 mgonly +11 · topicsets +1 · ui-check r081 8/8 · 그림 · 검사로 고침 6 — ffaacab2
+- [x] F 문서 — 07 D-338 · 01 16-R081 · 03 한 줄 · 04 R081 · 10 61절 · 13 A108 · 05 · README · R081.txt
+- 왜: 찬종 2026-11-08 ⑹ "순서대로 = 글 카드로 시작" · ⑽ "여태 나온 아이디어는 전부 샘플로 조금씩 구현 → 친구들과 플레이" (D-330)
+- 남은 것: 실 DB 적재 = 찬종 메뉴 1 [1] · 체감 A107 · A108 · R082(캐치마인드 · 라이어)는 설계
+
 ## 2026-11-08 — 미니게임 1차 셋 · 주제 세트 적재 (R080, MAIN · 마이그레이션 0031 — 파일만)
 
 - [x] A 적재 — 0031 topic_sets · topic_items · `scripts/topics-load.mjs`(verified 만 · checkTopic 막힘 세트 제외 · 멱등 · active=false · 파일 안 씀 · --allow-candidate 는 test/dev 만) · `npm run topics:load` · 메뉴 1 빌드 뒤 자동 · 단위 테스트 5 · quizweb_test/dev 30 세트 — 570ed68c

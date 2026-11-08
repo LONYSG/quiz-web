@@ -1,0 +1,78 @@
+===========================================
+ROUND: R081
+DATE: 2026-11-08 (18:00 ~ KST)
+TASK: 미니게임 2차(D-330 ⑹ ⑽) — 순서대로(글 카드 5 · 연도 · 차례로 누르기 · 3판) + 빙고(4×4 자기 채움 · 동시 호명 · 2줄) · 마이그레이션 없음 · 기존 21 게임 · 빈도 그대로
+STATUS: 완료
+MODEL: Opus 5.5 (claude-opus-5-5)
+===========================================
+
+[cmd 창 요약]
+R081 끝 — 순서대로(카드 5 · 오래된 것부터 차례로 · 20초 · 3판 · 맞은 쌍 0~10) + 빙고(직접 채우기 30초 · 동시 호명 8초 × 12 · 2줄) · 카탈로그 맨 앞
+마이그레이션 없음 · 실 DB 쓰기 0 · 실 DB 는 아직 주제 세트 표 없음(메뉴 1 을 돌리면 0030 · 0031 + 적재)
+끝 점검(단계별): typecheck · vitest 676 · build · smoke 12/12 · 봇 mgonly 44 · topicsets 8 · result 31 · ui-check r081 8/8 · r080 8/8 · main-behavior 326/326
+
+-------------------------------------------
+0. 찬종이 볼 것
+-------------------------------------------
+① ★ **다음 플레이 때 메뉴 1 [1] → "적용 대상 2개: 0030 · 0031" → "주제 세트 n(verified n) · 항목 m" 적재 줄 확인 → A107 · A108**(13).
+② 가능 세트 수(지금 파일 기준 verified **28** — G039 가 21 → 28 · 메뉴 1 이 그대로 넣는다):
+   · 순서대로 **6** — 디즈니 · 지브리 · 조선 왕 · 대통령 · MCU · 월드컵 개최국(올림픽 연도 2종 · KBO 창단 연도 7종은 기준 8 에 못 미쳐 빠짐 · 원소는 일부러 뺌)
+   · 빙고 **13** — 성경 · 별자리 · 나라 · 통화 · 디즈니 · 원소 · EPL · 시·군·구 · 롤 · 100대 명산 · 포켓몬 · 지하철 역 · 세계 수도
+   (실 DB 는 지금 주제 세트 표가 없다 — 메뉴 1 전에는 두 게임 모두 안 뽑히고 다른 게임이 나온다.)
+③ 쓰는 법 — 고르기 창 맨 앞 **빙고 · 순서대로**(기본 켜짐 · 저장된 목록이 있는 방은 그대로라 고르기 창에서 켠다).
+   · 순서대로 — 카드 다섯 장을 오래된 것부터 차례로 톡(①~⑤ · 다시 톡하면 그 뒤까지 취소 · PC 1~5 키) · 다섯 장 다 눌러야 점수 · 맞은 쌍 0~10.
+   · 빙고 — 30초 동안 정답을 쳐서 내 4×4 를 채우고(못 채운 칸은 자동) → 8초마다 모두 동시에 내 판의 칸 하나를 부름(안 누르면 자동) → 두 줄 먼저 빙고 · 한 명 남거나 12번이면 끝.
+④ 브리핑과 다르게 한 것(사유): ① 순서대로 가능 세트 — KBO 는 창단 연도가 7종이라 "서로 다른 연도 8" 에 빠짐(브리핑 표의 6 과 구성이 다름 — 디즈니가 대신 들어감) ② 빙고 채우기 중 내 판은 서버가 다시 보내지 않으므로(나에게만 판정) 화면이 판정으로 바로 채운다 — ui-check 가 "판이 빈 채" 로 잡음 ③ 18 §9 label 이 아직 없는 긴 묶음 이름(통화 "달러(미국 · …)")은 **괄호 앞만 보인다**(판정은 그대로 · label 이 생기면 그것) — 빙고 칸 · 호명 띠가 넘쳤다 ④ 빙고 숫자(30초 · 4×4 · 2줄 · 8초 · 12회)는 그대로 — 봇(같은 판 4번째 호명 공동 빙고)과 ui-check(실제 화면 7번째 호명 안에 둘 빙고)에서 빙고가 났다 ⑤ 커밋 A~C 를 하나로(공통 · 두 게임이 같은 파일들에 얽힘) ⑥ `TOPIC_CACHE_MS`(서버 주제 캐시 기본 60초)를 환경값으로 — 봇이 세트를 바꿔 가며 연달아 보려고.
+⑤ 함께 고친 것(R080 검사): 봇 · ui-check 가 통화 세트처럼 40자 넘는 이름을 그대로 쳐서 많이 말하기 검사가 떨어질 수 있었다 → 괄호 앞만 친다(게임 판정은 그대로 — 사람은 "달러" 로 친다).
+
+-------------------------------------------
+1. 한 것
+-------------------------------------------
+A~C(7267f089) — shared topics.ts 상수(ORDER_* · BINGO_* · TOPIC_BINGO_MIN · ORDER_BASIS · ORDER_EXCLUDE) · orderPairs · bingoLines · bingoLineCount · ORDER_DUMMY · TopicItemLite.year · MINIGAMES 맨 앞 둘(unit 쌍 · 줄) · server db/topics.ts year · orderTopics · bingoTopics · topicsForKey · topicGames.ts TOPIC_KEYS 넷 · TOPIC_NEED · 경험 네 키 · topicsFor(key) · topicGames2.ts(order · bingo · pickOrderCards · autoFill · bingoCallRound · bingoValue) · defs isOver · skipWait · engine(판 결과 뒤 isOver · 일찍 끝내기 skipWait · 안 낸 사람 값) · client OrderBingo.tsx(OrderPick · OrderReveal · BingoBoard · BingoPlay · BingoReveal) · MinigameStage(머리 "채우기/호명 n" · 준비 글 · 규칙 그림 · 결과) · 카탈로그 아이콘(Grid3x3 · ListOrdered) · styles R081 절 · 단위 테스트 10.
+D(ffaacab2) — 봇 mgonly +11 · topicsets +1 · ui-check r081 8 · 묶음 r081 · docs/design/r081 · 그림 · 검사로 고침 6(10 61절).
+F — 문서(6절).
+
+-------------------------------------------
+2. 원칙 메모 · 브리핑 확인(원칙 7)
+-------------------------------------------
+- R080 마지막 번호 D-337 · A107 · 60절 · 0031 · 16-R080 그대로 → D-338 · A108 · 61절 · 16-R081 · 마이그레이션 없음. 07 맨 위는 GEN 의 DG-077 · DG-076 → D-338 을 그 위에.
+- MINIGAMES 21 → 23 · TOPIC_MIN_ITEMS 20 그대로 · topic_items.year 열 있음 · TopicStore 가 year 를 안 읽던 것 → 읽음.
+- 세트별 연도(quizweb_test 실측 · 서로 다른 연도 수): 디즈니 56 · 원소 72 · 지브리 20 · 조선 왕 27 · KBO 7 · 대통령 14 · MCU 17 · 올림픽 2 · 월드컵 18 · 나머지 0.
+- 실 DB: topic_sets 표 없음(0031 미적용 — 찬종 메뉴 1 전). tmp/ops/play.json dir = 플레이 트리(≠ 이 트리). 남는 메모리 약 4GB.
+- topics/*.json 은 R081 코드가 읽지도 쓰지도 않는다. 단 R080 봇 topicsets 시나리오는 그대로 topics-load 를 돌려 파일을 읽는다(quizweb_test 적재) — 라운드 중 G039 가 파일을 바꿔 한 번 "멱등" 검사가 흔들렸다(두 번 적재 사이에 파일이 바뀜 · 다시 돌려 8/8).
+- GEN G038 · G039 가 같은 트리에서 돌았다 — 내 파일만 add.
+
+-------------------------------------------
+3. 바꾼 파일
+-------------------------------------------
+새: server/src/minigame/topicGames2.ts · topicGames2.test.ts · client/src/minigame/OrderBingo.tsx · docs/design/r081/*
+고침: shared/src/minigame/topics.ts · shared/src/minigame.ts · r051.test.ts · server/src/db/topics.ts · server/src/minigame/topicGames.ts · defs.ts · engine.ts · client/src/minigame/TopicGames.tsx(export 둘) · MinigameStage.tsx · MinigameCatalog.tsx · client/src/styles.css · scripts/bot.mjs · scripts/ui-check.mjs · scripts/ui-check-bundles.mjs · docs(6절)
+
+-------------------------------------------
+4. 끝 점검 (quizweb_test · 단계별 — 한 번에 아님)
+-------------------------------------------
+| 단계 | 결과 |
+|---|---|
+| typecheck (tsc -b) | 통과 |
+| vitest | 676/676 (45 파일) |
+| build | 통과 |
+| smoke | 12/12 |
+| 봇 mgonly | 44/44 (R081 11 포함) |
+| 봇 topicsets | 8/8 (첫 판 7/8 — 두 적재 사이 G039 파일 변경 · 다시 8/8) |
+| 봇 result | 31/31 |
+| ui-check r081 (새) | 8/8 |
+| ui-check r080 (회귀) | 8/8 |
+| ui-check main-behavior | 326/326 |
+| 메모리 | 남는 약 4GB — 하나씩 |
+
+-------------------------------------------
+5. 새로 생긴 결정 필요 항목
+-------------------------------------------
+- (찬종 · A108 뒤) 빙고 숫자 — 30초 · 4×4 · 2줄 · 8초 · 12회 그대로 둘지.
+- (설계) 순서대로 연도 기준 8 — 올림픽(2종) · KBO(7종)를 살릴지(기준을 5 로 낮추면 KBO 도 됨 · 카드 5장은 서로 다른 연도 5 면 충분).
+- (설계) ORDER_EXCLUDE 를 §9 칸(`order: false`)으로 옮길지.
+
+-------------------------------------------
+6. 고친 문서
+-------------------------------------------
+07 D-338(맨 위 · DG-077 위) · 01 16-R081 · 03 한 줄 · 04 "R081 — 바뀐 것" · 10 61절 · 13 A108 · 05 머리 · 06 R081 · ai-out/README R 표 · 이 파일.

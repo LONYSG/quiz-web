@@ -1026,6 +1026,20 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
 
+## ★ R081 — 바뀐 것 (D-338 · 순서대로 · 빙고 · 마이그레이션 없음)
+
+| 항목 | 내용 |
+|------|------|
+| 미니게임 키 | `bingo` · `order` — `settings.minigameKeys` 기본에 포함 · MINIGAMES 맨 앞 |
+| order 판 params | `{ topic, nameKo, basis, cards: [{ id, label }] ×5 }` — 연도 · 정답은 안 보냄 · reveal `{ answer: [{ id, label, year }] }`(오래된 순) |
+| order `minigame.submit` | `{ order: itemId[] }`(0~5개 · 서로 다름 · 그 판 카드만) — 바뀔 때마다 보낸다(마지막 상태 · 제출 수는 첫 입력부터) · 5개일 때만 값 = 맞은 쌍 0~10 · rows extra `{ order, pairs }` |
+| bingo 판 | 판 0 = 채우기(params `phase: 'fill'`) · 판 1~12 = 호명(`phase: 'call', call, calls`) · params `{ topic, nameKo, size: 4, toWin: 2 }` · 머리 "채우기" / "호명 n" |
+| bingo `round.private`(참가자 본인에게만) | `{ board: [{ id, label, marked } \| null] ×16, manual, lines, bingoAt, bingos, history: [{ round, accountId, label, auto, onBoards, mine }] }` |
+| bingo 채우기 submit · feedback | `{ text }` → 나에게만 `{ result: 'ok' \| 'dup' \| 'wrong' \| 'full', label, text, cell?, filled }`(방 알림 없음 — 화면이 cell 로 바로 채움) |
+| bingo 호명 submit | `{ cell: 0~15 }` — 자기 판의 안 칠한 칸 · 한 번 · 빙고한 사람은 거름 · 안 내면 서버 자동 |
+| bingo reveal | 채우기 `{ phase: 'fill', manual: {accountId: n} }` · 호명 `{ phase: 'call', round, calls: [{ accountId, label, auto, onBoards }], newBingo: accountId[], over }` · rows extra `{ call, auto, lines, bingoAt, marked }` · 값은 끝난 판에서만 |
+| 엔진 | 판 결과 뒤 `isOver` 면 최종으로(빙고) · 일찍 끝내기에서 `skipWait`(빙고한 사람) 제외 · finalizeRound 가 안 낸 사람에게도 값 |
+
 ## ★ R080 — 바뀐 것 (D-337 · 미니게임 1차 셋 · 0031)
 
 | 항목 | 내용 |

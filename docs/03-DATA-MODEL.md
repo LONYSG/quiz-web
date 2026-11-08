@@ -405,6 +405,8 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - 적재 = `scripts/topics-load.mjs`(메뉴 1 이 자동) · 멱등 · 지우지 않음. 경험 기록은 새 표 없이 `minigame_item_experiences`(minigame_key many/unique · item_key `topic:<slug>`). 객관식 10연속은 표가 없다(퀴즈 문항 · 경험 기록 안 함).
 - 되돌리기: `DROP TABLE IF EXISTS topic_items; DROP TABLE IF EXISTS topic_sets;`(0031 머리) — 표가 없으면 서버는 빈 저장소로 두 게임만 뺀다.
 
+- ★ R081 — 마이그레이션 없음: 순서대로는 `topic_items.year`(0031 그대로)를 읽고 · 경험은 `minigame_item_experiences`(minigame_key order/bingo · item_key `topic:<slug>`).
+
 ## ★★ 근접 오답 (R058 / 0022 — D-252 · A83 (나))
 
 | 표 · 열 | 형식 | 규칙 |
