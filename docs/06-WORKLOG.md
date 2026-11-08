@@ -152,6 +152,13 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-08 — 미니게임 주제 세트 30 출처 대조 (V039, VERIFY)
+
+- **무엇을**: G036 이 모은 30 세트(2,548 항목)가 대부분 조각 지식으로 쓰여, 출처 페이지를 직접 받아 빠짐·더함·표기·변형·태그를 대조하고 verified / candidate 를 파일에 기록.
+- **어떻게**: curl 로 ko/en 위키 API(parse) · Data Dragon 16.22.1 · PokeAPI 를 받아 `v039-raw/_cache`(커밋 안 함) → 세트별 스크립트로 출처 목록 추출 → 파일 name+variants 와 정규화 대조(missing · extra · rename) → 변형 20 · 태그 10 눈으로 → `<slug>.verify.json` → 파일에 verify 칸 + status 만 쓰기(다른 칸 불변 확인) → topics-check 0. 판정 조각(sub-agent) 없이 VERIFY 가 직접.
+- **결과**: verified 21(1,442) · candidate 9(fixes 54) · rejected 0. 빠짐 17(5호선 5 · 국가하천 5 · 통화 3 · 인천 구 4) · 더함 3(인천 옛 구) · rename 24. 롤 · 포켓몬 · 나라 · 원소 · 명산 등은 출처와 전부 일치.
+- **남은 것**: CV-164(G039 fixes 54 적용) · CV-165(라틴 변형 범위 · 통화 꼴 · open 태그 · 태양계 범위 · 빠진 주제 5). 한계: 올림픽·성경·지브리·MCU 는 개수 + 본문 용어 대조 · 영문↔한글 구단명은 순서 대응 · 열린 5 는 출처 read false · 국가하천 별표 미대조.
+
 ## 2026-11-08 — 알가치 3 등급 1·2 재정비 2묶음 · crossans 표본 · 등급 폴백 실측 (V038, VERIFY)
 
 - **무엇을**: V037 에 안 들어간 알가치 3 등급 1·2 368(새 기준 132 · G034 활성 176 · 대조 60)을 19 §8-5(R·S·C)로 판정 + 힌트 속 다른 문항 정답(crossans) 표본 100 + 0028 game_questions 로 등급 폴백 실측.
