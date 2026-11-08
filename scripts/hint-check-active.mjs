@@ -4,6 +4,7 @@
 //
 //   막힘(block)이 하나라도 있으면 목록을 보이고 exit 1. 경고는 종류별 수만 (--list 로 single · letter-talk · blank · crossans 목록)
 //   ★ G029: 경고 crossans — 힌트 속 다른 활성 문항의 대표 정답(H12 · scripts/hint-crossans.mjs)
+//   ★ G037: crossans 오탐 쌍 명단 data/pipeline/audit/crossans-skip.json 을 hint-crossans.mjs 가 읽어 뺀다(SKIP · 뺀 수를 첫 줄에)
 //   DB 는 읽기만 한다.
 //
 // 사용법
@@ -14,7 +15,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { checkHint } from './hint-check.mjs';
-import { crossAnswers } from './hint-crossans.mjs';
+import { crossAnswers, SKIP } from './hint-crossans.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 process.loadEnvFile?.(path.join(ROOT, '.env'));
@@ -42,7 +43,7 @@ try {
       if (w.kind === 'crossans') listed.push(`[crossans] #${r.id} ${r.display_answer} → ${w.frag} | ${r.general_hint}`);
     }
   }
-  console.log(`[hint-check-active] 힌트 ${rows.length} · 막힘 ${blocks.length} · 경고 ${JSON.stringify(kinds)}`);
+  console.log(`[hint-check-active] 힌트 ${rows.length} · 막힘 ${blocks.length} · 경고 ${JSON.stringify(kinds)} · crossans 오탐 명단 ${SKIP.size}쌍`);
   if (LIST) for (const l of listed) console.log('  ', l);
   if (blocks.length) { for (const b of blocks) console.error('★', b); process.exit(1); }
 } finally {

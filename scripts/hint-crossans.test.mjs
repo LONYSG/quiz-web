@@ -70,3 +70,29 @@ describe('crossAnswers — G034 COMMON 13', () => {
     expect(ids(2668, '명왕성을 지난 뒤 카이퍼 벨트 천체 아로코스까지 찍었다.')).toEqual(['7188']);
   });
 });
+
+// G037 — V038 CV-162 (c): 3글자 이상 낱말 경계 · 오탐 쌍 명단 · COMMON 4
+describe('crossAnswers — G037 낱말 경계 · 오탐 명단', () => {
+  const B = [
+    { id: 7444, norm: '페트라', answer: '페트라' }, { id: 53, norm: '에베레스트', answer: '에베레스트' }, { id: 1329, norm: '진시황', answer: '진시황' },
+    { id: 8, norm: '1789', answer: '1789' }, { id: 555, norm: '182', answer: '182' }, { id: 5686, norm: '드리블', answer: '드리블' },
+    { id: 7022, norm: '호박', answer: '호박' }, { id: 2417, norm: '킬로그램', answer: '킬로그램' }, { id: 3313, norm: '카스트', answer: '카스트' },
+  ];
+  const ids = (id, hint, opt) => crossAnswers({ id, hint, answerNorm: 'x' }, B, opt).map((x) => x.id);
+  it('낱말 일부(페트라르카 · 1822년 · 카스트로와)는 세지 않는다', () => {
+    expect(ids(1384, '페트라르카가 평생 사랑한 라우라를 노래했다.')).toEqual([]);
+    expect(ids(1368, '1822년 이집트 옛 글자를 풀어낸 비석이다.')).toEqual([]);
+    expect(ids(6471, '카스트로와 함께 쿠바 혁명을 이끌었다.')).toEqual([]);
+  });
+  it('갈래 말 · 조사 · 하다 꼴이 붙은 이름은 그대로 잡는다', () => {
+    expect(ids(1919, '세계 최고봉 에베레스트산이 있는 나라다.')).toEqual(['53']);
+    expect(ids(2091, '진시황릉을 지키는 병마용이다.')).toEqual(['1329']);
+    expect(ids(330, '1789년 프랑스 혁명을 그린 그림이다.')).toEqual(['8']);
+    expect(ids(1461, '드리블하던 공을 두 손으로 잡는 반칙이다.')).toEqual(['5686']);
+  });
+  it('오탐 쌍 명단 · COMMON(킬로그램)', () => {
+    expect(ids(149, '파낸 호박 속에 촛불을 켠다.', { skip: new Set(['149:7022']) })).toEqual([]);
+    expect(ids(149, '파낸 호박 속에 촛불을 켠다.', { skip: new Set() })).toEqual(['7022']);
+    expect(ids(4374, '원두 몇 킬로그램이 수천만 원에 팔린다.')).toEqual([]);
+  });
+});
