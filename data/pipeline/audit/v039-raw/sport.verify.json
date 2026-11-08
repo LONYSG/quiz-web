@@ -1,0 +1,60 @@
+{
+ "round": "V039",
+ "checkedAt": "2026-11-08T08:15:13.935Z",
+ "sources": [
+  {
+   "url": "https://ko.wikipedia.org/wiki/스포츠",
+   "read": false,
+   "count": 73
+  }
+ ],
+ "missing": [],
+ "extra": [],
+ "rename": [],
+ "variantNotes": [
+  "open 세트는 공식 목록이 없어 출처 대조 대신 항목 전수 검토(가 구체 명사 · 나 겹침·상하위 · 다 태그 표본). 라이어·캐치마인드 전용이라 많이 말하기에는 쓰지 않음",
+  "(나) 육상 ⊃ 마라톤 · 높이뛰기 · 장대높이뛰기 · 멀리뛰기 · 창던지기 · 투포환 (세부 종목 — 상하위 겹침 6)",
+  "(가) 등산 · 낚시 · 요가 · 필라테스 · 팔씨름 은 경기 종목으로 보기 애매(레저/운동)",
+  "필드하키 변형 \"하키\" 가 아이스하키와 모호"
+ ],
+ "tagNotes": [
+  "liar 73 전부 true — 변별력 없음"
+ ],
+ "fixes": [
+  {
+   "op": "remove",
+   "id": "sport-068",
+   "why": "육상 세부 종목"
+  },
+  {
+   "op": "remove",
+   "id": "sport-069",
+   "why": "육상 세부 종목"
+  },
+  {
+   "op": "remove",
+   "id": "sport-070",
+   "why": "육상 세부 종목"
+  },
+  {
+   "op": "remove",
+   "id": "sport-071",
+   "why": "육상 세부 종목"
+  },
+  {
+   "op": "remove",
+   "id": "sport-072",
+   "why": "육상 세부 종목"
+  },
+  {
+   "op": "variant-remove",
+   "id": "sport-036",
+   "variants": [
+    "하키"
+   ],
+   "why": "아이스하키와 모호"
+  }
+ ],
+ "verdict": "candidate",
+ "why": "육상 세부 종목 5 + 변형 1 = fixes 6 (>3) → candidate"
+}

@@ -1,0 +1,10 @@
+import {page,rows,lines,save,compare} from './lib.mjs';
+const h=await page('ko','FIFA 월드컵');
+const r=rows(h).filter(x=>x.length===1&&/^1930: /.test(x[0]));
+const s=r[0][0];console.log(s);
+const hosts=[...s.matchAll(/(\d{4}): ([^\d]+?)(?= \d{4}:|$)/g)].map(m=>[m[1],m[2].trim()]);
+console.log(hosts);
+const set=new Set();for(const [,v] of hosts)for(const p of v.split(/[,·\/]| 및 | 와 /))set.add(p.trim().replace(/\s*\(.*\)/,''));
+const names=[...set].filter(Boolean);console.log(names.length,names);
+const norm={서독:'독일'};const list=[...new Set(names.map(n=>norm[n]||n))];
+save('worldcup-host',list,{perYear:hosts});console.log(JSON.stringify(compare('worldcup-host',list)));

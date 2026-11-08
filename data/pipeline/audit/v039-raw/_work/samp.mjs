@@ -1,0 +1,11 @@
+import {topic} from './lib.mjs';
+const [slug,n=20]=[process.argv[2],+process.argv[3]||20];
+const t=topic(slug);const it=t.items;const step=Math.max(1,Math.floor(it.length/n));
+const pick=it.filter((_,i)=>i%step===Math.floor(step/2)).slice(0,n);
+console.log(slug,t.kind,'items',it.length,'liar',it.filter(x=>x.liar).length,'draw',it.filter(x=>x.draw).length,'year',it.filter(x=>x.year).length);
+console.log('VAR:',pick.map(x=>`${x.name}[${(x.variants||[]).join('/')}]`).join(' · '));
+const lt=it.filter(x=>x.liar||x.draw);const st=Math.max(1,Math.floor(lt.length/10));
+console.log('TAG:',lt.filter((_,i)=>i%st===0).slice(0,10).map(x=>`${x.name}${x.liar?'L':''}${x.draw?'D':''}`).join(' · '));
+const yr=it.filter(x=>x.year);if(yr.length)console.log('YEAR:',yr.filter((_,i)=>i%Math.max(1,Math.floor(yr.length/5))===0).slice(0,5).map(x=>`${x.name}:${x.year}`).join(' · '));
+const lat=it.filter(x=>(x.variants||[]).some(v=>/[A-Za-z]/.test(v)));console.log('LATIN items',lat.length);
+const tg={};for(const x of it)for(const g of x.tags||[])tg[g]=(tg[g]||0)+1;console.log('itemTags',JSON.stringify(tg).slice(0,300));
