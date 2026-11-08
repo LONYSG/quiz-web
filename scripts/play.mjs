@@ -30,7 +30,7 @@
 // =============================================================================
 
 import { spawn, spawnSync } from 'node:child_process';
-import { copyFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { copyFileSync, existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import pg from 'pg';
 import { ROOT, cloudflaredPids, dbName, gitHead, hm, hms, logPaths, out, portPids, pruneLogs, tail, windowPids } from './ops-lib.mjs';
@@ -189,12 +189,16 @@ function latestMain() {
 }
 
 /** 플레이 트리 node_modules — 없거나 package-lock.json 해시가 지난번과 다를 때만 npm ci(1~3분) → 지금 해시 */
-function ensureDeps(prevLockHash) {
+//   지난번 해시는 플레이 트리 node_modules/.quizweb-lockhash (npm ci 가 node_modules 를 지우면 같이 사라진다 — 어긋날 일이 없다)
+function ensureDeps() {
   const lockHash = lockHashOf(TREE);
+  const marker = path.join(TREE, 'node_modules', '.quizweb-lockhash');
   const hasNodeModules = existsSync(path.join(TREE, 'node_modules'));
+  const prevLockHash = existsSync(marker) ? readFileSync(marker, 'utf8').trim() : '';
   if (needsCi({ hasNodeModules, prevLockHash, lockHash })) {
     log(`npm ci (플레이 트리 · ${hasNodeModules ? `package-lock 해시 ${prevLockHash || '모름'} → ${lockHash}` : 'node_modules 없음'} · 1~3분)`);
     sh('npm ci --no-audit --no-fund', { cwd: TREE });
+    writeFileSync(marker, `${lockHash}\n`);
     log('npm ci 끝');
   } else log(`node_modules 그대로 (package-lock 해시 ${lockHash} 같음)`);
   return lockHash;
@@ -261,7 +265,7 @@ function selectCode(code) {
 async function treeStatus() {
   const { created } = ensureTree();
   const prev = readPlayJson();
-  if (created) ensureDeps('');
+  if (created) ensureDeps();
   const head = gitT('rev-parse HEAD');
   const tag = tagsAt(head).at(-1);
   const when = gitT('log -1 --format=%cd --date=format:%Y-%m-%d_%H:%M HEAD');
@@ -342,10 +346,10 @@ async function main() {
     let pick = { head: HERE ? git('rev-parse HEAD') : '', tag: null, switched: false };
     let lockHash = '';
     if (!HERE) {
-      const { created } = ensureTree();
+      ensureTree();
       pick = selectCode(codeFromArg(argVal('--code')));
       ensureEnv();
-      lockHash = ensureDeps(created ? '' : readPlayJson()?.lockHash ?? '');
+      lockHash = ensureDeps();
     }
     migrate();
     const noDist = !existsSync(path.join(TREE, 'server', 'dist', 'index.js')) || !existsSync(path.join(TREE, 'client', 'dist', 'index.html'));
