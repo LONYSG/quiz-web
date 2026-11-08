@@ -19,8 +19,10 @@ import type { Request, Response } from 'express';
 import { RULES } from '@quiz/shared';
 import { config } from '../config.js';
 import { query } from '../db/pool.js';
+import { sessionCookieName } from '../db/testGuard.js';
 
-export const SESSION_COOKIE = 'qw_session';
+// ★ R078 (D-333) — 개발 서버(QUIZ_DEV_SERVER=1)는 qw_session-dev(localhost 쿠키는 포트를 가리지 않는다)
+export const SESSION_COOKIE = sessionCookieName();
 
 /**
  * 토큰 해시.

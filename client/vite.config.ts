@@ -13,7 +13,8 @@ const BUILD = (() => {
   }
 })();
 
-// 개발 중에는 Vite가 5173, 서버가 3000이다.
+// 개발 중에는 Vite가 5173, 서버가 3001(R078 · D-333 — npm run dev 개발 서버 · DEV_PORT 로 바꿈)이다.
+const DEV_TARGET = `http://localhost:${process.env.DEV_PORT ?? '3001'}`;
 // ★ 프록시로 /socket.io 와 /healthz 를 서버로 넘겨 "오리진이 하나"인 상태를 개발 중에도 유지한다.
 //   이렇게 하면 개발 환경과 배포 환경의 동작이 달라지지 않는다.
 
@@ -57,7 +58,7 @@ const THROTTLE_MS = 5000;
 
 const HINTS: Record<string, string> = {
   ECONNREFUSED:
-    '게임 서버(:3000)에 연결할 수 없습니다. 다른 터미널에서 npm run dev 가 떠 있는지 확인하세요.',
+    `게임 서버(${DEV_TARGET})에 연결할 수 없습니다. 다른 터미널에서 npm run dev(ops 메뉴 15) 가 떠 있는지 확인하세요.`,
   ECONNRESET: '게임 서버와의 연결이 끊겼습니다. 서버가 재시작되었거나 종료되었습니다.',
   EPIPE: '게임 서버와의 연결이 이미 닫혀 있습니다.',
 };
@@ -122,12 +123,12 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/socket.io': {
-        target: 'http://localhost:3000',
+        target: DEV_TARGET,
         ws: true,
         configure: handleProxyErrors,
       },
-      '/api': { target: 'http://localhost:3000', configure: handleProxyErrors },
-      '/healthz': { target: 'http://localhost:3000', configure: handleProxyErrors },
+      '/api': { target: DEV_TARGET, configure: handleProxyErrors },
+      '/healthz': { target: DEV_TARGET, configure: handleProxyErrors },
     },
   },
   build: { outDir: 'dist', emptyOutDir: true },

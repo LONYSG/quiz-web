@@ -16,6 +16,7 @@
 import { spawn } from 'node:child_process';
 import { createWriteStream, mkdirSync } from 'node:fs';
 import path from 'node:path';
+import { devOverrides } from './dev-env.mjs';
 import { LOG_DIR, ROOT, dbName, gitHead, logPaths } from './ops-lib.mjs';
 
 try { process.loadEnvFile?.(path.join(ROOT, '.env')); } catch { /* 없어도 됨 */ }
@@ -36,9 +37,11 @@ const { latest, dated } = logPaths(kind);
 const files = [createWriteStream(dated, { flags: 'a' }), createWriteStream(latest, { flags: 'w' })];
 const toFiles = (s) => { for (const f of files) f.write(s); };
 
+// ★ R078 — kind dev 는 dev.mjs 가 자식 env 를 덮는다(3001 · quizweb_dev) — 머리 줄도 그 값으로
+const shown = kind === 'dev' ? devOverrides() : process.env;
 const head =
   `[ops-run] ${new Date().toISOString()} (${new Date().toLocaleString('ko-KR')}) · 명령 ${cmd.join(' ')} · ` +
-  `PORT ${process.env.PORT ?? '3000'} · DB ${dbName(process.env.DATABASE_URL)} · HEAD ${gitHead(cwdArg ? CWD : undefined)}${cwdArg ? ` · 트리 ${CWD}` : ''} · 로그 ${path.basename(dated)}\n`;
+  `PORT ${shown.PORT ?? '3000'} · DB ${dbName(shown.DATABASE_URL)} · HEAD ${gitHead(cwdArg ? CWD : undefined)}${cwdArg ? ` · 트리 ${CWD}` : ''} · 로그 ${path.basename(dated)}\n`;
 process.stdout.write(head);
 toFiles(head);
 

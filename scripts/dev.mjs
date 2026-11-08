@@ -30,14 +30,22 @@
 //   3. node --watch server/dist/index.js 로 서버를 띄운다.
 //      dist 가 갱신되면 node --watch 가 알아서 재시작한다
 //
+// ★★ R078 (D-333 · D-331) — 개발 서버는 **3001 · quizweb_dev**(플레이 3000 · quizweb 는 플레이 트리 worktree 에서).
+//   `.env` 는 손대지 않고 자식 env 만 덮는다(scripts/dev-env.mjs — DEV_PORT · DEV_DATABASE_URL · .env.dev).
+//   QUIZ_DEV_SERVER=1 → 실 DB 면 서버가 부팅 거부 · 세션 쿠키 qw_session-dev(localhost 는 포트가 달라도 쿠키를 공유한다).
+//   뜨기 전에 dev DB 에 migrate(적용할 것 있을 때만 · DB 가 없으면 "먼저 npm run db:dev-init").
+//
 // 사용법
-//   npm run dev
+//   npm run dev                 (ops 메뉴 15 = 새 창 quiz-web-dev · 로그 tmp/ops/dev.log)
+//   npm run db:dev-init         처음 한 번(quizweb 통째 복사)
 // =============================================================================
 
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { DEV_DB_NAME, devOverrides } from './dev-env.mjs';
+import { LIVE_DB_NAME, dbNameOf } from './test-db.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
@@ -45,6 +53,34 @@ const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 
 function log(msg) {
   console.log(`[dev] ${msg}`);
+}
+
+// ── 0. 개발 env + dev DB migrate
+const DEV = devOverrides();
+const devDb = dbNameOf(DEV.DATABASE_URL);
+if (devDb === LIVE_DB_NAME || devDb === '') {
+  console.error(`[dev] ★★ 개발 서버가 실 DB(${LIVE_DB_NAME})로 뜨려 한다 — DEV_DATABASE_URL · .env.dev 를 확인 (기본 ${DEV_DB_NAME} · npm run db:dev-init)`);
+  process.exit(1);
+}
+const childEnv = { ...process.env, PORT: DEV.PORT, DATABASE_URL: DEV.DATABASE_URL, QUIZ_DEV_SERVER: '1' };
+log(`개발 서버 — PORT ${DEV.PORT} · DB ${devDb}${DEV.fromEnvDev ? ' (.env.dev 반영)' : ''} · 세션 쿠키 qw_session-dev`);
+{
+  const dry = spawnSync(process.execPath, [path.join(ROOT, 'scripts', 'migrate.mjs'), '--dry'], { cwd: ROOT, env: childEnv, encoding: 'utf8' });
+  const text = `${dry.stdout ?? ''}${dry.stderr ?? ''}`;
+  if (dry.status !== 0) {
+    if (/3D000|does not exist|존재하지 않/.test(text)) console.error(`[dev] ★ 개발 DB(${devDb})가 없다 — 먼저 npm run db:dev-init (ops 메뉴 17)`);
+    else console.error(`[dev] migrate --dry 실패:\n${text.slice(0, 600)}`);
+    process.exit(1);
+  }
+  const pending = text.match(/적용 대상 (\d+)개/);
+  if (pending) {
+    log(`개발 DB 마이그레이션 ${pending[1]}개 적용`);
+    const m = spawnSync(process.execPath, [path.join(ROOT, 'scripts', 'migrate.mjs')], { cwd: ROOT, env: childEnv, stdio: 'inherit' });
+    if (m.status !== 0) process.exit(m.status ?? 1);
+  } else log('개발 DB 마이그레이션 — 적용할 것 없음');
+}
+if (!existsSync(path.join(ROOT, 'client', 'dist', 'index.html'))) {
+  log(`★ client/dist 가 없다 — http://localhost:${DEV.PORT} 화면을 보려면 npm run build(또는 npm run dev:client → 5173)`);
 }
 
 // ── 1. 첫 빌드
@@ -93,6 +129,7 @@ watcher.stderr.on('data', relayWatcher);
 const server = spawn(process.execPath, ['--watch', SERVER_ENTRY], {
   cwd: ROOT,
   stdio: 'inherit',
+  env: childEnv,
 });
 
 log('감시 시작. 소스를 고치면 자동으로 다시 빌드하고 서버를 재시작합니다.');

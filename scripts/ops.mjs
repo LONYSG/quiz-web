@@ -16,12 +16,14 @@ import { createInterface } from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
-import { cloudflaredPids, logPaths, portPids, tail, tunnelUrl } from './ops-lib.mjs';
+import { devOverrides } from './dev-env.mjs';
+import { cloudflaredPids, logPaths, portPids, tail, tunnelUrl, windowPids } from './ops-lib.mjs';
 import { parseCodeChoice, playDir, readPlayJson } from './play-tree.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 try { process.loadEnvFile?.(path.join(ROOT, '.env')); } catch { /* 없어도 됨 */ }
 const PORT = process.env.PORT ?? '3000';
+const DEV_PORT = devOverrides().PORT; // ★ R078 — 개발 서버(기본 3001)
 // ★ R070 — play.mjs 가 남기는 창 로그(3000 이 아닌 포트는 이름에 포트가 붙는다 — play.mjs 와 같은 규칙)
 const LOGS = Object.fromEntries(['server', 'tunnel'].map((k) => [k, logPaths(PORT === '3000' ? k : `${k}${PORT}`).latest]));
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -175,6 +177,22 @@ async function status() {
       `${server ? '' : port.length ? ' ★ 포트는 잡혀 있는데 /healthz 무응답(죽는 중 · 멈춤 → 메뉴 3 → 1)' : ''}` +
       ` · 터널 ${tunnel ? `PID ${cf.join(',')} · 주소 ${tunnelUrl(LOGS.tunnel) ?? '(로그에 없음)'}` : '꺼짐'}`,
   );
+  // ★ R078 — 플레이 트리 · 개발 트리 · 개발 서버(3001)
+  {
+    const pj = readPlayJson();
+    const pdir = playDir();
+    const hasTree = existsSync(path.join(pdir, '.git'));
+    const pHead = hasTree ? out(`git -C "${pdir}" rev-parse --short HEAD`).trim() : '';
+    const pTag = pHead ? out(`git tag --points-at ${pHead} -l "play/*"`).split(/\r?\n/).filter(Boolean).sort().at(-1) : '';
+    const ahead = pHead ? out(`git rev-list --count ${pHead}..HEAD`).trim() : '';
+    const devH = await healthOf(DEV_PORT);
+    console.log(
+      `  플레이 트리 ${hasTree ? `${pHead} · ${pTag || '태그 없음'}` : '없음(메뉴 18 → 1)'}` +
+        `${pj?.startedAt ? ` · 켠 시각 ${new Date(pj.startedAt).toLocaleString('ko-KR')}${pj.here ? ' ★ 이 트리(--here)' : ''}` : ''}` +
+        ` · 개발 트리 HEAD ${out('git rev-parse --short HEAD').trim()}${ahead ? ` — 플레이보다 ${ahead} 커밋 앞` : ''}`,
+    );
+    console.log(`  개발 서버(${DEV_PORT}) ${devH ? `켜짐${devH.devServer ? '' : ' ★ devServer 표시 없음(개발 서버가 아닌 것이 떠 있다)'} · 기동 ${new Date(devH.bootedAt).toLocaleString('ko-KR')}` : '꺼짐'}`);
+  }
   if (dbUp) {
     try {
       const c = await db();
@@ -230,6 +248,38 @@ async function playOn() {
   run(`node scripts/play.mjs --code=${q(arg)}`);
 }
 
+// ★ R078 (D-333) — 개발 서버(이 트리 · 3001 · quizweb_dev) — 새 창 quiz-web-dev · 로그 tmp/ops/dev.log
+async function devOn() {
+  if (await healthOf(DEV_PORT)) return console.log(`  개발 서버가 이미 켜져 있습니다 — http://localhost:${DEV_PORT}`);
+  const runner = path.join(ROOT, 'scripts', 'ops-run.mjs');
+  spawn(`start "quiz-web-dev" cmd /k "chcp 65001 >nul && title quiz-web-dev && node ${runner} dev npm run dev"`, { cwd: ROOT, shell: true, detached: true, stdio: 'ignore' }).unref();
+  console.log('  새 창(quiz-web-dev)에서 개발 서버를 켭니다 — 첫 빌드 · 개발 DB migrate 뒤 응답을 기다립니다(최대 90초)');
+  const until = Date.now() + 90_000;
+  while (Date.now() < until) {
+    await new Promise((r) => setTimeout(r, 2000));
+    const h = await healthOf(DEV_PORT);
+    if (h) return console.log(`  ✓ 개발 서버 켜짐 — http://localhost:${DEV_PORT} (DB quizweb_dev · 세션 쿠키 따로 · 화면은 이 트리의 마지막 npm run build)`);
+  }
+  console.log(`  ✗ 90초 안에 응답 없음 — 창(quiz-web-dev) · tmp/ops/dev.log 를 보세요(개발 DB 가 없으면 메뉴 17 먼저)`);
+}
+
+async function devOff() {
+  const pids = portPids(DEV_PORT);
+  const wins = windowPids('dev');
+  for (const pid of [...pids, ...wins]) spawnSync(`taskkill /PID ${pid} /T /F`, { shell: true, stdio: 'pipe' });
+  const until = Date.now() + 15_000;
+  while (portPids(DEV_PORT).length && Date.now() < until) await new Promise((r) => setTimeout(r, 500));
+  const left = portPids(DEV_PORT);
+  console.log(left.length ? `  ✗ 포트 ${DEV_PORT} 아직 떠 있음(PID ${left.join(',')})` : `  ✓ 개발 서버 꺼짐(포트 ${DEV_PORT} 비어 있음 · 창 ${wins.length}개 닫음)`);
+}
+
+async function devDbRefresh() {
+  console.log('\n■ 개발 DB 새로 복사 — 지금 quizweb 를 통째로 quizweb_dev 에(몇 분 · quizweb 는 읽기만)');
+  if (await healthOf(DEV_PORT)) return console.log('  개발 서버가 켜져 있습니다 — 먼저 메뉴 16(끄기)');
+  if (!(await yes('quizweb_dev 를 지우고 다시 복사할까요?'))) return console.log('  취소');
+  run('npm run db:dev-init -- --refresh');
+}
+
 async function pruneBackups() {
   const { pickPrune } = await import('./backup-prune.mjs');
   const dir = path.join(ROOT, 'backups');
@@ -245,7 +295,7 @@ const MENU = [
   ['1', '서버 켜기 — 어느 코드로? → 플레이 트리 → DB → 빌드 → 서버 창 → 터널 창 → 브라우저', playOn],
   ['2', '서버 켜기 — 빌드 건너뜀 (플레이 트리 그대로)', () => run('node scripts/play.mjs --no-build --code=keep')],
   ['3', '서버 · 터널 끄기 (DB 는 둠 · 포트가 빌 때까지 기다림)', () => run('node scripts/play.mjs --stop')],
-  ['4', '지금 상태 (Docker · DB · 서버 · 터널 · 진행 중인 판 · 제보 · 로그 꼬리)', status],
+  ['4', '지금 상태 (Docker · DB · 서버 · 터널 · 플레이/개발 트리 · 개발 서버 · 진행 중인 판 · 제보 · 로그 꼬리)', status],
   ['5', '계정 목록 (잔액 · 가입 · 마지막 판)', listAccounts],
   ['6', '포인트 주기', grantPoints],
   ['7', '비밀번호 초기화 (0000 + 다음 로그인 때 바꾸게)', resetPassword],
@@ -258,6 +308,9 @@ const MENU = [
   ['14', '로그 열기 (서버 · 터널 — 메모장)', openLogs],
   // ★ R074 (§F ①) — 백업은 만들 때마다 최신 5개만 남긴다 · 이 줄은 덤프 없이 정리만(지울 목록을 보여 주고 y)
   // ★ R078 — 15~17 은 개발 서버 · 18 플레이 트리(브리핑 번호) → 백업 정리는 15 에서 19 로 옮겼다
+  ['15', `개발 서버 켜기 (이 트리 · ${DEV_PORT} · quizweb_dev · 새 창)`, devOn],
+  ['16', '개발 서버 끄기', devOff],
+  ['17', '개발 DB 새로 복사 (지금 quizweb 통째 · 몇 분)', devDbRefresh],
   ['18', '플레이 트리 만들기 / 상태 (HEAD · 태그 · lock 해시 · 디스크)', () => run('node scripts/play.mjs --tree')],
   ['19', '오래된 백업 정리 (최신 5개만 남김 · zip 은 그대로)', pruneBackups],
   ['0', '끝'],

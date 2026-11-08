@@ -20,6 +20,9 @@ import pg from 'pg';
 export const LIVE_DB_NAME = 'quizweb';
 export const TEST_DB_NAME = 'quizweb_test';
 export const TEST_DATABASE_URL = `postgresql://quiz:quizlocal@localhost:5434/${TEST_DB_NAME}`;
+// ★ R078 (D-333) — 개발 DB(npm run dev · 3001 · npm run db:dev-init)
+export const DEV_DB_NAME = 'quizweb_dev';
+export const DEV_DATABASE_URL = `postgresql://quiz:quizlocal@localhost:5434/${DEV_DB_NAME}`;
 
 export function dbNameOf(url) {
   try {

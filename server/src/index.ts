@@ -14,7 +14,7 @@ import { Server as SocketIOServer } from 'socket.io';
 import { CLIENT_DIST, TWEMOJI_DIR, config } from './config.js';
 import { runBootCleanup } from './db/bootCleanup.js';
 import { closePool, getDbActiveMs } from './db/pool.js';
-import { isTestServer, testServerRefusal } from './db/testGuard.js';
+import { devServerRefusal, isDevServer, isTestServer, testServerRefusal } from './db/testGuard.js';
 import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
 import { meRouter, profileRouter } from './http/meRoutes.js';
@@ -35,7 +35,7 @@ async function main(): Promise<void> {
   //     로컬 PC 서버는 껐다 켜는 것이 일상이라 반드시, 자주 발생한다.
   //     docs/02-ARCHITECTURE.md 2장 참조.
   // ★★★ R060 (D-253) — 검사 서버가 실 DB 로 뜨면 부팅 정리 전에 멈춘다
-  const refusal = testServerRefusal();
+  const refusal = testServerRefusal() ?? devServerRefusal(); // ★ R078 — 개발 서버도 실 DB 면 거부
   if (refusal) {
     console.error(`[boot] ★★ ${refusal}`);
     process.exit(1);
@@ -72,6 +72,7 @@ async function main(): Promise<void> {
       rooms: roomCount(),
       // ★ R060 — 검사 스크립트가 "이미 떠 있는 서버" 를 쓰기 전에 본다(실 서버면 쓰지 않는다)
       testServer: isTestServer(),
+      devServer: isDevServer(), // ★ R078 — ops 메뉴 4 가 3001 을 본다
     });
   });
 
