@@ -326,12 +326,14 @@ async function main() {
     else log(`★ 주제 세트 적재 실패(서버는 그대로 뜬다 — 미니게임 '많이 말하기 · 겹치면 무효' 만 빠진다): ${`${r.stderr ?? ''}${r.stdout ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
   };
   // ★★ R084 (docs/18 §10) — 노래 적재: minigame_items 재사용(game 'song') · verified 만 · 멱등 · 파일은 쓰지 않는다. 실패해도 서버는 뜬다(한 줄 경고)
+  //   ★ R085 (18 §11) — OX 도 같은 줄로(--game song,ox · 한 트랜잭션)
   const loadSongs = () => {
-    const r = sh('node scripts/minigame-load.mjs --game song --apply', { quiet: true, check: false, cwd: TREE });
+    const r = sh('node scripts/minigame-load.mjs --game song,ox --apply', { quiet: true, check: false, cwd: TREE });
     const lines = `${r.stdout ?? ''}`.split(String.fromCharCode(10)).map((l) => l.trim());
     const put = lines.find((l) => l.startsWith('[apply]'));
-    if (r.status === 0 && put) log(`노래 ${put.replace('[apply] ', '').split(' · 그림')[0]}`);
-    else log(`★ 노래 적재 실패(서버는 그대로 뜬다 — 미니게임 '노래 맞히기 · 이 노래 몇 년도?' 만 빠진다): ${`${r.stderr ?? ''}${r.stdout ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
+    const n = (g) => lines.find((l) => l.startsWith(`${g} `))?.trim().split(/\s+/).pop() ?? '?';
+    if (r.status === 0 && put) log(`노래 ${n('song')} · OX ${n('ox')} 적재 (${put.replace('[apply] ', '').split(' · 활성')[0]})`);
+    else log(`★ 노래 · OX 적재 실패(서버는 그대로 뜬다 — 미니게임 '노래 맞히기 · 이 노래 몇 년도? · OX 10연속' 만 빠진다): ${`${r.stderr ?? ''}${r.stdout ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
   };
 
   // 4) 서버

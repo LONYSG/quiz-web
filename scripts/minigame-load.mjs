@@ -8,6 +8,7 @@
 //   [--game price,photo]  게임 고르기
 //   ★ G021: photoyear(18 §8)는 게임 코드가 없어 적재를 막았다 → ★ R068 게임을 만들고 GAMES_ALL 에 넣었다
 //   ★ R084: song(18 §10 — 노래 맞히기 · 이 노래 몇 년도? 가 같은 항목을 쓴다 · 그림 없음 · 소리는 previewUrl 스트리밍) 추가
+//   ★ R085: ox(18 §11 — OX 10연속 · 그림 없음 · 문장) 추가
 //   [--allow-candidate]  candidate 도 넣는다 — ★ 검사 DB(quizweb_test · quizweb_dev) 또는 QUIZ_DEV_SERVER 만(실 quizweb 은 연결 전 exit 2 · topics-load 빗장 그대로)
 //
 // ★ 읽는 것: data/minigame/<game>/items*.json 전부(묶음 파일) + worldprice/products.json · 그림 assets/minigame/<game>/…
@@ -24,6 +25,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { SONG_FIELDS, SONG_OPTIONAL, loadableStatus, songProblems } from './minigame-song.mjs';
+import { OX_FIELDS, OX_OPTIONAL, oxProblems } from './minigame-ox.mjs';
 import { candidateGate, dbNameOf } from './topics-load.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -31,7 +33,7 @@ const args = process.argv.slice(2);
 const APPLY = args.includes('--apply');
 const MARK = args.includes('--mark');
 const ALLOW_CANDIDATE = args.includes('--allow-candidate');
-const GAMES_ALL = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear', 'song'];
+const GAMES_ALL = ['price', 'worldprice', 'photo', 'estimate', 'which', 'photoyear', 'song', 'ox'];
 const GAMES = args.includes('--game') ? args[args.indexOf('--game') + 1].split(',') : GAMES_ALL;
 
 const COMMON = ['id', 'status', 'createdRound', 'sources', 'image', 'tags', 'verify'];
@@ -43,10 +45,12 @@ const FIELDS = {
   which: ['kind', 'stem', 'a', 'b', 'answer', 'unit', 'margin', 'asOf'],
   photoyear: ['year', 'yearKind', 'yearRange', 'title', 'place', 'region', 'difficulty', 'cues'],
   song: SONG_FIELDS,
+  ox: OX_FIELDS,
 };
-const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [], photoyear: [], song: SONG_OPTIONAL };
-// ★ R084 — song 은 그림 칸이 없다(앨범 그림 = itunes.artworkUrl100 · 공개 때만)
-const commonOf = (g) => (g === 'song' ? COMMON.filter((k) => k !== 'image') : COMMON);
+const OPTIONAL = { estimate: ['note'], which: ['note', 'explanation'], price: [], photo: [], worldprice: [], photoyear: [], song: SONG_OPTIONAL, ox: OX_OPTIONAL };
+// ★ R084 — song 은 그림 칸이 없다(앨범 그림 = itunes.artworkUrl100 · 공개 때만) · ★ R085 ox 도(문장)
+const NO_IMAGE = new Set(['song', 'ox']);
+const commonOf = (g) => (NO_IMAGE.has(g) ? COMMON.filter((k) => k !== 'image') : COMMON);
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const PRICE_CAT = ['식품', '생활', '가전', '패션', '뷰티', '취미', '자동차', '사치품', '해외', '기타'];
 const PHOTO_CAT = ['person', 'place', 'object', 'everyday', 'food', 'animal', 'logo'];
@@ -87,6 +91,7 @@ function problems(g, it, products) {
   for (const k of [...commonOf(g), ...FIELDS[g]]) if (it[k] === undefined) p.push(`칸 없음 ${k}`);
   for (const k of Object.keys(it)) if (![...COMMON, ...FIELDS[g], ...OPTIONAL[g]].includes(k)) p.push(`모르는 칸 ${k}`);
   if (g === 'song') p.push(...songProblems(it));
+  if (g === 'ox') p.push(...oxProblems(it));
   if (!STATUS.includes(it.status)) p.push(`status ${it.status}`);
   if (!Array.isArray(it.tags)) p.push('tags 배열');
   if (g === 'price') {
@@ -194,7 +199,7 @@ for (const g of GAMES) {
         else if (r.problem) bad = r.problem;
         else if (r.image) imgs.push(r.image);
       };
-      if (g !== 'song') take(it.image);
+      if (!NO_IMAGE.has(g)) take(it.image);
       if (g === 'which') {
         take(it.a.image);
         take(it.b.image);
