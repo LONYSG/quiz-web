@@ -1,0 +1,1021 @@
+{
+ "note": "G039 설계 결정(CV-165) + G039 확인 결과 — scripts/g039-topics-fix.mjs 가 읽는다",
+ "sets": {
+  "kr-municipality": {
+   "status": "verified",
+   "asOf": "2026-07-01"
+  },
+  "seoul-subway-station": {
+   "status": "verified"
+  },
+  "currency": {
+   "status": "verified",
+   "fixes": [
+    {
+     "op": "label",
+     "id": "currency-001",
+     "label": "달러",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-002",
+     "label": "페소",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-003",
+     "label": "프랑",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-004",
+     "label": "디나르",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-005",
+     "label": "파운드",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-006",
+     "label": "루피",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-007",
+     "label": "크로나",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-008",
+     "label": "실링",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-009",
+     "label": "리얄",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-010",
+     "label": "디르함",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-011",
+     "label": "원",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-012",
+     "label": "레우",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-013",
+     "label": "루블",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-014",
+     "label": "마나트",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-015",
+     "label": "솜",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-016",
+     "label": "콰차",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    },
+    {
+     "op": "label",
+     "id": "currency-017",
+     "label": "길더",
+     "why": "CV-165 ② 괄호 묶음 → 화면 이름"
+    }
+   ]
+  },
+  "world-capital": {
+   "status": "verified",
+   "fixes": [
+    {
+     "op": "variant-remove",
+     "id": "world-capital-077",
+     "variants": [
+      "양곤"
+     ],
+     "why": "CV-165 ⑤ 옛 수도 — 오답을 정답으로 받음"
+    }
+   ]
+  },
+  "constellation": {
+   "status": "verified"
+  },
+  "disney-animated-film": {
+   "status": "verified"
+  },
+  "sport": {
+   "status": "verified"
+  },
+  "element": {
+   "fixes": [
+    {
+     "op": "rename",
+     "id": "element-011",
+     "to": "나트륨",
+     "why": "CV-165 ⑥ name 통용 · IUPAC 꼴은 변형"
+    },
+    {
+     "op": "rename",
+     "id": "element-019",
+     "to": "칼륨",
+     "why": "CV-165 ⑥ name 통용 · IUPAC 꼴은 변형"
+    },
+    {
+     "op": "rename",
+     "id": "element-022",
+     "to": "티타늄",
+     "why": "CV-165 ⑥ name 통용 · IUPAC 꼴은 변형"
+    },
+    {
+     "op": "rename",
+     "id": "element-032",
+     "to": "게르마늄",
+     "why": "CV-165 ⑥ name 통용 · IUPAC 꼴은 변형"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-001",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-002",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-003",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-004",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-005",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-006",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-007",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-008",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-009",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-010",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-011",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-012",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-013",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-014",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-015",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-016",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-017",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-018",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-019",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-020",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-021",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-022",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-023",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-024",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-025",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-026",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-027",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-028",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-029",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-030",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-031",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-032",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-033",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-034",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-035",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-036",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-037",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-038",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-039",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-040",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-041",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-042",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-043",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-044",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-045",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-046",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-047",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-048",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-049",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-051",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-052",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-053",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-054",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-055",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-056",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-057",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-058",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-059",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-060",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-061",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-062",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-063",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-064",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-065",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-066",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-067",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-068",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-069",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-070",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-071",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-072",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-073",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-074",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-075",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-076",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-077",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-078",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-079",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-080",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-081",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-082",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-083",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-084",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-085",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-086",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-087",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-088",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-089",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-090",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-091",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-092",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-093",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-094",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-095",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-096",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-097",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-098",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-099",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-100",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-101",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-102",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-103",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-104",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-105",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-106",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-107",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-108",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-109",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-110",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-111",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-112",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-113",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-114",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-115",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-116",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-117",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    },
+    {
+     "op": "variant-remove",
+     "id": "element-118",
+     "match": "^[A-Za-z]$|^[A-Z][a-z]{3,}$|^[a-z]",
+     "why": "CV-165 ① 영어 이름 · 1글자 기호 제거(2글자 이상 기호 유지)"
+    }
+   ]
+  },
+  "instrument": {
+   "fixes": [
+    {
+     "op": "set",
+     "id": "instrument-061",
+     "set": {
+      "liar": false
+     },
+     "why": "CV-165 ③ 라이어로 설명하기 어려운 악기(V039)"
+    },
+    {
+     "op": "set",
+     "id": "instrument-062",
+     "set": {
+      "liar": false
+     },
+     "why": "CV-165 ③ 라이어로 설명하기 어려운 악기(V039)"
+    },
+    {
+     "op": "set",
+     "id": "instrument-055",
+     "set": {
+      "liar": false
+     },
+     "why": "CV-165 ③ 라이어로 설명하기 어려운 악기(V039)"
+    },
+    {
+     "op": "set",
+     "id": "instrument-057",
+     "set": {
+      "liar": false
+     },
+     "why": "CV-165 ③ 라이어로 설명하기 어려운 악기(V039)"
+    },
+    {
+     "op": "set",
+     "id": "instrument-056",
+     "set": {
+      "liar": false
+     },
+     "why": "CV-165 ③ 라이어로 설명하기 어려운 악기(V039)"
+    },
+    {
+     "op": "set",
+     "id": "instrument-052",
+     "set": {
+      "liar": false
+     },
+     "why": "CV-165 ③ 라이어로 설명하기 어려운 악기(V039)"
+    }
+   ]
+  },
+  "mcu-film": {
+   "fixes": [
+    {
+     "op": "label",
+     "id": "mcu-film-015",
+     "label": "가디언즈 오브 갤럭시 2",
+     "why": "CV-165 ② 20자 넘는 name"
+    },
+    {
+     "op": "label",
+     "id": "mcu-film-032",
+     "label": "가디언즈 오브 갤럭시 3",
+     "why": "CV-165 ② 20자 넘는 name"
+    }
+   ]
+  },
+  "solar-system": {
+   "head": {
+    "nameKo": "태양계 행성 · 왜행성 · 둥근 위성",
+    "source": [
+     {
+      "url": "https://en.wikipedia.org/wiki/List_of_gravitationally_rounded_objects_of_the_Solar_System",
+      "note": "G039 범위 재정의(CV-165 ④) — ko.wikipedia \"중력적으로 둥근 천체 목록\" 없음(404) → en 페이지 · 행성 8 + IAU 왜행성 5 + 둥근 위성 19 = 32 · 포보스 · 데이모스(비구형) 뺌",
+      "fetchedAt": "2026-11-08",
+      "read": true
+     }
+    ]
+   },
+   "verifyNote": "G039 범위 재정의 → V040 재대조(status candidate 그대로)",
+   "fixes": [
+    {
+     "op": "remove",
+     "id": "solar-system-010",
+     "why": "CV-165 ④ 비구형 위성(포보스)"
+    },
+    {
+     "op": "remove",
+     "id": "solar-system-011",
+     "why": "CV-165 ④ 비구형 위성(데이모스)"
+    }
+   ],
+   "override": {
+    "[\"add\",\"명왕성\"]": {
+     "tags": [
+      "왜행성"
+     ],
+     "draw": true,
+     "liar": true
+    },
+    "[\"add\",\"세레스\"]": {
+     "tags": [
+      "왜행성"
+     ],
+     "draw": false,
+     "liar": false
+    },
+    "[\"add\",\"에리스\"]": {
+     "tags": [
+      "왜행성"
+     ],
+     "draw": false,
+     "liar": false
+    },
+    "[\"add\",\"하우메아\"]": {
+     "tags": [
+      "왜행성"
+     ],
+     "draw": false,
+     "liar": false
+    },
+    "[\"add\",\"마케마케\"]": {
+     "tags": [
+      "왜행성"
+     ],
+     "draw": false,
+     "liar": false
+    }
+   }
+  },
+  "river-national": {
+   "override": {
+    "[\"add\",\"학의천\"]": {
+     "skip": "G039 — 2024-02-08 환경부 고시(국가하천 73 → 89 · 신규 16 · 구간 연장 4)에 없음 · 지방하천으로 보임 · 별표 원문 미열람 → 적용 안 함(V040)"
+    },
+    "[\"add\",\"신갈천\"]": {
+     "skip": "G039 — 2024-02-08 환경부 고시(국가하천 73 → 89 · 신규 16 · 구간 연장 4)에 없음 · 지방하천으로 보임 · 별표 원문 미열람 → 적용 안 함(V040)"
+    },
+    "[\"add\",\"화포천\"]": {
+     "skip": "G039 — 2024-02-08 환경부 고시(국가하천 73 → 89 · 신규 16 · 구간 연장 4)에 없음 · 지방하천으로 보임 · 별표 원문 미열람 → 적용 안 함(V040)"
+    },
+    "[\"add\",\"무심천\"]": {
+     "skip": "G039 — 2024-02-08 환경부 고시(국가하천 73 → 89 · 신규 16 · 구간 연장 4)에 없음 · 지방하천으로 보임 · 별표 원문 미열람 → 적용 안 함(V040)"
+    },
+    "[\"add\",\"광주천\"]": {
+     "skip": "G039 — 2024-02-08 환경부 고시(국가하천 73 → 89 · 신규 16 · 구간 연장 4)에 없음 · 지방하천으로 보임 · 별표 원문 미열람 → 적용 안 함(V040)"
+    }
+   }
+  }
+ }
+}

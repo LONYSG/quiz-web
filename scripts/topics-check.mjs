@@ -10,6 +10,7 @@
 //   판정 꼴은 퀴즈와 같다: flexCanon(괄호 · 관사 · 가운뎃점 지움 → normalizeAnswer)
 //   --fill-qid : 활성 퀴즈 대표 정답(정규화 일치)으로 qid 를 채워 파일에 쓴다(DB 읽기만)
 //   --json     : 결과를 JSON 으로
+//   ★ G039: 항목 label(선택 · 문자열 · 40자 이하 — 괄호 묶음 · 20자 넘는 name 에 없으면 경고) · verify 칸(있으면 round · verdict)
 // 사용: node scripts/topics-check.mjs [files…] [--fill-qid] [--json]
 // =============================================================================
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
@@ -26,7 +27,7 @@ let files = args.filter((a) => !a.startsWith('--'));
 if (!files.length) files = existsSync(DIR) ? readdirSync(DIR).filter((f) => f.endsWith('.json')).sort().map((f) => path.join(DIR, f)) : [];
 
 const HEAD = ['topic', 'nameKo', 'kind', 'version', 'asOf', 'createdRound', 'status', 'source', 'liar', 'draw', 'timeSec', 'tags', 'count', 'items', 'verify'];
-const ITEM_OK = new Set(['id', 'name', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note']);
+const ITEM_OK = new Set(['id', 'name', 'label', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note']); // ★ G039: label = 화면용 짧은 이름(판정엔 안 씀 · 18 §9 · CV-165 ②)
 const STATUS = new Set(['candidate', 'verified', 'rejected', 'loaded']);
 const SPECIAL = /[^\p{L}\p{N} .·'\-&:!?]/u; // 변형에 허용: 공백 · 마침표 · 가운뎃점 · 따옴표 · 하이픈 · & · : · ! · ? (판정이 지우거나 정규화가 다룬다)
 const LATIN = /[A-Za-z]/;
@@ -61,6 +62,8 @@ export function checkTopic(t, file) {
     for (const k of ['draw', 'liar']) if (typeof it[k] !== 'boolean') err.push(`${it.id}: ${k} boolean`);
     if (!(it.qid === null || Number.isInteger(it.qid))) err.push(`${it.id}: qid null|정수`);
     if ('year' in it && !Number.isInteger(it.year)) err.push(`${it.id}: year 정수`);
+    if ('label' in it && (typeof it.label !== 'string' || !it.label.trim() || [...it.label].length > 40)) err.push(`${it.id}: label 문자열 · 빈칸 아님 · 40자 이하`);
+    if (/[(（]/.test(it.name ?? '') && !('label' in it) || [...(it.name ?? '')].length > 20 && !('label' in it)) warn.push(`${it.id}: label 없음(괄호 묶음 · 20자 넘는 name — CV-165 ②)`);
     const n = canon(it.name);
     if (!n) err.push(`${it.id}: name 정규화가 빔`);
     if (byName.has(n)) err.push(`유일성: name 겹침 ${it.id} '${it.name}' = ${byName.get(n)}`); else byName.set(n, it.id);
@@ -75,7 +78,10 @@ export function checkTopic(t, file) {
     }
   });
   for (const [c, id] of byVar) if (byName.has(c) && byName.get(c) !== id) err.push(`유일성: ${id} 의 변형이 ${byName.get(c)} 의 name 과 같음`);
+  // ★ G039 — verify 칸 느슨 검사(있으면 round · verdict)
+  if (t.verify != null && (typeof t.verify !== 'object' || !t.verify.round || !t.verify.verdict)) err.push('verify: {round, verdict, …} 또는 null');
   if (t.kind === 'open' && t.topic && items.some((it) => it.liar === false && it.draw === false)) warn.push('open 인데 liar · draw 둘 다 false 인 항목이 있음');
+  stat.labels = items.filter((x) => 'label' in x).length;
   stat.items = items.length; stat.liar = items.filter((x) => x.liar).length; stat.draw = items.filter((x) => x.draw).length; stat.qid = items.filter((x) => x.qid != null).length;
   return { file: slug, kind: t.kind, err, warn, stat };
 }
