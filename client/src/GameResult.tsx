@@ -7,6 +7,7 @@
 // ★ 동점자는 공동 순위 (guide 39절) · 접속 종료자 표시 · 다시 하기(5초 뒤 바로 시작) / 로비로.
 // =============================================================================
 
+import { useEffect } from 'react';
 import type { Socket } from 'socket.io-client';
 import Avatar from './Avatar.js';
 import FitText from './FitText.js';
@@ -14,6 +15,8 @@ import type { GameResultView, PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
 import { ResultFeedback } from './QuestionFeedback.js';
 import { RotateCcw } from 'lucide-react';
+import { TeamResultLine, TeamTag } from './Team.js';
+import type { Team } from '@quiz/shared';
 
 interface Props {
   socket: Socket;
@@ -49,6 +52,16 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
   // ★ 사람이 많으면 순위를 두 줄로 나눠 세로를 아낀다 (스크롤 없음 — R035)
   const twoCols = result.ranking.length > 5;
   // ★ 종료 사유는 "설정한 문제를 다 했다" 가 아닐 때만 진행 알림으로 남긴다 (설명은 ⓘ)
+  // ★★★ R079 — 팀전 판: 순위 위 팀 줄 · 행에 팀 태그
+  const teams = result.teams ?? null;
+  const teamOf = (id: string): Team | null => (teams ? (teams.blue.members.includes(id) ? 'blue' : teams.red.members.includes(id) ? 'red' : null) : null);
+  // ★ R079 — 내 팀이 보너스를 받았으면 포인트샵 잔액을 다시 읽게(지급은 서버가 판 끝에 쓴다 — 조금 뒤)
+  const myBonus = teams && teams.winner && teams.bonus > 0 && teamOf(myAccountId) === teams.winner;
+  useEffect(() => {
+    if (!myBonus) return undefined;
+    const t = window.setTimeout(() => window.dispatchEvent(new Event('qw:grants')), 1500);
+    return () => window.clearTimeout(t);
+  }, [myBonus, result.gameId]);
   const notice =
     result.endReason === 'completed' ? null : result.abortedNote ?? endReasonText(result.endReason);
 
@@ -73,6 +86,8 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
           </div>
         </div>
       )}
+
+      {teams && <TeamResultLine teams={teams} mine={teamOf(myAccountId)} />}
 
       {mgOnly && (
         <p className="dim mg-result-sub">
@@ -102,6 +117,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
             </span>
             <Avatar nickname={r.nickname} colorIndex={r.colorIndex} accountId={r.accountId} avatarV={players.find((p) => p.accountId === r.accountId)?.avatarV} zoom />
             <FitText text={r.nickname} className="nick" style={{ color: `var(--p${r.colorIndex})` }} minPx={11} />
+            {teams && teamOf(r.accountId) && <TeamTag team={teamOf(r.accountId)!} small />}
             {!r.connected && <span className="badge off">접속 종료</span>}
             <span className="score mono">{r.score}점</span>
           </li>

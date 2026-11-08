@@ -46,6 +46,8 @@ interface Props {
   settingsLocked: boolean;
   availableQuestionCount: number | null;
   isHost: boolean;
+  /** ★ R079 — 팀전은 2명 이상일 때만 켠다 */
+  playerCount?: number;
 }
 
 export default function GameSettings({
@@ -54,6 +56,7 @@ export default function GameSettings({
   settingsLocked,
   availableQuestionCount,
   isHost,
+  playerCount = 1,
 }: Props) {
   /**
    * ★ 입력 중인 값은 로컬 상태로 둔다 (숫자를 지우는 순간 커서가 튀지 않게).
@@ -111,6 +114,9 @@ export default function GameSettings({
   const mgOnly = shown.minigameOnly === true;
   const mgRounds = shown.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT;
   const keysOf = (s: RoomSettings) => s.minigameKeys ?? [...MINIGAME_KEYS];
+  // ★★★ R079 — 팀전 토글(방식 줄 오른쪽 · 퀴즈 · 미니게임만 어느 쪽과도) · 켜져 있으면 [자동 배정]
+  const teamOn = shown.teamMode === true;
+  const teamDisabled = !teamOn && playerCount < 2;
 
   return (
     <div className={editable ? 'settings' : 'settings readonly'}>
@@ -141,6 +147,29 @@ export default function GameSettings({
             </>
           ) : (
             <span className="chip on">{mgOnly ? '미니게임만' : '퀴즈'}</span>
+          )}
+          <span className="team-sep" aria-hidden="true" />
+          {editable ? (
+            <>
+              <button
+                type="button"
+                data-team-toggle
+                aria-pressed={teamOn}
+                disabled={teamDisabled}
+                title={teamDisabled ? '2명 이상일 때 켤 수 있어요' : teamOn ? '팀전 끄기' : '블루 · 레드 두 팀으로'}
+                className={teamOn ? 'preset active team-toggle' : 'preset team-toggle'}
+                onClick={() => push({ ...draft, teamMode: !teamOn })}
+              >
+                팀전
+              </button>
+              {teamOn && (
+                <button type="button" className="preset team-auto" data-team-auto title="입장 순서대로 블루 · 레드 번갈아" onClick={() => socket.emit('lobby.autoTeams', {})}>
+                  자동 배정
+                </button>
+              )}
+            </>
+          ) : (
+            teamOn && <span className="chip on" data-team-chip>팀전</span>
           )}
         </div>
       </div>

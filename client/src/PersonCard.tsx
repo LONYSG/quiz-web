@@ -10,7 +10,8 @@
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
-import { ACHIEVEMENTS, achievementDef } from '@quiz/shared';
+import { ACHIEVEMENTS, achievementDef, teamLabel, type Team } from '@quiz/shared';
+import { TeamTag } from './Team.js';
 import { Award, Ban, Check, Crown, UserCheck, UserMinus, UserPlus } from 'lucide-react';
 import Avatar from './Avatar.js';
 import Icon from './Icon.js';
@@ -39,13 +40,15 @@ const subscribe = (l: () => void) => {
 // ── ★★ R063 (D-262 · 찬종 #16 "프로필도 표시하면서 강퇴/차단/친구추가 같은것도 같이 … 어떻게 할까요? 같은 부자연스러운 문장 빼고. 합치자")
 //   방(Lobby)이 "이 사람에게 할 수 있는 것" 을 알려 준다 → 카드 아래 버튼 줄(문장 없이). 방 밖이면 버튼 없음.
 export interface PersonActions {
-  /** 친구 상태 — none 이면 [친구 신청] */
-  friend: 'none' | 'friend' | 'pending';
+  /** 친구 상태 — none 이면 [친구 신청] · ★ R079 'self' = 내 카드(팀 바꾸기만) */
+  friend: 'none' | 'friend' | 'pending' | 'self';
   onFriend?: () => void;
   /** 방장만 — 누르면 최종 확인(KickFlow) */
   onKick?: () => void;
   onBan?: () => void;
   onHost?: () => void;
+  /** ★★★ R079 — 팀전 로비: 지금 팀 · 반대 팀으로 옮기기(방장은 누구나 · 본인은 자기만) */
+  team?: { current: Team; onSet: (t: Team) => void };
 }
 let actionsOf: ((accountId: string) => PersonActions | null) | null = null;
 export function setPersonActions(fn: ((accountId: string) => PersonActions | null) | null): void {
@@ -121,7 +124,8 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
         <p className="pop-title" style={{ color: `var(--p${p.colorIndex})` }}>
           {p.nickname}
           {/* ★ R066 (D-292 · 찬종 #32 "친구 표시가 어정쩡 · 별도로 빼고 다른 기능들이랑 분리") — 친구 상태는 이름 옆 배지 */}
-          {acts && acts.friend !== 'none' && (
+          {acts?.team && <TeamTag team={acts.team.current} />}
+          {acts && (acts.friend === 'friend' || acts.friend === 'pending') && (
             <span className="badge person-friend" data-act="friend-state">
               <Icon icon={UserCheck} /> {acts.friend === 'friend' ? '친구' : '신청함'}
             </span>
@@ -158,8 +162,17 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
         </button>
       </section>
       {/* ★ R063 — 이 사람에게 할 수 있는 것(버튼만 · 설명 문장 없음) */}
-      {acts && ((acts.friend === 'none' && acts.onFriend) || acts.onHost || acts.onKick || acts.onBan) && (
+      {acts && ((acts.friend === 'none' && acts.onFriend) || acts.onHost || acts.onKick || acts.onBan || acts.team) && (
         <div className="person-acts" data-person-acts>
+          {acts.team &&
+            (() => {
+              const to: Team = acts.team.current === 'blue' ? 'red' : 'blue';
+              return (
+                <button type="button" className={`ghost person-act team-move team-${to}`} data-act={`team-${to}`} onClick={() => { acts.team?.onSet(to); onClose(); }}>
+                  <TeamTag team={to} small /> {teamLabel(to)}로
+                </button>
+              );
+            })()}
           {acts.friend === 'none' && acts.onFriend && (
             <button type="button" className="ghost person-act" data-act="friend" onClick={() => { acts.onFriend?.(); onClose(); }}>
               <Icon icon={UserPlus} /> 친구 신청

@@ -16,7 +16,7 @@ import { openPersonCard, setPersonActions, type PersonActions } from './PersonCa
 import { ReportButton } from './AppReport.js';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { countEmojiTokens, formatExperienceRate, INLINE_EMOJI_MAX, nicknameFits, RULES } from '@quiz/shared';
+import { countEmojiTokens, formatExperienceRate, INLINE_EMOJI_MAX, nicknameFits, RULES, type Team } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import ConfirmModal from './ConfirmModal.js';
 import KickFlow, { type KickTarget } from './KickFlow.js';
@@ -38,6 +38,7 @@ import InfoTip from './InfoTip.js';
 import Paused from './Paused.js';
 import Prefs, { setRoomOwnsKeys } from './Prefs.js';
 import Seat from './Seat.js';
+import { TeamBar, useSeatDrag } from './Team.js';
 import Emoji from './Emoji.js';
 import EmojiPicker from './EmojiPicker.js';
 import { pushRecentEmoji } from './emojiRecent.js';
@@ -711,16 +712,25 @@ export default function Lobby({
   // ★★ R043 C — 친구 신청은 누구나: 아직 친구도 아니고 신청도 없는 사람이면 "친구 신청" 이 붙는다
   const related = new Set([...social.friends, ...social.incoming, ...social.outgoing].map((f) => f.accountId));
   // ★★ R063 (D-262) — 사람을 누르면 **프로필 카드 하나**(사진 · 업적 + 친구 · 강퇴 · 차단 버튼). "어떻게 할까요?" 고르기 창은 없앴다
-  const canPick = (accountId: string) => accountId !== snapshot.me.accountId;
+  // ★★★ R079 — 팀전: 로비 · 카운트다운에서 팀을 바꿀 수 있다(방장 누구나 · 본인 자기만) → 내 칸도 눌러 사람 카드(팀 버튼)를 연다
+  const teamOn = snapshot.room.settings.teamMode === true;
+  const teamEditable = teamOn && inLobby;
+  const setTeam = (accountId: string, team: Team) => socket.emit('lobby.setTeam', { accountId, team });
+  const seatDrag = useSeatDrag(teamEditable && snapshot.me.isHost, setTeam);
+  const canPick = (accountId: string) => accountId !== snapshot.me.accountId || teamEditable;
   const pickPlayer = (p: { accountId: string; nickname: string; colorIndex: number; avatarV?: number | null; connected: boolean }) => {
     if (!canPick(p.accountId)) return;
+    if (seatDrag.suppressed()) return;
     openPersonCard({ accountId: p.accountId, nickname: p.nickname, colorIndex: p.colorIndex, avatarV: p.avatarV ?? null });
   };
   const friendIds = new Set(social.friends.map((f) => f.accountId));
   const actRef = useRef<(id: string) => PersonActions | null>(() => null);
   actRef.current = (id: string) => {
     const p = snapshot.players.find((x) => x.accountId === id);
-    if (!p || id === snapshot.me.accountId) return null;
+    if (!p) return null;
+    // ★ R079 — 팀 바꾸기(로비 · 카운트다운 · 방장은 누구나 · 본인은 자기만)
+    const team = teamEditable && p.team && (snapshot.me.isHost || id === snapshot.me.accountId) ? { current: p.team, onSet: (t: Team) => setTeam(id, t) } : undefined;
+    if (id === snapshot.me.accountId) return team ? { friend: 'self', team } : null;
     const kick = (step: KickTarget['step']) => () => {
       setKickTarget({ accountId: p.accountId, nickname: p.nickname, step, connected: p.connected });
       setKickOpen(true);
@@ -729,17 +739,23 @@ export default function Lobby({
       friend: friendIds.has(id) ? 'friend' : related.has(id) ? 'pending' : 'none',
       onFriend: () => social.request({ accountId: id }),
       ...(snapshot.me.isHost ? { onKick: kick('kick'), onBan: kick('ban'), ...(p.connected ? { onHost: kick('host') } : {}) } : {}),
+      ...(team ? { team } : {}),
     };
   };
   useEffect(() => {
     setPersonActions((id) => actRef.current(id));
     return () => setPersonActions(null);
   }, []);
-  const seatOf = (index: number) => {
-    const p = snapshot.players[index] ?? null;
+  const seatOf = (index: number) => seatFor(snapshot.players[index] ?? null, `empty-${index}`);
+  const seatFor = (p: (typeof snapshot.players)[number] | null, emptyKey: string) => {
+    const pickTeam = teamEditable && p && (snapshot.me.isHost || p.accountId === snapshot.me.accountId);
     return (
       <Seat
-        key={p ? p.accountId : `empty-${index}`}
+        key={p ? p.accountId : emptyKey}
+        team={teamOn ? (p?.team ?? null) : null}
+        onDragStart={p && p.team && teamEditable && snapshot.me.isHost ? (e) => seatDrag.start(e, { accountId: p.accountId, nickname: p.nickname, team: p.team! }) : undefined}
+        dragging={Boolean(p && seatDrag.drag?.id === p.accountId)}
+        pickTitle={p && pickTeam ? `${p.nickname} — 팀 바꾸기${snapshot.me.isHost && p.accountId !== snapshot.me.accountId ? ' · 강퇴 · 차단' : ''}` : undefined}
         player={p}
         me={p?.accountId === snapshot.me.accountId}
         experienced={p ? experiencedIds.has(p.accountId) : false}
@@ -755,6 +771,23 @@ export default function Lobby({
   };
   const slots = Array.from({ length: snapshot.room.maxPlayers }, (_, i) => i);
   const half = Math.ceil(slots.length / 2);
+  // ★★★ R079 (D-335) — 팀전: 왼쪽 = 블루 전원(이어서 빈 칸) · 오른쪽 = 레드. 칸 수 = 팀별 max(5, 인원)
+  const teamSide = (team: Team) => {
+    const members = snapshot.players.filter((p) => p.team === team);
+    const rows = Math.max(half, members.length);
+    const cells = Array.from({ length: rows }, (_, i) => seatFor(members[i] ?? null, `empty-${team}-${i}`));
+    const over = seatDrag.drag && seatDrag.drag.from !== team && seatDrag.drag.over === team;
+    return (
+      <aside
+        className={['seats', team === 'blue' ? 'seats-left' : 'seats-right', 'team-side', `team-${team}`, seatDrag.drag && seatDrag.drag.from !== team ? 'drop-ok' : '', over ? 'drop-hover' : ''].filter(Boolean).join(' ')}
+        aria-label={team === 'blue' ? '블루 팀' : '레드 팀'}
+        data-team-side={team}
+        style={rows > half ? { gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))` } : undefined}
+      >
+        {cells}
+      </aside>
+    );
+  };
 
   // ★ R039 — 입력칸 자리표시(placeholder)를 지웠다 (건우). 지금 판정되는지는 입력칸 테두리 색(judging)으로 보인다
 
@@ -917,12 +950,18 @@ export default function Lobby({
       {/* ★ R041 — 옛 모바일 "내보내기" 줄(R038)은 👥 참여자 창의 강퇴로 합쳤다 */}
 
       <div className="stage">
-        <aside className="seats seats-left" aria-label="참여자">
-          {slots.slice(0, half).map(seatOf)}
-        </aside>
+        {teamOn ? (
+          teamSide('blue')
+        ) : (
+          <aside className="seats seats-left" aria-label="참여자">
+            {slots.slice(0, half).map(seatOf)}
+          </aside>
+        )}
 
         <div className="center">
           <div className="center-main">
+            {/* ── ★★★ R079 — 팀전 판 중 맨 위 한 줄 막대 (퀴즈 · 미니게임 · 일시정지 — 결과는 결과 카드가 말한다) */}
+            {teamOn && snapshot.game && !inLobby && !isResult && <TeamBar players={snapshot.players} />}
             {/* ── 로비 (LOBBY / COUNTDOWN) — 카드 하나: 설정 + 게임 시작 */}
             {inLobby && (
               <section className="card lobby-card">
@@ -932,6 +971,7 @@ export default function Lobby({
                   settingsLocked={snapshot.room.settingsLocked}
                   availableQuestionCount={snapshot.room.availableQuestionCount}
                   isHost={snapshot.me.isHost}
+                  playerCount={snapshot.players.length}
                 />
                 {/* ★ R066 (D-274 · 찬종 #38) — 손님은 안내 한 줄만 · 카드 오른쪽 아래(버튼 줄 자리)로 */}
                 <div className={snapshot.me.isHost || snapshot.countdown ? 'start-area' : 'start-area guest'}>
@@ -1151,10 +1191,20 @@ export default function Lobby({
           </section>
         </div>
 
-        <aside className="seats seats-right" aria-label="참여자">
-          {slots.slice(half).map(seatOf)}
-        </aside>
+        {teamOn ? (
+          teamSide('red')
+        ) : (
+          <aside className="seats seats-right" aria-label="참여자">
+            {slots.slice(half).map(seatOf)}
+          </aside>
+        )}
       </div>
+      {/* ★ R079 — 끄는 중 따라다니는 이름표 */}
+      {seatDrag.drag && (
+        <div className={`seat-ghost team-${seatDrag.drag.over && seatDrag.drag.over !== seatDrag.drag.from ? seatDrag.drag.over : seatDrag.drag.from}`} style={{ left: seatDrag.drag.x + 10, top: seatDrag.drag.y + 10 }} aria-hidden="true" data-seat-ghost>
+          {seatDrag.drag.nick}
+        </div>
+      )}
     </div>
   );
 }

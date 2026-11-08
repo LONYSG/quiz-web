@@ -9273,3 +9273,223 @@ button.preset.shake {
 :where(.ui-mobile) .room .q-hints .q-hint:not(:first-child) {
   min-height: 1.95rem;
 }
+
+/* =============================================================================
+   ★★★ R079 — 팀전 1차 (D-329 · D-335): 칸 팀 색 · B/R 태그 · 판 중 막대 · 결과 줄 · 끌기
+   팀 색은 이름 색(--p0~9)과 따로 — 칸 테두리 · 태그 · 막대 · 결과에만. 사무실 테마는 흑백 + 글자 B/R(D-324)
+   ============================================================================= */
+:root {
+  --team-blue: #3b82f6;
+  --team-red: #ef4444;
+  --team-blue-soft: color-mix(in srgb, #3b82f6 14%, transparent);
+  --team-red-soft: color-mix(in srgb, #ef4444 14%, transparent);
+  --team-ink: #ffffff;
+}
+[data-theme='night'] {
+  --team-blue: #60a5fa;
+  --team-red: #f87171;
+  --team-blue-soft: color-mix(in srgb, #60a5fa 18%, transparent);
+  --team-red-soft: color-mix(in srgb, #f87171 18%, transparent);
+  --team-ink: #0b1020;
+}
+[data-theme='office'] {
+  --team-blue: #cccccc;
+  --team-red: #cccccc;
+  --team-blue-soft: #151515;
+  --team-red-soft: #151515;
+  --team-ink: #0c0c0c;
+}
+.team-tag {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  min-width: 1.35em;
+  height: 1.35em;
+  padding: 0 0.25em;
+  border-radius: 6px;
+  font: 900 0.78rem/1 var(--font-mono);
+  color: var(--team-ink);
+  background: var(--team-blue);
+  vertical-align: middle;
+}
+.team-tag.team-red {
+  background: var(--team-red);
+}
+.team-tag.small {
+  font-size: 0.68rem;
+}
+/* 사무실 — 색 대신 글자: 블루 = 채운 칸 · 레드 = 테두리만 */
+[data-theme='office'] .team-tag.team-red {
+  background: transparent;
+  color: var(--text);
+  outline: 1px solid var(--text);
+  outline-offset: -1px;
+}
+/* 칸 — 왼쪽 띠 */
+.seat-card.team-blue {
+  border-left: 4px solid var(--team-blue);
+}
+.seat-card.team-red {
+  border-right: 4px solid var(--team-red);
+}
+.seats.team-side {
+  position: relative;
+  padding: 2px;
+  border-radius: var(--radius-sm);
+}
+.seats.team-blue {
+  background: var(--team-blue-soft);
+}
+.seats.team-red {
+  background: var(--team-red-soft);
+}
+.seats.team-side .seat-card.empty {
+  border-color: var(--border);
+}
+.seats.team-side.drop-ok {
+  outline: 2px dashed var(--text-dim);
+  outline-offset: -2px;
+}
+.seats.team-blue.drop-hover {
+  outline: 3px solid var(--team-blue);
+}
+.seats.team-red.drop-hover {
+  outline: 3px solid var(--team-red);
+}
+.seat-card.team-draggable {
+  cursor: grab;
+  touch-action: none;
+}
+.seat-card.drag-from {
+  opacity: 0.45;
+}
+.seat-ghost {
+  position: fixed;
+  z-index: 80;
+  pointer-events: none;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  color: var(--team-ink);
+  background: var(--team-blue);
+  box-shadow: var(--shadow-pop);
+  white-space: nowrap;
+}
+.seat-ghost.team-red {
+  background: var(--team-red);
+}
+[data-theme='office'] .seat-ghost {
+  color: var(--text);
+  background: var(--surface-2);
+  outline: 1px solid var(--text);
+}
+/* 설정 — 방식 줄 오른쪽 팀전 토글 */
+.team-sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 2px 2px;
+  background: var(--border);
+}
+.preset.team-toggle.active {
+  background: linear-gradient(90deg, var(--team-blue) 0 50%, var(--team-red) 50% 100%);
+  color: var(--team-ink);
+  border-color: transparent;
+}
+[data-theme='office'] .preset.team-toggle.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+/* 판 중 막대 — 한 줄 */
+.team-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+.team-bar-side {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+.team-bar-side strong {
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+.team-bar-side.blue.lead strong {
+  color: var(--team-blue);
+}
+.team-bar-side.red.lead strong {
+  color: var(--team-red);
+}
+[data-theme='office'] .team-bar-side.lead strong {
+  color: var(--accent-2);
+  text-decoration: underline;
+}
+.team-bar-track {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 40px;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--team-red);
+}
+.team-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--team-blue);
+  transition: width 300ms ease;
+}
+[data-theme='office'] .team-bar-track {
+  background: var(--surface-2);
+  outline: 1px solid var(--border);
+}
+/* 결과 줄 */
+.team-result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 6px;
+  margin: 2px 0 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 1.05rem;
+}
+.team-result.win-blue {
+  background: var(--team-blue-soft);
+}
+.team-result.win-red {
+  background: var(--team-red-soft);
+}
+.team-result-score .tr-blue {
+  color: var(--team-blue);
+  font-weight: 900;
+}
+.team-result-score .tr-red {
+  color: var(--team-red);
+  font-weight: 900;
+}
+[data-theme='office'] .team-result-score .tr-blue,
+[data-theme='office'] .team-result-score .tr-red {
+  color: var(--text);
+}
+.team-result-bonus.mine {
+  font-weight: 900;
+}
+.person-act.team-move {
+  font-weight: 800;
+}
+:where(.ui-mobile) .team-bar {
+  font-size: 0.85rem;
+  gap: 6px;
+  padding: 3px 8px;
+}

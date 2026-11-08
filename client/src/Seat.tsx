@@ -21,6 +21,8 @@ import type { PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
 import { Crown } from 'lucide-react';
 import DeviceIcon from './DeviceIcon.js';
+import { TeamTag } from './Team.js';
+import type { Team } from '@quiz/shared';
 
 interface Props {
   player: PlayerView | null;
@@ -41,6 +43,12 @@ interface Props {
   winnerKey: number | null;
   /** ★ R041 — 방장이 이 칸을 누르면 강퇴/차단 팝업 (없으면 누를 수 없는 칸) */
   onPick?: () => void;
+  /** ★★★ R079 — 팀전 팀(태그) · 방장 PC 끌기 시작 · 끄는 중인 칸 */
+  team?: Team | null;
+  onDragStart?: (e: React.PointerEvent) => void;
+  dragging?: boolean;
+  /** 칸을 눌렀을 때 뜻(title) — 기본 "강퇴 · 차단" */
+  pickTitle?: string;
 }
 
 export default function Seat({
@@ -54,6 +62,10 @@ export default function Seat({
   rank,
   winnerKey,
   onPick,
+  team = null,
+  onDragStart,
+  dragging = false,
+  pickTitle,
 }: Props) {
   if (!player) return <div className="seat-card empty" aria-hidden="true" />;
 
@@ -64,6 +76,9 @@ export default function Seat({
     me ? 'mine' : '',
     winnerKey !== null ? 'winner' : '',
     onPick ? 'pickable' : '',
+    team ? `team-${team}` : '',
+    onDragStart ? 'team-draggable' : '',
+    dragging ? 'drag-from' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -75,11 +90,13 @@ export default function Seat({
       key={winnerKey ?? 'seat'}
       className={cls}
       data-account={player.accountId}
+      data-team={team ?? undefined}
+      onPointerDown={onDragStart}
       {...(onPick
         ? {
             role: 'button',
             tabIndex: 0,
-            title: `${player.nickname} — 강퇴 · 차단`,
+            title: pickTitle ?? `${player.nickname} — 강퇴 · 차단`,
             onClick: onPick,
             onKeyDown: (e: React.KeyboardEvent) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -106,6 +123,7 @@ export default function Seat({
         {/* ★★ R040 — "…" 없이: 자리보다 길면 글자를 줄인다 (R041 한도 10칸 — 1536×864 에서 한글 10자 실측) */}
         <FitText text={player.nickname} className="nick seat-nick" style={{ color: `var(--p${player.colorIndex})` }} minPx={14} />
         <DeviceIcon device={player.device} />
+        {team && <TeamTag team={team} />}
       </div>
       {hasBadges && (
         <div className="seat-badges">

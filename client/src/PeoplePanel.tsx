@@ -20,6 +20,7 @@ import Icon from './Icon.js';
 import { Crown } from 'lucide-react';
 import PopupClose from './PopupClose.js';
 import DeviceIcon from './DeviceIcon.js';
+import { TeamTag } from './Team.js';
 
 interface Props {
   players: PlayerView[];
@@ -48,7 +49,10 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
     return () => window.removeEventListener('keydown', onKey, true);
   }, [onClose]);
 
-  const list = showScore ? [...players].sort((a, b) => b.score - a.score) : players;
+  const byScore = showScore ? [...players].sort((a, b) => b.score - a.score) : players;
+  // ★ R079 — 팀전이면 블루 먼저 · 레드 다음(안에서는 위 순서 그대로)
+  const teamRank = (p: PlayerView) => (p.team === 'blue' ? 0 : p.team === 'red' ? 1 : 2);
+  const list = players.some((p) => p.team) ? [...byScore].sort((a, b) => teamRank(a) - teamRank(b)) : byScore;
   return createPortal(
     <div
       className="modal-back popup-back clear"
@@ -64,7 +68,8 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
         <ul className="people-list">
           {list.map((p) => {
             const me = p.accountId === myAccountId;
-            const pickable = !me && canPick(p.accountId);
+            // ★ R079 — 팀전 로비에선 내 줄도 눌러 팀을 바꾼다(canPick 이 정한다)
+            const pickable = canPick(p.accountId);
             const body = (
               <>
                 <Avatar nickname={p.nickname} colorIndex={p.colorIndex} accountId={p.accountId} avatarV={p.avatarV} zoom />
@@ -77,6 +82,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
                         <Icon icon={Crown} fill="currentColor" />
                       </span>
                     )}
+                    {p.team && <TeamTag team={p.team} small />}
                     {me && <span className="badge me">나</span>}
                     {experiencedIds.has(p.accountId) && <span className="badge exp">경험</span>}
                     {!p.connected && <span className="badge off">접속 종료</span>}
