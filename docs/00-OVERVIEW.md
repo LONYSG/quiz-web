@@ -110,5 +110,5 @@ MVP에서 만들지 않지만 구조를 막지 않는 것들. 상세는 [09-BACK
 7. ★★ [13-PENDING-CHECKS.md](13-PENDING-CHECKS.md) — **사람이 브라우저에서 직접 봐야 할 것**
    (자동 검사가 할 수 없는 것만 모았다. 라운드마다 누적한다)
 8. 필요할 때: [03-DATA-MODEL.md](03-DATA-MODEL.md) [04-PROTOCOL.md](04-PROTOCOL.md)
-   [07-DECISIONS.md](07-DECISIONS.md) [09-BACKLOG.md](09-BACKLOG.md)
+   [07-DECISIONS.md](07-DECISIONS.md) [20-HISTORY.md](20-HISTORY.md) [09-BACKLOG.md](09-BACKLOG.md)
    [10-TESTING.md](10-TESTING.md) [11-DEPLOY.md](11-DEPLOY.md)
