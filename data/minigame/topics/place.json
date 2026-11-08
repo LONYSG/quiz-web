@@ -5,7 +5,7 @@
  "version": 1,
  "asOf": "2026-11-08",
  "createdRound": "G036",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://ko.wikipedia.org/wiki/건축물",
@@ -698,5 +698,35 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V039",
+  "checkedAt": "2026-11-08T08:15:13.933Z",
+  "sources": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/건축물",
+    "read": false,
+    "count": 72
+   }
+  ],
+  "missing": [],
+  "extra": [],
+  "rename": [],
+  "variantNotes": [
+   "open 세트는 공식 목록이 없어 출처 대조 대신 항목 전수 검토(가 구체 명사 · 나 겹침·상하위 · 다 태그 표본). 라이어·캐치마인드 전용이라 많이 말하기에는 쓰지 않음",
+   "(가) \"성\" · \"절\" 은 1글자 동음이의(성별 · 인사말) — 성 제거 · 절 유지 권고(절[사찰] 변형 있음)",
+   "(나) 학교 ⊃ 대학교 · 유치원 · 학원 (별개 장소로 통용), 카페 ⊃ 키즈 카페 (유지)"
+  ],
+  "tagNotes": [
+   "liar 72 전부 true — 변별력 없음 / draw 69: 시청 · 학원 · 장례식장 draw 제외 적정"
+  ],
+  "fixes": [
+   {
+    "op": "remove",
+    "id": "place-047",
+    "why": "1글자 동음이의(성/절 처럼 장소 아닌 뜻이 우세)"
+   }
+  ],
+  "verdict": "verified",
+  "why": "fixes 1건 · 일상 장소 기준 통과"
+ }
 }

@@ -5,7 +5,7 @@
  "version": 1,
  "asOf": "2026-11-08",
  "createdRound": "G036",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://ko.wikipedia.org/wiki/동물",
@@ -783,5 +783,48 @@
    "qid": 6169
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V039",
+  "checkedAt": "2026-11-08T08:15:13.931Z",
+  "sources": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/동물",
+    "read": false,
+    "count": 83
+   }
+  ],
+  "missing": [],
+  "extra": [],
+  "rename": [],
+  "variantNotes": [
+   "open 세트는 공식 목록이 없어 출처 대조 대신 항목 전수 검토(가 구체 명사 · 나 겹침·상하위 · 다 태그 표본). 라이어·캐치마인드 전용이라 많이 말하기에는 쓰지 않음",
+   "(가) 공룡은 현생 동물이 아님(분류명) — 제거 권고",
+   "(나) 곰 ⊃ 북극곰 · 판다 (판다 변형 \"판다곰\" 이 곰과 겹침) — 북극곰 제거 + 판다곰 변형 제거 권고"
+  ],
+  "tagNotes": [
+   "liar 83 · draw 83 전부 true — 변별력 없음"
+  ],
+  "fixes": [
+   {
+    "op": "remove",
+    "id": "animal-083",
+    "why": "현생 동물 아님"
+   },
+   {
+    "op": "remove",
+    "id": "animal-062",
+    "why": "곰의 하위"
+   },
+   {
+    "op": "variant-remove",
+    "id": "animal-010",
+    "variants": [
+     "판다곰"
+    ],
+    "why": "곰과 변형 충돌"
+   }
+  ],
+  "verdict": "verified",
+  "why": "fixes 3건(≤3) → verified + fixes 적음"
+ }
 }

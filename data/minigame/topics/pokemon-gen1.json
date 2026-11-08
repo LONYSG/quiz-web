@@ -5,7 +5,7 @@
  "version": 1,
  "asOf": "2026-11-08",
  "createdRound": "G036",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://pokeapi.co/api/v2/pokemon-species/{1..151}",
@@ -1988,5 +1988,28 @@
    "qid": 4393
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V039",
+  "checkedAt": "2026-11-08T08:09:07.414Z",
+  "sources": [
+   {
+    "url": "https://pokeapi.co/api/v2/pokemon-species/{1..151}",
+    "read": true,
+    "count": 151
+   }
+  ],
+  "missing": [],
+  "extra": [],
+  "rename": [],
+  "variantNotes": [
+   "영문 변형 = 포켓몬 이름(작품 캐릭터) — §9 예외 안"
+  ],
+  "tagNotes": [
+   "draw 148/151 — 너무 넓음(그림 불가 후보: 가이스·라프라스 등은 그릴 수 있음, 대체로 무난)",
+   "liar 29 적정"
+  ],
+  "fixes": [],
+  "verdict": "verified",
+  "why": "PokeAPI species 1~151 ko 이름 = 파일 151, 전부 일치"
+ }
 }

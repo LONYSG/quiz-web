@@ -5,7 +5,7 @@
  "version": 1,
  "asOf": "2026-11-08",
  "createdRound": "G036",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://ko.wikipedia.org/wiki/직업",
@@ -704,5 +704,38 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V039",
+  "checkedAt": "2026-11-08T08:15:13.932Z",
+  "sources": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/직업",
+    "read": false,
+    "count": 72
+   }
+  ],
+  "missing": [],
+  "extra": [],
+  "rename": [],
+  "variantNotes": [
+   "open 세트는 공식 목록이 없어 출처 대조 대신 항목 전수 검토(가 구체 명사 · 나 겹침·상하위 · 다 태그 표본). 라이어·캐치마인드 전용이라 많이 말하기에는 쓰지 않음",
+   "(나) 소설가 변형 \"작가\" 가 사진작가 · 웹툰 작가와 겹침 — 변형 제거 권고",
+   "(나) 의사 ⊃ 치과의사 · 수의사 (별개 직업으로 통용 — 유지), 축구 선수/야구 선수 유지"
+  ],
+  "tagNotes": [
+   "liar 72 전부 true — 변별력 없음 / draw 50: 22 항목 draw 제외 적정(교수 · 변호사 …)"
+  ],
+  "fixes": [
+   {
+    "op": "variant-remove",
+    "id": "job-019",
+    "variants": [
+     "작가"
+    ],
+    "why": "사진작가 · 웹툰 작가와 겹침"
+   }
+  ],
+  "verdict": "verified",
+  "why": "fixes 1건 · 구체 직업 기준 통과"
+ }
 }

@@ -377,5 +377,68 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V039",
+  "checkedAt": "2026-11-08T08:14:51.334Z",
+  "sources": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/태양계",
+    "read": true,
+    "count": null
+   },
+   {
+    "url": "https://ko.wikipedia.org/wiki/중력적으로_둥근_태양계_천체_목록",
+    "read": true,
+    "count": null
+   }
+  ],
+  "missing": [],
+  "extra": [],
+  "rename": [],
+  "variantNotes": [
+   "태양계 페이지는 위성 일부만 언급 → 21 위성 전부는 \"중력적으로 둥근 천체 목록\"(행성 8 + 둥근 위성 19)으로 확인: 파일 29 중 27 일치, 포보스·데이모스(화성 위성, 비둥근)는 이 목록에 없음",
+   "범위가 \"행성+둥근 위성+화성 위성 2\" 로 임의 → 왜소행성(명왕성 · 세레스 · 에리스 …) 빠짐"
+  ],
+  "tagNotes": [
+   "draw 10·liar 9 적정"
+  ],
+  "fixes": [
+   {
+    "op": "add",
+    "name": "명왕성",
+    "variants": [
+     "플루토"
+    ],
+    "why": "왜행성이나 모두가 \"행성\" 으로 답함 — 빠지면 오답 시비"
+   },
+   {
+    "op": "add",
+    "name": "세레스",
+    "variants": [
+     "케레스"
+    ],
+    "why": "동일 목록의 왜행성"
+   },
+   {
+    "op": "add",
+    "name": "에리스",
+    "variants": [],
+    "why": "동일"
+   },
+   {
+    "op": "add",
+    "name": "하우메아",
+    "variants": [],
+    "why": "동일"
+   },
+   {
+    "op": "add",
+    "name": "마케마케",
+    "variants": [],
+    "why": "동일"
+   }
+  ],
+  "verdict": "candidate",
+  "why": "주제 정의(\"주요 위성\")가 임의라 closed 경계가 흐림. 중력적으로 둥근 천체 목록과 대조해 왜행성 5 추가 권고(>3) — 또는 주제를 \"태양계 행성과 둥근 위성\"으로 이름 바꿈(CV-165)"
+ }
 }

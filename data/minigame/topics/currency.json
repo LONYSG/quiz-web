@@ -1155,5 +1155,152 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V039",
+  "checkedAt": "2026-11-08T08:14:51.335Z",
+  "sources": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/ISO_4217",
+    "read": true,
+    "count": 304
+   }
+  ],
+  "missing": [
+   {
+    "name": "레크",
+    "variants": [
+     "알바니아 레크"
+    ],
+    "note": "ALL"
+   },
+   {
+    "name": "태환 마르카",
+    "variants": [
+     "보스니아 마르카",
+     "마르카"
+    ],
+    "note": "BAM"
+   },
+   {
+    "name": "팡가",
+    "variants": [
+     "통가 팡가"
+    ],
+    "note": "TOP"
+   }
+  ],
+  "extra": [],
+  "rename": [
+   {
+    "unit": "헤알",
+    "file": "레알",
+    "note": "BRL 페이지 표기 헤알"
+   },
+   {
+    "unit": "뉘땀",
+    "file": "눌트럼"
+   },
+   {
+    "unit": "이스쿠두",
+    "file": "에스쿠도"
+   },
+   {
+    "unit": "과라니",
+    "file": "구아라니"
+   },
+   {
+    "unit": "밧",
+    "file": "바트"
+   },
+   {
+    "unit": "흐리우냐",
+    "file": "그리브나"
+   }
+  ],
+  "variantNotes": [
+   "\"달러(미국 · 캐나다 · …)\" 꼴 name 이 길다 — label 칸 확인 필요(CV-165)",
+   "현행 ISO 코드 약 155 → 단위 이름 79 로 묶음은 일관"
+  ],
+  "tagNotes": [
+   "liar/draw 해당 적정(달러·유로·엔·위안)"
+  ],
+  "fixes": [
+   {
+    "op": "add",
+    "name": "레크",
+    "variants": [
+     "알바니아 레크"
+    ],
+    "why": "ALL 누락"
+   },
+   {
+    "op": "add",
+    "name": "마르카",
+    "variants": [
+     "태환 마르카",
+     "보스니아 마르카"
+    ],
+    "why": "BAM 누락"
+   },
+   {
+    "op": "add",
+    "name": "팡가",
+    "variants": [
+     "통가 팡가"
+    ],
+    "why": "TOP 누락"
+   },
+   {
+    "op": "variant",
+    "name": "레알",
+    "variants": [
+     "헤알",
+     "브라질 헤알"
+    ],
+    "why": "BRL 페이지 표기"
+   },
+   {
+    "op": "variant",
+    "name": "눌트럼",
+    "variants": [
+     "뉘땀"
+    ],
+    "why": "BTN 표기"
+   },
+   {
+    "op": "variant",
+    "name": "에스쿠도",
+    "variants": [
+     "이스쿠두"
+    ],
+    "why": "CVE 표기"
+   },
+   {
+    "op": "variant",
+    "name": "구아라니",
+    "variants": [
+     "과라니"
+    ],
+    "why": "PYG 표기"
+   },
+   {
+    "op": "variant",
+    "name": "바트",
+    "variants": [
+     "밧"
+    ],
+    "why": "THB 표기"
+   },
+   {
+    "op": "variant",
+    "name": "그리브나",
+    "variants": [
+     "흐리우냐"
+    ],
+    "why": "UAH 표기"
+   }
+  ],
+  "verdict": "candidate",
+  "why": "ISO 4217 304 코드 중 현행 통화 3 단위 누락(레크 · 마르카 · 팡가) + 표기 변형 6 → fixes 9. 역사 코드(BGN · HRK · EEK …)는 의도적 제외"
+ }
 }
