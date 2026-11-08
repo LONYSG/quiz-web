@@ -4604,6 +4604,198 @@ async function r068GamePlay(browser, prep) {
 }
 
 // =============================================================================
+// ★★★ R082 — 라이어 게임 화면 (D-339) (UICHECK_R082=1 · 묶음 r082 · docs/design/r082)
+//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 2(4명) · 2라운드
+//   설정 방식 세 버튼 · 주제/키워드 카드 · 라이어 카드 · 설명 차례(차례 아닌 채팅 알림) · 투표 카드 · 집계 · 항변 · 찬반 · 공개 · 결과 · 세 테마 · m360
+// =============================================================================
+async function r082Flow(browser) {
+  const H = await newPage(browser, 'R082-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'lyh', '라이어방장');
+  const roomId = await createRoom(H, 'R082 라이어');
+  const G = await newPage(browser, 'R082-g', true);
+  await signUp(G, 'lyg', '라이어손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const socks = await socketGuests(roomId, 2, 'lys');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r082] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const over = (P) => P.evaluate('document.documentElement.scrollWidth - innerWidth');
+  const sv = new Map();
+  const sockIds = await withPg(async (c) => (await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [[0, 1].map((i) => `${ACCOUNT_PREFIX}_lys${i}`.toLowerCase())])).rows);
+  socks.forEach((s, i) => (s.__id = sockIds.find((r) => r.login_id === `${ACCOUNT_PREFIX}_lys${i}`.toLowerCase())?.id ?? null));
+  // ★ 소켓 손님은 스스로 — 자기 차례 한마디 · 항변 · 투표(첫 후보) · 찬성 · 라이어면 아무 답
+  for (const s of socks) {
+    const did = new Set();
+    s.on('liar.state', (p) => {
+      const v = p.liar;
+      sv.set(s, v);
+      if (!v) return;
+      const k = `${v.round}:${v.phase}:${v.turn}:${v.accusedTried.length}:${(v.candidates ?? []).join()}`;
+      if (did.has(k)) return;
+      did.add(k);
+      setTimeout(() => {
+        if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === s.__id) s.emit('chat.send', { text: v.phase === 'defense' ? '아니라니까요' : '음 그거요', epoch: null });
+        else if (v.phase === 'vote' || v.phase === 'revote') {
+          const pool = (v.phase === 'revote' && v.candidates ? v.candidates : v.participants.filter((a) => !v.accusedTried.includes(a))).filter((a) => a !== s.__id);
+          if (pool.length) s.emit('liar.vote', { target: pool[0] });
+        } else if (v.phase === 'final' && v.accused !== s.__id) s.emit('liar.final', { yes: true });
+        else if (v.phase === 'guess' && v.amLiar) s.emit('liar.guess', { text: '모르겠다' });
+      }, 600);
+    });
+  }
+  const say = (P, text) => P.setInput('.chat-card input', text).then(() => P.click('전송'));
+
+  // ── 설정 — 방식 라이어
+  await realClick(H, 'button[data-mode="liar"]');
+  await H.waitFor("document.querySelector('[data-liar-note]') !== null", 4000).catch(() => false);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(400);
+  const setting = JSON.parse(await H.evaluate("JSON.stringify({ modes: [...document.querySelectorAll('[data-mode]')].map((b) => b.dataset.mode + (b.getAttribute('aria-pressed') === 'true' ? '*' : '')).join(','), note: !!document.querySelector('[data-liar-note]'), quizRows: !!document.querySelector('.settings .count-input:not(.mg-rounds-input)'), team: document.querySelector('[data-team-toggle]')?.disabled ?? null, rounds: document.querySelector('.mg-rounds-input')?.value })"));
+  await snap(H, 'settings-liar-pc');
+  await G.waitFor("[...document.querySelectorAll('.settings .chip')].some((c) => c.innerText.trim() === '라이어')", 4000).catch(() => false);
+  await snap(G, 'settings-liar-m360');
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const done = new Set();
+  const res = { assign: null, notice: null, vote: null, tally: null, final: null, reveal: [], guess: null };
+  const t0 = Date.now();
+  while (Date.now() - t0 < 240000) {
+    const st = await H.evaluate("(() => { const c = document.querySelector('[data-liar-phase]'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; return `${c.dataset.liarPhase}:${document.querySelector('.liar-round')?.innerText ?? ''}:${document.querySelector('[data-liar-turn=\"1\"] .liar-nick')?.innerText ?? ''}:${document.querySelectorAll('.liar-order .defense').length}`; })()");
+    if (st === 'result') break;
+    if (!st || done.has(st)) {
+      await sleep(150);
+      continue;
+    }
+    done.add(st);
+    const [phase, roundTxt] = st.split(':');
+    const round = Number((roundTxt ?? '').split('/')[0]);
+    if (phase === 'assign' && round === 1) {
+      await sleep(300);
+      res.assign = JSON.parse(await H.evaluate("JSON.stringify({ topic: document.querySelector('[data-liar-topic]')?.innerText ?? '', me: document.querySelector('[data-liar-me]')?.dataset.liarMe ?? '', kw: document.querySelector('[data-liar-keyword]')?.innerText ?? null })"));
+      res.assignG = JSON.parse(await G.evaluate("JSON.stringify({ me: document.querySelector('[data-liar-me]')?.dataset.liarMe ?? '', over: document.documentElement.scrollWidth - innerWidth })"));
+      await snap(H, 'assign-pc');
+      await snap(G, 'assign-m360');
+    }
+    if (phase === 'describe') {
+      const hTurn = await H.evaluate("!!document.querySelector('.liar-order li.me.turn')");
+      const gTurn = await G.evaluate("!!document.querySelector('.liar-order li.me.turn')");
+      if (round === 1 && !res.notice && !gTurn) {
+        await say(G, '내가 먼저');
+        await sleep(400);
+        res.notice = await G.evaluate("document.querySelector('[data-liar-notice]')?.innerText ?? ''");
+        await snap(G, 'describe-notice-m360');
+      }
+      if (hTurn) {
+        if (round === 1) await snap(H, 'describe-myturn-pc');
+        await say(H, '자주 먹어요');
+      } else if (gTurn) await say(G, '좋아해요');
+    }
+    if (phase === 'vote' || phase === 'revote') {
+      await sleep(300);
+      const ids = JSON.parse(await H.evaluate("JSON.stringify([...document.querySelectorAll('[data-liar-target]')].map((b) => b.dataset.liarTarget))"));
+      if (round === 1) {
+        res.vote = { n: ids.length, gN: await G.evaluate("document.querySelectorAll('[data-liar-target]').length"), gOver: await over(G) };
+        await snap(H, 'vote-pc');
+        await snap(G, 'vote-m360');
+      }
+      const target = ids[0];
+      await realClick(H, `[data-liar-target="${target}"]`).catch(() => {});
+      if (round === 1) {
+        await sleep(250);
+        res.picked = await H.evaluate("document.querySelector('.liar-person.picked')?.dataset.liarTarget ?? ''");
+        await snap(H, 'vote-picked-pc');
+      }
+      const gIds = JSON.parse(await G.evaluate("JSON.stringify([...document.querySelectorAll('[data-liar-target]')].map((b) => b.dataset.liarTarget))"));
+      await tapOn(G, `[data-liar-target="${gIds.includes(target) ? target : gIds[0]}"]`).catch(() => {});
+    }
+    if (phase === 'tally' && !res.tally) {
+      await sleep(200);
+      res.tally = await H.evaluate("document.querySelectorAll('[data-liar-tally] li').length");
+      await snap(H, 'tally-pc');
+    }
+    if (phase === 'defense') {
+      if (!res.defenseShot) {
+        res.defenseShot = true;
+        await snap(H, 'defense-pc');
+      }
+      const hTurn = await H.evaluate("!!document.querySelector('.liar-order li.me.turn')");
+      const gTurn = await G.evaluate("!!document.querySelector('.liar-order li.me.turn')");
+      if (hTurn) await say(H, '저 아니에요');
+      else if (gTurn) await say(G, '억울해요');
+    }
+    if (phase === 'final') {
+      await sleep(200);
+      if (!res.final) {
+        res.final = { btns: await H.evaluate("document.querySelectorAll('[data-liar-final] button').length"), gBtns: await G.evaluate("document.querySelectorAll('[data-liar-final] button').length") };
+        await snap(H, 'final-pc');
+        await snap(G, 'final-m360');
+      }
+      await realClick(H, '[data-liar-yes]').catch(() => {});
+      await tapOn(G, '[data-liar-yes]').catch(() => {});
+    }
+    if (phase === 'guess') {
+      await sleep(200);
+      if (!res.guess) {
+        res.guess = true;
+        await snap(H, 'guess-pc');
+      }
+      if (await H.evaluate("!!document.querySelector('[data-liar-guess-input]')")) {
+        await H.setInput('[data-liar-guess-input]', '모르겠다');
+        await H.evaluate("document.querySelector('[data-liar-guess] form')?.requestSubmit()");
+      }
+      if (await G.evaluate("!!document.querySelector('[data-liar-guess-input]')")) {
+        await G.setInput('[data-liar-guess-input]', '모르겠다');
+        await G.evaluate("document.querySelector('[data-liar-guess] form')?.requestSubmit()");
+      }
+    }
+    if (phase === 'reveal') {
+      await sleep(300);
+      res.reveal.push(JSON.parse(await H.evaluate("JSON.stringify({ outcome: document.querySelector('[data-liar-reveal]')?.dataset.liarReveal ?? '', text: document.querySelector('.liar-reveal-main')?.innerText ?? '' })")));
+      if (res.reveal.length === 1) {
+        await snap(H, 'reveal-pc');
+        await snap(G, 'reveal-m360');
+        await theme(H, 'office');
+        await sleep(200);
+        await snap(H, 'reveal-office-pc');
+        await theme(H, 'night');
+        await sleep(200);
+        await snap(H, 'reveal-night-pc');
+        await theme(H, 'pastel');
+        await theme(G, 'office');
+        await sleep(200);
+        await snap(G, 'reveal-office-m360');
+        await theme(G, 'pastel');
+      }
+    }
+    await sleep(100);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 20000).catch(() => false);
+  await sleep(500);
+  const result = JSON.parse(await H.evaluate("JSON.stringify({ rows: document.querySelectorAll('.ranking li').length })"));
+  await snap(H, 'result-pc');
+  await snap(G, 'result-m360');
+  note('설정', setting);
+  note('진행', res);
+  note('결과', result);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082', 'r082.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R082 설정 — 방식 세 버튼(라이어 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김 · 라운드 2', setting.modes === 'quiz,minigame,liar*' && setting.note && !setting.quizRows && setting.team === true && setting.rounds === '2', JSON.stringify(setting));
+  record('★★★ R082 배정 — 주제 · 내 카드(시민 = 키워드 / 라이어 = 카드) · m360 넘침 0', res.assign && res.assign.topic && (res.assign.me === 'liar' ? res.assign.kw === null : !!res.assign.kw) && res.assignG?.me && res.assignG.over <= 1, JSON.stringify({ a: res.assign, g: res.assignG }));
+  record('★★ R082 설명 — 차례 아닌 채팅은 알림 "○○ 님 차례예요"', /차례예요/.test(res.notice ?? ''), res.notice ?? '');
+  record('★★★ R082 투표 — 사람 카드 3(나 빼고) · m360 3 · 고른 카드 표시', res.vote?.n === 3 && res.vote.gN === 3 && res.vote.gOver <= 1 && !!res.picked, JSON.stringify({ v: res.vote, p: res.picked }));
+  record('★★ R082 집계 · 찬반 버튼(지목된 사람 아니면 둘)', (res.tally ?? 0) >= 3 && res.final !== null, JSON.stringify({ t: res.tally, f: res.final }));
+  record('★★★ R082 공개 2라운드 — 라이어 · 키워드 · 결과 · 결과 화면', res.reveal.length === 2 && res.reveal.every((x) => x.outcome && /라이어는/.test(x.text)) && result.rows === 4, JSON.stringify({ r: res.reveal, result }));
+  for (const s of socks) s.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R081 — 순서대로 · 빙고 화면 (D-338) (UICHECK_R081=1 · 묶음 r081 · docs/design/r081)
 //   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 2개(순서대로 · 빙고)
 //   순서대로: 카드 번호 ①~⑤ · 다시 눌러 취소 · 공개(정답 · 연도 · 맞은 쌍 10) / 빙고: 채우기 입력 → 판 · 직접 n칸 · 호명(칸 누르기) · 칠함 · 호명 띠 · 결과 · 세 테마 · m360 4×4 넘침 0
@@ -8601,6 +8793,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R082 — 라이어 게임
+  if (process.env.UICHECK_R082) {
+    await closeAllTabs(browser);
+    await r082Flow(browser);
   }
   // ★ R081 — 순서대로 · 빙고
   if (process.env.UICHECK_R081) {

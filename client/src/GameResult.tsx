@@ -127,7 +127,8 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
       {notice && <p className="info">{notice}</p>}
 
       {/* ★★★ R056 — 이번 판 문제 평가(접이식 · 기본 펼침) — 정답 공개 때 못 누른 사람 · 기타 의견 */}
-      {result.gameId && !mgOnly && <ResultFeedback gameId={result.gameId} />}
+      {/* ★ R082 — 라이어 판은 문제가 없다 */}
+      {result.gameId && !mgOnly && result.mode !== 'liar' && <ResultFeedback gameId={result.gameId} />}
 
       <div className="next-row" data-arrow-nav>
         {isHost ? (

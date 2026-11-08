@@ -8052,6 +8052,138 @@ async function scenarioTopicSets() {
 }
 
 // =============================================================================
+// ★★★ R082 — 라이어 게임 (D-339) — 봇 4 · 4라운드
+//   R1 찾음(시민 전원 라이어 지목 · 찬성) + 라이어 키워드 맞힘 → 시민 +1 · 라이어 +2 · 키워드 말하기 거부 · 차례 아닌 채팅 거부
+//   R2 동률 → 재투표 동률 → 못 찾음 → 라이어 +3
+//   R3 시민 X 지목 → 찬반 부결 → 재지목 Y → 부결 → 못 찾음(2번째까지) → 라이어 +3
+//   R4 찾음 · 키워드 틀림 → 시민 +1 · 라이어 0
+//   + 2명이면 시작 블록 · liar_rounds 4행 · 경험 liar|항목
+// =============================================================================
+async function scenarioLiar() {
+  log('시나리오 liar — ★★★ 라이어 게임 (R082)');
+  const bots = await makeBots(4);
+  const [host] = bots;
+  for (const b of bots) await b.connect();
+  host.createRoom('R082 라이어');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  bots[1].join(roomId);
+  await bots[1].waitFor(() => bots[1].snapshot?.room.id === roomId, 6000, '입장');
+  await sleep(300);
+  // ── 설정 · 2명이면 시작 블록
+  let m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, mode: 'liar', minigameRounds: 4 });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.mode === 'liar'), 4000, '설정(라이어)');
+  const st = host.since(m, 'lobby.settingsUpdated').find((e) => e.settings?.mode === 'liar').settings;
+  expectTrue('★★ 설정 — 방식 liar · 4라운드 · minigameOnly false', st.mode === 'liar' && st.minigameRounds === 4 && st.minigameOnly === false, JSON.stringify(st));
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, teamMode: true });
+  await sleep(300);
+  expectTrue('★★ 라이어 + 팀전 → 거부', host.since(m, 'error').some((e) => /팀전과 라이어/.test(`${e.message} ${e.detail ?? ''}`)), JSON.stringify(host.since(m, 'error')));
+  m = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(500);
+  expectTrue('★★★ 2명 → 시작 블록 "라이어 게임은 3명부터"', host.since(m, 'error').some((e) => /3명부터/.test(`${e.message} ${e.detail ?? ''}`)), JSON.stringify(host.since(m, 'error')));
+  for (const b of bots.slice(2)) {
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+  }
+  await sleep(300);
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.login_id, r.id])));
+  const idOf = (b) => ids.get(b.loginId);
+  const views = new Map(bots.map((b) => [b, null]));
+  const rejected = new Map(bots.map((b) => [b, []]));
+  const roles = []; // round → { liar, keyword }
+  const done = new Map(bots.map((b) => [b, new Set()]));
+  const reveals = [];
+  const act = async (b, v) => {
+    const me = idOf(b);
+    const r = v.round;
+    if (!roles[r]) roles[r] = {};
+    if (v.amLiar) roles[r].liar = me;
+    if (v.keyword && !v.amLiar) roles[r].keyword = v.keyword;
+    const k = `${r}:${v.phase}:${v.turn}:${v.accusedTried.length}:${(v.candidates ?? []).join()}`;
+    if (done.get(b).has(k)) return;
+    done.get(b).add(k);
+    const P = [...v.participants].sort();
+    if (v.phase === 'describe') {
+      if (v.turn === me) {
+        if (r === 1 && v.says.length === 0 && v.keyword) {
+          b.chat(`${v.keyword} 좋아`); // ★ 키워드 → 거부
+          await sleep(250);
+        }
+        b.chat(`한마디 ${b.name}`);
+      } else if (r === 1 && v.says.length === 0 && v.order[1] === me) b.chat('끼어들기'); // ★ 차례 아님 → 거부
+    } else if (v.phase === 'defense' && v.turn === me) b.chat('저 아니에요');
+    else if (v.phase === 'vote' || v.phase === 'revote') {
+      await sleep(100);
+      const liar = roles[r].liar ?? null;
+      let target = null;
+      if (r === 1 || r === 4) target = me === liar ? P.find((a) => a !== me) : liar;
+      else if (r === 2) target = { [P[0]]: P[1], [P[1]]: P[0], [P[2]]: P[0], [P[3]]: P[1] }[me];
+      else if (r === 3) {
+        const cit = P.filter((a) => a !== liar);
+        const X = cit[0];
+        const Y = cit[1];
+        if (v.accusedTried.length === 0) target = me === X ? Y : X;
+        else target = me === Y ? cit[2] ?? liar : Y;
+      }
+      if (target && liar) b.socket.emit('liar.vote', { target });
+    } else if (v.phase === 'final' && v.accused !== me) {
+      await sleep(100);
+      b.socket.emit('liar.final', { yes: r !== 3 });
+    } else if (v.phase === 'guess' && v.amLiar) {
+      await sleep(200);
+      b.socket.emit('liar.guess', { text: r === 1 ? (roles[r].keyword ?? '?') : '절대아닌답zz' });
+    } else if (v.phase === 'reveal' && b === host) reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, tally: v.lastTally, tried: v.accusedTried });
+  };
+  for (const b of bots) {
+    b.socket.on('liar.state', (p) => {
+      views.set(b, p.liar);
+      if (p.liar) void act(b, p.liar);
+    });
+    b.socket.on('liar.chatRejected', (p) => rejected.get(b).push(p.reason));
+  }
+  // ★ 역할을 모두가 알기 전에 투표가 시작되지 않게 — 라이어 봇의 view 가 먼저 오도록 assign 5초가 넉넉하다
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '시작');
+  const started = host.since(g, 'game.started')[0];
+  expect('★★ game.started mode liar', started.mode, 'liar');
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 300000, '결과');
+  const res = host.since(g, 'game.result')[0].payload;
+  const byR = (n) => reveals.find((x) => x.round === n) ?? {};
+  expect('★★★ 라운드 결과 — 찾음 · 못 찾음(동률) · 못 찾음(재지목 둘 다 부결) · 찾음', [1, 2, 3, 4].map((n) => byR(n).outcome), ['caught', 'notfound', 'notfound', 'caught']);
+  expect('★★ 라이어 키워드 맞히기 — R1 맞힘 · R4 틀림', [byR(1).guessOk, byR(4).guessOk], [true, false]);
+  expectTrue('★★ R2 동률 → 재투표(revote) 집계 · 지목 없음', byR(2).tally?.stage === 'revote' && byR(2).tried.length === 0, JSON.stringify(byR(2).tally));
+  expectTrue('★★ R3 지목 둘(부결 → 재지목 → 부결)', byR(3).tried?.length === 2, JSON.stringify(byR(3).tried));
+  // 점수 — R1 시민 +1 · 라이어 +2 / R2 · R3 라이어 +3 / R4 시민 +1
+  const want = new Map([...ids.values()].map((a) => [a, 0]));
+  const add = (a, n) => want.set(a, (want.get(a) ?? 0) + n);
+  for (const r of [1, 4]) for (const a of ids.values()) if (a !== roles[r].liar) add(a, 1);
+  add(roles[1].liar, 2);
+  add(roles[2].liar, 3);
+  add(roles[3].liar, 3);
+  const got = new Map(res.ranking.map((x) => [x.accountId, x.score]));
+  expect('★★★ 점수 = +1(찍은 시민) · +2(맞힘) · +3(못 들킴) · 0(들키고 틀림)', [...ids.values()].map((a) => got.get(a)), [...ids.values()].map((a) => want.get(a)));
+  expect('★★ 공개 점수 칸 — R1 시민 셋 +1 · 라이어 +2', Object.values(byR(1).scores ?? {}).sort().join(), '1,1,1,2');
+  expectTrue('★★★ 키워드를 말하면 거부 · 차례 아닌 채팅 거부(본인에게만)', [...rejected.values()].flat().includes('keyword') && [...rejected.values()].flat().includes('not_turn'), JSON.stringify([...rejected.values()]));
+  expect('★★ 결과 mode liar · completed', [res.mode, res.endReason], ['liar', 'completed']);
+  const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, guess_ok, jsonb_array_length(says) s, jsonb_array_length(votes) v, liar_account_id::text l FROM liar_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
+  expect('★★★ liar_rounds 4행 · 결과 · 라이어 · 한마디 4+', rows.map((x) => [x.round, x.outcome, x.l === roles[x.round].liar, x.s >= 4]), [[1, 'caught', true, true], [2, 'notfound', true, true], [3, 'notfound', true, true], [4, 'caught', true, true]]);
+  const g2 = await withDb(async (c) => (await c.query(`SELECT mode, setting_question_count q, setting_minigame_rounds r FROM games WHERE id = $1`, [started.gameId])).rows[0]);
+  expect('★★ games — mode liar · 문제 0 · 라운드 4', [g2.mode, g2.q, g2.r], ['liar', 0, 4]);
+  const exp = await withDb(async (c) => (await c.query(`SELECT count(DISTINCT item_key)::int n FROM minigame_item_experiences WHERE minigame_key = 'liar' AND account_id = $1::bigint AND item_key IN (SELECT item_id FROM liar_rounds WHERE game_id = $2)`, [idOf(host), started.gameId])).rows[0].n);
+  expect('★★ 경험 liar|항목 — 4', exp, 4);
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+// =============================================================================
 // ★★★ R057 — 이모티콘 나열(인라인) (D-250): 토큰 섞인 채팅 · 판정은 글자로 · 가지지 않은 특별 토큰 버림 · 상한 10 · 1~3개만 = 반응 꼴 · 도배
 // =============================================================================
 async function scenarioEmojiInline() {
@@ -9067,6 +9199,7 @@ const SCENARIOS = {
   feedback: scenarioFeedback,
   mgonly: scenarioMgOnly,
   topicsets: scenarioTopicSets,
+  liar: scenarioLiar,
   mgcount: scenarioMgCount,
   mgduo: scenarioMgDuo,
   emojiinline: scenarioEmojiInline,
