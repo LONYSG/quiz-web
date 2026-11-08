@@ -107,6 +107,14 @@
 - **검증**: 10 51절 — vitest 571 · typecheck · smoke 12/12 · 봇 rate 26/26 · spam 19/19 · emojilimit 4/4 · emoji 10/10 · shop 28/28 · mgoddone 10/10 · levelmix 15/15 · ui-check r071 12/12 · r068 game 7/7 · main-layout 128/129(A79 그대로) · hint:solve 설계 실측 재현(등급 4 48 = 3 · 22 · 7 · 16) · 실 DB 변경 0(마지막 0026).
 - **남은 것**: A99(메뉴 3 → 1 뒤 0027 · 0028 적용 · 체감) · R072 questions.worth_kind · H11 은 hint:solve 1~2주 측정 뒤.
 
+## 2026-11-08 — V036 반영 · G032 나머지 484 활성 (G034, GEN)
+
+- **무엇을**: gen.md — V036 fix 묶음 + keep 252 숨은 되풀이 조각 → 484 전부 활성(6,667 → 7,151) · 등급 4 경계 25 · 활성 뒤 crossans · 찬종 "지정한 표기만 정답"(DG-072).
+- **어떻게**: G033 lib 그대로(g034-apply-pending · active) · 결정 json · 고친 힌트 blind(sonnet) · 웹 재확인 조각 + GEN 직접 WebFetch · 표기 지정은 정규식 74 를 읽고 판단.
+- **결정**: DG-072.
+- **검증**: hint-check-active 막힘 0 · checkAnswerSet 막힘 0 · blank 0 · 240자 넘음 0 · undo dry-run 전부 · npm test 643 · criteria-sync --check.
+- **남은 것**: 484 가 낀 crossans 경고 297(V037) · 승급 라운드(찬종 결정 대기) — G034.txt 7절.
+
 ## 2026-11-07 — V034 · V035 적용 · G032 표본 162 활성 (G033, GEN)
 
 - **무엇을**: gen.md — V035 G032 163 고침 → 162 활성 · V034 CV-141~145 · V035 CV-148~151 · 찬종 "영어로 같은건 빼자" · 제보 #112~#114.
