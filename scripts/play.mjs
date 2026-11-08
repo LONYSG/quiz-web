@@ -12,18 +12,31 @@
 //   5) DB 확인 한 번(SELECT 1 · 열린 판) — /healthz 는 DB 를 안 보므로(docs/02 3장) 여기서 따로 친다
 //   6) 터널(cloudflared)을 새 창에서 — 출력은 창 + tmp/ops/tunnel.log · 밖에서 /healthz 200 이 온 뒤에 주소를 크게 · 클립보드 · 브라우저
 //
+// ★★ R078 (D-332 · D-331) — 플레이 서버는 **플레이 트리**(git worktree · 기본 C:\work\quiz-web-play · env QUIZ_PLAY_DIR)에서 뜬다.
+//   build · migrate · npm start · 터널이 모두 그 트리(cwd)에서 · 그 트리의 scripts 로. 창 래퍼(ops-run)와 로그(tmp/ops)는 이 트리.
+//   켤 때 이 트리의 tmp/ops/play.json 에 { dir, head, tag, port, pid, startedAt, lockHash, here } — test-db liveServerUp 이 본다
+//   (3000 이 플레이 트리에서 떴으면 이 트리의 빌드 · 검사가 자유롭다). 코드 고르기(--code=…):
+//     latest(기본) = origin/main 을 fetch 한 커밋 → 플레이 트리 checkout --detach + 로컬 태그 play/YYYYMMDD-HHmm(push 안 함)
+//     keep = 지금 플레이 트리 그대로 · <태그·커밋> = 그 커밋(되돌리기)
+//   서버가 이미 떠 있으면 코드 고르기 · npm ci · 빌드를 전부 건너뛴다(떠 있는 서버 밑의 파일을 바꾸지 않는다).
+//
 // 사용법
-//   ops.bat → 1  전부 (= node scripts/play.mjs)
-//   ops.bat → 2  빌드 건너뜀 (--no-build · 코드가 안 바뀌었을 때)
+//   ops.bat → 1  전부 — 먼저 "어느 코드로 켤까요? [1] main 최신 [2] 플레이 트리 그대로 [3] 태그·커밋" (= node scripts/play.mjs --code=…)
+//   ops.bat → 2  빌드 건너뜀 (--no-build --code=keep · 코드가 안 바뀌었을 때)
+//   ops.bat → 18 플레이 트리 만들기 / 상태 (--tree)
+//   되돌리기:   node scripts/play.mjs --here   (옛 방식 — 이 트리에서 3000 · play.json dir = 이 트리 → 빌드 빗장이 다시 선다)
 //   ops.bat → 3  터널 · 서버 끄기 (--stop · DB 는 둔다) — ★ R070: 포트가 비고 cloudflared 가 사라질 때까지 기다린다
 //   검사:  PORT=3100 DATABASE_URL=…/quizweb_test node scripts/play.mjs --no-tunnel   (로그는 tmp/ops/server3100.log)
 // =============================================================================
 
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync, statSync } from 'node:fs';
+import { copyFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import pg from 'pg';
 import { ROOT, cloudflaredPids, dbName, gitHead, hm, hms, logPaths, out, portPids, pruneLogs, tail, windowPids } from './ops-lib.mjs';
+import {
+  TAG_PREFIX, assertPlainPath, codeFromArg, lockHashOf, needsCi, playDir, readPlayJson, tagName, writePlayJson,
+} from './play-tree.mjs';
 
 const WIN = process.platform === 'win32';
 try { process.loadEnvFile?.(path.join(ROOT, '.env')); } catch { /* .env 없어도 됨 */ }
@@ -39,14 +52,22 @@ const TUNNEL_KIND = MAIN_PORT ? 'tunnel' : `tunnel${PORT}`;
 const SERVER_LOG = logPaths(SERVER_KIND).latest;
 // 새 창을 띄울 때는 인자 배열이 아니라 문자열 하나로(shell) — start 의 "제목" 자리를 그대로 보존한다
 const openWindow = (cmdline) => spawn(cmdline, { cwd: ROOT, shell: true, detached: true, stdio: 'ignore' }).unref();
-const args = new Set(process.argv.slice(2));
+const argv = process.argv.slice(2);
+const args = new Set(argv);
+const argVal = (name) => argv.find((a) => a.startsWith(`${name}=`))?.slice(name.length + 1);
+// ★ R078 — 플레이 트리(TREE)에서 켠다. --here(되돌리기) · 3000 이 아닌 포트(검사)는 옛 방식대로 이 트리.
+const HERE = args.has('--here') || !MAIN_PORT;
+const TREE = HERE ? ROOT : playDir();
+// 창 래퍼는 늘 이 트리의 것(로그가 이 트리 tmp/ops 에 — 메뉴 4 · 14) · 자식은 --cwd=TREE 에서
+const RUNNER = path.join(ROOT, 'scripts', 'ops-run.mjs');
+const CWD_ARG = HERE ? '' : ` --cwd=${TREE}`;
 
 const log = (m) => console.log(`[play ${hms()}] ${m}`);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const rel = (p) => path.relative(ROOT, p).replace(/\\/g, '/');
 
-function sh(cmd, { quiet = false, check = true } = {}) {
-  const r = spawnSync(cmd, { cwd: ROOT, shell: true, stdio: quiet ? 'pipe' : 'inherit', encoding: 'utf8' });
+function sh(cmd, { quiet = false, check = true, cwd = ROOT } = {}) {
+  const r = spawnSync(cmd, { cwd, shell: true, stdio: quiet ? 'pipe' : 'inherit', encoding: 'utf8' });
   if (check && r.status !== 0) {
     if (quiet) process.stderr.write((r.stdout ?? '') + (r.stderr ?? ''));
     throw new Error(`실패: ${cmd}`);
@@ -54,6 +75,13 @@ function sh(cmd, { quiet = false, check = true } = {}) {
   return r;
 }
 const ok = (cmd) => spawnSync(cmd, { cwd: ROOT, shell: true, stdio: 'pipe' }).status === 0;
+/** git (이 저장소 · 태그 · fetch) / gitT (플레이 트리) — 출력(앞뒤 공백 뺌) · check:false 면 실패 때 null */
+const git = (a, { cwd = ROOT, check = true } = {}) => {
+  const r = spawnSync(`git ${a}`, { cwd, shell: true, stdio: 'pipe', encoding: 'utf8' });
+  if (check && r.status !== 0) throw new Error(`git ${a} 실패: ${(r.stderr ?? '').trim().slice(0, 300)}`);
+  return r.status === 0 ? (r.stdout ?? '').trim() : null;
+};
+const gitT = (a, o = {}) => git(a, { ...o, cwd: TREE });
 const kill = (pid) => sh(`taskkill /PID ${pid} /T /F`, { quiet: true, check: false });
 
 /** /healthz 본문(응답 없으면 null) */
@@ -146,9 +174,114 @@ async function dbCheck() {
   }
 }
 
+// ── ★ R078 플레이 트리 (D-332)
+const treeExists = () => existsSync(path.join(TREE, '.git'));
+const tagsAt = (sha) => (git(`tag --points-at ${sha} -l "${TAG_PREFIX}*"`) ?? '').split(/\r?\n/).filter(Boolean).sort();
+
+/** origin/main 을 fetch(실패하면 경고 · 지금 아는 origin/main) → 커밋 해시 */
+function latestMain() {
+  const f = spawnSync('git fetch origin main', { cwd: ROOT, shell: true, stdio: 'pipe', encoding: 'utf8' });
+  if (f.status !== 0) {
+    const why = (f.stderr ?? '').trim().split(/\r?\n/)[0]?.slice(0, 120) ?? '';
+    log(`★ git fetch 실패 — 지금 아는 origin/main 으로 갑니다 (VPN 확인 필요 · ${why})`);
+  }
+  return git('rev-parse origin/main');
+}
+
+/** 플레이 트리 node_modules — 없거나 package-lock.json 해시가 지난번과 다를 때만 npm ci(1~3분) → 지금 해시 */
+function ensureDeps(prevLockHash) {
+  const lockHash = lockHashOf(TREE);
+  const hasNodeModules = existsSync(path.join(TREE, 'node_modules'));
+  if (needsCi({ hasNodeModules, prevLockHash, lockHash })) {
+    log(`npm ci (플레이 트리 · ${hasNodeModules ? `package-lock 해시 ${prevLockHash || '모름'} → ${lockHash}` : 'node_modules 없음'} · 1~3분)`);
+    sh('npm ci --no-audit --no-fund', { cwd: TREE });
+    log('npm ci 끝');
+  } else log(`node_modules 그대로 (package-lock 해시 ${lockHash} 같음)`);
+  return lockHash;
+}
+
+/** .env 는 gitignore 라 worktree 에 없다 — 없을 때만 이 트리의 .env 를 복사(값은 바꾸지 않는다 · .env.dev 는 복사하지 않는다) */
+function ensureEnv() {
+  const dst = path.join(TREE, '.env');
+  if (existsSync(dst)) return;
+  const src = path.join(ROOT, '.env');
+  if (!existsSync(src)) throw new Error('이 트리에 .env 가 없습니다 — .env.example 을 .env 로 복사해 값을 채운 뒤 다시');
+  copyFileSync(src, dst);
+  log('.env 를 플레이 트리로 복사(이 트리 것 그대로 · 없을 때만)');
+}
+
+/** 없으면 만든다(origin/main 최신에서 · detached) → { created } */
+function ensureTree() {
+  assertPlainPath(ROOT, '이 트리');
+  assertPlainPath(TREE, '플레이 트리');
+  if (treeExists()) return { created: false };
+  if (existsSync(TREE) && readdirSync(TREE).length > 0) {
+    throw new Error(`${TREE} 가 이미 있는데 git worktree 가 아닙니다 — 비우거나 QUIZ_PLAY_DIR 로 다른 경로를`);
+  }
+  const sha = latestMain();
+  log(`플레이 트리 만들기: git worktree add --detach ${TREE} ${sha.slice(0, 8)} (origin/main)`);
+  git(`worktree add --detach "${TREE}" ${sha}`);
+  ensureEnv();
+  return { created: true };
+}
+
+/** 이 커밋을 가리키는 play/* 태그(없으면 만든다 — 로컬 · push 안 함) */
+function ensureTag(sha) {
+  const have = tagsAt(sha);
+  if (have.length) return have.at(-1);
+  const all = (git(`tag -l "${TAG_PREFIX}*"`) ?? '').split(/\r?\n/).filter(Boolean);
+  const tag = tagName(new Date(), all);
+  git(`tag ${tag} ${sha}`);
+  log(`태그 ${tag} → ${sha.slice(0, 8)} (로컬 · push 안 함)`);
+  return tag;
+}
+
+/** 코드 고르기 → 플레이 트리를 그 커밋으로(detached) → { head, tag, switched } */
+function selectCode(code) {
+  const cur = gitT('rev-parse HEAD');
+  let sha;
+  if (code.kind === 'keep') sha = cur;
+  else if (code.kind === 'latest') sha = latestMain();
+  else {
+    sha = git(`rev-parse --verify --quiet "${code.ref}^{commit}"`, { check: false });
+    if (!sha) throw new Error(`태그·커밋을 찾지 못했습니다: ${code.ref} (목록: git tag -l "play/*")`);
+  }
+  let switched = false;
+  if (sha !== cur) {
+    const dirty = gitT('status --porcelain --untracked-files=no');
+    if (dirty) throw new Error(`플레이 트리에 고친 파일이 있습니다(읽기 전용 취급) — 확인 뒤 git -C ${TREE} checkout -- .\n${dirty.slice(0, 300)}`);
+    log(`플레이 트리 ${cur.slice(0, 8)} → ${sha.slice(0, 8)} (checkout --detach)`);
+    gitT(`checkout --detach ${sha}`);
+    switched = true;
+  } else log(`플레이 트리 코드 그대로 (${sha.slice(0, 8)})`);
+  return { head: sha, tag: ensureTag(sha), switched };
+}
+
+/** 메뉴 18 — 플레이 트리 만들기 / 상태 */
+async function treeStatus() {
+  const { created } = ensureTree();
+  const prev = readPlayJson();
+  if (created) ensureDeps('');
+  const head = gitT('rev-parse HEAD');
+  const tag = tagsAt(head).at(-1);
+  const when = gitT('log -1 --format=%cd --date=format:%Y-%m-%d_%H:%M HEAD');
+  const subject = (gitT('log -1 --format=%s HEAD') ?? '').slice(0, 60);
+  const ahead = git(`rev-list --count ${head}..HEAD`, { check: false });
+  const behind = git(`rev-list --count ${head}..origin/main`, { check: false });
+  const free = out(`powershell -NoProfile -Command "[math]::Round((Get-PSDrive ${TREE[0]}).Free/1GB,1)"`).trim();
+  log(`플레이 트리 ${TREE}${created ? ' (방금 만듦)' : ''}`);
+  log(`  HEAD ${head.slice(0, 8)} · 태그 ${tag ?? '(없음 — 메뉴 1 이 붙인다)'} · 커밋 시각 ${when} · "${subject}"`);
+  log(`  개발 트리 HEAD ${gitHead()} — 플레이보다 ${ahead ?? '?'} 커밋 앞 · origin/main 은 플레이보다 ${behind ?? '?'} 커밋 앞`);
+  log(`  package-lock 해시 ${lockHashOf(TREE)} (지난 켜기 ${prev?.lockHash ?? '-'}) · node_modules ${existsSync(path.join(TREE, 'node_modules')) ? '있음' : '없음'} · .env ${existsSync(path.join(TREE, '.env')) ? '있음' : '없음'} · 드라이브 여유 ${free}GB`);
+  if (prev) log(`  마지막 켜기 ${prev.startedAt ? new Date(prev.startedAt).toLocaleString('ko-KR') : '-'} · ${prev.tag ?? prev.head?.slice(0, 8) ?? '-'} · ${prev.here ? '★ 이 트리(--here)' : '플레이 트리'}`);
+  if (created) log('  ★ 다음: 메뉴 1 → [1] (플레이 트리를 최신으로 빌드해 3000 을 켭니다)');
+}
+
 async function main() {
   if (!WIN) throw new Error('이 스크립트는 Windows 용입니다 (docs/11 §2 의 수동 절차를 쓰세요).');
   if (args.has('--stop')) return stop();
+  if (args.has('--tree')) return treeStatus();
+  log(HERE ? `★ 이 트리에서 켭니다(${MAIN_PORT ? '--here — 되돌리기 · 빌드 빗장이 다시 선다' : `검사 포트 ${PORT}`})` : `플레이 트리 ${TREE}`);
 
   const gone = pruneLogs();
   if (gone.length) log(`14일 지난 로그 ${gone.length}개 지움 (tmp/ops)`);
@@ -170,24 +303,32 @@ async function main() {
   log('DB 준비됨 (quiz-web-db healthy)');
 
   // 3) 마이그레이션 — 적용할 것이 있을 때만(대부분의 날은 없다 → GEN 의 긴 트랜잭션과 겹칠 일 자체가 없다)
-  const dry = sh('node scripts/migrate.mjs --dry', { quiet: true });
-  const pending = dry.stdout.match(/적용 대상 (\d+)개/);
-  if (pending) {
-    log(`마이그레이션 ${pending[1]}개 적용 (잠금 10초 제한 — 걸리면 스스로 멈추고 알려 준다)`);
-    sh('node scripts/migrate.mjs');
-  } else log('적용할 마이그레이션 없음 → migrate 건너뜀');
+  //    ★ R078 — 켜는 트리(플레이 트리)의 migrations 로 · 코드 고르기 뒤에. 새 마이그레이션은 플레이 트리가 그 커밋으로 올라갈 때 quizweb 에 들어간다.
+  const migrate = () => {
+    const dry = sh('node scripts/migrate.mjs --dry', { quiet: true, cwd: TREE });
+    const pending = dry.stdout.match(/적용 대상 (\d+)개/);
+    if (pending) {
+      log(`마이그레이션 ${pending[1]}개 적용 (${HERE ? '이 트리' : '플레이 트리'}의 migrations · 잠금 10초 제한 — 걸리면 스스로 멈추고 알려 준다)`);
+      sh('node scripts/migrate.mjs', { cwd: TREE });
+    } else log('적용할 마이그레이션 없음 → migrate 건너뜀');
+  };
 
   // 4) 서버
   const h = await health(2000);
   if (h) {
     const booted = h.bootedAt ? new Date(h.bootedAt) : null;
-    const dist = path.join(ROOT, 'server', 'dist', 'index.js');
+    const dist = path.join(TREE, 'server', 'dist', 'index.js');
     const built = existsSync(dist) ? statSync(dist).mtime : null;
     const newer = booted && built && built > booted;
     log(
       `서버가 이미 켜져 있음(기동 ${booted ? hm(booted) : '?'}${h.pid ? ` · PID ${h.pid}` : ''} · ` +
-        `${newer ? `★ 빌드(${hm(built)})가 기동보다 새것` : '빌드 그대로'} · HEAD ${gitHead()}) → 빌드 · 서버 시작을 건너뜁니다.`,
+        `${newer ? `★ 빌드(${hm(built)})가 기동보다 새것` : '빌드 그대로'} · HEAD ${HERE || treeExists() ? gitHead(TREE) : '?'}) → 코드 고르기 · 빌드 · 서버 시작을 건너뜁니다.`,
     );
+    const pj = readPlayJson();
+    if (MAIN_PORT && pj && !HERE && pj.pid && h.pid && String(pj.pid) !== String(h.pid)) {
+      log(`★ tmp/ops/play.json 의 PID(${pj.pid})와 떠 있는 서버 PID(${h.pid})가 다름 — 이 트리 빌드 빗장이 섭니다(메뉴 3 → 1 로 바로잡힘)`);
+    }
+    if (HERE || treeExists()) migrate();
     log('★ 새 빌드로 바꾸려면: 메뉴 3(끄기) → 1(켜기) (하던 판이 끊기니 게임 중에는 하지 않기)');
   } else {
     const stale = portPids(PORT);
@@ -197,16 +338,28 @@ async function main() {
       const sec = await waitGone({ tunnel: false });
       log(`옛 서버 꺼짐 확인(포트 ${PORT} 비어 있음 · ${sec.toFixed(1)}초)`);
     }
-    if (args.has('--no-build')) log('빌드 건너뜀(--no-build)');
+    // ★ R078 — 플레이 트리: 만들기(없으면) → 코드 고르기 → .env → npm ci(조건) → migrate → 빌드 (전부 TREE 에서)
+    let pick = { head: HERE ? git('rev-parse HEAD') : '', tag: null, switched: false };
+    let lockHash = '';
+    if (!HERE) {
+      const { created } = ensureTree();
+      pick = selectCode(codeFromArg(argVal('--code')));
+      ensureEnv();
+      lockHash = ensureDeps(created ? '' : readPlayJson()?.lockHash ?? '');
+    }
+    migrate();
+    const noDist = !existsSync(path.join(TREE, 'server', 'dist', 'index.js')) || !existsSync(path.join(TREE, 'client', 'dist', 'index.html'));
+    if (args.has('--no-build') && !pick.switched && !noDist) log('빌드 건너뜀(--no-build)');
     else {
-      log('빌드 중… (shared → server → client)');
-      sh('npm run build');
+      if (args.has('--no-build')) log(`★ --no-build 인데 ${pick.switched ? '코드가 바뀜' : 'dist 가 없음'} → 빌드합니다`);
+      log(`빌드 중… (shared → server → client · ${HERE ? '이 트리' : '플레이 트리'})`);
+      sh('npm run build', { cwd: TREE });
       log('빌드 끝');
     }
     log(`서버 새 창(${SERVER_TITLE})으로 시작 (npm start — 감시 없음 · 로그 ${rel(SERVER_LOG)})`);
     const since = Date.now();
     openWindow(
-      `start "${SERVER_TITLE}" cmd /k "chcp 65001 >nul && title ${SERVER_TITLE} && node scripts\\ops-run.mjs ${SERVER_KIND} npm start"`,
+      `start "${SERVER_TITLE}" cmd /k "chcp 65001 >nul && title ${SERVER_TITLE} && node ${RUNNER} ${SERVER_KIND}${CWD_ARG} npm start"`,
     );
     try {
       await waitFor('서버', async () => {
@@ -220,7 +373,15 @@ async function main() {
       throw e;
     }
     console.log('');
-    log(`서버 응답 확인 (${HEALTH} · ${((Date.now() - since) / 1000).toFixed(1)}초)`);
+    const up = await health();
+    log(`서버 응답 확인 (${HEALTH} · ${((Date.now() - since) / 1000).toFixed(1)}초 · PID ${up?.pid ?? '?'})`);
+    if (MAIN_PORT) {
+      writePlayJson({
+        dir: TREE, head: pick.head, tag: pick.tag, port: PORT, pid: up?.pid ?? null,
+        startedAt: new Date().toISOString(), lockHash: lockHash || lockHashOf(TREE), here: HERE,
+      });
+      log(`tmp/ops/play.json 기록 — ${HERE ? '★ 이 트리(--here · 빌드 빗장 선다)' : `플레이 트리 ${pick.tag ?? pick.head.slice(0, 8)} (이 트리 빌드 · 검사 자유)`}`);
+    }
   }
 
   // 5) DB 확인 — /healthz 는 DB 를 안 본다(docs/02 3장)
@@ -234,7 +395,7 @@ async function main() {
   } else {
     log(`터널을 새 창(${TUNNEL_TITLE})에서 시작 — 밖에서 열리는 것을 확인한 뒤 주소가 크게 뜨고, 클립보드에 복사되고, 브라우저가 열립니다(보통 10~30초). 로그 ${rel(logPaths(TUNNEL_KIND).latest)}`);
     openWindow(
-      `start "${TUNNEL_TITLE}" cmd /k "chcp 65001 >nul && title ${TUNNEL_TITLE} && node scripts\\ops-run.mjs ${TUNNEL_KIND} node scripts\\dev-tunnel.mjs"`,
+      `start "${TUNNEL_TITLE}" cmd /k "chcp 65001 >nul && title ${TUNNEL_TITLE} && node ${RUNNER} ${TUNNEL_KIND}${CWD_ARG} node scripts\\dev-tunnel.mjs"`,
     );
   }
   log('안 열리면: 메뉴 4(상태 — 로그 꼬리) · 메뉴 14(로그 열기)');

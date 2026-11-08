@@ -20,9 +20,14 @@ import { LOG_DIR, ROOT, dbName, gitHead, logPaths } from './ops-lib.mjs';
 
 try { process.loadEnvFile?.(path.join(ROOT, '.env')); } catch { /* 없어도 됨 */ }
 
-const [kind, ...cmd] = process.argv.slice(2);
+// ★ R078 (D-332) — `--cwd=<dir>` 를 kind 뒤에 주면 자식은 그 트리(플레이 트리)에서 돈다 · 로그는 늘 이 트리의 tmp/ops(메뉴 4 · 14 가 본다)
+const argv = process.argv.slice(2);
+const kind = argv[0];
+const cwdArg = argv[1]?.startsWith('--cwd=') ? argv[1].slice('--cwd='.length) : null;
+const cmd = argv.slice(cwdArg ? 2 : 1);
+const CWD = cwdArg ? path.resolve(cwdArg) : ROOT;
 if (!kind || cmd.length === 0) {
-  console.error('사용법: node scripts/ops-run.mjs <server|tunnel> <명령…>');
+  console.error('사용법: node scripts/ops-run.mjs <server|tunnel|dev> [--cwd=<dir>] <명령…>');
   process.exit(2);
 }
 
@@ -33,11 +38,11 @@ const toFiles = (s) => { for (const f of files) f.write(s); };
 
 const head =
   `[ops-run] ${new Date().toISOString()} (${new Date().toLocaleString('ko-KR')}) · 명령 ${cmd.join(' ')} · ` +
-  `PORT ${process.env.PORT ?? '3000'} · DB ${dbName(process.env.DATABASE_URL)} · HEAD ${gitHead()} · 로그 ${path.basename(dated)}\n`;
+  `PORT ${process.env.PORT ?? '3000'} · DB ${dbName(process.env.DATABASE_URL)} · HEAD ${gitHead(cwdArg ? CWD : undefined)}${cwdArg ? ` · 트리 ${CWD}` : ''} · 로그 ${path.basename(dated)}\n`;
 process.stdout.write(head);
 toFiles(head);
 
-const child = spawn(cmd.join(' '), { cwd: ROOT, shell: true, stdio: ['inherit', 'pipe', 'pipe'] });
+const child = spawn(cmd.join(' '), { cwd: CWD, shell: true, stdio: ['inherit', 'pipe', 'pipe'] });
 child.stdout.on('data', (b) => { process.stdout.write(b); toFiles(b); });
 child.stderr.on('data', (b) => { process.stderr.write(b); toFiles(b); });
 

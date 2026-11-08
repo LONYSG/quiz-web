@@ -94,7 +94,8 @@ export function dbName(url) {
   try { return decodeURIComponent(new URL(url).pathname.replace(/^\//, '')) || '?'; } catch { return '?'; }
 }
 
-export const gitHead = () => out('git rev-parse --short HEAD').trim() || '?';
+/** 짧은 HEAD — dir 을 주면 그 트리(플레이 트리 · R078) */
+export const gitHead = (dir) => out(dir ? `git -C "${dir}" rev-parse --short HEAD` : 'git rev-parse --short HEAD').trim() || '?';
 
 /** 터널 로그에서 마지막 trycloudflare 주소 */
 export function tunnelUrl(file = logPaths('tunnel').latest) {

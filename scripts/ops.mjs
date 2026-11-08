@@ -17,6 +17,7 @@ import { stdin as input, stdout as output } from 'node:process';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { cloudflaredPids, logPaths, portPids, tail, tunnelUrl } from './ops-lib.mjs';
+import { parseCodeChoice, playDir, readPlayJson } from './play-tree.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 try { process.loadEnvFile?.(path.join(ROOT, '.env')); } catch { /* 없어도 됨 */ }
@@ -198,6 +199,37 @@ function openLogs() {
   console.log(`  메모장으로 열었습니다: ${files.map((f) => path.basename(f)).join(' · ')} (지난 기동은 tmp/ops/<server|tunnel>-날짜-시각.log · 14일 보관)`);
 }
 
+/** /healthz 본문(응답 없으면 null) */
+async function healthOf(port) {
+  try {
+    const res = await fetch(`http://localhost:${port}/healthz`, { signal: AbortSignal.timeout(1500) });
+    return res.ok ? await res.json().catch(() => ({})) : null;
+  } catch { return null; }
+}
+
+// ★ R078 (D-332) — 메뉴 1 은 먼저 "어느 코드로 켤까요?" · 서버가 이미 떠 있으면 묻지 않는다(play.mjs 가 건너뛴다고 알린다)
+async function playOn() {
+  if (await healthOf(PORT)) return run('node scripts/play.mjs');
+  const tree = existsSync(path.join(playDir(), '.git'));
+  console.log(`\n  어느 코드로 켤까요?${tree ? '' : '  (플레이 트리가 아직 없음 — 먼저 만듭니다 · 처음 한 번 몇 분)'}`);
+  console.log('   [1] main 최신 (origin/main 을 받아서 · 기본)');
+  console.log(`   [2] 지금 플레이 트리 그대로${tree ? ` (${out(`git -C "${playDir()}" log -1 --format="%h %cd" --date=format:%m-%d_%H:%M`).trim()})` : ''}`);
+  console.log('   [3] 태그·커밋 직접 입력 (되돌리기)');
+  let code;
+  for (;;) {
+    code = parseCodeChoice(await rl.question('  고르기 [1]: '));
+    if (code) break;
+    console.log('  1 · 2 · 3 중 하나');
+  }
+  if (code.kind === 'ref' && !code.ref) {
+    const tags = out('git tag -l "play/*" --sort=-creatordate').split(/\r?\n/).filter(Boolean).slice(0, 5);
+    if (tags.length) console.log(`  최근 태그: ${tags.join(' · ')}`);
+    code.ref = await ask('  태그 또는 커밋');
+  }
+  const arg = code.kind === 'latest' ? 'latest' : code.kind === 'keep' ? 'keep' : code.ref;
+  run(`node scripts/play.mjs --code=${q(arg)}`);
+}
+
 async function pruneBackups() {
   const { pickPrune } = await import('./backup-prune.mjs');
   const dir = path.join(ROOT, 'backups');
@@ -210,8 +242,8 @@ async function pruneBackups() {
 }
 
 const MENU = [
-  ['1', '서버 켜기 (Docker → DB → 빌드 → 서버 창 → 터널 창 → 브라우저)', () => run('node scripts/play.mjs')],
-  ['2', '서버 켜기 — 빌드 건너뜀 (코드가 안 바뀌었을 때)', () => run('node scripts/play.mjs --no-build')],
+  ['1', '서버 켜기 — 어느 코드로? → 플레이 트리 → DB → 빌드 → 서버 창 → 터널 창 → 브라우저', playOn],
+  ['2', '서버 켜기 — 빌드 건너뜀 (플레이 트리 그대로)', () => run('node scripts/play.mjs --no-build --code=keep')],
   ['3', '서버 · 터널 끄기 (DB 는 둠 · 포트가 빌 때까지 기다림)', () => run('node scripts/play.mjs --stop')],
   ['4', '지금 상태 (Docker · DB · 서버 · 터널 · 진행 중인 판 · 제보 · 로그 꼬리)', status],
   ['5', '계정 목록 (잔액 · 가입 · 마지막 판)', listAccounts],
@@ -225,7 +257,9 @@ const MENU = [
   ['13', '제보 보기 — 전부(처리된 것 포함)', () => reports(true)],
   ['14', '로그 열기 (서버 · 터널 — 메모장)', openLogs],
   // ★ R074 (§F ①) — 백업은 만들 때마다 최신 5개만 남긴다 · 이 줄은 덤프 없이 정리만(지울 목록을 보여 주고 y)
-  ['15', '오래된 백업 정리 (최신 5개만 남김 · zip 은 그대로)', pruneBackups],
+  // ★ R078 — 15~17 은 개발 서버 · 18 플레이 트리(브리핑 번호) → 백업 정리는 15 에서 19 로 옮겼다
+  ['18', '플레이 트리 만들기 / 상태 (HEAD · 태그 · lock 해시 · 디스크)', () => run('node scripts/play.mjs --tree')],
+  ['19', '오래된 백업 정리 (최신 5개만 남김 · zip 은 그대로)', pruneBackups],
   ['0', '끝'],
 ];
 
