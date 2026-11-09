@@ -1074,6 +1074,30 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 66. ★★★ R086 — 메뉴 1 리허설 (D-343 · 축소판)
+
+**절차**(실 quizweb 은 읽기 · 백업만 · 플레이 트리 · 태그 안 건드림):
+1. `npm run db:backup` → `docker exec quiz-web-db psql -U quiz -d postgres -c "CREATE DATABASE quizweb_rehearsal"` → `docker exec -i quiz-web-db pg_restore -U quiz -d quizweb_rehearsal --no-owner < backups/<최신>.dump` (★ `db:restore` 는 기본이 실 quizweb 이라 쓰지 않는다)
+2. `DATABASE_URL=…/quizweb_rehearsal` 로 메뉴 1 순서: `migrate --dry` → `migrate` → `npm run build` → `topics-load --apply` → `minigame-load --game song,ox --apply`
+3. 되돌리기: 0033 → 0030 머리 SQL 역순 + schema_migrations 지움 → `pg_dump -s` 를 실 DB 와 diff → 2 를 다시(두 번째 적재 "쉬게 함 0")
+4. 같은 DATABASE_URL 로 smoke · 봇(검사 빗장은 이름 `quizweb` 만 막는다) → 끝에 `DROP DATABASE quizweb_rehearsal`
+
+| 무엇 | 결과 |
+|---|---|
+| 백업 · 복원 | 196MB · 18초 / 15초 · 행 수 실 DB 와 같음 |
+| migrate --dry → migrate | 적용 대상 4개(0030~0033) · 0.25초 · 오류 0 |
+| build | 7초 |
+| topics-load | 주제 세트 31(verified 31) · 항목 2604 · 쉬게 함 0 |
+| minigame-load song,ox | 노래 278 · OX 384(리허설 때 파일 — G043 뒤 지금은 292 · 400) |
+| 되돌리기 → 스키마 diff | 같음(schema owner 한 줄만) · 다시 적용 · 두 번째 적재 쉬게 함 0 |
+| smoke (리허설 DB) | 12/12 |
+| 봇 mgonly · liar · draw (리허설 DB) | 75/75 · 15/15 · 16/16 |
+| 봇 topicsets (리허설 DB) | 6/8 — `--allow-candidate` 빗장(의도) · quizweb_test 8/8 |
+| typecheck · vitest · build · smoke (quizweb_test) | 0 · 705/705 · 통과 · 12/12 |
+| 제보 맥락 | 리허설 DB 에 제보 3행(라이어 · 캐치마인드 · 많이 말하기) → `reports:report` 에 주제 · 제시어 · 라운드 · topic slug |
+
+★ 전체 배터리(봇 전부 · ui-check 전부)는 **안 했다**(축소 규칙 — 실제 테스트가 대신).
+
 ## 65. ★★★ R085 — OX 10연속 (D-342)
 
 | 무엇 | 어떻게 | 결과 |

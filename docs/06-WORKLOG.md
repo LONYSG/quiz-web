@@ -8,6 +8,13 @@
 
 ---
 
+## 2026-11-09 — R086 메뉴 1 리허설 (MAIN · 축소판 · 새 기능 없음)
+- 무엇: 실 백업(quizweb-20261109-102032.dump)을 새 DB quizweb_rehearsal 로 복원 → 메뉴 1 순서(migrate 4 · build · topics-load · minigame-load song,ox) → 되돌리기 → 다시 적용(멱등) → 실 데이터 위 smoke · 봇 mgonly · liar · draw · topicsets → 리허설 DB 지움. 실 quizweb 쓰기 0 · 플레이 트리 0.
+- 결과: 오류 0 · 되돌린 스키마 = 실 DB 스키마 · smoke 12 · mgonly 75 · liar 15 · draw 16 · topicsets 6/8(candidate 빗장 — 의도 · test DB 8/8).
+- 고친 것: reports-report 맥락 보강(판 방식 · 팀전 · 미니게임 라운드 item_key · 라이어/캐치마인드 주제 · 제시어) · 라이어/캐치마인드일 때 팀전 버튼 title.
+- 문서: 07 D-343 · 13 A113(테스트 날 체크리스트) · 10 66절 · PLAY-GUIDE 1부(메뉴 1 끝 줄) · 2부 36~39 · 01 16-R086(정합) · 05 · ai-out/R086.txt.
+- 남은 것: 전체 배터리 · C ②④⑤⑥⑦ → R087(테스트 뒤).
+
 ## 2026-11-09 — 제시어 2차 (G044, GEN · 파일만 · DB 쓰기 없음)
 - **무엇을**: gen-next.md — 라이어 · 캐치마인드 제시어의 본체를 open 세트로(18 §9 제시어 풀 원칙): open 8 새로 + closed 세트 liar/draw 를 유명한 것만 남기고 끔.
 - **어떻게**: scripts/g044-topics-new.mjs(세트 8 목록 · GEN 작성 · 하위 에이전트 0) → topics-check --fill-qid(새 8 파일만) → g044-topics-cross.mjs(세트 사이 canon 겹침) → g044-tag-fix.mjs(15 세트 · 한 번에 쓰고 바로 push — V043 과 같은 파일). 웹 3(ko.wiki 제목 확인 1 · 영화 흥행 기록 원문 1 · 그 전 묶음 실패 1).
