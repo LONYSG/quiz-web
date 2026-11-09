@@ -421,7 +421,16 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | 표 · 열 | 형식 | 규칙 |
 |---------|------|------|
 | `games.mode` | CHECK + **'draw'** | |
-| `draw_rounds` | id · game_id(UNIQUE(game_id, round)) · round · drawer_account_id · topic · item_id · keyword · rerolled · strokes_count · participants · solved(jsonb [{accountId, ms}]) · outcome(all · some · none) · scores · created_at | 그림 하나 한 행 · 그림(선 좌표)은 저장 안 함 |
+| `draw_rounds` | id · game_id(UNIQUE(game_id, round)) · round · drawer_account_id · topic · item_id · keyword · rerolled · strokes_count · participants · solved(jsonb [{accountId, ms}]) · outcome(all · some · none) · scores · created_at · ★ R088 hints(jsonb { length?, initial?, topic? }) | 그림 하나 한 행 · 그림(선 좌표)은 저장 안 함 |
+
+## ★★ 제시어 데이터 칸 · 라이어 모드 (R088 / 0034 — D-345)
+
+| 표 | 더한 칸 | 뜻 |
+|---|---|---|
+| `topic_items` | fool(jsonb 문자열 배열) · era(classic · modern) · sub · diff(1~3) | 18 §12 — 바보형 단어 · 시대 · 소분류 · 난이도(없으면 null) |
+| `topic_sets` | scope(text) | 주제 이름 아래 정답 범위 한 줄(없으면 안 보임) |
+| `liar_rounds` | mode('basic' · 'fool' · 기본 basic) · fool_word | 바보형에서 라이어가 받은 단어 |
+| `draw_rounds` | hints(jsonb) | R087 출제자 힌트 |
 
 - 경험: minigame_item_experiences('draw' · 항목 id · run_id NULL).
 

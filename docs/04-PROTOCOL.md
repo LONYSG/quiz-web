@@ -1084,6 +1084,7 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `liar.guess` (C→S) | `{ text }` — guess 때 · 라이어만 · 한 번 |
 | ★★ R087 `liar.say` (C→S) | `{ text }` — **설명칸**: describe(차례인 사람) · defense(지목된 사람) · 60자 · 키워드 거부 → 기록(`says[{accountId, text, auto, kind: 'say' \| 'defense', bout}]`) · 다음으로 / 거부는 본인에게 `liar.chatRejected { reason: 'not_turn' \| 'keyword' \| 'too_long' \| 'not_now' }` |
 | ★★ R087 `chat.send` (LIAR) 바뀜 | 차례와 **무관하게** 누구나 · 기록 안 됨 · 키워드 담은 글만 거부(공개 전) |
+| ★★ R088 설정 `liarMode` | `'basic' \| 'fool'`(기본 basic · 보낸 것만 바꿈) · `LiarView.mode` · `foolWord`(공개 때) · 바보형 라이어는 맞히기 · 공개 전까지 `amLiar: false` · `keyword` = 받은 단어 / `DrawView.diff`(공개 때 1~3) / 미니게임 `params.scope`(있을 때) · `minigame.feedback.hint`(겹치는 이름 안내) · `draw.chatRejected.reason 'ambiguous'` |
 | ★★ R087 `LiarView` 더함 · 투표 | `bout` · `bouts`(LIAR.VOTE_BOUTS 3) · vote 후보 = 전원(자기 빼고 — 지목됐던 사람도) · revote = 동률자(바퀴 안 REVOTES 2번) · `lastFinal{yes(죽인다), no(살린다), …, passed: yes > no}` · `liar.final { yes }` 의 뜻 = 죽인다 · liar_rounds.votes 각 기록에 `bout` |
 | 거름 | 때가 아니거나 이상한 값 → 본인에게 `liar.rejected { reason }`(오류 창 없음) |
 | `host.forceEnd` | LIAR 에서도 됨 |

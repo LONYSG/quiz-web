@@ -1074,6 +1074,16 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 68. ★★★ R088 — 라이어 바보형 · 0034 · 추첨 · 난이도 섞기 (D-345)
+
+| 무엇 | 어떻게 | 결과 |
+|---|---|---|
+| 단위 | shared liar(바보형 +1) · settings(liarMode 필드) · draw(글자 수 꼴 · diff 4:4:2) · server `db/topics.test`(겹치는 이름 · 풀 = 머리 플래그 open 만) | vitest(0절) |
+| 봇 **liarfool** (새 · 7) | 설정 liarMode 남음 · 셋 다 amLiar false · 라이어 키워드 = foolWord ≠ 진짜 · 맞히기에서야 amLiar · R1 +1 · liar_rounds mode fool · fool_word ∈ fool · fool 없으면 기본형(시스템 줄) | 7/7 |
+| 봇 topicsets (8 → 9) | scope 가 판 params 에(서울 구만) | 9/9 |
+| ui-check **r088** (새 · 3) | 모드 줄 · 손님 칩 · 바보형 배정(셋 다 시민 카드 · 머리 칩) · 공개 단어 · m360 · 세 테마 · FHD 125% | 3/3 |
+| 정규화 측정 | `node scripts/normalize-impact.mjs`(읽기만 → tmp/normalize-impact.md) | 새 겹침 0 · 0 |
+
 ## 67. ★★★ R087 — 테스트 1 피드백 (D-344)
 
 | 무엇 | 어떻게 | 결과 |
