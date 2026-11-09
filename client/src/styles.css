@@ -10250,17 +10250,26 @@ button.preset.shake {
 }
 .draw-tools {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: min-content;
   gap: 4px;
   align-content: start;
 }
-.draw-tools .draw-tool {
-  padding: 4px 4px;
-  min-height: 32px;
+/* ★ R089 — 6칸 격자: 도구 · 되돌리기/지우기 = 3칸씩 · 힌트 = 2칸씩 · 굵기 · 팔레트 · 세부 = 한 줄 */
+.draw-tools > .draw-tool {
+  grid-column: span 3;
+  margin: 0;
 }
-.draw-tools .draw-tool[data-draw-clear],
-.draw-tools .draw-tool[data-draw-undo],
-.draw-tools .draw-hint-btn,
+.draw-tools > .draw-hint-btn {
+  grid-column: span 2;
+  padding: 2px 0;
+  font-size: 0.78rem;
+}
+.draw-tools .draw-tool {
+  padding: 2px 2px;
+  min-height: 28px;
+  font-size: 0.8rem;
+}
 .draw-tool-label,
 .draw-widths,
 .draw-palette,

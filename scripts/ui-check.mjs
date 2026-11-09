@@ -5084,6 +5084,146 @@ async function r083Flow(browser) {
 }
 
 // =============================================================================
+// ★★★ R089 — 캐치마인드 그리기 도구 (D-346) (UICHECK_R089=1 · 묶음 r089 · docs/design/r089)
+//   방장 PC 출제(1280 · FHD 125% · 1920) · 손님 m360 터치 · 늦게 온 손님 PC · 소켓 1 · 2라운드(2라운드는 손님 m360 출제)
+//   네모(한붓) → 페인트통 안쪽 → 세 화면 격자 해시 같음 · 되돌리기 → 해시가 채우기 전과 같음 · 굵기 · 세부 색 · 최근 색 · 스포이드 버튼 · 세 테마
+// =============================================================================
+async function r089Flow(browser) {
+  const H = await newPage(browser, 'R089-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r9h', '그림방장');
+  const roomId = await createRoom(H, 'R089 그리기');
+  const G = await newPage(browser, 'R089-g', true);
+  await signUp(G, 'r9g', '그림손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'r9s');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r089] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const J = async (P, expr) => JSON.parse(await P.evaluate(`JSON.stringify(${expr})`));
+  const hash = (P) => P.evaluate('window.__drawGridHash?.() ?? ""');
+  const setPc = (w, h, dpr = 1) => H.send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: dpr, mobile: false }).then(() => sleep(400));
+  await realClick(H, 'button[data-mode="draw"]');
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(400);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('[data-draw-tools]') !== null", 15000).catch(() => false);
+  await sleep(500);
+  const box = await J(H, "(() => { const r = document.querySelector('[data-draw-canvas]').getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width }; })()");
+  const at = (fx, fy) => ({ x: box.x + box.w * fx, y: box.y + box.w * fy });
+  const mouse = (type, p, buttons = 1) => H.send('Input.dispatchMouseEvent', { type, x: p.x, y: p.y, button: 'left', buttons, clickCount: 1 });
+  // 네모 한붓(굵기 8)
+  await realClick(H, '[data-draw-width="8"]');
+  const corners = [at(0.2, 0.2), at(0.8, 0.2), at(0.8, 0.8), at(0.2, 0.8), at(0.2, 0.2)];
+  await mouse('mousePressed', corners[0]);
+  for (let i = 1; i < corners.length; i += 1) {
+    const a = corners[i - 1];
+    const b = corners[i];
+    for (let t = 1; t <= 10; t += 1) await mouse('mouseMoved', { x: a.x + ((b.x - a.x) * t) / 10, y: a.y + ((b.y - a.y) * t) / 10 });
+  }
+  await mouse('mouseReleased', corners[4], 0);
+  await sleep(400);
+  // 늦게 온 손님(PC)
+  const L = await newPage(browser, 'R089-late', true);
+  await L.setViewport(1536, 864);
+  await signUp(L, 'r9l', '늦은손님');
+  await L.goto(`${BASE}/r/${roomId}`);
+  await L.waitFor("document.querySelector('[data-draw-canvas]') !== null", 10000).catch(() => false);
+  await sleep(600);
+  // 페인트통 — 하늘색 안쪽
+  await realClick(H, '[data-draw-tool="fill"]');
+  await realClick(H, '[data-draw-color="#38bdf8"]');
+  const before = await hash(H);
+  await mouse('mousePressed', at(0.5, 0.5));
+  await mouse('mouseReleased', at(0.5, 0.5), 0);
+  await sleep(900);
+  const filled = { h: await hash(H), g: await hash(G), l: await hash(L) };
+  const inside = await J(H, "(() => { const c = document.querySelector('[data-draw-canvas]'); const d = c.getContext('2d').getImageData(Math.round(c.width / 2), Math.round(c.width / 2), 1, 1).data; return [d[0], d[1], d[2]]; })()");
+  await snap(H, 'fill-pc');
+  await snap(G, 'fill-guesser-m360');
+  await snap(L, 'fill-late-1536');
+  // 되돌리기 — 채우기만 빠짐 → 해시 = 채우기 전
+  await realClick(H, '[data-draw-undo]');
+  await sleep(700);
+  const undone = { h: await hash(H), g: await hash(G), l: await hash(L) };
+  await snap(H, 'undo-pc');
+  // Ctrl+Z — 네모까지
+  await H.evaluate('document.activeElement?.blur()');
+  await H.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'z', code: 'KeyZ', windowsVirtualKeyCode: 90, modifiers: 2 });
+  await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'z', code: 'KeyZ', windowsVirtualKeyCode: 90, modifiers: 2 });
+  await sleep(700);
+  const empty = { h: await hash(H), g: await hash(G), strokes: await H.evaluate("document.querySelector('[data-draw-canvas]')?.dataset.strokes ?? ''") };
+  // 굵기 · 세부 색 · 최근 · 지우개 · 단축키
+  await H.evaluate(`(() => { const i = document.querySelector('[data-draw-custom]'); const d = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value'); d.set.call(i, '#123456'); i.dispatchEvent(new Event('input', { bubbles: true })); i.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+  await sleep(300);
+  const custom = await J(H, "({ recent: [...document.querySelectorAll('[data-draw-recent]')].map((b) => b.dataset.drawRecent), value: document.querySelector('[data-draw-custom]')?.value ?? '' })");
+  await H.key('e');
+  await sleep(200);
+  await H.key(']');
+  await sleep(200);
+  const eraser = await J(H, "({ tool: document.querySelector('[data-draw-tools]')?.dataset.tool ?? '', w: document.querySelector('.draw-width.on')?.dataset.drawWidth ?? '' })");
+  await H.key('p');
+  await sleep(200);
+  const pen = await J(H, "({ tool: document.querySelector('[data-draw-tools]')?.dataset.tool ?? '', w: document.querySelector('.draw-width.on')?.dataset.drawWidth ?? '' })");
+  const eye = await H.evaluate("document.querySelector('[data-draw-tool=\"pick\"]')?.dataset.eyedropper ?? ''");
+  // 크기 셋 · 세 테마
+  const sizes = {};
+  for (const [n, w, h, dpr] of [['pc', 1280, 720, 1], ['fhd125', 1536, 864, 1.25], ['fhd', 1920, 1080, 1]]) {
+    await setPc(w, h, dpr);
+    sizes[n] = await J(H, "(() => { const t = [...document.querySelectorAll('[data-draw-tools] button, [data-draw-tools] label')]; const c = document.querySelector('[data-draw-canvas]').getBoundingClientRect(); return { side: Math.round(c.width), toolsIn: t.every((b) => { const r = b.getBoundingClientRect(); return r.bottom <= innerHeight + 1 && r.right <= innerWidth + 1; }), over: document.documentElement.scrollWidth - innerWidth, n: t.length }; })()");
+    await snap(H, `tools-${n}`);
+  }
+  await setPc(1280, 720);
+  for (const th of ['night', 'office']) {
+    await theme(H, th);
+    await sleep(200);
+    await snap(H, `tools-${th}-pc`);
+  }
+  await theme(H, 'pastel');
+  // 1라운드 끝 — 정답
+  const kw = await H.evaluate("document.querySelector('[data-draw-keyword]')?.innerText ?? ''");
+  for (const P of [G, L]) {
+    await P.setInput('.chat-card input', kw);
+    await P.click('전송');
+  }
+  S.emit('chat.send', { text: kw, epoch: null });
+  // 2라운드 — 손님(m360) 출제
+  await G.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null && !!document.querySelector('[data-draw-tools]')", 20000).catch(() => false);
+  await sleep(500);
+  const mob = await J(G, "(() => { const t = [...document.querySelectorAll('[data-draw-tools] button, [data-draw-tools] label')]; return { n: t.length, inX: t.every((b) => { const r = b.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth + 1; }), over: document.documentElement.scrollWidth - innerWidth, eye: document.querySelector('[data-draw-tool=\"pick\"]')?.dataset.eyedropper ?? '' }; })()");
+  await snap(G, 'tools-drawer-m360');
+  await theme(G, 'office');
+  await sleep(200);
+  await snap(G, 'tools-drawer-office-m360');
+  await theme(G, 'pastel');
+  const kw2 = await G.evaluate("document.querySelector('[data-draw-keyword]')?.innerText ?? ''");
+  for (const P of [H, L]) {
+    await P.setInput('.chat-card input', kw2);
+    await P.click('전송');
+  }
+  S.emit('chat.send', { text: kw2, epoch: null });
+  await H.waitFor("document.querySelector('.ranking') !== null", 30000).catch(() => false);
+  note('채우기', { before, filled, inside });
+  note('되돌리기', { undone, empty });
+  note('도구', { custom, eraser, pen, eye, sizes, mob });
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r089'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r089'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r089', 'r089.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R089 페인트통 — 네모 안이 하늘색 · 세 화면(방장 PC · 손님 m360 · 늦게 온 1536) 격자 해시 같음', !!filled.h && filled.h === filled.g && filled.h === filled.l && filled.h !== before && Math.abs(inside[0] - 0x38) < 20 && Math.abs(inside[2] - 0xf8) < 20, JSON.stringify({ before, filled, inside }));
+  record('★★★ R089 되돌리기 — 버튼 = 채우기만 빠짐(해시 = 채우기 전 · 세 화면 같음) · Ctrl+Z = 네모까지(빈 판)', undone.h === before && undone.g === before && undone.l === before && empty.strokes === '0' && empty.h === empty.g, JSON.stringify({ undone, before, empty }));
+  record('★★ R089 세부 색 → 최근 색 · E(지우개) · ](굵게) · P(펜 — 굵기 따로) · 스포이드 버튼', custom.recent[0] === '#123456' && eraser.tool === 'eraser' && pen.tool === 'pen' && eraser.w !== '' && pen.w !== '' && eraser.w !== pen.w && ['system', 'canvas'].includes(eye), JSON.stringify({ custom, eraser, pen, eye }));
+  record('★★★ R089 도구 띠 — PC 1280 · FHD 125% · FHD 도구 화면 안 · 넘침 0 · 모바일 출제 도구 가로 화면 안(줄 바꿈) · 넘침 0', Object.values(sizes).every((m) => m.toolsIn && m.over <= 1) && mob.n >= 20 && mob.inX && mob.over <= 1, JSON.stringify({ sizes, mob }));
+  S.close();
+  H.close();
+  G.close();
+  L.close();
+}
+
+// =============================================================================
 // ★★★ R088 — 라이어 바보형 화면 (D-345) (UICHECK_R088=1 · 묶음 r088 · docs/design/r088)
 //   방장 PC 1280 · FHD 125%(1536×864 @1.25) · 손님 m360 터치 · 소켓 손님 1(3명) · 2라운드
 //   설정: 방식 라이어 → 모드 줄(기본형 · 바보형) · 바보형 누름 → 손님 칩 / 배정: 셋 다 시민 카드(라이어도 키워드) · 머리 "바보형" / 공개: "라이어가 받은 단어" · 세 테마
@@ -9794,6 +9934,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R089 — 캐치마인드 그리기 도구
+  if (process.env.UICHECK_R089) {
+    await closeAllTabs(browser);
+    await r089Flow(browser);
   }
   // ★ R088 — 라이어 바보형
   if (process.env.UICHECK_R088) {
