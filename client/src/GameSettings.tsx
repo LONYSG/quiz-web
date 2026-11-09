@@ -17,7 +17,9 @@ import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import {
   DRAW,
+  DRAW_TEAM_BLOCK,
   LIAR,
+  LIAR_TEAM_BLOCK,
   DIFFICULTY_LEVELS,
   GAME_TOPICS,
   MINIGAMES,
@@ -186,7 +188,7 @@ export default function GameSettings({
                 data-team-toggle
                 aria-pressed={teamOn}
                 disabled={teamDisabled || topicM}
-                title={teamDisabled ? '2명 이상일 때 켤 수 있어요' : teamOn ? '팀전 끄기' : '블루 · 레드 두 팀으로'}
+                title={liar ? LIAR_TEAM_BLOCK : drawM ? DRAW_TEAM_BLOCK : teamDisabled ? '2명 이상일 때 켤 수 있어요' : teamOn ? '팀전 끄기' : '블루 · 레드 두 팀으로'}
                 className={teamOn ? 'preset active team-toggle' : 'preset team-toggle'}
                 onClick={() => push({ ...draft, teamMode: !teamOn })}
               >
