@@ -226,10 +226,10 @@ describe('★★★ 미니게임만 (R057)', () => {
     expect(r.ok && r.settings.minigameOnly).toBe(false);
     expect(r.ok && r.settings.minigameRounds).toBe(MINIGAME_ONLY_ROUNDS.DEFAULT);
   });
-  it('켜고 2~50 은 통과(R066) · 밖이나 소수는 거부', () => {
-    expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 2 }).ok).toBe(true);
+  it('켜고 1~50 은 통과(R066 · R087 하한 1) · 밖이나 소수는 거부', () => {
+    expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 1 }).ok).toBe(true);
     expect(validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: 50 }).ok).toBe(true);
-    for (const n of [1, 51, 3.5, '5']) {
+    for (const n of [0, 51, 3.5, '5']) {
       const r = validateRoomSettings({ ...base, minigameOnly: true, minigameRounds: n });
       expect(r.ok).toBe(false);
       if (!r.ok) expect(r.field).toBe('minigameRounds');
@@ -237,6 +237,13 @@ describe('★★★ 미니게임만 (R057)', () => {
   });
   it('boolean 이 아니면 거부', () => {
     expect(validateRoomSettings({ ...base, minigameOnly: 'yes' }).ok).toBe(false);
+  });
+  it('★ R087 — 숨긴 미니게임(빙고 · 이 노래 몇 년도 · 객관식)은 저장된 설정에 있어도 거른다 · 숨긴 것만이면 전부(보이는 것)', () => {
+    const a = validateRoomSettings({ ...base, minigameKeys: ['bingo', 'many', 'songyear', 'choice'] });
+    expect(a.ok && a.settings.minigameKeys).toEqual(['many']);
+    const b = validateRoomSettings({ ...base, minigameKeys: ['bingo'] });
+    expect(b.ok && b.settings.minigameKeys.some((k) => k === 'bingo' || k === 'songyear' || k === 'choice')).toBe(false);
+    expect(b.ok && b.settings.minigameKeys.length).toBeGreaterThan(10);
   });
 });
 

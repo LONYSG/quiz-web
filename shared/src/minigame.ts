@@ -84,6 +84,12 @@ export interface MinigameInfo {
   fixedDecimals?: number;
   /** 소수 표시 규칙의 최대 자리 (없으면 3 · 각도 2) */
   maxDecimals?: number;
+  /**
+   * ★★ R087 (D-344 · 찬종 테스트 1 "빙고 폐기 혹은 비활성화 · 목록에서 빼" · "노래 몇 년도 삭제" · 객관식 "보기 퀄리티") — 목록에서 뺌(코드는 남김)
+   *   카탈로그 · 고르기 · 기본 선택에 안 보이고 저장된 방 설정에 있어도 거른다. 검사 서버(QUIZ_TEST_SERVER) · ui-check 는 보인다(옛 회귀 검사 유지).
+   *   되살리기 = 이 칸을 지운다(객관식은 GEN 보기 데이터 뒤 · 빙고는 찬종).
+   */
+  hidden?: boolean;
 }
 
 /** ★ 순서가 표시 순서다 */
@@ -121,6 +127,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   },
   {
     key: 'songyear',
+    hidden: true,
     name: '이 노래 몇 년도?',
     oneLine: '20초 듣고 노래가 나온 해를 맞혀 보세요! 가장 가까운 사람이 1등 · 3곡',
     controlsPc: '연도 4자리 입력 → Enter (바꿔도 돼요 — 마지막) · 소리를 켜 주세요',
@@ -135,6 +142,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   // ★★★ R081 (D-330 ⑹ ⑽ · D-338) — 빙고 · 순서대로(새것 먼저)
   {
     key: 'bingo',
+    hidden: true,
     name: '빙고',
     oneLine: '주제의 정답으로 4×4 판을 직접 채우고, 돌아가며 동시에 하나씩 불러요 — 2줄 먼저 빙고!',
     controlsPc: '채우기: 입력 → Enter · 부르기: 내 판의 칸 클릭',
@@ -150,7 +158,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'order',
     name: '순서대로',
-    oneLine: '카드 다섯 장 — 오래된 것부터 차례로 누르세요! 앞뒤가 맞은 쌍만큼 점수 · 3판',
+    oneLine: '카드 다섯 장 — 오래된 것부터 차례로 누르세요! 두 장씩 앞뒤 순서가 맞은 쌍마다 1점(10쌍) · 3판',
     controlsPc: '카드 클릭 또는 1 ~ 5 키(누른 순서대로 번호 · 다시 누르면 취소)',
     controlsMobile: '카드를 차례로 톡(다시 톡하면 취소)',
     kind: 'quiz',
@@ -192,6 +200,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   },
   {
     key: 'choice',
+    hidden: true,
     name: '객관식 10연속',
     oneLine: '퀴즈 문제 10개를 보기 넷 중에서 — 7초 안에! 많이 맞히고, 같으면 빠른 사람',
     controlsPc: '1 ~ 4 키 또는 클릭',
@@ -442,6 +451,21 @@ export function minigameInfo(key: MinigameKey): MinigameInfo {
 
 export function isMinigameKey(v: unknown): v is MinigameKey {
   return typeof v === 'string' && (MINIGAME_KEYS as readonly string[]).includes(v);
+}
+
+// ★★ R087 (D-344) — 숨긴 미니게임(hidden). 검사 서버는 보이게(옛 회귀 검사) — 서버는 env, 화면은 setShowHiddenMinigames(ui-check 가 부른다)
+const ENV = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env;
+let SHOW_HIDDEN = ENV?.QUIZ_TEST_SERVER === '1' || ENV?.MINIGAME_SHOW_HIDDEN === '1';
+export function setShowHiddenMinigames(on: boolean): void {
+  SHOW_HIDDEN = on;
+}
+/** 고를 수 있는 미니게임인가(숨김이 아니거나 검사) */
+export function minigameSelectable(key: MinigameKey): boolean {
+  return SHOW_HIDDEN || !minigameInfo(key)?.hidden;
+}
+/** 고를 수 있는 미니게임 — 표시 순서 */
+export function selectableMinigameKeys(): MinigameKey[] {
+  return MINIGAME_KEYS.filter(minigameSelectable);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

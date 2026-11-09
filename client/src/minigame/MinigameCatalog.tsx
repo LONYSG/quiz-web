@@ -14,7 +14,7 @@ import {
   ArrowLeftRight, Balloon, CircleCheckBig, Disc3, Music, Grid3x3, ListChecks, ListOrdered, MessagesSquare, Shuffle, Beef, CalendarClock, Check, Circle, Gauge, Globe, Hand, Image as ImageIcon, Keyboard, Ruler, Scale, ScanSearch, Tag, TriangleRight, Users, Zap,
   type LucideIcon,
 } from 'lucide-react';
-import { MINIGAMES, MINIGAME_EXAMPLES, type MinigameKey } from '@quiz/shared';
+import { MINIGAMES as ALL_MINIGAMES, MINIGAME_EXAMPLES, minigameSelectable, type MinigameKey } from '@quiz/shared';
 import Icon from '../Icon.js';
 import PopupClose from '../PopupClose.js';
 import { isReportOpen } from '../reportGuard.js';
@@ -61,6 +61,8 @@ interface Props {
 }
 
 export default function MinigameCatalog({ mode, editable, selected = [], onConfirm, onStart, onClose }: Props) {
+  // ★ R087 (D-344) — 숨긴 미니게임(hidden)은 목록에 안 나온다(검사 화면은 setShowHiddenMinigames)
+  const MINIGAMES = ALL_MINIGAMES.filter((m) => minigameSelectable(m.key));
   const [picked, setPicked] = useState<MinigameKey[]>(mode === 'select' ? [...selected] : []);
   // ★ R066 (D-281 · 찬종 #33 "실시간으로 고르는 거 방장이 아닌 사람한테 안 보임?") — 읽기 전용(손님)은 방장이 바꾸는 대로 바로(창을 연 때 값에 묶지 않는다)
   const chosen = editable ? picked : [...selected];

@@ -36,6 +36,7 @@ import {
   type MinigameKey,
   type Team,
   isDrawHintKind,
+  minigameSelectable,
   type DrawHintKind,
 } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } from '../db/rooms.js';
@@ -1109,7 +1110,8 @@ function registerRoomHandlers(socket: Socket): void {
       allowedStates: ['LOBBY'],
       parse: (raw) => {
         const obj = parseObject(raw);
-        if (!obj || !isMinigameKey(obj.key)) return null;
+        // ★ R087 — 숨긴 미니게임(hidden)은 연습도 안 된다(검사 서버는 됨)
+        if (!obj || !isMinigameKey(obj.key) || !minigameSelectable(obj.key)) return null;
         return { key: obj.key as string };
       },
     },

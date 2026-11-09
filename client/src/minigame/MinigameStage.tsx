@@ -592,14 +592,8 @@ function RoundResult({
       {view.key === 'ox' ? (
         <OxReveal view={view} mine={view.spectating ? undefined : mine} />
       ) : SONG_KEYS.has(view.key) ? (
-        <>
-          <SongReveal view={view} mine={view.spectating ? undefined : mine} />
-          {view.round?.itemId && (
-            <p className="mg-item-id">
-              <QNo id={view.round.itemId} raw />
-            </p>
-          )}
-        </>
+        // ★ R087 (D-344 · 찬종 "song-0287 같은 표기는 안 보여 줘도 됨") — 번호 숨김 · 제보 창 맥락(minigameItem)에는 그대로 남는다
+        <SongReveal view={view} mine={view.spectating ? undefined : mine} />
       ) : view.key === 'order' ? (
         <OrderReveal view={view} mine={view.spectating ? undefined : mine} />
       ) : view.key === 'bingo' ? (

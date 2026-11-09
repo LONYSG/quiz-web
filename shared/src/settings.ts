@@ -11,7 +11,7 @@
 // =============================================================================
 
 import { RULES } from './protocol.js';
-import { MINIGAME_KEYS, isMinigameKey, type MinigameKey } from './minigame.js';
+import { isMinigameKey, selectableMinigameKeys, type MinigameKey } from './minigame.js';
 import { LIAR, LIAR_TEAM_BLOCK, isRoomMode, type RoomMode } from './liar.js';
 import { DRAW, DRAW_TEAM_BLOCK } from './draw.js';
 
@@ -161,8 +161,9 @@ export function formatTopics(topics: readonly GameTopic[]): string {
 // ★ 켜면 문제 없이 미니게임 N개(2~10 · 기본 5)를 잇달아 한다 — 깜짝 연출은 첫 미니게임에만 · 결과는 미니게임 순위 점수 합.
 //   ★ 문제 수 · 난이도 · 분야 값은 그대로 남는다(끄면 돌아온다) — 이 모드에서는 쓰지 않을 뿐.
 // ─────────────────────────────────────────────────────────────────────────────
-/** ★ R066 (D-282 · 찬종 #36 "최대 미니게임 수는 50") — 2~10 → 2~50 */
-export const MINIGAME_ONLY_ROUNDS = { MIN: 2, MAX: 50, DEFAULT: 5 } as const;
+/** ★ R066 (D-282 · 찬종 #36 "최대 미니게임 수는 50") — 2~10 → 2~50
+ *  ★ R087 (D-344 · 찬종 "왜 최소 2개 이상 골라야 함? 1개 고를 수 없는 이유가 뭐지?") — 1~50 (이 하한이 "최소 2개" 의 출처였다) */
+export const MINIGAME_ONLY_ROUNDS = { MIN: 1, MAX: 50, DEFAULT: 5 } as const;
 
 export interface RoomSettingsInput {
   questionCount: number;
@@ -278,16 +279,19 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   if (raw.minigames !== undefined && typeof raw.minigames !== 'boolean') {
     return { ok: false, field: 'minigames', message: '미니게임 설정 형식이 올바르지 않습니다.' };
   }
-  let minigameKeys: MinigameKey[] = [...MINIGAME_KEYS];
+  // ★ R087 — 숨긴 미니게임(hidden)은 저장된 설정에 있어도 거른다(고를 수 있는 것만)
+  const selectable = selectableMinigameKeys();
+  let minigameKeys: MinigameKey[] = [...selectable];
   if (raw.minigameKeys !== undefined) {
     if (!Array.isArray(raw.minigameKeys) || !(raw.minigameKeys as unknown[]).every((k) => typeof k === 'string')) {
       return { ok: false, field: 'minigames', message: '미니게임 설정 형식이 올바르지 않습니다.' };
     }
     // ★ R060 — **모르는 키는 버린다**(삭제한 'twothirds' 가 옛 설정 · 열린 화면에 남아 있어도 안 깨지게 — D-253)
-    minigameKeys = MINIGAME_KEYS.filter((k) => (raw.minigameKeys as unknown[]).includes(k));
+    minigameKeys = selectable.filter((k) => (raw.minigameKeys as unknown[]).includes(k));
     if (minigameKeys.length === 0) {
       // 고른 것이 전부 없어진 게임이면 전부로 · 정말 빈 목록은 그대로 거절
-      if ((raw.minigameKeys as unknown[]).length > 0 && !(raw.minigameKeys as unknown[]).some(isMinigameKey)) minigameKeys = [...MINIGAME_KEYS];
+      // ★ R087 — 숨긴 것만 골라 둔 옛 설정도 같은 꼴(전부로)
+      if ((raw.minigameKeys as unknown[]).length > 0 && !(raw.minigameKeys as unknown[]).some((k) => isMinigameKey(k) && selectable.includes(k))) minigameKeys = [...selectable];
       else return { ok: false, field: 'minigames', message: '미니게임은 하나 이상 골라야 합니다.' };
     }
   }

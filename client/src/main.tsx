@@ -7,6 +7,7 @@ import { installPrefsSync } from './prefsSync.js';
 import { installUiMode } from './uiMode.js';
 import { installNoCopy } from './noCopy.js';
 import { installOffice } from './office.js';
+import { setShowHiddenMinigames } from '@quiz/shared';
 // ★★ R039 — Pretendard 를 우리 서버에서 낸다 (동적 서브셋 — 화면에 쓰인 글자 조각만 내려받는다)
 import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 import './styles.css';
@@ -23,6 +24,8 @@ installAudioUnlock();
 installPrefsSync();
 // ★ R074 (D-322) — 사무실 모드: 소리 끄고 되돌리기 · 탭 제목 · 파비콘
 installOffice();
+// ★ R087 (D-344) — 숨긴 미니게임(빙고 · 이 노래 몇 년도 · 객관식)은 목록에 없다 · 검사(ui-check)만 이 스위치로 보이게 한다
+(window as unknown as { __qwShowHidden?: (on: boolean) => void }).__qwShowHidden = setShowHiddenMinigames;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

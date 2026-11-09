@@ -23,7 +23,7 @@ import {
   DIFFICULTY_LEVELS,
   GAME_TOPICS,
   MINIGAMES,
-  MINIGAME_KEYS,
+  selectableMinigameKeys,
   MINIGAME_ONLY_ROUNDS,
   minigameSlots,
   minigameInfo,
@@ -125,7 +125,7 @@ export default function GameSettings({
   const roundsMax = topicM ? LIAR.ROUNDS.MAX : MINIGAME_ONLY_ROUNDS.MAX;
   const clampRounds = (n: number | undefined) => Math.min(LIAR.ROUNDS.MAX, Math.max(LIAR.ROUNDS.MIN, Number.isFinite(n) ? (n as number) : LIAR.ROUNDS.DEFAULT));
   const mgRounds = shown.minigameRounds ?? MINIGAME_ONLY_ROUNDS.DEFAULT;
-  const keysOf = (s: RoomSettings) => s.minigameKeys ?? [...MINIGAME_KEYS];
+  const keysOf = (s: RoomSettings) => s.minigameKeys ?? selectableMinigameKeys();
   // ★★★ R079 — 팀전 토글(방식 줄 오른쪽 · 퀴즈 · 미니게임만 어느 쪽과도) · 켜져 있으면 [자동 배정]
   const teamOn = shown.teamMode === true;
   const teamDisabled = !teamOn && playerCount < 2;
@@ -226,9 +226,9 @@ export default function GameSettings({
                 type="number"
                 className="count-input mg-rounds-input"
                 inputMode="numeric"
-                min={MINIGAME_ONLY_ROUNDS.MIN}
+                min={topicM ? LIAR.ROUNDS.MIN : MINIGAME_ONLY_ROUNDS.MIN}
                 max={roundsMax}
-                aria-label={`${topicM ? '라운드 수' : '미니게임 수'} (${MINIGAME_ONLY_ROUNDS.MIN}~${roundsMax})`}
+                aria-label={`${topicM ? '라운드 수' : '미니게임 수'} (${topicM ? LIAR.ROUNDS.MIN : MINIGAME_ONLY_ROUNDS.MIN}~${roundsMax})`}
                 value={Number.isFinite(draft.minigameRounds) ? draft.minigameRounds : ''}
                 onChange={(e) => push({ ...draft, minigameRounds: Number.parseInt(e.target.value, 10) })}
               />
@@ -385,7 +385,7 @@ export default function GameSettings({
               <input
                 type="checkbox"
                 checked={shown.minigames === true}
-                onChange={(e) => push({ ...draft, minigames: e.target.checked, minigameKeys: draft.minigameKeys ?? [...MINIGAME_KEYS] })}
+                onChange={(e) => push({ ...draft, minigames: e.target.checked, minigameKeys: draft.minigameKeys ?? selectableMinigameKeys() })}
               />
               포함
             </label>
@@ -399,12 +399,12 @@ export default function GameSettings({
               type="button"
               className="ghost tiny mg-cat-open"
               data-mg-catalog-open
-              title={editable ? undefined : (shown.minigameKeys ?? MINIGAME_KEYS).map((k) => minigameInfo(k).name).join(' · ')}
+              title={editable ? undefined : (shown.minigameKeys ?? selectableMinigameKeys()).map((k) => minigameInfo(k).name).join(' · ')}
               onClick={() => setCatOpen(true)}
             >
               <Icon icon={Gamepad2} /> {editable ? '미니게임 고르기' : '미니게임 보기'}{' '}
               <span className="mono dim">
-                {(shown.minigameKeys ?? MINIGAME_KEYS).length}/{MINIGAME_KEYS.length}
+                {(shown.minigameKeys ?? selectableMinigameKeys()).length}/{selectableMinigameKeys().length}
               </span>
             </button>
           )}
@@ -412,7 +412,7 @@ export default function GameSettings({
             <MinigameCatalog
               mode="select"
               editable={editable}
-              selected={shown.minigameKeys ?? [...MINIGAME_KEYS]}
+              selected={shown.minigameKeys ?? selectableMinigameKeys()}
               onClose={() => setCatOpen(false)}
               onConfirm={(keys) => {
                 setCatOpen(false);

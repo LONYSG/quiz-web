@@ -8266,7 +8266,8 @@ async function scenarioTopicSets() {
   expectTrue('★★★ --allow-candidate 를 실 DB 이름(quizweb)에서 거부 — 연결 전에 멈춤(exit 2)', r.code === 2 && /실 DB\(quizweb\)/.test(r.out), r.out.trim().slice(0, 120));
   r = topicsLoad(['--apply']);
   const c2 = await cnt();
-  expectTrue(`★★★ verified 만 넣기 — 활성 세트 = verified 파일 수(${verified}) · 나머지는 지우지 않고 쉬게 함`, c2.s === verified && c2.all_s === files.length, JSON.stringify(c2) + ' ' + r.out.trim().split('\n').pop());
+  expectTrue(`★★★ verified 만 넣기 — 활성 세트 = verified 파일 수(${verified}) · 나머지는 지우지 않고 쉬게 함`, c2.s === verified && c2.all_s >= files.length, JSON.stringify(c2) + ' ' + r.out.trim().split('\n').pop());
+  // ★ R087 — 위 all_s 는 ≥ : 파일이 지워진 옛 세트(G047 · G048 교체)는 DB 에 쉬는 채로 남는다
   // ── 적재된 세트가 모자라면 많이 말하기 · 겹치면 무효는 뽑히지 않는다(안내 없이 다른 게임) — 파일 상태와 무관하게 검사 DB 에서 전부 쉬게 하고 본다
   await withDb((c) => c.query(`UPDATE topic_sets SET active = false`));
   {

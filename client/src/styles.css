@@ -10621,6 +10621,9 @@ button.preset.shake {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   width: min(520px, 100%);
+  /* ★ R087 (D-344 · 찬종 "중앙 정렬이 안 되어 있음") — 어느 크기에서나 가운데 */
+  margin-inline: auto;
+  justify-self: center;
 }
 .ox-btn {
   position: relative;
@@ -10773,4 +10776,23 @@ button.preset.shake {
 .ox-answers li.ok,
 .ox-answers li.bad {
   color: var(--text);
+}
+
+/* ★ R087 (D-344) — 순서대로 공개: 맞은 쌍을 크게 + 뜻 한 줄 */
+.order-pairs {
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  text-align: center;
+}
+.order-pairs-big {
+  margin: 4px 0 0;
+  font-size: 1.15rem;
+}
+.order-pairs-big strong {
+  color: var(--accent);
+}
+.order-pairs-why {
+  margin: 0;
+  font-size: 0.82rem;
 }

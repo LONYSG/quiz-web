@@ -82,7 +82,7 @@ export function OrderPick({ socket, view, serverNow, mobile }: Props) {
         })}
       </div>
       <p className={`quiz-num-help${done ? ' ok' : ' dim'}`} data-order-done={done ? '1' : ''}>
-        {view.spectating ? '구경 중이에요' : done ? '다 골랐어요 — 시간 안에 바꿔도 돼요' : `${picked.length} / ${cards.length} — 다 눌러야 점수`}
+        {view.spectating ? '구경 중이에요' : done ? '다 골랐어요 — 시간 안에 바꿔도 돼요' : `${picked.length} / ${cards.length} — 다 눌러야 점수 · 두 장씩 앞뒤 순서가 맞은 쌍마다 1점(10쌍)`}
       </p>
     </div>
   );
@@ -111,10 +111,20 @@ export function OrderReveal({ view, mine }: { view: MinigameView; mine: Minigame
           </li>
         ))}
       </ol>
+      {/* ★ R087 (D-344 · 찬종 "틀려도 점수 주는 거 같은데") — 점수식은 그대로(D-338) · 표시를 크게 · 뜻을 한 줄로 */}
       {mine && !view.spectating && (
-        <p className="quiz-num-help" data-order-pairs={mine.extra?.pairs ?? ''}>
-          {my.length === ans.length ? `맞은 쌍 ${Number(mine.extra?.pairs ?? 0)} / 10` : '다 못 골랐어요 — 0점'}
-        </p>
+        <div className="order-pairs" data-order-pairs={mine.extra?.pairs ?? ''}>
+          {my.length === ans.length ? (
+            <>
+              <p className="order-pairs-big">
+                맞은 쌍 <strong className="mono">{Number(mine.extra?.pairs ?? 0)} / 10</strong> → <strong className="mono">{Number(mine.extra?.pairs ?? 0)}점</strong>
+              </p>
+              <p className="dim order-pairs-why">카드 두 장씩 10쌍 중 앞뒤 순서가 맞은 쌍 수 — 하나만 자리를 바꾸면 9 · 전부 거꾸로면 0</p>
+            </>
+          ) : (
+            <p className="order-pairs-big">다 못 골랐어요 — 0점</p>
+          )}
+        </div>
       )}
     </div>
   );

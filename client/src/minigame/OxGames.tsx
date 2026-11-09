@@ -85,13 +85,13 @@ export function OxPick({ socket, view, serverNow, mobile }: Props) {
             disabled={!t.canPlay}
             onClick={() => pick(v)}
           >
+            {/* ★ R087 (D-344 · 찬종 "버튼 안에 O X 말고 다른 글자는 쓰지 말자") — 키 안내는 아래 한 줄로 */}
             <span className="ox-mark">{OX(v)}</span>
-            {!mobile && <span className="ox-key mono">{v ? 'O · ←' : 'X · →'}</span>}
           </button>
         ))}
       </div>
       <p className="quiz-num-help dim" data-ox-mine={mine === null ? '' : OX(mine)}>
-        {mine !== null ? `${OX(mine)} 골랐어요 — 바꿔도 돼요` : view.spectating ? '구경 중이에요' : `맞으면 O · 틀리면 X — ${t.leftSec}초`}
+        {mine !== null ? `${OX(mine)} 골랐어요 — 바꿔도 돼요` : view.spectating ? '구경 중이에요' : mobile ? `${t.leftSec}초` : `O · X 키 또는 ← → — ${t.leftSec}초`}
       </p>
     </div>
   );
