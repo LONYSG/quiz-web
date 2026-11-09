@@ -1179,5 +1179,236 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 59,
+  "foolAudit": {
+   "fools": 177,
+   "ok": 161,
+   "tooClose": 11,
+   "tooFar": 3,
+   "bad": 2
+  },
+  "problemItems": 17,
+  "counts": {
+   "remove": 0,
+   "diff": 2,
+   "era": 0,
+   "sub": 0,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-snack-001",
+    "name": "새우깡",
+    "replace": [
+     {
+      "from": "감자깡",
+      "verdict": "tooClose",
+      "to": "인디안밥"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-007",
+    "name": "바나나우유",
+    "replace": [
+     {
+      "from": "딸기우유",
+      "verdict": "tooClose",
+      "to": "두유"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-009",
+    "name": "사이다",
+    "replace": [
+     {
+      "from": "토닉워터",
+      "verdict": "bad",
+      "to": "스프라이트"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-015",
+    "name": "와플",
+    "replace": [
+     {
+      "from": "크로플",
+      "verdict": "tooClose",
+      "to": "팬케이크"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-016",
+    "name": "팝콘",
+    "replace": [
+     {
+      "from": "콘칩",
+      "verdict": "tooFar",
+      "to": "오징어땅콩"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-snack-018",
+    "name": "초콜릿",
+    "reason": "흔한 표기 빠짐",
+    "fix": "변형 [초콜렛;초코]"
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-030",
+    "name": "죠리퐁",
+    "replace": [
+     {
+      "from": "씨리얼",
+      "verdict": "tooClose",
+      "to": "초코볼"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-032",
+    "name": "프링글스",
+    "replace": [
+     {
+      "from": "포테토칩",
+      "verdict": "tooClose",
+      "to": "스윙칩"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-039",
+    "name": "츄러스",
+    "replace": [
+     {
+      "from": "핫도그",
+      "verdict": "tooFar",
+      "to": "와플"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-048",
+    "name": "카페라떼",
+    "replace": [
+     {
+      "from": "카푸치노",
+      "verdict": "tooClose",
+      "to": "아포가토"
+     },
+     {
+      "from": "플랫화이트",
+      "verdict": "bad",
+      "to": "바닐라라떼"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-049",
+    "name": "달고나",
+    "replace": [
+     {
+      "from": "뽑기",
+      "verdict": "tooClose",
+      "to": "엿"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-snack-051",
+    "name": "누가바",
+    "reason": "흔한 아이스바",
+    "fix": "diff 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-053",
+    "name": "에그타르트",
+    "replace": [
+     {
+      "from": "타르트",
+      "verdict": "tooClose",
+      "to": "크림빵"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-055",
+    "name": "미숫가루",
+    "replace": [
+     {
+      "from": "선식",
+      "verdict": "tooClose",
+      "to": "율무차"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-056",
+    "name": "약과",
+    "replace": [
+     {
+      "from": "맛동산",
+      "verdict": "tooFar",
+      "to": "다식"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-057",
+    "name": "하이볼",
+    "replace": [
+     {
+      "from": "칵테일",
+      "verdict": "tooClose",
+      "to": "소맥"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-058",
+    "name": "뻥튀기",
+    "replace": [
+     {
+      "from": "쌀과자",
+      "verdict": "tooClose",
+      "to": "누룽지"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-snack-058",
+    "name": "뻥튀기",
+    "reason": "흔한 간식",
+    "fix": "diff 2"
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 17/59 (fool tooClose 11 · tooFar 3 · bad 2 · remove 0 · diff 2 · era 0 · sub 0 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }

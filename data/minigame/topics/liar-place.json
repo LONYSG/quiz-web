@@ -1071,5 +1071,188 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 53,
+  "foolAudit": {
+   "fools": 159,
+   "ok": 147,
+   "tooClose": 9,
+   "tooFar": 1,
+   "bad": 2
+  },
+  "problemItems": 15,
+  "counts": {
+   "remove": 0,
+   "diff": 2,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-place-004",
+    "name": "재래시장",
+    "replace": [
+     {
+      "from": "야시장",
+      "verdict": "tooClose",
+      "to": "편의점"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-005",
+    "name": "카페",
+    "replace": [
+     {
+      "from": "찻집",
+      "verdict": "tooClose",
+      "to": "식당"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-010",
+    "name": "학원",
+    "replace": [
+     {
+      "from": "과외방",
+      "verdict": "bad",
+      "to": "어린이집"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-011",
+    "name": "대학교",
+    "replace": [
+     {
+      "from": "대학원",
+      "verdict": "tooClose",
+      "to": "중학교"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-018",
+    "name": "찜질방",
+    "replace": [
+     {
+      "from": "사우나",
+      "verdict": "tooClose",
+      "to": "마사지숍"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-019",
+    "name": "헬스장",
+    "replace": [
+     {
+      "from": "체육관",
+      "verdict": "tooClose",
+      "to": "필라테스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-021",
+    "name": "스키장",
+    "replace": [
+     {
+      "from": "눈썰매장",
+      "verdict": "tooClose",
+      "to": "스케이트장"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-022",
+    "name": "미용실",
+    "replace": [
+     {
+      "from": "이발소",
+      "verdict": "tooClose",
+      "to": "세탁소"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-023",
+    "name": "결혼식장",
+    "replace": [
+     {
+      "from": "연회장",
+      "verdict": "tooClose",
+      "to": "돌잔치 뷔페"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-028",
+    "name": "캠핑장",
+    "replace": [
+     {
+      "from": "글램핑장",
+      "verdict": "tooClose",
+      "to": "별장"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-place-035",
+    "name": "경주",
+    "reason": "국민 관광지",
+    "fix": "diff 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-place-036",
+    "name": "강릉",
+    "reason": "흔한 관광지",
+    "fix": "diff 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-040",
+    "name": "한강",
+    "replace": [
+     {
+      "from": "센강",
+      "verdict": "tooFar",
+      "to": "금강"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-053",
+    "name": "나이아가라 폭포",
+    "replace": [
+     {
+      "from": "빅토리아 폭포",
+      "verdict": "bad",
+      "to": null
+     }
+    ]
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 15/53 (fool tooClose 9 · tooFar 1 · bad 2 · remove 0 · diff 2 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

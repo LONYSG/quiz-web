@@ -1122,5 +1122,216 @@
    "qid": 6178
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 53,
+  "foolAudit": {
+   "fools": 159,
+   "ok": 146,
+   "tooClose": 11,
+   "tooFar": 2,
+   "bad": 0
+  },
+  "problemItems": 17,
+  "counts": {
+   "remove": 0,
+   "diff": 5,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-brand-002",
+    "name": "메가커피",
+    "replace": [
+     {
+      "from": "컴포즈커피",
+      "verdict": "tooClose",
+      "to": "파스쿠찌"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-brand-003",
+    "name": "투썸플레이스",
+    "reason": "커피 프랜차이즈로 흔함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-004",
+    "name": "맥도날드",
+    "replace": [
+     {
+      "from": "롯데리아",
+      "verdict": "tooClose",
+      "to": "서브웨이"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-007",
+    "name": "도미노피자",
+    "replace": [
+     {
+      "from": "피자헛",
+      "verdict": "tooClose",
+      "to": "피자알볼로"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-008",
+    "name": "배스킨라빈스",
+    "replace": [
+     {
+      "from": "설빙",
+      "verdict": "tooFar",
+      "to": "블루문"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-010",
+    "name": "성심당",
+    "replace": [
+     {
+      "from": "이성당",
+      "verdict": "tooClose",
+      "to": "던킨"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-014",
+    "name": "코스트코",
+    "replace": [
+     {
+      "from": "트레이더스",
+      "verdict": "tooClose",
+      "to": "홈플러스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-019",
+    "name": "당근마켓",
+    "replace": [
+     {
+      "from": "중고나라",
+      "verdict": "tooClose",
+      "to": "티몬"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-021",
+    "name": "배달의민족",
+    "replace": [
+     {
+      "from": "요기요",
+      "verdict": "tooClose",
+      "to": "마켓컬리"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-027",
+    "name": "네이버",
+    "replace": [
+     {
+      "from": "다음",
+      "verdict": "tooClose",
+      "to": "카카오"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-brand-030",
+    "name": "토스",
+    "reason": "금융앱으로 흔함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-brand-038",
+    "name": "롤렉스",
+    "reason": "시계 하면 먼저 나옴",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-049",
+    "name": "코카콜라",
+    "replace": [
+     {
+      "from": "환타",
+      "verdict": "tooClose",
+      "to": "스프라이트"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-050",
+    "name": "레고",
+    "replace": [
+     {
+      "from": "옥스포드 블록",
+      "verdict": "tooClose",
+      "to": "토미카"
+     },
+     {
+      "from": "실바니안 패밀리",
+      "verdict": "tooFar",
+      "to": "바비"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-brand-051",
+    "name": "아마존",
+    "reason": "세계적 쇼핑몰이라 알려짐",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-brand-052",
+    "name": "엔비디아",
+    "replace": [
+     {
+      "from": "AMD",
+      "verdict": "tooClose",
+      "to": "애플"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-brand-053",
+    "name": "농심",
+    "reason": "라면 대표 회사",
+    "fix": "diff 3 → 2"
+   }
+  ],
+  "unsure": [
+   "liar-brand-011/012: CU·GS25 가 서로 fool 에 없어 괜찮으나 미니스톱은 사라져 인지도 낮아졌을 수 있음"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 17/53 (fool tooClose 11 · tooFar 2 · bad 0 · remove 0 · diff 5 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

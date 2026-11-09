@@ -1180,5 +1180,116 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 60,
+  "foolAudit": {
+   "fools": 180,
+   "ok": 173,
+   "tooClose": 5,
+   "tooFar": 1,
+   "bad": 1
+  },
+  "problemItems": 7,
+  "counts": {
+   "remove": 0,
+   "diff": 0,
+   "era": 0,
+   "sub": 1,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-animal-002",
+    "name": "고양이",
+    "replace": [
+     {
+      "from": "삵",
+      "verdict": "bad",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-animal-010",
+    "name": "돼지",
+    "replace": [
+     {
+      "from": "하마",
+      "verdict": "tooFar",
+      "to": "닭"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-animal-014",
+    "name": "거북이",
+    "replace": [
+     {
+      "from": "자라",
+      "verdict": "tooClose",
+      "to": "뱀"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-animal-022",
+    "name": "오징어",
+    "replace": [
+     {
+      "from": "낙지",
+      "verdict": "tooClose",
+      "to": "해파리"
+     },
+     {
+      "from": "주꾸미",
+      "verdict": "tooClose",
+      "to": "가오리"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-animal-039",
+    "name": "고래",
+    "replace": [
+     {
+      "from": "범고래",
+      "verdict": "tooClose",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-animal-040",
+    "name": "문어",
+    "replace": [
+     {
+      "from": "낙지",
+      "verdict": "tooClose",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "sub",
+    "id": "liar-animal-048",
+    "name": "거미",
+    "reason": "거미는 곤충이 아님",
+    "fix": "sub: 곤충 → 절지동물"
+   }
+  ],
+  "unsure": [
+   "liar-animal-001: 변형 '개' 1글자 — 채팅 판정에선 받아야 해서 그대로 둠"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 7/60 (fool tooClose 5 · tooFar 1 · bad 1 · remove 0 · diff 0 · era 0 · sub 1 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

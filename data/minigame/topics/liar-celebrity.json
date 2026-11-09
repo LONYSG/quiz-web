@@ -1176,5 +1176,379 @@
    "qid": 4102
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 59,
+  "foolAudit": {
+   "fools": 177,
+   "ok": 150,
+   "tooClose": 10,
+   "tooFar": 3,
+   "bad": 14
+  },
+  "problemItems": 25,
+  "counts": {
+   "remove": 1,
+   "diff": 6,
+   "era": 0,
+   "sub": 3,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-celebrity-007",
+    "name": "공유",
+    "replace": [
+     {
+      "from": "이동욱",
+      "verdict": "tooClose",
+      "to": "소지섭"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-014",
+    "name": "변우석",
+    "replace": [
+     {
+      "from": "송강",
+      "verdict": "bad",
+      "to": "서강준"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-020",
+    "name": "김지원",
+    "replace": [
+     {
+      "from": "고윤정",
+      "verdict": "bad",
+      "to": "신혜선"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-025",
+    "name": "김종국",
+    "replace": [
+     {
+      "from": "하하",
+      "verdict": "tooClose",
+      "to": "강호동"
+     },
+     {
+      "from": "이광수",
+      "verdict": "tooClose",
+      "to": "박명수"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-026",
+    "name": "하하",
+    "replace": [
+     {
+      "from": "김종국",
+      "verdict": "tooClose",
+      "to": "박명수"
+     },
+     {
+      "from": "조세호",
+      "verdict": "bad",
+      "to": "양세형"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-027",
+    "name": "정형돈",
+    "replace": [
+     {
+      "from": "하하",
+      "verdict": "tooClose",
+      "to": "강호동"
+     },
+     {
+      "from": "데프콘",
+      "verdict": "tooClose",
+      "to": "붐"
+     },
+     {
+      "from": "조세호",
+      "verdict": "bad",
+      "to": "양세형"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-028",
+    "name": "이광수",
+    "replace": [
+     {
+      "from": "조세호",
+      "verdict": "bad",
+      "to": "양세형"
+     },
+     {
+      "from": "김종국",
+      "verdict": "tooClose",
+      "to": "박명수"
+     }
+    ]
+   },
+   {
+    "op": "remove",
+    "id": "liar-celebrity-029",
+    "name": "조세호",
+    "reason": "2025-12 조직폭력배 연루 의혹으로 유퀴즈·1박2일 자진 하차(본인 부인, 법적 대응 예고) — 보도된 큰 건",
+    "fix": "세트에서 제거"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-031",
+    "name": "기안84",
+    "replace": [
+     {
+      "from": "코드쿤스트",
+      "verdict": "bad",
+      "to": "김대호"
+     },
+     {
+      "from": "이시언",
+      "verdict": "tooClose",
+      "to": "침착맨"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-032",
+    "name": "덱스",
+    "replace": [
+     {
+      "from": "육준서",
+      "verdict": "bad",
+      "to": "빠니보틀"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-033",
+    "name": "서장훈",
+    "replace": [
+     {
+      "from": "허재",
+      "verdict": "tooClose",
+      "to": "신동엽"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-034",
+    "name": "장도연",
+    "replace": [
+     {
+      "from": "이은지",
+      "verdict": "bad",
+      "to": "송은이"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-037",
+    "name": "아이유",
+    "replace": [
+     {
+      "from": "백예린",
+      "verdict": "bad",
+      "to": "백지영"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-038",
+    "name": "태연",
+    "replace": [
+     {
+      "from": "백예린",
+      "verdict": "bad",
+      "to": "백지영"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-celebrity-042",
+    "name": "박진영",
+    "reason": "전국민 인지도, d3 는 과함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-043",
+    "name": "성시경",
+    "replace": [
+     {
+      "from": "정승환",
+      "verdict": "bad",
+      "to": "이승철"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-celebrity-044",
+    "name": "조용필",
+    "reason": "국민가수, d3 는 과함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-046",
+    "name": "장원영",
+    "replace": [
+     {
+      "from": "해원",
+      "verdict": "bad",
+      "to": "카리나"
+     }
+    ]
+   },
+   {
+    "op": "sub",
+    "id": "liar-celebrity-046",
+    "name": "장원영",
+    "reason": "솔로 가수 아님 — 아이브 멤버",
+    "fix": "sub: 솔로 가수 → 아이돌 멤버"
+   },
+   {
+    "op": "diff",
+    "id": "liar-celebrity-046",
+    "name": "장원영",
+    "reason": "40~50대는 모를 수 있음",
+    "fix": "diff 1 → 2"
+   },
+   {
+    "op": "sub",
+    "id": "liar-celebrity-047",
+    "name": "제니",
+    "reason": "솔로 가수가 아니라 블랙핑크 멤버(솔로 활동 병행)",
+    "fix": "sub: 솔로 가수 → 아이돌 멤버"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-049",
+    "name": "스티브 잡스",
+    "replace": [
+     {
+      "from": "빌 게이츠",
+      "verdict": "tooClose",
+      "to": "제프 베이조스"
+     }
+    ]
+   },
+   {
+    "op": "sub",
+    "id": "liar-celebrity-049",
+    "name": "스티브 잡스",
+    "reason": "해외 스타 아닌 기업가 — 연예인 세트와 결이 다름",
+    "fix": "sub: 해외 스타 → 해외 인물 (또는 세트에서 제거)"
+   },
+   {
+    "op": "diff",
+    "id": "liar-celebrity-052",
+    "name": "김민재",
+    "reason": "월드컵·뮌헨 대스타, d3 는 과함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-celebrity-054",
+    "name": "김연경",
+    "reason": "국민 인지도, d3 는 과함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-056",
+    "name": "오타니 쇼헤이",
+    "replace": [
+     {
+      "from": "이정후",
+      "verdict": "tooFar",
+      "to": "이치로"
+     },
+     {
+      "from": "류현진",
+      "verdict": "tooFar",
+      "to": "다르빗슈 유"
+     },
+     {
+      "from": "박찬호",
+      "verdict": "tooFar",
+      "to": "마쓰이 히데키"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-celebrity-056",
+    "name": "오타니 쇼헤이",
+    "reason": "국내 인지도 높음",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "variant",
+    "id": "liar-celebrity-058",
+    "name": "크리스티아누 호날두",
+    "reason": "한국에서 흔한 표기 호날도 빠짐",
+    "fix": "[호날두;호날도;Ronaldo;CR7]"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-059",
+    "name": "페이커",
+    "replace": [
+     {
+      "from": "쵸비",
+      "verdict": "bad",
+      "to": "홍진호"
+     },
+     {
+      "from": "룰러",
+      "verdict": "bad",
+      "to": "임요환"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-celebrity-011: 송중기 — 이혼(2019)·재혼 사생활 보도, 큰 논란은 아니라 유지",
+   "liar-celebrity-024: fool 이경규 — 2025-06 약물운전 입건, 10월 벌금 200만원 약식명령(확인함)",
+   "liar-celebrity-030: 전현무 — 2025말 주변 연예인 논란 연루 보도 기억, 확신 낮음(웹 확인 못 함)",
+   "liar-celebrity-041: 싸이 — 2007 병역 부실복무 재복무 이력, 오래되어 해소된 건",
+   "liar-celebrity-044: fool 이선희 — 2022 소속사 후크 대표 횡령 사건 관련 보도",
+   "liar-celebrity-053: fool 박태환 — 2014 도핑 사건",
+   "liar-celebrity-054: fool 박세리 — 2025 재단 관련 보도 기억, 확신 낮음",
+   "liar-celebrity-056: 오타니 — 2024 통역사 불법도박 건(본인 혐의 없음)",
+   "liar-celebrity-057: 메시 — 2016 탈세 유죄 · fool 네이마르 — 탈세·성폭행 의혹 보도(무혐의)",
+   "liar-celebrity-058: 호날두 — 2018 성폭행 의혹(합의·기각), 탈세 벌금 · fool 음바페 — 2024 의혹(수사 종결) · 네이마르 동일"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 25/59 (fool tooClose 10 · tooFar 3 · bad 14 · remove 1 · diff 6 · era 0 · sub 3 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }

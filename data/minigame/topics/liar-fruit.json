@@ -1134,5 +1134,104 @@
    "qid": 3728
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 58,
+  "foolAudit": {
+   "fools": 174,
+   "ok": 168,
+   "tooClose": 6,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 6,
+  "counts": {
+   "remove": 0,
+   "diff": 0,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-fruit-004",
+    "name": "포도",
+    "replace": [
+     {
+      "from": "머루",
+      "verdict": "tooClose",
+      "to": "오디"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-fruit-026",
+    "name": "멜론",
+    "replace": [
+     {
+      "from": "참외",
+      "verdict": "tooClose",
+      "to": "키위"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-fruit-030",
+    "name": "한라봉",
+    "replace": [
+     {
+      "from": "천혜향",
+      "verdict": "tooClose",
+      "to": "귤"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-fruit-031",
+    "name": "홍시",
+    "replace": [
+     {
+      "from": "곶감",
+      "verdict": "tooClose",
+      "to": "모과"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-fruit-038",
+    "name": "상추",
+    "replace": [
+     {
+      "from": "양상추",
+      "verdict": "tooClose",
+      "to": "케일"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-fruit-040",
+    "name": "파프리카",
+    "replace": [
+     {
+      "from": "피망",
+      "verdict": "tooClose",
+      "to": "오이"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-fruit-018: 토마토 fool 자두는 과일이라 약간 멀 수 있으나 둥글고 붉다는 설명이 겹쳐 ok 로 둠"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 6/58 (fool tooClose 6 · tooFar 0 · bad 0 · remove 0 · diff 0 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

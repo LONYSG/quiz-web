@@ -1002,5 +1002,225 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 50,
+  "foolAudit": {
+   "fools": 150,
+   "ok": 133,
+   "tooClose": 7,
+   "tooFar": 1,
+   "bad": 9
+  },
+  "problemItems": 15,
+  "counts": {
+   "remove": 1,
+   "diff": 0,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-instrument-002",
+    "name": "오르간",
+    "replace": [
+     {
+      "from": "하프시코드",
+      "verdict": "bad",
+      "to": "아코디언"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-008",
+    "name": "일렉기타",
+    "replace": [
+     {
+      "from": "신시사이저",
+      "verdict": "tooFar",
+      "to": "우쿨렐레"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-013",
+    "name": "하프",
+    "replace": [
+     {
+      "from": "하프시코드",
+      "verdict": "bad",
+      "to": "첼로"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-014",
+    "name": "바이올린",
+    "replace": [
+     {
+      "from": "비올라",
+      "verdict": "tooClose",
+      "to": "하프"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-015",
+    "name": "비올라",
+    "replace": [
+     {
+      "from": "바이올린",
+      "verdict": "tooClose",
+      "to": "콘트라베이스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-033",
+    "name": "태평소",
+    "replace": [
+     {
+      "from": "나발",
+      "verdict": "bad",
+      "to": "단소"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-034",
+    "name": "해금",
+    "replace": [
+     {
+      "from": "아쟁",
+      "verdict": "bad",
+      "to": "거문고"
+     }
+    ]
+   },
+   {
+    "op": "remove",
+    "id": "liar-instrument-035",
+    "name": "아쟁",
+    "reason": "20~50대 대부분이 모르는 악기(국악 전공 수준)",
+    "fix": "삭제"
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-036",
+    "name": "가야금",
+    "replace": [
+     {
+      "from": "거문고",
+      "verdict": "tooClose",
+      "to": "비파"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-037",
+    "name": "거문고",
+    "replace": [
+     {
+      "from": "가야금",
+      "verdict": "tooClose",
+      "to": "하프"
+     },
+     {
+      "from": "아쟁",
+      "verdict": "bad",
+      "to": "비파"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-041",
+    "name": "드럼",
+    "replace": [
+     {
+      "from": "카혼",
+      "verdict": "bad",
+      "to": "봉고"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-043",
+    "name": "실로폰",
+    "replace": [
+     {
+      "from": "마림바",
+      "verdict": "tooClose",
+      "to": "탬버린"
+     },
+     {
+      "from": "철금",
+      "verdict": "bad",
+      "to": "트라이앵글"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-044",
+    "name": "마림바",
+    "replace": [
+     {
+      "from": "실로폰",
+      "verdict": "tooClose",
+      "to": "드럼"
+     },
+     {
+      "from": "철금",
+      "verdict": "bad",
+      "to": "탬버린"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-048",
+    "name": "마라카스",
+    "replace": [
+     {
+      "from": "셰이커",
+      "verdict": "tooClose",
+      "to": "징"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-instrument-050",
+    "name": "젬베",
+    "replace": [
+     {
+      "from": "카혼",
+      "verdict": "bad",
+      "to": "봉고"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-instrument-006: 하프시코드 일반 인지도 낮음 d3 로도 빠듯 — 유지 여부 판단 필요",
+   "liar-instrument-012: 밴조 인지도 낮음 d3 빠듯",
+   "liar-instrument-044: 마림바 d2 는 인지도 약함, d3 가능",
+   "liar-instrument-050: 젬베 d2 는 인지도 약함, d3 가능"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 15/50 (fool tooClose 7 · tooFar 1 · bad 9 · remove 1 · diff 0 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

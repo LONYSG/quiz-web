@@ -1125,5 +1125,374 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 56,
+  "foolAudit": {
+   "fools": 168,
+   "ok": 144,
+   "tooClose": 20,
+   "tooFar": 4,
+   "bad": 0
+  },
+  "problemItems": 27,
+  "counts": {
+   "remove": 0,
+   "diff": 8,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-object-004",
+    "name": "소파",
+    "replace": [
+     {
+      "from": "안락의자",
+      "verdict": "tooClose",
+      "to": "의자"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-006",
+    "name": "거울",
+    "replace": [
+     {
+      "from": "창문",
+      "verdict": "tooFar",
+      "to": "시계"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-007",
+    "name": "베개",
+    "replace": [
+     {
+      "from": "인형",
+      "verdict": "tooFar",
+      "to": "담요"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-008",
+    "name": "냉장고",
+    "replace": [
+     {
+      "from": "김치냉장고",
+      "verdict": "tooClose",
+      "to": "오븐"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-009",
+    "name": "세탁기",
+    "replace": [
+     {
+      "from": "건조기",
+      "verdict": "tooClose",
+      "to": "청소기"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-010",
+    "name": "청소기",
+    "replace": [
+     {
+      "from": "물걸레 청소기",
+      "verdict": "tooClose",
+      "to": "다리미"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-011",
+    "name": "선풍기",
+    "replace": [
+     {
+      "from": "서큘레이터",
+      "verdict": "tooClose",
+      "to": "히터"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-015",
+    "name": "밥솥",
+    "replace": [
+     {
+      "from": "압력솥",
+      "verdict": "tooClose",
+      "to": "믹서기"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-020",
+    "name": "노트북",
+    "replace": [
+     {
+      "from": "데스크톱",
+      "verdict": "tooClose",
+      "to": "프린터"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-021",
+    "name": "이어폰",
+    "replace": [
+     {
+      "from": "헤드폰",
+      "verdict": "tooClose",
+      "to": "충전기"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-022",
+    "name": "키보드",
+    "reason": "누구나 아는 물건",
+    "fix": "diff 3 → 1"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-025",
+    "name": "스마트워치",
+    "replace": [
+     {
+      "from": "스마트밴드",
+      "verdict": "tooClose",
+      "to": "무선이어폰"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-025",
+    "name": "스마트워치",
+    "reason": "흔한 편",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-028",
+    "name": "프라이팬",
+    "replace": [
+     {
+      "from": "그릴팬",
+      "verdict": "tooClose",
+      "to": "뚝배기"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-030",
+    "name": "도마",
+    "reason": "주방 필수품",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-031",
+    "name": "텀블러",
+    "replace": [
+     {
+      "from": "보온병",
+      "verdict": "tooClose",
+      "to": "도시락"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-032",
+    "name": "병따개",
+    "replace": [
+     {
+      "from": "캔따개",
+      "verdict": "tooClose",
+      "to": "국자"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-032",
+    "name": "병따개",
+    "reason": "흔한 물건",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-033",
+    "name": "칫솔",
+    "replace": [
+     {
+      "from": "전동칫솔",
+      "verdict": "tooClose",
+      "to": "면봉"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-035",
+    "name": "비누",
+    "replace": [
+     {
+      "from": "바디워시",
+      "verdict": "tooClose",
+      "to": "린스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-037",
+    "name": "면도기",
+    "replace": [
+     {
+      "from": "드라이기",
+      "verdict": "tooFar",
+      "to": "빗"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-037",
+    "name": "면도기",
+    "reason": "흔한 물건",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-038",
+    "name": "연필",
+    "replace": [
+     {
+      "from": "샤프",
+      "verdict": "tooClose",
+      "to": "형광펜"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-043",
+    "name": "포스트잇",
+    "replace": [
+     {
+      "from": "메모지",
+      "verdict": "tooClose",
+      "to": "노트"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-043",
+    "name": "포스트잇",
+    "reason": "흔한 문구",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-044",
+    "name": "우산",
+    "replace": [
+     {
+      "from": "양산",
+      "verdict": "tooClose",
+      "to": "모자"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-045",
+    "name": "안경",
+    "replace": [
+     {
+      "from": "돋보기",
+      "verdict": "tooClose",
+      "to": "시계"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-047",
+    "name": "열쇠",
+    "reason": "흔한 물건",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-048",
+    "name": "마스크",
+    "replace": [
+     {
+      "from": "안대",
+      "verdict": "tooFar",
+      "to": "장갑"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-050",
+    "name": "손전등",
+    "replace": [
+     {
+      "from": "랜턴",
+      "verdict": "tooClose",
+      "to": "성냥"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-050",
+    "name": "손전등",
+    "reason": "흔한 물건",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-055",
+    "name": "레고",
+    "replace": [
+     {
+      "from": "블록",
+      "verdict": "tooClose",
+      "to": "점토"
+     }
+    ]
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 27/56 (fool tooClose 20 · tooFar 4 · bad 0 · remove 0 · diff 8 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

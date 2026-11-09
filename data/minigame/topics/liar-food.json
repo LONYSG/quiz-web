@@ -1189,5 +1189,322 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 60,
+  "foolAudit": {
+   "fools": 180,
+   "ok": 157,
+   "tooClose": 17,
+   "tooFar": 5,
+   "bad": 1
+  },
+  "problemItems": 24,
+  "counts": {
+   "remove": 0,
+   "diff": 2,
+   "era": 0,
+   "sub": 1,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-food-004",
+    "name": "떡볶이",
+    "replace": [
+     {
+      "from": "라볶이",
+      "verdict": "tooClose",
+      "to": "순대"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-009",
+    "name": "탕수육",
+    "replace": [
+     {
+      "from": "꿔바로우",
+      "verdict": "tooClose",
+      "to": "팔보채"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-017",
+    "name": "돈가스",
+    "replace": [
+     {
+      "from": "치킨까스",
+      "verdict": "tooClose",
+      "to": "규동"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-019",
+    "name": "만두",
+    "replace": [
+     {
+      "from": "교자",
+      "verdict": "tooClose",
+      "to": "완자"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-022",
+    "name": "붕어빵",
+    "replace": [
+     {
+      "from": "국화빵",
+      "verdict": "tooClose",
+      "to": "와플"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-030",
+    "name": "삼계탕",
+    "replace": [
+     {
+      "from": "백숙",
+      "verdict": "tooClose",
+      "to": "추어탕"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-033",
+    "name": "보쌈",
+    "replace": [
+     {
+      "from": "수육",
+      "verdict": "tooClose",
+      "to": "족발"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-034",
+    "name": "감자탕",
+    "replace": [
+     {
+      "from": "뼈해장국",
+      "verdict": "tooClose",
+      "to": "순대국"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-035",
+    "name": "설렁탕",
+    "replace": [
+     {
+      "from": "곰탕",
+      "verdict": "tooClose",
+      "to": "순대국"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-036",
+    "name": "칼국수",
+    "replace": [
+     {
+      "from": "수제비",
+      "verdict": "tooClose",
+      "to": "콩국수"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-037",
+    "name": "수제비",
+    "replace": [
+     {
+      "from": "칼국수",
+      "verdict": "tooClose",
+      "to": "어묵탕"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-038",
+    "name": "잡채",
+    "replace": [
+     {
+      "from": "궁중떡볶이",
+      "verdict": "bad",
+      "to": "모둠전"
+     },
+     {
+      "from": "월남쌈",
+      "verdict": "tooFar",
+      "to": "나물"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-039",
+    "name": "파전",
+    "replace": [
+     {
+      "from": "부침개",
+      "verdict": "tooClose",
+      "to": "감자전"
+     }
+    ]
+   },
+   {
+    "op": "sub",
+    "id": "liar-food-041",
+    "name": "우동",
+    "reason": "라면·칼국수와 같은 면 요리로 묶는 편이 맞음",
+    "fix": "sub: 일식 → 면 요리"
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-043",
+    "name": "마라탕",
+    "replace": [
+     {
+      "from": "마라샹궈",
+      "verdict": "tooClose",
+      "to": "양꼬치"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-047",
+    "name": "생선회",
+    "replace": [
+     {
+      "from": "전복죽",
+      "verdict": "tooFar",
+      "to": "초밥"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-049",
+    "name": "곱창",
+    "replace": [
+     {
+      "from": "막창",
+      "verdict": "tooClose",
+      "to": "닭발"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-food-049",
+    "name": "곱창",
+    "reason": "곱창은 보통 난이도",
+    "fix": "diff 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-051",
+    "name": "타코",
+    "replace": [
+     {
+      "from": "핫도그",
+      "verdict": "tooFar",
+      "to": "퀘사디아"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-food-052",
+    "name": "스테이크",
+    "reason": "아이도 아는 보통 난이도",
+    "fix": "diff 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-054",
+    "name": "떡꼬치",
+    "replace": [
+     {
+      "from": "소떡소떡",
+      "verdict": "tooClose",
+      "to": "닭꼬치"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-055",
+    "name": "훠궈",
+    "replace": [
+     {
+      "from": "마라탕",
+      "verdict": "tooClose",
+      "to": "전골"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-056",
+    "name": "양꼬치",
+    "replace": [
+     {
+      "from": "곱창",
+      "verdict": "tooFar",
+      "to": "양갈비"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-059",
+    "name": "마파두부",
+    "replace": [
+     {
+      "from": "순두부찌개",
+      "verdict": "tooFar",
+      "to": "동파육"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-060",
+    "name": "꿔바로우",
+    "replace": [
+     {
+      "from": "탕수육",
+      "verdict": "tooClose",
+      "to": "팔보채"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-food-060: 꿔바로우 보편성 낮을 수 있음(유행 음식) — 그대로 둠"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 24/60 (fool tooClose 17 · tooFar 5 · bad 1 · remove 0 · diff 2 · era 0 · sub 1 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

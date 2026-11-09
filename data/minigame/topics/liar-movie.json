@@ -1196,5 +1196,174 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 60,
+  "foolAudit": {
+   "fools": 180,
+   "ok": 175,
+   "tooClose": 4,
+   "tooFar": 0,
+   "bad": 1
+  },
+  "problemItems": 15,
+  "counts": {
+   "remove": 0,
+   "diff": 12,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "diff",
+    "id": "liar-movie-012",
+    "name": "살인의 추억",
+    "reason": "대표작이라 많이 앎",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-013",
+    "name": "광해 왕이 된 남자",
+    "reason": "천만 영화",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-017",
+    "name": "태극기 휘날리며",
+    "reason": "천만 영화",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-025",
+    "name": "스타워즈",
+    "reason": "세계적 시리즈",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-movie-028",
+    "name": "미션 임파서블",
+    "replace": [
+     {
+      "from": "007",
+      "verdict": "tooClose",
+      "to": "트루 라이즈"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-029",
+    "name": "탑건",
+    "reason": "유명 영화",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-030",
+    "name": "매트릭스",
+    "reason": "유명 영화",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-movie-032",
+    "name": "보헤미안 랩소디",
+    "replace": [
+     {
+      "from": "로켓맨",
+      "verdict": "tooClose",
+      "to": "라라랜드"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-033",
+    "name": "쇼생크 탈출",
+    "reason": "명작으로 흔함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-034",
+    "name": "레옹",
+    "reason": "명작으로 흔함",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-044",
+    "name": "코코",
+    "reason": "흥행작",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-movie-047",
+    "name": "킹덤",
+    "replace": [
+     {
+      "from": "지금 우리 학교는",
+      "verdict": "tooClose",
+      "to": "D.P."
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-047",
+    "name": "킹덤",
+    "reason": "흥행작",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-movie-054",
+    "name": "겨울연가",
+    "replace": [
+     {
+      "from": "가을동화",
+      "verdict": "tooClose",
+      "to": "첫사랑"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-057",
+    "name": "미생",
+    "reason": "유명 드라마",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-movie-059",
+    "name": "시그널",
+    "replace": [
+     {
+      "from": "나인",
+      "verdict": "bad",
+      "to": "터널"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-movie-059",
+    "name": "시그널",
+    "reason": "유명 드라마",
+    "fix": "diff 3 → 2"
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 15/60 (fool tooClose 4 · tooFar 0 · bad 1 · remove 0 · diff 12 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

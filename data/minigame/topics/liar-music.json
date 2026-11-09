@@ -1254,5 +1254,532 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 60,
+  "foolAudit": {
+   "fools": 180,
+   "ok": 135,
+   "tooClose": 21,
+   "tooFar": 4,
+   "bad": 20
+  },
+  "problemItems": 34,
+  "counts": {
+   "remove": 0,
+   "diff": 1,
+   "era": 2,
+   "sub": 0,
+   "variant": 3
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-music-001",
+    "name": "방탄소년단",
+    "replace": [
+     {
+      "from": "투모로우바이투게더",
+      "verdict": "bad",
+      "to": "엑소"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-006",
+    "name": "르세라핌",
+    "replace": [
+     {
+      "from": "엔믹스",
+      "verdict": "bad",
+      "to": "여자친구"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-007",
+    "name": "트와이스",
+    "replace": [
+     {
+      "from": "오마이걸",
+      "verdict": "bad",
+      "to": "에이핑크"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-008",
+    "name": "레드벨벳",
+    "replace": [
+     {
+      "from": "오마이걸",
+      "verdict": "bad",
+      "to": "에이핑크"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-009",
+    "name": "마마무",
+    "replace": [
+     {
+      "from": "오마이걸",
+      "verdict": "bad",
+      "to": "에이핑크"
+     }
+    ]
+   },
+   {
+    "op": "era",
+    "id": "liar-music-009",
+    "name": "마마무",
+    "reason": "2014 데뷔 — 같은 해 데뷔 레드벨벳은 classic, 기준 불일치",
+    "fix": "era modern → classic"
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-010",
+    "name": "소녀시대",
+    "replace": [
+     {
+      "from": "원더걸스",
+      "verdict": "tooClose",
+      "to": "브라운아이드걸스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-011",
+    "name": "원더걸스",
+    "replace": [
+     {
+      "from": "소녀시대",
+      "verdict": "tooClose",
+      "to": "브라운아이드걸스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-012",
+    "name": "세븐틴",
+    "replace": [
+     {
+      "from": "투모로우바이투게더",
+      "verdict": "bad",
+      "to": "엑소"
+     },
+     {
+      "from": "더보이즈",
+      "verdict": "bad",
+      "to": "비투비"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-013",
+    "name": "스트레이 키즈",
+    "replace": [
+     {
+      "from": "에이티즈",
+      "verdict": "bad",
+      "to": "엑소"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-music-019",
+    "name": "서태지와 아이들",
+    "reason": "채팅에서 서태지 로 줄여 침 — 변형 빠짐",
+    "fix": "[서태지;서태지와아이들]"
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-022",
+    "name": "SG워너비",
+    "replace": [
+     {
+      "from": "씨야",
+      "verdict": "tooFar",
+      "to": "브라운아이드소울"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-023",
+    "name": "다이나믹 듀오",
+    "replace": [
+     {
+      "from": "에픽하이",
+      "verdict": "tooClose",
+      "to": "지누션"
+     },
+     {
+      "from": "배치기",
+      "verdict": "bad",
+      "to": "원타임"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-024",
+    "name": "에픽하이",
+    "replace": [
+     {
+      "from": "다이나믹 듀오",
+      "verdict": "tooClose",
+      "to": "원타임"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-025",
+    "name": "데이식스",
+    "replace": [
+     {
+      "from": "엔플라잉",
+      "verdict": "bad",
+      "to": "국카스텐"
+     },
+     {
+      "from": "실리카겔",
+      "verdict": "bad",
+      "to": "혁오"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-029",
+    "name": "크라잉넛",
+    "replace": [
+     {
+      "from": "노브레인",
+      "verdict": "tooClose",
+      "to": "넬"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-035",
+    "name": "린킨 파크",
+    "replace": [
+     {
+      "from": "마이 케미컬 로맨스",
+      "verdict": "bad",
+      "to": "블링크-182"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-music-035",
+    "name": "린킨 파크",
+    "reason": "한국에서 링킨 파크 표기도 흔함",
+    "fix": "[Linkin Park;링킨 파크;링킨파크]"
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-039",
+    "name": "텔미",
+    "replace": [
+     {
+      "from": "Gee",
+      "verdict": "tooClose",
+      "to": "아브라카다브라"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-040",
+    "name": "Gee",
+    "replace": [
+     {
+      "from": "텔미",
+      "verdict": "tooClose",
+      "to": "아브라카다브라"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-music-040",
+    "name": "Gee",
+    "reason": "변형 지 1글자 — 채팅 판정에서 오탐 큼",
+    "fix": "[Gee;지지]"
+   },
+   {
+    "op": "diff",
+    "id": "liar-music-041",
+    "name": "소주 한 잔",
+    "reason": "임창정 대표곡으로 널리 알려짐",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-042",
+    "name": "벚꽃 엔딩",
+    "replace": [
+     {
+      "from": "봄봄봄",
+      "verdict": "tooClose",
+      "to": "봄이 좋냐"
+     },
+     {
+      "from": "사랑이 지나가면",
+      "verdict": "tooFar",
+      "to": "썸"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-044",
+    "name": "애국가",
+    "replace": [
+     {
+      "from": "아리랑",
+      "verdict": "tooClose",
+      "to": "봉선화"
+     },
+     {
+      "from": "교가",
+      "verdict": "bad",
+      "to": "오 필승 코리아"
+     },
+     {
+      "from": "생일 축하 노래",
+      "verdict": "tooFar",
+      "to": "독도는 우리 땅"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-045",
+    "name": "아리랑",
+    "replace": [
+     {
+      "from": "애국가",
+      "verdict": "tooClose",
+      "to": "봉선화"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-046",
+    "name": "트로트",
+    "replace": [
+     {
+      "from": "엔카",
+      "verdict": "tooClose",
+      "to": "민요"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-047",
+    "name": "힙합",
+    "replace": [
+     {
+      "from": "댄스",
+      "verdict": "bad",
+      "to": "소울"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-049",
+    "name": "재즈",
+    "replace": [
+     {
+      "from": "블루스",
+      "verdict": "tooClose",
+      "to": "탱고"
+     },
+     {
+      "from": "보사노바",
+      "verdict": "bad",
+      "to": "샹송"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-050",
+    "name": "록 음악",
+    "replace": [
+     {
+      "from": "메탈",
+      "verdict": "tooClose",
+      "to": "포크"
+     },
+     {
+      "from": "펑크",
+      "verdict": "tooClose",
+      "to": "컨트리"
+     },
+     {
+      "from": "그런지",
+      "verdict": "bad",
+      "to": "소울"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-051",
+    "name": "클래식",
+    "replace": [
+     {
+      "from": "오페라",
+      "verdict": "tooClose",
+      "to": "뮤지컬"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-052",
+    "name": "국악",
+    "replace": [
+     {
+      "from": "판소리",
+      "verdict": "tooClose",
+      "to": "포크"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-053",
+    "name": "EDM",
+    "replace": [
+     {
+      "from": "하우스",
+      "verdict": "tooClose",
+      "to": "디스코"
+     },
+     {
+      "from": "테크노",
+      "verdict": "tooClose",
+      "to": "힙합"
+     },
+     {
+      "from": "댄스",
+      "verdict": "bad",
+      "to": "R&B"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-054",
+    "name": "동요",
+    "replace": [
+     {
+      "from": "자장가",
+      "verdict": "tooClose",
+      "to": "민요"
+     },
+     {
+      "from": "찬송가",
+      "verdict": "tooFar",
+      "to": "팝송"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-055",
+    "name": "쇼미더머니",
+    "replace": [
+     {
+      "from": "고등래퍼",
+      "verdict": "bad",
+      "to": "스트릿 우먼 파이터"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-057",
+    "name": "복면가왕",
+    "replace": [
+     {
+      "from": "히든싱어",
+      "verdict": "tooClose",
+      "to": "팬텀싱어"
+     }
+    ]
+   },
+   {
+    "op": "era",
+    "id": "liar-music-057",
+    "name": "복면가왕",
+    "reason": "2015 시작이라 classic 기준 위반",
+    "fix": "era classic → modern"
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-058",
+    "name": "슈퍼스타K",
+    "replace": [
+     {
+      "from": "위대한 탄생",
+      "verdict": "bad",
+      "to": "싱어게인"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-060",
+    "name": "워터밤",
+    "replace": [
+     {
+      "from": "울트라 코리아",
+      "verdict": "bad",
+      "to": "지산 록 페스티벌"
+     },
+     {
+      "from": "흠뻑쇼",
+      "verdict": "tooClose",
+      "to": "서울재즈페스티벌"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-music-006: 르세라핌 — 2022 멤버 김가람 학폭 의혹 탈퇴, 그룹 자체는 유지",
+   "liar-music-008: 레드벨벳 — 2020 아이린 스태프 갑질 논란 보도",
+   "liar-music-014: fool 비스트 — 2019 멤버 용준형 단톡방 연루 보도",
+   "liar-music-019: 서태지 — 2011~2018 결혼·이혼 소송 사생활 보도, 오래됨",
+   "liar-music-024: 에픽하이 — 2010 타블로 학력 의혹(무혐의, 피해 쪽)",
+   "liar-music-036: 강남스타일 가수 싸이 — 2007 병역 재복무 이력",
+   "liar-music-038: fool 하입 보이 — 제거 권고한 뉴진스 곡",
+   "liar-music-041: 소주 한 잔 — 임창정 2023 주가조작 연루 보도(곡 자체는 무관)",
+   "liar-music-060: 워터밤 — 40~50대 인지도 낮을 수 있음(d3 유지 여부)",
+   "liar-music-003 뉴진스: 조각은 remove 권고(어도어 전속계약 분쟁·소송) — 사건·범죄가 아닌 계약 분쟁이라 VERIFY 가 remove 에서 unsure 로 낮춤. 설계가 정할 것"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 34/60 (fool tooClose 21 · tooFar 4 · bad 20 · remove 0 · diff 1 · era 2 · sub 0 · 변형 3) — 적용은 G049",
+  "history": []
+ }
 }

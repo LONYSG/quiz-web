@@ -1097,5 +1097,336 @@
    "qid": 5698
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 54,
+  "foolAudit": {
+   "fools": 162,
+   "ok": 136,
+   "tooClose": 16,
+   "tooFar": 2,
+   "bad": 8
+  },
+  "problemItems": 22,
+  "counts": {
+   "remove": 0,
+   "diff": 1,
+   "era": 0,
+   "sub": 0,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-sport-002",
+    "name": "야구",
+    "replace": [
+     {
+      "from": "소프트볼",
+      "verdict": "tooClose",
+      "to": "하키"
+     },
+     {
+      "from": "족구",
+      "verdict": "tooFar",
+      "to": "럭비"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-004",
+    "name": "배구",
+    "replace": [
+     {
+      "from": "족구",
+      "verdict": "tooClose",
+      "to": "야구"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-005",
+    "name": "럭비",
+    "replace": [
+     {
+      "from": "아이스하키",
+      "verdict": "tooFar",
+      "to": "미식축구"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-sport-005",
+    "name": "럭비",
+    "reason": "럭비는 d3 까지는 아님",
+    "fix": "diff: 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-006",
+    "name": "탁구",
+    "replace": [
+     {
+      "from": "스쿼시",
+      "verdict": "bad",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-007",
+    "name": "테니스",
+    "replace": [
+     {
+      "from": "스쿼시",
+      "verdict": "bad",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-008",
+    "name": "배드민턴",
+    "replace": [
+     {
+      "from": "스쿼시",
+      "verdict": "bad",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-014",
+    "name": "씨름",
+    "replace": [
+     {
+      "from": "스모",
+      "verdict": "tooClose",
+      "to": "역도"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-015",
+    "name": "펜싱",
+    "replace": [
+     {
+      "from": "검도",
+      "verdict": "tooClose",
+      "to": "승마"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-018",
+    "name": "스키",
+    "replace": [
+     {
+      "from": "스키점프",
+      "verdict": "tooClose",
+      "to": "스노보드"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-019",
+    "name": "봅슬레이",
+    "replace": [
+     {
+      "from": "루지",
+      "verdict": "tooClose",
+      "to": "스노보드"
+     },
+     {
+      "from": "스켈레톤",
+      "verdict": "tooClose",
+      "to": "스피드 스케이팅"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-023",
+    "name": "마라톤",
+    "replace": [
+     {
+      "from": "크로스컨트리",
+      "verdict": "bad",
+      "to": "높이뛰기"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-037",
+    "name": "마이클 조던",
+    "replace": [
+     {
+      "from": "르브론 제임스",
+      "verdict": "tooClose",
+      "to": "샤킬 오닐"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-038",
+    "name": "우사인 볼트",
+    "replace": [
+     {
+      "from": "모 파라",
+      "verdict": "bad",
+      "to": "무하마드 알리"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-sport-038",
+    "name": "우사인 볼트",
+    "reason": "한국에서 흔한 호칭 볼트 빠짐",
+    "fix": "[Usain Bolt;볼트]"
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-041",
+    "name": "올림픽",
+    "replace": [
+     {
+      "from": "패럴림픽",
+      "verdict": "tooClose",
+      "to": "월드컵"
+     },
+     {
+      "from": "유니버시아드",
+      "verdict": "bad",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-043",
+    "name": "윔블던",
+    "replace": [
+     {
+      "from": "롤랑가로스",
+      "verdict": "bad",
+      "to": null
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-044",
+    "name": "챔피언스리그",
+    "replace": [
+     {
+      "from": "유로파리그",
+      "verdict": "tooClose",
+      "to": "유로"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-046",
+    "name": "슈퍼볼",
+    "replace": [
+     {
+      "from": "스탠리컵",
+      "verdict": "bad",
+      "to": "NBA 올스타전"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-047",
+    "name": "맨유",
+    "replace": [
+     {
+      "from": "리버풀",
+      "verdict": "tooClose",
+      "to": "뉴캐슬"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-050",
+    "name": "토트넘",
+    "replace": [
+     {
+      "from": "아스널",
+      "verdict": "tooClose",
+      "to": "뉴캐슬"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-051",
+    "name": "LA 레이커스",
+    "replace": [
+     {
+      "from": "보스턴 셀틱스",
+      "verdict": "tooClose",
+      "to": "마이애미 히트"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-053",
+    "name": "KIA 타이거즈",
+    "replace": [
+     {
+      "from": "삼성 라이온즈",
+      "verdict": "tooClose",
+      "to": "두산 베어스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-sport-054",
+    "name": "LA 다저스",
+    "replace": [
+     {
+      "from": "뉴욕 양키스",
+      "verdict": "tooClose",
+      "to": "시카고 컵스"
+     },
+     {
+      "from": "샌프란시스코 자이언츠",
+      "verdict": "tooClose",
+      "to": "보스턴 레드삭스"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-sport-028: 호날두 — 2019 한국 친선경기 노쇼 사건으로 국내 논란이 큼, 제시어로 둘지 찬종 판단 (확신 중간)",
+   "liar-sport-036: 박세리 — 2024 박세리희망재단 관련 부친 채무·고소 논란 보도, 확신 낮음",
+   "liar-sport-027: 메시 fool 네이마르 — 탈세·사생활 보도 이력 (fool 로만 쓰여 영향 작음)",
+   "liar-sport-029: 류현진 fool 오승환 — 2016 해외 원정도박 벌금 이력 (fool 만)",
+   "liar-sport-031: 오타니 — 통역 도박 사건(본인 무혐의), 제시어 유지해도 무방하나 표시",
+   "liar-sport-038: 우사인 볼트 fool 칼 루이스 — 1988 도핑 은폐 의혹 보도 (fool 만)",
+   "liar-sport-039: 페이커 — e스포츠 인지도가 40~50대에 낮을 수 있음(d3 로 둠)"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 22/54 (fool tooClose 16 · tooFar 2 · bad 8 · remove 0 · diff 1 · era 0 · sub 0 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }

@@ -1203,5 +1203,209 @@
    "qid": 5194
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 60,
+  "foolAudit": {
+   "fools": 180,
+   "ok": 168,
+   "tooClose": 8,
+   "tooFar": 1,
+   "bad": 3
+  },
+  "problemItems": 16,
+  "counts": {
+   "remove": 0,
+   "diff": 5,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-character-003",
+    "name": "타요",
+    "replace": [
+     {
+      "from": "로보카 폴리",
+      "verdict": "tooClose",
+      "to": "콩순이"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-004",
+    "name": "로보카 폴리",
+    "replace": [
+     {
+      "from": "타요",
+      "verdict": "tooClose",
+      "to": "뽀로로"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-009",
+    "name": "홍길동",
+    "replace": [
+     {
+      "from": "춘향이",
+      "verdict": "tooFar",
+      "to": "흥부"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-010",
+    "name": "로보트 태권브이",
+    "replace": [
+     {
+      "from": "마징가 Z",
+      "verdict": "tooClose",
+      "to": "아톰"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-011",
+    "name": "마징가 Z",
+    "replace": [
+     {
+      "from": "로보트 태권브이",
+      "verdict": "tooClose",
+      "to": "아톰"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-015",
+    "name": "코난",
+    "replace": [
+     {
+      "from": "김전일",
+      "verdict": "tooClose",
+      "to": "루피"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-022",
+    "name": "가오나시",
+    "replace": [
+     {
+      "from": "캘시퍼",
+      "verdict": "bad",
+      "to": "하쿠"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-024",
+    "name": "케로로",
+    "replace": [
+     {
+      "from": "개구리 왕눈이",
+      "verdict": "tooClose",
+      "to": "아따맘마"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-025",
+    "name": "강백호",
+    "replace": [
+     {
+      "from": "히나타 쇼요",
+      "verdict": "bad",
+      "to": "고쿠"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-031",
+    "name": "펭수",
+    "replace": [
+     {
+      "from": "뽀로로",
+      "verdict": "tooClose",
+      "to": "마시마로"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-034",
+    "name": "가필드",
+    "replace": [
+     {
+      "from": "톰",
+      "verdict": "tooClose",
+      "to": "스폰지밥"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-character-034",
+    "name": "가필드",
+    "reason": "흔한 캐릭터",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-character-038",
+    "name": "스머프",
+    "reason": "흔한 캐릭터",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-character-050",
+    "name": "커비",
+    "reason": "흔한 게임 캐릭터",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-character-051",
+    "name": "팩맨",
+    "reason": "모양이 단순해 설명하기 쉬움",
+    "fix": "diff 3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-character-054",
+    "name": "배트맨",
+    "replace": [
+     {
+      "from": "데어데블",
+      "verdict": "bad",
+      "to": "슈퍼맨"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-character-056",
+    "name": "잭 스패로",
+    "reason": "캐리비안의 해적 주인공으로 흔함",
+    "fix": "diff 3 → 2"
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 16/60 (fool tooClose 8 · tooFar 1 · bad 3 · remove 0 · diff 5 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

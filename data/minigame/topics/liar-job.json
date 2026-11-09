@@ -1109,5 +1109,196 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V044",
+  "checkedAt": "2026-11-09T07:29:38.292Z",
+  "itemsChecked": 55,
+  "foolAudit": {
+   "fools": 165,
+   "ok": 152,
+   "tooClose": 12,
+   "tooFar": 0,
+   "bad": 1
+  },
+  "problemItems": 13,
+  "counts": {
+   "remove": 0,
+   "diff": 0,
+   "era": 0,
+   "sub": 1,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-job-002",
+    "name": "간호사",
+    "replace": [
+     {
+      "from": "간호조무사",
+      "verdict": "tooClose",
+      "to": "물리치료사"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-006",
+    "name": "소방관",
+    "replace": [
+     {
+      "from": "구급대원",
+      "verdict": "tooClose",
+      "to": "군인"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-008",
+    "name": "교사",
+    "replace": [
+     {
+      "from": "유치원 교사",
+      "verdict": "tooClose",
+      "to": "코치"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-011",
+    "name": "변호사",
+    "replace": [
+     {
+      "from": "법무사",
+      "verdict": "bad",
+      "to": "법원 공무원"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-020",
+    "name": "유튜버",
+    "replace": [
+     {
+      "from": "스트리머",
+      "verdict": "tooClose",
+      "to": "블로거"
+     },
+     {
+      "from": "BJ",
+      "verdict": "tooClose",
+      "to": "웹툰 작가"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-027",
+    "name": "발레리나",
+    "replace": [
+     {
+      "from": "댄서",
+      "verdict": "tooClose",
+      "to": "체조 선수"
+     }
+    ]
+   },
+   {
+    "op": "sub",
+    "id": "liar-job-027",
+    "name": "발레리나",
+    "reason": "발레리나는 음악이 아니라 무용",
+    "fix": "sub: 음악 → 무용"
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-033",
+    "name": "프로그래머",
+    "replace": [
+     {
+      "from": "IT 엔지니어",
+      "verdict": "tooClose",
+      "to": "컴퓨터 수리기사"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-034",
+    "name": "과학자",
+    "replace": [
+     {
+      "from": "연구원",
+      "verdict": "tooClose",
+      "to": "수학자"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-041",
+    "name": "배달 라이더",
+    "replace": [
+     {
+      "from": "퀵서비스 기사",
+      "verdict": "tooClose",
+      "to": "신문 배달원"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-045",
+    "name": "사육사",
+    "replace": [
+     {
+      "from": "조련사",
+      "verdict": "tooClose",
+      "to": "목장 주인"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-052",
+    "name": "통역사",
+    "replace": [
+     {
+      "from": "번역가",
+      "verdict": "tooClose",
+      "to": "비서"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-053",
+    "name": "축구 선수",
+    "replace": [
+     {
+      "from": "축구 감독",
+      "verdict": "tooClose",
+      "to": "배구 선수"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-job-055",
+    "name": "스님",
+    "reason": "흔한 표기 '승려' 빠짐",
+    "fix": "스님 [승려]"
+   }
+  ],
+  "unsure": [
+   "liar-job-036/037: 조종사↔승무원 fool 은 ok 로 뒀으나 '비행기에서 일하는'으로 둘로 좁혀질 수 있음",
+   "liar-job-048: 정비사 sub '만드는 일' 어색(고치는 일)"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 13/55 (fool tooClose 12 · tooFar 0 · bad 1 · remove 0 · diff 0 · era 0 · sub 1 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }
