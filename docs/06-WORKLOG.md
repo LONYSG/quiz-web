@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-09 — V044 라이어 제시어 15 세트 전수 판정 (VERIFY · 판정만 · DB 없음)
+- 851 항목 · fool 2,553 전부 판정(tooClose 177 · tooFar 29 · bad 62) · 1차 조각 7 세트가 과엄해 보정 기준으로 재판정 · 재독 후 교회→성당 추가 · 뉴진스 remove→unsure.
+- 쓴 것: 라이어 15 파일 verify 칸 + status(전부 candidate) · items 불변 · `ai-out/V044.txt` · `audit/v044-topics.json` · 13 C112 · CV-174~175.
+- 남은 것: CV-174(G049 적용) · CV-175 · unsure(뉴진스 등) 설계 결정.
+
 ## 2026-11-09 — 캐치마인드 제시어 풀 (G048, GEN · 파일만 · DB 쓰기 없음)
 - **무엇을**: gen-next2.md — 나무위키 캐치마인드 정답 목록을 씨앗으로 그리기 · 보편성 판정 → draw-* 10 세트(diff) · 옛 proverb · idiom4 흡수.
 - **어떻게**: g048-seed.mjs(받기 · 파싱 — 이어지는 줄 · "? 빈칸" 꼴) → 기계 거름 → 조각 4(sonnet · 지시서) → GEN 재독(사물 전부 · 캐릭터 전부 · 세트별 목록 전부 — 같은 말 · 상하위 · 문서류 · 종교 · 논란) → g048-build.mjs(표 · 세트 사이 겹침) → topics-check --fill-qid.

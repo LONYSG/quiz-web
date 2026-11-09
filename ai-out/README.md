@@ -68,6 +68,7 @@
 | V041.txt | ★ **노래 293 메타 대조 + us-state 50** VERIFY — HEAD 293/293 200 · 멜론 21 페이지 차트 167 대조 · verified 278(실 DB 적재) · fix 14 · rejected 1 · weak 96 다른 곡 0 · strong 1(Love) · us-state verified 50/50 · C107 · CV-168 · CV-169 |
 | V042.txt | ★ **OX 400 전수 판정** VERIFY — verified 384(실 DB 적재) · fix 16(해설 2 · 문장 2 · 연도 2 · 너무 쉬운 함정 10) · 틀린 참 0 · C108 · CV-170 · CV-171 |
 | V043.txt | ★ **주제 세트 변형 완전성 전수** VERIFY — 세트 30 · 항목 2,554 · add 제안 171 · remove 1 · 정규화가 안 받는 꼴(콜론 · 하이픈 · 아포스트로피) 실측 · latinAbbr 7 · C111 · CV-172~173 |
+| V044.txt | ★ **라이어 제시어 15 세트 전수 판정** VERIFY — 851 항목 · fool 2,553 판정 · 전부 candidate+fixes(G049 적용) · remove 2 · fool 교체 268 · C112 · CV-174~175 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
