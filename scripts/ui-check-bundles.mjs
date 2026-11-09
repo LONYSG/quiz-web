@@ -89,6 +89,7 @@ export const BUNDLES = [
   // ★ R079 — 팀전 1차(토글 · 두 색 칸 · PC 끌기 · 6:1 · 자동 배정 · 모바일 👥 사람 카드 팀 버튼 · 세 테마 · 사무실 B/R · 판 중 막대 · 결과 팀 줄 · 넘침 0)
   { id: 'r079', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R079: '1', SHOT_DIR: 'r079', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '1500' }) },
   // ★ R085 — OX 10연속(고르기 창 · 큰 O/X · 키 바꾸기 · m360 버튼 · 가장 긴 문장 넘침 · 공개 · 최종 목록 · 세 테마)
+  { id: 'r088', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R088: '1', SHOT_DIR: 'r088', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   { id: 'r087', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R087: '1', SHOT_DIR: 'r087', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '2' }) },
   { id: 'r085', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R085: '1', SHOT_DIR: 'r085', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   // ★ R084 — 노래 둘(고르기 창 · [▶ 듣기] · audio src · ✓ 제목/가수 · 공개 카드 · 연도 바꾸기 · 재생 실패 건너뜀 · 세 테마 · m360) — 소리 자체는 검사 안 함(A111)

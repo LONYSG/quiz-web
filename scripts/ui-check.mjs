@@ -5084,6 +5084,160 @@ async function r083Flow(browser) {
 }
 
 // =============================================================================
+// ★★★ R088 — 라이어 바보형 화면 (D-345) (UICHECK_R088=1 · 묶음 r088 · docs/design/r088)
+//   방장 PC 1280 · FHD 125%(1536×864 @1.25) · 손님 m360 터치 · 소켓 손님 1(3명) · 2라운드
+//   설정: 방식 라이어 → 모드 줄(기본형 · 바보형) · 바보형 누름 → 손님 칩 / 배정: 셋 다 시민 카드(라이어도 키워드) · 머리 "바보형" / 공개: "라이어가 받은 단어" · 세 테마
+// =============================================================================
+async function r088Flow(browser) {
+  const H = await newPage(browser, 'R088-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r8h', '바보방장');
+  const roomId = await createRoom(H, 'R088 바보형');
+  const G = await newPage(browser, 'R088-g', true);
+  await signUp(G, 'r8g', '바보손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'r8s');
+  const sid = (await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_r8s0`.toLowerCase()])).rows[0]?.id)) ?? null;
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r088] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const J = async (P, expr) => JSON.parse(await P.evaluate(`JSON.stringify(${expr})`));
+  const set125 = () => H.send('Emulation.setDeviceMetricsOverride', { width: 1536, height: 864, deviceScaleFactor: 1.25, mobile: false }).then(() => sleep(380));
+  const set1280 = () => H.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false }).then(() => sleep(380));
+  let sView = null;
+  const did = new Set();
+  S.on('liar.state', (p) => {
+    const v = p.liar;
+    sView = v;
+    if (!v) return;
+    const k = `${v.round}:${v.phase}:${v.phaseStartedAt}:${v.turn}`;
+    if (did.has(k)) return;
+    did.add(k);
+    setTimeout(() => {
+      if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === sid) S.emit('liar.say', { text: v.phase === 'defense' ? '저는 아니에요' : '자주 마셔요' });
+      else if (v.phase === 'final' && v.accused !== sid) S.emit('liar.final', { yes: true });
+      else if (v.phase === 'guess' && v.amLiar) S.emit('liar.guess', { text: '모르겠다' });
+    }, 1500);
+  });
+  // ── 설정
+  await realClick(H, 'button[data-mode="liar"]');
+  await H.waitFor("document.querySelector('[data-liar-mode-row]') !== null", 4000).catch(() => false);
+  const before = await J(H, "({ btns: [...document.querySelectorAll('[data-liar-mode-btn]')].map((b) => b.dataset.liarModeBtn + (b.getAttribute('aria-pressed') === 'true' ? '*' : '')).join(','), note: document.querySelector('[data-liar-note]')?.innerText ?? '' })");
+  await realClick(H, '[data-liar-mode-btn="fool"]');
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(500);
+  const after = await J(H, "({ btns: [...document.querySelectorAll('[data-liar-mode-btn]')].map((b) => b.dataset.liarModeBtn + (b.getAttribute('aria-pressed') === 'true' ? '*' : '')).join(','), note: document.querySelector('[data-liar-note]')?.innerText ?? '' })");
+  await G.waitFor("document.querySelector('[data-liar-mode-chip]')?.innerText.includes('바보형')", 4000).catch(() => false);
+  const gChip = await G.evaluate("document.querySelector('[data-liar-mode-chip]')?.innerText ?? ''");
+  await snap(H, 'settings-fool-pc');
+  await snap(G, 'settings-fool-m360');
+  await set125();
+  await snap(H, 'settings-fool-fhd125');
+  await set1280();
+  note('설정', { before, after, gChip });
+  // ── 판
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const res = { assign: null, reveal: null };
+  const seen = new Set();
+  const t0 = Date.now();
+  const CARD = "({ me: document.querySelector('[data-liar-me]')?.dataset.liarMe ?? '', kw: document.querySelector('[data-liar-keyword]')?.innerText ?? '', chip: !!document.querySelector('[data-liar-mode=\"fool\"]'), over: document.documentElement.scrollWidth - innerWidth })";
+  while (Date.now() - t0 < 240000) {
+    const st = await H.evaluate("(() => { const c = document.querySelector('[data-liar-phase]'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; return `${c.dataset.liarPhase}:${document.querySelector('.liar-round')?.innerText ?? ''}:${document.querySelector('[data-liar-turn=\"1\"] .liar-nick')?.innerText ?? ''}:${c.dataset.liarBout}`; })()");
+    if (st === 'result') break;
+    if (!st || seen.has(st)) {
+      await sleep(150);
+      continue;
+    }
+    seen.add(st);
+    const [phase, roundTxt] = st.split(':');
+    const round = Number((roundTxt ?? '').split('/')[0]);
+    if ((phase === 'assign' || phase === 'describe') && round === 1 && !res.assign) {
+      await sleep(300);
+      res.assign = { h: await J(H, CARD), g: await J(G, CARD), s: { amLiar: sView?.amLiar, kw: sView?.keyword } };
+      await snap(H, 'assign-fool-pc');
+      await snap(G, 'assign-fool-m360');
+      for (const th of ['night', 'office']) {
+        await theme(H, th);
+        await sleep(200);
+        await snap(H, `assign-fool-${th}-pc`);
+      }
+      await theme(H, 'pastel');
+      await set125();
+      await snap(H, 'assign-fool-fhd125');
+      await set1280();
+    }
+    if (phase === 'describe' || phase === 'defense') {
+      for (const P of [H, G]) {
+        if (await P.evaluate("!!document.querySelector('[data-liar-say-input]')")) {
+          await P.setInput('[data-liar-say-input]', phase === 'defense' ? '아니라니까요' : '자주 봐요');
+          await P.evaluate("document.querySelector('[data-liar-say-form]')?.requestSubmit()");
+        }
+      }
+    }
+    if (phase === 'vote' || phase === 'revote') {
+      // 라이어 = 셋 중 키워드가 다른 사람
+      await sleep(300);
+      const kws = { h: await H.evaluate("document.querySelector('[data-liar-keyword]')?.innerText ?? ''"), g: await G.evaluate("document.querySelector('[data-liar-keyword]')?.innerText ?? ''"), s: sView?.keyword ?? '' };
+      const odd = kws.h !== kws.g && kws.h !== kws.s ? 'h' : kws.g !== kws.h && kws.g !== kws.s ? 'g' : 's';
+      const targetOf = async (P, who) => {
+        const list = await J(P, "[...document.querySelectorAll('[data-liar-target]')].map((b) => ({ id: b.dataset.liarTarget, name: b.innerText.trim() }))");
+        const want = { h: '바보방장', g: '바보손님', s: 'r8s손님0' }[who];
+        return (list.find((x) => x.name.startsWith(want)) ?? list[0])?.id;
+      };
+      const hT = await targetOf(H, odd === 'h' ? 'g' : odd);
+      if (hT) await realClick(H, `[data-liar-target="${hT}"]`).catch(() => {});
+      const gT = await targetOf(G, odd === 'g' ? 'h' : odd);
+      if (gT) await tapOn(G, `[data-liar-target="${gT}"]`).catch(() => {});
+      const sT = await (async () => {
+        const tid = await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_${{ h: 'r8h', g: 'r8g', s: 'r8s0' }[odd === 's' ? 'h' : odd]}`.toLowerCase()])).rows[0]?.id);
+        return tid;
+      })();
+      if (sT) S.emit('liar.vote', { target: sT });
+    }
+    if (phase === 'final') {
+      await sleep(200);
+      await realClick(H, '[data-liar-yes]').catch(() => {});
+      await tapOn(G, '[data-liar-yes]').catch(() => {});
+    }
+    if (phase === 'guess') {
+      for (const P of [H, G]) {
+        if (await P.evaluate("!!document.querySelector('[data-liar-guess-input]')")) {
+          await P.setInput('[data-liar-guess-input]', '모르겠다');
+          await P.evaluate("document.querySelector('[data-liar-guess] form')?.requestSubmit()");
+        }
+      }
+    }
+    if (phase === 'reveal' && !res.reveal) {
+      await sleep(300);
+      res.reveal = { h: await J(H, "({ outcome: document.querySelector('[data-liar-reveal]')?.dataset.liarReveal ?? '', fool: document.querySelector('[data-liar-fool-word]')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth })"), g: await J(G, "({ fool: document.querySelector('[data-liar-fool-word]')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth })") };
+      await snap(H, 'reveal-fool-pc');
+      await snap(G, 'reveal-fool-m360');
+      await set125();
+      await snap(H, 'reveal-fool-fhd125');
+      await set1280();
+    }
+    await sleep(100);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 30000).catch(() => false);
+  note('배정', res.assign);
+  note('공개', res.reveal);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r088'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r088'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r088', 'r088.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R088 설정 — 라이어 모드 줄(기본형 눌림 → 바보형) · 한 줄 설명 바뀜 · 손님 칩 "바보형"', before.btns === 'basic*,fool' && after.btns === 'basic,fool*' && /바보형/.test(after.note) && /바보형/.test(gChip), JSON.stringify({ before, after, gChip }));
+  const a = res.assign;
+  record('★★★ R088 바보형 배정 — 셋 다 시민 카드(라이어도 키워드) · 머리 "바보형" · 키워드 하나만 다름 · 넘침 0', !!a && a.h.me === 'citizen' && a.g.me === 'citizen' && a.s.amLiar === false && a.h.chip && a.g.chip && new Set([a.h.kw, a.g.kw, a.s.kw]).size === 2 && a.h.over <= 1 && a.g.over <= 1, JSON.stringify(a));
+  record('★★ R088 공개 — "라이어가 받은 단어" PC · m360 · 넘침 0', !!res.reveal && /라이어가 받은 단어/.test(res.reveal.h.fool) && /라이어가 받은 단어/.test(res.reveal.g.fool) && res.reveal.h.over <= 1 && res.reveal.g.over <= 1, JSON.stringify(res.reveal));
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R087 — 테스트 1 피드백 화면 (D-344) (UICHECK_R087=1 · 묶음 r087 · docs/design/r087)
 //   찬종 "이 사항들은 모든 해상도/배율/모바일에서 전부 재점검" — 방장 PC(1280 · 1536×864 · 1536×730 · 1920 · 2560 + ★ FHD 125% = 1536×864 @1.25)
 //   · 손님 모바일 터치(360 · 390 · 430) · 세 테마(파스텔 · 밤 · 사무실) · 소켓 손님 2
@@ -9640,6 +9794,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R088 — 라이어 바보형
+  if (process.env.UICHECK_R088) {
+    await closeAllTabs(browser);
+    await r088Flow(browser);
   }
   // ★ R087 — 테스트 1 피드백(전 크기 · 125%)
   if (process.env.UICHECK_R087) {

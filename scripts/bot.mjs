@@ -8294,6 +8294,13 @@ async function scenarioTopicSets() {
     expect('★★ 객관식 둘 — 한 게임 안 문항 겹치지 않음(20)', used, 20);
     // ★ R081 — 연도 없는 세트 · 40 미만 세트만 있으면 순서대로 · 빙고는 안 뽑힘(많이 말하기는 됨 — 대조)
     await withDb((c) => c.query(`UPDATE topic_sets SET active = (topic IN ('seoul-gu', 'kleague-team'))`));
+    // ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄이 판 params 에 실린다(검사 DB 에만 잠깐 써 본다 — 끝의 되돌림 적재가 파일 값으로 되돌린다)
+    await withDb((c) => c.query(`UPDATE topic_sets SET scope = CASE WHEN topic = 'seoul-gu' THEN '서울 25개 자치구' ELSE NULL END WHERE topic IN ('seoul-gu', 'kleague-team')`));
+    const scopes = new Set();
+    host.socket.on('minigame.state', (p) => {
+      const sc = p.minigame?.round?.params;
+      if (sc?.topic) scopes.add(`${sc.topic}:${sc.scope ?? ''}`);
+    });
     const ag = host.mark();
     host.socket.emit('game.again', {});
     await host.waitFor(() => host.since(ag, 'game.countdownStarted').length > 0, 8000, '다시 하기(R081)');
@@ -8308,6 +8315,7 @@ async function scenarioTopicSets() {
     await host.waitFor(() => host.since(g2, 'game.result').length > 0, 120000, '결과(R081)');
     const keys2 = await withDb(async (c) => (await c.query(`SELECT minigame_key k FROM minigame_runs WHERE game_id = $1 ORDER BY id`, [gid2])).rows.map((x) => x.k));
     expect('★★★ 연도 없음 · 40 미만 세트만 — 순서대로 · 빙고 빠지고 많이 말하기만(2개 · 세트 둘)', keys2, ['many', 'many']);
+    expectTrue('★★ R088 scope — 범위가 있는 세트만 판 params 에 한 줄(서울 구 · K리그는 없음)', [...scopes].includes('seoul-gu:서울 25개 자치구') && [...scopes].includes('kleague-team:'), JSON.stringify([...scopes]));
     for (const b of bots) {
       b.leave();
       b.disconnect();
