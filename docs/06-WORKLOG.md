@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-09 — 제시어 2차 (G044, GEN · 파일만 · DB 쓰기 없음)
+- **무엇을**: gen-next.md — 라이어 · 캐치마인드 제시어의 본체를 open 세트로(18 §9 제시어 풀 원칙): open 8 새로 + closed 세트 liar/draw 를 유명한 것만 남기고 끔.
+- **어떻게**: scripts/g044-topics-new.mjs(세트 8 목록 · GEN 작성 · 하위 에이전트 0) → topics-check --fill-qid(새 8 파일만) → g044-topics-cross.mjs(세트 사이 canon 겹침) → g044-tag-fix.mjs(15 세트 · 한 번에 쓰고 바로 push — V043 과 같은 파일). 웹 3(ko.wiki 제목 확인 1 · 영화 흥행 기록 원문 1 · 그 전 묶음 실패 1).
+- **문제**: open 하한 60(topics-check 막힘)과 브리프 탈것 50 · 사자성어 40 이 어긋남 → 60 으로 · 새 세트가 디즈니 · 지브리 · 직업 · 올림픽 변형과 겹친 6 → 뺌.
+- **결정**: DG-082.
+- **검증**: topics-check 39 세트 막힘 0 · 겹침 2(태그 꺼진 closed 세트와만).
+- **남은 것**: V044 적정성 · 찬종 눈(나라 40 · 수도 20 · 포켓몬 50) · R087 세트 추첨 가중.
+
 ## 2026-11-09 — V043 주제 세트 변형 완전성 전수 (VERIFY · 판정만 · DB 없음)
 - 세트 30(us-state 제외) 항목 2,554 전부를 "플레이어가 치는 표기" 로 훑음 — 청크 26(에이전트 8 + 직접 3 세트) · 정규화 기준선(canon.mjs)으로 이미 받는 꼴 제외 · 제안 add 171 · remove 1(재독에서 9 뺌).
 - 쓴 것: 세트 30 파일의 `verify` 칸만(round V043 · 앞 verify 는 history) · status · items 불변 · topics-check 막힘 0 · `ai-out/V043.txt` · `audit/v043-topics.json` · 13 C111 · CV-172~173.
