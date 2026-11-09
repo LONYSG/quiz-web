@@ -31,7 +31,7 @@ import {
 import { emitRoom, emitRoomPerPlayer } from '../rooms/emit.js';
 import type { Player, Room } from '../rooms/types.js';
 import { broadcastPlayers, finishGame } from '../game/question.js';
-import { drawTopics, type TopicSet, type TopicStore } from '../db/topics.js';
+import { ambiguousHint, drawTopics, type TopicSet, type TopicStore } from '../db/topics.js';
 import { insertDrawRound, recordDrawExperience } from '../db/draw.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 
@@ -311,7 +311,7 @@ export function drawHint(room: Room, accountId: string, kind: DrawHintKind): Dra
   return 'ok';
 }
 
-export type DrawChatGate = { ok: true; consumed?: boolean } | { ok: false; reason: 'keyword' | 'length_hint'; message: string };
+export type DrawChatGate = { ok: true; consumed?: boolean } | { ok: false; reason: 'keyword' | 'length_hint' | 'ambiguous'; message: string };
 
 /**
  * ★ 캐치마인드 판 채팅 — 맞히면 그 글은 안 보이고(consumed) 시스템 줄 · 출제자는 키워드 · 글자 수 힌트 거부 · 맞힌 사람은 키워드 거부
@@ -327,7 +327,11 @@ export function drawChatGate(room: Room, accountId: string, text: string): DrawC
   const already = r.solved.some((s) => s.accountId === accountId);
   if (already) return drawMentions(text, r) ? { ok: false, reason: 'keyword', message: '이미 맞혔어요 — 정답은 비밀!' } : { ok: true };
   if (!r.participants.includes(accountId)) return drawMentions(text, r) ? { ok: false, reason: 'keyword', message: '정답은 비밀!' } : { ok: true };
-  if (matchTopic(r.set.matcher, text) !== r.itemId) return { ok: true };
+  if (matchTopic(r.set.matcher, text) !== r.itemId) {
+    // ★ R088 — 겹치는 이름(서구 …)이면 본인에게 안내(채팅에는 안 나감 · 오답)
+    const hint = ambiguousHint(r.set.ambiguous, text);
+    return hint ? { ok: false, reason: 'ambiguous', message: hint } : { ok: true };
+  }
   const now = Date.now();
   r.solved.push({ accountId, ms: now - r.phaseStartedAt });
   broadcastSystem(room, `${room.players.get(accountId)?.nickname ?? '?'} 님 정답! (${r.solved.length}번째)`);

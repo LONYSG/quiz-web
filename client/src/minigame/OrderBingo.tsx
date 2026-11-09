@@ -67,6 +67,8 @@ export function OrderPick({ socket, view, serverNow, mobile }: Props) {
         <span className="dim"> — 오래된 것부터 차례로 ({String(p.basis ?? '연도')}) </span>
         <span className="mono topic-left">{t.leftSec}초</span>
       </p>
+      {/* ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄(없으면 안 보임) */}
+      {p.scope ? <p className="topic-scope dim" data-topic-scope>{String(p.scope)}</p> : null}
       <div className="order-cards">
         {cards.map((c, i) => {
           const at = picked.indexOf(c.id);
@@ -196,17 +198,17 @@ export function BingoPlay({ socket, view, serverNow, mobile }: Props) {
   const fill = p.phase === 'fill';
   const t = useTimer(view, serverNow);
   const priv = privOf(view);
-  const [fb, setFb] = useState<{ key: string; result: string; label?: string; text?: string } | null>(null);
+  const [fb, setFb] = useState<{ key: string; result: string; label?: string; text?: string; hint?: string } | null>(null);
   // ★ 채우기 중에는 판이 다시 오지 않는다(내 입력은 나에게만 — 방 전체 알림 없음) → 내 판정(cell · label)으로 바로 채워 보인다
   const [local, setLocal] = useState<{ key: string; cells: Record<number, string> } | null>(null);
   const [pick, setPick] = useState<{ key: string; cell: number } | null>(null);
   const myPick = pick?.key === t.key ? pick.cell : null;
   const myFb = fb?.key === t.key ? fb : null;
   useEffect(() => {
-    const on = (f: { token: string; roundIndex: number; result: string; label?: string; text?: string; cell?: number }) => {
+    const on = (f: { token: string; roundIndex: number; result: string; label?: string; text?: string; hint?: string; cell?: number }) => {
       if (f.token !== view.token || f.roundIndex !== view.roundIndex) return;
       const k = `${f.token}:${f.roundIndex}`;
-      setFb({ key: k, result: f.result, label: f.label, text: f.text });
+      setFb({ key: k, result: f.result, label: f.label, text: f.text, hint: f.hint });
       if (f.result === 'ok' && typeof f.cell === 'number') setLocal((s) => ({ key: k, cells: { ...(s?.key === k ? s.cells : {}), [f.cell as number]: f.label ?? '' } }));
       sfx(f.result === 'ok' ? 'mg-tap' : 'mg-foul');
     };
@@ -236,6 +238,8 @@ export function BingoPlay({ socket, view, serverNow, mobile }: Props) {
         <span className="dim">{fill ? ' — 내 판을 채우세요! ' : ` — 호명 ${String(p.call)}/${String(p.calls)} · ${priv?.lines ?? 0}줄 `}</span>
         <span className="mono topic-left">{t.leftSec}초</span>
       </p>
+      {/* ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄(없으면 안 보임) */}
+      {p.scope ? <p className="topic-scope dim" data-topic-scope>{String(p.scope)}</p> : null}
       {fill ? (
         <>
           <TopicInput canPlay={t.canPlay && filled < board.length} mobile={mobile} resetKey={t.key} placeholder={view.spectating ? '구경 중' : filled >= board.length ? '판이 다 찼어요' : '정답 치고 Enter → 다음 칸'} label="빙고 칸 채우기" onSend={send} />
@@ -245,7 +249,7 @@ export function BingoPlay({ socket, view, serverNow, mobile }: Props) {
               : myFb?.result === 'dup'
                 ? `"${myFb.label}" — 이미 판에 있어요`
                 : myFb?.result === 'wrong'
-                  ? `✗ "${myFb.text}" — 아니에요`
+                  ? `✗ ${myFb.hint ?? `"${myFb.text}" — 아니에요`}`
                   : myFb?.result === 'full'
                     ? '판이 다 찼어요'
                     : view.spectating

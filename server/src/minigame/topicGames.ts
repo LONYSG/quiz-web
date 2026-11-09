@@ -37,7 +37,7 @@ import {
   seededRandom,
   uniqueResult,
 } from '@quiz/shared';
-import { makeTopicSet, topicsForKey, type TopicSet } from '../db/topics.js';
+import { ambiguousHint, makeTopicSet, topicsForKey, type TopicSet } from '../db/topics.js';
 import type { BuildCtx, MinigameDef, RoundSpec } from './defs.js';
 import { deviceElapsed } from './defs.js';
 
@@ -91,7 +91,8 @@ const textOf = (raw: unknown): string | null => {
   const s = [...t.trim()].slice(0, TOPIC_TEXT_MAX).join('');
   return s ? s : null;
 };
-type Secret = { matcher: Map<string, string>; items: { id: string; label: string }[] };
+// ★ R088 — ambiguous: 겹치는 이름 → 안내 글(서구 · 고성군 …) · 오답이지만 본인에게 "앞 동네를 붙여 주세요"
+type Secret = { matcher: Map<string, string>; items: { id: string; label: string }[]; ambiguous?: Map<string, string> };
 const secretOf = (spec: RoundSpec) => spec.secret as unknown as Secret;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -107,8 +108,8 @@ export const many: MinigameDef = {
     return [
       {
         itemKey: `topic:${s.topic}`,
-        params: { topic: s.topic, nameKo: s.nameKo, timeSec: s.timeSec, total: s.items.length, ...(ctx.practice ? { dummy: true } : {}) },
-        secret: { matcher: s.matcher, items: s.items.map((x) => ({ id: x.id, label: x.label })) } as unknown as Record<string, unknown>,
+        params: { topic: s.topic, nameKo: s.nameKo, ...(s.scope ? { scope: s.scope } : {}), timeSec: s.timeSec, total: s.items.length, ...(ctx.practice ? { dummy: true } : {}) },
+        secret: { matcher: s.matcher, items: s.items.map((x) => ({ id: x.id, label: x.label })), ambiguous: s.ambiguous } as unknown as Record<string, unknown>,
         playMs: s.timeSec * 1000,
         readyMs: 1_500,
         resultMs: MANY_REVEAL_MS,
@@ -136,7 +137,8 @@ export const many: MinigameDef = {
       const n = normalizeAnswer(text);
       if (!wrong.some((w) => normalizeAnswer(w) === n)) wrong.push(text);
       if (wrong.length > MANY_WRONG_KEEP) wrong.shift();
-      feedback = { result: 'wrong', text, count: found.length };
+      const hint = ambiguousHint(sec.ambiguous, text);
+      feedback = { result: 'wrong', text, count: found.length, ...(hint ? { hint } : {}) };
     }
     return {
       input: { last: text, tries },
@@ -180,8 +182,8 @@ export const unique: MinigameDef = {
     if (!sets) return null;
     return sets.map((s, i) => ({
       itemKey: `topic:${s.topic}`,
-      params: { topic: s.topic, nameKo: s.nameKo, ...(ctx.practice ? { dummy: true } : {}) },
-      secret: { matcher: s.matcher, items: s.items.map((x) => ({ id: x.id, label: x.label })) } as unknown as Record<string, unknown>,
+      params: { topic: s.topic, nameKo: s.nameKo, ...(s.scope ? { scope: s.scope } : {}), ...(ctx.practice ? { dummy: true } : {}) },
+      secret: { matcher: s.matcher, items: s.items.map((x) => ({ id: x.id, label: x.label })), ambiguous: s.ambiguous } as unknown as Record<string, unknown>,
       playMs: UNIQUE_PLAY_MS,
       readyMs: 1_500,
       resultMs: UNIQUE_REVEAL_MS,
@@ -202,7 +204,7 @@ export const unique: MinigameDef = {
       elapsedMs: num(objOf(raw)?.elapsedMs),
       extra: { text, itemId: id, label },
       provisional: true,
-      feedback: { result: id ? 'ok' : 'wrong', text, label },
+      feedback: { result: id ? 'ok' : 'wrong', text, label, ...(!id && ambiguousHint(sec.ambiguous, text) ? { hint: ambiguousHint(sec.ambiguous, text) } : {}) },
     };
   },
   finalizeRound(spec, subs) {

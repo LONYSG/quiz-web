@@ -31,7 +31,7 @@ import {
   orderPairs,
   seededRandom,
 } from '@quiz/shared';
-import { makeTopicSet, type TopicSet } from '../db/topics.js';
+import { ambiguousHint, makeTopicSet, type TopicSet } from '../db/topics.js';
 import type { MinigameDef, RoundSpec } from './defs.js';
 import { topicsFor } from './topicGames.js';
 
@@ -83,7 +83,7 @@ export const order: MinigameDef = {
       const answer = [...cards].sort((a, b) => a.year - b.year);
       rounds.push({
         itemKey: `topic:${s.topic}`,
-        params: { topic: s.topic, nameKo: s.nameKo, basis: ORDER_BASIS[s.topic] ?? '연도', cards: shown.map((c) => ({ id: c.id, label: c.label })), ...(ctx.practice ? { dummy: true } : {}) },
+        params: { topic: s.topic, nameKo: s.nameKo, ...(s.scope ? { scope: s.scope } : {}), basis: ORDER_BASIS[s.topic] ?? '연도', cards: shown.map((c) => ({ id: c.id, label: c.label })), ...(ctx.practice ? { dummy: true } : {}) },
         reveal: { answer: answer.map((c) => ({ id: c.id, label: c.label, year: c.year })) },
         secret: { years: Object.fromEntries(cards.map((c) => [c.id, c.year])) },
         playMs: ORDER_PLAY_MS,
@@ -124,6 +124,8 @@ export interface BingoState {
   items: { id: string; label: string }[];
   labelOf: Map<string, string>;
   matcher: Map<string, string>;
+  /** ★ R088 — 겹치는 이름 안내 */
+  ambiguous?: Map<string, string>;
   participants: string[];
   boards: Map<string, (string | null)[]>;
   manual: Map<string, number>;
@@ -208,6 +210,7 @@ export const bingo: MinigameDef = {
       items: set.items.map((x) => ({ id: x.id, label: x.label })),
       labelOf: new Map(set.items.map((x) => [x.id, x.label])),
       matcher: set.matcher,
+      ambiguous: set.ambiguous,
       participants: [...ctx.participants],
       boards: new Map(),
       manual: new Map(),
@@ -217,7 +220,7 @@ export const bingo: MinigameDef = {
       over: false,
       seed,
     };
-    const base = { topic: set.topic, nameKo: set.nameKo, size: BINGO_SIZE, toWin: BINGO_LINES_TO_WIN, ...(ctx.practice ? { dummy: true } : {}) };
+    const base = { topic: set.topic, nameKo: set.nameKo, ...(set.scope ? { scope: set.scope } : {}), size: BINGO_SIZE, toWin: BINGO_LINES_TO_WIN, ...(ctx.practice ? { dummy: true } : {}) };
     const secret = { state: st } as unknown as Record<string, unknown>;
     const rounds: RoundSpec[] = [
       { itemKey: `topic:${set.topic}`, params: { ...base, phase: 'fill' }, secret, playMs: BINGO_FILL_MS, readyMs: 1_500, resultMs: BINGO_FILL_REVEAL_MS, seed },
@@ -258,7 +261,10 @@ export const bingo: MinigameDef = {
       const id = matchTopic(st.matcher, t);
       const label = id ? (st.labelOf.get(id) ?? t) : null;
       let feedback: Record<string, unknown>;
-      if (!id) feedback = { result: 'wrong', text: t };
+      if (!id) {
+        const hint = ambiguousHint(st.ambiguous, t);
+        feedback = { result: 'wrong', text: t, ...(hint ? { hint } : {}) };
+      }
       else if (b.includes(id)) feedback = { result: 'dup', label, text: t };
       else {
         const cell = b.indexOf(null);

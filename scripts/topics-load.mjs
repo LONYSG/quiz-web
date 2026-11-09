@@ -12,6 +12,8 @@
 // ★ 멱등: 같은 topic · 같은 항목 id 는 갱신. 파일에서 빠졌거나 넣을 수 없게 된 세트 · 항목은 active=false(지우지 않는다 — 경험 기록 'topic:<slug>').
 // ★ 파일은 쓰지 않는다(§9 — 적재 = topic_sets.loaded_at · 플레이 트리에서 돈다).
 // ★ ops 메뉴 1(play.mjs)이 migrate · 빌드 뒤 `--apply` 로 한 번 돌린다(실패해도 서버는 뜬다 — 한 줄 경고).
+// ★★ R088 (D-345 · 0034 · 18 §12 · §9) — 항목 fool · era · sub · diff · 세트 scope 도 올린다(파일에 없으면 null). 0034 전 DB 에는 옛 칸만(자동).
+//   끝 줄에 "fool n · diff n" 을 붙인다(메뉴 1 이 보인다).
 // =============================================================================
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
@@ -85,6 +87,7 @@ export function planLoad(list, { allowCandidate, checkTopic }) {
       count: t.items.length,
       source: t.source ?? [],
       verify: t.verify ?? null,
+      scope: typeof t.scope === 'string' && t.scope.trim() ? t.scope.trim() : null,
     });
     t.items.forEach((it, i) => {
       items.push({
@@ -100,6 +103,10 @@ export function planLoad(list, { allowCandidate, checkTopic }) {
         liar: it.liar === true,
         qid: Number.isInteger(it.qid) ? it.qid : null,
         note: typeof it.note === 'string' ? it.note : null,
+        fool: Array.isArray(it.fool) && it.fool.length ? it.fool.filter((x) => typeof x === 'string' && x.trim()) : null,
+        era: it.era === 'classic' || it.era === 'modern' ? it.era : null,
+        sub: typeof it.sub === 'string' && it.sub.trim() ? it.sub.trim() : null,
+        diff: Number.isInteger(it.diff) && it.diff >= 1 && it.diff <= 3 ? it.diff : null,
       });
     });
   }
@@ -117,8 +124,10 @@ export function readTopics(dir = DIR) {
     });
 }
 
-/** ★ 쓰기(한 트랜잭션) — 넣은 세트 · 항목 · 쉬게 한 세트 · 항목 수 */
+/** ★ 쓰기(한 트랜잭션) — 넣은 세트 · 항목 · 쉬게 한 세트 · 항목 수
+ *  ★ R088 — 0034 칸(fool · era · sub · diff · scope)이 있으면 같이(없는 DB 는 옛 칸만) */
 export async function applyPlan(db, plan) {
+  const has0034 = ((await db.query(`SELECT 1 FROM information_schema.columns WHERE table_name = 'topic_items' AND column_name = 'fool'`)).rowCount ?? 0) > 0;
   await db.query('BEGIN');
   try {
     for (const s of plan.sets) {
@@ -131,6 +140,7 @@ export async function applyPlan(db, plan) {
         [s.topic, s.nameKo, s.kind, s.version, s.asOf, s.status, s.liar, s.draw, s.timeSec, JSON.stringify(s.tags), s.count, JSON.stringify(s.source), s.verify === null ? null : JSON.stringify(s.verify)],
       );
     }
+    if (has0034) for (const s of plan.sets) await db.query(`UPDATE topic_sets SET scope = $2 WHERE topic = $1`, [s.topic, s.scope ?? null]);
     // 항목은 묶어서(2,500 줄을 한 줄씩 보내지 않는다)
     const CH = 400;
     for (let i = 0; i < plan.items.length; i += CH) {
@@ -143,11 +153,17 @@ export async function applyPlan(db, plan) {
            tags=EXCLUDED.tags, year=EXCLUDED.year, draw=EXCLUDED.draw, liar=EXCLUDED.liar, qid=EXCLUDED.qid, note=EXCLUDED.note, active=true`,
         [JSON.stringify(part)],
       );
+      if (has0034)
+        await db.query(
+          `UPDATE topic_items t SET fool = x.fool, era = x.era, sub = x.sub, diff = x.diff
+             FROM jsonb_to_recordset($1::jsonb) AS x(id text, fool jsonb, era text, sub text, diff smallint) WHERE t.id = x.id`,
+          [JSON.stringify(part.map((x) => ({ id: x.id, fool: x.fool ?? null, era: x.era ?? null, sub: x.sub ?? null, diff: x.diff ?? null })))],
+        );
     }
     const offSets = await db.query(`UPDATE topic_sets SET active=false WHERE active AND NOT (topic = ANY($1::text[])) RETURNING topic`, [plan.sets.map((s) => s.topic)]);
     const offItems = await db.query(`UPDATE topic_items SET active=false WHERE active AND NOT (id = ANY($1::text[])) RETURNING id`, [plan.items.map((x) => x.id)]);
     await db.query('COMMIT');
-    return { sets: plan.sets.length, items: plan.items.length, offSets: offSets.rowCount ?? 0, offItems: offItems.rowCount ?? 0 };
+    return { sets: plan.sets.length, items: plan.items.length, offSets: offSets.rowCount ?? 0, offItems: offItems.rowCount ?? 0, has0034 };
   } catch (e) {
     await db.query('ROLLBACK').catch(() => undefined);
     throw e;
@@ -186,7 +202,9 @@ if (process.argv[1]?.replace(/\\/g, '/').endsWith('scripts/topics-load.mjs')) {
     } else {
       const r = await applyPlan(db, plan);
       const verified = plan.sets.filter((s) => s.status !== 'candidate').length;
-      console.log(`주제 세트 ${r.sets}(verified ${verified}) · 항목 ${r.items} · 쉬게 함 ${r.offSets + r.offItems}(세트 ${r.offSets} · 항목 ${r.offItems})`);
+      const fool = plan.items.filter((x) => x.fool).length;
+      const diff = plan.items.filter((x) => x.diff).length;
+      console.log(`주제 세트 ${r.sets}(verified ${verified}) · 항목 ${r.items} · 쉬게 함 ${r.offSets + r.offItems}(세트 ${r.offSets} · 항목 ${r.offItems})${r.has0034 ? ` · fool ${fool} · diff ${diff}` : ' · (0034 전 — 제시어 칸 안 올림)'}`);
     }
   } finally {
     await db.end();

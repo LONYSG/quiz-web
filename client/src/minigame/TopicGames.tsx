@@ -52,7 +52,8 @@ export function useTimer(view: MinigameView, serverNow: () => number) {
   return { key, t0, left, leftSec, playing, canPlay: playing && !view.spectating };
 }
 
-type Fb = { result: 'ok' | 'dup' | 'wrong'; label?: string | null; text?: string; count?: number };
+/** ★ R088 — hint: 겹치는 이름("서구")이면 "어느 서구? 앞 동네를 붙여 주세요" */
+type Fb = { result: 'ok' | 'dup' | 'wrong'; label?: string | null; text?: string; count?: number; hint?: string };
 
 /** 글 입력칸 하나(퀴즈 입력칸과 같은 꼴) — 보내도 비우기만 하고 포커스는 그대로 */
 export function TopicInput({ canPlay, mobile, placeholder, onSend, resetKey, label }: { canPlay: boolean; mobile: boolean; placeholder: string; onSend: (t: string) => void; resetKey: string; label: string }) {
@@ -142,6 +143,8 @@ export function ManyTalk({ socket, view, serverNow, mobile }: Props) {
         <span className="dim"> — 최대한 많이! </span>
         <span className="mono topic-left">{t.leftSec}초</span>
       </p>
+      {/* ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄(없으면 안 보임) */}
+      {p.scope ? <p className="topic-scope dim" data-topic-scope>{String(p.scope)}</p> : null}
       <TopicInput canPlay={t.canPlay} mobile={mobile} resetKey={t.key} placeholder={view.spectating ? '구경 중' : '떠오르는 대로 치고 Enter'} label="정답 입력" onSend={send} />
       <p className={`quiz-num-help topic-fb${last?.result === 'ok' ? ' ok' : last ? ' bad' : ' dim'}`} data-feedback={last?.result ?? ''}>
         {last?.result === 'ok' ? (
@@ -152,7 +155,7 @@ export function ManyTalk({ socket, view, serverNow, mobile }: Props) {
           `"${last.label ?? last.text}" — 이미 말했어요`
         ) : last?.result === 'wrong' ? (
           <>
-            <Icon icon={X} /> "{last.text}" — 아니에요
+            <Icon icon={X} /> {last.hint ? <span data-topic-hint>{last.hint}</span> : `"${last.text}" — 아니에요`}
           </>
         ) : view.spectating ? (
           '구경 중이에요 — 끝나면 모두의 답이 공개돼요'
@@ -283,6 +286,8 @@ export function UniquePick({ socket, view, serverNow, mobile }: Props) {
         <span className="dim"> — 남과 안 겹칠 답 하나! </span>
         <span className="mono topic-left">{t.leftSec}초</span>
       </p>
+      {/* ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄(없으면 안 보임) */}
+      {p.scope ? <p className="topic-scope dim" data-topic-scope>{String(p.scope)}</p> : null}
       <TopicInput canPlay={t.canPlay} mobile={mobile} resetKey={t.key} placeholder={view.spectating ? '구경 중' : mine ? '바꾸려면 다시 치기' : '답 하나 → Enter'} label="답 입력" onSend={send} />
       <p className={`quiz-num-help topic-fb${mine?.result === 'ok' ? ' ok' : mine ? ' bad' : ' dim'}`} data-feedback={mine?.result ?? ''} data-unique-mine={mine?.label ?? mine?.text ?? ''}>
         {mine?.result === 'ok' ? (
@@ -291,7 +296,7 @@ export function UniquePick({ socket, view, serverNow, mobile }: Props) {
           </>
         ) : mine ? (
           <>
-            <Icon icon={X} /> "{mine.text}" — 이 주제의 정답이 아니에요(0점) · 다시!
+            <Icon icon={X} /> {mine.hint ? <span data-topic-hint>{mine.hint}</span> : `"${mine.text}" — 이 주제의 정답이 아니에요(0점) · 다시!`}
           </>
         ) : view.spectating ? (
           '구경 중이에요'
