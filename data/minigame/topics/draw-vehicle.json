@@ -755,5 +755,152 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V045",
+  "checkedAt": "2026-11-09T07:38:57.527Z",
+  "itemsChecked": 54,
+  "problemItems": 16,
+  "problemPct": 29.6,
+  "counts": {
+   "remove": 7,
+   "dup": 0,
+   "diff": 0,
+   "variant": 9,
+   "sub": 1,
+   "person": 0
+  },
+  "fixes": [
+   {
+    "op": "remove",
+    "id": "draw-vehicle-002",
+    "name": "군함",
+    "reason": "항공모함의 상위어 — 그림이 겹침",
+    "fix": "삭제"
+   },
+   {
+    "op": "remove",
+    "id": "draw-vehicle-008",
+    "name": "카약",
+    "reason": "카누와 그림이 같음(노 젓는 좁은 배)",
+    "fix": "삭제"
+   },
+   {
+    "op": "sub",
+    "id": "draw-vehicle-009",
+    "name": "카트",
+    "reason": "sub 쇼핑은 약함 — 고카트와 혼동 가능",
+    "fix": "쇼핑"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-009",
+    "name": "카트",
+    "reason": "흔한 말",
+    "fix": "쇼핑카트"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-013",
+    "name": "구급차",
+    "reason": "외래어",
+    "fix": "앰뷸런스"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-015",
+    "name": "경찰차",
+    "reason": "흔한 말",
+    "fix": "순찰차"
+   },
+   {
+    "op": "remove",
+    "id": "draw-vehicle-016",
+    "name": "나룻배",
+    "reason": "보트와 그림이 같음(작은 노 젓는 배)",
+    "fix": "삭제"
+   },
+   {
+    "op": "remove",
+    "id": "draw-vehicle-017",
+    "name": "돛단배",
+    "reason": "요트와 돛 그림이 같음",
+    "fix": "삭제"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-019",
+    "name": "레미콘",
+    "reason": "정식 이름",
+    "fix": "믹서트럭"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-023",
+    "name": "여객선",
+    "reason": "흔한 말",
+    "fix": "크루즈"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-026",
+    "name": "오픈카",
+    "reason": "외래어",
+    "fix": "컨버터블"
+   },
+   {
+    "op": "remove",
+    "id": "draw-vehicle-027",
+    "name": "장갑차",
+    "reason": "탱크와 그림 거의 같음(바퀴/궤도 차이 미미)",
+    "fix": "삭제"
+   },
+   {
+    "op": "remove",
+    "id": "draw-vehicle-037",
+    "name": "관광버스",
+    "reason": "버스의 하위 — 그림이 같음",
+    "fix": "삭제"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-039",
+    "name": "덤프트럭",
+    "reason": "흔한 말",
+    "fix": "덤프차"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-042",
+    "name": "오토바이",
+    "reason": "흔한 말",
+    "fix": "바이크"
+   },
+   {
+    "op": "variant",
+    "id": "draw-vehicle-050",
+    "name": "우주왕복선",
+    "reason": "외래어",
+    "fix": "스페이스셔틀"
+   },
+   {
+    "op": "remove",
+    "id": "draw-vehicle-053",
+    "name": "배달 오토바이",
+    "reason": "오토바이의 하위 — 짐칸 정도 차이",
+    "fix": "삭제"
+   }
+  ],
+  "unsure": [
+   "draw-vehicle-026: 오픈카 — 스포츠카와 그림 겹침",
+   "draw-vehicle-041: 스포츠카 — 오픈카와 겹침",
+   "draw-vehicle-034: 지하철 — 기차와 그림 비슷",
+   "draw-vehicle-030: 제설차 — 트럭과 구분 약함",
+   "draw-vehicle-025: 유조선 — 여객선과 구분 약함",
+   "draw-vehicle-048: 고기잡이배 — 보트와 구분 약함",
+   "draw-vehicle-038: 경비행기 — 비행기와 겹침"
+  ],
+  "verdict": "candidate",
+  "why": "캐치마인드 풀 전수 판정: 문제 항목 16/54 (29.6%) — remove 7 · 그림 중복 0 · diff 0 · 변형 9 · sub 1 — 적용은 G049",
+  "history": []
+ }
 }
