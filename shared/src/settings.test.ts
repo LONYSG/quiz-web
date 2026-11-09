@@ -79,6 +79,8 @@ describe('validateRoomSettings — 형식 방어', () => {
       'countdownSec',
       // ★ R069 — 난이도 단계(옛 R025 difficulties 배열을 대신)
       'level',
+      // ★ R088 — 라이어 모드
+      'liarMode',
       // ★ R050 — 미니게임 포함 · 넣을 미니게임
       'minigameKeys',
       // ★ R057 — 미니게임만 · 미니게임 수

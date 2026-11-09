@@ -131,6 +131,7 @@ const SCENARIO_ENV = {
   feedback: { RESOLVED_WAIT_MS: '200' },
   mgonly: { MINIGAME_PHASE_SCALE: '0.05' },
   topicsets: { MINIGAME_PHASE_SCALE: '0.05', TOPIC_CACHE_MS: '0' },
+  liarfool: { TOPIC_CACHE_MS: '0' },
   // ★ R083 — 캐치마인드 그림 90초 → 8초(아무도 못 맞히는 판)
   draw: { DRAW_ROUND_MS: '8000' },
   mgcount: { MINIGAME_PHASE_SCALE: '0.05', DISCONNECT_REMOVE_MS: '1500' },
@@ -8319,6 +8320,115 @@ async function scenarioTopicSets() {
 }
 
 // =============================================================================
+// ★★★ R088 — 라이어 바보형 (D-345) — 봇 3 · 2라운드
+//   설정 liarMode fool(다른 설정을 바꿔도 남음) · 라이어 view = 시민과 같은 꼴(amLiar false · 키워드 = fool 하나 ≠ 진짜) · 맞히기 단계에서야 amLiar
+//   R1 찾음 + 키워드 맞힘 → 라이어 +1(바보형) · 시민 +1 · R2 찾음 · 틀림 → 시민 +1
+//   공개 foolWord · liar_rounds mode 'fool' · fool_word = 받은 단어 ∈ topic_items.fool
+//   + fool 이 없으면 기본형으로 떨어짐(시스템 줄 · amLiar true)
+// =============================================================================
+async function scenarioLiarFool() {
+  log('시나리오 liarfool — ★★★ 라이어 바보형 (R088)');
+  const bots = await makeBots(3);
+  const [host] = bots;
+  for (const b of bots) await b.connect();
+  topicsLoad(['--apply', '--allow-candidate']);
+  host.createRoom('R088 바보형');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  for (const b of bots.slice(1)) {
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+  }
+  await sleep(300);
+  let m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, mode: 'liar', liarMode: 'fool', minigameRounds: 2 });
+  await sleep(300);
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, minigameRounds: 2 });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').length >= 2, 4000, '설정');
+  const st = host.since(m, 'lobby.settingsUpdated').pop().settings;
+  expectTrue('★★ 설정 — liarMode fool · 다른 칸만 바꿔도 남음', st.liarMode === 'fool' && st.mode === 'liar', JSON.stringify(st));
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.login_id, r.id])));
+  const idOf = (b) => ids.get(b.loginId);
+  const seen = []; // round → { [id]: { amLiar, keyword } } (describe 때)
+  const truth = []; // round → 진짜 키워드(공개 때)
+  const reveals = [];
+  const done = new Map(bots.map((b) => [b, new Set()]));
+  const act = async (b, v) => {
+    const me = idOf(b);
+    const r = v.round;
+    const k = `${r}:${v.phase}:${v.phaseStartedAt}:${v.turn}`;
+    if (done.get(b).has(k)) return;
+    done.get(b).add(k);
+    if (v.phase === 'describe') {
+      seen[r] ??= {};
+      seen[r][me] = { amLiar: v.amLiar, keyword: v.keyword, mode: v.mode };
+      if (v.turn === me) b.socket.emit('liar.say', { text: `설명 ${b.name}` });
+    } else if (v.phase === 'defense' && v.turn === me) b.socket.emit('liar.say', { text: '아니에요' });
+    else if (v.phase === 'vote' || v.phase === 'revote') {
+      await sleep(150);
+      // 진짜 라이어 = 다른 둘과 키워드가 다른 사람(바보형이라 view 로는 모른다 — 셋의 키워드를 비교)
+      const s = seen[r] ?? {};
+      const kws = Object.entries(s);
+      const liar = kws.find(([, x]) => kws.filter(([, y]) => y.keyword === x.keyword).length === 1)?.[0] ?? null;
+      const target = me === liar ? [...v.participants].find((a) => a !== me) : liar;
+      if (target) b.socket.emit('liar.vote', { target });
+    } else if (v.phase === 'final' && v.accused !== me) {
+      await sleep(100);
+      b.socket.emit('liar.final', { yes: true });
+    } else if (v.phase === 'guess' && v.amLiar) {
+      await sleep(150);
+      const s = Object.values(seen[r] ?? {});
+      const real = s.find((x) => s.filter((y) => y.keyword === x.keyword).length > 1)?.keyword ?? '?';
+      b.socket.emit('liar.guess', { text: r === 1 ? real : '절대아닌답zz' });
+    } else if (v.phase === 'reveal' && b === host) {
+      truth[r] = v.keyword;
+      reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, foolWord: v.foolWord, mode: v.mode });
+    }
+  };
+  let guessView = null;
+  for (const b of bots) {
+    b.socket.on('liar.state', (p) => {
+      if (p.liar?.phase === 'guess' && p.liar.amLiar) guessView = p.liar;
+      if (p.liar) void act(b, p.liar);
+    });
+  }
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '시작');
+  const started = host.since(g, 'game.started')[0];
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 180000, '결과');
+  const res = host.since(g, 'game.result')[0].payload;
+  const byR = (n) => reveals.find((x) => x.round === n) ?? {};
+  const s1 = Object.entries(seen[1] ?? {});
+  const liar1 = byR(1).liar;
+  expectTrue('★★★ 바보형 배정 — 셋 다 amLiar false · 라이어 키워드 = 공개 foolWord ≠ 진짜 · 시민 둘 = 진짜', s1.length === 3 && s1.every(([, x]) => x.amLiar === false && x.mode === 'fool') && seen[1][liar1]?.keyword === byR(1).foolWord && byR(1).foolWord !== truth[1] && s1.filter(([a]) => a !== liar1).every(([, x]) => x.keyword === truth[1]), JSON.stringify({ s1, liar1, fool: byR(1).foolWord, truth: truth[1] }));
+  expectTrue('★★ 맞히기 단계에서야 amLiar true(키워드는 null)', guessView?.amLiar === true && guessView.keyword === null, JSON.stringify(guessView && { a: guessView.amLiar, k: guessView.keyword }));
+  expect('★★★ 결과 — R1 찾음 · 맞힘 / R2 찾음 · 틀림', [byR(1).outcome, byR(1).guessOk, byR(2).outcome, byR(2).guessOk], ['caught', true, 'caught', false]);
+  expect('★★★ 바보형 점수 — R1 라이어 +1(기본형 +2 아님) · 시민 +1', byR(1).scores?.[liar1], 1);
+  const rows = await withDb(async (c) => (await c.query(`SELECT r.round, r.mode, r.fool_word, (SELECT ti.fool FROM topic_items ti WHERE ti.id = r.item_id) AS fools FROM liar_rounds r WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
+  expectTrue('★★★ liar_rounds — mode fool · fool_word ∈ 그 항목의 fool', rows.length === 2 && rows.every((x) => x.mode === 'fool' && Array.isArray(x.fools) && x.fools.includes(x.fool_word)), JSON.stringify(rows));
+  void res;
+  // ── fool 이 하나도 없으면 기본형(시스템 줄 · 라이어는 자기가 라이어인 걸 안다)
+  await withDb((c) => c.query(`UPDATE topic_items SET fool = NULL WHERE fool IS NOT NULL`));
+  const chats = [];
+  host.socket.on('chat.message', (p) => chats.push(p));
+  const ag = host.mark();
+  host.socket.emit('game.again', {});
+  let basicSeen = null;
+  for (const b of bots) b.socket.on('liar.state', (p) => p.liar?.amLiar && p.liar.phase === 'describe' && (basicSeen ??= p.liar));
+  await host.waitFor(() => basicSeen !== null, 30000, '기본형으로').catch(() => {});
+  expectTrue('★★ fool 없으면 기본형 — 시스템 줄 · 라이어 amLiar true · mode basic', !!basicSeen && basicSeen.mode === 'basic' && chats.some((c) => c.system && /바보형 단어가 아직 없어/.test(c.text)), JSON.stringify({ m: basicSeen?.mode, chats: chats.filter((c) => c.system).map((c) => c.text).slice(-3) }));
+  void ag;
+  topicsLoad(['--apply', '--allow-candidate']); // 되돌림
+  for (const b of bots) {
+    b.leave();
+    await sleep(40);
+    b.disconnect();
+  }
+  return checkSummary();
+}
+
+// =============================================================================
 // ★★★ R082 — 라이어 게임 (D-339) — 봇 4 · 4라운드
 //   ★★ R087 개정(D-344): 설명 · 변론 = liar.say(설명칸) · 채팅은 차례와 무관하게 자유(키워드만 거부) · 투표 바퀴 3
 //   R1 찾음(시민 전원 라이어 지목 · 죽인다) + 라이어 키워드 맞힘 → 시민 +1 · 라이어 +2 · 설명칸 키워드 거부 · 차례 아닌 설명 거부 · 차례 아닌 채팅은 통과
@@ -9599,6 +9709,7 @@ const SCENARIOS = {
   mgonly: scenarioMgOnly,
   topicsets: scenarioTopicSets,
   liar: scenarioLiar,
+  liarfool: scenarioLiarFool,
   draw: scenarioDraw,
   mgcount: scenarioMgCount,
   mgduo: scenarioMgDuo,

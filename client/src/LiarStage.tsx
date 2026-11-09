@@ -88,6 +88,11 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
     <section className={`card liar-card liar-${view.phase}`} data-liar-phase={view.phase} data-liar-bout={view.bout} aria-live="polite">
       <header className="liar-head">
         <span className="mg-badge">라이어 게임</span>
+        {view.mode === 'fool' && (
+          <span className="chip liar-mode-chip" data-liar-mode="fool" title="라이어도 다른 단어를 받아요 — 자기가 라이어인 줄 몰라요">
+            바보형
+          </span>
+        )}
         <span className="mono liar-round">
           {view.round} / {view.rounds}라운드
         </span>
@@ -191,7 +196,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
       {view.phase === 'guess' && (
         <div className="liar-guess" data-liar-guess>
           <p>
-            ● <strong>{nameOf(view.liar)}</strong> 님이 라이어였어요! 키워드를 맞히면 +{LIAR.SCORE_LIAR_GUESS}
+            ● <strong>{nameOf(view.liar)}</strong> 님이 라이어였어요! 키워드를 맞히면 +{view.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS}
           </p>
           {view.amLiar ? <GuessInput socket={socket} /> : <p className="dim">라이어가 키워드를 맞히는 중…</p>}
         </div>
@@ -202,9 +207,14 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
           <p className="liar-reveal-main">
             라이어는 <strong style={{ color: view.liar ? colorOf(view.liar) : undefined }}>{nameOf(view.liar)}</strong> · 키워드 <strong>{view.keyword}</strong>
           </p>
+          {view.foolWord && (
+            <p className="liar-fool-word" data-liar-fool-word>
+              라이어가 받은 단어: <strong>{view.foolWord}</strong>
+            </p>
+          )}
           <p className="liar-result-line">
             {view.outcome === 'caught'
-              ? `찾았다! ${view.guessOk ? `라이어가 키워드도 맞힘(“${view.guess}”) +${LIAR.SCORE_LIAR_GUESS}` : view.guess ? `라이어 답 “${view.guess}” — 틀림` : '라이어가 답을 못 냈어요'}`
+              ? `찾았다! ${view.guessOk ? `라이어가 키워드도 맞힘(“${view.guess}”) +${view.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS}` : view.guess ? `라이어 답 “${view.guess}” — 틀림` : '라이어가 답을 못 냈어요'}`
               : view.outcome === 'escaped'
                 ? `시민 ${nameOf(view.accusedTried[view.accusedTried.length - 1] ?? null)} 님을 죽였어요 — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}`
                 : `${view.bouts}바퀴 동안 라이어를 못 찾았어요 — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}`}

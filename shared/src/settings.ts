@@ -12,7 +12,7 @@
 
 import { RULES } from './protocol.js';
 import { isMinigameKey, selectableMinigameKeys, type MinigameKey } from './minigame.js';
-import { LIAR, LIAR_TEAM_BLOCK, isRoomMode, type RoomMode } from './liar.js';
+import { LIAR, LIAR_TEAM_BLOCK, isLiarMode, isRoomMode, type LiarMode, type RoomMode } from './liar.js';
 import { DRAW, DRAW_TEAM_BLOCK } from './draw.js';
 
 export type StartMode = 'instant' | 'countdown';
@@ -189,13 +189,15 @@ export interface RoomSettingsInput {
    *   라이어의 라운드 수 = minigameRounds(2~10).
    */
   mode: RoomMode;
+  /** ★ R088 (D-345) — 라이어 모드 'basic'(기본형 · 기본) · 'fool'(바보형) — 방식이 라이어일 때만 쓴다 · 다시 하기 이어받음 */
+  liarMode: LiarMode;
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode' | 'mode';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode' | 'mode' | 'liarMode';
       message: string;
     };
 
@@ -322,6 +324,10 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   if (mode === 'liar' && (minigameRounds < LIAR.ROUNDS.MIN || minigameRounds > LIAR.ROUNDS.MAX)) {
     return { ok: false, field: 'minigameRounds', message: `라이어 게임 라운드 수는 ${LIAR.ROUNDS.MIN}~${LIAR.ROUNDS.MAX} 사이여야 합니다.` };
   }
+  // ★ R088 — 라이어 모드(없으면 기본형)
+  if (raw.liarMode !== undefined && !isLiarMode(raw.liarMode)) {
+    return { ok: false, field: 'liarMode', message: '라이어 모드 형식이 올바르지 않습니다.' };
+  }
   if (mode === 'liar' && raw.teamMode === true) {
     return { ok: false, field: 'teamMode', message: LIAR_TEAM_BLOCK };
   }
@@ -347,6 +353,7 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       minigameRounds,
       teamMode: raw.teamMode === true,
       mode,
+      liarMode: isLiarMode(raw.liarMode) ? raw.liarMode : 'basic',
     },
   };
 }

@@ -16,7 +16,8 @@
 // =============================================================================
 
 import { randomInt } from 'node:crypto';
-import { LIAR, finalPasses, liarRoundScores, matchTopic, normalizeAnswer, tallyVotes, type LiarOutcome, type LiarPhase } from '@quiz/shared';
+import { LIAR, finalPasses, liarRoundScores, matchTopic, normalizeAnswer, tallyVotes, type LiarMode, type LiarOutcome, type LiarPhase } from '@quiz/shared';
+import { broadcastSystem } from '../rooms/systemChat.js';
 import { emitRoomPerPlayer } from '../rooms/emit.js';
 import type { Player, Room } from '../rooms/types.js';
 import { broadcastPlayers, finishGame } from '../game/question.js';
@@ -34,6 +35,9 @@ export interface LiarVoteLog {
 
 export interface LiarRound {
   no: number;
+  /** ★ R088 (D-345) — 기본형 · 바보형 · 바보형에서 라이어가 받은 단어 */
+  mode: LiarMode;
+  foolWord: string | null;
   topic: string;
   nameKo: string;
   itemId: string;
@@ -80,6 +84,8 @@ export interface LiarSay {
 
 export interface LiarRun {
   roundsTotal: number;
+  /** ★ R088 — 이 판의 모드(바보형 단어가 하나도 없으면 기본형으로 떨어진다) */
+  mode: LiarMode;
   store: TopicStore;
   experienced: Map<string, Set<string>>;
   liarCount: Map<string, number>;
@@ -119,16 +125,38 @@ export function pickLiarWord(
   experienced: ReadonlyMap<string, ReadonlySet<string>>,
   lastTopic: string | null,
   usedItems: ReadonlySet<string>,
+  mode: LiarMode = 'basic',
 ): { set: TopicSet; item: TopicSet['items'][number] } | null {
   const sets = liarTopics(store);
   if (sets.length === 0) return null;
-  const pool = sets.filter((s) => s.topic !== lastTopic && s.items.some((x) => x.liar && !usedItems.has(x.id)));
-  const usable = pool.length ? pool : sets.filter((s) => s.items.some((x) => x.liar && !usedItems.has(x.id)));
+  // ★ R088 — 바보형은 fool 이 있는 항목만
+  const ok = (x: TopicSet['items'][number]) => x.liar && !usedItems.has(x.id) && (mode !== 'fool' || (x.fool?.length ?? 0) > 0);
+  const pool = sets.filter((s) => s.topic !== lastTopic && s.items.some(ok));
+  const usable = pool.length ? pool : sets.filter((s) => s.items.some(ok));
   if (!usable.length) return null;
-  const set = usable[randomInt(usable.length)]!;
+  const set = weightedPick(usable, (s) => s.items.filter(ok).length);
   const seen = (id: string) => participants.filter((a) => experienced.get(a)?.has(`liar|${id}`)).length;
-  const items = shuffle(set.items.filter((x) => x.liar && !usedItems.has(x.id))).sort((a, b) => seen(a.id) - seen(b.id));
+  const items = shuffle(set.items.filter(ok)).sort((a, b) => seen(a.id) - seen(b.id));
   return { set, item: items[0]! };
+}
+
+/** ★ R088 (D-345 · 18 §12 "제시어 추첨 = 항목 수 가중") — 남은 항목 수에 비례해 세트를 고른다 */
+export function weightedPick<T>(list: readonly T[], weight: (x: T) => number): T {
+  const ws = list.map((x) => Math.max(0, weight(x)));
+  const sum = ws.reduce((a, b) => a + b, 0);
+  if (sum <= 0) return list[randomInt(list.length)]!;
+  let r = randomInt(1_000_000) / 1_000_000 * sum;
+  for (let i = 0; i < list.length; i += 1) {
+    r -= ws[i]!;
+    if (r < 0) return list[i]!;
+  }
+  return list[list.length - 1]!;
+}
+
+/** ★ R088 — 모드가 바보형인데 fool 이 있는 라이어 항목이 하나도 없으면 기본형 */
+export function liarModeFor(store: TopicStore, want: LiarMode): LiarMode {
+  if (want !== 'fool') return 'basic';
+  return liarTopics(store).some((s) => s.items.some((x) => x.liar && (x.fool?.length ?? 0) > 0)) ? 'fool' : 'basic';
 }
 
 /** ★ 라이어 — 덜 한 사람 먼저 · 바로 앞 라운드 라이어는 피함(가능하면) */
@@ -162,9 +190,13 @@ export interface LiarView {
   phaseEndsAt: number;
   topic: string;
   nameKo: string;
-  /** 시민 · 공개 뒤에만 */
+  /** 시민 · 공개 뒤에만 · ★ R088 바보형 라이어에게는 자기 단어(fool — 정답인 것처럼) */
   keyword: string | null;
+  /** ★ R088 — 바보형 라이어는 맞히기 · 공개 전까지 false(시민과 같은 화면) */
   amLiar: boolean;
+  /** ★ R088 — 이 라운드 모드 · 공개 때 라이어가 받은 단어 */
+  mode: LiarMode;
+  foolWord: string | null;
   spectating: boolean;
   participants: string[];
   order: string[];
@@ -194,7 +226,9 @@ export function liarView(room: Room, viewer: string): LiarView | null {
   if (!run || !r || room.state !== 'LIAR') return null;
   const part = r.participants.includes(viewer);
   const open = r.phase === 'guess' || r.phase === 'reveal';
-  const amLiar = part && r.liar === viewer;
+  const isLiar = part && r.liar === viewer;
+  // ★ R088 — 바보형: 맞히기 · 공개 전까지 라이어도 자기가 라이어인 줄 모른다
+  const amLiar = isLiar && (r.mode !== 'fool' || open);
   return {
     round: r.no,
     rounds: run.roundsTotal,
@@ -204,8 +238,10 @@ export function liarView(room: Room, viewer: string): LiarView | null {
     topic: r.topic,
     nameKo: r.nameKo,
     // ★ 키워드는 시민에게만(라이어 · 구경꾼은 공개 뒤) — guess 단계에서는 라이어가 맞히는 중이라 공개 전과 같다
-    keyword: (part && !amLiar) || r.phase === 'reveal' ? r.keyword : null,
+    keyword: r.phase === 'reveal' ? r.keyword : isLiar ? (r.mode === 'fool' && !open ? r.foolWord : null) : part ? r.keyword : null,
     amLiar,
+    mode: r.mode,
+    foolWord: r.phase === 'reveal' ? r.foolWord : null,
     spectating: !part,
     participants: r.participants,
     order: r.order,
@@ -239,8 +275,11 @@ function broadcast(room: Room): void {
 export function startLiarGame(room: Room, store: TopicStore, experienced: Map<string, Set<string>>): boolean {
   const game = room.game;
   if (!game) return false;
+  const mode = liarModeFor(store, room.settings.liarMode ?? 'basic');
+  if (room.settings.liarMode === 'fool' && mode !== 'fool') broadcastSystem(room, '바보형 단어가 아직 없어 이번 판은 기본형으로 해요');
   game.liar = {
     roundsTotal: room.settings.minigameRounds,
+    mode,
     store,
     experienced,
     liarCount: new Map(),
@@ -262,7 +301,7 @@ function startRound(room: Room, now: number): boolean {
     finishGame(room, run.done > 0 ? 'completed' : 'no_questions', `접속한 사람이 ${T.MIN_PLAYERS}명보다 적어 라이어 게임을 끝냈습니다.`);
     return false;
   }
-  const word = pickLiarWord(run.store, participants, run.experienced, run.lastTopic, run.usedItems);
+  const word = pickLiarWord(run.store, participants, run.experienced, run.lastTopic, run.usedItems, run.mode);
   if (!word) {
     finishGame(room, run.done > 0 ? 'completed' : 'no_questions', '제시어가 모자라 라이어 게임을 끝냈습니다.');
     return false;
@@ -272,8 +311,11 @@ function startRound(room: Room, now: number): boolean {
   run.lastLiar = liar;
   run.lastTopic = word.set.topic;
   run.usedItems.add(word.item.id);
+  const fools = run.mode === 'fool' ? (word.item.fool ?? []) : [];
   run.cur = {
     no: run.done + 1,
+    mode: fools.length ? 'fool' : 'basic',
+    foolWord: fools.length ? fools[randomInt(fools.length)]! : null,
     topic: word.set.topic,
     nameKo: word.set.nameKo,
     itemId: word.item.id,
@@ -489,7 +531,7 @@ function endRound(room: Room, r: LiarRound, now: number): void {
   r.outcome = outcome;
   if (outcome !== 'caught') r.guessOk = null;
   const hitters = [...r.accuseVotes.entries()].filter(([, t]) => t === r.liar).map(([a]) => a);
-  const scores = liarRoundScores({ outcome, liar: r.liar, guessOk: r.guessOk === true, hitters });
+  const scores = liarRoundScores({ outcome, liar: r.liar, guessOk: r.guessOk === true, hitters, mode: r.mode });
   r.scores = Object.fromEntries(scores);
   let any = false;
   for (const [a, n] of scores) {
@@ -525,6 +567,8 @@ function endRound(room: Room, r: LiarRound, now: number): void {
     guess: r.guess,
     guessOk: r.guessOk,
     scores: r.scores,
+    mode: r.mode,
+    foolWord: r.foolWord,
   }).catch((err) => console.error('[liar] ★ 라운드 기록 실패:', (err as Error).message));
   void recordLiarExperience(r.participants, r.itemId).catch((err) => console.error('[liar] ★ 경험 기록 실패:', (err as Error).message));
   console.log(`[liar] ${room.id} 라운드 ${r.no} 끝 — ${outcome}${r.guessOk ? ' · 키워드 맞힘' : ''}`);

@@ -24,7 +24,36 @@ export const DRAW = {
   SOLVER_SCORES: [3, 2, 1] as readonly number[],
   SOLVER_MIN: 1,
   DRAWER_MAX: 3,
+  /** ★ R088 (D-345 · 18 §12 "캐치마인드는 한 판에 섞는다") — 한 판의 diff 1 : 2 : 3 비율(세트 무관) · diff 없는 항목은 2 로 본다 */
+  DIFF_MIX: [4, 4, 2] as readonly number[],
 } as const;
+
+/**
+ * ★ R088 — 라운드 n 개의 난이도 계획(1 · 2 · 3) — DIFF_MIX 비율로 나눈 뒤(큰 나머지 순) 섞는다.
+ *   rnd: 0~1 난수(검사에서 고정)
+ */
+export function drawDiffPlan(rounds: number, rnd: () => number = Math.random): number[] {
+  const mix = DRAW.DIFF_MIX;
+  const total = mix.reduce((a, b) => a + b, 0);
+  const exact = mix.map((w) => (w / total) * rounds);
+  const n = exact.map((x) => Math.floor(x));
+  let left = rounds - n.reduce((a, b) => a + b, 0);
+  const order = exact.map((x, i) => ({ i, r: x - Math.floor(x) })).sort((a, b) => b.r - a.r || a.i - b.i);
+  for (const o of order) {
+    if (left <= 0) break;
+    n[o.i]! += 1;
+    left -= 1;
+  }
+  const out: number[] = [];
+  n.forEach((k, i) => {
+    for (let j = 0; j < k; j += 1) out.push(i + 1);
+  });
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rnd() * (i + 1));
+    [out[i], out[j]] = [out[j]!, out[i]!];
+  }
+  return out;
+}
 
 export const DRAW_COLORS = ['#111111', '#e5383b', '#2563eb', '#16a34a'] as const;
 export type DrawColor = (typeof DRAW_COLORS)[number] | 'erase';

@@ -232,6 +232,11 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
           ) : (
             <span className="dim">· 채팅으로 정답!</span>
           )}
+          {view.phase === 'reveal' && view.diff ? (
+            <span className="dim draw-diff" data-draw-diff={view.diff}>
+              · {['', '쉬움', '보통', '어려움'][view.diff]}
+            </span>
+          ) : null}
           {view.canReroll && (
             <button type="button" className="ghost tiny" data-draw-reroll onClick={() => socket.emit('draw.reroll', {})}>
               다른 제시어

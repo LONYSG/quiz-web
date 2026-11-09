@@ -20,6 +20,9 @@ describe('라이어 — 투표 · 찬반 · 점수', () => {
   it('점수 — 찾음(찍은 시민 +1 · 맞히면 라이어 +2) · 못 찾음 라이어 +3', () => {
     expect(Object.fromEntries(liarRoundScores({ outcome: 'caught', liar: 'L', guessOk: false, hitters: ['a', 'b'] }))).toEqual({ a: 1, b: 1 });
     expect(Object.fromEntries(liarRoundScores({ outcome: 'caught', liar: 'L', guessOk: true, hitters: ['a'] }))).toEqual({ a: 1, L: 2 });
+    // ★ R088 — 바보형은 들킨 뒤 맞히기 +1 · 안 들킴 +3 은 같음
+    expect(Object.fromEntries(liarRoundScores({ outcome: 'caught', liar: 'L', guessOk: true, hitters: ['a'], mode: 'fool' }))).toEqual({ a: 1, L: 1 });
+    expect(Object.fromEntries(liarRoundScores({ outcome: 'notfound', liar: 'L', guessOk: false, hitters: [], mode: 'fool' }))).toEqual({ L: 3 });
     expect(Object.fromEntries(liarRoundScores({ outcome: 'notfound', liar: 'L', guessOk: false, hitters: ['a'] }))).toEqual({ L: 3 });
     expect(Object.fromEntries(liarRoundScores({ outcome: 'escaped', liar: 'L', guessOk: false, hitters: [] }))).toEqual({ L: 3 });
   });

@@ -20,6 +20,8 @@ import {
   DRAW_TEAM_BLOCK,
   LIAR,
   LIAR_TEAM_BLOCK,
+  LIAR_MODES,
+  LIAR_MODE_LABEL,
   DIFFICULTY_LEVELS,
   GAME_TOPICS,
   MINIGAMES,
@@ -121,6 +123,7 @@ export default function GameSettings({
   // ★★★ R083 — 캐치마인드(라운드 수 · 팀전 잠금 · 문제/미니게임 줄 숨김은 라이어와 같다)
   const drawM = mode === 'draw';
   const topicM = liar || drawM;
+  const liarMode = shown.liarMode ?? 'basic';
   const mgOnly = mode === 'minigame';
   const roundsMax = topicM ? LIAR.ROUNDS.MAX : MINIGAME_ONLY_ROUNDS.MAX;
   const clampRounds = (n: number | undefined) => Math.min(LIAR.ROUNDS.MAX, Math.max(LIAR.ROUNDS.MIN, Number.isFinite(n) ? (n as number) : LIAR.ROUNDS.DEFAULT));
@@ -206,11 +209,39 @@ export default function GameSettings({
         </div>
       </div>
 
-      {/* ★ R082 — 라이어: 한 줄 설명(규칙 전부는 01 16-R082) */}
+      {/* ★ R082 — 라이어: 한 줄 설명(규칙 전부는 01 16-R082 · R087 개정) · ★ R088 모드(기본형 · 바보형) */}
       {liar && (
-        <p className="set-note dim" data-liar-note>
-          라이어 1명 · 주제만 알고 한마디씩 → 투표 · 최후의 항변 → 찬반 · {LIAR.MIN_PLAYERS}명부터
-        </p>
+        <>
+          <div className="set-row liar-mode-row" data-liar-mode-row>
+            <span className="set-label">모드</span>
+            {editable ? (
+              <>
+                {LIAR_MODES.map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    data-liar-mode-btn={m}
+                    aria-pressed={liarMode === m}
+                    className={liarMode === m ? 'preset active' : 'preset'}
+                    onClick={() => liarMode !== m && push({ ...draft, liarMode: m })}
+                  >
+                    {LIAR_MODE_LABEL[m]}
+                  </button>
+                ))}
+              </>
+            ) : (
+              <span className="chip on" data-liar-mode-chip>
+                {LIAR_MODE_LABEL[liarMode]}
+              </span>
+            )}
+          </div>
+          <p className="set-note dim" data-liar-note>
+            {liarMode === 'fool'
+              ? '바보형 — 라이어도 비슷한 다른 단어를 받아 자기가 라이어인 줄 몰라요 · 들킨 뒤 맞히기 +1'
+              : '기본형 — 라이어는 주제만 알아요'}{' '}
+            · 설명칸에 한마디씩 → 투표 · 변론 → 죽일까 살릴까(최대 3바퀴) · {LIAR.MIN_PLAYERS}명부터
+          </p>
+        </>
       )}
       {drawM && (
         <p className="set-note dim" data-draw-note>

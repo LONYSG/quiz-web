@@ -71,6 +71,8 @@ export interface RoomSettings {
   minigameRounds?: number;
   /** ★★★ R079 — 팀전 (블루 · 레드) */
   teamMode?: boolean;
+  /** ★ R088 — 라이어 모드 */
+  liarMode?: 'basic' | 'fool';
   /** ★★★ R082 — 방식(퀴즈 · 미니게임만 · 라이어) */
   mode?: 'quiz' | 'minigame' | 'liar' | 'draw';
 }
@@ -95,6 +97,8 @@ export interface DrawView {
   /** ★ R087 — 공개된 힌트 · 출제자가 아직 쓸 수 있는 힌트 */
   hints: { length?: string; initial?: string; topic?: string };
   hintsLeft: ('length' | 'initial' | 'topic')[];
+  /** ★ R088 — 공개 때 난이도 */
+  diff?: number | null;
   drawer: string;
   amDrawer: boolean;
   spectating: boolean;
@@ -125,6 +129,9 @@ export interface LiarView {
   says: { accountId: string; text: string; auto: boolean; kind: 'say' | 'defense'; bout: number }[];
   bout: number;
   bouts: number;
+  /** ★ R088 — 기본형 · 바보형 · 공개 때 라이어가 받은 단어 */
+  mode: 'basic' | 'fool';
+  foolWord: string | null;
   myVote: string | null;
   votedCount: number;
   candidates: string[] | null;

@@ -18,6 +18,8 @@ export async function insertDrawRound(r: {
   solved: { accountId: string; ms: number }[];
   outcome: 'all' | 'some' | 'none';
   scores: Record<string, number>;
+  /** ★ R088 — 출제자 힌트 */
+  hints?: Record<string, string>;
 }): Promise<void> {
   if (!r.gameId) return;
   await query(
@@ -25,7 +27,9 @@ export async function insertDrawRound(r: {
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb, $10::jsonb, $11, $12::jsonb)
      ON CONFLICT (game_id, round) DO NOTHING`,
     [r.gameId, r.round, r.drawer, r.topic, r.itemId, r.keyword, r.rerolled, r.strokes, JSON.stringify(r.participants), JSON.stringify(r.solved), r.outcome, JSON.stringify(r.scores)],
-  );
+  );  // ★ R088 (0034) — R087 출제자 힌트 기록(따로 — 0034 전 DB 에서도 위 행은 남는다)
+  if (r.hints && Object.keys(r.hints).length) await query(`UPDATE draw_rounds SET hints = $3::jsonb WHERE game_id = $1 AND round = $2`, [r.gameId, r.round, JSON.stringify(r.hints)]);
+
 }
 
 export async function recordDrawExperience(accountIds: readonly string[], itemId: string): Promise<void> {

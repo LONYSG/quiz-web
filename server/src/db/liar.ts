@@ -21,6 +21,9 @@ export async function insertLiarRound(r: {
   guess: string | null;
   guessOk: boolean | null;
   scores: Record<string, number> | null;
+  /** ★ R088 (0034) — 라이어 모드 · 바보형 단어 */
+  mode?: 'basic' | 'fool';
+  foolWord?: string | null;
 }): Promise<void> {
   if (!r.gameId) return;
   await query(
@@ -45,6 +48,8 @@ export async function insertLiarRound(r: {
       JSON.stringify(r.scores ?? {}),
     ],
   );
+  // ★ R088 — 0034 칸은 따로(0034 전 DB 에서도 위 행은 남는다 — 실패는 부르는 쪽 로그)
+  if (r.mode && (r.mode !== 'basic' || r.foolWord)) await query(`UPDATE liar_rounds SET mode = $3, fool_word = $4 WHERE game_id = $1 AND round = $2`, [r.gameId, r.round, r.mode, r.foolWord ?? null]);
 }
 
 export async function recordLiarExperience(accountIds: readonly string[], itemId: string): Promise<void> {

@@ -44,7 +44,17 @@ export const LIAR = {
   SCORE_CITIZEN_HIT: 1,
   SCORE_LIAR_ESCAPE: 3,
   SCORE_LIAR_GUESS: 2,
+  /** ★ R088 (D-345 · 18 §12) — 바보형에서 들킨 라이어가 키워드를 맞히면(기본형보다 낮게 — 설계 제안) */
+  SCORE_LIAR_GUESS_FOOL: 1,
 } as const;
+
+/** ★ R088 (D-345 · 찬종 "기본형 / 바보형") — 기본형 = 라이어는 자기가 라이어인 걸 안다 · 바보형 = 라이어도 다른 단어(fool)를 정답처럼 받는다 */
+export type LiarMode = 'basic' | 'fool';
+export const LIAR_MODES: readonly LiarMode[] = ['basic', 'fool'];
+export function isLiarMode(v: unknown): v is LiarMode {
+  return v === 'basic' || v === 'fool';
+}
+export const LIAR_MODE_LABEL: Record<LiarMode, string> = { basic: '기본형', fool: '바보형' };
 
 export type LiarPhase = 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'reveal';
 export type LiarOutcome = 'caught' | 'escaped' | 'notfound';
@@ -68,11 +78,11 @@ export function finalPasses(kill: number, save: number): boolean {
 }
 
 /** 라운드 점수 */
-export function liarRoundScores(r: { outcome: LiarOutcome; liar: string; guessOk: boolean; hitters: readonly string[] }): Map<string, number> {
+export function liarRoundScores(r: { outcome: LiarOutcome; liar: string; guessOk: boolean; hitters: readonly string[]; mode?: LiarMode }): Map<string, number> {
   const out = new Map<string, number>();
   if (r.outcome === 'caught') {
     for (const a of r.hitters) if (a !== r.liar) out.set(a, LIAR.SCORE_CITIZEN_HIT);
-    if (r.guessOk) out.set(r.liar, LIAR.SCORE_LIAR_GUESS);
+    if (r.guessOk) out.set(r.liar, r.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS);
   } else out.set(r.liar, LIAR.SCORE_LIAR_ESCAPE);
   return out;
 }

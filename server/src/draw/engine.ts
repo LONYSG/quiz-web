@@ -16,6 +16,7 @@
 import { randomInt } from 'node:crypto';
 import {
   DRAW,
+  drawDiffPlan,
   drawDrawerScore,
   drawLengthHint,
   drawLengthPattern,
@@ -33,6 +34,7 @@ import type { Player, Room } from '../rooms/types.js';
 import { broadcastPlayers, finishGame } from '../game/question.js';
 import { ambiguousHint, drawTopics, type TopicSet, type TopicStore } from '../db/topics.js';
 import { insertDrawRound, recordDrawExperience } from '../db/draw.js';
+import { weightedPick } from '../liar/engine.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 
 export interface DrawStroke {
@@ -72,6 +74,8 @@ export interface DrawHints {
 
 export interface DrawRun {
   roundsTotal: number;
+  /** ★ R088 — 라운드별 난이도 계획(1 · 2 · 3) */
+  diffPlan: number[];
   store: TopicStore;
   experienced: Map<string, Set<string>>;
   lastDrawer: string | null;
@@ -99,14 +103,24 @@ export function pickDrawWord(
   experienced: ReadonlyMap<string, ReadonlySet<string>>,
   lastTopic: string | null,
   usedItems: ReadonlySet<string>,
+  wantDiff: number | null = null,
 ): { set: TopicSet; item: TopicSet['items'][number] } | null {
-  const sets = drawTopics(store).filter((s) => s.items.some((x) => x.draw && !usedItems.has(x.id)));
+  // ★ R088 (D-345) — 난이도 섞기: 원하는 diff(없으면 2 로 봄)의 항목이 있는 세트만 · 세트 = 남은 항목 수 가중 · 바로 앞 세트 피함
+  const diffOf = (x: TopicSet['items'][number]) => x.diff ?? 2;
+  const free = (x: TopicSet['items'][number]) => x.draw && !usedItems.has(x.id);
+  const fit = (x: TopicSet['items'][number]) => free(x) && (wantDiff === null || diffOf(x) === wantDiff);
+  let ok = fit;
+  let sets = drawTopics(store).filter((s) => s.items.some(ok));
+  if (!sets.length && wantDiff !== null) {
+    ok = free;
+    sets = drawTopics(store).filter((s) => s.items.some(ok));
+  }
   if (!sets.length) return null;
   const pool = sets.filter((s) => s.topic !== lastTopic);
   const usable = pool.length ? pool : sets;
-  const set = usable[randomInt(usable.length)]!;
+  const set = weightedPick(usable, (s) => s.items.filter(ok).length);
   const seen = (id: string) => participants.filter((a) => experienced.get(a)?.has(`draw|${id}`)).length;
-  const items = shuffle(set.items.filter((x) => x.draw && !usedItems.has(x.id))).sort((a, b) => seen(a.id) - seen(b.id));
+  const items = shuffle(set.items.filter(ok)).sort((a, b) => seen(a.id) - seen(b.id));
   return { set, item: items[0]! };
 }
 
@@ -141,6 +155,8 @@ export interface DrawView {
   keyword: string | null;
   /** ★ R087 — 공개된 힌트 · 출제자가 아직 쓸 수 있는 힌트 */
   hints: DrawHints;
+  /** ★ R088 — 공개 때 난이도 1~3(없으면 null) */
+  diff: number | null;
   hintsLeft: DrawHintKind[];
   drawer: string;
   amDrawer: boolean;
@@ -169,6 +185,8 @@ export function drawView(room: Room, viewer: string): DrawView | null {
     nameKo: amDrawer || r.phase === 'reveal' || r.hints.topic ? r.nameKo : null,
     keyword: amDrawer || r.phase === 'reveal' ? r.keyword : null,
     hints: r.hints,
+    // ★ R088 — 공개 때 난이도(작게)
+    diff: r.phase === 'reveal' ? (r.set.items.find((x) => x.id === r.itemId)?.diff ?? null) : null,
     hintsLeft: amDrawer && r.phase === 'draw' ? (['length', 'initial', 'topic'] as const).filter((k) => !r.hints[k]) : [],
     drawer: r.drawer,
     amDrawer,
@@ -192,7 +210,7 @@ function broadcast(room: Room): void {
 export function startDrawGame(room: Room, store: TopicStore, experienced: Map<string, Set<string>>): boolean {
   const game = room.game;
   if (!game) return false;
-  game.draw = { roundsTotal: room.settings.minigameRounds, store, experienced, lastDrawer: null, lastTopic: null, usedItems: new Set(), cur: null, done: 0 };
+  game.draw = { roundsTotal: room.settings.minigameRounds, diffPlan: drawDiffPlan(room.settings.minigameRounds), store, experienced, lastDrawer: null, lastTopic: null, usedItems: new Set(), cur: null, done: 0 };
   room.state = 'DRAW';
   return startRound(room, Date.now());
 }
@@ -214,7 +232,7 @@ function startRound(room: Room, now: number): boolean {
     finishGame(room, run.done > 0 ? 'completed' : 'no_questions', `접속한 사람이 ${DRAW.MIN_PLAYERS}명보다 적어 캐치마인드를 끝냈습니다.`);
     return false;
   }
-  const word = pickDrawWord(run.store, participants, run.experienced, run.lastTopic, run.usedItems);
+  const word = pickDrawWord(run.store, participants, run.experienced, run.lastTopic, run.usedItems, run.diffPlan[run.done] ?? null);
   if (!word) {
     finishGame(room, run.done > 0 ? 'completed' : 'no_questions', '제시어가 모자라 캐치마인드를 끝냈습니다.');
     return false;
@@ -286,7 +304,7 @@ export function drawReroll(room: Room, accountId: string): DrawResult {
   const r = run?.cur;
   if (!run || !r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
   if (accountId !== r.drawer || r.rerolled || r.strokes.length > 0 || Date.now() - r.phaseStartedAt >= DRAW.REROLL_MS) return 'bad';
-  const word = pickDrawWord(run.store, r.participants, run.experienced, r.topic, run.usedItems);
+  const word = pickDrawWord(run.store, r.participants, run.experienced, r.topic, run.usedItems, run.diffPlan[run.done] ?? null);
   if (!word) return 'bad';
   run.usedItems.add(word.item.id);
   run.lastTopic = word.set.topic;
@@ -385,6 +403,7 @@ function endRound(room: Room, r: DrawRound, now: number): void {
     solved: r.solved,
     outcome,
     scores,
+    hints: r.hints as Record<string, string>,
   }).catch((err) => console.error('[draw] ★ 라운드 기록 실패:', (err as Error).message));
   void recordDrawExperience(r.participants, r.itemId).catch((err) => console.error('[draw] ★ 경험 기록 실패:', (err as Error).message));
   console.log(`[draw] ${room.id} 라운드 ${r.no} 끝 — 맞힘 ${r.solved.length}`);

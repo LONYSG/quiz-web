@@ -61,6 +61,8 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   minigameRounds: MINIGAME_ONLY_ROUNDS.DEFAULT,
   // ★★★ R079 — 팀전 기본 꺼짐 (D-329)
   teamMode: false,
+  // ★ R088 (D-345) — 라이어 모드 기본형
+  liarMode: 'basic',
   // ★★★ R082 — 방식 퀴즈 (D-339)
   mode: 'quiz',
 };

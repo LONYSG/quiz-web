@@ -717,6 +717,8 @@ function registerRoomHandlers(socket: Socket): void {
         teamMode: room.settings.teamMode,
         // ★ R082 — 방식도(옛 클라이언트 · 봇이 minigameOnly 만 보내면 그것으로 정한다)
         mode: 'minigameOnly' in payload && !('mode' in payload) ? undefined : room.settings.mode,
+        // ★ R088 — 라이어 모드도 보낸 것만
+        liarMode: room.settings.liarMode,
         ...payload,
       });
       if (!valid.ok) {

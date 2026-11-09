@@ -76,6 +76,8 @@ export interface RoomSettings {
   teamMode: boolean;
   /** ★★★ R082 — 방식 'quiz' · 'minigame' · 'liar' (D-339 — minigameOnly 와 맞춰 둔다) */
   mode: import('@quiz/shared').RoomMode;
+  /** ★ R088 (D-345) — 라이어 모드(기본형 · 바보형) */
+  liarMode: import('@quiz/shared').LiarMode;
 }
 
 /**
