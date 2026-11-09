@@ -67,6 +67,7 @@
 | V040.txt | ★ **G038 다시 쓴 힌트 표본 + 주제 G039 뒤 재대조** VERIFY — 바뀐 힌트 250: ok 238 · fix 12 · revert 0 · 핵심 161 중 사실은 누설 137(85%) · 태양계 32 · 국가하천(+3) verified → 적재 세트 30 · 7 세트 44 fixes 어긋남 0 · 원소 Tin 1 · C103 · CV-166 · CV-167 |
 | V041.txt | ★ **노래 293 메타 대조 + us-state 50** VERIFY — HEAD 293/293 200 · 멜론 21 페이지 차트 167 대조 · verified 278(실 DB 적재) · fix 14 · rejected 1 · weak 96 다른 곡 0 · strong 1(Love) · us-state verified 50/50 · C107 · CV-168 · CV-169 |
 | V042.txt | ★ **OX 400 전수 판정** VERIFY — verified 384(실 DB 적재) · fix 16(해설 2 · 문장 2 · 연도 2 · 너무 쉬운 함정 10) · 틀린 참 0 · C108 · CV-170 · CV-171 |
+| V043.txt | ★ **주제 세트 변형 완전성 전수** VERIFY — 세트 30 · 항목 2,554 · add 제안 171 · remove 1 · 정규화가 안 받는 꼴(콜론 · 하이픈 · 아포스트로피) 실측 · latinAbbr 7 · C111 · CV-172~173 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 

@@ -1,0 +1,59 @@
+V043 — 주제 세트 변형 완전성 전수 (2026-11-09 · VERIFY · Sonnet · 조각 8 에이전트(청크 26) · 웹 0회 · DB 없음)
+
+0 ★ 찬종이 볼 것
+① 세트별 표(항목 · 변형 0 · add 제안 · remove 제안) — 3절에 전부. 합계: 항목 2,554(us-state 50 제외 · 브리핑의 2,551 과 3 차이 — 원인 미확인, 세트별 수는 표 그대로) · 변형 0 항목 1073(closed 700 + open 373 = 1,073 — open 은 변형 0 이 정상) · add 제안 171 · remove 제안 1.
+② 예 — add 171건 중:
+  토르: 천둥의 신 + 토르 천둥의 신 / 천둥의 신
+  퍼스트 어벤져 + 캡틴 아메리카 퍼스트 어벤져 / 퍼스트 어벤저 / 캡틴 아메리카 퍼스트 어벤저
+  렉사이 + Reksai
+  벨베스 + Belveth
+  고종 + 고종황제
+  강원 설악산 + 설악
+  remove 1: 북한산 "북한산성"(산성은 다른 대상)
+③ 정규화가 이미 받는 꼴(canon.mjs 실측): 띄어쓰기 · 대소문자 · 괄호 안 덧붙임 · 가운뎃점/마침표/쉼표 · 영문 관사 · 숫자 앞 띄어쓰기(아이언맨 2 = 아이언맨2) · 끝맺음(이다/입니다/요/임 — 제출 쪽만). **안 받는 꼴**: 조사(서울이) · '시/구/역' 붙은 꼴 · **하이픈** · 로마 숫자 Ⅱ · **콜론(:)** — MCU '토르: 천둥의 신' 을 '토르 천둥의 신' 으로 치면 틀림(콜론 뺀 꼴 21항목 add 의 이유) · 영문 아포스트로피(롤 Rek'Sai → Reksai 틀림).
+④ 테스트 때 "왜 정답 아냐" 가 나기 쉬운 세트 3: (1) **mcu-film** — 콜론 부제 · 어벤저스/어벤져스 음차 · 번호 약칭 (add 37) (2) **lol-champion** — 아포스트로피 영문 + 줄임(갱플 · 말파) (3) **seoul-subway-station** — 부기 역명(증산=명지대앞 등) · '앞' 뺀 꼴. 그 다음 world-capital(도시 표기 다름) · mountain-100/river-national('산/강' 뺀 꼴).
+add 많은 세트 순: mcu-film 37 · lol-champion 16 · mountain-100 16 · seoul-subway-station 12 · world-capital 12 · country 10 · river-national 9 · place 6 · epl-club 6 · joseon-king 6 · kbo-team 5 · element 4 · constellation 4 · job 4 · currency 3 · food 3 · sport 3 · instrument 3 · pokemon-gen1 2 · animal 2 · bible-book 2 · ghibli-film 2 · disney-animated-film 1 · olympic-summer-sport 1 · kleague-team 1 · worldcup-host 1
+
+1 건수: 세트 30(us-state 제외) · 청크 26(+직접 읽은 첫 조각 3 세트: seoul-gu · joseon-king · kbo-team) · 항목 전부 본 수 = 항목 수(세트별 일치, 기계 대조 30/30) · 제안 있는 항목 152.
+2 종류별: closed 24 세트 add 150 · open 6 세트 add 21. 제안 종류: 콜론/부제 뺀 꼴 · 산/강/역/앞 뺀 꼴 · 음차 두 꼴 · 약칭 · 본명(조선 왕) · 영문 아포스트로피 뺀 꼴 · 동의어(open).
+3 제안 전부: data/pipeline/audit/v043-raw/v043-proposals.json (세트별 add/remove/사유/conf) · 항목 단위 audit/v043-topics.json(2,554 전부 키 · 제안 없음 ok) · 각 세트 파일 verify.fixes (round V043 · op variant / variant-remove).
+4 재독(VERIFY — 제안 전부 읽음, 제안 0 세트는 전 항목): 조각 제안 중 9 건을 빼거나 되돌림 —
+["food-054: 핫케이크는 팬케이크와 완전히 같은 말은 아님(mid)","pokemon-gen1-029: ♀ 기호 — topics-check 변형 특수문자 막힘 + 입력 어려움","pokemon-gen1-032: 위와 같음","river-national-025: 경인아라뱃길은 아라천을 포함한 수로 전체 — 같은 개체가 아님","seoul-subway-station-004: 숫자의 한글 표기(15 §2 B6) — 아무도 안 침","seoul-subway-station-005: 위와 같음","seoul-subway-station-038: 위와 같음","seoul-subway-station-039: 위와 같음","seoul-subway-station-115: 세트 note: 4호선 당고개는 불암산으로 개명 — 변형이 옳음(조각 오판)"]
+ unsure(조각 보고, 넣지 않음): 중구·동구·서구 등 겹치는 이름 · 콩고 · 델리 · 서울역 '서울' · 가디언즈 시리즈 중 불확실한 한국 개봉명 · 질문형 동음(현종 이연 ↔ 선조) 등 — 세트별 unsure 수는 3절 표.
+ latinAbbr(구단·기업 영문 약칭 — §9 라틴 예외 밖이라 따로 표시): epl-club-036:QPR · kbo-team-004:LG · kbo-team-005:KIA · kbo-team-008:SSG · kbo-team-009:NC · kbo-team-010:kt. G045 적용 전 설계가 18 §9 예외 허용 여부 결정(CV-173).
+ 조각 에이전트 특이사항: 일부 에이전트가 스크립트로 제안을 만들었을 가능성(롤·포켓몬 청크 — /tmp/g.mjs) → 재독에서 롤 16 · 포켓몬 4 를 하나하나 확인함.
+6 반복 유형: 콜론 부제 · 음차 두 꼴(저/져 · 즈/스) · '산/강/역/앞' 뺀 꼴 · 영문 아포스트로피 · 번호 약칭('블랙 팬서 2') · 본명(조선 왕).
+7 자기 점검: 전부 표기 지식으로 봤고 웹으로 본 것 0. 제안 대부분 conf mid — 나무위키 제목/리다이렉트로 확인하지 못했다(웹 예산 40 중 0 사용). 다음에 쓰려면 mid 건만 웹으로 확인. 시군구(kr-municipality 227)는 조각이 제안 0 으로 돌려줬고 재독도 같음(변형 0 인 27 은 '중구/동구…' 처럼 시도 앞 이름이 같아 의도적으로 비운 항목 + 광주시 · 고성군). 웹 0 이므로 mid 표기의 실제 사용도는 보증하지 않는다.
+
+[표]
+세트 | 항목 | 변형 0 | add | remove | unsure
+seoul-subway-station | 273 | 0 | 12 | 0 | 6
+kr-municipality | 227 | 27 | 0 | 0 | 9
+country | 193 | 158 | 10 | 0 | 5
+world-capital | 193 | 166 | 12 | 0 | 4
+lol-champion | 173 | 0 | 16 | 0 | 5
+pokemon-gen1 | 151 | 0 | 2 | 0 | 2
+element | 118 | 9 | 4 | 0 | 3
+mountain-100 | 100 | 96 | 16 | 1 | 5
+river-national | 89 | 89 | 9 | 0 | 4
+constellation | 88 | 75 | 4 | 0 | 3
+currency | 82 | 0 | 3 | 0 | 3
+animal | 81 | 75 | 2 | 0 | 1
+food | 81 | 69 | 3 | 0 | 1
+job | 72 | 56 | 4 | 0 | 0
+place | 71 | 57 | 6 | 0 | 2
+sport | 68 | 63 | 3 | 0 | 0
+bible-book | 66 | 0 | 2 | 0 | 3
+disney-animated-film | 64 | 0 | 1 | 0 | 3
+instrument | 63 | 53 | 3 | 0 | 2
+epl-club | 51 | 8 | 6 | 0 | 2
+mcu-film | 38 | 0 | 37 | 0 | 5
+olympic-summer-sport | 32 | 16 | 1 | 0 | 3
+solar-system | 32 | 24 | 0 | 0 | 1
+kleague-team | 29 | 0 | 1 | 0 | 3
+joseon-king | 27 | 3 | 6 | 0 | 3
+seoul-gu | 25 | 1 | 0 | 0 | 1
+ghibli-film | 22 | 0 | 2 | 0 | 2
+worldcup-host | 19 | 14 | 1 | 0 | 1
+kr-president | 14 | 14 | 0 | 0 | 0
+kbo-team | 12 | 0 | 5 | 0 | 0

@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-11-09 — V043 주제 세트 변형 완전성 전수 (VERIFY · 판정만 · DB 없음)
+- 세트 30(us-state 제외) 항목 2,554 전부를 "플레이어가 치는 표기" 로 훑음 — 청크 26(에이전트 8 + 직접 3 세트) · 정규화 기준선(canon.mjs)으로 이미 받는 꼴 제외 · 제안 add 171 · remove 1(재독에서 9 뺌).
+- 쓴 것: 세트 30 파일의 `verify` 칸만(round V043 · 앞 verify 는 history) · status · items 불변 · topics-check 막힘 0 · `ai-out/V043.txt` · `audit/v043-topics.json` · 13 C111 · CV-172~173.
+- 남은 것: CV-172(G045 적용) · CV-173(설계 결정 — 구단 영문 약칭 · 콜론).
+
+
 ## 2026-11-09 — V041 · V042 fixes 기계 적용 (G043, GEN · 파일만 · DB 쓰기 없음)
 - **무엇을**: gen.md — 노래 fix 14 · OX fix 16 · us-state 변형 중복 1 을 파일에 그대로 적용 → verified(18 §0 verified 전환 규칙 첫 적용).
 - **어떻게**: scripts/g043-song-fix.mjs(dry-run → --apply) — iTunes lookup 한 번(12 id) 으로 itunes{} 갱신 · year · 변형 · verified 항목은 영문 번역 제목 빼기만 · OX proposal 칸 그대로 · 웹 3(KTX · 에펠탑 · 하늘과 바람과 별과 시).
