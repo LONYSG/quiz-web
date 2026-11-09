@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-09 — 주제 세트 변형 적용 (G046, GEN · 파일만 · DB 쓰기 없음)
+- **무엇을**: gen.md — V043 이 세트 파일 verify.fixes 에 적은 변형 add 171 · remove 1 을 그대로 적용(CV-172) + 구단·기업 영문 약칭 7 허용(CV-173 ②).
+- **어떻게**: scripts/g046-topics-fix.mjs(dry-run → --apply · 죽은 변형 · 세트 안 겹침은 건너뛰고 목록에 — 0) · applied G046 · version +1.
+- **문제**: 없음(V044 는 없음 — 새 open 8 은 G047 이 재편).
+- **결정**: DG-084.
+- **검증**: topics-check 막힘 0 · 경고 8 → 8 · topics-load dry-run verified 31 세트 2,604.
+- **남은 것**: 메뉴 1(찬종) · G047.
+
 ## 2026-11-09 — R086 메뉴 1 리허설 (MAIN · 축소판 · 새 기능 없음)
 - 무엇: 실 백업(quizweb-20261109-102032.dump)을 새 DB quizweb_rehearsal 로 복원 → 메뉴 1 순서(migrate 4 · build · topics-load · minigame-load song,ox) → 되돌리기 → 다시 적용(멱등) → 실 데이터 위 smoke · 봇 mgonly · liar · draw · topicsets → 리허설 DB 지움. 실 quizweb 쓰기 0 · 플레이 트리 0.
 - 결과: 오류 0 · 되돌린 스키마 = 실 DB 스키마 · smoke 12 · mgonly 75 · liar 15 · draw 16 · topicsets 6/8(candidate 빗장 — 의도 · test DB 8/8).
