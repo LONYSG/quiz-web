@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-09 — V045 캐치마인드 풀 10 세트 전수 판정 (VERIFY · 판정만 · DB 없음)
+- 1,651 항목 전부 판정 — remove 239 + 그림 중복 63(=18%) · diff 36 · 변형 103 · sub 4. 전부 candidate+fixes(문제 비율 8~40%).
+- 쓴 것: 캐치 10 파일 verify 칸 + status · items 불변 · `ai-out/V045.txt` · `audit/v045-topics.json` · 13 C117 · CV-176~177.
+- 남은 것: CV-176(G049 적용) · CV-177 · 인물 unsure 설계 결정.
+
 ## 2026-11-09 — V044 라이어 제시어 15 세트 전수 판정 (VERIFY · 판정만 · DB 없음)
 - 851 항목 · fool 2,553 전부 판정(tooClose 177 · tooFar 29 · bad 62) · 1차 조각 7 세트가 과엄해 보정 기준으로 재판정 · 재독 후 교회→성당 추가 · 뉴진스 remove→unsure.
 - 쓴 것: 라이어 15 파일 verify 칸 + status(전부 candidate) · items 불변 · `ai-out/V044.txt` · `audit/v044-topics.json` · 13 C112 · CV-174~175.
