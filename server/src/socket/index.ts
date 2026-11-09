@@ -35,6 +35,8 @@ import {
   validateRoomSettings,
   type MinigameKey,
   type Team,
+  isDrawHintKind,
+  type DrawHintKind,
 } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } from '../db/rooms.js';
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
@@ -98,7 +100,7 @@ import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import { liarChatGate, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
-import { drawChatGate, drawClear, drawReroll, drawStroke } from '../draw/engine.js';
+import { drawChatGate, drawClear, drawHint, drawReroll, drawStroke } from '../draw/engine.js';
 import {
   on,
   onRoom,
@@ -1084,6 +1086,19 @@ function registerRoomHandlers(socket: Socket): void {
   );
   onRoom<Record<string, never>>(socket, 'draw.clear', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawClear(room, session.accountId)));
   onRoom<Record<string, never>>(socket, 'draw.reroll', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawReroll(room, session.accountId)));
+  // ★ R087 (D-344) — 출제자 힌트(글자 수 · 초성 · 주제 · 각 1회)
+  onRoom<{ kind: DrawHintKind }>(
+    socket,
+    'draw.hint',
+    {
+      allowedStates: ['DRAW'],
+      parse: (raw) => {
+        const kind = parseObject(raw)?.kind;
+        return isDrawHintKind(kind) ? { kind } : null;
+      },
+    },
+    ({ socket: s, room, session, payload }) => drawReply(s, drawHint(room, session.accountId, payload.kind)),
+  );
 
   // ── ★★★ R050 — 로비 "미니게임 골라 하기" (방장 · 로비에서만 · 방 사람 전원 참가 · 연습 — 점수 · 포인트 없음)
   onRoom<{ key: string }>(

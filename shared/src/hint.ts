@@ -53,6 +53,14 @@ function toChoseong(cp: number): string {
   return CHOSEONG[index] ?? '?';
 }
 
+/** ★ R087 (D-344) — 첫 글자 초성(한글) · 영문은 대문자 · 그 밖은 그대로 — 캐치마인드 [초성] 힌트 */
+export function firstInitial(text: string): string {
+  const ch = [...text.trim()][0] ?? '';
+  const cp = ch.codePointAt(0) ?? 0;
+  if (isHangulSyllable(cp)) return toChoseong(cp);
+  return ch.toUpperCase();
+}
+
 function isAsciiLetter(ch: string): boolean {
   return /^[A-Za-z]$/.test(ch);
 }

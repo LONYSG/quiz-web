@@ -5011,7 +5011,7 @@ async function r083Flow(browser) {
   await H.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null", 20000).catch(() => false);
   await sleep(600);
   // ── 1라운드 — 방장 출제(마우스)
-  const r1 = JSON.parse(await H.evaluate("JSON.stringify({ tools: !!document.querySelector('[data-draw-tools]'), kw: document.querySelector('[data-draw-keyword]')?.innerText ?? '', chatH: Math.round(document.querySelector('.chat-card').getBoundingClientRect().height) })"));
+  const r1 = JSON.parse(await H.evaluate("JSON.stringify({ tools: !!document.querySelector('[data-draw-tools]'), kw: document.querySelector('[data-draw-keyword]')?.innerText ?? '', chatH: Math.round(document.querySelector('.chat-card').getBoundingClientRect().height), side: Math.round(document.querySelector('[data-draw-canvas]').getBoundingClientRect().width), chatBeside: document.querySelector('.chat-card').getBoundingClientRect().left >= document.querySelector('[data-draw-canvas]').getBoundingClientRect().right, hintBtns: document.querySelectorAll('[data-draw-hint-btn]').length, toolsIn: [...document.querySelectorAll('[data-draw-tools] button')].every((b) => b.getBoundingClientRect().bottom <= innerHeight) })"));
   const gTools = await G.evaluate("!!document.querySelector('[data-draw-tools]')");
   const rect = await canvasRect(H);
   await mousePath(H, circle(rect));
@@ -5068,7 +5068,8 @@ async function r083Flow(browser) {
   if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083'), { recursive: true });
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083', 'r083.json'), JSON.stringify(rows, null, 1));
   record('★★★ R083 설정 — 방식 네 버튼(캐치마인드 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김', setting.modes === 'quiz,minigame,liar,draw*' && setting.note && !setting.quizRows && setting.team === true, JSON.stringify(setting));
-  record('★★★ R083 출제자(PC) — 도구 · 제시어 · 채팅 줄임(≤ 230px) · 맞히는 쪽은 도구 없음', r1.tools && !!r1.kw && r1.chatH <= 230 && !gTools, JSON.stringify({ r1, gTools }));
+  // ★ R087 (D-344) — 채팅은 캔버스 옆(PC) · 캔버스 1280×720 에서 ≥ 560 · 힌트 버튼 셋 · 도구 화면 안
+  record('★★★ R083/R087 출제자(PC 1280×720) — 도구 · 제시어 · 채팅 옆 · 캔버스 ≥ 560 · 힌트 버튼 3 · 도구 화면 안 · 맞히는 쪽은 도구 없음', r1.tools && !!r1.kw && r1.chatBeside && r1.side >= 560 && r1.hintBtns === 3 && r1.toolsIn && !gTools, JSON.stringify({ r1, gTools }));
   record('★★★ R083 마우스로 그린 선 2개가 손님(m360) 캔버스에 · m360 캔버스 화면 안', gStrokes === 2 && gRect.x >= 0 && gRect.x + gRect.w <= gRect.vw + 1, JSON.stringify({ gStrokes, gRect }));
   record('★★★ R083 채팅 정답 — 맞힘 표시 · 시스템 줄 "정답!" · 공개 키워드 · 맞힌 2', gSolved && /정답!/.test(sysLine) && rev.kw === r1.kw && rev.solved === 2, JSON.stringify({ gSolved, sysLine, rev }));
   record('★★ R083 손님(m360) 출제 — 도구 한 줄 화면 안 · 손가락 선이 PC 에 · 넘침 0', g2.tools && g2.toolsIn && g2.over <= 1 && hStrokes >= 1, JSON.stringify({ g2, hStrokes }));

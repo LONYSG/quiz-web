@@ -9,10 +9,25 @@
 //   · 모두 맞히거나 90초 → 공개 5초(키워드 · 그림 그대로) → 다음 라운드 / 판 끝
 // 점수: 맞힌 순서 3 · 2 · 1 · 그 뒤 1 · 출제자 = 맞힌 사람 수(상한 3) · 아무도 못 맞히면 0 → player.score(포인트 아님)
 // 기록: draw_rounds(0033) · 경험 minigame_item_experiences('draw', 항목 id) — fire-and-forget
+// ★★ R087 (D-344 · 찬종 테스트 1): 출제자 힌트 버튼 셋(draw.hint — 글자 수 · 초성 · 주제 · 각 1회 · 패널티 없음) · 주제는 기본 숨김(버튼으로 공개)
+//   · 힌트는 전원 화면 힌트 띠 + 시스템 줄 · draw_rounds 에는 칸이 없어 서버 로그에만(기록 칸은 0034 — R088)
 // =============================================================================
 
 import { randomInt } from 'node:crypto';
-import { DRAW, drawDrawerScore, drawLengthHint, drawPointsOk, drawSolverScore, isDrawColor, matchTopic, normalizeAnswer, type DrawColor } from '@quiz/shared';
+import {
+  DRAW,
+  drawDrawerScore,
+  drawLengthHint,
+  drawLengthPattern,
+  drawPointsOk,
+  drawSolverScore,
+  firstInitial,
+  isDrawColor,
+  matchTopic,
+  normalizeAnswer,
+  type DrawColor,
+  type DrawHintKind,
+} from '@quiz/shared';
 import { emitRoom, emitRoomPerPlayer } from '../rooms/emit.js';
 import type { Player, Room } from '../rooms/types.js';
 import { broadcastPlayers, finishGame } from '../game/question.js';
@@ -43,7 +58,16 @@ export interface DrawRound {
   phaseStartedAt: number;
   phaseEndsAt: number;
   rerolled: boolean;
+  /** ★ R087 — 출제자가 연 힌트 */
+  hints: DrawHints;
   scores: Record<string, number> | null;
+}
+
+/** ★ R087 — 공개된 힌트(없으면 칸 없음) */
+export interface DrawHints {
+  length?: string;
+  initial?: string;
+  topic?: string;
 }
 
 export interface DrawRun {
@@ -110,10 +134,14 @@ export interface DrawView {
   phase: 'draw' | 'reveal';
   phaseStartedAt: number;
   phaseEndsAt: number;
-  topic: string;
-  nameKo: string;
+  /** ★ R087 — 주제는 기본 숨김: 출제자 · [주제] 힌트 뒤 · 공개 뒤에만(그 밖은 null) */
+  topic: string | null;
+  nameKo: string | null;
   /** 출제자 · 공개 뒤에만 */
   keyword: string | null;
+  /** ★ R087 — 공개된 힌트 · 출제자가 아직 쓸 수 있는 힌트 */
+  hints: DrawHints;
+  hintsLeft: DrawHintKind[];
   drawer: string;
   amDrawer: boolean;
   spectating: boolean;
@@ -137,9 +165,11 @@ export function drawView(room: Room, viewer: string): DrawView | null {
     phase: r.phase,
     phaseStartedAt: r.phaseStartedAt,
     phaseEndsAt: r.phaseEndsAt,
-    topic: r.topic,
-    nameKo: r.nameKo,
+    topic: amDrawer || r.phase === 'reveal' || r.hints.topic ? r.topic : null,
+    nameKo: amDrawer || r.phase === 'reveal' || r.hints.topic ? r.nameKo : null,
     keyword: amDrawer || r.phase === 'reveal' ? r.keyword : null,
+    hints: r.hints,
+    hintsLeft: amDrawer && r.phase === 'draw' ? (['length', 'initial', 'topic'] as const).filter((k) => !r.hints[k]) : [],
     drawer: r.drawer,
     amDrawer,
     spectating: !r.participants.includes(viewer),
@@ -209,6 +239,7 @@ function startRound(room: Room, now: number): boolean {
     phaseStartedAt: now,
     phaseEndsAt: now + ROUND_MS,
     rerolled: false,
+    hints: {},
     scores: null,
   };
   setWord(r, word);
@@ -261,6 +292,21 @@ export function drawReroll(room: Room, accountId: string): DrawResult {
   run.lastTopic = word.set.topic;
   setWord(r, word);
   r.rerolled = true;
+  r.hints = {};
+  broadcast(room);
+  return 'ok';
+}
+
+/** ★ R087 — 출제자 힌트(각 1회 · 그리는 중) → 힌트 띠 + 시스템 줄 */
+export function drawHint(room: Room, accountId: string, kind: DrawHintKind): DrawResult {
+  const r = room.game?.draw?.cur;
+  if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
+  if (accountId !== r.drawer || r.hints[kind]) return 'bad';
+  if (kind === 'length') r.hints.length = drawLengthPattern(r.keyword);
+  else if (kind === 'initial') r.hints.initial = firstInitial(r.keyword);
+  else r.hints.topic = r.nameKo;
+  broadcastSystem(room, { length: '출제자가 글자 수를 공개했어요', initial: '출제자가 첫 글자 초성을 공개했어요', topic: '출제자가 주제를 공개했어요' }[kind]);
+  console.log(`[draw] ${room.id} 라운드 ${r.no} 힌트 ${kind}`);
   broadcast(room);
   return 'ok';
 }

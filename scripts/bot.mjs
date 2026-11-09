@@ -8517,6 +8517,18 @@ async function scenarioDraw() {
   b2.socket.emit('draw.stroke', { id: 'x', color: '#111111', width: 6, pts: [1, 1, 2, 2] }); // 출제자 아님 → 거름
   await sleep(400);
   expectTrue('★★★ 선 조각 중계 — 다른 사람에게 3조각 · 출제자 아닌 선은 거름', strokesGot.get(b2) === 3 && strokesGot.get(b3) === 3, JSON.stringify([...strokesGot.values()]));
+  // ── ★★ R087 (D-344) — 주제 기본 숨김 · 출제자 힌트 셋(각 1회) · 출제자 아닌 사람은 거름
+  expectTrue('★★ R087 주제 기본 숨김 — 맞히는 사람 nameKo null · 출제자는 보임 · 힌트 셋 남음', lastView(b2).nameKo === null && lastView(host).nameKo && lastView(host).hintsLeft.length === 3, JSON.stringify({ b2: lastView(b2).nameKo, h: lastView(host).nameKo, left: lastView(host).hintsLeft }));
+  const hintSys0 = chats.length;
+  b2.socket.emit('draw.hint', { kind: 'length' }); // 출제자 아님 → 거름
+  await sleep(200);
+  for (const kind of ['length', 'initial', 'topic']) host.socket.emit('draw.hint', { kind });
+  await b2.waitFor(() => lastView(b2)?.hints?.topic, 3000, '힌트 셋').catch(() => {});
+  const hb = lastView(b2);
+  expectTrue('★★★ R087 힌트 셋 — 글자 수(○ 꼴) · 초성 · 주제 = 세트 이름 · 출제자 남은 힌트 0', /○/.test(hb.hints.length ?? '') && /글자/.test(hb.hints.length ?? '') && (hb.hints.initial ?? '').length === 1 && hb.hints.topic === lastView(host).nameKo && hb.nameKo === lastView(host).nameKo && lastView(host).hintsLeft.length === 0, JSON.stringify({ hints: hb.hints, left: lastView(host).hintsLeft }));
+  host.socket.emit('draw.hint', { kind: 'length' }); // 두 번째 → 거름
+  await sleep(200);
+  expectTrue('★★ R087 힌트 시스템 줄 셋 · 같은 힌트 두 번 거름', chats.slice(hintSys0).filter((c) => c.system && /공개했어요/.test(c.text)).length === 3, JSON.stringify(chats.slice(hintSys0).map((c) => c.text)));
   host.chat(`${kw1} 그려요`);
   await sleep(200);
   host.chat('3글자예요');

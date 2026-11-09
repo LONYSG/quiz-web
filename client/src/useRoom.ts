@@ -88,9 +88,13 @@ export interface DrawView {
   phase: 'draw' | 'reveal';
   phaseStartedAt: number;
   phaseEndsAt: number;
-  topic: string;
-  nameKo: string;
+  /** ★ R087 — 주제는 기본 숨김(출제자 · [주제] 힌트 뒤 · 공개 뒤에만) */
+  topic: string | null;
+  nameKo: string | null;
   keyword: string | null;
+  /** ★ R087 — 공개된 힌트 · 출제자가 아직 쓸 수 있는 힌트 */
+  hints: { length?: string; initial?: string; topic?: string };
+  hintsLeft: ('length' | 'initial' | 'topic')[];
   drawer: string;
   amDrawer: boolean;
   spectating: boolean;

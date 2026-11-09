@@ -18,8 +18,8 @@ export const DRAW = {
   MAX_POINTS: 2000,
   MAX_STROKES: 600,
   MAX_CHUNK: 400,
-  /** 그리는 중 조각을 보내는 간격(ms) */
-  CHUNK_MS: 200,
+  /** 그리는 중 조각을 보내는 간격(ms) — ★ R087 (D-344 · 찬종 "선이 뚝뚝 끊겨") 200 → 50 */
+  CHUNK_MS: 50,
   /** 맞힌 순서 점수(3 · 2 · 1 · 그 뒤 1) · 출제자 = 맞힌 사람 수(상한) */
   SOLVER_SCORES: [3, 2, 1] as readonly number[],
   SOLVER_MIN: 1,
@@ -61,4 +61,21 @@ export function drawPointsOk(pts: unknown, max: number = DRAW.MAX_CHUNK): pts is
 /** ★ 출제자 채팅의 "글자 수 힌트"(3글자 · 세 글자 · 2음절 …) */
 export function drawLengthHint(text: string): boolean {
   return /[0-9]+\s*(글자|자|음절)|(한|두|세|네|다섯|여섯|일곱|여덟)\s*(글자|음절)/.test(text);
+}
+
+// ★★ R087 (D-344 · 찬종 "그리는 사람이 글자수 공개/초성 공개/주제 공개를 할 수 있는 버튼") — 출제자 힌트 셋 · 각 1회 · 패널티 없음
+//   주제는 기본 숨김(버튼 뜻이 있게) · 출제자 채팅의 글자 수 힌트 거부는 그대로(힌트는 버튼으로만)
+export type DrawHintKind = 'length' | 'initial' | 'topic';
+export const DRAW_HINT_KINDS: readonly DrawHintKind[] = ['length', 'initial', 'topic'];
+export const DRAW_HINT_LABEL: Record<DrawHintKind, string> = { length: '글자 수', initial: '초성', topic: '주제' };
+export function isDrawHintKind(v: unknown): v is DrawHintKind {
+  return typeof v === 'string' && (DRAW_HINT_KINDS as readonly string[]).includes(v);
+}
+
+/** 글자 수 힌트 — "○○ ○○○ · 5글자(띄어쓰기 있음)" */
+export function drawLengthPattern(keyword: string): string {
+  const chars = [...keyword.trim()];
+  const pattern = chars.map((c) => (/\s/.test(c) ? ' ' : '○')).join('').replace(/ +/g, ' ');
+  const n = chars.filter((c) => !/\s/.test(c)).length;
+  return `${pattern} · ${n}글자${chars.some((c) => /\s/.test(c)) ? '(띄어쓰기 있음)' : ''}`;
 }

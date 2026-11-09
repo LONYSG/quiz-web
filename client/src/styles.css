@@ -10178,8 +10178,10 @@ button.preset.shake {
    캔버스 바탕은 모든 테마에서 흰색(색 4 가 늘 같은 뜻) · 상태는 글자 + 기호(✓ 맞힘 · ✎ 출제자 — D-324)
    ============================================================================= */
 .draw-card {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
+  min-height: 0;
 }
 .draw-who {
   font-size: 0.95rem;
@@ -10201,13 +10203,25 @@ button.preset.shake {
   color: var(--ok);
   font-weight: 800;
 }
-.draw-wrap {
+/* ★ R087 (D-344 · 찬종 "그림판 크기를 좀 더") — 자리(wrap)가 정하고 캔버스는 그 정사각 최대(DrawStage ResizeObserver · 인라인 크기)
+   PC: 채팅을 옆으로 · 캔버스 옆에 도구 세로 줄 / 모바일: 화면 너비 전체(wrap 정사각) · 도구는 아래 한 줄 · 채팅 2줄 */
+.draw-body {
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
-  justify-content: center;
+  gap: 8px;
+}
+.draw-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
 }
 .draw-canvas {
-  /* ★ 채팅 입력칸이 화면 안에 남게 — 높이에서 머리 · 도구 · 줄인 채팅을 뺀 만큼(720 높이 PC ≈ 260) */
-  width: min(100%, max(200px, calc(100dvh - 480px)));
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
   aspect-ratio: 1;
   background: #ffffff;
   border-radius: 12px;
@@ -10218,11 +10232,68 @@ button.preset.shake {
 .draw-canvas.can {
   cursor: crosshair;
 }
+.draw-head .draw-word {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  align-items: center;
+}
+/* 옆 기둥(PC) — 도구 2열 · 맞힌 사람 세로 */
+.draw-side {
+  flex: 0 0 auto;
+  width: 112px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+}
 .draw-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  align-content: start;
+}
+.draw-tools .draw-tool {
+  padding: 4px 4px;
+  min-height: 32px;
+}
+.draw-tools .draw-tool[data-draw-clear],
+.draw-tools .draw-hint-btn,
+.draw-tool-label {
+  grid-column: 1 / -1;
+}
+.draw-tool-label {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-align: center;
+}
+.draw-side .draw-solved {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2px;
+}
+.draw-tool:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.draw-hints {
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 4px 8px;
   justify-content: center;
+}
+.draw-hint-chip {
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  font-size: 0.92rem;
+}
+.draw-hint-chip strong {
+  letter-spacing: 0.08em;
 }
 .draw-tool {
   min-height: 34px;
@@ -10255,16 +10326,71 @@ button.preset.shake {
   font-size: 0.9rem;
   font-weight: 700;
 }
-/* 채팅을 줄인다 — 최근 몇 줄 + 입력칸 */
-.room[data-state='DRAW'] .chat-card {
-  flex: 0 0 auto;
-  height: 210px;
+/* ★ R087 — PC: 채팅을 판 옆으로(캔버스가 판 높이를 다 쓴다) · 양옆 참여자 칸을 조금 좁힘 */
+:where(.ui-pc) .room[data-state='DRAW'] .stage {
+  grid-template-columns: clamp(120px, 9vw, 220px) minmax(0, 1fr) clamp(120px, 9vw, 220px);
+}
+:where(.ui-pc) .room[data-state='DRAW'] .center {
+  flex-direction: row;
+}
+:where(.ui-pc) .room[data-state='DRAW'] .center-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+:where(.ui-pc) .room[data-state='DRAW'] .center-main > .draw-card {
+  flex: 1 1 auto;
+}
+:where(.ui-pc) .room[data-state='DRAW'] .chat-card {
+  flex: 0 0 clamp(230px, 20vw, 340px);
   min-height: 0;
 }
+/* 모바일: 캔버스 = 화면 너비 전체(정사각) · 도구 아래 한 줄 · 채팅 2줄 */
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-body {
+  flex-direction: column;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-wrap {
+  flex: none;
+  width: 100%;
+  aspect-ratio: 1;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-side {
+  width: auto;
+  overflow: visible;
+  gap: 6px;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-tools {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-tools .draw-tool {
+  flex: none;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-tool-label {
+  display: none;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-side .draw-solved {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px 12px;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .chat-card {
+  flex: none;
+  min-height: 0;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .chat-wrap,
+:where(.ui-mobile) .room[data-state='DRAW'] .chat-log {
+  flex: none;
+  height: 60px;
+}
 @media (max-width: 520px) {
-  .draw-canvas {
-    width: min(100%, max(220px, calc(100dvh - 440px)));
-  }
   /* 도구 띠 한 줄(넘치면 옆으로 밀기) · 도움말 줄 숨김 */
   .draw-tools {
     flex-wrap: nowrap;
@@ -10283,9 +10409,6 @@ button.preset.shake {
   }
   .draw-card .liar-help {
     display: none;
-  }
-  .room[data-state='DRAW'] .chat-card {
-    height: 150px;
   }
 }
 
