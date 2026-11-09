@@ -21,5 +21,5 @@ TASK: 찬종 2026-11-09: "라이어 게임에도 2가지 모드 — **기본형*
 ■ 하지 말 것: 정규화 바꾸기(측정만) · 제시어 데이터 고치기 · topics-check(GEN 것) · 빙고·songyear·choice 되살리기 · `.env` · 태그 · 플레이 트리 · 실 DB.
 ■ 확인할 것 (원칙 7): R087 마지막 번호 · 07 맨 위 · 0033 마지막 · G047 끝 여부(fool 있는 파일 수) · topics-check ITEM_OK 에 fool·era·sub·diff · liarTopics/drawTopics 꼴 · 세트 균등 추첨 · 열린 판 0.
 ■ 커밋: 1~5 + G · fetch → rebase --autostash → push · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-■ ★ 이어서: 끝나면 멈춘다(main-next2.md 없음). 터미널 마지막 줄 "R088 끝 — ★ 찬종: 메뉴 3 → 1(0034) → A114 · A115 · /clear 가능".
+■ ★ 이어서: 보고서 · 커밋 · push 뒤 **`ai-out/briefs/main-next2.md`(R089 캐치마인드 그리기 도구)를 읽고 같은 창에서 바로 시작**(없거나 첫 줄 "보류" 면 멈춤). 그 전 터미널 마지막 줄 "R088 끝 — ★ 찬종: 메뉴 3 → 1(0034) → A114 · A115 · main-next2(R089) 이어서 · /clear 아직".
 ■ 답변: 한국어 · 터미널 5줄 이내.
