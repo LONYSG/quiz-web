@@ -2333,6 +2333,8 @@ async function pickCard(H, key) {
 }
 /** ★ R063 — 설정의 미니게임 고르기 창에서 keys 만 골라 [확정] · 확정한 목록을 돌려준다 */
 async function selectMinigames(H, keys) {
+  // ★ R087 (D-344) — 숨긴 미니게임(빙고 · 이 노래 몇 년도 · 객관식)도 옛 회귀 검사는 그대로 — 검사 화면만 보이게
+  await H.evaluate('window.__qwShowHidden?.(true)');
   await realClick(H, '[data-mg-catalog-open]');
   await H.waitFor("document.querySelector('.mg-cat') !== null", 4000);
   const want = JSON.stringify(keys);
@@ -4793,6 +4795,8 @@ async function r084Flow(browser) {
   await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
   await H.setInput('.mg-rounds-input', '2');
   await sleep(300);
+  // ★ R087 — 이 노래 몇 년도는 숨김(hidden) — 옛 검사는 검사 스위치로 그대로
+  await H.evaluate('window.__qwShowHidden?.(true)');
   await realClick(H, '[data-mg-catalog-open]');
   await H.waitFor("document.querySelector('.mg-cat') !== null", 4000).catch(() => false);
   await sleep(300);
@@ -5075,6 +5079,346 @@ async function r083Flow(browser) {
   record('★★ R083 손님(m360) 출제 — 도구 한 줄 화면 안 · 손가락 선이 PC 에 · 넘침 0', g2.tools && g2.toolsIn && g2.over <= 1 && hStrokes >= 1, JSON.stringify({ g2, hStrokes }));
   record('★★ R083 결과 — 3명', result === 3, String(result));
   S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
+// ★★★ R087 — 테스트 1 피드백 화면 (D-344) (UICHECK_R087=1 · 묶음 r087 · docs/design/r087)
+//   찬종 "이 사항들은 모든 해상도/배율/모바일에서 전부 재점검" — 방장 PC(1280 · 1536×864 · 1536×730 · 1920 · 2560 + ★ FHD 125% = 1536×864 @1.25)
+//   · 손님 모바일 터치(360 · 390 · 430) · 세 테마(파스텔 · 밤 · 사무실) · 소켓 손님 2
+//   ① 카탈로그: 숨긴 셋(빙고 · 이 노래 몇 년도 · 객관식) 없음 · 미니게임 수 1 받음
+//   ② OX(버튼 가운데 · 버튼 글자 O/X 만 · 안내 아래 줄) · 순서대로 공개(맞은 쌍 크게) · 노래 공개(항목 번호 없음)
+//   ③ 라이어: 큰 줄 · 설명칸 · 기록 패널(Tab) · 넘침 0
+//   ④ 캐치마인드: 출제자 PC — 채팅 옆 · 캔버스 크기 · 도구 화면 안 · 힌트 셋 → 손님 힌트 띠 / 출제자 모바일 — 도구 줄 · 캔버스 너비
+// =============================================================================
+async function r087Flow(browser) {
+  const PCV = [
+    { n: 'pc', w: 1280, h: 720 },
+    { n: 'lap', w: 1536, h: 864 },
+    { n: 'lap2', w: 1536, h: 730 },
+    { n: 'fhd', w: 1920, h: 1080 },
+    { n: 'qhd', w: 2560, h: 1440 },
+    { n: 'fhd125', w: 1536, h: 864, dpr: 1.25 },
+  ];
+  const MV = [
+    { n: 'm360', w: 360, h: 740 },
+    { n: 'm390', w: 390, h: 844 },
+    { n: 'm430', w: 430, h: 932 },
+  ];
+  const setPc = async (P, v) => {
+    await P.send('Emulation.setDeviceMetricsOverride', { width: v.w, height: v.h, deviceScaleFactor: v.dpr ?? 1, mobile: false });
+    await sleep(380);
+  };
+  const setM = (P, v) => r068Touch(P, v.w, v.h, true);
+  const H = await newPage(browser, 'R087-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r7h', '칠방장');
+  const roomId = await createRoom(H, 'R087 피드백');
+  const G = await newPage(browser, 'R087-g', true);
+  await signUp(G, 'r7g', '칠손님');
+  await setM(G, MV[0]);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const socks = await socketGuests(roomId, 2, 'r7s');
+  const sockIds = await withPg(async (c) => (await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [[0, 1].map((i) => `${ACCOUNT_PREFIX}_r7s${i}`.toLowerCase())])).rows);
+  socks.forEach((s, i) => (s.__id = sockIds.find((r) => r.login_id === `${ACCOUNT_PREFIX}_r7s${i}`.toLowerCase())?.id ?? null));
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r087] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const themes3 = async (P, name) => {
+    for (const th of ['night', 'office']) {
+      await theme(P, th);
+      await sleep(200);
+      await snap(P, `${name}-${th}`);
+    }
+    await theme(P, 'pastel');
+  };
+  const J = async (P, expr) => JSON.parse(await P.evaluate(`JSON.stringify(${expr})`));
+  const OVER = 'document.documentElement.scrollWidth - innerWidth';
+  const start = () => H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const waitResultBack = async () => {
+    await H.waitFor("document.querySelector('.ranking') !== null", 300000).catch(() => false);
+    await sleep(600);
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '로비로')?.click()");
+    await H.waitFor("document.querySelector('button[data-mode]') !== null", 8000).catch(() => false);
+    await sleep(500);
+  };
+
+  // ── ① 카탈로그 · 미니게임 수 1
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '1');
+  await sleep(500);
+  const one = await J(H, "({ v: document.querySelector('.mg-rounds-input')?.value ?? '', min: document.querySelector('.mg-rounds-input')?.min ?? '' })");
+  one.g = await G.evaluate("[...document.querySelectorAll('.set-value')].map((e) => e.innerText).join('|')");
+  await realClick(H, '[data-mg-catalog-open]');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 4000).catch(() => false);
+  await sleep(300);
+  const cat = await J(H, "({ keys: [...document.querySelectorAll('.mg-cat-card')].map((c) => c.dataset.key), count: document.querySelector('.mg-cat-count')?.innerText ?? '' })");
+  await snap(H, 'catalog-pc');
+  await H.key('Escape');
+  await sleep(300);
+  note('미니게임 수 1 · 카탈로그', { one, cat });
+
+  // ── ② OX · 순서대로 · 노래 (미니게임만 3개 — 하나씩)
+  await H.setInput('.mg-rounds-input', '3');
+  await sleep(300);
+  await selectMinigames(H, ['ox', 'order', 'song']);
+  await start();
+  const stateOf = (P) => P.evaluate("(() => { const c = document.querySelector('.mg-card'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; const k = [...c.classList].find((x) => x.startsWith('mg-') && !x.startsWith('mg-phase') && x !== 'mg-card'); return `${k?.slice(3)}:${c.dataset.phase}:${document.querySelector('.mg-round')?.innerText ?? ''}`; })()");
+  const OXM = "({ off: (() => { const b = document.querySelector('.ox-buttons')?.getBoundingClientRect(); const p = document.querySelector('.ox-buttons')?.parentElement?.getBoundingClientRect(); return b && p ? Math.round(Math.abs((b.left + b.right) / 2 - (p.left + p.right) / 2)) : null; })(), txt: [...document.querySelectorAll('.ox-btn')].map((b) => b.innerText.trim()).join(','), help: document.querySelector('[data-ox-mine]')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth, w: innerWidth })";
+  const res = { ox: {}, order: {}, song: {}, liar: {}, draw: {} };
+  const done = new Set();
+  let oxQ = 0;
+  const t0 = Date.now();
+  while (Date.now() - t0 < 400000) {
+    const st = await stateOf(H);
+    if (st === 'result') break;
+    if (!st || done.has(st)) {
+      await sleep(120);
+      continue;
+    }
+    done.add(st);
+    const [k, phase] = st.split(':');
+    if (k === 'ox' && phase === 'play' && oxQ < 3) {
+      const pcs = PCV.slice(oxQ * 2, oxQ * 2 + 2);
+      const mv = MV[oxQ];
+      oxQ += 1;
+      await sleep(150);
+      await Promise.all([
+        (async () => {
+          for (const v of pcs) {
+            await setPc(H, v);
+            res.ox[v.n] = await J(H, OXM);
+            await snap(H, `ox-play-${v.n}`);
+          }
+        })(),
+        (async () => {
+          await setM(G, mv);
+          res.ox[mv.n] = await J(G, OXM);
+          await snap(G, `ox-play-${mv.n}`);
+        })(),
+      ]);
+      if (oxQ === 1) await themes3(H, 'ox-play-fhd125');
+      await setPc(H, PCV[0]);
+      await setM(G, MV[0]);
+    }
+    if (k === 'order' && phase === 'play') {
+      // 방장이 다섯 장을 차례로(맞든 틀리든 — 공개에 "맞은 쌍 n / 10" 이 나오게)
+      for (let i = 0; i < 5; i += 1) await H.evaluate(`[...document.querySelectorAll('[data-order-card]')].filter((b) => !b.classList.contains('picked'))[0]?.click()`);
+    }
+    if (k === 'order' && phase === 'roundResult' && !res.order.pc) {
+      await sleep(300);
+      for (const v of [PCV[0], PCV[5], PCV[3]]) {
+        await setPc(H, v);
+        res.order[v.n] = await J(H, "({ big: document.querySelector('.order-pairs-big')?.innerText ?? '', why: !!document.querySelector('.order-pairs-why'), over: document.documentElement.scrollWidth - innerWidth })");
+        await snap(H, `order-reveal-${v.n}`);
+      }
+      res.order.m360 = await J(G, "({ big: document.querySelector('.order-pairs-big')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth })");
+      await snap(G, 'order-reveal-m360');
+      await setPc(H, PCV[0]);
+    }
+    if (k === 'song' && phase === 'roundResult' && !res.song.pc) {
+      await sleep(300);
+      res.song.pc = await J(H, "({ qno: document.querySelectorAll('.mg-result .qno').length, reveal: !!document.querySelector('.mg-result'), over: document.documentElement.scrollWidth - innerWidth })");
+      await snap(H, 'song-reveal-pc');
+      res.song.m360 = await J(G, "({ qno: document.querySelectorAll('.mg-result .qno').length, over: document.documentElement.scrollWidth - innerWidth })");
+      await snap(G, 'song-reveal-m360');
+    }
+    await sleep(100);
+  }
+  note('OX · 순서대로 · 노래', res.ox);
+  note('순서대로', res.order);
+  note('노래', res.song);
+  await waitResultBack();
+
+  // ── ③ 라이어 (4명 · 2라운드) — 소켓은 4초 뒤에 말해 크기를 바꿔 찍을 틈을 둔다
+  await realClick(H, 'button[data-mode="liar"]');
+  await H.waitFor("document.querySelector('[data-liar-note]') !== null", 4000).catch(() => false);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(400);
+  for (const s of socks) {
+    const did = new Set();
+    s.removeAllListeners('liar.state');
+    s.on('liar.state', (p) => {
+      const v = p.liar;
+      if (!v) return;
+      const key = `${v.round}:${v.phase}:${v.phaseStartedAt}:${v.turn}`;
+      if (did.has(key)) return;
+      did.add(key);
+      setTimeout(() => {
+        if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === s.__id) s.emit('liar.say', { text: v.phase === 'defense' ? '진짜 아니에요 저는 시민' : '이건 자주 볼 수 있는 거예요' });
+        else if (v.phase === 'vote' || v.phase === 'revote') {
+          const pool = (v.phase === 'revote' && v.candidates ? v.candidates : v.participants).filter((a) => a !== s.__id);
+          if (pool.length) s.emit('liar.vote', { target: pool[0] });
+        } else if (v.phase === 'final' && v.accused !== s.__id) s.emit('liar.final', { yes: true });
+        else if (v.phase === 'guess' && v.amLiar) s.emit('liar.guess', { text: '모르겠다' });
+      }, v.phase === 'describe' || v.phase === 'defense' ? 4000 : 600);
+    });
+  }
+  await start();
+  const LIM = "({ line: document.querySelector('[data-liar-stage-text]')?.innerText ?? '', fs: parseFloat(getComputedStyle(document.querySelector('[data-liar-stage-text]') ?? document.body).fontSize), say: !!document.querySelector('[data-liar-say-input]'), log: document.querySelector('[data-liar-log]')?.dataset.liarLog ?? '', over: document.documentElement.scrollWidth - innerWidth })";
+  const ldone = new Set();
+  let lineShot = false;
+  const t1 = Date.now();
+  while (Date.now() - t1 < 300000) {
+    const st = await H.evaluate("(() => { const c = document.querySelector('[data-liar-phase]'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; return `${c.dataset.liarPhase}:${document.querySelector('.liar-round')?.innerText ?? ''}:${document.querySelector('[data-liar-turn=\"1\"] .liar-nick')?.innerText ?? ''}:${c.dataset.liarBout}`; })()");
+    if (st === 'result') break;
+    if (!st || ldone.has(st)) {
+      await sleep(150);
+      continue;
+    }
+    ldone.add(st);
+    const [phase] = st.split(':');
+    const hTurn = await H.evaluate("!!document.querySelector('.liar-order li.me.turn')");
+    const gTurn = await G.evaluate("!!document.querySelector('.liar-order li.me.turn')");
+    if (phase === 'describe' && !lineShot && (await H.evaluate("!!document.querySelector('[data-liar-stage-text]') && !document.querySelector('.liar-stage-text.dim')")) && !hTurn && !gTurn) {
+      lineShot = true;
+      await Promise.all([
+        (async () => {
+          for (const v of PCV.slice(0, 3)) {
+            await setPc(H, v);
+            res.liar[v.n] = await J(H, LIM);
+            await snap(H, `liar-describe-${v.n}`);
+          }
+        })(),
+        (async () => {
+          await setM(G, MV[1]);
+          res.liar.m390 = await J(G, LIM);
+          await snap(G, 'liar-describe-m390');
+        })(),
+      ]);
+      await themes3(H, 'liar-describe-pc');
+      await setPc(H, PCV[0]);
+      await setM(G, MV[0]);
+    }
+    if ((phase === 'describe' || phase === 'defense') && (hTurn || gTurn)) {
+      const P = hTurn ? H : G;
+      if (!res.liar.sayShot) {
+        res.liar.sayShot = await J(P, LIM);
+        await snap(P, `liar-say-${hTurn ? 'pc' : 'm360'}`);
+      }
+      await P.setInput('[data-liar-say-input]', phase === 'defense' ? '저 아니에요 진짜로' : '동그랗고 자주 써요');
+      await P.evaluate("document.querySelector('[data-liar-say-form]')?.requestSubmit()");
+    }
+    if (phase === 'vote' && !res.liar.vote) {
+      await sleep(200);
+      await H.evaluate('document.activeElement?.blur()');
+      await H.key('Tab');
+      await sleep(250);
+      res.liar.vote = {};
+      for (const v of [PCV[3], PCV[5]]) {
+        await setPc(H, v);
+        res.liar.vote[v.n] = await J(H, LIM);
+        await snap(H, `liar-vote-log-${v.n}`);
+      }
+      await setPc(H, PCV[0]);
+      await H.key('Tab');
+    }
+    if (phase === 'vote' || phase === 'revote') {
+      const ids = await J(H, "[...document.querySelectorAll('[data-liar-target]')].map((b) => b.dataset.liarTarget)");
+      if (ids[0]) await realClick(H, `[data-liar-target="${ids[0]}"]`).catch(() => {});
+      const gIds = await J(G, "[...document.querySelectorAll('[data-liar-target]')].map((b) => b.dataset.liarTarget)");
+      if (gIds[0]) await tapOn(G, `[data-liar-target="${gIds[0]}"]`).catch(() => {});
+    }
+    if (phase === 'final') {
+      await sleep(200);
+      if (!res.liar.final) {
+        res.liar.final = await J(H, "({ stage: document.querySelector('[data-liar-stage-line]')?.dataset.liarStageLine ?? '', btns: [...document.querySelectorAll('[data-liar-final] button')].map((b) => b.innerText.trim()).join(',') })");
+        if (!res.liar.final.btns) res.liar.final.btns = await G.evaluate("[...document.querySelectorAll('[data-liar-final] button')].map((b) => b.innerText.trim()).join(',')");
+        await snap(H, 'liar-final-pc');
+        await snap(G, 'liar-final-m360');
+      }
+      await realClick(H, '[data-liar-yes]').catch(() => {});
+      await tapOn(G, '[data-liar-yes]').catch(() => {});
+    }
+    if (phase === 'guess') {
+      for (const P of [H, G]) {
+        if (await P.evaluate("!!document.querySelector('[data-liar-guess-input]')")) {
+          await P.setInput('[data-liar-guess-input]', '모르겠다');
+          await P.evaluate("document.querySelector('[data-liar-guess] form')?.requestSubmit()");
+        }
+      }
+    }
+    await sleep(100);
+  }
+  note('라이어', res.liar);
+  await waitResultBack();
+
+  // ── ④ 캐치마인드 (4명 · 2라운드 — 출제 방장(PC) → 손님(모바일))
+  await realClick(H, 'button[data-mode="draw"]');
+  await H.waitFor("document.querySelector('button[data-mode=\"draw\"][aria-pressed=\"true\"]') !== null", 4000).catch(() => false);
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(400);
+  await start();
+  const DRM = "(() => { const c = document.querySelector('[data-draw-canvas]')?.getBoundingClientRect(); const chat = document.querySelector('.chat-card')?.getBoundingClientRect(); const tools = [...document.querySelectorAll('[data-draw-tools] button')]; return { side: c ? Math.round(c.width) : 0, sq: c ? Math.abs(c.width - c.height) < 2 : false, inView: c ? c.bottom <= innerHeight + 1 && c.right <= innerWidth + 1 : false, chatBeside: c && chat ? chat.left >= c.right : false, tools: tools.length, toolsIn: tools.every((b) => { const r = b.getBoundingClientRect(); return r.bottom <= innerHeight + 1 && r.top >= 0; }), hints: document.querySelector('[data-draw-hints]')?.dataset.drawHints ?? '', topicHidden: !!document.querySelector('[data-draw-topic-hidden]'), over: document.documentElement.scrollWidth - innerWidth, w: innerWidth, h: innerHeight }; })()";
+  await H.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null", 15000).catch(() => false);
+  await sleep(500);
+  // 방장이 선 하나
+  const box = await J(H, "(() => { const r = document.querySelector('[data-draw-canvas]').getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width }; })()");
+  await H.send('Input.dispatchMouseEvent', { type: 'mousePressed', x: box.x + box.w * 0.2, y: box.y + box.w * 0.3, button: 'left', clickCount: 1 });
+  for (let i = 1; i <= 24; i += 1) await H.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: box.x + box.w * (0.2 + i * 0.025), y: box.y + box.w * (0.3 + Math.sin(i / 4) * 0.15), button: 'left', buttons: 1 });
+  await H.send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: box.x + box.w * 0.8, y: box.y + box.w * 0.3, button: 'left', clickCount: 1 });
+  await sleep(400);
+  res.draw.before = await J(G, DRM);
+  for (const v of PCV) {
+    await setPc(H, v);
+    res.draw[v.n] = await J(H, DRM);
+    await snap(H, `draw-drawer-${v.n}`);
+  }
+  await setPc(H, PCV[0]);
+  await themes3(H, 'draw-drawer-pc');
+  for (const kind of ['length', 'initial', 'topic']) {
+    await realClick(H, `[data-draw-hint-btn="${kind}"]`).catch(() => {});
+    await sleep(250);
+  }
+  res.draw.hostBtns = await J(H, "[...document.querySelectorAll('[data-draw-hint-btn]')].map((b) => b.disabled)");
+  for (const v of MV) {
+    await setM(G, v);
+    res.draw[`g-${v.n}`] = await J(G, DRM);
+    await snap(G, `draw-guesser-${v.n}`);
+  }
+  await setM(G, MV[0]);
+  const kw = await H.evaluate("document.querySelector('[data-draw-keyword]')?.innerText ?? ''");
+  await G.setInput('.chat-card input', kw);
+  await G.click('전송');
+  for (const s of socks) s.emit('chat.send', { text: kw, epoch: null });
+  // 2라운드 — 손님(모바일) 출제
+  await G.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null && !!document.querySelector('[data-draw-tools]')", 20000).catch(() => false);
+  await sleep(500);
+  for (const v of MV) {
+    await setM(G, v);
+    res.draw[`gd-${v.n}`] = await J(G, DRM);
+    await snap(G, `draw-drawer-${v.n}`);
+  }
+  await setM(G, MV[0]);
+  await snap(H, 'draw-guesser-pc');
+  const kw2 = await G.evaluate("document.querySelector('[data-draw-keyword]')?.innerText ?? ''");
+  await H.setInput('.chat-card input', kw2);
+  await H.click('전송');
+  for (const s of socks) s.emit('chat.send', { text: kw2, epoch: null });
+  await H.waitFor("document.querySelector('.ranking') !== null", 30000).catch(() => false);
+  note('캐치마인드', res.draw);
+
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r087'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r087'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r087', 'r087.json'), JSON.stringify(rows, null, 1));
+  const HIDDEN = ['bingo', 'songyear', 'choice'];
+  record('★★★ R087 카탈로그 — 숨긴 셋(빙고 · 이 노래 몇 년도 · 객관식) 없음 · 미니게임 수 1 받음(최소 1)', cat.keys.length > 10 && !cat.keys.some((k) => HIDDEN.includes(k)) && one.v === '1' && one.min === '1' && /1개/.test(one.g), JSON.stringify({ one, cat }));
+  const oxv = Object.entries(res.ox);
+  record('★★★ R087 OX — 크기 9(PC 5 + 125% · 모바일 3) 버튼 가운데(≤ 2px) · 버튼 글자 O/X 만 · 넘침 0 · PC 키 안내 아래 줄 · 모바일 안내 없음', oxv.length === 9 && oxv.every(([, m]) => m.off !== null && m.off <= 2 && m.txt === 'O,X' && m.over <= 1) && oxv.filter(([n]) => !n.startsWith('m')).every(([, m]) => /O · X 키/.test(m.help) || /골랐어요/.test(m.help)) && oxv.filter(([n]) => n.startsWith('m')).every(([, m]) => !/키/.test(m.help)), JSON.stringify(res.ox));
+  record('★★ R087 순서대로 공개 — "맞은 쌍 n / 10 → n점" 크게 · 뜻 한 줄 · 넘침 0(PC 3 · m360)', ['pc', 'fhd125', 'fhd'].every((n) => /맞은 쌍 .*\/ 10/.test(res.order[n]?.big ?? '') && res.order[n].why && res.order[n].over <= 1) && res.order.m360?.over <= 1, JSON.stringify(res.order));
+  record('★★ R087 노래 공개 — 항목 번호(song-0000) 안 보임 · 넘침 0', res.song.pc?.reveal && res.song.pc.qno === 0 && res.song.m360?.qno === 0 && res.song.pc.over <= 1 && res.song.m360.over <= 1, JSON.stringify(res.song));
+  const lv = ['pc', 'lap', 'lap2', 'm390'].map((n) => res.liar[n]);
+  record('★★★ R087 라이어 — 큰 줄(설명 · 1.1rem↑) 크기 4 · 내 차례 설명칸 · Tab 기록 펼침(FHD · 125%) · 죽인다/살린다 · 넘침 0', lv.every((m) => m && m.line && m.fs >= 17 && m.over <= 1) && res.liar.sayShot?.say === true && ['fhd', 'fhd125'].every((n) => res.liar.vote?.[n]?.log === 'open') && /죽인다/.test(res.liar.final?.btns ?? ''), JSON.stringify(res.liar));
+  const dpc = PCV.map((v) => res.draw[v.n]);
+  record('★★★ R087 캐치마인드 출제자 PC 6 — 채팅 옆 · 정사각 · 화면 안 · 도구 화면 안 · 넘침 0 · 1280×720 ≥ 560 · FHD ≥ 760 · 125% ≥ 560', dpc.every((m) => m && m.chatBeside && m.sq && m.inView && m.toolsIn && m.over <= 1) && res.draw.pc.side >= 560 && res.draw.fhd.side >= 760 && res.draw.fhd125.side >= 560, JSON.stringify(dpc.map((m) => m && [m.w, m.side, m.chatBeside, m.toolsIn, m.over])));
+  record('★★★ R087 캐치마인드 힌트 — 손님은 처음 주제 숨김 · 힌트 셋 뒤 띠 3(모바일 3 크기) · 방장 버튼 셋 다 꺼짐', res.draw.before?.topicHidden === true && MV.every((v) => res.draw[`g-${v.n}`]?.hints === 'length,initial,topic') && res.draw.hostBtns?.every(Boolean), JSON.stringify({ b: res.draw.before?.topicHidden, g: MV.map((v) => res.draw[`g-${v.n}`]?.hints), btns: res.draw.hostBtns }));
+  record('★★ R087 캐치마인드 모바일 — 맞히는 쪽 캔버스 ≈ 화면 너비(−60 안) · 출제자 도구 줄 · 넘침 0(3 크기 × 2)', MV.every((v) => { const g = res.draw[`g-${v.n}`]; const d = res.draw[`gd-${v.n}`]; return g && d && g.side >= v.w - 60 && d.side >= v.w - 60 && d.tools >= 10 && g.over <= 1 && d.over <= 1; }), JSON.stringify(MV.map((v) => [res.draw[`g-${v.n}`]?.side, res.draw[`gd-${v.n}`]?.side, res.draw[`gd-${v.n}`]?.tools])));
+  for (const s of socks) s.close();
   H.close();
   G.close();
 }
@@ -9296,6 +9640,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R087 — 테스트 1 피드백(전 크기 · 125%)
+  if (process.env.UICHECK_R087) {
+    await closeAllTabs(browser);
+    await r087Flow(browser);
   }
   // ★ R085 — OX 10연속
   if (process.env.UICHECK_R085) {
