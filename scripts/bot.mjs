@@ -8660,12 +8660,30 @@ async function scenarioDraw() {
   late.chat(kw1);
   await sleep(300);
   expect('★★ 구경꾼이 정답을 치면 거부(스포)', rejected.get(late), ['keyword']);
+  // ── ★★ R089 (D-346) — 페인트통 · 되돌리기(op 목록)
+  const fills = new Map(all.map((b) => [b, 0]));
+  const undos = new Map(all.map((b) => [b, []]));
+  for (const b of all) {
+    b.socket.on('draw.fill', () => fills.set(b, fills.get(b) + 1));
+    b.socket.on('draw.undo', (p) => undos.get(b).push(p.id));
+  }
+  host.socket.emit('draw.fill', { id: 'f1', x: 10, y: 10, color: '#38bdf8' });
+  b2.socket.emit('draw.fill', { id: 'fx', x: 10, y: 10, color: '#38bdf8' }); // 출제자 아님 → 거름
+  host.socket.emit('draw.fill', { id: 'f2', x: 1000, y: 10, color: '#38bdf8' }); // 격자 밖 → 거름
+  await sleep(300);
+  host.socket.emit('draw.undo', {});
+  host.socket.emit('draw.undo', {});
+  await sleep(300);
+  host.socket.emit('draw.stroke', { id: 's2', color: '#e5383b', width: 18, pts: [1, 1, 2, 2] }); // 되돌린 id 로 다시 → 거름
+  await sleep(300);
+  expectTrue('★★★ R089 페인트통 op 하나 전원에게(출제자 아님 · 격자 밖 거름) · 되돌리기 둘 = 채우기 → 선 순(뒤에서부터) · 되돌린 id 다시 안 생김', [b2, b3, late].every((b) => fills.get(b) === 1 && undos.get(b).join() === 'f1,s2') && strokesGot.get(b2) === 3, JSON.stringify({ f: [...fills.values()], u: [...undos.values()], s: strokesGot.get(b2) }));
   const c0 = chats.length;
   b2.chat(kw1);
   await sleep(300);
   b3.chat(kw1);
   await host.waitFor(() => lastView(host)?.phase === 'reveal' && lastView(host).round === 1, 5000, 'R1 공개');
   const r1 = lastView(host);
+  expect('★★ R089 공개 때 op 목록 = s1 하나(되돌린 둘 빠짐)', (r1.strokes ?? []).map((x) => x.id), ['s1']);
   expect('★★★ R1 — 맞힌 순서 b2 · b3 · 점수 3 · 2 · 출제 2 · 모두 맞혀 바로 공개', [r1.solved.map((s) => s.accountId), r1.scores], [[idOf(b2), idOf(b3)], { [idOf(b2)]: 3, [idOf(b3)]: 2, [idOf(host)]: 2 }]);
   const newChats = chats.slice(c0);
   expectTrue('★★★ 맞힌 글은 채팅에 안 보이고 시스템 줄 "정답!" 둘', !newChats.some((c) => c.text === kw1) && newChats.filter((c) => c.system && /정답!/.test(c.text)).length === 2, JSON.stringify(newChats.map((c) => c.text)));
@@ -8691,7 +8709,7 @@ async function scenarioDraw() {
   expect('★★★ 결과 점수 합 — host 5 · b2 3 · b3 3 · 중간 입장 0', [host, b2, b3, late].map((b) => got[idOf(b)] ?? null), [5, 3, 3, 0]);
   expect('★★ 결과 mode draw · completed', [res.mode, res.endReason], ['draw', 'completed']);
   const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, rerolled, strokes_count s, drawer_account_id::text d FROM draw_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
-  expect('★★★ draw_rounds 3행 — 결과 · 다른 제시어 · 선 수 · 출제자', rows.map((r) => [r.round, r.outcome, r.rerolled, r.s, r.d]), [[1, 'all', true, 2, idOf(host)], [2, 'none', false, 0, idOf(b2)], [3, 'some', false, 0, idOf(b3)]]);
+  expect('★★★ draw_rounds 3행 — 결과 · 다른 제시어 · 선 수 · 출제자', rows.map((r) => [r.round, r.outcome, r.rerolled, r.s, r.d]), [[1, 'all', true, 1, idOf(host)], [2, 'none', false, 0, idOf(b2)], [3, 'some', false, 0, idOf(b3)]]);
   for (const b of all) {
     b.leave();
     await sleep(40);

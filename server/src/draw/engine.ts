@@ -37,11 +37,20 @@ import { insertDrawRound, recordDrawExperience } from '../db/draw.js';
 import { weightedPick } from '../liar/engine.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 
+/**
+ * ★★ R089 (D-346) — 그림 = op 목록(순서 그대로 · 모든 화면이 공용 1000×1000 격자에 같은 순서로 그린다)
+ *   stroke = 선(색 · 굵기 · 점 — 조각으로 이어 붙음 · 'erase' = 흰색 선) · fill = 페인트통(x · y · 색 — 각 화면이 격자에서 영역 채우기)
+ *   ★ 이름은 옛 그대로 DrawStroke · 칸 strokes(스냅샷 · 늦게 온 사람) — 옛 선(kind 없음)은 stroke.
+ */
 export interface DrawStroke {
   id: string;
+  kind?: 'stroke' | 'fill';
   color: DrawColor;
   width: number;
   pts: number[];
+  /** fill 의 점(격자 좌표) */
+  x?: number;
+  y?: number;
 }
 
 export interface DrawRound {
@@ -60,6 +69,8 @@ export interface DrawRound {
   phaseStartedAt: number;
   phaseEndsAt: number;
   rerolled: boolean;
+  /** ★ R089 — 되돌린 op id(늦게 온 조각이 같은 id 로 다시 생기지 않게) */
+  undone: Set<string>;
   /** ★ R087 — 출제자가 연 힌트 */
   hints: DrawHints;
   scores: Record<string, number> | null;
@@ -257,6 +268,7 @@ function startRound(room: Room, now: number): boolean {
     phaseStartedAt: now,
     phaseEndsAt: now + ROUND_MS,
     rerolled: false,
+    undone: new Set(),
     hints: {},
     scores: null,
   };
@@ -278,7 +290,9 @@ export function drawStroke(room: Room, accountId: string, p: { id: string; color
   if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
   if (accountId !== r.drawer) return 'bad';
   if (!drawPointsOk(p.pts) || !isDrawColor(p.color) || typeof p.width !== 'number' || p.width < 1 || p.width > 60) return 'bad';
+  if (r.undone.has(p.id)) return 'bad';
   let s = r.strokes.find((x) => x.id === p.id);
+  if (s && s.kind === 'fill') return 'bad';
   if (!s) {
     if (r.strokes.length >= DRAW.MAX_STROKES) return 'bad';
     s = { id: p.id, color: p.color, width: Math.round(p.width), pts: [] };
@@ -287,6 +301,31 @@ export function drawStroke(room: Room, accountId: string, p: { id: string; color
   if (s.pts.length + p.pts.length > DRAW.MAX_POINTS * 2) return 'bad';
   s.pts.push(...p.pts);
   emitRoom(room, 'draw.stroke', { round: r.no, id: s.id, color: s.color, width: s.width, pts: p.pts });
+  return 'ok';
+}
+
+/** ★ R089 (D-346) — 페인트통: op 하나(x · y · 색) → 전원에게(각 화면이 격자에서 채운다) */
+export function drawFill(room: Room, accountId: string, p: { id: string; x: unknown; y: unknown; color: unknown }): DrawResult {
+  const r = room.game?.draw?.cur;
+  if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
+  if (accountId !== r.drawer) return 'bad';
+  const okXY = (v: unknown): v is number => typeof v === 'number' && Number.isInteger(v) && v >= 0 && v < DRAW.SIZE;
+  if (!okXY(p.x) || !okXY(p.y) || !isDrawColor(p.color) || r.undone.has(p.id) || r.strokes.some((x) => x.id === p.id)) return 'bad';
+  if (r.strokes.length >= DRAW.MAX_STROKES) return 'bad';
+  r.strokes.push({ id: p.id, kind: 'fill', color: p.color, width: 0, pts: [], x: p.x, y: p.y });
+  emitRoom(room, 'draw.fill', { round: r.no, id: p.id, x: p.x, y: p.y, color: p.color });
+  return 'ok';
+}
+
+/** ★ R089 (D-346 · 찬종 "한붓그리기 단위로 · 여러 번") — 되돌리기: 마지막 op 하나(선 · 채우기) · 전체 지우기는 대상 아님 */
+export function drawUndo(room: Room, accountId: string): DrawResult {
+  const r = room.game?.draw?.cur;
+  if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
+  if (accountId !== r.drawer) return 'bad';
+  const op = r.strokes.pop();
+  if (!op) return 'bad';
+  r.undone.add(op.id);
+  emitRoom(room, 'draw.undo', { round: r.no, id: op.id });
   return 'ok';
 }
 

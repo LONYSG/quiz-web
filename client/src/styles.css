@@ -10241,7 +10241,7 @@ button.preset.shake {
 /* 옆 기둥(PC) — 도구 2열 · 맞힌 사람 세로 */
 .draw-side {
   flex: 0 0 auto;
-  width: 112px;
+  width: 128px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -10259,9 +10259,65 @@ button.preset.shake {
   min-height: 32px;
 }
 .draw-tools .draw-tool[data-draw-clear],
+.draw-tools .draw-tool[data-draw-undo],
 .draw-tools .draw-hint-btn,
-.draw-tool-label {
+.draw-tool-label,
+.draw-widths,
+.draw-palette,
+.draw-custom {
   grid-column: 1 / -1;
+}
+/* ★ R089 (D-346) — 굵기 5 · 팔레트 12(4 × 3) · 세부 색 + 최근 4 */
+.draw-widths,
+.draw-custom {
+  display: flex;
+  gap: 2px;
+  justify-content: space-between;
+  align-items: center;
+}
+.draw-palette {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+.draw-width,
+.draw-color {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 26px;
+  padding: 0;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 2px solid transparent;
+  cursor: pointer;
+  font: inherit;
+}
+.draw-width.on,
+.draw-color.on {
+  border-color: var(--accent);
+}
+.draw-width-dot {
+  display: inline-block;
+  border-radius: 50%;
+  background: var(--text);
+}
+.draw-color .draw-swatch {
+  width: 16px;
+  height: 16px;
+  border: 1px solid color-mix(in srgb, var(--text-dim) 50%, transparent);
+}
+.draw-color-custom input {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.draw-canvas.can.tool-fill,
+.draw-canvas.can.tool-pick {
+  cursor: cell;
 }
 .draw-tool-label {
   margin-top: 4px;
@@ -10365,8 +10421,18 @@ button.preset.shake {
 :where(.ui-mobile) .room[data-state='DRAW'] .draw-tools {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  /* ★ R089 — 도구가 늘어 두 줄 이상 허용 */
+  flex-wrap: wrap;
+  gap: 4px;
+  overflow-x: visible;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-palette {
+  grid-template-columns: repeat(12, 1fr);
+  flex: 1 1 100%;
+}
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-widths,
+:where(.ui-mobile) .room[data-state='DRAW'] .draw-custom {
+  flex: none;
 }
 :where(.ui-mobile) .room[data-state='DRAW'] .draw-tools .draw-tool {
   flex: none;

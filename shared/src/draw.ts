@@ -62,8 +62,92 @@ export const DRAW_WIDTHS = [6, 18] as const;
 export const DRAW_START_BLOCK = `캐치마인드는 ${DRAW.MIN_PLAYERS}명부터 할 수 있어요.`;
 export const DRAW_TEAM_BLOCK = '팀전과 캐치마인드는 같이 켤 수 없어요.';
 
+/** ★ R089 (D-346) — 색은 팔레트 밖도(세부 색 · 스포이드) → '#rrggbb' 아무거나 · 'erase' = 흰색 선 */
 export function isDrawColor(v: unknown): v is DrawColor {
-  return v === 'erase' || (typeof v === 'string' && (DRAW_COLORS as readonly string[]).includes(v));
+  return v === 'erase' || (typeof v === 'string' && /^#[0-9a-fA-F]{6}$/.test(v));
+}
+
+// ── ★★ R089 (D-346 · 찬종 "펜 굵기 · 되돌리기 · 색 팔레트 + 세부 색 · 지우개 굵기 · 페인트통 · 스포이드") ──
+/** 기본 팔레트 12 */
+export const DRAW_PALETTE = ['#111111', '#8a8a8a', '#ffffff', '#e5383b', '#f7871f', '#f6c90e', '#16a34a', '#38bdf8', '#2563eb', '#8b5cf6', '#ec4899', '#8b5a2b'] as const;
+/** 펜 · 지우개 굵기 단계(공용 격자 1000 기준 px) */
+export const DRAW_WIDTH_STEPS = [2, 4, 8, 14, 24] as const;
+/** 페인트통 경계 허용 오차(채널 최대 차) — 안티앨리어싱 가장자리를 같이 칠한다 */
+export const DRAW_FILL_TOL = 40;
+/** 지우개 = 흰색으로 칠한다(공용 격자는 흰 바탕 — 페인트통이 지운 자리도 같은 색으로 본다) */
+export const DRAW_ERASE_HEX = '#ffffff';
+
+export function hexToRgb(hex: string): [number, number, number] {
+  const h = hex === 'erase' ? DRAW_ERASE_HEX : hex;
+  const n = Number.parseInt(h.slice(1, 7), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
+/**
+ * ★ R089 — 영역 채우기(4-연결 · 스캔라인) — 공용 격자 RGBA 를 제자리에서 바꾼다 · 칠한 픽셀 수.
+ *   시작 픽셀 색과 채널 최대 차가 tol 이하인 픽셀을 이어서 칠한다(같은 색이면 0). 순수 함수 — 같은 입력이면 어느 기기에서나 같은 결과.
+ */
+export function floodFill(data: Uint8ClampedArray, w: number, h: number, x0: number, y0: number, rgb: readonly [number, number, number], tol: number = DRAW_FILL_TOL): number {
+  const x = Math.max(0, Math.min(w - 1, Math.floor(x0)));
+  const y = Math.max(0, Math.min(h - 1, Math.floor(y0)));
+  const i0 = (y * w + x) * 4;
+  const sr = data[i0]!;
+  const sg = data[i0 + 1]!;
+  const sb = data[i0 + 2]!;
+  const [fr, fg, fb] = rgb;
+  if (sr === fr && sg === fg && sb === fb) return 0;
+  const seen = new Uint8Array(w * h);
+  const match = (p: number) => {
+    if (seen[p]) return false;
+    const i = p * 4;
+    return Math.abs(data[i]! - sr) <= tol && Math.abs(data[i + 1]! - sg) <= tol && Math.abs(data[i + 2]! - sb) <= tol;
+  };
+  const paint = (p: number) => {
+    seen[p] = 1;
+    const i = p * 4;
+    data[i] = fr;
+    data[i + 1] = fg;
+    data[i + 2] = fb;
+    data[i + 3] = 255;
+  };
+  let n = 0;
+  const stack: number[] = [x, y];
+  while (stack.length) {
+    const cy = stack.pop()!;
+    const cx = stack.pop()!;
+    let lx = cx;
+    const row = cy * w;
+    if (!match(row + lx)) continue;
+    while (lx > 0 && match(row + lx - 1)) lx -= 1;
+    let rx = cx;
+    while (rx < w - 1 && match(row + rx + 1)) rx += 1;
+    for (let xx = lx; xx <= rx; xx += 1) {
+      paint(row + xx);
+      n += 1;
+    }
+    for (const ny of [cy - 1, cy + 1]) {
+      if (ny < 0 || ny >= h) continue;
+      const nrow = ny * w;
+      let xx = lx;
+      while (xx <= rx) {
+        while (xx <= rx && !match(nrow + xx)) xx += 1;
+        if (xx > rx) break;
+        stack.push(xx, ny);
+        while (xx <= rx && match(nrow + xx)) xx += 1;
+      }
+    }
+  }
+  return n;
+}
+
+/** ★ R089 — 격자 해시(FNV-1a · 검사에서 두 화면의 결과가 같은지) */
+export function gridHash(data: Uint8ClampedArray): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < data.length; i += 1) {
+    h ^= data[i]!;
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h.toString(16).padStart(8, '0');
 }
 
 /** 맞힌 순서(0부터) → 점수 */

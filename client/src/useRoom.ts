@@ -80,9 +80,13 @@ export interface RoomSettings {
 /** ★★★ R083 — 캐치마인드 판 보기(서버 draw/engine.ts DrawView) */
 export interface DrawStrokeView {
   id: string;
+  /** ★ R089 — op 종류(없으면 stroke) · fill 은 x · y */
+  kind?: 'stroke' | 'fill';
   color: string;
   width: number;
   pts: number[];
+  x?: number;
+  y?: number;
 }
 export interface DrawView {
   round: number;

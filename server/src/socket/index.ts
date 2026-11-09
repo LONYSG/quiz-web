@@ -101,7 +101,7 @@ import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import { liarChatGate, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
-import { drawChatGate, drawClear, drawHint, drawReroll, drawStroke } from '../draw/engine.js';
+import { drawChatGate, drawClear, drawFill, drawHint, drawReroll, drawStroke, drawUndo } from '../draw/engine.js';
 import {
   on,
   onRoom,
@@ -1089,6 +1089,21 @@ function registerRoomHandlers(socket: Socket): void {
   );
   onRoom<Record<string, never>>(socket, 'draw.clear', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawClear(room, session.accountId)));
   onRoom<Record<string, never>>(socket, 'draw.reroll', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawReroll(room, session.accountId)));
+  // ★ R089 (D-346) — 페인트통 · 되돌리기(출제자만)
+  onRoom<{ id: string; x: unknown; y: unknown; color: unknown }>(
+    socket,
+    'draw.fill',
+    {
+      allowedStates: ['DRAW'],
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        const id = parseString(obj?.id, 1, 32);
+        return obj && id !== null ? { id, x: obj.x, y: obj.y, color: obj.color } : null;
+      },
+    },
+    ({ socket: s, room, session, payload }) => drawReply(s, drawFill(room, session.accountId, payload)),
+  );
+  onRoom<Record<string, never>>(socket, 'draw.undo', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawUndo(room, session.accountId)));
   // ★ R087 (D-344) — 출제자 힌트(글자 수 · 초성 · 주제 · 각 1회)
   onRoom<{ kind: DrawHintKind }>(
     socket,
