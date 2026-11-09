@@ -8319,9 +8319,10 @@ async function scenarioTopicSets() {
 
 // =============================================================================
 // ★★★ R082 — 라이어 게임 (D-339) — 봇 4 · 4라운드
-//   R1 찾음(시민 전원 라이어 지목 · 찬성) + 라이어 키워드 맞힘 → 시민 +1 · 라이어 +2 · 키워드 말하기 거부 · 차례 아닌 채팅 거부
-//   R2 동률 → 재투표 동률 → 못 찾음 → 라이어 +3
-//   R3 시민 X 지목 → 찬반 부결 → 재지목 Y → 부결 → 못 찾음(2번째까지) → 라이어 +3
+//   ★★ R087 개정(D-344): 설명 · 변론 = liar.say(설명칸) · 채팅은 차례와 무관하게 자유(키워드만 거부) · 투표 바퀴 3
+//   R1 찾음(시민 전원 라이어 지목 · 죽인다) + 라이어 키워드 맞힘 → 시민 +1 · 라이어 +2 · 설명칸 키워드 거부 · 차례 아닌 설명 거부 · 차례 아닌 채팅은 통과
+//   R2 1바퀴 동률 → 재투표 동률 → 재투표 동률(REVOTES 2) → 못 정함 → 2바퀴 시민 X 지목 · 살림 → 3바퀴 X 다시 지목 · 살림 → 못 찾음 → 라이어 +3
+//   R3 시민 X 지목 → 죽인다 → 시민을 죽임 → 라이어 승 +3
 //   R4 찾음 · 키워드 틀림 → 시민 +1 · 라이어 0
 //   + 2명이면 시작 블록 · liar_rounds 4행 · 경험 liar|항목
 // =============================================================================
@@ -8368,41 +8369,43 @@ async function scenarioLiar() {
     if (!roles[r]) roles[r] = {};
     if (v.amLiar) roles[r].liar = me;
     if (v.keyword && !v.amLiar) roles[r].keyword = v.keyword;
-    const k = `${r}:${v.phase}:${v.turn}:${v.accusedTried.length}:${(v.candidates ?? []).join()}`;
+    const k = `${r}:${v.phase}:${v.phaseStartedAt}:${v.turn}`;
     if (done.get(b).has(k)) return;
     done.get(b).add(k);
     const P = [...v.participants].sort();
+    const say = (text) => b.socket.emit('liar.say', { text });
     if (v.phase === 'describe') {
       if (v.turn === me) {
         if (r === 1 && v.says.length === 0 && v.keyword) {
-          b.chat(`${v.keyword} 좋아`); // ★ 키워드 → 거부
+          say(`${v.keyword} 좋아`); // ★ 키워드 → 거부
           await sleep(250);
         }
-        b.chat(`한마디 ${b.name}`);
-      } else if (r === 1 && v.says.length === 0 && v.order[1] === me) b.chat('끼어들기'); // ★ 차례 아님 → 거부
-    } else if (v.phase === 'defense' && v.turn === me) b.chat('저 아니에요');
+        say(`한마디 ${b.name}`);
+      } else if (r === 1 && v.says.length === 0 && v.order[1] === me) {
+        say('끼어들기 설명'); // ★ 차례 아닌 설명 → 거부
+        b.chat('끼어들기 채팅'); // ★ 차례 아닌 채팅 → 통과(R087)
+      }
+    } else if (v.phase === 'defense' && v.turn === me) say('저 아니에요');
     else if (v.phase === 'vote' || v.phase === 'revote') {
       await sleep(100);
       const liar = roles[r].liar ?? null;
+      const cit = P.filter((a) => a !== liar);
+      const X = cit[0];
       let target = null;
       if (r === 1 || r === 4) target = me === liar ? P.find((a) => a !== me) : liar;
-      else if (r === 2) target = { [P[0]]: P[1], [P[1]]: P[0], [P[2]]: P[0], [P[3]]: P[1] }[me];
-      else if (r === 3) {
-        const cit = P.filter((a) => a !== liar);
-        const X = cit[0];
-        const Y = cit[1];
-        if (v.accusedTried.length === 0) target = me === X ? Y : X;
-        else target = me === Y ? cit[2] ?? liar : Y;
-      }
+      else if (r === 2 && v.bout === 1) target = { [P[0]]: P[1], [P[1]]: P[0], [P[2]]: P[0], [P[3]]: P[1] }[me];
+      else if (r === 2 || r === 3) target = me === X ? cit[1] : X;
       if (target && liar) b.socket.emit('liar.vote', { target });
     } else if (v.phase === 'final' && v.accused !== me) {
       await sleep(100);
-      b.socket.emit('liar.final', { yes: r !== 3 });
+      b.socket.emit('liar.final', { yes: r !== 2 });
     } else if (v.phase === 'guess' && v.amLiar) {
       await sleep(200);
       b.socket.emit('liar.guess', { text: r === 1 ? (roles[r].keyword ?? '?') : '절대아닌답zz' });
-    } else if (v.phase === 'reveal' && b === host) reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, tally: v.lastTally, tried: v.accusedTried });
+    } else if (v.phase === 'reveal' && b === host) reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, tally: v.lastTally, tried: v.accusedTried, bout: v.bout, says: v.says });
   };
+  const chats = [];
+  host.socket.on('chat.message', (p) => chats.push(p));
   for (const b of bots) {
     b.socket.on('liar.state', (p) => {
       views.set(b, p.liar);
@@ -8419,10 +8422,11 @@ async function scenarioLiar() {
   await host.waitFor(() => host.since(g, 'game.result').length > 0, 300000, '결과');
   const res = host.since(g, 'game.result')[0].payload;
   const byR = (n) => reveals.find((x) => x.round === n) ?? {};
-  expect('★★★ 라운드 결과 — 찾음 · 못 찾음(동률) · 못 찾음(재지목 둘 다 부결) · 찾음', [1, 2, 3, 4].map((n) => byR(n).outcome), ['caught', 'notfound', 'notfound', 'caught']);
+  expect('★★★ 라운드 결과 — 찾음 · 못 찾음(3바퀴) · 시민 죽임(라이어 승) · 찾음', [1, 2, 3, 4].map((n) => byR(n).outcome), ['caught', 'notfound', 'escaped', 'caught']);
   expect('★★ 라이어 키워드 맞히기 — R1 맞힘 · R4 틀림', [byR(1).guessOk, byR(4).guessOk], [true, false]);
-  expectTrue('★★ R2 동률 → 재투표(revote) 집계 · 지목 없음', byR(2).tally?.stage === 'revote' && byR(2).tried.length === 0, JSON.stringify(byR(2).tally));
-  expectTrue('★★ R3 지목 둘(부결 → 재지목 → 부결)', byR(3).tried?.length === 2, JSON.stringify(byR(3).tried));
+  expectTrue('★★★ R2 — 3바퀴 · 같은 시민을 두 번 지목하고 두 번 살림(살아난 사람도 다시 대상)', byR(2).bout === 3 && byR(2).tried?.length === 2 && byR(2).tried[0] === byR(2).tried[1], JSON.stringify({ bout: byR(2).bout, tried: byR(2).tried }));
+  expectTrue('★★ R3 — 1바퀴 · 지목 하나(시민)', byR(3).bout === 1 && byR(3).tried?.length === 1 && byR(3).tried[0] !== roles[3].liar, JSON.stringify(byR(3).tried));
+  expectTrue('★★★ 설명 · 변론 기록 — kind say 4 · defense 1(R1)', byR(1).says?.filter((x) => x.kind === 'say').length === 4 && byR(1).says?.filter((x) => x.kind === 'defense').length === 1, JSON.stringify(byR(1).says));
   // 점수 — R1 시민 +1 · 라이어 +2 / R2 · R3 라이어 +3 / R4 시민 +1
   const want = new Map([...ids.values()].map((a) => [a, 0]));
   const add = (a, n) => want.set(a, (want.get(a) ?? 0) + n);
@@ -8430,13 +8434,16 @@ async function scenarioLiar() {
   add(roles[1].liar, 2);
   add(roles[2].liar, 3);
   add(roles[3].liar, 3);
+  // ★ R087 — R4 시민 +1 은 위 루프(1 · 4)
   const got = new Map(res.ranking.map((x) => [x.accountId, x.score]));
   expect('★★★ 점수 = +1(찍은 시민) · +2(맞힘) · +3(못 들킴) · 0(들키고 틀림)', [...ids.values()].map((a) => got.get(a)), [...ids.values()].map((a) => want.get(a)));
   expect('★★ 공개 점수 칸 — R1 시민 셋 +1 · 라이어 +2', Object.values(byR(1).scores ?? {}).sort().join(), '1,1,1,2');
-  expectTrue('★★★ 키워드를 말하면 거부 · 차례 아닌 채팅 거부(본인에게만)', [...rejected.values()].flat().includes('keyword') && [...rejected.values()].flat().includes('not_turn'), JSON.stringify([...rejected.values()]));
+  expectTrue('★★★ 설명칸 — 키워드 거부 · 차례 아닌 설명 거부(본인에게만)', [...rejected.values()].flat().includes('keyword') && [...rejected.values()].flat().includes('not_turn'), JSON.stringify([...rejected.values()]));
+  expectTrue('★★★ 차례 아닌 사람의 채팅은 그대로 채팅에(R087 — 설명칸과 분리)', chats.some((c) => /끼어들기 채팅/.test(c.text ?? '')), JSON.stringify(chats.slice(0, 5).map((c) => c.text)));
   expect('★★ 결과 mode liar · completed', [res.mode, res.endReason], ['liar', 'completed']);
-  const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, guess_ok, jsonb_array_length(says) s, jsonb_array_length(votes) v, liar_account_id::text l FROM liar_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
-  expect('★★★ liar_rounds 4행 · 결과 · 라이어 · 한마디 4+', rows.map((x) => [x.round, x.outcome, x.l === roles[x.round].liar, x.s >= 4]), [[1, 'caught', true, true], [2, 'notfound', true, true], [3, 'notfound', true, true], [4, 'caught', true, true]]);
+  const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, guess_ok, jsonb_array_length(says) s, jsonb_array_length(votes) v, liar_account_id::text l, (SELECT max((x->>'bout')::int) FROM jsonb_array_elements(votes) x) b FROM liar_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
+  expect('★★ liar_rounds.votes 바퀴 — R2 3바퀴 · 7기록(동률 3 + 지목 · 살림 ×2)', [rows[1]?.b, rows[1]?.v], [3, 7]);
+  expect('★★★ liar_rounds 4행 · 결과 · 라이어 · 한마디 4+', rows.map((x) => [x.round, x.outcome, x.l === roles[x.round].liar, x.s >= 4]), [[1, 'caught', true, true], [2, 'notfound', true, true], [3, 'escaped', true, true], [4, 'caught', true, true]]);
   const g2 = await withDb(async (c) => (await c.query(`SELECT mode, setting_question_count q, setting_minigame_rounds r FROM games WHERE id = $1`, [started.gameId])).rows[0]);
   expect('★★ games — mode liar · 문제 0 · 라운드 4', [g2.mode, g2.q, g2.r], ['liar', 0, 4]);
   const exp = await withDb(async (c) => (await c.query(`SELECT count(DISTINCT item_key)::int n FROM minigame_item_experiences WHERE minigame_key = 'liar' AND account_id = $1::bigint AND item_key IN (SELECT item_id FROM liar_rounds WHERE game_id = $2)`, [idOf(host), started.gameId])).rows[0].n);

@@ -2,7 +2,7 @@
  [
   "설정",
   {
-   "modes": "quiz,minigame,liar*",
+   "modes": "quiz,minigame,liar*,draw",
    "note": true,
    "quizRows": false,
    "team": true,
@@ -13,11 +13,11 @@
   "진행",
   {
    "assign": {
-    "topic": "동물",
+    "topic": "캐릭터",
     "me": "citizen",
-    "kw": "지렁이"
+    "kw": "가필드"
    },
-   "notice": "라이어방장 님 차례예요",
+   "notice": "",
    "vote": {
     "n": 3,
     "gN": 3,
@@ -26,24 +26,36 @@
    "tally": 4,
    "final": {
     "btns": 0,
-    "gBtns": 2
+    "gBtns": 2,
+    "labels": "죽인다,살린다",
+    "stage": "defense"
    },
    "reveal": [
     {
      "outcome": "escaped",
-     "text": "라이어는 lys손님0 · 키워드 지렁이"
+     "text": "라이어는 라이어손님 · 키워드 가필드"
     },
     {
      "outcome": "escaped",
-     "text": "라이어는 라이어손님 · 키워드 바리스타"
+     "text": "라이어는 lys손님0 · 키워드 바람계곡의 나우시카"
     }
    ],
    "guess": null,
    "assignG": {
-    "me": "citizen",
+    "me": "liar",
     "over": 0
    },
-   "picked": "5372",
+   "gSayInput": false,
+   "chatShown": true,
+   "stageLine": "음 그거요",
+   "hSayInput": true,
+   "picked": "5542",
+   "log": {
+    "open": "open",
+    "n": 4,
+    "closed": "closed"
+   },
+   "logG": "open",
    "defenseShot": true
   }
  ],

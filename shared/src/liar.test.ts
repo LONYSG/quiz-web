@@ -12,8 +12,9 @@ describe('라이어 — 투표 · 찬반 · 점수', () => {
     expect(tallyVotes(new Map()).top).toEqual([]);
   });
   it('찬반 — 낼 수 있는 사람 과반', () => {
-    expect(finalPasses(2, 3)).toBe(true);
-    expect(finalPasses(2, 4)).toBe(false);
+    expect(finalPasses(2, 1)).toBe(true);
+    expect(finalPasses(2, 2)).toBe(false); // ★ R087 — 동률이면 산다
+    expect(finalPasses(1, 2)).toBe(false);
     expect(finalPasses(0, 0)).toBe(false);
   });
   it('점수 — 찾음(찍은 시민 +1 · 맞히면 라이어 +2) · 못 찾음 라이어 +3', () => {

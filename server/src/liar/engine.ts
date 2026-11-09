@@ -3,11 +3,15 @@
 //
 // 라운드: ⓐ assign(주제 · 시민 = 키워드 / 라이어 = "당신이 라이어") → ⓑ describe(무작위 순서 · 차례인 사람만 채팅 한 줄 · 시간 지나면 "(…)")
 //   → ⓒ vote(모두 동시 · 자기 제외 · 바꿀 수 있음 · 채팅 열림) → tally(누가 누굴 찍었나) → 최다 1명 → ⓓ defense(지목된 사람 한 줄)
-//   → ⓔ final(찬반 · 지목된 사람 빼고 · 과반 "라이어다" 면 확정) → 확정이면 ⓕ / 부결이면 다시 지목(그 사람 빼고 · 최대 LIAR.MAX_ACCUSE)
+//   → ⓔ final(죽일지/살릴지 — R087 개정: 아래 ★★ R087 바퀴)
 //   · 첫 투표 동률 → 동률자끼리 재투표 1회 → 또 동률 · 표 없음 = 못 찾음
 //   ⓕ 확정된 사람이 라이어면 guess(라이어가 키워드 맞히기) → reveal(누구 · 키워드 · 결과 · 점수) → 다음 라운드 / 판 끝.
 // 점수: shared liarRoundScores(시민 = 확정된 지목 투표에서 라이어를 찍은 사람 +1 · 라이어 못 들킴 +3 · 들켰지만 맞힘 +2) → player.score(포인트 아님).
 // 채팅: liarChatGate 가 판정한다 — 설명 · 항변 단계는 차례인 사람만 · 키워드(이름 · 변형)를 담은 글은 누구든 거부(공개 전까지).
+// ★★ R087 개정(D-344 · 찬종 테스트 1): 설명 · 변론은 **채팅이 아니라 설명칸**(liar.say — 차례인 사람만) · 채팅은 늘 누구나(키워드만 거부)
+//   · 투표 = 바퀴(LIAR.VOTE_BOUTS 3): 지목 투표(동률 → 동률자끼리 재투표 · 바퀴 안 LIAR.REVOTES 번까지 · 그래도 동률이면 그 바퀴 못 정함)
+//     → 변론 → 죽일지/살릴지(지목자 빼고 · 죽인다 > 살린다면 죽임) → 죽이면 공개(라이어면 찾음 · 시민이면 라이어 승) · 살리면 다음 바퀴(전원 대상)
+//     · 바퀴를 다 돌아도 못 죽이면 못 찾음(라이어 승). 옛 "재지목 2번 · 지목된 사람 제외" 는 이것으로 바뀌었다.
 // 기록: liar_rounds(0032) 한 라운드 한 행 · 경험 minigame_item_experiences('liar', 항목 id) — 전부 fire-and-forget.
 // =============================================================================
 
@@ -22,6 +26,8 @@ import { insertLiarRound, recordLiarExperience } from '../db/liar.js';
 export interface LiarVoteLog {
   stage: 'vote' | 'revote' | 'final';
   accusedNo: number;
+  /** ★ R087 — 몇 바퀴째 */
+  bout: number;
   votes: Record<string, string | boolean>;
   result: string | null;
 }
@@ -39,7 +45,10 @@ export interface LiarRound {
   participants: string[];
   order: string[];
   turn: number;
-  says: { accountId: string; text: string; auto: boolean }[];
+  says: LiarSay[];
+  /** ★ R087 — 투표 바퀴(1부터) · 이 바퀴의 재투표 횟수 */
+  bout: number;
+  revotes: number;
   phase: LiarPhase;
   phaseStartedAt: number;
   phaseEndsAt: number;
@@ -58,6 +67,15 @@ export interface LiarRound {
   guess: string | null;
   guessOk: boolean | null;
   scores: Record<string, number> | null;
+}
+
+/** ★ R087 — 설명(say) · 변론(defense) 한 줄 */
+export interface LiarSay {
+  accountId: string;
+  text: string;
+  auto: boolean;
+  kind: 'say' | 'defense';
+  bout: number;
 }
 
 export interface LiarRun {
@@ -151,7 +169,9 @@ export interface LiarView {
   participants: string[];
   order: string[];
   turn: string | null;
-  says: { accountId: string; text: string; auto: boolean }[];
+  says: LiarSay[];
+  bout: number;
+  bouts: number;
   myVote: string | null;
   votedCount: number;
   candidates: string[] | null;
@@ -191,6 +211,8 @@ export function liarView(room: Room, viewer: string): LiarView | null {
     order: r.order,
     turn: r.phase === 'describe' ? (r.order[r.turn] ?? null) : r.phase === 'defense' ? r.accused : null,
     says: r.says,
+    bout: r.bout,
+    bouts: T.VOTE_BOUTS,
     myVote: r.votes.get(viewer) ?? null,
     votedCount: r.phase === 'final' ? r.finalVotes.size : r.votes.size,
     candidates: r.candidates,
@@ -263,6 +285,8 @@ function startRound(room: Room, now: number): boolean {
     order: shuffle([...participants]),
     turn: 0,
     says: [],
+    bout: 1,
+    revotes: 0,
     phase: 'assign',
     phaseStartedAt: now,
     phaseEndsAt: now + T.ASSIGN_MS,
@@ -288,24 +312,31 @@ function startRound(room: Room, now: number): boolean {
 // ─────────────────────────────────────────────────────────────────────────────
 // 입력 — 채팅(설명 · 항변) · 투표 · 찬반 · 키워드 맞히기
 // ─────────────────────────────────────────────────────────────────────────────
-export type ChatGate = { ok: true } | { ok: false; reason: 'not_turn' | 'keyword' | 'too_long'; message: string };
+export type ChatGate = { ok: true } | { ok: false; reason: 'not_turn' | 'keyword' | 'too_long' | 'not_now'; message: string };
 
-/** ★ 라이어 판 채팅 — 설명 · 항변 단계는 차례인 사람만 · 키워드를 담은 글은 누구든(공개 전) · 차례 말은 기록하고 다음으로 */
-export function liarChatGate(room: Room, accountId: string, text: string): ChatGate {
+/** ★ R087 — 라이어 판 채팅은 늘 누구나 · 키워드(이름 · 변형)를 담은 글만 거부(공개 전 · 스포 방지) */
+export function liarChatGate(room: Room, _accountId: string, text: string): ChatGate {
   const r = room.game?.liar?.cur;
   if (!r || room.state !== 'LIAR') return { ok: true };
-  const turnPhase = r.phase === 'describe' || r.phase === 'defense';
-  const speaker = r.phase === 'describe' ? r.order[r.turn] : r.phase === 'defense' ? r.accused : null;
-  if (turnPhase && accountId !== speaker) {
+  if (r.phase !== 'reveal' && mentionsKeyword(text, r)) return { ok: false, reason: 'keyword', message: '키워드는 말할 수 없어요' };
+  return { ok: true };
+}
+
+/** ★ R087 — 설명칸(liar.say): 설명 · 변론 단계의 차례인 사람만 · 60자 · 키워드 거부 → 기록하고 다음으로 */
+export function liarSay(room: Room, accountId: string, text: string): ChatGate {
+  const r = room.game?.liar?.cur;
+  if (!r || room.state !== 'LIAR' || (r.phase !== 'describe' && r.phase !== 'defense')) return { ok: false, reason: 'not_now', message: '지금은 설명 차례가 아니에요' };
+  const speaker = r.phase === 'describe' ? r.order[r.turn] : r.accused;
+  if (accountId !== speaker) {
     const nick = speaker ? (room.players.get(speaker)?.nickname ?? '') : '';
     return { ok: false, reason: 'not_turn', message: `${nick} 님 차례예요` };
   }
-  if (r.phase !== 'reveal' && mentionsKeyword(text, r)) return { ok: false, reason: 'keyword', message: '키워드는 말할 수 없어요' };
-  if (turnPhase && [...text].length > T.SAY_MAX) return { ok: false, reason: 'too_long', message: `한마디는 ${T.SAY_MAX}자까지예요` };
-  if (turnPhase) {
-    r.says.push({ accountId, text, auto: false });
-    advanceSay(room, r, Date.now());
-  }
+  const t = text.trim();
+  if (!t) return { ok: false, reason: 'not_now', message: '한 줄을 적어 주세요' };
+  if ([...t].length > T.SAY_MAX) return { ok: false, reason: 'too_long', message: `한마디는 ${T.SAY_MAX}자까지예요` };
+  if (mentionsKeyword(t, r)) return { ok: false, reason: 'keyword', message: '키워드는 말할 수 없어요' };
+  r.says.push({ accountId, text: t, auto: false, kind: r.phase === 'defense' ? 'defense' : 'say', bout: r.bout });
+  advanceSay(room, r, Date.now());
   return { ok: true };
 }
 
@@ -326,7 +357,8 @@ export function liarVote(room: Room, accountId: string, target: string): LiarInp
   const r = room.game?.liar?.cur;
   if (!r || room.state !== 'LIAR' || (r.phase !== 'vote' && r.phase !== 'revote')) return 'not_now';
   if (!r.participants.includes(accountId) || target === accountId) return 'bad';
-  const allowed = r.phase === 'revote' && r.candidates ? r.candidates : r.participants.filter((a) => !r.accusedTried.includes(a));
+  // ★ R087 — 바퀴마다 전원 대상(살아난 사람도 — 찬종 "모든 사람을 대상으로") · 재투표는 동률자만
+  const allowed = r.phase === 'revote' && r.candidates ? r.candidates : r.participants;
   if (!allowed.includes(target)) return 'bad';
   r.votes.set(accountId, target);
   // 접속자 전원이 냈으면 바로 집계
@@ -362,7 +394,10 @@ export function liarGuess(room: Room, accountId: string, text: string): LiarInpu
 // ─────────────────────────────────────────────────────────────────────────────
 function startVote(room: Room, r: LiarRound, now: number, stage: 'vote' | 'revote'): void {
   r.votes = new Map();
-  if (stage === 'vote') r.candidates = null;
+  if (stage === 'vote') {
+    r.candidates = null;
+    r.revotes = 0;
+  }
   setPhase(r, stage, now, stage === 'vote' ? T.VOTE_MS : T.REVOTE_MS);
 }
 
@@ -371,38 +406,49 @@ function endVote(room: Room, r: LiarRound, now: number): void {
   const t = tallyVotes(r.votes);
   const votes = Object.fromEntries(r.votes);
   r.lastTally = { stage, votes, counts: Object.fromEntries(t.counts), top: t.top };
-  r.voteLog.push({ stage, accusedNo: r.accusedTried.length + 1, votes, result: t.top.length === 1 ? t.top[0]! : null });
+  r.voteLog.push({ stage, accusedNo: r.accusedTried.length + 1, bout: r.bout, votes, result: t.top.length === 1 ? t.top[0]! : null });
+  r.accused = null;
   if (t.top.length === 1) {
     r.accused = t.top[0]!;
     r.accuseVotes = new Map(r.votes);
-    setPhase(r, 'tally', now, T.TALLY_MS);
-  } else if (t.top.length > 1 && stage === 'vote') {
-    // 동률 → 동률자끼리 재투표 1회(공개를 잠깐 보여 준 뒤)
-    r.candidates = t.top;
-    r.accused = null;
-    setPhase(r, 'tally', now, T.TALLY_MS);
-  } else {
-    // 또 동률 · 표 없음 → 못 찾음
-    r.accused = null;
     r.candidates = null;
-    r.outcome = 'notfound';
-    setPhase(r, 'tally', now, T.TALLY_MS);
+  } else if (t.top.length > 1 && r.revotes < T.REVOTES) {
+    // 동률 → 동률자끼리 재투표(바퀴 안 REVOTES 번까지 · 공개를 잠깐 보여 준 뒤)
+    r.candidates = t.top;
+    r.revotes += 1;
+  } else {
+    // 그래도 동률 · 표 없음 → 이 바퀴는 못 정함(다음 바퀴 · 마지막 바퀴면 못 찾음)
+    r.candidates = null;
   }
+  setPhase(r, 'tally', now, T.TALLY_MS);
+  broadcast(room);
+}
+
+/** ★ R087 — 다음 바퀴(전원 대상 다시 투표) · 바퀴를 다 돌았으면 못 찾음 */
+function nextBout(room: Room, r: LiarRound, now: number): void {
+  if (r.bout >= T.VOTE_BOUTS) {
+    r.outcome = 'notfound';
+    endRound(room, r, now);
+    return;
+  }
+  r.bout += 1;
+  r.accused = null;
+  startVote(room, r, now, 'vote');
   broadcast(room);
 }
 
 function afterTally(room: Room, r: LiarRound, now: number): void {
-  if (r.outcome === 'notfound') {
-    endRound(room, r, now);
-    return;
-  }
   if (r.accused) {
-    setPhase(r, 'defense', now, T.SAY_MS);
+    setPhase(r, 'defense', now, T.DEFENSE_MS);
     broadcast(room);
     return;
   }
-  startVote(room, r, now, 'revote');
-  broadcast(room);
+  if (r.candidates) {
+    startVote(room, r, now, 'revote');
+    broadcast(room);
+    return;
+  }
+  nextBout(room, r, now);
 }
 
 function startFinal(room: Room, r: LiarRound, now: number): void {
@@ -414,9 +460,10 @@ function startFinal(room: Room, r: LiarRound, now: number): void {
 function endFinal(room: Room, r: LiarRound, now: number): void {
   const eligible = live(room, r.participants).filter((a) => a !== r.accused).length;
   const yes = [...r.finalVotes.values()].filter(Boolean).length;
-  const passed = finalPasses(yes, eligible);
-  r.lastFinal = { yes, no: r.finalVotes.size - yes, eligible, passed };
-  r.voteLog.push({ stage: 'final', accusedNo: r.accusedTried.length + 1, votes: Object.fromEntries(r.finalVotes), result: passed ? 'yes' : 'no' });
+  const no = r.finalVotes.size - yes;
+  const passed = finalPasses(yes, no);
+  r.lastFinal = { yes, no, eligible, passed };
+  r.voteLog.push({ stage: 'final', accusedNo: r.accusedTried.length + 1, bout: r.bout, votes: Object.fromEntries(r.finalVotes), result: passed ? 'yes' : 'no' });
   const accused = r.accused!;
   r.accusedTried.push(accused);
   if (passed) {
@@ -426,19 +473,13 @@ function endFinal(room: Room, r: LiarRound, now: number): void {
       broadcast(room);
       return;
     }
+    // ★ 시민을 죽임 → 라이어 승(기본 라이어 게임 규칙 — D-344 설계 판단)
     r.outcome = 'escaped';
     endRound(room, r, now);
     return;
   }
-  // 부결 → 다시 지목(이미 지목된 사람 빼고) · 최대 횟수까지
-  if (r.accusedTried.length < T.MAX_ACCUSE && r.participants.filter((a) => !r.accusedTried.includes(a)).length >= 2) {
-    r.accused = null;
-    startVote(room, r, now, 'vote');
-    broadcast(room);
-    return;
-  }
-  r.outcome = 'notfound';
-  endRound(room, r, now);
+  // 살림 → 다음 바퀴(전원 대상)
+  nextBout(room, r, now);
 }
 
 function endRound(room: Room, r: LiarRound, now: number): void {
@@ -510,7 +551,7 @@ export function checkLiar(room: Room, now: number): void {
     case 'defense': {
       // 시간 지남 — "(…)" 로 넘어감
       const who = r.phase === 'describe' ? r.order[r.turn] : r.accused;
-      if (who) r.says.push({ accountId: who, text: '(…)', auto: true });
+      if (who) r.says.push({ accountId: who, text: '(…)', auto: true, kind: r.phase === 'defense' ? 'defense' : 'say', bout: r.bout });
       advanceSay(room, r, now);
       return;
     }

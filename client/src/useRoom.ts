@@ -117,7 +117,10 @@ export interface LiarView {
   participants: string[];
   order: string[];
   turn: string | null;
-  says: { accountId: string; text: string; auto: boolean }[];
+  /** ★ R087 — kind: 설명(say) · 변론(defense) · bout: 몇 바퀴째 */
+  says: { accountId: string; text: string; auto: boolean; kind: 'say' | 'defense'; bout: number }[];
+  bout: number;
+  bouts: number;
   myVote: string | null;
   votedCount: number;
   candidates: string[] | null;

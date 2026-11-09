@@ -97,7 +97,7 @@ import { emojiIdOfChar, isEmojiId, isSpecialEmoji, ownedEmojiIds, ownedEmojiIdsC
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
-import { liarChatGate, liarFinal, liarGuess, liarVote } from '../liar/engine.js';
+import { liarChatGate, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
 import { drawChatGate, drawClear, drawReroll, drawStroke } from '../draw/engine.js';
 import {
   on,
@@ -1047,6 +1047,22 @@ function registerRoomHandlers(socket: Socket): void {
       },
     },
     ({ socket: s, room, session, payload }) => liarReply(s, liarGuess(room, session.accountId, payload.text)),
+  );
+  // ★ R087 (D-344) — 설명칸: 설명 · 변론(차례인 사람만) — 거부는 liar.chatRejected 로 본인에게만(채팅과 같은 알림 자리)
+  onRoom<{ text: string }>(
+    socket,
+    'liar.say',
+    {
+      allowedStates: ['LIAR'],
+      parse: (raw) => {
+        const text = parseString(parseObject(raw)?.text, 1, 200);
+        return text === null ? null : { text: text.normalize('NFC') };
+      },
+    },
+    ({ socket: s, room, session, payload }) => {
+      const gate = liarSay(room, session.accountId, payload.text);
+      if (!gate.ok) s.emit('liar.chatRejected', { reason: gate.reason, message: gate.message });
+    },
   );
 
   // ── ★★★ R083 — 캐치마인드 입력(출제자만): 선 조각 · 전체 지우기 · 다른 제시어. 이상하거나 때가 아니면 조용히(draw.rejected — 본인에게만)

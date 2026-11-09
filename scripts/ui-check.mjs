@@ -418,6 +418,7 @@ class Page extends Cdp {
       ArrowRight: 39,
       ArrowDown: 40,
       Enter: 13,
+      Tab: 9,
       F2: 113,
       F4: 115,
       F8: 119,
@@ -5110,20 +5111,23 @@ async function r082Flow(browser) {
       const v = p.liar;
       sv.set(s, v);
       if (!v) return;
-      const k = `${v.round}:${v.phase}:${v.turn}:${v.accusedTried.length}:${(v.candidates ?? []).join()}`;
+      const k = `${v.round}:${v.phase}:${v.phaseStartedAt}:${v.turn}`;
       if (did.has(k)) return;
       did.add(k);
       setTimeout(() => {
-        if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === s.__id) s.emit('chat.send', { text: v.phase === 'defense' ? '아니라니까요' : '음 그거요', epoch: null });
+        // ★ R087 — 설명 · 변론은 설명칸(liar.say) · 투표는 바퀴마다 전원 대상
+        if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === s.__id) s.emit('liar.say', { text: v.phase === 'defense' ? '아니라니까요' : '음 그거요' });
         else if (v.phase === 'vote' || v.phase === 'revote') {
-          const pool = (v.phase === 'revote' && v.candidates ? v.candidates : v.participants.filter((a) => !v.accusedTried.includes(a))).filter((a) => a !== s.__id);
+          const pool = (v.phase === 'revote' && v.candidates ? v.candidates : v.participants).filter((a) => a !== s.__id);
           if (pool.length) s.emit('liar.vote', { target: pool[0] });
         } else if (v.phase === 'final' && v.accused !== s.__id) s.emit('liar.final', { yes: true });
         else if (v.phase === 'guess' && v.amLiar) s.emit('liar.guess', { text: '모르겠다' });
       }, 600);
     });
   }
-  const say = (P, text) => P.setInput('.chat-card input', text).then(() => P.click('전송'));
+  const chat = (P, text) => P.setInput('.chat-card input', text).then(() => P.click('전송'));
+  // ★ R087 — 설명 · 변론은 설명칸
+  const say = (P, text) => P.setInput('[data-liar-say-input]', text).then(() => P.evaluate("document.querySelector('[data-liar-say-form]')?.requestSubmit()"));
 
   // ── 설정 — 방식 라이어
   await realClick(H, 'button[data-mode="liar"]');
@@ -5158,14 +5162,23 @@ async function r082Flow(browser) {
     if (phase === 'describe') {
       const hTurn = await H.evaluate("!!document.querySelector('.liar-order li.me.turn')");
       const gTurn = await G.evaluate("!!document.querySelector('.liar-order li.me.turn')");
-      if (round === 1 && !res.notice && !gTurn) {
-        await say(G, '내가 먼저');
-        await sleep(400);
+      if (round === 1 && res.notice === null && !gTurn) {
+        res.gSayInput = await G.evaluate("!!document.querySelector('[data-liar-say-input]') && !document.querySelector('.liar-order li.me.turn')");
+        await chat(G, '내가 먼저 채팅');
+        await sleep(500);
         res.notice = await G.evaluate("document.querySelector('[data-liar-notice]')?.innerText ?? ''");
-        await snap(G, 'describe-notice-m360');
+        res.chatShown = await H.evaluate("document.querySelector('.chat-card')?.innerText.includes('내가 먼저 채팅') ?? false");
+        await snap(G, 'describe-chat-m360');
+      }
+      if (round === 1 && !res.stageLine && (await H.evaluate("!!document.querySelector('[data-liar-stage-text]')"))) {
+        res.stageLine = await H.evaluate("document.querySelector('[data-liar-stage-text]')?.innerText ?? ''");
+        await snap(H, 'describe-stage-line-pc');
       }
       if (hTurn) {
-        if (round === 1) await snap(H, 'describe-myturn-pc');
+        if (round === 1) {
+          res.hSayInput = await H.evaluate("!!document.querySelector('[data-liar-say-input]')");
+          await snap(H, 'describe-myturn-pc');
+        }
         await say(H, '자주 먹어요');
       } else if (gTurn) await say(G, '좋아해요');
     }
@@ -5191,11 +5204,25 @@ async function r082Flow(browser) {
       await sleep(200);
       res.tally = await H.evaluate("document.querySelectorAll('[data-liar-tally] li').length");
       await snap(H, 'tally-pc');
+      // ★ R087 — 설명 기록 패널: Tab 으로 펼침 · 다시 Tab 으로 접음
+      await H.evaluate('document.activeElement?.blur()');
+      await H.key('Tab');
+      await sleep(250);
+      res.log = { open: await H.evaluate("document.querySelector('[data-liar-log]')?.dataset.liarLog ?? ''"), n: await H.evaluate("document.querySelectorAll('[data-liar-log-list] li').length") };
+      await snap(H, 'log-open-pc');
+      await tapOn(G, '[data-liar-log-toggle]').catch(() => {});
+      await sleep(250);
+      res.logG = await G.evaluate("document.querySelector('[data-liar-log]')?.dataset.liarLog ?? ''");
+      await snap(G, 'log-open-m360');
+      await H.key('Tab');
+      await sleep(200);
+      res.log.closed = await H.evaluate("document.querySelector('[data-liar-log]')?.dataset.liarLog ?? ''");
     }
     if (phase === 'defense') {
       if (!res.defenseShot) {
         res.defenseShot = true;
         await snap(H, 'defense-pc');
+        await snap(G, 'defense-m360');
       }
       const hTurn = await H.evaluate("!!document.querySelector('.liar-order li.me.turn')");
       const gTurn = await G.evaluate("!!document.querySelector('.liar-order li.me.turn')");
@@ -5205,7 +5232,7 @@ async function r082Flow(browser) {
     if (phase === 'final') {
       await sleep(200);
       if (!res.final) {
-        res.final = { btns: await H.evaluate("document.querySelectorAll('[data-liar-final] button').length"), gBtns: await G.evaluate("document.querySelectorAll('[data-liar-final] button').length") };
+        res.final = { btns: await H.evaluate("document.querySelectorAll('[data-liar-final] button').length"), gBtns: await G.evaluate("document.querySelectorAll('[data-liar-final] button').length"), labels: (await H.evaluate("[...document.querySelectorAll('[data-liar-final] button')].map((b) => b.innerText.trim()).join(',')")) || (await G.evaluate("[...document.querySelectorAll('[data-liar-final] button')].map((b) => b.innerText.trim()).join(',')")), stage: await H.evaluate("document.querySelector('[data-liar-stage-line]')?.dataset.liarStageLine ?? ''") };
         await snap(H, 'final-pc');
         await snap(G, 'final-m360');
       }
@@ -5260,9 +5287,10 @@ async function r082Flow(browser) {
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082', 'r082.json'), JSON.stringify(rows, null, 1));
   record('★★★ R082 설정 — 방식 세 버튼(라이어 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김 · 라운드 2', ['quiz,minigame,liar*', 'quiz,minigame,liar*,draw'].includes(setting.modes) && setting.note && !setting.quizRows && setting.team === true && setting.rounds === '2', JSON.stringify(setting));
   record('★★★ R082 배정 — 주제 · 내 카드(시민 = 키워드 / 라이어 = 카드) · m360 넘침 0', res.assign && res.assign.topic && (res.assign.me === 'liar' ? res.assign.kw === null : !!res.assign.kw) && res.assignG?.me && res.assignG.over <= 1, JSON.stringify({ a: res.assign, g: res.assignG }));
-  record('★★ R082 설명 — 차례 아닌 채팅은 알림 "○○ 님 차례예요"', /차례예요/.test(res.notice ?? ''), res.notice ?? '');
+  record('★★★ R087 설명칸 분리 — 차례 아닌 채팅은 그대로 채팅(알림 없음 · 설명칸 없음) · 내 차례에만 설명칸 · 큰 줄에 설명', res.notice === '' && res.chatShown === true && res.gSayInput === false && res.hSayInput !== false && !!res.stageLine, JSON.stringify({ n: res.notice, c: res.chatShown, g: res.gSayInput, h: res.hSayInput, line: res.stageLine }));
+  record('★★★ R087 설명 기록 — Tab 펼침(기록 4+) · 다시 Tab 접힘 · 폰 버튼 펼침', res.log?.open === 'open' && res.log.n >= 4 && res.log.closed === 'closed' && res.logG === 'open', JSON.stringify({ l: res.log, g: res.logG }));
   record('★★★ R082 투표 — 사람 카드 3(나 빼고) · m360 3 · 고른 카드 표시', res.vote?.n === 3 && res.vote.gN === 3 && res.vote.gOver <= 1 && !!res.picked, JSON.stringify({ v: res.vote, p: res.picked }));
-  record('★★ R082 집계 · 찬반 버튼(지목된 사람 아니면 둘)', (res.tally ?? 0) >= 3 && res.final !== null, JSON.stringify({ t: res.tally, f: res.final }));
+  record('★★ R082 집계 · 죽일까 버튼(지목된 사람 아니면 둘 · 죽인다 · 살린다) · 변론 큰 줄', (res.tally ?? 0) >= 3 && res.final !== null && /죽인다/.test(res.final.labels ?? '') && res.final.stage === 'defense', JSON.stringify({ t: res.tally, f: res.final }));
   record('★★★ R082 공개 2라운드 — 라이어 · 키워드 · 결과 · 결과 화면', res.reveal.length === 2 && res.reveal.every((x) => x.outcome && /라이어는/.test(x.text)) && result.rows === 4, JSON.stringify({ r: res.reveal, result }));
   for (const s of socks) s.close();
   H.close();
