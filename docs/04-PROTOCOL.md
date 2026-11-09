@@ -1064,6 +1064,8 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `draw.state` (S→C · 사람마다) | `{ state, draw: DrawView \| null }` — round · rounds · phase(draw · reveal) · phaseStartedAt/EndsAt · topic · nameKo · keyword(출제자 · 공개 뒤만) · drawer · amDrawer · spectating · participants · solved[{accountId, ms}] · mySolved · canReroll · strokes[{id, color, width, pts}] · scores(공개 때). 스냅샷 `draw` 같은 꼴(늦게 들어온 사람은 선 전부) |
 | `draw.stroke` (C→S 출제자 · S→C 전원) | C→S `{ id, color('#111111' \| '#e5383b' \| '#2563eb' \| '#16a34a' \| 'erase'), width(1~60), pts: [x, y, …] 0~1000 정수 · 조각 ≤ 400점 }` — 같은 id 는 이어 붙임 · S→C `{ round, id, color, width, pts(이번 조각) }` |
 | `draw.clear` · `draw.reroll` (C→S 출제자) | `{}` — 지우기 → S→C `draw.clear { round }` · 다른 제시어(10초 · 선 없음 · 1회) → `draw.state` |
+| ★ R087 `draw.hint` (C→S 출제자) | `{ kind: 'length' \| 'initial' \| 'topic' }` — draw 단계 · 각 1회 → 시스템 줄 + `draw.state`(hints) · 다시 · 출제자 아님 → `draw.rejected` |
+| ★ R087 `DrawView` 바뀜 | `topic` · `nameKo` 는 **출제자 · [주제] 힌트 뒤 · 공개 뒤에만**(그 밖은 null) · `hints { length?: '○○ ○○○ · 5글자(띄어쓰기 있음)', initial?: 'ㄱ', topic?: 세트 이름 }` · `hintsLeft`(출제자만 · 남은 힌트) · 조각 간격 `CHUNK_MS` 200 → 50 |
 | `chat.send` (DRAW) | 맞힌 정답은 채팅으로 안 나가고 시스템 줄 · 출제자 키워드 · 글자 수 힌트 / 맞힌 사람 · 구경꾼 키워드 → 본인에게 `draw.chatRejected { reason: 'keyword' \| 'length_hint', message }` |
 | 거름 | 출제자 아님 · 때 아님 · 이상한 점 → 본인에게 `draw.rejected { reason }` |
 
@@ -1080,6 +1082,9 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `liar.vote` (C→S) | `{ target }` — vote/revote 때 · 자기 · 지목됐던 사람 · 후보 밖 거름 |
 | `liar.final` (C→S) | `{ yes: boolean }` — final 때 · 지목된 사람 거름 |
 | `liar.guess` (C→S) | `{ text }` — guess 때 · 라이어만 · 한 번 |
+| ★★ R087 `liar.say` (C→S) | `{ text }` — **설명칸**: describe(차례인 사람) · defense(지목된 사람) · 60자 · 키워드 거부 → 기록(`says[{accountId, text, auto, kind: 'say' \| 'defense', bout}]`) · 다음으로 / 거부는 본인에게 `liar.chatRejected { reason: 'not_turn' \| 'keyword' \| 'too_long' \| 'not_now' }` |
+| ★★ R087 `chat.send` (LIAR) 바뀜 | 차례와 **무관하게** 누구나 · 기록 안 됨 · 키워드 담은 글만 거부(공개 전) |
+| ★★ R087 `LiarView` 더함 · 투표 | `bout` · `bouts`(LIAR.VOTE_BOUTS 3) · vote 후보 = 전원(자기 빼고 — 지목됐던 사람도) · revote = 동률자(바퀴 안 REVOTES 2번) · `lastFinal{yes(죽인다), no(살린다), …, passed: yes > no}` · `liar.final { yes }` 의 뜻 = 죽인다 · liar_rounds.votes 각 기록에 `bout` |
 | 거름 | 때가 아니거나 이상한 값 → 본인에게 `liar.rejected { reason }`(오류 창 없음) |
 | `host.forceEnd` | LIAR 에서도 됨 |
 
