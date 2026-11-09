@@ -8237,7 +8237,7 @@ async function mgOrderBingo(bots, host) {
   const exp = await withDb(async (c) =>
     (await c.query(`SELECT e.minigame_key k, e.item_key i FROM minigame_item_experiences e JOIN accounts a ON a.id = e.account_id WHERE a.login_id = $1 AND e.item_key = ANY($2) GROUP BY 1, 2 ORDER BY 1, 2`, [b1.loginId, [...seen.order, seen.bingoTopic].map((t) => `topic:${t}`)])).rows,
   );
-  expect('★★ 경험 — order 3 · bingo 1(topic:<slug>)', [exp.filter((r) => r.k === 'order' && seen.order.some((t) => r.i === `topic:${t}`)).length, exp.filter((r) => r.k === 'bingo').map((r) => r.i)], [3, [`topic:${seen.bingoTopic}`]]); // ★ R085 — 빙고 주제를 예전 판에서 순서대로로도 봤으면 order 행이 하나 더(옛 run) → 이 판의 순서대로 주제만 센다
+  expect('★★ 경험 — order 3 · bingo 1(topic:<slug>)', [exp.filter((r) => r.k === 'order' && seen.order.some((t) => r.i === `topic:${t}`)).length, exp.filter((r) => r.k === 'bingo' && r.i === `topic:${seen.bingoTopic}`).map((r) => r.i)], [3, [`topic:${seen.bingoTopic}`]]); // ★ R089 — 빙고도 이 판 주제만(예전 판에서 빙고로 본 주제가 이번 순서대로 주제와 겹치면 행이 하나 더) // ★ R085 — 빙고 주제를 예전 판에서 순서대로로도 봤으면 order 행이 하나 더(옛 run) → 이 판의 순서대로 주제만 센다
   for (const b of bots) {
     b.onMinigame = null;
     b.socket.off('minigame.feedback', fbOn.get(b));
