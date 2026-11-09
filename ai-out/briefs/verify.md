@@ -2,10 +2,10 @@
 TASK: 찬종 2026-11-09 — 라이어 제시어를 외부 목록(toz)과 우리 open 세트를 씨앗으로 **다시 만들었다**(G047 · 주제 15 · 각 40~60 · 항목마다 바보형 `fool` 2~3 · `era` · `sub` · `diff`). 라이어 게임은 두 모드가 생긴다 — 기본형(라이어는 주제만) · **바보형**(라이어에게 정답 아닌 비슷한 단어 · 라이어라는 사실도 안 알려 줌). 찬종의 걱정 그대로: **"호날두를 받았는데 정답이 메시일 수 있겠다 싶으면 라이어가 바로 눈치챈다"** — fool 이 너무 가까우면 안 되고(1:1 짝) 너무 멀면(다른 종목) 한마디에 들킨다. 이 라운드의 핵심은 **fool 거리 판정**이다. 생성자(GEN)의 자기 판정은 1차 점검일 뿐(16 0장).
 실행 모델: Sonnet 5.5 (`claude --model claude-sonnet-5-5` — 바꾸지 않는다)
 
-■ 고정 규칙: docs/16 5-3 그대로 + 예외(V039 꼴): 15 파일의 **`verify` 칸과 `status`** 만(앞 verify 는 history · items 는 안 바꿈 · 들여쓰기 그대로 · 쓴 뒤 `node scripts/topics-check.mjs` 막힘 0). 13 **C112** · **CV-174**(fixes 묶음 → G049) · **CV-175**(규칙 후보 — fool 거리 기준 다듬기 · era 경계 · 2026 센스 단어의 수명) · README V · 05 · 06. 조각 `audit/v044-raw/`. DB 없음 · 웹 ≤ 30(인지도 의심 항목 · 인물 논란 확인).
+■ 고정 규칙: docs/16 5-3 그대로 + 예외(V039 꼴): `liar-*.json` 15 파일의 **`verify` 칸과 `status`** 만(앞 verify 는 history · items 는 안 바꿈 · 들여쓰기 그대로 · 쓴 뒤 `node scripts/topics-check.mjs` 막힘 0). 13 **C112** · **CV-174**(fixes 묶음 → G049) · **CV-175**(규칙 후보 — fool 거리 기준 다듬기 · era 경계 · 2026 센스 단어의 수명) · README V · 05 · 06. 조각 `audit/v044-raw/`. DB 없음 · 웹 ≤ 30(인지도 의심 항목 · 인물 논란 확인).
 ■ 동시 라운드 — GEN **G048**(`draw-*.json` 새 파일 · proverb/idiom4 삭제 — 라이어 15 파일은 안 건드림) · MAIN 다음 라운드(코드) → 겹침 없음. 문서 분담: V044 = 13 C112 · CV-174~175 · README V · 라이어 15 파일 verify/status.
 
-■ 먼저 읽기: `ai-out/G047.txt`(0절 ①~⑤ · 2절 결정 필요 — 연예인 · modern) · docs/18 **§12**(칸 · 기준 ①~④ · fool 규칙) · `audit/g047-dropped.json`(뺀 씨앗 — 아까운 것 복구 제안용) · `audit/g047-raw/seed/seed.json`(씨앗 — 참고) · 15 파일 전부 · docs/15 §2(변형).
+■ 먼저 읽기: `ai-out/G047.txt`(0절 ①~⑤ · 2절 결정 필요 — 연예인 · modern) · docs/18 **§12**(칸 · 기준 ①~④ · fool 규칙) · `audit/g047-dropped.json`(뺀 씨앗 — 아까운 것 복구 제안용) · `audit/g047-raw/seed/seed.json`(씨앗 — 참고) · `liar-*.json` 15 전부(옛 open 파일은 G047 이 삭제 — 없어야 정상) · docs/15 §2(변형).
 
 ■ 판정 틀(항목마다 · 조각 sonnet · 세트당 1 조각 · 동시 2 · 첫 조각(동물 — 뻔한 것)은 VERIFY 가 전부 읽고 기준 맞춤)
  (1) **보편성·era**: 20~50대 한국인 대부분이 아는가(아니면 remove) · `era` 가 맞나(classic 인데 2015 이후 것 · modern 인데 한철 유행 → fix/remove) · 논란 인물(정치 · 사건 · 범죄) → remove.

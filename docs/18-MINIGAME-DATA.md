@@ -256,7 +256,7 @@ data/minigame/ox/items.json       ← 정본(git) · 묶음 파일 규칙 §0
 
 - **씨앗(참고 자료 — 그대로 쓰지 않는다)**: toz-app 라이어 게임 제시어 6 페이지(시민/임포스터 **쌍** 962 · 고유 811 · 영화 · 애니 · 연예인 · 음악 · 스포츠 · 일반 3단계 · 동물 · 음식 · 장소 · 브랜드) · 나무위키 "캐치마인드/문제 목록"(원조 캐치마인드 정답 8,207 · 초성별 · `?` 불확실 · 추상어·인명·상품 섞임 · **CC BY-NC-SA 2.0 KR** — 씨앗 원문은 audit 에만 · 우리 파일에는 고른 단어 + 우리 태그 · DATA_LICENSE 출처 표에 한 줄) · 우리 open 14(G036 · G044) · GEN 지식(2026). 찬종: "단어 목록이라 저작권 개념이 안 맞고 그대로 가져다 쓰지도 않는다" — 쌍 · 분류 · 태그는 우리가 다시 짠다.
 - **파일**: 같은 폴더 `data/minigame/topics/` · `kind: open` · 머리 `liar` / `draw` 중 하나만 true(**라이어 세트와 캐치 세트를 나눈다** — 같은 단어가 양쪽에 있어도 됨 · 경험 기록은 게임별 id).
-  - 라이어 15(slug 그대로 · G047 재편): movie-drama · character · celebrity(새) · music(새) · sport · animal · food · place · brand(새) · object · vehicle · job · fruit-vegetable · snack-drink · instrument.
+  - 라이어 15(★ **전부 새로** — 찬종 2026-11-09 "기존 db 재활용 X · 새로 생성한 키워드로 전부 교체" · 옛 open 14 는 씨앗으로 읽고 삭제): liar-movie · liar-character · liar-celebrity · liar-music · liar-sport · liar-brand · liar-animal · liar-food · liar-place · liar-object · liar-vehicle · liar-job · liar-fruit · liar-snack · liar-instrument. 옛 id 의 경험 기록은 무효(괜찮음). ★ 교체 사이(G047 뒤 · V044 전)에 메뉴 1 을 돌리면 라이어·캐치 제시어가 0 이 된다 → 메뉴 1 은 G049 뒤.
   - 캐치 `draw-*` 8~10(G048 새): draw-object · draw-animal · draw-food · draw-place · draw-action(동작·상황) · draw-nature · draw-character(캐릭터·인물) · draw-vehicle · draw-job · draw-proverb(속담·사자성어 — G044 proverb/idiom4 흡수).
 - **항목 칸(§9 칸 + 아래 · topics-check ITEM_OK 에 G047 이 더함 · topics-load 는 R087 0034 전까지 모르는 칸을 안 올린다 — checkTopic 통과면 적재는 됨)**:
   | 칸 | 뜻 |

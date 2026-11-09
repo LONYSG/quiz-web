@@ -12,7 +12,7 @@ TASK: 찬종 2026-11-09 — 캐치마인드 단어를 "재탄생" · 결정(subm
 ② **세트(`draw-<theme>` · kind open · 머리 draw true · liar false · nameKo = 힌트로 보이는 주제 이름)** 8~10: `draw-object`(사물 · 300) · `draw-animal`(동물 · 150) · `draw-food`(음식 · 200) · `draw-place`(장소·건물 · 120) · `draw-action`(동작·상황 — 낚시 · 재채기 · 월급날 · 150) · `draw-nature`(자연·날씨 · 80) · `draw-character`(캐릭터·인물 · 200) · `draw-vehicle`(탈것 · 60) · `draw-job`(직업 · 80) · `draw-proverb`(속담·사자성어 · 150 — G044 proverb 80 · idiom4 60 을 여기로 합치고 그릴 수 있는 것만) → 합 ≈ 1,500~1,900. 세트 안 유일 · 세트 사이 같은 단어 X(캐치는 한 풀이라 겹치면 경험이 두 번) — `scripts/g044-topics-cross.mjs` 재사용(draw-* 끼리).
 ③ **칸**: name · variants(**채팅 정답 판정에 쓰임** — 띄어쓰기 · 약칭 · 속담은 앞부분만 치는 꼴 · 정규화가 받는 것은 빼고) · tags(소분류) · diff · draw true · liar false · qid(--fill-qid) · fool 없음 · era 생략 · label(긴 속담의 짧은 꼴 — 선택).
 ④ **씨앗 밖에서 더하기**(2026): 캐릭터(쿠로미 · 잔망루피 · 춘식이 · 펭수 꼴 — 세대 불문에 가까운 것만) · 사물(에어팟 · 전동킥보드 · 배달 오토바이) · 상황(줌 회의 · 셀카) — GEN 판단 · 각 세트 ≤ 15%.
-⑤ proverb.json · idiom4.json **삭제**(candidate · 적재된 적 없음 — draw-proverb 로 흡수 · 흡수한 것은 note 에 "G044 proverb-012 에서").
+⑤ proverb.json · idiom4.json **삭제**(candidate · 적재된 적 없음 — draw-proverb 로 흡수 · 흡수한 것은 note 에 "G044 proverb-012 에서"). ★ 찬종 "전부 교체": draw-* 도 옛 open 세트 단어를 그대로 옮기지 않는다 — 씨앗(나무위키 + 옛 open)에서 같은 기준으로 다시 고른다.
 
 ■ 할 일 (순서대로)
 A. 준비(커밋 없음): 13 마지막(C115 → **C116**) · 07 맨 위 · README G 마지막 G047 · 씨앗 받기 + 파싱(수 8,207 안팎) · proverb 80 · idiom4 60 · topics-check 가 fool 없는 draw 세트를 받는지(G047 ⑥).
