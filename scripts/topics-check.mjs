@@ -11,6 +11,7 @@
 //   --fill-qid : 활성 퀴즈 대표 정답(정규화 일치)으로 qid 를 채워 파일에 쓴다(DB 읽기만)
 //   --json     : 결과를 JSON 으로
 //   ★ G039: 항목 label(선택 · 문자열 · 40자 이하 — 괄호 묶음 · 20자 넘는 name 에 없으면 경고) · verify 칸(있으면 round · verdict)
+//   ★ G047: 항목 칸 fool(2~3 · 1~20자 · name 과 다름) · era(classic|modern) · sub · diff(1|2|3) — 라이어 세트(kind open · 머리 liar true)는 필수(막힘) · 수 40~120 · 1글자 name 막힘(18 §12)
 // 사용: node scripts/topics-check.mjs [files…] [--fill-qid] [--json]
 // =============================================================================
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
@@ -27,7 +28,10 @@ let files = args.filter((a) => !a.startsWith('--'));
 if (!files.length) files = existsSync(DIR) ? readdirSync(DIR).filter((f) => f.endsWith('.json')).sort().map((f) => path.join(DIR, f)) : [];
 
 const HEAD = ['topic', 'nameKo', 'kind', 'version', 'asOf', 'createdRound', 'status', 'source', 'liar', 'draw', 'timeSec', 'tags', 'count', 'items', 'verify'];
-const ITEM_OK = new Set(['id', 'name', 'label', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note']); // ★ G039: label = 화면용 짧은 이름(판정엔 안 씀 · 18 §9 · CV-165 ②)
+const ITEM_OK = new Set(['id', 'name', 'label', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note', 'fool', 'era', 'sub', 'diff']); // ★ G039: label = 화면용 짧은 이름(판정엔 안 씀 · 18 §9 · CV-165 ②) · ★ G047: fool · era · sub · diff(18 §12 제시어 세트)
+const ERA = new Set(['classic', 'modern']);
+/** ★ G047 — 라이어 제시어 세트(kind open · 머리 liar true) = fool · era · sub · diff 필수 · 수 40~120 */
+export const isLiarSet = (t) => t.kind === 'open' && t.liar === true;
 const STATUS = new Set(['candidate', 'verified', 'rejected', 'loaded']);
 const SPECIAL = /[^\p{L}\p{N} .·'\-&:!?]/u; // 변형에 허용: 공백 · 마침표 · 가운뎃점 · 따옴표 · 하이픈 · & · : · ! · ? (판정이 지우거나 정규화가 다룬다)
 const LATIN = /[A-Za-z]/;
@@ -49,7 +53,9 @@ export function checkTopic(t, file) {
   if (!Array.isArray(t.tags)) err.push('tags: []');
   const items = Array.isArray(t.items) ? t.items : [];
   if (t.count !== items.length) err.push(`count ${t.count} ≠ items ${items.length}`);
-  if (t.kind === 'open' && (items.length < 60 || items.length > 120)) err.push(`open 수 ${items.length}(60~120)`);
+  const liarSet = isLiarSet(t);
+  if (t.kind === 'open' && liarSet && (items.length < 40 || items.length > 120)) err.push(`라이어 세트 수 ${items.length}(40~120 — 18 §12)`);
+  if (t.kind === 'open' && !liarSet && (items.length < 60 || items.length > 120)) err.push(`open 수 ${items.length}(60~120)`);
   if (t.kind === 'closed' && (items.length < 20 || items.length > 400)) warn.push(`closed 수 ${items.length}(기준 50~250 · 공식 목록 전부가 원칙)`);
   const byName = new Map(); const byVar = new Map();
   let lastNum = 0;
@@ -67,6 +73,21 @@ export function checkTopic(t, file) {
     for (const k of ['draw', 'liar']) if (typeof it[k] !== 'boolean') err.push(`${it.id}: ${k} boolean`);
     if (!(it.qid === null || Number.isInteger(it.qid))) err.push(`${it.id}: qid null|정수`);
     if ('year' in it && !Number.isInteger(it.year)) err.push(`${it.id}: year 정수`);
+    // ★ G047 — 제시어 칸(18 §12): 라이어 세트는 필수 · 다른 세트는 있으면 꼴만
+    if (liarSet || 'fool' in it) {
+      const f = it.fool;
+      if (!Array.isArray(f) || f.length < 2 || f.length > 3) err.push(`${it.id}: fool 2~3 개 배열`);
+      else for (const w of f) {
+        if (typeof w !== 'string' || !w.trim() || [...w].length > 20) err.push(`${it.id}: fool 단어 1~20자 '${w}'`);
+        else if (canon(w) === canon(it.name)) err.push(`${it.id}: fool 이 name 과 같음 '${w}'`);
+        else if (SPECIAL.test(w)) err.push(`${it.id}: fool 특수문자 '${w}'`);
+      }
+      if (Array.isArray(f) && new Set(f.map(canon)).size !== f.length) err.push(`${it.id}: fool 겹침`);
+    }
+    if (liarSet || 'era' in it) { if (!ERA.has(it.era)) err.push(`${it.id}: era classic|modern`); }
+    if (liarSet || 'sub' in it) { if (typeof it.sub !== 'string' || !it.sub.trim()) err.push(`${it.id}: sub 문자열`); }
+    if (liarSet || 'diff' in it) { if (![1, 2, 3].includes(it.diff)) err.push(`${it.id}: diff 1|2|3`); }
+    if ([...String(it.name ?? '')].length < 2 && (liarSet || 'fool' in it)) err.push(`${it.id}: 1글자 name(18 §12)`);
     if ('label' in it && (typeof it.label !== 'string' || !it.label.trim() || [...it.label].length > 40)) err.push(`${it.id}: label 문자열 · 빈칸 아님 · 40자 이하`);
     if (/[(（]/.test(it.name ?? '') && !('label' in it) || [...(it.name ?? '')].length > 20 && !('label' in it)) warn.push(`${it.id}: label 없음(괄호 묶음 · 20자 넘는 name — CV-165 ②)`);
     const n = canon(it.name);
