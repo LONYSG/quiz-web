@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-09 — V041 · V042 fixes 기계 적용 (G043, GEN · 파일만 · DB 쓰기 없음)
+- **무엇을**: gen.md — 노래 fix 14 · OX fix 16 · us-state 변형 중복 1 을 파일에 그대로 적용 → verified(18 §0 verified 전환 규칙 첫 적용).
+- **어떻게**: scripts/g043-song-fix.mjs(dry-run → --apply) — iTunes lookup 한 번(12 id) 으로 itunes{} 갱신 · year · 변형 · verified 항목은 영문 번역 제목 빼기만 · OX proposal 칸 그대로 · 웹 3(KTX · 에펠탑 · 하늘과 바람과 별과 시).
+- **문제**: 처음 쓰기가 들여쓰기 2칸이라 파일 전체가 바뀜 → 1칸으로 다시 · version 을 올렸더니 minigame-load 가 형식 거부(version 1 만) → 되돌림 · ox-0007 편수 출처 엇갈림.
+- **결정**: DG-081 · ox-0007 해설 편수 뺌(GEN 판단).
+- **검증**: song-check · ox-check --db · topics-check · hint-check-active 막힘 0 · HEAD 14/14 = 200 · minigame-load dry-run 노래 292 · OX 400.
+- **남은 것**: chart.rank 14 · 가수 한글 보탬 90 · 0255 · 0159 · 0006 대체(설계 몫).
+
 ## 2026-11-09 — OX 10연속 (R085, MAIN · D-342 · 실 DB 쓰기 0)
 - **무엇**: OX 10연속(ox) — G041 400 문장(V042 verified 384)을 minigame_items 로 적재 · 문장 10 · O/X · 5초.
 - **왜**: 찬종 2026-11-08 ⑴ "OX 퀴즈 — 문장은 새로 생성" · 18 §11 게임 규칙 줄(설계).

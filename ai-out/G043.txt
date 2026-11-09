@@ -1,0 +1,45 @@
+G043 — V041 · V042 fixes 기계 적용 (GEN · Opus 5.5 · 2026-11-09 · 파일만 · DB 쓰기 없음 · DG-081 · C109)
+
+0. ★ 찬종이 볼 것
+ ① 노래 14 → verified (id · 무엇 · 전 → 후)
+    song-0009 내 사람(SG워너비)         리믹스   trackId 1680169199 「내사람 (Ivy Mix)」 → 1647285582 「Partner for Life」(The 3rd Masterpiece 2006-04-11)
+    song-0011 여인의 향기(씨야)          리믹스   1680169198 Ivy Mix → 1656854205 「Scent of a Woman」(2006-02-22) · 제목 변형 + Scent of a Woman
+    song-0015 그 남자 그 여자(바이브)    연도     year 2004 → 2006
+    song-0027 Love(브라운아이드걸스)     다른 곡  1804698947 「Must Have Love」 → 365430197 「Love」(With L.O.V.E · 2008-01-17) · year 2006 → 2008 · 변형 Must Have Love 뺌
+    song-0053 UGLY(2NE1)                 언어판   463402690 JP Ver. → 1338689928 「Ugly」(2nd Mini · 2011-07-28) · 가수 변형 + 투애니원
+    song-0120 오늘도 빛나는 너에게(마크툽) 표기  1613184171 「(2022)」 → 1649505183 「To You My Light」(2019-06-09 — lookup 으로 원곡 날짜 확인)
+    song-0174 그댄 봄비를 무척 좋아하나요 연주판 6774395305 (경음악) → 1619946631 노래 판(1990 모음 · year 1985 그대로)
+    song-0184 핑계(김건모)               리마스터 1740291720 2024 Remaster → 1728633018 「Excuses」(1993-10-01)
+    song-0188 잘못된 만남(김건모)        리마스터 1740282099 → 1728627771 「Wrongful Meeting」(1995-01-24)
+    song-0200 아틀란티스 소녀(보아)      리믹스   1061504693 Just Fiction 2003 Mix → 1061503105 3집 원곡 · 제목 변형 + Atlantis Princess
+    song-0228 Time to Say Goodbye        연도     year 1995 → 1996 · 가수 변형 + 안드레아 보첼리 · Sarah Brightman · 사라 브라이트만
+    song-0238 I Knew I Loved You         리믹스   456816098 7" Mini Me Mix → 157390097(Affirmation 1999-09-28) · + 세비지 가든
+    song-0240 Because of You(니요)       리믹스   1445287555 Josh Harris Radio Edit → 1440757476(2007-03-27) · + 니요
+    song-0243 Poker Face(레이디 가가)    리믹스   1444310131 Glam As You Radio Mix → 1440818665(The Fame 2008-08-19) · + 레이디 가가
+    + verified 64곡: "실제로 안 치는 영문 번역 제목" 변형 64개 뺌(status 그대로 · fix 6 과 합쳐 V041 목록 70 전부).
+    rejected 1(song-0006 세글자) 그대로.
+ ② OX 16 → verified (proposal 그대로)
+    해설   ox-0007 하늘과 바람과 별과 시 — 해설 "유작 30편" → "1948년 정음사에서 펴낸 유고 시집이다."(★ GEN 판단 — 아래 1)
+           ox-0158 벤츠 — 해설 "1월 특허" → "1월 출원 · 11월 특허(DRP 37435)"
+    문장   ox-0145 2 = 유일한 짝수 소수(어순 다듬음) · ox-0150 1바이트 "기본 단위" → "저장 용량을 셀 때 흔히 쓰는 단위"
+    거의 맞는 거짓  ox-0213 서태지와 아이들 1972 → 2002 · ox-0219 전국노래자랑 1950 → 2010
+    너무 쉬운 함정  ox-0335 커피 원산지 스칸디나비아 → 브라질 · ox-0336 공룡 6,600년 → 6억 6천만 년 · ox-0348 맥박 700 → 200
+                    · ox-0360 KTX 3,000km → 600 · ox-0371 에펠탑 3,000m → 1,000 · ox-0291 사계 "이탈리아 … 바흐" → "독일 … 바흐"
+                    · ox-0292 쇼팽 트럼펫 → 첼로 · ox-0309 카르멘 40막 → 10막 · ox-0380 베이브 루스 1990년대 → 1927년 홈런 25개 · ox-0236 저커버그 → 발머
+ ③ ★ 다음 메뉴 1 때 적재되는 수 — **노래 292 · OX 400**(minigame-load dry-run 확인 · 지금 실 DB 는 278 · 384).
+    us-state: 006 매사추세츠주 변형 중복 1개 뺌 · version 2 · verified 그대로(topics 적재 때 같이).
+ ④ HEAD: 새 previewUrl 14/14 = 200(audio/x-m4p · 1.5초 간격 · UA quiz-web-g043/1.0).
+
+1. 원칙 7 · 확인한 것
+ - fix 수: 노래 14 · OX 16 · us-state 1 = 브리프와 같음. rejected 1 = song-0006. proposal 꼴: 노래 {trackId · trackName · collectionName · releaseDate · year? · lookup} / OX {statement · explanation · answer? · trap?}.
+ - 13 마지막 C108 → C109 · 07 맨 위 D-342(그 위에 DG-081) · ai-out/README G 마지막 G042 → G043.
+ - 동시 라운드: MAIN R086 · VERIFY V043 — G043 은 song · ox items 와 topics/us-state.json 만 썼다(파일 쓰기는 각 한 번). v043-raw/ 는 V043 것(손대지 않음).
+ - 웹 4: iTunes lookup 1(12 id 한 번) · en.wiki KTX(영업 305 km/h → 600 은 2배) · en.wiki Eiffel Tower(300 m → 1,000 은 자릿수) · ko.wiki 하늘과 바람과 별과 시("유작 30편" — V042 보도 31편과 엇갈림). 맥박(60~100 → 200 = 2배)은 V042 출처 그대로.
+ - ★ GEN 판단 (되돌리기 쉽다): ① ox-0007 해설 편수는 출처끼리 엇갈려 V042 가 함께 적은 "편수 없이" 쪽으로 · ② ox-0380 은 함정 축이 시대 → 숫자로 바뀌어 factClaim 을 "베이브 루스 1927년 한 시즌 홈런 60개" 로 맞춤.
+ - version: 노래 · OX 파일 version 은 파일 형식 번호(minigame-load 가 1 만 받음) — 처음에 올렸다가 dry-run 에서 형식 거부를 보고 되돌림. asOf 만 2026-11-09.
+ - 검사: song-check 막힘 0(경고 4 — 모음집 판 연도 3 · 0174 새 판 1990 ↔ 원곡 1985) · ox-check --db 막힘 0(경고 1 — ox-0265 그 전부터) · topics-check 막힘 0 · hint-check-active 막힘 0 · minigame-load dry-run 노래 292 · OX 400.
+ - 안 한 것(브리프 밖 — 설계 몫): chart.rank 14 · 가수 한글 표기 보탬 90(verified 항목 — V041 ⑥ "마이클 잭슨 같은 한글 입력이 막힘") · 0255 · 0159 다른 판 trackId · 0006 대체 곡 · 소리 듣기 0.
+ - 산출물: scripts/g043-song-fix.mjs · audit/g043-diff.json(전후 · HEAD · 웹) · data/minigame/song/items.json · ox/items.json · topics/us-state.json · 07 DG-081 · 13 C109 · CV-168 · CV-170 줄 끝 · 05 · 06 · ai-out/README.
+
+2. 결정 필요
+ - 없음. (참고 — 가수 한글 표기 보탬 90 은 노래 게임에서 한글로 가수를 치는 사람에게 바로 효과가 있다. 다음 작은 라운드에 넣을지 설계가 정하면 같은 스크립트 꼴로 몇 분이면 된다.)

@@ -10,6 +10,15 @@
 
 ---
 
+## DG-081. V041 · V042 fixes 기계 적용 — 노래 14 · OX 16 · us-state 1 → verified · 다음 메뉴 1 때 노래 292 · OX 400 (G043 · 기술 판단 — 설계 브리핑 gen.md · CV-168 · CV-170 · 18 §0 verified 전환 규칙 · 파일만 · DB 쓰기 없음)
+- **노래 14**: proposal 그대로 — trackId 교체 12(iTunes lookup 한 번에 12 · itunes{} 8칸 갱신 · 새 previewUrl HEAD 14/14 = 200) · year 3(그 남자 그 여자 2004 → 2006 · Time to Say Goodbye 1995 → 1996 · Love 2006 → 2008) · 항목 minor 의 변형(제목 빼기 6 · 제목 보탬 2 · 가수 보탬 7 — 5곡) → status verified · verify.appliedRound G043. 0120(To You My Light)은 lookup 트랙 이름 · 발매일 2019-06-09 가 원곡이라 적용. rejected 1(0006 세글자) 그대로.
+- **verified 항목 변형**: V041 "실제로 안 치는 영문 번역 제목 빼기" 64곡 64개(fix 6 과 합쳐 70 = V041 목록 전부) · status 그대로. **안 한 것**(브리프 밖 — 설계 몫): chart.rank 14 · 가수 한글 표기 보탬 90(verified 항목) · 0255 · 0159 다른 판 trackId.
+- **OX 16**: proposal 그대로(statement · explanation · answer · trap) → verified. 웹 3(KTX 영업 305 km/h → 600 은 2배 · 에펠탑 300 m → 1,000 은 자릿수 · 맥박 60~100 → 200 은 2배 — §11 규칙 만족). **GEN 판단(되돌리기 쉽다)**: ox-0007 해설의 편수는 출처가 엇갈려(ko.wiki 30편 · 보도 31편) V042 가 함께 적은 "편수 없이" 쪽 — "1948년 정음사에서 펴낸 유고 시집이다." · ox-0380 은 함정 축이 시대 → 숫자로 바뀌어 factClaim 도 "베이브 루스 1927년 한 시즌 홈런 60개" 로 맞춤.
+- **us-state**: 006 변형 중복 "매사추세츠" 1개 빼기 · version 2 · fixes 에 applied G043 · verified 그대로.
+- **version**: 노래 · OX 파일의 version 은 파일 형식 번호(minigame-load 가 1 만 받는다) — 올리지 않는다 · asOf 만 2026-11-09.
+- **검사**: song-check 막힘 0(경고 4 — 모음집 판 연도 3 + 0174 새 판 1990 ↔ 원곡 1985) · ox-check --db 막힘 0(경고 1 — 그 전부터) · topics-check 막힘 0 · minigame-load dry-run 노래 292 · OX 400 · hint-check-active 막힘 0.
+- **되돌리기**: 커밋 revert(파일만). 근거: ai-out/G043.txt · audit/g043-diff.json.
+
 ## D-342. OX 10연속 — 문장 10 · O/X 두 버튼 · 5초 · 앞 5 grade 1 · 같은 쌍 금지 · minigame_items 재사용 (R085 · D-330 ⑴ 구현 · 18 §11)
 - **적재(새 표 · 마이그레이션 없음)**: `minigame-load.mjs` 에 `ox`(칸 검사 `scripts/minigame-ox.mjs` — statement 10~120자 · answer 불리언 · explanation · category{l1, l2} · grade 1~3 · trap 여섯 · **참 = none / 거짓 = 한 축** · pairId 글/null · factClaim 받음 · 그림 없음) · verified 만 · 메뉴 1 은 노래와 한 줄 `--game song,ox`(끝 줄 "노래 n · OX m 적재") · 실 DB 에 들어갈 OX = V042 verified **384**(dry-run).
 - **고르기(shared `pickOxItems`)**: 10 문장 · **앞 5 = grade 1 · 뒤 5 = grade 2·3 섞기**(그 칸이 모자라면 다른 grade 로 채움) · **같은 pairId 한 판 금지** · 같은 대분류 ≤ 3(모자라면 이 상한만 푼다) · 참가자 중 본 사람 적은 문장 먼저(경험 `ox|<id>`) · 전원 본 문장은 맨 뒤(400 이라 금방 돌아 — 모자라면 다시 낸다) · **이번 게임에서 낸 문장은 피함**(미니게임만에서 OX 가 두 번 나와도 20 다름) · 활성 10 미만이면 안 뽑힘.
