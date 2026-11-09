@@ -20,6 +20,7 @@ https://creativecommons.org/licenses/by-sa/4.0/
 | [Open Trivia Database](https://opentdb.com/) | `opentdb` | CC BY-SA 4.0 | ★ **있다** | 영어 4지선다 문제를 한국어 주관식으로 번역·가공한 파생물 |
 | Gemini 생성 | `gemini-gen` | CC BY-SA 4.0 | 없다 | ★ R011부터의 주 확보 방식. 우리 프롬프트로 직접 생성한 문제다 |
 | 직접 작성 | `manual` | CC BY-SA 4.0 | 없다 | 이 프로젝트에서 작성 (시드 포함) |
+| [나무위키 캐치마인드/문제 목록](https://namu.wiki/w/캐치마인드/문제%20목록) | (주제 세트 `source`) | CC BY-NC-SA 2.0 KR | ★ **있다**(세트 source 에 출처) | ★ G048 — **씨앗으로만**: 원문은 `data/pipeline/audit/g048-raw/seed/` 에만 두고, `data/minigame/topics/draw-*.json` 에는 우리가 판정해 고른 단어 + 우리 태그(diff · sub · 변형)만 |
 
 문제별 출처와 라이선스는 데이터베이스의 `questions.source_id` 와 `questions.license` 컬럼,
 그리고 `data/` 아래 JSON 파일의 메타데이터에 기록되어 있다.
