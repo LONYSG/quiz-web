@@ -3688,26 +3688,125 @@
   }
  ],
  "verify": {
-  "round": "V040",
-  "checkedAt": "2026-11-08T11:35:10.106Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 273,
+   "proposedAdd": 12,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/서울_지하철_1호선 ~ 9호선(9페이지)",
-    "read": true,
-    "count": 276
+    "op": "variant",
+    "id": "seoul-subway-station-007",
+    "add": [
+     "동묘"
+    ],
+    "reason": "일상 약칭(앞 뺀 꼴)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-012",
+    "add": [
+     "외대"
+    ],
+    "reason": "한국외대 약칭, 세트 안 겹침 없음",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-033",
+    "add": [
+     "성공회대입구"
+    ],
+    "reason": "역명 부기(온수(성공회대입구))",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-128",
+    "add": [
+     "숙대"
+    ],
+    "reason": "숙명여대 약칭, 세트 안 겹침 없음",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-177",
+    "add": [
+     "명지대"
+    ],
+    "reason": "역명 부기 증산(명지대앞)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-178",
+    "add": [
+     "DMC"
+    ],
+    "reason": "흔한 영문 약칭",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-184",
+    "add": [
+     "서강대앞"
+    ],
+    "reason": "역명 부기 대흥(서강대앞)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-185",
+    "add": [
+     "효창공원"
+    ],
+    "reason": "앞 뺀 꼴",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-194",
+    "add": [
+     "동덕여대"
+    ],
+    "reason": "역명 부기 월곡(동덕여대)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-198",
+    "add": [
+     "서울여대입구"
+    ],
+    "reason": "역명 부기 화랑대(서울여대입구)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-213",
+    "add": [
+     "세종대"
+    ],
+    "reason": "역명 부기 어린이대공원(세종대)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "seoul-subway-station-268",
+    "add": [
+     "보훈병원"
+    ],
+    "reason": "일상 약칭",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
-   "변형 표본 2건 확인(문제 없음)"
-  ],
-  "tagNotes": [],
-  "fixes": [],
   "verdict": "verified",
-  "why": "G039 기계 적용 대조 어긋남 0",
+  "why": "변형 완전성 전수: add 12 · remove 0 제안(status·items 불변) — 적용은 G045",
   "history": [
    {
     "round": "V039",
@@ -3800,6 +3899,28 @@
     "verdict": "verified",
     "why": "9개 노선 페이지의 역 276 중 비서울(경기·인천) 21 제외 후 서울 5호선 마천지선 5역이 파일에 없음. 1호선 일부는 페이지 노선도 본문으로 확인(표 파싱 한계)",
     "appliedRound": "G039"
+   },
+   {
+    "round": "V040",
+    "checkedAt": "2026-11-08T11:35:10.106Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/서울_지하철_1호선 ~ 9호선(9페이지)",
+      "read": true,
+      "count": 276
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
+     "변형 표본 2건 확인(문제 없음)"
+    ],
+    "tagNotes": [],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "G039 기계 적용 대조 어긋남 0"
    }
   ]
  }

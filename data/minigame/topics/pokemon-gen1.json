@@ -1989,27 +1989,60 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:09:07.414Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 151,
+   "proposedAdd": 2,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://pokeapi.co/api/v2/pokemon-species/{1..151}",
-    "read": true,
-    "count": 151
+    "op": "variant",
+    "id": "pokemon-gen1-025",
+    "add": [
+     "피카추"
+    ],
+    "reason": "매우 흔한 다른 표기",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "pokemon-gen1-026",
+    "add": [
+     "라이추"
+    ],
+    "reason": "흔한 다른 표기",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "영문 변형 = 포켓몬 이름(작품 캐릭터) — §9 예외 안"
-  ],
-  "tagNotes": [
-   "draw 148/151 — 너무 넓음(그림 불가 후보: 가이스·라프라스 등은 그릴 수 있음, 대체로 무난)",
-   "liar 29 적정"
-  ],
-  "fixes": [],
   "verdict": "verified",
-  "why": "PokeAPI species 1~151 ko 이름 = 파일 151, 전부 일치"
+  "why": "변형 완전성 전수: add 2 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:09:07.414Z",
+    "sources": [
+     {
+      "url": "https://pokeapi.co/api/v2/pokemon-species/{1..151}",
+      "read": true,
+      "count": 151
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "영문 변형 = 포켓몬 이름(작품 캐릭터) — §9 예외 안"
+    ],
+    "tagNotes": [
+     "draw 148/151 — 너무 넓음(그림 불가 후보: 가이스·라프라스 등은 그릴 수 있음, 대체로 무난)",
+     "liar 29 적정"
+    ],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "PokeAPI species 1~151 ko 이름 = 파일 151, 전부 일치"
+   }
+  ]
  }
 }

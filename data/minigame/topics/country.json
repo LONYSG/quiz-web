@@ -2218,52 +2218,157 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:09:07.413Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 193,
+   "proposedAdd": 10,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/유엔_회원국",
-    "read": true,
-    "count": 193
+    "op": "variant",
+    "id": "country-009",
+    "add": [
+     "중앙아프리카"
+    ],
+    "reason": "일상 약칭, 다른 나라와 안 겹침",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "country-014",
+    "add": [
+     "코트디보아르"
+    ],
+    "reason": "옛 표기, 아직 흔히 침",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "country-019",
+    "add": [
+     "스와질랜드"
+    ],
+    "reason": "스와질란드의 다른 음차 꼴",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "country-041",
+    "add": [
+     "상투메"
+    ],
+    "reason": "일상 약칭",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "country-046",
+    "add": [
+     "남아프리카"
+    ],
+    "reason": "약칭(남아공은 이미 있음)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "country-071",
+    "add": [
+     "키르기스"
+    ],
+    "reason": "약칭",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "country-101",
+    "add": [
+     "사이프러스"
+    ],
+    "reason": "영어식 음차, 흔히 침",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "country-105",
+    "add": [
+     "벨로루시"
+    ],
+    "reason": "옛 표기, 아직 흔함",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "country-140",
+    "add": [
+     "에스파냐"
+    ],
+    "reason": "공식 외래어 표기 다른 꼴",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "country-148",
+    "add": [
+     "마샬제도"
+    ],
+    "reason": "마샬 음차 꼴(띄어쓰기 무시, 군도는 이미 있음)",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [
-   {
-    "id": "country-145",
-    "file": "호주",
-    "src": "오스트레일리아",
-    "note": "파일 정본이 한국 통용 표기, 변형에 있음 — 유지"
-   },
-   {
-    "id": "country-061",
-    "file": "중국",
-    "src": "중화인민공화국",
-    "note": "동일"
-   },
-   {
-    "id": "country-079",
-    "file": "북한",
-    "src": "조선민주주의인민공화국",
-    "note": "동일"
-   },
-   {
-    "id": "country-171",
-    "file": "도미니카",
-    "src": "도미니카 연방",
-    "note": "동일(도미니카 공화국은 별도 항목)"
-   }
-  ],
-  "variantNotes": [
-   "표본 20 모두 한글만(라틴 0) — §9 정합",
-   "변형 없는 나라가 많음(말리·토고·요르단 등) — 변형이 필요 없는 이름이라 정상"
-  ],
-  "tagNotes": [
-   "liar 60 — 이집트·중국·일본·필리핀·튀르키예 등 무난"
-  ],
-  "fixes": [],
   "verdict": "verified",
-  "why": "유엔 회원국 표 193 = 파일 193, 이름 일치 189 + 한국 통용 표기 4(변형으로 수용)"
+  "why": "변형 완전성 전수: add 10 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:09:07.413Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/유엔_회원국",
+      "read": true,
+      "count": 193
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [
+     {
+      "id": "country-145",
+      "file": "호주",
+      "src": "오스트레일리아",
+      "note": "파일 정본이 한국 통용 표기, 변형에 있음 — 유지"
+     },
+     {
+      "id": "country-061",
+      "file": "중국",
+      "src": "중화인민공화국",
+      "note": "동일"
+     },
+     {
+      "id": "country-079",
+      "file": "북한",
+      "src": "조선민주주의인민공화국",
+      "note": "동일"
+     },
+     {
+      "id": "country-171",
+      "file": "도미니카",
+      "src": "도미니카 연방",
+      "note": "동일(도미니카 공화국은 별도 항목)"
+     }
+    ],
+    "variantNotes": [
+     "표본 20 모두 한글만(라틴 0) — §9 정합",
+     "변형 없는 나라가 많음(말리·토고·요르단 등) — 변형이 필요 없는 이름이라 정상"
+    ],
+    "tagNotes": [
+     "liar 60 — 이집트·중국·일본·필리핀·튀르키예 등 무난"
+    ],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "유엔 회원국 표 193 = 파일 193, 이름 일치 189 + 한국 통용 표기 4(변형으로 수용)"
+   }
+  ]
  }
 }

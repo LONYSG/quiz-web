@@ -1041,26 +1041,53 @@
   }
  ],
  "verify": {
-  "round": "V040",
-  "checkedAt": "2026-11-08T11:35:10.106Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 88,
+   "proposedAdd": 4,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/국제천문연맹_지정_별자리",
-    "read": true,
-    "count": 88
+    "op": "variant",
+    "id": "constellation-008",
+    "add": [
+     "마부자리"
+    ],
+    "reason": "마부자리 흔한 다른 표기",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "constellation-055",
+    "add": [
+     "일각수자리"
+    ],
+    "reason": "일각수자리 흔한 다른 표기",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "constellation-035",
+    "add": [
+     "망아지자리"
+    ],
+    "reason": "옛/다른 표기",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "constellation-036",
+    "add": [
+     "에리다노스자리"
+    ],
+    "reason": "음차 두 꼴",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
-   "변형 표본 2건 확인(문제 없음)"
-  ],
-  "tagNotes": [],
-  "fixes": [],
   "verdict": "verified",
-  "why": "G039 기계 적용 대조 어긋남 0",
+  "why": "변형 완전성 전수: add 4 · remove 0 제안(status·items 불변) — 적용은 G045",
   "history": [
    {
     "round": "V039",
@@ -1145,6 +1172,28 @@
     "verdict": "verified",
     "why": "빠짐·더함 0, 88 일치. 단 페이지 표기와 다른 이름 4곳의 변형 추가 4건(>3) → candidate",
     "appliedRound": "G039"
+   },
+   {
+    "round": "V040",
+    "checkedAt": "2026-11-08T11:35:10.106Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/국제천문연맹_지정_별자리",
+      "read": true,
+      "count": 88
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
+     "변형 표본 2건 확인(문제 없음)"
+    ],
+    "tagNotes": [],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "G039 기계 적용 대조 어긋남 0"
    }
   ]
  }

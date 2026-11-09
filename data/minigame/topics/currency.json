@@ -1214,26 +1214,36 @@
   }
  ],
  "verify": {
-  "round": "V040",
-  "checkedAt": "2026-11-08T11:35:10.106Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 82,
+   "proposedAdd": 3,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/ISO_4217",
-    "read": true,
-    "count": 304
+    "op": "variant",
+    "id": "currency-005",
+    "add": [
+     "파운드 스털링",
+     "스털링 파운드"
+    ],
+    "reason": "영국 파운드의 흔한 표기 순서 두 꼴(스털링 단독은 이미 있음)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "currency-021",
+    "add": [
+     "즐로티"
+    ],
+    "reason": "폴란드 통화 옛 한글 표기로 아직 흔함",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "verify.fixes 적용분 9 전부 items 에 반영 확인 · label 17 확인: 모두 대표 단위명(달러 · 페소 …)으로 짧고 맞음(원은 1글자지만 단위 이름 그대로)",
-   "변형 표본(로티 · 란드)"
-  ],
-  "tagNotes": [],
-  "fixes": [],
   "verdict": "verified",
-  "why": "G039 기계 적용 대조 어긋남 0",
+  "why": "변형 완전성 전수: add 3 · remove 0 제안(status·items 불변) — 적용은 G045",
   "history": [
    {
     "round": "V039",
@@ -1392,6 +1402,28 @@
     "verdict": "verified",
     "why": "ISO 4217 304 코드 중 현행 통화 3 단위 누락(레크 · 마르카 · 팡가) + 표기 변형 6 → fixes 9. 역사 코드(BGN · HRK · EEK …)는 의도적 제외",
     "appliedRound": "G039"
+   },
+   {
+    "round": "V040",
+    "checkedAt": "2026-11-08T11:35:10.106Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/ISO_4217",
+      "read": true,
+      "count": 304
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "verify.fixes 적용분 9 전부 items 에 반영 확인 · label 17 확인: 모두 대표 단위명(달러 · 페소 …)으로 짧고 맞음(원은 1글자지만 단위 이름 그대로)",
+     "변형 표본(로티 · 란드)"
+    ],
+    "tagNotes": [],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "G039 기계 적용 대조 어긋남 0"
    }
   ]
  }

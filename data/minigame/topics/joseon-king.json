@@ -407,27 +407,96 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:09:07.412Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 27,
+   "proposedAdd": 6,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/조선의_국왕",
-    "read": true,
-    "count": 26
+    "op": "variant",
+    "id": "joseon-king-012",
+    "add": [
+     "이호"
+    ],
+    "reason": "본명 — 다른 왕은 본명이 변형에 있는데 빠짐",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "joseon-king-024",
+    "add": [
+     "이환"
+    ],
+    "reason": "본명 빠짐",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "joseon-king-022",
+    "add": [
+     "정조대왕"
+    ],
+    "reason": "'정조대왕' 흔한 표기(세종대왕 꼴)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "joseon-king-021",
+    "add": [
+     "영조대왕"
+    ],
+    "reason": "'영조대왕' 흔한 표기",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "joseon-king-026",
+    "add": [
+     "고종황제"
+    ],
+    "reason": "대한제국 황제 칭호로 흔함",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "joseon-king-027",
+    "add": [
+     "순종황제"
+    ],
+    "reason": "위와 같음",
+    "conf": "high"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "페이지 표는 제1~26대(고종까지). 순종은 표 밖이나 같은 페이지 서문이 \"일반적으로 태조부터 순종까지\"로 쓰고 엄밀히는 대한제국 황제라고 덧붙임 → 27명 유지가 일반 통념과 맞음(더함 아님, 형식 후보 CV-165)",
-   "인종·현종·헌종은 본명 변형 제외(효종·명종·선조 등과 겹침) — 올바름"
-  ],
-  "tagNotes": [
-   "liar 11 적정(태조·세종·단종·연산군·광해군·영조·정조·고종 등)"
-  ],
-  "fixes": [],
   "verdict": "verified",
-  "why": "표 26명 + 서문이 인정하는 순종 = 27 = 파일. 빠짐 0, 더함 0(순종은 서문 근거)"
+  "why": "변형 완전성 전수: add 6 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:09:07.412Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/조선의_국왕",
+      "read": true,
+      "count": 26
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "페이지 표는 제1~26대(고종까지). 순종은 표 밖이나 같은 페이지 서문이 \"일반적으로 태조부터 순종까지\"로 쓰고 엄밀히는 대한제국 황제라고 덧붙임 → 27명 유지가 일반 통념과 맞음(더함 아님, 형식 후보 CV-165)",
+     "인종·현종·헌종은 본명 변형 제외(효종·명종·선조 등과 겹침) — 올바름"
+    ],
+    "tagNotes": [
+     "liar 11 적정(태조·세종·단종·연산군·광해군·영조·정조·고종 등)"
+    ],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "표 26명 + 서문이 인정하는 순종 = 27 = 파일. 빠짐 0, 더함 0(순종은 서문 근거)"
+   }
+  ]
  }
 }

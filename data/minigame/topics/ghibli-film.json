@@ -318,26 +318,51 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:09:30.229Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 22,
+   "proposedAdd": 2,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/스튜디오_지브리",
-    "read": true,
-    "count": 22
+    "op": "variant",
+    "id": "ghibli-film-020",
+    "add": [
+     "카구야 공주",
+     "가구야 공주"
+    ],
+    "reason": "제목 앞부분 약칭 (카구야 표기는 이미 있음, 세트 안 겹침 없음)",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "영문 변형은 작품 제목 — §9 예외 안"
-  ],
-  "tagNotes": [
-   "liar 13 적정"
-  ],
-  "fixes": [],
   "verdict": "verified",
-  "why": "페이지 장편 목록 21편 + 바람계곡의 나우시카(페이지 \"관련 문서\" — 지브리 이전 작품, 파일 note 로 의도 명시) = 22. 제외한 바다가 들린다·붉은 거북·아야와 마녀는 note 대로 제외. 빠짐 0 더함 0"
+  "why": "변형 완전성 전수: add 2 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:09:30.229Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/스튜디오_지브리",
+      "read": true,
+      "count": 22
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "영문 변형은 작품 제목 — §9 예외 안"
+    ],
+    "tagNotes": [
+     "liar 13 적정"
+    ],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "페이지 장편 목록 21편 + 바람계곡의 나우시카(페이지 \"관련 문서\" — 지브리 이전 작품, 파일 note 로 의도 명시) = 22. 제외한 바다가 들린다·붉은 거북·아야와 마녀는 note 대로 제외. 빠짐 0 더함 0"
+   }
+  ]
  }
 }

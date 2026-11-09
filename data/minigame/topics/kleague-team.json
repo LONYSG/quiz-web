@@ -449,32 +449,56 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:14:51.337Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 29,
+   "proposedAdd": 1,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://en.wikipedia.org/wiki/2026_K_League_1",
-    "read": true,
-    "count": 12
-   },
-   {
-    "url": "https://en.wikipedia.org/wiki/2026_K_League_2",
-    "read": true,
-    "count": 17
+    "op": "variant",
+    "id": "kleague-team-026",
+    "add": [
+     "김해FC"
+    ],
+    "reason": "연도 뺀 꼴 — '김해 FC' 는 정규화로 'FC' 와 'fc2008' 이 달라 안 받아짐 (부천FC 1995 는 '부천 FC' 변형이 이미 있음)",
+    "conf": "high"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "2026 시즌 소속(K1 12 + K2 17 = 29) 이 파일과 1:1(영문→한글 번역은 표기 판정 아님)",
-   "서울 · 수원 단독 변형 제외(겹침)로 올바름"
-  ],
-  "tagNotes": [
-   "liar/draw 대부분 비어 있음 — 적정"
-  ],
-  "fixes": [],
   "verdict": "verified",
-  "why": "두 페이지 팀 표 29 = 파일 29, 빠짐 0 더함 0"
+  "why": "변형 완전성 전수: add 1 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:14:51.337Z",
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/2026_K_League_1",
+      "read": true,
+      "count": 12
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/2026_K_League_2",
+      "read": true,
+      "count": 17
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "2026 시즌 소속(K1 12 + K2 17 = 29) 이 파일과 1:1(영문→한글 번역은 표기 판정 아님)",
+     "서울 · 수원 단독 변형 제외(겹침)로 올바름"
+    ],
+    "tagNotes": [
+     "liar/draw 대부분 비어 있음 — 적정"
+    ],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "두 페이지 팀 표 29 = 파일 29, 빠짐 0 더함 0"
+   }
+  ]
  }
 }

@@ -645,26 +645,44 @@
   }
  ],
  "verify": {
-  "round": "V040",
-  "checkedAt": "2026-11-08T11:35:10.106Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 68,
+   "proposedAdd": 3,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/스포츠",
-    "read": false,
-    "count": 73
+    "op": "variant",
+    "id": "sport-026",
+    "add": [
+     "피겨"
+    ],
+    "reason": "일상 줄임",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "sport-035",
+    "add": [
+     "아메리칸 풋볼"
+    ],
+    "reason": "흔한 동의어",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "sport-051",
+    "add": [
+     "비보잉"
+    ],
+    "reason": "흔한 동의어",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
-   "변형 표본 2건 확인(문제 없음)"
-  ],
-  "tagNotes": [],
-  "fixes": [],
   "verdict": "verified",
-  "why": "G039 기계 적용 대조 어긋남 0",
+  "why": "변형 완전성 전수: add 3 · remove 0 제안(status·items 불변) — 적용은 G045",
   "history": [
    {
     "round": "V039",
@@ -732,6 +750,28 @@
     "verdict": "verified",
     "why": "육상 세부 종목 5 + 변형 1 = fixes 6 (>3) → candidate",
     "appliedRound": "G039"
+   },
+   {
+    "round": "V040",
+    "checkedAt": "2026-11-08T11:35:10.106Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/스포츠",
+      "read": false,
+      "count": 73
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
+     "변형 표본 2건 확인(문제 없음)"
+    ],
+    "tagNotes": [],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "G039 기계 적용 대조 어긋남 0"
    }
   ]
  }

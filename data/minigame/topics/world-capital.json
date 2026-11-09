@@ -2396,26 +2396,125 @@
   }
  ],
  "verify": {
-  "round": "V040",
-  "checkedAt": "2026-11-08T11:35:10.106Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 193,
+   "proposedAdd": 12,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/나라_이름순_수도_목록",
-    "read": true,
-    "count": 206
+    "op": "variant",
+    "id": "world-capital-005",
+    "add": [
+     "우아가두구"
+    ],
+    "reason": "외래어 표기 다른 꼴",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-031",
+    "add": [
+     "릴롱웨"
+    ],
+    "reason": "흔한 다른 표기",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-037",
+    "add": [
+     "빈트훅"
+    ],
+    "reason": "흔한 다른 표기",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-048",
+    "add": [
+     "카르툼"
+    ],
+    "reason": "흔한 다른 표기",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-059",
+    "add": [
+     "반다르세리베가완"
+    ],
+    "reason": "공식 표기 다른 꼴",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-067",
+    "add": [
+     "동경"
+    ],
+    "reason": "한자음 옛 표기(북경 꼴)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-087",
+    "add": [
+     "스리자야와르데나푸라코테"
+    ],
+    "reason": "다른 음차 꼴(콜롬보·코테는 이미 있음)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-104",
+    "add": [
+     "비엔나"
+    ],
+    "reason": "영어식 흔한 한글 표기, 오스트리아 수도",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-134",
+    "add": [
+     "부쿠레스티"
+    ],
+    "reason": "흔한 다른 표기",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-153",
+    "add": [
+     "포트모레스비"
+    ],
+    "reason": "옛 표기(포트모레스비) 아직 쓰임",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-187",
+    "add": [
+     "카스트리스"
+    ],
+    "reason": "다른 표기",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "world-capital-139",
+    "add": [
+     "류블라나"
+    ],
+    "reason": "랴 대신 라로 치는 꼴",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
-   "변형 표본 2건 확인(문제 없음)"
-  ],
-  "tagNotes": [],
-  "fixes": [],
   "verdict": "verified",
-  "why": "G039 기계 적용 대조 어긋남 0",
+  "why": "변형 완전성 전수: add 12 · remove 0 제안(status·items 불변) — 적용은 G045",
   "history": [
    {
     "round": "V039",
@@ -2510,6 +2609,28 @@
     "verdict": "verified",
     "why": "수도 193 전부 페이지와 대응(빠짐 0 더함 0) · 표기 변형 추가 4건(>3)",
     "appliedRound": "G039"
+   },
+   {
+    "round": "V040",
+    "checkedAt": "2026-11-08T11:35:10.106Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/나라_이름순_수도_목록",
+      "read": true,
+      "count": 206
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
+     "변형 표본 2건 확인(문제 없음)"
+    ],
+    "tagNotes": [],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "G039 기계 적용 대조 어긋남 0"
    }
   ]
  }

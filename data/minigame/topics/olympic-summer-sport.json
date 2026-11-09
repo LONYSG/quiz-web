@@ -371,28 +371,52 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:09:30.229Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 32,
+   "proposedAdd": 1,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ko.wikipedia.org/wiki/2024년_하계_올림픽",
-    "read": true,
-    "count": 32
+    "op": "variant",
+    "id": "olympic-summer-sport-019",
+    "add": [
+     "로잉"
+    ],
+    "reason": "rowing 의 흔한 한글 표기",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "\"3x3 농구\" 변형 1건만 라틴 숫자 x(수식어 아님) — 허용",
-   "수영[아쿠아틱스] 수영=Aquatics 전체(다이빙·수구·아티스틱 포함) 설명 필요 시 note"
-  ],
-  "tagNotes": [
-   "liar 32 전부·draw 28 — 사격·근대5종·역도 등은 \"한마디 설명\" 약함(경미)",
-   "year 4 = 브레이킹 2024 · 스케이트보드·클라이밍·서핑 2021 첫 채택 — 맞음"
-  ],
-  "fixes": [],
   "verdict": "verified",
-  "why": "페이지 \"32개 종목\" · 파일 32 전부 페이지 본문에 등장(전수 대조는 본문 용어 포함 확인 + 개수 일치로 갈음 — 페이지에 32개 목록표가 없음 한계)"
+  "why": "변형 완전성 전수: add 1 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:09:30.229Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/2024년_하계_올림픽",
+      "read": true,
+      "count": 32
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "\"3x3 농구\" 변형 1건만 라틴 숫자 x(수식어 아님) — 허용",
+     "수영[아쿠아틱스] 수영=Aquatics 전체(다이빙·수구·아티스틱 포함) 설명 필요 시 note"
+    ],
+    "tagNotes": [
+     "liar 32 전부·draw 28 — 사격·근대5종·역도 등은 \"한마디 설명\" 약함(경미)",
+     "year 4 = 브레이킹 2024 · 스케이트보드·클라이밍·서핑 2021 첫 채택 — 맞음"
+    ],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "페이지 \"32개 종목\" · 파일 32 전부 페이지 본문에 등장(전수 대조는 본문 용어 포함 확인 + 개수 일치로 갈음 — 페이지에 32개 목록표가 없음 한계)"
+   }
+  ]
  }
 }

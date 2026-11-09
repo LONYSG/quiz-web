@@ -983,46 +983,79 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:14:51.335Z",
-  "sources": [
-   {
-    "url": "https://ko.wikipedia.org/wiki/성경",
-    "read": true,
-    "count": null
-   }
-  ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "페이지 구약 목록은 가톨릭 포함(토비트·유딧·마카베오·지혜서·집회서·바룩서 등) → 개신교 66권으로 거른 파일 66 전부 등장(신약 27권 본문 서술도 일치)",
-   "49개 항목이 1글자 약칭(창·출·레·민·신·시·아·사·요…) 변형 — 다른 항목 이름과 겹치지는 않음(topics-check 0)"
-  ],
-  "tagNotes": [
-   "liar 13 적정"
-  ],
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 66,
+   "proposedAdd": 2,
+   "proposedRemove": 0
+  },
   "fixes": [
    {
     "op": "variant",
-    "id": "bible-book-015",
-    "variants": [
-     "에즈라"
+    "id": "bible-book-066",
+    "add": [
+     "계시록"
     ],
-    "why": "페이지 표기",
-    "applied": "G039"
+    "reason": "일상에서 가장 흔한 줄임(다른 권과 안 겹침)",
+    "conf": "high"
    },
    {
     "op": "variant",
-    "id": "bible-book-017",
-    "variants": [
-     "에스델"
+    "id": "bible-book-022",
+    "add": [
+     "아가서"
     ],
-    "why": "페이지 표기",
-    "applied": "G039"
+    "reason": "'아가서' 가 일상 표기(아가 두 글자는 이미 name)",
+    "conf": "high"
    }
   ],
   "verdict": "verified",
-  "why": "66권 모두 페이지에 존재 · 정경 범위 일치(제2경전은 의도적 제외). 변형 2건만 제안"
+  "why": "변형 완전성 전수: add 2 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:14:51.335Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/성경",
+      "read": true,
+      "count": null
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "페이지 구약 목록은 가톨릭 포함(토비트·유딧·마카베오·지혜서·집회서·바룩서 등) → 개신교 66권으로 거른 파일 66 전부 등장(신약 27권 본문 서술도 일치)",
+     "49개 항목이 1글자 약칭(창·출·레·민·신·시·아·사·요…) 변형 — 다른 항목 이름과 겹치지는 않음(topics-check 0)"
+    ],
+    "tagNotes": [
+     "liar 13 적정"
+    ],
+    "fixes": [
+     {
+      "op": "variant",
+      "id": "bible-book-015",
+      "variants": [
+       "에즈라"
+      ],
+      "why": "페이지 표기",
+      "applied": "G039"
+     },
+     {
+      "op": "variant",
+      "id": "bible-book-017",
+      "variants": [
+       "에스델"
+      ],
+      "why": "페이지 표기",
+      "applied": "G039"
+     }
+    ],
+    "verdict": "verified",
+    "why": "66권 모두 페이지에 존재 · 정경 범위 일치(제2경전은 의도적 제외). 변형 2건만 제안"
+   }
+  ]
  }
 }

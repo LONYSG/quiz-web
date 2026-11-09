@@ -1933,26 +1933,185 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:09:07.413Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 173,
+   "proposedAdd": 16,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://ddragon.leagueoflegends.com/cdn/16.22.1/data/ko_KR/champion.json",
-    "read": true,
-    "count": 173
+    "op": "variant",
+    "id": "lol-champion-028",
+    "add": [
+     "Reksai"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-055",
+    "add": [
+     "Belveth"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-056",
+    "add": [
+     "Velkoz"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-042",
+    "add": [
+     "말파"
+    ],
+    "reason": "흔한 줄임",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-044",
+    "add": [
+     "모데"
+    ],
+    "reason": "흔한 줄임",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-062",
+    "add": [
+     "블리츠"
+    ],
+    "reason": "흔한 줄임",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-003",
+    "add": [
+     "갱플"
+    ],
+    "reason": "흔한 줄임",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-061",
+    "add": [
+     "블라디"
+    ],
+    "reason": "흔한 줄임",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-047",
+    "add": [
+     "미스포춘"
+    ],
+    "reason": "외래어 다른 표기(포춘)",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-135",
+    "add": [
+     "Chogath"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-141",
+    "add": [
+     "Kaisa"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-142",
+    "add": [
+     "Khazix"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-149",
+    "add": [
+     "Kogmaw"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-152",
+    "add": [
+     "Ksante"
+    ],
+    "reason": "영문 표기 아포스트로피 뺀 꼴(flex 가 ' 를 안 지움)",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-088",
+    "add": [
+     "아우솔"
+    ],
+    "reason": "흔한 줄임",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "lol-champion-168",
+    "add": [
+     "피들"
+    ],
+    "reason": "흔한 줄임",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "라틴 변형은 챔피언(작품 속 인물) 영문 표기 — §9 예외 안"
-  ],
-  "tagNotes": [
-   "liar 41 중 블라디미르·쓰레쉬 등은 비롤 유저에 덜 알려짐 — 경미"
-  ],
-  "fixes": [],
   "verdict": "verified",
-  "why": "Data Dragon 16.22.1 ko_KR 173 = 파일 173, 한국어 이름 전부 일치"
+  "why": "변형 완전성 전수: add 16 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:09:07.413Z",
+    "sources": [
+     {
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.22.1/data/ko_KR/champion.json",
+      "read": true,
+      "count": 173
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "라틴 변형은 챔피언(작품 속 인물) 영문 표기 — §9 예외 안"
+    ],
+    "tagNotes": [
+     "liar 41 중 블라디미르·쓰레쉬 등은 비롤 유저에 덜 알려짐 — 경미"
+    ],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "Data Dragon 16.22.1 ko_KR 173 = 파일 173, 한국어 이름 전부 일치"
+   }
+  ]
  }
 }

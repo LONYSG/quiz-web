@@ -828,31 +828,26 @@
   }
  ],
  "verify": {
-  "round": "V040",
-  "checkedAt": "2026-11-08T11:35:10.106Z",
-  "sources": [
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 64,
+   "proposedAdd": 1,
+   "proposedRemove": 0
+  },
+  "fixes": [
    {
-    "url": "https://en.wikipedia.org/wiki/List_of_Walt_Disney_Animation_Studios_films",
-    "read": true,
-    "count": 64
-   },
-   {
-    "url": "https://ko.wikipedia.org/wiki/디즈니의_장편_애니메이션_영화_목록",
-    "read": true,
-    "count": 26
+    "op": "variant",
+    "id": "disney-animated-film-060",
+    "add": [
+     "엔칸토 마법의 세계"
+    ],
+    "reason": "콜론 뺀 부제 전체 꼴(콜론은 정규화 대상 아님)",
+    "conf": "mid"
    }
   ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
-   "변형 표본 2건 확인(문제 없음)"
-  ],
-  "tagNotes": [],
-  "fixes": [],
   "verdict": "verified",
-  "why": "G039 기계 적용 대조 어긋남 0",
+  "why": "변형 완전성 전수: add 1 · remove 0 제안(status·items 불변) — 적용은 G045",
   "history": [
    {
     "round": "V039",
@@ -965,6 +960,33 @@
     "verdict": "verified",
     "why": "64편 = 64편(순서·연도 일치) 빠짐 0 더함 0. 한국 통용 표기 변형 9건 추가 제안(>3) → candidate",
     "appliedRound": "G039"
+   },
+   {
+    "round": "V040",
+    "checkedAt": "2026-11-08T11:35:10.106Z",
+    "sources": [
+     {
+      "url": "https://en.wikipedia.org/wiki/List_of_Walt_Disney_Animation_Studios_films",
+      "read": true,
+      "count": 64
+     },
+     {
+      "url": "https://ko.wikipedia.org/wiki/디즈니의_장편_애니메이션_영화_목록",
+      "read": true,
+      "count": 26
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "verify.fixes 적용분 전부 items 에 반영 확인(기계 대조: 어긋남 0)",
+     "변형 표본 2건 확인(문제 없음)"
+    ],
+    "tagNotes": [],
+    "fixes": [],
+    "verdict": "verified",
+    "why": "G039 기계 적용 대조 어긋남 0"
    }
   ]
  }

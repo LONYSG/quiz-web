@@ -690,35 +690,104 @@
   }
  ],
  "verify": {
-  "round": "V039",
-  "checkedAt": "2026-11-08T08:15:13.933Z",
-  "sources": [
-   {
-    "url": "https://ko.wikipedia.org/wiki/건축물",
-    "read": false,
-    "count": 72
-   }
-  ],
-  "missing": [],
-  "extra": [],
-  "rename": [],
-  "variantNotes": [
-   "open 세트는 공식 목록이 없어 출처 대조 대신 항목 전수 검토(가 구체 명사 · 나 겹침·상하위 · 다 태그 표본). 라이어·캐치마인드 전용이라 많이 말하기에는 쓰지 않음",
-   "(가) \"성\" · \"절\" 은 1글자 동음이의(성별 · 인사말) — 성 제거 · 절 유지 권고(절[사찰] 변형 있음)",
-   "(나) 학교 ⊃ 대학교 · 유치원 · 학원 (별개 장소로 통용), 카페 ⊃ 키즈 카페 (유지)"
-  ],
-  "tagNotes": [
-   "liar 72 전부 true — 변별력 없음 / draw 69: 시청 · 학원 · 장례식장 draw 제외 적정"
-  ],
+  "round": "V043",
+  "checkedAt": "2026-11-09T01:28:18.368Z",
+  "variantAudit": {
+   "items": 71,
+   "proposedAdd": 6,
+   "proposedRemove": 0
+  },
   "fixes": [
    {
-    "op": "remove",
-    "id": "place-047",
-    "why": "1글자 동음이의(성/절 처럼 장소 아닌 뜻이 우세)",
-    "applied": "G039"
+    "op": "variant",
+    "id": "place-012",
+    "add": [
+     "테마파크"
+    ],
+    "reason": "흔한 동의어",
+    "conf": "mid"
+   },
+   {
+    "op": "variant",
+    "id": "place-023",
+    "add": [
+     "베이커리"
+    ],
+    "reason": "흔한 동의어",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "place-063",
+    "add": [
+     "문방구"
+    ],
+    "reason": "가장 흔한 말",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "place-064",
+    "add": [
+     "꽃가게"
+    ],
+    "reason": "흔한 동의어",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "place-065",
+    "add": [
+     "책방"
+    ],
+    "reason": "흔한 동의어",
+    "conf": "high"
+   },
+   {
+    "op": "variant",
+    "id": "place-070",
+    "add": [
+     "예식장"
+    ],
+    "reason": "흔한 동의어",
+    "conf": "high"
    }
   ],
   "verdict": "verified",
-  "why": "fixes 1건 · 일상 장소 기준 통과"
+  "why": "변형 완전성 전수: add 6 · remove 0 제안(status·items 불변) — 적용은 G045",
+  "history": [
+   {
+    "round": "V039",
+    "checkedAt": "2026-11-08T08:15:13.933Z",
+    "sources": [
+     {
+      "url": "https://ko.wikipedia.org/wiki/건축물",
+      "read": false,
+      "count": 72
+     }
+    ],
+    "missing": [],
+    "extra": [],
+    "rename": [],
+    "variantNotes": [
+     "open 세트는 공식 목록이 없어 출처 대조 대신 항목 전수 검토(가 구체 명사 · 나 겹침·상하위 · 다 태그 표본). 라이어·캐치마인드 전용이라 많이 말하기에는 쓰지 않음",
+     "(가) \"성\" · \"절\" 은 1글자 동음이의(성별 · 인사말) — 성 제거 · 절 유지 권고(절[사찰] 변형 있음)",
+     "(나) 학교 ⊃ 대학교 · 유치원 · 학원 (별개 장소로 통용), 카페 ⊃ 키즈 카페 (유지)"
+    ],
+    "tagNotes": [
+     "liar 72 전부 true — 변별력 없음 / draw 69: 시청 · 학원 · 장례식장 draw 제외 적정"
+    ],
+    "fixes": [
+     {
+      "op": "remove",
+      "id": "place-047",
+      "why": "1글자 동음이의(성/절 처럼 장소 아닌 뜻이 우세)",
+      "applied": "G039"
+     }
+    ],
+    "verdict": "verified",
+    "why": "fixes 1건 · 일상 장소 기준 통과"
+   }
+  ]
  }
 }
