@@ -10,6 +10,16 @@
 
 ---
 
+## DG-085. 라이어 제시어 재탄생 — liar-* 15 세트 · fool 2~3 · era · sub · diff · 옛 open 12 삭제 · closed 태그 전부 끔 (G047 · 기술 판단 — 설계 브리핑 gen-next.md · 18 §12 를 옮김 · 파일만 · DB 쓰기 없음)
+- **씨앗**: toz-app 라이어 제시어 6 페이지(200 · 쌍 961 · 고유 시민 806 · 소주제 37 — 참고 · 재구성) + 옛 open 14 세트 1,023 단어 → audit/g047-raw/seed/seed.json(scripts/g047-seed.mjs). 그대로 옮기지 않고 단어마다 남김/뺌을 판단 — 뺀 씨앗 1,678(어려움 495 · 중복 449 · 다른주제 352 · 좁음 141 · 논란 87 · 게임성 74 · 넓음 50 · 1글자 24 · 유행 6 — audit/g047-dropped.json).
+- **세트 15**(candidate · liar true · draw false · id liar-<theme>-NNN · 851 항목 · qid 325): 영화·드라마 60 · 캐릭터 60 · 연예인 59 · 음악 60 · 스포츠 54 · 브랜드 53 · 동물 60 · 음식 60 · 장소 53 · 사물 56 · 탈것 54 · 직업 55 · 과일·채소 58 · 간식·음료 59 · 악기 50. diff ≈ 4:4:2(세트마다) · modern 98(영화 25 · 음악 16 · 연예인 12 가 많음).
+- **fool 규칙**: 같은 소분류(sub) · 1:1 라이벌·고정 짝 금지 · 같은 작품·그룹 출신 금지 · 2~3 개. 조각 4(opus · 지시서 audit/g047-raw/_work/INSTRUCTIONS.md) → GEN 재독(fool 851 전부 · modern 전부 · diff 3 전부) 고침 6: 젓가락(숟가락 짝) · 열쇠(자물쇠 짝) fool 바꿈 · 일론 머스크 뺌(정치 논란) · 스티브 잡스 fool · 음악 죽은 변형 4 · 멜론/워터밤 sub 나눔(scripts/g047-build.mjs FIX 표).
+- **옛 open 12 삭제**(animal · food · job · place · instrument · sport · object · vehicle · movie-drama · character · fruit-vegetable · snack-drink) — 옛 id 경험 기록은 무효(괜찮음). proverb · idiom4 는 G048.
+- **closed 11 세트 liar/draw 전부 끔**(나라 40 · 수도 20 · 대통령 14 · 조선 왕 11 · KBO 10 · 디즈니 32/16 · 지브리 13/2 · MCU 9 · 올림픽 32/28 · 태양계 8 · 포켓몬 draw 50 → 0 · version +1) — 많이 말하기 · 겹치면 무효 · 빙고 · 순서대로 전용.
+- **topics-check**: 항목 칸 fool · era · sub · diff · 라이어 세트(kind open · 머리 liar true)는 넷 다 필수(막힘) · 라이어 세트 수 40~120(다른 open 은 60~120 그대로) · 1글자 name 막힘. topics-load 는 안 고침 — topics-load 테스트(실제 파일 · 허용 시 전부 들어감) 5/5.
+- ★ **지금 메뉴 1 을 돌리면 라이어 · 캐치마인드 제시어 0**(verified 세트에 태그 없음) → 메뉴 1 은 G049 뒤.
+- **되돌리기**: G047 D 커밋 revert(옛 open 12 · closed 태그가 돌아옴). 근거: ai-out/G047.txt.
+
 ## DG-084. 주제 세트 변형 적용 — V043 add 171 · remove 1 · 구단·기업 영문 약칭 7 허용 (G046 · 기술 판단 — 설계 브리핑 gen.md · CV-172 · CV-173 ② · 18 §9 변형 규칙 · 파일만 · DB 쓰기 없음)
 - **적용**: 세트 파일 verify.fixes(round V043) 153 묶음 = add 171 · remove 1(북한산 "북한산성") · 26 세트 · 건너뜀 0(제 변형과 같음 · 세트 안 다른 항목과 겹침 둘 다 0) · 적용한 fix 에 applied G046 · verify.appliedRound G046 · version +1 · status 그대로.
 - **영문 약칭 7 허용**(CV-173 ②): LG · KIA · SSG · NC · kt(KBO) · QPR(EPL) · DMC(디지털미디어시티역) — §9 라틴 예외에 "구단·기업 약칭 2~4글자". 이번에 들어간 라틴 변형 16(약칭 7 + 롤 아포스트로피 뺀 꼴 등).

@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-09 — 라이어 제시어 재탄생 (G047, GEN · 파일만 · DB 쓰기 없음)
+- **무엇을**: gen-next.md — 외부 목록(toz 6 페이지) + 옛 open 세트를 씨앗으로 라이어 제시어 15 세트를 새로(fool 2~3 · era · sub · diff) · 옛 open 12 삭제 · closed 태그 전부 끔.
+- **어떻게**: g047-seed.mjs(씨앗 파싱) → 조각 4(opus · 지시서 한 파일 · 주제 묶음) → GEN 재독(fool 전부 · modern · diff 3) → g047-build.mjs(FIX 표 · 쓰기 · 삭제 · 태그 끔) → topics-check(칸 4 추가) · --fill-qid.
+- **문제**: open 하한 60 이 라이어 세트 40~60 과 어긋남 → 라이어 세트만 40~120 · "Queen → 퀸" 고침이 1글자 막힘 → 되돌림 · 조각 판단: 1글자 씨앗(개 · 게 · 회)은 변형으로.
+- **결정**: DG-085.
+- **검증**: topics-check 42 세트 막힘 0 · topics-load 테스트 5/5 · topics-load dry-run verified 25 세트.
+- **남은 것**: V044 · G048(캐치 풀) · 메뉴 1 은 G049 뒤.
+
 ## 2026-11-09 — 주제 세트 변형 적용 (G046, GEN · 파일만 · DB 쓰기 없음)
 - **무엇을**: gen.md — V043 이 세트 파일 verify.fixes 에 적은 변형 add 171 · remove 1 을 그대로 적용(CV-172) + 구단·기업 영문 약칭 7 허용(CV-173 ②).
 - **어떻게**: scripts/g046-topics-fix.mjs(dry-run → --apply · 죽은 변형 · 세트 안 겹침은 건너뛰고 목록에 — 0) · applied G046 · version +1.
