@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-10 — 제시어 적용 · 노래 표기 · 범위 정리 (G049, GEN · DB = #1491 변형만)
+- **무엇을**: gen.md — V044 · V045 fixes 적용(찬종 결정 3) · 노래 293 표기 변형 · closed scope · 시·군·구 넓히기 · seoul-subway-station 삭제 · #1491 변형.
+- **어떻게**: g049-topics-fix.mjs(dry-run → audit → --apply · 낯선 단어 · 합침 표 · DIFF3) · g049-song-variants.mjs(--fetch KR · JP → 적용 + g049-song-hand.mjs) · g049-scope-muni.mjs(scope · 광역 · 행정시 · 일반구 — 위키백과 2 페이지) · g049-apply-q1491.mjs(두 DB · 백업 · 열린 판 0).
+- **문제**: 가타카나 가운뎃점(・)이 song-check 특수문자 → · 로 바꿈 · 일반구 목록은 하위 페이지라 이름은 지식 · 수는 본문 39 와 도별 표로 맞춤 · 블루마블이 #6891 정답과 정규화가 같음(알고 넣음).
+- **결정**: DG-087.
+- **검증**: topics-check 49 세트 막힘 0 · topics-load dry-run 49 세트 4,432 · topics-load 테스트 5/5 · song-check 막힘 0 · question-check · hint-check-active 막힘 0.
+- **남은 것**: 찬종 메뉴 3 → 1 [1] → 테스트 2 · G050(호선별) · V046.
+
 ## 2026-11-10 — R089 캐치마인드 그리기 도구 (MAIN · D-346)
 - 무엇: op 목록(선 · 채우기) · 공용 1000×1000 격자 · 되돌리기 · 굵기 5 · 팔레트 12 + 세부 색 · 페인트통 · 스포이드 · 도구 띠(옆 기둥 6칸 격자 · 모바일 줄 바꿈) · 단축키.
 - 검사: 봇 draw 21 · ui-check r089 4(새 — 세 화면 격자 해시 같음) · 끝 점검은 R089.txt.
