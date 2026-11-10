@@ -11,13 +11,17 @@
 //   · 되돌리기(draw.undo) · 전체 지우기 = 격자를 op 목록으로 다시 그림
 //   · 도구: 펜 · 지우개(흰 선) · 페인트통 · 스포이드(EyeDropper 있으면 화면 어디든 — 없으면 그림 안에서) · 굵기 5 · 팔레트 12 + 세부 색 · 최근 4 · 되돌리기 · 전체 지우기
 //   · 단축키(채팅 입력 중이 아닐 때 · 출제자만): P 펜 · E 지우개 · B 페인트통 · I 스포이드 · [ ] 굵기 · Ctrl+Z 되돌리기 · Ctrl+Y · Ctrl+Shift+Z 다시 실행(R090)
-// ★ 상태는 글자 + 기호(사무실 흑백 — D-324): 맞힌 사람 ✓ · 출제자 ✎ · 도구는 글자 라벨.
+// ★ 상태는 글자 + 기호(사무실 흑백 — D-324): 맞힌 사람 ✓ · 출제자 ✎.
+// ★★ R095 (D-352 · #116): 도구 · 되돌리기 줄 = 앱 아이콘(Lucide) · 이름은 aria-label/title · 팔레트 = 도구 줄 끝 "지금 색" 점 → 그 밑 팝업(12색 · 세부 색 · 최근 4)
 // =============================================================================
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
+import { Eraser, PaintBucket, Pencil, Pipette, Redo2, Trash2, Undo2, type LucideIcon } from 'lucide-react';
 import { DRAW, DRAW_ERASE_HEX, DRAW_HINT_KINDS, DRAW_HINT_LABEL, DRAW_PALETTE, DRAW_WIDTH_STEPS, floodFill, gridHash, hexToRgb, hintKind } from '@quiz/shared';
 import type { DrawStrokeView, DrawView, PlayerView } from './useRoom.js';
+import Icon from './Icon.js';
+import { useDismiss } from './useDismiss.js';
 
 interface Props {
   socket: Socket;
@@ -28,6 +32,8 @@ interface Props {
 }
 
 type Tool = 'pen' | 'eraser' | 'fill' | 'pick';
+/** ★ R095 (D-352 · #116 "페인트통 이런 식이 아니라 아이콘으로") — 도구 = 앱 아이콘 세트(Lucide · Icon.tsx) · 이름은 aria-label · title */
+const TOOL_ICON: Record<Tool, LucideIcon> = { pen: Pencil, eraser: Eraser, fill: PaintBucket, pick: Pipette };
 const G = DRAW.SIZE;
 const isFill = (s: DrawStrokeView) => s.kind === 'fill';
 const colorOfOp = (c: string) => (c === 'erase' ? DRAW_ERASE_HEX : c);
@@ -248,6 +254,10 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
   const [tool, setTool] = useState<Tool>('pen');
   const [color, setColorRaw] = useState<string>(DRAW_PALETTE[0]);
   const [recent, setRecent] = useState<string[]>([]);
+  // ★ R095 — 팔레트 = 지금 색 점 하나 → 누르면 그 밑 팝업(12색 · 세부 색 · 최근 4) · 바깥 · Esc 로 닫힘
+  const [palOpen, setPalOpen] = useState(false);
+  const closePal = useCallback(() => setPalOpen(false), []);
+  useDismiss(palOpen, closePal, '.draw-toolrow');
   const [penW, setPenW] = useState(1);
   const [eraseW, setEraseW] = useState(3);
   const setColor = (c: string) => {
@@ -472,21 +482,79 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
         <div className="draw-side">
           {canDraw && (
             <div className="draw-tools" data-draw-tools data-tool={tool}>
-              {(['pen', 'eraser', 'fill'] as const).map((t) => (
-                <button key={t} type="button" className={tool === t ? 'draw-tool on' : 'draw-tool'} data-draw-tool={t} aria-pressed={tool === t} title={`${TOOL_LABEL[t]} (${KEY[t]})`} onClick={() => setTool(t)}>
-                  {TOOL_LABEL[t]}
+              <div className="draw-toolrow">
+                {(['pen', 'eraser', 'fill'] as const).map((t) => (
+                  <button key={t} type="button" className={tool === t ? 'draw-tool draw-ico on' : 'draw-tool draw-ico'} data-draw-tool={t} aria-pressed={tool === t} aria-label={TOOL_LABEL[t]} title={`${TOOL_LABEL[t]} (${KEY[t]})`} onClick={() => setTool(t)}>
+                    <Icon icon={TOOL_ICON[t]} />
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  className={tool === 'pick' ? 'draw-tool draw-ico on' : 'draw-tool draw-ico'}
+                  data-draw-tool="pick"
+                  data-eyedropper={ED ? 'system' : 'canvas'}
+                  aria-label="스포이드"
+                  title={ED ? '스포이드 — 화면 어디든(다른 창 · 모니터도) (I)' : '스포이드 — 그림 안에서 색 집기 (I)'}
+                  onClick={() => void pick()}
+                >
+                  <Icon icon={TOOL_ICON.pick} />
                 </button>
-              ))}
-              <button
-                type="button"
-                className={tool === 'pick' ? 'draw-tool on' : 'draw-tool'}
-                data-draw-tool="pick"
-                data-eyedropper={ED ? 'system' : 'canvas'}
-                title={ED ? '스포이드 — 화면 어디든(다른 창 · 모니터도) (I)' : '스포이드 — 그림 안에서 색 집기 (I)'}
-                onClick={() => void pick()}
-              >
-                스포이드
-              </button>
+                <button
+                  type="button"
+                  className={palOpen ? 'draw-color-dot open' : 'draw-color-dot'}
+                  data-draw-color-dot={color}
+                  aria-label={`색 고르기 — 지금 ${color}`}
+                  aria-expanded={palOpen}
+                  title="색 고르기"
+                  onClick={() => setPalOpen((o) => !o)}
+                >
+                  <span className="draw-swatch" style={{ background: color }} />
+                </button>
+                {palOpen && (
+                  <div className="draw-color-pop" data-draw-color-pop role="dialog" aria-label="색">
+                    <div className="draw-palette" role="group" aria-label="색">
+                      {DRAW_PALETTE.map((c) => (
+                        <button
+                          key={c}
+                          type="button"
+                          className={color === c && tool !== 'eraser' ? 'draw-color on' : 'draw-color'}
+                          aria-label={c}
+                          title={c}
+                          data-draw-color={c}
+                          onClick={() => {
+                            setColor(c);
+                            setPalOpen(false);
+                          }}
+                        >
+                          <span className="draw-swatch" style={{ background: c }} />
+                        </button>
+                      ))}
+                    </div>
+                    <div className="draw-custom">
+                      <label className="draw-color draw-color-custom" title="세부 색">
+                        <input type="color" data-draw-custom value={color} onChange={(e) => setColor(e.target.value)} aria-label="세부 색" />
+                        <span>세부 색</span>
+                      </label>
+                      {recent.map((c) => (
+                        <button
+                          key={c}
+                          type="button"
+                          className={color === c && tool !== 'eraser' ? 'draw-color on' : 'draw-color'}
+                          data-draw-recent={c}
+                          aria-label={`최근 ${c}`}
+                          title={`최근 ${c}`}
+                          onClick={() => {
+                            setColor(c);
+                            setPalOpen(false);
+                          }}
+                        >
+                          <span className="draw-swatch" style={{ background: c }} />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <div className="draw-widths" role="group" aria-label={tool === 'eraser' ? '지우개 굵기' : '펜 굵기'}>
                 {DRAW_WIDTH_STEPS.map((w, i) => (
                   <button key={w} type="button" className={widthIdx === i ? 'draw-width on' : 'draw-width'} data-draw-width={w} aria-pressed={widthIdx === i} title={`굵기 ${w} ([ ])`} onClick={() => setWidthIdx(i)}>
@@ -494,32 +562,17 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
                   </button>
                 ))}
               </div>
-              <div className="draw-palette" role="group" aria-label="색">
-                {DRAW_PALETTE.map((c) => (
-                  <button key={c} type="button" className={color === c && tool !== 'eraser' ? 'draw-color on' : 'draw-color'} aria-label={c} title={c} data-draw-color={c} onClick={() => setColor(c)}>
-                    <span className="draw-swatch" style={{ background: c }} />
-                  </button>
-                ))}
+              <div className="draw-editrow">
+                <button type="button" className="draw-tool draw-ico" data-draw-undo aria-label="되돌리기" title="되돌리기 (Ctrl+Z)" disabled={hist.undo === 0 && !cur.current} onClick={undo}>
+                  <Icon icon={Undo2} />
+                </button>
+                <button type="button" className="draw-tool draw-ico" data-draw-redo aria-label="다시 실행" title="다시 실행 (Ctrl+Y)" disabled={hist.redo === 0} onClick={redo}>
+                  <Icon icon={Redo2} />
+                </button>
+                <button type="button" className="draw-tool draw-ico" data-draw-clear aria-label="전체 지우기" title="전체 지우기" onClick={() => socket.emit('draw.clear', {})}>
+                  <Icon icon={Trash2} />
+                </button>
               </div>
-              <div className="draw-custom">
-                <label className="draw-color draw-color-custom" title="세부 색">
-                  <input type="color" data-draw-custom value={color} onChange={(e) => setColor(e.target.value)} aria-label="세부 색" />
-                </label>
-                {recent.map((c) => (
-                  <button key={c} type="button" className={color === c && tool !== 'eraser' ? 'draw-color on' : 'draw-color'} data-draw-recent={c} title={`최근 ${c}`} onClick={() => setColor(c)}>
-                    <span className="draw-swatch" style={{ background: c }} />
-                  </button>
-                ))}
-              </div>
-              <button type="button" className="draw-tool" data-draw-undo title="되돌리기 (Ctrl+Z)" disabled={hist.undo === 0 && !cur.current} onClick={undo}>
-                되돌리기
-              </button>
-              <button type="button" className="draw-tool" data-draw-redo title="다시 실행 (Ctrl+Y)" disabled={hist.redo === 0} onClick={redo}>
-                다시 실행
-              </button>
-              <button type="button" className="draw-tool" data-draw-clear onClick={() => socket.emit('draw.clear', {})}>
-                전체 지우기
-              </button>
               <span className="draw-tool-label dim">힌트</span>
               {DRAW_HINT_KINDS.map((k) => (
                 <button
