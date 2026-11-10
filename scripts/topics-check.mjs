@@ -17,7 +17,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { flexCanon, normalizeAnswer } from '../shared/dist/index.js';
+import { flexCanon, normalizeAnswer, stripArticle, stripParens } from '../shared/dist/index.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'data/minigame/topics');
@@ -39,6 +39,12 @@ const SPECIAL = /[^\p{L}\p{N} .·'\-&:!?]/u; // 변형에 허용: 공백 · 마�
 const LATIN = /[A-Za-z]/;
 const HANGUL = /[가-힣]/;
 export const canon = (s) => flexCanon(String(s ?? ''));
+// ★ R090 (D-347) — 유일성 막힘은 기호를 지우기 전 꼴(R089 표준형)로 본다. 기호를 지운 꼴만 겹치면 경고(판정 맵이 그 열쇠를 빼 원꼴로만 맞는다 — 니드런♀ · 니드런♂)
+const OLD_PUNCT = /[·・･‧∙.,，~〜～]/g;
+export const canonStrict = (s) => {
+  const t = stripArticle(stripParens(String(s ?? '').normalize('NFC')));
+  return normalizeAnswer(/^[\d\s.,，]+$/.test(t) ? t.replace(/[,，]/g, '') : t.replace(OLD_PUNCT, ''));
+};
 
 export function checkTopic(t, file) {
   const err = []; const warn = []; const stat = { latinVariants: 0, deadVariants: 0 };
@@ -67,7 +73,7 @@ export function checkTopic(t, file) {
   if (t.kind === 'open' && drawSet && ((!drawPart && items.length < 40) || items.length > 2000)) err.push(`캐치 세트 수 ${items.length}(40~2,000 — 18 §12 · G051)`);
   if (t.kind === 'open' && !liarSet && !drawSet && (items.length < 60 || items.length > 120)) err.push(`open 수 ${items.length}(60~120)`);
   if (t.kind === 'closed' && (items.length < 20 || items.length > 400)) warn.push(`closed 수 ${items.length}(기준 50~250 · 공식 목록 전부가 원칙)`);
-  const byName = new Map(); const byVar = new Map();
+  const byName = new Map(); const byVar = new Map(); const byFlex = new Map();
   let lastNum = 0;
   items.forEach((it, i) => {
     // ★ G039: id 는 <slug>-NNN · 앞 항목보다 큰 번호(지운 번호는 다시 안 씀 · 더한 항목은 마지막 번호 + 1 — 18 §9)
@@ -102,14 +108,17 @@ export function checkTopic(t, file) {
     if ([...String(it.name ?? '')].length < 2 && (liarSet || drawSet || 'fool' in it)) err.push(`${it.id}: 1글자 name(18 §12)`);
     if ('label' in it && (typeof it.label !== 'string' || !it.label.trim() || [...it.label].length > 40)) err.push(`${it.id}: label 문자열 · 빈칸 아님 · 40자 이하`);
     if (/[(（]/.test(it.name ?? '') && !('label' in it) || [...(it.name ?? '')].length > 20 && !('label' in it)) warn.push(`${it.id}: label 없음(괄호 묶음 · 20자 넘는 name — CV-165 ②)`);
-    const n = canon(it.name);
+    const n = canonStrict(it.name);
     if (!n) err.push(`${it.id}: name 정규화가 빔`);
     if (byName.has(n)) err.push(`유일성: name 겹침 ${it.id} '${it.name}' = ${byName.get(n)}`); else byName.set(n, it.id);
+    const nf = canon(it.name);
+    if (nf !== n && byFlex.has(nf) && byFlex.get(nf) !== it.id) warn.push(`기호 지운 꼴 겹침 '${it.name}' ${it.id} ↔ ${byFlex.get(nf)} — 원꼴로만 맞음(R090)`);
+    else byFlex.set(nf, it.id);
     for (const v of it.variants ?? []) {
       if (typeof v !== 'string' || !v.trim()) { err.push(`${it.id}: 빈 변형`); continue; }
       if (SPECIAL.test(v)) err.push(`${it.id}: 변형 특수문자 '${v}'`);
       if (LATIN.test(v) && !HANGUL.test(v)) stat.latinVariants++;
-      const c = canon(v);
+      const c = canonStrict(v);
       if (c === n) { stat.deadVariants++; warn.push(`${it.id}: 죽은 변형 '${v}'(name 과 같음)`); continue; }
       if (byVar.has(c) && byVar.get(c) !== it.id) err.push(`유일성: 변형 겹침 '${v}' ${it.id} ↔ ${byVar.get(c)}`);
       byVar.set(c, it.id);

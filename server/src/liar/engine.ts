@@ -16,7 +16,7 @@
 // =============================================================================
 
 import { randomInt } from 'node:crypto';
-import { LIAR, finalPasses, liarRoundScores, matchTopic, normalizeAnswer, tallyVotes, type LiarMode, type LiarOutcome, type LiarPhase } from '@quiz/shared';
+import { LIAR, finalPasses, liarRoundScores, flexCanon, matchTopic, normalizeAnswer, tallyVotes, type LiarMode, type LiarOutcome, type LiarPhase } from '@quiz/shared';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import { emitRoomPerPlayer } from '../rooms/emit.js';
 import type { Player, Room } from '../rooms/types.js';
@@ -169,14 +169,15 @@ export function pickLiar(participants: readonly string[], count: ReadonlyMap<str
 
 /** 키워드 열쇠(이름 · 화면 이름 · 변형의 정규화 꼴 — 2자 이상) */
 function keysOf(item: TopicSet['items'][number]): string[] {
-  return [...new Set([item.name, item.label, ...item.variants].map((x) => normalizeAnswer(x)).filter((x) => x.length >= 2))];
+  return [...new Set([item.name, item.label, ...item.variants].flatMap((x) => [normalizeAnswer(x), flexCanon(String(x ?? ''))]).filter((x) => x.length >= 2))];
 }
 
 /** ★ 글에 키워드가 들어 있나(그대로 · 변형 · 문장 속) */
 export function mentionsKeyword(text: string, r: Pick<LiarRound, 'set' | 'itemId' | 'keys'>): boolean {
   if (matchTopic(r.set.matcher, text) === r.itemId) return true;
   const n = normalizeAnswer(text);
-  return r.keys.some((k) => n.includes(k));
+  const f = flexCanon(text);
+  return r.keys.some((k) => n.includes(k) || f.includes(k));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

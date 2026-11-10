@@ -25,6 +25,7 @@ import {
   firstInitial,
   isDrawColor,
   matchTopic,
+  flexCanon,
   normalizeAnswer,
   type DrawColor,
   type DrawHintKind,
@@ -142,12 +143,14 @@ export function nextDrawer(participants: readonly string[], last: string | null)
   return participants[(i + 1) % participants.length] ?? participants[0]!;
 }
 
-const keysOf = (item: TopicSet['items'][number]) => [...new Set([item.name, item.label, ...item.variants].map((x) => normalizeAnswer(x)).filter((x) => x.length >= 2))];
+// ★ R090 — 원꼴 · 지운 꼴(flexCanon — 기호 전부) 둘 다
+const keysOf = (item: TopicSet['items'][number]) => [...new Set([item.name, item.label, ...item.variants].flatMap((x) => [normalizeAnswer(x), flexCanon(String(x ?? ''))]).filter((x) => x.length >= 2))];
 
 export function drawMentions(text: string, r: Pick<DrawRound, 'set' | 'itemId' | 'keys'>): boolean {
   if (matchTopic(r.set.matcher, text) === r.itemId) return true;
   const n = normalizeAnswer(text);
-  return r.keys.some((k) => n.includes(k));
+  const f = flexCanon(text);
+  return r.keys.some((k) => n.includes(k) || f.includes(k));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

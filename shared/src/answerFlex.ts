@@ -5,6 +5,7 @@
 // ★★ 01 10장 "오타 허용이나 유사도 판정을 하지 않는다" 는 그대로다 — 글자를 **지우기만** 하는 변환 넷:
 //   ① paren   괄호와 괄호 안 글자 — "이순신(李舜臣)" = "이순신"            (정답 · 제출 둘 다)
 //   ② punct   가운뎃점 · 중점 · 마침표 · 쉼표 · 물결 — "U.S.A" = "USA"     (정답 · 제출 둘 다 · 숫자만인 글의 소수점은 둔다)
+//            ★ R090 — 정규화 뒤 **문장부호 · 기호 전부**(stripSymbols · 숫자 소수점 · 음수 부호 · 분수 빗금만 남김)
 //   ③ ending  끝의 "이다 · 입니다 · 요 · 임" — "이순신이다" = "이순신"      (★ 제출 쪽만 — 정답 "사이다" 가 "사" 가 되지 않게 · 남은 글이 2자 이상)
 //   ④ article 영문 정답 앞의 관사 the · a · an — "The Beatles" = "Beatles" (정답 · 제출 둘 다 · 한글이 없을 때만)
 // ★ 순서: ① → ④ → ② → 정규화(normalizeAnswer). 변환 뒤 빈 글은 버린다.
@@ -31,7 +32,8 @@ export function stripParens(s: string): string {
 /** ★ 숫자만인 글(3.14 · 1,000)은 소수점을 지우지 않는다 — "314" 가 "3.14" 로 맞지 않게(쉼표만 뗀다) */
 export function stripPunct(s: string): string {
   if (/^[\d\s.,，]+$/.test(s)) return s.replace(/[,，]/g, '');
-  return s.replace(PUNCT_RE, '');
+  // ★ R090 — 숫자 사이 마침표는 여기서 두고 stripSymbols 가 정한다(수 꼴이면 남김 · 이름 속이면 지움)
+  return s.replace(PUNCT_RE, (m, i: number) => (m === '.' && /\d/.test(s[i - 1] ?? '') && /\d/.test(s[i + 1] ?? '') ? m : ''));
 }
 /** 끝맺음 — 끝의 물음표 · 느낌표 · 마침표는 먼저 뗀다("이순신이다!" → "이순신"). 끝맺음이 없으면 그대로(문장부호만 떼지 않는다) */
 export function stripEnding(s: string): string {
@@ -42,13 +44,46 @@ export function stripArticle(s: string): string {
   return HANGUL_RE.test(s) ? s : s.replace(ARTICLE_RE, '');
 }
 
-/** 정답 · 제출 공통 표준형 — 켜진 ①④② 를 적용하고 정규화 */
+/**
+ * ★★ R090 (D-347 · 찬종 "특수문자 때문에 틀리는 경우는 없도록") — 정규화된 글에서 **문장부호 · 기호 전부**(\p{P} · \p{S}) 지움.
+ *   예외(다른 수가 되므로 남김): ⓐ 숫자 사이 소수점(3.14 — 수 꼴 정답만 · 4.19 혁명은 지움) ⓑ 숫자 앞 음수 부호(-40 · 영하 -40 — 앞이 숫자 · 영문이 아닐 때) ⓒ 숫자 사이 분수 빗금(1/2 — 수 꼴만)
+ *   ★ 지우고 남은 글이 1자 이하(빈 글 포함)면 지우지 않는다 — C++ · C# · A+ 는 원꼴로만 맞는다(하드코딩 아님 · 일반 규칙)
+ *   ★ 같은 세트 안 다른 항목과 지운 꼴이 같아지면 그 열쇠는 판정 맵에서 뺀다(buildTopicMatcher — 원꼴 일치만)
+ *   ★ 저장 열쇠(question_answers.answer_norm = normalizeAnswer)는 바꾸지 않는다 — 이 단계는 판정 때 양쪽(정답 원문 · 제출)에 적용(flexCanon)
+ */
+export function stripSymbols(norm: string): string {
+  const cs = [...norm];
+  // ★ 소수점 · 분수 빗금은 **수 꼴 정답**(한글 1자 이하 — 3.14 · -40도 · 1/2 · 3.5배)에서만 남긴다 — 이름 속 숫자(4.19 혁명 · 7.4 남북공동성명)는 지운다
+  const numeric = (norm.match(/[가-힣]/g) ?? []).length <= 1;
+  let out = '';
+  for (let i = 0; i < cs.length; i += 1) {
+    const ch = cs[i]!;
+    if (!SYMBOL_RE.test(ch)) {
+      out += ch;
+      continue;
+    }
+    const prev = cs[i - 1] ?? '';
+    const next = cs[i + 1] ?? '';
+    const dPrev = DIGIT_RE.test(prev);
+    const dNext = DIGIT_RE.test(next);
+    if ((ch === '.' || ch === '/') && dPrev && dNext && numeric) out += ch;
+    else if (ch === '-' && dNext && !ALNUM_RE.test(prev)) out += ch;
+  }
+  // ★ 지우고 남은 글이 1자 이하면 기호가 뜻의 전부다(C++ · C# · A+ · "!!") — 지우지 않은 꼴 그대로(원꼴 일치만)
+  return out !== norm && [...out].length < 2 ? norm : out;
+}
+const SYMBOL_RE = /[\p{P}\p{S}]/u;
+const DIGIT_RE = /[0-9]/;
+const ALNUM_RE = /[0-9a-z]/;
+
+/** 정답 · 제출 공통 표준형 — 켜진 ①④② 를 적용하고 정규화(② punct 는 R090 부터 기호 전부 — stripSymbols) */
 export function flexCanon(raw: string, enabled: readonly FlexTransform[] = FLEX_ENABLED): string {
   let s = raw.normalize('NFC');
   if (enabled.includes('paren')) s = stripParens(s);
   if (enabled.includes('article')) s = stripArticle(s);
   if (enabled.includes('punct')) s = stripPunct(s);
-  return normalizeAnswer(s);
+  const n = normalizeAnswer(s);
+  return enabled.includes('punct') ? stripSymbols(n) : n;
 }
 
 /** 문제 하나의 표준형 정답 집합(정규화 정답과 다른 것만) — 문제 시작 때 한 번 만든다 */

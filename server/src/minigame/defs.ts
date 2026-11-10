@@ -54,6 +54,7 @@ import {
   QUIZ_SPEC,
   PHOTO_REVEAL_MS,
   countryLabel,
+  flexCanon,
   normalizeAnswer,
   pctOff,
   pickQuizItems,
@@ -547,7 +548,8 @@ const worldprice: MinigameDef = {
 };
 
 const DUMMY_SHAPE: Record<string, string> = { 'dummy-photo-1': 'circle', 'dummy-photo-2': 'triangle', 'dummy-photo-3': 'square' };
-const answersOf = (a: string, alt: readonly string[]) => [...new Set([a, ...alt].map((x) => normalizeAnswer(x)).filter(Boolean))];
+// ★ R090 — 원꼴 · 지운 꼴(flexCanon) 둘 다 · 제출도 둘 다로 본다
+const answersOf = (a: string, alt: readonly string[]) => [...new Set([a, ...alt].flatMap((x) => [normalizeAnswer(x), flexCanon(x)]).filter(Boolean))];
 /** ★ R063 — 사진 난이도 3 의 시간 배수 */
 const PHOTO_HARD_TIME_X = 1.5;
 
@@ -606,7 +608,8 @@ const photo: MinigameDef = {
     const elapsed = deviceElapsed(obj, spec, ctx, true);
     if (elapsed === null) return null;
     const tries = Number(ctx.prev?.extra?.tries ?? 0) + 1;
-    const ok = ((spec.secret?.answers as string[]) ?? []).includes(normalizeAnswer(text));
+    const ans = (spec.secret?.answers as string[]) ?? [];
+    const ok = ans.includes(normalizeAnswer(text)) || ans.includes(flexCanon(text));
     if (ok) {
       return {
         input: { text, elapsedMs: Math.round(elapsed), tries },

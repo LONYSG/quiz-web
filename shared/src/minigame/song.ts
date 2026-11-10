@@ -55,7 +55,7 @@ export function songMatcher(s: SongCore): Map<string, string> {
   return buildTopicMatcher([
     { id: 'title', name: s.title, variants: tv },
     { id: 'artist', name: s.artist, variants: av },
-  ]);
+  ], { dropFlexConflicts: false });
 }
 
 export function matchSong(matcher: ReadonlyMap<string, string>, raw: string): SongPart | null {

@@ -118,13 +118,25 @@ function keysOf(s: string): string[] {
 }
 
 /**
- * ★ 판정 맵: 열쇠 → 항목 id. 같은 열쇠가 두 항목에 걸리면(세트 검사가 막지만 방어) 먼저 것.
- *   name 의 열쇠가 다른 항목의 변형 열쇠보다 앞선다.
+ * ★ 판정 맵: 열쇠 → 항목 id. 같은 원꼴 열쇠가 두 항목에 걸리면(세트 검사가 막지만 방어) 먼저 것.
+ *   name 의 열쇠가 다른 항목의 변형 열쇠보다 앞선다. ★ R090 — 지운 꼴이 두 항목에 걸리면 그 열쇠는 뺀다(dropFlexConflicts · 노래는 끔 — 제목 · 가수 둘 다 정답).
  */
-export function buildTopicMatcher(items: readonly TopicItemLite[]): Map<string, string> {
+export function buildTopicMatcher(items: readonly TopicItemLite[], opts: { dropFlexConflicts?: boolean } = {}): Map<string, string> {
   const m = new Map<string, string>();
-  for (const it of items) for (const k of keysOf(it.name)) if (!m.has(k)) m.set(k, it.id);
-  for (const it of items) for (const v of it.variants ?? []) for (const k of keysOf(v)) if (!m.has(k)) m.set(k, it.id);
+  // ① 원꼴(정규화) 열쇠 — name 이 변형보다 앞선다 · 같은 열쇠면 먼저 것
+  for (const it of items) for (const s of [it.name, ...(it.variants ?? [])]) {
+    const k = normalizeAnswer(s);
+    if (k && !m.has(k)) m.set(k, it.id);
+  }
+  // ② ★ R090 — 지운 꼴(flexCanon) 열쇠: 원꼴 열쇠에 없고 · **다른 항목의 지운 꼴과 겹치지 않는 것만**(겹치면 둘 다 원꼴로만 — D-347 ⓑ)
+  const flex = new Map<string, Set<string>>();
+  for (const it of items) for (const s of [it.name, ...(it.variants ?? [])]) {
+    const k = flexCanon(s);
+    if (!k || m.has(k)) continue;
+    (flex.get(k) ?? flex.set(k, new Set()).get(k)!).add(it.id);
+  }
+  const drop = opts.dropFlexConflicts ?? true;
+  for (const [k, ids] of flex) if (ids.size === 1 || !drop) m.set(k, [...ids][0]!);
   return m;
 }
 
