@@ -1,36 +1,25 @@
-[GEN G047 — ★ **라이어 제시어 재탄생**(찬종 2026-11-09 — 외부 목록은 씨앗 · "보편성 · 게임성으로 우리만의 DB" · 2026 시점 · 바보형 쌍) — 주제 **15**(toz 9 + 생활 6) × 40~60 ≈ 750 · 항목마다 **`fool` 2~3**(바보형 단어 · 같은 소분류 · 1:1 짝 금지) · **`era`**(classic / modern · 한철 유행 제외) · **`sub`**(소분류) · 씨앗 = toz 6 페이지(쌍 962) + 우리 open 14 세트 + GEN 지식 · ★ **전부 교체**(찬종 2026-11-09 추가: "기존 db 재활용하는건 퀄리티가 너무 떨어지니까 … 새로 재생성한 키워드들로 전부 교체") — 새 파일 **`liar-<theme>.json` 15** · 옛 open 14 는 씨앗으로만 읽고 **삭제** · closed 세트 liar/draw **전부 끔** · topics-check 칸 추가 · 파일만 · DB 없음 · DG-085 · C115 · 3시간 · G046 과 같은 창에서 이어서 · 끝나면 gen-next2.md(G048 캐치마인드)]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
-TASK: 찬종 2026-11-09: "이 목록들을 기반으로 gen 과 verify 에게 **새롭게 생성**을 시킬 거야 … 범용성 좋고 게임성이 좋은 단어들은 가져다가 쓰되, **레전드급이라서 세대/시대를 불문하고 보편적으로 아는 키워드는 남기고 유행을 탄다든지 단어 자체가 너무 어렵거나 게임성이 떨어진다든지 하는 단어들은 제외** … 라이어 게임에도 2가지 모드 — **기본형**(라이어에게 '키워드를 알 수 없다' 문구) · **바보형**(라이어라는 사실을 안 밝히고 정답이 아닌 다른 키워드) … '호날두' 를 받았는데 정답이 '메시' 일 수 있겠다고 생각하면 라이어가 정답을 눈치채기 쉬움 — 비슷한 카테고리지만 너무 유추하기 쉬워도 안 됨 … **2026년 현 시점 · 좀더 현대적이고 센스 있는 단어들로 재개편**". 찬종 결정(submit): 바보형 거리 = **같은 소분류 · 1:1 짝 금지 · 후보 2~3** · 주제 = **toz 9 + 생활 6 = 15 · 각 40~60** · **인물 ✓**(라이어 · 캐치 둘 다) · (캐치 풀은 G048). 정본 = docs/18 **§12**(설계가 오늘 신설 — 제시어 세트 칸 · 기준) · §9 "제시어 풀 원칙" 개정 줄. closed 세트(나라 · 디즈니 · 포켓몬 …)의 liar/draw 는 **많이 말하기 전용**으로 돌리고 전부 끈다(찬종 "어거지로 끼워맞추던 키워드는 적용하지 말고").
-실행 모델: Opus 5.5 (G046 과 같은 창)
+[GEN G050 — ★ **수도권 전철 호선별 세트**(찬종 2026-11-09 "지하철은 보통 1호선 전체 · 2호선 전체 · 수인분당선 전체 이런 식 — 호선 기준으로 바꿔" · 테스트 1 제보 dev #117 · #118) — **13 세트**(1~9호선 각 전 구간 + 수인분당선 · 신분당선 · 경의중앙선 · 공항철도) · closed · candidate · 머리 `group: "metro"` · 파일만 · DB 없음 · DG-088 · C119 · 2시간 · 끝나면 VERIFY V046]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
+TASK: 옛 `seoul-subway-station`(서울 시내 역만)은 "1~9호선 역" 이라는 이름과 범위가 어긋나 수원 · 금정 · 광명이 오답이 됐다(18 §9 "세트 이름 = 정답 범위"). G049 가 그 파일을 지웠다. 이 라운드는 **노선 하나 = 세트 하나**로 다시 모은다 — 플레이어가 "1호선" 하면 떠올리는 전 구간(소요산·연천 ~ 인천 · 신창 · 광명 · 서동탄 포함)이 정답이다.
+실행 모델: Opus 5.5 (G049 와 같은 창)
 
-■ 고정 규칙: docs/16 5-2 그대로. 13 **C115** · README G · 05 Track D · 06 · 07 **DG-085** · 18 §12 "★ G047 실측" 한 줄. DB 없음(qid 매핑 읽기만). 하위 에이전트 ≤ 4(주제 묶음별 초안 — opus · 지시서 한 파일) · 웹: 씨앗 7 페이지(아래 · curl 또는 WebFetch — 키 없음) + 인지도 확인 ≤ 30(의심 항목만 — 나무위키/위키 제목 · 검색).
-■ 동시 라운드 — MAIN(R086 끝 · 다음 라운드 전) · VERIFY V044 는 **이 라운드 뒤** 시작(같은 파일) → 겹침 없음. 문서 분담: G047 = 07 DG-085 · 13 C115 · 18 §12 한 줄 · 05 · 06 · README G.
+■ 고정 규칙: docs/16 5-2 그대로. 07 **DG-088** · 13 **C119** · README G · 05 Track D · 06 · 18 §9 "★ G050 실측" 한 줄. DB 없음. 하위 에이전트 0 · 웹: 노선마다 위키백과 한 페이지(curl · 원문은 `audit/g050-raw/` — source.read 에 주소 · 읽은 날).
+■ 동시 라운드: 없음(찬종은 테스트 2 중일 수 있음 — 파일만 쓰므로 무관).
 
-■ 씨앗(seed) — 받아서 `audit/g047-raw/seed/` 에 원문 + 파싱 json 으로 둔다(출처 · 받은 시각 · 라이선스 메모: toz = 참고 · 재구성 / 우리 open 세트 = 우리 것)
- toz-app 라이어(쌍 표 — `<table>` 의 `<td>` 두 칸 = 시민 단어 / 임포스터 단어 · 표 앞 `<h2|h3>` 이 소주제 · 설계 2026-11-09 실측 전부 200):
-  https://toz-app.com/ko/blog/party-games/imposter-game-words (208 쌍 — 쉬움 25 · 중간 30 · 매운맛 25 · 스포츠 13 · 영화 13 · 애니 13 · 음악 13 · 연예인 13 · 동물 15 · 음식 18 · 장소 15 · 브랜드 15)
-  …/movies-imposter-game-words (142) · …/anime-imposter-game-words (156) · …/celebrities-imposter-game-words (153) · …/music-imposter-game-words (152) · …/sports-imposter-game-words (151) — 합 962 쌍 · 고유 시민 단어 811
- 우리 open 14 세트(`data/minigame/topics/` kind open — animal 81 · food 81 · job 72 · place 71 · instrument 63 · sport 68 · object 100 · vehicle 60 · movie-drama 80 · character 80 · fruit-vegetable 60 · snack-drink 67 · proverb 80 · idiom4 60) — 이 중 **proverb · idiom4 는 캐치마인드 전용**이라 G048 이 가져간다(이 라운드에서 지우지 않음).
+■ 먼저 읽기: docs/18 **§9**(칸 · closed 규칙 · "세트 이름 = 정답 범위" · scope · 변형 규칙 — 역 붙은 꼴/뗀 꼴) · `git show HEAD~N:data/minigame/topics/seoul-subway-station.json`(옛 세트의 변형 꼴 · V039 · V043 fixes 로 쌓인 것 — **같은 역은 그 변형을 물려받는다**) · `scripts/topics-check.mjs` · `ai-out/G049.txt`.
 
-■ 설계 결정(18 §12 — 구현 단위)
-① **주제 15 · 파일(★ 전부 새로 — 찬종 "기존 db 재활용 X · 전부 교체")**: 새 slug **`liar-movie`(영화·드라마) · `liar-character`(애니·만화·게임 캐릭터) · `liar-celebrity`(연예인·유명인 — 배우 · 예능인 · 가수 개인 · 스포츠 스타 · 역사 인물 X) · `liar-music`(가수·그룹 · 노래 · 장르 · 밴드) · `liar-sport`(종목 · 선수 · 팀) · `liar-brand`(국내외 · 앱 · 프랜차이즈) · `liar-animal` · `liar-food` · `liar-place` · `liar-object`(사물) · `liar-vehicle` · `liar-job` · `liar-fruit`(과일·채소) · `liar-snack`(간식·음료) · `liar-instrument`** · id `liar-food-001`~ · 각 **40~60**(liar true · draw false) · nameKo 짧게("영화·드라마" · "연예인"). **옛 open 14 파일**(animal · food · job · place · instrument · sport · object · vehicle · movie-drama · character · fruit-vegetable · snack-drink — 씨앗으로 읽은 뒤 **삭제** · proverb · idiom4 는 G048 이 삭제)은 단어를 그대로 옮기지 않는다 — 같은 기준으로 하나하나 판단해 남길 것만 새 id 로. 경험 기록(`liar|food-001` 꼴)은 옛 id 라 자연히 무효 — 괜찮다(0절에 한 줄).
-② **단어 기준**(찬종): ⓐ **보편성** — 세대 불문(20~50대 한국인 대부분이 아는) = `era: "classic"` · 2015 이후 정착해 2026 에도 통하는 것 = `era: "modern"`(뉴진스 · 오징어 게임 · 쿠팡 꼴) · **한철 유행 · 올해 밈 · 특정 팬덤만 아는 것은 제외** ⓑ **게임성** — 한마디로 돌려 설명할 거리가 있고(라이어 게임) 너무 쉬운 상위어(물건 · 사람)도 너무 좁은 것(특정 모델명)도 X ⓒ **난이도 태그 `diff`** 1 쉬움(아이도) · 2 보통 · 3 어려움(고인물) — 세트 안 비율 ≈ 4:4:2 ⓓ 2026 센스 — 씨앗에 없어도 지금 모두가 아는 것은 넣는다(예: 영화 '파묘' · 캐릭터 '쿠로미' — GEN 판단 · era 표시) ⓔ 1글자 X · 상하위 중복 X · 세트 사이 같은 단어 허용(사과 = 과일·채소 세트 · 음식 세트 둘 다 가능 — 단 한 세트 안에서는 유일).
-③ **바보형 `fool`**(항목마다 **2~3** · 문자열 배열 · 그 세트 안 다른 항목이 아니어도 됨 — 단어만): **같은 소분류(`sub`)** 안에서 · **1:1 라이벌·고정 짝 금지**(호날두↔메시 · 코카콜라↔펩시 · 삼성↔애플 · 맥도날드↔버거킹 · 톰↔제리) · 같은 작품 출신 금지(해리 포터 ↔ 론) · "바보 단어를 받은 사람이 정답을 2개 안으로 좁힐 수 없을 것" — 예: 호날두 → [네이마르, 손흥민, 음바페] · 김치 → [깍두기, 된장찌개, 파전] · 아이유 → [태연, 볼빨간사춘기, 백예린]. `sub` 는 자유 글(예 "축구 선수" · "국물 음식" · "여성 솔로 가수") — VERIFY 가 거리 판정에 쓴다.
-④ **그 밖 칸**: `variants`(15 §2 · 라이어 키워드 맞히기 판정에 쓰임) · `qid`(--fill-qid) · `draw: false`(라이어 세트는 캐치마인드에 안 씀 — G048 이 따로) · `tags`(소분류 · era 는 칸으로).
-⑤ **closed 세트 태그 전부 끔**: 나라 · 수도 · 대통령 · 조선 왕 · KBO · 디즈니 · 지브리 · MCU · 올림픽 · 태양계 · 포켓몬의 남은 liar/draw → **전부 false**(머리 liar/draw false · version +1) — 많이 말하기 · 겹치면 무효 · 빙고 · 순서대로 전용.
-⑥ **topics-check**: `ITEM_OK` 에 `fool`(문자열 배열 · 각 1~20자 · 2~3개 · name 과 다름 · 같은 세트 다른 항목 name 이어도 됨) · `era`('classic'|'modern') · `sub`(문자열) · `diff`(1|2|3) 추가 · 라이어 세트(머리 liar true · kind open)는 항목 전부 fool · era · sub · diff 필수 검사(경고 아니라 막힘) · 캐치 세트(G048)는 fool 없음 허용. **topics-load 는 안 고친다**(MAIN — R087 에서 0034 열 추가 · 지금은 모르는 칸을 그냥 안 올림 — checkTopic 이 통과하면 적재는 된다 · 확인: dry-run).
-⑦ status: 새 15 세트 전부 **`candidate`**(V044 가 판정) · `createdRound: "G047"` · source note 에 "씨앗 toz + 옛 open 세트 + GEN 2026 · 재생성". ★ 삭제 효과: 다음 메뉴 1 때 topics-load 가 옛 open 세트를 `active=false` 로 쉬게 한다(지우지 않음) → V044 가 verified 로 바꾸기 전까지 **실 DB 라이어·캐치 제시어가 0 이 될 수 있다** → 메뉴 1 은 G049 뒤에(찬종 todo 에 적음 · 0절에도).
-
-■ 할 일 (순서대로)
-A. **준비**(커밋 없음): 13 마지막(C114 → **C115**) · 07 맨 위 · README G 마지막 G046 · open 14 · closed 태그 남은 수 · topics-check ITEM_OK.
-B. **씨앗 받기**: 7 페이지 curl → `seed/*.html` + 파서(`scripts/g047-seed.mjs` — toz: 표 → {citizen, imposter, page, section} · 우리 open 14 → {word, topic}) → `seed/seed.json`(toz 962 · 우리 ≈1,000 · 중복 표시). 커밋 1(raw).
-C. **생성·재편**(조각 ≤ 4 · 주제 묶음 — ① 영화·캐릭터·연예인·음악 ② 스포츠·브랜드·장소 ③ 동물·음식·과일채소·간식음료 ④ 사물·탈것·직업·악기 · 지시서 `audit/g047-raw/_work/INSTRUCTIONS.md` = ②③ 기준 + 좋은 예 10 · 나쁜 예 10(한철 유행 · 너무 좁음 · 짝 fool · 상위어)): 조각은 주제마다 **씨앗 단어를 전부 보고** 남길 것/뺄 것/더할 것을 정해 40~60 으로 · 항목마다 name · variants · sub · era · diff · fool 2~3 · 뺀 씨앗 단어는 사유(유행/어려움/좁음/중복)와 함께 `audit/g047-dropped.json` · GEN 재독: **fool 전부**(짝 금지 · 거리) · era 'modern' 전부 · diff 3 전부.
-D. **파일 쓰기**: 새 15(①) · 옛 open 12 삭제 · status candidate · topics-check(⑥ 고친 뒤) 막힘 0 · `--fill-qid` · 세트 안 유일성 · closed 태그 끔(⑤) · `topics-load` dry-run 으로 "모르는 칸이어도 적재됨" 확인(quizweb_test 는 MAIN 것이라 dry-run 만). 커밋 2.
-E. **문서**: 07 DG-085(기준 · 주제 15 · fool 규칙 · 씨앗 처리 · closed 태그 끔 · 되돌리기 = 커밋 2 revert) · 13 C115 · 18 §12 "★ G047 실측" 한 줄 · 05 · 06 · README G · `ai-out/G047.txt`(0 ★ 찬종이 볼 것: ① 주제 15 표(수 · era classic/modern · diff 비율 · 예 5) ② fool 예 15(주제마다 1) ③ 뺀 씨앗 단어 수와 예 20(사유별) ④ 2026 센스로 **새로 넣은** 것 예 20 ⑤ closed 태그 끈 세트 목록 · 1 원칙 7 · 2 결정 필요 — 찬종 눈으로 볼 것: 연예인 세트 전부(논란 인물 없나) · modern 전부). 커밋 3.
-■ 산출물: topics `liar-*` 15 새 파일 · 옛 open 12 삭제 · closed 11 파일(태그) · `scripts/topics-check.mjs`(칸) · `scripts/g047-seed.mjs` · `audit/g047-raw/` · `audit/g047-dropped.json` · `ai-out/G047.txt` · 07 · 13 · 18 한 줄 · 05 · 06 · README G.
-■ DB 쓰기: 없음.
-■ 하지 말 것: 씨앗 그대로 복사(쌍·분류 재구성이 원칙) · 한철 유행어 · 논란 인물(정치인 · 사건 인물) · 1글자 · proverb · idiom4 건드리기(G048) · closed 세트 항목 추가·삭제(태그만) · topics-load.mjs · 코드 · song · ox · questions · 13 A · C114 · CV · README R · V.
-■ 확인할 것 (원칙 7): toz 7 페이지 200 · 표 구조(td 둘 · h2/h3) · 쌍 수 ≈962 · 우리 open 14 수 · closed 남은 liar/draw(나라 40 · 수도 20 · 대통령 14 · 조선 왕 11 · KBO 10 · 디즈니 32/16 · 지브리 13/2 · MCU 9 · 올림픽 32/28 · 태양계 8 · 포켓몬 draw 50) · ITEM_OK 10칸 · 13 마지막 · 07 맨 위 · README G 마지막.
-■ 커밋: 1~3 · fetch → rebase --autostash → push · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-■ 지난 피드백(G044): 잘한 것 — 세트 사이 겹침 스크립트 · 태그 전후 표 · 상위어 뺌. 이번엔 **씨앗을 참고로만** — 남길지 뺄지를 단어마다 판단하고 사유를 남긴다.
-■ ★ 이어서: 보고서 · 커밋 · push 뒤 **`ai-out/briefs/gen-next2.md`(G048 캐치마인드 풀)를 읽고 같은 창에서 바로 시작**(없거나 첫 줄 "보류" 면 멈춤). 그 전 터미널 마지막 줄 "G047 끝 — gen-next2(G048) 이어서 · /clear 아직".
+■ 할 일
+A. **준비**: 번호 · topics-check 막힘 0 · 옛 세트를 git 에서 꺼내 역 → 변형 표(`audit/g050-raw/old-variants.json`).
+B. **수집**(13 세트 · slug `metro-line1` … `metro-line9` · `metro-suin-bundang` · `metro-sinbundang` · `metro-gyeongui-jungang` · `metro-arex`):
+   - 범위 = **그 노선 이름으로 운행하는 전 구간 · 지선 포함**(1호선 = 경원 · 경인 · 경부 · 장항 · 병점기지 · 광명 셔틀 구간까지 · 2호선 = 본선 + 성수 · 신정 지선 · 5호선 = 하남 · 마천 두 갈래 · 경의중앙선 = 지평 ~ 임진강 + 서울역 지선) · **2026-11 현재 영업 중인 역만**(공사 중 · 예정 역 X · 최근 연장은 페이지 개통일로 확인).
+   - 항목 = 역 하나 · **옛 세트 꼴 그대로** — name = "역" 붙은 꼴("서울역") · 변형 = 뗀 꼴("서울") + 옛 세트 변형 · 부역명 말고 흔히 부르는 꼴(§9 변형 규칙) · **환승역은 노선마다 들어간다**(세트 사이 겹침 허용 — closed 는 세트 안 유일성만).
+   - 같은 세트 안 같은 이름 역(1호선 양평? 없음 — 있으면 보고) · 이름이 바뀐 역은 현행 name + 옛 이름 변형.
+   - 머리: kind closed · status candidate · nameKo "수도권 전철 1호선 역" 꼴(신분당선 · 공항철도는 이름 그대로 + " 역") · **scope 한 줄**("소요산·연천부터 인천 · 신창 · 광명 · 서동탄까지 전 구간") · liar false · draw false · timeSec 은 옛 세트 값 · **`group: "metro"`**(새 머리 칸 — 같은 group 세트가 주제 추첨을 독점하지 않게 MAIN R090 이 "group 하나 = 추첨 한 자리" 로 쓴다 · topics-check 가 받게 · topics-load 는 모르는 칸을 무시하는지 확인만).
+   - 수 기준: closed 경고(50~250)는 그대로 두되 작은 노선(신분당선 · 공항철도 ≈ 14~16역)은 **경고여도 만든다**(보고서에 "역 수 n — 많이 말하기에 짧음" 표시 · 뺄지는 설계).
+C. **검사**: topics-check 막힘 0 · 세트별 역 수 ↔ 페이지 역 수 · 옛 세트 역 273 가운데 새 세트 어디에도 없는 것 0(있으면 사유) · dev 제보의 '수원' · '수원역' · '세류' · '금정' · '광명' → 1호선 정답 · '수원시청' → 수인분당선 정답임을 파일로.
+D. **문서 · 보고서**: 07 DG-088 · 13 C119 · 18 §9 실측 · 05 · 06 · README G · `ai-out/G050.txt`(0 ★ 찬종이 볼 것: ① 13 세트 표(역 수 · 구간 · 페이지 · 경고) ② 환승역 겹침 수 ③ 제보 답 전후 ④ **V046 뒤 메뉴 1 이어야 들어감** · 1 원칙 7 · 2 결정 필요 — 작은 노선 유지 여부 · 더 넣을 노선 후보(인천 1 · 2호선 · 경춘선 · 서해선 · 우이신설선 · 신림선 · 김포골드라인 · GTX-A — 이번엔 **만들지 않음**)).
+■ 산출물: topics metro-* 13 · scripts/g050-metro.mjs · topics-check.mjs(group) · audit/g050-raw · 07 · 13 · 18 · 05 · 06 · README · ai-out/G050.txt.
+■ 하지 말 것: 13 밖 노선 · 서울 밖 도시철도(부산 · 대구 …) · status verified · 라이어/캐치 세트 · kr-municipality · 코드 · topics-load.mjs · 13 A · CV · 20.
+■ 확인할 것 (원칙 7): 옛 세트 name 꼴 · 역 수 · 페이지마다 "운행 계통" 표와 역 목록이 같은지 · 2026 개통분(페이지 개통일) · topics-check 머리 칸 검사 방식 · 13 마지막 C · 07 맨 위 · README G 마지막 G049.
+■ 커밋: 2~3 · fetch → rebase --autostash → push(503 = VPN — 로컬 커밋만) · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+■ ★ 이어서 없음 — 터미널 마지막 줄 "G050 끝 — ★ 찬종: VERIFY 창 `ai-out/briefs/verify.md 읽고 진행`(V046) · /clear 해도 됨".
 ■ 답변: 한국어 · 터미널 5줄 이내.
