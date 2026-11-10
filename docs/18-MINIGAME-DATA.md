@@ -285,3 +285,7 @@ data/minigame/ox/items.json       ← 정본(git) · 묶음 파일 규칙 §0
 - ★ G047 실측(2026-11-09): 라이어 15 세트 851 항목(50~60 · 악기 50) · modern 98 · diff 1/2/3 = 338/346/167 · fool 2~3 전부(같은 sub) · qid 325 · 뺀 씨앗 1,678 · 옛 open 12 삭제 · closed 11 태그 끔 → 세트 42(closed 25 · 라이어 15 · proverb · idiom4) · 라이어 세트 수 하한 40(topics-check) · ai-out/G047.txt
 - ★ **적재(R088 · 0034)**: topics-load 가 fool · era · sub · diff · 세트 scope 를 올린다(파일에 없으면 null · 끝 줄 "fool n · diff n") · 라이어 · 캐치 풀 = 머리 플래그 true 인 open 세트만 · 세트 추첨 = 남은 항목 수 가중 · 캐치 diff 4:4:2 섞기 · 바보형 = fool 있는 항목만(없으면 기본형) — D-345.
 - **판정(V044 · V045)**: 항목 전수 · fool 하나하나 ok/tooClose/tooFar/bad + 대안 · era · diff · 변형(채팅 판정) · 중복 · 인물 논란 → fixes → G049 적용(§0 verified 전환 규칙) → 메뉴 1.
+
+## 13. 객관식 보기 `choice` — 퀴즈 문항의 저장 오답 보기 (R090 · D-347 · 꼴만 — 채우기는 GEN)
+
+정본 `data/minigame/choice/options.json` = `{ "game": "choice", "version": 1, "items": [ { "qid": 1970, "options": ["오답1", "오답2", "오답3"], "status": "verified" } ] }` — qid = 활성 퀴즈 문항 id · options = 서로 다른 오답 3개 이상(정답 · 변형과 같거나 기호만 다른 것 금지 — 게임이 그 문항을 건너뛴다) · verified 만 적재(`scripts/choice-load.mjs --apply` · 메뉴 1 · 멱등 · 파일에서 빠진 문항은 지움 · 없는 · 비활성 문항은 건너뛰고 수 보고) → 0035 `question_choices`. 게임(객관식 5연속)은 저장 보기가 있는 문항만 쓰며 **지금은 숨김** — 데이터가 들어온 뒤 설계가 `hidden` 을 끈다.

@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-11-10 — R090 쌓인 수정 (MAIN · D-347 · 0035)
+- 무엇: 정답 비교 특수문자 전부 무시(flexCanon stripSymbols · 저장 열쇠 그대로 · 예외 셋) · 캐치 다시 실행 · 전체 지우기 되돌리기 · 주제 추첨 group 한 자리 · 객관식 5연속 + 저장 보기(question_choices · choice-load · 메뉴 1 · 숨김 그대로) · 겹치는 이름 안내 예시 뺌 · 라이어 안 들켜도 맞히기 +1 · 방장 제시어 주제 고르기(라이어 · 캐치 · /api/minigame/topics).
+- 문제: 새 표준형이 topics-check 유일성에서 니드런♀/♂ 를 막음 → 막힘은 옛 꼴 · 지운 꼴은 경고 / 수 예외가 "7.4 남북공동성명" ≠ "74" 를 만듦 → 수 꼴 정답만 / 봇 liar 키워드 거부 시험이 첫 차례가 라이어면 빠지던 우연 실패 / 윈도 예약 포트(3158–3257)가 봇 기본 3200 을 막음 → `--url http://localhost:3400`.
+- 검사: 봇 draw 22 · liar 21 · liarfool 8 · topicsets 10 · ui-check r089 5 · r090 4(새) · 끝 점검은 R090.txt.
+- 남은 것: 객관식 데이터(GEN · options.json) 뒤 hidden 끄기 · optIn 표시(GEN) · 체감 A117.
+
 ## 2026-11-10 — V048 라이어 제시어 2차 15 파일 전수 판정 (VERIFY · 판정만 · DB 없음)
 - 570 항목 · fool 1,710 전수 — 교체 94(tooClose 63 · tooFar 10 · bad 21 = 5.5%) · remove 3 · dup 2 · diff 21 · 변형 8. verified 2 + candidate 13.
 - 쓴 것: liar-*-2 15 파일 verify 칸 + status · items 불변 · `ai-out/V048.txt` · `audit/v048-topics.json` · 13 C125 · CV-181~182.

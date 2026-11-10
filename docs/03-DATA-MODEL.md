@@ -423,6 +423,16 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | `games.mode` | CHECK + **'draw'** | |
 | `draw_rounds` | id · game_id(UNIQUE(game_id, round)) · round · drawer_account_id · topic · item_id · keyword · rerolled · strokes_count · participants · solved(jsonb [{accountId, ms}]) · outcome(all · some · none) · scores · created_at · ★ R088 hints(jsonb { length?, initial?, topic? }) | 그림 하나 한 행 · 그림(선 좌표)은 저장 안 함 |
 
+## ★★ 주제 추첨 group · 주제 고르기 optIn · 객관식 저장 보기 (R090 / 0035 — D-347)
+
+| 표 | 더한 칸 | 뜻 |
+|---|---|---|
+| `topic_sets` | "group"(text · 없으면 null) · opt_in(boolean · 기본 false) | 같은 group 의 세트 = 주제 자동 추첨에서 한 자리(지하철 13 = "metro") · opt_in = 방장 주제 고르기에서 기본 체크 해제 — 둘 다 topics-load 가 머리 `group` · `optIn` 에서 |
+| `question_choices`(새) | question_id bigint PK → questions(ON DELETE CASCADE) · options jsonb(문자열 배열 · 오답 셋) · round text · loaded_at | 객관식 5연속의 저장 보기 — 정본 `data/minigame/choice/options.json`(verified 만) → `scripts/choice-load.mjs --apply`(멱등 · 파일에서 빠진 문항은 지움 · 메뉴 1) |
+
+- 되돌리기: `ALTER TABLE topic_sets DROP COLUMN IF EXISTS "group", DROP COLUMN IF EXISTS opt_in; DROP TABLE IF EXISTS question_choices;`
+- 방 설정(메모리) `liarTopics` · `drawTopics`(slug 목록 · null = opt_in 아닌 세트 전부) — DB 칸 없음.
+
 ## ★★ 제시어 데이터 칸 · 라이어 모드 (R088 / 0034 — D-345)
 
 | 표 | 더한 칸 | 뜻 |
