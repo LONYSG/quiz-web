@@ -100,6 +100,13 @@ const KEYBOARD_DROP_STATES = new Set(['GAME_RESULT', 'LOBBY', 'PAUSED']);
 /** ★ R075 (D-325) — 키보드가 올라온 동안 방을 보이는 영역(visualViewport)에 맞추는 상태(판 중) — 로비 · 결과는 옛 꼴(화면 스크롤) */
 const KB_FIT_STATES = new Set(['QUESTION_ACTIVE', 'QUESTION_RESOLVED']);
 
+/** ★ R090 — 라이어 · 캐치마인드에서 제시어 주제를 하나도 안 골랐나(명시 목록이 빔) */
+function topicPickEmpty(st: { mode?: string; liarTopics?: string[] | null; drawTopics?: string[] | null }): boolean {
+  if (st.mode === 'liar') return Array.isArray(st.liarTopics) && st.liarTopics.length === 0;
+  if (st.mode === 'draw') return Array.isArray(st.drawTopics) && st.drawTopics.length === 0;
+  return false;
+}
+
 export default function Lobby({
   socket,
   snapshot,
@@ -986,7 +993,8 @@ export default function Lobby({
                     />
                   ) : snapshot.me.isHost ? (
                     <>
-                      <button type="button" className="primary big-btn" onClick={() => socket.emit('game.start', {})}>
+                      {/* ★ R090 — 라이어 · 캐치마인드 제시어 주제 0 이면 막음(서버도 막는다) */}
+                      <button type="button" className="primary big-btn" data-start-btn disabled={topicPickEmpty(snapshot.room.settings)} title={topicPickEmpty(snapshot.room.settings) ? '제시어 주제를 하나 이상 골라 주세요' : undefined} onClick={() => socket.emit('game.start', {})}>
                         게임 시작
                       </button>
                       {/* ★★ R050 — 로비 "미니게임 골라 하기" (연습 판) */}

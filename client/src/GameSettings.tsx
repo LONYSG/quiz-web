@@ -40,6 +40,7 @@ import { Gamepad2 } from 'lucide-react';
 import Icon from './Icon.js';
 import { usePopup } from './popup.js';
 import MinigameCatalog from './minigame/MinigameCatalog.js';
+import TopicPicker from './TopicPicker.js';
 
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
 const PRESETS = [50, 100, 200] as const;
@@ -241,6 +242,8 @@ export default function GameSettings({
               : '기본형 — 라이어는 주제만 알아요'}{' '}
             · 설명칸에 한마디씩 → 투표 · 변론 → 죽일까 살릴까(최대 3바퀴) · {LIAR.MIN_PLAYERS}명부터
           </p>
+          {/* ★ R090 — 제시어 주제 고르기(접힘) */}
+          <TopicPicker kind="liar" picked={shown.liarTopics} editable={editable} onChange={(next) => push({ ...draft, liarTopics: next })} />
         </>
       )}
       {drawM && (
@@ -248,6 +251,7 @@ export default function GameSettings({
           출제자가 돌아가며 그림 · 나머지는 채팅으로 정답 · 빨리 맞힐수록 3 · 2 · 1점 · {DRAW.MIN_PLAYERS}명부터
         </p>
       )}
+      {drawM && <TopicPicker kind="draw" picked={shown.drawTopics} editable={editable} onChange={(next) => push({ ...draft, drawTopics: next })} />}
       {(mgOnly || topicM) && (
         <div className="set-row">
           <span className="set-label">{topicM ? '라운드 수' : '미니게임 수'}</span>

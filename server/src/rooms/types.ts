@@ -78,6 +78,9 @@ export interface RoomSettings {
   mode: import('@quiz/shared').RoomMode;
   /** ★ R088 (D-345) — 라이어 모드(기본형 · 바보형) */
   liarMode: import('@quiz/shared').LiarMode;
+  /** ★ R090 (D-347) — 라이어 · 캐치마인드 제시어 주제(null = optIn 아닌 세트 전부) */
+  liarTopics: string[] | null;
+  drawTopics: string[] | null;
 }
 
 /**

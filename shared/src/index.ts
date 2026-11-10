@@ -34,6 +34,8 @@ export {
   DEFAULT_TOPICS,
   formatTopics,
   MINIGAME_ONLY_ROUNDS,
+  pickedTopicSlugs,
+  TOPIC_PICK_MAX,
 } from './settings.js';
 export type {
   RoomSettingsInput,

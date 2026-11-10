@@ -191,13 +191,28 @@ export interface RoomSettingsInput {
   mode: RoomMode;
   /** ★ R088 (D-345) — 라이어 모드 'basic'(기본형 · 기본) · 'fool'(바보형) — 방식이 라이어일 때만 쓴다 · 다시 하기 이어받음 */
   liarMode: LiarMode;
+  /**
+   * ★ R090 (D-347 · 찬종 "방장이 주제를 체크/체크 해제") — 라이어 · 캐치마인드 제시어 주제(세트 slug 목록).
+   *   null = 기본(optIn 아닌 세트 전부) · 저장된 slug 가 지금 없는 세트면 무시 · 고른 것이 0 이면 시작을 막는다
+   */
+  liarTopics: string[] | null;
+  drawTopics: string[] | null;
+}
+
+/** ★ R090 — 제시어 주제 목록 상한(세트 수) */
+export const TOPIC_PICK_MAX = 300;
+/** ★ R090 — 저장된 주제 고르기 → 실제로 쓸 세트(null = optIn 아닌 것 전부 · 없는 slug 는 무시) */
+export function pickedTopicSlugs(sets: readonly { topic: string; optIn?: boolean }[], picked: readonly string[] | null | undefined): string[] {
+  if (picked == null) return sets.filter((s) => !s.optIn).map((s) => s.topic);
+  const want = new Set(picked);
+  return sets.filter((s) => want.has(s.topic)).map((s) => s.topic);
 }
 
 export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode' | 'mode' | 'liarMode';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode' | 'mode' | 'liarMode' | 'liarTopics' | 'drawTopics';
       message: string;
     };
 
@@ -328,6 +343,16 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   if (raw.liarMode !== undefined && !isLiarMode(raw.liarMode)) {
     return { ok: false, field: 'liarMode', message: '라이어 모드 형식이 올바르지 않습니다.' };
   }
+  // ★ R090 — 제시어 주제(없으면 null = 기본)
+  const topicList = (v: unknown): string[] | null | false => {
+    if (v === undefined || v === null) return null;
+    if (!Array.isArray(v) || v.length > TOPIC_PICK_MAX || !v.every((x) => typeof x === 'string' && /^[a-z0-9][a-z0-9-]{0,63}$/.test(x))) return false;
+    return [...new Set(v as string[])];
+  };
+  const liarTopics = topicList(raw.liarTopics);
+  if (liarTopics === false) return { ok: false, field: 'liarTopics', message: '라이어 주제 형식이 올바르지 않습니다.' };
+  const drawTopics = topicList(raw.drawTopics);
+  if (drawTopics === false) return { ok: false, field: 'drawTopics', message: '캐치마인드 주제 형식이 올바르지 않습니다.' };
   if (mode === 'liar' && raw.teamMode === true) {
     return { ok: false, field: 'teamMode', message: LIAR_TEAM_BLOCK };
   }
@@ -354,6 +379,8 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       teamMode: raw.teamMode === true,
       mode,
       liarMode: isLiarMode(raw.liarMode) ? raw.liarMode : 'basic',
+      liarTopics,
+      drawTopics,
     },
   };
 }

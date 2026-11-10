@@ -73,6 +73,9 @@ export interface RoomSettings {
   teamMode?: boolean;
   /** ★ R088 — 라이어 모드 */
   liarMode?: 'basic' | 'fool';
+  /** ★ R090 — 제시어 주제(null = 기본) */
+  liarTopics?: string[] | null;
+  drawTopics?: string[] | null;
   /** ★★★ R082 — 방식(퀴즈 · 미니게임만 · 라이어) */
   mode?: 'quiz' | 'minigame' | 'liar' | 'draw';
 }

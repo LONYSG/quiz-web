@@ -63,6 +63,9 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   teamMode: false,
   // ★ R088 (D-345) — 라이어 모드 기본형
   liarMode: 'basic',
+  // ★ R090 — 제시어 주제 기본(null = optIn 아닌 세트 전부)
+  liarTopics: null,
+  drawTopics: null,
   // ★★★ R082 — 방식 퀴즈 (D-339)
   mode: 'quiz',
 };

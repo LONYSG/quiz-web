@@ -6,7 +6,7 @@
 // ★ 표가 없으면(0031 미적용) 빈 저장소 — 많이 말하기 · 겹치면 무효만 빠진다(게임 시작은 막지 않는다).
 // =============================================================================
 
-import { ORDER_EXCLUDE, ORDER_MIN_YEARS, TOPIC_BINGO_MIN, TOPIC_MIN_ITEMS, buildTopicMatcher, normalizeAnswer, topicLabel } from '@quiz/shared';
+import { ORDER_EXCLUDE, ORDER_MIN_YEARS, TOPIC_BINGO_MIN, TOPIC_MIN_ITEMS, buildTopicMatcher, normalizeAnswer, pickedTopicSlugs, topicLabel } from '@quiz/shared';
 import { query } from './pool.js';
 
 export interface TopicItem {
@@ -179,6 +179,17 @@ export function topicAmbiguous(items: readonly Pick<TopicItem, 'name'>[], matche
 export function ambiguousHint(ambiguous: ReadonlyMap<string, string> | null | undefined, raw: string): string | null {
   if (!ambiguous || ambiguous.size === 0) return null;
   return ambiguous.get(normalizeAnswer(String(raw ?? ''))) ?? null;
+}
+
+/**
+ * ★ R090 (D-347) — 방장이 고른 제시어 주제만 남긴 저장소(라이어 · 캐치마인드 시작 때 한 번).
+ *   고른 것(null = optIn 아닌 세트 전부 · 없는 slug 무시) 밖의 그 게임 세트를 뺀다 — 다른 게임 세트는 그대로
+ */
+export function restrictTopics(store: TopicStore, kind: 'liar' | 'draw', picked: readonly string[] | null | undefined): TopicStore {
+  const pickable = kind === 'liar' ? liarTopics(store) : drawTopics(store);
+  const keep = new Set(pickedTopicSlugs(pickable, picked));
+  const own = new Set(pickable.map((s) => s.topic));
+  return { ...store, sets: store.sets.filter((s) => !own.has(s.topic) || keep.has(s.topic)) };
 }
 
 /** 게임 키 → 쓸 수 있는 세트 */

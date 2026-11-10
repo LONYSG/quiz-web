@@ -33,7 +33,9 @@ import { config } from '../config.js';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { loadAllItemExperiences, loadQuizData } from '../db/minigameItems.js';
-import { drawTopics, liarTopics, loadTopicStore } from '../db/topics.js';
+import { drawTopics, liarTopics, loadTopicStore, restrictTopics } from '../db/topics.js';
+/** ★ R090 — 제시어 주제를 하나도 안 골랐을 때 */
+const TOPIC_PICK_EMPTY = '제시어 주제를 하나 이상 골라 주세요.';
 import { loadChoiceOptions } from '../db/choices.js';
 import { startDrawGame } from '../draw/engine.js';
 import { startLiarGame } from '../liar/engine.js';
@@ -135,6 +137,8 @@ export async function requestStart(room: Room): Promise<StartResult> {
       if (room.players.size < LIAR.MIN_PLAYERS) return { ok: false, reason: 'settings', message: LIAR_START_BLOCK };
       const store = await loadTopicStore();
       if (liarTopics(store).length === 0) return { ok: false, reason: 'settings', message: '제시어가 없어요(주제 세트 적재 전) — 다른 방식으로 해 주세요.' };
+      // ★ R090 — 방장이 고른 주제가 0 이면 시작을 막는다
+      if (liarTopics(restrictTopics(store, 'liar', room.settings.liarTopics)).length === 0) return { ok: false, reason: 'settings', message: TOPIC_PICK_EMPTY };
     }
     // ── ★★★ R083 — 캐치마인드: 2명부터 · 제시어(draw 항목)
     const drawMode = room.settings.mode === 'draw';
@@ -142,6 +146,7 @@ export async function requestStart(room: Room): Promise<StartResult> {
       if (room.players.size < DRAW.MIN_PLAYERS) return { ok: false, reason: 'settings', message: DRAW_START_BLOCK };
       const store = await loadTopicStore();
       if (drawTopics(store).length === 0) return { ok: false, reason: 'settings', message: '제시어가 없어요(주제 세트 적재 전) — 다른 방식으로 해 주세요.' };
+      if (drawTopics(restrictTopics(store, 'draw', room.settings.drawTopics)).length === 0) return { ok: false, reason: 'settings', message: TOPIC_PICK_EMPTY };
     }
     const noQuiz = mgOnly || liarMode || drawMode;
 
@@ -425,10 +430,11 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   });
 
   // ── ★★★ R083 — 캐치마인드: 첫 그림
-  if (drawMode) return liarData ? startDrawGame(room, liarData.store, liarData.exp) : false;
+  // ★ R090 — 방장이 고른 주제만(restrictTopics)
+  if (drawMode) return liarData ? startDrawGame(room, restrictTopics(liarData.store, 'draw', settings.drawTopics), liarData.exp) : false;
 
   // ── ★★★ R082 — 라이어: 첫 라운드(못 하면 startLiarGame 이 판을 끝낸다)
-  if (liarMode) return liarData ? startLiarGame(room, liarData.store, liarData.exp) : false;
+  if (liarMode) return liarData ? startLiarGame(room, restrictTopics(liarData.store, 'liar', settings.liarTopics), liarData.exp) : false;
 
   // ── ★★★ R057 — 미니게임만: 문제 대신 첫 미니게임(깜짝 연출은 이것만)
   if (mgOnly) {

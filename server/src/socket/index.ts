@@ -719,6 +719,9 @@ function registerRoomHandlers(socket: Socket): void {
         mode: 'minigameOnly' in payload && !('mode' in payload) ? undefined : room.settings.mode,
         // ★ R088 — 라이어 모드도 보낸 것만
         liarMode: room.settings.liarMode,
+        // ★ R090 — 제시어 주제도 보낸 것만
+        liarTopics: room.settings.liarTopics,
+        drawTopics: room.settings.drawTopics,
         ...payload,
       });
       if (!valid.ok) {

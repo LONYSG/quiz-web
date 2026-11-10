@@ -8483,6 +8483,19 @@ async function scenarioLiar() {
     await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
   }
   await sleep(300);
+  // ── ★ R090 (D-347) — 방장 주제 고르기: 0 개 → 시작 막힘 · 둘만 고르면 그 둘에서만 나온다
+  const liarSets = await withDb(async (c) => (await c.query(`SELECT s.topic FROM topic_sets s WHERE s.active AND s.kind = 'open' AND s.liar AND EXISTS (SELECT 1 FROM topic_items i WHERE i.topic = s.topic AND i.active AND i.liar) ORDER BY s.topic`)).rows.map((r) => r.topic));
+  const picked = liarSets.slice(0, 2);
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, liarTopics: [] });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => Array.isArray(e.settings?.liarTopics) && e.settings.liarTopics.length === 0), 4000, '주제 0');
+  m = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(500);
+  expectTrue('★★★ R090 주제 0 개 → 시작 막힘 "하나 이상 골라"', host.since(m, 'error').some((e) => /하나 이상 골라/.test(`${e.message} ${e.detail ?? ''}`)), JSON.stringify(host.since(m, 'error')));
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, liarTopics: picked });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.liarTopics?.join() === picked.join()), 4000, '주제 둘');
   const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.login_id, r.id])));
   const idOf = (b) => ids.get(b.loginId);
   const views = new Map(bots.map((b) => [b, null]));
@@ -8578,6 +8591,8 @@ async function scenarioLiar() {
   expect('★★ 결과 mode liar · completed', [res.mode, res.endReason], ['liar', 'completed']);
   const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, guess_ok, jsonb_array_length(says) s, jsonb_array_length(votes) v, liar_account_id::text l, (SELECT max((x->>'bout')::int) FROM jsonb_array_elements(votes) x) b FROM liar_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
   expect('★★ liar_rounds.votes 바퀴 — R2 3바퀴 · 7기록(동률 3 + 지목 · 살림 ×2)', [rows[1]?.b, rows[1]?.v], [3, 7]);
+  const tps = await withDb(async (c) => (await c.query(`SELECT topic FROM liar_rounds WHERE game_id = $1`, [started.gameId])).rows.map((r) => r.topic));
+  expectTrue(`★★★ R090 체크한 주제만 나온다 — 고른 둘(${picked.join(' · ')}) 밖 0`, tps.length === 4 && tps.every((t) => picked.includes(t)), JSON.stringify(tps));
   expect('★★★ liar_rounds 4행 · 결과 · 라이어 · 한마디 4+', rows.map((x) => [x.round, x.outcome, x.l === roles[x.round].liar, x.s >= 4]), [[1, 'caught', true, true], [2, 'notfound', true, true], [3, 'escaped', true, true], [4, 'caught', true, true]]);
   const g2 = await withDb(async (c) => (await c.query(`SELECT mode, setting_question_count q, setting_minigame_rounds r FROM games WHERE id = $1`, [started.gameId])).rows[0]);
   expect('★★ games — mode liar · 문제 0 · 라운드 4', [g2.mode, g2.q, g2.r], ['liar', 0, 4]);

@@ -16,6 +16,7 @@ import {
   formatTopics,
   GAME_TOPICS,
   MINIGAME_ONLY_ROUNDS,
+  pickedTopicSlugs,
   validateRoomSettings,
 } from './settings.js';
 
@@ -77,10 +78,13 @@ describe('validateRoomSettings — 형식 방어', () => {
     expect(r.ok).toBe(true);
     if (r.ok) expect(Object.keys(r.settings).sort()).toEqual([
       'countdownSec',
+      // ★ R090 — 캐치마인드 · 라이어 제시어 주제
+      'drawTopics',
       // ★ R069 — 난이도 단계(옛 R025 difficulties 배열을 대신)
       'level',
       // ★ R088 — 라이어 모드
       'liarMode',
+      'liarTopics',
       // ★ R050 — 미니게임 포함 · 넣을 미니게임
       'minigameKeys',
       // ★ R057 — 미니게임만 · 미니게임 수
@@ -259,5 +263,25 @@ describe('R079 — teamMode', () => {
     const c = validateRoomSettings({ ...base, teamMode: 'yes' });
     expect(c.ok).toBe(false);
     if (!c.ok) expect(c.field).toBe('teamMode');
+  });
+});
+
+describe('★ R090 제시어 주제 고르기(liarTopics · drawTopics)', () => {
+  it('없으면 null(기본) · 목록은 겹침 없이 · 빈 목록 허용(시작은 서버가 막음) · 형식 틀리면 거부', () => {
+    const a = validateRoomSettings(base);
+    expect(a.ok && [a.settings.liarTopics, a.settings.drawTopics]).toEqual([null, null]);
+    const b = validateRoomSettings({ ...base, liarTopics: ['liar-food', 'liar-food', 'liar-food-2'], drawTopics: [] });
+    expect(b.ok && [b.settings.liarTopics, b.settings.drawTopics]).toEqual([['liar-food', 'liar-food-2'], []]);
+    for (const bad of ['liar-food', [1], ['Liar Food'], Array.from({ length: 301 }, (_, i) => `t${i}`)]) {
+      const c = validateRoomSettings({ ...base, liarTopics: bad });
+      expect(c.ok).toBe(false);
+      if (!c.ok) expect(c.field).toBe('liarTopics');
+    }
+  });
+  it('pickedTopicSlugs — null = optIn 아닌 것 전부 · 없는 slug 무시', () => {
+    const sets = [{ topic: 'a' }, { topic: 'b', optIn: true }, { topic: 'c' }];
+    expect(pickedTopicSlugs(sets, null)).toEqual(['a', 'c']);
+    expect(pickedTopicSlugs(sets, ['b', 'zzz'])).toEqual(['b']);
+    expect(pickedTopicSlugs(sets, [])).toEqual([]);
   });
 });

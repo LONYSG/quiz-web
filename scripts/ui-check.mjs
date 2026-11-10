@@ -5084,6 +5084,78 @@ async function r083Flow(browser) {
 }
 
 // =============================================================================
+// ★★★ R090 — 방장 제시어 주제 고르기 (D-347) (UICHECK_R090=1 · 묶음 r090 · docs/design/r090)
+//   방장 PC 1280 · FHD 125% · 손님 m360 — 라이어: 접힌 묶음 → 펼침 · 하나 끔 → 손님 화면에 흐리게(읽기만) · 전부 끔 → "하나 이상" · 시작 막힘 · 전부 → 다시
+//   캐치마인드: 같은 이름 세트(draw-*-2)는 한 줄 · 화면 넘침 0 · 세 테마 아님(설정 카드 한 묶음)
+// =============================================================================
+async function r090Flow(browser) {
+  const H = await newPage(browser, 'R090-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r0h', '주제방장');
+  const roomId = await createRoom(H, 'R090 주제');
+  const G = await newPage(browser, 'R090-g', true);
+  await signUp(G, 'r0g', '주제손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  await socketGuests(roomId, 1, 'r0s');
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r090] ${k}: ${JSON.stringify(v)}`);
+  };
+  const J = async (P, expr) => JSON.parse(await P.evaluate(`JSON.stringify(${expr})`));
+  const PICK = "(() => { const d = document.querySelector('[data-topic-pick]'); if (!d) return null; const r = d.getBoundingClientRect(); return { kind: d.dataset.topicPick, on: Number(d.dataset.topicOn), open: d.open, items: d.querySelectorAll('[data-topic-item]').length, off: d.querySelectorAll('.topic-pick-item.off').length, dis: d.querySelectorAll('input[disabled]').length, multi: [...d.querySelectorAll('[data-topic-item]')].filter((x) => x.dataset.topicItem.includes(',')).length, sum: d.querySelector('.topic-pick-sum')?.innerText ?? '', h: Math.round(r.height), bottom: Math.round(r.bottom), over: document.documentElement.scrollWidth - innerWidth, start: document.querySelector('[data-start-btn]')?.disabled ?? null }; })()";
+  await realClick(H, 'button[data-mode="liar"]');
+  await H.waitFor("document.querySelector('[data-topic-pick]') !== null", 6000).catch(() => false);
+  const closed = await J(H, PICK);
+  await snap(H, 'liar-closed-pc');
+  await H.evaluate("document.querySelector('[data-topic-pick] > summary').click()");
+  await sleep(300);
+  const opened = await J(H, PICK);
+  await snap(H, 'liar-open-pc');
+  // 하나 끔
+  await H.evaluate("document.querySelector('[data-topic-item] input').click()");
+  await sleep(700);
+  const oneOff = await J(H, PICK);
+  await G.waitFor(`Number(document.querySelector('[data-topic-pick]')?.dataset.topicOn) === ${oneOff.on}`, 5000).catch(() => false);
+  await G.evaluate("document.querySelector('[data-topic-pick] > summary')?.click()");
+  await sleep(300);
+  const guest = await J(G, PICK);
+  await snap(G, 'liar-guest-m360');
+  // 전부 끔 → 시작 막힘
+  await H.evaluate("(() => { const a = document.querySelector('[data-topic-all]'); if (a.checked) a.click(); else { a.click(); } })()");
+  await sleep(500);
+  await H.evaluate("(() => { const a = document.querySelector('[data-topic-all]'); if (a.checked) a.click(); })()");
+  await sleep(700);
+  const none = await J(H, PICK);
+  await snap(H, 'liar-none-pc');
+  await H.evaluate("document.querySelector('[data-topic-all]').click()");
+  await sleep(700);
+  const allOn = await J(H, PICK);
+  await H.send('Emulation.setDeviceMetricsOverride', { width: 1536, height: 864, deviceScaleFactor: 1.25, mobile: false });
+  await sleep(400);
+  const fhd125 = await J(H, PICK);
+  await snap(H, 'liar-open-fhd125');
+  await H.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
+  await sleep(300);
+  // 캐치마인드
+  await realClick(H, 'button[data-mode="draw"]');
+  await H.waitFor("document.querySelector('[data-topic-pick=\"draw\"]') !== null", 6000).catch(() => false);
+  await H.evaluate("(() => { const d = document.querySelector('[data-topic-pick]'); if (d && !d.open) d.querySelector('summary').click(); })()");
+  await sleep(400);
+  const draw = await J(H, PICK);
+  await snap(H, 'draw-open-pc');
+  note('라이어', { closed, opened, oneOff, guest, none, allOn, fhd125 });
+  note('캐치', draw);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r090'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r090'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r090', 'r090.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R090 주제 고르기 — 접힘이 기본 · 펼치면 주제 줄(같은 이름 묶음) · 하나 끄면 n-1 · 손님 = 같은 수 · 체크 막힘 · 꺼진 줄 흐림', closed && !closed.open && closed.on >= 1 && opened.open && opened.items >= closed.on && oneOff.on === opened.on - 1 && guest?.on === oneOff.on && guest.dis === guest.items && guest.off >= 1, JSON.stringify({ closed, opened, oneOff, guest }));
+  record('★★★ R090 전부 끔 → 머리 "하나 이상 골라 주세요" · 시작 버튼 막힘 → 전부 → 다시 열림', none.on === 0 && /하나 이상/.test(none.sum) && none.start === true && allOn.on === allOn.items && allOn.start === false, JSON.stringify({ none, allOn }));
+  record('★★ R090 화면 — 1280 · FHD 125% · m360 넘침 0 · 목록 높이 상한(펼쳐도 260 이하)', [opened, fhd125, guest].every((x) => x && x.over <= 1 && x.h <= 260), JSON.stringify({ opened: [opened.h, opened.over], fhd125: [fhd125.h, fhd125.over], guest: [guest?.h, guest?.over] }));
+  record('★★ R090 캐치마인드 — 같은 컴포넌트 · 같은 이름 세트 한 줄(draw-*-2 묶음 ≥ 1)', draw?.kind === 'draw' && draw.items >= 5 && draw.multi >= 1, JSON.stringify(draw));
+}
+
 // ★★★ R089 — 캐치마인드 그리기 도구 (D-346) (UICHECK_R089=1 · 묶음 r089 · docs/design/r089)
 //   방장 PC 출제(1280 · FHD 125% · 1920) · 손님 m360 터치 · 늦게 온 손님 PC · 소켓 1 · 2라운드(2라운드는 손님 m360 출제)
 //   네모(한붓) → 페인트통 안쪽 → 세 화면 격자 해시 같음 · 되돌리기 → 해시가 채우기 전과 같음 · 굵기 · 세부 색 · 최근 색 · 스포이드 버튼 · 세 테마
@@ -9955,6 +10027,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R079) {
     await closeAllTabs(browser);
     await r079Flow(browser);
+  }
+  // ★ R090 — 방장 제시어 주제 고르기
+  if (process.env.UICHECK_R090) {
+    await closeAllTabs(browser);
+    await r090Flow(browser);
   }
   // ★ R089 — 캐치마인드 그리기 도구
   if (process.env.UICHECK_R089) {

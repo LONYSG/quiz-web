@@ -90,6 +90,7 @@ export const BUNDLES = [
   { id: 'r079', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R079: '1', SHOT_DIR: 'r079', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '1500' }) },
   // ★ R085 — OX 10연속(고르기 창 · 큰 O/X · 키 바꾸기 · m360 버튼 · 가장 긴 문장 넘침 · 공개 · 최종 목록 · 세 테마)
   { id: 'r089', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R089: '1', SHOT_DIR: 'r089', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
+  { id: 'r090', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R090: '1', SHOT_DIR: 'r090', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   { id: 'r088', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R088: '1', SHOT_DIR: 'r088', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },
   { id: 'r087', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R087: '1', SHOT_DIR: 'r087', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', MINIGAME_PHASE_SCALE: '2' }) },
   { id: 'r085', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R085: '1', SHOT_DIR: 'r085', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1' }) },

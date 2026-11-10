@@ -1,6 +1,6 @@
 // ★ R088 (D-345) — 겹치는 이름(서구 · 고성군) 안내 · 라이어/캐치 풀(머리 플래그 · open 만)
 import { describe, expect, it } from 'vitest';
-import { ambiguousHint, drawTopics, liarTopics, makeTopicSet } from './topics.js';
+import { ambiguousHint, drawTopics, liarTopics, makeTopicSet, restrictTopics } from './topics.js';
 
 describe('겹치는 이름 — 앞 동네를 붙여 주세요', () => {
   const set = makeTopicSet({ topic: 'kr', nameKo: '시군구', kind: 'closed' }, [
@@ -37,5 +37,18 @@ describe('제시어 풀 — 머리 플래그 · open 만', () => {
   it('closed 세트는 항목 플래그가 있어도 안 쓴다', () => {
     expect(liarTopics(store).map((s) => s.topic)).toEqual(['liar-food']);
     expect(drawTopics(store).map((s) => s.topic)).toEqual(['draw-animal']);
+  });
+});
+
+describe('★ R090 방장 주제 고르기 — restrictTopics', () => {
+  const mk = (topic: string, h: { liar?: boolean; draw?: boolean; optIn?: boolean; kind?: 'open' | 'closed' }) =>
+    makeTopicSet({ topic, nameKo: topic, kind: h.kind ?? 'open', liar: h.liar ?? false, draw: h.draw ?? false, optIn: h.optIn }, [{ id: `${topic}-1`, name: `${topic}가`, liar: h.liar, draw: h.draw }]);
+  const store = { sets: [mk('l1', { liar: true }), mk('l2', { liar: true, optIn: true }), mk('d1', { draw: true }), mk('d2', { draw: true }), mk('c', { kind: 'closed' })], loadedAt: 0 };
+  it('null = optIn 아닌 것 전부 · 고른 것만 · 다른 게임 세트 · closed 는 그대로 · 없는 slug 무시', () => {
+    expect(liarTopics(restrictTopics(store, 'liar', null)).map((s) => s.topic)).toEqual(['l1']);
+    expect(liarTopics(restrictTopics(store, 'liar', ['l2', 'nope'])).map((s) => s.topic)).toEqual(['l2']);
+    expect(restrictTopics(store, 'liar', ['l2']).sets.map((s) => s.topic)).toEqual(['l2', 'd1', 'd2', 'c']);
+    expect(drawTopics(restrictTopics(store, 'draw', ['d2'])).map((s) => s.topic)).toEqual(['d2']);
+    expect(drawTopics(restrictTopics(store, 'draw', [])).length).toBe(0);
   });
 });
