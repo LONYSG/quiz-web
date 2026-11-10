@@ -423,6 +423,15 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 | `games.mode` | CHECK + **'draw'** | |
 | `draw_rounds` | id · game_id(UNIQUE(game_id, round)) · round · drawer_account_id · topic · item_id · keyword · rerolled · strokes_count · participants · solved(jsonb [{accountId, ms}]) · outcome(all · some · none) · scores · created_at · ★ R088 hints(jsonb { length?, initial?, topic? }) | 그림 하나 한 행 · 그림(선 좌표)은 저장 안 함 |
 
+## ★ 라이어 맞히기 이의제기 (R091 / 0036 — D-348)
+
+| 표 | 더한 칸 | 뜻 |
+|---|---|---|
+| `liar_rounds` | appeal(jsonb · 없으면 null) | 이의제기 `{ guess, yes, no, passed }` — 라이어의 답 · 인정 수 · 기각 수 · 인정됐나(인정이면 guess_ok true) |
+
+- 되돌리기: `ALTER TABLE liar_rounds DROP COLUMN IF EXISTS appeal;`
+- 읽기: `npm run liar:appeals`(인정된 것 · `--all` 기각도 · DATABASE_URL 로 다른 DB) — 변형 후보 목록.
+
 ## ★★ 주제 추첨 group · 주제 고르기 optIn · 객관식 저장 보기 (R090 / 0035 — D-347)
 
 | 표 | 더한 칸 | 뜻 |

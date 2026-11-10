@@ -1082,6 +1082,8 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | `liar.vote` (C→S) | `{ target }` — vote/revote 때 · 자기 · 지목됐던 사람 · 후보 밖 거름 |
 | `liar.final` (C→S) | `{ yes: boolean }` — final 때 · 지목된 사람 거름 |
 | `liar.guess` (C→S) | `{ text }` — guess 때 · 라이어만 · 한 번 |
+| ★ R091 `liar.appeal` · `liar.appealVote` (C→S · D-348) | `liar.appeal {}` — phase `appeal`(맞히기 오답 직후 · 8초) · 라이어만 → phase `appealVote`(10초) / `liar.appealVote { yes: boolean }` — appealVote 때 · 라이어 빼고 참가자 · 바꿀 수 있음 · 접속자가 다 내면 바로 집계(인정 > 기각 = 인정). 때가 아니면 `not_now` · 라이어 본인 표 · 라이어 아닌 사람의 이의제기 `bad`(liar.rejected) |
+| ★ R091 `LiarView` 더함 | phase 에 `appeal` · `appealVote` · 이 두 단계부터 `guess` · `guessOk` · `keyword` 를 모두에게 · `myAppealVote`(true · false · null) · `appealVoted` · `appealEligible` · `appeal`(공개 때 `{guess, yes, no, passed}` · 없으면 null) · 채팅 키워드 거부는 appeal 단계부터 풂 |
 | ★★ R087 `liar.say` (C→S) | `{ text }` — **설명칸**: describe(차례인 사람) · defense(지목된 사람) · 60자 · 키워드 거부 → 기록(`says[{accountId, text, auto, kind: 'say' \| 'defense', bout}]`) · 다음으로 / 거부는 본인에게 `liar.chatRejected { reason: 'not_turn' \| 'keyword' \| 'too_long' \| 'not_now' }` |
 | ★★ R087 `chat.send` (LIAR) 바뀜 | 차례와 **무관하게** 누구나 · 기록 안 됨 · 키워드 담은 글만 거부(공개 전) |
 | ★★ R090 `draw.redo` · `draw.ops` · `draw.hist` (D-347) | C→S `draw.redo {}`(출제자) → 되돌린 작업 하나 다시: op 면 S→C `draw.redo { round, op }`(목록 끝에 · op 통째) · 지우기면 S→C `draw.clear { round }` / `draw.undo` 가 **전체 지우기**를 되돌리면 S→C `draw.ops { round, ops }`(보이는 목록 통째 — 받는 쪽은 격자를 처음부터) / 할 것 수가 바뀔 때마다 S→C `draw.hist { round, undo, redo }` · `DrawView.hist { undo, redo }` / 새 op(첫 조각 · 채우기 · 지우기)면 다시 실행 비움 · 빈 그림의 `draw.clear` 는 아무것도 안 함 · 스택은 서버에만(늦게 온 사람 = 보이는 op 만) |

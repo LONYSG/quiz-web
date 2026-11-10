@@ -63,6 +63,7 @@ npm run typecheck
 npm run db:backup         # ★ 로컬 DB이므로 유일한 안전장치 · ★ R074 끝나면 backups/quizweb-*.dump 최신 5개만 남김(--keep N · BACKUP_KEEP · --keep 0 = 안 지움 · zip 그대로 · --prune-only = 정리만 · ops 메뉴 15)
 npm run play:stats        # ★ R074 문항별 실측(정답률 넷 · 첫 정답 중앙 시간 · 틀린 제출 · 건너뛰기 · 등급 어긋남 후보) → tmp/play-stats.md + data/pipeline/audit/play-stats-<날짜>.json · --since/--until/--games/--min (읽기만)
 npm run hint:solve        # R071 힌트 뒤 정답 집계(등급 · 알가치별) → tmp/hint-solve.md
+npm run liar:appeals      # ★ R091 라이어 이의제기 인정 목록(세트 · 제시어 · 답 · 횟수 · 표) — 변형 후보 · --all 기각도 (읽기만)
 npm run db:restore -- <파일>
 npm run db:reset          # ★ 모든 데이터 삭제 후 재적용
 ```
