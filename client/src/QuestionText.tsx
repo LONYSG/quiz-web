@@ -23,6 +23,15 @@ const MIN_PX = 15;
  *   → 150자 넘음 15px · 120~150자 17px · 그 밖 19px 를 **위 끝**으로(옛 자동 맞춤 값이 더 작으면 그것) · 늘 줄바꿈. PC(넓은 칸)는 옛 자동 맞춤 그대로.
  */
 const NARROW_MAX_W = 400;
+/**
+ * ★ R094 (D-351 · 찬종 #125 "채팅창을 약간 줄이고 문제창을 넓게") — 넓은 PC 칸은 기본 글자를 키운다(긴 문장은 예전처럼 줄여 맞춘다).
+ *   R094 실측 전: 2560 칸 1912px 에 27px(19 × 1.42) — 오른쪽 절반이 비었다.
+ */
+function basePxFor(width: number): number {
+  if (width >= 1400) return 24;
+  if (width >= 960) return 21;
+  return BASE_PX;
+}
 export function narrowPx(chars: number): number {
   if (chars > 150) return 15;
   if (chars >= 120) return 17;
@@ -45,7 +54,7 @@ export default function QuestionText({ text }: { text: string }) {
       const narrow = width > 0 && width <= NARROW_MAX_W;
       if (narrow) box.dataset.narrow = '1';
       else delete box.dataset.narrow;
-      const base = Math.round(BASE_PX * k);
+      const base = Math.round(basePxFor(width) * k);
       const min = Math.round(MIN_PX * k);
       let px = base;
       const widest = () => Math.max(0, ...spans.map((el) => el.scrollWidth));

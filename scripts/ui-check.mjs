@@ -5569,6 +5569,101 @@ async function r093Flow(browser) {
 }
 
 // =============================================================================
+// ★★★ R094 — 실전 제보 화면 셋 2차 (D-351 · #123 · #124 · #125) (UICHECK_R094=1 · 묶음 r094 · docs/design/r094)
+//   ① 번개손 결과 "나 · 퀵드로우 — 가짜 신호 1번" — 실험실 장면(/lab/minigame reaction roundResult) · 2560 · 1280 · m360 — 칸 밖 넘침 0
+//   ② 숫자 정답 초성 힌트 "____" 옆 "숫자 4자리" — 검사 DB 에서 숫자 정답 한 문제 + 긴 문제 하나만 잠깐 활성(끝나면 되돌림)
+//   ③ 문제 칸 · 채팅 칸 크기(2560 · 1280 · FHD 125%) — 전 · 후 숫자
+// =============================================================================
+const R094_RX = `JSON.stringify((() => { const box = document.querySelector('.rx-result'); if (!box) return null; const cell = box.getBoundingClientRect(); const ps = [...box.querySelectorAll('p')].map((p) => { const r = p.getBoundingClientRect(); return { t: p.innerText.replace(/\\n/g, ' / '), sw: p.scrollWidth, cw: p.clientWidth, l: Math.round(r.left - cell.left), r: Math.round(cell.right - r.right) }; }); const out = ps.some((p) => p.sw > p.cw + 1 || p.l < -1 || p.r < -1); return { w: Math.round(cell.width), ps, out, over: document.documentElement.scrollWidth - innerWidth }; })())`;
+const R094_Q = `JSON.stringify((() => { const q = document.querySelector('.q-text'); const card = document.querySelector('.question-card'); const chat = document.querySelector('.room .chat-card'); const center = document.querySelector('.center'); const hint = [...document.querySelectorAll('.q-hint.open')].pop(); if (!q || !card) return null; const cs = getComputedStyle(q); const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.45; const R = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; }; return { len: [...(q.dataset.text ?? q.innerText)].length, fs: cs.fontSize, lines: Math.round(q.getBoundingClientRect().height / lh), card: R(card), chat: R(chat), center: R(center), hint: hint ? hint.innerText.replace(/\\s+/g, ' ').trim() : '', kind: document.querySelector('.hint-kind')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())`;
+async function r094Flow(browser) {
+  const rows = [];
+  const res = {};
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r094] ${k}: ${JSON.stringify(v)}`);
+  };
+  // ── ① 번개손 결과
+  const H = await newPage(browser, 'R094-host', true);
+  await H.setViewport(2560, 1313);
+  await signUp(H, 'r94h', '제보방장');
+  const G = await newPage(browser, 'R094-g', true);
+  await signUp(G, 'r94g', '제보손님');
+  await r068Touch(G, 360, 740, true);
+  for (const [P, n, w, h] of [[H, 'pc2560', 2560, 1313], [H, 'pc1280', 1280, 720], [G, 'm360', 0, 0]]) {
+    if (w) await P.setViewport(w, h);
+    await P.goto(`${BASE}/lab/minigame?scene=1&key=reaction&phase=roundResult&seed=2024`);
+    await P.waitFor("document.querySelector('.rx-result') !== null", 8000).catch(() => false);
+    await sleep(500);
+    res[`rx-${n}`] = JSON.parse(await P.evaluate(R094_RX));
+    await snapClip(P, `reaction-result-${n}`, '.mg-result');
+  }
+  note('번개손 결과', { pc2560: res['rx-pc2560'], pc1280: res['rx-pc1280'], m360: res['rx-m360'] });
+  await H.setViewport(2560, 1313);
+
+  // ── ② · ③ 퀴즈 두 문제(숫자 정답 + 긴 문제)
+  const prep = await withPg(async (c) => {
+    const num = (await c.query(`SELECT q.id::text FROM questions q WHERE q.is_active AND q.status = 'approved' AND q.question_type = 'short_answer' AND coalesce(q.hint_answer, q.display_answer) ~ '^[0-9]{4}$' ORDER BY q.id LIMIT 1`)).rows[0]?.id;
+    const long = (await c.query(`SELECT q.id::text FROM questions q WHERE q.is_active AND q.status = 'approved' AND q.question_type = 'short_answer' AND char_length(q.question_text) BETWEEN 120 AND 160 AND coalesce(q.hint_answer, q.display_answer) ~ '^[가-힣]{3,6}$' ORDER BY q.id LIMIT 1`)).rows[0]?.id;
+    await c.query(`DROP TABLE IF EXISTS _r094_active`);
+    await c.query(`CREATE TABLE _r094_active AS SELECT id FROM questions WHERE is_active`);
+    await c.query(`UPDATE questions SET is_active = (id = ANY($1::bigint[])) WHERE is_active`, [[num, long]]);
+    return { num, long };
+  });
+  note('문항', prep);
+  try {
+    await H.goto(`${BASE}/`);
+    await sleep(500);
+    const roomId = await createRoom(H, 'R094 제보');
+    await G.goto(`${BASE}/r/${roomId}`);
+    await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+    await sleep(600);
+    await setQuestionCount(H, 2);
+    await sleep(300);
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+    let lastEp = '';
+    for (let i = 0; i < 2; i += 1) {
+      const up = await H.waitFor(`document.querySelector('.room')?.dataset.state === 'QUESTION_ACTIVE' && document.querySelector('.room')?.dataset.epoch !== ${JSON.stringify(lastEp)}`, 40000).catch(() => false);
+      if (!up) break;
+      lastEp = await H.evaluate("document.querySelector('.room')?.dataset.epoch ?? ''");
+      await H.waitFor("document.querySelectorAll('.q-hint.open').length >= 2", 30000).catch(() => false);
+      await sleep(700);
+      const hint = await H.evaluate("document.querySelector('.q-hint.open:last-child .hint-value')?.innerText ?? ''");
+      const tag = /^_+$/.test(hint) ? 'num' : 'long';
+      for (const [n, w, h, dpr] of [['pc2560', 2560, 1313, 1], ['pc1280', 1280, 720, 1], ['fhd125', 1536, 864, 1.25]]) {
+        await H.send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: dpr, mobile: false });
+        await H.evaluate("window.dispatchEvent(new Event('resize'))");
+        await sleep(450);
+        await H.evaluate("(() => { const q = document.querySelector('.q-text'); if (q) { q.style.width = '99%'; requestAnimationFrame(() => { q.style.width = ''; }); } })()");
+        await sleep(450);
+        res[`${tag}-${n}`] = JSON.parse(await H.evaluate(R094_Q));
+        await snap(H, `game-${tag}-${n}`);
+      }
+      await H.send('Emulation.setDeviceMetricsOverride', { width: 2560, height: 1313, deviceScaleFactor: 1, mobile: false });
+      res[`${tag}-m360`] = JSON.parse(await G.evaluate(R094_Q));
+      await snap(G, `game-${tag}-m360`);
+      if (tag === 'num') await snapClip(H, 'hint-num-pc2560', '.q-hints');
+      note(`문제 ${tag}`, { pc2560: res[`${tag}-pc2560`], pc1280: res[`${tag}-pc1280`], fhd125: res[`${tag}-fhd125`], m360: res[`${tag}-m360`] });
+    }
+  } finally {
+    await withPg(async (c) => {
+      await c.query(`UPDATE questions SET is_active = true WHERE id IN (SELECT id FROM _r094_active)`);
+      await c.query(`DROP TABLE IF EXISTS _r094_active`);
+    });
+  }
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r094'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r094'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r094', 'r094.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R094 번개손 결과 — "나 · 퀵드로우 — 가짜 신호 1번" 칸 안(넘침 0) · 2560 · 1280 · m360', ['pc2560', 'pc1280', 'm360'].every((n) => { const x = res[`rx-${n}`]; return x && !x.out && x.over <= 1 && x.ps.some((p) => /가짜 신호 1번/.test(p.t)); }), JSON.stringify([res['rx-pc2560'], res['rx-pc1280'], res['rx-m360']]));
+  record('★★★ R094 숫자 정답 초성 힌트 — "____" 옆 "숫자 4자리" · PC · m360 / 한글 정답엔 표시 없음', ['pc2560', 'pc1280', 'fhd125', 'm360'].every((n) => /숫자 4자리/.test(res[`num-${n}`]?.kind ?? '')) && ['pc2560', 'm360'].every((n) => res[`long-${n}`] && res[`long-${n}`].kind === ''), JSON.stringify({ num: res['num-pc2560'], numM: res['num-m360'], long: res['long-pc2560'] }));
+  const qShare = (x) => (x && x.card && x.chat ? x.card.h / (x.card.h + x.chat.h) : 0);
+  res.share = Object.fromEntries(['pc2560', 'pc1280', 'fhd125'].map((n) => [n, Math.round(qShare(res[`long-${n}`]) * 100) / 100]));
+  note('문제 칸 비율(문제 ÷ 문제 + 채팅)', res.share);
+  record('★★★ R094 문제 칸 넓게 · 채팅 좁게 — 문제 칸 비율 ≥ 0.5(긴 문제 · 숫자 문제) · 2560 지문 ≥ 32px · 넘침 0 · 2560 · 1280 · FHD 125% / m360 그대로 · 넘침 0', ['pc2560', 'pc1280', 'fhd125'].every((n) => res.share[n] >= 0.5 && qShare(res[`num-${n}`]) >= 0.5 && (res[`long-${n}`]?.over ?? 9) <= 1) && parseFloat(res['long-pc2560']?.fs ?? '0') >= 32 && (res['long-m360']?.over ?? 9) <= 1, JSON.stringify({ share: res.share, num: ['pc2560', 'pc1280', 'fhd125'].map((n) => Math.round(qShare(res[`num-${n}`]) * 100) / 100), fs: ['pc2560', 'pc1280', 'fhd125', 'm360'].map((n) => res[`long-${n}`]?.fs) }));
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R088 — 라이어 바보형 화면 (D-345) (UICHECK_R088=1 · 묶음 r088 · docs/design/r088)
 //   방장 PC 1280 · FHD 125%(1536×864 @1.25) · 손님 m360 터치 · 소켓 손님 1(3명) · 2라운드
 //   설정: 방식 라이어 → 모드 줄(기본형 · 바보형) · 바보형 누름 → 손님 칩 / 배정: 셋 다 시민 카드(라이어도 키워드) · 머리 "바보형" / 공개: "라이어가 받은 단어" · 세 테마
@@ -10294,6 +10389,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R093) {
     await closeAllTabs(browser);
     await r093Flow(browser);
+  }
+  // ★ R094 — 실전 제보 화면 셋 2차
+  if (process.env.UICHECK_R094) {
+    await closeAllTabs(browser);
+    await r094Flow(browser);
   }
   // ★ R091 — 라이어 맞히기 이의제기
   if (process.env.UICHECK_R091) {

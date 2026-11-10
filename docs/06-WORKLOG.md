@@ -18,6 +18,11 @@
 - 문제: 브리핑 추정 ≈60 보다 적음(브리핑 SQL 그대로 36) → 느슨한 추가 검사 27 도 봄 — 대상 0. dev 는 쓰기 전 백업 안 함(backup.mjs 기본 = quizweb) — undo json 으로 대신.
 - 검사: dry-run 두 DB 일치 · checkAnswerSet · checkHint · crossans 경고 0 · hint-check-active 막힘 0(두 DB). 결정 DG-097. 남은 것: 없음(다음 판부터 반영).
 
+## 2026-11-11 — R094 실전 제보 화면 셋 2차 (MAIN · D-351)
+- 무엇: 찬종 실전 제보 #123(번개손 결과 "나 · 퀵드로우 — 가짜 신호 1번" 칸 밖) · #124(`_` 뿐인 힌트 = 숫자 알림) · #125(채팅 줄이고 문제 넓게) — MinigameStage rx-who 두 덩이 · shared hintKind + Question "· 숫자 n자리" · QuestionText 넓은 칸 기본 글자(24 · 21 · 19) · PC QUESTION_ACTIVE/RESOLVED 문제 칸 min-height 50% · 지문 margin-block auto.
+- 문제: 브리핑 C 는 `.stage` 오른쪽 열을 채팅으로 봤지만 실제는 참여자 열 · 채팅은 문제 아래(2560 309 : 926) → 폭 대신 높이를 나눔(좌석 열 그대로 · D-351 에 적음). 실험실 장면 뒤 방 만들기는 홈으로 먼저 가야 함(ui-check 첫 실행 실패 1).
+- 검사: ui-check r094 전 0/3 → 후 3/3 · typecheck 0 · vitest 753 · build 0 · 봇 0. 실 3000 · 터널 손대지 않음. 남은 것: 체감 A120 · 적용은 메뉴 3 → 1 [1].
+
 ## 2026-11-10 — R093 실전 제보 화면 셋 (MAIN · D-350)
 - 무엇: 찬종 친구 실전 제보 #120(순서대로 "보기가 버튼에서 중앙 정렬이 안됨") · #121(로비 "|" · 결과 내 줄 테두리 짤림) — styles.css 만: .order-card::after(아래 같은 높이 빈 칸) · .order-label 줄바꿈 · .team-sep 선 → 여백 · .ranking li.mine outline → inset box-shadow.
 - 문제: "분류 선택할 때 |" — 분야 줄엔 구분자가 없고 방식 줄 팀전 앞 1px 선이 유일 → 그것으로 판단. 검사 중 m360 긴 보기가 카드 밖으로 나가는 것도 발견(버튼 nowrap 상속) → 함께 고침. 같은 시각 GEN G059 가 같은 작업트리에서 문서를 고치는 중 → 내 줄만 index 에 얹어 커밋.

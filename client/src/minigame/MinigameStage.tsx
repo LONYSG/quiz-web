@@ -770,8 +770,9 @@ function R051Result({ view, mine, first, decimals }: { view: MinigameView; mine:
         <p className="mg-r051-big mono">
           {!row || (!row.submitted && !foul) ? '안 누름' : foul ? (foul === 'fake' ? '속았다!' : '성급!') : `${row.value}ms`}
         </p>
-        <p className="dim">
-          {who} · {p.quickdraw ? `퀵드로우 — 가짜 신호 ${(p.fakes as unknown[] | undefined)?.length ?? 0}번` : '순수 반응'}
+        {/* ★ R094 (D-351 · #123) — "나 · 퀵드로우 — 가짜 신호 1번" 이 2560 에서 220px 칸 밖으로 → 이름 / 사유 두 덩이(칸이 좁으면 두 줄) */}
+        <p className="dim rx-who">
+          <span>{who} ·</span> <span>{p.quickdraw ? `퀵드로우 — 가짜 신호 ${(p.fakes as unknown[] | undefined)?.length ?? 0}번` : '순수 반응'}</span>
         </p>
       </div>
     );

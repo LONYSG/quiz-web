@@ -19,7 +19,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatGapNsString, formatLevel, formatTopics, RULES, type DifficultyLevel, type GameTopic } from '@quiz/shared';
+import { formatGapNsString, formatLevel, formatTopics, hintKind, RULES, type DifficultyLevel, type GameTopic } from '@quiz/shared';
 import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
@@ -280,6 +280,8 @@ export default function Question({
             <p key="c-open" className="q-hint open">
               <span className="hint-label">초성</span>{' '}
               {question.hint ? <span className="mono hint-value">{question.hint}</span> : <span className="dim">없음</span>}
+              {/* ★ R094 (D-351 · #124) — "____" 뿐이면 숫자라고 알려 준다(초성 규칙은 그대로 · 표시만) */}
+              {hintKind(question.hint) && <span className="hint-kind">· {hintKind(question.hint)!.label}</span>}
             </p>
           ) : (
             <p className="q-hint locked">

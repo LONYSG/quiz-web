@@ -7,7 +7,7 @@
 // =============================================================================
 
 export { normalizeAnswer, buildNormalizedIndex, NORMALIZE_VERSION } from './normalize.js';
-export { firstInitial, generateHint, HINT_VERSION } from './hint.js';
+export { firstInitial, generateHint, hintKind, HINT_VERSION } from './hint.js';
 export { computeRanking, skipThreshold } from './ranking.js';
 export { splitSentences } from './sentences.js';
 export { formatGapNs, formatGapNsString, formatGapSeconds } from './gap.js';

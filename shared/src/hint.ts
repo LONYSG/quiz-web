@@ -189,3 +189,19 @@ export function generateHint(answer: unknown): string | null {
 
   return hint;
 }
+
+/**
+ * ★ R094 (D-351 · 찬종 제보 #124 "비어있는 _ 로만 되어있는 힌트는 숫자라는 것을 알려줘야 함")
+ * 초성 힌트가 **"_" 와 기호뿐**(한글 초성 · 영문 · 그 밖 글자 0)이면 "_" 는 모두 숫자다(generateHint 가 숫자만 "_" 로 가리고,
+ * 영문은 단어 첫 글자를 늘 보이므로 글자 없는 "_" 는 숫자뿐이다). 표시 쪽이 "숫자 n자리" 를 덧붙인다.
+ *   "____" → 숫자 4자리 · "-__" · "_.__" · "__ __" → 숫자 n개(기호 · 띄어쓰기 사이) · "N__ Y___" · "_ㄱ" · null → null(그대로)
+ * 힌트 만드는 규칙(generateHint)은 그대로 — 이 함수는 만든 힌트 문자열만 본다.
+ */
+export function hintKind(hint: string | null | undefined): { kind: 'number'; digits: number; label: string } | null {
+  if (typeof hint !== 'string') return null;
+  const s = hint.trim();
+  if (!/^[_\s!-/:-@[-`{-~·×]+$/.test(s)) return null;
+  const digits = [...s].filter((ch) => ch === '_').length;
+  if (digits === 0) return null;
+  return { kind: 'number', digits, label: /^_+$/.test(s) ? `숫자 ${digits}자리` : `숫자 ${digits}개` };
+}

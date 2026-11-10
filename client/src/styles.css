@@ -1030,6 +1030,13 @@ form button[type='submit'] {
   letter-spacing: 0.16em;
   color: var(--accent);
 }
+/* ★ R094 (D-351 · #124) — "____ · 숫자 4자리" */
+.hint-kind {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
 @keyframes hint-in {
   from {
     opacity: 0;
@@ -7808,9 +7815,21 @@ button.profile-photo {
 }
 .wp-reveal .quiz-name,
 .wp-reveal > div > p.dim,
-.wp-minmax > span,
-.rx-result > p.dim {
+.wp-minmax > span {
   white-space: nowrap;
+}
+/* ★ R094 (D-351 · #123) — 번개손 결과 아래 줄: 칸이 좁으면 덩이(이름 · / 사유) 사이에서 먼저 줄바꿈 · 그래도 넘치면 어절에서 */
+.rx-result > p.rx-who {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.3em;
+  max-width: 100%;
+}
+.rx-result > p.rx-who > span {
+  max-width: 100%;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .wp-reveal > div {
   min-width: 0;
@@ -10426,6 +10445,22 @@ button.preset.shake {
   justify-content: center;
   font-size: 0.9rem;
   font-weight: 700;
+}
+/* ★ R094 (D-351 · 찬종 #125 "채팅창을 전반적으로 약간 줄이고 문제창을 넓게") — PC 퀴즈 문제 · 정답 공개 때
+   문제 칸이 가운데 열 높이의 반 이상(예전엔 글 높이만 · 2560 에서 문제 309 : 채팅 926) · 남는 높이는 지문 위아래로 나눠 지문이 칸 한가운데 ·
+   채팅은 나머지(아래 끝 120px 그대로) · 휴대폰(1열)은 그대로 */
+:where(.ui-pc) .room:is([data-state='QUESTION_ACTIVE'], [data-state='QUESTION_RESOLVED']) .center-main:has(> .question-card) {
+  display: flex;
+  flex-direction: column;
+  min-height: 50%;
+}
+:where(.ui-pc) .room:is([data-state='QUESTION_ACTIVE'], [data-state='QUESTION_RESOLVED']) .center-main > .question-card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+:where(.ui-pc) .room:is([data-state='QUESTION_ACTIVE'], [data-state='QUESTION_RESOLVED']) .center-main > .question-card > .q-text {
+  margin-block: auto;
 }
 /* ★ R087 — PC: 채팅을 판 옆으로(캔버스가 판 높이를 다 쓴다) · 양옆 참여자 칸을 조금 좁힘 */
 :where(.ui-pc) .room[data-state='DRAW'] .stage {
