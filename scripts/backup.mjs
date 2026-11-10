@@ -11,9 +11,9 @@
 //   컨테이너 볼륨을 지우는 일은 흔하다.
 //
 // 사용법
-//   npm run db:backup                 backups/quizweb-YYYYMMDD-HHmmss.dump 생성
+//   npm run db:backup                 backups/<DB 이름>-YYYYMMDD-HHmmss.dump 생성(★ R095 — quizweb-… · quizweb_dev-…)
 //   npm run db:backup -- --out 경로   위치 지정
-//   ★ R074 — 끝나면 backups/quizweb-*.dump 를 **최신 5개만** 남기고 지운다(--keep N · BACKUP_KEEP · 0 = 안 지움 · zip 은 그대로)
+//   ★ R074 — 끝나면 backups/*.dump 를 **DB 이름마다 최신 5개만**(R095) 남기고 지운다(--keep N · BACKUP_KEEP · 0 = 안 지움 · zip 은 그대로)
 //   npm run db:backup -- --prune-only  덤프 없이 정리만(ops 메뉴 15)
 //
 // 복원은 scripts/restore.mjs 를 쓴다. 절차는 docs/11-DEPLOY.md 참조.
@@ -21,7 +21,7 @@
 
 import { spawn } from 'node:child_process';
 import { mkdir, readdir, unlink } from 'node:fs/promises';
-import { keepCount, pickPrune } from './backup-prune.mjs';
+import { backupName, dbNameOf, keepCount, pickPrune } from './backup-prune.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -36,7 +36,8 @@ try {
 
 const CONTAINER = process.env.DB_CONTAINER ?? 'quiz-web-db';
 const DB_USER = process.env.DB_USER ?? 'quiz';
-const DB_NAME = process.env.DB_NAME ?? 'quizweb';
+// ★ R095 (D-352) — DB_NAME > DATABASE_URL 의 DB 이름 > quizweb · 파일 이름도 이 이름(quizweb-… / quizweb_dev-…)
+const DB_NAME = dbNameOf(process.env);
 
 function stamp() {
   const d = new Date();
@@ -60,7 +61,7 @@ async function prune() {
     await unlink(path.join(BACKUP_DIR, n));
     console.log(`[backup] 지움(오래된 백업) ${n}`);
   }
-  console.log(`[backup] 정리 — 최신 ${keep}개 남김 · 지운 것 ${gone.length}개`);
+  console.log(`[backup] 정리 — DB 이름마다 최신 ${keep}개 남김 · 지운 것 ${gone.length}개`);
 }
 if (process.argv.includes('--prune-only')) {
   await prune();
@@ -71,7 +72,7 @@ const outIdx = process.argv.indexOf('--out');
 const outFile =
   outIdx >= 0 && process.argv[outIdx + 1]
     ? path.resolve(process.argv[outIdx + 1])
-    : path.join(ROOT, 'backups', `quizweb-${stamp()}.dump`);
+    : path.join(ROOT, 'backups', backupName(DB_NAME, stamp()));
 
 await mkdir(path.dirname(outFile), { recursive: true });
 

@@ -285,7 +285,8 @@ async function pruneBackups() {
   const dir = path.join(ROOT, 'backups');
   const names = existsSync(dir) ? readdirSync(dir) : [];
   const gone = pickPrune(names, 5);
-  if (!gone.length) return console.log('  지울 백업이 없습니다(덤프 5개 이하)');
+  // ★ R095 (D-352) — backup.mjs 와 같은 규칙: DB 이름마다 최신 5(quizweb-… · quizweb_dev-… 따로)
+  if (!gone.length) return console.log('  지울 백업이 없습니다(DB 이름마다 덤프 5개 이하)');
   console.log(`  지울 것 ${gone.length}개: ${gone.join(' · ')}`);
   if (!(await yes('지울까요?'))) return console.log('  그만둠');
   run('node scripts/backup.mjs --prune-only --keep 5');

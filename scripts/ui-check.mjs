@@ -5025,6 +5025,7 @@ async function r083Flow(browser) {
   const gTools = await G.evaluate("!!document.querySelector('[data-draw-tools]')");
   const rect = await canvasRect(H);
   await mousePath(H, circle(rect));
+  await realClick(H, '[data-draw-color-dot]'); // ★ R095 — 팔레트는 색 점 팝업 안
   await realClick(H, '[data-draw-color="#e5383b"]');
   await mousePath(H, [[rect.x + rect.w * 0.2, rect.y + rect.h * 0.8], [rect.x + rect.w * 0.5, rect.y + rect.h * 0.6], [rect.x + rect.w * 0.8, rect.y + rect.h * 0.8]]);
   await sleep(800);
@@ -5215,6 +5216,7 @@ async function r089Flow(browser) {
   await sleep(600);
   // 페인트통 — 하늘색 안쪽
   await realClick(H, '[data-draw-tool="fill"]');
+  await realClick(H, '[data-draw-color-dot]'); // ★ R095 — 팔레트는 색 점 팝업 안
   await realClick(H, '[data-draw-color="#38bdf8"]');
   const before = await hash(H);
   await mouse('mousePressed', at(0.5, 0.5));
@@ -5253,6 +5255,8 @@ async function r089Flow(browser) {
   await snap(H, 'redo-restored-pc');
   await snap(G, 'redo-restored-m360');
   // 굵기 · 세부 색 · 최근 · 지우개 · 단축키
+  await realClick(H, '[data-draw-color-dot]'); // ★ R095 — 세부 색 · 최근은 색 점 팝업 안
+  await sleep(200);
   await H.evaluate(`(() => { const i = document.querySelector('[data-draw-custom]'); const d = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value'); d.set.call(i, '#123456'); i.dispatchEvent(new Event('input', { bubbles: true })); i.dispatchEvent(new Event('change', { bubbles: true })); })()`);
   await sleep(300);
   const custom = await J(H, "({ recent: [...document.querySelectorAll('[data-draw-recent]')].map((b) => b.dataset.drawRecent), value: document.querySelector('[data-draw-custom]')?.value ?? '' })");
@@ -5576,6 +5580,114 @@ async function r093Flow(browser) {
 // =============================================================================
 const R094_RX = `JSON.stringify((() => { const box = document.querySelector('.rx-result'); if (!box) return null; const cell = box.getBoundingClientRect(); const ps = [...box.querySelectorAll('p')].map((p) => { const r = p.getBoundingClientRect(); return { t: p.innerText.replace(/\\n/g, ' / '), sw: p.scrollWidth, cw: p.clientWidth, l: Math.round(r.left - cell.left), r: Math.round(cell.right - r.right) }; }); const out = ps.some((p) => p.sw > p.cw + 1 || p.l < -1 || p.r < -1); return { w: Math.round(cell.width), ps, out, over: document.documentElement.scrollWidth - innerWidth }; })())`;
 const R094_Q = `JSON.stringify((() => { const q = document.querySelector('.q-text'); const card = document.querySelector('.question-card'); const chat = document.querySelector('.room .chat-card'); const center = document.querySelector('.center'); const hint = [...document.querySelectorAll('.q-hint.open')].pop(); if (!q || !card) return null; const cs = getComputedStyle(q); const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.45; const R = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; }; return { len: [...(q.dataset.text ?? q.innerText)].length, fs: cs.fontSize, lines: Math.round(q.getBoundingClientRect().height / lh), card: R(card), chat: R(chat), center: R(center), hint: hint ? hint.innerText.replace(/\\s+/g, ' ').trim() : '', kind: document.querySelector('.hint-kind')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())`;
+// ★★★ R095 — 실전 제보 3차 (D-352 · #116 캐치 초성 · 도구 아이콘 · 색 점 팝업 / #117 미니게임 판:채팅) (UICHECK_R095=1 · R095_TAG=before|after · 묶음 r095 · docs/design/r095)
+const R095_MG = `JSON.stringify((() => { const card = document.querySelector('.mg-card'); const chat = document.querySelector('.room .chat-card'); const center = document.querySelector('.center'); const R = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height), b: Math.round(r.bottom) }; }; return { card: R(card), chat: R(chat), center: R(center), vh: innerHeight, over: document.documentElement.scrollWidth - innerWidth }; })())`;
+async function r095Flow(browser) {
+  const TAG = process.env.R095_TAG ?? 'after';
+  const rows = [];
+  const res = {};
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r095] ${k}: ${JSON.stringify(v)}`);
+  };
+  const J = async (P, expr) => JSON.parse(await P.evaluate(`JSON.stringify(${expr})`));
+  const share = (x) => (x && x.card && x.chat ? Math.round((x.card.h / (x.card.h + x.chat.h)) * 100) / 100 : 0);
+  // ── C. 미니게임 판:채팅 — lab 방 틀(판 큰 것 넷)
+  const H = await newPage(browser, 'R095-host', true);
+  await H.setViewport(2560, 1313);
+  await signUp(H, 'r95h', '그림방장');
+  const G = await newPage(browser, 'R095-g', true);
+  await signUp(G, 'r95g', '그림손님');
+  await r068Touch(G, 360, 740, true);
+  for (const [key, phase] of [['song', 'play'], ['reaction', 'play'], ['order', 'play'], ['many', 'play']]) {
+    for (const [P, n, w, h] of [[H, 'pc2560', 2560, 1313], [H, 'pc1280', 1280, 720], [G, 'm360', 0, 0]]) {
+      if (w) await P.setViewport(w, h);
+      await P.goto(`${BASE}/lab/minigame?scene=1&room=1&key=${key}&phase=${phase}&seed=2024`);
+      await P.waitFor("document.querySelector('.mg-card') !== null", 8000).catch(() => false);
+      await sleep(600);
+      res[`mg-${key}-${n}`] = JSON.parse(await P.evaluate(R095_MG));
+      await snap(P, `mg-${key}-${n}-${TAG}`);
+    }
+  }
+  const mgShare = Object.fromEntries(['song', 'reaction', 'order', 'many'].map((k) => [k, Object.fromEntries(['pc2560', 'pc1280', 'm360'].map((n) => [n, share(res[`mg-${k}-${n}`])]))]));
+  note('미니게임 판 비율(판 ÷ 판 + 채팅)', mgShare);
+  note('미니게임 넘침', Object.fromEntries(Object.entries(res).filter(([k]) => k.startsWith('mg-')).map(([k, v]) => [k, v?.over ?? null])));
+
+  // ── A · B. 캐치마인드 — 방장(PC) 출제
+  await H.setViewport(2560, 1313);
+  await H.goto(`${BASE}/`);
+  await sleep(500);
+  const roomId = await createRoom(H, 'R095 그리기');
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'r95s');
+  await realClick(H, 'button[data-mode="draw"]');
+  await H.setInput('.mg-rounds-input', '2');
+  await sleep(400);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('[data-draw-tools]') !== null", 15000).catch(() => false);
+  await sleep(600);
+  const TOOLS = "(() => { const t = document.querySelector('[data-draw-tools]'); const side = document.querySelector('.draw-side')?.getBoundingClientRect(); const c = document.querySelector('[data-draw-canvas]')?.getBoundingClientRect(); const btn = (s) => { const b = document.querySelector(s); if (!b) return null; const r = b.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height), svg: !!b.querySelector('svg'), text: b.innerText.trim(), label: b.getAttribute('aria-label') ?? '', title: b.title }; }; const pen = btn('[data-draw-tool=\"pen\"]'); const dot = btn('[data-draw-color-dot]'); const penR = document.querySelector('[data-draw-tool=\"pen\"]')?.getBoundingClientRect(); const dotR = document.querySelector('[data-draw-color-dot]')?.getBoundingClientRect(); return { pen, fill: btn('[data-draw-tool=\"fill\"]'), pick: btn('[data-draw-tool=\"pick\"]'), eraser: btn('[data-draw-tool=\"eraser\"]'), dot, sameRow: penR && dotR ? Math.abs(penR.top - dotR.top) < 2 : false, paletteOut: document.querySelectorAll('[data-draw-tools] > .draw-palette, [data-draw-tools] > .draw-custom').length, side: side ? Math.round(side.width) : 0, canvas: c ? Math.round(c.width) : 0, inView: t ? [...t.querySelectorAll('button')].every((b) => { const r = b.getBoundingClientRect(); return r.bottom <= innerHeight + 1 && r.right <= innerWidth + 1 && r.left >= -1; }) : false, over: document.documentElement.scrollWidth - innerWidth }; })()";
+  const POP = "(() => { const p = document.querySelector('[data-draw-color-pop]'); if (!p) return null; const r = p.getBoundingClientRect(); const d = document.querySelector('[data-draw-color-dot]').getBoundingClientRect(); return { colors: p.querySelectorAll('[data-draw-color]').length, custom: !!p.querySelector('[data-draw-custom]'), below: r.top >= d.bottom - 1, inView: r.left >= 0 && r.right <= innerWidth + 1 && r.bottom <= innerHeight + 1, w: Math.round(r.width), h: Math.round(r.height) }; })()";
+  for (const [n, w, h] of [['pc2560', 2560, 1313], ['pc1280', 1280, 720]]) {
+    await H.setViewport(w, h);
+    await sleep(500);
+    res[`tools-${n}`] = await J(H, TOOLS);
+    await snap(H, `draw-drawer-${n}-${TAG}`);
+    await snapClip(H, `draw-side-${n}-${TAG}`, '.draw-side');
+    if (TAG === 'after') {
+      await realClick(H, '[data-draw-color-dot]');
+      await sleep(300);
+      res[`pop-${n}`] = await J(H, POP);
+      await snap(H, `draw-pop-${n}-${TAG}`);
+      await realClick(H, '[data-draw-color="#e5383b"]');
+      await sleep(200);
+      res[`pick-${n}`] = await J(H, "({ dot: document.querySelector('[data-draw-color-dot]')?.dataset.drawColorDot ?? '', open: !!document.querySelector('[data-draw-color-pop]') })");
+    }
+    note(`도구 ${n}`, { tools: res[`tools-${n}`], pop: res[`pop-${n}`] ?? null, pick: res[`pick-${n}`] ?? null });
+  }
+  // 초성 힌트(A) — 손님 화면
+  const kw = await H.evaluate("document.querySelector('[data-draw-keyword]')?.innerText ?? ''");
+  await realClick(H, '[data-draw-hint-btn="initial"]');
+  await G.waitFor("document.querySelector('[data-draw-hint=\"initial\"]') !== null", 5000).catch(() => false);
+  await sleep(300);
+  res.initial = { kw, hint: await G.evaluate("document.querySelector('[data-draw-hint=\"initial\"] strong')?.innerText ?? ''"), sys: await G.evaluate("[...document.querySelectorAll('.chat-log *')].some((e) => /출제자가 초성을 공개했어요/.test(e.textContent ?? ''))") };
+  note('초성 힌트', res.initial);
+  await snap(G, `draw-guess-initial-m360-${TAG}`);
+  // 1라운드 끝 → 2라운드 손님(m360) 출제
+  await G.setInput('.chat-card input', kw);
+  await G.click('전송');
+  S.emit('chat.send', { text: kw, epoch: null });
+  await G.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null && !!document.querySelector('[data-draw-tools]')", 20000).catch(() => false);
+  await sleep(600);
+  res['tools-m360'] = await J(G, TOOLS);
+  await snap(G, `draw-drawer-m360-${TAG}`);
+  if (TAG === 'after') {
+    await realClick(G, '[data-draw-color-dot]');
+    await sleep(300);
+    res['pop-m360'] = await J(G, POP);
+    await snap(G, `draw-pop-m360-${TAG}`);
+    await G.key('Escape');
+    await sleep(200);
+    res['esc-m360'] = await G.evaluate("!document.querySelector('[data-draw-color-pop]')");
+  }
+  note('도구 m360', { tools: res['tools-m360'], pop: res['pop-m360'] ?? null, esc: res['esc-m360'] ?? null });
+  try {
+    S.disconnect();
+  } catch {
+    /* 이미 끊김 */
+  }
+  const dir = path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r095');
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  writeFileSync(path.join(dir, `r095-${TAG}.json`), JSON.stringify(rows, null, 1));
+  const syl = [...kw.replace(/\s/g, '')].length;
+  record(`★★★ R095 캐치 초성 = 제시어 전체 초성(글자 수 ${syl} · 띄어쓰기 유지) + 시스템 줄 "출제자가 초성을 공개했어요" [${TAG}]`, kw.length > 0 && [...res.initial.hint.replace(/\s/g, '')].length === syl && res.initial.hint.split(' ').length === kw.trim().split(/\s+/).length && res.initial.sys, JSON.stringify(res.initial));
+  const toolsOk = (t) => t && ['pen', 'eraser', 'fill', 'pick'].every((k) => t[k] && t[k].svg && t[k].text === '' && t[k].label) && t.dot && t.sameRow && t.paletteOut === 0 && t.inView && t.over <= 1;
+  record(`★★★ R095 도구 = 아이콘(글자 0 · aria-label) · 지금 색 점이 도구 줄 같은 줄 · 팔레트 판은 팝업 안 · 2560 · 1280 · m360 [${TAG}]`, ['pc2560', 'pc1280', 'm360'].every((n) => toolsOk(res[`tools-${n}`])), JSON.stringify(['pc2560', 'pc1280', 'm360'].map((n) => res[`tools-${n}`])));
+  record(`★★★ R095 색 점 → 그 밑 팝업(12색 · 세부 색 · 화면 안) · 고르면 닫힘 · Esc 닫힘 [${TAG}]`, ['pc2560', 'pc1280', 'm360'].every((n) => { const p = res[`pop-${n}`]; return p && p.colors === 12 && p.custom && p.below && p.inView; }) && ['pc2560', 'pc1280'].every((n) => res[`pick-${n}`]?.dot === '#e5383b' && !res[`pick-${n}`]?.open) && res['esc-m360'] === true, JSON.stringify({ pop: ['pc2560', 'pc1280', 'm360'].map((n) => res[`pop-${n}`]), pick: res['pick-pc2560'], esc: res['esc-m360'] }));
+  record(`★★★ R095 미니게임 판 칸 ≥ 가운데 높이 반(판 ÷ 판 + 채팅 ≥ 0.5 · 노래 · 반응 · 순서대로 · 많이 말하기 × 2560 · 1280) · 넘침 0 [${TAG}]`, ['song', 'reaction', 'order', 'many'].every((k) => ['pc2560', 'pc1280'].every((n) => mgShare[k][n] >= 0.5) && ['pc2560', 'pc1280', 'm360'].every((n) => (res[`mg-${k}-${n}`]?.over ?? 9) <= 1)), JSON.stringify(mgShare));
+}
+
 async function r094Flow(browser) {
   const rows = [];
   const res = {};
@@ -10389,6 +10501,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R093) {
     await closeAllTabs(browser);
     await r093Flow(browser);
+  }
+  // ★ R095 — 실전 제보 3차(캐치 초성 · 도구 아이콘 · 색 점 팝업 · 미니게임 판:채팅)
+  if (process.env.UICHECK_R095) {
+    await closeAllTabs(browser);
+    await r095Flow(browser);
   }
   // ★ R094 — 실전 제보 화면 셋 2차
   if (process.env.UICHECK_R094) {
