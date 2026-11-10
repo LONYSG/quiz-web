@@ -612,5 +612,44 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V046",
+  "checkedAt": "2026-11-10T01:15:10.630Z",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Seoul_Subway_Line_4",
+    "read": true,
+    "count": 47
+   },
+   {
+    "url": "web search 과천정보타운역 개통 (경기일보·헤럴드 등 기사 요약)",
+    "read": true,
+    "count": 0
+   },
+   {
+    "url": "G050 읽은 한국어 위키백과 노선 문서(audit/g050-raw/*.wiki) — 이번엔 안 읽음(다른 출처 규칙)",
+    "read": false,
+    "count": 0
+   }
+  ],
+  "itemsChecked": 52,
+  "missing": [],
+  "extra": [
+   "과천정보타운"
+  ],
+  "fixes": [
+   {
+    "op": "remove",
+    "id": "metro-line4-035",
+    "name": "과천정보타운",
+    "why": "2026-11 현재 미개통(개통 목표 2027년 하반기, 공사 중). 영문 위키 노선도에도 미개통 표기"
+   }
+  ],
+  "shortcheck": "제보 답 확인(수원·세류·금정·광명=1호선 · 수원시청=수인분당) · 세트 안 이름/변형 겹침 0 · 환승 88",
+  "unsure": [
+   "풍양(영문 위키 Pungyang)은 미개통이라 items 에 없는 것이 맞음"
+  ],
+  "verdict": "candidate",
+  "why": "문제 1건 — fixes 참고(G 적용 뒤 verified)"
+ }
 }

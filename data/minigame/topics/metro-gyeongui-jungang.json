@@ -658,5 +658,49 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V046",
+  "checkedAt": "2026-11-10T01:15:10.630Z",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Gyeongui–Jungang_Line",
+    "read": true,
+    "count": 57
+   },
+   {
+    "url": "https://namu.wiki/w/경의중앙선",
+    "read": false,
+    "count": 0
+   },
+   {
+    "url": "websearch: 향동역 개통 (고양시 2026-09 실시설계비 확보 보도)",
+    "read": true,
+    "count": 0
+   },
+   {
+    "url": "G050 읽은 한국어 위키백과 노선 문서(audit/g050-raw/*.wiki) — 이번엔 안 읽음(다른 출처 규칙)",
+    "read": false,
+    "count": 0
+   }
+  ],
+  "itemsChecked": 57,
+  "missing": [],
+  "extra": [],
+  "fixes": [
+   {
+    "op": "variant",
+    "id": "metro-gyeongui-jungang-017",
+    "add": "항공대",
+    "why": "한국항공대역의 흔한 줄임(항공대역). 다른 세트와 겹침 없음"
+   }
+  ],
+  "shortcheck": "제보 답 확인(수원·세류·금정·광명=1호선 · 수원시청=수인분당) · 세트 안 이름/변형 겹침 0 · 환승 88",
+  "unsure": [
+   "향동역은 2026-11 현재 미개통(실시설계 단계)이라 제외가 맞음",
+   "영문 위키 순서는 문산~지평 본선 + 가좌~신촌~서울역 + 문산~운천~임진강으로 items 57과 이름 일치",
+   "지평은 일부 열차만 서는 종점이나 영업 중 역이라 scope와 맞음"
+  ],
+  "verdict": "candidate",
+  "why": "문제 1건 — fixes 참고(G 적용 뒤 verified)"
+ }
 }
