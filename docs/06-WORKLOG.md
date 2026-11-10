@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-10 — V047 캐치마인드 2차 표본 300 판정 (VERIFY · 판정만 · DB 없음)
+- 표본 300(씨앗 20261110) 문제 1 → 0.33% < 5% → 새 14 파일 verified · 남은 연예인 106 읽기 — 논란 4 remove 제안.
+- 쓴 것: draw 14 파일 verify 칸 + status · items 불변 · `ai-out/V047.txt` · `audit/v047-raw/` · 13 C122 · CV-180.
+- 남은 것: CV-180(설계 확인 뒤 G) · 메뉴 1.
+
 ## 2026-11-10 — 캐치마인드 2차 합치기 + 지하철 마무리 (G051, GEN · 파일만 · DB 쓰기 없음)
 - **무엇을**: gen.md — V046 fix 2 → metro 13 verified · 웹 catch2 keep 4,621 을 캐치 세트에 합침(g 칸 · etc 나누기 · 연예인 거름).
 - **어떻게**: g051-catch2.mjs(연예인 남김 표 · 논란·비속 표 · 같은 말 합침 · etc 를 제목 · 나라 · 몸 낱말 표로 나누고 나머지 개념 · draw-*-2 별도 파일) · topics-check(g · 상한 2,000) · g044-topics-cross(캐치 세트끼리 0) · topics-load dry-run.
