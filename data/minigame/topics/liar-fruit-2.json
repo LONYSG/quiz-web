@@ -5,7 +5,7 @@
  "version": 1,
  "asOf": "2026-11-10",
  "createdRound": "G053",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "web-desk/liar2",
@@ -648,5 +648,43 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 32,
+  "foolAudit": {
+   "fools": 96,
+   "ok": 95,
+   "tooClose": 1,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 1,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 0,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-fruit-2-002",
+    "name": "피망",
+    "replace": [
+     {
+      "from": "고추",
+      "verdict": "tooClose",
+      "to": "토마토"
+     }
+    ]
+   }
+  ],
+  "unsure": [],
+  "verdict": "verified",
+  "why": "라이어 제시어 전수 판정: 문제 항목 1/32 (fool tooClose 1 · tooFar 0 · bad 0 · remove 0 · dup 0 · diff 0 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

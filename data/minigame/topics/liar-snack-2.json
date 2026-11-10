@@ -799,5 +799,79 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 40,
+  "foolAudit": {
+   "fools": 120,
+   "ok": 118,
+   "tooClose": 1,
+   "tooFar": 1,
+   "bad": 0
+  },
+  "problemItems": 5,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 2,
+   "era": 0,
+   "sub": 0,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "diff",
+    "id": "liar-snack-2-008",
+    "name": "쿠크다스",
+    "reason": "국민 과자라 d3 는 과함",
+    "fix": "d2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-2-019",
+    "name": "빵빠레",
+    "replace": [
+     {
+      "from": "월드콘",
+      "verdict": "tooClose",
+      "to": "구구콘"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-snack-2-030",
+    "name": "떡볶이",
+    "reason": "떡볶기는 오타(15 §2 오타 X)",
+    "fix": "떡볶이"
+   },
+   {
+    "op": "diff",
+    "id": "liar-snack-2-033",
+    "name": "호두과자",
+    "reason": "휴게소 대표 간식, 누구나 앎",
+    "fix": "d2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-snack-2-039",
+    "name": "포카리스웨트",
+    "replace": [
+     {
+      "from": "박카스",
+      "verdict": "tooFar",
+      "to": "게토레이"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-snack-2-015: 탕후루 modern 이나 2023~24 한철 유행 우려 - 유지 표시, 확인 필요",
+   "liar-snack-2-027: 크로플 modern 유행 지속성 확인 필요(유지 표시)"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 5/40 (fool tooClose 1 · tooFar 1 · bad 0 · remove 0 · dup 0 · diff 2 · era 0 · sub 0 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }

@@ -750,5 +750,97 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 38,
+  "foolAudit": {
+   "fools": 114,
+   "ok": 111,
+   "tooClose": 1,
+   "tooFar": 2,
+   "bad": 0
+  },
+  "problemItems": 5,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 2,
+   "era": 1,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "diff",
+    "id": "liar-celebrity-2-016",
+    "name": "이영자",
+    "reason": "먹방·예능 대표, 누구나 앎",
+    "fix": "d2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-2-019",
+    "name": "나훈아",
+    "replace": [
+     {
+      "from": "남진",
+      "verdict": "tooClose",
+      "to": "태진아"
+     }
+    ]
+   },
+   {
+    "op": "era",
+    "id": "liar-celebrity-2-034",
+    "name": "이강인",
+    "reason": "2019 이후 활약, classic 아님",
+    "fix": "modern"
+   },
+   {
+    "op": "fool",
+    "id": "liar-celebrity-2-037",
+    "name": "안세영",
+    "replace": [
+     {
+      "from": "박세리",
+      "verdict": "tooFar",
+      "to": "김연경"
+     },
+     {
+      "from": "이상화",
+      "verdict": "tooFar",
+      "to": "김연아"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-celebrity-2-038",
+    "name": "마이클 조던",
+    "reason": "전 세계·한국인 누구나 앎",
+    "fix": "d2"
+   }
+  ],
+  "unsure": [
+   "liar-celebrity-2-021: 박효신 논란 후보 확인 필요(유지 표시)",
+   "liar-celebrity-2-014: 김구라 논란 후보 확인 필요(유지 표시)",
+   "liar-celebrity-2-025: 브래드 피트 논란 후보 확인 필요(유지 표시)",
+   "liar-celebrity-2-029: 저스틴 비버 논란 후보 확인 필요(유지 표시)",
+   "liar-celebrity-2-033: 박세리 논란 후보 확인 필요(유지 표시)",
+   "liar-celebrity-2-022: 이선희 후크 분쟁 관련 보도 있음 확인 필요(유지 표시)",
+   "liar-celebrity-2-034: 이강인 대표팀 내 불화 보도 있었음 확인 필요(유지 표시)",
+   "liar-celebrity-2-037: 안세영 협회 갈등(2024) 확인 필요(유지 표시)",
+   "liar-celebrity-2-031: 빌 게이츠 이혼·사생활 보도 확인 필요(유지 표시)",
+   "fool 눈에 띔 liar-celebrity-2-013 김구라·강호동(2011 탈세 논란)",
+   "fool liar-celebrity-2-007 주지훈(과거 마약 혐의 보도) 확인 필요",
+   "fool liar-celebrity-2-017 박효신",
+   "fool liar-celebrity-2-018 영탁(막걸리 상표 분쟁)",
+   "fool liar-celebrity-2-024 민지(뉴진스 계약 분쟁)",
+   "fool liar-celebrity-2-035 홍명보(감독 선임 논란)"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 5/38 (fool tooClose 1 · tooFar 2 · bad 0 · remove 0 · dup 0 · diff 2 · era 1 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

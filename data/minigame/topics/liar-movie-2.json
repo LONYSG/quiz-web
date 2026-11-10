@@ -5,7 +5,7 @@
  "version": 1,
  "asOf": "2026-11-10",
  "createdRound": "G053",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "web-desk/liar2",
@@ -846,5 +846,62 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 40,
+  "foolAudit": {
+   "fools": 120,
+   "ok": 118,
+   "tooClose": 1,
+   "tooFar": 1,
+   "bad": 0
+  },
+  "problemItems": 3,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 1,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "diff",
+    "id": "liar-movie-2-009",
+    "name": "건축학개론",
+    "reason": "널리 알려진 영화",
+    "fix": "d2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-movie-2-019",
+    "name": "이웃집 토토로",
+    "replace": [
+     {
+      "from": "토이 스토리",
+      "verdict": "tooFar",
+      "to": "벼랑 위의 포뇨"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-movie-2-030",
+    "name": "허준",
+    "replace": [
+     {
+      "from": "대장금",
+      "verdict": "tooClose",
+      "to": "태조 왕건"
+     }
+    ]
+   }
+  ],
+  "unsure": [],
+  "verdict": "verified",
+  "why": "라이어 제시어 전수 판정: 문제 항목 3/40 (fool tooClose 1 · tooFar 1 · bad 0 · remove 0 · dup 0 · diff 1 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

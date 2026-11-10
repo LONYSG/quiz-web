@@ -767,5 +767,90 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 39,
+  "foolAudit": {
+   "fools": 117,
+   "ok": 115,
+   "tooClose": 2,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 7,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 2,
+   "era": 0,
+   "sub": 3,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "sub",
+    "id": "liar-animal-2-004",
+    "name": "알파카",
+    "reason": "초원 대형 동물은 틀림(알파카는 낙타과 가축, 중형)",
+    "fix": "낙타과 동물"
+   },
+   {
+    "op": "diff",
+    "id": "liar-animal-2-007",
+    "name": "고라니",
+    "reason": "한국인 누구나 아는 동물(로드킬·울음소리)",
+    "fix": "d2"
+   },
+   {
+    "op": "sub",
+    "id": "liar-animal-2-010",
+    "name": "스컹크",
+    "reason": "스컹크는 산짐승(한국 산) 아님, 북미 야생 동물",
+    "fix": "야생 포유류"
+   },
+   {
+    "op": "fool",
+    "id": "liar-animal-2-012",
+    "name": "표범",
+    "replace": [
+     {
+      "from": "재규어",
+      "verdict": "tooClose",
+      "to": "호랑이"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-animal-2-014",
+    "name": "오랑우탄",
+    "replace": [
+     {
+      "from": "원숭이",
+      "verdict": "tooClose",
+      "to": "침팬지"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-animal-2-035",
+    "name": "사마귀",
+    "reason": "누구나 아는 곤충(무서운 앞다리)",
+    "fix": "d2"
+   },
+   {
+    "op": "sub",
+    "id": "liar-animal-2-039",
+    "name": "달팽이",
+    "reason": "작은 동물은 너무 넓음, 연체동물이 맞음",
+    "fix": "연체동물"
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 7/39 (fool tooClose 2 · tooFar 0 · bad 0 · remove 0 · dup 0 · diff 2 · era 0 · sub 3 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

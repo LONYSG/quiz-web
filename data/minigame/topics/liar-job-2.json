@@ -810,5 +810,194 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 39,
+  "foolAudit": {
+   "fools": 117,
+   "ok": 103,
+   "tooClose": 8,
+   "tooFar": 1,
+   "bad": 5
+  },
+  "problemItems": 12,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 1,
+   "era": 0,
+   "sub": 0,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-job-2-002",
+    "name": "물리치료사",
+    "replace": [
+     {
+      "from": "작업치료사",
+      "verdict": "bad",
+      "to": "한의사"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-004",
+    "name": "의경",
+    "replace": [
+     {
+      "from": "해병대",
+      "verdict": "tooFar",
+      "to": "전경"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-job-2-004",
+    "name": "의경",
+    "reason": "d3 보다 보통",
+    "fix": "d2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-005",
+    "name": "경호원",
+    "replace": [
+     {
+      "from": "경비원",
+      "verdict": "tooClose",
+      "to": "교도관"
+     },
+     {
+      "from": "클럽 가드",
+      "verdict": "bad",
+      "to": "교도관"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-006",
+    "name": "경비원",
+    "replace": [
+     {
+      "from": "경호원",
+      "verdict": "tooClose",
+      "to": "교도관"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-007",
+    "name": "유치원 교사",
+    "replace": [
+     {
+      "from": "어린이집 보육교사",
+      "verdict": "tooClose",
+      "to": "중학교 교사"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-job-2-010",
+    "name": "소설가",
+    "reason": "작가는 넓은 말(웹툰 작가 등과 겹침)",
+    "fix": "variants 에서 작가 제거"
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-011",
+    "name": "작곡가",
+    "replace": [
+     {
+      "from": "작사가",
+      "verdict": "tooClose",
+      "to": "지휘자"
+     },
+     {
+      "from": "편곡가",
+      "verdict": "bad",
+      "to": "음악 프로듀서"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-023",
+    "name": "이발사",
+    "replace": [
+     {
+      "from": "미용사",
+      "verdict": "tooClose",
+      "to": "마사지사"
+     },
+     {
+      "from": "면도사",
+      "verdict": "bad",
+      "to": "마사지사"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-026",
+    "name": "도배사",
+    "replace": [
+     {
+      "from": "미장공",
+      "verdict": "bad",
+      "to": "목수"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-029",
+    "name": "열쇠 수리공",
+    "replace": [
+     {
+      "from": "자물쇠 제조공",
+      "verdict": "tooClose",
+      "to": "보일러 기사"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-033",
+    "name": "세무사",
+    "replace": [
+     {
+      "from": "회계사",
+      "verdict": "tooClose",
+      "to": "금융 컨설턴트"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-job-2-036",
+    "name": "마라톤 선수",
+    "replace": [
+     {
+      "from": "육상 선수",
+      "verdict": "tooClose",
+      "to": "축구 선수"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-job-2-018: 푸드 스타일리스트 보편성 낮음(d3 유지 표시)"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 12/39 (fool tooClose 8 · tooFar 1 · bad 5 · remove 0 · dup 0 · diff 1 · era 0 · sub 0 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }

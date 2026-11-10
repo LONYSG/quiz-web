@@ -545,5 +545,96 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 27,
+  "foolAudit": {
+   "fools": 81,
+   "ok": 80,
+   "tooClose": 1,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 8,
+  "counts": {
+   "remove": 0,
+   "dup": 1,
+   "diff": 6,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-instrument-2-008",
+    "name": "팬플루트",
+    "replace": [
+     {
+      "from": "플루트",
+      "verdict": "tooClose",
+      "to": "하모니카"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-instrument-2-017",
+    "name": "카혼",
+    "reason": "일반인에게 낯선 편",
+    "fix": "d3"
+   },
+   {
+    "op": "diff",
+    "id": "liar-instrument-2-019",
+    "name": "시타르",
+    "reason": "인도 악기, 고인물",
+    "fix": "d3"
+   },
+   {
+    "op": "dup",
+    "id": "liar-instrument-2-022",
+    "name": "쉐이커",
+    "reason": "마라카스(기존)와 사실상 같은 설명(흔들어 소리내는 타악)",
+    "fix": "remove(기존 마라카스와 같음)"
+   },
+   {
+    "op": "diff",
+    "id": "liar-instrument-2-023",
+    "name": "소금",
+    "reason": "국악 관악 중 낯선 편",
+    "fix": "d3"
+   },
+   {
+    "op": "diff",
+    "id": "liar-instrument-2-024",
+    "name": "비파",
+    "reason": "낯선 국악기",
+    "fix": "d3"
+   },
+   {
+    "op": "diff",
+    "id": "liar-instrument-2-025",
+    "name": "퉁소",
+    "reason": "낯선 국악기",
+    "fix": "d3"
+   },
+   {
+    "op": "diff",
+    "id": "liar-instrument-2-027",
+    "name": "얼후",
+    "reason": "낯선 중국 악기",
+    "fix": "d3"
+   }
+  ],
+  "unsure": [
+   "liar-instrument-2-002: 나팔이 기존 트럼펫과 같은 설명일 수 있음(dup 가능, 확인 필요)",
+   "liar-instrument-2-012: 전자피아노가 기존 피아노와 설명이 겹칠 수 있음",
+   "liar-instrument-2-025: 퉁소 보편성 낮음, 유지 표시"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 8/27 (fool tooClose 1 · tooFar 0 · bad 0 · remove 0 · dup 1 · diff 6 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

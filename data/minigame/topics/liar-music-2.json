@@ -778,5 +778,186 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 37,
+  "foolAudit": {
+   "fools": 111,
+   "ok": 98,
+   "tooClose": 6,
+   "tooFar": 3,
+   "bad": 4
+  },
+  "problemItems": 11,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 1,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-music-2-005",
+    "name": "핑클",
+    "replace": [
+     {
+      "from": "S.E.S.",
+      "verdict": "tooClose",
+      "to": "룰라"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-008",
+    "name": "아이유",
+    "replace": [
+     {
+      "from": "백예린",
+      "verdict": "bad",
+      "to": "이선희"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-010",
+    "name": "임영웅",
+    "replace": [
+     {
+      "from": "영탁",
+      "verdict": "tooClose",
+      "to": "장윤정"
+     },
+     {
+      "from": "장민호",
+      "verdict": "tooClose",
+      "to": "설운도"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-music-2-014",
+    "name": "김건모",
+    "reason": "전 연령이 아는 가수라 d3 는 과함",
+    "fix": "d2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-017",
+    "name": "에드 시런",
+    "replace": [
+     {
+      "from": "찰리 푸스",
+      "verdict": "bad",
+      "to": "존 레전드"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-020",
+    "name": "저스틴 비버",
+    "replace": [
+     {
+      "from": "찰리 푸스",
+      "verdict": "bad",
+      "to": "아리아나 그란데"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-023",
+    "name": "생일 축하 노래",
+    "replace": [
+     {
+      "from": "아기상어",
+      "verdict": "tooFar",
+      "to": "결혼 행진곡"
+     },
+     {
+      "from": "곰 세 마리",
+      "verdict": "tooFar",
+      "to": "징글벨"
+     },
+     {
+      "from": "학교종이 땡땡땡",
+      "verdict": "tooFar",
+      "to": "애국가"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-027",
+    "name": "R&B",
+    "replace": [
+     {
+      "from": "소울",
+      "verdict": "tooClose",
+      "to": "컨트리"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-033",
+    "name": "노래방",
+    "replace": [
+     {
+      "from": "코인노래방",
+      "verdict": "tooClose",
+      "to": "락카페"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-035",
+    "name": "버스킹",
+    "replace": [
+     {
+      "from": "길거리 공연",
+      "verdict": "tooClose",
+      "to": "오픈 마이크"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-music-2-036",
+    "name": "펜타포트 락 페스티벌",
+    "replace": [
+     {
+      "from": "지산 밸리 록 페스티벌",
+      "verdict": "bad",
+      "to": "월드 DJ 페스티벌"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-music-2-001: 엑소(멤버 계약 분쟁 · 탈퇴 소송) 유지 표시 · 확인 필요",
+   "liar-music-2-002: 빅뱅(승리 사건 — 그룹 자체는 유지 표시) 확인 필요",
+   "liar-music-2-004: 카라(멤버 분쟁 · 사생활 보도) 유지 표시 확인 필요",
+   "liar-music-2-006: 잔나비(2019 멤버 학폭 의혹 보도) 유지 표시 확인 필요",
+   "liar-music-2-007: 싸이(2001 대마초 · 병역 재복무 이력) 확인 필요, fool 지드래곤(2011 대마초 입건) 도 눈에 띔",
+   "liar-music-2-008: fool 박효신(소속사 분쟁) 확인 필요",
+   "liar-music-2-010: fool 영탁(상표·계약 분쟁 보도) 유지 표시",
+   "liar-music-2-013: 나훈아(사생활 · 병역 보도 과거) 유지 표시 확인 필요",
+   "liar-music-2-014: 김건모(의혹 불송치) 유지 표시 확인 필요",
+   "liar-music-2-015: 마이클 잭슨(의혹 다큐) 유지 표시, fool 저스틴 비버도 눈에 띔",
+   "liar-music-2-020: 저스틴 비버(사생활 · 법적 문제 보도) 유지 표시 확인 필요",
+   "liar-music-2-033: 노래방은 liar-place 기존 세트에도 있음(다른 주제, 참고만)"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 11/37 (fool tooClose 6 · tooFar 3 · bad 4 · remove 0 · dup 0 · diff 1 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

@@ -813,5 +813,177 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 39,
+  "foolAudit": {
+   "fools": 117,
+   "ok": 107,
+   "tooClose": 9,
+   "tooFar": 0,
+   "bad": 1
+  },
+  "problemItems": 12,
+  "counts": {
+   "remove": 0,
+   "dup": 1,
+   "diff": 0,
+   "era": 0,
+   "sub": 1,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "variant",
+    "id": "liar-vehicle-2-007",
+    "name": "전동휠",
+    "reason": "세그웨이는 두 바퀴 입식 기기로 외발휠과 다른 물건",
+    "fix": "[전동 외발휠;전동휠]"
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-008",
+    "name": "스키",
+    "replace": [
+     {
+      "from": "스노보드",
+      "verdict": "tooClose",
+      "to": "스케이트"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-015",
+    "name": "여객선",
+    "replace": [
+     {
+      "from": "유람선",
+      "verdict": "tooClose",
+      "to": "어선"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-016",
+    "name": "화물선",
+    "replace": [
+     {
+      "from": "유조선",
+      "verdict": "tooClose",
+      "to": "어선"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-018",
+    "name": "구축함",
+    "replace": [
+     {
+      "from": "순양함",
+      "verdict": "bad",
+      "to": "전함"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-025",
+    "name": "리프트",
+    "replace": [
+     {
+      "from": "케이블카",
+      "verdict": "tooClose",
+      "to": "모노레일"
+     }
+    ]
+   },
+   {
+    "op": "sub",
+    "id": "liar-vehicle-2-025",
+    "name": "리프트",
+    "reason": "레일 아님",
+    "fix": "스키장"
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-026",
+    "name": "무빙워크",
+    "replace": [
+     {
+      "from": "에스컬레이터",
+      "verdict": "tooClose",
+      "to": "휠체어"
+     }
+    ]
+   },
+   {
+    "op": "dup",
+    "id": "liar-vehicle-2-027",
+    "name": "여객기",
+    "reason": "기존 비행기와 같은 설명",
+    "fix": "remove(기존 비행기와 같음)"
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-028",
+    "name": "패러글라이더",
+    "replace": [
+     {
+      "from": "행글라이더",
+      "verdict": "tooClose",
+      "to": "헬리콥터"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-029",
+    "name": "비행선",
+    "replace": [
+     {
+      "from": "열기구",
+      "verdict": "tooClose",
+      "to": "드론"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-030",
+    "name": "낙하산",
+    "replace": [
+     {
+      "from": "패러글라이더",
+      "verdict": "tooClose",
+      "to": "헬리콥터"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-vehicle-2-031",
+    "name": "UFO",
+    "replace": [
+     {
+      "from": "우주선",
+      "verdict": "tooClose",
+      "to": "전투기"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-vehicle-2-004: 스쿠터 가 기존 오토바이와 거의 같은 설명일 수 있음 - 유지 표시, 확인 필요",
+   "liar-vehicle-2-008: 스키/스노보드(009)는 탈것인지 게임성 확인 필요",
+   "liar-vehicle-2-011: 삼륜차 보편성 확인 필요",
+   "liar-vehicle-2-038: 현금수송차 보편성 확인 필요"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 12/39 (fool tooClose 9 · tooFar 0 · bad 1 · remove 0 · dup 1 · diff 0 · era 0 · sub 1 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }

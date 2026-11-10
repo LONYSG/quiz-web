@@ -817,5 +817,100 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 40,
+  "foolAudit": {
+   "fools": 120,
+   "ok": 116,
+   "tooClose": 4,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 7,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 3,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-food-2-018",
+    "name": "떡갈비",
+    "replace": [
+     {
+      "from": "갈비",
+      "verdict": "tooClose",
+      "to": "동그랑땡"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-2-025",
+    "name": "낙지볶음",
+    "replace": [
+     {
+      "from": "쭈꾸미볶음",
+      "verdict": "tooClose",
+      "to": "해물찜"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-2-032",
+    "name": "부리토",
+    "replace": [
+     {
+      "from": "타코",
+      "verdict": "tooClose",
+      "to": "케밥"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-food-2-033",
+    "name": "리조또",
+    "reason": "흔한 양식이라 d3 는 과함",
+    "fix": "d2"
+   },
+   {
+    "op": "diff",
+    "id": "liar-food-2-034",
+    "name": "샤브샤브",
+    "reason": "누구나 아는 음식이라 d3 는 과함",
+    "fix": "d2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-food-2-035",
+    "name": "간장게장",
+    "replace": [
+     {
+      "from": "새우장",
+      "verdict": "tooClose",
+      "to": "꼬막무침"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-food-2-036",
+    "name": "쌈밥",
+    "reason": "흔한 한식이라 d3 는 과함",
+    "fix": "d2"
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 7/40 (fool tooClose 4 · tooFar 0 · bad 0 · remove 0 · dup 0 · diff 3 · era 0 · sub 0 · 변형 0) — 적용은 G049",
+  "history": []
+ }
 }

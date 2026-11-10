@@ -810,5 +810,148 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 40,
+  "foolAudit": {
+   "fools": 120,
+   "ok": 112,
+   "tooClose": 8,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 10,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 0,
+   "era": 0,
+   "sub": 1,
+   "variant": 2
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-place-2-001",
+    "name": "서점",
+    "replace": [
+     {
+      "from": "도서관",
+      "verdict": "tooClose",
+      "to": "안경점"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-2-003",
+    "name": "치킨집",
+    "replace": [
+     {
+      "from": "호프집",
+      "verdict": "tooClose",
+      "to": "족발집"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-place-2-004",
+    "name": "포장마차",
+    "reason": "실제로 치는 줄임 표기 '포차' 빠짐",
+    "fix": "포장마차 [포차]"
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-2-006",
+    "name": "목욕탕",
+    "replace": [
+     {
+      "from": "찜질방",
+      "verdict": "tooClose",
+      "to": "수영장"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-2-016",
+    "name": "오락실",
+    "replace": [
+     {
+      "from": "인형뽑기방",
+      "verdict": "tooClose",
+      "to": "노래방"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-2-023",
+    "name": "스케이트장",
+    "replace": [
+     {
+      "from": "롤러장",
+      "verdict": "tooClose",
+      "to": "눈썰매장"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-2-024",
+    "name": "주유소",
+    "replace": [
+     {
+      "from": "충전소",
+      "verdict": "tooClose",
+      "to": "휴게소"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-2-030",
+    "name": "민속촌",
+    "replace": [
+     {
+      "from": "한옥마을",
+      "verdict": "tooClose",
+      "to": "독립기념관"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-place-2-031",
+    "name": "수원화성",
+    "replace": [
+     {
+      "from": "남한산성",
+      "verdict": "tooClose",
+      "to": "불국사"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-place-2-031",
+    "name": "수원화성",
+    "reason": "'화성' 은 행성·지명과 겹치는 넓은 말",
+    "fix": "수원화성 (variant 화성 제거)"
+   },
+   {
+    "op": "sub",
+    "id": "liar-place-2-040",
+    "name": "발리",
+    "reason": "도시가 아니라 섬 휴양지",
+    "fix": "해외 휴양지"
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 10/40 (fool tooClose 8 · tooFar 0 · bad 0 · remove 0 · dup 0 · diff 0 · era 0 · sub 1 · 변형 2) — 적용은 G049",
+  "history": []
+ }
 }

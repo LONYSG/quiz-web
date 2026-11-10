@@ -811,5 +811,81 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V048",
+  "checkedAt": "2026-11-10T04:51:10.782Z",
+  "itemsChecked": 40,
+  "foolAudit": {
+   "fools": 120,
+   "ok": 117,
+   "tooClose": 2,
+   "tooFar": 0,
+   "bad": 1
+  },
+  "problemItems": 5,
+  "counts": {
+   "remove": 0,
+   "dup": 0,
+   "diff": 1,
+   "era": 0,
+   "sub": 0,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "variant",
+    "id": "liar-object-2-012",
+    "name": "숟가락",
+    "reason": "'숫가락' 은 오타 표기(15 §2 X) — 제거만(수저는 젓가락 포함 상위어라 추가 안 함)",
+    "fix": "variants 에서 숫가락 제거"
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-2-019",
+    "name": "태블릿",
+    "replace": [
+     {
+      "from": "전자사전",
+      "verdict": "bad",
+      "to": "게임기"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-2-030",
+    "name": "이불",
+    "replace": [
+     {
+      "from": "담요",
+      "verdict": "tooClose",
+      "to": "매트리스"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-object-2-032",
+    "name": "커튼",
+    "replace": [
+     {
+      "from": "블라인드",
+      "verdict": "tooClose",
+      "to": "방충망"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-object-2-037",
+    "name": "국자",
+    "reason": "누구나 아는 주방도구라 d3 는 과함",
+    "fix": "d2"
+   }
+  ],
+  "unsure": [],
+  "verdict": "candidate",
+  "why": "라이어 제시어 전수 판정: 문제 항목 5/40 (fool tooClose 2 · tooFar 0 · bad 1 · remove 0 · dup 0 · diff 1 · era 0 · sub 0 · 변형 1) — 적용은 G049",
+  "history": []
+ }
 }
