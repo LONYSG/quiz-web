@@ -28,7 +28,7 @@ let files = args.filter((a) => !a.startsWith('--'));
 if (!files.length) files = existsSync(DIR) ? readdirSync(DIR).filter((f) => f.endsWith('.json')).sort().map((f) => path.join(DIR, f)) : [];
 
 const HEAD = ['topic', 'nameKo', 'kind', 'version', 'asOf', 'createdRound', 'status', 'source', 'liar', 'draw', 'timeSec', 'tags', 'count', 'items', 'verify'];
-const ITEM_OK = new Set(['id', 'name', 'label', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note', 'fool', 'era', 'sub', 'diff']); // ★ G039: label = 화면용 짧은 이름(판정엔 안 씀 · 18 §9 · CV-165 ②) · ★ G047: fool · era · sub · diff(18 §12 제시어 세트)
+const ITEM_OK = new Set(['id', 'name', 'label', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note', 'fool', 'era', 'sub', 'diff', 'g']); // ★ G039: label = 화면용 짧은 이름(판정엔 안 씀 · 18 §9 · CV-165 ②) · ★ G047: fool · era · sub · diff(18 §12 제시어 세트)
 const ERA = new Set(['classic', 'modern']);
 /** ★ G047 — 라이어 제시어 세트(kind open · 머리 liar true) = fool · era · sub · diff 필수 · 수 40~120 */
 export const isLiarSet = (t) => t.kind === 'open' && t.liar === true;
@@ -62,7 +62,9 @@ export function checkTopic(t, file) {
   const liarSet = isLiarSet(t);
   if (t.kind === 'open' && liarSet && (items.length < 40 || items.length > 120)) err.push(`라이어 세트 수 ${items.length}(40~120 — 18 §12)`);
   const drawSet = isDrawSet(t);
-  if (t.kind === 'open' && drawSet && (items.length < 40 || items.length > 400)) err.push(`캐치 세트 수 ${items.length}(40~400 — 18 §12 · G048)`);
+  // ★ G051: 상한 400 → 2,000(2차 합치기 — 사물 ≈ 1,270) · draw-<테마>-2(같은 테마의 candidate 조각 — 기존 verified 세트를 적재에서 지키려 나눔)는 하한 없음
+  const drawPart = /-2$/.test(String(t.topic ?? ''));
+  if (t.kind === 'open' && drawSet && ((!drawPart && items.length < 40) || items.length > 2000)) err.push(`캐치 세트 수 ${items.length}(40~2,000 — 18 §12 · G051)`);
   if (t.kind === 'open' && !liarSet && !drawSet && (items.length < 60 || items.length > 120)) err.push(`open 수 ${items.length}(60~120)`);
   if (t.kind === 'closed' && (items.length < 20 || items.length > 400)) warn.push(`closed 수 ${items.length}(기준 50~250 · 공식 목록 전부가 원칙)`);
   const byName = new Map(); const byVar = new Map();
@@ -95,6 +97,8 @@ export function checkTopic(t, file) {
     if (liarSet || 'era' in it) { if (!ERA.has(it.era)) err.push(`${it.id}: era classic|modern`); }
     if (liarSet || 'sub' in it) { if (typeof it.sub !== 'string' || !it.sub.trim()) err.push(`${it.id}: sub 문자열`); }
     if (liarSet || drawSet || 'diff' in it) { if (![1, 2, 3].includes(it.diff)) err.push(`${it.id}: diff 1|2|3`); }
+    // ★ G051 — g = 게임성(1 밋밋 · 2 무난 · 3 재미 · 선택 · 보관만 — 추첨에 아직 안 씀)
+    if ('g' in it && ![1, 2, 3].includes(it.g)) err.push(`${it.id}: g 1|2|3`);
     if ([...String(it.name ?? '')].length < 2 && (liarSet || drawSet || 'fool' in it)) err.push(`${it.id}: 1글자 name(18 §12)`);
     if ('label' in it && (typeof it.label !== 'string' || !it.label.trim() || [...it.label].length > 40)) err.push(`${it.id}: label 문자열 · 빈칸 아님 · 40자 이하`);
     if (/[(（]/.test(it.name ?? '') && !('label' in it) || [...(it.name ?? '')].length > 20 && !('label' in it)) warn.push(`${it.id}: label 없음(괄호 묶음 · 20자 넘는 name — CV-165 ②)`);
