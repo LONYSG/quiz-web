@@ -8,6 +8,9 @@
 
 ---
 
+## 2026-11-10 — R090 마무리 (MAIN · 코드 변경 없음)
+- 못 돌린 끝 점검 넷을 하나씩: 봇 mgonly 75/75 · ui-check r088 3/3 · r087 8/8 · main-behavior 326/326 — 실패 0. 3200 은 이번엔 예약 범위 밖(기본 포트 그대로). R090.txt 끝 점검 표 반영.
+
 ## 2026-11-10 — 라이어 새 주제 5 (G055, GEN · 파일만)
 - **무엇을**: web-desk/liar3 _merged 184(누구나 5 주제)를 새 파일 5 로 → liar-holiday · school · drinking · cafe · streetfood 181(candidate). **왜**: 찬종 "라이어 키워드는 보편성" — 팬 주제 11 · 약한 4 버림.
 - **어떻게**: scripts/g055-liar3.mjs(g053 꼴 · 뺌 3 · fool 바꿈 3 · 변형 뺌 5 손 표) · topics-check 에 이 5 파일 하한 28.
