@@ -4087,3 +4087,8 @@ Git 저장소를 만들고 R001~R003 설계 기록을 백업했다.
 - `ai-out/README.md` 에 "정본은 docs/" 명시
 
 커밋: `4aae952`(R001~R002 기록), `0a40239`(R003 기록)
+
+## 2026-11-10 — V050 이모지 제목 문항 751 전수 판정 (VERIFY · 판정만 · DB 없음)
+
+- 무엇을: 블라인드 3(이모지 + 갈래만) → 판정 3(유일성 · 보편성 · 세대 · 변형 · 힌트). 결과 ok 578 · fix 151 · drop 22.
+- 쓴 것: generated/g057 41 파일 verify 칸만 · `ai-out/V050.txt` · `audit/v050-emoji.json` · `v050-blind.json` · 13 C131 · CV-185~186 · scripts/v050-merge.mjs.

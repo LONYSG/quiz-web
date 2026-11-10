@@ -53,6 +53,13 @@
       "Hawaii"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "ok",
+    "blind": "ok",
+    "reasons": [],
+    "fixes": []
    }
   },
   {
@@ -97,6 +104,22 @@
       "Disney World"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "fix",
+    "blind": "ok",
+    "reasons": [
+     "디즈니월드는 다른 곳"
+    ],
+    "fixes": [
+     {
+      "op": "variant-remove",
+      "from": "디즈니월드",
+      "to": "",
+      "why": "다른 파크"
+     }
+    ]
    }
   },
   {
@@ -141,6 +164,13 @@
       "라파누이"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "ok",
+    "blind": "ok",
+    "reasons": [],
+    "fixes": []
    }
   },
   {
@@ -184,6 +214,22 @@
       "Sahara"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "fix",
+    "blind": "miss",
+    "reasons": [
+     "이집트와 🔺 겹침"
+    ],
+    "fixes": [
+     {
+      "op": "emoji",
+      "from": "🐪🏜️🔺🕌",
+      "to": "🐪🏜️☀️🏕️",
+      "why": "피라미드 제거"
+     }
+    ]
    }
   },
   {
@@ -226,6 +272,22 @@
       "후지 산"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "fix",
+    "blind": "miss",
+    "reasons": [
+     "일본 줄(🗻🌸🚄)과 거의 동일"
+    ],
+    "fixes": [
+     {
+      "op": "emoji",
+      "from": "🗻🌸🛕🚄",
+      "to": "🗻❄️☁️🌅",
+      "why": "정상 눈 일출"
+     }
+    ]
    }
   }
  ]

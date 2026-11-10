@@ -64,6 +64,13 @@
       "튀어나와요 동물의 숲"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "ok",
+    "blind": "ok",
+    "reasons": [],
+    "fixes": []
    }
   },
   {
@@ -110,6 +117,22 @@
       "ELDEN RING"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "fix",
+    "blind": "miss",
+    "reasons": [
+     "블라인드 반지의 제왕"
+    ],
+    "fixes": [
+     {
+      "op": "emoji",
+      "from": "🌳💍⚔️💀",
+      "to": "🌳🐎⚔️💀",
+      "why": "반지가 반지의 제왕과 혼동"
+     }
+    ]
    }
   },
   {
@@ -161,6 +184,22 @@
       "Ring Fit"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "fix",
+    "blind": "miss",
+    "reasons": [
+     "블라인드 파이널 판타지"
+    ],
+    "fixes": [
+     {
+      "op": "emoji",
+      "from": "💍🏋️🐉🎮",
+      "to": "🏋️🔵🐉🎮",
+      "why": "링 단서 약화"
+     }
+    ]
    }
   },
   {
@@ -215,6 +254,21 @@
       "Wii 스포츠 리조트"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "fix",
+    "blind": "ok",
+    "reasons": [
+     "alt에 별개 작품 포함"
+    ],
+    "fixes": [
+     {
+      "op": "variant-remove",
+      "from": "Wii Sports Resort/Wii 스포츠 리조트",
+      "why": "별개 작품"
+     }
+    ]
    }
   },
   {
@@ -265,6 +319,13 @@
       "스플"
      ]
     }
+   },
+   "verify": {
+    "round": "V050",
+    "verdict": "ok",
+    "blind": "ok",
+    "reasons": [],
+    "fixes": []
    }
   }
  ]
