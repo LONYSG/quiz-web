@@ -525,6 +525,7 @@ npm run pipeline:load
 ★ 두 번 돌려도 안전하다. `(source_id, source_ref)` 로 중복을 세 겹으로 막는다.
 ★ 적재하면 곧바로 출제 대상이 된다(`status='approved'`, `is_active=true`).
 승인 대기 상태로 넣고 싶으면 `--pending` 을 준다.
+★ G058(2026-11-10) — 이모지 문항 729 를 `pipeline-load --round g057`(활성)로 **quizweb 과 quizweb_dev 둘 다**(dev 는 `DATABASE_URL` 을 scripts/dev-env.mjs 의 dev 값으로) · 뒤에 `scripts/g058-apply-worth.mjs --apply`(worth 2). 분야 빼기 = `update questions set is_active=false, inactive_reason='…' where source_ref ~ '#g057-<조각>-' and is_active`.
 
 ### 문제를 빼야 할 때
 
