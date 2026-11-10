@@ -2,10 +2,10 @@
  "topic": "draw-job",
  "nameKo": "직업",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-09",
  "createdRound": "G048",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://namu.wiki/w/캐치마인드/문제 목록",
@@ -357,7 +357,9 @@
   {
    "id": "draw-job-026",
    "name": "개그맨",
-   "variants": [],
+   "variants": [
+    "코미디언"
+   ],
    "tags": [
     "연예"
    ],
@@ -502,7 +504,10 @@
   {
    "id": "draw-job-037",
    "name": "소방관",
-   "variants": [],
+   "variants": [
+    "소방수",
+    "소방대원"
+   ],
    "tags": [
     "역할"
    ],
@@ -528,7 +533,9 @@
   {
    "id": "draw-job-039",
    "name": "사진사",
-   "variants": [],
+   "variants": [
+    "사진작가"
+   ],
    "tags": [
     "역할"
    ],
@@ -567,7 +574,10 @@
   {
    "id": "draw-job-042",
    "name": "요리사",
-   "variants": [],
+   "variants": [
+    "셰프",
+    "쉐프"
+   ],
    "tags": [
     "직업"
    ],
@@ -580,7 +590,9 @@
   {
    "id": "draw-job-043",
    "name": "웨이터",
-   "variants": [],
+   "variants": [
+    "종업원"
+   ],
    "tags": [
     "식당"
    ],
@@ -792,7 +804,9 @@
   {
    "id": "draw-job-059",
    "name": "파일럿",
-   "variants": [],
+   "variants": [
+    "조종사"
+   ],
    "tags": [
     "직업"
    ],
@@ -967,7 +981,9 @@
   {
    "id": "draw-job-072",
    "name": "카레이서",
-   "variants": [],
+   "variants": [
+    "레이서"
+   ],
    "tags": [
     "운전"
    ],
@@ -1037,7 +1053,9 @@
   {
    "id": "draw-job-077",
    "name": "프로그래머",
-   "variants": [],
+   "variants": [
+    "개발자"
+   ],
    "tags": [
     "IT"
    ],
@@ -1081,70 +1099,82 @@
     "id": "draw-job-026",
     "name": "개그맨",
     "reason": "흔한 말",
-    "fix": "코미디언"
+    "fix": "코미디언",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-job-028",
     "name": "가정부",
     "reason": "청소부와 소품(앞치마·빗자루)이 같아 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "variant",
     "id": "draw-job-037",
     "name": "소방관",
     "reason": "흔한 말",
-    "fix": "소방수;소방대원"
+    "fix": "소방수;소방대원",
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "draw-job-039",
     "name": "사진사",
     "reason": "흔한 말",
-    "fix": "사진작가"
+    "fix": "사진작가",
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "draw-job-042",
     "name": "요리사",
     "reason": "흔한 표기",
-    "fix": "셰프;쉐프"
+    "fix": "셰프;쉐프",
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "draw-job-043",
     "name": "웨이터",
     "reason": "흔한 말",
-    "fix": "종업원"
+    "fix": "종업원",
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "draw-job-059",
     "name": "파일럿",
     "reason": "한국어 말",
-    "fix": "조종사"
+    "fix": "조종사",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-job-062",
     "name": "교통경찰",
     "reason": "경찰관의 하위 — 제복 그림이 같아 맞힌 쪽이 억울함",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "variant",
     "id": "draw-job-072",
     "name": "카레이서",
     "reason": "약칭",
-    "fix": "레이서"
+    "fix": "레이서",
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "draw-job-077",
     "name": "프로그래머",
     "reason": "흔한 말",
-    "fix": "개발자"
+    "fix": "개발자",
+    "applied": "G049"
    }
   ],
   "unsure": [
@@ -1166,6 +1196,8 @@
   ],
   "verdict": "candidate",
   "why": "캐치마인드 풀 전수 판정: 문제 항목 10/78 (12.8%) — remove 2 · 그림 중복 0 · diff 0 · 변형 8 · sub 0 — 적용은 G049",
-  "history": []
+  "history": [],
+  "appliedRound": "G049",
+  "keptByDesign": 2
  }
 }

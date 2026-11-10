@@ -2,10 +2,10 @@
  "topic": "draw-nature",
  "nameKo": "자연·날씨",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-09",
  "createdRound": "G048",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://namu.wiki/w/캐치마인드/문제 목록",
@@ -252,9 +252,9 @@
    "name": "버섯",
    "variants": [],
    "tags": [
-    "식물"
+    "균류"
    ],
-   "sub": "식물",
+   "sub": "균류",
    "diff": 1,
    "draw": true,
    "liar": false,
@@ -666,7 +666,7 @@
     "날씨"
    ],
    "sub": "날씨",
-   "diff": 2,
+   "diff": 3,
    "draw": true,
    "liar": false,
    "qid": 1595
@@ -886,9 +886,9 @@
    "name": "거미줄",
    "variants": [],
    "tags": [
-    "곤충"
+    "거미"
    ],
-   "sub": "곤충",
+   "sub": "거미",
    "diff": 2,
    "draw": true,
    "liar": false,
@@ -1394,9 +1394,10 @@
   },
   {
    "id": "draw-nature-105",
-   "name": "튜울립",
+   "name": "튤립",
    "variants": [
-    "튤립"
+    "튜울립",
+    "튜립"
    ],
    "tags": [
     "꽃"
@@ -1422,9 +1423,9 @@
   },
   {
    "id": "draw-nature-107",
-   "name": "폭포수",
+   "name": "폭포",
    "variants": [
-    "폭포"
+    "폭포수"
    ],
    "tags": [
     "물"
@@ -1536,7 +1537,7 @@
     "별자리"
    ],
    "sub": "별자리",
-   "diff": 2,
+   "diff": 3,
    "draw": true,
    "liar": false,
    "qid": 5600
@@ -1824,210 +1825,277 @@
     "id": "draw-nature-018",
     "name": "버섯",
     "reason": "식물 아님",
-    "fix": "sub: 식물 → 균류"
+    "fix": "sub: 식물 → 균류",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-nature-029",
     "name": "연못",
     "reason": "호수와 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-032",
     "name": "월식",
     "reason": "일식·반달과 그림이 비슷해 구분 어려움",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-038",
     "name": "용암",
     "reason": "화산과 같은 그림(화산 대표)",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-048",
     "name": "첫눈",
     "reason": "함박눈과 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-049",
     "name": "천둥",
     "reason": "소리 — 번개와 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-054",
     "name": "풀밭",
     "reason": "들판과 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-055",
     "name": "철쭉",
     "reason": "진달래와 그림이 같음",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-057",
     "name": "햇빛",
     "reason": "태양과 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "sub",
     "id": "draw-nature-066",
     "name": "거미줄",
     "reason": "곤충 아님",
-    "fix": "sub: 곤충 → 거미"
+    "fix": "sub: 곤충 → 거미",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-nature-069",
     "name": "들국화",
     "reason": "국화와 그림이 같음",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-080",
     "name": "비바람",
     "reason": "바람+비 — 그림 모호, 장대비·바람과 겹침",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-092",
     "name": "이슬비",
     "reason": "빗방울·장대비·소나기와 그림이 같고 굵기 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-094",
     "name": "잣나무",
     "reason": "소나무와 선 그림 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-101",
     "name": "참나무",
     "reason": "나무와 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "variant",
     "id": "draw-nature-105",
     "name": "튜울립",
     "reason": "표준 표기는 튤립 — name 을 튤립으로, 튜울립을 변형으로",
-    "fix": "name 튤립 · variants 튜울립;튜립"
+    "fix": "name 튤립 · variants 튜울립;튜립",
+    "skipped": [
+     {
+      "text": "튜울립",
+      "why": "이미 있음 · 죽은 변형"
+     }
+    ],
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "draw-nature-107",
     "name": "폭포수",
     "reason": "더 흔한 말은 폭포 — name 폭포, 폭포수 변형",
-    "fix": "name 폭포 · variants 폭포수"
+    "fix": "name 폭포 · variants 폭포수",
+    "skipped": [
+     {
+      "text": "폭포수",
+      "why": "이미 있음 · 죽은 변형"
+     }
+    ],
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-nature-109",
     "name": "가시나무",
     "reason": "나무와 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-110",
     "name": "과일나무",
     "reason": "사과나무·감나무와 같은 그림(상하위)",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-112",
     "name": "느티나무",
     "reason": "나무와 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "diff",
     "id": "draw-nature-115",
     "name": "북두칠성",
     "reason": "별 7개 국자 모양 — 아는 사람은 쉽지만 별자리 지식 필요",
-    "fix": "d3"
+    "fix": "d3",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-nature-116",
     "name": "가을바람",
     "reason": "가을+바람 조합 — 그림 모호",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-117",
     "name": "겨울바다",
     "reason": "바다와 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-119",
     "name": "돌개바람",
     "reason": "토네이도와 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-120",
     "name": "복숭아꽃",
     "reason": "벚꽃과 그림이 같음",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-127",
     "name": "진눈깨비",
     "reason": "눈·비와 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-128",
     "name": "지푸라기",
     "reason": "선 그림으로 구분 불가(이삭·건초더미와 겹침)",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-131",
     "name": "허리케인",
     "reason": "태풍과 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-134",
     "name": "찜통더위",
     "reason": "체감 개념 — 선 그림으로 알아보기 어려움",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-nature-135",
     "name": "복숭아나무",
     "reason": "사과나무와 같은 그림",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    }
   ],
   "unsure": [
@@ -2062,6 +2130,8 @@
   ],
   "verdict": "candidate",
   "why": "캐치마인드 풀 전수 판정: 문제 항목 30/135 (22.2%) — remove 25 · 그림 중복 0 · diff 1 · 변형 2 · sub 2 — 적용은 G049",
-  "history": []
+  "history": [],
+  "appliedRound": "G049",
+  "keptByDesign": 25
  }
 }

@@ -2,10 +2,10 @@
  "topic": "draw-animal",
  "nameKo": "동물",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-09",
  "createdRound": "G048",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://namu.wiki/w/캐치마인드/문제 목록",
@@ -260,7 +260,9 @@
   {
    "id": "draw-animal-019",
    "name": "불곰",
-   "variants": [],
+   "variants": [
+    "곰"
+   ],
    "tags": [
     "산짐승"
    ],
@@ -689,7 +691,9 @@
   {
    "id": "draw-animal-052",
    "name": "꿀벌",
-   "variants": [],
+   "variants": [
+    "벌"
+   ],
    "tags": [
     "곤충"
    ],
@@ -1057,9 +1061,9 @@
    "name": "달팽이",
    "variants": [],
    "tags": [
-    "곤충"
+    "연체동물"
    ],
-   "sub": "곤충",
+   "sub": "연체동물",
    "diff": 1,
    "draw": true,
    "liar": false,
@@ -1159,7 +1163,9 @@
   {
    "id": "draw-animal-088",
    "name": "반딧불",
-   "variants": [],
+   "variants": [
+    "반딧불이"
+   ],
    "tags": [
     "곤충"
    ],
@@ -1346,7 +1352,7 @@
     "미생물"
    ],
    "sub": "미생물",
-   "diff": 2,
+   "diff": 3,
    "draw": true,
    "liar": false,
    "qid": null
@@ -1497,7 +1503,9 @@
   {
    "id": "draw-animal-114",
    "name": "진돗개",
-   "variants": [],
+   "variants": [
+    "진도개"
+   ],
    "tags": [
     "개"
    ],
@@ -1645,7 +1653,7 @@
     "맹수"
    ],
    "sub": "맹수",
-   "diff": 2,
+   "diff": 3,
    "draw": true,
    "liar": false,
    "qid": null
@@ -1718,7 +1726,9 @@
   {
    "id": "draw-animal-131",
    "name": "허스키",
-   "variants": [],
+   "variants": [
+    "시베리안 허스키"
+   ],
    "tags": [
     "개"
    ],
@@ -2139,91 +2149,111 @@
     "id": "draw-animal-019",
     "name": "불곰",
     "reason": "'곰' 으로 치는 사람 많음 — 그림은 곰",
-    "fix": "variants + 곰"
+    "fix": "variants + 곰",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-animal-037",
     "name": "자라",
     "reason": "거북이·바다거북과 그림이 같아 맞힌 쪽이 억울함 — 대표 거북이 유지",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-animal-042",
     "name": "청어",
     "reason": "정어리·꽁치·고등어와 선 그림 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "variant",
     "id": "draw-animal-052",
     "name": "꿀벌",
     "reason": "'벌' 로 치는 경우가 대부분",
-    "fix": "variants + 벌"
+    "fix": "variants + 벌",
+    "applied": "G049"
    },
    {
     "op": "sub",
     "id": "draw-animal-080",
     "name": "달팽이",
     "reason": "곤충 아님",
-    "fix": "sub: 곤충 → 연체동물"
+    "fix": "sub: 곤충 → 연체동물",
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "draw-animal-088",
     "name": "반딧불",
     "reason": "'반딧불이' 가 정식·흔한 표기",
-    "fix": "variants + 반딧불이"
+    "fix": "variants + 반딧불이",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-animal-094",
     "name": "송사리",
     "reason": "작은 물고기 — 붕어·피라미와 선 그림으로 구분 불가",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-animal-102",
     "name": "아메바",
     "reason": "미생물 — 선 그림으로 알아볼 수 없음(그릴 수는 있어도 판이 죽음)",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "variant",
     "id": "draw-animal-114",
     "name": "진돗개",
     "reason": "'진도개' 표기",
-    "fix": "variants + 진도개"
+    "fix": "variants + 진도개",
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "draw-animal-117",
     "name": "정어리",
     "reason": "위와 같음",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-animal-125",
     "name": "코요테",
     "reason": "늑대와 그림이 같고 보편성도 낮음",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "remove",
     "id": "draw-animal-128",
     "name": "피라미",
     "reason": "위와 같음(송사리·붕어와 같은 그림)",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "kept",
+    "keptBy": "찬종 2026-11-10"
    },
    {
     "op": "variant",
     "id": "draw-animal-131",
     "name": "허스키",
     "reason": "'시베리안 허스키' 풀네임",
-    "fix": "variants + 시베리안 허스키"
+    "fix": "variants + 시베리안 허스키",
+    "applied": "G049"
    }
   ],
   "unsure": [
@@ -2232,6 +2262,8 @@
   ],
   "verdict": "candidate",
   "why": "캐치마인드 풀 전수 판정: 문제 항목 13/161 (8.1%) — remove 7 · 그림 중복 0 · diff 0 · 변형 5 · sub 1 — 적용은 G049",
-  "history": []
+  "history": [],
+  "appliedRound": "G049",
+  "keptByDesign": 7
  }
 }
