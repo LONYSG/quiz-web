@@ -70,11 +70,35 @@ export interface DrawRound {
   phaseStartedAt: number;
   phaseEndsAt: number;
   rerolled: boolean;
-  /** ★ R089 — 되돌린 op id(늦게 온 조각이 같은 id 로 다시 생기지 않게) */
+  /** ★ R089 — 되돌린 op id(늦게 온 조각이 같은 id 로 다시 생기지 않게 · 다시 실행돼도 남김 — 조각은 더 안 받는다) */
   undone: Set<string>;
+  /** ★ R090 (D-347) — 되돌리기 스택(op 하나 · 전체 지우기 = 그때 목록 통째) · 다시 실행 스택 — 서버에만(늦게 온 사람은 보이는 op 만) */
+  hist: DrawHistEntry[];
+  redo: DrawRedoEntry[];
   /** ★ R087 — 출제자가 연 힌트 */
   hints: DrawHints;
   scores: Record<string, number> | null;
+}
+
+/** ★ R090 — 되돌리기 칸: op(보이는 목록 끝의 id) · clear(지우기 전 목록) */
+export type DrawHistEntry = { t: 'op'; id: string } | { t: 'clear'; ops: DrawStroke[] };
+/** ★ R090 — 다시 실행 칸: op(되돌린 op 통째) · clear(다시 지우기) */
+export type DrawRedoEntry = { t: 'op'; op: DrawStroke } | { t: 'clear' };
+
+/** 보관 op 합(지우기 보관분 + 다시 실행 대기 op) — 넘으면 가장 오래된 되돌리기 칸부터 버린다 */
+function trimHistory(r: Pick<DrawRound, 'hist' | 'redo'>): void {
+  const kept = () => r.hist.reduce((n, e) => n + (e.t === 'clear' ? e.ops.length : 0), 0) + r.redo.filter((e) => e.t === 'op').length;
+  while (r.hist.length && kept() > DRAW.HISTORY_MAX_OPS) r.hist.shift();
+}
+/** 새 op(선 · 채우기 · 지우기)가 들어오면 다시 실행 스택을 비운다 */
+function pushHistory(room: Room, r: DrawRound, e: DrawHistEntry): void {
+  r.hist.push(e);
+  r.redo = [];
+  trimHistory(r);
+  emitHist(room, r);
+}
+function emitHist(room: Room, r: DrawRound): void {
+  emitRoom(room, 'draw.hist', { round: r.no, undo: r.hist.length, redo: r.redo.length });
 }
 
 /** ★ R087 — 공개된 힌트(없으면 칸 없음) */
@@ -180,6 +204,7 @@ export interface DrawView {
   mySolved: boolean;
   canReroll: boolean;
   strokes: DrawStroke[];
+  hist: { undo: number; redo: number };
   scores: Record<string, number> | null;
 }
 
@@ -209,6 +234,8 @@ export function drawView(room: Room, viewer: string): DrawView | null {
     solved: r.solved,
     mySolved: r.solved.some((s) => s.accountId === viewer),
     canReroll: amDrawer && r.phase === 'draw' && !r.rerolled && r.strokes.length === 0 && now - r.phaseStartedAt < DRAW.REROLL_MS,
+    // ★ R090 — 되돌리기 · 다시 실행 할 것 수(출제자 버튼 흐리게)
+    hist: { undo: r.hist.length, redo: r.redo.length },
     strokes: r.strokes,
     scores: r.phase === 'reveal' ? r.scores : null,
   };
@@ -272,6 +299,8 @@ function startRound(room: Room, now: number): boolean {
     phaseEndsAt: now + ROUND_MS,
     rerolled: false,
     undone: new Set(),
+    hist: [],
+    redo: [],
     hints: {},
     scores: null,
   };
@@ -300,6 +329,7 @@ export function drawStroke(room: Room, accountId: string, p: { id: string; color
     if (r.strokes.length >= DRAW.MAX_STROKES) return 'bad';
     s = { id: p.id, color: p.color, width: Math.round(p.width), pts: [] };
     r.strokes.push(s);
+    pushHistory(room, r, { t: 'op', id: s.id });
   }
   if (s.pts.length + p.pts.length > DRAW.MAX_POINTS * 2) return 'bad';
   s.pts.push(...p.pts);
@@ -317,27 +347,77 @@ export function drawFill(room: Room, accountId: string, p: { id: string; x: unkn
   if (r.strokes.length >= DRAW.MAX_STROKES) return 'bad';
   r.strokes.push({ id: p.id, kind: 'fill', color: p.color, width: 0, pts: [], x: p.x, y: p.y });
   emitRoom(room, 'draw.fill', { round: r.no, id: p.id, x: p.x, y: p.y, color: p.color });
+  pushHistory(room, r, { t: 'op', id: p.id });
   return 'ok';
 }
 
-/** ★ R089 (D-346 · 찬종 "한붓그리기 단위로 · 여러 번") — 되돌리기: 마지막 op 하나(선 · 채우기) · 전체 지우기는 대상 아님 */
+/**
+ * ★ R089 (D-346 · 찬종 "한붓그리기 단위로 · 여러 번") → ★ R090 (D-347 · 찬종 "모든 작업에 대해 redo") — 되돌리기: 마지막 작업 하나
+ *   op(선 · 채우기) = 목록 끝에서 뺌(draw.undo) · 전체 지우기 = 지우기 전 목록을 되살림(draw.ops — 목록 통째)
+ */
 export function drawUndo(room: Room, accountId: string): DrawResult {
   const r = room.game?.draw?.cur;
   if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
   if (accountId !== r.drawer) return 'bad';
-  const op = r.strokes.pop();
-  if (!op) return 'bad';
-  r.undone.add(op.id);
-  emitRoom(room, 'draw.undo', { round: r.no, id: op.id });
+  const e = r.hist.pop();
+  if (!e) return 'bad';
+  if (e.t === 'op') {
+    const op = r.strokes[r.strokes.length - 1];
+    if (!op || op.id !== e.id) {
+      // 방어 — 목록과 스택이 어긋나면 스택을 버린다(되돌리기 못 함)
+      r.hist = [];
+      r.redo = [];
+      emitHist(room, r);
+      return 'bad';
+    }
+    r.strokes.pop();
+    r.undone.add(op.id);
+    r.redo.push({ t: 'op', op });
+    emitRoom(room, 'draw.undo', { round: r.no, id: op.id });
+  } else {
+    r.strokes = e.ops;
+    r.redo.push({ t: 'clear' });
+    emitRoom(room, 'draw.ops', { round: r.no, ops: r.strokes });
+  }
+  trimHistory(r);
+  emitHist(room, r);
   return 'ok';
 }
 
+/** ★ R090 — 다시 실행: 되돌린 작업 하나를 다시(op = 목록 끝에 다시 · 지우기 = 다시 지움) · 새 작업이 오면 비워진다 */
+export function drawRedo(room: Room, accountId: string): DrawResult {
+  const r = room.game?.draw?.cur;
+  if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
+  if (accountId !== r.drawer) return 'bad';
+  const e = r.redo[r.redo.length - 1];
+  if (!e) return 'bad';
+  if (e.t === 'op') {
+    if (r.strokes.length >= DRAW.MAX_STROKES) return 'bad';
+    r.redo.pop();
+    r.strokes.push(e.op);
+    r.hist.push({ t: 'op', id: e.op.id });
+    emitRoom(room, 'draw.redo', { round: r.no, op: e.op });
+  } else {
+    r.redo.pop();
+    r.hist.push({ t: 'clear', ops: r.strokes });
+    r.strokes = [];
+    emitRoom(room, 'draw.clear', { round: r.no });
+  }
+  trimHistory(r);
+  emitHist(room, r);
+  return 'ok';
+}
+
+/** ★ R090 — 전체 지우기도 작업 하나(되돌리면 되살아남) · 빈 그림이면 아무것도 안 함 */
 export function drawClear(room: Room, accountId: string): DrawResult {
   const r = room.game?.draw?.cur;
   if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
   if (accountId !== r.drawer) return 'bad';
+  if (r.strokes.length === 0) return 'ok';
+  const prev = r.strokes;
   r.strokes = [];
   emitRoom(room, 'draw.clear', { round: r.no });
+  pushHistory(room, r, { t: 'clear', ops: prev });
   return 'ok';
 }
 
@@ -353,6 +433,9 @@ export function drawReroll(room: Room, accountId: string): DrawResult {
   setWord(r, word);
   r.rerolled = true;
   r.hints = {};
+  // ★ R090 — 다른 제시어면 옛 그림의 되돌리기 · 다시 실행도 버린다(지운 옛 그림이 새 제시어에 되살아나지 않게)
+  r.hist = [];
+  r.redo = [];
   broadcast(room);
   return 'ok';
 }

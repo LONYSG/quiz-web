@@ -5158,6 +5158,22 @@ async function r089Flow(browser) {
   await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'z', code: 'KeyZ', windowsVirtualKeyCode: 90, modifiers: 2 });
   await sleep(700);
   const empty = { h: await hash(H), g: await hash(G), strokes: await H.evaluate("document.querySelector('[data-draw-canvas]')?.dataset.strokes ?? ''") };
+  // ★ R090 (D-347) — Ctrl+Y = 네모 다시 · 다시 실행 버튼 = 채우기 다시 · 전체 지우기 → 되돌리기 = 통째로 되살아남 · 세 화면 같음
+  await H.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'y', code: 'KeyY', windowsVirtualKeyCode: 89, modifiers: 2 });
+  await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'y', code: 'KeyY', windowsVirtualKeyCode: 89, modifiers: 2 });
+  await sleep(700);
+  const redo1 = { h: await hash(H), g: await hash(G), l: await hash(L) };
+  await realClick(H, '[data-draw-redo]');
+  await sleep(900);
+  const redo2 = { h: await hash(H), g: await hash(G), l: await hash(L), redoOff: await H.evaluate("document.querySelector('[data-draw-redo]')?.disabled ?? null") };
+  await realClick(H, '[data-draw-clear]');
+  await sleep(700);
+  const cleared = { h: await hash(H), g: await hash(G), redoOff: await H.evaluate("document.querySelector('[data-draw-redo]')?.disabled ?? null") };
+  await realClick(H, '[data-draw-undo]');
+  await sleep(1000);
+  const restored = { h: await hash(H), g: await hash(G), l: await hash(L), redoOn: await H.evaluate("document.querySelector('[data-draw-redo]')?.disabled === false") };
+  await snap(H, 'redo-restored-pc');
+  await snap(G, 'redo-restored-m360');
   // 굵기 · 세부 색 · 최근 · 지우개 · 단축키
   await H.evaluate(`(() => { const i = document.querySelector('[data-draw-custom]'); const d = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value'); d.set.call(i, '#123456'); i.dispatchEvent(new Event('input', { bubbles: true })); i.dispatchEvent(new Event('change', { bubbles: true })); })()`);
   await sleep(300);
@@ -5215,6 +5231,11 @@ async function r089Flow(browser) {
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r089', 'r089.json'), JSON.stringify(rows, null, 1));
   record('★★★ R089 페인트통 — 네모 안이 하늘색 · 세 화면(방장 PC · 손님 m360 · 늦게 온 1536) 격자 해시 같음', !!filled.h && filled.h === filled.g && filled.h === filled.l && filled.h !== before && Math.abs(inside[0] - 0x38) < 20 && Math.abs(inside[2] - 0xf8) < 20, JSON.stringify({ before, filled, inside }));
   record('★★★ R089 되돌리기 — 버튼 = 채우기만 빠짐(해시 = 채우기 전 · 세 화면 같음) · Ctrl+Z = 네모까지(빈 판)', undone.h === before && undone.g === before && undone.l === before && empty.strokes === '0' && empty.h === empty.g, JSON.stringify({ undone, before, empty }));
+  record(
+    '★★★ R090 다시 실행 — Ctrl+Y = 네모(해시 = 채우기 전) · 버튼 = 채우기(해시 = 채운 뒤 · 할 것 없으면 흐림) · 전체 지우기 = 빈 판(다시 실행 흐림) → 되돌리기 = 통째로 되살아남 · 세 화면 같음',
+    redo1.h === before && redo1.g === before && redo1.l === before && redo2.h === filled.h && redo2.g === filled.h && redo2.l === filled.h && redo2.redoOff === true && cleared.h === empty.h && cleared.g === empty.h && cleared.redoOff === true && restored.h === filled.h && restored.g === filled.h && restored.l === filled.h && restored.redoOn,
+    JSON.stringify({ before, filled, redo1, redo2, cleared, restored }),
+  );
   record('★★ R089 세부 색 → 최근 색 · E(지우개) · ](굵게) · P(펜 — 굵기 따로) · 스포이드 버튼', custom.recent[0] === '#123456' && eraser.tool === 'eraser' && pen.tool === 'pen' && eraser.w !== '' && pen.w !== '' && eraser.w !== pen.w && ['system', 'canvas'].includes(eye), JSON.stringify({ custom, eraser, pen, eye }));
   record('★★★ R089 도구 띠 — PC 1280 · FHD 125% · FHD 도구 화면 안 · 넘침 0 · 모바일 출제 도구 가로 화면 안(줄 바꿈) · 넘침 0', Object.values(sizes).every((m) => m.toolsIn && m.over <= 1) && mob.n >= 20 && mob.inX && mob.over <= 1, JSON.stringify({ sizes, mob }));
   S.close();
@@ -6096,7 +6117,7 @@ async function r081Flow(browser) {
 
 // =============================================================================
 // ★★★ R080 — 미니게임 1차 화면 (D-330 · D-337) (UICHECK_R080=1 · 묶음 r080 · docs/design/r080)
-//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 3개(많이 말하기 · 겹치면 무효 · 객관식 10연속)
+//   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 3개(많이 말하기 · 겹치면 무효 · 객관식 5연속)
 //   많이 말하기: 입력 ✓ / 이미 말함 / ✗ · 판 중 남의 답·참여 수 없음 · 공개(나만 · 못 말한 것) · 제보 버튼(채워진 글) · 모바일 입력
 //   겹치면 무효: 같은 답 둘 = 겹침 · 혼자 = +1 · 객관식: 보기 넷 · 정답 표시 · 최종 10문제 정답 · 세 테마 · 넘침 0
 // =============================================================================
@@ -6272,7 +6293,7 @@ async function r080Flow(browser) {
   record('★★★ R080 많이 말하기 공개 — 사람 셋(3 · 2 · 1) · 나만 말한 답 · 못 말한 것 · 제보 버튼', m?.rv && m.rv.rows.slice().sort().join() === '1,2,3' && m.rv.only >= 3 && m.rv.missed > 0 && m.rv.report, JSON.stringify(m?.rv));
   record('★★★ R080 "이건 왜 정답 아냐?" — 제보 창 머리 주제 · 내 오답 채움 · 사유 "답" 켜짐', res.report && /많이 말하기/.test(res.report.title) && /정답아닌말/.test(res.report.text) && res.report.reason === 'true', JSON.stringify(res.report));
   record('★★★ R080 겹치면 무효 — 3판 · 오답 ✗ → 바꾼 답 ✓ · 공개 겹침 둘 + 혼자 하나', res.unique.length === 3 && res.unique.every((u) => u.bad === 'wrong' && u.ok === 'ok' && u.states === 'dup,dup,win'), JSON.stringify(res.unique));
-  record('★★★ R080 객관식 — 10문항 · 보기 4 · 정답 표시 · 최종 정답 10줄(방장 다 맞힘)', res.choice.length === 10 && res.choice.every((c) => c.n === 4 && c.idx >= 0) && res.choiceReveal === 1 && res.choiceFinal?.answers === 10 && res.choiceFinal?.ok === 10, JSON.stringify({ c: res.choice.slice(0, 2), r: res.choiceReveal, f: res.choiceFinal }));
+  record('★★★ R080 객관식(R090 5연속) — 5문항 · 보기 4 · 정답 표시 · 최종 정답 5줄(방장 다 맞힘)', res.choice.length === 5 && res.choice.every((c) => c.n === 4 && c.idx >= 0) && res.choiceReveal === 1 && res.choiceFinal?.answers === 5 && res.choiceFinal?.ok === 5, JSON.stringify({ c: res.choice.slice(0, 2), r: res.choiceReveal, f: res.choiceFinal }));
   record('★★ R080 모바일 넘침 0(공개 · 최종)', res.themes.every(([, o]) => o <= 1), JSON.stringify(res.themes));
   record('★ R080 설정 — 셋 고름', picked === 'many,unique,choice' || picked.split(',').length === 3, picked);
   S.close();

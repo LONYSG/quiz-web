@@ -13,6 +13,7 @@
 // ★ 파일은 쓰지 않는다(§9 — 적재 = topic_sets.loaded_at · 플레이 트리에서 돈다).
 // ★ ops 메뉴 1(play.mjs)이 migrate · 빌드 뒤 `--apply` 로 한 번 돌린다(실패해도 서버는 뜬다 — 한 줄 경고).
 // ★★ R088 (D-345 · 0034 · 18 §12 · §9) — 항목 fool · era · sub · diff · 세트 scope 도 올린다(파일에 없으면 null). 0034 전 DB 에는 옛 칸만(자동).
+// ★★ R090 (D-347 · 0035) — 세트 group · optIn 도(없으면 null · false · 0035 전 DB 는 건너뜀). 머리의 모르는 칸은 버린다(올리지 않음).
 //   끝 줄에 "fool n · diff n" 을 붙인다(메뉴 1 이 보인다).
 // =============================================================================
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
@@ -88,6 +89,9 @@ export function planLoad(list, { allowCandidate, checkTopic }) {
       source: t.source ?? [],
       verify: t.verify ?? null,
       scope: typeof t.scope === 'string' && t.scope.trim() ? t.scope.trim() : null,
+      // ★ R090 (0035) — 머리 group(같은 group = 추첨 한 자리) · optIn(방장 주제 고르기 기본 해제)
+      group: typeof t.group === 'string' && /^[a-z][a-z0-9-]*$/.test(t.group) ? t.group : null,
+      optIn: t.optIn === true,
     });
     t.items.forEach((it, i) => {
       items.push({
@@ -128,6 +132,7 @@ export function readTopics(dir = DIR) {
  *  ★ R088 — 0034 칸(fool · era · sub · diff · scope)이 있으면 같이(없는 DB 는 옛 칸만) */
 export async function applyPlan(db, plan) {
   const has0034 = ((await db.query(`SELECT 1 FROM information_schema.columns WHERE table_name = 'topic_items' AND column_name = 'fool'`)).rowCount ?? 0) > 0;
+  const has0035 = ((await db.query(`SELECT 1 FROM information_schema.columns WHERE table_name = 'topic_sets' AND column_name = 'opt_in'`)).rowCount ?? 0) > 0;
   await db.query('BEGIN');
   try {
     for (const s of plan.sets) {
@@ -141,6 +146,7 @@ export async function applyPlan(db, plan) {
       );
     }
     if (has0034) for (const s of plan.sets) await db.query(`UPDATE topic_sets SET scope = $2 WHERE topic = $1`, [s.topic, s.scope ?? null]);
+    if (has0035) for (const s of plan.sets) await db.query(`UPDATE topic_sets SET "group" = $2, opt_in = $3 WHERE topic = $1`, [s.topic, s.group ?? null, s.optIn === true]);
     // 항목은 묶어서(2,500 줄을 한 줄씩 보내지 않는다)
     const CH = 400;
     for (let i = 0; i < plan.items.length; i += CH) {

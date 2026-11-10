@@ -43,7 +43,7 @@ export interface PoolQuestion {
   /** ★★ R069 — 등급(difficulty_score 1~5 · 비율 출제) · 알가치(questions.worth 1~3 · 판정 전 null = 2 로 친다) */
   grade: number;
   worth: number | null;
-  /** ★ R080 — 중분류 id(category_tree.mid_id — 객관식 10연속 보기). 트리가 없으면 null */
+  /** ★ R080 — 중분류 id(category_tree.mid_id — 객관식 5연속 보기). 트리가 없으면 null */
   categoryMid?: string | null;
 }
 

@@ -10260,6 +10260,10 @@ button.preset.shake {
   grid-column: span 3;
   margin: 0;
 }
+/* ★ R090 — 되돌리기 · 다시 실행 = 3칸씩 한 줄 · 전체 지우기 = 한 줄 */
+.draw-tools > [data-draw-clear] {
+  grid-column: 1 / -1;
+}
 .draw-tools > .draw-hint-btn {
   grid-column: span 2;
   padding: 2px 0;

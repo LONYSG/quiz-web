@@ -1,12 +1,12 @@
 // =============================================================================
-// ★★★ R080 — 미니게임 1차 (D-330 · D-337): 많이 말하기 · 겹치면 무효(주제 세트) · 객관식 10연속(퀴즈 문항 보기)
+// ★★★ R080 — 미니게임 1차 (D-330 · D-337): 많이 말하기 · 겹치면 무효(주제 세트) · 객관식 5연속(퀴즈 문항 보기)
 //
 // ★ 많이 말하기(many): 주제 하나 · timeSec(기본 30) 동안 글 입력(Enter 마다) · 서버 판정 즉시 **본인에게만** ✓ / ✗ / 이미 말함
 //   (남의 답 · 남의 개수 안 보임 — countProvisional 없음 · 제출 수 줄도 화면이 숨긴다) · 끝나면 전원 목록 · 나만 말한 답 · 못 말한 것 공개.
 //   점수 = 맞힌 수 → 판 순위 점수(rankRound · 동점 공동). 0개는 값 없음(0점).
 // ★ 겹치면 무효(unique): 판마다 다른 주제(3판) · 15초 · 답 하나(바꿀 수 있음 — 마지막 것) · 정답 밖 0 · 둘 이상 같은 항목 전원 0 · 혼자만 낸 정답 1.
-// ★ 객관식 10연속(choice): 이 판의 출제 풀(game.pool)에서 알가치 ≥ 2 · 등급 1~3 · 이미 나온 문항 · 정답 제외 · 분야 섞어 10 ·
-//   보기 = 대표 정답 + 같은 중분류의 다른 대표 정답 3(글자 수 비슷한 것 우선 · 모자라면 같은 대분류 · 그래도 모자라면 풀 전체).
+// ★ 객관식 5연속(choice · R090 10 → 5): 이 판의 출제 풀(game.pool)에서 **저장 보기(question_choices)가 있는** 알가치 ≥ 2 · 등급 1~3 · 이미 나온 문항 · 정답 제외 · 분야 섞어 5 ·
+//   보기 = 대표 정답 + 저장된 오답 셋(정답 변형과 겹치면 그 문항은 건너뜀 · 순서는 시드로 섞음). ★ R090 — 옛 "풀에서 다른 대표 정답 뽑기"는 지움(보기 퀄리티 — 찬종 테스트 1).
 //   고른 10문항은 game.usedQuestionIds · usedAnswerNorms 에 넣는다(본판이 뒤에 내지 않게). ★ 질문 경험으로 기록하지 않는다(보기로 본 것은 푼 게 아니다).
 // ★ 주제 고르기: kind closed · 항목 20 이상 · 이 게임에서 쓴 주제 제외(usedTopics) · 참가자 중 그 세트를 본 사람이 적은 순(전원 본 세트는 뒤로).
 //   경험 기록 = minigame_item_experiences(키 many/unique · item_key 'topic:<slug>').
@@ -33,6 +33,7 @@ import {
   manyReveal,
   matchTopic,
   minigameInfo,
+  flexCanon,
   normalizeAnswer,
   seededRandom,
   uniqueResult,
@@ -40,6 +41,7 @@ import {
 import { ambiguousHint, makeTopicSet, topicsForKey, type TopicSet } from '../db/topics.js';
 import type { BuildCtx, MinigameDef, RoundSpec } from './defs.js';
 import { deviceElapsed } from './defs.js';
+import { isTestServer } from '../db/testGuard.js';
 
 export const TOPIC_KEYS = new Set(['many', 'unique', 'order', 'bingo']);
 /** ★ R081 — 주제 세트 게임이 한 판에 쓰는 세트 수 */
@@ -66,10 +68,29 @@ export function pickTopicSets(
   const rnd = seededRandom((seed ^ 0x70b1c) >>> 0);
   // ★ R081 — 네 게임(많이 말하기 · 겹치면 무효 · 순서대로 · 빙고) 어느 것으로 봤어도 본 것
   const seen = (s: TopicSet) => participants.filter((a) => [...TOPIC_KEYS].some((k) => experienced.get(a)?.has(`${k}|topic:${s.topic}`))).length;
-  const pool = shuffle(sets.filter((s) => !used.has(s.topic)), rnd)
-    .map((s, i) => ({ s, k: seen(s), i }))
-    .sort((a, b) => a.k - b.k || a.i - b.i)
-    .map((x) => x.s);
+  // ★★ R090 (D-347 · 0035) — 같은 group 의 세트들은 **한 자리**(지하철 13 세트가 추첨을 독차지하지 않게) · 자리가 뽑히면 그 안에서 하나(본 사람 적은 것 중 균등)
+  //   group 없는 세트는 한 세트 = 한 자리(전과 같음) · 자리가 n 보다 모자라면 남은 group 세트로 채운다
+  const free = sets.filter((s) => !used.has(s.topic));
+  const slots = new Map<string, TopicSet[]>();
+  for (const s of free) {
+    const key = s.group ? `g:${s.group}` : `t:${s.topic}`;
+    (slots.get(key) ?? slots.set(key, []).get(key)!).push(s);
+  }
+  const chosen: TopicSet[] = [];
+  const rest: TopicSet[] = [];
+  for (const members of slots.values()) {
+    const ranked = shuffle([...members], rnd).map((s) => ({ s, k: seen(s) }));
+    const best = Math.min(...ranked.map((x) => x.k));
+    const one = ranked.find((x) => x.k === best)!.s;
+    chosen.push(one);
+    for (const x of ranked) if (x.s !== one) rest.push(x.s);
+  }
+  const order = (list: TopicSet[]) =>
+    shuffle(list, rnd)
+      .map((s, i) => ({ s, k: seen(s), i }))
+      .sort((a, b) => a.k - b.k || a.i - b.i)
+      .map((x) => x.s);
+  const pool = [...order(chosen), ...order(rest)];
   return pool.length >= n ? pool.slice(0, n) : null;
 }
 
@@ -217,7 +238,7 @@ export const unique: MinigameDef = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 객관식 10연속
+// 객관식 5연속
 // ─────────────────────────────────────────────────────────────────────────────
 export interface ChoiceQ {
   id: string;
@@ -226,6 +247,8 @@ export interface ChoiceQ {
   categoryMid?: string | null;
   displayAnswer: string;
   answersNorm: readonly string[];
+  /** ★ R090 — 정답 원문(저장 보기가 지운 꼴로 겹치는지 볼 때 · 없으면 대표 정답만) */
+  answersRaw?: readonly string[];
   grade: number;
   worth: number | null;
 }
@@ -237,45 +260,34 @@ export interface ChoicePick {
 
 const glen = (s: string) => [...s].length;
 
-/** ★ 보기 셋(오답) — 같은 중분류 → 같은 대분류 → 풀 전체 · 정답(정규화 · 정답 묶음)과 겹치는 것 제외 · 글자 수 비슷한 것 우선 */
-export function choiceDistractors(q: ChoiceQ, pool: readonly ChoiceQ[], rnd: () => number, need = 3): string[] | null {
-  const bad = new Set([normalizeAnswer(q.displayAnswer), ...q.answersNorm]);
-  const out: string[] = [];
-  const taken = new Set<string>();
-  const L = glen(q.displayAnswer);
-  // ★ 숫자 정답("7" · "1950년")이면 숫자 보기를, 글 정답이면 글 보기를 먼저(보기만 보고 고르지 못하게)
-  const digit = /\d/.test(q.displayAnswer);
-  const tiers = [
-    (c: ChoiceQ) => Boolean(q.categoryMid) && c.categoryMid === q.categoryMid,
-    (c: ChoiceQ) => c.categoryName === q.categoryName,
-    () => true,
-  ];
-  for (const tier of tiers) {
-    if (out.length >= need) break;
-    const cands = pool
-      .filter((c) => c.id !== q.id && tier(c))
-      .map((c) => ({ c, n: normalizeAnswer(c.displayAnswer), w: Math.abs(glen(c.displayAnswer) - L) + rnd() * 3 + (/\d/.test(c.displayAnswer) === digit ? 0 : 8) }))
-      .filter((x) => x.n && !bad.has(x.n) && !taken.has(x.n) && !x.c.answersNorm.some((a) => bad.has(a)) && glen(x.c.displayAnswer) <= 30)
-      .sort((a, b) => a.w - b.w);
-    for (const x of cands) {
-      if (out.length >= need) break;
-      if (taken.has(x.n)) continue;
-      taken.add(x.n);
-      out.push(x.c.displayAnswer);
-    }
+/** ★ R090 (D-347) — 저장 보기(question_choices) 셋을 쓸 수 있나: 셋 이상 · 서로 다름 · 정답(정규화 · 지운 꼴 · 변형)과 안 겹침 → 쓸 셋(아니면 null — 그 문항은 건너뜀) */
+export function storedDistractors(q: ChoiceQ, stored: readonly string[] | undefined, rnd: () => number, need = 3): string[] | null {
+  if (!stored || stored.length < need) return null;
+  const bad = new Set<string>();
+  for (const a of [q.displayAnswer, ...(q.answersRaw ?? [])]) {
+    bad.add(normalizeAnswer(a));
+    bad.add(flexCanon(a));
   }
-  return out.length >= need ? out : null;
+  for (const n of q.answersNorm) bad.add(n);
+  const seen = new Set<string>();
+  for (const o of stored) {
+    const n = normalizeAnswer(o);
+    if (typeof o !== 'string' || !o.trim() || !n || bad.has(n) || bad.has(flexCanon(o)) || seen.has(n)) return null;
+    seen.add(n);
+  }
+  return shuffle([...stored], rnd).slice(0, need);
 }
 
-/** ★ 10문항 고르기 — 알가치 ≥ 2 · 등급 1~3 · 이미 나온 문항 · 정답 제외 · 분야(대분류) 돌아가며 · 정답끼리 겹치지 않게 */
+/** ★ 5문항 고르기 — **저장 보기가 있는 문항만**(R090) · 알가치 ≥ 2 · 등급 1~3 · 이미 나온 문항 · 정답 제외 · 분야(대분류) 돌아가며 · 정답끼리 겹치지 않게 */
 export function pickChoiceQuestions(
   pool: readonly ChoiceQ[],
-  opts: { usedIds: ReadonlySet<string>; usedNorms: ReadonlySet<string>; seed: number; count?: number },
+  opts: { usedIds: ReadonlySet<string>; usedNorms: ReadonlySet<string>; seed: number; count?: number; options: ReadonlyMap<string, readonly string[]> },
 ): ChoicePick[] | null {
   const count = opts.count ?? CHOICE_COUNT;
   const rnd = seededRandom((opts.seed ^ 0xc401ce) >>> 0);
   const ok = pool.filter(
     (q) =>
+      opts.options.has(q.id) &&
       (q.worth ?? 2) >= CHOICE_MIN_WORTH &&
       q.grade >= 1 &&
       q.grade <= CHOICE_MAX_GRADE &&
@@ -300,7 +312,7 @@ export function pickChoiceQuestions(
       while (list.length) {
         const q = list.shift()!;
         if (q.answersNorm.some((n) => norms.has(n)) || norms.has(normalizeAnswer(q.displayAnswer))) continue;
-        const d = choiceDistractors(q, pool, rnd);
+        const d = storedDistractors(q, opts.options.get(q.id), rnd);
         if (!d) continue;
         const options = shuffle([q.displayAnswer, ...d], rnd);
         out.push({ q, options, answer: options.indexOf(q.displayAnswer) });
@@ -311,6 +323,13 @@ export function pickChoiceQuestions(
     }
   }
   return out.length >= count ? out : null;
+}
+
+/** ★ R090 — 검사 서버(QUIZ_TEST_SERVER)만: 저장 보기가 없는 문항에 가짜 보기 셋(데이터가 오기 전에도 봇 · ui-check 가 돌게) */
+export function fakeChoiceOptions(pool: readonly ChoiceQ[], stored: ReadonlyMap<string, readonly string[]>): Map<string, readonly string[]> {
+  const m = new Map(stored);
+  for (const q of pool) if (!m.has(q.id)) m.set(q.id, ['가짜 보기 하나', '가짜 보기 둘', '가짜 보기 셋']);
+  return m;
 }
 
 const choiceSpec = (i: number, seed: number, p: { text: string; category: string; options: string[]; answer: number; questionId: string | null }): RoundSpec => ({
@@ -331,16 +350,19 @@ export const choice: MinigameDef = {
   buildRounds(seed, ctx) {
     if (ctx.practice) {
       const rnd = seededRandom(seed >>> 0);
-      return CHOICE_DUMMY.map((d, i) => {
+      return CHOICE_DUMMY.slice(0, CHOICE_COUNT).map((d, i) => {
         const options = shuffle([...d.options], rnd);
         return choiceSpec(i, seed, { text: d.text, category: d.category, options, answer: options.indexOf(d.options[0]), questionId: null });
       });
     }
     const g = ctx.game;
     if (!g || g.pool.length === 0) return null;
-    const pick = pickChoiceQuestions(g.pool, { usedIds: g.usedQuestionIds, usedNorms: g.usedAnswerNorms, seed });
+    // ★ R090 — 저장 보기만(옛 풀 뽑기 보기는 쓰지 않는다) · 검사 서버는 가짜 보기로 채움
+    const stored = g.choiceOptions ?? new Map<string, readonly string[]>();
+    const options = isTestServer() ? fakeChoiceOptions(g.pool, stored) : stored;
+    const pick = pickChoiceQuestions(g.pool, { usedIds: g.usedQuestionIds, usedNorms: g.usedAnswerNorms, seed, options });
     if (!pick) return null;
-    // ★ 본판이 이 10문제(와 같은 정답)를 뒤에 내지 않게
+    // ★ 본판이 이 5문제(와 같은 정답)를 뒤에 내지 않게
     for (const p of pick) {
       g.usedQuestionIds.add(p.q.id);
       for (const n of p.q.answersNorm) g.usedAnswerNorms.add(n);

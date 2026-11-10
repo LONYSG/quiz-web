@@ -35,6 +35,9 @@ export interface TopicSet {
   liar: boolean;
   draw: boolean;
   scope: string | null;
+  /** ★ R090 (0035) — 같은 group 의 세트는 주제 자동 추첨에서 한 자리 · 방장 주제 고르기 기본 해제 */
+  group: string | null;
+  optIn: boolean;
   items: TopicItem[];
   matcher: Map<string, string>;
   /** ★ R088 — 세트 안 겹치는 꼬리 이름(정규화 열쇠 → 안내 글 "어느 서구? …") — 판정은 오답 · 본인에게 안내 */
@@ -52,7 +55,7 @@ const TTL_MS = Number(process.env.TOPIC_CACHE_MS ?? 60_000);
 
 type ItemIn = { id: string; name: string; label?: string | null; variants?: string[]; year?: number | null; liar?: boolean; draw?: boolean; fool?: string[] | null; era?: string | null; sub?: string | null; diff?: number | null };
 
-export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' | 'open'; timeSec?: number | null; liar?: boolean; draw?: boolean; scope?: string | null }, items: ItemIn[]): TopicSet {
+export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' | 'open'; timeSec?: number | null; liar?: boolean; draw?: boolean; scope?: string | null; group?: string | null; optIn?: boolean }, items: ItemIn[]): TopicSet {
   const its: TopicItem[] = items.map((x) => ({
     id: x.id,
     name: x.name,
@@ -76,6 +79,8 @@ export function makeTopicSet(h: { topic: string; nameKo: string; kind: 'closed' 
     liar: h.liar ?? its.some((x) => x.liar),
     draw: h.draw ?? its.some((x) => x.draw),
     scope: typeof h.scope === 'string' && h.scope.trim() ? h.scope.trim() : null,
+    group: typeof h.group === 'string' && h.group ? h.group : null,
+    optIn: h.optIn === true,
     items: its,
     matcher,
     ambiguous: topicAmbiguous(its, matcher),
@@ -87,8 +92,8 @@ export async function loadTopicStore(force = false): Promise<TopicStore> {
   try {
     const [s, it] = await Promise.all([
       // ★ R088 — 0034 칸(scope · fool · era · sub · diff)은 있으면(to_jsonb 로 꺼내 0034 전 DB 에서도 같은 SQL)
-      query<{ topic: string; name_ko: string; kind: 'closed' | 'open'; time_sec: number; liar: boolean; draw: boolean; scope: string | null }>(
-        `SELECT topic, name_ko, kind, time_sec, liar, draw, to_jsonb(s)->>'scope' AS scope FROM topic_sets s WHERE active ORDER BY topic`,
+      query<{ topic: string; name_ko: string; kind: 'closed' | 'open'; time_sec: number; liar: boolean; draw: boolean; scope: string | null; grp: string | null; opt_in: string | null }>(
+        `SELECT topic, name_ko, kind, time_sec, liar, draw, to_jsonb(s)->>'scope' AS scope, to_jsonb(s)->>'group' AS grp, to_jsonb(s)->>'opt_in' AS opt_in FROM topic_sets s WHERE active ORDER BY topic`,
       ),
       query<{ id: string; topic: string; name: string; label: string | null; variants: string[]; year: number | null; liar: boolean; draw: boolean; fool: string[] | null; era: string | null; sub: string | null; diff: number | null }>(
         `SELECT id, topic, name, label, variants, year, liar, draw, to_jsonb(t)->'fool' AS fool, to_jsonb(t)->>'era' AS era, to_jsonb(t)->>'sub' AS sub, (to_jsonb(t)->>'diff')::int AS diff
@@ -101,7 +106,7 @@ export async function loadTopicStore(force = false): Promise<TopicStore> {
       if (!arr) by.set(r.topic, (arr = []));
       arr.push({ id: r.id, name: r.name, label: r.label, variants: Array.isArray(r.variants) ? r.variants : [], year: r.year, liar: r.liar, draw: r.draw, fool: Array.isArray(r.fool) ? r.fool : null, era: r.era, sub: r.sub, diff: r.diff });
     }
-    cache = { sets: s.rows.map((r) => makeTopicSet({ topic: r.topic, nameKo: r.name_ko, kind: r.kind, timeSec: r.time_sec, liar: r.liar, draw: r.draw, scope: r.scope }, by.get(r.topic) ?? [])), loadedAt: Date.now() };
+    cache = { sets: s.rows.map((r) => makeTopicSet({ topic: r.topic, nameKo: r.name_ko, kind: r.kind, timeSec: r.time_sec, liar: r.liar, draw: r.draw, scope: r.scope, group: r.grp, optIn: r.opt_in === 'true' }, by.get(r.topic) ?? [])), loadedAt: Date.now() };
   } catch (err) {
     // 42P01 = 표 없음(0031 전) — 빈 저장소
     if ((err as { code?: string }).code !== '42P01') throw err;
@@ -165,7 +170,8 @@ export function topicAmbiguous(items: readonly Pick<TopicItem, 'name'>[], matche
     if (short !== tail) add(short, it.name);
   }
   const out = new Map<string, string>();
-  for (const [k, c] of count) if (c.n >= 2 && !matcher.has(k)) out.set(k, `어느 ${c.shown}? 앞 동네를 붙여 주세요(예: '${c.example}')`);
+  // ★ R090 (D-347 · 찬종 "그건 정답 스포 아니야?") — 실제 지명 예시를 뺀다(어느 것이 정답인지 · 몇 곳인지 알려 주지 않음)
+  for (const [k, c] of count) if (c.n >= 2 && !matcher.has(k)) out.set(k, `'${c.shown}' — 같은 이름이 여러 곳이에요. 앞에 시·도 이름을 붙여 주세요`);
   return out;
 }
 

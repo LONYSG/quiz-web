@@ -34,6 +34,7 @@ import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
 import { loadAllItemExperiences, loadQuizData } from '../db/minigameItems.js';
 import { drawTopics, liarTopics, loadTopicStore } from '../db/topics.js';
+import { loadChoiceOptions } from '../db/choices.js';
 import { startDrawGame } from '../draw/engine.js';
 import { startLiarGame } from '../liar/engine.js';
 import { DRAW, DRAW_START_BLOCK, LIAR, LIAR_START_BLOCK } from '@quiz/shared';
@@ -320,9 +321,10 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   let experienced;
   let minigameQuiz;
   let liarData;
+  let choiceOptions: Map<string, string[]> | null = null;
   try {
-    [pool, experienced, minigameQuiz, liarData] = await Promise.all([
-      // ★ R057 — 미니게임만은 퀴즈 풀이 필요 없다 · ★ R080 — 객관식 10연속을 골랐으면 보기 재료로 읽는다(실패해도 시작은 한다)
+    [pool, experienced, minigameQuiz, liarData, choiceOptions] = await Promise.all([
+      // ★ R057 — 미니게임만은 퀴즈 풀이 필요 없다 · ★ R080 — 객관식 5연속을 골랐으면 보기 재료로 읽는다(실패해도 시작은 한다)
       topicMode
         ? Promise.resolve([])
         : mgOnly
@@ -342,6 +344,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
         : Promise.resolve(null),
       // ★★★ R082 — 라이어: 제시어(주제 세트 liar 항목) · 경험('liar|항목 id')
       topicMode ? Promise.all([loadTopicStore(), loadAllItemExperiences(participantIds(room))]).then(([store, exp]) => ({ store, exp })) : Promise.resolve(null),
+      // ★ R090 (0035) — 객관식 5연속을 골랐으면 저장 보기(실패해도 시작은 한다 — 객관식만 빠짐)
+      !topicMode && (settings.minigames || mgOnly) && settings.minigameKeys.includes('choice') ? loadChoiceOptions().catch(() => new Map<string, string[]>()) : Promise.resolve(null),
     ]);
   } catch (err) {
     console.error(`[game] ★★ ${room.id} 출제 풀 로드 실패 — 게임을 시작하지 않는다:`, (err as Error).message);
@@ -385,6 +389,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     experienced,
     usedQuestionIds: new Set(),
     usedAnswerNorms: new Set(),
+    choiceOptions,
     shownNorm: '',
     minigameBag: [],
     lastMinigameKey: null,

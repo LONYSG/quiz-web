@@ -144,8 +144,8 @@ export interface BuildCtx {
   participants: string[];
   /** 게임에 올려 둔 퀴즈류 문항 · 경험(연습 · 미니게임 포함이 꺼진 게임이면 null) */
   quiz: { data: QuizData; experienced: Map<string, Set<string>>; used?: Set<string>; /** ★ R080 — 주제 세트 · 이 게임에서 쓴 주제 */ topics?: TopicStore | null; usedTopics?: Set<string> } | null;
-  /** ★ R080 — 객관식 10연속: 이 판의 출제 풀 · 쓴 문항 · 쓴 정답(연습 · 게임 밖이면 없음) */
-  game?: { pool: PoolQuestion[]; usedQuestionIds: Set<string>; usedAnswerNorms: Set<string> } | null;
+  /** ★ R080 — 객관식(R090 5연속): 이 판의 출제 풀 · 쓴 문항 · 쓴 정답(연습 · 게임 밖이면 없음) */
+  game?: { pool: PoolQuestion[]; usedQuestionIds: Set<string>; usedAnswerNorms: Set<string>; /** ★ R090 — 객관식 저장 보기(문항 id → 오답 셋) */ choiceOptions?: ReadonlyMap<string, readonly string[]> | null } | null;
   now: number;
   /** ★ R066 (D-282) — 고른 미니게임이 모두 소재가 떨어졌을 때 한 번 더(모두 본 문항도) */
   ignoreSeen?: boolean;
@@ -177,7 +177,7 @@ export interface MinigameDef {
    *   임시(provisional) 값이 하나라도 오면 "냈다" 로 센다. 그렇지 않으면 놀이 내내 0명으로 보인다.
    */
   countProvisional?: boolean;
-  /** ★ R080 — 퀴즈류지만 문항 경험을 남기지 않는다(객관식 10연속 — 보기로 본 것은 푼 게 아니다) */
+  /** ★ R080 — 퀴즈류지만 문항 경험을 남기지 않는다(객관식 5연속 — 보기로 본 것은 푼 게 아니다) */
   noItemExperience?: boolean;
   /** ★ R081 — 판 결과 뒤 미니게임을 여기서 끝낼까(빙고 — 한 명 빼고 전원 빙고). 없으면 판을 다 돈다 */
   isOver?(spec: RoundSpec): boolean;

@@ -201,13 +201,14 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'choice',
     hidden: true,
-    name: '객관식 10연속',
-    oneLine: '퀴즈 문제 10개를 보기 넷 중에서 — 7초 안에! 많이 맞히고, 같으면 빠른 사람',
+    // ★ R090 (D-347) — 10 → 5 · 저장된 오답 보기(question_choices)만 · 데이터가 들어온 뒤 hidden 을 끈다
+    name: '객관식 5연속',
+    oneLine: '퀴즈 문제 5개를 보기 넷 중에서 — 7초 안에! 많이 맞히고, 같으면 빠른 사람',
     controlsPc: '1 ~ 4 키 또는 클릭',
     controlsMobile: '보기를 톡',
     kind: 'quiz',
-    rounds: 10,
-    estSec: 110,
+    rounds: 5,
+    estSec: 55,
     better: 'low',
     unit: 'ms',
     fixedDecimals: 0,

@@ -14,9 +14,11 @@ describe('겹치는 이름 — 앞 동네를 붙여 주세요', () => {
     { id: 'h', name: '대전 유성구' },
   ]);
   it('꼬리 이름이 둘 이상에 걸리면 안내(구/군 뗀 꼴도) · 하나뿐이거나 그 자체가 항목이면 아님', () => {
-    expect(ambiguousHint(set.ambiguous, '서구')).toMatch(/어느 서구/);
-    expect(ambiguousHint(set.ambiguous, '강서구')).toMatch(/어느 강서구/);
-    expect(ambiguousHint(set.ambiguous, '고성')).toMatch(/어느 고성/);
+    expect(ambiguousHint(set.ambiguous, '서구')).toMatch(/'서구' — 같은 이름이 여러 곳이에요/);
+    // ★ R090 — 예시 지명(정답 스포) 없음
+    expect(ambiguousHint(set.ambiguous, '서구')).not.toMatch(/예:|부산|대구|인천|광주|대전/);
+    expect(ambiguousHint(set.ambiguous, '강서구')).toMatch(/'강서구' — /);
+    expect(ambiguousHint(set.ambiguous, '고성')).toMatch(/'고성' — /);
     expect(ambiguousHint(set.ambiguous, '유성구')).toBeNull();
     expect(ambiguousHint(set.ambiguous, '달서구')).toBeNull();
     expect(ambiguousHint(set.ambiguous, '부산 서구')).toBeNull();

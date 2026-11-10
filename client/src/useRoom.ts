@@ -111,6 +111,8 @@ export interface DrawView {
   mySolved: boolean;
   canReroll: boolean;
   strokes: DrawStrokeView[];
+  /** ★ R090 — 되돌리기 · 다시 실행 할 것 수 */
+  hist?: { undo: number; redo: number };
   scores: Record<string, number> | null;
 }
 

@@ -7750,7 +7750,7 @@ async function scenarioMgOnly() {
 }
 
 // =============================================================================
-// ★★★ R080 — 미니게임 1차 셋(많이 말하기 · 겹치면 무효 · 객관식 10연속)을 미니게임만 3개로 — mgonly 뒤에 이어서(같은 방 · 봇 셋)
+// ★★★ R080 — 미니게임 1차 셋(많이 말하기 · 겹치면 무효 · 객관식 5연속)을 미니게임만 3개로 — mgonly 뒤에 이어서(같은 방 · 봇 셋)
 //   봇은 quizweb_test 의 topic_items 에서 정답을 읽어 친다 · 객관식은 questions 에서 질문 글로 정답을 찾는다
 // =============================================================================
 async function topicItemsOf(topic) {
@@ -7762,7 +7762,7 @@ async function answerOfQuestion(text) {
   return withDb(async (c) => (await c.query(`SELECT display_answer FROM questions WHERE question_text = $1 LIMIT 1`, [text])).rows[0]?.display_answer ?? null);
 }
 async function mgTopicTrio(bots, host) {
-  log('\n[R080] 미니게임 1차 셋 — 많이 말하기 · 겹치면 무효 · 객관식 10연속 (미니게임만 3개)');
+  log('\n[R080] 미니게임 1차 셋 — 많이 말하기 · 겹치면 무효 · 객관식 5연속 (미니게임만 3개)');
   const [b1, b2, b3] = bots;
   const seen = { many: null, unique: [], choice: [] };
   const sub = (b, mg, input) => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input });
@@ -7860,8 +7860,9 @@ async function mgTopicTrio(bots, host) {
   // ── 객관식
   const cf = states.filter((v) => v.key === 'choice' && v.phase === 'final')[0];
   const cRounds = cf?.roundResults ?? [];
-  expectTrue('★★★ 객관식 — 10문항 · 보기 4 · 서로 다름 · 정답 들어 있음', cRounds.length === 10 && seen.choice.length === 10 && seen.choice.every((c) => c.opts.length === 4 && new Set(c.opts).size === 4 && c.idx >= 0), JSON.stringify(seen.choice.slice(0, 2)));
-  expect('★★★ 객관식 — 맞힌 수 b1 10 · b2 0 · b3 0(첫 문항 7초 넘김 = 안 냄)', [b1, b2, b3].map((b) => cRounds.filter((rr) => rowOf(rr.rows, b)?.points === 1).length), [10, 0, 0]);
+  // ★ R090 — 10 → 5 · 검사 서버는 저장 보기가 없으면 가짜 보기('가짜 보기 하나 · 둘 · 셋')
+  expectTrue('★★★ 객관식 5연속 — 5문항 · 보기 4 · 서로 다름 · 정답 들어 있음 · 오답 = 저장(검사 서버 가짜) 보기', cRounds.length === 5 && seen.choice.length === 5 && seen.choice.every((c) => c.opts.length === 4 && new Set(c.opts).size === 4 && c.idx >= 0 && c.opts.filter((o, i) => i !== c.idx).every((o) => /^가짜 보기/.test(o))), JSON.stringify(seen.choice.slice(0, 2)));
+  expect('★★★ 객관식 — 맞힌 수 b1 5 · b2 0 · b3 0(첫 문항 7초 넘김 = 안 냄)', [b1, b2, b3].map((b) => cRounds.filter((rr) => rowOf(rr.rows, b)?.points === 1).length), [5, 0, 0]);
   expect('★★ 객관식 첫 문항 b3 = 미제출', rowOf(cRounds[0]?.rows ?? [], b3)?.submitted, false);
   // ── 경험 · 결과
   // ★ R082 — 경험 PK 는 (계정 · 키 · 항목): 예전 판에서 본 주제는 옛 run_id 로 남는다 → 많이 말하기 · 겹치면 무효는 계정 · 주제로 · 객관식은 이 판 run 으로
@@ -8263,6 +8264,10 @@ async function scenarioTopicSets() {
   const cnt = async () => withDb(async (c) => (await c.query(`SELECT (SELECT count(*)::int FROM topic_sets WHERE active) s, (SELECT count(*)::int FROM topic_items WHERE active) i, (SELECT count(*)::int FROM topic_sets) all_s`)).rows[0]);
   const c1 = await cnt();
   expectTrue(`★★ 검사 DB(candidate 허용) — 세트 ${files.length} 전부`, c1.s === files.length && c1.i > 2000, JSON.stringify(c1));
+  // ★ R090 (0035) — 머리 group · optIn 이 올라감(파일의 group 수 = DB · group 없는 세트 null) — 추첨 한 자리 확률은 단위 테스트(topicGames.test — 지하철 13 + 24 → 1/25 꼴)
+  const wantGroup = files.filter((f) => typeof JSON.parse(readFileSync(path.join(ROOT, 'data/minigame/topics', f), 'utf8')).group === 'string').length;
+  const grp = await withDb(async (c) => (await c.query(`SELECT count(*) FILTER (WHERE "group" = 'metro')::int metro, count(*) FILTER (WHERE "group" IS NOT NULL)::int g, count(*) FILTER (WHERE opt_in)::int o FROM topic_sets WHERE active`)).rows[0]);
+  expectTrue(`★★ R090 group 적재 — group 있는 파일 ${wantGroup} = DB · 지하철(metro) 13 · optIn = 파일 값`, grp.g === wantGroup && grp.metro === 13, JSON.stringify(grp));
   r = topicsLoad(['--apply', '--allow-candidate'], DATABASE_URL.replace(/\/[^/?]+(\?.*)?$/, '/quizweb'));
   expectTrue('★★★ --allow-candidate 를 실 DB 이름(quizweb)에서 거부 — 연결 전에 멈춤(exit 2)', r.code === 2 && /실 DB\(quizweb\)/.test(r.out), r.out.trim().slice(0, 120));
   r = topicsLoad(['--apply']);
@@ -8291,7 +8296,7 @@ async function scenarioTopicSets() {
     const keys = await withDb(async (c) => (await c.query(`SELECT minigame_key k FROM minigame_runs WHERE game_id = $1 ORDER BY id`, [gid])).rows.map((x) => x.k));
     expect('★★★ 적재 세트 0 — 많이 말하기 · 겹치면 무효 빠지고 객관식만(2개)', keys, ['choice', 'choice']);
     const used = await withDb(async (c) => (await c.query(`SELECT count(DISTINCT item_key)::int n FROM minigame_rounds d JOIN minigame_runs r ON r.id = d.run_id WHERE r.game_id = $1`, [gid])).rows[0].n);
-    expect('★★ 객관식 둘 — 한 게임 안 문항 겹치지 않음(20)', used, 20);
+    expect('★★ 객관식 둘 — 한 게임 안 문항 겹치지 않음(5 × 2 = 10 · R090)', used, 10);
     // ★ R081 — 연도 없는 세트 · 40 미만 세트만 있으면 순서대로 · 빙고는 안 뽑힘(많이 말하기는 됨 — 대조)
     await withDb((c) => c.query(`UPDATE topic_sets SET active = (topic IN ('seoul-gu', 'kleague-team'))`));
     // ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄이 판 params 에 실린다(검사 DB 에만 잠깐 써 본다 — 끝의 되돌림 적재가 파일 값으로 되돌린다)
@@ -8637,7 +8642,7 @@ async function scenarioDraw() {
   await sleep(400);
   expectTrue('★★★ 선 조각 중계 — 다른 사람에게 3조각 · 출제자 아닌 선은 거름', strokesGot.get(b2) === 3 && strokesGot.get(b3) === 3, JSON.stringify([...strokesGot.values()]));
   // ── ★★ R087 (D-344) — 주제 기본 숨김 · 출제자 힌트 셋(각 1회) · 출제자 아닌 사람은 거름
-  expectTrue('★★ R087 주제 기본 숨김 — 맞히는 사람 nameKo null · 출제자는 보임 · 힌트 셋 남음', lastView(b2).nameKo === null && lastView(host).nameKo && lastView(host).hintsLeft.length === 3, JSON.stringify({ b2: lastView(b2).nameKo, h: lastView(host).nameKo, left: lastView(host).hintsLeft }));
+  expectTrue('★★ R087 주제 기본 숨김(R090 확인 — 찬종 "버튼 누르면 보여주고 아니면 보여주지 마") — 맞히는 사람 · 늦게 온 사람 topic · nameKo null · 출제자는 보임 · 힌트 셋 남음', lastView(b2).nameKo === null && lastView(b2).topic === null && lastView(b3).topic === null && lastView(host).nameKo && lastView(host).hintsLeft.length === 3, JSON.stringify({ b2: lastView(b2).nameKo, h: lastView(host).nameKo, left: lastView(host).hintsLeft }));
   const hintSys0 = chats.length;
   b2.socket.emit('draw.hint', { kind: 'length' }); // 출제자 아님 → 거름
   await sleep(200);
@@ -8677,6 +8682,50 @@ async function scenarioDraw() {
   host.socket.emit('draw.stroke', { id: 's2', color: '#e5383b', width: 18, pts: [1, 1, 2, 2] }); // 되돌린 id 로 다시 → 거름
   await sleep(300);
   expectTrue('★★★ R089 페인트통 op 하나 전원에게(출제자 아님 · 격자 밖 거름) · 되돌리기 둘 = 채우기 → 선 순(뒤에서부터) · 되돌린 id 다시 안 생김', [b2, b3, late].every((b) => fills.get(b) === 1 && undos.get(b).join() === 'f1,s2') && strokesGot.get(b2) === 3, JSON.stringify({ f: [...fills.values()], u: [...undos.values()], s: strokesGot.get(b2) }));
+  // ── ★★ R090 (D-347) — 다시 실행 · 전체 지우기도 되돌리기 · 새 작업이 오면 다시 실행 비움 — 받는 쪽마다 op 목록을 사건으로 따라가 서버와 같은지
+  const seen = new Map([b2, b3, late].map((b) => [b, ['s1']]));
+  const hists = new Map([host, b2].map((b) => [b, []]));
+  for (const b of [b2, b3, late]) {
+    const L = () => seen.get(b);
+    b.socket.on('draw.redo', (p) => L().push(p.op.id));
+    b.socket.on('draw.undo', (p) => seen.set(b, L().filter((x) => x !== p.id)));
+    b.socket.on('draw.clear', () => seen.set(b, []));
+    b.socket.on('draw.ops', (p) => seen.set(b, p.ops.map((o) => o.id)));
+    b.socket.on('draw.fill', (p) => L().push(p.id));
+  }
+  for (const b of [host, b2]) b.socket.on('draw.hist', (p) => hists.get(b).push([p.undo, p.redo]));
+  const redoEv = new Map([b2].map((b) => [b, 0]));
+  b2.socket.on('draw.redo', () => redoEv.set(b2, redoEv.get(b2) + 1));
+  const step = async (ev) => {
+    host.socket.emit(ev, {});
+    await sleep(150);
+  };
+  b2.socket.emit('draw.redo', {}); // 출제자 아님 → 거름
+  await step('draw.redo'); // s2 다시
+  await step('draw.redo'); // f1 다시
+  const afterRedo = seen.get(b2).join();
+  await step('draw.clear');
+  const afterClear = seen.get(b2).join();
+  await step('draw.undo'); // 지우기 되돌림 → 목록 통째
+  const afterUndoClear = seen.get(b3).join();
+  await step('draw.redo'); // 다시 지움
+  const afterRedoClear = seen.get(late).join();
+  await step('draw.undo'); // 다시 되살림
+  host.socket.emit('draw.fill', { id: 'f3', x: 500, y: 500, color: '#2b9348' }); // 새 작업 → 다시 실행 비움
+  await sleep(150);
+  const redoBefore = redoEv.get(b2);
+  await step('draw.redo'); // 할 것 없음 → 거름
+  const redoAfterNew = redoEv.get(b2) - redoBefore;
+  await step('draw.undo'); // f3
+  await step('draw.undo'); // f1
+  await step('draw.undo'); // s2
+  await sleep(150);
+  const lastH = hists.get(host).at(-1);
+  expectTrue(
+    '★★★ R090 다시 실행 — 되돌린 둘 다시(s1 · s2 · f1) · 전체 지우기 → 되돌리면 목록 통째 · 다시 실행 = 다시 지움 · 새 작업 뒤 다시 실행 없음 · 세 받는 쪽 목록 같음 · 할 것 수(되돌리기 1 · 다시 실행 3)',
+    afterRedo === 's1,s2,f1' && afterClear === '' && afterUndoClear === 's1,s2,f1' && afterRedoClear === '' && redoAfterNew === 0 && [b2, b3, late].every((b) => seen.get(b).join() === 's1') && lastH?.join() === '1,3' && hists.get(b2).at(-1)?.join() === '1,3',
+    JSON.stringify({ afterRedo, afterClear, afterUndoClear, afterRedoClear, redoAfterNew, seen: [...seen.values()].map((x) => x.join()), lastH, h2: hists.get(b2).at(-1) }),
+  );
   const c0 = chats.length;
   b2.chat(kw1);
   await sleep(300);

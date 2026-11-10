@@ -10,7 +10,7 @@
 //   · 마지막 op 가 선이면 "그리는 중" — 격자에 넣지 않고 화면 위에만 그린다 · 다음 op 가 오면 그 선을 통째로 격자에 넣는다(조각 도착 시점이 달라도 같은 결과)
 //   · 되돌리기(draw.undo) · 전체 지우기 = 격자를 op 목록으로 다시 그림
 //   · 도구: 펜 · 지우개(흰 선) · 페인트통 · 스포이드(EyeDropper 있으면 화면 어디든 — 없으면 그림 안에서) · 굵기 5 · 팔레트 12 + 세부 색 · 최근 4 · 되돌리기 · 전체 지우기
-//   · 단축키(채팅 입력 중이 아닐 때 · 출제자만): P 펜 · E 지우개 · B 페인트통 · I 스포이드 · [ ] 굵기 · Ctrl+Z 되돌리기
+//   · 단축키(채팅 입력 중이 아닐 때 · 출제자만): P 펜 · E 지우개 · B 페인트통 · I 스포이드 · [ ] 굵기 · Ctrl+Z 되돌리기 · Ctrl+Y · Ctrl+Shift+Z 다시 실행(R090)
 // ★ 상태는 글자 + 기호(사무실 흑백 — D-324): 맞힌 사람 ✓ · 출제자 ✎ · 도구는 글자 라벨.
 // =============================================================================
 
@@ -136,9 +136,12 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
   }, [redraw]);
   useEffect(() => () => cancelAnimationFrame(raf.current), []);
   const roundKey = `${view.round}:${view.phase === 'reveal' ? 'r' : 'd'}`;
+  // ★ R090 — 되돌리기 · 다시 실행 할 것 수(서버가 draw.hist 로 알림)
+  const [hist, setHist] = useState(view.hist ?? { undo: 0, redo: 0 });
   useEffect(() => {
     ops.current = view.strokes.map((s) => ({ ...s, pts: [...s.pts] }));
     done.current = -1;
+    setHist(view.hist ?? { undo: 0, redo: 0 });
     redraw();
     // ★ 라운드 · 단계가 바뀔 때만 서버 사본으로(그리는 중 보낸 조각이 사라지지 않게) — 늦게 들어오면 처음 그릴 때 전부
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -171,11 +174,33 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
       done.current = -1;
       schedule();
     };
+    // ★ R090 — 다시 실행(op 하나 끝에 다시) · 지우기 되돌리기(목록 통째) · 할 것 수
+    const onRedo = (p: { round: number; op: DrawStrokeView }) => {
+      if (p.round !== view.round || ops.current.some((x) => x.id === p.op.id)) return;
+      ops.current.push({ ...p.op, pts: [...p.op.pts] });
+      schedule();
+    };
+    const onOps = (p: { round: number; ops: DrawStrokeView[] }) => {
+      if (p.round !== view.round) return;
+      ops.current = p.ops.map((s) => ({ ...s, pts: [...s.pts] }));
+      done.current = -1;
+      cur.current = null;
+      schedule();
+    };
+    const onHist = (p: { round: number; undo: number; redo: number }) => {
+      if (p.round === view.round) setHist({ undo: p.undo, redo: p.redo });
+    };
     socket.on('draw.stroke', onStroke);
     socket.on('draw.fill', onFill);
     socket.on('draw.undo', onUndo);
     socket.on('draw.clear', onClear);
+    socket.on('draw.redo', onRedo);
+    socket.on('draw.ops', onOps);
+    socket.on('draw.hist', onHist);
     return () => {
+      socket.off('draw.redo', onRedo);
+      socket.off('draw.ops', onOps);
+      socket.off('draw.hist', onHist);
       socket.off('draw.stroke', onStroke);
       socket.off('draw.fill', onFill);
       socket.off('draw.undo', onUndo);
@@ -304,6 +329,10 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
     flush(true);
     socket.emit('draw.undo', {});
   };
+  const redo = () => {
+    flush(true);
+    socket.emit('draw.redo', {});
+  };
   const ED = eyeDropper();
   const pick = async () => {
     if (!ED) {
@@ -321,6 +350,12 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
   const keyRef = useRef<(e: KeyboardEvent) => void>(() => {});
   keyRef.current = (e: KeyboardEvent) => {
     if (!canDraw || typing(e.target)) return;
+    // ★ R090 — Ctrl+Y · Ctrl+Shift+Z = 다시 실행(한글 자판 ㅛ · ㅋ 도)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'y' || e.key === 'Y' || e.key === 'ㅛ' || (e.shiftKey && (e.key === 'z' || e.key === 'Z' || e.key === 'ㅋ')))) {
+      e.preventDefault();
+      redo();
+      return;
+    }
     if ((e.ctrlKey || e.metaKey) && (e.key === 'z' || e.key === 'Z' || e.key === 'ㅋ')) {
       e.preventDefault();
       undo();
@@ -475,8 +510,11 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
                   </button>
                 ))}
               </div>
-              <button type="button" className="draw-tool" data-draw-undo title="되돌리기 (Ctrl+Z)" onClick={undo}>
+              <button type="button" className="draw-tool" data-draw-undo title="되돌리기 (Ctrl+Z)" disabled={hist.undo === 0 && !cur.current} onClick={undo}>
                 되돌리기
+              </button>
+              <button type="button" className="draw-tool" data-draw-redo title="다시 실행 (Ctrl+Y)" disabled={hist.redo === 0} onClick={redo}>
+                다시 실행
               </button>
               <button type="button" className="draw-tool" data-draw-clear onClick={() => socket.emit('draw.clear', {})}>
                 전체 지우기

@@ -335,6 +335,13 @@ async function main() {
     if (r.status === 0 && put) log(`노래 ${n('song')} · OX ${n('ox')} 적재 (${put.replace('[apply] ', '').split(' · 활성')[0]})`);
     else log(`★ 노래 · OX 적재 실패(서버는 그대로 뜬다 — 미니게임 '노래 맞히기 · 이 노래 몇 년도? · OX 10연속' 만 빠진다): ${`${r.stderr ?? ''}${r.stdout ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
   };
+  // ★★ R090 (D-347 · 0035) — 객관식 5연속 저장 보기: data/minigame/choice/options.json(verified 만) → question_choices · 멱등 · 파일이 없으면 0. 실패해도 서버는 뜬다
+  const loadChoices = () => {
+    const r = sh('node scripts/choice-load.mjs --apply', { quiet: true, check: false, cwd: TREE });
+    const line = `${r.stdout ?? ''}`.split(String.fromCharCode(10)).map((l) => l.trim()).find((l) => l.startsWith('객관식 보기'));
+    if (r.status === 0 && line) log(line);
+    else log(`★ 객관식 보기 적재 실패(서버는 그대로 뜬다 — 객관식만 빠진다): ${`${r.stderr ?? ''}${r.stdout ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
+  };
 
   // 4) 서버
   const h = await health(2000);
@@ -355,6 +362,7 @@ async function main() {
       migrate();
       loadTopics();
       loadSongs();
+      loadChoices();
     }
     log('★ 새 빌드로 바꾸려면: 메뉴 3(끄기) → 1(켜기) (하던 판이 끊기니 게임 중에는 하지 않기)');
   } else {
@@ -385,6 +393,7 @@ async function main() {
     }
     loadTopics();
     loadSongs();
+    loadChoices();
     log(`서버 새 창(${SERVER_TITLE})으로 시작 (npm start — 감시 없음 · 로그 ${rel(SERVER_LOG)})`);
     const since = Date.now();
     openWindow(

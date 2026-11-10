@@ -23,8 +23,8 @@ export const MANY_WRONG_KEEP = 30;
 export const UNIQUE_ROUNDS = 3;
 export const UNIQUE_PLAY_MS = 15_000;
 export const UNIQUE_REVEAL_MS = 6_000;
-/** 객관식 10연속 — 문항 수 · 문항당 시간 · 공개 · 준비 */
-export const CHOICE_COUNT = 10;
+/** 객관식 5연속 — 문항 수 · 문항당 시간 · 공개 · 준비 (★ R090 — 찬종 "10개 연속이 아니라 5개 연속으로" · 10 → 5) */
+export const CHOICE_COUNT = 5;
 export const CHOICE_PLAY_MS = 7_000;
 export const CHOICE_REVEAL_MS = 1_500;
 export const CHOICE_READY_MS = 300;

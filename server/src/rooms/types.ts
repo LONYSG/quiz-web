@@ -135,6 +135,8 @@ export interface ActiveGame {
    *     근거: 판정이 answer_norm 전체로 이루어지므로 중복 기준도 같아야 한다.
    */
   usedAnswerNorms: Set<string>;
+  /** ★ R090 (D-347 · 0035) — 객관식 5연속의 저장 보기(문항 id → 오답 셋 · 객관식을 고른 판만 · 없으면 null) */
+  choiceOptions?: Map<string, string[]> | null;
   /**
    * ★★ R050 (C66 · D-233) — 이 판에서 보여 준 문제들의 질문 · 일반 힌트 · 해설을 정규화해 이은 글.
    *   다음 문제 선정이 "이미 보여 준 글에 정답이 들어 있는 후보" 를 같은 단계 안에서 뒤로 미룬다.
