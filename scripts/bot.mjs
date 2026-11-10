@@ -7980,10 +7980,11 @@ async function mgOxTen(bots, host) {
 
 // =============================================================================
 // ★★★ R084 — 노래 맞히기 · 이 노래 몇 년도? (미니게임만 2개 — mgonly 뒤에 이어서 · 같은 방 · 봇 셋)
-//   봇은 오디오를 못 튼다 → 서버 이벤트로만: 제목 · 가수 · 둘 다 · 이미 맞힘 · 오답 · 재생 실패 보고(과반 → 건너뜀) · 연도(바꾸기)
+//   봇은 오디오를 못 튼다 → 서버 이벤트로만: 제목 · 가수 · 오답 · 재생 실패 보고(과반 → 건너뜀) · 연도(바꾸기)
 //   정답은 quizweb_test minigame_items(game 'song' — R084 A 가 candidate 로 적재)의 payload 에서 읽는다
-//   노래 맞히기: 판1 b1 제목→가수(둘 다) · b2 가수 · b3 오답 → 제목(전원 맞힘 → 일찍 공개) = 4 · 2 · 1 / 판2 b2 · b3 실패 → 건너뜀(전원 0) /
-//     판3 b3 → b2 → b1 제목 = 1 · 2 · 3  → 합 5 · 4 · 4
+//   ★★ R092 (D-349) 노래 맞히기 = 제목만 · 첫 사람만 +1 · 맞히면 곡 끝:
+//     판1 b2 가수(artist 알림 · 곡 계속) · b3 오답 · b1 제목(+1 · 곡 즉시 끝) · b3 늦은 제목(not_now) = 1 · 0 · 0 /
+//     판2 b2 · b3 실패 → 건너뜀(전원 0) / 판3 b3 제목(+1 · 끝) → b2 · b1 늦음 = 0 · 0 · 1  → 합 1 · 0 · 1
 //   몇 년도: 판1 b1 정확 · b2 +3 → +1(마지막) · b3 안 냄 = 3 · 2 · 0 / 판2 실패 과반 건너뜀 / 판3 b1 −5 · b2 정확 · b3 +2 = 1 · 3 · 2
 // =============================================================================
 async function songItem(itemId) {
@@ -8031,34 +8032,27 @@ async function mgSongPair(bots, host) {
         // 순서를 지키려고 사람마다 기다렸다 보낸다(기기 시간은 서버가 흐른 시간으로 자른다 — 작게 보낸다)
         if (mg.key === 'song') {
           if (r === 0) {
-            if (b === b1) {
+            if (b === b2) {
               await sleep(300);
-              sub(b, mg, { text: it.title, elapsedMs: 10 });
-              await sleep(150);
-              sub(b, mg, { text: it.title, elapsedMs: 20 }); // 이미 맞힘
+              sub(b, mg, { text: String(it.artistVariants?.[0] ?? it.artist).toLowerCase(), elapsedMs: 15 }); // 가수 → artist
+            } else if (b === b3) {
               await sleep(500);
-              sub(b, mg, { text: it.artist, elapsedMs: 30 }); // 둘 다
-            } else if (b === b2) {
-              await sleep(600);
-              sub(b, mg, { text: String(it.artistVariants?.[0] ?? it.artist).toLowerCase(), elapsedMs: 15 });
-            } else {
-              await sleep(700);
               sub(b, mg, { text: '이건노래아님zz', elapsedMs: 18 });
-              await sleep(800);
+              await sleep(1300);
+              sub(b, mg, { text: it.title, elapsedMs: 40 }); // 이미 끝난 곡 → not_now
+            } else {
+              await sleep(900);
               during.set('song0', host.snapshot?.minigame?.submittedCount ?? -1);
-              sub(b, mg, { text: it.title, elapsedMs: 40 });
+              sub(b, mg, { text: it.title, elapsedMs: 900 }); // 첫 제목 → +1 · 곡 끝
             }
           } else if (r === 1) {
-            if (b === b1) {
-              await sleep(300);
-              sub(b, mg, { text: it.title, elapsedMs: 10 });
-            } else {
-              await sleep(b === b2 ? 600 : 800);
+            if (b !== b1) {
+              await sleep(b === b2 ? 300 : 500);
               sub(b, mg, { fail: true });
             }
           } else {
-            await sleep(b === b3 ? 300 : b === b2 ? 700 : 1100);
-            sub(b, mg, { text: it.title, elapsedMs: b === b3 ? 10 : b === b2 ? 20 : 30 });
+            await sleep(b === b3 ? 300 : b === b2 ? 900 : 1300);
+            sub(b, mg, { text: it.title, elapsedMs: b === b3 ? 300 : 20 });
           }
         } else if (mg.key === 'songyear') {
           const y = it.year;
@@ -8105,20 +8099,21 @@ async function mgSongPair(bots, host) {
   const sTok = states.find((v) => v.key === 'song')?.token;
   const sPlay = states.filter((v) => v.key === 'song' && v.phase === 'play' && v.round);
   expectTrue('★★ 판 중 params = 미리듣기 주소뿐(제목 · 가수 · 그림 없음) · reveal null', sPlay.length > 0 && sPlay.every((v) => typeof v.round.params.previewUrl === 'string' && v.round.params.previewUrl.startsWith('https://') && !('title' in v.round.params) && !('artworkUrl' in v.round.params) && !v.round.reveal), JSON.stringify(sPlay[0]?.round));
-  expect('★★★ 노래 — b1 판정(나에게만): 제목 ✓ · 이미 · 가수 ✓', fbText(b1, sTok, 0), ['ok:title', 'dup:title', 'ok:artist']);
-  expect('★★ 노래 — b3 오답 → 제목 ✓ · b2 는 남의 판정을 못 받음', [fbText(b3, sTok, 0), fb.get(b2).filter((f) => f.text === '이건노래아님zz').length], [['wrong', 'ok:title'], 0]);
+  expect('★★★ R092 노래 — 판정(나에게만): b2 가수 = artist(점수 없음) · b3 오답 · b1 제목 ✓ · b3 늦은 제목은 알림 없음', [fbText(b2, sTok, 0), fbText(b3, sTok, 0), fbText(b1, sTok, 0)], [['artist:artist'], ['wrong'], ['ok:title']]);
+  expect('★★ 노래 — b2 는 남의 판정을 못 받음', fb.get(b2).filter((f) => f.text === '이건노래아님zz').length, 0);
   expect('★★ 노래 — 판 중 남의 진행 안 보임(submittedCount 0)', during.get('song0'), 0);
   const sFinal = states.filter((v) => v.key === 'song' && v.phase === 'final')[0];
   const sr = sFinal?.roundResults ?? [];
-  expect('★★★ 노래 판1 — 먼저 3 · 2 · 1 + 둘 다 1 = 4 · 2 · 1', [b1, b2, b3].map((b) => rowOf(sr[0]?.rows ?? [], b)?.points), [4, 2, 1]);
+  expect('★★★ R092 노래 판1 — 첫 제목 b1 만 +1 · 가수 b2 0 · b3 0', [b1, b2, b3].map((b) => rowOf(sr[0]?.rows ?? [], b)?.points), [1, 0, 0]);
   const sPlay0 = states.find((v) => v.key === 'song' && v.phase === 'play' && v.roundIndex === 0);
   const sRes0 = states.find((v) => v.key === 'song' && v.phase === 'roundResult' && v.roundIndex === 0);
-  expectTrue('★★ 판1 전원 맞힘 → 30초 전에 공개(일찍)', sRes0 && sPlay0 && sRes0.phaseStartedAt - sPlay0.phaseStartedAt < 15000, String((sRes0?.phaseStartedAt ?? 0) - (sPlay0?.phaseStartedAt ?? 0)));
-  expectTrue('★★ 공개 — 제목 · 가수 · 연도 · 앨범 그림', Boolean(sRes0?.round?.reveal?.title && sRes0.round.reveal.artist && Number.isInteger(sRes0.round.reveal.year) && /^https:/.test(sRes0.round.reveal.artworkUrl ?? '')), JSON.stringify(sRes0?.round?.reveal));
+  expectTrue('★★★ R092 판1 첫 제목 → 곡 즉시 끝(가수 · 오답으로는 안 끝남 · 5초 안)', sRes0 && sPlay0 && sRes0.phaseStartedAt - sPlay0.phaseStartedAt < 5000 && sRes0.phaseStartedAt - sPlay0.phaseStartedAt >= 800, String((sRes0?.phaseStartedAt ?? 0) - (sPlay0?.phaseStartedAt ?? 0)));
+  expectTrue('★★ 공개 — 제목 · 가수 · 연도 · 앨범 그림 · ★ R092 winner = b1', Boolean(sRes0?.round?.reveal?.title && sRes0.round.reveal.artist && Number.isInteger(sRes0.round.reveal.year) && /^https:/.test(sRes0.round.reveal.artworkUrl ?? '')) && ids.get(sRes0.round.reveal.winner) === b1.loginId, JSON.stringify(sRes0?.round?.reveal));
   const sRes1 = states.find((v) => v.key === 'song' && v.phase === 'roundResult' && v.roundIndex === 1);
   expect('★★★ 노래 판2 — 재생 실패 과반(2/3) → 건너뜀 · 전원 0 · reveal.skipped', [sRes1?.round?.reveal?.skipped, sRes1?.round?.reveal?.fails, [b1, b2, b3].map((b) => rowOf(sr[1]?.rows ?? [], b)?.points).join('')], [true, 2, '000']);
-  expect('★★★ 노래 판3 — b3 · b2 · b1 순 = 1 · 2 · 3', [b1, b2, b3].map((b) => rowOf(sr[2]?.rows ?? [], b)?.points), [1, 2, 3]);
-  expect('★★★ 노래 합 5 · 4 · 4 · 공동 2위', [b1, b2, b3].map((b) => { const f = sFinal?.final?.find((x) => ids.get(x.accountId) === b.loginId); return [f?.total, f?.rank]; }), [[5, 1], [4, 2], [4, 2]]);
+  expect('★★★ R092 노래 판3 — b3 먼저 → b3 만 +1(b2 · b1 늦음)', [b1, b2, b3].map((b) => rowOf(sr[2]?.rows ?? [], b)?.points ?? 0), [0, 0, 1]);
+  const tot = [b1, b2, b3].map((b) => sFinal?.final?.find((x) => ids.get(x.accountId) === b.loginId));
+  expectTrue('★★★ R092 노래 합 1 · 0 · 1 · b1 · b3 공동 1위 · b2 아래', tot.map((f) => f?.total).join() === '1,0,1' && tot[0]?.rank === 1 && tot[2]?.rank === 1 && tot[1]?.rank > 1, JSON.stringify(tot.map((f) => [f?.total, f?.rank])));
   // ── 이 노래 몇 년도?
   const yFinal = states.filter((v) => v.key === 'songyear' && v.phase === 'final')[0];
   const yr = yFinal?.roundResults ?? [];

@@ -113,8 +113,8 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'song',
     name: '노래 맞히기',
-    oneLine: '30초 듣고 제목이나 가수를 치세요! 먼저 맞힐수록 3 · 2 · 1점 — 둘 다 맞히면 +1 · 3곡',
-    controlsPc: '입력 → Enter (계속 쳐도 돼요 · 맞으면 ✓) · 소리를 켜 주세요',
+    oneLine: '30초 듣고 제목을 치세요! 제일 먼저 맞힌 사람만 +1 · 3곡',
+    controlsPc: '제목 입력 → Enter (계속 쳐도 돼요 · 맞히면 바로 다음 곡) · 소리를 켜 주세요',
     controlsMobile: '입력 → 확인 (계속 쳐도 돼요) · 소리 켜기',
     kind: 'quiz',
     rounds: 3,

@@ -4754,6 +4754,8 @@ async function r085Flow(browser) {
 //   방장 PC 1280×720 · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 2개(노래 맞히기 · 이 노래 몇 년도?)
 //   [▶ 듣기] 버튼 · audio 요소 src = previewUrl · 입력 · ✓ 제목/가수 칸 · 공개 카드(앨범 그림 · 표기) · 연도 입력(바꾸기) ·
 //   재생 실패(화면 audio error) → 건너뜀 · 세 테마 · m360 넘침. ★ 소리가 실제로 나는지는 검사하지 않는다(찬종 A111) — 상태만 적는다
+// ★★ R092 (D-349) 개정 — 노래 맞히기 = 제목만 · 첫 사람만 +1 · 맞힌 순간 공개: 판1 방장 오답 → 손님 가수("가수 말고 제목" · warn 색)
+//   → 방장 제목 → 곡 즉시 끝 · 공개 "내가 … 맞혔어요" / 손님 "노래방장 님이 …" (✓ 제목/가수 칸 · 둘 다 +1 은 없어짐)
 // =============================================================================
 async function r084Flow(browser) {
   const H = await newPage(browser, 'R084-host', true);
@@ -4839,26 +4841,27 @@ async function r084Flow(browser) {
       const url = sMg?.round?.params?.previewUrl ?? null;
       if (round === 1) {
         const a0 = { h: await audioOf(H), g: await audioOf(G) };
+        const help0 = await H.evaluate("JSON.stringify({ help: document.querySelector('.topic-fb')?.innerText ?? '', ph: document.querySelector('[data-topic-input]')?.getAttribute('placeholder') ?? '', ask: document.querySelector('.song-ask')?.innerText ?? '', parts: document.querySelectorAll('[data-song-part]').length })").then((x) => JSON.parse(x));
         await enterText(H, '아무노래아님');
         const wrongFb = await H.evaluate("document.querySelector('.topic-fb')?.dataset.feedback ?? ''");
-        await enterText(H, it?.title ?? '');
-        const parts1 = await H.evaluate("[...document.querySelectorAll('[data-song-part]')].map((e) => e.dataset.songPart + e.dataset.ok).join(',')");
-        await enterText(G, it?.artist ?? '');
-        const gParts = await G.evaluate("[...document.querySelectorAll('[data-song-part]')].map((e) => e.dataset.songPart + e.dataset.ok).join(',')");
-        await sleep(1500);
+        await enterText(G, it?.artist ?? ''); // ★ R092 — 가수 → 점수 없이 "가수 말고 제목"
+        const gFb = await G.evaluate("JSON.stringify({ fb: document.querySelector('.topic-fb')?.dataset.feedback ?? '', cls: document.querySelector('.topic-fb')?.className ?? '', text: document.querySelector('.topic-fb')?.innerText ?? '', color: getComputedStyle(document.querySelector('.topic-fb')).color, input: !document.querySelector('[data-topic-input]')?.disabled })").then((x) => JSON.parse(x));
+        await sleep(1200);
         const a1 = { h: await audioOf(H), g: await audioOf(G) };
         const submittedLine = await H.evaluate("document.querySelector('.mg-submitted') !== null");
+        const stillPlay = await H.evaluate("document.querySelector('.mg-card')?.dataset.phase ?? ''");
         await snap(H, 'song-play-pc');
-        await snap(G, 'song-play-m360');
+        await snap(G, 'song-play-artist-m360');
         res.themes.push(['song-play m360', await over(G)]);
         await theme(G, 'office');
         await sleep(200);
         await snap(G, 'song-play-office-m360');
         await theme(G, 'pastel');
-        await enterText(H, it?.artist ?? ''); // 둘 다
-        const parts2 = await H.evaluate("[...document.querySelectorAll('[data-song-part]')].map((e) => e.dataset.songPart + e.dataset.ok).join(',') + (document.querySelector('.song-both') ? ',both' : '')");
-        res.play = { url, a0, a1, wrongFb, parts1, gParts, parts2, submittedLine };
-        subS({ text: it?.title ?? '' });
+        // ★ R092 — 방장 제목 → 곡 즉시 끝
+        const tHit = Date.now();
+        await enterText(H, it?.title ?? '');
+        const ended = await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'roundResult'", 4000).catch(() => false);
+        res.play = { url, a0, a1, help0, wrongFb, gFb, stillPlay, submittedLine, ended: Boolean(ended), endMs: Date.now() - tHit };
       } else {
         await enterText(H, it?.title ?? '');
         await enterText(G, it?.title ?? '');
@@ -4867,7 +4870,8 @@ async function r084Flow(browser) {
     }
     if (key === 'song' && phase === 'roundResult' && round === 1) {
       await sleep(900);
-      const rv = JSON.parse(await H.evaluate("JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', year: document.querySelector('[data-song-year]')?.dataset.songYear ?? '', art: (() => { const i = document.querySelector('[data-song-art]'); return i ? { w: i.naturalWidth, src: i.getAttribute('src') } : null; })(), credit: document.querySelector('.song-credit')?.innerText ?? '', mine: document.querySelector('[data-song-mine]')?.innerText ?? '', rows: [...document.querySelectorAll('.mg-table li .mg-points')].map((e) => e.innerText).join(' '), audioStill: document.querySelector('[data-song-audio]')?.getAttribute('src') ?? null })"));
+      const rv = JSON.parse(await H.evaluate("JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', year: document.querySelector('[data-song-year]')?.dataset.songYear ?? '', art: (() => { const i = document.querySelector('[data-song-art]'); return i ? { w: i.naturalWidth, src: i.getAttribute('src') } : null; })(), credit: document.querySelector('.song-credit')?.innerText ?? '', mine: document.querySelector('[data-song-winner]')?.innerText ?? '', rows: [...document.querySelectorAll('.mg-table li .mg-points')].map((e) => e.innerText).join(' '), audioStill: document.querySelector('[data-song-audio]')?.getAttribute('src') ?? null })"));
+      rv.gWinner = await G.evaluate("document.querySelector('[data-song-winner]')?.innerText ?? ''");
       res.reveal = rv;
       await snap(H, 'song-reveal-pc');
       await snap(G, 'song-reveal-m360');
@@ -4949,8 +4953,10 @@ async function r084Flow(browser) {
   const p = res.play;
   record('★★ R084 고르기 창 — 맨 앞 노래 맞히기 · 이 노래 몇 년도?(아이콘) · 둘 고름', cat.join() === 'song:icon,songyear:icon' && /song/.test(picked), JSON.stringify({ cat, picked }));
   record('★★★ R084 규칙 — 아직 안 열린 화면(m360)은 [▶ 듣기] · 누르면 열림(버튼 사라짐) · 이미 조작한 PC 는 버튼 없이 열림 · 볼륨 70', Boolean(res.rules && res.rules.g0.listen && res.rules.g0.unlocked === '0' && res.rules.g1.unlocked === '1' && !res.rules.g1.listen && (res.rules.h0.listen || res.rules.h1.unlocked === '1') && res.rules.h0.vol === '70'), JSON.stringify(res.rules).replace(/data:audio[^"]+/g, 'data:…'));
-  record('★★★ R084 노래 판 — audio src = previewUrl(PC · m360) · ✗ → ✓ 제목 · 손님 ✓ 가수 · 둘 다 +1 · 남의 진행 줄 없음', Boolean(p && p.url && p.a0.h.src === p.url && p.a0.g.src === p.url && p.wrongFb === 'wrong' && p.parts1 === 'title1,artist0' && p.gParts === 'title0,artist1' && p.parts2 === 'title1,artist1,both' && !p.submittedLine), JSON.stringify(p));
-  record('★★★ R084 노래 공개 — 앨범 그림 · 제목 · 연도 · "Apple Music 미리듣기" · 내 줄 · 공개 동안 노래 계속', Boolean(res.reveal && res.reveal.art && /300x300bb/.test(res.reveal.art.src ?? '') && res.reveal.title && /^\d{4}$/.test(res.reveal.year) && /Apple Music/.test(res.reveal.credit) && /맞힘/.test(res.reveal.mine) && res.reveal.audioStill), JSON.stringify(res.reveal));
+  record('★★★ R084 노래 판 — audio src = previewUrl(PC · m360) · ✗ 오답 · 남의 진행 줄 없음 · ★ R092 안내 "제목 … 한 사람만 +1" · 제목/가수 칸 없음', Boolean(p && p.url && p.a0.h.src === p.url && p.a0.g.src === p.url && p.wrongFb === 'wrong' && !p.submittedLine && /한 사람만 \+1/.test(p.help0.help) && /제목/.test(p.help0.ph) && p.help0.parts === 0), JSON.stringify(p));
+  record('★★★ R092 가수 → "가수 말고 제목을 쳐 주세요"(warn 색 · 틀림과 다름) · 곡 계속 · 입력 열림', Boolean(p && p.gFb.fb === 'artist' && /warn/.test(p.gFb.cls) && /가수 말고 제목/.test(p.gFb.text) && p.gFb.input && p.stillPlay === 'play'), JSON.stringify(p?.gFb));
+  record('★★★ R092 제목 맞힌 순간 곡 끝 → 공개(4초 안)', Boolean(p && p.ended && p.endMs < 4000), JSON.stringify({ ended: p?.ended, ms: p?.endMs }));
+  record('★★★ R084 노래 공개 — 앨범 그림 · 제목 · 연도 · "Apple Music 미리듣기" · 공개 동안 노래 계속 · ★ R092 "내가 n초 만에 맞혔어요 +1" · 손님 "노래방장 님이"', Boolean(res.reveal && res.reveal.art && /300x300bb/.test(res.reveal.art.src ?? '') && res.reveal.title && /^\d{4}$/.test(res.reveal.year) && /Apple Music/.test(res.reveal.credit) && /^내가 .*초 만에 맞혔어요/.test(res.reveal.mine) && /노래방장 님이 .*맞혔어요/.test(res.reveal.gWinner) && res.reveal.audioStill), JSON.stringify(res.reveal));
   record('★★★ R084 연도 판 — 바꾼 마지막 답 · 범위 밖 안내 · 낸 사람 수 줄', Boolean(res.year && Number(res.year.sent) === res.year.y && /bad/.test(res.year.gOut) && /명/.test(res.year.count)), JSON.stringify(res.year));
   record('★★★ R084 연도 공개 — 정확 · 표에 연도(정확/±)', Boolean(res.yearReveal && /정확/.test(res.yearReveal.mine) && /정확/.test(res.yearReveal.vals)), JSON.stringify(res.yearReveal));
   record('★★★ R084 재생 실패(audio error) → "못 불러왔어요" · 과반 → 건너뜀 줄', Boolean(res.skipped && /못 불러왔어요/.test(res.skipped.gState) && res.skipped.state === 'skipped' && /넘어가요/.test(res.skipped.skippedLine)), JSON.stringify(res.skipped));

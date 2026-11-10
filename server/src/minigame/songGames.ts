@@ -7,13 +7,15 @@
 //   한 판 3곡이 한 pool(kpop-year …)만 되지 않게 시드를 바꿔 다시 고른다(그래도 안 되면 그대로).
 // ★ 소리는 서버가 다루지 않는다 — params.previewUrl 만 보내고 각 화면이 스트리밍한다(판 시작 시각 = 엔진 phaseStartedAt).
 //   화면이 재생 실패를 보고하면({ fail: true }) 접속자 과반일 때 그 곡을 건너뛴다(earlyEnd → finalizeRound 에서 전원 0 · reveal.skipped).
-// ★ 공개 = 제목 · 가수 · 연도 · 앨범 그림(artworkUrl100) · 누가 뭘 맞혔나(행 extra) — 판 중에는 그림 · 글 없음(정답 노출).
+// ★ 공개 = 제목 · 가수 · 연도 · 앨범 그림(artworkUrl100) · 누가 맞혔나(reveal.winner · winnerMs) — 판 중에는 그림 · 글 없음(정답 노출).
+// ★★ R092 (D-349) — 노래 맞히기 = 제목만 · 첫 사람만 +1 · 맞히는 순간 곡 끝(earlyEnd) · 가수 = 'artist' 알림(점수 없음).
 // =============================================================================
 
 import {
   QUIZ_PRACTICE_ITEMS,
   SONG_DUMMY,
   SONG_DUMMY_TRACK_IDS,
+  SONG_FIRST_POINT,
   SONG_MAX_TRIES,
   SONG_PLAY_MS,
   SONG_POOL_RETRIES,
@@ -28,7 +30,7 @@ import {
   pickQuizItems,
   songFailSkip,
   songMatcher,
-  songPoints,
+  songWinner,
   songYearError,
   songYearMax,
   type SongCore,
@@ -168,54 +170,41 @@ export const song: MinigameDef = {
     const t = typeof obj?.text === 'string' ? [...obj.text.trim()].slice(0, SONG_TEXT_MAX).join('') : '';
     if (!t) return null;
     const ex = ctx.prev?.extra ?? {};
+    if (ex.won === true) return null; // 이미 맞힘(곡이 끝났어야 한다 — 안전망)
     const tries = Number(ex.tries ?? 0) + 1;
     if (tries > SONG_MAX_TRIES) return null;
-    const got = { title: ex.title === true, artist: ex.artist === true };
-    let firstMs = num(ex.firstMs);
-    let bothMs = num(ex.bothMs);
     const part: SongPart | null = matchSong(secretOf(spec).matcher, t);
+    const keep = { tries, ...(ex.fail ? { fail: true } : {}) };
+    const base = { input: { last: t, ...keep }, value: null, error: null, elapsedMs: null, submitted: false, provisional: true };
+    // ★ R092 — 가수: 점수 없이 알림만(틀림과 구분) · 아님: wrong
+    if (part !== 'title') return { ...base, extra: { ...ex, ...keep }, feedback: { result: part === 'artist' ? 'artist' : 'wrong', ...(part ? { part } : {}), text: t } };
+    // 제목 — 엔진은 이 입력 뒤 earlyEnd 로 곡을 바로 끝낸다(뒤 입력은 not_now)
     const at = deviceElapsed(obj, spec, ctx, true) ?? Math.min(ctx.serverElapsedMs, spec.playMs);
-    let feedback: Record<string, unknown>;
-    if (part && got[part]) feedback = { result: 'dup', part, text: t };
-    else if (part) {
-      got[part] = true;
-      if (firstMs === null) firstMs = Math.round(at);
-      if (got.title && got.artist && bothMs === null) bothMs = Math.round(at);
-      feedback = { result: 'ok', part, text: t, title: got.title, artist: got.artist };
-    } else feedback = { result: 'wrong', text: t };
-    const hit = got.title || got.artist;
+    const firstMs = Math.round(at);
     return {
-      input: { last: t, tries, ...(ex.fail ? { fail: true } : {}) },
-      // 판 끝 정산(finalizeRound)이 점수로 바꾼다 — 그 전 값은 "맞혔나" 표시만
-      value: hit ? 1 : null,
-      error: null,
+      ...base,
+      value: SONG_FIRST_POINT,
       elapsedMs: firstMs,
-      submitted: hit,
-      extra: { ...ex, title: got.title, artist: got.artist, firstMs, bothMs, tries },
-      provisional: true,
-      feedback,
+      submitted: true,
+      extra: { ...ex, ...keep, won: true, firstMs, seq: ctx.serverElapsedMs },
+      feedback: { result: 'ok', part: 'title', text: t },
     };
   },
-  // ★ 전원이 하나라도 맞혔으면 일찍 공개 · 접속자 과반이 재생 실패면 그 곡 건너뜀
+  // ★ R092 — 누가 제목을 맞히는 순간 곡 끝 · 접속자 과반이 재생 실패면 그 곡 건너뜀
   earlyEnd(spec, subs, connected) {
     if (failEarly(spec, subs, connected)) return true;
-    return connected.length > 0 && connected.every((a) => {
-      const e = subs.get(a)?.extra;
-      return e?.title === true || e?.artist === true;
-    });
+    return [...subs.values()].some((s) => s.extra?.won === true);
   },
   finalizeRound(spec, subs) {
     const sk = skippedFinal(spec, subs);
     if (sk) return sk;
-    const hits = new Map<string, { firstMs: number; both: boolean }>();
-    for (const [a, s] of subs) {
-      const e = s.extra ?? {};
-      if ((e.title === true || e.artist === true) && num(e.firstMs) !== null) hits.set(a, { firstMs: Number(e.firstMs), both: e.title === true && e.artist === true });
-    }
-    const pts = songPoints(hits);
+    const hits = new Map<string, number>();
+    for (const [a, s] of subs) if (s.extra?.won === true) hits.set(a, num(s.extra.seq) ?? Number.MAX_SAFE_INTEGER);
+    const winner = songWinner(hits);
+    const winnerMs = winner ? num(subs.get(winner)?.extra?.firstMs) : null;
     const values = new Map<string, { value: number | null; extra?: Record<string, unknown> }>();
-    for (const a of subs.keys()) values.set(a, { value: pts.get(a) ?? null, extra: { points: pts.get(a) ?? 0 } });
-    return { values, reveal: spec.reveal };
+    for (const a of subs.keys()) values.set(a, a === winner ? { value: SONG_FIRST_POINT, extra: { won: true, points: SONG_FIRST_POINT } } : { value: null, extra: { won: false, points: 0 } });
+    return { values, reveal: { ...(spec.reveal ?? {}), winner, winnerMs } };
   },
 };
 

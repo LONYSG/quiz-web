@@ -12,6 +12,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
+import type { SongFeedback } from '@quiz/shared';
 import { Check, Headphones, Music, Play, Volume2, X } from 'lucide-react';
 import Icon from '../Icon.js';
 import { sfx } from '../sound.js';
@@ -106,19 +107,20 @@ export function SongSound({ socket, view, serverNow }: { socket: Socket; view: M
 // ─────────────────────────────────────────────────────────────────────────────
 // 노래 맞히기
 // ─────────────────────────────────────────────────────────────────────────────
-type Fb = { result: 'ok' | 'dup' | 'wrong'; part?: 'title' | 'artist'; text?: string; title?: boolean; artist?: boolean };
+// ★★ R092 (D-349) — 제목만 · 제일 먼저 맞힌 한 사람만 +1 · 맞히면 곡 끝 · 가수 = 'artist' 알림(틀림과 다른 색)
+type Fb = SongFeedback;
 
 export function SongGuess({ socket, view, serverNow, mobile }: Props) {
   const t = useTimer(view, serverNow);
-  const [st, setSt] = useState<{ key: string; title: boolean; artist: boolean; last: Fb | null } | null>(null);
+  const [st, setSt] = useState<{ key: string; won: boolean; last: Fb | null } | null>(null);
   const mine = st?.key === t.key ? st : null;
   useEffect(() => {
     const on = (fb: Fb & { token: string; roundIndex: number }) => {
       if (fb.token !== view.token || fb.roundIndex !== view.roundIndex || !('result' in fb)) return;
       const k = `${fb.token}:${fb.roundIndex}`;
       setSt((s) => {
-        const prev = s?.key === k ? s : { key: k, title: false, artist: false, last: null };
-        return { key: k, title: fb.title ?? prev.title, artist: fb.artist ?? prev.artist, last: fb };
+        const prev = s?.key === k ? s : { key: k, won: false, last: null };
+        return { key: k, won: prev.won || fb.result === 'ok', last: fb };
       });
       sfx(fb.result === 'ok' ? 'mg-tap' : 'mg-foul');
     };
@@ -132,7 +134,7 @@ export function SongGuess({ socket, view, serverNow, mobile }: Props) {
     socket.emit('minigame.submit', { token: view.token, roundIndex: view.roundIndex, input: { text, elapsedMs: Math.round(performance.now() - t.t0) } });
   };
   const last = mine?.last ?? null;
-  const both = Boolean(mine?.title && mine?.artist);
+  const won = Boolean(mine?.won);
   return (
     <div className="quiz-stage topic-stage song-stage">
       <div className="circle-bar" aria-hidden="true">
@@ -140,35 +142,24 @@ export function SongGuess({ socket, view, serverNow, mobile }: Props) {
       </div>
       <p className="topic-title song-ask">
         <Icon icon={Music} /> <strong>제목</strong>
-        <span className="dim"> 또는 </span>
-        <strong>가수</strong>
         <span className="dim"> — </span>
         <span className="mono topic-left">{t.leftSec}초</span>
       </p>
-      <div className="song-parts" aria-label="내가 맞힌 것">
-        <span className={`song-part${mine?.title ? ' ok' : ''}`} data-song-part="title" data-ok={mine?.title ? '1' : '0'}>
-          {mine?.title ? <Icon icon={Check} /> : null} 제목
-        </span>
-        <span className={`song-part${mine?.artist ? ' ok' : ''}`} data-song-part="artist" data-ok={mine?.artist ? '1' : '0'}>
-          {mine?.artist ? <Icon icon={Check} /> : null} 가수
-        </span>
-        {both && <span className="song-both mono">+1</span>}
-      </div>
       <TopicInput
-        canPlay={t.canPlay && !both}
+        canPlay={t.canPlay && !won}
         mobile={mobile}
         resetKey={t.key}
-        placeholder={view.spectating ? '구경 중' : both ? '둘 다 맞혔어요!' : mine?.title ? '가수도 맞혀 보세요 (+1)' : mine?.artist ? '제목도 맞혀 보세요 (+1)' : '제목이나 가수 → Enter'}
-        label="제목 또는 가수"
+        placeholder={view.spectating ? '구경 중' : won ? '맞혔어요!' : '제목 → Enter'}
+        label="제목"
         onSend={send}
       />
-      <p className={`quiz-num-help topic-fb${last?.result === 'ok' ? ' ok' : last ? ' bad' : ' dim'}`} data-feedback={last?.result ?? ''}>
+      <p className={`quiz-num-help topic-fb${last?.result === 'ok' ? ' ok' : last?.result === 'artist' ? ' warn' : last ? ' bad' : ' dim'}`} data-feedback={last?.result ?? ''}>
         {last?.result === 'ok' ? (
           <>
-            <Icon icon={Check} /> {last.part === 'title' ? '제목' : '가수'} 맞음!
+            <Icon icon={Check} /> 제목 맞음! +1
           </>
-        ) : last?.result === 'dup' ? (
-          `이미 맞힌 ${last.part === 'title' ? '제목' : '가수'}이에요`
+        ) : last?.result === 'artist' ? (
+          `"${last.text}" — 가수 말고 제목을 쳐 주세요`
         ) : last?.result === 'wrong' ? (
           <>
             <Icon icon={X} /> "{last.text}" — 아니에요
@@ -176,7 +167,7 @@ export function SongGuess({ socket, view, serverNow, mobile }: Props) {
         ) : view.spectating ? (
           '구경 중이에요'
         ) : (
-          '먼저 맞힐수록 높은 점수 · 남의 답은 안 보여요'
+          '제목을 치세요 — 제일 먼저 맞힌 한 사람만 +1'
         )}
       </p>
     </div>
@@ -287,21 +278,22 @@ export function SongReveal({ view, mine }: { view: MinigameView; mine: MinigameR
         <p className="song-skipped bad" data-song-skipped>
           미리듣기를 못 불러온 사람이 많아 이 곡은 점수 없이 넘어가요({Number(rv.fails ?? 0)}명)
         </p>
+      ) : view.key === 'song' ? (
+        // ★ R092 — 누가 맞혔나(모두에게)
+        <p className={`song-mine${rv.winner ? ' ok' : ' dim'}`} data-song-winner={rv.winner ? String(rv.winner) : ''}>
+          {rv.winner
+            ? `${rv.winner === mine?.accountId && !view.spectating ? '내가' : `${view.participants.find((p) => p.accountId === rv.winner)?.nickname ?? '누군가'} 님이`} ${Math.max(0, Number(rv.winnerMs ?? 0) / 1000).toFixed(1)}초 만에 맞혔어요 +1`
+            : '아무도 못 맞혔어요'}
+        </p>
       ) : mine && !view.spectating ? (
         <p className="song-mine" data-song-mine>
-          {view.key === 'song' ? songMineText(mine) : songYearMineText(mine)}
+          {songYearMineText(mine)}
         </p>
       ) : null}
     </div>
   );
 }
 
-function songMineText(r: MinigameRoundRow): string {
-  const t = r.extra?.title === true;
-  const a = r.extra?.artist === true;
-  if (!t && !a) return '못 맞혔어요';
-  return `${t && a ? '제목 · 가수 둘 다' : t ? '제목' : '가수'} 맞힘 — +${r.points}점`;
-}
 function songYearMineText(r: MinigameRoundRow): string {
   if (r.extra?.guess === undefined) return '안 냈어요';
   const off = Number(r.extra.off ?? 0);
@@ -312,6 +304,8 @@ function songYearMineText(r: MinigameRoundRow): string {
 export function songValueText(view: MinigameView, r: MinigameRoundRow): string {
   if (r.extra?.skipped) return '건너뜀';
   if (view.key === 'song') {
+    if (r.extra?.won === true) return '제목 ✓ (첫 정답)';
+    // 옛 R084 행(제목 · 가수 따로) — 읽기만
     const t = r.extra?.title === true;
     const a = r.extra?.artist === true;
     return t && a ? '제목 ✓ 가수 ✓' : t ? '제목 ✓' : a ? '가수 ✓' : '못 맞힘';

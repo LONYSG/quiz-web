@@ -1,6 +1,6 @@
 // R084 — 노래 맞히기 · 이 노래 몇 년도? (순수 부분)
 import { describe, expect, it } from 'vitest';
-import { matchSong, songFailSkip, songMatcher, songPoints } from '@quiz/shared';
+import { SONG_FIRST_POINT, matchSong, songFailSkip, songMatcher, songWinner } from '@quiz/shared';
 import type { QuizData, QuizItem } from '../db/minigameItems.js';
 import type { BuildCtx, ParsedInput, RoundSpec } from './defs.js';
 import { pickSongs, song, songPool, songyear } from './songGames.js';
@@ -18,13 +18,11 @@ describe('노래 판정 · 점수', () => {
     expect(matchSong(m, 'iu')).toBe('artist');
     expect(matchSong(m, '나쁜 날')).toBeNull();
   });
-  it('처음 맞힌 순서 3 · 2 · 1 · 그 뒤 1 · 둘 다 +1 · 같은 시각 같은 점수', () => {
-    const p = songPoints(new Map([['a', { firstMs: 3000, both: true }], ['b', { firstMs: 1000, both: false }], ['c', { firstMs: 5000, both: false }], ['d', { firstMs: 9000, both: true }], ['e', { firstMs: 5000, both: false }]]));
-    expect(p.get('b')).toBe(3);
-    expect(p.get('a')).toBe(3); // 2 + 1
-    expect(p.get('c')).toBe(1);
-    expect(p.get('e')).toBe(1);
-    expect(p.get('d')).toBe(2); // 그 뒤 1 + 1
+  it('★ R092 — 이긴 사람 = 서버 도착이 제일 이른 한 명 · 같으면 먼저 넣은 쪽 · 없으면 null · 점수 1', () => {
+    expect(songWinner(new Map([['a', 3000], ['b', 1000], ['c', 5000]]))).toBe('b');
+    expect(songWinner(new Map([['a', 1000], ['b', 1000]]))).toBe('a');
+    expect(songWinner(new Map())).toBeNull();
+    expect(SONG_FIRST_POINT).toBe(1);
   });
   it('실패 과반', () => {
     expect(songFailSkip(2, 3)).toBe(true);
@@ -76,25 +74,44 @@ const feed = (def: typeof song, sp: RoundSpec, subs: Subs, acct: string, input: 
 };
 
 describe('노래 맞히기 판', () => {
-  it('제목 / 가수 / 둘 다 · 이미 맞힘 · 오답 · 점수 정산', () => {
+  it('★ R092 — 가수 → artist 알림 · 점수 0 · 곡 안 끝남 / 오답 / 첫 제목 → +1 · 곡 끝 / 그 뒤 입력 무시', () => {
     const sp = spec('song'); // 쏘리 쏘리 / 슈퍼주니어
     const subs: Subs = new Map();
-    expect(feed(song, sp, subs, 'a', { text: '쏘리쏘리', elapsedMs: 2000 }, 2500)!.feedback).toMatchObject({ result: 'ok', part: 'title' });
-    expect(feed(song, sp, subs, 'a', { text: 'sorry sorry', elapsedMs: 2500 }, 3000)!.feedback).toMatchObject({ result: 'dup' });
-    expect(feed(song, sp, subs, 'b', { text: '빅뱅', elapsedMs: 3000 }, 3500)!.feedback).toMatchObject({ result: 'wrong' });
-    expect(feed(song, sp, subs, 'b', { text: 'super junior', elapsedMs: 4000 }, 4500)!.feedback).toMatchObject({ result: 'ok', part: 'artist' });
-    feed(song, sp, subs, 'a', { text: '슈주', elapsedMs: 6000 }, 6500);
+    expect(feed(song, sp, subs, 'b', { text: 'super junior', elapsedMs: 1000 }, 1500)!.feedback).toMatchObject({ result: 'artist', part: 'artist' });
+    expect(subs.get('b')).toMatchObject({ value: null, submitted: false });
+    expect(feed(song, sp, subs, 'c', { text: '빅뱅', elapsedMs: 1500 }, 2000)!.feedback).toMatchObject({ result: 'wrong' });
     expect(song.earlyEnd!(sp, subs, ['a', 'b', 'c'])).toBe(false);
-    expect(song.earlyEnd!(sp, subs, ['a', 'b'])).toBe(true); // c 가 나감 → 접속자 전원 맞힘
+    expect(feed(song, sp, subs, 'a', { text: '쏘리쏘리', elapsedMs: 2000 }, 2500)!.feedback).toMatchObject({ result: 'ok', part: 'title' });
+    expect(song.earlyEnd!(sp, subs, ['a', 'b', 'c'])).toBe(true); // 맞히는 순간 곡 끝
+    expect(feed(song, sp, subs, 'a', { text: 'sorry sorry', elapsedMs: 2600 }, 3000)).toBeNull(); // 이미 맞힘
+    expect(subs.get('b')!.extra).toMatchObject({ tries: 1 });
     const fin = song.finalizeRound!(sp, subs);
-    expect(fin.values.get('a')!.value).toBe(4); // 첫째 3 + 둘 다 1
-    expect(fin.values.get('b')!.value).toBe(2);
-    expect(fin.reveal).toMatchObject({ title: '쏘리 쏘리', artist: '슈퍼주니어', year: 2009 });
+    expect([fin.values.get('a')!.value, fin.values.get('b')!.value, fin.values.get('c')!.value]).toEqual([1, null, null]);
+    expect(fin.values.get('a')!.extra).toMatchObject({ won: true, points: 1 });
+    expect(fin.reveal).toMatchObject({ title: '쏘리 쏘리', artist: '슈퍼주니어', year: 2009, winner: 'a', winnerMs: 2000 });
+  });
+  it('★ R092 — 같은 곡에 제목 둘(엔진 밖 안전망) → 서버 도착이 이른 한 명만 +1', () => {
+    const sp = spec('song');
+    const subs: Subs = new Map();
+    feed(song, sp, subs, 'b', { text: '쏘리 쏘리', elapsedMs: 900 }, 3000); // 기기 시간은 빨라도 도착이 늦음
+    feed(song, sp, subs, 'a', { text: '쏘리 쏘리', elapsedMs: 2000 }, 2500);
+    const fin = song.finalizeRound!(sp, subs);
+    expect([fin.values.get('a')!.value, fin.values.get('b')!.value]).toEqual([1, null]);
+  });
+  it('★ R092 — 아무도 못 맞힘(가수 · 오답만) → 끝까지 · 전원 0 · winner null', () => {
+    const sp = spec('song');
+    const subs: Subs = new Map();
+    feed(song, sp, subs, 'a', { text: '슈주', elapsedMs: 1000 }, 1000);
+    feed(song, sp, subs, 'b', { text: '아니야', elapsedMs: 1000 }, 1000);
+    expect(song.earlyEnd!(sp, subs, ['a', 'b'])).toBe(false);
+    const fin = song.finalizeRound!(sp, subs);
+    expect([...fin.values.values()].every((v) => v.value === null)).toBe(true);
+    expect(fin.reveal).toMatchObject({ winner: null, winnerMs: null });
   });
   it('재생 실패 과반 → 건너뜀(전원 0 · reveal.skipped) · 한 번만 보고', () => {
     const sp = spec('song');
     const subs: Subs = new Map();
-    feed(song, sp, subs, 'a', { text: '쏘리 쏘리', elapsedMs: 1000 }, 1500);
+    feed(song, sp, subs, 'a', { text: '슈퍼주니어', elapsedMs: 1000 }, 1500);
     expect(feed(song, sp, subs, 'b', { fail: true }, 2000)).not.toBeNull();
     expect(feed(song, sp, subs, 'b', { fail: true }, 2100)).toBeNull();
     expect(song.earlyEnd!(sp, subs, ['a', 'b', 'c'])).toBe(false);
