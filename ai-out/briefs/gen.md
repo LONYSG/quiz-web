@@ -3,7 +3,7 @@ TASK: V050(13 C131 · CV-185)이 G057 의 이모지 문항 751 을 전수 판정
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5` — 바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 5-2 그대로. 07 **DG-096** · 13 **C132** · **CV-185 줄 끝**(적용 결과) · README G · 05 · 06 · 15 §7-1 이모지 단락에 "★ G058 적재 실측" 한 줄 · 11 §(적재 표)에 이모지 한 줄. **DB 쓰기 = 적재 + worth 만** · 쓰기 전 `node scripts/backup.mjs`(quizweb) · **열린 판 0 일 때만**(`guardNoOpenGames` — g023-common) · 활성 기존 7,151 행은 **한 행도 바꾸지 않는다** · 실 3000 서버 재시작 없음(다음 판부터 나옴). 웹 0 · 하위 에이전트 ≤ 1(sonnet · 재블라인드).
-■ ★ 두 DB: 찬종은 **dev 3001(quizweb_dev)** 에서 테스트한다. 메뉴 17(dev 새로 복사)은 dev 의 app_reports(제보 · 테스트 피드백)를 지우므로 **쓰지 않는다** — 대신 같은 적재를 `DATABASE_URL` 을 quizweb_dev 로 바꿔 **한 번 더**(둘 다 백업 · 둘 다 열린 판 0 · 결과 수 같아야 함). dev 접속 문자열은 `.env` · docs/11 메뉴 15 · 17 줄 · `scripts/db-dev-init.mjs` 에서 확인(지어내지 않음).
+■ ★ 두 DB: 찬종은 **dev 3001(quizweb_dev)** 에서 테스트한다. 메뉴 17(dev 새로 복사)은 dev 의 app_reports(제보 · 테스트 피드백)를 지우므로 **쓰지 않는다** — 대신 같은 적재를 `DATABASE_URL` 을 quizweb_dev 로 바꿔 **한 번 더**(둘 다 백업 · 둘 다 열린 판 0 · 결과 수 같아야 함). dev 접속 문자열 = `scripts/dev-env.mjs` 규칙(DEV_DATABASE_URL ?? .env.dev ?? .env 의 DATABASE_URL 에서 DB 이름만 quizweb_dev) — 그 모듈을 그대로 써서 만든다(지어내지 않음 · `scripts/db-test-init.mjs --dev` 가 같은 DB 를 쓴다).
 ■ 동시 라운드: 없음(MAIN · VERIFY 쉼).
 ■ 먼저 읽기: `ai-out/V050.txt` · `ai-out/G057.txt` · `audit/v050-emoji.json` · `audit/v050-blind.json` · `generated/g057/*.json` 의 items[].verify.fixes · `scripts/g057-emoji-build.mjs`(파일 꼴 · 멱등) · `scripts/g054-liar2-apply.mjs`(fixes 적용 꼴) · `scripts/g032-apply-worth.mjs` + `g023-common.mjs`(worth · guard · undo) · `scripts/pipeline-load.mjs` 머리(기본 = 승인 · 활성 · `--round` · `--dry-run`) · docs/19 §9(worth).
 ■ 할 일
