@@ -2,10 +2,10 @@
  "topic": "liar-instrument",
  "nameKo": "악기",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-09",
  "createdRound": "G047",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://toz-app.com/ko/blog/party-games/imposter-game-words",
@@ -21,7 +21,7 @@
   "라이어",
   "악기"
  ],
- "count": 50,
+ "count": 49,
  "items": [
   {
    "id": "liar-instrument-001",
@@ -56,7 +56,7 @@
    "diff": 2,
    "fool": [
     "피아노",
-    "하프시코드",
+    "아코디언",
     "신시사이저"
    ],
    "draw": false,
@@ -185,7 +185,7 @@
    "fool": [
     "통기타",
     "베이스 기타",
-    "신시사이저"
+    "우쿨렐레"
    ],
    "draw": false,
    "liar": true,
@@ -283,7 +283,7 @@
    "diff": 1,
    "fool": [
     "가야금",
-    "하프시코드",
+    "첼로",
     "거문고"
    ],
    "draw": false,
@@ -301,7 +301,7 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "비올라",
+    "하프",
     "첼로",
     "해금"
    ],
@@ -320,7 +320,7 @@
    "era": "classic",
    "diff": 2,
    "fool": [
-    "바이올린",
+    "콘트라베이스",
     "첼로",
     "해금"
    ],
@@ -667,7 +667,7 @@
    "diff": 3,
    "fool": [
     "피리",
-    "나발",
+    "단소",
     "대금"
    ],
    "draw": false,
@@ -685,32 +685,13 @@
    "era": "classic",
    "diff": 2,
    "fool": [
-    "아쟁",
+    "거문고",
     "바이올린",
     "가야금"
    ],
    "draw": false,
    "liar": true,
    "qid": 1770
-  },
-  {
-   "id": "liar-instrument-035",
-   "name": "아쟁",
-   "variants": [],
-   "tags": [
-    "국악 현악"
-   ],
-   "sub": "국악 현악",
-   "era": "classic",
-   "diff": 3,
-   "fool": [
-    "해금",
-    "거문고",
-    "첼로"
-   ],
-   "draw": false,
-   "liar": true,
-   "qid": 5037
   },
   {
    "id": "liar-instrument-036",
@@ -723,7 +704,7 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "거문고",
+    "비파",
     "해금",
     "하프"
    ],
@@ -742,8 +723,8 @@
    "era": "classic",
    "diff": 2,
    "fool": [
-    "가야금",
-    "아쟁",
+    "하프",
+    "비파",
     "해금"
    ],
    "draw": false,
@@ -822,7 +803,7 @@
    "fool": [
     "팀파니",
     "젬베",
-    "카혼"
+    "봉고"
    ],
    "draw": false,
    "liar": true,
@@ -860,8 +841,8 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "마림바",
-    "철금",
+    "탬버린",
+    "트라이앵글",
     "비브라폰"
    ],
    "draw": false,
@@ -879,9 +860,9 @@
    "era": "classic",
    "diff": 2,
    "fool": [
-    "실로폰",
+    "드럼",
     "비브라폰",
-    "철금"
+    "탬버린"
    ],
    "draw": false,
    "liar": true,
@@ -957,7 +938,7 @@
    "fool": [
     "탬버린",
     "캐스터네츠",
-    "셰이커"
+    "징"
    ],
    "draw": false,
    "liar": true,
@@ -993,7 +974,7 @@
    "era": "classic",
    "diff": 2,
    "fool": [
-    "카혼",
+    "봉고",
     "드럼",
     "장구"
    ],
@@ -1032,7 +1013,8 @@
       "verdict": "bad",
       "to": "아코디언"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1044,7 +1026,8 @@
       "verdict": "tooFar",
       "to": "우쿨렐레"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1056,7 +1039,8 @@
       "verdict": "bad",
       "to": "첼로"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1068,7 +1052,8 @@
       "verdict": "tooClose",
       "to": "하프"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1080,7 +1065,8 @@
       "verdict": "tooClose",
       "to": "콘트라베이스"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1092,7 +1078,8 @@
       "verdict": "bad",
       "to": "단소"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1104,14 +1091,16 @@
       "verdict": "bad",
       "to": "거문고"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "remove",
     "id": "liar-instrument-035",
     "name": "아쟁",
     "reason": "20~50대 대부분이 모르는 악기(국악 전공 수준)",
-    "fix": "삭제"
+    "fix": "삭제",
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1123,7 +1112,8 @@
       "verdict": "tooClose",
       "to": "비파"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1140,7 +1130,8 @@
       "verdict": "bad",
       "to": "비파"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1152,7 +1143,8 @@
       "verdict": "bad",
       "to": "봉고"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1169,7 +1161,8 @@
       "verdict": "bad",
       "to": "트라이앵글"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1186,7 +1179,8 @@
       "verdict": "bad",
       "to": "탬버린"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1198,7 +1192,8 @@
       "verdict": "tooClose",
       "to": "징"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1210,7 +1205,8 @@
       "verdict": "bad",
       "to": "봉고"
      }
-    ]
+    ],
+    "applied": "G049"
    }
   ],
   "unsure": [
@@ -1221,6 +1217,7 @@
   ],
   "verdict": "candidate",
   "why": "라이어 제시어 전수 판정: 문제 항목 15/50 (fool tooClose 7 · tooFar 1 · bad 9 · remove 1 · diff 0 · era 0 · sub 0 · 변형 0) — 적용은 G049",
-  "history": []
+  "history": [],
+  "appliedRound": "G049"
  }
 }

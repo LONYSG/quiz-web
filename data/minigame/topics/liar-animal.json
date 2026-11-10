@@ -2,10 +2,10 @@
  "topic": "liar-animal",
  "nameKo": "동물",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-09",
  "createdRound": "G047",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://toz-app.com/ko/blog/party-games/imposter-game-words",
@@ -55,7 +55,6 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "삵",
     "토끼",
     "햄스터"
    ],
@@ -209,7 +208,7 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "하마",
+    "닭",
     "소",
     "양"
    ],
@@ -289,7 +288,7 @@
    "fool": [
     "악어",
     "도마뱀",
-    "자라"
+    "뱀"
    ],
    "draw": false,
    "liar": true,
@@ -442,8 +441,8 @@
    "diff": 1,
    "fool": [
     "문어",
-    "낙지",
-    "주꾸미"
+    "해파리",
+    "가오리"
    ],
    "draw": false,
    "liar": true,
@@ -767,7 +766,6 @@
    "diff": 2,
    "fool": [
     "상어",
-    "범고래",
     "바다표범"
    ],
    "draw": false,
@@ -786,7 +784,6 @@
    "diff": 2,
    "fool": [
     "오징어",
-    "낙지",
     "해파리"
    ],
    "draw": false,
@@ -933,9 +930,9 @@
    "name": "거미",
    "variants": [],
    "tags": [
-    "곤충"
+    "절지동물"
    ],
-   "sub": "곤충",
+   "sub": "절지동물",
    "era": "classic",
    "diff": 2,
    "fool": [
@@ -1210,7 +1207,8 @@
       "verdict": "bad",
       "to": null
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1222,7 +1220,8 @@
       "verdict": "tooFar",
       "to": "닭"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1234,7 +1233,8 @@
       "verdict": "tooClose",
       "to": "뱀"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1251,7 +1251,8 @@
       "verdict": "tooClose",
       "to": "가오리"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1263,7 +1264,8 @@
       "verdict": "tooClose",
       "to": null
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1275,14 +1277,16 @@
       "verdict": "tooClose",
       "to": null
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "sub",
     "id": "liar-animal-048",
     "name": "거미",
     "reason": "거미는 곤충이 아님",
-    "fix": "sub: 곤충 → 절지동물"
+    "fix": "sub: 곤충 → 절지동물",
+    "applied": "G049"
    }
   ],
   "unsure": [
@@ -1290,6 +1294,7 @@
   ],
   "verdict": "candidate",
   "why": "라이어 제시어 전수 판정: 문제 항목 7/60 (fool tooClose 5 · tooFar 1 · bad 1 · remove 0 · diff 0 · era 0 · sub 1 · 변형 0) — 적용은 G049",
-  "history": []
+  "history": [],
+  "appliedRound": "G049"
  }
 }

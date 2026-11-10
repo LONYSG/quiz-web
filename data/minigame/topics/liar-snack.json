@@ -2,10 +2,10 @@
  "topic": "liar-snack",
  "nameKo": "간식·음료",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-09",
  "createdRound": "G047",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://toz-app.com/ko/blog/party-games/imposter-game-words",
@@ -34,7 +34,7 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "감자깡",
+    "인디안밥",
     "양파링",
     "오징어집"
    ],
@@ -150,7 +150,7 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "딸기우유",
+    "두유",
     "초코우유",
     "요구르트"
    ],
@@ -194,7 +194,7 @@
    "fool": [
     "환타",
     "탄산수",
-    "토닉워터"
+    "스프라이트"
    ],
    "draw": false,
    "liar": true,
@@ -310,7 +310,7 @@
    "era": "classic",
    "diff": 1,
    "fool": [
-    "크로플",
+    "팬케이크",
     "츄러스",
     "크레페"
    ],
@@ -331,7 +331,7 @@
    "fool": [
     "뻥튀기",
     "나초",
-    "콘칩"
+    "오징어땅콩"
    ],
    "draw": false,
    "liar": true,
@@ -359,7 +359,10 @@
   {
    "id": "liar-snack-018",
    "name": "초콜릿",
-   "variants": [],
+   "variants": [
+    "초콜렛",
+    "초코"
+   ],
    "tags": [
     "사탕·젤리"
    ],
@@ -600,7 +603,7 @@
    "diff": 2,
    "fool": [
     "콘푸로스트",
-    "씨리얼",
+    "초코볼",
     "뻥튀기"
    ],
    "draw": false,
@@ -638,7 +641,7 @@
    "diff": 2,
    "fool": [
     "포카칩",
-    "포테토칩",
+    "스윙칩",
     "수미칩"
    ],
    "draw": false,
@@ -774,7 +777,7 @@
    "fool": [
     "꽈배기",
     "도넛",
-    "핫도그"
+    "와플"
    ],
    "draw": false,
    "liar": true,
@@ -957,9 +960,9 @@
    "era": "classic",
    "diff": 2,
    "fool": [
-    "카푸치노",
+    "아포가토",
     "카페모카",
-    "플랫화이트"
+    "바닐라라떼"
    ],
    "draw": false,
    "liar": true,
@@ -977,7 +980,7 @@
    "diff": 2,
    "fool": [
     "솜사탕",
-    "뽑기",
+    "엿",
     "캐러멜"
    ],
    "draw": false,
@@ -1014,7 +1017,7 @@
    ],
    "sub": "아이스크림",
    "era": "classic",
-   "diff": 3,
+   "diff": 2,
    "fool": [
     "비비빅",
     "쌍쌍바",
@@ -1056,7 +1059,7 @@
    "fool": [
     "마카롱",
     "슈크림",
-    "타르트"
+    "크림빵"
    ],
    "draw": false,
    "liar": true,
@@ -1096,7 +1099,7 @@
    "fool": [
     "식혜",
     "두유",
-    "선식"
+    "율무차"
    ],
    "draw": false,
    "liar": true,
@@ -1115,7 +1118,7 @@
    "fool": [
     "유과",
     "강정",
-    "맛동산"
+    "다식"
    ],
    "draw": false,
    "liar": true,
@@ -1134,7 +1137,7 @@
    "fool": [
     "소주",
     "맥주",
-    "칵테일"
+    "소맥"
    ],
    "draw": false,
    "liar": true,
@@ -1149,11 +1152,11 @@
    ],
    "sub": "간식",
    "era": "classic",
-   "diff": 3,
+   "diff": 2,
    "fool": [
     "팝콘",
     "강정",
-    "쌀과자"
+    "누룽지"
    ],
    "draw": false,
    "liar": true,
@@ -1209,7 +1212,8 @@
       "verdict": "tooClose",
       "to": "인디안밥"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1221,7 +1225,8 @@
       "verdict": "tooClose",
       "to": "두유"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1233,7 +1238,8 @@
       "verdict": "bad",
       "to": "스프라이트"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1245,7 +1251,8 @@
       "verdict": "tooClose",
       "to": "팬케이크"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1257,14 +1264,16 @@
       "verdict": "tooFar",
       "to": "오징어땅콩"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "liar-snack-018",
     "name": "초콜릿",
     "reason": "흔한 표기 빠짐",
-    "fix": "변형 [초콜렛;초코]"
+    "fix": "변형 [초콜렛;초코]",
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1276,7 +1285,8 @@
       "verdict": "tooClose",
       "to": "초코볼"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1288,7 +1298,8 @@
       "verdict": "tooClose",
       "to": "스윙칩"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1300,7 +1311,8 @@
       "verdict": "tooFar",
       "to": "와플"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1317,7 +1329,8 @@
       "verdict": "bad",
       "to": "바닐라라떼"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1329,14 +1342,16 @@
       "verdict": "tooClose",
       "to": "엿"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "diff",
     "id": "liar-snack-051",
     "name": "누가바",
     "reason": "흔한 아이스바",
-    "fix": "diff 2"
+    "fix": "diff 2",
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1348,7 +1363,8 @@
       "verdict": "tooClose",
       "to": "크림빵"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1360,7 +1376,8 @@
       "verdict": "tooClose",
       "to": "율무차"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1372,7 +1389,8 @@
       "verdict": "tooFar",
       "to": "다식"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1384,7 +1402,8 @@
       "verdict": "tooClose",
       "to": "소맥"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1396,19 +1415,22 @@
       "verdict": "tooClose",
       "to": "누룽지"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "diff",
     "id": "liar-snack-058",
     "name": "뻥튀기",
     "reason": "흔한 간식",
-    "fix": "diff 2"
+    "fix": "diff 2",
+    "applied": "G049"
    }
   ],
   "unsure": [],
   "verdict": "candidate",
   "why": "라이어 제시어 전수 판정: 문제 항목 17/59 (fool tooClose 11 · tooFar 3 · bad 2 · remove 0 · diff 2 · era 0 · sub 0 · 변형 1) — 적용은 G049",
-  "history": []
+  "history": [],
+  "appliedRound": "G049"
  }
 }

@@ -2,10 +2,10 @@
  "topic": "liar-job",
  "nameKo": "직업",
  "kind": "open",
- "version": 1,
+ "version": 2,
  "asOf": "2026-11-09",
  "createdRound": "G047",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "https://toz-app.com/ko/blog/party-games/imposter-game-words",
@@ -55,7 +55,7 @@
    "fool": [
     "구급대원",
     "약사",
-    "간호조무사"
+    "물리치료사"
    ],
    "draw": false,
    "liar": true,
@@ -134,7 +134,7 @@
    "diff": 1,
    "fool": [
     "경찰관",
-    "구급대원",
+    "군인",
     "해양경찰"
    ],
    "draw": false,
@@ -175,7 +175,7 @@
    "fool": [
     "교수",
     "학원 강사",
-    "유치원 교사"
+    "코치"
    ],
    "draw": false,
    "liar": true,
@@ -232,7 +232,7 @@
    "fool": [
     "검사",
     "판사",
-    "법무사"
+    "법원 공무원"
    ],
    "draw": false,
    "liar": true,
@@ -404,9 +404,9 @@
    "era": "modern",
    "diff": 1,
    "fool": [
-    "스트리머",
+    "블로거",
     "인플루언서",
-    "BJ"
+    "웹툰 작가"
    ],
    "draw": false,
    "liar": true,
@@ -537,13 +537,13 @@
    "name": "발레리나",
    "variants": [],
    "tags": [
-    "음악"
+    "무용"
    ],
-   "sub": "음악",
+   "sub": "무용",
    "era": "classic",
    "diff": 2,
    "fool": [
-    "댄서",
+    "체조 선수",
     "피겨 선수",
     "뮤지컬 배우"
    ],
@@ -664,7 +664,7 @@
    "diff": 2,
    "fool": [
     "웹 디자이너",
-    "IT 엔지니어",
+    "컴퓨터 수리기사",
     "해커"
    ],
    "draw": false,
@@ -682,7 +682,7 @@
    "era": "classic",
    "diff": 2,
    "fool": [
-    "연구원",
+    "수학자",
     "발명가",
     "의사"
    ],
@@ -829,7 +829,7 @@
    "diff": 2,
    "fool": [
     "택배 기사",
-    "퀵서비스 기사",
+    "신문 배달원",
     "집배원"
    ],
    "draw": false,
@@ -905,7 +905,7 @@
    "diff": 2,
    "fool": [
     "수의사",
-    "조련사",
+    "목장 주인",
     "농부"
    ],
    "draw": false,
@@ -1043,7 +1043,7 @@
    "era": "classic",
    "diff": 3,
    "fool": [
-    "번역가",
+    "비서",
     "가이드",
     "외교관"
    ],
@@ -1064,7 +1064,7 @@
    "fool": [
     "야구 선수",
     "농구 선수",
-    "축구 감독"
+    "배구 선수"
    ],
    "draw": false,
    "liar": true,
@@ -1092,7 +1092,9 @@
   {
    "id": "liar-job-055",
    "name": "스님",
-   "variants": [],
+   "variants": [
+    "승려"
+   ],
    "tags": [
     "종교"
    ],
@@ -1139,7 +1141,8 @@
       "verdict": "tooClose",
       "to": "물리치료사"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1151,7 +1154,8 @@
       "verdict": "tooClose",
       "to": "군인"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1163,7 +1167,8 @@
       "verdict": "tooClose",
       "to": "코치"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1175,7 +1180,8 @@
       "verdict": "bad",
       "to": "법원 공무원"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1192,7 +1198,8 @@
       "verdict": "tooClose",
       "to": "웹툰 작가"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1204,14 +1211,16 @@
       "verdict": "tooClose",
       "to": "체조 선수"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "sub",
     "id": "liar-job-027",
     "name": "발레리나",
     "reason": "발레리나는 음악이 아니라 무용",
-    "fix": "sub: 음악 → 무용"
+    "fix": "sub: 음악 → 무용",
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1223,7 +1232,8 @@
       "verdict": "tooClose",
       "to": "컴퓨터 수리기사"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1235,7 +1245,8 @@
       "verdict": "tooClose",
       "to": "수학자"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1247,7 +1258,8 @@
       "verdict": "tooClose",
       "to": "신문 배달원"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1259,7 +1271,8 @@
       "verdict": "tooClose",
       "to": "목장 주인"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1271,7 +1284,8 @@
       "verdict": "tooClose",
       "to": "비서"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "fool",
@@ -1283,14 +1297,16 @@
       "verdict": "tooClose",
       "to": "배구 선수"
      }
-    ]
+    ],
+    "applied": "G049"
    },
    {
     "op": "variant",
     "id": "liar-job-055",
     "name": "스님",
     "reason": "흔한 표기 '승려' 빠짐",
-    "fix": "스님 [승려]"
+    "fix": "스님 [승려]",
+    "applied": "G049"
    }
   ],
   "unsure": [
@@ -1299,6 +1315,7 @@
   ],
   "verdict": "candidate",
   "why": "라이어 제시어 전수 판정: 문제 항목 13/55 (fool tooClose 12 · tooFar 0 · bad 1 · remove 0 · diff 0 · era 0 · sub 1 · 변형 1) — 적용은 G049",
-  "history": []
+  "history": [],
+  "appliedRound": "G049"
  }
 }
