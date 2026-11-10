@@ -5,7 +5,7 @@
  "version": 1,
  "asOf": "2026-11-10",
  "createdRound": "G055",
- "status": "candidate",
+ "status": "verified",
  "source": [
   {
    "url": "web-desk/liar3",
@@ -781,5 +781,64 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V049",
+  "checkedAt": "2026-11-10T06:40:59.328Z",
+  "itemsChecked": 39,
+  "foolAudit": {
+   "fools": 117,
+   "ok": 115,
+   "tooClose": 2,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 3,
+  "counts": {
+   "remove": 0,
+   "diff": 1,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-cafe-020",
+    "name": "머핀",
+    "replace": [
+     {
+      "from": "컵케이크",
+      "verdict": "tooClose",
+      "to": "마카롱"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-cafe-026",
+    "name": "마들렌",
+    "fix": "3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-cafe-028",
+    "name": "타르트",
+    "replace": [
+     {
+      "from": "파이",
+      "verdict": "tooClose",
+      "to": "마들렌"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-cafe-023: 크로플 — 한철 유행 의심(2021~) 하지만 카페 메뉴로 자리 잡음",
+   "liar-cafe-006: 아인슈페너 diff 3 — 커피 마시는 사람은 아는 편, 유지",
+   "liar-cafe-033: 쇼케이스 fool 냉장고 — 가깝지만 \"케이크 진열\" 설명이 나오면 갈림, 유지",
+   "liar-cafe-030: 토스트 fool 샌드위치 — 가깝지만 유지(길거리 간식에도 토스트 있음)"
+  ],
+  "verdict": "verified",
+  "why": "라이어 새 주제 전수 판정: 문제 항목 3/39 (fool tooClose 2 · tooFar 0 · bad 0 · remove 0 · diff 1 · era 0 · sub 0 · 변형 0) — 적용은 G056"
+ }
 }

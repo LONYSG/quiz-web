@@ -754,5 +754,183 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V049",
+  "checkedAt": "2026-11-10T06:40:59.325Z",
+  "itemsChecked": 37,
+  "foolAudit": {
+   "fools": 111,
+   "ok": 99,
+   "tooClose": 12,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 12,
+  "counts": {
+   "remove": 0,
+   "diff": 0,
+   "era": 0,
+   "sub": 0,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-school-003",
+    "name": "소풍",
+    "replace": [
+     {
+      "from": "현장체험학습",
+      "verdict": "tooClose",
+      "to": "학예회"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-004",
+    "name": "졸업식",
+    "replace": [
+     {
+      "from": "종업식",
+      "verdict": "tooClose",
+      "to": "방학식"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-008",
+    "name": "방학식",
+    "replace": [
+     {
+      "from": "종업식",
+      "verdict": "tooClose",
+      "to": "입학식"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-017",
+    "name": "칠판",
+    "replace": [
+     {
+      "from": "화이트보드",
+      "verdict": "tooClose",
+      "to": "교탁"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-020",
+    "name": "실내화",
+    "replace": [
+     {
+      "from": "슬리퍼",
+      "verdict": "tooClose",
+      "to": "양말"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-school-020",
+    "name": "실내화",
+    "fix": "\"실내화 주머니\" 빼기 — 실내화를 넣는 가방이라 다른 물건(책가방 fool 로도 쓰임)"
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-023",
+    "name": "책가방",
+    "replace": [
+     {
+      "from": "보조가방",
+      "verdict": "tooClose",
+      "to": "우산"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-028",
+    "name": "모의고사",
+    "replace": [
+     {
+      "from": "수능",
+      "verdict": "tooClose",
+      "to": "쪽지시험"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-029",
+    "name": "중간고사",
+    "replace": [
+     {
+      "from": "기말고사",
+      "verdict": "tooClose",
+      "to": "수행평가"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-030",
+    "name": "쪽지시험",
+    "replace": [
+     {
+      "from": "받아쓰기",
+      "verdict": "tooClose",
+      "to": "숙제 검사"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-031",
+    "name": "받아쓰기",
+    "replace": [
+     {
+      "from": "쪽지시험",
+      "verdict": "tooClose",
+      "to": "글짓기"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-033",
+    "name": "조회",
+    "replace": [
+     {
+      "from": "애국조회",
+      "verdict": "tooClose",
+      "to": "학급회의"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-school-035",
+    "name": "반장",
+    "replace": [
+     {
+      "from": "부반장",
+      "verdict": "tooClose",
+      "to": "선도부"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-school-001·003: 수학여행 · 소풍 · 수련회 · 현장체험학습은 한 묶음이라 어느 쪽 설명도 서로 가까움 — fool 한 칸씩만 고침",
+   "liar-school-026: 생활기록부 fool 통지표(성적표의 옛 말)는 젊은 층에게 낯설 수 있음 — 유지",
+   "liar-school-034: 청소당번 fool 주번 — 요즘 학교엔 거의 없음, 유지"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 새 주제 전수 판정: 문제 항목 12/37 (fool tooClose 12 · tooFar 0 · bad 0 · remove 0 · diff 0 · era 0 · sub 0 · 변형 1) — 적용은 G056"
+ }
 }

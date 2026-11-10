@@ -621,5 +621,117 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V049",
+  "checkedAt": "2026-11-10T06:40:59.329Z",
+  "itemsChecked": 30,
+  "foolAudit": {
+   "fools": 90,
+   "ok": 84,
+   "tooClose": 4,
+   "tooFar": 2,
+   "bad": 0
+  },
+  "problemItems": 8,
+  "counts": {
+   "remove": 0,
+   "diff": 2,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-streetfood-016",
+    "name": "소떡소떡",
+    "replace": [
+     {
+      "from": "떡꼬치",
+      "verdict": "tooClose",
+      "to": "닭꼬치"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-streetfood-020",
+    "name": "핫바",
+    "replace": [
+     {
+      "from": "어묵",
+      "verdict": "tooClose",
+      "to": "순대"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-streetfood-022",
+    "name": "팥죽",
+    "replace": [
+     {
+      "from": "식혜",
+      "verdict": "tooFar",
+      "to": "호떡"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-streetfood-023",
+    "name": "가래떡",
+    "replace": [
+     {
+      "from": "떡꼬치",
+      "verdict": "tooClose",
+      "to": "인절미"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-streetfood-026",
+    "name": "찹쌀떡",
+    "fix": "3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-streetfood-027",
+    "name": "꽈배기",
+    "replace": [
+     {
+      "from": "도넛",
+      "verdict": "tooClose",
+      "to": "핫도그"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-streetfood-028",
+    "name": "오징어튀김",
+    "fix": "3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-streetfood-030",
+    "name": "메밀묵",
+    "replace": [
+     {
+      "from": "식혜",
+      "verdict": "tooFar",
+      "to": "인절미"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-streetfood-022·030: 팥죽 · 메밀묵은 \"길거리 간식\" 이라기보다 전통 간식 — 이 주제의 약한 쪽(G055 판단 유지)",
+   "liar-streetfood: 붕어빵 · 호떡 · 핫도그 · 츄러스 · 떡볶이 같은 대표가 항목이 아니라 fool 로만 나옴 — 30 은 하한 28 이상이지만 다음 보충 때 우선 후보",
+   "liar-streetfood-013: 소프트아이스크림 fool 붕어싸만코 — 아이스크림이긴 하나 \"길거리\" 가 아님, 유지"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 새 주제 전수 판정: 문제 항목 8/30 (fool tooClose 4 · tooFar 2 · bad 0 · remove 0 · diff 2 · era 0 · sub 0 · 변형 0) — 적용은 G056"
+ }
 }

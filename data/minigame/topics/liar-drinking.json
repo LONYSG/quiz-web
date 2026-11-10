@@ -764,5 +764,195 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V049",
+  "checkedAt": "2026-11-10T06:40:59.326Z",
+  "itemsChecked": 37,
+  "foolAudit": {
+   "fools": 111,
+   "ok": 98,
+   "tooClose": 13,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 13,
+  "counts": {
+   "remove": 0,
+   "diff": 0,
+   "era": 0,
+   "sub": 1,
+   "variant": 1
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-drinking-001",
+    "name": "회식",
+    "replace": [
+     {
+      "from": "송년회",
+      "verdict": "tooClose",
+      "to": "야유회"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-002",
+    "name": "2차",
+    "replace": [
+     {
+      "from": "뒤풀이",
+      "verdict": "tooClose",
+      "to": "회식"
+     }
+    ]
+   },
+   {
+    "op": "sub",
+    "id": "liar-drinking-007",
+    "name": "술게임",
+    "fix": "술자리 문화 → 술게임 (369게임 · 아이엠그라운드와 같은 칸)"
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-011",
+    "name": "해장국",
+    "replace": [
+     {
+      "from": "콩나물국밥",
+      "verdict": "tooClose",
+      "to": "김치찌개"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-012",
+    "name": "콩나물국밥",
+    "replace": [
+     {
+      "from": "황태해장국",
+      "verdict": "tooClose",
+      "to": "순대국"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-014",
+    "name": "숙취해소제",
+    "replace": [
+     {
+      "from": "컨디션",
+      "verdict": "tooClose",
+      "to": "꿀물"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-015",
+    "name": "필름 끊김",
+    "replace": [
+     {
+      "from": "블랙아웃",
+      "verdict": "tooClose",
+      "to": "속쓰림"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-021",
+    "name": "포장마차",
+    "replace": [
+     {
+      "from": "실내포차",
+      "verdict": "tooClose",
+      "to": "고깃집"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-025",
+    "name": "칵테일",
+    "replace": [
+     {
+      "from": "하이볼",
+      "verdict": "tooClose",
+      "to": "맥주"
+     },
+     {
+      "from": "샹그리아",
+      "verdict": "tooClose",
+      "to": "막걸리"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-028",
+    "name": "샴페인",
+    "replace": [
+     {
+      "from": "스파클링와인",
+      "verdict": "tooClose",
+      "to": "맥주"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-030",
+    "name": "먹태",
+    "replace": [
+     {
+      "from": "노가리",
+      "verdict": "tooClose",
+      "to": "육포"
+     }
+    ]
+   },
+   {
+    "op": "variant",
+    "id": "liar-drinking-030",
+    "name": "먹태",
+    "fix": "\"먹태깡\" 빼기 — 과자 상표라 다른 것"
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-031",
+    "name": "노가리",
+    "replace": [
+     {
+      "from": "먹태",
+      "verdict": "tooClose",
+      "to": "육포"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-drinking-035",
+    "name": "오뎅탕",
+    "replace": [
+     {
+      "from": "어묵",
+      "verdict": "tooClose",
+      "to": "홍합탕"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-drinking-010~013: 숙취 → 해장국 → 콩나물국밥 → 북엇국이 \"속 푸는 국\" 설명으로 많이 겹침 — 4개 모두 유지하나 해장국/콩나물국밥은 같은 설명이 나올 수 있음(하나 빼도 됨)",
+   "liar-drinking-030·031: 먹태 ↔ 노가리 — 둘 다 마른 명태 안주라 설명이 겹침(서로 fool 로 쓰였던 것은 고침) — 하나 빼도 됨",
+   "liar-drinking-003~006: 건배 · 원샷 · 러브샷 · 벌주 네 개가 서로 fool — 각각의 설명은 달라 유지",
+   "liar-drinking-009: 아이엠그라운드 보편성(diff 3) — 20~40대는 대부분 앎"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 새 주제 전수 판정: 문제 항목 13/37 (fool tooClose 13 · tooFar 0 · bad 0 · remove 0 · diff 0 · era 0 · sub 1 · 변형 1) — 적용은 G056"
+ }
 }

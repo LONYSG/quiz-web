@@ -777,5 +777,235 @@
    "qid": null
   }
  ],
- "verify": null
+ "verify": {
+  "round": "V049",
+  "checkedAt": "2026-11-10T06:40:59.322Z",
+  "itemsChecked": 38,
+  "foolAudit": {
+   "fools": 114,
+   "ok": 97,
+   "tooClose": 17,
+   "tooFar": 0,
+   "bad": 0
+  },
+  "problemItems": 17,
+  "counts": {
+   "remove": 0,
+   "diff": 2,
+   "era": 0,
+   "sub": 0,
+   "variant": 0
+  },
+  "fixes": [
+   {
+    "op": "fool",
+    "id": "liar-holiday-002",
+    "name": "약과",
+    "replace": [
+     {
+      "from": "한과",
+      "verdict": "tooClose",
+      "to": "곶감"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-003",
+    "name": "식혜",
+    "replace": [
+     {
+      "from": "수정과",
+      "verdict": "tooClose",
+      "to": "대추차"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-004",
+    "name": "수정과",
+    "replace": [
+     {
+      "from": "식혜",
+      "verdict": "tooClose",
+      "to": "매실차"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-005",
+    "name": "동그랑땡",
+    "replace": [
+     {
+      "from": "완자",
+      "verdict": "tooClose",
+      "to": "호박전"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-006",
+    "name": "산적",
+    "replace": [
+     {
+      "from": "꼬치전",
+      "verdict": "tooClose",
+      "to": "호박전"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-holiday-007",
+    "name": "육전",
+    "fix": "3 → 2 (명절 전의 대표 — 널리 앎)"
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-011",
+    "name": "유과",
+    "replace": [
+     {
+      "from": "강정",
+      "verdict": "tooClose",
+      "to": "인절미"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-012",
+    "name": "가래떡",
+    "replace": [
+     {
+      "from": "떡볶이떡",
+      "verdict": "tooClose",
+      "to": "시루떡"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-019",
+    "name": "차례",
+    "replace": [
+     {
+      "from": "제사",
+      "verdict": "tooClose",
+      "to": "덕담"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-021",
+    "name": "벌초",
+    "replace": [
+     {
+      "from": "제초",
+      "verdict": "tooClose",
+      "to": "차례"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-022",
+    "name": "한복",
+    "replace": [
+     {
+      "from": "도포",
+      "verdict": "tooClose",
+      "to": "양복"
+     },
+     {
+      "from": "두루마기",
+      "verdict": "tooClose",
+      "to": "기모노"
+     },
+     {
+      "from": "치마저고리",
+      "verdict": "tooClose",
+      "to": "턱시도"
+     }
+    ]
+   },
+   {
+    "op": "diff",
+    "id": "liar-holiday-029",
+    "name": "강강술래",
+    "fix": "3 → 2"
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-031",
+    "name": "귀성길",
+    "replace": [
+     {
+      "from": "고속도로",
+      "verdict": "tooClose",
+      "to": "공항"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-034",
+    "name": "시골 큰집",
+    "replace": [
+     {
+      "from": "할머니 댁",
+      "verdict": "tooClose",
+      "to": "마을회관"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-035",
+    "name": "친척 잔소리",
+    "replace": [
+     {
+      "from": "결혼 압박",
+      "verdict": "tooClose",
+      "to": "사촌 모임"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-037",
+    "name": "송편 빚기",
+    "replace": [
+     {
+      "from": "만두 빚기",
+      "verdict": "tooClose",
+      "to": "차례상 차리기"
+     }
+    ]
+   },
+   {
+    "op": "fool",
+    "id": "liar-holiday-038",
+    "name": "달집태우기",
+    "replace": [
+     {
+      "from": "쥐불놀이",
+      "verdict": "tooClose",
+      "to": "연날리기"
+     }
+    ]
+   }
+  ],
+  "unsure": [
+   "liar-holiday-038: 달집태우기 · 쥐불놀이 · 부럼 깨기 — 정월대보름 풍습이라 20~40대 전부가 아는지 애매(달집태우기 diff 3 유지, 낯설면 빼도 됨). 부럼 깨기는 fool 로만 쓰임",
+   "liar-holiday-023: 복주머니 fool 복조리 — 30대 이하에겐 약간 낯설 수 있음",
+   "liar-holiday-017·018: 세배 ↔ 덕담은 같은 장면(세배 때 하는 말)이라 설명이 많이 겹침 — 둘 다 유지"
+  ],
+  "verdict": "candidate",
+  "why": "라이어 새 주제 전수 판정: 문제 항목 17/38 (fool tooClose 17 · tooFar 0 · bad 0 · remove 0 · diff 2 · era 0 · sub 0 · 변형 0) — 적용은 G056"
+ }
 }
