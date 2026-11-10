@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-11 — 노래 292 재분류 (G061, GEN · 파일만 · DB 0)
+- 무엇: 찬종 제보 #117(노래 맞히기 = 방식 · 한국 세부 장르 · 팝송 · J-pop · 21세기만 · 외국곡 한글 발음 초성) — data/minigame/song/items.json 에 category · genre(+genreWhy) · titleKo · legend(+legendWhy) · inactiveReason. 20세기 63 중 레전드 23 · 나머지 40 inactive.
+- 문제: 지금 minigame-load 는 새 칸을 "모르는 칸"으로 거부 — R096 전에 메뉴 1 을 돌리면 노래 252 가 전부 쉬게 된다(데이터 손실 아님). 보고서 2절 결정 필요.
+- 검사: scripts/g061-song.mjs 위반 0 · minigame-song.test 5/5 · minigame-load dry-run = 형식 거부 252(모르는 칸 — 예상). 결정 DG-099. 남은 것: V051 · 찬종 목록 확인 · R096.
+
 ## 2026-11-10 — #2458 혼성 문항 고침 (G060, GEN · DB 쓰기 = 이 한 행)
 - 무엇: 찬종 제보 #122("이건 양궁에서만 쓰는 말은 아니잖아") — 질문을 "양궁 · 사격 · 육상과 수영 계주처럼 여러 종목에서 … 두루 무엇이라" 로 · 힌트(합창) · 해설(도쿄 올림픽 혼성 종목) 다시 · scripts/g060-apply.mjs 로 두 DB.
 - 문제: 브리핑 예시 탁구 · 배드민턴은 "혼합 복식" 이라 다른 답이 나올 수 있어 사격으로 바꿈. backup.mjs 는 DB_NAME=quizweb_dev 여도 파일 이름이 quizweb-* 라 실 백업 정리(최신 5)에 섞임 → dev 백업 이름을 quizweb_dev-g060-* 로 바꿈(실 백업 하나가 정리로 지워짐 — 221145).
