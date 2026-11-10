@@ -70,6 +70,7 @@
 | V043.txt | ★ **주제 세트 변형 완전성 전수** VERIFY — 세트 30 · 항목 2,554 · add 제안 171 · remove 1 · 정규화가 안 받는 꼴(콜론 · 하이픈 · 아포스트로피) 실측 · latinAbbr 7 · C111 · CV-172~173 |
 | V044.txt | ★ **라이어 제시어 15 세트 전수 판정** VERIFY — 851 항목 · fool 2,553 판정 · 전부 candidate+fixes(G049 적용) · remove 2 · fool 교체 268 · C112 · CV-174~175 |
 | V045.txt | ★ **캐치마인드 풀 10 세트 전수 판정** VERIFY — 1,651 항목 · 전부 candidate+fixes(G049 적용) · remove 239 + 그림 중복 63 · 변형 103 · 적용 뒤 단어 1,349 · C117 · CV-176~177 |
+| V046.txt | ★ **수도권 전철 13 세트 + 시·군·구 추가분 대조** VERIFY — metro verified 11 · candidate 2 · 추가분 fix 0 · 메뉴 1 지하철 11 세트 · C120 · CV-178~179 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 

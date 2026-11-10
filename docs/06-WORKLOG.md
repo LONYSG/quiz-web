@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-10 — V046 수도권 전철 13 세트 + 시·군·구 추가분 대조 (VERIFY · 판정만 · DB 없음)
+- 609 역 + 추가분 49 대조 — metro verified 11 · candidate 2(4호선 과천정보타운 미개통 · 경의중앙 변형 "항공대") · 시·군·구 추가분 fix 0.
+- 쓴 것: metro-* 13 + kr-municipality verify 칸 + status · items 불변 · `ai-out/V046.txt` · `audit/v046-raw/` · 13 C120 · CV-178~179.
+- 남은 것: CV-178 적용(다음 G) · 메뉴 1 · CV-179 설계 결정.
+
 ## 2026-11-10 — 수도권 전철 호선별 세트 (G050, GEN · 파일만 · DB 쓰기 없음)
 - **무엇을**: gen-next.md — 옛 seoul-subway-station(G049 삭제)을 노선 하나 = 세트 하나로(13).
 - **어떻게**: 위키백과 노선 문서 13 원문(action=raw) → g050-metro.mjs(역 목록 표 행마다 첫 역 링크 · 기울임 = 미개통 · 직결 구간 표 · 옛 변형 물려받기) → topics-check(group).
