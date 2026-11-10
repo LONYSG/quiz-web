@@ -9,3 +9,4 @@ TASK: R090(df737ca0)은 끝 점검 도중 PC 메모리가 모자라 **봇 mgonly
 ■ 하지 말 것: 새 기능 · 다른 수정 · data/ · web-desk.
 ■ 터미널 마지막 줄: "R090 마무리 끝 — mgonly n · r088 n · r087 n · main-behavior n · /clear 해도 됨".
 ■ 답변: 한국어 · 터미널 5줄 이내.
+■ ★ 이어서: 커밋 · push 뒤 **`ai-out/briefs/main-next.md`(R091 라이어 이의제기)를 읽고 같은 창에서 바로 시작**(없거나 첫 줄 "보류" 면 멈춤).
