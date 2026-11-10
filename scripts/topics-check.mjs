@@ -31,7 +31,8 @@ const HEAD = ['topic', 'nameKo', 'kind', 'version', 'asOf', 'createdRound', 'sta
 const ITEM_OK = new Set(['id', 'name', 'label', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note', 'fool', 'era', 'sub', 'diff', 'g']); // ★ G039: label = 화면용 짧은 이름(판정엔 안 씀 · 18 §9 · CV-165 ②) · ★ G047: fool · era · sub · diff(18 §12 제시어 세트)
 const ERA = new Set(['classic', 'modern']);
 /** ★ G047 — 라이어 제시어 세트(kind open · 머리 liar true) = fool · era · sub · diff 필수 · 수 40~120 */
-export const isLiarSet = (t) => t.kind === 'open' && t.liar === true;
+const LIAR_NEW_G055 = new Set(['liar-holiday', 'liar-school', 'liar-drinking', 'liar-cafe', 'liar-streetfood']);
+export const isLiarSet =(t) => t.kind === 'open' && t.liar === true;
 /** ★ G048 — 캐치마인드 제시어 세트(kind open · 머리 draw true · liar false · draw-*) = diff 필수 · 수 40~400 · fool 없음 */
 export const isDrawSet = (t) => t.kind === 'open' && t.draw === true && t.liar === false && String(t.topic ?? '').startsWith('draw-');
 const STATUS = new Set(['candidate', 'verified', 'rejected', 'loaded']);
@@ -70,7 +71,10 @@ export function checkTopic(t, file) {
   const liarSet = isLiarSet(t);
   // ★ G053: liar-<주제>-2(같은 주제의 candidate 조각 — 기존 verified 세트를 적재에서 지키려 나눔)는 하한 20(낯선 단어 · 한 글자를 뺀 뒤 악기 27)
   const liarPart = /-2$/.test(String(t.topic ?? ''));
-  if (t.kind === 'open' && liarSet && (items.length < (liarPart ? 20 : 40) || items.length > 120)) err.push(`라이어 세트 수 ${items.length}(${liarPart ? 20 : 40}~120 — 18 §12)`);
+  // ★ G055: 새 주제 5(web-desk/liar3 · 누구나 · 30~40 으로 만듦)는 하한 28(길거리 간식 30 에서 빠질 수 있음)
+  const liarNew = LIAR_NEW_G055.has(String(t.topic ?? ''));
+  const liarMin = liarPart ? 20 : liarNew ? 28 : 40;
+  if (t.kind === 'open' && liarSet && (items.length < liarMin || items.length > 120)) err.push(`라이어 세트 수 ${items.length}(${liarMin}~120 — 18 §12)`);
   const drawSet = isDrawSet(t);
   // ★ G051: 상한 400 → 2,000(2차 합치기 — 사물 ≈ 1,270) · draw-<테마>-2(같은 테마의 candidate 조각 — 기존 verified 세트를 적재에서 지키려 나눔)는 하한 없음
   const drawPart = /-2$/.test(String(t.topic ?? ''));
