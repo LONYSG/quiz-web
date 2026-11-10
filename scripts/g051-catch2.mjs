@@ -86,7 +86,12 @@ function setOf(x) {
   if (BODY.has(x.w)) return 'draw-body';
   return 'draw-concept';
 }
-for (const x of merged.filter((m) => m.keep)) {
+/** 같은 말 짝에서 대표로 둘 흔한 이름(먼저 처리) */
+const PREFER = new Set(W('아내 할인 종이 여자 어린이 장난감 알코올중독 스페인 한증막 옹고집 카카오나무 예수 월급 칼로리 저축 정치인 사이렌 벨트 어머니 우유 천국 설렁탕 별명 무전기 사투리 학부모 깍두기'));
+/** var 가 다른 항목 이름과 겹쳐도 뜻이 달라 따로 두는 것 */
+const KEEP_SEPARATE = new Set(W('음반 육감 아동 퍼센트 핵폭탄 신분증 지오디 에이치오티'));
+const ordered = merged.filter((m) => m.keep).map((m, i) => ({ m, i })).sort((a, b) => (PREFER.has(b.m.w) - PREFER.has(a.m.w)) || a.i - b.i).map((x) => x.m);
+for (const x of ordered) {
   if (CELEB.includes(x.w)) { if (!CELEB_KEEP.has(x.w)) { rep.celebDrop.push(x.w); continue; } rep.celebKeep.push(x.w); }
   if (GEN_DROP[x.w]) { rep.genDrop.push({ w: x.w, why: GEN_DROP[x.w] }); continue; }
   const c = C(x.w);
@@ -94,6 +99,13 @@ for (const x of merged.filter((m) => m.keep)) {
   if (hit) {
     if (hit.old) { rep.sameAsOld.push({ w: x.w, as: `${hit.it.id} ${hit.it.name}` }); continue; }
     rep.mergedNew.push({ w: x.w, into: hit.it.name }); continue; // 앞 새 항목의 변형과 같음 → 합침(그 변형으로 이미 받음)
+  }
+  // 웹이 "뜻이 같은 다른 이름" 으로 단 var 가 이미 있는 **항목 이름**이면 → 같은 말 → 그 항목의 변형으로 합침(기존 1,639 에는 변형 더하기만)
+  const synHit = (x.var ?? []).filter((v) => !(VAR_DROP[x.w] ?? []).includes(v)).map((v) => taken.get(C(v))).find((o) => o && C(o.it.name) !== c && (x.var ?? []).some((v) => C(v) === C(o.it.name)));
+  if (synHit && !KEEP_SEPARATE.has(x.w)) {
+    synHit.it.variants.push(x.w); taken.set(c, synHit);
+    rep.mergedNew.push({ w: x.w, into: synHit.it.name, old: !!synHit.old });
+    continue;
   }
   const slug = setOf(x);
   const it = { id: null, name: x.w, variants: [], tags: [], diff: x.diff, g: x.g, draw: true, liar: false, qid: null };
