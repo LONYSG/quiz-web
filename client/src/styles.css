@@ -2039,7 +2039,8 @@ button.skip-btn.voted {
   font-size: 1.15rem;
 }
 .room .ranking li.mine {
-  outline: 2px solid var(--accent-2);
+  /* ★ R093 (D-350 · 제보 #121) — 바깥 outline 은 순위 목록 스크롤(overflow) 가장자리에서 잘렸다 → 안쪽 그림자(줄 안에 그림 · 잘리지 않음) */
+  box-shadow: inset 0 0 0 2px var(--accent-2);
 }
 .room .ranking .score {
   font-size: 1.2rem;
@@ -9388,11 +9389,10 @@ button.preset.shake {
   outline: 1px solid var(--text);
 }
 /* 설정 — 방식 줄 오른쪽 팀전 토글 */
+/* ★ R093 (D-350 · 제보 #121) — 세로 선이 "캐치마인드|팀전" 처럼 글자에 붙어 보였다 → 선 없이 여백만(팀전은 따로 켜는 칩) */
 .team-sep {
-  width: 1px;
-  align-self: stretch;
-  margin: 2px 2px;
-  background: var(--border);
+  width: 10px;
+  flex: none;
 }
 .preset.team-toggle.active {
   background: linear-gradient(90deg, var(--team-blue) 0 50%, var(--team-red) 50% 100%);
@@ -9800,6 +9800,11 @@ button.preset.shake {
 .order-card.picked {
   border-color: var(--accent);
 }
+/* ★ R093 (D-350 · 제보 #120) — 위의 번호 칸(①~⑤ 자리)만큼 아래에도 같은 빈 칸 → 보기 글이 카드 한가운데 */
+.order-card::after {
+  content: '';
+  min-height: calc(1.3rem * 1.4);
+}
 .order-num {
   min-height: 1.4em;
   font-size: 1.3rem;
@@ -9808,6 +9813,10 @@ button.preset.shake {
 .order-label {
   font-size: 0.95rem;
   line-height: 1.25;
+  /* ★ R093 (D-350 · 제보 #120) — 버튼의 nowrap 을 이어받아 긴 보기가 카드 밖으로 나갔다(m360 "센과 치히로의 행방불명") → 카드 폭 안에서 줄바꿈 · 가운데 */
+  white-space: normal;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .order-answer {
   margin: 0;

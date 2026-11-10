@@ -1,0 +1,31 @@
+R093 — 실전 제보 화면 셋 (MAIN · D-350 · 작은 라운드 · 2026-11-10)
+
+0. ★ 찬종이 볼 것
+ ① 전 · 후 그림 (docs/design/r093-before → docs/design/r093)
+    - 순서대로 카드: order-cards-pc2560-0.png · order-cards-pc2560-2.png · order-cards-m360.png
+      전 = 글이 카드 중심보다 23px 아래(번호 칸이 위에만) · m360 긴 보기가 카드 밖으로 / 후 = 한가운데(±0 · 번호 누른 뒤 3)
+    - 로비 방식 줄: lobby-mode-pc2560.png · lobby-mode-pc1280.png — 전 = "캐치마인드 | 팀전" 세로 선 / 후 = 선 없이 여백
+    - 결과 내 줄: result-mine-pc2560.png · result-mine-pc1280.png · result-mine-m360.png — 전 = 바깥 테두리 2px 잘림 / 후 = 안쪽 테두리(잘림 0)
+ ② 적용은 플레이 끝난 뒤 메뉴 3 → 1 [1] (R092 와 같이 올라감). 실 3000 · 터널은 건드리지 않았다.
+
+1. 한 것 (client/src/styles.css 만)
+ A. #120 순서대로 — .order-card::after(번호 칸과 같은 높이 빈 칸을 아래에) → 보기 글이 카드 한가운데.
+    검사 중 발견: 버튼 nowrap 상속으로 m360 긴 보기("센과 치히로의 행방불명")가 카드 밖 → .order-label white-space normal · overflow-wrap anywhere.
+    (그 뒤 실행에선 짧은 보기만 나와 긴 보기 줄바꿈은 그림으로 다시 보진 못했다 — CSS 로 닫음)
+ B. #121 앞 "|" — 분야 줄엔 구분자가 없다. 로비에 있는 "|" 는 방식 줄의 팀전 앞 1px 세로 선(.team-sep) 하나 → 선을 빼고 여백 10px(브리핑 권장: 칩이면 구분자 자체를 뺌).
+ C. #121 뒤 결과 내 줄 — .room .ranking li.mine outline 2px → box-shadow inset 0 0 0 2px. PC 순위 목록이 overflow-y auto 라 바깥 outline 이 가장자리에서 잘렸다.
+ D. ui-check r093(새 묶음 · 3) · 07 D-350 · 01 16-R093 · 10 73절 · 05 · 06 · README · reports:handle 120 · 121.
+
+끝 점검 (docs/16 §F 작은 라운드)
+ | 무엇 | 결과 |
+ |---|---|
+ | typecheck | 0 |
+ | vitest | 750 |
+ | build | 0 |
+ | ui-check r093 | 전 0/3 → 후 3/3 (방식 줄 선 없음 · 카드 글 dy 23 → 0 · 내 줄 잘림 2 → 0 · 2560 · 1280 · m360 넘침 0) |
+ | 봇 | 0 (브리핑) |
+
+ 참고: 같은 시각 GEN G059 가 같은 작업트리에서 05 · 06 · 07 · README 를 고치는 중이었다 → R093 커밋엔 내 줄만 얹었다(GEN 변경은 GEN 커밋 몫).
+
+2. 결정 필요
+ 없음. (팀전 앞을 여백만 둔 게 "팀전도 방식 하나" 로 보이면 다음에 칩 모양을 바꿀 수 있다 — 찬종이 그림 보고 말하면)

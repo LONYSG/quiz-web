@@ -5491,6 +5491,84 @@ async function r091Flow(browser) {
 }
 
 // =============================================================================
+// ★★★ R093 — 실전 제보 화면 셋 (D-350 · #120 · #121) (UICHECK_R093=1 · 묶음 r093 · docs/design/r093)
+//   방장 PC(제보 2560×1313 + 1280×720) · 손님 m360 터치 · 소켓 손님 1 — 미니게임만 1개(순서대로 1판)
+//   ① 로비 방식 줄 — 팀전 앞 세로 선 없음(여백만) ② 순서대로 카드 — 보기 글이 카드 한가운데(번호 전 · 후) ③ 결과 내 줄 — 테두리가 목록 안(잘림 0)
+// =============================================================================
+async function r093Flow(browser) {
+  const H = await newPage(browser, 'R093-host', true);
+  await H.setViewport(2560, 1313);
+  await signUp(H, 'r93h', '제보방장');
+  const roomId = await createRoom(H, 'R093 제보');
+  const G = await newPage(browser, 'R093-g', true);
+  await signUp(G, 'r93g', '제보손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'r93s');
+  const rows = [];
+  const res = {};
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r093] ${k}: ${JSON.stringify(v)}`);
+  };
+  const SEP = `JSON.stringify((() => { const s = document.querySelector('.team-sep'); const t = document.querySelector('[data-team-toggle]'); const d = document.querySelector('button[data-mode="draw"]'); if (!s || !t || !d) return null; const cs = getComputedStyle(s); return { bg: cs.backgroundColor, img: cs.backgroundImage, border: cs.borderLeftStyle + cs.borderRightStyle, gap: Math.round(t.getBoundingClientRect().left - d.getBoundingClientRect().right), over: document.documentElement.scrollWidth - innerWidth }; })())`;
+  const sepOk = (x) => !!x && /rgba\(0, 0, 0, 0\)|transparent/.test(x.bg) && x.img === 'none' && !/solid|dashed|dotted/.test(x.border) && x.gap >= 12 && x.over <= 1;
+  for (const [n, w, h] of [['pc2560', 2560, 1313], ['pc1280', 1280, 720]]) {
+    await H.setViewport(w, h);
+    await sleep(400);
+    res[`sep-${n}`] = JSON.parse(await H.evaluate(SEP));
+    await snapClip(H, `lobby-mode-${n}`, '.mode-row');
+  }
+  await H.setViewport(2560, 1313);
+  note('방식 줄', { pc2560: res['sep-pc2560'], pc1280: res['sep-pc1280'] });
+
+  const CARDS = `JSON.stringify([...document.querySelectorAll('[data-order-card]')].map((b) => { const r = b.getBoundingClientRect(); const l = b.querySelector('.order-label').getBoundingClientRect(); return { dy: Math.round((l.top + l.height / 2) - (r.top + r.height / 2)), dx: Math.round((l.left + l.width / 2) - (r.left + r.width / 2)), w: Math.round(r.width), at: b.dataset.orderAt }; }))`;
+  const centred = (a) => Array.isArray(a) && a.length >= 3 && a.every((c) => Math.abs(c.dy) <= 3 && Math.abs(c.dx) <= 3) && new Set(a.map((c) => c.w)).size === 1;
+  await realClick(H, 'button[data-mode="minigame"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000);
+  await H.setInput('.mg-rounds-input', '1');
+  await sleep(300);
+  await selectMinigames(H, ['order']);
+  await sleep(300);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const playing = await H.waitFor("document.querySelector('[data-order-card]:not(:disabled)') !== null", 120000).catch(() => false);
+  if (playing) {
+    await G.waitFor("document.querySelector('[data-order-card]') !== null", 8000).catch(() => false);
+    res.cardsPc0 = JSON.parse(await H.evaluate(CARDS));
+    await snapClip(H, 'order-cards-pc2560-0', '.order-cards');
+    for (let i = 0; i < 2; i += 1) await H.evaluate(`[...document.querySelectorAll('[data-order-card]')].filter((b) => !b.classList.contains('picked'))[0]?.click()`);
+    await sleep(300);
+    res.cardsPc2 = JSON.parse(await H.evaluate(CARDS));
+    await snapClip(H, 'order-cards-pc2560-2', '.order-cards');
+    res.cardsM360 = JSON.parse(await G.evaluate(CARDS));
+    await snapClip(G, 'order-cards-m360', '.order-cards');
+    note('순서대로 카드', { pc0: res.cardsPc0, pc2: res.cardsPc2, m360: res.cardsM360 });
+  }
+  await H.waitFor("document.querySelector('.room-result .ranking li.mine') !== null", 180000).catch(() => false);
+  await G.waitFor("document.querySelector('.room-result .ranking li.mine') !== null", 10000).catch(() => false);
+  await sleep(800);
+  const MINE = `JSON.stringify((() => { const li = document.querySelector('.room-result .ranking li.mine'); if (!li) return null; const ol = li.closest('.ranking'); const cs = getComputedStyle(li); const ow = cs.outlineStyle === 'none' ? 0 : parseFloat(cs.outlineWidth) + parseFloat(cs.outlineOffset || '0'); const r = li.getBoundingClientRect(); const o = ol.getBoundingClientRect(); const ocs = getComputedStyle(ol); const clips = ocs.overflowX !== 'visible' || ocs.overflowY !== 'visible'; const cut = clips ? Math.max(0, o.left - (r.left - ow), (r.right + ow) - o.right, o.top - (r.top - ow)) : 0; return { outline: cs.outlineStyle, shadow: /inset/.test(cs.boxShadow), cut: Math.round(cut * 10) / 10, clips, over: document.documentElement.scrollWidth - innerWidth }; })())`;
+  for (const [n, w, h] of [['pc2560', 2560, 1313], ['pc1280', 1280, 720]]) {
+    await H.setViewport(w, h);
+    await sleep(450);
+    res[`mine-${n}`] = JSON.parse(await H.evaluate(MINE));
+    await snapClip(H, `result-mine-${n}`, '.room-result .ranking');
+  }
+  res['mine-m360'] = JSON.parse(await G.evaluate(MINE));
+  await snapClip(G, 'result-mine-m360', '.room-result .ranking');
+  note('결과 내 줄', { pc2560: res['mine-pc2560'], pc1280: res['mine-pc1280'], m360: res['mine-m360'] });
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r093'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r093'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r093', 'r093.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R093 로비 방식 줄 — 팀전 앞 세로 선 없음(여백 ≥ 12px) · 2560 · 1280 · 넘침 0', sepOk(res['sep-pc2560']) && sepOk(res['sep-pc1280']), JSON.stringify([res['sep-pc2560'], res['sep-pc1280']]));
+  record('★★★ R093 순서대로 카드 — 보기 글이 카드 한가운데(±3px · 번호 전 · 후 · PC 2560 · m360) · 카드 폭 같음', centred(res.cardsPc0) && centred(res.cardsPc2) && centred(res.cardsM360), JSON.stringify({ pc0: res.cardsPc0, pc2: res.cardsPc2, m360: res.cardsM360 }));
+  record('★★★ R093 결과 내 줄 — 안쪽 그림자 · 바깥 outline 없음 · 목록 가장자리 잘림 0 · 2560 · 1280 · m360', ['pc2560', 'pc1280', 'm360'].every((n) => { const x = res[`mine-${n}`]; return x && x.outline === 'none' && x.shadow && x.cut === 0 && x.over <= 1; }), JSON.stringify([res['mine-pc2560'], res['mine-pc1280'], res['mine-m360']]));
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R088 — 라이어 바보형 화면 (D-345) (UICHECK_R088=1 · 묶음 r088 · docs/design/r088)
 //   방장 PC 1280 · FHD 125%(1536×864 @1.25) · 손님 m360 터치 · 소켓 손님 1(3명) · 2라운드
 //   설정: 방식 라이어 → 모드 줄(기본형 · 바보형) · 바보형 누름 → 손님 칩 / 배정: 셋 다 시민 카드(라이어도 키워드) · 머리 "바보형" / 공개: "라이어가 받은 단어" · 세 테마
@@ -10211,6 +10289,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R089) {
     await closeAllTabs(browser);
     await r089Flow(browser);
+  }
+  // ★ R093 — 실전 제보 화면 셋
+  if (process.env.UICHECK_R093) {
+    await closeAllTabs(browser);
+    await r093Flow(browser);
   }
   // ★ R091 — 라이어 맞히기 이의제기
   if (process.env.UICHECK_R091) {
