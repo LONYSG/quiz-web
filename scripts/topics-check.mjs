@@ -54,6 +54,8 @@ export function checkTopic(t, file) {
   if (typeof t.timeSec !== 'number') err.push('timeSec: number');
   // ★ G049 — 머리 scope(선택 · 정답 범위 한 줄 · 플레이어 말투 · 18 §9 "세트 이름 = 정답 범위") — 문자열 · 빈칸 아님 · 60자 이하
   if ('scope' in t && (typeof t.scope !== 'string' || !t.scope.trim() || [...t.scope].length > 60)) err.push('scope: 문자열 · 빈칸 아님 · 60자 이하');
+  // ★ G050 — 머리 group(선택 · 같은 group 세트는 주제 추첨에서 한 자리 — MAIN R090 · 예 "metro") — 소문자 slug 꼴
+  if ('group' in t && (typeof t.group !== 'string' || !/^[a-z][a-z0-9-]*$/.test(t.group))) err.push('group: 소문자 slug 꼴 문자열');
   if (!Array.isArray(t.tags)) err.push('tags: []');
   const items = Array.isArray(t.items) ? t.items : [];
   if (t.count !== items.length) err.push(`count ${t.count} ≠ items ${items.length}`);
