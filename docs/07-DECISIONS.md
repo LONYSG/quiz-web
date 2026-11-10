@@ -66,6 +66,12 @@
 - **검사(⑫)**: 새 ui-check 묶음 **r087**(PC 5 + **FHD 125% = 1536×864 @1.25** · 모바일 3 · 세 테마 · 방장/손님 · 소켓 2) · r082 · r083 기대를 새 규칙에 맞춤(설명칸 · 채팅 옆 · 캔버스 ≥ 560) · 봇 liar(바퀴 · 시민 죽임 · 설명칸) · draw(힌트) · topicsets(G047/G048 세트 교체로 `all_s ≥ 파일 수`).
 - 되돌리기: 상수(`VOTE_BOUTS` · `REVOTES` · `CHUNK_MS` · `MINIGAME_ONLY_ROUNDS.MIN`) · `hidden` 플래그 · 커밋 revert.
 
+## DG-096. 이모지 문항 확정 · 활성 적재 — V050 fixes 151 · drop 22 적용 · 재블라인드 132(되돌림 3) → 729 활성(quizweb · quizweb_dev) · worth 2 (G058 · 설계 브리핑 gen.md · CV-185 · DB 쓰기 = 적재 + worth)
+- **설계 결정(2026-11-10)**: fixes · drop 전부 적용 · 다시 판정하지 않음(찬종 원칙) · 바뀐 이모지 줄만 재블라인드 · 약한 분야(한국 만화 · 웹툰 · 노래 2016~)도 넣고 찬종이 테스트 2 에서 분야 단위로 정함 · 활성 적재 · worth 2(재미 문항이라 가운데 — 19 §9).
+- **적용(scripts/g058-emoji-apply.mjs · 멱등)**: emoji 129 + 되돌림 3(새 줄 못 맞힘 · 옛 줄 V050 맞힘 — 베테랑 · 테넷 · 마이펫의 이중생활) · 바뀐 줄 해설 다시 씀 129 · variant-add 9(+정규화 같음 2 넣지 않음) · variant-remove 4 · hint 5(H2 막힘 2 는 GEN 이 다시 씀) · category 1(1990년대 드라마 리프 없음 — 그대로) · drop 22 → discarded.
+- **적재**: 두 DB 백업 → 열린 판 0 → pipeline-load --round g057 → worth 2. quizweb 7,151 → 7,880 · quizweb_dev 6,667 → 7,396(+729 같음) · 정답 표기 1,641 · 기존 활성 행 변경 0 · hint-check-active 막힘 0 · crossans 355 → 1,077(경고 — 흔한 낱말 정답 · 설계 결정).
+- **분야 빼기**: `update questions set is_active=false, inactive_reason='…' where source_ref ~ '#g057-<조각>-' and is_active`(두 DB). 되돌리기: worth = g058-apply-worth --undo · 적재 = is_active false(source_ref '#g057-') 또는 백업 복원.
+
 ## DG-095. 이모지 제목 퀴즈 → 본게임 문항 파일 — 837 → 751(정답 하나에 문항 하나) · generated/g057 게이트 꼴 · 적재는 V050 뒤 G058 (G057 · 설계 브리핑 gen.md · C130 · 찬종 2026-11-10 · 파일만 · DB 쓰기 없음)
 - **찬종 2026-11-10**: 조각 01 을 보고 "생각보다 굉장히 재밌음 · 주제 확대" → web-desk/emoji 분야 20 · 837. **정답 하나에 문항 하나**(이모지 줄이 더 좋은 쪽) · 01 두 벌 합침 · 기존 활성과 같은 정답은 다른 지식이라 넣음.
 - **꼴**: 코드 0 — 질문 `<이모지 줄> — 이모지가 나타내는 <갈래>는?` · 정답 타이핑 · generalHint = 웹 hint(emoji-v1) · 해설 = "이모지: <풀이>" · 초성 힌트는 서버. 점수 emoji-v1(dif = 웹 diff+1 · acc 분야 4~5 · wor 미디어 2 · 그 밖 3).

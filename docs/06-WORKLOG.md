@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-10 — 이모지 문항 활성 적재 (G058, GEN · DB 쓰기 = 적재 + worth)
+- 무엇: V050 fixes 151 · drop 22 를 generated/g057 에 기계 적용(scripts/g058-emoji-apply.mjs) · 바뀐 줄 132 재블라인드(sonnet 1 — 되돌림 3) · 해설 새 줄 풀이 129 · pipeline-load --round g057 활성 729 를 quizweb · quizweb_dev 둘 다 · worth 2(scripts/g058-apply-worth.mjs).
+- 문제: V050 힌트 안 2 가 H2 막힘 → GEN 다시 씀 · variant-add 2 는 정규화로 이미 받음 · 모래시계 category 는 리프 없음 · dev 는 옛 사본(활성 6,667) · crossans 경고 355 → 1,077(흔한 낱말 정답).
+- 검사: 게이트 두 DB 729 통과 · 막힘 0 · 적재 뒤 hint-check-active 막힘 0 · 기존 활성 7,151 변경 0 · 두 DB g057 729 · worth 2 729. 결정 DG-096. 남은 것: 찬종 테스트 2 · 설계 결정 3(G058.txt 2절).
+
 ## 2026-11-10 — 이모지 제목 퀴즈 문항 파일 (G057, GEN · 파일만)
 - 무엇: web-desk/emoji _merged 837(분야 20 · 01 두 벌)을 본게임 문항으로 — 정답 하나에 문항 하나 합치기 86 → 751 · generated/g057 41 파일(질문 "<이모지> — 이모지가 나타내는 <갈래>는?" · 힌트 emoji-v1 · 점수 emoji-v1 · 카테고리 분야별). scripts/g057-emoji-build.mjs(멱등).
 - 문제: 해설에 힌트를 되풀이하니 hint-check explain 경고 806 → 해설은 이모지 풀이만(83). 갈래 "일본 애니메이션" 이 정답 "일본" 과 answer-in-question → roundDupOk. 같은 정답 활성 대조가 브리핑 18 이 아니라 200(셈 방식 차이 — 그대로 둠).
