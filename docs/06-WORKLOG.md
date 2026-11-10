@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-10 — V048 라이어 제시어 2차 15 파일 전수 판정 (VERIFY · 판정만 · DB 없음)
+- 570 항목 · fool 1,710 전수 — 교체 94(tooClose 63 · tooFar 10 · bad 21 = 5.5%) · remove 3 · dup 2 · diff 19 · 변형 9. verified 2 + candidate 13.
+- 쓴 것: liar-*-2 15 파일 verify 칸 + status · items 불변 · `ai-out/V048.txt` · `audit/v048-topics.json` · 13 C125 · CV-181~182.
+- 남은 것: CV-181(G054 적용) · 인물 unsure 설계 결정.
+
 ## 2026-11-10 — 라이어 제시어 2차 합치기 (G053, GEN · 파일만)
 - **무엇을**: web-desk/liar2 600 → liar-*-2 15 파일(candidate). **어떻게**: g053-liar2.mjs(DROP · FOOL_FIX 표 · 기존 겹침 · 한 글자 · 같은 주제 안 변형 겹침 · 특수문자 변형 자동).
 - **문제**: 처음엔 변형 겹침을 라이어 전체로 봐서 주제 사이 같은 단어(아이유 · 싸이)의 변형을 뺌 → 같은 주제만 보게 고침 · Disney+ 특수문자 막힘 → 뺌 · 악기 27 · 과일·채소 32 → -2 하한 20.
