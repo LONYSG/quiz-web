@@ -9,7 +9,7 @@
 ---
 
 ## 2026-11-10 — V048 라이어 제시어 2차 15 파일 전수 판정 (VERIFY · 판정만 · DB 없음)
-- 570 항목 · fool 1,710 전수 — 교체 94(tooClose 63 · tooFar 10 · bad 21 = 5.5%) · remove 3 · dup 2 · diff 19 · 변형 9. verified 2 + candidate 13.
+- 570 항목 · fool 1,710 전수 — 교체 94(tooClose 63 · tooFar 10 · bad 21 = 5.5%) · remove 3 · dup 2 · diff 21 · 변형 8. verified 2 + candidate 13.
 - 쓴 것: liar-*-2 15 파일 verify 칸 + status · items 불변 · `ai-out/V048.txt` · `audit/v048-topics.json` · 13 C125 · CV-181~182.
 - 남은 것: CV-181(G054 적용) · 인물 unsure 설계 결정.
 
