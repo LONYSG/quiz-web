@@ -57,6 +57,13 @@
 - **검사(⑫)**: 새 ui-check 묶음 **r087**(PC 5 + **FHD 125% = 1536×864 @1.25** · 모바일 3 · 세 테마 · 방장/손님 · 소켓 2) · r082 · r083 기대를 새 규칙에 맞춤(설명칸 · 채팅 옆 · 캔버스 ≥ 560) · 봇 liar(바퀴 · 시민 죽임 · 설명칸) · draw(힌트) · topicsets(G047/G048 세트 교체로 `all_s ≥ 파일 수`).
 - 되돌리기: 상수(`VOTE_BOUTS` · `REVOTES` · `CHUNK_MS` · `MINIGAME_ONLY_ROUNDS.MIN`) · `hidden` 플래그 · 커밋 revert.
 
+## DG-092. 라이어 2차 적용 + 기존 세트에 합치기 — liar-* 15 세트 1,414 verified · -2 파일 삭제 · 니드런 변형 (G054 · 설계 브리핑 gen.md · CV-181 · 파일만 · DB 쓰기 없음)
+- **적용(V048 fixes 131 — 브리핑 수와 같음)**: fool 교체 94 중 넣음 90 · 뺌 4(to null 2 = 황영조 김완기 · KBO K리그 / V048 이 한 항목 두 fool 에 같은 교체어를 준 2 = 경호원 교도관 · 이발사 마사지사 → 하나만) — 2 미만 0 · remove 3(기영이 · 박태환 · 추신수 — 설계 결정 "처벌받은 사건은 뺀다") · dup 2(쉐이커 · 여객기) · diff 21 · era 2 · sub 9 · 변형 8. unsure 인물은 전부 유지(설계).
+- **합치기**: -2 항목 565 를 같은 주제 liar-<주제>.json items 뒤에 붙임(id = 기존 최대 번호 다음 · 옛 id → 새 id 는 audit/g054-id-map.json) · 기존 항목 글자 그대로 · 기존 verify 칸 그대로 + verify.history 에 V048 요약(fixes · unsure 통째로) · version 3 · verified · -2 15 파일 삭제 · 합 849 + 565 = **1,414**(세트 75~100 — 상한 120 안이라 topics-check 그대로).
+- **니드런(R090 ② ⓒ)**: pokemon-gen1 니드런♀ + 니드런 암컷 · 니드런 암 / 니드런♂ + 니드런 수컷 · 니드런 수 — 세트 안 유일성 통과.
+- **GEN 판단(되돌리기 쉽다)**: 변형 "디즈니+"(기호를 지우면 "디즈니") · FC서울의 "서울" 은 넣지 않음 — V048 이 수원화성 "화성" · 소설가 "작가" 를 넓은 말로 뺀 기준과 같게. 항목 단위 createdRound 칸은 없어(topics-check ITEM_OK) history · id 표에만 G053 을 적음.
+- **되돌리기**: G054 커밋 revert. 근거 ai-out/G054.txt · audit/g054-liar2-apply.json.
+
 ## DG-091. 라이어 제시어 2차 — liar-*-2 15 파일 570 · candidate (G053 · 설계 브리핑 gen.md · 18 §12 · 파일만 · DB 쓰기 없음)
 - **입력**: web-desk/liar2/_merged.json(웹 Claude Sonnet 5.5 · 15 주제 × 40 · fool 3 · 600).
 - **별도 파일**: 기존 15 파일(verified 849)은 안 건드리고 liar-<주제>-2.json(같은 nameKo · 머리 같게 · candidate · id liar-<주제>-2-NNN) — 세트가 candidate 면 적재에서 통째로 빠지므로(G051 과 같은 까닭).
