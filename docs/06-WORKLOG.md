@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-10 — 수도권 전철 호선별 세트 (G050, GEN · 파일만 · DB 쓰기 없음)
+- **무엇을**: gen-next.md — 옛 seoul-subway-station(G049 삭제)을 노선 하나 = 세트 하나로(13).
+- **어떻게**: 위키백과 노선 문서 13 원문(action=raw) → g050-metro.mjs(역 목록 표 행마다 첫 역 링크 · 기울임 = 미개통 · 직결 구간 표 · 옛 변형 물려받기) → topics-check(group).
+- **문제**: 굵게(''')를 기울임으로 잘못 봐 3호선 신사가 빠짐 → 고침 · 옛 변형 "암사역사공원" 이 별내선 새 역과 겹침 → 안 물려받음 · heredoc 이 정규식 백슬래시를 망가뜨려 Edit 도구로 고침.
+- **결정**: DG-088.
+- **검증**: topics-check 62 세트 막힘 0 · topics-load dry-run(candidate 13 은 안 넣음) · 테스트 5/5 · 제보 답 파일로 확인.
+- **남은 것**: V046 · 메뉴 1 · R090(group 추첨).
+
 ## 2026-11-10 — 제시어 적용 · 노래 표기 · 범위 정리 (G049, GEN · DB = #1491 변형만)
 - **무엇을**: gen.md — V044 · V045 fixes 적용(찬종 결정 3) · 노래 293 표기 변형 · closed scope · 시·군·구 넓히기 · seoul-subway-station 삭제 · #1491 변형.
 - **어떻게**: g049-topics-fix.mjs(dry-run → audit → --apply · 낯선 단어 · 합침 표 · DIFF3) · g049-song-variants.mjs(--fetch KR · JP → 적용 + g049-song-hand.mjs) · g049-scope-muni.mjs(scope · 광역 · 행정시 · 일반구 — 위키백과 2 페이지) · g049-apply-q1491.mjs(두 DB · 백업 · 열린 판 0).
