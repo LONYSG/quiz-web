@@ -1,15 +1,15 @@
-[MAIN R092 — ★ **노래 맞히기 = 제목만 · 제일 먼저 맞힌 한 사람만 +1 · 바로 다음 곡**(찬종 2026-11-10 실전 중 "제목이나 가수 둘 중 하나만 맞히면 정답 처리네? 그냥 제목만 인정" → "제일 먼저 맞힌 사람만 +1 하고 넘어가는 걸로") — 작은 라운드 · D-349 · A119 · 마이그레이션 없음 · 1~1.5시간]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
-TASK: R084 가 노래 맞히기를 "제목 **또는** 가수 중 하나라도 치면 점수 · 처음 맞힌 순서 3 · 2 · 1(그 뒤 1) · 둘 다 +1 · 전원 맞히면 일찍 공개" 로 만들었다(shared/src/minigame/song.ts 머리 · 01 16절 노래 줄 · D-341). 찬종이 친구들과 실전에서 보고 바꾸기로 했다 — **① 정답은 제목만 ② 곡마다 제일 먼저 제목을 맞힌 한 사람만 +1 ③ 맞히는 순간 그 곡은 끝 → 공개(제목 · 가수 · 맞힌 사람) → 다음 곡.** 아무도 못 맞히면 30초 뒤 공개 · 전원 0. 설계 결정(되돌리기 쉬움): 가수를 치면 **점수 없이 "가수 말고 제목을 쳐 주세요" 피드백**(틀림과 구분 — 가수는 이미 아는 것이라 새는 정보가 아님) · `SONG_ORDER_POINTS` · `SONG_LATE_POINTS` · `SONG_BOTH_BONUS` 는 상수 하나 `SONG_FIRST_POINT = 1` 로 · 이 노래 몇 년도?(songyear)는 그대로.
+[MAIN R093 — ★ **실전 제보 화면 3**(찬종 2026-11-10 친구들과 실서버 플레이 — app_reports #120 · #121) — 순서대로 결과 보기 버튼 중앙 정렬 · 로비 분류 고르기 "|" 표시 · 결과 창 내 줄 테두리 짤림 — 작은 라운드 · D-350 · 마이그레이션 없음 · 1시간 · R092 와 같은 창]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
+TASK: 실 DB `app_reports`(quizweb) 에 실전 제보 셋이 왔다(설계가 읽음 · `npm run reports:report` 로 다시 볼 것). 이 라운드는 화면 둘 — **#120**(minigame:order:final · "보기가 버튼에서 중앙 정렬이 안됨") · **#121**(game:question · "로비에서 분류 선택할 때 | 표시가 같이 붙어있어서 이상함. 그리고 결과 창에서 내 영역 표시하는 테두리가 두꺼워서 그런가 약간 테두리 부분이 짤림"). #119(답 두 개 문항)는 GEN G059 몫.
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5`)
 
-■ 고정 규칙: docs/16 그대로 — **작은 라운드 끝 점검 규칙**(docs/16 §F — 건드린 것만: typecheck · vitest · build · smoke · 봇 song(있으면) · ui-check 한 장(노래 — 맞힌 순간 공개)). 번호: **D-349** · **A119** · 10 **72절** · 01 **16-R092** · 마이그레이션 없음. 하위 에이전트 0 · quizweb_test · 실 DB 쓰기 0. ★ **실 3000 서버 · 터널은 건드리지 않는다**(찬종이 친구들과 플레이 중일 수 있음 — 끝 점검의 smoke · 봇은 quizweb_test · 다른 포트 · `--url http://localhost:3400` 꼴 · 메모리 3GB 미만이면 build 전에 멈추고 한 줄).
-■ 먼저 읽기: `shared/src/minigame/song.ts`(matchSong · SongPart · 점수 상수 · 머리 주석) · `server/src/minigame/songGames.ts`(170~215 줄 — got · bothMs · feedback · hit · 일찍 공개 · 점수) · `server/src/minigame/songGames.test.ts` · `shared/src/minigame.ts` 116 줄(oneLine) · 노래 화면(입력 · 피드백 · 공개 — 누가 뭘 맞혔나) · docs/04 1051~1052(feedback · extra) · 18 §10 · 01 16절 노래 줄 · 07 D-341.
+■ 고정 규칙: docs/16 그대로 — **작은 라운드 끝 점검 규칙**(docs/16 §F — 건드린 것만: typecheck · vitest · build · ui-check 고친 화면 셋 · 봇 0). 번호: **D-350** · 01 **16-R093** 한 줄 · 10 **73절**. 하위 에이전트 0 · 실 DB 쓰기 = **`reports:handle --id 120 --id 121 --note "R093 …" --yes` 만**(열린 판 상관없음 — 제보 표만). ★ **실 3000 서버 · 터널은 건드리지 않는다**(플레이 중일 수 있음 — 메모리 3GB 미만이면 build 전에 멈추고 한 줄).
+■ 먼저 읽기: `npm run reports:report`(#120 · #121 의 device · screen · layout 칸 — ui · dpr · viewport) · 순서대로 미니게임 결과 화면(보기 버튼 · minigame:order:final) · 로비 분류 고르기(GameSettings.tsx — 분류 이름 목록 · 구분자 "|" 가 글자로 붙어 보이는 곳) · `GameResult.tsx` 104 줄(`mine` 행) + styles `.mine` 테두리 · docs/16 §F.
 ■ 할 일
-A. **판정 · 흐름**: matchSong 은 그대로(title · artist 구분 유지 — 피드백에 씀). songGames: `part === 'artist'` → `feedback = { result: 'artist', text }`(점수 · 상태 변화 없음 · tries 는 셈) · `part === 'title'` 이고 **아직 아무도 못 맞힌 곡** → 그 사람 `won: true` · firstMs · 점수 `SONG_FIRST_POINT`(1) · **곡 즉시 끝 → 공개 단계**(SONG_REVEAL_MS 그대로 · 노래는 계속 흐름) → 다음 곡. 같은 틱에 둘이 들어오면 **먼저 온 하나만**(서버 도착 순 — 결정적) · 그 뒤 입력은 받지 않음(공개 중 입력 무시). 못 맞힌 채 30초 → 공개 · 전원 0. 판 결과 extra: `{ won, firstMs, tries, points, fail? }`(title · artist · bothMs 제거 — 옛 행은 읽기만 호환). 결과 화면 정렬 = 점수 → 맞힌 곡 수.
-B. **화면**: 피드백 'artist' → "가수 말고 제목을 쳐 주세요"(틀림과 다른 색) · 입력칸 안내 "제목을 치세요 — 제일 먼저 맞힌 한 사람만 +1" · 공개 화면 "○○ 님이 n초 만에 맞혔어요" 또는 "아무도 못 맞혔어요" · oneLine "30초 듣고 **제목**을 치세요! **제일 먼저 맞힌 사람만 +1** · 3곡".
-C. **검사**: songGames.test(가수 → artist 피드백 · 점수 0 / 첫 제목 → +1 · 곡 끝 / 둘째 입력 무시 / 아무도 못 맞힘 → 30초 공개 0) · shared 타입(`SongFeedback.result` 에 'artist') · 봇 song 이 있으면 경로 하나.
-D. **문서**: 07 D-349(찬종 말 두 줄 그대로 + 설계 결정 피드백) · 01 16절 노래 줄 + 16-R092 · 18 §10 판정 줄 · 04 1051(feedback 'artist') · 1052(extra 꼴 — 옛 행 호환 한 줄) · 10 72절 · 13 A119(체감 — 1점짜리 3곡이 싱거운가 · 가수 피드백) · 05 · 06 · README R · `ai-out/R092.txt`(0 ★ 찬종이 볼 것: ① 바뀐 규칙 한 줄 ② 맞힌 순간 화면 · 가수 쳤을 때 화면 ③ **적용은 메뉴 1 → [1] 다시**(플레이가 끝난 뒤 — 켜진 서버는 옛 규칙 그대로) · 1 한 것 · 끝 점검 표 · 2 결정 필요).
-■ 하지 말 것: songyear · 노래 데이터 파일 · 다른 미니게임 · 실 서버 · 마이그레이션 · 13 A118 · GEN · VERIFY 몫.
-■ 커밋: 2(코드 · 문서) · fetch → rebase --autostash → push(503 = VPN) · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-■ 터미널 마지막 줄: "R092 끝 — ★ 찬종: 플레이 끝난 뒤 메뉴 3 → 1 [1] 로 다시 켜면 적용 · /clear 해도 됨".
+A. **순서대로 결과(#120)**: 보기(정답 순서 · 내 순서) 버튼 안 글이 가운데 오게 — 글 길이가 다른 보기도 같은 폭 · 한 줄 넘치면 줄바꿈 가운데. 제보 device 의 viewport 로 ui-check.
+B. **로비 분류 고르기(#121 앞)**: 분류 이름 사이 구분 "|" 가 이름에 붙어 보이는 것 — 구분자를 글자가 아니라 **여백 · 점(·) · 칩 꼴** 중 하나로(설계 권장: 칩 — 이미 체크 버튼이면 구분자 자체를 뺌). 어느 화면인지 제보 screen `game:question` 이지만 말은 "로비에서 분류 선택할 때" — 로비의 분류 선택 UI 를 본다.
+C. **결과 창 내 줄 테두리(#121 뒤)**: `.mine` 테두리가 두꺼워 카드 모서리 · 옆이 잘림 — 테두리 두께를 줄이거나 안쪽 그림자(inset box-shadow) 로 바꿔 **잘리지 않게** · 카드 스크롤 영역 overflow 확인 · m360 · pc 둘 다.
+D. **검사 · 문서**: ui-check 셋(전 · 후) · 07 D-350(제보 두 줄 그대로 + 고친 방법) · 01 16-R093 · 10 73절 · 05 · 06 · README R · `reports:handle` 120 · 121 · `ai-out/R093.txt`(0 ★ 찬종이 볼 것: ① 셋 전 · 후 그림 ② **적용은 플레이 끝난 뒤 메뉴 3 → 1 [1]**(R092 와 같이 올라감) · 1 한 것 · 끝 점검 표 · 2 결정 필요).
+■ 하지 말 것: #119(GEN) · 규칙 · 미니게임 판정 · 실 서버 · 마이그레이션 · 다른 화면 손질.
+■ 커밋: 1~2 · fetch → rebase --autostash → push(503 = VPN) · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+■ 터미널 마지막 줄: "R093 끝 — ★ 찬종: 플레이 끝난 뒤 메뉴 3 → 1 [1](R092 + R093) · /clear 해도 됨".
 ■ 답변: 한국어 · 터미널 5줄 이내.
