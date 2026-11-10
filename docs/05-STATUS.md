@@ -17,6 +17,7 @@
 > ★ Track D 추가: **V038**(2026-11-08 · 알가치 3 등급 1·2 재정비 2묶음 368 — 새 기준 132 + G034 활성 176 + 대조 60 · 두 단계 blind R·S·C · fix 127(35%: 새 기준 73% · G034 활성 18% · 대조 0%) · blind 전후 98.5 → 97.7%(천장) · crossans 표본 100: 핵심 38 · 덧붙임 24 · 누설 30 · 오탐 8 → 약 1,500 힌트 · 등급 폴백 실측 판 12 · 폴백 0 · `ai-out/V038.txt` · `audit/v038-refurb.json` · `v038-crossans.json` · CV-161~163 · C97 · DB 쓰기 없음 — 적용은 G037)
 > ★ Track D 추가: **V039**(2026-11-08 · 미니게임 주제 세트 30 출처 대조 — verified 21(1,442) · candidate 9(fixes 54) · rejected 0 · 빠짐 17 · 더함 3 · rename 24 · 위키 · Data Dragon · PokeAPI 직접 받음 · `ai-out/V039.txt` · `audit/v039-topics.json` · CV-164~165 · C100 · DB 쓰기 없음 — 적용은 G039 · 적재는 R080)
 > ★ Track D 추가: **V048**(2026-11-10 · 라이어 2차 570 항목 · fool 1,710 전수 — 교체 94 · remove 3 · verified 2 + candidate 13 · 적용 뒤 라이어 1,414 · `ai-out/V048.txt` · CV-181~182)
+> ★ Track D 추가: **V049**(2026-11-10 · 라이어 새 주제 5 · 181 항목 · fool 543 전수 — 교체 50(9.2%) · remove 0 · verified 1(카페) + candidate 4 · `ai-out/V049.txt` · CV-183~184 · 다음 G056 적용)
 > ★ Track D 추가: **V047**(2026-11-10 · 캐치 2차 표본 300 — 문제 0.33% → 새 14 파일 verified · 메뉴 1 캐치 단어 6,130 · `ai-out/V047.txt` · CV-180)
 > ★ Track D 추가: **V046**(2026-11-10 · 수도권 전철 13 세트 609 역 + 시·군·구 추가분 49 대조 — metro verified 11 · candidate 2 · 추가분 fix 0 · 메뉴 1 지하철 11 세트 · `ai-out/V046.txt` · CV-178~179)
 > ★ Track D 추가: **V045**(2026-11-09 · 캐치마인드 풀 10 세트 1,651 항목 전수 판정 — 전부 candidate+fixes · remove+그림 중복 302 · 적용 뒤 단어 1,349 · `ai-out/V045.txt` · CV-176~177 · G049 가 적용)

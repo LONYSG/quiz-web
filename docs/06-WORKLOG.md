@@ -24,6 +24,11 @@
 - 검사: 봇 draw 22 · liar 21 · liarfool 8 · topicsets 10 · ui-check r089 5 · r090 4(새) · 끝 점검은 R090.txt.
 - 남은 것: 객관식 데이터(GEN · options.json) 뒤 hidden 끄기 · optIn 표시(GEN) · 체감 A117.
 
+## 2026-11-10 — V049 라이어 새 주제 5 전수 판정 (VERIFY · 판정만 · DB 없음 · 웹 0)
+- 181 항목 · fool 543 전수 — 교체 50(tooClose 48 · tooFar 2 = 9.2%) · remove 0 · diff 5 · sub 1 · 변형 2. verified 1(카페) + candidate 4. 길거리 간식은 약한 주제로 소견.
+- 쓴 것: 새 5 파일 verify 칸 + status · items 불변 · `ai-out/V049.txt` · `audit/v049-topics.json` · `audit/v049-raw/apply.mjs` · 13 C128 · CV-183~184.
+- 남은 것: CV-183(G056 적용) · 길거리 간식 보충 여부 · 교체를 줄일지 설계 결정.
+
 ## 2026-11-10 — V048 라이어 제시어 2차 15 파일 전수 판정 (VERIFY · 판정만 · DB 없음)
 - 570 항목 · fool 1,710 전수 — 교체 94(tooClose 63 · tooFar 10 · bad 21 = 5.5%) · remove 3 · dup 2 · diff 21 · 변형 8. verified 2 + candidate 13.
 - 쓴 것: liar-*-2 15 파일 verify 칸 + status · items 불변 · `ai-out/V048.txt` · `audit/v048-topics.json` · 13 C125 · CV-181~182.
