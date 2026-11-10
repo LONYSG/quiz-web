@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-10 — R092 노래 맞히기 제목만 · 첫 사람만 +1 (MAIN · D-349)
+- 무엇: 찬종 실전 피드백 — 정답 제목만 · 곡마다 첫 사람만 +1 · 맞히는 순간 곡 끝 → 공개 → 다음 곡 · 가수 = 'artist' 알림(점수 없음 · warn 색) · SONG_FIRST_POINT · songWinner · reveal.winner · 공개 "○○ 님이 n초 만에 맞혔어요".
+- 문제: 옛 ui-check r084 · 봇 노래 판이 둘 다 · 3·2·1 기대 → 새 규칙으로 개정 · 판2(재생 실패)는 제목이 먼저 들어가면 곡이 끝나 실패 보고를 앞으로 옮김 · 봇 포트 3400 이 이번엔 예약 범위(3308–3907) → 기본 3200 으로 돌림.
+- 검사: vitest 750 · smoke 12 · 봇 mgonly 75 · ui-check r084 10. 실 3000 · 터널 손대지 않음. 남은 것: 체감 A119 · 적용은 메뉴 3 → 1 [1].
+
 ## 2026-11-10 — 이모지 문항 활성 적재 (G058, GEN · DB 쓰기 = 적재 + worth)
 - 무엇: V050 fixes 151 · drop 22 를 generated/g057 에 기계 적용(scripts/g058-emoji-apply.mjs) · 바뀐 줄 132 재블라인드(sonnet 1 — 되돌림 3) · 해설 새 줄 풀이 129 · pipeline-load --round g057 활성 729 를 quizweb · quizweb_dev 둘 다 · worth 2(scripts/g058-apply-worth.mjs).
 - 문제: V050 힌트 안 2 가 H2 막힘 → GEN 다시 씀 · variant-add 2 는 정규화로 이미 받음 · 모래시계 category 는 리프 없음 · dev 는 옛 사본(활성 6,667) · crossans 경고 355 → 1,077(흔한 낱말 정답).

@@ -1046,11 +1046,11 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 미니게임 키 | `'song'`(노래 맞히기) · `'songyear'`(이 노래 몇 년도?) — MINIGAMES 맨 앞 · `minigameKeys` 기본에 들어감 |
 | `MinigameInfo.scoring` | `'value'` 더함 — 판 값이 곧 판 점수(노래 맞히기) |
 | `minigame.state` round.params | song · songyear = `{ previewUrl }`(+ songyear `min` 1950 · `max` 올해) · 연습은 `dummy: true` — 제목 · 가수 · 연도 · 그림 없음 |
-| round.reveal (공개) | `{ title, artist, year, artworkUrl }` · 건너뛴 곡 `{ …, skipped: true, fails }` |
+| round.reveal (공개) | `{ title, artist, year, artworkUrl }` · ★ R092 song 은 `winner`(계정 \| null) · `winnerMs` 더함 · 건너뛴 곡 `{ …, skipped: true, fails }` |
 | `minigame.submit` input | song `{ text, elapsedMs }`(여러 번) · songyear `{ value, elapsedMs }`(여러 번 — 마지막) · 둘 다 `{ fail: true }`(재생 실패 보고 · 판마다 한 번 — 두 번째는 `minigame.rejected`) |
-| `minigame.feedback` (본인에게만) | song `{ result: 'ok' \| 'dup' \| 'wrong', part?: 'title' \| 'artist', text, title?, artist? }` · songyear `{ result: 'set', value }` |
-| 판 결과 행 extra | song `{ title, artist, firstMs, bothMs, tries, points, fail? }` · songyear `{ guess, off, fail? }` · 건너뜀 `{ skipped: true }` |
-| 판 일찍 끝 | song — 접속 참가자 전원이 하나라도 맞힘 · 둘 다 — 접속자 과반 실패 보고(엔진 `earlyEnd` 훅) |
+| `minigame.feedback` (본인에게만) | song ★ R092 `{ result: 'ok' \| 'artist' \| 'wrong', part?: 'title' \| 'artist', text }`(ok = 제목 맞힘 +1 · 곡 끝 · artist = 가수를 침 · 점수 없음 — shared `SongFeedback` · 옛 'dup' 없어짐) · songyear `{ result: 'set', value }` |
+| 판 결과 행 extra | song ★ R092 `{ won, firstMs, tries, points, fail? }`(옛 R084 행 `{ title, artist, firstMs, bothMs, … }` 은 표에서 읽기만 호환) · songyear `{ guess, off, fail? }` · 건너뜀 `{ skipped: true }` |
+| 판 일찍 끝 | song ★ R092 — 누가 제목을 맞히는 순간(그 뒤 입력 not_now) · 둘 다 — 접속자 과반 실패 보고(엔진 `earlyEnd` 훅) |
 | 경험 | `minigame_item_experiences` 키 `song` · `songyear` · item_key = `song-NNNN` |
 | 적재 | `minigame_items.game = 'song'`(0018 재사용) · `scripts/minigame-load.mjs --game song [--allow-candidate]` |
 
