@@ -1074,6 +1074,16 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 75. ★ R095 — 실전 제보 3차 (D-352)
+
+| 무엇 | 어떻게 | 결과 |
+|---|---|---|
+| shared 단위 | `draw.test`(+2) — drawInitials: 구두 ㄱㄷ · 라이온 킹 ㄹㅇㅇ ㅋ · 공백 정리 · 소 ㅅ / Big Ben B__ B__ · 7 `_` · X 게임 `_ ㄱㅇ` · 2002 월드컵 `____ ㅇㄷㅋ` | 통과 |
+| scripts 단위 | `backup-prune.test`(+2) — dev 백업이 많아도 실 백업 안 지움(DB 이름마다 최신 N) · backupName · dbNameOf(DB_NAME > DATABASE_URL > quizweb) | 통과 |
+| ui-check **r095**(새 · 4) | 묶음 r095(`R095_TAG=before|after node scripts/ui-check-bundles.mjs r095`) · ① lab 방 틀 노래 · 반응 · 순서대로 · 많이 말하기 × 2560 · 1280 · m360 — 판 ÷ (판 + 채팅) ≥ 0.5 · 넘침 0 ② 캐치 방장 2560 · 1280 · 손님 m360 출제 — 도구 넷 svg · 글자 0 · aria-label · 색 점 같은 줄 · 팔레트 판 도구 칸 밖 0 ③ 색 점 → 팝업 12색 · 세부 색 · 점 밑 · 화면 안 · 고르면 닫힘 · Esc 닫힘 ④ 손님 화면 초성 = 제시어 음절 수 · 시스템 줄 | 전 1/4(초성은 A 커밋 뒤라 통과) → 후 4/4 |
+| ui-check **r089**(개정) | 색 · 세부 색 고르기 전에 색 점 열기 · 모바일 닫힌 도구 띠 버튼 수 기준 20 → 12(팔레트는 팝업 안) | 5/5 |
+| typecheck · vitest · build | 작은 라운드 §F | 0 · 757 · 0 |
+
 ## 74. ★ R094 — 실전 제보 화면 셋 2차 (D-351)
 
 | 무엇 | 어떻게 | 결과 |

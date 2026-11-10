@@ -5319,7 +5319,8 @@ async function r089Flow(browser) {
     JSON.stringify({ before, filled, redo1, redo2, cleared, restored }),
   );
   record('★★ R089 세부 색 → 최근 색 · E(지우개) · ](굵게) · P(펜 — 굵기 따로) · 스포이드 버튼', custom.recent[0] === '#123456' && eraser.tool === 'eraser' && pen.tool === 'pen' && eraser.w !== '' && pen.w !== '' && eraser.w !== pen.w && ['system', 'canvas'].includes(eye), JSON.stringify({ custom, eraser, pen, eye }));
-  record('★★★ R089 도구 띠 — PC 1280 · FHD 125% · FHD 도구 화면 안 · 넘침 0 · 모바일 출제 도구 가로 화면 안(줄 바꿈) · 넘침 0', Object.values(sizes).every((m) => m.toolsIn && m.over <= 1) && mob.n >= 20 && mob.inX && mob.over <= 1, JSON.stringify({ sizes, mob }));
+  // ★ R095 — 팔레트 12 · 세부 색 · 최근은 색 점 팝업 안이라 닫힌 도구 띠 버튼 수는 16(옛 기준 20 → 12)
+  record('★★★ R089 도구 띠 — PC 1280 · FHD 125% · FHD 도구 화면 안 · 넘침 0 · 모바일 출제 도구 가로 화면 안(줄 바꿈) · 넘침 0', Object.values(sizes).every((m) => m.toolsIn && m.over <= 1) && mob.n >= 12 && mob.inX && mob.over <= 1, JSON.stringify({ sizes, mob }));
   S.close();
   H.close();
   G.close();

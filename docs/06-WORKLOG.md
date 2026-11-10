@@ -18,6 +18,11 @@
 - 문제: 브리핑 추정 ≈60 보다 적음(브리핑 SQL 그대로 36) → 느슨한 추가 검사 27 도 봄 — 대상 0. dev 는 쓰기 전 백업 안 함(backup.mjs 기본 = quizweb) — undo json 으로 대신.
 - 검사: dry-run 두 DB 일치 · checkAnswerSet · checkHint · crossans 경고 0 · hint-check-active 막힘 0(두 DB). 결정 DG-097. 남은 것: 없음(다음 판부터 반영).
 
+## 2026-11-11 — R095 실전 제보 3차 (MAIN · D-352)
+- 무엇: 찬종 실전 제보 #116(캐치 초성 한 글자 · 도구 글자 → 아이콘 · 팔레트 동떨어짐) · #117 앞부분(미니게임 채팅 줄이고 판 크게) · G060 백업 이름 사고 — shared drawInitials(generateHint 낱말마다) · DrawStage 아이콘(Lucide) + 색 점 팝업(useDismiss) · styles .draw-toolrow/.draw-color-pop · .mg-card 칸 ≥ 반 · backup.mjs/backup-prune DB 이름 · ops 메뉴 19 같은 규칙.
+- 문제: 옛 `.draw-tools > .draw-tool { margin: 0 }` 를 지우자 앱 button 기본 margin-top 14px 가 팝업 색 줄 사이에 살아남 → `.draw-tools button { margin: 0 }`. PC 옆 기둥이 overflow auto 라 팝업이 잘릴 자리 → 기둥 overflow 보임 · 맞힌 사람 목록만 스크롤. 기존 r089 검사는 팔레트를 바로 누르므로 색 점 먼저 열게 고침. lab 순서대로 장면은 카드가 없어 판 칸이 비어 보임(실제 판은 카드로 참).
+- 검사: ui-check r095 전 1/4 → 후 4/4 · r089 · typecheck 0 · vitest 757 · build 0 · 봇 0. 실 3000 · 터널 손대지 않음. 남은 것: 체감 A121 · 적용은 메뉴 3 → 1 [1].
+
 ## 2026-11-11 — R094 실전 제보 화면 셋 2차 (MAIN · D-351)
 - 무엇: 찬종 실전 제보 #123(번개손 결과 "나 · 퀵드로우 — 가짜 신호 1번" 칸 밖) · #124(`_` 뿐인 힌트 = 숫자 알림) · #125(채팅 줄이고 문제 넓게) — MinigameStage rx-who 두 덩이 · shared hintKind + Question "· 숫자 n자리" · QuestionText 넓은 칸 기본 글자(24 · 21 · 19) · PC QUESTION_ACTIVE/RESOLVED 문제 칸 min-height 50% · 지문 margin-block auto.
 - 문제: 브리핑 C 는 `.stage` 오른쪽 열을 채팅으로 봤지만 실제는 참여자 열 · 채팅은 문제 아래(2560 309 : 926) → 폭 대신 높이를 나눔(좌석 열 그대로 · D-351 에 적음). 실험실 장면 뒤 방 만들기는 홈으로 먼저 가야 함(ui-check 첫 실행 실패 1).
