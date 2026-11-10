@@ -16,7 +16,7 @@
 // =============================================================================
 
 import { randomInt } from 'node:crypto';
-import { LIAR, finalPasses, liarRoundScores, flexCanon, matchTopic, normalizeAnswer, tallyVotes, type LiarMode, type LiarOutcome, type LiarPhase } from '@quiz/shared';
+import { LIAR, appealPasses, canAppeal, finalPasses, liarRoundScores, flexCanon, matchTopic, normalizeAnswer, tallyVotes, type LiarAppeal, type LiarMode, type LiarOutcome, type LiarPhase } from '@quiz/shared';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import { emitRoomPerPlayer } from '../rooms/emit.js';
 import type { Player, Room } from '../rooms/types.js';
@@ -70,6 +70,9 @@ export interface LiarRound {
   outcome: LiarOutcome | null;
   guess: string | null;
   guessOk: boolean | null;
+  /** ★ R091 (D-348) — 이의제기 투표(라이어 제외 · 계정 → 인정 true / 기각 false) · 결과(null = 이의제기 없음) */
+  appealVotes: Map<string, boolean>;
+  appeal: LiarAppeal | null;
   scores: Record<string, number> | null;
 }
 
@@ -218,6 +221,11 @@ export interface LiarView {
   outcome: LiarOutcome | null;
   guess: string | null;
   guessOk: boolean | null;
+  /** ★ R091 — 이의제기: 내 표 · 낸 수 · 낼 수 있는 수 · 결과(공개 때) */
+  myAppealVote: boolean | null;
+  appealVoted: number;
+  appealEligible: number;
+  appeal: LiarAppeal | null;
   scores: Record<string, number> | null;
 }
 
@@ -226,7 +234,9 @@ export function liarView(room: Room, viewer: string): LiarView | null {
   const r = run?.cur;
   if (!run || !r || room.state !== 'LIAR') return null;
   const part = r.participants.includes(viewer);
-  const open = r.phase === 'guess' || r.phase === 'reveal';
+  const open = r.phase === 'guess' || r.phase === 'appeal' || r.phase === 'appealVote' || r.phase === 'reveal';
+  // ★ R091 — 이의제기 단계부터 라이어의 답 · 키워드를 모두에게(라이어가 오타 · 같은 뜻인지 보고 정하고 · 나머지가 견줘 투표)
+  const appealing = r.phase === 'appeal' || r.phase === 'appealVote';
   const isLiar = part && r.liar === viewer;
   // ★ R088 — 바보형: 맞히기 · 공개 전까지 라이어도 자기가 라이어인 줄 모른다
   const amLiar = isLiar && (r.mode !== 'fool' || open);
@@ -239,7 +249,7 @@ export function liarView(room: Room, viewer: string): LiarView | null {
     topic: r.topic,
     nameKo: r.nameKo,
     // ★ 키워드는 시민에게만(라이어 · 구경꾼은 공개 뒤) — guess 단계에서는 라이어가 맞히는 중이라 공개 전과 같다
-    keyword: r.phase === 'reveal' ? r.keyword : isLiar ? (r.mode === 'fool' && !open ? r.foolWord : null) : part ? r.keyword : null,
+    keyword: r.phase === 'reveal' || appealing ? r.keyword : isLiar ? (r.mode === 'fool' && !open ? r.foolWord : null) : part ? r.keyword : null,
     amLiar,
     mode: r.mode,
     foolWord: r.phase === 'reveal' ? r.foolWord : null,
@@ -260,8 +270,12 @@ export function liarView(room: Room, viewer: string): LiarView | null {
     lastFinal: r.lastFinal,
     liar: open ? r.liar : null,
     outcome: open ? r.outcome : null,
-    guess: r.phase === 'reveal' ? r.guess : null,
-    guessOk: r.phase === 'reveal' ? r.guessOk : null,
+    guess: r.phase === 'reveal' || appealing ? r.guess : null,
+    guessOk: r.phase === 'reveal' || appealing ? r.guessOk : null,
+    myAppealVote: r.appealVotes.has(viewer) ? r.appealVotes.get(viewer)! : null,
+    appealVoted: r.appealVotes.size,
+    appealEligible: appealVoters(room, r).length,
+    appeal: r.phase === 'reveal' ? r.appeal : null,
     scores: r.phase === 'reveal' ? r.scores : null,
   };
 }
@@ -345,6 +359,8 @@ function startRound(room: Room, now: number): boolean {
     outcome: null,
     guess: null,
     guessOk: null,
+    appealVotes: new Map(),
+    appeal: null,
     scores: null,
   };
   console.log(`[liar] ${room.id} 라운드 ${run.cur.no}/${run.roundsTotal} — 주제 ${word.set.nameKo} · ${participants.length}명`);
@@ -361,7 +377,8 @@ export type ChatGate = { ok: true } | { ok: false; reason: 'not_turn' | 'keyword
 export function liarChatGate(room: Room, _accountId: string, text: string): ChatGate {
   const r = room.game?.liar?.cur;
   if (!r || room.state !== 'LIAR') return { ok: true };
-  if (r.phase !== 'reveal' && mentionsKeyword(text, r)) return { ok: false, reason: 'keyword', message: '키워드는 말할 수 없어요' };
+  // ★ R091 — 이의제기 단계부터는 키워드가 공개라 채팅 자유(설득 — 음성 통화 전제)
+  if (r.phase !== 'reveal' && r.phase !== 'appeal' && r.phase !== 'appealVote' && mentionsKeyword(text, r)) return { ok: false, reason: 'keyword', message: '키워드는 말할 수 없어요' };
   return { ok: true };
 }
 
@@ -428,8 +445,49 @@ export function liarGuess(room: Room, accountId: string, text: string): LiarInpu
   if (!t) return 'bad';
   r.guess = t;
   r.guessOk = matchTopic(r.set.matcher, t) === r.itemId;
-  endRound(room, r, Date.now());
+  const now = Date.now();
+  // ★ R091 (D-348) — 오답이면 라이어에게 이의제기 기회(APPEAL_MS · 한 라운드 한 번 — 맞히기가 한 번뿐이라 저절로)
+  if (canAppeal(r.guess, r.guessOk) && appealVoters(room, r).length > 0) {
+    setPhase(r, 'appeal', now, T.APPEAL_MS);
+    broadcast(room);
+  } else endRound(room, r, now);
   return 'ok';
+}
+
+/** ★ R091 — 이의제기 표를 낼 수 있는 사람: 그 라운드 참가자 중 라이어 빼고 지금 접속 중 */
+function appealVoters(room: Room, r: LiarRound): string[] {
+  return live(room, r.participants).filter((a) => a !== r.liar);
+}
+
+/** ★ R091 — 라이어가 [이의제기] → 나머지 전원 투표(APPEAL_VOTE_MS) */
+export function liarAppeal(room: Room, accountId: string): LiarInputResult {
+  const r = room.game?.liar?.cur;
+  if (!r || room.state !== 'LIAR' || r.phase !== 'appeal') return 'not_now';
+  if (accountId !== r.liar) return 'bad';
+  r.appealVotes = new Map();
+  setPhase(r, 'appealVote', Date.now(), T.APPEAL_VOTE_MS);
+  broadcast(room);
+  return 'ok';
+}
+
+/** ★ R091 — 인정(true) / 기각(false) · 바꿀 수 있음 · 다 냈으면 바로 집계 */
+export function liarAppealVote(room: Room, accountId: string, yes: boolean): LiarInputResult {
+  const r = room.game?.liar?.cur;
+  if (!r || room.state !== 'LIAR' || r.phase !== 'appealVote') return 'not_now';
+  if (!r.participants.includes(accountId) || accountId === r.liar) return 'bad';
+  r.appealVotes.set(accountId, yes);
+  if (appealVoters(room, r).every((a) => r.appealVotes.has(a))) endAppeal(room, r, Date.now());
+  else broadcast(room);
+  return 'ok';
+}
+
+function endAppeal(room: Room, r: LiarRound, now: number): void {
+  const yes = [...r.appealVotes.values()].filter(Boolean).length;
+  const no = r.appealVotes.size - yes;
+  const passed = appealPasses(yes, no);
+  r.appeal = { guess: r.guess ?? '', yes, no, passed };
+  if (passed) r.guessOk = true;
+  endRound(room, r, now);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -574,9 +632,10 @@ function endRound(room: Room, r: LiarRound, now: number): void {
     scores: r.scores,
     mode: r.mode,
     foolWord: r.foolWord,
+    appeal: r.appeal,
   }).catch((err) => console.error('[liar] ★ 라운드 기록 실패:', (err as Error).message));
   void recordLiarExperience(r.participants, r.itemId).catch((err) => console.error('[liar] ★ 경험 기록 실패:', (err as Error).message));
-  console.log(`[liar] ${room.id} 라운드 ${r.no} 끝 — ${outcome}${r.guessOk ? ' · 키워드 맞힘' : ''}`);
+  console.log(`[liar] ${room.id} 라운드 ${r.no} 끝 — ${outcome}${r.guessOk ? ' · 키워드 맞힘' : ''}${r.appeal ? ` · 이의제기 ${r.appeal.passed ? '인정' : '기각'}(${r.appeal.yes} : ${r.appeal.no})` : ''}`);
   broadcast(room);
 }
 
@@ -617,6 +676,13 @@ export function checkLiar(room: Room, now: number): void {
     case 'guess':
       r.guessOk = false;
       endRound(room, r, now);
+      return;
+    case 'appeal':
+      // ★ R091 — 안 누름 → 지금처럼 공개
+      endRound(room, r, now);
+      return;
+    case 'appealVote':
+      endAppeal(room, r, now);
       return;
     case 'reveal':
       if (run.done >= run.roundsTotal) {

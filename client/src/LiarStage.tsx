@@ -31,6 +31,8 @@ const PHASE_LABEL: Record<LiarView['phase'], string> = {
   defense: '최후의 변론',
   final: '죽일까 살릴까',
   guess: '라이어의 마지막 기회',
+  appeal: '이의제기?',
+  appealVote: '이의제기 투표',
   reveal: '공개',
 };
 
@@ -82,7 +84,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
       : view.phase === 'defense' || view.phase === 'final'
         ? lastDefense
         : null;
-  const boutTag = view.bouts > 1 && view.phase !== 'assign' && view.phase !== 'describe' && view.phase !== 'reveal' && view.phase !== 'guess' ? `${view.bout} / ${view.bouts}바퀴` : null;
+  const boutTag = view.bouts > 1 && view.phase !== 'assign' && view.phase !== 'describe' && view.phase !== 'reveal' && view.phase !== 'guess' && view.phase !== 'appeal' && view.phase !== 'appealVote' ? `${view.bout} / ${view.bouts}바퀴` : null;
 
   return (
     <section className={`card liar-card liar-${view.phase}`} data-liar-phase={view.phase} data-liar-bout={view.bout} aria-live="polite">
@@ -209,6 +211,26 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
         </div>
       )}
 
+      {/* ★ R091 (D-348) — 맞히기 오답 직후: 라이어만 [이의제기] → 누르면 나머지 전원 인정/기각 */}
+      {view.phase === 'appeal' && (
+        <div className="liar-appeal" data-liar-appeal>
+          <p>
+            라이어 답 <strong>“{view.guess}”</strong> — 틀림 · 키워드 <strong>{view.keyword}</strong>
+          </p>
+          {view.amLiar ? (
+            <div className="liar-appeal-me">
+              <button type="button" className="primary" data-liar-appeal-btn onClick={() => socket.emit('liar.appeal', {})}>
+                이의제기
+              </button>
+              <span className="dim">오타 · 같은 뜻이면 이의제기 — 나머지가 투표해요</span>
+            </div>
+          ) : (
+            <p className="dim">라이어가 이의제기할지 정하는 중…</p>
+          )}
+        </div>
+      )}
+      {view.phase === 'appealVote' && <AppealVote view={view} me={me} socket={socket} />}
+
       {view.phase === 'reveal' && (
         <div className="liar-reveal" data-liar-reveal={view.outcome ?? ''}>
           <p className="liar-reveal-main">
@@ -224,6 +246,11 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
               ? `찾았다! ${view.guessOk ? `라이어가 키워드도 맞힘(“${view.guess}”) +${view.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS}` : view.guess ? `라이어 답 “${view.guess}” — 틀림` : '라이어가 답을 못 냈어요'}`
               : `${view.outcome === 'escaped' ? `시민 ${nameOf(view.accusedTried[view.accusedTried.length - 1] ?? null)} 님을 죽였어요` : `${view.bouts}바퀴 동안 라이어를 못 찾았어요`} — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}${view.guessOk ? ` · 키워드도 맞힘(“${view.guess}”) +${LIAR.SCORE_LIAR_SURVIVE_GUESS}` : view.guess ? ` · 라이어 답 “${view.guess}” — 틀림` : ''}`}
           </p>
+          {view.appeal && (
+            <p className={view.appeal.passed ? 'liar-appeal-line ok' : 'liar-appeal-line'} data-liar-appeal-result={view.appeal.passed ? 'passed' : 'rejected'}>
+              이의제기 {view.appeal.passed ? '인정' : '기각'}({view.appeal.yes} : {view.appeal.no})
+            </p>
+          )}
           {view.scores && Object.keys(view.scores).length > 0 && (
             <p className="liar-scores" data-liar-scores={Object.keys(view.scores).length}>
               {Object.entries(view.scores).map(([a, n]) => (
@@ -358,6 +385,32 @@ function FinalVote({ view, me, nameOf, socket }: { view: LiarView; me: string | 
         </div>
       ) : (
         <p className="dim">{me === view.accused ? '다른 사람들이 정하는 중…' : '구경 중'}</p>
+      )}
+    </div>
+  );
+}
+
+function AppealVote({ view, me, socket }: { view: LiarView; me: string | null; socket: Socket }) {
+  const can = me !== null && me !== view.liar;
+  return (
+    <div className="liar-appeal liar-final" data-liar-appeal-vote>
+      <p>
+        라이어의 답 <strong>“{view.guess}”</strong> / 키워드 <strong>{view.keyword}</strong> — 정답으로 인정할까요?{' '}
+        <span className="dim">
+          {view.appealVoted} / {view.appealEligible}명 냄 · 인정이 기각보다 많아야 인정
+        </span>
+      </p>
+      {can ? (
+        <div className="liar-final-btns">
+          <button type="button" className={view.myAppealVote === true ? 'primary picked' : 'primary'} data-liar-appeal-yes onClick={() => socket.emit('liar.appealVote', { yes: true })}>
+            인정{view.myAppealVote === true ? ' ✓' : ''}
+          </button>
+          <button type="button" className={view.myAppealVote === false ? 'ghost picked' : 'ghost'} data-liar-appeal-no onClick={() => socket.emit('liar.appealVote', { yes: false })}>
+            기각{view.myAppealVote === false ? ' ✓' : ''}
+          </button>
+        </div>
+      ) : (
+        <p className="dim">{me === view.liar ? '다른 사람들이 정하는 중… 채팅으로 설득해 보세요' : '구경 중'}</p>
       )}
     </div>
   );

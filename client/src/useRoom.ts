@@ -123,7 +123,7 @@ export interface DrawView {
 export interface LiarView {
   round: number;
   rounds: number;
-  phase: 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'reveal';
+  phase: 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'appeal' | 'appealVote' | 'reveal';
   phaseStartedAt: number;
   phaseEndsAt: number;
   topic: string;
@@ -153,6 +153,11 @@ export interface LiarView {
   outcome: 'caught' | 'escaped' | 'notfound' | null;
   guess: string | null;
   guessOk: boolean | null;
+  /** ★ R091 (D-348) — 이의제기: 내 표 · 낸 수 · 낼 수 있는 수 · 결과(공개 때 · null = 없음) */
+  myAppealVote: boolean | null;
+  appealVoted: number;
+  appealEligible: number;
+  appeal: { guess: string; yes: number; no: number; passed: boolean } | null;
   scores: Record<string, number> | null;
 }
 

@@ -1,6 +1,6 @@
 // R082 — 라이어 게임 순수 함수 · 설정 방식(mode)
 import { describe, expect, it } from 'vitest';
-import { LIAR, finalPasses, liarRoundScores, tallyVotes } from './liar.js';
+import { LIAR, appealPasses, canAppeal, finalPasses, liarRoundScores, tallyVotes } from './liar.js';
 import { validateRoomSettings } from './settings.js';
 
 const base = { questionCount: 10 };
@@ -28,6 +28,35 @@ describe('라이어 — 투표 · 찬반 · 점수', () => {
     // ★ R090 — 살아남은 라이어가 키워드도 맞히면 +1(기본형 · 바보형 같음)
     expect(Object.fromEntries(liarRoundScores({ outcome: 'escaped', liar: 'L', guessOk: true, hitters: [] }))).toEqual({ L: 4 });
     expect(Object.fromEntries(liarRoundScores({ outcome: 'notfound', liar: 'L', guessOk: true, hitters: ['a'], mode: 'fool' }))).toEqual({ L: 4 });
+  });
+});
+
+// ★ R091 (D-348) — 맞히기 이의제기
+describe('이의제기', () => {
+  it('버튼 — 답을 냈고 오답일 때만(빈 답 · 시간 초과 · 맞힘 = 없음)', () => {
+    expect(canAppeal('뉴욕', false)).toBe(true);
+    expect(canAppeal(null, false)).toBe(false); // 시간 초과
+    expect(canAppeal('   ', false)).toBe(false); // 빈 답
+    expect(canAppeal('', null)).toBe(false);
+    expect(canAppeal('뉴욕', true)).toBe(false); // 맞힘
+    expect(canAppeal('뉴욕', null)).toBe(false);
+  });
+  it('인정 > 기각 이어야 인정 · 동률 · 무투표 = 기각', () => {
+    expect(appealPasses(2, 1)).toBe(true);
+    expect(appealPasses(1, 0)).toBe(true);
+    expect(appealPasses(1, 1)).toBe(false);
+    expect(appealPasses(0, 0)).toBe(false);
+    expect(appealPasses(1, 2)).toBe(false);
+  });
+  it('인정되면 각 경우의 맞히기 점수 그대로 — 세 outcome × 두 모드', () => {
+    const sc = (outcome: 'caught' | 'escaped' | 'notfound', mode: 'basic' | 'fool', yes: number, no: number) =>
+      liarRoundScores({ outcome, liar: 'L', guessOk: appealPasses(yes, no), hitters: ['a'], mode }).get('L') ?? 0;
+    expect([sc('caught', 'basic', 2, 1), sc('caught', 'fool', 2, 1), sc('escaped', 'basic', 2, 1), sc('escaped', 'fool', 2, 1), sc('notfound', 'basic', 2, 1), sc('notfound', 'fool', 2, 1)]).toEqual([2, 1, 4, 4, 4, 4]);
+    // 기각(동률)이면 지금처럼
+    expect([sc('caught', 'basic', 1, 1), sc('caught', 'fool', 0, 0), sc('escaped', 'basic', 1, 1), sc('notfound', 'fool', 0, 2)]).toEqual([0, 0, 3, 3]);
+  });
+  it('시간 상수 — 버튼 8초 · 투표 10초', () => {
+    expect([LIAR.APPEAL_MS, LIAR.APPEAL_VOTE_MS]).toEqual([8_000, 10_000]);
   });
 });
 

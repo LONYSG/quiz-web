@@ -48,6 +48,9 @@ export const LIAR = {
   SCORE_LIAR_GUESS_FOOL: 1,
   /** ★ R090 (D-347 · 찬종 "안 들켰더라도 마지막에 정답 맞히는 기회 · 맞히면 추가 점수") — 살아남은 라이어(escaped · notfound)가 키워드도 맞히면 승리 점수에 더함(기본형 · 바보형 같음 · 못 맞혀도 깎지 않음) */
   SCORE_LIAR_SURVIVE_GUESS: 1,
+  /** ★ R091 (D-348 · 찬종 "라이어가 이의제기했을 경우에만 투표") — 맞히기 오답 직후 라이어만 이의제기 버튼(APPEAL_MS) → 누르면 나머지 전원 인정/기각(APPEAL_VOTE_MS) */
+  APPEAL_MS: 8_000,
+  APPEAL_VOTE_MS: 10_000,
 } as const;
 
 /** ★ R088 (D-345 · 찬종 "기본형 / 바보형") — 기본형 = 라이어는 자기가 라이어인 걸 안다 · 바보형 = 라이어도 다른 단어(fool)를 정답처럼 받는다 */
@@ -58,7 +61,7 @@ export function isLiarMode(v: unknown): v is LiarMode {
 }
 export const LIAR_MODE_LABEL: Record<LiarMode, string> = { basic: '기본형', fool: '바보형' };
 
-export type LiarPhase = 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'reveal';
+export type LiarPhase = 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'appeal' | 'appealVote' | 'reveal';
 export type LiarOutcome = 'caught' | 'escaped' | 'notfound';
 
 export const LIAR_START_BLOCK = `라이어 게임은 ${LIAR.MIN_PLAYERS}명부터 할 수 있어요.`;
@@ -87,4 +90,22 @@ export function liarRoundScores(r: { outcome: LiarOutcome; liar: string; guessOk
     if (r.guessOk) out.set(r.liar, r.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS);
   } else out.set(r.liar, LIAR.SCORE_LIAR_ESCAPE + (r.guessOk ? LIAR.SCORE_LIAR_SURVIVE_GUESS : 0));
   return out;
+}
+
+/** ★ R091 (D-348) — 이의제기 기록(liar_rounds.appeal · 공개 줄) */
+export interface LiarAppeal {
+  guess: string;
+  yes: number;
+  no: number;
+  passed: boolean;
+}
+
+/** ★ R091 — 이의제기 버튼을 보일지: 답을 냈고(빈 답 · 시간 초과 아님) 오답 판정일 때만 */
+export function canAppeal(guess: string | null, guessOk: boolean | null): boolean {
+  return typeof guess === 'string' && guess.trim().length > 0 && guessOk === false;
+}
+
+/** ★ R091 — 인정 > 기각 이어야 인정(동률 · 아무도 안 누름 = 기각) */
+export function appealPasses(yes: number, no: number): boolean {
+  return yes > no;
 }

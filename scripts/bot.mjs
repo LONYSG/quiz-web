@@ -8394,10 +8394,17 @@ async function scenarioLiarFool() {
       await sleep(150);
       const s = Object.values(seen[r] ?? {});
       const real = s.find((x) => s.filter((y) => y.keyword === x.keyword).length > 1)?.keyword ?? '?';
-      b.socket.emit('liar.guess', { text: r === 1 || r === 2 ? real : '절대아닌답zz' });
+      // ★ R091 — R2 는 일부러 틀리고 이의제기 → 시민 둘 다 인정 → 맞힘 처리
+      b.socket.emit('liar.guess', { text: r === 1 ? real : r === 2 ? `${real}zz` : '절대아닌답zz' });
+    } else if (v.phase === 'appeal' && v.amLiar) {
+      await sleep(150);
+      b.socket.emit('liar.appeal', {});
+    } else if (v.phase === 'appealVote' && !v.amLiar) {
+      await sleep(100);
+      b.socket.emit('liar.appealVote', { yes: true });
     } else if (v.phase === 'reveal' && b === host) {
       truth[r] = v.keyword;
-      reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, foolWord: v.foolWord, mode: v.mode });
+      reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, foolWord: v.foolWord, mode: v.mode, appeal: v.appeal });
     }
   };
   let guessView = null;
@@ -8419,7 +8426,8 @@ async function scenarioLiarFool() {
   expectTrue('★★★ 바보형 배정 — 셋 다 amLiar false · 라이어 키워드 = 공개 foolWord ≠ 진짜 · 시민 둘 = 진짜', s1.length === 3 && s1.every(([, x]) => x.amLiar === false && x.mode === 'fool') && seen[1][liar1]?.keyword === byR(1).foolWord && byR(1).foolWord !== truth[1] && s1.filter(([a]) => a !== liar1).every(([, x]) => x.keyword === truth[1]), JSON.stringify({ s1, liar1, fool: byR(1).foolWord, truth: truth[1] }));
   expectTrue('★★ 맞히기 단계에서야 amLiar true(키워드는 null)', guessView?.amLiar === true && guessView.keyword === null, JSON.stringify(guessView && { a: guessView.amLiar, k: guessView.keyword }));
   expect('★★★ 결과 — R1 찾음 · 맞힘 / R2 시민 죽임 · 맞힘(R090 — 안 들켜도 맞히기)', [byR(1).outcome, byR(1).guessOk, byR(2).outcome, byR(2).guessOk], ['caught', true, 'escaped', true]);
-  expect('★★★ R090 바보형 살아남아 맞힘 — 라이어 +3 +1', byR(2).scores?.[byR(2).liar], 4);
+  expect('★★★ R090 바보형 살아남아 맞힘 — 라이어 +3 +1(★ R091 — 이의제기 인정으로)', byR(2).scores?.[byR(2).liar], 4);
+  expect('★★★ R091 바보형 이의제기 — R1 없음 · R2 인정 2 : 0', [byR(1).appeal ?? null, byR(2).appeal && [byR(2).appeal.yes, byR(2).appeal.no, byR(2).appeal.passed, /zz$/.test(byR(2).appeal.guess)]], [null, [2, 0, true, true]]);
   expect('★★★ 바보형 점수 — R1 라이어 +1(기본형 +2 아님) · 시민 +1', byR(1).scores?.[liar1], 1);
   const rows = await withDb(async (c) => (await c.query(`SELECT r.round, r.mode, r.fool_word, (SELECT ti.fool FROM topic_items ti WHERE ti.id = r.item_id) AS fools FROM liar_rounds r WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
   expectTrue('★★★ liar_rounds — mode fool · fool_word ∈ 그 항목의 fool', rows.length === 2 && rows.every((x) => x.mode === 'fool' && Array.isArray(x.fools) && x.fools.includes(x.fool_word)), JSON.stringify(rows));
@@ -8547,10 +8555,38 @@ async function scenarioLiar() {
       await sleep(200);
       // ★ R090 — R2(못 찾음)도 맞히기 기회 → 맞힘(+3 +1) · R3(시민 죽임) 틀림(+3)
       b.socket.emit('liar.guess', { text: r === 1 || r === 2 ? (roles[r].keyword ?? '?') : '절대아닌답zz' });
+      // ★ R091 — 맞힌 R1 에는 이의제기 단계가 없다(맞힌 뒤 누르면 not_now)
+      if (r === 1) {
+        await sleep(300);
+        b.socket.emit('liar.appeal', {});
+      }
+    } else if (v.phase === 'appeal') {
+      appealSeen[r] ??= {};
+      appealSeen[r][me] = { amLiar: v.amLiar, guess: v.guess, keyword: v.keyword, guessOk: v.guessOk };
+      if (v.amLiar) {
+        await sleep(200);
+        b.socket.emit('liar.appeal', {});
+      } else if (r === 3) {
+        await sleep(100);
+        b.socket.emit('liar.appealVote', { yes: true }); // ★ 이의제기 전 표 → not_now
+        b.chat(`${roles[r].keyword ?? ''} 아니야?`); // ★ 이의제기 단계부터 키워드 채팅 통과
+      }
+    } else if (v.phase === 'appealVote' && !v.amLiar) {
+      await sleep(150);
+      // R3 = 인정 2 : 기각 1 → 인정 · R4 = 인정 1 : 기각 1 · 한 명 기권 → 동률 = 기각
+      const cit = P.filter((a) => a !== roles[r].liar);
+      const i = cit.indexOf(me);
+      if (r === 3) b.socket.emit('liar.appealVote', { yes: i !== 2 });
+      else if (r === 4 && i < 2) b.socket.emit('liar.appealVote', { yes: i === 0 });
+    } else if (v.phase === 'appealVote' && v.amLiar) {
+      b.socket.emit('liar.appealVote', { yes: true }); // ★ 라이어 본인 표 → bad
     } else if (v.phase === 'guess' && !v.amLiar && !guessSeen[r]) {
       guessSeen[r] = { outcome: v.outcome, liar: v.liar, keyword: v.keyword };
-    } else if (v.phase === 'reveal' && b === host) reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, tally: v.lastTally, tried: v.accusedTried, bout: v.bout, says: v.says });
+    } else if (v.phase === 'reveal' && b === host) reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, tally: v.lastTally, tried: v.accusedTried, bout: v.bout, says: v.says, appeal: v.appeal });
   };
+  const appealSeen = [];
+  const liarRejects = new Map(bots.map((b) => [b, []]));
+  for (const b of bots) b.socket.on('liar.rejected', (p) => liarRejects.get(b).push(p.reason));
   const chats = [];
   host.socket.on('chat.message', (p) => chats.push(p));
   for (const b of bots) {
@@ -8570,7 +8606,13 @@ async function scenarioLiar() {
   const res = host.since(g, 'game.result')[0].payload;
   const byR = (n) => reveals.find((x) => x.round === n) ?? {};
   expect('★★★ 라운드 결과 — 찾음 · 못 찾음(3바퀴) · 시민 죽임(라이어 승) · 찾음', [1, 2, 3, 4].map((n) => byR(n).outcome), ['caught', 'notfound', 'escaped', 'caught']);
-  expect('★★ 라이어 키워드 맞히기 — R1 맞힘 · R2(못 찾음 · R090) 맞힘 · R3(시민 죽임 · R090) 틀림 · R4 틀림', [1, 2, 3, 4].map((n) => byR(n).guessOk), [true, true, false, false]);
+  expect('★★ 라이어 키워드 맞히기 — R1 맞힘 · R2(못 찾음 · R090) 맞힘 · R3(시민 죽임) 틀림 → ★ R091 이의제기 인정 · R4 틀림 → 이의제기 기각', [1, 2, 3, 4].map((n) => byR(n).guessOk), [true, true, true, false]);
+  expect('★★★ R091 이의제기 — R1 · R2 없음(맞힘) · R3 인정 2 : 1 · R4 동률 1 : 1(한 명 기권) = 기각', [1, 2, 3, 4].map((n) => byR(n).appeal ?? null), [null, null, { guess: '절대아닌답zz', yes: 2, no: 1, passed: true }, { guess: '절대아닌답zz', yes: 1, no: 1, passed: false }]);
+  const a3 = Object.values(appealSeen[3] ?? {});
+  expectTrue('★★ R091 이의제기 단계 — 넷 다 라이어의 답 · 키워드(공개) · guessOk false 를 본다 · 맞힌 R1 · R2 엔 단계 없음', a3.length === 4 && a3.every((x) => x.guess === '절대아닌답zz' && x.keyword === roles[3].keyword && x.guessOk === false) && !appealSeen[1] && !appealSeen[2], JSON.stringify({ a3, n1: !!appealSeen[1], n2: !!appealSeen[2] }));
+  const rj = [...liarRejects.values()].flat();
+  expectTrue('★★ R091 거부 — 맞힌 뒤 이의제기 · 이의제기 전 표 = not_now · 라이어 본인 표 = bad', rj.includes('not_now') && rj.includes('bad'), JSON.stringify(rj));
+  expectTrue('★★ R091 이의제기 단계부터 키워드 채팅 통과', chats.some((c) => c.text === `${roles[3].keyword} 아니야?`), JSON.stringify(chats.slice(-6).map((c) => c.text)));
   expectTrue('★★★ R090 안 들켜도 맞히기 단계 — R2 notfound · R3 escaped 에 guess 단계 · 시민 화면에 라이어 공개 · 키워드는 시민이 원래 앎', guessSeen[2]?.outcome === 'notfound' && guessSeen[3]?.outcome === 'escaped' && guessSeen[2]?.liar === roles[2].liar && guessSeen[3]?.liar === roles[3].liar, JSON.stringify(guessSeen));
   expectTrue('★★★ R2 — 3바퀴 · 같은 시민을 두 번 지목하고 두 번 살림(살아난 사람도 다시 대상)', byR(2).bout === 3 && byR(2).tried?.length === 2 && byR(2).tried[0] === byR(2).tried[1], JSON.stringify({ bout: byR(2).bout, tried: byR(2).tried }));
   expectTrue('★★ R3 — 1바퀴 · 지목 하나(시민)', byR(3).bout === 1 && byR(3).tried?.length === 1 && byR(3).tried[0] !== roles[3].liar, JSON.stringify(byR(3).tried));
@@ -8581,7 +8623,7 @@ async function scenarioLiar() {
   for (const r of [1, 4]) for (const a of ids.values()) if (a !== roles[r].liar) add(a, 1);
   add(roles[1].liar, 2);
   add(roles[2].liar, 4); // ★ R090 — 못 찾음 +3 + 맞힘 +1
-  add(roles[3].liar, 3);
+  add(roles[3].liar, 4); // ★ R091 — 시민 죽임 +3 + 이의제기 인정(맞힘) +1
   // ★ R087 — R4 시민 +1 은 위 루프(1 · 4)
   const got = new Map(res.ranking.map((x) => [x.accountId, x.score]));
   expect('★★★ 점수 = +1(찍은 시민) · +2(맞힘) · +3(못 들킴) · +3+1(못 들킴 + 맞힘 — R090) · 0(들키고 틀림)', [...ids.values()].map((a) => got.get(a)), [...ids.values()].map((a) => want.get(a)));
@@ -8591,6 +8633,8 @@ async function scenarioLiar() {
   expect('★★ 결과 mode liar · completed', [res.mode, res.endReason], ['liar', 'completed']);
   const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, guess_ok, jsonb_array_length(says) s, jsonb_array_length(votes) v, liar_account_id::text l, (SELECT max((x->>'bout')::int) FROM jsonb_array_elements(votes) x) b FROM liar_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
   expect('★★ liar_rounds.votes 바퀴 — R2 3바퀴 · 7기록(동률 3 + 지목 · 살림 ×2)', [rows[1]?.b, rows[1]?.v], [3, 7]);
+  const ap = await withDb(async (c) => (await c.query(`SELECT round, appeal, guess_ok FROM liar_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
+  expect('★★★ R091 liar_rounds.appeal(0036) — R3 인정 · guess_ok true / R4 기각 · false / R1 · R2 null', ap.map((x) => [x.round, x.appeal?.passed ?? null, x.guess_ok]), [[1, null, true], [2, null, true], [3, true, true], [4, false, false]]);
   const tps = await withDb(async (c) => (await c.query(`SELECT topic FROM liar_rounds WHERE game_id = $1`, [started.gameId])).rows.map((r) => r.topic));
   expectTrue(`★★★ R090 체크한 주제만 나온다 — 고른 둘(${picked.join(' · ')}) 밖 0`, tps.length === 4 && tps.every((t) => picked.includes(t)), JSON.stringify(tps));
   expect('★★★ liar_rounds 4행 · 결과 · 라이어 · 한마디 4+', rows.map((x) => [x.round, x.outcome, x.l === roles[x.round].liar, x.s >= 4]), [[1, 'caught', true, true], [2, 'notfound', true, true], [3, 'escaped', true, true], [4, 'caught', true, true]]);

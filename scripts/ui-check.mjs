@@ -5317,6 +5317,174 @@ async function r089Flow(browser) {
 }
 
 // =============================================================================
+// ★★★ R091 — 라이어 맞히기 이의제기 화면 (D-348) (UICHECK_R091=1 · 묶음 r091 · docs/design/r091)
+//   방장 PC 1280(+ FHD 125% = 1536×864 @1.25) · 손님 m360 터치 · 소켓 손님 1(3명) · 기본형 3라운드(라이어가 셋 다 한 번씩)
+//   라운드마다: 다 같이 라이어 지목 → 죽인다 → 라이어가 일부러 틀림 → [이의제기] → 화면 두 사람 [인정] · 소켓 손님 [기각]
+//   → 소켓 손님이 라이어인 판 = 2 : 0 인정 · 화면 사람이 라이어인 판 = 1 : 1 기각
+//   본다: 라이어 화면에만 버튼(+ 한 줄) · 투표 화면(라이어의 답 · 키워드 · 두 버튼 · PC · FHD 125% · m360) · 공개 줄(인정 · 기각) · 넘침 0
+// =============================================================================
+async function r091Flow(browser) {
+  const H = await newPage(browser, 'R091-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r91h', '이의방장');
+  const roomId = await createRoom(H, 'R091 이의제기');
+  const G = await newPage(browser, 'R091-g', true);
+  await signUp(G, 'r91g', '이의손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'r91s');
+  const idOfLogin = async (l) => (await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_${l}`.toLowerCase()])).rows[0]?.id)) ?? null;
+  const ids = { h: await idOfLogin('r91h'), g: await idOfLogin('r91g'), s: await idOfLogin('r91s0') };
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r091] ${k}: ${JSON.stringify(v)}`);
+  };
+  const J = async (P, expr) => JSON.parse(await P.evaluate(`JSON.stringify(${expr})`));
+  const set125 = () => H.send('Emulation.setDeviceMetricsOverride', { width: 1536, height: 864, deviceScaleFactor: 1.25, mobile: false }).then(() => sleep(380));
+  const set1280 = () => H.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false }).then(() => sleep(380));
+  let sView = null;
+  const did = new Set();
+  // 소켓 손님: 설명 · 지목(라이어) · 죽인다 · 틀린 답 · 이의제기 · 기각
+  S.on('liar.state', (p) => {
+    const v = p.liar;
+    sView = v;
+    if (!v) return;
+    const k = `${v.round}:${v.phase}:${v.phaseStartedAt}:${v.turn}`;
+    if (did.has(k)) return;
+    did.add(k);
+    setTimeout(() => {
+      if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === ids.s) S.emit('liar.say', { text: v.phase === 'defense' ? '저는 아니에요' : '자주 봐요' });
+      else if (v.phase === 'final' && v.accused !== ids.s) S.emit('liar.final', { yes: true });
+      else if (v.phase === 'guess' && v.amLiar) S.emit('liar.guess', { text: '모르겠다' });
+      else if (v.phase === 'appeal' && v.amLiar) S.emit('liar.appeal', {});
+      else if (v.phase === 'appealVote' && !v.amLiar) S.emit('liar.appealVote', { yes: false });
+    }, 900);
+  });
+  // ── 설정: 라이어 · 3라운드
+  await realClick(H, 'button[data-mode="liar"]');
+  await H.waitFor("document.querySelector('.mg-rounds-input') !== null", 4000).catch(() => false);
+  await H.setInput('.mg-rounds-input', '3');
+  await sleep(500);
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  const res = { btn: [], wait: [], vote: [], reveal: [] };
+  const seen = new Set();
+  const liarOf = {};
+  const t0 = Date.now();
+  const SCREEN = "({ phase: document.querySelector('[data-liar-phase]')?.dataset.liarPhase ?? '', btn: !!document.querySelector('[data-liar-appeal-btn]'), hint: document.querySelector('.liar-appeal-me')?.innerText ?? '', appeal: document.querySelector('[data-liar-appeal]')?.innerText ?? '', vote: document.querySelector('[data-liar-appeal-vote]')?.innerText ?? '', yesNo: !!document.querySelector('[data-liar-appeal-yes]') && !!document.querySelector('[data-liar-appeal-no]'), line: document.querySelector('[data-liar-appeal-result]')?.dataset.liarAppealResult ?? '', lineText: document.querySelector('[data-liar-appeal-result]')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth })";
+  while (Date.now() - t0 < 360000) {
+    const st = await H.evaluate("(() => { const c = document.querySelector('[data-liar-phase]'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; return `${c.dataset.liarPhase}:${document.querySelector('.liar-round')?.innerText ?? ''}:${document.querySelector('[data-liar-turn=\"1\"] .liar-nick')?.innerText ?? ''}:${c.dataset.liarBout}`; })()");
+    if (st === 'result') break;
+    if (!st || seen.has(st)) {
+      await sleep(150);
+      continue;
+    }
+    seen.add(st);
+    const [phase, roundTxt] = st.split(':');
+    const round = Number((roundTxt ?? '').split('/')[0]);
+    if (!liarOf[round] && (phase === 'describe' || phase === 'vote')) {
+      const hMe = await H.evaluate("document.querySelector('[data-liar-me]')?.dataset.liarMe ?? ''");
+      const gMe = await G.evaluate("document.querySelector('[data-liar-me]')?.dataset.liarMe ?? ''");
+      liarOf[round] = hMe === 'liar' ? 'h' : gMe === 'liar' ? 'g' : sView?.amLiar ? 's' : null;
+    }
+    if (phase === 'describe' || phase === 'defense') {
+      for (const P of [H, G]) {
+        if (await P.evaluate("!!document.querySelector('[data-liar-say-input]')")) {
+          await P.setInput('[data-liar-say-input]', phase === 'defense' ? '아니라니까요' : '자주 봐요');
+          await P.evaluate("document.querySelector('[data-liar-say-form]')?.requestSubmit()");
+        }
+      }
+    }
+    if (phase === 'vote' || phase === 'revote') {
+      await sleep(300);
+      const L = liarOf[round];
+      const tgt = (who) => ids[L === who ? (who === 'h' ? 'g' : 'h') : L];
+      if (L) {
+        await realClick(H, `[data-liar-target="${tgt('h')}"]`).catch(() => {});
+        await tapOn(G, `[data-liar-target="${tgt('g')}"]`).catch(() => {});
+        S.emit('liar.vote', { target: L === 's' ? ids.h : ids[L] });
+      }
+    }
+    if (phase === 'final') {
+      await sleep(200);
+      await realClick(H, '[data-liar-yes]').catch(() => {});
+      await tapOn(G, '[data-liar-yes]').catch(() => {});
+    }
+    if (phase === 'guess') {
+      for (const P of [H, G]) {
+        if (await P.evaluate("!!document.querySelector('[data-liar-guess-input]')")) {
+          await P.setInput('[data-liar-guess-input]', '모르겠다');
+          await P.evaluate("document.querySelector('[data-liar-guess] form')?.requestSubmit()");
+        }
+      }
+    }
+    if (phase === 'appeal') {
+      await sleep(300);
+      const L = liarOf[round];
+      const h = await J(H, SCREEN);
+      const g = await J(G, SCREEN);
+      note(`R${round} 이의제기 단계(라이어 ${L})`, { h, g });
+      const liarP = L === 'h' ? H : L === 'g' ? G : null;
+      if (liarP) {
+        res.btn.push({ round, who: L, liar: L === 'h' ? h : g, other: L === 'h' ? g : h });
+        await snap(liarP, `appeal-btn-${L === 'h' ? 'pc' : 'm360'}`);
+        if (L === 'h') {
+          await set125();
+          await snap(H, 'appeal-btn-fhd125');
+          await set1280();
+        }
+        if (L === 'h') await realClick(H, '[data-liar-appeal-btn]').catch(() => {});
+        else await tapOn(G, '[data-liar-appeal-btn]').catch(() => {});
+      } else {
+        res.wait.push({ round, h, g });
+        await snap(H, 'appeal-wait-pc');
+      }
+    }
+    if (phase === 'appealVote') {
+      await sleep(300);
+      const L = liarOf[round];
+      const h = await J(H, SCREEN);
+      const g = await J(G, SCREEN);
+      res.vote.push({ round, liar: L, h, g });
+      if (L !== 'h') await snap(H, `appeal-vote-pc-r${round}`);
+      if (L !== 'g') await snap(G, `appeal-vote-m360-r${round}`);
+      if (L !== 'h') {
+        await set125();
+        await snap(H, `appeal-vote-fhd125-r${round}`);
+        await set1280();
+      }
+      if (L === 'h' || L === 'g') await snap(L === 'h' ? H : G, `appeal-vote-liar-${L === 'h' ? 'pc' : 'm360'}`);
+      if (L !== 'h') await realClick(H, '[data-liar-appeal-yes]').catch(() => {});
+      if (L !== 'g') await tapOn(G, '[data-liar-appeal-yes]').catch(() => {});
+    }
+    if (phase === 'reveal') {
+      await sleep(300);
+      const h = await J(H, SCREEN);
+      const g = await J(G, SCREEN);
+      res.reveal.push({ round, liar: liarOf[round], h, g });
+      await snap(H, `reveal-appeal-pc-r${round}`);
+      await snap(G, `reveal-appeal-m360-r${round}`);
+    }
+    await sleep(100);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 30000).catch(() => false);
+  note('결과', res);
+  if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r091'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r091'), { recursive: true });
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r091', 'r091.json'), JSON.stringify(rows, null, 1));
+  record('★★★ R091 이의제기 버튼 — 라이어 화면에만(+ "오타 · 같은 뜻이면") · 다른 화면엔 "정하는 중" · 넘침 0', res.btn.length >= 1 && res.btn.every((x) => x.liar.btn && /오타/.test(x.liar.hint) && !x.other.btn && /정하는 중/.test(x.other.appeal) && x.liar.over <= 1 && x.other.over <= 1), JSON.stringify(res.btn));
+  const pv = res.vote.filter((x) => x.liar !== 'h').map((x) => x.h);
+  const mv = res.vote.filter((x) => x.liar !== 'g').map((x) => x.g);
+  record('★★★ R091 투표 화면 — 라이어의 답 · 키워드 · 인정/기각 두 버튼 · PC 1280 · m360 · 넘침 0', pv.length >= 1 && mv.length >= 1 && [...pv, ...mv].every((x) => /모르겠다/.test(x.vote) && /키워드/.test(x.vote) && x.yesNo && x.over <= 1), JSON.stringify(res.vote));
+  record('★★ R091 투표 중 라이어 화면 — 버튼 없이 "정하는 중"', res.vote.filter((x) => x.liar === 'h' || x.liar === 'g').every((x) => { const me = x.liar === 'h' ? x.h : x.g; return !me.yesNo && /정하는 중/.test(me.vote); }), JSON.stringify(res.vote));
+  const lines = res.reveal.map((x) => [x.liar, x.h.line, x.g.line]);
+  record('★★★ R091 공개 줄 — 소켓 라이어 판 "인정(2 : 0)" · 화면 라이어 판 "기각(1 : 1)" · 두 화면 같음', res.reveal.length === 3 && res.reveal.every((x) => x.h.line === x.g.line && x.h.line === (x.liar === 's' ? 'passed' : 'rejected') && /이의제기 (인정\(2 : 0\)|기각\(1 : 1\))/.test(x.h.lineText)), JSON.stringify(lines));
+  S.close();
+  H.close();
+  G.close();
+}
+
+// =============================================================================
 // ★★★ R088 — 라이어 바보형 화면 (D-345) (UICHECK_R088=1 · 묶음 r088 · docs/design/r088)
 //   방장 PC 1280 · FHD 125%(1536×864 @1.25) · 손님 m360 터치 · 소켓 손님 1(3명) · 2라운드
 //   설정: 방식 라이어 → 모드 줄(기본형 · 바보형) · 바보형 누름 → 손님 칩 / 배정: 셋 다 시민 카드(라이어도 키워드) · 머리 "바보형" / 공개: "라이어가 받은 단어" · 세 테마
@@ -10037,6 +10205,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R089) {
     await closeAllTabs(browser);
     await r089Flow(browser);
+  }
+  // ★ R091 — 라이어 맞히기 이의제기
+  if (process.env.UICHECK_R091) {
+    await closeAllTabs(browser);
+    await r091Flow(browser);
   }
   // ★ R088 — 라이어 바보형
   if (process.env.UICHECK_R088) {
