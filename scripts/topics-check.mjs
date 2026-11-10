@@ -62,11 +62,15 @@ export function checkTopic(t, file) {
   if ('scope' in t && (typeof t.scope !== 'string' || !t.scope.trim() || [...t.scope].length > 60)) err.push('scope: 문자열 · 빈칸 아님 · 60자 이하');
   // ★ G050 — 머리 group(선택 · 같은 group 세트는 주제 추첨에서 한 자리 — MAIN R090 · 예 "metro") — 소문자 slug 꼴
   if ('group' in t && (typeof t.group !== 'string' || !/^[a-z][a-z0-9-]*$/.test(t.group))) err.push('group: 소문자 slug 꼴 문자열');
+  // ★ R090 — 머리 optIn(선택 · 방장 주제 고르기에서 기본 체크 해제)
+  if ('optIn' in t && typeof t.optIn !== 'boolean') err.push('optIn: true | false');
   if (!Array.isArray(t.tags)) err.push('tags: []');
   const items = Array.isArray(t.items) ? t.items : [];
   if (t.count !== items.length) err.push(`count ${t.count} ≠ items ${items.length}`);
   const liarSet = isLiarSet(t);
-  if (t.kind === 'open' && liarSet && (items.length < 40 || items.length > 120)) err.push(`라이어 세트 수 ${items.length}(40~120 — 18 §12)`);
+  // ★ G053: liar-<주제>-2(같은 주제의 candidate 조각 — 기존 verified 세트를 적재에서 지키려 나눔)는 하한 20(낯선 단어 · 한 글자를 뺀 뒤 악기 27)
+  const liarPart = /-2$/.test(String(t.topic ?? ''));
+  if (t.kind === 'open' && liarSet && (items.length < (liarPart ? 20 : 40) || items.length > 120)) err.push(`라이어 세트 수 ${items.length}(${liarPart ? 20 : 40}~120 — 18 §12)`);
   const drawSet = isDrawSet(t);
   // ★ G051: 상한 400 → 2,000(2차 합치기 — 사물 ≈ 1,270) · draw-<테마>-2(같은 테마의 candidate 조각 — 기존 verified 세트를 적재에서 지키려 나눔)는 하한 없음
   const drawPart = /-2$/.test(String(t.topic ?? ''));
