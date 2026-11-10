@@ -66,9 +66,16 @@
 - **검사(⑫)**: 새 ui-check 묶음 **r087**(PC 5 + **FHD 125% = 1536×864 @1.25** · 모바일 3 · 세 테마 · 방장/손님 · 소켓 2) · r082 · r083 기대를 새 규칙에 맞춤(설명칸 · 채팅 옆 · 캔버스 ≥ 560) · 봇 liar(바퀴 · 시민 죽임 · 설명칸) · draw(힌트) · topicsets(G047/G048 세트 교체로 `all_s ≥ 파일 수`).
 - 되돌리기: 상수(`VOTE_BOUTS` · `REVOTES` · `CHUNK_MS` · `MINIGAME_ONLY_ROUNDS.MIN`) · `hidden` 플래그 · 커밋 revert.
 
+## DG-094. 라이어 새 주제 4 확정 — V049 fixes 적용 → 명절 · 학창 시절 · 술자리 · 카페 메뉴 verified · 길거리 간식 삭제 → 라이어 19 주제 1,565 (G056 · 설계 브리핑 gen.md · CV-183 · 찬종 2026-11-10 · 파일만 · DB 쓰기 없음)
+- **찬종 2026-11-10**: 길거리 간식(liar-streetfood · 30) 은 **버린다**("주제를 버림" — 30 개뿐 · 대표 단어 빠짐 · 기존 음식 · 간식과 겹침) — 보충하지 않고 파일 삭제 · topics-check `LIAR_NEW_G055` 에서 뺌.
+- **적용(scripts/g056-liar3-apply.mjs — g054 꼴 · 멱등)**: 4 세트 fixes 47(= V049 55 − 길거리 8) 전부 · 다시 판정하지 않음. fool 교체 44(명절 17 · 학창 12 · 술자리 13 · 카페 2) · 뺌 0 · 채움 0 · diff 3(육전 · 강강술래 · 마들렌 3→2) · sub 1(술게임 → 술게임 칸) · 변형 뺌 2(실내화 주머니 · 먹태깡). `fx.applied` G056 · `verify.appliedRound` · version 2 · **status verified**.
+- **unsure 전부 유지**(달집태우기 · 쥐불놀이 · 부럼 깨기 · 해장국/콩나물국밥/북엇국 · 먹태/노가리 … — "겹친다 · 설명 어렵다" 는 빼는 사유 아님 · 20 §19).
+- **검사**: 세트 안 이름 · 변형 유일 · fool 이 자기 이름/변형 0 · fool 2~3 — 문제 0. topics-check 세트 80 · 막힘 0 · 10,245. topics-load dry-run 넣을 80(verified 80) · 10,245 · 넣지 않음 0 · **라이어 19 주제 1,565**(명절 38 · 학창 시절 37 · 술자리 37 · 카페 메뉴 39).
+- **되돌리기**: G056 커밋 revert(길거리 간식 파일도 돌아옴). 근거 ai-out/G056.txt · audit/g056-liar3-apply.json.
+
 ## DG-093. 라이어 새 주제 5 — 명절 · 학창 시절 · 술자리 · 카페 메뉴 · 길거리 간식 181(candidate · 기본 주제) · 팬 주제 넣지 않음 (G055 · 설계 브리핑 gen.md · 파일만 · DB 쓰기 없음)
 - **찬종 2026-11-10**: "라이어 키워드는 보편성이 중요" — web-desk/liar3 20 주제 중 "아는 사람만" 11 · 약한 4 는 버리고 "누구나" 5 만. → **라이어 주제는 보편성 — 팬 주제는 넣지 않는다.**
-- **산출**: scripts/g055-liar3.mjs → `liar-holiday`(38) · `liar-school`(37) · `liar-drinking`(37) · `liar-cafe`(39) · `liar-streetfood`(30) = 184 → **181**. 머리 = 기존 라이어 세트 꼴(kind open · liar true · draw false · timeSec 30) · optIn · group 없음 · status candidate · createdRound G055 · id liar-<주제>-NNN.
+- **산출**: scripts/g055-liar3.mjs → `liar-holiday`(38) · `liar-school`(37) · `liar-drinking`(37) · `liar-cafe`(39) · `liar-streetfood`(30 — **뺌(찬종 2026-11-10 · G056 · 파일 삭제)**) = 184 → **181**. 머리 = 기존 라이어 세트 꼴(kind open · liar true · draw false · timeSec 30) · optIn · group 없음 · status candidate · createdRound G055 · id liar-<주제>-NNN.
 - **GEN 재독(184 이름 + fool 552)**: 뺌 3 = 설거지(명절과 상관없음) · 자습(야간자율학습과 같음) · 폭탄주(소맥과 같음 — 변형 "소맥" 이 소맥 항목과 겹침). fool 바꿈 3(낯섦) = 벌초 예초→제사 · 산적 너비아니→동그랑땡 · 유과 다식→곶감. 변형 뺌 5 = 학园제 · チョ크(쓰레기 글자) · 책가방 · 자리바꾸기 · 필름끊김(이름과 같음). fool 거리 판정은 V049.
 - **다른 주제와 같은 단어 유지(18 §12 ⓔ)**: 기존 15 와 이름 같음 31(설계 36 은 변형 포함 셈) · 새 주제 사이 3(토스트 · 쥐포 · 가래떡).
 - **topics-check**: 이 5 파일만 라이어 하한 28(`LIAR_NEW_G055`) — 막힘 0. topics-load dry-run 넣을 76 · 10,094 · 넣지 않음 5(라이어 verified 15 · 1,414 그대로).
