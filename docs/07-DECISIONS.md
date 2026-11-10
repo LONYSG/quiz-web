@@ -57,6 +57,14 @@
 - **검사(⑫)**: 새 ui-check 묶음 **r087**(PC 5 + **FHD 125% = 1536×864 @1.25** · 모바일 3 · 세 테마 · 방장/손님 · 소켓 2) · r082 · r083 기대를 새 규칙에 맞춤(설명칸 · 채팅 옆 · 캔버스 ≥ 560) · 봇 liar(바퀴 · 시민 죽임 · 설명칸) · draw(힌트) · topicsets(G047/G048 세트 교체로 `all_s ≥ 파일 수`).
 - 되돌리기: 상수(`VOTE_BOUTS` · `REVOTES` · `CHUNK_MS` · `MINIGAME_ONLY_ROUNDS.MIN`) · `hidden` 플래그 · 커밋 revert.
 
+## DG-093. 라이어 새 주제 5 — 명절 · 학창 시절 · 술자리 · 카페 메뉴 · 길거리 간식 181(candidate · 기본 주제) · 팬 주제 넣지 않음 (G055 · 설계 브리핑 gen.md · 파일만 · DB 쓰기 없음)
+- **찬종 2026-11-10**: "라이어 키워드는 보편성이 중요" — web-desk/liar3 20 주제 중 "아는 사람만" 11 · 약한 4 는 버리고 "누구나" 5 만. → **라이어 주제는 보편성 — 팬 주제는 넣지 않는다.**
+- **산출**: scripts/g055-liar3.mjs → `liar-holiday`(38) · `liar-school`(37) · `liar-drinking`(37) · `liar-cafe`(39) · `liar-streetfood`(30) = 184 → **181**. 머리 = 기존 라이어 세트 꼴(kind open · liar true · draw false · timeSec 30) · optIn · group 없음 · status candidate · createdRound G055 · id liar-<주제>-NNN.
+- **GEN 재독(184 이름 + fool 552)**: 뺌 3 = 설거지(명절과 상관없음) · 자습(야간자율학습과 같음) · 폭탄주(소맥과 같음 — 변형 "소맥" 이 소맥 항목과 겹침). fool 바꿈 3(낯섦) = 벌초 예초→제사 · 산적 너비아니→동그랑땡 · 유과 다식→곶감. 변형 뺌 5 = 학园제 · チョ크(쓰레기 글자) · 책가방 · 자리바꾸기 · 필름끊김(이름과 같음). fool 거리 판정은 V049.
+- **다른 주제와 같은 단어 유지(18 §12 ⓔ)**: 기존 15 와 이름 같음 31(설계 36 은 변형 포함 셈) · 새 주제 사이 3(토스트 · 쥐포 · 가래떡).
+- **topics-check**: 이 5 파일만 라이어 하한 28(`LIAR_NEW_G055`) — 막힘 0. topics-load dry-run 넣을 76 · 10,094 · 넣지 않음 5(라이어 verified 15 · 1,414 그대로).
+- **되돌리기**: G055 커밋 revert. 근거 ai-out/G055.txt · audit/g055-liar3.json.
+
 ## DG-092. 라이어 2차 적용 + 기존 세트에 합치기 — liar-* 15 세트 1,414 verified · -2 파일 삭제 · 니드런 변형 (G054 · 설계 브리핑 gen.md · CV-181 · 파일만 · DB 쓰기 없음)
 - **적용(V048 fixes 131 — 브리핑 수와 같음)**: fool 교체 94 중 넣음 90 · 뺌 4(to null 2 = 황영조 김완기 · KBO K리그 / V048 이 한 항목 두 fool 에 같은 교체어를 준 2 = 경호원 교도관 · 이발사 마사지사 → 하나만) — 2 미만 0 · remove 3(기영이 · 박태환 · 추신수 — 설계 결정 "처벌받은 사건은 뺀다") · dup 2(쉐이커 · 여객기) · diff 21 · era 2 · sub 9 · 변형 8. unsure 인물은 전부 유지(설계).
 - **합치기**: -2 항목 565 를 같은 주제 liar-<주제>.json items 뒤에 붙임(id = 기존 최대 번호 다음 · 옛 id → 새 id 는 audit/g054-id-map.json) · 기존 항목 글자 그대로 · 기존 verify 칸 그대로 + verify.history 에 V048 요약(fixes · unsure 통째로) · version 3 · verified · -2 15 파일 삭제 · 합 849 + 565 = **1,414**(세트 75~100 — 상한 120 안이라 topics-check 그대로).

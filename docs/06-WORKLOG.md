@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-10 — 라이어 새 주제 5 (G055, GEN · 파일만)
+- **무엇을**: web-desk/liar3 _merged 184(누구나 5 주제)를 새 파일 5 로 → liar-holiday · school · drinking · cafe · streetfood 181(candidate). **왜**: 찬종 "라이어 키워드는 보편성" — 팬 주제 11 · 약한 4 버림.
+- **어떻게**: scripts/g055-liar3.mjs(g053 꼴 · 뺌 3 · fool 바꿈 3 · 변형 뺌 5 손 표) · topics-check 에 이 5 파일 하한 28.
+- **검증**: topics-check 81 막힘 0 · topics-load dry-run 넣을 76(10,094) · 넣지 않음 5 · 라이어 verified 15 · 1,414 그대로. **결정**: DG-093. **남은 것**: V049 fool 전수 → G056.
+
 ## 2026-11-10 — 라이어 2차 적용 + 기존 세트에 합치기 (G054, GEN · 파일만)
 - **무엇을**: V048 fixes 131 을 liar-*-2 15 에 적용 → 기존 liar-<주제>.json 뒤에 붙이고 -2 삭제 · 니드런 변형 4. **어떻게**: scripts/g054-liar2-apply.mjs(g049 꼴 · 변형 8 은 손 표 · 합친 뒤 세트 안 유일성 · fool 검사).
 - **문제**: V048 이 경호원 · 이발사의 두 fool 에 같은 교체어를 줌 → 하나만 넣고 fool 2 · to null 2 도 fool 2 로 남아 채움 0.
