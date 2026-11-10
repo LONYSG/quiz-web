@@ -52,6 +52,8 @@ export function checkTopic(t, file) {
   if (!Array.isArray(t.source) || !t.source.length || t.source.some((s) => !s.url || !s.fetchedAt)) err.push('source: [{url, note, fetchedAt}] 하나 이상');
   for (const k of ['liar', 'draw']) if (typeof t[k] !== 'boolean') err.push(`${k}: boolean`);
   if (typeof t.timeSec !== 'number') err.push('timeSec: number');
+  // ★ G049 — 머리 scope(선택 · 정답 범위 한 줄 · 플레이어 말투 · 18 §9 "세트 이름 = 정답 범위") — 문자열 · 빈칸 아님 · 60자 이하
+  if ('scope' in t && (typeof t.scope !== 'string' || !t.scope.trim() || [...t.scope].length > 60)) err.push('scope: 문자열 · 빈칸 아님 · 60자 이하');
   if (!Array.isArray(t.tags)) err.push('tags: []');
   const items = Array.isArray(t.items) ? t.items : [];
   if (t.count !== items.length) err.push(`count ${t.count} ≠ items ${items.length}`);

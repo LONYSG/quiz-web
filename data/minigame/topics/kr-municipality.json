@@ -1,9 +1,10 @@
 {
  "topic": "kr-municipality",
- "nameKo": "대한민국 시·군·구",
+ "nameKo": "대한민국 시·군·구(시·도 포함)",
+ "scope": "서울시 · 대구광역시 · 제주시 · 분당구도 됩니다 · 서구 · 중구는 '부산 서구' 처럼",
  "kind": "closed",
- "version": 2,
- "asOf": "2026-07-01",
+ "version": 3,
+ "asOf": "2026-11-10",
  "createdRound": "G036",
  "status": "verified",
  "source": [
@@ -11,6 +12,18 @@
    "url": "https://ko.wikipedia.org/wiki/대한민국의_기초자치단체_목록",
    "note": "★ 조각이 페이지를 받지 않고 대부분 지식으로 작성(G036) — V039 가 이 페이지로 대조 필요 · 기초자치단체(자치시 · 군 · 자치구) 226 — 2023 군위군 대구 편입 반영. 2026-07-01 전남광주통합특별시 출범(웹검색 확인)했으나 광주 5구 · 전남 22시군은 기초자치단체로 유지된다고 보고 집계(통합 후 구 개편 상세는 미확인 · V039 대조 필요). 제주 행정시 2 · 세종 · 일반구(수원 장안구 · 화성시 일반구 등)는 자치단체가 아니므로 제외. 이름이 겹치는 꼴(중구 · 동구 · 서구 · 남구 · 북구 · 강서구 · 고성군)은 '광역 + 이름' 꼴을 name 으로 쓰고 짧은 꼴은 변형으로 넣지 않음. 에이전트 지식 기반(전수 대조 안 함)",
    "fetchedAt": "2026-11-08"
+  },
+  {
+   "url": "https://ko.wikipedia.org/wiki/대한민국의_행정_구역",
+   "note": "G049 — 광역 17(특별시 1 · 통합특별시 1 · 광역시 5 · 특별자치시 1 · 도 · 특별자치도는 제외) · 제주 행정시 2 · 원문 audit/g049-raw/admin.wiki",
+   "fetchedAt": "2026-11-10",
+   "read": true
+  },
+  {
+   "url": "https://ko.wikipedia.org/wiki/대한민국의_구",
+   "note": "G049 — \"2026년 2월 1일 기준 행정구 39개\"(목록은 하위 페이지 — 39 이름은 GEN 지식 · 도별 수는 행정 구역 표 + 부천 2024 복원 · 화성 2026-02 신설 4 로 맞춤) · 원문 audit/g049-raw/gu.wiki",
+   "fetchedAt": "2026-11-10",
+   "read": true
   }
  ],
  "liar": false,
@@ -20,7 +33,7 @@
   "지리",
   "행정구역"
  ],
- "count": 227,
+ "count": 276,
  "items": [
   {
    "id": "kr-municipality-001",
@@ -3161,6 +3174,735 @@
    "draw": false,
    "liar": false,
    "qid": null
+  },
+  {
+   "id": "kr-municipality-231",
+   "name": "서울특별시",
+   "variants": [
+    "서울",
+    "서울시"
+   ],
+   "tags": [
+    "서울",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-232",
+   "name": "부산광역시",
+   "variants": [
+    "부산",
+    "부산시"
+   ],
+   "tags": [
+    "부산",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-233",
+   "name": "대구광역시",
+   "variants": [
+    "대구",
+    "대구시"
+   ],
+   "tags": [
+    "대구",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-234",
+   "name": "인천광역시",
+   "variants": [
+    "인천",
+    "인천시"
+   ],
+   "tags": [
+    "인천",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-235",
+   "name": "대전광역시",
+   "variants": [
+    "대전",
+    "대전시"
+   ],
+   "tags": [
+    "대전",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-236",
+   "name": "울산광역시",
+   "variants": [
+    "울산",
+    "울산시"
+   ],
+   "tags": [
+    "울산",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-237",
+   "name": "전남광주통합특별시",
+   "variants": [
+    "광주광역시",
+    "전남광주"
+   ],
+   "tags": [
+    "전남광주통합특별시",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-238",
+   "name": "세종특별자치시",
+   "variants": [
+    "세종",
+    "세종시"
+   ],
+   "tags": [
+    "세종",
+    "광역"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-239",
+   "name": "제주시",
+   "variants": [
+    "제주"
+   ],
+   "tags": [
+    "제주",
+    "행정시"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-240",
+   "name": "서귀포시",
+   "variants": [
+    "서귀포"
+   ],
+   "tags": [
+    "제주",
+    "행정시"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-241",
+   "name": "장안구",
+   "variants": [
+    "장안",
+    "수원 장안구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-242",
+   "name": "권선구",
+   "variants": [
+    "권선",
+    "수원 권선구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-243",
+   "name": "팔달구",
+   "variants": [
+    "팔달",
+    "수원 팔달구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-244",
+   "name": "영통구",
+   "variants": [
+    "영통",
+    "수원 영통구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-245",
+   "name": "수정구",
+   "variants": [
+    "수정",
+    "성남 수정구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-246",
+   "name": "중원구",
+   "variants": [
+    "중원",
+    "성남 중원구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-247",
+   "name": "분당구",
+   "variants": [
+    "분당",
+    "성남 분당구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-248",
+   "name": "만안구",
+   "variants": [
+    "만안",
+    "안양 만안구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-249",
+   "name": "동안구",
+   "variants": [
+    "동안",
+    "안양 동안구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-250",
+   "name": "원미구",
+   "variants": [
+    "원미",
+    "부천 원미구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-251",
+   "name": "소사구",
+   "variants": [
+    "소사",
+    "부천 소사구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-252",
+   "name": "오정구",
+   "variants": [
+    "오정",
+    "부천 오정구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-253",
+   "name": "상록구",
+   "variants": [
+    "상록",
+    "안산 상록구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-254",
+   "name": "단원구",
+   "variants": [
+    "단원",
+    "안산 단원구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-255",
+   "name": "덕양구",
+   "variants": [
+    "덕양",
+    "고양 덕양구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-256",
+   "name": "일산동구",
+   "variants": [
+    "고양 일산동구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-257",
+   "name": "일산서구",
+   "variants": [
+    "고양 일산서구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-258",
+   "name": "처인구",
+   "variants": [
+    "처인",
+    "용인 처인구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-259",
+   "name": "기흥구",
+   "variants": [
+    "기흥",
+    "용인 기흥구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-260",
+   "name": "수지구",
+   "variants": [
+    "수지",
+    "용인 수지구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-261",
+   "name": "만세구",
+   "variants": [
+    "만세",
+    "화성 만세구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-262",
+   "name": "효행구",
+   "variants": [
+    "효행",
+    "화성 효행구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-263",
+   "name": "병점구",
+   "variants": [
+    "병점",
+    "화성 병점구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-264",
+   "name": "동탄구",
+   "variants": [
+    "동탄",
+    "화성 동탄구"
+   ],
+   "tags": [
+    "경기",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-265",
+   "name": "상당구",
+   "variants": [
+    "상당",
+    "청주 상당구"
+   ],
+   "tags": [
+    "충북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-266",
+   "name": "서원구",
+   "variants": [
+    "서원",
+    "청주 서원구"
+   ],
+   "tags": [
+    "충북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-267",
+   "name": "흥덕구",
+   "variants": [
+    "흥덕",
+    "청주 흥덕구"
+   ],
+   "tags": [
+    "충북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-268",
+   "name": "청원구",
+   "variants": [
+    "청원",
+    "청주 청원구"
+   ],
+   "tags": [
+    "충북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-269",
+   "name": "동남구",
+   "variants": [
+    "동남",
+    "천안 동남구"
+   ],
+   "tags": [
+    "충남",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-270",
+   "name": "서북구",
+   "variants": [
+    "서북",
+    "천안 서북구"
+   ],
+   "tags": [
+    "충남",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-271",
+   "name": "완산구",
+   "variants": [
+    "완산",
+    "전주 완산구"
+   ],
+   "tags": [
+    "전북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-272",
+   "name": "덕진구",
+   "variants": [
+    "덕진",
+    "전주 덕진구"
+   ],
+   "tags": [
+    "전북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-273",
+   "name": "포항 남구",
+   "variants": [
+    "포항시 남구"
+   ],
+   "tags": [
+    "경북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-274",
+   "name": "포항 북구",
+   "variants": [
+    "포항시 북구"
+   ],
+   "tags": [
+    "경북",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-275",
+   "name": "의창구",
+   "variants": [
+    "의창",
+    "창원 의창구"
+   ],
+   "tags": [
+    "경남",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-276",
+   "name": "성산구",
+   "variants": [
+    "성산",
+    "창원 성산구"
+   ],
+   "tags": [
+    "경남",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-277",
+   "name": "마산합포구",
+   "variants": [
+    "마산합포",
+    "창원 마산합포구"
+   ],
+   "tags": [
+    "경남",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-278",
+   "name": "마산회원구",
+   "variants": [
+    "마산회원",
+    "창원 마산회원구"
+   ],
+   "tags": [
+    "경남",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "kr-municipality-279",
+   "name": "진해구",
+   "variants": [
+    "진해",
+    "창원 진해구"
+   ],
+   "tags": [
+    "경남",
+    "일반구"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
   }
  ],
  "verify": {
@@ -3296,6 +4038,14 @@
     "verdict": "verified",
     "why": "G039 기계 적용 대조 어긋남 0"
    }
-  ]
+  ],
+  "pending": "V046 추가분",
+  "g049": {
+   "added": 49,
+   "metro": 8,
+   "adminCity": 2,
+   "ilban": 39,
+   "keptStatus": "verified(설계 예외 — 기존 227 불변 · 추가분은 V046 재대조)"
+  }
  }
 }
