@@ -46,6 +46,8 @@ export const LIAR = {
   SCORE_LIAR_GUESS: 2,
   /** ★ R088 (D-345 · 18 §12) — 바보형에서 들킨 라이어가 키워드를 맞히면(기본형보다 낮게 — 설계 제안) */
   SCORE_LIAR_GUESS_FOOL: 1,
+  /** ★ R090 (D-347 · 찬종 "안 들켰더라도 마지막에 정답 맞히는 기회 · 맞히면 추가 점수") — 살아남은 라이어(escaped · notfound)가 키워드도 맞히면 승리 점수에 더함(기본형 · 바보형 같음 · 못 맞혀도 깎지 않음) */
+  SCORE_LIAR_SURVIVE_GUESS: 1,
 } as const;
 
 /** ★ R088 (D-345 · 찬종 "기본형 / 바보형") — 기본형 = 라이어는 자기가 라이어인 걸 안다 · 바보형 = 라이어도 다른 단어(fool)를 정답처럼 받는다 */
@@ -83,6 +85,6 @@ export function liarRoundScores(r: { outcome: LiarOutcome; liar: string; guessOk
   if (r.outcome === 'caught') {
     for (const a of r.hitters) if (a !== r.liar) out.set(a, LIAR.SCORE_CITIZEN_HIT);
     if (r.guessOk) out.set(r.liar, r.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS);
-  } else out.set(r.liar, LIAR.SCORE_LIAR_ESCAPE);
+  } else out.set(r.liar, LIAR.SCORE_LIAR_ESCAPE + (r.guessOk ? LIAR.SCORE_LIAR_SURVIVE_GUESS : 0));
   return out;
 }

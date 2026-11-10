@@ -470,8 +470,10 @@ function endVote(room: Room, r: LiarRound, now: number): void {
 /** ★ R087 — 다음 바퀴(전원 대상 다시 투표) · 바퀴를 다 돌았으면 못 찾음 */
 function nextBout(room: Room, r: LiarRound, now: number): void {
   if (r.bout >= T.VOTE_BOUTS) {
+    // ★ R090 (D-347) — 못 찾음도 라이어에게 맞히기 기회(맞히면 +SCORE_LIAR_SURVIVE_GUESS)
     r.outcome = 'notfound';
-    endRound(room, r, now);
+    setPhase(r, 'guess', now, T.GUESS_MS);
+    broadcast(room);
     return;
   }
   r.bout += 1;
@@ -516,9 +518,10 @@ function endFinal(room: Room, r: LiarRound, now: number): void {
       broadcast(room);
       return;
     }
-    // ★ 시민을 죽임 → 라이어 승(기본 라이어 게임 규칙 — D-344 설계 판단)
+    // ★ 시민을 죽임 → 라이어 승(기본 라이어 게임 규칙 — D-344 · 찬종 "원래 그거") · ★ R090 — 그래도 맞히기 기회(맞히면 +1)
     r.outcome = 'escaped';
-    endRound(room, r, now);
+    setPhase(r, 'guess', now, T.GUESS_MS);
+    broadcast(room);
     return;
   }
   // 살림 → 다음 바퀴(전원 대상)
@@ -530,7 +533,8 @@ function endRound(room: Room, r: LiarRound, now: number): void {
   if (!run || r.phase === 'reveal') return;
   const outcome = r.outcome ?? 'notfound';
   r.outcome = outcome;
-  if (outcome !== 'caught') r.guessOk = null;
+  // ★ R090 — 세 결과 모두 맞히기 단계를 거친다(안 냈으면 null 그대로)
+  if (r.guess === null) r.guessOk = null;
   const hitters = [...r.accuseVotes.entries()].filter(([, t]) => t === r.liar).map(([a]) => a);
   const scores = liarRoundScores({ outcome, liar: r.liar, guessOk: r.guessOk === true, hitters, mode: r.mode });
   r.scores = Object.fromEntries(scores);

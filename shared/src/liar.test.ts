@@ -25,6 +25,9 @@ describe('라이어 — 투표 · 찬반 · 점수', () => {
     expect(Object.fromEntries(liarRoundScores({ outcome: 'notfound', liar: 'L', guessOk: false, hitters: [], mode: 'fool' }))).toEqual({ L: 3 });
     expect(Object.fromEntries(liarRoundScores({ outcome: 'notfound', liar: 'L', guessOk: false, hitters: ['a'] }))).toEqual({ L: 3 });
     expect(Object.fromEntries(liarRoundScores({ outcome: 'escaped', liar: 'L', guessOk: false, hitters: [] }))).toEqual({ L: 3 });
+    // ★ R090 — 살아남은 라이어가 키워드도 맞히면 +1(기본형 · 바보형 같음)
+    expect(Object.fromEntries(liarRoundScores({ outcome: 'escaped', liar: 'L', guessOk: true, hitters: [] }))).toEqual({ L: 4 });
+    expect(Object.fromEntries(liarRoundScores({ outcome: 'notfound', liar: 'L', guessOk: true, hitters: ['a'], mode: 'fool' }))).toEqual({ L: 4 });
   });
 });
 

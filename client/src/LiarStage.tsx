@@ -195,9 +195,16 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
 
       {view.phase === 'guess' && (
         <div className="liar-guess" data-liar-guess>
-          <p>
-            ● <strong>{nameOf(view.liar)}</strong> 님이 라이어였어요! 키워드를 맞히면 +{view.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS}
-          </p>
+          {view.outcome === 'caught' ? (
+            <p>
+              ● <strong>{nameOf(view.liar)}</strong> 님이 라이어였어요! 키워드를 맞히면 +{view.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS}
+            </p>
+          ) : (
+            // ★ R090 (D-347) — 안 들키고 이겨도(시민을 죽임 · 못 찾음) 맞히기 기회 · 이때 라이어 공개
+            <p data-liar-survived>
+              ● 라이어가 살아남았습니다 — <strong>{nameOf(view.liar)}</strong> 님이 라이어! 키워드를 맞히면 +{LIAR.SCORE_LIAR_SURVIVE_GUESS} 더
+            </p>
+          )}
           {view.amLiar ? <GuessInput socket={socket} /> : <p className="dim">라이어가 키워드를 맞히는 중…</p>}
         </div>
       )}
@@ -215,9 +222,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
           <p className="liar-result-line">
             {view.outcome === 'caught'
               ? `찾았다! ${view.guessOk ? `라이어가 키워드도 맞힘(“${view.guess}”) +${view.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS}` : view.guess ? `라이어 답 “${view.guess}” — 틀림` : '라이어가 답을 못 냈어요'}`
-              : view.outcome === 'escaped'
-                ? `시민 ${nameOf(view.accusedTried[view.accusedTried.length - 1] ?? null)} 님을 죽였어요 — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}`
-                : `${view.bouts}바퀴 동안 라이어를 못 찾았어요 — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}`}
+              : `${view.outcome === 'escaped' ? `시민 ${nameOf(view.accusedTried[view.accusedTried.length - 1] ?? null)} 님을 죽였어요` : `${view.bouts}바퀴 동안 라이어를 못 찾았어요`} — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}${view.guessOk ? ` · 키워드도 맞힘(“${view.guess}”) +${LIAR.SCORE_LIAR_SURVIVE_GUESS}` : view.guess ? ` · 라이어 답 “${view.guess}” — 틀림` : ''}`}
           </p>
           {view.scores && Object.keys(view.scores).length > 0 && (
             <p className="liar-scores" data-liar-scores={Object.keys(view.scores).length}>
