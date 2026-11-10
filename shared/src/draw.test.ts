@@ -1,6 +1,6 @@
 // R083 — 캐치마인드 순수 함수
 import { describe, expect, it } from 'vitest';
-import { DRAW, floodFill, gridHash, hexToRgb, drawDiffPlan, drawDrawerScore, drawLengthHint, drawLengthPattern, drawPointsOk, drawSolverScore, isDrawColor } from './draw.js';
+import { DRAW, floodFill, gridHash, hexToRgb, drawDiffPlan, drawDrawerScore, drawInitials, drawLengthHint, drawLengthPattern, drawPointsOk, drawSolverScore, isDrawColor } from './draw.js';
 
 describe('캐치마인드', () => {
   it('점수 — 맞힌 순서 3 · 2 · 1 · 1 · 출제자 = 맞힌 수(상한 3)', () => {
@@ -60,5 +60,20 @@ describe('★ R089 — 페인트통(영역 채우기) · 해시', () => {
     const t = performance.now();
     expect(floodFill(d, 1000, 1000, 500, 500, hexToRgb('#2563eb'))).toBe(1_000_000);
     expect(performance.now() - t).toBeLessThan(300);
+  });
+});
+
+describe('★ R095 — 초성 힌트 = 제시어 전체(D-352 · #116)', () => {
+  it('한글은 음절마다 초성 · 띄어쓰기 유지', () => {
+    expect(drawInitials('구두')).toBe('ㄱㄷ');
+    expect(drawInitials('라이온 킹')).toBe('ㄹㅇㅇ ㅋ');
+    expect(drawInitials('  아이스  아메리카노 ')).toBe('ㅇㅇㅅ ㅇㅁㄹㅋㄴ');
+    expect(drawInitials('소')).toBe('ㅅ');
+  });
+  it('영문 · 숫자 · 한 글자 낱말은 정답을 그대로 보이지 않는다', () => {
+    expect(drawInitials('Big Ben')).toBe('B__ B__');
+    expect(drawInitials('7')).toBe('_');
+    expect(drawInitials('X 게임')).toBe('_ ㄱㅇ');
+    expect(drawInitials('2002 월드컵')).toBe('____ ㅇㄷㅋ');
   });
 });

@@ -5,6 +5,8 @@
 // ★ 출제자가 돌아가며 그림 · 나머지는 채팅으로 정답(퀴즈 판정 그대로) · 숫자는 전부 여기 한 곳.
 // =============================================================================
 
+import { generateHint } from './hint.js';
+
 export const DRAW = {
   MIN_PLAYERS: 2,
   ROUNDS: { MIN: 2, MAX: 10, DEFAULT: 5 },
@@ -185,6 +187,20 @@ export const DRAW_HINT_KINDS: readonly DrawHintKind[] = ['length', 'initial', 't
 export const DRAW_HINT_LABEL: Record<DrawHintKind, string> = { length: '글자 수', initial: '초성', topic: '주제' };
 export function isDrawHintKind(v: unknown): v is DrawHintKind {
   return typeof v === 'string' && (DRAW_HINT_KINDS as readonly string[]).includes(v);
+}
+
+/**
+ * ★★ R095 (D-352 · 찬종 제보 #116 "캐치마인드 초성이 왜 한 글자만 나와?") — 초성 힌트 = **제시어 전체 초성**(D-344 "첫 글자" 개정)
+ * 퀴즈 초성과 같은 함수(generateHint)를 **낱말마다** 불러 띄어쓰기를 남긴다: "구두" → "ㄱㄷ" · "라이온 킹" → "ㄹㅇㅇ ㅋ" · "Big Ben" → "B__ B__"
+ * 숫자는 "_"(표시 쪽이 hintKind 로 "숫자 n자리") · 힌트를 못 만드는 한 글자 낱말(영문 · 숫자 · 기호)은 "_"(정답을 그대로 보이지 않게)
+ */
+export function drawInitials(keyword: string): string {
+  return keyword
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => generateHint(w) ?? '_')
+    .join(' ');
 }
 
 /** 글자 수 힌트 — "○○ ○○○ · 5글자(띄어쓰기 있음)" */

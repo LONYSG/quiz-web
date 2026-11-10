@@ -16,7 +16,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { DRAW, DRAW_ERASE_HEX, DRAW_HINT_KINDS, DRAW_HINT_LABEL, DRAW_PALETTE, DRAW_WIDTH_STEPS, floodFill, gridHash, hexToRgb } from '@quiz/shared';
+import { DRAW, DRAW_ERASE_HEX, DRAW_HINT_KINDS, DRAW_HINT_LABEL, DRAW_PALETTE, DRAW_WIDTH_STEPS, floodFill, gridHash, hexToRgb, hintKind } from '@quiz/shared';
 import type { DrawStrokeView, DrawView, PlayerView } from './useRoom.js';
 
 interface Props {
@@ -448,6 +448,7 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
           {hintChips.map((k) => (
             <span key={k} className="draw-hint-chip" data-draw-hint={k}>
               {DRAW_HINT_LABEL[k]} <strong>{view.hints[k]}</strong>
+              {k === 'initial' && hintKind(view.hints.initial) && <span className="hint-kind"> · {hintKind(view.hints.initial)!.label}</span>}
             </span>
           ))}
         </p>

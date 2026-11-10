@@ -11,6 +11,7 @@
 // 기록: draw_rounds(0033) · 경험 minigame_item_experiences('draw', 항목 id) — fire-and-forget
 // ★★ R087 (D-344 · 찬종 테스트 1): 출제자 힌트 버튼 셋(draw.hint — 글자 수 · 초성 · 주제 · 각 1회 · 패널티 없음) · 주제는 기본 숨김(버튼으로 공개)
 //   · 힌트는 전원 화면 힌트 띠 + 시스템 줄 · draw_rounds 에는 칸이 없어 서버 로그에만(기록 칸은 0034 — R088)
+//   ★ R095 (D-352 · #116): 초성 힌트 = 제시어 전체 초성(drawInitials — 퀴즈 초성 함수를 낱말마다 · 띄어쓰기 유지) · 시스템 줄 "출제자가 초성을 공개했어요"
 // =============================================================================
 
 import { randomInt } from 'node:crypto';
@@ -22,7 +23,7 @@ import {
   drawLengthPattern,
   drawPointsOk,
   drawSolverScore,
-  firstInitial,
+  drawInitials,
   isDrawColor,
   matchTopic,
   flexCanon,
@@ -446,9 +447,9 @@ export function drawHint(room: Room, accountId: string, kind: DrawHintKind): Dra
   if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
   if (accountId !== r.drawer || r.hints[kind]) return 'bad';
   if (kind === 'length') r.hints.length = drawLengthPattern(r.keyword);
-  else if (kind === 'initial') r.hints.initial = firstInitial(r.keyword);
+  else if (kind === 'initial') r.hints.initial = drawInitials(r.keyword);
   else r.hints.topic = r.nameKo;
-  broadcastSystem(room, { length: '출제자가 글자 수를 공개했어요', initial: '출제자가 첫 글자 초성을 공개했어요', topic: '출제자가 주제를 공개했어요' }[kind]);
+  broadcastSystem(room, { length: '출제자가 글자 수를 공개했어요', initial: '출제자가 초성을 공개했어요', topic: '출제자가 주제를 공개했어요' }[kind]);
   console.log(`[draw] ${room.id} 라운드 ${r.no} 힌트 ${kind}`);
   broadcast(room);
   return 'ok';
