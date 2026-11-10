@@ -31,7 +31,7 @@ const HEAD = ['topic', 'nameKo', 'kind', 'version', 'asOf', 'createdRound', 'sta
 const ITEM_OK = new Set(['id', 'name', 'label', 'variants', 'tags', 'year', 'draw', 'liar', 'qid', 'note', 'fool', 'era', 'sub', 'diff', 'g']); // ★ G039: label = 화면용 짧은 이름(판정엔 안 씀 · 18 §9 · CV-165 ②) · ★ G047: fool · era · sub · diff(18 §12 제시어 세트)
 const ERA = new Set(['classic', 'modern']);
 /** ★ G047 — 라이어 제시어 세트(kind open · 머리 liar true) = fool · era · sub · diff 필수 · 수 40~120 */
-const LIAR_NEW_G055 = new Set(['liar-holiday', 'liar-school', 'liar-drinking', 'liar-cafe', 'liar-streetfood']);
+const LIAR_NEW_G055 = new Set(['liar-holiday', 'liar-school', 'liar-drinking', 'liar-cafe']); // ★ G056: liar-streetfood 뺌(찬종 2026-11-10 — 파일 삭제)
 export const isLiarSet =(t) => t.kind === 'open' && t.liar === true;
 /** ★ G048 — 캐치마인드 제시어 세트(kind open · 머리 draw true · liar false · draw-*) = diff 필수 · 수 40~400 · fool 없음 */
 export const isDrawSet = (t) => t.kind === 'open' && t.draw === true && t.liar === false && String(t.topic ?? '').startsWith('draw-');
