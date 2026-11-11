@@ -10,6 +10,18 @@
 
 ---
 
+## D-354. 검사 정리 — 낡은 기대 7건을 지금 규칙으로 · `npm run song:feedback` (R097 · R096 끝 점검 3절)
+- 무엇: R096 끝 점검의 `npm run verify` 단계별 실패 7건(social 2 · leave 1 · spam 1 · minigame 3)을 하나씩 재현했다. **전부 낡은 기대 또는 검사 쪽 결함(쿠키 공유)** — 게임 코드 결함 0 · 게임 규칙 · 화면 변경 0.
+  - spam A 이모티콘 "6번째 안내" — D-314(R071)가 이모티콘 도배 제한을 기본 끔 → 기대 = 6번째도 가고 안내 없음(켜는 줄 `EMOJI_RATE_LIMIT=1` 은 봇 emojilimit 몫 그대로).
+  - leave E 밤 첫 글자 색 — D-323(R074) 밤 토큰이 `#14163a` → `#121212` → 기대 = rgb(18,18,18).
+  - social B 확인 팝업 + third 예외(null.closest) — **한 원인**: D-262(R063)부터 사람을 누르면 `.confirm-modal` 이 아니라 프로필 카드(`.person-card` · 버튼 data-act). 옛 기대가 빈 팝업을 읽고 다음 줄 `.closest` 에서 예외 → **이 묶음 뒷부분(방장 카드 · C-1 테마 · C-2 이모티콘 …)이 R063 뒤로 통째로 안 돌았다**. 기대를 프로필 카드로 고침(손님 = friend 만 · 방장 = host · kick · ban).
+  - minigame E 물건 넷 — D-286(R066)이 4 → 12종 → 기대 = shared `BALANCE_KINDS` 순서 그대로.
+  - minigame E 케이크 "입력 오차 −0.42 · −0.84 · −1.23초" — D-261(R063)의 처음 1초 멈춤으로 목표가 11초 → 옛 기대(목표 10초)가 낡음. 사이 간격(−0.39 · +0.42)은 누른 때와 맞았다 = **서버 판정 정상** · "한 명 미제출" 은 검사가 일부러 안 누르는 mf. 기대 = `cakeTargetMs` 기준 + 폴링 여유(0 ~ 0.35초 한쪽) + 사이 간격 ±0.15.
+  - minigame M2-lab "회원가입 탭 못 찾음" — 실험실 페이지들(M-lab · M2~M5 · R060)이 **같은 기본 브라우저 맥락**을 써서 앞 M-lab 가입 쿠키가 남아 BASE 가 곧장 홈(인증 화면 없음). M2~M5 · R060 을 따로 맥락으로(이미 따로인 U · S · R063 · R068 lab 과 같게). 고치자 M2 뒤 M4-lab 도 같은 실패가 드러났다 — 예외가 묶음을 끊어 **뒤 실험실들이 여러 라운드 안 돌았다**. 덤으로 `signUp` 은 탭이 그려질 때까지 기다린다(고정 1.2초 대신).
+- 더함: `npm run song:feedback`(scripts/song-feedback.mjs) — minigame_runs 'song'(방식 판 · 미니게임 판) 결과의 input.rate(D-353) 를 곡별로 👍 · 😐 · 👎 · 👎 사유(모르는 노래 · 너무 쉬움 · 표기 · 미리듣기) · 제목 · 가수 · 연도 · 분류 · 장르 · 👎 많은 순. 기본 실 quizweb · `READ ONLY` 연결 · `--since 7d|YYYY-MM-DD` · `--db dev|test` · `--no-bots` · tmp/song-feedback.md. 평가 화면은 지금 방식 판에만 있다(미니게임 판 줄 0 이 정상).
+- 앞으로: 큰 라운드 끝 점검은 `npm run verify` 전체를 단계별로(10 77절) — 낡은 기대가 여러 라운드 쌓인 원인.
+- 되돌리기: 커밋 revert(검사 · 보고 스크립트만 · DB 0).
+
 ## D-353. 노래 맞히기 = 방 방식 'song'(퀴즈 흐름 그대로 · 문항 = 곡) · 적재 스크립트 새 칸 · inactive · 넣을 것 0 이면 exit 2 (R096 · 찬종 실전 제보 #117 · 2026-11-11 답)
 - 찬종(#117): "노래 맞히기는 캐치마인드·라이어게임처럼 따로 빼자 … 한국(발라드 · 댄스 · 아이돌 등) · 팝송 · J-pop · 연도 10년 단위 … 15초 남았을 때 초성 · 스킵 투표 · 기존 퀴즈랑 비슷한 형식 · 일반 퀴즈들처럼 채팅창에서" · 2026-11-11: "Apple Music 표기 완전히 빼 · 앨범 표지 더 크게 · 새로 만든 기능일수록 촌스러워" · "정답 후 세레모니 등등까지" · 표지 시계 공개(설계 지정).
 - **A 적재(첫 커밋 · 안전장치)**: `minigame-song.mjs` SONG_OPTIONAL += category · genre · genreWhy · titleKo · legend · legendWhy · inactiveReason · 넣는 항목 검사(category kr/pop/jpop · kr 은 genre 9종 · titleKo 한글 · 숫자 · 기호만). STATUS 에 `inactive`(넣지 않음 → DB 행 active=false · 지우지 않음). **원인(G061 실측)**: 새 칸 = "모르는 칸" 거부 → 넣을 것 0 → `--apply` 가 그 game 활성 행 전부를 쉬게 했다(메뉴 1 이면 노래 통째로 빠짐). → **`--apply` 에서 파일이 있는 게임 중 넣을 것 0 이 하나라도 있으면 아무것도 쓰지 않고 exit 2** · 쉬게 할 대상은 파일이 있는 게임만 · dry-run 이 DB 를 읽기만 해서 "쉼" 을 미리 셈 · 메뉴 1 줄 = `[active] song 활성 n · 쉼 m`(exit 2 면 "멈춤(안전장치)"). dev 적용: song 활성 207 · 쉼 86(inactive 85 + 옛 rejected 1).

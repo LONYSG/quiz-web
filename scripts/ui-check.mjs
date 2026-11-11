@@ -2980,12 +2980,13 @@ async function r053Live(browser, key) {
     await H.waitFor("document.querySelector('.mg-card')?.dataset.phase === 'play'", 30000);
     await sleep(300);
     if (key === 'minority') {
-      await H.key('3', { code: 'Digit3', vk: 51, text: true });
+      // ★ R097 — R077 (D-327) 선택지 = 인원 − 1(최소 2) → 2명 방은 1 · 2 뿐(옛 기대 '3 키' 는 없는 카드)
+      await H.key('1', { code: 'Digit1', vk: 49, text: true });
       const c = await rectOf(G, '.minority-card[data-n="2"]');
       await trustedTap(G, c.x + c.w / 2, c.y + c.h / 2);
       await sleep(200);
       if (i === 0) {
-        record('★★ A 소수파 — PC 3 키 · 모바일 톡으로 고름', (await H.evaluate("document.querySelector('.minority-card.picked')?.dataset.n")) === '3' && (await G.evaluate("document.querySelector('.minority-card.picked')?.dataset.n")) === '2');
+        record('★★ A 소수파 (D-327 2명 = 1~2) — PC 1 키 · 모바일 톡으로 고름', (await H.evaluate("document.querySelector('.minority-card.picked')?.dataset.n")) === '1' && (await G.evaluate("document.querySelector('.minority-card.picked')?.dataset.n")) === '2');
         await snap(H, `${num}-live-minority-picked-pc`);
         await snap(G, `${num}-live-minority-picked-m390`);
       }
@@ -3044,7 +3045,7 @@ async function r053Live(browser, key) {
   const g = db.filter((r) => /g$/.test(r.login_id));
   const ok =
     key === 'minority'
-      ? h.every((r) => r.input?.pick === 3) && g.every((r) => r.input?.pick === 2) && h.every((r) => r.points === 1) && g.every((r) => r.points === 1)
+      ? h.every((r) => r.input?.pick === 1) && g.every((r) => r.input?.pick === 2) && h.every((r) => r.points === 1) && g.every((r) => r.points === 1)
       : key === 'oddone'
           ? h.every((r) => r.submitted && r.input?.wrong === 1 && r.value >= 2000) && g.filter((r) => r.submitted).length >= 3
           : h.every((r) => r.submitted && r.value < 25) && g.every((r) => r.submitted);
@@ -3104,7 +3105,8 @@ async function r054Live(browser, key) {
     await sleep(300);
     if (key === 'balloon') {
       await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, text: ' ' });
-      const gr = await rectOf(G, '.balloon-box');
+      // ★ R097 — R063 (D-261) 풍선 = 펌프 규칙(누를 때마다 한 번 · Space / [펌프] 버튼) — 옛 '꾹 누르기(상자 터치)' 는 펌프가 아니다 → G 는 [펌프] 버튼을 톡
+      const gr = await rectOf(G, '[data-balloon-pump]');
       await G.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: gr.x + gr.w / 2, y: gr.y + gr.h / 2 }] });
       await sleep(1200);
       if (i === 0) {
@@ -3154,7 +3156,9 @@ async function r054Live(browser, key) {
   );
   const h = db.filter((r) => /h$/.test(r.login_id));
   const g = db.filter((r) => /g$/.test(r.login_id));
-  const ok = key === 'balloon' ? h.every((r) => r.submitted && r.input?.size > 105 && r.input?.size < 125) && g.every((r) => r.submitted) : h.every((r) => r.value === 21) && g.every((r) => r.value >= 10);
+  // ★ R097 — D-261 펌프 규칙: 한 번 누름 = pumps 1 · total = 첫 바람(BALLOON_PUMP_MIN 6 ~ MAX 16) · 안 터짐 (옛 기대 input.size 105~125 = 꾹 누르기 시절)
+  const pumped1 = (r) => r.submitted && r.input?.pumps === 1 && r.input?.total >= 6 && r.input?.total <= 16 && r.input?.popped === false;
+  const ok = key === 'balloon' ? h.length === 3 && h.every(pumped1) && g.length === 3 && g.every(pumped1) : h.every((r) => r.value === 21) && g.every((r) => r.value >= 10);
   record(`★★★ ${key} 실제 판 기록(DB)`, ok, JSON.stringify([h.map((r) => r.input), g.map((r) => r.value)]));
   await H.waitFor("document.querySelector('.lobby-card') !== null", 40000);
   await H.close?.();
@@ -11319,7 +11323,7 @@ async function emojiGuests(roomId, n) {
   return socks;
 }
 async function emojiFlow(browser) {
-  const host = await newPage(browser, 'e-host');
+  const host = await newPage(browser, 'e-host', true); // ★ R097 — 따로 맥락(앞 가입 쿠키면 인증 화면 없음)
   await host.setViewport(1536, 864);
   await signUp(host, 'eh', shotNick(0) ?? '가나다라마바사아자차');
   const roomId = await createRoom(host, '이모티콘 확인');
@@ -11406,7 +11410,7 @@ async function renameVia(page, next, label) {
 }
 async function profileFlow(browser) {
   const sfx = `${STAMP.slice(-3)}`;
-  const host = await newPage(browser, 'p-host');
+  const host = await newPage(browser, 'p-host', true); // ★ R097 — 따로 맥락(앞 social 'host' 가입 쿠키면 인증 화면 없음)
   await host.setViewport(1280, 720);
   await signUp(host, 'ph', `방장${sfx}`);
   await createRoom(host, '프로필 확인');
@@ -11521,7 +11525,10 @@ async function profileFlow(browser) {
   record('★★★ D 사진 — 내 참여자 칸에 사진', await host.evaluate(hostImg));
   record('★★★ D 사진 — 다른 사람(게스트) 화면에도 사진', await guest.waitFor("document.querySelector('img.avatar.photo') !== null", 4000));
   await snap(host, '62-photo-set-pc');
-  r = await realClick(host, '.rename-pop button', '사진 지우기');
+  // ★ R097 — R063 (D-262) 부터 사진 지우기는 사진을 누른 메뉴 안(옆 버튼 없앰) → 사진 → 메뉴 [사진 지우기]
+  await realClick(host, '.rename-pop [data-photo-btn]');
+  await host.waitFor("document.querySelector('[data-photo-menu]') !== null", 3000);
+  r = await realClick(host, '[data-photo-menu] button', '사진 지우기');
   await host.waitFor("document.querySelector('.confirm-modal[data-kind=\"photo-delete\"]') !== null", 3000);
   const r2 = await realClick(host, '.confirm-modal button', '지우기');
   await sleep(1000);
@@ -11762,11 +11769,11 @@ async function socialFlow(browser) {
   record('★★ C-1 — 테마를 바꿔도 크기·자리가 같다 (파스텔 ↔ 밤)', gPastel === gNight, `${gPastel} | ${gNight}`);
   await snap(host, '52-night-lobby-pc');
   await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
-  record('★ C-1 — 설정 창 테마는 둘 (파스텔 · 밤)', await (async () => {
+  record('★ C-1 — 설정 창 테마는 셋 (파스텔 · 밤 · 사무실 — D-322)', await (async () => {
     await realClick(host, '.prefs-toggle');
     const t = await host.evaluate("[...document.querySelectorAll('.prefs-pop .seg')[0]?.querySelectorAll('button') ?? []].map(b => b.innerText.trim()).join(',')");
     await closeTop(host);
-    return t === '파스텔,밤';
+    return t === '파스텔,밤,사무실'; // ★ R097 — R074 (D-322) 사무실 테마가 더해져 셋
   })());
 
   // ── ★★ C-2 — 이모티콘이 경험률 · 닉네임 글자를 가리지 않는다 (1536×864 · 1536×730 로비)
