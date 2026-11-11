@@ -74,6 +74,7 @@
 | V047.txt | ★ **캐치 2차 표본 300 판정** VERIFY — 문제율 0.33% → 새 14 파일 verified · 연예인 106 읽기(논란 4 제안) · 메뉴 1 캐치 단어 6,130 · C122 · CV-180 |
 | V048.txt | ★ **라이어 제시어 2차 15 파일 전수 판정** VERIFY — 570 항목 · fool 1,710 · 교체 94(5.5%) · remove 3 + dup 2 · verified 2 · candidate 13 · G054 적용 뒤 라이어 1,414 · C125 · CV-181~182 |
 | V049.txt | ★ **라이어 새 주제 5 전수 판정** VERIFY — 181 항목 · fool 543 · 교체 50(9.2%) · remove 0 · verified 1(카페) · candidate 4 · 주제별 소견(길거리 약함) · C128 · CV-183~184 |
+| V051.txt | ★ **노래 2차 정리 대조** VERIFY — 293 항목(keep 280 · fix 10 · unsure 3) · 레전드 63 동의 60(엇갈림 3) · titleKo 위반 0 · 변형 5 · genre 틀림 2 · weak 45 · 웹 0 · C136 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
