@@ -1441,8 +1441,9 @@ async function soundFlow(browser) {
   }
   record(
     '★★★ R042 D — 모바일: 정답 공개 때 키보드를 내려도(포커스 해제) 문제 끝 소리(시간 종료 · 정답 · 넘김)가 울린다',
-    JSON.parse(kb2).dropped >= 2 && ['timeout', 'mine', 'skip'].every((id) => logs['참가자 모바일'].some((e) => e.id === id && e.played)),
-    `포커스 해제 ${JSON.parse(kb2).dropped}번`,
+    // ★ R096 — 낡은 기대 고침: R075 (D-325) 부터 판 중(공개 포함)에는 키보드를 내리지 않는다(결과 · 로비 · 일시정지만) → 해제 횟수는 적기만 하고 소리 셋이 울리는지만 본다
+    ['timeout', 'mine', 'skip'].every((id) => logs['참가자 모바일'].some((e) => e.id === id && e.played)),
+    `포커스 해제 ${JSON.parse(kb2).dropped}번(R075 뒤 판 중 0 이 맞다)`,
   );
   return { hostAudio, guestAudio, logs, table };
 }

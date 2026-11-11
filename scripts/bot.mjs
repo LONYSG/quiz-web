@@ -6105,7 +6105,10 @@ async function playQuickGame(host, others, n, keys, timeoutMs) {
   await host.waitFor(() => host.since(from, 'lobby.settingsUpdated').some((e) => e.settings?.minigames === true && e.settings?.questionCount === n), 4000, '설정');
   const g = host.mark();
   host.socket.emit('game.start', {});
-  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작');
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '게임 시작').catch((err) => {
+    console.log('[bot] 시작 못 함:', JSON.stringify(host.events.slice(g).filter((e) => e.type === 'error' || e.type === 'game.countdownCancelled')));
+    throw err;
+  });
   const gameId = host.since(g, 'game.started')[0].gameId;
   let skipped = 0;
   const until = Date.now() + timeoutMs;
@@ -6134,6 +6137,8 @@ async function runsOfGame(gameId) {
 
 async function scenarioMinigame() {
   log('시나리오 minigame — ★★★ 미니게임 틀 · 케이크 기다리기 · 균형의 수호자 (R050)');
+  // ★ R096 — 앞 시나리오가 경험을 채워 출제 가능 수를 줄여 두면(예: 3) 퀴즈 판이 안 열린다 → 처음에 봇 경험을 지운다(순서 의존 제거)
+  await clearExperiences(PREFIX);
   const sh = await mgShared();
   const bots = await makeBots(6);
   const [host] = bots;
