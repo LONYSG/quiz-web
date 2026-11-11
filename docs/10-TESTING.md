@@ -1074,6 +1074,18 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 77. ★ R097 — 검사 정리 · song:feedback (D-354)
+
+| 무엇 | 어떻게 | 결과 |
+|---|---|---|
+| verify 실패 7 재현 | R096 끝 점검의 social 2 · leave 1 · spam 1 · minigame 3 — 하나씩 돌려 원인 확인 | 전부 낡은 기대 · 검사 쪽 결함(게임 코드 결함 0) |
+| 낡은 기대 1차 | spam A 이모티콘(D-314 기본 끔) · leave E 밤 첫 글자(D-323 #121212) · social B 프로필 카드(D-262) · minigame E 물건 12종(D-286 · shared BALANCE_KINDS) · 케이크 목표 11초(D-261 · cakeTargetMs · 폴링 여유 0~0.35 · 사이 간격 ±0.15) | 고침 |
+| 검사 쪽 결함 | 실험실 · 프로필 페이지가 기본 브라우저 맥락을 같이 써 앞 가입 쿠키로 인증 화면이 없음("회원가입 탭 못 찾음") → M2~M5 · R060 lab · p-host · e-host 따로 맥락 · signUp 은 탭이 그려질 때까지 기다림 | 고침 |
+| ★ 되살아난 검사 | 예외 둘(social third null.closest · M2-lab)이 묶음을 끊어 **R063 뒤로 뒷부분이 안 돌았다** → 걷어내자 낡은 기대 5 더: 테마 셋(D-322) · 사진 지우기 = 사진 메뉴(D-262) · 소수파 2명 = 1~2(D-327) · 풍선 펌프(D-261) · 쿠키 공유 2 | 고침 · social 61 → 157 · minigame 21 → 146 |
+| song:feedback | quizweb_test(봇 song 평가 3) · 실 · dev 읽기(READ ONLY 연결 · 0건) | 통과 |
+| 끝 점검 | `npm run verify` 단계별 — typecheck 0 · test 773 · smoke 12/12 · ui-check 446/446 · sound 5/5 · social 157/157 · leave 28/28 · spam 19/19 · shop 32/32 · copy 15/15 · devices 9/9 · minigame 146/146 | **전체 통과** |
+| 검사가 왜 못 잡았나 | ① 라운드마다 verify 전체를 안 돌림 → 규칙 바꾼 라운드(R063 · R066 · R071 · R074 · R077)가 옛 기대를 안 고침 ② 예외는 "실패 1" 로만 세져 뒤 검사 수십 개가 안 돈 것이 숫자에 안 보였다(61 중 59 가 좋아 보임) → **앞으로 큰 라운드 끝 점검은 verify 전체 단계별 · 묶음 검사 수가 크게 줄면 예외로 끊긴 것부터 의심** | — |
+
 ## 76. ★★★ R096 — 노래 맞히기 방식 · 적재 새 칸 · exit 2 (D-353)
 
 | 무엇 | 어떻게 | 결과 |

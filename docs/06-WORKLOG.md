@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-11-11 — 검사 정리 · song:feedback (R097, MAIN · D-354)
+- 무엇: R096 끝 점검 verify 실패 7건 재현 → 전부 낡은 기대 · 검사 타이밍. scripts/ui-check.mjs 기대 고침(spam A D-314 · leave E D-323 · social B D-262 프로필 카드 · minigame E 12종 D-286 · 케이크 목표 D-261 · signUp 탭 기다림) · `scripts/song-feedback.mjs` + `npm run song:feedback`.
+- 문제: social B 낡은 기대가 예외를 내 그 묶음 뒷부분(방장 카드 · C-1 · C-2 …)이 R063 뒤로 안 돌고 있었다 — "61 중 59" 가 실제보다 좋아 보였다.
+- 검사: npm run verify 단계별(ai-out/R097.txt 3절) · song:feedback --db test(봇 평가 3) · 실/개발 DB 읽기 0건.
+- 남은 것: 없음(게임 코드 결함 0). 실 평가는 메뉴 3 → 1 뒤 방식 판을 해야 쌓인다.
+
 ## 2026-11-11 — 노래 V051 반영 · weak 45 비활성 (G062, GEN · 파일만 · DB 0)
 - 무엇: V051 대조 + 찬종 결정 — data/minigame/song/items.json 만: weak 45 `inactive`(inactiveReason "G062 #117 보편성 약함") · titleVariants +5 · genre 2(사랑했나봐 → OST · 사건의 지평선 → 발라드). 레전드 3 · 반대 4 · 불확실 3 손대지 않음.
 - 문제: 없음(45 전부 verified 였음 · 변형 중복 0). 얇은 장르(kr R&B 8 · 포크/인디 8 · OST 10 · pop R&B 1 · 트로트 0)는 확대 G063 몫.
