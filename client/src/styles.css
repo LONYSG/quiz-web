@@ -11149,3 +11149,212 @@ button.preset.shake {
   accent-color: var(--accent);
   margin: 0;
 }
+
+/* =============================================================================
+   ★★★ R096 — 노래 맞히기 방식(D-353) — 퀴즈 카드 안 부품만(카드 · 힌트 줄 · 공개 상자 · 평가 줄 · 스킵 줄은 퀴즈 그대로)
+   ★ 새 값 없이 기존 토큰(--radius-sm · --shadow-pop · --ease-pop · --surface-2 · --accent · 퀴즈 시간 막대의 120ms linear)
+   ============================================================================= */
+@property --song-p {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+.song-play {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+/* 표지 — PC ≈360px · 짧은 화면은 높이에 맞춰 · 폰은 판 칸 너비 */
+.song-cover {
+  position: relative;
+  width: min(360px, 100%, 40vh);
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+  /* ★ 퀴즈 시간 막대와 같은 tick · 같은 linear(100ms 마다 남은 시간 → 120ms 로 이어 그림) */
+  transition: --song-p 120ms linear;
+}
+.song-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.song-cover-none {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  color: var(--text-dim);
+}
+/* ★ 가림막 — 12시부터 시계 방향으로 밝아지는 부채꼴(흐른 비율 --song-p) */
+.song-cover-veil {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, transparent 0turn calc(var(--song-p) * 1turn), rgb(14 12 28 / 0.9) calc(var(--song-p) * 1turn) 1turn);
+  pointer-events: none;
+}
+/* 공개 — 남은 구간을 재빨리 돌아 한 바퀴(정답) · 스킵 · 시간 초과도 같은 꼴로 전부(강조 없음) */
+.song-cover.done {
+  transition: --song-p 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.song-cover.won {
+  animation: song-cover-win 900ms var(--ease-pop) 520ms both;
+}
+@keyframes song-cover-win {
+  0% {
+    transform: scale(1);
+    box-shadow: var(--shadow);
+  }
+  45% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 55%, transparent), var(--shadow-pop);
+  }
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent), var(--shadow-pop);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .song-cover,
+  .song-cover.done {
+    transition: none;
+  }
+  .song-cover.won {
+    animation: none;
+  }
+}
+.song-notice {
+  margin: 0;
+  font-weight: 700;
+  color: var(--warn);
+  font-size: 0.92rem;
+}
+.song-play .song-sound {
+  margin: 0;
+}
+/* 힌트 줄 — 노래는 초성 한 줄(일반 힌트 칸 없음) */
+.q-hints.song-hints {
+  min-height: 1.9rem;
+  margin-top: 6px;
+}
+/* 공개 — 제목 크게 · 가수 한 단계 작게 · 칩 한 줄 · 맞힌 사람 줄 */
+.song-reveal-main {
+  position: relative;
+  text-align: center;
+}
+.song-reveal-text {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.song-reveal-text p {
+  margin: 0;
+}
+.song-reveal-text .song-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.25;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.song-reveal-text .song-artist {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+.song-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 2px !important;
+}
+.song-winner {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 4px !important;
+  font-weight: 800;
+}
+/* 로비 설정 — 곡 0 인 칩은 흐리게(누를 수는 있다) · 칩 옆 수 */
+.song-set-empty {
+  opacity: 0.45;
+}
+.song-set-n {
+  font-size: 0.78em;
+  margin-left: 2px;
+}
+/* 결과 — 곡별 한 줄 */
+.song-result {
+  margin-top: 10px;
+  text-align: left;
+}
+.song-result summary {
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.song-result-list {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 4px 12px;
+  max-height: 34vh;
+  overflow-y: auto;
+}
+.song-result-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 3px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+.song-result-art {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: var(--surface);
+}
+.song-result-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.song-result-title {
+  font-weight: 800;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.song-result-artist {
+  font-size: 0.78rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.song-result-who {
+  flex: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+[data-theme='office'] .song-cover img {
+  filter: grayscale(1);
+}

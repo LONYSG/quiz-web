@@ -23,6 +23,34 @@ export const FEEDBACK_REASONS = [
 
 export type FeedbackReason = (typeof FEEDBACK_REASONS)[number]['code'];
 
+/**
+ * ★★★ R096 (D-353 · 브리프 C-2 ⑦) — 노래 맞히기 공개 화면 평가의 👎 사유(노래용) — 한 사람 한 곡 하나 ·
+ *   저장 = minigame_results.input.rate(퀴즈 question_feedback 은 questions FK 라 못 쓴다 · 마이그레이션 없음) → "보편성 약한 곡" 실측
+ */
+export const SONG_FEEDBACK_REASONS = [
+  { code: 'unknown', label: '모르는 노래' },
+  { code: 'too_easy', label: '너무 쉬움' },
+  { code: 'label', label: '제목·가수 표기가 이상함' },
+  { code: 'preview', label: '미리듣기가 이상함(다른 판·끊김)' },
+] as const;
+export type SongFeedbackReason = (typeof SONG_FEEDBACK_REASONS)[number]['code'];
+
+/** 노래 평가 본문 검사 — { gameId, songId, vote: 1|0|-1, reasons[] } (👎 에만 사유) */
+export function parseSongFeedbackInput(body: unknown): { ok: true; value: { gameId: string; songId: string; vote: 1 | 0 | -1; reasons: SongFeedbackReason[] } } | { ok: false; error: string } {
+  const b = (body ?? {}) as Record<string, unknown>;
+  const gameId = typeof b.gameId === 'number' ? String(b.gameId) : b.gameId;
+  if (typeof gameId !== 'string' || !/^\d{1,19}$/.test(gameId)) return { ok: false, error: '판 번호가 없어요.' };
+  if (typeof b.songId !== 'string' || !/^song-\d{4}$/.test(b.songId)) return { ok: false, error: '곡 번호가 없어요.' };
+  const vote = b.vote;
+  if (vote !== 1 && vote !== 0 && vote !== -1) return { ok: false, error: '평가 값이 이상해요.' };
+  const raw = b.reasons ?? [];
+  const codes = new Set<string>(SONG_FEEDBACK_REASONS.map((r) => r.code));
+  if (!Array.isArray(raw) || raw.some((r) => typeof r !== 'string' || !codes.has(r))) return { ok: false, error: '없는 사유예요.' };
+  const picked = new Set(raw as string[]);
+  const reasons = vote === -1 ? SONG_FEEDBACK_REASONS.map((r) => r.code).filter((c) => picked.has(c)) : [];
+  return { ok: true, value: { gameId, songId: b.songId, vote, reasons } };
+}
+
 /** 기타 의견 최대 글자 수 (DB CHECK 와 같다) */
 export const FEEDBACK_COMMENT_MAX = 200;
 

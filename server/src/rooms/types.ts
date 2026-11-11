@@ -81,6 +81,12 @@ export interface RoomSettings {
   /** ★ R090 (D-347) — 라이어 · 캐치마인드 제시어 주제(null = optIn 아닌 세트 전부) */
   liarTopics: string[] | null;
   drawTopics: string[] | null;
+  /** ★★★ R096 — 노래 맞히기: 곡 수(5~20) · 분류 · 연대 · 20세기 명곡 · 한국 장르(shared songMode) */
+  songCount: number;
+  songCategories: import('@quiz/shared').SongCategory[];
+  songDecades: import('@quiz/shared').SongDecade[];
+  songLegend: boolean;
+  songGenres: import('@quiz/shared').SongKrGenre[];
 }
 
 /**
@@ -163,6 +169,8 @@ export interface ActiveGame {
   liar: import('../liar/engine.js').LiarRun | null;
   /** ★★★ R083 — 캐치마인드 판(방식 draw · D-340). 다른 방식이면 null */
   draw: import('../draw/engine.js').DrawRun | null;
+  /** ★★★ R096 — 노래 맞히기 판(방식 song · D-353 — 퀴즈 흐름 그대로 · 문항 = 곡). 다른 방식이면 null(없음) */
+  song?: import('../song/mode.js').SongRun | null;
   /** 정답 공개 뒤 5초 대기 구간의 정보. QUESTION_RESOLVED 에서만 값이 있다 */
   resolution: Resolution | null;
   /**
@@ -214,6 +222,8 @@ export interface QuestionLogEntry {
   responseMs: number | null;
   /** 이 문제를 이미 경험하고 있던 참가자 수 */
   experiencedCount: number;
+  /** ★ R096 — 노래 맞히기 판의 곡(공개된 곡만 — 중단된 곡은 제목 없이 id 만) */
+  song?: import('../song/mode.js').SongRevealInfo | { id: string } | null;
 }
 
 /**
@@ -285,6 +295,8 @@ export interface CurrentQuestion {
   winnerArrivedNs: bigint | null;
   /** ★★ R038 — 뒷북 명단 (정답자 발생 후 3초 안에 정답을 보낸 사람. 도착 순) */
   lateAnswers: LateAnswer[];
+  /** ★★★ R096 — 노래 맞히기 곡(방식 song 일 때만) — 판정은 answersNorm 그대로(제목) · 가수 알림 · 공개 정보 */
+  song?: import('../song/mode.js').SongQuestion;
 }
 
 /** ★★ 뒷북 한 사람 (R038 / D-174) */
@@ -512,7 +524,7 @@ export interface GameResultData {
   endedQuestionCount: number;
   totalQuestions: number;
   /** ★★★ R057 — 'minigame' = 미니게임만 판(점수 = 순위 점수 합 · 동점은 마지막 미니게임 순위) · 그때 한 수 / 정한 수 */
-  mode: 'quiz' | 'minigame' | 'liar' | 'draw';
+  mode: 'quiz' | 'minigame' | 'liar' | 'draw' | 'song';
   minigameSeries: { done: number; total: number } | null;
   /** ★★★ R079 — 팀전 판이면 팀 점수 · 승패 · 보너스(D-335) · 아니면 null */
   teams: import('@quiz/shared').TeamResult | null;

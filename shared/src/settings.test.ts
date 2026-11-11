@@ -94,6 +94,12 @@ describe('validateRoomSettings — 형식 방어', () => {
       // ★ R082 — 방식
       'mode',
       'questionCount',
+      // ★ R096 — 노래 맞히기
+      'songCategories',
+      'songCount',
+      'songDecades',
+      'songGenres',
+      'songLegend',
       'startMode',
       // ★ R079 — 팀전
       'teamMode',

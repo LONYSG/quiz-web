@@ -22,6 +22,7 @@ import { activeCount, deviceOf } from './registry.js';
 import { minigameView } from '../minigame/engine.js';
 import { liarView } from '../liar/engine.js';
 import { drawView } from '../draw/engine.js';
+import { songResolvedView } from '../song/mode.js';
 import type { CurrentQuestion, ExperienceRate, GameResultData, Player, Room } from './types.js';
 
 export type SnapshotReason = 'join' | 'reconnect' | 'resync';
@@ -151,6 +152,8 @@ export interface QuestionView {
   hasGeneralHint: boolean;
   /** ★ R061 — 문항 번호(questions.id) — 문제 단계부터 보인다(제보 · 복사). 단서가 아니다 */
   questionId: string;
+  /** ★★★ R096 — 노래 맞히기 곡(미리듣기 · 표지 · 곡 길이 — 제목 · 가수는 resolution.song 에만) · 퀴즈 문항은 null */
+  song: { previewUrl: string; cover: string | null; durationMs: number } | null;
 }
 
 export interface ResolutionView {
@@ -168,6 +171,8 @@ export interface ResolutionView {
   late: { accountId: string; nickname: string; colorIndex: number; diffNs: string }[];
   /** ★★ R071 (D-313) — 평가 요청 문항인가(판마다 무작위 1/3 · 방 전원 같다) — 아니면 공개 화면에 평가 줄이 없다 */
   rateAsk: boolean;
+  /** ★★★ R096 — 노래 공개(제목 · 가수 · 연도 · 칩 · 표지) · 퀴즈는 null */
+  song: ReturnType<typeof import('../song/mode.js').songResolvedView> | null;
 }
 
 export interface ChatView {
@@ -407,6 +412,7 @@ function buildQuestionView(
     generalHint: generalRevealed ? q.generalHint : null,
     hasGeneralHint: q.generalHint !== null,
     questionId: q.questionId,
+    song: q.song ? { previewUrl: q.song.entry.previewUrl, cover: q.song.entry.cover, durationMs: q.song.durationMs } : null,
   };
 }
 
@@ -427,6 +433,7 @@ function buildResolutionView(room: Room): ResolutionView | null {
     text: q.text,
     late: lateAnswersView(q),
     rateAsk: r.rateAsk,
+    song: q.song ? songResolvedView(q.song) : null,
   };
 }
 

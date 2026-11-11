@@ -32,6 +32,8 @@ import {
   type MinigameKey,
   RULES,
   validateRoomSettings,
+  SONG_MODE,
+  DEFAULT_SONG_SETTINGS,
   type DifficultyLevel,
   type GameTopic,
 } from '@quiz/shared';
@@ -41,6 +43,7 @@ import Icon from './Icon.js';
 import { usePopup } from './popup.js';
 import MinigameCatalog from './minigame/MinigameCatalog.js';
 import TopicPicker from './TopicPicker.js';
+import SongSettings from './SongSettings.js';
 
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
 const PRESETS = [50, 100, 200] as const;
@@ -124,6 +127,8 @@ export default function GameSettings({
   // ★★★ R083 — 캐치마인드(라운드 수 · 팀전 잠금 · 문제/미니게임 줄 숨김은 라이어와 같다)
   const drawM = mode === 'draw';
   const topicM = liar || drawM;
+  // ★★★ R096 — 노래 맞히기(곡 수 · 분류 · 연대 · 장르 — 문제 · 미니게임 줄 숨김 · 팀전은 퀴즈처럼 같이 된다)
+  const songM = mode === 'song';
   const liarMode = shown.liarMode ?? 'basic';
   const mgOnly = mode === 'minigame';
   const roundsMax = topicM ? LIAR.ROUNDS.MAX : MINIGAME_ONLY_ROUNDS.MAX;
@@ -180,9 +185,19 @@ export default function GameSettings({
               >
                 캐치마인드
               </button>
+              <button
+                type="button"
+                data-mode="song"
+                aria-pressed={songM}
+                className={songM ? 'preset active' : 'preset'}
+                title="30초 듣고 채팅으로 제목 · 제일 먼저 맞힌 사람 +1"
+                onClick={() => !songM && push({ ...draft, mode: 'song', minigameOnly: false })}
+              >
+                노래
+              </button>
             </>
           ) : (
-            <span className="chip on">{drawM ? '캐치마인드' : liar ? '라이어' : mgOnly ? '미니게임만' : '퀴즈'}</span>
+            <span className="chip on">{songM ? '노래 맞히기' : drawM ? '캐치마인드' : liar ? '라이어' : mgOnly ? '미니게임만' : '퀴즈'}</span>
           )}
           <span className="team-sep" aria-hidden="true" />
           {editable ? (
@@ -252,6 +267,19 @@ export default function GameSettings({
         </p>
       )}
       {drawM && <TopicPicker kind="draw" picked={shown.drawTopics} editable={editable} onChange={(next) => push({ ...draft, drawTopics: next })} />}
+      {/* ★★★ R096 — 노래 맞히기: 한 줄 설명 + 곡 수 · 분류 · 연대 · 한국 장르 */}
+      {songM && (
+        <p className="set-note dim" data-song-note>
+          30초 듣고 채팅으로 제목 · 제일 먼저 맞힌 사람 +1 · 15초 남으면 초성 · 넘기기 투표
+        </p>
+      )}
+      {songM && (
+        <SongSettings
+          value={{ songCount: shown.songCount ?? SONG_MODE.ROUNDS.DEFAULT, songCategories: shown.songCategories ?? DEFAULT_SONG_SETTINGS.songCategories, songDecades: shown.songDecades ?? DEFAULT_SONG_SETTINGS.songDecades, songLegend: shown.songLegend ?? true, songGenres: shown.songGenres ?? DEFAULT_SONG_SETTINGS.songGenres }}
+          editable={editable}
+          onChange={(next) => push({ ...draft, ...next })}
+        />
+      )}
       {(mgOnly || topicM) && (
         <div className="set-row">
           <span className="set-label">{topicM ? '라운드 수' : '미니게임 수'}</span>
@@ -412,7 +440,7 @@ export default function GameSettings({
       )}
 
       {/* ★★★ R050 — 미니게임 포함 (기본 꺼짐 · 10문제마다 · 5~9문제는 가운데 한 번 · 마지막 문제 뒤에는 없음 — D-234) */}
-      {!topicM && <div className="set-row mg-set-row">
+      {!topicM && !songM && <div className="set-row mg-set-row">
         <span className="set-label">미니게임</span>
         <div className="preset-row">
           {mgOnly ? null : editable ? (

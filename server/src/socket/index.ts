@@ -27,6 +27,7 @@ import {
   isMinigameKey,
   isTeam,
   maskAnswers,
+  matchSong,
   NICKNAME_LIMIT_HINT,
   nicknameFits,
   protectEmojiTokens,
@@ -101,6 +102,7 @@ import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import { liarAppeal, liarAppealVote, liarChatGate, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
+import { noteSongFail } from '../song/mode.js';
 import { drawChatGate, drawClear, drawFill, drawHint, drawRedo, drawReroll, drawStroke, drawUndo } from '../draw/engine.js';
 import {
   on,
@@ -532,6 +534,16 @@ function registerRoomHandlers(socket: Socket): void {
       //   ★ 동기 코드다. 정답 집합은 이미 메모리에 있으므로 await 가 필요 없다.
       const masked = maskForBroadcast(room, player.accountId, rawNfc);
 
+      // ── ★★★ R096 (D-353) — 노래 맞히기 판의 채팅 게이트(drawChatGate 꼴 · 판정은 위 judgeAnswer 그대로 = 제목)
+      //   ① 제목을 맞힘(정답자) → 그 글은 채팅에 안 나가고 시스템 줄(아래 단계 4 뒤) ② 가수를 침(제목 아님 · 곡 진행 중) → 본인에게만
+      //   "가수 말고 제목을" · 채팅에 안 나감(남에게 힌트가 된다) ③ 그 밖 = 보통 채팅(경험자 마스킹 · 공개 중 채팅 그대로)
+      const songQ = room.state === 'QUESTION_ACTIVE' && room.currentQuestion?.song && !room.currentQuestion.resolved ? room.currentQuestion.song : null;
+      const songConsumed = !!songQ && outcome.accepted;
+      if (songQ && !outcome.matched && matchSong(songQ.matcher, stripEmojiTokens(rawNfc)) === 'artist') {
+        s.emit('song.artistHint', { epoch: room.currentQuestion!.epoch, message: '가수 말고 제목을 쳐 주세요!' });
+        return;
+      }
+
       const entry = {
         id: randomUUID(),
         seq,
@@ -543,7 +555,7 @@ function registerRoomHandlers(socket: Socket): void {
         ts: now,
         system: false,
       };
-      pushChat(room, entry);
+      if (!songConsumed) pushChat(room, entry);
 
       // ★★ 발신자 본인에게는 **원문**을 보낸다 (테스트 케이스 #16).
       //   ★ 근거: 자기가 무엇을 썼는지 모르면 대화가 불가능하다.
@@ -560,7 +572,9 @@ function registerRoomHandlers(socket: Socket): void {
         ts: entry.ts,
         system: false,
       };
-      if (masked === null) {
+      if (songConsumed) {
+        // ★ R096 — 정답 글은 안 나간다(아래에서 시스템 줄)
+      } else if (masked === null) {
         emitRoom(room, 'chat.message', chatBase);
       } else {
         emitRoomPerPlayer(room, 'chat.message', chatBase, (p) =>
@@ -592,6 +606,8 @@ function registerRoomHandlers(socket: Socket): void {
           // ★★ R038 — 뒷북의 기준점. 판정이 끝난 뒤에 적는다 (판정 블록은 그대로)
           if (room.currentQuestion) room.currentQuestion.winnerArrivedNs = arrivedNs;
           broadcastPlayers(room);
+          // ★ R096 — 노래: 정답 글 대신 시스템 줄(캐치마인드 꼴)
+          if (songConsumed) broadcastSystem(room, `${player.nickname} 님 정답!`);
         }
       } else if (outcome.matched && outcome.rejectReason === 'already_resolved') {
         // ★★ R038 — 간발의 차로 늦은 정답 → 뒷북 명단 (조건은 noteLateAnswer)
@@ -722,6 +738,12 @@ function registerRoomHandlers(socket: Socket): void {
         // ★ R090 — 제시어 주제도 보낸 것만
         liarTopics: room.settings.liarTopics,
         drawTopics: room.settings.drawTopics,
+        // ★ R096 — 노래 맞히기 설정도 보낸 것만
+        songCount: room.settings.songCount,
+        songCategories: room.settings.songCategories,
+        songDecades: room.settings.songDecades,
+        songLegend: room.settings.songLegend,
+        songGenres: room.settings.songGenres,
         ...payload,
       });
       if (!valid.ok) {
@@ -940,6 +962,28 @@ function registerRoomHandlers(socket: Socket): void {
         return;
       }
       resolveQuestionSync(room, 'host_skip', null);
+    },
+  );
+
+  // ── ★★★ R096 — 노래 맞히기: 미리듣기 재생 실패 보고(R092 규칙 그대로 — 접속자 과반이면 그 곡을 넘긴다 · 같은 사람 한 번 · 같은 곡만)
+  onRoom<{ epoch: number | null }>(
+    socket,
+    'song.fail',
+    {
+      allowedStates: ['QUESTION_ACTIVE'],
+      parse: (raw) => {
+        const obj = parseObject(raw);
+        if (!obj) return null;
+        return { epoch: typeof obj.epoch === 'number' && Number.isFinite(obj.epoch) ? obj.epoch : null };
+      },
+    },
+    ({ room, player, payload }) => {
+      const q = room.currentQuestion;
+      if (!q?.song || q.resolved || payload.epoch !== q.epoch) return;
+      if (!noteSongFail(q.song, player.accountId, activeCount(room))) return;
+      q.song.failSkipped = true;
+      console.log(`[song] ${room.id} 곡 ${q.index} 넘김 — 미리듣기 실패 ${q.song.fails?.size}/${activeCount(room)}명 (${q.questionId})`);
+      resolveQuestionSync(room, 'skip_vote', null);
     },
   );
 

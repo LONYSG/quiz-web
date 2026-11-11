@@ -9,9 +9,9 @@
 // ★ 숫자는 전부 여기 한 곳(플레이 뒤 바꾸기 쉽게). 서버(진행 · 판정)와 화면(표시)이 같이 쓴다.
 // =============================================================================
 
-/** ★ R083 — 'draw'(캐치마인드) 더함 */
-export type RoomMode = 'quiz' | 'minigame' | 'liar' | 'draw';
-export const ROOM_MODES: readonly RoomMode[] = ['quiz', 'minigame', 'liar', 'draw'];
+/** ★ R083 — 'draw'(캐치마인드) 더함 · ★ R096 (D-353) — 'song'(노래 맞히기 — 퀴즈 흐름 그대로 · shared/src/songMode.ts) */
+export type RoomMode = 'quiz' | 'minigame' | 'liar' | 'draw' | 'song';
+export const ROOM_MODES: readonly RoomMode[] = ['quiz', 'minigame', 'liar', 'draw', 'song'];
 export function isRoomMode(v: unknown): v is RoomMode {
   return typeof v === 'string' && (ROOM_MODES as readonly string[]).includes(v);
 }

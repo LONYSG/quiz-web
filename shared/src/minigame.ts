@@ -112,6 +112,8 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   // ★★★ R084 (D-330 ⑻ · D-341) — 노래 둘(새것 먼저) · 소리는 각 화면이 Apple 미리듣기를 스트리밍
   {
     key: 'song',
+    // ★★ R096 (D-353 · 찬종 "캐치마인드·라이어처럼 따로 빼자") — 방식 'song' 으로 옮겨 미니게임 목록에서 뺀다(데이터 · 경험 키 'song|<id>' 그대로)
+    hidden: true,
     name: '노래 맞히기',
     oneLine: '30초 듣고 제목을 치세요! 제일 먼저 맞힌 사람만 +1 · 3곡',
     controlsPc: '제목 입력 → Enter (계속 쳐도 돼요 · 맞히면 바로 다음 곡) · 소리를 켜 주세요',

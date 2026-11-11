@@ -76,4 +76,6 @@ export * from './report.js';
 // ★★★ R079 — 팀전 1차 (D-329 · D-335)
 export * from './team.js';
 export * from './liar.js';
+// ★★★ R096 — 노래 맞히기 방식
+export * from './songMode.js';
 export * from './draw.js';

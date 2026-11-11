@@ -50,6 +50,11 @@ import { lateAnswersView, toPlayerView } from '../rooms/snapshot.js';
 import { selectNextQuestion } from './select.js';
 import { noteRateAsk } from './rateAsk.js';
 import type { CurrentQuestion, GameResultData, Player, Room } from '../rooms/types.js';
+import { SONG_MODE } from '@quiz/shared';
+import { closeSongRun, pickNextSong, recordSongResolved, songAnswerSets, songRevealOf, songResolvedView, type SongRun } from '../song/mode.js';
+
+/** ★ R096 — 노래 맞히기 곡 길이(검사 봇은 짧게 — 값만 다르고 경로는 같다) */
+const SONG_PLAY_MS = Number(process.env.SONG_MODE_PLAY_MS ?? SONG_MODE.PLAY_MS);
 
 /** DB 쓰기 실패를 조용히 삼키지 않는다 */
 function fireAndForget(label: string, p: Promise<unknown>): void {
@@ -88,6 +93,9 @@ export function beginQuestion(room: Room): boolean {
   if (!game) return false;
 
   const participantIds = participantIdsOf(room);
+
+  // ── ★★★ R096 — 노래 맞히기 방식: 문항 = 곡(같은 절차 · 다른 재료)
+  if (game.song) return beginSongQuestion(room, game.song, participantIds);
 
   // ── 1. 선정
   const picked = selectNextQuestion({
@@ -202,6 +210,55 @@ ${normalizeAnswer(q.explanation ?? '')}`;
 }
 
 /**
+ * ★★★ R096 (D-353) — 노래 맞히기의 [문제 시작 공통 절차] — 퀴즈와 같은 순서 · 같은 칸(판정 · 마스킹 · 힌트 · 경험자 · 스킵 · 시각) · 동기다.
+ *   다른 것: 곡 고르기(pickNextSong — 경험 없는 곡 먼저 · 이 판 중복 0) · 30초 · 일반 힌트 없음 · 초성 = titleKo · DB = minigame_rounds(공개 때)
+ */
+function beginSongQuestion(room: Room, run: SongRun, participantIds: string[]): boolean {
+  const game = room.game!;
+  const picked = pickNextSong(run, participantIds, game.experienced);
+  if (!picked) return false;
+  const e = picked.entry;
+  game.epoch += 1;
+  game.questionIndex += 1;
+  run.used.add(e.id);
+  run.rounds.set(game.questionIndex, e.id);
+  const sets = songAnswerSets(e);
+  const now = Date.now();
+  const current: CurrentQuestion = {
+    epoch: game.epoch,
+    index: game.questionIndex,
+    questionId: e.id,
+    text: '',
+    categoryName: '노래',
+    answersNorm: sets.answersNorm,
+    answersFlex: sets.answersFlex,
+    displayAnswer: e.title,
+    answersRaw: sets.answersRaw,
+    hint: sets.hint,
+    hintPushed: false,
+    generalHint: null,
+    generalHintPushed: false,
+    explanation: null,
+    experiencedAccountIds: picked.experiencedBy,
+    startedAt: now,
+    endsAt: now + SONG_PLAY_MS,
+    resolved: false,
+    skipVotes: new Set(),
+    selectionStage: 1,
+    winnerArrivedNs: null,
+    lateAnswers: [],
+    song: { entry: e, matcher: sets.matcher, durationMs: SONG_PLAY_MS },
+  };
+  room.currentQuestion = current;
+  room.state = 'QUESTION_ACTIVE';
+  game.resolution = null;
+  console.log(`[song] ${room.id} 곡 ${current.index}/${game.totalQuestions} epoch=${current.epoch} ${e.id} (${e.category}${e.genre ? ` ${e.genre}` : ''} · ${e.year}) · 들은 사람 ${picked.experiencedBy.size}명 · 남은 곡 ${run.pool.length - run.used.size}`);
+  broadcastQuestionStarted(room, current);
+  broadcastSkipVotes(room);
+  return true;
+}
+
+/**
  * 경험자 목록. ★ guide 28절 폐기 후 **전원 공개**다 (D-011).
  *
  * ★★ R016 — 닉네임만 보내던 것을 **색까지** 보낸다 (Q-25 화면 규칙).
@@ -237,6 +294,8 @@ function broadcastQuestionStarted(room: Room, current: CurrentQuestion): void {
     hasGeneralHint: current.generalHint !== null,
     // ★ R061 — 문항 번호(questions.id) — 제보 · 복사용. 번호는 정답의 단서가 아니다
     questionId: current.questionId,
+    // ★★★ R096 — 노래 맞히기: 미리듣기 · 앨범 표지(시계 공개 힌트 — C-3 · 표지 자체가 설계상 힌트다) · 곡 길이. 제목 · 가수는 공개 뒤에만
+    song: current.song ? { previewUrl: current.song.entry.previewUrl, cover: current.song.entry.cover, durationMs: current.song.durationMs } : null,
     state: room.state,
   };
   emitRoomPerPlayer(room, 'question.started', base, (player) =>
@@ -331,6 +390,8 @@ export function resolveQuestionSync(
     const winner = room.players.get(winnerAccountId);
     if (winner) winner.score += 1;
   }
+  // ★ R096 — 노래: 맞힌 시간(공개 줄 "n초 만에")
+  if (current.song) current.song.winnerMs = reason === 'correct' ? now - current.startedAt : null;
 
   // ── ★★ 경험 기록 (Q-23/24/47): 정답이 공개되는 순간 **접속 중인** 사람 전원
   //   ★ "문제 진행 중에 연결이 끊긴 사람은 그 문제의 기록을 남기지 않는다" (01-GAME-RULES 12장)
@@ -347,7 +408,8 @@ export function resolveQuestionSync(
       set = new Set();
       game.experienced.set(id, set);
     }
-    set.add(current.questionId);
+    // ★ R096 — 노래는 미니게임 경험 키('song|<id>')로 메모리에 둔다(pickNextSong 이 이 키를 본다)
+    set.add(current.song ? `song|${current.questionId}` : current.questionId);
   }
 
   game.endedQuestionCount += 1;
@@ -364,6 +426,7 @@ export function resolveQuestionSync(
     // ★ 응답 시간은 "문제 시작 → 정답 확정" 이다. answer_events.response_ms 와 같은 기준이다
     responseMs: reason === 'correct' ? now - current.startedAt : null,
     experiencedCount: current.experiencedAccountIds.size,
+    ...(current.song ? { song: songRevealOf(current.song.entry) } : {}),
   });
 
   // ── 상태 전이. ★★ R034 (Q-17 개정) — 마지막 문제도 5초를 기다린 뒤 결과로 간다 (T10).
@@ -372,7 +435,8 @@ export function resolveQuestionSync(
   const nextAt = now + config.tuning.resolvedWaitMs;
   // ★★ R071 (D-313) — 평가 요청 문항(판마다 무작위 1/3) · 결과 화면 · 로비 표의 asked 를 위해 판 번호 → 문항 id 를 적어 둔다
   const rateAsk = game.rateAsk.has(current.index);
-  if (rateAsk && game.gameId) noteRateAsk(game.gameId, current.questionId);
+  // ★ R096 — 노래는 퀴즈 평가 표(question_feedback)를 안 쓴다(평가 = minigame_results · 매 곡) → 메모리 표시도 하지 않는다
+  if (rateAsk && game.gameId && !current.song) noteRateAsk(game.gameId, current.questionId);
   game.resolution = {
     epoch: current.epoch,
     reason,
@@ -405,8 +469,16 @@ export function resolveQuestionSync(
     nextAt,
     // ★★ R071 (D-313) — 평가 요청 문항인가(아니면 공개 화면에 평가 줄이 없다)
     rateAsk,
+    // ★★★ R096 — 노래 공개(제목 · 가수 · 연도 · 칩 · 표지)
+    song: current.song ? songResolvedView(current.song) : null,
     state: room.state,
   });
+
+  // ── ★ R096 — 노래: 퀴즈 표(questions FK)는 쓰지 않고 minigame_rounds · results · 경험('song')만
+  if (current.song) {
+    if (game.song) recordSongResolved(game.song, current.index, current.song.entry, reason === 'correct' ? winnerAccountId : null, reason === 'correct' ? now - current.startedAt : null, witnesses, reason);
+    return true;
+  }
 
   // ── DB 기록. ★ 기다리지 않는다
   if (game.gameId) {
@@ -463,9 +535,10 @@ export function abortQuestionSync(room: Room): void {
     winnerAccountId: null,
     responseMs: null,
     experiencedCount: current.experiencedAccountIds.size,
+    ...(current.song ? { song: { id: current.questionId } } : {}),
   });
 
-  if (game.gameId) {
+  if (game.gameId && !current.song) {
     fireAndForget(
       'game_questions 중단',
       resolveGameQuestion({
@@ -508,6 +581,12 @@ export function advanceAfterResolved(room: Room, now: number): void {
   if (runBeforeNextQuestion(room)) return;
 
   if (beginQuestion(room)) return;
+
+  // ★ R096 — 노래: 범위 안 곡이 바닥남(시작 때 곡 수를 봤으니 드물다)
+  if (game.song) {
+    finishGame(room, 'no_questions', '고른 범위의 노래를 다 써서 끝냈습니다.');
+    return;
+  }
 
   // ★ T16 — 다음 문제를 선정할 수 없다 (Q-22)
   finishGame(
@@ -614,7 +693,7 @@ export function finishGame(
     abortedNote,
     endedQuestionCount: game.endedQuestionCount,
     totalQuestions: game.totalQuestions,
-    mode: game.draw ? 'draw' : game.liar ? 'liar' : series ? 'minigame' : 'quiz',
+    mode: game.song ? 'song' : game.draw ? 'draw' : game.liar ? 'liar' : series ? 'minigame' : 'quiz',
     minigameSeries: series ? { done: series.done, total: series.total } : null,
     // ★★★ R079 (D-335) — 팀전 판: 팀 점수 = 팀원 score 합(방에 남은 사람 — 끊긴 사람 포함 · 나간 사람 빠짐) · 보너스는 끝까지 간 판만
     teams: room.settings.teamMode ? buildTeamResult(rows.map((r) => ({ accountId: r.accountId, team: room.players.get(r.accountId)?.team ?? null, score: r.score })), endReason === 'completed') : null,
@@ -631,6 +710,8 @@ export function finishGame(
   );
 
   emitRoom(room, 'game.result', result);
+  // ★ R096 — 노래 판 기록 닫기(minigame_runs · players 최종 순위)
+  if (game.song) closeSongRun(game.song, endReason === 'completed' || endReason === 'no_questions' ? 'completed' : 'force_ended', result.ranking.map((r) => ({ accountId: r.accountId, rank: r.rank, total: r.score })));
 
   // ── DB 기록
   if (game.gameId) {
@@ -773,7 +854,7 @@ export function recordAnswerEvent(
   },
 ): void {
   const game = room.game;
-  if (!game?.gameId) return;
+  if (!game?.gameId || room.currentQuestion?.song) return; // ★ R096 — 노래는 answer_events(questions FK)를 쓰지 않는다
   fireAndForget(
     'answer_events',
     insertAnswerEvent({
@@ -800,6 +881,7 @@ export function recordNearMiss(room: Room, player: Player, text: string, epoch: 
   const game = room.game;
   const cur = room.currentQuestion;
   if (!game?.gameId || !cur || room.state !== 'QUESTION_ACTIVE' || cur.resolved || epoch !== cur.epoch) return;
+  if (cur.song) return; // ★ R096 — 노래는 near_misses(questions FK)를 쓰지 않는다
   if (cur.experiencedAccountIds.has(player.accountId)) return;
   const counts = (cur.nearMissCounts ??= new Map());
   const n = counts.get(player.accountId) ?? 0;

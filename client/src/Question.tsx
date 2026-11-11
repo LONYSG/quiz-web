@@ -35,6 +35,7 @@ import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 import Icon from './Icon.js';
 import { Lock, PartyPopper, SkipForward, Square, Undo2 } from 'lucide-react';
+import { SongPlay, SongRate, SongReveal, useSongMusicQuiet } from './SongStage.js';
 
 interface Props {
   socket: Socket;
@@ -93,6 +94,19 @@ export default function Question({
     }
   };
   const cardRef = useRef<HTMLElement>(null);
+  // ★★★ R096 — 노래 맞히기 곡(퀴즈 카드 그대로 · 지문 대신 표지 시계 공개 + 소리 · 일반 힌트 없음 · 공개 = 곡 정보)
+  const song = question.song ?? null;
+  const resSong = resolution?.song ?? null;
+  useSongMusicQuiet(!!song);
+  const [songNotice, setSongNotice] = useState<{ text: string; at: number; epoch: number } | null>(null);
+  useEffect(() => {
+    if (!song) return;
+    const on = (p: { epoch: number; message: string }) => setSongNotice({ text: p.message, at: Date.now(), epoch: p.epoch });
+    socket.on('song.artistHint', on);
+    return () => {
+      socket.off('song.artistHint', on);
+    };
+  }, [socket, song]);
 
   useEffect(() => {
     // 100ms 마다 다시 그린다. 서버 tick 주기와 같아 표시가 어긋나 보이지 않는다.
@@ -183,7 +197,9 @@ export default function Question({
    *   ★ 옛 코드는 (endsAt − startedAt) 로 나눴다. 일시정지 뒤 재개하면 endsAt 이 미뤄지는데 startedAt 은 그대로라
    *     분모가 커지고 → **막대가 남은 시간보다 짧게** 그려졌다 (R038 1장).
    */
-  const ratio = Math.max(0, Math.min(1, remainMs / RULES.QUESTION_DURATION_MS));
+  // ★ R096 — 노래는 곡 길이(30초)가 분모
+  const durationMs = song?.durationMs ?? RULES.QUESTION_DURATION_MS;
+  const ratio = Math.max(0, Math.min(1, remainMs / durationMs));
   /** 마지막 5초 — 숫자가 빨갛게 뛴다 */
   const last5 = active && remainMs <= RULES.TIMER_URGENT_MS;
   /**
@@ -217,18 +233,18 @@ export default function Question({
         </span>
         {/* ★ R061 — 문항 번호(누르면 복사) — 문제 단계부터 · 질문 글(복사 막기) 바깥
             ★ R065 (D-270) — 📝 는 뺐다(찬종 "문제 컴포넌트 안에다 넣지 말고") → 제보 메뉴 ① 최근 문제 · 미니게임 */}
-        {question.questionId && (
+        {question.questionId && !song && (
           <span className="q-ids">
             <QNo id={question.questionId} />
           </span>
         )}
-        {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */}
-        <span className="badge cat">{question.categoryName}</span>
-        <span className="badge diff">난이도 {formatLevel(level)}</span>
-        {formatTopics(topics) !== '전체' && <span className="badge diff">분야 {formatTopics(topics)}</span>}
+        {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 · ★ R096 노래는 "노래 맞히기" 하나(분류 칩은 공개 때) */}
+        <span className="badge cat">{song ? '노래 맞히기' : question.categoryName}</span>
+        {!song && <span className="badge diff">난이도 {formatLevel(level)}</span>}
+        {!song && formatTopics(topics) !== '전체' && <span className="badge diff">분야 {formatTopics(topics)}</span>}
         {question.selfExperienced && (
           /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) — 진행에 필요한 알림이다 */
-          <span className="badge exp q-exp-head">이미 풀어본 퀴즈 — 이번 문제는 점수 없음</span>
+          <span className="badge exp q-exp-head">{song ? '이미 들어 본 노래 — 이번 곡은 점수 없음' : '이미 풀어본 퀴즈 — 이번 문제는 점수 없음'}</span>
         )}
         {/* ★ 0 이 되어도 여기서 상태를 바꾸지 않는다. 서버 이벤트를 기다린다 */}
         {active &&
@@ -239,10 +255,23 @@ export default function Question({
           ))}
       </div>
       {/* ★ R068 (#61) — 모바일 머리줄은 한 줄 고정이라 이 뱃지(잘리면 안 됨)는 아래 줄에 따로 */}
-      {question.selfExperienced && <p className="q-exp-line"><span className="badge exp">이미 풀어본 퀴즈 — 이번 문제는 점수 없음</span></p>}
+      {question.selfExperienced && <p className="q-exp-line"><span className="badge exp">{song ? '이미 들어 본 노래 — 이번 곡은 점수 없음' : '이미 풀어본 퀴즈 — 이번 문제는 점수 없음'}</span></p>}
 
-      {/* ★★ 1순위 — 문제 지문. 문장마다 줄을 바꾸고 긴 문장은 글자를 줄여 한 줄에 (R035) */}
-      <QuestionText text={question.text} />
+      {/* ★★ 1순위 — 문제 지문. 문장마다 줄을 바꾸고 긴 문장은 글자를 줄여 한 줄에 (R035)
+          ★★★ R096 — 노래: 지문 대신 앨범 표지 시계 공개(같은 tick · 남은 시간에서 그림) + 소리 띠 · 공개 때 그 자리에서 전부 밝아진다 */}
+      {song ? (
+        <SongPlay
+          socket={socket}
+          epoch={question.epoch}
+          song={song}
+          progress={active ? 1 - remainMs / durationMs : 1}
+          outcome={resolution ? (resolution.reason === 'correct' ? 'won' : 'open') : null}
+          active={active || !!resolution}
+          notice={songNotice && songNotice.epoch === question.epoch && Date.now() - songNotice.at < 3000 ? songNotice.text : null}
+        />
+      ) : (
+        <QuestionText text={question.text} />
+      )}
 
       {active && (
         <div className="q-timebar" aria-hidden="true">
@@ -259,8 +288,9 @@ export default function Question({
           ★★ R040 — 일반 힌트가 없는 문제는 **처음부터** "없음" (서버가 문제 시작 때 있음/없음 여부만 보낸다).
             옛 R039 는 30초에 화면 시계로 "없음" 으로 바꿨다 → 힌트가 있는 문제도 서버 push 가 오기 전 잠깐 "없음" 이 떴다 */}
       {active && (
-        <div className="q-hints no-copy">
-          {question.generalHint ? (
+        <div className={song ? 'q-hints no-copy song-hints' : 'q-hints no-copy'}>
+          {/* ★ R096 — 노래는 일반 힌트 없음(곡이 30초 · 15초 초성만) — 그 칸을 그리지 않는다 */}
+          {song ? null : question.generalHint ? (
             <p key="g-open" className="q-hint q-hint-general open">
               <span className="hint-label">힌트</span> <span>{question.generalHint}</span>
             </p>
@@ -297,6 +327,13 @@ export default function Question({
       {/* ── ★★ 정답 공개 (8초) — 정답자 가장 크게 · 정답 · 해설 크게 · ★ R038 세레머니 · 뒷북 · 3초 뒤 "N초 후" */}
       {resolution && (
         <div key={resolution.epoch} className={winner ? 'reveal has-winner' : 'reveal'}>
+          {resSong ? (
+            /* ★★★ R096 — 노래 공개: 제목 크게 · 가수 한 단계 작게 · 칩 · "○○ 님이 n초 만에 맞혔어요 +1"(표지는 위 판 칸에서 전부 밝아진 것) · 정답자면 꽃가루 */
+            <div className="reveal-main song-reveal-main">
+              {winner && <Confetti />}
+              <SongReveal song={resSong} winner={winner} winnerMs={resSong.winnerMs} reasonTitle={resolveTitle(resolution, players)} />
+            </div>
+          ) : (
           <div className="reveal-main">
             {winner ? (
               <>
@@ -324,6 +361,7 @@ export default function Question({
             {/* ★★ R042 G — 해설은 자기 자리(최대 4줄) 안에서만: 줄바꿈 → 글자 맞춤(75%) → "…" */}
             {resolution.explanation && <ExplainText text={resolution.explanation} />}
           </div>
+          )}
 
           {/* ★★★ 소감 칸 (R038 세레머니 → R040 "소감") — 정답자가 이 8초 동안 치는 채팅을 **모두에게 크게**. 정답자가 없으면 칸이 없다.
               ★ R040 — 좌우·상하 가운데 · 가로로 넘치면 줄바꿈 · 세로로 넘치면 "…" (채팅 로그에는 전체) */}
@@ -369,11 +407,16 @@ export default function Question({
           {/* ★★★ R056 — 문제 평가(👍/👎 · 👎 면 사유 칩)는 진행 안내와 **같은 줄** — 카드가 세로로 늘지 않는다 */}
           <div className="reveal-foot">
             {/* ★★ R071 (D-313) — 평가 요청 문항(판마다 무작위 1/3)에서만 평가 줄 · 👎 면 아래에 사유 칩 한 줄(.reveal-fb-chips — 줄을 바꿔 펼친다) */}
-            {gameId && resolution.questionId && resolution.rateAsk !== false && <RevealFeedback gameId={gameId} questionId={resolution.questionId} />}
+            {/* ★ R096 — 노래는 매 곡 평가(노래 사유 · 포인트 없음 · minigame_results 에 저장) */}
+            {gameId && resSong ? (
+              <SongRate gameId={gameId} songId={resSong.id} />
+            ) : (
+              gameId && resolution.questionId && resolution.rateAsk !== false && <RevealFeedback gameId={gameId} questionId={resolution.questionId} />
+            )}
             {/* ★ 진행 안내 — 작고 흐리게. 자리를 잡아 두어 3초 뒤 나타나도 화면이 출렁이지 않는다 */}
             <p className="reveal-next" aria-live="polite">
               {showNext && nextRemainMs !== null
-                ? `${Math.ceil(nextRemainMs / 1000)}초 후 ${isLastQuestion ? '결과 화면' : '다음 문제'}`
+                ? `${Math.ceil(nextRemainMs / 1000)}초 후 ${isLastQuestion ? '결과 화면' : song ? '다음 곡' : '다음 문제'}`
                 : ' '}
             </p>
           </div>
@@ -436,8 +479,8 @@ export default function Question({
       {isHost && confirming !== null && (
         <ConfirmModal
           kind={confirming === 'skip' ? 'host-skip' : 'host-end'}
-          title={confirming === 'skip' ? '이 문제를 넘길까요?' : '게임을 끝낼까요?'}
-          note={confirming === 'end' && active ? '지금 문제는 경험 기록이 남지 않아요.' : undefined}
+          title={confirming === 'skip' ? (song ? '이 곡을 넘길까요?' : '이 문제를 넘길까요?') : '게임을 끝낼까요?'}
+          note={confirming === 'end' && active ? (song ? '지금 곡은 경험 기록이 남지 않아요.' : '지금 문제는 경험 기록이 남지 않아요.') : undefined}
           actions={[
             {
               label: confirming === 'skip' ? '넘기기' : '끝내기',

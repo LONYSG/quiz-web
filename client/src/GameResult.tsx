@@ -14,6 +14,7 @@ import FitText from './FitText.js';
 import type { GameResultView, PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
 import { ResultFeedback } from './QuestionFeedback.js';
+import { SongResultList } from './SongStage.js';
 import { RotateCcw } from 'lucide-react';
 import { TeamResultLine, TeamTag } from './Team.js';
 import type { Team } from '@quiz/shared';
@@ -128,7 +129,9 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
 
       {/* ★★★ R056 — 이번 판 문제 평가(접이식 · 기본 펼침) — 정답 공개 때 못 누른 사람 · 기타 의견 */}
       {/* ★ R082 — 라이어 판은 문제가 없다 */}
-      {result.gameId && !mgOnly && result.mode !== 'liar' && result.mode !== 'draw' && <ResultFeedback gameId={result.gameId} />}
+      {result.gameId && !mgOnly && result.mode !== 'liar' && result.mode !== 'draw' && result.mode !== 'song' && <ResultFeedback gameId={result.gameId} />}
+      {/* ★★★ R096 — 노래 맞히기 판: 곡별 누가 맞혔나 한 줄(못 맞힌 곡도 제목 공개) */}
+      {result.mode === 'song' && <SongResultList questions={result.questions} players={players} />}
 
       <div className="next-row" data-arrow-nav>
         {isHost ? (

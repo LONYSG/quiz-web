@@ -51,6 +51,8 @@ import { activeCount } from '../rooms/registry.js';
 import { participantIds } from '../lobby/info.js';
 import { beginQuestion, finishGame } from './question.js';
 import { startSeriesMinigame } from '../minigame/engine.js';
+import { loadSongPool, openSongRun, type SongEntry } from '../song/mode.js';
+import { songNotEnoughMessage } from '@quiz/shared';
 import type { Room } from '../rooms/types.js';
 
 export type StartFailure =
@@ -148,7 +150,14 @@ export async function requestStart(room: Room): Promise<StartResult> {
       if (drawTopics(store).length === 0) return { ok: false, reason: 'settings', message: '제시어가 없어요(주제 세트 적재 전) — 다른 방식으로 해 주세요.' };
       if (drawTopics(restrictTopics(store, 'draw', room.settings.drawTopics)).length === 0) return { ok: false, reason: 'settings', message: TOPIC_PICK_EMPTY };
     }
-    const noQuiz = mgOnly || liarMode || drawMode;
+    // ── ★★★ R096 — 노래 맞히기: 고른 범위 안 곡 수 ≥ 곡 수(시작 전 안내)
+    const songMode = room.settings.mode === 'song';
+    if (songMode) {
+      const pool = await loadSongPool(room.settings);
+      if (pool.length === 0) return { ok: false, reason: 'settings', message: '고른 범위에 노래가 없어요(노래 적재 전이거나 범위가 좁아요).' };
+      if (pool.length < room.settings.songCount) return { ok: false, reason: 'settings', message: songNotEnoughMessage(pool.length, room.settings.songCount) };
+    }
+    const noQuiz = mgOnly || liarMode || drawMode || songMode;
 
     // ── 2. ★ 출제 가능 수 재검증 (Q-21). 캐시를 믿지 않고 지금 조회한다.
     const wanted = noQuiz ? 0 : room.settings.questionCount;
@@ -175,7 +184,7 @@ export async function requestStart(room: Room): Promise<StartResult> {
     room.countdownEndsAt = Date.now() + room.settings.countdownSec * 1000;
     console.log(
       `[game] ${room.id} 카운트다운 시작 ${room.settings.countdownSec}초 ` +
-        (drawMode ? `(캐치마인드 ${room.settings.minigameRounds}라운드)` : liarMode ? `(라이어 ${room.settings.minigameRounds}라운드)` : mgOnly ? `(미니게임만 ${room.settings.minigameRounds}개)` : `(문제 ${wanted}개 / 가능 ${available}개)`),
+        (songMode ? `(노래 맞히기 ${room.settings.songCount}곡)` : drawMode ? `(캐치마인드 ${room.settings.minigameRounds}라운드)` : liarMode ? `(라이어 ${room.settings.minigameRounds}라운드)` : mgOnly ? `(미니게임만 ${room.settings.minigameRounds}개)` : `(문제 ${wanted}개 / 가능 ${available}개)`),
     );
     emitRoom(room, 'game.countdownStarted', {
       endsAt: room.countdownEndsAt,
@@ -226,7 +235,7 @@ export async function startFromCountdown(room: Room): Promise<StartResult> {
     // ★ 카운트다운 중 신규 입장이 허용되므로(Q-11) 참가자 집합이 바뀌었을 수 있다.
     //   출제 가능 수를 다시 확인한다. 사람이 늘면 수가 늘고, 나가면 줄어든다.
     // ★★★ R057 — 미니게임만은 출제 가능 수를 보지 않는다(인원이 줄어 할 게 없으면 첫 미니게임에서 끝난다)
-    const noQuiz = room.settings.minigameOnly || room.settings.mode === 'liar' || room.settings.mode === 'draw';
+    const noQuiz = room.settings.minigameOnly || room.settings.mode === 'liar' || room.settings.mode === 'draw' || room.settings.mode === 'song';
     const wanted = noQuiz ? 0 : room.settings.questionCount;
     const available = noQuiz ? 0 : await countAvailableQuestions(participantIds(room), room.settings);
     if (!noQuiz) room.availableQuestionCount = available;
@@ -285,7 +294,9 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   // ★★★ R083 — 캐치마인드 판(라이어와 같은 꼴 — 주제 세트 · 라운드)
   const drawMode = settings.mode === 'draw';
   const topicMode = liarMode || drawMode;
-  const noQuiz = mgOnly || topicMode;
+  // ★★★ R096 — 노래 맞히기 판(퀴즈 흐름 · 문항 = 곡 · 퀴즈 풀 없음)
+  const songMode = settings.mode === 'song';
+  const noQuiz = mgOnly || topicMode || songMode;
   const roster = [...room.players.values()].map((p) => ({
     accountId: p.accountId,
     colorIndex: p.colorIndex,
@@ -304,8 +315,9 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       settingStartMode: 'countdown',
       settingCountdownSec: settings.countdownSec,
       plannedQuestionCount: availableAtStart,
-      mode: drawMode ? 'draw' : liarMode ? 'liar' : mgOnly ? 'minigame' : 'quiz',
-      settingMinigameRounds: noQuiz ? settings.minigameRounds : null,
+      // ★ R096 — games.mode CHECK 에 'song' 이 없다(마이그레이션 없음 — D-353) → 'minigame' + minigame_runs('song') 로 구분 · 라운드 = 곡 수
+      mode: drawMode ? 'draw' : liarMode ? 'liar' : mgOnly || songMode ? 'minigame' : 'quiz',
+      settingMinigameRounds: songMode ? settings.songCount : noQuiz ? settings.minigameRounds : null,
       teamMode: settings.teamMode,
     });
     await insertGamePlayers(gameId, roster);
@@ -327,20 +339,22 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   let minigameQuiz;
   let liarData;
   let choiceOptions: Map<string, string[]> | null = null;
+  let songPool: SongEntry[] = [];
   try {
-    [pool, experienced, minigameQuiz, liarData, choiceOptions] = await Promise.all([
+    [pool, experienced, minigameQuiz, liarData, choiceOptions, songPool] = await Promise.all([
       // ★ R057 — 미니게임만은 퀴즈 풀이 필요 없다 · ★ R080 — 객관식 5연속을 골랐으면 보기 재료로 읽는다(실패해도 시작은 한다)
-      topicMode
+      topicMode || songMode
         ? Promise.resolve([])
         : mgOnly
         ? settings.minigameKeys.includes('choice')
           ? loadQuestionPool(settings).catch(() => [])
           : Promise.resolve([])
         : loadQuestionPool(settings),
-      loadExperienced(participantIds(room)),
+      // ★ R096 — 노래 판의 경험 = 미니게임 경험('song|<id>' — 메모리 game.experienced 에 그 키로)
+      songMode ? loadAllItemExperiences(participantIds(room)) : loadExperienced(participantIds(room)),
       // ★ R052 — 퀴즈류 미니게임 문항 · 경험 (켜져 있고 퀴즈류를 골랐을 때만)
       //   ★ R080 — 주제 세트 게임(많이 말하기 · 겹치면 무효)도 같은 자리(경험 'topic:<slug>' · 주제 세트 저장소)
-      !topicMode && (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k) || TOPIC_KEYS.has(k) || SONG_KEYS.has(k)) // ★ R084 — 이 노래 몇 년도?(songyear)도 song 항목을 쓴다
+      !topicMode && !songMode && (settings.minigames || mgOnly) && settings.minigameKeys.some((k) => isQuizMinigameKey(k) || TOPIC_KEYS.has(k) || SONG_KEYS.has(k)) // ★ R084 — 이 노래 몇 년도?(songyear)도 song 항목을 쓴다
         ? Promise.all([
             loadQuizData(),
             loadAllItemExperiences(participantIds(room)),
@@ -350,7 +364,9 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       // ★★★ R082 — 라이어: 제시어(주제 세트 liar 항목) · 경험('liar|항목 id')
       topicMode ? Promise.all([loadTopicStore(), loadAllItemExperiences(participantIds(room))]).then(([store, exp]) => ({ store, exp })) : Promise.resolve(null),
       // ★ R090 (0035) — 객관식 5연속을 골랐으면 저장 보기(실패해도 시작은 한다 — 객관식만 빠짐)
-      !topicMode && (settings.minigames || mgOnly) && settings.minigameKeys.includes('choice') ? loadChoiceOptions().catch(() => new Map<string, string[]>()) : Promise.resolve(null),
+      !topicMode && !songMode && (settings.minigames || mgOnly) && settings.minigameKeys.includes('choice') ? loadChoiceOptions().catch(() => new Map<string, string[]>()) : Promise.resolve(null),
+      // ★★★ R096 — 노래 맞히기: 방 설정 범위 안 곡(적재본 활성)
+      songMode ? loadSongPool(settings) : Promise.resolve([] as SongEntry[]),
     ]);
   } catch (err) {
     console.error(`[game] ★★ ${room.id} 출제 풀 로드 실패 — 게임을 시작하지 않는다:`, (err as Error).message);
@@ -385,7 +401,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
   room.specialLocks?.clear();
   room.game = {
     gameId,
-    totalQuestions: noQuiz ? 0 : settings.questionCount,
+    // ★ R096 — 시작 검사 뒤 적재가 바뀌어 곡이 모자라면(드묾) 있는 만큼만
+    totalQuestions: songMode ? Math.min(settings.songCount, songPool.length) : noQuiz ? 0 : settings.questionCount,
     availableAtStart,
     startedAt: now,
     questionIndex: 0,
@@ -403,6 +420,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     mgSeries: mgOnly ? { total: settings.minigameRounds, done: 0, totals: new Map(), lastRank: new Map() } : null,
     liar: null,
     draw: null,
+    // ★★★ R096 — 노래 판(기록 판 번호는 아래에서 비동기로 채운다)
+    song: songMode ? { pool: songPool, used: new Set(), runId: null, rounds: new Map() } : null,
     resolution: null,
     endedQuestionCount: 0,
     stage3Count: 0,
@@ -412,7 +431,8 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     gradeFallbackCount: 0,
     worthFallbackCount: 0,
     // ★★ R071 (D-313) — 평가 요청 문항(무작위 1/3 · 검사는 config.tuning.rateAskForce 로 고정)
-    rateAsk: noQuiz ? new Set() : new Set(config.tuning.rateAskForce ?? pickRateAsk(settings.questionCount)),
+    // ★ R096 — 노래는 매 곡 평가(보편성 실측 — 브리프 C-2 ⑦)
+    rateAsk: songMode ? new Set(Array.from({ length: settings.songCount }, (_, i) => i + 1)) : noQuiz ? new Set() : new Set(config.tuning.rateAskForce ?? pickRateAsk(settings.questionCount)),
     questionLog: [],
   };
   console.log(
@@ -426,8 +446,18 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     gameId,
     totalQuestions: room.game.totalQuestions,
     state: room.state,
-    mode: drawMode ? 'draw' : liarMode ? 'liar' : mgOnly ? 'minigame' : 'quiz',
+    mode: songMode ? 'song' : drawMode ? 'draw' : liarMode ? 'liar' : mgOnly ? 'minigame' : 'quiz',
   });
+
+  // ── ★★★ R096 — 노래 맞히기: 기록 판(minigame_runs 'song' — 기다리지 않는다 · 실패해도 판은 간다) → 첫 곡(퀴즈 [문제 시작 공통 절차])
+  if (songMode && room.game.song) {
+    const run = room.game.song;
+    void openSongRun(gameId, room.id, roster.map((r) => ({ accountId: r.accountId, device: deviceOf(r.accountId), colorIndex: r.colorIndex }))).then((id) => (run.runId = id));
+    console.log(`[song] ${room.id} 노래 맞히기 시작 — ${settings.songCount}곡 · 범위 ${songPool.length}곡 · 참가자 ${roster.length}명`);
+    if (beginQuestion(room)) return true;
+    finishGame(room, 'no_questions', '고른 범위의 노래가 없어 끝냈습니다.');
+    return false;
+  }
 
   // ── ★★★ R083 — 캐치마인드: 첫 그림
   // ★ R090 — 방장이 고른 주제만(restrictTopics)

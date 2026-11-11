@@ -77,7 +77,13 @@ export interface RoomSettings {
   liarTopics?: string[] | null;
   drawTopics?: string[] | null;
   /** ★★★ R082 — 방식(퀴즈 · 미니게임만 · 라이어) */
-  mode?: 'quiz' | 'minigame' | 'liar' | 'draw';
+  mode?: 'quiz' | 'minigame' | 'liar' | 'draw' | 'song';
+  /** ★★★ R096 — 노래 맞히기(곡 수 · 분류 · 연대 · 20세기 명곡 · 한국 장르) */
+  songCount?: number;
+  songCategories?: import('@quiz/shared').SongCategory[];
+  songDecades?: import('@quiz/shared').SongDecade[];
+  songLegend?: boolean;
+  songGenres?: import('@quiz/shared').SongKrGenre[];
 }
 
 /** ★★★ R083 — 캐치마인드 판 보기(서버 draw/engine.ts DrawView) */
@@ -236,6 +242,8 @@ export interface QuestionView {
   hasGeneralHint?: boolean;
   /** ★ R061 — 문항 번호(문제 단계부터 · 제보 · 복사) */
   questionId?: string;
+  /** ★★★ R096 — 노래 맞히기 곡(미리듣기 · 표지 · 곡 길이) · 퀴즈 문항은 null/없음 */
+  song?: import('./SongStage.js').SongPlayView | null;
 }
 
 /** 정답 공개 구간 */
@@ -254,6 +262,8 @@ export interface ResolutionView {
   late: LateAnswerView[];
   /** ★★ R071 (D-313) — 평가 요청 문항인가(판마다 무작위 1/3) · false 면 공개 화면에 평가 줄이 없다 (옛 서버면 없다 → 보인다) */
   rateAsk?: boolean;
+  /** ★★★ R096 — 노래 공개(제목 · 가수 · 칩 · 표지 · 맞힌 시간) */
+  song?: (import('./SongStage.js').SongRevealView & { winnerMs: number | null }) | null;
 }
 
 export interface LateAnswerView {
@@ -298,6 +308,8 @@ export interface GameResultView {
     winnerAccountId: string | null;
     responseMs: number | null;
     experiencedCount: number;
+    /** ★ R096 — 노래 판의 곡(중단된 곡은 id 만) */
+    song?: (Partial<import('./SongStage.js').SongRevealView> & { id: string }) | null;
   }[];
   /** ★ 사람별 요약 (Phase 4) */
   playerStats: {
@@ -314,7 +326,7 @@ export interface GameResultView {
   endedQuestionCount: number;
   totalQuestions: number;
   /** ★★★ R057 — 미니게임만 판이면 'minigame'(점수 = 순위 점수 합) */
-  mode?: 'quiz' | 'minigame' | 'liar' | 'draw';
+  mode?: 'quiz' | 'minigame' | 'liar' | 'draw' | 'song';
   minigameSeries?: { done: number; total: number } | null;
   /** ★★★ R079 — 팀전 판의 팀 점수 · 승패 · 보너스(D-335) */
   teams?: TeamResult | null;
@@ -610,6 +622,7 @@ export function useRoom(socket: Socket | null): RoomHook {
                 // ★★ R040 — 있음/없음 여부는 처음부터 온다
                 hasGeneralHint: p.hasGeneralHint,
                 questionId: p.questionId,
+                song: p.song ?? null,
               },
               resolution: null,
               minigame: null,
@@ -686,6 +699,7 @@ export function useRoom(socket: Socket | null): RoomHook {
             text: prev.question?.text ?? '',
             late: [],
             rateAsk: p.rateAsk,
+            song: p.song ?? null,
           },
           // ★ 정답이 공개되면 스킵 투표는 끝난다
           skip: null,

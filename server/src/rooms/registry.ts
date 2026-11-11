@@ -20,7 +20,7 @@
 // =============================================================================
 
 import { randomBytes, randomInt } from 'node:crypto';
-import { DEFAULT_LEVEL, DEFAULT_TOPICS, MINIGAME_ONLY_ROUNDS, RULES, selectableMinigameKeys, smallerTeam } from '@quiz/shared';
+import { DEFAULT_LEVEL, DEFAULT_SONG_SETTINGS, DEFAULT_TOPICS, MINIGAME_ONLY_ROUNDS, RULES, selectableMinigameKeys, smallerTeam } from '@quiz/shared';
 import type { ChatEntry, Player, Room, RoomSettings } from './types.js';
 
 const rooms = new Map<string, Room>();
@@ -68,6 +68,11 @@ export const DEFAULT_SETTINGS: RoomSettings = {
   drawTopics: null,
   // ★★★ R082 — 방식 퀴즈 (D-339)
   mode: 'quiz',
+  // ★★★ R096 — 노래 맞히기 기본(곡 10 · 전부 · 20세기 명곡 켬)
+  ...DEFAULT_SONG_SETTINGS,
+  songCategories: [...DEFAULT_SONG_SETTINGS.songCategories],
+  songDecades: [...DEFAULT_SONG_SETTINGS.songDecades],
+  songGenres: [...DEFAULT_SONG_SETTINGS.songGenres],
 };
 
 /**

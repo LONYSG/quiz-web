@@ -14,6 +14,7 @@ import { RULES } from './protocol.js';
 import { isMinigameKey, selectableMinigameKeys, type MinigameKey } from './minigame.js';
 import { LIAR, LIAR_TEAM_BLOCK, isLiarMode, isRoomMode, type LiarMode, type RoomMode } from './liar.js';
 import { DRAW, DRAW_TEAM_BLOCK } from './draw.js';
+import { validateSongSettings, type SongSettings } from './songMode.js';
 
 export type StartMode = 'instant' | 'countdown';
 
@@ -165,7 +166,7 @@ export function formatTopics(topics: readonly GameTopic[]): string {
  *  ★ R087 (D-344 · 찬종 "왜 최소 2개 이상 골라야 함? 1개 고를 수 없는 이유가 뭐지?") — 1~50 (이 하한이 "최소 2개" 의 출처였다) */
 export const MINIGAME_ONLY_ROUNDS = { MIN: 1, MAX: 50, DEFAULT: 5 } as const;
 
-export interface RoomSettingsInput {
+export interface RoomSettingsInput extends SongSettings {
   questionCount: number;
   startMode: StartMode;
   countdownSec: number;
@@ -212,7 +213,7 @@ export type SettingsValidation =
   | { ok: true; settings: RoomSettingsInput }
   | {
       ok: false;
-      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode' | 'mode' | 'liarMode' | 'liarTopics' | 'drawTopics';
+      field: 'questionCount' | 'startMode' | 'countdownSec' | 'level' | 'topics' | 'minigames' | 'minigameRounds' | 'teamMode' | 'mode' | 'liarMode' | 'liarTopics' | 'drawTopics' | 'song';
       message: string;
     };
 
@@ -363,6 +364,9 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
   if (mode === 'draw' && raw.teamMode === true) {
     return { ok: false, field: 'teamMode', message: DRAW_TEAM_BLOCK };
   }
+  // ── ★★★ R096 (D-353) — 노래 맞히기: 곡 수 5~20 · 분류 · 연대 · 20세기 명곡 · 한국 장르(없으면 기본 — 다른 방식에서도 값은 남는다)
+  const song = validateSongSettings(raw);
+  if (!song.ok) return { ok: false, field: 'song', message: song.message };
 
   return {
     ok: true,
@@ -381,6 +385,7 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
       liarMode: isLiarMode(raw.liarMode) ? raw.liarMode : 'basic',
       liarTopics,
       drawTopics,
+      ...song.value,
     },
   };
 }
