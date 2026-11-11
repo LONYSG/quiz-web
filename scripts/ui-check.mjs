@@ -915,6 +915,8 @@ async function presetSeen(page) {
 async function signUp(page, suffix, nickname = null, { fresh = false } = {}) {
   await page.goto(BASE);
   if (!fresh) await presetSeen(page);
+  // ★ R097 — goto 는 고정 1.2초만 기다린다 → 무거운 판(긴 minigame 묶음 뒤 · 다른 검사와 겹침)에선 탭이 아직 안 그려져 "회원가입 탭 못 찾음" 이 났다(R094 · R096 메모) → 탭이 뜰 때까지 기다린다
+  await page.waitFor(`[...document.querySelectorAll('button')].some((b) => b.innerText.trim() === '회원가입')`, 10000);
   const switched = await page.click('회원가입');
   if (!switched) throw new Error(`[${page.label}] 회원가입 탭을 찾지 못했다`);
   await sleep(300);
@@ -1631,9 +1633,12 @@ async function spamFlow(browser) {
     await realClick(G, '.emoji-slot');
     await sleep(80);
   }
-  const eShown = await G.waitFor("(document.querySelector('.throttle-note')?.innerText ?? '').includes('이모티콘')", 3000);
+  // ★ R097 — R071 (D-314) 부터 이모티콘 도배 제한 기본 끔(config.tuning.emojiRateLimit · 켜는 줄 EMOJI_RATE_LIMIT=1 은 봇 emojilimit 이 확인)
+  //   → 기본 설정의 기대 = 6번째도 가고 안내 없음 (옛 기대 "6번째 안내" 가 R071 뒤로 낡았다)
+  await sleep(1500);
+  const eShown = await G.evaluate("(document.querySelector('.throttle-note')?.innerText ?? '').includes('이모티콘')");
   await snap(G, '94-spam-emoji-pc');
-  record('★★ A 이모티콘 — 6번째에 "이모티콘 도배 방지" 안내', eShown, await noteText(G));
+  record('★★ A 이모티콘 (D-314 기본 끔) — 6번째도 간다 · "이모티콘 도배 방지" 안내 없음', !eShown, await noteText(G));
   await closeTop(G);
   await realClick(G, '.chat-card input');
   await typeAndEnter(G, '이모티콘 잠겨도 채팅');
@@ -10825,7 +10830,9 @@ async function minigameLab(browser) {
   await L.waitFor("document.querySelectorAll('.lab-item').length >= 4", 8000);
   await sleep(500);
   const kinds = await L.evaluate("[...document.querySelectorAll('.lab-item[data-kind]')].map((e) => e.dataset.kind).join(',')");
-  record('★★ E 그림 모음 — 물건 넷(스테이크 · 피자 · 케이크 · 도넛)', kinds === 'steak,pizza,cake,donut', kinds);
+  // ★ R097 — R066 (D-286) 이 물건을 4 → 12종으로 늘렸다(shared BALANCE_KINDS) → 기대 = 목록 실제 순서 그대로
+  const { BALANCE_KINDS } = await import('../shared/dist/balance.js');
+  record(`★★ E 그림 모음 — 물건 ${BALANCE_KINDS.length}종 (D-286 · shared BALANCE_KINDS 순서)`, kinds === BALANCE_KINDS.join(','), kinds);
   await snap(L, '30-balance-items-pc-pastel');
   await setTheme(L, 'night');
   await snap(L, '31-balance-items-pc-night');
@@ -10978,8 +10985,16 @@ async function minigameLive(browser) {
     ).rows,
   );
   const errOf = (s) => cakeDb.find((r) => r.login_id.endsWith(`_${s}`))?.error;
-  record('★★★ E 케이크 진짜 입력 — Space(10.0초) · Enter(9.6초) · 톡(10.4초) 오차가 누른 때와 맞다(±0.15초) · 안 누른 사람 미제출',
-    Math.abs(errOf('mh')) < 0.15 && Math.abs(errOf('mn') + 0.4) < 0.15 && Math.abs(errOf('mg') - 0.4) < 0.15 && cakeDb.find((r) => r.login_id.endsWith('_mf'))?.submitted === false,
+  // ★ R097 — R063 (D-261) 부터 처음 1초는 "10.00" 에 멈춘다 → 목표 = (10 + 1)초 = cakeTargetMs(11000). 옛 기대(목표 10초 · 오차 0 · ±0.4)가 낡아
+  //   R096 실측 −0.84 · −1.23 · −0.42 를 "오차" 로 보였다 — 사이 간격(−0.39 · +0.42)은 누른 때와 맞았다(서버 판정 정상 · mf 미제출은 일부러 안 누름).
+  //   t0 = 검사가 'play' 를 본 때(폴링) — 기기 시작보다 늦을 뿐이라 잰 값은 기대보다 0 ~ 0.35초 크다(한쪽 여유).
+  const { CAKE_ROUNDS, cakeTargetMs } = await import('../shared/dist/minigame.js');
+  const cakeT = cakeTargetMs(CAKE_ROUNDS[0]) / 1000;
+  const near = (e, pressSec) => typeof e === 'number' && e >= pressSec - cakeT - 0.05 && e <= pressSec - cakeT + 0.35;
+  record(`★★★ E 케이크 진짜 입력 (D-261 목표 ${cakeT}초) — Space(10.0초) · Enter(9.6초) · 톡(10.4초) 오차가 누른 때와 맞다(폴링 여유 0.35초) · 사이 간격 ±0.15 · 안 누른 사람 미제출`,
+    near(errOf('mh'), 10.0) && near(errOf('mn'), 9.6) && near(errOf('mg'), 10.4) &&
+      Math.abs(errOf('mn') - errOf('mh') + 0.4) < 0.15 && Math.abs(errOf('mg') - errOf('mh') - 0.4) < 0.15 &&
+      cakeDb.find((r) => r.login_id.endsWith('_mf'))?.submitted === false,
     JSON.stringify(cakeDb));
 
   // 균형
@@ -11244,7 +11259,8 @@ async function leaveFlow(browser) {
   await sleep(300);
   const nightInk = await G.evaluate("(() => { const a = document.querySelector('.seat-card .avatar:not(.photo)'); return a ? getComputedStyle(a).color : '' })()");
   await snap(G, '87-night-initials-pc');
-  record('★★ E 밤 테마 — 첫 글자는 짙은 색 (밝은 사람 색 위에서 읽힌다)', nightInk === 'rgb(20, 22, 58)', nightInk);
+  // ★ R097 — R074 (D-323) 밤 토큰 다크모드화로 첫 글자 색이 #14163a → #121212(바탕과 같은 짙은 색)로 바뀌었다(styles.css R074 블록)
+  record('★★ E 밤 테마 — 첫 글자는 짙은 색 (밝은 사람 색 위에서 읽힌다 · D-323 #121212)', nightInk === 'rgb(18, 18, 18)', nightInk);
   await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
 }
 
@@ -11710,21 +11726,27 @@ async function socialFlow(browser) {
   await fourth.waitFor("document.querySelector('.stage') !== null", 8000);
   await third.setViewport(1280, 720);
   await sleep(700);
+  // ★ R097 — R063 (D-262) 부터 사람을 누르면 '어떻게 할까요?' 확인 창이 아니라 프로필 카드 하나(.person-card · 버튼 data-act).
+  //   옛 기대(.confirm-modal [취소] 없이)가 R063 뒤로 낡아 null.closest 예외로 이 묶음 뒷부분(방장 · C-1 · C-2 …)이 통째로 안 돌았다.
+  const actsOf = (pg) => pg.evaluate("[...document.querySelectorAll('.person-card [data-person-acts] button')].map(b => b.dataset.act).join(',')");
   r = await realClick(third, `.seat-card.pickable`);
+  await third.waitFor("document.querySelector('.person-card') !== null", 3000);
   await sleep(300);
-  const acts = await third.evaluate("[...document.querySelectorAll('.confirm-modal .confirm-actions button')].map(b => b.innerText.trim()).join(',')");
+  const acts = await actsOf(third);
   await snap(third, '42-guest-pick-friend-pc');
-  record('★★ B — 확인 팝업: [취소] 버튼 없이 ✕ (방장 아님 — 친구 신청만)', acts.includes('친구 신청') && !acts.includes('취소') && (await third.evaluate("document.querySelector('.confirm-modal .popup-close') !== null")), acts);
-  const dim = await third.evaluate("getComputedStyle(document.querySelector('.confirm-modal').closest('.modal-back')).backgroundColor");
-  record('★★ B — 확인 팝업은 뒤를 어둡게 한다', dim !== 'rgba(0, 0, 0, 0)' && dim !== 'transparent', dim);
+  record('★★ B (D-262) — 프로필 카드: 친구 신청만 · ✕ (방장 아님 — 강퇴 · 차단 · 방장 넘기기 없음)', acts === 'friend' && (await third.evaluate("document.querySelector('.person-card .popup-close') !== null")), acts);
+  const dim = await third.evaluate("(() => { const b = document.querySelector('.person-card')?.closest('.modal-back'); return b ? getComputedStyle(b).backgroundColor : 'none'; })()");
+  record('★★ B — 프로필 카드는 뒤를 어둡게 한다', dim !== 'rgba(0, 0, 0, 0)' && dim !== 'transparent' && dim !== 'none', dim);
   await realClickAt(third, 30, 700);
-  record('★★ B — 확인 팝업: 바깥 누르기 = 취소', await third.evaluate("document.querySelector('.confirm-modal') === null"));
+  await sleep(200);
+  record('★★ B — 프로필 카드: 바깥 누르기 = 닫힘', await third.evaluate("document.querySelector('.person-card') === null"));
   // 방장: 넷째 칸 → 친구 신청 · 강퇴 · 차단 · 방장 넘기기 (넷째는 거절당해 친구가 아니다)
   await realClick(host, '.seat-card.pickable');
+  await host.waitFor("document.querySelector('.person-card') !== null", 3000);
   await sleep(300);
   await snap(host, '43-host-pick-pc');
-  const hacts = await host.evaluate("[...document.querySelectorAll('.confirm-modal .confirm-actions button')].map(b => b.innerText.trim()).join(',')");
-  record('★ 방장 고르기 팝업 — 친구 신청 · 강퇴 · 차단 · 방장 넘기기 (취소 없음)', /강퇴/.test(hacts) && !/취소/.test(hacts), hacts);
+  const hacts = await actsOf(host);
+  record('★ 방장 프로필 카드 — 방장 넘기기 · 강퇴 · 차단 (친구면 친구 신청은 없다)', ['host', 'kick', 'ban'].every((a) => hacts.split(',').includes(a)), hacts);
   await host.key('Escape', { code: 'Escape', vk: 27 });
   await sleep(200);
 
