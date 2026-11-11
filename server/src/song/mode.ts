@@ -39,6 +39,8 @@ export interface SongEntry {
   cover: string | null;
   /** 제목 변형 원문(마스킹 · 정답 집합) */
   titleRaw: string[];
+  /** 가수 변형 원문("가수 말고 제목을" 알림만 — 점수 없음) */
+  artistRaw: string[];
 }
 
 export interface SongRun {
@@ -113,6 +115,7 @@ export function songEntryOf(it: Pick<QuizItem, 'id' | 'payload'>): SongEntry | n
     previewUrl: url,
     cover: songCover600(p.itunes?.artworkUrl100),
     titleRaw: [...new Set([p.title, ...(p.titleVariants ?? []), ...(p.itunes?.trackName ? [p.itunes.trackName] : [])])],
+    artistRaw: [...new Set([...(p.artistVariants ?? []), ...(p.itunes?.artistName ? [p.itunes.artistName] : [])])],
   };
 }
 
@@ -165,7 +168,7 @@ export function pickNextSong(
 
 /** 판정 · 마스킹 재료(퀴즈 CurrentQuestion 칸 꼴) */
 export function songAnswerSets(e: SongEntry): { answersNorm: Set<string>; answersFlex: Set<string>; answersRaw: string[]; hint: string | null; matcher: Map<string, string> } {
-  const matcher = songMatcher({ title: e.title, titleVariants: e.titleRaw, artist: e.artist, artistVariants: [] });
+  const matcher = songMatcher({ title: e.title, titleVariants: e.titleRaw, artist: e.artist, artistVariants: e.artistRaw });
   const answersNorm = new Set(e.titleRaw.map((t) => normalizeAnswer(t)).filter((x) => x.length > 0));
   return { answersNorm, answersFlex: flexAnswerSet(e.titleRaw, answersNorm), answersRaw: e.titleRaw, hint: songInitials(e.titleKo), matcher };
 }

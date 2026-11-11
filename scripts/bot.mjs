@@ -134,6 +134,8 @@ const SCENARIO_ENV = {
   liarfool: { TOPIC_CACHE_MS: '0' },
   // ★ R083 — 캐치마인드 그림 90초 → 8초(아무도 못 맞히는 판)
   draw: { DRAW_ROUND_MS: '8000' },
+  // ★ R096 — 곡 30초 → 17초(초성 15초 = 시작 2초 뒤) · 공개 2.5초(뒷북 · 평가)
+  song: { SONG_MODE_PLAY_MS: '17000', RESOLVED_WAIT_MS: '2500' },
   mgcount: { MINIGAME_PHASE_SCALE: '0.05', DISCONNECT_REMOVE_MS: '1500' },
   // ★ R060 — 둘이서 16 게임(놀이 시간은 줄지 않는다 — 판 사이만 짧게)
   mgduo: { RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
@@ -9768,6 +9770,149 @@ async function scenarioTeam() {
   return checkSummary();
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★★ R096 (D-353) — 노래 맞히기 방식: 3명 · 5곡 — 채팅 정답(제목만 · 정답 글 숨김 + 시스템 줄) · 가수 = 본인 알림 · 뒷북 · 평가 저장 ·
+//   스킵 투표 · 방장 스킵 · 15초 초성(곡 17초 → 시작 2초 뒤) · 시간 초과 · 미리듣기 실패 과반 넘김 · 결과 mode song · 기록(runs · 경험)
+//   ★ 검사 DB(quizweb_test)에 노래가 있어야 한다: DATABASE_URL=…/quizweb_test node scripts/minigame-load.mjs --game song --apply
+// ─────────────────────────────────────────────────────────────────────────────
+async function scenarioSong() {
+  log('시나리오 song — ★★★ 노래 맞히기 방식 (R096)');
+  const nSong = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM minigame_items WHERE game = 'song' AND active`)).rows[0].n);
+  if (nSong < 5) {
+    expectTrue('★ 노래 항목이 검사 DB 에 있어야 한다(minigame-load --game song --apply)', false, `song 활성 ${nSong}`);
+    return false;
+  }
+  const bots = await makeBots(3);
+  const [host, b2, b3] = bots;
+  for (const b of bots) await b.connect();
+  host.createRoom('R096 노래');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방');
+  const roomId = host.snapshot.room.id;
+  for (const b of [b2, b3]) {
+    b.join(roomId);
+    await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
+  }
+  let m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, mode: 'song', songCount: 4 });
+  await sleep(400);
+  expectTrue('★ 곡 수 4 는 거부(5~20)', host.since(m, 'lobby.settingsUpdated').every((e) => e.settings?.songCount !== 4), '');
+  m = host.mark();
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, mode: 'song', songCount: 5, songCategories: ['kr', 'pop', 'jpop'], songDecades: ['2000', '2010', '2020'], songLegend: true });
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.mode === 'song' && e.settings?.songCount === 5), 4000, '설정(노래)').catch((err) => {
+    console.log('[song] 설정 오류', JSON.stringify(host.events.slice(m)));
+    throw err;
+  });
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [bots.map((b) => b.loginId)])).rows.map((r) => [r.login_id, r.id])));
+  const idOf = (b) => ids.get(b.loginId);
+  const hints = new Map(bots.map((b) => [b, []]));
+  const artistHints = new Map(bots.map((b) => [b, 0]));
+  const sysLines = [];
+  for (const b of bots) {
+    b.socket.on('song.artistHint', () => artistHints.set(b, artistHints.get(b) + 1));
+    b.socket.on('question.hint', (p) => hints.get(b).push(p.hint));
+  }
+  host.socket.on('chat.message', (p) => p.system && sysLines.push(p.text));
+  const payloadOf = async (id) => (await withDb(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [id])).rows[0]?.payload)) ?? null;
+  const g = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(g, 'game.started').length > 0, 12000, '시작');
+  const started = host.since(g, 'game.started')[0];
+  const gameId = started?.gameId ?? host.snapshot?.game?.gameId ?? null;
+  const qStarted = async (n) => {
+    await host.waitFor(() => host.since(g, 'question.started').length >= n, 15000, `곡 ${n}`);
+    return host.since(g, 'question.started')[n - 1].payload;
+  };
+  const resolvedN = async (n) => {
+    await host.waitFor(() => host.since(g, 'question.resolved').length >= n, 25000, `공개 ${n}`);
+    return host.since(g, 'question.resolved')[n - 1].payload;
+  };
+  // ── 곡 1 — 판 중 제목 · 가수 없음 · 가수 = 본인 알림(채팅 안 나감) · 틀린 글 = 보통 채팅 · 제목 = 정답(글 숨김 + 시스템 줄)
+  const q1 = await qStarted(1);
+  const p1 = await payloadOf(q1.questionId);
+  expectTrue('★★ 판 중 보내는 것 = 미리듣기 · 표지 · 곡 길이(제목 · 가수 글자 없음) · 지문 빈 글', q1.song?.previewUrl?.startsWith('https://') && q1.song.durationMs > 0 && q1.text === '' && !JSON.stringify(q1).includes(p1.title) && !JSON.stringify(q1).includes(p1.artist), JSON.stringify({ song: q1.song, text: q1.text }));
+  await sleep(300);
+  const c0 = host.mark();
+  b2.chat(p1.artist);
+  await sleep(300);
+  b2.chat('아무말 대잔치 zz');
+  await sleep(300);
+  const chatsAfter = host.since(c0, 'chat').map((e) => e.text);
+  expectTrue('★★★ 가수 → 본인에게만 "가수 말고 제목" · 채팅에 안 나감 · 틀린 글은 보통 채팅', artistHints.get(b2) === 1 && artistHints.get(host) === 0 && !chatsAfter.includes(p1.artist) && chatsAfter.includes('아무말 대잔치 zz'), JSON.stringify({ a: [...artistHints.values()], chatsAfter }));
+  const c1 = host.mark();
+  b3.chat(p1.title);
+  const r1 = await resolvedN(1);
+  b2.chat(p1.title); // 뒷북(3초 안)
+  await sleep(600);
+  const chats1 = host.since(c1, 'chat').map((e) => e.text);
+  expectTrue('★★★ 제목 = 정답 · 맞힌 글은 채팅에 안 나감(시스템 줄 "○○ 님 정답!") · 공개에 제목 · 가수 · 칩 · 표지 600 · 맞힌 시간', r1.reason === 'correct' && r1.winnerAccountId === idOf(b3) && r1.song?.title === p1.title && r1.song?.artist === p1.artist && r1.song?.chips?.length >= 1 && /600x600bb/.test(r1.song?.cover ?? '') && r1.song?.winnerMs > 0 && sysLines.some((t) => /정답!/.test(t)) && chats1.filter((t) => t === p1.title).length <= 1, JSON.stringify({ reason: r1.reason, song: r1.song, sys: sysLines, chats1 }));
+  const lateEv = host.since(c1, 'question.lateAnswers').pop();
+  expectTrue('★★ 뒷북 — 정답자 뒤 3초 안 제목(b2)', lateEv?.late?.some((l) => l.accountId === idOf(b2)), JSON.stringify(lateEv));
+  expectTrue('★★ 점수 = 첫 사람 +1(퀴즈와 같다)', host.snapshot.players.find((p) => p.accountId === idOf(b3))?.score === 1, JSON.stringify(host.snapshot.players.map((p) => p.score)));
+  // ── 평가(공개 중 · 노래 사유) — 저장 = minigame_results.input.rate
+  const rate1 = await postJson('/api/minigame/song-rate', { gameId, songId: q1.questionId, vote: -1, reasons: ['unknown'] }, b2.cookie);
+  const rateBad = await postJson('/api/minigame/song-rate', { gameId, songId: 'song-9999', vote: 1 }, b2.cookie);
+  expectTrue('★★ 노래 평가 — 들은 곡 200 · 안 나온 곡 403', rate1.status === 200 && rateBad.status === 403, JSON.stringify({ rate1, rateBad }));
+  // ── 곡 2 — 스킵 투표(3명 중 기준)
+  const q2 = await qStarted(2);
+  await sleep(300);
+  for (const b of bots) b.skipVote(true);
+  const r2 = await resolvedN(2);
+  expectTrue('★★ 스킵 투표 통과 → 공개(skip_vote) · 제목 공개', r2.reason === 'skip_vote' && !!r2.song?.title && r2.epoch === q2.epoch, JSON.stringify({ reason: r2.reason }));
+  // ── 곡 3 — 방장 스킵
+  const q3 = await qStarted(3);
+  await sleep(300);
+  host.socket.emit('host.forceSkip', { epoch: q3.epoch });
+  const r3 = await resolvedN(3);
+  expectTrue('★★ 방장 스킵 → host_skip', r3.reason === 'host_skip', r3.reason);
+  // ── 곡 4 — 15초 초성(곡 17초 → 2초 뒤) · 시간 초과
+  const q4 = await qStarted(4);
+  const p4 = await payloadOf(q4.questionId);
+  await b2.waitFor(() => hints.get(b2).length >= 1, 6000, '초성').catch(() => {});
+  const want = p4.titleKo.trim().split(/\s+/).length;
+  const got = hints.get(b2)[0] ?? '';
+  expectTrue('★★★ 15초 남으면 초성(titleKo 낱말마다 · 띄어쓰기 수 같음 · 한글 초성 또는 숫자 꼴)', got && got.split(' ').length === want && /^[ㄱ-ㅎ_\s,.!?'&%·()\-:~0-9]+$/.test(got) && !got.includes(p4.title), JSON.stringify({ got, titleKo: p4.titleKo }));
+  const r4 = await resolvedN(4);
+  expectTrue('★★ 시간 초과 → timeout', r4.reason === 'timeout', r4.reason);
+  // ── 곡 5 — 미리듣기 실패 과반 → 넘김(failSkipped)
+  const q5 = await qStarted(5);
+  await sleep(300);
+  b2.socket.emit('song.fail', { epoch: q5.epoch });
+  b2.socket.emit('song.fail', { epoch: q5.epoch }); // 같은 사람 두 번 = 한 번
+  await sleep(300);
+  expectTrue('★ 실패 1명(같은 사람 두 번)은 넘기지 않음', host.since(g, 'question.resolved').length === 4, '');
+  b3.socket.emit('song.fail', { epoch: q5.epoch });
+  const r5 = await resolvedN(5);
+  expectTrue('★★ 실패 과반 → 넘김(failSkipped)', r5.song?.failSkipped === true, JSON.stringify(r5.song));
+  // ── 결과
+  await host.waitFor(() => host.since(g, 'game.result').length > 0, 12000, '결과');
+  const res = host.since(g, 'game.result')[0].payload;
+  const songIds = res.questions.map((q) => q.song?.id);
+  expectTrue('★★★ 결과 mode song · 곡 5 · 곡마다 제목 · 중복 0 · 1위 b3', res.mode === 'song' && res.questions.length === 5 && res.questions.every((q) => q.song?.title) && new Set(songIds).size === 5 && res.ranking[0].accountId === idOf(b3), JSON.stringify({ mode: res.mode, n: res.questions.length, songIds, r0: res.ranking[0] }));
+  // ── 기록 — minigame_runs('song') · 곡 round 5 · 정답 결과 · 평가 · 경험(접속자 3 × 5)
+  await sleep(800);
+  const rec = await withDb(async (c) => {
+    const run = (await c.query(`SELECT id::text, ended_at IS NOT NULL ended FROM minigame_runs WHERE game_id = $1 AND minigame_key = 'song'`, [gameId])).rows[0];
+    if (!run) return null;
+    const rounds = (await c.query(`SELECT count(*)::int n FROM minigame_rounds WHERE run_id = $1`, [run.id])).rows[0].n;
+    const won = (await c.query(`SELECT account_id::text a, points FROM minigame_results WHERE run_id = $1 AND submitted`, [run.id])).rows;
+    const rate = (await c.query(`SELECT input FROM minigame_results WHERE run_id = $1 AND account_id = $2 AND round_index = 1`, [run.id, idOf(b2)])).rows[0]?.input;
+    const exp = (await c.query(`SELECT count(*)::int n FROM minigame_item_experiences WHERE run_id = $1 AND minigame_key = 'song'`, [run.id])).rows[0].n;
+    const gm = (await c.query(`SELECT mode, setting_minigame_rounds r FROM games WHERE id = $1`, [gameId])).rows[0];
+    return { run, rounds, won, rate, exp, gm };
+  });
+  expectTrue('★★★ 기록 — runs(song · 끝남) · round 5 · 정답 1(b3 +1) · 평가(👎 unknown) · 경험 15 · games mode minigame(CHECK 그대로) · 라운드 5', rec && rec.run.ended && rec.rounds === 5 && rec.won.length === 1 && rec.won[0].a === idOf(b3) && rec.rate?.rate?.vote === -1 && rec.rate.rate.reasons?.[0] === 'unknown' && rec.exp === 15 && rec.gm.mode === 'minigame' && rec.gm.r === 5, JSON.stringify(rec));
+  // ── 다시 하기 — 들은 곡은 덜 나온다(범위 207 > 5 → 겹침 0)
+  const g2 = host.mark();
+  host.socket.emit('game.again', {});
+  await host.waitFor(() => host.since(g2, 'question.started').length >= 1, 15000, '다시 하기 첫 곡');
+  const again1 = host.since(g2, 'question.started')[0].payload.questionId;
+  expectTrue('★★ 다시 하기 — 첫 곡은 지난 판 5곡이 아님(경험 없는 곡 먼저)', !songIds.includes(again1), again1);
+  host.socket.emit('host.forceEnd', {});
+  await host.waitFor(() => host.since(g2, 'game.result').length > 0, 8000, '강제 종료').catch(() => {});
+  for (const b of bots) b.socket.disconnect();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -9851,6 +9996,8 @@ const SCENARIOS = {
   liar: scenarioLiar,
   liarfool: scenarioLiarFool,
   draw: scenarioDraw,
+  // ★★★ R096 — 노래 맞히기 방식
+  song: scenarioSong,
   mgcount: scenarioMgCount,
   mgduo: scenarioMgDuo,
   emojiinline: scenarioEmojiInline,
