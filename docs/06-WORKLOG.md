@@ -28,6 +28,16 @@
 - 문제: 브리핑 추정 ≈60 보다 적음(브리핑 SQL 그대로 36) → 느슨한 추가 검사 27 도 봄 — 대상 0. dev 는 쓰기 전 백업 안 함(backup.mjs 기본 = quizweb) — undo json 으로 대신.
 - 검사: dry-run 두 DB 일치 · checkAnswerSet · checkHint · crossans 경고 0 · hint-check-active 막힘 0(두 DB). 결정 DG-097. 남은 것: 없음(다음 판부터 반영).
 
+## 2026-11-11 — R096 노래 맞히기 = 방 방식 (MAIN · D-353 · 큰 라운드)
+- [x] A 적재 — minigame-song 새 칸 · inactive · 넣을 것 0 이면 exit 2 · dry-run 쉼 미리보기 · 메뉴 1 줄(dev song 207 활성 · 86 쉼)
+- [x] B 방식 'song' — 설정(곡 수 · 분류 · 연대 · 20세기 명곡 · 한국 장르 · 칩 수) · 시작 검사 · 미니게임 song 숨김
+- [x] C · C-2 · C-3 판 — 퀴즈 엔진 재사용(문항 = 곡) · 채팅 정답(글 숨김 + 시스템 줄) · 가수 본인 알림 · 15초 초성 · 표지 시계 공개 · 실패 과반 넘김 · 평가(minigame_results)
+- [x] D 공개 · 결과 — 제목 · 가수 · 칩 · 맞힌 줄 · 곡 목록 · Apple 표기 뺌(미니게임 공개도)
+- [x] E 검사 · 문서 — 단위 · 봇 song · ui-check r096 · r084 개정 · 봇 전체 · 낡은 봇 기대 5곳 고침
+- 무엇: 찬종 #117 + 2026-11-11 답. 새 엔진 대신 퀴즈 QUESTION_ACTIVE/RESOLVED 를 그대로 쓰고 문항 자리에 곡(CurrentQuestion.song) — 스킵 · 일시정지 · 재접속 · 소감 · 뒷북 · 마스킹이 그대로 온다. 기록은 마이그레이션 없이 games.mode 'minigame' + minigame_runs 'song'.
+- 문제: ① 단위 검사가 가수 변형이 matcher 에 빠진 결함을 잡음 ② 소감 칸이 비었다(정답 글을 숨기니 정답자 글 기준점이 없음) → 마지막 줄 기준 ③ 1280×720 공개에서 채팅 입력칸이 밀려 나감 → 키 ≤ 900 은 공개 때 표지 23vh ④ 브리프 "평가 = 퀴즈 표에 song id" 는 questions FK 라 불가 → minigame_results.input.rate ⑤ 봇 전체에서 R096 과 무관한 낡은 기대 5곳(lobby 중급 기본 · shop/minigame 포인트 식 point_grants 빠짐 · draw 초성 길이 1 · mgduo 16개) 고침.
+- 검사: R096.txt 끝 점검 표. 실 3000 · 터널 · 실 quizweb 쓰기 0(reports:handle 만). 남은 것: 체감 A122 · 적용은 메뉴 3 → 1 [1](R092 ~ R096).
+
 ## 2026-11-11 — R095 실전 제보 3차 (MAIN · D-352)
 - 무엇: 찬종 실전 제보 #116(캐치 초성 한 글자 · 도구 글자 → 아이콘 · 팔레트 동떨어짐) · #117 앞부분(미니게임 채팅 줄이고 판 크게) · G060 백업 이름 사고 — shared drawInitials(generateHint 낱말마다) · DrawStage 아이콘(Lucide) + 색 점 팝업(useDismiss) · styles .draw-toolrow/.draw-color-pop · .mg-card 칸 ≥ 반 · backup.mjs/backup-prune DB 이름 · ops 메뉴 19 같은 규칙.
 - 문제: 옛 `.draw-tools > .draw-tool { margin: 0 }` 를 지우자 앱 button 기본 margin-top 14px 가 팝업 색 줄 사이에 살아남 → `.draw-tools button { margin: 0 }`. PC 옆 기둥이 overflow auto 라 팝업이 잘릴 자리 → 기둥 overflow 보임 · 맞힌 사람 목록만 스크롤. 기존 r089 검사는 팔레트를 바로 누르므로 색 점 먼저 열게 고침. lab 순서대로 장면은 카드가 없어 판 칸이 비어 보임(실제 판은 카드로 참).

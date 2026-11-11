@@ -1026,6 +1026,21 @@ R003 명세는 `room.playerJoined { player }` 처럼 변경분만 보내는 형�
 | 출제 선정 | `selectNextQuestion` 에 `shownNorm`(이 판에서 보여 준 질문 · 일반 힌트 · 해설의 정규화) — 흘림 후보를 같은 단계 안에서 뒤로 (C66 · D-233) |
 | 설정값 (서버 env · 검사용) | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE`(0~5 · 판 진행 시간은 바꾸지 않는다) — 실제 서버에 두지 않는다 |
 
+## ★ R096 — 바뀐 것 (D-353 · 노래 맞히기 방식 · 마이그레이션 없음)
+
+| 항목 | 내용 |
+|------|------|
+| 설정 `mode` | `'song'` 더함 · 새 칸 `songCount`(5~20 · 10) · `songCategories`(`'kr' \| 'pop' \| 'jpop'`[]) · `songDecades`(`'2000' \| '2010' \| '2020'`[]) · `songLegend`(bool · 기본 true) · `songGenres`(한국 장르 9종[]) — 보낸 것만 바꿈 · 검증 shared `validateSongSettings` · 실패 field `'song'` |
+| 상태 | **퀴즈와 같다**(QUESTION_ACTIVE → QUESTION_RESOLVED → … → GAME_RESULT) · `game.started.mode = 'song'` · `totalQuestions` = 곡 수 |
+| `question.started` · 스냅샷 `question` | `song: { previewUrl, cover(600판), durationMs } \| null`(퀴즈 문항 null) · `text` = '' · `categoryName` '노래' · `questionId` = 곡 id(song-NNNN) · `hasGeneralHint` false — 제목 · 가수는 보내지 않는다 |
+| `question.hint` | 남은 15초 · 값 = titleKo 초성(낱말마다 · 띄어쓰기 유지) |
+| `question.resolved` · 스냅샷 `resolution` | `song: { id, title, artist, year, chips[], cover, winnerMs, failSkipped } \| null` · 매 곡 `rateAsk: true` |
+| `chat.send` (곡 진행 중) | 제목 정답 → 그 글은 `chat.message` 로 안 나가고 시스템 줄 "○○ 님 정답!" · 가수(제목 아님) → 글 안 나감 + 본인에게 `song.artistHint { epoch, message }` |
+| `song.fail` (C→S) | `{ epoch }` — 미리듣기 재생 실패 · 같은 사람 한 번 · 접속자 과반이면 `resolveQuestionSync('skip_vote')` + `failSkipped` |
+| 결과 `game.result` | `mode: 'song'` · `questions[].song`(공개된 곡 = 위 공개 칸 · 중단된 곡 `{ id }`) |
+| HTTP | `GET /api/minigame/song-meta` → `{ items: [{ category, genre, year, legend }] }`(로비 칩 수 · 제목 없음) · `POST /api/minigame/song-rate { gameId, songId, vote: 1\|0\|-1, reasons[] }`(사유 unknown · too_easy · label · preview — 👎 만 · 지금 방의 이미 공개된 곡만 · 403 · 포인트 없음) |
+| 기록 | games.mode 'minigame'(CHECK 그대로) + minigame_runs 'song' · rounds(곡마다) · results(맞힌 사람 points 1 · 평가 input.rate) · minigame_item_experiences 'song' |
+
 ## ★ R085 — 바뀐 것 (D-342 · OX 10연속 · 마이그레이션 없음)
 
 | 항목 | 내용 |

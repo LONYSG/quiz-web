@@ -18,7 +18,6 @@ import {
   songInitials,
   songInRange,
   songMatcher,
-  SONG_DUMMY_TRACK_IDS,
   type SongSettings,
 } from '@quiz/shared';
 import { loadQuizData, type QuizItem } from '../db/minigameItems.js';
@@ -101,7 +100,8 @@ interface Payload {
 export function songEntryOf(it: Pick<QuizItem, 'id' | 'payload'>): SongEntry | null {
   const p = it.payload as Payload;
   const url = p.itunes?.previewUrl;
-  if (typeof url !== 'string' || !url.startsWith('https://') || SONG_DUMMY_TRACK_IDS.has(Number(p.itunes?.trackId))) return null;
+  // ★ 연습 곡(SONG_DUMMY) trackId 규칙은 미니게임 연습 판 몫 — 방식 판에는 연습이 없어 그 두 곡(쏘리 쏘리 · Uptown Funk)도 낸다
+  if (typeof url !== 'string' || !url.startsWith('https://')) return null;
   if (typeof p.title !== 'string' || typeof p.artist !== 'string' || !Number.isInteger(p.year)) return null;
   return {
     id: it.id,

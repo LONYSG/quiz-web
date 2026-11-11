@@ -1246,10 +1246,12 @@ async function scenarioLobby() {
 
   // ── 2. 출제 가능 수 (Q-21)
   log('\n[2] 출제 가능 문제 수');
+  // ★ R096 — 낡은 기대 고침: R069 부터 기본 난이도 = 중급(등급 1~4) → 출제 가능 수 = 활성 중 등급 1~4(등급 5 는 고급에서만)
+  const levelTotal = await withDb(async (c) => (await c.query(`SELECT count(*)::int n FROM questions WHERE is_active AND difficulty_score BETWEEN 1 AND 4`)).rows[0].n);
   expect(
-    '출제 가능 수가 활성 문제 수와 같다 (경험 기록 없음)',
+    '출제 가능 수가 활성 문제(기본 난이도 중급 = 등급 1~4) 수와 같다 (경험 기록 없음)',
     host.snapshot.room.availableQuestionCount,
-    seedTotal,
+    levelTotal,
   );
 
   // ── 3. 설정 범위 검증 (Q-10 / Q-11)
@@ -5716,7 +5718,7 @@ async function scenarioPoints() {
   const sql = async () =>
     withDb(async (c) => {
       const r = await c.query(
-        `SELECT ((SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted) + (SELECT coalesce(sum(amount), 0) FROM minigame_rewards WHERE account_id = $1))::int earned,
+        `SELECT ((SELECT count(*) FROM answer_events WHERE account_id = $1 AND accepted) + (SELECT coalesce(sum(amount), 0) FROM minigame_rewards WHERE account_id = $1) + (SELECT coalesce(sum(amount), 0) FROM point_grants WHERE account_id = $1))::int earned,
                 (SELECT coalesce(sum(amount), 0) FROM point_spends WHERE account_id = $1)::int spent`,
         [aId],
       );
@@ -5772,7 +5774,7 @@ async function scenarioShop() {
     withDb(async (c) => {
       const r = await c.query(
         `SELECT a.id::text AS id,
-                ((SELECT count(*) FROM answer_events e WHERE e.account_id = a.id AND e.accepted) + (SELECT coalesce(sum(amount), 0) FROM minigame_rewards r WHERE r.account_id = a.id))::int AS earned,
+                ((SELECT count(*) FROM answer_events e WHERE e.account_id = a.id AND e.accepted) + (SELECT coalesce(sum(amount), 0) FROM minigame_rewards r WHERE r.account_id = a.id) + (SELECT coalesce(sum(amount), 0) FROM point_grants g WHERE g.account_id = a.id))::int AS earned, -- ★ R096 — 낡은 식 고침: 서버 POINTS_SQL 처럼 point_grants(R059 · R063 · R068 평가 1P · R079 팀 승리) 포함
                 (SELECT coalesce(sum(amount), 0) FROM point_spends p WHERE p.account_id = a.id)::int AS spent,
                 (SELECT count(*) FROM account_emojis ae WHERE ae.account_id = a.id)::int AS owned
            FROM accounts a WHERE a.login_id = $1`,
@@ -6215,12 +6217,12 @@ async function scenarioMinigame() {
   const sql = await withDb(async (c) =>
     (
       await c.query(
-        `SELECT (SELECT count(*) FROM answer_events WHERE account_id = a.id AND accepted)::int AS c, (SELECT coalesce(sum(amount),0) FROM minigame_rewards WHERE account_id = a.id)::int AS r, (SELECT coalesce(sum(amount),0) FROM point_spends WHERE account_id = a.id)::int AS s FROM accounts a WHERE a.login_id = $1`,
+        `SELECT (SELECT count(*) FROM answer_events WHERE account_id = a.id AND accepted)::int AS c, (SELECT coalesce(sum(amount),0) FROM minigame_rewards WHERE account_id = a.id)::int AS r, (SELECT coalesce(sum(amount),0) FROM point_spends WHERE account_id = a.id)::int AS s, (SELECT coalesce(sum(amount),0) FROM point_grants WHERE account_id = a.id)::int AS g FROM accounts a WHERE a.login_id = $1`,
         [host.loginId],
       )
     ).rows[0],
   );
-  expect('★★ 포인트 API = SQL (맞힌 수 + 미니게임 보상 − 쓴 것)', [api.correct, api.rewards, api.spent, api.balance], [sql.c, sql.r, sql.s, sql.c + sql.r - sql.s]);
+  expect('★★ 포인트 API = SQL (맞힌 수 + 미니게임 보상 − 쓴 것)', [api.correct, api.rewards, api.spent, api.balance], [sql.c, sql.r, sql.s, sql.c + sql.r + sql.g - sql.s]); // ★ R096 — balance 에 point_grants 포함(서버 식)
 
   // ── [3] 연습 판 · 끊김 · 중간 입장
   log('\n[3] ★★ 연습 판(로비) — 로비로 · 보상 없음 · 끊긴 사람 꼴찌 · 중간 입장 구경');
@@ -7550,8 +7552,9 @@ async function scenarioMgDuo() {
   const sh = await mgShared();
   const { bots, host, roomId } = await mgRoom(2, 'R060 둘이서');
   const [, guest] = bots;
-  const keys = sh.MINIGAMES.map((m) => m.key);
-  expectTrue('★★ 미니게임 16 · twothirds 없음', keys.length === 16 && !keys.includes('twothirds'), keys.join(','));
+  // ★ R096 — 낡은 기대 고침: 16 개 시절 검사 → 지금 고를 수 있는 미니게임만(숨김 — 노래 · 이 노래 몇 년도 · 빙고 · 객관식 … 은 판에 안 나온다)
+  const keys = sh.MINIGAMES.filter((m) => !m.hidden).map((m) => m.key);
+  expectTrue('★★ 고를 수 있는 미니게임 ≥ 16 · twothirds 없음 · 숨긴 것(song) 없음', keys.length >= 16 && !keys.includes('twothirds') && !keys.includes('song'), keys.join(','));
   // ── [A] 게임마다 연습 · 둘 다 안 냄
   const times = [];
   for (const key of keys) {
@@ -8716,7 +8719,7 @@ async function scenarioDraw() {
   for (const kind of ['length', 'initial', 'topic']) host.socket.emit('draw.hint', { kind });
   await b2.waitFor(() => lastView(b2)?.hints?.topic, 3000, '힌트 셋').catch(() => {});
   const hb = lastView(b2);
-  expectTrue('★★★ R087 힌트 셋 — 글자 수(○ 꼴) · 초성 · 주제 = 세트 이름 · 출제자 남은 힌트 0', /○/.test(hb.hints.length ?? '') && /글자/.test(hb.hints.length ?? '') && (hb.hints.initial ?? '').length === 1 && hb.hints.topic === lastView(host).nameKo && hb.nameKo === lastView(host).nameKo && lastView(host).hintsLeft.length === 0, JSON.stringify({ hints: hb.hints, left: lastView(host).hintsLeft }));
+  expectTrue('★★★ R087 힌트 셋 — 글자 수(○ 꼴) · 초성(★ R095 전체 — 글자 수와 같은 길이 · R096 에서 낡은 기대 고침) · 주제 = 세트 이름 · 출제자 남은 힌트 0', /○/.test(hb.hints.length ?? '') && /글자/.test(hb.hints.length ?? '') && (hb.hints.initial ?? '').replace(/\s/g, '').length === (hb.hints.length?.match(/(\d+)글자/)?.[1] ? Number(hb.hints.length.match(/(\d+)글자/)[1]) : -1) && hb.hints.topic === lastView(host).nameKo && hb.nameKo === lastView(host).nameKo && lastView(host).hintsLeft.length === 0, JSON.stringify({ hints: hb.hints, left: lastView(host).hintsLeft }));
   host.socket.emit('draw.hint', { kind: 'length' }); // 두 번째 → 거름
   await sleep(200);
   expectTrue('★★ R087 힌트 시스템 줄 셋 · 같은 힌트 두 번 거름', chats.slice(hintSys0).filter((c) => c.system && /공개했어요/.test(c.text)).length === 3, JSON.stringify(chats.slice(hintSys0).map((c) => c.text)));

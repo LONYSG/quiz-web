@@ -10,6 +10,16 @@
 
 ---
 
+## D-353. 노래 맞히기 = 방 방식 'song'(퀴즈 흐름 그대로 · 문항 = 곡) · 적재 스크립트 새 칸 · inactive · 넣을 것 0 이면 exit 2 (R096 · 찬종 실전 제보 #117 · 2026-11-11 답)
+- 찬종(#117): "노래 맞히기는 캐치마인드·라이어게임처럼 따로 빼자 … 한국(발라드 · 댄스 · 아이돌 등) · 팝송 · J-pop · 연도 10년 단위 … 15초 남았을 때 초성 · 스킵 투표 · 기존 퀴즈랑 비슷한 형식 · 일반 퀴즈들처럼 채팅창에서" · 2026-11-11: "Apple Music 표기 완전히 빼 · 앨범 표지 더 크게 · 새로 만든 기능일수록 촌스러워" · "정답 후 세레모니 등등까지" · 표지 시계 공개(설계 지정).
+- **A 적재(첫 커밋 · 안전장치)**: `minigame-song.mjs` SONG_OPTIONAL += category · genre · genreWhy · titleKo · legend · legendWhy · inactiveReason · 넣는 항목 검사(category kr/pop/jpop · kr 은 genre 9종 · titleKo 한글 · 숫자 · 기호만). STATUS 에 `inactive`(넣지 않음 → DB 행 active=false · 지우지 않음). **원인(G061 실측)**: 새 칸 = "모르는 칸" 거부 → 넣을 것 0 → `--apply` 가 그 game 활성 행 전부를 쉬게 했다(메뉴 1 이면 노래 통째로 빠짐). → **`--apply` 에서 파일이 있는 게임 중 넣을 것 0 이 하나라도 있으면 아무것도 쓰지 않고 exit 2** · 쉬게 할 대상은 파일이 있는 게임만 · dry-run 이 DB 를 읽기만 해서 "쉼" 을 미리 셈 · 메뉴 1 줄 = `[active] song 활성 n · 쉼 m`(exit 2 면 "멈춤(안전장치)"). dev 적용: song 활성 207 · 쉼 86(inactive 85 + 옛 rejected 1).
+- **방식**: RoomMode += `'song'` · 설정 칸 songCount(5~20 · 10) · songCategories · songDecades · songLegend(기본 켬) · songGenres(shared songMode.ts — 서버 · 화면 같은 검증 · 칩 수 songRangeCounts). 미니게임 `song` 은 hidden(데이터 · 경험 키 그대로).
+- **판 = 퀴즈 엔진 재사용**(설계 판단 — 캐치마인드 엔진 꼴로 새로 만들지 않음): QUESTION_ACTIVE / RESOLVED 를 그대로 쓰고 문항 자리에 곡(CurrentQuestion.song). 그래서 스킵 투표 · 방장 넘기기 · 일시정지 · 재접속 스냅샷 · 장치 A/B(epoch) · 빵빠레 · 소감 칸 · 뒷북 · 경험자 마스킹 · 8초 공개 · 결과가 **코드 한 줄 안 바꾸고** 그대로 온다(브리프 C-2 "새로 만들지 말고"). 다른 것: beginSongQuestion(곡 고르기 — 경험 없는 곡 먼저 · 'song|' · 'songyear|' 둘 다 들은 곡 · 판 안 중복 0) · 30초(검사 SONG_MODE_PLAY_MS) · 일반 힌트 null · 초성 = songInitials(titleKo — drawInitials 꼴) · 판정 = answersNorm(제목 변형 + trackName) · 가수 = songMatcher 'artist' → 본인에게 `song.artistHint` · 글 안 나감 · 정답 글 숨김 + 시스템 줄.
+- **기록(마이그레이션 없음)**: games.mode CHECK 에 'song' 이 없다 → **games.mode = 'minigame'**(setting_minigame_rounds = 곡 수) + **minigame_runs('song' · 연습 아님)** 로 구분 · 곡마다 minigame_rounds · 맞힌 사람 minigame_results(points 1) · 경험 minigame_item_experiences('song') · 퀴즈 표(game_questions · answer_events · question_experiences · near_misses — questions FK)는 쓰지 않는다. **평가 = minigame_results.input.rate**(`POST /api/minigame/song-rate` · 지금 방의 이미 공개된 곡만 · 포인트 없음). ★ 브리프의 "퀴즈 평가와 같은 표(문항 id 자리에 song id)" 는 question_feedback.question_id 가 questions FK(bigint)라 불가 — 원칙 7.
+- **미리듣기 실패**: `song.fail` → 접속자 과반이면 resolveQuestionSync('skip_vote') + failSkipped(공개 줄 "미리듣기를 못 불러와 넘겼어요").
+- **화면**: Question.tsx 카드에 SongPlay(표지 conic-gradient 가림막 · `@property --song-p` + 120ms linear = 퀴즈 시간 막대와 같은 tick) · SongReveal · SongRate · 결과 SongResultList · 설정 SongSettings(퀴즈 set-row · preset 꼴 그대로). 소감 칸 기준점: 정답 글이 없으므로 정답자 글이 없으면 그 순간 마지막 줄부터. 키 높이 ≤ 900 은 공개 때 표지 23vh(1280×720 에서 채팅 입력칸이 밀려 나감 — ui-check 가 잡음). 소리 = 노래 판 동안 배경음악 끔(setMusicMode quiet).
+- 되돌리기: 커밋 revert(DB 변화 없음 — 기록 행은 minigame_* 에 'song' 으로 남는다).
+
 ## D-352. 실전 제보 3차 — 캐치 초성 = 제시어 전체 · 도구 아이콘 + 색 점 팝업 · 미니게임 판 칸 크게 · 백업 이름 = DB 이름 (R095 · 찬종 2026-11-10 실전 · #116 · #117 앞부분)
 - 제보 #116(draw:draw · PC 2560×1313): "캐치마인드 초성이 왜 한글자만 나와? 그리고 그리기 메뉴에서 페인트통 이런식이 아니라 아이콘으로 표기해줘. 그리고 팔레트 고르는 버튼은 너무 동떨어져있고 팔레트판이라는 표시가 안나"
 - 제보 #117 앞부분(minigame:song:roundResult · PC 2560×1313): "노래 맞히기 뿐만 아니라 미니게임들 할때 채팅창을 좀 줄이고 문제 창을 좀 키워도 될듯해." (나머지 노래 재설계 = R096)

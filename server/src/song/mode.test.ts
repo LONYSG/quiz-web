@@ -36,10 +36,10 @@ describe('R096 노래 방식 — 범위', () => {
     expect(songPoolFrom(items, { ...all, songDecades: ['2010'], songLegend: false }).map((e) => e.id)).toEqual(['song-0001', 'song-0002']);
     expect(songPoolFrom(items, { ...all, songDecades: [], songLegend: true }).map((e) => e.id)).toEqual(['song-0004']);
   });
-  it('20세기 곡은 legend 일 때만 · 미리듣기 없는 항목 · 연습 곡 제외', () => {
+  it('20세기 곡은 legend 일 때만 · 미리듣기 없는 항목 제외 · 연습 곡 trackId 는 방식에서는 낸다', () => {
     expect(songPoolFrom([item('song-0001', { year: 1990 })], all)).toEqual([]);
     expect(songEntryOf(item('song-0001', { itunes: { previewUrl: '' } }))).toBeNull();
-    expect(songEntryOf(item('song-0001', { itunes: { trackId: 984607460, previewUrl: 'https://x' } }))).toBeNull();
+    expect(songEntryOf(item('song-0001', { itunes: { trackId: 984607460, previewUrl: 'https://x' } }))).not.toBeNull();
   });
   it('칩 수 — 그 칩만 켰을 때', () => {
     const metas = [
