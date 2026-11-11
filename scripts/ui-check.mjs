@@ -4870,7 +4870,7 @@ async function r084Flow(browser) {
     }
     if (key === 'song' && phase === 'roundResult' && round === 1) {
       await sleep(900);
-      const rv = JSON.parse(await H.evaluate("JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', year: document.querySelector('[data-song-year]')?.dataset.songYear ?? '', art: (() => { const i = document.querySelector('[data-song-art]'); return i ? { w: i.naturalWidth, src: i.getAttribute('src') } : null; })(), credit: document.querySelector('.song-credit')?.innerText ?? '', mine: document.querySelector('[data-song-winner]')?.innerText ?? '', rows: [...document.querySelectorAll('.mg-table li .mg-points')].map((e) => e.innerText).join(' '), audioStill: document.querySelector('[data-song-audio]')?.getAttribute('src') ?? null })"));
+      const rv = JSON.parse(await H.evaluate("JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', year: document.querySelector('[data-song-year]')?.dataset.songYear ?? '', art: (() => { const i = document.querySelector('[data-song-art]'); return i ? { w: i.naturalWidth, src: i.getAttribute('src') } : null; })(), credit: document.querySelector('.song-credit')?.innerText ?? '', all: document.querySelector('.mg-card')?.innerText ?? '', mine: document.querySelector('[data-song-winner]')?.innerText ?? '', rows: [...document.querySelectorAll('.mg-table li .mg-points')].map((e) => e.innerText).join(' '), audioStill: document.querySelector('[data-song-audio]')?.getAttribute('src') ?? null })"));
       rv.gWinner = await G.evaluate("document.querySelector('[data-song-winner]')?.innerText ?? ''");
       res.reveal = rv;
       await snap(H, 'song-reveal-pc');
@@ -4956,7 +4956,7 @@ async function r084Flow(browser) {
   record('★★★ R084 노래 판 — audio src = previewUrl(PC · m360) · ✗ 오답 · 남의 진행 줄 없음 · ★ R092 안내 "제목 … 한 사람만 +1" · 제목/가수 칸 없음', Boolean(p && p.url && p.a0.h.src === p.url && p.a0.g.src === p.url && p.wrongFb === 'wrong' && !p.submittedLine && /한 사람만 \+1/.test(p.help0.help) && /제목/.test(p.help0.ph) && p.help0.parts === 0), JSON.stringify(p));
   record('★★★ R092 가수 → "가수 말고 제목을 쳐 주세요"(warn 색 · 틀림과 다름) · 곡 계속 · 입력 열림', Boolean(p && p.gFb.fb === 'artist' && /warn/.test(p.gFb.cls) && /가수 말고 제목/.test(p.gFb.text) && p.gFb.input && p.stillPlay === 'play'), JSON.stringify(p?.gFb));
   record('★★★ R092 제목 맞힌 순간 곡 끝 → 공개(4초 안)', Boolean(p && p.ended && p.endMs < 4000), JSON.stringify({ ended: p?.ended, ms: p?.endMs }));
-  record('★★★ R084 노래 공개 — 앨범 그림 · 제목 · 연도 · "Apple Music 미리듣기" · 공개 동안 노래 계속 · ★ R092 "내가 n초 만에 맞혔어요 +1" · 손님 "노래방장 님이"', Boolean(res.reveal && res.reveal.art && /300x300bb/.test(res.reveal.art.src ?? '') && res.reveal.title && /^\d{4}$/.test(res.reveal.year) && /Apple Music/.test(res.reveal.credit) && /^내가 .*초 만에 맞혔어요/.test(res.reveal.mine) && /노래방장 님이 .*맞혔어요/.test(res.reveal.gWinner) && res.reveal.audioStill), JSON.stringify(res.reveal));
+  record('★★★ R084 노래 공개 — 앨범 그림 · 제목 · 연도 · ★ R096 "Apple Music" 표기 없음(찬종 "완전히 빼") · 공개 동안 노래 계속 · ★ R092 "내가 n초 만에 맞혔어요 +1" · 손님 "노래방장 님이"', Boolean(res.reveal && res.reveal.art && /300x300bb/.test(res.reveal.art.src ?? '') && res.reveal.title && /^\d{4}$/.test(res.reveal.year) && !/Apple/.test(res.reveal.credit) && !/Apple/.test(res.reveal.all ?? '') && /^내가 .*초 만에 맞혔어요/.test(res.reveal.mine) && /노래방장 님이 .*맞혔어요/.test(res.reveal.gWinner) && res.reveal.audioStill), JSON.stringify(res.reveal));
   record('★★★ R084 연도 판 — 바꾼 마지막 답 · 범위 밖 안내 · 낸 사람 수 줄', Boolean(res.year && Number(res.year.sent) === res.year.y && /bad/.test(res.year.gOut) && /명/.test(res.year.count)), JSON.stringify(res.year));
   record('★★★ R084 연도 공개 — 정확 · 표에 연도(정확/±)', Boolean(res.yearReveal && /정확/.test(res.yearReveal.mine) && /정확/.test(res.yearReveal.vals)), JSON.stringify(res.yearReveal));
   record('★★★ R084 재생 실패(audio error) → "못 불러왔어요" · 과반 → 건너뜀 줄', Boolean(res.skipped && /못 불러왔어요/.test(res.skipped.gState) && res.skipped.state === 'skipped' && /넘어가요/.test(res.skipped.skippedLine)), JSON.stringify(res.skipped));
@@ -5581,6 +5581,186 @@ async function r093Flow(browser) {
 // =============================================================================
 const R094_RX = `JSON.stringify((() => { const box = document.querySelector('.rx-result'); if (!box) return null; const cell = box.getBoundingClientRect(); const ps = [...box.querySelectorAll('p')].map((p) => { const r = p.getBoundingClientRect(); return { t: p.innerText.replace(/\\n/g, ' / '), sw: p.scrollWidth, cw: p.clientWidth, l: Math.round(r.left - cell.left), r: Math.round(cell.right - r.right) }; }); const out = ps.some((p) => p.sw > p.cw + 1 || p.l < -1 || p.r < -1); return { w: Math.round(cell.width), ps, out, over: document.documentElement.scrollWidth - innerWidth }; })())`;
 const R094_Q = `JSON.stringify((() => { const q = document.querySelector('.q-text'); const card = document.querySelector('.question-card'); const chat = document.querySelector('.room .chat-card'); const center = document.querySelector('.center'); const hint = [...document.querySelectorAll('.q-hint.open')].pop(); if (!q || !card) return null; const cs = getComputedStyle(q); const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.45; const R = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; }; return { len: [...(q.dataset.text ?? q.innerText)].length, fs: cs.fontSize, lines: Math.round(q.getBoundingClientRect().height / lh), card: R(card), chat: R(chat), center: R(center), hint: hint ? hint.innerText.replace(/\\s+/g, ' ').trim() : '', kind: document.querySelector('.hint-kind')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())`;
+// =============================================================================
+// ★★★ R096 — 노래 맞히기 방식 화면 (D-353) (UICHECK_R096=1 · 묶음 r096 · docs/design/r096)
+//   방장 PC 1280×720(→ 2560×1440 한 장) · 손님 m360 터치 · 소켓 손님 1 — 방식 [노래] · 설정(곡 수 · 분류 · 연대 · 장르 칩 수) ·
+//   판: 표지 부채꼴 0% · 50%(+ 15초 초성 · 퀴즈 힌트 자리) · 가수 → 본인 알림 · 채팅 정답(글 숨김 · 시스템 줄) · 정답 뒤 100% + 강조 ·
+//   공개(제목 · 가수 · 칩 · 맞힌 줄 · 소감 칸 · 평가 노래 사유 · "N초 후 다음 곡") · 스킵(강조 없음) · 결과(곡 목록) · 세 테마 · 넘침
+//   ★ 소리가 실제로 나는지는 검사하지 않는다(A111 그대로) — audio 상태만 적는다 · Apple 표기 0
+// =============================================================================
+async function r096Flow(browser) {
+  const H = await newPage(browser, 'R096-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r96h', '노래방장');
+  const roomId = await createRoom(H, 'R096 노래 맞히기');
+  const G = await newPage(browser, 'R096-g', true);
+  await signUp(G, 'r96g', '노래손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const [S] = await socketGuests(roomId, 1, 'r96s');
+  let sQ = null;
+  S.on('question.started', (p) => (sQ = p));
+  const rows = [];
+  const note = (k, v) => {
+    rows.push([k, v]);
+    console.log(`  [r096] ${k}: ${JSON.stringify(v)}`);
+  };
+  const theme = (P, th) => P.evaluate(`document.documentElement.setAttribute('data-theme', ${JSON.stringify(th)})`);
+  const over = (P) => P.evaluate('document.documentElement.scrollWidth - innerWidth');
+  const itemOf = (id) => withPg(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [id])).rows[0]?.payload ?? null);
+  const coverOf = (P) =>
+    P.evaluate("JSON.stringify((() => { const c = document.querySelector('[data-song-cover]'); if (!c) return null; const b = c.getBoundingClientRect(); return { p: Number(c.dataset.progress), won: c.classList.contains('won'), done: c.classList.contains('done'), w: Math.round(b.width), h: Math.round(b.height), img: c.querySelector('img')?.getAttribute('src') ?? null, veil: getComputedStyle(c.querySelector('.song-cover-veil')).backgroundImage.slice(0, 40) }; })())").then((s) => JSON.parse(s));
+  const hintOf = (P) => P.evaluate("JSON.stringify({ rows: document.querySelectorAll('.q-hints .q-hint').length, open: document.querySelector('.q-hints .q-hint.open .hint-value')?.innerText ?? null, label: [...document.querySelectorAll('.q-hints .hint-label')].map((e) => e.innerText).join(',') })").then((s) => JSON.parse(s));
+  const say = async (P, t) => {
+    await P.setInput('.chat-card input', t);
+    await P.click('전송');
+    await sleep(250);
+  };
+  const res = { settings: null, mobileSettings: null, p0: null, p50: null, artist: null, won: null, reveal: null, skip: null, result: null, themes: [], apple: [] };
+  const appleOf = async (P, at) => res.apple.push([at, await P.evaluate("document.body.innerText.includes('Apple')")]);
+
+  // ── 설정 — 방식 [노래] · 칩 수
+  await realClick(H, 'button[data-mode="song"]');
+  await H.waitFor("document.querySelector('[data-song-count]') !== null", 4000).catch(() => false);
+  await H.waitFor("document.querySelector('[data-song-avail]')?.innerText.includes('곡 ·')", 6000).catch(() => false);
+  await sleep(300);
+  res.settings = JSON.parse(
+    await H.evaluate(
+      "JSON.stringify({ mode: document.querySelector('[data-mode=\"song\"]')?.getAttribute('aria-pressed'), count: document.querySelector('[data-song-count]')?.value, cats: [...document.querySelectorAll('[data-song-cat]')].map((e) => e.innerText.replace(/\\s+/g, ' ')), decades: [...document.querySelectorAll('[data-song-decade],[data-song-legend]')].map((e) => e.innerText.replace(/\\s+/g, ' ')), genres: [...document.querySelectorAll('[data-song-genre]')].map((e) => e.innerText.replace(/\\s+/g, ' ') + (e.classList.contains('song-set-empty') ? '(흐림)' : '')), avail: document.querySelector('[data-song-avail]')?.innerText ?? '', mgRow: !!document.querySelector('.mg-set-row'), qRow: !!document.querySelector('.level-row') })",
+    ),
+  );
+  await snap(H, 'settings-pc');
+  await G.waitFor("document.querySelector('[data-song-avail]') !== null", 4000).catch(() => false);
+  await sleep(500);
+  res.mobileSettings = { over: await over(G), genres: await G.evaluate("document.querySelectorAll('[data-song-genre]').length") };
+  await snap(G, 'settings-guest-m360');
+  // 분류에서 한국을 끄면 장르 줄이 사라진다 → 다시 켬
+  await realClick(H, '[data-song-cat="kr"]');
+  await sleep(400);
+  res.settings.noKrGenres = await H.evaluate("document.querySelectorAll('[data-song-genre]').length");
+  await realClick(H, '[data-song-cat="kr"]');
+  await sleep(300);
+  await realClick(H, '[data-song-count-preset="5"]');
+  await sleep(300);
+  await appleOf(H, 'settings');
+
+  // ── 시작
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('[data-song-cover]') !== null", 15000).catch(() => false);
+  await sleep(400);
+  // 곡 1 — 0%
+  res.p0 = { h: await coverOf(H), g: await coverOf(G), hint: await hintOf(H), sound: await H.evaluate("document.querySelector('[data-song-sound]')?.dataset.songSound ?? null"), cat: await H.evaluate("document.querySelector('.q-head .badge.cat')?.innerText ?? ''") };
+  await snap(H, 'play-0-pc');
+  await snap(G, 'play-0-m360');
+  res.themes.push(['play m360', await over(G)]);
+  const it1 = sQ ? await itemOf(sQ.questionId) : null;
+  // 가수 → 본인 알림(채팅에 안 나감)
+  const chatBefore = await H.evaluate("document.querySelectorAll('.chat-line').length");
+  await say(G, it1?.artist ?? '');
+  await sleep(300);
+  res.artist = { notice: await G.evaluate("document.querySelector('[data-song-notice]')?.innerText ?? ''"), hostChatDelta: (await H.evaluate("document.querySelectorAll('.chat-line').length")) - chatBefore };
+  await snap(G, 'play-artist-m360');
+  // 50% — 15초 남음 → 초성
+  await H.waitFor("Number(document.querySelector('[data-song-cover]')?.dataset.progress ?? 0) >= 0.5", 20000).catch(() => false);
+  await sleep(400);
+  res.p50 = { h: await coverOf(H), hint: await hintOf(H), gHint: await hintOf(G) };
+  await snap(H, 'play-50-hint-pc');
+  await snap(G, 'play-50-hint-m360');
+  await H.setViewport(2560, 1440);
+  await sleep(400);
+  res.p50.big = await coverOf(H);
+  await snap(H, 'play-50-hint-2560');
+  await H.setViewport(1280, 720);
+  await sleep(300);
+  for (const th of ['office', 'night']) {
+    await theme(H, th);
+    await sleep(200);
+    await snap(H, `play-50-${th}-pc`);
+  }
+  await theme(H, 'pastel');
+  // 정답 — 방장이 채팅으로 제목 → 표지 100% + 강조 · 공개
+  const sysBefore = await H.evaluate("document.querySelectorAll('.chat-system').length");
+  await say(H, it1?.title ?? '');
+  await H.waitFor("document.querySelector('.reveal') !== null", 5000).catch(() => false);
+  await sleep(1600);
+  await say(H, '이 노래 완전 좋아요 🎉');
+  await sleep(500);
+  res.won = { h: await coverOf(H), g: await coverOf(G) };
+  res.reveal = JSON.parse(
+    await H.evaluate(
+      "JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', artist: document.querySelector('.song-reveal-text .song-artist')?.innerText ?? '', chips: [...document.querySelectorAll('.song-chips .badge')].map((e) => e.innerText), winner: document.querySelector('[data-song-winner]')?.innerText ?? '', ceremony: document.querySelector('.ceremony-msg')?.innerText ?? '', rate: !!document.querySelector('[data-song-rate]'), next: document.querySelector('.reveal-next')?.innerText ?? '', sys: document.querySelectorAll('.chat-system').length, lines: [...document.querySelectorAll('.chat-line')].map((e) => e.innerText).slice(-4) })",
+    ),
+  );
+  res.reveal.sysDelta = res.reveal.sys - sysBefore;
+  res.reveal.gWinner = await G.evaluate("document.querySelector('[data-song-winner]')?.innerText ?? ''");
+  // ★ 공개 중에도 채팅 입력칸이 화면 안(소감 · 뒷북을 칠 수 있게) — PC 1280×720 · 1536×864 · m360 (첫 그림에서 1280 이 밀려 나간 것을 잡는 검사)
+  const chatIn = (P) => P.evaluate("(() => { const i = document.querySelector('.chat-card input'); if (!i) return null; const b = i.getBoundingClientRect(); return Math.round(innerHeight - b.bottom); })()");
+  await sleep(500);
+  res.reveal.chatIn = { pc: await chatIn(H), m360: await chatIn(G) };
+  await H.setViewport(1536, 864);
+  await sleep(400);
+  res.reveal.chatIn.lap = await chatIn(H);
+  await snap(H, 'reveal-won-1536');
+  await H.setViewport(1280, 720);
+  await sleep(300);
+  await snap(H, 'reveal-won-pc');
+  await snap(G, 'reveal-won-m360');
+  res.themes.push(['reveal m360', await over(G)]);
+  // 평가 👎 → 노래 사유 칩
+  await realClick(G, '[data-song-rate] .fb-vote.down').catch(() => undefined);
+  await sleep(300);
+  res.reveal.reasons = await G.evaluate("[...document.querySelectorAll('[data-song-rate] [data-reason]')].map((e) => e.innerText).join(' | ')");
+  await realClick(G, '[data-song-rate] [data-reason="unknown"]').catch(() => undefined);
+  await sleep(400);
+  res.reveal.rateAsk = await G.evaluate("document.querySelector('[data-song-rate] .reveal-fb-ask')?.innerText ?? ''");
+  await snap(G, 'reveal-rate-m360');
+  await H.setViewport(2560, 1440);
+  await sleep(300);
+  await snap(H, 'reveal-won-2560');
+  await H.setViewport(1280, 720);
+  await appleOf(H, 'reveal');
+  // 곡 2 — 넘기기 투표(강조 없이 전부 공개)
+  await H.waitFor("document.querySelector('.reveal') === null && document.querySelector('[data-song-cover]') !== null", 15000).catch(() => false);
+  await sleep(500);
+  await realClick(H, '.skip-btn').catch(() => undefined);
+  await realClick(G, '.skip-btn').catch(() => undefined);
+  await H.waitFor("document.querySelector('.reveal') !== null", 5000).catch(() => false);
+  await sleep(1200);
+  res.skip = { h: await coverOf(H), winner: await H.evaluate("document.querySelector('.song-winner')?.innerText ?? ''") };
+  await snap(H, 'reveal-skip-pc');
+  // 나머지 3곡 — 방장 넘기기(확인 팝업)로 빨리
+  for (let i = 0; i < 3; i += 1) {
+    await H.waitFor("document.querySelector('.reveal') === null && document.querySelector('[data-song-cover]') !== null", 15000).catch(() => false);
+    await sleep(400);
+    S.emit('host.forceSkip', { epoch: sQ?.epoch }); // 방장이 아니라 거절 — 소켓 손님은 투표로
+    S.emit('skip.vote', { vote: true, epoch: sQ?.epoch });
+    await realClick(H, '.skip-btn').catch(() => undefined);
+    await H.waitFor("document.querySelector('.reveal') !== null", 5000).catch(() => false);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 20000).catch(() => false);
+  await sleep(600);
+  res.result = JSON.parse(await H.evaluate("JSON.stringify({ rank: document.querySelectorAll('.ranking li').length, songs: document.querySelectorAll('[data-song-row]').length, titles: [...document.querySelectorAll('.song-result-title')].map((e) => e.innerText), audio: document.querySelector('[data-song-audio]')?.getAttribute('src') ?? null })"));
+  await snap(H, 'result-pc');
+  await snap(G, 'result-m360');
+  res.themes.push(['result m360', await over(G)]);
+  await appleOf(H, 'result');
+  for (const [k, v] of Object.entries(res)) note(k, v);
+  writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r096', 'r096.json'), JSON.stringify(rows, null, 1));
+  const st = res.settings;
+  record('★★★ R096 설정 — 방식 [노래] · 곡 수 기본 10 · 분류 셋 · 연대 셋 + 20세기 명곡 · 한국 장르 9(트로트 0 흐림) · 칩 수 · 고른 범위 줄 · 퀴즈 · 미니게임 줄 숨김 · 한국 끄면 장르 줄 없음', Boolean(st && st.mode === 'true' && st.count === '10' && st.cats.length === 3 && st.decades.length === 4 && st.genres.length === 9 && st.genres.some((x) => /트로트 0\(흐림\)/.test(x)) && /고른 범위의 노래 \d+곡/.test(st.avail) && !st.mgRow && !st.qRow && st.noKrGenres === 0 && res.mobileSettings.over <= 1), JSON.stringify({ st, m: res.mobileSettings }));
+  record('★★★ R096 판 0% — 표지(600) 거의 가림 · 머리 "노래 맞히기" · 힌트 줄 = 초성 한 줄(잠김 15초) · PC 표지 ≈ 288~360px · m360 표지 ≤ 칸 너비', Boolean(res.p0?.h && res.p0.h.p < 0.1 && /600x600bb/.test(res.p0.h.img ?? '') && res.p0.cat === '노래 맞히기' && res.p0.hint.rows === 1 && res.p0.hint.label === '초성' && res.p0.h.w >= 250 && res.p0.h.w <= 361 && res.p0.g && res.p0.g.w <= 340), JSON.stringify(res.p0));
+  record('★★★ R096 가수 → 본인에게만 "가수 말고 제목" · 방장 채팅 줄 늘지 않음', Boolean(res.artist && /가수 말고 제목/.test(res.artist.notice) && res.artist.hostChatDelta === 0), JSON.stringify(res.artist));
+  record('★★★ R096 판 50% — 부채꼴 절반 · 15초 초성 열림(퀴즈 힌트 자리 · 방장 · 손님 같음) · 2560 표지 ≤ 360', Boolean(res.p50?.h && res.p50.h.p >= 0.49 && res.p50.h.p <= 0.62 && res.p50.hint.open && res.p50.hint.open === res.p50.gHint.open && res.p50.big.w <= 361), JSON.stringify(res.p50));
+  record('★★★ R096 정답 — 표지 100% + 강조(won) · 손님도 · 공개 제목 · 가수 · 칩 · "님이 n초 만에 맞혔어요 +1" · 소감 칸 · 평가 줄 · "N초 후 다음 곡" · 맞힌 글은 채팅에 안 나감(시스템 줄 +1)', Boolean(res.won?.h && res.won.h.p === 1 && res.won.h.won && res.won.g?.won && res.reveal.title === it1?.title && res.reveal.artist === it1?.artist && res.reveal.chips.length >= 2 && /맞혔어요/.test(res.reveal.winner) && /맞혔어요/.test(res.reveal.gWinner) && /좋아요/.test(res.reveal.ceremony) && res.reveal.rate && /다음 곡|^\s*$/.test(res.reveal.next) && res.reveal.sysDelta >= 1 && !res.reveal.lines.some((l) => l.endsWith(it1?.title ?? '\u0000'))), JSON.stringify({ won: res.won, reveal: res.reveal }));
+  record('★★★ R096 공개 중 채팅 입력칸이 화면 안 — PC 1280×720 · 1536×864 · m360(표지는 한 바퀴 뒤 한 단계 줄어든다)', Boolean(res.reveal.chatIn && [res.reveal.chatIn.pc, res.reveal.chatIn.lap, res.reveal.chatIn.m360].every((v) => typeof v === 'number' && v >= 0)), JSON.stringify(res.reveal.chatIn));
+  record('★★ R096 평가 — 👎 사유 = 노래용 넷(모르는 노래 · 너무 쉬움 · 표기 · 미리듣기) · 고르면 "고마워요"', Boolean(/모르는 노래/.test(res.reveal.reasons) && /미리듣기/.test(res.reveal.reasons) && /고마워요/.test(res.reveal.rateAsk)), JSON.stringify({ r: res.reveal.reasons, a: res.reveal.rateAsk }));
+  record('★★ R096 넘기기 — 표지 전부 공개 · 강조 없음 · "투표로 넘겼습니다"', Boolean(res.skip?.h && res.skip.h.p === 1 && !res.skip.h.won && /넘겼/.test(res.skip.winner)), JSON.stringify(res.skip));
+  record('★★★ R096 결과 — 순위 3 · 곡 목록 5(제목 공개) · 노래 멈춤', Boolean(res.result && res.result.rank === 3 && res.result.songs === 5 && res.result.titles.every((t) => t && t !== '(중단된 곡)')), JSON.stringify(res.result));
+  record('★★ R096 Apple 표기 0(설정 · 공개 · 결과) · m360 넘침 0', res.apple.every(([, a]) => !a) && res.themes.every(([, o]) => o <= 1), JSON.stringify({ apple: res.apple, t: res.themes }));
+  S.disconnect();
+}
+
 // ★★★ R095 — 실전 제보 3차 (D-352 · #116 캐치 초성 · 도구 아이콘 · 색 점 팝업 / #117 미니게임 판:채팅) (UICHECK_R095=1 · R095_TAG=before|after · 묶음 r095 · docs/design/r095)
 const R095_MG = `JSON.stringify((() => { const card = document.querySelector('.mg-card'); const chat = document.querySelector('.room .chat-card'); const center = document.querySelector('.center'); const R = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height), b: Math.round(r.bottom) }; }; return { card: R(card), chat: R(chat), center: R(center), vh: innerHeight, over: document.documentElement.scrollWidth - innerWidth }; })())`;
 async function r095Flow(browser) {
@@ -10502,6 +10682,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R093) {
     await closeAllTabs(browser);
     await r093Flow(browser);
+  }
+  // ★ R096 — 노래 맞히기 방식
+  if (process.env.UICHECK_R096) {
+    await closeAllTabs(browser);
+    await r096Flow(browser);
   }
   // ★ R095 — 실전 제보 3차(캐치 초성 · 도구 아이콘 · 색 점 팝업 · 미니게임 판:채팅)
   if (process.env.UICHECK_R095) {

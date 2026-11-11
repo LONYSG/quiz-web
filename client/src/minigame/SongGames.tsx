@@ -7,7 +7,7 @@
 //   재생 실패 → "미리듣기를 못 불러왔어요" + 서버에 한 번 보고({ fail: true } — 접속자 과반이면 그 곡 건너뜀).
 // ★ 노래 맞히기: 입력칸(Enter 마다) · 서버 답(나에게만)으로 ✓ 제목 / ✓ 가수 · 남의 답 안 보임.
 // ★ 이 노래 몇 년도?: 연도 4자리 · 바꿀 수 있음(마지막).
-// ★ 공개: 앨범 그림(artworkUrl100 → 300px 판) · 제목 · 가수 · 연도 · "Apple Music 미리듣기" — 판 중에는 그림 없음(정답 노출).
+// ★ 공개: 앨범 그림(artworkUrl100 → 300px 판) · 제목 · 가수 · 연도 · (R096 — "Apple Music 미리듣기" 표기는 뺐다) — 판 중에는 그림 없음(정답 노출).
 // =============================================================================
 
 import { useEffect, useRef, useState } from 'react';
@@ -271,7 +271,7 @@ export function SongReveal({ view, mine }: { view: MinigameView; mine: MinigameR
           <p className="song-year mono" data-song-year={String(rv.year ?? '')}>
             {String(rv.year ?? '')}년
           </p>
-          <p className="song-credit dim">Apple Music 미리듣기</p>
+          {/* ★ R096 — "Apple Music 미리듣기" 표기 뺌(찬종 2026-11-11 "완전히 빼" · 출처는 docs/18 §10 저작권 메모에만) */}
         </div>
       </div>
       {skipped ? (

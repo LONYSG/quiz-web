@@ -583,6 +583,8 @@ export default function Lobby({
   if (ceremonyWinner && snapshot.resolution && ceremonyFrom.current?.epoch !== snapshot.resolution.epoch) {
     let seq = Number.MAX_SAFE_INTEGER;
     for (const m of chat) if (m.accountId === ceremonyWinner) seq = m.seq;
+    // ★ R096 — 노래는 정답 글이 채팅에 안 나간다(시스템 줄) → 정답자 글이 없으면 지금까지의 마지막 줄부터(그 뒤 정답자 말이 소감)
+    if (seq === Number.MAX_SAFE_INTEGER && snapshot.resolution.song) seq = chat.reduce((mx, m) => Math.max(mx, m.seq), 0);
     ceremonyFrom.current = { epoch: snapshot.resolution.epoch, seq };
   }
   const ceremony = useMemo(() => {

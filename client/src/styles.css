@@ -11358,3 +11358,10 @@ button.preset.shake {
 [data-theme='office'] .song-cover img {
   filter: grayscale(1);
 }
+/* ★ R096 — 공개 때 키 작은 화면(PC 1280×720 · 1536×864 · 폰)은 표지를 한 단계 줄여 채팅 입력칸이 화면 안에 남게(한 바퀴 다 돈 뒤 줄어든다) */
+@media (max-height: 900px) {
+  .song-cover.done {
+    width: min(360px, 100%, 23vh);
+    transition: --song-p 650ms cubic-bezier(0.2, 0.7, 0.2, 1), width 320ms ease 620ms;
+  }
+}
