@@ -915,7 +915,7 @@ async function presetSeen(page) {
 async function signUp(page, suffix, nickname = null, { fresh = false } = {}) {
   await page.goto(BASE);
   if (!fresh) await presetSeen(page);
-  // ★ R097 — goto 는 고정 1.2초만 기다린다 → 무거운 판(긴 minigame 묶음 뒤 · 다른 검사와 겹침)에선 탭이 아직 안 그려져 "회원가입 탭 못 찾음" 이 났다(R094 · R096 메모) → 탭이 뜰 때까지 기다린다
+  // ★ R097 — goto 는 고정 1.2초만 기다린다 → 느린 판에서도 탭이 그려질 때까지 기다린다(M2-lab 의 진짜 원인은 쿠키 공유 — r051Lab)
   await page.waitFor(`[...document.querySelectorAll('button')].some((b) => b.innerText.trim() === '회원가입')`, 10000);
   const switched = await page.click('회원가입');
   if (!switched) throw new Error(`[${page.label}] 회원가입 탭을 찾지 못했다`);
@@ -2274,7 +2274,8 @@ async function spaceKey(page) {
   await page.send('Input.dispatchKeyEvent', { type: 'keyUp', key: ' ', code: 'Space', windowsVirtualKeyCode: 32, nativeVirtualKeyCode: 32 });
 }
 async function r051Lab(browser) {
-  const L = await newPage(browser, 'M2-lab');
+  // ★ R097 — 앞 M-lab 이 기본 브라우저 맥락에서 가입해 쿠키가 남는다 → 같은 맥락이면 BASE 가 곧장 홈(인증 화면 없음) = "회원가입 탭 못 찾음"(R094 · R096 메모). 따로 맥락
+  const L = await newPage(browser, 'M2-lab', true);
   await L.setViewport(1280, 720);
   await signUp(L, 'm2l', '그림점검둘');
   const scenes = [];
@@ -2725,7 +2726,7 @@ async function quizAnswerNumber(row) {
   return pr?.rows.find((x) => x.cc === row.payload.targetCc)?.krw ?? null;
 }
 async function r052Lab(browser) {
-  const L = await newPage(browser, 'M3-lab');
+  const L = await newPage(browser, 'M3-lab', true); // ★ R097 — 따로 맥락(앞 가입 쿠키면 인증 화면 없음)
   await L.setViewport(1280, 720);
   await signUp(L, 'm3l', '그림점검셋');
   const imgs = await withPg(async (c) =>
@@ -2925,7 +2926,7 @@ async function r052Flow(browser) {
 // -----------------------------------------------------------------------------
 const R053_GAMES = (process.env.MG_R053 ?? 'minority,oddone,gauge').split(',').filter(Boolean);
 async function r053Lab(browser) {
-  const L = await newPage(browser, 'M4-lab');
+  const L = await newPage(browser, 'M4-lab', true); // ★ R097 — 따로 맥락(앞 가입 쿠키면 인증 화면 없음)
   await L.setViewport(1280, 720);
   await signUp(L, 'm4l', '그림점검넷');
   const num = { minority: 80, oddone: 82, gauge: 83 };
@@ -3066,7 +3067,7 @@ async function r053Flow(browser) {
 // -----------------------------------------------------------------------------
 const R054_GAMES = (process.env.MG_R054 ?? 'balloon,tap').split(',').filter(Boolean);
 async function r054Lab(browser) {
-  const L = await newPage(browser, 'M5-lab');
+  const L = await newPage(browser, 'M5-lab', true); // ★ R097 — 따로 맥락(앞 가입 쿠키면 인증 화면 없음)
   await L.setViewport(1280, 720);
   await signUp(L, 'm5l', '그림점검다섯');
   const num = { balloon: 90, tap: 91 };
@@ -3669,7 +3670,7 @@ async function r057Flow(browser) {
 // ★★★ R060 — 어젯밤 버그 넷 그림 (UICHECK_R060=1 · 묶음 r060 · docs/design/r060)
 //   (가) 미니게임만 사이 문구 · (나) 긴 단위 줄바꿈 · (다) 이모티콘 바로 보내기 뒤 창 닫힘 · (라) 공동 1위
 async function r060Flow(browser) {
-  const L = await newPage(browser, 'R060-lab');
+  const L = await newPage(browser, 'R060-lab', true); // ★ R097 — 따로 맥락(앞 가입 쿠키면 인증 화면 없음)
   await L.setViewport(1280, 720);
   await signUp(L, 'r6', '둘이서점검');
   const lab = async (qs, dev, phase) => {
