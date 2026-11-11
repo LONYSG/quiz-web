@@ -102,6 +102,12 @@
 - **검사(⑫)**: 새 ui-check 묶음 **r087**(PC 5 + **FHD 125% = 1536×864 @1.25** · 모바일 3 · 세 테마 · 방장/손님 · 소켓 2) · r082 · r083 기대를 새 규칙에 맞춤(설명칸 · 채팅 옆 · 캔버스 ≥ 560) · 봇 liar(바퀴 · 시민 죽임 · 설명칸) · draw(힌트) · topicsets(G047/G048 세트 교체로 `all_s ≥ 파일 수`).
 - 되돌리기: 상수(`VOTE_BOUTS` · `REVOTES` · `CHUNK_MS` · `MINIGAME_ONLY_ROUNDS.MIN`) · `hidden` 플래그 · 커밋 revert.
 
+## DG-100. 노래 weak 45 비활성 · titleKo 변형 5 · genre 2 (G062 · 설계 브리핑 gen.md · V051 · 찬종 2026-11-11 · 파일만 · DB 쓰기 없음)
+- **찬종(2026-11-11)**: 레전드 엇갈림 3(Poison · I Just Called to Say I Love You · Celebration) = G061 대로 뺌 유지 · **weak 45 전부 비활성**(V051 동의 30 + 추가 15) · V051 반대 4(남자를 몰라 · 정이라고 하자 · HandClap · Hey Ya!) 활성 유지 · "채워질 때까지 플레이 안 할 거니까 안정적으로 데이터 검수해서 넣는 과정".
+- **적용**: 45 → `status: "inactive"` + `inactiveReason: "G062 #117 보편성 약함(찬종 2026-11-11)"` · titleVariants +5(쉐이프 오브 유 · 프로블럼 · 아일 비 미싱 유 · 아이오 츠타에타이다토카 · 휩래시 — titleKo 그대로 · inactive 곡도 넣음) · genre: song-0003 사랑했나봐 발라드 → OST · song-0148 사건의 지평선 록/밴드 → 발라드(genreWhy 갱신) · 불확실 3(0124 · 0132 · 0239) 그대로.
+- **결과**: 활성 252 → **207**(설계 예상 일치 · kr 157 · pop 30 · jpop 20) · inactive 85 · rejected 1 · `scripts/g061-song.mjs` 위반 0. 근거 `data/pipeline/audit/g062-song-decisions.json`(id · 전/후 status · 사유).
+- **되돌리기**: 곡마다 status verified + inactiveReason 지움 · 적재는 R096(새 칸 허용) 뒤 메뉴 1.
+
 ## DG-099. 노래 292 재분류 — 20세기 레전드 판정 · category · genre · titleKo (G061 · 설계 브리핑 gen.md · 찬종 실전 제보 #117 2026-11-10 · 찬종 레전드 기준 2026-11-11 · 파일만 · DB 쓰기 없음)
 - **찬종(#117)**: 노래 맞히기를 방 "방식"으로 · 한국(발라드 · 댄스 · 아이돌 등) · 팝송 · J-pop 세분화 · 10년 단위 · **21세기만** · 보편적으로 아는 곡 · 외국곡은 한글 발음 초성. 칸 정의 = 18 §10 ★ R096 데이터 칸.
 - **결과**: 20세기 63 → legend true 23(kr 11 · pop 10 · jpop 2 · legendWhy) · 40 `status: "inactive"` + `inactiveReason: "G061 #117 21세기만 — 레전드 아님"`(항목 그대로 · 되살리기 = status 를 verified 로 + legend true + legendWhy) · 활성 252(kr 187 · pop 37 · jpop 28) · kr genre 9종(아이돌 그룹 곡 = 아이돌 · 솔로·밴드 = 곡 성격) · pop(팝 · 록 · 힙합 · R&B · 댄스) · jpop(J-pop · 애니 OST) 전 곡 채움 · titleKo 292(비한글 제목 146 — G049 음차가 있으면 그것 · 없으면 표기법 꼴 · 다른 꼴은 titleVariants).

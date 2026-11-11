@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-11 — 노래 V051 반영 · weak 45 비활성 (G062, GEN · 파일만 · DB 0)
+- 무엇: V051 대조 + 찬종 결정 — data/minigame/song/items.json 만: weak 45 `inactive`(inactiveReason "G062 #117 보편성 약함") · titleVariants +5 · genre 2(사랑했나봐 → OST · 사건의 지평선 → 발라드). 레전드 3 · 반대 4 · 불확실 3 손대지 않음.
+- 문제: 없음(45 전부 verified 였음 · 변형 중복 0). 얇은 장르(kr R&B 8 · 포크/인디 8 · OST 10 · pop R&B 1 · 트로트 0)는 확대 G063 몫.
+- 검사: scripts/g061-song.mjs 위반 0 · 활성 207(설계 예상 일치). 결정 DG-100. 남은 것: R096 → 메뉴 1 적재.
+
 ## 2026-11-11 — 노래 292 재분류 (G061, GEN · 파일만 · DB 0)
 - 무엇: 찬종 제보 #117(노래 맞히기 = 방식 · 한국 세부 장르 · 팝송 · J-pop · 21세기만 · 외국곡 한글 발음 초성) — data/minigame/song/items.json 에 category · genre(+genreWhy) · titleKo · legend(+legendWhy) · inactiveReason. 20세기 63 중 레전드 23 · 나머지 40 inactive.
 - 문제: 지금 minigame-load 는 새 칸을 "모르는 칸"으로 거부 — R096 전에 메뉴 1 을 돌리면 노래 252 가 전부 쉬게 된다(데이터 손실 아님). 보고서 2절 결정 필요.
