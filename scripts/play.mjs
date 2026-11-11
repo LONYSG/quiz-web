@@ -332,7 +332,10 @@ async function main() {
     const lines = `${r.stdout ?? ''}`.split(String.fromCharCode(10)).map((l) => l.trim());
     const put = lines.find((l) => l.startsWith('[apply]'));
     const n = (g) => lines.find((l) => l.startsWith(`${g} `))?.trim().split(/\s+/).pop() ?? '?';
-    if (r.status === 0 && put) log(`노래 ${n('song')} · OX ${n('ox')} 적재 (${put.replace('[apply] ', '').split(' · 활성')[0]})`);
+    // ★ R096 (D-353) — "노래 n 활성 · m 쉼"([active] 줄) · exit 2 = 안전장치(넣을 것 0 — 아무것도 안 씀 · 노래는 지난 적재 그대로)
+    const act = (g) => lines.find((l) => l.startsWith(`[active] ${g} `))?.replace(`[active] ${g} `, '') ?? `넣음 ${n(g)}`;
+    if (r.status === 0 && put) log(`노래 ${act('song')} · OX ${act('ox')} 적재 (${put.replace('[apply] ', '').split(' · 활성')[0]})`);
+    else if (r.status === 2) log(`★ 노래 · OX 적재 멈춤(안전장치 — 넣을 것 0 인 게임 · DB 는 그대로): ${`${r.stderr ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
     else log(`★ 노래 · OX 적재 실패(서버는 그대로 뜬다 — 미니게임 '노래 맞히기 · 이 노래 몇 년도? · OX 10연속' 만 빠진다): ${`${r.stderr ?? ''}${r.stdout ?? ''}`.trim().split(String.fromCharCode(10)).pop()?.trim() ?? '?'}`);
   };
   // ★★ R090 (D-347 · 0035) — 객관식 5연속 저장 보기: data/minigame/choice/options.json(verified 만) → question_choices · 멱등 · 파일이 없으면 0. 실패해도 서버는 뜬다

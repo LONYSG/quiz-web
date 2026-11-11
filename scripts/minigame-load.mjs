@@ -9,6 +9,9 @@
 //   ★ G021: photoyear(18 §8)는 게임 코드가 없어 적재를 막았다 → ★ R068 게임을 만들고 GAMES_ALL 에 넣었다
 //   ★ R084: song(18 §10 — 노래 맞히기 · 이 노래 몇 년도? 가 같은 항목을 쓴다 · 그림 없음 · 소리는 previewUrl 스트리밍) 추가
 //   ★ R085: ox(18 §11 — OX 10연속 · 그림 없음 · 문장) 추가
+//   ★★ R096 (D-353): song 새 칸(category · genre · titleKo · legend …) 받음 · status 'inactive'(넣지 않음 → DB active=false · 지우지 않음) ·
+//     안전장치 — --apply 에서 넣을 것이 0 인 게임이 하나라도 있으면 아무것도 쓰지 않고 exit 2(옛: 그 게임 활성 행 전부 쉬게 함 — 데이터 형식이 깨지면 노래가 통째로 빠졌다 · G061)
+//     dry-run 도 DB 를 읽기만 해서 "쉬게 될 것"(지금 활성인데 이번에 안 넣는 것)을 센다(연결 못 하면 그 줄만 빠진다)
 //   [--allow-candidate]  candidate 도 넣는다 — ★ 검사 DB(quizweb_test · quizweb_dev) 또는 QUIZ_DEV_SERVER 만(실 quizweb 은 연결 전 exit 2 · topics-load 빗장 그대로)
 //
 // ★ 읽는 것: data/minigame/<game>/items*.json 전부(묶음 파일) + worldprice/products.json · 그림 assets/minigame/<game>/…
@@ -29,6 +32,8 @@ import { OX_FIELDS, OX_OPTIONAL, oxProblems } from './minigame-ox.mjs';
 import { candidateGate, dbNameOf } from './topics-load.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// ★ R096 — 검사(minigame-song.test)만 다른 폴더를 가리킨다(안전장치 exit 2 재현) · 평소에는 data/minigame
+const DATA_ROOT = process.env.MINIGAME_LOAD_DATA ? path.resolve(process.env.MINIGAME_LOAD_DATA) : path.join(ROOT, 'data/minigame');
 const args = process.argv.slice(2);
 const APPLY = args.includes('--apply');
 const MARK = args.includes('--mark');
@@ -55,7 +60,7 @@ const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const PRICE_CAT = ['식품', '생활', '가전', '패션', '뷰티', '취미', '자동차', '사치품', '해외', '기타'];
 const PHOTO_CAT = ['person', 'place', 'object', 'everyday', 'food', 'animal', 'logo'];
 const EST_KIND = ['weight', 'calorie', 'count', 'length', 'height', 'distance', 'population', 'year', 'speed', 'price', 'other'];
-const STATUS = ['candidate', 'verified', 'rejected', 'loaded'];
+const STATUS = ['candidate', 'verified', 'rejected', 'loaded', 'inactive'];
 // ★ R068 (찬종 10-26 ① · 서버 defs NEEDS_IMAGE 와 같은 규칙) — 사진이 있어야 하는 게임 · 필요한 장 수(어느 쪽? = 양쪽). 모자라면 적재하지 않는다
 const NEEDS_IMAGE = { price: 1, photo: 1, estimate: 1, which: 2, photoyear: 1 };
 const MIME = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp' };
@@ -147,7 +152,7 @@ const asOfOf = (g, it) => (g === 'price' ? it.priceAsOf : g === 'estimate' || g 
 // ── 읽기
 const products = new Map();
 const productImages = [];
-const pp = path.join(ROOT, 'data/minigame/worldprice/products.json');
+const pp = path.join(DATA_ROOT, 'worldprice/products.json');
 if (GAMES.includes('worldprice') && existsSync(pp)) {
   for (const x of JSON.parse(readFileSync(pp, 'utf8')).products) {
     products.set(x.productId, x);
@@ -161,10 +166,10 @@ const rejected = [];
 const noImage = [];
 const files = {};
 for (const g of GAMES) {
-  const dir = path.join(ROOT, 'data/minigame', g);
+  const dir = path.join(DATA_ROOT, g);
   if (!existsSync(dir)) continue;
   const list = readdirSync(dir).filter((f) => /^items(-\d+)?\.json$/.test(f)).sort();
-  const t = { game: g, files: list.join(' '), total: 0, verified: 0, candidate: 0, rejected: 0, loaded: 0, bad: 0, noImage: 0, put: 0 };
+  const t = { game: g, files: list.join(' '), total: 0, verified: 0, candidate: 0, rejected: 0, loaded: 0, inactive: 0, bad: 0, noImage: 0, put: 0 };
   const seen = new Set();
   for (const f of list) {
     const doc = JSON.parse(readFileSync(path.join(dir, f), 'utf8'));
@@ -241,8 +246,8 @@ if (ALLOW_CANDIDATE) {
   }
 }
 console.log(`[minigame-load] ${APPLY ? '★ 쓰기(--apply)' : 'dry-run (DB 를 쓰지 않는다)'} · DB ${dbNameOf(DB_URL)}${ALLOW_CANDIDATE ? ' · candidate 허용' : ''}`);
-console.log(`${pad('게임', 11)}${pad('파일', 14)}${pad('전체', 6)}${pad('verified', 9)}${pad('candidate', 10)}${pad('rejected', 9)}${pad('loaded', 7)}${pad('형식거부', 9)}${pad('그림없음', 9)}넣을 것`);
-for (const t of table) console.log(`${pad(t.game, 11)}${pad(t.files, 14)}${pad(t.total, 6)}${pad(t.verified, 9)}${pad(t.candidate, 10)}${pad(t.rejected, 9)}${pad(t.loaded ?? 0, 7)}${pad(t.bad, 9)}${pad(t.noImage, 9)}${t.put}`);
+console.log(`${pad('게임', 11)}${pad('파일', 14)}${pad('전체', 6)}${pad('verified', 9)}${pad('candidate', 10)}${pad('rejected', 9)}${pad('loaded', 7)}${pad('inactive', 9)}${pad('형식거부', 9)}${pad('그림없음', 9)}넣을 것`);
+for (const t of table) console.log(`${pad(t.game, 11)}${pad(t.files, 14)}${pad(t.total, 6)}${pad(t.verified, 9)}${pad(t.candidate, 10)}${pad(t.rejected, 9)}${pad(t.loaded ?? 0, 7)}${pad(t.inactive ?? 0, 9)}${pad(t.bad, 9)}${pad(t.noImage, 9)}${t.put}`);
 console.log(`합: 넣을 항목 ${rows.length} · 그림 ${new Set(rows.flatMap((r) => r.images.map((i) => i.imageId))).size + productImages.length} · 품목 ${products.size}`);
 if (rejected.length) console.log(`형식 거부 ${rejected.length}:\n  ${rejected.join('\n  ')}`);
 if (noImage.length) console.log(`그림 파일 없음(건너뜀) ${noImage.length}:\n  ${noImage.join('\n  ')}`);
@@ -256,12 +261,44 @@ if (MARK) {
       it.status = 'loaded';
       n += 1;
     }
-    if (n) writeFileSync(path.join(ROOT, 'data/minigame', k), JSON.stringify(doc, null, 1) + '\n'); // ★ G021 — 파일은 1칸 들여쓰기(GEN 이 쓴 꼴 그대로)
+    if (n) writeFileSync(path.join(DATA_ROOT, k), JSON.stringify(doc, null, 1) + '\n'); // ★ G021 — 파일은 1칸 들여쓰기(GEN 이 쓴 꼴 그대로)
     console.log(`[mark] ${k} loaded ${n}`);
   }
 }
 
-if (!APPLY) process.exit(0);
+// ★★ R096 (D-353) — 안전장치: 파일이 있는 게임인데 넣을 것이 0 → 그 게임 활성 행 전부를 쉬게 하게 된다(데이터 형식이 깨졌을 때) → 쓰지 않고 exit 2
+const emptyGames = table.filter((t) => t.total > 0 && t.put === 0).map((t) => t.game);
+// 쉬게 할 대상 = 표에 있는(파일이 있는) 게임만(파일 폴더가 없는 게임은 건드리지 않는다)
+const OFF_GAMES = table.map((t) => t.game);
+const putIds = rows.map((r) => r.id);
+
+// ── ★ R096 — 쉬게 될 것(지금 DB 활성 · 이번에 안 넣음) · 게임별 활성 수(dry-run 은 읽기만 — 연결 못 하면 이 줄만 빠진다)
+async function offPreview(client) {
+  const r = await client.query(`SELECT game, count(*)::int n FROM minigame_items WHERE game = ANY($1) AND active AND NOT (item_id = ANY($2)) GROUP BY game ORDER BY game`, [OFF_GAMES, putIds]);
+  return r.rows;
+}
+const putOf = (g) => table.find((t) => t.game === g)?.put ?? 0;
+if (!APPLY) {
+  try {
+    const c = new pg.Client({ connectionString: DB_URL, connectionTimeoutMillis: 3000 });
+    await c.connect();
+    try {
+      const off = await offPreview(c);
+      const offOf = (g) => off.find((x) => x.game === g)?.n ?? 0;
+      for (const t of table) console.log(`[preview] ${t.game} 활성 ${putOf(t.game)} · 쉼 ${offOf(t.game)}(지금 DB 활성인데 이번에 안 넣는 것) · 파일 inactive ${t.inactive} · rejected ${t.rejected}`);
+    } finally {
+      await c.end();
+    }
+  } catch (err) {
+    console.log(`[preview] DB 를 읽지 못해 "쉬게 될 것" 은 못 셈(${err.message})`);
+  }
+  if (emptyGames.length) console.log(`★ 넣을 것 0 인 게임: ${emptyGames.join(' · ')} — --apply 는 exit 2 로 멈춘다(안전장치 · R096)`);
+  process.exit(0);
+}
+if (emptyGames.length) {
+  console.error(`[minigame-load] ★ 거부: 넣을 것 0 인 게임 ${emptyGames.join(' · ')} — 이대로 쓰면 그 게임 활성 행을 전부 쉬게 한다(데이터 형식 확인 · 형식 거부 목록 위) · 아무것도 쓰지 않음`);
+  process.exit(2);
+}
 
 const db = new pg.Client({ connectionString: DB_URL });
 await db.connect();
@@ -299,11 +336,15 @@ try {
     );
   }
   // 이번에 넣지 않은 항목(파일에서 빠짐 · verified 아님) → 쉬게 한다(지우지 않는다)
-  const off = await db.query(`UPDATE minigame_items SET active=false WHERE game = ANY($1) AND active AND NOT (item_id = ANY($2)) RETURNING item_id`, [GAMES, rows.map((r) => r.id)]);
+  // ★ R096 — 쉬게 할 대상은 파일이 있는 게임만(OFF_GAMES) · 파일 status inactive 항목도 여기서 쉬게 된다(지우지 않는다)
+  const off = await db.query(`UPDATE minigame_items SET active=false WHERE game = ANY($1) AND active AND NOT (item_id = ANY($2)) RETURNING item_id, game`, [OFF_GAMES, putIds]);
   await db.query('COMMIT');
   const after = await db.query(`SELECT game, count(*)::int n FROM minigame_items WHERE active GROUP BY game ORDER BY game`);
   const imgs = await db.query(`SELECT count(*)::int n, coalesce(sum(bytes),0)::bigint b FROM minigame_images`);
   console.log(`[apply] 넣음 ${rows.length} · 쉬게 함 ${off.rowCount} · 활성 ${after.rows.map((x) => `${x.game} ${x.n}`).join(' · ')} · 그림 ${imgs.rows[0].n}장 ${(Number(imgs.rows[0].b) / 1048576).toFixed(1)}MB`);
+  // ★ R096 — 게임별 "활성 n · 쉼 m"(쉼 = 파일 상태로 DB 에서 쉬는 행 전체 — 이번에 쉬게 한 것 포함) — 메뉴 1 적재 줄이 이 줄을 보여 준다
+  const inact = await db.query(`SELECT game, count(*) FILTER (WHERE active)::int a, count(*) FILTER (WHERE NOT active)::int z FROM minigame_items WHERE game = ANY($1) GROUP BY game ORDER BY game`, [OFF_GAMES]);
+  for (const x of inact.rows) console.log(`[active] ${x.game} 활성 ${x.a} · 쉼 ${x.z}`);
 } catch (err) {
   await db.query('ROLLBACK');
   console.error('[apply] ★ 실패 — 되돌림:', err.message);
