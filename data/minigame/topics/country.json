@@ -1,10 +1,10 @@
 {
  "topic": "country",
  "nameKo": "나라 이름",
- "scope": "유엔 회원국 193개 나라 · 줄임말도 됩니다",
+ "scope": "유엔 회원국 193개 나라 + 대만 · 바티칸 · 팔레스타인 · 코소보 · 줄임말도 됩니다",
  "kind": "closed",
- "version": 4,
- "asOf": "2026-11-08",
+ "version": 5,
+ "asOf": "2026-11-13",
  "createdRound": "G036",
  "status": "verified",
  "source": [
@@ -12,6 +12,11 @@
    "url": "https://ko.wikipedia.org/wiki/유엔_회원국",
    "note": "★ 조각이 페이지를 받지 않고 대부분 지식으로 작성(G036) — V039 가 이 페이지로 대조 필요 · 유엔 회원국 193 (옵서버 팔레스타인 · 바티칸 제외) — 한국 외교부/ko.wikipedia 표기 · 콩고 둘은 콩고민주공화국/콩고공화국 · 키프로스·아르메니아·아제르바이잔·조지아 = 아시아, 러시아 = 유럽, 튀르키예 = 아시아, 중미·카리브 = 북아메리카. 에이전트 지식으로 작성(WebFetch 대조 안 함)",
    "fetchedAt": "2026-11-08"
+  },
+  {
+   "url": "https://ko.wikipedia.org/wiki/유엔_회원국",
+   "note": "G063 찬종 결정(제보 #126) — 유엔 비회원 4(대만 · 바티칸 · 팔레스타인 · 코소보) 더함 · 표기는 외교부/ko.wikipedia 통용꼴",
+   "fetchedAt": "2026-11-13"
   }
  ],
  "liar": false,
@@ -20,7 +25,7 @@
  "tags": [
   "지리"
  ],
- "count": 193,
+ "count": 197,
  "items": [
   {
    "id": "country-001",
@@ -2230,6 +2235,61 @@
    "draw": false,
    "liar": false,
    "qid": 7124
+  },
+  {
+   "id": "country-194",
+   "name": "대만",
+   "variants": [
+    "타이완",
+    "중화민국"
+   ],
+   "tags": [
+    "아시아"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "country-195",
+   "name": "바티칸",
+   "variants": [
+    "바티칸 시국",
+    "교황청"
+   ],
+   "tags": [
+    "유럽"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "country-196",
+   "name": "팔레스타인",
+   "variants": [
+    "팔레스타인국",
+    "팔레스타인 자치정부"
+   ],
+   "tags": [
+    "아시아"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
+  },
+  {
+   "id": "country-197",
+   "name": "코소보",
+   "variants": [
+    "코소보 공화국"
+   ],
+   "tags": [
+    "유럽"
+   ],
+   "draw": false,
+   "liar": false,
+   "qid": null
   }
  ],
  "verify": {
@@ -2395,6 +2455,16 @@
     "why": "유엔 회원국 표 193 = 파일 193, 이름 일치 189 + 한국 통용 표기 4(변형으로 수용)"
    }
   ],
-  "appliedRound": "G046"
+  "appliedRound": "G046",
+  "pending": {
+   "round": "G063",
+   "items": [
+    "country-194",
+    "country-195",
+    "country-196",
+    "country-197"
+   ],
+   "note": "찬종 결정으로 더한 4 — 다음 VERIFY 가 표기 · 변형 대조(verified 유지 · fixes 3 이하 규칙과 같은 취지)"
+  }
  }
 }
