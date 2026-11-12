@@ -66,8 +66,8 @@ const log = (m) => console.log(`[play ${hms()}] ${m}`);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const rel = (p) => path.relative(ROOT, p).replace(/\\/g, '/');
 
-function sh(cmd, { quiet = false, check = true, cwd = ROOT } = {}) {
-  const r = spawnSync(cmd, { cwd, shell: true, stdio: quiet ? 'pipe' : 'inherit', encoding: 'utf8' });
+function sh(cmd, { quiet = false, check = true, cwd = ROOT, env = process.env } = {}) {
+  const r = spawnSync(cmd, { cwd, shell: true, stdio: quiet ? 'pipe' : 'inherit', encoding: 'utf8', env });
   if (check && r.status !== 0) {
     if (quiet) process.stderr.write((r.stdout ?? '') + (r.stderr ?? ''));
     throw new Error(`실패: ${cmd}`);
@@ -391,7 +391,14 @@ async function main() {
     else {
       if (args.has('--no-build')) log(`★ --no-build 인데 ${pick.switched ? '코드가 바뀜' : 'dist 가 없음'} → 빌드합니다`);
       log(`빌드 중… (shared → server → client · ${HERE ? '이 트리' : '플레이 트리'})`);
-      sh('npm run build', { cwd: TREE });
+      // ★★ R098 (D-355) — 빌드는 늘 NODE_ENV=production. 위 loadEnvFile 이 .env 의 NODE_ENV=development 를 이 프로세스에 넣어
+      //   실 서버 화면이 **개발용 React**(StrictMode 이중 실행 · jsxDEV)로 빌드되고 있었다 → 노래 방식 판 곡이 붙자마자 꺼짐(찬종 2026-11-12 "소리 안 남").
+      //   검사(ui-check · 봇)는 늘 운영용 빌드로 돌았으므로 실 서버만 다른 화면을 내고 있었다. 서버 실행(npm start)의 NODE_ENV 는 그대로 둔다.
+      sh('npm run build', { cwd: TREE, env: { ...process.env, NODE_ENV: 'production' } });
+      // ★ R098 — 막는 확인: 화면 묶음에 개발용 React 표시(jsxDEV)가 있으면 띄우지 않는다(검사는 운영용으로 돌므로 실 서버만 달라진다)
+      const assets = path.join(TREE, 'client', 'dist', 'assets');
+      const devJs = readdirSync(assets).filter((f) => f.endsWith('.js') && readFileSync(path.join(assets, f), 'utf8').includes('jsxDEV'));
+      if (devJs.length) throw new Error(`화면이 개발용으로 빌드됐다(jsxDEV — ${devJs.join(', ')}) · NODE_ENV 를 확인하라`);
       log('빌드 끝');
     }
     loadTopics();

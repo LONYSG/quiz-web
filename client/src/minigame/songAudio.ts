@@ -20,9 +20,12 @@ const STALL_MS = 8_000;
 let el: HTMLAudioElement | null = null;
 let unlocked = false;
 let installed = false;
-let state: { url: string | null; status: SongStatus; volume: number; unlocked: boolean } = { url: null, status: 'idle', volume: readVolume(), unlocked: false };
+/** ★ R098 — issue: 마지막 실패 까닭('error:2' · 'stall' · 'reject:NotSupportedError' …) — 재현 기록용(ui-check 가 읽는다) */
+let state: { url: string | null; status: SongStatus; volume: number; unlocked: boolean; issue: string | null } = { url: null, status: 'idle', volume: readVolume(), unlocked: false, issue: null };
 let stallTimer = 0;
 let wantOffsetSec = 0;
+/** ★ R098 — 재생 시도 번호. 앞 시도의 play() 결과(늦게 오는 AbortError 등)가 새 시도의 막힘 타이머 · 상태를 건드리지 않게 */
+let playSeq = 0;
 const subs = new Set<() => void>();
 
 function readVolume(): number {
@@ -84,7 +87,7 @@ export function songEl(): HTMLAudioElement {
     }
   });
   el.addEventListener('error', () => {
-    if (state.url && el?.getAttribute('src') === state.url) fail();
+    if (state.url && el?.getAttribute('src') === state.url) fail(`error:${el?.error?.code ?? '?'}`);
   });
   el.addEventListener('loadedmetadata', () => {
     if (!el || !state.url || el.getAttribute('src') !== state.url) return;
@@ -100,9 +103,9 @@ export function songEl(): HTMLAudioElement {
   return el;
 }
 
-function fail(): void {
+function fail(issue: string): void {
   clearTimeout(stallTimer);
-  set({ status: 'failed' });
+  set({ status: 'failed', issue });
 }
 
 /** ★ 조작 안에서 부른다 — 요소를 연다(비어 있을 때만 무음 · 곡이 걸려 있으면 그 곡을 다시 튼다) */
@@ -138,9 +141,10 @@ export function installSongUnlock(): void {
 
 function startPlay(a: HTMLAudioElement): Promise<void> {
   clearTimeout(stallTimer);
+  const seq = ++playSeq;
   set({ status: 'loading' });
   stallTimer = window.setTimeout(() => {
-    if (state.status === 'loading') fail();
+    if (seq === playSeq && state.status === 'loading') fail('stall');
   }, STALL_MS);
   const p = a.play();
   if (!p) return Promise.resolve();
@@ -150,12 +154,42 @@ function startPlay(a: HTMLAudioElement): Promise<void> {
       if (!state.unlocked) set({ unlocked: true });
     },
     (err: unknown) => {
+      // ★ R098 — 앞 시도의 늦은 거절은 무시한다(옛 코드는 여기서 새 시도의 막힘 타이머까지 지웠다 → 'loading' 에 영영 머묾 · 보고도 없음)
+      if (seq !== playSeq) return;
       clearTimeout(stallTimer);
       const name = (err as { name?: string } | null)?.name;
-      if (name === 'NotAllowedError') set({ status: 'blocked' });
-      else if (name !== 'AbortError') fail();
+      if (name === 'NotAllowedError') set({ status: 'blocked', issue: 'reject:NotAllowedError' });
+      else if (name !== 'AbortError') fail(`reject:${name ?? '?'}`);
     },
   );
+}
+
+/**
+ * ★★ R098 — [▶ 듣기] 버튼(조작 안에서 부른다). 옛 버튼은 unlockSongAudio() 만 불러
+ *   ① 곡이 안 걸려 있으면(idle — url 없음) 무음만 틀고 끝났고 ② 실패한 요소(error)에 play() 만 다시 걸어 곧장 또 거절됐고
+ *   → 둘 다 "눌러도 안 남". 이제: 이 곡을 걸고(없으면) · 실패했으면 다시 불러오고(load) · 판에서 흐른 초로 옮겨 본 뒤 튼다.
+ *   ★ 남은 것: 막혔다 늦게 누르면 여전히 곡 처음(0초)부터 나온다(R098 실측 — 옮기기가 안 먹음 · 원인 미확인 · 13-PENDING).
+ */
+export function retrySong(url: string, offsetSec = 0): void {
+  const a = songEl();
+  wantOffsetSec = offsetSec;
+  if (a.getAttribute('src') !== url) {
+    a.src = url;
+    set({ url, issue: null });
+  } else {
+    if (state.url !== url) set({ url });
+    if (a.error || state.status === 'failed') {
+      a.load();
+      set({ issue: null });
+    } else if (a.readyState >= 1 && Number.isFinite(a.duration) && offsetSec < a.duration && Math.abs(a.currentTime - offsetSec) > 1.5) {
+      try {
+        a.currentTime = offsetSec;
+      } catch {
+        // 못 옮기면 그 자리에서
+      }
+    }
+  }
+  void startPlay(a);
 }
 
 /** 곡 틀기 — offsetSec = 판 시작부터 흐른 초(늦게 들어온 사람은 그 자리부터) */
@@ -165,7 +199,7 @@ export function playSong(url: string, offsetSec = 0): void {
   wantOffsetSec = offsetSec;
   if (a.getAttribute('src') !== url) {
     a.src = url;
-    set({ url });
+    set({ url, issue: null });
   } else if (state.url !== url) set({ url });
   void startPlay(a);
 }
@@ -173,6 +207,7 @@ export function playSong(url: string, offsetSec = 0): void {
 /** 멈춤(준비 · 최종 · 나감) */
 export function stopSong(): void {
   clearTimeout(stallTimer);
+  playSeq += 1;
   if (el) {
     el.pause();
     if (state.url) {

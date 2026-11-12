@@ -17,7 +17,7 @@ import { Headphones, Music, Play, Volume2 } from 'lucide-react';
 import Icon from './Icon.js';
 import Avatar from './Avatar.js';
 import { sfx, setMusicMode } from './sound.js';
-import { installSongUnlock, playSong, setSongVolume, stopSong, unlockSongAudio, useSongAudio } from './minigame/songAudio.js';
+import { installSongUnlock, playSong, retrySong, setSongVolume, stopSong, useSongAudio } from './minigame/songAudio.js';
 
 export interface SongPlayView {
   previewUrl: string;
@@ -74,10 +74,16 @@ export function SongPlay({
   const reported = useRef<number | null>(null);
   const startedFor = useRef<number | null>(null);
   // 곡이 바뀌면 그 곡을 튼다(늦게 들어온 사람 · 재접속은 흐른 초부터) · 공개 동안은 계속 흐른다(다음 곡이 오면 바뀐다)
+  // ★★ R098 — 정리(cleanup)에서 표시를 지운다. 옛 코드는 표시가 남아, 효과가 떼였다 다시 붙으면(React 개발 빌드의 StrictMode 이중 실행 —
+  //   그 사이 부모 useSongMusicQuiet 정리가 stopSong) "이미 틀었음" 으로 건너뛰어 곡이 꺼진 채 남았다(실 서버 소리 없음의 원인).
+  //   같은 곡이 이미 나오는 중이면 playSong 이 스스로 건너뛴다.
   useEffect(() => {
     if (!active || startedFor.current === epoch) return;
     startedFor.current = epoch;
     playSong(song.previewUrl, Math.max(0, (progress * song.durationMs) / 1000));
+    return () => {
+      startedFor.current = null;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [epoch, active, song.previewUrl]);
   // 재생 실패 → 서버에 한 번(곡 진행 중 · 이 곡)
@@ -89,6 +95,9 @@ export function SongPlay({
 
   const blocked = active && st.status === 'blocked';
   const failed = active && st.status === 'failed' && st.url === song.previewUrl;
+  // ★★ R098 — 버튼은 "누르면 무언가 되는" 때만: 막힘 · 실패(다시) · 이 곡이 안 걸려 있음(idle 등).
+  //   옛 조건(!unlocked && status !== 'playing')은 불러오는 중 · 실패 때도 버튼을 띄워 실패 글자를 가렸고, 누르면 아무 일도 없었다
+  const needTap = active && (blocked || failed || st.url !== song.previewUrl || (!st.unlocked && st.status === 'idle'));
   const p = outcome ? 1 : Math.max(0, Math.min(1, progress));
   return (
     <div className="song-play">
@@ -107,22 +116,28 @@ export function SongPlay({
         </p>
       )}
       <div className={`song-sound${blocked ? ' blocked' : ''}`} data-song-sound={st.status} data-song-unlocked={st.unlocked ? '1' : '0'}>
-        {blocked || (!st.unlocked && st.status !== 'playing') ? (
+        {failed && (
+          <span className="song-state" data-song-state>
+            <Icon icon={Headphones} /> 미리듣기를 못 불러왔어요
+          </span>
+        )}
+        {needTap ? (
           <button
             type="button"
             className="primary song-listen"
             data-song-listen
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
-              unlockSongAudio();
+              // ★ R098 — 이 곡을 판에서 흐른 초부터(실패면 다시 불러와서) — 옛 unlockSongAudio() 는 곡이 안 걸려 있으면 무음만 틀었다
+              retrySong(song.previewUrl, Math.max(0, (progress * song.durationMs) / 1000));
               sfx('mg-tap');
             }}
           >
-            <Icon icon={Play} /> 듣기
+            <Icon icon={Play} /> {failed ? '다시 듣기' : '듣기'}
           </button>
         ) : (
           <span className="song-state" data-song-state>
-            <Icon icon={Headphones} /> {failed ? '미리듣기를 못 불러왔어요' : st.status === 'playing' ? '듣는 중' : st.status === 'loading' ? '불러오는 중…' : ''}
+            <Icon icon={Headphones} /> {st.status === 'playing' ? '듣는 중' : st.status === 'loading' ? '불러오는 중…' : ''}
           </span>
         )}
         <label className="song-vol">

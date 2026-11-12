@@ -10,6 +10,14 @@
 
 ---
 
+## D-355. 실 서버 화면이 개발용 React 로 빌드되던 것 → 노래 방식 판 곡이 붙자마자 꺼짐 · 빌드 NODE_ENV=production 고정 + 개발용이면 띄우지 않음 · SongPlay 효과 다시 붙어도 다시 틂 · [▶ 듣기] 가 이 곡을 다시 튼다 (R098 · 찬종 2026-11-12 밤 실전 "PC 전부 소리 안 남")
+- 원인(재현): `scripts/play.mjs` 가 `.env` 를 process.env 에 읽어 들인다(loadEnvFile) → `.env` 의 `NODE_ENV=development` 가 플레이 트리 `npm run build` 로 넘어가 Vite 가 **개발용 묶음**(jsxDEV · React StrictMode 이중 실행)을 만들었다. 실 3000 묶음 jsxDEV 2,385곳 · 이 트리(손으로 빌드) 0곳.
+  StrictMode 가 Question 을 붙였다 떼었다 다시 붙이는 사이: SongPlay 효과 playSong → 부모 useSongMusicQuiet 정리 stopSong(AbortError · url 없음 · idle) → 다시 붙을 때 `startedFor === epoch` 라 건너뜀 → 곡이 꺼진 채 [▶ 듣기] · 누르면 unlockSongAudio 가 url 이 없어 무음만 틀고 헤드셋 빈칸(찬종 답 그대로). 개발용 빌드 + 혼자 방으로 재현 → 고친 뒤 같은 개발용 빌드에서 playing · 12.4초 흐름.
+  미니게임 노래(SongGames)는 효과에 이런 표시가 없어 다시 붙을 때 다시 틀었다 → 11-10 에 들렸던 것과 맞다. 검사(ui-check · 봇)는 늘 운영용 빌드로 돌아 실 서버만 다른 화면이었다.
+- 고침: ① play.mjs 빌드 = `NODE_ENV=production`(서버 실행 NODE_ENV 는 그대로) + 빌드 뒤 client/dist 에 jsxDEV 가 있으면 멈춤 ② SongPlay 효과 정리에서 표시를 지움(다시 붙으면 다시 틂 — 같은 곡이 나오는 중이면 playSong 이 건너뜀) ③ [▶ 듣기] = `retrySong`(이 곡을 걸고 · 실패면 load() 로 다시 불러오고 · 흐른 초로 옮겨 본 뒤 튼다 — 옛 unlockSongAudio 는 곡이 없으면 무음만) ④ 버튼은 막힘 · 실패 · 곡이 안 걸림 때만 · 실패 때 "미리듣기를 못 불러왔어요" + [다시 듣기](옛 조건은 실패 글자를 가렸다) ⑤ playSeq — 앞 시도의 늦은 play() 거절이 새 시도의 막힘 타이머를 지우지 않게.
+- 남은 것: 막혔다 늦게 누르면 곡이 처음부터(옮기기가 안 먹음 · 원인 미확인 — A123 ④). 폰 못 봄.
+- 되돌리기: 커밋 revert(DB 0 · 데이터 0).
+
 ## D-354. 검사 정리 — 낡은 기대 7건을 지금 규칙으로 · `npm run song:feedback` (R097 · R096 끝 점검 3절)
 - 무엇: R096 끝 점검의 `npm run verify` 단계별 실패 7건(social 2 · leave 1 · spam 1 · minigame 3)을 하나씩 재현했다. **전부 낡은 기대 또는 검사 쪽 결함(쿠키 공유)** — 게임 코드 결함 0 · 게임 규칙 · 화면 변경 0.
   - spam A 이모티콘 "6번째 안내" — D-314(R071)가 이모티콘 도배 제한을 기본 끔 → 기대 = 6번째도 가고 안내 없음(켜는 줄 `EMOJI_RATE_LIMIT=1` 은 봇 emojilimit 몫 그대로).

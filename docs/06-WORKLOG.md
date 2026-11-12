@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-11-13 — 노래 방식 판 소리 없음 (R098, MAIN · D-355)
+- 무엇: 찬종 실전(11-12 밤 · PC 4대) + 11-13 0시 찬종 혼자 판 "▶ 듣기 눌러도 안 남" 재현 → 원인 = 실 서버 화면이 개발용 React 로 빌드(play.mjs 가 .env NODE_ENV=development 를 빌드에 넘김) → StrictMode 이중 실행에서 SongPlay 가 곡을 다시 안 틂. scripts/play.mjs(빌드 NODE_ENV=production · jsxDEV 막음) · client/src/SongStage.tsx · client/src/minigame/songAudio.ts.
+- 재현: tmp/r098/repro.mjs(헤드풀 Chrome 157 · CDP 진짜 클릭) — 운영용 빌드 7조건(1280 · 2560 · 터널 https · --autoplay · 손님 클릭 · 새 주소 · 혼자 · 두 판 잇달아) 전부 정상 → 실 3000 묶음이 jsxDEV → 개발용 빌드 + 혼자 방에서 idle + 버튼 · 누르면 무음 재현 · 고친 뒤 개발용 · 운영용 둘 다 playing.
+- 검사: typecheck · vitest 773 · build · npm run verify(R098.txt 3절).
+- 남은 것: 늦게 누르면 곡 처음부터(A123 ④) · 폰 못 봄.
+
 ## 2026-11-11 — 검사 정리 · song:feedback (R097, MAIN · D-354)
 - 무엇: R096 끝 점검 verify 실패 7건 재현 → 전부 낡은 기대 · 검사 타이밍. scripts/ui-check.mjs 기대 고침(spam A D-314 · leave E D-323 · social B D-262 프로필 카드 · minigame E 12종 D-286 · 케이크 목표 D-261 · signUp 탭 기다림) · `scripts/song-feedback.mjs` + `npm run song:feedback`.
 - 문제: social B 낡은 기대가 예외를 내 그 묶음 뒷부분(방장 카드 · C-1 · C-2 …)이 R063 뒤로 안 돌고 있었다 — "61 중 59" 가 실제보다 좋아 보였다.

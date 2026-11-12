@@ -1,0 +1,96 @@
+R098 — 노래 방식 판 소리 없음(PC 전부) — 재현 · 원인 · 고침 (D-355) — MAIN · 2026-11-13
+
+-------------------------------------------
+0. ★ 찬종이 볼 것
+-------------------------------------------
+ - 원인 한 줄: **실 서버(3000) 화면이 '개발용'으로 빌드되고 있었다.** 메뉴 1 의 빌드가 .env 의 NODE_ENV=development 를 그대로 받아,
+   React 가 화면을 "붙였다 떼었다 다시 붙이는" 점검을 실 서버에서도 했고, 그때 노래 판이 곡을 끈 뒤 다시 틀지 않았다.
+   (검사들은 늘 운영용 빌드로 돌아서 못 잡았다. 미니게임 노래는 구조가 달라 다시 틀어서 11-10 엔 들렸다.)
+ - 찬종 답("▶ 듣기 → 누르면 헤드셋 아이콘 · 소리 없음")이 그대로 재현됐다 = 곡이 꺼진 상태에서 버튼이 무음만 튼 것.
+ - 고친 것
+   ① 실 서버 빌드는 이제 늘 운영용(NODE_ENV=production) · 빌드에 개발용 흔적이 있으면 서버를 띄우지 않고 멈춘다.
+   ② 노래 판이 다시 붙어도 곡을 다시 튼다(개발용 빌드에서도 소리 남 — 확인함).
+   ③ [▶ 듣기] 는 이제 "이 곡"을 직접 다시 튼다(옛 버튼은 곡이 꺼져 있으면 무음만).
+   ④ 미리듣기를 못 불러오면 "미리듣기를 못 불러왔어요" + [다시 듣기](옛 화면은 이 글자를 버튼이 가렸다).
+ - ★ 찬종 확인할 것(13 A123): **메뉴 3 → 1 [1]** 뒤 PC 로 노래 판 한 곡 — 방장은 곡이 뜨자마자 들리는지,
+   링크로 들어온 친구는 ▶ 듣기 한 번에 들리는지. (실제 소리는 내가 못 듣는다 — 상태 'playing' · 시간 흐름까지만 확인)
+ - 남은 것: 막혔다가 늦게 ▶ 듣기를 누르면 곡이 **처음(0초)부터** 나온다(표지 · 초성은 판 시간대로). 원인 못 찾음 — 고치지 않았다.
+   폰(iOS Safari · Android Chrome)은 못 봤다.
+ - 메뉴 3 → 1 [1]: 화면 코드가 바뀌었으니 빌드가 다시 돈다. 끝 줄에 "빌드 끝" 이 보이면 된다.
+   ("화면이 개발용으로 빌드됐다" 줄이 보이면 그대로 설계에게.)
+
+-------------------------------------------
+1. 재현 기록 (브리프 A)
+-------------------------------------------
+도구: tmp/r098/repro.mjs — 헤드풀 Chrome 157.0.8103.52(찬종 제보 UA 와 같은 157) · 창마다 따로 맥락 · CDP 진짜 클릭 ·
+      play()/pause() 를 감싸 결과 · 부른 곳 기록 · 미리듣기 요청 상태 · Content-Type 기록. 로그 tmp/r098/repro-*.log.
+
+1-1. 데이터 · 서버 쪽(설계 확인 다시 봄)
+ - song-0169(거리에서 · 김광석) 미리듣기 = Chrome 에서 206 audio/x-m4p · loadedmetadata → canplay → playing · 5초 동안 4.76초 흐름.
+ - Referer 없음 · localhost · trycloudflare 셋 다 206(CDN 이 주소로 막지 않음).
+ - 11-12 판(games 2228): 14:01:10 ~ 14:01:38(28초) · 곡 1 · force_ended · song.fail 로그 0.
+   ★ 서버는 실패 보고를 과반이 될 때만 로그에 남긴다 → "로그 0" 은 "실패 0" 이 아니었다(이번엔 실패가 아니라 idle 이었다).
+ - 11-13 0시 찬종 혼자 판(방 "22" · 4463 · song-0159): 실패 보고 · 넘김 0 → 화면이 'failed' 까지 안 감 = 곡이 걸린 적 없음.
+
+1-2. 운영용 빌드(이 트리 · npm run build) — 7조건 전부 **정상**(재현 안 됨)
+ | 조건 | 방장 | 손님(링크로 들어옴 · 조작 없음) |
+ |---|---|---|
+ | 1280×720 · localhost | idle(0.3초) → loading → playing · t 흐름 | blocked(NotAllowedError) → ▶ 듣기 → playing |
+ | 2560×1313 | 같음 | 같음 |
+ | 2560 · 터널 https(dev 3001 을 잠깐 열고 닫음) | 같음 | 같음 |
+ | --autoplay-policy=no-user-gesture-required | playing | playing(버튼 없이) |
+ | 손님이 로비에서 한 번 클릭 | playing | playing |
+ | 손님 새 주소(빈 localStorage) | playing | blocked → 듣기 → playing |
+ | 방장 혼자 · 한 판 끝내기 → 로비로 → 두 번째 판 | 두 판 다 playing | — |
+ data-song-sound 순서(정상): idle → loading → playing · unlocked 0 → 1 · readyState 0 → 4 · paused false · volume 0.7 · muted false · console 오류 0.
+
+1-3. 실 3000 이 내보내는 묶음 확인 → 원인
+ - 실 3000 의 index-DHFFEPCs.js 에 **jsxDEV 2,385곳** · fileName "C:/work/quiz-web-play/..." · "Download the React DevTools" 안내 = 개발용 빌드.
+   이 트리 손 빌드 = 0곳. client/src/main.tsx 는 <StrictMode>.
+ - scripts/play.mjs 42행 process.loadEnvFile('.env') → 두 트리 .env 모두 NODE_ENV=development 줄 1개(값만 셈 · 파일은 안 열어 봄) →
+   394행 sh('npm run build') 가 그 env 를 받음 → Vite 개발용 묶음.
+ - 이 트리를 NODE_ENV=development 로 빌드 → 혼자 방 · 노래 판:
+     +3.5s data-song-sound=idle · unlocked 0 · [▶ 듣기] · src "" ·
+     play(곡) = **AbortError: The play() request was interrupted by a call to pause()** · pause() 부른 곳 = stopSong(useSongMusicQuiet 정리)
+   ▶ 듣기(진짜 클릭) → src = data:audio/wav(무음) · status idle · unlocked 1 · 글자 "" (= 헤드셋 아이콘만) · 소리 없음.
+   ★ 찬종 답과 같은 모양 — 재현.
+ - 흐름: StrictMode 가 Question 을 붙임 → SongPlay 효과 playSong(곡) · startedFor = epoch → (가짜로 뗌) 부모 정리 stopSong → 곡 꺼짐 ·
+   url 없음 → (다시 붙임) SongPlay 효과 startedFor === epoch → 건너뜀. 미니게임 SongSound 는 효과에 이런 표시가 없어 다시 틀었다.
+
+1-4. 브리프 후보 ⓐ~ⓕ
+ ⓐ NotSupportedError(audio/x-m4p) — 아님(206 · 재생 정상) ⓑ playSong 조기 return — 아님(url 이 비어 있어 안 걸림)
+ ⓒ 효과 순서 · stopSong 이 cleanup 에서 — **맞음**(StrictMode 정리) ⓓ 버튼이 아무것도 안 하는 경로 — **맞음**(url 없을 때 무음만)
+ ⓔ playing 비교 · ⓕ offset 넘침 — 아님.
+
+-------------------------------------------
+2. 고침
+-------------------------------------------
+ - scripts/play.mjs: 빌드만 env NODE_ENV=production(서버 실행 env 그대로) · 빌드 뒤 client/dist/assets/*.js 에 jsxDEV 가 있으면 throw("화면이 개발용으로 빌드됐다").
+ - client/src/SongStage.tsx: SongPlay 효과 정리에서 startedFor 를 지움(다시 붙으면 다시 틂) · 버튼 = 막힘 · 실패 · 이 곡이 안 걸림 · (조작 전 idle) 때만 ·
+   누르면 retrySong(이 곡, 흐른 초) · 실패 때 "미리듣기를 못 불러왔어요" + [다시 듣기] · unlockSongAudio import 뺌.
+ - client/src/minigame/songAudio.ts: retrySong(곡을 걸고 · error/failed 면 load() · 메타가 있으면 흐른 초로 옮겨 봄 · startPlay) ·
+   playSeq(앞 시도의 늦은 거절이 새 시도의 8초 막힘 타이머를 지우던 것 막음) · state.issue(실패 까닭).
+ 고친 뒤 재현 절차 다시:
+ - 개발용 빌드 · 혼자: loading → **playing** · t 0.1 → 12.4초 흐름.
+ - 운영용 빌드 · 2560 · 방장 + 손님: 방장 loading → playing(0.3초) · 손님 blocked → ▶ 듣기 → playing · t 0.6 → 6.3초.
+ - 미리듣기 주소 막음(Network.setBlockedURLs): failed · "미리듣기를 못 불러왔어요" + 버튼 보임(옛: 글자 가려짐) · [다시 듣기] → load() 후 다시 시도 → failed(막혀 있으니 맞음) ·
+   서버 dev 로그 "곡 n 넘김 — 미리듣기 실패 2/2명".
+ 판단: 브리프는 "맞는 것 하나만"이었으나 원인이 두 겹(빌드 + 그 빌드에서 깨지는 효과)이라 둘 다 고쳤다 — 빌드만 고치면 같은 코드가 다음에 개발용으로 돌 때 또 깨지고,
+       효과만 고치면 실 서버가 검사와 다른 화면을 계속 낸다. 다른 화면에 개발용 전용 분기(import.meta.env) 0 — 운영용 빌드로 바뀌어도 동작 차이는 React 점검이 빠지는 것뿐.
+
+-------------------------------------------
+3. 끝 점검 · 못 본 것
+-------------------------------------------
+ - typecheck 통과 · vitest 56 파일 773 통과 · npm run build 통과(묶음 jsxDEV 0).
+ - npm run verify: (아래 3-1)
+ - 못 본 것: 폰(iOS Safari · Android Chrome) · 실제로 귀에 들리는지(찬종) · 미니게임 노래(SongGames)는 숨김이라 같은 Chrome 판을 안 돌렸다(구조상 영향 없음 — 효과에 표시 없음 ·
+   이번 고침은 retrySong 을 방식 판 버튼에만 씀).
+ - 남은 결함: 막혔다 늦게 누르면 곡 처음부터(retrySong 의 currentTime 옮기기가 안 먹음 · 'playing' 때 옮기기도 시험했으나 효과 없어 뺐다 · 원인 미확인).
+ - 검사 구멍: 검사는 운영용 빌드만 본다 → play.mjs 빌드 뒤 jsxDEV 막음이 그 구멍을 메운다(실 서버 빌드가 개발용이면 띄우지 않음).
+
+3-1. npm run verify
+ - **한 번에 끝까지 통과**(단계 나눔 없음 · EXIT 0): vitest 773 · smoke 12/12 · ui-check 446/446 · sound 5/5 · social 157/157 · leave 28/28 ·
+   spam 19/19 · shop 32/32 · copy 15/15 · devices 9/9 · minigame 146/146.
+3-2. 봇: `node scripts/bot.mjs song --url http://localhost:3400` 16/16 통과(미리듣기 실패 과반 넘김 · 결과 · 기록).
+   ★ 봇 전체(SCENARIOS)는 **안 돌렸다** — 서버 · 게임 규칙 변경 0 이고 찬종이 플레이를 기다려서 노래 봇 하나만. 통과로 치지 않는다.
+3-3. 재현 도구 tmp/r098/repro.mjs 는 tmp(커밋 안 함) — 같은 증상이 다시 오면 `node tmp/r098/repro.mjs --solo --vp 2560x1313` .
