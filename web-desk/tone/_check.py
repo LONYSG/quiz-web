@@ -38,9 +38,11 @@ def check(nn):
         L = len(q)
         if L > 230 or L > len(o[2]) * 1.6 + 15 or L < len(o[2]) * 0.6: fl.append(u'길이 %d→%d' % (len(o[2]), L))
         if re.search(u'(이다|했다|한다|된다)\. ', q): fl.append(u'~다 말투')
-        if r.get('form') == 'line' and len(q) > 70 and u', ' in q: fl.append(u'긴 한 문장 %d자' % len(q))
+        if r.get('form') == 'line' and len(q) > 82: fl.append(u'긴 한 문장 %d자' % len(q))
+        if r.get('form') in ('short', 'long') and len(o[2]) < 62 and not re.search(u'\? \S', o[2]) and o[2].count('. ') == 0: fl.append(u'짧은데 풀었음 %d자' % len(o[2]))
         if fl: bad.append((r['id'], fl, q))
-    out = [u'조각 %s: %d/%d · 빠짐 %d · 더함 %d · %s · 깃발 %d' % (nn, len(R), len(src), len(miss), len(extra), dict((u'%s/%s' % k, v) for k, v in c.items()), len(bad))]
+    _it = sum(1 for r in R if re.search(u'(가|이) 있습니다\. ', (r.get('question') or '')[:90]) and r.get('form') in ('short', 'long'))
+    out = [u'조각 %s: %d/%d · 빠짐 %d · 더함 %d · %s · "~있습니다" 시작 %d · 깃발 %d' % (nn, len(R), len(src), len(miss), len(extra), dict((u'%s/%s' % k, v) for k, v in c.items()), _it, len(bad))]
     for b in bad: out.append(u'  #%s %s | %s' % (b[0], u' · '.join(b[1]), b[2][:90]))
     for r in R:
         if r.get('verdict') == 'discard': out.append(u'  폐기 #%s %s — %s | 정답 %s' % (r['id'], r.get('reason'), r.get('note'), src.get(r['id'], ['']*4)[3]))
