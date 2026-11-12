@@ -27,7 +27,7 @@
   .hint { color:var(--sub); font-size:13.5px; margin:0 0 12px; }
   label.c { display:flex; gap:10px; padding:11px 12px; border:1px solid var(--line); border-radius:10px; margin-top:8px; cursor:pointer; }
   label.c:has(input:checked) { border-color:var(--pick); background:var(--pickbg); }
-  label.c input { margin-top:6px; accent-color:var(--pick); flex:none; }
+  label.c input { margin-top:6px; width:16px; height:16px; accent-color:var(--pick); flex:none; }
   .k { font-weight:700; color:var(--sub); flex:none; width:1.1em; }
   .t { overflow-wrap:anywhere; }
   .w { display:block; margin-top:4px; font-size:12.5px; color:var(--warn); background:var(--warnbg); border-radius:6px; padding:2px 8px; width:fit-content; }
@@ -47,7 +47,7 @@
   <button class="main" id="save">결과 파일로 저장</button>
 </div></header>
 <main>
-  <p class="how">문항마다 <b>게임 화면에 띄우고 싶은 질문 하나</b>를 골라 주세요. 누가 쓴 것인지는 가려져 있고, 원문도 후보에 섞여 있습니다. 고르기 어려우면 아래의 "비슷함"이나 "전부 별로"를 누르면 됩니다. 고른 것은 이 브라우저에 자동으로 남으니 나눠서 해도 됩니다. 주황색 표시는 기계 검사가 "원문에 있던 숫자나 인용이 빠졌다"고 본 후보입니다(참고만).</p>
+  <p class="how">문항마다 <b>게임 화면에 띄우고 싶은 질문</b>을 골라 주세요. <b>마음에 드는 것이 여럿이면 여러 개</b>를 골라도 됩니다. 누가 쓴 것인지는 가려져 있고, 원문도 후보에 섞여 있습니다. 고르기 어려우면 아래의 "비슷함"이나 "전부 별로"를 누르면 됩니다. 고른 것은 이 브라우저에 자동으로 남으니 나눠서 해도 됩니다. 주황색 표시는 기계 검사가 "원문에 있던 숫자나 인용이 빠졌다"고 본 후보입니다(참고만).</p>
   <div id="list"></div>
 </main>
 <footer>
@@ -65,29 +65,36 @@ list.innerHTML = DATA.map(q => `
   <section class="q" id="q${q.n}">
     <div class="head"><span class="no">${q.n} / ${DATA.length}</span><span class="ans">정답: ${esc(q.answer)}</span></div>
     <p class="hint">힌트(10초 뒤에 뜨는 것): ${esc(q.hint)}</p>
-    ${q.cands.map(c => `<label class="c"><input type="radio" name="p${q.n}" value="${c.k}"><span class="k">${c.k}</span><span class="t">${esc(c.text)}${c.warn.map(w => `<span class="w">${esc(w)}</span>`).join('')}</span></label>`).join('')}
+    ${q.cands.map(c => `<label class="c"><input type="checkbox" name="p${q.n}" value="${c.k}"><span class="k">${c.k}</span><span class="t">${esc(c.text)}${c.warn.map(w => `<span class="w">${esc(w)}</span>`).join('')}</span></label>`).join('')}
     <div class="etc">
-      <label><input type="radio" name="p${q.n}" value="same">비슷함 — 못 고르겠음</label>
-      <label><input type="radio" name="p${q.n}" value="none">전부 별로</label>
+      <label><input type="checkbox" name="p${q.n}" value="same">비슷함 — 못 고르겠음</label>
+      <label><input type="checkbox" name="p${q.n}" value="none">전부 별로</label>
     </div>
     <textarea data-n="${q.n}" placeholder="한마디(안 써도 됨) — 예: B 는 너무 김"></textarea>
   </section>`).join('');
 function paint() {
   let done = 0;
   for (const q of DATA) {
-    const v = (S[q.n] || {}).pick;
-    if (v) { done++; const el = document.querySelector(`input[name="p${q.n}"][value="${v}"]`); if (el) el.checked = true; }
-    document.getElementById('q' + q.n).classList.toggle('done', !!v);
+    const v = picks(q.n);
+    if (v.length) done++;
+    document.querySelectorAll(`input[name="p${q.n}"]`).forEach(el => { el.checked = v.includes(el.value); });
+    document.getElementById('q' + q.n).classList.toggle('done', v.length > 0);
     const ta = document.querySelector(`textarea[data-n="${q.n}"]`);
     if (ta && ta.value === '' && (S[q.n] || {}).memo) ta.value = S[q.n].memo;
   }
   document.getElementById('cnt').textContent = `${done} / ${DATA.length} 고름`;
   document.getElementById('pb').style.width = (100 * done / DATA.length) + '%';
 }
+function picks(n) { const p = (S[n] || {}).pick; return Array.isArray(p) ? p : (p ? [p] : []); }
 function keep() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 list.addEventListener('change', e => {
-  if (e.target.type !== 'radio') return;
-  const n = e.target.name.slice(1); S[n] = Object.assign({}, S[n], { pick: e.target.value }); keep(); paint();
+  if (e.target.type !== 'checkbox') return;
+  const n = e.target.name.slice(1), val = e.target.value;
+  let v = picks(n);
+  if (!e.target.checked) v = v.filter(x => x !== val);
+  else if (val === 'same' || val === 'none') v = [val];            // 이 둘은 혼자만
+  else v = v.filter(x => x !== 'same' && x !== 'none').concat(val); // 후보는 여러 개 가능
+  S[n] = Object.assign({}, S[n], { pick: v }); keep(); paint();
 });
 list.addEventListener('input', e => {
   if (e.target.tagName !== 'TEXTAREA') return;
