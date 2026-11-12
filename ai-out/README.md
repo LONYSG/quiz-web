@@ -76,6 +76,7 @@
 | V049.txt | ★ **라이어 새 주제 5 전수 판정** VERIFY — 181 항목 · fool 543 · 교체 50(9.2%) · remove 0 · verified 1(카페) · candidate 4 · 주제별 소견(길거리 약함) · C128 · CV-183~184 |
 | V051.txt | ★ **노래 2차 정리 대조** VERIFY — 293 항목(keep 280 · fix 10 · unsure 3) · 레전드 63 동의 60(엇갈림 3) · titleKo 위반 0 · 변형 5 · genre 틀림 2 · weak 45 · 웹 0 · C136 |
 | V052.txt | ★ **gpt 다듬기 시범 2조각(06 · 07) 전수 검수** VERIFY — 199 · ok 180 · fix 4 · taste 9 · 재구성 쪽 3 · fact 3 원문 맞음 · 블라인드 93.6% · C138 · CV-188 |
+| V053.txt | ★ **gpt 재구성-01 19 + 다듬기 조각-08~12 표본 50 · rebuild 22 검수** VERIFY — 재구성 적재 가능 19(fix 2) · reject 0 · 출처 false 0 · 블라인드 18/19 · 표본 ok 43 · fix 2 · 재구성 쪽 2 · fact 7 = 원문 틀림 4 · 맞음 3 · C140 · CV-189 |
 
 ## GEN 라운드 (문제 생성 세션 · `Gnnn.txt`)
 
