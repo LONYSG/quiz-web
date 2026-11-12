@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>블라인드 평가</title>
+<style>
+  :root { --bg:#f6f5f1; --card:#fff; --ink:#1d1c1a; --sub:#6b6860; --line:#dedbd2; --pick:#1f6f5c; --pickbg:#e4f2ee; --warn:#a4491f; --warnbg:#fbeee6; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161614; --card:#201f1c; --ink:#eceae4; --sub:#9c988d; --line:#34322d; --pick:#6fd0b6; --pickbg:#1d332d; --warn:#f0a070; --warnbg:#3a2418; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 "Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif; }
+  header { position:sticky; top:0; z-index:2; background:var(--bg); border-bottom:1px solid var(--line); padding:10px 16px; }
+  .bar { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .bar b { font-size:15px; }
+  .prog { flex:1; min-width:120px; height:6px; background:var(--line); border-radius:3px; overflow:hidden; }
+  .prog i { display:block; height:100%; width:0; background:var(--pick); }
+  button { font:inherit; font-size:14px; padding:6px 12px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink); cursor:pointer; }
+  button.main { background:var(--pick); border-color:var(--pick); color:#fff; }
+  @media (prefers-color-scheme: dark) { button.main { color:#10201c; } }
+  main { max-width:860px; margin:0 auto; padding:16px; }
+  .how { color:var(--sub); font-size:14px; margin:4px 0 18px; }
+  .q { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:18px; }
+  .q.done { border-color:var(--pick); }
+  .head { display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin-bottom:10px; }
+  .no { color:var(--sub); font-size:13px; font-variant-numeric:tabular-nums; }
+  .ans { font-weight:700; }
+  .hint { color:var(--sub); font-size:13.5px; margin:0 0 12px; }
+  label.c { display:flex; gap:10px; padding:11px 12px; border:1px solid var(--line); border-radius:10px; margin-top:8px; cursor:pointer; }
+  label.c:has(input:checked) { border-color:var(--pick); background:var(--pickbg); }
+  label.c input { margin-top:6px; accent-color:var(--pick); flex:none; }
+  .k { font-weight:700; color:var(--sub); flex:none; width:1.1em; }
+  .t { overflow-wrap:anywhere; }
+  .w { display:block; margin-top:4px; font-size:12.5px; color:var(--warn); background:var(--warnbg); border-radius:6px; padding:2px 8px; width:fit-content; }
+  .etc { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .etc label { font-size:14px; color:var(--sub); border:1px dashed var(--line); border-radius:999px; padding:4px 12px; cursor:pointer; }
+  .etc label:has(input:checked) { border-style:solid; border-color:var(--pick); color:var(--ink); background:var(--pickbg); }
+  .etc input { display:none; }
+  textarea { width:100%; margin-top:10px; font:inherit; font-size:14px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--ink); min-height:38px; resize:vertical; }
+  footer { max-width:860px; margin:0 auto; padding:0 16px 60px; color:var(--sub); font-size:14px; }
+  #out { display:none; width:100%; min-height:120px; margin-top:10px; }
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <b>블라인드 평가</b><span id="cnt" class="no"></span>
+  <div class="prog"><i id="pb"></i></div>
+  <button class="main" id="save">결과 파일로 저장</button>
+</div></header>
+<main>
+  <p class="how">문항마다 <b>게임 화면에 띄우고 싶은 질문 하나</b>를 골라 주세요. 누가 쓴 것인지는 가려져 있고, 원문도 후보에 섞여 있습니다. 고르기 어려우면 아래의 "비슷함"이나 "전부 별로"를 누르면 됩니다. 고른 것은 이 브라우저에 자동으로 남으니 나눠서 해도 됩니다. 주황색 표시는 기계 검사가 "원문에 있던 숫자나 인용이 빠졌다"고 본 후보입니다(참고만).</p>
+  <div id="list"></div>
+</main>
+<footer>
+  다 고른 뒤 위의 <b>결과 파일로 저장</b>을 누르면 <code>평가-결과.json</code> 이 내려받아집니다. 그 파일을 <code>ai-talk/blind/</code> 폴더에 넣고 설계 창에 "blind 결과"라고 해 주세요. 저장이 안 되면 아래 글상자의 내용을 복사해 같은 이름의 파일로 만들어도 됩니다.
+  <textarea id="out" readonly></textarea>
+</footer>
+<script>
+const DATA = /*DATA*/[];
+const KEY = 'quiz-web-blind-20261112';
+let S = {};
+try { S = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { S = {}; }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const list = document.getElementById('list');
+list.innerHTML = DATA.map(q => `
+  <section class="q" id="q${q.n}">
+    <div class="head"><span class="no">${q.n} / ${DATA.length}</span><span class="ans">정답: ${esc(q.answer)}</span></div>
+    <p class="hint">힌트(10초 뒤에 뜨는 것): ${esc(q.hint)}</p>
+    ${q.cands.map(c => `<label class="c"><input type="radio" name="p${q.n}" value="${c.k}"><span class="k">${c.k}</span><span class="t">${esc(c.text)}${c.warn.map(w => `<span class="w">${esc(w)}</span>`).join('')}</span></label>`).join('')}
+    <div class="etc">
+      <label><input type="radio" name="p${q.n}" value="same">비슷함 — 못 고르겠음</label>
+      <label><input type="radio" name="p${q.n}" value="none">전부 별로</label>
+    </div>
+    <textarea data-n="${q.n}" placeholder="한마디(안 써도 됨) — 예: B 는 너무 김"></textarea>
+  </section>`).join('');
+function paint() {
+  let done = 0;
+  for (const q of DATA) {
+    const v = (S[q.n] || {}).pick;
+    if (v) { done++; const el = document.querySelector(`input[name="p${q.n}"][value="${v}"]`); if (el) el.checked = true; }
+    document.getElementById('q' + q.n).classList.toggle('done', !!v);
+    const ta = document.querySelector(`textarea[data-n="${q.n}"]`);
+    if (ta && ta.value === '' && (S[q.n] || {}).memo) ta.value = S[q.n].memo;
+  }
+  document.getElementById('cnt').textContent = `${done} / ${DATA.length} 고름`;
+  document.getElementById('pb').style.width = (100 * done / DATA.length) + '%';
+}
+function keep() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+list.addEventListener('change', e => {
+  if (e.target.type !== 'radio') return;
+  const n = e.target.name.slice(1); S[n] = Object.assign({}, S[n], { pick: e.target.value }); keep(); paint();
+});
+list.addEventListener('input', e => {
+  if (e.target.tagName !== 'TEXTAREA') return;
+  const n = e.target.dataset.n; S[n] = Object.assign({}, S[n], { memo: e.target.value }); keep();
+});
+document.getElementById('save').addEventListener('click', () => {
+  const text = JSON.stringify({ saved: new Date().toISOString(), total: DATA.length, picks: S }, null, 1);
+  const out = document.getElementById('out'); out.style.display = 'block'; out.value = text;
+  try {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+    a.download = '평가-결과.json'; document.body.appendChild(a); a.click(); a.remove();
+  } catch (e) {}
+});
+paint();
+</script>
+</body>
+</html>
