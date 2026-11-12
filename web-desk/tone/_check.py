@@ -38,6 +38,7 @@ def check(nn):
         L = len(q)
         if L > 230 or L > len(o[2]) * 1.6 + 15 or L < len(o[2]) * 0.6: fl.append(u'길이 %d→%d' % (len(o[2]), L))
         if re.search(u'(이다|했다|한다|된다)\. ', q): fl.append(u'~다 말투')
+        if r.get('form') == 'line' and len(q) > 70 and u', ' in q: fl.append(u'긴 한 문장 %d자' % len(q))
         if fl: bad.append((r['id'], fl, q))
     out = [u'조각 %s: %d/%d · 빠짐 %d · 더함 %d · %s · 깃발 %d' % (nn, len(R), len(src), len(miss), len(extra), dict((u'%s/%s' % k, v) for k, v in c.items()), len(bad))]
     for b in bad: out.append(u'  #%s %s | %s' % (b[0], u' · '.join(b[1]), b[2][:90]))
