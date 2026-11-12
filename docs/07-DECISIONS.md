@@ -133,6 +133,13 @@
 
 ## DG-099. 노래 292 재분류 — 20세기 레전드 판정 · category · genre · titleKo (G061 · 설계 브리핑 gen.md · 찬종 실전 제보 #117 2026-11-10 · 찬종 레전드 기준 2026-11-11 · 파일만 · DB 쓰기 없음)
 - **찬종(#117)**: 노래 맞히기를 방 "방식"으로 · 한국(발라드 · 댄스 · 아이돌 등) · 팝송 · J-pop 세분화 · 10년 단위 · **21세기만** · 보편적으로 아는 곡 · 외국곡은 한글 발음 초성. 칸 정의 = 18 §10 ★ R096 데이터 칸.
+## DG-101. 말투 다듬기 첫 적용 — 문장 고르기 순서 · 힌트/해설 끝말 규칙 · dev 갈라진 문항 건너뜀 (G064 · 설계 브리핑 gen.md · V052 · V053 · 찬종 결정 2026-11-12 · DB 쓰기 · 두 DB)
+- **문장 고르기(위가 이김)**: 재구성-01(V053 고친 문장 우선) > V052/V053 fix · fact→다듬기 문장 > 결과-06~12 rewrite. 재구성-02 21 · 이미 비활성은 싣지 않음. 정본 `data/pipeline/tone/g064-apply.json`(칸마다 before/after · kind ending|rewrite).
+- **끝말**: 힌트 · 해설의 문장 끝 "~다." 만 합쇼체로(이다→입니다 · ㄴ다→ㅂ니다 · 았/었다→았/었습니다 · 체언+다→입니다 · 는다→습니다) — 뜻 · 낱말 그대로 · `scripts/g064-ending.mjs`. 끝말만 바꾼 힌트는 general_hint_version 그대로, 다시 쓴 힌트만 hint-v7.
+- **GEN 판단**: #7167 새 질문에서 '우주' 가 빠져 옛 힌트가 H2 막힘 → 힌트에서 '우주' 만 뺌 · #19 데날리(2025 연방 매킨리로 되돌림) · #30 모형 색(출처 못 엶) 뺌 · #708 무중력 변형 안 넣음(질문이 무중력을 부정).
+- **dev**: quizweb_dev 는 275문항(옛 힌트 216칸 · 질문 22 · 비활성 42)이 실과 달라 그 문항은 통째로 건너뜀(`--skip-diff`) — 실 685 · 1,485칸 / dev 410 · 864칸. dev 를 실과 맞출지는 설계.
+- **되돌리기**: `node scripts/g064-apply.mjs --undo` (dev 는 `--db quizweb_dev --undo`) · `audit/g064-undo-quizweb.json` · `g064-undo-quizweb_dev.json`.
+
 - **결과**: 20세기 63 → legend true 23(kr 11 · pop 10 · jpop 2 · legendWhy) · 40 `status: "inactive"` + `inactiveReason: "G061 #117 21세기만 — 레전드 아님"`(항목 그대로 · 되살리기 = status 를 verified 로 + legend true + legendWhy) · 활성 252(kr 187 · pop 37 · jpop 28) · kr genre 9종(아이돌 그룹 곡 = 아이돌 · 솔로·밴드 = 곡 성격) · pop(팝 · 록 · 힙합 · R&B · 댄스) · jpop(J-pop · 애니 OST) 전 곡 채움 · titleKo 292(비한글 제목 146 — G049 음차가 있으면 그것 · 없으면 표기법 꼴 · 다른 꼴은 titleVariants).
 - **GEN 판단(되돌리기 쉽다)**: 장르는 멜론 페이지를 열지 않은 **지식 근거**(판단 곡은 `genreWhy`) · DAY6 · QWER = 밴드(아이돌 아님) · 씨야 · 2AM · 하이포 · god = 아이돌 · 다비치 · 포맨 · 코요태 = 아이돌 아님 · 드라마 OST 로 만든 곡 = OST · titleKo 꼴: APT. → 아파트(노래에서 부르는 소리) · METEOR → 메테오(미티어는 변형) · Hype Boy → 하이프 보이(하입 보이는 변형) · REBEL HEART → 레블 하트 · 시루엣/실루엣 같은 일본어 외래어는 한국 통용 꼴(실루엣 · 마리골드) · 한글 제목은 title 그대로(titleVariants 에 다시 넣지 않음 — 검사는 title 또는 titleVariants).
 - **알려진 구멍(MAIN 몫)**: 지금 `minigame-load.mjs` 는 새 칸을 "모르는 칸"으로 거부 → **R096(또는 SONG_OPTIONAL 한 줄) 전에 메뉴 1 을 돌리면 song 252 전부 형식 거부 → DB 노래 전부 쉬게 됨**(play.mjs loadSongs · 다음 적재 때 되살아남 · 데이터 손실 없음). `inactive` 도 loader STATUS 목록에 없음(loadableStatus 에서 먼저 걸러져 문제는 안 됨).
