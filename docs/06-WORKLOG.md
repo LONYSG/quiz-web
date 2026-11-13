@@ -11,7 +11,7 @@
 ## 2026-11-13 — 평가 없앰 · 겹치면 무효 여러 답 · 노래 가림막 불투명 (R099, MAIN · D-356)
 - 무엇: 찬종 폼(#126 #127 · 11-13 가림막) — 평가 입력 전부 삭제(목록 + 제보는 남김) · unique = 15초 여러 답 · 겹친 항목 전원 0 · 판 점수 = 안 겹친 정답 수 · 가림막 --mask-bg 불투명.
 - 같이 찾은 결함: 사무실 테마에서 가림막 · 흑백이 지워져 표지가 다 보임(R096~) · 다음 곡 첫 그림에 앞 곡 남은 시간이 쓰여 표지 90% 노출(Question remainMs ↔ endsAt 짝).
-- 검사: typecheck · vitest 761 · build · ui-check r096 11/11 · r080 10/10 · 봇 70/71(mgduo 메모리 부족으로 멈춤) · verify 못 돌림(R099.txt 4절).
+- 검사: 봇 71/71 · npm run verify 단계별 전부 통과 · ui-check 묶음 r096 · r080 · r056 · r068 · r071 · r064 · r073 통과(R099.txt 4절).
 
 ## 2026-11-13 — 노래 방식 판 소리 없음 (R098, MAIN · D-355)
 - 무엇: 찬종 실전(11-12 밤 · PC 4대) + 11-13 0시 찬종 혼자 판 "▶ 듣기 눌러도 안 남" 재현 → 원인 = 실 서버 화면이 개발용 React 로 빌드(play.mjs 가 .env NODE_ENV=development 를 빌드에 넘김) → StrictMode 이중 실행에서 SongPlay 가 곡을 다시 안 틂. scripts/play.mjs(빌드 NODE_ENV=production · jsxDEV 막음) · client/src/SongStage.tsx · client/src/minigame/songAudio.ts.

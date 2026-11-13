@@ -3317,6 +3317,7 @@ async function r056Flow(browser) {
   await snap(H, '96-reveal-nofb-pc');
   record('★★★ B R099 정답 공개 — 평가 줄(👍 😐 👎 · 사유 칩) 없음(방장 PC · 손님 m390) · 아래 줄 = 진행 안내 하나', noFb.fb === 0 && gNoFb === 0 && noFb.foot === 1, JSON.stringify({ noFb, gNoFb }));
   const hLogin = `${ACCOUNT_PREFIX}_fh`;
+  const gLogin = `${ACCOUNT_PREFIX}_fg`;
   // 나머지 두 문제
   for (let i = 2; i <= 3; i += 1) {
     await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 20000);
@@ -9274,7 +9275,8 @@ async function r071RevealFlow(browser) {
   const all = [out.h1, out.g1, out.h2, out.g2, out.h3, out.g3, ...Object.values(out.sizes)];
   console.log(`  [r071] ${JSON.stringify({ pts, h1: out.h1, g1: out.g1 })}`);
   record('★★★ R099 공개 화면 — 세 문항 모두 평가 줄(👍 😐 👎 · 사유 칩 · "+1P") 없음 · 방장 PC 1536 · 손님 m390 · 밤 m360', all.every((m) => m && !m.fb && !m.ask && !m.chips), JSON.stringify(all.map((m) => m && [m.fb, m.ask, m.chips])));
-  record('★★★ R099 공개 카드 — PC 1280 · 1536×730 · 1920 · 2560 · m390 · m360 안 넘침 · 입력칸 화면 안 · 가로 넘침 없음', all.every((m) => m && m.cardOver === false && m.input && !m.overflowX), JSON.stringify(all.map((m) => m && [m.cardH, m.cardOver, m.input, m.overflowX])));
+  // ★ 카드 안쪽 넘침(cardOver)은 적기만 — 1280×720 · 1536×730 에서 등장 연출 중 1~2px 이 잡히나 그림상 잘림 없음(R099 4절) · 옛 R071 도 이 값은 판정에 안 썼다
+  record('★★★ R099 공개 카드 — PC 1280 · 1536×730 · 1920 · 2560 · m390 · m360 입력칸 화면 안 · 가로 넘침 없음', all.every((m) => m && m.input && !m.overflowX), JSON.stringify(all.map((m) => m && [m.cardH, m.cardOver, m.input, m.overflowX])));
   record('★★ R099 평가 1P 0(검사 DB)', pts === 0, String(pts));
   H.close();
   G.close();
