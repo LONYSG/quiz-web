@@ -1,15 +1,19 @@
-[MAIN R098 — ★★ **노래 방식 판 소리 없음(PC 전원)** 재현 → 고침 → 배포 · 급함(찬종이 친구들과 플레이 중 · 2026-11-12 밤) · 코드 = client 소리 쪽 위주 · 게임 규칙 변경 0 · 1~2시간]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
-TASK: 오늘 밤 실 서버(play/20261112-2257 · a0d470ed)에서 **노래 맞히기(방식 · R096 퀴즈 엔진 경로)** 를 4명이 시작했는데 **PC 전원 소리가 안 났다**. 찬종: "▶ 듣기 버튼이 보였고 눌러도 안 남 · PC 전부 그랬음(폰은 안 해 봄)". 1곡 만에 중단하고 라이어로 갔다.
-설계가 먼저 본 것(읽기만): ① 데이터 멀쩡 — 활성 207곡 전부 `payload.itunes.previewUrl`(https) 있음 · 무작위 5곡 + 그 곡(song-0169)을 node fetch 로 열면 **206 · audio/x-m4p** 응답. ② 서버 로그(`tmp/ops/server-20261112-2257.log`)에 `[song] … 넘김 — 미리듣기 실패` 0 → 화면이 `song.fail` 을 과반 보고하지 않았다(= 상태가 'failed' 까지 안 갔거나 보고 전에 끝남). ③ 11-10 · 11-11 서버 로그에 `[song]` 줄 0 → **이 경로는 오늘이 첫 실제 플레이**(미니게임 노래는 11-10 에 들렸다고 봄 — 같은 `songAudio.ts`). ④ CSP 없음 · 헬멧 없음. ⑤ 코드 연결은 맞아 보임: `Question.tsx` 262~271 `<SongPlay active={active || !!resolution} epoch=… song=…>` → `SongStage.tsx` 76~80 effect 가 `playSong(url, offset)` · `useSongMusicQuiet` 이 `installSongUnlock()` · 버튼 조건 110 `blocked || (!unlocked && status !== 'playing')` · 버튼 → `unlockSongAudio()` → url 있으면 `startPlay`.
+[MAIN R099 — ★ **제보 반영(코드)**: ⓪ 노래 표지 가림막 불투명 ① 정답 공개 평가(👍👎 · 1P) 버튼 삭제 ② 미니게임 "겹치면 무효"(unique) 규칙 변경 = 여러 답 · 안 겹친 정답 수로 순위 · 2~3시간 · 2026-11-12 찬종 폼 결정]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
+TASK: 찬종이 실 플레이 제보로 둘을 정했다. 데이터 쪽(서술형 정답 · 해설 · 나라 +4)은 GEN G063.
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5`)
 
-■ 고정 규칙: docs/16 5-1 그대로. 이 트리(dev 3001 · quizweb_dev) 에서 재현 · 고침 → 끝 점검 → 커밋 → **메뉴 3 → 1 [1]** 로 실 3000 교체(찬종이 플레이 중이면 열린 판 0 될 때 — `tmp/ops/play.json` 꼴 그대로). 데이터 · DB 쓰기 0 · 곡 선택 규칙 · 시간 상수 변경 0 · 새 소리 0.
+■ 고정 규칙: docs/16 5-1 그대로. dev 3001 에서 고치고 끝 점검 → 커밋 → 메뉴 3 → 1 [1].
 ■ 할 일
-A. **재현 먼저**(추측으로 고치지 않는다): dev 3001 에서 실제 Chrome(헤드풀 — `scripts/ui-check.mjs` 의 chrome 경로 · `--autoplay-policy=no-user-gesture-required` **없이** 먼저, 있는 것과 둘 다) 으로 방을 만들고 노래 방식 판을 시작(봇은 `scripts/bot.mjs --url http://localhost:3400` 꼴 · 3158~3257 포트 피함). 기록할 것: `[data-song-sound]` 상태 변화 순서(idle → loading → ?) · `[data-song-unlocked]` · `document.querySelector('[data-song-audio]')` 의 `src` · `error?.code` · `readyState` · `paused` · `volume` · `muted` · `currentTime` · console 오류 전문 · network 에서 미리듣기 요청의 상태 코드와 응답 Content-Type · `play()` reject 의 `name`/`message`. 버튼을 눌렀을 때도 같은 것을 한 번 더.
-B. **원인 → 고침.** 후보(순서대로 지워 나간다 — 맞는 것 하나만 고친다): ⓐ `play()` 가 NotAllowedError 외의 오류로 거절(NotSupportedError 등 — Content-Type `audio/x-m4p` 를 Chrome 이 거르는지 · 미니게임 때와 URL 꼴이 같은지) ⓑ `playSong` 의 조기 return(`state.url === url && status …`) 이 리마운트/재접속에서 걸림 ⓒ 효과 순서 — 자식 `SongPlay` effect(playSong) 가 부모 `useSongMusicQuiet`(installSongUnlock · setMusicMode) 보다 먼저 돌아 생기는 꼬임 · `stopSong()` 이 cleanup 에서 새 곡 직후에 불리는 경우 ⓓ 버튼 → `unlockSongAudio` → `startPlay` 가 'blocked' 가 아닌 상태에서 아무 일도 안 하는 경로 ⓔ `'playing'` 이벤트 비교 `el.src === state.url`(절대 URL 정규화) 이 어긋나 상태가 'loading' 에 머묾(소리는 나는데 띠만 틀린 경우 — 이번엔 소리 자체가 없었으니 후순위) ⓕ `progress`/`durationMs` 로 만든 offset 이 미리듣기 길이를 넘어 즉시 끝남. **미니게임 노래(`SongGames.tsx`) 도 같은 Chrome 에서 같은 증상인지** 한 번 본다 — 같으면 `songAudio.ts` 공통, 다르면 R096 경로 차이.
-C. 고친 뒤: 재현 절차를 다시 돌려 **소리 상태가 'playing' 까지 가고 `currentTime` 이 흐르는 것**을 기록(실제 들림은 찬종이 확인 — 보고서 0절에 "찬종 확인할 것" 한 줄). 폰(iOS Safari · Android Chrome) 은 못 보면 못 봤다고 적는다.
-D. 끝 점검 5-1 · `npm run verify` 통과 유지 · 보고 `ai-out/R098.txt`(0 찬종이 볼 것: 원인 한 줄 · 고친 것 · 확인 방법 / 1 재현 기록 A 그대로 / 2 고침 / 3 못 본 것) · 13 · README R.
-■ 하지 말 것: 데이터 · 곡 선택 · 시간 상수 · 다른 화면 · 새 효과음 · 20 · 메뉴 17.
+0. ★ **노래 판 앨범 표지 가림막을 완전히 불투명하게**(찬종 2026-11-13 — "시계 방향으로 돌며 밝아지는 건 좋은데, 기본 배경이 연한 검정이라 무슨 커버인지 이미 다 보인다. 아예 안 보이게 가려 줘. 시계 방향으로 도는 부분만 공개"): `client/src/styles.css` `.song-cover-veil` 의 `rgb(14 12 28 / 0.9)` → **비침 0**(불투명 · 색은 기존 토큰에서). 같이 볼 것: ① 가림막이 표지 **전체**를 덮나(둥근 모서리 · 테두리 1px 틈 · 확대 125%) ② `[data-theme='office']` · `prefers-reduced-motion` 분기에서도 안 비치나 ③ 표지가 로딩되는 순간 가림막보다 먼저 한 프레임 보이지 않나 ④ 공개된 부채꼴과 가린 부분의 경계가 또렷한가(흐린 경계로 옆이 비치면 안 됨) ⑤ 정답 공개(`.done`) 때는 지금처럼 전부 열림. 스크린샷: 진행 0% · 30% · 공개 셋(보고서 0절 경로).
+A. ★ **평가 버튼 삭제** — 찬종(2026-11-12 · #127 "왜 문제 평가를 안 받아?" 에 답): "평가 버튼 그냥 빼자. 평가는 나만 할게 — 제보로. 다른 애들은 포인트 벌 생각밖에 없어." → 정답 공개 화면의 `RevealFeedback`(Question.tsx 414 · `resolution.rateAsk`) 과 **평가 요청 문항 추첨 · 1P 보상**(R071 D-313 `game.rateAsk` · `noteRateAsk` · `config.rateAskForce` · R068 `rateSkipLogin`) 을 뺀다. 미니게임 · 노래 공개의 👎(모름 등 — `song:feedback` 이 읽는 `minigame_results.input.rate`)도 **같이 뺀다**(찬종 말이 "평가는 나만 · 제보로" 라 전부). 봇 · 검사(`bot.mjs rate` · ui-check) 에서 평가를 쓰는 부분은 지운다. **DB 표(`question_feedback` · 과거 데이터)와 `feedback:report` · `song:feedback` 스크립트는 남긴다**(지난 기록 읽기용 — 새 입력이 없다는 한 줄만 스크립트 머리에). 제보 버튼(app_reports)은 그대로 — 찬종이 그걸로 한다.
+B. ★ **겹치면 무효(unique) 규칙 변경** — 찬종(#126): "남들과 하나라도 겹친 정답은 전부 0. 안 겹친 답만 세서 제일 안 겹친 말을 많이 쓴 사람이 1등, 그다음 2 · 3등." 폼 확인: "여러 답 · 안 겹친 정답 수로 순위" · 시간 15초는 그대로(찬종이 30초 안을 고르지 않았다) · 답 개수 제한 없음.
+   - 지금(topicGames.ts 7): 판마다 답 하나(바꾸면 마지막 것) · 정답 밖 0 · 둘 이상 같은 항목 전원 0 · 혼자만 낸 정답 1.
+   - 바꿀 것: 입력 = 15초 동안 **여러 답**(채팅 입력 그대로 · 엔터마다 하나 · 같은 사람의 중복은 하나로) · 채점 = 주제 목록 밖은 무시(0 · 벌점 없음) · **다른 사람과 하나라도 겹친 항목은 그 항목이 전원 0** · 점수 = 안 겹친 정답의 **개수** · 순위 = 개수 내림차순(동점 = 같은 순위 · 포인트 규칙은 기존 순위 → 포인트 표 그대로). 3판 합산은 지금처럼.
+   - 화면: 입력칸 아래 "내가 낸 답 n개" 칩 · 공개 때 사람별 답 목록(겹친 것은 흐리게 · 안 겹친 것은 강조 · 목록 밖은 취소선) · 16 §5-1 디자인 언어(기존 토큰 · 기존 화면과 나란히 찍은 비교 스크린샷).
+   - 서버 기록: `minigame_results.input` 을 `{texts:[…]}` 로 · `value` = 안 겹친 정답 수. `song:feedback` · 통계 스크립트가 `input.text` 를 읽으면 같이 고친다. 봇(bot.mjs) 의 unique 입력도.
+   - 시간 15초가 짧으면 보고서 0절에 체감 근거(봇 · 자기 플레이)로 **제안만** — 바꾸지 않는다.
+C. 끝 점검 5-1 · `npm run verify` 통과 · 보고 `ai-out/R099.txt`(0 찬종이 볼 것 · 1 A · 2 B 규칙 전/후 표 · 3 스크린샷 경로 · 4 못 한 것) · 13 · README R · docs/18 §9 unique 규칙 줄 갱신.
+■ 하지 말 것: 다른 미니게임 규칙 · 포인트 표 · 데이터 · 20 · 메뉴 17.
 ■ 커밋: 1 · fetch → rebase --autostash → push(503 = VPN) · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-■ 터미널 마지막 줄: "R098 끝 — 메뉴 3 → 1 [1] 하면 됨 — /clear 해도 됨".
+■ 터미널 마지막 줄: "R099 끝 — 메뉴 3 → 1 [1] 하면 됨 — /clear 해도 됨".
 ■ 답변: 한국어 · 터미널 5줄 이내.

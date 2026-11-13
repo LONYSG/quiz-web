@@ -1,25 +1,24 @@
-[GEN G064 — ★ **말투 다듬기 첫 적용**: gpt 다듬기 조각-06~12(질문 ≈660) + 재구성-01 19(질문 · 힌트 · 해설) + 비활성 3 → **두 DB(quizweb · quizweb_dev)** · 적용 문항의 힌트 · 해설 끝을 "~입니다" 로 · DB 쓰기 허용 · 2~3시간]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
-TASK: 찬종 제보 #118("말투가 이상함")로 시작한 말투 통일의 **첫 적용 라운드**다. 쓰기는 gpt(Codex)가 했고(지시서 `web-desk/tone/지시서.md`), 판정은 VERIFY 가 했다(V052 — 조각 06 · 07 전수 / V053 — 재구성-01 전수 + 조각 08~12 표본 50 · `ai-out/V052.txt` · `ai-out/V053.txt`). GEN 은 **판정된 문장을 그대로 싣고**, 새로 판단하는 것은 ① 힌트 · 해설의 끝말 ② 새 질문과 힌트의 겹침 ③ 변형 몇 건뿐이다. 질문 문장을 취향으로 다시 고치지 않는다(재판정 금지 — 찬종 "굳이").
+[GEN — ★ **말투 다듬기 적용 · 되풀이 라운드**(G065 부터 — 돌릴 때마다 다음 번호) : 아직 안 실은 gpt 다듬기 조각 전부 + VERIFY 가 통과시킨 재구성 전부 → **두 DB** · flag 처리 · 힌트 · 해설 끝말 · DB 쓰기 허용 · 한 번에 1~3시간(쌓인 양만큼)]  (이 파일이 지시 전체 — 다른 문서 지시는 docs/16)
+TASK: 찬종 목표 = **오늘(2026-11-13) 안에 전 문항 말투 다듬기를 끝낸다.** gpt(Codex)가 조각을 계속 쓰고(10조각 묶음), VERIFY 가 재구성을 판정한다. 이 브리프는 **같은 명령으로 여러 번** 돌린다 — 돌릴 때마다 "그때까지 쌓인 것 중 아직 안 실은 것"을 싣고 끝낸다. 첫 적용 G064 가 본보기다(`ai-out/G064.txt` · `scripts/g064-*.mjs` · `data/pipeline/tone/g064-apply.json`). 질문 문장을 취향으로 다시 고치지 않는다(재판정 금지).
 실행 모델: Opus 5.5 (`claude --model claude-opus-5-5`)
 
-■ 고정 규칙: docs/16 5-2 그대로. **DB 쓰기 허용**(쓰기 전 `node scripts/backup.mjs`) · 반영은 `scripts/g064-apply.mjs` 로 멱등하게 · **quizweb 과 quizweb_dev 둘 다**(dev 는 `DATABASE_URL` 의 DB 이름만 `quizweb_dev` — ★ 메뉴 17 금지 · dev 의 app_reports 를 지운다). 파일 → 기계 게이트 → DB 순. 찬종이 플레이 중이면 열린 판 0 일 때 DB 를 만진다(`tmp/ops/play.json` 꼴 — G063 과 같게). 보고 `ai-out/G064.txt` · 13(C141 · DG 다음 번호) · README G. ★ MAIN R098(노래 소리)이 같은 트리에서 도는 중일 수 있다 — `client/` · `scripts/play.mjs` 의 안 올린 변경은 건드리지 않고, 커밋은 내 파일만 `git add`.
-■ 먼저 읽기: `web-desk/tone/_적용메모.md`(★ 문항별 예외의 정본 — 아래 A 는 그 요약) · `ai-out/V052.txt` 0절 · `ai-out/V053.txt` 0 · 2절 · `data/pipeline/audit/v052-tone.json` · `v053-tone.json` · `web-desk/tone/받은것/결과-06.json`~`결과-12.json` · `재구성-01.json` · `web-desk/tone/지시서.md` §2~§5(끝말 규칙 — 힌트 · 해설 끝말을 맞출 때의 기준) · docs/15 §4-1(힌트 · 해설 규칙).
+■ 고정 규칙: docs/16 5-2 그대로. **DB 쓰기 허용**(쓰기 전 `node scripts/backup.mjs`) · **quizweb 과 quizweb_dev 둘 다**(★ 메뉴 17 금지) · dev 는 G064 처럼 before 가 다른 문항은 통째로 건너뛰고 수만 적는다 · 파일 → 기계 게이트 → DB · 열린 판 0 일 때 DB(`tmp/ops/play.json` 꼴). **라운드 번호**: `ai-out/G0NN.txt` 중 가장 큰 번호 + 1(첫 회 = G065). 보고 `ai-out/G0NN.txt` · 13(C · DG 다음 번호) · README G. 다른 창(MAIN R099 · VERIFY)이 같은 트리에서 돈다 — 커밋은 내 파일만 `git add`.
+■ 첫 회에만: `scripts/g064-build · ending · finish · apply · gate.mjs` 를 라운드 번호를 인자로 받는 `scripts/tone-build.mjs` … `tone-apply.mjs --round g0NN` 꼴로 일반화한다(동작 같게 · g064 산출물은 그대로 둔다). 이미 실은 문항 = `data/pipeline/tone/g0*-apply.json` 에 있는 id 전부.
 ■ 할 일
-A. **적용 파일 만들기** — `data/pipeline/tone/g064-apply.json`(문항마다 id · 출처(어느 파일의 문장인가) · before/after — question · hint · explanation 중 바뀌는 칸만). 문장 고르는 순서(위가 이긴다):
-  1. **재구성-01 19**(#5463 #3992 #7089 #1 #2 #3 #4 #9 #10 #19 #30 #34 #50 #128 #202 #285 #2931 #2040 #2246): `재구성-01.json` 의 question · hint · explanation. 단 **#5463 · #7089 는 V053 고친 문장**(`v053-tone.json` 의 `fixed` — 5463 은 질문 · 힌트 · 해설 / 7089 는 힌트 · 해설). **#2246 변형**: `생명체` · `생물체` 추가 · 옛 문항용 변형 `생물상` · `생물의 변화` · `생물 변화` 삭제. V053 이 못 연 출처 7(#30 ACS 3 · #50 olympics.com 2 · #202 UNESCO · #19 alaska.gov)은 **적재 전에 한 번 더 연다**(같은 사실을 말하는 다른 페이지여도 됨) — 못 확인한 사실이 든 문장은 그 사실만 빼거나 그 문항을 미룬다(보고서 4절).
-  2. **V052 · V053 이 고친 문장**(결과 파일의 문장 대신): V052 fix 4(#546 #3909 #4893 #1973) · V052 fact 3 원문 맞음(#1487 #363 #3825) — `v052-tone.json` 의 `fixed_question` / V053 fix 2(#5547 #6030) — `v053-tone.json` 의 `fixed.question` / V053 fact 3 원문 맞음(#368 #1515 #2636) — `v053-tone.json` 의 `why` 안 "다듬기:" 뒤 문장(★ 368 · 1515 는 V053 이 URL 없이 판단했다 — 교과서 수준 출처를 하나 열어 확인하고 싣는다).
-  3. **결과-06~12 의 `rewrite`**(654 — 위 1 · 2 에 걸린 것 빼고): `question` 그대로.
-  4. **싣지 않는 것**: `keep`(12 — 질문 그대로) · `rebuild` 중 위에 없는 것(21 — gpt 가 재구성-02 로 새로 쓰는 중: #4167 #7256 #1924 #242 #3725 #305 #1525 #1904 #86 #1623 #2132 #1715 #5014 #549 #6293 #3704 #2346 #6630 #1064 #2420 #6319 — #6630 · #6319 는 결과 파일에 rewrite 문장이 있지만 **싣지 않는다**) · 이미 비활성인 것(#2593 등 — 건너뛰고 수만 적는다).
-  5. **비활성 3**(찬종 결정 2026-11-12): #4183 세바퀴 · #2532 색약 배려 설계 · #22 사과(Apple) → `inactive_reason='tone-discard G064'`(이미 꺼져 있으면 그대로).
-B. **힌트 · 해설 끝말**(A 의 1 을 뺀 적용 문항 + keep 12 — 문항마다 어차피 한 번 읽는다): 끝이 "~다." 평서체면 **"~입니다 / ~습니다" 로만** 바꾼다(뜻 · 사실 · 낱말은 그대로 · 한 줄 유지 · 새 사실 0). 이미 합쇼체면 그대로. 읽는 김에 아래만 같이 본다(고칠 것만 고치고 수를 센다):
-  · **새 질문 ↔ 힌트 겹침** — gpt 가 힌트 · 해설의 재료를 질문으로 올린 경우 힌트가 질문의 되풀이가 된다(H3). `checkHint` warn `question` 이 새로 생긴 것만 힌트를 다시 쓴다(원문 재료 + 해설에 있는 사실 안에서 · hint-v 현재 버전 규칙).
-  · 해설 잘림 · 빔 · 힌트와 같은 사실 — 보이면 G063 B 와 같은 방식으로(웹 확인 뒤 둘째 사실).
-  끝말만 바꾼 것과 문장을 다시 쓴 것을 `g064-apply.json` 에 `kind: ending | rewrite` 로 나눠 적는다(VERIFY 가 rewrite 만 전수로 본다).
-C. **변형 몇 건**(`_적용메모.md` "V052 결과 반영" 끝): 블라인드 표기 차이 5(황금직사각형 · 신도 · 그라피티 · 부루마블 · 이앙법) — `question_answers` 에 그 표기가 있는지 보고 없으면 추가 · #708 미세중력 ← `무중력` 변형 추가 여부(GEN 판단 · 보고서에 "GEN 판단").
-D. **기계 게이트 → DB**: ① 새 질문에 정답 · 변형 글자가 새로 들어가지 않았나(`findAnswerInQuestion` — 원문에 이미 있던 것은 제외하고 센다) ② `checkHint` block 0 ③ 질문 200자 이하(넘는 것은 원문도 넘던 것만) ④ before 가 지금 DB 값과 같은가(다르면 멈추고 보고 — G063 이 고친 #7203 등) → 백업 → 두 DB 반영(`updated_at` · 힌트를 다시 쓴 것은 `general_hint_version`) → `node scripts/hint-check-active.mjs` 막힘 0 → 두 DB 의 적용 수가 같은지.
-E. **VERIFY 묶음**: `data/pipeline/audit/g064-verify-targets.json` — B 에서 `rewrite` 한 힌트 · 해설 전부 + `ending` 무작위 60 + A-2 의 368 · 1515(출처) + A-1 의 다시 연 출처.
-F. 보고 `ai-out/G064.txt`: 0 찬종이 볼 것(바뀐 질문 수 · 새로 쓴 19 · 끈 3 · 못 실은 것 / **고치기 전 · 고친 문장 예 5쌍**) · 1 A 출처별 수(표) · 2 B 끝말 수 · 다시 쓴 힌트 목록 · 3 C · D 게이트 숫자 · 두 DB 수 · 4 못 한 것 · GEN 판단. `찬종-확인.md` 는 건드리지 않는다(설계가 옮긴다).
-■ 하지 말 것: 질문 문장 재판정 · 조각-00~05(web 이 쓴 옛 묶음 — gpt 재판정 뒤) · 조각-13 이후 · 재구성-02 대상 21 · 제보 #118 처리 표시(전부 끝난 뒤) · 코드(`server/ client/ shared/`) · 지시서 · 받은것 파일 수정 · 20 · 메뉴 17.
+A. **실을 것 고르기**(돌릴 때마다 새로 센다 — 보고서 1절 표):
+  1. **다듬기 조각**: `web-desk/tone/받은것/결과-13.json` ~ `결과-73.json` 과 `결과-76.json` ~ `결과-80.json`(옛 web 조각 01~05 를 gpt 가 다시 판정한 것) 중 **비어 있지 않고**, `web-desk/tone` 에서 `PYTHONIOENCODING=utf-8 python _check.py NN` 이 "빠짐 0 · 더함 0" 인 조각. 그 안의 `rewrite` → `question` 그대로 / `keep` → 질문 그대로(끝말만) / `rebuild` → **싣지 않는다**(아래 2 로 온다) / `discard` → 싣지 않고 목록만(보고서 0절 — 찬종이 정한다).
+     ★ 싣지 않는 파일: `결과-00~05` · `결과-74` · `결과-75`(옛 web 것 — 76~80 이 대신한다).
+  2. **재구성**: `받은것/재구성-NN.json` 의 문항 중 **VERIFY 판정이 있는 것만** — `data/pipeline/audit/v0NN-tone.json`(V054 부터 · 키 = id) 에서 `lane` 이 `rebuild` 이고 `verdict` 가 `ok` 또는 `fix` 인 것. `ok` → 재구성 파일의 question · hint · explanation / `fix` → 그 json 의 `fixed` 에 있는 칸이 이긴다 / `reject` · 판정 없음 · status 가 ready 아님 → 싣지 않는다(수만). 변형 추가 · 삭제 제안이 `why` 에 있으면 따른다(G064 의 #2246 처럼).
+  3. **VERIFY 가 고친 다듬기 문장**: 같은 json 에서 `lane` 이 `sample` 류이고 `verdict` 가 `fix` 인 것은 `fixed.question` 이 조각 문장을 이긴다. `to-rebuild` 판정은 싣지 않고 목록만(설계가 gpt 에게 보낸다).
+  4. 이미 비활성 · 이미 실은 id 는 건너뛴다.
+B. **flag 처리**(지시서 v10.1 — gpt 가 다듬는 김에 힌트 · 해설에서 본 문제를 `flag` 한 줄로 표시했다 · 조각 13~17 에 58): flag 마다 읽고 ① 맞는 지적이면 고친다 — 힌트의 정답 글자 · 다른 이름 건넴 · 질문 되풀이 · 해설 잘림 · 빔 · 힌트와 같은 사실 → 원문 재료 안에서(해설에 둘째 사실이 필요하면 웹으로 확인해 한 문장) ② "사실 의심" → 출처를 열어 맞으면 그대로(확인 URL 을 적는다) · 틀리면 고친다 ③ 틀린 지적이면 그대로 두고 한 줄 사유. 결과를 `g0NN-apply.json` 에 `flag: fixed | kept | fact-ok | fact-fixed` 로.
+C. **힌트 · 해설 끝말**(G064 B 그대로 — `tone-ending` 규칙 · "~다." → "~입니다/습니다" · 새 사실 0) + 새 질문 ↔ 힌트 겹침(`checkHint` warn `question` · block 이 **새로** 생긴 것만 힌트를 다시 쓴다). `kind: ending | rewrite`.
+D. **게이트 → DB**(G064 D 그대로): 새 질문에 정답 · 변형이 새로 든 것 0 · `checkHint` block 0 · 질문 200자(넘는 것은 원문도 넘던 것 · gpt note '200자 초과') · before = 지금 DB 값 → 백업 → 두 DB → `hint-check-active` 막힘 0 → 멱등 확인.
+E. **VERIFY 묶음** `data/pipeline/audit/g0NN-verify-targets.json`(G064 꼴 그대로): 이번에 `rewrite` 한 힌트 · 해설 전부(flag 로 고친 것 포함) + `ending` 무작위 40 + 실은 다듬기 질문 무작위 50(조각 고루 — VERIFY 가 되부르기 · 뜻 바뀜을 표본으로 본다).
+F. 보고 `ai-out/G0NN.txt`: 0 찬종이 볼 것(이번에 바뀐 질문 수 · **지금까지 누적 / 전체**(다듬기 대상 = 조각 02~73 의 7,104 + 조각 01 의 47) · 남은 조각 · discard 제안 목록 · flag 로 드러난 사실 오류) · 1 A 표(조각별 · 재구성 묶음별 수) · 2 B flag 표 · 3 C · D 숫자 · 두 DB · 4 못 한 것 · GEN 판단.
+G. **마지막 회**(조각 13~73 · 76~80 이 전부 실렸고 재구성 판정도 다 실렸을 때 — 보고서 0절에 "다듬기 전부 끝" 이라고 쓴다): 제보 #118 처리 표시(`npm run reports:handle -- --id 118 --note "말투 다듬기 전 문항 적용 G064~G0NN" --yes` · 실 DB) · 활성 문항 중 질문 끝이 아직 "~는?" · "~ㅂ니까?" 인 것의 수(이모지 문항 제외)를 세어 목록으로.
+■ 실을 것이 0 이면: DB 를 만지지 않고 "실을 것 없음 — gpt · VERIFY 대기"와 남은 조각 수만 터미널에 쓰고 끝낸다(보고서 · 커밋 없음).
+■ 하지 말 것: 질문 문장 재판정 · rebuild 문항을 직접 새로 쓰기 · 코드(`server/ client/ shared/`) · 지시서 · 받은것 파일 수정 · `찬종-확인.md` · 20 · 메뉴 17.
 ■ 커밋: 1 · fetch → rebase --autostash → push(503 = VPN) · 끝줄 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-■ 터미널 마지막 줄: "G064 끝 — /clear 해도 됨".
+■ 터미널 마지막 줄: "G0NN 끝 — 누적 n / 7,151 · 남은 조각 m — /clear 해도 됨".
 ■ 답변: 한국어 · 터미널 5줄 이내.
