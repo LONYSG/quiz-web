@@ -5032,11 +5032,12 @@ async function r083Flow(browser) {
   note('2라운드', { g2, hStrokes, result });
   if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083'), { recursive: true });
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083', 'r083.json'), JSON.stringify(rows, null, 1));
-  record('★★★ R083 설정 — 방식 네 버튼(캐치마인드 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김', setting.modes === 'quiz,minigame,liar,draw*' && setting.note && !setting.quizRows && setting.team === true, JSON.stringify(setting));
+  record('★★★ R083 설정 — 방식 네 버튼(캐치마인드 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김', ['quiz,minigame,liar,draw*', 'quiz,minigame,liar,draw*,song'].includes(setting.modes) && setting.note && !setting.quizRows && setting.team === true, JSON.stringify(setting));
   // ★ R087 (D-344) — 채팅은 캔버스 옆(PC) · 캔버스 1280×720 에서 ≥ 560 · 힌트 버튼 셋 · 도구 화면 안
   record('★★★ R083/R087 출제자(PC 1280×720) — 도구 · 제시어 · 채팅 옆 · 캔버스 ≥ 560 · 힌트 버튼 3 · 도구 화면 안 · 맞히는 쪽은 도구 없음', r1.tools && !!r1.kw && r1.chatBeside && r1.side >= 560 && r1.hintBtns === 3 && r1.toolsIn && !gTools, JSON.stringify({ r1, gTools }));
   record('★★★ R083 마우스로 그린 선 2개가 손님(m360) 캔버스에 · m360 캔버스 화면 안', gStrokes === 2 && gRect.x >= 0 && gRect.x + gRect.w <= gRect.vw + 1, JSON.stringify({ gStrokes, gRect }));
-  record('★★★ R083 채팅 정답 — 맞힘 표시 · 시스템 줄 "정답!" · 공개 키워드 · 맞힌 2', gSolved && /정답!/.test(sysLine) && rev.kw === r1.kw && rev.solved === 2, JSON.stringify({ gSolved, sysLine, rev }));
+  // ★ R101 (D-358) — 선착순: 첫 정답에 그 그림이 끝나 손님 화면은 바로 공개(맞힘 표시 대신 정답 글자) → 맞힌 1
+  record('★★★ R083 채팅 정답 — 시스템 줄 "정답!" · 공개 키워드 · ★ R101 선착순 맞힌 1', /정답!/.test(sysLine) && rev.kw === r1.kw && rev.solved === 1, JSON.stringify({ gSolved, sysLine, rev }));
   record('★★ R083 손님(m360) 출제 — 도구 한 줄 화면 안 · 손가락 선이 PC 에 · 넘침 0', g2.tools && g2.toolsIn && g2.over <= 1 && hStrokes >= 1, JSON.stringify({ g2, hStrokes }));
   record('★★ R083 결과 — 3명', result === 3, String(result));
   S.close();
@@ -6985,7 +6986,7 @@ async function r082Flow(browser) {
   note('결과', result);
   if (!existsSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082'))) mkdirSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082'), { recursive: true });
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r082', 'r082.json'), JSON.stringify(rows, null, 1));
-  record('★★★ R082 설정 — 방식 세 버튼(라이어 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김 · 라운드 2', ['quiz,minigame,liar*', 'quiz,minigame,liar*,draw'].includes(setting.modes) && setting.note && !setting.quizRows && setting.team === true && setting.rounds === '2', JSON.stringify(setting));
+  record('★★★ R082 설정 — 방식 세 버튼(라이어 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김 · 라운드 2', ['quiz,minigame,liar*', 'quiz,minigame,liar*,draw', 'quiz,minigame,liar*,draw,song'].includes(setting.modes) && setting.note && !setting.quizRows && setting.team === true && setting.rounds === '2', JSON.stringify(setting));
   record('★★★ R082 배정 — 주제 · 내 카드(시민 = 키워드 / 라이어 = 카드) · m360 넘침 0', res.assign && res.assign.topic && (res.assign.me === 'liar' ? res.assign.kw === null : !!res.assign.kw) && res.assignG?.me && res.assignG.over <= 1, JSON.stringify({ a: res.assign, g: res.assignG }));
   record('★★★ R087 설명칸 분리 — 차례 아닌 채팅은 그대로 채팅(알림 없음 · 설명칸 없음) · 내 차례에만 설명칸 · 큰 줄에 설명', res.notice === '' && res.chatShown === true && res.gSayInput === false && res.hSayInput !== false && !!res.stageLine, JSON.stringify({ n: res.notice, c: res.chatShown, g: res.gSayInput, h: res.hSayInput, line: res.stageLine }));
   record('★★★ R087 설명 기록 — Tab 펼침(기록 4+) · 다시 Tab 접힘 · 폰 버튼 펼침', res.log?.open === 'open' && res.log.n >= 4 && res.log.closed === 'closed' && res.logG === 'open', JSON.stringify({ l: res.log, g: res.logG }));

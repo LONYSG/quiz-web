@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-14 — 실전 피드백: 라이어 단계 줄 · 토론 / PC 채팅 6줄 + 스크롤 0 / 캐치마인드 선착순 · 포기 (R101, MAIN · D-358)
+- 무엇: 찬종 11-13 저녁 9판 피드백 셋. shared liar.ts(discuss · LIAR_STEPS · liarStep · discussNeed · 시간) · draw.ts(ROUND_MS 120 · SCORE_SOLVER/DRAWER) · server liar/engine.ts(discuss · tally 없앰 · liarDiscussEnd) · draw/engine.ts(첫 정답에 끝 · drawGiveUp) · socket(liar.discussEnd · draw.giveUp) · LiarStage.tsx(단계 줄 · 토론 칸 · 결과 줄 · 이의제기 = 공개 뼈대) · DrawStage.tsx(포기 + 확인) · Lobby.tsx(PC 맞춤) · styles(R101 블록) · GameSettings 설명 · bot.mjs · ui-check.mjs(r101 흐름 + 라이어 흐름 넷 토론) · ui-check-bundles(r101 · r101-before).
+- 검증: typecheck · vitest 57 파일 777 · build · 봇 liar 31/31 · liarfool 9/9 · draw 24/24 · ui-check r101 22/24(고치기 전 12/24) · 끝 점검 묶음은 R101.txt 4절.
+- 남은 것: 노래 결과 1536×730 · 1280×720 채팅 5.3줄 · 1280×720 노래 공개 5.8줄(페이지 스크롤은 0) · 폰 스크롤(360×740) 은 적기만.
+
 ## 2026-11-13 — 운영 손질: 백업 건너뜀 · 포인트 여러 명 · 검사 임시 프로필 · 메모리 점검 메뉴 (R100, MAIN · D-357)
 - 무엇: 찬종 11-13 ⓐ "ops 에서 하나 할 때마다 백업" ⓑ C 드라이브 360MB(`%TEMP%\quizui-*` 183개 · 9.1GB) ⓒ "메모리가 점점 줄어 재부팅". scripts/ops.mjs(backupIfStale · 메뉴 6 여러 아이디 · 메뉴 20) · backup-prune.mjs(최신 3 · freshBackup) · points-grant.mjs(--login a,b,c) · play.mjs(migrate 전 늘 백업) · 새 proc-lib.mjs(guardExit · sweepTemp · classifyProcs) · mem-check.mjs · ui-check.mjs · bot.mjs.
 - 검사: typecheck · vitest 57 파일 774(새 proc-lib 9 · backup-prune 4) · build · ui-check:copy 15/15 ×2(임시 폴더 56 → 1 · 두 번째 실행 quizui 1 → 1) · 봇 grant 13/13(여러 아이디) · signup 8/8 · ops 메뉴 6 검사 DB 로 한 번(2명 지급 · 없는 아이디 뺌 · 백업 건너뜀 줄) · 부모 강제 종료 · SIGINT 실험(R100.txt 3절).
