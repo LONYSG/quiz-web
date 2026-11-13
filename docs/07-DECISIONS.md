@@ -10,6 +10,13 @@
 
 ---
 
+## D-357. ops 백업 = 6시간 안이면 건너뜀 · 남기는 수 3 · 메뉴 6 여러 아이디 · 검사 임시 프로필 · 프로세스 정리 (R100 · 찬종 2026-11-13)
+- **백업**: ops 메뉴 6 · 7 · 10 · 11 은 행 하나를 고치는 일이고 point_grants · app_reports.handled_at · question_feedback 에 남아 손으로 되돌릴 수 있다 → 같은 DB 이름의 덤프가 `BACKUP_FRESH_HOURS`(기본 6 · 0 = 늘) 안이면 건너뜀. 메뉴 12 · GEN 의 쓰기 전 백업(docs/16 5-2)은 그대로 늘. play.mjs 는 **적용할 마이그레이션이 있을 때 늘** 백업(그 전엔 아예 안 떴다 — PLAY-GUIDE 의 "메뉴 1 이 먼저 백업" 이 사실이 아니었다).
+- **남기는 수 5 → 3**(DB 이름마다): 덤프 ≈ 190MB · 두 DB 면 ≈ 1.1GB.
+- **임시 프로필**: ui-check · tmp/r098/repro 가 띄운 chrome 프로필은 그 실행이 끝날 때(exit · SIGINT 등 · 부모 프로세스가 사라지면 10초 안) 지우고, 시작할 때 하루 넘은 것 + **30분 넘었고 어떤 chrome 명령줄도 가리키지 않는 프로필**을 쓸어 낸다(브리프의 "하루"만으로는 오늘 쌓인 3.5GB 를 못 지움 — 쓰는 중인지는 나이 대신 chrome 명령줄로 가른다).
+- **프로세스**: 메뉴 20 은 고아 · 6시간 넘은 검사용 chrome 만 끝낸다. 실 서버 · dev 서버(포트 · play.json · 창의 조상 · 자손) · claude · codex · Docker 는 분류에서 빠진다.
+- 되돌리기: `BACKUP_FRESH_HOURS=0` · `BACKUP_KEEP=5` · `PARENT_WATCH=0`(부모 감시 끔) · 커밋 되돌리기.
+
 ## D-356. 문제 평가 없앰 · 겹치면 무효 = 여러 답 · 안 겹친 정답 수 · 노래 가림막 불투명 + 다음 곡 첫 프레임 비침 (R099 · 찬종 2026-11-12 폼 #126 #127 · 2026-11-13)
 - 평가: 공개 화면 RevealFeedback · SongRate · 결과 · 로비 목록의 투표 · `POST /api/feedback/question` · `POST /api/minigame/song-rate` · `game.rateAsk` · `noteRateAsk` · `config.tuning.rateAskForce` · `rateSkipLogin` · shared 평가 함수(RATE_POINTS · RATE_CHOICES · pickRateAsk · rateNeedsReason · parse*FeedbackInput)를 지웠다. `game_questions.rate_ask` 는 안 적는다(열 기본 false).
   목록(`GET /api/feedback/game/:id/mine` · `/last-game`)은 남겼다 — 줄마다 제보 📝 가 그 문항을 채우는 길이라서(MAIN 판단 — 되돌리기 쉽다 · 찬종이 "목록도 빼" 라면 ResultFeedback · LastGameFeedback 두 줄을 지우면 된다). 응답에서 vote · reasons · comment 는 뺐다.

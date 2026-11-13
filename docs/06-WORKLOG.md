@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-13 — 운영 손질: 백업 건너뜀 · 포인트 여러 명 · 검사 임시 프로필 · 메모리 점검 메뉴 (R100, MAIN · D-357)
+- 무엇: 찬종 11-13 ⓐ "ops 에서 하나 할 때마다 백업" ⓑ C 드라이브 360MB(`%TEMP%\quizui-*` 183개 · 9.1GB) ⓒ "메모리가 점점 줄어 재부팅". scripts/ops.mjs(backupIfStale · 메뉴 6 여러 아이디 · 메뉴 20) · backup-prune.mjs(최신 3 · freshBackup) · points-grant.mjs(--login a,b,c) · play.mjs(migrate 전 늘 백업) · 새 proc-lib.mjs(guardExit · sweepTemp · classifyProcs) · mem-check.mjs · ui-check.mjs · bot.mjs.
+- 검사: typecheck · vitest 57 파일 774(새 proc-lib 9 · backup-prune 4) · build · ui-check:copy 15/15 ×2(임시 폴더 56 → 1 · 두 번째 실행 quizui 1 → 1) · 봇 grant 13/13(여러 아이디) · signup 8/8 · ops 메뉴 6 검사 DB 로 한 번(2명 지급 · 없는 아이디 뺌 · 백업 건너뜀 줄) · 부모 강제 종료 · SIGINT 실험(R100.txt 3절).
+- 남은 것: node 부모가 죽으면 Windows 작업 개체가 자식을 즉시 끝내 exit 처리가 못 돈다 → 그 실행의 프로필 하나는 다음 실행의 시작 쓸기(30분 뒤)가 지운다.
+
 ## 2026-11-13 — 평가 없앰 · 겹치면 무효 여러 답 · 노래 가림막 불투명 (R099, MAIN · D-356)
 - 무엇: 찬종 폼(#126 #127 · 11-13 가림막) — 평가 입력 전부 삭제(목록 + 제보는 남김) · unique = 15초 여러 답 · 겹친 항목 전원 0 · 판 점수 = 안 겹친 정답 수 · 가림막 --mask-bg 불투명.
 - 같이 찾은 결함: 사무실 테마에서 가림막 · 흑백이 지워져 표지가 다 보임(R096~) · 다음 곡 첫 그림에 앞 곡 남은 시간이 쓰여 표지 90% 노출(Question remainMs ↔ endsAt 짝).

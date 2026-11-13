@@ -60,7 +60,8 @@ npm run dev:tunnel        # 터미널 B — 출력된 https 주소를 공유 (�
 ```bash
 npm test                  # Vitest (현재 97건 통과)
 npm run typecheck
-npm run db:backup         # ★ 로컬 DB이므로 유일한 안전장치 · ★ R074 끝나면 backups/quizweb-*.dump 최신 5개만 남김(--keep N · BACKUP_KEEP · --keep 0 = 안 지움 · zip 그대로 · --prune-only = 정리만 · ops 메뉴 15)
+npm run db:backup         # ★ 로컬 DB이므로 유일한 안전장치 · ★ R074 끝나면 backups/<DB 이름>-*.dump DB 이름마다 최신 3개만 남김(R100 — 5 → 3 · --keep N · BACKUP_KEEP · --keep 0 = 안 지움 · zip 그대로 · --prune-only = 정리만 · ops 메뉴 19) · ★ R100 ops 메뉴 6 · 7 · 10 · 11 앞 백업은 같은 DB 덤프가 6시간 안이면 건너뜀(BACKUP_FRESH_HOURS · 0 = 늘) · 메뉴 1 은 마이그레이션 적용 전 늘 뜸
+node scripts/mem-check.mjs   # ★ R100 메모리 점검(ops 메뉴 20) — 남은 검사용 chrome · 고아 node · --kill = 고아 · 6시간 넘은 검사 chrome 만 끝냄 + 임시 폴더 정리
 npm run play:stats        # ★ R074 문항별 실측(정답률 넷 · 첫 정답 중앙 시간 · 틀린 제출 · 건너뛰기 · 등급 어긋남 후보) → tmp/play-stats.md + data/pipeline/audit/play-stats-<날짜>.json · --since/--until/--games/--min (읽기만)
 npm run hint:solve        # R071 힌트 뒤 정답 집계(등급 · 알가치별) → tmp/hint-solve.md
 npm run liar:appeals      # ★ R091 라이어 이의제기 인정 목록(세트 · 제시어 · 답 · 횟수 · 표) — 변형 후보 · --all 기각도 (읽기만)

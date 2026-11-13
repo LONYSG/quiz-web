@@ -13,7 +13,7 @@
 // 사용법
 //   npm run db:backup                 backups/<DB 이름>-YYYYMMDD-HHmmss.dump 생성(★ R095 — quizweb-… · quizweb_dev-…)
 //   npm run db:backup -- --out 경로   위치 지정
-//   ★ R074 — 끝나면 backups/*.dump 를 **DB 이름마다 최신 5개만**(R095) 남기고 지운다(--keep N · BACKUP_KEEP · 0 = 안 지움 · zip 은 그대로)
+//   ★ R074 — 끝나면 backups/*.dump 를 **DB 이름마다 최신 3개만**(R095 · R100 에서 5 → 3) 남기고 지운다(--keep N · BACKUP_KEEP · 0 = 안 지움 · zip 은 그대로)
 //   npm run db:backup -- --prune-only  덤프 없이 정리만(ops 메뉴 15)
 //
 // 복원은 scripts/restore.mjs 를 쓴다. 절차는 docs/11-DEPLOY.md 참조.

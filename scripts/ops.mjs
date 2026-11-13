@@ -4,18 +4,22 @@
 //
 //   번호를 고르고 묻는 것(아이디 · 포인트 · 메모)만 적으면 기존 스크립트를 올바른 인자로 대신 부른다.
 //   ★ DB 를 바꾸는 항목(포인트 · 비밀번호 · 처리 표시 · 채택)은 반드시 ① 무엇을 할지 보여 주고 ② y 를 받고 ③ 먼저 백업한다.
+//   ★★ R100 (A · 찬종 2026-11-13) — ③ 은 "같은 DB 의 덤프가 6시간 안이면 건너뜀"(BACKUP_FRESH_HOURS · 0 = 늘 뜸).
+//     이 넷은 행 하나를 고치는 일이고 point_grants · app_reports.handled_at · question_feedback 에 남아
+//     손으로 되돌릴 수 있다 — 매번 전체 덤프(≈190MB · 수십 초)는 과하다. 메뉴 12(DB 백업)는 늘 뜬다.
 //   ★ 새 규칙을 만들지 않는다 — 거부(봇 계정 · 범위 밖 포인트 · 없는 번호)는 각 스크립트의 것을 그대로 쓴다.
 //
 // 사용법:  ops.bat   (또는 node scripts/ops.mjs)
 // =============================================================================
 
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { createInterface } from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
+import { DEFAULT_KEEP, dbNameOf, freshBackup, freshHours } from './backup-prune.mjs';
 import { devOverrides } from './dev-env.mjs';
 import { cloudflaredPids, logPaths, portPids, tail, tunnelUrl, windowPids } from './ops-lib.mjs';
 import { parseCodeChoice, playDir, readPlayJson } from './play-tree.mjs';
@@ -50,8 +54,20 @@ async function yes(label = '진행할까요?') {
   const v = (await rl.question(`${label} (y/N): `)).trim().toLowerCase();
   return v === 'y' || v === 'yes';
 }
-function backup() {
-  console.log('\n[ops] 먼저 백업합니다 (npm run db:backup)');
+// ★★ R100 (A) — 최근(BACKUP_FRESH_HOURS · 기본 6시간) 같은 DB 덤프가 있으면 건너뛴다 · 없거나 오래됐으면 지금처럼 뜬다
+function backupIfStale() {
+  const dir = path.join(ROOT, 'backups');
+  const db = dbNameOf(process.env);
+  const entries = existsSync(dir)
+    ? readdirSync(dir).map((name) => { try { return { name, size: statSync(path.join(dir, name)).size }; } catch { return { name, size: 0 }; } })
+    : [];
+  const fresh = freshBackup(entries, db, freshHours(process.env));
+  if (fresh) {
+    const m = Math.round(fresh.ageMs / 60_000);
+    console.log(`\n[ops] 최근 백업 있음(${m >= 60 ? `${Math.floor(m / 60)}시간 ${m % 60}분` : `${m}분`} 전 · ${fresh.name}) — 건너뜀`);
+    return;
+  }
+  console.log(`\n[ops] 먼저 백업합니다 (npm run db:backup · ${db} 의 ${freshHours(process.env)}시간 안 덤프 없음)`);
   if (!run('npm run db:backup')) throw new Error('백업이 실패해서 멈춥니다 — 아무것도 바꾸지 않았습니다.');
 }
 
@@ -109,16 +125,26 @@ async function listAccounts() {
   line();
 }
 
+// ★★ R100 (C) — 아이디 여러 개(쉼표 · 공백) · 같은 포인트 · 같은 메모 · 확인 한 번 · 백업 한 번(A 규칙)
 async function grantPoints() {
-  console.log('\n■ 포인트 주기 (npm run points:grant · reason=admin)');
-  const login = await ask('아이디');
-  if (!(await showAccount(login))) return;
+  console.log('\n■ 포인트 주기 (npm run points:grant · reason=admin) — 아이디 여러 개는 쉼표나 띄어쓰기로');
+  const raw = await ask('아이디(예: yuja0218, 123qwe)');
+  const logins = [...new Set(raw.split(/[\s,]+/).filter(Boolean))];
+  const found = [];
+  const missing = [];
+  for (const login of logins) ((await showAccount(login)) ? found : missing).push(login);
+  if (!found.length) return console.log('  지급할 아이디가 없습니다');
+  if (missing.length && !(await yes(`  없는 아이디 ${missing.length}개(${missing.join(', ')})는 빼고 나머지 ${found.length}명만 진행할까요?`))) return console.log('  취소');
   const points = await ask('포인트(1~1000)');
   const note = await ask('메모(받는 사람 토스트에 안 보임 · 기록용)', { required: false, def: '운영자 지급' });
-  console.log(`\n  ${login} 에게 ${points}P · 메모 "${note}"`);
+  console.log(`\n  ${found.length}명(${found.join(', ')}) 에게 각각 ${points}P · 메모 "${note}"`);
   if (!(await yes())) return console.log('  취소');
-  backup();
-  run(`npm run points:grant -- --login ${q(login)} --points ${q(points)} --reason admin --note ${q(note)} --yes`);
+  backupIfStale();
+  const r = spawnSync(`npm run points:grant -- --login ${q(found.join(','))} --points ${q(points)} --reason admin --note ${q(note)} --yes`, { cwd: ROOT, shell: true, stdio: 'pipe', encoding: 'utf8' });
+  const lines = `${r.stdout ?? ''}\n${r.stderr ?? ''}`.split(/\r?\n/).filter((l) => /^\[(grant|points)\]/.test(l));
+  for (const l of lines) console.log(`  ${l}`);
+  const ok = lines.filter((l) => l.includes('✔')).length;
+  console.log(`\n  → ${ok}명 지급 · 실패 ${found.length - ok}${missing.length ? ` (없는 아이디 ${missing.length}개는 뺌)` : ''}`);
 }
 
 async function resetPassword() {
@@ -126,7 +152,7 @@ async function resetPassword() {
   const login = await ask('아이디');
   if (!(await showAccount(login))) return;
   if (!(await yes(`${login} 의 비밀번호를 0000 으로 초기화할까요? (기존 로그인은 전부 풀립니다)`))) return console.log('  취소');
-  backup();
+  backupIfStale();
   run(`npm run reset-password -- ${q(login)}`);
   console.log('\n  → 본인에게: "0000 으로 로그인하면 새 비밀번호 화면이 뜬다"');
 }
@@ -142,7 +168,7 @@ async function handleReports() {
   const note = await ask('메모(예 "R066 반영" · "답변함")');
   console.log(`\n  #${ids} → 처리됨 · 메모 "${note}"`);
   if (!(await yes())) return console.log('  취소');
-  backup();
+  backupIfStale();
   run(`npm run reports:handle -- --id ${q(ids)} --note ${q(note)} --yes`);
 }
 
@@ -153,7 +179,7 @@ async function adoptFeedback() {
   const note = await ask('메모', { required: false, def: '제보 채택' });
   console.log(`\n  f#${id} 채택 · ${points}P · "${note}"`);
   if (!(await yes())) return console.log('  취소');
-  backup();
+  backupIfStale();
   run(`npm run feedback:adopt -- --id ${q(id)} --points ${q(points)} --note ${q(note)} --yes`);
 }
 
@@ -284,12 +310,19 @@ async function pruneBackups() {
   const { pickPrune } = await import('./backup-prune.mjs');
   const dir = path.join(ROOT, 'backups');
   const names = existsSync(dir) ? readdirSync(dir) : [];
-  const gone = pickPrune(names, 5);
-  // ★ R095 (D-352) — backup.mjs 와 같은 규칙: DB 이름마다 최신 5(quizweb-… · quizweb_dev-… 따로)
-  if (!gone.length) return console.log('  지울 백업이 없습니다(DB 이름마다 덤프 5개 이하)');
+  const gone = pickPrune(names, DEFAULT_KEEP);
+  // ★ R095 (D-352) — backup.mjs 와 같은 규칙: DB 이름마다 최신 N(quizweb-… · quizweb_dev-… 따로) · ★ R100 (B) 5 → 3
+  if (!gone.length) return console.log(`  지울 백업이 없습니다(DB 이름마다 덤프 ${DEFAULT_KEEP}개 이하)`);
   console.log(`  지울 것 ${gone.length}개: ${gone.join(' · ')}`);
   if (!(await yes('지울까요?'))) return console.log('  그만둠');
-  run('node scripts/backup.mjs --prune-only --keep 5');
+  run(`node scripts/backup.mjs --prune-only --keep ${DEFAULT_KEEP}`);
+}
+
+// ★★ R100 (D2) — 메모리 점검 · 정리: 보기 → y → "끝낼 것"(고아 · 6시간 넘은 검사용 chrome)만 · 실 서버 · dev 서버는 안 건드림
+async function memCheck() {
+  run('node scripts/mem-check.mjs');
+  if (!(await yes('\n위 "끝낼 것"(✗ 표시)을 끝내고 남은 임시 폴더를 지울까요?'))) return console.log('  그만둠');
+  run('node scripts/mem-check.mjs --kill');
 }
 
 const MENU = [
@@ -298,13 +331,13 @@ const MENU = [
   ['3', '서버 · 터널 끄기 (DB 는 둠 · 포트가 빌 때까지 기다림)', () => run('node scripts/play.mjs --stop')],
   ['4', '지금 상태 (Docker · DB · 서버 · 터널 · 플레이/개발 트리 · 개발 서버 · 진행 중인 판 · 제보 · 로그 꼬리)', status],
   ['5', '계정 목록 (잔액 · 가입 · 마지막 판)', listAccounts],
-  ['6', '포인트 주기', grantPoints],
+  ['6', '포인트 주기 (아이디 여러 개 — 쉼표 · 띄어쓰기)', grantPoints],
   ['7', '비밀번호 초기화 (0000 + 다음 로그인 때 바꾸게)', resetPassword],
   ['8', '제보 보기 — 처리 안 된 것', () => reports(false)],
   ['9', '문제 평가(👍/👎) 보고', () => run('npm run feedback:report -- --no-bots')],
   ['10', '제보 처리 표시', handleReports],
   ['11', '문제 평가 채택 (+5P)', adoptFeedback],
-  ['12', 'DB 백업', () => run('npm run db:backup')],
+  ['12', 'DB 백업 (늘 새로 뜸)', () => run('npm run db:backup')],
   ['13', '제보 보기 — 전부(처리된 것 포함)', () => reports(true)],
   ['14', '로그 열기 (서버 · 터널 — 메모장)', openLogs],
   // ★ R074 (§F ①) — 백업은 만들 때마다 최신 5개만 남긴다 · 이 줄은 덤프 없이 정리만(지울 목록을 보여 주고 y)
@@ -313,12 +346,13 @@ const MENU = [
   ['16', '개발 서버 끄기', devOff],
   ['17', '개발 DB 새로 복사 (지금 quizweb 통째 · 몇 분)', devDbRefresh],
   ['18', '플레이 트리 만들기 / 상태 (HEAD · 태그 · lock 해시 · 디스크)', () => run('node scripts/play.mjs --tree')],
-  ['19', '오래된 백업 정리 (최신 5개만 남김 · zip 은 그대로)', pruneBackups],
+  ['19', `오래된 백업 정리 (DB 이름마다 최신 ${DEFAULT_KEEP}개만 남김 · zip 은 그대로)`, pruneBackups],
+  ['20', '메모리 점검 · 정리 (남은 검사용 chrome · 고아 node · 임시 폴더)', memCheck],
   ['0', '끝'],
 ];
 
 async function main() {
-  console.log('\n★ quiz-web 운영자 메뉴  (DB 를 바꾸는 일은 항상 확인 → 백업 → 실행)');
+  console.log(`\n★ quiz-web 운영자 메뉴  (DB 를 바꾸는 일은 확인 → 백업(${freshHours(process.env)}시간 안 백업이 있으면 건너뜀) → 실행 · 12 는 늘 새로 뜸)`);
   for (;;) {
     console.log('');
     for (const [k, label] of MENU) console.log(`  ${k.padStart(2)}  ${label}`);

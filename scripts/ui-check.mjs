@@ -48,6 +48,7 @@ import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import WebSocket from 'ws';
 import { TEST_DATABASE_URL, assertTestServer, useTestDb } from './test-db.mjs';
+import { guardExit, rmDirRetry, sweepTemp } from './proc-lib.mjs';
 
 // ★★★ R060 (D-253) — 검사는 quizweb_test 만(실 DB 로 서버를 띄우지 않는다 · 없으면 npm run db:test-init)
 await useTestDb('ui-check');
@@ -507,8 +508,12 @@ async function launchBrowser() {
   return null;
 }
 
+// ★★ R100 (D) — 만든 Chrome 프로필 · 임시 폴더는 이 실행이 끝날 때(정상 · 실패 · 예외 · process.exit · Ctrl+C · 부모가 죽음) 지운다
+//   (찬종 2026-11-13: %TEMP%\quizui-* 183개 · 9.1GB 가 쌓여 C 드라이브 360MB)
+const tempDirs = [];
 async function launchBrowserOn() {
   const profile = mkdtempSync(path.join(os.tmpdir(), 'quizui-'));
+  tempDirs.push(profile);
   const proc = spawn(
     chromePath,
     [
@@ -539,6 +544,8 @@ async function launchBrowserOn() {
     }
   }
   proc.kill();
+  await sleep(500);
+  rmDirRetry(profile);
   return null;
 }
 
@@ -4314,6 +4321,7 @@ async function r068RoomFlow(browser) {
 async function r068AvatarFlow(browser) {
   const sharp = (await import('sharp')).default;
   const dir = mkdtempSync(path.join(os.tmpdir(), 'r068av-'));
+  tempDirs.push(dir); // ★ R100 (D)
   const noise = (w, h) => { const b = Buffer.alloc(w * h * 3); for (let i = 0; i < b.length; i += 1) b[i] = (i * 2654435761) >>> 24; return sharp(b, { raw: { width: w, height: h, channels: 3 } }); };
   const files = {
     'jpg-56k': path.join(dir, 'a.jpg'),
@@ -12156,6 +12164,12 @@ async function shotsFlow(browser) {
 
 let browserProc = null;
 let browser = null;
+// ★★ R100 (D · D2) — 어떻게 끝나든 띄운 chrome · 서버를 나무째 끝내고 임시 폴더를 지운다 · 시작 때 앞선 실행의 잔여 폴더를 쓸어 낸다
+guardExit({ label: 'ui-check', pids: () => [browserProc?.pid, bootedServer?.pid], dirs: () => tempDirs });
+{
+  const sw = sweepTemp();
+  if (sw.removed || sw.failed) console.log(`[ui-check] 앞선 실행의 임시 폴더 ${sw.removed}개(${sw.mb}MB)를 지웠다${sw.failed ? ` · 잠겨서 못 지움 ${sw.failed}` : ''}`);
+}
 
 try {
   // ★ 시작 시 낡은 잔여물을 먼저 쓸어낸다 (R009).

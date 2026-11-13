@@ -1,5 +1,5 @@
 // ★ R090 — choice-load 파일 꼴 검사(DB 없이)
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -26,6 +26,7 @@ describe('choice-load readChoices', () => {
       }),
     );
     const r = readChoices(f);
+    rmSync(dir, { recursive: true, force: true }); // ★ R100 (D) — 임시 폴더를 남기지 않는다
     expect(r.rows.map((x) => x.qid)).toEqual([1]);
     expect(r.skip).toEqual({ shape: 4, status: 1 });
   });

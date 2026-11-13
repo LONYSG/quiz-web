@@ -70,6 +70,7 @@ import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { io } from 'socket.io-client';
 import { TEST_DATABASE_URL, assertTestServer, useTestDb } from './test-db.mjs';
+import { guardExit } from './proc-lib.mjs';
 
 // ★★★ R060 (D-253) — 검사는 quizweb_test 만(실 DB 로 서버를 띄우지 않는다 · 없으면 npm run db:test-init)
 await useTestDb('bot');
@@ -9302,6 +9303,10 @@ async function scenarioGrant() {
   const c3 = (await api('POST', '/api/me/grants/claim')).json;
   const p2 = (await api('GET', '/api/me/points')).json;
   expectTrue('★★ 월 최다 +30 — 잔액 +35 · 알림 1건(feedback_monthly_top)', mt.code === 0 && p2.balance - p0.balance === 35 && c3?.grants?.length === 1 && c3.grants[0].reason === 'feedback_monthly_top', JSON.stringify({ code: mt.code, d: p2.balance - p0.balance, c3: c3?.grants }));
+  // ★★ R100 (C) — 여러 아이디 한 번에: 없는 아이디가 섞여도 나머지는 지급 · 요약 줄 · exit 1
+  const multi = await runScript('points-grant.mjs', ['--login', `${b1.loginId}, r100_nobody_x ${b1.loginId}`, '--points', '7', '--reason', 'admin', '--note', 'R100 여러 명', '--allow-bot', '--yes']);
+  const p3 = (await api('GET', '/api/me/points')).json;
+  expectTrue('★★ points:grant 여러 아이디 — 없는 것 실패 · 나머지 지급(같은 아이디 두 번은 한 번) · "1명 지급 · 실패 1"', multi.code === 1 && p3.balance - p2.balance === 7 && /1명 지급 · 실패 1/.test(multi.out), JSON.stringify({ code: multi.code, d: p3.balance - p2.balance, out: multi.out.slice(-200) }));
   // 보고 — 채택 표시 · 합계
   const rep = await runScript('feedback-report.mjs', []);
   expectTrue('★★ feedback:report — f# · ✔ 채택 +5P · 사람별 합계', rep.code === 0 && rep.out.includes(`f#${fid}`) && /✔ 채택 \+5P/.test(rep.out) && /채택된 제보 사람별 합계/.test(rep.out), rep.out.split('\n').filter((l) => l.includes(`f#${fid}`)).join(' / '));
@@ -9943,6 +9948,9 @@ if (!run) {
   console.error(`가능한 값: ${Object.keys(SCENARIOS).join(', ')}`);
   process.exit(1);
 }
+
+// ★★ R100 (D2 ③) — 직접 띄운 서버를 어떻게 끝나든(예외 · process.exit · Ctrl+C · 부모가 죽음) 나무째 끝낸다
+guardExit({ label: 'bot', pids: () => [bootedServer?.pid] });
 
 try {
   await ensureServer();

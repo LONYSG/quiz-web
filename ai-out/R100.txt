@@ -1,0 +1,107 @@
+===========================================
+ROUND: R100
+DATE: 2026-11-13 20:15
+TASK: 운영 손질(작은 라운드) — ① ops "할 때마다 백업" 줄이기 ② 포인트 주기 = 아이디 여러 개 ③ 검사 Chrome 임시 프로필 치우기 ④ 메모리 점검 · 정리 메뉴
+STATUS: 완료 — typecheck · vitest 774 · build · ui-check:copy 15/15 ×2 · 봇 grant 13/13 · signup 8/8 (작은 라운드 끝 점검)
+===========================================
+
+[cmd 요약]
+R100 — ops 백업은 6시간 안 것이 있으면 건너뜀 · 남기는 수 3 · 메뉴 6 여러 아이디 · 검사 임시 폴더 56개(3.5GB) 정리 + 앞으로 안 쌓임 ·
+메뉴 20 메모리 점검 · D-357 · A125 · 서버 교체 필요 없음
+
+-------------------------------------------
+0. ★ 찬종이 볼 것
+-------------------------------------------
+ ① 백업이 언제 뜨나: ops 메뉴 6 · 7 · 10 · 11 은 **6시간 안에 뜬 백업이 있으면 건너뛰고**("최근 백업 있음(2시간 전 · …) — 건너뜀" 한 줄),
+    없으면 지금처럼 뜬다. 메뉴 12(DB 백업)는 늘 새로 뜬다. 메뉴 1 은 **마이그레이션이 실제로 적용될 때 늘** 먼저 뜬다.
+    백업은 DB 이름마다 최신 **3개**만 남는다(전엔 5).
+ ② 메뉴 6 쓰는 법: 아이디 칸에 `yuja0218, 123qwe abc` 처럼 **쉼표나 띄어쓰기로 여러 개** → 계정마다 한 줄 →
+    없는 아이디가 있으면 "빼고 나머지만 진행할까요?" → 포인트 · 메모 한 번 → y 한 번 → 끝에 "→ 2명 지급 · 실패 0".
+    메뉴 7(비밀번호 초기화)은 그대로 하나씩.
+ ③ 임시 폴더(%TEMP%): 이 라운드 시작 때 quizui- 22 · r098- 33 · r068av- 1 = **56개 · 3.5GB**(오늘 손으로 지운 뒤 다시 쌓인 것)
+    → 화면 검사 한 번 돌린 뒤 **1개**(지금 r068av- 9MB 하나 — 하루 지나면 지워짐). 같은 검사 한 번 더: quizui- **1 → 1**(늘지 않음).
+ ④ 메뉴 20(새) = 메모리 점검 · 정리: 전체 · 남은 메모리 · 많이 쓰는 프로그램 10 · **우리 검사가 남긴 chrome · node** 목록 → y 면 남은 것만 끈다.
+    실 서버 · 개발 서버 · Docker · Claude · 평소 쓰는 Chrome 은 건드리지 않는다. 지금 눌러 보면 "우리 것 0개"(R099 강제 종료 뒤 남은 것 없음).
+ ⑤ 서버 교체 필요 없음 — ops 는 개발 트리에서 돈다(게임 코드 · DB 구조 · 데이터 변경 0).
+
+-------------------------------------------
+원칙 메모 (7번 — 브리핑 사실 검증)
+-------------------------------------------
+ - "ops.mjs 53행 backup() 을 120 · 129 · 145 · 156 행이 부른다" — 맞음(네 곳).
+ - "ui-check.mjs 511행 mkdtempSync(…'quizui-') 를 지우지 않는다" — 맞음. 4316행 r068av- 도 같음(아바타 파일 폴더).
+ - "play.mjs 가 서버 켤 때 뜨는 백업이 있으면 거기에도" — **play.mjs 는 백업을 아예 뜨지 않았다**(migrate 앞에도 없음).
+   PLAY-GUIDE 1부 3 "메뉴 1 이 먼저 백업을 떴다" 가 사실이 아니었다 → 브리프 규칙("마이그레이션이 실제로 적용될 때는 늘 뜬다")대로
+   적용할 것이 있을 때만 늘 백업 · 실패하면 migrate 하지 않고 멈춘다(scripts/play.mjs).
+ - "backups/ 지금 5개 937MB" — 지금 quizweb 3 · quizweb_dev 4 = 7개(덤프 하나 ≈ 196MB). 다음 백업 때 DB 마다 3 으로 줄어든다.
+ - "R099 강제 종료 때 무엇이 남았나" — 지금 프로세스 목록에 검사용 chrome · bot · ui-check node **0개**(메뉴 20 보기 · 20:00).
+   chrome 8개(0.5GB)는 전부 평소 Chrome(--no-startup-window 의 자식). node 7개는 ops 메뉴 하나 · 다른 창의 GEN 수집(f.mjs · w.mjs · fetch.mjs).
+   남은 것은 프로세스가 아니라 **임시 폴더**(위 0 ③)였다.
+
+-------------------------------------------
+1. A~D2 한 일
+-------------------------------------------
+ A. 백업 건너뜀 — scripts/ops.mjs `backupIfStale()`(backup() 대신 · 네 곳)
+    · backups/ 에서 **지금 DB 이름**(dbNameOf — DB_NAME > DATABASE_URL)의 가장 새 덤프가 6시간 안이면 건너뜀. 0 바이트(실패한 덤프) · 미래 시각 · 다른 DB 이름은 치지 않는다.
+    · 시간 = `BACKUP_FRESH_HOURS`(기본 6 · 0 = 늘 뜸) — backup-prune.mjs `freshHours` · `freshBackup` · `stampMs`(순수 · 테스트 4).
+    · 메뉴 12 "DB 백업 (늘 새로 뜸)" · 머리말 "(DB 를 바꾸는 일은 확인 → 백업(6시간 안 백업이 있으면 건너뜀) → 실행 · 12 는 늘 새로 뜸)".
+    · play.mjs — 마이그레이션 적용 전 늘 백업(위 7번).
+    · 근거: 메뉴 6 · 7 · 10 · 11 은 행 하나를 고치는 일이고 point_grants · app_reports.handled_at · question_feedback 에 남아
+      손으로 되돌릴 수 있다 — 전체 덤프(≈190MB · 수십 초)는 과하다.
+ B. 남기는 수 5 → 3 — backup-prune.mjs DEFAULT_KEEP · ops 메뉴 19 문구 · 정리 명령 `--keep ${DEFAULT_KEEP}` · 테스트 · backup.mjs 머리 주석.
+ C. 포인트 여러 명 — points-grant.mjs `--login "a,b c"`(쉼표 · 공백 · 같은 아이디 두 번은 한 번) · 한 명 = INSERT 한 줄 · 실패(없는 계정 · 봇)가
+    나머지를 막지 않음 · 끝 줄 "[grant] 요약 — n명 지급 · 실패 m (아이디)" · 하나라도 실패면 exit 1. 아이디 하나일 때 출력 · 종료 코드는 전과 같다.
+    ops 메뉴 6 = 아이디들 → 계정 줄(없는 것 "✗ 없는 아이디") → 없는 게 있으면 나머지만 진행할지 y → 포인트 · 메모 → y → 백업(A · 한 번) → 지급 → 요약.
+ D. 임시 프로필 — 새 scripts/proc-lib.mjs
+    · `guardExit` — process 'exit'(정상 · process.exit · skip() · 예외) + SIGINT · SIGTERM · SIGBREAK · SIGHUP(→ exit 130) 에서
+      띄운 chrome · 서버를 `taskkill /T /F` 로 나무째 끝내고 만든 폴더를 지운다(rmSync 재시도 5 · 400ms — 막 꺼진 chrome 잠금).
+      + **부모 쪽 프로세스 감시**: 시작 때 조상 PID(explorer 앞까지)를 알아 두고 10초마다 — 하나라도 사라지면 exit(1) → 같은 정리(PARENT_WATCH=0 으로 끔).
+    · `sweepTemp` — 시작할 때 quizui- · r098- · r068av- 중 **하루 넘은 것** + **30분 넘었고 어떤 chrome 명령줄의 --user-data-dir 도 아닌 프로필**을 지운다.
+      ★ 판단: 브리프의 "하루" 만으로는 오늘 쌓인 56개를 하나도 못 지운다(전부 오늘 것). 지금 다른 검사가 쓰는 프로필은 chrome 명령줄에 이름이 있으니
+      나이 대신 그것으로 가른다(30분은 여유). 잠겨서 못 지우면 조용히 넘어감.
+    · ui-check.mjs — 프로필 · r068av 폴더를 목록에 담아 guardExit · 시작 때 sweepTemp · 브라우저 못 띄운 시도의 프로필은 그 자리에서 지움.
+    · tmp/r098/repro.mjs(일회용 · git 밖) — 같은 guardExit.
+    · os.tmpdir() 에 남기는 것(grep):
+        | 파일 | 머리 | 무엇 | 처리 |
+        |---|---|---|---|
+        | scripts/ui-check.mjs | quizui- | Chrome 프로필(실행마다 ≈ 100MB) | 끝날 때 지움 + 시작 때 쓸기 |
+        | scripts/ui-check.mjs | r068av- | 아바타 시험 파일(9MB) | 끝날 때 지움 + 하루 지난 것 쓸기 |
+        | tmp/r098/repro.mjs | r098- | 헤드풀 Chrome 프로필(≈ 37MB) | 끝날 때 지움 + 시작 때 쓸기(ui-check 가) |
+        | scripts/choice-load.test.mjs | choice- | json 하나(1KB · vitest 마다) | 시험 끝에 지움(4개 남아 있던 것도 지움) |
+        | scripts/minigame-song.test.mjs | mgload- | 시험 파일 | 이미 지우고 있었다 |
+        | scripts/bot.mjs | — | 없음 | — |
+    · 확인(숫자): 시작 전 %TEMP% quizui- 22 · r098- 33 · r068av- 1 = 56 → ui-check:copy(15/15) 뒤 1(쓸기 55개 · 3,498MB) →
+      다시 ui-check:copy(15/15) 전 quizui- 1 → 뒤 1(0 증가).
+ D2. 메뉴 20 · scripts/mem-check.mjs
+    · 보기: 전체 · 남은 메모리 · 이름별 상위 10(개수 · GB) · 우리 것으로 보이는 프로세스(검사 표시 있는 chrome 나무 = 뿌리 하나 + 자식 수 · 합계 MB /
+      이 저장소의 bot · ui-check · vitest · tsx · vite node) — PID · MB · 시작 · 부모 살아 있나 · 끝낼 이유.
+    · 정리(ops 가 y 를 받은 뒤 `--kill`): 고아(부모 없음 · 또는 부모 PID 를 늦게 뜬 다른 프로세스가 씀) · 6시간 넘은 검사용 chrome 만 taskkill /T · 그 뒤 임시 폴더 쓸기 · 되찾은 MB 한 줄씩.
+    · 보호: play.json pid · 3000 · 3001 포트 PID · play/dev 창(ops-run) · 이 메뉴 자신 — 그 조상 · 자손까지. claude · codex · Code · Docker · WSL · postgres 는 이름 · 명령줄로 아예 뺌.
+      표시 없는 일반 chrome 은 목록에 오르지 않는다. dev 서버가 떠 있으면 "떠 있음 — 끄려면 메뉴 16" 만.
+    · 분류는 순수 함수 `classifyProcs` — 시험 proc-lib.test.mjs(고아 · PID 재사용 · 6시간 chrome · 보호 자손 · 고아여도 보호인 dev · claude/codex 뺌 · 일반 chrome 뺌 · 조상 · 쓸기 규칙).
+    · ③ 검사 스크립트 쪽 원인:
+      - ui-check: 끝내기는 finally 에만 있었고 skip() · 다른 process.exit · Ctrl+C · 부모 강제 종료 땐 chrome · 서버 · 프로필이 남을 수 있었다 → guardExit.
+      - bot: 직접 띄운 서버 끄기가 try/catch 끝에만 → guardExit(서버 PID).
+      - 실험(scratchpad): ⓐ cmd.exe 부모를 강제 종료 → 13초 안에 "[t] ★ 부모 쪽 프로세스(cmd.exe …)가 사라졌다" · 폴더 지워짐.
+        ⓑ SIGINT → exit 130 · 자식(ping) 끝남 · 폴더 지워짐.
+        ⓒ **node 부모**를 강제 종료 → Windows 작업 개체(libuv)가 자식 ui-check · chrome 을 **그 자리에서** 끝낸다(프로세스는 안 남음) — exit 처리가 못 돌아
+           그 실행의 프로필 하나가 남는다 → 다음 실행의 시작 쓸기(30분 뒤)가 지운다. 프로세스가 남는 길은 node 가 아닌 부모(bash · cmd · claude)가 죽을 때 → 감시가 맡는다.
+
+-------------------------------------------
+2. 못 한 것
+-------------------------------------------
+ - 끝 점검은 작은 라운드 기준(typecheck · vitest · build · ui-check 묶음 하나(copy) + 봇 grant · signup). npm run verify 전체 · 봇 전체는 돌리지 않았다
+   (바뀐 것은 ops · 검사 스크립트의 끝내기 · 정리뿐 — 게임 코드 0).
+ - 실제 Ctrl+C 키(콘솔 신호)는 사람이 누르는 것이라 못 눌렀다 — 같은 처리 길(process.emit SIGINT)만 실험.
+ - 메뉴 6 은 검사 DB(quizweb_test)로 한 번 돌렸다(edge · test2 +3P 뒤 지움). 실 DB 에서는 안 돌렸다. 백업을 "뜨는" 쪽 길은 덤프가 190MB 라 실험하지 않았다(전과 같은 명령).
+
+-------------------------------------------
+3. 끝 점검 (작은 라운드 · 단계별)
+-------------------------------------------
+ - npm run typecheck 통과 · vitest 57 파일 774 통과(새 proc-lib.test 9 · backup-prune.test +4) · npm run build 통과
+ - ui-check:copy 15/15 (두 번) · bot grant 13/13(새 "여러 아이디" 한 줄 포함) · bot signup 8/8
+ - mem-check 보기 · ops 메뉴 6(검사 DB · 피드 입력) · 부모 강제 종료 · SIGINT 실험(위 D2 ③)
+
+-------------------------------------------
+고친 문서
+-------------------------------------------
+ docs/06-WORKLOG · 07-DECISIONS(D-357) · 13-PENDING-CHECKS(A125) · 11-DEPLOY(메뉴 표 5~13 · 19 · 20 · 메뉴 1 migrate 백업) · PLAY-GUIDE(1부 메뉴 6 · 백업 · 20) · README(db:backup 줄 · mem-check) · ai-out/README

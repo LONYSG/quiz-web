@@ -312,6 +312,10 @@ async function main() {
     const dry = sh('node scripts/migrate.mjs --dry', { quiet: true, cwd: TREE });
     const pending = dry.stdout.match(/적용 대상 (\d+)개/);
     if (pending) {
+      // ★★ R100 (A) — 구조가 바뀌는 일이라 **늘** 먼저 백업(최근 백업이 있어도 · ops 의 6시간 건너뜀 규칙을 쓰지 않는다) · 실패하면 migrate 하지 않고 멈춘다
+      //   (PLAY-GUIDE 1부 3 "메뉴 1 이 먼저 백업을 떴다" — R100 전에는 실제로 뜨지 않았다)
+      log(`마이그레이션 ${pending[1]}개 적용 전 백업 (npm run db:backup · 늘 뜸)`);
+      sh('node scripts/backup.mjs', { cwd: ROOT });
       log(`마이그레이션 ${pending[1]}개 적용 (${HERE ? '이 트리' : '플레이 트리'}의 migrations · 잠금 10초 제한 — 걸리면 스스로 멈추고 알려 준다)`);
       sh('node scripts/migrate.mjs', { cwd: TREE });
     } else log('적용할 마이그레이션 없음 → migrate 건너뜀');
