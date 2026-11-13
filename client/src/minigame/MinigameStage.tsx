@@ -384,7 +384,7 @@ function readyDesc(view: MinigameView): string {
     case 'songyear':
       return '곧 노래가 나와요 — 몇 년도?';
     case 'unique':
-      return `${String(p.nameKo ?? '')} — 남과 안 겹칠 답 하나`;
+      return `${String(p.nameKo ?? '')} — 남과 안 겹칠 답 여러 개`;
     case 'choice':
       return '';
     case 'cake': {

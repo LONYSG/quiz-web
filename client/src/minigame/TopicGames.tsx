@@ -4,7 +4,7 @@
 // ★ 많이 말하기: 주제 · 남은 시간 막대 · 입력칸(Enter 마다 보냄 · 포커스 유지 — 모바일 키보드가 내려가지 않게 같은 요소) ·
 //   서버 답(minigame.feedback — 나에게만)으로 ✓ 항목 이름 / 이미 말함 / ✗. 남의 답 · 남의 개수는 판 중에 안 보인다.
 //   공개(roundResult): 사람마다 맞힌 것(나만 말한 답 표시) · 못 말한 것(많으면 접기) · "이건 왜 정답 아냐?"(내 오답을 채운 제보 창).
-// ★ 겹치면 무효: 주제 · 15초 · 답 하나(바꿀 수 있음) — 내 답이 정답 집합 안인지만 바로 보인다(남과 겹치는지는 공개 때).
+// ★ 겹치면 무효: 주제 · 15초 · ★ R099 여러 답 — 낸 답마다 정답 집합 안인지만 바로 보인다(남과 겹치는지는 공개 때).
 // ★ 객관식 5연속: 질문 + 보기 넷(1~4 키 · 클릭/톡) · 한 번만 · 7초.
 // =============================================================================
 
@@ -255,16 +255,25 @@ export function ManyFinalReport({ view, myAccountId }: { view: MinigameView; myA
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 겹치면 무효
+// ★★★ R099 (찬종 #126 — "남들과 하나라도 겹친 정답은 전부 0. 안 겹친 답만 세서 제일 안 겹친 말을 많이 쓴 사람이 1등") —
+//   15초 동안 여러 답(Enter 마다 하나 · 많이 말하기와 같은 입력칸) · 낸 답은 입력칸 아래 "내가 낸 답 n개" 칩(목록 밖은 취소선) ·
+//   공개: 사람마다 "n개"(안 겹친 정답 수) + 답 칩(안 겹친 것 = ★ 강조 · 겹친 것 = 흐리게 · 목록 밖 = 취소선) — 많이 말하기 공개와 같은 꼴
 // ─────────────────────────────────────────────────────────────────────────────
+type UFb = Omit<Fb, 'result'> & { result: Fb['result'] | 'dupWrong' };
 export function UniquePick({ socket, view, serverNow, mobile }: Props) {
   const p = view.round?.params ?? {};
   const t = useTimer(view, serverNow);
-  const [st, setSt] = useState<{ key: string; fb: Fb } | null>(null);
-  const mine = st?.key === t.key ? st.fb : null;
+  const [st, setSt] = useState<{ key: string; sent: { t: string; ok: boolean }[]; last: UFb | null } | null>(null);
+  const mine = st?.key === t.key ? st : null;
   useEffect(() => {
-    const on = (fb: Fb & { token: string; roundIndex: number }) => {
+    const on = (fb: UFb & { token: string; roundIndex: number }) => {
       if (fb.token !== view.token || fb.roundIndex !== view.roundIndex) return;
-      setSt({ key: `${fb.token}:${fb.roundIndex}`, fb });
+      const k = `${fb.token}:${fb.roundIndex}`;
+      setSt((s) => {
+        const prev = s?.key === k ? s : { key: k, sent: [] as { t: string; ok: boolean }[], last: null };
+        const add = fb.result === 'ok' ? [{ t: fb.label ?? fb.text ?? '', ok: true }] : fb.result === 'wrong' ? [{ t: fb.text ?? '', ok: false }] : [];
+        return { key: k, sent: [...prev.sent, ...add], last: fb };
+      });
       sfx(fb.result === 'ok' ? 'mg-tap' : 'mg-foul');
     };
     socket.on('minigame.feedback', on);
@@ -276,6 +285,8 @@ export function UniquePick({ socket, view, serverNow, mobile }: Props) {
     if (t.t0 === null) return;
     socket.emit('minigame.submit', { token: view.token, roundIndex: view.roundIndex, input: { text, elapsedMs: performance.now() - t.t0 } });
   };
+  const last = mine?.last ?? null;
+  const sent = mine?.sent ?? [];
   return (
     <div className="quiz-stage topic-stage unique-stage">
       <div className="circle-bar" aria-hidden="true">
@@ -283,55 +294,95 @@ export function UniquePick({ socket, view, serverNow, mobile }: Props) {
       </div>
       <p className="topic-title" data-topic={String(p.topic ?? '')}>
         <strong>{String(p.nameKo ?? '')}</strong>
-        <span className="dim"> — 남과 안 겹칠 답 하나! </span>
+        <span className="dim"> — 남과 안 겹칠 답 여러 개! </span>
         <span className="mono topic-left">{t.leftSec}초</span>
       </p>
       {/* ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄(없으면 안 보임) */}
       {p.scope ? <p className="topic-scope dim" data-topic-scope>{String(p.scope)}</p> : null}
-      <TopicInput canPlay={t.canPlay} mobile={mobile} resetKey={t.key} placeholder={view.spectating ? '구경 중' : mine ? '바꾸려면 다시 치기' : '답 하나 → Enter'} label="답 입력" onSend={send} />
-      <p className={`quiz-num-help topic-fb${mine?.result === 'ok' ? ' ok' : mine ? ' bad' : ' dim'}`} data-feedback={mine?.result ?? ''} data-unique-mine={mine?.label ?? mine?.text ?? ''}>
-        {mine?.result === 'ok' ? (
+      <TopicInput canPlay={t.canPlay} mobile={mobile} resetKey={t.key} placeholder={view.spectating ? '구경 중' : '떠오르는 대로 치고 Enter'} label="답 입력" onSend={send} />
+      <p className={`quiz-num-help topic-fb${last?.result === 'ok' ? ' ok' : last ? ' bad' : ' dim'}`} data-feedback={last?.result ?? ''}>
+        {last?.result === 'ok' ? (
           <>
-            내 답 <strong>{mine.label}</strong> <Icon icon={Check} /> <span className="dim">· 바꿔도 돼요</span>
+            <Icon icon={Check} /> {last.label}
           </>
-        ) : mine ? (
+        ) : last?.result === 'dup' || last?.result === 'dupWrong' ? (
+          `"${last.label ?? last.text}" — 이미 냈어요`
+        ) : last?.result === 'wrong' ? (
           <>
-            <Icon icon={X} /> {mine.hint ? <span data-topic-hint>{mine.hint}</span> : `"${mine.text}" — 이 주제의 정답이 아니에요(0점) · 다시!`}
+            <Icon icon={X} /> {last.hint ? <span data-topic-hint>{last.hint}</span> : `"${last.text}" — 이 주제의 답이 아니에요(0점)`}
           </>
         ) : view.spectating ? (
-          '구경 중이에요'
+          '구경 중이에요 — 끝나면 모두의 답이 공개돼요'
         ) : (
-          '마지막에 낸 답 하나만 — 남과 같으면 둘 다 0점'
+          '남과 겹친 답은 0점 — 안 겹친 답이 많을수록 1등'
         )}
       </p>
+      {!view.spectating && (
+        <div className="topic-mine" aria-label="내가 낸 답">
+          <span className="topic-count mono" data-unique-count={sent.length}>
+            내가 낸 답 {sent.length}개
+          </span>
+          <span className="topic-chips">
+            {sent.map((x, i) => (
+              <span key={`${x.t}-${i}`} className={x.ok ? 'topic-chip ok' : 'topic-chip out'} data-unique-sent={x.ok ? 'ok' : 'out'}>
+                {x.t}
+              </span>
+            ))}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
 
+/** 공개 — 사람마다 안 겹친 정답 수 · 답 칩(안 겹침 ★ · 겹침 흐림 · 목록 밖 취소선) · 제보 버튼(내 목록 밖 답) */
 export function UniqueReveal({ view, rows, myAccountId, nameOf }: { view: MinigameView; rows: readonly MinigameRoundRow[]; myAccountId: string; nameOf: NameOf }) {
-  const topic = String(view.round?.reveal?.nameKo ?? view.round?.params?.nameKo ?? '');
+  const rv = view.round?.reveal ?? {};
+  const topic = String(rv.nameKo ?? view.round?.params?.nameKo ?? '');
+  const labels = (rv.labels as Record<string, string> | undefined) ?? {};
+  const mine = rows.find((r) => r.accountId === myAccountId);
+  const myWrong = (mine?.extra?.wrong as string[] | undefined) ?? [];
   return (
     <div className="topic-reveal unique-reveal" data-unique-reveal>
       <p className="topic-reveal-title">
-        <strong>{topic}</strong>
+        <strong>{topic}</strong> <span className="dim">· 남과 겹친 답은 0</span>
       </p>
-      <ul className="unique-people">
+      <ul className="many-people">
         {rows.map((r) => {
           const n = nameOf(r.accountId);
           const ex = r.extra ?? {};
-          const text = (ex.label as string | null) ?? (ex.text as string | undefined) ?? null;
-          const state = !text ? 'none' : ex.win ? 'win' : ex.dup ? 'dup' : 'bad';
+          const found = (ex.found as string[] | undefined) ?? [];
+          const only = new Set((ex.only as string[] | undefined) ?? []);
+          const wrong = (ex.wrong as string[] | undefined) ?? [];
+          const lb = { ...((ex.labels as Record<string, string> | undefined) ?? {}), ...labels };
           return (
-            <li key={r.accountId} className={`${r.accountId === myAccountId ? 'me ' : ''}u-${state}`} data-unique-state={state}>
+            <li key={r.accountId} className={r.accountId === myAccountId ? 'me' : undefined} data-unique-row={only.size}>
               <span className="nick" style={{ color: `var(--p${n?.colorIndex ?? 0})` }}>
                 {n?.nickname ?? '나간 사람'}
               </span>
-              <span className="unique-ans">{text ?? '안 냄'}</span>
-              <span className="unique-tag">{state === 'win' ? '+1' : state === 'dup' ? '겹침 · 0' : state === 'bad' ? '정답 아님 · 0' : '0'}</span>
+              <span className="mono topic-count">{only.size}개</span>
+              <span className="topic-chips">
+                {found.map((id) => (
+                  <span key={id} className={only.has(id) ? 'topic-chip only' : 'topic-chip dup'} title={only.has(id) ? '안 겹친 답' : '겹침 · 0'} data-unique-chip={only.has(id) ? 'only' : 'dup'}>
+                    {lb[id] ?? id}
+                  </span>
+                ))}
+                {wrong.map((w, i) => (
+                  <span key={`w-${i}`} className="topic-chip out" title="주제의 답이 아님 · 0" data-unique-chip="out">
+                    {w}
+                  </span>
+                ))}
+                {found.length === 0 && wrong.length === 0 && <span className="dim">안 냄</span>}
+              </span>
             </li>
           );
         })}
       </ul>
+      {!view.spectating && !view.practice && myWrong.length > 0 && (
+        <p className="topic-report-line">
+          <TopicReportButton topic={topic} wrong={myWrong} />
+        </p>
+      )}
     </div>
   );
 }
@@ -431,9 +482,11 @@ export function ChoiceAnswers({ view, myAccountId }: { view: MinigameView; myAcc
 export function topicValueText(view: MinigameView, r: MinigameRoundRow): string {
   if (view.key === 'many') return `${Number(((r.extra?.found as unknown[]) ?? []).length)}개`;
   if (view.key === 'unique') {
+    // ★ R099 — 안 겹친 정답 수(겹친 것 · 목록 밖은 0)
     const ex = r.extra ?? {};
-    const text = (ex.label as string | null) ?? (ex.text as string | undefined) ?? null;
-    return !text ? '안 냄' : ex.win ? `${text}` : ex.dup ? `${text} · 겹침` : `${text} · 정답 아님`;
+    const only = ((ex.only as unknown[]) ?? []).length;
+    const dup = ((ex.dup as unknown[]) ?? []).length;
+    return !r.submitted && only === 0 && dup === 0 ? '안 냄' : `${only}개${dup ? ` · 겹침 ${dup}` : ''}`;
   }
   if (!r.submitted) return '안 고름';
   return r.extra?.correct ? `정답 ${((r.value ?? 0) / 1000).toFixed(2)}초` : '오답';

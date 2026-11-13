@@ -10,6 +10,15 @@
 
 ---
 
+## D-356. 문제 평가 없앰 · 겹치면 무효 = 여러 답 · 안 겹친 정답 수 · 노래 가림막 불투명 + 다음 곡 첫 프레임 비침 (R099 · 찬종 2026-11-12 폼 #126 #127 · 2026-11-13)
+- 평가: 공개 화면 RevealFeedback · SongRate · 결과 · 로비 목록의 투표 · `POST /api/feedback/question` · `POST /api/minigame/song-rate` · `game.rateAsk` · `noteRateAsk` · `config.tuning.rateAskForce` · `rateSkipLogin` · shared 평가 함수(RATE_POINTS · RATE_CHOICES · pickRateAsk · rateNeedsReason · parse*FeedbackInput)를 지웠다. `game_questions.rate_ask` 는 안 적는다(열 기본 false).
+  목록(`GET /api/feedback/game/:id/mine` · `/last-game`)은 남겼다 — 줄마다 제보 📝 가 그 문항을 채우는 길이라서(MAIN 판단 — 되돌리기 쉽다 · 찬종이 "목록도 빼" 라면 ResultFeedback · LastGameFeedback 두 줄을 지우면 된다). 응답에서 vote · reasons · comment 는 뺐다.
+  표 · 옛 기록 · `feedback:report` · `song:feedback` 은 그대로(머리에 "새 입력 없음" 한 줄).
+- 겹치면 무효: parseInput 이 판 안에서 정답 항목(found) · 오답(wrong ≤ 30) · 낸 글(texts)을 쌓는다(많이 말하기와 같은 꼴 · 같은 항목 = dup · 같은 오답 = dupWrong) · 정산 `uniqueCount`(shared) = 남과 겹친 항목 전원 0 · 안 겹친 항목 수 · info `scoring: 'value'`(판 값 = 판 점수 · 3판 합 · 최종 순위 → 기존 포인트 표) · unit '개'. 기록 input = `{ texts }` · value = 안 겹친 수(0 이면 null).
+- 가림막: `.song-cover-veil` 색 = `--mask-bg`(불투명) · inset −1px · 사무실 테마의 "장식 0" 규칙(*:not(.mg-card) background-image · filter none !important)이 **R096 부터 가림막 · 흑백을 지워 표지가 다 보였다** → 같은 !important 로 되살림(사무실 색 --surface-2).
+  ★ ui-check r096 새 검사(새 표지 칸 첫 프레임)가 잡은 것: 다음 곡 첫 그림에서 Question 의 `remainMs` 상태가 앞 곡 값(≈3초)이라 progress 0.898 → 새 표지가 90% 열린 채 한 프레임. → 남은 시간을 endsAt 과 짝으로 두고 endsAt 이 바뀐 첫 그림은 바로 계산(퀴즈 시간 막대의 같은 한 칸도 같이 고쳐짐). 표지 칸 key = epoch(곡마다 새 칸 — 옛 칸의 --song-p 120ms 되감기 방지).
+- 되돌리기: 커밋 revert(DB 구조 0 · 데이터 0).
+
 ## D-355. 실 서버 화면이 개발용 React 로 빌드되던 것 → 노래 방식 판 곡이 붙자마자 꺼짐 · 빌드 NODE_ENV=production 고정 + 개발용이면 띄우지 않음 · SongPlay 효과 다시 붙어도 다시 틂 · [▶ 듣기] 가 이 곡을 다시 튼다 (R098 · 찬종 2026-11-12 밤 실전 "PC 전부 소리 안 남")
 - 원인(재현): `scripts/play.mjs` 가 `.env` 를 process.env 에 읽어 들인다(loadEnvFile) → `.env` 의 `NODE_ENV=development` 가 플레이 트리 `npm run build` 로 넘어가 Vite 가 **개발용 묶음**(jsxDEV · React StrictMode 이중 실행)을 만들었다. 실 3000 묶음 jsxDEV 2,385곳 · 이 트리(손으로 빌드) 0곳.
   StrictMode 가 Question 을 붙였다 떼었다 다시 붙이는 사이: SongPlay 효과 playSong → 부모 useSongMusicQuiet 정리 stopSong(AbortError · url 없음 · idle) → 다시 붙을 때 `startedFor === epoch` 라 건너뜀 → 곡이 꺼진 채 [▶ 듣기] · 누르면 unlockSongAudio 가 url 이 없어 무음만 틀고 헤드셋 빈칸(찬종 답 그대로). 개발용 빌드 + 혼자 방으로 재현 → 고친 뒤 같은 개발용 빌드에서 playing · 12.4초 흐름.

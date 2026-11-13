@@ -3,7 +3,7 @@
 //
 // ★ 판 흐름은 퀴즈 그대로(game/question.ts beginQuestion → resolveQuestionSync → advanceAfterResolved) — 이 파일은 그 안의
 //   "문항 = 곡" 부분만: 곡 풀(적재본 minigame_items 'song' · 방 설정 범위) · 다음 곡 고르기(경험 없는 곡 먼저 · 이 판 중복 0) ·
-//   CurrentQuestion.song 만들기 · 기록(minigame_runs 'song' 재사용 — 마이그레이션 없음 · 평가 = minigame_results.input.rate).
+//   CurrentQuestion.song 만들기 · 기록(minigame_runs 'song' 재사용 — 마이그레이션 없음 · ★ R099 평가 입력 없앰 — 옛 평가는 minigame_results.input.rate).
 // ★ 판정 = 제목만(title · titleVariants · trackName — songMatcher 의 'title' 열쇠) · 가수 = 본인 알림(socket chat.send).
 // ★ 경험 = minigame_item_experiences('song', id) — 미니게임 노래 맞히기와 같은 키 'song|<id>'(어느 쪽으로 들었어도 들은 곡).
 // ★ 퀴즈 표(game_questions · answer_events · question_experiences · near_misses · question_feedback)는 questions(id) FK 라 쓰지 않는다.
@@ -212,16 +212,3 @@ export function closeSongRun(run: SongRun, reason: 'completed' | 'force_ended' |
   fire('판 끝', finishRun(run.runId, reason, finals.map((f) => ({ ...f, reward: 0 }))));
 }
 
-/**
- * ★ 곡 평가(공개 화면 👍 😐 👎 · 👎 사유 — shared SONG_FEEDBACK_REASONS) — 한 사람 한 곡 하나(나중 것이 이긴다)
- *   minigame_results.input.rate = { vote, reasons } · 그 곡 행이 없으면(못 맞힌 사람) submitted=false 행으로 만든다
- */
-export async function saveSongRate(runId: string, index: number, accountId: string, vote: number, reasons: readonly string[]): Promise<void> {
-  const rate = JSON.stringify({ rate: { vote, reasons, at: new Date().toISOString() } });
-  await query(
-    `INSERT INTO minigame_results (run_id, round_index, account_id, submitted, input, value, error, elapsed_ms, rank, points)
-     VALUES ($1, $2, $3, false, $4::jsonb, NULL, NULL, NULL, 0, 0)
-     ON CONFLICT (run_id, round_index, account_id) DO UPDATE SET input = coalesce(minigame_results.input, '{}'::jsonb) || $4::jsonb`,
-    [runId, index, accountId, rate],
-  );
-}

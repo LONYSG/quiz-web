@@ -4,7 +4,7 @@
 // ★ 많이 말하기(many): 주제 하나 · timeSec(기본 30) 동안 글 입력(Enter 마다) · 서버 판정 즉시 **본인에게만** ✓ / ✗ / 이미 말함
 //   (남의 답 · 남의 개수 안 보임 — countProvisional 없음 · 제출 수 줄도 화면이 숨긴다) · 끝나면 전원 목록 · 나만 말한 답 · 못 말한 것 공개.
 //   점수 = 맞힌 수 → 판 순위 점수(rankRound · 동점 공동). 0개는 값 없음(0점).
-// ★ 겹치면 무효(unique): 판마다 다른 주제(3판) · 15초 · 답 하나(바꿀 수 있음 — 마지막 것) · 정답 밖 0 · 둘 이상 같은 항목 전원 0 · 혼자만 낸 정답 1.
+// ★ 겹치면 무효(unique): 판마다 다른 주제(3판) · 15초 · ★ R099 여러 답 · 남과 겹친 항목은 전원 0 · 판 점수 = 안 겹친 정답 수(옛: 답 하나 · 혼자만 1).
 // ★ 객관식 5연속(choice · R090 10 → 5): 이 판의 출제 풀(game.pool)에서 **저장 보기(question_choices)가 있는** 알가치 ≥ 2 · 등급 1~3 · 이미 나온 문항 · 정답 제외 · 분야 섞어 5 ·
 //   보기 = 대표 정답 + 저장된 오답 셋(정답 변형과 겹치면 그 문항은 건너뜀 · 순서는 시드로 섞음). ★ R090 — 옛 "풀에서 다른 대표 정답 뽑기"는 지움(보기 퀄리티 — 찬종 테스트 1).
 //   고른 10문항은 game.usedQuestionIds · usedAnswerNorms 에 넣는다(본판이 뒤에 내지 않게). ★ 질문 경험으로 기록하지 않는다(보기로 본 것은 푼 게 아니다).
@@ -36,7 +36,7 @@ import {
   flexCanon,
   normalizeAnswer,
   seededRandom,
-  uniqueResult,
+  uniqueCount,
 } from '@quiz/shared';
 import { ambiguousHint, makeTopicSet, topicsForKey, type TopicSet } from '../db/topics.js';
 import type { BuildCtx, MinigameDef, RoundSpec } from './defs.js';
@@ -194,6 +194,11 @@ export const many: MinigameDef = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 겹치면 무효
+// ★★★ R099 (찬종 #126 · 2026-11-12 폼 "여러 답 · 안 겹친 정답 수로 순위") — 판(15초) 동안 **여러 답**(Enter 마다 하나) ·
+//   같은 사람의 같은 항목 · 같은 오답은 하나로 · 주제 목록 밖은 0(벌점 없음) · 남과 하나라도 겹친 항목은 그 항목이 전원 0 ·
+//   판 점수 = 안 겹친 정답 수(scoring 'value') → 3판 합산 → 최종 순위(동점 공동) → 기존 순위 → 포인트 표.
+//   옛 규칙(R080): 판마다 답 하나(마지막 것) · 혼자만 낸 정답 1.
+//   기록: minigame_results.input = { texts: [...] }(낸 글 그대로 · 중복 뺀 것) · value = 안 겹친 정답 수(0 이면 null)
 // ─────────────────────────────────────────────────────────────────────────────
 export const unique: MinigameDef = {
   key: 'unique',
@@ -212,28 +217,55 @@ export const unique: MinigameDef = {
     }));
   },
   countProvisional: true,
-  parseInput(raw, spec) {
+  parseInput(raw, spec, ctx) {
     const text = textOf(raw);
     if (text === null) return null;
+    const ex = ctx.prev?.extra ?? {};
+    const found = [...((ex.found as string[] | undefined) ?? [])];
+    const wrong = [...((ex.wrong as string[] | undefined) ?? [])];
+    const texts = [...((ex.texts as string[] | undefined) ?? [])];
+    const tries = Number(ex.tries ?? 0) + 1;
+    if (tries > MANY_MAX_TRIES) return null;
     const sec = secretOf(spec);
     const id = matchTopic(sec.matcher, text);
     const label = id ? (sec.items.find((x) => x.id === id)?.label ?? text) : null;
+    let feedback: Record<string, unknown>;
+    if (id && found.includes(id)) feedback = { result: 'dup', label, text, count: found.length };
+    else if (id) {
+      found.push(id);
+      texts.push(text);
+      feedback = { result: 'ok', label, text, id, count: found.length };
+    } else {
+      const n = normalizeAnswer(text);
+      const again = wrong.some((w) => normalizeAnswer(w) === n);
+      if (!again && wrong.length < MANY_WRONG_KEEP) {
+        wrong.push(text);
+        texts.push(text);
+      }
+      const hint = ambiguousHint(sec.ambiguous, text);
+      feedback = { result: again ? 'dupWrong' : 'wrong', text, count: found.length, ...(hint ? { hint } : {}) };
+    }
+    const labels = Object.fromEntries(found.map((x) => [x, sec.items.find((it) => it.id === x)?.label ?? x]));
     return {
-      input: { text },
+      input: { texts },
       value: null,
       error: null,
       elapsedMs: num(objOf(raw)?.elapsedMs),
-      extra: { text, itemId: id, label },
+      submitted: texts.length > 0,
+      extra: { found, wrong, texts, labels, tries },
       provisional: true,
-      feedback: { result: id ? 'ok' : 'wrong', text, label, ...(!id && ambiguousHint(sec.ambiguous, text) ? { hint: ambiguousHint(sec.ambiguous, text) } : {}) },
+      feedback,
     };
   },
   finalizeRound(spec, subs) {
-    const picks = new Map([...subs.entries()].map(([a, s]) => [a, (s.extra?.itemId as string | null | undefined) ?? null] as const));
-    const r = uniqueResult(picks);
+    const sec = secretOf(spec);
+    const found = new Map([...subs.entries()].map(([a, s]) => [a, (s.extra?.found as string[] | undefined) ?? []] as const));
+    const r = uniqueCount(found);
+    const labelOf = new Map(sec.items.map((x) => [x.id, x.label]));
     const values = new Map<string, { value: number | null; extra?: Record<string, unknown> }>();
-    for (const [a, v] of r) values.set(a, { value: v.win ? 1 : null, extra: { dup: v.dup, win: v.win, valid: v.itemId !== null } });
-    return { values, reveal: { nameKo: spec.params.nameKo } };
+    for (const [a, v] of r) values.set(a, { value: v.only.length > 0 ? v.only.length : null, extra: { only: v.only, dup: v.dup } });
+    const shown = new Set([...found.values()].flat());
+    return { values, reveal: { nameKo: spec.params.nameKo, labels: Object.fromEntries([...shown].map((id) => [id, labelOf.get(id) ?? id])) } };
   },
 };
 

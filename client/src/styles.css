@@ -9603,6 +9603,16 @@ button.preset.shake {
   border: 1px dashed var(--line, currentColor);
   color: var(--text-dim);
 }
+/* ★★★ R099 — 겹치면 무효: 겹친 답(흐리게 · 0) · 주제 목록 밖(취소선 · 0) — 같은 칩 꼴 · 기존 토큰만 */
+.topic-chip.dup {
+  color: var(--text-dim);
+  opacity: 0.6;
+}
+.topic-chip.out {
+  background: transparent;
+  color: var(--text-dim);
+  text-decoration: line-through;
+}
 .topic-reveal {
   display: grid;
   gap: 6px;
@@ -9612,8 +9622,7 @@ button.preset.shake {
   margin: 0;
   text-align: center;
 }
-.many-people,
-.unique-people {
+.many-people {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -9630,8 +9639,7 @@ button.preset.shake {
   padding: 4px 6px;
   border-radius: 10px;
 }
-.many-people li.me,
-.unique-people li.me {
+.many-people li.me {
   background: var(--surface-2);
 }
 .topic-missed summary {
@@ -9652,32 +9660,7 @@ button.preset.shake {
   margin: 2px 0 0;
   font-size: 0.85rem;
 }
-.unique-people li {
-  display: grid;
-  grid-template-columns: minmax(64px, auto) 1fr auto;
-  gap: 8px;
-  align-items: center;
-  padding: 4px 6px;
-  border-radius: 10px;
-}
-.unique-ans {
-  font-weight: 700;
-  word-break: keep-all;
-}
-.unique-tag {
-  font-size: 0.8rem;
-  font-weight: 900;
-}
-.u-win .unique-tag {
-  color: var(--ok);
-}
-.u-dup .unique-tag,
-.u-bad .unique-tag {
-  color: var(--bad);
-}
-.u-dup .unique-ans {
-  text-decoration: line-through;
-}
+/* ★ R099 — 옛 겹치면 무효 공개 줄(답 하나 · +1 / 겹침 · 0) 꼴은 지웠다 — 이제 많이 말하기 공개 줄(.many-people) 그대로 */
 .choice-q {
   margin: 4px 0;
   font-size: 1.1rem;
@@ -11193,11 +11176,13 @@ button.preset.shake {
   font-size: 3rem;
   color: var(--text-dim);
 }
-/* ★ 가림막 — 12시부터 시계 방향으로 밝아지는 부채꼴(흐른 비율 --song-p) */
+/* ★ 가림막 — 12시부터 시계 방향으로 밝아지는 부채꼴(흐른 비율 --song-p)
+   ★★ R099 (찬종 2026-11-13 "기본 배경이 연한 검정이라 무슨 커버인지 이미 다 보인다 · 아예 안 보이게") — 비침 0(불투명 · 가림 토큰 --mask-bg) ·
+   inset -1px = 둥근 모서리 · 확대(125%)에서 표지 가장자리 한 줄이 새지 않게(부모 overflow hidden 이 자른다) */
 .song-cover-veil {
   position: absolute;
-  inset: 0;
-  background: conic-gradient(from 0deg, transparent 0turn calc(var(--song-p) * 1turn), rgb(14 12 28 / 0.9) calc(var(--song-p) * 1turn) 1turn);
+  inset: -1px;
+  background: conic-gradient(from 0deg, transparent 0turn calc(var(--song-p) * 1turn), var(--mask-bg) calc(var(--song-p) * 1turn) 1turn);
   pointer-events: none;
 }
 /* 공개 — 남은 구간을 재빨리 돌아 한 바퀴(정답) · 스킵 · 시간 초과도 같은 꼴로 전부(강조 없음) */
@@ -11355,8 +11340,14 @@ button.preset.shake {
   font-size: 0.85rem;
   font-weight: 700;
 }
+/* ★★ R099 — 사무실 테마의 "장식 0" 규칙(*:not(.mg-card) { background-image: none · filter: none !important })이
+   가림막 그라데이션 · 흑백 필터를 지워 **표지가 처음부터 다 보였다**(R096 부터) → 같은 !important 로 되살린다(이 규칙이 뒤에 있어 이긴다) ·
+   사무실은 --mask-bg 를 따로 안 정해(파스텔 연보라가 온다) 가림막 색 = 사무실 바탕 칸 --surface-2 */
 [data-theme='office'] .song-cover img {
-  filter: grayscale(1);
+  filter: grayscale(1) !important;
+}
+[data-theme='office'] .song-cover-veil {
+  background-image: conic-gradient(from 0deg, transparent 0turn calc(var(--song-p) * 1turn), var(--surface-2) calc(var(--song-p) * 1turn) 1turn) !important;
 }
 /* ★ R096 — 공개 때 키 작은 화면(PC 1280×720 · 1536×864 · 폰)은 표지를 한 단계 줄여 채팅 입력칸이 화면 안에 남게(한 바퀴 다 돈 뒤 줄어든다) */
 @media (max-height: 900px) {

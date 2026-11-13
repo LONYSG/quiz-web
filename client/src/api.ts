@@ -227,36 +227,6 @@ export async function deleteAvatar(): Promise<void> {
 // =============================================================================
 // ★★★ R056 — 문제 평가(설문) · 다른 사람 업적
 // =============================================================================
-export interface QuestionFeedbackValue {
-  /** ★ R068 — 👍 1 · 😐 0 · 👎 −1 */
-  vote: 1 | 0 | -1;
-  reasons: string[];
-  comment: string | null;
-  /** ★ R068 — 정답 공개 중에 눌렀나 · 1P 받았나 */
-  atReveal?: boolean;
-  rated?: boolean;
-}
-
-/** 평가 저장 (vote null = 취소). 성공하면 저장된 값(취소면 null) + ★ R068 이번에 받은 포인트(공개 중 첫 평가 1P) */
-export async function postQuestionFeedback(body: {
-  questionId: string;
-  gameId: string;
-  vote: 1 | 0 | -1 | null;
-  reasons?: string[];
-  comment?: string | null;
-}): Promise<{ feedback: QuestionFeedbackValue | null; granted: number; needReason: boolean }> {
-  const res = await fetch('/api/feedback/question', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(body),
-    credentials: 'same-origin',
-  });
-  const json = (await res.json().catch(() => ({}))) as { ok?: boolean; feedback?: QuestionFeedbackValue | null; granted?: number; needReason?: boolean } & ApiError;
-  if (!res.ok || !json.ok) throw json;
-  // ★ R071 (D-313) — needReason: 공개 중 👎 인데 사유가 없어 아직 0P(사유 하나 고르면 +1P)
-  return { feedback: json.feedback ?? null, granted: Number(json.granted ?? 0), needReason: json.needReason === true };
-}
-
 export interface FeedbackItem {
   questionId: string;
   index: number;
@@ -264,14 +234,9 @@ export interface FeedbackItem {
   /** ★ R063 — 전체 질문(줄을 누르면 펼침) */
   full?: string;
   answer: string;
-  vote: 1 | 0 | -1 | null;
-  reasons: string[];
-  comment: string | null;
-  atReveal?: boolean;
-  rated?: boolean;
 }
 
-/** 그 판 문제 목록 + 내 평가 */
+/** 그 판 문제 목록(★ R099 — 평가 값은 없다 · 줄마다 제보 📝) */
 export async function fetchGameFeedback(gameId: string): Promise<FeedbackItem[]> {
   const res = await fetch(`/api/feedback/game/${gameId}/mine`, { credentials: 'same-origin' });
   const json = (await res.json().catch(() => ({}))) as { ok?: boolean; items?: FeedbackItem[] } & ApiError;

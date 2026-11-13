@@ -4,7 +4,7 @@
 // ★ 말투 하나 ("~해요") · 한 항목 한 줄 · 모바일은 스크롤 없이 한 화면.
 // ★ 출처 표기는 넣지 않는다 (R042 · 건우).
 // ★★ R044 C-4 — 모바일 360 에서도 한 줄 (약 22자 이하). 검사: ui-check 가 PC 5 · 모바일 3 크기에서 줄마다 한 줄인지 잰다.
-// ★★ R066 (D-287) — 묶음 넷(탭): ① 놀이 ② 포인트 ③ 이모티콘 · 단축키 ④ 제보 · 평가.
+// ★★ R066 (D-287) — 묶음 넷(탭): ① 놀이 ② 포인트 ③ 이모티콘 · 단축키 ④ 제보(★ R099 평가 줄 뺌 — 찬종 "평가는 나만 · 제보로").
 // ★★★ R073 (D-320 · 찬종 2026-11-05 "ⓘ 안내문은 새 기능 위주로 다시 · 뻔한 내용 빼고 · 줄바꿈 없게 짧게 · 업적도 짧게") —
 //   게임 좀 하면 아는 것("답은 채팅창에 · 먼저 맞힌 1명 · 40초 · 끊겨도 이어져요")은 뺐다 · 모든 줄 ≤22자 · 업적은 한 줄.
 //   이모티콘 탭은 😊 안내 카드(EmojiHelp — D-318)와 같은 줄 · 끝에 [안내 다시 보기] · 놀이 탭 끝에 [처음 안내 다시 보기](투어 — D-319).
@@ -12,7 +12,7 @@
 
 import { useState } from 'react';
 import { Award, Bug, Coins, Gamepad2, Link, MessageSquareWarning, SkipForward, Smile } from 'lucide-react';
-import { ACHIEVEMENTS, FEEDBACK_ADOPT_POINTS, RATE_POINTS, SIGNUP_GIFT_POINTS } from '@quiz/shared';
+import { ACHIEVEMENTS, FEEDBACK_ADOPT_POINTS, SIGNUP_GIFT_POINTS } from '@quiz/shared';
 import Icon from './Icon.js';
 import { EMOJI_HELP_EXTRA, EMOJI_HELP_LINES, openEmojiHelp } from './EmojiHelp.js';
 import { replayTour } from './Tour.js';
@@ -62,7 +62,6 @@ export default function InfoText() {
       {tab === 'points' && (
         <ul className="info-list" data-info-points>
           <li>정답 하나에 1P예요.</li>
-          <li>정답 공개 평가 {RATE_POINTS}P(세 문제 중 하나)</li>
           <li>미니게임 1~3위는 보너스 P예요.</li>
           <li>가입 선물로 {SIGNUP_GIFT_POINTS}P를 드려요.</li>
           <li>포인트샵 뽑기 한 번 {DRAW_PRICE}P예요.</li>
@@ -98,7 +97,6 @@ export default function InfoText() {
             <Icon icon={Bug} /> 제보는 ☰ → 제보예요.
           </li>
           <li>최근 문제 · 미니게임을 골라 제보해요.</li>
-          <li>정답 공개 때 👍 😐 👎 로 평가해요.</li>
           <li>채택된 제보는 +{FEEDBACK_ADOPT_POINTS}P예요.</li>
         </ul>
       )}

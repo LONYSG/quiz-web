@@ -48,7 +48,6 @@ import { emitRoom, emitRoomPerPlayer } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
 import { lateAnswersView, toPlayerView } from '../rooms/snapshot.js';
 import { selectNextQuestion } from './select.js';
-import { noteRateAsk } from './rateAsk.js';
 import type { CurrentQuestion, GameResultData, Player, Room } from '../rooms/types.js';
 import { SONG_MODE } from '@quiz/shared';
 import { closeSongRun, pickNextSong, recordSongResolved, songAnswerSets, songRevealOf, songResolvedView, type SongRun } from '../song/mode.js';
@@ -193,8 +192,6 @@ ${normalizeAnswer(q.explanation ?? '')}`;
         targetGrade: picked.targetGrade,
         grade: q.grade,
         worth: q.worth,
-        // ★ R074 (0029) — 평가 요청 문항(판마다 무작위 1/3)을 영구 기록
-        rateAsk: game.rateAsk.has(current.index),
       }),
     );
   }
@@ -433,10 +430,7 @@ export function resolveQuestionSync(
   //   ★ 결과로 넘기는 일은 advanceAfterResolved 가 한다 (다음 문제 대신 finishGame)
   // ★ R050 — 검사용으로 줄일 수 있다(config.tuning.resolvedWaitMs — 기본은 RULES 8초)
   const nextAt = now + config.tuning.resolvedWaitMs;
-  // ★★ R071 (D-313) — 평가 요청 문항(판마다 무작위 1/3) · 결과 화면 · 로비 표의 asked 를 위해 판 번호 → 문항 id 를 적어 둔다
-  const rateAsk = game.rateAsk.has(current.index);
-  // ★ R096 — 노래는 퀴즈 평가 표(question_feedback)를 안 쓴다(평가 = minigame_results · 매 곡) → 메모리 표시도 하지 않는다
-  if (rateAsk && game.gameId && !current.song) noteRateAsk(game.gameId, current.questionId);
+  // ★★★ R099 — 평가 요청 문항(R071 rateAsk) 없앰(찬종 "평가는 나만 · 제보로")
   game.resolution = {
     epoch: current.epoch,
     reason,
@@ -444,7 +438,6 @@ export function resolveQuestionSync(
     displayAnswer: current.displayAnswer,
     explanation: current.explanation,
     nextAt,
-    rateAsk,
   };
   room.state = 'QUESTION_RESOLVED';
 
@@ -457,7 +450,7 @@ export function resolveQuestionSync(
 
   emitRoom(room, 'question.resolved', {
     epoch: current.epoch,
-    // ★ R056 — 문제 평가(👍/👎)용. 정답 공개 뒤라 알려도 된다
+    // ★ R056 — 문항 번호(제보 📝 가 채운다 · R099 평가는 없앰). 정답 공개 뒤라 알려도 된다
     questionId: current.questionId,
     reason,
     winnerAccountId,
@@ -467,8 +460,6 @@ export function resolveQuestionSync(
       .sort((a, b) => a.joinOrder - b.joinOrder)
       .map((p) => ({ accountId: p.accountId, score: p.score })),
     nextAt,
-    // ★★ R071 (D-313) — 평가 요청 문항인가(아니면 공개 화면에 평가 줄이 없다)
-    rateAsk,
     // ★★★ R096 — 노래 공개(제목 · 가수 · 연도 · 칩 · 표지)
     song: current.song ? songResolvedView(current.song) : null,
     state: room.state,

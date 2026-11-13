@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // =============================================================================
 // ★★ 노래 평가 읽기 (R097 · D-354) — minigame_results.input.rate → 콘솔 + tmp/song-feedback.md
+// ★★★ R099 (2026-11-13) — 노래 평가 입력을 뺐다(찬종 "평가는 나만 · 제보로") → 새 평가는 들어오지 않는다 · 지난 기록 읽기용.
 //
 //   npm run song:feedback [-- --since 7d | --since 2026-11-01] [--db dev|test] [--no-bots]
 //   기본 = 실 quizweb · 읽기만(SELECT 만 — 쓰기 0).

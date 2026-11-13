@@ -28,14 +28,13 @@ import { isSpecialEmoji } from './emojiCatalog.js';
 import FitText from './FitText.js';
 import ExplainText from './ExplainText.js';
 import ConfirmModal from './ConfirmModal.js';
-import { RevealFeedback } from './QuestionFeedback.js';
 import { QNo } from './AppReport.js';
 import { isReportOpen } from './reportGuard.js';
 import { usePopup } from './popup.js';
 import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom.js';
 import Icon from './Icon.js';
 import { Lock, PartyPopper, SkipForward, Square, Undo2 } from 'lucide-react';
-import { SongPlay, SongRate, SongReveal, useSongMusicQuiet } from './SongStage.js';
+import { SongPlay, SongReveal, useSongMusicQuiet } from './SongStage.js';
 
 interface Props {
   socket: Socket;
@@ -79,7 +78,10 @@ export default function Question({
   gameId,
 }: Props) {
   const active = state === 'QUESTION_ACTIVE';
-  const [remainMs, setRemainMs] = useState(() => Math.max(0, question.endsAt - serverNow()));
+  // ★★ R099 — 남은 시간은 "어느 문제의 값인가(endsAt)" 와 같이 둔다: 다음 문제(곡)로 넘어간 첫 그림에서 앞 문제의 남은 시간(예: 3초)이 쓰여
+  //   노래 표지가 한 순간 90% 열린 채 그려졌다(ui-check r096 — 새 표지 칸 첫 프레임 progress 0.898) · 퀴즈 시간 막대도 같은 한 칸(≤100ms)
+  const [rem, setRem] = useState(() => ({ at: question.endsAt, ms: Math.max(0, question.endsAt - serverNow()) }));
+  const remainMs = rem.at === question.endsAt ? rem.ms : Math.max(0, question.endsAt - serverNow());
   const [, setTick] = useState(0);
   /** 강제 스킵·강제 종료 확인 — ★ R041 팝업 (한 번에 하나) */
   const [skipOpen, setSkipOpen] = usePopup('host-skip');
@@ -111,7 +113,7 @@ export default function Question({
   useEffect(() => {
     // 100ms 마다 다시 그린다. 서버 tick 주기와 같아 표시가 어긋나 보이지 않는다.
     const id = setInterval(() => {
-      setRemainMs(Math.max(0, question.endsAt - serverNow()));
+      setRem({ at: question.endsAt, ms: Math.max(0, question.endsAt - serverNow()) });
       // ★ R035 — 정답 공개 중에도 "N초 후" 안내가 줄어들도록 다시 그린다
       setTick((t) => t + 1);
     }, 100);
@@ -404,15 +406,8 @@ export default function Question({
             </p>
           )}
 
-          {/* ★★★ R056 — 문제 평가(👍/👎 · 👎 면 사유 칩)는 진행 안내와 **같은 줄** — 카드가 세로로 늘지 않는다 */}
+          {/* ★★★ R099 — 문제 평가(R056 👍/👎 · R071 요청 문항 · R096 노래 평가) 뺌 — 찬종 "평가는 나만 할게 — 제보로" · 진행 안내만 */}
           <div className="reveal-foot">
-            {/* ★★ R071 (D-313) — 평가 요청 문항(판마다 무작위 1/3)에서만 평가 줄 · 👎 면 아래에 사유 칩 한 줄(.reveal-fb-chips — 줄을 바꿔 펼친다) */}
-            {/* ★ R096 — 노래는 매 곡 평가(노래 사유 · 포인트 없음 · minigame_results 에 저장) */}
-            {gameId && resSong ? (
-              <SongRate gameId={gameId} songId={resSong.id} />
-            ) : (
-              gameId && resolution.questionId && resolution.rateAsk !== false && <RevealFeedback gameId={gameId} questionId={resolution.questionId} />
-            )}
             {/* ★ 진행 안내 — 작고 흐리게. 자리를 잡아 두어 3초 뒤 나타나도 화면이 출렁이지 않는다 */}
             <p className="reveal-next" aria-live="polite">
               {showNext && nextRemainMs !== null

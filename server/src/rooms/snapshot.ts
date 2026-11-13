@@ -169,8 +169,6 @@ export interface ResolutionView {
   text: string;
   /** ★ R038 — 뒷북 명단 (재접속해도 보이게) */
   late: { accountId: string; nickname: string; colorIndex: number; diffNs: string }[];
-  /** ★★ R071 (D-313) — 평가 요청 문항인가(판마다 무작위 1/3 · 방 전원 같다) — 아니면 공개 화면에 평가 줄이 없다 */
-  rateAsk: boolean;
   /** ★★★ R096 — 노래 공개(제목 · 가수 · 연도 · 칩 · 표지) · 퀴즈는 null */
   song: ReturnType<typeof import('../song/mode.js').songResolvedView> | null;
 }
@@ -432,7 +430,6 @@ function buildResolutionView(room: Room): ResolutionView | null {
     index: q.index,
     text: q.text,
     late: lateAnswersView(q),
-    rateAsk: r.rateAsk,
     song: q.song ? songResolvedView(q.song) : null,
   };
 }

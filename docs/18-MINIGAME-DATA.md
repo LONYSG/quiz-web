@@ -150,7 +150,7 @@ assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .giti
 data/minigame/topics/<slug>.json        ← 주제 하나 = 파일 하나 (git 에 있다 · 그림 없음)
 ```
 
-- **쓰는 게임**: 많이 말하기(D-330 ⑺ · `kind: closed` 만) · 빙고 · 겹치면 무효 · 라이어 게임(`liar` 태그 항목) · 캐치마인드(`draw` 태그 항목) · "친구들이 가장 많이 말한 답은?"(플레이 누적 — 뒤). 한 세트를 여러 게임이 읽는다 — 게임마다 따로 수집하지 않는다.
+- **쓰는 게임**: 많이 말하기(D-330 ⑺ · `kind: closed` 만) · 빙고 · 겹치면 무효(★ R099 — 판마다 15초 여러 답 · 남과 겹친 항목은 전원 0 · 판 점수 = 안 겹친 정답 수 · 기록 `minigame_results.input = { texts:[…] }` · `value` = 안 겹친 정답 수 · 01 16-R080 ②) · 라이어 게임(`liar` 태그 항목) · 캐치마인드(`draw` 태그 항목) · "친구들이 가장 많이 말한 답은?"(플레이 누적 — 뒤). 한 세트를 여러 게임이 읽는다 — 게임마다 따로 수집하지 않는다.
 - **kind**: `closed` = 공식 목록이 한 페이지에 있고 50~250 항목 · 일반인이 20개쯤 떠올릴 수 있고 · 표기 변형을 닫을 수 있는 것(나라 193 · 원소 118 · 롤 챔피언 · 조선 왕 27 …) — 많이 말하기 · 빙고 · 겹치면 무효에 쓴다. `open` = "모두가 아는 구체 명사"(음식 · 동물 · 직업 · 장소 · 악기 · 스포츠 종목) — **라이어 · 캐치마인드 제시어 전용**(많이 말하기에는 절대 쓰지 않는다 — "이건 왜 정답 아니야" 를 닫을 수 없다).
 - **파일 머리**: `{ "topic": "<slug>", "nameKo": "나라 이름", "kind": "closed"|"open", "version": 1, "asOf": "YYYY-MM-DD", "createdRound": "G036", "status": "candidate"|"verified"|"rejected"|"loaded", "source": [{ "url", "note", "fetchedAt" }], "liar": true|false, "draw": true|false, "timeSec": 30, "tags": ["지리", …], "count": n, "items": [ … ], "verify": null }`. `source` 는 **한 페이지**(공식 목록 · 나무위키 표 · ko.wikipedia · Wikidata SPARQL · 공식 API — Data Dragon · PokeAPI) · 둘째 출처는 VERIFY 가 대조 때 `verify.checked` 에 적는다.
 - **항목 칸**:

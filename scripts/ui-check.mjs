@@ -3303,126 +3303,68 @@ async function r056Flow(browser) {
   await Q.waitFor("document.querySelector('.stage') !== null", 10000);
   // ── E (a)(b) — 후
   await r056PickerEmoji(H, 'after');
-  // ── B 정답 공개 👍/👎
+  // ── B ★ R099 — 정답 공개에 평가 줄 없음(찬종 "평가 버튼 그냥 빼자 · 평가는 나만 · 제보로") · 카드 높이 = 진행 안내만
   await setQuestionCount(H, 3);
   await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
   await H.waitFor("document.querySelector('.question-card .q-text') !== null", 30000);
   await answerCurrent(H, H);
-  const shown = await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
-  await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
-  record('★★★ B 정답 공개에 👍 좋아 · 👎 별로', shown && (await H.evaluate("[...document.querySelectorAll('.reveal-fb .fb-vote')].map((b) => b.innerText.trim()).join(',')")) === '좋아,별로');
-  await sleep(500); // ★ R058 — 등장 연출(ceremony-in 420ms)이 끝난 뒤 잰다(셋째 참가자로 느려지면 연출 중에 재서 높이가 1~2px 달랐다)
-  const hH0 = (await rectOf(H, '.reveal'))?.h;
-  const foot0 = await H.evaluate(FOOT);
-  const gH0 = (await rectOf(G, '.reveal'))?.h;
-  // ★ 공개는 8초 — 두 사람 조작을 먼저 하고 그림은 뒤에
-  await H.evaluate("document.querySelector('.chat-card input')?.focus()");
-  await G.evaluate("document.querySelector('.chat-card input')?.focus()");
-  await realClick(H, '.reveal-fb .fb-vote.down');
-  await tapOn(G, '.reveal-fb .fb-vote.down');
-  await H.waitFor("document.querySelector('.reveal-fb .fb-chips') !== null", 2000);
-  await G.waitFor("document.querySelector('.reveal-fb .fb-chips') !== null", 2000);
-  await realClick(H, '.reveal-fb .fb-chip[data-reason="never_heard"]');
-  await realClick(H, '.reveal-fb .fb-chip[data-reason="unclear"]');
-  await tapOn(G, '.reveal-fb .fb-chip[data-reason="boring"]');
-  const focusKept = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
-  const gFocus = await G.evaluate("document.activeElement === document.querySelector('.chat-card input')");
-  const hH1 = (await rectOf(H, '.reveal'))?.h;
-  const foot1 = await H.evaluate(FOOT);
-  const gH1 = (await rectOf(G, '.reveal'))?.h;
-  const gm = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth, chipsScroll: document.querySelector('.reveal-fb .fb-chips')?.scrollWidth > document.querySelector('.reveal-fb .fb-chips')?.clientWidth })"));
-  await snap(G, '96-reveal-fb-m390');
-  await snap(H, '96-reveal-fb-pc');
-  record('★★★ B 👎 · 사유 칩을 눌러도 입력창(답안) 포커스 그대로(PC 클릭 · m390 터치)', focusKept && gFocus, `${focusKept} · ${gFocus}`);
-  record('★★ B PC 👎 + 칩 — 공개 카드 높이 그대로(±1px)', Math.abs(hH1 - hH0) <= 1, `${hH0} → ${hH1} · ${foot0} → ${foot1}`);
-  record('★★★ B m390 👎 + 칩 — 세로 안 밀림 · 페이지 가로 넘침 없음(칩만 가로 스크롤)', Math.abs(gH1 - gH0) <= 1 && gm.doc <= gm.vw && gm.chipsScroll, `${gH0} → ${gH1} · ${JSON.stringify(gm)}`);
+  await H.waitFor("document.querySelector('.reveal') !== null", 8000);
+  await G.waitFor("document.querySelector('.reveal') !== null", 4000);
+  await sleep(500);
+  const noFb = JSON.parse(await H.evaluate("JSON.stringify({ fb: document.querySelectorAll('.reveal-fb, .fb-vote, [data-rate-ask], [data-song-rate]').length, foot: document.querySelector('.reveal-foot')?.children.length ?? -1 })"));
+  const gNoFb = await G.evaluate("document.querySelectorAll('.reveal-fb, .fb-vote, [data-rate-ask]').length");
+  await snap(G, '96-reveal-nofb-m390');
+  await snap(H, '96-reveal-nofb-pc');
+  record('★★★ B R099 정답 공개 — 평가 줄(👍 😐 👎 · 사유 칩) 없음(방장 PC · 손님 m390) · 아래 줄 = 진행 안내 하나', noFb.fb === 0 && gNoFb === 0 && noFb.foot === 1, JSON.stringify({ noFb, gNoFb }));
   const hLogin = `${ACCOUNT_PREFIX}_fh`;
-  const gLogin = `${ACCOUNT_PREFIX}_fg`;
-  await sleep(400);
-  const rowsB = await withPg(async (c) => (await c.query(`SELECT a.login_id, f.vote, f.reasons FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = ANY($1) ORDER BY a.login_id`, [[hLogin, gLogin]])).rows);
-  const okB = rowsB.length === 2 && rowsB.some((r) => r.login_id === hLogin && r.vote === -1 && r.reasons.join(',') === 'never_heard,unclear') && rowsB.some((r) => r.login_id === gLogin && r.reasons.join(',') === 'boring');
-  record('★★★ B 즉시 저장 — 표 행(방장 👎 never_heard,unclear · 손님 👎 boring)', okB, JSON.stringify(rowsB));
   // 나머지 두 문제
   for (let i = 2; i <= 3; i += 1) {
     await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 20000);
     await sleep(300);
     await answerCurrent(H, H);
-    await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
-    if (i === 2) {
-      // 밤 그림 — 👎 칩이 열린 모습
-      await H.evaluate("document.documentElement.dataset.theme = 'night'");
-      await G.evaluate("document.documentElement.dataset.theme = 'night'");
-      await realClick(H, '.reveal-fb .fb-vote.down');
-      await tapOn(G, '.reveal-fb .fb-vote.up');
-      await sleep(450);
-      await snap(H, '96-reveal-fb-pc-night');
-      await snap(G, '96-reveal-fb-m390-night');
-      await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
-      await G.evaluate("document.documentElement.dataset.theme = 'pastel'");
-    }
+    await H.waitFor("document.querySelector('.reveal') !== null", 8000);
   }
-  // ── C 결과 화면
-  await H.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 30000);
-  await G.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 10000);
-  // ★ R058 (A80) — PC 기본 접힘(안 누른 사람) · 누른 사람은 펼침 · 모바일은 펼침 · 접히면 채팅 칸이 넓다
-  await Q.waitFor("document.querySelector('.fb-result') !== null", 10000);
+  // ── C 결과 화면 — "이번 판 문제"(접힌 채 시작 · 펼치면 줄마다 제보 📝 · 평가 버튼 없음)
+  await Q.waitFor("document.querySelector('.fb-result') !== null", 30000);
+  await H.waitFor("document.querySelector('.fb-result') !== null", 10000);
   await sleep(700);
-  const RES = "JSON.stringify({ def: document.querySelector('.fb-result')?.dataset.fbDefault ?? null, open: document.querySelector('.fb-result')?.classList.contains('open'), list: document.querySelector('.fb-list') !== null, chat: Math.round(document.querySelector('.chat-card')?.getBoundingClientRect().height ?? 0), doc: document.documentElement.scrollHeight <= innerHeight + 1 })";
+  const RES = "JSON.stringify({ def: document.querySelector('.fb-result')?.dataset.fbDefault ?? null, open: document.querySelector('.fb-result')?.classList.contains('open'), head: document.querySelector('.fb-result-head')?.innerText ?? '', list: document.querySelector('.fb-list') !== null, doc: document.documentElement.scrollHeight <= innerHeight + 1 })";
   const q0 = JSON.parse(await Q.evaluate(RES));
-  const h0 = JSON.parse(await H.evaluate(RES));
-  const g0 = JSON.parse(await G.evaluate(RES));
   await snap(Q, '103-result-fb-pc-closed');
-  record('★★★ A80 PC 안 누른 사람 — 목록 기본 접힘 · 채팅 칸이 펼친 사람보다 넓음 · 한 화면', q0.def === 'closed' && !q0.open && !q0.list && q0.chat > h0.chat && q0.chat >= 200 && q0.doc, `Q ${JSON.stringify(q0)} · H ${JSON.stringify(h0)}`);
-  record('★★★ A80 PC 👎 누른 사람 — 기본 펼침 · 채팅 칸 최소 120px · 모바일은 펼침', h0.def === 'open' && h0.open && h0.list && h0.chat >= 120 && g0.def === 'open' && g0.open, `H ${JSON.stringify(h0)} · G ${JSON.stringify(g0)}`);
+  record('★★★ C 결과 — "이번 판 문제 · 3문제" 접힌 채 시작 · 한 화면', q0.def === 'closed' && !q0.open && !q0.list && /이번 판 문제/.test(q0.head) && /3문제/.test(q0.head) && !/평가/.test(q0.head) && q0.doc, JSON.stringify(q0));
   await realClick(Q, '.fb-result-head');
   await Q.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 4000);
   await sleep(300);
-  const q1 = JSON.parse(await Q.evaluate(RES));
+  const q1 = JSON.parse(await Q.evaluate("JSON.stringify({ rows: document.querySelectorAll('.fb-row').length, report: document.querySelectorAll('.fb-row .qreport-btn, .fb-row [data-qreport]').length, votes: document.querySelectorAll('.fb-vote, .fb-comment, .fb-chip, [data-rate-note]').length, noCopy: [...document.querySelectorAll('.fb-text')].every((e) => e.classList.contains('no-copy')), doc: document.documentElement.scrollHeight <= innerHeight + 1 })"));
   await snap(Q, '103-result-fb-pc-opened');
-  record('★★ A80 접힌 목록 머리를 누르면 펼침 · 채팅 칸 최소 120px · 한 화면', q1.open && q1.list && q1.chat >= 120 && q1.doc, JSON.stringify(q1));
+  record('★★★ C 펼친 목록 — 3문제 · 줄마다 제보 버튼 · 평가 버튼 · 사유 · 의견 · "+1P" 안내 0 · 질문 복사 막기 · 한 화면', q1.rows === 3 && q1.report === 3 && q1.votes === 0 && q1.noCopy && q1.doc, JSON.stringify(q1));
   await realClick(Q, '.fb-result-head');
   await sleep(200);
-  record('★ A80 다시 누르면 접힘', await Q.evaluate("!document.querySelector('.fb-result')?.classList.contains('open')"));
-  // ★ R059 (D-254) — 접혀 있어도 머리 줄 아래 채택 보너스 안내가 보인다 · 한 화면
-  const bq = JSON.parse(await Q.evaluate("JSON.stringify((() => { const b = document.querySelector('.fb-result .fb-bonus'); const r = b?.getBoundingClientRect(); return { text: b?.innerText ?? '', vis: !!r && r.height > 0 && r.bottom <= innerHeight, doc: document.documentElement.scrollHeight <= innerHeight + 1 }; })())"));
-  record('★★ R059 접힌 목록 — "채택되면 보너스 포인트(채택 1건 5P)" 한 줄이 보인다 · 한 화면', /채택되면 보너스 포인트/.test(bq.text) && /5P/.test(bq.text) && bq.vis && bq.doc, JSON.stringify(bq));
-  await snap(Q, '103-result-fb-pc-closed-bonus');
+  record('★ C 다시 누르면 접힘', await Q.evaluate("!document.querySelector('.fb-result')?.classList.contains('open')"));
   await Q.close?.();
-  const rowsN = await H.evaluate("document.querySelectorAll('.fb-row').length");
-  const firstDown = await H.evaluate("document.querySelector('.fb-row')?.classList.contains('down') && document.querySelector('.fb-row .fb-vote.down')?.classList.contains('on')");
-  record('★★★ C 결과 화면 목록 3문제 · 공개 때 누른 👎 가 그대로', rowsN === 3 && firstDown, `${rowsN} · ${firstDown}`);
-  if (!(await H.evaluate("document.querySelector('.fb-row:nth-child(2) .fb-vote.down')?.classList.contains('on')"))) await clickInView(H, '.fb-row:nth-child(2) .fb-vote.down');
-  await H.waitFor("document.querySelector('.fb-row:nth-child(2) .fb-comment') !== null", 2000);
-  await clickInView(H, '.fb-row:nth-child(2) .fb-chip[data-reason="other"]');
-  await H.evaluate("document.querySelector('.fb-row:nth-child(2) .fb-comment')?.scrollIntoView({ block: 'nearest' })");
-  await sleep(150);
-  await realType(H, '.fb-row:nth-child(2) .fb-comment', '역사 문제가 너무 어려워요');
-  await pressKey(H, 'Enter', 'Enter', 13);
-  await sleep(600);
-  const qid2 = await H.evaluate("document.querySelector('.fb-row:nth-child(2)')?.dataset.fbQuestion");
-  const c2 = await withPg(async (c) => (await c.query(`SELECT f.comment, f.reasons FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [hLogin, qid2])).rows[0] ?? null);
-  record('★★★ C 기타 의견 저장(Enter) · 사유 other', c2?.comment === '역사 문제가 너무 어려워요' && c2.reasons.includes('other'), JSON.stringify(c2));
-  record('★★ C 질문은 복사 막기(.no-copy)', await H.evaluate("[...document.querySelectorAll('.fb-text')].every((e) => e.classList.contains('no-copy'))"));
-  await snap(H, '97-result-fb-pc');
-  await tapOn(G, '.fb-row:nth-child(3) .fb-vote.up');
+  if (!(await G.evaluate("document.querySelector('.fb-result.open') !== null"))) await tapOn(G, '.fb-result-head');
+  await G.waitFor("document.querySelector('.fb-list')?.dataset.loaded === '1'", 6000).catch(() => false);
   await sleep(300);
-  const gDoc = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth })"));
+  const gDoc = JSON.parse(await G.evaluate("JSON.stringify({ doc: document.documentElement.scrollWidth, vw: innerWidth, rows: document.querySelectorAll('.fb-row').length })"));
   await snap(G, '97-result-fb-m390');
-  record('★★ C m390 결과 목록 — 가로 넘침 없음', gDoc.doc <= gDoc.vw, JSON.stringify(gDoc));
+  record('★★ C m390 결과 목록 — 3문제 · 가로 넘침 없음', gDoc.rows === 3 && gDoc.doc <= gDoc.vw, JSON.stringify(gDoc));
   await H.evaluate("document.documentElement.dataset.theme = 'night'");
+  if (!(await H.evaluate("document.querySelector('.fb-result.open') !== null"))) await realClick(H, '.fb-result-head');
   await sleep(450);
   await snap(H, '97-result-fb-pc-night');
   await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
-  // ── C 로비 링크
+  // ── C 로비 링크 "지난 판 문제"
   await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '로비로')?.click()");
   await H.waitFor("document.querySelector('#feedback-last-btn') !== null", 10000);
-  record('★★ C 로비 "지난 판 문제 평가" 링크 · R059 "채택되면 포인트"', await H.evaluate("document.querySelector('#feedback-last-btn') !== null && /채택되면 포인트/.test(document.querySelector('#feedback-last-btn').innerText)"));
+  record('★★ C 로비 "지난 판 문제" 링크(평가 글 없음)', await H.evaluate("/지난 판 문제/.test(document.querySelector('#feedback-last-btn')?.innerText ?? '') && !/평가/.test(document.querySelector('#feedback-last-btn').innerText)"));
   await realClick(H, '#feedback-last-btn');
   await H.waitFor("document.querySelector('.fb-modal .fb-list')?.dataset.loaded === '1'", 6000);
   await sleep(300);
   await snap(H, '98-lobby-fb-pc');
-  const kept = await H.evaluate("document.querySelector('.fb-modal .fb-row:nth-child(2) .fb-comment')?.value");
-  record('★★ C 팝업 목록 = 결과 화면과 같은 값(의견 그대로)', kept === '역사 문제가 너무 어려워요', kept);
+  const pop = JSON.parse(await H.evaluate("JSON.stringify({ rows: document.querySelectorAll('.fb-modal .fb-row').length, votes: document.querySelectorAll('.fb-modal .fb-vote, .fb-modal .fb-comment').length })"));
+  record('★★ C 팝업 목록 = 결과 화면과 같은 3문제 · 평가 버튼 없음', pop.rows === 3 && pop.votes === 0, JSON.stringify(pop));
+  const fbRows = await withPg(async (c) => (await c.query(`SELECT count(*)::int n FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1`, [hLogin])).rows[0].n);
+  record('★ C 평가 표 새 행 0', fbRows === 0, String(fbRows));
   await pressKey(H, 'Escape', 'Escape', 27);
   await sleep(300);
   record('★ C 팝업 Esc 로 닫힘', await H.evaluate("document.querySelector('.fb-modal') === null"));
@@ -4558,22 +4500,15 @@ async function r068GamePlay(browser, prep) {
       await sleep(400);
     }
     if (i === 0) {
-      rate.before = await H.evaluate("document.querySelector('[data-rate-ask]')?.innerText ?? ''");
-      await snap(H, '300-rate-reveal');
-      const c = await realClick(H, '.reveal-fb button[data-vote="1"]');
-      await H.waitFor("/고마워요/.test(document.querySelector('[data-rate-ask]')?.innerText ?? '')", 4000).catch(() => false);
-      rate.after = await H.evaluate("document.querySelector('[data-rate-ask]')?.innerText ?? ''");
-      rate.hit = c.hit;
-      rate.focus = await H.evaluate("document.activeElement?.tagName ?? ''");
-      await snap(H, '300-rate-after');
-      for (const [dev, w, h, touch] of sizes.slice(2)) { await H.setViewport(w, h); await sleep(300); await snap(H, `300-rate-after-${dev}`); }
-      await H.setViewport(1536, 864);
+      // ★★★ R099 — 공개 화면 평가 줄 없음(옛 R068 "방금 문제 어땠어요? (+1P)")
+      rate.none = await H.evaluate("document.querySelectorAll('.reveal-fb, [data-rate-ask], .fb-vote').length");
+      await snap(H, '300-reveal-nofb');
     }
     if (i === 1) {
       await touchDevice(H, 390, 844, true);
       await sleep(400);
-      rate.m = JSON.parse(await H.evaluate("JSON.stringify((() => { const ask = document.querySelector('[data-rate-ask]'); const f = document.querySelector('.reveal-fb')?.getBoundingClientRect(); const inp = document.querySelector('.chat-card input, .chat-form input')?.getBoundingClientRect(); return { cut: ask ? ask.scrollWidth > ask.clientWidth + 1 : null, fb: !!f && f.bottom <= innerHeight, input: !!inp && inp.bottom <= innerHeight + 1, overlap: !!f && !!inp && f.bottom > inp.top && f.top < inp.bottom, overflowX: document.documentElement.scrollWidth > innerWidth + 1 }; })())"));
-      await snap(H, '300-rate-m390');
+      rate.mNone = await H.evaluate("document.querySelectorAll('.reveal-fb, [data-rate-ask], .fb-vote').length");
+      await snap(H, '300-reveal-nofb-m390');
       await touchDevice(H, 1536, 864, false);
       await H.setViewport(1536, 864);
     }
@@ -4586,12 +4521,11 @@ async function r068GamePlay(browser, prep) {
   await snap(H, '300-rate-result-folded');
   await realClick(H, '.fb-result-head');
   await sleep(500);
-  const res2 = JSON.parse(await H.evaluate("JSON.stringify({ list: !!document.querySelector('.fb-list'), note: document.querySelector('[data-rate-note]')?.innerText ?? '', mem: localStorage.getItem('qw.fbResultOpen'), votes: document.querySelectorAll('.fb-row .fb-vote').length })"));
+  const res2 = JSON.parse(await H.evaluate("JSON.stringify({ list: !!document.querySelector('.fb-list'), mem: localStorage.getItem('qw.fbResultOpen'), votes: document.querySelectorAll('.fb-list .fb-vote').length, report: document.querySelectorAll('.fb-list .qreport-btn').length })"));
   await snap(H, '300-rate-result');
   const pts = await withPg(async (c) => (await c.query(`SELECT coalesce(sum(g.amount), 0)::int n FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1 AND g.reason = 'rate'`, [`${ACCOUNT_PREFIX}_rq`])).rows[0].n);
-  record('★★★ R068 정답 공개 평가 — "방금 문제 어땠어요? (+1P)" → 👍 진짜 클릭 → "+1P 고마워요" · 입력창 포커스 안 뺏김 · 1P 지급(검사 DB)', /방금 문제 어땠어요\? \(\+1P\)/.test(rate.before) && /\+1P 고마워요/.test(rate.after) && rate.hit && pts === 1, JSON.stringify({ ...rate, pts }));
-  record('★★ R068 공개 평가 m390 — 물음 글 잘림 없음 · 버튼 줄이 화면 안 · 입력칸과 겹치지 않음 · 가로 넘침 없음', rate.m?.cut === false && rate.m?.fb && rate.m.input && !rate.m.overlap && !rate.m.overflowX, JSON.stringify(rate.m));
-  record('★★★ R068 #68 결과 — 평가 목록은 접힌 채 시작 · 접혀도 "평가 N/3" · 펼치면 3단계 버튼 · 0P 안내 + 제보 링크 · 펼침 기억', res1.def === 'closed' && !res1.list && /평가 1\/3/.test(res1.count) && res2.list && res2.votes === 9 && /공개 시간에 누르면 \+1P/.test(res2.note) && /채택되면 \+5P/.test(res2.note) && res2.mem === '1', JSON.stringify({ res1, res2 }));
+  record('★★★ R099 정답 공개 — 평가 줄 없음(PC · m390) · 평가 1P 0(검사 DB)', rate.none === 0 && rate.mNone === 0 && pts === 0, JSON.stringify({ ...rate, pts }));
+  record('★★★ R068 #68 → R099 결과 — "이번 판 문제" 접힌 채 시작 · 접혀도 "3문제" · 펼치면 줄마다 제보 · 평가 버튼 0 · 펼침 기억', res1.def === 'closed' && !res1.list && /3문제/.test(res1.count) && res2.list && res2.votes === 0 && res2.report === 3 && res2.mem === '1', JSON.stringify({ res1, res2 }));
   record('★★★ R068 #66 세레모니 — 붙여 보낸 이모티콘 셋이 셋 다', cere?.n === 3, JSON.stringify(cere));
   // QLEN 표
   const row = (len, dev) => table.find((t) => t.len === len && t.dev === dev);
@@ -4600,7 +4534,7 @@ async function r068GamePlay(browser, prep) {
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r068', 'qlen-table.json'), JSON.stringify(table, null, 1));
   record('★★★ R068 #61 시간 표시 — 360 폭에서 140 · 197 · 240자 모두 머리줄 한 줄', ['140', '198', '240'].every((l) => row(l, 'm360')?.timerOneLine === true), JSON.stringify(table.filter((t) => t.dev === 'm360').map((t) => [t.len, t.timerOneLine, t.headH])));
   record('★★ R068 QLEN — 1536 · 2560 에서 140 · 197 · 240자 입력칸 · 힌트 줄이 스크롤 없이 보임(판단 근거 표 — 360 은 표로만)', ['140', '198', '240'].every((l) => ['1536', '2560'].every((d) => row(l, d)?.input && row(l, d)?.hints && !row(l, d)?.pageScroll)), JSON.stringify(table.map((t) => [t.len, t.dev, t.lines, t.input, t.hints, t.pageScroll])));
-  // #53 로비 "지난 판 문제 평가" m360 — 펼친 줄이 화면 밖으로 안 나감
+  // #53 로비 "지난 판 문제" m360 — 펼친 줄이 화면 밖으로 안 나감
   await H.evaluate("[...document.querySelectorAll('.result-card button')].find((b) => /로비/.test(b.innerText))?.click()");
   await H.waitFor("document.querySelector('#feedback-last-btn') !== null", 10000).catch(() => false);
   await touchDevice(H, 360, 640, true);
@@ -4611,7 +4545,7 @@ async function r068GamePlay(browser, prep) {
   await sleep(400);
   const last = JSON.parse(await H.evaluate("JSON.stringify((() => { const m = document.querySelector('.fb-modal'); const r = m?.getBoundingClientRect(); const bad = [...(m?.querySelectorAll('*') ?? [])].filter((e) => { const b = e.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 1 || b.right > r.right + 1); }).map((e) => e.className).slice(0, 5); return { open: !!m?.querySelector('.fb-row.open'), bad, docX: document.documentElement.scrollWidth > innerWidth + 1, modalX: m ? m.scrollWidth > m.clientWidth + 1 : null, note: m?.querySelector('[data-rate-note]')?.innerText ?? '' }; })())"));
   await snap(H, '358-fblast-m360');
-  record('★★★ R068 #53 로비 지난 판 평가 m360 — 줄을 펼쳐도 글이 창 · 화면 밖으로 안 나감 · 0P 안내', last.open && last.bad.length === 0 && !last.docX && !last.modalX && /\+1P/.test(last.note), JSON.stringify(last));
+  record('★★★ R068 #53 로비 지난 판 문제 m360 — 줄을 펼쳐도 글이 창 · 화면 밖으로 안 나감(R099 평가 안내 없음)', last.open && last.bad.length === 0 && !last.docX && !last.modalX && !/\+1P/.test(last.note ?? ''), JSON.stringify(last));
   await touchDevice(H, 1536, 864, false);
   for (const s of socks) s.close();
   H.close();
@@ -5622,6 +5556,9 @@ async function r096Flow(browser) {
   const itemOf = (id) => withPg(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [id])).rows[0]?.payload ?? null);
   const coverOf = (P) =>
     P.evaluate("JSON.stringify((() => { const c = document.querySelector('[data-song-cover]'); if (!c) return null; const b = c.getBoundingClientRect(); return { p: Number(c.dataset.progress), won: c.classList.contains('won'), done: c.classList.contains('done'), w: Math.round(b.width), h: Math.round(b.height), img: c.querySelector('img')?.getAttribute('src') ?? null, veil: getComputedStyle(c.querySelector('.song-cover-veil')).backgroundImage.slice(0, 40) }; })())").then((s) => JSON.parse(s));
+  // ★★★ R099 — 가림막 비침 0: 칠한 색(투명 아닌 쪽)에 알파가 없다(rgb) · 가림막이 표지 칸을 다 덮는다(inset -1px)
+  const veilOf = (P) =>
+    P.evaluate("JSON.stringify((() => { const c = document.querySelector('[data-song-cover]'); const v = c?.querySelector('.song-cover-veil'); if (!v) return null; const bg = getComputedStyle(v).backgroundImage; const cols = bg.match(/rgba?\\([^)]*\\)/g) ?? []; const paint = cols.filter((x) => !/,\\s*0\\)$/.test(x)); const cr = c.getBoundingClientRect(); const vr = v.getBoundingClientRect(); return { paint, opaque: paint.length > 0 && paint.every((x) => x.startsWith('rgb(') || /,\\s*1\\)$/.test(x)), covers: vr.left <= cr.left && vr.top <= cr.top && vr.right >= cr.right && vr.bottom >= cr.bottom, theme: document.documentElement.dataset.theme ?? '' }; })())").then((x) => JSON.parse(x));
   const hintOf = (P) => P.evaluate("JSON.stringify({ rows: document.querySelectorAll('.q-hints .q-hint').length, open: document.querySelector('.q-hints .q-hint.open .hint-value')?.innerText ?? null, label: [...document.querySelectorAll('.q-hints .hint-label')].map((e) => e.innerText).join(',') })").then((s) => JSON.parse(s));
   const say = async (P, t) => {
     await P.setInput('.chat-card input', t);
@@ -5665,6 +5602,7 @@ async function r096Flow(browser) {
   await snap(H, 'play-0-pc');
   await snap(G, 'play-0-m360');
   res.themes.push(['play m360', await over(G)]);
+  res.veil = { p0: await veilOf(H), g0: await veilOf(G) };
   const it1 = sQ ? await itemOf(sQ.questionId) : null;
   // 가수 → 본인 알림(채팅에 안 나감)
   const chatBefore = await H.evaluate("document.querySelectorAll('.chat-line').length");
@@ -5672,6 +5610,12 @@ async function r096Flow(browser) {
   await sleep(300);
   res.artist = { notice: await G.evaluate("document.querySelector('[data-song-notice]')?.innerText ?? ''"), hostChatDelta: (await H.evaluate("document.querySelectorAll('.chat-line').length")) - chatBefore };
   await snap(G, 'play-artist-m360');
+  // ★ R099 — 30%(부채꼴 안만 보이고 나머지는 불투명)
+  await H.waitFor("Number(document.querySelector('[data-song-cover]')?.dataset.progress ?? 0) >= 0.3", 20000).catch(() => false);
+  await sleep(150);
+  res.veil.p30 = { h: await coverOf(H), v: await veilOf(H) };
+  await snap(H, 'play-30-pc');
+  await snap(G, 'play-30-m360');
   // 50% — 15초 남음 → 초성
   await H.waitFor("Number(document.querySelector('[data-song-cover]')?.dataset.progress ?? 0) >= 0.5", 20000).catch(() => false);
   await sleep(400);
@@ -5688,7 +5632,18 @@ async function r096Flow(browser) {
     await theme(H, th);
     await sleep(200);
     await snap(H, `play-50-${th}-pc`);
+    res.veil[th] = await veilOf(H);
   }
+  // ★ R099 — 확대 125%(장치 배율) · 줄인 움직임에서도 가림막이 표지를 다 덮는다
+  await H.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1.25, mobile: false });
+  await sleep(250);
+  res.veil.zoom125 = await veilOf(H);
+  await snap(H, 'play-50-zoom125-pc');
+  await H.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
+  await H.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  await sleep(250);
+  res.veil.reduced = await veilOf(H);
+  await H.send('Emulation.setEmulatedMedia', { features: [] });
   await theme(H, 'pastel');
   // 정답 — 방장이 채팅으로 제목 → 표지 100% + 강조 · 공개
   const sysBefore = await H.evaluate("document.querySelectorAll('.chat-system').length");
@@ -5698,9 +5653,11 @@ async function r096Flow(browser) {
   await say(H, '이 노래 완전 좋아요 🎉');
   await sleep(500);
   res.won = { h: await coverOf(H), g: await coverOf(G) };
+  // ★ R099 — 다음 곡 표지 칸이 **처음 그려진 프레임**을 잡아 둔다(새 칸 · 계산된 --song-p · 진행) — 옛 칸을 다시 쓰면 앞 곡 1 에서 되감기며 새 표지가 비쳤다
+  await H.evaluate("(() => { window.__nextCover = null; const first = document.querySelector('[data-song-cover]'); const t0 = Date.now(); const look = () => { if (window.__nextCover) return; const c = document.querySelector('[data-song-cover]'); if (!c || !c.querySelector('img')) return; if (c !== first) window.__nextCover = { p: Number(c.dataset.progress), cssP: Number(getComputedStyle(c).getPropertyValue('--song-p')), done: c.classList.contains('done'), at: Date.now() - t0 }; else if (!c.classList.contains('done')) window.__nextCover = { same: true, p: Number(c.dataset.progress), cssP: Number(getComputedStyle(c).getPropertyValue('--song-p')), at: Date.now() - t0 }; if (window.__nextCover) mo.disconnect(); }; const mo = new MutationObserver(look); mo.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] }); })()");
   res.reveal = JSON.parse(
     await H.evaluate(
-      "JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', artist: document.querySelector('.song-reveal-text .song-artist')?.innerText ?? '', chips: [...document.querySelectorAll('.song-chips .badge')].map((e) => e.innerText), winner: document.querySelector('[data-song-winner]')?.innerText ?? '', ceremony: document.querySelector('.ceremony-msg')?.innerText ?? '', rate: !!document.querySelector('[data-song-rate]'), next: document.querySelector('.reveal-next')?.innerText ?? '', sys: document.querySelectorAll('.chat-system').length, lines: [...document.querySelectorAll('.chat-line')].map((e) => e.innerText).slice(-4) })",
+      "JSON.stringify({ title: document.querySelector('[data-song-title]')?.innerText ?? '', artist: document.querySelector('.song-reveal-text .song-artist')?.innerText ?? '', chips: [...document.querySelectorAll('.song-chips .badge')].map((e) => e.innerText), winner: document.querySelector('[data-song-winner]')?.innerText ?? '', ceremony: document.querySelector('.ceremony-msg')?.innerText ?? '', rate: document.querySelectorAll('[data-song-rate], .reveal-fb').length, next: document.querySelector('.reveal-next')?.innerText ?? '', sys: document.querySelectorAll('.chat-system').length, lines: [...document.querySelectorAll('.chat-line')].map((e) => e.innerText).slice(-4) })",
     ),
   );
   res.reveal.sysDelta = res.reveal.sys - sysBefore;
@@ -5718,14 +5675,8 @@ async function r096Flow(browser) {
   await snap(H, 'reveal-won-pc');
   await snap(G, 'reveal-won-m360');
   res.themes.push(['reveal m360', await over(G)]);
-  // 평가 👎 → 노래 사유 칩
-  await realClick(G, '[data-song-rate] .fb-vote.down').catch(() => undefined);
-  await sleep(300);
-  res.reveal.reasons = await G.evaluate("[...document.querySelectorAll('[data-song-rate] [data-reason]')].map((e) => e.innerText).join(' | ')");
-  await realClick(G, '[data-song-rate] [data-reason="unknown"]').catch(() => undefined);
-  await sleep(400);
-  res.reveal.rateAsk = await G.evaluate("document.querySelector('[data-song-rate] .reveal-fb-ask')?.innerText ?? ''");
-  await snap(G, 'reveal-rate-m360');
+  // ★★★ R099 — 노래 평가 줄 없음(찬종 "평가는 나만 · 제보로")
+  res.reveal.rateRow = await G.evaluate("document.querySelectorAll('[data-song-rate], .reveal-fb, .fb-vote').length");
   await H.setViewport(2560, 1440);
   await sleep(300);
   await snap(H, 'reveal-won-2560');
@@ -5733,6 +5684,8 @@ async function r096Flow(browser) {
   await appleOf(H, 'reveal');
   // 곡 2 — 넘기기 투표(강조 없이 전부 공개)
   await H.waitFor("document.querySelector('.reveal') === null && document.querySelector('[data-song-cover]') !== null", 15000).catch(() => false);
+  // ★ R099 — 다음 곡 첫 프레임: 새 칸(같은 칸 다시 쓰기 아님) · 계산된 --song-p 가 진행과 같다(되감기 없음) · 불투명
+  res.veil.next = { first: JSON.parse(await H.evaluate('JSON.stringify(window.__nextCover)')), v: await veilOf(H) };
   await sleep(500);
   await realClick(H, '.skip-btn').catch(() => undefined);
   await realClick(G, '.skip-btn').catch(() => undefined);
@@ -5763,9 +5716,11 @@ async function r096Flow(browser) {
   record('★★★ R096 판 0% — 표지(600) 거의 가림 · 머리 "노래 맞히기" · 힌트 줄 = 초성 한 줄(잠김 15초) · PC 표지 ≈ 288~360px · m360 표지 ≤ 칸 너비', Boolean(res.p0?.h && res.p0.h.p < 0.1 && /600x600bb/.test(res.p0.h.img ?? '') && res.p0.cat === '노래 맞히기' && res.p0.hint.rows === 1 && res.p0.hint.label === '초성' && res.p0.h.w >= 250 && res.p0.h.w <= 361 && res.p0.g && res.p0.g.w <= 340), JSON.stringify(res.p0));
   record('★★★ R096 가수 → 본인에게만 "가수 말고 제목" · 방장 채팅 줄 늘지 않음', Boolean(res.artist && /가수 말고 제목/.test(res.artist.notice) && res.artist.hostChatDelta === 0), JSON.stringify(res.artist));
   record('★★★ R096 판 50% — 부채꼴 절반 · 15초 초성 열림(퀴즈 힌트 자리 · 방장 · 손님 같음) · 2560 표지 ≤ 360', Boolean(res.p50?.h && res.p50.h.p >= 0.49 && res.p50.h.p <= 0.62 && res.p50.hint.open && res.p50.hint.open === res.p50.gHint.open && res.p50.big.w <= 361), JSON.stringify(res.p50));
-  record('★★★ R096 정답 — 표지 100% + 강조(won) · 손님도 · 공개 제목 · 가수 · 칩 · "님이 n초 만에 맞혔어요 +1" · 소감 칸 · 평가 줄 · "N초 후 다음 곡" · 맞힌 글은 채팅에 안 나감(시스템 줄 +1)', Boolean(res.won?.h && res.won.h.p === 1 && res.won.h.won && res.won.g?.won && res.reveal.title === it1?.title && res.reveal.artist === it1?.artist && res.reveal.chips.length >= 2 && /맞혔어요/.test(res.reveal.winner) && /맞혔어요/.test(res.reveal.gWinner) && /좋아요/.test(res.reveal.ceremony) && res.reveal.rate && /다음 곡|^\s*$/.test(res.reveal.next) && res.reveal.sysDelta >= 1 && !res.reveal.lines.some((l) => l.endsWith(it1?.title ?? '\u0000'))), JSON.stringify({ won: res.won, reveal: res.reveal }));
+  record('★★★ R096 정답 — 표지 100% + 강조(won) · 손님도 · 공개 제목 · 가수 · 칩 · "님이 n초 만에 맞혔어요 +1" · 소감 칸 · ★ R099 평가 줄 없음 · "N초 후 다음 곡" · 맞힌 글은 채팅에 안 나감(시스템 줄 +1)', Boolean(res.won?.h && res.won.h.p === 1 && res.won.h.won && res.won.g?.won && res.reveal.title === it1?.title && res.reveal.artist === it1?.artist && res.reveal.chips.length >= 2 && /맞혔어요/.test(res.reveal.winner) && /맞혔어요/.test(res.reveal.gWinner) && /좋아요/.test(res.reveal.ceremony) && res.reveal.rate === 0 && /다음 곡|^\s*$/.test(res.reveal.next) && res.reveal.sysDelta >= 1 && !res.reveal.lines.some((l) => l.endsWith(it1?.title ?? '\u0000'))), JSON.stringify({ won: res.won, reveal: res.reveal }));
   record('★★★ R096 공개 중 채팅 입력칸이 화면 안 — PC 1280×720 · 1536×864 · m360(표지는 한 바퀴 뒤 한 단계 줄어든다)', Boolean(res.reveal.chatIn && [res.reveal.chatIn.pc, res.reveal.chatIn.lap, res.reveal.chatIn.m360].every((v) => typeof v === 'number' && v >= 0)), JSON.stringify(res.reveal.chatIn));
-  record('★★ R096 평가 — 👎 사유 = 노래용 넷(모르는 노래 · 너무 쉬움 · 표기 · 미리듣기) · 고르면 "고마워요"', Boolean(/모르는 노래/.test(res.reveal.reasons) && /미리듣기/.test(res.reveal.reasons) && /고마워요/.test(res.reveal.rateAsk)), JSON.stringify({ r: res.reveal.reasons, a: res.reveal.rateAsk }));
+  record('★★ R099 노래 공개 — 평가 줄(👍 😐 👎 · 노래 사유) 없음(손님 m360)', res.reveal.rateRow === 0, String(res.reveal.rateRow));
+  const vOk = (v) => v && v.opaque && v.covers;
+  record('★★★ R099 가림막 비침 0 — 칠한 색 알파 없음 · 표지 칸 전부 덮음(0% PC · m360 · 30% · 사무실 · 밤 · 확대 125% · 줄인 움직임 · 다음 곡 첫 순간)', [res.veil?.p0, res.veil?.g0, res.veil?.p30?.v, res.veil?.office, res.veil?.night, res.veil?.zoom125, res.veil?.reduced, res.veil?.next?.v].every(vOk) && res.veil.p30.h.p >= 0.29 && res.veil.p30.h.p <= 0.45 && !!res.veil.next.first && !res.veil.next.first.same && res.veil.next.first.p < 0.1 && Math.abs(res.veil.next.first.cssP - res.veil.next.first.p) < 0.02 && res.veil.next.first.done === false, JSON.stringify(res.veil));
   record('★★ R096 넘기기 — 표지 전부 공개 · 강조 없음 · "투표로 넘겼습니다"', Boolean(res.skip?.h && res.skip.h.p === 1 && !res.skip.h.won && /넘겼/.test(res.skip.winner)), JSON.stringify(res.skip));
   record('★★★ R096 결과 — 순위 3 · 곡 목록 5(제목 공개) · 노래 멈춤', Boolean(res.result && res.result.rank === 3 && res.result.songs === 5 && res.result.titles.every((t) => t && t !== '(중단된 곡)')), JSON.stringify(res.result));
   record('★★ R096 Apple 표기 0(설정 · 공개 · 결과) · m360 넘침 0', res.apple.every(([, a]) => !a) && res.themes.every(([, o]) => o <= 1), JSON.stringify({ apple: res.apple, t: res.themes }));
@@ -6937,37 +6892,61 @@ async function r080Flow(browser) {
     }
     if (key === 'many' && phase === 'final') await snap(H, 'many-final-pc');
     if (key === 'unique' && phase === 'play') {
+      // ★★★ R099 — 여러 답: 방장 ✗ 하나 + 정답 둘(0 · 2) · 손님 0 · 1 · 소켓 3 → 공개: 안 겹침 2 · 1 · 3(각 1개) · 겹침 0(둘) · 목록 밖 1
       const topic = await H.evaluate("document.querySelector('[data-topic]')?.dataset.topic ?? ''");
       const its = await itemsOf(topic);
-      await H.setInput('[data-topic-input]', '정답아님');
-      await H.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
-      await sleep(300);
-      const bad = await H.evaluate("document.querySelector('[data-unique-mine]')?.closest('.topic-fb')?.dataset.feedback ?? ''");
-      await H.setInput('[data-topic-input]', its[0].name);
-      await H.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
-      await G.setInput('[data-topic-input]', its[0].name);
-      await G.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
-      S.emit('minigame.submit', { token: sMg?.token, roundIndex: sMg?.roundIndex, input: { text: its[1].name } });
-      await sleep(400);
+      const enter = async (P, t) => {
+        await P.setInput('[data-topic-input]', t);
+        await P.evaluate("document.querySelector('.topic-form')?.requestSubmit()");
+        await sleep(250);
+      };
+      await enter(H, '정답아님');
+      const bad = await H.evaluate("document.querySelector('.topic-fb')?.dataset.feedback ?? ''");
+      await enter(H, its[0].name);
       const ok = await H.evaluate("document.querySelector('.topic-fb')?.dataset.feedback ?? ''");
-      res.unique.push({ bad, ok });
+      await enter(H, its[2].name);
+      await enter(H, its[0].name);
+      const again = await H.evaluate("document.querySelector('.topic-fb')?.dataset.feedback ?? ''");
+      await enter(G, its[0].name);
+      await enter(G, its[1].name);
+      S.emit('minigame.submit', { token: sMg?.token, roundIndex: sMg?.roundIndex, input: { text: its[3].name } });
+      await sleep(400);
+      const mid = JSON.parse(await H.evaluate("JSON.stringify({ count: Number(document.querySelector('[data-unique-count]')?.dataset.uniqueCount ?? -1), label: document.querySelector('[data-unique-count]')?.innerText ?? '', ok: document.querySelectorAll('[data-unique-sent=\"ok\"]').length, out: document.querySelectorAll('[data-unique-sent=\"out\"]').length, strike: getComputedStyle(document.querySelector('[data-unique-sent=\"out\"]') ?? document.body).textDecorationLine, focus: document.activeElement?.matches?.('[data-topic-input]') ?? false })"));
+      const gMid = JSON.parse(await G.evaluate("JSON.stringify({ count: Number(document.querySelector('[data-unique-count]')?.dataset.uniqueCount ?? -1), over: document.documentElement.scrollWidth - innerWidth, inputIn: (() => { const r = document.querySelector('[data-topic-input]')?.getBoundingClientRect(); return r ? r.right <= innerWidth && r.bottom <= innerHeight : false; })() })"));
+      res.unique.push({ bad, ok, again, mid, gMid });
       if (res.unique.length === 1) {
         await snap(H, 'unique-play-pc');
         await snap(G, 'unique-play-m360');
+        res.themes.push(['unique-play m360', await over(G)]);
       }
     }
     if (key === 'unique' && phase === 'roundResult') {
       await sleep(300);
-      const states = await H.evaluate("[...document.querySelectorAll('[data-unique-state]')].map((x) => x.dataset.uniqueState).sort().join(',')");
-      res.unique[res.unique.length - 1].states = states;
+      const rv = JSON.parse(await H.evaluate("JSON.stringify({ rows: [...document.querySelectorAll('[data-unique-row]')].map((r) => Number(r.dataset.uniqueRow)).sort().join(), only: document.querySelectorAll('[data-unique-chip=\"only\"]').length, dup: document.querySelectorAll('[data-unique-chip=\"dup\"]').length, out: document.querySelectorAll('[data-unique-chip=\"out\"]').length, report: document.querySelector('.unique-reveal [data-topic-report]') !== null })"));
+      res.unique[res.unique.length - 1].rv = rv;
       if (res.unique.length === 1) {
         await snap(H, 'unique-reveal-pc');
         await snap(G, 'unique-reveal-m360');
+        res.themes.push(['unique-reveal m360', await over(G)]);
         await theme(G, 'office');
         await sleep(200);
         await snap(G, 'unique-reveal-office-m360');
+        await theme(G, 'night');
+        await sleep(200);
+        await snap(G, 'unique-reveal-night-m360');
         await theme(G, 'pastel');
+        for (const [w, h] of [[1280, 720], [2560, 1440]]) {
+          await H.setViewport(w, h);
+          await sleep(250);
+          await snap(H, `unique-reveal-${w}`);
+        }
+        await H.setViewport(1280, 720);
       }
+    }
+    if (key === 'unique' && phase === 'final' && !res.uniqueFinal) {
+      await sleep(300);
+      res.uniqueFinal = await H.evaluate("document.querySelector('.mg-card')?.innerText.slice(0, 300) ?? ''");
+      await snap(H, 'unique-final-pc');
     }
     if (key === 'choice' && phase === 'play') {
       const text = await H.evaluate("document.querySelector('.choice-q')?.innerText.replace(/^\\S+\\s/, '') ?? ''");
@@ -7015,7 +6994,10 @@ async function r080Flow(browser) {
   record('★★ R080 많이 말하기 m360 — 입력칸 화면 안 · 넘침 0 · 내 개수 2', m && m.gMid.inputIn && m.gMid.over <= 1 && m.gMid.count === 2, JSON.stringify(m?.gMid));
   record('★★★ R080 많이 말하기 공개 — 사람 셋(3 · 2 · 1) · 나만 말한 답 · 못 말한 것 · 제보 버튼', m?.rv && m.rv.rows.slice().sort().join() === '1,2,3' && m.rv.only >= 3 && m.rv.missed > 0 && m.rv.report, JSON.stringify(m?.rv));
   record('★★★ R080 "이건 왜 정답 아냐?" — 제보 창 머리 주제 · 내 오답 채움 · 사유 "답" 켜짐', res.report && /많이 말하기/.test(res.report.title) && /정답아닌말/.test(res.report.text) && res.report.reason === 'true', JSON.stringify(res.report));
-  record('★★★ R080 겹치면 무효 — 3판 · 오답 ✗ → 바꾼 답 ✓ · 공개 겹침 둘 + 혼자 하나', res.unique.length === 3 && res.unique.every((u) => u.bad === 'wrong' && u.ok === 'ok' && u.states === 'dup,dup,win'), JSON.stringify(res.unique));
+  const uOk = (u) => u.bad === 'wrong' && u.ok === 'ok' && u.again === 'dup' && u.mid.count === 3 && u.mid.ok === 2 && u.mid.out === 1 && /내가 낸 답 3개/.test(u.mid.label) && /line-through/.test(u.mid.strike) && u.mid.focus;
+  record('★★★ R099 겹치면 무효 판 — 3판 · 여러 답(✗ · ✓ · ✓ · 이미 냈어요) · "내가 낸 답 3개" 칩(목록 밖 취소선) · 입력칸 포커스 유지', res.unique.length === 3 && res.unique.every(uOk), JSON.stringify(res.unique.map((u) => ({ bad: u.bad, ok: u.ok, again: u.again, mid: u.mid }))));
+  record('★★ R099 겹치면 무효 m360 — 입력칸 화면 안 · 넘침 0 · 손님 낸 답 2', res.unique[0]?.gMid?.inputIn && res.unique[0].gMid.over <= 1 && res.unique[0].gMid.count === 2, JSON.stringify(res.unique[0]?.gMid));
+  record('★★★ R099 겹치면 무효 공개 — 사람마다 안 겹친 수(1 · 1 · 1) · 안 겹친 칩 ★ 3 · 겹친 칩 흐림 2 · 목록 밖 취소선 1 · 제보 버튼', res.unique.length === 3 && res.unique.every((u) => u.rv && u.rv.rows === '1,1,1' && u.rv.only === 3 && u.rv.dup === 2 && u.rv.out === 1 && u.rv.report), JSON.stringify(res.unique.map((u) => u.rv)));
   record('★★★ R080 객관식(R090 5연속) — 5문항 · 보기 4 · 정답 표시 · 최종 정답 5줄(방장 다 맞힘)', res.choice.length === 5 && res.choice.every((c) => c.n === 4 && c.idx >= 0) && res.choiceReveal === 1 && res.choiceFinal?.answers === 5 && res.choiceFinal?.ok === 5, JSON.stringify({ c: res.choice.slice(0, 2), r: res.choiceReveal, f: res.choiceFinal }));
   record('★★ R080 모바일 넘침 0(공개 · 최종)', res.themes.every(([, o]) => o <= 1), JSON.stringify(res.themes));
   record('★ R080 설정 — 셋 고름', picked === 'many,unique,choice' || picked.split(',').length === 3, picked);
@@ -9206,14 +9188,14 @@ async function r073InfoFlow(browser) {
   const all = Object.values(table);
   record('★★★ R073 §D ⓘ 네 탭 — PC 5 · 모바일 3 크기 · 모든 줄(+다시 보기 버튼) 한 줄 · 탭마다 3줄 이상', all.length === 32 && all.every((r) => r.length >= 3 && r.every((n) => n === 1)), JSON.stringify(table));
   const joined = JSON.stringify(texts);
-  record('★★ R073 §D 뺀 것 — "답은 채팅창에" · "먼저 맞힌" · "끊겨도" · "✎" 없음 · 넣은 것 — 난이도 · 업적 한 줄 · 정답 공개 평가 · 뽑기 · 횟수 제한 없음 · 👍 😐 👎', !/답은 채팅창에|먼저 맞힌|끊겨도|✎/.test(joined) && /난이도/.test(joined) && /업적 \d+종/.test(joined) && /정답 공개 평가/.test(joined) && /뽑기/.test(joined) && /횟수 제한이 없어요/.test(joined) && /😐/.test(joined), joined.slice(0, 400));
+  record('★★ R073 §D 뺀 것 — "답은 채팅창에" · "먼저 맞힌" · "끊겨도" · "✎" 없음 · 넣은 것 — 난이도 · 업적 한 줄 · 뽑기 · 횟수 제한 없음 · ★ R099 평가 줄(정답 공개 평가 · 👍 😐 👎) 없음', !/답은 채팅창에|먼저 맞힌|끊겨도|✎/.test(joined) && /난이도/.test(joined) && /업적 \d+종/.test(joined) && !/정답 공개 평가/.test(joined) && /뽑기/.test(joined) && /횟수 제한이 없어요/.test(joined) && !/😐/.test(joined), joined.slice(0, 400));
   await r068Touch(H, 1280, 720, false);
   H.close();
 }
 
 // =============================================================================
-// ★★★ R071 — 정답 공개 평가 손질(👎 사유 칩 줄 · 요청 1/3 아닌 문항은 줄 없음) · 다른 하나 찾기 8×8 (D-313 · D-315)
-//   R071_ONLY = reveal | oddone (없으면 둘 다) · 묶음 env: RESOLVED_WAIT_MS 12000 · RATE_ASK_FORCE '1,3' (2 = 요청 밖) · RATE_SKIP_LOGIN 봇만
+// ★★★ R071 — 정답 공개 평가 손질 · 다른 하나 찾기 8×8 (D-313 · D-315) · ★ R099 — reveal 은 "평가 줄 없음" 확인으로 바뀜
+//   R071_ONLY = reveal | oddone (없으면 둘 다) · 묶음 env: RESOLVED_WAIT_MS 12000
 
 // =============================================================================
 const R071_FB = `JSON.stringify((() => {
@@ -9243,123 +9225,57 @@ async function r071Flow(browser) {
   if (!only || only === 'oddone') await r071OddoneFlow(browser);
 }
 async function r071RevealFlow(browser) {
+  // ★★★ R099 — 평가 없앰(찬종 "평가 버튼 그냥 빼자 · 평가는 나만 · 제보로"): 옛 R071 👎 사유 칩 · 요청 1/3 검사 → 세 문항 모두 평가 줄 없음 · 카드 안 넘침 · 1P 0
   const H = await newPage(browser, 'R071-host', true);
   await H.setViewport(1536, 864);
-  await signUp(H, 'th', '평가손질방장');
-  const roomId = await createRoom(H, 'R071 평가');
+  await signUp(H, 'th', '평가없음방장');
+  const roomId = await createRoom(H, 'R099 평가 없음');
   const G = await newPage(browser, 'R071-guest', true);
   await touchDevice(G, 390, 844);
-  await signUp(G, 'tg', '평가손질손님');
+  await signUp(G, 'tg', '평가없음손님');
   await G.goto(`${BASE}/r/${roomId}`);
   await G.waitFor("document.querySelector('.stage') !== null", 10000);
   await sleep(500);
   await setQuestionCount(H, 3);
   await sleep(300);
   await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
-  const out = {};
-  // ── 1번(요청 문항) — 방장 PC 👎 → 칩 줄 → 칩 → +1P · 손님 m390 톡
-  await H.waitFor("document.querySelector('.question-card .q-text') !== null", 30000);
-  await sleep(400);
-  await answerCurrent(H);
-  await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
-  await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
-  await sleep(500);
-  out.h0 = JSON.parse(await H.evaluate(R071_FB));
-  out.g0 = JSON.parse(await G.evaluate(R071_FB));
-  await H.evaluate("document.querySelector('.chat-card input')?.focus()");
-  await realClick(H, '.reveal-fb button[data-vote="-1"]');
-  await H.waitFor("document.querySelector('.reveal-fb-chips') !== null", 3000).catch(() => false);
-  await sleep(500);
-  out.h1 = JSON.parse(await H.evaluate(R071_FB));
-  await snap(H, '400-reveal-down-chips-1536');
-  await tapOn(G, '.reveal-fb button[data-vote="-1"]');
-  await G.waitFor("document.querySelector('.reveal-fb-chips') !== null", 3000).catch(() => false);
-  await sleep(400);
-  out.g1 = JSON.parse(await G.evaluate(R071_FB));
-  await snap(G, '400-reveal-down-chips-m390');
-  // 다른 크기(PC 넷 · 모바일 360/430) — 칩 줄이 펼쳐진 상태 그대로
-  out.sizes = {};
-  for (const [w, h] of [[1280, 720], [1536, 730], [1920, 1080], [2560, 1440]]) {
-    await H.setViewport(w, h);
-    await sleep(350);
-    out.sizes[`${w}x${h}`] = JSON.parse(await H.evaluate(R071_FB));
-    await snap(H, `400-reveal-down-chips-${w}x${h}`);
+  const out = { sizes: {} };
+  for (let i = 1; i <= 3; i += 1) {
+    await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 30000);
+    await sleep(300);
+    if (i === 3) {
+      await setTheme(G, 'night');
+      await touchDevice(G, 360, 740);
+    }
+    await answerCurrent(H);
+    await H.waitFor("document.querySelector('.reveal') !== null", 8000);
+    await G.waitFor("document.querySelector('.reveal') !== null", 4000).catch(() => false);
+    await sleep(600);
+    out[`h${i}`] = JSON.parse(await H.evaluate(R071_FB));
+    out[`g${i}`] = JSON.parse(await G.evaluate(R071_FB));
+    await snap(H, `400-reveal-nofb-${i}-1536`);
+    await snap(G, `400-reveal-nofb-${i}-${i === 3 ? 'm360-night' : 'm390'}`);
+    if (i === 1) {
+      for (const [w, h] of [[1280, 720], [1536, 730], [1920, 1080], [2560, 1440]]) {
+        await H.setViewport(w, h);
+        await sleep(350);
+        out.sizes[`${w}x${h}`] = JSON.parse(await H.evaluate(R071_FB));
+        await snap(H, `400-reveal-nofb-${w}x${h}`);
+      }
+      await H.setViewport(1536, 864);
+    }
   }
-  await H.setViewport(1536, 864);
-  for (const [w, h] of [[360, 740], [430, 932]]) {
-    await touchDevice(G, w, h);
-    await sleep(350);
-    out.sizes[`m${w}`] = JSON.parse(await G.evaluate(R071_FB));
-    await snap(G, `400-reveal-down-chips-m${w}`);
-  }
-  await touchDevice(G, 390, 844);
-  await sleep(300);
-  out.focus = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
-  await realClick(H, '.reveal-fb-chips .fb-chip[data-reason="unclear"]');
-  await H.waitFor("/고마워요/.test(document.querySelector('[data-rate-ask]')?.innerText ?? '')", 4000).catch(() => false);
-  await sleep(300);
-  out.h2 = JSON.parse(await H.evaluate(R071_FB));
-  out.focus2 = await H.evaluate("document.activeElement === document.querySelector('.chat-card input')");
-  await snap(H, '400-reveal-chip-granted-1536');
-  await tapOn(G, '.reveal-fb-chips .fb-chip[data-reason="boring"]');
-  await G.waitFor("/고마워요/.test(document.querySelector('[data-rate-ask]')?.innerText ?? '')", 4000).catch(() => false);
-  await sleep(300);
-  out.g2 = JSON.parse(await G.evaluate(R071_FB));
-  await snap(G, '400-reveal-chip-granted-m390');
-  // ── 2번(요청 밖) — 평가 줄이 없다
-  await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 30000);
-  await sleep(300);
-  await answerCurrent(H);
-  await H.waitFor("document.querySelector('.reveal') !== null", 8000);
-  await sleep(700);
-  out.n2h = JSON.parse(await H.evaluate(R071_FB));
-  out.n2g = JSON.parse(await G.evaluate(R071_FB));
-  await snap(H, '401-reveal-not-asked-1536');
-  await snap(G, '401-reveal-not-asked-m390');
-  // ── 3번(요청 문항) — 밤 테마 · 360 손님 👍(바로 1P · 칩 없음) · 방장 👎 만 누르고 사유 안 고름(0P 로 남는다)
-  await H.waitFor("document.querySelector('.question-card .q-text') !== null && document.querySelector('.reveal') === null", 30000);
-  await setTheme(G, 'night');
-  await touchDevice(G, 360, 740);
-  await sleep(300);
-  await answerCurrent(H);
-  await H.waitFor("document.querySelector('.reveal-fb') !== null", 8000);
-  await G.waitFor("document.querySelector('.reveal-fb') !== null", 4000);
-  await sleep(500);
-  await tapOn(G, '.reveal-fb button[data-vote="-1"]');
-  await G.waitFor("document.querySelector('.reveal-fb-chips') !== null", 3000).catch(() => false);
-  await sleep(400);
-  out.n3g = JSON.parse(await G.evaluate(R071_FB));
-  await snap(G, '402-reveal-down-chips-m360-night');
-  await tapOn(G, '.reveal-fb button[data-vote="1"]');
-  await sleep(600);
-  out.n3g2 = JSON.parse(await G.evaluate(R071_FB));
-  await realClick(H, '.reveal-fb button[data-vote="-1"]');
-  await sleep(700);
-  out.n3h = JSON.parse(await H.evaluate(R071_FB));
   await setTheme(G, 'pastel');
   await H.waitFor("document.querySelector('.result-card') !== null", 60000).catch(() => false);
   await sleep(600);
   const pts = await withPg(async (c) =>
-    (await c.query(`SELECT a.login_id, coalesce(sum(g.amount), 0)::int n FROM accounts a LEFT JOIN point_grants g ON g.account_id = a.id AND g.reason = 'rate' WHERE a.login_id = ANY($1) GROUP BY 1 ORDER BY 1`, [[`${ACCOUNT_PREFIX}_th`, `${ACCOUNT_PREFIX}_tg`]])).rows,
+    (await c.query(`SELECT coalesce(sum(g.amount), 0)::int n FROM accounts a JOIN point_grants g ON g.account_id = a.id AND g.reason = 'rate' WHERE a.login_id = ANY($1)`, [[`${ACCOUNT_PREFIX}_th`, `${ACCOUNT_PREFIX}_tg`]])).rows[0].n,
   );
-  const rows = await withPg(async (c) =>
-    (await c.query(`SELECT a.login_id, gq.question_index AS i, f.vote, f.reasons, f.asked, f.at_reveal, (f.rate_grant_id IS NOT NULL) AS rated FROM question_feedback f JOIN accounts a ON a.id = f.account_id JOIN game_questions gq ON gq.game_id = f.game_id AND gq.question_id = f.question_id WHERE a.login_id = ANY($1) AND f.game_id = (SELECT max(game_id) FROM game_players gp JOIN accounts x ON x.id = gp.account_id WHERE x.login_id = $2) ORDER BY 1, 2`, [[`${ACCOUNT_PREFIX}_th`, `${ACCOUNT_PREFIX}_tg`], `${ACCOUNT_PREFIX}_th`])).rows,
-  );
-  console.log(`  [r071] ${JSON.stringify({ pts, rows })}`);
-  const fine = (m) => m && m.chips && m.chipN === 7 && m.chipsBelow && m.chipsInView && !m.overflowX && m.chipsScroll !== null && m.nextSameLine;
-  record('★★★ R071 A 공개 화면(요청 문항) — 👎 진짜 클릭 → 사유 칩 7개가 **그 줄 아래** 한 줄 · 물음 "사유 하나 고르면 +1P" (PC 1536 · 손님 m390 톡)',
-    out.h0?.fb && /방금 문제 어땠어요/.test(out.h0.ask) && fine(out.h1) && /사유 하나 고르면 \+1P/.test(out.h1.ask) && fine(out.g1) && /사유 하나 고르면 \+1P/.test(out.g1.ask), JSON.stringify({ h0: out.h0, h1: out.h1, g1: out.g1 }));
-  record('★★★ R071 A 칩을 누르면 "+1P 고마워요"(PC 클릭 · m390 톡) · 입력창 포커스 안 뺏김', /\+1P 고마워요/.test(out.h2?.ask) && /\+1P 고마워요/.test(out.g2?.ask) && out.focus && out.focus2, JSON.stringify({ h2: out.h2?.ask, g2: out.g2?.ask, f: [out.focus, out.focus2] }));
-  record('★★★ R071 A 칩 줄 — PC 1280 · 1536×730 · 1920 · 2560 · 모바일 360 · 430 에서 화면 안 · 가로 넘침 없음 · 입력칸과 겹치지 않음',
-    Object.values(out.sizes).every((m) => fine(m) && !m.overlap && m.input && m.docH <= 1), JSON.stringify(out.sizes));
-  record('★★★ R071 A m390 — 칩 줄을 펼쳐도 입력칸이 화면 안(펼치기 전과 같다) · 페이지가 더 길어지지 않음', out.g0?.input === true && out.g1?.input === true && out.g1.docH <= out.g0.docH + 1, JSON.stringify({ g0: [out.g0?.input, out.g0?.docH, out.g0?.cardH], g1: [out.g1?.input, out.g1?.docH, out.g1?.cardH] }));
-  record('★★ R071 A 모바일 칩 높이 44px(터치) · PC 32px', out.g1?.chipH === 44 && out.sizes.m360?.chipH === 44 && out.h1?.chipH === 32, JSON.stringify([out.g1?.chipH, out.sizes.m360?.chipH, out.h1?.chipH]));
-  record('★★★ R071 A 요청 밖 문항(2번) — 공개 화면에 평가 줄 없음(방장 · 손님)', out.n2h && !out.n2h.fb && out.n2g && !out.n2g.fb, JSON.stringify({ h: out.n2h?.fb, g: out.n2g?.fb }));
-  record('★★ R071 A 밤 360 — 👎 칩 줄 보임(입력칸 화면 안 · 페이지 안 길어짐) → 👍 로 바꾸면 칩 줄 접히고 "+1P 고마워요"', fine(out.n3g) && out.n3g.input && out.n3g.docH <= 1 && !out.n3g2?.chips && /\+1P 고마워요/.test(out.n3g2?.ask ?? ''), JSON.stringify({ a: out.n3g, b: out.n3g2?.ask }));
-  const p = Object.fromEntries(pts.map((r) => [r.login_id.endsWith('_th') ? 'h' : 'g', r.n]));
-  const hr = rows.filter((r) => r.login_id.endsWith('_th'));
-  record('★★★ R071 A 포인트(검사 DB) — 방장 1P(1번 사유 뒤 · 3번 사유 없는 👎 는 0P) · 손님 2P(1번 · 3번 👍) · 요청 문항 표 asked true',
-    p.h === 1 && p.g === 2 && hr.some((r) => r.i === 3 && r.vote === -1 && !r.rated && r.asked) && rows.every((r) => r.asked === (r.i !== 2)), JSON.stringify({ p, rows }));
+  const all = [out.h1, out.g1, out.h2, out.g2, out.h3, out.g3, ...Object.values(out.sizes)];
+  console.log(`  [r071] ${JSON.stringify({ pts, h1: out.h1, g1: out.g1 })}`);
+  record('★★★ R099 공개 화면 — 세 문항 모두 평가 줄(👍 😐 👎 · 사유 칩 · "+1P") 없음 · 방장 PC 1536 · 손님 m390 · 밤 m360', all.every((m) => m && !m.fb && !m.ask && !m.chips), JSON.stringify(all.map((m) => m && [m.fb, m.ask, m.chips])));
+  record('★★★ R099 공개 카드 — PC 1280 · 1536×730 · 1920 · 2560 · m390 · m360 안 넘침 · 입력칸 화면 안 · 가로 넘침 없음', all.every((m) => m && m.cardOver === false && m.input && !m.overflowX), JSON.stringify(all.map((m) => m && [m.cardH, m.cardOver, m.input, m.overflowX])));
+  record('★★ R099 평가 1P 0(검사 DB)', pts === 0, String(pts));
   H.close();
   G.close();
 }

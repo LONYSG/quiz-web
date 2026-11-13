@@ -6,13 +6,12 @@
 //                · 정답자가 나오면 남은 구간을 재빨리 돌아 한 바퀴 → 강조(살짝 커지며 빛) · 스킵 · 시간 초과 = 강조 없이 전부 공개
 //                · 소리 띠(듣기 버튼 · 상태 · 볼륨 — 미니게임 노래 부품 그대로) · 재생 실패 보고(접속자 과반이면 서버가 그 곡을 넘긴다)
 //   SongReveal — 공개: 표지 크게(SongPlay 의 표지가 그 자리에서 전부 밝아진 것) · 제목 크게 · 가수 한 단계 작게 · 칩 한 줄 · "○○ 님이 n초 만에 맞혔어요 +1"
-//   SongRate   — 공개 화면 평가(👍 😐 👎 · 👎 사유 노래용) — 포인트 없음(1차) · 저장 = /api/minigame/song-rate
+//   (SongRate — R096 공개 화면 평가는 R099 에서 뺌 · 찬종 "평가는 나만 · 제보로")
 // ★ "Apple Music 미리듣기" 표기는 뺐다(찬종 2026-11-11 "완전히 빼" — 출처 근거는 docs/18 §10 저작권 메모에만).
 // =============================================================================
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { RATE_CHOICES, SONG_FEEDBACK_REASONS } from '@quiz/shared';
 import { Headphones, Music, Play, Volume2 } from 'lucide-react';
 import Icon from './Icon.js';
 import Avatar from './Avatar.js';
@@ -101,7 +100,9 @@ export function SongPlay({
   const p = outcome ? 1 : Math.max(0, Math.min(1, progress));
   return (
     <div className="song-play">
+      {/* ★ R099 — 곡마다 새 칸(key = epoch): 옛 칸을 다시 쓰면 앞 곡 공개(--song-p 1)에서 0 으로 120ms 동안 되감기며 새 표지가 비쳤다 */}
       <div
+        key={epoch}
         className={`song-cover${outcome === 'won' ? ' won' : ''}${outcome ? ' done' : ''}`}
         data-song-cover
         data-progress={p.toFixed(3)}
@@ -184,79 +185,6 @@ export function SongReveal({
         </p>
       ) : (
         <p className="song-winner dim">{song.failSkipped ? '미리듣기를 못 불러와 넘겼어요' : reasonTitle}</p>
-      )}
-    </div>
-  );
-}
-
-/** ★ 공개 화면 평가 — 퀴즈 RevealFeedback 꼴(같은 버튼 · 같은 자리) · 👎 면 노래 사유 칩 · 한 사람 한 곡 하나(바꿀 수 있음) */
-export function SongRate({ gameId, songId }: { gameId: string; songId: string }) {
-  const [vote, setVote] = useState<1 | 0 | -1 | null>(null);
-  const [reasons, setReasons] = useState<string[]>([]);
-  const [saved, setSaved] = useState(false);
-  useEffect(() => {
-    setVote(null);
-    setReasons([]);
-    setSaved(false);
-  }, [songId]);
-  const send = (v: 1 | 0 | -1, rs: string[]) => {
-    void fetch('/api/minigame/song-rate', {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ gameId, songId, vote: v, reasons: rs }),
-    })
-      .then((r) => setSaved(r.ok))
-      .catch(() => setSaved(false));
-  };
-  const keepFocus = (e: React.MouseEvent) => e.preventDefault();
-  return (
-    <div className="reveal-fb song-rate" data-song-rate>
-      <span className="reveal-fb-ask">{saved && (vote !== -1 || reasons.length) ? '고마워요!' : vote === -1 ? '어떤 점이 별로였어요?' : '방금 노래 어땠어요?'}</span>
-      <span className="fb-votes" role="group" aria-label="방금 노래 평가">
-        {RATE_CHOICES.map((c) => (
-          <button
-            key={c.vote}
-            type="button"
-            className={`fb-vote ${c.vote === 1 ? 'up' : c.vote === 0 ? 'mid' : 'down'}${vote === c.vote ? ' on' : ''}`}
-            aria-pressed={vote === c.vote}
-            aria-label={c.label}
-            title={c.label}
-            data-vote={c.vote}
-            onMouseDown={keepFocus}
-            onClick={() => {
-              setVote(c.vote);
-              const rs = c.vote === -1 ? reasons : [];
-              if (c.vote !== -1) setReasons([]);
-              send(c.vote, rs);
-            }}
-          >
-            <span className="fb-vote-emoji" aria-hidden="true">
-              {c.emoji}
-            </span>
-          </button>
-        ))}
-      </span>
-      {vote === -1 && (
-        <span className="reveal-fb-chips fb-chips" role="group" aria-label="별로인 이유">
-          {SONG_FEEDBACK_REASONS.map((r) => (
-            <button
-              key={r.code}
-              type="button"
-              className={reasons.includes(r.code) ? 'fb-chip on' : 'fb-chip'}
-              aria-pressed={reasons.includes(r.code)}
-              data-reason={r.code}
-              onMouseDown={keepFocus}
-              onClick={() => {
-                const next = reasons.includes(r.code) ? reasons.filter((x) => x !== r.code) : [...reasons, r.code];
-                setReasons(next);
-                send(-1, next);
-              }}
-            >
-              {r.label}
-            </button>
-          ))}
-        </span>
       )}
     </div>
   );

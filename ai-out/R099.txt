@@ -1,0 +1,106 @@
+===========================================
+ROUND: R099
+DATE: 2026-11-13
+TASK: 제보 반영(코드) — ⓪ 노래 표지 가림막 불투명 · A 평가 버튼 삭제 · B 겹치면 무효 = 여러 답 · 안 겹친 정답 수
+STATUS: 부분완료 — 코드 · 문서 · 새 검사 끝 · 끝 점검 중간에 PC 메모리 부족으로 멈춤(4절)
+===========================================
+
+[cmd 요약]
+R099 — 노래 가림막 비침 0(+ 사무실 테마에서 아예 안 가려지던 것 · 다음 곡 첫 프레임에 90% 보이던 것 같이 고침) ·
+평가(공개 · 노래 · 결과 · 로비 투표 · 1P · 요청 문항) 전부 뺌 · 목록은 "이번 판 문제"(줄마다 제보) ·
+겹치면 무효 = 15초 여러 답 · 겹친 항목 전원 0 · 판 점수 = 안 겹친 정답 수 · D-356 · A124
+
+-------------------------------------------
+0. ★ 찬종이 볼 것
+-------------------------------------------
+ ① 그림(docs/design/r099) — 왼쪽 = 고치기 전(또는 기존 화면) · 오른쪽 = R099
+    - side-veil-before-after-0-pc · -50-pc · -0-m360 · -office-pc : 노래 표지 가림막(전: 비쳐 보임 · 후: 하나도 안 보이고 부채꼴만)
+    - side-play-many-vs-unique-pc · side-reveal-many-vs-unique-pc : 새 겹치면 무효를 기존 "많이 말하기" 화면과 나란히(같은 칩 · 같은 줄 꼴)
+    - side-unique-old-vs-new-play-pc · -reveal-pc · -reveal-m360 : 옛 겹치면 무효(답 하나) ↔ 새(여러 답)
+    - side-reveal-rate-before-after-song-m360 : 노래 공개 화면 평가 줄 사라짐
+    - song-play-30-pc · song-play-50-zoom125-pc(확대 125%) · song-play-50-office-pc · unique-reveal-office-m360 · unique-reveal-night-m360 · unique-reveal-2560
+ ② 가림막에서 같이 찾은 것 둘(브리프에 없던 결함 — 고침)
+    - 사무실 테마에서는 R096 부터 가림막이 **아예 안 그려져 표지가 처음부터 다 보였다**(사무실 "장식 0" 규칙이 그라데이션 · 흑백 필터를 지움). 이제 가려지고 흑백.
+    - 다음 곡이 뜨는 **첫 순간 새 표지가 90% 열린 채 한 번 그려졌다**(앞 곡의 남은 시간이 첫 그림에 쓰임). 새 검사가 고치기 전 빌드에서 잡았고(0.898) 고친 뒤 0.
+      퀴즈 시간 막대도 같은 원인으로 첫 0.1초가 앞 문제 값이었다 — 같이 고쳐짐.
+ ③ 평가: 공개 화면 · 노래 공개 · 결과 · 로비의 👍 😐 👎 · 사유 · 의견 · "+1P" 전부 없음. 안내 ⓘ 의 평가 줄 둘도 뺐다.
+    ★ MAIN 판단(되돌리기 쉽다): 결과 화면 "이번 판 문제" · 로비 "지난 판 문제" **목록은 남겼다** — 줄마다 제보 📝 가 그 문항을 채워 주는 길이라서.
+      필요 없으면 말해 주면 두 줄 지운다.
+ ④ 겹치면 무효 15초: 봇 · ui-check 로 사람이 3~4개 치는 데 2~3초 — 15초면 아는 주제는 8~10개쯤 칠 수 있다(직접 판 감은 아님). **바꾸지 않았다** · 제안 없음.
+    실제로 짧으면 A124 ② 로.
+ ⑤ 적용: 메뉴 3 → 1 [1](화면 · 서버 코드가 바뀜 · DB 구조 0 · 데이터 0).
+
+-------------------------------------------
+원칙 메모 (7번 — 브리핑 사실 검증)
+-------------------------------------------
+ - ".song-cover-veil 의 rgb(14 12 28 / 0.9)" — 맞음(styles.css). 브리프 ② "office · reduced-motion 분기에서도 안 비치나" → office 는 **비침이 아니라 가림막 자체가 없었다**(위 ②).
+ - "RevealFeedback(Question.tsx 414 · resolution.rateAsk)" — 맞음. "R068 rateSkipLogin · R071 rateAsk · noteRateAsk · config.rateAskForce" — 맞음(전부 지움).
+ - "minigame_results.input.rate 를 song:feedback 이 읽는다" — 맞음. 스크립트는 남기고 머리에 한 줄.
+ - "unique 지금 = 판마다 답 하나 · 정답 밖 0 · 둘 이상 같은 항목 전원 0 · 혼자만 1" — 맞음(topicGames.ts · shared uniqueResult).
+ - "song:feedback · 통계 스크립트가 input.text 를 읽으면 같이 고친다" — unique 의 input.text 를 읽는 스크립트는 없었다(봇만 — 고침).
+
+-------------------------------------------
+1. A 평가 버튼 삭제
+-------------------------------------------
+ - 화면: Question 공개 줄(RevealFeedback · SongRate) 삭제 · QuestionFeedback.tsx = 목록만(번호 · #id · 질문 · 정답 · 📝) · 머리 "이번 판 문제 n문제" / 로비 "지난 판 문제" ·
+   InfoText 포인트 탭 "정답 공개 평가 1P" · 제보 탭 "👍 😐 👎 로 평가" 줄 삭제 · api postQuestionFeedback 삭제 · useRoom rateAsk 삭제.
+ - 서버: POST /api/feedback/question · POST /api/minigame/song-rate 삭제(404) · saveSongRate · game.rateAsk · noteRateAsk(rateAsk.ts 파일) · loadRateAsked ·
+   resolution/스냅샷/공개 이벤트 rateAsk · config rateSkipLogin · rateAskForce 삭제 · game_questions.rate_ask 안 적음(열 기본 false) · GET 목록은 vote 등 빼고 남김.
+ - shared: RATE_POINTS · RATE_CHOICES · rateAskCount · pickRateAsk · rateNeedsReason · parseFeedbackInput · parseSongFeedbackInput · FEEDBACK_RATE 삭제
+   (FEEDBACK_REASONS — 제보 📝 칩 · SONG_FEEDBACK_REASONS — song:feedback 라벨은 남김).
+ - 남긴 것: question_feedback · minigame_results.input.rate · point_grants 'rate'(옛 기록) · feedback:report · song:feedback(머리 "새 입력 없음" 한 줄) · 제보.
+ - 봇 · 검사: 봇 rate = "평가 없음" 확인으로 새로(공개 · 스냅샷 rateAsk 없음 · 두 길 404 · 새 행 0 · rate_ask false) · feedback = 목록만 · song 평가 줄 → 404 ·
+   ui-check r056 · r068 · r071 · r073 · r096 의 평가 검사 → "평가 줄 없음 · 목록 줄마다 제보" 로 · 묶음의 RATE_ASK_FORCE · RATE_SKIP_LOGIN 삭제.
+ - CSS: 평가 줄 클래스(.reveal-fb · .fb-vote · .fb-chips 의 공개 줄 몫 등)는 남아 있다(쓰는 곳 0 · 지우지 않음 — fb-chip 은 제보 창이 씀).
+
+-------------------------------------------
+2. B 겹치면 무효 규칙 전/후
+-------------------------------------------
+ | | 전(R080) | 후(R099) |
+ |---|---|---|
+ | 입력 | 판마다 답 하나 · 다시 치면 바뀜(마지막 것) | 15초 동안 여러 답(Enter 마다) · 같은 사람의 같은 항목 · 같은 오답은 하나로("이미 냈어요") · 개수 제한 없음(입력 300번 · 오답 기록 30 상한 — 많이 말하기와 같은 값) |
+ | 목록 밖 | 0 | 0(벌점 없음) |
+ | 겹침 | 둘 이상 같은 항목 = 그 사람들 0 | 남과 하나라도 겹친 항목 = 그 항목은 전원 0(다른 안 겹친 답은 그대로 셈) |
+ | 판 점수 | 혼자만 낸 정답 1 | 안 겹친 정답 **개수**(scoring 'value' — 판 값 = 판 점수) |
+ | 최종 | 3판 합 · 공동 순위 · 순위 → 포인트 표 | 그대로 |
+ | 시간 | 15초 | 15초(그대로) |
+ | 판 중 화면 | "내 답 ○○ ✓ · 바꿔도 돼요" | 같은 입력칸 · 판정 한 줄(✓ / ✗ / 이미 냈어요) · "내가 낸 답 n개" 칩(목록 밖 취소선) |
+ | 공개 | 사람마다 답 하나 + "+1 / 겹침 · 0" | 사람마다 "n개" + 칩(안 겹침 ★ 강조 · 겹침 흐림 · 목록 밖 취소선) + 내 목록 밖 답이 있으면 "이건 왜 정답 아냐?" |
+ | 기록 | input {text} · value 1/null | input {texts:[낸 글]} · value = 안 겹친 수(0 이면 null) |
+ - 코드: server topicGames.ts unique · shared topics.ts uniqueCount(옛 uniqueResult 대신) · minigame.ts info(oneLine · controls · unit '개' · scoring 'value') ·
+   client TopicGames.tsx(UniquePick · UniqueReveal · topicValueText "n개 · 겹침 m") · MinigameStage 부제 · styles .topic-chip.dup/.out(옛 .unique-people 줄 꼴 지움).
+ - 검사: vitest(uniqueCount · 판 정산 · input.texts) · 봇 mgonly(b1 · b2 · b3 = 판마다 1 · 1 · 2 · 합 3 · 3 · 6 → 공동 2위 · 기록 input.texts · value) · ui-check r080(3판 · 칩 · 공개 · m360).
+
+-------------------------------------------
+3. 스크린샷 · 검사
+-------------------------------------------
+ - 그림: docs/design/r099 (34장 · README.txt). r096 · r080 폴더는 검사가 덮어써서 HEAD 로 되돌렸다(새 그림은 r099 에만).
+ - ⓪ 새 검사(ui-check r096 "가림막 비침 0"): 칠한 색 알파 없음 · 칸 전부 덮음 — 0%(PC · m360) · 30% · 사무실 · 밤 · 확대 125% · 줄인 움직임 · 다음 곡 첫 프레임(MutationObserver).
+   고치기 전 상태에서: 사무실 paint 0(가림막 없음) · 다음 곡 첫 프레임 progress 0.898 → 둘 다 FAIL 로 잡힘 · 고친 뒤 11/11.
+   검사가 왜 못 잡았나: R096 검사는 표지 진행값(data-progress)만 봤고 가림막 색 · 사무실 테마 · 곡 바뀌는 첫 프레임을 안 봤다 → 위 검사로 메움.
+ - (끝 점검 결과는 아래 4절)
+
+-------------------------------------------
+4. 끝 점검 · 못 한 것
+-------------------------------------------
+통과(끝까지 돈 것)
+ - typecheck 0 · vitest 56 파일 761 통과(평가 테스트를 줄여 773 → 761) · npm run build 통과.
+ - ui-check r096 11/11(새 가림막 검사 포함) · r080 10/10.
+ - 봇 71 시나리오 단계별(시나리오마다 따로 · --url :3400): 69 통과 · song 1회차 실패 1 = 낡은 기대(기록에 노래 평가 행) → 고침 →
+   2회차 15/16(「판 중 보내는 것에 제목 · 가수 글자 없음」 1건 — 곡마다 다른 검사 · 원인 확인 못 함) → 3회차 16/16.
+못 돌린 것 — 통과 아님
+ - mgduo: 1회차는 내 15분 제한에 걸림(실패 아님 · 끝까지 OK 줄만) · 2회차는 Claude Code 가 **PC 메모리 부족으로 강제 종료**(앞 [A] 줄 전부 OK 까지 봄).
+ - npm run verify: 2회차 mgduo 뒤에 이어 돌리려다 같이 멈춤 — **0 단계도 못 돌림**.
+ - ui-check 옛 묶음 중 평가 검사를 바꾼 것: r056 · r068 · r071 · r064 · r073 — **못 돌림**(문법 검사만).
+ - 폰 실기기 · 실제 귀로 듣기 — 못 봄.
+이어서 할 것(메모리 여유가 있을 때)
+ - node scripts/bot.mjs mgduo --url http://localhost:3400
+ - npm run verify(10분 넘는 단계는 단계별)
+ - node scripts/ui-check-bundles.mjs r056 r068 r071 r064 r073
+ - 다 통과하면 push → 메뉴 3 → 1 [1]
+
+-------------------------------------------
+고친 문서
+-------------------------------------------
+ docs/01-GAME-RULES.md(16-R080 ② 개정 · 16-R099) · docs/18-MINIGAME-DATA.md §9 쓰는 게임 줄 · docs/07-DECISIONS.md D-356 · docs/13-PENDING-CHECKS.md A124 ·
+ docs/06-WORKLOG.md · ai-out/README.md

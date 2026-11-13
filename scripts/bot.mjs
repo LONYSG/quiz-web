@@ -146,7 +146,7 @@ const SCENARIO_ENV = {
   near: { RESOLVED_WAIT_MS: '200', NEAR_MISS_SKIP_LOGIN: '^(bot_nx|uic|r10_)' },
   // ★ R068 — 정답 공개 평가 1P: 공개 2.5초(그 사이 표) · bot_rx 만 봇 규칙(0P)
   // ★ R071 — 평가 요청 문항을 1 · 2 · 4 로 고정(무작위 1/3 대신 — 3 은 요청 밖 문항)
-  rate: { RESOLVED_WAIT_MS: '2500', RATE_SKIP_LOGIN: '^(bot_rx|uic|r10_)', RATE_ASK_FORCE: '1,2,4' },
+  rate: { RESOLVED_WAIT_MS: '2500' },
   // ★ R069 — 등급 비율 실측(20문항 판 다섯 · 방장 넘기기)
   levelmix: { RESOLVED_WAIT_MS: '200' },
 };
@@ -7815,12 +7815,14 @@ async function mgTopicTrio(bots, host) {
         } else if (mg.key === 'unique') {
           const items = await topicItemsOf(p.topic);
           if (b === b1) seen.unique.push(p.topic);
-          // b1 · b2 같은 항목(겹침 → 0) · b3 다른 항목(혼자 → 1) · b1 은 먼저 오답을 냈다가 바꾼다(마지막 답)
-          if (b === b1) {
-            sub(b, mg, { text: '틀린답xx', elapsedMs: 300 });
-            await sleep(150);
+          // ★★★ R099 — 여러 답 · 겹친 항목은 전원 0 · 판 점수 = 안 겹친 정답 수
+          //   b1: 오답 · 0 · 1 · 2 · 0(다시 = 이미 냄) → 0(b2) · 1(b3) 겹침 → 안 겹침 2 하나 = 1
+          //   b2: 0 · 3 → 0 겹침 → 3 하나 = 1 / b3: 1 · 4 · 5 → 1 겹침 → 4 · 5 = 2
+          const plan = b === b1 ? ['틀린답xx', items[0].name, items[1].name, items[2].name, items[0].name] : b === b2 ? [items[0].name, items[3].name] : [items[1].name, items[4].name, items[5].name];
+          for (const t of plan) {
+            sub(b, mg, { text: t, elapsedMs: 600 });
+            await sleep(120);
           }
-          sub(b, mg, { text: b === b3 ? items[1].name : items[0].name, elapsedMs: 600 });
         } else if (mg.key === 'choice') {
           const ans = await answerOfQuestion(p.text);
           const opts = p.options ?? [];
@@ -7865,8 +7867,15 @@ async function mgTopicTrio(bots, host) {
   const ur = states.filter((v) => v.key === 'unique' && v.phase === 'final')[0];
   const uRounds = ur?.roundResults ?? [];
   expectTrue('★★★ 겹치면 무효 — 3판 · 판마다 다른 주제', uRounds.length === 3 && new Set(seen.unique).size === 3, JSON.stringify(seen.unique));
-  expect('★★★ 겹치면 무효 — b1 · b2 같은 답 = 둘 다 0 · b3 혼자 = 판마다 1', [b1, b2, b3].map((b) => uRounds.map((rr) => rowOf(rr.rows, b)?.points).join('')), ['000', '000', '111']);
-  expect('★★ 겹침 표시 · 마지막 답(b1 오답 뒤 바꿈)', [rowOf(uRounds[0]?.rows ?? [], b1)?.extra?.dup, rowOf(uRounds[0]?.rows ?? [], b1)?.extra?.valid], [true, true]);
+  expect('★★★ R099 겹치면 무효 — 판 점수 = 안 겹친 정답 수(b1 1 · b2 1 · b3 2) · 3판', [b1, b2, b3].map((b) => uRounds.map((rr) => rowOf(rr.rows, b)?.points).join('')), ['111', '111', '222']);
+  const u0 = (b) => rowOf(uRounds[0]?.rows ?? [], b);
+  expect('★★ 겹친 항목 수 · 오답 기록 · 같은 답 다시는 한 번(b1 겹침 2 · 오답 1 · 낸 정답 3)', [u0(b1)?.extra?.dup?.length, u0(b1)?.extra?.wrong, u0(b1)?.extra?.found?.length, u0(b3)?.extra?.only?.length], [2, ['틀린답xx'], 3, 2]);
+  const uFb = fb.get(b1).filter((f) => f.token === ur?.token).slice(0, 5).map((f) => f.result);
+  expect('★★ 본인 판정 — ✗ · ✓ · ✓ · ✓ · 이미 냄', uFb, ['wrong', 'ok', 'ok', 'ok', 'dup']);
+  const uDb = await withDb(async (c) => (await c.query(`SELECT res.input, res.value, res.points FROM minigame_results res JOIN minigame_runs r ON r.id = res.run_id JOIN accounts a ON a.id = res.account_id WHERE r.game_id = $1 AND r.minigame_key = 'unique' AND res.round_index = 0 AND a.login_id = $2`, [gid, b1.loginId])).rows[0]);
+  expectTrue('★★★ 기록 — input = { texts:[오답 · 정답 셋] }(같은 답 다시는 빠짐) · value = 안 겹친 정답 수 1', Array.isArray(uDb?.input?.texts) && uDb.input.texts.length === 4 && uDb.input.texts[0] === '틀린답xx' && Number(uDb.value) === 1 && uDb.points === 1, JSON.stringify(uDb));
+  const uFinal = ur?.final ?? [];
+  expect('★★ 최종 — 합계 b3 6 · b1 3 · b2 3 → b3 1등 · b1 · b2 공동 2등', [b3, b1, b2].map((b) => { const f = uFinal.find((x) => ids.get(x.accountId) === b.loginId); return [f?.total, f?.rank]; }), [[6, 1], [3, 2], [3, 2]]);
   // ── 객관식
   const cf = states.filter((v) => v.key === 'choice' && v.phase === 'final')[0];
   const cRounds = cf?.roundResults ?? [];
@@ -8927,119 +8936,62 @@ async function scenarioEmojiInline() {
 // ★★ R058 — 근접 오답 (A83 (나) · D-252): 가까운 것만 · 정규화 글만 · 봇 제외(검사 서버는 bot_nx 만 거른다) · 5행 상한 · 공개 뒤 안 남김 · 90일 지움
 // =============================================================================
 // -----------------------------------------------------------------------------
-// ★★★ R068 — 정답 공개 평가 3단계 · 1P (docs/19 §7) — `npm run bot -- rate`
-//   자기 서버(SCENARIO_ENV): 정답 공개 2.5초 · RATE_SKIP_LOGIN = bot_rx 만(봇 규칙 — 0P) · rh · rg 는 1P 를 받는 계정으로 친다
-//   ★★ R071 (D-313) — 4문항 · 평가 요청 문항 = 1 · 2 · 4(RATE_ASK_FORCE — 실제는 판마다 무작위 ceil(n/3)) · 3 은 요청 밖
-//   [1] 요청 문항 공개 중 표 → 1P(at_reveal · rate_grant_id · asked) · 😐(0) 도 1P · 거른 봇 0P · 바꿔도 더 안 줌 · 1초 안 연타 두 번 → 1P 한 번 · 스냅샷 rateAsk true
-//   [2] 공개 뒤(다음 문제) 같은 문항 → 저장만 0P · 1P 받은 표는 취소해도 안 지워짐
-//   [3] 문제 중(공개 전) 표 → 0P → 그 문항 공개 때 다시 → 1P(같은 문항 한 번)
-//   [4] ★ R071 — 요청 밖 문항(3) 공개 중 → rateAsk false · 0P · asked false
-//   [5] ★ R071 — 공개 중 사유 없는 👎 → 0P · needReason → 같은 공개 안에 사유 붙여 다시 → 1P · 처음부터 사유 붙인 👎 → 1P
-//   [6] 결과 화면(판 끝) 표 → 0P(요청 문항이면 asked true) · 합계 rh 3 · rg 3 · rx 0 · 하루 상한 없음
+// ★★★ R099 — 평가 없앰 확인 (찬종 2026-11-12 #127 "평가 버튼 그냥 빼자. 평가는 나만 할게 — 제보로") — `npm run bot -- rate`
+//   옛 R068 · R071 rate(공개 중 1P · 👎 사유 · 요청 1/3)는 지웠다. 이제 확인할 것:
+//   [1] 퀴즈 3문항 — 공개(question.resolved) · 재합류 스냅샷 resolution 에 rateAsk 가 없다 · 문항 번호(questionId)는 그대로(제보 📝)
+//   [2] POST /api/feedback/question · /api/minigame/song-rate → 404(길이 없다) · point_grants 'rate' 새 행 0 · question_feedback 새 행 0
+//   [3] game_questions.rate_ask = 전부 false(열은 남고 안 적는다)
 // -----------------------------------------------------------------------------
 async function scenarioRate() {
-  log('시나리오 rate — ★★★ 정답 공개 평가 3단계 · 1P (R068) · ★ R071 👎 사유 필수 · 요청 1/3');
+  log('시나리오 rate — ★★★ R099 평가 없앰(공개 평가 · 1P · 요청 문항 · 노래 평가)');
   const rh = new Bot('rh');
   const rg = new Bot('rg');
-  const rx = new Bot('rx');
-  const all = [rh, rg, rx];
+  const all = [rh, rg];
   for (const b of all) await b.auth();
   const logins = all.map((b) => b.loginId);
-  await withDb(async (c) => {
-    await c.query(`UPDATE question_feedback SET rate_grant_id = NULL, adopted_grant_id = NULL WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]);
-    await c.query(`DELETE FROM point_grants WHERE reason = 'rate' AND account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]);
-    await c.query(`DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]);
-  });
+  const counts = async () =>
+    (await withDb((c) => c.query(`SELECT (SELECT count(*)::int FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = ANY($1) AND g.reason = 'rate') g, (SELECT count(*)::int FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = ANY($1)) f`, [logins]))).rows[0];
+  const before = await counts();
   for (const b of all) await b.connect();
-  rh.createRoom('R071 평가');
+  rh.createRoom('R099 평가 없음');
   await rh.waitFor(() => rh.snapshot !== null, 6000, '방');
-  for (const b of [rg, rx]) {
-    b.join(rh.snapshot.room.id);
-    await b.waitFor(() => b.snapshot?.room.id === rh.snapshot.room.id, 6000, '입장');
-  }
-  rh.socket.emit('lobby.updateSettings', { questionCount: 4, minigames: false, minigameOnly: false });
+  rg.join(rh.snapshot.room.id);
+  await rg.waitFor(() => rg.snapshot?.room.id === rh.snapshot.room.id, 6000, '입장');
+  rh.socket.emit('lobby.updateSettings', { questionCount: 3, minigames: false, minigameOnly: false });
   await sleep(400);
+  const m = rg.mark();
   rh.socket.emit('game.start', {});
-  const gameIdOf = () => String(rh.snapshot?.game?.gameId ?? rh.snapshot?.result?.gameId ?? '');
-  const post = (bot, questionId, vote, reasons) => postJson('/api/feedback/question', { gameId: gameIdOf(), questionId, vote, ...(reasons ? { reasons } : {}) }, bot.cookie);
-  const grants = async (bot) => (await withDb((c) => c.query(`SELECT coalesce(sum(g.amount), 0)::int n FROM point_grants g JOIN accounts a ON a.id = g.account_id WHERE a.login_id = $1 AND g.reason = 'rate'`, [bot.loginId]))).rows[0].n;
-  const row = async (bot, q) => (await withDb((c) => c.query(`SELECT f.vote, f.at_reveal, f.asked, f.reasons, f.rate_grant_id::text AS gid FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [bot.loginId, q]))).rows[0] ?? null;
-  const solve = async (i) => {
+  log('\n[1] ★★★ 공개 · 스냅샷에 rateAsk 없음');
+  const qids = [];
+  let snapKeys = null;
+  for (let i = 1; i <= 3; i += 1) {
     await rh.waitFor(() => rh.snapshot?.room.state === 'QUESTION_ACTIVE' && rh.snapshot.question?.index === i, 30000, `문제 ${i}`);
-    const q = String(rh.snapshot.question.questionId);
-    return q;
-  };
-  const answer = async (i) => {
+    qids.push(String(rh.snapshot.question.questionId));
     const [ans] = await answersForText(rh.snapshot.question.text);
     rh.chat(ans);
     await rh.waitFor(() => rh.snapshot?.room.state === 'QUESTION_RESOLVED' && rh.snapshot.question?.index === i, 15000, `공개 ${i}`);
-  };
-
-  log('\n[1] ★★★ 요청 문항 공개 중 표 → 1P');
-  const q1 = await solve(1);
-  await answer(1);
-  expectTrue('★★ R071 — 공개 스냅샷 rateAsk true(요청 문항 1)', rh.snapshot?.resolution?.rateAsk === true && rg.snapshot?.resolution?.rateAsk === true, JSON.stringify(rh.snapshot?.resolution?.rateAsk));
-  let r = await post(rh, q1, 1);
-  expectTrue('★★★ 공개 중 👍 → granted 1 · rated', r.status === 200 && r.json?.granted === 1 && r.json?.feedback?.rated === true && r.json?.feedback?.atReveal === true && r.json?.needReason === false, JSON.stringify(r.json));
-  r = await post(rg, q1, 0);
-  expectTrue('★★ 공개 중 😐(0) → 1P', r.json?.granted === 1 && r.json?.feedback?.vote === 0, JSON.stringify(r.json));
-  r = await post(rx, q1, -1, ['unclear']);
-  expectTrue('★★ 봇 규칙(거른 계정 bot_rx) → 저장만 0P', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.vote === -1, JSON.stringify(r.json));
-  r = await post(rh, q1, -1);
-  expectTrue('★★★ 공개 중 바꾸기(이미 받음 · 사유 없는 👎) → 저장 · 포인트 더 없음 · needReason 없음', r.json?.granted === 0 && r.json?.feedback?.vote === -1 && r.json?.feedback?.rated === true && r.json?.needReason === false, JSON.stringify(r.json));
-  const [d1, d2] = await Promise.all([post(rg, q1, 1), post(rg, q1, -1, ['boring'])]);
-  expectTrue('★★ 1초 안 연타 두 번(이미 받음) → 둘 다 0P', d1.json?.granted === 0 && d2.json?.granted === 0, JSON.stringify([d1.json?.granted, d2.json?.granted]));
-  expectTrue('★★ R071 — 요청 문항 표 asked true', (await row(rh, q1))?.asked === true, JSON.stringify(await row(rh, q1)));
-
-  log('\n[2] ★★★ 공개 뒤(다음 문제) 같은 문항 → 저장만 · 받은 표는 취소해도 남음');
-  const q2 = await solve(2);
-  r = await post(rh, q1, 1);
-  const x1 = await row(rh, q1);
-  expectTrue('★★★ 공개 뒤 q1 다시 → granted 0 · 표는 바뀜(👍) · at_reveal 은 그대로 true', r.json?.granted === 0 && x1?.vote === 1 && x1.at_reveal === true && x1.gid !== null, JSON.stringify({ g: r.json?.granted, x1 }));
-  r = await post(rh, q1, null);
-  expectTrue('★★ 1P 받은 표 취소 → 지우지 않음(그대로 돌려줌)', r.status === 200 && r.json?.feedback?.rated === true && (await row(rh, q1)) !== null, JSON.stringify(r.json));
-
-  log('\n[3] ★★ 문제 중(공개 전) 표 → 0P → 공개 때 다시 → 1P');
-  r = await post(rh, q2, 1);
-  expectTrue('★★ 문제 중(QUESTION_ACTIVE) 👍 → 0P · at_reveal false', r.json?.granted === 0 && r.json?.feedback?.atReveal === false, JSON.stringify(r.json));
-  await answer(2);
-  r = await post(rh, q2, 1);
-  expectTrue('★★★ 그 문항 공개 때 → 1P(같은 문항 한 번)', r.json?.granted === 1, JSON.stringify(r.json));
-  const [e1, e2] = await Promise.all([post(rg, q2, 1), post(rg, q2, 0)]);
-  expectTrue('★★★ 아직 안 받은 문항에 동시에 두 번(연타) → 1P 한 번만', (e1.json?.granted ?? 0) + (e2.json?.granted ?? 0) === 1, JSON.stringify([e1.json?.granted, e2.json?.granted]));
-
-  log('\n[4] ★★★ R071 — 요청 밖 문항(3) → 공개 중이어도 0P');
-  const q3 = await solve(3);
-  await answer(3);
-  expectTrue('★★★ 공개 스냅샷 rateAsk false(요청 밖 3)', rh.snapshot?.resolution?.rateAsk === false && rg.snapshot?.resolution?.rateAsk === false, JSON.stringify(rh.snapshot?.resolution?.rateAsk));
-  r = await post(rh, q3, 1);
-  expectTrue('★★★ 요청 밖 문항 공개 중 👍 → 0P · at_reveal false', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.atReveal === false, JSON.stringify(r.json));
-  expectTrue('★★ 요청 밖 문항 표 asked false', (await row(rh, q3))?.asked === false, JSON.stringify(await row(rh, q3)));
-
-  log('\n[5] ★★★ R071 — 공개 중 👎 는 사유 하나 골라야 1P');
-  const q4 = await solve(4);
-  await answer(4);
-  r = await post(rh, q4, -1);
-  expectTrue('★★★ 사유 없는 👎 → 0P · needReason true · 저장은 됨(at_reveal)', r.status === 200 && r.json?.granted === 0 && r.json?.needReason === true && r.json?.feedback?.vote === -1 && r.json?.feedback?.atReveal === true, JSON.stringify(r.json));
-  r = await post(rh, q4, -1, ['unclear']);
-  expectTrue('★★★ 같은 공개 안에 사유 붙여 다시 → 1P · needReason false', r.json?.granted === 1 && r.json?.needReason === false && r.json?.feedback?.rated === true, JSON.stringify(r.json));
-  expectTrue('★★ 저장된 사유 = unclear', JSON.stringify((await row(rh, q4))?.reasons) === '["unclear"]', JSON.stringify(await row(rh, q4)));
-  r = await post(rg, q4, -1, ['too_easy', 'boring']);
-  expectTrue('★★ 처음부터 사유 붙인 👎 → 바로 1P', r.json?.granted === 1 && r.json?.needReason === false, JSON.stringify(r.json));
-  r = await post(rx, q4, -1);
-  expectTrue('★ 거른 봇 사유 없는 👎 → 0P(needReason 은 와도 포인트 없음)', r.json?.granted === 0, JSON.stringify(r.json));
-
-  log('\n[6] ★★ 결과 화면 표 → 0P · 합계');
-  await rh.waitFor(() => rh.snapshot?.room.state === 'GAME_RESULT', 30000, '결과');
-  r = await post(rg, q3, 1);
-  expectTrue('★★★ 결과 화면(판 끝) 👍 → 저장만 0P', r.status === 200 && r.json?.granted === 0 && r.json?.feedback?.atReveal === false, JSON.stringify(r.json));
-  r = await post(rx, q2, 1);
-  expectTrue('★★ 결과 화면 표라도 요청 문항(2)이면 asked true · 0P', r.json?.granted === 0 && (await row(rx, q2))?.asked === true, JSON.stringify(await row(rx, q2)));
-  expect('★★★ 합계 — rh 3P(q1 · q2 · q4 사유 뒤)', await grants(rh), 3);
-  expect('★★★ 합계 — rg 3P(q1 · q2 연타 한 번 · q4)', await grants(rg), 3);
-  expect('★★ 합계 — 거른 봇 rx 0P', await grants(rx), 0);
-  const pts = await apiGet('/api/me/points', rh.cookie);
-  expectTrue('★ 잔액 길(points) 에 지급이 들어간다(grants ≥ 3)', pts.status === 200 && Number(pts.json?.grants ?? pts.json?.points?.grants ?? 0) >= 3, JSON.stringify(pts.json)?.slice(0, 160));
+    if (i === 2) {
+      // 재합류 스냅샷(공개 중)
+      const rs = rg.mark();
+      rg.socket.emit('state.resync', {});
+      await rg.waitFor(() => rg.since(rs, 'room.state').length > 0, 5000, 'resync');
+      snapKeys = rg.snapshot?.resolution ? Object.keys(rg.snapshot.resolution) : null;
+    }
+  }
+  const resolved = rg.since(m, 'question.resolved');
+  expectTrue('★★★ question.resolved 에 rateAsk 없음 · questionId 는 그대로(제보 📝)', resolved.length === 3 && resolved.every((r) => !('rateAsk' in (r.payload ?? {})) && /^\d+$/.test(String(r.payload?.questionId))), JSON.stringify(resolved.map((r) => Object.keys(r.payload ?? {}))));
+  expectTrue('★★ 공개 중 스냅샷 resolution 에 rateAsk 없음', !snapKeys || !snapKeys.includes('rateAsk'), JSON.stringify(snapKeys));
+  const gameId = String(rh.snapshot?.game?.gameId ?? '');
+  log('\n[2] ★★★ 평가 길 없음 · 새 행 0');
+  const r1 = await postJson('/api/feedback/question', { gameId, questionId: qids[0], vote: 1 }, rg.cookie);
+  const r2 = await postJson('/api/minigame/song-rate', { gameId, songId: 'song-0001', vote: 1 }, rg.cookie);
+  expect('★★★ POST /api/feedback/question · /api/minigame/song-rate → 404', [r1.status, r2.status], [404, 404]);
+  await rh.waitFor(() => rh.snapshot?.room.state === 'GAME_RESULT', 60000, '결과');
+  const after = await counts();
+  expect('★★★ point_grants rate · question_feedback 새 행 0', [after.g - before.g, after.f - before.f], [0, 0]);
+  log('\n[3] ★★ game_questions.rate_ask 안 적음');
+  const ra = (await withDb((c) => c.query(`SELECT count(*) FILTER (WHERE rate_ask)::int n, count(*)::int t FROM game_questions WHERE game_id = $1`, [gameId]))).rows[0];
+  expect('★★ rate_ask true 0 (3문항)', [ra.n, ra.t], [0, 3]);
   for (const b of all) {
     b.leave();
     await sleep(40);
@@ -9365,7 +9317,7 @@ async function scenarioGrant() {
 }
 
 async function scenarioFeedback() {
-  log('시나리오 feedback — ★★★ 문제 평가(설문) (R056)');
+  log('시나리오 feedback — ★★ 지난 판 문제 목록 (R056 → R099 평가 입력 없앰)');
   const [host, guest, outsider] = await makeBots(3);
   await withDb((c) => c.query(`DELETE FROM question_feedback WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [[host.loginId, guest.loginId, outsider.loginId]]));
   await host.connect();
@@ -9393,54 +9345,19 @@ async function scenarioFeedback() {
   log(`  판 ${gameId} · 문제 ${qids.join(' · ')}`);
   expectTrue('★★ 정답 공개(question.resolved)에 questionId 가 실린다', qids.length === 3 && qids.every((q) => /^\d+$/.test(String(q))), qids.join(','));
   expectTrue('★ 결과에 gameId', /^\d+$/.test(String(gameId ?? '')), gameId);
-  const [q1, q2] = qids;
-  const post = (bot, body) => postJson('/api/feedback/question', { gameId, ...body }, bot.cookie);
-  const row = async (bot, q) =>
-    (await withDb((c) => c.query(`SELECT f.vote, f.reasons, f.comment, f.game_id::text FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1 AND f.question_id = $2`, [bot.loginId, q]))).rows[0] ?? null;
+  const [q1] = qids;
+  log('\n[1] ★★★ R099 — 평가 길 없음(POST /api/feedback/question → 404)');
+  expect('★★★ 평가 저장 길 없음 → 404', (await postJson('/api/feedback/question', { gameId, questionId: q1, vote: -1, reasons: ['unclear'] }, guest.cookie)).status, 404);
 
-  log('\n[1] ★★★ 👎 + 사유 → 표 행 · 다시 누르면 갱신 · 취소 = 삭제');
-  let r = await post(guest, { questionId: q1, vote: -1, reasons: ['unclear', 'never_heard'] });
-  expect('★ 👎 + 사유 200', r.status, 200);
-  let x = await row(guest, q1);
-  expectTrue('★★★ 표 행 — vote -1 · 사유 상수 순서', x?.vote === -1 && x.reasons.join(',') === 'never_heard,unclear' && x.game_id === String(gameId), JSON.stringify(x));
-  r = await post(guest, { questionId: q1, vote: -1, reasons: ['other'], comment: '  역사 문제가 너무 어려워요  ' });
-  x = await row(guest, q1);
-  expectTrue('★★ 같은 문제 다시 → 한 행 갱신(사유 · 의견 trim)', x?.reasons.join(',') === 'other' && x.comment === '역사 문제가 너무 어려워요', JSON.stringify(x));
-  r = await post(guest, { questionId: q1, vote: 1, reasons: ['other'], comment: '무시' });
-  x = await row(guest, q1);
-  expectTrue('★★ 👍 로 바꾸면 사유 · 의견 비움', x?.vote === 1 && x.reasons.length === 0 && x.comment === null, JSON.stringify(x));
-  const cnt = (await withDb((c) => c.query(`SELECT count(*)::int n FROM question_feedback f JOIN accounts a ON a.id = f.account_id WHERE a.login_id = $1`, [guest.loginId]))).rows[0].n;
-  expect('★★ 한 사람 한 문제 한 행', cnt, 1);
-  r = await post(guest, { questionId: q1, vote: null });
-  expect('★ 취소 200', r.status, 200);
-  expect('★★★ 취소 → 행 삭제', await row(guest, q1), null);
-
-  log('\n[2] ★★★ 거부 — 안 본 문제 · 판 밖 사람 · 사유 밖 · 200자 · 로그인 없음');
-  const other = (await withDb((c) => c.query(`SELECT id::text FROM questions WHERE id <> ALL($1::bigint[]) AND is_active LIMIT 1`, [qids]))).rows[0].id;
-  expect('★★★ 이 판에 안 나온 문제 → 403', (await post(guest, { questionId: other, vote: -1 })).status, 403);
-  expect('★★★ 판에 없던 사람 → 403', (await post(outsider, { questionId: q1, vote: -1 })).status, 403);
-  expect('★★ 사유 밖 → 400', (await post(guest, { questionId: q1, vote: -1, reasons: ['hard'] })).status, 400);
-  expect('★★ 의견 201자 → 400', (await post(guest, { questionId: q1, vote: -1, comment: '가'.repeat(201) })).status, 400);
-  expect('★ 의견 200자 → 200', (await post(guest, { questionId: q2, vote: -1, reasons: ['other'], comment: '가'.repeat(200) })).status, 200);
-  expect('★ 로그인 없음 → 401', (await postJson('/api/feedback/question', { gameId, questionId: q1, vote: 1 })).status, 401);
-
-  log('\n[3] ★★ 결과 화면 목록 · 로비 링크');
-  await post(host, { questionId: q1, vote: 1 });
+  log('\n[2] ★★ 결과 화면 목록 · 로비 링크(줄마다 제보 📝 — 평가 값 없음)');
   const mine = await apiGet(`/api/feedback/game/${gameId}/mine`, guest.cookie);
   expect('★ 내 판 목록 200', mine.status, 200);
   expect('★★ 목록 = 정답 공개된 문제 3', mine.json?.items.length, 3);
-  const it2 = mine.json?.items.find((i) => i.questionId === String(q2));
-  expectTrue('★★ 내 평가가 실린다(👎 · other · 200자)', it2?.vote === -1 && it2.reasons[0] === 'other' && it2.comment.length === 200, JSON.stringify(it2)?.slice(0, 120));
-  expectTrue('★ 질문은 앞 60자(+…)만', mine.json?.items.every((i) => [...i.text].length <= 61 && typeof i.answer === 'string'));
-  expect('★★ 남의 평가는 안 섞인다(방장 👍 q1 → 내 목록 q1 은 비어 있음)', mine.json?.items.find((i) => i.questionId === String(q1))?.vote, null);
+  expectTrue('★ 질문은 앞 60자(+…)만 · 전체(full) · 정답', mine.json?.items.every((i) => [...i.text].length <= 61 && typeof i.full === 'string' && typeof i.answer === 'string'));
+  expectTrue('★★ R099 — 평가 값(vote · reasons · comment)은 안 실린다', mine.json?.items.every((i) => !('vote' in i) && !('reasons' in i) && !('comment' in i)), JSON.stringify(mine.json?.items?.[0] ?? null).slice(0, 160));
   expect('★★ 판 밖 사람의 목록 → 403', (await apiGet(`/api/feedback/game/${gameId}/mine`, outsider.cookie)).status, 403);
   const last = await apiGet('/api/feedback/last-game', guest.cookie);
   expect('★★ 로비 링크 — 내가 참가한 마지막 판', last.json?.gameId, String(gameId));
-
-  log('\n[4] ★ 속도 제한 10초 20번');
-  let limited = 0;
-  for (let i = 0; i < 24; i += 1) if ((await post(host, { questionId: q2, vote: i % 2 ? 1 : -1 })).status === 429) limited += 1;
-  expectTrue('★ 21번째부터 429', limited >= 3, `${limited}`);
 
   for (const b of [host, guest, outsider]) {
     b.leave();
@@ -9856,10 +9773,9 @@ async function scenarioSong() {
   const lateEv = host.since(c1, 'question.lateAnswers').pop();
   expectTrue('★★ 뒷북 — 정답자 뒤 3초 안 제목(b2)', lateEv?.late?.some((l) => l.accountId === idOf(b2)), JSON.stringify(lateEv));
   expectTrue('★★ 점수 = 첫 사람 +1(퀴즈와 같다)', host.snapshot.players.find((p) => p.accountId === idOf(b3))?.score === 1, JSON.stringify(host.snapshot.players.map((p) => p.score)));
-  // ── 평가(공개 중 · 노래 사유) — 저장 = minigame_results.input.rate
+  // ── ★ R099 — 노래 평가 없앰(찬종 "평가는 나만 · 제보로") — 길이 없다
   const rate1 = await postJson('/api/minigame/song-rate', { gameId, songId: q1.questionId, vote: -1, reasons: ['unknown'] }, b2.cookie);
-  const rateBad = await postJson('/api/minigame/song-rate', { gameId, songId: 'song-9999', vote: 1 }, b2.cookie);
-  expectTrue('★★ 노래 평가 — 들은 곡 200 · 안 나온 곡 403', rate1.status === 200 && rateBad.status === 403, JSON.stringify({ rate1, rateBad }));
+  expect('★★ R099 노래 평가 길 없음 → 404', rate1.status, 404);
   // ── 곡 2 — 스킵 투표(3명 중 기준)
   const q2 = await qStarted(2);
   await sleep(300);
@@ -9908,7 +9824,7 @@ async function scenarioSong() {
     const gm = (await c.query(`SELECT mode, setting_minigame_rounds r FROM games WHERE id = $1`, [gameId])).rows[0];
     return { run, rounds, won, rate, exp, gm };
   });
-  expectTrue('★★★ 기록 — runs(song · 끝남) · round 5 · 정답 1(b3 +1) · 평가(👎 unknown) · 경험 15 · games mode minigame(CHECK 그대로) · 라운드 5', rec && rec.run.ended && rec.rounds === 5 && rec.won.length === 1 && rec.won[0].a === idOf(b3) && rec.rate?.rate?.vote === -1 && rec.rate.rate.reasons?.[0] === 'unknown' && rec.exp === 15 && rec.gm.mode === 'minigame' && rec.gm.r === 5, JSON.stringify(rec));
+  expectTrue('★★★ 기록 — runs(song · 끝남) · round 5 · 정답 1(b3 +1) · ★ R099 평가 기록 없음 · 경험 15 · games mode minigame(CHECK 그대로) · 라운드 5', rec && rec.run.ended && rec.rounds === 5 && rec.won.length === 1 && rec.won[0].a === idOf(b3) && !rec.rate?.rate && rec.exp === 15 && rec.gm.mode === 'minigame' && rec.gm.r === 5, JSON.stringify(rec));
   // ── 다시 하기 — 들은 곡은 덜 나온다(범위 207 > 5 → 겹침 0)
   const g2 = host.mark();
   host.socket.emit('game.again', {});

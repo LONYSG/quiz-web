@@ -1,6 +1,6 @@
 // R080 — 많이 말하기 · 겹치면 무효 · 객관식 10연속 (순수 부분)
 import { describe, expect, it } from 'vitest';
-import { buildTopicMatcher, manyReveal, matchTopic, uniqueResult } from '@quiz/shared';
+import { buildTopicMatcher, manyReveal, matchTopic, uniqueCount } from '@quiz/shared';
 import { makeTopicSet } from '../db/topics.js';
 import { choice, fakeChoiceOptions, many, pickChoiceQuestions, pickTopicSets, unique, type ChoiceQ } from './topicGames.js';
 import type { ParsedInput, RoundSpec } from './defs.js';
@@ -24,11 +24,11 @@ describe('주제 판정(퀴즈와 같은 정규화)', () => {
     expect(matchTopic(m, '일본')).toBeNull();
     expect(matchTopic(m, '')).toBeNull();
   });
-  it('겹치면 무효 정산 — 혼자 1 · 겹침 0 · 오답 0', () => {
-    const r = uniqueResult(new Map([['a', 'c-001'], ['b', 'c-001'], ['c', 'c-002'], ['d', null]]));
-    expect(r.get('a')).toEqual({ itemId: 'c-001', dup: true, win: false });
-    expect(r.get('c')!.win).toBe(true);
-    expect(r.get('d')!.win).toBe(false);
+  it('★ R099 겹치면 무효 정산 — 안 겹친 항목 수 · 겹친 항목은 전원 0 · 같은 사람 중복은 하나', () => {
+    const r = uniqueCount(new Map([['a', ['c-001', 'c-002', 'c-002']], ['b', ['c-001', 'c-003']], ['c', []]]));
+    expect(r.get('a')).toEqual({ only: ['c-002'], dup: ['c-001'] });
+    expect(r.get('b')).toEqual({ only: ['c-003'], dup: ['c-001'] });
+    expect(r.get('c')).toEqual({ only: [], dup: [] });
   });
   it('많이 말하기 공개 — 나만 말한 답 · 못 말한 것', () => {
     const r = manyReveal(new Map([['a', ['c-001', 'c-002']], ['b', ['c-002']]]), ['c-001', 'c-002', 'c-003', 'c-004']);
@@ -101,17 +101,25 @@ describe('많이 말하기 · 겹치면 무효 판', () => {
     expect((fin.reveal!.missed as string[]).length).toBe(24 - 2);
     expect((fin.reveal!.labels as Record<string, string>)['c-001']).toBe('대한민국');
   });
-  it('겹치면 무효 — 3판 다른 주제 · 마지막 답 · 겹치면 0', () => {
+  it('★★★ R099 겹치면 무효 — 3판 다른 주제 · 여러 답 · 겹친 항목만 0 · 점수 = 안 겹친 정답 수 · 기록 input.texts', () => {
     const rs = unique.buildRounds(5, { practice: true, participants: ['a', 'b'], quiz: null, now: 0 })!;
     expect(new Set(rs.map((r) => r.itemKey)).size).toBe(3);
+    expect(rs[0]!.playMs).toBe(15_000);
     const subs = new Map<string, ParsedInput & { provisional: boolean }>();
-    run(unique, rs[0]!, 'a', ['빨강', '파란색'], subs);
-    run(unique, rs[0]!, 'b', ['파랑'], subs);
-    run(unique, rs[0]!, 'c', ['노랑'], subs);
+    const fa = run(unique, rs[0]!, 'a', ['빨강', '파란색', '빨간색', '틀린답', '틀린답', '노랑', '초록'], subs);
+    expect(fa.map((f) => f.result)).toEqual(['ok', 'ok', 'dup', 'wrong', 'dupWrong', 'ok', 'ok']);
+    run(unique, rs[0]!, 'b', ['파랑', '보라'], subs);
+    run(unique, rs[0]!, 'c', ['노란색', '아무말'], subs);
+    expect(subs.get('a')!.input).toEqual({ texts: ['빨강', '파란색', '틀린답', '노랑', '초록'] });
+    expect(subs.get('a')!.value).toBeNull();
     const fin = unique.finalizeRound!(rs[0]!, subs);
-    expect(fin.values.get('a')!.value).toBeNull();
-    expect(fin.values.get('b')!.extra!.dup).toBe(true);
-    expect(fin.values.get('c')!.value).toBe(1);
+    // a: 빨강 · 초록 혼자(2) · 파랑(b) · 노랑(c) 겹침 / b: 보라 혼자(1) / c: 노랑 겹침 → 0
+    expect(fin.values.get('a')!.value).toBe(2);
+    expect(fin.values.get('b')!.value).toBe(1);
+    expect(fin.values.get('c')!.value).toBeNull();
+    expect((fin.values.get('a')!.extra!.dup as string[]).length).toBe(2);
+    expect((fin.values.get('c')!.extra!.dup as string[]).length).toBe(1);
+    expect(Object.keys(fin.reveal!.labels as Record<string, string>).length).toBe(5);
   });
 });
 

@@ -153,16 +153,17 @@ export function matchTopic(matcher: ReadonlyMap<string, string>, raw: string): s
 }
 
 /**
- * ★ 겹치면 무효 정산 — 계정 → 고른 항목(null = 정답 아님 · 안 냄).
- *   혼자만 낸 정답 = 1 · 둘 이상이 같은 항목 = 그들 전원 0 · 정답 밖 = 0
+ * ★★★ R099 겹치면 무효 정산 — 계정 → 낸 정답 항목들(같은 사람 중복은 하나로 센다).
+ *   남과 하나라도 겹친 항목 = 그 항목은 전원 0(dup) · 혼자만 낸 항목(only) 의 **개수**가 판 점수 · 정답 밖은 여기 오지 않는다(0)
+ *   (옛 R080 uniqueResult: 판마다 답 하나 · 혼자만 1)
  */
-export function uniqueResult(picks: ReadonlyMap<string, string | null>): Map<string, { itemId: string | null; dup: boolean; win: boolean }> {
-  const count = new Map<string, number>();
-  for (const id of picks.values()) if (id) count.set(id, (count.get(id) ?? 0) + 1);
-  const out = new Map<string, { itemId: string | null; dup: boolean; win: boolean }>();
-  for (const [a, id] of picks) {
-    const n = id ? (count.get(id) ?? 0) : 0;
-    out.set(a, { itemId: id, dup: n > 1, win: n === 1 });
+export function uniqueCount(found: ReadonlyMap<string, readonly string[]>): Map<string, { only: string[]; dup: string[] }> {
+  const by = new Map<string, number>();
+  for (const ids of found.values()) for (const id of new Set(ids)) by.set(id, (by.get(id) ?? 0) + 1);
+  const out = new Map<string, { only: string[]; dup: string[] }>();
+  for (const [a, ids] of found) {
+    const mine = [...new Set(ids)];
+    out.set(a, { only: mine.filter((id) => by.get(id) === 1), dup: mine.filter((id) => (by.get(id) ?? 0) > 1) });
   }
   return out;
 }

@@ -260,8 +260,6 @@ export interface ResolutionView {
   text: string;
   /** ★★ R038 — 뒷북 명단 (정답자 발생 후 3초 안에 정답을 보낸 사람. 도착 순). diffNs = 나노초 문자열 */
   late: LateAnswerView[];
-  /** ★★ R071 (D-313) — 평가 요청 문항인가(판마다 무작위 1/3) · false 면 공개 화면에 평가 줄이 없다 (옛 서버면 없다 → 보인다) */
-  rateAsk?: boolean;
   /** ★★★ R096 — 노래 공개(제목 · 가수 · 칩 · 표지 · 맞힌 시간) */
   song?: (import('./SongStage.js').SongRevealView & { winnerMs: number | null }) | null;
 }
@@ -698,7 +696,6 @@ export function useRoom(socket: Socket | null): RoomHook {
             index: prev.question?.index ?? 0,
             text: prev.question?.text ?? '',
             late: [],
-            rateAsk: p.rateAsk,
             song: p.song ?? null,
           },
           // ★ 정답이 공개되면 스킵 투표는 끝난다

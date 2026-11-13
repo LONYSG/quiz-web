@@ -28,7 +28,7 @@
 //   · ★ 출제 풀과 경험 기록을 게임 시작 때 메모리로 올린다 (D-054 성능 항목)
 // =============================================================================
 
-import { MINIGAMES, NICKNAME_LIMIT_HINT, levelInfo, nicknameFits, pickRateAsk, planGrades, teamStartBlock, validateRoomSettings } from '@quiz/shared';
+import { MINIGAMES, NICKNAME_LIMIT_HINT, levelInfo, nicknameFits, planGrades, teamStartBlock, validateRoomSettings } from '@quiz/shared';
 import { config } from '../config.js';
 import { countAvailableQuestions } from '../db/questions.js';
 import { loadExperienced, loadQuestionPool } from '../db/questionPool.js';
@@ -430,9 +430,6 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
     hardestGrade: levelInfo(settings.level).hardest,
     gradeFallbackCount: 0,
     worthFallbackCount: 0,
-    // ★★ R071 (D-313) — 평가 요청 문항(무작위 1/3 · 검사는 config.tuning.rateAskForce 로 고정)
-    // ★ R096 — 노래는 매 곡 평가(보편성 실측 — 브리프 C-2 ⑦)
-    rateAsk: songMode ? new Set(Array.from({ length: settings.songCount }, (_, i) => i + 1)) : noQuiz ? new Set() : new Set(config.tuning.rateAskForce ?? pickRateAsk(settings.questionCount)),
     questionLog: [],
   };
   console.log(
