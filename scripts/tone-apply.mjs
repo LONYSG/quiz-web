@@ -6,7 +6,7 @@
 //   ★ DB = DATABASE_URL · --db quizweb_dev 로 이름만 바꿈 · 되돌리기 audit/<round>-undo-<db>.json
 //   사용 node scripts/tone-apply.mjs --round g0NN [--db quizweb_dev [--skip-diff]] [--apply | --undo]   (기본 = 확인만 · --skip-diff = before 와 다른 칸만 건너뜀)
 // =============================================================================
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import pg from 'pg';
 import { normalizeAnswer } from '../shared/dist/index.js';
@@ -44,6 +44,16 @@ async function undo() {
   await c.query('commit'); console.log(`[${TAG} undo] ${n} 행`);
 }
 
+// 되돌림(kind restore) 힌트의 버전 = 이 DB 의 앞선 undo 파일 중 가장 이른 general_hint 행의 beforeVersion
+function firstHintVersion(id) {
+  const dir = path.join(ROOT, 'data/pipeline/audit');
+  for (const f of readdirSync(dir).filter((f) => /^g0\d\d-undo-/.test(f) && f === f.slice(0, 5) + `undo-${db}.json` && !f.startsWith(ROUND)).sort()) {
+    const row = JSON.parse(readFileSync(path.join(dir, f), 'utf8')).rows.find((r) => r.id === id && r.field === 'general_hint');
+    if (row) return row.beforeVersion ?? null;
+  }
+  return undefined;
+}
+
 async function apply() {
   const ids = [...plan.items.map((x) => x.id), ...(plan.deactivate ?? []).map((x) => x.id)];
   const cur = new Map((await c.query(`select q.id::int, q.is_active, q.inactive_reason, q.question_text, q.general_hint, q.general_hint_version, q.explanation,
@@ -59,7 +69,7 @@ async function apply() {
       const f = it[col]; if (!f) continue;
       if (r[col] === f.after) { done++; continue; }
       if (r[col] !== f.before) { diff.push(`${it.id} ${col}: 지금 값이 before 와 다름\n    DB : ${r[col]}\n    bef: ${f.before}`); continue; }
-      todo.push({ id: it.id, field: col, before: f.before, after: f.after, kind: f.kind, beforeVersion: r.general_hint_version }); k(`${col}:${f.kind}`);
+      todo.push({ id: it.id, field: col, before: f.before, after: f.after, kind: f.kind, beforeVersion: r.general_hint_version, ...(col === 'general_hint' && f.kind === 'restore' ? { restoreVersion: firstHintVersion(it.id) } : {}) }); k(`${col}:${f.kind}`);
     }
     for (const v of it.remove ?? []) { if (r.variants.includes(v)) { todo.push({ id: it.id, field: 'variant', before: v, after: null }); k('varRemove'); } else done++; }
     for (const v of it.add ?? []) { if (!r.variants.some((x) => normalizeAnswer(x) === normalizeAnswer(v))) { todo.push({ id: it.id, field: 'variant', before: null, after: v }); k('varAdd'); } else done++; }
@@ -83,7 +93,8 @@ async function apply() {
   await c.query('begin'); let n = 0;
   for (const t of todo) {
     if (t.field === 'general_hint') {
-      n += (await c.query(`update questions set general_hint=$2, general_hint_version=case when $4 then 'card-v1' else general_hint_version end, updated_at=now() where id=$1 and general_hint is not distinct from $3`, [t.id, t.after, t.before, t.kind === 'rewrite' || t.kind === 'rebuild'])).rowCount;
+      if (t.kind === 'restore' && t.restoreVersion !== undefined) n += (await c.query(`update questions set general_hint=$2, general_hint_version=$4, updated_at=now() where id=$1 and general_hint is not distinct from $3`, [t.id, t.after, t.before, t.restoreVersion])).rowCount;
+      else n += (await c.query(`update questions set general_hint=$2, general_hint_version=case when $4 then 'card-v1' else general_hint_version end, updated_at=now() where id=$1 and general_hint is not distinct from $3`, [t.id, t.after, t.before, t.kind === 'rewrite' || t.kind === 'rebuild'])).rowCount;
     } else if (t.field === 'variant' && t.after) {
       n += (await c.query('insert into question_answers (question_id, answer_text, answer_norm, is_primary, note) values ($1,$2,$3,false,$4) on conflict do nothing', [t.id, t.after, normalizeAnswer(t.after), `${TAG} 변형 추가`])).rowCount;
     } else if (t.field === 'variant') {

@@ -75,6 +75,11 @@ for (const fl of files) {
   if (ids.length !== pk.order.length || ids.some((id) => !pk.m[id])) { report.skippedFile.push({ file: fl.json, why: `수 · id 가 원문과 다름 (${ids.length} / ${pk.order.length})` }); continue; }
   loaded.push({ fl, res, pk });
 }
+// ── 6-1 같은 id 가 시범(카드-18)과 묶음 파일 둘 다에 ready 면 묶음이 이긴다(나이와 상관없이 묶음 파일 전부를 본다)
+const bundleReady = new Set();
+for (const fl of files.filter((x) => x.card !== '카드-18')) { try { for (const r of J(`${IN}/${fl.json}`).results ?? []) if (r.status === 'ready') bundleReady.add(r.id); } catch {} }
+report.bundleWins = [];
+const pilotReady = new Set(); try { for (const r of J(`${IN}/카드-18.json`).results ?? []) if (r.status === 'ready') pilotReady.add(r.id); } catch {}
 // ── DB 사진(실을지 정하기 전에 — 이미 실은 카드가 최종 값인지 보려고)
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
 const db = new URL(process.env.DATABASE_URL).pathname.slice(1);
@@ -86,6 +91,18 @@ const D = Object.fromEntries(rows.map((r) => [r.id, r]));
 for (const { fl, res, pk } of loaded) {
   const row = { file: fl.card, cards: res.length, ready: 0, free: 0, claims: 0, claimsOk: 0, claimsFix: 0, wait: 0, reject: 0, already: 0, sampleFix: 0 };
   for (const r of res) {
+    if (fl.card === '카드-18' && bundleReady.has(r.id)) { report.bundleWins.push(r.id); continue; }
+    // 6-2 실린 뒤 ready 가 아니게 된 카드 → 원문(첫 적용 전 값)으로 되돌린다
+    if (r.status !== 'ready' && applied.has(r.id) && fl.card !== '카드-18' && !pilotReady.has(r.id)) { // 시범 중복(묶음엔 needs_review · 18 엔 ready)은 18 값이 산다
+      report.notReady.push({ file: fl.card, id: r.id, status: r.status, note: r.note });
+      const d = D[r.id]; const before = pk.m[r.id]; const prev = applied.get(r.id).item;
+      const target = Object.fromEntries(F3.map(([k, col]) => [col, before[k] ?? '']));
+      if (d && F3.every(([, col]) => (d[col] ?? '') === target[col])) continue;
+      const it = { id: r.id, file: fl.card, src: fl.card + ` 되돌림(${r.status})`, worth: r.worth, hasClaims: false, claims: [], note: r.note ?? '', before, fields: {}, restore: true,
+        reapply: applied.get(r.id).round, prevDb: Object.fromEntries(F3.map(([k, col]) => [col, prev[col]?.after ?? before[k] ?? ''])) };
+      for (const [k, col] of F3) if (target[col] !== it.prevDb[col]) it.fields[k] = { kind: 'restore', text: target[col], from: '' };
+      (report.restored ??= []).push({ file: fl.card, id: r.id, status: r.status, prev: it.reapply }); pick.push(it); continue;
+    }
     if (r.status !== 'ready') { report.notReady.push({ file: fl.card, id: r.id, status: r.status, note: r.note }); continue; }
     row.ready++;
     const hasClaims = (r.claims?.length ?? 0) > 0 || F3.some(([k]) => r[k]?.verdict === 'rebuild');
@@ -144,7 +161,7 @@ for (const it of pick) {
   if (g.blocked.length > go.blocked.length) fail.push(`정답 묶음 막힘 ${JSON.stringify(g.blocked)}`);
   // ② 200자 ③ ~까요? ⑥ 빔
   if (L(q) > 200) fail.push(`질문 ${L(q)}자`);
-  if (it.fields.question && !/까요\?\s*$/.test(q)) fail.push('질문 끝이 ~까요? 아님');
+  if (it.fields.question && !it.restore && !/까요\?\s*$/.test(q)) fail.push('질문 끝이 ~까요? 아님');
   if (!h?.trim() || !e?.trim()) fail.push('힌트 · 해설 빔');
   // ④ 겹침 경고(새로 생긴 것만) — GEN 이 읽고 --hold 로 뺄지 정한다
   for (const kind of ['explain', 'question']) {
@@ -152,11 +169,12 @@ for (const it of pick) {
     if (wn && !wo) gate[kind === 'explain' ? 'warnExplainNew' : 'warnQuestionNew'].push({ id: it.id, shared: wn.shared ?? wn.share, q, h, e });
   }
   if (HOLD.has(it.id)) fail.push(`GEN 보류: ${HOLD.get(it.id)}`);
+  if (it.restore) fail.length = 0; // 되돌림 = 원래 DB 값으로 — 게이트는 before 대조만
   if (fail.length) {
     const key = fail[0].startsWith('질문에') ? 'newAnswer' : fail[0].startsWith('힌트 막힘') ? 'hintBlock' : fail[0].startsWith('정답 묶음') ? 'answerSet' : fail[0].startsWith('질문 2') || /^질문 \d+자/.test(fail[0]) ? 'over200' : fail[0].startsWith('질문 끝') ? 'ending' : fail[0].startsWith('힌트 · 해설') ? 'empty' : 'hold';
     gate[key].push({ id: it.id, file: it.file, fail }); continue;
   }
-  const o = { id: it.id, answer: d.display_answer, src: it.src, file: it.file, worth: it.worth, hasClaims: it.hasClaims, from: it.fields.question?.from ?? '', ...(it.reapply ? { reapply: it.reapply } : {}) };
+  const o = { id: it.id, answer: d.display_answer, src: it.src, file: it.file, worth: it.worth, hasClaims: it.hasClaims, from: it.fields.question?.from ?? '', ...(it.reapply ? { reapply: it.reapply } : {}), ...(it.restore ? { restore: true } : {}) };
   if (it.claims.length) o.claims = it.claims;
   for (const [k, col] of F3) {
     const f = it.fields[k]; if (!f || f.text === d[col]) continue;
@@ -177,7 +195,7 @@ writeFileSync(path.join(ROOT, `data/pipeline/tone/${ROUND}-apply.json`), JSON.st
 
 // ── VERIFY 묶음: claims 없는 카드 무작위 30(파일마다 고루 · 구조전환 절반 이상)
 let seed = Number(ROUND.slice(1)); const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
-const free = items.filter((x) => String(x.src).startsWith('카드-') && !x.hasClaims && !String(x.src).includes('fix'));
+const free = items.filter((x) => String(x.src).startsWith('카드-') && !x.restore && !x.hasClaims && !String(x.src).includes('fix'));
 const N = Math.min(30, free.length); const byFile = {};
 for (const x of free) (byFile[x.file] ??= { s: [], o: [] })[x.from.startsWith('구조전환') ? 's' : 'o'].push(x);
 const tp = []; const fk = Object.keys(byFile);
@@ -193,7 +211,7 @@ if (emoMine) {
 writeFileSync(path.join(ROOT, `data/pipeline/audit/${ROUND}-verify-targets.json`), JSON.stringify({ round: R, note: 'claims 없는 카드 표본(무작위 · 구조전환 절반 이상) — lane: sample', targets }, null, 1) + '\n');
 
 console.log(db, 'files', JSON.stringify(report.files));
-console.log('skippedFile', JSON.stringify(report.skippedFile), 'notReady', report.notReady.length, 'waitVerify', report.waitVerify.length, 'rejected', report.rejected.length, 'already', report.alreadyApplied, 'reapply', report.reapply.length, 'reapplyItems', items.filter((x) => x.reapply).length);
+console.log('skippedFile', JSON.stringify(report.skippedFile), 'notReady', report.notReady.length, 'waitVerify', report.waitVerify.length, 'rejected', report.rejected.length, 'already', report.alreadyApplied, 'reapply', report.reapply.length, 'reapplyItems', items.filter((x) => x.reapply).length, 'bundleWins', JSON.stringify(report.bundleWins), 'restored', JSON.stringify(report.restored ?? []));
 console.log('gate', JSON.stringify(Object.fromEntries(Object.entries(gate).map(([k, v]) => [k, v.length]))));
 for (const k of ['inactive', 'beforeDiff', 'newAnswer', 'hintBlock', 'answerSet', 'over200', 'ending', 'empty', 'hold']) for (const x of gate[k]) console.log(' ', k, JSON.stringify(x));
 console.log('counts', JSON.stringify(counts), 'verify targets', targets.length, '(구조전환', targets.filter((x) => x.from.startsWith('구조전환')).length + ')');
