@@ -8,7 +8,7 @@
    - `ai-talk/` 안의 네 발언 파일
    - `web-desk/tone/받은것/결과-NN.json` — 다듬기(`web-desk/tone/지시서.md` 대로 · 입력 `보낼것/조각-NN.txt`)
    - `web-desk/tone/받은것/재구성-NN.json` — 재구성(`web-desk/tone/지시서-재구성.md` 대로 · 입력 `보낼것/재구성-NN.txt`)
-   - `web-desk/tone/받은것/카드-NNN.json` — ★ 지금 하는 일: 카드 통째로 보기(`web-desk/tone/지시서-카드.md` 대로 · 입력 `보낼것/카드-NNN.txt` · 우선순위 순 001~072 · ai-talk 024)
+   - `web-desk/tone/받은것/카드-NNN.json` — ★ 지금 하는 일: 카드 통째로 쓰기(`web-desk/tone/지시서-카드.md` 대로 · 2026-11-13 부터 **재료 흐름**: 입력 = `보낼것/카드-NNN.txt` + `보낼것/재료-NNN.json` + `보낼것/같은정답-NNN.txt` + 그 재료의 판정 파일(`data/pipeline/audit/v0NN-material*.json`) · **검색하지 않는다 · 재료에 없는 사실을 더하지 않는다** · 현황판의 gpt 줄에 뜬 묶음만 · ai-talk 035 · 039 · 041)
    - max 의 브리프가 경로를 지정해 맡긴 판정 파일(지정될 때만)
    그 밖의 코드 · 문서 · 데이터 · DB · git 커밋 · push · `ops.bat` · `npm run` 의 쓰기 동작은 하지 않는다. 읽기 · 검색 · 웹 열기는 자유다.
 3-1. **충돌 막기**: 일을 시작할 때 `node web-desk/tone/_status.mjs` 를 돌려 "지금 돌릴 창"의 **gpt 줄에 적힌 묶음만** 쓴다(없으면 쓰지 않고 그렇게 보고한다). 카드 파일은 **다 쓴 뒤 한 번에** 저장하고 맨 위에 `"done": true` 를 넣는다 — 이 표시가 없으면 GEN · VERIFY 는 그 파일을 읽지 않는다. "쓰는 중"으로 나오는 재료 · 판정 파일은 읽지 않는다.
