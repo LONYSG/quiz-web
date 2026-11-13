@@ -7,6 +7,8 @@
 //   출력  data/pipeline/tone/<round>-plan.json(고른 카드 · 원문 · DB 사진 · 게이트 결과)
 //         data/pipeline/tone/<round>-apply.json(정본 — 칸마다 before/after · tone-apply.mjs 가 읽음)
 //         data/pipeline/audit/<round>-verify-targets.json(claims 없는 카드 무작위 30 · 구조전환 절반 이상)
+//   ★ G068~: 고친 지 10분 안 된 카드 파일은 건너뜀(쓰는 중일 수 있음) · 이미 실은 카드도 "DB 값 = 이 카드의 최종 값"이 아니면
+//         다시 본다(카드 파일이 앞선 적용 뒤에 바뀐 것 — before 대조는 "지금 DB = 앞선 적용이 쓴 값" · keep 으로 돌아간 칸은 원문으로)
 //   사용  node scripts/tone-build.mjs --round g065 [--hold 123,456]   (--hold = GEN 이 게이트 경고를 읽고 뺀 id · 사유는 보고서)
 // =============================================================================
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
@@ -30,8 +32,12 @@ const F3 = [['question', 'question_text'], ['hint', 'general_hint'], ['explanati
 
 // ── 이미 실은 카드
 const applied = new Map();
-for (const f of readdirSync(path.join(ROOT, 'data/pipeline/tone')).filter((f) => /^g0\d\d-apply\.json$/.test(f) && !f.startsWith(ROUND))) {
-  for (const it of J(`data/pipeline/tone/${f}`).items ?? []) if (String(it.src ?? '').startsWith('카드-')) applied.set(it.id, f.slice(0, 4));
+for (const f of readdirSync(path.join(ROOT, 'data/pipeline/tone')).filter((f) => /^g0\d\d-apply\.json$/.test(f) && !f.startsWith(ROUND)).sort()) {
+  for (const it of J(`data/pipeline/tone/${f}`).items ?? []) if (String(it.src ?? '').startsWith('카드-')) {
+    const p = applied.get(it.id); const m = { round: f.slice(0, 4), item: { ...(p?.item ?? {}) } };
+    for (const col of ['question_text', 'general_hint', 'explanation']) if (it[col]) m.item[col] = it[col];
+    applied.set(it.id, m);
+  }
 }
 // ── VERIFY 판정(카드용)
 const verdict = {};
@@ -57,12 +63,27 @@ for (const f of readdirSync(path.join(ROOT, IN)).filter((f) => /^카드-\d{3}\.j
   if (statSync(path.join(ROOT, IN, f)).size) files.push({ card: f.slice(0, -5), json: f, pk: f.replace('.json', '.txt') });
 }
 
-const pick = []; const report = { files: [], notReady: [], waitVerify: [], rejected: [], alreadyApplied: 0, skippedFile: [] };
+const pick = []; const report = { files: [], notReady: [], waitVerify: [], rejected: [], alreadyApplied: 0, reapply: [], skippedFile: [] };
+const NOW = Date.now();
+const loaded = [];
 for (const fl of files) {
+  const age = (NOW - statSync(path.join(ROOT, IN, fl.json)).mtimeMs) / 60000;
+  if (age < 10) { report.skippedFile.push({ file: fl.json, why: `쓰는 중일 수 있음 — 고친 지 ${age.toFixed(1)}분` }); continue; }
   let res; try { res = J(`${IN}/${fl.json}`).results; } catch (e) { report.skippedFile.push({ file: fl.json, why: 'json 못 읽음 ' + e.message }); continue; }
   const pk = packet(fl.pk);
   const ids = res.map((r) => r.id);
   if (ids.length !== pk.order.length || ids.some((id) => !pk.m[id])) { report.skippedFile.push({ file: fl.json, why: `수 · id 가 원문과 다름 (${ids.length} / ${pk.order.length})` }); continue; }
+  loaded.push({ fl, res, pk });
+}
+// ── DB 사진(실을지 정하기 전에 — 이미 실은 카드가 최종 값인지 보려고)
+const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
+const db = new URL(process.env.DATABASE_URL).pathname.slice(1);
+const rows = (await c.query(`select q.id::int, q.is_active, q.inactive_reason, q.question_text, q.display_answer, q.explanation, q.general_hint, q.general_hint_version,
+  coalesce((select array_agg(answer_text order by id) from question_answers x where x.question_id=q.id and not x.is_primary),'{}') variants
+  from questions q where q.id = any($1::bigint[])`, [loaded.flatMap((x) => x.res.map((r) => r.id))])).rows;
+await c.end();
+const D = Object.fromEntries(rows.map((r) => [r.id, r]));
+for (const { fl, res, pk } of loaded) {
   const row = { file: fl.card, cards: res.length, ready: 0, free: 0, claims: 0, claimsOk: 0, claimsFix: 0, wait: 0, reject: 0, already: 0, sampleFix: 0 };
   for (const r of res) {
     if (r.status !== 'ready') { report.notReady.push({ file: fl.card, id: r.id, status: r.status, note: r.note }); continue; }
@@ -80,21 +101,20 @@ for (const fl of files) {
       else if (vc.verdict === 'ok') row.claimsOk++; else { row.wait++; report.waitVerify.push({ file: fl.card, id: r.id, why: `판정 ${vc.verdict}` }); continue; }
     } else row.free++;
     if (vsamp?.verdict === 'fix') { for (const [k] of F3) if (vsamp.fixed?.[k]) it.fields[k] = { ...(it.fields[k] ?? { kind: 'rewrite' }), text: vsamp.fixed[k], fixedBy: vsamp.vfile }; it.src += ` + ${vsamp.vfile.slice(0, 4).toUpperCase()} sample fix`; it.sampleFix = true; row.sampleFix++; }
-    if (applied.has(r.id) && !it.sampleFix) { row.already++; report.alreadyApplied++; continue; }
-    if (vsamp?.verdict === 'reject' && applied.has(r.id)) report.rejected.push({ file: fl.card, id: r.id, why: 'sample reject(이미 실음 — 그대로 둠) ' + vsamp.why });
+    if (applied.has(r.id)) {
+      const d = D[r.id]; const prev = applied.get(r.id).item;
+      const target = Object.fromEntries(F3.map(([k, col]) => [col, it.fields[k]?.text ?? it.before[k] ?? '']));
+      if (d && F3.every(([, col]) => (d[col] ?? '') === target[col])) { row.already++; report.alreadyApplied++; continue; }
+      if (vsamp?.verdict === 'reject') report.rejected.push({ file: fl.card, id: r.id, why: 'sample reject(이미 실음 — 그대로 둠) ' + vsamp.why });
+      it.reapply = applied.get(r.id).round; it.prevDb = Object.fromEntries(F3.map(([k, col]) => [col, prev[col]?.after ?? it.before[k] ?? '']));
+      for (const [k, col] of F3) if (!it.fields[k] && target[col] !== it.prevDb[col]) it.fields[k] = { kind: 'revert', text: target[col], from: '' };
+      row.reapply = (row.reapply ?? 0) + 1; report.reapply.push({ file: fl.card, id: r.id, prev: it.reapply });
+    }
     pick.push(it);
   }
   report.files.push(row);
 }
 
-// ── DB 사진
-const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
-const db = new URL(process.env.DATABASE_URL).pathname.slice(1);
-const rows = (await c.query(`select q.id::int, q.is_active, q.inactive_reason, q.question_text, q.display_answer, q.explanation, q.general_hint, q.general_hint_version,
-  coalesce((select array_agg(answer_text order by id) from question_answers x where x.question_id=q.id and not x.is_primary),'{}') variants
-  from questions q where q.id = any($1::bigint[])`, [pick.map((x) => x.id)])).rows;
-await c.end();
-const D = Object.fromEntries(rows.map((r) => [r.id, r]));
 
 // ── 게이트
 const gate = { inactive: [], beforeDiff: [], newAnswer: [], hintBlock: [], over200: [], ending: [], empty: [], answerSet: [], warnExplainNew: [], warnQuestionNew: [], hold: [] };
@@ -104,19 +124,23 @@ for (const it of pick) {
   if (!d) { gate.inactive.push({ id: it.id, why: '없음' }); continue; }
   if (!d.is_active) { gate.inactive.push({ id: it.id, why: d.inactive_reason }); continue; }
   // ⑤ before = 지금 DB 값 (원문 묶음의 질문 · 정답 · 힌트 · 해설)
-  const bd = [['question', 'question_text'], ['answer', 'display_answer'], ['hint', 'general_hint'], ['explanation', 'explanation']].filter(([k, col]) => (it.before[k] ?? '') !== (d[col] ?? ''));
-  if (bd.length && !it.sampleFix) { gate.beforeDiff.push({ id: it.id, cols: bd.map((x) => x[0]) }); continue; }
+  //    다시 싣는 카드는 "지금 DB = 앞선 적용이 쓴 값"
+  const exp = (k, col) => (it.reapply && col !== 'display_answer' ? it.prevDb[col] : it.before[k]) ?? '';
+  const bd = [['question', 'question_text'], ['answer', 'display_answer'], ['hint', 'general_hint'], ['explanation', 'explanation']].filter(([k, col]) => exp(k, col) !== (d[col] ?? ''));
+  if (bd.length) { gate.beforeDiff.push({ id: it.id, cols: bd.map((x) => x[0]), reapply: it.reapply }); continue; }
+  // 게이트의 "옛 카드" = 원문(다시 싣는 카드도 원문과 견준다)
+  const o0 = { question_text: it.before.question ?? '', general_hint: it.before.hint ?? '', explanation: it.before.explanation ?? '' };
   const now = { question_text: d.question_text, general_hint: d.general_hint, explanation: d.explanation };
   for (const [k, col] of F3) if (it.fields[k]) now[col] = it.fields[k].text;
   const q = now.question_text, h = now.general_hint, e = now.explanation;
   const ans = [d.display_answer, ...d.variants];
   // ① 정답 · 변형 새로 듦
-  for (const x of ans) if (findAnswerInQuestion(q, x) === 'word' && findAnswerInQuestion(d.question_text, x) !== 'word') fail.push(`질문에 정답 '${x}'`);
+  for (const x of ans) if (findAnswerInQuestion(q, x) === 'word' && findAnswerInQuestion(o0.question_text, x) !== 'word') fail.push(`질문에 정답 '${x}'`);
   const ckN = checkHint({ hint: h, answer: d.display_answer, variants: d.variants, question: q, explanation: e ?? '' });
-  const ckO = checkHint({ hint: d.general_hint, answer: d.display_answer, variants: d.variants, question: d.question_text, explanation: d.explanation ?? '' });
+  const ckO = checkHint({ hint: o0.general_hint, answer: d.display_answer, variants: d.variants, question: o0.question_text, explanation: o0.explanation });
   const oldB = new Set(ckO.block.map((b) => b.frag));
   const nb = ckN.block.filter((b) => !oldB.has(b.frag)); if (nb.length) fail.push(`힌트 막힘 ${nb.map((b) => b.frag).join('·')}`);
-  const g = checkAnswerSet(q, d.display_answer, d.variants, normalizeAnswer); const go = checkAnswerSet(d.question_text, d.display_answer, d.variants, normalizeAnswer);
+  const g = checkAnswerSet(q, d.display_answer, d.variants, normalizeAnswer); const go = checkAnswerSet(o0.question_text, d.display_answer, d.variants, normalizeAnswer);
   if (g.blocked.length > go.blocked.length) fail.push(`정답 묶음 막힘 ${JSON.stringify(g.blocked)}`);
   // ② 200자 ③ ~까요? ⑥ 빔
   if (L(q) > 200) fail.push(`질문 ${L(q)}자`);
@@ -132,7 +156,7 @@ for (const it of pick) {
     const key = fail[0].startsWith('질문에') ? 'newAnswer' : fail[0].startsWith('힌트 막힘') ? 'hintBlock' : fail[0].startsWith('정답 묶음') ? 'answerSet' : fail[0].startsWith('질문 2') || /^질문 \d+자/.test(fail[0]) ? 'over200' : fail[0].startsWith('질문 끝') ? 'ending' : fail[0].startsWith('힌트 · 해설') ? 'empty' : 'hold';
     gate[key].push({ id: it.id, file: it.file, fail }); continue;
   }
-  const o = { id: it.id, answer: d.display_answer, src: it.src, file: it.file, worth: it.worth, hasClaims: it.hasClaims, from: it.fields.question?.from ?? '' };
+  const o = { id: it.id, answer: d.display_answer, src: it.src, file: it.file, worth: it.worth, hasClaims: it.hasClaims, from: it.fields.question?.from ?? '', ...(it.reapply ? { reapply: it.reapply } : {}) };
   if (it.claims.length) o.claims = it.claims;
   for (const [k, col] of F3) {
     const f = it.fields[k]; if (!f || f.text === d[col]) continue;
@@ -169,7 +193,7 @@ if (emoMine) {
 writeFileSync(path.join(ROOT, `data/pipeline/audit/${ROUND}-verify-targets.json`), JSON.stringify({ round: R, note: 'claims 없는 카드 표본(무작위 · 구조전환 절반 이상) — lane: sample', targets }, null, 1) + '\n');
 
 console.log(db, 'files', JSON.stringify(report.files));
-console.log('skippedFile', JSON.stringify(report.skippedFile), 'notReady', report.notReady.length, 'waitVerify', report.waitVerify.length, 'rejected', report.rejected.length, 'already', report.alreadyApplied);
+console.log('skippedFile', JSON.stringify(report.skippedFile), 'notReady', report.notReady.length, 'waitVerify', report.waitVerify.length, 'rejected', report.rejected.length, 'already', report.alreadyApplied, 'reapply', report.reapply.length, 'reapplyItems', items.filter((x) => x.reapply).length);
 console.log('gate', JSON.stringify(Object.fromEntries(Object.entries(gate).map(([k, v]) => [k, v.length]))));
 for (const k of ['inactive', 'beforeDiff', 'newAnswer', 'hintBlock', 'answerSet', 'over200', 'ending', 'empty', 'hold']) for (const x of gate[k]) console.log(' ', k, JSON.stringify(x));
 console.log('counts', JSON.stringify(counts), 'verify targets', targets.length, '(구조전환', targets.filter((x) => x.from.startsWith('구조전환')).length + ')');
