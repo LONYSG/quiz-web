@@ -699,7 +699,9 @@ export default function Lobby({
         const kids = [...main.children] as HTMLElement[];
         for (const c of kids) {
           const m = getComputedStyle(c);
-          h += Math.max(c.scrollHeight, c.getBoundingClientRect().height) + (parseFloat(m.marginTop) || 0) + (parseFloat(m.marginBottom) || 0);
+          // 결과 카드는 순위 · 곡 목록이 안에서 줄고 스크롤하도록 만든 칸 — 줄어든 높이 그대로(R066)
+          const ch = c.classList.contains('result-card') ? c.getBoundingClientRect().height : Math.max(c.scrollHeight, c.getBoundingClientRect().height);
+          h += ch + (parseFloat(m.marginTop) || 0) + (parseFloat(m.marginBottom) || 0);
         }
         return Math.max(main.scrollHeight, h + gap * Math.max(0, kids.length - 1));
       };

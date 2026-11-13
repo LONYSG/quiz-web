@@ -11515,3 +11515,41 @@ button.preset.shake {
 :where(.ui-pc) .room.fit-tight .next-row {
   margin-top: 6px;
 }
+/* ★ R101 — 노래 공개(PC): 표지를 공개 상자 왼쪽으로(위아래로 쌓으면 1536×730 에서 채팅이 3줄 아래 — r101 3차) · 머리 · 힌트 · 행동 줄은 한 줄 전체 */
+:where(.ui-pc) .room .center-main > .question-card:has(> .song-play):has(> .reveal) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 14px;
+  align-content: start;
+}
+:where(.ui-pc) .room .center-main > .question-card:has(> .song-play):has(> .reveal) > * {
+  grid-column: 1 / -1;
+}
+:where(.ui-pc) .room .center-main > .question-card:has(> .song-play):has(> .reveal) > .song-play {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+  margin-top: 10px;
+}
+:where(.ui-pc) .room .center-main > .question-card:has(> .song-play):has(> .reveal) > .reveal {
+  grid-column: 2;
+  grid-row: 2;
+}
+:where(.ui-pc) .room .center-main > .question-card:has(> .song-play):has(> .reveal) .song-cover {
+  width: clamp(80px, calc(30vh - var(--fit-cut, 0px)), 240px);
+}
+/* 미니게임 공개 표 — 맞춤 ② 에서 줄 간격만 */
+:where(.ui-pc) .room.fit-tight .mg-table {
+  gap: 2px;
+}
+:where(.ui-pc) .room.fit-tight .mg-table li {
+  padding-block: 2px;
+}
+:where(.ui-pc) .room.fit-tight .mg-item-id {
+  margin-top: 0;
+}
+/* 노래 결과 곡 목록 — 맞춤 ② 에서 한 줄 높이(안에서 스크롤 — 순위 목록과 같은 꼴) · 채팅 6줄이 먼저 */
+:where(.ui-pc) .room.fit-tight .song-result-list {
+  max-height: 3.6rem;
+  overflow-y: auto;
+}
