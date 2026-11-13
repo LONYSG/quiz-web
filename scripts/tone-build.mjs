@@ -45,6 +45,14 @@ for (const f of readdirSync(path.join(ROOT, 'data/pipeline/audit')).filter((f) =
   const j = J(`data/pipeline/audit/${f}`);
   for (const [id, v] of Object.entries(j)) if (v && (v.lane === 'claims' || v.lane === 'sample')) (verdict[id] ??= []).push({ ...v, vfile: f });
 }
+// ── 3-1 재료 판정(G071~) — 재료로 쓴 묶음: chunk → { id → [사실 판정] } · 보낼것/재료-NNN.json 이 있는 묶음만
+const material = {};
+for (const f of readdirSync(path.join(ROOT, 'data/pipeline/audit')).filter((f) => /^v0\d\d-material.*\.json$/.test(f)).sort()) {
+  let j; try { j = J(`data/pipeline/audit/${f}`); } catch { continue; }
+  if (!j.chunk || !existsSync(path.join(ROOT, 'web-desk/tone/보낼것', `재료-${j.chunk}.json`))) continue;
+  const m = (material[j.chunk] = { vfile: f, byId: {} });
+  for (const x of Object.values(j.facts ?? {})) (m.byId[x.id] ??= []).push(x);
+}
 // ── 원문 묶음
 function packet(file) {
   const t = readFileSync(path.join(ROOT, OUT, file), 'utf8');
@@ -112,10 +120,17 @@ for (const { fl, res, pk } of loaded) {
     for (const [k] of F3) { const c = r[k]; if (c && c.verdict !== 'keep') it.fields[k] = { kind: c.verdict, text: c.text, from: c.from }; }
     if (hasClaims) {
       row.claims++;
+      const mat = material[fl.card.slice(3)];
+      if (!vc && mat) { // 3-1 재료 판정이 있으면 카드 판정을 기다리지 않는다 — drop 사실을 쓴 카드는 뺀다(못 엶 사실 사용은 GEN 이 읽고 --hold)
+        const drops = (mat.byId[r.id] ?? []).filter((x) => x.verdict === 'drop');
+        if (drops.length) { row.reject++; report.rejected.push({ file: fl.card, id: r.id, why: '재료 drop 사실 ' + drops.map((x) => x.ref).join('·'), vfile: mat.vfile }); continue; }
+        row.claimsMat = (row.claimsMat ?? 0) + 1; it.material = mat.vfile; it.src += ` + ${mat.vfile.slice(0, 4).toUpperCase()} 재료`;
+      } else {
       if (!vc) { row.wait++; report.waitVerify.push({ file: fl.card, id: r.id }); continue; }
       if (vc.verdict === 'reject') { row.reject++; report.rejected.push({ file: fl.card, id: r.id, why: vc.why, vfile: vc.vfile }); continue; }
       if (vc.verdict === 'fix') { row.claimsFix++; for (const [k] of F3) if (vc.fixed?.[k]) it.fields[k] = { ...(it.fields[k] ?? { kind: 'rewrite' }), text: vc.fixed[k], fixedBy: vc.vfile }; it.src += ` + ${vc.vfile.slice(0, 4).toUpperCase()} fix`; }
       else if (vc.verdict === 'ok') row.claimsOk++; else { row.wait++; report.waitVerify.push({ file: fl.card, id: r.id, why: `판정 ${vc.verdict}` }); continue; }
+      }
     } else row.free++;
     if (vsamp?.verdict === 'fix') { for (const [k] of F3) if (vsamp.fixed?.[k]) it.fields[k] = { ...(it.fields[k] ?? { kind: 'rewrite' }), text: vsamp.fixed[k], fixedBy: vsamp.vfile }; it.src += ` + ${vsamp.vfile.slice(0, 4).toUpperCase()} sample fix`; it.sampleFix = true; row.sampleFix++; }
     if (applied.has(r.id)) {
@@ -174,7 +189,7 @@ for (const it of pick) {
     const key = fail[0].startsWith('질문에') ? 'newAnswer' : fail[0].startsWith('힌트 막힘') ? 'hintBlock' : fail[0].startsWith('정답 묶음') ? 'answerSet' : fail[0].startsWith('질문 2') || /^질문 \d+자/.test(fail[0]) ? 'over200' : fail[0].startsWith('질문 끝') ? 'ending' : fail[0].startsWith('힌트 · 해설') ? 'empty' : 'hold';
     gate[key].push({ id: it.id, file: it.file, fail }); continue;
   }
-  const o = { id: it.id, answer: d.display_answer, src: it.src, file: it.file, worth: it.worth, hasClaims: it.hasClaims, from: it.fields.question?.from ?? '', ...(it.reapply ? { reapply: it.reapply } : {}), ...(it.restore ? { restore: true } : {}) };
+  const o = { id: it.id, answer: d.display_answer, src: it.src, ...(it.material ? { material: it.material } : {}), file: it.file, worth: it.worth, hasClaims: it.hasClaims, from: it.fields.question?.from ?? '', ...(it.reapply ? { reapply: it.reapply } : {}), ...(it.restore ? { restore: true } : {}) };
   if (it.claims.length) o.claims = it.claims;
   for (const [k, col] of F3) {
     const f = it.fields[k]; if (!f || f.text === d[col]) continue;
@@ -195,7 +210,8 @@ writeFileSync(path.join(ROOT, `data/pipeline/tone/${ROUND}-apply.json`), JSON.st
 
 // ── VERIFY 묶음: claims 없는 카드 무작위 30(파일마다 고루 · 구조전환 절반 이상)
 let seed = Number(ROUND.slice(1)); const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
-const free = items.filter((x) => String(x.src).startsWith('카드-') && !x.restore && !x.hasClaims && !String(x.src).includes('fix'));
+const matFiles = new Set(items.filter((x) => x.material).map((x) => x.file));
+const free = items.filter((x) => String(x.src).startsWith('카드-') && !x.restore && !x.hasClaims && !String(x.src).includes('fix') && !matFiles.has(x.file));
 const N = Math.min(30, free.length); const byFile = {};
 for (const x of free) (byFile[x.file] ??= { s: [], o: [] })[x.from.startsWith('구조전환') ? 's' : 'o'].push(x);
 const tp = []; const fk = Object.keys(byFile);
@@ -204,6 +220,13 @@ const wantS = Math.ceil(N / 2);
 for (let i = 0; tp.filter((x) => x.from.startsWith('구조전환')).length < wantS && fk.some((f) => byFile[f].s.length); i++) { const f = fk[i % fk.length]; if (byFile[f].s.length) tp.push(take(byFile[f].s)); }
 for (let i = 0; tp.length < N; i++) { const f = fk[i % fk.length]; const b = byFile[f]; if (b.o.length || b.s.length) tp.push(take(b.o.length && (rnd() < 0.6 || !b.s.length) ? b.o : b.s)); }
 const targets = tp.map((o) => ({ id: o.id, file: o.file, answer: o.answer, from: o.from, check: ['sample — 블라인드 · 옮기면서 사실이 달라졌나 · §0 · §1'], question: o.question_text, hint: o.general_hint, explanation: o.explanation }));
+// 3-1 재료로 쓴 묶음: 묶음마다 표본 30(claims 있는 것 · 없는 것 섞어) — from: material · 재료의 사실이 문장으로 옮겨지며 달라졌나
+for (const f of matFiles) {
+  const pool = items.filter((x) => x.file === f && !x.restore && String(x.src).startsWith('카드-'));
+  const mc = pool.filter((x) => x.material), rest = pool.filter((x) => !x.material); const sel = [];
+  while (sel.length < Math.min(30, pool.length)) sel.push(take(mc.length && (rnd() < 0.35 || !rest.length) ? mc : rest));
+  for (const o of sel) targets.push({ id: o.id, file: o.file, answer: o.answer, from: 'material', qfrom: o.from, check: ['material — 재료(보낼것/재료-' + f.slice(3) + '.json)의 사실이 문장으로 옮겨지며 달라졌나 · 재료에 없는 사실이 들었나 · 블라인드 · §0 · §1'], question: o.question_text, hint: o.general_hint, explanation: o.explanation, ...(o.claims ? { claims: o.claims } : {}) });
+}
 if (emoMine) {
   for (const o of emo.items) targets.push({ id: o.id, file: 'emoji-number', answer: o.answer, from: '', check: ['emoji — 블라인드 추측(줄만 보고) · 그 작품 하나로 모이나 · 숫자 이모지 0 · 같은 분야 다른 줄과 겹침 · 설명이 이모지와 맞나'], question: o.question_text, explanation: o.explanation });
   for (const o of emo.deactivate) targets.push({ id: o.id, file: 'emoji-number', answer: o.answer, from: '', check: ['emoji 비활성 — 끈 이유가 맞나(살릴 줄이 있으면 why 에 제안)'], question: { before: o.name }, why: o.why });
