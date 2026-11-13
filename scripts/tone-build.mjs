@@ -23,7 +23,7 @@ const a = process.argv.slice(2);
 const ROUND = (a[a.indexOf('--round') + 1] ?? '').toLowerCase();
 if (!/^g0\d\d$/.test(ROUND) || !a.includes('--round')) { console.error('--round g0NN 필요'); process.exit(1); }
 const HOLD = new Map((a.includes('--hold') ? a[a.indexOf('--hold') + 1].split(',') : []).filter(Boolean).map((x) => [Number(x.split(':')[0]), x.split(':')[1] ?? 'GEN 보류']));
-const J = (p) => JSON.parse(readFileSync(path.join(ROOT, p), 'utf8'));
+const J = (p) => JSON.parse(readFileSync(path.join(ROOT, p), 'utf8').replace(/^﻿/, ''));
 const L = (s) => [...(s ?? '')].length;
 const IN = 'web-desk/tone/받은것', OUT = 'web-desk/tone/보낼것';
 const F3 = [['question', 'question_text'], ['hint', 'general_hint'], ['explanation', 'explanation']];
