@@ -1,6 +1,6 @@
 // R082 — 라이어 게임 순수 함수 · 설정 방식(mode)
 import { describe, expect, it } from 'vitest';
-import { LIAR, appealPasses, canAppeal, finalPasses, liarRoundScores, tallyVotes } from './liar.js';
+import { LIAR, LIAR_STEPS, appealPasses, canAppeal, discussNeed, finalPasses, liarRoundScores, liarStep, tallyVotes } from './liar.js';
 import { validateRoomSettings } from './settings.js';
 
 const base = { questionCount: 10 };
@@ -77,5 +77,23 @@ describe('설정 — 방식(mode)', () => {
     const d = validateRoomSettings({ ...base, mode: 'draw', minigameRounds: 3 });
     expect(d.ok && [d.settings.mode, d.settings.minigameOnly]).toEqual(['draw', false]);
     expect(validateRoomSettings({ ...base, mode: 'draw', teamMode: true }).ok).toBe(false);
+  });
+});
+
+// ★ R101 — 단계 줄 · 토론 · 시간
+describe('R101 라이어 — 단계 줄 · 토론 · 시간', () => {
+  it('단계 줄 다섯 칸 — 재투표 · 죽일까 · 맞히기 · 이의제기는 칸 안', () => {
+    expect([...LIAR_STEPS]).toEqual(['설명', '토론', '투표', '변론', '결과']);
+    expect((['assign', 'describe', 'discuss', 'vote', 'revote', 'defense', 'final', 'guess', 'appeal', 'appealVote', 'reveal'] as const).map(liarStep)).toEqual([0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]);
+  });
+  it('[토론 끝] — 접속한 사람의 과반', () => {
+    expect([1, 2, 3, 4, 5, 6, 7, 8].map(discussNeed)).toEqual([1, 2, 2, 3, 3, 4, 4, 5]);
+  });
+  it('시간 — 토론 60 · 다시 토론 30 · 투표 20 · 재투표 15 · 죽일까 15 · 맞히기 20 · 공개 10 · 설명 · 변론 20 그대로', () => {
+    expect([LIAR.DISCUSS_MS, LIAR.REDISCUSS_MS, LIAR.VOTE_MS, LIAR.REVOTE_MS, LIAR.FINAL_MS, LIAR.GUESS_MS, LIAR.REVEAL_MS, LIAR.SAY_MS, LIAR.DEFENSE_MS]).toEqual([
+      60_000, 30_000, 20_000, 15_000, 15_000, 20_000, 10_000, 20_000, 20_000,
+    ]);
+    expect('TALLY_MS' in LIAR).toBe(false);
+    expect(LIAR.ASSIGN_MS).toBeLessThanOrEqual(3_000);
   });
 });

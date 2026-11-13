@@ -101,9 +101,9 @@ import { emojiIdOfChar, isEmojiId, isSpecialEmoji, ownedEmojiIds, ownedEmojiIdsC
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
-import { liarAppeal, liarAppealVote, liarChatGate, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
+import { liarAppeal, liarAppealVote, liarChatGate, liarDiscussEnd, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
 import { noteSongFail } from '../song/mode.js';
-import { drawChatGate, drawClear, drawFill, drawHint, drawRedo, drawReroll, drawStroke, drawUndo } from '../draw/engine.js';
+import { drawChatGate, drawClear, drawFill, drawGiveUp, drawHint, drawRedo, drawReroll, drawStroke, drawUndo } from '../draw/engine.js';
 import {
   on,
   onRoom,
@@ -1100,6 +1100,19 @@ function registerRoomHandlers(socket: Socket): void {
     },
     ({ socket: s, room, session, payload }) => liarReply(s, liarGuess(room, session.accountId, payload.text)),
   );
+  // ★ R101 — [토론 끝](참가자 · on=false 면 취소) · 과반이면 바로 투표
+  onRoom<{ on: boolean }>(
+    socket,
+    'liar.discussEnd',
+    {
+      allowedStates: ['LIAR'],
+      parse: (raw) => {
+        const on = parseObject(raw)?.on;
+        return { on: on !== false };
+      },
+    },
+    ({ socket: s, room, session, payload }) => liarReply(s, liarDiscussEnd(room, session.accountId, payload.on)),
+  );
   // ★ R091 (D-348) — 이의제기(라이어만 · 맞히기 오답 직후) · 인정/기각(라이어 빼고)
   onRoom<Record<string, never>>(socket, 'liar.appeal', { allowedStates: ['LIAR'], parse: () => ({}) }, ({ socket: s, room, session }) => liarReply(s, liarAppeal(room, session.accountId)));
   onRoom<{ yes: boolean }>(
@@ -1150,6 +1163,8 @@ function registerRoomHandlers(socket: Socket): void {
   );
   onRoom<Record<string, never>>(socket, 'draw.clear', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawClear(room, session.accountId)));
   onRoom<Record<string, never>>(socket, 'draw.reroll', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawReroll(room, session.accountId)));
+  // ★ R101 — 출제자 포기(그리는 중 · 횟수 제한 없음)
+  onRoom<Record<string, never>>(socket, 'draw.giveUp', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawGiveUp(room, session.accountId)));
   // ★ R089 (D-346) — 페인트통 · 되돌리기(출제자만)
   onRoom<{ id: string; x: unknown; y: unknown; color: unknown }>(
     socket,

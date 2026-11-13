@@ -8392,7 +8392,11 @@ async function scenarioLiarFool() {
       seen[r][me] = { amLiar: v.amLiar, keyword: v.keyword, mode: v.mode };
       if (v.turn === me) b.socket.emit('liar.say', { text: `설명 ${b.name}` });
     } else if (v.phase === 'defense' && v.turn === me) b.socket.emit('liar.say', { text: '아니에요' });
-    else if (v.phase === 'vote' || v.phase === 'revote') {
+    else if (v.phase === 'discuss') {
+      // ★ R101 — 자유 토론 → 모두 [토론 끝](과반이면 바로 투표)
+      await sleep(80);
+      b.socket.emit('liar.discussEnd', {});
+    } else if (v.phase === 'vote' || v.phase === 'revote') {
       await sleep(150);
       // 진짜 라이어 = 다른 둘과 키워드가 다른 사람(바보형이라 view 로는 모른다 — 셋의 키워드를 비교)
       const s = seen[r] ?? {};
@@ -8552,8 +8556,31 @@ async function scenarioLiar() {
         say('끼어들기 설명'); // ★ 차례 아닌 설명 → 거부
         b.chat('끼어들기 채팅'); // ★ 차례 아닌 채팅 → 통과(R087)
       }
-    } else if (v.phase === 'defense' && v.turn === me) say('저 아니에요');
-    else if (v.phase === 'vote' || v.phase === 'revote') {
+    } else if (v.phase === 'defense' && v.turn === me) {
+      // ★ R101 — 투표 결과 화면(tally) 없이 바로 변론 · 결과 줄(lastTally)은 변론 화면에 남는다
+      if (r === 1 && b === host) defenseSeen = { tally: v.lastTally, accused: v.accused, phase: v.phase };
+      say('저 아니에요');
+    } else if (v.phase === 'defense' && r === 1 && b === host && !defenseSeen) defenseSeen = { tally: v.lastTally, accused: v.accused, phase: v.phase };
+    else if (v.phase === 'discuss') {
+      // ★ R101 — 자유 토론: R1 첫 토론은 한 명씩 눌러 과반(4명 → 3)에서 넘어가는지 · 한 명은 눌렀다 취소 · 나머지는 모두 누름
+      discussSeen.push({ r, start: v.phaseStartedAt, bout: v.bout, ms: v.phaseEndsAt - v.phaseStartedAt, need: v.discussNeed, done: v.discussDone, by: me });
+      const i = P.indexOf(me);
+      if (r === 1 && v.bout === 1) {
+        if (i === 3) return; // 넷째는 안 누름 → 셋(과반)에서 넘어가야 한다
+        await sleep(150 + i * 250);
+        if (i === 0) {
+          b.socket.emit('liar.discussEnd', { on: true });
+          await sleep(60);
+          b.socket.emit('liar.discussEnd', { on: false }); // 취소
+          await sleep(60);
+        }
+        b.socket.emit('liar.discussEnd', { on: true });
+      } else {
+        await sleep(60);
+        b.socket.emit('liar.discussEnd', {});
+      }
+    } else if (v.phase === 'vote' || v.phase === 'revote') {
+      if (r === 1 && b === host && !voteAfterDiscuss) voteAfterDiscuss = { start: v.phaseStartedAt };
       await sleep(100);
       const liar = roles[r].liar ?? null;
       const cit = P.filter((a) => a !== liar);
@@ -8600,6 +8627,11 @@ async function scenarioLiar() {
     } else if (v.phase === 'reveal' && b === host) reveals.push({ round: r, outcome: v.outcome, liar: v.liar, guessOk: v.guessOk, scores: v.scores, tally: v.lastTally, tried: v.accusedTried, bout: v.bout, says: v.says, appeal: v.appeal });
   };
   const appealSeen = [];
+  // ★ R101 — 토론 · 변론 화면 기록
+  const discussSeen = [];
+  let defenseSeen = null;
+  let voteAfterDiscuss = null;
+  const phasesSeen = new Set();
   const liarRejects = new Map(bots.map((b) => [b, []]));
   for (const b of bots) b.socket.on('liar.rejected', (p) => liarRejects.get(b).push(p.reason));
   const chats = [];
@@ -8607,6 +8639,7 @@ async function scenarioLiar() {
   for (const b of bots) {
     b.socket.on('liar.state', (p) => {
       views.set(b, p.liar);
+      if (p.liar) phasesSeen.add(p.liar.phase);
       if (p.liar) void act(b, p.liar);
     });
     b.socket.on('liar.chatRejected', (p) => rejected.get(b).push(p.reason));
@@ -8628,6 +8661,14 @@ async function scenarioLiar() {
   const rj = [...liarRejects.values()].flat();
   expectTrue('★★ R091 거부 — 맞힌 뒤 이의제기 · 이의제기 전 표 = not_now · 라이어 본인 표 = bad', rj.includes('not_now') && rj.includes('bad'), JSON.stringify(rj));
   expectTrue('★★ R091 이의제기 단계부터 키워드 채팅 통과', chats.some((c) => c.text === `${roles[3].keyword} 아니야?`), JSON.stringify(chats.slice(-6).map((c) => c.text)));
+  // ★★★ R101 — 토론 단계 · 과반 · 다시 토론 30초 · tally 없음 · 변론 화면에 투표 결과 줄
+  const d1 = discussSeen.filter((x) => x.r === 1 && x.bout === 1);
+  expectTrue('★★★ R101 토론 — 설명 한 바퀴 뒤 discuss 60초 · 필요 3(4명 과반)', d1.length > 0 && d1.every((x) => x.ms === 60_000 && x.need === 3), JSON.stringify(d1.slice(0, 4)));
+  expectTrue('★★★ R101 [토론 끝] 셋(과반)에서 바로 투표 — 넷째 안 눌러도 · 60초 안 기다림', !!voteAfterDiscuss && d1.length > 0 && voteAfterDiscuss.start - d1[0].start < 10_000, JSON.stringify({ voteAfterDiscuss, d: d1[0] }));
+  const d2 = discussSeen.filter((x) => x.r === 2 && x.bout > 1);
+  expectTrue('★★★ R101 살려서 다음 바퀴 — 투표 앞에 다시 토론 30초', d2.length > 0 && d2.every((x) => x.ms === 30_000), JSON.stringify(d2.slice(0, 3)));
+  expectTrue('★★★ R101 tally 단계 없음 · discuss 있음', !phasesSeen.has('tally') && phasesSeen.has('discuss'), JSON.stringify([...phasesSeen]));
+  expectTrue('★★★ R101 변론 화면에 바로 앞 투표 결과(lastTally · 지목자 = 최다)', defenseSeen?.tally?.top?.length === 1 && defenseSeen.tally.top[0] === defenseSeen.accused, JSON.stringify(defenseSeen));
   expectTrue('★★★ R090 안 들켜도 맞히기 단계 — R2 notfound · R3 escaped 에 guess 단계 · 시민 화면에 라이어 공개 · 키워드는 시민이 원래 앎', guessSeen[2]?.outcome === 'notfound' && guessSeen[3]?.outcome === 'escaped' && guessSeen[2]?.liar === roles[2].liar && guessSeen[3]?.liar === roles[3].liar, JSON.stringify(guessSeen));
   expectTrue('★★★ R2 — 3바퀴 · 같은 시민을 두 번 지목하고 두 번 살림(살아난 사람도 다시 대상)', byR(2).bout === 3 && byR(2).tried?.length === 2 && byR(2).tried[0] === byR(2).tried[1], JSON.stringify({ bout: byR(2).bout, tried: byR(2).tried }));
   expectTrue('★★ R3 — 1바퀴 · 지목 하나(시민)', byR(3).bout === 1 && byR(3).tried?.length === 1 && byR(3).tried[0] !== roles[3].liar, JSON.stringify(byR(3).tried));
@@ -8667,8 +8708,8 @@ async function scenarioLiar() {
 
 // =============================================================================
 // ★★★ R083 — 캐치마인드 (D-340) — 봇 3 + 중간 입장 1 · 3라운드(DRAW_ROUND_MS 8초)
-//   R1 출제 host: 다른 제시어 1회 · 선 조각 2 · 출제자 키워드/글자 수 거부 · b2 · b3 차례로 맞힘(3 · 2 · 출제 2) · 맞힌 글은 채팅에 안 보임 · 중간 입장 = 선 스냅샷 · 구경꾼 정답 거부
-//   R2 출제 b2: 아무도 못 맞힘(0) · R3 출제 b3: host 오답(보통 채팅) → 정답(3 · 출제 1)
+//   R1 출제 host: 다른 제시어 1회 · 선 조각 2 · 출제자 키워드/글자 수 거부 · ★ R101 b2 · b3 같이 침 → 먼저 받은 b2 한 명(+2 · 출제 +1)에서 바로 끝 · 맞힌 글은 채팅에 안 보임 · 중간 입장 = 선 스냅샷 · 구경꾼 정답 거부
+//   R2 출제 b2: 아무도 못 맞힘(0) · R3 출제 b3: host 오답(보통 채팅) → 정답(+2 · 출제 +1) · ★ R101 R4 출제 late: 남의 포기 거름 · 출제자 포기 → 바로 공개 · 0점
 //   + 1명 시작 블록 · draw_rounds 3행 · 결과 mode draw
 // =============================================================================
 async function scenarioDraw() {
@@ -8680,7 +8721,7 @@ async function scenarioDraw() {
   await host.waitFor(() => host.snapshot !== null, 6000, '방');
   const roomId = host.snapshot.room.id;
   let m = host.mark();
-  host.socket.emit('lobby.updateSettings', { questionCount: 5, mode: 'draw', minigameRounds: 3 });
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, mode: 'draw', minigameRounds: 4 });
   await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.mode === 'draw'), 4000, '설정(캐치마인드)');
   m = host.mark();
   host.socket.emit('game.start', {});
@@ -8812,15 +8853,16 @@ async function scenarioDraw() {
     JSON.stringify({ afterRedo, afterClear, afterUndoClear, afterRedoClear, redoAfterNew, seen: [...seen.values()].map((x) => x.join()), lastH, h2: hists.get(b2).at(-1) }),
   );
   const c0 = chats.length;
+  // ★ R101 — 선착순: b2 · b3 가 거의 같이 쳐도 서버가 먼저 받은 b2 한 명만 · 그 자리에서 공개
   b2.chat(kw1);
-  await sleep(300);
   b3.chat(kw1);
   await host.waitFor(() => lastView(host)?.phase === 'reveal' && lastView(host).round === 1, 5000, 'R1 공개');
   const r1 = lastView(host);
   expect('★★ R089 공개 때 op 목록 = s1 하나(되돌린 둘 빠짐)', (r1.strokes ?? []).map((x) => x.id), ['s1']);
-  expect('★★★ R1 — 맞힌 순서 b2 · b3 · 점수 3 · 2 · 출제 2 · 모두 맞혀 바로 공개', [r1.solved.map((s) => s.accountId), r1.scores], [[idOf(b2), idOf(b3)], { [idOf(b2)]: 3, [idOf(b3)]: 2, [idOf(host)]: 2 }]);
+  expect('★★★ R101 R1 — 먼저 맞힌 b2 한 명 · 점수 +2 · 출제 +1 · 첫 정답에 바로 공개(b3 는 정답 아님)', [r1.solved.map((s) => s.accountId), r1.scores], [[idOf(b2)], { [idOf(b2)]: 2, [idOf(host)]: 1 }]);
+  await sleep(300);
   const newChats = chats.slice(c0);
-  expectTrue('★★★ 맞힌 글은 채팅에 안 보이고 시스템 줄 "정답!" 둘', !newChats.some((c) => c.text === kw1) && newChats.filter((c) => c.system && /정답!/.test(c.text)).length === 2, JSON.stringify(newChats.map((c) => c.text)));
+  expectTrue('★★★ 맞힌 글은 채팅에 안 보이고 시스템 줄 "정답!" 하나(선착순)', newChats.filter((c) => c.system && /정답!/.test(c.text)).length === 1 && newChats.filter((c) => c.text === kw1).length <= 1, JSON.stringify(newChats.map((c) => c.text)));
   // ── R2 — 출제 b2 · 아무도 못 맞힘
   await host.waitFor(() => lastView(host)?.round === 2 && lastView(host).phase === 'draw', 10000, 'R2');
   expect('★★ R2 출제자 = 입장순 다음(b2) · 중간 입장자도 참가', [lastView(host).drawer, lastView(late)?.spectating], [idOf(b2), false]);
@@ -8836,14 +8878,27 @@ async function scenarioDraw() {
   host.chat(kw3);
   await host.waitFor(() => lastView(host)?.round === 3 && lastView(host).phase === 'reveal', 15000, 'R3 공개');
   expectTrue('★★ R3 — 오답은 보통 채팅으로 보임', chats.slice(c1).some((c) => c.text === '혹시이건가zz' && !c.system), JSON.stringify(chats.slice(c1).map((c) => c.text)));
-  expect('★★★ R3 — host 3 · 출제 b3 1(맞힌 1명)', lastView(host).scores, { [idOf(host)]: 3, [idOf(b3)]: 1 });
+  expect('★★★ R101 R3 — host +2 · 출제 b3 +1', lastView(host).scores, { [idOf(host)]: 2, [idOf(b3)]: 1 });
+  // ── ★★★ R101 R4 — 출제 late(중간 입장자): 출제자 아닌 사람의 포기 = bad · 출제자 포기 → 바로 공개 · 점수 0 · gaveUp
+  await host.waitFor(() => lastView(host)?.round === 4 && lastView(host).phase === 'draw', 10000, 'R4');
+  const giveRej = [];
+  host.socket.on('draw.rejected', (p) => giveRej.push(p.reason));
+  host.socket.emit('draw.giveUp', {});
+  await sleep(300);
+  expectTrue('★★ R101 출제자 아닌 사람의 포기 → 거름(bad) · 그림 그대로', giveRej.includes('bad') && lastView(host).phase === 'draw', JSON.stringify({ giveRej, ph: lastView(host).phase }));
+  const t4 = Date.now();
+  const drawer4 = all.find((b) => idOf(b) === lastView(host).drawer);
+  drawer4.socket.emit('draw.giveUp', {});
+  await host.waitFor(() => lastView(host)?.round === 4 && lastView(host).phase === 'reveal', 3000, 'R4 포기 공개');
+  const r4 = lastView(host);
+  expectTrue('★★★ R101 포기 → 바로 공개(3초 안) · gaveUp · 점수 0 · 제시어 공개 · 시스템 줄 "출제자가 포기했어요"', Date.now() - t4 < 3000 && r4.gaveUp === true && Object.keys(r4.scores ?? {}).length === 0 && !!r4.keyword && chats.some((c) => c.system && /출제자가 포기했어요/.test(c.text)), JSON.stringify({ ms: Date.now() - t4, g: r4.gaveUp, s: r4.scores, k: r4.keyword }));
   await host.waitFor(() => host.since(g, 'game.result').length > 0, 15000, '결과');
   const res = host.since(g, 'game.result')[0].payload;
   const got = Object.fromEntries(res.ranking.map((r) => [r.accountId, r.score]));
-  expect('★★★ 결과 점수 합 — host 5 · b2 3 · b3 3 · 중간 입장 0', [host, b2, b3, late].map((b) => got[idOf(b)] ?? null), [5, 3, 3, 0]);
+  expect('★★★ R101 결과 점수 합 — host 1 + 2 = 3 · b2 2 · b3 1 · 중간 입장 0(포기)', [host, b2, b3, late].map((b) => got[idOf(b)] ?? null), [3, 2, 1, 0]);
   expect('★★ 결과 mode draw · completed', [res.mode, res.endReason], ['draw', 'completed']);
   const rows = await withDb(async (c) => (await c.query(`SELECT round, outcome, rerolled, strokes_count s, drawer_account_id::text d FROM draw_rounds WHERE game_id = $1 ORDER BY round`, [started.gameId])).rows);
-  expect('★★★ draw_rounds 3행 — 결과 · 다른 제시어 · 선 수 · 출제자', rows.map((r) => [r.round, r.outcome, r.rerolled, r.s, r.d]), [[1, 'all', true, 1, idOf(host)], [2, 'none', false, 0, idOf(b2)], [3, 'some', false, 0, idOf(b3)]]);
+  expect('★★★ draw_rounds 4행 — 결과(선착순 1명 = some · 포기 = none) · 다른 제시어 · 선 수 · 출제자', rows.map((r) => [r.round, r.outcome, r.rerolled, r.s, r.d]), [[1, 'some', true, 1, idOf(host)], [2, 'none', false, 0, idOf(b2)], [3, 'some', false, 0, idOf(b3)], [4, 'none', false, 0, idOf(late)]]);
   for (const b of all) {
     b.leave();
     await sleep(40);

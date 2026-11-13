@@ -6,8 +6,8 @@
 //   · 출제자는 처음 10초 안 "다른 제시어" 1회(draw.reroll — 선이 없을 때)
 //   · 나머지는 채팅에 그대로 친다 → drawChatGate: 맞으면 그 글은 안 보이고 시스템 줄 "○○ 정답!" · 틀리면 보통 채팅
 //     출제자 채팅: 키워드(변형 포함) · 글자 수 힌트 거부 · 맞힌 사람 채팅: 키워드 거부(스포)
-//   · 모두 맞히거나 90초 → 공개 5초(키워드 · 그림 그대로) → 다음 라운드 / 판 끝
-// 점수: 맞힌 순서 3 · 2 · 1 · 그 뒤 1 · 출제자 = 맞힌 사람 수(상한 3) · 아무도 못 맞히면 0 → player.score(포인트 아님)
+//   · ★ R101: **먼저 맞힌 한 명이 나오면 바로 끝**(선착순 · 서버가 먼저 받은 한 명) · 120초 · 출제자 [포기](draw.giveUp) → 공개 5초 → 다음 라운드 / 판 끝
+// 점수(★ R101): 맞힌 사람 +2 · 출제자 +1 · 아무도 못 맞히거나 포기 = 0 → player.score(포인트 아님)
 // 기록: draw_rounds(0033) · 경험 minigame_item_experiences('draw', 항목 id) — fire-and-forget
 // ★★ R087 (D-344 · 찬종 테스트 1): 출제자 힌트 버튼 셋(draw.hint — 글자 수 · 초성 · 주제 · 각 1회 · 패널티 없음) · 주제는 기본 숨김(버튼으로 공개)
 //   · 힌트는 전원 화면 힌트 띠 + 시스템 줄 · draw_rounds 에는 칸이 없어 서버 로그에만(기록 칸은 0034 — R088)
@@ -79,6 +79,8 @@ export interface DrawRound {
   /** ★ R087 — 출제자가 연 힌트 */
   hints: DrawHints;
   scores: Record<string, number> | null;
+  /** ★ R101 — 출제자가 [포기] 를 눌러 끝났나 */
+  gaveUp: boolean;
 }
 
 /** ★ R090 — 되돌리기 칸: op(보이는 목록 끝의 id) · clear(지우기 전 목록) */
@@ -207,6 +209,8 @@ export interface DrawView {
   strokes: DrawStroke[];
   hist: { undo: number; redo: number };
   scores: Record<string, number> | null;
+  /** ★ R101 — 공개 때: 출제자가 포기했나 */
+  gaveUp: boolean;
 }
 
 export function drawView(room: Room, viewer: string): DrawView | null {
@@ -239,6 +243,7 @@ export function drawView(room: Room, viewer: string): DrawView | null {
     hist: { undo: r.hist.length, redo: r.redo.length },
     strokes: r.strokes,
     scores: r.phase === 'reveal' ? r.scores : null,
+    gaveUp: r.phase === 'reveal' && r.gaveUp,
   };
 }
 
@@ -304,6 +309,7 @@ function startRound(room: Room, now: number): boolean {
     redo: [],
     hints: {},
     scores: null,
+    gaveUp: false,
   };
   setWord(r, word);
   run.cur = r;
@@ -441,6 +447,17 @@ export function drawReroll(room: Room, accountId: string): DrawResult {
   return 'ok';
 }
 
+/** ★ R101 (찬종 "그리던 사람이 포기하는 버튼") — 출제자만 · 그리는 중 · 횟수 제한 없음 → 그 그림 끝(점수 0) */
+export function drawGiveUp(room: Room, accountId: string): DrawResult {
+  const r = room.game?.draw?.cur;
+  if (!r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
+  if (accountId !== r.drawer) return 'bad';
+  r.gaveUp = true;
+  broadcastSystem(room, '출제자가 포기했어요');
+  endRound(room, r, Date.now());
+  return 'ok';
+}
+
 /** ★ R087 — 출제자 힌트(각 1회 · 그리는 중) → 힌트 띠 + 시스템 줄 */
 export function drawHint(room: Room, accountId: string, kind: DrawHintKind): DrawResult {
   const r = room.game?.draw?.cur;
@@ -478,10 +495,9 @@ export function drawChatGate(room: Room, accountId: string, text: string): DrawC
   }
   const now = Date.now();
   r.solved.push({ accountId, ms: now - r.phaseStartedAt });
-  broadcastSystem(room, `${room.players.get(accountId)?.nickname ?? '?'} 님 정답! (${r.solved.length}번째)`);
-  const guessers = r.participants.filter((a) => a !== r.drawer && room.players.get(a)?.connected);
-  if (guessers.every((a) => r.solved.some((s) => s.accountId === a))) endRound(room, r, now);
-  else broadcast(room);
+  broadcastSystem(room, `${room.players.get(accountId)?.nickname ?? '?'} 님 정답!`);
+  // ★ R101 — 선착순: 첫 정답에 그 그림은 바로 끝(같은 순간에 둘이 쳐도 서버가 먼저 받은 한 명 — 뒤의 글은 phase 가 reveal 이라 판정하지 않는다)
+  endRound(room, r, now);
   return { ok: true, consumed: true };
 }
 
@@ -492,8 +508,8 @@ function endRound(room: Room, r: DrawRound, now: number): void {
   const run = room.game?.draw;
   if (!run || r.phase === 'reveal') return;
   const scores: Record<string, number> = {};
-  r.solved.forEach((s, i) => (scores[s.accountId] = drawSolverScore(i)));
-  const ds = drawDrawerScore(r.solved.length);
+  if (!r.gaveUp) r.solved.forEach((s, i) => (scores[s.accountId] = drawSolverScore(i)));
+  const ds = r.gaveUp ? 0 : drawDrawerScore(r.solved.length);
   if (ds > 0) scores[r.drawer] = ds;
   r.scores = scores;
   let any = false;
@@ -514,6 +530,7 @@ function endRound(room: Room, r: DrawRound, now: number): void {
     if (!s) run.experienced.set(a, (s = new Set()));
     s.add(`draw|${r.itemId}`);
   }
+  // ★ R101 — 선착순이라 맞힌 사람은 0 · 1명(포기는 'none' — 기록 칸을 늘리지 않음 · 서버 로그에 포기 표시)
   const guessers = r.participants.filter((a) => a !== r.drawer).length;
   const outcome = r.solved.length === 0 ? 'none' : r.solved.length >= guessers ? 'all' : 'some';
   void insertDrawRound({
@@ -532,7 +549,7 @@ function endRound(room: Room, r: DrawRound, now: number): void {
     hints: r.hints as Record<string, string>,
   }).catch((err) => console.error('[draw] ★ 라운드 기록 실패:', (err as Error).message));
   void recordDrawExperience(r.participants, r.itemId).catch((err) => console.error('[draw] ★ 경험 기록 실패:', (err as Error).message));
-  console.log(`[draw] ${room.id} 라운드 ${r.no} 끝 — 맞힘 ${r.solved.length}`);
+  console.log(`[draw] ${room.id} 라운드 ${r.no} 끝 — ${r.gaveUp ? '출제자 포기' : `맞힘 ${r.solved.length}`}`);
   broadcast(room);
 }
 

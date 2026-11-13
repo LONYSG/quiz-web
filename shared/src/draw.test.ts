@@ -4,8 +4,10 @@ import { DRAW, floodFill, gridHash, hexToRgb, drawDiffPlan, drawDrawerScore, dra
 
 describe('캐치마인드', () => {
   it('점수 — 맞힌 순서 3 · 2 · 1 · 1 · 출제자 = 맞힌 수(상한 3)', () => {
-    expect([0, 1, 2, 3, 7].map(drawSolverScore)).toEqual([3, 2, 1, 1, 1]);
-    expect([0, 1, 2, 5].map(drawDrawerScore)).toEqual([0, 1, 2, 3]);
+    // ★ R101 — 선착순 한 명: 맞힌 사람 +2 · 그린 사람 +1 · 아무도 못 맞히면 0
+    expect([0, 1, 2].map(drawSolverScore)).toEqual([2, 0, 0]);
+    expect([0, 1, 5].map(drawDrawerScore)).toEqual([0, 1, 1]);
+    expect(DRAW.ROUND_MS).toBe(120_000);
   });
   it('글자 수 힌트 거부 · 보통 말은 통과', () => {
     expect(drawLengthHint('3글자예요')).toBe(true);

@@ -123,13 +123,16 @@ export interface DrawView {
   /** ★ R090 — 되돌리기 · 다시 실행 할 것 수 */
   hist?: { undo: number; redo: number };
   scores: Record<string, number> | null;
+  /** ★ R101 — 공개 때: 출제자가 포기했나 */
+  gaveUp?: boolean;
 }
 
 /** ★★★ R082 — 라이어 판 보기(서버 liar/engine.ts LiarView 와 같은 꼴 · 사람마다 다름) */
 export interface LiarView {
   round: number;
   rounds: number;
-  phase: 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'appeal' | 'appealVote' | 'reveal';
+  /** ★ R101 — discuss 더함 · tally 뺌 */
+  phase: 'assign' | 'describe' | 'discuss' | 'vote' | 'revote' | 'defense' | 'final' | 'guess' | 'appeal' | 'appealVote' | 'reveal';
   phaseStartedAt: number;
   phaseEndsAt: number;
   topic: string;
@@ -165,6 +168,10 @@ export interface LiarView {
   appealEligible: number;
   appeal: { guess: string; yes: number; no: number; passed: boolean } | null;
   scores: Record<string, number> | null;
+  /** ★ R101 — 토론: [토론 끝] 누른 수 · 필요한 수(접속한 사람의 과반) · 나도 눌렀나 */
+  discussDone: number;
+  discussNeed: number;
+  myDiscussDone: boolean;
 }
 
 /** ★★★ R050 — 미니게임 화면 상태 (서버 minigame/engine.ts MinigameView 와 같은 꼴) */

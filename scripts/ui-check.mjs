@@ -5322,6 +5322,7 @@ async function r091Flow(browser) {
     setTimeout(() => {
       if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === ids.s) S.emit('liar.say', { text: v.phase === 'defense' ? '저는 아니에요' : '자주 봐요' });
       else if (v.phase === 'final' && v.accused !== ids.s) S.emit('liar.final', { yes: true });
+      else if (v.phase === 'discuss') S.emit('liar.discussEnd', {}); // ★ R101
       else if (v.phase === 'guess' && v.amLiar) S.emit('liar.guess', { text: '모르겠다' });
       else if (v.phase === 'appeal' && v.amLiar) S.emit('liar.appeal', {});
       else if (v.phase === 'appealVote' && !v.amLiar) S.emit('liar.appealVote', { yes: false });
@@ -5370,6 +5371,12 @@ async function r091Flow(browser) {
         await tapOn(G, `[data-liar-target="${tgt('g')}"]`).catch(() => {});
         S.emit('liar.vote', { target: L === 's' ? ids.h : ids[L] });
       }
+    }
+    if (phase === 'discuss') {
+      // ★ R101 — 자유 토론: 두 화면도 [토론 끝](과반이면 바로 투표)
+      await sleep(250);
+      await realClick(H, '[data-liar-discuss-end]').catch(() => {});
+      await tapOn(G, '[data-liar-discuss-end]').catch(() => {});
     }
     if (phase === 'final') {
       await sleep(200);
@@ -5969,6 +5976,7 @@ async function r088Flow(browser) {
     setTimeout(() => {
       if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === sid) S.emit('liar.say', { text: v.phase === 'defense' ? '저는 아니에요' : '자주 마셔요' });
       else if (v.phase === 'final' && v.accused !== sid) S.emit('liar.final', { yes: true });
+      else if (v.phase === 'discuss') S.emit('liar.discussEnd', {}); // ★ R101
       else if (v.phase === 'guess' && v.amLiar) S.emit('liar.guess', { text: '모르겠다' });
     }, 1500);
   });
@@ -6046,6 +6054,12 @@ async function r088Flow(browser) {
         return tid;
       })();
       if (sT) S.emit('liar.vote', { target: sT });
+    }
+    if (phase === 'discuss') {
+      // ★ R101 — 자유 토론: 두 화면도 [토론 끝](과반이면 바로 투표)
+      await sleep(250);
+      await realClick(H, '[data-liar-discuss-end]').catch(() => {});
+      await tapOn(G, '[data-liar-discuss-end]').catch(() => {});
     }
     if (phase === 'final') {
       await sleep(200);
@@ -6258,6 +6272,7 @@ async function r087Flow(browser) {
           const pool = (v.phase === 'revote' && v.candidates ? v.candidates : v.participants).filter((a) => a !== s.__id);
           if (pool.length) s.emit('liar.vote', { target: pool[0] });
         } else if (v.phase === 'final' && v.accused !== s.__id) s.emit('liar.final', { yes: true });
+        else if (v.phase === 'discuss') s.emit('liar.discussEnd', {}); // ★ R101
         else if (v.phase === 'guess' && v.amLiar) s.emit('liar.guess', { text: '모르겠다' });
       }, v.phase === 'describe' || v.phase === 'defense' ? 4000 : 600);
     });
@@ -6326,6 +6341,12 @@ async function r087Flow(browser) {
       if (ids[0]) await realClick(H, `[data-liar-target="${ids[0]}"]`).catch(() => {});
       const gIds = await J(G, "[...document.querySelectorAll('[data-liar-target]')].map((b) => b.dataset.liarTarget)");
       if (gIds[0]) await tapOn(G, `[data-liar-target="${gIds[0]}"]`).catch(() => {});
+    }
+    if (phase === 'discuss') {
+      // ★ R101 — 자유 토론: 두 화면도 [토론 끝](과반이면 바로 투표)
+      await sleep(250);
+      await realClick(H, '[data-liar-discuss-end]').catch(() => {});
+      await tapOn(G, '[data-liar-discuss-end]').catch(() => {});
     }
     if (phase === 'final') {
       await sleep(200);
@@ -6468,6 +6489,7 @@ async function r082Flow(browser) {
           const pool = (v.phase === 'revote' && v.candidates ? v.candidates : v.participants).filter((a) => a !== s.__id);
           if (pool.length) s.emit('liar.vote', { target: pool[0] });
         } else if (v.phase === 'final' && v.accused !== s.__id) s.emit('liar.final', { yes: true });
+        else if (v.phase === 'discuss') s.emit('liar.discussEnd', {}); // ★ R101
         else if (v.phase === 'guess' && v.amLiar) s.emit('liar.guess', { text: '모르겠다' });
       }, 600);
     });
@@ -6499,7 +6521,7 @@ async function r082Flow(browser) {
     done.add(st);
     const [phase, roundTxt] = st.split(':');
     const round = Number((roundTxt ?? '').split('/')[0]);
-    if (phase === 'assign' && round === 1) {
+    if ((phase === 'assign' || phase === 'describe') && round === 1 && !res.assign) {
       await sleep(300);
       res.assign = JSON.parse(await H.evaluate("JSON.stringify({ topic: document.querySelector('[data-liar-topic]')?.innerText ?? '', me: document.querySelector('[data-liar-me]')?.dataset.liarMe ?? '', kw: document.querySelector('[data-liar-keyword]')?.innerText ?? null })"));
       res.assignG = JSON.parse(await G.evaluate("JSON.stringify({ me: document.querySelector('[data-liar-me]')?.dataset.liarMe ?? '', over: document.documentElement.scrollWidth - innerWidth })"));
@@ -6547,7 +6569,8 @@ async function r082Flow(browser) {
       const gIds = JSON.parse(await G.evaluate("JSON.stringify([...document.querySelectorAll('[data-liar-target]')].map((b) => b.dataset.liarTarget))"));
       await tapOn(G, `[data-liar-target="${gIds.includes(target) ? target : gIds[0]}"]`).catch(() => {});
     }
-    if (phase === 'tally' && !res.tally) {
+    if ((phase === 'defense' || phase === 'revote') && !res.tally) {
+      // ★ R101 — 투표 결과 화면(tally) 없이 다음 단계 위쪽 줄로 남는다
       await sleep(200);
       res.tally = await H.evaluate("document.querySelectorAll('[data-liar-tally] li').length");
       await snap(H, 'tally-pc');
@@ -6575,6 +6598,12 @@ async function r082Flow(browser) {
       const gTurn = await G.evaluate("!!document.querySelector('.liar-order li.me.turn')");
       if (hTurn) await say(H, '저 아니에요');
       else if (gTurn) await say(G, '억울해요');
+    }
+    if (phase === 'discuss') {
+      // ★ R101 — 자유 토론: 두 화면도 [토론 끝](과반이면 바로 투표)
+      await sleep(250);
+      await realClick(H, '[data-liar-discuss-end]').catch(() => {});
+      await tapOn(G, '[data-liar-discuss-end]').catch(() => {});
     }
     if (phase === 'final') {
       await sleep(200);

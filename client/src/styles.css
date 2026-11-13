@@ -9947,6 +9947,60 @@ button.preset.shake {
   font-weight: 800;
   color: var(--text-dim);
 }
+/* ★ R101 — 단계 줄(① 설명 → ② 토론 → ③ 투표 → ④ 변론 → ⑤ 결과) · 지금 할 일 · 토론 칸 — 기존 칩 · 강조 토큰 그대로 */
+.liar-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+.liar-steps li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 4px;
+  align-items: baseline;
+  justify-content: center;
+  padding: 5px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--chip-bg);
+  color: var(--text-dim);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-align: center;
+  word-break: keep-all;
+}
+.liar-steps li.done {
+  opacity: 0.6;
+}
+.liar-steps li.on {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 900;
+}
+.liar-step-sub {
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0.9;
+}
+.liar-todo {
+  margin: 0;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.liar-discuss {
+  display: grid;
+  gap: 8px;
+}
+.liar-discuss-says {
+  max-height: none;
+}
+.liar-discuss-count {
+  align-self: center;
+  font-size: 0.9rem;
+}
 .liar-left {
   font-weight: 900;
   color: var(--accent);
@@ -10300,6 +10354,17 @@ button.preset.shake {
   padding: 2px 2px;
   min-height: 28px;
   font-size: 0.8rem;
+}
+/* ★ R101 — 포기(출제자 · 힌트 아래 한 줄 · 기존 도구 버튼 꼴 + 주의 색 글자) */
+.draw-tools > .draw-giveup {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  color: var(--bad);
+  font-weight: 800;
+}
+.draw-gaveup {
+  font-weight: 800;
+  color: var(--bad);
 }
 .draw-tool-label,
 .draw-widths,

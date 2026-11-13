@@ -255,7 +255,7 @@ export default function GameSettings({
             {liarMode === 'fool'
               ? '바보형 — 라이어도 비슷한 다른 단어를 받아 자기가 라이어인 줄 몰라요 · 들킨 뒤 맞히기 +1'
               : '기본형 — 라이어는 주제만 알아요'}{' '}
-            · 설명칸에 한마디씩 → 투표 · 변론 → 죽일까 살릴까(최대 3바퀴) · {LIAR.MIN_PLAYERS}명부터
+            · 한마디씩 설명 → 토론 {LIAR.DISCUSS_MS / 1000}초 → 투표 → 변론 → 죽일까 살릴까(최대 {LIAR.VOTE_BOUTS}바퀴) · {LIAR.MIN_PLAYERS}명부터
           </p>
           {/* ★ R090 — 제시어 주제 고르기(접힘) */}
           <TopicPicker kind="liar" picked={shown.liarTopics} editable={editable} onChange={(next) => push({ ...draft, liarTopics: next })} />
@@ -263,7 +263,7 @@ export default function GameSettings({
       )}
       {drawM && (
         <p className="set-note dim" data-draw-note>
-          출제자가 돌아가며 그림 · 나머지는 채팅으로 정답 · 빨리 맞힐수록 3 · 2 · 1점 · {DRAW.MIN_PLAYERS}명부터
+          출제자가 돌아가며 {DRAW.ROUND_MS / 1000}초 그림 · 먼저 맞힌 한 명 +{DRAW.SCORE_SOLVER} · 그린 사람 +{DRAW.SCORE_DRAWER} · {DRAW.MIN_PLAYERS}명부터
         </p>
       )}
       {drawM && <TopicPicker kind="draw" picked={shown.drawTopics} editable={editable} onChange={(next) => push({ ...draft, drawTopics: next })} />}

@@ -10,8 +10,8 @@ import { generateHint } from './hint.js';
 export const DRAW = {
   MIN_PLAYERS: 2,
   ROUNDS: { MIN: 2, MAX: 10, DEFAULT: 5 },
-  /** 그리기 시간 · 공개 · "다른 제시어" 가능 시간(처음부터) */
-  ROUND_MS: 90_000,
+  /** 그리기 시간 · 공개 · "다른 제시어" 가능 시간(처음부터) — ★ R101 (찬종 "그리기 시간 더 길어도 될듯" · 폼 120초) 90 → 120 */
+  ROUND_MS: 120_000,
   REVEAL_MS: 5_000,
   REROLL_MS: 10_000,
   /** 논리 좌표(0~SIZE · 정사각 · 기기 크기 무관) */
@@ -24,10 +24,10 @@ export const DRAW = {
   MAX_CHUNK: 400,
   /** 그리는 중 조각을 보내는 간격(ms) — ★ R087 (D-344 · 찬종 "선이 뚝뚝 끊겨") 200 → 50 */
   CHUNK_MS: 50,
-  /** 맞힌 순서 점수(3 · 2 · 1 · 그 뒤 1) · 출제자 = 맞힌 사람 수(상한) */
-  SOLVER_SCORES: [3, 2, 1] as readonly number[],
-  SOLVER_MIN: 1,
-  DRAWER_MAX: 3,
+  /** ★ R101 (찬종 "한 명이 맞추면 끝나는 걸로 · 선착순") — 먼저 맞힌 한 명이 나오면 그 그림은 끝.
+   *   점수: 맞힌 사람 +SCORE_SOLVER · 그린 사람 +SCORE_DRAWER · 아무도 못 맞히거나 포기 = 둘 다 0(옛 "맞힌 순서 3 · 2 · 1" 지움) */
+  SCORE_SOLVER: 2,
+  SCORE_DRAWER: 1,
   /** ★ R088 (D-345 · 18 §12 "캐치마인드는 한 판에 섞는다") — 한 판의 diff 1 : 2 : 3 비율(세트 무관) · diff 없는 항목은 2 로 본다 */
   DIFF_MIX: [4, 4, 2] as readonly number[],
 } as const;
@@ -154,14 +154,14 @@ export function gridHash(data: Uint8ClampedArray): string {
   return h.toString(16).padStart(8, '0');
 }
 
-/** 맞힌 순서(0부터) → 점수 */
+/** ★ R101 — 맞힌 순서(0부터) → 점수: 선착순 한 명만(첫째 SCORE_SOLVER · 그 뒤는 없다 — 첫 정답에 그림이 끝난다) */
 export function drawSolverScore(order: number): number {
-  return DRAW.SOLVER_SCORES[order] ?? DRAW.SOLVER_MIN;
+  return order === 0 ? DRAW.SCORE_SOLVER : 0;
 }
 
-/** 출제자 점수 = 맞힌 사람 수(상한) */
+/** ★ R101 — 출제자 점수: 누가 맞혔으면 SCORE_DRAWER · 아무도 못 맞혔으면 0 */
 export function drawDrawerScore(solved: number): number {
-  return Math.min(DRAW.DRAWER_MAX, solved);
+  return solved > 0 ? DRAW.SCORE_DRAWER : 0;
 }
 
 /** 점 배열 검사 — [x, y, x, y, …] 정수 0~SIZE · 짝수 길이 · 상한 */

@@ -21,6 +21,7 @@ import { Eraser, PaintBucket, Pencil, Pipette, Redo2, Trash2, Undo2, type Lucide
 import { DRAW, DRAW_ERASE_HEX, DRAW_HINT_KINDS, DRAW_HINT_LABEL, DRAW_PALETTE, DRAW_WIDTH_STEPS, floodFill, gridHash, hexToRgb, hintKind } from '@quiz/shared';
 import type { DrawStrokeView, DrawView, PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
+import ConfirmModal from './ConfirmModal.js';
 import { useDismiss } from './useDismiss.js';
 
 interface Props {
@@ -398,6 +399,11 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
   }, []);
 
   const solvedIds = new Set(view.solved.map((s) => s.accountId));
+  // ★ R101 — 출제자 포기(확인 한 번)
+  const [giveUpOpen, setGiveUpOpen] = useState(false);
+  useEffect(() => {
+    if (view.phase !== 'draw') setGiveUpOpen(false);
+  }, [view.phase, view.round]);
   const hintChips = DRAW_HINT_KINDS.filter((k) => view.hints[k]);
   const TOOL_LABEL: Record<Tool, string> = { pen: '펜', eraser: '지우개', fill: '페인트통', pick: '스포이드' };
   const KEY: Record<Tool, string> = { pen: 'P', eraser: 'E', fill: 'B', pick: 'I' };
@@ -435,6 +441,11 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
             <span className="dim">· 구경 중</span>
           ) : (
             <span className="dim">· 채팅으로 정답!</span>
+          )}
+          {view.phase === 'reveal' && view.gaveUp && (
+            <span className="draw-gaveup" data-draw-gaveup>
+              · 출제자가 포기했어요
+            </span>
           )}
           {view.phase === 'reveal' && view.diff ? (
             <span className="dim draw-diff" data-draw-diff={view.diff}>
@@ -588,7 +599,28 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
                   {DRAW_HINT_LABEL[k]}
                 </button>
               ))}
+              <button type="button" className="draw-tool draw-giveup" data-draw-giveup-btn title="이 그림을 포기하고 다음 사람에게(점수 없음)" onClick={() => setGiveUpOpen(true)}>
+                포기
+              </button>
             </div>
+          )}
+          {giveUpOpen && view.phase === 'draw' && view.amDrawer && (
+            <ConfirmModal
+              kind="draw-giveup"
+              title="이 그림을 포기할까요?"
+              note="점수 없이 정답을 공개하고 다음 사람에게 넘어가요"
+              actions={[
+                {
+                  label: '포기',
+                  tone: 'warn',
+                  onClick: () => {
+                    setGiveUpOpen(false);
+                    socket.emit('draw.giveUp', {});
+                  },
+                },
+              ]}
+              onCancel={() => setGiveUpOpen(false)}
+            />
           )}
           <p className="draw-solved" data-draw-solved={view.solved.length}>
             {view.participants

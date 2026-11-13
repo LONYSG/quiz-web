@@ -1,6 +1,9 @@
 // =============================================================================
 // ★★★ 라이어 게임 진행 (R082 · D-330 ⑵ ⑶ · D-339) — 방 상태 LIAR · 서버 상태 기계(tick) · 판정 권한은 서버
 //
+// ★★ R101 (찬종 실전 피드백 "정신이 없어 · 단계 표시 · 빠르게 지나가는 시간 없애 · 토론 넉넉하게"):
+//   describe 한 바퀴 → **discuss(자유 토론 60초 · 과반 [토론 끝] 이면 바로)** → vote · 살려서 다음 바퀴면 discuss 30초 → vote
+//   · tally(4초) 없앰 — 집계 즉시 변론 / 재투표 / 다음 바퀴(결과 줄 lastTally 는 다음 화면 위쪽에) · assign 은 3초(화면은 설명 화면 그대로)
 // 라운드: ⓐ assign(주제 · 시민 = 키워드 / 라이어 = "당신이 라이어") → ⓑ describe(무작위 순서 · 차례인 사람만 채팅 한 줄 · 시간 지나면 "(…)")
 //   → ⓒ vote(모두 동시 · 자기 제외 · 바꿀 수 있음 · 채팅 열림) → tally(누가 누굴 찍었나) → 최다 1명 → ⓓ defense(지목된 사람 한 줄)
 //   → ⓔ final(죽일지/살릴지 — R087 개정: 아래 ★★ R087 바퀴)
@@ -16,7 +19,7 @@
 // =============================================================================
 
 import { randomInt } from 'node:crypto';
-import { LIAR, appealPasses, canAppeal, finalPasses, liarRoundScores, flexCanon, matchTopic, normalizeAnswer, tallyVotes, type LiarAppeal, type LiarMode, type LiarOutcome, type LiarPhase } from '@quiz/shared';
+import { LIAR, appealPasses, canAppeal, discussNeed, finalPasses, liarRoundScores, flexCanon, matchTopic, normalizeAnswer, tallyVotes, type LiarAppeal, type LiarMode, type LiarOutcome, type LiarPhase } from '@quiz/shared';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import { emitRoomPerPlayer } from '../rooms/emit.js';
 import type { Player, Room } from '../rooms/types.js';
@@ -74,6 +77,8 @@ export interface LiarRound {
   appealVotes: Map<string, boolean>;
   appeal: LiarAppeal | null;
   scores: Record<string, number> | null;
+  /** ★ R101 — 자유 토론에서 [토론 끝] 을 누른 사람(과반이면 바로 투표) */
+  discussDone: Set<string>;
 }
 
 /** ★ R087 — 설명(say) · 변론(defense) 한 줄 */
@@ -227,6 +232,10 @@ export interface LiarView {
   appealEligible: number;
   appeal: LiarAppeal | null;
   scores: Record<string, number> | null;
+  /** ★ R101 — 토론: [토론 끝] 누른 수 · 필요한 수(접속한 사람의 과반) · 나도 눌렀나 */
+  discussDone: number;
+  discussNeed: number;
+  myDiscussDone: boolean;
 }
 
 export function liarView(room: Room, viewer: string): LiarView | null {
@@ -277,6 +286,9 @@ export function liarView(room: Room, viewer: string): LiarView | null {
     appealEligible: appealVoters(room, r).length,
     appeal: r.phase === 'reveal' ? r.appeal : null,
     scores: r.phase === 'reveal' ? r.scores : null,
+    discussDone: r.discussDone.size,
+    discussNeed: discussNeed(live(room, r.participants).length),
+    myDiscussDone: r.discussDone.has(viewer),
   };
 }
 
@@ -362,6 +374,7 @@ function startRound(room: Room, now: number): boolean {
     appealVotes: new Map(),
     appeal: null,
     scores: null,
+    discussDone: new Set(),
   };
   console.log(`[liar] ${room.id} 라운드 ${run.cur.no}/${run.roundsTotal} — 주제 ${word.set.nameKo} · ${participants.length}명`);
   broadcast(room);
@@ -406,12 +419,30 @@ function advanceSay(room: Room, r: LiarRound, now: number): void {
     return;
   }
   r.turn += 1;
-  if (r.turn >= r.order.length) startVote(room, r, now, 'vote');
+  if (r.turn >= r.order.length) startDiscuss(r, now, T.DISCUSS_MS);
   else setPhase(r, 'describe', now, T.SAY_MS);
   broadcast(room);
 }
 
 export type LiarInputResult = 'ok' | 'not_now' | 'bad';
+
+/** ★ R101 — [토론 끝](참가자만 · 다시 누르면 취소) · 접속한 참가자의 과반이면 바로 투표 */
+export function liarDiscussEnd(room: Room, accountId: string, on: boolean = true): LiarInputResult {
+  const r = room.game?.liar?.cur;
+  if (!r || room.state !== 'LIAR' || r.phase !== 'discuss') return 'not_now';
+  if (!r.participants.includes(accountId)) return 'bad';
+  if (on) r.discussDone.add(accountId);
+  else r.discussDone.delete(accountId);
+  maybeEndDiscuss(room, r, Date.now());
+  return 'ok';
+}
+
+function maybeEndDiscuss(room: Room, r: LiarRound, now: number): void {
+  const alive = live(room, r.participants);
+  const n = alive.filter((a) => r.discussDone.has(a)).length;
+  if (n >= discussNeed(alive.length)) startVote(room, r, now, 'vote');
+  broadcast(room);
+}
 
 export function liarVote(room: Room, accountId: string, target: string): LiarInputResult {
   const r = room.game?.liar?.cur;
@@ -493,6 +524,12 @@ function endAppeal(room: Room, r: LiarRound, now: number): void {
 // ─────────────────────────────────────────────────────────────────────────────
 // 단계 넘기기
 // ─────────────────────────────────────────────────────────────────────────────
+/** ★ R101 — 자유 토론(설명 한 바퀴 뒤 DISCUSS_MS · 살려서 다시 투표하기 전 REDISCUSS_MS) */
+function startDiscuss(r: LiarRound, now: number, ms: number): void {
+  r.discussDone = new Set();
+  setPhase(r, 'discuss', now, ms);
+}
+
 function startVote(room: Room, r: LiarRound, now: number, stage: 'vote' | 'revote'): void {
   r.votes = new Map();
   if (stage === 'vote') {
@@ -521,8 +558,8 @@ function endVote(room: Room, r: LiarRound, now: number): void {
     // 그래도 동률 · 표 없음 → 이 바퀴는 못 정함(다음 바퀴 · 마지막 바퀴면 못 찾음)
     r.candidates = null;
   }
-  setPhase(r, 'tally', now, T.TALLY_MS);
-  broadcast(room);
+  // ★ R101 — 투표 결과 화면(옛 tally 4초)을 따로 띄우지 않는다 · 결과 줄(lastTally)은 다음 단계 화면 위쪽에 남는다
+  afterTally(room, r, now);
 }
 
 /** ★ R087 — 다음 바퀴(전원 대상 다시 투표) · 바퀴를 다 돌았으면 못 찾음 */
@@ -536,7 +573,10 @@ function nextBout(room: Room, r: LiarRound, now: number): void {
   }
   r.bout += 1;
   r.accused = null;
-  startVote(room, r, now, 'vote');
+  // ★ R101 — 다시 투표하기 전에 짧은 토론(REDISCUSS_MS)
+  r.candidates = null;
+  r.revotes = 0;
+  startDiscuss(r, now, T.REDISCUSS_MS);
   broadcast(room);
 }
 
@@ -649,6 +689,15 @@ export function checkLiar(room: Room, now: number): void {
   // 설명 · 항변 차례인 사람이 끊겼으면 기다리지 않는다
   const speaker = r.phase === 'describe' ? r.order[r.turn] : r.phase === 'defense' ? r.accused : null;
   if (speaker && !room.players.get(speaker)?.connected) r.phaseEndsAt = Math.min(r.phaseEndsAt, now);
+  // ★ R101 — 토론 중 누가 끊겨 과반이 채워졌으면 바로 투표
+  if (r.phase === 'discuss' && now < r.phaseEndsAt) {
+    const alive = live(room, r.participants);
+    if (alive.filter((a) => r.discussDone.has(a)).length >= discussNeed(alive.length)) {
+      startVote(room, r, now, 'vote');
+      broadcast(room);
+    }
+    return;
+  }
   if (now < r.phaseEndsAt) return;
   switch (r.phase) {
     case 'assign':
@@ -663,12 +712,13 @@ export function checkLiar(room: Room, now: number): void {
       advanceSay(room, r, now);
       return;
     }
+    case 'discuss':
+      startVote(room, r, now, 'vote');
+      broadcast(room);
+      return;
     case 'vote':
     case 'revote':
       endVote(room, r, now);
-      return;
-    case 'tally':
-      afterTally(room, r, now);
       return;
     case 'final':
       endFinal(room, r, now);

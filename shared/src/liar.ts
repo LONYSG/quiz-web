@@ -19,27 +19,29 @@ export function isRoomMode(v: unknown): v is RoomMode {
 export const LIAR = {
   MIN_PLAYERS: 3,
   ROUNDS: { MIN: 2, MAX: 10, DEFAULT: 5 },
-  /** ⓐ 배정(주제 · 키워드/라이어 카드) */
-  ASSIGN_MS: 5_000,
+  /** ⓐ 배정 — ★ R101 (찬종 "중간중간 빠르게 지나가는 시간 없애") 따로 화면 없이 설명 화면 안에서 "곧 시작" 3초만 센다 */
+  ASSIGN_MS: 3_000,
   /** ⓑ 설명 한 줄(차례마다) · 글자 수 */
   SAY_MS: 20_000,
   SAY_MAX: 60,
-  /** ⓒ 투표 · 동률 재투표 */
-  VOTE_MS: 15_000,
-  REVOTE_MS: 10_000,
-  /** 투표 공개(누가 누굴 찍었나) */
-  TALLY_MS: 4_000,
+  /** ★ R101 (찬종 "라이어 토론하는 시간도 넉넉하게" · 폼 60초) — 설명 한 바퀴 뒤 자유 토론 · 살려서 다시 투표할 때의 짧은 토론
+   *   접속한 사람의 과반이 [토론 끝] 을 누르면 바로 투표 */
+  DISCUSS_MS: 60_000,
+  REDISCUSS_MS: 30_000,
+  /** ⓒ 투표 · 동률 재투표 — ★ R101 15 → 20 · 10 → 15. 투표 결과(누가 누굴 찍었나)는 따로 화면 없이 다음 단계 위쪽 줄에 남는다(옛 TALLY 4초 없앰) */
+  VOTE_MS: 20_000,
+  REVOTE_MS: 15_000,
   /** ⓓ 최후의 항변 */
   DEFENSE_MS: 20_000,
-  /** ⓔ 죽일지 / 살릴지 */
-  FINAL_MS: 10_000,
+  /** ⓔ 죽일지 / 살릴지 — ★ R101 10 → 15 */
+  FINAL_MS: 15_000,
   /** ★ R087 (D-344 · 찬종 "투표를 여러 번 거쳐서") — 투표 바퀴 상한: 한 바퀴 = 지목 투표(동률이면 동률자끼리 재투표 · 바퀴 안 REVOTES 번까지)
    *   → 변론 → 죽일지/살릴지. 살리면(또는 바퀴 안에서 못 정하면) 다음 바퀴 = 전원 대상 다시 투표. 이 수를 다 돌아도 못 죽이면 못 찾음(라이어 승) */
   VOTE_BOUTS: 3,
   REVOTES: 2,
-  /** ⓕ 라이어 키워드 맞히기 · 공개 */
-  GUESS_MS: 15_000,
-  REVEAL_MS: 7_000,
+  /** ⓕ 라이어 키워드 맞히기 · 공개 — ★ R101 15 → 20 · 7 → 10 */
+  GUESS_MS: 20_000,
+  REVEAL_MS: 10_000,
   /** 점수 — 시민(라이어를 찾았을 때 그 지목 투표에서 라이어를 찍은 사람) · 라이어(못 들킴 · 들켰지만 키워드 맞힘) */
   SCORE_CITIZEN_HIT: 1,
   SCORE_LIAR_ESCAPE: 3,
@@ -61,7 +63,36 @@ export function isLiarMode(v: unknown): v is LiarMode {
 }
 export const LIAR_MODE_LABEL: Record<LiarMode, string> = { basic: '기본형', fool: '바보형' };
 
-export type LiarPhase = 'assign' | 'describe' | 'vote' | 'revote' | 'tally' | 'defense' | 'final' | 'guess' | 'appeal' | 'appealVote' | 'reveal';
+/** ★ R101 — 'discuss' 더함 · 'tally' 뺌(투표 결과는 다음 단계 화면 위쪽 줄) */
+export type LiarPhase = 'assign' | 'describe' | 'discuss' | 'vote' | 'revote' | 'defense' | 'final' | 'guess' | 'appeal' | 'appealVote' | 'reveal';
+
+/**
+ * ★ R101 (찬종 "지금 어떤 단계인지 표시가 명확하지 않아") — 화면 맨 위 단계 줄 다섯 칸.
+ *   재투표 · 죽일지/살릴지 · 맞히기 · 이의제기는 칸 안의 작은 글자(단계 수를 늘리지 않는다)
+ */
+export const LIAR_STEPS = ['설명', '토론', '투표', '변론', '결과'] as const;
+export function liarStep(phase: LiarPhase): number {
+  switch (phase) {
+    case 'assign':
+    case 'describe':
+      return 0;
+    case 'discuss':
+      return 1;
+    case 'vote':
+    case 'revote':
+      return 2;
+    case 'defense':
+    case 'final':
+      return 3;
+    default:
+      return 4;
+  }
+}
+
+/** ★ R101 — [토론 끝] 이 몇 명이면 바로 투표로(접속한 사람의 과반) */
+export function discussNeed(live: number): number {
+  return Math.floor(Math.max(1, live) / 2) + 1;
+}
 export type LiarOutcome = 'caught' | 'escaped' | 'notfound';
 
 export const LIAR_START_BLOCK = `라이어 게임은 ${LIAR.MIN_PLAYERS}명부터 할 수 있어요.`;
