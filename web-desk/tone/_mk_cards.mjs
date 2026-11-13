@@ -12,7 +12,7 @@ const rows=await q(`select q.id,q.question_text qt,q.display_answer a,q.general_
   where q.is_active and q.question_text not like '%이모지가 나타내는%' order by q.id`);
 await c.end();
 const dir='web-desk/tone/';
-const done=new Set(JSON.parse(fs.readFileSync(dir+'받은것/카드-18.json','utf8')).results.map(x=>x.id));
+const done=new Set(JSON.parse(fs.readFileSync(dir+'받은것/카드-18.json','utf8')).results.map(x=>String(x.id)));
 const notes={};
 for(const f of fs.readdirSync(dir+'받은것')){if(!/^결과-\d\d\.json$/.test(f))continue;const n=+f.slice(3,5);if(n<6||n>17)continue;
   try{for(const r of JSON.parse(fs.readFileSync(dir+'받은것/'+f,'utf8')).results){const t=[];if(r.verdict==='rebuild')t.push(`앞선 검토(${r.reason}): ${r.note||''}`);if(r.flag)t.push(`힌트·해설 표시: ${r.flag}`);if(t.length)notes[r.id]=t.join(' / ')}}catch(e){}}
@@ -23,7 +23,7 @@ const tier=r=>{
   if(r.d>=2&&(sent(r.qt)>=3||r.qt.length>=120))return 2;              // 꼬인 꼴 신호(길고 여러 문장)
   if(r.d===3)return 3;if(r.d===2)return 4;if(r.d>=4)return 5;return 6;
 };
-const list=rows.filter(r=>!done.has(r.id)).map(r=>({...r,tier:tier(r)})).sort((a,b)=>a.tier-b.tier||b.down-a.down||b.miss-a.miss||b.plays-a.plays||a.id-b.id);
+const list=rows.filter(r=>!done.has(String(r.id))).map(r=>({...r,tier:tier(r)})).sort((a,b)=>a.tier-b.tier||b.down-a.down||b.miss-a.miss||b.plays-a.plays||a.id-b.id);
 const SIZE=100;const index=[];const names={1:'실전에서 걸린 것 · 앞선 검토가 짚은 것',2:'꼬인 꼴 신호(길고 여러 문장)',3:'등급 3',4:'등급 2',5:'등급 4·5',6:'등급 1'};
 for(let i=0,n=1;i<list.length;i+=SIZE,n++){
   const part=list.slice(i,i+SIZE);const nn=String(n).padStart(3,'0');
