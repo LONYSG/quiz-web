@@ -9,6 +9,7 @@ A. **실을 카드 고르기** — `web-desk/tone/받은것/카드-18.json`(시�
   1. `status` 가 `ready` 가 아니면 싣지 않는다(수 · 사유 목록).
   2. **claims 가 없는 카드**(세 칸이 keep / ending / rewrite 뿐 — 카드 안 재료로 고친 것): 게이트만 통과하면 **바로 싣는다**.
   3. **claims 가 있는 카드**(어느 칸이든 rebuild · 새 사실 · 고친 사실): **VERIFY 판정이 있을 때만** — `data/pipeline/audit/v0NN-tone.json`(키 = id) 에서 `verdict` 가 `ok` → 카드 그대로 / `fix` → 그 json 의 `fixed` 칸이 이긴다 / `reject` · 판정 없음 → 기다린다(수만).
+  3-1. **재료로 쓴 카드**(시범 — `보낼것/재료-NNN.json` 과 `data/pipeline/audit/v0NN-material.json`(같은 chunk)이 있는 묶음): claims 의 사실이 그 재료의 `fixed` · `extra` 이고 판정이 `ok` · `fix`(카드 문장이 고친 사실과 어긋나지 않으면) 이면 **VERIFY 카드 판정을 기다리지 않고 싣는다**. 판정이 `drop` 인 사실 · `못 엶` 사실을 쓴 카드는 빼고 목록으로. 이 묶음의 표본 30 은 "재료의 사실이 문장으로 옮겨지며 달라졌나"를 보게 verify-targets 에 `from: material` 로 넣는다.
   4. VERIFY 가 표본에서 `fix` 를 준 claims 없는 카드: 이미 실었으면 `fixed` 로 **다시 덮는다**(같은 json · `lane: sample`).
   5. 칸별: `keep` → 안 건드림 · `ending` / `rewrite` / `rebuild` → `text`. 정답은 바꾸지 않는다. `worth` 가 `drop_candidate` 인 카드는 **싣되**(고친 문장으로) 목록을 보고서 0절에(빼는 것은 찬종이 정한다 — 비활성하지 않는다).
   6. 이미 비활성인 id 는 건너뛴다. **이미 실은 id 는 "DB 값 = 이 카드의 최종 값"일 때만 건너뛴다.** ★ G067 사고(2026-11-13): gpt 가 쓰는 도중의 `카드-004 · 029.json` 을 읽어 덜 끝난 카드를 실었다(004 는 실은 75장 중 60여 장이 최종본과 다르고, 게이트에서 뺀 23장도 최종본에서는 힌트가 새로 쓰였다). → 카드 파일이 앞선 적용 뒤에 바뀌었으면(칸의 `text` · `verdict` · `status` · `claims` 가 `g0NN-apply.json` 에 남긴 것과 다르면) 그 카드는 **새 카드로 다시 본다**: before 대조는 "지금 DB 값 = 앞선 적용이 쓴 값"이면 통과, 2 · 3 의 claims 갈래도 최종본 기준(claims 가 새로 생겼으면 VERIFY 판정을 기다리되 DB 는 앞선 값 그대로 둔다). 보고서 0절에 "다시 실은 카드" 수를 따로.
