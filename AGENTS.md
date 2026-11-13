@@ -8,6 +8,7 @@
    - `ai-talk/` 안의 네 발언 파일
    - `web-desk/tone/받은것/결과-NN.json` — 다듬기(`web-desk/tone/지시서.md` 대로 · 입력 `보낼것/조각-NN.txt`)
    - `web-desk/tone/받은것/재구성-NN.json` — 재구성(`web-desk/tone/지시서-재구성.md` 대로 · 입력 `보낼것/재구성-NN.txt`)
+   - `web-desk/tone/받은것/카드-NN.json` — 카드 통째로 보기(`web-desk/tone/지시서-카드.md` 대로 · 입력 `보낼것/조각-NN.txt` · ai-talk 020 시범부터)
    - max 의 브리프가 경로를 지정해 맡긴 판정 파일(지정될 때만)
    그 밖의 코드 · 문서 · 데이터 · DB · git 커밋 · push · `ops.bat` · `npm run` 의 쓰기 동작은 하지 않는다. 읽기 · 검색 · 웹 열기는 자유다.
 4. `.env` 와 비밀값은 열지 않는다. 저장소는 공개(Public)다.
