@@ -1,0 +1,560 @@
+{
+ "round": "G069",
+ "src": "audit/v057-emoji2.json",
+ "at": "2026-11-13T07:11:35.816Z",
+ "counts": {
+  "ok": 458,
+  "drop": 3,
+  "fix": 24,
+  "line": 23,
+  "hint": 6
+ },
+ "items": [
+  {
+   "ref": "28-25",
+   "answer": "닌자고",
+   "verdict": "drop",
+   "why": "닌자고: 2011년 레고 만화, 1990년대생 기준 누구나 아는 정도가 아님",
+   "ops": [
+    "drop"
+   ],
+   "before": {
+    "question": "🥷🧱🐉⚔️ — 이모지가 나타내는 TV 만화는?",
+    "explanation": "이모지: 닌자 · 블록 · 용 · 검",
+    "generalHint": "2011년 시작, 레고 블록 전사들의 TV 만화"
+   },
+   "after": {
+    "question": "🥷🧱🐉⚔️ — 이모지가 나타내는 TV 만화는?",
+    "explanation": "이모지: 닌자 · 블록 · 용 · 검",
+    "generalHint": "2011년 시작, 레고 블록 전사들의 TV 만화",
+    "discarded": "V057 drop — 닌자고: 2011년 레고 만화, 1990년대생 기준 누구나 아는 정도가 아님"
+   }
+  },
+  {
+   "ref": "28-29",
+   "answer": "미라큘러스 레이디버그",
+   "verdict": "drop",
+   "why": "미라큘러스 레이디버그: 2015년 작, 1990년대생 기준 인지도 낮음",
+   "ops": [
+    "drop"
+   ],
+   "before": {
+    "question": "🐞🐱🗼🎭 — 이모지가 나타내는 TV 만화는?",
+    "explanation": "이모지: 무당벌레 · 고양이 · 에펠탑 · 가면",
+    "generalHint": "2015년 시작, 파리의 점박이 소녀 영웅과 검은 고양이"
+   },
+   "after": {
+    "question": "🐞🐱🗼🎭 — 이모지가 나타내는 TV 만화는?",
+    "explanation": "이모지: 무당벌레 · 고양이 · 에펠탑 · 가면",
+    "generalHint": "2015년 시작, 파리의 점박이 소녀 영웅과 검은 고양이",
+    "discarded": "V057 drop — 미라큘러스 레이디버그: 2015년 작, 1990년대생 기준 인지도 낮음"
+   }
+  },
+  {
+   "ref": "31-10",
+   "answer": "헬로키티",
+   "verdict": "fix",
+   "why": "🏳️ 흰 깃발은 색·깃발로만 쓰임 -> 입 없음(🤐)으로 교체",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🐱🎀🍎🏳️ — 이모지가 나타내는 캐릭터는?",
+    "explanation": "이모지: 고양이 · 리본 · 사과 · 하얀색",
+    "generalHint": "1974년 산리오 · 리본 단 입 없는 하얀 고양이"
+   },
+   "after": {
+    "question": "🐱🎀🍎🤐 — 이모지가 나타내는 캐릭터는?",
+    "explanation": "이모지: 고양이 · 리본 · 사과 · 입이 없음",
+    "generalHint": "1974년 산리오 · 리본 단 입 없는 하얀 고양이",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-01",
+   "answer": "애플",
+   "verdict": "fix",
+   "why": "힌트의 아이폰·맥북이 정답을 거의 직접 알려 줌",
+   "ops": [
+    "hint"
+   ],
+   "before": {
+    "question": "🍎📱💻 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 한 입 베어 문 사과 · 스마트폰 · 노트북",
+    "generalHint": "미국 IT 기업 · 아이폰 · 맥북"
+   },
+   "after": {
+    "question": "🍎📱💻 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 한 입 베어 문 사과 · 스마트폰 · 노트북",
+    "generalHint": "미국 IT 기업 · 1976년 창업",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-02",
+   "answer": "구글",
+   "verdict": "fix",
+   "why": "검색+웹+메일은 네이버·다음과 똑같이 맞음(한국 1위 포털); 힌트 지메일도 새나감",
+   "ops": [
+    "line",
+    "hint"
+   ],
+   "before": {
+    "question": "🔍🌐📧 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 검색 돋보기 · 웹 · 이메일",
+    "generalHint": "미국 검색 · 인터넷 기업 · 지메일"
+   },
+   "after": {
+    "question": "🔍🗺️📺🤖 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 검색 돋보기 · 지도 · 동영상 · 인공지능",
+    "generalHint": "미국 · 세계 검색 엔진 1위 기업",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-04",
+   "answer": "맥도날드",
+   "verdict": "fix",
+   "why": "버거킹 · 롯데리아와 겹침 → 로널드 추가",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🍔🍟🟡 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 햄버거 · 감자튀김 · 노란 M 로고",
+    "generalHint": "미국 패스트푸드 · 황금 아치"
+   },
+   "after": {
+    "question": "🍔🍟🟡🤡 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 햄버거 · 감자튀김 · 노란 M 로고 · 광대 마스코트",
+    "generalHint": "미국 패스트푸드 · 황금 아치",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-09",
+   "answer": "아마존",
+   "verdict": "fix",
+   "why": "쿠팡 택배/장바구니 줄과 겹침 → 웃는 화살표 추가",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "📦🛒➡️ — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 택배 상자 · 장바구니 · 화살표 로고",
+    "generalHint": "미국 온라인 쇼핑 · 웃는 화살표 로고"
+   },
+   "after": {
+    "question": "📦🛒😀➡️ — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 택배 상자 · 장바구니 · 웃는 얼굴 · 화살표 로고",
+    "generalHint": "미국 온라인 쇼핑 · 웃는 화살표 로고",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-13",
+   "answer": "테슬라",
+   "verdict": "fix",
+   "why": "전기차 범용 줄 → 스페이스X 로켓으로 머스크 연결",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🚗⚡🔋 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 자동차 · 전기 · 배터리",
+    "generalHint": "미국 전기차 · 일론 머스크"
+   },
+   "after": {
+    "question": "🚗⚡🔋🚀 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 자동차 · 전기 · 배터리 · 로켓",
+    "generalHint": "미국 전기차 · 일론 머스크",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-17",
+   "answer": "신라면",
+   "verdict": "fix",
+   "why": "불닭 · 매운 라면과 겹침 + 힌트에 농심(정답 일부) 샘",
+   "ops": [
+    "line",
+    "hint"
+   ],
+   "before": {
+    "question": "🍜🌶️🔥 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 라면 · 고추 · 불맛",
+    "generalHint": "1986년 농심 · 매운맛 봉지면"
+   },
+   "after": {
+    "question": "🍜🌶️🔴🛍️ — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 라면 · 고추 · 빨간색 · 봉지",
+    "generalHint": "1986년 출시 · 빨간 봉지의 매운 국물 봉지면",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-19",
+   "answer": "배달의민족",
+   "verdict": "fix",
+   "why": "요기요 · 쿠팡이츠와 겹침 → 민트색 추가",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🛵🍗🥡 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 오토바이 · 치킨 · 포장 음식",
+    "generalHint": "한국 음식 주문 앱 · 우아한형제들"
+   },
+   "after": {
+    "question": "🛵🍗🥡🩵 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 오토바이 · 치킨 · 포장 음식 · 민트색",
+    "generalHint": "한국 음식 주문 앱 · 우아한형제들",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-22",
+   "answer": "도미노피자",
+   "verdict": "fix",
+   "why": "피자 체인 범용 → 주사위 점 로고",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🍕🔵📞 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 피자 · 주사위 모양 도미노 · 전화 주문",
+    "generalHint": "미국 체인 · 파랑 빨강 주사위 점 로고"
+   },
+   "after": {
+    "question": "🍕🎲🔴🔵 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 피자 · 주사위 점 · 빨강 · 파랑 로고",
+    "generalHint": "미국 체인 · 파랑 빨강 주사위 점 로고",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "38-23",
+   "answer": "던킨도너츠",
+   "verdict": "fix",
+   "why": "크리스피크림과 겹침 → 분홍+주황",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🍩☕🧡 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 도넛 · 커피 · 주황색",
+    "generalHint": "미국 커피 · 링 모양 빵 체인 · 분홍 주황 로고"
+   },
+   "after": {
+    "question": "🍩☕🧡💗 — 이모지가 나타내는 브랜드는?",
+    "explanation": "이모지: 도넛 · 커피 · 주황 · 분홍 로고",
+    "generalHint": "미국 커피 · 링 모양 빵 체인 · 분홍 주황 로고",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-15",
+   "answer": "독도",
+   "verdict": "fix",
+   "why": "섬 범용 줄 → 독도새우 추가",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🏝️🐦🌊 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 섬 · 갈매기 · 동해",
+    "generalHint": "동해 끝 우리 땅 막내 섬"
+   },
+   "after": {
+    "question": "🏝️🐦🦐🌊 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 섬 · 갈매기 · 독도새우 · 동해",
+    "generalHint": "동해 끝 우리 땅 막내 섬",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "32-23",
+   "answer": "김좌진",
+   "verdict": "fix",
+   "why": "청산리 승리는 홍범도와도 겹침 -> 힌트로 북로군정서 지정",
+   "ops": [
+    "line",
+    "hint"
+   ],
+   "before": {
+    "question": "💙⛰️⚔️🐎 — 이모지가 나타내는 한국사 인물은?",
+    "explanation": "이모지: 푸른(청) · 산(청산리) · 전투 · 말",
+    "generalHint": "1920년 만주 독립군 전투 승리 지휘"
+   },
+   "after": {
+    "question": "🔵⛰️⚔️🐎 — 이모지가 나타내는 한국사 인물은?",
+    "explanation": "이모지: 푸른(청) · 산(청산리) · 전투 · 말",
+    "generalHint": "1920년 만주 청산리 전투에서 북로군정서를 이끈 독립군 장군",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "23-19",
+   "answer": "님아 그 강을 건너지 마오",
+   "verdict": "fix",
+   "why": "노부부+가을 풍경은 그대를 사랑합니다 등과 겹침 → 강 · 반려견으로 좁힘",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "👴👵🍂🏞️ — 이모지가 나타내는 한국 영화는?",
+    "explanation": "이모지: 노부부 · 낙엽(가을) · 강가 풍경",
+    "generalHint": "2014년 다큐멘터리 · 70년을 함께한 노부부"
+   },
+   "after": {
+    "question": "👴👵🐕🌊 — 이모지가 나타내는 한국 영화는?",
+    "explanation": "이모지: 할아버지 · 할머니 · 강아지 · 강",
+    "generalHint": "2014년 다큐멘터리 · 70년을 함께한 노부부",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "40-08",
+   "answer": "파리스의 심판",
+   "verdict": "fix",
+   "why": "백설공주 · 아담과 이브 사과와 겹침 → 여신 셋 + 목동 왕자",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🍎✨👸👑💘 — 이모지가 나타내는 신화는?",
+    "explanation": "이모지: 황금 사과 · 아름다운 여신들 · 왕자 · 사랑",
+    "generalHint": "가장 아름다운 여신을 고르라던 열매가 트로이 전쟁의 불씨가 된 신화"
+   },
+   "after": {
+    "question": "🍎✨👸👸👸🤴 — 이모지가 나타내는 신화는?",
+    "explanation": "이모지: 황금 사과 · 반짝임 · 세 여신 · 왕자",
+    "generalHint": "가장 아름다운 여신을 고르라던 열매가 트로이 전쟁의 불씨가 된 신화",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "40-27",
+   "answer": "요셉",
+   "verdict": "drop",
+   "why": "요셉: 비신자 한국인 인지도 낮고 🌈 노아와 겹침",
+   "ops": [
+    "drop"
+   ],
+   "before": {
+    "question": "🧥🌈🌾⭐👦 — 이모지가 나타내는 성경 이야기는?",
+    "explanation": "이모지: 채색옷 · 곡식 단 · 별 꿈 · 소년",
+    "generalHint": "형들에게 팔렸다가 이집트의 총리가 된 꿈 해몽가"
+   },
+   "after": {
+    "question": "🧥🌈🌾⭐👦 — 이모지가 나타내는 성경 이야기는?",
+    "explanation": "이모지: 채색옷 · 곡식 단 · 별 꿈 · 소년",
+    "generalHint": "형들에게 팔렸다가 이집트의 총리가 된 꿈 해몽가",
+    "discarded": "V057 drop — 요셉: 비신자 한국인 인지도 낮고 🌈 노아와 겹침"
+   }
+  },
+  {
+   "ref": "25-02",
+   "answer": "왕좌의 게임",
+   "verdict": "fix",
+   "why": "용+불은 하우스 오브 드래곤과 겹침(얼음 추가); 힌트 아이언 스론이 제목 왕좌를 새게 함",
+   "ops": [
+    "line",
+    "hint"
+   ],
+   "before": {
+    "question": "🐉🔥🗡️👑 — 이모지가 나타내는 해외 드라마는?",
+    "explanation": "이모지: 용 · 불 · 칼 · 왕관",
+    "generalHint": "2011년 HBO 대하 판타지 · 아이언 스론"
+   },
+   "after": {
+    "question": "🧊🐉🗡️👑 — 이모지가 나타내는 해외 드라마는?",
+    "explanation": "이모지: 얼음(겨울) · 용 · 칼 · 왕관",
+    "generalHint": "2011년 HBO 대하 판타지 · 겨울이 오고 있다",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "25-09",
+   "answer": "그레이 아나토미",
+   "verdict": "fix",
+   "why": "병원 · 의사 · 응급차는 ER · 하우스 · 굿닥터에도 맞음 → 시애틀 비 · 외과 메스로 좁힘",
+   "ops": [
+    "line",
+    "hint"
+   ],
+   "before": {
+    "question": "🏥👨‍⚕️👩‍⚕️🚑 — 이모지가 나타내는 해외 드라마는?",
+    "explanation": "이모지: 병원 · 의사 · 응급차",
+    "generalHint": "2005년 시애틀 병원 의사들의 미국 의학 드라마"
+   },
+   "after": {
+    "question": "🏥🌧️👩‍⚕️🔪 — 이모지가 나타내는 해외 드라마는?",
+    "explanation": "이모지: 병원 · 비(시애틀) · 의사 · 수술 메스",
+    "generalHint": "2005년 시애틀 병원 외과 의사들의 미국 의학 드라마",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-07",
+   "answer": "나이아가라 폭포",
+   "verdict": "fix",
+   "why": "폭포 범용 줄 → 유람선 · 단풍잎으로 좁힘",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "💦🌈🌎 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 물보라 · 무지개 · 국경",
+    "generalHint": "미국과 캐나다 국경의 거대한 물줄기"
+   },
+   "after": {
+    "question": "💦🌈🚤🍁 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 물보라 · 무지개 · 유람선 · 단풍잎(캐나다)",
+    "generalHint": "미국과 캐나다 국경의 거대한 물줄기",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-09",
+   "answer": "마추픽추",
+   "verdict": "fix",
+   "why": "🛕 은 힌두 사원 → 라마 · 돌벽으로",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🛕🏔️☁️ — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 돌 유적 · 산 · 구름",
+    "generalHint": "안데스 산 위의 잉카 공중 도시"
+   },
+   "after": {
+    "question": "🦙🏔️☁️🧱 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 라마 · 산 · 구름 · 돌벽",
+    "generalHint": "안데스 산 위의 잉카 공중 도시",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-16",
+   "answer": "에버랜드",
+   "verdict": "fix",
+   "why": "코끼리 줄은 범용 → 판다 · 튤립 · 사파리",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🎢🐘🌳 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 롤러코스터 · 코끼리 · 숲",
+    "generalHint": "용인의 대형 놀이공원, 판다 월드"
+   },
+   "after": {
+    "question": "🎢🐼🌷🦁 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 롤러코스터 · 판다 · 튤립 · 사파리",
+    "generalHint": "용인의 대형 놀이공원, 판다 월드",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-17",
+   "answer": "롯데월드",
+   "verdict": "fix",
+   "why": "디즈니랜드와 겹침 → 실내 아이스링크 추가",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🎠🎈🏰 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 회전목마 · 풍선 · 성",
+    "generalHint": "서울 잠실의 실내외 놀이공원"
+   },
+   "after": {
+    "question": "🎠🎈🏰⛸️ — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 회전목마 · 풍선 · 성 · 아이스링크",
+    "generalHint": "서울 잠실의 실내외 놀이공원",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-20",
+   "answer": "로마",
+   "verdict": "fix",
+   "why": "콜로세움 줄(🏟️🏛️)과 겹침 → 트레비 · 베스파",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🍕🏛️🏟️ — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 피자 · 고대 유적 · 경기장",
+    "generalHint": "이탈리아의 수도, 고대 원형 경기장"
+   },
+   "after": {
+    "question": "🍕⛲🛵🏛️ — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 피자 · 트레비 분수 · 스쿠터 · 고대 유적",
+    "generalHint": "이탈리아의 수도, 고대 원형 경기장",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-22",
+   "answer": "홍콩",
+   "verdict": "fix",
+   "why": "고층 빌딩 범용 → 트램 · 영화",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🏙️🚕🥟 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 빌딩 · 택시 · 딤섬",
+    "generalHint": "고층 빌딩과 야경, 영화 속 중화권 도시"
+   },
+   "after": {
+    "question": "🏙️🚋🥟🎬 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 빌딩 · 트램 · 딤섬 · 영화",
+    "generalHint": "고층 빌딩과 야경, 영화 속 중화권 도시",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "39-34",
+   "answer": "마카오",
+   "verdict": "fix",
+   "why": "라스베이거스와 겹침 → 에그타르트 · 성당 유적",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🎰🐉🏙️🎲 — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 카지노 · 용 · 도시 · 주사위",
+    "generalHint": "카지노로 유명한 중국 특별행정구"
+   },
+   "after": {
+    "question": "🎰🎲🥧⛪ — 이모지가 나타내는 나라·도시·명소는?",
+    "explanation": "이모지: 카지노 · 주사위 · 에그타르트 · 성당 유적",
+    "generalHint": "카지노로 유명한 중국 특별행정구",
+    "discarded": null
+   }
+  },
+  {
+   "ref": "40-46",
+   "answer": "알리바바와 40인의 도둑",
+   "verdict": "fix",
+   "why": "🏺 는 알라딘과 겹침 → 바위 문 · 주문",
+   "ops": [
+    "line"
+   ],
+   "before": {
+    "question": "🏺💎🪨🗡️🔑 — 이모지가 나타내는 고전 이야기는?",
+    "explanation": "이모지: 항아리 · 보물 · 바위 동굴 · 도둑 · 열쇠(주문)",
+    "generalHint": "주문을 외우면 바위 문이 열리는 아라비안 나이트 이야기"
+   },
+   "after": {
+    "question": "🪨🚪✨🗡️💎 — 이모지가 나타내는 고전 이야기는?",
+    "explanation": "이모지: 바위 · 문 · 주문의 마법 · 칼 · 보물",
+    "generalHint": "주문을 외우면 바위 문이 열리는 아라비안 나이트 이야기",
+    "discarded": null
+   }
+  }
+ ],
+ "problems": []
+}

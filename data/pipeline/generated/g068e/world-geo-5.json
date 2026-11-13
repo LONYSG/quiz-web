@@ -27,11 +27,11 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🍕🏛️🏟️ — 이모지가 나타내는 나라·도시·명소는?",
+    "question": "🍕⛲🛵🏛️ — 이모지가 나타내는 나라·도시·명소는?",
     "answer": "로마",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "이모지: 피자 · 고대 유적 · 경기장",
+    "explanation": "이모지: 피자 · 트레비 분수 · 스쿠터 · 고대 유적",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -44,15 +44,25 @@
     "generalHint": "이탈리아의 수도, 고대 원형 경기장",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🍕🏛️🏟️",
-     "why": "피자 · 고대 유적 · 경기장",
+     "line": "🍕⛲🛵🏛️",
+     "why": "피자 · 트레비 분수 · 스쿠터 · 고대 유적",
      "year": null,
      "webHint": "이탈리아의 수도, 고대 원형 경기장",
      "webAlt": [
       "Rome",
       "콜로세움"
-     ]
+     ],
+     "lineG068e": "🍕🏛️🏟️",
+     "whyG068e": "피자 · 고대 유적 · 경기장"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "콜로세움 줄(🏟️🏛️)과 겹침 → 트레비 · 베스파",
+    "blind": "로마 | 이탈리아",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -68,11 +78,11 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🏙️🚕🥟 — 이모지가 나타내는 나라·도시·명소는?",
+    "question": "🏙️🚋🥟🎬 — 이모지가 나타내는 나라·도시·명소는?",
     "answer": "홍콩",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "이모지: 빌딩 · 택시 · 딤섬",
+    "explanation": "이모지: 빌딩 · 트램 · 딤섬 · 영화",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -85,14 +95,24 @@
     "generalHint": "고층 빌딩과 야경, 영화 속 중화권 도시",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🏙️🚕🥟",
-     "why": "빌딩 · 택시 · 딤섬",
+     "line": "🏙️🚋🥟🎬",
+     "why": "빌딩 · 트램 · 딤섬 · 영화",
      "year": null,
      "webHint": "고층 빌딩과 야경, 영화 속 중화권 도시",
      "webAlt": [
       "Hong Kong"
-     ]
+     ],
+     "lineG068e": "🏙️🚕🥟",
+     "whyG068e": "빌딩 · 택시 · 딤섬"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "고층 빌딩 범용 → 트램 · 영화",
+    "blind": "뉴욕 | 상하이",
+    "blindHit": false,
+    "appliedRound": "G069"
    }
   },
   {
@@ -136,6 +156,14 @@
       "시드니 오페라하우스"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "시드니 | 호주",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -151,11 +179,11 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🎰🐉🏙️🎲 — 이모지가 나타내는 나라·도시·명소는?",
+    "question": "🎰🎲🥧⛪ — 이모지가 나타내는 나라·도시·명소는?",
     "answer": "마카오",
     "acceptedAnswers": [],
     "originalTitleVariants": [],
-    "explanation": "이모지: 카지노 · 용 · 도시 · 주사위",
+    "explanation": "이모지: 카지노 · 주사위 · 에그타르트 · 성당 유적",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -168,14 +196,24 @@
     "generalHint": "카지노로 유명한 중국 특별행정구",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🎰🐉🏙️🎲",
-     "why": "카지노 · 용 · 도시 · 주사위",
+     "line": "🎰🎲🥧⛪",
+     "why": "카지노 · 주사위 · 에그타르트 · 성당 유적",
      "year": null,
      "webHint": "카지노로 유명한 중국 특별행정구",
      "webAlt": [
       "Macau"
-     ]
+     ],
+     "lineG068e": "🎰🐉🏙️🎲",
+     "whyG068e": "카지노 · 용 · 도시 · 주사위"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "라스베이거스와 겹침 → 에그타르트 · 성당 유적",
+    "blind": "마카오 | 라스베이거스",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   }
  ]

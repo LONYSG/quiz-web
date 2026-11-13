@@ -55,6 +55,14 @@
       "Ryan"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "라이언",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -98,6 +106,14 @@
       "Apeach"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "어피치",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -113,7 +129,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🐱🎀🍎🏳️ — 이모지가 나타내는 캐릭터는?",
+    "question": "🐱🎀🍎🤐 — 이모지가 나타내는 캐릭터는?",
     "answer": "헬로키티",
     "acceptedAnswers": [
      "Hello Kitty",
@@ -122,7 +138,7 @@
     "originalTitleVariants": [
      "Hello Kitty"
     ],
-    "explanation": "이모지: 고양이 · 리본 · 사과 · 하얀색",
+    "explanation": "이모지: 고양이 · 리본 · 사과 · 입이 없음",
     "score": {
      "version": "emoji-v1",
      "acc": 4,
@@ -135,15 +151,25 @@
     "generalHint": "1974년 산리오 · 리본 단 입 없는 하얀 고양이",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🐱🎀🍎🏳️",
-     "why": "고양이 · 리본 · 사과 · 하얀색",
+     "line": "🐱🎀🍎🤐",
+     "why": "고양이 · 리본 · 사과 · 입이 없음",
      "year": null,
      "webHint": "1974년 산리오 · 리본 단 입 없는 하얀 고양이",
      "webAlt": [
       "Hello Kitty",
       "키티"
-     ]
+     ],
+     "lineG068e": "🐱🎀🍎🏳️",
+     "whyG068e": "고양이 · 리본 · 사과 · 하얀색"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "🏳️ 흰 깃발은 색·깃발로만 쓰임 -> 입 없음(🤐)으로 교체",
+    "blind": "헬로키티",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -177,7 +203,7 @@
      "wor": 3,
      "worWhy": "이모지 문항 — 분야 기준(상식 · 문학 · 지리 3)"
     },
-    "generalHint": "미국 IT 기업 · 아이폰 · 맥북",
+    "generalHint": "미국 IT 기업 · 1976년 창업",
     "generalHintVersion": "emoji-v1",
     "emoji": {
      "line": "🍎📱💻",
@@ -188,6 +214,14 @@
       "Apple"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "힌트의 아이폰·맥북이 정답을 거의 직접 알려 줌",
+    "blind": "애플",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -203,7 +237,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🔍🌐📧 — 이모지가 나타내는 브랜드는?",
+    "question": "🔍🗺️📺🤖 — 이모지가 나타내는 브랜드는?",
     "answer": "구글",
     "acceptedAnswers": [
      "Google"
@@ -211,7 +245,7 @@
     "originalTitleVariants": [
      "Google"
     ],
-    "explanation": "이모지: 검색 돋보기 · 웹 · 이메일",
+    "explanation": "이모지: 검색 돋보기 · 지도 · 동영상 · 인공지능",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -221,17 +255,27 @@
      "wor": 3,
      "worWhy": "이모지 문항 — 분야 기준(상식 · 문학 · 지리 3)"
     },
-    "generalHint": "미국 검색 · 인터넷 기업 · 지메일",
+    "generalHint": "미국 · 세계 검색 엔진 1위 기업",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🔍🌐📧",
-     "why": "검색 돋보기 · 웹 · 이메일",
+     "line": "🔍🗺️📺🤖",
+     "why": "검색 돋보기 · 지도 · 동영상 · 인공지능",
      "year": 1998,
      "webHint": "미국 검색 · 인터넷 기업 · 지메일",
      "webAlt": [
       "Google"
-     ]
+     ],
+     "lineG068e": "🔍🌐📧",
+     "whyG068e": "검색 돋보기 · 웹 · 이메일"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "검색+웹+메일은 네이버·다음과 똑같이 맞음(한국 1위 포털); 힌트 지메일도 새나감",
+    "blind": "구글",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -276,6 +320,14 @@
       "Starbucks"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "스타벅스",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -291,7 +343,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🍔🍟🟡 — 이모지가 나타내는 브랜드는?",
+    "question": "🍔🍟🟡🤡 — 이모지가 나타내는 브랜드는?",
     "answer": "맥도날드",
     "acceptedAnswers": [
      "McDonald's",
@@ -301,7 +353,7 @@
     "originalTitleVariants": [
      "McDonald's"
     ],
-    "explanation": "이모지: 햄버거 · 감자튀김 · 노란 M 로고",
+    "explanation": "이모지: 햄버거 · 감자튀김 · 노란 M 로고 · 광대 마스코트",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -314,16 +366,26 @@
     "generalHint": "미국 패스트푸드 · 황금 아치",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🍔🍟🟡",
-     "why": "햄버거 · 감자튀김 · 노란 M 로고",
+     "line": "🍔🍟🟡🤡",
+     "why": "햄버거 · 감자튀김 · 노란 M 로고 · 광대 마스코트",
      "year": 1940,
      "webHint": "미국 패스트푸드 · 황금 아치",
      "webAlt": [
       "McDonald's",
       "맥도널드",
       "맥날"
-     ]
+     ],
+     "lineG068e": "🍔🍟🟡",
+     "whyG068e": "햄버거 · 감자튀김 · 노란 M 로고"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "버거킹 · 롯데리아와 겹침 → 로널드 추가",
+    "blind": "맥도날드",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -371,6 +433,14 @@
       "코크"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "코카콜라",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -415,6 +485,14 @@
       "Nike"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "나이키",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -460,6 +538,14 @@
       "Lego"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "레고",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -505,6 +591,14 @@
       "任天堂"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "닌텐도",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -520,7 +614,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "📦🛒➡️ — 이모지가 나타내는 브랜드는?",
+    "question": "📦🛒😀➡️ — 이모지가 나타내는 브랜드는?",
     "answer": "아마존",
     "acceptedAnswers": [
      "Amazon"
@@ -528,7 +622,7 @@
     "originalTitleVariants": [
      "Amazon"
     ],
-    "explanation": "이모지: 택배 상자 · 장바구니 · 화살표 로고",
+    "explanation": "이모지: 택배 상자 · 장바구니 · 웃는 얼굴 · 화살표 로고",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -541,14 +635,24 @@
     "generalHint": "미국 온라인 쇼핑 · 웃는 화살표 로고",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "📦🛒➡️",
-     "why": "택배 상자 · 장바구니 · 화살표 로고",
+     "line": "📦🛒😀➡️",
+     "why": "택배 상자 · 장바구니 · 웃는 얼굴 · 화살표 로고",
      "year": 1994,
      "webHint": "미국 온라인 쇼핑 · 웃는 화살표 로고",
      "webAlt": [
       "Amazon"
-     ]
+     ],
+     "lineG068e": "📦🛒➡️",
+     "whyG068e": "택배 상자 · 장바구니 · 화살표 로고"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "쿠팡 택배/장바구니 줄과 겹침 → 웃는 화살표 추가",
+    "blind": "아마존 | 쿠팡",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -598,6 +702,14 @@
       "엑스"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "트위터 | X",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -644,6 +756,14 @@
       "인스타"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "인스타그램",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -689,6 +809,14 @@
       "Youtube"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "유튜브",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -704,7 +832,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🚗⚡🔋 — 이모지가 나타내는 브랜드는?",
+    "question": "🚗⚡🔋🚀 — 이모지가 나타내는 브랜드는?",
     "answer": "테슬라",
     "acceptedAnswers": [
      "Tesla"
@@ -712,7 +840,7 @@
     "originalTitleVariants": [
      "Tesla"
     ],
-    "explanation": "이모지: 자동차 · 전기 · 배터리",
+    "explanation": "이모지: 자동차 · 전기 · 배터리 · 로켓",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -725,14 +853,24 @@
     "generalHint": "미국 전기차 · 일론 머스크",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🚗⚡🔋",
-     "why": "자동차 · 전기 · 배터리",
+     "line": "🚗⚡🔋🚀",
+     "why": "자동차 · 전기 · 배터리 · 로켓",
      "year": 2003,
      "webHint": "미국 전기차 · 일론 머스크",
      "webAlt": [
       "Tesla"
-     ]
+     ],
+     "lineG068e": "🚗⚡🔋",
+     "whyG068e": "자동차 · 전기 · 배터리"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "전기차 범용 줄 → 스페이스X 로켓으로 머스크 연결",
+    "blind": "테슬라",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -777,6 +915,14 @@
       "Ferrari"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "페라리",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -828,6 +974,14 @@
       "Meta"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "페이스북 | 메타",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -843,13 +997,13 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🍜🌶️🔥 — 이모지가 나타내는 브랜드는?",
+    "question": "🍜🌶️🔴🛍️ — 이모지가 나타내는 브랜드는?",
     "answer": "신라면",
     "acceptedAnswers": [
      "농심 신라면"
     ],
     "originalTitleVariants": [],
-    "explanation": "이모지: 라면 · 고추 · 불맛",
+    "explanation": "이모지: 라면 · 고추 · 빨간색 · 봉지",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -859,18 +1013,28 @@
      "wor": 3,
      "worWhy": "이모지 문항 — 분야 기준(상식 · 문학 · 지리 3)"
     },
-    "generalHint": "1986년 농심 · 매운맛 봉지면",
+    "generalHint": "1986년 출시 · 빨간 봉지의 매운 국물 봉지면",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🍜🌶️🔥",
-     "why": "라면 · 고추 · 불맛",
+     "line": "🍜🌶️🔴🛍️",
+     "why": "라면 · 고추 · 빨간색 · 봉지",
      "year": 1986,
      "webHint": "한국 라면 · 농심 · 매운맛",
      "webAlt": [
       "신 라면",
       "농심 신라면"
-     ]
+     ],
+     "lineG068e": "🍜🌶️🔥",
+     "whyG068e": "라면 · 고추 · 불맛"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "불닭 · 매운 라면과 겹침 + 힌트에 농심(정답 일부) 샘",
+    "blind": "신라면 | 불닭볶음면",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -922,6 +1086,14 @@
       "Kakao"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "카카오톡 | 카카오",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -937,7 +1109,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🛵🍗🥡 — 이모지가 나타내는 브랜드는?",
+    "question": "🛵🍗🥡🩵 — 이모지가 나타내는 브랜드는?",
     "answer": "배달의민족",
     "acceptedAnswers": [
      "배민",
@@ -946,7 +1118,7 @@
     "originalTitleVariants": [
      "Baemin"
     ],
-    "explanation": "이모지: 오토바이 · 치킨 · 포장 음식",
+    "explanation": "이모지: 오토바이 · 치킨 · 포장 음식 · 민트색",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -959,16 +1131,26 @@
     "generalHint": "한국 음식 주문 앱 · 우아한형제들",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🛵🍗🥡",
-     "why": "오토바이 · 치킨 · 포장 음식",
+     "line": "🛵🍗🥡🩵",
+     "why": "오토바이 · 치킨 · 포장 음식 · 민트색",
      "year": 2010,
      "webHint": "한국 배달 앱 · 우아한형제들",
      "webAlt": [
       "배달의 민족",
       "배민",
       "Baemin"
-     ]
+     ],
+     "lineG068e": "🛵🍗🥡",
+     "whyG068e": "오토바이 · 치킨 · 포장 음식"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "요기요 · 쿠팡이츠와 겹침 → 민트색 추가",
+    "blind": "배달의민족 | 쿠팡이츠",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -1016,6 +1198,14 @@
       "Daangn"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "당근마켓 | 당근",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -1061,6 +1251,14 @@
       "로켓배송"
      ]
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "ok",
+    "why": "",
+    "blind": "쿠팡 | 로켓배송",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -1076,7 +1274,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🍕🔵📞 — 이모지가 나타내는 브랜드는?",
+    "question": "🍕🎲🔴🔵 — 이모지가 나타내는 브랜드는?",
     "answer": "도미노피자",
     "acceptedAnswers": [
      "도미노",
@@ -1085,7 +1283,7 @@
     "originalTitleVariants": [
      "Domino's"
     ],
-    "explanation": "이모지: 피자 · 주사위 모양 도미노 · 전화 주문",
+    "explanation": "이모지: 피자 · 주사위 점 · 빨강 · 파랑 로고",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -1098,16 +1296,26 @@
     "generalHint": "미국 체인 · 파랑 빨강 주사위 점 로고",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🍕🔵📞",
-     "why": "피자 · 주사위 모양 도미노 · 전화 주문",
+     "line": "🍕🎲🔴🔵",
+     "why": "피자 · 주사위 점 · 빨강 · 파랑 로고",
      "year": 1960,
      "webHint": "미국 피자 체인 · 파랑 빨강 로고",
      "webAlt": [
       "도미노 피자",
       "도미노",
       "Domino's"
-     ]
+     ],
+     "lineG068e": "🍕🔵📞",
+     "whyG068e": "피자 · 주사위 모양 도미노 · 전화 주문"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "피자 체인 범용 → 주사위 점 로고",
+    "blind": "도미노피자",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   },
   {
@@ -1123,7 +1331,7 @@
     "ok": true,
     "mode": "emoji",
     "pairedWith": null,
-    "question": "🍩☕🧡 — 이모지가 나타내는 브랜드는?",
+    "question": "🍩☕🧡💗 — 이모지가 나타내는 브랜드는?",
     "answer": "던킨도너츠",
     "acceptedAnswers": [
      "던킨",
@@ -1133,7 +1341,7 @@
     "originalTitleVariants": [
      "Dunkin'"
     ],
-    "explanation": "이모지: 도넛 · 커피 · 주황색",
+    "explanation": "이모지: 도넛 · 커피 · 주황 · 분홍 로고",
     "score": {
      "version": "emoji-v1",
      "acc": 5,
@@ -1146,8 +1354,8 @@
     "generalHint": "미국 커피 · 링 모양 빵 체인 · 분홍 주황 로고",
     "generalHintVersion": "emoji-v1",
     "emoji": {
-     "line": "🍩☕🧡",
-     "why": "도넛 · 커피 · 주황색",
+     "line": "🍩☕🧡💗",
+     "why": "도넛 · 커피 · 주황 · 분홍 로고",
      "year": 1950,
      "webHint": "미국 도넛 · 커피 체인 · 분홍 주황 로고",
      "webAlt": [
@@ -1155,8 +1363,18 @@
       "던킨 도너츠",
       "Dunkin'",
       "던킨도넛"
-     ]
+     ],
+     "lineG068e": "🍩☕🧡",
+     "whyG068e": "도넛 · 커피 · 주황색"
     }
+   },
+   "verify": {
+    "round": "V057",
+    "verdict": "fix",
+    "why": "크리스피크림과 겹침 → 분홍+주황",
+    "blind": "던킨 | 던킨도너츠",
+    "blindHit": true,
+    "appliedRound": "G069"
    }
   }
  ]
