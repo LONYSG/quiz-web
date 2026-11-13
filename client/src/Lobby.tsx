@@ -85,6 +85,8 @@ interface Props {
 
 /** ★ R040 C-4 — 모바일 맞춤 글자의 하한 (문제 19px → 약 14px · 해설 16.8px → 약 12.6px) */
 const MOBILE_FIT_MIN = 0.75;
+/** ★ R101 — PC 채팅 최소 줄 수(styles --chat-lines 기본값과 같게) */
+const FIT_CHAT_LINES = 6;
 
 /**
  * ★ R040 — 모바일 키보드를 내리는 상태 (C-3).
@@ -666,6 +668,91 @@ export default function Lobby({
     uiModeNow,
     kbOpen,
   ]);
+
+  /**
+   * ★★★ R101 (찬종 "채팅창이 너무 작다 · 정답공개할때 125% fhd 에서는 스크롤도 생김 · 어떠한 경우에도 화면에 스크롤이 생기면 안돼")
+   *   PC 배치 규칙 하나(퀴즈 · 노래 · 미니게임 · 결과 · 로비 — 판 옆 채팅인 라이어 · 캐치마인드도 같은 함수):
+   *   채팅 = 최소 --chat-lines 줄(styles R101 · 6줄) · 내용 = 남은 높이. 넘치면 ① 그림 · 표지를 --fit-cut 만큼 줄이고(바닥 있음)
+   *   ② 그래도 넘치면 fit-tight(여백 줄임) ③ 그래도 넘치면 채팅 줄 수를 줄인다(2줄까지) — 페이지는 절대 늘어나지 않게.
+   *   내용 크기가 바뀌면(공개 · 힌트 · 그림 받음) ResizeObserver 로 다시 잰다.
+   */
+  useLayoutEffect(() => {
+    const room = roomRef.current;
+    if (!room || uiModeNow === 'mobile') return undefined;
+    let busy = false;
+    const fit = () => {
+      if (busy || isMobileUi()) return;
+      const center = room.querySelector<HTMLElement>('.center');
+      const main = room.querySelector<HTMLElement>('.center-main');
+      const chat = room.querySelector<HTMLElement>('.center > .chat-card');
+      if (!center || !main || !chat) return;
+      busy = true;
+      room.classList.remove('fit-tight');
+      room.style.removeProperty('--fit-cut');
+      room.style.removeProperty('--chat-lines');
+      const side = getComputedStyle(center).flexDirection === 'row';
+      // 판 내용의 제 높이 — 카드가 줄어든 채 안이 넘치면(overflow hidden) main.scrollHeight 로는 안 보인다 → 자식마다 scrollHeight
+      const natural = () => {
+        const cs = getComputedStyle(main);
+        const gap = parseFloat(cs.rowGap) || 0;
+        let h = 0;
+        const kids = [...main.children] as HTMLElement[];
+        for (const c of kids) {
+          const m = getComputedStyle(c);
+          h += Math.max(c.scrollHeight, c.getBoundingClientRect().height) + (parseFloat(m.marginTop) || 0) + (parseFloat(m.marginBottom) || 0);
+        }
+        return Math.max(main.scrollHeight, h + gap * Math.max(0, kids.length - 1));
+      };
+      const over = () => {
+        if (side) return Math.ceil(natural() - center.clientHeight);
+        const gap = parseFloat(getComputedStyle(center).rowGap) || 0;
+        return Math.ceil(natural() + gap + (parseFloat(getComputedStyle(chat).minHeight) || 0) - center.clientHeight);
+      };
+      let o = over();
+      let cut = 0;
+      for (let i = 0; i < 4 && o > 0 && cut < 600; i += 1) {
+        cut = Math.min(600, cut + o);
+        room.style.setProperty('--fit-cut', `${cut}px`);
+        o = over();
+      }
+      if (o > 0) {
+        room.classList.add('fit-tight');
+        o = over();
+      }
+      let lines = FIT_CHAT_LINES;
+      if (o > 0 && !side) {
+        const lineH = (parseFloat(getComputedStyle(document.documentElement).fontSize) || 16) * 1.04 * 1.6 + 6;
+        lines = Math.max(2, FIT_CHAT_LINES - Math.ceil(o / lineH));
+        room.style.setProperty('--chat-lines', String(lines));
+        o = over();
+      }
+      room.dataset.fitCut = String(cut);
+      room.dataset.fitLines = String(lines);
+      room.dataset.fitOver = String(Math.max(0, o));
+      busy = false;
+    };
+    fit();
+    const ro = new ResizeObserver(() => fit());
+    const watch = () => {
+      ro.disconnect();
+      const main = room.querySelector('.center-main');
+      if (main) for (const c of main.children) ro.observe(c);
+      const center = room.querySelector('.center');
+      if (center) ro.observe(center);
+    };
+    watch();
+    const mo = new MutationObserver(() => {
+      watch();
+      fit();
+    });
+    const mainEl = room.querySelector('.center-main');
+    if (mainEl) mo.observe(mainEl, { childList: true });
+    void document.fonts?.ready.then(fit);
+    return () => {
+      ro.disconnect();
+      mo.disconnect();
+    };
+  }, [state, snapshot.question?.epoch, snapshot.resolution?.epoch, uiModeNow]);
 
 
   // ── ★★ 채팅 소리 (R038) — 메시지가 올라올 때마다 (내 귀에만, 음량은 ⚙). 세레머니 중 정답자 채팅은 킹받는 소리

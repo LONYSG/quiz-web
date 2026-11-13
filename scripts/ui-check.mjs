@@ -5543,6 +5543,330 @@ async function r093Flow(browser) {
 const R094_RX = `JSON.stringify((() => { const box = document.querySelector('.rx-result'); if (!box) return null; const cell = box.getBoundingClientRect(); const ps = [...box.querySelectorAll('p')].map((p) => { const r = p.getBoundingClientRect(); return { t: p.innerText.replace(/\\n/g, ' / '), sw: p.scrollWidth, cw: p.clientWidth, l: Math.round(r.left - cell.left), r: Math.round(cell.right - r.right) }; }); const out = ps.some((p) => p.sw > p.cw + 1 || p.l < -1 || p.r < -1); return { w: Math.round(cell.width), ps, out, over: document.documentElement.scrollWidth - innerWidth }; })())`;
 const R094_Q = `JSON.stringify((() => { const q = document.querySelector('.q-text'); const card = document.querySelector('.question-card'); const chat = document.querySelector('.room .chat-card'); const center = document.querySelector('.center'); const hint = [...document.querySelectorAll('.q-hint.open')].pop(); if (!q || !card) return null; const cs = getComputedStyle(q); const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.45; const R = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; }; return { len: [...(q.dataset.text ?? q.innerText)].length, fs: cs.fontSize, lines: Math.round(q.getBoundingClientRect().height / lh), card: R(card), chat: R(chat), center: R(center), hint: hint ? hint.innerText.replace(/\\s+/g, ' ').trim() : '', kind: document.querySelector('.hint-kind')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())`;
 // =============================================================================
+// ★★★ R101 — 화면 스크롤 0 · 채팅 줄 수 · 내용 잘림 (UICHECK_R101=1 · 묶음 r101 · docs/design/r101 · 고치기 전 = SHOT_DIR r101-before)
+//   찬종 2026-11-13: "노래 맞히기 할때 채팅창이 너무 작다. 정답공개할때 125% fhd 에서는 스크롤도 생김. 다른 화면도 마찬가지."
+//     폼: "채팅이 최소 5개? 적절한 라인은 최소한 보여주도록 … 어떠한 경우에도 화면에 스크롤이 생기면 안돼."
+//   방장 PC(H) · 손님 m360(G · 터치) · 소켓 손님 3 — 로비 · 설정(라이어 · 노래) · 퀴즈 문제 / 힌트 / 공개 / 결과 · 노래 듣는 중 / 정답 공개 / 결과 ·
+//   미니게임 판 / 공개 · 라이어 설명 / 토론 / 투표 / 변론 / 죽일까 / 공개 · 캐치마인드 그리는 중 / 맞히는 중 / 공개 · 판 결과
+//   화면마다 창 6 크기(R101_SIZES) — ① 페이지 스크롤 0(세로 · 가로) ② 채팅 보이는 줄 ≥ 6(입력칸 뺀 목록 높이 ÷ 한 줄) ③ 판 안 내용이 판 밖 · 화면 밖으로 안 나감
+//   + m360 은 페이지 스크롤만 적는다(고치지 않음 — 이번 제보는 PC) · 1536×730 그림 한 장씩
+// =============================================================================
+const R101_SIZES = [
+  { w: 1536, h: 864, dsf: 1.25, n: '1536x864' },
+  { w: 1536, h: 730, dsf: 1.25, n: '1536x730' },
+  { w: 1920, h: 1080, dsf: 1, n: '1920x1080' },
+  { w: 1920, h: 945, dsf: 1, n: '1920x945' },
+  { w: 1280, h: 720, dsf: 1, n: '1280x720' },
+  { w: 2560, h: 1440, dsf: 1, n: '2560x1440' },
+];
+const R101_MIN_LINES = 6;
+const R101_FIT = `JSON.stringify((() => {
+  const se = document.scrollingElement || document.documentElement;
+  const out = { sy: se.scrollHeight - innerHeight, sx: se.scrollWidth - innerWidth };
+  const log = document.querySelector('.room .chat-log');
+  if (log) {
+    const cs = getComputedStyle(log);
+    const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+    const probe = document.createElement('p');
+    probe.className = 'chat-line';
+    probe.style.cssText = 'visibility:hidden;position:absolute;left:0;top:0;animation:none';
+    probe.textContent = '가';
+    log.appendChild(probe);
+    const pc = getComputedStyle(probe);
+    const lineH = probe.getBoundingClientRect().height + parseFloat(pc.marginBottom || '0');
+    probe.remove();
+    out.lineH = Math.round(lineH * 10) / 10;
+    out.logH = Math.round(log.clientHeight - pad);
+    out.lines = Math.floor(((log.clientHeight - pad) / lineH) * 10) / 10;
+    const card = log.closest('.chat-card');
+    const r = card.getBoundingClientRect();
+    out.chatW = Math.round(r.width);
+    out.chatH = Math.round(r.height);
+    const inp = card.querySelector('input');
+    if (inp) out.inputIn = Math.round(innerHeight - inp.getBoundingClientRect().bottom);
+  }
+  const main = document.querySelector('.room .center-main');
+  if (main) {
+    const r = main.getBoundingClientRect();
+    out.mainH = Math.round(r.height);
+    out.mainW = Math.round(r.width);
+    const clip = [];
+    for (const el of main.querySelectorAll('*')) {
+      const b = el.getBoundingClientRect();
+      if (b.width < 2 || b.height < 2) continue;
+      if (el.closest('.draw-color-pop, .emoji-pop, .info-pop, [role=dialog], .tip-pop, .confetti')) continue;
+      if (el.closest('details:not([open])') && !el.closest('summary')) continue; // 접힌 묶음(주제 고르기) 속은 그려지지 않는다
+      let sc = el.parentElement;
+      let inScroller = false;
+      while (sc && sc !== main) {
+        // 스크롤 목록 안쪽만 뺀다 — overflow hidden 은 내용을 숨기는 것이라 잘림으로 센다(첫 실행이 노래 공개 상자 숨김을 놓쳤다)
+        if (/(auto|scroll)/.test(getComputedStyle(sc).overflowY)) { inScroller = true; break; }
+        sc = sc.parentElement;
+      }
+      if (inScroller) continue;
+      let hid = el.parentElement;
+      let hiddenCut = false;
+      while (hid && hid !== main) {
+        if (getComputedStyle(hid).overflowY === 'hidden' && b.bottom > hid.getBoundingClientRect().bottom + 2) { hiddenCut = true; break; }
+        hid = hid.parentElement;
+      }
+      if (hiddenCut || b.bottom > innerHeight + 1 || b.bottom > r.bottom + 2) clip.push(String(el.className || el.tagName).split(' ')[0] + ':' + Math.round(b.bottom - Math.min(innerHeight, r.bottom)));
+    }
+    out.clip = clip.slice(0, 4);
+    out.clipN = clip.length;
+  }
+  const media = document.querySelector('[data-song-cover], .draw-canvas, .center-main .photo-frame, .center-main .img-wrap img, .center-main .quiz-img');
+  if (media) {
+    const b = media.getBoundingClientRect();
+    out.media = Math.round(b.width) + 'x' + Math.round(b.height);
+  }
+  return out;
+})())`;
+
+async function r101Flow(browser) {
+  const DIR = process.env.SHOT_DIR ?? 'r101';
+  const H = await newPage(browser, 'R101-host', true);
+  await H.setViewport(1280, 720);
+  await signUp(H, 'r101h', '스크롤방장');
+  const roomId = await createRoom(H, 'R101 스크롤 0');
+  const G = await newPage(browser, 'R101-g', true);
+  await signUp(G, 'r101g', '폰손님');
+  await r068Touch(G, 360, 740, true);
+  await G.goto(`${BASE}/r/${roomId}`);
+  await G.waitFor("document.querySelector('.stage') !== null", 8000).catch(() => false);
+  const socks = await socketGuests(roomId, 3, 'r101s');
+  const ids = await Promise.all(socks.map(async (_, i) => (await withPg(async (c) => (await c.query(`SELECT id::text FROM accounts WHERE login_id = $1`, [`${ACCOUNT_PREFIX}_r101s${i}`.toLowerCase()])).rows[0]?.id)) ?? null));
+  for (const [i, s] of socks.entries()) s.__id = ids[i];
+  const table = [];
+  const mobile = [];
+  const setSize = async (s) => {
+    await H.send('Emulation.setDeviceMetricsOverride', { width: s.w, height: s.h, deviceScaleFactor: s.dsf, mobile: false });
+    await sleep(320);
+  };
+  /** 화면 하나 — 여섯 크기 · 1536×730 그림 · m360 페이지 스크롤 */
+  const fit = async (screen) => {
+    for (const s of R101_SIZES) {
+      await setSize(s);
+      const m = JSON.parse(await H.evaluate(R101_FIT));
+      const ok = m.sy <= 0 && m.sx <= 0 && (m.lines ?? 99) >= R101_MIN_LINES && (m.clipN ?? 0) === 0;
+      table.push({ screen, size: s.n, ok, ...m });
+      if (s.n === '1536x730') await snap(H, `${screen}-1536x730`);
+      if (s.n === '1920x945') await snap(H, `${screen}-1920x945`);
+    }
+    await setSize({ w: 1280, h: 720, dsf: 1 });
+    const g = JSON.parse(await G.evaluate("JSON.stringify((() => { const se = document.scrollingElement || document.documentElement; return { sy: se.scrollHeight - innerHeight, sx: se.scrollWidth - innerWidth }; })())"));
+    mobile.push({ screen, ...g });
+    const row = table.filter((t) => t.screen === screen);
+    console.log(`  [r101] ${screen}: ${row.map((t) => `${t.size} ${t.ok ? 'OK' : 'NG'}(sy ${t.sy} · ${t.lines}줄 · 잘림 ${t.clipN ?? 0})`).join(' | ')} · m360 sy ${g.sy}`);
+  };
+  const say = async (P, t) => {
+    await P.setInput('.chat-card input', t);
+    await P.click('전송');
+    await sleep(200);
+  };
+  const skipAll = async (epoch) => {
+    for (const s of socks) s.emit('skip.vote', { vote: true, epoch });
+    await realClick(H, '.skip-btn').catch(() => {});
+    await tapOn(G, '.skip-btn').catch(() => {});
+  };
+  const toLobby = async () => {
+    await H.waitFor("document.querySelector('.ranking') !== null || document.querySelector('.lobby-card') !== null", 60000).catch(() => false);
+    // 결과 버튼 줄이 늦게 그려질 수 있다 — 로비가 보일 때까지 몇 번
+    for (let i = 0; i < 8 && !(await H.evaluate("!!document.querySelector('.lobby-card')")); i += 1) {
+      await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim().endsWith('로비로'))?.click()");
+      await H.waitFor("document.querySelector('.lobby-card') !== null", 3000).catch(() => false);
+    }
+    await sleep(500);
+  };
+  const start = async () => {
+    await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  };
+  // ── 채팅 채움(목록이 차 있어야 줄 수가 그림으로 보인다)
+  await chatLines(socks, 10);
+  await sleep(600);
+  // ── 로비 · 설정
+  await fit('lobby');
+  await realClick(H, 'button[data-mode="liar"]');
+  await sleep(600);
+  await fit('settings-liar');
+  await realClick(H, 'button[data-mode="song"]');
+  await H.waitFor("document.querySelector('[data-song-avail]')?.innerText.includes('곡 ·')", 6000).catch(() => false);
+  await sleep(400);
+  await fit('settings-song');
+
+  // ── 퀴즈 2문제: 문제 · 힌트 · 공개 · 결과
+  await realClick(H, 'button[data-mode="quiz"]');
+  await sleep(400);
+  await H.setInput('.count-input', '2');
+  await sleep(600);
+  let qEpoch = null;
+  for (const s of socks) s.on('question.started', (p) => (qEpoch = p.epoch ?? qEpoch));
+  await start();
+  await H.waitFor("document.querySelector('.question-card') !== null", 15000).catch(() => false);
+  await sleep(800);
+  await fit('quiz-question');
+  // 힌트가 있는 문제면 열릴 때까지(남은 30초 · 15초) · 없으면 문제 화면 그대로(힌트 줄 "없음")
+  await H.waitFor("document.querySelector('.q-hint.open') !== null || !document.querySelector('.question-card')", 45000).catch(() => false);
+  await sleep(400);
+  await fit('quiz-hint');
+  await skipAll(qEpoch);
+  await H.waitFor("document.querySelector('.reveal') !== null", 8000).catch(() => false);
+  await sleep(900);
+  await fit('quiz-reveal');
+  await H.waitFor("document.querySelector('.reveal') === null && document.querySelector('.question-card') !== null", 20000).catch(() => false);
+  await sleep(500);
+  await skipAll(qEpoch);
+  await H.waitFor("document.querySelector('.ranking') !== null", 40000).catch(() => false);
+  await sleep(900);
+  await fit('quiz-result');
+  await toLobby();
+
+  // ── 노래 5곡: 듣는 중 · 정답 공개 · 결과
+  await realClick(H, 'button[data-mode="song"]');
+  await H.waitFor("document.querySelector('[data-song-count]') !== null", 4000).catch(() => false);
+  await realClick(H, '[data-song-count-preset="5"]').catch(() => {});
+  await sleep(500);
+  let sQ = null;
+  socks[0].on('question.started', (p) => (sQ = p));
+  await start();
+  await H.waitFor("document.querySelector('[data-song-cover]') !== null", 15000).catch(() => false);
+  await sleep(1200);
+  await fit('song-play');
+  const it = sQ ? await withPg(async (c) => (await c.query(`SELECT payload FROM minigame_items WHERE item_id = $1`, [sQ.questionId])).rows[0]?.payload ?? null) : null;
+  await say(H, it?.title ?? '모름');
+  await H.waitFor("document.querySelector('.reveal') !== null", 6000).catch(() => false);
+  await sleep(1600);
+  await chatLines(socks, 3);
+  await fit('song-reveal');
+  for (let i = 0; i < 4; i += 1) {
+    await H.waitFor("document.querySelector('.reveal') === null && document.querySelector('[data-song-cover]') !== null", 20000).catch(() => false);
+    await sleep(300);
+    await skipAll(sQ?.epoch);
+    await H.waitFor("document.querySelector('.reveal') !== null || document.querySelector('.ranking') !== null", 8000).catch(() => false);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 30000).catch(() => false);
+  await sleep(900);
+  await fit('song-result');
+  await toLobby();
+
+  // ── 미니게임만 1판: 판 · 공개
+  await realClick(H, 'button[data-mode="minigame"]');
+  await sleep(500);
+  await H.setInput('.mg-rounds-input', '2').catch(() => {});
+  await sleep(500);
+  await start();
+  await H.waitFor("document.querySelector('.mg-card') !== null", 15000).catch(() => false);
+  await sleep(1500);
+  await fit('minigame-board');
+  await H.waitFor("document.querySelector('.mg-card[data-phase=\"roundResult\"], .mg-card[data-phase=\"final\"]') !== null", 90000).catch(() => false);
+  await sleep(600);
+  await fit('minigame-reveal');
+  await H.waitFor("document.querySelector('.ranking') !== null", 120000).catch(() => false);
+  await toLobby();
+
+  // ── 라이어 2라운드: 설명 · 토론 · 투표 · 변론 · 죽일까 · 공개 (소켓 손님이 바로바로 · 방장 화면은 직접)
+  const target = ids[0];
+  for (const s of socks) {
+    const did = new Set();
+    s.on('liar.state', (p) => {
+      const v = p.liar;
+      if (!v) return;
+      const k = `${v.round}:${v.phase}:${v.phaseStartedAt}:${v.turn}`;
+      if (did.has(k)) return;
+      did.add(k);
+      setTimeout(() => {
+        if ((v.phase === 'describe' || v.phase === 'defense') && v.turn === s.__id) s.emit('liar.say', { text: v.phase === 'defense' ? '진짜 아니에요 저는 시민이에요' : '이건 자주 볼 수 있는 거예요' });
+        else if (v.phase === 'discuss' && v.round > 1) s.emit('liar.discussEnd', {});
+        else if (v.phase === 'vote' || v.phase === 'revote') s.emit('liar.vote', { target: s.__id === target ? ids[1] : target });
+        else if (v.phase === 'final' && v.accused !== s.__id) s.emit('liar.final', { yes: true });
+        else if (v.phase === 'guess' && v.amLiar) s.emit('liar.guess', { text: '모르겠다' });
+      }, 700);
+    });
+  }
+  await realClick(H, 'button[data-mode="liar"]');
+  await sleep(400);
+  await H.setInput('.mg-rounds-input', '2').catch(() => {});
+  await sleep(500);
+  await start();
+  await H.waitFor("document.querySelector('[data-liar-phase]') !== null", 15000).catch(() => false);
+  const liarSeen = new Set();
+  const t0 = Date.now();
+  while (Date.now() - t0 < 300000) {
+    const st = await H.evaluate("(() => { const c = document.querySelector('[data-liar-phase]'); if (!c) return document.querySelector('.ranking') ? 'result' : ''; return c.dataset.liarPhase + ':' + (document.querySelector('.liar-round')?.innerText ?? '') + ':' + c.dataset.liarBout + ':' + !!document.querySelector('[data-liar-say-input]') + ':' + !!document.querySelector('[data-liar-guess-input]'); })()");
+    if (st === 'result') break;
+    if (!st) {
+      await sleep(150);
+      continue;
+    }
+    const [phase, roundTxt] = st.split(':');
+    const round = Number((roundTxt ?? '').split('/')[0]);
+    if (round === 1 && !liarSeen.has(phase) && ['describe', 'discuss', 'vote', 'defense', 'final', 'reveal'].includes(phase)) {
+      liarSeen.add(phase);
+      if (phase === 'describe') await chatLines(socks, 2);
+      await fit(`liar-${phase}`);
+    }
+    if (await H.evaluate("!!document.querySelector('[data-liar-say-input]')")) {
+      await H.setInput('[data-liar-say-input]', '동그랗고 자주 써요');
+      await H.evaluate("document.querySelector('[data-liar-say-form]')?.requestSubmit()");
+    }
+    if (phase === 'discuss') {
+      await sleep(300);
+      await realClick(H, '[data-liar-discuss-end]').catch(() => {});
+      if (round === 1) for (const s of socks) s.emit('liar.discussEnd', {});
+    }
+    if ((phase === 'vote' || phase === 'revote') && !(await H.evaluate('!!document.querySelector(".liar-person.picked")'))) await realClick(H, `[data-liar-target="${target}"]`).catch(() => {});
+    if (phase === 'final') await realClick(H, '[data-liar-yes]').catch(() => {});
+    if (await H.evaluate("!!document.querySelector('[data-liar-guess-input]')")) {
+      await H.setInput('[data-liar-guess-input]', '모르겠다');
+      await H.evaluate("document.querySelector('[data-liar-guess] form')?.requestSubmit()");
+    }
+    await sleep(250);
+  }
+  await H.waitFor("document.querySelector('.ranking') !== null", 60000).catch(() => false);
+  await sleep(700);
+  await fit('liar-result');
+  await toLobby();
+
+  // ── 캐치마인드 2라운드: 방장 그리는 중 · 공개 · 방장 맞히는 중 · 포기 공개
+  await realClick(H, 'button[data-mode="draw"]');
+  await sleep(400);
+  await H.setInput('.mg-rounds-input', '2').catch(() => {});
+  await sleep(500);
+  await start();
+  await H.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null", 15000).catch(() => false);
+  await sleep(800);
+  await fit('draw-drawing');
+  const kw = await H.evaluate("document.querySelector('[data-draw-keyword]')?.innerText ?? ''");
+  socks[0].emit('chat.send', { text: kw, epoch: null });
+  await H.waitFor("document.querySelector('[data-draw-phase=\"reveal\"]') !== null", 6000).catch(() => false);
+  await sleep(500);
+  await fit('draw-reveal');
+  await H.waitFor("document.querySelector('[data-draw-phase=\"draw\"]') !== null", 15000).catch(() => false);
+  await sleep(800);
+  await fit('draw-guess');
+  for (const s of socks) s.emit('draw.giveUp', {});
+  await H.waitFor("document.querySelector('.ranking') !== null", 30000).catch(() => false);
+  await sleep(800);
+  await fit('draw-result');
+
+  // ── 정리 · 표
+  const out = path.join(ROOT, 'docs', 'design', DIR);
+  if (!existsSync(out)) mkdirSync(out, { recursive: true });
+  writeFileSync(path.join(out, 'r101-fit.json'), JSON.stringify({ table, mobile }, null, 1));
+  const screens = [...new Set(table.map((t) => t.screen))];
+  for (const sc of screens) {
+    const rows = table.filter((t) => t.screen === sc);
+    const bad = rows.filter((t) => !t.ok);
+    record(`★★★ R101 ${sc} — 여섯 크기 페이지 스크롤 0 · 채팅 ≥ ${R101_MIN_LINES}줄 · 판 내용 잘림 0`, bad.length === 0, bad.map((t) => `${t.size} sy ${t.sy} sx ${t.sx} · ${t.lines}줄 · 잘림 ${t.clipN} ${t.clip?.join(',') ?? ''}`).join(' / '));
+  }
+  const want = ['lobby', 'settings-liar', 'settings-song', 'quiz-question', 'quiz-hint', 'quiz-reveal', 'quiz-result', 'song-play', 'song-reveal', 'song-result', 'minigame-board', 'minigame-reveal', 'liar-describe', 'liar-discuss', 'liar-vote', 'liar-defense', 'liar-final', 'liar-reveal', 'liar-result', 'draw-drawing', 'draw-reveal', 'draw-guess', 'draw-result'];
+  const missing = want.filter((w) => !screens.includes(w));
+  record('★★ R101 화면을 다 돌았다(못 본 화면 0)', missing.length === 0, missing.join(', '));
+  console.log(`  [r101] m360(참고 · 고치지 않음): ${mobile.map((m) => `${m.screen} ${m.sy}`).join(' · ')}`);
+  for (const s of socks) s.disconnect();
+}
+
+// =============================================================================
 // ★★★ R096 — 노래 맞히기 방식 화면 (D-353) (UICHECK_R096=1 · 묶음 r096 · docs/design/r096)
 //   방장 PC 1280×720(→ 2560×1440 한 장) · 손님 m360 터치 · 소켓 손님 1 — 방식 [노래] · 설정(곡 수 · 분류 · 연대 · 장르 칩 수) ·
 //   판: 표지 부채꼴 0% · 50%(+ 15초 초성 · 퀴즈 힌트 자리) · 가수 → 본인 알림 · 채팅 정답(글 숨김 · 시스템 줄) · 정답 뒤 100% + 강조 ·
@@ -10648,6 +10972,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R093) {
     await closeAllTabs(browser);
     await r093Flow(browser);
+  }
+  // ★ R101 — 스크롤 0 · 채팅 줄 수 · 잘림(창 6 크기 × 화면 23)
+  if (process.env.UICHECK_R101) {
+    await closeAllTabs(browser);
+    await r101Flow(browser);
   }
   // ★ R096 — 노래 맞히기 방식
   if (process.env.UICHECK_R096) {

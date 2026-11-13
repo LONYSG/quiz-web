@@ -8595,7 +8595,8 @@ button.preset.shake {
         ③ 사진 <img> 는 판 내내 같은 요소(모자이크는 덮개) · 힌트 줄은 처음부터 자리
    ============================================================================= */
 .img-wrap.box-ratio {
-  width: min(100%, calc(var(--img-maxh, 240px) * var(--arn, 1.3333)));
+  /* ★ R101 — PC 맞춤(--fit-cut)만큼 높이를 줄인다 · 바닥 72px */
+  width: min(100%, calc(max(72px, var(--img-maxh, 240px) - var(--fit-cut, 0px)) * var(--arn, 1.3333)));
   height: auto;
   min-height: 0;
   margin-inline: auto;
@@ -8637,8 +8638,9 @@ button.preset.shake {
 }
 /* PC 높이 예산 — 위 막대 70 + 칸 사이 8 · 채팅 칸 최소 170(입력 줄 + 두세 줄) · 카드 여분은 R074 보정(ui-check r074 calib) */
 :where(.ui-pc) .mg-card {
-  --mg-chat-min: 170px;
-  --mg-fit: calc(100vh - 78px - var(--mg-chat-min));
+  /* ★ R101 — 채팅 최소 = .room --chat-min-h(6줄) · PC 맞춤(--fit-cut)만큼 더 줄인다 */
+  --mg-chat-min: var(--chat-min-h, 170px);
+  --mg-fit: calc(100vh - 78px - var(--mg-chat-min) - var(--fit-cut, 0px));
 }
 :where(.ui-pc) .mg-card .photo-frame {
   width: min(100%, calc(min(46vh, var(--mg-fit) - 235px) * 4 / 3));
@@ -10117,6 +10119,10 @@ button.preset.shake {
 .liar-reveal {
   text-align: center;
 }
+.liar-final p,
+.liar-guess p {
+  margin: 4px 0;
+}
 .liar-final-btns {
   display: flex;
   gap: 10px;
@@ -10496,7 +10502,8 @@ button.preset.shake {
 :where(.ui-pc) .room:is([data-state='QUESTION_ACTIVE'], [data-state='QUESTION_RESOLVED']) .center-main:has(> .question-card) {
   display: flex;
   flex-direction: column;
-  min-height: 50%;
+  /* ★ R101 — 50% → 40%(R094 전 = 글 높이 · R094 = 반 — 그 중간) · 채팅 최소 6줄이 먼저 */
+  min-height: 40%;
 }
 :where(.ui-pc) .room:is([data-state='QUESTION_ACTIVE'], [data-state='QUESTION_RESOLVED']) .center-main > .question-card {
   flex: 1 1 auto;
@@ -10512,7 +10519,8 @@ button.preset.shake {
 :where(.ui-pc) .room .center-main:has(> .mg-card) {
   display: flex;
   flex-direction: column;
-  min-height: 50%;
+  /* ★ R101 — 50% → 40%(R094 과 같이) */
+  min-height: 40%;
 }
 :where(.ui-pc) .room .center-main > .mg-card {
   flex: 1 1 auto;
@@ -11216,7 +11224,8 @@ button.preset.shake {
 /* 표지 — PC ≈360px · 짧은 화면은 높이에 맞춰 · 폰은 판 칸 너비 */
 .song-cover {
   position: relative;
-  width: min(360px, 100%, 40vh);
+  /* ★ R101 — PC 맞춤(Lobby.tsx --fit-cut)만큼 줄어든다 · 바닥 96px */
+  width: min(360px, 100%, max(96px, calc(40vh - var(--fit-cut, 0px))));
   aspect-ratio: 1;
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -11420,4 +11429,89 @@ button.preset.shake {
     width: min(360px, 100%, 23vh);
     transition: --song-p 650ms cubic-bezier(0.2, 0.7, 0.2, 1), width 320ms ease 620ms;
   }
+}
+
+/* =============================================================================
+   ★★★ R101 — PC 배치 규칙 하나(찬종 2026-11-13 "채팅창을 너무 줄였다 · 125% fhd 에서 스크롤 · 어떠한 경우에도 화면에 스크롤이 생기면 안돼")
+   ⓐ 페이지 스크롤 0 — 넘칠 것은 내용이 줄어든다(Lobby.tsx R101 맞춤: --fit-cut → fit-tight → 채팅 줄 수) · 채팅 목록 안 스크롤만 허용
+   ⓑ 채팅 = 보이는 메시지 줄 최소 --chat-lines(6) — 한 줄 = 채팅 글자(1.04rem × 1.6) + 위아래 4px + 사이 2px · 입력 줄 · 테두리 = --chat-chrome
+   ⓒ 내용 = 남은 높이(문제 · 판 칸 최소 40%) · 라이어 · 캐치마인드는 채팅이 판 옆(토론 · 그림 — 채팅 줄이 많이 보인다)
+   숫자는 여기 한 곳 · 휴대폰(1열)은 그대로
+   ============================================================================= */
+:where(.ui-pc) .room {
+  --chat-lines: 6;
+  --chat-line-h: calc(1.04rem * 1.6 + 6px);
+  --chat-chrome: 5.6rem;
+  --chat-min-h: calc((var(--chat-lines) + 0.2) * var(--chat-line-h) + var(--chat-chrome));
+}
+:where(.ui-pc) .room .center > .chat-card {
+  min-height: var(--chat-min-h);
+}
+/* 채팅은 남는 높이만(기준 0) — 기준이 채팅 내용 높이면 긴 채팅이 판 칸을 눌러 판이 잘렸다(r101 첫 실행 로비 · 설정) */
+:where(.ui-pc) .room:not([data-state='DRAW'], [data-state='LIAR']) .center > .chat-card {
+  flex: 1 1 0;
+}
+:where(.ui-pc) .room .center > .center-main {
+  flex-shrink: 1;
+  min-height: 0;
+}
+/* 라이어 — 캐치마인드처럼 채팅을 판 옆으로(토론 · 투표 내내 채팅이 길게) */
+:where(.ui-pc) .room[data-state='LIAR'] .center {
+  flex-direction: row;
+}
+:where(.ui-pc) .room[data-state='LIAR'] .center > .center-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+:where(.ui-pc) .room[data-state='LIAR'] .center-main > .liar-card {
+  flex: 1 1 auto;
+  align-content: start;
+}
+:where(.ui-pc) .room[data-state='LIAR'] .center > .chat-card {
+  flex: 0 0 clamp(260px, 24vw, 420px);
+  min-height: 0;
+}
+/* 맞춤 ② — 그림을 줄여도 넘치면 여백만 줄인다(글자 크기는 그대로) */
+:where(.ui-pc) .room.fit-tight .card {
+  padding: 8px 12px;
+}
+:where(.ui-pc) .room.fit-tight .reveal {
+  margin-top: 4px;
+  padding: 8px 10px;
+}
+:where(.ui-pc) .room.fit-tight .action-bar {
+  margin-top: 4px;
+  padding-top: 4px;
+}
+:where(.ui-pc) .room.fit-tight .song-play {
+  margin-top: 0;
+  gap: 2px;
+}
+:where(.ui-pc) .room.fit-tight .q-hints {
+  margin-top: 4px;
+}
+:where(.ui-pc) .room.fit-tight .liar-card {
+  gap: 4px;
+}
+:where(.ui-pc) .room.fit-tight .liar-word {
+  padding: 4px 10px;
+}
+:where(.ui-pc) .room.fit-tight .liar-stage-line {
+  min-height: 0;
+  padding: 6px 10px;
+}
+/* 문제 카드(R094 세로 flex) 안 부품은 줄지 않는다 — 공개 상자(overflow hidden)가 줄어 정답 · 맞힌 줄이 숨던 것(r101 두 번째 실행 · 노래 공개) → 넘치면 맞춤이 표지 · 그림을 줄인다 */
+:where(.ui-pc) .room .center-main > .question-card > * {
+  flex-shrink: 0;
+}
+:where(.ui-pc) .room.fit-tight .ranking {
+  gap: 3px;
+}
+:where(.ui-pc) .room.fit-tight .ranking li {
+  padding-block: 3px;
+}
+:where(.ui-pc) .room.fit-tight .next-row {
+  margin-top: 6px;
 }
