@@ -9,7 +9,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { REACTION_FAKE_SHOW_MS, reactionJudge, type ReactionFake, type ReactionJudge } from '@quiz/shared';
+import { REACTION_FAKE_SHOW_MS, REACTION_WINDOW_MS, reactionJudge, type ReactionFake, type ReactionJudge } from '@quiz/shared';
 import { Zap } from 'lucide-react';
 import Icon from '../Icon.js';
 import { sfx } from '../sound.js';
@@ -135,7 +135,7 @@ export default function ReactionTap({ socket, view, serverNow, mobile }: Props) 
               : state === 'done'
                 ? '좋아요! 다른 사람을 기다리는 중…'
                 : state === 'over'
-                  ? '2초 안에 누르지 못했어요'
+                  ? `${REACTION_WINDOW_MS / 1000}초 안에 누르지 못했어요` // ★ R102 — 숫자는 상수에서
                   : quickdraw
                     ? '진짜 신호는 초록 + 소리 — 가짜에 속지 마세요'
                     : mobile

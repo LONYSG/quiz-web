@@ -5034,7 +5034,8 @@ async function r083Flow(browser) {
   writeFileSync(path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r083', 'r083.json'), JSON.stringify(rows, null, 1));
   record('★★★ R083 설정 — 방식 네 버튼(캐치마인드 눌림) · 한 줄 설명 · 문제 수 숨김 · 팀전 잠김', ['quiz,minigame,liar,draw*', 'quiz,minigame,liar,draw*,song'].includes(setting.modes) && setting.note && !setting.quizRows && setting.team === true, JSON.stringify(setting));
   // ★ R087 (D-344) — 채팅은 캔버스 옆(PC) · 캔버스 1280×720 에서 ≥ 560 · 힌트 버튼 셋 · 도구 화면 안
-  record('★★★ R083/R087 출제자(PC 1280×720) — 도구 · 제시어 · 채팅 옆 · 캔버스 ≥ 560 · 힌트 버튼 3 · 도구 화면 안 · 맞히는 쪽은 도구 없음', r1.tools && !!r1.kw && r1.chatBeside && r1.side >= 560 && r1.hintBtns === 3 && r1.toolsIn && !gTools, JSON.stringify({ r1, gTools }));
+  // ★ R102 — 1280×720 기대 560 → 500: R095 D-352 가 도구 기둥 124 → 168px 로 넓히며 캔버스 562 → 518 을 정했다(낡은 기대 · 화면은 맞음)
+  record('★★★ R083/R087 출제자(PC 1280×720) — 도구 · 제시어 · 채팅 옆 · 캔버스 ≥ 500(D-352) · 힌트 버튼 3 · 도구 화면 안 · 맞히는 쪽은 도구 없음', r1.tools && !!r1.kw && r1.chatBeside && r1.side >= 500 && r1.hintBtns === 3 && r1.toolsIn && !gTools, JSON.stringify({ r1, gTools }));
   record('★★★ R083 마우스로 그린 선 2개가 손님(m360) 캔버스에 · m360 캔버스 화면 안', gStrokes === 2 && gRect.x >= 0 && gRect.x + gRect.w <= gRect.vw + 1, JSON.stringify({ gStrokes, gRect }));
   // ★ R101 (D-358) — 선착순: 첫 정답에 그 그림이 끝나 손님 화면은 바로 공개(맞힘 표시 대신 정답 글자) → 맞힌 1
   record('★★★ R083 채팅 정답 — 시스템 줄 "정답!" · 공개 키워드 · ★ R101 선착순 맞힌 1', /정답!/.test(sysLine) && rev.kw === r1.kw && rev.solved === 1, JSON.stringify({ gSolved, sysLine, rev }));
@@ -5544,6 +5545,80 @@ async function r093Flow(browser) {
 const R094_RX = `JSON.stringify((() => { const box = document.querySelector('.rx-result'); if (!box) return null; const cell = box.getBoundingClientRect(); const ps = [...box.querySelectorAll('p')].map((p) => { const r = p.getBoundingClientRect(); return { t: p.innerText.replace(/\\n/g, ' / '), sw: p.scrollWidth, cw: p.clientWidth, l: Math.round(r.left - cell.left), r: Math.round(cell.right - r.right) }; }); const out = ps.some((p) => p.sw > p.cw + 1 || p.l < -1 || p.r < -1); return { w: Math.round(cell.width), ps, out, over: document.documentElement.scrollWidth - innerWidth }; })())`;
 const R094_Q = `JSON.stringify((() => { const q = document.querySelector('.q-text'); const card = document.querySelector('.question-card'); const chat = document.querySelector('.room .chat-card'); const center = document.querySelector('.center'); const hint = [...document.querySelectorAll('.q-hint.open')].pop(); if (!q || !card) return null; const cs = getComputedStyle(q); const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.45; const R = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; }; return { len: [...(q.dataset.text ?? q.innerText)].length, fs: cs.fontSize, lines: Math.round(q.getBoundingClientRect().height / lh), card: R(card), chat: R(chat), center: R(center), hint: hint ? hint.innerText.replace(/\\s+/g, ' ').trim() : '', kind: document.querySelector('.hint-kind')?.innerText ?? '', over: document.documentElement.scrollWidth - innerWidth }; })())`;
 // =============================================================================
+// ★★★ R102 — 제보 목록에 그 판의 지나간 문제 전부 + 공개된 정답 (UICHECK_R102=1 · 묶음 r102 · docs/design/r102 · 고치기 전 = SHOT_DIR r102-before)
+//   찬종 #129(game 2260 · 15번째 문제에서): "문제 목록에 안나오네 … 모노노케 히메 문제 … 문제 목록에 왜 안뜸?"
+//   옛 목록: 질문 앞 24자만(정답 없음 — #732 앞 24자엔 제목이 없다) · 30개 저장 · 20개만 보임 → 50문제 판이면 앞 문제가 빠진다
+//   방장 PC(1536×730 @1.25 = 찬종 창) + 소켓 손님 3 · 22문제(옛 20 넘게)를 건너뛰기로 넘긴 뒤 ⚙ 제보 → 문제 · 미니게임 제보 →
+//   ① 줄 22(문제 1~22 전부) ② 줄마다 정답(공개된 것) ③ 줄 한 줄(≤ 44px) ④ 목록 안 스크롤만 · 페이지 스크롤 0 ⑤ 1280×720 · 1920×1080 · 밤 테마 그림
+// =============================================================================
+async function r102Flow(browser) {
+  const H = await newPage(browser, 'R102-host', true);
+  await H.send('Emulation.setDeviceMetricsOverride', { width: 1536, height: 730, deviceScaleFactor: 1.25, mobile: false });
+  await signUp(H, 'r102h', '제보방장');
+  const roomId = await createRoom(H, 'R102 제보 목록');
+  const socks = await socketGuests(roomId, 3, 'r102s');
+  const N = 22;
+  await realClick(H, 'button[data-mode="quiz"]').catch(() => {});
+  await sleep(300);
+  await H.setInput('.count-input', String(N));
+  await sleep(600);
+  let epoch = null;
+  let resolved = 0;
+  socks[0].on('question.started', (p) => (epoch = p.epoch ?? epoch));
+  socks[0].on('question.resolved', () => (resolved += 1));
+  await H.evaluate("[...document.querySelectorAll('button')].find((b) => b.innerText.trim() === '게임 시작')?.click()");
+  await H.waitFor("document.querySelector('.question-card') !== null", 15000).catch(() => false);
+  const t0 = Date.now();
+  for (let i = 0; i < N && Date.now() - t0 < 600_000; i += 1) {
+    const before = resolved;
+    for (let k = 0; k < 40 && resolved === before; k += 1) {
+      for (const s of socks) s.emit('skip.vote', { vote: true, epoch });
+      await realClick(H, '.skip-btn').catch(() => {});
+      await sleep(500);
+    }
+    if (i < N - 1) await H.waitFor("document.querySelector('.reveal') === null && document.querySelector('.question-card') !== null", 20000).catch(() => false);
+  }
+  await H.waitFor("document.querySelector('.result-card') !== null", 30000).catch(() => false);
+  await sleep(600);
+  const shots = {};
+  for (const z of [{ w: 1536, h: 730, dsf: 1.25, n: '1536x730' }, { w: 1280, h: 720, dsf: 1, n: '1280x720' }, { w: 1920, h: 1080, dsf: 1, n: '1920x1080' }]) {
+    await H.send('Emulation.setDeviceMetricsOverride', { width: z.w, height: z.h, deviceScaleFactor: z.dsf, mobile: false });
+    await sleep(350);
+    await H.evaluate("document.querySelector('[data-report-btn]')?.click()");
+    await H.waitFor("document.querySelector('[data-report-menu]') !== null", 3000).catch(() => false);
+    await realClick(H, '[data-report-pick="recent"]');
+    await H.waitFor("document.querySelector('[data-report-list]') !== null", 3000).catch(() => false);
+    await sleep(300);
+    await snap(H, `report-list-${z.n}`);
+    shots[z.n] = JSON.parse(await H.evaluate(`JSON.stringify((() => {
+      const rows = [...document.querySelectorAll('.report-recent-row')];
+      const q = rows.filter((r) => /^문제 \\d+/.test(r.innerText.trim()));
+      const idx = q.map((r) => Number(r.querySelector('.rr-head')?.innerText.replace(/\\D/g, '') ?? 0)).sort((a, b) => a - b);
+      const box = document.querySelector('.report-recent');
+      const se = document.scrollingElement || document.documentElement;
+      return { rows: rows.length, q: q.length, idx: idx.join(','), withAnswer: q.filter((r) => (r.querySelector('[data-rr-answer]')?.innerText ?? '').trim().length > 0).length,
+        oneLine: rows.every((r) => r.getBoundingClientRect().height <= 44), inner: box ? box.scrollHeight > box.clientHeight : false,
+        sy: se.scrollHeight - innerHeight, sx: se.scrollWidth - innerWidth, sample: q.slice(0, 2).map((r) => r.innerText.replace(/\\s+/g, ' ')) };
+    })())`));
+    await H.key('Escape');
+    await sleep(250);
+  }
+  // 밤 테마 그림
+  await H.evaluate("document.documentElement.dataset.theme = 'night'");
+  await H.evaluate("document.querySelector('[data-report-btn]')?.click()");
+  await H.waitFor("document.querySelector('[data-report-menu]') !== null", 3000).catch(() => false);
+  await realClick(H, '[data-report-pick="recent"]');
+  await sleep(350);
+  await snap(H, 'report-list-night-1920x1080');
+  await H.key('Escape');
+  await H.evaluate("document.documentElement.dataset.theme = 'pastel'");
+  const want = Array.from({ length: N }, (_, i) => i + 1).join(',');
+  const ok = Object.values(shots).every((s) => s.q === N && s.idx === want && s.withAnswer === N && s.oneLine && s.sy <= 0 && s.sx <= 0);
+  record(`★★★ R102 #129 제보 목록 — 지나간 ${N}문제 전부(옛 20개만) · 줄마다 공개된 정답 · 한 줄 · 페이지 스크롤 0(목록 안만) — 1536×730 · 1280×720 · 1920×1080`, ok, JSON.stringify({ resolved, shots }));
+  for (const s of socks) s.close();
+  await H.close?.();
+}
+
 // ★★★ R101 — 화면 스크롤 0 · 채팅 줄 수 · 내용 잘림 (UICHECK_R101=1 · 묶음 r101 · docs/design/r101 · 고치기 전 = SHOT_DIR r101-before)
 //   찬종 2026-11-13: "노래 맞히기 할때 채팅창이 너무 작다. 정답공개할때 125% fhd 에서는 스크롤도 생김. 다른 화면도 마찬가지."
 //     폼: "채팅이 최소 5개? 적절한 라인은 최소한 보여주도록 … 어떠한 경우에도 화면에 스크롤이 생기면 안돼."
@@ -5564,6 +5639,11 @@ const R101_MIN_LINES = 6;
 const R101_FIT = `JSON.stringify((() => {
   const se = document.scrollingElement || document.documentElement;
   const out = { sy: se.scrollHeight - innerHeight, sx: se.scrollWidth - innerWidth };
+  // ★ R102 — 맞춤 상태(fit-tight · 줄인 채팅 줄 · 결과 카드 부품 높이) — 6줄 미만일 때 까닭을 보려고
+  const roomEl = document.querySelector('.room');
+  if (roomEl) out.fit = { tight: roomEl.classList.contains('fit-tight'), cut: roomEl.style.getPropertyValue('--fit-cut'), lines: roomEl.style.getPropertyValue('--chat-lines'), centerH: Math.round(document.querySelector('.room .center')?.clientHeight ?? 0) };
+  const rc = document.querySelector('.room .result-card');
+  if (rc) out.rc = [Math.round(rc.getBoundingClientRect().height), ...[...rc.children].map((c) => (String(c.className).split(' ')[0] || c.tagName) + ':' + Math.round(c.getBoundingClientRect().height))].join(' ');
   const log = document.querySelector('.room .chat-log');
   if (log) {
     const cs = getComputedStyle(log);
@@ -6763,7 +6843,7 @@ async function r087Flow(browser) {
   const lv = ['pc', 'lap', 'lap2', 'm390'].map((n) => res.liar[n]);
   record('★★★ R087 라이어 — 큰 줄(설명 · 1.1rem↑) 크기 4 · 내 차례 설명칸 · Tab 기록 펼침(FHD · 125%) · 죽인다/살린다 · 넘침 0', lv.every((m) => m && m.line && m.fs >= 17 && m.over <= 1) && res.liar.sayShot?.say === true && ['fhd', 'fhd125'].every((n) => res.liar.vote?.[n]?.log === 'open') && /죽인다/.test(res.liar.final?.btns ?? ''), JSON.stringify(res.liar));
   const dpc = PCV.map((v) => res.draw[v.n]);
-  record('★★★ R087 캐치마인드 출제자 PC 6 — 채팅 옆 · 정사각 · 화면 안 · 도구 화면 안 · 넘침 0 · 1280×720 ≥ 560 · FHD ≥ 760 · 125% ≥ 560', dpc.every((m) => m && m.chatBeside && m.sq && m.inView && m.toolsIn && m.over <= 1) && res.draw.pc.side >= 560 && res.draw.fhd.side >= 760 && res.draw.fhd125.side >= 560, JSON.stringify(dpc.map((m) => m && [m.w, m.side, m.chatBeside, m.toolsIn, m.over])));
+  record('★★★ R087 캐치마인드 출제자 PC 6 — 채팅 옆 · 정사각 · 화면 안 · 도구 화면 안 · 넘침 0 · 1280×720 ≥ 500(★ R102 — D-352 기둥 168 · 518) · FHD ≥ 760 · 125% ≥ 560', dpc.every((m) => m && m.chatBeside && m.sq && m.inView && m.toolsIn && m.over <= 1) && res.draw.pc.side >= 500 && res.draw.fhd.side >= 760 && res.draw.fhd125.side >= 560, JSON.stringify(dpc.map((m) => m && [m.w, m.side, m.chatBeside, m.toolsIn, m.over])));
   record('★★★ R087 캐치마인드 힌트 — 손님은 처음 주제 숨김 · 힌트 셋 뒤 띠 3(모바일 3 크기) · 방장 버튼 셋 다 꺼짐', res.draw.before?.topicHidden === true && MV.every((v) => res.draw[`g-${v.n}`]?.hints === 'length,initial,topic') && res.draw.hostBtns?.every(Boolean), JSON.stringify({ b: res.draw.before?.topicHidden, g: MV.map((v) => res.draw[`g-${v.n}`]?.hints), btns: res.draw.hostBtns }));
   record('★★ R087 캐치마인드 모바일 — 맞히는 쪽 캔버스 ≈ 화면 너비(−60 안) · 출제자 도구 줄 · 넘침 0(3 크기 × 2)', MV.every((v) => { const g = res.draw[`g-${v.n}`]; const d = res.draw[`gd-${v.n}`]; return g && d && g.side >= v.w - 60 && d.side >= v.w - 60 && d.tools >= 10 && g.over <= 1 && d.over <= 1; }), JSON.stringify(MV.map((v) => [res.draw[`g-${v.n}`]?.side, res.draw[`gd-${v.n}`]?.side, res.draw[`gd-${v.n}`]?.tools])));
   for (const s of socks) s.close();
@@ -10973,6 +11053,11 @@ async function minigameFlow(browser) {
   if (process.env.UICHECK_R093) {
     await closeAllTabs(browser);
     await r093Flow(browser);
+  }
+  // ★ R102 — 제보 목록(지나간 문제 전부 + 정답)
+  if (process.env.UICHECK_R102) {
+    await closeAllTabs(browser);
+    await r102Flow(browser);
   }
   // ★ R101 — 스크롤 0 · 채팅 줄 수 · 잘림(창 6 크기 × 화면 23)
   if (process.env.UICHECK_R101) {

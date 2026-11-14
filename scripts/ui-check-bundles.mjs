@@ -93,6 +93,8 @@ export const BUNDLES = [
   // ★ R096 — 노래 맞히기 방식(설정 칩 · 표지 부채꼴 0 · 50 · 정답 뒤 100 · 15초 초성 · 가수 알림 · 공개 · 평가 · 넘기기 · 결과 · 2560 · m360 · 세 테마)
   // ★ R101 — 페이지 스크롤 0 · 채팅 보이는 줄 ≥ 6 · 판 내용 잘림 0(창 6 크기 × 화면 23 · m360 참고) — 다음 라운드들도 돌린다 · r101-before = 고치기 전 그림
   { id: 'r101', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R101: '1', SHOT_DIR: 'r101', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '9000', MINIGAME_PHASE_SCALE: '0.5' }) },
+  // ★ R102 — 제보 목록: 22문제 판 → 지나간 문제 전부(옛 20개만) · 줄마다 공개된 정답 · 한 줄 · 페이지 스크롤 0
+  { id: 'r102', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R102: '1', SHOT_DIR: 'r102', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '3000' }) },
   { id: 'r101-before', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R101: '1', SHOT_DIR: 'r101-before', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '9000', MINIGAME_PHASE_SCALE: '0.5' }) },
   { id: 'r096', stage: 'minigame', args: ['--minigame'], env: MG({ UICHECK_R096: '1', SHOT_DIR: 'r096', MG_SKIP_LAB: '1', MG_SKIP_LIVE: '1', RESOLVED_WAIT_MS: '8000' }) },
   // ★ R095 — 캐치 초성 전체 · 도구 아이콘 · 색 점 팝업 · 미니게임 판:채팅(R095_TAG=before|after)

@@ -10,6 +10,19 @@
 // ★ 값(보상 · 판 점수 · 등장 간격)은 **상수**다 — 실제로 해 보고 조정한다 (01 "미니게임" 장).
 // =============================================================================
 
+// ★★ R102 (찬종 #130 — 설명 줄 "30초" · 실제 60초) — 설명 줄의 초는 **판 시간 상수에서** 만든다(숫자를 박지 않는다 · minigame.test 가 대조)
+import { ANGLE_PLAY_MS } from './minigame/angle.js';
+import { OX_PLAY_MS } from './minigame/ox.js';
+import { ODDONE_PENALTY_MS } from './minigame/r053.js';
+import { TAP_PLAY_MS } from './minigame/r054.js';
+import { SONG_PLAY_MS, SONGYEAR_PLAY_MS } from './minigame/song.js';
+import { CHOICE_PLAY_MS, MANY_PLAY_SEC, UNIQUE_PLAY_MS } from './minigame/topics.js';
+
+/** ms → "10초" 의 숫자(소수는 한 자리) */
+const sec = (ms: number) => String(Math.round(ms / 100) / 10);
+/** 균형의 수호자 — 판마다 10초 (★ R102 카탈로그가 쓰므로 위로 옮김) */
+export const BALANCE_PLAY_MS = 10_000;
+
 /** 미니게임 키. ★ 새 미니게임은 여기에 키를 더하고 server/src/minigame/ 에 모듈 하나 · client 에 화면 하나 */
 export type MinigameKey =
   | 'cake'
@@ -98,7 +111,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'ox',
     name: 'OX 10연속',
-    oneLine: '문장 10개 — 맞으면 O, 틀리면 X! 5초 안에 · 많이 맞히고, 같으면 빠른 사람',
+    oneLine: `문장 10개 — 맞으면 O, 틀리면 X! ${sec(OX_PLAY_MS)}초 안에 · 많이 맞히고, 같으면 빠른 사람`,
     controlsPc: 'O · X 키 (또는 ← →) · 클릭 — 바꿔도 돼요(마지막)',
     controlsMobile: 'O · X 버튼 톡 — 바꿔도 돼요(마지막)',
     kind: 'quiz',
@@ -115,7 +128,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     // ★★ R096 (D-353 · 찬종 "캐치마인드·라이어처럼 따로 빼자") — 방식 'song' 으로 옮겨 미니게임 목록에서 뺀다(데이터 · 경험 키 'song|<id>' 그대로)
     hidden: true,
     name: '노래 맞히기',
-    oneLine: '30초 듣고 제목을 치세요! 제일 먼저 맞힌 사람만 +1 · 3곡',
+    oneLine: `${sec(SONG_PLAY_MS)}초 듣고 제목을 치세요! 제일 먼저 맞힌 사람만 +1 · 3곡`,
     controlsPc: '제목 입력 → Enter (계속 쳐도 돼요 · 맞히면 바로 다음 곡) · 소리를 켜 주세요',
     controlsMobile: '입력 → 확인 (계속 쳐도 돼요) · 소리 켜기',
     kind: 'quiz',
@@ -131,7 +144,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     key: 'songyear',
     hidden: true,
     name: '이 노래 몇 년도?',
-    oneLine: '20초 듣고 노래가 나온 해를 맞혀 보세요! 가장 가까운 사람이 1등 · 3곡',
+    oneLine: `${sec(SONGYEAR_PLAY_MS)}초 듣고 노래가 나온 해를 맞혀 보세요! 가장 가까운 사람이 1등 · 3곡`,
     controlsPc: '연도 4자리 입력 → Enter (바꿔도 돼요 — 마지막) · 소리를 켜 주세요',
     controlsMobile: '연도 4자리 → 확인 (바꿔도 돼요) · 소리 켜기',
     kind: 'quiz',
@@ -174,7 +187,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'many',
     name: '많이 말하기',
-    oneLine: '주제 하나 — 30초 동안 떠오르는 정답을 최대한 많이 치세요! 남의 답은 끝나야 보여요',
+    oneLine: `주제 하나 — ${MANY_PLAY_SEC}초 동안 떠오르는 정답을 최대한 많이 치세요! 남의 답은 끝나야 보여요`,
     controlsPc: '입력 → Enter (계속 치기 · 맞으면 ✓)',
     controlsMobile: '입력 → 확인 (계속 치기 · 맞으면 ✓)',
     kind: 'quiz',
@@ -188,7 +201,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     key: 'unique',
     name: '겹치면 무효',
     // ★★★ R099 (찬종 #126) — 여러 답 · 남과 겹친 답은 0 · 안 겹친 정답 수가 점수(판 값 = 판 점수 · 3판 합산)
-    oneLine: '15초 동안 주제에 맞는 답을 여러 개! 남과 겹친 답은 0 — 안 겹친 정답 수로 순위 · 3판',
+    oneLine: `${sec(UNIQUE_PLAY_MS)}초 동안 주제에 맞는 답을 여러 개! 남과 겹친 답은 0 — 안 겹친 정답 수로 순위 · 3판`,
     controlsPc: '입력 → Enter (여러 번 — 하나씩)',
     controlsMobile: '입력 → 확인 (여러 번 — 하나씩)',
     kind: 'quiz',
@@ -206,7 +219,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
     hidden: true,
     // ★ R090 (D-347) — 10 → 5 · 저장된 오답 보기(question_choices)만 · 데이터가 들어온 뒤 hidden 을 끈다
     name: '객관식 5연속',
-    oneLine: '퀴즈 문제 5개를 보기 넷 중에서 — 7초 안에! 많이 맞히고, 같으면 빠른 사람',
+    oneLine: `퀴즈 문제 5개를 보기 넷 중에서 — ${sec(CHOICE_PLAY_MS)}초 안에! 많이 맞히고, 같으면 빠른 사람`,
     controlsPc: '1 ~ 4 키 또는 클릭',
     controlsMobile: '보기를 톡',
     kind: 'quiz',
@@ -233,7 +246,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'balance',
     name: '균형의 수호자',
-    oneLine: '위 · 아래 점을 옮겨 음식을 정확히 반으로 나누세요! 10초',
+    oneLine: `위 · 아래 점을 옮겨 음식을 정확히 반으로 나누세요! ${sec(BALANCE_PLAY_MS)}초`,
     controlsPc: '← → 점 옮기기 · ↑ ↓ 위/아래 점 바꾸기 (꾹 누르면 빨라져요) · 마우스로 끌어도 돼요',
     controlsMobile: '두 점을 손가락으로 끌어 옮기세요',
     kind: 'physical',
@@ -283,7 +296,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'angle',
     name: '각도 맞추기',
-    oneLine: '눈금 없이 제시된 각도를 만드세요! 10초',
+    oneLine: `눈금 없이 제시된 각도를 만드세요! ${sec(ANGLE_PLAY_MS)}초`,
     controlsPc: '← → 0.5°씩 (꾹 누르면 빨라져요) · 마우스로 끌어도 돼요 · Space / Enter 확정',
     controlsMobile: '선 끝을 손가락으로 끌고 확정 버튼',
     kind: 'physical',
@@ -395,7 +408,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'oddone',
     name: '다른 하나 찾기',
-    oneLine: '하나만 다른 그림을 빨리 찾아 누르세요! 틀리면 +2초',
+    oneLine: `하나만 다른 그림을 빨리 찾아 누르세요! 틀리면 +${sec(ODDONE_PENALTY_MS)}초`,
     controlsPc: '마우스로 클릭',
     controlsMobile: '손가락으로 톡',
     kind: 'physical',
@@ -435,7 +448,7 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   {
     key: 'tap',
     name: '연타 10초',
-    oneLine: '10초 동안 최대한 많이 누르세요! 꾹 누르기는 안 세요',
+    oneLine: `${sec(TAP_PLAY_MS)}초 동안 최대한 많이 누르세요! 꾹 누르기는 안 세요`,
     controlsPc: 'Space 연타',
     controlsMobile: '큰 버튼 연타',
     kind: 'physical',
@@ -694,5 +707,3 @@ export function cakePlayMs(r: CakeRound): number {
   return cakeTargetMs(r) + CAKE_LATE_MS;
 }
 
-/** 균형의 수호자 — 판마다 10초 */
-export const BALANCE_PLAY_MS = 10_000;

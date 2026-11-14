@@ -2,7 +2,9 @@
 // ★★ R065 (D-270) — 제보 메뉴의 "최근 문제 · 미니게임" 목록 (찬종: "미니게임은 템포가 워낙 빠르다보니 '이 미니게임 제보' 버튼을 사실상 쓸 수가 없어")
 //
 // ★ 넣는 때: 문제 — question.resolved(번호 · 순번 · 질문 앞 24자 · 정답은 안 담음) · 미니게임 — play 단계 진입(판 하나에 한 번 · 문항 있는 게임은 문항마다)
-// ★ 모듈 변수 + sessionStorage('report.recent' · 30개) — 새로고침 · 방 나가기에도 남는다(결과 화면이 깨져 방을 나간 뒤 제보하려던 경우) · 로그아웃 때 비움
+// ★★ R102 (찬종 #129 "문제 목록에 안나오네") — 질문 앞 24자만으로는 어느 문제인지 못 알아본다(#732 앞 24자에 제목이 없다) → 공개된 정답도 담는다 ·
+//   한 판 50문제 + 미니게임 문항이 다 남게 200개(옛 30 · 메뉴는 20 만 보였다)
+// ★ 모듈 변수 + sessionStorage('report.recent' · 200개) — 새로고침 · 방 나가기에도 남는다(결과 화면이 깨져 방을 나간 뒤 제보하려던 경우) · 로그아웃 때 비움
 // =============================================================================
 
 export interface RecentTarget {
@@ -12,6 +14,8 @@ export interface RecentTarget {
   questionIndex: number | null;
   /** 질문 앞 24자(문제만) */
   text: string | null;
+  /** ★ R102 — 공개된 정답(문제만 · 공개 뒤에만 넣으므로 숨길 것 없음) · 옛 저장분은 없음 */
+  answer?: string | null;
   minigameKey: string | null;
   minigameItem: string | null;
   /** 기기 시각(ms) — 서버가 그 판을 찾을 때 쓴다 */
@@ -19,7 +23,9 @@ export interface RecentTarget {
 }
 
 const STORE_KEY = 'report.recent';
-const MAX = 30;
+/** ★ R102 — 30 → 200(한 판 50문제 + 미니게임 문항 전부) */
+export const RECENT_MAX = 200;
+const MAX = RECENT_MAX;
 
 let list: RecentTarget[] = load();
 const listeners = new Set<() => void>();
@@ -49,8 +55,8 @@ function push(t: RecentTarget) {
   save();
 }
 
-export function noteRecentQuestion(gameId: string | null, questionId: string, index: number, text: string) {
-  push({ key: `q:${gameId ?? ''}:${questionId}`, questionId, questionIndex: index, text: [...text].slice(0, 24).join(''), minigameKey: null, minigameItem: null, at: Date.now() });
+export function noteRecentQuestion(gameId: string | null, questionId: string, index: number, text: string, answer: string | null = null) {
+  push({ key: `q:${gameId ?? ''}:${questionId}`, questionId, questionIndex: index, text: [...text].slice(0, 24).join(''), answer, minigameKey: null, minigameItem: null, at: Date.now() });
 }
 
 export function noteRecentMinigame(token: string, roundIndex: number, key: string, itemId: string | null) {

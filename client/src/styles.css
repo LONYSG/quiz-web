@@ -7991,6 +7991,17 @@ button.mg-cat-card {
   text-overflow: ellipsis;
   font-size: 0.82rem;
 }
+/* ★ R102 (#129) — 공개된 정답 — 질문 글이 먼저 줄고 정답은 끝까지(너무 길면 제 칸 안에서 …) */
+.report-recent-row .rr-answer {
+  flex: 0 0 auto;
+  max-width: 45%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+}
 .report-recent-empty {
   margin: 8px 0;
   text-align: center;
@@ -11548,8 +11559,42 @@ button.preset.shake {
 :where(.ui-pc) .room.fit-tight .mg-item-id {
   margin-top: 0;
 }
+/* ★ R102 (R101 남은 것 — 노래 결과 1536×730 · 1280×720 채팅 5.3줄) — 맞춤 ② 에서 우승 줄을 한 줄로("우승!" 옆에 이름 · 트로피 작게) */
+:where(.ui-pc) .room.fit-tight .result-card .champion {
+  gap: 10px;
+  margin-bottom: 6px;
+  padding: 3px 12px;
+}
+:where(.ui-pc) .room.fit-tight .result-card .champion-trophy {
+  font-size: 1.4rem;
+}
+:where(.ui-pc) .room.fit-tight .result-card .champion-names {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+:where(.ui-pc) .room.fit-tight .result-card .champion-names > p {
+  margin: 0;
+}
+:where(.ui-pc) .room.fit-tight .result-card .champion-name {
+  font-size: 1.3rem;
+}
+/* ★ R102 (R101 남은 것 — 1280×720 노래 공개 5.8줄) — 맞춤 ② 에서 공개 상자 줄 사이 · 행동 줄 여백 */
+:where(.ui-pc) .room.fit-tight .reveal.has-winner {
+  row-gap: 2px;
+}
+:where(.ui-pc) .room.fit-tight .center-main > .question-card:has(> .song-play):has(> .reveal) > .song-play {
+  margin-top: 4px;
+}
 /* 노래 결과 곡 목록 — 맞춤 ② 에서 한 줄 높이(안에서 스크롤 — 순위 목록과 같은 꼴) · 채팅 6줄이 먼저 */
 :where(.ui-pc) .room.fit-tight .song-result-list {
-  max-height: 3.6rem;
+  /* ★ R102 — 3.6rem(1.5줄 — 둘째 줄이 반만 보였다) → 딱 한 줄 · 위 여백 줄임 */
+  max-height: 2.4rem;
+  margin-top: 2px;
   overflow-y: auto;
+}
+/* ★ R102 — 맞춤 ② 에서 순위 목록은 3.5줄 높이까지(안에서 스크롤 — R066 꼴) — 결과 카드가 줄지 않아(실측 순위 188px)
+   맞춤 ③ 이 채팅을 5줄로 깎던 것(노래 결과 1536×730 · 1280×720) · 채팅 6줄이 먼저 */
+:where(.ui-pc) .room-result.fit-tight .result-card > .ranking {
+  max-height: 8.5rem;
 }

@@ -23,6 +23,9 @@ import {
   type BalanceKind,
   BALLOON_PUMP_MAX,
   BALLOON_PUMP_MIN,
+  MANY_PLAY_SEC,
+  TAP_PLAY_MS,
+  TYPING_PLAY_MS,
 } from '@quiz/shared';
 import { BookOpenCheck, CalendarClock, Crosshair, Gamepad2, Hand, Globe2, ImageIcon, Keyboard, PartyPopper, Ruler, Scale, ScanSearch, Tag, Trophy, Users, Zap } from 'lucide-react';
 import Icon from '../Icon.js';
@@ -250,7 +253,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
             </p>
             {view.key === 'cake' && <p className="dim mg-rules-note">블루투스 이어폰은 소리가 늦게 들려요 — 화면 숫자를 믿으세요</p>}
             {view.key === 'reaction' && <p className="dim mg-rules-note">진짜 신호는 초록 화면 — 소리를 꺼도 초록만 보면 돼요 · 노란 화면 · 글자 · 소리만은 가짜</p>}
-            {view.key === 'typing' && <p className="dim mg-rules-note">한글 짧은 문장 · 영어 · 한글 긴 문장 — 30초 안에 못 치면 친 만큼(%)으로</p>}
+            {view.key === 'typing' && <p className="dim mg-rules-note">한글 짧은 문장 · 영어 · 한글 긴 문장 — {TYPING_PLAY_MS / 1000}초 안에 못 치면 친 만큼(%)으로</p>}
             {/* ★ R063 (D-259) — 내부 규칙 · 계산 설명은 적지 않는다(찬종 #17) — 판 수와 보상만 */}
             <p className="dim mg-rules-note">
               {view.roundCount}판 · {view.practice ? '연습' : `${bonusRanks(view.participants.length)}는 포인트도!`}
@@ -376,7 +379,7 @@ function readyDesc(view: MinigameView): string {
     case 'bingo':
       return p.phase === 'fill' ? `${String(p.nameKo ?? '')} — 내 판 채우기` : `호명 ${String(p.call ?? '')}`;
     case 'many':
-      return `${String(p.nameKo ?? '')} — ${String(p.timeSec ?? 30)}초 동안 최대한 많이!`;
+      return `${String(p.nameKo ?? '')} — ${String(p.timeSec ?? MANY_PLAY_SEC)}초 동안 최대한 많이!`; // ★ R102 — 숫자는 상수에서
     case 'ox':
       return '';
     case 'song':
@@ -422,7 +425,7 @@ function readyDesc(view: MinigameView): string {
     case 'balloon':
       return '딱 100 — 넘으면 펑!';
     case 'tap':
-      return '10초 — 최대한 많이!';
+      return `${TAP_PLAY_MS / 1000}초 — 최대한 많이!`; // ★ R102
   }
 }
 
@@ -941,7 +944,7 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
     return (
       <div className="mg-r051-result">
         <p className="mg-r051-big mono">{mine?.value !== null && mine?.value !== undefined ? `${mine.value}번` : '—'}</p>
-        <p className="dim">10초 동안 누른 횟수</p>
+        <p className="dim">{TAP_PLAY_MS / 1000}초 동안 누른 횟수</p>
       </div>
     );
   }

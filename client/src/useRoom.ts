@@ -683,7 +683,8 @@ export function useRoom(socket: Socket | null): RoomHook {
         if (!prev) return prev;
         // ★ R065 — 제보 메뉴 최근 목록(같은 판 · 같은 문항은 한 번만)
         const qid = p.questionId ?? prev.question?.questionId;
-        if (qid && prev.question) noteRecentQuestion(prev.game?.gameId ?? null, qid, prev.question.index, prev.question.text);
+        // ★ R102 (#129) — 공개된 정답도 담는다(질문 앞 24자만으로는 어느 문제인지 못 알아본다)
+        if (qid && prev.question) noteRecentQuestion(prev.game?.gameId ?? null, qid, prev.question.index, prev.question.text, p.displayAnswer ?? null);
         const scoreById = new Map(p.scores.map((s) => [s.accountId, s.score]));
         return {
           ...prev,

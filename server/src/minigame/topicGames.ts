@@ -1,7 +1,7 @@
 // =============================================================================
 // ★★★ R080 — 미니게임 1차 (D-330 · D-337): 많이 말하기 · 겹치면 무효(주제 세트) · 객관식 5연속(퀴즈 문항 보기)
 //
-// ★ 많이 말하기(many): 주제 하나 · timeSec(기본 30) 동안 글 입력(Enter 마다) · 서버 판정 즉시 **본인에게만** ✓ / ✗ / 이미 말함
+// ★ 많이 말하기(many): 주제 하나 · MANY_PLAY_SEC(30 · ★ R102 세트의 timeSec 은 안 씀) 동안 글 입력(Enter 마다) · 서버 판정 즉시 **본인에게만** ✓ / ✗ / 이미 말함
 //   (남의 답 · 남의 개수 안 보임 — countProvisional 없음 · 제출 수 줄도 화면이 숨긴다) · 끝나면 전원 목록 · 나만 말한 답 · 못 말한 것 공개.
 //   점수 = 맞힌 수 → 판 순위 점수(rankRound · 동점 공동). 0개는 값 없음(0점).
 // ★ 겹치면 무효(unique): 판마다 다른 주제(3판) · 15초 · ★ R099 여러 답 · 남과 겹친 항목은 전원 0 · 판 점수 = 안 겹친 정답 수(옛: 답 하나 · 혼자만 1).
@@ -20,7 +20,7 @@ import {
   CHOICE_PLAY_MS,
   CHOICE_READY_MS,
   CHOICE_REVEAL_MS,
-  MANY_DEFAULT_SEC,
+  MANY_PLAY_SEC,
   MANY_MAX_TRIES,
   MANY_REVEAL_MS,
   MANY_WRONG_KEEP,
@@ -95,7 +95,7 @@ export function pickTopicSets(
 }
 
 export function topicsFor(n: number, seed: number, ctx: BuildCtx, key = 'many'): TopicSet[] | null {
-  if (ctx.practice) return TOPIC_DUMMY.slice(0, n).map((d) => makeTopicSet({ topic: d.topic, nameKo: d.nameKo, kind: 'closed', timeSec: MANY_DEFAULT_SEC }, d.items.map((x) => ({ id: x.id, name: x.name, variants: [...(x.variants ?? [])] }))));
+  if (ctx.practice) return TOPIC_DUMMY.slice(0, n).map((d) => makeTopicSet({ topic: d.topic, nameKo: d.nameKo, kind: 'closed', timeSec: MANY_PLAY_SEC }, d.items.map((x) => ({ id: x.id, name: x.name, variants: [...(x.variants ?? [])] }))));
   const q = ctx.quiz;
   if (!q) return null;
   const used = (q.usedTopics ??= new Set<string>());
@@ -129,9 +129,9 @@ export const many: MinigameDef = {
     return [
       {
         itemKey: `topic:${s.topic}`,
-        params: { topic: s.topic, nameKo: s.nameKo, ...(s.scope ? { scope: s.scope } : {}), timeSec: s.timeSec, total: s.items.length, ...(ctx.practice ? { dummy: true } : {}) },
+        params: { topic: s.topic, nameKo: s.nameKo, ...(s.scope ? { scope: s.scope } : {}), timeSec: MANY_PLAY_SEC, total: s.items.length, ...(ctx.practice ? { dummy: true } : {}) },
         secret: { matcher: s.matcher, items: s.items.map((x) => ({ id: x.id, label: x.label })), ambiguous: s.ambiguous } as unknown as Record<string, unknown>,
-        playMs: s.timeSec * 1000,
+        playMs: MANY_PLAY_SEC * 1000, // ★ R102 (#130) — 세트의 timeSec(60 · 90)이 설명 줄 30초를 덮었다
         readyMs: 1_500,
         resultMs: MANY_REVEAL_MS,
         seed,

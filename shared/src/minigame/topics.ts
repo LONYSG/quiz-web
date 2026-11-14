@@ -12,8 +12,11 @@ import { normalizeAnswer } from '../normalize.js';
 
 /** 많이 말하기 · 겹치면 무효가 쓰는 세트의 최소 항목 수(18 §9 minItems) — kind closed 만 */
 export const TOPIC_MIN_ITEMS = 20;
-/** 많이 말하기 — 세트에 timeSec 이 없을 때 */
-export const MANY_DEFAULT_SEC = 30;
+/** ★★ R102 (찬종 #130 "30초라고 써있는거 같은데 60초임" · 2026-11-15 "많이 말하기는 30초로") — 판 시간은 **이 값 하나**.
+ *   옛: 세트의 timeSec(topic_sets.time_sec — 60 · 90 인 세트가 있었다)이 덮었다 → 세트 값은 보지 않는다(데이터 파일 · 적재가 60 · 90 을 다시 넣어도 30). */
+export const MANY_PLAY_SEC = 30;
+/** @deprecated R102 — MANY_PLAY_SEC 와 같다(옛 이름) */
+export const MANY_DEFAULT_SEC = MANY_PLAY_SEC;
 /** 많이 말하기 — 정답 공개(누가 뭘 말했나 · 못 말한 것) */
 export const MANY_REVEAL_MS = 12_000;
 /** 많이 말하기 — 한 사람이 보낼 수 있는 입력 수(판 하나) · 오답 기록 상한 */

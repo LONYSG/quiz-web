@@ -15,7 +15,7 @@
 // =============================================================================
 
 import { recentClientErrors } from './clientErrors.js';
-import { recentTargets, subscribeRecent, type RecentTarget } from './reportRecent.js';
+import { RECENT_MAX, recentTargets, subscribeRecent, type RecentTarget } from './reportRecent.js';
 import { setReportOpen } from './reportGuard.js';
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
@@ -493,7 +493,8 @@ function ReportWindow({ frozen, onClose }: { frozen: Frozen; onClose: () => void
 }
 
 // ── ★ R065 (D-270) 제보 메뉴 — 두 갈래 ──────────────────────────────────────────
-const LIST_MAX = 20;
+/** ★ R102 (#129) — 20 → 저장한 것 전부(200 · 한 판에 지나간 문항 전부 · 목록 안에서 스크롤) */
+const LIST_MAX = RECENT_MAX;
 const hhmm = (t: number) => new Date(t).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false });
 const mgName = (key: string | null) => (key ? (minigameInfo(key as MinigameKey)?.name ?? key) : '');
 
@@ -509,6 +510,12 @@ function RecentRow({ t, onPick }: { t: RecentTarget; onPick: () => void }) {
             {t.text}
             {t.text && t.text.length >= 24 ? '…' : ''}
           </span>
+          {/* ★ R102 (#129) — 공개된 정답(질문 앞 글자만으로는 어느 문제인지 못 알아본다) · 옛 저장분은 없음 */}
+          {t.answer && (
+            <span className="rr-answer" data-rr-answer>
+              {t.answer}
+            </span>
+          )}
         </>
       ) : (
         <>

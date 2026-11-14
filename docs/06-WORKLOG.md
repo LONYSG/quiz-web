@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-15 — 제보 #129 · #130: 제보 목록 전부 + 정답 / 많이 말하기 30초 / R101 남은 것 (R102, MAIN · D-359)
+- 무엇: #129 사실 확인(answer_events · near_misses · 서버 로그) — 찬종 제출 "모모노케히메"(거리 1 · 오답 맞음) · 승자 590 · "늑대소녀" 정답 처리 없음. client reportRecent(정답 · 200) · AppReport(전부 보임 · 정답 칸) · useRoom · styles · shared minigame.ts(설명 줄 초 = 상수) · topics.ts(MANY_PLAY_SEC) · server topicGames(세트 timeSec 무시) · MinigameStage · ReactionTap(안내 초 = 상수) · DB topic_sets.time_sec 30(실 43 · dev 6) · ui-check r102(새) · 캐치 캔버스 기대 560 → 500(D-352) · 노래 결과 · 공개 맞춤 ② 줄임.
+- [x] A 제보 목록 [x] B 많이 말하기 30초 [x] C 캔버스 기대 [x] C 채팅 6줄(r101 24/24) — 검증 = ai-out/R102.txt 2절.
+
 ## 2026-11-14 — 실전 피드백: 라이어 단계 줄 · 토론 / PC 채팅 6줄 + 스크롤 0 / 캐치마인드 선착순 · 포기 (R101, MAIN · D-358)
 - 무엇: 찬종 11-13 저녁 9판 피드백 셋. shared liar.ts(discuss · LIAR_STEPS · liarStep · discussNeed · 시간) · draw.ts(ROUND_MS 120 · SCORE_SOLVER/DRAWER) · server liar/engine.ts(discuss · tally 없앰 · liarDiscussEnd) · draw/engine.ts(첫 정답에 끝 · drawGiveUp) · socket(liar.discussEnd · draw.giveUp) · LiarStage.tsx(단계 줄 · 토론 칸 · 결과 줄 · 이의제기 = 공개 뼈대) · DrawStage.tsx(포기 + 확인) · Lobby.tsx(PC 맞춤) · styles(R101 블록) · GameSettings 설명 · bot.mjs · ui-check.mjs(r101 흐름 + 라이어 흐름 넷 토론) · ui-check-bundles(r101 · r101-before).
 - 검증: typecheck · vitest 57 파일 777 · build · 봇 liar 31/31 · liarfool 9/9 · draw 24/24 · ui-check r101 22/24(고치기 전 12/24) · 끝 점검 묶음은 R101.txt 4절.
