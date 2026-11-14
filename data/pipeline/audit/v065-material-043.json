@@ -1,0 +1,2298 @@
+{
+ "chunk": "043",
+ "version": "v0.3",
+ "round": "V065",
+ "summary": {
+  "재료_fact_총수": 566,
+  "extra_총수": 147,
+  "전수_틀림_엇갈림": {
+   "ok": 24,
+   "fix": 1,
+   "drop": 0
+  },
+  "전수_extra": {
+   "ok": 138,
+   "fix": 9,
+   "drop": 0
+  },
+  "표본_맞음_무작위40": {
+   "ok": 39,
+   "fix": 1,
+   "drop": 0
+  },
+  "상식": {
+   "ok": 8,
+   "fix": 0,
+   "drop": 0
+  },
+  "판정_수": 220,
+  "quote_기계대조": "재료의 url 195개를 이번에 새로 받아 모든 fact · extra 의 quote(약 700개)를 페이지 글과 대조 — 없는 것 4건은 [표] · 인포박스 칸이라 원문 위키텍스트에서 확인(2745-e1 · 2927-f3 · 3166-f4 · 3765-f3 모두 있음)",
+  "상식_열어본것": "없음 — 8건 모두 연도 · 최상급 없는 정의(2745-f5 는 1982 vs 1988 로 '몇 해 앞선' 맞음)",
+  "못_연_url": "없음(처음 429 17건은 재시도로 모두 열림)",
+  "지시서_재료에_넣을_한줄": "quote 에 없는 구체어(선인장 · 과수원 · 서른셋 · 수레 · 그래서)를 text 에 얹지 않는다 · 'first / the first to' 는 쉼표 뒤 대상까지 걸리는지 확인한다 · 영어 어원(synaptein)을 비슷한 다른 낱말(synapsis)로 바꾸지 않는다"
+ },
+ "facts": [
+  {
+   "id": 2384,
+   "ref": "2384-e1",
+   "kind": "extra",
+   "text": "1994년 이인수 등이 '이적표현물'이라며 조정래를 국가보안법 위반 혐의로 고발했고, 사건은 11년 만인 2005년 무혐의로 끝남",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2386,
+   "ref": "2386-f8",
+   "kind": "fixed",
+   "text": "작가는 '구정권하에서라면 이런 소재가 아무리 구미에 당기더라도 감히 다루지 못했을 것'이라고 말했다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2406,
+   "ref": "2406-e1",
+   "kind": "extra",
+   "text": "한국에 남은 홍예교 가운데 가장 큰 다리는 보성 벌교의 홍교로, 보물로 지정되어 있고 지금도 주민들이 씀",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2406,
+   "ref": "2406-e2",
+   "kind": "extra",
+   "text": "2003년 아치 지간 550m 의 중국 노포대교(Lupu Bridge)가 완성됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2412,
+   "ref": "2412-e1",
+   "kind": "extra",
+   "text": "영불 해협 터널 사업은 1883년 영국 군부가 침략 통로가 될 수 있다고 우려해 포기됨(당시 TBM 으로 시험 굴착이 성공한 뒤)",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2465,
+   "ref": "2465-f6",
+   "kind": "fixed",
+   "text": "공격 전쟁 반대인 비공도 묵가의 유명한 사상이다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2465,
+   "ref": "2465-e1",
+   "kind": "extra",
+   "text": "겸애의 반대는 '구분하여 사랑함'이라는 뜻의 별애",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2465,
+   "ref": "2465-e2",
+   "kind": "extra",
+   "text": "한비자는 '세상의 현학은 유와 묵이다'라고 함 — 전국시대 묵가는 유가와 나란한 학파였음",
+   "verdict": "fix",
+   "fixed": "한비자는 '세상의 현학(顯學)은 유와 묵이다'라고 함",
+   "why": "fix — quote 는 한비자 말까지 — '전국시대 묵가는 유가와 나란한 학파였음' 은 quote 밖의 풀이(현학=드러난 학파라는 해석)라 뺌",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2489,
+   "ref": "2489-e1",
+   "kind": "extra",
+   "text": "1938년 독일의 오토 한과 프리츠 슈트라스만의 실험으로 확인됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2489,
+   "ref": "2489-e2",
+   "kind": "extra",
+   "text": "히로시마 폭탄에는 우라늄 64kg 이 들었지만 실제로 핵분열한 것은 1kg 도 안 됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2501,
+   "ref": "2501-e1",
+   "kind": "extra",
+   "text": "1967년 디트로이트 폭동 등을 겪은 뒤 고디는 회사를 로스앤젤레스로 옮겼고 이전은 1972년에 끝남",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2507,
+   "ref": "2507-f4",
+   "kind": "fixed",
+   "text": "해리 할로의 붉은털원숭이 연구는 애착 이론을 지지하는 가장 영향력 있는 연구 중 하나다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2507,
+   "ref": "2507-e1",
+   "kind": "extra",
+   "text": "회피 애착 영아는 양육자가 떠나거나 돌아올 때 감정을 거의 보이지 않음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2513,
+   "ref": "2513-e1",
+   "kind": "extra",
+   "text": "프로이트가 말한 심리성적 발달 다섯 단계를 부인하고 여덟 단계를 주장함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2513,
+   "ref": "2513-e2",
+   "kind": "extra",
+   "text": "복잡한 출생 배경과 불우한 성장 환경 탓에 평생 자아정체감에 관심을 가졌고, 심리학자가 되어 이를 연구함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2569,
+   "ref": "2569-e1",
+   "kind": "extra",
+   "text": "제1회 시상식은 1943년 영화를 대상으로 1944년 1월 20세기 폭스 스튜디오에서 열림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2569,
+   "ref": "2569-e2",
+   "kind": "extra",
+   "text": "2022년 HFPA 회원 구성의 다양성 부족 등에 대한 비판과 보이콧이 일어 상의 운영이 바뀌게 됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2618,
+   "ref": "2618-e1",
+   "kind": "extra",
+   "text": "리처드 1세가 다치자 공격을 멈추고 의사를 보냈고, 전투 중 말을 잃자 말 두 필을 보냈다고 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2618,
+   "ref": "2618-e2",
+   "kind": "extra",
+   "text": "살라딘과 리처드는 강화 뒤 존중의 뜻으로 많은 선물을 주고받았지만 한 번도 직접 만나지는 않음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2631,
+   "ref": "2631-f2",
+   "kind": "fixed",
+   "text": "1990~1993년 백인 정부와 아프리카 민족회의 · 넬슨 만델라의 협상 끝에 해체되기 시작했고, 1994년 4월 27일 대통령으로 뽑힌 만델라가 완전 폐지를 선언했다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2631,
+   "ref": "2631-e1",
+   "kind": "extra",
+   "text": "1994년 4월 27일 민주적 선거로 대통령이 된 만델라가 완전 폐지를 선언함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2647,
+   "ref": "2647-f5",
+   "kind": "fixed",
+   "text": "1967년 이 책으로 마르케스는 라틴아메리카 문학의 마술적 사실주의 작가로 세계적인 이름을 얻었다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2647,
+   "ref": "2647-e1",
+   "kind": "extra",
+   "text": "46개 언어로 옮겨져 5천만 부 넘게 팔림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2647,
+   "ref": "2647-e2",
+   "kind": "extra",
+   "text": "작가가 어린 시절을 보낸 아라카타카의 조부모 집이 마콘도의 모델이 됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2652,
+   "ref": "2652-e1",
+   "kind": "extra",
+   "text": "제임스보다 앞서 1855년 알렉산더 베인이 『감각과 지성』 초판에서 이 말을 썼음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2652,
+   "ref": "2652-e2",
+   "kind": "extra",
+   "text": "문학 용어로 처음 쓴 사람은 메이 싱클레어로, 1918년 4월 도로시 리처드슨의 연작 소설을 두고 씀",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2670,
+   "ref": "2670-e1",
+   "kind": "extra",
+   "text": "마지막 '그랜드 피날레' 때 토성과 안쪽 고리 사이의 틈을 여러 번 위험하게 지나감",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2686,
+   "ref": "2686-e1",
+   "kind": "extra",
+   "text": "다윈은 1867년 월리스에게 '애벌레는 왜 그렇게 아름다운 색을 띠는가'를 물었음 — 짝짓기를 하지 않는 애벌레라 성선택으로 설명되지 않았기 때문",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2686,
+   "ref": "2686-e2",
+   "kind": "extra",
+   "text": "들새가 먹는 곤충 가운데 무당벌레가 차지하는 비율은 매우 낮음(거미 · 사마귀에게는 잡아먹히기도 함)",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2689,
+   "ref": "2689-e1",
+   "kind": "extra",
+   "text": "풀을 찾아 1,600~2,000km 넘게 이동함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2689,
+   "ref": "2689-e2",
+   "kind": "extra",
+   "text": "100년 전에는 장거리 이동 무리가 많았지만 지금은 세렝게티 · 타랑기레 · 카푸에 셋만 남음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2698,
+   "ref": "2698-e1",
+   "kind": "extra",
+   "text": "1961년 애니메이션으로는 처음 에미상 코미디 시리즈 부문 후보에 올랐으나 '잭 베니 쇼'에 졌음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2698,
+   "ref": "2698-e2",
+   "kind": "extra",
+   "text": "첫 두 시즌은 윈스턴 담배가 함께 후원해, 등장인물들이 윈스턴 광고에 나옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2698,
+   "ref": "2698-e3",
+   "kind": "extra",
+   "text": "프레드의 유행어는 '야바 다바 두!'",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2708,
+   "ref": "2708-e1",
+   "kind": "extra",
+   "text": "서양에서는 같은 기법을 엔타시스(entasis)라고 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2708,
+   "ref": "2708-e2",
+   "kind": "extra",
+   "text": "한국에서는 고구려 고분벽화에서도 배흘림기둥의 모습이 보임",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2711,
+   "ref": "2711-f5",
+   "kind": "fixed",
+   "text": "건물의 과학적 설계와 판가 진열이 원활한 통풍 · 방습 · 알맞은 실내 온도 유지를 가능하게 한다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2711,
+   "ref": "2711-e1",
+   "kind": "extra",
+   "text": "6·25 전쟁 중 1951년 김영환 대령이 상부 명령을 따르지 않고 해인사 폭격을 멈췄고, 해인사는 그의 위패를 장경판전 안에 모심",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2743,
+   "ref": "2743-f4",
+   "kind": "fixed",
+   "text": "지금 유럽과 동아시아의 많은 세계 정상급 선수가 셰이크핸드를 쓰며, 중국에서도 흔한 그립이 됐다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2743,
+   "ref": "2743-f6",
+   "kind": "fixed",
+   "text": "펜홀드보다 배우기 쉽고 공격 · 수비 모두 폭넓은 경기 방식을 쓸 수 있다고 널리 받아들여진다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2743,
+   "ref": "2743-e1",
+   "kind": "extra",
+   "text": "탁구 규칙은 라켓을 어떻게 쥐어야 하는지 정하지 않음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2745,
+   "ref": "2745-e1",
+   "kind": "extra",
+   "text": "원년 첫 우승 팀은 OB 베어스",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2751,
+   "ref": "2751-e1",
+   "kind": "extra",
+   "text": "선인장 같은 사막 식물(CAM 식물)은 물이 덜 증발하는 밤에 기공을 엶",
+   "verdict": "fix",
+   "fixed": "주로 사막에 사는 CAM 식물은 물이 덜 증발하는 밤에 기공을 엶",
+   "why": "fix — 페이지는 'mostly desert plants called CAM plants' 라고만 함 — '선인장' 이라는 말은 페이지에 없음",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2752,
+   "ref": "2752-f4",
+   "kind": "fixed",
+   "text": "큰 참나무 한 그루는 한 해에 4만 미국 갤런(약 15만 리터)을 증산할 수 있다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2752,
+   "ref": "2752-e1",
+   "kind": "extra",
+   "text": "뿌리가 빨아들인 물 가운데 생장 · 대사에 쓰이는 것은 조금이고 97~99.5% 는 증산 등으로 빠져나감",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2752,
+   "ref": "2752-e2",
+   "kind": "extra",
+   "text": "옥수수밭 1에이커는 하루 약 11,000~15,000 리터의 물을 내보냄",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2755,
+   "ref": "2755-e1",
+   "kind": "extra",
+   "text": "이름(phloem)은 '나무껍질'을 뜻하는 그리스어에서 왔음 — 나무껍질의 가장 안쪽 층에 있기 때문",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2755,
+   "ref": "2755-e2",
+   "kind": "extra",
+   "text": "과수원에서는 껍질 고리 벗기기로 잎이 만든 당이 열매로만 가게 해 열매를 더 크게 키움",
+   "verdict": "fix",
+   "fixed": "열매 맺는 식물의 큰 가지나 줄기에 껍질을 고리 모양으로 벗기면 잎이 만든 당이 열매로만 가서 열매가 보통보다 크게 자람",
+   "why": "fix — 페이지는 'a fruit-bearing plant' 이고 '과수원' 이 아님 · 포도는 따로 적음",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2780,
+   "ref": "2780-e1",
+   "kind": "extra",
+   "text": "'환원(reduction)'은 원래 금속 광석을 가열해 금속을 뽑을 때 무게가 줄어드는 것을 가리켰음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2780,
+   "ref": "2780-e2",
+   "kind": "extra",
+   "text": "라부아지에가 그 무게 감소가 산소가 기체로 빠져나간 탓임을 보임",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2791,
+   "ref": "2791-e1",
+   "kind": "extra",
+   "text": "19세기 스코틀랜드의 윌리엄 윌슨이 1870년대에 일종의 '물속 럭비'로 만들었다고 여겨짐",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2791,
+   "ref": "2791-e2",
+   "kind": "extra",
+   "text": "'폴로'라는 이름은 공을 뜻하는 발티어 '풀루'의 영어식 발음에서 왔음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2807,
+   "ref": "2807-e1",
+   "kind": "extra",
+   "text": "본명은 엔드레 에르뇌 프리드만 — '로버트 카파'는 지어낸 이름으로, 미국 감독 프랭크 카프라에게서 따왔다고 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2807,
+   "ref": "2807-e2",
+   "kind": "extra",
+   "text": "카파는 디데이에 106장을 찍었으나 11장만 남았다고 말함('매그니피센트 일레븐')",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2834,
+   "ref": "2834-e1",
+   "kind": "extra",
+   "text": "시장의 스카치위스키 가운데 싱글 몰트는 약 10% 뿐이고, 해마다 팔리는 스카치의 90% 가까이가 블렌디드",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2834,
+   "ref": "2834-e2",
+   "kind": "extra",
+   "text": "2018년 스코틀랜드 위스키 수출액(47억 파운드) 가운데 싱글 몰트가 금액으로 28% 가까이를 차지함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2834,
+   "ref": "2834-e3",
+   "kind": "extra",
+   "text": "스카치 싱글 몰트는 스코틀랜드에서 증류해 스코틀랜드의 참나무통에서 3년 이상 숙성해야 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2838,
+   "ref": "2838-e1",
+   "kind": "extra",
+   "text": "가장 이름난 것은 프랑스 남서부의 코냑과 아르마냑",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2838,
+   "ref": "2838-e2",
+   "kind": "extra",
+   "text": "처음에는 포도주를 보존하고 상인이 나르기 쉽게 하려고 증류했음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2857,
+   "ref": "2857-f5",
+   "kind": "fixed",
+   "text": "가장 오래된 물은 약 1000년에 걸쳐 흘러 북태평양에서 솟아오른다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2857,
+   "ref": "2857-e1",
+   "kind": "extra",
+   "text": "흔히 '해양 컨베이어 벨트'라고 부르며, 이 말은 기후학자 월리스 브로커가 만듦",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2906,
+   "ref": "2906-e1",
+   "kind": "extra",
+   "text": "전염병 유행으로 아시안게임이 1년 미뤄진 것은 역사상 처음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2906,
+   "ref": "2906-e2",
+   "kind": "extra",
+   "text": "서호라는 이름은 오대십국 시대 오월국(907~978년)의 수도였을 때 지어짐",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2937,
+   "ref": "2937-e1",
+   "kind": "extra",
+   "text": "란트슈타이너는 처음에 O형을 'C'라고 이름 붙였음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2937,
+   "ref": "2937-e2",
+   "kind": "extra",
+   "text": "란트슈타이너는 1930년 노벨 생리의학상을 받음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2962,
+   "ref": "2962-f2",
+   "kind": "fixed",
+   "text": "노래를 부른 윤심덕이 귀국길 현해탄에서 극작가 김우진과 함께 실종되면서 화제가 되었다 — 동반자살은 목격자도 시신도 없어 당시 사람들의 추측이다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2962,
+   "ref": "2962-f4",
+   "kind": "fixed",
+   "text": "흔히 한국 대중가요의 효시로 보는 경우가 많음",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 2962,
+   "ref": "2962-e1",
+   "kind": "extra",
+   "text": "한국어 음반으로는 처음 일본에서 발매됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2962,
+   "ref": "2962-e2",
+   "kind": "extra",
+   "text": "본래 경쾌한 왈츠지만 느리게 불러 처연하고 비극적인 느낌을 살림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3014,
+   "ref": "3014-f3",
+   "kind": "fixed",
+   "text": "대사의 글자가 '나 떨고 있니' 인지 '나 떨고 있냐' 인지",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3014,
+   "ref": "3014-e1",
+   "kind": "extra",
+   "text": "《여명의 눈동자》의 김종학 PD 와 송지나 작가가 다시 뭉친 드라마",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3014,
+   "ref": "3014-e2",
+   "kind": "extra",
+   "text": "최민수는 1995년 SBS 연기대상 대상을 받음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3032,
+   "ref": "3032-e1",
+   "kind": "extra",
+   "text": "거푸집은 보통 구조체 공사비의 30~40%, 전체 공사비의 10% 를 차지함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3032,
+   "ref": "3032-e2",
+   "kind": "extra",
+   "text": "청동기 · 철기 시대에는 흙으로 거푸집을 만들어 녹인 금속을 부어 도끼 · 창 · 숟가락 등을 만듦",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3040,
+   "ref": "3040-e1",
+   "kind": "extra",
+   "text": "홈 인슈어런스 빌딩은 돌 · 벽돌 건물의 3분의 1 무게라, 시 관리들이 걱정해 안전을 조사하는 동안 공사를 멈추게 했음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3040,
+   "ref": "3040-e2",
+   "kind": "extra",
+   "text": "1970년대 초까지 석면이 강철 구조의 내화재로 널리 쓰였음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3062,
+   "ref": "3062-e1",
+   "kind": "extra",
+   "text": "발로 연주하도록 경첩 · 용수철을 단, 바닥 높이의 '속 심벌'에서 나왔음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3062,
+   "ref": "3062-e2",
+   "kind": "extra",
+   "text": "첫 대가로 인정받는 '파파' 조 존스가 박자 잡기를 베이스 드럼에서 하이햇으로 옮겼다고 함",
+   "verdict": "fix",
+   "fixed": "2013년 모던 드러머 기사는 '파파' 조 존스가 박자 잡기를 베이스 드럼에서 하이햇으로 옮긴 사람으로 꼽는다",
+   "why": "fix — 원문은 'first to use brushes … and shifting time keeping' — '첫 대가로 인정받는' 은 quote 에 없는 말 · 기사가 그렇게 '꼽는다' 로",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3089,
+   "ref": "3089-e1",
+   "kind": "extra",
+   "text": "시인 알렉산더 포프가 스페인에서 온 꾸러미를 묶은 가지 하나를 얻어 심었는데 잘 자랐고, 영국의 수양버들이 모두 이 나무의 후손이라는 전설이 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3089,
+   "ref": "3089-e2",
+   "kind": "extra",
+   "text": "1935년에 이미 옥신을 줄기에 바르면 꺾꽂이의 뿌리가 더 많이 난다는 것이 알려져 있었음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3105,
+   "ref": "3105-e1",
+   "kind": "extra",
+   "text": "같은 사고실험을 더 앞서 비크리와 하사니가 다뤘는데, 이들은 합리적인 사람이 공리주의를 고를 것이라는 결론을 냄 — 롤스와 다른 결론",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3112,
+   "ref": "3112-f1",
+   "kind": "fixed",
+   "text": "1967년 영국 철학자 필리파 풋이 낙태 논쟁 · 이중 효과 원리를 분석하며 이 물음을 제기했다. 그보다 앞선 1905년 프랭크 채프먼 샤프의 도덕 설문에도 비슷한 상황이 있었다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3112,
+   "ref": "3112-e1",
+   "kind": "extra",
+   "text": "여러 설문에서 응답자의 약 90% 가 한 명을 희생해 다섯 명을 구하는 쪽을 고름",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3112,
+   "ref": "3112-e2",
+   "kind": "extra",
+   "text": "육교에서 사람을 미는 '개인적' 딜레마는 감정 관련 뇌 영역을, 레버로 트는 '비개인적' 딜레마는 통제된 추론 영역을 더 쓴다는 fMRI 연구가 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3130,
+   "ref": "3130-e1",
+   "kind": "extra",
+   "text": "화력발전소 · 내연기관 · 총 · 냉장고 · 열펌프도 일상의 열기관 예로 꼽힘",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3130,
+   "ref": "3130-e2",
+   "kind": "extra",
+   "text": "지구에서는 차가운 쪽이 주변 온도(약 300K) 근처로 묶여, 효율을 높이려는 노력은 주로 뜨거운 쪽 온도를 올리는 데 쏠림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3158,
+   "ref": "3158-e1",
+   "kind": "extra",
+   "text": "서로 공격할 뜻으로 싸우다 먼저 맞고 맞서 때린 경우는 방어이자 공격이라 정당방위로 보지 않음(대법원 판례)",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3158,
+   "ref": "3158-e2",
+   "kind": "extra",
+   "text": "불법 체포를 벗어나려 반항하다 경찰관을 다치게 한 것은 정당방위로 인정됨(판례)",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3161,
+   "ref": "3161-e1",
+   "kind": "extra",
+   "text": "상고는 판결 선고일부터 7일 안에 상고장을 내야 함",
+   "verdict": "fix",
+   "fixed": "형사 사건에서 상고는 판결 선고일부터 7일 이내에 상고장을 제출해야 함",
+   "why": "fix — 페이지가 형사소송법 · 형사소송규칙 맥락의 설명 — 민사는 기간이 다르므로 '형사' 를 붙임",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3161,
+   "ref": "3161-e2",
+   "kind": "extra",
+   "text": "1심 판결이 법률을 적용하지 않았거나 잘못 적용했으면 항소를 건너뛰고 바로 상고(비약상고)할 수 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3166,
+   "ref": "3166-e1",
+   "kind": "extra",
+   "text": "2023년 블랙핑크가 아시아 가수로는 처음 코첼라의 헤드라이너가 됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3166,
+   "ref": "3166-e2",
+   "kind": "extra",
+   "text": "첫 축제는 1999년 10월 이틀 동안 열렸고, 2000년엔 열리지 않았다가 2001년 4월부터 해마다 열림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3199,
+   "ref": "3199-e1",
+   "kind": "extra",
+   "text": "아슈케나지 유대인은 일상에서 '슐(shul)'이라 부르는데, 영어 'school'과 같은 그리스어 schola 에서 온 말",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3199,
+   "ref": "3199-e2",
+   "kind": "extra",
+   "text": "히브리어 이름 '베트 크네세트'는 '모임의 집'이라는 뜻",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3221,
+   "ref": "3221-e1",
+   "kind": "extra",
+   "text": "외래 본인부담률은 상급종합병원 50%, 종합병원 40% 등 병원 종류에 따라 다름",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3222,
+   "ref": "3222-e1",
+   "kind": "extra",
+   "text": "사회 변화에 맞춰 새 규범 · 가치 · 지식을 다시 익히는 것을 재사회화라고 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3288,
+   "ref": "3288-e1",
+   "kind": "extra",
+   "text": "이탈리아에서는 155분판으로 두 번 개봉해 흥행에 실패했고, 124분으로 줄인 국제판이 성공함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3288,
+   "ref": "3288-e2",
+   "kind": "extra",
+   "text": "이 영화로 시작된 토르나토레와 모리코네의 협업은 2020년 모리코네가 죽을 때까지 이어짐",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3296,
+   "ref": "3296-e1",
+   "kind": "extra",
+   "text": "오랫동안 퀘벡 사회를 깎아내리는 데 쓰였다가, 2000년대 중반부터 캐나다 정체성의 상징으로 자리 잡음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3306,
+   "ref": "3306-f2",
+   "kind": "fixed",
+   "text": "발트해에서 러시아의 얼지 않는 항구",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3306,
+   "ref": "3306-e1",
+   "kind": "extra",
+   "text": "1990년대에 레닌그라드 · 칼리닌 같은 공산 지도자 이름의 도시들이 옛 이름을 되찾았지만 칼리닌그라드는 그대로임",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3306,
+   "ref": "3306-e2",
+   "kind": "extra",
+   "text": "칸트의 무덤이 대성당 옆에 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3306,
+   "ref": "3306-e3",
+   "kind": "extra",
+   "text": "1256년 튜튼 기사단이 세운 쾨니히스베르크 성이 도시의 시작",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3315,
+   "ref": "3315-e1",
+   "kind": "extra",
+   "text": "정작 초기 왕조의 추종자들은 몽골인이 아니라 차가타이 튀르크인이었음 — 인도에서 몽골과 연결해 '무굴'이라 불림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3337,
+   "ref": "3337-e1",
+   "kind": "extra",
+   "text": "원고료를 필명으로 받으려면 우체국에 갈 때마다 직장 도장이 찍힌 증명서가 필요해, 귀찮음을 덜려고 아예 '모옌'을 법적 이름으로 삼음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3337,
+   "ref": "3337-e2",
+   "kind": "extra",
+   "text": "『붉은 수수밭』 영화는 장이머우의 감독 데뷔작",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3365,
+   "ref": "3365-e1",
+   "kind": "extra",
+   "text": "말미잘을 먹는 물고기를 쫓아 주고 말미잘을 청소 · 부채질해 주는 등 흰동가리도 말미잘을 도움",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3385,
+   "ref": "3385-e1",
+   "kind": "extra",
+   "text": "에피소드마다 끝 무렵 초자연 괴물의 가면을 벗기면 탈을 쓴 진짜 사람이 드러남",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3385,
+   "ref": "3385-e2",
+   "kind": "extra",
+   "text": "개발 초기 개의 이름은 '투 머치(Too Much)'였음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3417,
+   "ref": "3417-e1",
+   "kind": "extra",
+   "text": "깨진 조각 일부는 돌아오지 않아, 마리아의 코는 조각상 등에서 떼어 낸 돌로 다시 만듦",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3417,
+   "ref": "3417-e2",
+   "kind": "extra",
+   "text": "마리아가 서른셋쯤 된 아들보다 젊게 조각돼, 단테 『신곡』의 구절에서 영감을 받았다고 미술사가들은 봄",
+   "verdict": "fix",
+   "fixed": "마리아가 예수보다 젊게 조각됐는데, 단테 『신곡』의 한 구절에서 영감을 받았다고 미술사가들은 봄",
+   "why": "fix — '서른셋쯤 된 아들' 은 페이지에 없음 — 페이지는 'Mary looks younger than Jesus'",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3431,
+   "ref": "3431-f2",
+   "kind": "fixed",
+   "text": "발견한 해가 1965년",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3431,
+   "ref": "3431-e1",
+   "kind": "extra",
+   "text": "잡음은 예상보다 100배 세고 하늘 전체에 고르게, 밤낮으로 있었음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3431,
+   "ref": "3431-e2",
+   "kind": "extra",
+   "text": "불과 60km 떨어진 프린스턴의 디키 연구팀이 바로 그 복사를 찾으려 준비하던 중이었음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3432,
+   "ref": "3432-e1",
+   "kind": "extra",
+   "text": "네이스미스는 관리인에게 상자 두 개를 부탁했는데 관리인이 복숭아 바구니를 가져왔고, 그래서 경기 이름을 '바스켓 볼'이라 함",
+   "verdict": "fix",
+   "fixed": "네이스미스가 관리인에게 상자 두 개를 구해 달라고 했더니 복숭아 바구니를 가져왔고, 네이스미스는 이 새 경기를 'Basket Ball' 이라 이름 붙였다",
+   "why": "fix — 페이지는 두 문장을 따로 적음 — '그래서'(인과)는 quote 에 없음",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3432,
+   "ref": "3432-e2",
+   "kind": "extra",
+   "text": "복숭아 바구니는 1906년 백보드 달린 쇠 링으로 바뀔 때까지 쓰임",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3432,
+   "ref": "3432-e3",
+   "kind": "extra",
+   "text": "첫 경기는 9명 대 9명이 축구공으로 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3438,
+   "ref": "3438-e1",
+   "kind": "extra",
+   "text": "이름은 고대 그리스어 '끝(telos)'과 '부분(meros)'에서 옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3441,
+   "ref": "3441-f5",
+   "kind": "fixed",
+   "text": "플라스크를 기울여 입자가 굽은 곳으로 떨어지게 하자 고기즙이 곧 탁해졌다(한국어 문서: 목을 부러뜨리면 미생물이 자란다)",
+   "verdict": "fix",
+   "fixed": "플라스크를 기울여 입자가 굽은 곳으로 떨어지게 하자 고기즙이 곧 탁해졌다",
+   "why": "fix — fixed 에 든 한국어 문서 괄호는 quote 가 뒷받침하지 않아 뺌(메모 괄호 금지)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3441,
+   "ref": "3441-e1",
+   "kind": "extra",
+   "text": "파스퇴르 연구소 박물관의 백조목 플라스크는 실험 그대로 보존돼 지금도 그 안에서 저절로 생긴 생명체가 없음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3441,
+   "ref": "3441-e2",
+   "kind": "extra",
+   "text": "나일강 진흙에서 철마다 쥐가 생긴다는 것도 자연발생의 예로 꼽혔음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3443,
+   "ref": "3443-e1",
+   "kind": "extra",
+   "text": "이 퍼즐이 처음 알려진 기록은 9세기 — 루드라타의 산스크리트 시학서에 반쪽 판 위의 나이트 경로가 '말 걸음의 배열'이라는 시 형식으로 나옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3443,
+   "ref": "3443-e2",
+   "kind": "extra",
+   "text": "8×8 판에서 출발점으로 돌아오는 닫힌 경로(방향 구분)는 정확히 26,534,728,821,064 가지",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3469,
+   "ref": "3469-e1",
+   "kind": "extra",
+   "text": "7세기 하르샤 왕의 산스크리트 희곡에도 등을 밝히고 약혼한 신랑 신부가 선물을 받는 축제로 나옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3470,
+   "ref": "3470-f4",
+   "kind": "fixed",
+   "text": "바닷새와 바다 동물 1만 마리 넘게 죽음",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3470,
+   "ref": "3470-f5",
+   "kind": "fixed",
+   "text": "유출 사고의 뒤처리가 위스콘신의 게일로드 넬슨 상원의원에게 영감을 주어, 1970년 4월 22일 약 2천만 명을 모은 '지구의 날' 을 조직하게 했다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3470,
+   "ref": "3470-e1",
+   "kind": "extra",
+   "text": "당시 미국 해역에서 가장 큰 기름 유출 사고였고, 지금도 캘리포니아 앞바다 최대",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3480,
+   "ref": "3480-e1",
+   "kind": "extra",
+   "text": "처음 만났을 때 쇼팽은 '상드는 정말 매력 없는 사람'이라고 했음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3480,
+   "ref": "3480-e2",
+   "kind": "extra",
+   "text": "불행했던 마요르카 체류는 그의 가장 생산적인 작곡 시기 가운데 하나가 됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3493,
+   "ref": "3493-f1",
+   "kind": "fixed",
+   "text": "이름이 라틴어 fuga('도망 · 달아남')에서 옴",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3493,
+   "ref": "3493-e1",
+   "kind": "extra",
+   "text": "마지막 푸가는 239마디에서 끊기고, 아들 C.P.E. 바흐가 'BACH 이름을 대주제에 넣은 이 푸가에서 작곡가가 죽었다'고 적어 둠",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3493,
+   "ref": "3493-e2",
+   "kind": "extra",
+   "text": "1981년 음악학자 피터 윌리엄스가 '토카타와 푸가 라단조'가 바흐 작품인지 의문을 제기함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3513,
+   "ref": "3513-e1",
+   "kind": "extra",
+   "text": "안드로이드는 원래 디지털카메라용 운영체제로 출발했음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3513,
+   "ref": "3513-e2",
+   "kind": "extra",
+   "text": "토르발스는 1993년 캔버라 동물원에서 작은 펭귄에게 물린 뒤 '펭귄병'에 걸렸다고 말함 — 마스코트가 펭귄이 된 사연",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3547,
+   "ref": "3547-f5",
+   "kind": "fixed",
+   "text": "피터와 헐은 풍자로 쓰려 했으나, 위계 조직의 승진 방식의 문제를 진지하게 짚은 것으로 읽히며 인기를 얻었다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3547,
+   "ref": "3547-e1",
+   "kind": "extra",
+   "text": "2010년 승진 대상을 무작위로 뽑는 것이 효율을 가장 높인다는 시뮬레이션 연구가 이그노벨상(경영학)을 받음",
+   "verdict": "fix",
+   "fixed": "2010년 승진을 무작위로 하거나 최고 · 최저 성과자 중에서 무작위로 뽑는 것이 효율을 가장 높인다는 시뮬레이션 연구가 이그노벨상(경영학)을 받음",
+   "why": "fix — 페이지: 'promote people randomly, or to shortlist the best and the worst performer … then randomly' — 무작위만이 아님",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3577,
+   "ref": "3577-f4",
+   "kind": "fixed",
+   "text": "미주기구(OAS) 중재로 '닷새 만에' 멈춤",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3577,
+   "ref": "3577-e1",
+   "kind": "extra",
+   "text": "1969년 온두라스에 사는 엘살바도르인은 30만 명이 넘어 온두라스 인구의 10% 이상이었음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3577,
+   "ref": "3577-e2",
+   "kind": "extra",
+   "text": "엘살바도르 공군은 P-51 머스탱 · C-47 과 급히 폭격기로 개조한 민간 비행기로 온두라스 비행장을 공격함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3590,
+   "ref": "3590-e1",
+   "kind": "extra",
+   "text": "실제 낱말을 제안한 사람은 포스터의 친구인 고전학자 아서 울가 베럴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3619,
+   "ref": "3619-e1",
+   "kind": "extra",
+   "text": "꿀꿀이죽이 5원이던 것을 감안해 삼양라면 값을 10원으로 정함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3619,
+   "ref": "3619-e2",
+   "kind": "extra",
+   "text": "박정희 대통령이 '국민 입맛에 맞게 맵게 할 수 없나'며 삼양에 직접 전화했다는 일화가 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3660,
+   "ref": "3660-e1",
+   "kind": "extra",
+   "text": "이범석은 1948년 7월 31일부터 1950년 4월 20일까지 제1대 국무총리였고 국방부 장관도 겸함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3672,
+   "ref": "3672-e1",
+   "kind": "extra",
+   "text": "이튿날 이완이 다시 찾아갔을 때 허생은 사라지고 없었음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3672,
+   "ref": "3672-e2",
+   "kind": "extra",
+   "text": "이남희의 '허생의 처' 같은 패러디 소설이 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3674,
+   "ref": "3674-e1",
+   "kind": "extra",
+   "text": "구토지설은 석가의 전생담인 인도 본생설화 · 중국 불전설화와 밀접한 관련이 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3674,
+   "ref": "3674-e2",
+   "kind": "extra",
+   "text": "김춘추는 보장왕에게 마목령과 죽령을 돌려 달라는 요구를 받고 거절했다가 갇힘",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3676,
+   "ref": "3676-e1",
+   "kind": "extra",
+   "text": "〈공후인〉이라고도 부르며, 실학자 한치윤의 『해동역사』에 옮겨 오면서 비로소 우리 문학으로 인정받음(다른 이름 포함)",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3678,
+   "ref": "3678-f6",
+   "kind": "fixed",
+   "text": "4행체 민요였던 것이 고려의 궁중음악인 속악으로 개편되면서 투식어와 후렴구가 첨가되었을 것으로 추정된다",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3678,
+   "ref": "3678-e1",
+   "kind": "extra",
+   "text": "〈귀호곡(歸乎曲)〉이라고도 함(다른 이름 포함)",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3678,
+   "ref": "3678-e2",
+   "kind": "extra",
+   "text": "이별의 슬픔을 노래한 원가와 태평성대를 노래하는 후렴구의 뜻이 서로 호응하지 않음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3679,
+   "ref": "3679-e1",
+   "kind": "extra",
+   "text": "결말에서 인물들이 민족의식을 자각하고 각자 유학길을 떠남",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3708,
+   "ref": "3708-f3",
+   "kind": "fixed",
+   "text": "가사는 '태양은 묘지 위에 붉게 떠오르고'",
+   "verdict": "ok",
+   "why": "ok — fixed 가 quote 범위 안 · 원문 사실이 틀린 것도 확인",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3745,
+   "ref": "3745-e1",
+   "kind": "extra",
+   "text": "그 첫 글리산도는 리허설 중 우연히 생겨났음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3745,
+   "ref": "3745-e2",
+   "kind": "extra",
+   "text": "클라리넷 연주자 로스 고먼이 첫 마디를 장난스럽게 늘여 불자, 거슈윈이 그렇게 연주해 달라고 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3753,
+   "ref": "3753-e1",
+   "kind": "extra",
+   "text": "초기 밴조는 아프리카계 미국인이 만들었고 아프리카에 뿌리를 둠",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3765,
+   "ref": "3765-e1",
+   "kind": "extra",
+   "text": "호루스를 무릎에 안은 이시스 상이 아기 예수에게 젖을 먹이는 성모 마리아 그림에 영향을 주었다는 견해가 자주 나옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3768,
+   "ref": "3768-e1",
+   "kind": "extra",
+   "text": "영어 mummy 는 중세 라틴어 Mumia 를 거쳐, 방부 처리된 시신과 역청 방부제를 뜻한 중세 아랍어 mūmiya 에서 옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3776,
+   "ref": "3776-e1",
+   "kind": "extra",
+   "text": "추상은 바른 자세를 판정하기 어려워 1972년 뒤 없어짐",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3794,
+   "ref": "3794-e1",
+   "kind": "extra",
+   "text": "누이가 펴낸 판본을 거치며 니체의 글이 파시즘 · 나치즘과 엮이게 됨",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3800,
+   "ref": "3800-e1",
+   "kind": "extra",
+   "text": "상앙은 수레에 사지를 묶어 찢는 거열형을 처음 만들었는데, 뒤에 그 자신이 거열형으로 처형됨",
+   "verdict": "fix",
+   "fixed": "상앙은 거열형의 창시자였는데, 뒤에 그 자신이 거열형으로 처형됨",
+   "why": "fix — '수레에 사지를 묶어 찢는' 설명은 페이지에 없음(출처는 '창시자' 라고만 적음)",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3805,
+   "ref": "3805-e1",
+   "kind": "extra",
+   "text": "쿼크 모형은 1964년 머리 겔만과 조지 츠바이크가 따로따로 내놓음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3840,
+   "ref": "3840-e1",
+   "kind": "extra",
+   "text": "배럿은 같은 공연에 같은 이름(the Tea Set)의 다른 밴드가 나온다는 것을 알고 그 자리에서 이 이름을 지었다고 전한다",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3840,
+   "ref": "3840-e2",
+   "kind": "extra",
+   "text": "배럿은 정신 건강이 나빠져 1968년 밴드를 떠남",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3849,
+   "ref": "3849-e1",
+   "kind": "extra",
+   "text": "티보 르 텍시에는 짐바르도가 결론을 확인하려고 간수들에게 특정하게 행동하라고 요구했다고 주장함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3865,
+   "ref": "3865-e1",
+   "kind": "extra",
+   "text": "라시 주석은 제본 쪽 안쪽에, 토사포트는 쪽 바깥 가장자리에 놓임",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3868,
+   "ref": "3868-f8",
+   "kind": "fixed",
+   "text": "힌두교와 이슬람의 경계를 넘어선 가르침",
+   "verdict": "ok",
+   "why": "ok — 엇갈림 칸: 두 출처가 실제로 다르게 적음을 확인 · gpt 는 그 수 · 글자를 쓰지 않음(재료 지침대로)",
+   "lane": "틀림 · 엇갈림 전수"
+  },
+  {
+   "id": 3868,
+   "ref": "3868-e1",
+   "kind": "extra",
+   "text": "무굴 황제들은 이슬람 개종을 거부한 시크교 구루 아르잔과 테그 바하두르를 고문하고 처형함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3880,
+   "ref": "3880-e1",
+   "kind": "extra",
+   "text": "남아 있는 에우리피데스 비극의 절반 넘게가 이 장치로 결말을 냄",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3880,
+   "ref": "3880-e2",
+   "kind": "extra",
+   "text": "아리스토파네스는 『테스모포리아 축제의 여인들』 에서 에우리피데스 본인을 등장인물로 삼아 기중기로 무대에 내려 그의 잦은 사용을 비꼼",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3883,
+   "ref": "3883-e1",
+   "kind": "extra",
+   "text": "처음 구상은 맨해튼 로어 이스트사이드에 사는 가톨릭 집안과 유대인 집안의 갈등이었음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 3883,
+   "ref": "3883-e2",
+   "kind": "extra",
+   "text": "로런츠가 쓴 첫 초고의 이름은 'East Side Story'",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "extra 전수"
+  },
+  {
+   "id": 2751,
+   "ref": "2751-f3",
+   "kind": "fact",
+   "text": "물이 수증기로 빠져나가고, 광합성에 쓸 이산화탄소가 들어오며, 광합성으로 만든 산소가 나가는 통로",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3678,
+   "ref": "3678-f7",
+   "kind": "fact",
+   "text": "『악장가사』에 가사 전문이, 『시용향악보』에 1장의 가사와 악보가 실림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3288,
+   "ref": "3288-f5",
+   "kind": "fact",
+   "text": "신부가 잘라 내게 한 키스 장면들을 알프레도가 이어 붙인 필름이 마지막에 나옴 — 끝의 '키스 장면' 몽타주로 특히 유명함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3166,
+   "ref": "3166-f5",
+   "kind": "fact",
+   "text": "1999년 폴 톨렛과 릭 밴 샌튼이 함께 만들었고 골든보이스가 주관함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2444,
+   "ref": "2444-f1",
+   "kind": "fact",
+   "text": "연주하는 줄 아래로 울림줄(공명현)이 지나며 연주 줄에 맞춰 함께 울림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2465,
+   "ref": "2465-f3",
+   "kind": "fact",
+   "text": "묵자는 겸애설을 가르침",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2906,
+   "ref": "2906-f3",
+   "kind": "fact",
+   "text": "저장성의 성도",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3865,
+   "ref": "3865-f5",
+   "kind": "fact",
+   "text": "1483년 손치노가 본문을 쪽 가운데에 두고 라시 · 토사포트 주석이 둘러싸는 판짜기를 만듦",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3776,
+   "ref": "3776-f5",
+   "kind": "fact",
+   "text": "저크는 바벨을 어깨에서 머리 위로 들어 올리는 동작",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3493,
+   "ref": "3493-f2",
+   "kind": "fact",
+   "text": "둘 이상의 성부에서 한 주제가 음높이를 달리해 모방되며 되풀이되는 대위법 기법",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3883,
+   "ref": "3883-f7",
+   "kind": "fact",
+   "text": "2021년 스티븐 스필버그 감독이 다시 영화로 만듦",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3880,
+   "ref": "3880-f5",
+   "kind": "fact",
+   "text": "글자 그대로 '기계 장치로 (연극 무대에) 내려온 신'",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2384,
+   "ref": "2384-f6",
+   "kind": "fact",
+   "text": "염상구는 염상진의 동생으로 극우 성향의 건달",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2743,
+   "ref": "2743-f3",
+   "kind": "fact",
+   "text": "셰이크핸드는 악수하듯 라켓을 쥐어 붙은 이름",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2708,
+   "ref": "2708-f2",
+   "kind": "fact",
+   "text": "부석사 무량수전 · 수덕사 대웅전에서 배흘림 양식을 볼 수 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3679,
+   "ref": "3679-f3",
+   "kind": "fact",
+   "text": "형식이 선형에 대한 사랑 · 정혼과 기생이 된 영채 사이에서 심리적으로 갈등함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3441,
+   "ref": "3441-f2",
+   "kind": "fact",
+   "text": "벼룩은 먼지에서, 구더기는 죽은 고기에서 생겨날 수 있다고 봄",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3166,
+   "ref": "3166-f3",
+   "kind": "fact",
+   "text": "블랙핑크 · 르세라핌 등 한국 가수가 무대에 섬",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3365,
+   "ref": "3365-f6",
+   "kind": "fact",
+   "text": "기르는 흰동가리 다수가 야생에서 잡혀 와 야생 개체가 줄었음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3014,
+   "ref": "3014-f5",
+   "kind": "fact",
+   "text": "방영 당시 평균 시청률 50.8%",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3590,
+   "ref": "3590-f2",
+   "kind": "fact",
+   "text": "그리스어 synapsis('결합')에서 왔고, 이는 syn('함께')과 haptein('묶다 · 결합하다')에서 옴",
+   "verdict": "fix",
+   "fixed": "'시냅스(synapse)'는 셰링턴이 만든 합성어 'synaptein' 에서 왔고, 이는 그리스어 syn-(함께)과 haptein(결합하다)의 합성어",
+   "why": "fix — quote · 페이지는 'synaptein' — 'synapsis' 가 아님",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3752,
+   "ref": "3752-f4",
+   "kind": "fact",
+   "text": "조지 해리슨은 1966년부터 샹카르에게 가르침을 받음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3678,
+   "ref": "3678-f4",
+   "kind": "fact",
+   "text": "가사에 '잡ᄉᆞ와 두어리마ᄂᆞᄂᆞᆫ / 선ᄒᆞ면 아니올셰라' 구절이 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3676,
+   "ref": "3676-f3",
+   "kind": "fact",
+   "text": "여옥은 눈물을 흘리며 공후를 끌어안고 그 노래를 다시 불러 봄",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3619,
+   "ref": "3619-f2",
+   "kind": "fact",
+   "text": "꿀꿀이죽은 미군 부대에서 버린 잔반을 끓인 것",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3674,
+   "ref": "3674-f2",
+   "kind": "fact",
+   "text": "고구려에 청병하러 간 김춘추가 옥에 갇혔을 때 고구려 대신 선도해가 들려준 이야기가 구토지설",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2386,
+   "ref": "2386-f2",
+   "kind": "fact",
+   "text": "전쟁포로가 된 주인공이 남한도 북한도 아닌 중립국을 택함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3365,
+   "ref": "3365-f2",
+   "kind": "fact",
+   "text": "번식 암컷이 맨 위인 크기 순 서열이 있고, 암컷이 사라지면 번식 수컷이 성을 바꿔 그 자리를 잇는다",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2513,
+   "ref": "2513-f3",
+   "kind": "fact",
+   "text": "'정체감 위기'라는 말을 만들어 냄",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3104,
+   "ref": "3104-f3",
+   "kind": "fact",
+   "text": "공론장 연구는 참여 민주주의와 여론이 정치 행동이 되는 과정을 중심으로 함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3130,
+   "ref": "3130-f3",
+   "kind": "fact",
+   "text": "작동 유체를 높은 온도에서 낮은 온도로 옮기며 일하고, 더 차가운 냉각원으로 열을 내보냄",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2689,
+   "ref": "2689-f6",
+   "kind": "fact",
+   "text": "강을 건너다 악어에게 먹히거나 물에 빠지는 장면이 많은 다큐멘터리에 나옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3745,
+   "ref": "3745-f3",
+   "kind": "fact",
+   "text": "목관악기에 속하는 싱글 리드 악기",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2906,
+   "ref": "2906-f5",
+   "kind": "fact",
+   "text": "알리바바 그룹 본사가 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2927,
+   "ref": "2927-f3",
+   "kind": "fact",
+   "text": "전북(2006 · 2016) · 포항(2009) · 성남(2010) · 울산(2012 · 2020)이 우승함",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3590,
+   "ref": "3590-f1",
+   "kind": "fact",
+   "text": "'시냅스'라는 말은 1897년 영국 신경생리학자 셰링턴이 마이클 포스터의 『생리학 교과서』에서 처음 씀",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3104,
+   "ref": "3104-f6",
+   "kind": "fact",
+   "text": "하버마스의 책 『공론장의 구조변동』은 1962년 독일어로 나옴",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3014,
+   "ref": "3014-f6",
+   "kind": "fact",
+   "text": "방영 시간이면 사람들이 일찍 귀가해 '귀가시계'라고도 불림",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 3883,
+   "ref": "3883-f6",
+   "kind": "fact",
+   "text": "1961년 영화는 아카데미상 11개 부문 후보에 올라 10개를 받음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2689,
+   "ref": "2689-f4",
+   "kind": "fact",
+   "text": "흰 턱수염과 검은 꼬리가 특징이고, 갈기와 꼬리에 긴 털이 있음",
+   "verdict": "ok",
+   "why": "ok — 이번에 url 을 열어 quote 가 페이지에 있고 text 가 quote 범위 안",
+   "lane": "맞음 표본 40"
+  },
+  {
+   "id": 2745,
+   "ref": "2745-f5",
+   "kind": "fact",
+   "text": "서울 올림픽(1988)보다 몇 해 앞선 해",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  },
+  {
+   "id": 3417,
+   "ref": "3417-f5",
+   "kind": "fact",
+   "text": "같은 주제의 작품 전반을 가리키는 말이기도 함",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  },
+  {
+   "id": 3432,
+   "ref": "3432-f4",
+   "kind": "fact",
+   "text": "복숭아를 담는, 나무 오리를 엮어 만든 깊은 그릇",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  },
+  {
+   "id": 3443,
+   "ref": "3443-f3",
+   "kind": "fact",
+   "text": "L자로 움직이고 다른 기물을 건너뛸 수 있음",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  },
+  {
+   "id": 3443,
+   "ref": "3443-f4",
+   "kind": "fact",
+   "text": "한 번 움직일 때마다 흰 칸과 검은 칸을 번갈아 밟음",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  },
+  {
+   "id": 3480,
+   "ref": "3480-f3",
+   "kind": "fact",
+   "text": "'혁명' 연습곡 · 왈츠 등을 남긴 폴란드의 피아노 작곡가",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  },
+  {
+   "id": 3619,
+   "ref": "3619-f4",
+   "kind": "fact",
+   "text": "튀겨 말린 국수와 분말 수프로 몇 분 만에 끓여 먹는 인스턴트 식품",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  },
+  {
+   "id": 3674,
+   "ref": "3674-f3",
+   "kind": "fact",
+   "text": "병든 용왕이 토끼 간을 구해 오라 하고, 토끼는 간을 뭍에 두고 왔다고 속여 살아 나옴",
+   "verdict": "ok",
+   "why": "ok — 상식(연도 · 최상급 없음)",
+   "lane": "상식"
+  }
+ ],
+ "pairs": [
+  {
+   "id": 2384,
+   "answer": "태백산맥",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 2386,
+   "answer": "광장",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 2444,
+   "answer": "시타르",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 2465,
+   "answer": "겸애",
+   "verdict": "반대",
+   "why": "상대 카드의 질문이 구체적으로 다른 사실(해설감 · 사건 · 이름 유래 · 서명 · 비난 등)을 묻는 각도라 둘 다 살릴 수 있음 — 끄는 것은 기획자가 정함"
+  },
+  {
+   "id": 2501,
+   "answer": "모타운",
+   "verdict": "반대",
+   "why": "상대 카드의 질문이 구체적으로 다른 사실(해설감 · 사건 · 이름 유래 · 서명 · 비난 등)을 묻는 각도라 둘 다 살릴 수 있음 — 끄는 것은 기획자가 정함"
+  },
+  {
+   "id": 2618,
+   "answer": "살라딘",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 2670,
+   "answer": "카시니",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 2689,
+   "answer": "누",
+   "verdict": "반대",
+   "why": "상대 카드의 질문이 구체적으로 다른 사실(해설감 · 사건 · 이름 유래 · 서명 · 비난 등)을 묻는 각도라 둘 다 살릴 수 있음 — 끄는 것은 기획자가 정함"
+  },
+  {
+   "id": 2711,
+   "answer": "장경판전",
+   "verdict": "반대",
+   "why": "상대 카드의 질문이 구체적으로 다른 사실(해설감 · 사건 · 이름 유래 · 서명 · 비난 등)을 묻는 각도라 둘 다 살릴 수 있음 — 끄는 것은 기획자가 정함"
+  },
+  {
+   "id": 2791,
+   "answer": "수구",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 2807,
+   "answer": "로버트 카파",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3158,
+   "answer": "정당방위",
+   "verdict": "반대",
+   "why": "상대 카드의 질문이 구체적으로 다른 사실(해설감 · 사건 · 이름 유래 · 서명 · 비난 등)을 묻는 각도라 둘 다 살릴 수 있음 — 끄는 것은 기획자가 정함"
+  },
+  {
+   "id": 3166,
+   "answer": "코첼라",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3288,
+   "answer": "시네마 천국",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3296,
+   "answer": "푸틴",
+   "verdict": "반대",
+   "why": "상대 카드의 질문이 구체적으로 다른 사실(해설감 · 사건 · 이름 유래 · 서명 · 비난 등)을 묻는 각도라 둘 다 살릴 수 있음 — 끄는 것은 기획자가 정함"
+  },
+  {
+   "id": 3315,
+   "answer": "무굴 제국",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3365,
+   "answer": "흰동가리",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3385,
+   "answer": "스쿠비 두",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3417,
+   "answer": "피에타",
+   "verdict": "반대",
+   "why": "상대 카드의 질문이 구체적으로 다른 사실(해설감 · 사건 · 이름 유래 · 서명 · 비난 등)을 묻는 각도라 둘 다 살릴 수 있음 — 끄는 것은 기획자가 정함"
+  },
+  {
+   "id": 3443,
+   "answer": "나이트",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3480,
+   "answer": "쇼팽",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3513,
+   "answer": "리눅스",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3590,
+   "answer": "시냅스",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3619,
+   "answer": "라면",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3660,
+   "answer": "청산리 대첩",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3672,
+   "answer": "허생전",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3674,
+   "answer": "토끼전",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3676,
+   "answer": "공무도하가",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3678,
+   "answer": "가시리",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3708,
+   "answer": "아침이슬",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3752,
+   "answer": "시타르",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3765,
+   "answer": "이시스",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3768,
+   "answer": "미라",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3800,
+   "answer": "법가",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3840,
+   "answer": "핑크 플로이드",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3849,
+   "answer": "스탠퍼드 교도소 실험",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3865,
+   "answer": "탈무드",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  },
+  {
+   "id": 3883,
+   "answer": "웨스트 사이드 스토리",
+   "verdict": "동의",
+   "why": "두 카드 모두 대표 사실을 질문에 올리면 같은 질문이 됨(재료 판단에 동의)"
+  }
+ ],
+ "holds": [
+  {
+   "id": 2556,
+   "verdict": "동의",
+   "why": "재료 note 대로 시범 묶음과 중복 — 쓰지 않음"
+  },
+  {
+   "id": 2732,
+   "verdict": "동의",
+   "why": "재료 note 대로 시범 묶음과 중복 — 쓰지 않음"
+  },
+  {
+   "id": 3604,
+   "verdict": "동의",
+   "why": "재료 note 대로 시범 묶음과 중복 — 쓰지 않음"
+  }
+ ],
+ "thin": [
+  {
+   "id": 2556,
+   "why": "facts 없음(시범 중복 hold) — gpt 는 쓰지 않고 needs_review"
+  },
+  {
+   "id": 2732,
+   "why": "facts 없음(시범 중복 hold) — gpt 는 쓰지 않고 needs_review"
+  },
+  {
+   "id": 3604,
+   "why": "facts 없음(시범 중복 hold) — gpt 는 쓰지 않고 needs_review"
+  }
+ ],
+ "core_fix": [
+  {
+   "id": 2631,
+   "core": "남아공의 법적 인종 분리 정책(아파르트헤이트) — 1990~93 협상으로 해체되기 시작해 1994년 만델라가 완전 폐지를 선언(투쟁 끝에 철폐라고 단정하지 않음)"
+  },
+  {
+   "id": 2962,
+   "core": "윤심덕이 부른 〈사의 찬미〉 — 귀국길 현해탄에서 김우진과 실종되며 화제(동반자살은 추측)"
+  }
+ ]
+}
