@@ -1,0 +1,770 @@
+{
+ "chunk": "049",
+ "version": "v0.3",
+ "round": "V072",
+ "summary": {
+  "작성자": "Sonnet(첫 묶음 시험)",
+  "재료_fact_총수": 468,
+  "extra_총수": 2,
+  "전수_틀림": {
+   "ok": 7,
+   "fix": 1,
+   "drop": 0
+  },
+  "전수_extra": {
+   "ok": 2,
+   "fix": 0,
+   "drop": 0
+  },
+  "표본_맞음_무작위40": {
+   "ok": 39,
+   "fix": 1,
+   "drop": 0
+  },
+  "상식_연도_수_인과": {
+   "ok": 2,
+   "fix": 1,
+   "drop": 0
+  },
+  "기계대조_같은꼴_추가": {
+   "ok": 0,
+   "fix": 10,
+   "drop": 0
+  },
+  "판정_수": 63,
+  "합계": {
+   "ok": 50,
+   "fix": 13,
+   "drop": 0
+  },
+  "fix_비율": "20.6%",
+  "표본만_fix_비율": "2.5%",
+  "quote_기계대조": "url 109개를 전부 원문으로 새로 받았다(위키는 API parse = 렌더 글 + wikitext · 그 밖은 HTML) · quote 393건을 페이지 글과 자동 대조: 글자 그대로 388 · 아님 5(1335-f4 · 1612-f2 · 2298-f4 · 3164-f1 · 3425-f5 — 전부 요약 · 바꿔 쓴 quote, 사실은 페이지에 있어 fix). 표본 40 안의 요약 quote = 0 → 80 으로 늘리지 않음.",
+  "요약_quote_수": {
+   "표본40": 0,
+   "파일전체": 5
+  },
+  "표본_방법": "맞음 383 중 고정 시드(49072) 무작위 40 · quote 앞뒤 200자를 읽어 text 가 quote 안에 드는지 봤다. 표본 밖은 메모 괄호 · 한정어 꼴을 기계로 찾아 읽었다(2228-f3 · 3360-f4 · 3541-f2) · core 가 기대는 질문 사실을 읽다 3813-f1 · 2727-f5 를 봤다.",
+  "상식_열어본것": "2413-f4 \"경주 · 포항 지진 뒤 학교 · 아파트 내진 여부\" — 인과 · 사건인데 상식으로 넘김. 연 문서에 없어 ko 위키 2016년 경주 지진에서 확인한 만큼으로 fix. 3021-f6(1930년대) 은 열어 ok.",
+  "못_연_url": "없음(109개 모두 받음). 재료가 못 엶으로 표시한 49건은 판정 대상 아님 — 단 2727-f5(1995) · 3541-f4(1898) 는 같은 url 에 있어 살렸다.",
+  "지시서_재료에_넣을_한줄": "quote 는 WebFetch 요약을 옮기지 말고 원문(action=raw · API parse)에서 글자 그대로 복사한다 — 이번 요약 quote 5건은 모두 사실은 맞고 문장만 지어낸 것이었다. text 에 \"(영화 이름은 출처 앞 문장)\" 같은 메모 괄호를 넣지 않는다(note 로). core 가 \"원문 질문 그대로\" 여도 질문 사실이 틀림 · 못 엶이면 core 를 고친 사실로 적는다."
+ },
+ "facts": [
+  {
+   "id": 1303,
+   "ref": "1303-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "크로마키 합성은 시각효과 · 후반 작업 기술이다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1335,
+   "ref": "1335-f4",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "일본 헤이조쿄는 장안을 더 작은 규모로 본떠 만들었다",
+   "verdict": "fix",
+   "fixed": "일본은 옛 수도 헤이조쿄(지금의 나라)와 뒤의 헤이안쿄(교토)를 장안을 본떠, 더 작은 규모로 성곽도 덜 갖춰 지었다",
+   "quote": "The Japanese built their ancient capitals, Heijō-kyō (today's Nara) and later Heian-kyō or Kyoto, modeled after Chang'an in a more modest scale and without the same level of fortifications.",
+   "why": "요약 quote — 페이지에 \"Heijō-kyō was modeled after …\" 라는 문장은 없다. 실제 문장으로 바꾼다(주어가 \"The Japanese\" 이고 헤이안쿄도 함께다)."
+  },
+  {
+   "id": 1396,
+   "ref": "1396-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "소닉붐으로 유리가 깨지는 등의 피해가 생길 수 있다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1396,
+   "ref": "1396-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "소닉붐 때문에 정기적인 육지 위 초음속 비행이 금지되기에 이르렀다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1422,
+   "ref": "1422-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "한 영화에서 배우 앤디 서키스의 연기가 컴퓨터 그래픽 골룸 · 스미골 몸에 전송됐다(영화 이름은 출처 앞 문장)",
+   "verdict": "fix",
+   "fixed": "《반지의 제왕: 두 개의 탑》은 실시간 모션 캡처 시스템을 쓴 첫 장편 영화로, 배우 앤디 서키스의 연기를 찍는 그대로 컴퓨터 그래픽 골룸 / 스미골 몸에 옮겼다",
+   "quote": "The Lord of the Rings: The Two Towers was the first feature film to utilize a real-time motion capture system. This method streamed the actions of actor Andy Serkis into the computer-generated imagery skin of Gollum / Smeagol as it was being performed.",
+   "why": "text 에 메모 괄호 \"(영화 이름은 출처 앞 문장)\" 이 들어 있다(V059 금지). quote 는 \"This method …\" 라 주어가 없다 — 앞 문장까지 넣어 영화 이름을 사실 안에 둔다."
+  },
+  {
+   "id": 1480,
+   "ref": "1480-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "이 새들은 다윈 이론이 생겨나는 데 중요한 구실을 하게 된다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1530,
+   "ref": "1530-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "토빌과 딘은 《볼레로》를 금메달을 딴 아이스댄스 음악으로 썼다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1557,
+   "ref": "1557-f3",
+   "kind": "fact",
+   "lane": "상식",
+   "text": "램 용량(8GB · 16GB)이 클수록 여러 앱을 함께 띄워도 덜 버벅인다",
+   "verdict": "ok",
+   "why": "8GB · 16GB 는 예로 든 용량일 뿐 사실 주장이 아니어서 상식으로 둔다."
+  },
+  {
+   "id": 1578,
+   "ref": "1578-f2",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "붉은색의 주된 원인은 맥락막(눈 뒤쪽)에 피가 많은 것이다",
+   "verdict": "ok",
+   "why": "quote 그대로 있음. 페이지가 맥락막을 \"눈 뒤쪽을 받치고 망막 뒤에 있다\"고 적어 \"(눈 뒤쪽)\" 도 출처 안. fixed 는 출처만큼."
+  },
+  {
+   "id": 1612,
+   "ref": "1612-f2",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "benchmark 는 원래 측량사가 장비를 올릴 받침(bench)을 확보하려고 돌에 새긴 표시를 가리켰다",
+   "verdict": "fix",
+   "fixed": "benchmark 는 원래 측량사가 측량 장비를 올릴 받침(bench — 19세기 측량 용어로 일종의 까치발)을 고정하려고 돌에 새긴 표시였다",
+   "quote": "Originally a mark cut into a stone by land surveyors to secure a bench (from land surveying jargon in the 19th century, meaning a type of bracket), to mount measuring equipment.",
+   "why": "요약 quote — 위키낱말사전 원문은 \"Originally a mark cut into a stone … to secure a bench (…), to mount measuring equipment.\" 사실은 같고 quote 만 실제 문장으로."
+  },
+  {
+   "id": 1663,
+   "ref": "1663-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "대장은 소화관의 마지막 부분이다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1705,
+   "ref": "1705-f5",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "발해의 행정 체계는 5경 · 15부 · 62주로 이루어졌다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1729,
+   "ref": "1729-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "같은 뜻의 우리말 속담이 \"쇠귀에 경 읽기\" 다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인. 단 \"속담\" 이라는 말은 페이지에 없다(사전 뜻풀이 \"쇠귀에 경 읽기\"). 1729-f1 과 같은 사실이다 → thin."
+  },
+  {
+   "id": 1734,
+   "ref": "1734-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "마지막 장면은 영채가 일본 음악학교에서 음악인으로 활동하는 등 활약상을 소개하며 끝난다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1781,
+   "ref": "1781-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "공학에서는 사면체 트러스를 쓴다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인. 단 페이지가 이 문장에 [citation needed] 를 달았다."
+  },
+  {
+   "id": 1854,
+   "ref": "1854-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "북방 침엽수는 겨울을 나는 여러 적응을 가졌고, 바늘잎의 밀랍질 덮개로 수분 손실을 줄인다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인. (lead 는 \"needle-shaped leaves\", 본문에 quote 그대로 \"needle leaves\" 가 있다.)"
+  },
+  {
+   "id": 1899,
+   "ref": "1899-f1",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "윤회(삼사라)는 태어남 · 세속의 삶 · 다시 죽음이 처음 없이 되풀이되는 순환이다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 1974,
+   "ref": "1974-f3",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "신문지로 싸는 일은 위생을 이유로 거의 사라졌다",
+   "verdict": "ok",
+   "why": "quote 그대로. fixed 는 \"almost ceased on grounds of hygiene\" 만큼(금지 아님). 원문 \"금지됐다\" 는 틀린 게 맞다."
+  },
+  {
+   "id": 2092,
+   "ref": "2092-e1",
+   "kind": "extra",
+   "lane": "전수",
+   "text": "\"그랜드 슬램\" 이라는 말은 카드 게임 콘트랙트 브리지에서 비롯됐다",
+   "verdict": "ok",
+   "why": "quote 그대로. 같은 문장 뒤에 \"where it is used for winning all possible tricks\" 가 있다."
+  },
+  {
+   "id": 2093,
+   "ref": "2093-f7",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "윔블던은 영국 런던 윔블던에서 해마다 열리고, 보통 6월 말~7월 초 2주간 열린다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2228,
+   "ref": "2228-f3",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "일부 애호가는 거품이 맥주 향을 돕는다고 본다(출처 없는 견해로 적혀 있다)",
+   "verdict": "fix",
+   "fixed": "일부 애호가는 맥주 거품이 맥주 향을 내는 데 도움을 주어 중요하다고 본다",
+   "why": "text 에 메모 괄호 \"(출처 없는 견해로 적혀 있다)\" — V059 금지. 페이지가 이 문장에 [citation needed] 를 단 것은 note 로만."
+  },
+  {
+   "id": 2247,
+   "ref": "2247-e1",
+   "kind": "extra",
+   "lane": "전수",
+   "text": "많은 현대 학자는 튤립 파동이 (옛 서술이 그리는 만큼) 파괴적이지는 않았다고 본다",
+   "verdict": "ok",
+   "why": "quote 그대로. 앞 문장이 Mackay 의 서술이라 \"(옛 서술이 그리는 만큼)\" 은 \"as he describes\" 만큼."
+  },
+  {
+   "id": 2298,
+   "ref": "2298-f1",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "베어드의 장치는 상을 훑고 보여 주는 데 모두 니프코 원판을 썼다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2298,
+   "ref": "2298-f4",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "텔레비전은 움직이는 영상과 소리를 보내는 통신 매체다",
+   "verdict": "fix",
+   "fixed": "텔레비전(TV)은 움직이는 영상과 소리를 보내는 통신 매체다",
+   "quote": "Television (TV) is a telecommunication medium for transmitting moving images and sound.",
+   "why": "quote 에서 \"(TV)\" 를 뺐다 — 글자 그대로가 아니다. 사실은 같고 quote 만 실제 문장으로."
+  },
+  {
+   "id": 2317,
+   "ref": "2317-f2",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "백설기는 아기의 삼칠일이나 100일에 먹고, 흰색은 순수와 신성을 나타낸다",
+   "verdict": "ok",
+   "why": "quote 그대로. fixed 뒷절 \"흰색은 순수와 신성\" 은 같은 문단 \"떡은 순수와 신성을 나타내는 흰색이다\"(2317-f3 와 같은 문장)에 있다. 원문 \"돌 · 깨끗함\" 은 페이지에 없어 틀림 판정이 맞다."
+  },
+  {
+   "id": 2341,
+   "ref": "2341-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "백령도 사곶 사빈은 천연기념물 제391호다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2345,
+   "ref": "2345-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "다도해해상국립공원은 1981년 12월 23일에 지정되었다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2413,
+   "ref": "2413-f4",
+   "kind": "fact",
+   "lane": "상식",
+   "text": "경주 · 포항 지진 뒤 학교 건물과 아파트의 내진 여부를 따지게 됐다",
+   "verdict": "fix",
+   "fixed": "2016년 경주 지진 뒤 정부는 그해 12월 지진방재 종합대책을 확정하고, 내진설계 의무 대상을 2층 · 200제곱미터 이상 건축물과 모든 주택으로 넓혔다",
+   "url": "https://ko.wikipedia.org/wiki/2016년_경주_지진",
+   "quote": "정부는 2016년 12월 4대 목표와 109개 세부과제로 이루어진 지진방재 종합대책을 확정했고, 내진설계 의무 대상을 2층, 200제곱미터 이상 건축물과 모든 주택으로 넓혔으며",
+   "why": "상식으로 넘겼지만 사건 · 인과 사실이다. 연 내진설계 문서(ko)에 경주 · 포항이 없다. ko 위키 \"2016년 경주 지진\" 에서 확인한 만큼으로 바꾼다(\"학교 건물과 아파트\" 는 확인 못 함 · 포항은 이 문장에 넣지 않는다)."
+  },
+  {
+   "id": 2626,
+   "ref": "2626-f1",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "쿠바 미사일 위기는 미국과 소련 정부 사이 13일간의 대치였다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2727,
+   "ref": "2727-f4",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "케플러 우주 망원경이 별 305개 주위의 새로 검증된 외계 행성 715개를 발견했다고 서술한다",
+   "verdict": "fix",
+   "fixed": "2014년 2월 26일 NASA 는 케플러 우주 망원경이 별 305개 주위에서 새로 검증된 외계 행성 715개를 찾았다고 발표했다",
+   "quote": "On 26 February 2014, NASA announced the discovery of 715 newly verified exoplanets around 305 stars by the Kepler Space Telescope.",
+   "why": "quote 는 페이지에 있으나 앞이 잘렸다 — 페이지 문장의 주어는 NASA 의 발표다. \"~고 서술한다\" 는 메모 꼴이라 발표 꼴로."
+  },
+  {
+   "id": 2727,
+   "ref": "2727-f5",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "그 발견이 1995년이라는 연도",
+   "verdict": "fix",
+   "fixed": "주계열성 주위를 도는 외계 행성이 처음 확인된 것은 1995년, 가까운 별 51 페가수스 주위에서다",
+   "quote": "The first confirmation of an exoplanet orbiting a main-sequence star was made in 1995, when a giant planet was found in a four-day orbit around the nearby star 51 Pegasi.",
+   "why": "재료는 못 엶이지만 같은 url 에 있다 — 쓸 수 있게 살린다(질문의 1995년 근거). 펄서 주위는 1992년이 처음이라 \"주계열성 주위\" 한정을 지우면 틀린다."
+  },
+  {
+   "id": 2729,
+   "ref": "2729-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "갓 깬 바다거북 새끼가 때때로 인공 불빛을 자연스러운 수평선 빛으로 착각한다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2729,
+   "ref": "2729-f5",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "DarkSky International 이 질 좋은 밤하늘을 가진 지역을 지정하는 일을 한다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2832,
+   "ref": "2832-f1",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "스카치 위스키는 법적 정의로 스코틀랜드 증류소에서 물과 맥아 보리로 만든다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2836,
+   "ref": "2836-f3",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "미국 규정에서는 숯 여과를 해도 되고 안 해도 된다",
+   "verdict": "ok",
+   "why": "quote 그대로(\"The law includes other requirements: … it may or may not be charcoal filtered\" — 미국 법 문단). 원문 질문 \"숯에 걸러\" 를 필수로 쓴 것은 틀림이 맞다."
+  },
+  {
+   "id": 2836,
+   "ref": "2836-f5",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "블러디 메리 · 모스크바 뮬 같은 칵테일에 쓰이며, 모스크바 뮬이 1940년대 미국에서 처음 두각을 나타냈다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2895,
+   "ref": "2895-f1",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "Wii 는 2006년 11월 19일 북미에서, 12월에 대부분 지역에서 출시됐다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2923,
+   "ref": "2923-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "군사 경계 지역 용병들은 전통 방식의 매듭 지은 작은 목도리를 둘렀다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 2999,
+   "ref": "2999-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "교통사고로 기억을 잃은 준상은 10년 뒤 이민형이 되어 돌아온다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3021,
+   "ref": "3021-f1",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "나일론은 상업적으로 처음 성공한 합성 열가소성 고분자다",
+   "verdict": "ok",
+   "why": "quote 그대로. 원문 \"최초의 합성 섬유\" → \"상업적으로 처음 성공한 합성 열가소성 고분자\" 는 출처만큼."
+  },
+  {
+   "id": 3021,
+   "ref": "3021-f6",
+   "kind": "fact",
+   "lane": "상식",
+   "text": "듀폰이 1930년대에 개발했다",
+   "verdict": "ok",
+   "why": "상식으로 넘겼지만 연도가 들어 있어 열었다: 페이지 \"from its research program in polymers in 1927 to its announcement in 1938\" · 1935년 첫 합성 — \"1930년대에 개발\" 은 출처 안."
+  },
+  {
+   "id": 3057,
+   "ref": "3057-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "하프시코드는 개별 음에 강약 · 표현 조절을 주지 못한다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3128,
+   "ref": "3128-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "틈을 마주한 병 표면을 은도금하면 열복사 이동을 최소화할 수 있다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3164,
+   "ref": "3164-f1",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "레이디 가가는 2010년 시상식에서 13개 부문 후보에 올라 8개 상을 받았고 〈Bad Romance〉로 올해의 비디오상을 받았다",
+   "verdict": "fix",
+   "fixed": "레이디 가가는 2010 MTV 비디오 뮤직 어워드에서 13개 부문 후보에 올라 8개 상을 받았고, 그 가운데 하나가 〈Bad Romance〉의 올해의 비디오상이다",
+   "quote": "At the 2010 MTV Video Music Awards, Gaga won eight awards from 13 nominations, including Video of the Year for \"Bad Romance\".",
+   "why": "요약 quote — 페이지는 \"at the 2010 ceremony\" 가 아니라 \"At the 2010 MTV Video Music Awards\". 시상식 이름을 text 에도 넣는다(원문 질문의 \"2010 MTV 시상식\" 근거)."
+  },
+  {
+   "id": 3164,
+   "ref": "3164-f5",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "가가는 〈Bad Romance〉로 받은 올해의 비디오 트로피를 그 드레스를 입고 받았다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3360,
+   "ref": "3360-f3",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "도도의 키는 약 62.6~75cm 였다",
+   "verdict": "ok",
+   "why": "quote 그대로(\"Subfossil remains show the dodo measured about 62.6–75 centimetres\"). 원문 \"1미터쯤\" 은 틀림이 맞다."
+  },
+  {
+   "id": 3360,
+   "ref": "3360-f4",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "일부 출처는 \"dodo\" 가 포르투갈어 doudo(\"바보\")에서 왔다고 하나, 포르투갈인은 이 새를 언급한 적이 없다",
+   "verdict": "fix",
+   "fixed": "일부 출처는 아직도 dodo 가 포르투갈어 doudo(\"바보 · 미친\")에서 왔다고 하지만, 알려진 한 포르투갈인은 이 새를 언급한 적이 없다",
+   "why": "한정어 \"As far as is known\" 을 지웠다(V059). 페이지: \"As far as is known, the Portuguese never mentioned the bird. Nevertheless, some sources still state …\""
+  },
+  {
+   "id": 3360,
+   "ref": "3360-f6",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "도도의 멸종은 인간이 종 전체를 사라지게 한 일에 관한 관심을 끌었다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3366,
+   "ref": "3366-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "돌고래는 소리를 내고 반향을 들어 물체의 위치를 알아낸다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인. 페이지는 큰돌고래(Bottlenose dolphin) 문서지만 문장 주어가 \"The dolphin's\" 라 그대로 둔다(같은 카드 3366-f1 · f3 도 이 문서)."
+  },
+  {
+   "id": 3405,
+   "ref": "3405-f1",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "숭례문은 1962년 12월 20일 \"국보 제1호\" 가 됐다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3405,
+   "ref": "3405-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "5년의 복원 기간 뒤 2013년 5월 5일 다시 문을 열었다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3405,
+   "ref": "3405-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "숭례문은 서울 도성 팔대문(팔문) 중 남쪽 문이다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3425,
+   "ref": "3425-f3",
+   "kind": "fixed",
+   "lane": "전수",
+   "text": "핼리 혜성은 대략 74~79년마다 나타난다",
+   "verdict": "ok",
+   "why": "quote 그대로(\"appearing roughly every 74–79 years\"). \"대략\" 이 roughly 를 지켰다."
+  },
+  {
+   "id": 3425,
+   "ref": "3425-f5",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "에드먼드 핼리는 이 혜성의 주기성을 알아보고 1758년 귀환을 예측했다",
+   "verdict": "fix",
+   "fixed": "핼리 혜성은 주기 혜성으로 인정된 첫 혜성이고, 에드먼드 핼리는 그 귀환을 1758년으로 예측했다",
+   "quote": "Halley was the first comet to be recognised as periodic.",
+   "quote2": "After a rough estimate of the perturbations the comet would sustain from the gravitational attraction of the planets, he predicted its return for 1758.",
+   "why": "요약 quote — \"Edmond Halley recognized the comet's periodicity and predicted …\" 는 페이지에 없다(두 문장을 합친 것). 실제 문장 둘로. 재료 angle 대로 핼리 예측은 #345 질문 쪽이니 이 카드에서는 쓰지 않는 편이 낫다."
+  },
+  {
+   "id": 3525,
+   "ref": "3525-f6",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "돔 페리뇽 샴페인은 모에 에 샹동의 최고급 퀴베로, 그의 이름을 땄다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3538,
+   "ref": "3538-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "크레마는 음료 위에 생기는 조밀한 거품층으로 에스프레소에만 있다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3541,
+   "ref": "3541-f2",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "김홍륙(영문 문서 표기 Kim Hong-rok)이 고종의 커피에 독을 타 암살하려 했다",
+   "verdict": "fix",
+   "fixed": "1898년 9월 12일 Kim Hong-rok(원문 카드 표기 김홍륙)이 고종의 커피에 독을 타 암살하려 했다",
+   "quote": "Second, on 12 September 1898, Kim Hong-rok tried to assassinate Gojong with by instilling poison in Gojong's coffee.",
+   "why": "text 에 메모 괄호 \"(영문 문서 표기 …)\". 같은 문장에 날짜 \"on 12 September 1898\" 이 있어 3541-f4(1898년, 못 엶)도 이 문장으로 풀린다. 독의 종류(아편)는 페이지에 없다 — 3541-f5 못 엶 그대로."
+  },
+  {
+   "id": 3620,
+   "ref": "3620-f2",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "만두는 얇게 민 만두피에 채소와 고기 등의 소를 넣어 빚은 한국 요리다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3620,
+   "ref": "3620-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "북부 지방에서는 만두가 명절 음식으로도 취급되어 설날에 빚는 풍습이 있다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인. (quote 앞이 잘렸지만 페이지 문장이 \"북부 지방(개성 이북 지역)에서는 …\" 이라 text 의 \"북부 지방\" 도 출처 안.)"
+  },
+  {
+   "id": 3757,
+   "ref": "3757-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "코린토스의 폴리보스 왕과 메로페 왕비가 그를 자기 아이로 키웠다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3813,
+   "ref": "3813-f1",
+   "kind": "fact",
+   "lane": "기계대조 · 같은 꼴",
+   "text": "일본의 황실 문장은 일본 황실 구성원이 쓴다",
+   "verdict": "fix",
+   "fixed": "일본 황실 문장은 국화이고, 일본 군주제를 \"국화 왕좌\" 라고도 부른다",
+   "quote": "The imperial crest of Japan is a chrysanthemum, and the institution of the monarchy is also called the Chrysanthemum Throne.",
+   "why": "quote 는 페이지에 있지만 정답(국화)이 빠진 문장이다 — \"황실 문장은 황실 구성원이 쓴다\" 만으로는 질문의 대표 사실이 서지 않는다. 같은 페이지의 그 문장으로 바꾼다."
+  },
+  {
+   "id": 3877,
+   "ref": "3877-f3",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "일장기와 달리 욱일기에는 햇살이 더 있다(군함기는 16줄)",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  },
+  {
+   "id": 3877,
+   "ref": "3877-f4",
+   "kind": "fact",
+   "lane": "표본40",
+   "text": "이 깃발은 일부 아시아 국가, 주로 한국과 중국에서 논란이 된다",
+   "verdict": "ok",
+   "why": "url 을 원문(API parse · wikitext)으로 받아 quote 가 페이지에 글자 그대로 있고, 앞뒤 문장을 읽어 text 가 quote 보다 나가지 않음을 확인."
+  }
+ ],
+ "pairs": [
+  {
+   "ids": [
+    1432,
+    5884
+   ],
+   "agree": "동의(같은 문제). 둘 다 대표 사실이 \"10원 동전 · 석가탑과 마주한 화려한 탑 · 돌사자 하나\" 로 모인다(#5884 힌트 = 1432-f4 와 같은 돌사자). 1432 해설의 무구정광대다라니경은 못 엶이라 가를 재료도 없다. 끌 후보 하나."
+  },
+  {
+   "ids": [
+    2093,
+    6501
+   ],
+   "agree": "동의(같은 문제). #6501 질문 \"런던 잔디 코트 + 흰옷 규정\" 이 이 카드 질문과 거의 같은 문장이다. 남긴다면 #6501 은 첫 우승자(스펜서 고어) 쪽인데 그것은 힌트라 질문을 못 가른다."
+  },
+  {
+   "ids": [
+    2319,
+    3625
+   ],
+   "agree": "동의(같은 문제). #3625 를 가르는 고려 금령 일화는 출처 확인이 안 됐으니, 그것을 빼면 둘 다 \"꿀 · 기름으로 반죽해 지진 한과\" 다."
+  },
+  {
+   "ids": [
+    2340,
+    5875
+   ],
+   "agree": "동의(같은 문제). \"국토 최남단 섬\" 하나뿐이고 힌트도 둘 다 짜장면이다. 거리 수(8km · 11km)는 기준점이 달라 한 판에 섞지 않는다는 재료 메모에도 동의."
+  },
+  {
+   "ids": [
+    2626,
+    3999
+   ],
+   "agree": "동의(같은 문제). 1962 · 케네디 · 흐루쇼프 · 해상 봉쇄 · 카리브해 섬이 두 질문에 다 있다. 터키 미사일은 #3999 힌트라 이 카드 extra 로 쓰지 않는다는 판단도 맞다."
+  },
+  {
+   "ids": [
+    2895,
+    3560
+   ],
+   "agree": "동의(같은 문제). 2006 · 닌텐도 · 휘두르는 컨트롤러 · 테니스 · 볼링이 두 질문에 그대로 있다. #3560 힌트(개발명 레볼루션)는 힌트라 질문을 못 가른다."
+  }
+ ],
+ "holds": [
+  {
+   "id": 1301,
+   "agree": "동의 — note \"시범 중복\"(ai-talk 027 의 99장 목록). 쓰지 않는다."
+  },
+  {
+   "id": 3001,
+   "agree": "동의 — note \"시범 중복\"(ai-talk 027 의 99장 목록). 쓰지 않는다."
+  },
+  {
+   "id": 3471,
+   "agree": "동의 — note \"시범 중복\"(ai-talk 027 의 99장 목록). 쓰지 않는다."
+  },
+  {
+   "id": 3696,
+   "agree": "동의 — note \"시범 중복\"(ai-talk 027 의 99장 목록). 쓰지 않는다."
+  }
+ ],
+ "thin": [
+  {
+   "id": 1729,
+   "why": "사실 둘(1729-f1 · f2)이 같은 사실(\"쇠귀에 경 읽기\" 뜻풀이)이다 — 서로 다른 사실이 하나뿐. 유의어(마이동풍 · 대우탄금)는 같은 위키낱말사전 페이지에 있으나 재료에 없다."
+  },
+  {
+   "id": 2014,
+   "why": "사실 2개(어원 τῆλε · tele- 낱말 목록)뿐이다."
+  }
+ ],
+ "core_fix": [
+  {
+   "id": 2317,
+   "core": "쌀가루로 만든 흰 시루떡으로, 아기의 삼칠일이나 100일에 먹고 흰색은 순수와 신성을 나타낸다(원문 질문의 \"돌 · 깨끗함\" 은 출처에 없다)"
+  },
+  {
+   "id": 2836,
+   "core": "발효한 곡물 · 감자로 만들고 주로 물과 에탄올인, 폴란드 · 러시아에서 비롯된 증류주(숯 거름은 필수가 아니다 — 2836-f3)"
+  },
+  {
+   "id": 3021,
+   "core": "1930년대 듀폰이 개발한, 상업적으로 처음 성공한 합성 열가소성 고분자로 1940년부터 스타킹으로 팔렸다(\"최초의 합성 섬유\" 아님)"
+  },
+  {
+   "id": 3360,
+   "core": "인도양 모리셔스섬에만 살던, 비둘기 무리에 드는 멸종한 날지 못하는 새(키 약 62.6~75cm · 원문의 \"1미터 · DNA\" 는 쓰지 않는다)"
+  },
+  {
+   "id": 2727,
+   "core": "태양계 밖의 행성 — 주계열성 주위에서는 1995년 51 페가수스 곁에서 처음 확인됐다(2727-f5 · 원문의 \"수천 개\" 는 확인 안 됨)"
+  },
+  {
+   "id": 3813,
+   "core": "일본 황실 문장이고 일본 군주제를 \"국화 왕좌\" 라고도 부르게 한 꽃(3813-f1 고친 사실 · 여권 표지는 못 엶 — 질문에 쓰지 않는다)"
+  },
+  {
+   "id": 3541,
+   "core": "1898년 9월 12일 커피에 독을 탄 암살 시도를 겪은 대한제국 첫 황제(3541-f2 고친 사실 · 아편 · 뱉어서 면함은 못 엶)"
+  },
+  {
+   "id": 3405,
+   "core": "서울 도성 팔대문 가운데 남쪽 문으로, 현판은 양녕대군이 만들었다(원문 질문의 \"세로 현판 = 관악산 불기운\" 은 못 엶 — 이것을 빼면 대표 사실이 1962 국보 제1호 · 2008 화재 · 2013 복원 쪽으로 가 #1431 과 같은 문제가 될 수 있다. 기획자 확인 거리)"
+  },
+  {
+   "id": 3525,
+   "core": "돔 페리뇽의 말로 돌려지는 \"어서 오게, 나는 별을 맛보고 있어!\" — 다만 이 말은 19세기 말 인쇄 광고에서 처음 보인다(원문의 \"마시고 있다\" 아님 · 발명 일화는 틀린 이야기)"
+  },
+  {
+   "id": 3559,
+   "core": "신발은 산타클로스와 마이클 잭슨의 부츠에서 영감을 받은 디자인에서 나왔고, 빨간색은 잭슨의 1987년 앨범 《Bad》의 색 대비에서 왔다(3559-f3 quote 가 있는 같은 문장 · 원문의 \"앨범 표지 속 부츠 · 산타 옷 색\" 은 출처와 다르다)"
+  },
+  {
+   "id": 3324,
+   "core": "세네갈 · 코트디부아르 등 서아프리카에서 쓰이고, 사용자의 47%가 아프리카에 사는 유럽 언어(\"옛 식민 지배의 영향\" 은 확인 안 됨)"
+  },
+  {
+   "id": 2655,
+   "core": "영종도와 용유도 사이 인공 땅에 지어 2001년 문을 열었고, 제1터미널이 국내에서 면적이 가장 큰 공항 터미널이다(\"우리나라 최대의 공항\" 아님)"
+  }
+ ],
+ "note": "core_fix 는 재료가 \"원문 질문 그대로\" 라 했지만 질문의 핵심이 틀림 · 못 엶 사실에 기대는 카드다(재료 note 가 이미 짚었지만 core 칸에는 옮기지 않았다). 지시서 덧붙임대로라면 핵심이 못 엶인 3813 · 3541 · 3405 는 hold 감이었다 — 여기서는 확인된 사실로 core 를 고쳐 두고 hold 는 걸지 않는다(3405 만 기획자 확인 거리). 3559 note 의 \"Bad 앨범\" 은 사실 3559-f3 와 같은 페이지 문장에 있다(요약이 아니라 quote 가 잘린 것). 1293-f2 의 \"AFI 2위 · 비토 콜레오네 · 말런 브랜도\" 는 quote 밖이지만 그 페이지 표 칸에 있어 판정하지 않았다(표본 밖 · 문제 없음)."
+}
