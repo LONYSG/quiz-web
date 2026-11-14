@@ -1,0 +1,862 @@
+{
+ "round": "G080",
+ "db_snapshot": "quizweb",
+ "note": "카드 적용 — 질문 · 힌트 · 해설(카드 통째)",
+ "counts": {
+  "picked": 51,
+  "items": 30,
+  "question": 11,
+  "hint": 15,
+  "explanation": 8,
+  "hintNew": 15,
+  "emoji": 0,
+  "emojiOff": 0,
+  "drop_candidate": []
+ },
+ "items": [
+  {
+   "id": 7068,
+   "answer": "달란트",
+   "src": "카드-025 + V067 sample fix",
+   "file": "카드-025",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "구조전환: 판정된 대표 뜻·쓰임을 중심으로 질문 재배치",
+   "reapply": "g078",
+   "explanation": {
+    "before": "비유 속 선물은 개인의 능력을 뜻하는 것으로 해석돼 왔습니다. 시인 존 밀턴도 「내 빛이 다한 것을 생각할 때」 등에서 이 비유를 거듭 언급했습니다.",
+    "after": "비유 속 선물은 개인의 능력을 포함하는 것으로 해석돼 왔습니다. 시인 존 밀턴도 「내 빛이 다한 것을 생각할 때」 등에서 이 비유를 거듭 언급했습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7084,
+   "answer": "기초연금",
+   "src": "카드-025 + V067 sample fix",
+   "file": "카드-025",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "구조전환: 판정된 대표 뜻·쓰임을 중심으로 질문 재배치",
+   "reapply": "g078",
+   "general_hint": {
+    "before": "후보 시절 모든 노인에게 주겠다던 약속이 대상 일부로 좁혀져 논란이 됐습니다.",
+    "after": "후보 시절 모든 노인에게 주겠다던 약속이 대상 일부로 좁혀졌습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7154,
+   "answer": "톨레랑스",
+   "src": "카드-026 + V067 sample fix",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "",
+   "reapply": "g078",
+   "general_hint": {
+    "before": "‘당신 말에 반대하지만 그 말을 할 권리는 지키겠다’는 문장으로도 설명합니다.",
+    "after": "‘당신 말에 반대하지만 그 말을 할 권리는 죽을 때까지 지키겠다’는 문장으로도 설명합니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   },
+   "explanation": {
+    "before": "계몽주의 시대 이후 사회를 꾸리는 원리로 체계화됐습니다. 영국의 로크와 밀, 프랑스의 볼테르 등이 이 생각을 다듬었습니다.",
+    "after": "관용은 주로 계몽주의 시대 이후 체계적인 사회 조직 원리로 발전했습니다. 영국의 밀턴·로크·밀, 프랑스의 볼테르가 대표적인 관용론자입니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7160,
+   "answer": "무협 소설",
+   "src": "카드-026 + V062 재료 + V067 sample fix",
+   "material": "v062-material-026.json",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "협의 규범은 보통 무협 주인공에게 잘못을 바로잡고, 정의를 위해 싸우고, 억압하는 자를 없애기를 요구한다",
+     "source_url": "https://en.wikipedia.org/wiki/Wuxia",
+     "material_ref": "7160-f10"
+    },
+    {
+     "claim": "'수호전'은 흔히 첫 장편 원형 무협 소설로 여겨진다",
+     "source_url": "https://en.wikipedia.org/wiki/Wuxia",
+     "material_ref": "7160-e2"
+    }
+   ],
+   "explanation": {
+    "before": "이 갈래의 주인공은 잘못을 바로잡고 정의를 위해 싸우는 규범을 따릅니다. ‘수호전’은 흔히 그 장편 원형으로 여겨집니다.",
+    "after": "이 갈래의 주인공은 보통 잘못을 바로잡고 정의를 위해 싸우는 협의 규범을 따릅니다. ‘수호전’은 흔히 그 장편 원형으로 여겨집니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7164,
+   "answer": "존 F. 케네디 국제공항",
+   "src": "카드-026 + V067 sample fix",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "구조전환: 질문의 옛 이름·공항 코드를 힌트로",
+   "reapply": "g078",
+   "general_hint": {
+    "before": "옛 이름은 근처 골프장에서 따온 ‘아이들와일드’였고, 공항 코드는 IDL이었습니다.",
+    "after": "옛 이름은 공항 때문에 밀려난 골프장에서 따온 ‘아이들와일드’였고, 공항 코드는 IDL이었습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7171,
+   "answer": "제미니 계획",
+   "src": "카드-026 + V067 sample fix",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "",
+   "reapply": "g078",
+   "question_text": {
+    "before": "머큐리 다음으로 진행된 미국의 두 번째 유인 우주 비행 계획입니다. 두 사람이 타는 우주선으로 달 탐사에 필요한 도킹을 연습한 이 계획은 무엇일까요?",
+    "after": "머큐리 다음으로 진행된 미국의 두 번째 유인 우주 비행 계획입니다. 두 사람이 타는 우주선으로 궤도 랑데부와 도킹 기술을 익힌 이 계획은 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7176,
+   "answer": "가마우지",
+   "src": "카드-026 + V067 sample fix",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "",
+   "reapply": "g078",
+   "general_hint": {
+    "before": "한국이 일본산 부품으로 완제품을 수출하는 구조를 빗댄 경제 표현에도 이름이 쓰입니다.",
+    "after": "한국이 일본에서 부품·소재를 사다 완제품을 파는 구조를 빗댄 경제 표현에도 이름이 쓰입니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7182,
+   "answer": "장수거북",
+   "src": "카드-026 + V062 재료 + V067 sample fix",
+   "material": "v062-material-026.json",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "태평양 장수거북은 해파리를 먹으러 인도네시아의 알 낳는 곳에서 캘리포니아까지 약 9,700km를 건넘",
+     "source_url": "https://en.wikipedia.org/wiki/Leatherback_sea_turtle",
+     "material_ref": "7182-e1"
+    }
+   ],
+   "general_hint": {
+    "before": "거의 해파리만 먹으며, 바다에 뜬 비닐봉지를 먹이로 착각하기도 합니다.",
+    "after": "거의 해파리만 먹으며, 태평양의 개체는 바다에 뜬 비닐봉지를 해파리로 착각하기도 합니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7229,
+   "answer": "야후",
+   "src": "카드-026 + V067 sample fix",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "구조전환: 재료의 대표 뜻·특징을 질문 중심으로",
+   "reapply": "g078",
+   "explanation": {
+    "before": "처음에는 ‘제리와 데이비드의 월드 와이드 웹 가이드’였습니다. 창업자들은 ‘무례하고 투박하다’는 뜻의 속어가 마음에 들어 이름을 골랐다고 말했습니다.",
+    "after": "처음에는 ‘제리와 데이비드의 월드 와이드 웹 가이드’였습니다. 창업자들은 ‘무례하고 세련되지 못하고 투박하다’는 뜻의 속어가 마음에 들어서 주로 그 이름을 골랐다고 주장했습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7231,
+   "answer": "HTTPS",
+   "src": "카드-026 + V067 sample fix",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "구조전환: 재료의 대표 뜻·특징을 질문 중심으로",
+   "reapply": "g078",
+   "question_text": {
+    "before": "주고받는 웹 통신 내용을 암호화해 엿듣기와 변조를 막는 방식으로, HTTP에 보안 기능을 더한 것은 무엇일까요?",
+    "after": "주고받는 웹 통신 내용을 암호화해 엿듣기와 변조를 막는 웹 통신 방식은 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7240,
+   "answer": "모주",
+   "src": "카드-026 + V062 재료 + V067 sample fix",
+   "material": "v062-material-026.json",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "구조전환: 재료의 대표 뜻·특징을 질문 중심으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "모주는 한자로 어미 母 · 술 酒 — '어머니의 술'",
+     "source_url": "https://www.jjan.kr/article/20240716580091",
+     "material_ref": "7240-e1"
+    }
+   ],
+   "explanation": {
+    "before": "인목대비의 어머니 노씨가 제주에서 술지게미로 술을 만들어 팔았다는 이야기가 전합니다. ‘어머니의 술’이라는 이름도 이 이야기와 연결됩니다.",
+    "after": "인목대비의 어머니 노씨가 제주에서 술지게미로 술을 만들어 팔았다는 이야기가 전합니다. 한자로는 어미 모(母)와 술 주(酒)를 써서 ‘어머니의 술’이라는 뜻입니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7241,
+   "answer": "진도 홍주",
+   "src": "카드-026 + V067 sample fix",
+   "file": "카드-026",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "",
+   "reapply": "g078",
+   "question_text": {
+    "before": "전남 진도에서 빚으며, 증류할 때 지초 뿌리를 통과시켜 붉은빛을 내는 전통주는 무엇일까요?",
+    "after": "전남의 섬 고을에서 빚으며, 증류할 때 지초 뿌리를 통과시켜 붉은빛을 내는 전통주는 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7290,
+   "answer": "감자옹심이",
+   "src": "카드-027 + V067 sample fix",
+   "file": "카드-027",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "",
+   "reapply": "g078",
+   "question_text": {
+    "before": "간 감자와 녹말로 새알심처럼 빚어 멸칫국물에 끓이는 강원도 향토 음식은 무엇일까요?",
+    "after": "간 구황작물과 녹말로 새알심처럼 빚어 멸칫국물에 끓이는 강원도 향토 음식은 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7314,
+   "answer": "부채춤",
+   "src": "카드-027 + V067 sample fix",
+   "file": "카드-027",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "구조전환: 힌트의 대표 뜻·쓰임을 질문 중심으로",
+   "reapply": "g078",
+   "question_text": {
+    "before": "무용수들이 모란꽃이 그려진 큰 부채를 펼쳐 꽃·나비·물결 모양을 만드는 춤은 무엇일까요?",
+    "after": "무용수들이 모란꽃이 그려진 큰 소품을 펼쳐 꽃·나비·물결 모양을 만드는 춤은 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7329,
+   "answer": "막대그래프",
+   "src": "카드-027 + V067 sample fix",
+   "file": "카드-027",
+   "worth": "good",
+   "hasClaims": false,
+   "from": "구조전환: 힌트의 대표 뜻·쓰임을 질문 중심으로",
+   "reapply": "g078",
+   "question_text": {
+    "before": "여러 항목의 값을 막대 길이로 나타내 나란히 비교하는 그래프입니다. 1786년 플레이페어가 스코틀랜드 수출입 자료를 그릴 때 쓴 이 그래프는 무엇일까요?",
+    "after": "여러 항목의 값을 길이로 나타내 나란히 비교하는 그래프입니다. 1786년 플레이페어가 스코틀랜드 수출입 자료를 그릴 때 쓴 이 그래프는 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7336,
+   "answer": "초음파 검사",
+   "src": "카드-027 + V061 재료 + V067 sample fix",
+   "material": "v061-material-027.json",
+   "file": "카드-027",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "구조전환: 힌트의 대표 뜻·쓰임을 질문 중심으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "1958년 6월 7일 도널드 · 맥비카 · 브라운이 낸 이정표 논문",
+     "source_url": "https://en.wikipedia.org/wiki/Ian_Donald",
+     "material_ref": "7336-f8"
+    }
+   ],
+   "general_hint": {
+    "before": "1958년 도널드·맥비카·브라운이 함께 낸 논문이 보급의 이정표로 꼽힙니다.",
+    "after": "1958년 도널드·맥비카·브라운이 함께 낸 논문이 이정표로 꼽힙니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7392,
+   "answer": "현관",
+   "src": "카드-028 + V061 재료 + V067 sample fix",
+   "material": "v061-material-028.json",
+   "file": "카드-028",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "구조전환: 재료의 대표 뜻·특징을 질문 중심으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "본래 중국 도교 · 선(禅) 등의 용어로 '현관'은 '현묘한 도에 드는 관문'",
+     "source_url": "https://ja.wikipedia.org/wiki/%E7%8E%84%E9%96%A2",
+     "material_ref": "7392-f1"
+    },
+    {
+     "claim": "일본에서는 선종 절 방장(方丈)에 둔 입구를 가리킴",
+     "source_url": "https://ja.wikipedia.org/wiki/%E7%8E%84%E9%96%A2",
+     "material_ref": "7392-f2"
+    },
+    {
+     "claim": "메이지 유신 뒤 집 짓기에 관한 금령이 없어지자 서민 집도 다투어 현관을 냄",
+     "source_url": "https://kotobank.jp/word/%E7%8E%84%E9%96%A2-59428",
+     "material_ref": "7392-e1"
+    }
+   ],
+   "explanation": {
+    "before": "일본에서는 선종 절의 입구를 가리키던 말이었습니다. 메이지 유신 뒤 집 짓기에 관한 금령이 없어지자 서민의 집에도 다투어 이 공간을 냈습니다.",
+    "after": "일본에서는 선종 절 방장의 입구를 가리키던 말이었습니다. 메이지 유신 뒤 집 짓기에 관한 금령이 없어지자 서민의 집에도 다투어 이 공간을 냈습니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7413,
+   "answer": "미니",
+   "src": "카드-028 + V061 재료 + V067 sample fix",
+   "material": "v061-material-028.json",
+   "file": "카드-028",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "구조전환: 재료의 대표 뜻·특징을 질문 중심으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "알렉 이시고니스가 BMC 를 위해 설계한 2도어 차",
+     "source_url": "https://en.wikipedia.org/wiki/Mini",
+     "material_ref": "7413-f3"
+    },
+    {
+     "claim": "1959년 8월 26일 공식 발표",
+     "source_url": "https://en.wikipedia.org/wiki/Mini",
+     "material_ref": "7413-f6"
+    },
+    {
+     "claim": "고성능판 미니 쿠퍼 · 쿠퍼 S 가 1964 · 1965 · 1967년 몬테카를로 랠리에서 우승 (다른 이름 포함)",
+     "source_url": "https://en.wikipedia.org/wiki/Mini",
+     "material_ref": "7413-f7"
+    },
+    {
+     "claim": "1969년 영화 '이탈리안 잡'은 마지막 추격전에 미니 세 대가 나오는 것으로 유명함",
+     "source_url": "https://en.wikipedia.org/wiki/Mini",
+     "material_ref": "7413-f8"
+    },
+    {
+     "claim": "영화에서 일당은 금괴를 미니 쿠퍼 세 대의 트렁크에 나눠 실음 (다른 이름 포함)",
+     "source_url": "https://en.wikipedia.org/wiki/The_Italian_Job",
+     "material_ref": "7413-f9"
+    },
+    {
+     "claim": "미니는 1956년 수에즈 위기로 생긴 연료 부족 때문에 나옴",
+     "source_url": "https://en.wikipedia.org/wiki/Mini",
+     "material_ref": "7413-f1"
+    },
+    {
+     "claim": "공간을 아끼는 가로 배치 엔진 · 앞바퀴굴림 배치",
+     "source_url": "https://en.wikipedia.org/wiki/Mini",
+     "material_ref": "7413-f4"
+    },
+    {
+     "claim": "이 배치로 차 바닥 넓이의 80%를 승객과 짐에 쓸 수 있었음",
+     "source_url": "https://en.wikipedia.org/wiki/Mini",
+     "material_ref": "7413-f5"
+    }
+   ],
+   "question_text": {
+    "before": "알렉 이시고니스가 BMC를 위해 설계한 영국 소형차입니다. 1959년 발표됐고 몬테카를로 랠리에서도 우승한 이 차는 무엇일까요?",
+    "after": "알렉 이시고니스가 BMC를 위해 설계한 영국 소형차입니다. 1959년 발표됐고 고성능판이 몬테카를로 랠리에서도 우승한 이 차는 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 7430,
+   "answer": "토론토 국제영화제",
+   "src": "카드-028 + V061 재료 + V067 sample fix",
+   "material": "v061-material-028.json",
+   "file": "카드-028",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "구조전환: 재료의 대표 뜻·특징을 질문 중심으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "1976년 창립, 해마다 9월 초 토론토 시내에서 열림",
+     "source_url": "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+     "material_ref": "7430-f1"
+    },
+    {
+     "claim": "관객 투표로 주는 피플스 초이스(관객상)는 아카데미 등 시상식 시즌 성공의 지표로 떠오름",
+     "source_url": "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+     "material_ref": "7430-f3"
+    },
+    {
+     "claim": "《킹스 스피치》는 2010년 토론토 관객상 수상작",
+     "source_url": "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+     "material_ref": "7430-f4"
+    },
+    {
+     "claim": "《킹스 스피치》는 83회 아카데미에서 작품상을 포함해 넷을 받음",
+     "source_url": "https://en.wikipedia.org/wiki/The_King%27s_Speech",
+     "material_ref": "7430-f5"
+    },
+    {
+     "claim": "《그린 북》은 2018년 9월 11일 토론토에서 처음 상영돼 관객상을 받음",
+     "source_url": "https://en.wikipedia.org/wiki/Green_Book_(film)",
+     "material_ref": "7430-f6"
+    },
+    {
+     "claim": "《그린 북》은 아카데미 작품상을 받음",
+     "source_url": "https://en.wikipedia.org/wiki/Green_Book_(film)",
+     "material_ref": "7430-f7"
+    },
+    {
+     "claim": "처음 이름은 '토론토 축제 중의 축제(Toronto Festival of Festivals)'로, 세계 다른 영화제의 좋은 영화를 모아 보여 줌",
+     "source_url": "https://en.wikipedia.org/wiki/Toronto_International_Film_Festival",
+     "material_ref": "7430-f2"
+    }
+   ],
+   "question_text": {
+    "before": "캐나다에서 해마다 9월 초 열리며, 관객 투표로 주는 피플스 초이스가 아카데미 수상의 지표로 주목받는 영화제는 무엇일까요?",
+    "after": "캐나다에서 해마다 9월 초 열리며, 관객 투표로 주는 피플스 초이스가 아카데미 등 시상식 시즌 성공의 지표로 주목받는 영화제는 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 1426,
+   "answer": "하기아 소피아",
+   "src": "카드-030 + V062 재료 + V067 sample fix",
+   "material": "v062-material-030.json",
+   "file": "카드-030",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 판정된 대표 사실을 명료하게 묶어 질문으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "동로마 제국이 세운 성당으로 537년 완공",
+     "source_url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+     "material_ref": "1426-f1"
+    },
+    {
+     "claim": "1453년 오스만 제국이 콘스탄티노폴리스를 정복한 뒤 메흐메트 2세가 모스크로 바꿈",
+     "source_url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+     "material_ref": "1426-f2"
+    },
+    {
+     "claim": "1935~2020년 박물관이었음",
+     "source_url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+     "material_ref": "1426-f3"
+    },
+    {
+     "claim": "지금은 다시 모스크(공식 이름 하기아 소피아 그랜드 모스크)",
+     "source_url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+     "material_ref": "1426-f4"
+    },
+    {
+     "claim": "처음 구조의 돔 밑동에 창 40개를 냄",
+     "source_url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+     "material_ref": "1426-f6"
+    },
+    {
+     "claim": "1717년 회칠 보수 덕에 동로마 시대 모자이크가 많이 보존됨",
+     "source_url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+     "material_ref": "1426-f7"
+    }
+   ],
+   "general_hint": {
+    "before": "거대한 돔 밑동에 창 40개를 내 빛이 들어오게 했습니다.",
+    "after": "처음 지을 때 돔 밑동에 창 40개를 내 빛이 들어오게 했습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   },
+   "explanation": {
+    "before": "1717년 내부 회칠을 보수한 일이 동로마 시대 모자이크를 보존하는 데 간접적으로 도움이 됐습니다.",
+    "after": "1717년 내부 회칠을 보수한 덕에 동로마 시대 모자이크가 많이 보존됐습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 2348,
+   "answer": "해식동굴",
+   "src": "카드-030 + V062 재료 + V067 sample fix",
+   "material": "v062-material-030.json",
+   "file": "카드-030",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 판정된 대표 사실을 명료하게 묶어 질문으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "파도의 침식으로 해식 절벽에 생긴 동굴",
+     "source_url": "https://ko.wikipedia.org/wiki/해식동",
+     "material_ref": "2348-f1"
+    },
+    {
+     "claim": "이탈리아 카프리섬 해안의 '푸른 동굴'은 해식동굴",
+     "source_url": "https://en.wikipedia.org/wiki/Blue_Grotto_(Capri)",
+     "material_ref": "2348-f2"
+    },
+    {
+     "claim": "해식동굴 터널이 무너지면 해안에 홀로 선 '시스택(돌기둥)'이 남을 수 있음",
+     "source_url": "https://en.wikipedia.org/wiki/Sea_cave",
+     "material_ref": "2348-f5"
+    }
+   ],
+   "general_hint": {
+    "before": "이탈리아 카프리섬의 '푸른 동굴'이 대표적인 예입니다.",
+    "after": "이탈리아 카프리섬의 '푸른 동굴'도 이런 동굴입니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 2408,
+   "answer": "사장교",
+   "src": "카드-030 + V062 재료 + V067 sample fix",
+   "material": "v062-material-030.json",
+   "file": "카드-030",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 판정된 대표 사실을 명료하게 묶어 질문으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "케이블이 탑에서 상판으로 곧장 이어져 보통 부채꼴이나 나란한 줄을 이룸",
+     "source_url": "https://en.wikipedia.org/wiki/Cable-stayed_bridge",
+     "material_ref": "2408-f1"
+    },
+    {
+     "claim": "우리나라의 사장교로 서해대교 · 마창대교 · 삼천포대교 · 진도대교 · 인천대교 · 목포대교 · 부산항대교 등이 있음",
+     "source_url": "https://ko.wikipedia.org/wiki/사장교",
+     "material_ref": "2408-f4"
+    },
+    {
+     "claim": "주탑이 높을수록 케이블이 받는 하중이 작아져, 같은 케이블로 경간을 늘리거나 케이블을 가늘게 할 수 있음",
+     "source_url": "https://ko.wikipedia.org/wiki/사장교",
+     "material_ref": "2408-e1"
+    }
+   ],
+   "question_text": {
+    "before": "주탑에서 상판으로 케이블을 곧바로 연결해 부채꼴이나 나란한 줄 모양을 이루는 다리는 무엇일까요?",
+    "after": "주탑에서 상판으로 케이블을 곧바로 연결해 보통 부채꼴이나 나란한 줄 모양을 이루는 다리는 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 2546,
+   "answer": "살라미스 해전",
+   "src": "카드-030 + V062 재료 + V067 sample fix",
+   "material": "v062-material-030.json",
+   "file": "카드-030",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 판정된 대표 사실을 명료하게 묶어 질문으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "테미스토클레스의 속임수로 페르시아 함대가 살라미스 해협에 들어와 두 입구를 막으려 함",
+     "source_url": "https://ko.wikipedia.org/wiki/살라미스_해전",
+     "material_ref": "2546-f1"
+    },
+    {
+     "claim": "해협이 너무 좁아 페르시아 군함들이 흩어졌고 수의 우세가 오히려 짐이 됨",
+     "source_url": "https://ko.wikipedia.org/wiki/살라미스_해전",
+     "material_ref": "2546-f2"
+    },
+    {
+     "claim": "페르시아 전쟁 중 기원전 480년 9월, 아테네 근처 살라미스섬과 육지 사이 해협에서 일어남",
+     "source_url": "https://ko.wikipedia.org/wiki/살라미스_해전",
+     "material_ref": "2546-f3"
+    },
+    {
+     "claim": "주로 아테네가 주도한 그리스 연합 함대",
+     "source_url": "https://en.wikipedia.org/wiki/Battle_of_Salamis",
+     "material_ref": "2546-f4"
+    },
+    {
+     "claim": "살라미스 · 플라타이아 전투가 페르시아 전쟁 전체의 전환점이 됨",
+     "source_url": "https://en.wikipedia.org/wiki/Battle_of_Salamis",
+     "material_ref": "2546-f5"
+    }
+   ],
+   "general_hint": {
+    "before": "아테네가 주도한 그리스 연합 함대가 승리했습니다.",
+    "after": "주로 아테네가 주도한 그리스 연합 함대가 승리했습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 3842,
+   "answer": "우드스톡",
+   "src": "카드-030 + V062 재료 + V067 sample fix",
+   "material": "v062-material-030.json",
+   "file": "카드-030",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 판정된 대표 사실을 명료하게 묶어 질문으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "지미 헨드릭스가 비로 늦어진 끝에 월요일 아침 8시 30분, 마지막으로 무대에 섬",
+     "source_url": "https://en.wikipedia.org/wiki/Woodstock",
+     "material_ref": "3842-f1"
+    },
+    {
+     "claim": "미국 국가를 일그러뜨린 기타 소리로 연주해 화제가 됨",
+     "source_url": "https://ko.wikipedia.org/wiki/우드스톡_페스티벌",
+     "material_ref": "3842-f2"
+    },
+    {
+     "claim": "1960년대 반문화를 비춘 정점의 음악 행사",
+     "source_url": "https://en.wikipedia.org/wiki/Woodstock",
+     "material_ref": "3842-f3"
+    },
+    {
+     "claim": "비가 내려 길과 들판이 진흙밭이 됨",
+     "source_url": "https://en.wikipedia.org/wiki/Woodstock",
+     "material_ref": "3842-f4"
+    },
+    {
+     "claim": "실제 무대는 우드스톡 마을에서 남서쪽으로 60마일 떨어진 베설의 맥스 야스거 낙농장",
+     "source_url": "https://en.wikipedia.org/wiki/Woodstock",
+     "material_ref": "3842-f5"
+    }
+   ],
+   "general_hint": {
+    "before": "1960년대 반문화를 상징하며, 비로 길과 들판이 진흙밭이 된 행사입니다.",
+    "after": "1960년대 반문화를 비춘 정점의 행사이며, 비로 길과 들판이 진흙밭이 됐습니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 3932,
+   "answer": "칠면조",
+   "src": "카드-030 + V062 재료 + V067 sample fix",
+   "material": "v062-material-030.json",
+   "file": "카드-030",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "구조전환: 같은 정답 카드와 다른 중심 단서를 질문으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "프랭클린은 딸 사라 바시에게 쓴 1784년 1월 편지에서 '칠면조가 비교하면 훨씬 존경할 만한 새이고 아메리카 토박이'라고 씀",
+     "source_url": "https://annotation.blogs.archives.gov/2020/11/25/talking-turkey",
+     "material_ref": "3932-f1"
+    },
+    {
+     "claim": "같은 편지에서 흰머리수리를 '도덕성이 나쁜 새'라고 깎아내림",
+     "source_url": "https://en.wikipedia.org/wiki/Bald_eagle",
+     "material_ref": "3932-f2"
+    },
+    {
+     "claim": "수컷은 길고 어두운 부채꼴 꼬리를 가짐",
+     "source_url": "https://en.wikipedia.org/wiki/Wild_turkey",
+     "material_ref": "3932-f4"
+    },
+    {
+     "claim": "프랭클린이 (흰머리수리 대신) 칠면조를 미국의 상징으로 공개 지지했다는 증거는 없다 — 널리 퍼진 이야기일 뿐이다.",
+     "source_url": "https://en.wikipedia.org/wiki/Bald_eagle",
+     "material_ref": "3932-e1"
+    }
+   ],
+   "question_text": {
+    "before": "프랭클린이 딸에게 보낸 편지에서 흰머리수리보다 훨씬 존경할 만한 아메리카 토박이 새라고 칭찬한 새는 무엇일까요?",
+    "after": "프랭클린이 딸에게 쓴 편지에서 흰머리수리보다 훨씬 존경할 만한 아메리카 토박이 새라고 칭찬한 새는 무엇일까요?",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 1718,
+   "answer": "벽란도",
+   "src": "카드-030 + V062 재료 + V067 sample fix",
+   "material": "v062-material-030.json",
+   "file": "카드-030",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 판정된 대표 사실을 명료하게 묶어 질문으로",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "예성강 하구에 있던 고려의 국제 무역항으로 외국 사신과 상인이 자주 오감",
+     "source_url": "https://ko.wikipedia.org/wiki/벽란도",
+     "material_ref": "1718-f1"
+    },
+    {
+     "claim": "중국 · 일본은 물론 멀리 아라비아의 대식국과도 교역함",
+     "source_url": "https://ko.wikipedia.org/wiki/벽란도",
+     "material_ref": "1718-f2"
+    },
+    {
+     "claim": "개경 서문인 선의문에서 서쪽으로 30리(12km) 떨어진 예성강 하구",
+     "source_url": "https://ko.wikipedia.org/wiki/벽란도",
+     "material_ref": "1718-f4"
+    },
+    {
+     "claim": "송나라 사신을 위한 관사 '벽란정'에서 이름을 땀",
+     "source_url": "https://ko.wikipedia.org/wiki/벽란도",
+     "material_ref": "1718-f5"
+    }
+   ],
+   "general_hint": {
+    "before": "수도 개경에서 서쪽으로 약 12킬로미터 떨어진 곳입니다.",
+    "after": "개경 서문인 선의문에서 서쪽으로 약 12킬로미터(30리) 떨어진 곳입니다.",
+    "kind": "rewrite",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 2380,
+   "answer": "박씨전",
+   "src": "카드-031 + V062 재료 + V067 sample fix",
+   "material": "v062-material-031.json",
+   "file": "카드-031",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 확인된 재료로 단서를 정리",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "박씨는 청으로 끌려갈 뻔한 왕비까지 구해 인조에게 칭송받고 충렬정경부인에 봉해진다",
+     "source_url": "https://ko.wikipedia.org/wiki/박씨전",
+     "material_ref": "2380-e1"
+    }
+   ],
+   "general_hint": {
+    "before": "남편 이시백은 아내의 흉한 외모에 낙담해 첫날밤 뒤로 아내를 외면합니다.",
+    "after": "남편 이시백은 아내의 외모에 낙담해 첫날밤 뒤로 아내를 외면합니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 1277,
+   "answer": "얄타 회담",
+   "src": "카드-031 + V062 재료 + V067 sample fix",
+   "material": "v062-material-031.json",
+   "file": "카드-031",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 확인된 재료로 단서를 정리",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "얄타에서 오간 요구와 양보의 기록에 한국의 운명은 언급되지 않는다",
+     "source_url": "https://en.wikipedia.org/wiki/Yalta_Conference",
+     "material_ref": "1277-e1"
+    }
+   ],
+   "general_hint": {
+    "before": "스탈린은 독일이 패한 뒤 석 달 안에 소련이 대일전에 참전하겠다고 약속했습니다.",
+    "after": "스탈린은 독일이 패하고 석 달 뒤에 소련이 대일전에 참전하겠다고 약속했습니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 3916,
+   "answer": "구로사와 아키라",
+   "src": "카드-031 + V062 재료 + V067 sample fix",
+   "material": "v062-material-031.json",
+   "file": "카드-031",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 확인된 재료로 단서를 정리",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "루카스는 특히 가장 낮은 인물들의 눈으로 이야기를 들려주는 방식을 따왔다 — 스타워즈의 C-3PO 와 R2-D2",
+     "source_url": "https://en.wikipedia.org/wiki/The_Hidden_Fortress",
+     "material_ref": "3916-e1"
+    }
+   ],
+   "general_hint": {
+    "before": "셰익스피어의 「리어왕」을 바탕으로 한 「란」과 「맥베스」를 옮긴 「거미집의 성」도 만들었습니다.",
+    "after": "셰익스피어의 「리어왕」을 일부 바탕으로 한 「란」과 「맥베스」를 옮긴 「거미집의 성」도 만들었습니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   },
+   "explanation": {
+    "before": "루카스는 특히 지위가 낮은 인물의 눈으로 이야기를 전하는 방식을 받아들였습니다. 「스타워즈」의 C-3PO와 R2-D2가 그 예입니다.",
+    "after": "루카스는 특히 가장 낮은 인물들의 눈으로 이야기를 전하는 방식을 받아들였습니다. 「스타워즈」의 C-3PO와 R2-D2가 그 예입니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  },
+  {
+   "id": 2822,
+   "answer": "목업",
+   "src": "카드-031 + V062 재료 + V067 sample fix",
+   "material": "v062-material-031.json",
+   "file": "카드-031",
+   "worth": "good",
+   "hasClaims": true,
+   "from": "대표보강: 확인된 재료로 단서를 정리",
+   "reapply": "g078",
+   "claims": [
+    {
+     "claim": "목업은 보통 디자인 모형이지만, 기능 일부를 갖춰 설계 시험이 가능하면 프로토타입이라 부를 수도 있다",
+     "source_url": "https://ko.wikipedia.org/wiki/목업",
+     "material_ref": "2822-f2"
+    }
+   ],
+   "question_text": {
+    "before": "제품이나 장치를 만들기 전에 교육·시연·설계 평가에 쓰려고 축소하거나 실물 크기로 만든 모형은 무엇일까요?",
+    "after": "디자인이나 장치를 만들 때 교육·시연·설계 평가에 쓰려고 축소하거나 실물 크기로 만든 모형은 무엇일까요?",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   },
+   "general_hint": {
+    "before": "디자이너가 사용자 피드백을 얻기 위해 쓰는 디자인 모형입니다.",
+    "after": "디자이너가 주로 사용자 피드백을 얻기 위해 쓰는 디자인 모형입니다.",
+    "kind": "rebuild",
+    "fixedBy": "v067-tone.json"
+   }
+  }
+ ],
+ "deactivate": []
+}
