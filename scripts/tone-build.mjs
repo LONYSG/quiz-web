@@ -41,13 +41,13 @@ for (const f of readdirSync(path.join(ROOT, 'data/pipeline/tone')).filter((f) =>
 }
 // ── VERIFY 판정(카드용)
 const verdict = {};
-for (const f of readdirSync(path.join(ROOT, 'data/pipeline/audit')).filter((f) => /^v0\d\d-tone\.json$/.test(f)).sort()) {
+for (const f of readdirSync(path.join(ROOT, 'data/pipeline/audit')).filter((f) => /^v\d{3}-tone\.json$/.test(f)).sort()) {
   const j = J(`data/pipeline/audit/${f}`);
   for (const [id, v] of Object.entries(j)) if (v && (v.lane === 'claims' || v.lane === 'sample')) (verdict[id] ??= []).push({ ...v, vfile: f });
 }
 // ── 3-1 재료 판정(G071~) — 재료로 쓴 묶음: chunk → { id → [사실 판정] } · 보낼것/재료-NNN.json 이 있는 묶음만
 const material = {};
-for (const f of readdirSync(path.join(ROOT, 'data/pipeline/audit')).filter((f) => /^v0\d\d-material.*\.json$/.test(f)).sort()) {
+for (const f of readdirSync(path.join(ROOT, 'data/pipeline/audit')).filter((f) => /^v\d{3}-material.*\.json$/.test(f)).sort()) {
   let j; try { j = J(`data/pipeline/audit/${f}`); } catch { continue; }
   if (!j.chunk || !existsSync(path.join(ROOT, 'web-desk/tone/보낼것', `재료-${j.chunk}.json`))) continue;
   const m = (material[j.chunk] = { vfile: f, byId: {} });

@@ -15,15 +15,15 @@ const ls = (d, re) => { try { return fs.readdirSync(d).filter((f) => re.test(f))
 
 // 판정 · 적재 기록 모으기
 const judged = new Map();   // 카드 id → verdict (v0NN-tone.json · 나중 것이 이긴다)
-for (const f of ls(A, /^v0\d+-tone\.json$/)) { const j = read(A + f); if (j) for (const [k, v] of Object.entries(j)) if (v && v.verdict) judged.set(String(v.id ?? k), v.verdict); }
+for (const f of ls(A, /^v\d+-tone\.json$/)) { const j = read(A + f); if (j) for (const [k, v] of Object.entries(j)) if (v && v.verdict) judged.set(String(v.id ?? k), v.verdict); }
 const material = new Map(); // chunk → 판정 파일 이름
-for (const f of ls(A, /^v0\d+-material(-\d+)?\.json$/)) { const j = read(A + f); if (j && j.chunk) material.set(String(j.chunk), f); }
+for (const f of ls(A, /^v\d+-material(-\d+)?\.json$/)) { const j = read(A + f); if (j && j.chunk) material.set(String(j.chunk), f); }
 const applied = new Map();  // 카드 id → 마지막으로 실은 파일
-for (const f of ls(P, /^g0\d+-apply\.json$/)) { const j = read(P + f); for (const it of (j && j.items) || []) if (String(it.src || it.file || '').startsWith('카드-')) applied.set(String(it.id), String(it.src || it.file).replace('.json', '')); }
+for (const f of ls(P, /^g0\d+-apply\.json$/)) { const j = read(P + f); for (const it of (j && j.items) || []) if (String(it.src || it.file || '').startsWith('카드-')) applied.set(String(it.id), String(it.file || it.src).replace('.json', '').split(' ')[0]); }
 
 const mtime = (p) => { try { return fs.statSync(p).mtimeMs; } catch { return 0; } };
 const lastApply = Math.max(0, mtime(P + '_gen-last-run.json'), ...ls(P, /^g0\d+-apply\.json$/).map((f) => mtime(P + f)));
-const lastVerdict = Math.max(0, ...ls(A, /^v0\d+-(tone|material(-\d+)?)\.json$/).map((f) => mtime(A + f)));
+const lastVerdict = Math.max(0, ...ls(A, /^v\d+-(tone|material(-\d+)?)\.json$/).map((f) => mtime(A + f)));
 const names = ['18', ...Array.from({ length: 72 }, (_, i) => String(i + 1).padStart(3, '0'))];
 const rows = [];
 for (const n of names) {
