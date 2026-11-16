@@ -132,7 +132,10 @@ for (const { fl, res, pk } of loaded) {
       else if (vc.verdict === 'ok') row.claimsOk++; else { row.wait++; report.waitVerify.push({ file: fl.card, id: r.id, why: `판정 ${vc.verdict}` }); continue; }
       }
     } else row.free++;
-    if (vsamp?.verdict === 'fix') { for (const [k] of F3) if (vsamp.fixed?.[k]) it.fields[k] = { ...(it.fields[k] ?? { kind: 'rewrite' }), text: vsamp.fixed[k], fixedBy: vsamp.vfile }; it.src += ` + ${vsamp.vfile.slice(0, 4).toUpperCase()} sample fix`; it.sampleFix = true; row.sampleFix++; }
+    // ★ G091: 표본 fix 는 차례로 쌓는다 — 뒤 판정의 ok 는 "앞 fix 가 덮은 문장"을 본 것이라 앞 fix 를 지우지 않는다(V093 ok 가 V090 fix 를 되돌린 사고)
+    const sampFixes = vs.filter((v) => v.lane === 'sample' && v.verdict === 'fix');
+    for (const sf of sampFixes) for (const [k] of F3) if (sf.fixed?.[k]) it.fields[k] = { ...(it.fields[k] ?? { kind: 'rewrite' }), text: sf.fixed[k], fixedBy: sf.vfile };
+    if (sampFixes.length) { it.src += ` + ${sampFixes.map((sf) => sf.vfile.slice(0, 4).toUpperCase()).join(' · ')} sample fix`; it.sampleFix = true; row.sampleFix++; }
     if (applied.has(r.id)) {
       const d = D[r.id]; const prev = applied.get(r.id).item;
       const target = Object.fromEntries(F3.map(([k, col]) => [col, it.fields[k]?.text ?? it.before[k] ?? '']));
