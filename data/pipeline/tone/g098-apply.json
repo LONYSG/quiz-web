@@ -1,0 +1,121 @@
+{
+ "round": "G098",
+ "db_snapshot": "quizweb",
+ "note": "찬종 표본 20 에서 짚은 다섯 건 — 켜기 4 · 끄기 4 · 질문 1",
+ "checks": [
+  {
+   "name": "하마",
+   "on": 5248,
+   "off": 724,
+   "ok": true,
+   "fail": [],
+   "warn": []
+  },
+  {
+   "name": "미라",
+   "on": 3768,
+   "off": 1814,
+   "ok": true,
+   "fail": [],
+   "warn": []
+  },
+  {
+   "name": "3M",
+   "on": 3453,
+   "off": 2152,
+   "ok": true,
+   "fail": [],
+   "warn": [
+    {
+     "kind": "explain",
+     "shared": [
+      "접착제를",
+      "했습니다"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "루지",
+   "on": 5770,
+   "off": 5077,
+   "ok": true,
+   "fail": [],
+   "warn": []
+  },
+  {
+   "name": "폭스바겐",
+   "id": 3252,
+   "ok": true,
+   "fail": []
+  }
+ ],
+ "items": [
+  {
+   "id": 3252,
+   "answer": "폭스바겐",
+   "src": "G098 찬종 표본 20 — 골프 풀어 쓰기",
+   "question_text": {
+    "before": "독일어로 회사 이름이 ‘국민차’라는 뜻이며, 골프를 만드는 자동차 회사는 어느 회사일까요?",
+    "after": "독일어로 회사 이름이 ‘국민차’라는 뜻이며, ‘골프’라는 이름의 자동차를 만드는 회사는 어디일까요?",
+    "kind": "rewrite"
+   }
+  }
+ ],
+ "activate": [
+  {
+   "id": 5248,
+   "answer": "하마",
+   "was": "same_answer:#724",
+   "hintVersion": "card-v1",
+   "why": "G098 하마 — 찬종 표본 20"
+  },
+  {
+   "id": 3768,
+   "answer": "미라",
+   "was": "same_answer:#1814",
+   "hintVersion": "card-v1",
+   "why": "G098 미라 — 찬종 표본 20"
+  },
+  {
+   "id": 3453,
+   "answer": "3M",
+   "was": "same_answer:#2152",
+   "hintVersion": "card-v1",
+   "why": "G098 3M — 찬종 표본 20"
+  },
+  {
+   "id": 5770,
+   "answer": "루지",
+   "was": "same_answer:#5077",
+   "hintVersion": "card-v1",
+   "why": "G098 루지 — 찬종 표본 20"
+  }
+ ],
+ "deactivate": [
+  {
+   "id": 724,
+   "answer": "하마",
+   "deactivate": "form_20261116",
+   "ifActivated": 5248
+  },
+  {
+   "id": 1814,
+   "answer": "미라",
+   "deactivate": "form_20261116",
+   "ifActivated": 3768
+  },
+  {
+   "id": 2152,
+   "answer": "3M",
+   "deactivate": "same_answer:#3453",
+   "ifActivated": 3453
+  },
+  {
+   "id": 5077,
+   "answer": "루지",
+   "deactivate": "same_answer:#5770",
+   "ifActivated": 5770
+  }
+ ]
+}

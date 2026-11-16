@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // =============================================================================
 // 카드 적용 되풀이 라운드(G065~) — 2/2: data/pipeline/tone/<round>-apply.json → DB(멱등 · 한 트랜잭션 · 열린 판 0 · 되돌리기 json)
-//   칸: question_text · general_hint(kind rewrite · rebuild 면 general_hint_version='card-v1' · ending 은 그대로) · explanation · 변형 add/remove · 비활성 3
+//   칸: question_text · general_hint(kind rewrite · rebuild 면 general_hint_version='card-v1' · ending 은 그대로) · explanation · 변형 add/remove · 비활성 3 · 다시 켜기 activate[{id, was}](G098)
 //   ★ 쓰기: 지금 값이 before 와 같을 때만(after 와 같으면 이미 됨 · 다르면 멈춤 — 하나라도 다르면 아무것도 안 쓴다)
 //   ★ DB = DATABASE_URL · --db quizweb_dev 로 이름만 바꿈 · 되돌리기 audit/<round>-undo-<db>.json
 //   사용 node scripts/tone-apply.mjs --round g0NN [--db quizweb_dev [--skip-diff]] [--apply | --undo]   (기본 = 확인만 · --skip-diff = before 와 다른 칸만 건너뜀)
@@ -55,7 +55,7 @@ function firstHintVersion(id) {
 }
 
 async function apply() {
-  const ids = [...plan.items.map((x) => x.id), ...(plan.deactivate ?? []).map((x) => x.id)];
+  const ids = [...plan.items.map((x) => x.id), ...(plan.deactivate ?? []).map((x) => x.id), ...(plan.activate ?? []).map((x) => x.id)];
   const cur = new Map((await c.query(`select q.id::int, q.is_active, q.inactive_reason, q.question_text, q.general_hint, q.general_hint_version, q.explanation,
     coalesce((select array_agg(answer_text order by id) from question_answers x where x.question_id=q.id and not x.is_primary),'{}') variants
     from questions q where q.id = any($1::bigint[])`, [ids])).rows.map((r) => [r.id, r]));
@@ -79,6 +79,21 @@ async function apply() {
     if (!r.is_active) { done++; continue; }
     todo.push({ id: x.id, field: 'state', before: { is_active: true, inactive_reason: r.inactive_reason }, after: { is_active: false, inactive_reason: x.deactivate } }); k('deactivate');
   }
+  // 다시 켜기(G098~) — 꺼진 이유가 계획의 was 와 같을 때만(다르면 멈춤 · --skip-diff 면 건너뜀)
+  for (const x of (plan.activate ?? [])) {
+    const r = cur.get(x.id);
+    if (!r) { diff.push(`${x.id}: 없음`); continue; }
+    if (r.is_active) { done++; continue; }
+    if (x.was && r.inactive_reason !== x.was) { diff.push(`${x.id} state: 꺼진 이유가 다름 DB ${r.inactive_reason} · 계획 ${x.was}`); continue; }
+    if (x.hintVersion && r.general_hint_version !== x.hintVersion) { diff.push(`${x.id} state: 새 글이 아님(general_hint_version ${r.general_hint_version}) — 켜지 않음`); continue; }
+    todo.push({ id: x.id, field: 'state', before: { is_active: false, inactive_reason: r.inactive_reason }, after: { is_active: true, inactive_reason: null } }); k('activate');
+  }
+  // 짝 끄기(ifActivated) — 짝 카드가 켜지지 않는 DB 에서는 끄지 않는다(같은 정답이 0장이 되지 않게)
+  const onIds = new Set([...todo.filter((t) => t.field === 'state' && t.after.is_active).map((t) => t.id), ...(plan.activate ?? []).filter((x) => cur.get(x.id)?.is_active).map((x) => x.id)]);
+  for (const x of (plan.deactivate ?? [])) if (x.ifActivated && !onIds.has(x.ifActivated)) {
+    const i = todo.findIndex((t) => t.id === x.id && t.field === 'state'); if (i >= 0) { todo.splice(i, 1); cnt.deactivate--; }
+    diff.push(`${x.id} state: 짝 #${x.ifActivated} 이 켜지지 않아 끄지 않음`);
+  }
   console.log(`[${TAG}] 문항 ${plan.items.length} · 쓸 칸 ${todo.length} · 이미 됨 ${done} · 다름 ${diff.length} · ${JSON.stringify(cnt)}`);
   if (diff.length && a.includes('--skip-diff')) {
     // dev 처럼 실과 갈라진 DB — 한 칸이라도 다른 문항은 통째로 건너뛴다(새 질문 + 옛 힌트처럼 섞여 겹침이 생기지 않게) · 목록만 남긴다
@@ -101,7 +116,9 @@ async function apply() {
       const r = await c.query('delete from question_answers where question_id=$1 and answer_text=$2 and not is_primary returning note', [t.id, t.before]);
       n += r.rowCount; t.beforeNote = r.rows[0]?.note ?? null;
     } else if (t.field === 'state') {
-      n += (await c.query('update questions set is_active=false, inactive_reason=$2, updated_at=now() where id=$1 and is_active', [t.id, t.after.inactive_reason])).rowCount;
+      n += t.after.is_active
+        ? (await c.query('update questions set is_active=true, inactive_reason=null, updated_at=now() where id=$1 and not is_active', [t.id])).rowCount
+        : (await c.query('update questions set is_active=false, inactive_reason=$2, updated_at=now() where id=$1 and is_active', [t.id, t.after.inactive_reason])).rowCount;
     } else {
       n += (await c.query(`update questions set ${t.field}=$2, updated_at=now() where id=$1 and ${t.field} is not distinct from $3`, [t.id, t.after, t.before])).rowCount;
     }

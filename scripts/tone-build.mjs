@@ -9,6 +9,7 @@
 //         data/pipeline/audit/<round>-verify-targets.json(claims 없는 카드 무작위 30 · 구조전환 절반 이상)
 //   ★ G068~: 고친 지 10분 안 된 카드 파일은 건너뜀(쓰는 중일 수 있음) · 이미 실은 카드도 "DB 값 = 이 카드의 최종 값"이 아니면
 //         다시 본다(카드 파일이 앞선 적용 뒤에 바뀐 것 — before 대조는 "지금 DB = 앞선 적용이 쓴 값" · keep 으로 돌아간 칸은 원문으로)
+//   ★ G098~: 질문 형태 게이트(scripts/form-scan.mjs formHit — 꾸미는 말 + 쉼표 + 또 꾸밈) · 새로 싣는 질문만
 //   사용  node scripts/tone-build.mjs --round g065 [--hold 123,456]   (--hold = GEN 이 게이트 경고를 읽고 뺀 id · 사유는 보고서)
 // =============================================================================
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
@@ -18,6 +19,7 @@ import pg from 'pg';
 import { checkHint } from './hint-check.mjs';
 import { checkAnswerSet, findAnswerInQuestion } from '../pipeline/lib/answer-rules.mjs';
 import { normalizeAnswer } from '../shared/dist/index.js';
+import { formHit } from './form-scan.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 process.loadEnvFile?.(path.join(ROOT, '.env'));
@@ -152,7 +154,7 @@ for (const { fl, res, pk } of loaded) {
 
 
 // ── 게이트
-const gate = { inactive: [], beforeDiff: [], newAnswer: [], hintBlock: [], over200: [], ending: [], empty: [], answerSet: [], warnExplainNew: [], warnQuestionNew: [], hold: [] };
+const gate = { inactive: [], beforeDiff: [], newAnswer: [], hintBlock: [], over200: [], ending: [], form: [], empty: [], answerSet: [], warnExplainNew: [], warnQuestionNew: [], hold: [] };
 const items = []; const cnt = { question: 0, hint: 0, explanation: 0, hintNew: 0 };
 for (const it of pick) {
   const d = D[it.id]; const fail = [];
@@ -181,6 +183,8 @@ for (const it of pick) {
   if (L(q) > 200) fail.push(`질문 ${L(q)}자`);
   if (it.fields.question && !it.restore && !/까요\?\s*$/.test(q)) fail.push('질문 끝이 ~까요? 아님');
   if (!h?.trim() || !e?.trim()) fail.push('힌트 · 해설 빔');
+  // ⑦ 질문 형태(G098 · 찬종) — 꾸미는 말 + 쉼표 + 또 꾸밈(~는, ~은) · 새로 싣는 질문만(지금 DB 와 같은 질문은 소급하지 않음)
+  if (it.fields.question && !it.restore && q !== d.question_text && formHit(q)) fail.push(`질문 형태(~는, ~은) '${formHit(q)}'`);
   // ④ 겹침 경고(새로 생긴 것만) — GEN 이 읽고 --hold 로 뺄지 정한다
   for (const kind of ['explain', 'question']) {
     const wn = ckN.warn.find((w) => w.kind === kind), wo = ckO.warn.find((w) => w.kind === kind);
@@ -189,7 +193,7 @@ for (const it of pick) {
   if (HOLD.has(it.id)) fail.push(`GEN 보류: ${HOLD.get(it.id)}`);
   if (it.restore) fail.length = 0; // 되돌림 = 원래 DB 값으로 — 게이트는 before 대조만
   if (fail.length) {
-    const key = fail[0].startsWith('질문에') ? 'newAnswer' : fail[0].startsWith('힌트 막힘') ? 'hintBlock' : fail[0].startsWith('정답 묶음') ? 'answerSet' : fail[0].startsWith('질문 2') || /^질문 \d+자/.test(fail[0]) ? 'over200' : fail[0].startsWith('질문 끝') ? 'ending' : fail[0].startsWith('힌트 · 해설') ? 'empty' : 'hold';
+    const key = fail[0].startsWith('질문에') ? 'newAnswer' : fail[0].startsWith('힌트 막힘') ? 'hintBlock' : fail[0].startsWith('정답 묶음') ? 'answerSet' : fail[0].startsWith('질문 2') || /^질문 \d+자/.test(fail[0]) ? 'over200' : fail[0].startsWith('질문 끝') ? 'ending' : fail[0].startsWith('질문 형태') ? 'form' : fail[0].startsWith('힌트 · 해설') ? 'empty' : 'hold';
     gate[key].push({ id: it.id, file: it.file, fail }); continue;
   }
   const o = { id: it.id, answer: d.display_answer, src: it.src, ...(it.material ? { material: it.material } : {}), file: it.file, worth: it.worth, hasClaims: it.hasClaims, from: it.fields.question?.from ?? '', ...(it.reapply ? { reapply: it.reapply } : {}), ...(it.restore ? { restore: true } : {}) };
@@ -239,5 +243,5 @@ writeFileSync(path.join(ROOT, `data/pipeline/audit/${ROUND}-verify-targets.json`
 console.log(db, 'files', JSON.stringify(report.files));
 console.log('skippedFile', JSON.stringify(report.skippedFile), 'notReady', report.notReady.length, 'waitVerify', report.waitVerify.length, 'rejected', report.rejected.length, 'already', report.alreadyApplied, 'reapply', report.reapply.length, 'reapplyItems', items.filter((x) => x.reapply).length, 'bundleWins', JSON.stringify(report.bundleWins), 'restored', JSON.stringify(report.restored ?? []));
 console.log('gate', JSON.stringify(Object.fromEntries(Object.entries(gate).map(([k, v]) => [k, v.length]))));
-for (const k of ['inactive', 'beforeDiff', 'newAnswer', 'hintBlock', 'answerSet', 'over200', 'ending', 'empty', 'hold']) for (const x of gate[k]) console.log(' ', k, JSON.stringify(x));
+for (const k of ['inactive', 'beforeDiff', 'newAnswer', 'hintBlock', 'answerSet', 'over200', 'ending', 'form', 'empty', 'hold']) for (const x of gate[k]) console.log(' ', k, JSON.stringify(x));
 console.log('counts', JSON.stringify(counts), 'verify targets', targets.length, '(구조전환', targets.filter((x) => x.from.startsWith('구조전환')).length + ')');
