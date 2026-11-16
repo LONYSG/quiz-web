@@ -20,10 +20,11 @@ $projKey = ($repo -replace '[:\\\/]', '-')            # C--work-quiz-web
 $sessDir = Join-Path $env:USERPROFILE ".claude\projects\$projKey"
 
 $models = @{
-  Agent  = 'claude-fable-5-1'
+  Agent  = 'claude-fable-5-2'
   Main   = 'claude-opus-5-5'
   Gen    = 'claude-opus-5-5'
   Verify = 'claude-sonnet-5-5'
+  Video  = 'claude-opus-5-5'   # 2026-11-16 영상 샘플 창(ai-out/briefs/video.md) — claude4.bat Video
 }
 
 function Find-Session([string]$name) {
@@ -39,7 +40,7 @@ function Find-Session([string]$name) {
 }
 
 foreach ($name in $Names) {
-  if (-not $models.ContainsKey($name)) { Write-Host "[$name] 모르는 창 이름 — Agent · Main · Gen · Verify 중 하나" -ForegroundColor Yellow; continue }
+  if (-not $models.ContainsKey($name)) { Write-Host "[$name] 모르는 창 이름 — Agent · Main · Gen · Verify · Video 중 하나" -ForegroundColor Yellow; continue }
   $model = $models[$name]
   $s = Find-Session $name
   if ($s) {
