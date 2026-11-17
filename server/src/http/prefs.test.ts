@@ -25,4 +25,9 @@ describe('R074 prefs', () => {
     expect(sanitizePrefs({ theme: 'office' })).toEqual({ theme: 'office' });
     expect(sanitizePrefs({ theme: 'matrix' })).toEqual({});
   });
+  it('R104 — 곡은 bell · bounce 만 · 판 번호 bgmVer 를 받는다', () => {
+    expect(sanitizePrefs({ bgmTrack: 'bell', bgmVer: 2 })).toEqual({ bgmTrack: 'bell', bgmVer: 2 });
+    expect(sanitizePrefs({ bgmTrack: 'chip' })).toEqual({});
+    expect(sanitizePrefs({ bgmTrack: 'bounce', bgmVer: 'x' })).toEqual({ bgmTrack: 'bounce' });
+  });
 });

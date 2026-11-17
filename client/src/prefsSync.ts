@@ -8,7 +8,7 @@
 // =============================================================================
 
 import { fetchPrefs, savePrefs, type ServerPrefs } from './api.js';
-import { BGMS, getSoundPrefs, setSoundPrefs, type BgmId } from './sound.js';
+import { BGM_PICK_VER, BGMS, getSoundPrefs, setSoundPrefs, type BgmId } from './sound.js';
 import { getTheme, setTheme, THEMES, type ThemeId } from './theme.js';
 import { getEmojiInsert, getStoredSlots, setEmojiInsert, setStoredSlots } from './emojiCatalog.js';
 import { getFlag, setFlag } from './accountFlags.js';
@@ -49,6 +49,7 @@ function current(): ServerPrefs {
     theme: getTheme(),
     bgmOn: s.bgmOn,
     bgmTrack: s.bgm,
+    bgmVer: s.bgmVer,
     bgmVolume: s.bgmVol,
     sfxOn: s.sfxOn,
     sfxVolume: s.sfxVol,
@@ -76,7 +77,10 @@ function scheduleSave(): void {
   }, 600);
 }
 
-function apply(p: ServerPrefs): void {
+/** @returns 계정 값이 옛 판이라 지금 값으로 다시 저장해야 하면 true */
+function apply(p: ServerPrefs): boolean {
+  // ★ R104 — 판 번호 없는 곡(옛 기본 bounce · 지운 chip)은 따르지 않는다 → 브라우저의 값(bell)을 계정에 다시 올린다
+  const oldTrack = p.bgmVer !== BGM_PICK_VER;
   applying = true;
   try {
     if (THEMES.some((t) => t.id === p.theme)) setTheme(p.theme as ThemeId);
@@ -84,7 +88,8 @@ function apply(p: ServerPrefs): void {
     else if (p.theme === 'pop') setTheme('pastel');
     const patch: Parameters<typeof setSoundPrefs>[0] = {};
     if (typeof p.bgmOn === 'boolean') patch.bgmOn = p.bgmOn;
-    if (BGMS.some((b) => b.id === p.bgmTrack)) patch.bgm = p.bgmTrack as BgmId;
+    if (!oldTrack && BGMS.some((b) => b.id === p.bgmTrack)) patch.bgm = p.bgmTrack as BgmId;
+    else if (oldTrack) patch.bgm = 'bell';
     if (typeof p.bgmVolume === 'number') patch.bgmVol = p.bgmVolume;
     if (typeof p.sfxOn === 'boolean') patch.sfxOn = p.sfxOn;
     if (typeof p.sfxVolume === 'number') patch.sfxVol = p.sfxVolume;
@@ -102,6 +107,7 @@ function apply(p: ServerPrefs): void {
   } finally {
     applying = false;
   }
+  return oldTrack;
 }
 
 /** main.tsx 에서 한 번. 테마·소리가 바뀔 때마다 (로그인 중이면) 계정에 저장한다 */
@@ -121,7 +127,9 @@ export async function onSignedIn(): Promise<void> {
   try {
     const saved = await fetchPrefs();
     if (!signedIn) return;
-    if (saved && Object.keys(saved).length > 0) apply(saved);
+    if (saved && Object.keys(saved).length > 0) {
+      if (apply(saved)) void savePrefs(current()).catch(() => undefined);
+    }
     else void savePrefs(current()).catch(() => undefined);
   } catch {
     /* 불러오지 못해도 브라우저 값으로 계속한다 */

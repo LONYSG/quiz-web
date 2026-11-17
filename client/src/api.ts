@@ -169,6 +169,8 @@ export interface ServerPrefs {
   theme?: string;
   bgmOn?: boolean;
   bgmTrack?: string;
+  /** ★ R104 — 곡을 고른 판 번호(없거나 옛 번호면 그 bgmTrack 은 옛 기본값 — 한 번 bell 로) */
+  bgmVer?: number;
   bgmVolume?: number;
   sfxOn?: boolean;
   sfxVolume?: number;

@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-17 — 소리를 영상과 한 집안으로 (R104, MAIN · D-361)
+- 무엇: client/src/sound.ts — 기본 배경음 bell '포근한 종'(영상과 같은 곡) · 8비트 게임기(chip) 삭제 · 정답 = 종 네 음 · 게임 시작 = 종 시그널 · 마지막 5초 = tick 과 같은 '똑' · mine / mg-final 반짝 시작 +0.32 · 옛 저장 곡은 판 번호(bgmVer 2)로 한 번 bell. prefsSync · api(bgmVer) · server authRoutes(곡 목록 bell · bounce · bgmVer) · prefs.test 1 · LabSound 이름 둘 · ui-check --sound(bgm:bell · r104BgmFlow 7칸) · 01 소리 줄.
+- 검증: typecheck · test 784 · ui-check:sound 12/12 · 그림 docs/design/r104. 귀로 듣는 확인은 찬종(R104.txt 0절).
+
 ## 2026-11-17 — 문항별 통계가 쌓이게 · 뽑아 볼 수 있게 (R103, MAIN · D-360)
 - 무엇: 조사(무엇이 남는가 — R103.txt 1절) · migrations/0037_play_events.sql(추가만) · server db/playEvents.ts(새) · game/question.ts(trackPlay · schedulePlayEvents) · socket/index.ts(판정 뒤 trackPlay 한 줄) · rooms/types.ts(PlayTrack) · vitest game/playTrack.test.ts(새 3) · scripts/question-stats.mjs(새 · npm run stats:questions) · data/stats/question-stats.json.
 - [x] A 기록(0037 dev · test 적용) [x] B 뽑는 스크립트 [x] C 문서 · 보고 — 검증 = ai-out/R103.txt 2절.

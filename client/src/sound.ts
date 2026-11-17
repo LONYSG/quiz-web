@@ -19,12 +19,20 @@
 
 // ★★ R034 (건우 선택) — 배경음악은 "통통 경쾌" · "8비트 게임기" 둘만 남긴다 (오르골 삭제).
 //   ★ 정답 효과음은 "코인" 하나로 고정한다 (딩동댕·빰빠밤 삭제). 고르는 칸도 없앴다.
-export type BgmId = 'bounce' | 'chip';
+// ★★★ R104 (찬종 2026-11-17 · 영상과 한 집안 — docs/20 §33) — 기본 곡 = "포근한 종"(bell · 영상과 같은 곡).
+//   "통통 경쾌"는 설정에서 고를 수 있게 남긴다. "8비트 게임기"(chip)는 삭제 — 가락이 남의 유명 게임 주제곡과 거의 같다.
+export type BgmId = 'bell' | 'bounce';
 
 export const BGMS: readonly { id: BgmId; label: string }[] = [
+  { id: 'bell', label: '포근한 종' },
   { id: 'bounce', label: '통통 경쾌' },
-  { id: 'chip', label: '8비트 게임기' },
 ];
+
+/**
+ * ★ R104 — 곡 고르기 판 번호. 이 번호 없이 저장된 곡(옛 기본 bounce · 지운 chip)은 **한 번** bell 로 바꾼다.
+ *   그 뒤에 고른 곡은 이 번호와 함께 저장되므로 지킨다(브라우저 · 계정 둘 다 — prefsSync).
+ */
+export const BGM_PICK_VER = 2;
 
 export interface SoundPrefs {
   bgmOn: boolean;
@@ -34,6 +42,8 @@ export interface SoundPrefs {
   /** 0~1 */
   sfxVol: number;
   bgm: BgmId;
+  /** ★ R104 — 곡을 고른 판 번호(BGM_PICK_VER 와 같으면 지금 목록에서 고른 것) */
+  bgmVer: number;
   /**
    * ★★ R038 — 채팅 소리 (메시지가 하나 올라올 때마다 · 세레머니 때 정답자 채팅은 킹받는 소리).
    *   ★ 내 귀에 들리는 것만 정한다 — 남에게 들리는 것은 끌 수 없다 (건우 확정). 그래서 받는 쪽에서 재생한다.
@@ -50,7 +60,8 @@ const DEFAULTS: SoundPrefs = {
   // ★ 배경음악은 작게. 시끄러우면 끈다 — 그러면 효과음까지 끌 수 있다
   bgmVol: 0.35,
   sfxVol: 0.7,
-  bgm: 'bounce',
+  bgm: 'bell',
+  bgmVer: BGM_PICK_VER,
   // ★ 채팅 소리는 작게 — 도배 때 귀가 아프지 않게
   chatOn: true,
   chatVol: 0.45,
@@ -63,16 +74,27 @@ function loadPrefs(): SoundPrefs {
     const raw = localStorage.getItem(KEY);
     if (!raw) return { ...DEFAULTS };
     const p = JSON.parse(raw) as Partial<SoundPrefs>;
-    return {
+    // ★ R104 — 판 번호 없이 저장된 곡은 이번 한 번 기본 곡(bell)으로
+    const fresh = p.bgmVer === BGM_PICK_VER;
+    const out: SoundPrefs = {
       bgmOn: typeof p.bgmOn === 'boolean' ? p.bgmOn : DEFAULTS.bgmOn,
       sfxOn: typeof p.sfxOn === 'boolean' ? p.sfxOn : DEFAULTS.sfxOn,
       bgmVol: clamp01(p.bgmVol, DEFAULTS.bgmVol),
       sfxVol: clamp01(p.sfxVol, DEFAULTS.sfxVol),
       // ★ 지운 곡(오르골)이 저장돼 있으면 기본 곡으로
-      bgm: BGMS.some((b) => b.id === p.bgm) ? (p.bgm as BgmId) : DEFAULTS.bgm,
+      bgm: fresh && BGMS.some((b) => b.id === p.bgm) ? (p.bgm as BgmId) : DEFAULTS.bgm,
+      bgmVer: BGM_PICK_VER,
       chatOn: typeof p.chatOn === 'boolean' ? p.chatOn : DEFAULTS.chatOn,
       chatVol: clamp01(p.chatVol, DEFAULTS.chatVol),
     };
+    if (!fresh) {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(out));
+      } catch {
+        /* 다음에 또 옮긴다 */
+      }
+    }
+    return out;
   } catch {
     return { ...DEFAULTS };
   }
@@ -338,8 +360,11 @@ export function sfx(id: SfxId): void {
     case 'tick': // 카운트다운 5·4·3·2·1
       playNote(d, mtof(81), t, 0.06, { ...SOFT, gain: 0.22, decay: 0.12 });
       break;
-    case 'go': // 시작!
-      [72, 76, 79, 84].forEach((m, i) => playNote(d, mtof(m), t + i * 0.06, 0.18, PLUCK));
+    case 'go': // 시작! — ★ R104 종 시그널 "솔-미-도↑"(영상의 여는 소리와 같다)
+      playNote(d, mtof(79), t, 0.2, { ...BELL, gain: 0.16 });
+      playNote(d, mtof(76), t + 0.16, 0.2, { ...BELL, gain: 0.16 });
+      playNote(d, mtof(84), t + 0.32, 0.7, { ...BELL, gain: 0.18, decay: 0.7 });
+      playNote(d, mtof(72), t + 0.32, 0.7, { ...SOFT, gain: 0.1, decay: 0.7 });
       break;
     case 'question': // 문제 등장 — 위로 쓸어 올리는 소리
       playNote(d, mtof(67), t, 0.18, { ...SOFT, gain: 0.18 }, mtof(79));
@@ -348,15 +373,15 @@ export function sfx(id: SfxId): void {
     case 'hint': // 반짝
       [88, 91, 96].forEach((m, i) => playNote(d, mtof(m), t + i * 0.07, 0.15, { ...BELL, gain: 0.14 }));
       break;
-    case 'urgent': // 마지막 5초 — 작게 똑딱
-      playNote(d, mtof(93), t, 0.03, { ...SQUARE, gain: 0.05, decay: 0.05 });
+    case 'urgent': // 마지막 5초 — ★ R104 카운트다운(tick)과 같은 "똑"(영상의 5초 타이머 소리)
+      playNote(d, mtof(81), t, 0.06, { ...SOFT, gain: 0.22, decay: 0.12 });
       break;
     case 'correct':
       playCorrect(d, t);
       break;
     case 'mine': // 내가 맞혔을 때 덧붙는 반짝
       playCorrect(d, t);
-      [96, 100, 103, 108].forEach((m, i) => playNote(d, mtof(m), t + 0.35 + i * 0.05, 0.1, { ...BELL, gain: 0.1 }));
+      [96, 100, 103, 108].forEach((m, i) => playNote(d, mtof(m), t + CORRECT_TAIL + i * 0.05, 0.1, { ...BELL, gain: 0.1 }));
       break;
     case 'timeout': // 아쉬움 — 거슬리지 않게 부드럽게 내려간다
       playNote(d, mtof(67), t, 0.22, SOFT);
@@ -393,9 +418,9 @@ export function sfx(id: SfxId): void {
     case 'mg-round': // 판 결과 — 위로 똑 떨어지는 세 음
       [76, 79, 84].forEach((m, i) => playNote(d, mtof(m), t + i * 0.07, 0.14, { ...BELL, gain: 0.14 }));
       break;
-    case 'mg-final': // 최종 결과 — 짧은 빵빠레
+    case 'mg-final': // 최종 결과 — 정답 종 네 음 + 반짝 네 음
       playCorrect(d, t);
-      [84, 88, 91, 96].forEach((m, i) => playNote(d, mtof(m), t + 0.9 + i * 0.06, 0.2, { ...BELL, gain: 0.1 }));
+      [84, 88, 91, 96].forEach((m, i) => playNote(d, mtof(m), t + CORRECT_TAIL + i * 0.06, 0.2, { ...BELL, gain: 0.1 }));
       break;
     case 'mg-return': // 퀴즈로 돌아간다 — 내려오는 쓸기
       playNote(d, mtof(84), t, 0.35, { ...SOFT, gain: 0.16 }, mtof(67));
@@ -451,17 +476,17 @@ export function cakeTick(strong: boolean, vol = 1): void {
 const BRASS: Voice = { type: 'sawtooth', gain: 0.09, attack: 0.02, decay: 0.3, partials: [[1, 1], [1.004, 0.7]] };
 
 /**
- * ★ 정답 효과음 — 코인 (R034 건우 선택) + ★★ R038 **빵빠레** (건우: "정답이 나오면 빵빠레 효과음").
- *   코인 "띠링" 뒤에 빰-빠-밤! 이 이어진다. 세레머니 8초의 시작 신호다.
+ * ★ 정답 효과음 — ★★★ R104 (찬종 2026-11-17: "빵빠레는 좀 시끄럽다") **종 네 음 올라감** 도-미-솔-도↑.
+ *   영상의 정답 공개 소리와 같다. (옛: R034 코인 + R038 빵빠레)
  */
 function playCorrect(d: AudioNode, t: number): void {
-  playNote(d, mtof(83), t, 0.07, { ...SQUARE, gain: 0.14 });
-  playNote(d, mtof(88), t + 0.07, 0.3, { ...SQUARE, gain: 0.14, decay: 0.3 });
-  const f = t + 0.25;
-  playNote(d, mtof(67), f, 0.11, BRASS);
-  playNote(d, mtof(67), f + 0.12, 0.11, BRASS);
-  for (const m of [72, 76, 79]) playNote(d, mtof(m), f + 0.24, 0.6, { ...BRASS, gain: 0.08, decay: 0.6 });
+  playNote(d, mtof(72), t, 0.12, { ...BELL, gain: 0.14 });
+  playNote(d, mtof(76), t + 0.08, 0.12, { ...BELL, gain: 0.14 });
+  playNote(d, mtof(79), t + 0.16, 0.12, { ...BELL, gain: 0.14 });
+  playNote(d, mtof(84), t + 0.24, 0.5, { ...BELL, gain: 0.16, decay: 0.5 });
 }
+/** ★ R104 — 정답 소리 뒤에 붙는 반짝(mine · mg-final)의 시작 시각 — 마지막 종(0.24초)이 울린 직후 */
+const CORRECT_TAIL = 0.32;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ★★ R038 — 채팅 소리
@@ -571,6 +596,22 @@ function parse(lead: string, bass: string): [number | null, number | null][] {
 }
 
 const TRACKS: Record<BgmId, Track> = {
+  // ★★ R104 포근한 종 — 기본 곡 · 영상과 같은 곡(찬종이 듣고 골랐다)
+  bell: {
+    bpm: 100,
+    lead: { ...BELL, gain: 0.1, decay: 0.5 },
+    bass: { type: 'triangle', gain: 0.13, attack: 0.005, decay: 0.2 },
+    steps: parse(
+      'B4 . . . D5 . . . G5 . . . . . D5 . ' +
+        'E5 . . . D5 . . . B4 . . . . . . . ' +
+        'C5 . . . E5 . . . A5 . . . . . G5 . ' +
+        'F#5 . . . D5 . . . G5 . . . . . . .',
+      'G2 . D3 . G3 . D3 . G2 . D3 . G3 . D3 . ' +
+        'E2 . B2 . E3 . B2 . G2 . D3 . G3 . D3 . ' +
+        'C3 . G3 . C4 . G3 . A2 . E3 . A3 . E3 . ' +
+        'D3 . A3 . D4 . A3 . G2 . D3 . G3 . . .',
+    ),
+  },
   // ★ 통통 경쾌 — 장조 오음계, 통통 튀는 삼각파
   bounce: {
     bpm: 112,
@@ -585,22 +626,6 @@ const TRACKS: Record<BgmId, Track> = {
         'F2 . . . C3 . . . F2 . . . G2 . . . ' +
         'A2 . . . E2 . . . F2 . . . C3 . . . ' +
         'G2 . . . D3 . . . G2 . . . C3 . . .',
-    ),
-  },
-  // ★ 8비트 게임기 — 사각파 멜로디 + 통통 베이스
-  chip: {
-    bpm: 132,
-    lead: { ...SQUARE, gain: 0.07, decay: 0.1 },
-    bass: { type: 'square', gain: 0.06, attack: 0.002, decay: 0.08 },
-    steps: parse(
-      'E5 E5 . E5 . C5 E5 . G5 . . . G4 . . . ' +
-        'C5 . . G4 . . E4 . . A4 . B4 . A#4 A4 . ' +
-        'G4 E5 . G5 A5 . F5 G5 . E5 . C5 D5 B4 . . ' +
-        'C5 . . G4 . . E4 . . A4 . B4 . A#4 A4 .',
-      'C3 . C3 . G2 . G2 . C3 . C3 . G2 . G2 . ' +
-        'A2 . A2 . E2 . E2 . F2 . F2 . G2 . G2 . ' +
-        'C3 . C3 . G2 . G2 . F2 . F2 . G2 . G2 . ' +
-        'A2 . A2 . E2 . E2 . F2 . G2 . C3 . . .',
     ),
   },
 };
@@ -652,7 +677,7 @@ export function setMusicMode(mode: MusicMode): void {
   startBgm();
 }
 function trackOf(id: string): Track {
-  return id === 'minigame' ? MINIGAME_TRACK : TRACKS[id as BgmId] ?? TRACKS.bounce;
+  return id === 'minigame' ? MINIGAME_TRACK : TRACKS[id as BgmId] ?? TRACKS.bell;
 }
 
 function scheduler(): void {

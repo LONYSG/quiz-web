@@ -124,7 +124,7 @@ const CANDS: Cand[] = [
   { id: 'k-conf4', slot: '판 결과', label: '확인음 004', kind: 'CC0', src: 'confirmation_004.ogg', play: file('confirmation_004.ogg') },
   { id: 'k-three1', slot: '판 결과', label: '세 음 1', kind: 'CC0', src: 'threeTone1.ogg', play: file('threeTone1.ogg') },
   // 최종 · 복귀
-  { id: 'final-now', slot: '최종 결과', label: '코인 + 빵빠레', kind: '지금', play: NOW('mg-final') },
+  { id: 'final-now', slot: '최종 결과', label: '종 네 음 + 반짝', kind: '지금', play: NOW('mg-final') },
   { id: 'final-b', slot: '최종 결과', label: '긴 빵빠레', kind: '만든 후보', play: g(finalB) },
   { id: 'k-nes08', slot: '최종 결과', label: 'NES 징글 08', kind: 'CC0', src: 'jingles_NES08.ogg', play: file('jingles_NES08.ogg') },
   { id: 'k-pizzi02', slot: '최종 결과', label: '피치카토 징글 02', kind: 'CC0', src: 'jingles_PIZZI02.ogg', play: file('jingles_PIZZI02.ogg') },
@@ -141,7 +141,7 @@ const CANDS: Cand[] = [
   { id: 'k-drop2', slot: '누르기 · 옮기기 · 자르기', label: '떨어짐 002', kind: 'CC0', src: 'drop_002.ogg', play: file('drop_002.ogg') },
   { id: 'k-phase1', slot: '누르기 · 옮기기 · 자르기', label: '페이즈 점프 1', kind: 'CC0', src: 'phaseJump1.ogg', play: file('phaseJump1.ogg') },
   // 기존 효과음 — 바꿀 후보와 비교
-  { id: 'correct-now', slot: '기존 — 정답', label: '코인 + 빵빠레', kind: '지금', play: NOW('correct') },
+  { id: 'correct-now', slot: '기존 — 정답', label: '종 네 음 올라감', kind: '지금', play: NOW('correct') },
   { id: 'k-hit00', slot: '기존 — 정답', label: '짧은 징글 HIT00', kind: 'CC0', src: 'jingles_HIT00.ogg', play: file('jingles_HIT00.ogg') },
   { id: 'k-up2', slot: '기존 — 정답', label: '파워업 2', kind: 'CC0', src: 'powerUp2.ogg', play: file('powerUp2.ogg') },
   { id: 'result-now', slot: '기존 — 게임 결과', label: '종소리 오르막', kind: '지금', play: NOW('result') },
