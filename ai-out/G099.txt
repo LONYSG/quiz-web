@@ -1,0 +1,38 @@
+G099 — 작은 고침 둘 + 웹이 다시 고른 "같은 정답 한 장" 맞바꾸기 · 2026-11-17 10:20 KST · GEN · DB 쓰기 · 두 DB · 하위 에이전트 · gpt 안 부름
+
+0 ★ 찬종이 볼 것
+ · ★ 찬종-확인.md 맨 위 "G099" 절 — #5387 고치기 전 / 고친 문장 · 맞바꾼 것 표본 15 · 건너뛴 묶음 5 · 정치 낱말 새로 걸린 2
+ · 일반 상식 남은 활성 6,161 → 6,160(#4528 만 줄었다) · 전체 활성 7,367(실) · 6,890(dev)
+ · 등급별(실 · 일반 상식 활성): 1 585 · 2 1,709 · 3 2,391 · 4 1,202 · 5 273
+ · 되돌리기 node scripts/tone-apply.mjs --round g099 [--db quizweb_dev] --undo
+ · 큰 작업(hold-G098-큰작업.md)의 나머지는 시작하지 않았다. 여기서 멈춘다.
+
+1 찬종이 짚은 둘
+ · #4528 다시 만난 세계 끔(political_20261117)
+ · #5387 구미 질문 · 해설 = 지시서 문장 그대로 · 힌트 그대로
+    · 게이트 통과: 정답 낱말(구미 · 구미시) 질문 · 힌트에 없음 · 질문 끝 · 질문 형태 걸림 없음 · checkHint 막힘 0 · 경고 0
+    · 근거: web-desk/tone/보낼것/재료-045.json #5387 에 5387-f8(신라면 약 75% · smarttoday · imaeil) · 5387-f9(2022년부터 구미라면축제 · segye) check 맞음 · 5387-f3 where = "안 씀(정치 · 찬종 2026-11-17)"
+    · 카드-045.json #5387: claims 에 f8 · f9 더함 · question / explanation 을 실린 문장으로(before 남김)
+       · GEN 판단(되돌리기 쉽다): 카드 파일 문장도 DB 와 맞췄고, 카드 claims 에서는 f3 를 뺐다(카드가 더는 말하지 않는 사실 · 재료 파일에는 그대로 있음)
+ · data/pipeline/tone/political-scan.json 에 answers(62 · 2026-11-17 · #4528 끔 · #5387 고침 · 나머지 60 괜찮음)
+ · scripts/political-scan.mjs: answers 를 남기고 답이 있는 id 는 "본 것"으로 뺌 → 다시 돌려 걸림 60 · 본 것 58 · 새로 2(#1066 아침이슬 해설 "시위" · #6046 아이슬란드 질문 "집회" — 맞바꾸기로 새로 켜진 카드 · 찬종-확인 4절)
+
+2 같은 정답 맞바꾸기(web-desk/pick/_swap.json · scripts/g099-build.mjs → data/pipeline/tone/g099-apply.json)
+ · 227 − 빼는 묶음 4 = 223 (지시서는 5 를 뺀다 했으나 S0173 하마는 웹이 G097 과 같게 골라 처음부터 _swap 에 없다 → 대상 223 은 그대로)
+ · 통과 218 · 건너뜀 5 (모두 ② 켤 카드가 새 글이 아님 hint-v7): S0148 스코티시 폴드 #641 · S0196 율리우스력 #832 · S0399 모스 #1671 · S0638 잃어버린 시간을 찾아서 #2649 · S0718 가루다 #3075 — 지금 켜진 카드 그대로
+ · ① ③ ④ 에 걸린 것 0 · 켠 카드 중 checkHint 경고만 있는 것 24(막힘 아님)
+ · 3장 이상 묶음의 꺼진 카드 까닭 고치기(same_answer:#옛 → #새) 9
+ · 질문 형태는 막지 않음 — 켠 카드 중 formHit 15 · form-scan 다시: 활성 6,160 중 477 → 452
+ · 웹 표시 기록 → data/pipeline/tone/pick-flags.json (form 42 · tidbit 8 — 지시서 목록과 같음)
+
+3 게이트 · 두 DB
+ · 백업 새로 뜸(6시간 안 덤프 없음): backups/quizweb-20261117-100851.dump · quizweb_dev-20261117-100908.dump · 열린 판 0
+ · quizweb: 448칸(질문 1 · 해설 1 · 끄기 219 · 켜기 218 · 까닭 고치기 9) · 다시 돌려 0(이미 됨 448 · 멱등) · audit/g099-undo-quizweb.json
+ · quizweb_dev(--skip-diff): 282칸(질문 1 · 해설 1 · 끄기 139 · 켜기 138 · 까닭 3) · 건너뜀 166칸 = 켤 카드가 dev 에서 옛 글 80 + 그 짝 끄기 · 까닭 고치기 86(같은 정답 0장 방지) — audit/g099-skipped-quizweb_dev.json
+ · 두 DB 모두 758묶음 활성 정확히 1장 · hint-check-active(실) 힌트 7,367 · 막힘 0
+ · 현황판(_status.mjs): 처음 · 끝 모두 VERIFY · gpt · GEN 할 것 없음
+
+4 고친 도구
+ · scripts/tone-apply.mjs: relabel[{id, was, to, ifActivated}] — 꺼진 카드의 inactive_reason 만 바꿈 · 짝이 안 켜지면 하지 않음 · undo 는 state 행으로 되돌림
+ · 새 scripts/g099-build.mjs · scripts/political-scan.mjs(본 것 빼기)
+ · 덧: 정치 낱말 스크립트를 고치기 전에 한 번 돌아 political-scan.json 을 덮어쓴 것을 git 에서 되살려 답을 다시 적었다(잃은 것 없음)

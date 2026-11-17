@@ -4,7 +4,7 @@
 //   활성 문항 전체의 질문 · 힌트 · 해설에서 탄핵 · 계엄 · 집회 · 시위 · 대통령 선거 · 정당 이름 · 현직/전직 대통령 이름
 //   사용 node scripts/political-scan.mjs → data/pipeline/tone/political-scan.json
 // =============================================================================
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pg from 'pg';
@@ -36,5 +36,10 @@ for (const r of rows) {
   for (const w of new Set(hit.map((h) => h.word))) byWord[w] = (byWord[w] ?? 0) + 1;
   items.push({ id: r.id, answer: r.display_answer, words: [...new Set(hit.map((h) => `${h.word}(${h.in})`))], question: r.question_text, hint: r.general_hint, explanation: r.explanation });
 }
-writeFileSync(path.join(ROOT, 'data/pipeline/tone/political-scan.json'), JSON.stringify({ round: 'G098', db, scanned: rows.length, hits: items.length, byWord, items }, null, 1) + '\n');
-console.log(db, '활성', rows.length, '· 걸림', items.length, JSON.stringify(byWord));
+// ★ G099 — 파일의 answers(찬종이 본 답 · id 별)는 남기고, 답이 있는 id 는 "본 것"으로 빼서 items 에는 새로 걸린 것만 적는다
+const OUTF = path.join(ROOT, 'data/pipeline/tone/political-scan.json');
+const answers = existsSync(OUTF) ? JSON.parse(readFileSync(OUTF, 'utf8')).answers ?? null : null;
+const seen = new Set(Object.keys(answers?.items ?? {}).map(Number));
+const fresh = items.filter((x) => !seen.has(x.id));
+writeFileSync(OUTF, JSON.stringify({ round: 'G099', db, scanned: rows.length, hits: items.length, seen: items.length - fresh.length, new: fresh.length, byWord, answers, items: fresh }, null, 1) + '\n');
+console.log(db, '활성', rows.length, '· 걸림', items.length, '· 본 것', items.length - fresh.length, '· 새로', fresh.length, JSON.stringify(byWord));
