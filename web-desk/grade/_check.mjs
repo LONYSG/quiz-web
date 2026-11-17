@@ -1,5 +1,5 @@
 // web-desk/grade 받은것 검사 + 적용안 — node web-desk/grade/_check.mjs  → _합침.json · _apply.json
-//   적용 규칙(찬종 2026-11-17 "권장대로"): 웹이 2단계 이상 쉽게 본 카드만, 웹 등급 + 1 로 내린다. 1단계 차이 · 더 어렵게 본 것은 그대로.
+//   적용 규칙(찬종 2026-11-17 두 번째 결정 — 직접 30장을 매겨 보니 웹과 비슷했다: "web 판정을 그대로 따라도 되지 않을까"): 웹 등급을 그대로 쓴다(올림 · 내림 모두).
 //   표본 300(web-desk/check)의 등급 4 · 5 카드도 같은 규칙으로 넣는다.
 import fs from 'node:fs';
 const read = (dir) => {
@@ -26,7 +26,7 @@ const mat = {}, apply = [];
 const bump = (id, now, web, why, src) => {
   (mat[now] ??= { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 })[web]++;
   if (![1, 2, 3, 4, 5].includes(web)) return;
-  if (now - web >= 2) apply.push({ id: Number(id), from: now, web, to: web + 1, why, src });
+  if (web !== now) apply.push({ id: Number(id), from: now, web, to: web, why, src });
 };
 for (const id of ids) { const r = g.all.get(id); if (r) bump(id, g.key[id].grade_now, r.grade, r.why, 'grade'); }
 for (const [id, k] of Object.entries(c.key)) { const r = c.all.get(id); if (r && k.grade_now >= 4) bump(id, k.grade_now, r.grade, r.why, 'check'); }
@@ -36,4 +36,4 @@ const move = {};
 for (const a of apply) move[`${a.from}→${a.to}`] = (move[`${a.from}→${a.to}`] || 0) + 1;
 console.log('적용안', apply.length, JSON.stringify(move));
 fs.writeFileSync('web-desk/grade/_합침.json', JSON.stringify([...g.all.values()], null, 1));
-fs.writeFileSync('web-desk/grade/_apply.json', JSON.stringify({ rule: '웹이 2단계 이상 쉽게 본 카드만 웹 등급 + 1 로(찬종 2026-11-17)', count: apply.length, move, items: apply }, null, 1));
+fs.writeFileSync('web-desk/grade/_apply.json', JSON.stringify({ rule: '웹 등급 그대로(찬종 2026-11-17 — 직접 매긴 30장이 웹과 평균 차이 0.66 · 지금 등급과 1.14)', count: apply.length, move, items: apply }, null, 1));
