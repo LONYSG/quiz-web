@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>난이도 판정</title>
+<style>
+  :root { --bg:#14161b; --card:#1f232b; --line:#333a46; --text:#eceef2; --dim:#9aa3b2; --accent:#ffc857; --ok:#5fd38d; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; line-height:1.6; }
+  main { max-width:760px; margin:0 auto; padding:20px 16px 60px; }
+  h1 { font-size:20px; margin:4px 0 2px; }
+  .lead { color:var(--dim); font-size:14px; margin:0 0 14px; }
+  .bar { height:8px; background:var(--line); border-radius:4px; overflow:hidden; }
+  .bar > i { display:block; height:100%; background:var(--accent); width:0; transition:width .2s; }
+  .count { color:var(--dim); font-size:13px; margin:6px 0 16px; display:flex; justify-content:space-between; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px 20px; }
+  .q { font-size:20px; font-weight:700; word-break:keep-all; }
+  .a { margin-top:14px; font-size:18px; color:var(--accent); font-weight:700; }
+  .a span { color:var(--dim); font-weight:400; font-size:14px; margin-right:8px; }
+  .btns { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:20px; }
+  button { font:inherit; color:var(--text); background:#2a303b; border:1px solid var(--line); border-radius:10px; padding:12px 4px; cursor:pointer; }
+  button:hover { border-color:var(--accent); }
+  button.on { background:var(--accent); color:#1a1a1a; border-color:var(--accent); font-weight:700; }
+  button b { display:block; font-size:20px; }
+  button small { display:block; font-size:12px; opacity:.85; }
+  .unknown { width:100%; margin-top:8px; }
+  .nav { display:flex; gap:8px; margin-top:14px; }
+  .nav button { flex:1; background:transparent; }
+  .guide { margin-top:18px; font-size:13px; color:var(--dim); border-top:1px solid var(--line); padding-top:12px; }
+  .guide table { border-collapse:collapse; width:100%; }
+  .guide td { padding:3px 6px 3px 0; vertical-align:top; }
+  .guide td:first-child { white-space:nowrap; color:var(--text); }
+  .done { text-align:center; padding:30px 10px; }
+  .done h2 { color:var(--ok); margin:0 0 8px; }
+  .save { background:var(--accent); color:#1a1a1a; font-weight:700; border:none; padding:14px 22px; font-size:16px; }
+  .path { background:#0e1014; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-family:Consolas,monospace; font-size:13px; word-break:break-all; margin:10px 0; }
+  kbd { background:#2a303b; border:1px solid var(--line); border-radius:4px; padding:0 5px; font-size:12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>난이도 판정</h1>
+  <p class="lead">질문과 정답을 보고 "이 정도면 몇 등급"인지 눌러 주세요. 지금 붙어 있는 등급은 일부러 숨겼습니다. 누르면 바로 다음 문제로 넘어갑니다. 중간에 닫아도 이어서 할 수 있습니다.</p>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="count"><span id="pos"></span><span id="cnt"></span></div>
+  <div id="stage"></div>
+  <div class="guide">
+    <table>
+      <tr><td>1 아주 쉬움</td><td>퀴즈를 잘 안 하는 사람도 5초 안에 거의 다 맞힘</td></tr>
+      <tr><td>2 쉬움</td><td>보통 사람이 10초 안에 대부분 맞힘. 이름이 한 번 생각나야 하는 정도</td></tr>
+      <tr><td>3 보통</td><td>퀴즈 좋아하는 친구 4명 방에서 한두 명이 맞힘</td></tr>
+      <tr><td>4 어려움</td><td>그 방에서도 잘 안 나옴. "이걸 어떻게 알아"</td></tr>
+      <tr><td>5 매우 어려움</td><td>전공자나 마니아만</td></tr>
+    </table>
+    <p>키보드: <kbd>1</kbd>~<kbd>5</kbd> 등급 · <kbd>0</kbd> 모르는 개념 · <kbd>←</kbd> 이전 · <kbd>→</kbd> 다음</p>
+  </div>
+</main>
+<script>
+const CARDS = /*DATA*/[];
+const KEY = 'chanjong-grade-20261117';
+let ans = {};
+try { ans = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+let i = 0;
+const firstOpen = () => { const k = CARDS.findIndex(c => ans[c.id] === undefined); return k < 0 ? CARDS.length : k; };
+i = firstOpen();
+const LABEL = ['', '아주 쉬움', '쉬움', '보통', '어려움', '매우 어려움'];
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(ans)); } catch (e) {} };
+const result = () => JSON.stringify({ who: '찬종', date: new Date().toISOString().slice(0, 10), results: CARDS.filter(c => ans[c.id] !== undefined).map(c => ({ id: c.id, grade: ans[c.id] })) }, null, 1);
+
+function render() {
+  const done = Object.keys(ans).length;
+  document.getElementById('prog').style.width = (100 * done / CARDS.length) + '%';
+  document.getElementById('cnt').textContent = '판정 ' + done + ' / ' + CARDS.length;
+  const stage = document.getElementById('stage');
+  if (i >= CARDS.length) {
+    document.getElementById('pos').textContent = '';
+    stage.innerHTML = '<div class="card done"><h2>' + (done >= CARDS.length ? '다 하셨습니다' : '끝까지 보셨습니다 (안 매긴 것 ' + (CARDS.length - done) + '장)') + '</h2>' +
+      '<p>아래 단추를 누르면 결과 파일이 내려받아집니다. 그 파일을 이 폴더에 넣어 주세요.</p>' +
+      '<div class="path">C:\\work\\quiz-web\\web-desk\\grade\\찬종-결과.json</div>' +
+      '<p><button class="save" id="dl">결과 파일 내려받기</button></p>' +
+      '<p><button id="cp">대신 글자로 복사하기</button> <button id="back">처음부터 다시 보기</button></p><p id="msg" class="lead"></p></div>';
+    document.getElementById('dl').onclick = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([result()], { type: 'application/json' })); a.download = '찬종-결과.json'; a.click(); document.getElementById('msg').textContent = '내려받았습니다. 위 폴더로 옮긴 뒤 설계 창에 "난이도 판정함"이라고 해 주세요.'; };
+    document.getElementById('cp').onclick = () => { navigator.clipboard.writeText(result()).then(() => { document.getElementById('msg').textContent = '복사했습니다. 메모장에 붙여 위 경로로 저장해 주세요.'; }, () => { document.getElementById('msg').textContent = '복사가 막혔습니다. 내려받기를 써 주세요.'; }); };
+    document.getElementById('back').onclick = () => { i = 0; render(); };
+    return;
+  }
+  const c = CARDS[i];
+  document.getElementById('pos').textContent = (i + 1) + '번째 문제';
+  const cur = ans[c.id];
+  stage.innerHTML = '<div class="card"><div class="q">' + esc(c.q) + '</div><div class="a"><span>정답</span>' + esc(c.a) + '</div>' +
+    '<div class="btns">' + [1, 2, 3, 4, 5].map(n => '<button data-g="' + n + '" class="' + (cur === n ? 'on' : '') + '"><b>' + n + '</b><small>' + LABEL[n] + '</small></button>').join('') + '</div>' +
+    '<button class="unknown ' + (cur === 0 ? 'on' : '') + '" data-g="0">모르는 개념이라 판단할 수 없음</button>' +
+    '<div class="nav"><button id="prev">← 이전</button><button id="next">건너뛰기 →</button></div></div>';
+  stage.querySelectorAll('[data-g]').forEach(b => b.onclick = () => pick(Number(b.dataset.g)));
+  document.getElementById('prev').onclick = () => { if (i > 0) { i--; render(); } };
+  document.getElementById('next').onclick = () => { i++; render(); };
+}
+function pick(g) { if (i >= CARDS.length) return; ans[CARDS[i].id] = g; save(); i++; render(); }
+document.addEventListener('keydown', e => {
+  if (e.key >= '0' && e.key <= '5') pick(Number(e.key));
+  else if (e.key === 'ArrowLeft' && i > 0) { i--; render(); }
+  else if (e.key === 'ArrowRight' && i < CARDS.length) { i++; render(); }
+});
+render();
+</script>
+</body>
+</html>
