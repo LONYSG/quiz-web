@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-17 — 문항별 통계가 쌓이게 · 뽑아 볼 수 있게 (R103, MAIN · D-360)
+- 무엇: 조사(무엇이 남는가 — R103.txt 1절) · migrations/0037_play_events.sql(추가만) · server db/playEvents.ts(새) · game/question.ts(trackPlay · schedulePlayEvents) · socket/index.ts(판정 뒤 trackPlay 한 줄) · rooms/types.ts(PlayTrack) · vitest game/playTrack.test.ts(새 3) · scripts/question-stats.mjs(새 · npm run stats:questions) · data/stats/question-stats.json.
+- [x] A 기록(0037 dev · test 적용) [x] B 뽑는 스크립트 [x] C 문서 · 보고 — 검증 = ai-out/R103.txt 2절.
+
 ## 2026-11-15 — 제보 #129 · #130: 제보 목록 전부 + 정답 / 많이 말하기 30초 / R101 남은 것 (R102, MAIN · D-359)
 - 무엇: #129 사실 확인(answer_events · near_misses · 서버 로그) — 찬종 제출 "모모노케히메"(거리 1 · 오답 맞음) · 승자 590 · "늑대소녀" 정답 처리 없음. client reportRecent(정답 · 200) · AppReport(전부 보임 · 정답 칸) · useRoom · styles · shared minigame.ts(설명 줄 초 = 상수) · topics.ts(MANY_PLAY_SEC) · server topicGames(세트 timeSec 무시) · MinigameStage · ReactionTap(안내 초 = 상수) · DB topic_sets.time_sec 30(실 43 · dev 6) · ui-check r102(새) · 캐치 캔버스 기대 560 → 500(D-352) · 노래 결과 · 공개 맞춤 ② 줄임.
 - [x] A 제보 목록 [x] B 많이 말하기 30초 [x] C 캔버스 기대 [x] C 채팅 6줄(r101 24/24) — 검증 = ai-out/R102.txt 2절.

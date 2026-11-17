@@ -10,6 +10,14 @@
 
 ---
 
+## D-360. 문항 × 사람 플레이 기록(play_events · 0037) + 문항별 통계 뽑기 — 난이도는 사람 숫자로 (R103 · 찬종 2026-11-17)
+- 찬종: "실제 정답률, 힌트 의존도, 정답이 나오는 시간 등 디테일한 통계들을 수집해서 보완해 나가는 걸로 해." — 카드 6,160장을 다시 쓴 2026-11-17 부터 쌓이는 숫자를 쓴다.
+- **전에 남던 것**: game_questions(판 · 문항 · 계획/실제 등급 · 해결 사유 · 정답자 · 해결 때 활성 인원) · answer_events(정답 글자와 맞은 메시지만 — 틀린 글 · 무응답 없음) · near_misses(정답에 가까운 오답만 · 봇 제외 · 90일) · question_feedback(R099 부터 입력 없음). **없던 것**: 사람별 틀린 글 수 · 아무것도 안 침 · 맞힌 순간 힌트 단계 · 그때 문항 글 · 방 난이도 설정 · 봇/사람 칸.
+- **결정**: 새 표 play_events — 일반 퀴즈 문항이 공개될 때 방의 사람마다 한 줄(won · correct_ms · late · hint_stage 0/1/2 · wrong_count · first_ms · experienced · connected · joined_mid · level · text_hash = (질문 · 정답 · 일반 힌트 · 해설) md5 앞 12 · hints_shown · has_general_hint · resolution · is_bot = NEAR_MISS_SKIP_LOGIN). 메모리(CurrentQuestion.plays — 채팅 판정 뒤 동기 · DB 없음)에 모았다가 resolveQuestionSync 뒤 한 번에 unnest INSERT(void · 실패 = 로그만 · 표가 없으면 한 번 경고 후 건너뜀). 정답자가 있으면 뒷북 3초(LATE_ANSWER_WINDOW_MS + 300ms) 뒤에 써서 lateAnswers 를 late 로 담는다. 중단(aborted) · 노래 · 미니게임은 안 쓴다(kind 칸 · item_key 로 나중에).
+- **채팅 원문은 여전히 남기지 않는다**(01 9장) — 틀린 글은 개수만(잡담도 센다) · 흔한 오답 글자는 near_misses 그대로. 판정 블록 · 플레이 규칙 · 화면 변경 없음.
+- **뽑기**: `scripts/question-stats.mjs`(npm run stats:questions · 읽기만) → data/stats/question-stats.json. 사람 판 = 그 문항에 사람(봇 아님) 2명 이상 · 이미 본 사람 제외. play_events 가 없는 옛 판은 game_questions · answer_events · game_players 로 어림(힌트 단계 = 걸린 ms 10초 · 25초 경계 · 틀린 글 수 모름). 등급 띠 = docs/19 §2(90 · 70 · 45 · 20).
+- 되돌리기: DROP TABLE play_events; + 커밋 revert(서버는 표가 없어도 돈다).
+
 ## D-359. 제보 목록 = 그 판의 지나간 문제 전부 + 공개된 정답 / 많이 말하기 = 늘 30초(세트 값 안 씀) · 설명 줄의 초는 상수에서 (R102 · 찬종 2026-11-14 밤 #129 · #130 · 11-15 덧붙임)
 - 제보 #129(bug · game 2260 · 15번째 문제 화면): "문제 목록에 안나오네. 모모노케 히메 문제 왜 정답 처리가 안돼? … '늑대소녀' 만 정답처리 된거 아닌가? … 문제 목록에 왜 안뜸?" · 11-15: 실제로 친 것은 "모모노케히메" · "오타 허용은 안 된다".
 - **사실(기록)**: 12번째 문제 #732(정답 모노노케 히메 · 변형 원령공주)는 다른 참가자(account 590)가 14:38:48.119 에 맞힘(answer_events 1줄 · matched/accepted). 찬종(483)의 제출은 near_misses 1030 "모모노케히메"(→ 모노노케히메 · 거리 1 · 14:38:47.018 — 승자보다 1.1초 앞). "늑대소녀" 는 정답 · 변형 · 해설 · 힌트 어디에도 없고 판정(정규화 + 지우기만 하는 변환 넷)으로 맞을 수 없다(단위 확인). 채팅 원문은 DB · 로그에 남지 않아 승자가 친 글자는 둘(모노노케 히메 · 원령공주) 중 무엇인지 모른다.
