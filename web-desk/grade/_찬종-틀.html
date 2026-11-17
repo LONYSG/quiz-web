@@ -44,6 +44,7 @@
   <p class="lead">질문과 정답을 보고 "이 정도면 몇 등급"인지 눌러 주세요. 지금 붙어 있는 등급은 일부러 숨겼습니다. 누르면 바로 다음 문제로 넘어갑니다. 중간에 닫아도 이어서 할 수 있습니다.</p>
   <div class="bar"><i id="prog"></i></div>
   <div class="count"><span id="pos"></span><span id="cnt"></span></div>
+  <p style="margin:-8px 0 14px;text-align:right"><button id="dlnow" style="padding:6px 12px;font-size:13px">여기까지 한 것 내려받기</button></p>
   <div id="stage"></div>
   <div class="guide">
     <table>
@@ -103,6 +104,7 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'ArrowLeft' && i > 0) { i--; render(); }
   else if (e.key === 'ArrowRight' && i < CARDS.length) { i++; render(); }
 });
+document.getElementById("dlnow").onclick = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([result()], { type: "application/json" })); a.download = "찬종-결과.json"; a.click(); };
 render();
 </script>
 </body>
