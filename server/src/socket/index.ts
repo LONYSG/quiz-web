@@ -54,6 +54,7 @@ import {
   finishGame,
   noteLateAnswer,
   recordAnswerEvent,
+  trackPlay,
   recordNearMiss,
   resolveQuestionSync,
 } from '../game/question.js';
@@ -599,6 +600,8 @@ function registerRoomHandlers(socket: Socket): void {
         // ★★ R058 (D-252) — 정답에 가까운 틀린 제출만 정규화 글로 남긴다(판정 · 마스킹 · emit 이 다 끝난 뒤 · DB 는 void)
         recordNearMiss(room, player, stripEmojiTokens(rawNfc), payload.epoch);
       }
+      // ★★ R103 (D-360) — 문항 × 사람 플레이 기록(메모리 · 동기) — 정답 공개 때 play_events 로 한 번에
+      trackPlay(room, player, { matched: outcome.matched, accepted: outcome.accepted, receivedAt: now, epoch: payload.epoch });
       if (outcome.accepted) {
         // ★★ 여기까지 오는 사이에 await 가 없었다. 그래서 두 번째 정답이 끼어들 수 없다.
         //   ★ 그리고 resolveQuestionSync 의 첫 두 줄(장치 A)이 한 번 더 막는다.

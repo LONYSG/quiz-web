@@ -35,6 +35,8 @@ import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, buildTeamResult, flexAns
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame, grantTeamWin } from '../db/games.js';
 import { insertNearMiss } from '../db/nearMisses.js';
+import { insertPlayEvents, type PlayEventRow } from '../db/playEvents.js';
+import { createHash } from 'node:crypto';
 import { config } from '../config.js';
 import { runBeforeNextQuestion } from './hooks.js';
 import {
@@ -161,6 +163,8 @@ ${normalizeAnswer(q.explanation ?? '')}`;
     selectionStage: picked.stage,
     winnerArrivedNs: null,
     lateAnswers: [],
+    // ★ R103 (D-360) — 그 뒤 들어온 사람 = joined_mid
+    startParticipants: new Set(participantIds),
   };
 
   room.currentQuestion = current;
@@ -494,9 +498,97 @@ export function resolveQuestionSync(
     );
     // ★ R054 — 업적(첫 정답 · 연속 정답 · 분야) — 맞힌 사람만 · DB 기록이 들어간 뒤 판정
     if (reason === 'correct' && winnerAccountId) checkAchievements(room, [winnerAccountId]);
+    // ★★ R103 (D-360) — 문항 × 사람 플레이 기록 · 정답자가 있으면 뒷북(3초)을 기다렸다가 한 번에
+    schedulePlayEvents(room, current, reason, winnerAccountId, now);
   }
 
   return true;
+}
+
+/** ★ R103 — 지금 화면에 나온 힌트 단계(0 힌트 전 · 1 일반 힌트 뒤 · 2 초성 뒤) */
+function hintStageOf(cur: CurrentQuestion): number {
+  return cur.hintPushed ? 2 : cur.generalHintPushed ? 1 : 0;
+}
+
+/**
+ * ★★ R103 (D-360) — 채팅 한 줄을 이 문항의 플레이 기록(메모리)에 더한다. **판정이 끝난 뒤** 부른다(동기 · DB 없음).
+ *   ★ 문항이 열려 있고(공개 전 · 같은 epoch) 일반 퀴즈일 때만. 공개 뒤 뒷북은 lateAnswers 에서 읽는다.
+ */
+export function trackPlay(room: Room, player: Player, input: { matched: boolean; accepted: boolean; receivedAt: number; epoch: number | null }): void {
+  const cur = room.currentQuestion;
+  if (!room.game?.gameId || !cur || cur.song || input.epoch !== cur.epoch) return;
+  if (room.state !== 'QUESTION_ACTIVE' || cur.resolved) return;
+  const ms = Math.max(0, input.receivedAt - cur.startedAt);
+  const plays = (cur.plays ??= new Map());
+  let t = plays.get(player.accountId);
+  if (!t) {
+    t = { firstMs: ms, wrong: 0, correctMs: null, hintStage: null, late: false };
+    plays.set(player.accountId, t);
+  }
+  if (!input.matched) {
+    t.wrong += 1;
+    return;
+  }
+  if (t.correctMs !== null) return;
+  t.correctMs = ms;
+  t.hintStage = hintStageOf(cur);
+  t.late = !input.accepted;
+}
+
+/** ★ R103 — 정답 공개 순간의 사람 · 힌트 단계를 지금 잡고, 쓰기는 (정답이면) 뒷북 3초 뒤 */
+function schedulePlayEvents(room: Room, cur: CurrentQuestion, reason: QuestionResolution, winnerAccountId: string | null, now: number): void {
+  const game = room.game;
+  if (!game?.gameId || cur.song) return;
+  const gameId = game.gameId;
+  const level = room.settings.level ?? null;
+  const stageAtEnd = hintStageOf(cur);
+  const winnerMs = reason === 'correct' ? now - cur.startedAt : null;
+  const people = new Map<string, boolean>();
+  for (const p of room.players.values()) people.set(p.accountId, p.connected);
+  for (const id of cur.plays?.keys() ?? []) if (!people.has(id)) people.set(id, false); // 문항 중에 나간 사람
+  const flush = (): void => {
+    const plays = cur.plays ?? new Map();
+    const lateMs = new Map<string, number>();
+    if (winnerMs !== null) for (const l of cur.lateAnswers) lateMs.set(l.accountId, winnerMs + Number(l.diffNs / 1_000_000n));
+    const rows: PlayEventRow[] = [];
+    for (const [accountId, connected] of people) {
+      const t = plays.get(accountId);
+      const late = t?.correctMs == null ? lateMs.get(accountId) : undefined;
+      rows.push({
+        accountId,
+        experienced: cur.experiencedAccountIds.has(accountId),
+        connected,
+        joinedMid: !(cur.startParticipants?.has(accountId) ?? true),
+        won: accountId === winnerAccountId,
+        correctMs: t?.correctMs ?? late ?? null,
+        late: late !== undefined ? true : (t?.late ?? false),
+        hintStage: t?.correctMs != null ? t.hintStage : late !== undefined ? stageAtEnd : null,
+        wrongCount: t?.wrong ?? 0,
+        firstMs: t?.firstMs ?? late ?? null,
+      });
+    }
+    const textHash = createHash('md5')
+      .update([cur.text, cur.displayAnswer, cur.generalHint ?? '', cur.explanation ?? ''].join('|'))
+      .digest('hex')
+      .slice(0, 12);
+    fireAndForget(
+      'play_events',
+      insertPlayEvents({
+        gameId,
+        questionIndex: cur.index,
+        questionId: cur.questionId,
+        level,
+        textHash,
+        hintsShown: stageAtEnd,
+        hasGeneralHint: cur.generalHint !== null,
+        resolution: reason,
+        skipLogin: config.tuning.nearMissSkipLogin,
+        rows,
+      }),
+    );
+  };
+  if (reason === 'correct') setTimeout(flush, RULES.LATE_ANSWER_WINDOW_MS + 300).unref?.();
+  else flush();
 }
 
 /**

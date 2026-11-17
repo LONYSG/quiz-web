@@ -268,6 +268,10 @@ export interface CurrentQuestion {
   experiencedAccountIds: Set<string>;
   /** ★ R058 (D-252) — 이 문제에서 사람마다 남긴 근접 오답 수(최대 5) */
   nearMissCounts?: Map<string, number>;
+  /** ★★ R103 (D-360 · 0037) — 이 문항에서 사람마다 친 것(정답 공개 때 play_events 로 한 번에 쓴다) */
+  plays?: Map<string, PlayTrack>;
+  /** ★ R103 — 문항이 뜰 때 방에 있던 사람(그 뒤 들어온 사람 = joined_mid) */
+  startParticipants?: Set<string>;
 
   startedAt: number;
   /** ★★ 정답 인정 경계다. tick 오차가 아니라 이 시각이 기준이다 */
@@ -292,6 +296,20 @@ export interface CurrentQuestion {
   lateAnswers: LateAnswer[];
   /** ★★★ R096 — 노래 맞히기 곡(방식 song 일 때만) — 판정은 answersNorm 그대로(제목) · 가수 알림 · 공개 정보 */
   song?: import('../song/mode.js').SongQuestion;
+}
+
+/** ★★ R103 (D-360) — 한 문항 · 한 사람의 플레이 기록(메모리) */
+export interface PlayTrack {
+  /** 무엇이든 처음 친 때(문항이 뜬 뒤 ms) */
+  firstMs: number;
+  /** 문항이 열린 동안 친 틀린 글 수(잡담 포함) */
+  wrong: number;
+  /** 정답 글자를 처음 친 때 */
+  correctMs: number | null;
+  /** 그 순간 화면: 0 힌트 전 · 1 일반 힌트 뒤 · 2 초성 뒤 */
+  hintStage: number | null;
+  /** 정답을 쳤지만 정답자가 못 된 것(마감 뒤 등) */
+  late: boolean;
 }
 
 /** ★★ 뒷북 한 사람 (R038 / D-174) */
