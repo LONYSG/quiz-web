@@ -26,6 +26,17 @@
   .rec { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); border-radius: 99px; padding: 0 7px; margin-left: 6px; vertical-align: 1px; }
   textarea { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; font: inherit; background: transparent; color: inherit; resize: vertical; }
   textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .row .m b { font-size: 16px; } .row .m small { display: block; color: var(--sub); font-size: 14px; line-height: 1.5; white-space: pre-line; }
+  .tag { display: inline-block; font-size: 12px; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; margin: 2px 4px 0 0; color: var(--sub); }
+  .tag.w { color: var(--accent); border-color: var(--accent); }
+  .seg { display: flex; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; }
+  .seg label { padding: 6px 11px; font-size: 14px; cursor: pointer; white-space: nowrap; border-left: 1px solid var(--line); }
+  .seg label:first-child { border-left: 0; }
+  .seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .seg label:has(input:checked) { background: var(--accent); color: #fff; font-weight: 700; }
+  .rowhead { font-size: 13px; font-weight: 700; color: var(--sub); margin: 16px 0 4px; }
+  @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
   .bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 1px solid var(--line); padding: 12px 16px; }
   .bar div { max-width: 820px; margin: 0 auto; display: flex; gap: 14px; align-items: center; }
   .bar span { flex: 1; color: var(--sub); font-size: 14.5px; }
@@ -61,6 +72,11 @@ function render(saved) {
       const checked = (prev.pick ?? q.default) === o.id ? 'checked' : '';
       html += `<label class="opt"><input type="radio" name="${esc(q.key)}" value="${esc(o.id)}" ${checked}><span><b>${esc(o.label)}${o.rec ? '<span class="rec">권장</span>' : ''}</b>${o.desc ? `<small>${esc(o.desc)}</small>` : ''}</span></label>`;
     }
+    for (const r of q.rows ?? []) {
+      if (r.head) { html += `<div class="rowhead">${esc(r.head)}</div>`; continue; }
+      const cur = prev.rows?.[r.id] ?? r.default ?? q.rowDefault;
+      html += `<div class="row" data-row="${esc(r.id)}"><div class="m"><b>${esc(r.main)}</b>${r.sub ? `<small>${esc(r.sub)}</small>` : ''}${(r.tags ?? []).map((t) => `<span class="tag ${t.startsWith('!') ? 'w' : ''}">${esc(t.replace(/^!/, ''))}</span>`).join('')}</div><div class="seg">${q.choices.map((c) => `<label><input type="radio" name="${esc(q.key)}__${esc(r.id)}" value="${esc(c.id)}" ${cur === c.id ? 'checked' : ''}>${esc(c.label)}</label>`).join('')}</div></div>`;
+    }
     html += `<textarea placeholder="${esc(q.notePlaceholder ?? '덧붙일 말 (없으면 비워 두세요)')}">${esc(prev.note ?? '')}</textarea></section>`;
   }
   $('#list').innerHTML = html;
@@ -72,18 +88,19 @@ function collect() {
   for (const sec of document.querySelectorAll('.q')) {
     const key = sec.dataset.key;
     const q = Q.questions.find((x) => x.key === key);
-    const picked = sec.querySelector('input:checked');
+    const picked = sec.querySelector('label.opt input:checked');
     const opt = q.options?.find((o) => o.id === picked?.value);
     answers[key] = { title: q.title, pick: picked?.value ?? null, pickLabel: opt?.label ?? null, note: sec.querySelector('textarea').value.trim() };
+    if (q.rows) { const rows = {}; for (const el of sec.querySelectorAll('.row')) rows[el.dataset.row] = el.querySelector('input:checked')?.value ?? null; answers[key].rows = rows; }
   }
   return { id: Q.id, savedAt: new Date().toISOString(), answers };
 }
 
 function count() {
   const all = Q.questions.filter((q) => q.options?.length).length;
-  const done = [...document.querySelectorAll('.q')].filter((s) => s.querySelector('input:checked')).length;
+  const done = [...document.querySelectorAll('.q')].filter((s) => s.querySelector('label.opt input:checked')).length;
   const st = $('#status');
-  if (!st.classList.contains('done')) st.textContent = `고른 것 ${done} / ${all} · 안 고른 것은 "아직"으로 남습니다`;
+  if (!st.classList.contains('done')) st.textContent = all ? `고른 것 ${done} / ${all} · 안 고른 것은 "아직"으로 남습니다` : '바꿀 줄만 누르고 저장하세요 · 중간에 저장해도 다시 열면 이어집니다';
 }
 
 document.addEventListener('change', count);
