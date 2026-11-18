@@ -25,12 +25,80 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 process.loadEnvFile?.(path.join(ROOT, '.env'));
 const a = process.argv.slice(2);
 const ROUND = (a[a.indexOf('--round') + 1] ?? '').toLowerCase();
-if (!/^g0\d\d$/.test(ROUND) || !a.includes('--round')) { console.error('--round g0NN 필요'); process.exit(1); }
+if (!/^g\d{3}$/.test(ROUND) || !a.includes('--round')) { console.error('--round gNNN 필요'); process.exit(1); }
 const HOLD = new Map((a.includes('--hold') ? a[a.indexOf('--hold') + 1].split(',') : []).filter(Boolean).map((x) => [Number(x.split(':')[0]), x.split(':')[1] ?? 'GEN 보류']));
 const J = (p) => JSON.parse(readFileSync(path.join(ROOT, p), 'utf8').replace(/^﻿/, ''));
 const L = (s) => [...(s ?? '')].length;
 const IN = 'web-desk/tone/받은것', OUT = 'web-desk/tone/보낼것';
 const F3 = [['question', 'question_text'], ['hint', 'general_hint'], ['explanation', 'explanation']];
+
+// =============================================================================
+// ★ G102~: --form = 질문 형태 묶음(보낼것/형태-NN.json ↔ 받은것/형태-NN.json · job form · 질문 칸만) → <round>-apply.json
+//   게이트 ① DB 질문 = 보낼것 question ② 활성 ③ formHit 없음 ④ ~까요? ⑤ 정답 · 변형 새로 드러남 없음 ⑥ 200자
+//          ⑦ 사실 그대로 — 숫자 · 따옴표 안 글 · 영문/한자 낱말 전부 남음 · 세 글자 넘는(>2) 한글 낱말의 앞 두 글자 빠짐 ≤ LOOSE(기본 2)
+//             · 고친 질문에만 있는 숫자 · 영문/한자 · 따옴표 글 없음 · 새 한글 낱말(앞 두 글자가 고치기 전에 없음) ≤ LOOSE
+//   사용 node scripts/tone-build.mjs --round g102 --form [--loose 3]
+// =============================================================================
+if (a.includes('--form')) {
+  const LOOSE = a.includes('--loose') ? Number(a[a.indexOf('--loose') + 1]) : 2;
+  const src = [];
+  for (const f of readdirSync(path.join(ROOT, IN)).filter((f) => /^형태-\d\d\.json$/.test(f)).sort()) {
+    const r = J(`${IN}/${f}`); if (r.done !== true) { console.log('done 아님 — 건너뜀', f); continue; }
+    const s = J(`${OUT}/${f}`); const sm = new Map(s.cards.map((x) => [x.id, x]));
+    for (const x of r.cards) src.push({ file: f.slice(0, -5), got: x, sent: sm.get(x.id) });
+  }
+  const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
+  const db = new URL(process.env.DATABASE_URL).pathname.slice(1);
+  const D = Object.fromEntries((await c.query(`select q.id::int, q.is_active, q.inactive_reason, q.question_text, q.display_answer,
+    coalesce((select array_agg(answer_text order by id) from question_answers x where x.question_id=q.id and not x.is_primary),'{}') variants
+    from questions q where q.id = any($1::bigint[])`, [src.map((x) => x.got.id)])).rows.map((r) => [r.id, r]));
+  await c.end();
+  const QT = /['"‘’“”「」『』《》〈〉]/g;
+  const quoted = (s) => [...s.matchAll(/['‘"“「『《〈]([^'’"”」』》〉]+)['’"”」』》〉]/g)].map((m) => m[1].trim());
+  const nums = (s) => s.match(/\d+(?:[.,]\d+)*/g) ?? [];
+  const foreign = (s) => s.match(/[A-Za-z][A-Za-z0-9&.\-]*|[㐀-鿿]+/g) ?? [];
+  const hw = (s) => (s.replace(QT, ' ').match(/[가-힣]+/g) ?? []).filter((w) => w.length > 2);
+  const gate = { missing: [], notSent: [], beforeDiff: [], inactive: [], form: [], ending: [], newAnswer: [], over200: [], fact: [], hold: [] };
+  const items = []; const keep = []; const factLog = [];
+  for (const { file, got, sent } of src) {
+    if (!sent) { gate.notSent.push({ id: got.id, file }); continue; }
+    if (got.question == null) { keep.push({ id: got.id, file, note: got.note }); continue; }
+    const d = D[got.id]; const q0 = sent.question, q = got.question.trim(); const fail = [];
+    if (!d) { gate.missing.push({ id: got.id }); continue; }
+    if (d.question_text !== q0) { gate.beforeDiff.push({ id: got.id, file, db: d.question_text, sent: q0 }); continue; }
+    if (!d.is_active) { gate.inactive.push({ id: got.id, why: d.inactive_reason }); continue; }
+    if (formHit(q)) fail.push(['form', `질문 형태 '${formHit(q)}'`]);
+    if (!/까요\?\s*$/.test(q)) fail.push(['ending', '끝이 ~까요? 아님']);
+    for (const x of [d.display_answer, ...d.variants]) if (findAnswerInQuestion(q, x) === 'word' && findAnswerInQuestion(q0, x) !== 'word') fail.push(['newAnswer', `정답 '${x}'`]);
+    if (L(q) > 200) fail.push(['over200', `${L(q)}자`]);
+    // ⑦
+    const f7 = [];
+    const n0 = nums(q0), n1 = nums(q);
+    for (const n of n0) if (!n1.includes(n)) f7.push(`숫자 빠짐 ${n}`);
+    for (const n of n1) if (!n0.includes(n)) f7.push(`숫자 새로 ${n}`);
+    const qa0 = quoted(q0), qa1 = quoted(q);
+    for (const t of qa0) if (!q.includes(t)) f7.push(`따옴표 글 빠짐 '${t}'`);
+    for (const t of qa1) if (!q0.includes(t)) f7.push(`따옴표 글 새로 '${t}'`);
+    for (const t of foreign(q0)) if (!q.includes(t)) f7.push(`낱말 빠짐 ${t}`);
+    for (const t of foreign(q)) if (!q0.includes(t)) f7.push(`낱말 새로 ${t}`);
+    const p1 = new Set((q.match(/[가-힣]+/g) ?? []).map((w) => w.slice(0, 2)));
+    const lost = [...new Set(hw(q0).filter((w) => !p1.has(w.slice(0, 2))))];
+    const added = [...new Set(hw(q).filter((w) => !q0.includes(w.slice(0, 2))))];
+    if (lost.length > LOOSE) f7.push(`한글 낱말 빠짐 ${lost.length}: ${lost.join('·')}`);
+    if (added.length > LOOSE) f7.push(`한글 낱말 새로 ${added.length}: ${added.join('·')}`);
+    factLog.push({ id: got.id, lost, added });
+    if (f7.length) fail.push(['fact', f7.join(' / ')]);
+    if (HOLD.has(got.id)) fail.push(['hold', `GEN 보류: ${HOLD.get(got.id)}`]);
+    if (fail.length) { gate[fail[0][0]].push({ id: got.id, file, answer: d.display_answer, fail: fail.map((x) => x[1]), before: q0, after: q }); continue; }
+    items.push({ id: got.id, answer: d.display_answer, src: file, file, note: got.note, question_text: { before: q0, after: q, kind: 'form' } });
+  }
+  const counts = { got: src.length, keep: keep.length, items: items.length, question: items.length, gate: Object.fromEntries(Object.entries(gate).map(([k, v]) => [k, v.length])), loose: LOOSE };
+  writeFileSync(path.join(ROOT, `data/pipeline/tone/${ROUND}-plan.json`), JSON.stringify({ round: ROUND.toUpperCase(), db, mode: 'form', counts, keep, gate, hold: Object.fromEntries(HOLD), factLog }, null, 1) + '\n');
+  writeFileSync(path.join(ROOT, `data/pipeline/tone/${ROUND}-apply.json`), JSON.stringify({ round: ROUND.toUpperCase(), db_snapshot: db, note: '질문 형태 고치기(형태-NN · 질문 칸만)', counts, items, deactivate: [] }, null, 1) + '\n');
+  console.log(db, 'form', JSON.stringify(counts));
+  for (const [k, v] of Object.entries(gate)) for (const x of v) console.log(' ', k, x.id, JSON.stringify(x.fail ?? x.why ?? ''));
+  process.exit(0);
+}
 
 // ── 이미 실은 카드
 const applied = new Map();

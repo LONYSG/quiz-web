@@ -18,7 +18,7 @@ const url = new URL(process.env.DATABASE_URL);
 if (a.includes('--db')) url.pathname = '/' + a[a.indexOf('--db') + 1];
 const db = url.pathname.slice(1);
 const ROUND = (a[a.indexOf('--round') + 1] ?? '').toLowerCase();
-if (!a.includes('--round') || !/^g0\d\d$/.test(ROUND)) { console.error('--round g0NN 필요'); process.exit(1); }
+if (!a.includes('--round') || !/^g\d{3}$/.test(ROUND)) { console.error('--round gNNN 필요'); process.exit(1); }
 const TAG = ROUND.toUpperCase();
 const plan = JSON.parse(readFileSync(path.join(ROOT, `data/pipeline/tone/${ROUND}-apply.json`), 'utf8'));
 const UNDO = path.join(ROOT, `data/pipeline/audit/${ROUND}-undo-${db}.json`);
@@ -47,7 +47,7 @@ async function undo() {
 // 되돌림(kind restore) 힌트의 버전 = 이 DB 의 앞선 undo 파일 중 가장 이른 general_hint 행의 beforeVersion
 function firstHintVersion(id) {
   const dir = path.join(ROOT, 'data/pipeline/audit');
-  for (const f of readdirSync(dir).filter((f) => /^g0\d\d-undo-/.test(f) && f === f.slice(0, 5) + `undo-${db}.json` && !f.startsWith(ROUND)).sort()) {
+  for (const f of readdirSync(dir).filter((f) => /^g\d{3}-undo-/.test(f) && f === f.slice(0, 5) + `undo-${db}.json` && !f.startsWith(ROUND)).sort()) {
     const row = JSON.parse(readFileSync(path.join(dir, f), 'utf8')).rows.find((r) => r.id === id && r.field === 'general_hint');
     if (row) return row.beforeVersion ?? null;
   }
