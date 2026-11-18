@@ -5,7 +5,8 @@ TASK: G101 이 뽑은 표기 후보를 찬종이 결정 화면에서 골랐다(`
 ■ 고정 규칙: docs/16 5-2 · quizweb 과 quizweb_dev 둘 다(dev 는 before 가 다르면 건너뛰고 수만) · 파일 → 기계 게이트 → DB · 열린 판 0 일 때 · 백업은 6시간 안 덤프가 있으면 건너뜀 · 처음과 끝에 `node web-desk/tone/_status.mjs` · 보고 `ai-out/G103.txt` · 13 · README G · 내 파일만 `git add` · push · 라운드 undo.
 
 ■ A. 59줄(`_spelling-apply.json` 의 `items[]` = `{answer, ids, to, action}`)
-  · `change`(29): 그 id 들의 **정답을 `to` 로** 바꾸고 **옛 정답(`answer`)을 변형에 더한다**(이미 있으면 그대로). 그 카드의 질문 · 힌트 · 해설 안에 옛 표기가 글자 그대로 있으면 `to` 로 바꾼다(예: 해설의 "덕아웃" → "더그아웃") — 바꾼 곳은 고치기 전 / 고친 문장으로 보고에 전부. 낱말의 한 부분으로만 들어 있는 것(앞뒤가 한글로 이어져 다른 낱말이 되는 것)은 바꾸지 않고 목록.
+  · `change`(29): 그 id 들의 **정답을 `to` 로** 바꾸고 **옛 정답(`answer`)을 변형에 더한다**(이미 있으면 그대로).
+    ★ 찬종 2026-11-18: "이번에 대표정답 정리한 것들이 **보여주는 정답에 표기되도록** 해." — 정답 공개 화면에 뜨는 글자는 `questions.display_answer` 다(`server/src/db/questionPool.ts`). 그러니 "정답을 바꾼다"는 **세 곳을 함께** 바꾸는 것이다: ① `questions.display_answer` = `to` ② `question_answers` 의 `is_primary` 줄 = `to`(`answer_norm` 도 다시) · 옛 정답은 `is_primary = false` 줄로 남김 ③ `questions.hint_answer` 가 옛 정답과 같은 글자로 들어 있으면 `to` 로(null 이면 그대로 — display_answer 를 따라간다 · 다른 글자가 들어 있으면 건드리지 않고 목록). 끝에 29장 전부에 대해 **`display_answer` = `to` 인지 두 DB 에서 다시 읽어** 표로 보고한다(dev 에서 건너뛴 것은 까닭과 함께). 그 카드의 질문 · 힌트 · 해설 안에 옛 표기가 글자 그대로 있으면 `to` 로 바꾼다(예: 해설의 "덕아웃" → "더그아웃") — 바꾼 곳은 고치기 전 / 고친 문장으로 보고에 전부. 낱말의 한 부분으로만 들어 있는 것(앞뒤가 한글로 이어져 다른 낱말이 되는 것)은 바꾸지 않고 목록.
   · `variant`(14): 정답은 그대로 · `to` 를 변형에 더한다.
   · `keep`(16): 손대지 않는다.
 ■ B. 변형 204(`data/pipeline/audit/g101-spelling.json` 의 `verdict: "variant"` — 우리 정답이 사전 표제어이고 위키 표제어가 다른 것): `to` 를 변형에 더한다(찬종: 묻지 않고 넣는다).
