@@ -1778,6 +1778,114 @@ async function startGame(host, others, questionCount) {
 // -----------------------------------------------------------------------------
 // game — 문제 출제 / 정답 판정 / 점수 / 힌트 / 경험 기록 / 결과
 // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// ★★ R105 altanswer — 정답 인정어로 맞혔을 때 공개 정보 winnerAnswer(= 화면의 "○○으로 정답 인정" 한 줄)
+//   ① 대표 정답 → null ② 인정어 → 그 표기 ③ 띄어쓰기만 다름 → null ④ 시간 종료 → null
+//   + 진행 중에 들어온 사람의 스냅샷에 없다 · 공개 중에 들어온 사람의 스냅샷에는 있다
+//   ★ 출제를 고정하려고 두 봇에게 나머지 문제의 경험 기록을 넣는다(R040 --long 과 같은 방법 · clearExperiences 가 지운다)
+// -----------------------------------------------------------------------------
+async function scenarioAltAnswer() {
+  log('시나리오 altanswer — R105 정답 인정어 한 줄');
+  await clearExperiences(PREFIX);
+  const picks = await withDb(async (c) =>
+    (
+      await c.query(
+        `SELECT DISTINCT ON (q.id) q.id::text AS id, q.question_text AS text, q.display_answer AS display, a.answer_text AS alt
+           FROM questions q
+           JOIN question_answers a ON a.question_id = q.id AND NOT a.is_primary
+          WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+            AND q.difficulty_score BETWEEN 1 AND 4
+            AND q.category_id IN (SELECT category_id FROM category_game_topics WHERE game_topic IS NOT NULL)
+            AND char_length(q.display_answer) BETWEEN 3 AND 10 AND q.display_answer !~ '[\s()]'
+            AND a.answer_norm <> lower(q.display_answer) AND a.answer_text ~ '^[가-힣]{2,8}$'
+            AND (SELECT count(*) FROM questions q2 WHERE q2.question_text = q.question_text) = 1
+          ORDER BY q.id, a.id LIMIT 4`,
+      )
+    ).rows,
+  );
+  expect('인정어가 있는 문제 4개를 골랐다', picks.length, 4);
+  const byText = new Map(picks.map((x) => [x.text, x]));
+  const [host, guest, late, late2] = await makeBots(4);
+  await host.connect();
+  host.createRoom('R105 인정어');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  const roomId = host.snapshot.room.id;
+  await guest.connect();
+  guest.join(roomId);
+  await guest.waitFor(() => guest.snapshot !== null, 6000, '게스트 입장');
+  const marked = await withDb(async (c) =>
+    (
+      await c.query(
+        `INSERT INTO question_experiences (account_id, question_id)
+         SELECT a.id, q.id FROM accounts a, questions q
+          WHERE a.id = ANY($1::bigint[]) AND NOT (q.id = ANY($2::bigint[]))
+         ON CONFLICT DO NOTHING`,
+        [[host.snapshot.me.accountId, guest.snapshot.me.accountId], picks.map((x) => x.id)],
+      )
+    ).rowCount,
+  );
+  log(`  경험 기록 ${marked}행(고른 4문제만 남긴다)`);
+  await startGame(host, [guest], 4);
+
+  const answerAndGet = async (idx, text) => {
+    const q = await guest.waitQuestion(idx, 20000);
+    await sleep(300);
+    const from = guest.mark();
+    if (text !== null) guest.chat(text);
+    await guest.waitFor(() => guest.since(from, 'question.resolved').length > 0, text === null ? 75000 : 6000, `문제 ${idx} 공개`);
+    return { q, res: guest.since(from, 'question.resolved')[0].payload };
+  };
+
+  // ① 대표 정답
+  log('\n[1] 대표 정답으로 맞힘 → 줄 없음');
+  let q = await guest.waitQuestion(1, 20000);
+  let pick = byText.get(q.text);
+  expectTrue('출제된 문제가 고른 4개 중 하나다', Boolean(pick), q.text.slice(0, 30));
+  let r = (await answerAndGet(1, pick?.display ?? '')).res;
+  expect('① 사유 correct', r.reason, 'correct');
+  expect('① winnerAnswer = null', r.winnerAnswer, null);
+
+  // ② 인정어 — 진행 중 들어온 사람에게는 없다 · 공개 뒤 들어온 사람에게는 있다
+  log('\n[2] 인정어로 맞힘 → 줄 있음 (+ 들어온 사람 스냅샷)');
+  q = await guest.waitQuestion(2, 20000);
+  pick = byText.get(q.text);
+  await late.connect();
+  late.join(roomId);
+  await late.waitFor(() => late.snapshot !== null && late.snapshot.question?.index === 2, 6000, '진행 중 입장');
+  const activeSnap = JSON.stringify(late.snapshot);
+  expectTrue('② 진행 중 입장 스냅샷에 공개 정보가 없다(resolution null)', late.snapshot.resolution === null);
+  expectTrue('② 진행 중 입장 스냅샷에 winnerAnswer · 정답 글자가 없다', !activeSnap.includes('winnerAnswer') && !activeSnap.includes(`"${pick?.alt}"`) && !activeSnap.includes(`"${pick?.display}"`));
+  late.disconnect();
+  r = (await answerAndGet(2, pick?.alt ?? '')).res;
+  expect('② 사유 correct', r.reason, 'correct');
+  expect('② winnerAnswer = 친 인정어 표기', r.winnerAnswer, pick?.alt);
+  expect('② displayAnswer 는 대표 정답 그대로', r.displayAnswer, pick?.display);
+  await late2.connect();
+  late2.join(roomId);
+  await late2.waitFor(() => late2.snapshot !== null, 6000, '공개 중 입장');
+  expect('② 공개 중 입장 스냅샷에도 winnerAnswer', late2.snapshot.resolution?.winnerAnswer ?? '(없음)', pick?.alt);
+  late2.disconnect();
+
+  // ③ 띄어쓰기만 다름
+  log('\n[3] 대표 정답을 띄어 써서 맞힘 → 줄 없음');
+  q = await guest.waitQuestion(3, 20000);
+  pick = byText.get(q.text);
+  const spaced = pick ? `${[...pick.display][0]} ${[...pick.display].slice(1).join('')}` : '';
+  r = (await answerAndGet(3, spaced)).res;
+  expect('③ 사유 correct', r.reason, 'correct');
+  expect('③ winnerAnswer = null', r.winnerAnswer, null);
+
+  // ④ 시간 종료
+  log('\n[4] 아무도 못 맞힘(시간 종료) → 줄 없음');
+  r = (await answerAndGet(4, null)).res;
+  expect('④ 사유 timeout', r.reason, 'timeout');
+  expect('④ winnerAnswer = null', r.winnerAnswer, null);
+
+  await clearExperiences(PREFIX);
+  for (const b of [host, guest]) b.disconnect();
+  return checkSummary();
+}
+
 async function scenarioGame() {
   log('시나리오 game — Phase 3 문제 출제와 정답 판정');
   const cleared = await clearExperiences(PREFIX);
@@ -9908,6 +10016,8 @@ const SCENARIOS = {
   empty: scenarioEmptyCountdown,
   // ★★ Phase 3 (R014)
   game: scenarioGame,
+  // ★★ R105
+  altanswer: scenarioAltAnswer,
   race: scenarioRace,
   epoch: scenarioEpoch,
   concur: scenarioConcurrent,
