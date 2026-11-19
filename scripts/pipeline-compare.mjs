@@ -126,8 +126,12 @@ const FIXED = [
 
 /** raw/ 에서 실제 문제도 몇 개 섞는다 (합성 샘플만으로 판단하지 않기 위함) */
 async function realSamples(n) {
-  const dir = path.join(ROOT, DATA_DIRS.raw, 'opentdb');
   try {
+    // ★ G104 — raw/ 의 첫 소스 폴더(지금은 없다 → 합성 샘플만)
+    const rawRoot = path.join(ROOT, DATA_DIRS.raw);
+    const src = (await readdir(rawRoot, { withFileTypes: true })).filter((d) => d.isDirectory()).map((d) => d.name).sort()[0];
+    if (!src) return [];
+    const dir = path.join(rawRoot, src);
     const files = (await readdir(dir)).filter((f) => f.endsWith('.jsonl')).sort();
     if (!files.length) return [];
     const text = await readFile(path.join(dir, files[0]), 'utf8');

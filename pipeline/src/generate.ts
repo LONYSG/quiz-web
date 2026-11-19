@@ -43,7 +43,7 @@ import { judgeBackcheck } from './process.js';
 import { checkRules, dedupeAnswers, sanitizeVariants } from './rules.js';
 import type { AiGenerated, ProcessedItem, QuarantineRecord } from './types.js';
 
-/** ★ 생성 문제의 소스 식별자. OpenTDB 것과 구분된다 (작업 E) */
+/** ★ 생성 문제의 소스 식별자 (작업 E) */
 export const GEN_SOURCE_ID = 'gemini-gen';
 
 /** 역검증 응답 한 건 (prompts.ts 의 BACKCHECK_SCHEMA 와 짝) */
@@ -138,7 +138,6 @@ function quarantine(out: ProcessedItem, record: QuarantineRecord): void {
  * ★ 왜 질문+정답의 해시인가
  *   같은 문제를 두 번 만들었을 때 **DB의 UNIQUE(source_id, source_ref) 가
  *   자동으로 막아준다.** 중복 판정이 놓쳐도 마지막 그물이 하나 더 있는 셈이다.
- *   R010의 OpenTDB 어댑터와 같은 방식이다 (makeSourceRef).
  */
 export function makeGenRef(question: string, answer: string): string {
   return createHash('sha1')

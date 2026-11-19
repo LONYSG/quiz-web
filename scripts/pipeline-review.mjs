@@ -66,7 +66,7 @@ async function walk(dir) {
 await walk(processedRoot);
 
 if (files.length === 0) {
-  console.log('[review] processed/ 에 배치가 없다. 먼저 npm run pipeline:process 를 실행한다.');
+  console.log('[review] processed/ 에 배치가 없다. 먼저 생성(pipeline:generate)을 실행한다.');
   process.exit(0);
 }
 
@@ -214,7 +214,7 @@ console.log('  ★ 메모가 붙은 항목은 반드시 본다. 역검증이 집
 console.log('');
 console.log('── 명령');
 console.log('  전부 승인      npm run pipeline:review -- --approve all');
-console.log('  일부 승인      npm run pipeline:review -- --approve otdb-xxxx,otdb-yyyy');
-console.log('  반려           npm run pipeline:review -- --reject otdb-zzzz --note "이유"');
+console.log('  일부 승인      npm run pipeline:review -- --approve <ref1>,<ref2>');
+console.log('  반려           npm run pipeline:review -- --reject <ref3> --note "이유"');
 console.log('  내용 수정      processed/ 의 JSON 을 직접 편집한다 (git diff 에 남는다)');
 console.log('  나눠 저장      npm run pipeline:review -- --collect');

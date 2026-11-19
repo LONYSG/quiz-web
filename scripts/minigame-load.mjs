@@ -69,6 +69,8 @@ const MIME = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
 function imageOf(g, img) {
   if (img == null) return { none: true };
   for (const k of ['file', 'sourceUrl', 'license', 'attribution', 'width', 'height', 'bytes']) if (img[k] === undefined) return { problem: `image.${k} 없음` };
+  // ★ G104 (찬종 2026-11-19) — GFDL 그림은 받지 않는다(모든 게임 · 두 DB 에서 6항목 지움)
+  if (/GFDL/i.test(img.license ?? '')) return { problem: `GFDL 그림은 받지 않는다 '${img.license}'` };
   if (!new RegExp(`^assets/minigame/${g}/[A-Za-z0-9_-]+\\.(jpg|jpeg|png|webp)$`).test(img.file)) return { problem: `그림 파일 이름 ${img.file}` };
   const f = path.join(ROOT, img.file);
   if (!existsSync(f)) return { missing: img.file };

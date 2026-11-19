@@ -182,8 +182,6 @@ if (aiSamples.length) {
 console.log('\n── ★ 확보 가능량 추산');
 const survival = reachedLlm.length > 0 ? accepted.length / items.length : 0;
 console.log(`  실측 생존율 ${(survival * 100).toFixed(1)}% (표본 ${items.length}건)`);
-console.log(`  OpenTDB multiple 타입 (R002 실측) 4,500건`);
-console.log(`  → 확보 가능 추산 약 ${Math.round(4500 * survival)}건`);
 console.log(`  ★ Q-46 목표는 실플레이 1,000건 이상이다.`);
 console.log(
   `  ★ 표본이 ${items.length}건이므로 이 추산의 신뢰구간은 넓다. 참고값으로만 쓴다.`,

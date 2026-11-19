@@ -270,7 +270,7 @@ npm run pipeline:load -- --round r017,r018        # 실제 적재
 
 ### ★ 아직 없는 것
 
-**소분류를 알 수 없는 기존 63건(시드 53 + OpenTDB 10)을 재배정하는 스크립트가 없다.**
+**소분류를 알 수 없는 기존 63건(시드 53 + 외부 문제집 10)을 재배정하는 스크립트가 없다.**
 
 - `scripts/pipeline-remap-subs.mjs` 는 이름이 비슷하지만 **파일 배치(JSON)만 고친다.**
   DB의 `questions.category_id` 를 바꾸지 않는다. 확인했다 — 저장소 전체에

@@ -283,7 +283,7 @@ if (items.length === 0) {
 //   ★ 순번으로 만든 이유: 소분류 이름이 바뀌어도 과거 통계가 깨지지 않는다.
 //     (R002 categories 주석의 "문자열로 박아두면 이름을 바꿀 때 통계가 깨진다" 와 같은 이유)
 //
-// ★ 아래 CATEGORY_MAP 은 OpenTDB 가공 문제(R010)용으로 남긴다.
+// ★ 아래 CATEGORY_MAP 은 옛 가공 문제(R010)용으로 남긴다.
 //   그 문제들은 16개 플랫 카테고리(level 0)를 참조한다.
 const CATEGORY_MAP = {
   일반상식: 'general',
@@ -328,7 +328,7 @@ try {
 
   // ── 3. 이미 있는 source_ref 조회
   //   ★★ R011 수정: 전에는 items[0].sourceId 하나로만 조회했다.
-  //     소스가 하나일 때는 맞았지만, 이제 OpenTDB 문제와 생성 문제가 함께 있다.
+  //     소스가 하나일 때는 맞았지만, 이제 여러 소스(시드 · 생성)가 함께 있다.
   //     ★ 그러면 두 번째 소스의 중복을 못 걸러 UNIQUE 위반으로 트랜잭션이 죽는다.
   //     (세 겹 방어의 첫 겹이 새는 것이므로 조용히 틀리지는 않는다. 그래도 고친다.)
   //     → (source_id, source_ref) 쌍으로 조회한다.
@@ -421,7 +421,7 @@ try {
         continue;
       }
     } else {
-      // OpenTDB 가공 문제: 기존 플랫 카테고리를 쓴다
+      // 옛 가공 문제: 기존 플랫 카테고리를 쓴다
       categoryId = catByKey.get(CATEGORY_MAP[g.category] ?? '') ?? fallbackId;
     }
     // ★★ R024 출제 선별 게이트

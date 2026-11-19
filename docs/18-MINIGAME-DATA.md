@@ -30,6 +30,7 @@ assets/minigame/<game>/<id>.<jpg|png|webp>  ← 그림 (git 에 없다 — .giti
   - `photo`(사진 이름 맞히기)는 **자유 라이선스만**(위키미디어 공용 CC0 · CC BY · CC BY-SA · 퍼블릭 도메인) — 화면에 작게 출처를 붙일 수 있게 `attribution` 을 꼭 채운다.
   - `price` · `worldprice` 는 제조사·공식몰 상품 이미지(출처 URL 기록 · `license: "product-page"`).
   - `estimate` · `which` 의 그림은 위 둘 중 하나.
+  - **GFDL 은 받지 않는다(2026-11-19 · G104)** — 모든 게임 · `g008-check` · `minigame-load` 가 막는다.
 - **값 규칙**: 숫자는 숫자형(문자열 금지) · 날짜는 `YYYY-MM-DD` · 통화는 원 단위 정수.
 - **정답 표기**(사진 게임): 퀴즈와 같다 — 15 §2 B2(질문이 요구하는 표현과 같은 종류) · 한국에서 실제로 치는 표기만 변형에 · 정규화는 정답 판정과 같은 함수.
 

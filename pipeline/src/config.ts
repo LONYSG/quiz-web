@@ -208,15 +208,3 @@ export const DATA_DIRS = {
   /** 예산·중단 상태 파일 */
   state: 'data/pipeline/state',
 } as const;
-
-/** OpenTDB 수확 설정 */
-export const OPENTDB = {
-  base: 'https://opentdb.com',
-  /** 한 번에 받는 개수. API 상한이 50이다 */
-  pageSize: 50,
-  /**
-   * 요청 간 간격(ms).
-   * ★ R002 실측: 문서상 5초로는 레이트 리밋(429)에 걸렸다. 7초로 올려야 안정적이었다.
-   */
-  intervalMs: 7_000,
-} as const;

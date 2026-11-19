@@ -223,7 +223,7 @@ koreanTerm=false 이면 verdict="reject"로 하고 나머지 생성 필드는 �
 /** R002 2-2의 실측 샘플. 의도적으로 accept/reject가 섞여 있다. */
 const SAMPLES = [
   {
-    sourceRef: 'otdb-sample-01',
+    sourceRef: 'sample-01',
     question: 'Which is the capital of Spain?',
     correct: 'Madrid',
     incorrect: ['Paris', 'Barcelona', 'Lisboa'],
@@ -232,7 +232,7 @@ const SAMPLES = [
     _expect: 'accept (쉬운 지리. 한국에서도 통한다)',
   },
   {
-    sourceRef: 'otdb-sample-02',
+    sourceRef: 'sample-02',
     question: 'In most traditions, who was the wife of Zeus?',
     correct: 'Hera',
     incorrect: ['Aphrodite', 'Athena', 'Hestia'],
@@ -241,7 +241,7 @@ const SAMPLES = [
     _expect: 'accept (음차 변형 확보가 관건)',
   },
   {
-    sourceRef: 'otdb-sample-03',
+    sourceRef: 'sample-03',
     question: 'When was Pong released?',
     correct: 'November 29, 1972',
     incorrect: ['1975', '1969', '1981'],
@@ -250,7 +250,7 @@ const SAMPLES = [
     _expect: 'reject (uniqueAnswer=false. 날짜 표기 변형 무한)',
   },
   {
-    sourceRef: 'otdb-sample-04',
+    sourceRef: 'sample-04',
     question: 'Which of the following is NOT one of Aesop’s fables?',
     correct: 'The Fox and the Hound',
     incorrect: ['The Tortoise and the Hare', 'The Boy Who Cried Wolf', 'The Ant and the Grasshopper'],
@@ -259,7 +259,7 @@ const SAMPLES = [
     _expect: 'reject (convertible=false. 보기 참조형 + NOT)',
   },
   {
-    sourceRef: 'otdb-sample-05',
+    sourceRef: 'sample-05',
     question: 'In the videogame Bully, what is the protagonist’s last name?',
     correct: 'Hopkins',
     incorrect: ['Jimmy', 'Gary', 'Petey'],
@@ -268,7 +268,7 @@ const SAMPLES = [
     _expect: 'reject (krAccessible 낮음. 니치 게임)',
   },
   {
-    sourceRef: 'otdb-sample-06',
+    sourceRef: 'sample-06',
     question: 'What cell organelle is known as "the powerhouse of the cell"?',
     correct: 'Mitochondria',
     incorrect: ['Nucleus', 'Golgi apparatus', 'Endoplasmic reticulum'],

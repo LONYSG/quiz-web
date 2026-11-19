@@ -48,7 +48,7 @@ try {
   for (const r of hintless) add(r.id, 'hint');
   const list = readJson('g023-hintless.json').items.map((i) => String(i.id));
   const dbSet = new Set(Q.filter((r) => r.difficulty_score >= 3 && r.general_hint == null).map((r) => String(r.id)));
-  const listNotDb = list.filter((x) => !dbSet.has(x)).map((x) => ({ id: Number(x), now: QM.get(x) ? { v2: QM.get(x).difficulty_score, hint: QM.get(x).general_hint } : '비활성' }));
+  const listMissingInDb = list.filter((x) => !dbSet.has(x)).map((x) => ({ id: Number(x), now: QM.get(x) ? { v2: QM.get(x).difficulty_score, hint: QM.get(x).general_hint } : '비활성' }));
   const dbNotList = [...dbSet].filter((x) => !list.includes(x));
 
   // ② H9
@@ -85,7 +85,7 @@ try {
   const count = (task, key) => { const o = {}; for (const it of Object.values(items)) if (it.tasks.includes(task)) { const k = it[key]; o[k] = (o[k] ?? 0) + 1; } return o; };
   const summary = {
     hint: { n: hintless.length, byV2: count('hint', 'v2'), byL1: count('hint', 'l1'), withSameAnswer: Object.values(items).filter((it) => it.tasks.includes('hint') && it.sameAnswerActive.length).length,
-      g023List: list.length, listNotDb, dbNotList },
+      g023List: list.length, listMissingInDb, dbNotList },
     h9: { n: Object.values(items).filter((it) => it.tasks.includes('h9')).length, pending: h9.length, changedSinceJudged: h9diff, skipped: h9skip, byV2: count('h9', 'v2'), byL1: count('h9', 'l1'),
       alsoHintless: 0 },
     category: { n: Object.values(items).filter((it) => it.tasks.includes('category')).length, pending: cp.length, skipped: catSkip, nowLevelBelow3: Object.values(items).filter((it) => it.tasks.includes('category') && it.category.level !== 3).length, byL1: count('category', 'l1') },

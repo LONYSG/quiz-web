@@ -16,16 +16,14 @@
 ```
   GitHub Actions (클라우드)                     건우 PC (로컬)
   ────────────────────────                     ──────────────
-  1. 수집   OpenTDB → 원본 JSON
-  2. 필터   규칙 기반 사전 제거
-  3. 가공   Gemini: 판정 + 번역 + 복수 정답
-  4. 검증   Gemini 역검증 + 규칙 검사
-  5. 커밋   결과 JSON을 저장소에 push
+  1. 생성   소재 → 문제 (우리 프롬프트)
+  2. 검증   역검증 + 규칙 검사
+  3. 커밋   결과 JSON을 저장소에 push
                      │
                      │  git pull
                      ▼
-                                          6. 검수  JSON 직접 편집으로 승인/반려
-                                          7. 적재  npm run pipeline:load → DB
+                                          4. 검수  JSON 직접 편집으로 승인/반려
+                                          5. 적재  npm run pipeline:load → DB
 ```
 
 ### 이 변경의 부수 이점
@@ -35,10 +33,8 @@
 1. **가공 결과가 git에 남아 diff로 검토할 수 있다.**
    Gemini 프롬프트를 고쳤을 때 결과가 어떻게 달라졌는지 눈으로 볼 수 있다.
    DB 직접 적재였다면 이 비교가 불가능했다
-2. **CC BY-SA share-alike 의무가 자연스럽게 충족된다.**
-   파생 데이터가 공개 저장소에 그대로 있으므로 별도 배포 절차가 필요 없다
-3. **되돌리기 쉽다.** 잘못 가공된 배치를 git revert로 되돌릴 수 있다
-4. **API 키가 로컬에 필요 없다.** GEMINI_API_KEY는 GitHub Secrets에만 둔다
+2. **되돌리기 쉽다.** 잘못 가공된 배치를 git revert로 되돌릴 수 있다
+3. **API 키가 로컬에 필요 없다.** GEMINI_API_KEY는 GitHub Secrets에만 둔다
 
 ---
 
@@ -50,31 +46,14 @@ data/
 │   └─ questions.manual.json        직접 작성한 개발·테스트용 시드 (53문제)
 │
 └─ pipeline/
-    ├─ raw/                          ★ 소스 원본
-    │   └─ opentdb/
-    │       └─ 2026-09-07.jsonl      수확 시점별 파일. append-only
-    │
-    ├─ processed/                    Gemini 가공 + 역검증 결과
-    │   └─ opentdb/
-    │       └─ 2026-09-07-batch01.json
-    │
+    ├─ raw/                          ★ 외부 소스 원본 (지금은 비어 있다)
+    ├─ processed/                    생성 + 역검증 결과
     ├─ approved/                     ★ 사람이 검수해 승인한 것. 적재 대상
-    │   └─ opentdb/
-    │       └─ 2026-09-07-batch01.json
-    │
     └─ rejected/                     반려. 통계와 프롬프트 개선에 쓴다
-        └─ opentdb/
-            └─ 2026-09-07-batch01.json
 ```
 
-### 원본(raw)을 저장소에 넣을 것인가
-
-**넣는다.** OpenTDB 전량이 4,500건이고 JSONL로 약 1.5MB 수준이라 부담이 없다.
-원본을 버리면 가공 규칙이 바뀔 때마다 소스를 다시 긁어야 하는데,
-OpenTDB는 레이트 리밋 때문에 전량 수확에 약 12분이 걸린다.
-
-**단 위키데이터처럼 원본이 수십 MB를 넘는 소스가 생기면 그때 재검토한다.**
-그 경우 원본은 로컬에만 두고 `raw/` 를 `.gitignore` 에 넣는다.
+★ 지금 문제는 모두 직접 작성 · 생성(`manual` · `gemini-gen` · `seed-gen`)이다. 외부 문제집을 들여오지 않는다.
+★ 소재 기반 생성(R017~)의 파일 구조는 [data/pipeline/seeds/README.md](../data/pipeline/seeds/README.md) 에 있다.
 
 ---
 
@@ -86,8 +65,8 @@ OpenTDB는 레이트 리밋 때문에 전량 수확에 약 12분이 걸린다.
 
 ```json
 {
-  "sourceId": "opentdb",
-  "sourceRef": "otdb-000123",
+  "sourceId": "<소스 id>",
+  "sourceRef": "<소스 안 고유 id>",
   "lang": "en",
   "question": "...",
   "correct": "...",
@@ -110,8 +89,8 @@ OpenTDB는 레이트 리밋 때문에 전량 수확에 약 12분이 걸린다.
 ```json
 {
   "_meta": {
-    "sourceId": "opentdb",
-    "batch": "2026-09-07-batch01",
+    "sourceId": "gemini-gen",
+    "batch": "2026-09-09-gen01",
     "model": "gemini-2.5-flash",
     "backcheckModel": "gemini-2.5-flash-lite",
     "generatedAt": "2026-09-07T00:00:00Z",
@@ -119,7 +98,7 @@ OpenTDB는 레이트 리밋 때문에 전량 수확에 약 12분이 걸린다.
   },
   "items": [
     {
-      "sourceRef": "otdb-000123",
+      "sourceRef": "3f2a9c0d1e4b5a67",
       "verdict": "accept",
       "question_ko": "...",
       "displayAnswer": "...",
@@ -152,7 +131,7 @@ CSV는 왕복 과정에서 인코딩·따옴표 사고가 나기 쉽다. **git d
 
 `(sourceId, sourceRef)` 가 키다. 세 겹으로 막는다.
 
-1. **수집 단계** — `raw/` 에 이미 있는 `sourceRef` 는 다시 받지 않는다
+1. **생성 단계** — `sourceRef` 는 질문 + 정답의 해시라 같은 문제는 같은 키가 된다
 2. **적재 스크립트** — 적재 전에 DB를 조회해 이미 있는 것은 건너뛴다
 3. **DB 제약** — `questions` 에 부분 UNIQUE `(source_id, source_ref)`
 
@@ -210,13 +189,9 @@ CSV는 왕복 과정에서 인코딩·따옴표 사고가 나기 쉽다. **git d
 
 ## 6. GitHub Actions 배치
 
-**OpenTDB는 유한 코퍼스이므로 "매일 랜덤 수집" 은 의미가 없다. 중복만 받는다.**
-그래서 수집과 가공을 분리한다.
-
 | 잡 | 주기 | 내용 |
 |----|------|------|
-| `harvest` | **수동 실행** + 월 1회 | 세션 토큰으로 전량 훑어 `raw/` 에 추가. 이미 있는 `sourceRef` 는 건너뛴다. 요청 간격 7초(실측: 문서상 5초로는 레이트 리밋에 걸린다). 전량 약 12분 |
-| `process` | 매일 1회 | `raw/` 의 미가공 건을 N개 꺼내 필터 → 가공 → 역검증 → `processed/` 에 커밋. **이 잡이 배치의 본체다** |
+| `pipeline-generate` | 수동 실행 | 생성 → 역검증 → `processed/` 에 커밋 |
 
 - 비밀값은 GitHub Secrets로만 (`GEMINI_API_KEY`). **저장소가 Public이므로 특히 주의한다**
 - 일일 처리 상한을 두고 429가 나오면 그날 잡을 중단한다
@@ -225,15 +200,9 @@ CSV는 왕복 과정에서 인코딩·따옴표 사고가 나기 쉽다. **git d
 
 ## 7. 라이선스 (Q-41)
 
-OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은 라이선스로 배포해야 한다.
-
-- 저장소 루트의 `DATA_LICENSE.md` 에 명시
-- `questions.source_id` / `license` 로 **문제별로** 추적한다.
-  이래야 다른 출처(위키데이터 CC0 등)의 문제까지 share-alike가 번지지 않는다
-- 게임 화면 하단 또는 정보 화면에 출처를 표기한다
-- **코드는 별도 라이선스(MIT)를 유지한다.** ShareAlike는 각색물에 적용되며
-  데이터를 사용하는 소프트웨어는 각색물이 아니라고 보는 것이 일반적 해석이다
-  (★ 법률 자문이 아니다. 이 해석은 추정이다)
+- 문제 데이터는 CC BY-SA 4.0 으로 배포한다 — 의무가 아니라 우리의 선택이다(직접 작성 · 생성 문제). 정본은 저장소 루트의 `DATA_LICENSE.md`
+- `questions.source_id` / `license` 로 **문제별로** 추적한다
+- **코드는 별도 라이선스(MIT)를 유지한다.**
 
 ---
 
@@ -290,7 +259,6 @@ OpenTDB는 CC BY-SA 4.0이다. 파생물인 한국어 문제 데이터도 같은
 ★ 전역 대조의 사각지대: 2글자 정답의 포함 관계(열섬 ⊂ 열섬 현상), 된소리 표기 차이(쎄시봉/세시봉) — C37.
 
 ```
-  [R010까지]  수확 → 규칙 필터 → 1차 가공 → 역검증 → 규칙 검사 → 검수 → 적재
   [R011부터]  ★ 생성 ────────────────────→ 역검증 → 규칙 검사 → 중복 판정 → 검수 → 적재
   [R012부터]  ★ 생성(Gemini 또는 Claude Code) → ★ **상대 모델이 역검증** →
               규칙 검사 → ★ LLM 중복 판정 → 선별(Q-69) → 검수 → 적재 → ★ DB 사후 정리

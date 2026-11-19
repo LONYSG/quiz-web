@@ -58,6 +58,7 @@ async function checkImage(g, id, img, need, answers = []) {
   const m = await sharp(f).metadata(); if (Math.max(m.width, m.height) > 1024) B(g, id, `1024px 초과 ${m.width}x${m.height}`);
   if (img.width !== m.width || img.height !== m.height || img.bytes !== st.size) B(g, id, `image 크기 칸이 파일과 다름`);
   for (const a of answers) if (a && normalizeAnswer(a).length >= 2 && normalizeAnswer(path.basename(img.file)).includes(normalizeAnswer(a))) B(g, id, '정답 글자가 그림 파일 이름에');
+  if (/GFDL/i.test(img.license ?? '')) B(g, id, `GFDL 그림은 받지 않는다(G104 · 모든 게임) '${img.license}'`);
   if ((g === 'photo' || g === 'photoyear') && !FREE.test(img.license ?? '')) B(g, id, `자유 라이선스 아님 '${img.license}'`);
   if ((g === 'photo' || g === 'photoyear') && !/commons\.wikimedia\.org|upload\.wikimedia\.org/.test(img.sourceUrl ?? '')) B(g, id, '위키미디어 공용 밖 그림');
   if (!img.attribution) B(g, id, 'attribution 빈 칸');

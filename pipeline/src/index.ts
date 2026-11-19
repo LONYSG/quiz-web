@@ -10,7 +10,6 @@ export {
   LIMITS,
   PROMPT_VERSION,
   DATA_DIRS,
-  OPENTDB,
   DAY_BOUNDARY,
   pickBackcheckChain,
 } from './config.js';
@@ -39,14 +38,6 @@ export { processBatch } from './process.js';
 export { rejudge } from './rejudge.js';
 export type { RejudgeStats } from './rejudge.js';
 export type { ProcessStats, ProcessOptions, BackcheckItemRaw } from './process.js';
-export {
-  harvest,
-  toRawQuestion,
-  makeSourceRef,
-  decodeEntities,
-  requestToken,
-} from './adapters/opentdb.js';
-export type { HarvestOptions, HarvestResult } from './adapters/opentdb.js';
 export {
   buildProcessPrompt,
   buildBackcheckPrompt,

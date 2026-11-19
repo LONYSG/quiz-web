@@ -15,7 +15,7 @@
 //
 // 사용법
 //   node scripts/db-rule-audit.mjs                 전체
-//   node scripts/db-rule-audit.mjs --source manual,opentdb
+//   node scripts/db-rule-audit.mjs --source manual,gemini-gen
 //   node scripts/db-rule-audit.mjs --out data/pipeline/audit/db-rule-audit.json
 // =============================================================================
 

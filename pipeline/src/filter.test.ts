@@ -8,13 +8,12 @@
 
 import { describe, expect, it } from 'vitest';
 import { ruleFilter, hasOptionWrapper } from './filter.js';
-import { decodeEntities, makeSourceRef, toRawQuestion } from './adapters/opentdb.js';
 import { checkGate, today, type DayState } from './budget.js';
 import type { RawQuestion } from './types.js';
 
 function q(question: string, correct: string, extra: Partial<RawQuestion> = {}): RawQuestion {
   return {
-    sourceId: 'opentdb',
+    sourceId: 'test-src',
     sourceRef: 'test',
     lang: 'en',
     question,
@@ -120,45 +119,6 @@ describe('ruleFilter — 그 밖의 방어', () => {
     // "up" 이 question 안에 있지만 2자이므로 검사하지 않는다
     const r = ruleFilter(q('Which direction does a balloon float when released?', 'Up'));
     expect(r.reasons).not.toContain('answer_in_question');
-  });
-});
-
-describe('OpenTDB 어댑터', () => {
-  it('HTML 엔티티를 푼다', () => {
-    expect(decodeEntities('&quot;Hello&quot;')).toBe('"Hello"');
-    expect(decodeEntities('Don&#039;t')).toBe("Don't");
-    expect(decodeEntities('Caf&eacute;')).toBe('Café');
-    expect(decodeEntities('a &amp; b')).toBe('a & b');
-  });
-
-  it('★ &amp; 를 마지막에 푼다 (이중 인코딩 방어)', () => {
-    // &amp;quot; → &quot; 가 되면 안 되고 &"  가 되어야 한다
-    expect(decodeEntities('&amp;quot;')).toBe('&quot;');
-  });
-
-  it('★ sourceRef 는 같은 문제에 항상 같은 값을 준다 (중복 수확 방어)', () => {
-    const a = makeSourceRef('What is 1+1?', '2');
-    const b = makeSourceRef('What is 1+1?', '2');
-    expect(a).toBe(b);
-    expect(a).toMatch(/^otdb-[0-9a-f]{16}$/);
-  });
-
-  it('★ 질문이 다르면 다른 ref 가 나온다', () => {
-    expect(makeSourceRef('Q1', 'A')).not.toBe(makeSourceRef('Q2', 'A'));
-  });
-
-  it('변환 시 엔티티가 풀린 상태로 들어간다', () => {
-    const raw = toRawQuestion({
-      type: 'multiple',
-      difficulty: 'easy',
-      category: 'General Knowledge',
-      question: 'What does &quot;HTML&quot; stand for?',
-      correct_answer: 'HyperText Markup Language',
-      incorrect_answers: ['a &amp; b'],
-    });
-    expect(raw.question).toContain('"HTML"');
-    expect(raw.incorrect[0]).toBe('a & b');
-    expect(raw.license).toBe('CC-BY-SA-4.0');
   });
 });
 
