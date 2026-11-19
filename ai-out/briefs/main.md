@@ -6,7 +6,7 @@ TASK: 찬종이 공식 배포를 준비한다. 찬종 2026-11-19: "이 pc 에서
 ■ 원칙: 진짜 사용자를 막지 않는다 — 한 집 · 한 회사 · PC방에서 여럿이 같은 IP 로 들어온다(IP 기준 한도는 넉넉하게 · 계정 기준 한도를 먼저). 한도 값은 전부 `config.ts` 의 환경 변수로(기본값은 아래 · 검사는 자기 서버에서 작게). DB 를 주기적으로 건드리는 코드를 만들지 않는다(docs/02 3장 — 한도 세기는 메모리에서).
 
 ■ A. 고정 주소 — Cloudflare "이름 붙인 터널"
-  · `scripts/dev-tunnel.mjs` · `play.mjs`: `.env` 에 `TUNNEL_NAME` · `PUBLIC_HOSTNAME`(예: play.내도메인) 이 **둘 다 있으면** `cloudflared tunnel run <이름>` 으로 띄우고(주소가 바뀌지 않는다 · 주소 = `https://<PUBLIC_HOSTNAME>`), 없으면 **지금처럼 임시 주소**(trycloudflare)로. 켠 뒤 확인(밖에서 `/healthz` 200 → 브라우저) · 클립보드 · 로그는 지금 흐름 그대로. 메뉴 4(상태)에 "주소: 고정/임시" 한 줄.
+  · `scripts/dev-tunnel.mjs` · `play.mjs`: `.env` 에 `TUNNEL_NAME` · `PUBLIC_HOSTNAME`(★ 찬종이 2026-11-19 `quizdojang.com` 을 샀다 — 앞에 play 같은 말 없이 **도메인 그대로** 게임이 뜨게 · 문서의 예시도 이 값으로) 이 **둘 다 있으면** `cloudflared tunnel run <이름>` 으로 띄우고(주소가 바뀌지 않는다 · 주소 = `https://<PUBLIC_HOSTNAME>`), 없으면 **지금처럼 임시 주소**(trycloudflare)로. 켠 뒤 확인(밖에서 `/healthz` 200 → 브라우저) · 클립보드 · 로그는 지금 흐름 그대로. 메뉴 4(상태)에 "주소: 고정/임시" 한 줄.
   · 고정 주소일 때 달라지는 것을 확인: 세션 쿠키가 주소가 같아 **다시 켜도 로그인이 유지**된다 · 초대 링크 · `PUBLIC_BASE_URL`. 임시 주소 때만 맞던 문구("주소는 켤 때마다 바뀝니다")는 갈래를 나눈다.
   · 터널 설정 파일(`config.yml`)이 필요하면 저장소 밖(사용자 폴더 `.cloudflared`)에 두는 것을 전제로 하고, 저장소에는 **본보기 파일**만(`ops/cloudflared.example.yml` — 실제 이름 · ID · 인증 파일은 커밋하지 않는다 · `.gitignore` 확인).
   · ★ 도메인이 아직 없으므로 실제 연결은 못 해 본다 — 임시 주소 흐름이 그대로 도는 것 + 고정 주소 갈래는 명령 조립 · 설정 읽기를 테스트로. 찬종이 따라 할 순서는 `docs/11` 에 "도메인 연결 — 한 번만"으로(아래 D).
