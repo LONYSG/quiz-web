@@ -31,7 +31,7 @@ G105 — 해설에 이야기 옮기기(gpt 묶음 만들기 · 잇기 55 싣기)
  · 고치기 전 / 고친 문장 = ai-out/G105-해설.md 끝 절(20줄마다 제목) · 계획 사본 data/pipeline/tone/g105-apply-rejoin.json
  · 되돌리기 node scripts/tone-apply.mjs --round g105 [--db quizweb_dev] --undo (undo 파일은 덧붙여 쓴다 — B 의 add · move 도 같은 파일에 쌓인다)
 
-3 다음 "gen.md 작업해" 에서 할 것 (B 나머지)
+3 (끝남 — 아래 5) 다음 "gen.md 작업해" 에서 할 것 (B 나머지)
  · node web-desk/tone/_status.mjs → 받은것/형태-06~11 이 done 인지
  · node scripts/g105-gate.mjs --files 06,07,08,09,10,11 → 새 한글 명사 목록(plan.warn.newWords)을 읽고 이름이면 --hold → 다시 돌림
  · cp data/pipeline/tone/g105-apply.json data/pipeline/tone/g105-apply-shape.json → tone-apply --round g105 (실 → dev --skip-diff) → node scripts/g105-md.mjs → hint-check-active
@@ -39,3 +39,17 @@ G105 — 해설에 이야기 옮기기(gpt 묶음 만들기 · 잇기 55 싣기)
 4 새 도구
  · scripts/g105-build.mjs(A) · scripts/g105-gate.mjs(B 게이트 → g105-apply.json · tone-apply 가 싣는다) · scripts/g105-md.mjs(G105-해설.md) · scripts/g105-pilot-page.mjs(C 쪽지 · 판정을 g105-image-pilot.json 에 합침)
  · 데이터: data/pipeline/audit/g105-image-pilot.json(30 · 판정 found) · g105-raw/pilot-A.json · pilot-B.json · g105-build.json
+
+5 B 나머지 — add · move 싣기 · 2026-11-19 16:30~16:45 KST (두 번째 "gen.md 작업해")
+ · gpt 형태-06~11 모두 done(229장) → node scripts/g105-gate.mjs --files 06,07,08,09,10,11
+ · gpt 가 고친 것 48 · 그대로 둔 것 181(그대로 178 · 재료 부족 2 · 정치 1 — 손대지 않음)
+ · 게이트 걸림 1: #1064(add) — 새 해설의 '목포의 눈물'이 두 카드 글 · facts 에 없음 → 건너뜀(고쳐 넣지 않음)
+ · 새 한글 명사 39장 목록을 다 읽음 — 모두 형제 카드 글 · facts 에 있는 사실의 다른 꼴(이름 새로 나온 것 0) → --hold 0
+    · 해설 겹침 경고 5(#53 · #119 · #2764 · #6723 · #5720) — "했습니다" 같은 말끝 · 정답 일부 겹침뿐 → 그대로
+ · 실음: quizweb 47장 54칸(add 해설 43 · move 질문 4 · 힌트 3 · 해설 4) · quizweb_dev 23장 27칸(--skip-diff · 건너뜀 24장 = dev 에서 꺼짐 등 → audit/g105-skipped-quizweb_dev-shape.json · 잇기 때 목록 g105-skipped-quizweb_dev.json 은 그대로)
+ · 열린 판 0(두 DB) · 백업 건너뜀(6시간 안 덤프: quizweb-20261119-151552 · quizweb_dev-20261119-140006)
+ · hint-check-active(실): 힌트 7,367 · 막힘 0
+ · 고치기 전 / 고친 문장 = ai-out/G105-해설.md(add 43 · move 4 · rejoin 55) · 계획 사본 data/pipeline/tone/g105-apply-shape.json
+ · GEN 이 읽다 걸린 것(실음 · 찬종이 훑을 때 참고): #1234 사해문서 "네 점을 25만 달러에 사들인 뒤" — 누가 샀는지 빠져 문장이 덜 친절함
+ · 되돌리기 node scripts/tone-apply.mjs --round g105 [--db quizweb_dev] --undo (잇기 55 + add · move 함께 되돌아감 — undo 109줄)
+ · G105 끝 — 상품 그림 전부 · 새 문항은 시작하지 않음
