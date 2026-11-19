@@ -163,6 +163,8 @@ export interface ResolutionView {
   reason: QuestionResolution;
   winnerAccountId: string | null;
   displayAnswer: string;
+  /** ★ R105 — 정답 인정어로 맞혔을 때 그 표기(아니면 null) */
+  winnerAnswer: string | null;
   explanation: string | null;
   nextAt: number | null;
   index: number;
@@ -425,6 +427,7 @@ function buildResolutionView(room: Room): ResolutionView | null {
     reason: r.reason,
     winnerAccountId: r.winnerAccountId,
     displayAnswer: r.displayAnswer,
+    winnerAnswer: r.winnerAnswer ?? null,
     explanation: r.explanation,
     nextAt: r.nextAt,
     index: q.index,

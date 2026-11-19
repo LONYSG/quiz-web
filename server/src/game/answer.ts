@@ -33,7 +33,7 @@
 //   판정은 **항상 클라이언트가 보낸 원문**을 입력으로 받고 마스킹 결과를 참조하지 않는다.
 // =============================================================================
 
-import { flexMatch, normalizeAnswer } from '@quiz/shared';
+import { flexCanon, flexMatch, normalizeAnswer } from '@quiz/shared';
 import type { AnswerRejectReason } from '@quiz/shared';
 import type { Player, Room } from '../rooms/types.js';
 
@@ -245,4 +245,29 @@ export function checkEmojiRate(room: Room, accountId: string, now: number, limit
   room.emojiTimestamps ??= new Map();
   room.emojiLocks ??= new Map();
   return checkRate(room.emojiTimestamps, room.emojiLocks, accountId, now, limits);
+}
+
+/**
+ * ★★ R105 — 정답자가 **무엇으로** 맞혔나(정답 공개 화면의 "○○으로 정답 인정" 한 줄).
+ *   ① 정규화 그대로 맞은 정답 인정어 → DB 에 적힌 깔끔한 표기(answersRaw)
+ *   ② 느슨한 견줌(R057 flex)으로 맞은 것 → 그 견줌에 걸린 정답 인정어 표기
+ *   ③ 둘 다 못 찾으면 입력한 글자 그대로(앞뒤 공백 떼고 · 20자)
+ *   ★ 대표 정답(displayAnswer)과 같은 것(띄어쓰기 · 대소문자 · 특수문자만 다름)이면 null — 줄을 띄우지 않는다.
+ *   판정이 끝난 뒤 정답자 한 사람에게만 한 번 부른다(판정 결과에 영향 없음).
+ */
+export function winnerAnswerOf(
+  q: { displayAnswer: string; answersRaw: readonly string[] },
+  rawText: string,
+): string | null {
+  const sameAs = (cand: string, target: string): boolean => {
+    const n = normalizeAnswer(target);
+    return normalizeAnswer(cand) === n || flexMatch(cand, new Set([n]), new Set([flexCanon(target)]));
+  };
+  if (sameAs(rawText, q.displayAnswer)) return null;
+  const inNorm = normalizeAnswer(rawText);
+  let hit = q.answersRaw.find((r) => normalizeAnswer(r) === inNorm);
+  if (!hit) hit = q.answersRaw.find((r) => flexMatch(rawText, new Set([normalizeAnswer(r)]), new Set([flexCanon(r)])));
+  const shown = (hit ?? rawText).trim();
+  if (!shown || sameAs(shown, q.displayAnswer)) return null;
+  return [...shown].length > 20 ? [...shown].slice(0, 20).join('') : shown;
 }

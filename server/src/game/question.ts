@@ -50,6 +50,7 @@ import { emitRoom, emitRoomPerPlayer } from '../rooms/emit.js';
 import { activeCount } from '../rooms/registry.js';
 import { lateAnswersView, toPlayerView } from '../rooms/snapshot.js';
 import { selectNextQuestion } from './select.js';
+import { winnerAnswerOf } from './answer.js';
 import type { CurrentQuestion, GameResultData, Player, Room } from '../rooms/types.js';
 import { SONG_MODE } from '@quiz/shared';
 import { closeSongRun, pickNextSong, recordSongResolved, songAnswerSets, songRevealOf, songResolvedView, type SongRun } from '../song/mode.js';
@@ -374,6 +375,8 @@ export function resolveQuestionSync(
   room: Room,
   reason: QuestionResolution,
   winnerAccountId: string | null,
+  /** ★ R105 — 정답자가 친 글(판정에 쓴 것) · 정답일 때만 */
+  winnerInput?: string,
 ): boolean {
   const current = room.currentQuestion;
   const game = room.game;
@@ -435,11 +438,17 @@ export function resolveQuestionSync(
   // ★ R050 — 검사용으로 줄일 수 있다(config.tuning.resolvedWaitMs — 기본은 RULES 8초)
   const nextAt = now + config.tuning.resolvedWaitMs;
   // ★★★ R099 — 평가 요청 문항(R071 rateAsk) 없앰(찬종 "평가는 나만 · 제보로")
+  // ★★ R105 — 정답 인정어로 맞혔으면 그 표기(공개 정보에만 실린다 · 노래는 이번 범위 밖)
+  const winnerAnswer =
+    reason === 'correct' && winnerAccountId && winnerInput !== undefined && !current.song
+      ? winnerAnswerOf(current, winnerInput)
+      : null;
   game.resolution = {
     epoch: current.epoch,
     reason,
     winnerAccountId,
     displayAnswer: current.displayAnswer,
+    winnerAnswer,
     explanation: current.explanation,
     nextAt,
   };
@@ -459,6 +468,7 @@ export function resolveQuestionSync(
     reason,
     winnerAccountId,
     displayAnswer: current.displayAnswer,
+    winnerAnswer,
     explanation: current.explanation,
     scores: [...room.players.values()]
       .sort((a, b) => a.joinOrder - b.joinOrder)

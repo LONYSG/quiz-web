@@ -327,6 +327,8 @@ export interface Resolution {
   reason: QuestionResolution;
   winnerAccountId: string | null;
   displayAnswer: string;
+  /** ★ R105 — 정답자가 대표 정답이 아닌 정답 인정어로 맞혔을 때 그 표기(아니면 null) · 공개 때만 */
+  winnerAnswer: string | null;
   explanation: string | null;
   /** 다음 문제 시작 시각. ★ 마지막 문제면 null 이고 그 즉시 결과로 간다 */
   nextAt: number | null;

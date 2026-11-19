@@ -261,6 +261,8 @@ export interface ResolutionView {
   reason: 'correct' | 'timeout' | 'skip_vote' | 'host_skip' | 'aborted';
   winnerAccountId: string | null;
   displayAnswer: string;
+  /** ★ R105 — 정답자가 대표 정답이 아닌 정답 인정어로 맞혔을 때 그 표기(아니면 null · 옛 서버면 없다) */
+  winnerAnswer?: string | null;
   explanation: string | null;
   nextAt: number | null;
   index: number;
@@ -699,6 +701,7 @@ export function useRoom(socket: Socket | null): RoomHook {
             reason: p.reason,
             winnerAccountId: p.winnerAccountId,
             displayAnswer: p.displayAnswer,
+            winnerAnswer: p.winnerAnswer ?? null,
             explanation: p.explanation,
             nextAt: p.nextAt,
             index: prev.question?.index ?? 0,

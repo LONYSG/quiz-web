@@ -1927,6 +1927,18 @@ button.primary kbd {
 .reveal .reveal-answer {
   margin-top: 8px;
 }
+/* ★ R105 — 정답 인정어로 맞혔을 때 "정답" 줄 아래 작은 한 줄(뒷북 · 진행 안내와 같은 크기 · 흐린 색) · 길면 "…" */
+.reveal-alt {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reveal-alt b {
+  font-weight: 900;
+}
 /* ★★ 해설 — 크게 (안내 문구와 확실히 구분) */
 .reveal-explain {
   margin: 8px 0 0;

@@ -35,6 +35,7 @@ import type { ChatView, QuestionView, ResolutionView, SkipView } from './useRoom
 import Icon from './Icon.js';
 import { Lock, PartyPopper, SkipForward, Square, Undo2 } from 'lucide-react';
 import { SongPlay, SongReveal, useSongMusicQuiet } from './SongStage.js';
+import { euroParticle } from './josa.js';
 
 interface Props {
   socket: Socket;
@@ -360,6 +361,12 @@ export default function Question({
             <p className="reveal-answer">
               정답 <strong>{resolution.displayAnswer}</strong>
             </p>
+            {/* ★★ R105 (찬종 11.18) — 대표 정답이 아닌 정답 인정어로 맞혔을 때만 한 줄("덕아웃"으로 정답 인정) · 없으면 자리도 없다 */}
+            {winner && resolution.winnerAnswer && (
+              <p className="reveal-alt">
+                "<b style={{ color: `var(--p${winner.colorIndex})` }}>{resolution.winnerAnswer}</b>"{euroParticle(resolution.winnerAnswer)} 정답 인정
+              </p>
+            )}
             {/* ★★ R042 G — 해설은 자기 자리(최대 4줄) 안에서만: 줄바꿈 → 글자 맞춤(75%) → "…" */}
             {resolution.explanation && <ExplainText text={resolution.explanation} />}
           </div>
