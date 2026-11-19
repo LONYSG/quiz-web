@@ -1,0 +1,41 @@
+G105 — 해설에 이야기 옮기기(gpt 묶음 만들기 · 잇기 55 싣기) + 상품 그림 바꾸기 시범 30 · 2026-11-19 15:40~16:45 KST · GEN · 두 DB · DB 쓰기(질문 칸만 · 잇기 55) · 하위 에이전트 2(C 만)
+
+0 ★ 맨 위 — C 상품 그림 시범 30
+ · 30 중 같은 상품 23 · 같은 종류 6 · 못 찾음 1 (쪽지 ai-out/G105-그림.html — 지금 그림 / 찾은 사진 나란히 · 라이선스 · 출처 링크)
+    · 같은 상품 23 가운데 8 은 "같은 상표 · 다른 용량/세대/색"(맥콜 캔 · 모카골드 일반 · 미국 스팸 · 미국 리스테린 · 발뮤다 2015년형 · 몬스터 330ml · 토블론 150g · S26 라벤더) — 알아보기에는 충분, "그 용량 그 값" 그림으로는 조금 어긋남 → 엄하게 세면 15
+    · 같은 종류 6: 바세린 립(일반 립밤) · 록시땅(일반 튜브) · 다이슨(1세대) · 로보락(다른 모델) · 루이비통(기본 스피디 · 330x600 작음) · 빅토리녹스(은색 알록스 — 빨간 클래식 후보는 429 로 못 받음 · 다시 볼 만함)
+    · 못 찾음 1: 삼다수(공용에 공장 사진뿐 · 공공누리 1유형은 받는 목록 밖)
+ · 한 장에 든 것(어림): 하위 에이전트 토큰 26.5만 / 30 = 한 장 약 9천 · 에이전트 시간 한 장 약 1분(둘 나란히 → 30장 20분)
+ · 289장 전부 하면(어림): 토큰 약 260만 · 에이전트 둘 나란히 2시간 반 안팎
+ · GEN 의 의견(GEN 판단 · 되돌리기 쉽다):
+    ① 할 만하다 — 다만 이번 30 은 종류를 고루 고르느라 이름난 상품이 많았다. 나머지 259 에는 덜 알려진 것(피죤 건조기 시트 · 시크릿쥬쥬 캔디 · 레몬 주방세제 …)이 많아 같은 상품 비율은 50~60% 로 떨어질 것으로 본다.
+    ② 권하는 길 = "찾은 것만 바꾸고 나머지는 그림 없이" — 같은 종류(일반 사진)는 그 상품을 알아보는 데 거의 도움이 안 된다(6 중 4 가 "도움 적음"). 그림 없이 이름 · 용량만 보여 주는 편이 헷갈리지 않는다.
+    ③ 찬종이 직접 찍을 만한 것(집 · 편의점에 흔하고 공용에 없음): 삼다수 · 바세린 립 테라피 · 록시땅 핸드크림 — 나머지 259 중에서도 생필품 · 편의점 상품은 이쪽이 빠르다.
+ · 주의: S26 사진 화면에 걸음 수 숫자(7,185 · 55 · 650)가 보인다 — 값이 아니라 그대로 두었지만, 실을 때는 화면 숫자도 보도록. 911 은 번호판이 보인다(가려도 됨).
+ · DB 그림은 바꾸지 않았다. 찾은 사진 30장(3.9MB)은 assets/minigame/price-pilot/ (+ 지금 그림 before/ 30장) — git 에 없다(.gitignore assets/minigame/*/).
+
+1 A. gpt 묶음 만들기 (scripts/g105-build.mjs · DB 읽기만)
+ · 형태-06 ~ 형태-10 = add 50 · 50 · 50 · 50 · 21 (= 221) · 형태-11 = move 8 · 합 229장 → web-desk/tone/보낼것/형태-06~.txt
+ · add: _swap.json 227 + 찬종이 짚은 두 쌍(#5770←#5077 · #3453←#2152 — 이미 _swap 에 있었는지와 상관없이 한 번만) → 뺀 것 6(on 카드가 지금 꺼짐) · facts 빈 카드 96(재료에 extra 없음)
+ · facts = 그 카드 재료의 extra(재료 판정 drop 뺌 · fix 면 판정 글) 5개까지 · move 는 확인된 재료 사실(맞음 · 상식) + extra · core = 재료 core(판정 core_fix 우선)
+ · move 8 은 모두 활성 — 뺀 것 0
+ · gpt 묶음(형태-06~11)은 이 라운드가 끝날 때 아직 받은것에 없다 → ★ gpt 묶음 6개 남음(B 의 add · move 싣기는 다음 "gen.md 작업해" 에)
+
+2 B. 싣기 — 이번에는 형태-20(잇기 55 · job rejoin)만 (gpt 가 먼저 끝내 둠 · done)
+ · 게이트 scripts/g105-gate.mjs(add · move · rejoin 셋 다) — rejoin = G102 형태 게이트(사실 낱말 · 숫자 · 따옴표 · 영문 같음 · 정답 · ~까요? · 200자 · formHit) + "~며 + 명사" 남음
+    · "~며 + 명사" 식: 마지막 문장의 "~며( ,)" 뒤 끝 낱말 앞까지 꾸밈꼴 동사(…는 · …ㄴ · …던)가 없으면 걸림. 처음에 "~며 가 남으면 다 걸림"으로 했다가 3장(#3577 겹치며 이름이 붙은 · #5799 불리며 … 설명한 · #6933 준비하며 출발한)이 바른 문장인데 걸려 지시서 문구대로 되돌림(GEN 판단)
+ · 받은 55 = 고침 55(로 받기 53 · 차례 바꾸기 1 · 두 문장 1) · 게이트 걸림 0
+ · 실음: quizweb 55칸 · quizweb_dev 33칸(--skip-diff · 건너뜀 22 = dev 질문이 실과 다름 18 · dev 에서 꺼짐 4 → audit/g105-skipped-quizweb_dev.json)
+ · 백업 건너뜀(6시간 안 덤프 있음: quizweb-20261119-151552 · quizweb_dev-20261119-140006) · 열린 판 0(두 DB)
+ · hint-check-active(실): 힌트 7,367 · 막힘 0
+ · 고치기 전 / 고친 문장 = ai-out/G105-해설.md 끝 절(20줄마다 제목) · 계획 사본 data/pipeline/tone/g105-apply-rejoin.json
+ · 되돌리기 node scripts/tone-apply.mjs --round g105 [--db quizweb_dev] --undo (undo 파일은 덧붙여 쓴다 — B 의 add · move 도 같은 파일에 쌓인다)
+
+3 다음 "gen.md 작업해" 에서 할 것 (B 나머지)
+ · node web-desk/tone/_status.mjs → 받은것/형태-06~11 이 done 인지
+ · node scripts/g105-gate.mjs --files 06,07,08,09,10,11 → 새 한글 명사 목록(plan.warn.newWords)을 읽고 이름이면 --hold → 다시 돌림
+ · cp data/pipeline/tone/g105-apply.json data/pipeline/tone/g105-apply-shape.json → tone-apply --round g105 (실 → dev --skip-diff) → node scripts/g105-md.mjs → hint-check-active
+
+4 새 도구
+ · scripts/g105-build.mjs(A) · scripts/g105-gate.mjs(B 게이트 → g105-apply.json · tone-apply 가 싣는다) · scripts/g105-md.mjs(G105-해설.md) · scripts/g105-pilot-page.mjs(C 쪽지 · 판정을 g105-image-pilot.json 에 합침)
+ · 데이터: data/pipeline/audit/g105-image-pilot.json(30 · 판정 found) · g105-raw/pilot-A.json · pilot-B.json · g105-build.json
