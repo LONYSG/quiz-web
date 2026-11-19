@@ -13,6 +13,7 @@
 import { createHash } from 'node:crypto';
 import { Router, type Request } from 'express';
 import { config } from '../config.js';
+import { clientIp as realIp } from '../security/http.js';
 import { REPORT_RATE, parseReportInput, reportRefs, type ReportInput } from '@quiz/shared';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { query } from '../db/pool.js';
@@ -42,11 +43,9 @@ const ANON_MAX = 3;
 export function ipHash(ip: string, secret: string): string {
   return createHash('sha256').update(ip + secret.slice(0, 8)).digest('hex').slice(0, 16);
 }
+/** ★ R107 (D-365) — 진짜 IP 는 security/http 한 곳(옛 함수는 바깥에서 보낸 CF-Connecting-IP · X-Forwarded-For 를 그대로 믿었다) */
 function clientIp(req: Request): string {
-  const cf = req.headers['cf-connecting-ip'];
-  const xf = req.headers['x-forwarded-for'];
-  const first = (Array.isArray(cf) ? cf[0] : cf) ?? (Array.isArray(xf) ? xf[0] : xf)?.split(',')[0];
-  return (first ?? req.socket.remoteAddress ?? '').trim();
+  return realIp(req).ip;
 }
 
 export interface ReportContext {

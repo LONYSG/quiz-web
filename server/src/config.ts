@@ -55,6 +55,50 @@ function positiveInt(name: string, fallback: number): number {
 
 export const config = {
   port: Number(process.env.PORT ?? 3000),
+  /**
+   * ★★ R107 (D-364) — 듣는 주소. 기본 127.0.0.1 = 이 PC 안에서만(터널 cloudflared 도 루프백으로 들어온다).
+   *   같은 공유기의 다른 기기에서 직접 붙는 길을 막는다. 꼭 열어야 하면 HOST=0.0.0.0.
+   */
+  host: process.env.HOST || '127.0.0.1',
+  /**
+   * ★ R107 — 고정 주소(Cloudflare 이름 붙인 터널)의 호스트 이름(예: quizdojang.com). 없으면 임시 주소(trycloudflare)를 쓴다.
+   *   서버는 소켓 Origin 허용 목록에만 쓴다(터널 실행기 scripts/dev-tunnel.mjs 가 TUNNEL_NAME 과 함께 읽는다).
+   */
+  publicHostname: (process.env.PUBLIC_HOSTNAME ?? '').trim().toLowerCase() || null,
+  /**
+   * ★★ R107 (D-365) — 공개 대비 한도. 전부 메모리에서 센다(DB 를 주기적으로 건드리지 않는다 — docs/02 3장).
+   *   ★ IP 기준 한도는 넉넉하게(한 집 · 회사 · PC방이 같은 IP) · 계정 기준을 먼저. 값의 정본 = docs/21-SECURITY.md
+   *   ★ "이 PC 자신"(루프백 + CF-Connecting-IP 없음 — 봇 · ui-check · 찬종이 localhost 로)은 IP 기준 한도 · 방 만들기 한도에서 뺀다.
+   *     터널로 들어온 요청은 cloudflared 가 늘 CF-Connecting-IP 를 붙이므로 여기에 걸리지 않는다. 검사에서 끄려면 SEC_LOCAL_EXEMPT=0.
+   */
+  security: {
+    localExempt: process.env.SEC_LOCAL_EXEMPT !== '0',
+    /** 로그인 실패 — 아이디마다 n회 / 창 → 잠금 */
+    loginFailPerId: positiveInt('SEC_LOGIN_FAIL_PER_ID', 5),
+    loginFailWindowMs: positiveInt('SEC_LOGIN_FAIL_WINDOW_MS', 10 * 60_000),
+    loginLockMs: positiveInt('SEC_LOGIN_LOCK_MS', 15 * 60_000),
+    /** 로그인 실패 — IP 마다 n회 / 같은 창 */
+    loginFailPerIp: positiveInt('SEC_LOGIN_FAIL_PER_IP', 30),
+    /** 가입 — IP 마다 시간 · 하루 */
+    signupPerIpHour: positiveInt('SEC_SIGNUP_PER_IP_HOUR', 5),
+    signupPerIpDay: positiveInt('SEC_SIGNUP_PER_IP_DAY', 20),
+    /** 비밀번호 계산(argon2) 동시 실행 · 대기 줄 */
+    hashConcurrency: positiveInt('SEC_HASH_CONCURRENCY', 2),
+    hashQueue: positiveInt('SEC_HASH_QUEUE', 20),
+    /** 소켓 동시 연결 — IP · 계정 */
+    socketPerIp: positiveInt('SEC_SOCKET_PER_IP', 40),
+    socketPerAccount: positiveInt('SEC_SOCKET_PER_ACCOUNT', 8),
+    /** 로그인 안 된 소켓은 이 시간 안에 끊는다 */
+    anonSocketMs: positiveInt('SEC_ANON_SOCKET_MS', 10_000),
+    /** 소켓당 이벤트 — 초당 n개(꾸준히) · 한꺼번에 최대 burst 개. 넘으면 그 소켓만 끊는다 */
+    socketEventsPerSec: positiveInt('SEC_SOCKET_EVENTS_PER_SEC', 30),
+    socketEventBurst: positiveInt('SEC_SOCKET_EVENT_BURST', 90),
+    /** 소켓 메시지 하나의 최대 바이트(가장 큰 정상 메시지 = 그림 조각 · 원 그리기 점 — 실측 docs/21) */
+    socketMaxBytes: positiveInt('SEC_SOCKET_MAX_BYTES', 64 * 1024),
+    /** 방 만들기 — 계정마다 n개 / 창 */
+    roomCreatePerAccount: positiveInt('SEC_ROOM_CREATE_PER_ACCOUNT', 5),
+    roomCreateWindowMs: positiveInt('SEC_ROOM_CREATE_WINDOW_MS', 10 * 60_000),
+  },
   nodeEnv: process.env.NODE_ENV ?? 'development',
   get databaseUrl(): string {
     return required('DATABASE_URL');

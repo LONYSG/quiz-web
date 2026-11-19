@@ -24,6 +24,8 @@ import { minigameRouter } from './http/minigameRoutes.js';
 import { shopRouter } from './http/shopRoutes.js';
 import { authRouter } from './http/authRoutes.js';
 import { registerSocketHandlers } from './socket/index.js';
+import { clientIp, errorHandler, securityHeaders } from './security/http.js';
+import { applySocketSecurity, socketServerOptions } from './security/socket.js';
 import { startTick, stopTick } from './tick.js';
 import { activeCount, getRoom, roomCount } from './rooms/registry.js';
 
@@ -57,6 +59,9 @@ async function main(): Promise<void> {
   }
 
   const app = express();
+  // ★★ R107 (D-366) — 보안 헤더(모든 응답) · Express 이름 숨김
+  app.disable('x-powered-by');
+  app.use(securityHeaders);
   app.use(express.json({ limit: '32kb' }));
 
   // ── 헬스체크. ★ DB에 접근하지 않는다 (docs/02-ARCHITECTURE.md 3장)
@@ -91,6 +96,11 @@ async function main(): Promise<void> {
    */
   if (!config.isProduction) {
     app.get('/debug/room/:id', (req, res) => {
+      // ★★ R107 (D-366) — 실 서버도 .env 가 NODE_ENV=development 라 이 경로가 터널 밖에 열려 있었다 → 이 PC 자신(루프백 · CF 헤더 없음)만
+      if (!clientIp(req).local) {
+        res.status(404).json({ ok: false });
+        return;
+      }
       const room = getRoom(req.params.id);
       if (!room) {
         res.status(404).json({ exists: false });
@@ -159,26 +169,34 @@ async function main(): Promise<void> {
       }
     });
   });
+  // ★ R107 (D-366) — 마지막 오류 처리(스택 · 내부 경로를 응답에 내지 않는다)
+  app.use(errorHandler);
 
   const httpServer = createServer(app);
 
   const io = new SocketIOServer(httpServer, {
+    // ★★ R107 (D-365) — 메시지 크기 · 연결 시간 · Origin 검사
+    ...socketServerOptions,
     // Q-51 확정. 네트워크가 조용히 끊겼을 때 최악 약 25초 안에 감지된다.
     // 기본값(25/20초, 최악 45초)보다 빠르고, 너무 짧게 잡았을 때의 모바일 오탐도 피한다.
     pingInterval: 15_000,
     pingTimeout: 10_000,
   });
 
+  // ★ R107 — 연결 수 · 이벤트 속도(세션 미들웨어 · 핸들러보다 먼저)
+  applySocketSecurity(io);
   registerSocketHandlers(io);
 
   // ── 전역 tick.
   //   ★ 방마다 타이머를 두지 않는다. Phase 3~5의 게임 타이머가 전부 여기 들어온다.
   startTick();
 
-  httpServer.listen(config.port, () => {
+  // ★★ R107 (D-364) — 기본 127.0.0.1(이 PC 안에서만). 터널 cloudflared 는 루프백으로 붙는다 · HOST 로 바꾼다
+  httpServer.listen(config.port, config.host, () => {
     console.log('');
     console.log('  ┌──────────────────────────────────────────────┐');
     console.log(`  │  퀴즈 서버 기동  http://localhost:${String(config.port).padEnd(5)}      │`);
+    console.log(`  듣는 주소 ${config.host}:${config.port}${config.host === '127.0.0.1' ? ' (이 PC 안에서만 — 밖은 터널로)' : ''}`);
     console.log('  └──────────────────────────────────────────────┘');
     console.log('  Phase 2 (로비 설정 / 경험률 / 카운트다운).  문제 출제는 Phase 3 이후.');
     console.log('  Socket.IO  pingInterval=15000ms pingTimeout=10000ms');

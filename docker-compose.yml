@@ -8,13 +8,16 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: quiz
-      POSTGRES_PASSWORD: quizlocal
+      # ★ R107 (D-367) — 값은 .env 의 POSTGRES_PASSWORD(없으면 옛 값). ★ 이 값은 **볼륨을 처음 만들 때만** 쓰인다 —
+      #   지금 DB 의 비밀번호를 바꾸려면 docs/11-DEPLOY.md "DB 비밀번호 바꾸기" 순서(ALTER USER → .env 두 줄)
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-quizlocal}
       POSTGRES_DB: quizweb
       # 한국어 정렬·비교를 위한 로케일 설정
       LANG: ko_KR.utf8
       POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    # ★ R107 (D-367) — 이 PC 안에서만(127.0.0.1). 옛 "5434:5432" 는 모든 주소에 열려 같은 공유기의 다른 기기도 붙을 수 있었다
     ports:
-      - "5434:5432"
+      - "127.0.0.1:5434:5432"
     volumes:
       - quiz-db-data:/var/lib/postgresql/data
     healthcheck:

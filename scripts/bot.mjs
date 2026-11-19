@@ -150,6 +150,21 @@ const SCENARIO_ENV = {
   rate: { RESOLVED_WAIT_MS: '2500' },
   // ★ R069 — 등급 비율 실측(20문항 판 다섯 · 방장 넘기기)
   levelmix: { RESOLVED_WAIT_MS: '200' },
+  // ★★★ R107 — 공격 묶음: 한도를 작게 · 이 PC 자신도 세고(SEC_LOCAL_EXEMPT=0) · LAN 주소로도 듣는다(가짜 IP 헤더 단계)
+  attack: {
+    RESOLVED_WAIT_MS: '200',
+    HOST: '0.0.0.0',
+    SEC_LOCAL_EXEMPT: '0',
+    SEC_LOGIN_FAIL_PER_ID: '5',
+    SEC_LOGIN_LOCK_MS: '4000',
+    SEC_LOGIN_FAIL_PER_IP: '12',
+    SEC_SIGNUP_PER_IP_HOUR: '3',
+    SEC_SIGNUP_PER_IP_DAY: '6',
+    SEC_SOCKET_PER_IP: '10',
+    SEC_SOCKET_PER_ACCOUNT: '3',
+    SEC_ANON_SOCKET_MS: '1500',
+    SEC_ROOM_CREATE_PER_ACCOUNT: '3',
+  },
 };
 const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -242,8 +257,10 @@ const log = (...a) => console.log(`[${stamp()}]`, ...a);
  * ★ 쿠키를 직접 관리한다. Node 의 fetch 는 쿠키 저장소가 없다.
  */
 class Bot {
-  constructor(name) {
+  constructor(name, { ip = null } = {}) {
     this.name = name;
+    // ★ R107 — 터널 뒤 사람인 척(CF-Connecting-IP · 서버는 루프백에서 온 것만 믿는다) — attack 이 IP 별로 나눈다
+    this.ip = ip;
     this.loginId = `${PREFIX}_${name}`.toLowerCase();
     this.password = 'bot1234';
     this.nickname = `${PREFIX}-${name}`;
@@ -259,6 +276,7 @@ class Bot {
       headers: {
         'content-type': 'application/json',
         ...(this.cookie ? { cookie: this.cookie } : {}),
+        ...(this.ip ? { 'cf-connecting-ip': this.ip } : {}),
       },
       body: JSON.stringify(body ?? {}),
     });
@@ -292,7 +310,7 @@ class Bot {
     return new Promise((resolve, reject) => {
       this.socket = io(BASE, {
         transports: ['websocket'],
-        extraHeaders: { cookie: this.cookie ?? '' },
+        extraHeaders: { cookie: this.cookie ?? '', ...(this.ip ? { 'cf-connecting-ip': this.ip } : {}) },
         reconnection: false,
       });
       const s = this.socket;
@@ -10005,6 +10023,234 @@ async function scenarioSong() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R107 attack — 공개 대비 공격 묶음 (D-365)
+//   옆 방(다른 IP 의 두 사람)이 판을 하는 동안 공격을 하나씩 걸고, 공격마다 ① 막혔나 ② 그동안 옆 방 판정 지연이 정상인가를 본다.
+//   ★ 자기 서버(PORT 3401 권장 · SCENARIO_ENV.attack — 한도를 작게 · SEC_LOCAL_EXEMPT=0 · HOST=0.0.0.0)
+//   ★ 가짜 IP 는 CF-Connecting-IP 로(루프백에서 오면 서버가 믿는다 = 터널 뒤 사람) · "헤더로 남인 척" 은 루프백이 아닌 주소(이 PC 의 LAN IP)로 붙어 확인한다
+//   --before : 고치기 전 서버(한도 없음)에 대고 숫자만 잰다(단정 실패는 예상 — 보고서의 "전" 칸)
+// -----------------------------------------------------------------------------
+async function scenarioAttack() {
+  const BEFORE = args.includes('--before');
+  log(`시나리오 attack — R107 공격 묶음${BEFORE ? ' (★ --before: 고치기 전 서버 · 숫자만)' : ''}`);
+  await clearExperiences(PREFIX);
+  const stamp = Date.now().toString(36).slice(-5);
+  const ATK = (n) => `203.0.113.${n}`;
+  const rawPost = async (pathname, body, { ip = null, base = BASE, raw = null } = {}) => {
+    const res = await fetch(`${base}${pathname}`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', ...(ip ? { 'cf-connecting-ip': ip } : {}) },
+      body: raw ?? JSON.stringify(body ?? {}),
+    });
+    const text = await res.text();
+    let json = {};
+    try { json = JSON.parse(text); } catch { /* 글 */ }
+    return { status: res.status, json, text };
+  };
+  const tally = (list) => list.reduce((m, r) => ((m[r.status] = (m[r.status] ?? 0) + 1), m), {});
+
+  // ── 옆 방: 다른 IP 의 두 사람이 판을 한다
+  const host = new Bot('01', { ip: '198.51.100.1' });
+  const mate = new Bot('02', { ip: '198.51.100.2' });
+  await host.auth();
+  await mate.auth();
+  await host.connect();
+  host.createRoom('R107 옆 방');
+  await host.waitFor(() => host.snapshot !== null, 6000, '방 생성');
+  await mate.connect();
+  mate.join(host.snapshot.room.id);
+  await mate.waitFor(() => mate.snapshot !== null, 6000, '입장');
+  await startGame(host, [mate], 20);
+  let qi = 1;
+  /** 옆 방 정답 → 판정까지(ms) */
+  async function judge(label) {
+    const q = await host.waitQuestion(qi, 15000);
+    const answers = await answersForText(q.text);
+    const from = host.mark();
+    const t0 = Date.now();
+    host.chat(answers[0], q.epoch);
+    await host.waitFor(() => host.since(from, 'question.resolved').length > 0, 15000, `${label} 판정`);
+    const ms = host.since(from, 'question.resolved')[0].at - t0;
+    qi += 1;
+    return ms;
+  }
+  const lat = {};
+  lat.base = [await judge('기준1'), await judge('기준2')];
+  log(`  옆 방 판정 지연 기준선: ${lat.base.join(', ')}ms`);
+  /** 공격을 돌리는 동안 옆 방 판정을 한 번 잰다 */
+  async function during(name, attack) {
+    const p = attack();
+    await sleep(150);
+    const ms = await judge(name);
+    const r = await p;
+    lat[name] = ms;
+    log(`  옆 방 판정 지연(${name} 중): ${ms}ms`);
+    return r;
+  }
+  const latOk = (name) => expectTrue(`★ ${name} 중에도 옆 방 판정 정상(500ms 안)`, lat[name] < 500, `${lat[name]}ms · 기준선 ${lat.base.join('/')}ms`);
+
+  // ── 1. 로그인 무차별(한 아이디) — 있는 계정 · 틀린 비밀번호 40개 동시
+  log('\n[1] 로그인 무차별 — 한 아이디에 틀린 비밀번호 40개 동시');
+  const victim = `${PREFIX}_atkv${stamp}`.toLowerCase();
+  expect('피해자 계정 가입', (await rawPost('/api/auth/signup', { loginId: victim, password: 'rightpw1', nickname: `피${stamp}` }, { ip: ATK(90) })).status, 200);
+  const brute = await during('로그인 무차별', () =>
+    Promise.all(Array.from({ length: 40 }, (_, i) => rawPost('/api/auth/login', { loginId: victim, password: `wrong${i}` }, { ip: ATK(1) }))),
+  );
+  log(`  응답: ${JSON.stringify(tally(brute))}`);
+  const right = await rawPost('/api/auth/login', { loginId: victim, password: 'rightpw1' }, { ip: ATK(91) });
+  log(`  잠긴 동안 맞는 비밀번호(다른 IP): ${right.status} ${right.json.message ?? ''}`);
+  if (!BEFORE) {
+    expectTrue('★ 틀린 비밀번호는 5번까지만 계산된다(나머지는 429 · 503)', (tally(brute)[401] ?? 0) <= 5 + 2, JSON.stringify(tally(brute)));
+    expect('★ 잠긴 동안 맞는 비밀번호도 거부(429)', right.status, 429);
+    expectTrue('잠금 안내 문구', /잠시 막았어요/.test(right.json.message ?? ''), right.json.message);
+    expectTrue('응답에 스택 · 경로 없음', !brute.some((r) => /at |\.ts|node_modules|C:/.test(r.text)), '');
+    latOk('로그인 무차별');
+    await sleep(Number(SCENARIO_ENV.attack.SEC_LOGIN_LOCK_MS) + 300);
+    expect('잠금이 풀리면 맞는 비밀번호 200', (await rawPost('/api/auth/login', { loginId: victim, password: 'rightpw1' }, { ip: ATK(91) })).status, 200);
+  }
+
+  // ── 2. 로그인 IP 한도 — 한 IP 가 여러 아이디로(아이디 잠금을 피하는 꼴)
+  log('\n[2] 로그인 — 한 IP 가 아이디를 바꿔 가며 20번 실패');
+  const spread = [];
+  for (let i = 0; i < 20; i += 1) spread.push(await rawPost('/api/auth/login', { loginId: `${PREFIX}_nobody${i}`, password: 'x1234' }, { ip: ATK(2) }));
+  log(`  응답: ${JSON.stringify(tally(spread))}`);
+  const otherIp = await rawPost('/api/auth/login', { loginId: `${PREFIX}_nobody0`, password: 'x1234' }, { ip: ATK(3) });
+  if (!BEFORE) {
+    expect('★ IP 한도(12) 뒤는 429', tally(spread)[429] ?? 0, 20 - Number(SCENARIO_ENV.attack.SEC_LOGIN_FAIL_PER_IP));
+    expect('다른 IP 는 막히지 않는다(401)', otherIp.status, 401);
+  }
+
+  // ── 3. 가입 폭주
+  log('\n[3] 가입 폭주 — 한 IP 에서 10개');
+  const signups = [];
+  for (let i = 0; i < 10; i += 1) signups.push(await rawPost('/api/auth/signup', { loginId: `${PREFIX}_sf${stamp}${i}`.toLowerCase(), password: 'pw123456', nickname: `폭${stamp}${i}` }, { ip: ATK(4) }));
+  log(`  응답: ${JSON.stringify(tally(signups))}`);
+  if (!BEFORE) {
+    expect('★ 시간당 3개 뒤는 429', tally(signups)[429] ?? 0, 10 - Number(SCENARIO_ENV.attack.SEC_SIGNUP_PER_IP_HOUR));
+    expect('다른 IP 는 가입된다', (await rawPost('/api/auth/signup', { loginId: `${PREFIX}_so${stamp}`.toLowerCase(), password: 'pw123456', nickname: `딴${stamp}` }, { ip: ATK(5) })).status, 200);
+  }
+
+  // ── 4. 소켓 연결 폭주 — 로그인 없이 30개
+  log('\n[4] 소켓 연결 폭주 — 한 IP 에서 로그인 없이 30개');
+  const socks = [];
+  const flood = await during('소켓 연결 폭주', async () => {
+    for (let i = 0; i < 30; i += 1) {
+      const s = io(BASE, { transports: ['websocket'], extraHeaders: { 'cf-connecting-ip': ATK(6) }, reconnection: false });
+      socks.push(s);
+    }
+    await sleep(800);
+    return socks.filter((s) => s.connected).length;
+  });
+  await sleep(Number(SCENARIO_ENV.attack.SEC_ANON_SOCKET_MS) + 800);
+  const stillOpen = socks.filter((s) => s.connected).length;
+  log(`  0.8초 뒤 연결 유지 ${flood}/30 · 로그인 없는 소켓 시간 뒤 ${stillOpen}/30`);
+  for (const s of socks) s.close();
+  if (!BEFORE) {
+    expectTrue('★ IP 당 동시 연결 한도(10) 넘는 것은 끊긴다', flood <= Number(SCENARIO_ENV.attack.SEC_SOCKET_PER_IP), `${flood}`);
+    expect('★ 로그인 없는 소켓은 정해진 시간 뒤 끊긴다', stillOpen, 0);
+    latOk('소켓 연결 폭주');
+  }
+
+  // ── 5. 이벤트 폭주 — 로그인한 소켓이 1초에 600개
+  log('\n[5] 이벤트 폭주 — 로그인한 공격자 소켓이 이벤트 600개');
+  const atk = new Bot(`atk${stamp}`, { ip: ATK(7) });
+  await atk.auth();
+  await atk.connect();
+  await during('이벤트 폭주', async () => {
+    for (let i = 0; i < 600; i += 1) atk.socket.emit('time.ping', { t0: Date.now() });
+    await sleep(500);
+  });
+  log(`  공격자 소켓 연결 ${atk.socket.connected ? '유지' : '끊김'}`);
+  if (!BEFORE) {
+    expect('★ 폭주한 소켓만 끊긴다', atk.socket.connected, false);
+    expect('옆 방 사람은 그대로', [host.socket.connected, mate.socket.connected], [true, true]);
+    latOk('이벤트 폭주');
+  }
+
+  // ── 6. 큰 메시지 — 소켓 200KB · HTTP 200KB
+  log('\n[6] 큰 메시지 — 소켓 200KB 채팅 · HTTP 200KB 본문');
+  const big = new Bot(`big${stamp}`, { ip: ATK(8) });
+  await big.auth();
+  await big.connect();
+  big.socket.emit('chat.send', { text: 'ㄱ'.repeat(200_000), epoch: null });
+  await sleep(700);
+  const bigHttp = await rawPost('/api/auth/login', null, { ip: ATK(8), raw: JSON.stringify({ loginId: 'x', password: 'y'.repeat(200_000) }) });
+  log(`  소켓 ${big.socket.connected ? '유지' : '끊김'} · HTTP ${bigHttp.status} ${bigHttp.text.slice(0, 80)}`);
+  if (!BEFORE) {
+    expect('★ 한도를 넘는 소켓 메시지 → 그 소켓 끊김', big.socket.connected, false);
+    expect('★ 큰 HTTP 본문 → 413', bigHttp.status, 413);
+    expectTrue('413 응답에 스택 · 경로 없음', !/at |node_modules|C:|raw-body/.test(bigHttp.text), bigHttp.text.slice(0, 120));
+  }
+
+  // ── 7. Origin · 방 만들기 · 헤더
+  log('\n[7] 남의 사이트 Origin · 방 만들기 폭주 · 보안 헤더');
+  const evil = await new Promise((resolve) => {
+    const s = io(BASE, { transports: ['websocket'], extraHeaders: { origin: 'https://evil.example', 'cf-connecting-ip': ATK(9) }, reconnection: false });
+    s.on('connect', () => { s.close(); resolve('connected'); });
+    s.on('connect_error', (e) => { s.close(); resolve(`refused(${e.message})`); });
+    setTimeout(() => resolve('timeout'), 4000);
+  });
+  log(`  evil.example Origin → ${evil}`);
+  const rc = new Bot(`rc${stamp}`, { ip: ATK(10) });
+  await rc.auth();
+  await rc.connect();
+  const created = [];
+  for (let i = 0; i < 5; i += 1) {
+    const from = rc.mark();
+    rc.createRoom(`만들기${i}`);
+    await sleep(400);
+    const err = rc.since(from, 'error')[0];
+    created.push(err ? err.code : 'ok');
+    if (!err) {
+      rc.leave();
+      await sleep(300);
+    }
+  }
+  log(`  방 만들기 5번: ${created.join(', ')}`);
+  const page = await fetch(`${BASE}/`);
+  const hdr = (n) => page.headers.get(n) ?? '';
+  log(`  헤더: nosniff=${hdr('x-content-type-options')} · CSP frame-ancestors=${/frame-ancestors 'none'/.test(hdr('content-security-policy'))} · powered-by=${hdr('x-powered-by') || '없음'}`);
+  if (!BEFORE) {
+    expectTrue('★ 남의 사이트 Origin 소켓 거부', evil.startsWith('refused'), evil);
+    expect('★ 방 만들기 계정당 3개 뒤 RATE_LIMITED', created, ['ok', 'ok', 'ok', 'RATE_LIMITED', 'RATE_LIMITED']);
+    expect('보안 헤더 nosniff', hdr('x-content-type-options'), 'nosniff');
+    expectTrue('CSP frame-ancestors none', /frame-ancestors 'none'/.test(hdr('content-security-policy')), '');
+    expect('X-Powered-By 숨김', hdr('x-powered-by'), '');
+  }
+
+  // ── 8. 가짜 IP 헤더 — 루프백이 아닌 주소(이 PC 의 LAN IP)로 붙어 CF-Connecting-IP 를 바꿔 가며 실패
+  log('\n[8] 가짜 IP 헤더 — 공유기 안 다른 기기인 척(LAN 주소로) 헤더를 바꿔 가며 로그인 실패');
+  const { networkInterfaces } = await import('node:os');
+  const lan = Object.values(networkInterfaces()).flat().find((n) => n && n.family === 'IPv4' && !n.internal)?.address;
+  if (!lan) {
+    log('  ★ LAN IPv4 없음 — 이 단계는 못 돌렸다(통과 아님)');
+    expectTrue('가짜 IP 헤더 단계 실행', false, 'LAN 주소 없음');
+  } else {
+    const lanBase = `http://${lan}:${new URL(BASE).port}`;
+    const spoof = [];
+    for (let i = 0; i < 16; i += 1) {
+      try {
+        spoof.push(await rawPost('/api/auth/login', { loginId: `${PREFIX}_spoof${i}`, password: 'x1234' }, { ip: `192.0.2.${i + 1}`, base: lanBase }));
+      } catch (e) {
+        spoof.push({ status: `연결 안 됨(${e.cause?.code ?? e.message})`, text: '' });
+      }
+    }
+    log(`  ${lanBase} 응답: ${JSON.stringify(tally(spoof))}`);
+    if (!BEFORE) {
+      expect('★ 헤더를 바꿔도 LAN 주소 하나로 세어 12번 뒤 429', tally(spoof)[429] ?? 0, 16 - Number(SCENARIO_ENV.attack.SEC_LOGIN_FAIL_PER_IP));
+    }
+  }
+
+  const avgBase = lat.base.reduce((a, b) => a + b, 0) / lat.base.length;
+  log(`\n  ★ 옆 방 판정 지연 요약: 기준선 평균 ${Math.round(avgBase)}ms · ${Object.entries(lat).filter(([k]) => k !== 'base').map(([k, v]) => `${k} ${v}ms`).join(' · ')}`);
+  host.disconnect();
+  mate.disconnect();
+  atk.disconnect();
+  big.disconnect();
+  rc.disconnect();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   duplicate: scenarioDuplicate,
@@ -10105,6 +10351,8 @@ const SCENARIOS = {
   team: scenarioTeam,
   // ★ Q-84 (R015)
   flood: scenarioFlood,
+  // ★★★ R107 — 공개 대비 공격 묶음
+  attack: scenarioAttack,
 };
 
 const run = SCENARIOS[scenario];

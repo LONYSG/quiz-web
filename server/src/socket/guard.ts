@@ -54,6 +54,7 @@ export type ErrorCode =
   | 'NICKNAME_CHANGE_REQUIRED'
   | 'BANNED'
   | 'PASSWORD_CHANGE_REQUIRED'
+  | 'RATE_LIMITED'
   | 'INTERNAL';
 
 const ERROR_MESSAGES: Record<ErrorCode, string> = {
@@ -76,6 +77,8 @@ const ERROR_MESSAGES: Record<ErrorCode, string> = {
   BANNED: '이 방에서 차단되어 들어갈 수 없습니다.',
   // ★ R043 — 관리자가 비밀번호를 초기화한 계정
   PASSWORD_CHANGE_REQUIRED: '새 비밀번호를 먼저 정해 주세요.',
+  // ★ R107 (D-365) — 방 만들기 등 한도
+  RATE_LIMITED: '너무 자주 했어요. 잠시 뒤 다시 해 주세요.',
   INTERNAL: '서버에서 문제가 발생했습니다.',
 };
 

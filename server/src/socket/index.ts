@@ -93,6 +93,7 @@ import {
   setDevice,
 } from '../rooms/registry.js';
 import { transferHost } from '../rooms/host.js';
+import { roomCreateLimited } from '../security/socket.js';
 import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers } from '../social/friends.js';
 
 /** ★ R043 — 방을 만드는 중인 계정 (연타 무시) */
@@ -322,6 +323,12 @@ function registerRoomHandlers(socket: Socket): void {
       // 이미 어느 방에 있으면 거절한다. 한 사람이 두 방에 동시에 있을 수 없다.
       if (getRoomOfAccount(session.accountId)) {
         sendError(s, 'ALREADY_HAS_ROOM', '이미 방에 참가한 상태입니다.');
+        return;
+      }
+      // ★★ R107 (D-365) — 방 만들기 계정마다 5개/10분(이 PC 자신은 뺀다 — 봇 · ui-check)
+      const waitMs = roomCreateLimited(s, session.accountId);
+      if (waitMs > 0) {
+        sendError(s, 'RATE_LIMITED', `방을 너무 자주 만들었어요. ${Math.max(1, Math.ceil(waitMs / 60_000))}분 뒤 다시 만들어 주세요.`);
         return;
       }
 
