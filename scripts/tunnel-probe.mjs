@@ -106,3 +106,51 @@ export async function waitOpen(target, deps, { limit = PROBE_MS, every = PROBE_E
   }
   return { ok: false, ms: now() - p0, tries, last };
 }
+
+// =============================================================================
+// ★★ R107 (D-364) — 고정 주소(이름 붙인 터널) / 임시 주소 갈래
+//   .env 에 TUNNEL_NAME · PUBLIC_HOSTNAME 이 **둘 다** 있으면 이름 붙인 터널:
+//     cloudflared tunnel --no-autoupdate --config <설정> run <이름>   (주소 = https://<PUBLIC_HOSTNAME> · 바뀌지 않는다)
+//     설정 파일 = TUNNEL_CONFIG 또는 %USERPROFILE%\.cloudflared\config.yml (저장소 밖 — 본보기 ops/cloudflared.example.yml)
+//     ★ Cloudflare 문서: run 에는 --url 이 없다 — 서버 주소는 설정 파일의 ingress(service: http://localhost:<포트>)로 정한다
+//   하나라도 없으면 지금처럼 임시 주소: cloudflared tunnel --url http://localhost:<포트> --no-autoupdate
+// =============================================================================
+
+/** 호스트 이름 꼴(https:// · 끝 / 를 떼고 소문자) — 이상하면 null */
+export function cleanHostname(v) {
+  const h = String(v ?? '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/+$/, '');
+  return /^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/.test(h) ? h : null;
+}
+
+/**
+ * @returns {{ mode: 'named', name: string, hostname: string, url: string, config: string, args: string[] }
+ *         | { mode: 'quick', url: null, args: string[], why: string | null }}
+ */
+export function tunnelPlan(env, port, home = env.USERPROFILE || env.HOME || '') {
+  const name = String(env.TUNNEL_NAME ?? '').trim();
+  const host = cleanHostname(env.PUBLIC_HOSTNAME);
+  const target = `http://localhost:${port}`;
+  const quick = (why) => ({ mode: 'quick', url: null, args: ['tunnel', '--url', target, '--no-autoupdate'], why });
+  if (!name && !env.PUBLIC_HOSTNAME) return quick(null);
+  if (!name) return quick('PUBLIC_HOSTNAME 만 있고 TUNNEL_NAME 이 없다 — 임시 주소로');
+  if (!host) return quick(`PUBLIC_HOSTNAME 이 ${env.PUBLIC_HOSTNAME ? '도메인 꼴이 아니다' : '없다'} — 임시 주소로`);
+  if (!/^[A-Za-z0-9_.-]+$/.test(name)) return quick('TUNNEL_NAME 에 쓸 수 없는 글자 — 임시 주소로');
+  const sep = home.includes('\\') ? '\\' : '/';
+  const config = String(env.TUNNEL_CONFIG ?? '').trim() || `${home}${sep}.cloudflared${sep}config.yml`;
+  return { mode: 'named', name, hostname: host, url: `https://${host}`, config, args: ['tunnel', '--no-autoupdate', '--config', config, 'run', name] };
+}
+
+/**
+ * 설정 파일 글을 읽어 맞는지 본다(고칠 것 목록 — 비면 됨). 파일 내용은 찍지 않는다(터널 ID 가 들어 있다).
+ *   ingress 에 그 호스트 이름 · service http://localhost:<포트> · 끝의 catch-all(http_status:404)
+ */
+export function checkTunnelConfig(text, { hostname, port }) {
+  if (text == null) return ['설정 파일이 없습니다 — docs/11 "도메인 연결 — 한 번만" 4단계'];
+  const problems = [];
+  if (!/^\s*tunnel\s*:/m.test(text)) problems.push('tunnel: 줄이 없다');
+  if (!/^\s*credentials-file\s*:/m.test(text)) problems.push('credentials-file: 줄이 없다');
+  if (!new RegExp(`hostname\\s*:\\s*["']?${hostname.replace(/\./g, '\\.')}["']?\\s*$`, 'm').test(text)) problems.push(`ingress 에 hostname: ${hostname} 이 없다`);
+  if (!new RegExp(`service\\s*:\\s*["']?http://(localhost|127\\.0\\.0\\.1):${port}["']?\\s*$`, 'm').test(text)) problems.push(`ingress 에 service: http://localhost:${port} 가 없다`);
+  if (!/service\s*:\s*http_status:404/.test(text)) problems.push('끝에 - service: http_status:404 (catch-all) 가 없다');
+  return problems;
+}

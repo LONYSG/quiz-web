@@ -81,3 +81,57 @@ describe('shouldOpen — 브라우저 열기 조건', () => {
     expect(shouldOpen(true, { NO_OPEN: '1' })).toBe(false);
   });
 });
+
+// ★ R107 (D-364) — 고정 주소 / 임시 주소 갈래
+import { checkTunnelConfig, cleanHostname, tunnelPlan } from './tunnel-probe.mjs';
+const B = String.fromCharCode(92); // 백슬래시(편집 도구가 망가뜨리지 않게)
+const WIN_HOME = ['C:', 'Users', 'u'].join(B);
+const WIN_CFG = [WIN_HOME, '.cloudflared', 'config.yml'].join(B);
+const WIN_ALT = ['D:', 'cf', 'q.yml'].join(B);
+
+describe('tunnelPlan — 고정 주소 갈래', () => {
+  it('둘 다 없으면 임시 주소(지금 그대로)', () => {
+    expect(tunnelPlan({}, 3000, WIN_HOME)).toEqual({ mode: 'quick', url: null, args: ['tunnel', '--url', 'http://localhost:3000', '--no-autoupdate'], why: null });
+  });
+  it('둘 다 있으면 이름 붙인 터널 · 설정은 사용자 폴더 .cloudflared', () => {
+    const p = tunnelPlan({ TUNNEL_NAME: 'quizdojang', PUBLIC_HOSTNAME: 'https://QuizDojang.com/' }, 3000, WIN_HOME);
+    expect(p).toEqual({
+      mode: 'named', name: 'quizdojang', hostname: 'quizdojang.com', url: 'https://quizdojang.com',
+      config: WIN_CFG,
+      args: ['tunnel', '--no-autoupdate', '--config', WIN_CFG, 'run', 'quizdojang'],
+    });
+  });
+  it('TUNNEL_CONFIG 로 설정 경로를 바꾼다', () => {
+    expect(tunnelPlan({ TUNNEL_NAME: 'q', PUBLIC_HOSTNAME: 'quizdojang.com', TUNNEL_CONFIG: WIN_ALT }, 3000, '/h').config).toBe(WIN_ALT);
+  });
+  it('하나만 있거나 값이 이상하면 임시 주소 + 까닭', () => {
+    expect(tunnelPlan({ PUBLIC_HOSTNAME: 'quizdojang.com' }, 3000).mode).toBe('quick');
+    expect(tunnelPlan({ TUNNEL_NAME: 'q' }, 3000).why).toMatch(/PUBLIC_HOSTNAME/);
+    expect(tunnelPlan({ TUNNEL_NAME: 'q', PUBLIC_HOSTNAME: 'not a host' }, 3000).mode).toBe('quick');
+    expect(tunnelPlan({ TUNNEL_NAME: 'q & calc', PUBLIC_HOSTNAME: 'quizdojang.com' }, 3000).mode).toBe('quick');
+  });
+  it('cleanHostname', () => {
+    expect(cleanHostname('quizdojang.com')).toBe('quizdojang.com');
+    expect(cleanHostname('localhost')).toBe(null);
+    expect(cleanHostname('a..b')).toBe(null);
+  });
+});
+
+describe('checkTunnelConfig — 설정 파일 점검', () => {
+  const good = [
+    'tunnel: 11111111-2222-3333-4444-555555555555',
+    `credentials-file: ${WIN_CFG.replace('config.yml', '11111111-2222-3333-4444-555555555555.json')}`,
+    'ingress:',
+    '  - hostname: quizdojang.com',
+    '    service: http://localhost:3000',
+    '  - service: http_status:404',
+  ].join('\n');
+  it('맞는 설정 → 고칠 것 없음', () => {
+    expect(checkTunnelConfig(good, { hostname: 'quizdojang.com', port: 3000 })).toEqual([]);
+  });
+  it('포트 · 이름 · catch-all 이 틀리면 알린다', () => {
+    expect(checkTunnelConfig(good, { hostname: 'quizdojang.com', port: 3001 })).toHaveLength(1);
+    expect(checkTunnelConfig(good.replace('  - service: http_status:404', ''), { hostname: 'quizdojang.com', port: 3000 })).toHaveLength(1);
+    expect(checkTunnelConfig(null, { hostname: 'quizdojang.com', port: 3000 })[0]).toMatch(/없습니다/);
+  });
+});

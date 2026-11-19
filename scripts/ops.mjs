@@ -21,7 +21,8 @@ import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { DEFAULT_KEEP, dbNameOf, freshBackup, freshHours } from './backup-prune.mjs';
 import { devOverrides } from './dev-env.mjs';
-import { cloudflaredPids, logPaths, portPids, tail, tunnelUrl, windowPids } from './ops-lib.mjs';
+import { cloudflaredPids, logPaths, portPids, tail, tunnelKind, tunnelUrl, windowPids } from './ops-lib.mjs';
+import { tunnelPlan } from './tunnel-probe.mjs';
 import { parseCodeChoice, playDir, readPlayJson } from './play-tree.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -203,6 +204,12 @@ async function status() {
       `${server ? '' : port.length ? ' ★ 포트는 잡혀 있는데 /healthz 무응답(죽는 중 · 멈춤 → 메뉴 3 → 1)' : ''}` +
       ` · 터널 ${tunnel ? `PID ${cf.join(',')} · 주소 ${tunnelUrl(LOGS.tunnel) ?? '(로그에 없음)'}` : '꺼짐'}`,
   );
+  // ★ R107 (D-364) — 주소: 고정/임시 한 줄(.env 의 TUNNEL_NAME · PUBLIC_HOSTNAME 둘 다 = 고정)
+  {
+    const plan = tunnelPlan(process.env, PORT);
+    const seen = tunnelUrl(LOGS.tunnel);
+    console.log(`  주소: ${plan.mode === 'named' ? `고정 ${plan.url}` : `임시(trycloudflare — 켤 때마다 바뀜)${plan.why ? ` · ${plan.why}` : ''}`}${seen ? ` · 지난 터널 로그 ${tunnelKind(seen)} ${seen}` : ''}`);
+  }
   // ★ R078 — 플레이 트리 · 개발 트리 · 개발 서버(3001)
   {
     const pj = readPlayJson();

@@ -33,6 +33,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import { copyFileSync, existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import pg from 'pg';
+import { tunnelPlan } from './tunnel-probe.mjs';
 import { ROOT, cloudflaredPids, dbName, gitHead, hm, hms, logPaths, out, portPids, pruneLogs, tail, windowPids } from './ops-lib.mjs';
 import {
   TAG_PREFIX, assertPlainPath, codeFromArg, lockHashOf, needsCi, playDir, readPlayJson, tagName, writePlayJson,
@@ -442,8 +443,12 @@ async function main() {
   // 6) 터널
   if (args.has('--no-tunnel')) return log('터널 건너뜀(--no-tunnel)');
   const cf = cloudflaredPids(PORT);
+  // ★ R107 (D-364) — .env 에 TUNNEL_NAME · PUBLIC_HOSTNAME 이 둘 다 있으면 고정 주소(dev-tunnel.mjs 가 고른다 · 이 값은 새 창이 물려받는다)
+  const plan = tunnelPlan(process.env, PORT);
+  if (plan.mode === 'named') log(`주소: 고정 ${plan.url} (터널 이름 ${plan.name} · 설정 ${plan.config})`);
+  else log(`주소: 임시(trycloudflare — 켤 때마다 바뀜)${plan.why ? ` · ${plan.why}` : ''}`);
   if (cf.length) {
-    log(`터널이 이미 떠 있습니다(PID ${cf.join(',')}) — 그 창(${TUNNEL_TITLE})의 주소를 그대로 쓰세요 (새 주소가 필요하면 메뉴 3 뒤 다시).`);
+    log(`터널이 이미 떠 있습니다(PID ${cf.join(',')}) — 그 창(${TUNNEL_TITLE})의 주소를 그대로 쓰세요${plan.mode === 'named' ? '' : ' (새 주소가 필요하면 메뉴 3 뒤 다시)'}.`);
   } else {
     log(`터널을 새 창(${TUNNEL_TITLE})에서 시작 — 밖에서 열리는 것을 확인한 뒤 주소가 크게 뜨고, 클립보드에 복사되고, 브라우저가 열립니다(보통 10~30초). 로그 ${rel(logPaths(TUNNEL_KIND).latest)}`);
     openWindow(

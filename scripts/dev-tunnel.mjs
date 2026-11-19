@@ -2,8 +2,10 @@
 // =============================================================================
 // 개발용 터널 실행기
 //
-// 게임 서버를 외부에 공개한다. Cloudflare quick tunnel(TryCloudflare)을 쓴다.
-// 계정도 도메인도 필요 없고 무료다. 대신 URL이 실행할 때마다 바뀐다.
+// 게임 서버를 외부에 공개한다.
+//   ★ R107 (D-364) — .env 에 TUNNEL_NAME · PUBLIC_HOSTNAME 이 둘 다 있으면 Cloudflare 이름 붙인 터널(고정 주소 https://<PUBLIC_HOSTNAME>).
+//     설정 파일은 저장소 밖(%USERPROFILE%\.cloudflared\config.yml · 본보기 ops/cloudflared.example.yml) · 순서 docs/11 "도메인 연결 — 한 번만".
+//   없으면 Cloudflare quick tunnel(TryCloudflare) — 계정도 도메인도 필요 없고 무료다. 대신 URL이 실행할 때마다 바뀐다.
 //
 // ★ URL이 바뀌는 것이 이 프로젝트에서는 문제가 되지 않는다.
 //   초대 링크는 서버 환경 변수가 아니라 방장 브라우저의 window.location.origin 으로
@@ -19,13 +21,35 @@
 // =============================================================================
 
 import { spawn } from 'node:child_process';
-import { REGISTER_WAIT_MS, PROBE_MS, cloudflareResolve4, probeOnce, shouldOpen, waitOpen } from './tunnel-probe.mjs';
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { REGISTER_WAIT_MS, PROBE_MS, checkTunnelConfig, cloudflareResolve4, probeOnce, shouldOpen, tunnelPlan, waitOpen } from './tunnel-probe.mjs';
+
+// ★ R107 — .env 의 TUNNEL_NAME · PUBLIC_HOSTNAME 을 읽는다(이미 환경에 있으면 그 값이 먼저)
+try {
+  process.loadEnvFile?.(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '.env'));
+} catch { /* .env 없음 — 임시 주소 */ }
 
 const PORT = process.env.PORT ?? '3000';
 const TARGET = `http://localhost:${PORT}`;
 
+// ★★ R107 (D-364) — 고정 주소(이름 붙인 터널) / 임시 주소 갈래 — 순수 로직은 tunnel-probe.mjs(tunnelPlan · checkTunnelConfig)
+let plan = tunnelPlan(process.env, PORT);
+if (plan.mode === 'named') {
+  const text = existsSync(plan.config) ? readFileSync(plan.config, 'utf8') : null;
+  const problems = checkTunnelConfig(text, { hostname: plan.hostname, port: PORT });
+  if (problems.length) {
+    console.log(`[tunnel] ★ 고정 주소 설정 파일(${plan.config})을 고쳐야 합니다 — 이번에는 임시 주소로 엽니다:`);
+    for (const p of problems) console.log(`[tunnel]   · ${p}`);
+    plan = tunnelPlan({}, PORT);
+  }
+} else if (plan.why) console.log(`[tunnel] ★ ${plan.why}`);
+const NAMED = plan.mode === 'named';
+console.log(NAMED ? `[tunnel] 고정 주소: ${plan.url} (터널 이름 ${plan.name})` : '[tunnel] 임시 주소(trycloudflare — 켤 때마다 바뀝니다)');
+
 // cloudflared 는 진행 로그를 stderr로 낸다.
-const child = spawn('cloudflared', ['tunnel', '--url', TARGET, '--no-autoupdate'], {
+const child = spawn('cloudflared', plan.args, {
   stdio: ['ignore', 'pipe', 'pipe'],
   shell: process.platform === 'win32',
 });
@@ -54,6 +78,13 @@ function scan(chunk) {
   for (const l of text.split(/\r?\n/)) if (l.trim()) { recent.push(l); if (recent.length > 20) recent.shift(); }
   if (/Registered tunnel connection/i.test(text)) registered = true;
   if (url) return;
+  if (NAMED) {
+    // ★ 고정 주소는 처음부터 안다 — 첫 출력에서 확인을 시작한다(등록 줄은 confirm 이 기다린다)
+    url = plan.url;
+    banner(['고정 주소 — 밖에서 열리는지 확인합니다 (주소는 바뀌지 않습니다)'], false);
+    confirm().catch((e) => say(`확인 중 오류: ${e.message}`));
+    return;
+  }
   const match = text.match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/i);
   if (!match) return;
   url = match[0];
@@ -114,7 +145,7 @@ function banner(heads, final) {
 }
 
 function announce(open, warn = null) {
-  const line = banner(open ? [`외부 접속 주소 (친구들에게 이 주소를 공유하세요) — 밖에서 열림 확인 ${secs(Date.now() - t0)}`] : warn, true);
+  const line = banner(open ? [`외부 접속 주소${NAMED ? '(고정 — 늘 같은 주소)' : ''} (친구들에게 이 주소를 공유하세요) — 밖에서 열림 확인 ${secs(Date.now() - t0)}`] : warn, true);
   if (!open) console.log('  다음:   서버 로컬이 실패면 서버 창 · tmp/ops/server.log 마지막 줄 / ok 면 잠시 뒤 주소를 직접 열어 보고, 안 되면 메뉴 3 → 1');
   // ★ 기본 브라우저로 바로 연다(찬종 2026-10-24) — NO_OPEN=1 이면 안 연다(검사 · 봇) · R070: 밖에서 열림을 확인한 때만
   if (process.platform === 'win32' && shouldOpen(open)) {

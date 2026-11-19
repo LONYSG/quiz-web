@@ -80,7 +80,14 @@ function procPids(image, re) {
 }
 
 /** localhost:<port> 를 가리키는 cloudflared PID (명령줄로 가린다) */
-export const cloudflaredPids = (port) => procPids('cloudflared.exe', new RegExp(`localhost:${port}(\\D|$)`));
+export const cloudflaredPids = (port) => procPids('cloudflared.exe', new RegExp(`localhost:${port}(\\D|$)`)).concat(namedTunnelPids(port));
+
+/** ★ R107 (D-364) — 이름 붙인 터널(고정 주소)은 명령줄에 포트가 없다 — 본 서버(3000)일 때만 ".env 의 TUNNEL_NAME 으로 run" 을 찾는다 */
+function namedTunnelPids(port) {
+  const name = String(process.env.TUNNEL_NAME ?? '').trim();
+  if (String(port) !== '3000' || !/^[A-Za-z0-9_.-]+$/.test(name)) return [];
+  return procPids('cloudflared.exe', new RegExp(`\\brun\\s+"?${name.replace(/\./g, '\\.')}"?(\\s|$)`));
+}
 
 /**
  * play.mjs 가 띄운 창(cmd /k … ops-run.mjs <kind> …)의 cmd.exe PID.
@@ -97,9 +104,11 @@ export function dbName(url) {
 /** 짧은 HEAD — dir 을 주면 그 트리(플레이 트리 · R078) */
 export const gitHead = (dir) => out(dir ? `git -C "${dir}" rev-parse --short HEAD` : 'git rev-parse --short HEAD').trim() || '?';
 
-/** 터널 로그에서 마지막 trycloudflare 주소 */
+/** 터널 로그에서 마지막 주소 — ★ R107: 고정 주소 줄("고정 주소: https://…")도 찾는다 */
 export function tunnelUrl(file = logPaths('tunnel').latest) {
   if (!existsSync(file)) return null;
-  const m = readFileSync(file, 'utf8').match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/gi);
-  return m ? m.at(-1) : null;
+  const m = readFileSync(file, 'utf8').match(/고정 주소: https:\/\/[a-z0-9.-]+|https:\/\/[a-z0-9-]+\.trycloudflare\.com/gi);
+  return m ? m.at(-1).replace(/^고정 주소: /, '') : null;
 }
+/** ★ R107 — 주소 종류(메뉴 4) */
+export const tunnelKind = (url) => (!url ? '-' : /\.trycloudflare\.com$/i.test(url) ? '임시' : '고정');

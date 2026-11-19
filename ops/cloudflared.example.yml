@@ -1,0 +1,14 @@
+# ★ R107 (D-364) — Cloudflare 이름 붙인 터널(고정 주소) 설정 **본보기**.
+#   실제 파일은 저장소 밖에 둔다:  %USERPROFILE%\.cloudflared\config.yml   (이 파일을 복사해 <...> 를 채운다)
+#   ★ 실제 터널 ID · 인증 파일(<ID>.json · cert.pem)은 커밋하지 않는다(.gitignore 의 *.pem · .cloudflared 바깥).
+#   순서: docs/11-DEPLOY.md "도메인 연결 — 한 번만"
+#   Cloudflare 문서: 설정 파일의 ingress 는 끝에 catch-all(service: http_status:404)이 꼭 있어야 한다.
+#   scripts/dev-tunnel.mjs 가 켤 때 이 세 가지(hostname · service 포트 · catch-all)를 점검하고, 틀리면 임시 주소로 연다.
+
+tunnel: <터널-ID>                                   # cloudflared tunnel create quizdojang 이 찍은 ID
+credentials-file: C:\Users\<사용자>\.cloudflared\<터널-ID>.json
+
+ingress:
+  - hostname: quizdojang.com
+    service: http://localhost:3000
+  - service: http_status:404
