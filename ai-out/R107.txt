@@ -1,25 +1,15 @@
 찬종이 할 것: 찬종-확인.md 6절 — ① 메뉴 3 → 1(보안 적용 · 화면 변화 없음) ② 도메인 연결 5단계(한 번만) ③ 메뉴 3 → 1 ④ Cloudflare 두 개 켜기
 ===========================================
 ROUND: R107
-DATE: 2026-11-19 (작성 시각 — 끝에 적음)
+DATE: 2026-11-19 ~ 11-20
 TASK: 고정 주소(quizdojang.com — Cloudflare 이름 붙인 터널)로 띄울 준비 + 공개 대비 보안 강화
-STATUS: ⏸ 중단(2026-11-19 · 찬종 재부팅) — 아래 "이어서 할 것" 부터
+STATUS: 끝 — 게이트 통과(3절) · 2026-11-19 시작 · 11-20 재부팅 뒤 마침
 ===========================================
-[이어서 할 것 — 재부팅 뒤 MAIN 이 여기부터]
- 끝난 것: A · B · C · D 커밋(1e1b144f · 9669e864 · 6d510407 — push 됨) · 정적 파일 캐시(server/src/index.ts setHeaders · 타입 검사만)
-   · npm audit 패치(express 4.22.3 · body-parser 1.20.9 · proxy-addr 2.0.8 · qs 6.16.2 · vite 6.4.6 · source-map-js — 남은 것 vitest 묶음 6 = 큰 버전 · 안 함)
-   · 봇 73 중 61(tmp/r107/bots-summary.txt — 60 통과 · liar 30/31)
- 1) npm run build(봇 안 돌 때) → 정적 파일 Cache-Control 확인(assets immutable · html no-cache) · npm test
- 2) liar 혼자 다시(실패 "주제 0 개 → 시작 막힘" — R107 코드와 무관해 보임 · 봇이 500ms 만 기다림 · 메모리 부족 때 느렸을 수) — 또 지면 원인 찾기
- 3) 못 돈 봇: mgduo(도중 끔) emojiinline near rate levelmix grant report signup team flood attack — 한 번에 하나씩
-    (sh tmp/r107/bots.sh <목록 파일> · 포트 3200) · flood · rate 가 소켓 이벤트 한도(초당 30)에 걸리면 SCENARIO_ENV 로 그 봇만 올리고 적기
- 4) npm run verify 단계별(smoke · ui-check 묶음들 · ★ CSP 위반 0 줄)
- 5) DB 컨테이너 다시 만들기(docker compose up -d) — 열린 판 0 · GEN 이 DB 안 쓸 때만 · 뒤 quizweb · quizweb_dev 응답 확인 · 못 하면 찬종 할 일로
- 6) 보고서 3~7절(점검 · 판단 · 일부러 안 한 것 · audit 표 · 찬종 할 일) · docs/06 · ai-out/README 줄 · 커밋 · push
+(11-19 밤 PC 메모리 부족으로 봇이 멈춤 → 찬종 재부팅 → 11-20 이어서: 빌드 · 남은 봇 12 · verify · DB 컨테이너 · 보고)
 ===========================================
 
 [cmd 요약]
-(끝에 적음)
+node scripts/bot.mjs attack [--before] · npm run verify(단계로) · 봇 73(sh tmp/r107/bots.sh) · npm audit fix · npm update express -w server · docker compose up -d
 
 -------------------------------------------
 0. ★ 찬종이 볼 것
@@ -91,3 +81,67 @@ STATUS: ⏸ 중단(2026-11-19 · 찬종 재부팅) — 아래 "이어서 할 것
  - 공격 중 옆 방 판정 지연: 평소 3ms → 공격 중 2ms(그대로).
  - 이 PC(루프백 · CF 헤더 없음 = 봇 · ui-check)는 IP 한도 · 방 만들기 한도에서 빠진다(SEC_LOCAL_EXEMPT=0 이면 안 빠짐 — attack 봇은 0 으로 돈다).
  - 채팅 도배 한도(5초 5개 → 5초)는 그대로 — spam 19/19 · emojilimit 4/4.
+
+-------------------------------------------
+3. 점검(게이트)
+-------------------------------------------
+ - typecheck 오류 0 · vitest 63파일 809/809(새 security/limits.test 14 · tunnel-probe.test 7 포함).
+ - npm run verify 를 단계로(메모리 때문에 하나씩):
+   smoke 12/12 · ui-check 447/447 · sound 13/13 · social 158/158 · leave 29/29 · spam 20/20 · shop 33/33 · copy 16/16 · devices 10/10 ·
+   minigame 146/147 → 실패 1 = oddone 실제 판 기록(H 의 3판 값 null — 클릭 타이밍) · oddone 만 다시(서버 로그 켬): 4/4 · [sec] 끊김 0 = 흔들림.
+   ★ 새 줄 "R107 CSP 위반 0" 9묶음 모두 OK.
+ - 봇 전체 73 시나리오(하나씩 · tmp/r107/bots-summary-1.txt + bots-summary.txt): 73/73 통과.
+   liar 첫 회 30/31("주제 0 개 → 시작 막힘" 의 안내가 500ms 안에 안 옴 — 메모리 바닥일 때) → 혼자 다시 31/31.
+   mgduo 28/28(1,233초) · mgquiz 67/67 · leavematrix 60/60 · draw 24/24 · mgtap 3/3 · mgballoon 7/7 · emoji 10/10 · emojilimit 4/4 · spam 19/19.
+ - attack 26/26(2절 표).
+ - 채팅 도배 한도 그대로: spam 19/19 · flood 10/10(억제 안내 99회 — 그대로 발동 · 판정 지연 기준선 3ms → 도배 중 3ms).
+   ★ flood 의 도배 봇은 초당 200개를 보낸다 → 새 소켓 이벤트 한도(초당 30 · 한꺼번에 90)에 걸려 그 소켓이 끊긴다(의도한 막기). 단정 10개는 그대로 통과.
+ - 정적 파일 헤더(빌드 뒤 실제 서버): / · /room/… = no-cache · /assets/*.js = 1년 immutable · 소리 = 1시간.
+ - DB 컨테이너 다시 만듦(11-20 · 실 · dev 서버 꺼짐 · 열린 판 0(quizweb · quizweb_dev) · DB 접속 0 · G106 · V105 커밋으로 끝 확인 뒤):
+   포트 127.0.0.1:5434 · quizweb 8,669 · quizweb_dev 8,669 · quizweb_test 6,811 문항 응답 · localhost 접속 됨 · 다른 주소(172.24.16.1)로는 거부.
+   볼륨 · 비밀번호 그대로.
+
+-------------------------------------------
+4. 판단
+-------------------------------------------
+ - Bot Fight Mode — 켜지 않기를 권한다(브리핑은 "켤 것"). Cloudflare 문서: API · 앱 트래픽에도 챌린지를 걸 수 있고 무료에서는 예외를 둘 수 없다
+   → 소켓 · /api 가 막힐 위험. 대신 속도 제한 규칙(/api/auth/) + 서버 안의 한도(2절). docs/11 4-2 · docs/21 6절.
+ - 이 PC 예외(SEC_LOCAL_EXEMPT) — 루프백인데 CF 헤더가 없는 요청 = 이 PC 의 봇 · ui-check · 찬종 브라우저(localhost).
+   터널로 오는 사람은 늘 CF 헤더가 붙어 예외가 될 수 없다. 이게 없으면 봇 73개가 IP 한도에 걸린다. attack 봇은 예외를 끄고(0) 돈다.
+ - 한도 값 — 브리핑 값 그대로(로그인 5/10분 · 15분 · IP 30 · 가입 5/시간 · 20/하루 · argon2 2 · 줄 20 · 소켓 IP 40 · 계정 8 · 10초 · 초당 30 · 방 5/10분).
+   소켓 이벤트 초당 30 · 한꺼번에 90: 단위 테스트로 초당 20 연타가 끝까지 안 걸림을 확인 · 그리기(draw 24/24) · 연타(mgtap 3/3 · mgballoon 7/7) ·
+   이모티콘 연타(emoji · emojilimit) 봇이 이 값으로 그대로 통과(3절). 사람 손 실측(실기기)은 A131 로 남긴다.
+ - DB 비밀번호 — 바꾸지 않았다(브리핑 그대로). 포트를 127.0.0.1 로 닫아 바깥에서는 못 붙는다. 바꾸는 순서 docs/11 4-3.
+ - 413 등 오류 응답 — NODE_ENV 와 상관없이 JSON 한 줄만(실 서버 .env 가 development 라 스택이 나가고 있었다).
+ - /debug/room/:id — 이 PC(루프백 · CF 헤더 없음)만. 터널 너머는 404.
+ - 정적 파일 캐시 — assets(이름에 해시) 1년 immutable · index.html · 화면 주소 no-cache · 소리 등 1시간. 새 판을 올리면 index.html 이 새 assets 를 가리켜 바로 바뀐다.
+
+-------------------------------------------
+5. 일부러 안 한 것
+-------------------------------------------
+ - 가입 캡차 · 이메일 확인 / 비밀번호 4자 규칙 / CSP 의 style 'unsafe-inline' / HSTS preload / 서버가 끊은 소켓 자동 재연결 / DB 비밀번호 바꾸기 / Bot Fight Mode
+   — 까닭은 docs/21-SECURITY.md 6절.
+ - vitest 5 로 올리기(npm audit 의 남은 6건 — 개발 도구 · 큰 버전) — 6절.
+ - 실제 고정 주소 연결(도메인 · 터널 인증은 찬종 계정 일) — 0절 2~6단계.
+
+-------------------------------------------
+6. npm audit (2026-11-19 · 높음 이상 + 고친 것)
+-------------------------------------------
+ 꾸러미            | 심각도   | 어디        | 무엇                                  | 한 일
+ ------------------+----------+-------------+---------------------------------------+-------------------------------
+ proxy-addr        | critical | 서버(express) | trust subnet 로 IP 속이기              | 2.0.7 → 2.0.8(패치) · 우리는 trust proxy 를 안 쓴다
+ body-parser       | high     | 서버          | 요청 본문 DoS                          | 1.20.6 → 1.20.9(패치)
+ qs                | moderate | 서버          | DoS 두 건                              | 6.15.3 → 6.16.2(express 4.22.2 → 4.22.3 · 패치)
+ vite(클라이언트)    | high     | 개발 · 빌드    | 개발 서버 파일 읽기                      | 6.4.3 → 6.4.6(패치)
+ source-map-js     | high     | 개발          | -                                     | 1.2.1 → 1.2.3(패치)
+ vitest            | critical | 개발(테스트)   | 테스트 UI · 원격 실행                   | 안 함 — vitest 5.1.1 = 큰 버전(목록)
+ tinypool          | critical | 개발(vitest)  | 프로토타입 오염 → 실행                   | 안 함 — 위와 같이
+ vite(vitest 안)    | high     | 개발(vitest)  | 위 vite 와 같음                         | 안 함 — 위와 같이
+ (moderate: @vitest/mocker · vite-node · esbuild — 모두 vitest 묶음)
+ → 남은 것 6건(critical 2 · high 1 · moderate 3) 전부 vitest 묶음 — 서버 실행에는 안 들어간다(npm test 때만). vitest 5 올리기는 따로 라운드로.
+
+-------------------------------------------
+7. 찬종 할 일
+-------------------------------------------
+ = 0절 1)~7) (찬종-확인.md 6절과 같다).
+ + 실기기 A131: 메뉴 3 → 1 뒤 친구와 한 판 — "너무 자주" 로 끊기는 사람이 없나(캐치마인드 그리기 · 연타 미니게임) · 휴대폰 소리.

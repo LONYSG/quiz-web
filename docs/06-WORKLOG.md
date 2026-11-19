@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-19~20 — 고정 주소(quizdojang.com) 준비 + 공개 대비 보안 (R107, MAIN · D-364~367)
+- 무엇: scripts/tunnel-probe.mjs(tunnelPlan · checkTunnelConfig) · dev-tunnel · play · ops · ops-lib(고정/임시 · 이름 붙인 터널 PID) · ops/cloudflared.example.yml · server/src/security/(limits · http · socket — 진짜 IP · 로그인 잠금 · 가입 한도 · argon2 줄 · 보안 헤더 · CSP · JSON 오류 · 소켓 Origin · 연결 수 · 이벤트 속도 · 메시지 크기 · 방 만들기 한도) · config.ts(HOST · SEC_*) · authRoutes · reportRoutes(IP 함수) · index.ts(127.0.0.1 · /debug 이 PC 만 · 정적 파일 캐시) · docker-compose(127.0.0.1:5434 · POSTGRES_PASSWORD 이름) · npm audit 패치 · bot attack(새 · 26) · ui-check CSP 위반 0 · docs 21(새) · 11 4-1~4-3 · 02 · 10 79절 · 찬종-확인 6절.
+- 중간에 PC 메모리 부족으로 봇이 멈춰 재부팅 뒤 이어서 했다(11-20).
+- [x] A 고정 주소 갈래 [x] B 보안 1~9 [x] C Cloudflare 문서 [x] D 문서 — 검증 = ai-out/R107.txt 2 · 3절. 실제 고정 주소 연결은 찬종 할 일(0절).
+
 ## 2026-11-19 — 외부 공개 문제집 흔적 지우기 · DB 줄 · 코드 · 문서 (R106, MAIN · D-363)
 - 무엇: migrations/0038(새 · 줄 삭제만 · 멱등) · 옛 0001 · 0002 · 0005 글에서 이름 뺌(migrate.mjs 는 파일 이름만 본다 — 확인) · client/src/App.tsx 주석 · README · .gitignore · ai-out/README · docs 00 · 05 · 09 · 11(옛 수확 흐름 절 뺌) · 06 · 07(D-036 · D-042 · D-147 본문 → 한 줄) · ai-out/R002~R036 21파일.
 - dev(quizweb_dev): 문항 10 · game_questions 9 · answer_events 14 · question_answers 20 · question_experiences 4 · review_queue 10 · sources 1 지움(판 7개 · 2026-09-10~15 · 전적 · 지난 판 문제 API 정상). 빈 DB 에 0001~0038 오류 0.
