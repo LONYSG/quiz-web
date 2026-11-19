@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-20 — 동시접속 부하 재기 (R108, MAIN · D-368)
+- 무엇: scripts/load.mjs(새 · 부하 봇 · 검사 서버 3410) · scripts/load-probe.mjs(새 · --import 서버 측정기 — 서버 코드 안 고침) · docs 10 80절 · 13 A132 · 찬종-확인 9절.
+- 결과: 300명 · 1,000명 기준 안 · 1,500명 올리다 PC 메모리 바닥(시스템이 멈춤 — 3,000명 못 감). 이 PC ≈ 1,000명 · N95 어림 ≈ 1,000명 · 병목 1위 = 판마다 문항 풀 전체를 방마다(game/start.ts:344).
+- [x] 1 부하 봇 [~] 2 재기(3,000 못 감) [x] 3 풀이 — 자세히 ai-out/R108.txt.
+
 ## 2026-11-19~20 — 고정 주소(quizdojang.com) 준비 + 공개 대비 보안 (R107, MAIN · D-364~367)
 - 무엇: scripts/tunnel-probe.mjs(tunnelPlan · checkTunnelConfig) · dev-tunnel · play · ops · ops-lib(고정/임시 · 이름 붙인 터널 PID) · ops/cloudflared.example.yml · server/src/security/(limits · http · socket — 진짜 IP · 로그인 잠금 · 가입 한도 · argon2 줄 · 보안 헤더 · CSP · JSON 오류 · 소켓 Origin · 연결 수 · 이벤트 속도 · 메시지 크기 · 방 만들기 한도) · config.ts(HOST · SEC_*) · authRoutes · reportRoutes(IP 함수) · index.ts(127.0.0.1 · /debug 이 PC 만 · 정적 파일 캐시) · docker-compose(127.0.0.1:5434 · POSTGRES_PASSWORD 이름) · npm audit 패치 · bot attack(새 · 26) · ui-check CSP 위반 0 · docs 21(새) · 11 4-1~4-3 · 02 · 10 79절 · 찬종-확인 6절.
 - 중간에 PC 메모리 부족으로 봇이 멈춰 재부팅 뒤 이어서 했다(11-20).

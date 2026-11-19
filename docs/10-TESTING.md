@@ -1074,6 +1074,14 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 80. ★★ R108 — 동시접속 부하 재기 (D-368)
+
+- **`node scripts/load.mjs`** — 기본 300 → 1,000 → 3,000명 · 단계마다 5분(`--stages 40,80 --hold 30` 처럼 짧게 시험 · `--no-extend` · `--min-free-gb 1.5` · `--per-worker 25` 방).
+  - 검사 서버를 직접 띄운다(3410 · quizweb_test · `SEC_SOCKET_PER_IP` 풂) — 실 3000 · 실 DB 안 건드림. 서버는 `node --import scripts/load-probe.mjs` 로 떠서 `tmp/r108/probe-*.jsonl` 에 2초마다 적는다.
+  - 계정 ld_0001… · 측정 방 ld_p01 · ld_p02 — 쿠키는 `tmp/r108/cookies.json` 에 두고 다시 쓴다. 결과 `tmp/r108/result.json`.
+  - ★ 메모리를 많이 쓴다(1,000명 = 서버 2GB + 봇 0.5GB) — 다른 창이 돌 때는 1,000명까지만. 단계를 내려 재지 않는다(올라가기만).
+  - ★ 윈도에서는 쉬고 있어도 이벤트 루프 p50 ≈ 16ms(타이머 간격) — 바닥값으로 읽는다.
+
 ## 79. ★★ R107 — 공격 묶음 · CSP 위반 · 고정 주소 갈래 (D-364~367)
 
 - **`node scripts/bot.mjs attack --url http://localhost:3401`** — 자기 서버(SCENARIO_ENV.attack: 한도를 작게 · `SEC_LOCAL_EXEMPT=0` · `HOST=0.0.0.0`). 옆 방(다른 IP 두 사람)이 판을 하는 동안 [1] 로그인 무차별(한 아이디 40개 동시) [2] IP 하나가 아이디를 바꿔 가며 [3] 가입 폭주 [4] 소켓 연결 폭주(로그인 없이 30) [5] 이벤트 폭주(600) [6] 큰 메시지(소켓 · HTTP 200KB) [7] 남의 Origin · 방 만들기 폭주 · 보안 헤더 [8] 가짜 IP 헤더(이 PC 의 LAN 주소로 붙어 `CF-Connecting-IP` 를 바꿔 가며) — 26 단정. 공격마다 옆 방 판정 지연을 같이 잰다(500ms 안 · 실측 2ms).
