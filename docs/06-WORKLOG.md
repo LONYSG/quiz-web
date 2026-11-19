@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-19 — 정답 인정어로 맞혔을 때 공개 화면에 한 줄 (R105, MAIN · D-362)
+- 무엇: server game/answer.ts(winnerAnswerOf) · game/question.ts(resolveQuestionSync 네째 인자 · resolution · question.resolved 에 winnerAnswer) · socket/index.ts(정답자 글 넘김) · rooms/types.ts · snapshot.ts(공개 때만) · client Question.tsx(PC 아래 줄 · 모바일 같은 줄) · josa.ts(으로/로) · useRoom.ts · styles.css · vitest winnerAnswer.test 7 · euroParticle.test 2 · ui-check --r105(새) · bot altanswer(새).
+- [x] A 서버 + 화면 한 줄 [x] B 공간 확인(모바일은 같은 줄) [x] C 봇 — 검증 = ai-out/R105.txt 2절.
+
 ## 2026-11-17 — 소리를 영상과 한 집안으로 (R104, MAIN · D-361)
 - 무엇: client/src/sound.ts — 기본 배경음 bell '포근한 종'(영상과 같은 곡) · 8비트 게임기(chip) 삭제 · 정답 = 종 네 음 · 게임 시작 = 종 시그널 · 마지막 5초 = tick 과 같은 '똑' · mine / mg-final 반짝 시작 +0.32 · 옛 저장 곡은 판 번호(bgmVer 2)로 한 번 bell. prefsSync · api(bgmVer) · server authRoutes(곡 목록 bell · bounce · bgmVer) · prefs.test 1 · LabSound 이름 둘 · ui-check --sound(bgm:bell · r104BgmFlow 7칸) · 01 소리 줄.
 - 검증: typecheck · test 784 · ui-check:sound 12/12 · 그림 docs/design/r104. 귀로 듣는 확인은 찬종(R104.txt 0절).

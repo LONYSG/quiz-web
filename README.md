@@ -65,6 +65,8 @@ node scripts/mem-check.mjs   # ★ R100 메모리 점검(ops 메뉴 20) — 남�
 npm run play:stats        # ★ R074 문항별 실측(정답률 넷 · 첫 정답 중앙 시간 · 틀린 제출 · 건너뛰기 · 등급 어긋남 후보) → tmp/play-stats.md + data/pipeline/audit/play-stats-<날짜>.json · --since/--until/--games/--min (읽기만)
 npm run stats:questions   # R103 문항별 플레이 통계(노출 · 방/사람 정답률 · 힌트 단계 · 등급 어긋남) → data/stats/question-stats.json
 npm run hint:solve        # R071 힌트 뒤 정답 집계(등급 · 알가치별) → tmp/hint-solve.md
+SHOT_DIR=r105 RESOLVED_WAIT_MS=120000 node scripts/ui-check.mjs --r105   # ★ R105 정답 인정어 한 줄 공간 확인(PC · 모바일 6크기 · 줄 있음/없음 그림 · 30건)
+node scripts/bot.mjs altanswer --url http://localhost:4400   # ★ R105 winnerAnswer — 대표 · 인정어 · 띄어쓰기 · 시간 종료 · 들어온 사람 스냅샷(14건)
 npm run liar:appeals      # ★ R091 라이어 이의제기 인정 목록(세트 · 제시어 · 답 · 횟수 · 표) — 변형 후보 · --all 기각도 (읽기만)
 npm run db:restore -- <파일>
 npm run db:reset          # ★ 모든 데이터 삭제 후 재적용
