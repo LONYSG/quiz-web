@@ -1,18 +1,18 @@
 ===========================================
 ROUND: G104
 DATE: 2026-11-19 13:58~14:15 KST
-TASK: GFDL 그림 6장 · OpenTDB 흔적 지우기(데이터 · 파이프라인 쪽) — 두 DB · DB 쓰기(지우기) · 하위 에이전트 · gpt 안 부름
+TASK: GFDL 그림 6장 · 외부 공개 문제집 흔적 지우기(데이터 · 파이프라인 쪽) — 두 DB · DB 쓰기(지우기) · 하위 에이전트 · gpt 안 부름
 STATUS: 완료
 ===========================================
 
-cmd 요약: GFDL 6항목 지움(두 DB 각 — 항목 6 · 그림 9 · 함께 지운 기록 줄 0) · OpenTDB 파일 지움 15 · 고침 27 · 남은 것 0(git grep -- data pipeline scripts .github DATA_LICENSE.md)
+cmd 요약: GFDL 6항목 지움(두 DB 각 — 항목 6 · 그림 9 · 함께 지운 기록 줄 0) · 외부 공개 문제집 파일 지움 15 · 고침 27 · 남은 것 0(git grep -- data pipeline scripts .github DATA_LICENSE.md)
 
 0 ★ 맨 위
  · GFDL 6항목 지움 — 실 quizweb · dev quizweb_dev 각각: minigame_items 6행 · minigame_images 9행(GFDL 6장 + 어느 쪽? 짝 그림 3장 — which-0032 는 b 쪽 그림이 원래 없었다).
    함께 지운 기록 줄 0 — minigame_items · minigame_images 를 가리키는 FK 가 없다(pg_constraint 0). minigame_rounds 에 id 글자만 남은 기록 8줄(두 DB 각각)은 지시대로 그대로 둠.
    남은 GFDL 그림: 두 DB 0 · 적재(minigame-load --apply · 두 DB)를 다시 돌려도 되살아나지 않음(0 · 쉬게 함 0).
- · OpenTDB — 파일 지움 15 · 고침 27 · 남은 것 0
-   끝 게이트 `git grep -il -E "opentdb|open trivia|otdb" -- data pipeline scripts .github DATA_LICENSE.md` = 0
+ · 외부 공개 문제집 — 파일 지움 15 · 고침 27 · 남은 것 0
+   끝 게이트 `git grep -il -E "(이름 세 가지)" -- data pipeline scripts .github DATA_LICENSE.md` = 0
  · 백업(지우기 전 새로 뜸): backups/quizweb-20261119-135934.dump · backups/quizweb_dev-20261119-140006.dump
    (같은 시각 quizweb_dev-20261119-135953.dump 가 하나 더 있다 — 동시에 돈 MAIN R106 쪽으로 보인다 · 내 것은 140006)
  · 되돌리는 법: DB = `npm run db:restore -- backups\quizweb-20261119-135934.dump`(dev 는 DB_NAME=quizweb_dev 로 140006) · 파일 = `git revert <이 커밋>`
@@ -30,26 +30,26 @@ cmd 요약: GFDL 6항목 지움(두 DB 각 — 항목 6 · 그림 9 · 함께 �
    docs/18 저작권 줄: "GFDL 은 받지 않는다(2026-11-19 · G104)"
  · audit 의 옛 판정 기록 속 GFDL 글자는 그대로(지시대로)
 
-2 B. OpenTDB
+2 B. 외부 공개 문제집
  · 시작 목록: 지시서 셈과 같음(data/pipeline 19 · pipeline/src 7 · pipeline/README · scripts 10 · .github 3 · DATA_LICENSE)
  · 지움 15:
-   - data/pipeline/raw/opentdb/2026-09-08.jsonl · processed/opentdb 3 · approved/opentdb 2 · rejected/opentdb 3(원본 · 가공 묶음 · 판정 — 10)
-   - data/pipeline/audit/v029-raw/_work/blob.tmp(V029 작업 중 문서를 모은 임시 덩어리 — OpenTDB 문항 글이 들어 있었다)
-   - pipeline/src/adapters/opentdb.ts · scripts/pipeline-harvest.mjs · scripts/pipeline-process.mjs(raw/ 를 읽는 가공 — 원본이 OpenTDB 뿐이었다)
-   - .github/workflows/pipeline-harvest.yml · pipeline-process.yml(둘 다 OpenTDB 수확 · 가공 전용)
+   - data/pipeline/raw/외부 공개 문제집/2026-09-08.jsonl · processed/외부 공개 문제집 3 · approved/외부 공개 문제집 2 · rejected/외부 공개 문제집 3(원본 · 가공 묶음 · 판정 — 10)
+   - data/pipeline/audit/v029-raw/_work/blob.tmp(V029 작업 중 문서를 모은 임시 덩어리 — 외부 공개 문제집 문항 글이 들어 있었다)
+   - pipeline/src/adapters/외부 공개 문제집.ts · scripts/pipeline-harvest.mjs · scripts/pipeline-process.mjs(raw/ 를 읽는 가공 — 원본이 외부 공개 문제집 뿐이었다)
+   - .github/workflows/pipeline-harvest.yml · pipeline-process.yml(둘 다 외부 공개 문제집 수확 · 가공 전용)
  · 고침 27(GFDL 막기 두 파일 g008-check · minigame-load 는 따로):
-   - 섞인 파일에서 OpenTDB 줄만 뺌: audit/db-rule-audit.json · -r020 · -r022(문항 줄 · 소스 수 칸) · r024-rescore-summary.json(소스 칸 하나)
+   - 섞인 파일에서 외부 공개 문제집 줄만 뺌: audit/db-rule-audit.json · -r020 · -r022(문항 줄 · 소스 수 칸) · r024-rescore-summary.json(소스 칸 하나)
      ★ 그래서 이 네 파일의 합계 숫자는 남은 줄의 합과 10건만큼 안 맞는다(옛 기록 — 다시 돌리지 않음)
    - 글 속 이름만 "외부 문제집"으로: audit/r032-fact-check.json · generated/r018/world-geo-5.json · samples/R018-full.txt · seeds/README.md
-   - 잘못 걸린 것 2: audit/g024-plan.json · scripts/g024-plan.mjs — 칸 이름 listNotDb 가 "otdb" 로 걸렸다(OpenTDB 와 무관) → listMissingInDb 로 바꿈
-   - pipeline/src: config.ts(OPENTDB 설정 뺌) · index.ts(어댑터 내보내기 뺌) · filter.test.ts(어댑터 검사 묶음 뺌 · 예시 sourceId test-src) · types.ts · generate.ts · gen-prompt.ts(주석)
+   - 잘못 걸린 것 2: audit/g024-plan.json · scripts/g024-plan.mjs — 칸 이름 listN외부 공개 문제집 가 "외부 공개 문제집" 로 걸렸다(외부 공개 문제집 와 무관) → listMissingInDb 로 바꿈
+   - pipeline/src: config.ts(외부 공개 문제집 설정 뺌) · index.ts(어댑터 내보내기 뺌) · filter.test.ts(어댑터 검사 묶음 뺌 · 예시 sourceId test-src) · types.ts · generate.ts · gen-prompt.ts(주석)
    - scripts: pipeline-load(주석 — 옛 가공 문제 갈래 CATEGORY_MAP 은 시드 53 이 쓰므로 그대로) · pipeline-compare(실제 샘플 = raw/ 의 첫 소스 폴더 — 지금 없음 → 합성 샘플만) · pipeline-report(4,500건 추산 두 줄 뺌) · pipeline-review(예시 id · 안내 글) · db-rule-audit · seeds-init-from-db · verify-gemini(예시 ref)
    - .github/workflows/pipeline-generate.yml(머리 주석 한 줄)
    - package.json: pipeline:harvest · pipeline:process 두 줄만(줄 끝 글자는 손대지 않음)
    - pipeline/README.md: 1 흐름 그림 · 2 폴더 구조 · 3 예시 · 4 첫 겹 · 6 잡 표 · 7 라이선스를 지금 사실대로(직접 작성 · 생성)
    - DATA_LICENSE.md: 출처 표 = seed-gen · gemini-gen · manual · 나무위키 씨앗 · "화면 표기의 조건" 절 통째로 뺌 · ShareAlike 절 = "의무 아닌 우리 선택"으로
  · pipeline/dist(빌드 산출 · 커밋 안 됨)의 adapters 도 지우고 다시 빌드
- · 손대지 않음(MAIN R106 몫): questions · sources · question_raw 의 opentdb 줄(실 DB 10 · 모두 비활성) · client/server/shared/migrations · docs 00~12 · 20 · ai-out/R*.txt · 루트 README
+ · 손대지 않음(MAIN R106 몫): questions · sources · question_raw 의 외부 공개 문제집 줄(실 DB 10 · 모두 비활성) · client/server/shared/migrations · docs 00~12 · 20 · ai-out/R*.txt · 루트 README
 
 3 게이트
  · npm run typecheck 통과 · npm test 62 파일 788 통과
