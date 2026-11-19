@@ -20,7 +20,7 @@
 -- 문제별로 라이선스를 추적할 수 있어야 여러 소스를 한 DB에 섞어도
 -- share-alike가 다른 출처의 문제까지 번지지 않는다.
 CREATE TABLE sources (
-  id          text        PRIMARY KEY,          -- 'opentdb' | 'wikidata' | 'manual' | 'etri'
+  id          text        PRIMARY KEY,          -- 'manual' | 'gemini-gen' | 'seed-gen'
   name        text        NOT NULL,
   url         text,
   license     text        NOT NULL,             -- 'CC-BY-SA-4.0' | 'CC0-1.0' | 'proprietary'
@@ -45,7 +45,7 @@ CREATE TABLE categories (
 -- -----------------------------------------------------------------------------
 
 -- 소스 원본 보관. 가공 규칙이나 프롬프트가 바뀌면 원본에서 다시 돌린다.
--- 원본을 버리면 소스를 다시 긁어야 하는데 OpenTDB는 전량 수확에 약 12분이 걸린다.
+-- 원본을 버리면 소스를 다시 긁어야 한다.
 CREATE TABLE question_raw (
   id             bigserial   PRIMARY KEY,
   source_id      text        NOT NULL REFERENCES sources(id),
@@ -343,10 +343,7 @@ CREATE INDEX answer_events_question_idx ON answer_events (question_id);
 INSERT INTO sources (id, name, url, license, attribution, notes) VALUES
   ('manual', '직접 작성', NULL, 'CC-BY-SA-4.0',
    '이 프로젝트에서 직접 작성한 문제입니다.',
-   '개발·테스트용 시드 및 직접 작성 문제. OpenTDB 파생 문제와 한 DB에 섞이는 것을 고려해 라이선스를 동일하게 둔다.'),
-  ('opentdb', 'Open Trivia Database', 'https://opentdb.com/', 'CC-BY-SA-4.0',
-   '문제 출처: Open Trivia Database (https://opentdb.com/) - CC BY-SA 4.0',
-   'API 제공 상한 5,298건(verified). 그중 type=multiple 4,500건. 유한 코퍼스. (R002 2-1)');
+   '개발·테스트용 시드 및 직접 작성 문제.');
 
 INSERT INTO categories (key, name_ko, sort_order) VALUES
   ('general',    '일반상식',  10),
