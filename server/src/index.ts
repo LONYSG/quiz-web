@@ -169,7 +169,8 @@ async function main(): Promise<void> {
     }),
   );
   app.get('*', (_req, res) => {
-    res.sendFile(path.join(CLIENT_DIST, 'index.html'), (err) => {
+    // ★ R107 — 화면 주소(/room/… 등)도 index.html 이다: 새 판이 바로 보이게 캐시하지 않는다
+    res.sendFile(path.join(CLIENT_DIST, 'index.html'), { headers: { 'Cache-Control': 'no-cache' } }, (err) => {
       if (err) {
         res
           .status(404)
