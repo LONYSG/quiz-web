@@ -156,7 +156,18 @@ async function main(): Promise<void> {
   //     프론트엔드를 별도 도메인에 두면 쿠키가 cross-origin(SameSite=None, 서드파티)이 되어
   //     모바일 사파리에서 로그인 유지가 깨질 수 있고 CORS 설정도 필요해진다.
   //     따라서 CORS 설정을 두지 않는다. 필요해졌다면 설계가 잘못된 것이다.
-  app.use(express.static(CLIENT_DIST));
+  // ★ R107 (D-366) — 캐시: 이름에 해시가 붙은 빌드 파일(/assets/)은 1년(바뀌면 이름이 바뀐다) · html 은 늘 새로 · 나머지(소리)는 1시간.
+  //   Cloudflare 는 원 서버가 max-age=0 을 보내면 캐시하지 않는다(옛 기본값) — 이제 공격 · 사람이 몰려도 큰 파일은 Cloudflare 가 낸다
+  app.use(
+    express.static(CLIENT_DIST, {
+      setHeaders: (res, filePath) => {
+        const p = filePath.replace(/\\/g, '/');
+        if (p.includes('/assets/')) res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        else if (p.endsWith('.html')) res.setHeader('Cache-Control', 'no-cache');
+        else res.setHeader('Cache-Control', 'public, max-age=3600');
+      },
+    }),
+  );
   app.get('*', (_req, res) => {
     res.sendFile(path.join(CLIENT_DIST, 'index.html'), (err) => {
       if (err) {

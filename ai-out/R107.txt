@@ -1,0 +1,93 @@
+찬종이 할 것: 찬종-확인.md 6절 — ① 메뉴 3 → 1(보안 적용 · 화면 변화 없음) ② 도메인 연결 5단계(한 번만) ③ 메뉴 3 → 1 ④ Cloudflare 두 개 켜기
+===========================================
+ROUND: R107
+DATE: 2026-11-19 (작성 시각 — 끝에 적음)
+TASK: 고정 주소(quizdojang.com — Cloudflare 이름 붙인 터널)로 띄울 준비 + 공개 대비 보안 강화
+STATUS: ⏸ 중단(2026-11-19 · 찬종 재부팅) — 아래 "이어서 할 것" 부터
+===========================================
+[이어서 할 것 — 재부팅 뒤 MAIN 이 여기부터]
+ 끝난 것: A · B · C · D 커밋(1e1b144f · 9669e864 · 6d510407 — push 됨) · 정적 파일 캐시(server/src/index.ts setHeaders · 타입 검사만)
+   · npm audit 패치(express 4.22.3 · body-parser 1.20.9 · proxy-addr 2.0.8 · qs 6.16.2 · vite 6.4.6 · source-map-js — 남은 것 vitest 묶음 6 = 큰 버전 · 안 함)
+   · 봇 73 중 61(tmp/r107/bots-summary.txt — 60 통과 · liar 30/31)
+ 1) npm run build(봇 안 돌 때) → 정적 파일 Cache-Control 확인(assets immutable · html no-cache) · npm test
+ 2) liar 혼자 다시(실패 "주제 0 개 → 시작 막힘" — R107 코드와 무관해 보임 · 봇이 500ms 만 기다림 · 메모리 부족 때 느렸을 수) — 또 지면 원인 찾기
+ 3) 못 돈 봇: mgduo(도중 끔) emojiinline near rate levelmix grant report signup team flood attack — 한 번에 하나씩
+    (sh tmp/r107/bots.sh <목록 파일> · 포트 3200) · flood · rate 가 소켓 이벤트 한도(초당 30)에 걸리면 SCENARIO_ENV 로 그 봇만 올리고 적기
+ 4) npm run verify 단계별(smoke · ui-check 묶음들 · ★ CSP 위반 0 줄)
+ 5) DB 컨테이너 다시 만들기(docker compose up -d) — 열린 판 0 · GEN 이 DB 안 쓸 때만 · 뒤 quizweb · quizweb_dev 응답 확인 · 못 하면 찬종 할 일로
+ 6) 보고서 3~7절(점검 · 판단 · 일부러 안 한 것 · audit 표 · 찬종 할 일) · docs/06 · ai-out/README 줄 · 커밋 · push
+===========================================
+
+[cmd 요약]
+(끝에 적음)
+
+-------------------------------------------
+0. ★ 찬종이 볼 것
+-------------------------------------------
+ ★ 고정 주소 준비됨 — 찬종 할 일 7단계(찬종-확인.md 6절 · 자세히 docs/11 4-1 · 4-2)
+   1) 메뉴 3 → 1 — 보안이 실 서버에 들어간다(화면 변화 없음).
+   2) 명령 창: cloudflared tunnel login → cloudflared tunnel create quizdojang
+   3) 본보기 ops\cloudflared.example.yml → %USERPROFILE%\.cloudflared\config.yml 로 복사해 <터널-ID> · <사용자> 채우기
+   4) cloudflared tunnel route dns quizdojang quizdojang.com
+   5) 개발 트리 .env 에 TUNNEL_NAME=quizdojang · PUBLIC_HOSTNAME=quizdojang.com
+   6) 메뉴 3 → 1 — "주소: 고정 https://quizdojang.com" 이 보이면 끝(설정이 틀리면 임시 주소로 열리고 고칠 줄이 나온다)
+   7) Cloudflare 대시보드: Always Use HTTPS · 속도 제한 규칙 1개(/api/auth/) 켜기 — Bot Fight Mode 는 켜지 않는다(게임 접속을 막을 수 있음)
+ ★ 도메인이 아직 연결되지 않아 고정 주소는 실제로 못 붙여 봤다 — 명령 조립 · 설정 파일 점검은 단위 테스트, 임시 주소 흐름은 실제 터널로 확인(1절).
+ ★ 맨 도메인(quizdojang.com 에 바로)에 route dns 가 붙는지는 확인 필요 — 오류가 나면 대시보드 DNS 화면을 그대로 보고 설계에 알려 주세요.
+ ★ 실기기로 볼 것(A131): 메뉴 3 → 1 뒤 친구와 한 판 — "너무 자주" 로 끊기는 사람이 없나(캐치마인드 그리기 · 연타 미니게임) · 휴대폰에서 노래 소리.
+
+-------------------------------------------
+원칙 메모 (7번 — 브리핑의 사실 확인)
+-------------------------------------------
+ - "로그인 · 가입에 시도 제한 없음" — 맞다(authRoutes 에 없었다). attack --before: 한 아이디 틀린 비밀번호 40개 전부 계산(401×40) · 바로 뒤 맞는 비밀번호 200.
+ - "보안 헤더 없음" — 맞다(nosniff · CSP · HSTS 없음 · X-Powered-By: Express).
+ - "소켓 연결 수 · 이벤트 속도의 일반 한도 없음(채팅 도배 제한만)" — 맞다. 이모티콘 폭주 방어(1초 50 넘으면 버림)도 있었다.
+ - "서버가 0.0.0.0 으로 듣는다" — 맞다(listen(port) — 주소 없음 = 모든 주소).
+ - "DB 포트(5434) 모든 주소 · 비밀번호가 공개 저장소에" — 맞다.
+ - 브리핑에 없던 것 셋을 더 찾았다:
+   ① 제보 경로의 IP 함수가 바깥에서 보낸 CF-Connecting-IP · X-Forwarded-For 를 그대로 믿었다(로그인 전 제보 한도를 헤더로 피할 수 있었다).
+   ② 실 서버 .env 가 NODE_ENV=development 라 큰 요청 오류(413)가 HTML 에 스택 · 내부 경로를 실어 보냈다(attack --before [6]).
+   ③ 같은 까닭으로 개발용 진단 경로 /debug/room/:id 가 터널 밖에도 열려 있었다(정답은 없지만 방 내부 상태).
+   ④ 정적 파일이 전부 Cache-Control max-age=0 — Cloudflare 문서: 이러면 캐시하지 않는다(브리핑의 "정적 파일 캐시" 가 실제로는 안 되고 있었다).
+ - 브리핑 "속도 제한 규칙 1개 = /api/auth/" — Cloudflare 문서 확인: 무료 = 규칙 1 · IP 기준 · 10초 창 · 10초 막기 고정.
+ - 브리핑 "Bot Fight Mode 켤 것" — 문서 확인 결과 켜지 않기를 권한다(4절 — 판단).
+
+-------------------------------------------
+1. A. 고정 주소
+-------------------------------------------
+ - 갈래: .env 에 TUNNEL_NAME 과 PUBLIC_HOSTNAME 이 둘 다 있으면 이름 붙인 터널, 아니면 지금처럼 임시 주소(quick tunnel).
+   scripts/tunnel-probe.mjs tunnelPlan() 한 곳에서 정하고 dev-tunnel.mjs · play.mjs · ops.mjs 가 같이 쓴다.
+ - 이름 붙인 터널 = cloudflared tunnel --no-autoupdate --config <설정 파일> run <이름>.
+   Cloudflare 문서에 'tunnel run' 의 --url 이 없어서 주소 연결은 설정 파일(ingress)로 한다.
+   설정 파일 = TUNNEL_CONFIG 또는 %USERPROFILE%\.cloudflared\config.yml.
+ - 켤 때 설정 파일을 먼저 본다(checkTunnelConfig): 파일 없음 · tunnel/credentials-file 없음 · hostname 이 PUBLIC_HOSTNAME 과 다름 ·
+   service 포트가 다름 · 맨 끝 http_status:404 없음 → 임시 주소로 열고 고칠 줄을 로그에 쓴다(찬종이 못 들어가는 일은 없다).
+ - 메뉴 4(상태): "주소: 고정 https://quizdojang.com" / "주소: 임시 https://….trycloudflare.com" 한 줄.
+   켜진 이름 붙인 터널도 메뉴의 끄기 · 다시 켜기가 찾는다(ops-lib cloudflaredPids — 'run <이름>' 으로).
+ - 본보기: ops/cloudflared.example.yml(실제 ID 없음). .gitignore 에 .cloudflared/ · cert.pem · ops/cloudflared.yml 추가.
+ - 확인: 단위 테스트 7개 새로(tunnel-probe.test 16/16) — 고정 · 임시 갈래 · 설정 파일 경로 · 점검 다섯 가지.
+   임시 주소 흐름은 실제 터널(검사 서버 3403)로: HSTS · CSP 헤더 있음 · /debug 404 · 터널 주소 Origin 소켓 연결됨 · 남의 Origin 거부.
+ - 못 한 것: 도메인이 아직 Cloudflare 터널에 안 붙어 고정 주소는 실제로 못 띄워 봤다(찬종 2~6단계 뒤 첫 실행이 곧 확인).
+ - 참고: 실제 터널 검사 때 dev-tunnel 이 검사용 주소를 클립보드에 넣었다(한 번 · 찬종 클립보드 덮어씀).
+
+-------------------------------------------
+2. B. 보안 — 표 (전 = attack --before · play 트리 옛 빌드 / 후 = 이번 빌드 · 봇 = attack 26/26)
+-------------------------------------------
+ 항목                      | 전                                   | 후                                                    | 한도(환경 변수)
+ --------------------------+--------------------------------------+-------------------------------------------------------+------------------------------
+ [1] 한 아이디 틀린 비번 40 | 401×40 전부 계산 · 바로 맞는 비번 200 | 401:7 · 429:17 · 503:16 · 잠긴 동안 맞는 비번 429 · 풀린 뒤 200 | 10분 5번 → 15분(SEC_LOGIN_*)
+ [2] 한 IP 여러 아이디 20   | 401×20                               | 401:12 · 429:8                                        | 10분 30번(SEC_LOGIN_FAIL_PER_IP)
+ [3] 한 IP 가입 10          | 200×10                               | 200:3 · 429:7 (봇은 한도 3 으로 낮춰 봄)               | 시간 5 · 하루 20(SEC_SIGNUP_*)
+ [4] 로그인 없는 소켓 30    | 30/30 붙음 · 뒤에도 30/30             | 10/30(봇 한도 10) · 시간 뒤 0/30                       | IP 40 · 익명 10초(SEC_SOCKET_PER_IP · SEC_ANON_SOCKET_MS)
+ [5] 이벤트 폭주            | 연결 유지                            | 그 소켓만 끊김                                         | 초당 30 · 한꺼번에 90(SEC_SOCKET_EVENTS_*)
+ [6] 큰 메시지 · 큰 본문    | 소켓 유지 · 413 HTML 에 스택 · 내부 경로 | 소켓 끊김 · 413 JSON "보낸 내용이 너무 큽니다."           | 64KB(SEC_SOCKET_MAX_BYTES) · JSON 32KB
+ [7] 남의 Origin · 방 만들기 · 헤더 | 연결됨 · 방 5/5 · nosniff · CSP 없음 · X-Powered-By | 거부 · ok,ok,ok,RATE_LIMITED,RATE_LIMITED · 헤더 있음 | 10분 5개(SEC_ROOM_CREATE_*)
+ [8] 다른 IP(LAN) 로 아이디 돌리기 | 401×16                          | 401:12 · 429:4                                        | IP 한도는 바깥 IP 마다 따로
+ 동시 계산(argon2)          | 줄 없음                              | 동시 2 · 줄 20 · 넘으면 503 "지금 사람이 많아요"          | SEC_HASH_*
+ 서버 듣는 주소             | 0.0.0.0(모든 주소)                   | 127.0.0.1(HOST 로 바꿈) — localhost · 터널 · 봇 그대로   | HOST
+ DB 포트                    | 0.0.0.0:5434                         | 127.0.0.1:5434(컨테이너 다시 만든 뒤 — 3절)               | docker-compose
+ 진짜 IP                    | 제보가 바깥 CF/XFF 헤더를 믿음        | 루프백에서 온 CF-Connecting-IP 만 믿음                  | -
+ 정적 파일 캐시             | 전부 max-age=0(Cloudflare 캐시 안 함) | assets 1년 immutable · html no-cache · 나머지 1시간       | -
+ - 공격 중 옆 방 판정 지연: 평소 3ms → 공격 중 2ms(그대로).
+ - 이 PC(루프백 · CF 헤더 없음 = 봇 · ui-check)는 IP 한도 · 방 만들기 한도에서 빠진다(SEC_LOCAL_EXEMPT=0 이면 안 빠짐 — attack 봇은 0 으로 돈다).
+ - 채팅 도배 한도(5초 5개 → 5초)는 그대로 — spam 19/19 · emojilimit 4/4.
