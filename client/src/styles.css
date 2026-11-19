@@ -1936,8 +1936,35 @@ button.primary kbd {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.reveal-alt b {
+.reveal-alt b,
+.reveal-alt-inline b {
   font-weight: 900;
+}
+.reveal-alt-inline {
+  display: none;
+}
+/* ★ R105 — 모바일: 줄을 늘리지 않고 "정답" 줄 오른쪽에 · 정답 표기는 그대로(줄바꿈 가능) · 인정어 쪽이 먼저 줄어 "…" */
+:where(.ui-mobile) .reveal-alt {
+  display: none;
+}
+:where(.ui-mobile) .reveal-answer.has-alt {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+:where(.ui-mobile) .reveal-answer.has-alt strong {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+:where(.ui-mobile) .reveal-alt-inline {
+  display: block;
+  flex: 0 1000 auto;
+  min-width: 0;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* ★★ 해설 — 크게 (안내 문구와 확실히 구분) */
 .reveal-explain {

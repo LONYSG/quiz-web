@@ -1058,6 +1058,8 @@ async function measureScreen(page, screenName) {
 const SHOTS_ONLY = args.includes('--shots');
 /** ★ R040 C-4 — 가장 긴 문제·정답·해설만 나오게 한 판을 모바일 폭에서 찍는다 (`--long`) */
 const LONG_ONLY = args.includes('--long');
+/** ★ R105 — 정답 인정어 한 줄 공간 확인 (`--r105` · SHOT_DIR=r105 · RESOLVED_WAIT_MS 길게) */
+const R105_ONLY = args.includes('--r105');
 /** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
 const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
@@ -1263,6 +1265,110 @@ async function measureLong(page) {
     })())`),
   );
 }
+/**
+ * ★★ R105 — 정답 인정어로 맞혔을 때 "정답" 줄 아래 한 줄("덕아웃"으로 정답 인정) — 공간 확인(`--r105` · SHOT_DIR=r105).
+ *   해설이 가장 긴 문제 중 **대표 정답과 다른 정답 인정어**가 있는 것 하나 · 한글 10자 닉네임 · 긴 소감 → 인정어로 맞힌다.
+ *   크기마다 [줄 있음] 찍고 재고 → 줄을 지운 [줄 없음] 찍고 잰다(React 가 null 일 때 그리는 것과 같다 — 자리 0).
+ *   RESOLVED_WAIT_MS 를 길게 주고 돌린다(공개 화면이 8초 안에 넘어가지 않게).
+ */
+const R105_SIZES = [
+  { n: 'pc', w: 1280, h: 720 },
+  { n: 'lap2', w: 1536, h: 730 },
+  { n: 'fhd', w: 1920, h: 1080 },
+  { n: 'm360', w: 360, h: 740 },
+  { n: 'm390', w: 390, h: 844 },
+  { n: 'm430', w: 430, h: 932 },
+];
+const R105_MEASURE = `JSON.stringify((() => {
+  const se = document.scrollingElement;
+  const r = (sel) => { const el = document.querySelector(sel); if (!el) return null; const b = el.getBoundingClientRect(); return { top: Math.round(b.top), bottom: Math.round(b.bottom), h: Math.round(b.height) }; };
+  const ex = document.querySelector('.reveal-explain');
+  // 보이는 쪽(PC = 아래 줄 · 모바일 = 같은 줄)
+  const alt = [...document.querySelectorAll('.reveal-alt, .reveal-alt-inline')].find((e) => getComputedStyle(e).display !== 'none') ?? null;
+  const ans = document.querySelector('.reveal-answer');
+  const vis = (sel) => { const el = document.querySelector(sel); if (!el) return null; const b = el.getBoundingClientRect(); return b.bottom <= innerHeight + 0.5 && b.top >= -0.5; };
+  return {
+    alt: alt ? { kind: alt.className, text: alt.innerText, cut: alt.scrollWidth > alt.clientWidth + 1, h: Math.round(alt.getBoundingClientRect().height), font: getComputedStyle(alt).fontSize } : null,
+    answerRow: ans ? { h: Math.round(ans.getBoundingClientRect().height), w: Math.round(ans.getBoundingClientRect().width) } : null,
+    pageScroll: se.scrollHeight - innerHeight, hScroll: se.scrollWidth - innerWidth,
+    explain: ex ? { h: Math.round(ex.getBoundingClientRect().height), over: ex.scrollHeight - ex.clientHeight, clamp: ex.dataset.clamp ?? null, fit: ex.dataset.fit ?? null, font: getComputedStyle(ex).fontSize, lineH: getComputedStyle(ex).lineHeight } : null,
+    main: r('.reveal-main'), reveal: r('.reveal'), ceremony: r('.ceremony'), next: r('.reveal-next'), chat: r('.chat-card'),
+    onScreen: { ceremony: vis('.ceremony'), next: vis('.reveal-next'), chatInput: vis('.chat-card input') },
+  };
+})())`;
+async function r105Flow(browser) {
+  const pick = await withPg(async (c) =>
+    (
+      await c.query(
+        `SELECT q.id::text AS id, q.display_answer, a.answer_text AS alt
+           FROM questions q
+           JOIN question_answers a ON a.question_id = q.id AND NOT a.is_primary
+          WHERE q.status = 'approved' AND q.is_active AND q.question_type = 'short_answer'
+            AND q.difficulty_score BETWEEN 1 AND 4
+            AND q.category_id IN (SELECT category_id FROM category_game_topics WHERE game_topic IS NOT NULL)
+            AND a.answer_norm <> lower(regexp_replace(q.display_answer, '\s', '', 'g'))
+            AND char_length(a.answer_text) BETWEEN 2 AND 8 AND a.answer_text ~ '[가-힣]'
+          ORDER BY char_length(coalesce(q.explanation, '')) DESC, q.id LIMIT 1`,
+      )
+    ).rows[0],
+  );
+  if (!pick) throw new Error('R105 — 인정어가 있는 문제를 못 찾았다');
+  console.log(`[r105] 문제 #${pick.id} 대표 "${pick.display_answer}" · 인정어 "${pick.alt}"`);
+  const host = await newPage(browser, 'r105-h', true);
+  await host.setViewport(1280, 720);
+  await signUp(host, 'h', HANGUL10);
+  await createRoom(host, '인정어 한 줄');
+  await withPg(async (c) =>
+    c.query(
+      `INSERT INTO question_experiences (account_id, question_id)
+       SELECT a.id, q.id FROM accounts a, questions q WHERE a.login_id = $1 AND q.id <> $2::bigint
+       ON CONFLICT DO NOTHING`,
+      [`${ACCOUNT_PREFIX}_h`, pick.id],
+    ),
+  );
+  await setQuestionCount(host, 1);
+  await sleep(600);
+  await host.click('게임 시작');
+  await host.waitFor("document.querySelector('.q-timebar') !== null && document.querySelector('.reveal') === null", 20000);
+  await sleep(500);
+  await host.setInput('.chat-card input', pick.alt);
+  await host.click('전송');
+  await host.waitFor("document.querySelector('.reveal') !== null", 5000);
+  await host.setInput('.chat-card input', '이 정도 길이면 소감 칸은 어떻게 보일까? 줄이 바뀌고 넘치면 줄임표로 끝나야 한다 ㅋㅋㅋ 정말 긴 소감');
+  await host.click('전송');
+  await host.evaluate('document.activeElement?.blur()');
+  await sleep(800);
+  const out = [];
+  for (const sz of R105_SIZES) {
+    await host.setViewport(sz.w, sz.h);
+    await sleep(500);
+    await host.evaluate('window.scrollTo(0, 0)');
+    await host.evaluate("document.querySelectorAll('[data-r105-hidden]').forEach((e) => { e.style.display = ''; e.removeAttribute('data-r105-hidden'); }); document.querySelectorAll('[data-r105-alt]').forEach((e) => { e.classList.add('has-alt'); e.removeAttribute('data-r105-alt'); })");
+    await sleep(250);
+    await snap(host, `r105-${sz.n}-with`);
+    const withLine = JSON.parse(await host.evaluate(R105_MEASURE));
+    await host.evaluate("document.querySelectorAll('.reveal-alt, .reveal-alt-inline').forEach((e) => { e.style.display = 'none'; e.setAttribute('data-r105-hidden', '1'); }); document.querySelectorAll('.reveal-answer.has-alt').forEach((e) => { e.classList.remove('has-alt'); e.setAttribute('data-r105-alt', '1'); })");
+    await sleep(350);
+    await snap(host, `r105-${sz.n}-without`);
+    const without = JSON.parse(await host.evaluate(R105_MEASURE));
+    out.push({ size: sz.n, withLine, without });
+    console.log(`[r105] ${sz.n} 있음 ${JSON.stringify(withLine)}`);
+    console.log(`[r105] ${sz.n} 없음 ${JSON.stringify(without)}`);
+  }
+  const tag = (o) => `${o.size}`;
+  for (const o of out) {
+    const a = o.withLine;
+    const b = o.without;
+    record(`R105 ${tag(o)} — 인정어로 맞히면 한 줄이 뜬다("${pick.alt}" · 정답 인정)`, Boolean(a.alt && a.alt.text.includes(pick.alt) && /인정/.test(a.alt.text) && (o.size.startsWith('m') ? a.alt.kind === 'reveal-alt-inline' && a.answerRow.h === b.answerRow.h : a.alt.kind === 'reveal-alt')), JSON.stringify(a.alt));
+    record(`R105 ${tag(o)} — 결과 화면 크기(정답 줄 · 판 높이)`, true, JSON.stringify({ row: [a.answerRow, b.answerRow], main: [a.main?.h, b.main?.h] }));
+    record(`R105 ${tag(o)} — 해설이 더 잘리지 않는다(넘침 · 줄 맞춤 같음)`, Boolean(a.explain && b.explain && a.explain.over <= b.explain.over && a.explain.fit === b.explain.fit && a.explain.clamp === b.explain.clamp && a.explain.font === b.explain.font), JSON.stringify({ with: a.explain, without: b.explain }));
+    record(`R105 ${tag(o)} — 스크롤이 새로 생기지 않는다`, a.pageScroll <= b.pageScroll && a.hScroll <= 0, JSON.stringify({ with: a.pageScroll, without: b.pageScroll, h: a.hScroll }));
+    record(`R105 ${tag(o)} — 소감 · 다음 안내 · 입력 칸이 화면 밖으로 밀리지 않는다`, JSON.stringify(a.onScreen) === JSON.stringify(b.onScreen), JSON.stringify({ with: a.onScreen, without: b.onScreen }));
+  }
+  await host.setViewport(1280, 720);
+  return out;
+}
+
 async function longFlow(browser, suffix = 'h') {
   const ids = await longestQuestionIds();
   console.log(`[long] 가장 긴 문제·해설·정답 = ${ids.join(', ')}`);
@@ -12735,6 +12841,10 @@ try {
       await profileFlow(browser); // ★ R045 D
       await emojiFlow(browser); // ★ R045 A
     }
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (R105_ONLY) {
+    await r105Flow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (LONG_ONLY) {

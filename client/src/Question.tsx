@@ -221,6 +221,8 @@ export default function Question({
     resolution?.reason === 'correct'
       ? players.find((p) => p.accountId === resolution.winnerAccountId) ?? null
       : null;
+  /** ★ R105 — 정답자가 정답 인정어로 맞혔으면 그 표기(정답자가 보일 때만) */
+  const altAnswer = winner && resolution?.winnerAnswer ? resolution.winnerAnswer : null;
 
   // ★★ R035 — 정답 공개 8초 중 남은 시간 (다음 문제·결과까지). 앞 3초는 안내를 띄우지 않는다
   const nextRemainMs = resolution?.nextAt != null ? Math.max(0, resolution.nextAt - serverNow()) : null;
@@ -358,13 +360,19 @@ export default function Question({
             ) : (
               <p className="reveal-title">{resolveTitle(resolution, players)}</p>
             )}
-            <p className="reveal-answer">
+            <p className={altAnswer ? 'reveal-answer has-alt' : 'reveal-answer'}>
               정답 <strong>{resolution.displayAnswer}</strong>
+              {/* ★ R105 — 모바일은 줄을 늘릴 자리가 없다(360 · 390 에서 15px 넘침 — 보고 R105) → 같은 줄 오른쪽에 작게 · 넘치면 "…" */}
+              {altAnswer && winner && (
+                <span className="reveal-alt-inline">
+                  · "<b style={{ color: `var(--p${winner.colorIndex})` }}>{altAnswer}</b>" 인정
+                </span>
+              )}
             </p>
-            {/* ★★ R105 (찬종 11.18) — 대표 정답이 아닌 정답 인정어로 맞혔을 때만 한 줄("덕아웃"으로 정답 인정) · 없으면 자리도 없다 */}
-            {winner && resolution.winnerAnswer && (
+            {/* ★★ R105 (찬종 11.18) — 대표 정답이 아닌 정답 인정어로 맞혔을 때만 한 줄("덕아웃"으로 정답 인정) · 없으면 자리도 없다 · PC 만(모바일은 위 같은 줄) */}
+            {altAnswer && winner && (
               <p className="reveal-alt">
-                "<b style={{ color: `var(--p${winner.colorIndex})` }}>{resolution.winnerAnswer}</b>"{euroParticle(resolution.winnerAnswer)} 정답 인정
+                "<b style={{ color: `var(--p${winner.colorIndex})` }}>{altAnswer}</b>"{euroParticle(altAnswer)} 정답 인정
               </p>
             )}
             {/* ★★ R042 G — 해설은 자기 자리(최대 4줄) 안에서만: 줄바꿈 → 글자 맞춤(75%) → "…" */}
