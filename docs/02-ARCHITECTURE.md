@@ -6,13 +6,15 @@
   친구들의 브라우저 (PC / 모바일)
             │  https + wss
             ▼
-  Cloudflare quick tunnel (trycloudflare.com)   ← 계정·도메인 불필요, 무료, URL은 실행마다 바뀜
-            │
+  Cloudflare 터널 — ★ R107: 고정 주소 https://quizdojang.com (이름 붙인 터널 · .env TUNNEL_NAME + PUBLIC_HOSTNAME)
+                    없으면 quick tunnel (trycloudflare.com — 계정·도메인 불필요, URL은 실행마다 바뀜)
+            │  (cloudflared 가 이 PC 에서 밖으로 연결 — 공유기에 연 포트 없음 · 집 IP 안 드러남)
             ▼
-  건우 PC (Windows 11)
+  찬종 PC (Windows 11)
    ├─ Node.js 서버 (Express + Socket.IO)        ← 게임 상태는 이 프로세스의 메모리에 있다
+   │    │  ★ R107: 127.0.0.1 에서만 듣는다(HOST) · 한도 · 보안 헤더 = docs/21-SECURITY.md
    │    └─ 클라이언트 정적 파일도 이 서버가 서빙 (★ 오리진 1개)
-   └─ Docker: PostgreSQL 17 (localhost:5434)    ← 영속 데이터
+   └─ Docker: PostgreSQL 17 (127.0.0.1:5434)    ← 영속 데이터 · ★ R107: 이 PC 안에서만
 ```
 
 **월 비용 $0. 가입해야 할 외부 서비스가 없다.**
@@ -280,6 +282,11 @@ npm run db:reset          # ★ 모든 데이터 삭제 후 재적용. 개발용
 | `SESSION_SECRET` | O | 세션 쿠키 서명용 비밀 문자열 |
 | `NODE_ENV` | | `development` / `production` |
 | `PUBLIC_BASE_URL` | | **선택.** 서버가 직접 링크를 만들어야 할 때만. 없어도 정상 동작한다 |
+| `HOST` | | ★ R107 서버가 듣는 주소. 없으면 `127.0.0.1`(이 PC 안에서만 — 터널은 루프백으로 들어온다). 다른 기기에서 직접 붙어야 할 때만 `0.0.0.0` |
+| `TUNNEL_NAME` · `PUBLIC_HOSTNAME` | | ★ R107 **둘 다** 있으면 고정 주소(이름 붙인 터널 · `https://<PUBLIC_HOSTNAME>`) · 서버는 소켓 Origin 허용 목록에 `PUBLIC_HOSTNAME` 을 쓴다. 순서 docs/11 4-1 |
+| `TUNNEL_CONFIG` | | ★ R107 터널 설정 파일 경로. 없으면 `%USERPROFILE%\.cloudflared\config.yml` |
+| `POSTGRES_PASSWORD` | | ★ R107 `docker-compose.yml` 이 읽는다(없으면 옛 값) — 볼륨을 처음 만들 때만 쓰인다. 바꾸는 순서 docs/11 4-3 |
+| `SEC_*` | | ★ R107 보안 한도(로그인 · 가입 · 소켓 · 방 만들기) — 값과 뜻은 docs/21-SECURITY.md 3장. 보통 비워 둔다 |
 | `GEMINI_API_KEY` | | 파이프라인 전용. 게임 서버는 쓰지 않는다 |
 | `RESOLVED_WAIT_MS` · `MINIGAME_PHASE_SCALE` | | ★ R050 **검사용** — 봇 · 화면 검사가 자기 서버에서만 쓴다(정답 공개 대기 · 미니게임 단계 길이 배율). 실제 서버 .env 에 두지 않는다 |
 

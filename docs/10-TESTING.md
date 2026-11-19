@@ -1074,6 +1074,18 @@ offline 을 켜도 **이미 열린 WebSocket 이 끊기지 않아** PAUSED 가 �
 
 ---
 
+## 79. ★★ R107 — 공격 묶음 · CSP 위반 · 고정 주소 갈래 (D-364~367)
+
+- **`node scripts/bot.mjs attack --url http://localhost:3401`** — 자기 서버(SCENARIO_ENV.attack: 한도를 작게 · `SEC_LOCAL_EXEMPT=0` · `HOST=0.0.0.0`). 옆 방(다른 IP 두 사람)이 판을 하는 동안 [1] 로그인 무차별(한 아이디 40개 동시) [2] IP 하나가 아이디를 바꿔 가며 [3] 가입 폭주 [4] 소켓 연결 폭주(로그인 없이 30) [5] 이벤트 폭주(600) [6] 큰 메시지(소켓 · HTTP 200KB) [7] 남의 Origin · 방 만들기 폭주 · 보안 헤더 [8] 가짜 IP 헤더(이 PC 의 LAN 주소로 붙어 `CF-Connecting-IP` 를 바꿔 가며) — 26 단정. 공격마다 옆 방 판정 지연을 같이 잰다(500ms 안 · 실측 2ms).
+  - IP 는 `CF-Connecting-IP` 로 흉내 낸다(봇은 루프백 — 서버가 믿는다 = 터널 뒤 사람). `Bot` 에 `{ ip }` 옵션.
+  - **`--before`**: 고치기 전 서버에 대고 숫자만(단정 없음). R107 은 플레이 트리 빌드(`../quiz-web-play/server/dist`)를 검사 DB · 3402 로 띄워 쟀다 — 보고서 2절 표의 "전" 칸.
+  - LAN IPv4 가 없으면 [8] 은 실패로 남긴다(통과 아님).
+- **ui-check 모든 묶음 끝에 "★ R107 CSP 위반 0"** — CSP 위반은 `console.error` 가 아니라 CDP `Log.entryAdded` 로 와서 옛 `pageErrors` 가 못 잡았다. 거름이 실제로 잡는지: `node tmp/r107/csp-probe.mjs http://localhost:<포트>`(첫 화면 0 · 인라인 스크립트를 넣으면 1 — R107 실측).
+- 고정 주소 갈래는 실제 도메인 없이 단위 테스트로(`scripts/tunnel-probe.test.mjs` — tunnelPlan · checkTunnelConfig). 임시 주소 흐름은 검사 서버에 실제 quick tunnel 을 열어 밖에서 확인(HSTS · CSP · `/debug` 404 · 임시 주소 Origin 소켓 연결 · 남의 Origin 거부 — R107 보고서 1절).
+- 한도 부품 단위 테스트 `server/src/security/limits.test.ts`(진짜 IP · 창 · 잠금 · 통 · 줄 · Origin · CSP 14).
+
+---
+
 ## 78. ★ R102 — 제보 목록 전부 + 정답 · 많이 말하기 30초 · R101 남은 것 (D-359)
 
 | 검사 | 무엇 | 결과 |

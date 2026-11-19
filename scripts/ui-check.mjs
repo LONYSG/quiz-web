@@ -160,6 +160,9 @@ if (!existsSync(CLIENT_INDEX)) {
 // -----------------------------------------------------------------------------
 // CDP 연결 래퍼
 // -----------------------------------------------------------------------------
+/** ★ R107 — 모든 탭의 CSP 위반(끝에 record 한 줄) */
+const CSP_VIOLATIONS = [];
+
 class Cdp {
   constructor(url) {
     this.url = url;
@@ -178,6 +181,9 @@ class Cdp {
       // ★ R064 — 페이지 예외 · console.error 를 모아 둔다(결과 화면 "아예 안 보임" 같은 것을 숫자로 잡는다)
       if (msg.method === 'Runtime.exceptionThrown') {
         (this.pageErrors ??= []).push(String(msg.params?.exceptionDetails?.exception?.description ?? msg.params?.exceptionDetails?.text ?? '').slice(0, 300));
+      } else if (msg.method === 'Log.entryAdded' && /Content Security Policy|Refused to (load|execute|apply|connect)/i.test(msg.params?.entry?.text ?? '')) {
+        // ★ R107 (D-366) — CSP 위반은 console.error 가 아니라 Log 로 온다 — 화면이 조용히 깨지는 것을 숫자로 잡는다(끝에 한 줄)
+        CSP_VIOLATIONS.push(String(msg.params.entry.text).slice(0, 200));
       } else if (msg.method === 'Runtime.consoleAPICalled' && msg.params?.type === 'error') {
         (this.pageErrors ??= []).push(('console.error ' + (msg.params.args ?? []).map((a) => a.value ?? a.description ?? '').join(' ')).slice(0, 300));
       }
@@ -232,6 +238,7 @@ class Page extends Cdp {
     await this.open();
     await this.send('Page.enable');
     await this.send('Runtime.enable');
+    await this.send('Log.enable').catch(() => {}); // ★ R107 — CSP 위반
     return this;
   }
 
@@ -14515,6 +14522,8 @@ try {
   stopServer();
 }
 
+// ★ R107 (D-366) — 이 묶음을 도는 동안 CSP 위반 0(보안 헤더가 화면을 깨지 않는다)
+record('★ R107 CSP 위반 0 (이 묶음의 모든 탭)', CSP_VIOLATIONS.length === 0, CSP_VIOLATIONS.slice(0, 3).join(' | '));
 const failed = checks.filter((c) => !c.ok);
 console.log(`\n[결과] ${checks.length - failed.length}/${checks.length} 통과`);
 for (const f of failed) console.log(`  ★ 실패: ${f.name}  ${f.detail}`);

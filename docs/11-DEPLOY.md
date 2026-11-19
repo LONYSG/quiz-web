@@ -242,6 +242,72 @@ npm run dev:tunnel   # 터널
 
 ---
 
+## 4-1. ★ 도메인 연결 — 한 번만 (R107 · D-364 · 고정 주소 https://quizdojang.com)
+
+`.env` 에 **`TUNNEL_NAME` · `PUBLIC_HOSTNAME` 두 값이 다 있으면** 메뉴 1 이 임시 주소(trycloudflare) 대신 **이름 붙인 터널**로 켠다 — 주소가 늘 `https://<PUBLIC_HOSTNAME>` 으로 같다. 둘 중 하나라도 없으면 지금처럼 임시 주소다(되돌리기 = 두 줄을 지우고 메뉴 3 → 1).
+명령 모양은 Cloudflare 문서(Create a locally-managed tunnel · Configuration file · 2026-11-19 확인)를 따른다. `cloudflared tunnel run` 에는 서버 주소를 주는 옵션이 문서에 없어서 **설정 파일**로 정한다.
+
+1. **Cloudflare 계정 · 도메인** — 찬종이 2026-11-19 `quizdojang.com` 을 Cloudflare 에서 샀다(이미 Cloudflare 에 올라가 있음).
+2. **로그인(브라우저가 열린다 → 도메인 고르기)** — 명령 창에서:
+   ```bat
+   cloudflared tunnel login
+   ```
+   인증서 `cert.pem` 이 `%USERPROFILE%\.cloudflared` 에 생긴다(Cloudflare 문서의 Windows 기본 폴더).
+3. **터널 만들기** — 이름은 아무거나(아래는 `quizdojang`):
+   ```bat
+   cloudflared tunnel create quizdojang
+   ```
+   찍힌 **터널 ID**(긴 글자) 를 적어 둔다. 인증 파일 `<터널 ID>.json` 도 같은 폴더에 생긴다. ★ 이 두 파일은 저장소에 넣지 않는다(저장소 밖이라 안전 · `.gitignore` 에도 막아 둠).
+4. **설정 파일** — 저장소의 본보기 `ops\cloudflared.example.yml` 을 `%USERPROFILE%\.cloudflared\config.yml` 로 복사하고 `<터널-ID>` · `<사용자>` 두 곳을 채운다. 끝의 `- service: http_status:404` 줄은 지우면 안 된다(Cloudflare 문서: 꼭 있어야 함). 메뉴 1 이 켤 때 이 파일의 hostname · 포트 3000 · 끝 줄을 점검하고, 틀리면 **임시 주소로 열고 고칠 줄을 알려 준다**.
+5. **주소 잇기(DNS)**:
+   ```bat
+   cloudflared tunnel route dns quizdojang quizdojang.com
+   ```
+   (맨 도메인 — 앞에 play 같은 말 없이. Cloudflare 대시보드 DNS 에 `quizdojang.com` → 터널 항목이 생긴다 — 맨 도메인에 붙는지는 **확인 필요**: 오류가 나면 대시보드 DNS 화면을 그대로 보고 설계에 알린다.)
+6. **`.env` 두 줄** — 개발 트리 `C:\work\quiz-web\.env` 에(값은 이름 그대로 적어도 된다 — 비밀값이 아니다):
+   ```
+   TUNNEL_NAME=quizdojang
+   PUBLIC_HOSTNAME=quizdojang.com
+   ```
+   (설정 파일을 다른 곳에 두었으면 `TUNNEL_CONFIG=` 에 경로. 플레이 트리의 `.env` 는 고치지 않아도 된다 — 메뉴 1 이 이 트리의 `.env` 를 읽어 서버 · 터널 창에 넘긴다.)
+7. **메뉴 3 → 1** — 메뉴 1 에 `주소: 고정 https://quizdojang.com` 줄이 나오고, 터널 창이 "외부 접속 주소(고정 — 늘 같은 주소)" 를 띄운 뒤 브라우저를 연다. 메뉴 4 에도 `주소: 고정 …` 한 줄.
+
+고정 주소가 되면 달라지는 것:
+- **다시 켜도 로그인이 유지된다** — 세션 쿠키는 주소에 붙는데 주소가 안 바뀐다(임시 주소 때는 켤 때마다 새 주소 = 새로 로그인).
+- 초대 링크는 원래 방장 브라우저 주소로 만든다(R004) — 고정 주소면 링크도 고정. `PUBLIC_BASE_URL` 은 여전히 비워 둬도 된다.
+- 임시 주소의 "진행 중 요청 200개 · 테스트·개발용" 제한(4장 표)이 없어진다.
+- 터널을 다시 켜도 주소가 같으니 친구들에게 다시 알릴 필요가 없다(3장 A-2 의 "URL 이 바뀐다" 는 임시 주소 때만).
+
+## 4-2. ★ Cloudflare 에서 켤 것 · 공격받을 때 (R107 — 찬종이 누르는 것 · 메뉴 이름은 2026-11-19 Cloudflare 문서에서 확인)
+
+**처음 한 번 (무료 요금제)**
+
+| 무엇 | 어디서 | 왜 |
+|---|---|---|
+| Always Use HTTPS | **SSL/TLS** → (Overview 에서 암호화 모드가 Off 가 아닌지 확인) → **Edge Certificates** → **Always Use HTTPS** 켬 | http 로 들어와도 https 로 돌린다 |
+| 속도 제한 규칙 1개 | **Security rules** → **Create rule** → **Rate limiting rules** · 이름 `auth` · 필드 URI Path · 연산 starts with · 값 `/api/auth/` · 같은 특성 = IP · 비율 **10초에 20번** · 동작 Block · 기간 10초 → **Deploy** | 로그인 · 가입 폭주를 Cloudflare 에서 먼저 자른다(서버 한도는 docs/21 — 이중으로). 무료는 규칙 1개 · IP 기준 · 10초 창 · 10초 막기로 고정(문서 표) |
+| 정적 파일 캐시 | 따로 누를 것 없음 — Cloudflare 는 js · css · 그림 · 글꼴 · 소리 확장자를 기본으로 캐시한다(html · json 은 안 함). 서버가 R107 부터 `/assets/` 에 1년 캐시 표시를 붙인다 | 사람이 몰려도 큰 파일은 Cloudflare 가 낸다 |
+| Bot Fight Mode | **지금은 켜지 않는다(확인 필요)** — 위치: Security Settings → Bot traffic → Bot fight mode | 문서: "API 나 앱 트래픽을 챌린지할 수 있다" · 예외를 둘 수 없다 · CSP 와 부딪힐 수 있다 → 게임 소켓 · /api 가 막힐 위험. 켜 보려면 친구 한 명과 실제로 들어가 보고 판이 도는지 확인 |
+| 터널 상태 | Cloudflare 대시보드의 터널(Networks → Tunnels 쪽) — **메뉴 이름 확인 필요** · PC 에서는 메뉴 4 | 터널이 붙어 있나(HEALTHY) |
+
+**공격받을 때 (증상 → 볼 것 → 누를 것)**
+
+| 증상 | 볼 것 | 누를 것 |
+|---|---|---|
+| 접속이 느리거나 안 열린다 · 메뉴 4 는 서버 켜짐 | 메뉴 4 의 server.log 꼬리 — `[sec]` 로 시작하는 줄(로그인 잠금 · 소켓 한도 · 이벤트 폭주로 끊음)이 많은가 | 많으면 공격 — Cloudflare 대시보드 도메인 개요의 **Quick Actions → Under Attack Mode** 켬(방문자는 5초 안팎 "브라우저 확인" 화면을 한 번 본다 · 자바스크립트 필요). 잠잠해지면 끈다 |
+| 로그인 · 가입이 "잠시 뒤 다시" 로만 나온다 | server.log 의 `[sec] 로그인 IP 한도` · `가입 한도` | 한 IP 가 범인이면 Cloudflare **Security → IP Access rules** 로 그 IP 막기(메뉴 이름 확인 필요). 서버 한도는 기다리면 풀린다(서버를 다시 켜도 풀림) |
+| 서버 자체가 멈춤(메뉴 4 `/healthz 무응답`) | 메뉴 20(메모리) · server.log 마지막 줄 | 메뉴 3 → 1(판은 끊긴다) · 되풀이되면 Under Attack Mode 를 켠 채로 켠다 |
+
+## 4-3. DB 비밀번호 바꾸기 (R107 · 찬종 결정 — 급하지 않다)
+
+옛 비밀번호는 공개 저장소의 `docker-compose.yml` 에 적혀 있었다. R107 부터 **DB 포트가 이 PC 안(127.0.0.1)에서만 열려** 바깥에서는 그 비밀번호로도 붙을 수 없다. 그래서 급하지 않다. 바꾸려면 아래 순서로 — 단, 검사 · GEN 스크립트 44개가 옛 값을 기본값으로 갖고 있어(`DATABASE_URL` 이 없을 때만 쓰는 값) 바꾼 뒤 그 스크립트들은 `.env` 의 `DATABASE_URL` 로 돌려야 한다 — **바꾸기 전에 설계에 알린다**.
+
+1. 열린 판 0 · GEN · VERIFY 가 DB 를 쓰지 않을 때. 메뉴 12(백업).
+2. 새 비밀번호를 정한다(영문 · 숫자만 — 주소에 넣기 쉽게).
+3. `docker exec -it quiz-web-db psql -U quiz -d quizweb -c "ALTER USER quiz PASSWORD '<새 비밀번호>';"` — ★ `docker-compose.yml` 의 값은 **볼륨을 처음 만들 때만** 쓰여서, 이 명령 없이 `.env` 만 바꾸면 실제 비밀번호는 그대로다.
+4. 개발 트리 `.env`: `POSTGRES_PASSWORD=<새 비밀번호>` 한 줄 · `DATABASE_URL` 의 `quiz:` 뒤 비밀번호도 같은 값으로. 플레이 트리 `.env` 의 `DATABASE_URL` 도 같은 값으로(메뉴 1 은 플레이 트리 `.env` 가 있으면 복사하지 않는다).
+5. 메뉴 3 → 1 · 메뉴 15(개발 서버) — 두 DB 응답 확인.
+
 ## 5. DB 백업 ★
 
 **로컬 DB에 모든 데이터가 있으므로 이것이 유일한 안전장치다.**
