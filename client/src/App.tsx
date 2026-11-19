@@ -583,7 +583,6 @@ export default function App() {
       ),
       foot: (
         <>
-          {/* ★ R033 — 출처(OpenTDB) 문구를 뺐다. OpenTDB 문항은 전부 내렸다 (건우 방침 / 저장소 Private) */}
           <Prefs />
           {/* ★ R043 A-6 — 로그아웃도 확인 팝업 (방 안 ⚙ 의 로그아웃과 같은 팝업) */}
           <button type="button" className="ghost tiny" onClick={() => setLogoutOpen(true)}>

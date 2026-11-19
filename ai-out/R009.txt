@@ -492,7 +492,7 @@ STATUS: 완료
     → Q-59 / Q-54 해소로 처리하고 08-OPEN-QUESTIONS 에서 옮긴다 (다음 라운드에)
 
   진행 순서 (R005 9-4 그대로)
-    opentdb 어댑터 → 필터 → Gemini 가공(responseSchema 로 rejectReason 강제)
+    외부 문제집 어댑터 → 필터 → Gemini 가공(responseSchema 로 rejectReason 강제)
     → 역검증 + 규칙 검사 3종 → scripts/pipeline-load.mjs
     → 100건 배치로 실제 생존율 측정 → Actions 워크플로 2개 → 검수 흐름 1회
 

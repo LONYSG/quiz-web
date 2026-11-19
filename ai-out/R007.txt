@@ -860,7 +860,7 @@ STATUS: 완료
     이 규칙을 적용해야 한다.
 
   진행 순서는 R005 9-4에 적은 그대로다.
-    opentdb 어댑터 → 필터 → Gemini 가공(responseSchema 로 rejectReason 강제)
+    외부 문제집 어댑터 → 필터 → Gemini 가공(responseSchema 로 rejectReason 강제)
     → 역검증 + 규칙 검사 3종 → scripts/pipeline-load.mjs
     → 100건 배치로 실제 생존율 측정 → Actions 워크플로 2개 → 검수 흐름 1회 실행
 

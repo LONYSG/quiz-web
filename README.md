@@ -118,5 +118,3 @@ DB는 로컬 PostgreSQL(Docker). **클라우드 서비스를 쓰지 않는다. �
 
 - **코드**: MIT
 - **퀴즈 문제 데이터**: CC BY-SA 4.0 — [DATA_LICENSE.md](DATA_LICENSE.md) 참조
-
-문제 출처: [Open Trivia Database](https://opentdb.com/) (CC BY-SA 4.0)

@@ -691,7 +691,7 @@ STATUS: 완료 (결정대기 6건: Q-53 ~ Q-58. 이 중 Phase 1 착수를 막는
 
     GitHub Actions (클라우드)                      건우 PC (로컬)
     ─────────────────────────                      ──────────────
-    1. 수집   OpenTDB → 원본 JSONL
+    1. 수집   외부 공개 문제집 → 원본 JSONL
     2. 필터   규칙 기반 사전 제거 (LLM 호출 없이 약 20% 제거)
     3. 가공   Gemini: 판정 + 번역 + 복수 정답 배열
     4. 검증   Gemini 역검증 + 규칙 검사 3종
@@ -705,13 +705,13 @@ STATUS: 완료 (결정대기 6건: Q-53 ~ Q-58. 이 중 Phase 1 착수를 막는
 6-3. 디렉터리와 파일 형식
 
     data/pipeline/
-      raw/opentdb/2026-09-07.jsonl              소스 원본 (append-only)
-      processed/opentdb/2026-09-07-batch01.json 가공 + 역검증 결과
-      approved/opentdb/...                      ★ 검수 승인. 적재 대상
-      rejected/opentdb/...                      반려. 프롬프트 개선에 쓴다
+      raw/<소스>/2026-09-07.jsonl              소스 원본 (append-only)
+      processed/<소스>/2026-09-07-batch01.json 가공 + 역검증 결과
+      approved/<소스>/...                      ★ 검수 승인. 적재 대상
+      rejected/<소스>/...                      반려. 프롬프트 개선에 쓴다
 
   ★ 원본을 저장소에 넣을지에 대한 판단 (지시받은 항목)
-    → 넣는다. OpenTDB 전량 4,500건이 JSONL로 약 1.5MB라 부담이 없다.
+    → 넣는다. 외부 공개 문제집 전량 4,500건이 JSONL로 약 1.5MB라 부담이 없다.
       원본을 버리면 가공 규칙이 바뀔 때마다 소스를 다시 긁어야 하는데
       레이트 리밋 때문에 전량 수확에 약 12분이 걸린다(R002 실측).
     ★ 단 위키데이터처럼 원본이 수십 MB를 넘는 소스가 생기면 그때 재검토한다.
@@ -770,7 +770,7 @@ STATUS: 완료 (결정대기 6건: Q-53 ~ Q-58. 이 중 Phase 1 착수를 막는
     · questions의 (source_id, source_ref) 부분 UNIQUE 제약
 
   만들지 않은 것 (지시대로)
-    · 실제 OpenTDB 수집·Gemini 가공 — Gemini API 키가 없다
+    · 실제 외부 공개 문제집 수집·Gemini 가공 — Gemini API 키가 없다
     · pipeline/src/ 구현체
     · GitHub Actions 워크플로
     → 필요한 파일 목록을 pipeline/README.md 8장에 적어 두었다.
@@ -934,7 +934,7 @@ STATUS: 완료 (결정대기 6건: Q-53 ~ Q-58. 이 중 Phase 1 착수를 막는
 9-2. 이번 라운드에서 하지 않은 것 (명시)
 
   · 게임 로직 — 정답 판정, 상태 머신, 마스킹, 방/게임 관리. 지시대로 Phase 1 이후다
-  · 실제 OpenTDB 수집·Gemini 가공 — API 키가 없다
+  · 실제 외부 공개 문제집 수집·Gemini 가공 — API 키가 없다
   · GitHub Actions 워크플로
   · 봇 클라이언트 — Phase 3 착수 전에 만든다
   · 비밀번호 재설정 관리 스크립트 — Phase 1과 함께

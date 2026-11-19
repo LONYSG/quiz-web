@@ -754,7 +754,7 @@ STATUS: 완료
   ★ Track D 착수 시 지켜야 할 것
     · pipeline 도 컴파일 산출물을 실행한다 (R006 D-020). 소스 직접 실행 경로를 만들지 않는다
     · 순서는 R005 9-4 그대로:
-      opentdb 어댑터 → 필터 → Gemini 가공(responseSchema) → 역검증 + 규칙 검사 3종
+      외부 문제집 어댑터 → 필터 → Gemini 가공(responseSchema) → 역검증 + 규칙 검사 3종
       → scripts/pipeline-load.mjs → 100건 배치로 생존율 측정 → Actions 2개 → 검수 1회
 
   ★ Phase 3 착수 시 첫 작업

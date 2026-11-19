@@ -335,8 +335,7 @@ curl http://localhost:3000/healthz
 > 파이프라인의 설계와 근거는 [pipeline/README.md](../pipeline/README.md),
 > 실측 결과는 [07-DECISIONS.md](07-DECISIONS.md) D-033 ~ D-042 에 있다.
 
-★★ **R011부터 주 경로가 바뀌었다.** OpenTDB 수확·가공이 아니라 **직접 생성**이다.
-아래 "생성 문제" 절차를 먼저 보고, OpenTDB 절차는 참고로 남겨 둔다.
+★★ **R011부터 주 경로는 직접 생성이다.** 아래 "생성 문제" 절차를 본다.
 
 ★★ **R012부터 Actions 정기 실행을 쓰지 않는다** (Q-71).
 로컬에서 `npm run pipeline:bulk` 로 만든다. ★ 중단하고 재개할 수 있다.
@@ -437,26 +436,9 @@ PIPELINE_MIN_DIFFICULTY=0    # ★ 0 이면 난이도로 걸러내지 않는다.
 이 게임은 정확 문자열 일치로만 판정하므로(guide 16절), 정답을 아는 사람이
 계속 오답 처리되는 문제가 섞이면 게임 자체가 재미없어진다.
 
-### 흐름
-
-```
-  Actions (클라우드)                        건우 PC (로컬)
-  ──────────────────                       ──────────────
-  1. 수확  OpenTDB → raw/*.jsonl
-  2. 가공  필터 → Gemini → 역검증 → processed/*.json
-  3. 커밋  결과 JSON 을 저장소에 push
-                    │
-                    │  git pull
-                    ▼
-                                      4. 검수  npm run pipeline:review
-                                      5. 적재  npm run pipeline:load
-```
-
-### 4. 검수 (사람)
+### 검수 (사람)
 
 ```bash
-git pull
-
 # 검수 시트를 읽는다
 npm run pipeline:review
 ```
@@ -481,10 +463,10 @@ npm run pipeline:review
 npm run pipeline:review -- --approve all
 
 # 일부만 승인
-npm run pipeline:review -- --approve otdb-xxxx,otdb-yyyy
+npm run pipeline:review -- --approve <id>,<id>
 
 # 반려 (사유를 남긴다)
-npm run pipeline:review -- --reject otdb-zzzz --note "니치 게임 세부 설정"
+npm run pipeline:review -- --reject <id> --note "니치 게임 세부 설정"
 
 # 내용을 고치고 싶으면 processed/ 의 JSON 을 직접 편집한다
 #   questionKo / displayAnswer / answers 를 손으로 고쳐도 된다
@@ -496,7 +478,7 @@ npm run pipeline:review -- --collect
 
 ★ `rejected/` 는 버리지 않는다. 필터 품질 평가와 프롬프트 개선의 근거다.
 
-### 5. 적재
+### 적재
 
 ★ **생성 문제를 처음 적재하기 전에 마이그레이션을 적용해야 한다.**
 
@@ -554,8 +536,7 @@ node scripts/pipeline-dedupe-db.mjs --judge --apply
 - ★ 시드 문제(53건)와 생성 문제 사이의 중복
 
 ★ R012 첫 실행에서 실제로 하나 찾았다 —
-`#7 (manual)` "그리스 신화에서 제우스의 아내는?" 과
-`#60 (opentdb)` "그리스 신화에서 주신 제우스의 아내는 누구인가?" 가 둘 다 헤라다.
+`#7 (manual)` "그리스 신화에서 제우스의 아내는?" 과 정답(헤라)이 같은 문항이 하나 더 있었다.
 
 ★ 지우지 않는다. `is_active` 만 내리고 `review_queue.reviewer_note` 에 이유를 남긴다.
 ★ `--apply` 를 주지 않으면 DB 를 전혀 바꾸지 않는다.

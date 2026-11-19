@@ -236,7 +236,7 @@ STATUS: 완료 (결정대기 5건: Q-54 Q-56 Q-58 Q-59 Q-60. R006 착수를 막�
     · 중복 적재 3중 방어 준비됨 (수집 / 적재 스크립트 / DB 부분 UNIQUE)
 
   [만들어야 할 것 — pipeline/README.md 8장을 이 상태로 갱신했다]
-    pipeline/src/adapters/opentdb.ts   OpenTDB → RawQuestion 변환 + 수확
+    pipeline/src/adapters/<소스>.ts   외부 공개 문제집 → RawQuestion 변환 + 수확
     pipeline/src/filter.ts             규칙 기반 사전 필터
     pipeline/src/process.ts            Gemini 1차 가공
     pipeline/src/backcheck.ts          역검증 + 규칙 검사 3종
@@ -837,7 +837,7 @@ STATUS: 완료 (결정대기 5건: Q-54 Q-56 Q-58 Q-59 Q-60. R006 착수를 막�
 
   · 게임 루프 — 문제 표시, 30초 타이머, 정답 판정, 상태 머신, 마스킹. Phase 3 이후다
   · 게임 설정 UI / 경험률 표시 — Phase 2다
-  · 실제 OpenTDB 수집·Gemini 가공 — R006에서 한다
+  · 실제 외부 공개 문제집 수집·Gemini 가공 — R006에서 한다
   · GitHub Actions 수집·가공 워크플로 — R006
   · guide.md 수정 — 하지 않았다
   · 게임 규칙의 임의 변경 — 없다. 모호한 지점은 Q-59 / Q-60 으로 올렸다
@@ -867,7 +867,7 @@ STATUS: 완료 (결정대기 5건: Q-54 Q-56 Q-58 Q-59 Q-60. R006 착수를 막�
   [착수 전 정하면 좋은 것] Q-59(모델 확정), Q-54(AI Studio 한도 확인)
 
   [R006 작업 순서 제안]
-  1. pipeline/src/adapters/opentdb.ts — RawQuestion 변환 + 세션 토큰 전량 수확
+  1. pipeline/src/adapters/<소스>.ts — RawQuestion 변환 + 세션 토큰 전량 수확
      ★ 요청 간격 7초. 문서상 5초로는 레이트 리밋에 걸린다(R002 실측)
      ★ 이미 있는 sourceRef 는 건너뛴다
   2. pipeline/src/filter.ts — 규칙 기반 사전 필터
