@@ -1067,8 +1067,10 @@ const SHOTS_ONLY = args.includes('--shots');
 const LONG_ONLY = args.includes('--long');
 /** ★ R105 — 정답 인정어 한 줄 공간 확인 (`--r105` · SHOT_DIR=r105 · RESOLVED_WAIT_MS 길게) */
 const R105_ONLY = args.includes('--r105');
-/** ★ R109 — 두 자리 그림(`--r109` · SHOT_DIR=r109 · 서버 SITE_FORCE=public|friend · 없으면 오늘) */
+/** ★ R109 — 두 자리 그림(`--r109` · SHOT_DIR=r109 · 서버 SITE_FORCE=public|friend · 없으면 오늘) · ★ R111 — public 은 PUBLIC_OPEN=1 도 함께(없으면 준비 중 한 장) */
 const R109_ONLY = args.includes('--r109');
+/** ★ R111 — 닫힌 공개 자리 준비 중 한 장 그림(`--r111` · SHOT_DIR=r111 · 서버 SITE_FORCE=public · PUBLIC_OPEN 없음) */
+const R111_ONLY = args.includes('--r111');
 /** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
 const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
@@ -1311,6 +1313,17 @@ const R105_MEASURE = `JSON.stringify((() => {
  *   today : 같은 화면(오늘과 같은지 · 노래 · 얼마게요 있음 · 출처에 Apple · 치이카와 줄)
  *   friend: 베타 로그인 화면(가입 탭 없음 · 안내 한 줄)
  */
+async function r111Flow(browser) {
+  const sizes = [{ w: 1280, h: 720, n: 'pc' }, { w: 360, h: 740, n: 'm360' }];
+  const H = await newPage(browser, 'r111-closed', true);
+  await H.setViewport(1280, 720);
+  await H.goto(BASE);
+  await H.waitFor("document.body?.dataset.closed !== undefined", 10000);
+  await sleep(400);
+  await snapSizes(H, 'r111-closed', sizes);
+  const st = JSON.parse(await H.evaluate("JSON.stringify({ scripts: document.scripts.length, logo: document.querySelector('svg.logo') !== null, h1: document.querySelector('h1')?.innerText, line: document.querySelector('.line')?.innerText, inputs: document.querySelectorAll('input,button,form').length, overflow: document.documentElement.scrollWidth > innerWidth })"));
+  record('★★ R111 준비 중 한 장 — 스크립트 0 · 공식 로고 · 퀴즈도장 · 한 줄 · 입력 · 버튼 없음 · 가로 넘침 없음', st.scripts === 0 && st.logo && st.h1 === '퀴즈도장' && Boolean(st.line) && st.inputs === 0 && !st.overflow, JSON.stringify(st));
+}
 async function r109Flow(browser) {
   const tag = process.env.SITE_FORCE ?? 'today';
   const sizes = [{ w: 1280, h: 720, n: 'pc' }, { w: 360, h: 740, n: 'm360' }];
@@ -1348,7 +1361,7 @@ async function r109Flow(browser) {
   await sleep(400);
   const cards = await H.evaluate("[...document.querySelectorAll('.mg-cat-card')].map((c) => c.dataset.key).join(',')");
   const hasPrice = cards.split(',').includes('price');
-  record(`★ R109 ${tag} 미니게임 고르기 — 얼마게요 ${tag === 'public' ? '없음' : '있음'} · 빅맥지수 있음`, hasPrice === (tag !== 'public') && cards.split(',').includes('worldprice'), cards);
+  record(`★ R109 ${tag} 미니게임 고르기 — 얼마게요 ${tag === 'public' ? '없음' : '있음'} · 빅맥지수 없음(R110 — 뺐다)`, hasPrice === (tag !== 'public') && !cards.split(',').includes('worldprice'), cards);
   await snapSizes(H, `r109-${tag}-catalog`, sizes);
   await H.setViewport(1280, 720);
   await H.evaluate("document.querySelector('[data-mg-confirm]')?.click()");
@@ -12956,6 +12969,10 @@ try {
   }
   if (R109_ONLY) {
     await r109Flow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (R111_ONLY) {
+    await r111Flow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (R105_ONLY) {

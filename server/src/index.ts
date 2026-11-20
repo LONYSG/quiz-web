@@ -32,7 +32,11 @@ import { readSessionToken, resolveSession } from './auth/session.js';
 import { loadQuizData } from './db/minigameItems.js';
 import { ensureSharedPool } from './db/questionPool.js';
 import { getHeapStatistics } from 'node:v8';
-import { friendGate, hiddenFor, publicCounts, publicUrl, siteOf, siteSplit } from './site.js';
+import { friendGate, hiddenFor, publicClosed, publicCounts, publicUrl, siteOf, siteSplit } from './site.js';
+import { closedPageHtml } from './closedPage.js';
+
+// ★ R111 — 닫힌 공개 자리에서도 내는 파일(로고 그림만)
+const CLOSED_OPEN_FILES = new Set(['/favicon.svg', '/favicon-32.png', '/apple-touch-icon.png']);
 import { activeCount, getRoom, roomCount } from './rooms/registry.js';
 
 const BOOTED_AT = Date.now();
@@ -145,6 +149,35 @@ async function main(): Promise<void> {
     if (friendGate(site)) res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     next();
   });
+  // ★★ R111 (D-371) — 닫힌 공개 자리: 화면 주소 전부 = 준비 중 한 장 · /api 는 /api/site 만(/healthz 는 위에서 이미 답함) · 그 밖 403
+  //   열린 파일은 로고 그림(파비콘 · 아이콘)뿐 — 앱 묶음(/assets) · 소리 · 이모티콘 · 그림 길은 닫힌 동안 내지 않는다
+  app.use((req, res, next) => {
+    if (!publicClosed(res.locals.site as Site)) {
+      next();
+      return;
+    }
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    if (req.path === '/api/site') {
+      next();
+      return;
+    }
+    if (CLOSED_OPEN_FILES.has(req.path) && (req.method === 'GET' || req.method === 'HEAD')) {
+      next();
+      return;
+    }
+    if (req.path.startsWith('/api/') || req.path === '/api' || (req.method !== 'GET' && req.method !== 'HEAD')) {
+      res.setHeader('Cache-Control', 'no-store');
+      res.status(403).json({ ok: false, error: 'closed' });
+      return;
+    }
+    if (/^\/(assets|sounds|emoji|socket\.io)\//.test(req.path) || /\.[a-z0-9]{2,5}$/i.test(req.path)) {
+      res.setHeader('Cache-Control', 'no-store');
+      res.status(403).type('text/plain; charset=utf-8').send('closed');
+      return;
+    }
+    res.setHeader('Cache-Control', 'public, max-age=60');
+    res.status(200).type('text/html; charset=utf-8').send(closedPageHtml());
+  });
   app.use('/api', async (req, res, next) => {
     // 로그인 · 가입 · 나가기 · 자리 정보는 각자 검사한다(로그인 화면이 써야 한다)
     if (!friendGate(res.locals.site as Site) || req.path.startsWith('/auth/') || req.path === '/site') {
@@ -166,7 +199,8 @@ async function main(): Promise<void> {
   app.get('/api/site', (_req, res) => {
     const site = res.locals.site as Site;
     res.setHeader('Cache-Control', 'no-store');
-    res.json({ ok: true, site, split: siteSplit(), hidden: hiddenFor(site), publicUrl: site === 'friend' ? publicUrl() : null });
+    // ★ R111 — open: 닫힌 공개 자리만 false(베타 · 열린 공개 · 자리 안 가름 = true)
+    res.json({ ok: true, site, split: siteSplit(), open: !publicClosed(site), hidden: hiddenFor(site), publicUrl: site === 'friend' ? publicUrl() : null });
   });
 
   app.use('/api/auth', authRouter);

@@ -9,12 +9,14 @@ export interface SiteInfo {
   site: Site;
   /** 자리를 가르는가(PUBLIC_HOSTNAME · SITE_FORCE) — 아니면 오늘과 같다 */
   split: boolean;
+  /** ★ R111 — 닫힌 공개 자리만 false(그때는 서버가 준비 중 한 장을 내므로 화면이 이 값을 볼 일은 거의 없다) */
+  open: boolean;
   hidden: SiteHidden;
   /** 베타 자리 안내의 공개 주소 링크(공개 자리에서는 null) */
   publicUrl: string | null;
 }
 
-let info: SiteInfo = { site: 'friend', split: false, hidden: { modes: [], minigames: [] }, publicUrl: null };
+let info: SiteInfo = { site: 'friend', split: false, open: true, hidden: { modes: [], minigames: [] }, publicUrl: null };
 
 export function siteInfo(): SiteInfo {
   return info;
@@ -30,6 +32,7 @@ export async function loadSiteInfo(): Promise<void> {
     info = {
       site: j.site,
       split: j.split === true,
+      open: j.open !== false,
       hidden: { modes: j.hidden?.modes ?? [], minigames: j.hidden?.minigames ?? [] },
       publicUrl: typeof j.publicUrl === 'string' ? j.publicUrl : null,
     };

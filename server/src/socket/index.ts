@@ -106,7 +106,7 @@ import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import { liarAppeal, liarAppealVote, liarChatGate, liarDiscussEnd, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
 import { noteSongFail } from '../song/mode.js';
-import { friendGate, hiddenFor, siteOf } from '../site.js';
+import { friendGate, hiddenFor, publicClosed, siteOf } from '../site.js';
 import { drawChatGate, drawClear, drawFill, drawGiveUp, drawHint, drawRedo, drawReroll, drawStroke, drawUndo } from '../draw/engine.js';
 import {
   on,
@@ -163,6 +163,11 @@ export function registerSocketHandlers(io: Server): void {
   //   ★ 소켓 이벤트로 로그인하지 않는다. 이미 구워진 쿠키를 읽기만 한다.
   io.use(async (socket, next) => {
     try {
+      // ★★ R111 (D-371) — 닫힌 공개 자리는 소켓 연결을 받지 않는다(세션도 읽지 않는다)
+      if (publicClosed(siteOf(socket.request))) {
+        next(new Error('closed'));
+        return;
+      }
       const token = readSessionToken(socket.handshake.headers.cookie);
       const session = await resolveSession(token);
       // ★★★ R109 (D-369) — 자리(Host) · 베타 자리에서 지인이 아닌 계정은 로그인 안 된 연결로(방 이벤트는 guard 가 막는다 · 10초 뒤 끊김)

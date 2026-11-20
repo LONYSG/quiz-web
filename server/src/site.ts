@@ -32,6 +32,8 @@ export interface SiteConfig {
   publicHostname: string | null;
   friendHostname: string | null;
   siteForce: Site | null;
+  /** ★ R111 — 공개 자리를 여는가(없으면 닫힘으로 본다) */
+  publicOpen?: boolean;
 }
 
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', '::1']);
@@ -63,9 +65,20 @@ export function siteOf(req: IncomingMessage): Site {
   return siteOfHost(req.headers.host, clientIp(req).local, config);
 }
 
-/** 공개 주소(안내 링크 — 베타 자리 화면에서만 쓴다 · 공개 화면에는 베타 주소를 두지 않는다) */
+/**
+ * ★★ R111 (D-371) — 닫힌 공개 자리인가(순수 · 단위 테스트). 자리를 가를 때 · 공개 자리 · PUBLIC_OPEN 이 아닐 때만 true.
+ *   자리를 안 가르면(PUBLIC_HOSTNAME 없음 · 임시 주소 · 로컬) 늘 false — 오늘과 같다.
+ */
+export function publicClosedFor(site: Site, c: SiteConfig): boolean {
+  return siteSplit(c) && site === 'public' && !c.publicOpen;
+}
+export function publicClosed(site: Site): boolean {
+  return publicClosedFor(site, config);
+}
+
+/** 공개 주소(안내 링크 — 베타 자리 화면에서만 쓴다 · 공개 화면에는 베타 주소를 두지 않는다) · ★ R111 — 닫힌 동안은 없음(눌러 봐야 준비 중) */
 export function publicUrl(): string | null {
-  return config.publicHostname ? `https://${config.publicHostname}` : null;
+  return config.publicHostname && config.publicOpen ? `https://${config.publicHostname}` : null;
 }
 
 /** 지인 자리의 계정 검사를 하는가 — 자리를 가를 때의 지인 자리만 */

@@ -1,7 +1,7 @@
 // ★★★ R109 (D-369) — 자리 판별 · 공개 숨김 · 설정 거르기
 import { describe, expect, it } from 'vitest';
 import { FRIEND_ONLY_MINIGAMES, minigameSelectable, NO_SITE_HIDDEN, PUBLIC_MIN_ITEMS, selectableMinigameKeys, setShowHiddenMinigames, validateRoomSettings, type QuizMinigameKey, type SiteHidden } from '@quiz/shared';
-import { computePublicHidden, hostOnly, siteOfHost, siteSplit } from './site.js';
+import { computePublicHidden, hostOnly, publicClosedFor, siteOfHost, siteSplit } from './site.js';
 import { publicQuizData, type QuizData, type QuizItem } from './db/minigameItems.js';
 import { DEFAULT_SETTINGS } from './rooms/registry.js';
 
@@ -116,5 +116,31 @@ describe('R110 빅맥지수 빼기', () => {
     } finally {
       setShowHiddenMinigames(false);
     }
+  });
+});
+
+// ★★ R111 (D-371) — 닫힌 공개 자리 판별(표)
+describe('publicClosedFor', () => {
+  const base = { publicHostname: 'quizdojang.com', friendHostname: 'beta.quizdojang.com', siteForce: null };
+  const rows: [string, Parameters<typeof publicClosedFor>[0], Parameters<typeof publicClosedFor>[1], boolean][] = [
+    ['자리 안 가름(PUBLIC_HOSTNAME 없음) — 공개로 와도 닫힘 아님', 'public', { ...base, publicHostname: null }, false],
+    ['자리 안 가름 — 베타', 'friend', { ...base, publicHostname: null }, false],
+    ['베타 — 닫힘이어도 그대로', 'friend', base, false],
+    ['공개 · PUBLIC_OPEN 없음 = 닫힘', 'public', base, true],
+    ['공개 · PUBLIC_OPEN=0 = 닫힘', 'public', { ...base, publicOpen: false }, true],
+    ['공개 · PUBLIC_OPEN=1 = 열림', 'public', { ...base, publicOpen: true }, false],
+    ['SITE_FORCE=public(검사) · 닫힘', 'public', { ...base, publicHostname: null, siteForce: 'public' }, true],
+    ['SITE_FORCE=public · 열림', 'public', { ...base, publicHostname: null, siteForce: 'public', publicOpen: true }, false],
+    ['SITE_FORCE=friend', 'friend', { ...base, siteForce: 'friend' }, false],
+  ];
+  for (const [name, site, c, want] of rows) it(name, () => expect(publicClosedFor(site, c)).toBe(want));
+  it('판별과 이어서 — 임시 주소(PUBLIC_HOSTNAME 없음)는 늘 열린 것과 같다', () => {
+    const c = { ...base, publicHostname: null };
+    expect(publicClosedFor(siteOfHost('abc.trycloudflare.com', false, c), c)).toBe(false);
+  });
+  it('판별과 이어서 — 공개 주소 · 모르는 Host 는 닫힘 · 베타 주소는 아님', () => {
+    expect(publicClosedFor(siteOfHost('quizdojang.com', false, base), base)).toBe(true);
+    expect(publicClosedFor(siteOfHost('evil.example', false, base), base)).toBe(true);
+    expect(publicClosedFor(siteOfHost('beta.quizdojang.com', false, base), base)).toBe(false);
   });
 });

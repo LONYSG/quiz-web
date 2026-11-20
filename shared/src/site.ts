@@ -60,4 +60,7 @@ export const SITE_TEXT = {
   friendOnlyLogin: '베타 주소는 초대받은 계정만 들어올 수 있어요.',
   friendNoSignup: '베타 주소에서는 가입할 수 없어요. 공개 주소에서 가입해 주세요.',
   modeNotHere: '이 주소에서는 쓸 수 없는 방식이에요.',
+  // ★ R111 (D-371) — 닫힌 공개 자리 "준비 중" 한 장. ★ 임시 글(자리만) — 설계 창이 gpt 에게 받아 이 두 줄만 바꾼다
+  closedLine: '곧 문을 엽니다.',
+  closedYoutube: '유튜브 채널',
 } as const;
