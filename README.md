@@ -117,4 +117,5 @@ DB는 로컬 PostgreSQL(Docker). **클라우드 서비스를 쓰지 않는다. �
 ## 라이선스
 
 - **코드**: MIT
-- **퀴즈 문제 데이터**: CC BY-SA 4.0 — [DATA_LICENSE.md](DATA_LICENSE.md) 참조
+- **퀴즈 문제 데이터**: 퀴즈도장이 직접 만든 것 · 공개 라이선스로 내놓지 않는다(R109) — [DATA_LICENSE.md](DATA_LICENSE.md)
+- **화면의 남의 저작물 표기**: [docs/22-CREDITS.md](docs/22-CREDITS.md)

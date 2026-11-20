@@ -308,3 +308,18 @@ data/minigame/ox/items.json       ← 정본(git) · 묶음 파일 규칙 §0
 ## 13. 객관식 보기 `choice` — 퀴즈 문항의 저장 오답 보기 (R090 · D-347 · 꼴만 — 채우기는 GEN)
 
 정본 `data/minigame/choice/options.json` = `{ "game": "choice", "version": 1, "items": [ { "qid": 1970, "options": ["오답1", "오답2", "오답3"], "status": "verified" } ] }` — qid = 활성 퀴즈 문항 id · options = 서로 다른 오답 3개 이상(정답 · 변형과 같거나 기호만 다른 것 금지 — 게임이 그 문항을 건너뛴다) · verified 만 적재(`scripts/choice-load.mjs --apply` · 메뉴 1 · 멱등 · 파일에서 빠진 문항은 지움 · 없는 · 비활성 문항은 건너뛰고 수 보고) → 0035 `question_choices`. 게임(객관식 5연속)은 저장 보기가 있는 문항만 쓰며 **지금은 숨김** — 데이터가 들어온 뒤 설계가 `hidden` 을 끈다.
+
+## 14. ★★★ 지인 전용(베타 자리에서만) — R109 · D-369
+
+| 무엇 | 까닭 | 가르는 기준 |
+|---|---|---|
+| 특별 이모티콘 테마(치이카와) | 캐릭터 저작권 | `emoji_themes.restricted`(0039) |
+| 노래 맞히기(방식 [노래] · 미니게임 song · songyear) | Apple 미리듣기 · 앨범 표지(Apple 조건 — 홍보용만 · docs/22) | 게임 단위(`FRIEND_ONLY_MODES` · `FRIEND_ONLY_MINIGAMES`) |
+| 제조사 상품 그림을 쓰는 항목 | 허락받지 않은 상품 그림 | 그림 단위 — `minigame_images.license = 'product-page'` → 그 그림을 쓰는 항목(얼마게요 288/297 · 빅맥지수 아이폰 39/323) |
+| 항목 id 를 적은 것 | 누가 내려 달라고 할 때(찬종 2026-11-20 — 사진 속 살아 있는 사람은 "그대로 둔다") | `FRIEND_ONLY_ITEM_IDS`(지금 비어 있음) |
+
+- 정본 목록 = `shared/src/site.ts` 한 곳. 여기에 없는 것(사진 · 어느 쪽 · 얼마나 · 사진 연도 · OX · 캐치마인드 · 라이어 · 이모지 · 일반 문항)은 공개다.
+- 공개 자리에서 한 게임의 남는 항목이 `PUBLIC_MIN_ITEMS`(20)보다 적으면 그 게임을 공개 목록에서 숨긴다 — 서버가 적재본을 읽을 때마다 센다(얼마게요 = 남는 9 → 숨김 · 빅맥지수 = 284 → 그대로). 판 수(5)로 재면 얼마게요가 안 걸려서 주제 세트 최소 수(20)와 같은 값을 썼다(D-369 판단).
+
+- 그림 길 `/api/minigame/image/:id`: `product-page` 그림은 공개 자리에서 404.
+- 정답 화면 출처 줄 = 그림마다 "저작자 (라이선스)" — 서버가 `minigame_images.attribution · license` 로 만든다(docs/22).

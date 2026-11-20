@@ -200,7 +200,7 @@ CSV는 왕복 과정에서 인코딩·따옴표 사고가 나기 쉽다. **git d
 
 ## 7. 라이선스 (Q-41)
 
-- 문제 데이터는 CC BY-SA 4.0 으로 배포한다 — 의무가 아니라 우리의 선택이다(직접 작성 · 생성 문제). 정본은 저장소 루트의 `DATA_LICENSE.md`
+- ★ R109 — 문제 데이터는 공개 라이선스로 내놓지 않는다(옛 CC BY-SA 4.0 선언을 걷었다 · `sources.license` 값 NULL → 적재되는 문항의 `license` 도 NULL). 정본은 저장소 루트의 `DATA_LICENSE.md`
 - `questions.source_id` / `license` 로 **문제별로** 추적한다
 - **코드는 별도 라이선스(MIT)를 유지한다.**
 

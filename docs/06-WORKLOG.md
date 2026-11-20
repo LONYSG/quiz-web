@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-20 — 두 자리(공개 · 베타) + 저작권 표기 (R109, MAIN · D-369)
+- 무엇: shared/src/site.ts · credits.ts(새) · settings(validateRoomSettings hidden) · minigame(setSiteHiddenMinigames) · server/src/site.ts(새 · siteOf · 공개 숨김 계산) · migrations/0039 · session/accounts(is_friend) · authRoutes(가입 막기 · 지인만 · me.site) · index(/api/site · noindex · /api 지인 검사) · socket(자리 · 방 자리 · 다른 자리 방 막기 · 설정 · 연습 · 치이카와) · start(공개 사본 · games.site) · minigameItems(지인 전용 항목 · 출처 줄 저작자+라이선스) · minigameRoutes · emojiRoutes · shopRoutes · snapshot · question(미리듣기 베타만) · client site.ts(새) · main · AuthScreen · GameSettings · InfoText(출처 · 라이선스) · QuizReveal(어느 쪽? 출처 줄) · scripts/friend-set.mjs(새) · ops 메뉴 21 · tunnel-probe(checkFriendHost) · cloudflared.example.yml · seed · DATA_LICENSE · docs 01 §19 · 02 §9 · 03 · 11 4-4 · 18 §14 · 21 §8 · 22(새).
+- [x] 0 지인 전용 목록 [x] 1 주소 · 계정 [x] 2 방 [x] 3 표기 · 문제 라이선스 [x] 4 확인(봇 site · ui-check --r109) — 검증 = ai-out/R109.txt.
+
 ## 2026-11-20 — 동시접속 부하 재기 (R108, MAIN · D-368)
 - 무엇: scripts/load.mjs(새 · 부하 봇 · 검사 서버 3410) · scripts/load-probe.mjs(새 · --import 서버 측정기 — 서버 코드 안 고침) · docs 10 80절 · 13 A132 · 찬종-확인 9절.
 - 결과: 300명 · 1,000명 기준 안 · 1,500명 올리다 PC 메모리 바닥(시스템이 멈춤 — 3,000명 못 감). 이 PC ≈ 1,000명 · N95 어림 ≈ 1,000명 · 병목 1위 = 판마다 문항 풀 전체를 방마다(game/start.ts:344).

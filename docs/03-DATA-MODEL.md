@@ -432,6 +432,14 @@ DB가 로컬에만 있으므로 **이것이 유일한 안전장치다.**
 - 되돌리기: `ALTER TABLE liar_rounds DROP COLUMN IF EXISTS appeal;`
 - 읽기: `npm run liar:appeals`(인정된 것 · `--all` 기각도 · DATABASE_URL 로 다른 DB) — 변형 후보 목록.
 
+## ★★★ 두 자리 · 문제 라이선스 걷기 (R109 / 0039 — D-369)
+
+- `accounts.is_friend boolean NOT NULL DEFAULT false` — 베타(지인) 주소에 들어갈 수 있는 계정. 0039 가 돌 때 있던 계정은 전부 true(칸이 처음 생길 때만). 바꾸는 길 = `scripts/friend-set.mjs`(ops 메뉴 21).
+- `emoji_themes.restricted boolean NOT NULL DEFAULT false` — 베타 자리에서만 나오는 테마(치이카와 = true).
+- `games.site text`('public' | 'friend' · 옛 판 NULL) — 판을 연 자리. 게임 시작 때 따로 한 줄 UPDATE(실패해도 판은 간다).
+- `sources.license` NOT NULL 제약을 풀고 `sources.license` · `questions.license` 의 'CC-BY-SA-4.0' 값을 NULL 로(칸은 둔다 · 코드가 화면 · 응답에 쓰는 곳 없음 — 확인). `pipeline-load` 는 `sources.license` 를 그대로 복사하므로 새 문항도 NULL. `scripts/seed.mjs` 기본값도 NULL.
+- 되돌리기: 0039 머리 주석.
+
 ## ★★ 주제 추첨 group · 주제 고르기 optIn · 객관식 저장 보기 (R090 / 0035 — D-347)
 
 | 표 | 더한 칸 | 뜻 |

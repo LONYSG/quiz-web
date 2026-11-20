@@ -89,3 +89,10 @@
 ## 7. 의존성 (`npm audit` · 2026-11-19)
 
 R107 보고서 6절이 표의 정본이다. 패치 수준(`npm audit fix`)만 고치고, 큰 버전 올림(vitest 5 — 개발 도구)은 목록으로 남긴다.
+
+## 8. 자리(공개 · 베타) — R109 · D-369
+
+- 판별 = Host 머리말(`server/src/site.ts` `siteOf`). 터널은 주소마다 `httpHostHeader` 로 Host 를 고정한다. 모르는 Host · 임시 주소 = **공개**(안전한 쪽). 이 PC 의 localhost(루프백 + CF 헤더 없음)만 베타 — 터널을 지나온 요청이 Host 를 localhost 로 꾸며도 CF 헤더가 있어 공개로 떨어진다(단위 테스트).
+- 베타 자리: 지인 계정만 — 로그인(비밀번호가 맞은 뒤 403 FRIEND_ONLY · 세션 안 만듦) · `/api/*`(로그인 · 자리 정보 빼고 — 지인 아닌 세션 403) · 소켓(세션을 붙이지 않음 → 방 이벤트 UNAUTHENTICATED · 10초 뒤 끊김). 가입 403 FRIEND_NO_SIGNUP. 모든 응답 `X-Robots-Tag: noindex, nofollow`.
+- 그림 길: 상품 그림(`product-page`) · 치이카와 그림은 공개 자리에서 404(주소를 알아도 못 받는다). 치이카와 그림 캐시는 `private`.
+- 공개 방은 방식 [노래] · 지인 전용 미니게임을 서버가 다시 막는다(설정 · 시작 · 연습 — `validateRoomSettings(…, { hidden })`). 미리듣기 · 표지 주소는 공개 방 스냅샷 · 이벤트에 싣지 않는다(봇 site ④).

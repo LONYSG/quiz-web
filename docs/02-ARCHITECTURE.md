@@ -351,3 +351,10 @@ git diff --cached | grep -iE "AIza|API_KEY *="   # 커밋 직전 스테이지 �
 | Gemini API (Track D 전용) | 필요 | 무료 한도 내 |
 
 게임을 돌리는 데 필요한 외부 서비스는 없다.
+
+## 9. ★★★ 주소 둘 — 공개 · 베타 (R109 · D-369)
+
+- 서버 · DB · 터널 하나. Cloudflare 터널 설정 파일 ingress 에 주소 둘(`quizdojang.com` · `beta.quizdojang.com`)을 같은 서버(3000)로 보내고, 주소마다 `originRequest.httpHostHeader` 로 Host 를 못 박는다(본보기 `ops/cloudflared.example.yml`). 서버는 Host 로 자리를 가른다(`server/src/site.ts` — 규칙 01 §19).
+- 환경 변수: `PUBLIC_HOSTNAME`(R107) · `FRIEND_HOSTNAME`(베타 · 예 beta.quizdojang.com) · `SITE_FORCE=public|friend`(검사용 — dev 3001 에서 양쪽 시험 · 실 서버에 두지 않는다). **`PUBLIC_HOSTNAME` 이 없으면 자리를 가르지 않는다**(오늘과 한 글자도 같다 — 계정 검사 · 가입 막기 · noindex 없음).
+- 쿠키는 Domain 없이 굽는다 → 주소마다 따로(한쪽 로그인이 다른 쪽에 안 간다). 소켓 Origin 허용 목록에 베타 주소 추가.
+- 공개 방의 퀴즈류 미니게임 적재본 = 지인 전용 항목을 뺀 사본(`publicQuizData` — 적재본 하나에 한 번 만든다).

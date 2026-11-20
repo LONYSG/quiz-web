@@ -308,6 +308,16 @@ npm run dev:tunnel   # 터널
 4. 개발 트리 `.env`: `POSTGRES_PASSWORD=<새 비밀번호>` 한 줄 · `DATABASE_URL` 의 `quiz:` 뒤 비밀번호도 같은 값으로. 플레이 트리 `.env` 의 `DATABASE_URL` 도 같은 값으로(메뉴 1 은 플레이 트리 `.env` 가 있으면 복사하지 않는다).
 5. 메뉴 3 → 1 · 메뉴 15(개발 서버) — 두 DB 응답 확인.
 
+## 4-4. ★ 베타 주소 붙이기 — beta.quizdojang.com (R109 · D-369 · 4-1 을 마친 뒤 한 번만)
+
+1. 명령 창: `cloudflared tunnel route dns quizdojang beta.quizdojang.com`
+2. `%USERPROFILE%\.cloudflared\config.yml` 을 본보기(`ops/cloudflared.example.yml`)처럼 — 주소 두 줄 · 줄마다 `originRequest: httpHostHeader: <그 주소>` · 끝에 `- service: http_status:404`.
+3. 개발 트리 `.env` 에 `FRIEND_HOSTNAME=beta.quizdojang.com`.
+4. 메뉴 3 → 1. 터널 창에 "베타 주소 줄 … 없다" 경고가 없으면 끝(경고가 있어도 공개 주소는 열린다 — 베타로만 못 들어온다).
+5. 확인: 베타 주소 로그인 화면에 "베타 주소는 초대받은 계정만 들어올 수 있어요." · 공개 주소 방 설정에 [노래] 가 없다.
+- 계정: 0039 때 있던 계정은 전부 베타에 들어간다. 새 친구 = 공개 주소에서 가입 → 메뉴 21 로 켠다. 뺄 사람 = 메뉴 21 → 끄기.
+- **`.env` 에 `PUBLIC_HOSTNAME` 이 없으면** 자리를 가르지 않는다(지금처럼 전부 베타 자리 · 임시 주소 그대로).
+
 ## 5. DB 백업 ★
 
 **로컬 DB에 모든 데이터가 있으므로 이것이 유일한 안전장치다.**
