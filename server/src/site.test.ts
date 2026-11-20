@@ -1,6 +1,6 @@
 // ★★★ R109 (D-369) — 자리 판별 · 공개 숨김 · 설정 거르기
 import { describe, expect, it } from 'vitest';
-import { FRIEND_ONLY_MINIGAMES, PUBLIC_MIN_ITEMS, validateRoomSettings, type QuizMinigameKey } from '@quiz/shared';
+import { FRIEND_ONLY_MINIGAMES, minigameSelectable, NO_SITE_HIDDEN, PUBLIC_MIN_ITEMS, selectableMinigameKeys, setShowHiddenMinigames, validateRoomSettings, type QuizMinigameKey, type SiteHidden } from '@quiz/shared';
 import { computePublicHidden, hostOnly, siteOfHost, siteSplit } from './site.js';
 import { publicQuizData, type QuizData, type QuizItem } from './db/minigameItems.js';
 import { DEFAULT_SETTINGS } from './rooms/registry.js';
@@ -82,12 +82,39 @@ describe('validateRoomSettings — 공개 방 숨김', () => {
     expect(v.ok).toBe(false);
   });
   it('숨긴 미니게임은 골라 둔 설정에서도 빠진다 · 다른 것은 남는다', () => {
-    const v = validateRoomSettings({ ...DEFAULT_SETTINGS, minigames: true, minigameKeys: ['price', 'worldprice', 'cake'] }, { hidden });
-    expect(v.ok && [...v.settings.minigameKeys].sort()).toEqual(['cake', 'worldprice']);
+    const v = validateRoomSettings({ ...DEFAULT_SETTINGS, minigames: true, minigameKeys: ['price', 'estimate', 'cake'] }, { hidden });
+    expect(v.ok && [...v.settings.minigameKeys].sort()).toEqual(['cake', 'estimate']);
   });
   it('숨김 없으면 오늘과 같다', () => {
     const a = validateRoomSettings({ ...DEFAULT_SETTINGS, minigames: true });
     const b = validateRoomSettings({ ...DEFAULT_SETTINGS, minigames: true }, { hidden: { modes: [], minigames: [] } });
     expect(b).toEqual(a);
+  });
+});
+
+// ★ R110 — 빅맥지수를 뺐다(hidden) · 검사 서버 스위치를 끄면 고를 수 없고, 켜면(옛 회귀 검사) 보인다
+describe('R110 빅맥지수 빼기', () => {
+  it('일반 서버 — 목록 · 기본값 · 저장된 설정에서 빠진다(두 자리 모두)', () => {
+    setShowHiddenMinigames(false);
+    try {
+      expect(minigameSelectable('worldprice')).toBe(false);
+      expect(selectableMinigameKeys()).not.toContain('worldprice');
+      expect(selectableMinigameKeys()).toContain('price');
+      const pubHidden: SiteHidden = { modes: ['song'], minigames: ['song', 'songyear', 'price'] };
+      for (const h of [NO_SITE_HIDDEN, pubHidden]) {
+        const v = validateRoomSettings({ ...DEFAULT_SETTINGS, minigames: true, minigameKeys: ['worldprice', 'cake'] }, { hidden: h });
+        expect(v.ok && v.settings.minigameKeys).toEqual(['cake']);
+      }
+    } finally {
+      setShowHiddenMinigames(false);
+    }
+  });
+  it('검사 서버(QUIZ_TEST_SERVER) — 보인다', () => {
+    setShowHiddenMinigames(true);
+    try {
+      expect(minigameSelectable('worldprice')).toBe(true);
+    } finally {
+      setShowHiddenMinigames(false);
+    }
   });
 });

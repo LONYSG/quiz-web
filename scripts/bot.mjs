@@ -7980,7 +7980,7 @@ async function scenarioSite() {
   await f2.waitFor(() => f2.since(mf2, 'chat').some((c) => c.emojiId === chi), 4000, '베타 치이카와');
   expectTrue('★★ 베타 방 — 치이카와 보내기 = 된다(지금과 같다)', true);
 
-  // ── 5. 공개 방 미니게임만(빅맥지수 — 상품 그림 항목이 빠진 채 한 바퀴)
+  // ── 5. 공개 방 미니게임만 한 바퀴(얼마나 — games.site · 소켓 전부 검사용) · ★ R110 — 빅맥지수를 뺐다(아이폰 항목 단정도 함께 걷음)
   const seenPub = [];
   for (const b of [p1, p2]) {
     b.__done = new Set();
@@ -7994,13 +7994,13 @@ async function scenarioSite() {
     };
   }
   m = p1.mark();
-  p1.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'minigame', minigameOnly: true, minigameRounds: 2, minigameKeys: ['worldprice'] });
+  p1.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'minigame', minigameOnly: true, minigameRounds: 2, minigameKeys: ['estimate'] });
   await p1.waitFor(() => p1.since(m, 'lobby.settingsUpdated').some((e) => e.settings.minigameOnly), 4000, '미니게임만');
   const g = p1.mark();
   p1.socket.emit('game.start', {});
   await p1.waitFor(() => p1.since(g, 'game.result').length > 0, 150000, '공개 미니게임만 결과');
   const gid = p1.since(g, 'game.started')[0]?.gameId;
-  expectTrue('★★ 공개 방 빅맥지수 2판 — 10문항 모두 상품 그림(iphone) 아님', seenPub.length === 10 && seenPub.every((x) => !JSON.stringify(x).includes('"iphone"')), JSON.stringify(seenPub.map((x) => x?.imageId ?? '?')));
+  expectTrue('★ 공개 방 미니게임만 2판 — 10문항', seenPub.length === 10, String(seenPub.length));
   const site = await withDb(async (c) => (await c.query(`SELECT site FROM games WHERE id = $1`, [gid])).rows[0]?.site);
   expect('★ games.site = public', site, 'public');
   const blob = rawPub.join('\n');

@@ -322,6 +322,9 @@ export const MINIGAMES: readonly MinigameInfo[] = [
   },
   {
     key: 'worldprice',
+    // ★ R110 — 뺐다(찬종 2026-11-20 "빅맥지수 그냥 전체 다 빼자. 별로 재미없음.") · 두 자리 모두 목록 · 뽑기 · 연습에 안 나온다
+    //   항목 · 그림 · 지난 판 기록은 둔다(전적의 옛 판은 이 이름으로 보인다) · 검사 서버는 숨김도 보이므로 옛 회귀 검사는 그대로 돈다
+    hidden: true,
     name: '빅맥지수',
     oneLine: '한국 · 다른 나라 값을 보고, 그 나라에서는 원화로 얼마일지 맞혀 보세요!',
     controlsPc: '숫자 입력 → Enter',

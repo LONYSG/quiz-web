@@ -34,7 +34,7 @@ export interface QuizData {
   /** ★ R074 (§A · D-278 이어서) — 그림 id → [폭, 높이] (minigame_images.width · height). 화면이 받기 전에 칸 크기를 잡는다 */
   imageDims: Map<string, [number, number]>;
   /**
-   * ★★★ R109 (D-369) — 지인 방에서만 내는 항목 id(그림 라이선스 product-page 를 쓰는 항목 — 제 그림 또는 빅맥지수의 상품 그림 · FRIEND_ONLY_ITEM_IDS).
+   * ★★★ R109 (D-369) — 지인 방에서만 내는 항목 id(그림 라이선스 product-page 를 쓰는 항목 · FRIEND_ONLY_ITEM_IDS).
    *   공개 방은 publicQuizData() 의 사본(이 항목이 빠진 것)을 쓴다.
    */
   friendOnlyItemIds: Set<string>;
@@ -74,7 +74,6 @@ export async function loadQuizData(force = false): Promise<QuizData> {
   };
   // ★ R109 — 지인 전용 그림 · 항목
   const friendOnlyImageIds = new Set(im.rows.filter((r) => r.license === FRIEND_ONLY_IMAGE_LICENSE).map((r) => r.image_id));
-  const friendOnlyProducts = new Set(pr.rows.filter((r) => r.image_id && friendOnlyImageIds.has(r.image_id)).map((r) => r.product_id));
   // ★ R109 — 항목 단위 목록(지금 비어 있음) + 검사용 SITE_FRIEND_ITEMS(쉼표 · 봇 site 가 시험용 id 하나로 길을 확인 · 실 서버에 두지 않는다)
   const friendOnlyItemIds = new Set<string>([...FRIEND_ONLY_ITEM_IDS, ...(process.env.SITE_FRIEND_ITEMS ?? '').split(',').map((x) => x.trim()).filter(Boolean)]);
   const items = Object.fromEntries(QUIZ_MINIGAME_KEYS.map((k) => [k, [] as QuizItem[]])) as Record<QuizMinigameKey, QuizItem[]>;
@@ -82,8 +81,8 @@ export async function loadQuizData(force = false): Promise<QuizData> {
     const g = r.game as QuizMinigameKey;
     if (!items[g]) continue;
     items[g].push({ id: r.item_id, game: g, payload: r.payload, imageIds: r.image_ids, attribution: creditOf(r.image_ids, r.attribution), asOf: r.as_of });
-    const pid = typeof r.payload?.productId === 'string' ? r.payload.productId : null;
-    if (r.image_ids.some((x) => friendOnlyImageIds.has(x)) || (pid && friendOnlyProducts.has(pid))) friendOnlyItemIds.add(r.item_id);
+    // ★ R110 — 빅맥지수(상품 id 로 그림을 잇는 게임)를 뺐으므로 상품 단위 갈래를 걷었다 · 항목이 직접 쓰는 그림만 본다
+    if (r.image_ids.some((x) => friendOnlyImageIds.has(x))) friendOnlyItemIds.add(r.item_id);
   }
   cache = {
     items,
