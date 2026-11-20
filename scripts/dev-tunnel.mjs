@@ -24,7 +24,7 @@ import { spawn } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { REGISTER_WAIT_MS, PROBE_MS, checkTunnelConfig, cloudflareResolve4, probeOnce, shouldOpen, tunnelPlan, waitOpen } from './tunnel-probe.mjs';
+import { REGISTER_WAIT_MS, PROBE_MS, checkFriendHost, checkTunnelConfig, cloudflareResolve4, probeOnce, shouldOpen, tunnelPlan, waitOpen } from './tunnel-probe.mjs';
 
 // ★ R107 — .env 의 TUNNEL_NAME · PUBLIC_HOSTNAME 을 읽는다(이미 환경에 있으면 그 값이 먼저)
 try {
@@ -43,6 +43,9 @@ if (plan.mode === 'named') {
     console.log(`[tunnel] ★ 고정 주소 설정 파일(${plan.config})을 고쳐야 합니다 — 이번에는 임시 주소로 엽니다:`);
     for (const p of problems) console.log(`[tunnel]   · ${p}`);
     plan = tunnelPlan({}, PORT);
+  } else {
+    // ★ R109 — 베타 주소 줄(막지 않는다 · 경고만)
+    for (const w of checkFriendHost(text, process.env.FRIEND_HOSTNAME)) console.log(`[tunnel] ★ ${w}`);
   }
 } else if (plan.why) console.log(`[tunnel] ★ ${plan.why}`);
 const NAMED = plan.mode === 'named';

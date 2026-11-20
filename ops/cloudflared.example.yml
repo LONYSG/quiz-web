@@ -4,6 +4,9 @@
 #   순서: docs/11-DEPLOY.md "도메인 연결 — 한 번만"
 #   Cloudflare 문서: 설정 파일의 ingress 는 끝에 catch-all(service: http_status:404)이 꼭 있어야 한다.
 #   scripts/dev-tunnel.mjs 가 켤 때 이 세 가지(hostname · service 포트 · catch-all)를 점검하고, 틀리면 임시 주소로 연다.
+# ★★ R109 (D-369) — 베타 주소(beta.quizdojang.com · .env FRIEND_HOSTNAME) 한 줄 더. 같은 서버(3000)로 보내고,
+#   서버는 Host 머리말로 자리(공개 · 베타)를 가른다 → 주소마다 httpHostHeader 로 Host 를 못 박는다(Cloudflare 문서 "Sets the HTTP Host header on requests sent to the local service").
+#   베타 줄이 없거나 httpHostHeader 가 없으면 dev-tunnel 이 경고만 한다(고정 주소는 그대로 열린다).
 
 tunnel: <터널-ID>                                   # cloudflared tunnel create quizdojang 이 찍은 ID
 credentials-file: C:\Users\<사용자>\.cloudflared\<터널-ID>.json
@@ -11,4 +14,10 @@ credentials-file: C:\Users\<사용자>\.cloudflared\<터널-ID>.json
 ingress:
   - hostname: quizdojang.com
     service: http://localhost:3000
+    originRequest:
+      httpHostHeader: quizdojang.com
+  - hostname: beta.quizdojang.com
+    service: http://localhost:3000
+    originRequest:
+      httpHostHeader: beta.quizdojang.com
   - service: http_status:404

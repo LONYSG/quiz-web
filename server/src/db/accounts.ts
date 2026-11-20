@@ -19,6 +19,8 @@ export interface AccountRow {
   created_at: Date;
   /** ★ R043 — 관리자가 초기화했다 (로그인 뒤 새 비밀번호를 반드시 정해야 한다) */
   must_change_password: boolean;
+  /** ★ R109 — 베타(지인) 자리 계정(0039) */
+  is_friend?: boolean;
 }
 
 /** 아이디 정규화. 저장과 조회에 항상 같은 함수를 써야 한다. */
@@ -28,7 +30,7 @@ export function normalizeLoginId(loginId: string): string {
 
 export async function findAccountByLoginId(loginId: string): Promise<AccountRow | null> {
   const result = await query<AccountRow>(
-    `SELECT id, login_id, password_hash, nickname, created_at, must_change_password
+    `SELECT id, login_id, password_hash, nickname, created_at, must_change_password, is_friend
        FROM accounts WHERE login_id = $1`,
     [normalizeLoginId(loginId)],
   );

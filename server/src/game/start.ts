@@ -43,7 +43,8 @@ import { DRAW, DRAW_START_BLOCK, LIAR, LIAR_START_BLOCK } from '@quiz/shared';
 import { TOPIC_KEYS } from '../minigame/topicGames.js';
 import { isQuizMinigameKey } from '../minigame/defs.js';
 import { SONG_KEYS } from '../minigame/songGames.js';
-import { insertGame, insertGamePlayers } from '../db/games.js';
+import { insertGame, insertGamePlayers, setGameSite } from '../db/games.js';
+import { hiddenFor, quizDataFor } from '../site.js';
 import { setGamePlayerDevices } from '../db/minigames.js';
 import { deviceOf } from '../rooms/registry.js';
 import { emitRoom } from '../rooms/emit.js';
@@ -113,7 +114,8 @@ export async function requestStart(room: Room): Promise<StartResult> {
 
   try {
     // ── 1. 설정값 재검증 (guide 44절: 클라이언트 검증만 믿지 않는다)
-    const valid = validateRoomSettings(room.settings);
+    // ★ R109 — 공개 방은 지인 전용 방식 · 미니게임을 다시 막는다(숨김 목록은 서버가 센 값)
+    const valid = validateRoomSettings(room.settings, { hidden: hiddenFor(room.site) });
     if (!valid.ok) return { ok: false, reason: 'settings', message: valid.message };
     // ★ R033 — 검증 결과로 덮는다. 옛 설정(즉시 시작 등)이 남아 있어도 항상 5초 카운트다운이 된다
     room.settings = { ...valid.settings };
@@ -320,6 +322,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
       settingMinigameRounds: songMode ? settings.songCount : noQuiz ? settings.minigameRounds : null,
       teamMode: settings.teamMode,
     });
+    setGameSite(gameId, room.site);
     await insertGamePlayers(gameId, roster);
     // ★ R050 — 참가자의 기기 종류 (🖥/📱 — 기록만)
     void setGamePlayerDevices(gameId, roster.map((r) => ({ accountId: r.accountId, device: deviceOf(r.accountId) }))).catch((err) =>
@@ -359,7 +362,7 @@ async function beginGame(room: Room, availableAtStart: number): Promise<boolean>
             loadQuizData(),
             loadAllItemExperiences(participantIds(room)),
             settings.minigameKeys.some((k) => TOPIC_KEYS.has(k)) ? loadTopicStore() : Promise.resolve(null),
-          ]).then(([data, exp, topics]) => ({ data, experienced: exp, topics }))
+          ]).then(([data, exp, topics]) => ({ data: quizDataFor(room.site, data), experienced: exp, topics })) // ★ R109 — 공개 방은 지인 전용 항목을 뺀 사본
         : Promise.resolve(null),
       // ★★★ R082 — 라이어: 제시어(주제 세트 liar 항목) · 경험('liar|항목 id')
       topicMode ? Promise.all([loadTopicStore(), loadAllItemExperiences(participantIds(room))]).then(([store, exp]) => ({ store, exp })) : Promise.resolve(null),

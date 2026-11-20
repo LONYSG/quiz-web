@@ -66,6 +66,13 @@ export const config = {
    */
   publicHostname: (process.env.PUBLIC_HOSTNAME ?? '').trim().toLowerCase() || null,
   /**
+   * ★★★ R109 (D-369) — 베타(지인) 자리의 호스트 이름(찬종 2026-11-19 = beta.quizdojang.com). 이 주소로 들어온 요청 = 지인 자리.
+   *   ★ PUBLIC_HOSTNAME 이 없으면(임시 주소 · localhost — 오늘까지의 쓰임) 자리를 가르지 않는다 = 전부 지인 자리 · 계정 검사도 없다(오늘과 같다).
+   */
+  friendHostname: (process.env.FRIEND_HOSTNAME ?? '').trim().toLowerCase() || null,
+  /** ★ R109 — 검사용: 모든 요청을 한 자리로(dev 3001 에서 양쪽 시험) · 'public' | 'friend' · 그 밖의 값은 없는 것으로 */
+  siteForce: ((v) => (v === 'public' || v === 'friend' ? v : null))((process.env.SITE_FORCE ?? '').trim().toLowerCase()) as 'public' | 'friend' | null,
+  /**
    * ★★ R107 (D-365) — 공개 대비 한도. 전부 메모리에서 센다(DB 를 주기적으로 건드리지 않는다 — docs/02 3장).
    *   ★ IP 기준 한도는 넉넉하게(한 집 · 회사 · PC방이 같은 IP) · 계정 기준을 먼저. 값의 정본 = docs/21-SECURITY.md
    *   ★ "이 PC 자신"(루프백 + CF-Connecting-IP 없음 — 봇 · ui-check · 찬종이 localhost 로)은 IP 기준 한도 · 방 만들기 한도에서 뺀다.

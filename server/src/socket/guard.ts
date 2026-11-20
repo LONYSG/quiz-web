@@ -38,6 +38,8 @@ export interface SocketData {
   roomId?: string;
   /** ★ R071 (D-314) — 이모티콘 폭주 방어(1초 창 · 이 소켓만) */
   emojiFlood?: { sec: number; n: number };
+  /** ★★★ R109 (D-369) — 이 소켓이 들어온 자리(핸드셰이크의 Host — siteOf) */
+  site?: import('@quiz/shared').Site;
 }
 
 export type ErrorCode =

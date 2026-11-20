@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { Router } from 'express';
+import { FRIEND_ONLY_IMAGE_LICENSE } from '@quiz/shared';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { loadMinigameImage } from '../db/minigameItems.js';
 import { drawTopics, liarTopics, loadTopicStore } from '../db/topics.js';
@@ -23,7 +24,8 @@ minigameRouter.get('/image/:imageId', async (req, res) => {
     return;
   }
   const img = await loadMinigameImage(id);
-  if (!img) {
+  // ★★★ R109 (D-369) — 제조사 상품 그림(product-page)은 지인 자리(베타 주소 · 지인 계정 — 계정은 /api 앞단이 막는다)에서만. 공개 자리는 주소를 알아도 404
+  if (!img || (img.license === FRIEND_ONLY_IMAGE_LICENSE && res.locals.site !== 'friend')) {
     res.status(404).end();
     return;
   }

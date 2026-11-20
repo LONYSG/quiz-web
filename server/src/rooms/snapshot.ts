@@ -16,6 +16,7 @@
 //   · 과거 채팅의 마스킹을 재계산하지 않는다. chat 버퍼에 저장된 값을 그대로 쓴다
 // =============================================================================
 
+import { hiddenFor } from '../site.js';
 import { RULES, skipThreshold } from '@quiz/shared';
 import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount, deviceOf } from './registry.js';
@@ -68,6 +69,9 @@ export interface RoomSnapshot {
     activeCount: number;
     /** 출제 가능 문제 수 (Q-21). 아직 계산되지 않았으면 null */
     availableQuestionCount: number | null;
+    /** ★ R109 — 방의 자리 · 숨기는 것 */
+    site: import('@quiz/shared').Site;
+    siteHidden: import('@quiz/shared').SiteHidden;
   };
   players: PlayerView[];
   chat: ChatView[];
@@ -290,6 +294,9 @@ export function buildSnapshot(
       settingsLocked: room.settingsLocked,
       activeCount: activeCount(room),
       availableQuestionCount: room.availableQuestionCount,
+      // ★★★ R109 (D-369) — 방의 자리 · 이 자리에서 숨기는 방식 · 미니게임(화면이 목록에서 뺀다)
+      site: room.site,
+      siteHidden: hiddenFor(room.site),
     },
     players: [...room.players.values()]
       .sort((a, b) => a.joinOrder - b.joinOrder)
@@ -412,7 +419,7 @@ function buildQuestionView(
     generalHint: generalRevealed ? q.generalHint : null,
     hasGeneralHint: q.generalHint !== null,
     questionId: q.questionId,
-    song: q.song ? { previewUrl: q.song.entry.previewUrl, cover: q.song.entry.cover, durationMs: q.song.durationMs } : null,
+    song: q.song && room.site === 'friend' ? { previewUrl: q.song.entry.previewUrl, cover: q.song.entry.cover, durationMs: q.song.durationMs } : null,
   };
 }
 

@@ -27,6 +27,10 @@ import { registerSocketHandlers } from './socket/index.js';
 import { clientIp, errorHandler, securityHeaders } from './security/http.js';
 import { applySocketSecurity, socketServerOptions } from './security/socket.js';
 import { startTick, stopTick } from './tick.js';
+import { SITE_TEXT, type Site } from '@quiz/shared';
+import { readSessionToken, resolveSession } from './auth/session.js';
+import { loadQuizData } from './db/minigameItems.js';
+import { friendGate, hiddenFor, publicCounts, publicUrl, siteOf, siteSplit } from './site.js';
 import { activeCount, getRoom, roomCount } from './rooms/registry.js';
 
 const BOOTED_AT = Date.now();
@@ -132,6 +136,37 @@ async function main(): Promise<void> {
     console.log('[boot] ★ 개발 진단 경로 열림: GET /debug/room/:id (프로덕션에서는 닫힌다)');
   }
 
+  // ★★★ R109 (D-369) — 자리(공개 · 베타). 판별은 siteOf 한 함수 · 베타 자리(자리를 가를 때)는 검색 엔진 금지 · 지인 계정만
+  app.use((req, res, next) => {
+    const site = siteOf(req);
+    res.locals.site = site;
+    if (friendGate(site)) res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    next();
+  });
+  app.use('/api', async (req, res, next) => {
+    // 로그인 · 가입 · 나가기 · 자리 정보는 각자 검사한다(로그인 화면이 써야 한다)
+    if (!friendGate(res.locals.site as Site) || req.path.startsWith('/auth/') || req.path === '/site') {
+      next();
+      return;
+    }
+    try {
+      const session = await resolveSession(readSessionToken(req.headers.cookie));
+      if (session && !session.isFriend) {
+        res.status(403).json({ ok: false, code: 'FRIEND_ONLY', message: SITE_TEXT.friendOnlyLogin });
+        return;
+      }
+      next();
+    } catch (err) {
+      next(err);
+    }
+  });
+  // ★ R109 — 부트 정보: 자리 · 숨기는 방식/미니게임(화면이 목록에서 뺀다 — 서버도 다시 막는다) · 로그인 없이
+  app.get('/api/site', (_req, res) => {
+    const site = res.locals.site as Site;
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({ ok: true, site, split: siteSplit(), hidden: hiddenFor(site), publicUrl: site === 'friend' ? publicUrl() : null });
+  });
+
   app.use('/api/auth', authRouter);
   // ★ R039 — 프로필 사진
   app.use('/api/avatar', avatarRouter);
@@ -150,6 +185,12 @@ async function main(): Promise<void> {
   app.use('/api/emoji', emojiRouter);
   app.use('/emoji', express.static(TWEMOJI_DIR, { maxAge: '365d', immutable: true }));
   void loadEmojiCatalog();
+  // ★ R109 — 공개 쪽 숨김(남는 항목 수)을 처음 한 번 센다(그 뒤는 적재본을 읽을 때마다)
+  if (siteSplit()) {
+    void loadQuizData()
+      .then(() => console.log(`[site] 자리 나눔 켜짐 · 공개 ${config.publicHostname ?? '-'} · 베타 ${config.friendHostname ?? '-'}${config.siteForce ? ` · 강제 ${config.siteForce}` : ''} · 공개 남는 항목 ${JSON.stringify(publicCounts)} · 공개 숨김 ${JSON.stringify(hiddenFor('public'))}`))
+      .catch((err) => console.warn('[site] ★ 미니게임 항목을 못 읽었다(공개 숨김은 노래만):', (err as Error).message));
+  }
 
   // ── 클라이언트 정적 서빙.
   //   ★ 오리진을 하나로 유지하는 것이 이 프로젝트의 기본 방침이다 (docs/02-ARCHITECTURE.md 1장).

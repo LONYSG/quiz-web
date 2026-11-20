@@ -45,6 +45,8 @@ export interface SessionInfo {
   avatarV: number | null;
   /** ★ R043 — 관리자가 초기화한 계정 (새 비밀번호를 정하기 전에는 방에 들어갈 수 없다) */
   mustChangePassword: boolean;
+  /** ★ R109 (D-369) — 베타(지인) 자리에 들어갈 수 있는 계정(accounts.is_friend · 0039) */
+  isFriend: boolean;
 }
 
 interface SessionRow {
@@ -54,6 +56,7 @@ interface SessionRow {
   nickname: string;
   avatar_v: string | null;
   must_change_password: boolean;
+  is_friend: boolean;
 }
 
 /** 새 세션을 만들고 쿠키를 굽는다. */
@@ -137,7 +140,7 @@ export async function resolveSession(token: string | null): Promise<SessionInfo 
   if (!token) return null;
 
   const result = await query<SessionRow>(
-    `SELECT s.id, s.account_id, s.expires_at, a.nickname, a.must_change_password,
+    `SELECT s.id, s.account_id, s.expires_at, a.nickname, a.must_change_password, a.is_friend,
             (extract(epoch from av.updated_at) * 1000)::bigint::text AS avatar_v
        FROM sessions s
        JOIN accounts a ON a.id = s.account_id
@@ -163,6 +166,7 @@ export async function resolveSession(token: string | null): Promise<SessionInfo 
     nickname: row.nickname,
     avatarV: row.avatar_v === null ? null : Number(row.avatar_v),
     mustChangePassword: row.must_change_password === true,
+    isFriend: row.is_friend === true,
   };
 }
 

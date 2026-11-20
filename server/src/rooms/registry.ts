@@ -139,9 +139,11 @@ export function createRoomObject(
   id: string,
   title: string,
   hostAccountId: string,
+  site: import('@quiz/shared').Site = 'friend', // ★ R109 — 만든 주소의 자리(검사 · 옛 부르기는 지인 = 오늘과 같다)
 ): Room {
   return {
     id,
+    site,
     code: generateRoomCode(),
     title,
     hostAccountId,

@@ -148,6 +148,22 @@ async function grantPoints() {
   console.log(`\n  → ${ok}명 지급 · 실패 ${found.length - ok}${missing.length ? ` (없는 아이디 ${missing.length}개는 뺌)` : ''}`);
 }
 
+// ★★★ R109 (D-369) — 베타(지인) 주소 표시 켜기/끄기(아이디 여러 개 · 보여 주기 → 확인 → 실행)
+async function friendSet() {
+  console.log('
+■ 지인 표시 켜기/끄기 — 켜진 계정만 베타 주소에 들어갈 수 있다 (아이디 여러 개는 쉼표나 띄어쓰기로)');
+  run('node scripts/friend-set.mjs --list');
+  const raw = await ask('아이디(예: yuja0218, 123qwe)');
+  const logins = [...new Set(raw.split(/[\s,]+/).filter(Boolean))];
+  if (!logins.length) return console.log('  아이디가 없습니다');
+  const which = await ask('켜기 = 1 · 끄기 = 2', { def: '1' });
+  const flag = which.trim() === '2' ? '--off' : '--on';
+  run(`node scripts/friend-set.mjs --login ${q(logins.join(','))} ${flag}`);
+  if (!(await yes())) return console.log('  취소');
+  backupIfStale();
+  run(`node scripts/friend-set.mjs --login ${q(logins.join(','))} ${flag} --yes`);
+}
+
 async function resetPassword() {
   console.log('\n■ 비밀번호 초기화 — 0000 으로 바꾸고, 그 사람은 다음 로그인 때 새 비밀번호를 반드시 정하게 된다');
   const login = await ask('아이디');
@@ -355,6 +371,7 @@ const MENU = [
   ['18', '플레이 트리 만들기 / 상태 (HEAD · 태그 · lock 해시 · 디스크)', () => run('node scripts/play.mjs --tree')],
   ['19', `오래된 백업 정리 (DB 이름마다 최신 ${DEFAULT_KEEP}개만 남김 · zip 은 그대로)`, pruneBackups],
   ['20', '메모리 점검 · 정리 (남은 검사용 chrome · 고아 node · 임시 폴더)', memCheck],
+  ['21', '지인 표시 켜기/끄기 (베타 주소에 들어갈 계정 · 아이디 여러 개)', friendSet],
   ['0', '끝'],
 ];
 

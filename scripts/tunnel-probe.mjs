@@ -144,6 +144,19 @@ export function tunnelPlan(env, port, home = env.USERPROFILE || env.HOME || '') 
  * 설정 파일 글을 읽어 맞는지 본다(고칠 것 목록 — 비면 됨). 파일 내용은 찍지 않는다(터널 ID 가 들어 있다).
  *   ingress 에 그 호스트 이름 · service http://localhost:<포트> · 끝의 catch-all(http_status:404)
  */
+/**
+ * ★★★ R109 (D-369) — 베타 주소(FRIEND_HOSTNAME) 줄 점검. **막지 않는다**(고정 주소는 그대로 연다 — 베타 주소로만 못 들어올 뿐) · 경고 줄만
+ */
+export function checkFriendHost(text, friendHostname) {
+  const h = cleanHostname(friendHostname);
+  if (!h || text == null) return [];
+  const out = [];
+  const esc = h.replace(/\./g, '\\.');
+  if (!new RegExp(`hostname\\s*:\\s*["']?${esc}["']?\\s*$`, 'm').test(text)) out.push(`ingress 에 hostname: ${h} (베타 주소) 이 없다 — 베타 주소로는 들어올 수 없다(docs/11 4-4)`);
+  if (!new RegExp(`httpHostHeader\\s*:\\s*["']?${esc}["']?\\s*$`, 'm').test(text)) out.push(`베타 주소 줄에 originRequest.httpHostHeader: ${h} 가 없다 — 서버가 자리를 못 가를 수 있다(본보기 ops/cloudflared.example.yml)`);
+  return out;
+}
+
 export function checkTunnelConfig(text, { hostname, port }) {
   if (text == null) return ['설정 파일이 없습니다 — docs/11 "도메인 연결 — 한 번만" 4단계'];
   const problems = [];

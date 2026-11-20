@@ -43,7 +43,8 @@ const seedFile =
 const raw = JSON.parse(await readFile(seedFile, 'utf8'));
 const meta = raw._meta ?? {};
 const sourceId = meta.sourceId ?? 'manual';
-const license = meta.license ?? 'CC-BY-SA-4.0';
+// ★ R109 (D-369) — 문제 데이터에 공개 라이선스를 붙이지 않는다(DATA_LICENSE.md) · 시드 파일 머리에 적혀 있으면 그 값
+const license = meta.license ?? null;
 
 const client = new pg.Client({ connectionString: DATABASE_URL });
 await client.connect();

@@ -47,6 +47,8 @@ export type {
   GameTopicInfo,
 } from './settings.js';
 export * from './protocol.js';
+// ★★★ R109 — 두 자리(공개 · 베타) · 지인 전용 목록
+export * from './site.js';
 // ★★★ R050 — 미니게임
 export * from './minigame.js';
 export * from './balance.js';

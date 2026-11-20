@@ -35,7 +35,7 @@ shopRouter.get('/', async (req, res) => {
   const bal = await getPool().query<{ correct: string; rewards: string; grants: string; spent: string }>(POINTS_SQL, [session.accountId]);
   const balance = pointsFromRow(bal.rows[0]).balance;
   const themes = getThemes()
-    .filter((t) => t.active)
+    .filter((t) => t.active && (res.locals.site === 'friend' || !t.restricted)) // ★ R109 — 공개 자리에는 지인 전용 테마가 없다
     .map((t) => {
       const ids = specialIdsOfTheme(t.id);
       return { key: t.key, name: t.name, price: priceOf(t.price), total: ids.length, owned: ids.filter((id) => owned.has(id)) };
@@ -52,7 +52,7 @@ shopRouter.post('/draw', async (req, res) => {
   }
   const themeKey = typeof (req.body as { themeKey?: unknown })?.themeKey === 'string' ? (req.body as { themeKey: string }).themeKey : '';
   await ensureCatalog();
-  const theme = getThemes().find((t) => t.key === themeKey && t.active);
+  const theme = getThemes().find((t) => t.key === themeKey && t.active && (res.locals.site === 'friend' || !t.restricted)); // ★ R109
   if (!theme) {
     res.status(404).json({ ok: false, message: '없는 테마예요.' });
     return;

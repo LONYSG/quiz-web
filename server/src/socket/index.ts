@@ -32,6 +32,7 @@ import {
   nicknameFits,
   protectEmojiTokens,
   RULES,
+  SITE_TEXT,
   stripEmojiTokens,
   validateRoomSettings,
   type MinigameKey,
@@ -99,12 +100,13 @@ import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers 
 /** ★ R043 — 방을 만드는 중인 계정 (연타 무시) */
 const creatingRooms = new Set<string>();
 import { buildSnapshot, toPlayerView } from '../rooms/snapshot.js';
-import { emojiIdOfChar, isEmojiId, isSpecialEmoji, ownedEmojiIds, ownedEmojiIdsCached } from '../http/emojiRoutes.js';
+import { emojiAllowedOn, emojiIdOfChar, isEmojiId, isSpecialEmoji, ownedEmojiIds, ownedEmojiIdsCached } from '../http/emojiRoutes.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { currentSeq, nextSeq } from '../seq.js';
 import { liarAppeal, liarAppealVote, liarChatGate, liarDiscussEnd, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
 import { noteSongFail } from '../song/mode.js';
+import { friendGate, hiddenFor, siteOf } from '../site.js';
 import { drawChatGate, drawClear, drawFill, drawGiveUp, drawHint, drawRedo, drawReroll, drawStroke, drawUndo } from '../draw/engine.js';
 import {
   on,
@@ -163,7 +165,10 @@ export function registerSocketHandlers(io: Server): void {
     try {
       const token = readSessionToken(socket.handshake.headers.cookie);
       const session = await resolveSession(token);
-      if (session) {
+      // ★★★ R109 (D-369) — 자리(Host) · 베타 자리에서 지인이 아닌 계정은 로그인 안 된 연결로(방 이벤트는 guard 가 막는다 · 10초 뒤 끊김)
+      const site = siteOf(socket.request);
+      (socket.data as SocketData).site = site;
+      if (session && !(friendGate(site) && !session.isFriend)) {
         (socket.data as SocketData).session = {
           accountId: session.accountId,
           nickname: session.nickname,
@@ -357,9 +362,15 @@ function registerRoomHandlers(socket: Socket): void {
         return;
       }
 
-      const room = createRoomObject(roomId, payload.title, session.accountId);
+      const site = (s.data as SocketData).site ?? 'friend';
+      const room = createRoomObject(roomId, payload.title, session.accountId, site);
+      // ★ R109 — 공개 방은 기본 설정에서 지인 전용 미니게임을 뺀다(방식 · 미니게임 목록)
+      if (site === 'public') {
+        const v = validateRoomSettings(room.settings, { hidden: hiddenFor('public') });
+        if (v.ok) room.settings = v.settings;
+      }
       registerRoom(room);
-      console.log(`[room] 생성 ${roomId} by ${session.accountId} "${payload.title}"`);
+      console.log(`[room] 생성 ${roomId} by ${session.accountId} "${payload.title}"${site === 'public' ? ' · 공개' : ''}`);
 
       s.emit('room.created', { roomId });
       attachToRoom(s, roomId, 'join');
@@ -390,6 +401,11 @@ function registerRoomHandlers(socket: Socket): void {
       // ★★ R041 — 차단된 계정은 이 방에 다시 들어올 수 없다 (방이 살아 있는 동안)
       if (room?.bannedAccountIds.has(session.accountId)) {
         sendError(s, 'BANNED', '이 방에서 차단되어 들어갈 수 없습니다.');
+        return;
+      }
+      // ★★★ R109 (D-369) — 다른 자리의 방은 없는 방과 같다(공개 ↔ 지인 — 보이지도 들어가지도 않는다)
+      if (room && room.site !== ((s.data as SocketData).site ?? 'friend')) {
+        sendError(s, 'ROOM_NOT_FOUND');
         return;
       }
       if (!room) {
@@ -498,7 +514,7 @@ function registerRoomHandlers(socket: Socket): void {
       if (/:sp:\d/.test(rawNfc)) {
         const owned = ownedEmojiIdsCached(player.accountId) ?? (await ownedEmojiIds(player.accountId));
         now = Date.now();
-        rawNfc = capEmojiTokens(rawNfc, (id) => isSpecialEmoji(id) && owned.has(id));
+        rawNfc = capEmojiTokens(rawNfc, (id) => isSpecialEmoji(id) && owned.has(id) && emojiAllowedOn(room.site, id)); // ★ R109 — 공개 방은 지인 전용 테마를 버린다
       } else if (countEmojiTokens(rawNfc) > INLINE_EMOJI_MAX) {
         rawNfc = capEmojiTokens(rawNfc, () => false);
       }
@@ -649,6 +665,11 @@ function registerRoomHandlers(socket: Socket): void {
       // ★★ R048 (D-230) — 특별 이모티콘(테마)은 **가진 사람만** 보낼 수 있다
       //   ★ R071 — 제한이 없어 연타가 잦아지므로 60초 메모리 사본을 먼저 본다(없을 때만 DB · 사면 forgetOwned 가 지운다)
       const special = isSpecialEmoji(payload.emojiId);
+      // ★★★ R109 (D-369) — 공개 방에서는 지인 전용 테마(치이카와)를 못 보낸다(가진 것은 그대로 — 베타 방에서는 된다)
+      if (!emojiAllowedOn(room.site, payload.emojiId)) {
+        sendError(s, 'BAD_REQUEST', '이 방에서는 쓸 수 없는 이모티콘입니다.');
+        return;
+      }
       if (special && !(ownedEmojiIdsCached(player.accountId) ?? (await ownedEmojiIds(player.accountId))).has(payload.emojiId)) {
         sendError(s, 'BAD_REQUEST', '가지고 있지 않은 이모티콘입니다.');
         return;
@@ -755,7 +776,7 @@ function registerRoomHandlers(socket: Socket): void {
         songLegend: room.settings.songLegend,
         songGenres: room.settings.songGenres,
         ...payload,
-      });
+      }, { hidden: hiddenFor(room.site) }); // ★ R109 — 공개 방은 지인 전용 방식 · 미니게임을 막는다
       if (!valid.ok) {
         sendError(s, 'BAD_REQUEST', valid.message);
         return;
@@ -1223,6 +1244,11 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room, payload }) => {
       if (room.settingsLocked || room.game) {
         sendError(s, 'INVALID_STATE', '지금은 미니게임을 시작할 수 없습니다.');
+        return;
+      }
+      // ★ R109 — 공개 방은 지인 전용 미니게임을 연습으로도 못 연다
+      if (hiddenFor(room.site).minigames.includes(payload.key as MinigameKey)) {
+        sendError(s, 'BAD_REQUEST', SITE_TEXT.modeNotHere);
         return;
       }
       if (!startPractice(room, payload.key as MinigameKey)) sendError(s, 'INVALID_STATE', '미니게임을 시작하지 못했습니다.');

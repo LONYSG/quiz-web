@@ -95,6 +95,15 @@ export async function insertGame(game: NewGame): Promise<string> {
 }
 
 /**
+ * ★★★ R109 (D-369) — 판을 연 자리(games.site · 0039). 따로 한 줄 — 실패해도(0039 미적용) 판은 그대로 간다(로그만)
+ */
+export function setGameSite(gameId: string, site: 'public' | 'friend'): void {
+  query(`UPDATE games SET site = $2 WHERE id = $1`, [gameId, site]).catch((err) =>
+    console.error('[game] ★ games.site 기록 실패(0039?):', (err as Error).message),
+  );
+}
+
+/**
  * game_players 다중 INSERT.
  *
  * ★ 한 번의 쿼리로 넣는다. unnest 로 배열을 행으로 펼친다.

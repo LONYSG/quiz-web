@@ -16,7 +16,11 @@ import { Counter, TokenBucket, WindowCounter, type ClientIp } from './limits.js'
 const S = config.security;
 
 /** 허용하는 Origin 인가 */
-export function originAllowed(origin: string | undefined, publicHostname: string | null = config.publicHostname): boolean {
+export function originAllowed(
+  origin: string | undefined,
+  publicHostname: string | null = config.publicHostname,
+  friendHostname: string | null = config.friendHostname, // ★ R109 — 베타 주소
+): boolean {
   if (!origin) return true;
   let host: string;
   try {
@@ -27,6 +31,7 @@ export function originAllowed(origin: string | undefined, publicHostname: string
   if (host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host === '::1') return true;
   if (/^[a-z0-9-]+\.trycloudflare\.com$/.test(host)) return true;
   if (publicHostname && (host === publicHostname || host === `www.${publicHostname}`)) return true;
+  if (friendHostname && host === friendHostname) return true;
   return false;
 }
 

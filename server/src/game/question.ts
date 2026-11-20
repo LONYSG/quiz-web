@@ -297,7 +297,7 @@ function broadcastQuestionStarted(room: Room, current: CurrentQuestion): void {
     // ★ R061 — 문항 번호(questions.id) — 제보 · 복사용. 번호는 정답의 단서가 아니다
     questionId: current.questionId,
     // ★★★ R096 — 노래 맞히기: 미리듣기 · 앨범 표지(시계 공개 힌트 — C-3 · 표지 자체가 설계상 힌트다) · 곡 길이. 제목 · 가수는 공개 뒤에만
-    song: current.song ? { previewUrl: current.song.entry.previewUrl, cover: current.song.entry.cover, durationMs: current.song.durationMs } : null,
+    song: current.song && room.site === 'friend' ? { previewUrl: current.song.entry.previewUrl, cover: current.song.entry.cover, durationMs: current.song.durationMs } : null,
     state: room.state,
   };
   emitRoomPerPlayer(room, 'question.started', base, (player) =>

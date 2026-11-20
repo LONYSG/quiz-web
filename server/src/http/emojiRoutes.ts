@@ -15,6 +15,7 @@
 import { Router } from 'express';
 import { query } from '../db/pool.js';
 import { readSessionToken, resolveSession } from '../auth/session.js';
+import type { Site } from '@quiz/shared';
 
 export const emojiRouter = Router();
 
@@ -39,6 +40,8 @@ export interface EmojiThemeMeta {
   name: string;
   price: number;
   active: boolean;
+  /** ★ R109 (D-369) — 지인 자리에서만(emoji_themes.restricted · 0039 — 치이카와) */
+  restricted: boolean;
 }
 
 let catalog = new Map<number, EmojiMeta>();
@@ -71,8 +74,9 @@ export async function loadEmojiCatalog(): Promise<void> {
     catalog = next;
     byChar = new Map([...next.values()].filter((e) => e.char).map((e) => [charKey(e.char!), e.id]));
     try {
-      const t = await query<{ id: number; key: string; name_ko: string; price: number; active: boolean }>(`SELECT id, key, name_ko, price, active FROM emoji_themes ORDER BY sort_order, id`);
-      themes = t.rows.map((x) => ({ id: x.id, key: x.key, name: x.name_ko, price: x.price, active: x.active }));
+      // ★ R109 — restricted(0039). 칸이 없으면(미적용) * 로 읽어 false
+      const t = await query<{ id: number; key: string; name_ko: string; price: number; active: boolean; restricted?: boolean }>(`SELECT * FROM emoji_themes ORDER BY sort_order, id`);
+      themes = t.rows.map((x) => ({ id: x.id, key: x.key, name: x.name_ko, price: x.price, active: x.active, restricted: x.restricted === true }));
     } catch {
       themes = []; // 0016 미적용
     }
@@ -98,6 +102,16 @@ export function emojiIdOfChar(char: string): number | null {
 /** ★ R048 — 특별 이모티콘인가 (theme_id 있음) */
 export function isSpecialEmoji(id: number): boolean {
   return (catalog.get(id)?.themeId ?? null) !== null;
+}
+
+/** ★★★ R109 (D-369) — 지인 자리에서만 쓰는 이모티콘인가(테마가 restricted) */
+export function isRestrictedEmoji(id: number): boolean {
+  const t = catalog.get(id)?.themeId ?? null;
+  return t !== null && themes.some((x) => x.id === t && x.restricted);
+}
+/** ★ R109 — 이 자리에서 쓸 수 있는 이모티콘인가 */
+export function emojiAllowedOn(site: Site, id: number): boolean {
+  return site === 'friend' || !isRestrictedEmoji(id);
 }
 
 /** ★ R049 — 테마 목록 (메모리) · 테마의 특별 이모티콘 번호 · 이름 */
@@ -145,7 +159,16 @@ emojiRouter.get('/', async (req, res) => {
   // ★★ R049 (D-231) — 메타는 전원에게(남이 보낸 특별 이모티콘을 그려야 한다) · 내가 가진 특별 번호는 ownedSpecial 로 따로
   const session = await resolveSession(readSessionToken(req.headers.cookie));
   const owned = session ? await ownedEmojiIds(session.accountId) : new Set<number>();
-  res.json({ ok: true, emojis: [...catalog.values()], defaults, ownedSpecial: [...owned], themes: themes.filter((t) => t.active) });
+  // ★ R109 — 공개 자리에는 지인 전용 테마(치이카와)가 목록 · 가진 것 · 테마 어디에도 없다(가진 것은 지워지지 않는다 — 베타 주소에서는 그대로)
+  const site = res.locals.site as Site;
+  const ok = (id: number) => emojiAllowedOn(site, id);
+  res.json({
+    ok: true,
+    emojis: [...catalog.values()].filter((e) => ok(e.id)),
+    defaults,
+    ownedSpecial: [...owned].filter(ok),
+    themes: themes.filter((t) => t.active && (site === 'friend' || !t.restricted)).map(({ restricted: _r, ...t }) => t),
+  });
 });
 
 emojiRouter.get('/:id/image', async (req, res) => {
@@ -156,11 +179,13 @@ emojiRouter.get('/:id/image', async (req, res) => {
   }
   const r = await query<{ image: Buffer; mime: string }>(`SELECT image, mime FROM emojis WHERE id = $1 AND kind = 'custom' AND active`, [id]);
   const row = r.rows[0];
-  if (!row) {
+  // ★ R109 — 지인 전용 그림은 공개 자리에서 404
+  if (!row || !emojiAllowedOn(res.locals.site as Site, id)) {
     res.status(404).end();
     return;
   }
   res.setHeader('Content-Type', row.mime);
-  res.setHeader('Cache-Control', 'public, max-age=86400');
+  // ★ R109 — 지인 전용 그림은 공용 캐시(Cloudflare)에 두지 않는다(같은 주소로 공개 자리가 받지 않게)
+  res.setHeader('Cache-Control', isRestrictedEmoji(id) ? 'private, max-age=86400' : 'public, max-age=86400');
   res.send(row.image);
 });

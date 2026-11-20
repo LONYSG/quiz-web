@@ -83,7 +83,8 @@ describe('shouldOpen — 브라우저 열기 조건', () => {
 });
 
 // ★ R107 (D-364) — 고정 주소 / 임시 주소 갈래
-import { checkTunnelConfig, cleanHostname, tunnelPlan } from './tunnel-probe.mjs';
+import { readFileSync } from 'node:fs';
+import { checkFriendHost, checkTunnelConfig, cleanHostname, tunnelPlan } from './tunnel-probe.mjs';
 const B = String.fromCharCode(92); // 백슬래시(편집 도구가 망가뜨리지 않게)
 const WIN_HOME = ['C:', 'Users', 'u'].join(B);
 const WIN_CFG = [WIN_HOME, '.cloudflared', 'config.yml'].join(B);
@@ -133,5 +134,19 @@ describe('checkTunnelConfig — 설정 파일 점검', () => {
     expect(checkTunnelConfig(good, { hostname: 'quizdojang.com', port: 3001 })).toHaveLength(1);
     expect(checkTunnelConfig(good.replace('  - service: http_status:404', ''), { hostname: 'quizdojang.com', port: 3000 })).toHaveLength(1);
     expect(checkTunnelConfig(null, { hostname: 'quizdojang.com', port: 3000 })[0]).toMatch(/없습니다/);
+  });
+});
+
+// ★★★ R109 (D-369) — 베타 주소 줄(경고만) · 저장소의 본보기가 두 점검을 다 통과하는가
+describe('checkFriendHost — 베타 주소 줄', () => {
+  const example = readFileSync(new URL('../ops/cloudflared.example.yml', import.meta.url), 'utf8');
+  it('본보기 = 고정 · 베타 점검 둘 다 통과', () => {
+    expect(checkTunnelConfig(example, { hostname: 'quizdojang.com', port: 3000 })).toEqual([]);
+    expect(checkFriendHost(example, 'beta.quizdojang.com')).toEqual([]);
+  });
+  it('베타 줄 없음 · Host 고정 없음 → 경고 둘 · FRIEND_HOSTNAME 없으면 아무것도', () => {
+    const noBeta = 'ingress:\n  - hostname: quizdojang.com\n    service: http://localhost:3000\n  - service: http_status:404\n';
+    expect(checkFriendHost(noBeta, 'beta.quizdojang.com')).toHaveLength(2);
+    expect(checkFriendHost(noBeta, undefined)).toEqual([]);
   });
 });

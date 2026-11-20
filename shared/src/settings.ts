@@ -15,6 +15,7 @@ import { isMinigameKey, selectableMinigameKeys, type MinigameKey } from './minig
 import { LIAR, LIAR_TEAM_BLOCK, isLiarMode, isRoomMode, type LiarMode, type RoomMode } from './liar.js';
 import { DRAW, DRAW_TEAM_BLOCK } from './draw.js';
 import { validateSongSettings, type SongSettings } from './songMode.js';
+import { SITE_TEXT, type SiteHidden } from './site.js';
 
 export type StartMode = 'instant' | 'countdown';
 
@@ -232,7 +233,11 @@ function isInt(value: unknown): value is number {
  *   방장이 카운트다운으로 바꿨을 때 저장된 값이 범위 밖이면 그 순간 시작이 막히는데,
  *   왜 막히는지 화면에서 알 수 없게 된다.
  */
-export function validateRoomSettings(input: unknown): SettingsValidation {
+/**
+ * ★★★ R109 — opts.hidden: 이 방의 자리에서 숨기는 방식 · 미니게임(공개 방 — 서버가 센 값). 숨긴 미니게임은 고를 수 있는 목록에서 빠지고
+ *   (저장된 설정에 있어도 거른다 — hidden 과 같은 꼴) · 숨긴 방식은 거절한다. 없으면 오늘과 같다.
+ */
+export function validateRoomSettings(input: unknown, opts?: { hidden?: SiteHidden }): SettingsValidation {
   if (input === null || typeof input !== 'object') {
     return { ok: false, field: 'questionCount', message: '설정 형식이 올바르지 않습니다.' };
   }
@@ -298,7 +303,8 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     return { ok: false, field: 'minigames', message: '미니게임 설정 형식이 올바르지 않습니다.' };
   }
   // ★ R087 — 숨긴 미니게임(hidden)은 저장된 설정에 있어도 거른다(고를 수 있는 것만)
-  const selectable = selectableMinigameKeys();
+  const siteHiddenKeys = opts?.hidden?.minigames ?? [];
+  const selectable = selectableMinigameKeys().filter((k) => !siteHiddenKeys.includes(k));
   let minigameKeys: MinigameKey[] = [...selectable];
   if (raw.minigameKeys !== undefined) {
     if (!Array.isArray(raw.minigameKeys) || !(raw.minigameKeys as unknown[]).every((k) => typeof k === 'string')) {
@@ -337,6 +343,9 @@ export function validateRoomSettings(input: unknown): SettingsValidation {
     return { ok: false, field: 'mode', message: '방식 설정 형식이 올바르지 않습니다.' };
   }
   const mode: RoomMode = isRoomMode(raw.mode) ? raw.mode : raw.minigameOnly === true ? 'minigame' : 'quiz';
+  if (opts?.hidden?.modes.includes(mode)) {
+    return { ok: false, field: 'mode', message: SITE_TEXT.modeNotHere };
+  }
   if (mode === 'liar' && (minigameRounds < LIAR.ROUNDS.MIN || minigameRounds > LIAR.ROUNDS.MAX)) {
     return { ok: false, field: 'minigameRounds', message: `라이어 게임 라운드 수는 ${LIAR.ROUNDS.MIN}~${LIAR.ROUNDS.MAX} 사이여야 합니다.` };
   }
