@@ -12,7 +12,8 @@
 
 import { useState } from 'react';
 import { Award, Bug, Coins, Gamepad2, Link, MessageSquareWarning, SkipForward, Smile } from 'lucide-react';
-import { ACHIEVEMENTS, FEEDBACK_ADOPT_POINTS, SIGNUP_GIFT_POINTS } from '@quiz/shared';
+import { ACHIEVEMENTS, FEEDBACK_ADOPT_POINTS, SIGNUP_GIFT_POINTS, creditLinesFor } from '@quiz/shared';
+import { siteInfo } from './site.js';
 import Icon from './Icon.js';
 import { EMOJI_HELP_EXTRA, EMOJI_HELP_LINES, openEmojiHelp } from './EmojiHelp.js';
 import { replayTour } from './Tour.js';
@@ -30,6 +31,28 @@ const DRAW_PRICE = 20;
 
 export default function InfoText() {
   const [tab, setTab] = useState<TabKey>('play');
+  // ★★★ R109 (D-369) — 맨 아래 작은 글 한 줄 "출처 · 라이선스" → 이 자리에서 열린다(새 창 없이 · 내용은 자리에 따라 — shared/credits.ts 정본)
+  const [credits, setCredits] = useState(false);
+  if (credits) {
+    return (
+      <div className="credits" data-credits>
+        <div className="credits-head">
+          <strong>출처 · 라이선스</strong>
+          <button type="button" className="link-btn" data-credits-back onClick={() => setCredits(false)}>
+            안내로
+          </button>
+        </div>
+        <ul className="credit-list">
+          {creditLinesFor(siteInfo().site).map((l) => (
+            <li key={l.what} data-credit={l.friendOnly ? 'friend' : 'all'}>
+              <span className="credit-what">{l.what}</span>
+              <span className="credit-text">{l.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
   return (
     <>
       <div className="info-tabs" role="tablist" aria-label="안내">
@@ -100,6 +123,9 @@ export default function InfoText() {
           <li>채택된 제보는 +{FEEDBACK_ADOPT_POINTS}P예요.</li>
         </ul>
       )}
+      <button type="button" className="link-btn info-credit" data-credits-open onClick={() => setCredits(true)}>
+        출처 · 라이선스
+      </button>
     </>
   );
 }

@@ -476,9 +476,15 @@ let SHOW_HIDDEN = ENV?.QUIZ_TEST_SERVER === '1' || ENV?.MINIGAME_SHOW_HIDDEN ===
 export function setShowHiddenMinigames(on: boolean): void {
   SHOW_HIDDEN = on;
 }
-/** 고를 수 있는 미니게임인가(숨김이 아니거나 검사) */
+// ★★★ R109 (D-369) — 이 자리(공개 주소)에서 숨기는 미니게임 — **화면만** 부른다(한 페이지 = 한 자리). 서버는 두 자리를 같이 받으므로
+//   이 스위치를 쓰지 않고 validateRoomSettings(…, { hidden }) 로 방마다 거른다
+let SITE_HIDDEN: readonly MinigameKey[] = [];
+export function setSiteHiddenMinigames(keys: readonly MinigameKey[]): void {
+  SITE_HIDDEN = [...keys];
+}
+/** 고를 수 있는 미니게임인가(숨김이 아니거나 검사 · 이 자리에서 숨긴 것은 아님) */
 export function minigameSelectable(key: MinigameKey): boolean {
-  return SHOW_HIDDEN || !minigameInfo(key)?.hidden;
+  return (SHOW_HIDDEN || !minigameInfo(key)?.hidden) && !SITE_HIDDEN.includes(key);
 }
 /** 고를 수 있는 미니게임 — 표시 순서 */
 export function selectableMinigameKeys(): MinigameKey[] {

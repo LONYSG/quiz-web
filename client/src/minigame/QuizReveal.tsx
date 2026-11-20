@@ -182,6 +182,8 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
         {mine ? (mine.extra?.correct ? '맞혔어요!' : mine.submitted ? '아쉬워요' : '고르지 못했어요') : ''}
         {rv.margin ? ` · 차이 ${String(rv.margin)}${p.kind === 'earlier' ? '년' : '배'}` : ''}
       </p>
+      {/* ★ R109 — 어느 쪽? 에는 출처 줄이 없었다(그림 둘 — CC BY · BY-SA 는 표기 의무) */}
+      {attribution}
     </div>
   );
 }

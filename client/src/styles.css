@@ -8080,6 +8080,46 @@ button.mg-cat-card {
 .info-guide-btn {
   margin-top: 6px;
 }
+/* ★★★ R109 (D-369) — ⓘ 맨 아래 "출처 · 라이선스" 작은 글 한 줄 → 같은 자리에서 열린다(있는 토큰만) */
+.link-btn.info-credit {
+  display: block;
+  margin: 10px 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+.credits {
+  display: grid;
+  gap: 8px;
+}
+.credits-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-right: 30px;
+}
+.credit-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.credit-list li {
+  display: grid;
+  gap: 2px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.credit-what {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.credit-text {
+  overflow-wrap: anywhere;
+}
 /* ★★ R066 (D-289) — 가입 선물 창 */
 .signup-gift {
   width: min(360px, calc(100vw - 24px));

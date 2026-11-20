@@ -44,6 +44,7 @@ import { usePopup } from './popup.js';
 import MinigameCatalog from './minigame/MinigameCatalog.js';
 import TopicPicker from './TopicPicker.js';
 import SongSettings from './SongSettings.js';
+import { siteInfo } from './site.js';
 
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
 const PRESETS = [50, 100, 200] as const;
@@ -185,7 +186,8 @@ export default function GameSettings({
               >
                 캐치마인드
               </button>
-              <button
+              {/* ★ R109 — 공개 주소에서는 노래 방식이 없다(지인 전용 · 서버도 막는다) */}
+              {!siteInfo().hidden.modes.includes('song') && <button
                 type="button"
                 data-mode="song"
                 aria-pressed={songM}
@@ -194,7 +196,7 @@ export default function GameSettings({
                 onClick={() => !songM && push({ ...draft, mode: 'song', minigameOnly: false })}
               >
                 노래
-              </button>
+              </button>}
             </>
           ) : (
             <span className="chip on">{songM ? '노래 맞히기' : drawM ? '캐치마인드' : liar ? '라이어' : mgOnly ? '미니게임만' : '퀴즈'}</span>

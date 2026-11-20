@@ -64,6 +64,7 @@
 // =============================================================================
 
 import { spawn, spawnSync } from 'node:child_process';
+import { request as httpRequest } from 'node:http';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -150,6 +151,8 @@ const SCENARIO_ENV = {
   rate: { RESOLVED_WAIT_MS: '2500' },
   // ★ R069 — 등급 비율 실측(20문항 판 다섯 · 방장 넘기기)
   levelmix: { RESOLVED_WAIT_MS: '200' },
+  // ★★★ R109 — 두 자리: 공개 · 베타 주소(봇은 Host 머리말로) · 미니게임 판 사이 짧게
+  site: { PUBLIC_HOSTNAME: 'quizdojang.test', FRIEND_HOSTNAME: 'beta.quizdojang.test', RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   // ★★★ R107 — 공격 묶음: 한도를 작게 · 이 PC 자신도 세고(SEC_LOCAL_EXEMPT=0) · LAN 주소로도 듣는다(가짜 IP 헤더 단계)
   attack: {
     RESOLVED_WAIT_MS: '200',
@@ -256,9 +259,53 @@ const log = (...a) => console.log(`[${stamp()}]`, ...a);
  * 계정 하나를 만들고(또는 로그인하고) 쿠키를 들고 있는 봇.
  * ★ 쿠키를 직접 관리한다. Node 의 fetch 는 쿠키 저장소가 없다.
  */
+/**
+ * ★★★ R109 — Host 머리말을 실어 보내는 HTTP(Node fetch 는 Host 를 바꿀 수 없다 — 실측 · 소켓은 extraHeaders 로 된다)
+ *   { status, json, headers } · 본문이 JSON 이 아니면 json = {} · raw = 바이트 수
+ */
+function hostRequest(method, pathname, { host, cookie = null, body = undefined, ip = null } = {}) {
+  const u = new URL(BASE);
+  return new Promise((resolve, reject) => {
+    const data = body === undefined ? null : Buffer.from(JSON.stringify(body));
+    const req = httpRequest(
+      {
+        hostname: u.hostname,
+        port: u.port,
+        path: pathname,
+        method,
+        headers: {
+          host,
+          ...(data ? { 'content-type': 'application/json', 'content-length': String(data.length) } : {}),
+          ...(cookie ? { cookie } : {}),
+          ...(ip ? { 'cf-connecting-ip': ip } : {}),
+        },
+      },
+      (res) => {
+        const chunks = [];
+        res.on('data', (c) => chunks.push(c));
+        res.on('end', () => {
+          const buf = Buffer.concat(chunks);
+          let json = {};
+          try {
+            json = JSON.parse(buf.toString('utf8'));
+          } catch {
+            /* 그림 · 빈 본문 */
+          }
+          resolve({ status: res.statusCode, json, headers: res.headers, raw: buf.length });
+        });
+      },
+    );
+    req.on('error', reject);
+    if (data) req.write(data);
+    req.end();
+  });
+}
+
 class Bot {
-  constructor(name, { ip = null } = {}) {
+  constructor(name, { ip = null, host = null } = {}) {
     this.name = name;
+    // ★ R109 — 이 봇이 들어오는 주소(Host 머리말 · 없으면 localhost — 오늘과 같다)
+    this.host = host;
     // ★ R107 — 터널 뒤 사람인 척(CF-Connecting-IP · 서버는 루프백에서 온 것만 믿는다) — attack 이 IP 별로 나눈다
     this.ip = ip;
     this.loginId = `${PREFIX}_${name}`.toLowerCase();
@@ -270,7 +317,21 @@ class Bot {
     this.events = [];
   }
 
+  /** ★ R109 — Host 를 실어 GET/POST(자리 검사) */
+  async req(method, pathname, body) {
+    const r = await hostRequest(method, pathname, { host: this.host ?? new URL(BASE).host, cookie: this.cookie, body, ip: this.ip });
+    for (const raw of [r.headers['set-cookie'] ?? []].flat()) {
+      const pair = raw.split(';')[0];
+      if (pair.startsWith('qw_session=')) this.cookie = pair;
+    }
+    return r;
+  }
+
   async #post(pathname, body) {
+    if (this.host) {
+      const r = await this.req('POST', pathname, body);
+      return { status: r.status, json: r.json, setCookie: [r.headers['set-cookie'] ?? []].flat() };
+    }
     const res = await fetch(`${BASE}${pathname}`, {
       method: 'POST',
       headers: {
@@ -310,7 +371,7 @@ class Bot {
     return new Promise((resolve, reject) => {
       this.socket = io(BASE, {
         transports: ['websocket'],
-        extraHeaders: { cookie: this.cookie ?? '', ...(this.ip ? { 'cf-connecting-ip': this.ip } : {}) },
+        extraHeaders: { cookie: this.cookie ?? '', ...(this.ip ? { 'cf-connecting-ip': this.ip } : {}), ...(this.host ? { host: this.host } : {}) },
         reconnection: false,
       });
       const s = this.socket;
@@ -7777,6 +7838,192 @@ async function scenarioMgDuo() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R109 (D-369) — 두 자리(공개 · 베타) — `npm run bot -- site`
+//   서버: PUBLIC_HOSTNAME=quizdojang.test · FRIEND_HOSTNAME=beta.quizdojang.test(SCENARIO_ENV) · 봇은 Host 머리말로 주소를 고른다
+//   공개 방: ① 노래 · 얼마게요가 목록에 없다 ② 상품 그림 길 404 ③ 치이카와 못 보냄 · 창에 없음 ④ 스냅샷 · 이벤트에 미리듣기 주소 없음
+//   베타 방: ①~④ 가 지금과 같다 · 지인 아닌 계정은 베타 주소에 못 들어감 · 가입 막힘 · 다른 자리 방에 못 들어감
+// -----------------------------------------------------------------------------
+async function scenarioSite() {
+  log('시나리오 site — ★★★ 두 자리(공개 · 베타 · R109)');
+  const PUB = 'quizdojang.test';
+  const BETA = 'beta.quizdojang.test';
+  // 계정: 공개 주소에서 가입(새 계정 = 지인 아님) → 지인 둘은 DB 로 켠다(찬종 메뉴 21 과 같은 칸)
+  const f1 = new Bot('sf1', { host: BETA });
+  const f2 = new Bot('sf2', { host: BETA });
+  const p1 = new Bot('sp1', { host: PUB });
+  const p2 = new Bot('sp2', { host: PUB });
+  for (const b of [f1, f2, p1, p2]) {
+    const r = await new Bot(b.name, { host: PUB }).req('POST', '/api/auth/signup', { loginId: b.loginId, password: b.password, nickname: b.nickname });
+    if (r.status !== 200 && r.status !== 409) throw new Error(`가입 ${b.loginId} ${r.status}`);
+  }
+  await withDb((c) => c.query(`UPDATE accounts SET is_friend = (login_id = ANY($1)) WHERE login_id = ANY($2)`, [[f1.loginId, f2.loginId], [f1.loginId, f2.loginId, p1.loginId, p2.loginId]]));
+
+  // ── 1. 주소 · 계정
+  const sPub = await p1.req('GET', '/api/site');
+  const sBeta = await f1.req('GET', '/api/site');
+  expectTrue('★★ /api/site 공개 — site public · 노래 방식 숨김 · song · songyear · price 숨김 · worldprice 는 남음 · 베타 링크 없음',
+    sPub.json.site === 'public' && sPub.json.split === true && sPub.json.hidden.modes.join() === 'song' &&
+      ['song', 'songyear', 'price'].every((k) => sPub.json.hidden.minigames.includes(k)) && !sPub.json.hidden.minigames.includes('worldprice') && sPub.json.publicUrl === null,
+    JSON.stringify(sPub.json));
+  expectTrue('★★ /api/site 베타 — site friend · 숨김 없음 · 공개 주소 링크', sBeta.json.site === 'friend' && sBeta.json.hidden.modes.length === 0 && sBeta.json.hidden.minigames.length === 0 && sBeta.json.publicUrl === `https://${PUB}`, JSON.stringify(sBeta.json));
+  expectTrue('★ 베타 응답에만 X-Robots-Tag noindex', /noindex/.test(String(sBeta.headers['x-robots-tag'])) && sPub.headers['x-robots-tag'] === undefined, JSON.stringify([sBeta.headers['x-robots-tag'], sPub.headers['x-robots-tag']]));
+  const su = await new Bot('sx9', { host: BETA }).req('POST', '/api/auth/signup', { loginId: 'bot_sx9', password: 'bot1234', nickname: 'bot-sx9' });
+  expectTrue('★★ 베타 주소에서 가입 → 403 FRIEND_NO_SIGNUP(공개 주소 링크)', su.status === 403 && su.json.code === 'FRIEND_NO_SIGNUP' && su.json.publicUrl === `https://${PUB}`, JSON.stringify([su.status, su.json]));
+  const pb = new Bot('sp1', { host: BETA });
+  const lb = await pb.req('POST', '/api/auth/login', { loginId: p1.loginId, password: p1.password });
+  expectTrue('★★ 지인 아닌 계정 베타 로그인 → 403 FRIEND_ONLY · 세션 쿠키 없음', lb.status === 403 && lb.json.code === 'FRIEND_ONLY' && pb.cookie === null && !lb.headers['set-cookie'], JSON.stringify([lb.status, lb.json]));
+  const wrong = await new Bot('sp1', { host: BETA }).req('POST', '/api/auth/login', { loginId: p1.loginId, password: 'xxxx9' });
+  expect('★ 비밀번호가 틀리면 그냥 401(지인 여부를 먼저 새지 않는다)', wrong.status, 401);
+  for (const b of [f1, f2, p1, p2]) {
+    const r = await b.req('POST', '/api/auth/login', { loginId: b.loginId, password: b.password });
+    if (r.status !== 200) throw new Error(`로그인 ${b.loginId}@${b.host} ${r.status} ${JSON.stringify(r.json)}`);
+  }
+  const sc = await hostRequest('POST', '/api/auth/login', { host: BETA, body: { loginId: f2.loginId, password: f2.password } });
+  const cookieAttr = String([sc.headers['set-cookie'] ?? []].flat()[0] ?? '');
+  expectTrue('★ 세션 쿠키에 Domain 이 없다(주소마다 따로 — 한쪽 로그인이 다른 쪽에 안 감)', cookieAttr.startsWith('qw_session') && !/domain=/i.test(cookieAttr), cookieAttr.replace(/=[^;]+;/, '=…;'));
+  // 지인이 아닌 계정의 쿠키를 베타 주소로 보내면(옛 쿠키 · 표시를 끈 뒤) 로그인 안 된 것과 같다
+  const meX = await hostRequest('GET', '/api/auth/me', { host: BETA, cookie: p1.cookie });
+  const emX = await hostRequest('GET', '/api/shop', { host: BETA, cookie: p1.cookie });
+  expectTrue('★★ 지인 아닌 계정 쿠키로 베타 /api/auth/me · /api/shop → 403', meX.status === 403 && emX.status === 403, JSON.stringify([meX.status, emX.status]));
+  const meP = await p1.req('GET', '/api/auth/me');
+  expect('★ 공개 /api/auth/me 에 site', meP.json.site, 'public');
+
+  // ── 2. 방
+  for (const b of [f1, f2, p1, p2]) await b.connect();
+  const stray = new Bot('sp2', { host: BETA });
+  stray.cookie = p2.cookie;
+  await stray.connect();
+  const sm = stray.mark();
+  stray.createRoom('지인 아닌 소켓');
+  await sleep(500);
+  expectTrue('★★ 지인 아닌 계정이 베타 소켓으로 방 만들기 → UNAUTHENTICATED', stray.since(sm, 'error').some((e) => e.code === 'UNAUTHENTICATED') && stray.snapshot === null, JSON.stringify(stray.since(sm, 'error')));
+  stray.disconnect();
+  // 공개 방 · 베타 방
+  const rawPub = [];
+  p1.socket.onAny((ev, payload) => rawPub.push(`${ev} ${JSON.stringify(payload)}`));
+  p2.socket.onAny((ev, payload) => rawPub.push(`${ev} ${JSON.stringify(payload)}`));
+  p1.createRoom('R109 공개');
+  await p1.waitFor(() => p1.snapshot !== null, 6000, '공개 방');
+  f1.createRoom('R109 베타');
+  await f1.waitFor(() => f1.snapshot !== null, 6000, '베타 방');
+  const pubRoom = p1.snapshot.room;
+  const betaRoom = f1.snapshot.room;
+  expectTrue('★★ 방 자리 — 공개 방 public · 베타 방 friend', pubRoom.site === 'public' && betaRoom.site === 'friend', JSON.stringify([pubRoom.site, betaRoom.site]));
+  expectTrue('★★ ① 공개 방 기본 미니게임 목록에 song · songyear · price 없음 · 베타 방은 price 있음',
+    !pubRoom.settings.minigameKeys.some((k) => ['song', 'songyear', 'price'].includes(k)) && betaRoom.settings.minigameKeys.includes('price') && pubRoom.settings.minigameKeys.includes('worldprice'),
+    JSON.stringify([pubRoom.settings.minigameKeys, betaRoom.settings.minigameKeys.length]));
+  // 다른 자리 방에는 못 들어간다(코드 · 긴 id 둘 다)
+  let m = f2.mark();
+  f2.join(pubRoom.code);
+  await sleep(400);
+  const m2 = p2.mark();
+  p2.join(betaRoom.id);
+  await sleep(400);
+  expectTrue('★★ 베타 소켓 → 공개 방 코드 · 공개 소켓 → 베타 방 id = ROOM_NOT_FOUND', f2.since(m, 'error').some((e) => e.code === 'ROOM_NOT_FOUND') && p2.since(m2, 'error').some((e) => e.code === 'ROOM_NOT_FOUND'), JSON.stringify([f2.since(m, 'error'), p2.since(m2, 'error')]));
+  p2.join(pubRoom.code);
+  await p2.waitFor(() => p2.snapshot?.room.id === pubRoom.id, 6000, '공개 방 입장');
+  f2.join(betaRoom.code);
+  await f2.waitFor(() => f2.snapshot?.room.id === betaRoom.id, 6000, '베타 방 입장');
+  // 설정 — 공개 방은 노래 방식 거절 · price 골라도 빠짐 · 연습도 막힘 / 베타 방은 된다
+  m = p1.mark();
+  p1.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'song' });
+  await sleep(400);
+  expectTrue('★★ ① 공개 방 노래 방식 → BAD_REQUEST', p1.since(m, 'error').some((e) => e.code === 'BAD_REQUEST') && p1.snapshot.room.settings.mode !== 'song', JSON.stringify(p1.since(m, 'error')));
+  m = p1.mark();
+  p1.socket.emit('lobby.updateSettings', { questionCount: 10, minigames: true, minigameKeys: ['price', 'worldprice'] });
+  await p1.waitFor(() => p1.since(m, 'lobby.settingsUpdated').length > 0, 4000, '공개 설정');
+  expect('★★ ① 공개 방 price · worldprice 고름 → worldprice 만', p1.since(m, 'lobby.settingsUpdated').at(-1).settings.minigameKeys, ['worldprice']);
+  m = p1.mark();
+  p1.socket.emit('minigame.practice', { key: 'price' });
+  await sleep(400);
+  expectTrue('★ ① 공개 방 얼마게요 연습 → 거절 · 로비 그대로', p1.since(m, 'error').length > 0 && p1.snapshot.room.state === 'LOBBY', JSON.stringify(p1.since(m, 'error')));
+  m = f1.mark();
+  f1.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'song' });
+  await f1.waitFor(() => f1.since(m, 'lobby.settingsUpdated').some((e) => e.settings.mode === 'song'), 4000, '베타 노래 방식');
+  expectTrue('★★ 베타 방 노래 방식 = 된다', f1.snapshot.room.settings.mode === 'song');
+  f1.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'quiz' });
+  await sleep(300);
+
+  // ── 3. 그림 길
+  const pp = await withDb(async (c) => (await c.query(`SELECT image_id FROM minigame_images WHERE license = 'product-page' ORDER BY image_id LIMIT 1`)).rows[0]?.image_id);
+  const free = await withDb(async (c) => (await c.query(`SELECT image_id FROM minigame_images WHERE license <> 'product-page' ORDER BY image_id LIMIT 1`)).rows[0]?.image_id);
+  const gp = await p1.req('GET', `/api/minigame/image/${pp}`);
+  const gb = await f1.req('GET', `/api/minigame/image/${pp}`);
+  const gf = await p1.req('GET', `/api/minigame/image/${free}`);
+  expectTrue(`★★ ② 상품 그림(${pp}) — 공개 404 · 베타 200 · 자유 그림(${free})은 공개 200`, gp.status === 404 && gb.status === 200 && gb.raw > 0 && gf.status === 200, JSON.stringify([gp.status, gb.status, gf.status]));
+
+  // ── 4. 치이카와
+  const chi = await withDb(async (c) => (await c.query(`SELECT e.id FROM emojis e JOIN emoji_themes t ON t.id = e.theme_id WHERE t.key = 'chiikawa' AND e.active ORDER BY e.id LIMIT 1`)).rows[0]?.id);
+  await withDb((c) => c.query(`INSERT INTO account_emojis (account_id, emoji_id) SELECT id, $2 FROM accounts WHERE login_id = ANY($1) ON CONFLICT DO NOTHING`, [[p1.loginId, f1.loginId], chi]));
+  const ep = await p1.req('GET', '/api/emoji');
+  const eb = await f1.req('GET', '/api/emoji');
+  expectTrue('★★ ③ 공개 /api/emoji — 치이카와 그림 · 가진 것 · 테마 없음 / 베타는 있음',
+    !ep.json.emojis.some((e) => e.id === chi) && !ep.json.ownedSpecial.includes(chi) && !ep.json.themes.some((t) => t.key === 'chiikawa') &&
+      eb.json.emojis.some((e) => e.id === chi) && eb.json.ownedSpecial.includes(chi) && eb.json.themes.some((t) => t.key === 'chiikawa'),
+    JSON.stringify([ep.json.ownedSpecial, eb.json.ownedSpecial, ep.json.themes, eb.json.themes]));
+  const ip = await p1.req('GET', `/api/emoji/${chi}/image`);
+  const ib = await f1.req('GET', `/api/emoji/${chi}/image`);
+  const shp = await p1.req('GET', '/api/shop');
+  const drw = await p1.req('POST', '/api/shop/draw', { themeKey: 'chiikawa' });
+  expectTrue('★★ ③ 공개 — 치이카와 그림 404 · 상점에 없음 · 뽑기 거절 / 베타 그림 200', ip.status === 404 && ib.status === 200 && !shp.json.themes.some((t) => t.key === 'chiikawa') && drw.status >= 400, JSON.stringify([ip.status, ib.status, shp.json.themes, drw.status]));
+  m = p1.mark();
+  const mp2 = p2.mark();
+  p1.socket.emit('emoji.send', { emojiId: chi });
+  await sleep(300);
+  p1.chat(`:sp:${chi}: 안녕`);
+  await sleep(600);
+  const pubChats = p2.since(mp2, 'chat');
+  expectTrue('★★ ③ 공개 방 — 치이카와 보내기 거절 · 채팅 속 토큰은 버려짐', p1.since(m, 'error').some((e) => e.code === 'BAD_REQUEST') && !pubChats.some((c) => c.emojiId === chi || String(c.text).includes(`:sp:${chi}`)) && pubChats.some((c) => String(c.text).includes('안녕')), JSON.stringify([p1.since(m, 'error'), pubChats]));
+  const mf2 = f2.mark();
+  f1.socket.emit('emoji.send', { emojiId: chi });
+  await f2.waitFor(() => f2.since(mf2, 'chat').some((c) => c.emojiId === chi), 4000, '베타 치이카와');
+  expectTrue('★★ 베타 방 — 치이카와 보내기 = 된다(지금과 같다)', true);
+
+  // ── 5. 공개 방 미니게임만(빅맥지수 — 상품 그림 항목이 빠진 채 한 바퀴)
+  const seenPub = [];
+  for (const b of [p1, p2]) {
+    b.__done = new Set();
+    b.onMinigame = (mg) => {
+      if (!mg || mg.phase !== 'play' || mg.spectating) return;
+      const k = `${mg.token}:${mg.roundIndex}`;
+      if (b.__done.has(k)) return;
+      b.__done.add(k);
+      if (b === p1) seenPub.push(mg.round?.params);
+      setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { value: 1000 } }), 200);
+    };
+  }
+  m = p1.mark();
+  p1.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'minigame', minigameOnly: true, minigameRounds: 2, minigameKeys: ['worldprice'] });
+  await p1.waitFor(() => p1.since(m, 'lobby.settingsUpdated').some((e) => e.settings.minigameOnly), 4000, '미니게임만');
+  const g = p1.mark();
+  p1.socket.emit('game.start', {});
+  await p1.waitFor(() => p1.since(g, 'game.result').length > 0, 150000, '공개 미니게임만 결과');
+  const gid = p1.since(g, 'game.started')[0]?.gameId;
+  expectTrue('★★ 공개 방 빅맥지수 2판 — 10문항 모두 상품 그림(iphone) 아님', seenPub.length === 10 && seenPub.every((x) => !JSON.stringify(x).includes('"iphone"')), JSON.stringify(seenPub.map((x) => x?.imageId ?? '?')));
+  const site = await withDb(async (c) => (await c.query(`SELECT site FROM games WHERE id = $1`, [gid])).rows[0]?.site);
+  expect('★ games.site = public', site, 'public');
+  const blob = rawPub.join('\n');
+  expectTrue('★★ ④ 공개 방 소켓 전부(스냅샷 · 이벤트)에 미리듣기 · 표지 주소 없음', !/previewUrl|audio-ssl|mzstatic|itunes\.apple/.test(blob) && blob.length > 1000, `${blob.length}자`);
+
+  // ── 6. 베타 방 노래 판 — 미리듣기가 지금처럼 온다
+  m = f1.mark();
+  f1.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'song', songCount: 5 });
+  await f1.waitFor(() => f1.since(m, 'lobby.settingsUpdated').some((e) => e.settings.mode === 'song'), 4000, '베타 노래');
+  const gs = f1.mark();
+  f1.socket.emit('game.start', {});
+  await f1.waitFor(() => f1.since(gs, 'question.started').length > 0, 15000, '베타 노래 첫 곡');
+  const q0 = f1.since(gs, 'question.started')[0].payload;
+  expectTrue('★★ ④ 베타 방 노래 — 첫 곡에 미리듣기 주소', typeof q0.song?.previewUrl === 'string' && q0.song.previewUrl.startsWith('http'), JSON.stringify(q0.song ?? null).slice(0, 120));
+  f1.forceEnd();
+  await sleep(800);
+  const bsite = await withDb(async (c) => (await c.query(`SELECT site FROM games WHERE id = $1`, [f1.since(gs, 'game.started')[0]?.gameId])).rows[0]?.site);
+  expect('★ games.site = friend', bsite, 'friend');
+
+  for (const b of [f1, f2, p1, p2]) b.disconnect();
+  await withDb((c) => c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1)) AND emoji_id = $2`, [[p1.loginId, f1.loginId], chi]));
+}
+
 async function scenarioMgOnly() {
   log('시나리오 mgonly — ★★★ 미니게임만 (R057)');
   const { bots, host, roomId } = await mgRoom(3, 'R057 미니게임만');
@@ -10253,6 +10500,8 @@ async function scenarioAttack() {
 
 const SCENARIOS = {
   join: scenarioJoin,
+  // ★★★ R109 — 두 자리(공개 · 베타)
+  site: scenarioSite,
   duplicate: scenarioDuplicate,
   reconnect: scenarioReconnect,
   host: scenarioHost,

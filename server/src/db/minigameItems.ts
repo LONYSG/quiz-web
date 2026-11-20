@@ -56,8 +56,22 @@ export async function loadQuizData(force = false): Promise<QuizData> {
       `SELECT product_id, payload, image_id, to_char(as_of, 'YYYY-MM-DD') AS as_of, to_char(fx_as_of, 'YYYY-MM-DD') AS fx_as_of FROM minigame_products`,
     ),
     // ★ R074 — 크기만(그림 바이트는 읽지 않는다)
-    query<{ image_id: string; width: number; height: number; license: string | null }>(`SELECT image_id, width, height, license FROM minigame_images`),
+    query<{ image_id: string; width: number; height: number; license: string | null; attribution: string | null }>(`SELECT image_id, width, height, license, attribution FROM minigame_images`),
   ]);
+  // ★★★ R109 (D-369) — 정답 화면 출처 줄 = 그림마다 "저작자 (라이선스)"(CC BY · BY-SA 는 라이선스 표시가 의무 · "cropped" 같은 고침은 저작자 칸에 이미 있다).
+  //   옛 줄(minigame_items.attribution)은 저작자만이었다. 상품 그림(product-page)은 라이선스 이름을 붙이지 않는다(공개 라이선스가 아니다)
+  const imageCredit = new Map(
+    im.rows.map((r) => {
+      const who = (r.attribution ?? '').trim();
+      const lic = (r.license ?? '').trim();
+      const show = lic && lic !== FRIEND_ONLY_IMAGE_LICENSE ? lic : '';
+      return [r.image_id, who && show ? `${who} (${show})` : who || show];
+    }),
+  );
+  const creditOf = (ids: string[], fallback: string | null): string | null => {
+    const parts = ids.map((x) => imageCredit.get(x) ?? '').filter(Boolean);
+    return parts.length ? [...new Set(parts)].join(' · ') : fallback;
+  };
   // ★ R109 — 지인 전용 그림 · 항목
   const friendOnlyImageIds = new Set(im.rows.filter((r) => r.license === FRIEND_ONLY_IMAGE_LICENSE).map((r) => r.image_id));
   const friendOnlyProducts = new Set(pr.rows.filter((r) => r.image_id && friendOnlyImageIds.has(r.image_id)).map((r) => r.product_id));
@@ -66,7 +80,7 @@ export async function loadQuizData(force = false): Promise<QuizData> {
   for (const r of it.rows) {
     const g = r.game as QuizMinigameKey;
     if (!items[g]) continue;
-    items[g].push({ id: r.item_id, game: g, payload: r.payload, imageIds: r.image_ids, attribution: r.attribution, asOf: r.as_of });
+    items[g].push({ id: r.item_id, game: g, payload: r.payload, imageIds: r.image_ids, attribution: creditOf(r.image_ids, r.attribution), asOf: r.as_of });
     const pid = typeof r.payload?.productId === 'string' ? r.payload.productId : null;
     if (r.image_ids.some((x) => friendOnlyImageIds.has(x)) || (pid && friendOnlyProducts.has(pid))) friendOnlyItemIds.add(r.item_id);
   }

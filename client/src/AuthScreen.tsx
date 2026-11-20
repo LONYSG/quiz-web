@@ -10,6 +10,7 @@
 
 import { useState } from 'react';
 import { errorMessage, login, signup, type Account } from './api.js';
+import { siteInfo } from './site.js';
 import BusyButton from './BusyButton.js';
 import { NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
 
@@ -27,6 +28,11 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // ★★★ R109 (D-369) — 베타 주소(자리를 가를 때의 지인 자리): 가입 없음 · 초대받은 계정만 · 공개 주소 링크
+  const site = siteInfo();
+  const betaGate = site.split && site.site === 'friend';
+  const [publicLink, setPublicLink] = useState<string | null>(null);
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
@@ -39,6 +45,8 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
       onAuthed(account);
     } catch (err) {
       setError(errorMessage(err));
+      const pu = (err as { publicUrl?: unknown })?.publicUrl;
+      setPublicLink(typeof pu === 'string' ? pu : null);
     } finally {
       setBusy(false);
     }
@@ -53,7 +61,18 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
       </div>
 
       {/* ★★ R039 (건우 요청) — "회원가입을 해야 할 수 있다" 를 한눈에. 친구들이 자꾸 물어본다 */}
-      {mode === 'login' && (
+      {betaGate && (
+        <p className="join-hint" data-beta-hint>
+          베타 주소는 초대받은 계정만 들어올 수 있어요.
+          {site.publicUrl && (
+            <>
+              {' '}
+              <a className="link-btn" href={site.publicUrl}>공개 주소로</a>
+            </>
+          )}
+        </p>
+      )}
+      {mode === 'login' && !betaGate && (
         <p className="join-hint">
           처음이면 <button type="button" className="link-btn" onClick={() => { setMode('signup'); setError(null); }}>회원가입</button> 먼저! 가입해야 들어갈 수 있어요.
         </p>
@@ -77,7 +96,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
           >
             로그인
           </button>
-          <button
+          {!betaGate && <button
             type="button"
             className={mode === 'signup' ? 'tab active' : 'tab'}
             onClick={() => {
@@ -86,7 +105,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
             }}
           >
             회원가입
-          </button>
+          </button>}
         </div>
 
         <form onSubmit={submit}>
@@ -132,7 +151,17 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
             />
           </label>
 
-          {error && <p className="form-error">{error}</p>}
+          {error && (
+            <p className="form-error">
+              {error}
+              {publicLink && (
+                <>
+                  {' '}
+                  <a className="link-btn" href={publicLink}>공개 주소로</a>
+                </>
+              )}
+            </p>
+          )}
 
           {/* ★ R043 A-2 — 공통 로딩 버튼 (잠기고 돌아가는 표시 · 폭 그대로) */}
           <BusyButton type="submit" busy={busy}>

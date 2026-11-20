@@ -8,6 +8,7 @@ import { installUiMode } from './uiMode.js';
 import { installNoCopy } from './noCopy.js';
 import { installOffice } from './office.js';
 import { setShowHiddenMinigames } from '@quiz/shared';
+import { loadSiteInfo } from './site.js';
 // ★★ R039 — Pretendard 를 우리 서버에서 낸다 (동적 서브셋 — 화면에 쓰인 글자 조각만 내려받는다)
 import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 import './styles.css';
@@ -27,8 +28,11 @@ installOffice();
 // ★ R087 (D-344) — 숨긴 미니게임(빙고 · 이 노래 몇 년도 · 객관식)은 목록에 없다 · 검사(ui-check)만 이 스위치로 보이게 한다
 (window as unknown as { __qwShowHidden?: (on: boolean) => void }).__qwShowHidden = setShowHiddenMinigames;
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+// ★★★ R109 (D-369) — 자리(공개 · 베타)를 먼저 읽고 그린다(공개 방에서 숨기는 방식 · 미니게임이 처음부터 안 보이게 · 4초 넘으면 그냥 그린다)
+void loadSiteInfo().finally(() => {
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  );
+});
