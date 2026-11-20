@@ -30,6 +30,8 @@ import { startTick, stopTick } from './tick.js';
 import { SITE_TEXT, type Site } from '@quiz/shared';
 import { readSessionToken, resolveSession } from './auth/session.js';
 import { loadQuizData } from './db/minigameItems.js';
+import { ensureSharedPool } from './db/questionPool.js';
+import { getHeapStatistics } from 'node:v8';
 import { friendGate, hiddenFor, publicCounts, publicUrl, siteOf, siteSplit } from './site.js';
 import { activeCount, getRoom, roomCount } from './rooms/registry.js';
 
@@ -185,6 +187,10 @@ async function main(): Promise<void> {
   app.use('/api/emoji', emojiRouter);
   app.use('/emoji', express.static(TWEMOJI_DIR, { maxAge: '365d', immutable: true }));
   void loadEmojiCatalog();
+  // ★★ R110 — 문항 풀 한 벌을 미리 읽는다(첫 판이 기다리지 않게 · 로그 "[pool] 문항 풀 한 벌 n개 · 약 m MB") · 실패해도 첫 판 시작 때 다시 읽는다
+  void ensureSharedPool()
+    .then(() => console.log(`[pool] 힙 상한 ${Math.round(getHeapStatistics().heap_size_limit / 1048576)}MB${process.env.SERVER_HEAP_MB ? ` (SERVER_HEAP_MB=${process.env.SERVER_HEAP_MB})` : ' (Node 기본값)'}`))
+    .catch((err) => console.warn('[pool] ★ 문항 풀을 미리 못 읽었다(첫 판 시작 때 다시):', (err as Error).message));
   // ★ R109 — 공개 쪽 숨김(남는 항목 수)을 처음 한 번 센다(그 뒤는 적재본을 읽을 때마다)
   if (siteSplit()) {
     void loadQuizData()

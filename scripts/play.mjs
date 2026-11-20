@@ -410,6 +410,12 @@ async function main() {
     loadSongs();
     loadChoices();
     log(`서버 새 창(${SERVER_TITLE})으로 시작 (npm start — 감시 없음 · 로그 ${rel(SERVER_LOG)})`);
+    // ★ R110 — 서버 힙 크기: .env 에 SERVER_HEAP_MB=1536 처럼 적으면 --max-old-space-size 로 넘긴다(없으면 지금과 같다 — Node 기본값)
+    const heapMb = Number(process.env.SERVER_HEAP_MB ?? '');
+    if (Number.isInteger(heapMb) && heapMb >= 256) {
+      process.env.NODE_OPTIONS = `${(process.env.NODE_OPTIONS ?? '').replace(/--max-old-space-size=\d+/g, '').trim()} --max-old-space-size=${heapMb}`.trim();
+      log(`서버 힙 상한 ${heapMb}MB (SERVER_HEAP_MB)`);
+    } else if (process.env.SERVER_HEAP_MB) log(`★ SERVER_HEAP_MB=${process.env.SERVER_HEAP_MB} 를 못 읽었다(256 이상 정수) — 기본값으로 띄운다`);
     const since = Date.now();
     openWindow(
       `start "${SERVER_TITLE}" cmd /k "chcp 65001 >nul && title ${SERVER_TITLE} && node ${RUNNER} ${SERVER_KIND}${CWD_ARG} npm start"`,
