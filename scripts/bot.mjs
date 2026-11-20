@@ -9553,7 +9553,9 @@ async function scenarioNear() {
     p.stderr.on('data', (d) => (out += d));
     p.on('close', (code) => resolve({ code, out }));
   });
-  expectTrue('★★ npm run answers:near — 문항 · 예가 나온다', rep.code === 0 && rep.out.includes(gRows[0]?.question_id ?? '없음'), rep.out.split('\n').slice(0, 2).join(' / '));
+  // ★ R109 — 화면 출력은 사람 많은 5문항만 → 같은 날 다른 봇 행이 많으면 밀려난다. 전체 표(tmp/answer-near-report.md)에서 찾는다
+  const repMd = (() => { try { return readFileSync(path.join(ROOT, 'tmp', 'answer-near-report.md'), 'utf8'); } catch { return ''; } })();
+  expectTrue('★★ npm run answers:near — 문항 · 예가 나온다', rep.code === 0 && (rep.out + repMd).includes(gRows[0]?.question_id ?? '없음'), rep.out.split('\n').slice(0, 2).join(' / '));
   await withDb(async (c) => {
     const ins = `INSERT INTO near_misses (question_id, account_id, game_id, normalized, nearest, distance, kind, created_at)
                  SELECT $1, a.id, NULL, $3, $4, 1, 'contains', now() - make_interval(days => $5) FROM accounts a WHERE a.login_id = $2`;
