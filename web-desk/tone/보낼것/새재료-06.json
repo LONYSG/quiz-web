@@ -1,0 +1,956 @@
+{
+ "done": true,
+ "chunk": "새재료-06",
+ "lane": "hard",
+ "made": "G107 · 2026-11-20",
+ "items": [
+  {
+   "key": "n0501",
+   "answer": "고무 오리 디버깅",
+   "also": [
+    "러버덕 디버깅",
+    "Rubber duck debugging"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "컴퓨터·인터넷",
+   "gradeGuess": 4,
+   "core": {
+    "text": "프로그래머가 자기 코드를 한 줄씩 말로 설명하다가 오류를 스스로 찾아내는 디버깅 기법",
+    "url": "https://en.wikipedia.org/wiki/Rubber_duck_debugging",
+    "quote": "Rubber duck debugging (or rubberducking) is a debugging technique in software engineering, wherein a programmer explains their code, step by step, in natural language—either aloud or in writing—to reveal mistakes and misunderstandings."
+   },
+   "story": [
+    {
+     "text": "이름은 The Pragmatic Programmer 에 실린 일화에서 왔고, 연구 조수 그렉 퓨가 늘 고무 오리를 들고 다니며 설명했다는 이야기다",
+     "url": "https://en.wikipedia.org/wiki/Rubber_duck_debugging",
+     "quote": "The term referred to a research assistant, Greg Pugh, who carried around a rubber duck to which he could address such explanations."
+    },
+    {
+     "text": "2018년 만우절에 스택 오버플로가 '꽥' 소리만 내는 오리 장난을 했다",
+     "url": "https://en.wikipedia.org/wiki/Rubber_duck_debugging",
+     "quote": "On 1 April 2018, Stack Overflow launched an April Fools' Day joke called Quack Overflow."
+    }
+   ],
+   "hintIdea": {
+    "text": "말로 설명하는 것만으로 문제가 '화면에서 튀어나와 스스로 알린다'",
+    "url": "https://en.wikipedia.org/wiki/Rubber_duck_debugging",
+    "quote": "the simple act of explaining, step by step, what the code is supposed to do often causes the problem to leap off the screen and announce itself"
+   },
+   "legend": false,
+   "care": "",
+   "why": "장난감 오리에게 설명만 해도 버그가 보인다는 반전",
+   "dupOff": null
+  },
+  {
+   "key": "n0502",
+   "answer": "허니팟",
+   "also": [
+    "Honeypot",
+    "하니팟"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "컴퓨터·인터넷",
+   "gradeGuess": 4,
+   "core": {
+    "text": "진짜처럼 보이지만 격리·감시되는 미끼 시스템으로 공격자를 끌어들여 막거나 분석하는 보안 장치",
+    "url": "https://en.wikipedia.org/wiki/Honeypot_(computing)",
+    "quote": "It is actually isolated, monitored, and capable of blocking or analyzing the attackers."
+   },
+   "story": [
+    {
+     "text": "경찰의 함정수사처럼 공격자를 유인하는 것",
+     "url": "https://en.wikipedia.org/wiki/Honeypot_(computing)",
+     "quote": "This is similar to police sting operations, colloquially known as \"baiting\" a suspect."
+    },
+    {
+     "text": "진짜 정보에서 공격자를 떼어 놓고 새 공격 방식을 배우는 것이 목적",
+     "url": "https://en.wikipedia.org/wiki/Honeypot_(computing)",
+     "quote": "The main use for this network decoy is to distract potential attackers from more important information and machines on the real network, learn about the forms of attacks they can suffer, and examine such attacks during and after the exploitation of a honeypot."
+    },
+    {
+     "text": "누가 건드리지 않으면 가치가 없다",
+     "url": "https://en.wikipedia.org/wiki/Honeypot_(computing)",
+     "quote": "Honeypots derive their value from the use by attackers. If not interacted with, the honeypot has little to no value."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "해커를 잡으려고 일부러 털리는 가짜 서버",
+   "dupOff": null
+  },
+  {
+   "key": "n0503",
+   "answer": "소프트웨어 부패",
+   "also": [
+    "비트 로트",
+    "비트 부패",
+    "소프트웨어 로트",
+    "Software rot",
+    "Bit rot"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "컴퓨터·인터넷",
+   "gradeGuess": 4,
+   "core": {
+    "text": "아무것도 바꾸지 않아도 시간이 지나면 소프트웨어가 못 쓰게 되거나 성능이 떨어지는 현상",
+    "url": "https://en.wikipedia.org/wiki/Software_rot",
+    "quote": "Software rot (bit rot, code rot, software erosion, software decay, or software entropy) is the degradation, deterioration, or loss of the use or performance of software over time."
+   },
+   "story": [
+    {
+     "text": "해커 용어집은 이를 '아무것도 안 바뀌었는데도' 낡는다는, 비트가 방사성 붕괴라도 하는 듯한 농담으로 정의한다",
+     "url": "https://en.wikipedia.org/wiki/Software_rot",
+     "quote": "The Jargon File, a compendium of hacker lore, defines \"bit rot\" as a jocular explanation for the degradation of a software program over time even if \"nothing has changed\"; the idea behind this is almost as if the bits that make up the program were subject to radioactive decay."
+    },
+    {
+     "text": "옛 게임은 CPU 클럭을 타이머로 써서, 더 빠른 CPU에서 게임 속도가 빨라졌다",
+     "url": "https://en.wikipedia.org/wiki/Software_rot",
+     "quote": "For example, many early computer game designers used the CPU clock speed as a timer in their games. However, newer CPU clocks were faster, so the gameplay speed increased accordingly, making the games less usable over time."
+    },
+    {
+     "text": "온라인 서버가 닫히면 소프트웨어가 멈출 수 있다",
+     "url": "https://en.wikipedia.org/wiki/Software_rot",
+     "quote": "If the online service powering the software is shut down, it may stop working."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "코드는 그대로인데 세상이 변해서 낡는다",
+   "dupOff": null
+  },
+  {
+   "key": "n0504",
+   "answer": "링크 부패",
+   "also": [
+    "링크 로트",
+    "Link rot",
+    "죽은 링크"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "컴퓨터·인터넷",
+   "gradeGuess": 4,
+   "core": {
+    "text": "하이퍼링크가 시간이 지나 원래 가리키던 문서·서버가 사라지거나 옮겨져 연결이 끊어지는 현상",
+    "url": "https://en.wikipedia.org/wiki/Link_rot",
+    "quote": "Link rot (also called link death, link breaking, or reference rot) is the phenomenon of hyperlinks tending over time to cease to point to their originally targeted file, web page, or server due to that resource being relocated to a new address or becoming permanently unavailable."
+   },
+   "story": [
+    {
+     "text": "2003년 연구는 웹 링크가 매주 200개 중 하나꼴로 끊긴다고 추정했다",
+     "url": "https://en.wikipedia.org/wiki/Link_rot",
+     "quote": "A 2003 study found that on the Web, about one link out of every 200 broke each week, suggesting a half-life of 138 weeks."
+    },
+    {
+     "text": "밀리언 달러 홈페이지 링크도 28%가 오류를 냈다",
+     "url": "https://en.wikipedia.org/wiki/Link_rot",
+     "quote": "In a 2023 study of the Million Dollar Homepage external links, it was found that 27% of the links resulted in a site loading with no redirects, 45% of links have been redirected, and 28% returned various error messages."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "인터넷 주소도 반감기가 있다",
+   "dupOff": null
+  },
+  {
+   "key": "n0505",
+   "answer": "스파게티 코드",
+   "also": [
+    "Spaghetti code",
+    "스파게티 프로그램"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "컴퓨터·인터넷",
+   "gradeGuess": 3,
+   "core": {
+    "text": "흐름이 뒤엉켜 이해·유지보수가 어려운 소스 코드",
+    "url": "https://en.wikipedia.org/wiki/Spaghetti_code",
+    "quote": "Spaghetti code is computer source code with convoluted control flow, with statements directing program execution without structure, instead resembling cooked spaghetti, twisted and tangled."
+   },
+   "story": [
+    {
+     "text": "goto 문 사용이 뒤엉킨 흐름의 원인으로 지목되었고, 구조적 프로그래밍은 이를 없애려 했다",
+     "url": "https://en.wikipedia.org/wiki/Spaghetti_code",
+     "quote": "The practice of structured programming was envisioned to eliminate the need for and use of the goto statement as one way to avoid the production of spaghetti code."
+    },
+    {
+     "text": "1972년 마틴 홉킨스가 goto를 없애려는 동기를 '스파게티 한 그릇처럼 보이지 않는 프로그램'이라 썼다",
+     "url": "https://en.wikipedia.org/wiki/Spaghetti_code",
+     "quote": "Martin Hopkins made an early reference to spaghetti in this context in 1972, writing that the \"principal motivation behind eliminating the goto statement is the hope that the resulting programs will not look like a bowl of spaghetti.\""
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "말을 처음 쓴 때는 불분명하다고 위키에 적힘",
+   "why": "코드가 국수 가락처럼 엉킨다",
+   "dupOff": null
+  },
+  {
+   "key": "n0506",
+   "answer": "버퍼블로트",
+   "also": [
+    "Bufferbloat"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "컴퓨터·인터넷",
+   "gradeGuess": 5,
+   "core": {
+    "text": "라우터 등이 패킷을 너무 많이 쌓아 두어 생기는 지연(렉)",
+    "url": "https://en.wikipedia.org/wiki/Bufferbloat",
+    "quote": "Bufferbloat is the undesirable latency that comes from a router or other network equipment buffering too many data packets."
+   },
+   "story": [
+    {
+     "text": "온라인 게임 렉의 가장 흔한 원인으로 집 안 네트워크의 버퍼블로트가 꼽힌다",
+     "url": "https://en.wikipedia.org/wiki/Bufferbloat",
+     "quote": "According to some sources, the most frequent cause of high latency (\"lag\") in online video games is local home network bufferbloat."
+    },
+    {
+     "text": "1985년에 이미 기술되었지만 2009년부터 널리 주목받았다",
+     "url": "https://en.wikipedia.org/wiki/Bufferbloat",
+     "quote": "The bufferbloat phenomenon was described as early as 1985. It gained more widespread attention starting in 2009."
+    },
+    {
+     "text": "일부 제조사가 쓸데없이 큰 버퍼를 설계했다",
+     "url": "https://en.wikipedia.org/wiki/Bufferbloat",
+     "quote": "Some communications equipment manufacturers designed unnecessarily large buffers into some of their network products."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "빠른 인터넷인데 렉이 걸리는 까닭이 '너무 큰 대기실'",
+   "dupOff": null
+  },
+  {
+   "key": "n0507",
+   "answer": "소프트 에러",
+   "also": [
+    "단일 사건 오류",
+    "싱글 이벤트 업셋",
+    "SEU",
+    "Single-event upset"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "컴퓨터·인터넷",
+   "gradeGuess": 5,
+   "core": {
+    "text": "입자 하나가 전자 회로에 부딪혀 메모리 비트 값이 뒤집히는 일시적 오류",
+    "url": "https://en.wikipedia.org/wiki/Single-event_upset",
+    "quote": "The error in device output or operation caused as a result of the strike is called an SEU or a soft error."
+   },
+   "story": [
+    {
+     "text": "해수면에서도 우주선(宇宙線)이 일으킬 수 있음이 1979년 IBM 연구로 설명되었다",
+     "url": "https://en.wikipedia.org/wiki/Single-event_upset",
+     "quote": "In 1979, James Ziegler of IBM, along with W. Lanford of Yale, first described the mechanism whereby a sea-level cosmic ray could cause a single-event upset in electronics."
+    },
+    {
+     "text": "2003년 벨기에 스하르베이크 선거에서 한 후보에게 표 4,096개가 더 잡혔고, 2의 12제곱이라 이 오류가 원인으로 추정되었다",
+     "url": "https://en.wikipedia.org/wiki/Single-event_upset",
+     "quote": "The possibility of a single-event upset is suggested by the difference in votes being equivalent to a power of two, 212."
+    }
+   ],
+   "hintIdea": {
+    "text": "1972년 위성이 96초 통신이 끊겼다가 복구된 사건을 이 현상으로 설명했다",
+    "url": "https://en.wikipedia.org/wiki/Single-event_upset",
+    "quote": "In 1972, a Hughes satellite experienced an upset where the communication with the satellite was lost for 96 seconds and then recaptured."
+   },
+   "legend": false,
+   "care": "선거 사례는 '가능성이 제기된' 것으로만 쓴다",
+   "why": "우주에서 날아온 입자가 선거 표를 바꿨을지도 모른다",
+   "dupOff": null
+  },
+  {
+   "key": "n0509",
+   "answer": "연관통",
+   "also": [
+    "관련통",
+    "Referred pain"
+   ],
+   "spelling": "dict",
+   "major": "기술·의학",
+   "mid": "의학·건강 상식",
+   "gradeGuess": 4,
+   "core": {
+    "text": "통증 자극이 있는 곳과 다른 곳에서 아픔을 느끼는 현상",
+    "url": "https://en.wikipedia.org/wiki/Referred_pain",
+    "quote": "Referred pain, also called reflective pain, is pain perceived at a location other than the site of the painful stimulus."
+   },
+   "story": [
+    {
+     "text": "심근경색 때 가슴이 아니라 왼쪽 목·어깨·등에서 통증을 느끼기도 한다",
+     "url": "https://en.wikipedia.org/wiki/Referred_pain",
+     "quote": "An example is the case of angina pectoris brought on by a myocardial infarction (heart attack), where pain is often felt in the left side of the neck, left shoulder, and back rather than in the thorax (chest), the site of the injury."
+    },
+    {
+     "text": "1880년대 말부터 알려졌지만 생물학적 원리는 아직 모른다",
+     "url": "https://en.wikipedia.org/wiki/Referred_pain",
+     "quote": "Referred pain has been described since the late 1880s. Despite an increasing amount of literature on the subject, the biological mechanism of referred pain is unknown, although there are several hypotheses."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "'방사통'은 다른 개념이라 also 에 넣지 않았음",
+   "why": "아픈 곳과 아프다고 느끼는 곳이 다르다",
+   "dupOff": null
+  },
+  {
+   "key": "n0510",
+   "answer": "환상지",
+   "also": [
+    "환상통",
+    "환지통",
+    "환상 사지",
+    "Phantom limb",
+    "환상지통"
+   ],
+   "spelling": "dict",
+   "major": "기술·의학",
+   "mid": "의학·건강 상식",
+   "gradeGuess": 4,
+   "core": {
+    "text": "절단한 팔다리가 아직 있는 것처럼 통증이나 감각을 느끼는 현상",
+    "url": "https://en.wikipedia.org/wiki/Phantom_limb",
+    "quote": "Phantom limb refers to brain's perception of pain in a limb that has been surgically amputated and is one of the most common sequelae of limb loss, with prevalence estimates ranging from 50% to 80% of all individuals who undergo amputation."
+   },
+   "story": [
+    {
+     "text": "1872년 의사 사일러스 위어 미첼이 이 말을 만들었다",
+     "url": "https://en.wikipedia.org/wiki/Phantom_limb",
+     "quote": "The term \"phantom limb\" was coined in 1872 by a physician named Silas Weir Mitchell"
+    },
+    {
+     "text": "절단 환자의 50~80%가 경험한다",
+     "url": "https://en.wikipedia.org/wiki/Phantom_limb",
+     "quote": "Majority (50%-80%) of amputees experience a phantom limb, with some of them having non-painful sensations."
+    },
+    {
+     "text": "라마찬드란은 뇌의 체성감각 피질이 재편되기 때문일 수 있다고 가설을 세웠다",
+     "url": "https://en.wikipedia.org/wiki/Phantom_limb",
+     "quote": "Hearing about these results, V. S. Ramachandran hypothesized that phantom limb sensations in humans could be due to reorganization in the human brain's somatosensory cortex."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "신체 절단이 소재라 표현을 순하게",
+   "why": "없는 팔이 가렵다",
+   "dupOff": null
+  },
+  {
+   "key": "n0511",
+   "answer": "아이스크림 두통",
+   "also": [
+    "뇌 동결",
+    "브레인 프리즈",
+    "brain freeze",
+    "냉자극 두통"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "의학·건강 상식",
+   "gradeGuess": 3,
+   "core": {
+    "text": "차가운 음식이 입천장에 닿아 생기는 짧은 두통",
+    "url": "https://en.wikipedia.org/wiki/Ice_cream_headache",
+    "quote": "It is caused by a cold substance touching the roof of the mouth, and is believed to result from a nerve response causing rapid constriction and swelling of blood vessels, \"referring\" pain from the roof of the mouth to the head."
+   },
+   "story": [
+    {
+     "text": "1770년대 패트릭 브라이던의 글이 첫 기록으로 꼽힌다",
+     "url": "https://en.wikipedia.org/wiki/Ice_cream_headache",
+     "quote": "According to The New Yorker, the first written account of a cold-stimulus headache comes from Patrick Brydone in the 1770s."
+    },
+    {
+     "text": "'브레인 프리즈'라는 말은 세븐일레븐이 상표로 등록했다",
+     "url": "https://en.wikipedia.org/wiki/Ice_cream_headache",
+     "quote": "7-‍Eleven has registered the term as a trademark."
+    },
+    {
+     "text": "더운 날씨든 추운 날씨든 생기며 음식 온도가 관건이다",
+     "url": "https://en.wikipedia.org/wiki/Ice_cream_headache",
+     "quote": "It is possible to have a cold-stimulus headache in both hot and cold weather, contrary to popular belief, because the effect relies upon the temperature of the food being consumed rather than that of the environment."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "'연관통' 카드와 같은 원리 — 둘 다 쓸지 중앙 판단",
+   "why": "빙수 먹다 머리가 띵한 이유가 연관통",
+   "dupOff": null
+  },
+  {
+   "key": "n0512",
+   "answer": "루퍼트 왕자의 눈물",
+   "also": [
+    "루퍼트의 눈물",
+    "루퍼트 왕자의 방울",
+    "네덜란드의 눈물",
+    "Prince Rupert's drop",
+    "바타비아의 눈물"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "재료·건설 기술",
+   "gradeGuess": 5,
+   "core": {
+    "text": "녹은 유리를 찬물에 떨어뜨려 만든 올챙이 모양 유리 방울",
+    "url": "https://en.wikipedia.org/wiki/Prince_Rupert's_drop",
+    "quote": "Prince Rupert's drops (also known as Dutch tears or Batavian tears) are toughened glass beads created by dripping molten glass into cold water, which causes the glass to solidify into a tadpole-shaped droplet with a long, thin tail."
+   },
+   "story": [
+    {
+     "text": "루퍼트 왕자가 1660년 영국에 들여와 찰스 2세에게 주었고, 왕은 1661년 왕립학회에 연구하게 했다",
+     "url": "https://en.wikipedia.org/wiki/Prince_Rupert's_drop",
+     "quote": "He gave them to King Charles II, who in turn delivered them in 1661 to the Royal Society (which had been created the previous year) for scientific study."
+    },
+    {
+     "text": "원리를 풀어낸 것이 1874년 특허가 난 강화유리 제조 공정으로 이어졌을 것으로 본다",
+     "url": "https://en.wikipedia.org/wiki/Prince_Rupert's_drop",
+     "quote": "the unraveling of the principles of their unusual properties probably led to the development of the process for the production of toughened glass, which was patented in 1874."
+    },
+    {
+     "text": "꼬리가 잘리면 균열이 초속 1,450~1,900미터로 퍼져 폭발하듯 부서진다",
+     "url": "https://en.wikipedia.org/wiki/Prince_Rupert's_drop",
+     "quote": "a single crack is accelerated in the tensile residual stress field in the center of the tail and bifurcates after it reaches a critical velocity of 1,450–1,900 metres per second (3,200–4,300 mph)."
+    }
+   ],
+   "hintIdea": {
+    "text": "머리 쪽은 망치나 총알도 견디지만 꼬리 끝이 조금만 상하면 폭발하듯 부서진다",
+    "url": "https://en.wikipedia.org/wiki/Prince_Rupert's_drop",
+    "quote": "counter-intuitive properties such as the ability to withstand a blow from a hammer or even the impact of a bullet on the bulbous end without breaking, while exhibiting explosive disintegration if the tail end is even slightly damaged."
+   },
+   "legend": false,
+   "care": "",
+   "why": "총알도 견디는 유리 방울이 꼬리 하나로 폭발",
+   "dupOff": null
+  },
+  {
+   "key": "n0513",
+   "answer": "주석 페스트",
+   "also": [
+    "주석 흑사병",
+    "틴 페스트",
+    "tin pest",
+    "주석병"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "재료·건설 기술",
+   "gradeGuess": 5,
+   "core": {
+    "text": "13.2도 이하에서 흰 주석이 부서지기 쉬운 회색 주석으로 변하는 현상",
+    "url": "https://en.wikipedia.org/wiki/Tin_pest",
+    "quote": "At 13.2 °C (55.8 °F) and below, pure tin transforms from the silvery, ductile metallic allotrope of β-form white tin to the brittle, nonmetallic, α-form grey tin with a diamond cubic structure."
+   },
+   "story": [
+    {
+     "text": "1851년 중세 교회 파이프 오르간 관에서 처음 학계에 보고되었다",
+     "url": "https://en.wikipedia.org/wiki/Tin_pest",
+     "quote": "It was first documented in the scientific literature in 1851, having been observed in the pipes of pipe organs in medieval churches that had experienced cool climates."
+    },
+    {
+     "text": "한 번 시작하면 스스로 퍼지며, 부피가 약 27% 커져 단추 같은 것이 가루가 된다",
+     "url": "https://en.wikipedia.org/wiki/Tin_pest",
+     "quote": "This frequently makes tin objects (such as buttons) decompose into powder during the transformation, hence the name tin pest."
+    },
+    {
+     "text": "나폴레옹 군 단추가 삭아 패했다는 이야기는 도시 전설로 보인다",
+     "url": "https://en.wikipedia.org/wiki/Tin_pest",
+     "quote": "However, the story appears to be an urban legend, as none of the many survivors' tales mention any problems with tin buttons."
+    }
+   ],
+   "hintIdea": null,
+   "legend": true,
+   "care": "나폴레옹 단추 이야기는 속설. 쓰려면 '전해집니다'",
+   "why": "추위가 쇠를 병들게 한다",
+   "dupOff": null
+  },
+  {
+   "key": "n0514",
+   "answer": "갈바니 부식",
+   "also": [
+    "이종 금속 부식",
+    "전식",
+    "갈바닉 부식",
+    "Galvanic corrosion"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "재료·건설 기술",
+   "gradeGuess": 5,
+   "core": {
+    "text": "서로 다른 두 금속이 전해질 속에서 닿으면 한쪽이 더 빨리 부식되는 전기화학 현상",
+    "url": "https://en.wikipedia.org/wiki/Galvanic_corrosion",
+    "quote": "Galvanic corrosion (also called bimetallic corrosion or dissimilar metal corrosion) is an electrochemical process in which one metal corrodes when it is in electrical contact with another, different metal, and both are in the presence of an electrolyte."
+   },
+   "story": [
+    {
+     "text": "이탈리아 의사 루이지 갈바니의 이름을 땄다",
+     "url": "https://en.wikipedia.org/wiki/Galvanic_corrosion",
+     "quote": "This phenomenon is named after Italian physician Luigi Galvani (1737–1798)."
+    },
+    {
+     "text": "1980년대 점검에서 자유의 여신상의 구리 껍질과 철 뼈대 사이에 부식이 일어난 것이 드러났다",
+     "url": "https://en.wikipedia.org/wiki/Galvanic_corrosion",
+     "quote": "A spectacular example of galvanic corrosion occurred in the Statue of Liberty when regular maintenance checks in the 1980s revealed that corrosion had taken place between the outer copper skin and the wrought iron support structure."
+    },
+    {
+     "text": "건전지의 아연은 일부러 이 원리로 부식시켜 전기를 얻는다",
+     "url": "https://en.wikipedia.org/wiki/Galvanic_corrosion",
+     "quote": "As part of a closed circuit (the electron pathway), the zinc within the cell will corrode preferentially (the ion pathway) as an essential part of the battery producing  electricity."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "건전지와 자유의 여신상 부식이 같은 원리",
+   "dupOff": null
+  },
+  {
+   "key": "n0515",
+   "answer": "덕 커브",
+   "also": [
+    "오리 곡선",
+    "Duck curve",
+    "덕 차트"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "에너지·환경 기술",
+   "gradeGuess": 5,
+   "core": {
+    "text": "하루 동안 태양광 같은 재생에너지를 뺀 나머지 전력 수요를 그리면 오리 모양이 되는 그래프",
+    "url": "https://en.wikipedia.org/wiki/Duck_curve",
+    "quote": "The duck curve is a graph showing the electricity demand remaining after subtracting electricity supplied by variable renewable energy sources (primarily solar) over the course of a day."
+   },
+   "story": [
+    {
+     "text": "그래프 윤곽이 오리를 닮아 이름이 붙었고, 2012년 캘리포니아 독립시스템운영기관이 이 말을 만들었다",
+     "url": "https://en.wikipedia.org/wiki/Duck_curve",
+     "quote": "The curve is named for its visual similarity to the outline of a duck. Used in utility-scale electricity generation, the term was coined in 2012 by the California Independent System Operator."
+    },
+    {
+     "text": "해가 지는 저녁에 수요가 몰려 다른 발전을 급히 늘려야 한다",
+     "url": "https://en.wikipedia.org/wiki/Duck_curve",
+     "quote": "In some energy markets, daily peak demand occurs after sunset, when solar power is no longer available."
+    },
+    {
+     "text": "하와이는 곡선이 더 두드러져 '네시 곡선'이라 불린다",
+     "url": "https://en.wikipedia.org/wiki/Duck_curve",
+     "quote": "In Hawaii, significant adoption of solar generation has led to the more pronounced curve known as the Nessie curve."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "태양광이 늘수록 저녁 전력이 어려워진다",
+   "dupOff": 4878
+  },
+  {
+   "key": "n0517",
+   "answer": "케슬러 증후군",
+   "also": [
+    "케슬러 신드롬",
+    "Kessler syndrome",
+    "케슬러 효과"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "항공·우주 기술",
+   "gradeGuess": 4,
+   "core": {
+    "text": "저궤도에 우주 쓰레기가 너무 많아져 충돌이 연쇄적으로 쓰레기를 늘리는 시나리오",
+    "url": "https://en.wikipedia.org/wiki/Kessler_syndrome",
+    "quote": "It describes a situation in which the density of objects in low Earth orbit (LEO) becomes so high due to space pollution that collisions between these objects cascade, exponentially increasing the amount of space debris over time."
+   },
+   "story": [
+    {
+     "text": "NASA 과학자 도널드 케슬러와 버튼 쿠어팔레가 1978년 제안했다",
+     "url": "https://en.wikipedia.org/wiki/Kessler_syndrome",
+     "quote": "The Kessler syndrome, also known as the Kessler effect, collisional cascading, or ablation cascade, is a scenario proposed by NASA scientists Donald J. Kessler and Burton G. Cour-Palais in 1978."
+    },
+    {
+     "text": "일부 궤도가 아예 쓸 수 없게 될 수 있다",
+     "url": "https://en.wikipedia.org/wiki/Kessler_syndrome",
+     "quote": "potentially rendering certain orbital regions unusable and threatening the sustainability of space activities for many generations."
+    },
+    {
+     "text": "2009년 위성 두 대가 충돌한 일이 있다",
+     "url": "https://en.wikipedia.org/wiki/Kessler_syndrome",
+     "quote": "including a collision between two satellites in 2009."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "우주가 쓰레기로 막혀 로켓을 못 쏘는 미래",
+   "dupOff": null
+  },
+  {
+   "key": "n0518",
+   "answer": "맥스 큐",
+   "also": [
+    "Max Q",
+    "max q",
+    "최대 동압",
+    "최대 동압점"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "항공·우주 기술",
+   "gradeGuess": 5,
+   "core": {
+    "text": "로켓이 발사 중 받는 공기 동압(공기 저항 하중)이 최대가 되는 순간",
+    "url": "https://en.wikipedia.org/wiki/Max_q",
+    "quote": "In aerospace engineering, the max q, or maximum dynamic pressure, of an aerospace vehicle's atmospheric flight is the maximum difference between the fluid dynamics total pressure and the ambient static pressure reached by the vehicle."
+   },
+   "story": [
+    {
+     "text": "속도는 오르고 공기는 희박해지므로 그 사이 어딘가에 최댓값이 생긴다",
+     "url": "https://en.wikipedia.org/wiki/Max_q",
+     "quote": "During the launch, the vehicle speed increases but the air density decreases as the vehicle rises. Therefore, by Rolle's theorem, there is a point where the dynamic pressure is maximal."
+    },
+    {
+     "text": "우주왕복선은 이때 주엔진을 정격의 65~72%까지 줄였다",
+     "url": "https://en.wikipedia.org/wiki/Max_q",
+     "quote": "The three Space Shuttle Main Engines were throttled back to about 65–72% of their rated thrust (depending on payload) as the dynamic pressure approached max q."
+    },
+    {
+     "text": "발사 약 1분 뒤 고도 11km 부근에서 나타났다",
+     "url": "https://en.wikipedia.org/wiki/Max_q",
+     "quote": "During a normal Space Shuttle launch, for example, max q value of 0.32 atmospheres (4.7 pounds per square inch) occurred at an altitude of approximately 11 km (36,000 ft), about one minute after launch."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "영화 'Max Q'와 혼동 없게 '발사 중'을 질문에 넣을 것",
+   "why": "로켓이 가장 세게 얻어맞는 1분",
+   "dupOff": null
+  },
+  {
+   "key": "n0519",
+   "answer": "조망 효과",
+   "also": [
+    "오버뷰 효과",
+    "Overview effect",
+    "개관 효과"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "항공·우주 기술",
+   "gradeGuess": 4,
+   "core": {
+    "text": "우주에서 지구를 본 우주비행사들이 경외감과 지구·인류와의 일체감을 느끼는 인지 변화",
+    "url": "https://en.wikipedia.org/wiki/Overview_effect",
+    "quote": "The overview effect is a cognitive shift reported by some astronauts while viewing the Earth from space."
+   },
+   "story": [
+    {
+     "text": "작가 프랭크 화이트가 1980년대 우주비행사 인터뷰 뒤 이 말을 만들었다",
+     "url": "https://en.wikipedia.org/wiki/Overview_effect",
+     "quote": "Author Frank White, who in the 1980s coined the term overview effect after interviewing many astronauts, said that the overview effect is \"beyond words\", requiring experience to understand, even likening it in this regard to Zen Buddhism."
+    },
+    {
+     "text": "1948년 프레드 호일은 밖에서 찍은 지구 사진이 역사상 가장 강력한 생각을 풀어놓으리라 썼다",
+     "url": "https://en.wikipedia.org/wiki/Overview_effect",
+     "quote": "English astronomer Fred Hoyle wrote in 1948 that, \"once a photograph of the Earth, taken from the outside, is available, a new idea as powerful as any in history will be let loose\"."
+    },
+    {
+     "text": "아폴로 8호 '지구돋이' 사진 뒤 환경운동이 일어 1970년 4월 첫 지구의 날이 열렸다",
+     "url": "https://en.wikipedia.org/wiki/Overview_effect",
+     "quote": "After Apollo 8 astronaut William Anders' December 1968 Earthrise photograph of the Earth from lunar orbit, the Apollo missions were credited with inspiring the environmental movement, the first Earth Day being held in April 1970."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "지구를 본 사람들은 달라져서 돌아온다",
+   "dupOff": null
+  },
+  {
+   "key": "n0521",
+   "answer": "럼블 스트립",
+   "also": [
+    "Rumble strip",
+    "졸음 방지 홈",
+    "노면 요철 포장"
+   ],
+   "spelling": "wiki",
+   "major": "기술·의학",
+   "mid": "자동차·교통",
+   "gradeGuess": 3,
+   "core": {
+    "text": "차선을 벗어난 졸음 운전을 진동과 소음으로 알려 주는 도로 홈",
+    "url": "https://en.wikipedia.org/wiki/Rumble_strip",
+    "quote": "Rumble strips (also known as sleeper lines or alert strips) are a traffic calming feature to alert inattentive drivers of potential danger, by causing a tactile vibration and audible rumbling transmitted through a vehicle's wheels into its interior."
+   },
+   "story": [
+    {
+     "text": "1952년 미국 뉴저지 가든스테이트 파크웨이에 처음 도입되었다",
+     "url": "https://en.wikipedia.org/wiki/Rumble_strip",
+     "quote": "Rumble strips were first implemented on the Garden State Parkway in New Jersey in 1952."
+    },
+    {
+     "text": "1943년 뉴저지 6번 국도의 '노래하는 차선'이 시초로 꼽힌다",
+     "url": "https://en.wikipedia.org/wiki/Rumble_strip",
+     "quote": "An early use of this construction was in 1943 on New Jersey's Route 6 near Great Notch."
+    },
+    {
+     "text": "'졸음 깨우개'·'술꾼 요철' 같은 별명이 있다",
+     "url": "https://en.wikipedia.org/wiki/Rumble_strip",
+     "quote": "Rumble strips are also known as audible lines, sleepy bumps, wake up calls, ruffles strips (named after the potato chips), speed regulating strips (in Singapore) growlers, drift lines, waker-uppers, and drunk bumps."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "일부러 덜덜거리게 만든 길",
+   "dupOff": null
+  },
+  {
+   "key": "n0522",
+   "answer": "데드맨 스위치",
+   "also": [
+    "데드맨 장치",
+    "dead man's switch",
+    "데드맨 핸들"
+   ],
+   "spelling": "wiki",
+   "major": "생활·상식",
+   "mid": "생활 규칙·안전",
+   "gradeGuess": 4,
+   "core": {
+    "text": "운전자가 의식을 잃거나 손을 떼면 기계를 멈추거나 안전 상태로 돌리는 스위치",
+    "url": "https://en.wikipedia.org/wiki/Dead_man's_switch",
+    "quote": "A dead man's switch is a switch that is designed to be activated or deactivated if the human operator becomes incapacitated, such as through abandonment, drowsiness, loss of consciousness, death, or being bodily removed from control."
+   },
+   "story": [
+    {
+     "text": "기관차·잔디깎이·전기톱·러닝머신 등 흔한 곳에 쓰인다",
+     "url": "https://en.wikipedia.org/wiki/Dead_man's_switch",
+     "quote": "They are common in such applications as locomotives, aircraft refuelling, freight elevators, lawn mowers, tractors, personal watercraft, outboard motors, chainsaws, snowblowers, treadmills, snowmobiles, amusement rides, and many medical imaging devices."
+    },
+    {
+     "text": "PCC 전차는 왼발로 밟는 데드맨 페달을 갖췄다",
+     "url": "https://en.wikipedia.org/wiki/Dead_man's_switch",
+     "quote": "though dead-man equipment was fairly rare on US streetcars until the successful PCC streetcar, which had a left-foot-operated dead man's pedal in conjunction with the right-foot-operated brake and power pedals."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "폭탄 용도 설명은 쓰지 않는다",
+   "why": "쓰러진 사람을 대신해 기계가 멈춘다",
+   "dupOff": null
+  },
+  {
+   "key": "n0523",
+   "answer": "방사선 경고 표지",
+   "also": [
+    "트레포일",
+    "방사능 표지",
+    "방사선 표지",
+    "방사능 마크",
+    "radiation symbol"
+   ],
+   "spelling": "wiki",
+   "major": "생활·상식",
+   "mid": "기호·상징·표지",
+   "gradeGuess": 3,
+   "core": {
+    "text": "원 주위에 세 날개가 놓인 국제 방사선 표지",
+    "url": "https://en.wikipedia.org/wiki/Hazard_symbol",
+    "quote": "The international radiation symbol is a trefoil around a small central circle representing radiation from an atom."
+   },
+   "story": [
+    {
+     "text": "1946년 버클리 방사선 연구소의 기계공학자 시릴 올리가 설계했다",
+     "url": "https://en.wikipedia.org/wiki/Hazard_symbol",
+     "quote": "It was designed by mechanical engineer Cyrill Orly in 1946 at the University of California, Berkeley Radiation Laboratory."
+    },
+    {
+     "text": "처음 자홍색이었는데 다른 데 안 쓰이도록 비싼 색을 일부러 골랐다",
+     "url": "https://en.wikipedia.org/wiki/Hazard_symbol",
+     "quote": "The shade of magenta used (Martin Senour Roman Violet No. 2225) was chosen because it was expensive and less likely to be used on other signs."
+    },
+    {
+     "text": "2007년 IAEA 와 ISO 는 보조 표지를 채택했다",
+     "url": "https://en.wikipedia.org/wiki/Hazard_symbol",
+     "quote": "On February 15, 2007, two groups—the International Atomic Energy Agency (IAEA) and the International Organization for Standardization (ISO)—jointly announced the adoption of a new ionizing radiation warning symbol to supplement the traditional trefoil symbol."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "방사능 카드와 겹치지 않게 '표지'를 묻는 문항으로",
+   "why": "표지 색을 '비싸서' 골랐다",
+   "dupOff": null
+  },
+  {
+   "key": "n0524",
+   "answer": "아스클레피오스의 지팡이",
+   "also": [
+    "아스클레피오스 지팡이",
+    "뱀 감긴 지팡이",
+    "Rod of Asclepius",
+    "아스클레피우스의 지팡이"
+   ],
+   "spelling": "wiki",
+   "major": "생활·상식",
+   "mid": "기호·상징·표지",
+   "gradeGuess": 4,
+   "core": {
+    "text": "그리스 의술의 신 아스클레피오스가 든, 뱀이 감긴 지팡이로 오늘날 의료의 대표 상징",
+    "url": "https://en.wikipedia.org/wiki/Rod_of_Asclepius",
+    "quote": "In modern times, it is the predominant symbol for medicine and health care (although the similar caduceus, which has two snakes and a pair of wings, is sometimes misused for that purpose)."
+   },
+   "story": [
+    {
+     "text": "뱀 두 마리와 날개의 헤르메스 지팡이가 의료 상징으로 잘못 쓰이는 일이 흔하다",
+     "url": "https://en.wikipedia.org/wiki/Rod_of_Asclepius",
+     "quote": "It is relatively common, especially in the United States, to find the caduceus, with its two snakes and wings, (mis)used as a symbol of medicine instead of the Rod of Asclepius, with only a single snake."
+    },
+    {
+     "text": "1902년 미 육군 의무단이 한 장교의 고집으로 카두케우스를 휘장으로 썼다",
+     "url": "https://en.wikipedia.org/wiki/Rod_of_Asclepius",
+     "quote": "This usage was popularized by the adoption of the caduceus as its insignia by the U.S. Army Medical Corps in 1902 at the insistence of a single officer"
+    },
+    {
+     "text": "고대 치유 신전에서는 독 없는 뱀이 병자들이 자는 방을 돌아다녔다",
+     "url": "https://en.wikipedia.org/wiki/Rod_of_Asclepius",
+     "quote": "In honour of Asclepius, a particular type of non-venomous rat snake was often used in healing rituals, and these snakes – the Aesculapian snakes – crawled around freely on the floor in dormitories where the sick and injured slept."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "헤르메스의 지팡이(5597)는 다른 정답",
+   "why": "병원 마크의 뱀은 한 마리여야 맞다",
+   "dupOff": null
+  },
+  {
+   "key": "n0525",
+   "answer": "삼색등",
+   "also": [
+    "이발소 표지",
+    "이발소 삼색 간판",
+    "바버 폴",
+    "Barber's pole",
+    "사인볼"
+   ],
+   "spelling": "dict",
+   "major": "생활·상식",
+   "mid": "기호·상징·표지",
+   "gradeGuess": 2,
+   "core": {
+    "text": "이발소를 알리는, 줄무늬가 나선으로 감긴 기둥 간판",
+    "url": "https://en.wikipedia.org/wiki/Barber's_pole",
+    "quote": "A barber's pole is a type of sign used by barbers to signify the place or shop where they perform their craft."
+   },
+   "story": [
+    {
+     "text": "중세 이발사는 수술과 발치도 했다",
+     "url": "https://en.wikipedia.org/wiki/Barber's_pole",
+     "quote": "During the Middle Ages, barbers performed surgery on customers, as well as tooth extractions."
+    },
+    {
+     "text": "1163년 투르 공의회가 성직자의 외과 시술을 금지하며 의사·외과의·이발사가 갈라졌다",
+     "url": "https://en.wikipedia.org/wiki/Barber's_pole",
+     "quote": "At the Council of Tours in 1163, the Roman Catholic clergy was banned from the practice of surgery. From then, physicians were clearly separated from the surgeons and barbers."
+    },
+    {
+     "text": "르네상스 암스테르담에서는 빨강은 피 뽑기, 흰색은 뼈 맞춤·발치, 파랑은 면도를 뜻했다",
+     "url": "https://en.wikipedia.org/wiki/Barber's_pole",
+     "quote": "In Renaissance-era Amsterdam, the surgeons used the colored stripes to indicate that they were prepared to bleed their patients (red), set bones or pull teeth (white), or give a shave if nothing more urgent was needed (blue)."
+    }
+   ],
+   "hintIdea": null,
+   "legend": true,
+   "care": "색의 의미는 해석이 여럿이라 '~라고 전해집니다' 권장. 한국 표제어(삼색등/이발소 사인) 대조 필요",
+   "why": "이발소 간판의 빨강은 피 색깔이었다",
+   "dupOff": null
+  },
+  {
+   "key": "n0526",
+   "answer": "연소의 삼각형",
+   "also": [
+    "연소의 3요소",
+    "불의 삼각형",
+    "fire triangle",
+    "화재 삼각형"
+   ],
+   "spelling": "wiki",
+   "major": "생활·상식",
+   "mid": "생활 규칙·안전",
+   "gradeGuess": 3,
+   "core": {
+    "text": "불이 나려면 열·연료·산소(산화제) 세 가지가 필요하다는 모델",
+    "url": "https://en.wikipedia.org/wiki/Fire_triangle",
+    "quote": "The triangle illustrates the three elements a fire needs to ignite: heat, fuel, and an oxidizing agent (usually oxygen)."
+   },
+   "story": [
+    {
+     "text": "하나만 없애도 불을 끌 수 있어, 소화 담요는 산소를 막는다",
+     "url": "https://en.wikipedia.org/wiki/Fire_triangle",
+     "quote": "A fire can be prevented or extinguished by removing any one of the elements in the fire triangle. For example, covering a fire with a fire blanket blocks oxygen and can extinguish a fire."
+    },
+    {
+     "text": "연쇄 반응을 더한 것이 '화재 사면체'다",
+     "url": "https://en.wikipedia.org/wiki/Fire_triangle",
+     "quote": "The fire tetrahedron represents the addition of the chemical chain reaction to the three already present in the fire triangle."
+    },
+    {
+     "text": "리튬·마그네슘 같은 금속 불에 물을 부으면 오히려 더 뜨거워지거나 폭발한다",
+     "url": "https://en.wikipedia.org/wiki/Fire_triangle",
+     "quote": "Because the metals react faster with water than with oxygen and thereby more energy is released, putting water on such a fire results in the fire getting hotter or even exploding."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "한국어 표제어(연소의 3요소 등) 중앙 대조 필요",
+   "why": "불 끄는 법은 세 가지 중 하나 빼기",
+   "dupOff": null
+  },
+  {
+   "key": "n0527",
+   "answer": "미스터 유크",
+   "also": [
+    "Mr. Yuk",
+    "미스터 육",
+    "독극물 스티커"
+   ],
+   "spelling": "wiki",
+   "major": "생활·상식",
+   "mid": "기호·상징·표지",
+   "gradeGuess": 4,
+   "core": {
+    "text": "독극물을 알리려고 쓰는, 혀를 내민 초록색 찡그린 얼굴 그림",
+    "url": "https://en.wikipedia.org/wiki/Hazard_symbol",
+    "quote": "Some warning symbols have been redesigned to be more comprehensible to children, such as the Mr. Ouch (depicting an electricity danger as a snarling, spiky creature) and Mr. Yuk (a green frowny face sticking its tongue out, to represent poison) designs in the United States."
+   },
+   "story": [
+    {
+     "text": "해골과 엇갈린 뼈 표지가 해적기와 닮아 아이들이 독을 갖고 놀까 우려해 미국에서 대신 쓴다",
+     "url": "https://en.wikipedia.org/wiki/Hazard_symbol",
+     "quote": "In the United States, due to concerns that the skull-and-crossbones symbol's association with pirates might encourage children to play with toxic materials, the Mr. Yuk symbol is also used to denote poison."
+    },
+    {
+     "text": "해골 표지는 해적선 졸리 로저에도 쓰였다",
+     "url": "https://en.wikipedia.org/wiki/Hazard_symbol",
+     "quote": "The symbol, or some variation thereof, specifically with the bones (or swords) below the skull, was also featured on the Jolly Roger, the traditional flag of European and American seagoing pirates."
+    }
+   ],
+   "hintIdea": null,
+   "legend": false,
+   "care": "",
+   "why": "해골 마크가 아이에게 오히려 재밌어 보일까 봐 만든 얼굴",
+   "dupOff": null
+  }
+ ]
+}
