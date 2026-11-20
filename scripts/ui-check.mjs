@@ -1067,6 +1067,8 @@ const SHOTS_ONLY = args.includes('--shots');
 const LONG_ONLY = args.includes('--long');
 /** ★ R105 — 정답 인정어 한 줄 공간 확인 (`--r105` · SHOT_DIR=r105 · RESOLVED_WAIT_MS 길게) */
 const R105_ONLY = args.includes('--r105');
+/** ★ R109 — 두 자리 그림(`--r109` · SHOT_DIR=r109 · 서버 SITE_FORCE=public|friend · 없으면 오늘) */
+const R109_ONLY = args.includes('--r109');
 /** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
 const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
@@ -1303,6 +1305,107 @@ const R105_MEASURE = `JSON.stringify((() => {
     onScreen: { ceremony: vis('.ceremony'), next: vis('.reveal-next'), chatInput: vis('.chat-card input') },
   };
 })())`;
+/**
+ * ★★★ R109 (D-369) — 두 자리 그림(`--r109` · SHOT_DIR=r109) — 서버 SITE_FORCE 로 자리를 고른다(없으면 오늘 = 자리 나눔 없음)
+ *   public: 로그인 · 로비(방식 줄에 노래 없음) · 미니게임 고르기(얼마게요 · 노래 없음) · ⓘ 출처 · 라이선스(Apple · 치이카와 줄 없음) · 어느 쪽? 정답 공개 출처 줄
+ *   today : 같은 화면(오늘과 같은지 · 노래 · 얼마게요 있음 · 출처에 Apple · 치이카와 줄)
+ *   friend: 베타 로그인 화면(가입 탭 없음 · 안내 한 줄)
+ */
+async function r109Flow(browser) {
+  const tag = process.env.SITE_FORCE ?? 'today';
+  const sizes = [{ w: 1280, h: 720, n: 'pc' }, { w: 360, h: 740, n: 'm360' }];
+  const H = await newPage(browser, `r109-${tag}`, true);
+  await H.setViewport(1280, 720);
+  await H.goto(BASE);
+  await presetSeen(H);
+  await H.goto(BASE);
+  await H.waitFor("document.querySelector('.tabs') !== null", 10000);
+  await sleep(400);
+  await snapSizes(H, `r109-${tag}-login`, sizes);
+  const signupTab = await H.evaluate("[...document.querySelectorAll('.tabs button')].some((b) => b.innerText.trim() === '회원가입')");
+  const betaHint = await H.evaluate("document.querySelector('[data-beta-hint]') !== null");
+  if (tag === 'friend') {
+    record('★ R109 베타 로그인 — 가입 탭 없음 · 안내 한 줄', !signupTab && betaHint, JSON.stringify({ signupTab, betaHint }));
+    return;
+  }
+  record(`★ R109 ${tag} 로그인 — 가입 탭 있음 · 베타 안내 없음`, signupTab && !betaHint, JSON.stringify({ signupTab, betaHint }));
+  await H.setViewport(1280, 720);
+  await signUp(H, `r9${tag[0]}`);
+  await createRoom(H, '출처 확인');
+  await sleep(600);
+  const songBtn = await H.evaluate("document.querySelector('[data-mode=\"song\"]') !== null");
+  record(`★ R109 ${tag} 방식 줄 — 노래 버튼 ${tag === 'public' ? '없음' : '있음'}`, songBtn === (tag !== 'public'), String(songBtn));
+  await snapSizes(H, `r109-${tag}-lobby`, sizes);
+  await H.setViewport(1280, 720);
+  await sleep(300);
+  // 미니게임 고르기 창
+  if (!(await H.evaluate("document.querySelector('.mg-check input')?.checked === true"))) {
+    await realClick(H, '.mg-check input');
+    await H.waitFor("document.querySelector('[data-mg-catalog-open]') !== null", 4000);
+  }
+  await realClick(H, '[data-mg-catalog-open]');
+  await H.waitFor("document.querySelector('.mg-cat') !== null", 4000);
+  await sleep(400);
+  const cards = await H.evaluate("[...document.querySelectorAll('.mg-cat-card')].map((c) => c.dataset.key).join(',')");
+  const hasPrice = cards.split(',').includes('price');
+  record(`★ R109 ${tag} 미니게임 고르기 — 얼마게요 ${tag === 'public' ? '없음' : '있음'} · 빅맥지수 있음`, hasPrice === (tag !== 'public') && cards.split(',').includes('worldprice'), cards);
+  await snapSizes(H, `r109-${tag}-catalog`, sizes);
+  await H.setViewport(1280, 720);
+  await H.evaluate("document.querySelector('[data-mg-confirm]')?.click()");
+  await sleep(400);
+  // ⓘ → 출처 · 라이선스
+  for (const s of sizes) {
+    await H.setViewport(s.w, s.h);
+    await sleep(400);
+    await H.evaluate("document.querySelector('.popup-close, .infotip-close')?.click()");
+    await sleep(200);
+    // PC = ⚙ → 안내 탭(R067 — 위 막대에 ⓘ 없음) · 모바일 = ☰ → 안내
+    if (s.n === 'pc') {
+      await realClick(H, '[data-gear-btn]');
+      await H.waitFor("document.querySelector('[data-gear-pop]') !== null", 3000).catch(() => false);
+      await realClick(H, '[data-gear-tab="info"]');
+      await sleep(250);
+    } else {
+      await realClick(H, '#menu-btn');
+      await sleep(250);
+      await H.evaluate("[...document.querySelectorAll('.menu-item')].find((b) => b.innerText.includes('안내'))?.click()");
+    }
+    await H.waitFor("document.querySelector('[data-credits-open]') !== null", 4000);
+    await snap(H, `r109-${tag}-info-${s.n}`);
+    await H.evaluate("document.querySelector('[data-credits-open]')?.click()");
+    await H.waitFor("document.querySelector('[data-credits]') !== null", 3000);
+    await sleep(200);
+    await snap(H, `r109-${tag}-credits-${s.n}`);
+    const lines = await H.evaluate("JSON.stringify([...document.querySelectorAll('[data-credits] li')].map((l) => l.dataset.credit + ':' + l.innerText.replace(/\\s+/g, ' ')))");
+    const arr = JSON.parse(lines);
+    const friendLines = arr.filter((x) => x.startsWith('friend:')).length;
+    record(`★ R109 ${tag} 출처 · 라이선스 ${s.n} — 공통 4줄${tag === 'public' ? ' · 베타 줄 없음' : ' + 베타 2줄(Apple · 치이카와)'}`, arr.length - friendLines === 4 && friendLines === (tag === 'public' ? 0 : 2), lines);
+    await H.evaluate("document.querySelector('[data-credits-back]')?.click()");
+    await sleep(150);
+    await H.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await H.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await sleep(200);
+  }
+  if (tag !== 'public') return;
+  // 어느 쪽? 정답 공개 — 출처 줄(저작자 (라이선스))
+  await H.setViewport(1280, 720);
+  await sleep(300);
+  await H.evaluate("document.querySelector('[data-mode=\"minigame\"]')?.click()");
+  await sleep(500);
+  await selectMinigames(H, ['which']);
+  await sleep(300);
+  await H.click('게임 시작');
+  const got = await H.waitFor("document.querySelector('.which-reveal .quiz-attr') !== null", 60000);
+  const attr = got ? await H.evaluate("document.querySelector('.which-reveal .quiz-attr')?.innerText ?? ''") : '';
+  record('★ R109 어느 쪽? 정답 공개에 출처 줄 · 라이선스 이름', got && /\((CC|Public domain|KOGL|FAL|Attribution)/.test(attr), attr);
+  if (got) {
+    await snap(H, `r109-${tag}-which-reveal-pc`);
+    await H.setViewport(360, 740);
+    await sleep(500);
+    await snap(H, `r109-${tag}-which-reveal-m360`);
+  }
+}
+
 async function r105Flow(browser) {
   const pick = await withPg(async (c) =>
     (
@@ -12848,6 +12951,10 @@ try {
       await profileFlow(browser); // ★ R045 D
       await emojiFlow(browser); // ★ R045 A
     }
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (R109_ONLY) {
+    await r109Flow(browser);
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (R105_ONLY) {

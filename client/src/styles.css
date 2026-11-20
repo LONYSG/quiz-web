@@ -6196,7 +6196,8 @@ button.primary.tone-warn {
 .quiz-attr {
   font-size: 0.7rem;
   color: var(--text-dim);
-  word-break: break-all;
+  /* ★ R109 — 라이선스 이름이 붙어 길어졌다: 띄어쓰기에서 먼저 줄을 바꾸고 긴 낱말만 쪼갠다(옛 break-all 은 "NAS A" 처럼 끊었다) */
+  overflow-wrap: anywhere;
 }
 .which-reveal {
   grid-template-columns: minmax(0, 1fr);
