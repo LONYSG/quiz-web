@@ -358,3 +358,14 @@ git diff --cached | grep -iE "AIza|API_KEY *="   # 커밋 직전 스테이지 �
 - 환경 변수: `PUBLIC_HOSTNAME`(R107) · `FRIEND_HOSTNAME`(베타 · 예 beta.quizdojang.com) · `SITE_FORCE=public|friend`(검사용 — dev 3001 에서 양쪽 시험 · 실 서버에 두지 않는다). **`PUBLIC_HOSTNAME` 이 없으면 자리를 가르지 않는다**(오늘과 한 글자도 같다 — 계정 검사 · 가입 막기 · noindex 없음).
 - 쿠키는 Domain 없이 굽는다 → 주소마다 따로(한쪽 로그인이 다른 쪽에 안 간다). 소켓 Origin 허용 목록에 베타 주소 추가.
 - 공개 방의 퀴즈류 미니게임 적재본 = 지인 전용 항목을 뺀 사본(`publicQuizData` — 적재본 하나에 한 번 만든다).
+
+## 10. ★★★ 문항 풀 한 벌 (R110 · D-370)
+
+- R109 까지: 판을 시작할 때마다 활성 문항 전체를 그 방만을 위해 SQL 로 읽어 `room.game.pool` 에 두었다(방 하나 ≈ 7MB 힙 · R108 실측 방당 11~16MB RSS).
+- 지금: 서버에 **한 벌**(`server/src/db/questionPool.ts` `ensureSharedPool` — 활성 문항 전체 · `PoolQuestion` 그대로 · dev 6,890개 ≈ 4.9MB)을 두고, 방의 설정(난이도 × 분야)은 그 한 벌을 **거른 참조 배열**로 받는다(문항 객체를 복사하지 않는다 · 최근 64 설정 캐시).
+- **다시 읽는 때**: 판 시작 때마다 지문 한 줄(`questions` · `question_answers` · `categories` 의 행 수 + `xmin` 합 · ~5ms)을 보고 달라졌으면 다시 읽는다. `xmin` = 그 행을 마지막으로 쓴 트랜잭션 → 어떤 길(적재 · 관리 도구 · 제보 처리 · `updated_at` 을 안 건드리는 옛 GEN 스크립트 · 메뉴의 문항 반영)로 바꿔도 커밋되면 다음 판이 새 풀을 본다(재시작 없음). 되돌린 쓰기는 안 바뀐다.
+- 동시에 여러 방이 시작하면 지문 확인 · 다시 읽기는 하나만 돌고 나머지는 기다린다(50방 동시 = 읽기 1번 — 실측).
+- 돌고 있는 판은 시작할 때 받은 배열을 끝까지 쓴다(새 풀로 바뀌어도 옛 객체는 그 판이 쥐고 있다 · 판이 끝나면 놓는다).
+- 풀의 객체 · 배열은 방끼리 함께 본다 — **고치지 않는다**. 검사 서버(`QUIZ_TEST_SERVER`) · `POOL_FREEZE=1` 에서는 얼려(`Object.freeze`) 고치는 코드를 바로 잡는다.
+- 거르는 조건 = SQL(`POOL_WHERE` · `filterWhere`)과 같은 결과 — `scripts/pool-equiv.mjs`(난이도 3 × 분야 부분집합 127 = 381 조합 전부: id 집합 · 순서 · 출제 가능 수 · 같은 씨앗 10문항 · 같은 객체). 옛 길은 `loadQuestionPoolSql`(대조용).
+- 판 시작 때 읽는 다른 것의 크기(`scripts/pool-sizes.mjs`): 퀴즈류 적재본 0.45MB · 주제 세트 0.02MB(둘 다 이미 서버 한 벌 · 60초 캐시) · 노래 풀 0.09MB · 객관식 보기 0(dev 빈 표) · 경험(많이 푼 10명) 0.23MB — 방당 1MB 넘는 것은 문항 풀뿐이었다.
