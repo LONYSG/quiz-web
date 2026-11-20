@@ -17,10 +17,20 @@ import { NEAR_MISS_SKIP_LOGIN, RULES } from '@quiz/shared';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(HERE, '..', '..');
 
+// ★ R110 — .env 를 읽기 전에 이미 있던 변수(검사 도구가 직접 넣은 값)를 기억한다
+const PRESET_ENV = new Set(Object.keys(process.env));
 try {
   process.loadEnvFile?.(path.join(ROOT, '.env'));
 } catch {
   // .env 가 없어도 동작한다. 환경 변수를 직접 주입하는 경우가 있다.
+}
+// ★★ R110 — 검사 서버(봇 · ui-check · smoke · 부하)는 .env 의 실 주소 · 자리 설정을 물려받지 않는다.
+//   2026-11-20 밤 개발 트리 .env 에 PUBLIC_HOSTNAME 이 들어가자 검사 서버도 자리를 갈라(localhost = 베타 · 가입 막힘) 봇이 줄줄이 깨졌다.
+//   검사가 자리를 시험할 때는 env 로 직접 넣는다(봇 site · siteclosed — SCENARIO_ENV) → 그 값은 그대로 쓴다.
+if (process.env.QUIZ_TEST_SERVER === '1') {
+  for (const k of ['PUBLIC_HOSTNAME', 'FRIEND_HOSTNAME', 'SITE_FORCE', 'PUBLIC_OPEN', 'YOUTUBE_URL']) {
+    if (!PRESET_ENV.has(k)) delete process.env[k];
+  }
 }
 
 function required(name: string): string {
@@ -72,6 +82,13 @@ export const config = {
   friendHostname: (process.env.FRIEND_HOSTNAME ?? '').trim().toLowerCase() || null,
   /** ★ R109 — 검사용: 모든 요청을 한 자리로(dev 3001 에서 양쪽 시험) · 'public' | 'friend' · 그 밖의 값은 없는 것으로 */
   siteForce: ((v) => (v === 'public' || v === 'friend' ? v : null))((process.env.SITE_FORCE ?? '').trim().toLowerCase()) as 'public' | 'friend' | null,
+  /**
+   * ★★ R111 (D-371) — 공개 자리를 여는가(찬종 2026-11-21 "퀴즈 사이트는 좀 더 정비하고 올리는 걸로"). '1' = 열림 · 없거나 그 밖 = 닫힘.
+   *   ★ 자리를 가를 때(siteSplit)만 본다 — PUBLIC_HOSTNAME 이 없으면 이 값은 아무 일도 하지 않는다. 닫힌 동안 공개 주소 = "준비 중" 한 장.
+   */
+  publicOpen: (process.env.PUBLIC_OPEN ?? '').trim() === '1',
+  /** ★ R111 — 준비 중 한 장 맨 아래 유튜브 채널 링크(없으면 그 줄을 안 그린다 · https:// 로 시작할 때만) */
+  youtubeUrl: ((v) => (/^https:\/\/[^\s"'<>]+$/.test(v) ? v : null))((process.env.YOUTUBE_URL ?? '').trim()),
   /**
    * ★★ R107 (D-365) — 공개 대비 한도. 전부 메모리에서 센다(DB 를 주기적으로 건드리지 않는다 — docs/02 3장).
    *   ★ IP 기준 한도는 넉넉하게(한 집 · 회사 · PC방이 같은 IP) · 계정 기준을 먼저. 값의 정본 = docs/21-SECURITY.md
