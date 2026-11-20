@@ -1,0 +1,87 @@
+{
+  "done": true,
+  "round": "V107",
+  "at": "2026-11-20",
+  "note": "영상 2~4회 대본 rev 2(gpt 마무리-02~04) 사실 확인. 키 = 회-번호(rev 2 순서 — 2회 1번 포스트잇 · 2번 아킬레스건). V105(v105-vscript.json)가 ok 로 본 주장과 뜻이 같은 것은 '같음'. 새로 들어왔거나 굵기가 달라진 주장만 문서를 열었다(하위 조사자 2 · 열린 문서는 요약 도구를 거침). fix = 고칠 사실만 — 문장은 gpt 가 쓴다.",
+  "counts": { "ok": 10, "fix": 5, "hold": 0 },
+  "blind": "15문제 모두 정답으로 떨어짐(다른 답 = 표기 변형: 파넨카 킥 · 포스베리 플롭 · 로제타 스톤 · Wow! 신호 · 이중 내륙국가). 감칠맛은 '우리말로' 덕에 우마미로 안 감. 이중 내륙국만 확신 중간.",
+  "items": {
+    "02-1 포스트잇": { "verdict": "ok", "claims": [
+      { "text": "실버: 강한 접착제를 만들려다 쉽게 떼어지는 접착제", "verdict": "같음(V105 ok)" },
+      { "text": "몇 해 동안 쓸 곳을 못 찾았다", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Post-it_note", "note": "발명 1968 → 프라이 착상 1974 안팎. 숫자를 적으면 문서끼리 5~6년으로 갈리니 '몇 해'가 안전" },
+      { "text": "프라이 · 성가대 연습 · 찬송가 책 책갈피", "verdict": "같음(V105 ok)" }
+    ], "blind": "맞힘" },
+    "02-2 아킬레스건": { "verdict": "fix", "claims": [
+      { "text": "어머니가 강물에 담갔고 붙잡은 발뒤꿈치만 안 닿았다", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Achilles", "note": "'그리스 신화에 이런 이야기가 나옵니다' 머리표시 있음" },
+      { "text": "훗날 그 자리(발뒤꿈치)에 화살을 맞고 쓰러진다", "verdict": "fix", "source": "https://en.wikipedia.org/wiki/Achilles", "note": "발뒤꿈치에 화살은 후대(1세기 스타티우스) 판본. 호메로스에는 발뒤꿈치 이야기가 없고 도기 그림은 몸통을 맞는 것으로 그림. → '훗날 그 자리에 화살을 맞았다는 이야기도 전해지는' 식으로 판본 하나임을 표시하거나 화살 문장을 빼기" },
+      { "text": "인체에서 가장 굵고 강한 힘줄", "verdict": "fix", "source": "https://en.wikipedia.org/wiki/Achilles_tendon", "note": "문서는 '가장 굵은(thickest)' 힘줄. '강한'은 못 찾음 — 질문 · 해설의 '굵고 강한'에서 '강한' 근거 없음(질문 문장에도 있음)" },
+      { "text": "종아리 근육을 발뒤꿈치 뼈에 이음", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Achilles_tendon" }
+    ], "blind": "맞힘" },
+    "02-3 도루묵": { "verdict": "ok", "claims": [
+      { "text": "피난 간 임금이 '은어'라 부르다 환궁 뒤 '도로 묵' → 도루묵(옛이야기)", "verdict": "같음(V105 ok · 머리표시 '옛이야기가 있어요' · 끝 '~는 이야기입니다')", "note": "출처가 기사 · 민담 수준이고 표준국어대사전 · 우리말샘에는 유래 풀이가 없다 — 설로만 말하는 현재 문장이 맞다. '그때 맛이 아니었어요'는 이야기의 일부" },
+      { "text": "'말짱 도루묵' = 헛수고", "verdict": "ok", "source": "우리말샘 도루묵 뜻 1(비유) · '말짱 도루묵' 표제어는 못 찾음" }
+    ], "blind": "맞힘" },
+    "02-4 파넨카": { "verdict": "fix", "claims": [
+      { "text": "1976 유럽 선수권 결승 승부차기 · 체코슬로바키아 마지막 키커 파넨카 · 서독 골키퍼 마이어가 한쪽으로 · 가운데로 톡 · 그 골로 우승(5-3)", "verdict": "ok", "source": "https://www.uefa.com/uefaeuro/history/news/0253-0d7d2111437a-04b4248f94f0-1000--" },
+      { "text": "그 킥에 파넨카 이름이 붙어 있다", "verdict": "ok" },
+      { "text": "힌트: '이 킥의 이름은 처음 선보인 선수의 성이에요'", "verdict": "fix", "source": "UEFA 기사 · https://en.wikipedia.org/wiki/Panenka_(penalty_kick)", "note": "결승이 첫 시도가 아니다 — 친선경기와 하위 리그에서 시험했고 '큰 대회에서 처음 선보인' 것. '처음 선보인' 이 큰 대회 한정이라는 표시 필요(또는 '이 킥으로 유명해진 선수의 성')" }
+    ], "blind": "맞힘(파넨카 킥)" },
+    "02-5 몬더그린": { "verdict": "ok", "claims": [
+      { "text": "실비아 라이트 · 1954 하퍼스 · 어머니가 읽어 준 스코틀랜드 옛 노래 · 'Lady Mondegreen' · 실제 가사 'laid him on the green'", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Mondegreen" }
+    ], "blind": "맞힘" },
+    "03-1 모나리자": { "verdict": "ok", "claims": [
+      { "text": "루브르에서 일했던 페루자가 작업복 밑에 숨겨 반출", "verdict": "같음(V105 ok)" },
+      { "text": "행방이 드러난 건 2년여 뒤", "verdict": "ok", "source": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous", "note": "1911-08 도난 → 1913-12 발견 ≈ 28개월" },
+      { "text": "페루자가 피렌체 미술상(제리)에게 넘기려 하자 우피치 관장(포지)을 불러 진품 확인 · 체포", "verdict": "ok", "source": "https://www.robertedsel.com/post/2013/12/10/100th-anniversary-of-the-recovery-of-the-mona-lisa", "note": "체포일 12-11 / 12-12 · 확인 장소(호텔 / 우피치)는 문서마다 다르나 대본은 날짜 · 장소를 안 쓴다" },
+      { "text": "이탈리아에서 전시된 뒤 루브르로 돌아왔다", "verdict": "ok", "source": "https://www.history.com/this-day-in-history/august-22/theft-of-mona-lisa-is-discovered", "note": "귀환 1914-01-04 — 날짜 없이 쓴 굵기가 안전" }
+    ], "blind": "맞힘" },
+    "03-2 버그": { "verdict": "ok", "claims": [
+      { "text": "에디슨이 1878년 편지에서 작은 결함을 버그라고 불렀다", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Bug_(engineering) · https://www.computerworld.com/article/1537941", "note": "편지 날짜가 13일 / 18일로 문서마다 다르나 대본은 '1878년 편지'까지만. 받는 사람(푸스카스)도 안 씀" },
+      { "text": "하버드대 컴퓨터 부품 사이에서 나방 · 일지에 붙임 · '실제로 벌레가 발견된 첫 사례'", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Bug_(engineering)", "note": "일지 문구 'First actual case of bug being found'. 연도는 대본이 안 씀(1947 다수 · 1945 설도). 쓴 사람은 어느 문서도 호퍼라고 하지 않음 — 대본이 이름을 안 써서 안전" },
+      { "text": "'나방이 나와 버그라는 말이 생겼다고 생각하기 쉽다'", "verdict": "ok", "note": "나방이 말을 만든 것이 아니라 이미 쓰이던 말의 농담이라는 위키 설명과 맞음" }
+    ], "blind": "맞힘" },
+    "03-3 감칠맛": { "verdict": "fix", "claims": [
+      { "text": "이케다 기쿠나에가 다시마 국물에서 기본 맛으로 설명 안 되는 맛을 느낌", "verdict": "같음(V105 ok)" },
+      { "text": "국물을 졸이고 걸러 글루탐산을 찾아냄", "verdict": "fix", "source": "https://en.wikipedia.org/wiki/Umami · https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/", "note": "원문은 '다시마를 졸여 수지로 만든 뒤 염분 등을 제거해 결정을 얻었다'. '걸러'는 맞지 않음 → '졸여서 결정을 얻었다' 정도" },
+      { "text": "그 맛에 '우마미'라는 이름을 붙임", "verdict": "ok", "note": "해는 1908(위키) / 1909(논문 · Science History)로 갈림 — 대본은 연도 안 씀. 그대로 두기" },
+      { "text": "'다섯 번째 기본 맛을 우리말로 = 감칠맛'", "verdict": "ok(조건)", "source": "표준국어대사전 '감칠맛' = '음식물이 입에 당기는 맛'", "note": "사전 풀이에 우마미가 없다 — 질문이 '우리말로'라 블라인드는 감칠맛으로 떨어짐. V105 fix(질문 '꼽히는 맛')는 gpt 가 받지 않았고, 지금은 블라인드가 맞혀 문제 없음" }
+    ], "blind": "맞힘(우마미를 대안으로 언급 — 질문이 '우리말로'라 감칠맛 확정)" },
+    "03-4 배면뛰기": { "verdict": "ok", "claims": [
+      { "text": "포스베리가 고등학생 때 가위뛰기를 고쳐 가다 등으로 넘음", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Dick_Fosbury", "note": "'가위뛰기를 고쳐 갔다'는 위키에만" },
+      { "text": "착지 매트가 푹신해지던 때여서 안전", "verdict": "ok" },
+      { "text": "1968 멕시코시티 금메달 · 표준이 됨", "verdict": "ok" },
+      { "text": "힌트: 바를 넘고 나면 등이 먼저 매트에 닿아요", "verdict": "ok(느슨)", "note": "실제 착지는 '어깨와 등'(목과 어깨라는 문서도). 큰 어긋남은 아님 — 고치려면 '등과 어깨가 먼저'" }
+    ], "blind": "맞힘(포스베리 플롭 — 답 표기 배면뛰기는 정답 인정어)" },
+    "03-5 이중 내륙국": { "verdict": "ok", "claims": [
+      { "text": "바다에 안 닿는 나라 44곳", "verdict": "같음(V105 ok)" },
+      { "text": "이웃까지 전부 내륙인 나라는 우즈베키스탄 · 리히텐슈타인 두 곳뿐", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Landlocked_country", "note": "카스피해를 바다로 보면 우즈베키스탄은 이중 내륙국이 아니라는 단서가 위키에 있다 — 힌트가 우즈베키스탄을 명시해 지금 문장은 일반 정의대로 맞음" },
+      { "text": "우즈베키스탄이 철도를 잇는 데 힘 · 물류 중심지가 되려 한다", "verdict": "ok(조건)", "note": "'지향한다' 수준까지만. 건설 진행은 자료마다 다름 — 대본은 '힘을 쏟고 있어요 · 되려는 겁니다'라 안전" }
+    ], "blind": "맞힘(확신 중간 — '내륙국'만 떠올릴 수 있음)" },
+    "04-1 신호등": { "verdict": "ok", "claims": [
+      { "text": "영국 의사당 앞 첫 신호등 · 밤에 가스 빨강 · 초록", "verdict": "같음(V105 ok)" },
+      { "text": "설치 한 달쯤 만에 폭발 · 경찰관 크게 다침 · 철거", "verdict": "ok(느슨)", "source": "https://en.wikipedia.org/wiki/History_of_traffic_lights", "note": "1868-12-09/10 → 1869-01-02 = 3주 반. '한 달쯤'은 느슨하나 허용. 경찰관 사망이라 쓴 기사 1건 있음(위키는 중상) — 대본 '크게 다치면서'는 안전" },
+      { "text": "40여 년 뒤 미국에서 전기 신호등", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/History_of_traffic_lights", "note": "1912 솔트레이크시티 / 1914 클리블랜드 — 1868+43~46 이라 어느 쪽이든 맞음" },
+      { "text": "곧 노란불이 더해져 세 가지 색", "verdict": "ok(느슨)", "note": "포츠 노란불 1920(설치) · 1917(개념) · 1919 설 — 전기 신호등에서 6~8년 뒤라 '곧'은 약함. 어느 문서와도 충돌은 없음 → 그대로 가능, 고치려면 '이어서'" }
+    ], "blind": "맞힘" },
+    "04-2 스타벅스": { "verdict": "fix", "claims": [
+      { "text": "《모비 딕》 일등항해사 스타벅에서 따옴", "verdict": "같음(V105 ok)" },
+      { "text": "처음엔 포경선 '피쿼드'도 후보였다", "verdict": "ok(약함)", "source": "culinarylore · 검색 기사 요약(Starbucks 위키 앞부분에는 없음)" },
+      { "text": "'피쿼드' 소리가 '오줌'을 떠올린다는 반대가 나와 빠졌다", "verdict": "fix", "source": "V105: hankyung(2018) 한 건 · V107 조사: culinarylore '구토제(emetic)와 비슷' · 다른 기사 'Pequod 한 잔 달라는 사람이 없을 것'", "note": "열어 본 문서 가운데 '오줌' 연상을 받치는 것이 없고 이유가 자료마다 다르다. 누가 반대했는지도 문서에 없다. → 이유를 '어감이 좋지 않다는 반대' 정도로 흐리거나, 이유를 빼고 '결국 접었다'로" },
+      { "text": "일화(창업자 회상)", "verdict": "ok", "note": "'이런 일화가 있어요' 머리표시 있음 — 근거는 보커의 인터뷰 회상" }
+    ], "blind": "맞힘" },
+    "04-3 로제타석": { "verdict": "fix", "claims": [
+      { "text": "프랑스군이 요새를 고치다 글자 빼곡한 돌을 발견", "verdict": "fix", "source": "https://en.wikipedia.org/wiki/Rosetta_Stone", "note": "문서 표현은 '쥘리앵 요새의 벽을 허물다가(demolishing a wall)'. '고치다'는 어긋나지는 않으나 '요새를 보수하다가' 쪽(위키 일부는 repairing/rebuild 포함) — 안전한 굵기 = '요새 공사 중'" },
+      { "text": "프랑스가 영국에 항복하며 돌이 영국으로(1801)", "verdict": "ok" },
+      { "text": "발견 20여 년 뒤(1822) 샹폴리옹 해독 발표", "verdict": "ok" },
+      { "text": "세 문자 · 대영박물관 소장", "verdict": "ok" }
+    ], "blind": "맞힘" },
+    "04-4 와우! 신호": { "verdict": "ok", "claims": [
+      { "text": "1977 · 오하이오 · 72초 · 빅이어 · 궁수자리 · 에먼의 동그라미와 Wow! · 재관측 없음", "verdict": "ok", "source": "https://en.wikipedia.org/wiki/Wow!_signal" }
+    ], "blind": "맞힘" },
+    "04-5 마그네트론": { "verdict": "ok", "claims": [
+      { "text": "스펜서 · 주머니 속 초콜릿 녹음 · 팝콘 · 전자레인지", "verdict": "ok(일화)", "source": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave · https://en.wikipedia.org/wiki/Percy_Spencer", "note": "위키가 'According to legend' — 대본 '이런 일화가 있어요' 머리표시가 맞다" }
+    ], "blind": "맞힘" }
+  },
+  "say": "숫자 한글 풀이 확인: 천구백칠십육 · 천팔백칠십팔 · 천구백오십사 · 천구백육십팔 · 천구백칠십칠 · 칠십이 초 · 마흔네 곳 · 두 해 남짓 · 사십여 년 · 이십여 년 — 모두 화면 글과 뜻이 같다. 화면의 'Wow!' · '스타벅' 등 영어/이름은 화면과 같은 뜻으로 읽힘. 이상 없음.",
+  "opened": "새로 연 문서 약 35(A 15 · B 약 20) — 열린 문서는 요약 도구를 거쳤다. 못 연 것: 스미스소니언 2(403) · computinghistory.org.uk(404) · ianvisits(엉뚱한 페이지) · livescience(본문 없음) · 옥스퍼드 영어 사전 · 루브르 공식 · 3M 공식(403) · Britannica 2 · 한국민족문화대백과 · jamestown 1(404) · 대영박물관 공식"
+}
