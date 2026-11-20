@@ -75,7 +75,8 @@ export async function loadQuizData(force = false): Promise<QuizData> {
   // ★ R109 — 지인 전용 그림 · 항목
   const friendOnlyImageIds = new Set(im.rows.filter((r) => r.license === FRIEND_ONLY_IMAGE_LICENSE).map((r) => r.image_id));
   const friendOnlyProducts = new Set(pr.rows.filter((r) => r.image_id && friendOnlyImageIds.has(r.image_id)).map((r) => r.product_id));
-  const friendOnlyItemIds = new Set<string>(FRIEND_ONLY_ITEM_IDS);
+  // ★ R109 — 항목 단위 목록(지금 비어 있음) + 검사용 SITE_FRIEND_ITEMS(쉼표 · 봇 site 가 시험용 id 하나로 길을 확인 · 실 서버에 두지 않는다)
+  const friendOnlyItemIds = new Set<string>([...FRIEND_ONLY_ITEM_IDS, ...(process.env.SITE_FRIEND_ITEMS ?? '').split(',').map((x) => x.trim()).filter(Boolean)]);
   const items = Object.fromEntries(QUIZ_MINIGAME_KEYS.map((k) => [k, [] as QuizItem[]])) as Record<QuizMinigameKey, QuizItem[]>;
   for (const r of it.rows) {
     const g = r.game as QuizMinigameKey;

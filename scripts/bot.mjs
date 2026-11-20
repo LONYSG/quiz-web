@@ -152,7 +152,7 @@ const SCENARIO_ENV = {
   // ★ R069 — 등급 비율 실측(20문항 판 다섯 · 방장 넘기기)
   levelmix: { RESOLVED_WAIT_MS: '200' },
   // ★★★ R109 — 두 자리: 공개 · 베타 주소(봇은 Host 머리말로) · 미니게임 판 사이 짧게
-  site: { PUBLIC_HOSTNAME: 'quizdojang.test', FRIEND_HOSTNAME: 'beta.quizdojang.test', RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
+  site: { PUBLIC_HOSTNAME: 'quizdojang.test', FRIEND_HOSTNAME: 'beta.quizdojang.test', RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05', SITE_FRIEND_ITEMS: 'estimate-0050' },
   // ★★★ R107 — 공격 묶음: 한도를 작게 · 이 PC 자신도 세고(SEC_LOCAL_EXEMPT=0) · LAN 주소로도 듣는다(가짜 IP 헤더 단계)
   attack: {
     RESOLVED_WAIT_MS: '200',
@@ -8020,8 +8020,50 @@ async function scenarioSite() {
   const bsite = await withDb(async (c) => (await c.query(`SELECT site FROM games WHERE id = $1`, [f1.since(gs, 'game.started')[0]?.gameId])).rows[0]?.site);
   expect('★ games.site = friend', bsite, 'friend');
 
+  // ── 7. ★ 항목 단위 길(덧붙임 ② — 목록은 비어 있다 · 검사용 SITE_FRIEND_ITEMS=estimate-0050 하나로)
+  //   방장이 그 문항만 빼고 얼마나 될까 전부를 "본" 상태 → 아무도 안 본 문항 = 그 하나 → 막지 않으면 첫 판에 반드시 나온다
+  const X = 'estimate-0050';
+  const seenAllBut = (login) =>
+    withDb((c) => c.query(
+      `INSERT INTO minigame_item_experiences (account_id, minigame_key, item_key)
+       SELECT a.id, 'estimate', i.item_id FROM accounts a, minigame_items i
+        WHERE a.login_id = $1 AND i.game = 'estimate' AND i.item_id <> $2 ON CONFLICT DO NOTHING`, [login, X]));
+  const clearSeen = (logins) => withDb((c) => c.query(`DELETE FROM minigame_item_experiences WHERE minigame_key = 'estimate' AND account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1))`, [logins]));
+  await clearSeen([p1.loginId, p2.loginId, f1.loginId, f2.loginId]);
+  await seenAllBut(p1.loginId);
+  await seenAllBut(f1.loginId);
+  const estimateRun = async (host, others, label) => {
+    const params = [];
+    for (const b of [host, ...others]) {
+      b.__done = new Set();
+      b.onMinigame = (mg) => {
+        if (!mg || mg.phase !== 'play' || mg.spectating) return;
+        const k = `${mg.token}:${mg.roundIndex}`;
+        if (b.__done.has(k)) return;
+        b.__done.add(k);
+        if (b === host) params.push(mg.round?.params);
+        setTimeout(() => b.socket?.connected && b.socket.emit('minigame.submit', { token: mg.token, roundIndex: mg.roundIndex, input: { value: 1000 } }), 200);
+      };
+    }
+    if (host.snapshot.room.state !== 'LOBBY') await againAndCancel(host);
+    const mm = host.mark();
+    host.socket.emit('lobby.updateSettings', { questionCount: 10, mode: 'minigame', minigameOnly: true, minigameRounds: 1, minigameKeys: ['estimate'] });
+    await host.waitFor(() => host.since(mm, 'lobby.settingsUpdated').some((e) => e.settings.minigameOnly && e.settings.minigameKeys.join() === 'estimate'), 4000, `${label} 얼마나 설정`);
+    const gg = host.mark();
+    host.socket.emit('game.start', {});
+    await host.waitFor(() => host.since(gg, 'game.result').length > 0, 120000, `${label} 얼마나 결과`);
+    return params;
+  };
+  const betaP = await estimateRun(f1, [f2], '베타');
+  const pubP = await estimateRun(p1, [p2], '공개');
+  const hasX = (ps) => ps.some((x) => JSON.stringify(x ?? {}).includes(X));
+  expectTrue(`★★ 항목 단위 — ${X} 는 베타 방 첫 판에 나오고(유일하게 안 본 문항) 공개 방에는 안 나온다`, betaP.length === 5 && hasX(betaP) && pubP.length === 5 && !hasX(pubP),
+    JSON.stringify({ beta: betaP.map((x) => x?.imageId), pub: pubP.map((x) => x?.imageId) }));
+  await clearSeen([p1.loginId, f1.loginId]);
+
   for (const b of [f1, f2, p1, p2]) b.disconnect();
   await withDb((c) => c.query(`DELETE FROM account_emojis WHERE account_id IN (SELECT id FROM accounts WHERE login_id = ANY($1)) AND emoji_id = $2`, [[p1.loginId, f1.loginId], chi]));
+  return checkSummary();
 }
 
 async function scenarioMgOnly() {
