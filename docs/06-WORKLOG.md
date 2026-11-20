@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-11-21 — 공개 주소 준비 중 한 장 (R111, MAIN · D-371)
+- 무엇: config PUBLIC_OPEN · YOUTUBE_URL · server/src/site.ts publicClosedFor · server/src/closedPage.ts(새) · index.ts 닫힘 문지기 · socket 핸드셰이크 거절 · /api/site open · 봇 siteclosed · ui-check --r111 · docs 11 4-4-1 · 07 D-371 · 01 19-1.
+- [x] 1 스위치 [x] 2 닫힌 공개 [x] 3 한 장 모양 [x] 4 베타 그대로 [x] 5 열기 = 한 줄 — 검증 = ai-out/R111.txt.
+
+## 2026-11-21 — 빅맥지수 빼기 · 공식 로고 · 문항 풀 한 벌 (R110, MAIN · D-370)
+- 무엇: worldprice hidden · BrandLogo(새) · 파비콘 · 아이콘 · manifest · 이름 퀴즈도장 · questionPool.ts 한 벌(지문 = 행 수 + xmin) · pool-equiv · pool-sizes · logo-icons(새) · SERVER_HEAP_MB · 검사 서버가 .env 자리 설정을 안 물려받게(config) · docs 02 §10 · 07 · 10 §81 · 11 4-5 · 18 §15.
+- [x] 0 빅맥지수 [x] 0-2 로고 [x] 1 풀 한 벌 [x] 2 확인(381 조합 · 봇 75 · verify · 부하 300/1,000) — 검증 = ai-out/R110.txt.
+
 ## 2026-11-20 — 두 자리(공개 · 베타) + 저작권 표기 (R109, MAIN · D-369)
 - 무엇: shared/src/site.ts · credits.ts(새) · settings(validateRoomSettings hidden) · minigame(setSiteHiddenMinigames) · server/src/site.ts(새 · siteOf · 공개 숨김 계산) · migrations/0039 · session/accounts(is_friend) · authRoutes(가입 막기 · 지인만 · me.site) · index(/api/site · noindex · /api 지인 검사) · socket(자리 · 방 자리 · 다른 자리 방 막기 · 설정 · 연습 · 치이카와) · start(공개 사본 · games.site) · minigameItems(지인 전용 항목 · 출처 줄 저작자+라이선스) · minigameRoutes · emojiRoutes · shopRoutes · snapshot · question(미리듣기 베타만) · client site.ts(새) · main · AuthScreen · GameSettings · InfoText(출처 · 라이선스) · QuizReveal(어느 쪽? 출처 줄) · scripts/friend-set.mjs(새) · ops 메뉴 21 · tunnel-probe(checkFriendHost) · cloudflared.example.yml · seed · DATA_LICENSE · docs 01 §19 · 02 §9 · 03 · 11 4-4 · 18 §14 · 21 §8 · 22(새).
 - [x] 0 지인 전용 목록 [x] 1 주소 · 계정 [x] 2 방 [x] 3 표기 · 문제 라이선스 [x] 4 확인(봇 site · ui-check --r109) — 검증 = ai-out/R109.txt.
