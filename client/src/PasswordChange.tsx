@@ -10,6 +10,7 @@
 import { useState } from 'react';
 import { errorMessage, setNewPassword } from './api.js';
 import BusyButton from './BusyButton.js';
+import BrandLogo from './BrandLogo.js';
 
 interface Props {
   nickname: string;
@@ -48,7 +49,7 @@ export default function PasswordChange({ nickname, onDone, onLogout }: Props) {
   return (
     <>
       <div className="brand">
-        <span className="brand-mark" aria-hidden="true">Q</span>
+        <BrandLogo />
         <h1>새 비밀번호</h1>
         <p className="sub">
           <span className="nick">{nickname}</span> 님, 비밀번호가 초기화됐어요

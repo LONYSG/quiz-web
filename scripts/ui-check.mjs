@@ -9417,7 +9417,7 @@ async function r074ThemeFlow(browser) {
   await pickTheme(H, 'pastel');
   await sleep(300);
   const back = JSON.parse(await H.evaluate("JSON.stringify({ theme: document.documentElement.dataset.theme, title: document.title, icon: document.querySelector('link[data-office-icon]') !== null, sound: JSON.parse(localStorage.getItem('qw.sound.v1') || '{}'), saved: localStorage.getItem('qw.office.sound.v1'), img: document.querySelectorAll('.emoji-text').length })"));
-  record('★★★ R074 §D 사무실 ② ③ — 파스텔로 되돌리면 소리 셋 전 값(켬) 복원 · 탭 제목 "상식 퀴즈" · 파비콘 없음 · 이모티콘 그림으로', back.theme === 'pastel' && back.title === '상식 퀴즈' && !back.icon && back.sound.bgmOn === true && back.sound.sfxOn === true && back.sound.chatOn === true && !back.saved && back.img === 0, JSON.stringify(back));
+  record('★★★ R074 §D 사무실 ② ③ — 파스텔로 되돌리면 소리 셋 전 값(켬) 복원 · 탭 제목 "퀴즈도장"(R110) · 사무실 파비콘 없음 · 이모티콘 그림으로', back.theme === 'pastel' && back.title === '퀴즈도장' && !back.icon && back.sound.bgmOn === true && back.sound.sfxOn === true && back.sound.chatOn === true && !back.saved && back.img === 0, JSON.stringify(back));
   // ── 밤 전 · 후(같은 화면 넷: 로비 · 게임 · 공개 · 결과 — 결과는 지금 화면)
   await pickTheme(H, 'night');
   const oldCss = oldNightCss();
@@ -12106,10 +12106,11 @@ async function profileFlow(browser) {
     await host.waitFor("document.querySelector('#join-code') !== null", 8000);
     record('★★ B 마지막 사람 — 나간 뒤 방 코드 칸이 비어 있다', (await host.evaluate("document.querySelector('#join-code')?.value ?? '-'")) === '');
     // ★★ R045 C — 밤 테마 로고 (방 목록 화면) — 크기는 offsetWidth 로 (로고는 기울어 떠 있어 화면 상자 크기가 순간마다 다르다)
-    const logoP = await host.evaluate("getComputedStyle(document.querySelector('.brand-mark')).backgroundImage");
+    // ★ R110 — 로고 = 공식 svg 그림(BrandLogo) · 두 테마 같은 그림 · 밤은 그림자(filter)만 다르다
+    const logoP = await host.evaluate("(() => { const e = document.querySelector('.brand-mark'); return e.tagName + '|' + (e.dataset.brandLogo !== undefined) + '|' + e.src.slice(0, 80) + '|' + getComputedStyle(e).filter; })()");
     await host.evaluate("document.documentElement.dataset.theme = 'night'");
     await sleep(300);
-    const logoN = await host.evaluate("getComputedStyle(document.querySelector('.brand-mark')).backgroundImage");
+    const logoN = await host.evaluate("(() => { const e = document.querySelector('.brand-mark'); return e.tagName + '|' + (e.dataset.brandLogo !== undefined) + '|' + e.src.slice(0, 80) + '|' + getComputedStyle(e).filter; })()");
     const sizeSame = await host.evaluate("(() => { const e = document.querySelector('.brand-mark'); return e.offsetWidth + 'x' + e.offsetHeight; })()");
     await snap(host, '64-logo-night-home-pc');
     await host.setViewport(390, 844);
@@ -12119,7 +12120,7 @@ async function profileFlow(browser) {
     await host.evaluate("document.documentElement.dataset.theme = 'pastel'");
     await sleep(300);
     await snap(host, '64-logo-pastel-home-pc');
-    record('★★ C 밤 테마 로고 — 파스텔과 다른 밤 색 (크기 같음)', logoP !== logoN && sizeSame === (await host.evaluate("(() => { const e = document.querySelector('.brand-mark'); return e.offsetWidth + 'x' + e.offsetHeight; })()")), `${sizeSame}`);
+    record('★★ C 밤 테마 로고 — 공식 로고 그림 그대로(R110) · 그림자만 다름 (크기 같음)', logoP.startsWith('IMG|true|data:image/svg+xml') && logoP.split('|').slice(0, 3).join() === logoN.split('|').slice(0, 3).join() && logoP !== logoN && sizeSame === (await host.evaluate("(() => { const e = document.querySelector('.brand-mark'); return e.offsetWidth + 'x' + e.offsetHeight; })()")), `${sizeSame}`);
     await createRoom(host, '다시 만든 방');
     await sleep(600);
     record('★★★ D 혼자 — 바꾼 뒤 나갔다가 방을 다시 만들어도 새 닉네임 (새로고침 없이)', (await seatNicks(host)).includes(n1b), `${await seatNicks(host)} / 기대 ${n1b}`);

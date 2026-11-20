@@ -13,6 +13,7 @@ import { errorMessage, login, signup, type Account } from './api.js';
 import { siteInfo } from './site.js';
 import BusyButton from './BusyButton.js';
 import { NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
+import BrandLogo from './BrandLogo.js';
 
 interface Props {
   onAuthed: (account: Account) => void;
@@ -55,8 +56,8 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
   return (
     <>
       <div className="brand">
-        <span className="brand-mark" aria-hidden="true">Q</span>
-        <h1>상식 퀴즈</h1>
+        <BrandLogo />
+        <h1>퀴즈도장</h1>
         <p className="sub">친구들과 실시간 퀴즈</p>
       </div>
 

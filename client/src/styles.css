@@ -368,20 +368,14 @@ th {
   text-align: center;
   margin: 18px 0 20px;
 }
+/* ★ R110 — 공식 로고 그림(BrandLogo — svg 안에 둥근 네모 · 6도 기울임이 다 들어 있다 → 바탕 · 회전 · 글자 없음) */
 .brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 22px;
-  background: var(--q-band);
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 900;
-  box-shadow: var(--shadow-pop);
-  transform: rotate(-6deg);
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  filter: drop-shadow(0 6px 14px rgba(138, 107, 255, 0.28));
   animation: float 3.2s ease-in-out infinite;
+  user-select: none;
 }
 .brand h1 {
   font-size: 2rem;
@@ -4385,10 +4379,7 @@ button.primary.tone-warn {
    밤(판단): 밤 바탕과 같은 결의 어두운 칸 + 형광 테두리 · 빛나는 형광 Q (밤 테마의 "어두운 바탕 · 형광 포인트" 와 같은 말투).
    ★ 크기 · 자리 · 둥글기는 그대로 — 테마는 색만 (D-218) */
 [data-theme='night'] .brand-mark {
-  background: linear-gradient(160deg, #262b5c 0%, #1a1d3d 100%);
-  color: #b9c2ff;
-  box-shadow: inset 0 0 0 2px rgba(143, 155, 255, 0.75), 0 0 22px rgba(143, 155, 255, 0.35), 0 10px 26px rgba(0, 0, 0, 0.45);
-  text-shadow: 0 0 10px rgba(143, 155, 255, 0.9), 0 0 2px rgba(255, 122, 198, 0.6);
+  filter: drop-shadow(0 0 16px rgba(143, 155, 255, 0.3));
 }
 /* ★ R045 검수 — 모바일 친구 칸 "아직 친구가 없어요…" 가 낱말 중간("신 / 청해요")에서 꺾였다 → 낱말 단위로만 */
 .list-empty,
@@ -7729,10 +7720,8 @@ button.profile-photo {
   margin-top: 4px;
 }
 :where(.ui-mobile) .brand-mark {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  font-size: 1.5rem;
+  width: 56px;
+  height: 56px;
 }
 :where(.ui-mobile) .brand h1 {
   font-size: 1.6rem;
@@ -8958,10 +8947,7 @@ button.preset.shake {
 }
 /* 밤 예외(옛 셋 — 4339 로고 · 4353 아바타 글자 · 7497 고기 글자) — 발광을 빼고 차분하게 */
 [data-theme='night'] .brand-mark {
-  background: #262626;
-  color: #8ab4f8;
-  box-shadow: inset 0 0 0 1.5px #3c3c3c;
-  text-shadow: none;
+  filter: none;
 }
 [data-theme='night'] .avatar:not(.photo) {
   color: #121212;
@@ -9087,10 +9073,10 @@ button.preset.shake {
 [data-theme='office'] .mg-card::before {
   background: var(--border);
 }
+/* ★ R110 — 사무실(위장) 테마: 공식 로고 모양 그대로 · 색만 회색으로 가라앉힌다 */
 [data-theme='office'] .brand-mark {
-  background: #0c0c0c;
-  color: #cccccc;
-  outline: 1px solid #262626;
+  filter: grayscale(1) brightness(0.55);
+  animation: none;
 }
 /* 입력 — 바탕 표면-2 · 글자 회색(브라우저 기본 흰 글자 · 회색 바탕 · 파란 테두리 없음) */
 [data-theme='office'] input,

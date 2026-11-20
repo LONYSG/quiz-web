@@ -63,6 +63,7 @@ const LabSound = lazy(() => import('./lab/LabSound.js'));
 import { useServerClock } from './useServerClock.js';
 import { isMobileUi, uiMode } from './uiMode.js';
 import { getGearTab } from './gearTab.js';
+import BrandLogo from './BrandLogo.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
 function roomIdFromPath(): string | null {
@@ -510,8 +511,8 @@ export default function App() {
             <ReportButton />
           </div>
           <div className="brand">
-            <span className="brand-mark" aria-hidden="true">Q</span>
-            <h1>상식 퀴즈</h1>
+            <BrandLogo />
+            <h1>퀴즈도장</h1>
             {/* ★ R043 A-1 — 내 사진도 */}
             <p className="sub home-me">
               <Avatar nickname={account.nickname} colorIndex={0} accountId={account.accountId} avatarV={account.avatarV ?? null} />

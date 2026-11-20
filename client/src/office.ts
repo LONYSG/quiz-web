@@ -17,7 +17,7 @@ import { enterOfficeSound, leaveOfficeSound } from './officeSound.js';
 export { enterOfficeSound, leaveOfficeSound };
 
 export const OFFICE_TITLE = '명령 프롬프트';
-const NORMAL_TITLE = '상식 퀴즈';
+const NORMAL_TITLE = '퀴즈도장'; // ★ R110 — 옛 이름 "상식 퀴즈"
 /** 검은 네모 하나 — 16×16 SVG · ★ R075 (D-322 2판) 프롬프트 줄 · 흰 띠를 뺐다(장식 0) */
 const OFFICE_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230c0c0c'/%3E%3C/svg%3E";
 
