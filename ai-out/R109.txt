@@ -1,0 +1,114 @@
+찬종이 할 것: 찬종-확인.md 10절 — ① 메뉴 3 → 1(0039 · 화면 변화 없음 — 아직 PUBLIC_HOSTNAME 이 없으면 오늘과 같다) ② 고정 주소(6절) 뒤 베타 주소 붙이기 4단계 ③ 답할 것 둘(Apple 배지 · 공개 쪽 빠지는 목록)
+===========================================
+ROUND: R109
+DATE: 2026-11-20
+TASK: 지인용 자리(베타 주소) + 저작권 표기 — 공개 쪽에서 쓰기 어려운 것은 베타 방에서만 · 출처 · 라이선스 두 자리 모두 · 문제 데이터 라이선스 걷기
+STATUS: DONE — 봇 74/74 · verify 전 단계 통과(minigame 케이크 흔들림 한 번 · 다시 통과 — 3절) · dev 3001 · 실 서버 반영은 찬종 메뉴 1
+===========================================
+
+[cmd 요약]
+DB_NAME=quizweb_dev node scripts/backup.mjs · DATABASE_URL=…/quizweb_test|quizweb_dev node scripts/migrate.mjs(0039)
+node scripts/bot.mjs site · SITE_FORCE=public|friend SHOT_DIR=r109 node scripts/ui-check.mjs --r109 · 봇 74(sh tmp/r109/bots.sh) · npm run verify(단계로)
+
+-------------------------------------------
+0. ★ 찬종이 볼 것
+-------------------------------------------
+ ★ 아직 아무것도 바뀌지 않아요 — .env 에 PUBLIC_HOSTNAME 이 없으면 자리를 가르지 않는다(오늘과 같다 · 봇 · ui-check 전부 그 상태로 통과 — 3절).
+   고정 주소(찬종-확인 6절)를 붙이는 순간 quizdojang.com = 공개 · beta.quizdojang.com = 베타(4-4 를 마친 뒤)로 갈린다.
+ ★ 공개 주소에서 빠지는 것(서버가 센 값 — dev 적재본):
+   노래 맞히기(방식 [노래]) 없음 · 얼마게요 목록에서 숨김(297 중 상품 그림 288 → 남는 9) · 빅맥지수 아이폰 39문항만 빠짐(323 → 284) ·
+   치이카와 = 상점 · 이모티콘 창 · 그림에 없음 · 못 보냄(가진 것은 남는다 — 베타 방에서는 그대로).
+ ★ 계정: 0039 가 돌 때 있던 계정은 전부 베타에 들어간다(dev 170명 전부 켜짐 확인). 새 가입 = 공개 주소에서 → 메뉴 21 로 켠다.
+ ★ 답할 것 둘(찬종-확인 10절): ① Apple 미리듣기 — 원문은 "provided courtesy of iTunes" 표기 + 곡 구매 배지 링크 + "오락용 안 됨". 베타 "출처 · 라이선스"에 한 줄만 넣었다 — 곡 화면 배지도 넣을지 ② 공개 쪽 빠지는 목록이 이대로 괜찮은지.
+ ★ 화면(나란히 — 공개 / 오늘(=베타)): docs/design/r109/
+   r109-public-lobby-pc · r109-today-lobby-pc(방식 줄 [노래] 있음/없음) · r109-public-catalog-pc · r109-today-catalog-pc(얼마게요) ·
+   r109-public-credits-pc · r109-today-credits-m360(베타 줄 둘 더) · r109-friend-login-m360(가입 탭 없음 · 안내 한 줄) · r109-public-which-reveal-pc · m360(출처 줄 — 저작자 (라이선스))
+   새 부품은 기존 토큰 · 클래스만(link-btn · info 탭 · quiz-attr) — ⚙ 안내 탭 안에서 같은 자리로 열린다(새 창 없음).
+ ★ 실기기로 볼 것(A133): 베타 주소를 붙인 뒤 휴대폰 — 베타 로그인 · 노래 한 판 · 치이카와 / 공개 주소에서 새 계정 → 베타 막힘 → 메뉴 21 → 들어가짐.
+
+-------------------------------------------
+원칙 메모 (7번 — 브리핑의 사실 확인)
+-------------------------------------------
+ - "price 288 · worldprice 의 iphone 1" — 그림 수는 맞다(product-page 289 = price 288 + iphone 1). 그러나 iphone 그림을 쓰는 빅맥지수 **항목은 39개**(productId iphone) — 공개 쪽에서 39문항이 빠진다(브리핑 "iphone 한 항목만 빠지고" 와 다름 · 남는 284 라 숨김은 아님).
+ - "남는 항목이 그 게임의 최소 판 구성보다 적으면 숨긴다(price 가 해당)" — 얼마게요 판 수는 5 · 남는 9 ≥ 5 라 이 규칙 그대로는 안 걸린다 → 판단(4절 ①): 기준 20(주제 세트 최소 수와 같은 값).
+ - "치이카와 이모티콘 테마 지금 1개" — 맞다(emoji_themes chiikawa 하나).
+ - "사진류 정답 화면의 attribution" — 있었지만 저작자만(라이선스 이름 없음) · **어느 쪽? 에는 줄이 아예 없었다**(QuizReveal 의 which 갈래). CC BY · BY-SA 는 라이선스 표시도 의무 → 고침(2절).
+ - "Apple 표기 · 링크 꼴은 Apple 의 실제 문서를 열어 확인" — performance-partners.apple.com/search-api 를 열었다(원문 2절 · docs/22).
+ - "치이카와 = 원작자 표기" — 공식 사이트 chiikawa-info.jp 는 403 으로 못 열었다 · 검색 결과의 정식 상품 표기 "© nagano / chiikawa committee" 를 따름 → 확인 필요(찬종-확인 10절).
+ - "Twemoji(© Twitter, Inc 및 기여자 · CC BY 4.0) · emojibase(MIT) · Pretendard(OFL)" — jdecked/twemoji README(그림 CC-BY 4.0 · 'About' 쪽 표기 받음) · node_modules 의 package.json 으로 확인. (@twemoji/svg 꾸러미 자체는 MIT — 그림 라이선스는 원 저장소 기준.)
+ - "sources.license · questions.license 의 CC-BY-SA-4.0 값을 비운다(칸은 둔다)" — sources.license 가 NOT NULL 이라 제약을 풀었다. 코드가 그 값을 화면 · 응답에 쓰는 곳은 없었다(grep). pipeline-load 는 sources.license 를 복사 → 이제 NULL. scripts/seed.mjs 기본값 · 시드 파일 _meta 도 NULL.
+ - Cloudflare 터널이 Host 를 그대로 넘기는지 — 문서(origin-parameters)는 httpHostHeader 만 적고 기본 동작을 적지 않는다 → 본보기 설정에 주소마다 httpHostHeader 를 못 박았다(4절 ④).
+
+-------------------------------------------
+1. 무엇을 했나
+-------------------------------------------
+ 0) 지인 전용 목록 한 곳 — shared/src/site.ts(FRIEND_ONLY_MODES ['song'] · FRIEND_ONLY_MINIGAMES ['song','songyear'] · FRIEND_ONLY_IMAGE_LICENSE 'product-page' ·
+    FRIEND_ONLY_ITEM_IDS [] (비어 있음 — 나중에 id 만 넣으면 됨) · PUBLIC_MIN_ITEMS 20) + 문서 표(01 §19 · 18 §14).
+    항목 단위 길: 서버 loadQuizData 가 FRIEND_ONLY_ITEM_IDS 를 지인 전용 항목에 더한다 — 봇 site ⑦ 로 확인(목록은 비어 있어 봇 서버에만 검사용 SITE_FRIEND_ITEMS=estimate-0050 — 실 서버 .env 에 두지 않는다).
+ 1) 주소와 계정 — server/src/site.ts siteOf(req) 한 함수(HTTP · 소켓) · config FRIEND_HOSTNAME · SITE_FORCE · 0039 accounts.is_friend(있던 계정 전부 true) ·
+    로그인: 베타 + 지인 아님 → 403 FRIEND_ONLY(비밀번호가 맞은 뒤 · 세션 안 만듦) · 가입: 베타 → 403 FRIEND_NO_SIGNUP · /api/*: 베타 + 지인 아닌 세션 → 403 ·
+    소켓: 베타 + 지인 아님 → 세션을 붙이지 않음 · 베타 응답 X-Robots-Tag noindex · /api/site(자리 · 숨김 · 베타에만 공개 주소 링크) · /api/auth/me 에 site ·
+    Origin 허용에 베타 주소 · scripts/friend-set.mjs + ops 메뉴 21 "지인 표시 켜기/끄기"(아이디 여러 개 · 보여 주기 → 확인 → 백업 → 실행).
+ 2) 방 — room.site(만든 소켓의 자리) · 다른 자리 방 = ROOM_NOT_FOUND · 공개 방: validateRoomSettings(…, { hidden }) 로 방식 [노래] 거절 · 숨긴 미니게임 빠짐(설정 · 시작 · 기본값) · 연습 거절 ·
+    퀴즈류 적재본 = 지인 전용 항목을 뺀 사본(publicQuizData · 적재본마다 한 번) · 그림 길 product-page 공개 404 · 치이카와(emoji_themes.restricted) 목록 · 가진 것 · 테마 · 그림 · 상점 · 뽑기 · emoji.send · 채팅 :sp: 토큰 막음 ·
+    미리듣기 · 표지는 room.site === 'friend' 일 때만 문항 · 스냅샷에 싣는다 · games.site 기록.
+    화면: client/src/site.ts 가 첫 렌더 전에 /api/site → 방식 줄 [노래] · 미니게임 고르기(setSiteHiddenMinigames — 화면만) · 베타 로그인(가입 탭 없음 · 안내 · 403 이면 공개 주소 링크).
+ 3) 표기 — "출처 · 라이선스"(⚙/☰ 안내 맨 아래 작은 글 → 같은 자리에서 열림 · 정본 shared/src/credits.ts · docs/22-CREDITS.md):
+    두 자리 = Twemoji · emojibase · Pretendard · 사진 한 줄 / 베타만 = Apple("provided courtesy of iTunes (Apple)") · 치이카와("© nagano / chiikawa committee").
+    그림 출처 줄 = 그림마다 "저작자 (라이선스)"(서버 loadQuizData · product-page 는 라이선스 이름 없음) · 어느 쪽? 정답 공개에 출처 줄 새로 · 줄바꿈 띄어쓰기 우선(옛 break-all 이 "NAS A" 로 끊음).
+    문제 데이터 — DATA_LICENSE.md 다시 씀(직접 만든 것 · 공개 라이선스로 내놓지 않음 · 나무위키 줄 · 표 뺌) · 0039 로 값 비움 · README · pipeline/README 한 줄 · package.json MIT 그대로.
+
+-------------------------------------------
+2. 확인
+-------------------------------------------
+ - 봇 site(새 · 28 단정 · PUBLIC_HOSTNAME=quizdojang.test · FRIEND_HOSTNAME=beta.quizdojang.test · 봇이 Host 머리말로 주소를 고름 — Node fetch 는 Host 를 못 바꿔 node:http 로):
+   /api/site 둘 · noindex 베타만 · 베타 가입 403 · 지인 아님 베타 로그인 403(쿠키 없음) · 비번 틀리면 401 · 쿠키 Domain 없음 · 지인 아닌 쿠키로 베타 /api 403 · 베타 소켓 방 만들기 UNAUTHENTICATED ·
+   방 자리 · 공개 기본 목록(song · songyear · price 없음) · 다른 자리 방 코드 · id 둘 다 ROOM_NOT_FOUND · 공개 노래 거절 · price 빠짐 · 연습 거절 · 베타 노래 됨 ·
+   ② 상품 그림 공개 404 · 베타 200 · 자유 그림 공개 200 · ③ 치이카와 공개 목록 · 가진 것 · 테마 없음 · 그림 404 · 상점 없음 · 뽑기 404 · 보내기 거절 · 채팅 토큰 버림 / 베타 됨 ·
+   공개 빅맥지수 2판 10문항 아이폰 0 · games.site public · ④ 공개 방 소켓 전부(397,091자)에 previewUrl · itunes · mzstatic 0 · 베타 노래 첫 곡 previewUrl · games.site friend ·
+   ⑦ 항목 단위 — 두 방장이 estimate-0050 하나만 빼고 다 본 상태에서 얼마나 될까 한 판: 베타 방 첫 판에 그 문항이 나오고 공개 방에는 안 나옴.
+   → 28/28(처음 돌릴 때 결과 줄을 안 찍는 실수 — return checkSummary() 빠짐 — 고쳐서 다시).  ★ 고치기 전 빌드로는 돌리지 않았다 — /api/site · room.site 가 없는 옛 빌드에서는 첫 단정부터 실패하는 것이 자명해서(검사가 새 기능 전체를 보는 꼴).
+ - 단위: server/src/site.test.ts(새 10 — 판별 · 공개 숨김 · 설정 거르기 · 터널을 지나온 요청이 Host 를 localhost 로 꾸며도 공개) · scripts/tunnel-probe.test.mjs(+2 — 본보기가 두 점검 통과 · 베타 줄 경고).
+ - ui-check --r109(새): 공개 7/7 · 오늘 6/6 · 베타 2/2(로그인 · 방식 줄 · 고르기 · 출처 PC/360 · 어느 쪽? 출처 줄 · CSP 위반 0) — 그림은 직접 봤다(0절).
+
+-------------------------------------------
+3. 끝 점검
+-------------------------------------------
+ 봇 74 시나리오(시나리오마다 따로 · sh tmp/r109/bots.sh · 봇 서버 = 시나리오별 자기 서버 3400 · DB quizweb_dev):
+   74/74 통과(다시 돌린 셋 포함 — 아래). 오래 걸린 것: mgduo 1,232초 · mgquiz 677 · mgonly 559 · leavematrix 547.
+   - PC 메모리가 모자라 실행이 두 번 끊겼다(Claude Code 가 멈춤) → 남은 것만 이어서 돌렸다.
+   - site: 처음엔 결과 줄 없이 끝났다 — 시나리오 끝에 return checkSummary() 가 빠짐(R068 과 같은 실수) → 고쳐서 28/28.
+   - liar: 30/31(설명칸 키워드 거부가 안 잡힘) — 내가 near 를 겹쳐 돌린 때와 맞물림 → 혼자 다시 31/31.
+   - near: 11/12 — answers:near 화면 출력은 사람 많은 5문항만이라, 같은 날 다른 봇이 남긴 행에 봇 문항이 밀려났다(R109 와 무관) → 봇이 전체 표(tmp/answer-near-report.md)에서 찾게 고침 → 12/12.
+ npm run verify(단계로):
+   typecheck 깨끗 · vitest 821/821(파일 64) · smoke 12/12 · ui-check 447/447 · :sound 13/13 · :social 118/118(UICHECK_NO_CHAIN) ·
+   :leave 29/29 · :spam 20/20 · :shop 33/33 · :copy 16/16 · :devices 10/10 · :minigame 146/147 → 다시 146 OK · 실패 0.
+   - 첫 번: 실패 하나 = E 케이크 진짜 입력 오차(−0.36 · −0.93 · −1.28초 · 한 명 미제출) — R096 에 똑같은 꼴로 나온 흔들림(PC 가 바쁠 때 · 케이크는 R109 가 안 건드림).
+   - 다시: 케이크 포함 146 항목 통과. 마지막 tap 판 기록(146번째 OK) 뒤 브라우저를 닫는 데서 멈춰 몇 시간 그대로 있었다(PC 메모리 부족 — 영상 창 렌더와 겹침) → 내가 끄고 끝냄. 147번째(마지막 단정)는 두 번째에 못 봤고 첫 번에는 통과했다.
+   ★ 메모리: 이 라운드 중 남은 메모리가 1.5GB 안팎까지 내려가 Claude Code 가 뒤에서 돌던 실행을 세 번 멈췄다(검사 쪽 탓이 아님 · 남은 것만 이어서 돌림).
+
+-------------------------------------------
+4. 판단 (되돌리기 쉽다)
+-------------------------------------------
+ ① 얼마게요 숨김 기준 PUBLIC_MIN_ITEMS = 20 — 판 수(5)로는 남는 9개가 안 걸린다(9개면 두 판째부터 본 문항뿐). 지인 전용 항목이 하나라도 있어 줄어든 게임만 본다(원래 적은 게임은 그대로).
+ ② 모르는 Host · 임시 주소(고정 주소 설정이 틀려 임시로 열렸을 때 포함)는 공개 — 안전한 쪽. 이 PC 의 localhost(루프백 · CF 헤더 없음)만 베타 — 찬종 PC 브라우저 · 봇 · ui-check 가 오늘과 같다.
+ ③ 베타에서 지인 아닌 계정은 비밀번호가 맞은 뒤에 403 — 비밀번호 없이 "그 아이디가 지인인지" 를 알 수 없게.
+ ④ 터널 Host — 주소마다 httpHostHeader. 베타 줄이 없거나 Host 고정이 없으면 dev-tunnel 이 경고만(고정 주소는 그대로 연다 — 판이 못 열리는 일은 없게).
+ ⑤ 베타 자리 화면 말 = "베타 주소는 초대받은 계정만 들어올 수 있어요." · 403 이면 "공개 주소로" 링크(베타 화면에만 — 공개 화면에는 베타 링크 없음).
+ ⑥ 공개 상점은 테마 0개 → 있던 안내 "아직 테마가 없어요" 그대로(새 문구 없음).
+ ⑦ 치이카와 그림 캐시 private(공용 캐시에 두지 않음 — 같은 주소를 공개 자리가 받지 않게).
+ ⑧ 숨김 계산 시점 — 서버가 켜질 때 한 번(자리를 가를 때만) + 퀴즈류 적재본을 읽을 때마다(60초 캐시). 켜자마자 못 읽으면 노래만 숨긴다(로그).
+
+-------------------------------------------
+5. 일부러 안 한 것
+-------------------------------------------
+ - 광고 · 처리방침 · 등급분류 · 리눅스 운영 도구(브리핑 끝).
+ - 곡 화면 Apple 배지 · 링크(찬종-확인 10절 ③ 결정 대기 · R096 "Apple Music 표기 완전히 빼").
+ - 실 DB(quizweb) 마이그레이션 — 메뉴 1 이 한다(백업 뒤).
+ - 친구 초대(친구 목록 → 초대)가 다른 자리 방을 가리킬 때 — 받는 쪽이 들어가면 "존재하지 않는 방"(초대 창을 자리로 거르지는 않았다 · 드묾).
+
+-------------------------------------------
+6. 새 결정 · 고친 문서
+-------------------------------------------
+ - D-369 · A133 · 찬종-확인 10절.
+ - 문서: DATA_LICENSE.md · README · pipeline/README · .env.example · docs 01 §19 · 02 §9 · 03 · 06 · 07 · 11 4-4 · 13 · 18 §14 · 21 §8 · 22(새).
