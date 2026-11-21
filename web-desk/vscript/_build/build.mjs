@@ -5,7 +5,7 @@ const VID = 'C:/work/quiz-video/data/';
 const here = new URL('.', import.meta.url);
 const draw = JSON.parse(readFileSync(new URL('draw.json', here), 'utf8'));
 const base = JSON.parse(readFileSync(VID + 'questions-3.json', 'utf8'));
-const diff = { '02': { 포스트잇: 2, 아킬레스건: 1, 도루묵: 3, 파넨카: 4, 몬더그린: 5 }, '03': { 모나리자: 1, 버그: 2, 감칠맛: 3, 배면뛰기: 4, '이중 내륙국': 5 }, '04': { 신호등: 1, 스타벅스: 3, 로제타석: 3, '와우! 신호': 4, 마그네트론: 4 } };
+const diff = { '02': { 포스트잇: 1, 아킬레스건: 2, 도루묵: 3, 파넨카: 4, 몬더그린: 5 }, '03': { 모나리자: 1, 버그: 2, 감칠맛: 3, 배면뛰기: 4, '이중 내륙국': 5 }, '04': { 신호등: 1, 스타벅스: 3, 로제타석: 3, '와우! 신호': 4, 마그네트론: 4 } };
 const outNo = { '02': 4, '03': 5, '04': 6 };
 for (const n of ['02', '03', '04']) {
   const m = JSON.parse(readFileSync(WEB + '받은것/마무리-' + n + '.json', 'utf8'));

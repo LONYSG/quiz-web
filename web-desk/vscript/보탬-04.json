@@ -1,0 +1,1155 @@
+{
+ "done": true,
+ "episode": 4,
+ "at": "2026-11-21",
+ "method": "설명출처-04.json 의 문서 36개를 curl -sL(일반 브라우저 UA)로 다시 내려받고(35개는 첫 시도에 HTTP 200 · Britannica \"Rosetta Stone\" 은 첫 시도 403, Accept 헤더를 붙인 두 번째 시도에 200), 가운데 · 결말이 모자란 문항만 새 문서를 찾아 같은 방법으로 받았다(스타벅스 2 · 로제타석 1 · 와우! 신호 2 — 백과사전 · 박물관 · 주 역사 백과 · 잡지. 신호등 · 마그네트론은 이미 있던 문서로 충분해 새 문서 없음). 모든 quote 는 내려받은 HTML 에서 script · style · 태그를 걷고 HTML 엔티티 · 따옴표 모양 · 공백만 정규화한 본문에 글자 그대로 있는지 스크립트(tmp/botaem-04/build.mjs)로 확인했다. 검색 결과 요약 · 요약 도구의 문장은 quote 로 쓰지 않았다. year 는 페이지에 보이는 발행일의 연도(안 보이면 null). newDoc: true 는 설명출처-04.json 에 없던 새 문서다. text 는 quote 가 말하는 만큼만 한국어로 옮긴 것이고, 괄호 안 설명 일부는 같은 문서의 이웃 문장에서 왔다 — 대본에 쓸 때는 quote 를 기준으로 삼을 것. 내려받은 원문은 tmp/botaem-04/raw/ 에 있다.",
+ "questions": [
+  {
+   "no": 1,
+   "answer": "신호등",
+   "gaps": [
+    "왜 세웠는지 — 마차로 붐비던 런던 거리에서 해마다 사람이 많이 죽었다는 배경이 없다",
+    "누가 생각해 냈는지 — 철도 신호를 설계하던 기술자 존 피크 나이트가 빠져 있다",
+    "첫 신호등이 어떻게 생겼고 어떻게 움직였는지 — 6미터 높이 기둥 · 낮에는 팔(완목), 밤에는 가스등",
+    "처음 반응 — 안내 전단 1만 장 · 마부들이 뜻밖에 잘 따랐고, 나이트는 더 세워질 거라 장담했다",
+    "사고가 어떻게 났는지(땅속 가스관 → 속이 빈 기둥에 가스가 참)와 그 뒤 런던에 신호등이 수십 년 없었다는 것",
+    "미국 전기 신호등의 구체적인 모습 — 1914년 클리블랜드 · 길가 부스의 경찰관이 스위치로 조작",
+    "노란불을 더한 사람(디트로이트 경찰관 윌리엄 포츠)과 그가 특허를 못 낸 사정",
+    "끝맺음 — 런던에 신호등이 돌아온 때(1925~26) · 첫 신호등 자리의 지금 모습"
+   ],
+   "facts": [
+    {
+     "id": "1-a",
+     "text": "당시 마차로 꽉 막힌 런던 도로에서는 해마다 1,000명 넘게 목숨을 잃고 있어서, 시 당국은 뭔가 해야 한다고 보았다(런던 교통국 설명).",
+     "site": "NBC News",
+     "title": "150 years of seeing red: The traffic light marks a milestone",
+     "year": 2018,
+     "url": "https://www.nbcnews.com/news/world/150-years-seeing-red-traffic-light-marks-milestone-n943461",
+     "quote": "With more than 1,000 people dying each year on London's horse-and-buggy-clogged roads at the time, city leaders knew they had to do something",
+     "newDoc": false
+    },
+    {
+     "id": "1-b",
+     "text": "그때 길에는 자동차가 없었고, 걱정거리는 늘어나는 마차와 보행자의 위험이었다.",
+     "site": "BBC (BBC Nottingham · Local history)",
+     "title": "The man who gave us traffic lights",
+     "year": 2009,
+     "url": "http://www.bbc.co.uk/nottingham/content/articles/2009/07/16/john_peake_knight_traffic_lights_feature.shtml",
+     "quote": "At the time there were no cars on the road but there was growing concern at the number of horse drawn carriages and danger to pedestrians.",
+     "newDoc": false
+    },
+    {
+     "id": "1-c",
+     "text": "생각해 낸 사람은 철도 신호 체계를 설계하던 철도 관리자 겸 기술자 존 피크 나이트로, 철도 신호를 도로에 못 쓸 까닭이 없다고 보았다.",
+     "site": "BBC (BBC Nottingham · Local history)",
+     "title": "The man who gave us traffic lights",
+     "year": 2009,
+     "url": "http://www.bbc.co.uk/nottingham/content/articles/2009/07/16/john_peake_knight_traffic_lights_feature.shtml",
+     "quote": "He specialised in designing signalling systems for Britain's growing railway network. He saw no reason why these couldn't be adapted for use on the road.",
+     "newDoc": false
+    },
+    {
+     "id": "1-d",
+     "text": "나이트는 1865년에 런던 경찰청장에게 철도 신호 방식을 런던 도로에 쓰자고 제안했고, 실제로 세워지기까지 3년이 걸렸다.",
+     "site": "BBC (BBC Nottingham · Local history)",
+     "title": "The man who gave us traffic lights",
+     "year": 2009,
+     "url": "http://www.bbc.co.uk/nottingham/content/articles/2009/07/16/john_peake_knight_traffic_lights_feature.shtml",
+     "quote": "In 1865 he approached the Commissioner of the Metropolitan Police with an idea to use a railway signalling system on the roads of London.",
+     "newDoc": false
+    },
+    {
+     "id": "1-e",
+     "text": "첫 신호등은 길 위로 20피트(약 6미터) 솟은 가스 신호기였다.",
+     "site": "NBC News",
+     "title": "150 years of seeing red: The traffic light marks a milestone",
+     "year": 2018,
+     "url": "https://www.nbcnews.com/news/world/150-years-seeing-red-traffic-light-marks-milestone-n943461",
+     "quote": "Towering 20 feet above the street, the gas-powered signal was placed at the busy intersection outside the Houses of Parliament.",
+     "newDoc": false
+    },
+    {
+     "id": "1-f",
+     "text": "낮에는 팔 모양 신호(완목)를, 밤에는 빨간색 · 초록색 가스등을 썼고, 전부 경찰관이 조작했다.",
+     "site": "Smithsonian Magazine",
+     "title": "When the Street Light First Came to London, Disaster Ensued",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/history/when-street-light-first-came-london-disaster-ensued-180970965/",
+     "quote": "The traffic signal would use its semaphore arms during the day, and red and green gas lamps at night, all of it operated by an officer",
+     "newDoc": false
+    },
+    {
+     "id": "1-g",
+     "text": "기둥에 달린 빨간 팔 두 개를 내리면 지나가도 좋다는 뜻, 들어 올리면 마부는 멈추고 보행자가 건너라는 뜻이었다.",
+     "site": "Smithsonian Magazine",
+     "title": "When the Street Light First Came to London, Disaster Ensued",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/history/when-street-light-first-came-london-disaster-ensued-180970965/",
+     "quote": "The pillar would include two red arms, lowered when traffic could flow freely, held up to alert drivers to stop and let pedestrians cross.",
+     "newDoc": false
+    },
+    {
+     "id": "1-h",
+     "text": "경찰청장 리처드 메인은 새 신호를 알리는 전단 1만 장을 찍어 시내에 돌렸다.",
+     "site": "Smithsonian Magazine",
+     "title": "When the Street Light First Came to London, Disaster Ensued",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/history/when-street-light-first-came-london-disaster-ensued-180970965/",
+     "quote": "Police commissioner Richard Mayne printed 10,000 pamphlets and distributed them about town, alerting drivers and pedestrians to the new change.",
+     "newDoc": false
+    },
+    {
+     "id": "1-i",
+     "text": "처음에는 곧바로 성공이었고, 나이트는 런던 중심가에 신호기가 더 생길 거라고 자신 있게 내다봤다.",
+     "site": "BBC (BBC Nottingham · Local history)",
+     "title": "The man who gave us traffic lights",
+     "year": 2009,
+     "url": "http://www.bbc.co.uk/nottingham/content/articles/2009/07/16/john_peake_knight_traffic_lights_feature.shtml",
+     "quote": "It was an immediate success. Knight confidently predicted more signals would appear in the centre of London.",
+     "newDoc": false
+    },
+    {
+     "id": "1-j",
+     "text": "이듬해 1월, 보도 밑 가스관이 새면서 속이 빈 신호등 기둥 안에 가스가 찼고, 그것이 폭발로 이어졌다.",
+     "site": "Smithsonian Magazine",
+     "title": "When the Street Light First Came to London, Disaster Ensued",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/history/when-street-light-first-came-london-disaster-ensued-180970965/",
+     "quote": "In January, a leaky gas pipe under the pavement allowed the lamp’s hollow tower to fill with gas.",
+     "newDoc": false
+    },
+    {
+     "id": "1-k",
+     "text": "그렇게 환영받던 사업은 사고 직후 곧바로 중단됐다.",
+     "site": "BBC (BBC Nottingham · Local history)",
+     "title": "The man who gave us traffic lights",
+     "year": 2009,
+     "url": "http://www.bbc.co.uk/nottingham/content/articles/2009/07/16/john_peake_knight_traffic_lights_feature.shtml",
+     "quote": "The project, so enthusiastically greeted, was immediately dropped.",
+     "newDoc": false
+    },
+    {
+     "id": "1-l",
+     "text": "그 뒤 영국에서는 신호등이 40여 년 넘게 사라졌다(영국 자동차협회 AA 회장의 말).",
+     "site": "The Irish News",
+     "title": "Ready, steady, go: 150 years since world’s first traffic light in London",
+     "year": 2018,
+     "url": "https://www.irishnews.com/magazine/technology/2018/12/08/news/ready-steady-go-150-years-since-world-s-first-traffic-light-in-london-1504297/",
+     "quote": "it then disappeared in the UK for more than 40 odd years",
+     "newDoc": false
+    },
+    {
+     "id": "1-m",
+     "text": "1914년 미국 클리블랜드의 유클리드 애비뉴와 105번가 교차로에 전기 신호등이 처음 선을 보였다(제임스 호지의 설계).",
+     "site": "Smithsonian Magazine",
+     "title": "A Brief History of the Stoplight",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/innovation/brief-history-stoplight-180968734/",
+     "quote": "Hoge’s light made its debut on Euclid Avenue at 105th Street in Cleveland in 1914",
+     "newDoc": false
+    },
+    {
+     "id": "1-n",
+     "text": "이 전기 신호등도 사람이 조작했다 — 길가 부스에 앉은 경찰관이 스위치를 올리고 내려 신호를 바꿨다.",
+     "site": "Smithsonian Magazine",
+     "title": "A Brief History of the Stoplight",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/innovation/brief-history-stoplight-180968734/",
+     "quote": "A policeman sitting in a booth on the sidewalk controlled the signals with a flip of a switch.",
+     "newDoc": false
+    },
+    {
+     "id": "1-o",
+     "text": "호지는 철도에서 오래 쓰던 빨강 · 초록 신호를 빌려 오고, 전차 선로에 흐르던 전기를 끌어다 썼다.",
+     "site": "Smithsonian Magazine",
+     "title": "A Brief History of the Stoplight",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/innovation/brief-history-stoplight-180968734/",
+     "quote": "Borrowing the red and green signals long used by railroads, and tapping into the electricity that ran through the trolley lines",
+     "newDoc": false
+    },
+    {
+     "id": "1-p",
+     "text": "노란불은 전기공학을 공부한 디트로이트 경찰관 윌리엄 포츠 덕분인데, 그는 시 공무원 신분이라 자기 발명에 특허를 낼 수 없었다.",
+     "site": "Smithsonian Magazine",
+     "title": "A Brief History of the Stoplight",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/innovation/brief-history-stoplight-180968734/",
+     "quote": "a Detroit police officer who had studied electrical engineering, to thank for the yellow light, but as a municipal employee he could not patent his invention.",
+     "newDoc": false
+    },
+    {
+     "id": "1-q",
+     "text": "1920년 포츠가 황색을 더한 3색 신호등을 디트로이트의 한 교차로에 설치하면서 현대식 신호등의 시대가 열렸다.",
+     "site": "아시아경제",
+     "title": "[과학을읽다]①신호등, 없어도 될까?",
+     "year": 2019,
+     "url": "http://view.asiae.co.kr/news/view.htm?idxno=2019012916051784592",
+     "quote": "황색을 추가한 3색 신호등을 디트로이트의 한 교차로에 설치하면서 현대식 신호등의 시대가 시작됩니다.",
+     "newDoc": false
+    },
+    {
+     "id": "1-r",
+     "text": "런던에는 1925년에야 경찰이 조작하는 신호기가 돌아왔고, 1926년에 첫 자동 신호등이 등장했다.",
+     "site": "Smithsonian Magazine",
+     "title": "When the Street Light First Came to London, Disaster Ensued",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/history/when-street-light-first-came-london-disaster-ensued-180970965/",
+     "quote": "By 1925 police-operated traffic signals had returned, and in 1926 the first automated light appeared.",
+     "newDoc": false
+    },
+    {
+     "id": "1-s",
+     "text": "첫 신호등이 서 있던 그 교차로에는 (2018년 기사 기준) 신호등 24개가 차와 보행자를 이끌고 있다.",
+     "site": "NBC News",
+     "title": "150 years of seeing red: The traffic light marks a milestone",
+     "year": 2018,
+     "url": "https://www.nbcnews.com/news/world/150-years-seeing-red-traffic-light-marks-milestone-n943461",
+     "quote": "At the intersection where the first traffic light stood, there are now 24 individual lights directing cars and pedestrians",
+     "newDoc": false
+    },
+    {
+     "id": "1-t",
+     "text": "1919년 클리블랜드의 한 교사가 아이들에게 교통 신호를 가르치려고 놀이를 만들었고, 그 놀이가 지금도 하는 ‘빨간불 초록불(Red Light, Green Light)’이다.",
+     "site": "Smithsonian Magazine",
+     "title": "A Brief History of the Stoplight",
+     "year": 2018,
+     "url": "https://www.smithsonianmag.com/innovation/brief-history-stoplight-180968734/",
+     "quote": "In 1919, a Cleveland teacher invented a game to teach children how to recognize traffic signals, and today, kids still play a version of it, Red Light, Green Light.",
+     "newDoc": false
+    }
+   ],
+   "conflict": "① 설치일: Irish News · BBC · Smithsonian 은 1868년 12월 9일, NBC 는 사진 설명에 12월 10일 — \"1868년 12월\"까지가 안전. ② 경찰관: 모든 문서의 기본 서술은 크게 다침(화상)이고 Irish News · Smithsonian 은 \"숨졌다는 기록도 있다\"고 덧붙임 — \"크게 다쳤다\"가 안전. ③ 폭발 시점: \"한 달 뒤\"(NBC · BBC · Irish News) / \"1월\"(Smithsonian) — 서로 맞음. ④ 미국 전기 신호등을 만든 사람: HISTORY · Smithsonian 은 제임스 호지 설계(1914년 8월 5일 클리블랜드), 아시아경제는 가렛 모건이 1914년 8월 클리블랜드에 설치했다고 씀(HISTORY 는 모건의 T자형 신호기 특허를 1923년으로 적고, 1912년 솔트레이크시티 경찰관 레스터 와이어의 적 · 녹 신호기도 언급) — 사람 이름을 빼고 \"1914년 미국 클리블랜드\"라고만 하거나, 이름을 쓰려면 호지. ⑤ 런던 복귀: 1925년(NBC · Irish News · Smithsonian) / BBC 는 \"1929년에야 흔해졌다\" — \"1925년쯤 돌아왔다\"가 안전. ⑥ 팔 신호의 뜻: Smithsonian 은 내리면 통행 · 올리면 정지, HISTORY 는 수평이 정지 · 45도가 주의 — \"팔을 들어 멈추게 했다\" 정도만. ⑦ 아시아경제의 \"초록=주의\" · \"이동식 수동 신호등\" · \"1900년대의 도로\" 서술은 다른 문서와 맞지 않아 쓰지 않는 편이 낫다. ⑧ 1-s 의 24개는 2018년 기사 시점의 숫자.",
+   "storyOrder": [
+    "1-b",
+    "1-a",
+    "1-c",
+    "1-d",
+    "1-h",
+    "1-e",
+    "1-f",
+    "1-g",
+    "1-i",
+    "1-j",
+    "1-k",
+    "1-l",
+    "1-m",
+    "1-o",
+    "1-n",
+    "1-p",
+    "1-q",
+    "1-r",
+    "1-s",
+    "1-t"
+   ]
+  },
+  {
+   "no": 2,
+   "answer": "스타벅스",
+   "gaps": [
+    "언제 · 누가 — 1971년 시애틀, 세 창업자와 디자이너 테리 헤클러가 이름을 지었다는 배경이 없다",
+    "왜 바다 냄새 나는 이름을 찾았는지 — 초기 커피 무역상의 항해 전통 · 모험 · 북서부와의 연결",
+    "‘피쿼드’가 왜 빠졌는지 — 지금 해설은 \"결국 쓰지 않았고\"로 건너뛴다(공식 글에는 헤클러의 반대 이유가 있다)",
+    "가운데 과정 — 옛 광산 지도에서 본 ‘스타보(Starbo)’가 ‘스타벅’을 떠올리게 한 장면이 통째로 없다",
+    "스타벅이 소설에서 어떤 인물인지 · 피쿼드호가 소설에서 어떻게 되는지",
+    "끝맺음 — 이름에 맞춘 로고(세이렌) · 처음에는 커피를 잔으로 팔지 않고 원두를 팔던 가게였다는 것"
+   ],
+   "facts": [
+    {
+     "id": "2-a",
+     "text": "1971년 창업자들은 화가(디자이너) 테리 헤클러와 함께 브랜드를 정했는데, 이름에서 모험심, 미국 북서부와의 연결, 초기 커피 무역상들의 항해 전통이 느껴지기를 바랐다.",
+     "site": "About Starbucks (스타벅스 본사 공식)",
+     "title": "Our Name",
+     "year": null,
+     "url": "https://about.starbucks.com/history/our-name/",
+     "quote": "They wanted the company’s name to suggest a sense of adventure, a connection to the Northwest and a link to the seafaring tradition of the early coffee traders.",
+     "newDoc": false
+    },
+    {
+     "id": "2-b",
+     "text": "글 쓰는 사람이던 공동 창업자 고든 보커가 처음에 《모비 딕》의 배 이름을 따 ‘피쿼드’로 하자고 제안했다.",
+     "site": "About Starbucks (스타벅스 본사 공식)",
+     "title": "Our Name",
+     "year": null,
+     "url": "https://about.starbucks.com/history/our-name/",
+     "quote": "Co-founder Gordon Bowker, a writer, initially proposed calling the company “Pequod,” after the ship in Herman Melville’s classic novel Moby Dick.",
+     "newDoc": false
+    },
+    {
+     "id": "2-c",
+     "text": "헤클러가 반대했다 — ‘피-쿼드’ 한 잔이 누구에게 끌리겠느냐는 것이었다.",
+     "site": "About Starbucks (스타벅스 본사 공식)",
+     "title": "Our Name",
+     "year": null,
+     "url": "https://about.starbucks.com/history/our-name/",
+     "quote": "would a cup of “Pee-kwod” appeal to anyone?",
+     "newDoc": false
+    },
+    {
+     "id": "2-d",
+     "text": "궁리가 이어지던 중 헤클러가 시애틀 근처 레이니어산의 광산 캠프 이름들을 살피다 ‘스타보(Starbo)’를 발견했고, 그 이름이 일행을 처음 출발점(모비 딕)으로 되돌려 놓았다.",
+     "site": "About Starbucks (스타벅스 본사 공식)",
+     "title": "Our Name",
+     "year": null,
+     "url": "https://about.starbucks.com/history/our-name/",
+     "quote": "While researching names of mining camps on Mt. Rainier, one of the best known landmarks near Seattle, Terry came across “Starbo,” which eventually led the team back to where they’d started.",
+     "newDoc": false
+    },
+    {
+     "id": "2-e",
+     "text": "《모비 딕》에서 피쿼드호의 일등항해사 이름이 바로 스타벅이었고, 그렇게 브랜드가 태어났다.",
+     "site": "About Starbucks (스타벅스 본사 공식)",
+     "title": "Our Name",
+     "year": null,
+     "url": "https://about.starbucks.com/history/our-name/",
+     "quote": "In Moby Dick, the name of the first mate on the Pequod was, you guessed it, Starbuck. A brand was born.",
+     "newDoc": false
+    },
+    {
+     "id": "2-f",
+     "text": "헤클러는 ‘ST’로 시작하는 이름이 대담하고 기억에 남는다고 조언했다.",
+     "site": "HistoryLink.org (워싱턴주 역사 백과)",
+     "title": "Starbucks: The Early Years",
+     "year": 2017,
+     "url": "https://historylink.org/file/20292",
+     "quote": "Heckler suggested that names beginning with the letters \"ST\" had a bold, memorable character.",
+     "newDoc": true
+    },
+    {
+     "id": "2-g",
+     "text": "(HistoryLink 판) 어느 날 보커가 회사 사무실에 걸린 옛 광산 지도에서 ‘스타보’라는 마을을 보았다.",
+     "site": "HistoryLink.org (워싱턴주 역사 백과)",
+     "title": "Starbucks: The Early Years",
+     "year": 2017,
+     "url": "https://historylink.org/file/20292",
+     "quote": "One day Bowker, looking at an old mining map hanging in his firm's waterfront office, noticed a town called Starbo",
+     "newDoc": true
+    },
+    {
+     "id": "2-h",
+     "text": "보커의 회고: \"곧바로 모비 딕의 등장인물과 연결해 ‘스타벅’이라고 말했고 … 그 순간부터 스타벅스가 됐다. 제브와 제리를 설득하느라 애쓸 필요도 없었다.\"",
+     "site": "HistoryLink.org (워싱턴주 역사 백과)",
+     "title": "Starbucks: The Early Years",
+     "year": 2017,
+     "url": "https://historylink.org/file/20292",
+     "quote": "\"I immediately connected it to the character in Moby Dick and said 'Starbuck' ... And from that moment it became Starbucks. I didn't really have to convince Zev and Jerry very hard\"",
+     "newDoc": true
+    },
+    {
+     "id": "2-i",
+     "text": "‘피쿼드’는 창업자들이 전에 만들었던 다큐멘터리 영화 회사의 이름이기도 했는데, 그 사업은 (그들 말대로) 피쿼드호처럼 흔적도 없이 가라앉았다.",
+     "site": "HistoryLink.org (워싱턴주 역사 백과)",
+     "title": "Starbucks: The Early Years",
+     "year": 2017,
+     "url": "https://historylink.org/file/20292",
+     "quote": "They called their company Pequod, after the ship in Moby Dick. And -- as they liked to point out -- that venture, like the Pequod, sank without a trace.",
+     "newDoc": true
+    },
+    {
+     "id": "2-j",
+     "text": "소설에서 스타벅은 에이해브 선장의 일등항해사로, 선장의 집착에 반대 뜻을 입 밖에 내는 단 한 사람이다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Moby Dick",
+     "year": null,
+     "url": "https://www.britannica.com/topic/Moby-Dick-novel",
+     "quote": "he is the only one throughout the novel to voice his disapproval of Ahab’s increasingly obsessive behavior",
+     "newDoc": false
+    },
+    {
+     "id": "2-k",
+     "text": "소설의 끝에서 고래 모비 딕은 피쿼드호를 부수고, 이슈미얼만 빼고 모두 죽는다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Moby Dick",
+     "year": null,
+     "url": "https://www.britannica.com/topic/Moby-Dick-novel",
+     "quote": "until the whale destroys the ship, killing everyone except Ishmael",
+     "newDoc": false
+    },
+    {
+     "id": "2-l",
+     "text": "헤클러는 가게 로고도 만들었다 — 꼬리가 둘인 인어로, 창업자들은 지나가는 사람을 가게로 끌어들이는 매혹적인 세이렌이자 모비 딕을 직접 가리키지 않으면서 바다의 모험을 떠올리게 하는 상징으로 보았다.",
+     "site": "HistoryLink.org (워싱턴주 역사 백과)",
+     "title": "Starbucks: The Early Years",
+     "year": 2017,
+     "url": "https://historylink.org/file/20292",
+     "quote": "which the partners saw as an enticing siren to beckon passersby into the store and an icon to evoke sea adventures without specifically referencing Moby Dick",
+     "newDoc": true
+    },
+    {
+     "id": "2-m",
+     "text": "(스타벅스 코리아) 심벌은 16세기 노르웨이 목판화에 나오는 인어 세이렌으로, 초기 커피 무역상들의 항해 전통과 열정, 로맨스를 떠올리게 하려는 것이었다.",
+     "site": "스타벅스 코리아 (starbucks.co.kr)",
+     "title": "Starbucks Korea",
+     "year": null,
+     "url": "https://www.starbucks.co.kr/footer/company/starbucks_story.do",
+     "quote": "16세기 노르웨이의 목판화에 등장하는 사이렌(Siren)이라는 인어의 이미지를 심벌로 선택해 초기 커피 무역상들의 항해 전통과 열정 그리고 로맨스를 연상시키고자 했습니다.",
+     "newDoc": false
+    },
+    {
+     "id": "2-n",
+     "text": "세 창업자 제리 볼드윈 · 고든 보커 · 제브 시글은 1971년 시애틀의 파이크 플레이스 마켓 근처에 첫 가게를 열었다.",
+     "site": "Encyclopedia Britannica (Britannica Money)",
+     "title": "Starbucks | Description, History, & Facts",
+     "year": null,
+     "url": "https://www.britannica.com/money/Starbucks",
+     "quote": "opening its first store in 1971 near the historic Pike Place Market in Seattle",
+     "newDoc": true
+    },
+    {
+     "id": "2-o",
+     "text": "그때의 스타벅스는 커피를 잔으로 파는 곳이 아니라 최고급 원두를 직접 볶아 파는 회사였다.",
+     "site": "스타벅스 코리아 (starbucks.co.kr)",
+     "title": "Starbucks Korea",
+     "year": null,
+     "url": "https://www.starbucks.co.kr/footer/company/starbucks_story.do",
+     "quote": "당시 스타벅스는 오늘날과 같은 일반 소매 고객 중심으로 한 잔의 커피를 판매하는 사업이 아니라 최고급 원두를 직접 로스팅해 유통하는 회사였습니다.",
+     "newDoc": false
+    },
+    {
+     "id": "2-p",
+     "text": "초기 가게에서 내린 커피는 시음용으로 거저 주는 것뿐이었다.",
+     "site": "HistoryLink.org (워싱턴주 역사 백과)",
+     "title": "Starbucks: The Early Years",
+     "year": 2017,
+     "url": "https://historylink.org/file/20292",
+     "quote": "The only brewed coffee was given away as samples.",
+     "newDoc": true
+    }
+   ],
+   "conflict": "① 이야기 순서와 \"누가 스타보를 봤나\"가 문서마다 다르다. 본사 공식 글: 보커가 피쿼드를 제안 → 헤클러가 반대 → 헤클러가 레이니어산 광산 캠프 이름을 찾다 Starbo 발견 → 스타벅. HistoryLink(2016년 보커 인터뷰 인용): 헤클러가 \"ST 로 시작하는 이름\" 조언 → 보커가 사무실의 옛 광산 지도에서 Starbo 를 봄(피쿼드를 커피 회사 이름 후보로 올렸다는 말은 없고, 예전 영화 회사 이름으로만 나온다). Taste of Home(약한 출처): \"ST\" 조언 → 누군가 지도에서 Starbo → 보커가 모비 딕을 떠올림, 피쿼드는 창업자들이 스스로 별로라고 봄. → 안전한 굵기: \"피쿼드도 후보였지만 커피 이름으로는 어울리지 않는다는 반대가 있었고, 옛 광산 지도(광산 캠프 이름)에서 본 ‘스타보’가 스타벅을 떠올리게 했다\" — 지도를 본 사람이 누구인지는 말하지 않는다. 피쿼드가 빠진 이유(헤클러의 반대)는 본사 공식 글 한 곳에만 있으므로 \"스타벅스 공식 설명으로는\"을 붙이면 안전. ② 창업자 철자: Siegl(HistoryLink · Britannica · Taste of Home) / Siegel(스타벅스 코리아) — 대본에 이름을 넣지 않으면 무관. ③ 세이렌: 스타벅스 코리아는 \"16세기 노르웨이 목판화\", HistoryLink 는 출처를 말하지 않는다 — 목판화 출처는 한 곳뿐. ④ 2-i 의 \"가라앉았다\"는 창업자들의 농담을 옮긴 것.",
+   "storyOrder": [
+    "2-n",
+    "2-a",
+    "2-b",
+    "2-i",
+    "2-c",
+    "2-f",
+    "2-d",
+    "2-g",
+    "2-h",
+    "2-e",
+    "2-j",
+    "2-k",
+    "2-l",
+    "2-m",
+    "2-o",
+    "2-p"
+   ]
+  },
+  {
+   "no": 3,
+   "answer": "로제타석",
+   "gaps": [
+    "왜 이 돌이 열쇠였는지 — 상형문자 읽는 법이 1,400년쯤 끊겨 있었고, 세 글 가운데 그리스어는 읽을 수 있었다는 설명이 없다",
+    "어떻게 발견됐는지 — 오래된 벽에 박혀 있던 돌 · 알아본 장교 부샤르 · ‘로제타’라는 이름의 유래",
+    "영국으로 넘어간 과정의 뒷부분 — 1802년 포츠머스 도착 · 조지 3세가 대영박물관에 기증 · 돌 옆면에 적힌 글",
+    "해독의 가운데 — 먼저 영국의 토머스 영이 왕 이름(프톨레마이오스)을 읽어 냈고, 샹폴리옹이 콥트어 지식으로 마무리했다는 경쟁 이야기",
+    "\"찾았다!\" 하고 쓰러졌다는 일화와 1822년 9월 27일 발표(청중석의 경쟁자 영)",
+    "돌에 실제로 적힌 내용 — 13살 왕 프톨레마이오스 5세를 기리는 사제들의 포고문(여러 장 만든 것 가운데 하나)",
+    "끝맺음 — 1802년부터 대영박물관 전시(1차 대전 때 지하 대피 한 번) · ‘로제타석’이 수수께끼를 푸는 열쇠라는 뜻의 말이 된 것"
+   ],
+   "facts": [
+    {
+     "id": "3-a",
+     "text": "상형문자는 4세기 말 이후 쓰이지 않게 되면서 읽고 쓰는 법이 잊혔고, 약 1,400년 뒤인 19세기 초에야 학자들이 이 돌의 그리스어를 열쇠 삼아 풀 수 있었다.",
+     "site": "The British Museum (Collection online · 소장품 EA24)",
+     "title": "stela | British Museum",
+     "year": null,
+     "url": "https://www.britishmuseum.org/collection/object/Y_EA24",
+     "quote": "In the early years of the nineteenth century, some 1400 years later, scholars were able to use the Greek inscription on this stone as the key to decipher them.",
+     "newDoc": false
+    },
+    {
+     "id": "3-b",
+     "text": "같은 내용이 세 가지 글자로 적혀 있고 학자들이 고대 그리스어는 여전히 읽을 수 있었기 때문에, 이 돌이 해독의 열쇠가 됐다.",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "Because the inscriptions say the same thing in three different scripts, and scholars could still read Ancient Greek, the Rosetta Stone became a valuable key to deciphering the hieroglyphs.",
+     "newDoc": true
+    },
+    {
+     "id": "3-c",
+     "text": "가장 널리 받아들여지는 이야기로는 1799년 7월 15일, 라시드(로제타) 근처 요새의 증축 기초를 파던 병사들이 우연히 발견했다(발견 경위 기록은 지금은 다소 흐릿하다고 박물관은 적는다).",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "the story most generally accepted is that it was found by accident by soldiers on 15 July 1799 while digging the foundations of an addition to a fort near Rashid (Rosetta)",
+     "newDoc": true
+    },
+    {
+     "id": "3-d",
+     "text": "돌은 아주 오래된 벽에 건축 자재처럼 박혀 있었던 것으로 보인다.",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "It had apparently been built into a very old wall.",
+     "newDoc": true
+    },
+    {
+     "id": "3-e",
+     "text": "현장 장교 부샤르는 그리스어와 상형문자가 나란히 있는 것의 의미를 곧바로 알아보고, 각 글이 한 문서의 번역일 거라고 옳게 짐작했다.",
+     "site": "ARCE (American Research Center in Egypt)",
+     "title": "The Rosetta Stone: Unlocking the Ancient Egyptian Language",
+     "year": null,
+     "url": "https://arce.org/resource/rosetta-stone-unlocking-ancient-egyptian-language/",
+     "quote": "He immediately recognized the significance of the juxtaposed Greek and hieroglyphic scripts, predicting correctly that each script represented a translation of a single text.",
+     "newDoc": false
+    },
+    {
+     "id": "3-f",
+     "text": "이름의 유래: 나일강 삼각주의 항구 도시 라시드를 프랑스인들이 ‘로제타’라고 불렀다.",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "Rashid, a port city on the Nile Delta, was known by the French as Rosetta.",
+     "newDoc": true
+    },
+    {
+     "id": "3-g",
+     "text": "돌은 배에 실려 1802년 2월 영국 포츠머스에 도착했고, 그해 7월 조지 3세가 대영박물관에 기증했다.",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "The stone was shipped to England and arrived in Portsmouth in February 1802. It was presented to the British Museum by George III in July of that year.",
+     "newDoc": true
+    },
+    {
+     "id": "3-h",
+     "text": "돌 옆면에는 지금도 \"1801년 영국군이 이집트에서 노획\" · \"국왕 조지 3세 기증\"이라는 글이 칠해져 있다.",
+     "site": "ARCE (American Research Center in Egypt)",
+     "title": "The Rosetta Stone: Unlocking the Ancient Egyptian Language",
+     "year": null,
+     "url": "https://arce.org/resource/rosetta-stone-unlocking-ancient-egyptian-language/",
+     "quote": "texts painted on its sides declare “captured in Egypt by the British army 1801” and “presented by king George III.”",
+     "newDoc": false
+    },
+    {
+     "id": "3-i",
+     "text": "영국의 토머스 영은 타원형 테두리(카르투슈) 안의 글자를 프톨레마이오스라는 이름으로 풀어, 카르투슈가 왕족의 이름이라는 오랜 추측을 증명했다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Rosetta Stone",
+     "year": null,
+     "url": "https://www.britannica.com/topic/Rosetta-Stone",
+     "quote": "Young deciphered the cartouche as the name of Ptolemy and proved a long-held assumption that the cartouches found in other inscriptions were the names of royalty.",
+     "newDoc": false
+    },
+    {
+     "id": "3-j",
+     "text": "영과 샹폴리옹은 해독 경쟁을 벌였다 — 열일곱 살 위인 영이 큰 진전을 이뤘지만, 마지막 돌파구를 연 것은 샹폴리옹이었다.",
+     "site": "ARCE (American Research Center in Egypt)",
+     "title": "The Rosetta Stone: Unlocking the Ancient Egyptian Language",
+     "year": null,
+     "url": "https://arce.org/resource/rosetta-stone-unlocking-ancient-egyptian-language/",
+     "quote": "Young, the elder by seventeen years, made incredible progress with both the hieroglyphic and demotic scripts, but it was Champollion who led the final breakthrough.",
+     "newDoc": false
+    },
+    {
+     "id": "3-k",
+     "text": "샹폴리옹은 고대 이집트어에서 내려온 콥트어 지식 덕분에 상형문자 글을 온전히 읽기 시작할 수 있었다.",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "Together with his knowledge of the Coptic language, which derived from ancient Egyptian, this allowed him to begin reading hieroglyphic inscriptions fully.",
+     "newDoc": true
+    },
+    {
+     "id": "3-l",
+     "text": "1822년 9월 14일 샹폴리옹은 형의 사무실로 뛰어 들어가 \"Je tiens mon affaire!(찾았다!)\"라고 외친 뒤 곧 쓰러졌고, 완전히 회복하는 데 닷새가 걸렸다고 전해진다.",
+     "site": "HISTORY (history.com)",
+     "title": "French scholar announces he’s cracked the Rosetta Stone code",
+     "year": 2025,
+     "url": "https://www.history.com/this-day-in-history/september-27/rosetta-stone-code-cracked",
+     "quote": "he burst into his brother’s office proclaiming, “Je tiens mon affaire!” (“I’ve got it!\") Moments later, he collapsed, and reportedly took five days to fully recover.",
+     "newDoc": false
+    },
+    {
+     "id": "3-m",
+     "text": "(같은 일화의 다른 판) 샹폴리옹의 조카가 전한 이야기로는, 형의 사무실에 뛰어들어 \"찾았다!\"고 외치고 기절해 거의 일주일 동안 의식이 없었다.",
+     "site": "ARCE (American Research Center in Egypt)",
+     "title": "The Rosetta Stone: Unlocking the Ancient Egyptian Language",
+     "year": null,
+     "url": "https://arce.org/resource/rosetta-stone-unlocking-ancient-egyptian-language/",
+     "quote": "In a legend recounted by Champollion’s nephew, upon recognizing the significance of this confirmation, Champollion burst into his brother’s office, shouted “I’ve got it!,” and fainted, remaining unconscious for nearly a week.",
+     "newDoc": false
+    },
+    {
+     "id": "3-n",
+     "text": "샹폴리옹은 1822년 9월 27일 금요일 파리의 학술원에서 발견을 발표했고, 청중 가운데에는 경쟁자인 영국의 토머스 영도 있었다.",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "The audience included his English rival Thomas Young, who was also trying to decipher Egyptian hieroglyphs.",
+     "newDoc": true
+    },
+    {
+     "id": "3-o",
+     "text": "돌에 새겨진 글은 사제 회의가 내린 포고문으로, 13살 왕 프톨레마이오스 5세의 대관 1주년에 왕을 받드는 내용이다.",
+     "site": "The British Museum (Collection online · 소장품 EA24)",
+     "title": "stela | British Museum",
+     "year": null,
+     "url": "https://www.britishmuseum.org/collection/object/Y_EA24",
+     "quote": "one of a series that affirm the royal cult of the 13-year-old Ptolemy V on the first anniversary of his coronation",
+     "newDoc": false
+    },
+    {
+     "id": "3-p",
+     "text": "막상 풀어 보니 내용은 샹폴리옹이 그리던 고대 이집트의 비밀 보따리가 아니라, 왕의 업적을 적은 꽤 평범한 글이었다.",
+     "site": "HISTORY (history.com)",
+     "title": "French scholar announces he’s cracked the Rosetta Stone code",
+     "year": 2025,
+     "url": "https://www.history.com/this-day-in-history/september-27/rosetta-stone-code-cracked",
+     "quote": "its message was not the trove of ancient Egyptian secrets he had imagined. It contained fairly mundane text about the accomplishments of Ptolemy V Epiphanes",
+     "newDoc": false
+    },
+    {
+     "id": "3-q",
+     "text": "로제타석은 사제 회의의 결정을 널리 알리려고 여러 장 만든 비석 가운데 하나다.",
+     "site": "The British Museum (Blog)",
+     "title": "The Rosetta Stone: everything you need to know",
+     "year": 2017,
+     "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+     "quote": "The Rosetta Stone is therefore one of many mass-produced stelae designed to widely disseminate an agreement issued by a council of priests in 196 BC.",
+     "newDoc": true
+    },
+    {
+     "id": "3-r",
+     "text": "1802년부터 대영박물관에 전시됐고, 자리를 비운 것은 한 번뿐이다 — 1차 대전 말 1917년 런던 폭격을 걱정해 옮겼고, 2년 동안 홀번의 지하 15미터(50피트) 우편 철도 역에 있었다.",
+     "site": "The British Museum (Collection online · 소장품 EA24)",
+     "title": "stela | British Museum",
+     "year": null,
+     "url": "https://www.britishmuseum.org/collection/object/Y_EA24",
+     "quote": "The Rosetta Stone spent the next two years in a station on the Postal Tube Railway fifty feet below the ground at Holborn.",
+     "newDoc": false
+    },
+    {
+     "id": "3-s",
+     "text": "해독에서 맡은 역할 덕분에 ‘로제타석’은 암호를 풀거나 숨은 수수께끼를 밝히는 것을 두루 가리키는 말이 됐다.",
+     "site": "ARCE (American Research Center in Egypt)",
+     "title": "The Rosetta Stone: Unlocking the Ancient Egyptian Language",
+     "year": null,
+     "url": "https://arce.org/resource/rosetta-stone-unlocking-ancient-egyptian-language/",
+     "quote": "as a generic reference to anything that decodes ciphers or reveals hidden mysteries",
+     "newDoc": false
+    }
+   ],
+   "conflict": "① 발견 날짜 · 발견자: 대영박물관 블로그 \"1799년 7월 15일(가장 널리 받아들여지는 이야기 · 기록은 흐릿)\", ARCE · HISTORY \"1799년 7월\", Britannica \"1799년 8월 · Bouchard 또는 Boussard 라는 프랑스인\" — \"1799년 여름\"이 안전하고 날짜는 말하지 않는 편이 낫다. 부샤르 생몰년도 블로그(1771–1822)와 ARCE(1772–1832)가 달라 쓰지 않는다. ② 재질: 화강섬록암(대영박물관 · ARCE · HISTORY) / 검은 화강암(Britannica) / 현무암(세계일보) — 재질은 말하지 않거나 \"검은 돌\". ③ 쓰러진 기간: HISTORY \"닷새(reportedly)\", ARCE \"거의 일주일(조카가 전한 legend)\" — \"며칠 동안 일어나지 못했다고 전해집니다\"가 안전. ④ 9월 14일은 깨달은 날, 9월 27일은 발표한 날 — 섞지 않는다. ⑤ 영의 몫: 소장품 기록은 \"the first to show\", 블로그는 \"one of the first to show\" — \"먼저 왕 이름을 읽어 냈다\" 정도. ⑥ 대관 1주년(대영박물관) / ARCE 는 \"전날 치른 대관식을 기념\"이라고 설명 — \"13살 왕을 기리는 포고문\"까지가 안전. ⑦ 영국으로 넘어간 근거: 대영박물관 · ARCE \"알렉산드리아 조약(1801)\", Britannica \"프랑스의 항복(1801)\" — 지금 대본 그대로 안전. ⑧ 세계일보의 \"넬슨이 이끄는 영국군\" · \"1801년 아부키르 해전\" · \"1790년부터 시작한 이집트 원정\"은 다른 문서와 맞지 않으므로 쓰지 않는다.",
+   "storyOrder": [
+    "3-a",
+    "3-c",
+    "3-d",
+    "3-e",
+    "3-f",
+    "3-g",
+    "3-h",
+    "3-b",
+    "3-i",
+    "3-j",
+    "3-k",
+    "3-l",
+    "3-m",
+    "3-n",
+    "3-o",
+    "3-p",
+    "3-q",
+    "3-r",
+    "3-s"
+   ]
+  },
+  {
+   "no": 4,
+   "answer": "와우! 신호",
+   "gaps": [
+    "신호가 잡힌 순간 — 밤중이었고 망원경에는 아무도 없었다(기계가 혼자 기록)",
+    "에먼이 동그라미 친 글자(6EQUJ5)가 무슨 뜻인지 — 주변 잡음의 서른 배쯤 되는 세기",
+    "왜 외계 신호 후보로 꼽혔는지 — 수소가 내는 전파의 주파수와 거의 같았고, 72초라는 길이가 하늘의 한 점에서 온 전파와 맞아떨어졌다",
+    "수상한 점 — 3분쯤 뒤 두 번째 수신기에는 잡히지 않았다",
+    "그 뒤 — 한 달 동안 같은 하늘을 다시 봤고, 더 좋은 망원경들이 수십 년 찾았지만 못 찾았다",
+    "발견자 본인의 생각(결론을 내리지 않음)과 요즘 나온 설명(혜성설 · 수소 구름과 마그네타설)",
+    "끝맺음 — 빅이어 망원경은 1998년에 해체됐고, 신호의 정체는 지금도 확정되지 않았다"
+   ],
+   "facts": [
+    {
+     "id": "4-a",
+     "text": "신호는 미국 동부 서머타임으로 밤 11시 16분쯤 잡혔다.",
+     "site": "Ohio State University Radio Observatory (bigear.org)",
+     "title": "The Big Ear Wow! Signal What We Know and Don't Know About It After 20 Years",
+     "year": 1997,
+     "url": "http://www.bigear.org/wow20th.htm",
+     "quote": "Note that the Wow! source was observed around 22:16:34 EST (about 10:16 p.m. EST or 11:16 p.m. EDT).",
+     "newDoc": false
+    },
+    {
+     "id": "4-b",
+     "text": "그 시각 망원경에는 아무도 없었고, 수신기와 컴퓨터가 사람 없이 일하고 있었다.",
+     "site": "Ohio State University Radio Observatory (bigear.org)",
+     "title": "The Big Ear Wow! Signal What We Know and Don't Know About It After 20 Years",
+     "year": 1997,
+     "url": "http://www.bigear.org/wow20th.htm",
+     "quote": "No one was at the telescope at that time. The receiver and computer were doing their jobs unattended.",
+     "newDoc": false
+    },
+    {
+     "id": "4-c",
+     "text": "며칠 뒤 출력지를 넘기던 에먼은 2번 채널에 찍힌 \"6EQUJ5\"를 보고 깜짝 놀랐다.",
+     "site": "Ohio State University Radio Observatory (bigear.org)",
+     "title": "The Big Ear Wow! Signal What We Know and Don't Know About It After 20 Years",
+     "year": 1997,
+     "url": "http://www.bigear.org/wow20th.htm",
+     "quote": "Several pages into the computer printout I was astonished to see the string of numbers and characters \"6EQUJ5\" in channel 2 of the printout.",
+     "newDoc": false
+    },
+    {
+     "id": "4-d",
+     "text": "에먼은 쓰고 있던 빨간 펜으로 그 여섯 글자에 동그라미를 치고 왼쪽 여백에 \"Wow!\"라고 적었다.",
+     "site": "Ohio State University Radio Observatory (bigear.org)",
+     "title": "The Big Ear Wow! Signal What We Know and Don't Know About It After 20 Years",
+     "year": 1997,
+     "url": "http://www.bigear.org/wow20th.htm",
+     "quote": "In the red pen I was using I immediately circled those six characters and wrote the notation \"Wow!\" in the left margin of the computer printout opposite them.",
+     "newDoc": false
+    },
+    {
+     "id": "4-e",
+     "text": "에먼의 회고: \"그러니까, 아무 생각 없이 ‘와우!’라고 썼어요. 우리가 본 것 가운데 가장 의미 있는 것이었죠.\"",
+     "site": "Ohio State University Radio Observatory (bigear.org) — Cleveland Plain Dealer Sunday Magazine 기사 재수록",
+     "title": "The \"Wow!\" Signal",
+     "year": 1994,
+     "url": "http://www.bigear.org/wow.htm",
+     "quote": "\"I mean, without thinking, I wrote 'Wow!' \" Ehman recalls. \"It was the most significant thing we had seen.\"",
+     "newDoc": false
+    },
+    {
+     "id": "4-f",
+     "text": "출력지의 글자는 세기를 한 글자로 줄여 적은 것이다 — 0~9는 숫자 그대로, 10~35는 알파벳 대문자로 찍었다.",
+     "site": "Ohio State University Radio Observatory (bigear.org)",
+     "title": "Explanation of the Code \"6EQUJ5\" On the Wow! Computer Printout",
+     "year": null,
+     "url": "http://www.bigear.org/6equj5.htm",
+     "quote": "For scaled intensities of 10 to 35, inclusive, the capital letters of the alphabet were used.",
+     "newDoc": false
+    },
+    {
+     "id": "4-g",
+     "text": "여섯 글자 가운데 \"U\"(30대)가 그때까지 본 가장 큰 값이었다.",
+     "site": "Ohio State University Radio Observatory (bigear.org)",
+     "title": "Explanation of the Code \"6EQUJ5\" On the Wow! Computer Printout",
+     "year": null,
+     "url": "http://www.bigear.org/6equj5.htm",
+     "quote": "The value \"U\", meaning the range 30.0 - 30.999..., was the largest value ever seen.",
+     "newDoc": false
+    },
+    {
+     "id": "4-h",
+     "text": "신호는 외계 문명이 쓸 거라고 예상하던 주파수(우주에서 가장 흔한 원소인 수소가 내는 주파수)와 거의 정확히 같았고, 주변 잡음보다 30배쯤 셌다.",
+     "site": "The Ohio State University College of Arts and Sciences",
+     "title": "Did Ohio State really detect an alien signal?",
+     "year": 2018,
+     "url": "https://artsandsciences.osu.edu/news/did-ohio-state-really-detect-alien-signal-0",
+     "quote": "The Wow! signal occurred at almost exactly this expected frequency and was about 30 times more intense than the surrounding noise level.",
+     "newDoc": false
+    },
+    {
+     "id": "4-i",
+     "text": "72초라는 길이도 뜻이 있다 — 망원경은 고정돼 있고 지구가 돌면서 하늘이 지나가는데, 하늘의 한 점에서 온 전파라면 세졌다 약해지는 데 꼭 72초가 걸려야 했고, 와우 신호가 그랬다.",
+     "site": "Ohio State University Radio Observatory (bigear.org) — SPACE.com 기사 재수록",
+     "title": "Interstellar Signal from the 70s Continues to Puzzle Researchers",
+     "year": 2002,
+     "url": "http://www.bigear.org/shostak_wow_20021205.htm",
+     "quote": "Given the size of the Ohio State beam, this rise and fall should take 72 seconds. And for the Wow signal, it did.",
+     "newDoc": false
+    },
+    {
+     "id": "4-j",
+     "text": "수상한 점도 있었다 — 빅이어는 수신 빔이 둘이라 하늘의 전파원은 3분쯤 간격으로 두 번 잡혀야 하는데, 와우 신호는 한쪽에만 강하게 잡히고 다른 쪽에는 나타나지 않았다.",
+     "site": "Ohio State University Radio Observatory (bigear.org) — SPACE.com 기사 재수록",
+     "title": "Interstellar Signal from the 70s Continues to Puzzle Researchers",
+     "year": 2002,
+     "url": "http://www.bigear.org/shostak_wow_20021205.htm",
+     "quote": "It came on gangbusters in one beam, but was a no-show in the other: suspicious and disheartening.",
+     "newDoc": false
+    },
+    {
+     "id": "4-k",
+     "text": "오하이오 주립대 연구진은 그 뒤 한 달 동안 망원경을 하늘의 그 자리에 맞췄고 이후에도 틈틈이 돌아갔지만, 신호는 다시 기록되지 않았다.",
+     "site": "Ohio State University Radio Observatory (bigear.org) — Cleveland Plain Dealer Sunday Magazine 기사 재수록",
+     "title": "The \"Wow!\" Signal",
+     "year": 1994,
+     "url": "http://www.bigear.org/wow.htm",
+     "quote": "They trained the massive scope on that part of the sky for the next month, and have returned periodically since.",
+     "newDoc": false
+    },
+    {
+     "id": "4-l",
+     "text": "그 뒤 과학자들이 빅이어보다 훨씬 민감한 전파망원경들로 하늘을 뒤졌지만 아무것도 찾지 못했다.",
+     "site": "The Ohio State University College of Arts and Sciences",
+     "title": "Did Ohio State really detect an alien signal?",
+     "year": 2018,
+     "url": "https://artsandsciences.osu.edu/news/did-ohio-state-really-detect-alien-signal-0",
+     "quote": "scientists scoured the skies with radio telescopes significantly more sensitive than the Big Ear to try and locate it again, but nothing was found",
+     "newDoc": false
+    },
+    {
+     "id": "4-m",
+     "text": "2002년 기사에 따르면 연구자들이 호주 태즈메이니아의 26미터 전파망원경으로 14시간짜리 관측을 여섯 번 했지만, 논문의 결론은 \"오하이오의 와우를 닮은 신호는 검출되지 않았다\"였다.",
+     "site": "Ohio State University Radio Observatory (bigear.org) — SPACE.com 기사 재수록",
+     "title": "Interstellar Signal from the 70s Continues to Puzzle Researchers",
+     "year": 2002,
+     "url": "http://www.bigear.org/shostak_wow_20021205.htm",
+     "quote": "\"no signals resembling the Ohio State Wow were detected\"",
+     "newDoc": false
+    },
+    {
+     "id": "4-n",
+     "text": "에먼 자신은 신중했다(1994년): \"지적 존재가 보낸 신호라 해도 한 번만 보내진 않을 겁니다. 쉰 번이나 찾았을 때 다시 보였어야죠.\"",
+     "site": "Ohio State University Radio Observatory (bigear.org) — Cleveland Plain Dealer Sunday Magazine 기사 재수록",
+     "title": "The \"Wow!\" Signal",
+     "year": 1994,
+     "url": "http://www.bigear.org/wow.htm",
+     "quote": "\"Even if it were intelligent beings sending a signal, they'd do it far more than once,\" Ehman, now 54, says.",
+     "newDoc": false
+    },
+    {
+     "id": "4-o",
+     "text": "20년 뒤(1997년) 에먼의 결론: 신호의 정체는 자신에게 여전히 열린 질문이고, 자료가 너무 적어 \"반쪽짜리 자료로 거창한 결론을 내리지는 않겠다\"는 것이었다.",
+     "site": "Ohio State University Radio Observatory (bigear.org)",
+     "title": "The Big Ear Wow! Signal What We Know and Don't Know About It After 20 Years",
+     "year": 1997,
+     "url": "http://www.bigear.org/wow20th.htm",
+     "quote": "Thus, I must state that the origin of the Wow! signal is still an open question for me.",
+     "newDoc": false
+    },
+    {
+     "id": "4-p",
+     "text": "2017년에는 혜성에서 나온 자연 전파일 뿐이라는 논문도 나왔지만, 명확한 결론은 나지 않았다.",
+     "site": "아시아경제",
+     "title": "[과학을읽다]외계인이 정말 지구에 그 신호를 보냈을까?",
+     "year": 2022,
+     "url": "https://view.asiae.co.kr/article/2022110811241413413",
+     "quote": "2017년 혜성에서 뿜어져 나온 자연 전파에 불과하다는 연구 논문이 발표되기도 했지만 아직 명확한 결론은 나오지 않은 상태다.",
+     "newDoc": false
+    },
+    {
+     "id": "4-q",
+     "text": "2024년 논문에서 멘데스 연구진은 와우 신호가 별 사이 수소 가스 구름에서 나왔을 것이라고 제안했다 — 자기장이 아주 강한 별(마그네타)의 섬광이 차가운 수소 구름을 때려 순간적으로 밝게 만들었다는 설명이다.",
+     "site": "National Geographic",
+     "title": "Was the 'Wow!’ signal a message from aliens?",
+     "year": 2026,
+     "url": "https://www.nationalgeographic.com/science/article/wow-radio-signal-aliens-mystery",
+     "quote": "In a 2024 paper, Méndez and his colleagues suggested that the “Wow!” signal came from hydrogen in interstellar gas clouds.",
+     "newDoc": true
+    },
+    {
+     "id": "4-r",
+     "text": "다만 이 설명에도 불확실한 점이 있다 — 천문학자들은 우주에서 수소 메이저(레이저의 전파판)를 실제로 본 적이 아직 없다.",
+     "site": "Discover Magazine",
+     "title": "Have Astronomers Finally Found the Source of the Wow! Signal?",
+     "year": 2024,
+     "url": "https://www.discovermagazine.com/have-astronomers-finally-found-the-source-of-the-wow-signal-46564",
+     "quote": "astronomers have never seen a hydrogen maser in space, although physicists have made them on Earth",
+     "newDoc": true
+    },
+    {
+     "id": "4-s",
+     "text": "1977년에는 누구도 떠올릴 수 없던 설명이다 — 마그네타라는 천체는 1992년에야 제안됐다.",
+     "site": "Astronomy Magazine (astronomy.com)",
+     "title": "Aug. 15, 1977: The Wow! Signal arrives",
+     "year": 2026,
+     "url": "https://www.astronomy.com/today-in-the-history-of-astronomy/aug-15-1977-the-wow-signal-arrives/",
+     "quote": "magnetars weren’t even suggested until 1992",
+     "newDoc": false
+    },
+    {
+     "id": "4-t",
+     "text": "빅이어 망원경은 22년 동안 외계의 전파를 찾다가 1998년에 해체됐다.",
+     "site": "National Geographic",
+     "title": "Was the 'Wow!’ signal a message from aliens?",
+     "year": 2026,
+     "url": "https://www.nationalgeographic.com/science/article/wow-radio-signal-aliens-mystery",
+     "quote": "After 22 years in search of messages sent by aliens, the Big Ear was dismantled in 1998.",
+     "newDoc": true
+    },
+    {
+     "id": "4-u",
+     "text": "이 신호는 지금까지도 확정된 설명이 없다.",
+     "site": "National Geographic",
+     "title": "Was the 'Wow!’ signal a message from aliens?",
+     "year": 2026,
+     "url": "https://www.nationalgeographic.com/science/article/wow-radio-signal-aliens-mystery",
+     "quote": "To this day, it has no definitive explanation.",
+     "newDoc": true
+    }
+   ],
+   "conflict": "① 에먼이 본 시점: 본인 글 · Astronomy · National Geographic 은 \"며칠 뒤\", Plain Dealer(1994) · ZDNet Korea 는 8월 15일 당일처럼 쓴다 — 본인 글대로 \"며칠 뒤\". ② 에먼의 신분: 자원봉사자(Plain Dealer · 오하이오 주립대) / 교수(아시아경제 · ZDNet) / project scientist(National Geographic) — \"천문학자 에먼\" 또는 \"자원봉사로 일하던 천문학자\"가 안전. ③ 세기: \"주변 잡음의 약 30배\"(오하이오 주립대 · National Geographic · 본인 글의 30 시그마). National Geographic 은 2025년 재분석으로 \"알려진 것보다 4배 셌다\"는 연구진 말도 싣는다 — \"서른 배쯤\"까지만. ④ 다시 찾아본 횟수: Plain Dealer 의 에먼 인용은 50번, 같은 페이지의 주석은 \"실제로는 100번 남짓\" — 숫자는 말하지 않는다. ⑤ 에먼의 추측은 바뀌었다: 1994년에는 지구의 전파가 우주 쓰레기에 반사됐을 가능성을 말했고, 1997년 글에서는 그 가능성을 낮게 본다고 썼다 — \"본인도 끝내 결론을 내리지 않았다\"가 안전. ⑥ 혜성설(2017): 아시아경제는 결론 없음, 오하이오 주립대 기사 속 연구원은 \"혜성이 아니다\"라고 말한다 — 쓰려면 \"받아들여지지 않았다\"가 아니라 \"결론이 나지 않았다\". ⑦ 2024년 수소 구름 · 마그네타 설명은 가설이다(National Geographic · Discover · Astronomy 모두 그렇게 다룸) — \"~라는 설명이 나왔습니다\"로. ⑧ 망원경의 최후: 1998년 해체(National Geographic) · 1998년 퇴역(Discover) · \"90년대 말 해체\"(오하이오 주립대) · 에먼 글에는 골프장 개발업자에게 곧 헐릴 것이라는 말 — \"1998년 해체\"가 안전. ⑨ National Geographic 의 망원경 위치 \"western Ohio\"는 다른 문서(콜럼버스의 오하이오 주립대)와 결이 달라 위치는 \"오하이오\"까지만.",
+   "storyOrder": [
+    "4-a",
+    "4-b",
+    "4-c",
+    "4-f",
+    "4-g",
+    "4-d",
+    "4-e",
+    "4-h",
+    "4-i",
+    "4-j",
+    "4-k",
+    "4-l",
+    "4-m",
+    "4-n",
+    "4-o",
+    "4-p",
+    "4-q",
+    "4-s",
+    "4-r",
+    "4-t",
+    "4-u"
+   ]
+  },
+  {
+   "no": 5,
+   "answer": "마그네트론",
+   "gaps": [
+    "퍼시 스펜서가 어떤 사람인지 — 학교를 일찍 그만두고 독학한 기술자, 마그네트론을 대량 생산하게 만든 사람",
+    "마그네트론이 전쟁에서 한 일 — 적 비행기 · 잠수함을 찾는 레이더의 핵심 부품",
+    "팝콘 다음 실험 — 달걀(터져서 동료 얼굴에 튐) · 금속 상자에 전파를 가두기",
+    "가운데 과정 — 특허 출원(1945) · 첫 제품 ‘레이더레인지’라는 이름의 뜻",
+    "첫 전자레인지의 크기와 값 — 사람 키만 하고 340킬로그램 · 약 5천 달러 · 식당용",
+    "끝맺음 — 가정용이 나오기까지 20년쯤(1967년 495달러 조리대형) · 1997년 미국 가정 90% · 스펜서가 받은 보너스"
+   ],
+   "facts": [
+    {
+     "id": "5-a",
+     "text": "스펜서는 5학년 무렵 학교를 완전히 그만두고 공장에서 일했다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "by the fifth grade he dropped out of school completely to work in a factory",
+     "newDoc": false
+    },
+    {
+     "id": "5-b",
+     "text": "1912년 침몰하는 타이타닉호 무선사들의 활약에 감명받아 무선 기술에 관심을 갖고 해군에 들어가 무선사가 됐으며, 밤 당직을 서면서 교과서로 독학했다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "“I just got hold of a lot of textbooks and taught myself while I was standing watch at night,” he later recalled.",
+     "newDoc": false
+    },
+    {
+     "id": "5-c",
+     "text": "2차 대전 때 마그네트론은 적의 비행기와 잠수함을 찾아내는 데 쓰였다.",
+     "site": "National Inventors Hall of Fame",
+     "title": "Who Invented the Microwave?",
+     "year": 2026,
+     "url": "https://www.invent.org/blog/inventors/microwave",
+     "quote": "the magnetron was used to detect enemy planes and submarines",
+     "newDoc": false
+    },
+    {
+     "id": "5-d",
+     "text": "스펜서가 마그네트론을 발명한 것은 아니지만, 그것을 대량 생산하는 방법을 개발했다.",
+     "site": "Lemelson-MIT",
+     "title": "Percy Spencer",
+     "year": null,
+     "url": "https://lemelson.mit.edu/resources/percy-spencer",
+     "quote": "Though Spencer did not invent the magnetron himself, he did develop a system to mass produce the machine",
+     "newDoc": false
+    },
+    {
+     "id": "5-e",
+     "text": "1941년 하루 17개밖에 못 만들던 마그네트론을, 스펜서의 개량 덕분에 레이시온은 하루 2,600개씩 만들 수 있게 됐다.",
+     "site": "National Inventors Hall of Fame",
+     "title": "Who Invented the Microwave?",
+     "year": 2026,
+     "url": "https://www.invent.org/blog/inventors/microwave",
+     "quote": "These improvements and others allowed Raytheon to produce 2,600 magnetrons per day.",
+     "newDoc": false
+    },
+    {
+     "id": "5-f",
+     "text": "어느 날 작동 중인 레이더 장치 곁에 서 있던 스펜서는 주머니 속 사탕 과자(캔디 바)가 녹은 것을 알아챘고, 마이크로파로 음식을 익힐 수 있겠다고 생각했다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "One day, as Spencer stood near an active radar set, he noticed that a candy bar in his pocket had melted, and realized that microwaves might be used to cook food.",
+     "newDoc": false
+    },
+    {
+     "id": "5-g",
+     "text": "그 과자가 어떤 상표였는지는 (미 의회도서관 글쓴이가 찾아본) 어느 자료에도 나오지 않는다.",
+     "site": "The Library of Congress (Inside Adams 블로그)",
+     "title": "Ride the (electromagnetic) Wave with Percy Spencer!",
+     "year": 2021,
+     "url": "https://blogs.loc.gov/inside_adams/2021/01/microwaves/",
+     "quote": "none of the sources I came across named the candy bar",
+     "newDoc": false
+    },
+    {
+     "id": "5-h",
+     "text": "팝콘 알갱이를 마그네트론 가까이 놓자 알갱이들이 탁탁 튀며 실험실 여기저기로 터져 나갔다.",
+     "site": "IEEE Spectrum",
+     "title": "A History of the Microwave Oven",
+     "year": 2016,
+     "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven",
+     "quote": "He placed popcorn kernels near the magnetron and watched as they sputtered, cracked, and popped all over his lab.",
+     "newDoc": false
+    },
+    {
+     "id": "5-i",
+     "text": "다음에는 주전자 옆구리에 구멍을 내고 달걀을 넣은 뒤 그 구멍으로 마이크로파를 쏘았는데, 달걀이 터져서 마침 주전자를 들여다보던 의심 많은 동료의 얼굴에 튀었다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "It worked again, except the egg exploded, splattering the face of a skeptical colleague who was peering into the kettle at the wrong time.",
+     "newDoc": false
+    },
+    {
+     "id": "5-j",
+     "text": "그 뒤 스펜서는 마이크로파를 넣을 구멍이 있는 금속 상자를 만들었다 — 빠져나가지 못한 에너지 때문에 상자 안의 음식은 빠르게 뜨거워졌다.",
+     "site": "IEEE Spectrum",
+     "title": "A History of the Microwave Oven",
+     "year": 2016,
+     "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven",
+     "quote": "He then fashioned a metal box with an opening into which he could feed microwave power.",
+     "newDoc": false
+    },
+    {
+     "id": "5-k",
+     "text": "레이시온은 1945년 10월 8일 마이크로파 조리법 특허를 출원했다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "Raytheon filed a patent for a microwave cooking process on October 8, 1945",
+     "newDoc": false
+    },
+    {
+     "id": "5-l",
+     "text": "첫 제품의 이름은 ‘레이더레인지(Radarange)’ — 마그네트론이 레이더에서 마이크로파를 만드는 부품이라서 붙은 이름이다.",
+     "site": "IEEE Spectrum",
+     "title": "A History of the Microwave Oven",
+     "year": 2016,
+     "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven",
+     "quote": "called the Radarange because the magnetron is the source of microwaves in a radar set",
+     "newDoc": false
+    },
+    {
+     "id": "5-m",
+     "text": "시제품은 높이가 2미터 가까이 되고 무게가 약 340킬로그램이었으며, 보스턴의 한 식당에 설치해 시험했다.",
+     "site": "IEEE Spectrum",
+     "title": "A History of the Microwave Oven",
+     "year": 2016,
+     "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven",
+     "quote": "A prototype, which was almost 2 meters tall and weighed about 340 kilograms, was installed in a Boston restaurant for testing.",
+     "newDoc": false
+    },
+    {
+     "id": "5-n",
+     "text": "(한국어 문서) 초기 상업용 제품은 높이 약 1.8미터, 무게 340킬로그램이 넘을 만큼 거대했다.",
+     "site": "VOA 한국어 (voakorea.com)",
+     "title": "[역사 속 아메리카 250] 레이더 연구 중 녹아내린 초콜릿…전자레인지의 탄생",
+     "year": 2026,
+     "url": "https://www.voakorea.com/a/america-250-microwave-101526/8211667.html",
+     "quote": "높이가 약 1.8미터에 이르고 무게도 340킬로그램이 넘을 정도로 거대했습니다.",
+     "newDoc": false
+    },
+    {
+     "id": "5-o",
+     "text": "값은 약 5,000달러(기사 시점 가치로 약 6만 4천 달러)였고 업소용 주방을 상대로 팔았다.",
+     "site": "IEEE Spectrum",
+     "title": "A History of the Microwave Oven",
+     "year": 2016,
+     "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven",
+     "quote": "It sold for about US $5,000 (equivalent to approximately $64,000 today) and was marketed to commercial kitchens.",
+     "newDoc": false
+    },
+    {
+     "id": "5-p",
+     "text": "1947년 1월 뉴욕 그랜드 센트럴 역에는 전자레인지로 익힌 핫도그를 파는 자판기 ‘스피디 위니’가 등장해 통근객의 눈길을 끌었다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "commuters in New York City’s Grand Central Terminal took note of a fast-food vending machine, the Speedy Weeny, offering hot dogs cooked in a new invention: the microwave oven",
+     "newDoc": false
+    },
+    {
+     "id": "5-q",
+     "text": "1967년 아마나의 첫 가정용 전자레인지(110볼트 조리대형)가 495달러에 나왔고, 이 모델이 더 작고 싼 오늘날 전자레인지의 길을 열었다.",
+     "site": "IEEE Spectrum",
+     "title": "A History of the Microwave Oven",
+     "year": 2016,
+     "url": "https://spectrum.ieee.org/a-history-of-the-microwave-oven",
+     "quote": "In 1967, the first Amana home microwave oven, a 110-volt countertop model, sold for $495 (about $3,515 today).",
+     "newDoc": false
+    },
+    {
+     "id": "5-r",
+     "text": "1997년에는 미국 가정의 90%가 전자레인지를 갖게 됐다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "by 1997, fully 90% of U.S. households owned a microwave oven",
+     "newDoc": false
+    },
+    {
+     "id": "5-s",
+     "text": "스펜서가 전자레인지로 받은 돈은 레이시온이 특허를 낸 직원에게 으레 주던 보너스 2달러가 전부였다.",
+     "site": "American Physical Society (APS News)",
+     "title": "1945: First Patent for the Microwave",
+     "year": 2015,
+     "url": "https://www.aps.org/apsnews/2015/10/first-patent-for-microwave",
+     "quote": "having never earned more for his microwave than the $2 bonus Raytheon typically awarded employees for their patented inventions",
+     "newDoc": false
+    },
+    {
+     "id": "5-t",
+     "text": "(한국어 문서) 스펜서는 1949년 극초단파로 팝콘 튀기는 법의 특허도 출원했다.",
+     "site": "한국일보",
+     "title": "영화관에서 왜 팝콘을 먹게 됐을까 [이용재의 식사(食史)]",
+     "year": 2021,
+     "url": "https://hankookilbo.com/News/Read/A2021120908380001866",
+     "quote": "스펜서는 1949년 극초단파로 팝콘 튀기는 법의 특허를 출원한다.",
+     "newDoc": false
+    }
+   ],
+   "conflict": "① 초콜릿 일화의 해: IEEE Spectrum 은 1946년, 그런데 특허 출원은 1945년 10월 8일(APS · 미 의회도서관 · Lemelson-MIT · NIHF 는 \"1945년 출원\") — IEEE 의 연도와 순서가 맞지 않고, 한국일보는 초콜릿이 녹은 날 자체를 1945년 10월 8일로 적는다(특허 출원일과 같음). → 일화의 연도는 말하지 않고 \"2차 대전 무렵/전쟁이 끝날 즈음\"도 피한다(Lemelson-MIT 는 \"전쟁 뒤\", VOA 는 \"2차 대전 당시\"). 특허 출원 1945년은 여러 문서가 일치. ② 레이더레인지 출시: 1946년(APS) / 1947년(IEEE \"이듬해\" · NIHF · Lemelson-MIT · 미 의회도서관 · VOA) — \"1947년\"이 다수. ③ 값: 약 5,000달러(IEEE · APS) / 3,000달러(Lemelson-MIT) — \"수천 달러\" 또는 출처를 밝혀 5,000달러. ④ 크기: \"2미터 가까이\"(IEEE 시제품) · \"약 6피트 · 750파운드\"(NIHF · APS · Lemelson-MIT · 미 의회도서관) · \"약 1.8미터 · 340킬로그램\"(VOA) — 서로 맞음: \"사람 키만 한 높이에 340킬로그램쯤\". ⑤ 녹은 것: candy bar(IEEE · APS · NIHF) / chocolate (candy) bar(Lemelson-MIT · 미 의회도서관) / 초콜릿(VOA · 한국일보) — \"초콜릿\"은 받쳐지지만 상표는 어디에도 없다. ⑥ 팝콘: 알갱이를 마그네트론 옆에 놓았다(IEEE · APS · VOA) / 봉지를 마그네트론 옆에 들었다(NIHF · Lemelson-MIT) — \"마그네트론 가까이에서 팝콘이 터졌다\". ⑦ 달걀 실험은 APS 와 VOA 두 곳(동료 얼굴에 튄 것은 APS 한 곳). ⑧ 학교를 그만둔 때: 5학년(APS) / 12살(NIHF · Lemelson-MIT) — \"어린 나이에\". ⑨ 특허 수: 약 150(NIHF) / 300(APS) / 100여 개(Lemelson-MIT) — 숫자는 쓰지 않는다. ⑩ 가정용: IEEE 는 1955년 1,295달러짜리 벽걸이형(잘 안 팔림) → 1967년 495달러 조리대형, APS 는 \"1950년대에 495달러 조리대형\"이라고 써 IEEE 와 어긋난다 — IEEE 쪽(1967년)을 따르거나 \"20년쯤 뒤\"(NIHF · Lemelson-MIT).",
+   "storyOrder": [
+    "5-a",
+    "5-b",
+    "5-c",
+    "5-d",
+    "5-e",
+    "5-f",
+    "5-g",
+    "5-h",
+    "5-i",
+    "5-j",
+    "5-k",
+    "5-l",
+    "5-m",
+    "5-n",
+    "5-o",
+    "5-p",
+    "5-q",
+    "5-r",
+    "5-s",
+    "5-t"
+   ]
+  }
+ ],
+ "quotesChecked": 96,
+ "quotesFound": 96
+}

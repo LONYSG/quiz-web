@@ -1,0 +1,1210 @@
+{
+ "done": true,
+ "episode": 3,
+ "at": "2026-11-21",
+ "method": "설명출처-03.json 의 문서를 curl(브라우저 User-Agent)로 다시 내려받아 tmp/botaem-03/raw 에 원본 HTML 로 두고, 지금 해설이 쓰지 않은 이야기(그다음 · 까닭 · 반응 · 숫자 · 결말)를 원문에서 직접 읽어 골랐다. 가운데 · 결말이 모자란 문제만 새 문서를 더 열었다(버그 3 · 감칠맛 3 · 이중 내륙국 1 — 박물관 · 공공기관 · 회사 공식 연혁 · 학술지 · 백과사전 · 전문지. 위키백과 · 나무위키 · 블로그 없음). 모든 quote 는 내려받은 파일에서 태그를 걷어 낸 글자에 그대로 있는지 스크립트(tmp/botaem-03/build.mjs)로 확인했다 — 맞춘 것은 공백 · 따옴표 모양 · HTML 엔티티 · 문장부호 앞 공백뿐이고 요약 도구는 쓰지 않았다. 찾지 못한 quote 의 사실은 싣지 않는다. 다시 열지 못한 문서: 스미스소니언 소장품 페이지(버그 · 자동 접속 확인 화면 403). text 는 quote 가 말하는 만큼만 옮긴 것이고, 괄호 안 풀이는 같은 문서의 앞뒤 문장에서 왔다. 날짜 · 이름 · 숫자가 문서마다 다른 곳은 conflict 에 적었다 — 대본은 conflict 가 말한 굵기까지만 쓴다.",
+ "questions": [
+  {
+   "no": 1,
+   "answer": "모나리자",
+   "gaps": [
+    "범인이 어떻게 들어가 숨었고 어떻게 빠져나왔는지(벽장에서 밤을 새움 · 잠긴 문 · 배관공이 문을 열어 줌)",
+    "하루 넘게 아무도 도난을 몰랐던 까닭과 누가 처음 알아챘는지",
+    "빈 벽을 보러 사람들이 몰려든 장면 · 검문과 수배 전단",
+    "누가 의심받았는지(아폴리네르 · 피카소 · J.P. 모건 · 독일)",
+    "2년 동안 그림이 어디에 있었는지(파리 변두리 단칸방 · 이중 바닥 트렁크)",
+    "피렌체에서 어떻게 되찾았는지(가명 편지 · 호텔 방 · 진품 확인 · 신고)",
+    "페루자의 주장이 사실과 달랐다는 것과 재판 · 형량",
+    "루브르로 돌아온 날의 인파와 \"도난 전에는 그리 유명하지 않았다\"는 대비"
+   ],
+   "facts": [
+    {
+     "id": "1-a",
+     "text": "도난 전의 모나리자는 미술계 바깥에는 널리 알려진 그림이 아니었다.",
+     "site": "NPR",
+     "title": "The Theft That Made The 'Mona Lisa' A Masterpiece",
+     "year": 2011,
+     "url": "https://www.npr.org/2011/07/30/138800110/the-theft-that-made-the-mona-lisa-a-masterpiece",
+     "quote": "Before its theft, the \"Mona Lisa\" was not widely known outside the art world.",
+     "newDoc": false
+    },
+    {
+     "id": "1-b",
+     "text": "1911년 8월 20일 일요일 저녁 루브르에 들어간 남자는, 경비가 허술해서 창고 벽장에 쉽게 숨어들 수 있었다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Security in the museum was lax, so the man found it easy to stow away inside a storage closet.",
+     "newDoc": false
+    },
+    {
+     "id": "1-c",
+     "text": "다음 날 아침 그는 그림을 벽에서 떼어 근처 직원용 계단으로 가져갔고, 거기서 보호 유리 액자를 벗겼다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "plucked it off the wall and carried it to a nearby service stairwell, where he removed its wooden canvas from a protective glass frame",
+     "newDoc": false
+    },
+    {
+     "id": "1-d",
+     "text": "계단 끝 문이 잠겨 있어 문손잡이를 뜯으려던 참에 루브르의 배관공이 나타났는데, 배관공은 그를 갇힌 동료로 여기고 문 여는 것을 도와주었다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Rather than apprehending him, however, the plumber took the man for a trapped co-worker and assisted him in opening the door.",
+     "newDoc": false
+    },
+    {
+     "id": "1-e",
+     "text": "루브르 직원들은 하루가 넘도록 모나리자가 도난당한 줄 몰랐다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "For more than a day, the Louvre's staff had no clue that the \"Mona Lisa\" had been stolen.",
+     "newDoc": false
+    },
+    {
+     "id": "1-f",
+     "text": "그림을 청소나 사진 촬영 때문에 벽에서 떼어 놓는 일이 흔해서, 지나가는 사람들도 빈자리를 대수롭지 않게 여겼다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "The museum's paintings were often removed from the walls for cleaning or photography, so passersby took little notice of the blank space where the portrait was usually located.",
+     "newDoc": false
+    },
+    {
+     "id": "1-g",
+     "text": "화요일 정오 무렵, 박물관에 온 한 화가가 경비원에게 그림을 찾아 달라고 했다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Finally, at around noon on Tuesday, a visiting artist asked a security guard to track the painting down.",
+     "newDoc": false
+    },
+    {
+     "id": "1-h",
+     "text": "그 화가는 사진사들이 그림을 언제까지 갖고 있을지 알아봐 달라고 경비원을 설득했다.",
+     "site": "NPR",
+     "title": "The Theft That Made The 'Mona Lisa' A Masterpiece",
+     "year": 2011,
+     "url": "https://www.npr.org/2011/07/30/138800110/the-theft-that-made-the-mona-lisa-a-masterpiece",
+     "quote": "So finally he persuaded a guard to go see how long the photographers were going to have the painting",
+     "newDoc": false
+    },
+    {
+     "id": "1-i",
+     "text": "사람들이 빈자리를 보러 루브르로 몰려들었고, 박물관의 회화 책임자가 사임했다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Mona Lisa",
+     "year": null,
+     "url": "https://www.britannica.com/topic/Mona-Lisa-painting",
+     "quote": "People flocked to the Louvre to view the empty space where the painting had once hung, the museum's director of paintings resigned",
+     "newDoc": false
+    },
+    {
+     "id": "1-j",
+     "text": "검문소에서 자동차 · 기선 승객 · 보행자를 수색했고, 경찰은 모나리자의 미소가 담긴 \"수배 전단\"을 돌렸다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Cars, steamer passengers and pedestrians were searched at checkpoints, and police circulated \"wanted posters\" of the Mona Lisa's enigmatic half-smile.",
+     "newDoc": false
+    },
+    {
+     "id": "1-k",
+     "text": "일주일 뒤 루브르가 다시 문을 열자, 수천 명이 그림이 걸려 있던 빈 벽을 구경하러 왔다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "When the Louvre finally reopened a week later, thousands of people came to gawk at the empty wall where the painting had once hung.",
+     "newDoc": false
+    },
+    {
+     "id": "1-l",
+     "text": "시인 아폴리네르와 화가 피카소도 모나리자 실종과 관련해 조사를 받았지만, 증거가 없어 혐의를 벗었다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "While the authorities questioned Apollinaire and Picasso in connection with the Mona Lisa's disappearance, the two future art legends were later cleared due to lack of evidence.",
+     "newDoc": false
+    },
+    {
+     "id": "1-m",
+     "text": "미국 금융 재벌 J.P. 모건이 훔치게 시켰다는 말도, 독일이 프랑스를 망신 주려고 꾸몄다는 말도 돌았다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Some argued that American banking magnate J.P. Morgan had commissioned the heist to bolster his private art collection; still others believed the Germans had masterminded it to disgrace the French.",
+     "newDoc": false
+    },
+    {
+     "id": "1-n",
+     "text": "그림은 도난당한 날부터 줄곧 파리 변두리의 단칸방에 있었다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "In fact, from the very day that it was stolen, it had languished in a one-room apartment on the outskirts of Paris.",
+     "newDoc": false
+    },
+    {
+     "id": "1-o",
+     "text": "페루자는 그림을 집 안의 이중 바닥 나무 트렁크에 숨겨 두었다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "the 29-year-old had stashed it in his home in a wood trunk with a false bottom",
+     "newDoc": false
+    },
+    {
+     "id": "1-p",
+     "text": "루브르 전 직원인 페루자는 도난 사건으로 두 번 조사받았지만, 경찰은 그를 유력한 용의자로 보지 않았다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "he was questioned about the theft on two separate occasions, but police never considered him a serious suspect",
+     "newDoc": false
+    },
+    {
+     "id": "1-q",
+     "text": "페루자는 \"레오나르드\"라는 가명으로 피렌체의 미술상 알프레도 제리에게 편지를 보내, 자기가 모나리자를 훔쳤으며 이탈리아로 돌려보내고 싶다고 알렸다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Using the alias \"Leonard,\" he sent a letter to a Florentine art dealer named Alfredo Geri and informed him that he had stolen the \"Mona Lisa\" and wanted to repatriate it to Italy.",
+     "newDoc": false
+    },
+    {
+     "id": "1-r",
+     "text": "며칠 뒤 페루자의 호텔 방에 세 사람이 모였고, 페루자는 붉은 비단에 싼 물건을 꺼내 보였다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "A few days later, the three men gathered in Peruggia's hotel room, where he produced a mysterious object wrapped in red silk.",
+     "newDoc": false
+    },
+    {
+     "id": "1-s",
+     "text": "그림 뒷면의 도장이 진품임을 확인해 주었다.",
+     "site": "NPR",
+     "title": "The Theft That Made The 'Mona Lisa' A Masterpiece",
+     "year": 2011,
+     "url": "https://www.npr.org/2011/07/30/138800110/the-theft-that-made-the-mona-lisa-a-masterpiece",
+     "quote": "A stamp on the back confirmed its authenticity.",
+     "newDoc": false
+    },
+    {
+     "id": "1-t",
+     "text": "피렌체의 두 사람은 그림을 살 생각이 없었고, 진품인지 확인한 뒤 도둑을 당국에 신고했다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Instead, after having the portrait authenticated, they reported the thief to the authorities.",
+     "newDoc": false
+    },
+    {
+     "id": "1-u",
+     "text": "모나리자는 이탈리아를 잠시 순회한 뒤 1914년 1월 루브르로 돌아갔다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "After a brief tour through Da Vinci's homeland, the \"Mona Lisa\" was finally returned to the Louvre in January 1914.",
+     "newDoc": false
+    },
+    {
+     "id": "1-v",
+     "text": "페루자의 믿음은 틀린 것이었다 — 다빈치가 1516년에 그림을 프랑스로 가져왔고 프랑수아 1세가 나중에 정당하게 사들였다. 그래도 애국심을 내세운 변론 덕에 그를 좋아하는 사람이 많이 생겼다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "Peruggia was mistaken—Da Vinci had brought the \"Mona Lisa\" to France in 1516, and King Francois I had later purchased it legally—but the patriotic defense won him legions of admirers.",
+     "newDoc": false
+    },
+    {
+     "id": "1-w",
+     "text": "페루자는 징역 1년 15일을 선고받았지만 항소로 풀려나기까지 7개월만 복역했다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "In the end, he was sentenced to one year and 15 days in prison but served just seven months before winning his release on appeal.",
+     "newDoc": false
+    },
+    {
+     "id": "1-x",
+     "text": "루브르로 돌아온 뒤 첫 이틀 동안 적어도 12만 명이 그림을 보러 왔다.",
+     "site": "HISTORY",
+     "title": "The Heist that Made the 'Mona Lisa' Famous",
+     "year": 2016,
+     "url": "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous",
+     "quote": "At least 120,000 people went to see the painting in the first two days after it was returned to the Louvre.",
+     "newDoc": false
+    },
+    {
+     "id": "1-y",
+     "text": "루브르 소장품 설명도, 1911년 루브르의 유리공 페루자가 저지른 절도가 이 그림에 세계적이고 무엇보다 더 대중적인 명성을 주었다고 적는다.",
+     "site": "Musée du Louvre (collections.louvre.fr)",
+     "title": "Portrait de Lisa Gherardini, épouse de Francesco del Giocondo, dit La Joconde ou Monna Lisa",
+     "year": null,
+     "url": "https://collections.louvre.fr/en/ark:/53355/cl010062370",
+     "quote": "Le vol de l'œuvre par Vincenzo Peruggia, ouvrier vitrier au musée du Louvre, en 1911, lui a donné une célébrité mondiale et surtout plus populaire.",
+     "newDoc": false
+    }
+   ],
+   "conflict": "① 범인 수와 방법: HISTORY 는 한 남자가 흰 앞치마 아래에 숨겨 나왔다고 쓰고, NPR 은 \"이탈리아인 잡역부 세 명\"(페루자 + 란첼로티 형제)이 담요로 덮어 들고 나와 7시 47분 기차를 탔다고 쓴다. Britannica 는 \"그와 어쩌면 다른 두 일꾼\"이라고 적는다 → 지금 대본처럼 페루자를 주어로 쓰되 \"혼자\"라고 못 박지 않는다. 벽장에서 밤을 새운 것은 세 문서가 같다. ② 피카소 · 아폴리네르: Britannica 는 둘 다 \"용의자로 체포됐다\", HISTORY 는 아폴리네르만 체포되고 둘 다 \"조사받았다\", NPR 은 피카소가 \"조사받았다\" → \"의심받아 조사를 받았다\" 굵기가 안전하다. ③ 되찾은 과정: HISTORY 는 페루자가 호텔 방에서 그림을 꺼내 보였다고 하고, Britannica 는 경찰이 그의 트렁크 이중 바닥에서 찾았다고 하며, NPR 은 그림을 맡기고 돌아간 지 30분 만에 경찰이 왔다고 한다. 편지 시점도 HISTORY 본문은 1913년 12월, HISTORY \"이날의 역사\"는 11월이고 가명도 Leonard / Leonardo 로 다르다. 되찾은 날은 HISTORY 가 체포 12월 11일, 의회도서관 연표는 12월 12일 → 날짜 없이 \"2년여 만에 피렌체에서\"까지. 값도 HISTORY 본문 \"50만 리라\" · HISTORY 이날의 역사 \"거액의 몸값\" · NPR \"보상\"으로 달라 금액은 쓰지 않는 편이 안전하다. ④ 형량: HISTORY · 의회도서관은 1년 15일 선고, HISTORY 는 7개월 복역, NPR 은 \"8개월 형\" → \"1년 남짓한 형을 받았지만 몇 달 만에 풀려났다\" 굵기. ⑤ 동기: 본인은 애국심을 주장했지만 HISTORY 는 팔아서 돈을 벌려 한 증거가 재판에 나왔다고 적는다 → \"그의 주장\"으로만 쓴다(지금 대본과 같음). ⑥ 처음 알아챈 사람: HISTORY \"방문한 화가\" · NPR \"정물 화가\" · HISTORY 이날의 역사 \"아마추어 화가\" → \"한 화가\"까지. 걸린 시간은 HISTORY \"하루 넘게\", NPR \"28시간\". ⑦ 도난 전의 유명세: NPR 은 \"미술계 밖에는 널리 알려지지 않았다\"고 하지만 HISTORY 이날의 역사는 도난 당시를 두고 \"세계에서 가장 유명한 그림\"이라는 표현을 쓴다 → \"지금처럼 누구나 아는 그림은 아니었다\" 굵기.",
+   "storyOrder": [
+    "1-a",
+    "1-b",
+    "1-c",
+    "1-d",
+    "1-e",
+    "1-f",
+    "1-g",
+    "1-h",
+    "1-i",
+    "1-j",
+    "1-k",
+    "1-l",
+    "1-m",
+    "1-n",
+    "1-o",
+    "1-p",
+    "1-q",
+    "1-r",
+    "1-s",
+    "1-t",
+    "1-u",
+    "1-v",
+    "1-w",
+    "1-x",
+    "1-y"
+   ]
+  },
+  {
+   "no": 2,
+   "answer": "버그",
+   "gaps": [
+    "많은 사람이 \"나방 때문에 버그라는 말이 생겼다 · 그레이스 호퍼가 만든 말\"이라고 알고 있다는 것(해설을 여는 반전)",
+    "나방이 발견된 날짜와 자리(1947년 9월 9일 · 70번 릴레이)",
+    "호퍼는 발견하거나 적은 사람이 아니고, 그 이야기를 널리 알린 사람이라는 것",
+    "에디슨이 그 말을 쓰게 된 사연(4중 전신기 · \"버그 트랩\")과 편지 속 농담",
+    "그 말이 에디슨의 연구실 밖으로 퍼진 과정(기자들의 기사 · 1892년 전기 사전)",
+    "나방이 붙은 일지가 그 뒤 어디에 있었는지"
+   ],
+   "facts": [
+    {
+     "id": "2-a",
+     "text": "해군 제독이자 컴퓨터 과학자인 그레이스 호퍼가 하버드 마크 II 사건 뒤에 \"버그\"와 \"디버그\"라는 말을 만들었다는 이야기가 흔히 되풀이된다.",
+     "site": "Computerworld",
+     "title": "Moth in the machine: Debugging the origins of 'bug'",
+     "year": 2011,
+     "url": "https://www.computerworld.com/article/1537941",
+     "quote": "It's an oft-repeated tale that the grand dame of military computing, computer scientist and U.S. Navy Rear Admiral Grace Hopper, coined the terms bug and debug after an incident involving Harvard University's Mark II calculator.",
+     "newDoc": false
+    },
+    {
+     "id": "2-b",
+     "text": "그러나 호퍼는 릴레이 속 나방 이야기를 자주 했을 뿐, 나방을 발견한 사람도 일지에 적은 사람도 아니었다.",
+     "site": "Computerworld",
+     "title": "Moth in the machine: Debugging the origins of 'bug'",
+     "year": 2011,
+     "url": "https://www.computerworld.com/article/1537941",
+     "quote": "And although Grace Hopper often talked about the moth in the relay, she did not make the discovery or the log entry.",
+     "newDoc": false
+    },
+    {
+     "id": "2-c",
+     "text": "1947년 9월 9일, 하버드 마크 II 컴퓨터의 릴레이 접점 사이에 나방이 끼어 있는 것을 과학자 · 기술자 팀이 보고했다.",
+     "site": "Computer History Museum",
+     "title": "September 9: First Instance of Actual Computer Bug Being Found (This Day in History)",
+     "year": null,
+     "url": "https://www.computerhistory.org/tdih/september/9/",
+     "quote": "On September 9, 1947, a team of computer scientists and engineers reported a moth caught between the relay contacts of the Harvard Mark II computer in Cambridge, Massachusetts.",
+     "newDoc": true
+    },
+    {
+     "id": "2-d",
+     "text": "나방은 시험 중이던 마크 II 의 패널 F, 70번 릴레이 접점 사이에 끼어 있었다.",
+     "site": "U.S. Naval History and Heritage Command",
+     "title": "NH 96566-KN The First \"Computer Bug\"",
+     "year": null,
+     "url": "https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-96000/NH-96566-KN.html",
+     "quote": "Moth found trapped between points at Relay # 70, Panel F, of the Mark II Aiken Relay Calculator while it was being tested at Harvard University, 9 September 1947.",
+     "newDoc": true
+    },
+    {
+     "id": "2-e",
+     "text": "프로그래머 그레이스 호퍼는 그 자리에 있었고, 훗날 여러 공개 강연에서 이 일을 이야기해 유명하게 만들었다.",
+     "site": "Computer History Museum",
+     "title": "September 9: First Instance of Actual Computer Bug Being Found (This Day in History)",
+     "year": null,
+     "url": "https://www.computerhistory.org/tdih/september/9/",
+     "quote": "Programmer Grace Hopper -- a CHM Fellow (1987) -- was present and made the incident famous later on in her many public lectures.",
+     "newDoc": true
+    },
+    {
+     "id": "2-f",
+     "text": "흔히 전해지는 이야기는 날짜를 1945년으로 말하지만, 마크 II 는 1947년 여름에야 가동됐다.",
+     "site": "Computerworld",
+     "title": "Moth in the machine: Debugging the origins of 'bug'",
+     "year": 2011,
+     "url": "https://www.computerworld.com/article/1537941",
+     "quote": "For one thing, Harvard's Mark II came online in summer of 1947, two years after the date attributed to this story.",
+     "newDoc": false
+    },
+    {
+     "id": "2-g",
+     "text": "에디슨이 훗날 \"버그\"라고 부른 문제를 처음 만난 것은 1873년, 전선 하나로 전보 네 통을 동시에 주고받는 4중 전신기를 개발하기 시작했을 때였다.",
+     "site": "IEEE Spectrum",
+     "title": "Did You Know? Edison Coined the Term \"Bug\"",
+     "year": 2013,
+     "url": "https://spectrum.ieee.org/did-you-know-edison-coined-the-term-bug",
+     "quote": "In 1873 Edison first confronted what he later called a bug when he began developing a quadruplex telegraph system to transmit and receive up to four separate telegrams on a single wire simultaneously.",
+     "newDoc": true
+    },
+    {
+     "id": "2-h",
+     "text": "에디슨은 원치 않는 신호 끊김을 따로 떼어 놓는 장치를 만들었고, 나중에 이것을 \"버그 트랩(벌레 덫)\"이라고 불렀다.",
+     "site": "IEEE Spectrum",
+     "title": "Did You Know? Edison Coined the Term \"Bug\"",
+     "year": 2013,
+     "url": "https://spectrum.ieee.org/did-you-know-edison-coined-the-term-bug",
+     "quote": "Edison worked around this by building what he later called a \"bug trap\" to isolate the unwanted break",
+     "newDoc": true
+    },
+    {
+     "id": "2-i",
+     "text": "1878년 3월 에디슨은 웨스턴 유니언 사장 윌리엄 오턴에게 보낸 편지에서, 장치에서 \"버그\"를 찾았는데 전화기 본체에 있던 것은 아니라며 벌레의 학명처럼 \"callbellum 속(屬)\"이라고 농담했다.",
+     "site": "IEEE Spectrum",
+     "title": "Did You Know? Edison Coined the Term \"Bug\"",
+     "year": 2013,
+     "url": "https://spectrum.ieee.org/did-you-know-edison-coined-the-term-bug",
+     "quote": "I did find a 'bug' in my apparatus, but it was not in the telephone proper. It was of the genus 'callbellum.'",
+     "newDoc": true
+    },
+    {
+     "id": "2-j",
+     "text": "같은 해 11월에는 테오도르 푸스카스에게, 발명을 떠올린 뒤 어려움이 생기고 뜻밖의 일이 벌어지는 과정에 대해 편지를 썼다(대본이 인용한 \"버그\" 편지).",
+     "site": "IEEE Spectrum",
+     "title": "Did You Know? Edison Coined the Term \"Bug\"",
+     "year": 2013,
+     "url": "https://spectrum.ieee.org/did-you-know-edison-coined-the-term-bug",
+     "quote": "And in November of that year he wrote to Thedore Puskas about what happens after conceiving an invention, when difficulties arise and the unexpected occurs",
+     "newDoc": true
+    },
+    {
+     "id": "2-k",
+     "text": "에디슨의 연구 노트에는 \"아직도 버그가 지독하게 많다\"는 메모도 있었다.",
+     "site": "IEEE Spectrum",
+     "title": "Did You Know? Edison Coined the Term \"Bug\"",
+     "year": 2013,
+     "url": "https://spectrum.ieee.org/did-you-know-edison-coined-the-term-bug",
+     "quote": "Awful lot of bugs still.",
+     "newDoc": true
+    },
+    {
+     "id": "2-l",
+     "text": "1889년 영국의 한 신문 기자는 이 말을, 상상 속의 벌레가 기계 안에 숨어 온갖 말썽을 일으킨다는 뜻이 담긴 표현이라고 풀이했다.",
+     "site": "IEEE Spectrum",
+     "title": "Did You Know? Edison Coined the Term \"Bug\"",
+     "year": 2013,
+     "url": "https://spectrum.ieee.org/did-you-know-edison-coined-the-term-bug",
+     "quote": "an expression for solving a difficulty, and implying that some imaginary insect has secreted itself inside and is causing all the trouble.",
+     "newDoc": true
+    },
+    {
+     "id": "2-m",
+     "text": "1892년에는 토머스 슬론의 「표준 전기 사전」이 에디슨의 용어를 표준으로 실었다.",
+     "site": "IEEE Spectrum",
+     "title": "Did You Know? Edison Coined the Term \"Bug\"",
+     "year": 2013,
+     "url": "https://spectrum.ieee.org/did-you-know-edison-coined-the-term-bug",
+     "quote": "Author and engineer Thomas Sloane standardized Edison's terms in his 1892 Standard Electrical Dictionary",
+     "newDoc": true
+    },
+    {
+     "id": "2-n",
+     "text": "말의 뿌리를 따지는 사람들은 bug 를 괴물을 뜻하던 옛말로 거슬러 올라가 찾는다 — bugaboo · bugbear 같은 말에 남아 있는 그 말이다.",
+     "site": "Computerworld",
+     "title": "Moth in the machine: Debugging the origins of 'bug'",
+     "year": 2011,
+     "url": "https://www.computerworld.com/article/1537941",
+     "quote": "Word nerds trace the word bug to an old term for a monster — it's a word that has survived in obscure terms like bugaboo and bugbear",
+     "newDoc": false
+    },
+    {
+     "id": "2-o",
+     "text": "미 해군 사진 설명은, 운영자들이 기계를 \"디버그했다\"는 말을 퍼뜨렸다고 적는다.",
+     "site": "U.S. Naval History and Heritage Command",
+     "title": "NH 96566-KN The First \"Computer Bug\"",
+     "year": null,
+     "url": "https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-96000/NH-96566-KN.html",
+     "quote": "They put out the word that they had debugged the machine",
+     "newDoc": true
+    },
+    {
+     "id": "2-p",
+     "text": "1988년에 이 일지는 나방이 그대로 붙은 채 버지니아주 달그렌의 해군 수상전센터 컴퓨터 박물관에 있었다.",
+     "site": "U.S. Naval History and Heritage Command",
+     "title": "NH 96566-KN The First \"Computer Bug\"",
+     "year": null,
+     "url": "https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-96000/NH-96566-KN.html",
+     "quote": "In 1988, the log, with the moth still taped by the entry, was in the Naval Surface Warfare Center Computer Museum at Dahlgren, Virginia.",
+     "newDoc": true
+    }
+   ],
+   "conflict": "① 누가 말을 만들었나: IEEE Spectrum 은 에디슨이 이 말을 \"만들었다(coined)\"고 하고 Computer History Museum 도 \"에디슨에게서 비롯됐다\"고 하지만, Computerworld 는 발명가 · 기술자들이 나방 사건보다 \"한 세기 넘게 전부터\" 버그를 말했다고 쓴다(에디슨보다 앞선다는 뜻이 됨) → \"에디슨이 처음 만들었다\"고 하지 말고 \"에디슨이 1870년대부터 썼고 널리 퍼뜨렸다 · 나방보다 훨씬 전부터 쓰이던 말\"까지. 어원도 Computerworld 는 \"괴물을 뜻하던 옛말\"이라 하지만 Merriam-Webster 는 벌레 · 결함을 뜻하는 bug 의 어원을 \"origin unknown\"으로 적는다(도깨비 뜻의 bugge 는 따로 실린 다른 명사) → 어원(2-n)은 \"~라는 풀이도 있다\" 굵기이거나 빼는 편이 안전하다. ② 푸스카스 편지: Computerworld 는 \"1878년\"만, IEEE Spectrum 은 \"1878년 11월\"이라 하고, 인용문의 글자도 조금 다르다(Bugs · intense watching ↔ Bug · anxious watching) → \"1878년 편지\"까지, 편지 문장은 뜻만 옮긴다(지금 대본과 같음). ③ 호퍼의 역할: Computerworld 는 호퍼가 발견도 기록도 하지 않았다고, Computer History Museum 은 \"팀원 한 사람이 적었고 호퍼는 그 자리에 있었다\"고, IEEE Spectrum 은 \"기술자가 나방을 찾은 뒤 호퍼와 직원들이 버그라는 말을 썼다\"고 쓴다. 이번에 근거로 삼지 않은 글(Atlas Obscura 2018)에는 호퍼가 직접 붙이고 적었다는 판본도 있다 → 호퍼를 발견자 · 기록자로 쓰지 않는다. \"그 자리에 있었고 강연으로 유명하게 만들었다\"는 Computer History Museum 한 문서의 말이다. ④ \"디버깅\": 해군 사진 설명은 이 일로 \"디버깅이라는 말이 도입됐다\"고 이어 쓰지만, Computerworld 는 호퍼 때 생긴 말이라는 이야기 자체를 틀린 것으로 본다 → \"디버깅이 여기서 생겼다\"고 쓰지 않는다(2-o 는 \"디버그했다고 말했다\"까지만). ⑤ 일지가 지금 있는 곳: 장부에 있던 스미스소니언 소장품 페이지(americanhistory.si.edu · si.edu)는 오늘 자동 접속 확인 화면(403)만 내려와 원문을 다시 열지 못했다 → \"지금 스미스소니언에 있다\"는 이번 재료로는 받쳐지지 않는다. 받쳐지는 것은 \"1988년에 달그렌의 해군 박물관에 있었다\"(해군 사진 설명)뿐이다. ⑥ 날짜: 흔한 판본은 1945년 9월 9일, Computerworld · Computer History Museum · 해군은 1947년 9월 9일 → 1947년.",
+   "storyOrder": [
+    "2-a",
+    "2-c",
+    "2-d",
+    "2-b",
+    "2-e",
+    "2-f",
+    "2-g",
+    "2-h",
+    "2-i",
+    "2-j",
+    "2-k",
+    "2-l",
+    "2-m",
+    "2-n",
+    "2-o",
+    "2-p"
+   ]
+  },
+  {
+   "no": 3,
+   "answer": "감칠맛",
+   "gaps": [
+    "이케다가 어떤 사람이었고 무엇을 먹다가 궁금해졌는지",
+    "얼마나 오래 걸러 내어 무엇을 얻었는지(숫자) · 결정을 맛본 순간",
+    "다시마 말고 어떤 음식에 그 맛이 있는지 · 사람은 왜 그 맛을 느끼는지(단백질 신호)",
+    "발견을 어떻게 썼는지 — 조미료 아지노모토(MSG)와 그 동기 · 누가 팔았는지",
+    "서양 과학계가 오랫동안 받아들이지 않다가 다섯 번째 기본 맛으로 인정한 과정 · 혀의 수용체 발견",
+    "오늘날 얼마나 쓰이는지"
+   ],
+   "facts": [
+    {
+     "id": "3-a",
+     "text": "이케다는 좋아하는 음식인 다시 국물을 먹다가 \"이 국물은 무슨 맛이지?\" 하고 스스로 물었다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "Kikunae Ikeda, a Japanese chemist, asked himself this question while eating one of his favorite dishes, a broth called dashi.",
+     "newDoc": false
+    },
+    {
+     "id": "3-b",
+     "text": "아지노모토사는 이 발견이 다시마 국물에 끓인 두부 한 그릇에서 시작됐다고 적는다.",
+     "site": "Ajinomoto Group Global Website",
+     "title": "History | About the Ajinomoto Group",
+     "year": null,
+     "url": "https://www.ajinomoto.com/aboutus/history",
+     "quote": "Our journey of discovery began with a bowl of boiled tofu in kombu dashi",
+     "newDoc": true
+    },
+    {
+     "id": "3-c",
+     "text": "이케다는 대학 학비를 마련하려고 침대를 팔아야 했고, 용돈을 벌려고 영어로 셰익스피어 수업을 했다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "He had to sell his bed to scratch together enough money for college, and he taught classes on Shakespeare, in English, for spare cash.",
+     "newDoc": false
+    },
+    {
+     "id": "3-d",
+     "text": "그는 졸인 다시마에서 몇 달에 걸쳐 여러 염과 유기 화합물을 걸러 냈고, 끝내 갈색 결정 1온스를 얻었다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "He then stripped out various salts and organic compounds over the next few months until he'd harvested a single ounce of brown crystals.",
+     "newDoc": false
+    },
+    {
+     "id": "3-e",
+     "text": "우마미 인포메이션 센터는 다시마 12킬로그램에서 글루탐산 30그램이 나왔다고 적는다.",
+     "site": "Umami Information Center",
+     "title": "What is Umami",
+     "year": null,
+     "url": "https://www.umamiinfo.com/what/whatisumami/",
+     "quote": "12 kilograms of kombu yielded 30 grams of glutamate",
+     "newDoc": false
+    },
+    {
+     "id": "3-f",
+     "text": "결정은 모래알처럼 보였지만, 하나를 맛보자 말로 하기 어렵던 그 다시 국물 맛이 입안에서 터졌다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "That ineffable dashi flavor exploded in his mouth.",
+     "newDoc": false
+    },
+    {
+     "id": "3-g",
+     "text": "이케다는 그 뒤 고기와 생선, 치즈(특히 파르메산), 심지어 모유에도 글루탐산이 많다는 것을 찾아냈다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "Sure enough, he found high concentrations in meat and fish; cheeses, especially parmesan cheese; and even breast milk.",
+     "newDoc": false
+    },
+    {
+     "id": "3-h",
+     "text": "글루탐산은 단백질을 이루는 아미노산의 하나다(감칠맛은 단백질이 있다는 신호라는 설명).",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "Glutamate is an amino acid, one of the building blocks of proteins.",
+     "newDoc": false
+    },
+    {
+     "id": "3-i",
+     "text": "이케다는 독일 유학 때 독일 사람들의 체격과 건강에 감명받아, 일본 사람들의 영양을 좋게 하고 싶다는 바람을 품었다.",
+     "site": "Ajinomoto Group Global Website",
+     "title": "History | About the Ajinomoto Group",
+     "year": null,
+     "url": "https://www.ajinomoto.com/aboutus/history",
+     "quote": "The physiques and overall good health of the Germans impressed him and fostered a strong desire to improve the nutrition of the Japanese people.",
+     "newDoc": true
+    },
+    {
+     "id": "3-j",
+     "text": "이케다는 글루탐산으로 만든 조미료가 (밥과 채소 위주이던) 일본 사람들의 음식을 더 만족스러운 맛으로 해 주리라고 생각했다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "Ikeda thought that creating a seasoning based on glutamate would make their food taste more satisfying.",
+     "newDoc": false
+    },
+    {
+     "id": "3-k",
+     "text": "그 조미료 아지노모토가 오늘날 우리가 MSG(글루탐산나트륨)라고 부르는 것이다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "Today we know Ajinomoto by a different name, monosodium glutamate, or MSG.",
+     "newDoc": false
+    },
+    {
+     "id": "3-l",
+     "text": "상업 생산은 이케다의 부탁을 받은 스즈키 사부로스케(아지노모토사의 창업자)가 맡았다.",
+     "site": "Japan Patent Office",
+     "title": "Kikunae Ikeda: Sodium Glutamate (Ten Japanese Great Inventors)",
+     "year": 2002,
+     "url": "https://www.jpo.go.jp/e/introduction/rekishi/10hatsumeika/kikunae_ikeda.html",
+     "quote": "Commercial production of this monosodium glutamate was carried out by Saburosuke Suzuki, the founder of Ajinomoto Co., Inc., under request from Kikunae Ikeda.",
+     "newDoc": true
+    },
+    {
+     "id": "3-m",
+     "text": "스즈키는 1909년에 아지노모토를 팔기 시작했고, 아지노모토사는 이를 \"세계 최초의 감칠맛 조미료\"라고 부른다.",
+     "site": "Ajinomoto Group Global Website",
+     "title": "History | About the Ajinomoto Group",
+     "year": null,
+     "url": "https://www.ajinomoto.com/aboutus/history",
+     "quote": "the world's first umami seasoning",
+     "newDoc": true
+    },
+    {
+     "id": "3-n",
+     "text": "한국민족문화대백과사전에 따르면 아지노모토는 맛이 너무 신비로워 한때 뱀가루라는 오해를 받기도 했다.",
+     "site": "한국민족문화대백과사전",
+     "title": "조미료",
+     "year": 1995,
+     "url": "https://encykorea.aks.ac.kr/Article/E0051764",
+     "quote": "너무나 신비로운 감칠맛이기에 한때 뱀가루라는 오해를 받은 적도 있었다.",
+     "newDoc": false
+    },
+    {
+     "id": "3-o",
+     "text": "이케다의 제자 고다마 신타로는 1913년에 가다랑어포의 감칠맛 성분이 이노신산임을 밝혔다.",
+     "site": "Umami Information Center",
+     "title": "What is Umami",
+     "year": null,
+     "url": "https://www.umamiinfo.com/what/whatisumami/",
+     "quote": "1913 Shintaro Kodama, Professor Ikeda's leading disciple, identifies the nucleotide inosinate as the umami component of katsuobushi (dried bonito flakes).",
+     "newDoc": false
+    },
+    {
+     "id": "3-p",
+     "text": "감칠맛 물질 세 가지를 일본 과학자들이 찾아냈지만, 유럽과 미국에서는 오랫동안 감칠맛을 인정하지 않았다.",
+     "site": "BioMed Research International (PubMed Central)",
+     "title": "Umami the Fifth Basic Taste: History of Studies on Receptor Mechanisms and Role as a Food Flavor",
+     "year": 2015,
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4515277/",
+     "quote": "umami has not been recognized in Europe and America for a long time",
+     "newDoc": true
+    },
+    {
+     "id": "3-q",
+     "text": "감칠맛 물질은 그저 \"풍미 증진제\"로 여겨졌다.",
+     "site": "BioMed Research International (PubMed Central)",
+     "title": "Umami the Fifth Basic Taste: History of Studies on Receptor Mechanisms and Role as a Food Flavor",
+     "year": 2015,
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4515277/",
+     "quote": "Umami substances have been considered to be \"flavor enhancer.\"",
+     "newDoc": true
+    },
+    {
+     "id": "3-r",
+     "text": "감칠맛을 연구하던 일본 과학자들이 만든 단체가 하와이 등지에서 국제 심포지엄을 열었다.",
+     "site": "BioMed Research International (PubMed Central)",
+     "title": "Umami the Fifth Basic Taste: History of Studies on Receptor Mechanisms and Role as a Food Flavor",
+     "year": 2015,
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4515277/",
+     "quote": "This organization held international umami symposiums in Hawaii",
+     "newDoc": true
+    },
+    {
+     "id": "3-s",
+     "text": "1900년대 후반에 이르러 감칠맛은 여러 연구를 바탕으로 다섯 번째 기본 맛으로 국제적인 인정을 받았다.",
+     "site": "BioMed Research International (PubMed Central)",
+     "title": "Umami the Fifth Basic Taste: History of Studies on Receptor Mechanisms and Role as a Food Flavor",
+     "year": 2015,
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4515277/",
+     "quote": "In the late 1900s, umami was internationally recognized as the fifth basic taste based on psychophysical, electrophysiological, and biochemical studies.",
+     "newDoc": true
+    },
+    {
+     "id": "3-t",
+     "text": "2000년대 초에 과학자들이 사람 혀에서 글루탐산 전용 수용체를 찾아내, 이케다의 통찰이 확실한 근거를 얻었다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "Scientists in the early 2000s finally put Ikeda's insight onto firm footing by locating specialized glutamate receptors on the human tongue.",
+     "newDoc": false
+    },
+    {
+     "id": "3-u",
+     "text": "오늘날 MSG 는 세계에서 한 해 50억 파운드, 한 사람에 1파운드 가까이 소비된다.",
+     "site": "Science History Institute (Distillations magazine)",
+     "title": "The Science of Satisfaction",
+     "year": 2015,
+     "url": "https://www.sciencehistory.org/stories/magazine/the-science-of-satisfaction/",
+     "quote": "human beings consume five billion pounds per year around the globe, nearly a pound per person",
+     "newDoc": false
+    }
+   ],
+   "conflict": "① 연도: Science History Institute 는 1907년에 다시마를 졸이기 시작했다고, 우마미 인포메이션 센터 · 일본 특허청 · 아지노모토 · PMC 논문은 1908년에 밝혔다(발견 · 발명)고 쓴다. PMC 논문은 \"1908년에 시작해 같은 해에 밝혔다\"고 적어 1907년 시작과 어긋나고, 사이언스타임즈는 MSG 가 \"1907년 개발됐다\"고 쓴다 → 연도를 쓰려면 \"1908년에 밝혔다\"까지, 시작한 해는 쓰지 않는다. ② 다시마 양: Science History Institute 는 90파운드(약 40킬로그램)를 졸여 결정 1온스(약 28그램)를, 우마미 인포메이션 센터 · PMC 논문은 12킬로그램(PMC 는 \"마른 다시마\")에서 30그램을 얻었다고 한다 → 얻은 양 \"30그램쯤\"은 서로 맞지만 다시마 양은 어긋나므로 \"많은 다시마에서 고작 30그램쯤\" 굵기가 안전하다. ③ 계기: Science History Institute 는 \"다시 국물\", 아지노모토는 \"다시마 국물에 끓인 두부\" → 지금 대본의 \"다시마 국물\"은 둘 다와 맞는다. ④ 누가 상품으로 만들었나: Science History Institute 는 이케다가 직접 상업화에 나서 이름도 지었다고 쓰고, 일본 특허청 · 아지노모토는 스즈키 사부로스케가 생산 · 판매를 맡았다고 쓴다 → \"이케다가 조미료 만드는 법을 고안했고 스즈키가 아지노모토라는 이름으로 팔았다\" 굵기. 출시 시점도 Science History Institute \"1909년 3월까지 결정을 얻었다\" · 아지노모토 \"1909년 판매 시작\" · 한국민족문화대백과 \"1908년 제조가 발명\" · 사이언스타임즈 \"발견한 이듬해 생산\"으로 조금씩 다르다 → \"이듬해(1909년) 팔기 시작\" 굵기. ⑤ 이름의 뜻: 우마미를 Science History Institute 는 \"scrumptiousness\", 일본 특허청은 umai = \"delicious\"로 옮기고, 아지노모토의 뜻도 Science History Institute \"at the origin of flavor\" · 사이언스타임즈 \"맛의 정수\"로 다르다 → 뜻풀이는 한 문서의 번역임을 알고 쓴다. ⑥ 인정 시기: PMC 논문은 \"1900년대 후반에 국제적으로 인정\", 수용체는 Science History Institute \"2000년대 초\" · 아지노모토 \"2000년 마이애미대 연구진 보고\" → 특정 연도(1985 · 2002 등)는 이번에 연 문서에 없으니 쓰지 않는다. 단체가 만들어진 해(PMC \"1982년\")는 문서 하나뿐이다. ⑦ 이케다의 소속: 사이언스타임즈는 \"물리학과 교수\"라고 쓰지만 다른 문서는 모두 화학(물리화학) 교수 → 화학자. ⑧ 유학 연도: 아지노모토는 \"1899년 독일 유학\"이라고 적는다(문서 하나뿐 → 연도는 빼도 된다).",
+   "storyOrder": [
+    "3-c",
+    "3-a",
+    "3-b",
+    "3-d",
+    "3-e",
+    "3-f",
+    "3-g",
+    "3-h",
+    "3-i",
+    "3-j",
+    "3-l",
+    "3-k",
+    "3-m",
+    "3-n",
+    "3-o",
+    "3-p",
+    "3-q",
+    "3-r",
+    "3-s",
+    "3-t",
+    "3-u"
+   ]
+  },
+  {
+   "no": 4,
+   "answer": "배면뛰기",
+   "gaps": [
+    "그때의 표준 자세(스트래들 · 벨리 롤)와 포스베리가 그것을 못 익혔다는 출발점",
+    "새 자세로 기록이 얼마나 뛰었는지",
+    "고등학교 · 대학 코치가 모두 말렸다는 것(세단뛰기를 권한 일화)",
+    "\"포스베리 플롭\"이라는 이름",
+    "1968년 올림픽 당일의 전개(우승 후보가 아니었음 · 3차 시기 · 8만 관중의 반응)",
+    "비웃음과 비판(소련 브루멜의 \"일탈\" · 안전 논란)",
+    "얼마나 빨리 퍼졌는지(1972년 40명 중 28명 · 마지막 스트래들 선수 1988년)",
+    "그 뒤의 포스베리와, 같은 때 같은 자세를 만든 데비 브릴"
+   ],
+   "facts": [
+    {
+     "id": "4-a",
+     "text": "고등학교 코치는 포스베리에게 당시 높이뛰기의 표준이던 \"스트래들(벨리 롤)\"을 쓰라고 밀어붙였다.",
+     "site": "USA Track & Field",
+     "title": "Dick Fosbury",
+     "year": null,
+     "url": "https://www.usatf.org/athlete-bios/dick-fosbury",
+     "quote": "until his high school coach pressed him to use the \"straddle,\" or \"belly roll,\" which was then the high-jumping norm",
+     "newDoc": false
+    },
+    {
+     "id": "4-b",
+     "text": "스트래들을 끝내 익히지 못한 포스베리는 가위뛰기로 돌아갔고, 그것을 바를 등지고 넘는 식으로 바꿨다.",
+     "site": "USA Track & Field",
+     "title": "Dick Fosbury",
+     "year": null,
+     "url": "https://www.usatf.org/athlete-bios/dick-fosbury",
+     "quote": "Failing to master the straddle, Fosbury reverted to a scissors, then modified by going over the bar backward.",
+     "newDoc": false
+    },
+    {
+     "id": "4-c",
+     "text": "포스베리는 열여섯 살에 이 자세를 만들기 시작했다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Dick Fosbury",
+     "year": null,
+     "url": "https://www.britannica.com/biography/Dick-Fosbury",
+     "quote": "He began to develop his backward flop style at age 16 and found it effective.",
+     "newDoc": false
+    },
+    {
+     "id": "4-d",
+     "text": "새 자세를 대회에서 처음 써 본 날, 기록이 5피트 4인치에서 5피트 10인치로 뛰었다.",
+     "site": "Track & Field News",
+     "title": "Dick Fosbury — High Jump History's Revolutionary",
+     "year": 2023,
+     "url": "https://trackandfieldnews.com/article/dick-fosbury-high-jump-historys-revolutionary/",
+     "quote": "The first time he tried this wrinkle in a meet, he went from 5-4 to 5-10.",
+     "newDoc": false
+    },
+    {
+     "id": "4-e",
+     "text": "오리건 주립대 코치 버니 와그너도 자세를 되돌리려 했고, 아예 세단뛰기를 해 보라고 권하기까지 했다.",
+     "site": "Track & Field News",
+     "title": "Dick Fosbury — High Jump History's Revolutionary",
+     "year": 2023,
+     "url": "https://trackandfieldnews.com/article/dick-fosbury-high-jump-historys-revolutionary/",
+     "quote": "I even suggested to Dick that he try the triple jump!",
+     "newDoc": false
+    },
+    {
+     "id": "4-f",
+     "text": "포스베리는 코치의 말대로 여섯 달 동안 기존 자세를 시도해 봤다.",
+     "site": "Track & Field News",
+     "title": "Dick Fosbury — High Jump History's Revolutionary",
+     "year": 2023,
+     "url": "https://trackandfieldnews.com/article/dick-fosbury-high-jump-historys-revolutionary/",
+     "quote": "He agreed to try, though, and for six months experimented with the conventional style.",
+     "newDoc": false
+    },
+    {
+     "id": "4-g",
+     "text": "\"포스베리 플롭\"이라는 이름은 포스베리 자신이 신문 인터뷰에서 붙인 것이다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "a back-layout style he had dubbed the Fosbury Flop in a newspaper interview",
+     "newDoc": false
+    },
+    {
+     "id": "4-h",
+     "text": "포스베리는 멕시코시티에 메달 후보로 갔지만 우승 후보는 아니었다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "Fosbury had gone to Mexico City as a definite medal contender but hardly the favourite.",
+     "newDoc": false
+    },
+    {
+     "id": "4-i",
+     "text": "올림픽에서 코치와 경쟁 선수들은 그의 기술을 의심스럽게 봤지만, 관중은 새로운 자세에 사로잡혔다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Dick Fosbury",
+     "year": null,
+     "url": "https://www.britannica.com/biography/Dick-Fosbury",
+     "quote": "his technique was greeted with skepticism by coaches and competitors, but the audience was captivated by the novelty of his jumping style",
+     "newDoc": false
+    },
+    {
+     "id": "4-j",
+     "text": "육상 마지막 날 경기장을 메운 8만 관중이 모두 포스베리에게 사로잡혔다.",
+     "site": "Track & Field News",
+     "title": "Dick Fosbury — High Jump History's Revolutionary",
+     "year": 2023,
+     "url": "https://trackandfieldnews.com/article/dick-fosbury-high-jump-historys-revolutionary/",
+     "quote": "Fosbury had every one of 80,000 fans who jammed Estadio Olimpico on the final day of track competition, October 20, captivated.",
+     "newDoc": false
+    },
+    {
+     "id": "4-k",
+     "text": "세 번째 시기에 포스베리는 바를 넉넉히 넘었고, 초반부터 그를 응원하던 관중이 열광했다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "On his third attempt, Fosbury went over with a good inch or more of daylight between himself and the metal bar and the captivated crowd which had been cheering him since the early heights went wild.",
+     "newDoc": false
+    },
+    {
+     "id": "4-l",
+     "text": "한 독일 기자는 \"그물 없는 공중그네에서 세 바퀴 공중제비를 도는 것 말고는 이보다 짜릿한 게 없을 것\"이라고 했다.",
+     "site": "Track & Field News",
+     "title": "Dick Fosbury — High Jump History's Revolutionary",
+     "year": 2023,
+     "url": "https://trackandfieldnews.com/article/dick-fosbury-high-jump-historys-revolutionary/",
+     "quote": "Only a triple somersault off a flying trapeze with no net below could be more thrilling.",
+     "newDoc": false
+    },
+    {
+     "id": "4-m",
+     "text": "세계 기록 보유자 발레리 브루멜은 포스베리의 자세를 \"일탈\"이라고 했다고 당시 소련 신문에 실렸지만, 세계가 새 자세를 받아들이자 곧 생각을 바꿨다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "but he soon changed his mind after the world quickly started to embrace the new style",
+     "newDoc": false
+    },
+    {
+     "id": "4-n",
+     "text": "플롭이 안전한지를 두고 몇 해 동안 논란이 있은 뒤에 세계 표준 기술이 됐다.",
+     "site": "USA Track & Field",
+     "title": "Dick Fosbury",
+     "year": null,
+     "url": "https://www.usatf.org/athlete-bios/dick-fosbury",
+     "quote": "After several years of controversy over whether the \"Fosbury Flop\" was safe, it became the standard jumping technique worldwide.",
+     "newDoc": false
+    },
+    {
+     "id": "4-o",
+     "text": "다음 올림픽인 1972년에는 출전 선수 40명 가운데 28명이 그의 자세를 썼다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "By the next Olympics in 1972, 28 of the 40 competitors were using his style.",
+     "newDoc": false
+    },
+    {
+     "id": "4-p",
+     "text": "포스베리는 2012년에 \"금메달을 따면 한두 명쯤 따라 하겠거니 했지, 모두가 쓰는 기술이 될 줄은 생각도 못 했다\"고 말했다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "I thought that after I won the gold, one or two jumpers would start using it, but I never really contemplated that it would become the universal technique",
+     "newDoc": false
+    },
+    {
+     "id": "4-q",
+     "text": "포스베리의 말로는, 올림픽에 나온 마지막 스트래들 선수는 1988년 서울 대회 때였다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "jumper at the Olympics was in Seoul (in 1988).",
+     "newDoc": false
+    },
+    {
+     "id": "4-r",
+     "text": "포스베리는 멕시코시티 때보다 높이 뛴 적이 그 뒤로 없었다.",
+     "site": "World Athletics",
+     "title": "50 years since the day Dick Fosbury revolutionised the high jump",
+     "year": 2018,
+     "url": "https://worldathletics.org/competitions/heritage/news/dick-fosbury-flop",
+     "quote": "Fosbury never jumped higher than he jumped in Mexico City",
+     "newDoc": false
+    },
+    {
+     "id": "4-s",
+     "text": "포스베리는, 같은 무렵 같은 자세를 따로 만든 캐나다의 데비 브릴이 1968년에 대단한 해를 보냈다면 오늘 우리는 \"브릴 벤드\"를 말하고 플롭은 아무도 몰랐을지 모른다고 했다.",
+     "site": "Track & Field News",
+     "title": "Dick Fosbury — High Jump History's Revolutionary",
+     "year": 2023,
+     "url": "https://trackandfieldnews.com/article/dick-fosbury-high-jump-historys-revolutionary/",
+     "quote": "then maybe today we would talk about her 'Brill Bend' and nobody would have heard of the flop.",
+     "newDoc": false
+    },
+    {
+     "id": "4-t",
+     "text": "오늘날 정상급 높이뛰기 선수 가운데 다른 기술을 쓰는 사람은 없다.",
+     "site": "Track & Field News",
+     "title": "Dick Fosbury — High Jump History's Revolutionary",
+     "year": 2023,
+     "url": "https://trackandfieldnews.com/article/dick-fosbury-high-jump-historys-revolutionary/",
+     "quote": "no elite high jumper uses any other technique",
+     "newDoc": false
+    }
+   ],
+   "conflict": "① 기록의 이름: Britannica 는 2.24미터로 \"세계 기록을 깼다\"고 쓰지만, World Athletics · USATF · Track & Field News 는 \"올림픽 기록이자 미국 기록\"이라 하고 World Athletics 는 당시 세계 기록이 브루멜의 2.28미터였으며 포스베리가 2.29미터에 도전해 실패했다고 적는다 → \"올림픽 신기록(2미터 24)으로 금메달\"이 안전하다. 세계 기록이라고 쓰지 않는다. ② 원래 자세: USATF 는 가위뛰기 → 코치가 스트래들을 시킴 → 다시 가위뛰기를 고쳐 등으로 넘음, Track & Field News 의 1968년 기사는 \"옛 가위뛰기로 5피트 4인치에 머물다가\", 같은 글의 1989년 회고는 \"스트래들에 서툴러 최고 5피트 4인치\"라고 쓴다 → 지금 대본의 \"가위뛰기 자세를 바꾸다가\"는 USATF · 1968년 기사와 맞는다. 기록이 뛴 폭도 USATF 는 고교 시절 통틀어 1피트, Track & Field News 는 첫 대회에서 5피트 4인치 → 5피트 10인치 → 숫자를 쓰려면 \"처음 써 본 대회에서 15센티미터쯤\"(Track & Field News 한 문서) 굵기. ③ 고교 코치: USATF 는 스트래들을 쓰라고 밀어붙였다고, Track & Field News 는 되돌리려다 곧 새 자세가 낫다는 걸 알고 내버려 뒀다고 쓴다 → \"처음엔 말렸다\"까지. 대학 코치가 말린 것은 Britannica · Track & Field News 가 같다. ④ 매트: Britannica 는 모래를 대신한 푹신한 매트, World Athletics 는 \"전부 폼으로 된 매트\", Track & Field News 의 포스베리 말은 고교 때 톱밥 구덩이 → 설명출처-03 에 적힌 대로 \"모래\"와 \"톱밥\"이 한 문제 안에서 섞이지 않게 한다. ⑤ 올림픽 경기 전개: Britannica 는 \"첫날이 끝날 때까지 모든 높이를 1차 시기에 넘었고 다음 날 우승\"이라 하고, World Athletics 는 2.22미터까지 모두 1차 시기에 넘고 2.24미터에서 두 번 실패한 뒤 3차 시기에 성공했다고 쓴다(Track & Field News · USATF 도 3차 시기) → \"마지막 높이를 세 번째 시도에 넘었다\"는 세 문서가 받친다. ⑥ 브루멜의 \"일탈\" 발언은 World Athletics 가 \"소련 신문에 그렇게 인용됐다\"고 전하는 것이라 \"~했다고 전해진다\" 굵기. ⑦ 은퇴 사정: World Athletics 는 대학에서 토목공학 공부와 높이뛰기 가운데 고르라는 말을 듣고 공부를 택했다고 하지만, USATF · Britannica 는 1969년 대학 선수권 우승 · 1972년 올림픽 대표 탈락 · 1973년 프로 전향을 적는다 → \"올림픽 뒤 곧 그만뒀다\"고 쓰지 않는다. \"그 뒤로 더 높이 뛰지는 못했다\"(4-r)까지. ⑧ 명예의 전당 연도는 USATF 1992년 · Britannica 1993년으로 다르다 → 쓰지 않는다.",
+   "storyOrder": [
+    "4-a",
+    "4-b",
+    "4-c",
+    "4-d",
+    "4-e",
+    "4-f",
+    "4-g",
+    "4-h",
+    "4-i",
+    "4-j",
+    "4-k",
+    "4-l",
+    "4-m",
+    "4-n",
+    "4-o",
+    "4-p",
+    "4-q",
+    "4-r",
+    "4-s",
+    "4-t"
+   ]
+  },
+  {
+   "no": 5,
+   "answer": "이중 내륙국",
+   "gaps": [
+    "두 나라가 각각 어떤 나라들에 둘러싸여 있는지",
+    "내륙국이면 무엇이 불리한지(시간 · 비용 · 남의 나라를 거치는 번거로움)",
+    "같은 이중 내륙국인데 리히텐슈타인은 사정이 다르다는 것(부유한 이웃 · 스위스 프랑 · 관세 동맹)",
+    "우즈베키스탄이 옛 실크로드의 중심지였다는 배경",
+    "우즈베키스탄이 실제로 한 일(철도 2,500킬로미터 · 캄치크 터널 · 아프가니스탄 철도 · 파키스탄 항구까지 잇는 계획)",
+    "맺음에 쓸 덤 — 바다 없는 나라들의 해군"
+   ],
+   "facts": [
+    {
+     "id": "5-a",
+     "text": "리히텐슈타인은 유럽에서 오스트리아와 스위스에 둘러싸여 있고, 우즈베키스탄은 아시아에서 아프가니스탄 · 카자흐스탄 · 키르기스스탄 · 타지키스탄 · 투르크메니스탄과 맞닿아 있다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "The former is located in Europe and is surrounded by Austria and Switzerland, while the latter is in Asia and borders Afghanistan, Kazakhstan, Kyrgyzstan, Tajikistan, and Turkmenistan",
+     "newDoc": false
+    },
+    {
+     "id": "5-b",
+     "text": "카스피해처럼 바다로 이어지지 않는 내해에만 닿는 나라(카자흐스탄 등)도 내륙국으로 친다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "that only have access to a landlocked sea such as the Caspian are considered landlocked",
+     "newDoc": false
+    },
+    {
+     "id": "5-c",
+     "text": "바다로 나가려면 두 나라 이상을 거쳐야 한다는 것은 그만큼 시간과 비용이 더 든다는 뜻으로 볼 수 있다.",
+     "site": "KOTRA 해외시장뉴스",
+     "title": "[전문가 기고] 우즈베키스탄으로의 컨테이너 실크로드",
+     "year": 2014,
+     "url": "https://dream.kotra.or.kr/kotranews/cms/news/actionKotraBoardDetail.do?SITE_NO=3&MENU_ID=130&CONTENTS_NO=1&bbsGbn=246&bbsSn=246&pNttSn=138218",
+     "quote": "바다로 나아가기 위해서는 2개 국가 이상을 거쳐야 된다는 것으로 그만큼 시간과 비용이 더 들어간다는 의미로 해석이 가능합니다.",
+     "newDoc": false
+    },
+    {
+     "id": "5-d",
+     "text": "내륙국의 해상 무역은 다른 나라를 거쳐야 해서, 맞지 않는 기반 시설과 불편한 국경 통과 절차를 겪는 일이 많다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "Seaborne trade must transit through other countries, which often involves dealing with inappropriate infrastructure and inconvenient border-crossing procedures.",
+     "newDoc": false
+    },
+    {
+     "id": "5-e",
+     "text": "내륙국 가운데 32곳은 유엔이 \"내륙 개발도상국\"으로 분류한다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "32 of these states are designated as landlocked developing countries (LLDCs) by the United Nations",
+     "newDoc": false
+    },
+    {
+     "id": "5-f",
+     "text": "내륙국이 세계 수출에서 차지하는 몫은 1퍼센트도 안 된다.",
+     "site": "Embassy of the Republic of Uzbekistan (mfa.uz)",
+     "title": "How Central Asia is turning geography into power",
+     "year": 2025,
+     "url": "https://pakistan.mfa.uz/en/news/kak-centralnaia-aziia-prevrashhaet-geografiiu-v-silu-1",
+     "quote": "Landlocked countries account for less than 1% of world exports",
+     "newDoc": false
+    },
+    {
+     "id": "5-g",
+     "text": "그러나 유럽의 내륙국에는 이런 경제 문제가 먼 이야기처럼 보인다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "The economic issues experienced by LLDCs seem like a distant reality for European landlocked countries",
+     "newDoc": false
+    },
+    {
+     "id": "5-h",
+     "text": "부유한 이웃의 덕을 보는 예로 Britannica 는 리히텐슈타인 같은 아주 작은 나라를 든다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "as exemplified by microstates such as Liechtenstein and Andorra",
+     "newDoc": false
+    },
+    {
+     "id": "5-i",
+     "text": "리히텐슈타인은 유럽에서 가장 작은 나라 가운데 하나다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Liechtenstein",
+     "year": null,
+     "url": "https://www.britannica.com/place/Liechtenstein",
+     "quote": "It is one of the smallest countries of Europe",
+     "newDoc": true
+    },
+    {
+     "id": "5-j",
+     "text": "리히텐슈타인은 1921년에 스위스 프랑을 자기 나라 돈으로 채택했고 1923년에 스위스와 관세 동맹을 맺었다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Liechtenstein",
+     "year": null,
+     "url": "https://www.britannica.com/place/Liechtenstein",
+     "quote": "In 1921 Liechtenstein adopted the Swiss franc as its currency, and in 1923 it joined a customs union with Switzerland.",
+     "newDoc": true
+    },
+    {
+     "id": "5-k",
+     "text": "우즈베키스탄은 옛 실크로드 무역의 중심지로 동서양을 잇는 다리 구실을 했다.",
+     "site": "KOTRA 해외시장뉴스",
+     "title": "[전문가 기고] 우즈베키스탄으로의 컨테이너 실크로드",
+     "year": 2014,
+     "url": "https://dream.kotra.or.kr/kotranews/cms/news/actionKotraBoardDetail.do?SITE_NO=3&MENU_ID=130&CONTENTS_NO=1&bbsGbn=246&bbsSn=246&pNttSn=138218",
+     "quote": "우즈베키스탄은 과거 실크로드 무역의 중심지로서 동서양을 잇는 가교역할을 했습니다.",
+     "newDoc": false
+    },
+    {
+     "id": "5-l",
+     "text": "그러나 바닷길 교역이 발달하면서 육로 운송이 끊겨, 육상 교통의 중심지 구실은 막을 내렸다.",
+     "site": "KOTRA 해외시장뉴스",
+     "title": "[전문가 기고] 우즈베키스탄으로의 컨테이너 실크로드",
+     "year": 2014,
+     "url": "https://dream.kotra.or.kr/kotranews/cms/news/actionKotraBoardDetail.do?SITE_NO=3&MENU_ID=130&CONTENTS_NO=1&bbsGbn=246&bbsSn=246&pNttSn=138218",
+     "quote": "그러나 해상교역로의 발달로 인해 육로 운송이 끊기면서 이러한 육상교통 허브로서의 기능은 막을 내렸습니다.",
+     "newDoc": false
+    },
+    {
+     "id": "5-m",
+     "text": "아시아개발은행 블로그는 \"거리의 횡포\"가 우즈베키스탄을 무겁게 짓누른다고 쓴다.",
+     "site": "Asian Development Blog (ADB)",
+     "title": "Transport Solutions to Unlock the Landlocked",
+     "year": 2025,
+     "url": "https://blogs.adb.org/blog/transport-solutions-unlock-landlocked",
+     "quote": "The 'tyranny of distance' weighs heavily on Uzbekistan.",
+     "newDoc": false
+    },
+    {
+     "id": "5-n",
+     "text": "우즈베키스탄 상원 제1부의장은 2020년에, 최근 몇 해 동안 70억 달러 넘게 들여 철도 2,500킬로미터를 놓았다고 말했다.",
+     "site": "Euronews",
+     "title": "Uzbekistan's rise as the transport and logistics hub of Central Asia",
+     "year": 2020,
+     "url": "https://www.euronews.com/2020/11/12/uzbekistan-s-rise-as-the-transport-and-logistics-hub-of-central-asia",
+     "quote": "over US $7 billion have been spent, and 2.5 thousand kilometres of railway built in Uzbekistan over recent years",
+     "newDoc": false
+    },
+    {
+     "id": "5-o",
+     "text": "새 철도 구간의 캄치크 터널은 길이 19킬로미터가 넘어 중앙아시아에서 가장 긴 터널이다.",
+     "site": "Euronews",
+     "title": "Uzbekistan's rise as the transport and logistics hub of Central Asia",
+     "year": 2020,
+     "url": "https://www.euronews.com/2020/11/12/uzbekistan-s-rise-as-the-transport-and-logistics-hub-of-central-asia",
+     "quote": "at over 19 km, is the longest tunnel in Central Asia",
+     "newDoc": false
+    },
+    {
+     "id": "5-p",
+     "text": "우즈베키스탄은 아프가니스탄의 마자르이샤리프까지 철도를 놓았고, 이를 페르시아만과 인도양까지 늘리려고 다른 나라들과 협력하고 있다.",
+     "site": "Euronews",
+     "title": "Uzbekistan's rise as the transport and logistics hub of Central Asia",
+     "year": 2020,
+     "url": "https://www.euronews.com/2020/11/12/uzbekistan-s-rise-as-the-transport-and-logistics-hub-of-central-asia",
+     "quote": "Uzbekistan has built a railway to Mazar-e-Sharif in Afghanistan and is cooperating with other countries to extend this to the Persian Gulf and the Indian Ocean.",
+     "newDoc": false
+    },
+    {
+     "id": "5-q",
+     "text": "트랜스 아프간 철도 계획은 우즈베키스탄과 아프가니스탄을 지나 파키스탄 철도망에 이어져, 카라치 · 과다르 같은 항구에 닿으려는 것이다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "which would span Uzbekistan and Afghanistan before connecting to Pakistan's domestic rail network, ultimately reaching ports such as Karachi and Gwadar",
+     "newDoc": false
+    },
+    {
+     "id": "5-r",
+     "text": "이중 내륙 국가인 우즈베키스탄에서는 항공 운송도 매우 중요한 구실을 한다.",
+     "site": "KIEP AIF(EMERiCs 러시아ㆍ유라시아)",
+     "title": "우즈베키스탄 운송-물류 시장의 현황과 특성",
+     "year": 2009,
+     "url": "https://www.kiep.go.kr/aif/issueDetail.es?brdctsNo=113271&mid=a30200000000&systemcode=04",
+     "quote": "이중 내륙 국가(double landlocked country)인 우즈베키스탄에서 항공 운송이 매우 중요한 역할을 하고 있다.",
+     "newDoc": false
+    },
+    {
+     "id": "5-s",
+     "text": "뜻밖에도 몇몇 내륙국은 나라의 자존심과 안보를 위해 해군을 둔다.",
+     "site": "Encyclopedia Britannica",
+     "title": "Landlocked country",
+     "year": null,
+     "url": "https://www.britannica.com/topic/landlocked-country",
+     "quote": "Perhaps surprisingly, some landlocked countries maintain navies as a matter of national pride as well as security.",
+     "newDoc": false
+    }
+   ],
+   "conflict": "① 낱말: KIEP 는 \"이중 내륙 국가\", KOTRA 는 \"이중육로 폐쇄국가\", Britannica 는 double-landlocked, ADB 는 doubly landlocked → \"이중 내륙국\" 표기 그대로는 연 문서에 없다(설명출처-03 에 이미 적힌 것). ② 거치는 나라 수: KOTRA 는 \"2개 국가 이상\", 우즈베키스탄 대사관 글은 \"두 나라의 영토를 지나야\" → 질문의 \"두 곳 이상\"은 KOTRA 와 맞는다. ③ 숫자의 때: 44곳 · 32곳(Britannica)은 오늘 연 페이지의 숫자이고, 70억 달러 · 2,500킬로미터(Euronews)는 2020년에 우즈베키스탄 관리가 한 말이다 → 쓰려면 \"~라고 밝혔다\" 굵기로, 지금 수치처럼 단정하지 않는다. 캄치크 터널 \"중앙아시아에서 가장 긴\"도 2020년 기사 기준이다. ④ 철도 계획: Euronews(2020)는 마자르이샤리프까지는 \"놓았다\", 그 너머는 \"협력 중\"이라 하고, Britannica 는 트랜스 아프간 철도를 계획(project · would)으로 쓰며, 대사관 글(2025)도 \"사업을 서두르자\"는 제안이다 → 바다까지 이어지는 철도는 \"계획 · 추진 중\"으로만 쓴다(다 놓았다고 쓰지 않는다). ⑤ 리히텐슈타인: 넉넉하다는 것은 Britannica 가 \"부유한 이웃의 덕을 보는 아주 작은 나라\"의 예로 든 데까지만 받쳐진다. 스위스 프랑 · 관세 동맹이 \"바다가 없는 불리함을 덜어 준다\"는 인과는 어느 문서에도 없다 → 두 사실을 나란히 놓되 인과로 잇지 않는다. 리히텐슈타인 정부 사이트(llv.li)는 403 으로 열리지 않아 쓰지 않았다. ⑥ Britannica 의 리히텐슈타인 페이지 위쪽에는 \"AI 로 만든 요약\" 칸이 따로 있다 — 이번 quote 는 본문 문장에서만 땄다. ⑦ 해군(5-s): Britannica 가 예로 드는 것은 볼리비아 · 파라과이 같은 나라이고, 이중 내륙국 두 나라에 해군이 있다는 말은 아니다.",
+   "storyOrder": [
+    "5-a",
+    "5-b",
+    "5-c",
+    "5-d",
+    "5-e",
+    "5-f",
+    "5-g",
+    "5-h",
+    "5-i",
+    "5-j",
+    "5-k",
+    "5-l",
+    "5-m",
+    "5-n",
+    "5-o",
+    "5-p",
+    "5-q",
+    "5-r",
+    "5-s"
+   ]
+  }
+ ],
+ "quotesChecked": 101,
+ "quotesFound": 101
+}
