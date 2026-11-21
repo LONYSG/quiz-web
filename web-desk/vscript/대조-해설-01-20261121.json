@@ -1,0 +1,363 @@
+{
+  "done": true,
+  "at": "2026-11-21",
+  "target": "web-desk/vscript/받은것/마무리-01.json (rev 3) 의 explanation 다섯",
+  "basis": "web-desk/vscript/보탬-01.json 의 quote(글자 그대로)만 근거로 봄 · text 에만 있는 말(연도 · 이름 · 직함)은 근거로 치지 않음 · 웹은 열지 않음 · 보조로 출처-01.json 의 quote 를 본 곳은 support 에 '출처-01'로 밝힘",
+  "items": [
+    {
+      "no": 1,
+      "answer": "피사의 사탑",
+      "sentences": [
+        {
+          "s": "피사의 대성당에 딸린 종탑은 공사 초반부터 무른 땅 위에서 한쪽으로 기울기 시작했습니다.",
+          "verdict": "stretch",
+          "support": [
+            { "id": "1-a", "quote": "The construction of the tower began in 1173 as part of a grand cathedral project" },
+            { "id": "1-d", "quote": "By the time the builders finished the second of eight stories in 1178, the tower’s foundation had begun to settle unevenly. As a result, the tower started to tilt toward the south." },
+            { "id": "1-c", "quote": "on ground consisting of clay, fine sand, and shells." },
+            { "id": "1-ac", "quote": "the very same soil that caused the leaning instability" }
+          ],
+          "problem": "(가벼움) '무른 땅'이라는 말은 어느 quote 에도 없다. quote 는 땅의 성분(진흙 · 고운 모래 · 조개껍데기)과 '기초가 고르지 않게 가라앉았다' · '그 흙이 기울기를 일으켰다'까지만 말한다. 대성당 공사의 한 부분 · 공사 초반 · 한쪽으로 기울기 시작은 받쳐진다(층수 · 방향 · 연도 안 씀 = conflict ① ② 지킴).",
+          "safe": "대성당 공사의 한 부분으로 짓던 탑은 공사 초반부터 진흙과 고운 모래로 된 땅 위에서 기초가 고르지 않게 가라앉아 한쪽으로 기울기 시작했다."
+        },
+        {
+          "s": "전쟁이 이어지면서 공사가 100년 가까이 멈췄는데, 그 사이 땅이 다져지면서 탑은 쓰러지지 않았다고 합니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "1-e", "quote": "Soon, construction was halted for almost 100 years, as Pisa fought wars against Genoa, Lucca, and Florence." },
+            { "id": "1-f", "quote": "This may have been a lucky break, as modern analysis says that the tower definitely would have toppled had construction continued without time for the soil to settle." }
+          ],
+          "problem": "",
+          "safe": "전쟁을 치르느라 공사가 100년 가까이 멈췄고, 땅이 다져질 시간 없이 계속 지었다면 쓰러졌을 것이라는 분석이 있다('~다고 합니다' 꼴 유지)."
+        },
+        {
+          "s": "공사를 재개한 뒤에는 새로 쌓는 부분의 높이를 한쪽만 더 올려 기울기를 바로잡으려 했지만, 돌의 무게가 더해져 탑은 오히려 더 가라앉았습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "1-g", "quote": "sought to compensate for the lean by making the new stories slightly taller on the short side, but the extra masonry caused the structure to sink still further." }
+          ],
+          "problem": "",
+          "safe": "다시 지을 때 새 층을 낮아진 쪽만 조금 더 높게 지어 기울기를 메우려 했지만, 더해진 돌 때문에 더 가라앉았다."
+        },
+        {
+          "s": "완공 뒤에도 기울기가 심해져 결국 관람을 막았죠.",
+          "verdict": "stretch",
+          "support": [
+            { "id": "1-k", "quote": "After the tower was completed around 1370, the drift continued." },
+            { "id": "1-q", "quote": "the Italian government closes the Leaning Tower of Pisa … The closure was provoked by the collapse of the civic tower of Pavia in 1989, which raised fears for the safety of the Pisa tower." },
+            { "id": "1-r", "quote": "at a time when 700,000 annual visitors were ascending the campanile and the lean increased by one-20th of an inch every year, officials closed Pisa's famous Torre Pendente to the public." },
+            { "id": "1-p", "quote": "in the late 20th century the structure was still subsiding … and was in danger of collapse." }
+          ],
+          "problem": "까닭을 더했다. quote 가 적은 폐쇄의 계기는 '파비아의 탑이 무너져 안전 걱정이 커진 것'(1-q)이고, 기울기는 '해마다 늘고 있던 때에 닫았다'(1-r)는 배경일 뿐이다. '기울기가 심해져 결국 막았다'는 원인으로 묶은 문장은 어느 quote 도 하지 않는다. '완공 뒤에도 계속 기울었다'와 '관람을 막았다' 각각은 받쳐진다.",
+          "safe": "완공 뒤에도 기울기는 계속 심해졌고, 다른 도시의 탑이 무너진 일로 안전 걱정이 커지자 관람을 막았다(또는 원인 없이: 해마다 조금씩 더 기울던 때에 관람을 막았다)."
+        },
+        {
+          "s": "마지막에는 돌을 더 얹는 대신 기초 밑의 흙을 조금씩 빼냈습니다.",
+          "verdict": "stretch",
+          "support": [
+            { "id": "1-v", "quote": "restoration was possible by removing small volumes of soil from beneath the north side of the tower’s foundation." },
+            { "id": "1-x", "quote": "Earth was siphoned from underneath the foundations" }
+          ],
+          "problem": "(가벼움) '기초 밑의 흙을 조금씩 빼냈다'는 그대로 받쳐진다. '돌을 더 얹는 대신'이라는 대비는 quote 에 없는 말이고, 같은 재료(1-t)에는 보강 도중 납 230톤을 더 얹었다는 quote 가 있어 '무게를 더하지 않았다'로 들리면 어긋난다. 순서(관람을 막음 → 흙을 뺌 → 다시 엶)는 1-x 가 '흙을 뺌 → 공사 끝 → 다시 엶(reopened)'까지 글자로 받치고, 닫은 것이 흙 빼기보다 먼저라는 것은 'reopened' 에서 따라 나오는 정도다(닫은 해 · 공사한 해는 quote 가 아니라 text · 연표 머리에만 있음 — 대본은 연도를 쓰지 않아 문제없음).",
+          "safe": "해결책은 기초 밑(북쪽)의 흙을 조금씩 빼내는 것이었다 — '돌을 더 얹는 대신'은 빼거나 '이번에는'처럼 사실을 더하지 않는 이음말로."
+        },
+        {
+          "s": "탑이 수직선과 이루는 각도는 5.5도에서 약 4도로 줄었고, 관람객도 다시 들어갈 수 있게 됐습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "1-o", "quote": "which caused it to lean 5.5 degrees (about 15 feet [4.5 metres]) from the perpendicular in the late 20th century." },
+            { "id": "1-y", "quote": "bringing the tower back to a 4-degree incline, as it was 200 years ago." },
+            { "id": "1-x", "quote": "the work was completed in May 2001, and the structure was reopened to visitors." }
+          ],
+          "problem": "",
+          "safe": "20세기 말 5.5도이던 기울기가 공사 뒤 4도가 됐고, 탑은 다시 관람객에게 열렸다(5.5도 = Britannica · 4도 = Discover 두 quote 를 이은 것 · 단위는 도 하나만 씀 = conflict ⑨ 지킴 · '약'은 Discover quote 에는 없고 '4도')."
+        },
+        {
+          "s": "기술진은 보강한 탑이 적어도 200년은 더 안정적으로 서 있을 것으로 내다봤습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "1-ab", "quote": "Engineers expected the tower to remain stable for at least 200 years." }
+          ],
+          "problem": "",
+          "safe": "기술자들은 탑이 적어도 200년은 안정되게 서 있을 것으로 내다봤다."
+        }
+      ],
+      "sayMismatch": null
+    },
+    {
+      "no": 2,
+      "answer": "셀피",
+      "sentences": [
+        {
+          "s": "친구의 생일에 술을 마시고 계단에서 넘어진 호주인이 인터넷 포럼에 글을 올렸습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "2-a", "quote": "so you know he's Australian. He went out for a mate's 21st birthday — and had a little accident." },
+            { "id": "2-d", "quote": "\"Um, drunk at a mates 21st, I tripped ofer (sic) and landed lip first (with front teeth coming a very close second) on a set of steps." },
+            { "id": "2-b", "quote": "he went onto an online forum (as Hopey) to ask about the dissolvable stitches" }
+          ],
+          "problem": "",
+          "safe": "친구 생일에 취해 넘어져 계단에 입술을 찧은 호주 사람이 온라인 포럼에 글을 올렸다(실명 안 씀 = conflict ⑤ 지킴)."
+        },
+        {
+          "s": "입술을 꿰맨 실이 말라 불편하다며 물었는데, 어떻게 다쳤냐는 질문이 돌아오자 상처를 직접 찍은 사진을 올리며 이렇게 썼습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "2-b", "quote": "to ask about the dissolvable stitches that were now in his lower lip. They were dry and uncomfortable." },
+            { "id": "2-c", "quote": "asked him how he came to get these stitches, and at 3.19pm, he typed in reply:" },
+            { "id": "2-e", "quote": "He then posted a 'self-photograph' showing the stitches in his lower lip." }
+          ],
+          "problem": "",
+          "safe": "입술에 꿰맨 실밥에 대해 물었고(실밥은 말라서 불편했다), 어쩌다 꿰맸냐는 물음에 답한 뒤 실밥이 보이는 자기 사진을 올렸다 — '불편하다며'는 글쓴이 말이 아니라 기사 서술이라는 점만 유의."
+        },
+        {
+          "s": "\"초점이 흐려서 미안해요. 셀피라서요.\"",
+          "verdict": "ok",
+          "support": [
+            { "id": "2-f", "quote": "\"And sorry about the focus, it was a selfie.\"" }
+          ],
+          "problem": "",
+          "safe": "따옴표 안에는 포럼 글 한 줄만 있다(BBC 가 풀어 쓴 '취해서가 아니라'는 안 씀 = conflict ④ 지킴)."
+        },
+        {
+          "s": "이게 지금까지 알려진 셀피의 가장 이른 기록입니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "2-a", "quote": "The word 'selfie' was born back in 2002" },
+            { "id": "2-w", "quote": "Hopey posted a comment on an ABC online science forum in 2002 which contained one little word that, 10 years later, took over the world – selfie." },
+            { "id": "출처-01 · PBS NewsHour", "quote": "But according to Oxford Dictionaries, the word \"selfie\" was first used on an Australian online forum in 2002." }
+          ],
+          "problem": "",
+          "safe": "quote 들은 '2002년에 태어났다 · 처음 쓰였다'로 더 세게 말하고, 대본은 '알려진 가장 이른 기록'으로 낮춰 말했다(conflict ② 가 정한 수위 · '만든 사람'이라고 하지 않음)."
+        },
+        {
+          "s": "몇 년 뒤 사진 공유 사이트 플리커에도 셀피가 해시태그로 등장했고, 2012년 무렵에는 주요 언론에서도 흔히 쓰이기 시작했습니다.",
+          "verdict": "stretch",
+          "support": [
+            { "id": "2-n", "quote": "with the hashtag #selfie appearing on the photo-sharing website Flickr as early as 2004, but usage wasn't widespread until around 2012, when selfie was being used commonly in mainstream media sources." }
+          ],
+          "problem": "① '몇 년 뒤' — quote 는 '2004년에 벌써(as early as 2004)'다. 포럼 글(2002)에서 2년 뒤이고, quote 의 결은 '일찍부터'인데 '몇 년 뒤'는 더 긴 사이로 들린다. ② '흔히 쓰이기 시작했습니다' — quote 는 '2012년쯤에야 널리 퍼졌고, 그때는 주요 언론에서 흔히 쓰이고 있었다'이지 그해에 쓰이기 시작했다는 말이 아니다(가벼움). 플리커 · 해시태그 · 2012년 무렵 · 주요 언론은 받쳐진다.",
+          "safe": "2년 뒤인 2004년에는 벌써 사진 공유 사이트 플리커에 셀피 해시태그가 보였지만, 널리 퍼진 것은 주요 언론에서도 흔히 쓰이던 2012년 무렵부터였다."
+        },
+        {
+          "s": "입술 사진에 붙었던 그 단어는 이듬해 옥스퍼드 사전의 올해의 단어가 됐습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "2-t", "quote": "it announced that selfie will be its word of 2013, joining 2012’s “GIF” and beating out the likes of “bitcoin” and “twerk.”" },
+            { "id": "2-s", "quote": "Selfie was added to the Oxford Dictionaries Online in August, but is not yet in the Oxford English Dictionary" }
+          ],
+          "problem": "",
+          "safe": "셀피는 옥스퍼드 사전(Oxford Dictionaries)의 2013년 낱말이 됐다 — '이듬해'는 앞 문장의 '2012년 무렵'에 기대는 셈이라 계산은 맞지만(2013), '2013년'이라고 바로 말하는 편이 quote 그대로다. 'OED'라고 하지 않음 = conflict ① 지킴."
+        }
+      ],
+      "sayMismatch": null
+    },
+    {
+      "no": 3,
+      "answer": "페이스메이커",
+      "sentences": [
+        {
+          "s": "1994년 LA 마라톤에서 폴 필킹턴은 돈을 받고 선두에서 속도를 잡아 주는 페이스메이커였습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "3-t", "quote": "Paul Pilkington was the last American to win the LA Marathon in 1994 in a time of 2:12:13." },
+            { "id": "3-r", "quote": "in addition to the undisclosed amount he was paid to set the pace." },
+            { "id": "3-a", "quote": "officials at the Los Angeles Marathon hired Paul Pilkington to take the leaders through the halfway mark in 1:05." }
+          ],
+          "problem": "",
+          "safe": "1994년 LA 마라톤에서 필킹턴은 돈을 받고 속도를 잡아 주는 역할이었다."
+        },
+        {
+          "s": "그런데 절반 지점을 지나도록 뒤에서 따라붙는 선수가 없자, 필킹턴은 그대로 결승선까지 달리기로 했습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "3-g", "quote": "\"They weren't coming up so I decided to keep going. I felt really good,\" said Pilkington, who was clearly in front with eight miles to go." },
+            { "id": "3-h", "quote": "\"They didn't come with me,\" Pilkington said of the pack. … I didn't decide to stay in until the 15th or 16th mile.\"" }
+          ],
+          "problem": "",
+          "safe": "뒤에서 올라오지 않길래 계속 가기로 했다(본인 말) · 마음먹은 때는 절반을 넘긴 뒤(15~16마일 = 절반 13.1마일 뒤) — 마일 숫자 안 씀 = conflict ③ ④ 지킴. '따라붙는 선수가 없자 … 달리기로 했다'의 인과는 3-g 가 글자 그대로 받친다."
+        },
+        {
+          "s": "이탈리아의 루카 바르차기는 페이스메이커가 중간에 빠질 거라고 들어 그를 추월하지 않았고, 우승 상품으로 받을 자동차의 색깔까지 마음속으로 골라 둔 상태였습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "3-k", "quote": "He said he did not pass Pilkington because he was told the pacesetter would do just that, set the pace, and nothing more." },
+            { "id": "3-l", "quote": "\"I was told the `rabbit' would drop out,\" he said." },
+            { "id": "3-j", "quote": "Luca Barzaghi of Italy, who finished second. Barzaghi was so confident that he mentally chose the color he wanted for the luxury car that went to the winner." }
+          ],
+          "problem": "",
+          "safe": "바르차기는 '토끼는 빠질 거라고 들었다'며 앞지르지 않았고, 우승자에게 주는 고급 승용차의 색깔까지 속으로 골라 뒀다(당일 기사 Deseret 쪽 = conflict ② 지킴)."
+        },
+        {
+          "s": "하지만 결승선을 가장 먼저 통과한 사람은 필킹턴이었죠.",
+          "verdict": "ok",
+          "support": [
+            { "id": "3-d", "quote": "was timed in 2 hours, 12 minutes, 13 seconds, and just beat a cloudburst which hit as he crossed the finish line." },
+            { "id": "3-j", "quote": "Luca Barzaghi of Italy, who finished second." },
+            { "id": "3-r", "quote": "He received $15,000 for winning the marathon" }
+          ],
+          "problem": "",
+          "safe": "우승한 사람은 필킹턴이었다."
+        },
+        {
+          "s": "그해 LA 마라톤은 미국 선수권도 겸했기 때문에, 필킹턴은 두 우승 상금과 자동차를 모두 받았습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "3-o", "quote": "as an American, he was also competing for the U.S. Track and Field marathon championship." },
+            { "id": "3-r", "quote": "He received $15,000 for winning the marathon and $12,000 for winning the national title … He also wound up with the Mercedes-Benz sport sedan." }
+          ],
+          "problem": "",
+          "safe": "마라톤 우승 상금과 전국 선수권 우승 상금을 받았고 승용차도 그의 것이 됐다('미국 챔피언이 됐다'라고 하지 않고 상금으로 말함 = conflict ⑦ 지킴)."
+        }
+      ],
+      "sayMismatch": null
+    },
+    {
+      "no": 4,
+      "answer": "계명구도",
+      "sentences": [
+        {
+          "s": "맹상군이 두 식객의 재주로 위기를 벗어났다는 옛이야기가 전해집니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "4-t", "quote": "식객(食客) 가운데 개를 가장하여 남의 물건을 잘 훔치는 사람과 닭의 울음소리를 잘 흉내 내는 사람의 도움으로 위기에서 빠져나왔다는 데서 유래한다." }
+          ],
+          "problem": "",
+          "safe": "두 식객의 도움으로 위기에서 빠져나왔다는 이야기(옛이야기 틀을 첫 문장에서 세움)."
+        },
+        {
+          "s": "진나라에 붙잡혀 죽을 위기에 놓인 맹상군은 왕이 총애하는 여인에게 도움을 청하려 했습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "4-h", "quote": "맹상군은 인질처럼 붙잡혀있게 되었다. ‘등용하지 못할 바에는 죽여야 한다’는 주장이 진나라 중신들 사이에서 오갔다." },
+            { "id": "4-i", "quote": "소왕은 맹상군을 재상으로 삼기는커녕 옥에 가두고 죽이려 했다." },
+            { "id": "4-j", "quote": "다만 그가 총애하는 애첩을 통하면 뜻을 이룰 수 있을 것 같았다." }
+          ],
+          "problem": "",
+          "safe": "붙잡혀 있었고 죽이자는 말이 오갔다(또는 죽이려 했다) · 왕이 총애하는 애첩을 통하면 될 것 같았다 — '죽을 위기'는 conflict ① 이 정한 말. 4-t 의 '죽게 됐을 때'는 text 에만 있고 quote 밖이므로 근거로 치지 않았다. 왕 이름 안 씀 = conflict ⑥ 지킴."
+        },
+        {
+          "s": "여인은 흰 여우 가죽옷을 원했는데, 맹상군은 그 옷을 이미 왕에게 바친 뒤였습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "4-j", "quote": "소왕의 애첩은 맹상군이 가져온 호백구(하얀 여우가죽옷)를 댓가로 원했다. 매우 값진 물건이었으나 이미 소왕에게 선물한 뒤였다." }
+          ],
+          "problem": "",
+          "safe": "애첩은 하얀 여우 가죽옷을 대가로 원했는데, 이미 왕에게 선물한 뒤였다."
+        },
+        {
+          "s": "한 식객이 개 흉내를 내며 궁궐에 숨어들어 옷을 훔쳐 오자, 여인은 왕에게 부탁해 맹상군이 떠날 수 있게 해 줬습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "4-l", "quote": "그 날 밤, 그 도둑은 개 흉내를 내며 진나라 궁궐의 창고 속으로 숨어 들어가 그 옷을 훔쳐 여인에게 바쳤다." },
+            { "id": "4-c", "quote": "식객(남의 집에 얹혀 살며 밥을 얻어먹는 사람)중에는 구도(狗盜, 밤에 개가죽을 둘러쓰고 민가에 숨어들어 물건을 훔치는 도둑)와 닭 울음소리[계명]를 잘 내는 자도 있었다." },
+            { "id": "4-m", "quote": "애첩이 선물을 받고 소왕에게 애교로 부탁하니 소왕은 맹상군의 출국을 허락하였다." }
+          ],
+          "problem": "",
+          "safe": "도둑질 잘하는 식객이 개 흉내를 내며 궁궐(창고)에 숨어들어 옷을 훔쳐 여인에게 바쳤고, 여인이 부탁하자 왕이 떠나도 좋다고 허락했다 — '궁궐에 숨어들어'는 세종경제뉴스 quote 그대로이고 conflict ③ 이 정한 말. 옷을 여인에게 건넸다는 고리는 대본에서 줄었지만 틀린 말은 없다."
+        },
+        {
+          "s": "일행은 밤중에 함곡관에 이르렀지만 닭이 울어야 관문이 열렸습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "4-n", "quote": "맹상군 일행은 말을 달려 함곡관에 이르렀다. 그런데 이미 밤이 어두웠다. 관문은 야밤에 닫혀 새벽닭이 울어야만 열도록 돼 있었다." }
+          ],
+          "problem": "",
+          "safe": "함곡관에 이르렀을 때는 이미 밤이었고, 관문은 새벽닭이 울어야만 열게 돼 있었다."
+        },
+        {
+          "s": "이번에는 다른 식객이 닭 울음을 흉내 냈고, 마을 닭들까지 따라 울자 일행은 관문을 빠져나갔습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "4-p", "quote": "군의 식객 중에 닭소리 잘 내는 이가 담 뒤에 숨어 닭울음소리를 내니 마을의 닭들이 다 깨어 울어대기 시작했다." },
+            { "id": "4-q", "quote": "일행은 관원들을 깨어 문을 열게 하고 급히 함곡관을 빠져나갔다." }
+          ],
+          "problem": "",
+          "safe": "닭 소리 잘 내는 식객이 닭 울음소리를 내자 마을의 닭들이 다 깨어 울기 시작했고, 일행은 문을 열게 해 함곡관을 빠져나갔다(토요경제 판 · 글마다 세부가 달라 conflict ④ — 첫 문장의 옛이야기 틀 안에서는 괜찮음)."
+        },
+        {
+          "s": "한번은 가죽옷을 되찾고, 한번은 닫힌 문을 통과하게 해 준 두 재주에서 계명구도라는 말이 나왔습니다.",
+          "verdict": "stretch",
+          "support": [
+            { "id": "4-l", "quote": "그 옷을 훔쳐 여인에게 바쳤다." },
+            { "id": "4-j", "quote": "매우 값진 물건이었으나 이미 소왕에게 선물한 뒤였다." },
+            { "id": "4-t", "quote": "개를 가장하여 남의 물건을 잘 훔치는 사람과 닭의 울음소리를 잘 흉내 내는 사람의 도움으로 위기에서 빠져나왔다는 데서 유래한다." }
+          ],
+          "problem": "'되찾고' — quote 는 모두 '훔쳤다'다. 옷은 맹상군이 왕에게 선물한 것이라 이미 왕의 물건이었고, 훔친 옷도 맹상군이 가진 것이 아니라 여인에게 바쳤다. '되찾았다'는 제 것을 돌려받았다는 뜻이 돼 quote 와 다르다(마무리-01 의 note 에도 '되찾아'가 있음). '닫힌 문을 통과하게 해 준' · '두 재주에서 말이 나왔다'는 받쳐진다.",
+          "safe": "한번은 가죽옷을 훔쳐 내고, 한번은 닫힌 문을 열게 한 두 재주에서 계명구도라는 말이 나왔다."
+        }
+      ],
+      "sayMismatch": null
+    },
+    {
+      "no": 5,
+      "answer": "펄서",
+      "sentences": [
+        {
+          "s": "대학원생 조슬린 벨 버넬은 전파망원경 관측 기록을 살피다가 하늘의 한 곳에서 낯선 신호가 되풀이되는 걸 알아챘습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "5-a", "quote": "it took only a few weeks for graduate student Jocelyn Bell Burnell to detect something" },
+            { "id": "5-e", "quote": "From one particular piece of the sky an unclassifiable signal sometimes recurred" },
+            { "id": "5-d", "quote": "Bell Burnell noticed a faint, repetitive signal that she called “scruff”" },
+            { "id": "5-f", "quote": "it was only occupying a quarter inch of space on the charts" }
+          ],
+          "problem": "",
+          "safe": "대학원생 벨 버넬은 기록지에서, 하늘의 어느 한 곳에서 분류할 수 없는 신호가 가끔 되풀이되는 것을 알아챘다."
+        },
+        {
+          "s": "더 빠른 기록 장치로 바꿔 한 달을 기다린 끝에, 1과 3분의 1초 간격으로 규칙적으로 뛰는 신호를 잡았습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "5-g", "quote": "He suggested I switch to a better, faster recorder. For a month it recorded nothing, and then one day, on 28 November 1967, it came again, a string of pulses one-and-a third seconds apart." },
+            { "id": "5-d", "quote": "a regular string of pulses, spaced apart by 1.33 seconds." }
+          ],
+          "problem": "",
+          "safe": "더 좋고 빠른 기록기로 바꿨는데 한 달 동안 아무것도 잡히지 않다가, 1과 3분의 1초 간격으로 이어지는 펄스가 다시 왔다 — 기록기를 바꾸자고 한 사람은 quote 에서 '그(He)'이고 대본은 그 주어를 뺐을 뿐 벨의 생각이라고 하지는 않았다. '한 달' · '1과 3분의 1초'는 글자 그대로."
+        },
+        {
+          "s": "벨 버넬은 신호가 너무 정확해서 농담 삼아 작은 초록 인간이라는 별명을 붙였는데, 나중에 밝혀진 정체는 회전하면서 전파를 내는 중성자별이었습니다.",
+          "verdict": "ok",
+          "support": [
+            { "id": "5-m", "quote": "She jokingly named them LGM for “Little Green Men” because the timing of the signals seemed too precise and consistent to be natural." },
+            { "id": "5-p", "quote": "Later, astrophysicists Franco Pacini, Thomas Gold, and others identified the pulsars as neutron stars emitting radio waves as they spun around." }
+          ],
+          "problem": "",
+          "safe": "NASA quote(5-m)가 '벨이 · 농담으로 · 너무 정확해서'를 그대로 받친다. 다만 다른 두 문서는 다르게 적는다 — Smithsonian(5-l)은 'the scientists gave the signal the fanciful nickname LGM-1'(과학자들이 붙임), Cambridge(5-k · 본인 말)는 정체 모를 것에 농담으로 적던 표시. 대본은 '농담 삼아'의 결을 살렸고 외계인이라 믿었다는 투가 없어 conflict ③ 을 지켰다. 누가 붙였는지를 덜 걸리게 하려면 '~라는 별명이 붙었는데'."
+        },
+        {
+          "s": "펄서 발견으로 노벨 물리학상을 받은 사람은 지도교수 앤터니 휴이시였고, 그는 마틴 라일과 상을 공동 수상했습니다.",
+          "verdict": "stretch",
+          "support": [
+            { "id": "5-t", "quote": "The Royal Swedish Academy of Sciences has awarded Professor Martin Ryle and Professor Antony Hewish the 1974 Nobel Prize in Physics." },
+            { "id": "5-t2", "quote": "Ryle for his observations and inventions, in particular of the aperture-synthesis technique, and Hewish for his decisive role in the discovery of pulsars." },
+            { "id": "5-h", "quote": "Tony was cautious. He suspected I’d wired the radio telescope up wrong." }
+          ],
+          "problem": "(가벼움) '지도교수' — 휴이시가 벨의 지도교수였다고 말하는 quote 가 보탬-01 에 없다. 5-g · 5-h 의 quote 는 'He' · 'Tony'뿐이고 '지도교수 휴이시'는 text 와 conflict ⑦ 에만 있는 말이다(같은 문서의 quote 밖). 나머지 — 휴이시의 수상 이유가 펄서 발견 · 라일과 공동 수상 — 는 노벨 보도자료 quote 그대로다. 못 받은 까닭을 단정하지 않음 = conflict ④ 지킴.",
+          "safe": "펄서 발견에서 한 결정적 역할로 노벨 물리학상을 받은 사람은 앤터니 휴이시 교수였고, 마틴 라일 교수와 함께 받았다 — '지도교수'를 쓰려면 Cambridge 원문에서 그 말이 든 문장을 quote 로 더해야 한다."
+        },
+        {
+          "s": "그로부터 수십 년 뒤 벨 버넬도 펄서 발견으로 특별 브레이크스루상을 받았고, 상금 230만 파운드 전액을 물리학에 진출하기 어려웠던 이들을 돕는 데 기부했습니다.",
+          "verdict": "stretch",
+          "support": [
+            { "id": "5-x", "quote": "September 6, 2018 (San Francisco) – The Selection Committee of the Breakthrough Prize in Fundamental Physics today announced a Special Breakthrough Prize in Fundamental Physics recognizing the British astrophysicist Jocelyn Bell Burnell for her discovery of pulsars" },
+            { "id": "5-x2", "quote": "50 Years After Her Significant Role in the Discovery, Bell Burnell, of University of Oxford and University of Dundee, Wins $3 Million Physics Prize." },
+            { "id": "5-z", "quote": "in 2018 led her to donate all of a £2.3 million prize to help under-represented groups become physicists." },
+            { "id": "5-t", "quote": "the 1974 Nobel Prize in Physics." }
+          ],
+          "problem": "기부의 쓰임새 — quote 는 '물리학계에 수가 적은(under-represented) 집단이 물리학자가 되도록 돕는 데'다. '물리학에 진출하기 어려웠던 이들'은 '수가 적다'를 '진출하기 어려웠다'로 바꿔 까닭 · 사정을 더했고, 과거형이라 이미 어려움을 겪은 사람을 돕는 것처럼 들린다(quote 는 앞으로 물리학자가 되도록). 나머지는 받쳐진다: '수십 년 뒤' = 1974 → 2018(44년 · 두 연도 모두 quote 안) · 펄서 발견으로 특별 브레이크스루상 · 230만 파운드 전액(통화 하나만 = conflict ⑥ 지킴).",
+          "safe": "상금 230만 파운드 전액을, 물리학계에 드문 집단 출신들이 물리학자가 되도록 돕는 데 내놓았다."
+        }
+      ],
+      "sayMismatch": null
+    }
+  ],
+  "cautions": {
+    "피사": "층수 · 방향 · 연도 · 톤수 없음 · '적어도 200년' · 줄어든 기울기는 도 하나만 — 지킴. 순서(막음 → 흙 뺌 → 다시 엶)는 1-x 가 뒤 두 걸음을 글자로, 첫 걸음은 'reopened'로 받침. 걸린 것: '무른 땅' · '기울기가 심해져 결국 관람을 막았다'(계기는 파비아 탑 붕괴) · '돌을 더 얹는 대신'.",
+    "셀피": "OED 아님 · '만든 사람' 아님 · 실명 없음 · 따옴표는 포럼 글 한 줄뿐 — 지킴. 걸린 것: '몇 년 뒤 플리커'(quote = 2004년에 벌써 · 2년 뒤) · '쓰이기 시작'(quote = 2012년 무렵 흔히 쓰이고 있었다). '이듬해'는 계산은 맞음(2013).",
+    "페이스메이커": "마일 숫자 없음 — 지킴. '따라붙는 선수가 없자 … 달리기로 했다' = 3-g 그대로 · 자동차 색깔 = 3-j 그대로 · 두 상금과 자동차 = 3-r 그대로. 걸린 것 없음.",
+    "계명구도": "옛이야기 틀(첫 문장) · 왕 이름 없음 — 지킴. '죽을 위기' = 4-h · 4-i · '궁궐에 숨어들어' = 4-l · '마을 닭들까지 따라 울자' = 4-p. 걸린 것: '되찾고'(quote 는 훔쳤다 · 옷은 왕에게 준 선물이었고 여인에게 바침).",
+    "펄서": "별명 = NASA quote(5-m)가 벨 · 농담 · 너무 정확해서를 받침(Smithsonian 은 '과학자들') · '한 달' · '1과 3분의 1초' = 5-g · 라일과 공동 수상 = 5-t · '수십 년 뒤' = 1974 → 2018 · 상금 통화 하나. 걸린 것: '지도교수'(quote 에 없음) · 기부 쓰임새 '진출하기 어려웠던 이들'(quote = 수가 적은 집단이 물리학자가 되도록)."
+  },
+  "counts": { "ok": 23, "stretch": 7, "none": 0 }
+}
