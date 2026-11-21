@@ -1,0 +1,151 @@
+{
+ "done": true,
+ "episode": 2,
+ "at": "2026-11-21 11:35",
+ "method": "대조-02.json 의 받침 문서 31개를 curl -sL(일반 브라우저 UA)로 지금 다시 내려받아, 장부의 quote 80개가 원문 HTML 안에 글자 그대로 있는지 스크립트로 대조함(공백 · 따옴표 모양 · HTML 엔티티 · 스크립트 안 이스케이프만 정규화 · 문장 가운데 링크 태그가 낀 4개 문서는 태그만 걷고 대조). 요약 도구는 쓰지 않음. 대본은 마무리-02.json rev 5 기준.",
+ "summary": {
+  "docs": 31,
+  "reopenedDirect": 30,
+  "reopenedArchiveOnly": 1,
+  "notReopened": 0,
+  "quotesChecked": 80,
+  "quotesFound": 80,
+  "note": "표준국어대사전 두 표제어는 장부에 적힌 대로 뜻풀이가 '내용 보기'(contentView.do?wordNo=…)에 있어 그 주소도 함께 내려받아 대조함. UEFA 글은 uefa.com 직접 내려받기가 세 번 모두 끊겨(시간 초과 · 연결 재설정) web.archive.org 2026-11-10 사본으로만 확인함 — 브라우저에서 원래 주소가 열리는지는 확인하지 못함."
+ },
+ "questions": [
+  {
+   "no": 1,
+   "answer": "포스트잇",
+   "docs": [
+    { "site": "MNopedia (Minnesota Historical Society)", "title": "Post-it Notes", "year": 2016, "url": "https://www.mnhs.org/mnopedia/search/index/thing/post-it-notes", "reopened": true, "via": "direct", "quotesChecked": 4, "quotesFound": 4, "note": "페이지 표시 'First Published: November 07, 2016' · 브라우저 탭 제목은 'Edit Blog Post | Post-it Notes', 본문 제목(h1)은 'Post-it Notes'" },
+    { "site": "Post-it® Brand (3M)", "title": "History Timeline: Post-it® Notes", "year": null, "url": "https://www.post-it.com/3M/en_US/post-it/contact-us/about-us/", "reopened": true, "via": "direct", "quotesChecked": 4, "quotesFound": 4, "note": "3M 공식 연혁 페이지 · 발행일 표시 없음 · 탭 제목은 'History of Post-it® Notes | Post-it® Brand'" },
+    { "site": "Lemelson-MIT", "title": "Art Fry & Spencer Silver", "year": null, "url": "https://lemelson.mit.edu/resources/art-fry-spencer-silver", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1 },
+    { "site": "National Inventors Hall of Fame", "title": "How Did Art Fry Co-Invent Post-it Notes?", "year": 2024, "url": "https://www.invent.org/blog/inventors/art-fry-post-it-notes", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1, "note": "연도는 페이지 메타데이터 datePublished 2024-12-17" },
+    { "site": "MoMA (The Museum of Modern Art)", "title": "Art Fry, Spencer Silver. Post-it® Note. c. 1977", "year": null, "url": "https://www.moma.org/collection/works/4720", "reopened": true, "via": "direct", "quotesChecked": 2, "quotesFound": 2 },
+    { "site": "Design Museum", "title": "Post-it Notes", "year": null, "url": "https://designmuseum.org/discover-design/all-design-objects/post-it-notes", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1 },
+    { "site": "한국일보", "title": "'실패' 덕에 포스트잇 발명한 스펜서 실버 별세", "year": 2021, "url": "https://www.hankookilbo.com/news/article/A2021051415370003735", "reopened": true, "via": "direct", "quotesChecked": 5, "quotesFound": 5 },
+    { "site": "경향신문", "title": "'실패'했던 접착제의 혁명···'포스트잇의 아버지' 스펜서 실버 별세", "year": 2021, "url": "https://www.khan.co.kr/article/202105141400001", "reopened": true, "via": "direct", "quotesChecked": 2, "quotesFound": 2 },
+    { "site": "University of Colorado Boulder (Coloradan Alumni Magazine)", "title": "Origins: Post-It Note Adhesive", "year": 2013, "url": "https://www.colorado.edu/coloradan/2013/12/01/origins-post-it-note-adhesive", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1, "note": "연도는 주소의 날짜(2013/12/01) — 페이지 메타데이터에서는 날짜를 따로 확인하지 못함" }
+   ],
+   "pick": [1, 0, 6],
+   "pickWhy": "3M 공식 연혁 = 바뀐 문장(몇 해 동안 · 수요일 연습 · 일요일이면 다 빠짐)을 직접 받치는 유일한 문서 · MNopedia = 실버 · 강한 접착제 · 1980년 출시 · 한국일보 = 한국어로 같은 줄거리(수년간 · 동료 프라이 · 1980년)",
+   "claimMap": [
+    { "where": "question", "phrase": "붙였다가 깔끔하게 뗄 수 있도록 … 작은 메모지 … 포스트잇", "support": [ { "doc": 6, "quote": "쉽게 붙이고 뗄 수 있는 포스트잇" }, { "doc": 4, "quote": "slips of paper with the reusable adhesive stacked into a pad" } ] },
+    { "where": "question", "phrase": "한쪽 끝에 약한 접착제를 바른", "support": [ { "doc": 5, "quote": "At the top of the Post-it, the paper is lined with the light 're-stickable' adhesive." } ] },
+    { "where": "hint", "phrase": "1980년에 3M이 내놓은 제품입니다.", "support": [ { "doc": 0, "quote": "In 1980, the Post-it Note was made available to customers in U.S. stores." }, { "doc": 6, "quote": "1980년 '포스트잇'으로 이름을 바꿔 미 전역에서 판매됐다" } ], "note": "문서들은 1977년 '프레스 앤 필'이라는 이름으로 4개 도시에 먼저 내놓았다고도 적음 — '포스트잇' 이름의 전국 출시가 1980년" },
+    { "where": "explanation", "phrase": "3M 연구원 스펜서 실버는 강력한 접착제를 만들려다 붙여도 쉽게 떨어지는 접착제를 얻었습니다.", "support": [ { "doc": 0, "quote": "In 1968, Spencer Silver, a scientist at 3M’s headquarters in Maplewood, was working to create a strong adhesive." }, { "doc": 0, "quote": "Accidentally, he developed a new material that was light enough to easily remove and peel apart." }, { "doc": 6, "quote": "강력한 접착제를 만들려고 했던 그는 실패를 거듭하다 애초 목적과 다른 독특한 접착제를 발명했다." } ] },
+    { "where": "explanation", "phrase": "몇 해 동안 마땅한 쓸 곳을 찾지 못했습니다.", "changed074": true, "support": [ { "doc": 1, "quote": "For years, Silver struggled to find a use for his invention." }, { "doc": 6, "quote": "수년간 상용화되지 못하던 이 접착제는" } ] },
+    { "where": "explanation", "phrase": "그러던 중 동료 아서 프라이가 이 접착제의 쓸모를 알아봤죠.", "changed074": true, "support": [ { "doc": 6, "quote": "1974년 회사 동료 아서 프라이 덕에 제품으로 이어질 수 있었다." }, { "doc": 2, "quote": "the previous invention of his colleague, Spencer Silver" } ], "note": "'쓸모를 알아봤다'는 같은 한국일보 글의 바로 다음 문장 '교회 성가대원으로 활동하던 그는 찬송가 책에 끼워넣은 종이가 자꾸 떨어지자 실버의 접착제가 유용하다는 걸 발견했다.'가 더 직접 받침(장부에 없는 문장 · 오늘 원문에서 글자 그대로 확인)" },
+    { "where": "explanation", "phrase": "수요일 성가대 연습 때 찬송가 책에 꽂아 둔 종이 책갈피가 일요일이면 다 빠져 있었거든요.", "changed074": true, "support": [ { "doc": 1, "quote": "Every Wednesday night while practicing with his church choir, he would use little scraps of paper to mark the hymns" }, { "doc": 1, "quote": "By Sunday, he’d find that they’d all fallen out of the hymnal." } ], "note": "수요일 · 일요일은 3M 공식 페이지 하나만 받침. 원문은 '종잇조각(scraps of paper)으로 찬송가를 표시' — '종이 책갈피'라는 말은 경향신문 '종이 책갈피는 찬송가를 펼칠 때마다 바닥으로 떨어지곤 했다.'" },
+    { "where": "explanation", "phrase": "프라이는 책갈피에 이 접착제를 발라 봤습니다.", "support": [ { "doc": 3, "quote": "At 3M, Fry began making sample bookmarks with a single layer of Silver’s microspheres." }, { "doc": 4, "quote": "Fry tested Silver’s “failed” adhesive to make reusable paper bookmarks" } ] },
+    { "where": "explanation", "phrase": "거기서 붙였다 뗄 수 있는 메모지, 포스트잇이 시작됐습니다.", "support": [ { "doc": 0, "quote": "Fry realized that the sticky papers would work better as notes, and the product idea was solidified." }, { "doc": 8, "quote": "Voilà, the concept of the Post-it note was born, and the product launched in 1980." } ] }
+   ],
+   "unsupported": [
+    { "where": "question", "phrase": "책상이나 모니터에", "why": "어느 문서에도 없음 — 쓰임새를 그린 장면 묘사(사실 주장은 아님). 내려받은 9개 문서에 '모니터'는 없고 '책상(desk)'은 다른 맥락(Design Museum: 책상 구석에 둘 수 있는 크기)으로만 나옴", "severity": "약함" }
+   ]
+  },
+  {
+   "no": 2,
+   "answer": "아킬레스건",
+   "docs": [
+    { "site": "Cleveland Clinic", "title": "What Is the Achilles Tendon?", "year": null, "url": "https://my.clevelandclinic.org/health/body/21927-achilles-tendon", "reopened": true, "via": "direct", "quotesChecked": 2, "quotesFound": 2, "note": "탭 제목 'What Is the Achilles Tendon?' · 본문 제목(h1) 'Achilles Tendon (Calcaneal Tendon)' · 페이지 표시는 'Last updated on 12/07/2023'(수정일)뿐 · 메타데이터 datePublished 는 2021-10-26" },
+    { "site": "국립국어원 표준국어대사전", "title": "아킬레스-건", "year": null, "url": "https://kdict.korean.go.kr/standard/search/searchView.do?wordNo=457015&searchKeywordTo=3", "reopened": true, "via": "direct", "quotesChecked": 2, "quotesFound": 2, "note": "뜻풀이 글자는 내용 보기(https://kdict.korean.go.kr/standard/search/contentView.do?wordNo=457015)에서 확인" },
+    { "site": "Encyclopaedia Britannica", "title": "Achilles tendon", "year": null, "url": "https://www.britannica.com/science/Achilles-tendon", "reopened": true, "via": "direct", "quotesChecked": 2, "quotesFound": 2, "note": "한 quote 는 문장 가운데 링크 태그를 걷고 대조 · 발행일 표시 없음" },
+    { "site": "Encyclopaedia Britannica", "title": "Achilles", "year": null, "url": "https://www.britannica.com/topic/Achilles-Greek-mythology", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1 },
+    { "site": "Merriam-Webster", "title": "Achilles' heel", "year": null, "url": "https://www.merriam-webster.com/dictionary/Achilles%27%20heel", "reopened": true, "via": "direct", "quotesChecked": 2, "quotesFound": 2 },
+    { "site": "EBSCO Research Starters", "title": "Achilles and the Stern Waters of Styx", "year": 2019, "url": "https://www.ebsco.com/research-starters/religion-and-philosophy/achilles-and-stern-waters-styx", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1, "note": "페이지 표시 'Published in: 2019'" }
+   ],
+   "pick": [1, 4, 2],
+   "pickWhy": "표준국어대사전 = 힘줄의 뜻과 '치명적인 약점' 뜻 · Merriam-Webster = 강물에 담갔고 붙잡은 발뒤꿈치만 물이 닿지 않았다는 이야기 · Britannica 'Achilles tendon' = 가장 굵은 힘줄 · 아킬레우스의 이름이 붙음",
+   "claimMap": [
+    { "where": "question", "phrase": "종아리 근육을 발뒤꿈치 뼈에 이어 주는 … 힘줄", "support": [ { "doc": 1, "quote": "종아리 뒤쪽에 있는 장딴지근과 가자미근의 힘줄이 합쳐져서 발꿈치뼈에 붙는 굵고 강한 힘줄." }, { "doc": 0, "quote": "It connects your calf muscles to your heel bone." } ] },
+    { "where": "question", "phrase": "인체에서 가장 굵은 힘줄", "support": [ { "doc": 0, "quote": "The Achilles tendon is the thickest and strongest tendon in your body." }, { "doc": 2, "quote": "The Achilles tendon is the thickest and most powerful tendon in the body." } ] },
+    { "where": "hint", "phrase": "이 힘줄의 이름은 치명적인 약점을 뜻하는 말로도 쓰입니다.", "support": [ { "doc": 1, "quote": "치명적인 약점을 비유적으로 이르는 말." } ] },
+    { "where": "explanation", "phrase": "그리스 신화에 아킬레우스의 약점을 설명하는 이야기가 있습니다.", "support": [ { "doc": 3, "quote": "It is rooted in the myth of Achilles’ mother dipping him in the River Styx" }, { "doc": 5, "quote": "The story of Achilles’s vulnerability clearly became a central part of the Greco-Roman mythological tradition." } ] },
+    { "where": "explanation", "phrase": "어머니가 아들을 불사의 강물에 담갔는데,", "support": [ { "doc": 4, "quote": "his sea-nymph mother dipped him into the river Styx to make him immortal" } ] },
+    { "where": "explanation", "phrase": "손으로 붙잡고 있던 발뒤꿈치에만 물이 닿지 않았습니다.", "support": [ { "doc": 4, "quote": "But since she held him by one heel, this spot did not touch the water and so remained mortal and vulnerable" } ] },
+    { "where": "explanation", "phrase": "그 발뒤꿈치의 힘줄에 아킬레우스의 이름이 붙었고,", "support": [ { "doc": 2, "quote": "The tendon is named after the ancient Greek mythological figure Achilles" } ] },
+    { "where": "explanation", "phrase": "아킬레스건은 치명적인 약점을 뜻하는 말로도 쓰입니다.", "support": [ { "doc": 1, "quote": "치명적인 약점을 비유적으로 이르는 말." } ] }
+   ],
+   "unsupported": []
+  },
+  {
+   "no": 3,
+   "answer": "도루묵",
+   "docs": [
+    { "site": "서울신문", "title": "[바다에 살어리랏다-주강현의 觀海記] (55)겨울 동해 별미, 도루묵·양미리", "year": 2005, "url": "https://www.seoul.co.kr/news/2005/01/24/20050124023001", "reopened": true, "via": "direct", "quotesChecked": 4, "quotesFound": 4, "note": "이 글에서 임금의 말은 “도루 물리라.” — 대본의 ‘도로 목어라 부르라’와 다름(전쟁통 피란 · 은어 · 환궁 뒤 그 맛이 아니었다는 부분만 받침)" },
+    { "site": "서울신문", "title": "[요리전문가 김수진의 계절별미 오감만족] 계절의 별미 ‘도루묵’", "year": 2007, "url": "https://www.seoul.co.kr/news/2007/11/24/20071124019002", "reopened": true, "via": "direct", "quotesChecked": 3, "quotesFound": 3, "note": "이 글에서 옛 이름은 ‘목’, 임금의 말은 ‘목이라고 부르라’" },
+    { "site": "서울신문", "title": "[주말 인사이드] “목어에서 은어까지 굴곡진 인생… 탱탱한 알 무기로 국민생선 도전!”", "year": 2013, "url": "https://www.seoul.co.kr/news/2013/12/14/20131214017003", "reopened": true, "via": "direct", "quotesChecked": 3, "quotesFound": 3 },
+    { "site": "한국민족문화대백과사전", "title": "도루묵", "year": null, "url": "https://encykorea.aks.ac.kr/Article/E0015600", "reopened": true, "via": "direct", "quotesChecked": 2, "quotesFound": 2, "note": "한 quote 는 문장 가운데 링크 태그를 걷고 대조 · 발행일로 볼 날짜 없음" },
+    { "site": "뉴스토마토", "title": "(물고기이야기)겨울바다의 주인 '도루묵'", "year": 2016, "url": "https://www.newstomato.com/ReadNews.aspx?no=708314", "reopened": true, "via": "direct", "quotesChecked": 3, "quotesFound": 3, "note": "글쓴이 이용화 국립수산과학원 동해수산연구소 박사 · 페이지 표시 2016-11-18" },
+    { "site": "국립국어원 표준국어대사전", "title": "도루-묵", "year": null, "url": "https://kdict.korean.go.kr/standard/search/searchView.do?wordNo=85645&searchKeywordTo=3", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1, "note": "뜻풀이 글자는 내용 보기(https://kdict.korean.go.kr/standard/search/contentView.do?wordNo=85645)에서 확인" }
+   ],
+   "pick": [2, 0, 4],
+   "pickWhy": "서울신문 2013 = 바뀐 두 문장(피란길 임금 · 목어 → 은어 · ‘도로 목어라 부르라’ · 도로목 → 도루묵)을 한 문서로 받침 · 서울신문 2005 = 전쟁통 · 환궁 뒤 옛 맛이 아니었다 · 뉴스토마토 2016(국립수산과학원 박사 글) = 헛수고 · 겨울철 동해 · 목어 → 은어",
+   "claimMap": [
+    { "where": "question", "phrase": "헛수고로 끝난 일을 빗대는 말에 쓰이며", "support": [ { "doc": 4, "quote": "모든 일이 헛수고가 됐을 때 '말짱 도루묵이네'라는 말을 일상에서 흔히 들을 수 있어" }, { "doc": 1, "quote": "노력을 기울인 보람도 없이 헛되게 되는 일을 얘기한다." } ] },
+    { "where": "question", "phrase": "겨울철 동해안에서 잡히는 생선", "support": [ { "doc": 4, "quote": "겨울철 동해바다를 여행하다 보면 강원도 곳곳의 어항이나 수산시장에서 가장 많이 보이는 물고기가 '도루묵'이다." }, { "doc": 3, "quote": "동해안의 중부 이북에 많으며" }, { "doc": 2, "quote": "우리 도루묵들은 11월 초부터 12월 말까지가 제철입니다." }, { "doc": 5, "quote": "도루묵과의 바닷물고기." } ] },
+    { "where": "hint", "phrase": "‘말짱’ 뒤에 이 생선 이름을 붙여 말합니다.", "support": [ { "doc": 0, "quote": "‘실컷 일을 해놨더니 망조가 들어 그르치는 상황’을 일컬어 ‘말짱 도루묵’이라고들 한다." } ], "note": "‘다시 제자리로 돌아가면’ 부분은 unsupported 참조" },
+    { "where": "explanation", "phrase": "도루묵의 이름에 얽힌 옛이야기가 있습니다.", "support": [ { "doc": 2, "quote": "나의 이름에 얽혀 전해져 오는 이야기도 재미있습니다." }, { "doc": 3, "quote": "도루묵이라는 이름의 유래가 정조 때" } ] },
+    { "where": "explanation", "phrase": "전쟁 중 피난길에 오른 어느 임금이 ‘목어’라는 생선을 맛있게 먹고 ‘은어’라고 부르게 했습니다.", "changed074": true, "support": [ { "doc": 0, "quote": "일설에는 전쟁통에 피란가던 임금이 이걸 먹고는 너무 맛이 있어 은어라는 이름을 붙였다 한다." }, { "doc": 4, "quote": "이에 왕은 목어라 하지 말고 은어(銀魚)라고 바꿔 부르게 했다." } ], "note": "장부의 두 quote 를 합쳐야 문장 전체가 받쳐짐(2005 글 = 전쟁 · 피란 · 은어, 뉴스토마토 = 목어 → 은어). 한 문서로는 서울신문 2013 의 ‘당초 나의 이름은 목어(木魚)였는데 조선시대 임진왜란 때 피란길에 올랐던 선조 임금이 신하들이 구해 온 목어를 먹고 ‘맛이 좋다’며 은어(銀魚)라 부르라고 했답니다.’가 전부 받침(장부에 없는 문장 · 오늘 원문에서 글자 그대로 확인)" },
+    { "where": "explanation", "phrase": "그런데 궁에 돌아와 다시 먹어 보니 그때만큼 맛있지 않아 ‘도로 목어라 부르라’ 했죠.", "changed074": true, "support": [ { "doc": 0, "quote": "그 후 전쟁이 끝나 환궁해서 그 맛을 다시 보려고 이걸 청해 먹었는데 옛날 그 맛이 아니었다." }, { "doc": 2, "quote": "‘도로 목어라 부르라’고 해 ‘도로목 - 도루묵’이 됐다는 얘기가 전해지고 있습니다." } ], "note": "‘도로 목어라 부르라’를 글자 그대로 적은 문서는 서울신문 2013 하나. 다른 문서는 ‘목이라고 부르라’(2007) · ‘다시 목어로 바꾸라’(대백과) · ‘원래 이름인 목어로 도로 부르도록’(뉴스토마토) · “도루 물리라.”(2005)" },
+    { "where": "explanation", "phrase": "이 이야기에서는 ‘도로 목어’가 도루묵이라는 이름으로 이어집니다.", "changed074": true, "support": [ { "doc": 2, "quote": "‘도로 목어라 부르라’고 해 ‘도로목 - 도루묵’이 됐다는 얘기가 전해지고 있습니다." }, { "doc": 1, "quote": "사람들은 그래서 ‘도로 목’이라고 했고 나중에는 ‘도루묵’이 되었다." } ] }
+   ],
+   "unsupported": [
+    { "where": "hint", "phrase": "애쓴 일이 다시 제자리로 돌아가면", "why": "어느 문서에도 없음 — 문서들의 풀이는 ‘모든 일이 헛수고가 됐을 때’(뉴스토마토) · ‘노력을 기울인 보람도 없이 헛되게 되는 일’(서울신문 2007) · ‘실컷 일을 해놨더니 망조가 들어 그르치는 상황’(서울신문 2005). ‘제자리로 돌아간다’ · ‘원점’이라는 표현은 6개 문서 어디에도 없음. 표준국어대사전에도 이 비유 용법은 실려 있지 않음(장부 기록)", "severity": "보통 — ‘애쓴 일이 헛수고가 되면’으로 쓰면 받쳐짐" }
+   ]
+  },
+  {
+   "no": 4,
+   "answer": "파넨카",
+   "docs": [
+    { "site": "UEFA.com", "title": "The man who gave the Panenka penalty its name", "year": 2026, "url": "https://www.uefa.com/uefaeuro/history/news/0253-0d7d2111437a-04b4248f94f0-1000--the-man-who-gave-the-panenka-penalty-its-name/", "reopened": true, "via": "archive", "quotesChecked": 7, "quotesFound": 7, "note": "uefa.com 직접 내려받기는 오늘 세 번 모두 실패(시간 초과 · 연결 재설정 — 0바이트). web.archive.org 2026-11-10 17:51 사본(https://web.archive.org/web/20261110175115/…같은 주소)에서 확인. 페이지 표시 날짜 'Saturday, June 20, 2026' — 본문에 'Forty-four years and one day ago'가 있어 처음 쓴 해는 2020년으로 보이는 다시 올린 글(연도를 적을 때 주의)" },
+    { "site": "The Irish Times", "title": "Euro Moments: Antonin Panenka the original and best", "year": 2016, "url": "https://www.irishtimes.com/sport/soccer/international/euro-moments-antonin-panenka-the-original-and-best-1.2650660", "reopened": true, "via": "direct", "quotesChecked": 3, "quotesFound": 3 },
+    { "site": "단비뉴스", "title": "[따끈따끈 시사용어] 파넨카 킥", "year": 2012, "url": "https://www.danbinews.com/news/articleView.html?idxno=2331", "reopened": true, "via": "direct", "quotesChecked": 5, "quotesFound": 5 },
+    { "site": "헤럴드경제", "title": "칩슛 ‘파넨카킥’, 유로2012 핫 키워드 부상…강심장 키커가 선택한 한수", "year": 2012, "url": "https://biz.heraldcorp.com/article/10248828", "reopened": true, "via": "direct", "quotesChecked": 3, "quotesFound": 3 },
+    { "site": "머니투데이 (OSEN)", "title": "'파넨카 킥 창시자' 파넨카, \"성공하지 못했다면 공장 노동자로 살았을 것\"", "year": 2019, "url": "https://m.mt.co.kr/renew/view.html?no=201910111831779461O", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1 }
+   ],
+   "pick": [1, 2, 0],
+   "pickWhy": "The Irish Times 2016 = 결승 · 승부차기 · 골대 한가운데 · 단비뉴스 2012 = 마지막 키커 · 서독 골키퍼 마이어 · 이름이 붙음 · UEFA = 힌트의 ‘큰 대회에서 처음 선보인’과 마이어가 몸을 던진 장면 · 우승 결정을 받치는 기관 문서. 단 UEFA 는 보관본으로만 다시 열렸으니, 싣기 전에 브라우저에서 원래 주소가 열리는지 한 번 눌러 볼 것 — 안 열리면 UEFA 대신 헤럴드경제 2012(인덱스 3)를 쓰되, 그 경우 ‘큰 대회에서 처음’과 ‘마이어가 한쪽으로 몸을 던졌다’는 설명글의 문서로는 받쳐지지 않음",
+   "claimMap": [
+    { "where": "question", "phrase": "페널티킥에서 골키퍼가 몸을 던지는 순간 공을 골대 가운데로 살짝 띄워 차 넣는 킥", "support": [ { "doc": 0, "quote": "the taker applies a subtle touch underneath the ball, causing it to rise and fall within the centre of the goal" }, { "doc": 2, "quote": "축구에서 상대 골키퍼가 슈팅의 방향을 예측해 한쪽으로 미리 쓰러지는 습성을 이용해, 공을 가볍게 찍어 차 넣는 것을 말한다." }, { "doc": 3, "quote": "파넨카킥은 공의 아랫부분을 가볍게 차 약간 띄워 차는 일종의 칩슛이다." } ] },
+    { "where": "hint", "phrase": "이 기술에는 … 선수의 성이 붙었습니다.", "support": [ { "doc": 3, "quote": "파넨카킥은 체코 축구 영웅인 안토닌 파넨카의 이름을 따와 붙은 것으로" }, { "doc": 0, "quote": "Forever known as the 'Panenka', it has been copied many times" } ] },
+    { "where": "hint", "phrase": "큰 대회에서 처음 선보인", "support": [ { "doc": 0, "quote": "how much to you know about the pioneer who introduced it to the world?" }, { "doc": 0, "quote": "The ninth penalty of a shoot-out to determine the victors in the final of the 1976 EURO, of course." } ], "note": "UEFA 글 하나만 받침(같은 글: ‘Forty-four years and one day ago almost nobody had seen in, not until the man who gave it its name stamped it on the footballing public consciousness’ — 오늘 보관본 원문에서 확인)" },
+    { "where": "explanation", "phrase": "1976년 유럽 선수권 결승이 승부차기까지 가자", "support": [ { "doc": 1, "quote": "Euro 1976: Czechoslovakia 2 West Germany 2 AET (Czechoslovakia win 5-3 on penalties)" }, { "doc": 1, "quote": "Extra time couldn’t separate the two sides and so the Euros would be decided by a penalty shootout for the first time." } ] },
+    { "where": "explanation", "phrase": "체코슬로바키아의 안토닌 파넨카가 마지막 키커로 나섰습니다.", "support": [ { "doc": 2, "quote": "당시 마지막 키커로 나선 체코의 안토닌 파넨카가 서독 골키퍼 제프 마이어를 상대로" }, { "doc": 4, "quote": "4-3으로 앞서자 마지막 키커로 나서 골을 성공시켰다." }, { "doc": 0, "quote": "Taking the decisive kick in the first shoot-out in a EURO final" } ], "note": "‘마지막 키커’는 한국어 기사 두 건의 표현 · UEFA 는 ‘승부차기 아홉 번째 킥 · 결정적인 킥’. 나라 이름 ‘체코슬로바키아’는 UEFA · Irish Times 가 받침(단비뉴스는 ‘체코’)" },
+    { "where": "explanation", "phrase": "서독 골키퍼 마이어가 한쪽으로 몸을 던지는 사이,", "support": [ { "doc": 0, "quote": "delicately chipping the ball over Germany goalkeeper Sepp Maier, as he dived to his left" }, { "doc": 2, "quote": "서독 골키퍼 제프 마이어" } ] },
+    { "where": "explanation", "phrase": "파넨카는 공을 골대 한가운데로 살짝 띄워", "support": [ { "doc": 1, "quote": "clipped it delicately down the middle of the goal" }, { "doc": 2, "quote": "골문 한가운데로 느리게 찍어 차는 슈팅을 성공시켰고" } ] },
+    { "where": "explanation", "phrase": "우승을 결정지었습니다.", "support": [ { "doc": 0, "quote": "Panenka's moment of magic sealed Czechoslovakia's only European title" }, { "doc": 3, "quote": "마지막 슛을 전혀 예상치 못한 방식으로 차 팀에게 승리를 안겼다." } ] },
+    { "where": "explanation", "phrase": "그 킥은 지금도 그의 이름으로 불립니다.", "support": [ { "doc": 0, "quote": "Forever known as the 'Panenka', it has been copied many times" }, { "doc": 2, "quote": "이후 파넨카 킥으로 명명됐다." } ] }
+   ],
+   "unsupported": []
+  },
+  {
+   "no": 5,
+   "answer": "몬더그린",
+   "docs": [
+    { "site": "Merriam-Webster", "title": "mondegreen", "year": null, "url": "https://www.merriam-webster.com/dictionary/mondegreen", "reopened": true, "via": "direct", "quotesChecked": 3, "quotesFound": 3, "note": "한 quote(‘1954, in the meaning defined above’)는 태그를 걷고 대조" },
+    { "site": "Dictionary.com", "title": "mondegreen", "year": null, "url": "https://www.dictionary.com/browse/mondegreen", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1 },
+    { "site": "The Christian Science Monitor", "title": "Hearing isn’t always believing with ‘mondegreens’", "year": 2020, "url": "https://www.csmonitor.com/The-Culture/In-a-Word/2020/0213/Hearing-isn-t-always-believing-with-mondegreens", "reopened": true, "via": "direct", "quotesChecked": 6, "quotesFound": 6, "note": "본문 제목(h1)이 이 제목 · 탭 제목은 ‘What is the word that describes when you mishear song lyrics?’ · 문장 가운데 링크 태그를 걷고 대조" },
+    { "site": "Harper's Magazine", "title": "The death of Lady Mondegreen", "year": 1954, "url": "https://harpers.org/archive/1954/11/the-death-of-lady-mondegreen/", "reopened": true, "via": "direct", "quotesChecked": 1, "quotesFound": 1, "note": "잡지 기록 페이지 — ‘November 1954 Issue’ · ‘by Sylvia Wright’ 까지만 보임. 본문은 구독자 전용 PDF 라 읽지 못함(글의 내용을 받치는 문서가 아니라 ‘1954년 11월호에 실렸다’만 받침)" },
+    { "site": "Columbia Journalism Review", "title": "Check Your Herring", "year": 2008, "url": "https://www.cjr.org/language_corner/check_your_herring.php", "reopened": true, "via": "direct", "quotesChecked": 3, "quotesFound": 3, "note": "페이지 표시 ‘July 28, 2008’ · 이 글은 노래를 ‘old English ballad’라고 적음(대본의 ‘스코틀랜드 옛 노래’는 Merriam-Webster · Dictionary.com · CSMonitor 가 받침)" }
+   ],
+   "pick": [2, 4, 0],
+   "pickWhy": "The Christian Science Monitor 2020 = 어머니가 읽어 준 스코틀랜드 노래 · 몬더그린 부인 · 실제 가사에는 없음 · 1954년 글 · Columbia Journalism Review 2008 = 라이트 자신의 말(‘what I shall hereafter call mondegreens’) · Merriam-Webster = 뜻풀이 · 1954년 첫 쓰임. Harper's 기록 페이지는 본문을 읽지 못해 고르지 않음(넣고 싶다면 ‘원문이 실린 호’로만)",
+   "claimMap": [
+    { "where": "question", "phrase": "노래 가사나 말을 … 잘못 알아듣는 일이나 그렇게 잘못 들은 말", "support": [ { "doc": 0, "quote": "a word or phrase that results from a mishearing especially of something recited or sung" } ], "note": "일부만 받쳐짐 — unsupported 참조" },
+    { "where": "hint", "phrase": "미국 작가 실비아 라이트가", "support": [ { "doc": 1, "quote": "Coined by Sylvia Wright, U.S. writer, in 1954" } ] },
+    { "where": "hint", "phrase": "어릴 적 노랫말을 잘못 들은 일을 글로 소개하면서 생긴 말입니다.", "support": [ { "doc": 2, "quote": "Sylvia Wright describes how, when she was a child, her mother would read to her a Scottish ballad" }, { "doc": 0, "quote": "from the mishearing in a Scottish ballad of \"laid him on the green\" as \"Lady Mondegreen\"" }, { "doc": 2, "quote": "Thus mondegreen became a term for" } ] },
+    { "where": "explanation", "phrase": "어릴 적 라이트는 어머니가 읽어 준 스코틀랜드 옛 노래에서", "support": [ { "doc": 2, "quote": "when she was a child, her mother would read to her a Scottish ballad" } ] },
+    { "where": "explanation", "phrase": "‘몬더그린 부인’이라는 이름을 들었다고 생각했습니다.", "support": [ { "doc": 2, "quote": "which began “They hae slain the Earl Amurray, / And Lady Mondegreen.”" }, { "doc": 4, "quote": "As a child, she wrote, she misheard a line from an old English ballad" } ] },
+    { "where": "explanation", "phrase": "그런데 실제 가사에는 그런 사람이 없었습니다.", "support": [ { "doc": 2, "quote": "the lady is not, in fact, part of the poem" }, { "doc": 4, "quote": "(In reality, they had slain the Earl of Murray, “And laid him on the green.”)" } ] },
+    { "where": "explanation", "phrase": "1954년 라이트는 이 일을 글로 소개하면서,", "support": [ { "doc": 2, "quote": "In a 1954 article in Harper’s Magazine, Sylvia Wright describes how" }, { "doc": 3, "quote": "November 1954 Issue" }, { "doc": 0, "quote": "1954, in the meaning defined above" } ] },
+    { "where": "explanation", "phrase": "자신이 잘못 들은 그 이름을 이런 착각을 부르는 말로 삼았습니다.", "support": [ { "doc": 4, "quote": "what I shall hereafter call mondegreens, since no one else has thought up a word for them" }, { "doc": 2, "quote": "Thus mondegreen became a term for" } ] }
+   ],
+   "unsupported": [
+    { "where": "question", "phrase": "잘못 알아듣는 일이나", "why": "문서는 좁게 말함 — 사전 두 곳은 ‘잘못 들어서 생긴 말’만 뜻풀이로 적음: Merriam-Webster ‘a word or phrase that results from a mishearing especially of something recited or sung’ · Dictionary.com ‘a word or phrase resulting from a mishearing of another word or phrase, especially in a song or poem.’ ‘잘못 알아듣는 일’(행위) 자체를 몬더그린이라 한다는 뜻풀이는 5개 문서에 없음. 질문 뒷부분 ‘그렇게 잘못 들은 말’은 받쳐짐", "severity": "약함" },
+    { "where": "question", "phrase": "소리가 비슷한 다른 말로", "why": "장부의 quote 에는 없음 — Merriam-Webster 뜻풀이에는 ‘소리가 비슷한’ · ‘다른 말로’가 없고, Dictionary.com 뜻풀이의 ‘of another word or phrase’(다른 말)까지만 있음. ‘소리가 비슷한’을 뜻풀이로 적은 문서는 없음(뜻이 어긋나지는 않음)", "severity": "약함" }
+   ]
+  }
+ ]
+}
