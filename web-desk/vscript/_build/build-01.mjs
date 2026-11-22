@@ -6,7 +6,7 @@ const m = JSON.parse(readFileSync('web-desk/vscript/받은것/마무리-01.json'
 const b = JSON.parse(readFileSync('web-desk/vscript/보탬-01.json', 'utf8'));
 const d = JSON.parse(readFileSync('web-desk/vscript/_build/draw-01.json', 'utf8'));
 const j = JSON.parse(readFileSync(V + 'questions-3.json', 'utf8'));
-const extraSrc = { 셀피: ['· The Conversation, 「Brekkies, barbies, mozzies: why do Aussies shorten so many words?」 (2023)'] };
+const extraSrc = {};
 const facts = { note: '1회 문제별 사실 모음(설계 창이 문서를 다시 열어 뽑음 · quote = 그 문서의 문장 그대로). 대본에 없는 사실을 화면(글자 · 숫자 · 그림)에 보탤 때는 여기 있는 것만, quote 가 말하는 만큼만 쓴다. conflict = 문서끼리 서로 다른 곳 — 거기 적힌 안전한 굵기를 지킨다.', questions: [] };
 const srcLines = [];
 for (const q of j.questions) {
