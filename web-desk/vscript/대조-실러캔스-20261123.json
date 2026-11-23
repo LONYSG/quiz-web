@@ -1,0 +1,56 @@
+{
+ "target": "web-desk/vscript/자유판/새판-해설-실러캔스.md",
+ "basis": "web-desk/vscript/보탬-03-실러캔스.json (c-1 ~ c-56 · conflict) + tmp/botaem-coel/txt-*.txt 원문",
+ "at": "2026-11-23",
+ "sentences": 15,
+ "counts": { "ok": 10, "stretch": 5, "none": 0 },
+ "flags": [
+  {
+   "sentence": "1938년 12월, 남아프리카의 한 부두에서 박물관 직원 래티머는 어선이 잡아 온 상어 더미 사이로 삐져나온 파란 지느러미를 발견했습니다.",
+   "verdict": "stretch",
+   "why": "근거는 '대부분 상어인 물고기 더미'다 — '상어 더미'는 전부 상어였다는 말이 되어 근거보다 세다(c-6 quote 자체에는 상어가 없고 pile · fish 뿐).",
+   "basis": "c-6 \"Noticing a blue fin poking out of the pile, she pushed aside layers of fish and slime\" · 원문 txt-nova-letters.txt 32~33행 \"began picking through a mound of fish, mostly sharks\"",
+   "fix": "'상어 더미 사이로' → '상어가 대부분인 물고기 더미 사이로'"
+  },
+  {
+   "sentence": "상어를 걷어 내자 길이가 1.5미터나 되고 지느러미가 팔다리처럼 생긴 물고기가 나왔는데요.",
+   "verdict": "stretch",
+   "why": "걷어 낸 것은 '물고기와 점액'이다 — 상어라고 못 박은 근거는 없다. (1.5미터 = five foot · conflict '약 5피트(1.5m)' 로 ok · 팔다리 같은 지느러미 = c-7 ok)",
+   "basis": "c-6 \"she pushed aside layers of fish and slime\" · c-7 \"It was five foot long … four limb-like fins\" · 원문 txt-nova-transcript.txt 105~106행 \"Then I moved all the fish.\"",
+   "fix": "'상어를 걷어 내자' → '위에 쌓인 물고기를 걷어 내자'"
+  },
+  {
+   "sentence": "래티머는 택시 기사를 설득해 물고기를 뒷자리에 싣고 박물관으로 돌아왔습니다.",
+   "verdict": "stretch",
+   "why": "'설득해 싣고 박물관으로'는 ok. '뒷자리'는 근거보다 좁다 — quote 는 'in the back of his cab'(택시 뒤쪽)뿐이고, 타임스 재수록본은 글자가 깨졌지만 'stowed in his …ol'(짐칸으로 읽힘)이다.",
+   "basis": "c-9 \"she convinced a taxi driver to put the 127-pound dead fish in the back of his cab and take them back to the museum\" · 원문 txt-times.txt 49~51행 \"After much entreaty, its reluctant … agreed to allow this noisome cargo to be stowed in his i ol and they sped back to the museum\"",
+   "fix": "'물고기를 뒷자리에 싣고' → '물고기를 택시에 싣고'"
+  },
+  {
+   "sentence": "그때까지 화석에서만 보던 실러캔스의 꼬리였거든요.",
+   "verdict": "stretch",
+   "why": "스미스가 꼬리를 보고 한 말은 '수백만 년 전에 멸종한 물고기들의 꼬리'다 — 그 자리에서 '실러캔스의 꼬리'라고 짚었다는 근거도, 꼬리를 '화석에서만 보았다'는 근거도 없다(화석으로만 알려졌다는 말은 타임스에 물고기 전체에 대해 있을 뿐).",
+   "basis": "c-18 \"You see that tail. That tail belongs to fishes that have been extinct for millions and millions of years.\" · 원문 txt-times.txt 103~104행 \"the coelacanth, until then known only from fossil remains\"",
+   "fix": "'그때까지 화석에서만 보던 실러캔스의 꼬리였거든요.' → '아득한 옛날에 멸종한 물고기들의 꼬리였거든요.'"
+  },
+  {
+   "sentence": "실러캔스가 ‘살아 있는 화석’이라 불리는 건 바로 이 때문입니다.",
+   "verdict": "stretch",
+   "why": "'이 때문'이 바로 앞 문단(코모로 어부들 · 비늘 사포)을 가리키게 읽힌다 — 근거가 말하는 까닭은 '오래전 멸종한 줄 알았는데 살아 있는 것이 발견됐다'뿐이다. 뒤 문장을 가리키도록 고치면 ok.",
+   "basis": "c-46 \"Thought to have been long extinct, scientists discovered these \\\"living fossils\\\" in 1938.\" · 원문 txt-britannica.txt 175행 \"\\\"Living fossils\\\" They were thought to have been extinct for millions of years until a living specimen (Latimeria chalumnae) was discovered in 1938.\"",
+   "fix": "'불리는 건 바로 이 때문입니다.' → '불리는 까닭은 이렇습니다.'(뒤 문장이 까닭이 되게)"
+  }
+ ],
+ "ok_notes": [
+  "질문 '남아프리카 앞바다에서 그물에 걸려' — c-1 \"netted in the Indian Ocean near the southern coast of Africa\" + 텔레그래프 원문 \"alive and well in the sea off South Africa\" · conflict '트롤 어선 그물' 로 ok.",
+  "힌트 '화석으로만 알려져 있던' — facts 의 quote 에는 없고 원문에만 있다: txt-times.txt 103~104행 \"until then known only from fossil remains\". ok 로 셌지만 facts 에 한 줄 더해 두면 좋다.",
+  "'한여름에' — c-11 quote 에는 없고 텔레그래프 원문에 있다: \"It was high summer and the weather was sultry\"(txt-telegraph.txt 237행). 차갑게 둘 곳이 없었다 = NOVA 방송 \"there was no easy way to refrigerate and preserve the specimen\". ok.",
+  "'병원 영안실' — 텔레그래프 원문 \"the local hospital mortuary\" · 스미스소니언 \"the local hospital morgue\". 거절 = c-11 · c-12. ok.",
+  "'박제사의 도움을 받아 표본을 남겼습니다' — c-13 \"With the taxidermist's help\" + 원문 타임스 \"asked a local taxidermist to skin and mount the creature\" · NOVA 방송 \"she had it skinned and mounted\". ok.",
+  "'편지에 그려 보낸 … 꼬리 모양에 주목' — c-14 + NOVA 방송 \"he pointed to the drawing of the tail\". '어류학자' = 린다홀 \"an ichthyologist acquaintance, J.L.B. Smith\"(텔레그래프는 화학 강사 · NOVA 는 화학을 배웠고 어류학에 열정) ok.",
+  "'거의 두 달 만에' — 원문 txt-nova-letters.txt 319~320행 \"It had been nearly two months since the fish had come ashore\" · c-24 · c-25. ok.",
+  "'14년 뒤 코모로 제도에서도 한 마리' — c-32 ok(conflict: 14년이 안전).",
+  "'낯선 물고기가 아니었죠' — c-40 \"well known to the islanders\" · 기네스 \"had always been familiar to the Comoro native people\". '해마다 두세 마리씩' = c-39 · '자전거 타이어 · 사포' = c-41(\"~했다고 합니다\" 말투도 맞다). ok.",
+  "마지막 문장 — '약 4억 년 전에 나타나' = c-45 · '공룡과 함께 사라진 줄' = c-3 · conflict 안전 문구 · '깊은 바닷속' = c-55(약 200m) + 원문 내셔널지오그래픽 \"elusive, deep-sea creatures\" · '지금도' = c-44 \"There are two living species\". ok."
+ ]
+}
