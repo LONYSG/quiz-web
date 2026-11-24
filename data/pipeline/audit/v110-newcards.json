@@ -25,7 +25,7 @@
   "need": 7,
   "note": "status need 7장은 건너뜀 — ready 273장만 판정"
  },
- "note": "quote 대조: 위키 API 본문으로 1,234건 중 1,234건 확인(19건은 서식·괄호 제거로 글자만 다름 · n1804 n1807 재료 주소가 동음이의 문서라 올바른 문서 Baton_(conducting) · Recorder_(musical_instrument) 에서 확인). 둘째 문서 quote 는 하위 에이전트가 WebFetch 로 받은 문장 — 이 창이 직접 다시 열어 확인한 것은 아래 selfChecked 만.",
+ "note": "quote 대조: 위키 API 본문으로 1,234건 중 1,234건 확인(19건은 서식·괄호 제거로 글자만 다름 · n1804 n1807 재료 주소가 동음이의 문서라 올바른 문서 Baton_(conducting) · Recorder_(musical_instrument) 에서 확인). 둘째 문서 quote 는 하위 에이전트가 WebFetch 로 받은 문장 — 이 창이 직접 다시 열어 확인한 것은 아래 selfChecked 만. / 재확인: 둘째 문서 144건을 이 창이 직접 다시 받아 대조 — 글자 그대로 확인 104 · 부분일치 31(9단어 이상 22) · 못 엶/글자없음/5~7단어 14건은 second 를 비우고(secondDropped 에 보관) ok 였던 것은 fix 로 바꿈.",
  "selfChecked": [
   "n3103",
   "n2902",
@@ -34,8 +34,8 @@
   "n3001"
  ],
  "totals": {
-  "ok": 168,
-  "fix": 104,
+  "ok": 167,
+  "fix": 105,
   "reject": 1
  },
  "chunkStat": {
@@ -232,7 +232,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.history.com/articles/the-olympic-torch-relays-surprising-origins",
-    "quote": "The Olympic torch relay was the brainchild of Carl Diem, the chief organizer of the Berlin Games,"
+    "quote": "The Olympic torch relay was the brainchild of Carl Diem, the chief organizer of the Berlin Games,",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -277,7 +278,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://19cbaseball.com/equipment-3.html",
-    "quote": "used rubber from old shoes to comprise the core of his baseballs"
+    "quote": "used rubber from old shoes to comprise the core of his baseballs",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -320,13 +322,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://www.history.com/articles/super-bowl-name-nfl-football-origins",
-    "quote": "their latest obsession, an ultra-bouncy ball called the 'SuperBall.'"
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": false
+   "spellingSeen": false,
+   "secondDropped": {
+    "url": "https://www.history.com/articles/super-bowl-name-nfl-football-origins",
+    "quote": "their latest obsession, an ultra-bouncy ball called the 'SuperBall.'",
+    "reopened": "부분일치(7단어)"
+   }
   },
   {
    "key": "n1604",
@@ -367,7 +371,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.wbaboxing.com/boxing-news/why-the-ring-is-called-a-ring",
-    "quote": "Nearly a century later, in 1838, the London Pugilistic Society introduced the first square ring, laid out on the ground."
+    "quote": "Nearly a century later, in 1838, the London Pugilistic Society introduced the first square ring, laid out on the ground.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -405,7 +410,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.mentalfloss.com/article/64629/9-bizarre-objects-owned-henry-viii",
-    "quote": "Records show that in 1526, Henry VIII commissioned a pair of leather football boots at a cost of 4 shillings"
+    "quote": "Records show that in 1526, Henry VIII commissioned a pair of leather football boots at a cost of 4 shillings",
+    "reopened": "부분일치(12단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -448,13 +454,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": true,
-   "second": {
-    "url": "https://www.open.edu/openlearn/history-the-arts/the-ancient-olympics-bridging-past-and-present/content-section-6.2",
-    "quote": "The athletes jumped to the rhythm of music, probably played by an aulos (flute)"
-   },
+   "second": null,
    "why": "Explanation 'held throughout the jump' (Wikipedia quote) conflicts with other sources (OU: swung back before takeoff and dropped in descent; scholars disagree); backbone claim unsettled and hint's flute only 'probably'/'at times'.",
    "alsoAdd": [],
-   "spellingSeen": null
+   "spellingSeen": null,
+   "secondDropped": {
+    "url": "https://www.open.edu/openlearn/history-the-arts/the-ancient-olympics-bridging-past-and-present/content-section-6.2",
+    "quote": "The athletes jumped to the rhythm of music, probably played by an aulos (flute)",
+    "reopened": "못 엶(403)"
+   }
   },
   {
    "key": "n1607",
@@ -495,7 +503,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.todayifoundout.com/?p=50415",
-    "quote": "Peebles would eventually move to Minnesota after graduating and introduced organized cheerleading to the university there."
+    "quote": "Peebles would eventually move to Minnesota after graduating and introduced organized cheerleading to the university there.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "Second doc confirms Peebles->Minnesota but not the year 1884; other pages date his Minnesota coaching to 1883 and Princeton says cheerleading origin disputed (1885/1897/1898) - year 1884 rests on Wikipedia quote only.",
    "alsoAdd": [],
@@ -540,7 +549,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.history.co.uk/this-day-in-history/21-december/basketball-is-invented",
-    "quote": "It wasn't until 1906 that metal hoops, nets and backboards were introduced."
+    "quote": "It wasn't until 1906 that metal hoops, nets and backboards were introduced.",
+    "reopened": "부분일치(11단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -585,7 +595,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.nationalacademies.org/read/13338/chapter/30",
-    "quote": "In 1952, Dr. Lambertsen and a colleague wrote a paper for the National Academy of Sciences describing his “Self-Contained Underwater Breathing Apparatus,” which resulted in the acronym SCUBA."
+    "quote": "In 1952, Dr. Lambertsen and a colleague wrote a paper for the National Academy of Sciences describing his “Self-Contained Underwater Breathing Apparatus,” which resulted in the acronym SCUBA.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "Second doc says the 1952 acronym came from a paper, not a patent; '특허' (patent) in explanation conflicts with it and wasn't confirmed.",
    "alsoAdd": [],
@@ -630,7 +641,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://sheffieldhomeoffootball.org/museum/a-brief-history-of-the-goalkeeper",
-    "quote": "stated that this player could handle the ball to protect their own goal"
+    "quote": "stated that this player could handle the ball to protect their own goal",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -675,7 +687,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://swedishlapland.com/stories/ski-in-swedish-lapland",
-    "quote": "The old wooden skis found in Kalvträsk outside Skellefteå date back 5,200 years."
+    "quote": "The old wooden skis found in Kalvträsk outside Skellefteå date back 5,200 years.",
+    "reopened": "확인"
    },
    "why": "Russia 6300-5000 BCE is Wikipedia-only; Wikipedia quote's 'Sweden c.5200 BCE' conflicts with other sources (Kalvträsk 5,200 years old ~3200 BCE; Guinness says Hoting c.2500 BC is oldest); 'before the wheel' not confirmed elsewhere.",
    "alsoAdd": [],
@@ -720,7 +733,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.nbcbayarea.com/news/sports/tennis/why-tennis-balls-are-yellow/3582384/",
-    "quote": "as research had shown these balls to be more visible to television viewers"
+    "quote": "as research had shown these balls to be more visible to television viewers",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -763,13 +777,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://www.ourwarwickshire.org.uk/content/article/richard-lindon-rugbys-forgotten-innovator",
-    "quote": "Too tough to inflate by mouth, he invented a brass hand pump to inflate it."
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": null
+   "spellingSeen": null,
+   "secondDropped": {
+    "url": "https://www.ourwarwickshire.org.uk/content/article/richard-lindon-rugbys-forgotten-innovator",
+    "quote": "Too tough to inflate by mouth, he invented a brass hand pump to inflate it.",
+    "reopened": "못 엶(403)"
+   }
   },
   {
    "key": "n1616",
@@ -852,7 +868,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://escrime-xxi.fie.org/96/en/56-1",
-    "quote": "Electrical sabre fencing is introduced at the Seoul Olympic Games"
+    "quote": "Electrical sabre fencing is introduced at the Seoul Olympic Games",
+    "reopened": "확인"
    },
    "why": "Only sabre 1988 confirmed (FIE); other pages give foil 1955 (worlds) not 1956 and sabre 1984/1986, épée Olympic use 1936 - dates are 'electrified' vs Olympic-introduction ambiguous; 1933 only via Whitman paraphrase.",
    "alsoAdd": [],
@@ -897,7 +914,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://m.espn.com/oly/summer00/news/2000/0924/773871.html",
-    "quote": "Eighteen women vaulted before the error was fixed, and the shortened height led to several spectacular crashes."
+    "quote": "Eighteen women vaulted before the error was fixed, and the shortened height led to several spectacular crashes.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -942,7 +960,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://donttakepictures.com/dtp-blog/2019/5/8/winning-by-a-nose-the-history-of-the-photo-finish",
-    "quote": "First used on Del Mar's opening day in 1937, Del Riccio's camera revolutionized finish line photography"
+    "quote": "First used on Del Mar's opening day in 1937, Del Riccio's camera revolutionized finish line photography",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -1085,7 +1104,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0079963",
-    "quote": "느끼할 수 있는 프라이드치킨을 한국적인 맛으로 재탄생시켰다는 평가를 받는다"
+    "quote": "느끼할 수 있는 프라이드치킨을 한국적인 맛으로 재탄생시켰다는 평가를 받는다",
+    "reopened": "확인"
    },
    "why": "'튀김이 느끼하다는 반응이 나오자' 인과가 material 인용문에 없음(2차 문서는 '평가'로만 서술 — 인과 아닌 평가로 약화 필요) · 1980년대는 2차 문서도 '중후반 유행'이라 연대 표현 주의",
    "alsoAdd": [],
@@ -1123,7 +1143,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.ohmynews.com/NWS_Web/view/at_pg.aspx?CNTN_CD=A0003254072",
-    "quote": "2023년: 2,443㎢ (전 국토의 약 2.5%, 서해안에 83.8% 집중)"
+    "quote": "2023년: 2,443㎢ (전 국토의 약 2.5%, 서해안에 83.8% 집중)",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -1196,7 +1217,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0003901",
-    "quote": "우리나라 고인돌은 한반도 전 지역에서 발견되며, 약 4만여 기가 분포한 것으로 추산되고 있다."
+    "quote": "우리나라 고인돌은 한반도 전 지역에서 발견되며, 약 4만여 기가 분포한 것으로 추산되고 있다.",
+    "reopened": "확인"
    },
    "why": "4만 개는 2차 문서 확인(추산). '세계 최다'는 위키만 — 백과 문서에는 없음, 검색에서도 기관 순위 못 찾음",
    "alsoAdd": [],
@@ -1269,7 +1291,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0067023",
-    "quote": "조선 초기까지 인주로 불리던 인천은 1413년(태종 13)에 인천군으로 개정되었다."
+    "quote": "조선 초기까지 인주로 불리던 인천은 1413년(태종 13)에 인천군으로 개정되었다.",
+    "reopened": "확인"
    },
    "why": "'1413년'이 material 인용문에 없음(2차 문서로는 확인됨 — 인용 보강 필요)",
    "alsoAdd": [],
@@ -1370,7 +1393,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://dh.aks.ac.kr/Edu/wiki/index.php/%EC%9C%A8%EA%B3%A1%EC%9D%B4%EC%9D%B4",
-    "quote": "아홉 차례의 과거에 급제해 구도장원공(九度壯元公)이라는 별칭을 얻었다."
+    "quote": "아홉 차례의 과거에 급제해 구도장원공(九度壯元公)이라는 별칭을 얻었다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -1478,7 +1502,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0067941",
-    "quote": "조선시대 공조(工曹)에서 부채를 만들어 바치면 임금은 이것을 각 궁(宮)에 속한 재상과 시종들에게 하사했다."
+    "quote": "조선시대 공조(工曹)에서 부채를 만들어 바치면 임금은 이것을 각 궁(宮)에 속한 재상과 시종들에게 하사했다.",
+    "reopened": "부분일치(11단어)"
    },
    "why": "힌트의 '고려와 일본'이 인용문에 없음(인용은 '두 가지 학설'까지만) · 단오 부채는 2차 문서로 확인",
    "alsoAdd": [],
@@ -1670,7 +1695,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.classicfm.com/discover-music/periods-genres/baroque/jean-baptiste-lully-died-gangrene-conducting-staff/",
-    "quote": "he refused to have his leg amputated"
+    "quote": "he refused to have his leg amputated",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -2009,7 +2035,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.historyofinformation.com/detail.php?id=1286",
-    "quote": "The Cumbria deposit was the only large scale deposit of graphite ever found in this solid form."
+    "quote": "The Cumbria deposit was the only large scale deposit of graphite ever found in this solid form.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -2243,7 +2270,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://standardebooks.org/ebooks/jules-verne/around-the-world-in-eighty-days/george-makepeace-towle/text/chapter-37",
-    "quote": "gained one day on his journey, and this merely because he had travelled constantly eastward."
+    "quote": "gained one day on his journey, and this merely because he had travelled constantly eastward.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -2281,7 +2309,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://wordsworth-editions.com/jekyll-and-hyde/",
-    "quote": "All that was given me was the matter of three scenes, and the central idea of a voluntary change becoming involuntary."
+    "quote": "All that was given me was the matter of three scenes, and the central idea of a voluntary change becoming involuntary.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -2543,7 +2572,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://worldheritageoutlook.iucn.org/node/1073",
-    "quote": "the oldest (25 million years) and deepest (1,700 m) lake in the world"
+    "quote": "the oldest (25 million years) and deepest (1,700 m) lake in the world",
+    "reopened": "확인"
    },
    "why": "'생물 60% 이상 고유종'은 인용문의 '이 중'이 무엇을 가리키는지 불분명하고, IUCN은 동물 약 56%, 식물 약 15%로 적어 '생물 전체 60% 이상'과 어긋남",
    "alsoAdd": [],
@@ -2721,7 +2751,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.history.com/articles/pope-conclave-smoke-color",
-    "quote": "The smoke billows from a special chimney installed on the roof of the Sistine Chapel for that purpose."
+    "quote": "The smoke billows from a special chimney installed on the roof of the Sistine Chapel for that purpose.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -2801,7 +2832,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.guinnessworldrecords.com/world-records/636364-first-one-piece-plastic-bag",
-    "quote": "filed a patent for the \"bag with handle of weldable plastic material\" on 10 July 1962"
+    "quote": "filed a patent for the \"bag with handle of weldable plastic material\" on 10 July 1962",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -2846,7 +2878,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.lindahall.org/about/news/scientist-of-the-day/thomas-hancock/",
-    "quote": "What is certain is that he patented his vulcanization process in England in 1843, several months before Goodyear"
+    "quote": "What is certain is that he patented his vulcanization process in England in 1843, several months before Goodyear",
+    "reopened": "확인"
    },
    "why": "hint '8 weeks' conflicts with Linda Hall 'several months' (21 Nov 1843 to 30 Jan 1844 is ~10 weeks; Goodyear US patent usually dated 15 Jun 1844); frying-pan accident has no second doc (Linda Hall page does not mention it)",
    "alsoAdd": [],
@@ -2891,7 +2924,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.designingbuildings.co.uk/wiki/Specularia",
-    "quote": "beds mounted on wheels which they moved out into the sun."
+    "quote": "beds mounted on wheels which they moved out into the sun.",
+    "reopened": "부분일치(10단어)"
    },
    "why": "Tiberius not named in any quote; second doc (Pliny) says wheeled beds moved out into sun, but notes Paris & Janick argue crop was melons not cucumbers; night-indoors and physician advice not confirmed by second",
    "alsoAdd": [],
@@ -2985,7 +3019,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://kotsanas.com/exhibits/top20/the-automatic-opening-of-the-temple-gates/",
-    "quote": "The chains of the balance rotated the axles and the temple gates opened."
+    "quote": "The chains of the balance rotated the axles and the temple gates opened.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3065,7 +3100,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://aps.org/apsnews/2015/12/neon-lights",
-    "quote": "Claude quickly filed a patent, and displayed his neon tubes in December 1910, at the Paris Motor Show."
+    "quote": "Claude quickly filed a patent, and displayed his neon tubes in December 1910, at the Paris Motor Show.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3152,7 +3188,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.dpma.de/en/explore/milestones/inventions-that-made-history/dunlops-pneumatic-tyre",
-    "quote": "can no longer watch his son struggle on a tricycle with hard rubber tyres on the bumpy road surface in Belfast"
+    "quote": "can no longer watch his son struggle on a tricycle with hard rubber tyres on the bumpy road surface in Belfast",
+    "reopened": "확인"
    },
    "why": "second doc confirms tricycle/bumpy road but not headaches; invalid-patent year 1892 not confirmed (another source says Dunlop was informed ~two years after the grant); 'headaches' only on Wikipedia",
    "alsoAdd": [],
@@ -3197,7 +3234,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://sites.lafayette.edu/dixiecollection/?p=14",
-    "quote": "The history of the Dixie Cup began when Lawrence Luellen first became interested in an individual drinking cup in 1907"
+    "quote": "The history of the Dixie Cup began when Lawrence Luellen first became interested in an individual drinking cup in 1907",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3242,7 +3280,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.guinnessworldrecords.com/news/2025/2/on-the-bright-side-famous-light-bulb-still-shining-after-over-100-years-in-fire-station",
-    "quote": "has been burning at 4 watts for 24 hours a day since it was installed in 1901."
+    "quote": "has been burning at 4 watts for 24 hours a day since it was installed in 1901.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3315,7 +3354,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.guinnessworldrecords.com/world-records/108122-first-public-aquarium",
-    "quote": "The exhibit opened in May 1853 and became known as the \"Fish House\"."
+    "quote": "The exhibit opened in May 1853 and became known as the \"Fish House\".",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3395,7 +3435,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://dinersclubus.bmo.com/home/about/dinersclub/story",
-    "quote": "In 1949, businessman Frank McNamara forgot his wallet while dining out at a New York City restaurant."
+    "quote": "In 1949, businessman Frank McNamara forgot his wallet while dining out at a New York City restaurant.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3433,7 +3474,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://generalist.academy/2022/01/19/first-piggy-bank/",
-    "quote": "The origins of the modern piggy bank are lost to history, but the oldest extant piggy bank comes from 12th century CE Java."
+    "quote": "The origins of the modern piggy bank are lost to history, but the oldest extant piggy bank comes from 12th century CE Java.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3476,13 +3518,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": true,
-   "second": {
-    "url": "https://floridaphysician.med.ufl.edu/2016/05/19/celebrating-the-gatorade-legacy-at-the-university-of-florida/",
-    "quote": "Coach Ray Graves agreed to let the researchers test the freshman team."
-   },
+   "second": null,
    "why": "explanation '그레이브스 요청' — UF 자료는 듀웨인 더글러스 코치가 의사들에게 도움 요청, 그레이브스는 시험 승낙; 영어 위키 단일 근거와 충돌",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://floridaphysician.med.ufl.edu/2016/05/19/celebrating-the-gatorade-legacy-at-the-university-of-florida/",
+    "quote": "Coach Ray Graves agreed to let the researchers test the freshman team.",
+    "reopened": "글자없음"
+   }
   },
   {
    "key": "n2104",
@@ -3523,7 +3567,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://99percentinvisible.org/article/accidental-design-silk-tea-sacks-inventor-stumbled-upon-tea-bags/",
-    "quote": "Thomas Sullivan began sending tea samples in silk bags around the world."
+    "quote": "Thomas Sullivan began sending tea samples in silk bags around the world.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3603,7 +3648,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.inews24.com/view/1904797",
-    "quote": "사실을 파헤쳐보니 부산 지역 여중생 사이에서 '빼빼로처럼 키 크고 날씬해지자'라는 의미로 친구들끼리 빼빼로를 주고받는 문화가 퍼지고 있었던 것입니다."
+    "quote": "사실을 파헤쳐보니 부산 지역 여중생 사이에서 '빼빼로처럼 키 크고 날씬해지자'라는 의미로 친구들끼리 빼빼로를 주고받는 문화가 퍼지고 있었던 것입니다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3641,7 +3687,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://theme.archives.go.kr/next/koreaOfRecord/childrensDay.do",
-    "quote": "1923년 5월 1일 첫 번째 어린이날 기념행사에서 ‘어른들에게 드리는 글’이 배포되었는데"
+    "quote": "1923년 5월 1일 첫 번째 어린이날 기념행사에서 ‘어른들에게 드리는 글’이 배포되었는데",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3679,7 +3726,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://mediahub.seoul.go.kr/archives/174121",
-    "quote": "4월 5일은 신라가 삼국통일의 위업을 달성한 날(음력 2월 25일)이자, 조선 성종이 서울 동대문 밖 선농단에서 직접 밭을 일군 날(음력 3월 10일)이기도 하다."
+    "quote": "4월 5일은 신라가 삼국통일의 위업을 달성한 날(음력 2월 25일)이자, 조선 성종이 서울 동대문 밖 선농단에서 직접 밭을 일군 날(음력 3월 10일)이기도 하다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3759,7 +3807,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.euronews.com/business/2025/04/13/how-a-dutch-trading-company-started-the-worlds-first-stock-exchange",
-    "quote": "All the residents of these lands may buy shares in this Company."
+    "quote": "All the residents of these lands may buy shares in this Company.",
+    "reopened": "부분일치(11단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -3804,7 +3853,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.lbma.org.uk/wonders-of-gold/items/lydian-electrum-coin",
-    "quote": "The earliest coins, like these shown above, date from the late seventh century BCE, i.e., 600-625 BCE."
+    "quote": "The earliest coins, like these shown above, date from the late seventh century BCE, i.e., 600-625 BCE.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3884,7 +3934,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.foodrepublic.com/1292651/hydrox-oreo-creme-cookie-history/",
-    "quote": "was actually created four years earlier in 1908"
+    "quote": "was actually created four years earlier in 1908",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3929,7 +3980,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://confectionerynews.com/Article/2019/05/03/How-Rowntree-s-KitKat-broke-the-snacking-mould-LISTEN",
-    "quote": "a factory worker left a note in the company suggestion box: why not make something to eat in a “pack up”."
+    "quote": "a factory worker left a note in the company suggestion box: why not make something to eat in a “pack up”.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -3981,7 +4033,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.history.com/news/the-wartime-origins-of-the-mm",
-    "quote": "enabling the heat-resistant and easy-to-transport chocolate to be included in American soldiers' rations."
+    "quote": "enabling the heat-resistant and easy-to-transport chocolate to be included in American soldiers' rations.",
+    "reopened": "확인"
    },
    "why": "hint 'Spanish Civil War -> 아이디어를 얻었다' 는 인용문이 '병사들이 스마티즈 먹는 것을 봤다' 까지만이고 history.com 도 'purportedly'(전해진다) 로 씀 - 단정 과함. 단단한 겉면은 인용에 없음(정의 수준).",
    "alsoAdd": [],
@@ -4026,7 +4079,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.mentalfloss.com/culture/fashion-beauty/11-classic-facts-about-converse-chucks",
-    "quote": "His name was added onto an ankle patch on the sneaker in 1932."
+    "quote": "His name was added onto an ankle patch on the sneaker in 1932.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "1932 패치는 2차 문서로 확인. 그러나 1922 합류·발 아픔 일화(힌트의 뼈대)는 위키 외 확인 못 함(Nike 는 'early 1920s', 'sore feet' 없음). 서명(signature) 대 이름(name) 차이 약함.",
    "alsoAdd": [],
@@ -4120,7 +4174,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Fibonacci/",
-    "quote": "introduced the Hindu-Arabic place-valued decimal system and the use of Arabic numerals into Europe."
+    "quote": "introduced the Hindu-Arabic place-valued decimal system and the use of Arabic numerals into Europe.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -4354,7 +4409,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.haribo.com/en-us/about-us/history",
-    "quote": "He founds HARIBO (HAns RIegel BOnn) on December 13th, 1920."
+    "quote": "He founds HARIBO (HAns RIegel BOnn) on December 13th, 1920.",
+    "reopened": "부분일치(9단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -4399,7 +4455,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.ferrero.com/int/en/our-brands/nutella",
-    "quote": "The 'Giandujot' paste was transformed into a creamy new product that was easier to spread named SuperCrema."
+    "quote": "The 'Giandujot' paste was transformed into a creamy new product that was easier to spread named SuperCrema.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -4435,13 +4492,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://www.thedailymeal.com/1269978/are-pringles-actually-potato-chips-mystery",
-    "quote": "When Pringles launched in 1968, rival snack makers objected to the \"Newfangled Potato Chips\" name."
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://www.thedailymeal.com/1269978/are-pringles-actually-potato-chips-mystery",
+    "quote": "When Pringles launched in 1968, rival snack makers objected to the \"Newfangled Potato Chips\" name.",
+    "reopened": "글자없음"
+   }
   },
   {
    "key": "n2217",
@@ -4524,7 +4583,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.maltonmuseum.co.uk/?p=4161",
-    "quote": "Well it wasn’t actually called that – it was known back then as Terni Lapilli (three pebbles)."
+    "quote": "Well it wasn’t actually called that – it was known back then as Terni Lapilli (three pebbles).",
+    "reopened": "부분일치(10단어)"
    },
    "why": "story2 인용에 '로마'가 없음(고대 로마 부분 인용 밖). 힌트의 이집트 지붕 타일은 위키뿐이고 다른 검색은 '신전' 이라 하여 불일치. 놀이 규칙도 추정이라는 자료 있음.",
    "alsoAdd": [],
@@ -4562,7 +4622,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.wordorigins.org/big-list-entries/hobsons-choice",
-    "quote": "but he obliged him to take the horse which stood next to the stable-door."
+    "quote": "but he obliged him to take the horse which stood next to the stable-door.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -4649,7 +4710,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.deseret.com/1996/1/11/19218612/1670-case-solidified-a-sacred-precedent",
-    "quote": "would not be allowed meat, drink, fire or tobacco until they had a verdict to please the court."
+    "quote": "would not be allowed meat, drink, fire or tobacco until they had a verdict to please the court.",
+    "reopened": "확인"
    },
    "why": "(second 문서는 사흘 기간은 확인 못 함; Wikipedia 인용에는 있음)",
    "alsoAdd": [],
@@ -4757,7 +4819,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://plato.stanford.edu/entries/hempel/",
-    "quote": "is confirmed by observations of white shoes"
+    "quote": "is confirmed by observations of white shoes",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -4837,7 +4900,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://plato.stanford.edu/entries/hedonism/",
-    "quote": "something matters to us in addition to experience"
+    "quote": "something matters to us in addition to experience",
+    "reopened": "확인"
    },
    "why": "질문의 \"구분하기 어려운\"은 인용에 없음(인용은 \"apparently preferable simulated reality\"); 설명 마지막 문장 추론은 인용보다 단정적",
    "alsoAdd": [],
@@ -5113,7 +5177,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://scholarship.law.columbia.edu/faculty_scholarship/1153",
-    "quote": "Why are many storefronts in Moscow empty while street kiosks in front are full of goods?"
+    "quote": "Why are many storefronts in Moscow empty while street kiosks in front are full of goods?",
+    "reopened": "확인"
    },
    "why": "힌트의 \"미국 정부\"는 인용(\"The government\")에 없음. (second 는 모스크바 사례; 동유럽 여러 도시 표현은 인용과 일치)",
    "alsoAdd": [],
@@ -5193,7 +5258,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://plato.stanford.edu/entries/double-effect/",
-    "quote": "Thomas Aquinas is credited with introducing the principle of double effect in his discussion of the permissibility of"
+    "quote": "Thomas Aquinas is credited with introducing the principle of double effect in his discussion of the permissibility of",
+    "reopened": "확인"
    },
    "why": "힌트의 \"수단으로 삼았는지\" 구분은 인용에 없음(s2는 foreseen but unintended 만); SEP 는 \"가장 이른 사례\"가 아니라 \"도입한 것으로 인정\"이라 표현이 다름",
    "alsoAdd": [],
@@ -5315,7 +5381,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.finaldraft.com/blog/what-is-chekhovs-gun",
-    "quote": "in one of Chekhov's most seminal works, his play The Cherry Orchard, there are two loaded guns that never go off."
+    "quote": "in one of Chekhov's most seminal works, his play The Cherry Orchard, there are two loaded guns that never go off.",
+    "reopened": "부분일치(11단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -5353,7 +5420,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.ebsco.com/research-starters/literature-and-writing/unreliable-narrator",
-    "quote": "prominent American literary critic Wayne Booth coined the term in his 1961 book The Rhetoric of Fiction."
+    "quote": "prominent American literary critic Wayne Booth coined the term in his 1961 book The Rhetoric of Fiction.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -5468,7 +5536,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://interlude.hk/what-is-a-picardy-third/",
-    "quote": "It is achieved by raising the third of the expected minor triad by a semitone."
+    "quote": "It is achieved by raising the third of the expected minor triad by a semitone.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -5513,7 +5582,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.openculture.com/2021/07/leon-theremin-advertises-the-first-commercial-production-run-of-his-revolutionary-electronic-instrument-1930.html",
-    "quote": "The prohibitive price of the RCA Theremin would doom the design when the stock market crashed later that year."
+    "quote": "The prohibitive price of the RCA Theremin would doom the design when the stock market crashed later that year.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -5586,7 +5656,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.geographyrealm.com/what-are-desire-paths/",
-    "quote": "It can take as few as 15 trips for a path to form, visually cluing other people into the new route."
+    "quote": "It can take as few as 15 trips for a path to form, visually cluing other people into the new route.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -5631,7 +5702,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://cambridge.org/core/books/companion-to-the-spanish-picaresque-novel/97EDC58DFC266886C8D3DD7C01FDD114/listing",
-    "quote": "the word never appears in the Lazarillo"
+    "quote": "the word never appears in the Lazarillo",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -5711,7 +5783,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://music.yale.edu/2018/03/16/serpent-and-ophicleide-exhibit",
-    "quote": "is believed to have come into existence ca. 1590 at the hands of Edmé Guillaume, a canon of Auxerre."
+    "quote": "is believed to have come into existence ca. 1590 at the hands of Edmé Guillaume, a canon of Auxerre.",
+    "reopened": "확인"
    },
    "why": "'저음 반주'의 '저음'은 인용문에 없음(accompany church choral music, particularly in France)",
    "alsoAdd": [],
@@ -5749,7 +5822,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Zeuxis",
-    "quote": "Zeuxis painted a bunch of grapes so like reality that birds flew towards it, while Parrhasius painted a curtain"
+    "quote": "Zeuxis painted a bunch of grapes so like reality that birds flew towards it, while Parrhasius painted a curtain",
+    "reopened": "확인"
    },
    "why": "힌트의 '성당'과 '하늘로 열린 듯'은 인용문(wall or ceiling open up = quadratura)에 없음; '경쟁자'도 인용 밖",
    "alsoAdd": [],
@@ -5787,7 +5861,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.larousse.fr/encyclopedie/divers/Hernani/103660",
-    "quote": "Le drame de Victor Hugo, Hernani, est créé à la Comédie-Française le 25 février 1830."
+    "quote": "Le drame de Victor Hugo, Hernani, est créé à la Comédie-Française le 25 février 1830.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -5895,7 +5970,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.guinnessworldrecords.com/world-records/largest-carillon/",
-    "quote": "the Hyechon College Carillon, Seo-ku, Taejon, South Korea, with 78 bells"
+    "quote": "the Hyechon College Carillon, Seo-ku, Taejon, South Korea, with 78 bells",
+    "reopened": "확인"
    },
    "why": "Guinness는 대전 78개로 77과 상충(집계 차); 미시간과 공동 1위 근거는 위키 인용만",
    "alsoAdd": [],
@@ -5977,7 +6053,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5656667/",
-    "quote": "The jet velocity has been estimated by Versluis et al. to be ~25 m/s"
+    "quote": "The jet velocity has been estimated by Versluis et al. to be ~25 m/s",
+    "reopened": "부분일치(9단어)"
    },
    "why": "hint says the bubble reaches ~90 km/h (wiki quote), but independent paper gives ~25 m/s for the water jet (other sources 30-32 m/s); attribution/precision weaker than stated",
    "alsoAdd": [],
@@ -6022,7 +6099,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://migflug.com/afterburner/caspian-sea-monster-ekranoplan/",
-    "quote": "Someone scrawled a label on the file that stuck for half a century: the Caspian Sea Monster."
+    "quote": "Someone scrawled a label on the file that stuck for half a century: the Caspian Sea Monster.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -6060,7 +6138,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://airandspace.si.edu/collection-objects/rutan-voyager/nasm_A19880548000",
-    "quote": "Both winglets were damaged during takeoff when the wing tips dragged along the runway."
+    "quote": "Both winglets were damaged during takeoff when the wing tips dragged along the runway.",
+    "reopened": "확인"
    },
    "why": "explanation: 30cm per tip is wiki-only (no independent source found); Smithsonian says winglets damaged at takeoff then deliberately knocked off in flight, EBSCO says lost early in flight - 'came off at takeoff' sequence overstated",
    "alsoAdd": [],
@@ -6185,7 +6264,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.fhwa.dot.gov/publications/research/infrastructure/pavements/pccp/97146/chaptr10.cfm",
-    "quote": "It was first reported by T. E. Stanton in 1940 as a reaction of the alkalies of the cement with aggregates in California"
+    "quote": "It was first reported by T. E. Stanton in 1940 as a reaction of the alkalies of the cement with aggregates in California",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -6265,7 +6345,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.structuremag.org/article/lessons-learned-from-the-bay-bridge-bolt-failure/",
-    "quote": "failed because of environmentally induced hydrogen embrittlement"
+    "quote": "failed because of environmentally induced hydrogen embrittlement",
+    "reopened": "확인"
    },
    "why": "'시험 중' and '동쪽 구간' not in the quote (StructureMag: 32 of 96 rods fractured during pre-tensioning/tightening); Cheesegrater: Dezeen says two bolts shattered/fell in 2014, the 2015 third bolt fractured and was caught by tethering, so 'fell in 2014 and 2015' is stronger than reality",
    "alsoAdd": [],
@@ -6303,7 +6384,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.gracesguide.co.uk/Thomas_Hancock",
-    "quote": "On 21 November 1843, Hancock took out a patent for the vulcanisation of rubber using sulphur, 8 weeks before"
+    "quote": "On 21 November 1843, Hancock took out a patent for the vulcanisation of rubber using sulphur, 8 weeks before",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -6640,7 +6722,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://photism.app/synesthetes/nikolai-rimsky-korsakov/",
-    "quote": "A major as youthful and rosy"
+    "quote": "A major as youthful and rosy",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -6685,7 +6768,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://litfl.com/charles-scott-sherrington/",
-    "quote": "introduced the concept of proprioception"
+    "quote": "introduced the concept of proprioception",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [
@@ -6803,7 +6887,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://gizmodo.com/these-rings-were-discovered-in-1855-but-were-still-puzz-1717424036",
-    "quote": "Although we know that this happens, we still don't know exactly why."
+    "quote": "Although we know that this happens, we still don't know exactly why.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -6834,7 +6919,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://mrob.com/pub/muency/brooksandmatelski.html",
-    "quote": "Robert Brooks and Peter Matelski are credited with being the first to publish an image of the Mandelbrot set."
+    "quote": "Robert Brooks and Peter Matelski are credited with being the first to publish an image of the Mandelbrot set.",
+    "reopened": "확인"
    },
    "why": "외부 문서는 \"처음 이미지를 발표\"만 지지; SciAm은 1979 프리프린트·1981 출판, 망델브로가 발견자 주장 반박 — \"처음 정의\" 단정 과함",
    "alsoAdd": [],
@@ -6972,7 +7058,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://nautil.us/how-necking-shaped-the-giraffe-235440",
-    "quote": "a nerve that’s about 15 feet long"
+    "quote": "a nerve that’s about 15 feet long",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7087,7 +7174,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0029877",
-    "quote": "세초를 시행한 이유는 사초의 비밀을 유지하고 재생 종이로 활용하기 위해서였다."
+    "quote": "세초를 시행한 이유는 사초의 비밀을 유지하고 재생 종이로 활용하기 위해서였다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7160,7 +7248,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0059563",
-    "quote": "기발은 말을 타고 전송(傳送)하며 25리마다 참(站)을 두었으나 곳에 따라서는 20리 또는 30리인 경우도 있었다."
+    "quote": "기발은 말을 타고 전송(傳送)하며 25리마다 참(站)을 두었으나 곳에 따라서는 20리 또는 30리인 경우도 있었다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7233,7 +7322,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0003770",
-    "quote": "마을 사람들이 무덤에 묻힌 도선국사의 어머니에게 진지 잡수라고 음식을 나누자, 풍년(豐年)이 들었다."
+    "quote": "마을 사람들이 무덤에 묻힌 도선국사의 어머니에게 진지 잡수라고 음식을 나누자, 풍년(豐年)이 들었다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7269,13 +7359,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://encykorea.aks.ac.kr/Article/E0029102",
-    "quote": "568년(진흥왕 29)에 북한산 비봉(碑峯)에 세운 진흥왕순수비의 비문에도 이미 나타나 있고,"
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": null
+   "spellingSeen": null,
+   "secondDropped": {
+    "url": "https://encykorea.aks.ac.kr/Article/E0029102",
+    "quote": "568년(진흥왕 29)에 북한산 비봉(碑峯)에 세운 진흥왕순수비의 비문에도 이미 나타나 있고,",
+    "reopened": "글자없음"
+   }
   },
   {
    "key": "n2709",
@@ -7309,7 +7401,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0062873",
-    "quote": "현재 전하는 향가는 ≪삼국유사≫에 14수, ≪균여전≫에 11수로 모두 25수이다."
+    "quote": "현재 전하는 향가는 ≪삼국유사≫에 14수, ≪균여전≫에 11수로 모두 25수이다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7380,13 +7473,15 @@
    ],
    "quotesOnPage": "hintIdea 는 위키 API 본문과 글자가 다름(서식·괄호 제거 차이 — 문장은 같음)",
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://www.jpl.nasa.gov/images/pia16159-downslope-of-the-fan/",
-    "quote": "An alluvial fan, or fan-shaped deposit where debris spread out downslope, has been highlighted"
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": null
+   "spellingSeen": null,
+   "secondDropped": {
+    "url": "https://www.jpl.nasa.gov/images/pia16159-downslope-of-the-fan/",
+    "quote": "An alluvial fan, or fan-shaped deposit where debris spread out downslope, has been highlighted",
+    "reopened": "못 엶(403)"
+   }
   },
   {
    "key": "n2712",
@@ -7679,7 +7774,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://wordhistories.net/2017/01/24/spoonerism",
-    "quote": "He said that the doctor made only one \"Spoonerism\" in his life. That was in the early part of 1879."
+    "quote": "He said that the doctor made only one \"Spoonerism\" in his life. That was in the early part of 1879.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7752,7 +7848,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://ebsco.com/research-starters/history/legislation-solon",
-    "quote": "Solon, himself a member of the aristocracy, was chosen archon, or ruler, about 594 B.C.E."
+    "quote": "Solon, himself a member of the aristocracy, was chosen archon, or ruler, about 594 B.C.E.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7790,7 +7887,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://mathshistory.st-andrews.ac.uk/Miller/mathsym/operation/",
-    "quote": "The obelus (÷) was first used as a division symbol by Johann Rahn (or Rhonius) (1622-1676) in 1659 in Teutsche Algebra"
+    "quote": "The obelus (÷) was first used as a division symbol by Johann Rahn (or Rhonius) (1622-1676) in 1659 in Teutsche Algebra",
+    "reopened": "부분일치(10단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -7863,7 +7961,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.mentalfloss.com/article/87433/how-misinterpreted-anagram-predicted-moons-mars",
-    "quote": "Kepler got the anagram wrong, and the presumption that Jupiter only had four moons had been wrong."
+    "quote": "Kepler got the anagram wrong, and the presumption that Jupiter only had four moons had been wrong.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -7971,7 +8070,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://revistas.uma.es/index.php/trans/article/view/2363",
-    "quote": "que prescinde a su vez de la letra A, la más usada en nuestra lengua,"
+    "quote": "que prescinde a su vez de la letra A, la más usada en nuestra lengua,",
+    "reopened": "확인"
    },
    "why": "Spanish version omitting A confirmed, but independent doc calls A 'the most used' letter in Spanish, conflicting with 'second most common' in explanation",
    "alsoAdd": [],
@@ -8053,7 +8153,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.generasia.com/wiki/Super_Junior",
-    "quote": "Intended to be a rotational group, there was to be new members replacing some of the old members each year"
+    "quote": "Intended to be a rotational group, there was to be new members replacing some of the old members each year",
+    "reopened": "확인"
    },
    "why": "질문의 \"2005년 데뷔 · SM 소속 · 보이그룹\" 이 재료 quote 에 없음(story1 의 \"슈퍼주니어 05\" 로만 암시) — 재료 quote 로 받치거나 낮춰 쓰기 (직접 재대조에서 잡음)",
    "alsoAdd": [],
@@ -8091,7 +8192,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://philstar.com/entertainment/2012/12/27/890407/going-gangnam-psy",
-    "quote": "So in my case, what I thought was crazy about music, dancing, performance, so that kind of psycho."
+    "quote": "So in my case, what I thought was crazy about music, dancing, performance, so that kind of psycho.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -8206,7 +8308,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://v.daum.net/v/Pqp2YEg2MR",
-    "quote": "창업 이후 3년 동안 큰 성장을 하지 못하던 싸이월드는 현금이 거의 고갈된 2001년 여름 마지막 프로젝트로 미니홈피를 개발했다."
+    "quote": "창업 이후 3년 동안 큰 성장을 하지 못하던 싸이월드는 현금이 거의 고갈된 2001년 여름 마지막 프로젝트로 미니홈피를 개발했다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -8326,13 +8429,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": true,
-   "second": {
-    "url": "https://sbsstar.net/article/N1005097904/6-kpop-groups-who-almost-made-their-debut-under-a-weird-name",
-    "quote": "'A Whale Who Eats Legends', 'Oh-jang-yook-boo (internal organs)', and 'Dong-bang-bul-pae (master of martial arts)'"
-   },
+   "second": null,
    "why": "Hug as debut single not in core quote; SM5/Dream Team candidates not corroborated by second doc (sbsstar covers only whale/오장육부); 'at first recording' timing only partly in quote",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://sbsstar.net/article/N1005097904/6-kpop-groups-who-almost-made-their-debut-under-a-weird-name",
+    "quote": "'A Whale Who Eats Legends', 'Oh-jang-yook-boo (internal organs)', and 'Dong-bang-bul-pae (master of martial arts)'",
+    "reopened": "글자없음"
+   }
   },
   {
    "key": "n2912",
@@ -8366,7 +8471,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.asiae.co.kr/article/2009102215103515518",
-    "quote": "Korean pop group Wonder Girls have become the first Korean artists to enter the Billboard singles chart"
+    "quote": "Korean pop group Wonder Girls have become the first Korean artists to enter the Billboard singles chart",
+    "reopened": "확인"
    },
    "why": "hint 2008 + So Hot not in hintIdea quote (truncated before titles/year); hintRisk flagged",
    "alsoAdd": [],
@@ -8444,13 +8550,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://aleteia.org/2017/05/18/did-you-know-tolkiens-dwarves-were-derived-from-norse-mythology",
-    "quote": "Vigg and Gandalf | Vindalf, Thrain,"
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://aleteia.org/2017/05/18/did-you-know-tolkiens-dwarves-were-derived-from-norse-mythology",
+    "quote": "Vigg and Gandalf | Vindalf, Thrain,",
+    "reopened": "부분일치(5단어)"
+   }
   },
   {
    "key": "n3003",
@@ -8484,7 +8592,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://edwardwillett.com/?p=11457",
-    "quote": "Tolkien was marking School Certificate Papers in his home in Northmoor Road, Oxford."
+    "quote": "Tolkien was marking School Certificate Papers in his home in Northmoor Road, Oxford.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -8522,7 +8631,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://mentalfloss.com/article/71795/how-einstein-influenced-look-yoda",
-    "quote": "modeled the character after a photo of Einstein that was hanging on an office wall, as well as his own face."
+    "quote": "modeled the character after a photo of Einstein that was hanging on an office wall, as well as his own face.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -8560,7 +8670,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://mentalfloss.com/article/81139/15-chest-bursting-facts-about-alien",
-    "quote": "As he was typing dialogue in which the crew members discussed the alien, that word jumped out at him."
+    "quote": "As he was typing dialogue in which the crew members discussed the alien, that word jumped out at him.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -8605,7 +8716,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.syfy.com/syfy-wire/this-week-in-genre-history-edward-scissorhands-anniversary-johnny-depp-tim-burton",
-    "quote": "a manifestation of loneliness and isolation"
+    "quote": "a manifestation of loneliness and isolation",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -8650,7 +8762,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://yumetwins.com/blog/rilakkuma-too-cute-to-bear",
-    "quote": "This led her to combine the Japanese words rilakkusu (relax) and kuma (bear)."
+    "quote": "This led her to combine the Japanese words rilakkusu (relax) and kuma (bear).",
+    "reopened": "부분일치(12단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -8695,7 +8808,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://nofilmschool.com/why-are-they-called-spaghetti-westerns",
-    "quote": "The term \"Spaghetti Western\" was first uttered by Spanish journalist Alfonso Sánchez Martínez in 1966."
+    "quote": "The term \"Spaghetti Western\" was first uttered by Spanish journalist Alfonso Sánchez Martínez in 1966.",
+    "reopened": "부분일치(11단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -8824,7 +8938,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.cbr.com/bts-facts-empire-strikes-back/",
-    "quote": "So, on set, the line Prowse reads is \"Obi-Wan killed your father.\""
+    "quote": "So, on set, the line Prowse reads is \"Obi-Wan killed your father.\"",
+    "reopened": "확인"
    },
    "why": "'감독과 제작진, 마크 해밀'이 안다는 부분이 출처마다 다름(해밀 본인은 커슈너·루카스·자신만, CBR은 해밀만 촬영 직전; 위키는 감독·제작자·해밀). 대상 범위 단정 말고 완화 필요. 가짜 대사·더빙 자체는 2차 문서와 일치",
    "alsoAdd": [],
@@ -8862,7 +8977,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.grunge.com/718774/how-eminem-got-his-iconic-stage-name",
-    "quote": "Mathers began rapping as \"M&M\" at the age of 14, alongside a friend from school who called himself \"Manix.\""
+    "quote": "Mathers began rapping as \"M&M\" at the age of 14, alongside a friend from school who called himself \"Manix.\"",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -8900,7 +9016,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://mymodernmet.com/rick-astley-rickroll-history/",
-    "quote": "while on holiday in Italy in 2007, Astley received an email from his friend with a link."
+    "quote": "while on holiday in Italy in 2007, Astley received an email from his friend with a link.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -8938,7 +9055,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://knowyourmeme.com/memes/nyanyanyanyanyanyanya",
-    "quote": "was originally produced by the Japanese musician daniwellP and uploaded via Nico Nico Douga on July 25th, 2010."
+    "quote": "was originally produced by the Japanese musician daniwellP and uploaded via Nico Nico Douga on July 25th, 2010.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [
@@ -8978,7 +9096,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://azbigmedia.com/business/the-history-of-dogecoin-how-did-it-transform-from-a-joke-into-the-first-meme-coin",
-    "quote": "Let's discover more about the first meme coin ever created, Dogecoin."
+    "quote": "Let's discover more about the first meme coin ever created, Dogecoin.",
+    "reopened": "부분일치(10단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -9016,7 +9135,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.newsweek.com/an-80-idea-changed-travel-forever-12283773",
-    "quote": "Rent on their San Francisco apartment had just gone up, and neither of them had the cash to cover it."
+    "quote": "Rent on their San Francisco apartment had just gone up, and neither of them had the cash to cover it.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9054,7 +9174,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://techcrunch.com/2010/10/25/ubercab-now-just-uber-shares-cease-and-desist-orders",
-    "quote": "UberCab — which was recently renamed “Uber” to avoid the appearance of marketing itself as a taxi business —"
+    "quote": "UberCab — which was recently renamed “Uber” to avoid the appearance of marketing itself as a taxi business —",
+    "reopened": "부분일치(12단어)"
    },
    "why": "개명 연도 2011은 TechCrunch(2010년 10월)와 어긋나고, 항의 주체도 택시 업체가 아니라 시 당국의 중지 명령(우버 공식 글)",
    "alsoAdd": [],
@@ -9092,7 +9213,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.historyofinformation.com/detail.php?id=1012",
-    "quote": "But since the name ImagePro was already taken"
+    "quote": "But since the name ImagePro was already taken",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9130,7 +9252,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.technologyreview.com/s/538291/the-new-water-cooler/",
-    "quote": "the team created an instant-messaging program that could serve as a hub for everything they were doing."
+    "quote": "the team created an instant-messaging program that could serve as a hub for everything they were doing.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9168,7 +9291,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://americansongwriter.com/behind-the-band-name-the-weeknd/",
-    "quote": "I took out the 'e' because there was already a Canadian band named the weekend (copyright issues),"
+    "quote": "I took out the 'e' because there was already a Canadian band named the weekend (copyright issues),",
+    "reopened": "부분일치(12단어)"
    },
    "why": "주말 · 파크데일 유래는 영어판 한 줄뿐이고 본인 인터뷰(17세에 친구와 주말에 집을 나옴)와 서로 다름 — 'e' 이유만 둘째 문서로 확인",
    "alsoAdd": [],
@@ -9206,7 +9330,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://grunge.com/1868718/evanescence-band-name-origin-explained",
-    "quote": "The duo also experimented with the name Stricken, but that ultimately struck out, too."
+    "quote": "The duo also experimented with the name Stricken, but that ultimately struck out, too.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9249,13 +9374,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://99percentinvisible.org/?p=25324",
-    "quote": "was named after (and looks like) a key communications satellite launched in 1962."
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://99percentinvisible.org/?p=25324",
+    "quote": "was named after (and looks like) a key communications satellite launched in 1962.",
+    "reopened": "못 엶(This operation was aborted)"
+   }
   },
   {
    "key": "n3115",
@@ -9287,13 +9414,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://fortune.com/2025/11/11/alexis-ohanian-reddit-graham-founder-business-advice/",
-    "quote": "Ohanian picked the name from a simple notion: users would likely adopt the phrase \"I read it on Reddit,\""
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": null
+   "spellingSeen": null,
+   "secondDropped": {
+    "url": "https://fortune.com/2025/11/11/alexis-ohanian-reddit-graham-founder-business-advice/",
+    "quote": "Ohanian picked the name from a simple notion: users would likely adopt the phrase \"I read it on Reddit,\"",
+    "reopened": "부분일치(5단어)"
+   }
   },
   {
    "key": "n3116",
@@ -9327,7 +9456,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.cbsnews.com/amp/baltimore/news/als-association-ice-bucket-challenge-actually-had-a-dramatic-impact",
-    "quote": "during an eight-week period in 2014, $115 million was donated as part of the Ice Bucket Challenge."
+    "quote": "during an eight-week period in 2014, $115 million was donated as part of the Ice Bucket Challenge.",
+    "reopened": "확인"
    },
    "why": "1억 1,500만 달러는 ALS협회 집계(8주간)인데 '전 세계 한 해'로 서술 — 범위가 다름",
    "alsoAdd": [],
@@ -9365,7 +9495,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://time.com/72892/the-first-youtube-video-was-uploaded-9-years-ago-today",
-    "quote": "uploaded the first video “Me at the zoo” to the website on April 23, 2005"
+    "quote": "uploaded the first video “Me at the zoo” to the website on April 23, 2005",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9403,7 +9534,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://advertisingweek.com/the-surprising-reason-why-the-duolingo-owl-is-green/",
-    "quote": "The reason the Duolingo owl is green is because green is Severin's least favorite color."
+    "quote": "The reason the Duolingo owl is green is because green is Severin's least favorite color.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9441,7 +9573,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.aljazeera.com/news/2005/4/1/gmail-space-doubled",
-    "quote": "A year after unveiling a free email service with a full gigabyte of storage"
+    "quote": "A year after unveiling a free email service with a full gigabyte of storage",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9514,7 +9647,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://shakespeare-navigators.ewu.edu/shrew/Shrew_Note_1_2_79.html",
-    "quote": "so perhaps a fancy one in the shape of a human could be called an \"aglet-baby.\""
+    "quote": "so perhaps a fancy one in the shape of a human could be called an \"aglet-baby.\"",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [
@@ -9554,7 +9688,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://barrypopik.com/blog/eat_your_own_dog_food",
-    "quote": "In 1988, Microsoft manager Paul Maritz sent Brian Valentine, test manager for Microsoft LAN Manager,"
+    "quote": "In 1988, Microsoft manager Paul Maritz sent Brian Valentine, test manager for Microsoft LAN Manager,",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9783,7 +9918,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.eff.org/press/releases/coalition-launches-dark-patterns-tip-line-expose-deceptive-technology-design",
-    "quote": "a project for the public to submit examples of deceptive design patterns."
+    "quote": "a project for the public to submit examples of deceptive design patterns.",
+    "reopened": "부분일치(11단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -9919,7 +10055,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.sidae.com/article/2014111911248083698",
-    "quote": "출시 3개월 만에 매출 50억원을 돌파했다."
+    "quote": "출시 3개월 만에 매출 50억원을 돌파했다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -9964,7 +10101,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.iamexpat.nl/lifestyle/lifestyle-news/miffy-beloved-dutch-rabbit",
-    "quote": "During this holiday, he told his son bedtime stories about a little, white rabbit that roamed around the garden of their holiday home."
+    "quote": "During this holiday, he told his son bedtime stories about a little, white rabbit that roamed around the garden of their holiday home.",
+    "reopened": "확인"
    },
    "why": "모래언덕 vs 휴가지 집 정원: 두 번째 문서는 정원(garden)이라 하고 사구를 말하지 않음 — 장소 단정 약화 필요(위키 인용은 사구)",
    "alsoAdd": [],
@@ -10016,7 +10154,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.tenasia.co.kr/article/2021033110094",
-    "quote": "오리온은 이번 모델 계약을 통해 5월부터 꼬북칩 포장에 유정의 얼굴을 담은 한정판 제품을 생산한다고 밝혔다."
+    "quote": "오리온은 이번 모델 계약을 통해 5월부터 꼬북칩 포장에 유정의 얼굴을 담은 한정판 제품을 생산한다고 밝혔다.",
+    "reopened": "확인"
    },
    "why": "'뒤늦게'(역주행)는 인용문('대중적 인기를 끌자')에 없음; '꼬북좌'=거북이 연상은 인용에 설명 없음(기사는 꼬부기/꼬북이 닮은 웃음)",
    "alsoAdd": [],
@@ -10054,7 +10193,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://times.abema.tv/articles/-/10227988",
-    "quote": "自身の高校時代の家族をモデルにした漫画「あたしンち」の連載を開始したけらさん。"
+    "quote": "自身の高校時代の家族をモデルにした漫画「あたしンち」の連載を開始したけらさん。",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10097,13 +10237,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": true,
-   "second": {
-    "url": "https://www.lalibre.be/culture/livres-bd/2004/01/23/manu-larcenet-remporte-son-combat-R5J2X3PP2FAE7EXWUDHV5UK6X4/",
-    "quote": "MEILLEURE SÉRIE: 20th Century Boys, Naoki Urasawa (J), Panini Comics"
-   },
+   "second": null,
    "why": "앙굴렘 수상은 2004년 1월(제31회) 신설 '시리즈상(Prix de la série)' — 위키 인용의 2003·'최우수 장편상'과 충돌(La Libre 2004-01-23, ANN 2004-02-04). 제목-노래 유래는 2차 문서에서 확인 못 함",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://www.lalibre.be/culture/livres-bd/2004/01/23/manu-larcenet-remporte-son-combat-R5J2X3PP2FAE7EXWUDHV5UK6X4/",
+    "quote": "MEILLEURE SÉRIE: 20th Century Boys, Naoki Urasawa (J), Panini Comics",
+    "reopened": "부분일치(5단어)"
+   }
   },
   {
    "key": "n3309",
@@ -10142,13 +10284,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": false,
-   "second": {
-    "url": "https://encyclopedia.com/books/politics-and-business-magazines/sanrio-company-ltd",
-    "quote": "founder Shintaro Tsuji, who had raised ¥1 million to launch his company"
-   },
+   "second": null,
    "why": "",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://encyclopedia.com/books/politics-and-business-magazines/sanrio-company-ltd",
+    "quote": "founder Shintaro Tsuji, who had raised ¥1 million to launch his company",
+    "reopened": "부분일치(6단어)"
+   }
   },
   {
    "key": "n3310",
@@ -10189,7 +10333,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.sidae.com/article/2023050313090768053",
-    "quote": "편의점 CU를 통해 처음 선보인 이 제품은 전국적인 품귀 현상이 나타날 만큼 인기를 끌었다."
+    "quote": "편의점 CU를 통해 처음 선보인 이 제품은 전국적인 품귀 현상이 나타날 만큼 인기를 끌었다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10227,7 +10372,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.museumofplay.org/toys/slime/",
-    "quote": "In 1976, Mattel introduced Slime—a neon green jiggly substance sold in small plastic trashcans"
+    "quote": "In 1976, Mattel introduced Slime—a neon green jiggly substance sold in small plastic trashcans",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10314,7 +10460,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://wosu.org/2017-05-04/fidget-spinner-emerges-as-must-have-toy-of-the-year",
-    "quote": "To get through those meetings, McCoskery built what he believes is the first fidget spinner as we know them."
+    "quote": "To get through those meetings, McCoskery built what he believes is the first fidget spinner as we know them.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10359,7 +10506,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.koreajoongangdaily.com/lifestyle/links-in-this-chain-do-ramyeon-the-right-way-simple-and-cheap/10565714",
-    "quote": "Kim Bok-hyun started a ramyeon, or instant noodle, shop in 1981 in a cramped space in Myeong-dong."
+    "quote": "Kim Bok-hyun started a ramyeon, or instant noodle, shop in 1981 in a cramped space in Myeong-dong.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10404,7 +10552,8 @@
    "wikiOnlySkeleton": false,
    "second": {
     "url": "https://www.ebsco.com/research-starters/literature-and-writing/fist-north-star",
-    "quote": "was originally serialized in the Japanese comic magazine Weekly Shonen Jump, from 1983 to 1988."
+    "quote": "was originally serialized in the Japanese comic magazine Weekly Shonen Jump, from 1983 to 1988.",
+    "reopened": "부분일치(10단어)"
    },
    "why": "",
    "alsoAdd": [],
@@ -10455,7 +10604,7 @@
   {
    "key": "n3401",
    "chunk": "34",
-   "verdict": "ok",
+   "verdict": "fix",
    "blind": "정답",
    "claims": [
     {
@@ -10482,13 +10631,15 @@
    ],
    "quotesOnPage": true,
    "wikiOnlySkeleton": true,
-   "second": {
-    "url": "https://99percentinvisible.org/article/anti-war-semaphore-hidden-meaning-encoded-in-a-universal-symbol-of-peace/",
-    "quote": "'N' and 'D' standing for 'nuclear' and 'disarmament,'"
-   },
-   "why": "",
+   "second": null,
+   "why": "위키만 — 둘째 문서 quote 를 이 창이 직접 열어 확인하지 못함(숫자 · 최초 · 인용은 빼거나 낮춰 쓰기)",
    "alsoAdd": [],
-   "spellingSeen": true
+   "spellingSeen": true,
+   "secondDropped": {
+    "url": "https://99percentinvisible.org/article/anti-war-semaphore-hidden-meaning-encoded-in-a-universal-symbol-of-peace/",
+    "quote": "'N' and 'D' standing for 'nuclear' and 'disarmament,'",
+    "reopened": "글자없음"
+   }
   },
   {
    "key": "n3403",
@@ -10564,7 +10715,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.history.com/articles/french-fries-origin",
-    "quote": "the soldiers heard French spoken, mistakenly assumed they were in France and brought the name home with them."
+    "quote": "the soldiers heard French spoken, mistakenly assumed they were in France and brought the name home with them.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10602,7 +10754,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.dictionary.com/browse/apron",
-    "quote": "Middle English napron (by later misconstruing a napron as an apron )"
+    "quote": "Middle English napron (by later misconstruing a napron as an apron )",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10640,7 +10793,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://cine21.com/news/view/?mag_id=46610",
-    "quote": "몇 가지 어원이 있긴 하나 깡패는 대개 ‘갱(gang)+패(牌)’라는 이상야릇한 합성에서 유래됐다는 목소리가 가장 높다."
+    "quote": "몇 가지 어원이 있긴 하나 깡패는 대개 ‘갱(gang)+패(牌)’라는 이상야릇한 합성에서 유래됐다는 목소리가 가장 높다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10678,7 +10832,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.foodrepublic.com/1515516/origin-pretzel-shape/",
-    "quote": "One popular legend suggests that a monk created the pretzel to represent arms crossed over one's chest in prayer."
+    "quote": "One popular legend suggests that a monk created the pretzel to represent arms crossed over one's chest in prayer.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10765,7 +10920,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.wordsmith.org/words/tycoon.html",
-    "quote": "Abraham Lincoln's aides used the word as an affectionate nickname for him."
+    "quote": "Abraham Lincoln's aides used the word as an affectionate nickname for him.",
+    "reopened": "확인"
    },
    "why": "hint's Perry-return-1857 entry stated as fact; other sources: first record is Townsend Harris diary 1857, Perry visit 1853; wordhistories disputes Lincoln->business chain",
    "alsoAdd": [],
@@ -10803,7 +10959,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://encykorea.aks.ac.kr/Article/E0035521",
-    "quote": "국왕이 조회(朝會)를 받을 때, 남향한 국왕에 대하여 동쪽에 서는 반열(班列)을 동반(東班: 문반), 서쪽에 서는 반열을 서반(西班: 무반)이라 하고, 이 두 반열을 통칭하여 양반이라 하였다."
+    "quote": "국왕이 조회(朝會)를 받을 때, 남향한 국왕에 대하여 동쪽에 서는 반열(班列)을 동반(東班: 문반), 서쪽에 서는 반열을 서반(西班: 무반)이라 하고, 이 두 반열을 통칭하여 양반이라 하였다.",
+    "reopened": "확인"
    },
    "why": "",
    "alsoAdd": [],
@@ -10841,7 +10998,8 @@
    "wikiOnlySkeleton": true,
    "second": {
     "url": "https://www.worldwidewords.org/qa-tip1.html",
-    "quote": "By the early 1600s, it had become thieves’ cant with the sense of handing something over."
+    "quote": "By the early 1600s, it had become thieves’ cant with the sense of handing something over.",
+    "reopened": "부분일치(12단어)"
    },
    "why": "year of Farquhar play: 1707 in wiki quote but worldwidewords/Snopes give 1706 (print 1707); stated as certain",
    "alsoAdd": [],
