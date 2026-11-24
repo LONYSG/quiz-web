@@ -15,6 +15,14 @@ const diff = { '02': { 포스트잇: 1, 아킬레스건: 2, 도루묵: 3, 파넨
 const outNo = { '02': 4, '03': 5, '04': 6 };
 // 설명출처-NN 에 아직 없는 정답(다시 연 문서 목록이 따로 있다) — 싣기 전에 설계가 채운다
 const extraFacts = { '03': ['보탬-03-실러캔스.json'], '04': ['보탬-04-스타벅스-더.json'] };
+// 설명출처-NN 에 없는 정답의 설명글 출처(설계가 2026-11-24 밤 세 문서를 다시 열어 quote 확인 · 보탬-03-실러캔스.json)
+const manualSrc = {
+  실러캔스: [
+    '· PBS NOVA, 「Ancient Creature of the Deep — Moment of Discovery」 (2003)',
+    '· The Telegraph, 「Marjorie Courtenay-Latimer」 (2004)',
+    '· Natural History Museum, 「Coelacanths: The fish that \'outdid\' the Loch Ness Monster」 (2020)',
+  ],
+};
 const WD = ['일', '월', '화', '수', '목', '금', '토'];
 const NUM = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
 const kNum = (n) => { // 1~99 한글 읽기
@@ -62,7 +70,8 @@ for (const n of only.length ? only : ['02', '03', '04']) {
         srcLines.push(`· ${site}, 「${x.title.replace(/&amp;/g, '&')}」` + (year ? ` (${year})` : ''));
       }
       urls = sq.docs.filter((x) => x.reopened).map((x) => x.url);
-    } else srcLines.push('· (출처 정리 중)');
+    } else if (manualSrc[q.answer]) srcLines.push(...manualSrc[q.answer]);
+    else srcLines.push('· (출처 정리 중)');
     const bq = bt.questions.find((x) => x.answer === q.answer);
     const ex = extra.find((x) => (x.answer || '스타벅스') === q.answer);
     const facts = [...(bq?.facts || []), ...(ex?.facts || [])].map(({ id, text, quote, site, title, year, url }) => ({ id, text, quote, site, title, year, url }));
