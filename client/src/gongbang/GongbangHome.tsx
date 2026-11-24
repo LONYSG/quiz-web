@@ -5,8 +5,8 @@
 //   PC   : 휴대폰 판을 두 칸으로 — 왼쪽 로비 · 오른쪽 공방 목록(늘 구독) · 위 오른쪽 [친구] · [☰]
 //          (방 안 PC 위 막대의 [친구] 자리와 같은 오른쪽 위 — 앱 CSS 는 PC 에서 ☰ 를 숨기므로 여기서는 gb-menu 로 따로 보인다)
 //
-//   ★ [혼자 하기]는 아직 없다(솔로 라운드) — 눌러도 "곧 열려요" 한 줄 · 모양은 그대로.
-//   ★ 띠 표시는 아직 안 붙인다(띠 부품 Belt.tsx 만 · 프로필의 띠 자리는 비움).
+//   ★ [혼자 하기] — R118: 스위치 SOLO 를 켰으면 혼자 하기 화면(solo/SoloScreen) · 끄면 "곧 열려요" 한 줄(R117 그대로).
+//   ★ 띠 — R118: 스위치 BELT 를 켰으면 프로필 아래 띠 한 줄(띠 아이콘 · 이름 · 최고 기록) · 끄면 비움.
 //   ★ ☰ 안 = 방 코드로 입장 · 프로필 · 포인트샵 · 설정 · 안내 · 제보 · 로그아웃(포인트샵은 여기로 — 찬종 R115)
 //   ★ 창은 기존 부품을 그대로 연다 — ProfilePanel · ShopPanel · Prefs · InfoTip · FriendsButton 을 머리 줄에 두고
 //     그 단추(프로필 · 포인트샵 · 설정 · 안내)만 CSS 로 숨긴다(방 안 모바일 ☰ 와 같은 길 — popup.ts id 로 연다).
@@ -37,6 +37,12 @@ import { useUiMode } from '../uiMode.js';
 import Directory from './Directory.js';
 import CreateRoom, { type CreatePayload, type CreatePrefill } from './CreateRoom.js';
 import LockedJoin, { type LockState } from './LockedJoin.js';
+import { BeltOf } from './Belt.js';
+import { beltLabel } from '@quiz/shared';
+import { siteInfo } from '../site.js';
+import SoloScreen from '../solo/SoloScreen.js';
+import { fetchSoloMe } from '../solo/useSolo.js';
+import type { SoloMeView } from '@quiz/shared';
 
 interface Props {
   socket: Socket;
@@ -52,6 +58,8 @@ interface Props {
   creating: boolean;
   /** 지난 방 코드(방을 나오면 채워 둔다 — 옛 첫 화면과 같다) */
   lastCode: string;
+  /** ★ R118 — 서버 시계(혼자 하기 남은 시간) */
+  serverNow: () => number;
 }
 
 const KIND_KEY = 'qw.gb.kind';
@@ -178,8 +186,35 @@ function HomeMenu({ shopDot, onCode, onLogout, onClose }: { shopDot: boolean; on
   );
 }
 
-export default function GongbangHome({ socket, account, social, onJoinOther, onNicknameChanged, onAvatarChanged, onLogout, onNotice, onCreate, creating, lastCode }: Props) {
+export default function GongbangHome({ socket, account, social, onJoinOther, onNicknameChanged, onAvatarChanged, onLogout, onNotice, onCreate, creating, lastCode, serverNow }: Props) {
   const ui = useUiMode();
+  const soloOn = siteInfo().solo;
+  const beltOn = siteInfo().belt;
+  // ★ R118 — 혼자 하기 화면(null = 로비) · 'resume' = 도는 판을 이어받는다(새로 고침 · 새 탭)
+  const [solo, setSolo] = useState<null | 'new' | 'resume'>(null);
+  const [soloMe, setSoloMe] = useState<SoloMeView | null>(null);
+  useEffect(() => {
+    if (!soloOn && !beltOn) return;
+    if (solo !== null) return;
+    let live = true;
+    void fetchSoloMe().then((m) => {
+      if (!live) return;
+      setSoloMe(m);
+      if (m?.running && soloOn) setSolo('resume');
+    });
+    return () => {
+      live = false;
+    };
+  }, [soloOn, beltOn, solo]);
+  // 다른 탭에서 판이 이어지면(서버가 이 소켓에 solo.state 를 보냄) 그 화면으로
+  useEffect(() => {
+    if (!soloOn) return;
+    const on = () => setSolo((v) => v ?? 'resume');
+    socket.on('solo.state', on);
+    return () => {
+      socket.off('solo.state', on);
+    };
+  }, [socket, soloOn]);
   const pc = ui !== 'mobile';
   const [view, setView] = useState<'lobby' | 'dir'>(() => (window.location.hash === '#gongbang' ? 'dir' : 'lobby'));
   const [kind, setKindState] = useState<RoomKind>(readKind);
@@ -261,6 +296,14 @@ export default function GongbangHome({ socket, account, social, onJoinOther, onN
   };
 
   const openRooms = counts ? counts.quiz + counts.draw + counts.liar : null;
+
+  if (solo) {
+    return (
+      <div className={`gb-home gb-solo ${pc ? 'gb-pc' : 'gb-m'}`} data-gb-home="solo">
+        <SoloScreen socket={socket} serverNow={serverNow} resume={solo === 'resume'} onClose={() => setSolo(null)} />
+      </div>
+    );
+  }
   const showLobby = pc || view === 'lobby';
   const showDir = pc || view === 'dir';
 
@@ -312,17 +355,24 @@ export default function GongbangHome({ socket, account, social, onJoinOther, onN
                 <Avatar nickname={account.nickname} colorIndex={0} accountId={account.accountId} avatarV={account.avatarV ?? null} large />
                 <span className="nick">{account.nickname}</span>
               </button>
-              {/* 띠 자리 — 솔로 라운드가 채운다(지금은 비움) */}
+              {/* ★ R118 — 띠 줄(BELT) · PC 는 20px 아래로 안 그린다(R116 메모) */}
+              {beltOn && soloMe && (
+                <p className="lob2-belt" data-gb-belt={soloMe.belt ?? 'none'}>
+                  <BeltOf step={soloMe.belt ?? null} width={pc ? 39 : 32} />
+                  <span>{beltLabel(soloMe.belt ?? null)}</span>
+                  {soloMe.runs > 0 && <span className="dim mono">최고 {soloMe.best}</span>}
+                </p>
+              )}
               <div className="lob2-play">
                 <button type="button" className="primary big-btn" data-gb-together onClick={openDir}>
                   <Icon icon={Users} />
                   같이 하기
                   <small>{openRooms === null ? '공방' : `열린 방 ${openRooms}`}</small>
                 </button>
-                <button type="button" className="big-btn" data-gb-solo onClick={() => onNotice('혼자 하기는 곧 열려요.')}>
+                <button type="button" className="big-btn" data-gb-solo onClick={() => (soloOn ? setSolo('new') : onNotice('혼자 하기는 곧 열려요.'))}>
                   <Icon icon={User} />
                   혼자 하기
-                  <small>곧 열려요</small>
+                  <small>{!soloOn ? '곧 열려요' : soloMe && soloMe.runs > 0 ? `최고 ${soloMe.best}` : '목숨 셋 서바이벌'}</small>
                 </button>
               </div>
             </div>

@@ -14,6 +14,7 @@
 // =============================================================================
 
 import { nicknameFits } from '@quiz/shared';
+import { BeltOf } from './gongbang/Belt.js';
 import Avatar from './Avatar.js';
 import Emoji from './Emoji.js';
 import FitText from './FitText.js';
@@ -122,6 +123,8 @@ export default function Seat({
         <Avatar nickname={player.nickname} colorIndex={player.colorIndex} accountId={player.accountId} avatarV={player.avatarV} zoom />
         {/* ★★ R040 — "…" 없이: 자리보다 길면 글자를 줄인다 (R041 한도 10칸 — 1536×864 에서 한글 10자 실측) */}
         <FitText text={player.nickname} className="nick seat-nick" style={{ color: `var(--p${player.colorIndex})` }} minPx={14} />
+        {/* ★ R118 — 띠(BELT 켠 서버만 · PC 20px 이상) */}
+        {player.belt !== undefined && <BeltOf step={player.belt} width={26} />}
         <DeviceIcon device={player.device} />
         {team && <TeamTag team={team} />}
       </div>

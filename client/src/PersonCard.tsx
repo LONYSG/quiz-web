@@ -16,6 +16,10 @@ import { Award, Ban, Check, Crown, EyeOff, Flag, UserCheck, UserMinus, UserPlus 
 import Avatar from './Avatar.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
+import { beltLabel } from '@quiz/shared';
+import { BeltOf } from './gongbang/Belt.js';
+import { siteInfo } from './site.js';
+import { fetchBeltCard } from './solo/useSolo.js';
 import { fetchAchievementsOf } from './api.js';
 import { closePopup, openPopup, useCurrentPopup } from './popup.js';
 
@@ -116,6 +120,30 @@ function Shell({ label, className, onClose, children }: { label: string; classNa
   );
 }
 
+/** ★ R118 — 사람 카드의 띠 한 줄(64px · 누르면 이름은 이미 글로 보인다 — 색약 대비) */
+function PersonBelt({ accountId }: { accountId: string }) {
+  const [card, setCard] = useState<{ belt: number | null; best: number; at: string | null } | null | 'err'>(null);
+  useEffect(() => {
+    let live = true;
+    void fetchBeltCard(accountId).then((c) => {
+      if (live) setCard(c ?? 'err');
+    });
+    return () => {
+      live = false;
+    };
+  }, [accountId]);
+  if (card === null || card === 'err') return null;
+  return (
+    <div className="person-belt" data-person-belt={card.belt ?? 'none'}>
+      <BeltOf step={card.belt} width={64} />
+      <div>
+        <b>{beltLabel(card.belt)}</b>
+        <small className="dim">{card.belt === null ? '혼자 하기 한 판이면 화이트벨트' : `혼자 하기 최고 ${card.best}${card.at ? ` · ${day(card.at)}` : ''}`}</small>
+      </div>
+    </div>
+  );
+}
+
 /** 카드 (사진 크게 · 깬 업적) */
 function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
   const { earned, err } = useEarned(p.accountId);
@@ -144,6 +172,8 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
           <Avatar nickname={p.nickname} colorIndex={p.colorIndex} large />
         </div>
       )}
+      {/* ★ R118 (docs/24 5-4) — 띠 크게 · "블루벨트 II" · 최고 기록 · 받은 날(스위치 BELT) */}
+      {siteInfo().belt && <PersonBelt accountId={p.accountId} />}
       <section className="person-ach" data-loaded={earned ? '1' : undefined}>
         <h3>
           <Icon icon={Award} /> 업적 <span className="mono dim">{earned ? `${earned.size}/${ACHIEVEMENTS.length}` : ''}</span>

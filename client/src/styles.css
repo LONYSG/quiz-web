@@ -11838,3 +11838,87 @@ button.gb-make { display: inline-flex; align-items: center; gap: 0.35em; padding
 :where(.ui-pc) .wrap.narrow.home-wide.gb-main { max-width: 920px; }
 :where(.ui-pc) .gb-pc .gb-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; min-height: min(640px, calc(100dvh - 90px)); }
 :where(.ui-pc) .gb-pc .gb-dir { min-height: 0; }
+
+/* =============================================================================
+   ★★★ R118 — 혼자 하기(솔로) · 띠 표시(스위치 SOLO · BELT · docs/24 4 · 5-4 · R114 시안 "솔로 진행 안 A" · 시작 · 끝 · 띠 받는 순간)
+   ★ 새 값은 배치뿐 — 문제 카드 = .card.question-card · .q-head · .q-timer · .q-timebar(퀴즈 판 그대로) · 입력 줄 = .chat-input-row ·
+     단추 = .big-btn · .primary · .ghost · 창 = ConfirmModal · 색 = 앱 토큰(--ok · --bad · --accent · *-soft)
+   ============================================================================= */
+.gb-solo { align-items: stretch; }
+:where(.ui-pc) .wrap.narrow.home-wide.gb-main:has(.gb-solo) { max-width: 560px; }
+.solo-screen { display: flex; flex-direction: column; gap: 12px; flex: 1 1 auto; min-height: 0; }
+.solo-screen > .card { margin: 0; }
+.solo-head { flex: 0 0 auto; }
+.solo-head .room-title { min-width: 0; display: flex; align-items: center; gap: 8px; }
+.solo-head .room-title h1 { font-size: 1.2rem; margin: 0; }
+.solo-head .gb-back { margin: 0; }
+/* 띠 한 줄(시작 · 끝 · 사람 카드) */
+.solo-belt, .person-belt { display: flex; align-items: center; gap: 12px; background: var(--surface-2); border-radius: var(--radius-sm); padding: 10px 14px; text-align: left; }
+.solo-belt b, .person-belt b { display: block; font-size: 1.05rem; }
+.solo-belt small, .person-belt small { display: block; font-size: 0.82rem; font-weight: 700; }
+.person-belt { margin: 10px 0 4px; }
+.solo-me { display: flex; flex-direction: column; gap: 8px; }
+.solo-best { margin: 0; font-weight: 700; }
+.solo-best b { font-size: 1.3rem; margin-left: 4px; }
+.solo-rules { display: flex; flex-direction: column; gap: 10px; }
+.solo-rules p { margin: 0; display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.95rem; }
+.solo-rule-ic { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--accent-soft); color: var(--accent); }
+.solo-rule-ic.heart { background: var(--bad-soft); color: var(--bad); }
+button.solo-go { margin: 4px 0 0; width: 100%; }
+/* 진행 — 목숨 · 맞힌 개수 · 그만하기 */
+.solo-bar { display: flex; align-items: center; gap: 8px; min-height: 2.3em; }
+.solo-sp { flex: 1; }
+.solo-lives { display: inline-flex; gap: 2px; font-size: 1.25rem; }
+.solo-lives .on { color: var(--bad); }
+.solo-lives .off { color: var(--border); }
+.solo-count { display: inline-flex; align-items: baseline; gap: 6px; }
+.solo-count small { color: var(--text-dim); font-weight: 700; font-size: 0.78rem; }
+.solo-count b { font-size: 1.6rem; line-height: 1; }
+button.solo-quit { margin: 0 0 0 6px; }
+.question-card.solo-q.miss { border-color: var(--bad); }
+.q-timer.solo-ok { background: var(--ok-soft); color: var(--ok); }
+.q-timer.solo-bad { background: var(--bad-soft); color: var(--bad); }
+.solo-reveal { margin: 12px 0 0; border-radius: var(--radius-sm); padding: 8px 12px; font-weight: 700; }
+.solo-reveal.ok { background: var(--ok-soft); color: var(--ok); }
+.solo-reveal.bad { background: var(--bad-soft); color: var(--bad); }
+.solo-reveal b { font-size: 1.15rem; margin-left: 6px; color: var(--text); }
+.solo-wait { margin: 8px 0; }
+.solo-input { margin: 0; }
+.solo-input input { flex: 1; min-width: 0; }
+.solo-input .send-btn { padding-inline: 18px; }
+.solo-tried { margin: -4px 0 0; font-size: 0.8rem; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.solo-tried .badge { margin: 0; }
+/* 끝 */
+.solo-result { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.solo-huge { font-size: 3.2rem; line-height: 1; font-weight: 900; }
+.solo-newbest { color: var(--ok); }
+.solo-result .solo-belt { margin-top: 8px; align-self: stretch; }
+.solo-wrongs h2 { margin: 0 0 4px; font-size: 1rem; }
+.solo-wq { border-top: 1px dashed var(--border); padding: 8px 0; }
+.solo-wq p { margin: 2px 0; font-weight: 700; font-size: 0.92rem; }
+.solo-wq b { color: var(--ok); }
+.solo-wq small { display: block; font-size: 0.8rem; }
+/* [로비] · [다시] — 끝 화면이 길어도(틀린 세 문제 · 해설) 화면 아래에 붙어 늘 보인다(공방 목록 아래 줄 .dir-bottom 과 같은 길) */
+.solo-actions { position: sticky; bottom: 0; z-index: 2; display: flex; gap: 8px; margin: auto -12px 0; padding: 10px 12px 12px; background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(6px); border-radius: var(--radius) var(--radius) 0 0; box-shadow: var(--shadow); }
+.solo-actions button { flex: 1; margin: 0; display: inline-flex; align-items: center; justify-content: center; gap: 0.35em; }
+/* 띠 받는 순간 — 끝 화면 위 짧은 그림 */
+.solo-promo-back { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--bg, #000) 45%, transparent); animation: solo-fade 160ms ease; }
+.solo-promo { position: relative; width: min(320px, calc(100vw - 40px)); box-sizing: border-box; background: var(--surface); border-radius: 28px; padding: 30px 12px 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; box-shadow: var(--shadow-pop); overflow: hidden; animation: pop-in 260ms var(--ease-pop); }
+.solo-promo > *:not(.solo-burst) { position: relative; }
+.solo-promo b { font-size: 1.5rem; }
+.solo-promo small { font-weight: 700; color: var(--text-dim); }
+.solo-burst { position: absolute; inset: -40%; background: repeating-conic-gradient(var(--accent-soft) 0 10deg, transparent 10deg 20deg); opacity: 0.8; animation: solo-spin 6s linear infinite; }
+.solo-promo .belt { animation: solo-tie 520ms var(--ease-pop); }
+.solo-pts { font-weight: 900; color: var(--accent); font-size: 1.3rem; background: var(--accent-soft); border-radius: 999px; padding: 2px 14px; }
+@keyframes solo-spin { to { transform: rotate(360deg); } }
+@keyframes solo-fade { from { opacity: 0; } }
+@keyframes solo-tie { from { transform: scale(0.4) rotate(-12deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .solo-burst, .solo-promo .belt { animation: none; } }
+/* 로비 띠 줄 */
+.lob2-belt { margin: -2px 0 0; display: inline-flex; align-items: center; gap: 8px; color: var(--text-dim); font-weight: 700; font-size: 0.9rem; }
+.lob2-belt > span:first-of-type:not(.belt) { color: var(--text); }
+/* 방 안 사람 칸 */
+.people-badges .belt, .seat-top .belt { margin: 0 2px; }
+/* 휴대폰 — 키보드가 올라온 채로 다 보이게(카드 바로 아래 입력칸 · 화면 아래에 붙이지 않는다) */
+:where(.ui-mobile) .solo-play { gap: 10px; }
+:where(.ui-mobile) .solo-play .question-card { padding: 16px 14px 14px; }

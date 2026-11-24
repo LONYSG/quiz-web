@@ -11,6 +11,7 @@
 // =============================================================================
 
 import { useEffect, type ReactNode } from 'react';
+import { BeltOf } from './gongbang/Belt.js';
 import { createPortal } from 'react-dom';
 import { nicknameFits } from '@quiz/shared';
 import Avatar from './Avatar.js';
@@ -79,6 +80,8 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
                 <span className="people-name">
                   <FitText text={p.nickname} className="nick" style={{ color: `var(--p${p.colorIndex})` }} minPx={12} />
                   <span className="people-badges">
+                    {/* ★ R118 — 띠(스위치 BELT 를 켠 서버만 belt 칸을 보낸다 · 없으면 안 그린다) */}
+                    {p.belt !== undefined && <BeltOf step={p.belt} width={28} />}
                     <DeviceIcon device={p.device} />
                     {p.isHost && (
                       <span className="host-mark" title="방장">

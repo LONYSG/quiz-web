@@ -545,6 +545,7 @@ export default function App() {
             onCreate={createGongbang}
             creating={busy === 'create'}
             lastCode={joinId}
+            serverNow={clock.serverNow}
           />
         ),
         foot: null,

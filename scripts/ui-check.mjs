@@ -1073,6 +1073,8 @@ const R109_ONLY = args.includes('--r109');
 const R111_ONLY = args.includes('--r111');
 /** ★★★ R117 — 공방 화면(`--gongbang` · SHOT_DIR=r117 · 서버 GONGBANG=1 이면 켠 화면 · 없으면 끈 화면이 오늘과 같은지) — scripts/ui-check-gongbang.mjs */
 const GONGBANG_ONLY = args.includes('--gongbang');
+/** ★★★ R118 — 혼자 하기 · 띠 화면(`--solo` · SHOT_DIR=r118 · 서버 GONGBANG=1 SOLO=1 BELT=1 이면 켠 화면 · SOLO 없으면 끈 화면) — scripts/ui-check-solo.mjs */
+const SOLO_ONLY = args.includes('--solo');
 /** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
 const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
@@ -13021,6 +13023,11 @@ try {
   }
   if (R111_ONLY) {
     await r111Flow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (SOLO_ONLY) {
+    const { soloFlow } = await import('./ui-check-solo.mjs');
+    await soloFlow({ browser, BASE, ROOT, sleep, snap, record, realClick, realType, signUp, setTheme, newPage, touchDevice, withPg, ACCOUNT_PREFIX, SHOT_ROOT: path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r040') });
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (GONGBANG_ONLY) {

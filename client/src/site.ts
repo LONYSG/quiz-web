@@ -16,9 +16,12 @@ export interface SiteInfo {
   publicUrl: string | null;
   /** ★ R117 — 공방 스위치(GONGBANG=1 · 서버가 gongbang:true 를 실을 때만) — 끄면 오늘 화면 그대로 */
   gongbang: boolean;
+  /** ★★★ R118 — 혼자 하기 · 띠 스위치(SOLO=1 · BELT=1 · 서버가 solo:true · belt:true 를 실을 때만) */
+  solo: boolean;
+  belt: boolean;
 }
 
-let info: SiteInfo = { site: 'friend', split: false, open: true, hidden: { modes: [], minigames: [] }, publicUrl: null, gongbang: false };
+let info: SiteInfo = { site: 'friend', split: false, open: true, hidden: { modes: [], minigames: [] }, publicUrl: null, gongbang: false, solo: false, belt: false };
 
 export function siteInfo(): SiteInfo {
   return info;
@@ -38,6 +41,8 @@ export async function loadSiteInfo(): Promise<void> {
       hidden: { modes: j.hidden?.modes ?? [], minigames: j.hidden?.minigames ?? [] },
       publicUrl: typeof j.publicUrl === 'string' ? j.publicUrl : null,
       gongbang: (j as { gongbang?: unknown }).gongbang === true,
+      solo: (j as { solo?: unknown }).solo === true,
+      belt: (j as { belt?: unknown }).belt === true,
     };
     setSiteHiddenMinigames(info.hidden.minigames);
     document.documentElement.dataset.site = info.site;
