@@ -10,6 +10,7 @@
 //   입장(다른 사람이 들어옴) / 카운트다운 5·4·3·2·1 / 시작 / 문제 등장 / 힌트 공개(20초·10초) /
 //   마지막 5초 똑딱 / ★ 정답(정답자가 나면 내가 맞혔을 때 반짝 덧붙임) / 시간 종료 / 넘김 /
 //   일시정지·재개 / 결과 화면
+// ★ R112 — 영상(오늘의 상식)과 같은 소리로 바꿈(sound.ts · soundRecipe.ts) + 다음 문제 · 결과 앞 3·2·1 똑
 // =============================================================================
 
 import { useEffect, useRef } from 'react';
@@ -88,6 +89,21 @@ export function useGameSounds(snapshot: RoomSnapshot, serverNow: () => number): 
     }, 100);
     return () => clearInterval(id);
   }, [countdownEnds, questionEnds, serverNow]);
+
+  // ── ★★ R112 — 정답 공개 뒤 "N초 후 다음 문제 · 결과 화면" 의 3 · 2 · 1 — 영상의 "다음 문제" 예고 똑-똑-똑(1초에 하나)
+  //   ★ 다음 문제가 뜨는 순간에는 문제 소리(통통 세 음)가 나므로 영상의 nextBell 은 내지 않는다(겹침 — soundRecipe.ts ROLE_SFX 주석)
+  //   일시정지 중에는 상태가 PAUSED 라 울리지 않고, 재개하면 새 nextAt 으로 다시 센다
+  const nextAt = state === 'QUESTION_RESOLVED' ? snapshot.resolution?.nextAt ?? null : null;
+  useEffect(() => {
+    if (nextAt === null) return undefined;
+    let last = Math.ceil((nextAt - serverNow()) / 1000);
+    const id = setInterval(() => {
+      const sec = Math.ceil((nextAt - serverNow()) / 1000);
+      if (sec !== last && sec >= 1 && sec <= 3) sfx('nextCount');
+      last = sec;
+    }, 100);
+    return () => clearInterval(id);
+  }, [nextAt, serverNow]);
 
   // 방을 떠나면 원래 음량으로
   useEffect(() => () => setDuck(false), []);

@@ -21,18 +21,24 @@
 //   ★ 정답 효과음은 "코인" 하나로 고정한다 (딩동댕·빰빠밤 삭제). 고르는 칸도 없앴다.
 // ★★★ R104 (찬종 2026-11-17 · 영상과 한 집안 — docs/20 §33) — 기본 곡 = "포근한 종"(bell · 영상과 같은 곡).
 //   "통통 경쾌"는 설정에서 고를 수 있게 남긴다. "8비트 게임기"(chip)는 삭제 — 가락이 남의 유명 게임 주제곡과 거의 같다.
-export type BgmId = 'bell' | 'bounce';
+// ★★★ R112 (찬종 2026-11-24 "영상에서 사용한 톤과 효과음 등으로 퀴즈도장 web 에 적용시켜") — 소리 값은 전부 soundRecipe.ts(영상 표와 같은 값).
+//   배경음 = 찬종이 영상용으로 고른 다섯 곡(bounce · bell-up · gym · sparkle · hop) · 기본 = bell-up. 옛 bell(100)은 뺐다.
+import {
+  BGM_PICK_VER,
+  BGM_SONGS,
+  BGMS,
+  DEFAULT_BGM,
+  ROLE_SFX,
+  SFX_NOTES,
+  VOICES,
+  migrateBgmPick,
+  parseSteps,
+  type BgmId,
+  type RecipeSfxName,
+  type Voice,
+} from './soundRecipe.js';
 
-export const BGMS: readonly { id: BgmId; label: string }[] = [
-  { id: 'bell', label: '포근한 종' },
-  { id: 'bounce', label: '통통 경쾌' },
-];
-
-/**
- * ★ R104 — 곡 고르기 판 번호. 이 번호 없이 저장된 곡(옛 기본 bounce · 지운 chip)은 **한 번** bell 로 바꾼다.
- *   그 뒤에 고른 곡은 이 번호와 함께 저장되므로 지킨다(브라우저 · 계정 둘 다 — prefsSync).
- */
-export const BGM_PICK_VER = 2;
+export { BGM_PICK_VER, BGMS, type BgmId };
 
 export interface SoundPrefs {
   bgmOn: boolean;
@@ -60,7 +66,7 @@ const DEFAULTS: SoundPrefs = {
   // ★ 배경음악은 작게. 시끄러우면 끈다 — 그러면 효과음까지 끌 수 있다
   bgmVol: 0.35,
   sfxVol: 0.7,
-  bgm: 'bell',
+  bgm: DEFAULT_BGM,
   bgmVer: BGM_PICK_VER,
   // ★ 채팅 소리는 작게 — 도배 때 귀가 아프지 않게
   chatOn: true,
@@ -74,15 +80,15 @@ function loadPrefs(): SoundPrefs {
     const raw = localStorage.getItem(KEY);
     if (!raw) return { ...DEFAULTS };
     const p = JSON.parse(raw) as Partial<SoundPrefs>;
-    // ★ R104 — 판 번호 없이 저장된 곡은 이번 한 번 기본 곡(bell)으로
+    // ★ R104 · R112 — 지금 판 번호로 저장된 곡이 아니면 이번 한 번 옮긴다(migrateBgmPick — 옛 bell → bell-up)
     const fresh = p.bgmVer === BGM_PICK_VER;
     const out: SoundPrefs = {
       bgmOn: typeof p.bgmOn === 'boolean' ? p.bgmOn : DEFAULTS.bgmOn,
       sfxOn: typeof p.sfxOn === 'boolean' ? p.sfxOn : DEFAULTS.sfxOn,
       bgmVol: clamp01(p.bgmVol, DEFAULTS.bgmVol),
       sfxVol: clamp01(p.sfxVol, DEFAULTS.sfxVol),
-      // ★ 지운 곡(오르골)이 저장돼 있으면 기본 곡으로
-      bgm: fresh && BGMS.some((b) => b.id === p.bgm) ? (p.bgm as BgmId) : DEFAULTS.bgm,
+      // ★ 지운 곡이 저장돼 있으면 기본 곡으로
+      bgm: migrateBgmPick(p.bgm, p.bgmVer),
       bgmVer: BGM_PICK_VER,
       chatOn: typeof p.chatOn === 'boolean' ? p.chatOn : DEFAULTS.chatOn,
       chatVol: clamp01(p.chatVol, DEFAULTS.chatVol),
@@ -250,16 +256,8 @@ export function audioReady(): boolean {
 
 const mtof = (m: number) => 440 * 2 ** ((m - 69) / 12);
 
-interface Voice {
-  type: OscillatorType;
-  /** 피크 음량 */
-  gain: number;
-  attack: number;
-  decay: number;
-  /** 화음 배음 (비율, 음량) */
-  partials?: [number, number][];
-}
-
+// ★ R112 — 음 하나를 내는 곡선은 영상 sound-recipe.js 맨 위 주석 · synth.mjs addNote 와 같다(견줌):
+//   start 0.0001 →(지수) start+attack 에 gain×배수 →(지수) start+attack+max(decay, dur) 에 0.0001 → 0.05초 뒤 끝 · glide 는 dur 동안 지수
 function playNote(
   dest: AudioNode,
   freq: number,
@@ -287,10 +285,27 @@ function playNote(
   }
 }
 
-const BELL: Voice = { type: 'sine', gain: 0.35, attack: 0.005, decay: 0.6, partials: [[1, 1], [2, 0.35], [3.01, 0.12]] };
-const PLUCK: Voice = { type: 'triangle', gain: 0.28, attack: 0.004, decay: 0.22 };
-const SQUARE: Voice = { type: 'square', gain: 0.12, attack: 0.003, decay: 0.12 };
-const SOFT: Voice = { type: 'sine', gain: 0.28, attack: 0.01, decay: 0.25 };
+const { BELL, PLUCK, SQUARE, SOFT, BRASS } = VOICES;
+
+/**
+ * ★★ R112 — 영상과 같은 자리의 효과음은 영상 표의 음표 그대로 낸다(soundRecipe.ts SFX_NOTES).
+ *   단, 옛 웹 소리보다 최고값이나 평균(50ms RMS)이 3dB 넘게 작아진 자리만 gain 에 이 배수를 곱한다
+ *   (두 차이의 가운데만큼 — 맞춘 뒤 둘 다 ±2.2dB 안 · R112 보고 3절). 음 높이 · 음색 · 길이는 그대로다.
+ *   되돌리려면 이 표에서 그 줄을 지운다.
+ */
+const WEB_GAIN: Partial<Record<RecipeSfxName, number>> = {
+  questionPluck: 1.32, // 옛 문제 소리보다 평균 -4.4dB
+  hintLow: 1.28, // 옛 힌트(반짝 세 음)보다 최고값 -3.5dB
+  urgent: 2.08, // 옛 마지막 5초 "똑"보다 최고값 -5.3 · 평균 -7.4dB (영상은 0.1 그대로 — ROLES.timerGain 과 같은 꼴의 웹 쪽 덮어쓰기)
+};
+
+function playRecipe(d: AudioNode, t: number, name: RecipeSfxName): void {
+  const mult = WEB_GAIN[name] ?? 1;
+  for (const [m, s, dur, vn, ov, glide] of SFX_NOTES[name]) {
+    const v: Voice = { ...VOICES[vn], ...(ov ?? {}) };
+    playNote(d, mtof(m), t + s, dur, mult === 1 ? v : { ...v, gain: v.gain * mult }, glide != null ? mtof(glide) : undefined);
+  }
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ★ 효과음
@@ -303,6 +318,8 @@ export type SfxId =
   | 'question'
   | 'hint'
   | 'urgent'
+  // ★ R112 — "N초 후 다음 문제 · 결과 화면" 의 3 · 2 · 1 (영상의 "다음 문제" 예고 똑-똑-똑)
+  | 'nextCount'
   | 'correct'
   | 'mine'
   | 'timeout'
@@ -360,21 +377,21 @@ export function sfx(id: SfxId): void {
     case 'tick': // 카운트다운 5·4·3·2·1
       playNote(d, mtof(81), t, 0.06, { ...SOFT, gain: 0.22, decay: 0.12 });
       break;
-    case 'go': // 시작! — ★ R104 종 시그널 "솔-미-도↑"(영상의 여는 소리와 같다)
-      playNote(d, mtof(79), t, 0.2, { ...BELL, gain: 0.16 });
-      playNote(d, mtof(76), t + 0.16, 0.2, { ...BELL, gain: 0.16 });
-      playNote(d, mtof(84), t + 0.32, 0.7, { ...BELL, gain: 0.18, decay: 0.7 });
-      playNote(d, mtof(72), t + 0.32, 0.7, { ...SOFT, gain: 0.1, decay: 0.7 });
+    // ★★ R112 — 아래 다섯 자리 + 정답 · 결과는 영상 ROLES 의 소리(soundRecipe.ts)
+    case 'go': // 판의 첫 문제 — 영상 여는 장면 "시작!" 통통 네 음(R104 의 종 시그널 → R112)
+      playRecipe(d, t, ROLE_SFX.open);
       break;
-    case 'question': // 문제 등장 — 위로 쓸어 올리는 소리
-      playNote(d, mtof(67), t, 0.18, { ...SOFT, gain: 0.18 }, mtof(79));
-      playNote(d, mtof(84), t + 0.16, 0.12, { ...BELL, gain: 0.18 });
+    case 'question': // 문제 등장 — 영상 "통통 세 음"
+      playRecipe(d, t, ROLE_SFX.question);
       break;
-    case 'hint': // 반짝
-      [88, 91, 96].forEach((m, i) => playNote(d, mtof(m), t + i * 0.07, 0.15, { ...BELL, gain: 0.14 }));
+    case 'hint': // 힌트 — 영상 "낮은 종 한 번" (예고 소리는 없다 — 영상 ROLES.preHint = null)
+      playRecipe(d, t, ROLE_SFX.hint);
       break;
-    case 'urgent': // 마지막 5초 — ★ R104 카운트다운(tick)과 같은 "똑"(영상의 5초 타이머 소리)
-      playNote(d, mtof(81), t, 0.06, { ...SOFT, gain: 0.22, decay: 0.12 });
+    case 'urgent': // 마지막 5초 — 영상의 5초 타이머 "삑"(찬종: 유튜브에서 듣던 타이머 소리를 게임에서)
+      playRecipe(d, t, ROLE_SFX.timer);
+      break;
+    case 'nextCount': // 다음 문제 · 결과까지 3 · 2 · 1 — 영상 "다음 문제" 예고의 똑
+      playRecipe(d, t, ROLE_SFX.nextCount);
       break;
     case 'correct':
       playCorrect(d, t);
@@ -390,8 +407,8 @@ export function sfx(id: SfxId): void {
     case 'skip':
       playNote(d, mtof(76), t, 0.2, { ...SOFT, gain: 0.18 }, mtof(64));
       break;
-    case 'result': // 결과 화면
-      [60, 64, 67, 72, 76, 79, 84].forEach((m, i) => playNote(d, mtof(m), t + i * 0.08, 0.3, { ...BELL, gain: 0.2 }));
+    case 'result': // 결과 화면 — 영상 닫는 장면(종 일곱 음 · R104 와 같은 음표)
+      playRecipe(d, t, ROLE_SFX.close);
       break;
     case 'pause':
       playNote(d, mtof(60), t, 0.3, { ...SOFT, gain: 0.2 });
@@ -473,17 +490,12 @@ export function cakeTick(strong: boolean, vol = 1): void {
   }
 }
 
-const BRASS: Voice = { type: 'sawtooth', gain: 0.09, attack: 0.02, decay: 0.3, partials: [[1, 1], [1.004, 0.7]] };
-
 /**
  * ★ 정답 효과음 — ★★★ R104 (찬종 2026-11-17: "빵빠레는 좀 시끄럽다") **종 네 음 올라감** 도-미-솔-도↑.
- *   영상의 정답 공개 소리와 같다. (옛: R034 코인 + R038 빵빠레)
+ *   영상의 정답 공개 소리(ROLES.correct = correctBell)와 같다 — R112 부터 표에서 읽는다. (옛: R034 코인 + R038 빵빠레)
  */
 function playCorrect(d: AudioNode, t: number): void {
-  playNote(d, mtof(72), t, 0.12, { ...BELL, gain: 0.14 });
-  playNote(d, mtof(76), t + 0.08, 0.12, { ...BELL, gain: 0.14 });
-  playNote(d, mtof(79), t + 0.16, 0.12, { ...BELL, gain: 0.14 });
-  playNote(d, mtof(84), t + 0.24, 0.5, { ...BELL, gain: 0.16, decay: 0.5 });
+  playRecipe(d, t, ROLE_SFX.correct);
 }
 /** ★ R104 — 정답 소리 뒤에 붙는 반짝(mine · mg-final)의 시작 시각 — 마지막 종(0.24초)이 울린 직후 */
 const CORRECT_TAIL = 0.32;
@@ -578,57 +590,12 @@ interface Track {
   bass: Voice;
 }
 
-/** "C5 . E5 . G5 ..." 같은 짧은 표기를 칸 배열로 */
-function parse(lead: string, bass: string): [number | null, number | null][] {
-  const toMidi = (s: string): number | null => {
-    if (s === '.' || s === '') return null;
-    const m = /^([A-G])(#?)(\d)$/.exec(s);
-    if (!m) return null;
-    const base = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 }[m[1] as 'C'];
-    return 12 * (Number(m[3]) + 1) + base + (m[2] ? 1 : 0);
-  };
-  const a = lead.trim().split(/\s+/);
-  const b = bass.trim().split(/\s+/);
-  const n = Math.max(a.length, b.length);
-  const out: [number | null, number | null][] = [];
-  for (let i = 0; i < n; i += 1) out.push([toMidi(a[i] ?? '.'), toMidi(b[i] ?? '.')]);
-  return out;
-}
+const parse = parseSteps;
 
-const TRACKS: Record<BgmId, Track> = {
-  // ★★ R104 포근한 종 — 기본 곡 · 영상과 같은 곡(찬종이 듣고 골랐다)
-  bell: {
-    bpm: 100,
-    lead: { ...BELL, gain: 0.1, decay: 0.5 },
-    bass: { type: 'triangle', gain: 0.13, attack: 0.005, decay: 0.2 },
-    steps: parse(
-      'B4 . . . D5 . . . G5 . . . . . D5 . ' +
-        'E5 . . . D5 . . . B4 . . . . . . . ' +
-        'C5 . . . E5 . . . A5 . . . . . G5 . ' +
-        'F#5 . . . D5 . . . G5 . . . . . . .',
-      'G2 . D3 . G3 . D3 . G2 . D3 . G3 . D3 . ' +
-        'E2 . B2 . E3 . B2 . G2 . D3 . G3 . D3 . ' +
-        'C3 . G3 . C4 . G3 . A2 . E3 . A3 . E3 . ' +
-        'D3 . A3 . D4 . A3 . G2 . D3 . G3 . . .',
-    ),
-  },
-  // ★ 통통 경쾌 — 장조 오음계, 통통 튀는 삼각파
-  bounce: {
-    bpm: 112,
-    lead: { ...PLUCK, gain: 0.16 },
-    bass: { type: 'triangle', gain: 0.2, attack: 0.005, decay: 0.18 },
-    steps: parse(
-      'C5 . E5 . G5 . E5 . A5 . G5 . E5 . D5 . ' +
-        'C5 . D5 . E5 . G5 . E5 . D5 . C5 . . . ' +
-        'A4 . C5 . D5 . C5 . E5 . D5 . C5 . A4 . ' +
-        'G4 . A4 . C5 . D5 . E5 . D5 . C5 . . .',
-      'C3 . . . G2 . . . C3 . . . G2 . . . ' +
-        'F2 . . . C3 . . . F2 . . . G2 . . . ' +
-        'A2 . . . E2 . . . F2 . . . C3 . . . ' +
-        'G2 . . . D3 . . . G2 . . . C3 . . .',
-    ),
-  },
-};
+// ★★★ R112 — 곡은 영상 BGM 표 그대로(soundRecipe.ts BGM_SONGS — 다섯 곡)
+const TRACKS = Object.fromEntries(
+  Object.entries(BGM_SONGS).map(([id, s]) => [id, { bpm: s.bpm, lead: s.lead, bass: s.bass, steps: parse(s.leadNotes, s.bassNotes) }]),
+) as Record<BgmId, Track>;
 
 let timer: ReturnType<typeof setInterval> | null = null;
 let nextTime = 0;
@@ -677,7 +644,7 @@ export function setMusicMode(mode: MusicMode): void {
   startBgm();
 }
 function trackOf(id: string): Track {
-  return id === 'minigame' ? MINIGAME_TRACK : TRACKS[id as BgmId] ?? TRACKS.bell;
+  return id === 'minigame' ? MINIGAME_TRACK : TRACKS[id as BgmId] ?? TRACKS[DEFAULT_BGM];
 }
 
 function scheduler(): void {

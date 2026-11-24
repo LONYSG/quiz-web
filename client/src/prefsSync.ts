@@ -8,7 +8,8 @@
 // =============================================================================
 
 import { fetchPrefs, savePrefs, type ServerPrefs } from './api.js';
-import { BGM_PICK_VER, BGMS, getSoundPrefs, setSoundPrefs, type BgmId } from './sound.js';
+import { BGM_PICK_VER, getSoundPrefs, setSoundPrefs } from './sound.js';
+import { migrateBgmPick } from './soundRecipe.js';
 import { getTheme, setTheme, THEMES, type ThemeId } from './theme.js';
 import { getEmojiInsert, getStoredSlots, setEmojiInsert, setStoredSlots } from './emojiCatalog.js';
 import { getFlag, setFlag } from './accountFlags.js';
@@ -79,7 +80,7 @@ function scheduleSave(): void {
 
 /** @returns 계정 값이 옛 판이라 지금 값으로 다시 저장해야 하면 true */
 function apply(p: ServerPrefs): boolean {
-  // ★ R104 — 판 번호 없는 곡(옛 기본 bounce · 지운 chip)은 따르지 않는다 → 브라우저의 값(bell)을 계정에 다시 올린다
+  // ★ R104 · R112 — 지금 판 번호가 아닌 곡은 옮긴 값(migrateBgmPick)을 계정에 다시 올린다
   const oldTrack = p.bgmVer !== BGM_PICK_VER;
   applying = true;
   try {
@@ -88,8 +89,9 @@ function apply(p: ServerPrefs): boolean {
     else if (p.theme === 'pop') setTheme('pastel');
     const patch: Parameters<typeof setSoundPrefs>[0] = {};
     if (typeof p.bgmOn === 'boolean') patch.bgmOn = p.bgmOn;
-    if (!oldTrack && BGMS.some((b) => b.id === p.bgmTrack)) patch.bgm = p.bgmTrack as BgmId;
-    else if (oldTrack) patch.bgm = 'bell';
+    // ★ R112 — 옛 판(2)의 bell → bell-up · 판 2 의 bounce 는 지킨다 · 판 번호 없는 곡 → bell-up (migrateBgmPick)
+    //   계정에 곡이 아예 없으면 이 브라우저의 곡을 그대로 두고 다시 올린다
+    if (p.bgmTrack !== undefined || p.bgmVer !== undefined) patch.bgm = migrateBgmPick(p.bgmTrack, p.bgmVer);
     if (typeof p.bgmVolume === 'number') patch.bgmVol = p.bgmVolume;
     if (typeof p.sfxOn === 'boolean') patch.sfxOn = p.sfxOn;
     if (typeof p.sfxVolume === 'number') patch.sfxVol = p.sfxVolume;

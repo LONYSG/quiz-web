@@ -31,3 +31,11 @@ describe('R074 prefs', () => {
     expect(sanitizePrefs({ bgmTrack: 'bounce', bgmVer: 'x' })).toEqual({ bgmTrack: 'bounce' });
   });
 });
+
+// ★ R112 — 영상과 같은 다섯 곡 · 옛 bell 은 받기만(화면이 bell-up 으로 옮긴다)
+describe('R112 prefs 곡', () => {
+  it('다섯 곡 + bell 을 받는다 · 그 밖은 버린다', () => {
+    for (const t of ['bounce', 'bell-up', 'gym', 'sparkle', 'hop', 'bell']) expect(sanitizePrefs({ bgmTrack: t, bgmVer: 3 })).toEqual({ bgmTrack: t, bgmVer: 3 });
+    expect(sanitizePrefs({ bgmTrack: 'waltz' })).toEqual({});
+  });
+});
