@@ -3332,6 +3332,9 @@ async function r053Live(browser, key) {
     } else if (key === 'oddone') {
       const cells = JSON.parse(await H.evaluate(`JSON.stringify((() => { const cs = [...document.querySelectorAll('.oddone-cell')]; const srcs = cs.map((c) => c.querySelector('img')?.getAttribute('src')); const cnt = {}; for (const s of srcs) cnt[s] = (cnt[s] ?? 0) + 1; const odd = srcs.findIndex((s) => cnt[s] === 1); return { odd, n: cs.length }; })())`));
       const cell = async (page, idx) => rectOf(page, `.oddone-cell[data-i="${idx}"]`);
+      // ★ R118 ⓪ — PC 1280×720 에서 7×7 격자 아랫줄이 카드 밖으로 잘렸다(R117 minigame 146/147) → 판마다 모든 칸이 카드 안인가
+      const fit = JSON.parse(await H.evaluate("JSON.stringify((() => { const card = document.querySelector('.mg-card')?.getBoundingClientRect(); const cs = [...document.querySelectorAll('.oddone-cell')].map((c) => c.getBoundingClientRect()); const last = cs[cs.length - 1]; return { size: Math.round(Math.sqrt(cs.length)), out: cs.filter((r) => r.bottom > card.bottom + 0.5).length, gap: card && last ? Math.round(card.bottom - last.bottom) : null }; })())"));
+      record(`★ R118 ⓪ 다른 하나 ${i + 1}판(${fit.size}×${fit.size}) — PC 1280×720 모든 칸이 카드 안`, fit.out === 0, `밖 ${fit.out}칸 · 카드 아래 여유 ${fit.gap}px`);
       // H — 한 번 틀리고 맞힘 · G — 바로 맞힘(톡)
       const w = await cell(H, cells.odd === 0 ? 1 : 0);
       await trustedClick(H, w.x + w.w / 2, w.y + w.h / 2);
