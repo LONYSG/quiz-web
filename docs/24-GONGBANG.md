@@ -744,3 +744,40 @@ R113 이 올린 9개에 찬종이 답했다(R114 지시서 1절). 기술 결정(
 - 서버 손질(작게): ① 계정 설정에 `quickJoin` 칸(빠른 입장 옵션 · `parseQuickJoinOpts` 로 거름) ② `directory.counts` · 목록 `counts` ③ 방장이 바뀌면 잠긴 방 비밀번호를 새 방장 화면에 `room.accessUpdated` 로(3-8 "새 방장에게 보인다").
 - 개발 서버만 켜기: `.env.dev` 에 `GONGBANG=1` → `npm run dev`(ops 메뉴 15)가 그 값만 개발 서버에 넘긴다(`scripts/dev-env.mjs` DEV_SWITCHES · 플레이 .env 는 안 건드림).
 - 검사: `GONGBANG=1 SHOT_DIR=r117 node scripts/ui-check.mjs --gongbang`(켠 화면 32칸) · 같은 명령에서 GONGBANG 을 빼면 끈 화면이 오늘과 같은지(3칸).
+
+---
+
+## 15. R118 이 만든 혼자 하기 · 띠 (2026-11-25 · 스위치 SOLO · BELT 뒤 · 끄면 오늘과 같다)
+
+> 순수 함수 · 상수 = `shared/src/solo.ts` · 서버 = `server/src/solo/`(engine · select · db · belts · index) · `server/src/http/soloRoutes.ts` · 화면 = `client/src/solo/`(SoloScreen · useSolo) · 마이그레이션 `0041_solo_belt.sql`.
+> 개발 서버만 켜기: `.env.dev` 에 `SOLO=1` · `BELT=1`(R117 의 DEV_SWITCHES 에 이미 있다). ★ [혼자 하기] 단추는 공방 첫 화면에만 있으므로 화면에서 보려면 `GONGBANG=1` 도 켜야 한다.
+
+### 15-1. 이벤트 · HTTP
+
+| 방향 | 이벤트 | 값 |
+|---|---|---|
+| 화면 → 서버 | `solo.start` · `solo.answer { n, text }` · `solo.away { n }` · `solo.quit` · `solo.sync`(도는 판 다시 받기) | 방에 있으면 시작 거절(`ALREADY_HAS_ROOM`) · 1시간 30판(`RATE_LIMITED`) |
+| 서버 → 화면 | `solo.started { lives }` · `solo.question { n, text, category, grade, endsAt, limitMs, lives, correct }`(정답 · 힌트 · 해설 없음) · `solo.result { n, ok, end, answer, explanation, lives, correct, nextAt, ms }` · `solo.end { correct, asked, reason, best, newBest, belt?: { step, next, change }, wrongs[] }` · `solo.state`(새 탭 · 다시 붙음) · `solo.none` | `end` = correct · timeout · away |
+| HTTP | `GET /api/solo/me` → `{ best, runs, running, belt?, next? }` · `GET /api/solo/belt/:id` → `{ belt, best, at }`(BELT) | 스위치가 꺼져 있으면 404 |
+| 방 스냅샷 | 사람 칸 `belt`(0~24 · null = 띠 없음) | BELT 가 꺼져 있으면 칸 자체가 없다 |
+| `/api/site` | `solo: true` · `belt: true` | 끄면 칸 없음 |
+
+### 15-2. 문서와 달라진 기술 결정(R118 · D-375)
+
+- **시계**: 방의 100ms tick 에 넣지 않고 문제마다 `setTimeout` 하나(마감 + 0.3초 · 다음 문제) — 사람 하나라 더 작다. 판정은 동기(await 없음) · DB 쓰기는 기다리지 않음(판 시작 · 끝만 기다림).
+- **끊김(4-5 · 4-7)**: 지금 문제의 시계는 간다(시간이 끝나면 틀림). **다음 문제는 다시 붙을 때까지 내지 않는다** — 끊긴 채 문제가 줄줄이 나와 목숨이 다 빠지는 일을 막는다. 30초 넘으면 `disconnect` 로 끝(그때까지 기록 · 최고 기록 · 띠에 넣는다).
+- **시간 식**: "30자를 넘는 10자마다 0.5초"를 끊지 않고 이어서 셌다(54자 = 2.4 × 0.5초) — 문서의 예 둘(≈9 · ≈11.5)이 이어서 센 값이다. 정답 글자는 띄어쓰기를 빼고 센다. 100ms 단위.
+- **그만두기 · 끊김으로 끝난 판**: 풀던 문제는 기록만(`end` quit · disconnect) — 목숨 · "틀린 세 문제"에는 안 넣는다. 그 판의 맞힌 개수는 최고 기록 · 띠에 넣는다.
+- **서버를 다시 띄워 닫힌 판(server_restart)**: 부팅 정리가 맞힌 개수만 세어 닫는다 — 최고 기록 · 띠에는 **넣지 않는다**(포인트 지급을 부팅 길에 두지 않으려고).
+- **띠 포인트 지급 줄**은 `seen_at = now()` 로 넣는다 — 끝 화면이 "+40P" 를 보여 주므로 로그인 토스트가 한 번 더 띄우지 않게.
+- **BELT 만 꺼져 있으면**: 최고 기록은 쌓이고 띠 칸 · 포인트는 안 셈 — 나중에 켜면 다음 판 끝에 최고 기록으로 다시 세어 받은 적 없는 몫까지 차액으로 준다(5-3 · 5-5 그대로).
+- **나감(4-5)**: `visibilitychange`(hidden) · 창 `blur` → `solo.away { n }` → 그 문제 실패. 문제 사이(결과 · 다음 문제 기다림)의 나감은 세기만(`flags.awayBetween`).
+- **의심 표시 `flags`**: fast(0.6초 안 맞힘 수) · away · awayBetween · repeats(최근 200 안 문항을 다시 냄) · gradeFallback · reconnects · device.
+- **손님(SOLO_GUEST)**: 만들지 않았다 — 로그인 안 한 사람은 첫 화면(로그인)에서 [혼자 하기]를 볼 일이 없다(공방 첫 화면은 로그인 뒤).
+- **화면**: 진행 = R114 안 A(지금 문제 카드 꼴 `question-card` · 입력 줄 `chat-input-row` 그대로) · 끝 화면의 [로비] · [다시]는 화면 아래에 붙는다(틀린 세 문제가 길어도 늘 보이게) · 띠 받는 순간은 첫 띠 · 새 띠 · 단계 셋 다(글만 다름 — "첫 띠를 받았어요" · "새 띠를 받았어요" · "단계가 올랐어요") · 띠 아이콘 IV = 막대 + V(시안 그대로 · R117 부품은 막대 넷이었다).
+
+### 15-3. 검사
+
+- 봇 `solo`(켬 · 시험값 SOLO_TEST_TIME_MS=1500 · SOLO_TEST_NEXT_MS=150 · SOLO_TEST_RECONNECT_MS=2000) · `solooff`(끔).
+- 화면 `GONGBANG=1 SOLO=1 BELT=1 SHOT_DIR=r118 node scripts/ui-check.mjs --solo`(켬) · `GONGBANG=1 … --solo`(SOLO 끔).
+- 시험 스위치(실 서버에 두지 않는다): `SOLO_TEST_TIME_MS` · `SOLO_TEST_NEXT_MS` · `SOLO_TEST_RECONNECT_MS` · `SOLO_TEST_RAMP_SHIFT`(등급을 셀 때 맞힌 개수에 더함 — 등급 5 를 빨리 본다). 식의 숫자 = `SOLO_TIME_*`(베타에서 맞추는 값).

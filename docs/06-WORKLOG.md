@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-25 — 혼자 하기(솔로) + 띠 (R118, MAIN · D-375)
+- 무엇: shared/src/solo.ts(새 — 시간 식 · SOLO_RAMP · 띠 25칸 · P2 포인트 · 이벤트 꼴) · server/src/solo/(새 — engine · select · db · belts · index) · http/soloRoutes · 0041(solo_runs · solo_answers · accounts 띠 열 · point_grants 'belt') · client/src/solo/(새 — SoloScreen · useSolo) · GongbangHome([혼자 하기] · 띠 줄) · PeoplePanel · Seat · PersonCard(띠) · Belt(IV 고침) · oddone 격자(PC 높이 예산) · 봇 solo · solooff · ui-check --solo
+- 왜: docs/24 4절 · 5절 · 12절(찬종 2026-11-24 결정) · R117 minigame 146/147 의 격자 잘림
+- [x] 0 oddone 격자(minigame 152/152) [x] A 서버 · 공유 · 0041(test · dev) · 단위 테스트 21 [x] B 봇 solo 39 · solooff 6 [x] C 화면 · ui-check --solo 켬 25 · 끔 4 [x] D verify 단계별 끝까지(ai-out/R118.txt)
+
 ## 2026-11-24 — 공방 화면 (R117, MAIN · D-374)
 - 무엇: client/src/gongbang/(새 — GongbangHome · Directory · CreateRoom · LockedJoin · ModeChange · AccessControls · PersonReport · BlockList · Belt · kinds · store) · App(스위치 분기 · 잠금 알림 · 방 만든 뒤 난이도/미니게임 · 가린 사람 채팅 거름) · Lobby(머리 종류 색 · 정원/잠금 · 신고/가리기) · GameSettings(방 종류 줄 · 모드 바꾸기) · PeoplePanel · InvitePopup · PersonCard · Prefs · LiarStage(구경 안내) · useRoom(room.gongbang · accessUpdated) · styles(R117 블록 — 종류 · 띠 토큰) · 서버 작게(prefs quickJoin · directory.counts · 새 방장 비밀번호) · dev-env(.env.dev 스위치) · ui-check --gongbang(scripts/ui-check-gongbang.mjs)
 - 왜: R116 서버를 화면으로(docs/24 8절 · R116 시안)

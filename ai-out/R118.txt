@@ -1,0 +1,96 @@
+R118 (2026-11-25 · MAIN · D-375) — 혼자 하기(솔로) + 띠 · STATUS: 완료
+1. 모델: Opus 5.5(claude-opus-5-5 · 하위 에이전트 없음)
+2. 스위치를 끈 채 달라진 것: 다른 하나 찾기 격자 하나(PC 1280×720 에서 카드 안으로 — 지시서 0 · 일부러 고친 것). 그 밖에는 없음 — 봇 solooff 6/6 · ui-check --solo 끈 화면 4/4([혼자 하기] "곧 열려요" · 띠 칸 0) · 기존 verify 전부 그대로 통과.
+3. 결과: 봇 solo 39/39 · solooff 6/6 · gongbang 38/38 · gongbangoff 6/6 · ui-check --solo 켬 25/25 · 끔 4/4 · 단위 테스트 880/880 · npm run verify 단계별로 끝까지 — typecheck · test 880 · smoke 12 · ui-check 기본 447 · sound 17 · social 118 · profile 25 · emoji 17 · leave 29 · spam 20 · shop 33 · copy 16 · devices 10 · minigame 152/152(R117 의 146/147 → 격자 고침 + 판마다 "모든 칸이 카드 안" 검사 5칸 더함) · 전부 통과
+4. 찬종이 dev 에서 볼 순서(ops 메뉴 15 → http://localhost:3001 · .env.dev 에 SOLO=1 · BELT=1 을 넣어 두었다 · 실 서버 3000 은 그대로):
+   ① 로비 [혼자 하기](아래 글 "목숨 셋 서바이벌") · 프로필 아래 "띠 없음" 회색 토막 → 시작 화면(규칙 세 줄 · [시작])
+   ② 한 판 — 휴대폰 키보드가 올라온 채로 목숨 ♥ · 맞힌 개수 · 문제 · 남은 시간 · 입력칸이 다 보이는지 · 틀리면 정답이 빨갛게 1.5초
+   ③ 목숨 0 → 끝 화면 위 "화이트벨트 · 첫 띠를 받았어요 · +10P" → 틀린 세 문제의 정답 · 해설 · [다시] · [로비]
+   ④ [다시]로 3개 넘게 맞히면 "화이트벨트 I · 단계가 올랐어요 · +5P" → [로비] 프로필 아래 띠 줄
+   ⑤ 방에 들어가면 참여자 칸(휴대폰) · 자리 카드(PC) 닉네임 곁 띠 · 내 사진 누르면 사람 카드에 띠 크게
+5. 막힌 것 / 못 한 것: 없음. 손님 연습(SOLO_GUEST)은 지시서대로 만들지 않았다. ★ [혼자 하기] 단추는 공방 첫 화면에만 있다 — SOLO 만 켜고 GONGBANG 을 끄면 화면에서 들어갈 길이 없다(dev 는 셋 다 켬).
+
+===========================================
+ROUND: R118
+DATE: 2026-11-25
+TASK: 혼자 하기(솔로) + 띠 — 서버 · 0041 · 화면 · 봇 · ui-check · verify · oddone 격자 고침
+STATUS: 완료
+===========================================
+
+0. 찬종이 볼 것
+ - 휴대폰으로 그림: docs/design/r118/ (이름 = 번호-화면-크기-테마). 나란히 볼 것: r118-03-play-m360(혼자 하기 진행) ↔ 방의 문제 카드(같은 question-card · q-head · 시간 막대 · 입력 줄 그대로) · r118-14-lobby-belt-m360(로비 띠 줄) ↔ r117-01-lobby.
+ - 실 서버(3000)는 손대지 않았다. ★ 일을 시작할 때 3000 이 꺼져 있었다(tmp/ops/play.json 은 11-24 10:42 기동 기록 · 포트 듣는 프로세스 없음) — 지시서가 "건드리지 않는다"라 켜지 않았다. 필요하면 ops 메뉴 1.
+ - 0041 은 quizweb_test · quizweb_dev 에만 넣었다(실 quizweb 은 설계가 반영 때). dev 는 넣기 전에 백업(backups/quizweb_dev-20261125-020837.dump).
+
+1. 원칙 메모(지시서 사실 검증)
+ - "Belt.tsx 가 이미 있다" — 맞다. 다만 단계 IV 를 막대 넷(IIII)으로 그리고 있었다 → 시안(R116 · 막대 + V)대로 고쳤다.
+ - "등급 5 는 알가치 1 을 빼면 78개뿐"(문서 4-3) — 확인 안 함(검사 DB 로 62개 판에서 등급 5 가 나오는 것만 봤다).
+ - "R117 minigame 146/147 의 1칸 = oddone 7×7 격자 잘림" — 재현해서 원인 둘을 찾았다: ① 모든 button 의 margin-top 14px 이 칸마다 붙어 줄 간격이 늘었다(칸 54 · 줄 72) ② 그림 height:100% 가 그림 본래 크기(72px)로 줄 높이를 밀었다. 고친 뒤 격자 크기를 PC 높이 예산(--mg-fit · 채팅 6줄 최소는 그대로)에 맞췄다 — 7×7 칸이 1280×720 에서 약 26px(마우스용 · 휴대폰은 따로 넓은 그대로).
+
+2. 만든 것
+ A. 서버 · 공유(스위치 SOLO · BELT 뒤)
+  - shared/src/solo.ts — 시간 식(8초 + 30자 넘는 10자마다 0.5초 + 정답 5자 넘는 글자마다 0.4초 · 8~13초 · 기기 무관) · SOLO_RAMP(4-3 표 · 버전 1) · 띠 25칸(5-1 안 A · 버전 1) · 띠 포인트 P2 누적 · 차액 · 이름("블루벨트 II") · 이벤트 꼴
+  - server/src/solo/ — engine(계정당 판 하나 · 동기 판정 · n 검사 · 마감 + 0.3초 · 나감 · 그만두기 · 새 탭 이어받기 · 끊김 30초) · select(등급 → 안 나온 것 · 정답 안 겹침 · 최근 200 뒤로 · 아래 등급 먼저 · 정답 흘림 뒤로) · db(판 · 답 · 끝 트랜잭션: 최고 기록 · 띠 · 차액 point_grants 'belt') · belts(띠 칸 메모리 — 로그인 때 읽음) · index(소켓 이벤트)
+  - 방과 솔로는 함께 못 한다(방 만들기 · 입장 · 빠른 입장 · 초대 모두 attachToRoom 에서 한 번 더 막음) · 방 스냅샷 사람 칸 belt(BELT 만) · /api/site solo · belt · GET /api/solo/me · /api/solo/belt/:id · 부팅 정리(열린 판 닫기 · 틀린 답 글 90일)
+  - 이벤트 · 값 정리: docs/24 15절
+ B. 봇 solo(39칸) · solooff(6칸) — scripts/bot.mjs
+ C. 화면 — client/src/solo/SoloScreen.tsx(시작 · 진행 안 A · 끝 · 띠 받는 순간) · useSolo.ts · GongbangHome([혼자 하기] · 프로필 띠 줄) · PeoplePanel(28px) · Seat(26px) · PersonCard(64px · 이름 · 최고 · 받은 날) · Belt.tsx(IV · BeltOf) · styles R118 블록(배치만)
+ D. 검사 — scripts/ui-check-solo.mjs(--solo · 진짜 클릭 · 360 · 390 · PC × 파스텔 · 밤 · 키보드 올라온 높이 360×480 · 390×584 · 끈 화면)
+
+3. 스스로 정한 것(D-375 · docs/24 15-2 — 보고 싫으면 말해 주면 되돌린다)
+ ① 시계는 문제마다 setTimeout(방 tick 밖) — 사람 하나라 더 작다
+ ② 끊긴 동안 지금 문제 시계는 가고, 다음 문제는 다시 붙을 때까지 안 낸다(30초 넘으면 그때까지 기록으로 끝) — 끊긴 채 문제가 줄줄이 나와 목숨이 다 빠지면 "30초 안에 돌아오면 이어서"가 뜻이 없어진다
+ ③ 시간 식 "10자마다"는 이어서 셌다(54자 = 2.4 × 0.5초) — 문서의 예 ≈9초 · ≈11.5초와 맞추려고 · 정답 글자는 띄어쓰기 빼고
+ ④ 그만두기 · 끊김의 풀던 문제는 기록만(목숨 · 틀린 세 문제에 안 넣음) · 그 판의 맞힌 개수는 최고 기록 · 띠에 넣음
+ ⑤ 서버를 다시 띄워 닫힌 판은 최고 기록 · 띠에 안 넣음(부팅 길에 포인트 지급을 두지 않으려고)
+ ⑥ 띠 포인트 지급 줄은 seen_at = now() — 끝 화면이 "+40P"를 이미 보여 주므로 로그인 토스트가 또 안 뜨게
+ ⑦ 띠 받는 순간은 첫 띠 · 새 띠 · 단계 셋 다 띄운다(글만 다름) · 2.6초 뒤 저절로 닫힘 · 누르면 바로 닫힘 · 소리 = 미니게임 끝 소리(mg-final)
+ ⑧ 끝 화면 [로비] · [다시]는 화면 아래에 붙였다 — 틀린 세 문제 · 해설이 길면 PC 1280×720 에서 [다시]가 화면 밖이었다(ui-check 가 잡음)
+ ⑨ 틀린 답에 서버는 반응이 없다(문서) — 화면은 입력칸을 비우고 "친 답" 칩만 보인다(쳤다는 표시 · 틀렸다는 판정은 아님)
+ ⑩ 진행 화면 위 오른쪽 [그만하기] → 확인 창 "지금까지 맞힌 개수로 끝나요"
+ ⑪ 로비 [혼자 하기] 아래 글 = 처음 "목숨 셋 서바이벌" · 한 판 뒤 "최고 N"
+ ⑫ BELT 만 꺼져 있으면 최고 기록만 쌓이고, 나중에 켜면 다음 판 끝에 다시 세어 받은 적 없는 몫까지 차액으로 준다(5-3 · 5-5 그대로)
+ ⑬ 사람 카드 받은 날은 업적과 같은 날짜 표기(UTC 날짜 — 새벽 0~9시에 받으면 하루 앞 날짜로 보인다 · 업적과 같은 기존 꼴이라 그대로 둠)
+
+4. 그림(docs/design/r118/ · 68장)
+ | 화면 | 그림 |
+ |---|---|
+ | 다른 하나 찾기 격자(PC · 휴대폰) | 82-live-oddone-* |
+ | 로비 띠 없음 · 띠 있음 | r118-01-lobby-nobelt-m360/m390 · r118-14-lobby-belt-m360/pc |
+ | 시작 | r118-02-start-m360 · pc |
+ | 진행 · 키보드 올라온 높이 | r118-03-play-m360 · r118-04-play-m360kb/m390kb · r118-11-play-pc · r118-18-play-m390 |
+ | 틀린 답 · 맞힘 · 시간 끝 · 나감 | r118-05-wrong · r118-06-correct · r118-07-timeout · r118-08-away |
+ | 띠 받는 순간(첫 띠 · 단계) | r118-09-promo-m360 · r118-13-promo-pc |
+ | 끝 화면 · 그만하기 확인 | r118-10-end-m360/m390/pc · r118-12-quit-pc |
+ | 방 안 띠(휴대폰 참여자 창 · PC 자리) · 사람 카드 | r118-15-room-people-m360 · r118-16-room-pc · r118-17-person-card-pc |
+ | 스위치 끈 로비 | r118-off-lobby-m360 |
+
+ 견준 값(390 · 파스텔 · docs/design/r118/r118-compare.json — 같은 앱인가)
+ | 부품 | 글자 | 굵기 | 높이 | 둥근 정도 | 여백 | 견준 기존 부품 |
+ |---|---|---|---|---|---|---|
+ | 혼자 하기 입력칸(새) | 15px | 400 | 44 | 12px | 9px 12px | 방 채팅 입력칸 — 15 · 400 · 44 · 12 · 9/12 (같음) |
+ | 보내기 단추(새) | 15px | 700 | 44 | 999px | 8px 18px | 방 [전송] — 15 · 700 · 44 · 999 · 8/14(아이콘만이라 옆 여백만 넓힘) |
+ | [시작](새) | 17.6px | 700 | 54 | 999px | 12px 28px | 로비 [같이 하기] big-btn — 17.6 · 700(같은 big-btn · 높이는 한 줄짜리) |
+ | 문제 카드 · 시간 · 지문 | 앱 .card.question-card · .q-timer(15.2px · 800) · .q-text(19px · 800) 그대로 | | | 20px(카드) | | 방의 문제 카드와 같은 클래스 |
+ | 규칙 · 띠 칸 | .card(20px · 16/18) · 띠 칸 = --radius-sm(12px) · --surface-2 | | | | | 대기실 카드 · 설정 줄 |
+
+5. 마이그레이션 0041_solo_belt.sql(더하기만 · quizweb_test · quizweb_dev 적용 · 실은 설계가 반영 때)
+ - solo_runs(판) · solo_answers(문제마다 — 12-2 의 칸 전부: 등급 · 글 지문 · 보인 때 · 첫 입력까지 · 맞힌 ms · 시간 한도 · 결과(end) · 틀린 개수 · 틀린 답 글 · 나감)
+ - accounts.solo_best · belt_step(0~24 · NULL = 띠 없음) · belt_at
+ - point_grants reason 'belt' · ref_type 'solo_run'
+ - 되돌리기는 파일 머리에.
+
+6. 확인 — 한 번에가 아니라 단계별(한 묶음씩 · 크롬 하나 · 끝나면 다음 · 02:29~03:24)
+ - typecheck 통과 · vitest 880/880(새 21 — 시간 식 · ramp · 띠 셈 · 차액 · 거두지 않음 · 고르기(안 나온 것 · 정답 겹침 · 최근 200 · 아래 등급 · 흘림) · 솔로 코드는 question_experiences 를 안 씀)
+ - 봇: solo 39/39 · solooff 6/6 · gongbang 38/38 · gongbangoff 6/6
+   solo 가 본 것: 정답 · 힌트 칸 없음 · 틀린 답 무반응 · 시간 끝 · 목숨 0 → 끝(틀린 세 문제 정답 · 해설) · DB 줄(판 · 답 · 12절 칸) · 늦게 온 답(n 다름) 버림 · 솔로 중 방 거절 · 방 안 솔로 거절 · 나감 · 그만두기 · 탭 둘(옛 탭 끊김 · 같은 n · 같은 마감) · 끊김 다시 붙기 · 끊긴 채 끝 · 등급 1→2→3→4→5(62개 판) · 띠 null→0(+10)→1(+5)→22(+245) · 안 내려감 · 포인트 줄 [10, 5, 245] · 방 사람 칸 띠 · 사람 카드 · 공방 경험 수 그대로
+ - ui-check --solo 켬 25/25 · 끔 4/4 · smoke 12/12 · ui-check 기본 447 · sound 17 · social 118 · profile 25 · emoji 17 · leave 29 · spam 20 · shop 33 · copy 16 · devices 10 · minigame 152/152
+ - ★ 검사 구멍 메운 것: R117 까지 minigame 은 oddone 판을 "눌러지나"만 봐서 무작위로 잘린 줄에 걸릴 때만 1칸 실패했다 → 판마다 모든 칸이 카드 안인지 직접 잰다(5칸). 솔로 끝 화면 [다시]가 화면 밖이던 것은 ui-check 진짜 클릭이 잡았다.
+ - ★ 나감 검사는 창 blur 이벤트를 페이지 안에서 일으켜 본 것(진짜 다른 앱으로 나가기는 아님) — 실기기 확인은 A141.
+ - 검사 뒤 크롬 · 검사 서버 0(남은 프로세스 없음).
+
+7. 바꾼 파일
+ - 새: shared/src/solo.ts · solo.test.ts · server/src/solo/(engine · select · select.test · db · belts · index) · server/src/http/soloRoutes.ts · migrations/0041_solo_belt.sql · client/src/solo/(SoloScreen · useSolo) · scripts/ui-check-solo.mjs · docs/design/r118/
+ - 고침: shared index · server config(SOLO · BELT · SOLO_TIME_* · SOLO_TEST_*) · socket/index(핸드셰이크 띠 · 솔로 붙이기 · 끊김 · 방 입장 막기) · rooms/snapshot(belt) · db/questionPool(솔로 풀) · db/bootCleanup · index(/api/site · /api/solo) · client App · site · GongbangHome · Belt · PeoplePanel · Seat · PersonCard · useRoom · styles(oddone · R118 블록) · scripts/bot.mjs · ui-check.mjs(--solo · oddone 검사)
+ - 문서: docs/24 15절(새) · 07 D-375 · 06 · 13 A141 · 16 모은 것/뺀 것 R118 줄 · ai-out/README
+ - 커밋 안 함: .env.dev(gitignore — SOLO=1 · BELT=1 두 줄 더함) · verify 가 다시 찍은 옛 라운드 그림(되돌림)
