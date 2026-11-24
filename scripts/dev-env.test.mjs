@@ -16,4 +16,9 @@ describe('개발 서버 env (R078 · D-333)', () => {
     expect(devOverrides({ env: {}, dotEnv: {}, envDev }).DATABASE_URL).toMatch(/\/mine$/);
     expect(devOverrides({ env: { DEV_PORT: '3009' }, dotEnv: {}, envDev }).PORT).toBe('3009');
   });
+  it('★ R117 — .env.dev 의 기능 스위치만 개발 서버에 넘긴다(그 밖 키 · 플레이 .env 는 안 넘김)', () => {
+    const o = devOverrides({ env: { GONGBANG: '0' }, dotEnv: { GONGBANG: '1', SECRET: 'x' }, envDev: { GONGBANG: '1', EXPERIENCE_DAYS: 30, OTHER: 'y' } });
+    expect(o.switches).toEqual({ GONGBANG: '1', EXPERIENCE_DAYS: '30' });
+    expect(devOverrides({ env: {}, dotEnv: { GONGBANG: '1' }, envDev: {} }).switches).toEqual({});
+  });
 });

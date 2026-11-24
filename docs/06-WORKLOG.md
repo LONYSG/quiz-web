@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-24 — 공방 화면 (R117, MAIN · D-374)
+- 무엇: client/src/gongbang/(새 — GongbangHome · Directory · CreateRoom · LockedJoin · ModeChange · AccessControls · PersonReport · BlockList · Belt · kinds · store) · App(스위치 분기 · 잠금 알림 · 방 만든 뒤 난이도/미니게임 · 가린 사람 채팅 거름) · Lobby(머리 종류 색 · 정원/잠금 · 신고/가리기) · GameSettings(방 종류 줄 · 모드 바꾸기) · PeoplePanel · InvitePopup · PersonCard · Prefs · LiarStage(구경 안내) · useRoom(room.gongbang · accessUpdated) · styles(R117 블록 — 종류 · 띠 토큰) · 서버 작게(prefs quickJoin · directory.counts · 새 방장 비밀번호) · dev-env(.env.dev 스위치) · ui-check --gongbang(scripts/ui-check-gongbang.mjs)
+- 왜: R116 서버를 화면으로(docs/24 8절 · R116 시안)
+- [x] 1 화면(스위치 켬) [x] 2 ui-check --gongbang 켬 32/32 · 끔 3/3 · 그림 docs/design/r117/ [x] 3 봇 gongbang · gongbangoff · liar · mgquiz · mgduo [x] 4 typecheck · test · build — 검증 = ai-out/R117.txt.
+
 ## 2026-11-24 — 공방 서버 · 봇 · 시안 마무리 (R116, MAIN · D-373)
 - 무엇: shared/src/gongbang.ts(새 — 방 종류 · 정원 · 비밀번호 · 목록 줄 · 정렬 · 빠른 입장 고르기 · 금칙어) · server/src/gongbang/index.ts(새 — 목록 구독 1초 방송 · 잠금 · 빠른 입장 · 정원/잠금 바꾸기 · 모드 바꾸기 알림) · http/peopleRoutes.ts(새 — 사람 신고 · 개인 차단) · socket/index.ts(만들기 · 입장 · 모드 훅) · select.ts strictUnseen · 본 문제 유효 기간(EXPERIENCE_DAYS) · play_events 새 열 · 0040 · 봇 gongbang · gongbangoff · 시안 ai-out/R116-시안.html
 - 왜: 찬종 2026-11-24 — 새로 만드는 방은 전부 공방(docs/24) · R115 시안 답(로마 숫자 단계 · 로비 안 B 꼴 · 목록 아래 버튼)

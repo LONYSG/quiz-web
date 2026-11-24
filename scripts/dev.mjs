@@ -62,8 +62,8 @@ if (devDb === LIVE_DB_NAME || devDb === '') {
   console.error(`[dev] ★★ 개발 서버가 실 DB(${LIVE_DB_NAME})로 뜨려 한다 — DEV_DATABASE_URL · .env.dev 를 확인 (기본 ${DEV_DB_NAME} · npm run db:dev-init)`);
   process.exit(1);
 }
-const childEnv = { ...process.env, PORT: DEV.PORT, DATABASE_URL: DEV.DATABASE_URL, QUIZ_DEV_SERVER: '1' };
-log(`개발 서버 — PORT ${DEV.PORT} · DB ${devDb}${DEV.fromEnvDev ? ' (.env.dev 반영)' : ''} · 세션 쿠키 qw_session-dev`);
+const childEnv = { ...process.env, ...DEV.switches, PORT: DEV.PORT, DATABASE_URL: DEV.DATABASE_URL, QUIZ_DEV_SERVER: '1' };
+log(`개발 서버 — PORT ${DEV.PORT} · DB ${devDb}${DEV.fromEnvDev ? ' (.env.dev 반영)' : ''} · 세션 쿠키 qw_session-dev${Object.keys(DEV.switches).length ? ` · 스위치 ${Object.entries(DEV.switches).map(([k, v]) => `${k}=${v}`).join(' ')}` : ''}`);
 {
   const dry = spawnSync(process.execPath, [path.join(ROOT, 'scripts', 'migrate.mjs'), '--dry'], { cwd: ROOT, env: childEnv, encoding: 'utf8' });
   const text = `${dry.stdout ?? ''}${dry.stderr ?? ''}`;

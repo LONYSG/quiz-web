@@ -33,7 +33,13 @@ export function withDbName(url, name) {
   }
 }
 
-/** 개발 서버 자식 env 에 덮을 값 { PORT, DATABASE_URL, QUIZ_DEV_SERVER, fromEnvDev } — env · 파일은 인자로(테스트) */
+/**
+ * ★ R117 — 개발 서버에만 켤 기능 스위치(.env.dev 에 적으면 개발 서버만 켜진다 · 플레이 .env 는 안 건드린다).
+ *   서버는 .env 를 읽어도 이미 있는 변수를 덮지 않으므로(process.loadEnvFile) 이 값이 이긴다.
+ */
+export const DEV_SWITCHES = ['GONGBANG', 'SOLO', 'SOLO_GUEST', 'BELT', 'EXPERIENCE_DAYS'];
+
+/** 개발 서버 자식 env 에 덮을 값 { PORT, DATABASE_URL, QUIZ_DEV_SERVER, fromEnvDev, switches } — env · 파일은 인자로(테스트) */
 export function devOverrides({ env = process.env, dotEnv = readEnvFile(path.join(ROOT, '.env')), envDev = readEnvFile(path.join(ROOT, '.env.dev')) } = {}) {
   const base = dotEnv.DATABASE_URL ?? FALLBACK_URL;
   return {
@@ -41,5 +47,6 @@ export function devOverrides({ env = process.env, dotEnv = readEnvFile(path.join
     DATABASE_URL: env.DEV_DATABASE_URL ?? envDev.DATABASE_URL ?? withDbName(base, DEV_DB_NAME) ?? FALLBACK_URL,
     QUIZ_DEV_SERVER: '1',
     fromEnvDev: Object.keys(envDev).length > 0,
+    switches: Object.fromEntries(DEV_SWITCHES.filter((k) => envDev[k] !== undefined).map((k) => [k, String(envDev[k])])),
   };
 }
