@@ -1,9 +1,11 @@
-[VERIFY V109 — ★ **새 문항 카드 270장 사실 확인**(게임 DB 에 들어갈 새 카드 — gpt 가 재료만 보고 쓴 것) (찬종 2026-11-21) : 웹 열기 + 파일 읽기 · DB 읽기만 · 어림 2~3시간(묶음 15개 — 묶음 하나 끝날 때마다 저장) · 하위 에이전트 한 번에 2개까지]  (이 파일이 지시 전체 · V108 은 `verify-V108.md`)
+[VERIFY V110 — ★ **새 문항 카드 2차 273장 사실 확인**(gpt 가 새재료-16~34 로 쓴 것 · V109 와 같은 방식) (설계 2026-11-24) : 웹 열기 + 파일 읽기 · DB 읽기만 · 어림 3~4시간(묶음 19개 — 묶음 하나 끝날 때마다 저장) · 하위 에이전트 한 번에 2개까지]  (이 파일이 지시 전체 · V109 는 `verify-V109.md` · 결과 본보기 `data/pipeline/audit/v109-newcards.json` · 보고 본보기 `ai-out/V109.txt`)
 
-TASK: GEN 이 찾은 재료 314장(`web-desk/tone/보낼것/새재료-01~15.json` — 사실마다 `text` · `url` · `quote`)으로 gpt 가 카드를 썼다(`web-desk/tone/받은것/새카드-01~15.json` — ready 270 · need 44). 찬종이 시범 23장을 보고 "상당히 퀄리티가 좋아. 이런 식으로 계속 해"라고 했다. 게임에 넣기 전에 **사실**만 확인한다 — 말투 · 재미는 이 창의 일이 아니다(고칠 문장은 gpt 가 마무리한다).
+TASK: GEN G109 가 찾은 재료 280장(`web-desk/tone/보낼것/새재료-16~34.json`)으로 gpt 가 카드를 썼다(`web-desk/tone/받은것/새카드-16~34.json` — ready 273 · need 7 · `ai-talk/096`). 1차(V109 · 270장)는 ok 232 · fix 38 · reject 0 이었고 고친 카드가 게임에 들어갔다. 게임에 넣기 전에 **사실**만 확인한다 — 말투 · 재미는 이 창의 일이 아니다(고칠 문장은 gpt 가 마무리한다).
 실행 모델: Sonnet 5.5 (`claude --model claude-sonnet-5-5` — 바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 5-3 · 사실은 **이번에 실제로 연 문서**만 · `status: "ready"` 인 카드만 본다(need · drop 은 건너뛴다 — 건너뛴 수만 적는다) · 카드 · 재료 파일은 고치지 않는다.
+  · ★ V109 에서 배운 것(이번에 꼭): ① 하위 에이전트가 돌려준 둘째 문서 quote 는 **이 창이 그 페이지를 직접 열어 한 번 더** 확인한 것만 `second` 에 적는다 · ② 한 묶음이 fix 0 으로 나오면(1차 01~03) 그 묶음에서 5장을 골라 이 창이 직접 다시 대조하고 보고 6줄에 적는다 · ③ 재료가 위키 단일 의존이 많았다 — 뼈대 판정(위 2)을 느슨하게 하지 않는다.
+  · ★ G109 가 남긴 표시(재료 파일 안): `hintRisk` 83장(힌트가 답을 거의 말해 버릴 위험) → 블라인드(3)에서 **힌트 없이 질문만으로도** 답이 나오는지 한 번 더 본다 · 표기 근거 약함 17장 → 정답 표기가 연 문서에 있는지 적는다(`spellingSeen`) · 원문과 대조 안 된 줄 6(23 그림자 노동 · 23 아타락시아 · 29 남자 셋 여자 셋) → gpt 가 뺐다고 했다(096) — 카드에 그 줄의 사실이 남았으면 fix.
   · ★ V108 에서 배운 것: 하위 에이전트가 돌려준 "요약한 문장"을 원문처럼 적지 않는다. 문서를 열었으면 **그 페이지에서 복사한 문장**을, 못 열었으면 "못 엶"을 적는다 — 둘 사이의 것은 없다.
 
 ■ 카드마다 세 가지
@@ -13,7 +15,7 @@ TASK: GEN 이 찾은 재료 314장(`web-desk/tone/보낼것/새재료-01~15.json
 ■ 판정 `ok` | `fix` | `reject`
   - `fix` = 구절을 고치면 살릴 수 있다(무엇을 · 어떤 사실로 — **문장을 써 주지 않는다**. gpt 가 쓴다). `reject` = 뼈대 사실이 틀렸거나 받칠 문서가 없다 · 정답이 둘 이상이고 좁힐 수 없다.
   - 영상과 달리 게임 카드는 **재료의 quote 로 받쳐지면 통과**다(주소를 설명글에 싣는 일이 없다). 다만 위 2의 "뼈대가 위키뿐"은 가린다.
-■ 결과 — `data/pipeline/audit/v109-newcards.json`(묶음 하나 끝날 때마다 다시 저장 · 맨 위 `"done"` 은 15묶음이 다 끝난 뒤에만 `true` · `"chunks": ["01", …]` 에 끝난 묶음):
-  `{ "key": "n0401", "chunk": "05", "verdict": "ok|fix|reject", "blind": "정답|다른 답", "claims": [ { "where": "question|hint|explanation", "text": "…", "by": "core|story2|hintIdea|none", "quoteOnPage": true|false|"못 엶" } ], "second": { "url": "…", "quote": "…" } | null, "why": "fix · reject 의 까닭 한 줄", "alsoAdd": ["…"] }`
-■ `찬종-확인.md` 에는 쓰지 않는다. 보고 `ai-out/V109.txt` 8줄: 묶음별 ok · fix · reject · 못 연 주소 수 · 위키만이던 뼈대 수(둘째 문서 찾음 / 못 찾음) · 블라인드에서 갈린 수 · 가장 많이 나온 fix 의 꼴 셋(gpt 지시서를 고칠 거리).
+■ 결과 — `data/pipeline/audit/v110-newcards.json`(묶음 하나 끝날 때마다 다시 저장 · 맨 위 `"done"` 은 19묶음이 다 끝난 뒤에만 `true` · `"chunks": ["16", …]` 에 끝난 묶음):
+  `{ "key": "…", "chunk": "16", "verdict": "ok|fix|reject", "blind": "정답|다른 답", "claims": [ { "where": "question|hint|explanation", "text": "…", "by": "core|story2|hintIdea|none", "quoteOnPage": true|false|"못 엶" } ], "second": { "url": "…", "quote": "…" } | null, "why": "fix · reject 의 까닭 한 줄", "alsoAdd": ["…"], "spellingSeen": true|false|null }`
+■ `찬종-확인.md` 에는 쓰지 않는다. 보고 `ai-out/V110.txt` 8줄: 묶음별 ok · fix · reject · 못 연 주소 수 · 위키만이던 뼈대 수(둘째 문서 찾음 / 못 찾음) · 블라인드에서 갈린 수 · 가장 많이 나온 fix 의 꼴 셋(gpt 지시서를 고칠 거리).
 ■ 끝: 내 산출물만 `git add` · 커밋 전 `git fetch` → `git rebase --autostash` · push · 멈춘다.
