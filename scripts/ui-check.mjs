@@ -1586,6 +1586,16 @@ async function trustedTap(page, x, y) {
   await sleep(60);
   await page.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
 }
+/** ★ R112 ④ — 영상 정지 화면과 나란히 놓을 웹의 같은 순간(방장 PC 1280×720 · 참가자 모바일 390) → docs/design/r112/w<n>-<이름>-{pc,m390}.png */
+async function r112Look(host, guest, name) {
+  const dir = path.join(ROOT, 'docs', 'design', 'r112');
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  for (const [pg, tag] of [[host, 'pc'], [guest, 'm390']]) {
+    const r = await pg.send('Page.captureScreenshot', { format: 'png' });
+    writeFileSync(path.join(dir, `${name}-${tag}.png`), Buffer.from(r.data, 'base64'));
+  }
+}
+
 async function soundFlow(browser) {
   const host = await newPage(browser, 'host');
   await host.setViewport(1280, 720);
@@ -1622,7 +1632,16 @@ async function soundFlow(browser) {
   guest.pageErrors = [];
   await host.click('게임 시작');
   await host.waitFor("document.querySelector('.q-timebar') !== null", 15000);
+  await sleep(1200);
+  await r112Look(host, guest, 'w1-question');
   await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
+  // ★ R112 ④ — 힌트가 열린 순간(일반 힌트 또는 초성)
+  if (await host.waitFor("document.querySelector('.q-hint.open') !== null || document.querySelector('.reveal') !== null", 50000).catch(() => false)) {
+    if (await host.evaluate("document.querySelector('.reveal') === null")) {
+      await sleep(900);
+      await r112Look(host, guest, 'w2-hint');
+    }
+  }
   await host.waitFor("document.querySelector('.reveal') !== null", 50000);
   const kb1 = await guest.evaluate("JSON.stringify({ tag: document.activeElement?.tagName, dropped: document.documentElement.dataset.kbDropped ?? '0' })");
   console.log(`[sound] 1번 시간 종료 — 참가자 포커스 ${kb1}`);
@@ -1639,6 +1658,9 @@ async function soundFlow(browser) {
   await guest.click('전송');
   await host.waitFor("document.querySelector('.reveal') !== null", 5000);
   await sleep(300);
+  await r112Look(host, guest, 'w3-reveal');
+  await sleep(1500);
+  await r112Look(host, guest, 'w4-explain');
   const kb2 = await guest.evaluate("JSON.stringify({ tag: document.activeElement?.tagName, dropped: document.documentElement.dataset.kbDropped ?? '0' })");
   console.log(`[sound] 2번 정답 — 참가자 포커스 ${kb2}`);
   await guest.setInput('.chat-card input', '메롱');

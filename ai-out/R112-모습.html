@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R112 모습 견주기</title>
+<style>
+  :root { --page: #fff8f0; --surface: #fff; --border: #e6dcf7; --text: #3a3156; --dim: #8d82a8; --accent: #8a6bff; --ok: #18b26b; --chip: #f3eeff; }
+  body { margin: 0; background: var(--page); color: var(--text); font: 15px/1.6 'Pretendard Variable', 'Pretendard', 'Malgun Gothic', system-ui, sans-serif; }
+  main { max-width: 1280px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 36px 0 10px; }
+  p.lead { color: var(--dim); margin: 0 0 18px; }
+  .row { display: grid; grid-template-columns: 1.3fr 1fr 0.45fr; gap: 12px; align-items: start; background: var(--surface); border: 1.5px solid var(--border); border-radius: 20px; padding: 14px; margin-bottom: 14px; }
+  .row figure { margin: 0; }
+  .row img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--border); }
+  figcaption { font-size: 0.8rem; color: var(--dim); margin-top: 4px; }
+  .tag { display: inline-block; background: var(--chip); color: var(--accent); border-radius: 999px; padding: 1px 10px; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 12px; overflow: hidden; }
+  th, td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; font-size: 0.9rem; }
+  th { background: var(--chip); }
+  td.n { white-space: nowrap; font-weight: 700; }
+  .s { white-space: nowrap; }
+  @media (max-width: 760px) { .row { grid-template-columns: 1fr; } table { display: block; overflow-x: auto; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>R112 — 영상과 웹, 같은 순간 나란히</h1>
+  <p class="lead">왼쪽 = 영상 「오늘의 상식 26.11.24」(1920×1080에서 뽑음) · 가운데 = 웹 PC 1280×720(방장) · 오른쪽 = 웹 모바일 390(참가자). 웹 그림은 ui-check --sound 가 검사 DB 로 돈 판에서 찍었다(문항이 달라 글자는 다르다). <b>이 라운드는 화면을 한 줄도 바꾸지 않았다</b> — 아래 표에서 고르면 다음 라운드가 한다.</p>
+
+  <section class="row">
+    <figure><span class="tag">① 문제 화면</span><img src="../docs/design/r112/v1-question.jpg" alt="영상 문제 화면"><figcaption>영상 20초</figcaption></figure>
+    <figure><img src="../docs/design/r112/w1-question-pc.png" alt="웹 PC 문제 화면"><figcaption>웹 PC</figcaption></figure>
+    <figure><img src="../docs/design/r112/w1-question-m390.png" alt="웹 모바일 문제 화면"><figcaption>웹 모바일</figcaption></figure>
+  </section>
+  <section class="row">
+    <figure><span class="tag">② 힌트가 뜬 화면</span><img src="../docs/design/r112/v2-hint.jpg" alt="영상 힌트 화면"><figcaption>영상 31초(남은 4초)</figcaption></figure>
+    <figure><img src="../docs/design/r112/w2-hint-pc.png" alt="웹 PC 힌트 화면"><figcaption>웹 PC(초성이 열린 순간)</figcaption></figure>
+    <figure><img src="../docs/design/r112/w2-hint-m390.png" alt="웹 모바일 힌트 화면"><figcaption>웹 모바일</figcaption></figure>
+  </section>
+  <section class="row">
+    <figure><span class="tag">③ 정답 공개 순간</span><img src="../docs/design/r112/v3-reveal.jpg" alt="영상 정답 공개"><figcaption>영상 35.3초</figcaption></figure>
+    <figure><img src="../docs/design/r112/w3-reveal-pc.png" alt="웹 PC 정답 공개"><figcaption>웹 PC(정답자 나옴)</figcaption></figure>
+    <figure><img src="../docs/design/r112/w3-reveal-m390.png" alt="웹 모바일 정답 공개"><figcaption>웹 모바일</figcaption></figure>
+  </section>
+  <section class="row">
+    <figure><span class="tag">④ 해설 중</span><img src="../docs/design/r112/v4-explain.jpg" alt="영상 해설"><figcaption>영상 45초</figcaption></figure>
+    <figure><img src="../docs/design/r112/w4-explain-pc.png" alt="웹 PC 해설"><figcaption>웹 PC(공개 1.5초 뒤)</figcaption></figure>
+    <figure><img src="../docs/design/r112/w4-explain-m390.png" alt="웹 모바일 해설"><figcaption>웹 모바일</figcaption></figure>
+  </section>
+
+  <h2>가. 토큰(색 · 둥글기 · 그림자) — 어긋난 것 없음</h2>
+  <p>영상 <code>brand/tokens.css</code> 의 값 42개 중 41개가 웹 <code>client/src/styles.css</code> 파스텔 테마와 글자까지 같다. 다른 하나는 <code>--font</code> 목록 끝(영상 <code>sans-serif</code> · 웹 <code>-apple-system …</code>)뿐이라 보이는 차이는 없다. → <b>색을 맞출 일은 없다. 다른 것은 전부 "모양"이다.</b></p>
+
+  <h2>나. 모양이 다른 것 — 찬종이 고를 표</h2>
+  <table>
+    <thead><tr><th>#</th><th>자리</th><th>영상은 이렇다</th><th>웹은 이렇다</th><th>웹을 영상에 맞추면 얻는 것</th><th>잃는 것</th><th>크기</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td>난이도 표시</td><td>테두리 알약 안에 "쉬움" + 점 다섯(켜진 점은 분홍)</td><td>테두리 알약 "난이도 중급"(글자만)</td><td>영상에서 보던 점 표시를 게임에서 그대로 봄 · 한눈에 몇 단계인지</td><td>웹의 이 칸은 <b>판 전체의 설정</b>(초급 · 중급 · 고급 — 방장이 고른 것)이고, 영상의 점은 <b>문제 하나의</b> 난이도다. 뜻이 달라 그대로 옮기면 헷갈린다 — 문제별 난이도를 보여 줄지부터 정해야 함</td><td class="s">작음</td></tr>
+      <tr><td class="n">2</td><td>남은 시간 알약</td><td>마지막 5초에만 오른쪽 위에 "4초"</td><td>문제 내내 "15초"</td><td>문제 동안 화면이 조용해짐 · 5초 삑과 함께 떠서 긴장감</td><td>남은 시간을 늘 보고 싶은 사람(채팅으로 답 치는 게임이라 시간이 중요)</td><td class="s">작음</td></tr>
+      <tr><td class="n">3</td><td>정답 공개 순간</td><td>화면 가운데 큰 초록 알약 "피사의 사탑" + 위에 작은 "정답" 딱지 · 뒤는 흐려짐(도장 찍듯)</td><td>문제 카드 안 공개 칸: 정답자 얼굴 · "정답! 닉네임 +1" · "정답 [킬트]" 초록 칩 · 해설</td><td>영상과 가장 닮아 보이는 순간 · 정답 낱말이 크게 박힘</td><td>정답자 얼굴 · +1 · 소감 칸이 한 박자 늦게 보임(웹은 "누가 맞혔나"가 주인공) — 1초쯤 띄웠다 공개 칸으로 내려앉는 식이면 둘 다 살 수 있음</td><td class="s">보통</td></tr>
+      <tr><td class="n">4</td><td>"정답" 딱지(해설 중)</td><td>분홍 테두리 알약 안에 "정답 | 피사의 사탑"(초록 칩)</td><td>글자 "정답" 옆에 초록 칩(테두리 없음)</td><td>정답 칸이 한 덩어리로 보임 · 영상과 같은 꼴</td><td>거의 없음(자리를 조금 더 씀)</td><td class="s">작음</td></tr>
+      <tr><td class="n">5</td><td>힌트 줄</td><td>분홍 "힌트" 딱지 + 문장 하나(글자 큼) · 힌트가 없으면 줄도 없음</td><td>"힌트" · "초성" 두 줄이 늘 자리를 잡음 · 잠긴 줄은 회색 · 없으면 "없음"</td><td>힌트 없는 문제에서 빈 줄이 사라져 깔끔</td><td>웹은 일반 힌트 · 초성 두 단계라 "곧 열린다"는 자리 표시가 사라짐 · 열릴 때 화면이 출렁일 수 있음</td><td class="s">보통</td></tr>
+      <tr><td class="n">6</td><td>머리 줄의 문항 번호</td><td>없음</td><td>"#3838"(누르면 복사 · 제보용)</td><td>머리 줄이 짧아짐</td><td>제보할 때 문항 번호를 쉽게 못 찾음 — <b>맞추지 않기를 권함</b></td><td class="s">작음</td></tr>
+      <tr><td class="n">7</td><td>로고 자리</td><td>왼쪽 위에 작은 로고 + "오늘의 상식"</td><td>방 안에서는 방 이름 + 상태 칩(로고는 로비에만)</td><td>방 안에서도 "퀴즈도장"이 보임</td><td>방 이름 자리를 나눠야 함 · 모바일 머리 줄이 좁음</td><td class="s">보통</td></tr>
+      <tr><td class="n">8</td><td>문제 번호 알약 · 주제 칩 · 카드 위 띠 · 타이머 막대</td><td colspan="2">같다(보라 알약 "1 / 5" · 연보라 칩 · 보라→분홍 띠 · 보라 막대) — 영상이 웹에서 옮긴 그대로</td><td colspan="3">할 일 없음</td><td class="s">—</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--dim);font-size:.85rem">그림 경로: <code>docs/design/r112/</code> · v* = 영상 · w* = 웹. 웹 그림은 <code>npm run ui-check:sound</code> 가 돌 때마다 새로 찍힌다.</p>
+</main>
+</body>
+</html>

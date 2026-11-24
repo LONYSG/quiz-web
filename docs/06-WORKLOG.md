@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-24 — 웹 소리를 영상과 맞춤 + 모습 견주기 (R112, MAIN · D-372)
+- 무엇: client/src/soundRecipe.ts(새 — 영상 sound-recipe.js 와 같은 값) · sound.ts(표에서 소리 냄 · 배경음 다섯 곡 · 판 번호 3) · useGameSounds.ts(다음 문제 · 결과 앞 3·2·1) · prefsSync.ts(migrateBgmPick) · server authRoutes PREF_BGM_TRACKS · 테스트 soundRecipe.test.ts · prefs.test.ts · ui-check --sound(R112 기대값 · 웹 그림 넷) · ai-out/R112-모습.html.
+- [x] 1 정본 읽기 [x] 2 자리 맞추기(문제 · 힌트 · 5초 · 시작 · 3·2·1 · 배경음) [x] 3 확인(영상 wav 대조 · 크기 · 테스트 · ui-check:sound 17/17) [x] 4 모습 견주기(고치지 않음) — 검증 = ai-out/R112.txt.
+
 ## 2026-11-21 — 공개 주소 준비 중 한 장 (R111, MAIN · D-371)
 - 무엇: config PUBLIC_OPEN · YOUTUBE_URL · server/src/site.ts publicClosedFor · server/src/closedPage.ts(새) · index.ts 닫힘 문지기 · socket 핸드셰이크 거절 · /api/site open · 봇 siteclosed · ui-check --r111 · docs 11 4-4-1 · 07 D-371 · 01 19-1.
 - [x] 1 스위치 [x] 2 닫힌 공개 [x] 3 한 장 모양 [x] 4 베타 그대로 [x] 5 열기 = 한 줄 — 검증 = ai-out/R111.txt.
