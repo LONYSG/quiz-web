@@ -364,7 +364,7 @@ function registerRoomHandlers(socket: Socket): void {
       // ★★★ R116 — 방 제목 금칙어(목록에 그대로 드러난다 · 스위치를 켰을 때만)
       const banned = bannedTextMessage(payload.title, '방 제목');
       if (banned) {
-        sendError(s, 'BAD_REQUEST', banned);
+        sendError(s, 'BAD_REQUEST', banned, banned);
         return;
       }
 

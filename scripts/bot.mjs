@@ -156,6 +156,8 @@ const SCENARIO_ENV = {
   site: { PUBLIC_HOSTNAME: 'quizdojang.test', FRIEND_HOSTNAME: 'beta.quizdojang.test', PUBLIC_OPEN: '1', RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05', SITE_FRIEND_ITEMS: 'estimate-0050' },
   siteclosed: { PUBLIC_HOSTNAME: 'quizdojang.test', FRIEND_HOSTNAME: 'beta.quizdojang.test', YOUTUBE_URL: 'https://www.youtube.com/@quizdojang-test', RESOLVED_WAIT_MS: '200', MINIGAME_PHASE_SCALE: '0.05' },
   // ★★★ R107 — 공격 묶음: 한도를 작게 · 이 PC 자신도 세고(SEC_LOCAL_EXEMPT=0) · LAN 주소로도 듣는다(가짜 IP 헤더 단계)
+  // ★★★ R116 — 공방 스위치 · 본 문제 30일 · 정답 공개 짧게
+  gongbang: { GONGBANG: '1', EXPERIENCE_DAYS: '30', RESOLVED_WAIT_MS: '200' },
   attack: {
     RESOLVED_WAIT_MS: '200',
     HOST: '0.0.0.0',
@@ -10632,6 +10634,281 @@ async function scenarioAttack() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R116 gongbang — 공방 서버(GONGBANG=1 · EXPERIENCE_DAYS=30 — SCENARIO_ENV)
+//   목록 구독(생김 · 없어짐) · 잠긴 방(코드 · 틀림 · 5번 · 긴 링크) · 정원(꽉 참 · 줄이기 거절) · 빠른 입장(딱 맞음 · 비슷한 방 · 없음) ·
+//   모드 바꾸기(사람 그대로) · 30일(시계 대신 기록 시각을 당겨서) · play_events 새 열 · 신고 · 차단
+// ★★★ R116 gongbangoff — 스위치를 끈 기본 서버: 목록 이벤트 거절 · 방 만들기 새 칸 무시 · /api/site · /api/people
+// -----------------------------------------------------------------------------
+function trackGongbang(bot) {
+  const s = bot.socket;
+  s.on('directory.list', (p) => bot.events.push({ type: 'directory.list', ...p }));
+  s.on('directory.quickJoinResult', (p) => bot.events.push({ type: 'quickJoin', ...p }));
+  s.on('room.lockRequired', (p) => bot.events.push({ type: 'room.lockRequired', ...p }));
+  s.on('room.accessUpdated', (p) => bot.events.push({ type: 'room.accessUpdated', ...p }));
+}
+const lastList = (bot) => [...bot.events].reverse().find((e) => e.type === 'directory.list') ?? null;
+const errSince = (bot, from) => bot.since(from, 'error').map((e) => e.code);
+
+async function scenarioGongbang() {
+  log('시나리오 gongbang — ★★★ 공방 서버 (R116 · docs/24 3절)');
+  const [h1, h2, a, b, c, d, w, q] = await makeBots(8);
+  for (const x of [h1, h2, a, b, c, d, w, q]) {
+    await x.connect();
+    trackGongbang(x);
+  }
+  // 앞 판의 방이 남아 있을 수 있다 — 비운다
+  for (const x of [h1, h2, a, b, c, d, w, q]) x.leave();
+  await sleep(400);
+  for (const x of [h1, h2, a, b, c, d, w, q]) x.snapshot = null;
+
+  // ── A. 목록 구독 — 빈 목록 → 방이 생기면 1초 묶음으로 온다 · 긴 id · 방장 이름은 없다
+  let from = w.mark();
+  w.socket.emit('directory.watch', { kind: 'quiz' });
+  await w.waitFor(() => w.since(from, 'directory.list').length > 0, 3000, '목록 처음');
+  expect('★ 목록 처음 — 퀴즈 탭', lastList(w)?.kind, 'quiz');
+  from = w.mark();
+  h1.socket.emit('room.create', { title: '공방 퀴즈 방', kind: 'quiz', maxPlayers: 3 });
+  await h1.waitFor(() => h1.snapshot !== null, 6000, '방 만들기(정원 3)');
+  const roomA = h1.snapshot.room;
+  expect('★ 공방 방 — 스냅샷에 정원 3', roomA.maxPlayers, 3);
+  expect('★ 공방 방 — 종류 퀴즈 · 열린 방', JSON.stringify({ k: roomA.gongbang?.kind, l: roomA.gongbang?.locked }), JSON.stringify({ k: 'quiz', l: false }));
+  expectTrue('★ 공방 방 미니게임 기본 = 꺼짐 · 퀴즈형만', roomA.settings.minigames === false && roomA.settings.minigameKeys.length > 0 && !roomA.settings.minigameKeys.includes('cake'), roomA.settings.minigameKeys.join(','));
+  await w.waitFor(() => (lastList(w)?.rooms ?? []).some((r) => r.code === roomA.code), 3000, '목록에 새 방');
+  const rowA = lastList(w).rooms.find((r) => r.code === roomA.code);
+  expectTrue('★★ 목록 줄 — 방 코드 · 인원/정원 · 대기 · 난이도 · 미니게임', rowA && rowA.players === 1 && rowA.max === 3 && rowA.phase === 'waiting' && rowA.level === 'intermediate' && rowA.minigames === false, JSON.stringify(rowA));
+  const rowJson = JSON.stringify(lastList(w));
+  expectTrue('★★ 목록에 긴 id · 방장 닉네임이 없다', !rowJson.includes(roomA.id) && !rowJson.includes(h1.nickname), '');
+  // 바뀐 것이 없으면 다시 보내지 않는다
+  const n0 = w.since(from, 'directory.list').length;
+  await sleep(2300);
+  expect('★ 바뀐 것이 없으면 목록을 다시 보내지 않는다', w.since(from, 'directory.list').length, n0);
+
+  // ── B. 정원 — 3명 꽉 참 · 4번째 ROOM_FULL(정원 안내) · 줄이기 거절 · 늘리기
+  a.join(roomA.code);
+  await a.waitFor(() => a.snapshot !== null, 6000, 'a 코드로 입장');
+  b.join(roomA.code);
+  await b.waitFor(() => b.snapshot !== null, 6000, 'b 코드로 입장');
+  from = c.mark();
+  c.join(roomA.code);
+  await c.waitFor(() => c.since(from, 'error').length > 0 || c.snapshot !== null, 4000, 'c 꽉 참');
+  const full = c.since(from, 'error')[0];
+  expectTrue('★★ 정원 3 — 4번째는 ROOM_FULL · "정원 3명"', full?.code === 'ROOM_FULL' && /정원 3명/.test(full?.message ?? ''), JSON.stringify(full));
+  await w.waitFor(() => lastList(w)?.rooms.find((r) => r.code === roomA.code)?.players === 3, 3000, '목록 인원 3');
+  expect('★ 목록이 인원을 따라간다(3/3)', lastList(w).rooms.find((r) => r.code === roomA.code)?.players, 3);
+  from = h1.mark();
+  h1.socket.emit('room.updateAccess', { maxPlayers: 2 });
+  await h1.waitFor(() => h1.since(from, 'error').length > 0, 3000, '정원 줄이기 거절');
+  expectTrue('★★ 지금 인원보다 작게는 거절', /지금 3명이에요/.test(h1.since(from, 'error')[0]?.detail ?? ''), h1.since(from, 'error')[0]?.detail);
+  from = h1.mark();
+  h1.socket.emit('room.updateAccess', { maxPlayers: 4 });
+  await h1.waitFor(() => h1.since(from, 'room.accessUpdated').length > 0, 3000, '정원 늘리기');
+  expect('★ 정원 4로', h1.since(from, 'room.accessUpdated').at(-1)?.maxPlayers, 4);
+  from = h1.mark();
+  h1.socket.emit('room.updateAccess', { maxPlayers: 4, password: 'abcd' });
+  await h1.waitFor(() => h1.since(from, 'error').length > 0, 3000, '비밀번호 형식');
+  expect('★ 비밀번호는 숫자 4자리만', errSince(h1, from)[0], 'BAD_REQUEST');
+
+  // ── C. 잠긴 방 — 코드로는 비밀번호 · 틀림 · 5번이면 10분 · 긴 링크는 통과 · 목록에 🔒
+  h2.socket.emit('room.create', { title: '잠긴 방', kind: 'quiz', maxPlayers: 8, password: '0371' });
+  await h2.waitFor(() => h2.snapshot !== null, 6000, '잠긴 방 만들기');
+  const roomB = h2.snapshot.room;
+  expectTrue('★★ 방장 스냅샷에는 비밀번호가 보인다', roomB.gongbang?.locked === true && roomB.gongbang?.password === '0371', JSON.stringify(roomB.gongbang));
+  await w.waitFor(() => (lastList(w)?.rooms ?? []).some((r) => r.code === roomB.code), 3000, '목록에 잠긴 방');
+  const rowB = lastList(w).rooms.find((r) => r.code === roomB.code);
+  expect('★ 목록 줄 — 잠금', rowB?.locked, true);
+  expectTrue('★★ 목록에 비밀번호가 없다', !JSON.stringify(lastList(w)).includes('0371'), '');
+  from = c.mark();
+  c.join(roomB.code);
+  await c.waitFor(() => c.since(from, 'error').length > 0, 3000, '비밀번호 없이');
+  expect('★★ 코드로 오면 ROOM_LOCKED', errSince(c, from)[0], 'ROOM_LOCKED');
+  expect('★ room.lockRequired 로 방 제목도 온다', c.since(from, 'room.lockRequired')[0]?.title, '잠긴 방');
+  from = c.mark();
+  c.socket.emit('room.join', { roomId: roomB.code, password: '1111' });
+  await c.waitFor(() => c.since(from, 'error').length > 0, 3000, '틀린 비밀번호');
+  expectTrue('★★ 틀리면 WRONG_PASSWORD · 4번 남음', errSince(c, from)[0] === 'WRONG_PASSWORD' && c.since(from, 'room.lockRequired')[0]?.left === 4, JSON.stringify(c.since(from, 'room.lockRequired')[0]));
+  from = c.mark();
+  c.socket.emit('room.join', { roomId: roomB.code, password: '0371' });
+  await c.waitFor(() => c.snapshot !== null, 4000, '맞는 비밀번호');
+  expect('★★ 맞으면 들어간다', c.snapshot?.room.id, roomB.id);
+  expect('★ 방장 아닌 사람 스냅샷에는 비밀번호가 없다', c.snapshot?.room.gongbang?.password, null);
+  for (let i = 0; i < 5; i += 1) {
+    from = d.mark();
+    d.socket.emit('room.join', { roomId: roomB.code, password: '9999' });
+    await d.waitFor(() => d.since(from, 'error').length > 0, 3000, `틀림 ${i + 1}`);
+  }
+  expect('★★ 5번째 틀림 = PASSWORD_LOCKED', d.lastError()?.code, 'PASSWORD_LOCKED');
+  from = d.mark();
+  d.socket.emit('room.join', { roomId: roomB.code, password: '0371' });
+  await d.waitFor(() => d.since(from, 'error').length > 0 || d.snapshot !== null, 3000, '잠긴 동안 맞는 번호');
+  expect('★★ 잠긴 동안은 맞아도 못 들어간다(10분)', errSince(d, from)[0], 'PASSWORD_LOCKED');
+  from = d.mark();
+  d.join(roomB.id);
+  await d.waitFor(() => d.snapshot !== null || d.since(from, 'error').length > 0, 4000, '긴 링크');
+  expect('★★★ 긴 초대 링크는 비밀번호 없이 들어간다', d.snapshot?.room.id, roomB.id);
+  d.leave();
+  c.leave();
+  await sleep(400);
+  d.snapshot = null;
+  c.snapshot = null;
+
+  // ── D. 빠른 입장 — 딱 맞음(바로) · 비슷한 방(묻고 [확인]) · 없음
+  // 방 A(중급 · 3/4 · 미니게임 꺼짐 · 열림) · 방 B(잠김 — 후보 아님)
+  from = q.mark();
+  q.socket.emit('directory.quickJoin', { kind: 'quiz', opts: { levels: ['advanced'] } });
+  await q.waitFor(() => q.since(from, 'quickJoin').length > 0, 3000, '빠른 입장 — 고급만');
+  const near = q.since(from, 'quickJoin')[0];
+  expectTrue('★★ 딱 맞는 방이 없으면 near · 어긋난 칸 = 난이도 · 잠긴 방은 후보가 아니다', near?.status === 'near' && near.room?.code === roomA.code && JSON.stringify(near.mismatch) === '["level"]', JSON.stringify(near));
+  expectTrue('★ "이 옵션으로 방 만들기" 값', near?.createWith?.kind === 'quiz' && near?.createWith?.level === 'advanced', JSON.stringify(near?.createWith));
+  expect('★ near 에서는 아직 안 들어갔다', q.snapshot, null);
+  from = q.mark();
+  q.socket.emit('directory.quickJoin', { kind: 'quiz', opts: { levels: ['advanced'] }, code: near.room.code });
+  await q.waitFor(() => q.snapshot !== null, 4000, '[확인]');
+  expect('★★ [확인] 이면 그 방으로', q.snapshot?.room.id, roomA.id);
+  q.leave();
+  await sleep(400);
+  q.snapshot = null;
+  from = q.mark();
+  q.socket.emit('directory.quickJoin', { kind: 'quiz', opts: {} });
+  await q.waitFor(() => q.since(from, 'quickJoin').length > 0, 3000, '빠른 입장 — 옵션 없음');
+  expectTrue('★★ 딱 맞는 방은 묻지 않고 바로', q.since(from, 'quickJoin')[0]?.status === 'joined' && q.snapshot?.room.id === roomA.id, JSON.stringify(q.since(from, 'quickJoin')[0]));
+  from = c.mark();
+  c.socket.emit('directory.quickJoin', { kind: 'liar', opts: {} });
+  await c.waitFor(() => c.since(from, 'quickJoin').length > 0, 3000, '빠른 입장 — 라이어 없음');
+  expectTrue('★★ 방이 없으면 none + 만들기 값(대신 만들지 않는다)', c.since(from, 'quickJoin')[0]?.status === 'none' && c.since(from, 'quickJoin')[0]?.createWith?.kind === 'liar' && c.snapshot === null, JSON.stringify(c.since(from, 'quickJoin')[0]));
+
+  // ── E. 모드 바꾸기 — 같은 사람 · 같은 코드 · 채팅 한 줄 · 목록 탭 이동 · 정원은 라이어 아래 끝 이상
+  const before = h1.snapshot.players.map((p) => p.accountId).sort().join(',');
+  from = h1.mark();
+  const wFrom = w.mark();
+  h1.socket.emit('lobby.updateSettings', { questionCount: 20, mode: 'liar', minigameRounds: 4 });
+  await h1.waitFor(() => h1.since(from, 'room.accessUpdated').some((e) => e.kind === 'liar') || h1.since(from, 'error').length > 0, 3000, '모드 바꾸기');
+  if (h1.since(from, 'error').length) log(`  모드 바꾸기 오류: ${JSON.stringify(h1.since(from, 'error'))}`);
+  expect('★★ 모드 바꾸기 — 사람 그대로', h1.snapshot.players.map((p) => p.accountId).sort().join(','), before);
+  expectTrue('★★ 채팅 한 줄 "라이어 방으로 바뀌었어요"', systemSince(h1, from).some((t) => /라이어 방으로 바뀌었어요/.test(t)), systemSince(h1, from).join(' | '));
+  await w.waitFor(() => w.since(wFrom, 'directory.list').some((e) => e.kind === 'quiz' && !e.rooms.some((r) => r.code === roomA.code)), 3000, '퀴즈 탭에서 빠짐');
+  expectTrue('★ 퀴즈 탭에서 빠졌다', !lastList(w).rooms.some((r) => r.code === roomA.code), '');
+  h1.socket.emit('lobby.updateSettings', { questionCount: 20, mode: 'quiz', minigameRounds: 5 });
+  await sleep(500);
+
+  // ── F. 방이 없어지면 목록에서 빠진다
+  const wf = w.mark();
+  for (const x of [h2]) x.leave();
+  await w.waitFor(() => w.since(wf, 'directory.list').some((e) => !e.rooms.some((r) => r.code === roomB.code)), 4000, '잠긴 방 없어짐');
+  expectTrue('★★ 방이 없어지면 목록에서 빠진다', !lastList(w).rooms.some((r) => r.code === roomB.code), '');
+
+  // ── G. 판 — play_events 새 열(등급 · 방 종류 · 인원 · 기기) · 정답 공개 뒤 줄이 생긴다
+  for (const x of [a, b, q]) x.socket.emit('client.device', { kind: 'mobile' });
+  const gameId = await startGame(h1, [a, b, q], 2);
+  await answerCurrent(a);
+  await sleep(5200);
+  const pe = await withDb(async (cl) => (await cl.query(`SELECT count(*)::int n, min(room_size) rs, min(room_kind) rk, count(grade)::int g, count(device)::int dv FROM play_events WHERE game_id = $1`, [gameId])).rows[0]);
+  expectTrue('★★ play_events — 줄이 생긴다 · 방 종류 quiz · 인원 4 · 등급 · 기기', pe.n >= 4 && pe.rs === 4 && pe.rk === 'quiz' && pe.g === pe.n && pe.dv >= 3, JSON.stringify(pe));
+  h1.forceEnd();
+  await sleep(800);
+
+  // ── H. 30일 — 다 본 계정도 마지막으로 본 지 40일이면 "안 본 것"(EXPERIENCE_DAYS=30) · 오늘 봤으면 낼 문제 0
+  for (const x of [h1, a, b, q]) x.leave();
+  await sleep(500);
+  for (const x of [h1, a, b, q]) x.snapshot = null;
+  h2.snapshot = null;
+  h2.socket.emit('room.create', { title: '30일 방', kind: 'quiz' });
+  await h2.waitFor(() => h2.snapshot !== null, 6000, '30일 방');
+  const hid = h2.snapshot.me.accountId;
+  h2.leave();
+  await sleep(400);
+  h2.snapshot = null;
+  await markExperiencedAll(hid);
+  await withDb((cl) => cl.query(`UPDATE question_experiences SET last_experienced_at = now() - interval '40 days', first_experienced_at = now() - interval '40 days' WHERE account_id = $1`, [hid]));
+  from = h2.mark();
+  h2.socket.emit('room.create', { title: '30일 방 2', kind: 'quiz' });
+  await h2.waitFor(() => h2.snapshot !== null, 6000, '30일 방 2');
+  await h2.waitFor(() => (h2.since(from, 'lobby.settingsUpdated').at(-1)?.settings ? true : false) || (h2.snapshot.room.availableQuestionCount ?? 0) > 0, 4000, '출제 가능 수');
+  await sleep(800);
+  const avail40 = h2.snapshot.room.availableQuestionCount ?? (await lobbyAvail(h2));
+  h2.leave();
+  await sleep(400);
+  h2.snapshot = null;
+  await withDb((cl) => cl.query(`UPDATE question_experiences SET last_experienced_at = now() WHERE account_id = $1`, [hid]));
+  h2.socket.emit('room.create', { title: '30일 방 3', kind: 'quiz' });
+  await h2.waitFor(() => h2.snapshot !== null, 6000, '30일 방 3');
+  await sleep(1200);
+  const avail0 = await lobbyAvail(h2);
+  expectTrue('★★★ 40일 전에 본 문제는 다시 낼 수 있다 · 오늘 본 문제는 못 낸다', avail40 > 100 && avail0 === 0, `40일 ${avail40} · 오늘 ${avail0}`);
+  await withDb((cl) => cl.query(`DELETE FROM question_experiences WHERE account_id = $1`, [hid]));
+  h2.leave();
+
+  // ── I. 사람 신고 · 개인 차단(HTTP)
+  h1.socket.emit('room.create', { title: '신고 방', kind: 'quiz' });
+  await h1.waitFor(() => h1.snapshot !== null, 6000, '신고 방');
+  a.join(h1.snapshot.room.code);
+  await a.waitFor(() => a.snapshot !== null, 6000, 'a 입장');
+  a.chat('안녕하세요 신고 테스트');
+  await sleep(400);
+  const target = a.snapshot.me.accountId;
+  const rep = await postJson('/api/people/report', { targetAccountId: target, reason: 'abuse' }, h1.cookie);
+  const repRow = rep.json?.id ? await withDb(async (cl) => (await cl.query(`SELECT kind, target_account_id::text t, jsonb_array_length(chat_excerpt) n FROM app_reports WHERE id = $1`, [rep.json.id])).rows[0]) : null;
+  expectTrue('★★ 사람 신고 — kind user · 대상 · 채팅 줄', rep.status === 200 && repRow?.kind === 'user' && repRow?.t === target && repRow?.n >= 1, JSON.stringify({ s: rep.status, repRow }));
+  const blk = await postJson(`/api/people/blocks/${target}`, {}, h1.cookie, 'PUT');
+  const list = await postJson('/api/people/blocks', undefined, h1.cookie, 'GET');
+  expectTrue('★ 개인 차단 — 넣고 목록에 보인다', blk.status === 200 && (list.json?.blocks ?? []).some((x) => x.accountId === target), JSON.stringify(list.json));
+  await postJson(`/api/people/blocks/${target}`, undefined, h1.cookie, 'DELETE');
+  // ── J. 금칙어
+  from = c.mark();
+  c.socket.emit('room.create', { title: '씨 발 방', kind: 'quiz' });
+  await c.waitFor(() => c.since(from, 'error').length > 0 || c.snapshot !== null, 3000, '금칙어 방 제목');
+  expectTrue('★ 방 제목 금칙어는 막는다', errSince(c, from)[0] === 'BAD_REQUEST' && c.snapshot === null, JSON.stringify(c.since(from, 'error')[0]));
+
+  for (const x of [h1, h2, a, b, c, d, w, q]) x.leave();
+  await sleep(400);
+  for (const x of [h1, h2, a, b, c, d, w, q]) x.disconnect();
+  return checkSummary();
+}
+
+/** 스냅샷에 출제 가능 수가 아직 없으면 resync 로 받는다 */
+async function lobbyAvail(bot) {
+  const from = bot.mark();
+  bot.socket.emit('state.resync', {});
+  await bot.waitFor(() => bot.since(from, 'room.state').length > 0, 3000, 'resync');
+  return bot.snapshot?.room.availableQuestionCount ?? -1;
+}
+
+async function scenarioGongbangOff() {
+  log('시나리오 gongbangoff — ★★ 스위치를 끈 서버는 오늘과 같다 (R116)');
+  const [h, x] = await makeBots(2);
+  for (const b of [h, x]) {
+    await b.connect();
+    trackGongbang(b);
+    b.leave();
+  }
+  await sleep(300);
+  h.snapshot = null;
+  let from = h.mark();
+  h.socket.emit('directory.watch', { kind: 'quiz' });
+  await h.waitFor(() => h.since(from, 'error').length > 0, 3000, '목록 거절');
+  expectTrue('★★ 목록 이벤트는 거절 · 목록이 안 온다', errSince(h, from)[0] === 'INVALID_STATE' && h.since(from, 'directory.list').length === 0, '');
+  from = h.mark();
+  h.socket.emit('room.create', { title: '옛 방', kind: 'liar', maxPlayers: 3, password: '1234' });
+  await h.waitFor(() => h.snapshot !== null, 6000, '방 만들기(새 칸은 무시)');
+  const r = h.snapshot.room;
+  expectTrue('★★ 새 칸은 무시 — 정원 10 · 공방 칸 없음 · 방식 퀴즈 · 잠금 없음', r.maxPlayers === 10 && r.gongbang === undefined && r.settings.mode === 'quiz', JSON.stringify({ m: r.maxPlayers, g: r.gongbang, mode: r.settings.mode }));
+  x.join(r.code);
+  await x.waitFor(() => x.snapshot !== null, 4000, '코드로 입장(비밀번호 없이)');
+  expect('★★ 코드로 비밀번호 없이 들어간다', x.snapshot?.room.id, r.id);
+  const site = await postJson('/api/site', undefined, null, 'GET');
+  expectTrue('★ /api/site 에 gongbang 칸이 없다', site.status === 200 && site.json && !('gongbang' in site.json), JSON.stringify(site.json));
+  const ppl = await postJson('/api/people/blocks', undefined, h.cookie, 'GET');
+  expect('★ /api/people 은 404', ppl.status, 404);
+  from = h.mark();
+  h.socket.emit('room.updateAccess', { maxPlayers: 4 });
+  await h.waitFor(() => h.since(from, 'error').length > 0, 3000, '정원 바꾸기 거절');
+  expect('★ 정원 바꾸기는 거절', errSince(h, from)[0], 'INVALID_STATE');
+  for (const b of [h, x]) b.leave();
+  await sleep(300);
+  for (const b of [h, x]) b.disconnect();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   // ★★★ R109 — 두 자리(공개 · 베타)
@@ -10738,6 +11015,9 @@ const SCENARIOS = {
   flood: scenarioFlood,
   // ★★★ R107 — 공개 대비 공격 묶음
   attack: scenarioAttack,
+  // ★★★ R116 — 공방(스위치 켠 서버) · 스위치 끈 서버
+  gongbang: scenarioGongbang,
+  gongbangoff: scenarioGongbangOff,
 };
 
 const run = SCENARIOS[scenario];

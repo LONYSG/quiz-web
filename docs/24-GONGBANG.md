@@ -168,7 +168,7 @@ level       초급 | 중급 | 고급 (퀴즈 방)
 
 **어떻게 새로 고쳐지나**
 - 화면이 목록에 있는 동안만 구독한다 — `directory.watch { kind }` / `directory.unwatch`. 서버는 소켓을 `dir:<site>:<kind>` 묶음에 넣고 바로 한 번 통째로 보낸다(`directory.list`).
-- 방에 변화가 생기는 자리(만들기 · 삭제 · 입장 · 퇴장 · 판 시작 · 다음 문제 · 판 끝 · 잠금 · 정원 · 제목 · 모드 바꾸기)마다 `markDirectoryDirty(room)` 한 줄 — 표시만 한다.
+- ~~방에 변화가 생기는 자리마다 `markDirectoryDirty(room)` 한 줄~~ → ★ R116: 1초마다 구독자가 있는 묶음만 다시 만들어 **지난번과 다를 때만** 보낸다(13-4 — 같은 효과 · 방 코드를 안 고침).
 - 이미 도는 100ms tick 이 **1초에 한 번** 더러워진 탭만 다시 만들어 그 묶음에 보낸다. 변화가 없으면 아무것도 안 보낸다. 구독자가 없는 탭은 만들지도 않는다.
 - 방을 고르는 순간 목록이 낡았을 수 있다 — 입장은 언제나 서버가 다시 검사한다(꽉 참 · 잠김 · 사라짐 → 알림 + 목록 다시 받기).
 
@@ -587,7 +587,7 @@ accounts 에 열 셋
 | 라운드 | 범위 | 모델 | 마이그레이션 | 어림 | 실 서버에 미치는 것 | 되돌리는 법 |
 |---|---|---|---|---|---|---|
 | **R114 시안** | 8절 화면을 모바일(360 · 390) 먼저 · PC 넓힌 판으로 — 기존 화면과 나란히 놓은 한 쪽(html). 안은 화면마다 2개씩(솔로 진행 · 공방 목록 · 로비는 꼭). 코드에 안 붙인다 | Opus | 없음 | 3~5시간 | 없음 | — |
-| **공방** (R115~) | 3절 전부 — 방 종류 · 만들기 · 정원 · 잠금 · 목록 · 빠른 입장 · 모드 바꾸기 · 미니게임 기본(7절) · 2단계 고르기 고침(6-2 가) · 신고 · 차단 · 금칙어 · 화면(로비 · 목록 · 방 만들기 · 잠긴 방 · 방 안 머리) · 봇 시나리오(목록 · 잠금 · 정원 · 빠른 입장) | Opus | 작게 — `app_reports` 열 · `account_blocks` 표 | 2 라운드(서버 · 봇 8~12시간 / 화면 8~12시간) | `GONGBANG` 을 켜기 전에는 오늘과 같다 | 스위치 끔 · 마이그레이션은 더하기뿐이라 남겨도 무해 |
+| **공방** (R116 서버 · 봇 끝 → R117 화면) | 3절 전부 — 방 종류 · 만들기 · 정원 · 잠금 · 목록 · 빠른 입장 · 모드 바꾸기 · 미니게임 기본(7절) · 2단계 고르기 고침(6-2 가) · 신고 · 차단 · 금칙어 · 화면(로비 · 목록 · 방 만들기 · 잠긴 방 · 방 안 머리) · 봇 시나리오(목록 · 잠금 · 정원 · 빠른 입장) | Opus | 작게 — `app_reports` 열 · `account_blocks` 표 | 2 라운드(서버 · 봇 8~12시간 / 화면 8~12시간) | `GONGBANG` 을 켜기 전에는 오늘과 같다 | 스위치 끔 · 마이그레이션은 더하기뿐이라 남겨도 무해 |
 | **솔로 · 띠** | 4 · 5절 — 솔로 엔진 · 기록 표 · 부정행위 장치 · 화면 셋 · 띠 셈 · 표시(방 · 목록 · 프로필) · `belt:report` · 손님 연습(뒤쪽) · 봇 시나리오(솔로 한 판 · 끊김 · 탭 둘) | Opus | 있음 — `solo_runs` · `solo_answers` · `accounts` 열 셋 | 2 라운드(각 8~12시간) | `SOLO` · `BELT` 를 켜기 전에는 오늘과 같다 | 스위치 끔 · 표는 남겨도 무해 |
 | **공개 준비** | 9절 — 처리방침 · 약관 화면 · 가입 동의 · 탈퇴 · (정책이 정해졌으면) 태어난 해 · 본 문제 유효 기간(6-2 나 — 찬종이 골랐으면) · 공개 자리 켜기 점검 | Opus(문장은 gpt) | 있음 — 탈퇴용 참조 고치기 · `last_experienced_at` · 동의 기록 | 1~2 라운드 | 탈퇴 · 동의는 켜는 순간부터 · 유효 기간은 `EXPERIENCE_DAYS` | 유효 기간은 0으로 · 화면은 링크 숨김 · 참조 고친 것은 되돌리지 않는다(무해) |
 | **다듬기** | 베타에서 써 본 뒤 — 띠 기준 다시 맞추기(5-2) · 솔로 시간 식 · 정렬 · 빠른 입장 규칙 · 찬종 제보 | Opus | 없음 | 그때 정함 | 숫자만 | 상수 되돌림 |
@@ -678,3 +678,53 @@ R113 이 올린 9개에 찬종이 답했다(R114 지시서 1절). 기술 결정(
 
 - 솔로 기록은 "한 사람이 혼자, 힌트 없이, 짧은 시간에" 푼 것이라 ①에서 가장 무게를 둔다(공방은 먼저 맞힌 사람이 있으면 나머지가 가려져 개인 정답률이 덜 깨끗하다 — 4-6).
 - 공방 기록은 인원(`room_size`)으로 나눠 본다 — 8명 방의 "가장 빠른 정답 시간"은 혼자 푼 시간보다 짧다.
+
+---
+
+## 13. R116 이 만든 서버 — R117 화면이 쓸 이벤트 · 값 (2026-11-24)
+
+> 스위치 `GONGBANG=1` 일 때만 동작한다. 꺼져 있으면 아래 이벤트는 `INVALID_STATE`("공방이 아직 열리지 않았어요.") · `/api/people` 은 404 · 방 만들기의 새 칸은 무시(오늘과 같다 — 봇 `gongbangoff`).
+> 순수 함수 · 상수 = `shared/src/gongbang.ts` · 서버 = `server/src/gongbang/index.ts` · `server/src/http/peopleRoutes.ts`.
+
+### 13-1. 화면 → 서버
+
+| 이벤트 | 보내는 값 | 받는 것 |
+|---|---|---|
+| `room.create` | `{ title, kind?: 'quiz'\|'draw'\|'liar', maxPlayers?: 2~10(라이어 3~), password?: '1234' }` — 없으면 퀴즈 · 8 · 열린 방 | `room.created` → `room.state`(스냅샷) · 금칙어 제목은 `BAD_REQUEST`(message 에 안내) |
+| `room.join` | `{ roomId: 6자리 코드 \| 긴 id, password? }` | 잠긴 방 + 6자리 코드면 `room.lockRequired { code, title, error, left, waitMs }` + `error`(`ROOM_LOCKED` · `WRONG_PASSWORD` · `PASSWORD_LOCKED`) · 긴 id · 이미 그 방 사람은 통과 |
+| `directory.watch` | `{ kind }` — 탭을 바꾸면 다시 보낸다(앞 탭 구독은 저절로 빠짐) | 바로 `directory.list` 한 번 · 그 뒤 바뀔 때만(1초 묶음) |
+| `directory.unwatch` | `{}` — 목록 화면을 떠날 때 | — |
+| `directory.quickJoin` | `{ kind, opts: { levels: [], minigame: 'any'\|'with'\|'without', size: 'any'\|'small'\|'big', waitingOnly }, code? }` — `code` = 비슷한 방 창에서 [확인] | `directory.quickJoinResult` (아래) · `joined` 면 `room.state` 도 |
+| `room.updateAccess` | 방장 · 어느 상태에서나 `{ maxPlayers?, password?: '1234'\|null }` | `room.accessUpdated`(방 전원) · 거절은 `BAD_REQUEST`(message: "지금 6명이에요 — 6명부터 …") |
+| `lobby.updateSettings` | 지금 그대로(모드 바꾸기 = `{ questionCount, mode, minigameRounds }`) | 지금 그대로 + 종류가 바뀌면 시스템 채팅 "○○ 방으로 바뀌었어요.( N명부터 시작할 수 있어요.)" · `room.accessUpdated` |
+
+### 13-2. 서버 → 화면
+
+| 이벤트 · 값 | 꼴 |
+|---|---|
+| `directory.list` | `{ kind, rooms: RoomListItem[], more }` — 정렬된 채(들어갈 수 있는 방 먼저) · 100줄까지 · `more` = 더 있음 |
+| `RoomListItem` | `{ code, title, kind, tag: null\|'minigame'\|'song', players, max, locked, phase: 'waiting'\|'playing', paused, progress: { done, total }\|null, minigames, level: 'beginner'\|'intermediate'\|'advanced'\|null }` — 방장 이름 · 띠 · 긴 id 없음 |
+| `directory.quickJoinResult` | `{ status: 'joined', kind, code, mismatch }` · `{ status: 'near', kind, room: RoomListItem, mismatch: ('size'\|'waiting'\|'minigame'\|'level')[], createWith }` · `{ status: 'none', kind, createWith }` — `createWith = { kind, level\|null, minigames\|null }`(이 옵션으로 방 만들기 창에 채울 값) |
+| 스냅샷 `room.maxPlayers` | 공방 방 = 정원 · 그 밖 = 10(오늘과 같다) |
+| 스냅샷 `room.gongbang` | 공방 방만 `{ kind, locked, password }` — `password` 는 **방장 화면에만**(그 밖 null) |
+| `room.accessUpdated` | `{ maxPlayers, locked, kind }`(방 전원) · 방장에게는 `password` 까지 |
+| `ROOM_FULL` | 공방 방은 message "방이 가득 찼어요. (정원 N명)" |
+| `/api/site` | 스위치를 켰으면 `gongbang: true`(없으면 칸 자체가 없다) |
+
+### 13-3. HTTP — 사람 신고 · 개인 차단
+
+| 경로 | 값 |
+|---|---|
+| `POST /api/people/report` | `{ targetAccountId, reason: 'abuse'\|'spam'\|'nickname'\|'picture'\|'drawing'\|'other', text? }` → `{ ok, id }` · **같은 방 사람만** · 서버가 그 방 최근 채팅 30줄(시스템 줄 빼고)을 붙여 `app_reports`(kind `user` · `target_account_id` · `chat_excerpt`)에 · 10분 5번 |
+| `GET /api/people/blocks` | → `{ ok, blocks: [{ accountId, nickname }] }` — 로그인 때 한 번 읽어 화면이 채팅 · 이모티콘을 가린다(정답자 표시는 가리지 않는다) |
+| `PUT` · `DELETE /api/people/blocks/:id` | 넣기 · 풀기(500명까지) |
+
+### 13-4. 문서와 달라진 기술 결정(R116)
+
+- **목록 방송**: 3-6 의 "바뀐 자리마다 `markDirectoryDirty`" 대신 **1초마다 구독자가 있는 묶음만 다시 만들어 지난번과 글이 다를 때만** 보낸다 — 방 코드 열두 곳에 줄을 넣지 않고 같은 효과(구독자 없는 묶음은 만들지도 않는다). 비용 = 방 수 × 1초(이 PC 한계 1,000명 ≈ 125방에서 가볍다).
+- **차단당한 방**: 목록 방송은 묶음 하나라 사람마다 다르게 만들지 않는다 — 처음 구독할 때 · 빠른 입장 후보에서만 빼고, 입장 때 서버가 다시 막는다(차단은 그 방이 사는 동안뿐이라 드물다).
+- **빠른 입장 "비슷한 방"**: 차례 = 어긋난 칸 무게(인원 1 · 대기 2 · 미니게임 4 · 난이도 8)가 작은 방 → 3-7 의 차례 → 정원의 80% 까지 찬 방을 사람 많은 순. "적은 방" = 지금 4명 이하 · "북적이는 방" = 5명 이상. 들어갈 때 꽉 찼으면 다음 후보로 2번까지 더.
+- **비밀번호 시도 한도**: 한 방 5번 틀림 → 10분 · 계정당 1분 10번(여러 방 돌며 찍기).
+- **본 문제 유효 기간**: `question_experiences.last_experienced_at`(0040) — 다시 본 문제는 이 칸만 새로 쓴다(스위치와 상관없이 늘 쓴다 — 켜는 날 바로 맞는 값이 되게). 읽는 곳(출제 가능 수 · 문제 고르기)만 `EXPERIENCE_DAYS` 를 본다. 경험률(%)은 그대로 전부.
+- **play_events**: 새 열 `grade · room_kind · room_size · device`(0040) · 표가 없으면 5분 뒤 다시 · 새 열이 없으면 옛 열로(12-1 ① 고침). 캐치 · 라이어 · 미니게임 기록은 아직 안 남긴다(공방 화면 라운드 뒤 — 12-1 ②).
+- **금칙어**: `shared` 의 짧은 목록(흔한 욕 · 성적 표현) · 방 제목(방 만들기) · 닉네임(가입 · 닉네임 바꾸기)에만 · 흔한 낱말 속 두 글자(보지마 · 시발점 등)는 넣지 않았다. 채팅은 거르지 않는다.

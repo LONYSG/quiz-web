@@ -334,9 +334,15 @@ export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): 
       const kind = roomKindOf(room.settings.mode);
       if (payload.maxPlayers !== undefined) {
         const n = clampMaxPlayers(kind, payload.maxPlayers);
-        if (n === null) return sendError(s, 'BAD_REQUEST', `정원은 ${minPlayersOf(kind)}~${GONGBANG.MAX_PLAYERS}명이에요.`);
+        if (n === null) {
+          const m = `정원은 ${minPlayersOf(kind)}~${GONGBANG.MAX_PLAYERS}명이에요.`;
+          return sendError(s, 'BAD_REQUEST', m, m);
+        }
         // ★ 지금 인원보다 작게는 거절(사람을 내보내는 일은 강퇴로만) — 끊겨서 자리만 남은 사람도 센다
-        if (n < room.players.size) return sendError(s, 'BAD_REQUEST', `지금 ${room.players.size}명이에요 — ${room.players.size}명부터 고를 수 있어요.`);
+        if (n < room.players.size) {
+          const m = `지금 ${room.players.size}명이에요 — ${room.players.size}명부터 고를 수 있어요.`;
+          return sendError(s, 'BAD_REQUEST', m, m);
+        }
         room.maxPlayers = n;
       }
       if (payload.password !== undefined) {

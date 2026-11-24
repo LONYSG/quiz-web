@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-24 — 공방 서버 · 봇 · 시안 마무리 (R116, MAIN · D-373)
+- 무엇: shared/src/gongbang.ts(새 — 방 종류 · 정원 · 비밀번호 · 목록 줄 · 정렬 · 빠른 입장 고르기 · 금칙어) · server/src/gongbang/index.ts(새 — 목록 구독 1초 방송 · 잠금 · 빠른 입장 · 정원/잠금 바꾸기 · 모드 바꾸기 알림) · http/peopleRoutes.ts(새 — 사람 신고 · 개인 차단) · socket/index.ts(만들기 · 입장 · 모드 훅) · select.ts strictUnseen · 본 문제 유효 기간(EXPERIENCE_DAYS) · play_events 새 열 · 0040 · 봇 gongbang · gongbangoff · 시안 ai-out/R116-시안.html
+- 왜: 찬종 2026-11-24 — 새로 만드는 방은 전부 공방(docs/24) · R115 시안 답(로마 숫자 단계 · 로비 안 B 꼴 · 목록 아래 버튼)
+- [x] 1 문서(24 · 07) [x] 2 시안 마무리 [x] 3 서버 · 공유 코드(스위치 GONGBANG 뒤) [x] 4 봇 시나리오 [x] 5 스위치 끈 채 봇 전체(74/77 · 흔들림 3) · typecheck · test · build · smoke [ ] ui-check(메모리 부족 · client 0줄) — 검증 = ai-out/R116.txt.
+
 ## 2026-11-24 — 웹 소리를 영상과 맞춤 + 모습 견주기 (R112, MAIN · D-372)
 - 무엇: client/src/soundRecipe.ts(새 — 영상 sound-recipe.js 와 같은 값) · sound.ts(표에서 소리 냄 · 배경음 다섯 곡 · 판 번호 3) · useGameSounds.ts(다음 문제 · 결과 앞 3·2·1) · prefsSync.ts(migrateBgmPick) · server authRoutes PREF_BGM_TRACKS · 테스트 soundRecipe.test.ts · prefs.test.ts · ui-check --sound(R112 기대값 · 웹 그림 넷) · ai-out/R112-모습.html.
 - [x] 1 정본 읽기 [x] 2 자리 맞추기(문제 · 힌트 · 5초 · 시작 · 3·2·1 · 배경음) [x] 3 확인(영상 wav 대조 · 크기 · 테스트 · ui-check:sound 17/17) [x] 4 모습 견주기(고치지 않음) — 검증 = ai-out/R112.txt.
