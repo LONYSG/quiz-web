@@ -14,9 +14,11 @@ export interface SiteInfo {
   hidden: SiteHidden;
   /** 베타 자리 안내의 공개 주소 링크(공개 자리에서는 null) */
   publicUrl: string | null;
+  /** ★ R117 — 공방 스위치(GONGBANG=1 · 서버가 gongbang:true 를 실을 때만) — 끄면 오늘 화면 그대로 */
+  gongbang: boolean;
 }
 
-let info: SiteInfo = { site: 'friend', split: false, open: true, hidden: { modes: [], minigames: [] }, publicUrl: null };
+let info: SiteInfo = { site: 'friend', split: false, open: true, hidden: { modes: [], minigames: [] }, publicUrl: null, gongbang: false };
 
 export function siteInfo(): SiteInfo {
   return info;
@@ -35,6 +37,7 @@ export async function loadSiteInfo(): Promise<void> {
       open: j.open !== false,
       hidden: { modes: j.hidden?.modes ?? [], minigames: j.hidden?.minigames ?? [] },
       publicUrl: typeof j.publicUrl === 'string' ? j.publicUrl : null,
+      gongbang: (j as { gongbang?: unknown }).gongbang === true,
     };
     setSiteHiddenMinigames(info.hidden.minigames);
     document.documentElement.dataset.site = info.site;

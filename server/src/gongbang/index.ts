@@ -165,11 +165,24 @@ function roomsFor(site: Site, kind: RoomKind, accountId: string | null): Room[] 
   return out;
 }
 
-export function buildList(site: Site, kind: RoomKind, accountId: string | null): { rooms: RoomListItem[]; more: boolean } {
+export function buildList(site: Site, kind: RoomKind, accountId: string | null): { rooms: RoomListItem[]; more: boolean; counts: Record<RoomKind, number> } {
   const rooms = roomsFor(site, kind, accountId);
   const created = new Map(rooms.map((r) => [r.code, r.createdAt]));
   const sorted = sortRoomList(rooms.map(listItemOf), (it) => created.get(it.code) ?? 0);
-  return { rooms: sorted.slice(0, GONGBANG.LIST_MAX), more: sorted.length > GONGBANG.LIST_MAX };
+  return { rooms: sorted.slice(0, GONGBANG.LIST_MAX), more: sorted.length > GONGBANG.LIST_MAX, counts: countRooms(site) };
+}
+
+/**
+ * ★ R117 — 종류별 방 수(목록 탭 "방 14") · 로비 [같이 하기] 의 "열린 방 N"(= 세 종류 합). 공방 칸이 있는 방 · 같은 자리만.
+ *   차단당한 방도 센다(묶음 방송이라 사람마다 다르게 세지 않는다 — 드물다).
+ */
+export function countRooms(site: Site): Record<RoomKind, number> {
+  const out: Record<RoomKind, number> = { quiz: 0, draw: 0, liar: 0 };
+  for (const r of allRooms()) {
+    if (r.maxPlayers === undefined || r.site !== site) continue;
+    out[roomKindOf(r.settings.mode)] += 1;
+  }
+  return out;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -252,6 +265,12 @@ export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): 
       s.emit('directory.list', { kind: payload.kind, ...buildList(site, payload.kind, session.accountId) });
     },
   );
+
+  // ── ★ R117 — 로비 [같이 하기] 의 방 수(구독 없이 한 번) → directory.counts { counts }
+  on(socket, 'directory.counts', {}, ({ socket: s }) => {
+    if (!config.gongbang) return sendError(s, 'INVALID_STATE', OFF);
+    s.emit('directory.counts', { counts: countRooms(siteOfSocket(s)) });
+  });
 
   on(socket, 'directory.unwatch', {}, ({ socket: s }) => {
     const site = siteOfSocket(s);

@@ -12,7 +12,7 @@ import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { ACHIEVEMENTS, achievementDef, teamLabel, type Team } from '@quiz/shared';
 import { TeamTag } from './Team.js';
-import { Award, Ban, Check, Crown, UserCheck, UserMinus, UserPlus } from 'lucide-react';
+import { Award, Ban, Check, Crown, EyeOff, Flag, UserCheck, UserMinus, UserPlus } from 'lucide-react';
 import Avatar from './Avatar.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
@@ -49,6 +49,9 @@ export interface PersonActions {
   onHost?: () => void;
   /** ★★★ R079 — 팀전 로비: 지금 팀 · 반대 팀으로 옮기기(방장은 누구나 · 본인은 자기만) */
   team?: { current: Team; onSet: (t: Team) => void };
+  /** ★★★ R117 — 공방 방: 사람 신고(누구나 · 같은 방) · 내 화면에서 가리기(개인 차단) */
+  onReport?: () => void;
+  block?: { on: boolean; toggle: () => void };
 }
 let actionsOf: ((accountId: string) => PersonActions | null) | null = null;
 export function setPersonActions(fn: ((accountId: string) => PersonActions | null) | null): void {
@@ -162,7 +165,7 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
         </button>
       </section>
       {/* ★ R063 — 이 사람에게 할 수 있는 것(버튼만 · 설명 문장 없음) */}
-      {acts && ((acts.friend === 'none' && acts.onFriend) || acts.onHost || acts.onKick || acts.onBan || acts.team) && (
+      {acts && ((acts.friend === 'none' && acts.onFriend) || acts.onHost || acts.onKick || acts.onBan || acts.team || acts.onReport || acts.block) && (
         <div className="person-acts" data-person-acts>
           {acts.team &&
             (() => {
@@ -191,6 +194,16 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
           {acts.onBan && (
             <button type="button" className="ghost person-act danger" data-act="ban" onClick={acts.onBan}>
               <Icon icon={Ban} /> 차단
+            </button>
+          )}
+          {acts.onReport && (
+            <button type="button" className="ghost person-act" data-act="report" onClick={acts.onReport}>
+              <Icon icon={Flag} /> 신고
+            </button>
+          )}
+          {acts.block && (
+            <button type="button" className="ghost person-act" data-act="block" aria-pressed={acts.block.on} onClick={acts.block.toggle}>
+              <Icon icon={EyeOff} /> {acts.block.on ? '가리기 풀기' : '내 화면에서 가리기'}
             </button>
           )}
         </div>

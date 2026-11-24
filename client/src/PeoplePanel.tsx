@@ -10,7 +10,7 @@
 // ★ 최대 10명이 스크롤 없이 한 화면 (한 줄 약 46px)
 // =============================================================================
 
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { nicknameFits } from '@quiz/shared';
 import Avatar from './Avatar.js';
@@ -35,9 +35,12 @@ interface Props {
   /** ★ R043 C — 누를 수 있는 사람 (방장: 모두 · 아니면 친구 신청할 수 있는 사람) */
   canPick: (accountId: string) => boolean;
   onClose: () => void;
+  /** ★ R117 — 공방 방: 정원 표시 · 정원/잠금 바꾸기(children) */
+  maxPlayers?: number;
+  children?: ReactNode;
 }
 
-export default function PeoplePanel({ players, myAccountId, isHost, showScore, rankOf, rateOf, experiencedIds, onPick, canPick, onClose }: Props) {
+export default function PeoplePanel({ players, myAccountId, isHost, showScore, rankOf, rateOf, experiencedIds, onPick, canPick, onClose, children }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -113,6 +116,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
           })}
         </ul>
         {players.some((p) => p.accountId !== myAccountId && canPick(p.accountId)) && <p className="people-tip dim">{isHost ? '사람을 누르면 친구 신청 · 강퇴 · 차단' : '사람을 누르면 친구 신청'}</p>}
+        {children}
       </div>
     </div>,
     document.body,

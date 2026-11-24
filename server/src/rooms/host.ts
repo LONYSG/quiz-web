@@ -9,7 +9,7 @@
 // ★ 원래 방장이 돌아와도 돌려주지 않는다 (Q-15 확정).
 // =============================================================================
 
-import { emitRoom } from './emit.js';
+import { emitRoom, ioServer } from './emit.js';
 import { broadcastSystem } from './systemChat.js';
 import { broadcastPauseStatus } from '../game/pause.js';
 import type { Player, Room } from './types.js';
@@ -28,4 +28,8 @@ export function transferHost(room: Room, to: Player, reason: HostChangeReason): 
   emitRoom(room, 'room.hostChanged', { hostAccountId: to.accountId, nickname: to.nickname, reason });
   broadcastSystem(room, `${to.nickname} 님이 방장이 되었습니다.`);
   if (room.state === 'PAUSED') broadcastPauseStatus(room);
+  // ★ R117 — 공방 잠긴 방: 새 방장 화면에 비밀번호를 보낸다(방장이 보고 친구에게 알려 준다 — docs/24 3-8 "새 방장에게 보인다")
+  if (room.maxPlayers !== undefined && room.password && to.socketId) {
+    ioServer().to(to.socketId).emit('room.accessUpdated', { maxPlayers: room.maxPlayers, locked: true, kind: room.settings.mode === 'draw' ? 'draw' : room.settings.mode === 'liar' ? 'liar' : 'quiz', password: room.password });
+  }
 }

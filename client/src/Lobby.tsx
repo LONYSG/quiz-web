@@ -60,6 +60,12 @@ import { LastGameFeedback } from './QuestionFeedback.js';
 import { fetchLastFeedbackGame } from './api.js';
 import type { Social } from './useSocial.js';
 import { isMobileUi, useUiMode } from './uiMode.js';
+// ★★★ R117 — 공방 방(스냅샷 room.gongbang 이 있을 때만)
+import AccessControls from './gongbang/AccessControls.js';
+import PersonReport from './gongbang/PersonReport.js';
+import { blockPerson, isBlocked, unblockPerson } from './gongbang/store.js';
+import { KIND_ICON } from './gongbang/kinds.js';
+import { closePopup } from './popup.js';
 
 interface Props {
   socket: Socket;
@@ -139,6 +145,11 @@ export default function Lobby({
   // ★ R066 (D-288) — 포인트샵을 아직 안 열었으면 ☰ · 메뉴 줄에 빨간 점
   const shopDot = useShopDot();
   const [kickOpen, setKickOpen] = usePopup('kick');
+  // ★★★ R117 — 공방: 사람 신고 창
+  const gb = snapshot.room.gongbang ?? null;
+  const [reportOpen, setReportOpen] = usePopup('gb-report');
+  const [reportTarget, setReportTarget] = useState<{ accountId: string; nickname: string } | null>(null);
+  const [gbNote, setGbNote] = useState<string | null>(null);
   const [kickTarget, setKickTarget] = useState<KickTarget | null>(null);
   const openPopupId = useCurrentPopup();
   /** ★ R034 — 닉네임 바꾸기 (R035 부터 상단 바 ✏ 의 작은 창) */
@@ -840,6 +851,22 @@ export default function Lobby({
       onFriend: () => social.request({ accountId: id }),
       ...(snapshot.me.isHost ? { onKick: kick('kick'), onBan: kick('ban'), ...(p.connected ? { onHost: kick('host') } : {}) } : {}),
       ...(team ? { team } : {}),
+      // ★ R117 — 공방 방: [신고] · [내 화면에서 가리기]
+      ...(gb
+        ? {
+            onReport: () => {
+              setReportTarget({ accountId: id, nickname: p.nickname });
+              setReportOpen(true);
+            },
+            block: {
+              on: isBlocked(id),
+              toggle: () => {
+                closePopup();
+                void (isBlocked(id) ? unblockPerson(id) : blockPerson({ accountId: id, nickname: p.nickname })).catch((err: Error) => setGbNote(err.message));
+              },
+            },
+          }
+        : {}),
     };
   };
   useEffect(() => {
@@ -897,8 +924,13 @@ export default function Lobby({
     // ★ R075 — data-state · data-epoch 는 검사(ui-check r075 mobile-motion)가 상태마다 화면 움직임을 재는 표지(보이는 것 없음)
     <div ref={roomRef} className={`room room-${phase}${kbOpen && KB_FIT_STATES.has(state) ? ' kb-fit' : ''}`} data-state={state} data-epoch={snapshot.question?.epoch ?? ''}>
       {/* ── ★★ 상단 바 하나 */}
-      <header className="room-head">
+      <header className={gb ? `room-head k-${gb.kind}` : 'room-head'} data-room-kind={gb?.kind}>
         <div className="room-title">
+          {gb && (
+            <span className={`kind-ic k-${gb.kind}`} aria-hidden="true">
+              <Icon icon={KIND_ICON[gb.kind]} />
+            </span>
+          )}
           <h1>{snapshot.room.title}</h1>
           <span className="state-pill">{stateLabel(state)}</span>
           <span className="dim room-count">
@@ -911,7 +943,14 @@ export default function Lobby({
               <Icon icon={Link} />
               <span className="lbl">초대</span>
             </button>
-            {inviteOpen && <InvitePopup code={snapshot.room.code} url={inviteUrl} onClose={() => setInviteOpen(false)} />}
+            {inviteOpen && (
+              <InvitePopup code={snapshot.room.code} url={inviteUrl} locked={gb?.locked ?? false} onClose={() => setInviteOpen(false)}>
+                {/* ★ R117 — PC 는 참여자 창이 없어 정원 · 잠금을 초대 창 아래에(모바일은 참여자 창에도) */}
+                {gb && (
+                  <AccessControls socket={socket} isHost={snapshot.me.isHost} kind={gb.kind} maxPlayers={snapshot.room.maxPlayers} locked={gb.locked} password={gb.password} playerCount={snapshot.players.length} />
+                )}
+              </InvitePopup>
+            )}
           </span>
           {/* ★★ R043 C — 친구 · 🔔 알림 (모바일은 ☰ 안) */}
           <FriendsButton social={social} inRoom={new Set(snapshot.players.map((p) => p.accountId))} onJoin={onJoinOther} />
@@ -1009,7 +1048,26 @@ export default function Lobby({
           onPick={pickPlayer}
           canPick={canPick}
           onClose={() => setPeopleOpen(false)}
+          maxPlayers={snapshot.room.maxPlayers}
+        >
+          {gb && (
+            <AccessControls socket={socket} isHost={snapshot.me.isHost} kind={gb.kind} maxPlayers={snapshot.room.maxPlayers} locked={gb.locked} password={gb.password} playerCount={snapshot.players.length} />
+          )}
+        </PeoplePanel>
+      )}
+      {reportOpen && reportTarget && (
+        <PersonReport
+          accountId={reportTarget.accountId}
+          nickname={reportTarget.nickname}
+          onDone={(m) => {
+            setReportOpen(false);
+            setGbNote(m);
+          }}
+          onClose={() => setReportOpen(false)}
         />
+      )}
+      {gbNote && (
+        <ConfirmModal kind="gb-note" title={gbNote} actions={[{ label: '확인', onClick: () => setGbNote(null) }]} onCancel={() => setGbNote(null)} />
       )}
       {kickOpen && kickTarget && snapshot.players.some((p) => p.accountId === kickTarget.accountId) && (
         <KickFlow
@@ -1072,6 +1130,7 @@ export default function Lobby({
                   availableQuestionCount={snapshot.room.availableQuestionCount}
                   isHost={snapshot.me.isHost}
                   playerCount={snapshot.players.length}
+                  gongbangKind={gb?.kind ?? null}
                 />
                 {/* ★ R066 (D-274 · 찬종 #38) — 손님은 안내 한 줄만 · 카드 오른쪽 아래(버튼 줄 자리)로 */}
                 <div className={snapshot.me.isHost || snapshot.countdown ? 'start-area' : 'start-area guest'}>

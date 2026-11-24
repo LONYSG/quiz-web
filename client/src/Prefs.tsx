@@ -7,6 +7,7 @@
 //   ★ 단축키 — Alt+T 테마 바꾸기 / Alt+M 소리 전부 켜기·끄기 (방 안에서는 단축키 목록에도 보인다)
 // =============================================================================
 
+import BlockList from './gongbang/BlockList.js';
 import { useEffect, useState } from 'react';
 import { usePopup } from './popup.js';
 import ConfirmModal from './ConfirmModal.js';
@@ -261,6 +262,8 @@ export default function Prefs({ variant = 'footer', onLogout, tabs = false }: Pr
               onChange={(e) => setSoundPrefs({ chatVol: Number(e.target.value) })}
             />
           </label>
+          {/* ★ R117 — 공방: 가린 사람 목록(있을 때만) */}
+          <BlockList />
           {onLogout && (
             <button type="button" className="ghost tiny prefs-logout" onClick={() => setLogoutOpen(true)}>
               로그아웃

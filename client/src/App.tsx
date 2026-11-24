@@ -64,6 +64,12 @@ import { useServerClock } from './useServerClock.js';
 import { isMobileUi, uiMode } from './uiMode.js';
 import { getGearTab } from './gearTab.js';
 import BrandLogo from './BrandLogo.js';
+// ★★★ R117 — 공방(스위치 GONGBANG · /api/site 의 gongbang) — 켜면 새 첫 화면 · 끄면 아래 옛 첫 화면 그대로
+import { siteInfo } from './site.js';
+import GongbangHome from './gongbang/GongbangHome.js';
+import { clearBlocks, loadBlocks, useBlockedIds } from './gongbang/store.js';
+import { validateRoomSettings, type DifficultyLevel } from '@quiz/shared';
+import type { CreatePayload } from './gongbang/CreateRoom.js';
 
 /** 경로에서 초대받은 방 ID를 뽑는다. /r/<roomId> */
 function roomIdFromPath(): string | null {
@@ -104,6 +110,12 @@ export default function App() {
     */
   }, []);
   const social = useSocial(socket, onNewNotice);
+  // ★★★ R117 — 개인 차단: 내가 가린 사람의 채팅 · 이모티콘을 내 화면에서만 뺀다(시스템 줄 · 정답 줄(masked)은 그대로 — 누가 맞혔는지는 보여야 한다)
+  const blockedIds = useBlockedIds();
+  const chatShown = useMemo(
+    () => (blockedIds.size === 0 ? room.chat : room.chat.filter((m) => m.system || m.masked || !blockedIds.has(m.accountId))),
+    [room.chat, blockedIds],
+  );
   // ★ R044 A-5 — 초대받은 방에 들어가면 그 방 초대는 지운다 (처리 끝)
   const currentRoomId = room.snapshot?.room.id ?? null;
   const staleInviteIds = social.invites.filter((n) => n.roomId === currentRoomId).map((n) => n.id).join(',');
@@ -149,6 +161,9 @@ export default function App() {
   useEffect(() => {
     if (accountId) void onSignedIn();
     else onSignedOut();
+    // ★ R117 — 개인 차단 목록(공방 스위치를 켰을 때만 · 로그인 때 한 번)
+    if (accountId && siteInfo().gongbang) void loadBlocks();
+    else clearBlocks();
   }, [accountId]);
 
   // ── 인증되면 소켓을 연다
@@ -242,6 +257,11 @@ export default function App() {
   //     화면 종류와 무관하게 이 한 곳만 지나간다.
   useEffect(() => {
     if (!room.error) return;
+    // ★ R117 — 잠긴 방은 숫자판 창이 말한다(room.lockRequired) — 위 알림을 겹쳐 띄우지 않는다
+    if (siteInfo().gongbang && ['ROOM_LOCKED', 'WRONG_PASSWORD', 'PASSWORD_LOCKED'].includes(room.error.code)) {
+      setPendingRoomId(null);
+      return;
+    }
     // ★★ R066 (D-293) — 끊긴 사이 방에서 빠졌다 → 시작 화면 + [다시 들어가기](방이 남아 있으면 들어간다)
     if (room.error.code === 'LEFT_BY_DISCONNECT') {
       const rid = room.error.detail;
@@ -272,6 +292,28 @@ export default function App() {
     setBusy('create');
     socket.emit('room.create', { title: trimmed });
   }, [socket, title]);
+
+  // ── ★★★ R117 — 공방 방 만들기(종류 · 정원 · 잠금) · 빠른 입장 "이 옵션으로 방 만들기"의 난이도 · 미니게임은 방이 생긴 뒤 설정으로
+  const afterCreate = useRef<{ level: DifficultyLevel | null; minigames: boolean | null } | null>(null);
+  const createGongbang = useCallback(
+    (p: CreatePayload, after: { level: DifficultyLevel | null; minigames: boolean | null }) => {
+      if (!socket) return;
+      afterCreate.current = after.level || after.minigames !== null ? after : null;
+      setBusy('create');
+      socket.emit('room.create', { title: p.title, kind: p.kind, maxPlayers: p.maxPlayers, ...(p.password ? { password: p.password } : {}) });
+    },
+    [socket],
+  );
+  useEffect(() => {
+    const snap = room.snapshot;
+    const want = afterCreate.current;
+    if (!snap || !want || !socket) return;
+    afterCreate.current = null;
+    if (!snap.me.isHost || snap.room.state !== 'LOBBY') return;
+    const next = { ...snap.room.settings, ...(want.level ? { level: want.level } : {}), ...(want.minigames !== null ? { minigames: want.minigames } : {}) };
+    const check = validateRoomSettings(next);
+    if (check.ok) socket.emit('lobby.updateSettings', check.settings);
+  }, [room.snapshot, socket]);
 
   const joinRoom = useCallback(() => {
     if (!socket) return;
@@ -466,7 +508,7 @@ export default function App() {
           <Lobby
             socket={socket}
             snapshot={room.snapshot}
-            chat={room.chat}
+            chat={chatShown}
             onLeave={leaveRoom}
             serverNow={clock.serverNow}
             throttledUntil={room.throttledUntil}
@@ -480,6 +522,31 @@ export default function App() {
           />
         ),
         // ★ R035 — 방 안에서는 푸터가 없다. 테마·소리·로그아웃은 상단 바의 ⚙ 안에 있다 (화면 아래 빈 공간 제거)
+        foot: null,
+      };
+    }
+
+    // ★★★ R117 — 공방 스위치를 켰으면 새 첫 화면(로비 · 공방 목록). 끄면 아래 옛 첫 화면 그대로
+    if (siteInfo().gongbang && socket) {
+      return {
+        narrow: true,
+        home: true,
+        gb: true,
+        body: (
+          <GongbangHome
+            socket={socket}
+            account={account}
+            social={social}
+            onJoinOther={joinOther}
+            onNicknameChanged={(nickname) => setAccount((prev) => (prev ? { ...prev, nickname } : prev))}
+            onAvatarChanged={(avatarV) => setAccount((prev) => (prev ? { ...prev, avatarV } : prev))}
+            onLogout={() => void doLogout()}
+            onNotice={(message) => setNotice({ message })}
+            onCreate={createGongbang}
+            creating={busy === 'create'}
+            lastCode={joinId}
+          />
+        ),
         foot: null,
       };
     }
@@ -603,7 +670,7 @@ export default function App() {
   })();
 
   return (
-    <main className={view.narrow ? ('home' in view && view.home ? 'wrap narrow home-wide' : 'wrap narrow') : 'wrap'}>
+    <main className={view.narrow ? ('home' in view && view.home ? ('gb' in view && view.gb ? 'wrap narrow home-wide gb-main' : 'wrap narrow home-wide') : 'wrap narrow') : 'wrap'}>
       {/* ★ 알림은 화면 종류와 무관하게 항상 여기 하나뿐이다 (D-027 / D-032).
           ★ 화면 고정(fixed)이므로 문서 흐름에서의 위치는 의미가 없다.
             그래도 여기 두는 이유는 "표시 경로가 한 곳" 임을 코드로 드러내기 위함이다. */}

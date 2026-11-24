@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import { LIAR, LIAR_STEPS, liarStep } from '@quiz/shared';
 import type { LiarView, PlayerView } from './useRoom.js';
+import { siteInfo } from './site.js';
 
 interface Props {
   socket: Socket;
@@ -159,7 +160,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
           주제 <strong data-liar-topic>{view.nameKo}</strong>
         </span>
         {view.spectating ? (
-          <span className="liar-mine spect">구경 중{view.keyword ? ` · 키워드 ${view.keyword}` : ''}</span>
+          <span className="liar-mine spect">구경 중{view.keyword ? ` · 키워드 ${view.keyword}` : ''}{siteInfo().gongbang ? ' · 다음 판부터 같이 해요' : ''}</span>
         ) : view.amLiar ? (
           <span className="liar-mine liar" data-liar-me="liar">
             당신이 <strong>라이어</strong> — 들키지 마세요

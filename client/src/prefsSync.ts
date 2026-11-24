@@ -13,6 +13,7 @@ import { migrateBgmPick } from './soundRecipe.js';
 import { getTheme, setTheme, THEMES, type ThemeId } from './theme.js';
 import { getEmojiInsert, getStoredSlots, setEmojiInsert, setStoredSlots } from './emojiCatalog.js';
 import { getFlag, setFlag } from './accountFlags.js';
+import { getStoredQuickJoin, setQuickJoin, QUICK_JOIN_EVENT } from './gongbang/store.js';
 
 let signedIn = false;
 /** 계정 값을 적용하는 동안에는 다시 저장하지 않는다 (되먹임 방지) */
@@ -66,6 +67,8 @@ function current(): ServerPrefs {
     tourSeen: getFlag('tourSeen'),
     // ★ R074 (D-321 가) — 😊 자동 시연
     emojiDemoSeen: getFlag('emojiDemoSeen'),
+    // ★ R117 — 빠른 입장 옵션(바꾼 적이 있을 때만)
+    ...(getStoredQuickJoin() ? { quickJoin: getStoredQuickJoin()! } : {}),
   };
 }
 
@@ -105,6 +108,7 @@ function apply(p: ServerPrefs): boolean {
     if (p.emojiHelpDismissed === true) setFlag('emojiHelpDismissed');
     if (p.tourSeen === true) setFlag('tourSeen');
     if (p.emojiDemoSeen === true) setFlag('emojiDemoSeen');
+    if (p.quickJoin && typeof p.quickJoin === 'object') setQuickJoin(p.quickJoin);
     if (Object.keys(patch).length > 0) setSoundPrefs(patch);
   } finally {
     applying = false;
@@ -121,6 +125,7 @@ export function installPrefsSync(): void {
   window.addEventListener('qw:emoji-slots', scheduleSave);
   window.addEventListener('qw:emoji-insert', scheduleSave);
   window.addEventListener('qw:flags', scheduleSave);
+  window.addEventListener(QUICK_JOIN_EVENT, scheduleSave);
 }
 
 /** 로그인 확인 직후 부른다. 로그아웃하면 onSignedOut */

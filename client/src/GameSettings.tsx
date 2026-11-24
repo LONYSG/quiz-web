@@ -45,6 +45,10 @@ import MinigameCatalog from './minigame/MinigameCatalog.js';
 import TopicPicker from './TopicPicker.js';
 import SongSettings from './SongSettings.js';
 import { siteInfo } from './site.js';
+import { ArrowLeftRight } from 'lucide-react';
+import type { RoomKind } from '@quiz/shared';
+import ModeChange from './gongbang/ModeChange.js';
+import { KIND_ICON, KIND_LABEL } from './gongbang/kinds.js';
 
 /** Q-10 확정: UI 에 프리셋을 제공한다 */
 const PRESETS = [50, 100, 200] as const;
@@ -59,6 +63,8 @@ interface Props {
   isHost: boolean;
   /** ★ R079 — 팀전은 2명 이상일 때만 켠다 */
   playerCount?: number;
+  /** ★★★ R117 — 공방 방의 종류(없으면 옛 방 — 방식 칸 그대로). 있으면 맨 위 "방 종류" 줄 + [모드 바꾸기] · 방식 칸은 그 종류 안의 것만 */
+  gongbangKind?: RoomKind | null;
 }
 
 export default function GameSettings({
@@ -68,6 +74,7 @@ export default function GameSettings({
   availableQuestionCount,
   isHost,
   playerCount = 1,
+  gongbangKind = null,
 }: Props) {
   /**
    * ★ 입력 중인 값은 로컬 상태로 둔다 (숫자를 지우는 순간 커서가 튀지 않게).
@@ -80,6 +87,7 @@ export default function GameSettings({
 
   const editable = isHost && !settingsLocked;
   const [catOpen, setCatOpen] = usePopup('minigame-catalog');
+  const [modeOpen, setModeOpen] = usePopup('gb-mode');
   const valid = validateRoomSettings(draft);
 
   /** 서버로 보낸다. 통과하지 못하는 값은 보내지 않는다 */
@@ -139,14 +147,45 @@ export default function GameSettings({
   // ★★★ R079 — 팀전 토글(방식 줄 오른쪽 · 퀴즈 · 미니게임만 어느 쪽과도) · 켜져 있으면 [자동 배정]
   const teamOn = shown.teamMode === true;
   const teamDisabled = !teamOn && playerCount < 2;
+  /** ★ R117 — 모드 바꾸기 = 그 종류의 첫 방식으로(옛 방식 버튼과 같은 값) */
+  const toKind = (k: RoomKind) => {
+    setModeOpen(false);
+    if (k === 'quiz') push({ ...draft, mode: 'quiz', minigameOnly: false });
+    else push({ ...draft, mode: k, minigameOnly: false, teamMode: false, minigameRounds: clampRounds(draft.minigameRounds) });
+  };
+  const gbQuiz = gongbangKind === 'quiz';
 
   return (
     <div className={editable ? 'settings' : 'settings readonly'}>
+      {/* ★★★ R117 — 공방 방: 방 종류 + [모드 바꾸기](방장 · 대기실) */}
+      {gongbangKind && (
+        <div className="set-row gb-kind-row" data-gb-kind-row={gongbangKind}>
+          <span className="set-label">방 종류</span>
+          <div className="preset-row mode-now">
+            <span className={`kind-tag k-${gongbangKind}`}>
+              <Icon icon={KIND_ICON[gongbangKind]} /> {KIND_LABEL[gongbangKind]}
+            </span>
+            {isHost && (
+              <button
+                type="button"
+                className="preset"
+                data-gb-mode-btn
+                disabled={!editable}
+                title={editable ? undefined : '이 판이 끝나면 바꿀 수 있어요'}
+                onClick={() => setModeOpen(true)}
+              >
+                <Icon icon={ArrowLeftRight} /> 모드 바꾸기
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+      {modeOpen && gongbangKind && <ModeChange current={gongbangKind} playerCount={playerCount} onPick={toKind} onClose={() => setModeOpen(false)} />}
       {/* ★★★ R057 — 방식: 퀴즈 / 미니게임만 (기본 퀴즈 · 다시 하기 이어받음) */}
       <div className="set-row mode-row">
         <span className="set-label">방식</span>
         <div className="preset-row">
-          {editable ? (
+          {editable && gongbangKind && !gbQuiz ? null : editable ? (
             <>
               <button
                 type="button"
@@ -166,7 +205,7 @@ export default function GameSettings({
               >
                 미니게임만
               </button>
-              <button
+              {!gongbangKind && <button
                 type="button"
                 data-mode="liar"
                 aria-pressed={liar}
@@ -175,8 +214,8 @@ export default function GameSettings({
                 onClick={() => !liar && push({ ...draft, mode: 'liar', minigameOnly: false, teamMode: false, minigameRounds: clampRounds(draft.minigameRounds) })}
               >
                 라이어
-              </button>
-              <button
+              </button>}
+              {!gongbangKind && <button
                 type="button"
                 data-mode="draw"
                 aria-pressed={drawM}
@@ -185,7 +224,7 @@ export default function GameSettings({
                 onClick={() => !drawM && push({ ...draft, mode: 'draw', minigameOnly: false, teamMode: false, minigameRounds: clampRounds(draft.minigameRounds) })}
               >
                 캐치마인드
-              </button>
+              </button>}
               {/* ★ R109 — 공개 주소에서는 노래 방식이 없다(지인 전용 · 서버도 막는다) */}
               {!siteInfo().hidden.modes.includes('song') && <button
                 type="button"
@@ -198,7 +237,7 @@ export default function GameSettings({
                 노래
               </button>}
             </>
-          ) : (
+          ) : gongbangKind && !gbQuiz ? null : (
             <span className="chip on">{songM ? '노래 맞히기' : drawM ? '캐치마인드' : liar ? '라이어' : mgOnly ? '미니게임만' : '퀴즈'}</span>
           )}
           <span className="team-sep" aria-hidden="true" />

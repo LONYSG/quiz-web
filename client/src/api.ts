@@ -6,6 +6,8 @@
 //   개발 중에는 Vite 프록시가 /api 를 서버로 넘긴다.
 // =============================================================================
 
+import type { QuickJoinOpts } from '@quiz/shared';
+
 export interface Account {
   accountId: string;
   nickname: string;
@@ -189,6 +191,8 @@ export interface ServerPrefs {
   tourSeen?: boolean;
   /** ★ R074 — 😊 창 자동 시연을 봤나(D-321) */
   emojiDemoSeen?: boolean;
+  /** ★ R117 — 빠른 입장 옵션(docs/24 3-7) */
+  quickJoin?: QuickJoinOpts;
 }
 
 export async function fetchPrefs(): Promise<ServerPrefs | null> {

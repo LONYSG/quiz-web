@@ -370,6 +370,8 @@ export interface RoomSnapshot {
     settingsLocked: boolean;
     activeCount: number;
     availableQuestionCount: number | null;
+    /** ★★★ R117 — 공방 방만(스위치를 켜고 만든 방) — password 는 방장 화면에만(그 밖 null) */
+    gongbang?: { kind: 'quiz' | 'draw' | 'liar'; locked: boolean; password: string | null } | null;
   };
   players: PlayerView[];
   chat: ChatView[];
@@ -959,6 +961,15 @@ export function useRoom(socket: Socket | null): RoomHook {
       setError(e);
     };
     socket.on('lobby.settingsUpdated', onSettingsUpdated);
+    // ★★★ R117 — 정원 · 잠금 · 종류가 바뀌었다(방 전원 · 비밀번호는 방장에게만 실려 온다)
+    const onAccess = (p: { maxPlayers: number; locked: boolean; kind: 'quiz' | 'draw' | 'liar'; password?: string | null }) => {
+      setSnapshot((prev) => {
+        if (!prev || !prev.room.gongbang) return prev;
+        const password = p.password !== undefined ? p.password : p.locked ? prev.room.gongbang.password : null;
+        return { ...prev, room: { ...prev.room, maxPlayers: p.maxPlayers, gongbang: { kind: p.kind, locked: p.locked, password } } };
+      });
+    };
+    socket.on('room.accessUpdated', onAccess);
     socket.on('lobby.experienceRates', onExperienceRates);
     socket.on('game.countdownStarted', onCountdownStarted);
     socket.on('game.countdownCancelled', onCountdownCancelled);
@@ -968,6 +979,7 @@ export function useRoom(socket: Socket | null): RoomHook {
 
     return () => {
       socket.off('room.state', onState);
+      socket.off('room.accessUpdated', onAccess);
       socket.off('question.started', onQuestionStarted);
       socket.off('question.experiencedUpdated', onExperiencedUpdated);
       socket.off('question.hint', onHint);

@@ -6,7 +6,7 @@
 // ★ 팝업은 하나 (popup.ts 'invite') · ✕ 는 다른 팝업과 같은 PopupClose.
 // =============================================================================
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Check, Copy, Link } from 'lucide-react';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
@@ -16,6 +16,10 @@ interface Props {
   code: string;
   url: string;
   onClose: () => void;
+  /** ★ R117 — 공방 잠긴 방: "이 링크로는 바로 들어와요" 한 줄 */
+  locked?: boolean;
+  /** ★ R117 — 정원 · 잠금(방장 · PC) */
+  children?: ReactNode;
 }
 
 async function copyText(text: string): Promise<void> {
@@ -34,7 +38,7 @@ async function copyText(text: string): Promise<void> {
   }
 }
 
-export default function InvitePopup({ code, url, onClose }: Props) {
+export default function InvitePopup({ code, url, onClose, locked = false, children }: Props) {
   const [copied, setCopied] = useState<'code' | 'link' | null>(null);
   // ★ R044 B — 바깥 누르기 · Esc = ✕
   useDismiss(true, onClose, '.invite, .invite-pop');
@@ -62,6 +66,8 @@ export default function InvitePopup({ code, url, onClose }: Props) {
           <Icon icon={copied === 'link' ? Check : Link} /> {copied === 'link' ? '복사됨' : '링크 복사'}
         </button>
       </div>
+      {locked && <p className="dim invite-lock-note" data-invite-lock-note>잠긴 방이어도 이 링크로는 바로 들어와요</p>}
+      {children}
     </div>
   );
 }
