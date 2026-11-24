@@ -13,7 +13,7 @@
    - `web-desk/vscript/받은것/대본-NN.json` — 영상 대본 초안(2026-11-19 · `web-desk/vscript/지시서.md` 대로 · 입력 `web-desk/vscript/보낼것/대본-NN.json` · 검색하지 않는다 · max 의 ai-talk 글이 묶음 번호를 적어 맡겼을 때 — `ai-talk/053`)
    - `web-desk/vscript/받은것/마무리-NN.json` — 영상 대본 마무리(2026-11-20 · `web-desk/vscript/지시서-마무리.md` 대로 · 입력 = 네 초안 `받은것/대본-NN.json` + VERIFY 결과 · 검색하지 않는다 · max 의 ai-talk 글이 맡겼을 때 — `ai-talk/057` · `ai-talk/071`: 마무리-01(1회 두 해설)). ★ 찬종: 자연어의 마지막 단계는 gpt 의 검수다
    - `web-desk/vscript/받은것/그림-NN.json` — 영상 해설의 문단별 그림 지시 초안(2026-11-24 · `web-desk/vscript/지시서-그림.md` 대로 · 입력 = `받은것/마무리-NN.json` + 보탬 재료 · 검색하지 않는다 · 대본을 고치지 않는다 · max 의 ai-talk 글이 맡겼을 때 — `ai-talk/093`: 그림-02~04)
-   - `web-desk/tone/받은것/새카드-NN.json` — 새 문항 카드 쓰기(2026-11-20 · `web-desk/tone/지시서-새카드.md` 대로 · 입력 `보낼것/새재료-NN.json` 중 `"done": true` 인 것 · 검색하지 않는다 · 재료에 없는 사실을 더하지 않는다 · max 의 ai-talk 글이 묶음을 적어 맡겼을 때 — `ai-talk/063`: 시범 30장 · 2026-11-21 `ai-talk/069`: 새재료-01~15 전부 → 새카드-01~15)
+   - `web-desk/tone/받은것/새카드-NN.json` — 새 문항 카드 쓰기(2026-11-20 · `web-desk/tone/지시서-새카드.md` 대로 · 입력 `보낼것/새재료-NN.json` 중 `"done": true` 인 것 · 검색하지 않는다 · 재료에 없는 사실을 더하지 않는다 · max 의 ai-talk 글이 묶음을 적어 맡겼을 때 — `ai-talk/063`: 시범 30장 · 2026-11-21 `ai-talk/069`: 새재료-01~15 전부 → 새카드-01~15 · 2026-11-24 `ai-talk/095`: 새재료-16~34 → 새카드-16~34)
    - `web-desk/tone/받은것/새카드-고침.json` — 새 카드 고침(2026-11-21 · `ai-talk/075` · 입력 `보낼것/새카드-고침.json` · V109 가 fix 로 본 38장만 · 검색하지 않는다 · 재료에 없는 사실을 더하지 않는다)
    - max 의 브리프가 경로를 지정해 맡긴 판정 파일(지정될 때만)
    그 밖의 코드 · 문서 · 데이터 · DB · git 커밋 · push · `ops.bat` · `npm run` 의 쓰기 동작은 하지 않는다. 읽기 · 검색 · 웹 열기는 자유다.
