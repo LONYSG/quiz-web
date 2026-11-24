@@ -158,6 +158,8 @@ const SCENARIO_ENV = {
   // ★★★ R107 — 공격 묶음: 한도를 작게 · 이 PC 자신도 세고(SEC_LOCAL_EXEMPT=0) · LAN 주소로도 듣는다(가짜 IP 헤더 단계)
   // ★★★ R116 — 공방 스위치 · 본 문제 30일 · 정답 공개 짧게
   gongbang: { GONGBANG: '1', EXPERIENCE_DAYS: '30', RESOLVED_WAIT_MS: '200' },
+  // ★★★ R118 — 혼자 하기 · 띠 스위치 · 시험값(문제 1.5초 · 다음 문제 0.15초 · 끊김 2초)
+  solo: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '1500', SOLO_TEST_NEXT_MS: '150', SOLO_TEST_RECONNECT_MS: '2000' },
   attack: {
     RESOLVED_WAIT_MS: '200',
     HOST: '0.0.0.0',
@@ -10909,6 +10911,257 @@ async function scenarioGongbangOff() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R118 solo — 혼자 하기 · 띠(SOLO=1 · BELT=1 · 시험값: 문제 1.5초 · 다음 문제 0.15초 · 끊김 2초 — SCENARIO_ENV)
+//   한 판 끝까지(시간 끝 · 목숨 0 · 끝 화면 값) · 틀린 답 무반응 · 늦게 온 답(n 다름) 버림 · 띠 오름(첫 판 화이트 · 단계 · 새 띠 · 차액 한 번) ·
+//   등급이 오른다(62개 — 등급 5까지) · 탭 둘 · 끊김 다시 붙기 · 끊긴 채 끝 · 그만두기 · 나감 · 방과 솔로는 함께 못 한다 · 방 안 띠 칸 ·
+//   솔로 본 문제는 공방 경험(question_experiences)에 안 들어간다
+// ★★★ R118 solooff — 스위치를 끈 기본 서버: solo.* 거절 · /api/solo 404 · /api/site 칸 없음 · 방 사람 칸에 belt 없음
+// -----------------------------------------------------------------------------
+function trackSolo(bot) {
+  const s = bot.socket;
+  for (const ev of ['solo.started', 'solo.question', 'solo.result', 'solo.end', 'solo.state', 'solo.none']) s.on(ev, (p) => bot.events.push({ ...p, type: ev }));
+}
+
+async function soloAccountId(bot) {
+  return withDb(async (c) => (await c.query(`SELECT id::text AS id FROM accounts WHERE login_id = $1`, [bot.loginId])).rows[0]?.id ?? null);
+}
+async function soloReset(accountId) {
+  await withDb(async (c) => {
+    await c.query(`DELETE FROM solo_runs WHERE account_id = $1`, [accountId]);
+    await c.query(`DELETE FROM point_grants WHERE account_id = $1 AND reason = 'belt'`, [accountId]);
+    await c.query(`UPDATE accounts SET solo_best = 0, belt_step = NULL, belt_at = NULL WHERE id = $1`, [accountId]);
+  });
+}
+async function beltGrants(accountId) {
+  return withDb(async (c) => (await c.query(`SELECT amount FROM point_grants WHERE account_id = $1 AND reason = 'belt' ORDER BY id`, [accountId])).rows.map((r) => r.amount));
+}
+
+/** 한 판 — plan(n, q) 가 'ok' | 'wrong' | 'timeout' | 'away' 를 돌려준다 */
+async function soloPlay(bot, plan, { label = '판' } = {}) {
+  const from = bot.mark();
+  bot.socket.emit('solo.start', {});
+  const questions = [];
+  let handled = 0;
+  for (;;) {
+    await bot.waitFor(() => bot.since(from, 'solo.question').length > handled || bot.since(from, 'solo.end').length > 0 || bot.since(from, 'error').length > 0, 20000, `${label} 다음 문제`);
+    if (bot.since(from, 'error').length > 0 || bot.since(from, 'solo.end').length > 0) break;
+    const q = bot.since(from, 'solo.question')[handled];
+    handled += 1;
+    questions.push({ n: q.n, grade: q.grade, text: q.text, keys: Object.keys(q), q });
+    const act = plan(q.n, q);
+    if (act === 'ok' || act === 'wrong') {
+      const ans = act === 'ok' ? (await answersForText(q.text))[0] : '봇이틀린답zz';
+      bot.socket.emit('solo.answer', { n: q.n, text: ans ?? '???' });
+    } else if (act === 'away') bot.socket.emit('solo.away', { n: q.n });
+    await bot.waitFor(() => bot.since(from, 'solo.result').some((r) => r.n === q.n) || bot.since(from, 'solo.end').length > 0, 8000, `${label} ${q.n}번 결과`);
+  }
+  await bot.waitFor(() => bot.since(from, 'solo.end').length > 0 || bot.since(from, 'error').length > 0, 8000, `${label} 끝`);
+  return { end: bot.since(from, 'solo.end')[0] ?? null, error: bot.since(from, 'error')[0] ?? null, questions, results: bot.since(from, 'solo.result'), from };
+}
+
+async function scenarioSolo() {
+  log('시나리오 solo — ★★★ 혼자 하기 · 띠 (R118 · docs/24 4 · 5절)');
+  const [a, other] = await makeBots(2);
+  const aId = await soloAccountId(a);
+  const oId = await soloAccountId(other);
+  await soloReset(aId);
+  await soloReset(oId);
+  const expBefore = await withDb(async (c) => Number((await c.query(`SELECT count(*) AS n FROM question_experiences WHERE account_id = $1`, [aId])).rows[0].n));
+  for (const b of [a, other]) {
+    await b.connect();
+    trackSolo(b);
+    b.leave();
+  }
+  await sleep(300);
+  a.snapshot = null;
+  other.snapshot = null;
+
+  const site = await postJson('/api/site', undefined, null, 'GET');
+  expectTrue('★ /api/site — solo · belt 켬', site.json?.solo === true && site.json?.belt === true, JSON.stringify(site.json));
+  let me = await postJson('/api/solo/me', undefined, a.cookie, 'GET');
+  expectTrue('★ /api/solo/me 처음 — 최고 0 · 띠 없음 · 다음 = 화이트(첫 판)', me.status === 200 && me.json.best === 0 && me.json.belt === null && me.json.next?.step === 0 && me.json.running === false, JSON.stringify(me.json));
+
+  // ── 1판: 틀린 답 무반응 · 시간 끝 · 목숨 0 → 끝(화이트 0 · +10P)
+  const r1 = await soloPlay(a, (n) => (n === 1 ? 'wrong' : 'timeout'), { label: '1판' });
+  const q1 = r1.questions[0];
+  expectTrue('★★ 문제에 정답 · 힌트 · 해설 칸이 없다', q1 && !q1.keys.some((k) => /answer|hint|explan/i.test(k)), q1?.keys.join(','));
+  expectTrue('★ 첫 문제 — n 1 · 목숨 3 · 등급 1 · 시간 한도(시험값 1500)', q1?.q.n === 1 && q1.q.lives === 3 && q1.q.grade === 1 && q1.q.limitMs === 1500, JSON.stringify(q1 && { n: q1.q.n, l: q1.q.lives, g: q1.q.grade, t: q1.q.limitMs }));
+  const res1 = r1.results.find((r) => r.n === 1);
+  expectTrue('★★ 틀린 답에는 반응 없음 → 시간 끝에만 틀림(정답 · 목숨 2)', res1 && res1.ok === false && res1.end === 'timeout' && res1.answer && res1.lives === 2, JSON.stringify(res1));
+  expectTrue('★★ 목숨 0 → 끝 — 맞힘 0 · 낸 문제 3 · 까닭 lives', r1.end?.correct === 0 && r1.end?.asked === 3 && r1.end?.reason === 'lives', JSON.stringify(r1.end));
+  expectTrue('★★ 끝 화면 — 틀린 세 문제의 정답 · 해설 칸', r1.end?.wrongs?.length === 3 && r1.end.wrongs.every((w) => w.answer && 'explanation' in w && w.text), JSON.stringify(r1.end?.wrongs?.map((w) => w.answer)));
+  expectTrue('★★★ 첫 판 → 화이트벨트(칸 0) · +10P', r1.end?.belt?.step === 0 && r1.end.belt.change?.before === null && r1.end.belt.change?.after === 0 && r1.end.belt.change?.points === 10, JSON.stringify(r1.end?.belt));
+  const db1 = await withDb(async (c) => {
+    const run = (await c.query(`SELECT id, correct, asked, end_reason, ramp_version, belt_before, belt_after FROM solo_runs WHERE account_id = $1 ORDER BY id DESC LIMIT 1`, [aId])).rows[0];
+    const ans = (await c.query(`SELECT n, "end", correct, limit_ms, first_ms, wrong_count, wrong_texts, text_hash, grade FROM solo_answers WHERE run_id = $1 ORDER BY n`, [run.id])).rows;
+    return { run, ans };
+  });
+  expectTrue('★★ DB solo_runs — 맞힘 0 · 3문제 · lives · 표 버전 1 · 띠 null → 0', db1.run.correct === 0 && db1.run.asked === 3 && db1.run.end_reason === 'lives' && db1.run.ramp_version === 1 && db1.run.belt_before === null && db1.run.belt_after === 0, JSON.stringify(db1.run));
+  expectTrue('★★ DB solo_answers — 3줄 · 시간 끝 · 한도 1500 · 글 지문 · 등급', db1.ans.length === 3 && db1.ans.every((x) => x.end === 'timeout' && x.limit_ms === 1500 && x.text_hash && x.grade >= 1), JSON.stringify(db1.ans.map((x) => x.end)));
+  expectTrue('★★ 12절 기록 — 첫 입력까지 · 틀린 개수 · 틀린 답 글(정규화)', db1.ans[0]?.first_ms !== null && db1.ans[0]?.wrong_count === 1 && (db1.ans[0]?.wrong_texts ?? [])[0]?.startsWith('봇이틀린답'), JSON.stringify(db1.ans[0]));
+  expect('★★ 띠 포인트 — 10P 한 줄', await beltGrants(aId), [10]);
+
+  // ── 늦게 온 답(n 다름) · 솔로 중 방 거절 · 나감 · 그만두기
+  {
+    const from = a.mark();
+    a.socket.emit('solo.start', {});
+    await a.waitFor(() => a.since(from, 'solo.question').length > 0, 6000, '늦은 답 판');
+    const q = a.since(from, 'solo.question')[0];
+    const ans = (await answersForText(q.text))[0];
+    a.socket.emit('solo.answer', { n: q.n + 1, text: ans });
+    await sleep(300);
+    expect('★★ n 이 다른 답(앞 문제에 늦게 온 답)은 버린다', a.since(from, 'solo.result').length, 0);
+    const f2 = a.mark();
+    a.socket.emit('room.create', { title: '솔로 중 방' });
+    await a.waitFor(() => a.since(f2, 'error').length > 0, 3000, '솔로 중 방 만들기 거절');
+    const e = a.since(f2, 'error')[0];
+    expectTrue('★★ 솔로 중에는 방을 만들 · 들어갈 수 없다', e?.code === 'ALREADY_HAS_ROOM' && /혼자 하기/.test(e?.message ?? '') && a.snapshot === null, JSON.stringify(e));
+    me = await postJson('/api/solo/me', undefined, a.cookie, 'GET');
+    expect('★ /api/solo/me — 도는 판 running', me.json.running, true);
+    a.socket.emit('solo.away', { n: q.n });
+    await a.waitFor(() => a.since(from, 'solo.result').length > 0, 3000, '나감 결과');
+    const ra = a.since(from, 'solo.result')[0];
+    expectTrue('★★ 나감(visibility · blur) → 그 문제 실패 · 목숨 2', ra.end === 'away' && ra.ok === false && ra.lives === 2, JSON.stringify(ra));
+    await a.waitFor(() => a.since(from, 'solo.question').length > 1, 4000, '나감 뒤 다음 문제');
+    a.socket.emit('solo.quit', {});
+    await a.waitFor(() => a.since(from, 'solo.end').length > 0, 4000, '그만두기 끝');
+    const eq = a.since(from, 'solo.end')[0];
+    expectTrue('★★ 그만두기 → 그때까지 기록으로 끝(quit · 틀린 문제 = 나감 하나)', eq.reason === 'quit' && eq.correct === 0 && eq.wrongs.length === 1 && eq.wrongs[0].end === 'away', JSON.stringify({ r: eq.reason, w: eq.wrongs.length }));
+    expectTrue('★ 오르지 않으면 띠 변화 · 포인트 없음', eq.belt?.change === null && eq.belt?.step === 0, JSON.stringify(eq.belt));
+  }
+
+  // ── 방에 있는 사람은 솔로를 시작할 수 없다 · 방 사람 칸의 띠(없음)
+  {
+    other.socket.emit('room.create', { title: '솔로 봇 방' });
+    await other.waitFor(() => other.snapshot !== null, 6000, '다른 봇 방');
+    const from = other.mark();
+    other.socket.emit('solo.start', {});
+    await other.waitFor(() => other.since(from, 'error').length > 0, 3000, '방 안 솔로 거절');
+    expectTrue('★★ 방에 있으면 솔로 시작 거절', other.since(from, 'error')[0]?.code === 'ALREADY_HAS_ROOM' && other.since(from, 'solo.question').length === 0, JSON.stringify(other.since(from, 'error')[0]));
+    expectTrue('★★ 방 사람 칸에 띠 칸 — 솔로 안 한 사람 = null(띠 없음)', other.snapshot.players.find((p) => p.accountId === oId)?.belt === null, JSON.stringify(other.snapshot.players[0]));
+  }
+
+  // ── 2판: 4개 맞히고 끝 → 화이트 I(+5P)
+  let k = 0;
+  const r2 = await soloPlay(a, () => (k++ < 4 ? 'ok' : 'timeout'), { label: '2판' });
+  expectTrue('★★★ 단계가 오른다 — 4개 → 화이트 I · +5P(차액)', r2.end?.correct === 4 && r2.end.belt?.step === 1 && r2.end.belt.change?.points === 5 && r2.end.newBest === true, JSON.stringify(r2.end?.belt));
+  const ok2 = r2.results.filter((r) => r.ok);
+  expectTrue('★ 맞힘 결과 — 정답 · 걸린 ms · 다음 문제 때', ok2.length === 4 && ok2.every((r) => r.answer && typeof r.ms === 'number' && r.nextAt > 0), JSON.stringify(ok2[0]));
+  expectTrue('★ 등급 — 0~4개 동안은 등급 1', r2.questions.slice(0, 5).every((q) => q.grade === 1), r2.questions.map((q) => q.grade).join(','));
+
+  // ── 탭 둘 · 끊김 다시 붙기 · 끊긴 채 끝(3판)
+  {
+    const from = a.mark();
+    a.socket.emit('solo.start', {});
+    await a.waitFor(() => a.since(from, 'solo.question').length > 0, 6000, '3판 첫 문제');
+    const q = a.since(from, 'solo.question')[0];
+    const a2 = new Bot(a.name);
+    await a2.auth();
+    await a2.connect();
+    trackSolo(a2);
+    await a2.waitFor(() => a2.events.some((e) => e.type === 'solo.state'), 4000, '새 탭 이어받기');
+    const st = a2.events.find((e) => e.type === 'solo.state');
+    expectTrue('★★ 탭 둘 — 새 탭이 같은 판을 이어받는다(같은 n · 같은 마감 · 목숨)', st.question?.n === q.n && st.question?.endsAt === q.endsAt && st.lives === 3, JSON.stringify({ st: st.question?.n, q: q.n }));
+    await a.waitFor(() => a.since(from, 'session.terminated').length > 0, 3000, '옛 탭 끊김');
+    expect('★ 옛 탭은 끊긴다(another_connection)', a.since(from, 'session.terminated')[0]?.reason, 'another_connection');
+    a2.socket.emit('solo.answer', { n: q.n, text: (await answersForText(q.text))[0] });
+    await a2.waitFor(() => a2.events.some((e) => e.type === 'solo.result' && e.n === q.n), 3000, '새 탭 답');
+    expect('★★ 새 탭에서 친 답이 먹는다', a2.events.find((e) => e.type === 'solo.result' && e.n === q.n)?.ok, true);
+    await a2.waitFor(() => a2.events.some((e) => e.type === 'solo.question'), 4000, '끊기 전 문제');
+    a2.disconnect();
+    await sleep(500);
+    const a3 = new Bot(a.name);
+    await a3.auth();
+    await a3.connect();
+    trackSolo(a3);
+    await a3.waitFor(() => a3.events.some((e) => e.type === 'solo.state'), 4000, '다시 붙기');
+    const st3 = a3.events.find((e) => e.type === 'solo.state');
+    expectTrue('★★ 끊김 → 30초(시험 2초) 안에 다시 붙으면 이어서(맞힌 1 그대로)', st3.correct === 1 && st3.lives >= 2, JSON.stringify({ c: st3.correct, l: st3.lives, q: st3.question?.n, last: st3.last?.n }));
+    a3.disconnect();
+    await sleep(3500);
+    const rd = await withDb(async (c) => (await c.query(`SELECT end_reason, correct FROM solo_runs WHERE account_id = $1 ORDER BY id DESC LIMIT 1`, [aId])).rows[0]);
+    expectTrue('★★ 끊긴 채 30초(시험 2초) → 그때까지 기록으로 끝(disconnect)', rd.end_reason === 'disconnect' && rd.correct >= 1, JSON.stringify(rd));
+    await a.auth();
+    await a.connect();
+    trackSolo(a);
+    await sleep(300);
+  }
+
+  // ── 4판: 62개 → 등급이 오른다(등급 5까지) · 블랙 II · 새 띠 포인트 차액 한 번
+  let m = 0;
+  const r4 = await soloPlay(a, () => (m++ < 62 ? 'ok' : 'timeout'), { label: '4판' });
+  const g = r4.questions.map((q) => q.grade);
+  expectTrue('★★ 어려움 — 10~14번째 등급 2 · 20~29번째 등급 3 · 40~49번째 등급 4', [10, 12, 14].every((i) => g[i] === 2) && [20, 25, 29].every((i) => g[i] === 3) && [40, 45, 49].every((i) => g[i] === 4), g.join(''));
+  expectTrue('★★ 어려움 — 50개 넘어 등급 5 가 나온다', g.slice(50, 63).includes(5), g.slice(50).join(''));
+  expectTrue('★★★ 62개 → 블랙벨트 II(칸 22) · 차액 260 − 15 = 245P', r4.end?.correct === 62 && r4.end.belt?.step === 22 && r4.end.belt.change?.points === 245 && r4.end.belt.change?.before === 1, JSON.stringify(r4.end?.belt));
+  expect('★ 한 판에 같은 문제를 두 번 내지 않는다', new Set(r4.questions.map((q) => q.text)).size, r4.questions.length);
+
+  // ── 5판: 2개 → 띠는 내려가지 않고 포인트도 없다
+  let p5 = 0;
+  const r5 = await soloPlay(a, () => (p5++ < 2 ? 'ok' : 'timeout'), { label: '5판' });
+  expectTrue('★★ 받은 띠는 안 내려간다 · 오르지 않으면 포인트 없음', r5.end?.belt?.step === 22 && r5.end.belt.change === null && r5.end.best === 62 && r5.end.newBest === false, JSON.stringify(r5.end?.belt));
+  expect('★★★ 띠 포인트 줄 — 오를 때마다 차액 한 번(10 · 5 · 245) · 합 = 칸 22 누적 260', await beltGrants(aId), [10, 5, 245]);
+  me = await postJson('/api/solo/me', undefined, a.cookie, 'GET');
+  expectTrue('★ /api/solo/me — 최고 62 · 칸 22 · 다음 칸 23 까지 8개', me.json.best === 62 && me.json.belt === 22 && me.json.next?.step === 23 && me.json.next?.need === 8, JSON.stringify(me.json));
+
+  // ── 방 안 띠 칸 · 사람 카드
+  {
+    a.join(other.snapshot.room.code);
+    await a.waitFor(() => a.snapshot !== null, 6000, '띠 봇 입장');
+    await other.waitFor(() => other.snapshot.players.some((p) => p.accountId === aId), 3000, '방장 화면에 띠 봇');
+    expect('★★★ 방 사람 칸 — 띠 칸 22(방장 화면)', other.snapshot.players.find((p) => p.accountId === aId)?.belt, 22);
+    const card = await postJson(`/api/solo/belt/${aId}`, undefined, other.cookie, 'GET');
+    expectTrue('★ 사람 카드 — 띠 · 최고 기록 · 받은 날', card.status === 200 && card.json.belt === 22 && card.json.best === 62 && card.json.at, JSON.stringify(card.json));
+  }
+
+  // ── 솔로 본 문제는 공방 경험이 아니다
+  const expAfter = await withDb(async (c) => Number((await c.query(`SELECT count(*) AS n FROM question_experiences WHERE account_id = $1`, [aId])).rows[0].n));
+  expect('★★★ 솔로에서 본 문제는 question_experiences 에 안 들어간다(찬종)', expAfter, expBefore);
+  const nAns = await withDb(async (c) => Number((await c.query(`SELECT count(*) AS n FROM solo_answers sa JOIN solo_runs sr ON sr.id = sa.run_id WHERE sr.account_id = $1`, [aId])).rows[0].n));
+  expectTrue('★ 그 대신 solo_answers 에 문제마다 남았다', nAns >= 70, String(nAns));
+
+  for (const b of [a, other]) b.leave();
+  await sleep(300);
+  for (const b of [a, other]) b.disconnect();
+  await soloReset(aId);
+  return checkSummary();
+}
+
+async function scenarioSoloOff() {
+  log('시나리오 solooff — ★★ 스위치를 끈 서버는 오늘과 같다 (R118)');
+  const [h, x] = await makeBots(2);
+  for (const b of [h, x]) {
+    await b.connect();
+    trackSolo(b);
+    b.leave();
+  }
+  await sleep(300);
+  h.snapshot = null;
+  let from = h.mark();
+  h.socket.emit('solo.start', {});
+  await h.waitFor(() => h.since(from, 'error').length > 0, 3000, '솔로 거절');
+  expectTrue('★★ solo.start 거절(INVALID_STATE) · 문제가 안 온다', h.since(from, 'error')[0]?.code === 'INVALID_STATE' && h.since(from, 'solo.question').length === 0, JSON.stringify(h.since(from, 'error')[0]));
+  from = h.mark();
+  h.socket.emit('solo.answer', { n: 1, text: '가' });
+  h.socket.emit('solo.away', { n: 1 });
+  await sleep(300);
+  expect('★ solo.answer · away 는 아무 일도 없다', h.since(from, 'solo.result').length + h.since(from, 'solo.end').length, 0);
+  const site = await postJson('/api/site', undefined, null, 'GET');
+  expectTrue('★★ /api/site 에 solo · belt 칸이 없다', site.status === 200 && !('solo' in site.json) && !('belt' in site.json), JSON.stringify(site.json));
+  const me = await postJson('/api/solo/me', undefined, h.cookie, 'GET');
+  expect('★ /api/solo/me 는 404', me.status, 404);
+  const card = await postJson('/api/solo/belt/1', undefined, h.cookie, 'GET');
+  expect('★ /api/solo/belt 는 404', card.status, 404);
+  h.socket.emit('room.create', { title: '솔로 끈 방' });
+  await h.waitFor(() => h.snapshot !== null, 6000, '방 만들기');
+  expectTrue('★★ 방 사람 칸에 belt 칸 자체가 없다(오늘과 같다)', h.snapshot.players.every((p) => !('belt' in p)), JSON.stringify(h.snapshot.players[0]));
+  h.leave();
+  await sleep(300);
+  for (const b of [h, x]) b.disconnect();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   // ★★★ R109 — 두 자리(공개 · 베타)
@@ -11018,6 +11271,9 @@ const SCENARIOS = {
   // ★★★ R116 — 공방(스위치 켠 서버) · 스위치 끈 서버
   gongbang: scenarioGongbang,
   gongbangoff: scenarioGongbangOff,
+  // ★★★ R118 — 혼자 하기 · 띠(스위치 켠 서버) · 스위치 끈 서버
+  solo: scenarioSolo,
+  solooff: scenarioSoloOff,
 };
 
 const run = SCENARIOS[scenario];
