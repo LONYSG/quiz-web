@@ -45,6 +45,18 @@ export interface SelectInput {
   targetGrade?: number;
   hardestGrade?: number;
   levelScores?: readonly number[];
+  /**
+   * ★★★ R116 (docs/24 6-2 가 · GONGBANG) — 2 · 3단계를 "안 본 사람 수가 가장 많은 묶음"에서만 뽑는다(지금은 안 본 사람 수 가중).
+   *   2명 방에서는 결과가 같다(안 본 사람 수가 1 뿐). 없거나 false 면 옛 동작 그대로.
+   */
+  strictUnseen?: boolean;
+}
+
+/** ★ R116 — 안 본 사람 수가 가장 많은 후보만 */
+function topUnseen(list: readonly Cand[]): Cand[] {
+  let max = 0;
+  for (const c of list) if (c.un > max) max = c.un;
+  return list.filter((c) => c.un === max);
 }
 
 /** ★ R050 — 정답 흘림 검사에 쓰는 정답의 최소 길이 (정규화 뒤). 2글자 이하는 우연히 겹치기 쉽다 */
@@ -255,10 +267,11 @@ export function selectNextQuestion(input: SelectInput): SelectResult | null {
     const target = input.targetGrade;
     const hardest = input.hardestGrade ?? 99;
     const scores = input.levelScores ?? [1, 2, 3, 4, 5];
+    const narrow = (list: Cand[]): Cand[] => (input.strictUnseen ? topUnseen(list) : list);
     const stages: [Cand[], SelectionStage][] = [
       [s1.length > 0 ? s1 : l1, 1],
-      [s2.length > 0 ? s2 : l2, 2],
-      [s3.length > 0 ? s3 : l3, 3],
+      [narrow(s2.length > 0 ? s2 : l2), 2],
+      [narrow(s3.length > 0 ? s3 : l3), 3],
     ];
     for (const [list, stage] of stages) {
       const r = pickByGrade(list, target, hardest, scores, random);
@@ -274,12 +287,13 @@ export function selectNextQuestion(input: SelectInput): SelectResult | null {
     return finish(one[Math.floor(random() * one.length)]!, 1);
   }
   // 2단계 — 1명 이상 미경험 + 정답 미사용
-  const two = s2.length > 0 ? s2 : l2;
+  const strict = (list: Cand[]): Cand[] => (input.strictUnseen ? topUnseen(list) : list);
+  const two = strict(s2.length > 0 ? s2 : l2);
   if (two.length > 0) {
     return finish(weightedPick(two, random), 2);
   }
   // ★ 3단계 — 정답 중복을 허용한다 (Q-76)
-  const three = s3.length > 0 ? s3 : l3;
+  const three = strict(s3.length > 0 ? s3 : l3);
   if (three.length > 0) {
     return finish(weightedPick(three, random), 3);
   }

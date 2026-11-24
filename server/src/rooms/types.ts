@@ -481,6 +481,15 @@ export interface Room {
    */
   paused: PausedState | null;
 
+  /**
+   * ★★★ R116 (D-373 · docs/24 3-2) — 공방(스위치 GONGBANG 을 켰을 때만 채운다 · 꺼져 있으면 없음 = 오늘과 같다).
+   *   maxPlayers = 정원 2~10 · password = 숫자 4자리(없으면 열린 방 · 메모리에만 · 로그 · 스냅샷 · 목록에 싣지 않는다 — 방장 화면만)
+   *   passwordFails = 계정 → 틀린 횟수 · 잠긴 때(5번 틀리면 10분)
+   */
+  maxPlayers?: number;
+  password?: string | null;
+  passwordFails?: Map<string, { n: number; until: number }>;
+
   /** 계정별 채팅 도배 창 타임스탬프 (R048: 5초 5회) */
   chatTimestamps: Map<string, number[]>;
   /** ★ R048 — 채팅 잠금이 풀리는 시각 (계정별) */

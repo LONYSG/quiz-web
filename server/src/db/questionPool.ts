@@ -18,7 +18,7 @@
 
 import { levelScores } from '@quiz/shared';
 import { query } from './pool.js';
-import { filterParams, filterWhere, POOL_WHERE, type PoolFilter } from './questions.js';
+import { experienceWindowSql, filterParams, filterWhere, POOL_WHERE, type PoolFilter } from './questions.js';
 
 /**
  * 출제 풀의 문제 하나.
@@ -306,7 +306,7 @@ export async function loadExperienced(
        FROM question_experiences qe
        JOIN questions q ON q.id = qe.question_id
       WHERE qe.account_id = ANY($1::bigint[])
-        AND ${POOL_WHERE}`,
+        AND ${POOL_WHERE}${experienceWindowSql('qe')}`,
     [accountIds],
   );
   for (const r of rows.rows) {

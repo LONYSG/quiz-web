@@ -20,6 +20,11 @@ export function bindIo(server: Server): void {
   io = server;
 }
 
+/** ★ R116 — 공방 목록 묶음 방송에 쓴다(묶음 이름 dir:<자리>:<종류>) */
+export function ioServer(): Server {
+  return requireIo();
+}
+
 function requireIo(): Server {
   if (!io) throw new Error('bindIo() 가 먼저 호출되어야 합니다.');
   return io;

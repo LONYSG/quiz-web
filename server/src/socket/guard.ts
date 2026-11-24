@@ -57,6 +57,10 @@ export type ErrorCode =
   | 'BANNED'
   | 'PASSWORD_CHANGE_REQUIRED'
   | 'RATE_LIMITED'
+  // ★★★ R116 — 공방 잠금(room.lockRequired 와 같이 간다)
+  | 'ROOM_LOCKED'
+  | 'WRONG_PASSWORD'
+  | 'PASSWORD_LOCKED'
   | 'INTERNAL';
 
 const ERROR_MESSAGES: Record<ErrorCode, string> = {
@@ -81,11 +85,15 @@ const ERROR_MESSAGES: Record<ErrorCode, string> = {
   PASSWORD_CHANGE_REQUIRED: '새 비밀번호를 먼저 정해 주세요.',
   // ★ R107 (D-365) — 방 만들기 등 한도
   RATE_LIMITED: '너무 자주 했어요. 잠시 뒤 다시 해 주세요.',
+  ROOM_LOCKED: '잠긴 방이에요 — 비밀번호 4자리를 넣어 주세요.',
+  WRONG_PASSWORD: '비밀번호가 틀렸어요.',
+  PASSWORD_LOCKED: '비밀번호를 너무 많이 틀렸어요. 잠시 뒤 다시 해 주세요.',
   INTERNAL: '서버에서 문제가 발생했습니다.',
 };
 
-export function sendError(socket: Socket, code: ErrorCode, detail?: string): void {
-  socket.emit('error', { code, message: ERROR_MESSAGES[code], detail: detail ?? null });
+/** ★ R116 — message 를 주면 기본 글 대신(공방 방의 정원 안내 등) */
+export function sendError(socket: Socket, code: ErrorCode, detail?: string | null, message?: string): void {
+  socket.emit('error', { code, message: message ?? ERROR_MESSAGES[code], detail: detail ?? null });
 }
 
 /** 검증을 통과한 핸들러가 받는 컨텍스트 */

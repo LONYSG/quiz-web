@@ -31,7 +31,7 @@
 // =============================================================================
 
 import { checkAchievements } from '../achievements.js';
-import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, buildTeamResult, flexAnswerSet, generateHint, levelScores, nearestAnswer, normalizeAnswer, rankFinal, skipThreshold, teamLabel } from '@quiz/shared';
+import { NEAR_MISS_PER_QUESTION, RULES, computeRanking, buildTeamResult, flexAnswerSet, generateHint, levelScores, nearestAnswer, normalizeAnswer, rankFinal, roomKindOf, skipThreshold, teamLabel } from '@quiz/shared';
 import type { GameEndReason, QuestionResolution } from '@quiz/shared';
 import { endGame, grantTeamWin } from '../db/games.js';
 import { insertNearMiss } from '../db/nearMisses.js';
@@ -47,7 +47,7 @@ import {
   resolveGameQuestion,
 } from '../db/gameQuestions.js';
 import { emitRoom, emitRoomPerPlayer } from '../rooms/emit.js';
-import { activeCount } from '../rooms/registry.js';
+import { activeCount, deviceOf } from '../rooms/registry.js';
 import { lateAnswersView, toPlayerView } from '../rooms/snapshot.js';
 import { selectNextQuestion } from './select.js';
 import { winnerAnswerOf } from './answer.js';
@@ -107,6 +107,8 @@ export function beginQuestion(room: Room): boolean {
     participantIds,
     experienced: game.experienced,
     shownNorm: game.shownNorm,
+    // ★★★ R116 (docs/24 6-2 가) — 공방 스위치가 켜져 있으면 2 · 3단계를 "가장 많은 사람이 안 본 묶음"에서만
+    strictUnseen: config.gongbang,
     // ★★★ R069 — 이 문항의 목표 등급(계획) · 가장 어려운 칸 · 단계가 읽는 등급
     ...(game.gradePlan.length > 0
       ? { targetGrade: game.gradePlan[game.questionIndex % game.gradePlan.length], hardestGrade: game.hardestGrade, levelScores: levelScores(room.settings.level) }
@@ -575,6 +577,7 @@ function schedulePlayEvents(room: Room, cur: CurrentQuestion, reason: QuestionRe
         hintStage: t?.correctMs != null ? t.hintStage : late !== undefined ? stageAtEnd : null,
         wrongCount: t?.wrong ?? 0,
         firstMs: t?.firstMs ?? late ?? null,
+        device: deviceOf(accountId),
       });
     }
     const textHash = createHash('md5')
@@ -594,6 +597,10 @@ function schedulePlayEvents(room: Room, cur: CurrentQuestion, reason: QuestionRe
         resolution: reason,
         skipLogin: config.tuning.nearMissSkipLogin,
         rows,
+        // ★ R116 (24 12-2) — 그때 등급 · 방 종류 · 그 문항 때 방 인원
+        grade: game.pool.find((pq) => pq.id === cur.questionId)?.grade ?? null,
+        roomKind: roomKindOf(room.settings.mode),
+        roomSize: people.size,
       }),
     );
   };

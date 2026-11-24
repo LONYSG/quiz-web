@@ -14,6 +14,7 @@
 
 import { levelScores, type DifficultyLevel, type GameTopic } from '@quiz/shared';
 import { query } from './pool.js';
+import { config } from '../config.js';
 
 /**
  * 출제 대상 조건. ★ 이 문자열을 다른 곳에 복사하지 않는다.
@@ -117,6 +118,16 @@ export async function countExperiencedByAccount(
  *   실제 문제 선정은 매 문제마다 그 시점 참가자 기준으로 한다(Phase 3).
  *   그래서 시작 시 통과했더라도 중간 참가로 소진되어 조기 종료될 수 있다 (Q-22가 허용).
  */
+/**
+ * ★★ R116 (docs/24 6-2 나 · 찬종 ⑥ 30일) — 본 문제 유효 기간. EXPERIENCE_DAYS 가 0(기본)이면 빈 글 = 지금처럼 영원히.
+ *   켜면 마지막으로 본 지 N일 지난 기록은 "안 본 것"으로 — 출제 가능 수 · 문제 고르기(loadExperienced)가 같은 조건을 쓴다.
+ *   ★ 경험률(로비 %)은 이 조건을 쓰지 않는다(지금까지 본 것 전부 — 24 6-2).
+ */
+export function experienceWindowSql(alias: string): string {
+  const days = config.experienceDays;
+  return days > 0 ? ` AND coalesce(${alias}.last_experienced_at, ${alias}.first_experienced_at) > now() - interval '${days} days'` : '';
+}
+
 export async function countAvailableQuestions(
   participantIds: readonly string[],
   filter: PoolFilter,
@@ -140,7 +151,7 @@ export async function countAvailableQuestions(
         AND ${filterWhere(3)}
         AND (SELECT count(*) FROM question_experiences qe
               WHERE qe.question_id = q.id
-                AND qe.account_id = ANY($1::bigint[])) < $2`,
+                AND qe.account_id = ANY($1::bigint[])${experienceWindowSql('qe')}) < $2`,
     [participantIds, n, ...filterParams(filter)],
   );
   return r.rows[0]?.n ?? 0;

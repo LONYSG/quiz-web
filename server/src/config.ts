@@ -87,6 +87,15 @@ export const config = {
    *   ★ 자리를 가를 때(siteSplit)만 본다 — PUBLIC_HOSTNAME 이 없으면 이 값은 아무 일도 하지 않는다. 닫힌 동안 공개 주소 = "준비 중" 한 장.
    */
   publicOpen: (process.env.PUBLIC_OPEN ?? '').trim() === '1',
+  /**
+   * ★★★ R116 (D-373 · docs/24 3-9) — 공방 스위치. '1' = 켬(방 종류 · 정원 · 잠금 · 목록 · 빠른 입장 · 모드 바꾸기 알림 · 미니게임 기본 퀴즈형 ·
+   *   문제 고르기 2단계 "가장 많은 사람이 안 본 묶음부터" · 방 제목 · 닉네임 금칙어). 없거나 그 밖 = 오늘과 같다(목록 이벤트는 거절).
+   */
+  gongbang: (process.env.GONGBANG ?? '').trim() === '1',
+  /**
+   * ★★ R116 (docs/24 6-2 나 · 찬종 ⑥ 30일) — 본 문제 유효 기간(일). 0 · 없음 = 지금처럼 영원히. 켜면 마지막으로 본 지 N일 지난 문제는 "안 본 것".
+   */
+  experienceDays: ((v) => (Number.isInteger(v) && v > 0 && v <= 3650 ? v : 0))(Number((process.env.EXPERIENCE_DAYS ?? '').trim() || 0)),
   /** ★ R111 — 준비 중 한 장 맨 아래 유튜브 채널 링크(없으면 그 줄을 안 그린다 · https:// 로 시작할 때만) */
   youtubeUrl: ((v) => (/^https:\/\/[^\s"'<>]+$/.test(v) ? v : null))((process.env.YOUTUBE_URL ?? '').trim()),
   /**

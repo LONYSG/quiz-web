@@ -19,6 +19,8 @@ export interface PlayEventRow {
   hintStage: number | null;
   wrongCount: number;
   firstMs: number | null;
+  /** ★ R116 (0040 · 24 12-2) — 기기(모르면 null) */
+  device?: 'pc' | 'mobile' | null;
 }
 
 export interface PlayEventBatch {
@@ -32,25 +34,37 @@ export interface PlayEventBatch {
   resolution: string;
   skipLogin: string;
   rows: readonly PlayEventRow[];
+  /** ★ R116 (0040 · 24 12-2) — 그때 등급 · 방 종류 · 그 문항 때 방 인원 */
+  grade?: number | null;
+  roomKind?: 'quiz' | 'draw' | 'liar' | null;
+  roomSize?: number | null;
 }
 
-let tableMissing = false;
+/**
+ * ★★ R116 (24 12-1 ①) — 옛: 표가 없으면(42P01) 한 번 걸고 서버를 다시 띄울 때까지 쓰지 않았다(서버가 마이그레이션보다 먼저 뜨면 영영 0줄).
+ *   이제 RETRY_MS 뒤 다시 해 본다. 0040 의 새 열이 없으면(42703) 옛 열만 쓴다(같은 RETRY_MS 뒤 새 열을 다시 해 본다).
+ */
+const RETRY_MS = 5 * 60_000;
+let tableMissingUntil = 0;
+let extMissingUntil = 0;
 
 export async function insertPlayEvents(b: PlayEventBatch): Promise<number> {
-  if (tableMissing || b.rows.length === 0) return 0;
+  const now = Date.now();
+  if (now < tableMissingUntil || b.rows.length === 0) return 0;
   const col = <T>(f: (r: PlayEventRow) => T): T[] => b.rows.map(f);
+  const ext = now >= extMissingUntil;
   try {
     const r = await query(
       `INSERT INTO play_events
          (kind, game_id, question_index, question_id, account_id, is_bot, level, text_hash,
           experienced, connected, joined_mid, won, correct_ms, late, hint_stage, wrong_count, first_ms,
-          hints_shown, has_general_hint, resolution)
+          hints_shown, has_general_hint, resolution${ext ? ', grade, room_kind, room_size, device' : ''})
        SELECT 'quiz', $1, $2, $3, a.id, a.login_id ~* $5, $4, $6,
               x.experienced, x.connected, x.joined_mid, x.won, x.correct_ms, x.late, x.hint_stage, x.wrong_count, x.first_ms,
-              $7, $8, $9
+              $7, $8, $9${ext ? ', $21::smallint, $22::text, $23::smallint, x.device' : ''}
          FROM unnest($10::bigint[], $11::boolean[], $12::boolean[], $13::boolean[], $14::boolean[],
-                     $15::int[], $16::boolean[], $17::smallint[], $18::smallint[], $19::int[])
-              AS x(account_id, experienced, connected, joined_mid, won, correct_ms, late, hint_stage, wrong_count, first_ms)
+                     $15::int[], $16::boolean[], $17::smallint[], $18::smallint[], $19::int[], $20::text[])
+              AS x(account_id, experienced, connected, joined_mid, won, correct_ms, late, hint_stage, wrong_count, first_ms, device)
          JOIN accounts a ON a.id = x.account_id`,
       [
         b.gameId,
@@ -72,14 +86,23 @@ export async function insertPlayEvents(b: PlayEventBatch): Promise<number> {
         col((r) => r.hintStage),
         col((r) => Math.min(r.wrongCount, 32767)),
         col((r) => r.firstMs),
+        col((r) => r.device ?? null),
+        ...(ext ? [b.grade ?? null, b.roomKind ?? null, b.roomSize ?? null] : []),
       ],
     );
     return r.rowCount ?? 0;
   } catch (err) {
-    if ((err as { code?: string }).code === '42P01') {
-      tableMissing = true;
-      console.warn('[game] ★ play_events 표가 없다(0037 미적용) — 플레이 기록을 건너뛴다');
+    const code = (err as { code?: string }).code;
+    if (code === '42P01') {
+      tableMissingUntil = Date.now() + RETRY_MS;
+      console.warn('[game] ★ play_events 표가 없다(0037 미적용) — 5분 동안 건너뛰고 다시 해 본다');
       return 0;
+    }
+    if (code === '42703' && ext) {
+      // 0040 의 새 열이 아직 없다 — 옛 열만으로 이번 줄을 다시 쓴다
+      extMissingUntil = Date.now() + RETRY_MS;
+      console.warn('[game] ★ play_events 새 열(0040)이 없다 — 옛 열만 쓴다(5분 뒤 다시)');
+      return insertPlayEvents(b);
     }
     throw err;
   }

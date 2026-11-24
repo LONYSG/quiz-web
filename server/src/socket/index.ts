@@ -32,6 +32,7 @@ import {
   nicknameFits,
   protectEmojiTokens,
   RULES,
+  roomKindOf,
   SITE_TEXT,
   stripEmojiTokens,
   validateRoomSettings,
@@ -94,6 +95,7 @@ import {
   setDevice,
 } from '../rooms/registry.js';
 import { transferHost } from '../rooms/host.js';
+import { applyCreateExtras, bannedTextMessage, checkRoomPassword, lockMessage, needsPassword, onModeChanged, parseCreateExtras, registerGongbangHandlers, startDirectory, type CreateExtras } from '../gongbang/index.js';
 import { roomCreateLimited } from '../security/socket.js';
 import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers } from '../social/friends.js';
 
@@ -158,6 +160,8 @@ export function registerSocketHandlers(io: Server): void {
   // ★ R046 — 끊긴 채 60초가 지나면 tick 이 이 경로로 뺀다 (나간 것과 같다 · 점수는 같은 게임 동안 기억)
   onAwayExpired((room, accountId) => ejectPlayer(room, accountId, 'timeout'));
   bindIo(io);
+  // ★★★ R116 — 공방 목록 1초 방송(스위치를 켰을 때만 돈다)
+  startDirectory();
 
   // ── 핸드셰이크에서 세션을 확인한다.
   //   ★ 소켓 이벤트로 로그인하지 않는다. 이미 구워진 쿠키를 읽기만 한다.
@@ -311,8 +315,19 @@ function registerRoomHandlers(socket: Socket): void {
     },
   );
 
+  // ── ★★★ R116 — 공방(목록 구독 · 빠른 입장 · 정원 · 잠금). 스위치가 꺼져 있으면 이벤트마다 거절한다
+  registerGongbangHandlers(socket, {
+    joinRoom: (s, id) => {
+      // room.join 과 같은 검사 — 게임 중인 방에는 한도를 넘는 옛 닉네임으로 들어가지 않는다(차단 · 자리는 목록이 이미 걸렀다)
+      const r = getRoom(id);
+      const nick = (s.data as SocketData).session?.nickname ?? '';
+      if (!r || (r.state !== 'LOBBY' && !nicknameFits(nick))) return false;
+      return attachToRoom(s, id, 'join');
+    },
+  });
+
   // ── 방 생성
-  on<{ title: string }>(
+  on<{ title: string; extras: CreateExtras | null }>(
     socket,
     'room.create',
     {
@@ -324,7 +339,11 @@ function registerRoomHandlers(socket: Socket): void {
           RULES.ROOM_TITLE_MIN_LENGTH,
           RULES.ROOM_TITLE_MAX_LENGTH,
         );
-        return title === null ? null : { title };
+        if (title === null) return null;
+        // ★★★ R116 — 공방(스위치를 켰을 때만): 종류 · 정원 · 비밀번호(옛 화면이 제목만 보내도 기본값으로 받는다)
+        if (!config.gongbang) return { title, extras: null };
+        const extras = parseCreateExtras(obj);
+        return extras ? { title, extras } : null;
       },
     },
     async ({ socket: s, session, payload }) => {
@@ -339,6 +358,13 @@ function registerRoomHandlers(socket: Socket): void {
       const waitMs = roomCreateLimited(s, session.accountId);
       if (waitMs > 0) {
         sendError(s, 'RATE_LIMITED', `방을 너무 자주 만들었어요. ${Math.max(1, Math.ceil(waitMs / 60_000))}분 뒤 다시 만들어 주세요.`);
+        return;
+      }
+
+      // ★★★ R116 — 방 제목 금칙어(목록에 그대로 드러난다 · 스위치를 켰을 때만)
+      const banned = bannedTextMessage(payload.title, '방 제목');
+      if (banned) {
+        sendError(s, 'BAD_REQUEST', banned);
         return;
       }
 
@@ -374,8 +400,9 @@ function registerRoomHandlers(socket: Socket): void {
         const v = validateRoomSettings(room.settings, { hidden: hiddenFor('public') });
         if (v.ok) room.settings = v.settings;
       }
+      if (payload.extras) applyCreateExtras(room, payload.extras);
       registerRoom(room);
-      console.log(`[room] 생성 ${roomId} by ${session.accountId} "${payload.title}"${site === 'public' ? ' · 공개' : ''}`);
+      console.log(`[room] 생성 ${roomId} by ${session.accountId} "${payload.title}"${site === 'public' ? ' · 공개' : ''}${room.maxPlayers !== undefined ? ` · 공방 ${roomKindOf(room.settings.mode)} 정원 ${room.maxPlayers}${room.password ? ' · 잠금' : ''}` : ''}`);
 
       s.emit('room.created', { roomId });
       attachToRoom(s, roomId, 'join');
@@ -383,7 +410,7 @@ function registerRoomHandlers(socket: Socket): void {
   );
 
   // ── 방 입장
-  on<{ roomId: string }>(
+  on<{ roomId: string; password: unknown }>(
     socket,
     'room.join',
     {
@@ -391,7 +418,8 @@ function registerRoomHandlers(socket: Socket): void {
         const obj = parseObject(raw);
         if (!obj) return null;
         const roomId = parseString(obj.roomId, 1, 64);
-        return roomId === null ? null : { roomId };
+        // ★ R116 — 잠긴 방에 6자리 코드로 들어올 때의 비밀번호(형식은 checkRoomPassword 가 본다)
+        return roomId === null ? null : { roomId, password: obj.password };
       },
     },
     async ({ socket: s, session, payload }) => {
@@ -422,6 +450,15 @@ function registerRoomHandlers(socket: Socket): void {
       }
       // ★★ R040 — 한도를 넘는 옛 닉네임은 **게임 중인 방에 새로 들어갈 수 없다** (로비에서 바꾸고 시작에 참여한다).
       //   ★ 대기실(LOBBY)에는 들어간다 — 들어가면 화면이 닉네임을 바꾸라고 안내한다. 재접속은 막지 않는다.
+      // ★★★ R116 (24 3-3) — 잠긴 방: 6자리 코드 · 목록으로 오면 비밀번호 · 긴 초대 링크 · 이미 그 방 사람은 통과 · 5번 틀리면 10분
+      if (needsPassword(room, payload.roomId, Boolean(already && already.id === room.id))) {
+        const lock = checkRoomPassword(room, session.accountId, payload.password);
+        if (!lock.ok) {
+          s.emit('room.lockRequired', { code: room.code, title: room.title, error: lock.code, left: lock.code === 'WRONG_PASSWORD' ? lock.left : null, waitMs: lock.code === 'PASSWORD_LOCKED' ? lock.waitMs : null });
+          sendError(s, lock.code, lockMessage(lock));
+          return;
+        }
+      }
       if (!already && room.state !== 'LOBBY' && !nicknameFits(session.nickname)) {
         sendError(s, 'NICKNAME_CHANGE_REQUIRED', `게임 중인 방에는 닉네임을 바꾼 뒤 들어갈 수 있어요. (${NICKNAME_LIMIT_HINT})`);
         return;
@@ -797,7 +834,10 @@ function registerRoomHandlers(socket: Socket): void {
       const diffChanged =
         valid.settings.level !== room.settings.level ||
         valid.settings.topics.join(',') !== room.settings.topics.join(',');
+      const kindBefore = roomKindOf(room.settings.mode);
       room.settings = { ...valid.settings };
+      // ★★★ R116 — 공방 방에서 종류가 바뀌었으면(모드 바꾸기) 채팅 한 줄 · 정원 아래 끝 · 인원 모자람 알림
+      onModeChanged(room, kindBefore);
 
       // ★ 출제 가능 수는 설정값과 무관하다(참가자 집합에만 의존한다).
       //   그래서 여기서 DB를 다시 조회하지 않고 캐시된 값을 함께 보낸다.
@@ -1558,17 +1598,17 @@ function attachToRoom(
   socket: Socket,
   roomId: string,
   reason: 'join' | 'reconnect',
-): void {
+): boolean {
   const data = socket.data as SocketData;
   const session = data.session;
   if (!session) {
     sendError(socket, 'UNAUTHENTICATED');
-    return;
+    return false;
   }
   const room = getRoom(roomId);
   if (!room) {
     sendError(socket, 'ROOM_NOT_FOUND');
-    return;
+    return false;
   }
 
   // ★ R046 — "접속 끊김" 이 보이던 사람이 돌아왔나 (5초 표시 유예를 넘겼다) → 채팅에 "다시 들어왔습니다"
@@ -1576,8 +1616,10 @@ function attachToRoom(
   const wasShownAway = Boolean(before && !before.connected && before.disconnectedAt !== null && Date.now() - before.disconnectedAt >= RULES.DISCONNECT_DISPLAY_GRACE_MS);
   const added = addPlayer(room, session.accountId, session.nickname, socket.id, session.avatarV);
   if (!added.ok) {
-    sendError(socket, 'ROOM_FULL');
-    return;
+    // ★ R116 — 공방 방은 정원을 알린다(옛 글 "(최대 10명)" 은 공방 방에서 틀린 말이다)
+    if (room.maxPlayers !== undefined) sendError(socket, 'ROOM_FULL', null, `방이 가득 찼어요. (정원 ${room.maxPlayers}명)`);
+    else sendError(socket, 'ROOM_FULL');
+    return false;
   }
   // ★★ R046 — 끊겨서(타의) 빠졌던 사람이 **같은 게임**에 돌아왔다 → 점수를 되살린다 (건우 확정)
   let restored = false;
@@ -1643,6 +1685,7 @@ function attachToRoom(
   //     스냅샷에 캐시된 값이 실려 가지만, 그 방의 첫 입장이면 캐시 자체가 없다.
   //   ★ 주기 갱신이 아니라 이벤트 갱신이다. 타이머로 DB를 깨우지 않는다.
   void refreshLobbyInfo(room);
+  return true;
 }
 
 /** 게임이 진행 중인 상태 (카운트다운 · 문제 · 정답 공개 · 일시정지) */

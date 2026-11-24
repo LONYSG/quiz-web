@@ -510,3 +510,35 @@ describe('★★★ R069 등급 · 알가치', () => {
     expect(r?.targetGrade).toBe(null);
   });
 });
+
+describe('★★★ R116 — strictUnseen(공방 · docs/24 6-2 가): 2 · 3단계는 안 본 사람이 가장 많은 묶음에서만', () => {
+  it('3명 중 2명이 안 본 문제가 있으면 1명만 안 본 문제는 고르지 않는다', () => {
+    const pool = [q('one', ['가']), q('two', ['나'])];
+    // A 는 둘 다 봤다 · B 는 one 을 봤다 · C 는 아무것도 안 봤다 → one 은 C 만, two 는 B · C 가 안 봤다
+    const experienced = new Map<string, Set<string>>([
+      ['A', new Set(['one', 'two'])],
+      ['B', new Set(['one'])],
+      ['C', new Set()],
+    ]);
+    for (const r of [0, 0.3, 0.6, 0.99]) {
+      const picked = selectNextQuestion(input({ pool, participantIds: ['A', 'B', 'C'], experienced, random: () => r, strictUnseen: true }));
+      expect(picked?.question.id).toBe('two');
+      expect(picked?.stage).toBe(2);
+    }
+    // 끄면 옛 가중 무작위 — 난수가 크면 one 도 나온다(가중 1:2)
+    const old = selectNextQuestion(input({ pool, participantIds: ['A', 'B', 'C'], experienced, random: () => 0.0 }));
+    expect(old?.question.id).toBe('one');
+  });
+  it('2명 방에서는 결과가 같다', () => {
+    const pool = [q('a', ['가']), q('b', ['나'])];
+    const experienced = new Map<string, Set<string>>([
+      ['A', new Set(['a', 'b'])],
+      ['B', new Set()],
+    ]);
+    for (const r of [0, 0.7]) {
+      const on = selectNextQuestion(input({ pool, experienced, random: () => r, strictUnseen: true }));
+      const off = selectNextQuestion(input({ pool, experienced, random: () => r }));
+      expect(on?.question.id).toBe(off?.question.id);
+    }
+  });
+});

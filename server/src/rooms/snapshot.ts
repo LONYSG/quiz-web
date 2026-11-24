@@ -17,7 +17,7 @@
 // =============================================================================
 
 import { hiddenFor } from '../site.js';
-import { RULES, skipThreshold } from '@quiz/shared';
+import { RULES, roomKindOf, skipThreshold, type RoomKind } from '@quiz/shared';
 import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount, deviceOf } from './registry.js';
 import { minigameView } from '../minigame/engine.js';
@@ -64,6 +64,8 @@ export interface RoomSnapshot {
     hostAccountId: string;
     state: RoomState;
     maxPlayers: number;
+    /** ★ R116 — 공방 방만 */
+    gongbang?: { kind: RoomKind; locked: boolean; password: string | null };
     settings: Room['settings'];
     settingsLocked: boolean;
     activeCount: number;
@@ -289,7 +291,11 @@ export function buildSnapshot(
       title: room.title,
       hostAccountId: room.hostAccountId,
       state: room.state,
-      maxPlayers: RULES.MAX_PLAYERS,
+      maxPlayers: room.maxPlayers ?? RULES.MAX_PLAYERS,
+      // ★★★ R116 — 공방 방만(스위치를 켜고 만든 방): 종류 · 잠금 · 비밀번호(방장 화면에만 — 친구에게 알려 줘야 한다 · docs/24 3-2)
+      ...(room.maxPlayers !== undefined
+        ? { gongbang: { kind: roomKindOf(room.settings.mode), locked: Boolean(room.password), password: room.hostAccountId === viewerAccountId ? (room.password ?? null) : null } }
+        : {}),
       settings: { ...room.settings },
       settingsLocked: room.settingsLocked,
       activeCount: activeCount(room),

@@ -231,7 +231,8 @@ export function addPlayer(
     return { ok: true, player: existing, rejoined: true, profileChanged };
   }
 
-  if (room.players.size >= RULES.MAX_PLAYERS) {
+  // ★★★ R116 — 공방 방은 방장이 정한 정원(없으면 오늘처럼 10)
+  if (room.players.size >= (room.maxPlayers ?? RULES.MAX_PLAYERS)) {
     return { ok: false, reason: 'room_full' };
   }
 

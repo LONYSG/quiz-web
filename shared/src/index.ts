@@ -82,3 +82,5 @@ export * from './liar.js';
 // ★★★ R096 — 노래 맞히기 방식
 export * from './songMode.js';
 export * from './draw.js';
+// ★★★ R116 — 공방(방 종류 · 목록 · 빠른 입장 · 금칙어)
+export * from './gongbang.js';

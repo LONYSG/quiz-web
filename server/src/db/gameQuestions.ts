@@ -144,6 +144,10 @@ export async function insertAnswerEvent(input: {
  * ★ 정답을 공개하지 않는 경로(강제 종료 / abandoned / server_restart)에서는
  *   이 함수를 부르지 않는다. 그것이 규칙의 구현이다.
  */
+/**
+ * ★★ R116 (docs/24 6-2 나 · 0040) — 다시 본 문제는 "마지막으로 본 때"(last_experienced_at)만 새로 쓴다(처음 본 때 · 판은 그대로).
+ *   유효 기간(EXPERIENCE_DAYS)이 꺼져 있으면 이 값을 읽는 곳이 없다 — 켜는 날 바로 쓸 수 있게 늘 적어 둔다.
+ */
 export async function recordExperiences(input: {
   accountIds: readonly string[];
   questionId: string;
@@ -154,7 +158,7 @@ export async function recordExperiences(input: {
     `INSERT INTO question_experiences (account_id, question_id, first_game_id)
      SELECT x.account_id, $2::bigint, $3::bigint
        FROM unnest($1::bigint[]) AS x(account_id)
-     ON CONFLICT (account_id, question_id) DO NOTHING`,
+     ON CONFLICT (account_id, question_id) DO UPDATE SET last_experienced_at = now()`,
     [input.accountIds, input.questionId, input.gameId],
   );
   return r.rowCount ?? 0;
