@@ -20,6 +20,7 @@
 3. [docs/05-STATUS.md](docs/05-STATUS.md) — 기능별 구현 상태
 4. [docs/06-WORKLOG.md](docs/06-WORKLOG.md) — 최근 작업 (최신이 위)
 5. [docs/02-ARCHITECTURE.md](docs/02-ARCHITECTURE.md) — 구조와 실행 방법
+6. [docs/24-GONGBANG.md](docs/24-GONGBANG.md) — 공방 개편 설계(방 목록 · 잠금 · 방 종류 · 솔로 "승급 심사" · 띠) — **채택 대기**(R113 · D-373)
 
 ### 문서의 위상
 
