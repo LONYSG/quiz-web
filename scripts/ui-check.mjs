@@ -1618,6 +1618,8 @@ async function soundFlow(browser) {
   await sleep(500);
 
   // 게임 시작 → 1번은 시간 종료까지 둔다 (힌트 · 마지막 5초 · 시간 종료)
+  host.pageErrors = [];
+  guest.pageErrors = [];
   await host.click('게임 시작');
   await host.waitFor("document.querySelector('.q-timebar') !== null", 15000);
   await guest.evaluate("document.querySelector('.chat-card input')?.focus()");
@@ -1655,7 +1657,8 @@ async function soundFlow(browser) {
   for (const [name, pg] of [['방장 PC', host], ['참가자 모바일', guest]]) {
     logs[name] = JSON.parse(await pg.evaluate('JSON.stringify(window.__qwSoundLog ?? [])'));
   }
-  const ids = ['bgm:bell', 'join', 'tick', 'go', 'question', 'hint', 'urgent', 'timeout', 'correct', 'mine', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
+  // ★ R112 — 기본 곡 bell → bell-up · 다음 문제 · 결과 앞 3·2·1 'nextCount' 를 더했다
+  const ids = ['bgm:bell-up', 'join', 'tick', 'go', 'question', 'hint', 'urgent', 'nextCount', 'timeout', 'correct', 'mine', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
   console.log('[sound] 소리         | 방장 PC (울림/호출)      | 참가자 모바일 (울림/호출)');
   const table = [];
   for (const id of ids) {
@@ -1671,8 +1674,8 @@ async function soundFlow(browser) {
   }
   record('★ R042 D — PC: 클릭 뒤 오디오가 깨어 있다', hostAudio);
   record('★ R042 D — 모바일 흉내(터치): 탭 뒤 오디오가 깨어 있다', guestAudio);
-  const mustHost = ['bgm:bell', 'join', 'tick', 'go', 'question', 'urgent', 'timeout', 'correct', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
-  const mustGuest = ['bgm:bell', 'tick', 'go', 'question', 'urgent', 'timeout', 'mine', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
+  const mustHost = ['bgm:bell-up', 'join', 'tick', 'go', 'question', 'urgent', 'nextCount', 'timeout', 'correct', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
+  const mustGuest = ['bgm:bell-up', 'tick', 'go', 'question', 'urgent', 'nextCount', 'timeout', 'mine', 'skip', 'result', 'chat:chat', 'chat:taunt', 'chat:emoji'];
   for (const [name, must] of [['방장 PC', mustHost], ['참가자 모바일', mustGuest]]) {
     const miss = must.filter((id) => !logs[name].some((e) => e.id === id && e.played));
     record(`★★★ R042 D — ${name}: 소리마다 실제로 울렸다 (${must.length}종)`, miss.length === 0, miss.length ? `안 울림: ${miss.join(', ')}` : '');
@@ -1683,53 +1686,71 @@ async function soundFlow(browser) {
     ['timeout', 'mine', 'skip'].every((id) => logs['참가자 모바일'].some((e) => e.id === id && e.played)),
     `포커스 해제 ${JSON.parse(kb2).dropped}번(R075 뒤 판 중 0 이 맞다)`,
   );
+  // ★★ R112 — 3·2·1 은 공개마다 세 번(1번 시간 종료 · 2번 정답 → 다음 문제 · 3번 넘김 → 결과 화면 = 9) · 마지막 5초 삑은 1번에서 다섯 번 · 예외 0
+  const nc = logs['방장 PC'].filter((e) => e.id === 'nextCount' && e.played).length;
+  const ug = logs['방장 PC'].filter((e) => e.id === 'urgent' && e.played).length;
+  const errs = [...(host.pageErrors ?? []), ...(guest.pageErrors ?? [])];
+  record('★★ R112 다음 문제 · 결과 앞 똑-똑-똑(공개마다 3) · 마지막 5초 삑 5 · 콘솔 오류 0', nc >= 6 && nc % 3 === 0 && ug >= 5 && errs.length === 0, JSON.stringify({ nextCount: nc, urgent: ug, errs: errs.slice(0, 3) }));
   return { hostAudio, guestAudio, logs, table };
 }
 
 /**
- * ★★ R104 — 기본 배경음 = 포근한 종(bell) · 8비트(chip) 삭제 · 옛 저장(판 번호 없는 bounce · chip)은 **한 번** bell 로
- *   ① 브라우저 저장 chip / bounce → bell ② 새 계정 = bell ③ 계정의 옛 bounce(판 번호 없음)는 따르지 않고 bell 로 다시 저장
- *   ④ 설정에서 통통 경쾌 → 저장 ⑤ 새로고침 · 브라우저 저장을 지우고(다른 기기 · 다시 로그인과 같은 길) 열어도 bounce
+ * ★★ R104 → ★★★ R112 — 배경음 = 영상과 같은 다섯 곡(통통 경쾌 · 포근한 종 · 빠르게 · 아침 체조 · 반짝 산책 · 깡총) · 기본 bell-up · 판 번호 3
+ *   ① 브라우저 저장: 판 번호 없는 chip · bounce → bell-up / 판 2 의 bell → bell-up / 판 2 의 bounce → 그대로(R104 뒤에 일부러 고른 것)
+ *   ② 새 계정 = bell-up · 3 ③ 계정의 옛 bell(판 2) → 화면 bell-up · 계정도 bell-up · 3 으로 다시 저장
+ *   ④ 설정의 배경음 = 다섯 곡(이 순서) · 단추마다 한 줄 · 창이 화면 안(PC 1280 · 모바일 360) · 통통 경쾌를 고르면 브라우저 · 계정 둘 다 bounce · 3
+ *   ⑤ 새로고침 · 브라우저 저장을 지우고(다른 기기 · 다시 로그인과 같은 길) 열어도 bounce · 실제로 bgm:bounce 가 울린다
  */
 async function r104BgmFlow(browser) {
-  const P = await newPage(browser, 'R104-bgm', true);
+  const P = await newPage(browser, 'R112-bgm', true);
   await P.setViewport(1280, 720);
   const ls = () => P.evaluate("localStorage.getItem('qw.sound.v1')").then((x) => JSON.parse(x || 'null'));
   await P.goto(BASE);
-  for (const old of ['chip', 'bounce']) {
-    await P.evaluate(`localStorage.setItem('qw.sound.v1', JSON.stringify({ bgmOn: true, sfxOn: true, bgmVol: 0.35, sfxVol: 0.7, bgm: '${old}' }))`);
+  for (const [old, ver, want] of [['chip', null, 'bell-up'], ['bounce', null, 'bell-up'], ['bell', 2, 'bell-up'], ['bounce', 2, 'bounce']]) {
+    await P.evaluate(`localStorage.setItem('qw.sound.v1', JSON.stringify({ bgmOn: true, sfxOn: true, bgmVol: 0.35, sfxVol: 0.7, bgm: '${old}'${ver ? `, bgmVer: ${ver}` : ''} }))`);
     await P.goto(BASE);
     const v = await ls();
-    record(`★★ R104 ① 브라우저에 옛 '${old}'(판 번호 없음) → 한 번 bell · 판 번호 2`, v?.bgm === 'bell' && v?.bgmVer === 2, JSON.stringify(v));
+    record(`★★ R112 ① 브라우저에 옛 '${old}'(판 ${ver ?? '없음'}) → ${want} · 판 번호 3`, v?.bgm === want && v?.bgmVer === 3, JSON.stringify(v));
   }
+  await P.evaluate("localStorage.removeItem('qw.sound.v1')");
+  await P.goto(BASE);
   await signUp(P, 'bgm');
   await sleep(1500);
   const sp0 = await serverPrefs(P);
-  record('★★ R104 ② 새 계정 — 계정 저장도 bell · 판 번호 2', sp0?.bgmTrack === 'bell' && sp0?.bgmVer === 2, JSON.stringify(sp0));
+  record('★★ R112 ② 새 계정 — 계정 저장도 bell-up · 판 번호 3', sp0?.bgmTrack === 'bell-up' && sp0?.bgmVer === 3, JSON.stringify(sp0));
   const login = `${ACCOUNT_PREFIX}_bgm`;
-  await withPg((c) => c.query(`UPDATE accounts SET prefs = (prefs - 'bgmVer') || '{"bgmTrack":"bounce"}'::jsonb WHERE login_id = $1`, [login]));
+  await withPg((c) => c.query(`UPDATE accounts SET prefs = prefs || '{"bgmTrack":"bell","bgmVer":2}'::jsonb WHERE login_id = $1`, [login]));
   await P.evaluate("localStorage.removeItem('qw.sound.v1')");
   await P.goto(BASE);
   await sleep(1500);
   const v3 = await ls();
   const sp3 = await serverPrefs(P);
-  record('★★ R104 ③ 계정의 옛 bounce(판 번호 없음) → 화면 bell · 계정도 bell · 2 로 다시 저장', v3?.bgm === 'bell' && sp3?.bgmTrack === 'bell' && sp3?.bgmVer === 2, JSON.stringify({ v3, sp3 }));
-  await P.evaluate("document.querySelector('.prefs-toggle')?.click()");
-  await P.waitFor("document.querySelector('.prefs-pop') !== null", 3000).catch(() => false);
-  await sleep(300);
-  const seg = JSON.parse(await P.evaluate(LINE_COUNTS('.prefs-pop .seg-btn')));
-  const bgmBtns = seg.filter((x) => x.t === '포근한 종' || x.t === '통통 경쾌' || x.t === '8비트 게임기');
-  const dir = path.join(ROOT, 'docs', 'design', 'r104');
+  record('★★ R112 ③ 계정의 옛 bell(판 2) → 화면 bell-up · 계정도 bell-up · 3 으로 다시 저장', v3?.bgm === 'bell-up' && sp3?.bgmTrack === 'bell-up' && sp3?.bgmVer === 3, JSON.stringify({ v3, sp3 }));
+  const NAMES = ['통통 경쾌', '포근한 종 · 빠르게', '아침 체조', '반짝 산책', '깡총'];
+  const dir = path.join(ROOT, 'docs', 'design', 'r112');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-  const shot = await P.send('Page.captureScreenshot', { format: 'png' });
-  writeFileSync(path.join(dir, 'prefs-bgm-pc.png'), Buffer.from(shot.data, 'base64'));
-  const inView = await P.evaluate("(() => { const r = document.querySelector('.prefs-pop')?.getBoundingClientRect(); return Boolean(r && r.top >= 0 && r.left >= 0 && r.bottom <= innerHeight && r.right <= innerWidth); })()");
-  record('★★ R104 ④ 설정의 배경음 = 포근한 종 · 통통 경쾌 두 개 · 줄바꿈 없음 · 창이 화면 안', bgmBtns.length === 2 && bgmBtns[0].t === '포근한 종' && bgmBtns[1].t === '통통 경쾌' && bgmBtns.every((x) => x.n === 1) && inView, JSON.stringify({ bgmBtns, inView }));
-  await realClick(P, '.prefs-pop .seg-btn', '통통 경쾌');
-  await sleep(1500);
-  const v4 = await ls();
-  const sp4 = await serverPrefs(P);
-  record('★★ R104 ④ 통통 경쾌를 고르면 브라우저 · 계정 둘 다 bounce · 2', v4?.bgm === 'bounce' && v4?.bgmVer === 2 && sp4?.bgmTrack === 'bounce' && sp4?.bgmVer === 2, JSON.stringify({ v4, sp4 }));
+  for (const [w, h, tag] of [[1280, 720, 'pc'], [360, 740, 'm360']]) {
+    await P.setViewport(w, h);
+    await P.goto(BASE);
+    await sleep(800);
+    await P.evaluate("document.querySelector('.prefs-toggle')?.click()");
+    await P.waitFor("document.querySelector('.prefs-pop') !== null", 3000).catch(() => false);
+    await sleep(300);
+    const seg = JSON.parse(await P.evaluate(LINE_COUNTS('.prefs-pop .seg-btn')));
+    const bgmBtns = seg.filter((x) => NAMES.includes(x.t) || /종|8비트/.test(x.t));
+    const shot = await P.send('Page.captureScreenshot', { format: 'png' });
+    writeFileSync(path.join(dir, `prefs-bgm-${tag}.png`), Buffer.from(shot.data, 'base64'));
+    const inView = await P.evaluate("(() => { const r = document.querySelector('.prefs-pop')?.getBoundingClientRect(); return Boolean(r && r.top >= 0 && r.left >= 0 && r.bottom <= innerHeight + 1 && r.right <= innerWidth + 1); })()");
+    record(`★★ R112 ④ 설정의 배경음 = 다섯 곡(이 순서) · 단추마다 한 줄 · 창이 화면 안 (${w}×${h})`, bgmBtns.map((x) => x.t).join('|') === NAMES.join('|') && bgmBtns.every((x) => x.n === 1) && inView, JSON.stringify({ bgmBtns, inView }));
+    if (tag === 'pc') {
+      await realClick(P, '.prefs-pop .seg-btn', '통통 경쾌');
+      await sleep(1500);
+      const v4 = await ls();
+      const sp4 = await serverPrefs(P);
+      record('★★ R112 ④ 통통 경쾌를 고르면 브라우저 · 계정 둘 다 bounce · 3', v4?.bgm === 'bounce' && v4?.bgmVer === 3 && sp4?.bgmTrack === 'bounce' && sp4?.bgmVer === 3, JSON.stringify({ v4, sp4 }));
+    }
+  }
+  await P.setViewport(1280, 720);
   await P.goto(BASE);
   await sleep(1200);
   const v5 = await ls();
@@ -1741,7 +1762,7 @@ async function r104BgmFlow(browser) {
   await sleep(800);
   const log = JSON.parse(await P.evaluate('JSON.stringify(window.__qwSoundLog ?? [])'));
   const bgmIds = [...new Set(log.filter((e) => String(e.id).startsWith('bgm:')).map((e) => e.id))];
-  record('★★ R104 ⑤ 새로고침 · 브라우저 저장을 지우고 다시 열어도 bounce(계정에서) · 실제로 bgm:bounce 가 울린다', v5?.bgm === 'bounce' && v6?.bgm === 'bounce' && bgmIds.includes('bgm:bounce') && !bgmIds.includes('bgm:bell'), JSON.stringify({ v5: v5?.bgm, v6: v6?.bgm, bgmIds }));
+  record('★★ R112 ⑤ 새로고침 · 브라우저 저장을 지우고 다시 열어도 bounce(계정에서) · 실제로 bgm:bounce 가 울린다', v5?.bgm === 'bounce' && v6?.bgm === 'bounce' && bgmIds.includes('bgm:bounce') && !bgmIds.includes('bgm:bell-up'), JSON.stringify({ v5: v5?.bgm, v6: v6?.bgm, bgmIds }));
 }
 
 /** ★ R043 — 단축키(Alt+K·Q·R·A·L·X)를 껐다 → 검사·촬영도 화면의 버튼으로 같은 경로를 탄다 */
