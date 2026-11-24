@@ -28,6 +28,7 @@
 import { query } from './pool.js';
 import { closeOpenRuns } from './minigames.js';
 import { deleteOldNearMisses } from './nearMisses.js';
+import { closeOpenSoloRuns } from '../solo/db.js';
 
 export interface BootCleanupResult {
   closedRooms: number;
@@ -50,6 +51,8 @@ export async function runBootCleanup(): Promise<BootCleanupResult> {
   await closeOpenRuns().catch(() => 0);
   // ★ R058 (D-252) — 근접 오답 보관 90일 (주기 작업 없이 부팅 때만)
   await deleteOldNearMisses().catch(() => 0);
+  // ★★★ R118 — 열린 솔로 판 닫기(server_restart · 그 판은 최고 기록 · 띠에 넣지 않는다) · 솔로 틀린 답 글 90일
+  await closeOpenSoloRuns().catch(() => 0);
 
   const rooms = await query(
     `UPDATE rooms

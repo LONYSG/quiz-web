@@ -95,6 +95,10 @@ import {
   setDevice,
 } from '../rooms/registry.js';
 import { transferHost } from '../rooms/host.js';
+import { registerSoloHandlers } from '../solo/index.js';
+import { attachSolo, soloDisconnected, soloRunning } from '../solo/engine.js';
+import { setBelt } from '../solo/belts.js';
+import { readBeltSteps } from '../solo/db.js';
 import { applyCreateExtras, bannedTextMessage, checkRoomPassword, lockMessage, needsPassword, onModeChanged, parseCreateExtras, registerGongbangHandlers, startDirectory, type CreateExtras } from '../gongbang/index.js';
 import { roomCreateLimited } from '../security/socket.js';
 import { initFriends, onAccountOffline, onAccountOnline, registerFriendHandlers } from '../social/friends.js';
@@ -151,6 +155,8 @@ function maskForBroadcast(room: Room, senderAccountId: string, rawNfc: string): 
  * ★ 세션 레코드는 여러 개 허용하고 소켓 연결만 1개로 제한한다 (R003 4-1).
  */
 const socketByAccount = new Map<string, string>();
+/** ★ R118 — 솔로 중 방 입장 거절 글 */
+const SOLO_BUSY = '혼자 하기를 하는 중이에요 — 끝낸 뒤 들어와 주세요.';
 
 export function registerSocketHandlers(io: Server): void {
   // ★ R043 — 친구 실시간 상태 (접속 소켓을 알려 준다)
@@ -185,6 +191,8 @@ export function registerSocketHandlers(io: Server): void {
           avatarV: session.avatarV,
           mustChangePassword: session.mustChangePassword,
         };
+        // ★★★ R118 (docs/24 5-4) — 띠 칸을 세션과 같은 길로(닉네임 · 사진처럼 로그인 때 한 번 · 솔로가 끝나 오르면 엔진이 고친다)
+        if (config.belt) setBelt(session.accountId, (await readBeltSteps([session.accountId])).get(session.accountId) ?? null);
       }
       next();
     } catch (err) {
@@ -230,6 +238,8 @@ export function registerSocketHandlers(io: Server): void {
     registerCommonHandlers(socket);
     registerRoomHandlers(socket);
     registerFriendHandlers(socket);
+    // ★★★ R118 — 혼자 하기(스위치 SOLO 가 꺼져 있으면 이벤트마다 거절)
+    registerSoloHandlers(socket);
 
     // ── 재접속: 이미 방에 소속되어 있으면 자동으로 다시 붙인다
     const existingRoom = getRoomOfAccount(accountId);
@@ -239,6 +249,8 @@ export function registerSocketHandlers(io: Server): void {
       // ★★ R066 (D-293 · 찬종 #41 "폰 화면이 꺼져서 게임에서 나가졌어 … 뭘 눌러도 방에 참가하지 않은 상태라는 메세지만") —
       //   방에 없다는 것을 알린다(끊긴 사이 방에서 빠졌으면 클라이언트가 방 화면을 비우고 시작 화면으로)
       socket.emit('room.notInRoom', {});
+      // ★★★ R118 (docs/24 4-7) — 도는 솔로 판이 있으면 이 소켓(새 탭 · 다시 붙음)이 이어받는다(시계는 그대로 · solo.state)
+      if (config.solo) attachSolo(socket, accountId);
     }
 
     socket.on('disconnect', () => {
@@ -247,6 +259,8 @@ export function registerSocketHandlers(io: Server): void {
         socketByAccount.delete(accountId);
         onAccountOffline(accountId);
       }
+      // ★★★ R118 — 솔로 판의 소켓이면 30초 시계(문제 시계는 그대로 간다)
+      soloDisconnected(accountId, socket.id);
       const room = getRoomOfAccount(accountId);
       if (!room) return;
       // 현재 소켓이 그 플레이어의 소켓일 때만 끊김으로 처리한다
@@ -354,6 +368,11 @@ function registerRoomHandlers(socket: Socket): void {
         sendError(s, 'ALREADY_HAS_ROOM', '이미 방에 참가한 상태입니다.');
         return;
       }
+      // ★★★ R118 (docs/24 4-1) — 솔로 중에는 방에 들어갈 수 없다(끝내고 가기)
+      if (soloRunning(session.accountId)) {
+        sendError(s, 'ALREADY_HAS_ROOM', 'solo', SOLO_BUSY);
+        return;
+      }
       // ★★ R107 (D-365) — 방 만들기 계정마다 5개/10분(이 PC 자신은 뺀다 — 봇 · ui-check)
       const waitMs = roomCreateLimited(s, session.accountId);
       if (waitMs > 0) {
@@ -426,6 +445,10 @@ function registerRoomHandlers(socket: Socket): void {
       const already = getRoomOfAccount(session.accountId);
       if (already && already.id !== payload.roomId && already.code !== payload.roomId) {
         sendError(s, 'ALREADY_HAS_ROOM', '다른 방에 참가한 상태입니다.');
+        return;
+      }
+      if (!already && soloRunning(session.accountId)) {
+        sendError(s, 'ALREADY_HAS_ROOM', 'solo', SOLO_BUSY);
         return;
       }
 
@@ -1603,6 +1626,11 @@ function attachToRoom(
   const session = data.session;
   if (!session) {
     sendError(socket, 'UNAUTHENTICATED');
+    return false;
+  }
+  // ★★★ R118 — 솔로 중에는 새로 들어가지 않는다(빠른 입장 · 친구 초대 등 모든 길 · 이미 그 방 사람의 다시 붙음은 통과)
+  if (reason === 'join' && soloRunning(session.accountId) && !getRoom(roomId)?.players.has(session.accountId)) {
+    sendError(socket, 'ALREADY_HAS_ROOM', 'solo', SOLO_BUSY);
     return false;
   }
   const room = getRoom(roomId);

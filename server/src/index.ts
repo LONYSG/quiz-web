@@ -19,6 +19,7 @@ import { emojiRouter, loadEmojiCatalog } from './http/emojiRoutes.js';
 import { avatarRouter } from './http/avatarRoutes.js';
 import { meRouter, profileRouter } from './http/meRoutes.js';
 import { feedbackRouter } from './http/feedbackRoutes.js';
+import { soloRouter } from './http/soloRoutes.js';
 import { peopleRouter } from './http/peopleRoutes.js';
 import { reportRouter } from './http/reportRoutes.js';
 import { minigameRouter } from './http/minigameRoutes.js';
@@ -202,7 +203,7 @@ async function main(): Promise<void> {
     res.setHeader('Cache-Control', 'no-store');
     // ★ R111 — open: 닫힌 공개 자리만 false(베타 · 열린 공개 · 자리 안 가름 = true)
     // ★★★ R116 — gongbang: 공방 스위치(화면이 메뉴를 그린다 · 꺼져 있으면 지금 화면 그대로)
-    res.json({ ok: true, site, split: siteSplit(), open: !publicClosed(site), hidden: hiddenFor(site), publicUrl: site === 'friend' ? publicUrl() : null, ...(config.gongbang ? { gongbang: true } : {}) });
+    res.json({ ok: true, site, split: siteSplit(), open: !publicClosed(site), hidden: hiddenFor(site), publicUrl: site === 'friend' ? publicUrl() : null, ...(config.gongbang ? { gongbang: true } : {}), ...(config.solo ? { solo: true } : {}), ...(config.belt ? { belt: true } : {}) });
   });
 
   app.use('/api/auth', authRouter);
@@ -217,6 +218,8 @@ async function main(): Promise<void> {
   app.use('/api/reports', reportRouter);
   // ★★★ R116 — 사람 신고 · 개인 차단(공방 스위치를 켰을 때만 — 꺼져 있으면 404)
   app.use('/api/people', peopleRouter);
+  // ★★★ R118 — 혼자 하기 · 띠(스위치 SOLO · BELT 를 켰을 때만 — 꺼져 있으면 404)
+  app.use('/api/solo', soloRouter);
   // ★ R049 — 포인트샵 · 뽑기 (D-231)
   app.use('/api/shop', shopRouter);
   // ★ R052 — 퀴즈류 미니게임 그림 (DB bytea · 로그인만)

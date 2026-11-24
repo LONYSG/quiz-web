@@ -17,6 +17,8 @@
 // =============================================================================
 
 import { hiddenFor } from '../site.js';
+import { config } from '../config.js';
+import { beltOf } from '../solo/belts.js';
 import { RULES, roomKindOf, skipThreshold, type RoomKind } from '@quiz/shared';
 import type { QuestionResolution, RoomState } from '@quiz/shared';
 import { activeCount, deviceOf } from './registry.js';
@@ -43,6 +45,8 @@ export interface PlayerView {
   device: 'pc' | 'mobile' | null;
   /** ★★★ R079 — 팀전 팀 (팀전이 꺼져 있으면 null — 값이 남아 있어도 안 보낸다) */
   team: import('@quiz/shared').Team | null;
+  /** ★★★ R118 (docs/24 5-4) — 띠 칸 0~24 · null = 띠 없음. 스위치 BELT 가 꺼져 있으면 칸 자체가 없다 */
+  belt?: number | null;
 }
 
 export interface RoomSnapshot {
@@ -225,6 +229,7 @@ export function toPlayerView(room: Room, player: Player, now = Date.now()): Play
     avatarV: player.avatarV,
     device: deviceOf(player.accountId),
     team: room.settings.teamMode ? player.team : null,
+    ...(config.belt ? { belt: beltOf(player.accountId) } : {}),
   };
 }
 

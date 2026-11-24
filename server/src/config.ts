@@ -93,6 +93,33 @@ export const config = {
    */
   gongbang: (process.env.GONGBANG ?? '').trim() === '1',
   /**
+   * ★★★ R118 (docs/24 4절 · 5절) — 혼자 하기(솔로) · 띠 스위치. '1' = 켬. 없거나 그 밖 = 오늘과 같다(solo.* 이벤트 거절 · /api/solo 404 · 띠 칸 없음).
+   *   BELT 는 SOLO 와 같이 켤 때만 뜻이 있다(띠 = 솔로 최고 기록) — SOLO 없이 BELT 만 켜면 띠 칸만 보인다(전부 띠 없음 · 오를 일이 없다).
+   */
+  solo: (process.env.SOLO ?? '').trim() === '1',
+  belt: (process.env.BELT ?? '').trim() === '1',
+  /**
+   * ★ R118 — 솔로 시간 식(docs/24 4-4 · 베타에서 "시간 끝으로 틀린 비율"을 보고 맞춘다) · 검사용 값.
+   *   SOLO_TIME_* = 식의 숫자(shared SOLO_TIME 덮어쓰기) · ★ 검사용(실 서버에 두지 않는다): SOLO_TEST_TIME_MS = 모든 문제 시간 고정 ·
+   *   SOLO_TEST_RAMP_SHIFT = 등급을 셀 때 맞힌 개수에 더하는 수(등급 5 를 빨리 본다) · SOLO_TEST_NEXT_MS = 다음 문제까지(맞힘 · 틀림 둘 다) ·
+   *   SOLO_TEST_RECONNECT_MS = 끊긴 뒤 끝까지
+   */
+  soloTime: {
+    baseMs: positiveInt('SOLO_TIME_BASE_MS', 8_000),
+    textFree: positiveInt('SOLO_TIME_TEXT_FREE', 30),
+    perTenTextMs: positiveInt('SOLO_TIME_PER_TEN_TEXT_MS', 500),
+    answerFree: positiveInt('SOLO_TIME_ANSWER_FREE', 5),
+    perAnswerCharMs: positiveInt('SOLO_TIME_PER_ANSWER_CHAR_MS', 400),
+    minMs: positiveInt('SOLO_TIME_MIN_MS', 8_000),
+    maxMs: positiveInt('SOLO_TIME_MAX_MS', 13_000),
+  },
+  soloTest: {
+    timeMs: Number(process.env.SOLO_TEST_TIME_MS ?? 0) > 0 ? Math.floor(Number(process.env.SOLO_TEST_TIME_MS)) : 0,
+    rampShift: Number(process.env.SOLO_TEST_RAMP_SHIFT ?? 0) > 0 ? Math.floor(Number(process.env.SOLO_TEST_RAMP_SHIFT)) : 0,
+    nextMs: Number(process.env.SOLO_TEST_NEXT_MS ?? 0) > 0 ? Math.floor(Number(process.env.SOLO_TEST_NEXT_MS)) : 0,
+    reconnectMs: Number(process.env.SOLO_TEST_RECONNECT_MS ?? 0) > 0 ? Math.floor(Number(process.env.SOLO_TEST_RECONNECT_MS)) : 0,
+  },
+  /**
    * ★★ R116 (docs/24 6-2 나 · 찬종 ⑥ 30일) — 본 문제 유효 기간(일). 0 · 없음 = 지금처럼 영원히. 켜면 마지막으로 본 지 N일 지난 문제는 "안 본 것".
    */
   experienceDays: ((v) => (Number.isInteger(v) && v > 0 && v <= 3650 ? v : 0))(Number((process.env.EXPERIENCE_DAYS ?? '').trim() || 0)),

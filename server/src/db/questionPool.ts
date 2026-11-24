@@ -319,3 +319,14 @@ export async function loadExperienced(
   }
   return out;
 }
+
+// =============================================================================
+// ★★★ R118 (docs/24 4-1 · 4-3) — 솔로 풀: 같은 한 벌에서 분야가 있는 문항 전부 · 알가치 1 뺌 · 등급별(참조만 · 복사 없음)
+//   한 벌이 바뀌면(지문) 다시 만든다 — 판 시작 때 부른다(판정 블록이 아니다).
+// =============================================================================
+let soloCache: { all: readonly PoolQuestion[]; byGrade: Map<number, PoolQuestion[]> } | null = null;
+export async function loadSoloPool(build: (all: readonly PoolQuestion[], topicOf: readonly (string | null)[]) => Map<number, PoolQuestion[]>): Promise<ReadonlyMap<number, readonly PoolQuestion[]>> {
+  const p = await ensureSharedPool();
+  if (!soloCache || soloCache.all !== p.all) soloCache = { all: p.all, byGrade: build(p.all, p.topicOf) };
+  return soloCache.byGrade;
+}

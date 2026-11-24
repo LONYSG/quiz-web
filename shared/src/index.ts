@@ -84,3 +84,5 @@ export * from './songMode.js';
 export * from './draw.js';
 // ★★★ R116 — 공방(방 종류 · 목록 · 빠른 입장 · 금칙어)
 export * from './gongbang.js';
+// ★★★ R118 — 혼자 하기(솔로) · 띠
+export * from './solo.js';

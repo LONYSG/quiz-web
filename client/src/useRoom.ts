@@ -29,6 +29,8 @@ export interface PlayerView {
   device?: 'pc' | 'mobile' | null;
   /** ★★★ R079 — 팀전 팀(팀전이 꺼져 있으면 null) */
   team?: Team | null;
+  /** ★★★ R118 — 띠 칸 0~24 · null = 띠 없음 · 없으면(스위치 BELT 꺼짐) 띠 자리를 안 그린다 */
+  belt?: number | null;
 }
 
 export interface ChatView {
