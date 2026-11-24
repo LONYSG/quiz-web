@@ -11767,11 +11767,27 @@ button.gb-make { display: inline-flex; align-items: center; gap: 0.35em; padding
 .modal-actions { display: flex; gap: 8px; margin-top: 12px; }
 .modal-actions button { flex: 1; margin: 0; }
 .gb-create input, .gb-report-text, .gb-code input { width: 100%; box-sizing: border-box; }
+/* 입력칸 = 앱 입력칸 꼴(form input · .field-row input 과 같은 값) */
+.gb-create input:not([type='checkbox']),
+.gb-report-text,
+.gb-access-pin input {
+  display: block; background: var(--surface-2); border: var(--bw) solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); font: inherit; padding: 9px 12px; transition: border-color 120ms, box-shadow 120ms;
+}
+.gb-create input:not([type='checkbox']):focus,
+.gb-report-text:focus,
+.gb-access-pin input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.gb-create .mg-check, .gb-access .mg-check { white-space: nowrap; }
+.gb-create .gb-pin-input, .gb-access-pin .gb-pin-input { letter-spacing: 0.4em; font-size: 1.1rem; text-align: center; font-weight: 800; }
+/* 모바일 위 [친구] = 방 안 [참여자] 단추와 같은 꼴(아이콘 + 숫자 · 글자 없음 · 같은 높이) */
+:where(.ui-mobile) .gb-tools > .social > #friends-btn { font-size: 0.95rem; padding: 4px 8px; height: 2.3em; min-width: 2.3em; box-sizing: border-box; margin: 0; }
+:where(.ui-mobile) .gb-tools > .social > #friends-btn .lbl { display: none; }
+:where(.ui-mobile) .room-tools > .gb-menu { padding: 4px 8px; }
 .gb-create .set-row > input { margin-top: 4px; }
 .gb-kind-chip { display: inline-flex; align-items: center; gap: 4px; }
 .gb-kind-chip .ico { color: var(--kc); }
 .gb-extra { margin: 6px 0 0; font-size: 0.78rem; }
-.gb-pin-input { letter-spacing: 0.4em; font-size: 1.1rem; text-align: center; max-width: 9em; margin-top: 6px; }
+.gb-pin-input { max-width: 9em; margin-top: 6px; }
 .gb-wide { width: 100%; margin-top: 12px; }
 .stepper { display: inline-flex; align-items: center; gap: 6px; }
 .stepper button { margin: 0; width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
@@ -11790,6 +11806,7 @@ button.gb-make { display: inline-flex; align-items: center; gap: 0.35em; padding
 .gb-report .preset-row { margin: 4px 0 10px; }
 
 /* ── 방 안 */
+.settings .gb-hide { display: none; }
 .kind-tag { display: inline-flex; align-items: center; gap: 4px; color: var(--kc); font-weight: 800; font-size: 0.82rem; }
 .mode-now { display: flex; align-items: center; gap: 8px; }
 .mode-now button { margin: 0; display: inline-flex; align-items: center; gap: 4px; }

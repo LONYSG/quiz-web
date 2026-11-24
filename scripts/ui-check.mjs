@@ -1071,6 +1071,8 @@ const R105_ONLY = args.includes('--r105');
 const R109_ONLY = args.includes('--r109');
 /** ★ R111 — 닫힌 공개 자리 준비 중 한 장 그림(`--r111` · SHOT_DIR=r111 · 서버 SITE_FORCE=public · PUBLIC_OPEN 없음) */
 const R111_ONLY = args.includes('--r111');
+/** ★★★ R117 — 공방 화면(`--gongbang` · SHOT_DIR=r117 · 서버 GONGBANG=1 이면 켠 화면 · 없으면 끈 화면이 오늘과 같은지) — scripts/ui-check-gongbang.mjs */
+const GONGBANG_ONLY = args.includes('--gongbang');
 /** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
 const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
@@ -13016,6 +13018,11 @@ try {
   }
   if (R111_ONLY) {
     await r111Flow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (GONGBANG_ONLY) {
+    const { gongbangFlow } = await import('./ui-check-gongbang.mjs');
+    await gongbangFlow({ browser, BASE, ROOT, sleep, snap, record, realClick, signUp, setTheme, newPage, ACCOUNT_PREFIX });
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (R105_ONLY) {

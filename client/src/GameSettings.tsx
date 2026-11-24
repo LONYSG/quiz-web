@@ -182,7 +182,8 @@ export default function GameSettings({
       )}
       {modeOpen && gongbangKind && <ModeChange current={gongbangKind} playerCount={playerCount} onPick={toKind} onClose={() => setModeOpen(false)} />}
       {/* ★★★ R057 — 방식: 퀴즈 / 미니게임만 (기본 퀴즈 · 다시 하기 이어받음) */}
-      <div className="set-row mode-row">
+      {/* ★ R117 — 공방 캐치 · 라이어 방은 방식 칸이 비어(팀전도 못 켬) 줄째 숨긴다 */}
+      <div className={gongbangKind && !gbQuiz ? 'set-row mode-row gb-hide' : 'set-row mode-row'}>
         <span className="set-label">방식</span>
         <div className="preset-row">
           {editable && gongbangKind && !gbQuiz ? null : editable ? (
