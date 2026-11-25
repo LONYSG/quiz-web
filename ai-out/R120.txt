@@ -1,0 +1,18 @@
+R120 (2026-11-25 · MAIN) — R119 끝 점검 마저 · STATUS: 일부 — 봇 30 중 15 에서 PC 메모리 부족으로 다시 멈춤(Claude Code 가 백그라운드 실행을 끊음)
+실 반영 필요: 없음(고친 것은 검사 스크립트 · 본보기 · 테스트뿐)
+모델: Opus 5.5(하위 에이전트 없음) · 실 서버 3000 · 실 DB · 터널은 건드리지 않음 · 검사 서버 3200(quizweb_test)
+
+1. 봇(R119 가 못 돌린 30 + full)
+   돌린 15: 통과 14 · 실패 1(mgquiz)
+     통과: mgminority mgoddone mggauge mgballoon mgtap achievements feedback mgonly topicsets liar liarfool draw song mgcount
+     mgquiz 65/67 — 실패 2 는 photoyear(사진 연도) 한 덩어리:
+       까닭 = 검사 스크립트. b2 는 "정답 +7년" 을 내는데 문항 100 중 1장이 2020년 이후 사진이라 +7 이 올해(2026)를 넘어 서버가 거부(맞는 동작) → b2 가 그 문항에 낸 값 없음 → "오차 = 7" · "b2 가 b3 보다 순위 높음" 둘 다 깨짐. 게임 코드 문제 아님.
+       고침: scripts/bot.mjs photoyear — +7 이 올해를 넘으면 −7(오차는 같은 7). ★ 고친 뒤 아직 다시 못 돌림.
+   못 돌림 16: mgduo(돌던 중 끊김) emojiinline near rate levelmix grant report signup team flood attack gongbang gongbangoff solo solooff · full
+   끊긴 mgduo 가 남긴 검사 서버(3200)는 내가 껐다.
+2. npm run verify smoke 뒤 단계(ui-check 전부): 못 돌림(봇 다음 순서였음).
+   GONGBANG 함정 — 개발 트리 .env 에 GONGBANG · SOLO · BELT 키가 있다(값은 안 봄). ui-check 를 돌려 걸리면 지시서대로 config.ts 31줄 목록에 넣는다 · 아직 안 넣음.
+3. 터널 본보기: ops/cloudflared.example.yml 에 www 줄(beta 와 같은 꼴 · httpHostHeader: www.quizdojang.com) · tunnel-probe.test 에 "www 줄도 같은 꼴" 한 줄 → 18/18.
+4. 남은 일(다시 돌릴 때 순서): MGQ=photoyear 로 mgquiz 다시 → 남은 봇 15 → full 혼자 → verify smoke 뒤 ui-check 하나씩.
+   메모리: 시작할 때 빈 메모리 5.5GB · 끊길 때 3.3GB. 다른 창(특히 크롬 · 영상 · GEN)이 쉴 때 돌려야 한다.
+5. 커밋: 이 보고와 함께 한 번(bot.mjs · cloudflared.example.yml · tunnel-probe.test.mjs · 이 보고).

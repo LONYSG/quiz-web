@@ -143,6 +143,8 @@ describe('checkFriendHost — 베타 주소 줄', () => {
   it('본보기 = 고정 · 베타 점검 둘 다 통과', () => {
     expect(checkTunnelConfig(example, { hostname: 'quizdojang.com', port: 3000 })).toEqual([]);
     expect(checkFriendHost(example, 'beta.quizdojang.com')).toEqual([]);
+    // ★ R120 — www 줄도 beta 와 같은 꼴(hostname + httpHostHeader)
+    expect(checkFriendHost(example, 'www.quizdojang.com')).toEqual([]);
   });
   it('베타 줄 없음 · Host 고정 없음 → 경고 둘 · FRIEND_HOSTNAME 없으면 아무것도', () => {
     const noBeta = 'ingress:\n  - hostname: quizdojang.com\n    service: http://localhost:3000\n  - service: http_status:404\n';

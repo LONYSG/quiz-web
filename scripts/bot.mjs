@@ -7250,7 +7250,9 @@ async function scenarioMgQuiz() {
         if (bot === b1) seenParams.push(mg.round.params);
         if (bot === b4) return null;
         const it = (await mgqAnswer(mg.round.itemId)).payload;
-        const guess = bot === b1 ? it.year : bot === b2 ? it.year + 7 : Math.max(1800, it.year - 40);
+        // ★ R120 — 2020년 이후 사진이면 +7 이 올해를 넘어 거부된다(문항 100 중 1) → 그때는 −7(오차는 같은 7)
+        const maxYear = new Date().getUTCFullYear();
+        const guess = bot === b1 ? it.year : bot === b2 ? (it.year + 7 <= maxYear ? it.year + 7 : it.year - 7) : Math.max(1800, it.year - 40);
         const range = it.yearKind === 'circa' ? it.yearRange : null;
         want.set(`${bot.loginId}|${mg.round.itemId}`, sh.photoyearError(guess, it.year, range));
         if (bot === b3) return [{ delayMs: 100, input: { value: 1799, elapsedMs: 100 } }, { delayMs: 200, input: { value: new Date().getUTCFullYear() + 1, elapsedMs: 200 } }, { delayMs: 400, input: { value: guess, elapsedMs: 400 } }];

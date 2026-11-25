@@ -20,4 +20,9 @@ ingress:
     service: http://localhost:3000
     originRequest:
       httpHostHeader: beta.quizdojang.com
+  # ★ R120 — www 도 같은 서버로(SITE_ONE 이면 200 · 메인과 같은 화면). beta 줄과 같은 꼴.
+  - hostname: www.quizdojang.com
+    service: http://localhost:3000
+    originRequest:
+      httpHostHeader: www.quizdojang.com
   - service: http_status:404
