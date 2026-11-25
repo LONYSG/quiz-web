@@ -1,0 +1,59 @@
+R119 (2026-11-25 · MAIN · D-376) — 한 주소 운영(SITE_ONE) · STATUS: 코드 · 확인 끝 / 끝 점검 일부 남음(메모리 부족으로 봇 전체가 50/80 에서 멈춤)
+1. 모델: Opus 5.5(claude-opus-5-5 · 하위 에이전트 없음)
+2. 스위치를 끈 채 달라진 것: 없음 — 봇 site 28/28 · siteclosed 10/10(두 자리 그대로) · 단위 테스트 892/892.
+3. 결과: 단위 892/892(site.test 켬/끔 표 +12) · typecheck 통과 · 봇 siteone 12/12(새) · ui-check --r109(SITE_ONE · 메인 Host) 8/8 · dev 3001 curl 전부 맞음 ·
+   봇 전체는 80 중 50 까지 돌고 PC 메모리 부족으로 Claude Code 가 멈췄다 — 그중 49 통과 · full 1 실패("09 입장 대기 시간 초과" — 같은 시각 ui-check 를 함께 돌린 부하로 보인다 · 다시 돌려 봐야 안다) · 남은 30(mgquiz~solooff) · npm run verify 의 smoke 뒤 단계는 못 돌림.
+4. 실 서버에 켤 때 .env 에 넣을 줄(정확히):
+     SITE_ONE=1
+   PUBLIC_HOSTNAME=quizdojang.com · FRIEND_HOSTNAME=beta.quizdojang.com 은 그대로 둔다(301 이 두 값을 쓴다). 뺄 줄 없음(PUBLIC_OPEN · SITE_FORCE 는 켜진 동안 아무 일도 하지 않는다 — SITE_FORCE 가 실 .env 에 있다면 원래 없어야 하는 값).
+   그 뒤 서버를 다시 켠다(3-1-1). 터널 설정(beta 줄 · httpHostHeader)은 그대로 — beta 요청이 서버까지 와야 301 을 돌려준다.
+5. 막힌 것: 봇 남은 30 · verify 나머지(메모리 — 다시 돌릴지는 찬종 / 설계 결정). 실 서버 3000 이 확인 때 꺼져 있었다(건드리지 않았다).
+
+===========================================
+ROUND: R119
+DATE: 2026-11-25
+TASK: 한 주소 운영 — SITE_ONE 스위치 · beta → 메인 301 · 계정 문 열기 · 준비 중 끄기
+STATUS: 코드 · 확인 끝 · 끝 점검 일부 남음
+===========================================
+
+1. 만든 것
+ - server/src/site.ts: SiteConfig.siteOne · siteOfHost 맨 앞 "siteOne → 늘 'friend'(숨김 없음)" · siteSplit 이 siteOne 이면 false
+   → friendGate(가입 403 · 로그인 403 · /api FRIEND_ONLY · 소켓) · publicClosed(준비 중 · 403 블록) · noindex 가 한꺼번에 꺼진다. 곳곳에 if 를 흩지 않았다.
+   betaRedirectFor(host, url, method, c) — 순수 함수(단위 표) · publicUrl() 은 siteOne 이면 null(화면의 "공개 주소로" 링크 없음).
+ - server/src/config.ts: siteOne(SITE_ONE === '1') · 검사 서버가 실 값을 안 물려받는 목록(31줄)에 SITE_ONE.
+ - server/src/index.ts: 자리 미들웨어 맨 앞에서 301 · 켜졌을 때 부팅 로그 한 줄 "[site] ★ 한 주소 운영(SITE_ONE) …".
+ - scripts/dev-env.mjs: DEV_SWITCHES 에 SITE_ONE(.env.dev 에 적으면 개발 서버만).
+ - .env.example: SITE_ONE 설명.
+ - 봇 siteone(새) · ui-check: UICHECK_HOST=이름(크롬 host-resolver-rules 로 그 이름을 이 PC 로 — 서버가 받는 Host = 메인) · --r109 에 tag 'one'(SITE_ONE=1).
+ - 두 자리 코드(R109 · R111)는 지우지 않았다. 스위치를 빼면 그대로 두 자리.
+
+2. 스스로 정한 것(D-376)
+ - SITE_ONE 이 SITE_FORCE 보다 먼저.
+ - 301 은 GET · HEAD 화면 요청만. /api · /socket.io · /healthz 는 그대로 받는다(열린 탭). beta 로 온 /api 가입 · 로그인도 막지 않는다.
+ - www 는 보내지 않고 200(지시서 "200 또는 메인으로").
+ - 켜진 동안 방 · 판의 자리 값(room.site · games.site)은 전부 'friend'(= 숨김 없는 방). Origin 허용은 바꾸지 않았다(메인 · www · beta 다 허용 그대로).
+ - 301 은 브라우저가 기억한다 — 나중에 두 자리로 되돌리면 이미 beta 를 연 사람은 캐시를 지워야 beta 가 다시 열린다(07 되돌리기에 적음).
+
+3. 확인
+ - dev 3001(quizweb_dev · SITE_ONE=1 · PUBLIC_HOSTNAME=quizdojang.com · FRIEND_HOSTNAME=beta.quizdojang.com · SITE_FORCE 없음 · 확인 뒤 끔):
+     quizdojang.com / 200 · www / 200 · beta / 301 → https://quizdojang.com/ · beta /r/ABC123?x=1 → 301 https://quizdojang.com/r/ABC123?x=1 ·
+     beta /api/site 200 · beta /healthz 200 · 메인 /api/site = split false · open true · 숨김 없음 · publicUrl null · 메인 X-Robots-Tag 없음 ·
+     메인에서 새 아이디 가입 200 → /api/emoji 테마에 chiikawa.
+ - 봇 siteone 12/12: 메인 · www 앱 · beta 301 · beta /api · /healthz 200 · 지인 표시 없는 계정의 메인 · beta(/api) 로그인 · /api/shop 200 · beta 가입 막지 않음 · 치이카와 테마 · 그림 200 · 방 기본 미니게임에 song · songyear · 노래 방식 된다 · beta 소켓으로 같은 방 입장.
+ - ui-check --r109(메인 Host quizdojang.test · GONGBANG 끔) 8/8: 가입 탭 있음 · 베타 안내 없음 · 방식 줄 노래 버튼 · 미니게임 고르기(얼마게요 있음) · 이모티콘 테마 치이카와 · 출처 · 라이선스 공통 4 + Apple · 치이카와 2(PC · 360). 그림 docs/design/r119/(10장).
+   ★ 처음에 "미니게임 고르기에 노래" 를 검사했다가 틀렸다 — 노래는 R096 부터 방식이라 고르기 창에 원래 없다. 검사를 "방식 줄 노래 버튼" 으로 고쳤다.
+   ★ 검사 서버가 실 .env 의 GONGBANG 을 물려받는다(R110 의 거르기 목록은 자리 키만) — 공방이 켜진 채면 --r109 흐름(옛 로비)이 "만들기 버튼" 에서 멈춘다. 이번엔 GONGBANG=0 으로 돌렸다. 봇 siteone 은 공방이 켜진 채로 통과.
+ - 봇 전체: 50/80 까지(위 3번 줄). full 실패 1 은 원인 미확인.
+
+4. 한도 · 쿠키 · robots
+ - 한도: 가입 IP 시간 · 하루(signupHour · signupDay) · 로그인 실패 한도는 authRoutes 에서 자리와 상관없이 건다 — 켜진 동안 메인 가입에도 그대로(코드로 확인 · attack 봇은 이번에 못 돌림).
+ - 쿠키: 로그인 쿠키에 Domain 이 없어 Host 마다 따로다 → beta 에서 로그인해 있던 지인은 메인에서 한 번 다시 로그인한다. 그대로 뒀다.
+ - robots.txt · 사이트맵: 없다(client/public · 서버 둘 다). 만들지 않았다. 메인에는 noindex 가 붙지 않는다.
+ - 화면 말: AuthScreen 의 베타 안내 · 가입 탭 숨김은 split && site==='friend' 일 때만 → split false 라 안 나온다. "공개 주소로" 링크는 publicUrl null 이라 안 나온다. 이름 옆 "베타" 표시는 찾지 못했다(손대지 않음).
+
+5. 문서
+ - docs/01 19절 맨 위: "2026-11-25 부터 한 주소 운영(SITE_ONE) — 두 자리 코드는 남김" + 켜진 동안의 규칙.
+ - docs/21 8절(자리 — 지시서의 "4-1" 은 지금 8절): 켜진 동안 걸리지 않는 것 · 한도는 그대로.
+ - docs/07 D-376 · docs/13 A142 · docs/06 작업 기록. README 에는 자리 설명이 없어 손대지 않음.
+
+6. 커밋: 63c4cfd7(서버 · 봇) · 1057185b(ui-check · dev · 문서 · 그림) · 이 보고.

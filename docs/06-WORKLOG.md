@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-11-25 — 한 주소 운영 SITE_ONE (R119, MAIN · D-376)
+- 무엇: server/src/site.ts(siteOne · betaRedirectFor) · config · index(301) · dev-env(SITE_ONE) · 봇 siteone · ui-check UICHECK_HOST
+- 왜: 찬종 2026-11-25 "beta 는 도메인만 남기고 main 에다가 다 운영 · 듀얼 운영은 철수"
+- 확인: 단위 892 · 봇 siteone 12 · site 28 · siteclosed 10 · ui-check --r109 one 8 · dev 3001 curl · 봇 전체 50/80(메모리 부족으로 멈춤 · full 1 실패 원인 미확인) — ai-out/R119.txt
+
 ## 2026-11-25 — 혼자 하기(솔로) + 띠 (R118, MAIN · D-375)
 - 무엇: shared/src/solo.ts(새 — 시간 식 · SOLO_RAMP · 띠 25칸 · P2 포인트 · 이벤트 꼴) · server/src/solo/(새 — engine · select · db · belts · index) · http/soloRoutes · 0041(solo_runs · solo_answers · accounts 띠 열 · point_grants 'belt') · client/src/solo/(새 — SoloScreen · useSolo) · GongbangHome([혼자 하기] · 띠 줄) · PeoplePanel · Seat · PersonCard(띠) · Belt(IV 고침) · oddone 격자(PC 높이 예산) · 봇 solo · solooff · ui-check --solo
 - 왜: docs/24 4절 · 5절 · 12절(찬종 2026-11-24 결정) · R117 minigame 146/147 의 격자 잘림
