@@ -11,12 +11,27 @@ const base = rd(VID + 'questions-3.json'); // 1회(양식 확정판)
 const ledger = rd(WEB + '회차.json');
 const eps = ledger.episodes || ledger;
 
-const diff = { '02': { 포스트잇: 1, 아킬레스건: 2, 도루묵: 3, 파넨카: 4, 몬더그린: 5 }, '03': { 모나리자: 1, 버그: 2, 감칠맛: 3, 배면뛰기: 4, 실러캔스: 4 }, '04': { 신호등: 1, 스타벅스: 3, 로제타석: 3, '와우! 신호': 4, 마그네트론: 4 } };
+const diff = { '02': { 포스트잇: 1, 아킬레스건: 2, 도루묵: 3, 파넨카: 4, 몬더그린: 5 }, '03': { 모나리자: 1, 버그: 2, 감칠맛: 3, 환상지: 4, '헤이플릭 한계': 5 }, '04': { 신호등: 1, 스타벅스: 3, 로제타석: 3, '와우! 신호': 4, 마그네트론: 4 } };
 const outNo = { '02': 4, '03': 5, '04': 6 };
 // 설명출처-NN 에 아직 없는 정답(다시 연 문서 목록이 따로 있다) — 싣기 전에 설계가 채운다
-const extraFacts = { '03': ['보탬-03-실러캔스.json'], '04': ['보탬-04-스타벅스-더.json'] };
+const extraFacts = { '03': ['보탬-03-새2.json'], '04': ['보탬-04-스타벅스-더.json'] }; // 2026-11-25 3회 = 환상지 · 헤이플릭 한계(web 결과-06 · 11 · 다시 연 문서의 글자 대조로 맞은 사실만)
 // 설명출처-NN 에 없는 정답의 설명글 출처(설계가 2026-11-24 밤 세 문서를 다시 열어 quote 확인 · 보탬-03-실러캔스.json)
 const manualSrc = {
+  // 2026-11-25 설계: 3회 새 대본 — 오늘 다시 열어 quote 대조(버그 = 세 문서 curl · 환상지 · 헤이플릭 = check.mjs 06 11)
+  버그: [
+    '· Computer History Museum, 「September 9: First Instance of Actual Computer Bug Being Found」',
+    '· IEEE Spectrum, 「Did You Know? Edison Coined the Term "Bug"」 (2013)',
+    '· U.S. Naval History and Heritage Command, 「NH 96566-KN The First "Computer Bug"」',
+  ],
+  환상지: [
+    '· HISTORY, 「The Civil War Doctor Who Proved Phantom Limb Pain Was Real」 (2017)',
+    '· JAMA, 「S. Weir Mitchell and the Ghosts」 (1972)',
+  ],
+  '헤이플릭 한계': [
+    '· Embryo Project Encyclopedia, 「Leonard Hayflick (1928- )」 (2014)',
+    '· Embryo Project Encyclopedia, 「Carrel, Alexis, 1873-1944」',
+    '· Web of Stories, 「Differences in cell division between male and female cells」 (레너드 헤이플릭 구술 · 2012)',
+  ],
   실러캔스: [
     '· PBS NOVA, 「Ancient Creature of the Deep — Moment of Discovery」 (2003)',
     '· The Telegraph, 「Marjorie Courtenay-Latimer」 (2004)',
@@ -31,7 +46,7 @@ const kNum = (n) => { // 1~99 한글 읽기
 };
 const intro = {
   '02': '쓸 곳을 못 찾던 약한 접착제가 메모지가 된 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
-  '03': '도둑맞은 뒤에야 세상에서 가장 유명해진 그림 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
+  '03': '도둑맞은 뒤에야 미술계 밖까지 알려진 그림 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
   '04': '72초 동안 잡혔다가 다시는 들리지 않은 우주의 전파 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
 };
 
@@ -62,7 +77,8 @@ for (const n of only.length ? only : ['02', '03', '04']) {
     const sq = src.questions.find((x) => x.answer === q.answer);
     srcLines.push(`${q.no}번 ${q.answer}`);
     let urls = [];
-    if (sq) {
+    if (manualSrc[q.answer]) srcLines.push(...manualSrc[q.answer]);
+    else if (sq) {
       for (const i of sq.pick) {
         const x = sq.docs[i];
         const site = x.site.replace(/&amp;/g, '&').replace(/ \((?:[^)]*\.(?:com|org|kr)[^)]*|Collection[^)]*|[^)]*본사[^)]*)\)/, '');
@@ -70,10 +86,10 @@ for (const n of only.length ? only : ['02', '03', '04']) {
         srcLines.push(`· ${site}, 「${x.title.replace(/&amp;/g, '&')}」` + (year ? ` (${year})` : ''));
       }
       urls = sq.docs.filter((x) => x.reopened).map((x) => x.url);
-    } else if (manualSrc[q.answer]) srcLines.push(...manualSrc[q.answer]);
-    else srcLines.push('· (출처 정리 중)');
+    } else srcLines.push('· (출처 정리 중)');
     const bq = bt.questions.find((x) => x.answer === q.answer);
-    const ex = extra.find((x) => (x.answer || '스타벅스') === q.answer);
+    const ex = extra.flatMap((x) => x.items || [x]).find((x) => (x.answer || '스타벅스') === q.answer);
+    if (!urls.length) urls = [...new Set([...(bq?.facts || []), ...(ex?.facts || [])].map((x) => x.url))];
     const facts = [...(bq?.facts || []), ...(ex?.facts || [])].map(({ id, text, quote, site, title, year, url }) => ({ id, text, quote, site, title, year, url }));
     factsOut.questions.push({ no: q.no, answer: q.answer, facts, conflict: [bq?.conflict, ex?.conflict].filter(Boolean) });
     return {
