@@ -1,7 +1,7 @@
 // ★★★ R109 (D-369) — 자리 판별 · 공개 숨김 · 설정 거르기
 import { describe, expect, it } from 'vitest';
 import { FRIEND_ONLY_MINIGAMES, minigameSelectable, NO_SITE_HIDDEN, PUBLIC_MIN_ITEMS, selectableMinigameKeys, setShowHiddenMinigames, validateRoomSettings, type QuizMinigameKey, type SiteHidden } from '@quiz/shared';
-import { computePublicHidden, hostOnly, publicClosedFor, siteOfHost, siteSplit } from './site.js';
+import { betaRedirectFor, computePublicHidden, friendGate, hostOnly, publicClosedFor, siteOfHost, siteSplit } from './site.js';
 import { publicQuizData, type QuizData, type QuizItem } from './db/minigameItems.js';
 import { DEFAULT_SETTINGS } from './rooms/registry.js';
 
@@ -142,5 +142,42 @@ describe('publicClosedFor', () => {
     expect(publicClosedFor(siteOfHost('quizdojang.com', false, base), base)).toBe(true);
     expect(publicClosedFor(siteOfHost('evil.example', false, base), base)).toBe(true);
     expect(publicClosedFor(siteOfHost('beta.quizdojang.com', false, base), base)).toBe(false);
+  });
+});
+
+// ★★★ R119 — 한 주소 운영(SITE_ONE) 켬 · 끔 표
+describe('SITE_ONE 한 주소 운영', () => {
+  const two = { publicHostname: 'quizdojang.com', friendHostname: 'beta.quizdojang.com', siteForce: null, publicOpen: false };
+  const one = { ...two, siteOne: true };
+  // [Host, local, 끔: 자리 · 닫힘 · 계정 검사 · 301] / [켬: 자리 · 닫힘 · 계정 검사 · 301]
+  const rows: [string, boolean, [string, boolean, boolean, boolean], [string, boolean, boolean, boolean]][] = [
+    ['quizdojang.com', false, ['public', true, false, false], ['friend', false, false, false]],
+    ['www.quizdojang.com', false, ['public', true, false, false], ['friend', false, false, false]],
+    ['beta.quizdojang.com', false, ['friend', false, true, false], ['friend', false, false, true]],
+    ['localhost:3000', true, ['friend', false, true, false], ['friend', false, false, false]],
+    ['evil.example', false, ['public', true, false, false], ['friend', false, false, false]],
+  ];
+  for (const [host, local, off, on] of rows) {
+    it(`${host} — 끔`, () => {
+      const s = siteOfHost(host, local, two);
+      expect([s, publicClosedFor(s, two), friendGate(s, two), betaRedirectFor(host, '/', 'GET', two) !== null]).toEqual(off);
+    });
+    it(`${host} — 켬`, () => {
+      const s = siteOfHost(host, local, one);
+      expect([s, publicClosedFor(s, one), friendGate(s, one), betaRedirectFor(host, '/', 'GET', one) !== null]).toEqual(on);
+    });
+  }
+  it('켬 — siteSplit false · SITE_FORCE 보다 먼저', () => {
+    expect(siteSplit(one)).toBe(false);
+    expect(siteOfHost('quizdojang.com', false, { ...one, siteForce: 'public' })).toBe('friend');
+  });
+  it('301 주소 — 경로 · 쿼리 그대로 · /api · 소켓 · /healthz · POST 는 안 보냄', () => {
+    expect(betaRedirectFor('beta.quizdojang.com', '/r/ABC123?x=1', 'GET', one)).toBe('https://quizdojang.com/r/ABC123?x=1');
+    expect(betaRedirectFor('BETA.quizdojang.com:443', '/', 'HEAD', one)).toBe('https://quizdojang.com/');
+    expect(betaRedirectFor('beta.quizdojang.com', '/api/site', 'GET', one)).toBeNull();
+    expect(betaRedirectFor('beta.quizdojang.com', '/socket.io/?EIO=4', 'GET', one)).toBeNull();
+    expect(betaRedirectFor('beta.quizdojang.com', '/healthz', 'GET', one)).toBeNull();
+    expect(betaRedirectFor('beta.quizdojang.com', '/', 'POST', one)).toBeNull();
+    expect(betaRedirectFor('beta.quizdojang.com', '/', 'GET', { ...one, publicHostname: null })).toBeNull();
   });
 });

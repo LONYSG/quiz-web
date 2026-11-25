@@ -34,7 +34,7 @@ import { readSessionToken, resolveSession } from './auth/session.js';
 import { loadQuizData } from './db/minigameItems.js';
 import { ensureSharedPool } from './db/questionPool.js';
 import { getHeapStatistics } from 'node:v8';
-import { friendGate, hiddenFor, publicClosed, publicCounts, publicUrl, siteOf, siteSplit } from './site.js';
+import { betaRedirectFor, friendGate, hiddenFor, publicClosed, publicCounts, publicUrl, siteOf, siteSplit } from './site.js';
 import { closedPageHtml } from './closedPage.js';
 
 // ★ R111 — 닫힌 공개 자리에서도 내는 파일(로고 그림만)
@@ -146,6 +146,12 @@ async function main(): Promise<void> {
 
   // ★★★ R109 (D-369) — 자리(공개 · 베타). 판별은 siteOf 한 함수 · 베타 자리(자리를 가를 때)는 검색 엔진 금지 · 지인 계정만
   app.use((req, res, next) => {
+    // ★★★ R119 — 한 주소 운영: beta 주소의 화면 요청은 메인으로 영구 이동(/api · 소켓 · /healthz 는 그대로)
+    const to = betaRedirectFor(req.headers.host, req.originalUrl, req.method, config);
+    if (to) {
+      res.redirect(301, to);
+      return;
+    }
     const site = siteOf(req);
     res.locals.site = site;
     if (friendGate(site)) res.setHeader('X-Robots-Tag', 'noindex, nofollow');
@@ -233,6 +239,7 @@ async function main(): Promise<void> {
     .then(() => console.log(`[pool] 힙 상한 ${Math.round(getHeapStatistics().heap_size_limit / 1048576)}MB${process.env.SERVER_HEAP_MB ? ` (SERVER_HEAP_MB=${process.env.SERVER_HEAP_MB})` : ' (Node 기본값)'}`))
     .catch((err) => console.warn('[pool] ★ 문항 풀을 미리 못 읽었다(첫 판 시작 때 다시):', (err as Error).message));
   // ★ R109 — 공개 쪽 숨김(남는 항목 수)을 처음 한 번 센다(그 뒤는 적재본을 읽을 때마다)
+  if (config.siteOne) console.log(`[site] ★ 한 주소 운영(SITE_ONE) · 메인 ${config.publicHostname ?? '-'} · 베타 ${config.friendHostname ?? '-'} → 메인 301`);
   if (siteSplit()) {
     void loadQuizData()
       .then(() => console.log(`[site] 자리 나눔 켜짐 · 공개 ${config.publicHostname ?? '-'} · 베타 ${config.friendHostname ?? '-'}${config.siteForce ? ` · 강제 ${config.siteForce}` : ''} · 공개 남는 항목 ${JSON.stringify(publicCounts)} · 공개 숨김 ${JSON.stringify(hiddenFor('public'))}`))

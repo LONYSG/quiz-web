@@ -28,7 +28,7 @@ try {
 //   2026-11-20 밤 개발 트리 .env 에 PUBLIC_HOSTNAME 이 들어가자 검사 서버도 자리를 갈라(localhost = 베타 · 가입 막힘) 봇이 줄줄이 깨졌다.
 //   검사가 자리를 시험할 때는 env 로 직접 넣는다(봇 site · siteclosed — SCENARIO_ENV) → 그 값은 그대로 쓴다.
 if (process.env.QUIZ_TEST_SERVER === '1') {
-  for (const k of ['PUBLIC_HOSTNAME', 'FRIEND_HOSTNAME', 'SITE_FORCE', 'PUBLIC_OPEN', 'YOUTUBE_URL']) {
+  for (const k of ['PUBLIC_HOSTNAME', 'FRIEND_HOSTNAME', 'SITE_FORCE', 'PUBLIC_OPEN', 'SITE_ONE', 'YOUTUBE_URL']) {
     if (!PRESET_ENV.has(k)) delete process.env[k];
   }
 }
@@ -87,6 +87,12 @@ export const config = {
    *   ★ 자리를 가를 때(siteSplit)만 본다 — PUBLIC_HOSTNAME 이 없으면 이 값은 아무 일도 하지 않는다. 닫힌 동안 공개 주소 = "준비 중" 한 장.
    */
   publicOpen: (process.env.PUBLIC_OPEN ?? '').trim() === '1',
+  /**
+   * ★★★ R119 — 한 주소 운영(찬종 2026-11-25 "beta 는 도메인만 남기고 main 에다가 다 운영 · 듀얼 운영은 철수"). '1' = 켬 · 없거나 그 밖 = 오늘과 같다.
+   *   켜면 어느 Host 든 지금 베타와 같은 내용(숨김 없음) · 누구나 가입 · 로그인 · 준비 중 없음 · beta 화면 요청은 https://PUBLIC_HOSTNAME 로 301.
+   *   두 자리 코드(R109 · R111)는 지우지 않는다 — 스위치를 끄면 다시 두 자리.
+   */
+  siteOne: (process.env.SITE_ONE ?? '').trim() === '1',
   /**
    * ★★★ R116 (D-373 · docs/24 3-9) — 공방 스위치. '1' = 켬(방 종류 · 정원 · 잠금 · 목록 · 빠른 입장 · 모드 바꾸기 알림 · 미니게임 기본 퀴즈형 ·
    *   문제 고르기 2단계 "가장 많은 사람이 안 본 묶음부터" · 방 제목 · 닉네임 금칙어). 없거나 그 밖 = 오늘과 같다(목록 이벤트는 거절).
