@@ -150,8 +150,7 @@ async function grantPoints() {
 
 // ★★★ R109 (D-369) — 베타(지인) 주소 표시 켜기/끄기(아이디 여러 개 · 보여 주기 → 확인 → 실행)
 async function friendSet() {
-  console.log('
-■ 지인 표시 켜기/끄기 — 켜진 계정만 베타 주소에 들어갈 수 있다 (아이디 여러 개는 쉼표나 띄어쓰기로)');
+  console.log('\n■ 지인 표시 켜기/끄기 — 켜진 계정만 베타 주소에 들어갈 수 있다 (아이디 여러 개는 쉼표나 띄어쓰기로)');
   run('node scripts/friend-set.mjs --list');
   const raw = await ask('아이디(예: yuja0218, 123qwe)');
   const logins = [...new Set(raw.split(/[\s,]+/).filter(Boolean))];
