@@ -28,7 +28,8 @@ try {
 //   2026-11-20 밤 개발 트리 .env 에 PUBLIC_HOSTNAME 이 들어가자 검사 서버도 자리를 갈라(localhost = 베타 · 가입 막힘) 봇이 줄줄이 깨졌다.
 //   검사가 자리를 시험할 때는 env 로 직접 넣는다(봇 site · siteclosed — SCENARIO_ENV) → 그 값은 그대로 쓴다.
 if (process.env.QUIZ_TEST_SERVER === '1') {
-  for (const k of ['PUBLIC_HOSTNAME', 'FRIEND_HOSTNAME', 'SITE_FORCE', 'PUBLIC_OPEN', 'SITE_ONE', 'YOUTUBE_URL']) {
+  // ★ R121 — GONGBANG · SOLO · BELT 도(개발 트리 .env 에 켜 두면 "끈 서버" 검사 gongbangoff · solooff · 옛 로비 ui-check 가 깨진다 · 켤 검사는 SCENARIO_ENV 로 직접 준다)
+  for (const k of ['PUBLIC_HOSTNAME', 'FRIEND_HOSTNAME', 'SITE_FORCE', 'PUBLIC_OPEN', 'SITE_ONE', 'YOUTUBE_URL', 'GONGBANG', 'SOLO', 'BELT']) {
     if (!PRESET_ENV.has(k)) delete process.env[k];
   }
 }

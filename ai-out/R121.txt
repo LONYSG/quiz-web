@@ -1,0 +1,42 @@
+R121 (2026-11-26 01:04~03:20 · MAIN) — R119 · R120 끝 점검 마저 · STATUS: 끝 — 봇 남은 것 전부 · full · npm run verify 전 단계 통과
+실 반영 필요: 없음(config.ts 고침은 검사 서버(QUIZ_TEST_SERVER=1)에서만 도는 줄 · 나머지는 검사 스크립트)
+모델: Opus 5.5(하위 에이전트 없음) · 하나씩 · 앞에서 · 명령마다 10분 한도 · 검사 서버 3200/3100(quizweb_test)
+
+0. 시작할 때 실 서버가 꺼져 있었다 — PC 가 01:00 에 다시 켜짐(node · cloudflared 없음 · quizdojang.com 530).
+   어제 올린 코드 그대로 다시 켬: play.mjs --no-build --code=keep(play/20261125-1619 · ed0f8491) → 01:04 3000 · 터널 · quizdojang.com/healthz 200. 그 밖에 실 서버 · 실 DB · 터널은 안 건드림.
+
+1. 봇
+   | 이름 | 결과 | 까닭 · 고친 것 |
+   | mgquiz (MGQ=photoyear) | 12/12 | 처음엔 "결과 대기 초과" — photoyear 만 돌리면 b4 가 방 밖(입장 줄이 price 부분에만) → photoyear 부분에도 입장 줄(bot.mjs). R120 의 +7/−7 고침도 확인 |
+   | mgduo | A 20/20 · B·C 7/7 | 한 번에 20분 넘게 걸려 10분 한도에 잘림(실패 아님) → MGD=A1 · A2 · BC 로 나눠 돌리는 스위치(bot.mjs). A1(ox~price 11) 은 잘린 두 번 다 OK · A2 · BC 따로 통과 |
+   | emojiinline | 10/10 | |
+   | near | 12/12 | |
+   | rate | 5/5 | |
+   | levelmix | 15/15 | |
+   | grant | 13/13 | |
+   | report | 14/14 | |
+   | signup | 8/8 | |
+   | team | 25/25 | |
+   | flood | 10/10 | |
+   | attack | 26/26 | |
+   | gongbang | 38/38 | (config 고친 뒤 다시 돌려도 38/38) |
+   | gongbangoff | 6/6 | 처음엔 "목록 거절 대기 초과" = GONGBANG 함정(검사 서버가 개발 트리 .env 의 GONGBANG 을 물려받음) → config.ts "실 값을 안 물려받는 목록"에 GONGBANG · SOLO · BELT. 켤 검사(gongbang · solo)는 SCENARIO_ENV 로 직접 준다(이미 그렇게 되어 있음) |
+   | solo | 39/39 (두 번) | 처음 두 번 "새 탭 이어받기" · "다시 붙기" 대기 초과(매번 다른 자리) = 봇 경쟁: 서버는 연결 즉시 solo.state 를 보내는데 봇은 연결 뒤에 듣기를 붙였다(한 묶음으로 온 메시지면 먼저 지나감). → Bot.connect 가 연결 전에 솔로 이벤트를 듣게(bot.mjs). 게임 코드 문제 아님 — 실제 화면은 열 때 /api/solo/me → solo.sync 로 다시 묻는 길이 있다 |
+   | solooff | 6/6 | |
+   | full(혼자) | 15/15 | R119 의 "09 입장 대기 초과" 안 남 |
+
+2. npm run verify(단계별)
+   typecheck 통과 · vitest 69 파일 892/892 · smoke 12/12
+   ui-check 447/447 · sound 17/17 · social 158/158 · leave 29/29 · spam 20/20 · shop 33/33 · copy 16/16 · devices 10/10
+   minigame: 한 번에는 10분 한도에 잘림(실패 0) → 있는 스위치로 나눔: R050 21/21 · R051 48/48 · R052(price · worldprice · photo · estimate 47 OK + which 7/7) · R053 24/24 · R054 10/10
+   ui-check 가 다시 찍은 docs/design/r112 사진 10장은 검사 부산물이라 되돌렸다.
+
+3. 빈 메모리(GB): 시작 7.6 · 가장 낮을 때 7.0(ui-check minigame R054 뒤) · 남은 검사 서버(3100 · 3200) · 남은 headless 크롬 없음(봇 · ui-check 끝날 때마다 확인). 크롬 10개는 찬종의 크롬으로 처음부터 그대로.
+
+4. 고친 것
+   · server/src/config.ts — 검사 서버가 안 물려받는 키에 GONGBANG · SOLO · BELT
+   · scripts/bot.mjs — photoyear 단독 b4 입장 · mgduo MGD 나눠 돌리기 · 솔로 이벤트를 연결 전에 듣기(trackSolo 는 빈 함수로 남김)
+
+5. 다음에 알아 둘 것: mgduo 와 ui-check --minigame 은 한 번에 10분을 넘는다 — 나눠 돌린다(MGD=A1/A2/BC · MG_SKIP_R050~R054 · MG_QUIZ).
+
+6. 커밋: 이 보고와 함께 한 번(config.ts · bot.mjs · 이 보고).

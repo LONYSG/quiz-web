@@ -383,6 +383,9 @@ class Bot {
         reconnection: false,
       });
       const s = this.socket;
+      // ★ R121 — 솔로 이벤트는 연결 전에 듣는다: 서버는 연결 즉시 solo.state 를 보내는데, 연결 뒤 trackSolo 로 붙이면
+      //   한 묶음으로 온 메시지 사이에 먼저 지나가 버린다(봇 solo "새 탭 이어받기" · "다시 붙기" 가 가끔 시간 초과)
+      for (const ev of ['solo.started', 'solo.question', 'solo.result', 'solo.end', 'solo.state', 'solo.none']) s.on(ev, (p) => this.events.push({ ...p, type: ev }));
       s.on('room.state', (snap) => {
         this.snapshot = snap;
         this.events.push({ type: 'room.state', reason: snap.reason });
@@ -7243,6 +7246,11 @@ async function scenarioMgQuiz() {
 
   if (PARTS.includes('photoyear')) {
     log('\n[photoyear] ★★★ 사진 연도 — b1 정답 · b2 +7년 · b3 −40년 · b4 안 냄 · 범위 밖(1799 · 올해+1) 거부');
+    // ★ R121 — MGQ=photoyear 단독이면 b4 가 아직 방 밖이다(입장은 price 부분에만 있었다)
+    if (b4.snapshot?.room?.id !== roomId) {
+      b4.join(roomId);
+      await b4.waitFor(() => b4.snapshot?.room.id === roomId, 6000, 'b4 입장');
+    }
     const want = new Map();
     const seenParams = [];
     for (const b of [b1, b2, b3, b4]) {
@@ -7758,9 +7766,13 @@ async function scenarioMgDuo() {
   // ★ R096 — 낡은 기대 고침: 16 개 시절 검사 → 지금 고를 수 있는 미니게임만(숨김 — 노래 · 이 노래 몇 년도 · 빙고 · 객관식 … 은 판에 안 나온다)
   const keys = sh.MINIGAMES.filter((m) => !m.hidden).map((m) => m.key);
   expectTrue('★★ 고를 수 있는 미니게임 ≥ 16 · twothirds 없음 · 숨긴 것(song) 없음', keys.length >= 16 && !keys.includes('twothirds') && !keys.includes('song'), keys.join(','));
+  // ★ R121 — 나눠 돌리기(한 번에 20분 넘게 걸린다): MGD=A1(앞 절반) · A2(뒤 절반) · BC([B] · [C]만) · 없으면 전부
+  const MGD = process.env.MGD ?? 'all';
+  const half = Math.ceil(keys.length / 2);
+  const keysA = MGD === 'A1' ? keys.slice(0, half) : MGD === 'A2' ? keys.slice(half) : MGD === 'BC' ? [] : keys;
   // ── [A] 게임마다 연습 · 둘 다 안 냄
   const times = [];
-  for (const key of keys) {
+  for (const key of keysA) {
     const t0 = Date.now();
     let runId = null;
     try {
@@ -7777,6 +7789,14 @@ async function scenarioMgDuo() {
     await sleep(300);
   }
   log(`[A] 걸린 시간: ${times.join(' · ')}`);
+  if (MGD === 'A1' || MGD === 'A2') {
+    for (const b of bots) {
+      b.leave();
+      await sleep(40);
+      b.disconnect();
+    }
+    return checkSummary();
+  }
   // ── [B] 미니게임만 3개(연타) · 같은 횟수
   for (const b of bots) {
     b.__mgDone = new Set();
@@ -10989,10 +11009,8 @@ async function scenarioGongbangOff() {
 //   솔로 본 문제는 공방 경험(question_experiences)에 안 들어간다
 // ★★★ R118 solooff — 스위치를 끈 기본 서버: solo.* 거절 · /api/solo 404 · /api/site 칸 없음 · 방 사람 칸에 belt 없음
 // -----------------------------------------------------------------------------
-function trackSolo(bot) {
-  const s = bot.socket;
-  for (const ev of ['solo.started', 'solo.question', 'solo.result', 'solo.end', 'solo.state', 'solo.none']) s.on(ev, (p) => bot.events.push({ ...p, type: ev }));
-}
+// ★ R121 — 이제 Bot.connect 가 연결 전에 솔로 이벤트를 붙인다(경쟁 없앰) · 부르는 곳은 그대로 둔다
+function trackSolo(_bot) {}
 
 async function soloAccountId(bot) {
   return withDb(async (c) => (await c.query(`SELECT id::text AS id FROM accounts WHERE login_id = $1`, [bot.loginId])).rows[0]?.id ?? null);
