@@ -92,6 +92,8 @@ R107 보고서 6절이 표의 정본이다. 패치 수준(`npm audit fix`)만 �
 
 ## 8. 자리(공개 · 베타) — R109 · D-369
 
+> ★★★ 2026-11-25 부터 한 주소 운영(`SITE_ONE=1` · R119 · D-376): 아래 베타 자리의 계정 검사 · 가입 막기 · noindex · 닫힌 공개 자리는 **켜진 동안 걸리지 않는다**(코드는 남김). 가입 · 로그인 한도(IP 당 가입 시간 · 하루 · 로그인 실패)는 자리와 상관없이 그대로 걸린다. beta 화면 요청 = 메인으로 301 · Origin 은 메인 · www · beta 셋 다 그대로 허용(beta 의 열린 탭 소켓).
+
 - 판별 = Host 머리말(`server/src/site.ts` `siteOf`). 터널은 주소마다 `httpHostHeader` 로 Host 를 고정한다. 모르는 Host · 임시 주소 = **공개**(안전한 쪽). 이 PC 의 localhost(루프백 + CF 헤더 없음)만 베타 — 터널을 지나온 요청이 Host 를 localhost 로 꾸며도 CF 헤더가 있어 공개로 떨어진다(단위 테스트).
 - 베타 자리: 지인 계정만 — 로그인(비밀번호가 맞은 뒤 403 FRIEND_ONLY · 세션 안 만듦) · `/api/*`(로그인 · 자리 정보 빼고 — 지인 아닌 세션 403) · 소켓(세션을 붙이지 않음 → 방 이벤트 UNAUTHENTICATED · 10초 뒤 끊김). 가입 403 FRIEND_NO_SIGNUP. 모든 응답 `X-Robots-Tag: noindex, nofollow`.
 - 그림 길: 상품 그림(`product-page`) · 치이카와 그림은 공개 자리에서 404(주소를 알아도 못 받는다). 치이카와 그림 캐시는 `private`.

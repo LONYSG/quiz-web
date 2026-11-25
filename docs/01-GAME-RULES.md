@@ -1241,6 +1241,10 @@ DB에 둘 다 있다
 
 ## 19. ★★★ 두 자리 — 공개 · 베타(지인) (R109 · D-369 · 찬종 2026-11-19)
 
+> ★★★ **2026-11-25 부터 한 주소 운영(`SITE_ONE=1` · R119 · D-376) — 두 자리 코드는 남김.** 찬종: "beta 는 도메인만 남기고 main 에다가 다 운영 · 듀얼 운영은 철수 · 나중에 문제제기 되면 그때 기능들 빼고 정비."
+> 켜진 동안: 어느 Host 든 지금 베타와 같은 내용(치이카와 · 노래 · 상품 그림 · 숨김 없음) · 누구나 가입 · 로그인(`is_friend` 를 보지 않는다 — 칸과 값은 그대로) · 준비 중 한 장 없음(`PUBLIC_OPEN` 과 상관없이) · noindex 없음 · `FRIEND_HOSTNAME` 의 화면 요청(GET · HEAD)은 `https://PUBLIC_HOSTNAME<경로+쿼리>` 로 **301**(`/api` · `/socket.io` · `/healthz` 는 그대로 받는다 — 열린 탭이 안 끊긴다) · 화면의 "베타 주소는 초대받은 계정만" · "공개 주소로" 안내 없음.
+> 스위치를 끄면 아래 두 자리 규칙 그대로. 판별 = `server/src/site.ts`(`siteOfHost` 가 늘 같은 자리 · `siteSplit` false · `betaRedirectFor`).
+
 찬종: "저작권/상업적 이용이 어려운 것들은 전부 지인용 자리로 보내. 저작권 표기 같은 건 지인용/공개용 둘 다 반영해." 서버 하나 · DB 하나 · **주소만 둘**. 게임 규칙 · 점수는 같다.
 
 - **자리 판별**(`server/src/site.ts` `siteOf` 한 함수 — HTTP · 소켓 둘 다): `SITE_FORCE` → 그 자리 / `PUBLIC_HOSTNAME` 없음 → 베타(오늘과 같다 — 가르지 않음) / Host = `FRIEND_HOSTNAME` → 베타 / Host = `PUBLIC_HOSTNAME`(www. 포함) → 공개 / 이 PC 의 localhost → 베타 / 그 밖 → 공개.

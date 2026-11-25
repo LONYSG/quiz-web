@@ -105,7 +105,9 @@ for (const cand of PORT_CANDIDATES) {
 }
 if (PORT !== PORT_CANDIDATES[0]) console.log(`[ui-check] ★ 서버 포트 ${PORT} 를 쓴다 (앞 후보는 열 수 없었다)`);
 const EXTERNAL_URL = opt('--url', null);
-const BASE = EXTERNAL_URL ?? `http://localhost:${PORT}`;
+// ★★★ R119 — UICHECK_HOST=이름 이면 크롬이 그 이름을 이 PC 로 풀고(host-resolver-rules) 그 주소로 연다(서버가 받는 Host = 그 이름 — 한 주소 운영 확인)
+const MAP_HOST = (process.env.UICHECK_HOST ?? '').trim().toLowerCase() || null;
+const BASE = EXTERNAL_URL ?? `http://${MAP_HOST ?? 'localhost'}:${PORT}`;
 // ★ R038 — 휴대폰 폭 430 을 더했다 (큰 휴대폰)
 const WIDTHS = [320, 360, 390, 430, 480, 720];
 const STAMP = Date.now().toString(36).slice(-5);
@@ -532,6 +534,7 @@ async function launchBrowserOn() {
       '--disable-gpu',
       '--hide-scrollbars',
       ...(process.env.NO_BFCACHE ? ['--disable-features=BackForwardCache'] : []),
+      ...(MAP_HOST ? [`--host-resolver-rules=MAP ${MAP_HOST} 127.0.0.1`] : []),
 
       'about:blank',
     ],
@@ -725,7 +728,8 @@ let bootedServer = null;
 
 async function serverAlive() {
   try {
-    const r = await fetch(`${BASE}/healthz`, { signal: AbortSignal.timeout(2000) });
+    // ★ R119 — UICHECK_HOST 는 크롬만 푼다(Node 는 못 푼다) → 기동 확인은 localhost 로
+    const r = await fetch(`${MAP_HOST && !EXTERNAL_URL ? `http://localhost:${PORT}` : BASE}/healthz`, { signal: AbortSignal.timeout(2000) });
     return r.ok;
   } catch {
     return false;
@@ -1329,7 +1333,8 @@ async function r111Flow(browser) {
   record('★★ R111 준비 중 한 장 — 스크립트 0 · 공식 로고 · 퀴즈도장 · 한 줄 · 입력 · 버튼 없음 · 가로 넘침 없음', st.scripts === 0 && st.logo && st.h1 === '퀴즈도장' && Boolean(st.line) && st.inputs === 0 && !st.overflow, JSON.stringify(st));
 }
 async function r109Flow(browser) {
-  const tag = process.env.SITE_FORCE ?? 'today';
+  // ★★★ R119 — SITE_ONE=1 이면 'one'(한 주소 운영 — 오늘(today)과 같은 화면이어야 한다 + 치이카와 · 노래 미니게임)
+  const tag = process.env.SITE_ONE === '1' ? 'one' : (process.env.SITE_FORCE ?? 'today');
   const sizes = [{ w: 1280, h: 720, n: 'pc' }, { w: 360, h: 740, n: 'm360' }];
   const H = await newPage(browser, `r109-${tag}`, true);
   await H.setViewport(1280, 720);
@@ -1366,6 +1371,12 @@ async function r109Flow(browser) {
   const cards = await H.evaluate("[...document.querySelectorAll('.mg-cat-card')].map((c) => c.dataset.key).join(',')");
   const hasPrice = cards.split(',').includes('price');
   record(`★ R109 ${tag} 미니게임 고르기 — 얼마게요 ${tag === 'public' ? '없음' : '있음'} · 빅맥지수 없음(R110 — 뺐다)`, hasPrice === (tag !== 'public') && !cards.split(',').includes('worldprice'), cards);
+  if (tag === 'one') {
+    // 노래 맞히기는 R096 부터 방식(위 "노래 버튼")이다 — 미니게임 고르기에는 원래 없다
+    record('★★ R119 한 주소 — 방식 줄에 노래 버튼', songBtn === true, String(songBtn));
+    const emo = JSON.parse(await H.evaluate("fetch('/api/emoji', { credentials: 'include' }).then((r) => r.json()).then((j) => JSON.stringify({ themes: (j.themes ?? []).map((t) => t.key), host: location.host }))"));
+    record('★★ R119 한 주소 — 이모티콘 테마에 치이카와(메인 Host)', emo.themes.includes('chiikawa') && (!MAP_HOST || emo.host.startsWith(MAP_HOST)), JSON.stringify(emo));
+  }
   await snapSizes(H, `r109-${tag}-catalog`, sizes);
   await H.setViewport(1280, 720);
   await H.evaluate("document.querySelector('[data-mg-confirm]')?.click()");
