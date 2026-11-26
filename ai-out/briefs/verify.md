@@ -1,11 +1,11 @@
-[VERIFY V111 — ★ **새 문항 카드 3차 300장 사실 확인**(gpt 가 새재료-35~59 로 쓴 것 · 어려운 쪽 중심 · V110 과 같은 방식) (설계 2026-11-25) : 웹 열기 + 파일 읽기 · DB 읽기만 · 어림 4~5시간(묶음 25개 — 묶음 하나 끝날 때마다 저장) · 하위 에이전트 한 번에 2개까지]  (이 파일이 지시 전체 · V110 은 `verify-V110.md` · 결과 본보기 `data/pipeline/audit/v111-newcards.json` · 보고 본보기 `ai-out/V110.txt`)
+[VERIFY V112 — ★ **새 문항 카드 4차 32장 사실 확인**(gpt 가 새재료-60~66 · 68 로 쓴 것 · web 이 모은 첫 재료 · V111 과 같은 방식) (설계 2026-11-26) : 웹 열기 + 파일 읽기 · DB 읽기만 · 어림 40분~1시간(묶음 8개 — 묶음 하나 끝날 때마다 저장) · 하위 에이전트 한 번에 2개까지]  (이 파일이 지시 전체 · V111 은 `verify-V111.md` · 결과 본보기 `data/pipeline/audit/v111-newcards.json` · 보고 본보기 `ai-out/V111.txt`)
 
-TASK: GEN G111 이 찾은 재료 312장(`web-desk/tone/보낼것/새재료-35~59.json` · 등급 5 165 · 4 75)으로 gpt 가 카드를 썼다(`web-desk/tone/받은것/새카드-35~59.json` — ready 300 · need 11 · drop 1 · `ai-talk/102`). 2차(V110 · 273장)는 ok 167 · fix 105 · reject 1 이었다. 게임에 넣기 전에 **사실**만 확인한다 — 말투 · 재미는 이 창의 일이 아니다(고칠 문장은 gpt 가 마무리한다).
+TASK: 이번 재료는 GEN 이 아니라 **web 계정**이 모았다(`web-desk/newq/받은것/결과-01~07 · 09` → 설계의 `_check.mjs` 가 겹침 · 등급 · quote 원문 대조를 거쳐 `web-desk/tone/보낼것/새재료-60~66 · 68.json` 39장). gpt 가 카드를 썼다(`web-desk/tone/받은것/새카드-60~66 · 68.json` — ready 32 · need 7 · `ai-talk/108`). 3차(V111 · 300장)는 ok 178 · fix 122 · reject 0 이었다. 게임에 넣기 전에 **사실**만 확인한다 — 말투 · 재미는 이 창의 일이 아니다(고칠 문장은 gpt 가 마무리한다).
 실행 모델: Sonnet 5.5 (`claude --model claude-sonnet-5-5` — 바꾸지 않는다)
 
 ■ 고정 규칙: docs/16 5-3 · 사실은 **이번에 실제로 연 문서**만 · `status: "ready"` 인 카드만 본다(need · drop 은 건너뛴다 — 건너뛴 수만 적는다) · 카드 · 재료 파일은 고치지 않는다.
   · ★ V110 에서 배운 것(이번에 꼭): ① fix 의 가장 큰 꼴 둘 = "위키 한 줄의 비하인드 일화를 사실처럼" · "quote 에 없는 동기 · 인과(~때문에 · 뒤늦게)를 덧붙임" — 이번 재료는 어려운 개념이 많아 **설명을 풀어 쓴 문장**에 이 둘이 끼기 쉽다, 그 문장부터 본다 · ② 둘째 문서 quote 는 WebFetch 요약이 아니라 **이 창이 페이지를 직접 받아 복사한 문장**만 `second` 에(V110 5-1: 144건 중 14건이 확인 안 됨) · ③ 처음 두 묶음은 하위 에이전트가 둘째 문서를 덜 찾는다 — 처음부터 규칙을 그대로 준다 · ④ 한 묶음이 fix 0 이면 5장을 이 창이 직접 다시 대조(보고 6줄).
-  · ★ G111 이 남긴 표시(재료 파일 안): `hintRisk` 152장 → 블라인드(3)에서 **힌트 없이 질문만으로도** 답이 나오는지 한 번 더 · 표기 근거 약함 5장(벌꿀길잡이새 · 거울 치료 · 굴피집 · 입춘첩 · 쿠퍼스 힐 치즈 롤링) → `spellingSeen` · `legend: true` 29장 → 카드가 전해지는 이야기를 사실처럼 단정했으면 fix · 단정 금지로 적힌 것(우드 와이드 웹 · 상온 핵융합 · 주파수 도약 · 거대 인력체 · 소년 십자군 · 롱고롱고) → 카드가 한쪽 주장을 사실로 썼으면 fix · quote 기계 대조에서 못 찾은 4줄(51 롱고롱고 story2 · 52 안티키티라 기계 core · 41 수르스트뢰밍 story3 · 41 클링온어 story2)은 GEN 이 원문을 열어 있음을 확인했다 — 그래도 이 창이 한 번 더 연다.
+  · ★ web 재료라서 볼 것: `_check.mjs` 가 quote 를 원문과 기계 대조해 안 맞는 core 는 카드째, 안 맞는 story 줄은 줄째 이미 뺐다. 다만 **주소가 안 열려 기계가 대조하지 못한 줄은 남겼다**(재료 파일에 표시 없음) — 위 2 대로 이 창이 전부 연다 · ★ V111 5절 한계를 이번엔 메운다: ok 로 나가는 카드의 `second` 는 **이 창이 직접 페이지를 받아** 그 문장이 있는지 확인한다(32장이라 가능).
   · ★ V108 에서 배운 것: 하위 에이전트가 돌려준 "요약한 문장"을 원문처럼 적지 않는다. 문서를 열었으면 **그 페이지에서 복사한 문장**을, 못 열었으면 "못 엶"을 적는다 — 둘 사이의 것은 없다.
 
 ■ 카드마다 세 가지
@@ -15,7 +15,7 @@ TASK: GEN G111 이 찾은 재료 312장(`web-desk/tone/보낼것/새재료-35~59
 ■ 판정 `ok` | `fix` | `reject`
   - `fix` = 구절을 고치면 살릴 수 있다(무엇을 · 어떤 사실로 — **문장을 써 주지 않는다**. gpt 가 쓴다). `reject` = 뼈대 사실이 틀렸거나 받칠 문서가 없다 · 정답이 둘 이상이고 좁힐 수 없다.
   - 영상과 달리 게임 카드는 **재료의 quote 로 받쳐지면 통과**다(주소를 설명글에 싣는 일이 없다). 다만 위 2의 "뼈대가 위키뿐"은 가린다.
-■ 결과 — `data/pipeline/audit/v111-newcards.json`(묶음 하나 끝날 때마다 다시 저장 · 맨 위 `"done"` 은 25묶음이 다 끝난 뒤에만 `true` · `"chunks": ["35", …]` 에 끝난 묶음):
-  `{ "key": "…", "chunk": "35", "verdict": "ok|fix|reject", "blind": "정답|다른 답", "claims": [ { "where": "question|hint|explanation", "text": "…", "by": "core|story2|hintIdea|none", "quoteOnPage": true|false|"못 엶" } ], "second": { "url": "…", "quote": "…" } | null, "why": "fix · reject 의 까닭 한 줄", "alsoAdd": ["…"], "spellingSeen": true|false|null }`
-■ `찬종-확인.md` 에는 쓰지 않는다. 보고 `ai-out/V111.txt` 8줄: 묶음별 ok · fix · reject · 못 연 주소 수 · 위키만이던 뼈대 수(둘째 문서 찾음 / 못 찾음) · 블라인드에서 갈린 수 · 가장 많이 나온 fix 의 꼴 셋(gpt 지시서를 고칠 거리).
+■ 결과 — `data/pipeline/audit/v112-newcards.json`(묶음 하나 끝날 때마다 다시 저장 · 맨 위 `"done"` 은 8묶음이 다 끝난 뒤에만 `true` · `"chunks": ["60", …]` 에 끝난 묶음):
+  `{ "key": "…", "chunk": "60", "verdict": "ok|fix|reject", "blind": "정답|다른 답", "claims": [ { "where": "question|hint|explanation", "text": "…", "by": "core|story2|hintIdea|none", "quoteOnPage": true|false|"못 엶" } ], "second": { "url": "…", "quote": "…" } | null, "why": "fix · reject 의 까닭 한 줄", "alsoAdd": ["…"], "spellingSeen": true|false|null }`
+■ `찬종-확인.md` 에는 쓰지 않는다. 보고 `ai-out/V112.txt` 8줄: 묶음별 ok · fix · reject · 못 연 주소 수 · 위키만이던 뼈대 수(둘째 문서 찾음 / 못 찾음) · 블라인드에서 갈린 수 · 가장 많이 나온 fix 의 꼴 셋(gpt 지시서를 고칠 거리).
 ■ 끝: 내 산출물만 `git add` · 커밋 전 `git fetch` → `git rebase --autostash` · push · 멈춘다.
