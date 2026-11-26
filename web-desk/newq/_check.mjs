@@ -40,7 +40,9 @@ async function getText(url) {
   const key = CACHE + Buffer.from(url).toString('base64url').slice(0, 150) + '.txt';
   if (existsSync(key)) { const t = readFileSync(key, 'utf8'); page.set(url, t); return t; }
   let u = url, t = null;
-  const w = url.match(/^https?:\/\/([a-z-]+)\.(?:m\.)?wikipedia\.org\/wiki\/([^#?]+)/);
+  // 언어 없는 위키 주소(www.wikipedia.org · wikipedia.com — web 이 가끔 이렇게 적는다)는 영어판으로 본다
+  const url2 = url.replace(/^https?:\/\/(?:(www|[a-z-]{2,12})\.)?(?:m\.)?wikipedia\.(?:org|com)\/wiki\//i, (m, l) => `https://${!l || /^www$/i.test(l) ? 'en' : l.toLowerCase()}.wikipedia.org/wiki/`);
+  const w = url2.match(/^https?:\/\/([a-z-]+)\.(?:m\.)?wikipedia\.org\/wiki\/([^#?]+)/);
   if (w) u = `https://${w[1]}.wikipedia.org/w/index.php?title=${w[2]}&action=raw`;
   for (let i = 0; i < 3 && t === null; i++) {
     try {
