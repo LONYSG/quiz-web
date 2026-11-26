@@ -187,11 +187,11 @@ export const MIDS: MidCategory[] = [
   },
   {
     key: 'kr-food', nameKo: '한국 음식', major: 'korea', enabled: true,
-    subs: ['밥·국·찌개', '김치·반찬', '분식·길거리 음식', '향토 음식', '떡·한과·전통 음료'],
+    subs: ['밥·국·찌개', '김치·반찬', '분식·길거리 음식', '향토 음식', '떡·한과·전통 음료', '과자', '아이스크림'],  // ★ G113 #6~7
   },
   {
     key: 'kr-language', nameKo: '한국어·한글', major: 'korea', enabled: true,
-    subs: ['한글 자모·맞춤법', '순우리말', '속담·관용어', '사자성어', '높임말·어법'],
+    subs: ['한글 자모·맞춤법', '순우리말', '속담·관용어', '사자성어', '높임말·어법', '말 유래'],  // ★ G113 #6
     boundary:
       '★ 초안의 "언어·어원·속담" 을 한국어와 세계 언어로 쪼갠 것이다. ' +
       '한글 창제 자체는 한국사로 보낸다.',
@@ -214,7 +214,7 @@ export const MIDS: MidCategory[] = [
   },
   {
     key: 'war-history', nameKo: '전쟁·군사사', major: 'humanities', enabled: true,
-    subs: ['고대·중세 전쟁', '제1차 세계대전', '제2차 세계대전', '냉전 이후', '무기·군사 용어'],
+    subs: ['고대·중세 전쟁', '제1차 세계대전', '제2차 세계대전', '냉전 이후', '무기·군사 용어', '근대 전쟁', '양차 대전 사이'],  // ★ G113 #6~7
   },
   {
     key: 'myth', nameKo: '신화', major: 'humanities', enabled: true,
@@ -342,7 +342,7 @@ export const MIDS: MidCategory[] = [
   },
   {
     key: 'computer', nameKo: '컴퓨터·인터넷', major: 'tech', enabled: true,
-    subs: ['하드웨어', '소프트웨어·운영체제', '프로그래밍 용어', '네트워크·인터넷', '정보 보안', 'SNS·인터넷 문화'],  // ★ G025 #6
+    subs: ['하드웨어', '소프트웨어·운영체제', '프로그래밍 용어', '네트워크·인터넷', '정보 보안', 'SNS·인터넷 문화', '인공지능', '영상 매체'],  // ★ G025 #6 · G113 #7~8
     boundary: '★ 현재 점유율·최신 버전에 의존하는 문제를 만들지 않는다.',
   },
   {
@@ -487,7 +487,7 @@ export const MIDS: MidCategory[] = [
   },
   {
     key: 'architecture', nameKo: '건축', major: 'arts', enabled: true,
-    subs: ['건축 양식', '건축가', '유명 건축물', '한국 건축'],
+    subs: ['건축 양식', '건축가', '유명 건축물', '한국 건축', '도시 계획'],  // ★ G113 #5
     boundary: '★ 초안의 "건축·유적" 에서 유적을 뗐다. 유적 문제는 해당 시대 역사로 간다.',
   },
   {
@@ -572,7 +572,7 @@ export const MIDS: MidCategory[] = [
   },
   {
     key: 'drinks', nameKo: '술·음료', major: 'life', enabled: true,
-    subs: ['와인', '위스키·증류주', '맥주', '전통주', '커피·차'],
+    subs: ['와인', '위스키·증류주', '맥주', '전통주', '커피·차', '칵테일'],  // ★ G113 #6
   },
   {
     key: 'brands', nameKo: '브랜드·기업', major: 'life', enabled: true,
@@ -581,7 +581,7 @@ export const MIDS: MidCategory[] = [
   },
   {
     key: 'world-language', nameKo: '세계 언어·어원', major: 'life', enabled: true,
-    subs: ['외래어 어원', '라틴어·그리스어 어근', '문자 체계', '세계 언어 분포', '외국어 표현'],
+    subs: ['외래어 어원', '라틴어·그리스어 어근', '문자 체계', '세계 언어 분포', '외국어 표현', '인공어', '언어 심리'],  // ★ G113 #6~7
   },
   {
     key: 'symbols', nameKo: '기호·상징·표지', major: 'life', enabled: true,
