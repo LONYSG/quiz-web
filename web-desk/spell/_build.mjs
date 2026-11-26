@@ -28,9 +28,10 @@ const chunks = [];
 for (let i = 0; i < items.length; i += SIZE) chunks.push(items.slice(i, i + SIZE));
 chunks.forEach((c, k) => {
   const n = String(k + 1).padStart(2, '0');
-  let t = `조각 ${n} — 정답 표기 ${c.length}개(지시서대로 · chunk = "${n}")\n\n`;
+  let t = `조각 ${n} — 정답 표기 ${c.length}개(지시서 v2 대로 · chunk = "${n}")\n이 파일의 "열 주소"는 사용자가 준 주소다 — 그대로 열어서 확인한다.\n\n`;
   c.forEach((it, x) => {
-    t += `[${x + 1}] 정답: ${it.answer}\n분류: ${it.cat}\n위키백과가 넘겨주는 제목: ${it.wiki}\n`;
+    const u = (w) => 'https://namu.wiki/w/' + encodeURIComponent(w);
+    t += `[${x + 1}] 정답: ${it.answer}\n분류: ${it.cat}\n위키백과가 넘겨주는 제목: ${it.wiki}\n표준국어대사전: 없음(정답 · 위키 제목 둘 다 · 띄어쓰기를 빼고도 찾아봄)\n열 주소: ${u(it.answer)}${it.wiki && it.wiki !== it.answer ? '  ·  ' + u(it.wiki) : ''}\n`;
     for (const cd of it.cards) t += `카드 #${cd.id} 질문: ${cd.q}\n지금 맞는 답으로 받는 것: ${cd.acc}\n`;
     t += '\n';
   });
