@@ -4,7 +4,7 @@
 //   node web-desk/newq/_build2.mjs --sparse [N]          빈 소분류 N개(기본 40)를 활성 정답 수 적은 차례로 찍기(고를 때 보기)
 //   DB 는 읽기만(quizweb · 활성 + 꺼진 것). 결과 파일(받은것/결과-NN.json)은 없을 때만 빈 채로 만든다. _check.mjs 는 그대로(새재료-(59+NN)).
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 const D = 'C:/work/quiz-web/';
 const H = D + 'web-desk/newq/';
 const psql = (sql) => execFileSync('psql', ['-h', 'localhost', '-p', '5434', '-U', 'quiz', '-d', 'quizweb', '-At', '-F', '\t'], {
@@ -18,6 +18,15 @@ const subs = new Map(); // "대 > 중 > 소" → { act, answers[] }
 for (const l of rows) {
   const [g, m, s, act, ans] = l.split('\t'); const k = `${g} > ${m} > ${s}`;
   const o = subs.get(k) || { act: 0, answers: [] }; if (act === 't') o.act++; if (ans) o.answers.push(ans + (act === 't' ? '' : '(꺼짐)')); subs.set(k, o);
+}
+
+// 아직 DB 에 없는 새재료(sub 가 적힌 것 · 조각 43 부터)도 그 칸의 목록에 — 시범 칸을 다시 팔 때 같은 것을 또 내지 않게
+const T = D + 'web-desk/tone/보낼것/';
+for (const f of readdirSync(T).filter((f) => /^새재료-\d+\.json$/.test(f))) {
+  let j; try { j = JSON.parse(readFileSync(T + f, 'utf8')); } catch { continue; }
+  for (const it of j.items || []) {
+    if (!it.sub) continue; const k = `${it.major} > ${it.mid} > ${it.sub}`; const o = subs.get(k); if (o) o.answers.push(it.answer + '(새 카드 대기)');
+  }
 }
 
 if (process.argv.includes('--sparse')) {
