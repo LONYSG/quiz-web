@@ -1,0 +1,39 @@
+G115 — 새 카드 5차 29장 싣기 · 2026-11-27 KST · GEN · DB 쓰기(dev + 실) · 하위 에이전트 없음
+dev 실음 13:25 · 실 백업 13:25(backups/quizweb-20261127-132517.dump) · 실 실음 13:25 · 카드 글은 한 글자도 고치지 않았다
+
+0 ★ 한 줄
+· 29장 모두 실었다(실 #9545~9573 · dev #9546~9574 · 활성 approved) — 못 실은 것 0
+  게이트(정답 겹침 · 힌트 · 빈칸 · 길이 · ~까요? · 질문 형태 · 영상 정답 겹침) 막힘 0
+· fix 12장은 싣지 않음(브리프 1-2) · 새카드-72 의 need 1장은 V113 도 건너뜀
+· 실 활성 8,218 → 8,247 · dev 7,741 → 7,770 (옛 수동 문항 #51 포함 8,248 · 7,771 — hint-check 숫자와 같다)
+· hint-check-active: 실 8,248 막힘 0 · dev 7,771 막힘 0
+· 되돌리기:  node scripts/g115-apply.mjs --undo   (dev: --db quizweb_dev --undo) — 29장을 걷는다(판에 쓰인 것은 끈다)
+
+1 싣기(scripts/g115-apply.mjs · 꼬리표 '#g115-' · 멱등 — 다시 돌리면 already 29)
+· 카드 = audit/g115-raw/cards.mjs: 새카드-67 · 69~76 ready 41 가운데 V113 ok 29 · 판정 v113-newcards.json · 재료 새재료-67 · 69~76
+· 인정어 69줄 실음 · alsoAdd "조이트로프"(n6305) 넣음("조에트로프"는 카드에 이미 있음) · second 20장은 출처에 함께
+· 뺀 줄 50 = 영문 · 한자 · 가나 원어 표기(B4) 40 · 띄어쓰기 · 문장부호만 다른 것 8 · 그 밖 2:
+  n6142 "한글 점자" — 힌트에 "한글"이 있어 H2 로 막혀 그 줄만 뺌
+  n6242 "로마의 생선 소스" — 설명 말이라 넓은 말로 뺌(GEN 판단)
+  B10(영문 공식 이름 · 상표라 둠): n6225 The Landlord's Game · Landlord's Game · n6227 Twitch Plays Pokémon · Twitch Plays Pokemon · n6289 Soribada · n6302 Hasselblad
+  (n6227 "TPP"는 게이트를 지나 남았다)
+· 영상 정답(회차.json + 에펠탑 · 플로지스톤 · 노시보 효과 · 청진기)과 겹침 0 · 등급과 재료 어림 차이 >2 없음 · 철자 다름 없음
+· 출처 data/pipeline/audit/g115-sources.json(실 · dev 문항 id 함께)
+
+2 소분류(GEN 판단 · audit/g115-raw/leaf.txt) — '?' 8장 = 맞는 소분류가 없어 가장 가까운 곳(설계가 원하면 옮긴다)
+| key | 정답 | 넣은 곳 |
+|---|---|---|
+| n6141 | 곶자왈 | 한국 지리 > 산·강·호수 (숲 · 지형 자리 없음) |
+| n6144 | 대한뉴스 | 한국 영화·드라마 > 1990년대 이전 한국 영화 (뉴스 영화 자리 없음) |
+| n6227 | 트위치 플레이즈 포켓몬 | e스포츠·비디오게임 > PC·온라인 게임 (방송 실험 자리 없음) |
+| n6246 | 포카요케 | 생활 규칙·안전 > 재난·안전 수칙 (중분류부터 어색 — 설계 · 공학 원칙) |
+| n6286 | 이산가족을 찾습니다 | 한국 방송·예능 > 예능 프로그램 (특별 생방송 · 보도 자리 없음) |
+| n6289 | 소리바다 | 한국 대중음악 > 2000년대 이후 가요 (음악 서비스 자리 없음) |
+| n6302 | 핫셀블라드 | 사진·디자인 > 사진 기술·용어 (카메라 브랜드 자리 없음) |
+| n6305 | 조트로프 | 애니메이션 > 유럽 애니메이션 (초기 영상 장치 자리 없음) |
+· 나머지 21장은 맞는 소분류에(표는 audit/g115-plan-quizweb.json 의 load[].cat)
+
+3 파일
+· scripts/g115-apply.mjs · data/pipeline/audit/g115-plan-quizweb.json · g115-plan-quizweb_dev.json · g115-sources.json
+· data/pipeline/audit/g115-raw/: cards.mjs · leaf.txt · b10.json · broad.json · tree.mjs · q.mjs
+· 실 백업 backups/quizweb-20261127-132517.dump(커밋 안 함)
