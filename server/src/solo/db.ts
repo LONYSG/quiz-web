@@ -45,6 +45,8 @@ export interface SoloAnswerRow {
   limitMs: number;
   correct: boolean;
   end: SoloQuestionEnd | 'quit' | 'disconnect';
+  /** ★ R123 — 이 문제에 쓴 아이템 */
+  items: string[];
   ms: number | null;
   firstMs: number | null;
   wrongCount: number;
@@ -54,10 +56,10 @@ export interface SoloAnswerRow {
 
 export async function insertSoloAnswer(a: SoloAnswerRow): Promise<void> {
   await query(
-    `INSERT INTO solo_answers (run_id, n, question_id, grade, text_hash, shown_at, limit_ms, correct, "end", ms, first_ms, wrong_count, wrong_texts, away)
-     VALUES ($1, $2, $3, $4, $5, to_timestamp($6 / 1000.0), $7, $8, $9, $10, $11, $12, $13, $14)
+    `INSERT INTO solo_answers (run_id, n, question_id, grade, text_hash, shown_at, limit_ms, correct, "end", ms, first_ms, wrong_count, wrong_texts, away, items)
+     VALUES ($1, $2, $3, $4, $5, to_timestamp($6 / 1000.0), $7, $8, $9, $10, $11, $12, $13, $14, $15)
      ON CONFLICT (run_id, n) DO NOTHING`,
-    [a.runId, a.n, a.questionId, a.grade, a.textHash, a.shownAt, a.limitMs, a.correct, a.end, a.ms, a.firstMs, Math.min(a.wrongCount, 32767), a.wrongTexts.length ? a.wrongTexts : null, a.away],
+    [a.runId, a.n, a.questionId, a.grade, a.textHash, a.shownAt, a.limitMs, a.correct, a.end, a.ms, a.firstMs, Math.min(a.wrongCount, 32767), a.wrongTexts.length ? a.wrongTexts : null, a.away, a.items.length ? a.items : null],
   );
 }
 
@@ -82,6 +84,8 @@ export async function finishSoloRun(a: {
   reason: SoloEndReason;
   flags: Record<string, unknown>;
   belt: boolean;
+  /** ★ R123 — 아이템 기록(산 것 · 쓴 것 · 값 · 돌려준 것) */
+  items?: Record<string, unknown> | null;
 }): Promise<SoloFinish> {
   const client = await getPool().connect();
   try {
@@ -110,8 +114,8 @@ export async function finishSoloRun(a: {
       [a.accountId, best, beltAfter],
     );
     await client.query(
-      `UPDATE solo_runs SET ended_at = now(), correct = $2, asked = $3, end_reason = $4, flags = $5::jsonb, best_before = $6, belt_before = $7, belt_after = $8 WHERE id = $1`,
-      [a.runId, a.correct, a.asked, a.reason, JSON.stringify(a.flags), bestBefore, beltBefore, a.belt ? beltAfter : null],
+      `UPDATE solo_runs SET ended_at = now(), correct = $2, asked = $3, end_reason = $4, flags = $5::jsonb, best_before = $6, belt_before = $7, belt_after = $8, items = coalesce($9::jsonb, items) WHERE id = $1`,
+      [a.runId, a.correct, a.asked, a.reason, JSON.stringify(a.flags), bestBefore, beltBefore, a.belt ? beltAfter : null, a.items ? JSON.stringify(a.items) : null],
     );
     await client.query('COMMIT');
     return { best, bestBefore, beltBefore, beltAfter, points };
@@ -163,6 +167,30 @@ export async function readBeltCard(accountId: string): Promise<{ belt: number | 
   }
 }
 
+/** ★ R123 — 판 시작 때 산 아이템 기록(서버가 다시 켜져도 안 쓴 것을 돌려줄 수 있게) */
+export async function setSoloRunItems(runId: string, items: Record<string, unknown>): Promise<void> {
+  await query(`UPDATE solo_runs SET items = $2::jsonb WHERE id = $1`, [runId, JSON.stringify(items)]);
+}
+
+/**
+ * ★ R123 — 서버가 다시 켜져 닫힌 판(server_restart)의 아이템 값: 쓴 것(solo_answers.items)만 남기고 돌려준다.
+ *   items.open = true 인 판만(판이 정상으로 끝나면 엔진이 open 을 지운다).
+ */
+async function refundRestartedItems(): Promise<void> {
+  const r = await query<{ id: string; items: { spendId?: string; price?: Record<string, number>; open?: boolean } }>(
+    `SELECT id::text, items FROM solo_runs WHERE end_reason = 'server_restart' AND items ->> 'open' = 'true'`,
+  );
+  for (const run of r.rows) {
+    const used = await query<{ item: string; n: string }>(`SELECT item, count(*)::text AS n FROM (SELECT unnest(items) AS item FROM solo_answers WHERE run_id = $1 AND items IS NOT NULL) s GROUP BY item`, [run.id]);
+    const cost = used.rows.reduce((s, x) => s + (run.items.price?.[x.item] ?? 0) * Number(x.n), 0);
+    if (run.items.spendId) {
+      if (cost <= 0) await query(`DELETE FROM point_spends WHERE id = $1`, [run.items.spendId]);
+      else await query(`UPDATE point_spends SET amount = $2 WHERE id = $1`, [run.items.spendId, cost]);
+    }
+    await query(`UPDATE solo_runs SET items = items - 'open' || jsonb_build_object('refundedAtRestart', true) WHERE id = $1`, [run.id]);
+  }
+}
+
 /** 부팅 정리 — 열린 솔로 판 닫기(그 판의 기록은 최고 기록 · 띠에 넣지 않는다 — server_restart) · 틀린 답 글 90일 */
 export async function closeOpenSoloRuns(): Promise<number> {
   try {
@@ -173,6 +201,7 @@ export async function closeOpenSoloRuns(): Promise<number> {
         WHERE ended_at IS NULL`,
     );
     await query(`UPDATE solo_answers SET wrong_texts = NULL WHERE wrong_texts IS NOT NULL AND created_at < now() - interval '90 days'`);
+    await refundRestartedItems();
     return r.rowCount ?? 0;
   } catch {
     return 0;

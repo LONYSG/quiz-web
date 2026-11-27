@@ -9,9 +9,17 @@
 export const SOLO = {
   /** 목숨(찬종 · 4절) */
   LIVES: 3,
-  /** 맞힌 뒤 다음 문제까지 · 시간 끝(틀림 — 정답을 보여 준다) 뒤 다음 문제까지 */
-  NEXT_AFTER_OK_MS: 800,
-  NEXT_AFTER_FAIL_MS: 1_500,
+  /**
+   * ★★ R123 (찬종 "템포가 너무 빨라서 지친다 · 숨 고르기") — 문제마다(맞힘 · 시간 끝 · 넘기기) 정답 + 해설을 보여 준 뒤
+   *   점 셋 카운트(영상의 nextCount 와 같다 — 1초에 하나 · 3초)로 다음 문제. 옛 NEXT_AFTER_OK_MS 800 · NEXT_AFTER_FAIL_MS 1500 은 이 흐름으로 바뀌었다.
+   *   해설 보여 주는 시간 = 글자 수로(soloExplainMs) · 그 사이 Enter(모바일 탭)로 바로 카운트로.
+   */
+  COUNT_MS: 3_000,
+  EXPLAIN_CHARS_PER_SEC: 12,
+  EXPLAIN_MIN_MS: 4_000,
+  EXPLAIN_MAX_MS: 12_000,
+  /** ★ R123 (찬종 고름) — 정답이 띄어쓰기 빼고 이 글자 수를 넘는 문제는 솔로 풀에서 뺀다 */
+  ANSWER_MAX_CHARS: 6,
   /** 마감 뒤 통신 여유 — 도착이 마감 + 이만큼을 넘으면 무효(4-5) */
   GRACE_MS: 300,
   /** 끊긴 채 이만큼 지나면 그때까지 기록으로 끝(4-5 · 4-7) — 문제 시계는 그동안에도 간다 */
@@ -114,7 +122,8 @@ export const BELT_VERSION = 1;
 export type BeltColor = 'white' | 'blue' | 'purple' | 'brown' | 'black';
 export const BELT_COLORS: readonly BeltColor[] = ['white', 'blue', 'purple', 'brown', 'black'];
 export const BELT_NAMES: Record<BeltColor, string> = { white: '화이트벨트', blue: '블루벨트', purple: '퍼플벨트', brown: '브라운벨트', black: '블랙벨트' };
-export const BELT_ROMAN = ['', 'I', 'II', 'III', 'IV'] as const;
+/** ★ R123 (찬종 고름 "I→V 오르는 방향") — 띠마다 5칸을 I~V 로(칸 번호 · 기준 · 포인트는 그대로 · 보이는 숫자만 step % 5 + 1) */
+export const BELT_ROMAN = ['I', 'II', 'III', 'IV', 'V'] as const;
 
 /** 칸마다 "그 칸이 시작되는 최고 기록"(칸 0 = 첫 판을 끝냄 · 0개여도) */
 export const BELT_STARTS: readonly number[] = [
@@ -163,11 +172,10 @@ export function beltColorOf(step: number): BeltColor {
 export function beltDegreeOf(step: number): number {
   return Math.max(0, step) % 5;
 }
-/** "블루벨트 II" · 0단계는 "블루벨트" · null = "띠 없음" */
+/** "블루벨트 I" ~ "블루벨트 V" · null = "띠 없음" — ★ R123 첫 칸도 숫자(I) */
 export function beltLabel(step: number | null): string {
   if (step === null || !isBeltStep(step)) return '띠 없음';
-  const d = beltDegreeOf(step);
-  return `${BELT_NAMES[beltColorOf(step)]}${d > 0 ? ` ${BELT_ROMAN[d]}` : ''}`;
+  return `${BELT_NAMES[beltColorOf(step)]} ${BELT_ROMAN[beltDegreeOf(step)]}`;
 }
 /** 다음 칸까지 더 맞혀야 할 개수(최고 기록 기준) · 끝 칸이면 null */
 export function beltNextNeed(step: number | null, best: number): { step: number; need: number } | null {
@@ -181,7 +189,49 @@ export function beltNextNeed(step: number | null, best: number): { step: number;
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type SoloEndReason = 'lives' | 'quit' | 'away' | 'disconnect' | 'server_restart' | 'no_questions';
-export type SoloQuestionEnd = 'correct' | 'timeout' | 'away';
+/** ★ R123 — skip = 넘기기 아이템(목숨 안 깎음 · 맞힌 수에 안 셈 · 정답 + 해설은 보여 줌) */
+export type SoloQuestionEnd = 'correct' | 'timeout' | 'away' | 'skip';
+
+/** ★★ R123 — 해설 보여 주는 시간(정답 + 해설 글자 수 · 12자/초 · 4~12초) */
+export function soloExplainMs(answer: string, explanation: string | null): number {
+  const n = [...`${answer}${explanation ?? ''}`.replace(/\s+/g, '')].length;
+  const ms = (n / SOLO.EXPLAIN_CHARS_PER_SEC) * 1000;
+  return Math.round(Math.min(SOLO.EXPLAIN_MAX_MS, Math.max(SOLO.EXPLAIN_MIN_MS, ms)) / 100) * 100;
+}
+
+/** ★ R123 — 솔로 풀에 넣는 정답인가(띄어쓰기 빼고 ANSWER_MAX_CHARS 이하) */
+export function soloAnswerFits(displayAnswer: string): boolean {
+  return [...displayAnswer.replace(/\s+/g, '')].length <= SOLO.ANSWER_MAX_CHARS;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ★★ R123 — 아이템(찬종 2026-11-27): 힌트 5P · 초성 10P · 넘기기 30P · 판마다 시작 전에 0~3개씩
+//   시작할 때 고른 만큼 차감(point_spends 'solo-item' 한 줄) · 안 쓰고 남은 것은 판이 끝나면 돌려준다.
+//   한 문제에 힌트 · 초성 각 1번까지 · 해설 · 카운트 동안엔 못 씀 · 단축키 Alt+1 · Alt+2 · Alt+3.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type SoloItemKind = 'hint' | 'initial' | 'skip';
+export const SOLO_ITEMS: readonly { kind: SoloItemKind; label: string; price: number; key: string }[] = [
+  { kind: 'hint', label: '힌트', price: 5, key: '1' },
+  { kind: 'initial', label: '초성', price: 10, key: '2' },
+  { kind: 'skip', label: '넘기기', price: 30, key: '3' },
+];
+export const SOLO_ITEM_MAX = 3;
+export type SoloItemCounts = Record<SoloItemKind, number>;
+export const NO_SOLO_ITEMS: SoloItemCounts = { hint: 0, initial: 0, skip: 0 };
+
+export function isSoloItemKind(v: unknown): v is SoloItemKind {
+  return v === 'hint' || v === 'initial' || v === 'skip';
+}
+/** 고른 개수 다듬기(모르는 값 · 범위 밖은 0~3 으로) */
+export function soloItemCounts(v: unknown): SoloItemCounts {
+  const o = v && typeof v === 'object' ? (v as Record<string, unknown>) : {};
+  const one = (x: unknown) => (typeof x === 'number' && Number.isInteger(x) ? Math.max(0, Math.min(SOLO_ITEM_MAX, x)) : 0);
+  return { hint: one(o.hint), initial: one(o.initial), skip: one(o.skip) };
+}
+export function soloItemsCost(c: SoloItemCounts): number {
+  return SOLO_ITEMS.reduce((s, it) => s + it.price * c[it.kind], 0);
+}
 
 export interface SoloQuestionView {
   /** 이 판의 몇 번째 문제(1부터) — 답 · 나감 신호에 같이 보낸다(늦게 온 답을 버린다) */
@@ -194,6 +244,13 @@ export interface SoloQuestionView {
   limitMs: number;
   lives: number;
   correct: number;
+  /** ★ R123 — 이 문제에 카드 힌트가 있나(없으면 힌트 아이템이 꺼진다) · 남은 아이템 · 이 문제에서 쓴 것 */
+  hasHint?: boolean;
+  items?: SoloItemCounts;
+  usedHere?: SoloItemKind[];
+  /** 이 문제에서 연 힌트 · 초성(다시 붙을 때 다시 보이게) */
+  hint?: string | null;
+  initial?: string | null;
 }
 
 export interface SoloResultView {
@@ -207,6 +264,9 @@ export interface SoloResultView {
   correct: number;
   /** 다음 문제가 나오는 때(서버 시계 · 목숨 0 이면 null) */
   nextAt: number | null;
+  /** ★ R123 — 해설이 끝나고 점 카운트가 시작되는 때(서버 시계 · = nextAt − COUNT_MS) · 목숨 0 이면 해설만 보여 주는 끝(그 뒤 끝 화면) */
+  countAt?: number | null;
+  explainUntil?: number;
   /** 맞힌 때 걸린 ms */
   ms: number | null;
 }
@@ -232,6 +292,8 @@ export interface SoloEndView {
   reason: SoloEndReason;
   best: number;
   newBest: boolean;
+  /** ★ R123 — 아이템: 산 것 · 쓴 것 · 돌려받은 포인트 */
+  items?: { bought: SoloItemCounts; used: SoloItemCounts; spent: number; refunded: number };
   /** 띠(BELT 스위치를 켰을 때만 · 아니면 undefined) */
   belt?: { step: number | null; next: { step: number; need: number } | null; change: SoloBeltChange | null };
   wrongs: SoloWrongView[];

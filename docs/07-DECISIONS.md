@@ -10,6 +10,12 @@
 
 ---
 
+## D-377. 찬종 첫 플레이 피드백(R123 · 2026-11-27) — 스스로 정한 것
+- 결정: ① 콘텐츠 줄이기는 지우지 않고 **끈다** — 스위치 한 곳 `shared/src/trim.ts` TRIM(미니게임만 · 미니게임 고르기/연습 · 제시어 주제 고르기 · 노래 연대/장르). 정본은 서버 `config.trim`(화면은 /api/site 의 trim). 저장된 미니게임만 = 퀴즈 · 고른 주제 = 전체(null = optIn 아닌 세트 전부) · 노래 = 고른 분류의 전체. ② 서버의 미니게임 연습 길(minigame.practice) · 고른 미니게임 목록 검증은 남겼다(화면만 끔) — 검사(ui-check --minigame · 봇 mgquiz 등)가 그 길로 미니게임 하나씩 시험한다. 검사 서버만 TRIM_OFF=1 로 줄이기를 끈다(봇 기본 · 줄인 규칙은 봇 r123 · trim · ui-check --r123 이 본다). ③ 오류 제목: sayError(사람 말 = 제목 = detail) · 화면은 제목과 같은 detail 을 다시 안 그림 · 오류 코드는 개발 모드에서만(DOM 에는 hidden 으로 남겨 검사가 읽는다). ④ 시작 버튼 자리: PC = 카드 오른쪽 위 고정 폭 칸 · 휴대폰 = 카드 맨 위 · 경고 줄은 늘 자리를 비워 둔다. ⑤ 팀전 혼자 남음 = 방장 강제 종료와 같은 끝 처리(endGameNow · force_ended · 안내 문구) · 2명 이상이면 계속. ⑥ 캐치 다른 제시어 유료 = point_spends 'draw-reroll'(뽑기와 같은 한 트랜잭션 db/points spendPoints) — 값을 낸 사이 차례가 바뀌면 돌려준다. ⑦ 혼자 하기 아이템 값 = 시작 때 한 줄(point_spends 'solo-item') → 판이 끝나면 쓴 만큼으로 고침(0 이면 지움) · 서버가 다시 켜져 닫힌 판도 부팅 정리가 solo_answers.items 로 다시 셈. ⑧ 해설 시간 = 정답 + 해설 글자 수(띄어쓰기 뺌) 12자/초 · 4~12초 · 카운트 3초(영상 nextCount) · 검사 서버 SOLO_TEST_NEXT_MS 면 해설 0. ⑨ 결과 화면의 틀린 문제 = 질문 한 줄(말줄임) + 정답(해설 뺌). ⑩ 계정 없는 손님은 이 게임에 없다(모두 계정) — "손님은 무료 1회만 · 아이템 칸 끔"은 해당 없음.
+- 되돌리기: ① TRIM 값을 false 로 · ③ Toast.tsx 의 hidden · ④ styles.css 맨 아래 R123 A5 블록 · ⑥ engine.ts rerollCostNow(REROLL_PAID_MAX 0) · ⑧ shared/src/solo.ts COUNT_MS · EXPLAIN_* · 0042 는 파일 머리 주석.
+
+---
+
 ## D-376. 한 주소 운영 — 스위치 SITE_ONE (R119 · 2026-11-25 · 찬종 "beta 는 도메인만 남기고 main 에다가 다 운영 · 듀얼 운영은 철수")
 - 결정: `SITE_ONE=1` 이면 자리 판별이 늘 한 자리(지인 자리와 같은 결과 = 숨김 없음) · `siteSplit` false → 계정 검사 · 가입 막기 · 준비 중 · noindex 가 한꺼번에 꺼진다. beta 화면 요청은 메인으로 301. 두 자리 코드(R109 · R111)는 지우지 않는다.
 - 스스로 정한 것: ① `SITE_ONE` 이 `SITE_FORCE` 보다 먼저(켜면 어느 요청이든 한 자리 — 검사 값이 남아 있어도) ② 301 은 GET · HEAD 화면 요청만(POST 는 301 이 GET 으로 바뀌어 깨진다 — `/api` 아닌 POST 는 원래 없다) ③ www 는 보내지 않고 200(지시서 "200 또는 메인으로" — 쿠키가 www 에 붙는 것은 지금과 같다) ④ 301 은 자리 판별 미들웨어 맨 앞(준비 중 · /api 검사보다 먼저) ⑤ 방 자리 값(`room.site` · `games.site`)은 켜진 동안 전부 'friend' — 기록의 뜻은 "숨김 없는 방".

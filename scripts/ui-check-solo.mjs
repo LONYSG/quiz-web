@@ -58,7 +58,11 @@ export async function soloFlow(ctx) {
     return withPg(async (c) => (await c.query(`SELECT qa.answer_text FROM question_answers qa JOIN questions q ON q.id = qa.question_id WHERE q.question_text = $1 ORDER BY qa.is_primary DESC, qa.id LIMIT 1`, [text])).rows[0]?.answer_text ?? '');
   };
   const qn = (page) => ev(page, "Number(document.querySelector('[data-solo-q]')?.dataset.soloQ ?? 0)");
-  const waitNextQ = async (page, after, ms = 20000) => page.waitFor(`Number(document.querySelector('[data-solo-q]')?.dataset.soloQ ?? 0) > ${after} && document.querySelector('[data-solo-reveal]') === null`, ms);
+  // ★ R123 — 결과 뒤 해설(4~12초) → 점 카운트 3초: 해설 중이면 Enter 로 넘기고 기다린다
+  const waitNextQ = async (page, after, ms = 20000) => {
+    await page.evaluate("document.querySelector('[data-solo-q]')?.dataset.soloPhase === 'explain' && document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))");
+    return page.waitFor(`Number(document.querySelector('[data-solo-q]')?.dataset.soloQ ?? 0) > ${after} && document.querySelector('[data-solo-reveal]') === null`, Math.max(ms, 20000));
+  };
   const enter = async (page) => {
     await page.key('Enter');
     await sleep(250);
@@ -129,20 +133,20 @@ export async function soloFlow(ctx) {
   await mobile(H, 360, 740);
   await sleep(200);
 
-  // 틀린 답 — 반응 없음 · "친 답" 칩
+  // 틀린 답 — 공개 없음 · 입력칸 비움 · ★ R123 "친 답" 줄은 없앰(흔들림 · 부저는 --r123 이 본다)
   await realType(H, '[data-solo-input]', '아무말대잔치');
   await enter(H);
   await sleep(400);
-  const wrong = await J(H, "({ reveal: document.querySelector('[data-solo-reveal]') !== null, tried: document.querySelector('.solo-tried')?.innerText ?? '', val: document.querySelector('[data-solo-input]')?.value ?? '' })");
-  record('★★ R118 틀린 답 — 서버 반응 없음(공개 없음) · 입력칸 비움 · "친 답" 칩', !wrong.reveal && wrong.tried.includes('아무말대잔치') && wrong.val === '', JSON.stringify(wrong));
+  const wrong = await J(H, "({ reveal: document.querySelector('[data-solo-reveal]') !== null, tried: document.querySelector('.solo-tried') !== null, val: document.querySelector('[data-solo-input]')?.value ?? '' })");
+  record('★★ R118 틀린 답 — 공개 없음 · 입력칸 비움 · ★ R123 "친 답" 줄 없음', !wrong.reveal && !wrong.tried && wrong.val === '', JSON.stringify(wrong));
   await snap(H, 'r118-05-wrong-m360-pastel');
   // 맞힘
   const a1 = await answerOf(H);
   await realType(H, '[data-solo-input]', a1);
   await enter(H);
   await H.waitFor("document.querySelector('[data-solo-reveal]')?.dataset.soloReveal === 'ok'", 4000);
-  const ok1 = await J(H, "({ count: document.querySelector('[data-solo-correct]')?.innerText, ans: document.querySelector('[data-solo-reveal] b')?.innerText ?? '', timer: document.querySelector('.solo-q .q-timer')?.innerText ?? '' })");
-  record('★★ R118 맞힘 — 정답 공개(초록) · "정답!" · 맞힌 개수 1', ok1.count === '1' && ok1.ans.length > 0 && ok1.timer === '정답!', JSON.stringify(ok1));
+  const ok1 = await J(H, "({ count: document.querySelector('[data-solo-correct]')?.innerText, ans: document.querySelector('[data-solo-reveal] b')?.innerText ?? '', timer: document.querySelector('.solo-verdict')?.innerText ?? '' })");
+  record('★★ R118 맞힘 — 정답 공개(초록) · ★ R123 크게 "정답!" · 맞힌 개수 1', ok1.count === '1' && ok1.ans.length > 0 && ok1.timer === '정답!', JSON.stringify(ok1));
   await shoot(H, 'r118-06-correct-m360');
   // 다음 문제(0.8초 뒤) · 입력칸 포커스 그대로(키보드 안 내려감)
   await waitNextQ(H, 1, 5000);
@@ -158,7 +162,7 @@ export async function soloFlow(ctx) {
   // 시간 끝(그대로 둔다)
   const cur = await qn(H);
   await H.waitFor(`document.querySelector('[data-solo-reveal]') !== null && Number(document.querySelector('[data-solo-q]')?.dataset.soloQ) === ${cur}`, 20000);
-  const to = await J(H, "({ reveal: document.querySelector('[data-solo-reveal]')?.dataset.soloReveal, lives: document.querySelector('[data-lives]')?.dataset.lives, timer: document.querySelector('.solo-q .q-timer')?.innerText ?? '', miss: document.querySelector('.solo-q')?.classList.contains('miss') })");
+  const to = await J(H, "({ reveal: document.querySelector('[data-solo-reveal]')?.dataset.soloReveal, lives: document.querySelector('[data-lives]')?.dataset.lives, timer: document.querySelector('.solo-verdict')?.innerText ?? '', miss: document.querySelector('.solo-q')?.classList.contains('miss') })");
   record('★★ R118 시간 끝 — 정답 보여 줌(빨강) · "시간 끝" · 목숨 2', to.reveal === 'timeout' && to.lives === '2' && to.timer === '시간 끝' && to.miss, JSON.stringify(to));
   await shoot(H, 'r118-07-timeout-m360');
   // 나감(창이 초점을 잃음) → 그 문제 실패
@@ -168,16 +172,19 @@ export async function soloFlow(ctx) {
   await H.waitFor(`document.querySelector('[data-solo-reveal]')?.dataset.soloReveal === 'away'`, 4000);
   record('★★ R118 나감(창 초점 잃음) → 그 문제 실패 · "화면을 벗어남" · 목숨 1', (await ev(H, "document.querySelector('[data-lives]')?.dataset.lives")) === '1', String(cur2));
   await snap(H, 'r118-08-away-m360-pastel');
-  // 마지막 목숨 — 시간 끝 → 끝 화면 + 띠 받는 순간(첫 띠)
+  // 마지막 목숨 — 시간 끝 → (★ R123 해설 뒤 Enter) 끝 화면 + 띠 받는 순간(첫 띠)
   await waitNextQ(H, cur2, 5000);
+  await H.waitFor("document.querySelector('[data-solo-reveal]') !== null", 20000);
+  await sleep(300);
+  await H.evaluate("document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))");
   await H.waitFor("document.querySelector('[data-solo=\"end\"]') !== null", 20000);
   await H.waitFor("document.querySelector('[data-solo-promo]') !== null", 3000).catch(() => false);
   const promo = await J(H, "({ on: document.querySelector('[data-solo-promo]') !== null, text: document.querySelector('[data-solo-promo]')?.innerText ?? '', snd: (window.__qwSoundLog ?? []).some((x) => x.id === 'mg-final') })");
-  record('★★★ R118 띠 받는 순간 — 끝 화면 위 그림 · "화이트벨트" · "첫 띠를 받았어요" · +10P · 소리 하나', promo.on && promo.text.includes('화이트벨트') && promo.text.includes('첫 띠') && promo.text.includes('+10P') && promo.snd, JSON.stringify(promo));
+  record('★★★ R118 띠 받는 순간 — 끝 화면 위 그림 · "화이트벨트(★ R123 I)" · "첫 띠를 받았어요" · +10P · 소리 하나', promo.on && promo.text.includes('화이트벨트') && promo.text.includes('첫 띠') && promo.text.includes('+10P') && promo.snd, JSON.stringify(promo));
   await shoot(H, 'r118-09-promo-m360');
   await H.waitFor("document.querySelector('[data-solo-promo]') === null", 5000);
   const end = await J(H, "({ score: document.querySelector('[data-solo-score]')?.dataset.soloScore, wq: document.querySelectorAll('[data-wq]').length, wqAns: [...document.querySelectorAll('[data-wq] b')].every((b) => b.innerText.trim().length > 0), belt: document.querySelector('.solo-result [data-solo-belt]')?.dataset.soloBelt, sub: document.querySelector('.solo-result [data-solo-belt] small')?.innerText ?? '', again: document.querySelector('[data-solo-again]') !== null, lobby: document.querySelector('[data-solo-lobby]') !== null })");
-  record('★★ R118 끝 화면 — 기록 1 · 틀린 세 문제의 정답 · 띠(칸 0) · "다음 단계까지 2개" · [다시] · [로비]', end.score === '1' && end.wq === 3 && end.wqAns && end.belt === '0' && end.sub.includes('다음 단계까지 2개') && end.again && end.lobby, JSON.stringify(end));
+  record('★★ R118 끝 화면 — 기록 1 · 틀린 세 문제의 정답 · 띠(칸 0) · ★ R123 "다음 단계까지 2문제" · [다시] · [로비]', end.score === '1' && end.wq === 3 && end.wqAns && end.belt === '0' && end.sub.includes('다음 단계까지 2문제') && end.again && end.lobby, JSON.stringify(end));
   await shoot(H, 'r118-10-end-m360');
   await mobile(H, 390, 844);
   await shoot(H, 'r118-10-end-m390', ['pastel']);
@@ -208,7 +215,7 @@ export async function soloFlow(ctx) {
   await H.waitFor("document.querySelector('[data-solo=\"end\"]') !== null", 8000);
   await H.waitFor("document.querySelector('[data-solo-promo]') !== null", 3000).catch(() => false);
   const p2 = await ev(H, "document.querySelector('[data-solo-promo]')?.innerText ?? ''");
-  record('★★ R118 그만하기 → 끝 · 단계가 오른다(화이트벨트 I · "단계가 올랐어요" · +5P)', p2.includes('화이트벨트 I') && p2.includes('단계가 올랐어요') && p2.includes('+5P'), p2.replace(/\n/g, ' '));
+  record('★★ R118 그만하기 → 끝 · 단계가 오른다(★ R123 화이트벨트 II · "단계가 올랐어요" · +5P)', p2.includes('화이트벨트 II') && p2.includes('단계가 올랐어요') && p2.includes('+5P'), p2.replace(/\n/g, ' '));
   await shoot(H, 'r118-13-promo-pc');
   await H.waitFor("document.querySelector('[data-solo-promo]') === null", 5000);
   const e2 = await J(H, "({ score: document.querySelector('[data-solo-score]')?.dataset.soloScore, newbest: document.querySelector('.solo-newbest') !== null })");
@@ -218,7 +225,7 @@ export async function soloFlow(ctx) {
   await realClick(H, '[data-solo-lobby]');
   await H.waitFor("document.querySelector('[data-gb-belt=\"1\"]') !== null", 6000);
   const lob2 = await J(H, "({ label: document.querySelector('[data-gb-belt]')?.innerText ?? '', small: document.querySelector('[data-gb-solo] small')?.innerText ?? '', w: Math.round(document.querySelector('[data-gb-belt] .belt-ic')?.getBoundingClientRect().width ?? 0) })");
-  record('★★ R118 로비 — 띠 줄 "화이트벨트 I · 최고 3" · [혼자 하기] 아래 "최고 3" · PC 띠 20px 이상', lob2.label.includes('화이트벨트 I') && lob2.label.includes('최고 3') && lob2.small === '최고 3' && lob2.w >= 20, JSON.stringify(lob2));
+  record('★★ R118 로비 — 띠 줄 "화이트벨트 II(★ R123) · 최고 3" · [혼자 하기] 아래 "최고 3" · PC 띠 20px 이상', lob2.label.includes('화이트벨트 II') && lob2.label.includes('최고 3') && lob2.small === '최고 3' && lob2.w >= 20, JSON.stringify(lob2));
   await shoot(H, 'r118-14-lobby-belt-pc');
   await mobile(H, 360, 740);
   await shoot(H, 'r118-14-lobby-belt-m360');
@@ -257,7 +264,7 @@ export async function soloFlow(ctx) {
   await realClick(H, `.seat-card [data-person="${myPid}"]`);
   await H.waitFor("document.querySelector('[data-person-belt]') !== null", 6000).catch(() => false);
   const pcard = await J(H, "({ belt: document.querySelector('[data-person-belt]')?.dataset.personBelt ?? null, text: document.querySelector('[data-person-belt]')?.innerText ?? '', w: Math.round(document.querySelector('[data-person-belt] .belt-ic')?.getBoundingClientRect().width ?? 0) })");
-  record('★★ R118 사람 카드 — 띠 크게(64px) · "화이트벨트 I" · 최고 3 · 받은 날', pcard.belt === '1' && pcard.text.includes('화이트벨트 I') && pcard.text.includes('최고 3') && pcard.w >= 64, JSON.stringify(pcard));
+  record('★★ R118 사람 카드 — 띠 크게(64px) · "화이트벨트 II"(★ R123) · 최고 3 · 받은 날', pcard.belt === '1' && pcard.text.includes('화이트벨트 II') && pcard.text.includes('최고 3') && pcard.w >= 64, JSON.stringify(pcard));
   await shoot(H, 'r118-17-person-card-pc');
   await H.key('Escape');
   await sleep(300);

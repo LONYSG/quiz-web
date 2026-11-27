@@ -3,6 +3,10 @@ import {
   BELT_POINTS,
   BELT_STARTS,
   beltLabel,
+  soloExplainMs,
+  soloAnswerFits,
+  soloItemCounts,
+  soloItemsCost,
   beltNextNeed,
   beltPointsDue,
   beltStepForBest,
@@ -71,9 +75,9 @@ describe('R118 띠 셈(5-1 안 A · 5-3)', () => {
   });
   it('이름', () => {
     expect(beltLabel(null)).toBe('띠 없음');
-    expect(beltLabel(0)).toBe('화이트벨트');
-    expect(beltLabel(7)).toBe('블루벨트 II');
-    expect(beltLabel(24)).toBe('블랙벨트 IV');
+    expect(beltLabel(0)).toBe('화이트벨트 I'); // ★ R123 I~V
+    expect(beltLabel(7)).toBe('블루벨트 III');
+    expect(beltLabel(24)).toBe('블랙벨트 V');
   });
   it('받은 띠는 내려가지 않는다(기준이 올라 다시 세도)', () => {
     expect(nextBeltStep(null, 0)).toBe(0);
@@ -102,5 +106,27 @@ describe('R118 띠 포인트 차액(5-5 P2)', () => {
   it('거두지 않는다 — 이미 받은 것이 더 많으면 0', () => {
     expect(beltPointsDue(3, 90)).toBe(0);
     expect(beltPointsDue(0, 10)).toBe(0);
+  });
+});
+
+describe('★ R123 — 해설 시간 · 정답 글자 · 아이템', () => {
+  it('해설 = 정답 + 해설 글자(띄어쓰기 뺌) 12자/초 · 4~12초', () => {
+    expect(soloExplainMs('가', null)).toBe(4000);
+    expect(soloExplainMs('가나다', '라'.repeat(93))).toBe(8000);
+    expect(soloExplainMs('가', '나'.repeat(500))).toBe(12000);
+  });
+  it('정답 띄어쓰기 빼고 6글자까지', () => {
+    expect(soloAnswerFits('세종 대왕')).toBe(true);
+    expect(soloAnswerFits('가나다라마바')).toBe(true);
+    expect(soloAnswerFits('가나다 라마바사')).toBe(false);
+    expect(soloAnswerFits('헤이플릭 한계')).toBe(true); // s 가 든 정규식 실수(/s+/) 막기
+    expect(soloAnswerFits('Hey Ya!')).toBe(true);
+  });
+  it('아이템 개수 다듬기 · 값', () => {
+    expect(soloItemCounts({ hint: 5, initial: -1, skip: 2.5, x: 3 })).toEqual({ hint: 3, initial: 0, skip: 0 });
+    expect(soloItemsCost({ hint: 1, initial: 1, skip: 1 })).toBe(45);
+  });
+  it('벨트 숫자 I~V(첫 칸 I · 끝 칸 V)', () => {
+    expect([0, 4, 5, 9, 24].map(beltLabel)).toEqual(['화이트벨트 I', '화이트벨트 V', '블루벨트 I', '블루벨트 V', '블랙벨트 V']);
   });
 });

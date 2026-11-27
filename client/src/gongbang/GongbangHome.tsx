@@ -300,7 +300,8 @@ export default function GongbangHome({ socket, account, social, onJoinOther, onN
   if (solo) {
     return (
       <div className={`gb-home gb-solo ${pc ? 'gb-pc' : 'gb-m'}`} data-gb-home="solo">
-        <SoloScreen socket={socket} serverNow={serverNow} resume={solo === 'resume'} onClose={() => setSolo(null)} />
+        {/* ★ R123 B1 — 로비가 들고 있는 내 기록을 넘겨 첫 그림부터 다 그린 채로 연다 */}
+        <SoloScreen socket={socket} serverNow={serverNow} resume={solo === 'resume'} onClose={() => setSolo(null)} initialMe={soloMe} onMe={setSoloMe} />
       </div>
     );
   }
@@ -338,7 +339,7 @@ export default function GongbangHome({ socket, account, social, onJoinOther, onN
           </InfoTip>
           <button type="button" className="ghost tiny gb-menu" id="gb-menu-btn" aria-label="메뉴" aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)}>
             <Icon icon={Menu} />
-            {(social.pending > 0 || shopDot) && <span className="red-dot" aria-label={social.pending > 0 ? '새 친구 신청 · 초대' : '새 포인트샵'} />}
+            {(social.pending > 0 || shopDot) && <span className="red-dot" aria-label={social.pending > 0 ? '새 친구 신청과 초대' : '새 포인트샵'} />}
           </button>
         </div>
       </header>

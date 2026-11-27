@@ -71,6 +71,7 @@ import { fileURLToPath } from 'node:url';
 import pg from 'pg';
 import { io } from 'socket.io-client';
 import { TEST_DATABASE_URL, assertTestServer, useTestDb } from './test-db.mjs';
+import { makeR123 } from './bot-r123.mjs';
 import { guardExit } from './proc-lib.mjs';
 
 // ★★★ R060 (D-253) — 검사는 quizweb_test 만(실 DB 로 서버를 띄우지 않는다 · 없으면 npm run db:test-init)
@@ -162,6 +163,8 @@ const SCENARIO_ENV = {
   gongbang: { GONGBANG: '1', EXPERIENCE_DAYS: '30', RESOLVED_WAIT_MS: '200' },
   // ★★★ R118 — 혼자 하기 · 띠 스위치 · 시험값(문제 1.5초 · 다음 문제 0.15초 · 끊김 2초)
   solo: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '1500', SOLO_TEST_NEXT_MS: '150', SOLO_TEST_RECONNECT_MS: '2000' },
+  // ★★ R123 — 줄이기(기본 TRIM) · 유료 다른 제시어 · 혼자 하기 아이템 · 해설 Enter(해설 · 카운트는 진짜 시간 — NEXT_MS 없음)
+  r123: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '4000', DRAW_ROUND_MS: '20000' },
   attack: {
     RESOLVED_WAIT_MS: '200',
     HOST: '0.0.0.0',
@@ -177,7 +180,9 @@ const SCENARIO_ENV = {
     SEC_ROOM_CREATE_PER_ACCOUNT: '3',
   },
 };
-const SERVER_ENV = SCENARIO_ENV[scenario] ?? {};
+// ★★ R123 — 검사 서버는 기본으로 콘텐츠 줄이기를 끈다(TRIM_OFF=1 — 미니게임만 · 주제 고르기 · 노래 연대/장르 같은 옛 경로를 그대로 시험한다).
+//   줄인 실제 규칙(기본값)은 시나리오 r123 · trim 이 본다(그 둘은 TRIM_OFF 없이).
+const SERVER_ENV = ['r123', 'trim'].includes(scenario) ? (SCENARIO_ENV[scenario] ?? {}) : { TRIM_OFF: '1', ...(SCENARIO_ENV[scenario] ?? {}) };
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
 let bootedServer = null;
@@ -385,7 +390,7 @@ class Bot {
       const s = this.socket;
       // ★ R121 — 솔로 이벤트는 연결 전에 듣는다: 서버는 연결 즉시 solo.state 를 보내는데, 연결 뒤 trackSolo 로 붙이면
       //   한 묶음으로 온 메시지 사이에 먼저 지나가 버린다(봇 solo "새 탭 이어받기" · "다시 붙기" 가 가끔 시간 초과)
-      for (const ev of ['solo.started', 'solo.question', 'solo.result', 'solo.end', 'solo.state', 'solo.none']) s.on(ev, (p) => this.events.push({ ...p, type: ev }));
+      for (const ev of ['solo.started', 'solo.question', 'solo.result', 'solo.end', 'solo.state', 'solo.none', 'solo.wrong', 'solo.item', 'solo.itemRejected', 'solo.count']) s.on(ev, (p) => this.events.push({ ...p, type: ev }));
       s.on('room.state', (snap) => {
         this.snapshot = snap;
         this.events.push({ type: 'room.state', reason: snap.reason });
@@ -9359,7 +9364,8 @@ async function scenarioDraw() {
   host.socket.emit('draw.reroll', {});
   await host.waitFor(() => lastView(host)?.keyword && lastView(host).keyword !== kw0, 3000, '다른 제시어').catch(() => {});
   const kw1 = lastView(host).keyword;
-  expectTrue('★★ 다른 제시어 1회 — 키워드 바뀜 · 다시는 안 됨(canReroll false)', kw1 && kw1 !== kw0 && lastView(host).canReroll === false, JSON.stringify({ kw0, kw1 }));
+  // ★ R123 — 무료 1회 뒤에는 유료(5P) — 버튼은 남고 값이 붙는다(값 · 잔액은 시나리오 r123 이 본다)
+  expectTrue('★★ 다른 제시어 1회 — 키워드 바뀜 · ★ R123 다음은 5P(canReroll · rerollCost 5)', kw1 && kw1 !== kw0 && lastView(host).canReroll === true && lastView(host).rerollCost === 5, JSON.stringify({ kw0, kw1, c: lastView(host).rerollCost }));
   expectTrue('★★ 출제자만 키워드 · 나머지는 null', lastView(host).amDrawer && lastView(b2).keyword === null && lastView(b2).amDrawer === false, JSON.stringify({ b2: lastView(b2)?.keyword }));
   host.socket.emit('draw.stroke', { id: 's1', color: '#111111', width: 6, pts: [100, 100, 200, 200, 300, 250] });
   host.socket.emit('draw.stroke', { id: 's1', color: '#111111', width: 6, pts: [400, 300] });
@@ -10184,11 +10190,17 @@ async function scenarioTeam() {
   const teamsOf = (bot) => Object.fromEntries((bot.snapshot?.players ?? []).map((p) => [p.accountId, p.team ?? null]));
   const idOf = (b) => b.snapshot.me.accountId;
 
-  // ── [1] 혼자면 켜지지 않는다
+  // ── [1] ★ R123 — 혼자여도 팀전은 고를 수 있다 · 시작만 짝수 인원("팀전은 짝수 인원일 때 시작할 수 있어요")
   let m = host.mark();
   host.socket.emit('lobby.updateSettings', { questionCount: 5, teamMode: true });
-  await sleep(300);
-  expectTrue('★ 혼자 팀전 켜기 → BAD_REQUEST(2명 이상)', err(host, m)?.code === 'BAD_REQUEST' && /2명/.test(err(host, m)?.message ?? ''), JSON.stringify(err(host, m)));
+  await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => e.settings?.teamMode === true), 4000, '혼자 팀전 켜기');
+  expect('★ R123 혼자 팀전 켜기 → 켜진다(거부 없음)', err(host, m), null);
+  m = host.mark();
+  host.socket.emit('game.start', {});
+  await sleep(500);
+  expectTrue('★★ R123 혼자(홀수) 팀전 시작 → 거부 · 제목이 사람 말 "팀전은 짝수 인원일 때"', /팀전은 짝수 인원일 때/.test(host.since(m, 'error')[0]?.message ?? '') && host.snapshot.room.state === 'LOBBY', JSON.stringify(host.since(m, 'error')[0]));
+  host.socket.emit('lobby.updateSettings', { questionCount: 5, teamMode: false });
+  await host.waitFor(() => host.snapshot.room.settings?.teamMode === false, 4000, '끄기');
   for (const b of [b2, b3, b4]) {
     b.join(roomId);
     await b.waitFor(() => b.snapshot?.room.id === roomId, 6000, '입장');
@@ -10347,6 +10359,22 @@ async function scenarioTeam() {
   await host.waitFor(() => Object.values(teamsOf(host)).every((x) => x !== null), 4000, '다시 켜기');
   const cnt = Object.values(teamsOf(host)).reduce((o, x) => ({ ...o, [x]: (o[x] ?? 0) + 1 }), {});
   expectTrue('★ 다시 켜면 다시 자동(4명 2:2)', cnt.blue === 2 && cnt.red === 2, JSON.stringify(cnt));
+
+  // ── [8] ★ R123 — 판 중 누가 나가도 2명 이상이면 계속 · 한 명만 남으면 "혼자서는 팀전을 할 수 없어 게임을 끝냈어요" 뒤 끝
+  const s8 = host.mark();
+  host.socket.emit('game.start', {});
+  await host.waitFor(() => host.since(s8, 'game.started').length > 0, 12000, '[8] 시작');
+  await host.waitQuestion(1, 15000);
+  b2.leave();
+  await sleep(400);
+  b3.leave();
+  await sleep(400);
+  expectTrue('★★ R123 팀전 판 중 둘이 나가도(2명 남음) 계속', host.since(s8, 'game.result').length === 0 && host.snapshot.room.state !== 'LOBBY', host.snapshot.room.state);
+  late.leave();
+  await host.waitFor(() => host.since(s8, 'game.result').length > 0, 6000, '[8] 혼자 남음 → 끝');
+  const r8 = host.since(s8, 'game.result')[0].payload;
+  const chat8 = host.since(s8, 'chat.message').map((c) => c.text ?? c.message?.text ?? '').join('|');
+  expectTrue('★★ R123 한 명만 남음 → 안내 한 줄 + 결과(판 끝 처리와 같다)', Boolean(r8) && /혼자서는 팀전을 할 수 없어 게임을 끝냈어요/.test(JSON.stringify(r8) + chat8), JSON.stringify({ end: r8?.endReason, note: r8?.abortedNote ?? r8?.note }));
 
   for (const b of [host, b2, b3, late]) {
     b.leave();
@@ -11074,7 +11102,8 @@ async function scenarioSolo() {
   // ── 1판: 틀린 답 무반응 · 시간 끝 · 목숨 0 → 끝(화이트 0 · +10P)
   const r1 = await soloPlay(a, (n) => (n === 1 ? 'wrong' : 'timeout'), { label: '1판' });
   const q1 = r1.questions[0];
-  expectTrue('★★ 문제에 정답 · 힌트 · 해설 칸이 없다', q1 && !q1.keys.some((k) => /answer|hint|explan/i.test(k)), q1?.keys.join(','));
+  // ★ R123 — 힌트 · 초성 아이템 칸(hasHint 참거짓 · hint · initial = 쓰기 전엔 null)은 있어도 된다 — 글이 새지 않는지를 본다
+  expectTrue('★★ 문제에 정답 · 힌트 · 해설 글이 없다', q1 && !q1.keys.some((k) => /answer|hint|explan|initial/i.test(k) && typeof q1.q[k] === 'string'), q1?.keys.join(','));
   expectTrue('★ 첫 문제 — n 1 · 목숨 3 · 등급 1 · 시간 한도(시험값 1500)', q1?.q.n === 1 && q1.q.lives === 3 && q1.q.grade === 1 && q1.q.limitMs === 1500, JSON.stringify(q1 && { n: q1.q.n, l: q1.q.lives, g: q1.q.grade, t: q1.q.limitMs }));
   const res1 = r1.results.find((r) => r.n === 1);
   expectTrue('★★ 틀린 답에는 반응 없음 → 시간 끝에만 틀림(정답 · 목숨 2)', res1 && res1.ok === false && res1.end === 'timeout' && res1.answer && res1.lives === 2, JSON.stringify(res1));
@@ -11365,7 +11394,13 @@ const SCENARIOS = {
   // ★★★ R118 — 혼자 하기 · 띠(스위치 켠 서버) · 스위치 끈 서버
   solo: scenarioSolo,
   solooff: scenarioSoloOff,
+  // ★★★ R123 — 줄이기(기본 TRIM) · 유료 다른 제시어 · 혼자 하기 아이템 · 해설 Enter (scripts/bot-r123.mjs)
+  r123: () => r123Scenarios().r123(),
+  trim: () => r123Scenarios().trim(),
 };
+function r123Scenarios() {
+  return makeR123({ makeBots, Bot, withDb, sleep, expect, expectTrue, checkSummary, answersForText, log });
+}
 
 const run = SCENARIOS[scenario];
 if (!run) {

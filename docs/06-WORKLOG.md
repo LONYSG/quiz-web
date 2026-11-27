@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-11-27 — 찬종 첫 플레이 피드백: 방 설정 정리 · 혼자 하기 개편 (R123, MAIN · D-377)
+- 무엇(A 같이 하기): shared/src/trim.ts(새 — 콘텐츠 줄이기 스위치 한 곳 · 서버 config.trim · /api/site trim · 검사 서버만 TRIM_OFF=1) · 방 설정(GameSettings — 게임 한 줄 · 대결 줄 · 문제 수 · 판 수 · 규칙 문구 뺌) · Notice(경고 한 꼴) · 시작 막힘(startBlockOf · 버튼 아래 한 줄) · sayError(사람 말 제목 · 오류 코드는 개발 모드만) · 모드 바꾸기(목록 + 변경하기) · 팀전(늘 고름 · 짝수 시작 · 혼자 남으면 끝 · 중간 입장 동점이면 점수 낮은 팀) · 캐치 다른 제시어 유료(5P · 최대 3) · 지난 판 문제 = 위 막대 · '·' 걷기 195곳 · 안내 "게임 규칙 보기"
+- 무엇(B 혼자 하기): 0042(solo_answers "end" skip · items · solo_runs.items) · 해설 → 점 셋 카운트(영상 nextCount) · Enter 로 넘김 · 오답 즉시(solo.wrong) · 아이템(힌트 5 · 초성 10 · 넘기기 30 · 남은 것 돌려줌) · 벨트 I~V · 단계표 · 정답 6글자 넘는 문제 뺌 · 결과 한 화면 · 로비 값으로 첫 그림
+- 왜: 찬종 2026-11-27 노트북(1920×1080 125%)에서 처음 해 봄 — "문구가 너무 많다 · 요소가 움직인다 · 오류가 개발자 말 · 혼자 하기 템포가 빨라 지친다"
+- 확인: ai-out/R123.txt
+
 ## 2026-11-25 — 한 주소 운영 SITE_ONE (R119, MAIN · D-376)
 - 무엇: server/src/site.ts(siteOne · betaRedirectFor) · config · index(301) · dev-env(SITE_ONE) · 봇 siteone · ui-check UICHECK_HOST
 - 왜: 찬종 2026-11-25 "beta 는 도메인만 남기고 main 에다가 다 운영 · 듀얼 운영은 철수"

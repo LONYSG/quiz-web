@@ -15,6 +15,13 @@ import { createHash } from 'node:crypto';
 import type { Socket } from 'socket.io';
 import {
   SOLO,
+  SOLO_ITEMS,
+  NO_SOLO_ITEMS,
+  generateHint,
+  soloExplainMs,
+  soloItemsCost,
+  type SoloItemCounts,
+  type SoloItemKind,
   beltNextNeed,
   flexAnswerSet,
   flexMatch,
@@ -36,6 +43,8 @@ import { WindowCounter } from '../security/limits.js';
 import { finishSoloRun, insertSoloAnswer, insertSoloRun, recentSoloQuestionIds, type SoloAnswerRow } from './db.js';
 import { buildSoloPool, pickSoloQuestion } from './select.js';
 import { setBelt } from './belts.js';
+import { setSpendAmount, setSpendRef, spendPoints } from '../db/points.js';
+import { setSoloRunItems } from './db.js';
 
 interface SoloQ {
   n: number;
@@ -51,6 +60,10 @@ interface SoloQ {
   wrongCount: number;
   wrongTexts: string[];
   resolved: boolean;
+  /** ★ R123 — 이 문제에 쓴 아이템 · 연 힌트 · 초성 */
+  usedHere: SoloItemKind[];
+  hint: string | null;
+  initial: string | null;
 }
 
 interface SoloRun {
@@ -74,6 +87,10 @@ interface SoloRun {
   disconnectedAt: number | null;
   waitingNext: boolean;
   nextAt: number | null;
+  /** ★ R123 — 해설이 끝나고 점 카운트가 시작되는 때(해설 중 Enter 면 그때) */
+  countAt: number | null;
+  /** ★ R123 — 아이템: 산 것 · 남은 것 · 쓴 것 · 값 한 줄(point_spends id) */
+  items: { bought: SoloItemCounts; left: SoloItemCounts; used: SoloItemCounts; spendId: string | null; spent: number };
 }
 
 const runs = new Map<string, SoloRun>();
@@ -92,8 +109,10 @@ export function soloRunCount(): number {
 function timeParams() {
   return config.soloTime;
 }
-const nextOkMs = () => config.soloTest.nextMs || SOLO.NEXT_AFTER_OK_MS;
-const nextFailMs = () => config.soloTest.nextMs || SOLO.NEXT_AFTER_FAIL_MS;
+/** ★ R123 — 해설 시간 · 점 카운트(검사 서버 SOLO_TEST_NEXT_MS 면 해설 0 · 카운트 = 그 값 — 봇이 빨리 돈다) */
+const explainMsOf = (c: SoloQ) => (config.soloTest.nextMs ? 0 : soloExplainMs(c.q.displayAnswer, c.q.explanation));
+const countMs = () => config.soloTest.nextMs || SOLO.COUNT_MS;
+const PRICE = Object.fromEntries(SOLO_ITEMS.map((i) => [i.kind, i.price])) as Record<SoloItemKind, number>;
 const reconnectMs = () => config.soloTest.reconnectMs || SOLO.RECONNECT_MS;
 
 function emit(run: SoloRun, event: string, payload: unknown): void {
@@ -105,17 +124,31 @@ function fire(label: string, p: Promise<unknown>): void {
 }
 
 function questionView(run: SoloRun, c: SoloQ): SoloQuestionView {
-  return { n: c.n, text: c.q.text, category: c.q.categoryName, grade: c.grade, endsAt: c.endsAt, limitMs: c.limitMs, lives: run.lives, correct: run.correct };
+  return {
+    n: c.n,
+    text: c.q.text,
+    category: c.q.categoryName,
+    grade: c.grade,
+    endsAt: c.endsAt,
+    limitMs: c.limitMs,
+    lives: run.lives,
+    correct: run.correct,
+    hasHint: Boolean(c.q.generalHint),
+    items: { ...run.items.left },
+    usedHere: [...c.usedHere],
+    hint: c.hint,
+    initial: c.initial,
+  };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 시작 · 이어받기
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type StartFail = { code: 'BUSY' | 'RATE' | 'NO_QUESTIONS' | 'DB'; message: string };
+export type StartFail = { code: 'BUSY' | 'RATE' | 'NO_QUESTIONS' | 'DB' | 'POINTS'; message: string };
 
 /** 판을 시작한다(방에 있지 않음은 부르는 쪽이 본다) — 이미 도는 판이 있으면 그 판을 이 소켓에 다시 붙인다 */
-export async function startSolo(socket: Socket, accountId: string, site: string | null): Promise<StartFail | null> {
+export async function startSolo(socket: Socket, accountId: string, site: string | null, items: SoloItemCounts = NO_SOLO_ITEMS): Promise<StartFail | null> {
   const old = runs.get(accountId);
   if (old) {
     attachSolo(socket, accountId);
@@ -129,7 +162,25 @@ export async function startSolo(socket: Socket, accountId: string, site: string 
     let total = 0;
     for (const l of byGrade.values()) total += l.length;
     if (total === 0) return { code: 'NO_QUESTIONS', message: '낼 문제가 없어요.' };
-    const runId = await insertSoloRun({ accountId, device: deviceOf(accountId), site, skipLogin: config.tuning.nearMissSkipLogin, belt: config.belt });
+    // ★★ R123 — 아이템 값: 시작할 때 고른 만큼 한 트랜잭션으로(잔액 다시 세기 · 모자라면 시작하지 않음)
+    const cost = soloItemsCost(items);
+    let spendId: string | null = null;
+    if (cost > 0) {
+      const paid = await spendPoints(accountId, cost, 'solo-item', null);
+      if (!paid.ok) return { code: 'POINTS', message: paid.reason === 'insufficient' ? `포인트가 모자라요 (지금 ${paid.balance}P)` : '지금은 시작할 수 없어요. 잠시 뒤 다시 해 주세요.' };
+      spendId = paid.spendId;
+    }
+    let runId: string;
+    try {
+      runId = await insertSoloRun({ accountId, device: deviceOf(accountId), site, skipLogin: config.tuning.nearMissSkipLogin, belt: config.belt });
+    } catch (err) {
+      if (spendId) await setSpendAmount(spendId, 0).catch(() => undefined);
+      throw err;
+    }
+    if (spendId) {
+      fire('아이템 값 표시', setSpendRef(spendId, `solo_run:${runId}`));
+      fire('아이템 기록', setSoloRunItems(runId, { bought: items, price: PRICE, spendId, spent: cost, open: true }));
+    }
     const run: SoloRun = {
       runId,
       accountId,
@@ -151,6 +202,8 @@ export async function startSolo(socket: Socket, accountId: string, site: string 
       disconnectedAt: null,
       waitingNext: false,
       nextAt: null,
+      countAt: null,
+      items: { bought: { ...items }, left: { ...items }, used: { ...NO_SOLO_ITEMS }, spendId, spent: cost },
     };
     runs.set(accountId, run);
     emit(run, 'solo.started', { lives: run.lives });
@@ -241,6 +294,9 @@ function nextQuestion(run: SoloRun): void {
     wrongCount: 0,
     wrongTexts: [],
     resolved: false,
+    usedHere: [],
+    hint: null,
+    initial: null,
   };
   run.cur = c;
   run.last = null;
@@ -265,6 +321,51 @@ export function soloAnswer(accountId: string, n: number, text: string, now = Dat
   }
   c.wrongCount += 1;
   if (norm && c.wrongTexts.length < SOLO.WRONG_KEEP) c.wrongTexts.push([...norm].slice(0, SOLO.WRONG_TEXT_MAX).join(''));
+  // ★ R123 — 그 답이 틀렸다고 바로 돌려준다(화면이 입력칸을 흔든다 · 시간 안이면 다시 친다)
+  emit(run, 'solo.wrong', { n: c.n });
+}
+
+/**
+ * ★★ R123 — 아이템 쓰기(문제 푸는 중만 · 남은 개수 · 한 문제에 힌트 · 초성 각 1번 · 힌트는 카드에 있을 때만).
+ *   넘기기 = 목숨 안 깎고 다음 문제(맞힌 수엔 안 셈 · 정답 + 해설은 보여 줌).
+ */
+export function soloItem(accountId: string, n: number, kind: SoloItemKind, now = Date.now()): 'ok' | 'bad' {
+  const run = runs.get(accountId);
+  const c = run?.cur;
+  if (!run || !c || c.n !== n || c.resolved || now > c.endsAt) return 'bad';
+  if (run.items.left[kind] <= 0) return 'bad';
+  if (kind !== 'skip' && c.usedHere.includes(kind)) return 'bad';
+  if (kind === 'hint' && !c.q.generalHint) return 'bad';
+  if (kind === 'initial') {
+    const ini = generateHint(c.q.displayAnswer);
+    if (!ini) return 'bad';
+    c.initial = ini;
+  }
+  if (kind === 'hint') c.hint = c.q.generalHint;
+  run.items.left[kind] -= 1;
+  run.items.used[kind] += 1;
+  c.usedHere.push(kind);
+  if (kind === 'skip') {
+    resolve(run, 'skip', now);
+    return 'ok';
+  }
+  emit(run, 'solo.item', { n: c.n, kind, text: kind === 'hint' ? c.hint : c.initial, items: { ...run.items.left }, usedHere: [...c.usedHere] });
+  return 'ok';
+}
+
+/** ★★ R123 — 해설 중 Enter(모바일 탭) — 바로 점 카운트로 */
+export function soloNext(accountId: string, n: number, now = Date.now()): void {
+  const run = runs.get(accountId);
+  const c = run?.cur;
+  if (!run || !c || c.n !== n || !c.resolved || run.nextAt === null || run.countAt === null || now >= run.countAt) return;
+  run.countAt = now;
+  run.nextAt = now + countMs();
+  if (run.timer) clearTimeout(run.timer);
+  run.timer = setTimeout(() => {
+    if (runs.get(run.accountId) === run) nextQuestion(run);
+  }, countMs());
+  if (run.last) run.last = { ...run.last, countAt: run.countAt, nextAt: run.nextAt };
+  emit(run, 'solo.count', { n: c.n, countAt: run.countAt, nextAt: run.nextAt });
 }
 
 /** 화면이 가려짐 · 초점 잃음(4-5) — 지금 문제는 실패 · 문제 사이면 세기만 */
@@ -301,6 +402,7 @@ function answerRow(run: SoloRun, c: SoloQ, end: SoloAnswerRow['end'], ms: number
     wrongCount: c.wrongCount,
     wrongTexts: c.wrongTexts,
     away: end === 'away',
+    items: [...c.usedHere],
   };
 }
 
@@ -315,24 +417,27 @@ function resolve(run: SoloRun, end: SoloQuestionEnd, now = Date.now()): void {
   if (ok) {
     run.correct += 1;
     if (ms !== null && ms < SOLO.FAST_MS) run.flags.fast += 1;
-  } else {
+  } else if (end !== 'skip') {
     run.lives -= 1;
     run.wrongs.push({ n: c.n, text: c.q.text, answer: c.q.displayAnswer, explanation: c.q.explanation, end });
   }
   fire('solo_answers', insertSoloAnswer(answerRow(run, c, end, ms)));
   const over = run.lives <= 0;
-  const wait = ok ? nextOkMs() : nextFailMs();
-  run.nextAt = over ? null : Date.now() + wait;
-  const view: SoloResultView = { n: c.n, ok, end, answer: c.q.displayAnswer, explanation: c.q.explanation, lives: run.lives, correct: run.correct, nextAt: run.nextAt, ms };
+  // ★★ R123 — 정답 + 해설(글자 수로 4~12초) → 점 카운트 3초 → 다음 문제. 해설 동안엔 문제 시간이 흐르지 않는다(다음 문제가 아직 안 나옴)
+  const t = Date.now();
+  const explainUntil = t + explainMsOf(c);
+  run.countAt = over ? null : explainUntil;
+  run.nextAt = over ? null : explainUntil + countMs();
+  const view: SoloResultView = { n: c.n, ok, end, answer: c.q.displayAnswer, explanation: c.q.explanation, lives: run.lives, correct: run.correct, nextAt: run.nextAt, ms, countAt: run.countAt, explainUntil };
   run.last = view;
   emit(run, 'solo.result', view);
-  if (over) {
+  if (over || run.nextAt === null) {
     void endSolo(run, 'lives');
     return;
   }
   run.timer = setTimeout(() => {
     if (runs.get(run.accountId) === run) nextQuestion(run);
-  }, wait);
+  }, run.nextAt - t);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -354,9 +459,20 @@ async function endSolo(run: SoloRun, reason: SoloEndReason): Promise<void> {
   }
   const asked = run.n;
   const flags = { ...run.flags, device: deviceOf(run.accountId) };
+  // ★★ R123 — 안 쓰고 남은 아이템은 돌려준다(값 한 줄을 쓴 만큼으로 고친다 · 0 이면 줄을 지운다)
+  const usedCost = soloItemsCost(run.items.used);
+  const refunded = Math.max(0, run.items.spent - usedCost);
+  if (run.items.spendId && refunded > 0) {
+    try {
+      await setSpendAmount(run.items.spendId, usedCost);
+    } catch (err) {
+      console.error('[solo] ★ 아이템 돌려주기 실패:', (err as Error).message);
+    }
+  }
+  const itemsRec = run.items.spent > 0 ? { bought: run.items.bought, used: run.items.used, price: PRICE, spendId: run.items.spendId, spent: run.items.spent, refunded } : null;
   let view: SoloEndView;
   try {
-    const f = await finishSoloRun({ runId: run.runId, accountId: run.accountId, correct: run.correct, asked, reason, flags, belt: config.belt });
+    const f = await finishSoloRun({ runId: run.runId, accountId: run.accountId, correct: run.correct, asked, reason, flags, belt: config.belt, items: itemsRec });
     if (config.belt) setBelt(run.accountId, f.beltAfter);
     view = {
       correct: run.correct,
@@ -374,6 +490,7 @@ async function endSolo(run: SoloRun, reason: SoloEndReason): Promise<void> {
           }
         : {}),
       wrongs: run.wrongs.slice(-SOLO.LIVES),
+      ...(itemsRec ? { items: { bought: run.items.bought, used: run.items.used, spent: run.items.spent, refunded } } : {}),
     };
   } catch (err) {
     console.error('[solo] ★ 판 끝 기록 실패:', (err as Error).message);
