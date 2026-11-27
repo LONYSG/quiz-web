@@ -1,0 +1,34 @@
+G116 — 새 카드 6차 10장 싣기 · 2026-11-27 KST · GEN · DB 쓰기(dev + 실) · 하위 에이전트 없음
+dev 실음 16:38 · 실 백업 16:38(backups/quizweb-20261127-163801.dump) · 실 실음 16:38 · 카드 글은 한 글자도 고치지 않았다
+
+0 ★ 한 줄
+· 10장 모두 실었다(실 #9574~9583 · dev #9575~9584 · 활성 approved) — 못 실은 것 0
+  게이트(정답 겹침 · 힌트 · 빈칸 · 길이 · ~까요? · 질문 형태 · 영상 정답 겹침) 막힘 0
+· fix 2장(n6382 생명의 별 · n6384 씨 없는 수박)과 새카드-80(need 2)은 싣지 않음(브리프 1-2 · V115 로)
+· 실 활성 8,247 → 8,257 · dev 7,770 → 7,780 (옛 수동 문항 #51 포함 8,258 · 7,781 — hint-check 숫자와 같다)
+· hint-check-active: 실 8,258 막힘 0 · dev 7,781 막힘 0
+· 되돌리기:  node scripts/g116-apply.mjs --undo   (dev: --db quizweb_dev --undo) — 10장을 걷는다(판에 쓰인 것은 끈다)
+
+1 싣기(scripts/g116-apply.mjs · 꼬리표 '#g116-' · 멱등 — 다시 돌리면 already 10)
+· 카드 = audit/g116-raw/cards.mjs: 새카드-77~79 ready 12 가운데 V114 ok 10 · 판정 v114-newcards.json · 재료 새재료-77~79
+· 인정어 23줄 실음 · alsoAdd(n6364 기계 터크) 다섯 모두 넣음: 메커니컬 터크 · 더 투르크 · 튀르크 기계 · 체스 두는 터키인 · 투르크 · second 3장은 출처에 함께
+· 뺀 줄 16 = 영문 원어 표기(B4) 10 · 띄어쓰기만 다른 것 5 · 넓은 말 1:
+  n6345 "태양권 바깥 경계" — 설명 말이라 넓은 말로 뺌(GEN 판단)
+  B10(영문 공식 이름이라 둠): n6362 The Ashes
+· 영상 정답과 겹침 0 · 등급과 재료 어림 차이 >2 없음 · 철자 다름 없음
+· 출처 data/pipeline/audit/g116-sources.json(실 · dev 문항 id 함께)
+
+2 소분류(GEN 판단 · audit/g116-raw/leaf.txt) — '?' 2장 = 맞는 소분류가 없어 가장 가까운 곳(설계가 원하면 옮긴다)
+| key | 정답 | 넣은 곳 |
+|---|---|---|
+| n6341 | 타감작용 | 자연과학 > 식물 > 나무 (식물 생태 · 현상 자리 없음) |
+| n6362 | 디 애시스 | 스포츠·게임 > 농구·배구·기타 구기 > 테니스 (크리켓 자리 없음) |
+· 나머지 8장은 맞는 소분류에(표는 audit/g116-plan-quizweb.json 의 load[].cat)
+
+3 덤(MAIN R123 이 찾음) — pipeline/src/select.test.ts:236 소분류 수 307 → 318(실제 수 확인 · 주석 '★ G113 +11') · 그 파일만 돌려 21 통과
+
+4 파일
+· scripts/g116-apply.mjs · data/pipeline/audit/g116-plan-quizweb.json · g116-plan-quizweb_dev.json · g116-sources.json
+· data/pipeline/audit/g116-raw/: cards.mjs · leaf.txt · b10.json · broad.json · tree.mjs · q.mjs
+· pipeline/src/select.test.ts
+· 실 백업 backups/quizweb-20261127-163801.dump(커밋 안 함)
