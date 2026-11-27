@@ -1,0 +1,128 @@
+# Venturi effect
+The Venturi effect is the reduction in fluid pressure that results when a moving fluid speeds up as it is funneled from one section of a pipe to another, smaller section. As the fluid flows into a smaller area, the fluid's velocity increases, while the static pressure decreases. The Venturi effect is an example of Bernoulli's principle.
+The Venturi effect is named after its discoverer, the Italian Physicist Giovanni Battista Venturi, and was first published in 1797.
+The effect has various applications in engineering, architecture, and everyday objects such as atomizer nozzles and wine aerators. The reduction in pressure inside the constriction can be used both for measuring the fluid flow and for moving other fluids (e.g. in a vacuum ejector).
+
+
+== Background ==
+In inviscid fluid dynamics, an incompressible fluid's velocity must increase as it passes through a constriction in accord with the principle of mass continuity, while its static pressure must decrease in accord with the principle of conservation of mechanical energy (Bernoulli's principle) or according to the Euler equations. Thus, any gain in kinetic energy a fluid may attain by its increased velocity through a constriction is balanced by a drop in pressure because of its loss in potential energy.
+By measuring the pressure difference without needing to measure the actual pressures at the two points, the flow rate can be determined, as in various flow measurement devices such as Venturi meters, Venturi nozzles and orifice plates.
+Referring to the adjacent diagram, using Bernoulli's equation in the special case of steady, incompressible, inviscid flows (such as the flow of water or other liquid, or low-speed flow of gas) along a streamline, the theoretical static pressure drop at the constriction is given by
+p1−p2=ρ2(v22−v12),
+where ρ is the density of the fluid, v1 is the (slower) fluid velocity where the pipe is wider, and v2 is the (faster) fluid velocity where the pipe is narrower (as seen in the figure). The static pressure at each position is measured using a small tube either outside and ending at the wall or into the pipe with the small tube end face parallel with the flow direction. 
+
+
+=== Choked flow ===
+The limiting case of the Venturi effect is when a fluid reaches the state of choked flow, where the fluid velocity approaches the local speed of sound of the fluid. When a fluid system is in a state of choked flow, a further decrease in the downstream pressure environment will not lead to an increase in velocity, unless the fluid is compressed.
+The mass flow rate for a compressible fluid will increase with increased upstream pressure, which will increase the density of the fluid through the constriction (though the velocity will remain constant).  This is the principle of operation of a de Laval nozzle. Increasing source temperature can also increase the local sonic velocity, thus allowing increased mass flow rate.
+
+
+=== Expansion of the section ===
+The Bernoulli equation is invertible, and pressure should rise when a fluid slows down. Nevertheless, if there is a shortening expansion in the tube section, turbulence is more likely to appear, and the variation from the theorem will increase. Generally in Venturi tubes, the pressure in the entrance is compared to the pressure in the middle section and the output section is not compared with them.
+
+
+== Experimental apparatus ==
+
+
+=== Venturi tubes ===
+The simplest apparatus is a tubular setup known as a Venturi tube or simply a Venturi (plural: "Venturis" or occasionally "Venturies").  Fluid first flows through a length of converging tube and then often flows into a diverging tube.  To avoid undue aerodynamic drag, a Venturi tube typically has an entry cone of 30 degrees and an exit cone of 5 degrees.
+Venturi tubes are often used in processes where permanent pressure loss is not tolerable and where maximum accuracy is needed in case of highly viscous liquids.
+
+
+=== Orifice plate ===
+Venturi tubes are more expensive to construct than simple orifice plates, and both function on the same basic principle. However, for any given differential pressure, orifice plates cause significantly more permanent energy loss.
+
+
+== Instrumentation and measurement ==
+Both Venturi tubes and orifice plates are used in industrial applications and in scientific laboratories for measuring the flow rate of liquids.
+
+
+=== Flow rate ===
+A Venturi can be used to measure the volumetric flow rate, Q, using Bernoulli's principle.
+Since
+Q=v1A1=v2A2p1−p2=ρ2(v22−v12)
+then
+Q=A12ρ⋅p1−p2(A1A2)2−1=A22ρ⋅p1−p21−(A2A1)2
+A Venturi can also be used to mix a liquid with a gas. If a pump forces the liquid through a tube connected to a system consisting of a Venturi to increase the liquid speed (the diameter decreases), a short piece of tube with a small hole in it, and last a Venturi that decreases speed (so the pipe gets wider again), the gas will be sucked in through the small hole because of changes in pressure. At the end of the system, a mixture of liquid and gas will appear. See aspirator and pressure head for discussion of this type of siphon.
+
+
+=== Differential pressure ===
+
+As fluid flows through a Venturi, the expansion and compression of the fluids cause the pressure inside the Venturi to change. This principle can be used in metrology for gauges calibrated for differential pressures. This type of pressure measurement may be more convenient, for example, to measure fuel or combustion pressures in jet or rocket engines.
+The first large-scale Venturi meters to measure liquid flows were developed by Clemens Herschel who used them to measure small and large flows of water and wastewater beginning at the end of the 19th century. While working for the Holyoke Water Power Company, Herschel would develop the means for measuring these flows to determine the water power consumption of different mills on the Holyoke Canal System, first beginning development of the device in 1886, two years later he would describe his invention of the Venturi meter to William Unwin in a letter dated June 5, 1888.
+
+
+=== Compensation for temperature, pressure, and mass ===
+Fundamentally, pressure-based meters measure kinetic energy density. Bernoulli's equation (used above) relates this to mass density and volumetric flow:
+ΔP=12ρ(v22−v12)=12ρ((A1A2)2−1)v12=12ρ(1A22−1A12)Q2=kρQ2
+where constant terms are absorbed into k. Using the definitions of density (m=ρV), molar concentration (n=CV), and molar mass (m=Mn), one can also derive mass flow or molar flow (i.e. standard volume flow):
+ΔP=kρQ2=k1ρm˙2=kρC2n˙2=kMCn˙2.
+However, measurements outside the design point must compensate for the effects of temperature, pressure, and molar mass on density and concentration. The ideal gas law is used to relate actual values to design values:
+C=PRT=(PP⊖)(TT⊖)C⊖
+ρ=MPRT=(MM⊖PP⊖)(TT⊖)ρ⊖.
+Substituting these two relations into the pressure-flow equations above yields the fully compensated flows:
+ΔP=k(MM⊖PP⊖)(TT⊖)ρ⊖Q2=ΔPmax(MM⊖PP⊖)(TT⊖)(QQmax)2=k(TT⊖)(MM⊖PP⊖)ρ⊖m˙2=ΔPmax(TT⊖)(MM⊖PP⊖)(m˙m˙max)2=kM(TT⊖)(PP⊖)C⊖n˙2=ΔPmax(MM⊖TT⊖)(PP⊖)(n˙n˙max)2.
+Q, m, or n are easily isolated by dividing and taking the square root. Note that pressure-, temperature-, and mass-compensation is required for every flow, regardless of the end units or dimensions. Also we see the relations:
+kΔPmax=1ρ⊖Qmax2=ρ⊖m˙max2=C⊖2ρ⊖n˙max2=C⊖M⊖n˙max2.
+
+
+== Examples ==
+
+The Venturi effect may be observed or used in the following:
+
+
+=== Machines ===
+During Underway replenishment the helmsman of each ship must constantly steer away from the other ship due to the Venturi effect, otherwise they will collide.
+Cargo eductors on oil product and chemical ship tankers
+Inspirators mix air and flammable gas in grills, gas stoves and Bunsen burners
+Water aspirators produce a partial vacuum using the kinetic energy from the faucet water pressure
+Steam siphons use the kinetic energy from the steam pressure to create a partial vacuum
+Atomizers disperse perfume or spray paint (i.e. from a spray gun or airbrush)
+Carburetors can use the effect to force gasoline into an engine's intake air stream at the throat by the difference between the pressure there and at the upstream start of the converging wall (which is fed to the float bowl). In other carburetors ambient air pressure can be fed to the float bowl, in which case the effect comes from Bernoulli's principle.
+Cylinder heads in piston engines have multiple Venturi areas like the valve seat and the port entrance, although these are not part of the design intent, merely a byproduct and any venturi effect is without specific function.
+Wine aerators infuse air into wine as it is poured into a glass
+Protein skimmers filter saltwater aquaria
+Automated pool cleaners use pressure-side water flow to collect sediment and debris
+Clarinets use a reverse taper to speed the air down the tube, enabling better tone, response and intonation
+The leadpipe of a trombone, affecting the timbre
+Industrial vacuum cleaners use compressed air
+Venturi scrubbers are used to clean flue gas emissions
+Injectors (also called ejectors) are used to add chlorine gas to water treatment chlorination systems
+Steam injectors use the Venturi effect and the latent heat of evaporation to deliver feed water to a steam locomotive boiler.
+Sandblasting nozzles accelerate an air and media mixture
+Bilge water can be emptied from a moving boat through a small waste gate in the hull. The air pressure inside the moving boat is greater than the water sliding by beneath.
+A scuba diving regulator uses the Venturi effect to assist maintaining the flow of gas once it starts flowing
+In recoilless rifles to decrease the recoil of firing
+The diffuser on an automobile
+Race cars utilising ground effect to increase downforce and thus become capable of higher cornering speeds
+Foam proportioners used to induct fire fighting foam concentrate into fire protection systems
+Trompe air compressors entrain air into a falling column of water
+The bolts in some brands of paintball markers
+Low-speed wind tunnels can be considered very large Venturi because they take advantage of the Venturi effect to increase velocity and decrease pressure to simulate expected flight conditions.
+
+
+=== Architecture ===
+Hawa Mahal of Jaipur, also utilizes the Venturi effect, by allowing cool air to pass through, thus making the whole area more pleasant during the high temperatures in summer.
+Large cities where wind is forced between buildings - the gap between the Twin Towers of the original World Trade Center was an extreme example of the phenomenon, which made the ground level plaza notoriously windswept. In fact, some gusts were so high that pedestrian travel had to be aided by ropes.
+In the south of Iraq, near the modern town of Nasiriyah, a 4000-year-old flume structure has been discovered at the ancient site of Girsu. This construction by the ancient Sumerians forced the contents of a nineteen kilometre canal through a constriction to enable the side-channeling of water off to agricultural lands from a higher origin than would have been the case without the flume. A recent dig by archaeologists from the British Museum confirmed the finding.
+
+
+=== Nature ===
+In windy mountain passes, resulting in erroneous pressure altimeter readings
+The mistral wind in southern France increases in speed through the Rhone valley.
+
+
+== See also ==
+Joule–Thomson effect
+Venturi flume
+Parshall flume
+
+
+== References ==
+
+
+== External links ==
+
+3D animation of the Differential Pressure Flow Measuring Principle (Venturi meter)
+UT Austin. "Venturi Tube Simulation". Retrieved 2009-11-03.
+Use of the Venturi effect for gas pumps to know when to turn off (video)

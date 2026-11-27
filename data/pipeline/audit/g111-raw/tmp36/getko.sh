@@ -1,0 +1,1 @@
+for t in "$@"; do e=$(node -e "console.log(encodeURIComponent(process.argv[1]))" "$t"); printf "%s " "$t"; curl -sL -o "ko_$t.raw" -w "%{http_code} " -A "quiz-research/1.0" "https://ko.wikipedia.org/w/index.php?title=$e&action=raw"; wc -c < "ko_$t.raw"; sleep 3; done

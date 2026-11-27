@@ -1,0 +1,122 @@
+{{듣기
+ | type        = music
+ | filename    = Kevin MacLeod - Canon in D Major.ogg
+ | title       = Canon in D Major
+ | description = 
+}}
+《'''세 대의 바이올린과 계속저음을 위한 카논과 지그 라 장조'''》({{llang|de|''Kanon und Gigue in D-Dur für drei Violinen und Basso Continuo''}}), '''《[[요한 파헬벨|파헬벨]]의 카논》'''({{Llang|en|Pachelbel's Canon}})은 [[요한 파헬벨]]이 17세기 후반(1680년경)<ref>1700년경 이전에 작곡한 것으로 추측된다. (추정)</ref> 작곡한 [[카논 (음악)|카논]]과 [[지그]]이다. 전반부의 카논은 흔히 ‘'''파헬벨의 카논'''’으로 알려져 있다.
+
+== 구조 ==
+4분의 4박자의 카논이며, 베이스의 [[오스티나토]]와 이에 기반한 반복되는 화성을 기초로 하고 있다.
+* D - A - Bm - F#m - G - D - Em(또는 G) - A7 또는
+* I - V - vi - iii - IV - I - ii(또는 IV) - V7
+이 코드 진행은 현대 만들어지는 곡에도 널리 쓰이고 있다. 예를 들어 이민섭의 [[당신은 사랑받기 위해 태어난 사람]](D), 자전거 탄 풍경의 '너에게 난 나에게 넌'(G), 서영은의 '혼자가 아닌 나'(Bb), 백지영의 '사랑 안 해'(G) 등이 있다.
+
+{{block indent|1={{Image frame|align=none
+|content=<score raw sound>
+\paper { paper-width = 220\mm tagline = ##f }
+\layout { \context { \Staff      \override VerticalAxisGroup.default-staff-staff-spacing = #'(( 0 0 0 0)) }
+          \context { \ChordNames \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.padding = 0 }
+          \context { \Lyrics     \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.basic-distance = 0 }
+}
+global = { \key d \major \time 4/4 }
+bn = \once \override Score.BarNumber.break-visibility = ##(#t #t #t)
+blu = { \override NoteHead.color = #blue        \override Stem.color = #blue        \override Beam.color = #blue }
+grn = { \override NoteHead.color = #darkgreen   \override Stem.color = #darkgreen   \override Beam.color = #darkgreen }
+mag = { \override NoteHead.color = #darkmagenta \override Stem.color = #darkmagenta \override Beam.color = #darkmagenta }
+red = { \override NoteHead.color = #red         \override Stem.color = #red         \override Beam.color = #red
+        \override Script.color   = #red }
+canonA = { \blu fis4 e d cis | b a b cis | }
+canonB = { \grn d cis b a | g fis g e | }
+canonC = { \mag d8 fis a g fis d fis e | d b d a' g b a g | }
+ViolinI = \relative c'' {
+  \global
+  \set Staff.midiPanPosition = -1 \set midiInstrument = "violin" \set Staff.instrumentName = "Violin I"
+  R1*2 | \bn \canonA \canonB \bn \canonC
+  \red fis8 d e cis' d fis a a, \bn | b g a fis d [d' d8.\trill cis16] |
+}
+ViolinII = \relative c'' {
+  \global
+  \set Staff.midiPanPosition = -0.5 \set midiInstrument = "violin" \set Staff.instrumentName = "Violin II"
+  R1*4 | \canonA \canonB \canonC
+}
+ViolinIII = \relative c'' {
+  \global
+  \set Staff.midiPanPosition = 0.5 \set midiInstrument = "violin" \set Staff.instrumentName = "Violin III"
+  R1*6 | \canonA \canonB
+}
+kords = \chordmode { \set ChordNames.midiInstrument = "acoustic guitar (steel)"
+  d,4 a, b,:min fis,:min | g, d, g, a, | \set noChordSymbol = "(...)" r4
+}
+Cello = \relative c {
+  \global \clef bass
+  \set Staff.midiPanPosition = 1 \set midiInstrument = "cello" \set Staff.instrumentName = "Cello"
+  \repeat unfold 5 { d4 a b fis | g d g a | }
+}
+
+\score {
+  <<
+    \new Staff \with { \magnifyStaff #2/3 } \ViolinI
+    \new Staff \with { \magnifyStaff #2/3 } \ViolinII
+    \new Staff \with { \magnifyStaff #2/3 } \ViolinIII
+    \new ChordNames \kords
+    \new Staff \with { \magnifyStaff #2/3 } \Cello
+    \new Lyrics
+    \lyricmode { I V vi iii IV I IV V (...) }
+  >>
+  \layout {
+    \context ChordNames { \override ChordName #'font-size = -1 }
+    \context Lyrics { \override LyricText #'font-size = -1 }
+  }
+}
+\score { << \ViolinI \\ \ViolinII \\ \ViolinIII \\ \kords \\ \Cello >>
+  \midi { \tempo 4 = 56
+    \context { \Score midiChannelMapping = #'instrument }
+    \context { \Staff \remove "Staff_performer" }
+    \context { \Voice \consists "Staff_performer" }
+  }
+}
+</score>.
+}}}}
+
+== 대중음악에서의 쓰임 ==
+[[조지 윈스턴]]의 앨범 《December》에 수록된 《요한 파헬벨의 카논 주제에 의한 변주곡(Variations on the Kanon by Johann Pachelbel)》이 유명하다.
+
+대한민국에서는 [[엽기적인 그녀]]의 주제곡(삽입곡)으로 유명하다.
+
+1980년 영화, [[보통 사람들 (1980년 영화)|보통 사람들]]에도 삽입되었다.
+
+[[싸이월드]] 배경음악 가수로 유명한 가수 [[Sweetbox]]가 'Life is cool'을 비롯한 수많은 음악들이 캐논변주곡을 샘플링하였다.
+
+[[리베라 소년 합창단]]이 부른 카논을 편곡한 Santus를 사용하는 경우가 많다.<ref>현재는 밈으로 쓰이기도 하다.</ref>
+
+[[AKMU]]의 '오랜 날 오랜 밤'에서는 도입부에 카논이 나온다.
+
+[[자전거 탄 풍경]]의 [[너에게 난, 나에게 넌]], [[스탠딩 에그]]의 오래된 노래, [[양파 (가수)|양파]]의 사랑... 그게 뭔데에도 캐논변주곡의 코드가 들린다.
+
+[[무한도전]] [[무한도전 나름 가수다|나름 가수다]]에서 [[정준하]]가 부른 노래, "키 큰 노총각 이야기" 에서는 아예 캐논변주곡으로 시작하고, 반주부분 또한 캐논변주곡으로 이루어져 있다.
+
+슬기로운 의사생활에서는 4화에서 99즈 밴드가 180BPM으로 Jerry C의 편곡 버전을 연주했다.
+
+[[MBC 뉴스투데이]]는 [[2020년]] [[6월 29일]]부터 [[2025년]] [[7월 5일]]까지 해당 시그널 음악을 오프닝에 사용하였다.
+
+이 외에도 대중 음악에서 카논은 많이 쓰였다.
+
+== 같이 보기 ==
+* [[요한 파헬벨]] (이 곡을 작곡한 인물)
+* [[카논 (음악)]]
+* [[조지 윈스턴]] (이 곡으로 많이 피아노를 쳤던 인물)
+* [[엽기적인 그녀]] (삽입곡)
+* [[보통 사람들 (1980년 영화)]] (삽입곡<ref>이 영화로 인해 파헬벨의 카논이 더욱 더 유명해진 계기이기도 하다</ref>)
+
+== 외부 링크 ==
+* {{위키공용분류-줄}}
+* {{IMSLP|work=Canon and Gigue in D major, P.37 (Pachelbel, Johann)|cname=Pachelbel's Canon}}
+
+{{전거 통제}}
+{{위키데이터 속성 추적}}
+{{토막글|음악}}
+
+[[분류:실내악곡]]
+[[분류:라장조 작품]]
+[[분류:클래식]]

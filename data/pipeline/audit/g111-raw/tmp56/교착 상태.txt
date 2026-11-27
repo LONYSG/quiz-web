@@ -1,0 +1,103 @@
+[[파일:Process deadlock.svg|thumb|right|두 프로세스 모두 실행을 계속하기 위해 자원이 필요하다. P1은 추가 자원 R1이 필요하고 자원 R2를 점유하고 있으며, P2는 추가 자원 R2가 필요하고 자원 R1을 점유하고 있다. 두 프로세스 모두 실행을 계속할 수 없다.]]
+[[파일:Deadlock at a four-way-stop.gif|thumbnail|right|네 개의 프로세스(파란 선)가 우측 통행 우선 원칙에 따라 하나의 자원(회색 원)을 놓고 경쟁한다. 모든 프로세스가 동시에 자원을 잠그면 교착 상태가 발생한다. 교착 상태는 대칭성을 깨뜨림으로써 해결할 수 있다.]]
+[[병행 컴퓨팅]]에서 '''교착 상태'''(膠着狀態) 또는 '''데드락'''({{llang|en|deadlock}})은 어떠한 엔티티 그룹의 구성원도 더 이상 진행할 수 없는 상황을 의미하는데, 이는 각 구성원이 메시지를 보내거나, 더 흔하게는 [[락 (컴퓨터 과학)|락]]을 해제하는 등의 동작을 수행하기 위해 다른 구성원을 기다리고 있기 때문이다.<ref name=coulouris>{{서적 인용|last=Coulouris|first=George|publisher=Pearson|year=2012|title=Distributed Systems Concepts and Design|page=716|isbn=978-0-273-76059-7}}</ref> 교착 상태는 [[다중 처리]] 시스템, [[병렬 컴퓨팅]], [[분산 컴퓨팅]] 시스템에서 흔히 발생하는 문제이다. 이러한 환경에서는 시스템이 공유 자원을 중재하고 [[동기화 (컴퓨터 과학)|프로세스 동기화]]를 구현하기 위해 소프트웨어 또는 하드웨어 락을 자주 사용하기 때문이다.<ref name=para_enclo>{{서적 인용|last=Padua |first=David |url=https://books.google.com/books?id=Hm6LaufVKFEC&q=deadlock&pg=PA524 |publisher=Springer |year=2011 |title=Encyclopedia of Parallel Computing |page=524 |isbn=978-0-387-09765-7 |access-date=16 October 2020 |archive-date=18 April 2021 |archive-url=https://web.archive.org/web/20210418033928/https://books.google.com/books?id=Hm6LaufVKFEC&q=deadlock&pg=PA524 |url-status=live }}</ref>
+
+[[운영체제]]에서 교착 상태는 [[프로세스 (컴퓨팅)|프로세스]]나 [[스레드 (컴퓨팅)|스레드]]가 대기 중인 [[시스템 리소스]]를 다른 대기 프로세스가 점유하고 있고, 그 프로세스는 다시 또 다른 대기 프로세스가 점유한 자원을 기다리는 상황이 발생하여 프로세스가 대기 [[프로세스 상태|상태]]로 진입할 때 발생한다.<ref name="Falsafi Midkiff Dennis Dennis 2011 pp. 524–527">{{서적 인용| last1=Falsafi | first1=Babak | last2=Midkiff | first2=Samuel | last3=Dennis | first3=JackB | last4=Dennis | first4=JackB | last5=Ghoting | first5=Amol | last6=Campbell | first6=Roy H | last7=Klausecker | first7=Christof | last8=Kranzlmüller | first8=Dieter | last9=Emer | first9=Joel | last10=Fossum | first10=Tryggve | last11=Smith | first11=Burton | last12=Philippe | first12=Bernard | last13=Sameh | first13=Ahmed | last14=Irigoin | first14=François | last15=Feautrier | first15=Paul | last16=Praun | first16=Christoph von | last17=Bocchino | first17=Robert L. | last18=Snir | first18=Marc | last19=George | first19=Thomas | last20=Sarin | first20=Vivek | last21=Jann | first21=Joefon | title=Encyclopedia of Parallel Computing | chapter=Deadlocks | publisher=Springer US | publication-place=Boston, MA | year=2011 | doi=10.1007/978-0-387-09766-4_282 | pages=524–527 | isbn=978-0-387-09765-7 | s2cid=241456017 | quote=A deadlock is a condition that may happen in a system composed of multiple processes that can access shared resources. A deadlock is said to occur when two or more processes are waiting for each other to release a resource. None of the processes can make any progress.}}</ref> 프로세스가 요청한 자원을 자신을 기다리고 있는 다른 프로세스가 사용 중이기 때문에 무기한 상태 변경을 할 수 없다면, 시스템이 교착 상태에 빠졌다고 한다.<ref name="os_galvin">{{서적 인용|last=Silberschatz|first=Abraham|url=https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|publisher=Wiley-India|year=2006|title=Operating System Principles|edition=7th|page=237|isbn=978-81-265-0962-1|access-date=16 October 2020|archive-date=25 January 2022|archive-url=https://web.archive.org/web/20220125085137/https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|url-status=live}}</ref>
+
+[[통신 시스템]]에서 교착 상태는 자원 경쟁보다는 신호의 손실이나 손상으로 인해 주로 발생한다.<ref name=invi_comp>{{서적 인용|last=Schneider |first=G. Michael |url=https://books.google.com/books?id=gQK0pJONyhgC&q=deadlock+signal+lost&pg=PA271 |publisher=Cengage Learning |year=2009 |title=Invitation to Computer Science |page=271 |isbn=978-0-324-78859-4 |access-date=16 October 2020 |archive-date=18 April 2021 |archive-url=https://web.archive.org/web/20210418025125/https://books.google.com/books?id=gQK0pJONyhgC&q=deadlock+signal+lost&pg=PA271 |url-status=live }}</ref>
+
+[[파일:Two processes, two resources.gif|thumbnail|두 개의 자원을 놓고 반대 순서로 경쟁하는 두 프로세스.{{Ordered list|style=margin-top:0.5em|list_style_type=upper-alpha
+| 단일 프로세스가 통과함.
+| 나중의 프로세스는 기다려야 함.
+| 첫 번째 프로세스가 첫 번째 자원을 잠그는 동시에 두 번째 프로세스가 두 번째 자원을 잠그면 교착 상태가 발생함.
+| 첫 번째 프로세스를 취소하고 재시작하여 교착 상태를 해결할 수 있음.}}]]
+
+== 조건 ==
+자원에 대한 교착 상태는 시스템에서 다음의 조건들이 동시에 발생할 때만 나타날 수 있다.<ref>{{서적 인용|last=Silberschatz|first=Abraham|url=https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|publisher=Wiley-India|year=2006|title=Operating System Principles|edition=7|page=239|isbn=978-81-265-0962-1|access-date=16 October 2020|archive-date=18 April 2021|archive-url=https://web.archive.org/web/20210418013932/https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|url-status=live}}</ref>
+# [[상호 배제]]: 여러 자원을 공유할 수 없음. 한 번에 하나의 프로세스만 각 자원을 사용할 수 있음.<ref>{{서적 인용|title=Operating System Concepts|publisher=Wiley|year=2012|isbn=978-1-118-06333-0|page=319}}</ref><ref>{{웹 인용|url=http://nob.cs.ucdavis.edu/classes/ecs150-1999-02/dl-cond.html|title=ECS 150 Spring 1999: Four Necessary and Sufficient Conditions for Deadlock|website=nob.cs.ucdavis.edu|access-date=29 April 2018|url-status=live|archive-url=https://web.archive.org/web/20180429180831/http://nob.cs.ucdavis.edu/classes/ecs150-1999-02/dl-cond.html|archive-date=29 April 2018}}</ref>
+# 점유 대기(Hold and wait) 또는 자원 보유: 프로세스가 최소한 하나의 자원을 보유한 상태에서 다른 프로세스가 보유한 추가 자원을 요청함.
+# [[선점 스케줄링|비선점]]: 자원은 자원을 보유한 프로세스에 의해서만 자발적으로 해제될 수 있음.
+# 순환 대기: 각 프로세스는 다른 프로세스가 보유한 자원을 기다려야 하며, 그 다른 프로세스 또한 첫 번째 프로세스가 자원을 해제하기를 기다리고 있어야 함. 일반적으로 대기 중인 프로세스의 [[집합 (수학)|집합]] P = {P<sub>1</sub>, P<sub>2</sub>, ..., P<sub>N</sub>}이 있어서, P<sub>1</sub>은 P<sub>2</sub>가 보유한 자원을 기다리고, P<sub>2</sub>는 P<sub>3</sub>가 보유한 자원을 기다리는 식으로 P<sub>N</sub>이 P<sub>1</sub>이 보유한 자원을 기다리는 상태가 존재함.<ref name="os_galvin"/><ref name=embb>{{서적 인용|last=Shibu |first=K. |url=https://books.google.com/books?id=8hfn4gwR90MC&q=%22waiting+for+a+resource%22&pg=PA446 |publisher=Tata McGraw-Hill Education |year=2009 |title=Intro To Embedded Systems |edition=1st |page=446 |isbn=978-0-07-014589-4 |access-date=16 October 2020 |archive-date=18 April 2021 |archive-url=https://web.archive.org/web/20210418013931/https://books.google.com/books?id=8hfn4gwR90MC&q=%22waiting+for+a+resource%22&pg=PA446 |url-status=live }}</ref>
+
+이 네 가지 조건은 [[에드워드 G. 코프먼 주니어]]의 1971년 논문에서 처음 기술된 이후 '코프먼 조건'으로 알려져 있다.<ref name="embb"/>
+
+이 조건들은 단일 인스턴스 자원 시스템에서 교착 상태를 발생시키기에 충분하지만, 다중 인스턴스 자원을 가진 시스템에서는 교착 상태의 가능성만을 나타낼 뿐이다.<ref>{{웹 인용|url=https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/7_Deadlocks.html|title=Operating Systems: Deadlocks|website=www.cs.uic.edu|access-date=2020-04-25|quote=If a resource category contains more than one instance then the presence of a cycle in the resource-allocation graph indicates the possibility of a deadlock, but does not guarantee one. Consider, for example, Figures 7.3 and 7.4 below:|archive-date=28 May 2020|archive-url=https://web.archive.org/web/20200528052638/https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/7_Deadlocks.html|url-status=live}}</ref>
+
+== 교착 상태 처리 ==
+대부분의 현재 운영체제는 교착 상태를 예방할 수 없다.<ref>{{서적 인용|last=Silberschatz|first=Abraham|url=https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|publisher=Wiley-India|year=2006|title=Operating System Principles|edition=7|page=237|isbn=978-81-265-0962-1|access-date=16 October 2020|archive-date=18 April 2021|archive-url=https://web.archive.org/web/20210418013932/https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|url-status=live}}</ref> 교착 상태가 발생하면 서로 다른 운영체제들은 표준화되지 않은 방식으로 대응한다. 대부분의 접근 방식은 네 가지 코프먼 조건 중 하나, 특히 네 번째 조건을 방지함으로써 작동한다.<ref name=pric_os>{{서적 인용|last=Stuart |first=Brian L. |url=https://books.google.com/books?id=B5NC5-UfMMwC&q=coffman+conditions&pg=PA112 |publisher=Cengage Learning |year=2008 |title=Principles of operating systems |edition=1st |page=446 |isbn=978-1-4188-3769-3 |access-date=16 October 2020 |archive-date=18 April 2021 |archive-url=https://web.archive.org/web/20210418033945/https://books.google.com/books?id=B5NC5-UfMMwC&q=coffman+conditions&pg=PA112 |url-status=live }}</ref> 주요 접근 방식은 다음과 같다.
+
+=== 교착 상태 무시 ===
+이 방식에서는 교착 상태가 결코 발생하지 않을 것이라고 가정한다. 이는 [[타조 알고리즘]]의 적용 사례이기도 하다.<ref name="pric_os" /><ref name="distri_tanen">{{서적 인용|last=Tanenbaum |first=Andrew S. |url=https://books.google.com/books?id=l6sDRvKvCQ0C&q=Tanenbaum+ostrich&pg=PA177 |publisher=Pearson Education |year=1995 |title=Distributed Operating Systems |edition=1st |page=117 |isbn=978-81-7758-179-9 |access-date=16 October 2020 |archive-date=18 April 2021 |archive-url=https://web.archive.org/web/20210418011235/https://books.google.com/books?id=l6sDRvKvCQ0C&q=Tanenbaum+ostrich&pg=PA177 |url-status=live }}</ref> 이 방식은 초기에 [[MINIX]]와 [[UNIX]]에서 사용되었다.<ref name="embb"/> 교착 상태 발생 간격이 길고 매번 발생하는 데이터 손실이 용인될 수 있을 때 사용된다.
+
+교착 상태가 결코 발생하지 않음이 [[형식 검증|공식적으로 증명]]된 경우, 교착 상태를 무시하는 것은 안전하다. RTIC 프레임워크가 그 예이다.<ref>{{웹 인용|url=https://rtic.rs/0.5/book/en/|title=Preface - Real-Time Interrupt-driven Concurrency|access-date=1 October 2020|archive-date=18 September 2020|archive-url=https://web.archive.org/web/20200918143731/https://rtic.rs/0.5/book/en/|url-status=live}}</ref>
+
+=== 탐지 ===
+교착 상태 탐지 하에서는 교착 상태의 발생을 허용한다. 이후 시스템 상태를 검사하여 교착 상태가 발생했는지 감지하고, 이어서 교착 상태를 해결한다. 자원 할당과 프로세스 상태를 추적하는 알고리즘을 사용하며, 탐지된 교착 상태를 제거하기 위해 하나 이상의 프로세스를 롤백하고 재시작한다. 각 프로세스가 잠근 자원이나 현재 요청한 자원을 운영체제의 [[스케줄러 (컴퓨팅)|자원 스케줄러]]가 알고 있기 때문에, 이미 발생한 교착 상태를 감지하는 것은 쉽게 가능하다.<ref name=distri_tanen />
+
+교착 상태가 탐지된 후, 다음 방법 중 하나를 사용하여 해결할 수 있다.<ref name=":0">{{웹 인용|date=2021-03-22 |title=6.2: Deadlock Detection and Prevention |url=https://eng.libretexts.org/Courses/Delta_College/Operating_System%3A_The_Basics/06%3A_Deadlock/6.2%3A_Deadlock_Detection_and_Prevention |access-date=2025-10-22 |website=Engineering LibreTexts |language=en}}</ref>
+# 프로세스 종료: 교착 상태에 관련된 하나 이상의 프로세스를 중단할 수 있다. 교착 상태에 관련된 모든 경쟁 [[프로세스 (컴퓨팅)|프로세스]]를 중단하는 것을 선택할 수 있다. 이는 교착 상태가 확실하고 빠르게 해결됨을 보장하지만, 부분적인 계산 결과가 손실되므로 비용이 크다. 또는 교착 상태가 해결될 때까지 한 번에 하나의 프로세스를 중단하는 것을 선택할 수 있다. 이 방식은 각 중단 후 시스템이 여전히 교착 상태인지 알고리즘이 결정해야 하므로 오버헤드가 크다. 종료 대상을 선택할 때는 프로세스의 우선순위와 생존 기간 같은 요소를 고려해야 한다.<ref name=":0" />
+# 자원 선점: 교착 상태가 풀릴 때까지 다양한 프로세스에 할당된 자원을 차례로 선점하여 다른 프로세스에 할당할 수 있다.<ref>{{웹 인용|url=https://www.ibm.com/support/knowledgecenter/SSETD4_9.1.2/lsf_admin/resource_preemption_about.html|title=IBM Knowledge Center|website=www.ibm.com|access-date=29 April 2018|url-status=live|archive-url=https://web.archive.org/web/20170319112925/https://www.ibm.com/support/knowledgecenter/SSETD4_9.1.2/lsf_admin/resource_preemption_about.html|archive-date=19 March 2017}}</ref>
+
+=== 예방 ===
+{{본문|교착 상태 예방 알고리즘}}
+[[파일:Avoiding deadlock.gif|380px|thumbnail|right|
+(A) 선입선출 정책에 따라 하나의 자원을 두고 경쟁하는 두 프로세스.
+
+(B) 두 프로세스가 동시에 자원을 잠그면 교착 상태가 발생함.
+
+(C) 락의 대칭성을 깨뜨려 교착 상태를 해결할 수 있음.
+
+(D) 락 메커니즘의 대칭성을 깨뜨려 교착 상태를 예방할 수 있음.]]
+교착 상태 예방은 네 가지 코프먼 조건 중 하나가 발생하지 않도록 하여 작동한다.
+* 상호 배제 조건을 제거한다는 것은 어떠한 프로세스도 자원에 대한 독점적 접근 권한을 갖지 않음을 의미한다. 이는 [[스풀링]]이 불가능한 자원에는 적용할 수 없다. 하지만 스풀링 가능한 자원이라 하더라도 교착 상태는 여전히 발생할 수 있다. 상호 배제를 피하는 알고리즘을 [[논블로킹 동기화]] 알고리즘이라 한다.
+* 점유 대기 또는 자원 보유 조건은 프로세스가 시작되기 전(또는 특정 작업 세트에 착수하기 전)에 필요한 모든 자원을 요청하도록 함으로써 제거할 수 있다. 이러한 사전 지식은 만족하기 어려운 경우가 많으며, 어쨌든 자원을 비효율적으로 사용하는 방식이다. 다른 방법은 프로세스가 자원을 아무것도 가지고 있지 않을 때만 자원을 요청하도록 하는 것이다. 먼저 현재 보유한 모든 자원을 해제한 후 처음부터 필요한 모든 자원을 다시 요청해야 한다. 이 또한 비실용적일 때가 많다. 자원이 할당된 채로 긴 시간 동안 사용되지 않을 수 있기 때문이다. 또한, 인기 있는 자원을 필요로 하는 프로세스는 해당 자원이 항상 다른 프로세스에 할당되어 있을 수 있기 때문에 무기한 기다려야 할 수 있으며, 이는 [[기아 상태]]를 초래한다.<ref>{{서적 인용|last=Silberschatz|first=Abraham|url=https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|publisher=Wiley-India|year=2006|title=Operating System Principles|edition=7|page=244|isbn=978-81-265-0962-1|access-date=16 October 2020|archive-date=18 April 2021|archive-url=https://web.archive.org/web/20210418013932/https://books.google.com/books?id=WjvX0HmVTlMC&q=deadlock+operating+systems|url-status=live}}</ref> (이러한 알고리즘은 [[직렬화 토큰]]과 같은 알고리즘으로, 전부 아니면 전무(all-or-none) 알고리즘으로 알려져 있다.)
+* [[선점 스케줄링|비선점]] 조건 또한 회피하기 어렵거나 불가능할 수 있는데, 이는 프로세스가 일정 시간 동안 자원을 가질 수 있어야 하거나, 그렇지 않으면 처리 결과가 일관되지 않거나 [[스레싱]]이 발생할 수 있기 때문이다. 그러나 선점을 강제할 수 없으면 우선순위 알고리즘과 충돌할 수 있다. "잠긴" 자원의 선점은 일반적으로 [[롤백 (데이터 관리)|롤백]]을 의미하며, 오버헤드가 매우 크기 때문에 피해야 한다. 선점을 허용하는 알고리즘으로는 [[락 프리 및 웨이트 프리 알고리즘]]과 [[낙관적 병행 수행 제어]]가 있다. 자원을 보유한 프로세스가 즉시 할당받을 수 없는 다른 자원을 요청할 경우, 해당 프로세스가 보유한 모든 자원을 해제함으로써 이 조건을 제거할 수 있다.
+* 마지막 조건은 순환 대기 조건이다. 순환 대기를 피하는 접근 방식에는 임계 구역 동안 인터럽트를 비활성화하는 것과 자원의 [[부분 순서]]를 결정하기 위해 계층 구조를 사용하는 것이 포함된다. 명확한 계층 구조가 존재하지 않는 경우, 자원의 [[메모리 주소]]를 사용하여 순서를 결정하고 자원을 열거 순서의 증가하는 순서대로 요청하기도 한다.<ref name="os_galvin"/> [[식사하는 철학자들 문제#자원 계층 구조 해결책|데이크스트라의 솔루션]]을 사용할 수도 있다.
+
+=== 교착 상태 회피 ===
+교착 상태 예방과 유사하게, 교착 상태 회피 접근 방식은 시스템에서 교착 상태가 발생하지 않도록 보장한다. "교착 상태 회피"라는 용어는 언어적 맥락에서 "교착 상태 예방"과 매우 가깝게 보이지만, 교착 상태 처리의 맥락에서는 크게 다르다. 교착 상태 회피는 예방에서 볼 수 있는 어떤 조건도 부과하지 않지만, 각 자원 요청을 면밀히 분석하여 교착 상태를 유발하지 않고 안전하게 처리될 수 있는지 확인한다.
+
+교착 상태 회피는 운영체제에 프로세스가 수명 주기 동안 어떤 자원을 요청하고 사용할 것인지에 대한 추가 정보를 사전에 제공할 것을 요구한다. 교착 상태 회피 알고리즘은 요청된 자원이 할당될 경우 미래에 교착 상태가 발생할 가능성이 없는지 검사하여 모든 요청을 분석한다. 이 접근 방식의 단점은 미래에 자원이 어떻게 요청될지에 대한 정보를 미리 알아야 한다는 점이다. 가장 많이 사용되는 교착 상태 회피 알고리즘 중 하나는 [[은행원 알고리즘]]이다.<ref>{{웹 인용|url=https://www.electronicsmind.com/2022/01/deadlock-avoidance-algorithms-in-operating-system.html|title=Deadlock Avoidance Algorithms in Operating System (OS)|date=26 January 2022|website=Electronics Mind}}</ref>
+
+== 라이브락 ==
+
+라이브락은 교착 상태와 유사하지만, 라이브락에 관련된 프로세스들의 상태가 서로에 관하여 끊임없이 변화하면서도 어느 누구도 진행하지 못한다는 점이 다르다.
+
+이 용어는 항공 예약 시스템을 조사하던 중 [[에드워드 A. 애시크로프트]]가 1975년 논문에서 처음 만들었다.<ref>{{저널 인용|title=Proving assertions about parallel programs|journal=Journal of Computer and System Sciences|volume=10|pages=110–135|doi=10.1016/S0022-0000(75)80018-3|year=1975|last1=Ashcroft|first1=E.A.|doi-access=free}}</ref> 라이브락은 [[기아 상태]]의 특별한 사례로, 일반적인 정의는 특정 프로세스가 진행되지 않는다는 것만을 명시한다.<ref>{{웹 인용|url=http://citeseer.ist.psu.edu/anderson01sharedmemory.html|first=James H.|last=Anderson|author1-link=James H. Anderson (computer scientist)|author2=Yong-jik Kim|title=Shared-memory mutual exclusion: Major research trends since 1986|year=2001|url-status=live|archive-url=https://web.archive.org/web/20060525013335/http://citeseer.ist.psu.edu/anderson01sharedmemory.html|archive-date=25 May 2006}}</ref>
+
+라이브락은 교착 상태를 탐지하고 복구하는 일부 [[알고리즘]]에서 발생하는 위험이다. 하나 이상의 프로세스가 동작을 수행하면 [[교착 상태 탐지 알고리즘]]이 반복적으로 트리거될 수 있다. 이는 오직 하나의 프로세스(임의로 또는 우선순위에 따라 선택됨)만이 동작을 수행하도록 보장함으로써 피할 수 있다.<ref>{{저널 인용|doi=10.1145/850752.850753 |title=The Deadlock problem: a classifying bibliography | first = Dieter |last = Zöbel | journal = ACM SIGOPS Operating Systems Review |volume=17 |issue=4 |date=October 1983 |issn=0163-5980 |pages = 6–15|s2cid=38901737 |doi-access=free }}</ref>
+
+== 분산 교착 상태 ==
+분산 교착 상태는 [[분산 트랜잭션]]이나 [[동시성 제어]]가 사용될 때 [[분산 컴퓨팅|분산 시스템]]에서 발생할 수 있다.
+
+[[중앙집권]]식 시스템과 달리, 분산 교착 상태를 탐지하고 해결하는 것은 공유 메모리의 부재와 노드 간 조정의 필요성으로 인해 더 복잡하다. [[대기 그래프]] 기법, [[분산 알고리즘]] (예: 엣지 체이싱; 예: [[찬디-미스라-하스 알고리즘 자원 모델|찬디-미스라-하스]]), 그리고 [[교착 상태 예방 알고리즘|교착 상태 예방]] (예: 타임아웃 기반 방법) 등이 이러한 시나리오를 처리하는 데 사용된다. 과제는 일관성을 보장하고 네트워크 지연이나 부분적 장애로 인한 위양성/위음성을 피하는 데 있다.
+
+팬텀 교착 상태(Phantom deadlocks)는 시스템 내부 지연으로 인해 분산 시스템에서 잘못 탐지되지만 실제로는 존재하지 않는 교착 상태이다. 예를 들어, 프로세스가 자원 R1을 해제하고 R2를 요청하는 메시지를 보냈는데 첫 번째 메시지가 손실되거나 지연된다면, 조정자(교착 상태 탐지기)는 (R1을 가진 상태에서 R2를 요청하는 것이 교착 상태를 유발할 경우) 잘못된 교착 상태 결론을 내릴 수 있다.
+
+== 같이 보기 ==
+* [[아포리아]]
+* [[순환 참조]]
+* [[식사하는 철학자들 문제]]
+* [[파일 잠금]]
+* [[프리징 (컴퓨팅)]]
+* [[무한 루프]]
+* [[선형화가능성]]
+* [[경쟁 상태]]
+* [[잠자는 이발사 문제]]
+* [[스테일메이트]]
+
+== 각주 ==
+<references />
+
+== 외부 링크 ==
+* "[http://www.onjava.com/pub/a/onjava/2004/10/20/threads2.html Advanced Synchronization in Java Threads]" by Scott Oaks and Henry Wong
+* [[c2:DeadLock|DeadLock]] at the Portland Pattern Repository
+* [http://www.etymonline.com/index.php?term=deadlock Etymology of "Deadlock"]
+
+{{위키데이터 속성 추적}}
+
+[[분류:운영체제 기술]]
+[[분류:소프트웨어 버그]]
+[[분류:분산 컴퓨팅]]
+[[분류:에츠허르 데이크스트라]]
+[[분류:분산 컴퓨팅 문제]]

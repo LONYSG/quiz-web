@@ -1,0 +1,2 @@
+t="$1"; f=$(echo "$t" | tr -c 'A-Za-z0-9\n' '_')
+curl -s -A "quiz-research/1.0" -G "https://en.wikipedia.org/w/api.php" --data-urlencode "action=query" --data-urlencode "prop=extracts" --data-urlencode "explaintext=1" --data-urlencode "redirects=1" --data-urlencode "titles=$t" --data-urlencode "format=json" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{const p=Object.values(JSON.parse(s).query.pages)[0];console.log(p.extract||"")}catch(e){console.log("ERR "+s.slice(0,100))}})' > "$f.txt"; echo "$f $(wc -c <"$f.txt")"

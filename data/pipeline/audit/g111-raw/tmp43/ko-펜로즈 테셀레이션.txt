@@ -1,0 +1,288 @@
+[[파일:Penrose Tiling (Rhombi).svg|섬네일|펜로즈 타일링 중 하나]]
+'''펜로즈 타일링'''({{llang|en|Penrose tiling}}) 또는 '''펜로즈 테셀레이션'''({{llang|en|Penrose tessellation}})은 [[비주기적 테셀레이션]] 중 하나이다. 여기에서 '테셀레이션'이란 같은 모양으로 겹치거나 빈틈이 없게 [[평면]]을 채우는 것이고, '비주기적'이란 테셀레이션 중 일부를 골라서 [[회전 이동]]하지 않고 [[평행 이동]]만 했을 때 모양이 같을 수 없다는 것이다. [[평행 이동 대칭]]이 아니지만 [[반사 대칭]]과 5차 [[회전 대칭]]이다. 펜로즈 타일링은 수학자이자 물리학자인 [[로저 펜로즈]]가 1970년에 연구로 발견했다.
+
+여러 모양의 타일을 가진 펜로즈 타일링을 몇 가지로 변형할 수 있다. 펜로즈 타일링은 처음에 4가지 모양의 타일을 사용했지만 2개로 줄어든다. ([[마름모]] 2개 또는 [[연꼴|카이트]]와 다트) 펜로즈 타일링은 타일의 모양을 서로 맞도록 조건을 걸어서 만들 수 있는데, 이때 연결 규칙, [[타일 대체하기]], [[유한한 분할 규칙]], 잘라서 사영하기 방법, 덮기 등을 이용한다. 이렇게 만들어진 다음에도, 각각의 변형으로 무수히 많은 펜로즈 타일링을 만들 수 있다.
+
+[[파일:RogerPenroseTileTAMU2010.jpg|섬네일|[[로저 펜로즈]]가 [[텍사스 A&M 대학교]]의 미셸 기초물리천문연구소 현관 바닥에 그려진 펜로즈 타일링 위에 서 있다.|alt=]]
+
+펜로즈 타일링은 [[자기유사성]]이 있어서, '늘리기'와 '줄이기'라는 과정을 거치면 타일의 크기는 다르지만 모양은 처음과 같도록 바꿀 수 있다. 크기가 유한한 타일 묶음의 패턴이 테셀레이션 전체에서 무수히 많이 나타난다. 펜로즈 타일링은 [[준결정]] 모양이며, 물리학적인 구조로써 [[브래그 곡선]]과 5차 회전 대칭성이 있는 [[회절]] 무늬와 같다. 패턴의 반복이 나타나고 타일의 위치가 정해져 있다.{{sfn|Senechal|1996|pages=241–244}} 이러한 테셀레이션을 연구하는 것은 준결정을 형성하는 물리학적 재료를 이해하는 데 중요하다.{{sfn|Radin|1996}} 펜로즈 타일링은 다음 그림의 바닥 타일링과 같이 건축, 장식 등에도 적용되고 있다.
+
+== 배경 및 역사 ==
+=== 주기적, 비주기적 테셀레이션 ===
+{{앵커|도형 1}}[[파일:RegularRhombs.svg|오른쪽|섬네일|위오른쪽|도형 1. 두 개의 프로토타일을 가진 주기적 테셀레이션의 일부이다.|alt=]]
+
+'평면'을 기하학적인 모양인 '타일'로 겹치거나 빈틈이 생기지 않게 덮는 것을 [[테셀레이션]] 또는 타일링이라고 한다. 모서리가 모서리끼리 만나는 정사각형 모양의 바닥 타일링은 [[테셀레이션|주기적 테셀레이션]]의 예시이다. 이 정사각형 테셀레이션을 타일의 변과 평행하게 밀었을 때, 밀기 전과 모양이 겹친다. 이렇게 모양이 보존되는 [[평행 이동]]을 테셀레이션의 '주기'라고 한다. 두 가지 방향으로 평행 이동했을 때 주기를 가지는 테셀레이션을 '주기적'(periodic)이라고 한다.<ref name=general>General references for this article include {{Harvnb|Gardner|1997|pp=1–30}}, {{Harvnb|Grünbaum|Shephard|1987|pp=520–548 &amp; 558–579}}, and {{Harvnb|Senechal|1996|pp=170–206}}.</ref>
+
+[[정사각형 테셀레이션]]의 타일은 모양이 한 가지 뿐이고, 다른 테셀레이션에서도 일반적으로 타일 모양의 개수는 [[유한 집합|유한]]하다. 이런 타일 모양을 '[[프로토타일]]'이라고 하며, 이런 모양만으로 평면을 덮을 수 있다면 프로토타일의 [[집합]]이 '테셀레이션을 허용한다' 또는 '평면을 타일링한다'고 말한다. 즉 테셀레이션에 사용된 각 타일은 프로토타일 중 하나와 [[합동 (기하학)|합동]]인 것이다.<ref>{{Harvnb|Gardner|1997|pp=20, 23}}</ref>
+
+주기가 없는 테셀레이션을 '비주기적'(aperiodic)이라고 한다. 어떤 프로토타일의 [[집합]]이 만들 수 있는 모든 테셀레이션이 비주기적일 때 그 집합을 '비주기적'이라 하며, 이것들로 만들어진 테셀레이션을 [[비주기적 테셀레이션]]이라고 한다.<ref>{{Harvnb|Grünbaum|Shephard|1987|p=520}}</ref> 펜로즈 타일링은 유한한 개수의 프로토타일 집합으로 평면을 타일링할 수 있는 간단한 비주기적 테셀레이션으로 알려진 예시 중 하나다.<ref name=general/>
+
+=== 초기의 비주기적 테셀레이션 ===
+[[파일:Wang tiles.svg|섬네일|왼쪽|위오른쪽|[[왕 도미노]]의 [[비주기적 테셀레이션|비주기적 집합]]<ref>{{Harvnb|Culik|Kari|1997}}</ref>|alt=]]
+논리학자 [[하오 왕]]이 [[결정 문제]]와 테셀레이션의 관계에 주목한 1960년대에 비주기적 테셀레이션이라는 주제가 관심사로 떠올랐다.<ref>{{Harvnb|Wang|1961}}</ref> 특히 그는 변 쪽이 색칠된 정사각형인 [[왕 도미노]]라는 테셀레이션을 도입하면서 [[도미노 문제]]를 제안했다. 이것은 임의의 왕 도미노의 집합이 주어졌을 때, 맞닿아 있는 도미노 모서리에 같은 색이 오도록 평면을 채울 수 있을지 결정하는 문제이다. 만약 이 문제를 [[재귀 집합|결정할 수 없다]]면, 왕 도미노의 비주기적인 집합이 존재하는 것이다. 당시 그럴 수 없다고 생각한 왕은 비주기적인 집합이 존재할 수 없다고 추측했다.
+
+왕의 학생 [[로버트 버거]]는 1964년 논문에 도미노 문제를 결정할 수 없다는 것(즉 왕의 추측이 틀렸다는 것)을 증명했고,<ref>{{MathGenealogy|id=114475|title=Robert Berger}}</ref> 20,426개의 왕 도미노를 사용한 비주기적인 집합을 찾았다.<ref name="AMSa">{{Harvnb|Austin|2005a}}</ref> 프로토타일 개수를 104개로 줄인 경우도 가능하다는 것을 알아냈지만, 발표한 논문에는 나타내지 않았다.<ref>{{Harvnb|Berger|1966}}</ref> 1968년에 [[도널드 크누스]]는 버거의 집합을 변형해서 92개의 도미노만 필요한 집합을 찾았다.<ref>{{Harvnb|Grünbaum|Shephard|1987|p=584}}</ref>
+
+모서리에 색칠된 색끼리 맞을 수 있도록 [[직소 퍼즐]]처럼 타일의 모서리를 바꾸면, 색이 맞는 왕 도미노를 쉽게 찾을 수 있다.<ref>{{Harvnb|Gardner|1997|p=5}}</ref> [[래피얼 로빈슨]]은 1971년 논문<ref>{{Harvnb|Robinson|1971}}</ref>에서 버거의 방법과 결정 문제를 결정할 수 없다는 증명을 단순화시켰고, 버거의 방법을 써서 6개의 프로토타일만으로 비주기적인 집합을 찾았다.<ref>{{Harvnb|Grünbaum|Shephard|1987|p=525}}</ref>
+
+=== 펜로즈 타일링의 발전 ===
+{{앵커|도형 2}}[[파일:Penrose Tiling (P1 over P3).svg|왼쪽|도형 2. 밑의 모서리가 노란 테셀레이션은 마름모 테셀레이션(P3), 위의 모서리가 검은 테셀레이션은 오각형 펜로즈 타일링(P1)이다.<ref name="S:173-174">{{Harvnb|Senechal|1996|pp=173–174}}</ref>|alt=]]
+
+맨 처음의 펜로즈 타일링(P1 테셀레이션)은 6개의 프로토타일로 만들어졌고, [[로저 펜로즈]]가 1974년 논문에 소개했다.<ref>{{Harvnb|Penrose|1974}}</ref> 여기서 정사각형이 아닌 정오각형을 사용했다. 정오각형으로 평면을 채우려고 시도하면 항상 빈틈이 생기지만, [[요하네스 케플러]]는 1916년에 책 《[[세계의 조화]]》에서 이런 빈틈을 [[오각별]], [[십각형|정십각형]] 등과 관련된 도형으로 채울 수 있다는 걸 보였다.<ref>{{Harvnb|Grünbaum|Shephard|1987|loc=section 2.5}}</ref> 케플러는 이 테셀레이션을 다각형 5개를 사용해 확장했는데 주기적인 패턴을 찾을 수 없었고, 확장을 할 때마다 새로운 성질이 생길 것이라고 이미 추측한 상태였다.<ref>{{서적 인용|last= Kepler |first= Johannes |date= 1997 |title= The harmony of the world |url= https://books.google.com/books?id=rEkLAAAAIAAJ&q=harmony+of+the+worlds+kepler+translation+aiton&pg=PR7 |publisher= American Philosophical Society |page= 108 |isbn= 0871692090}}</ref> (따라서 비주기적 테셀레이션이 만들어진다.) 이런 생각은 [[알브레히트 뒤러]]의 작품에서도 찾아볼 수 있다.<ref>{{Harvnb|Luck|2000}}</ref> 케플러의 생각을 알게 된 후 펜로즈는 이렇게 비주기적 집합을 만드는 모양의 타일에서, 서로 연결되는 규칙을 찾았다. 이런 연결 규칙은 왕 타일에서처럼 모서리를 색칠해서 만들어진다. 펜로즈의 테셀레이션은 케플러의 무한 'Aa' 패턴의 완성작이라고 볼 수 있다.<ref name="S:171">{{Harvnb|Senechal|1996|p=171}}</ref>
+[[파일:Tiling at Zelena Hora.jpg|섬네일|18세기 초반에 정오각형과 길쭉한 마름모로 만든 펜로즈 타일링이 아닌 테셀레이션이다. 체코 공화국의 [[즈댜르 나트 사자보우]]에 있는 [[성 얀 네포쿠츠기 순례 교회]]에 있다.]]
+
+펜로즈는 이후에 카이트와 다트 테셀레이션(P2 테셀레이션)과 마름모 테셀레이션(P3 테셀레이션)을 발견해 프로토타일의 개수를 2개로 줄였다.<ref name="G:6">{{Harvnb|Gardner|1997|p=6}}</ref> 마름모 테셀레이션은 [[로버트 애먼]]이 독립적으로 1976년에 발견했다.<ref name="G:19">{{Harvnb|Gardner|1997|p=19}}</ref> 펜로즈와 [[존 호턴 콘웨이]]는 펜로즈 타일링의 특성을 연구했고, 대체하는 특성이 그 계층 구조를 설명한다는 걸 발견했다. 이 발견은 《사이언티픽 아메리칸》의 1977년 1월 "[[마틴 가드너 수학 게임 컬럼의 목록|수학 게임]]"에 기재되었다.<ref name="G1">{{Harvnb|Gardner|1997|loc=chapter 1}}</ref>
+
+1981년에 [[니콜라스 호버트 데 브라윈]]은 펜로즈 타일링을 만드는 두 가지 다른 방법을 소개했다. 데 브라윈의 "다중격자 방법"은 평행한 직선 5그룹을 배치한 쌍대 그래프로 펜로즈 타일링을 얻는다. "잘라 사영하기 방법"에서 펜로즈 타일링은 5차원 초입방체 구조를 2차원으로 사영해서 얻을 수 있다. 이런 접근에서 펜로즈 타일링은 꼭짓점의 집합으로 볼 수 있고 타일들은 꼭짓점을 모서리로 이을 때 생기는 도형들에서 얻을 수 있다.<ref>{{Harvnb|de Bruijn|1981}}</ref>
+
+== 펜로즈 타일링 ==
+[[파일:Penrose Tiling (P1).svg|섬네일|6개의 프로토타일 집합을 쓰는 펜로즈의 첫 P1 테셀레이션|alt=]]
+
+3가지 펜로즈 타일링인 P1–P3가 아래에 각각 설명되어 있다.<ref name="P1-P3">P1–P3 표기법은 {{Harvnb|Grünbaum|Shephard|1987|loc=section 10.3}}을 참고했다.</ref> 여러 공통적인 특징이 있는데, 각 타일은 정오각형과 [[황금비]]와 관련된 모양에서 만들어지지만 비주기적으로 테셀레이션하기 위해 '연결 규칙'이 추가적으로 있어야 한다. 이런 규칙은 특정한 꼭짓점이나 모서리, 타일 면의 패턴과 관련이 있다. 모서리의 모양이 안으로 들어가거나 밖으로 나오게 할 수도 있다.<ref name="AMSa" /><ref name="GS10.3">{{Harvnb|Grünbaum|Shephard|1987|loc=section 10.3}}</ref>
+
+=== 첫 펜로즈 오각형 테셀레이션 (P1) ===
+펜로즈의 첫 테셀레이션은 정오각형뿐 아니라 다른 3가지 모양도 쓰는데, "별" (오각별), "배" (별의 약 3/5), "다이아몬드" (얇은 마름모)를 쓴다.<ref name="P:32">{{Harvnb|Penrose|1978|p=32}}</ref> 모든 테셀레이션이 비주기적이 되기 위해 타일이 만나는 법을 정하는 연결 규칙이 있는데, 오각형 타일에는 세 종류의 연결 규칙이 있다. 이러한 3가지 종류의 오각형을 다른 프로토타일로 보면 총 프로토타일이 6개가 생긴다. 일반적으로 오른쪽 위 그림처럼 다른 세 종류의 오각형 타일을 다른 세 가지 색으로 칠한다.<ref>"However, as will be explained momentarily, differently colored pentagons will be considered to be different types of tiles." {{Harvnb|Austin|2005a}}; {{Harvnb|Grünbaum|Shephard|1987|loc=figure 10.3.1}}에서 모서리를 변형해서 프로토타일의 비주기적 집합을 만족해야 했다고 말한다.</ref>
+
+=== 카이트와 다트 테셀레이션 (P2) ===
+[[파일:Step7wPaper600DPI.png|섬네일|펜로즈 P2 타일링(카트와 다이트)으로 채운 평면 중 일부분이다. '줄이기'를 적용해서 만들어졌는데, 이 내용은 아래 소문단을 참고하자.]]
+펜로즈의 두 번째 테셀레이션은 "카이트"와 "다트"라고 하는 [[연꼴]]을 쓴다. 둘을 붙이면 [[마름모]]를 만들 수 있으나, 연결 규칙은 이를 허용하지 않는다.<ref>"The rhombus of course tiles periodically, but we are not allowed to join the pieces in this manner." {{Harvnb|Gardner|1997|pp=6–7}}</ref> 카이트와 다트 각각은 1975년 로빈슨이 언급한 [[로빈슨 삼각형]]이라는 2개의 삼각형으로 이루어져 있다.<ref name="GS-R">{{Harvnb|Grünbaum|Shephard|1987|pp=537– 547}}</ref>
+{{여러그림|align=left|direction=vertical|image1=Kite Dart.svg|image2=Penrose vertex figures.svg|width=225|footer=카이트와 다트 타일(위)과 P2 타일링에서 가능한 7가지 꼭짓점 배치(아래)}}
+* '''카이트'''는 내각이 72°, 72°, 72°, 144°인 사각형이다. 대칭축으로 자르면 로빈슨 예각삼각형 (내각이 36°, 72°, 72°) 2개로 나눌 수 있다.
+* '''다트'''는 내각이 36°, 72°, 36°, 216°인 오목 사각형이다. 대칭축으로 자르면 로빈슨 둔각삼각형 (내각이 36°, 36°, 108°) 2개가 생기는데, 로빈슨 예각삼각형보다 작다.
+
+연결 규칙을 몇 가지 방법으로 설명할 수 있다. 한 방법은 꼭짓점을 (검정색과 하얀색 같은 두 색으로) 색칠해서 맞닿은 타일의 꼭짓점 색이 같도록 하는 것이다.<ref name="S:173">{{Harvnb|Senechal|1996|p=173}}</ref> 다른 방법은 원호 패턴을 사용해서 (왼쪽에 초록색과 빨간색으로 표시된 것처럼) 타일의 위치를 정하는 것이다. 두 타일이 테셀레이션에서 모서리를 공유할 때, 패턴이 각 모서리에서 연결되어야 한다.<ref name="G:6"/>
+
+이 규칙은 특정한 타일의 배치를 결정하기도 하다. 예를 들어 임의의 다트의 [[오목 다각형|오목한]] 꼭짓점은 반드시 2개의 카이트로 채워져야 한다. 이렇게 만들어진 모양(아래쪽 그림의 위 가운데)을 콘웨이가 "에이스"라고 이름 붙였는데, 카이트를 확대한 듯하지만 카이트와는 타일링하는 방법이 다르다.<ref name="G:8">{{Harvnb|Gardner|1997|p=8}}</ref> 비슷하게 두 카이트가 짧은 모서리로 닿아 있을 때 생기는 오목한 꼭짓점은 두 개의 다트로 채워져야 한다(아래 오른쪽). 실제로 타일이 한 꼭짓점에서 만나는 방법은 7가지만 가능한데, 그 중 2가지인 "별"(위 왼쪽)과 "해"(위 오른쪽)는 5차 [[이면대칭|이면 대칭]](회전 및 반사 대칭)이 있다. 반면에 나머지는 한 축(그림의 세로축)에 대한 반사 대칭밖에 없다.<ref name="G:10=11">{{Harvnb|Gardner|1997|pp=10–11}}</ref> 에이스와 해를 제외하면 모든 꼭짓점 배치에는 타일이 추가적으로 배치되어야 한다.<ref name="G:12">{{Harvnb|Gardner|1997|p=12}}</ref>
+
+=== 마름모 타일링 (P3) ===
+[[파일:Penrose rhombs matching rules.svg|오른쪽|섬네일|위오른쪽|원호를 넣고 모서리를 변형해서 연결 규칙을 만족시키도록 한 펜로즈 마름모|alt=]]
+[[파일:Penrose Rhombuses with Parabolic Edges.svg|오른쪽|섬네일|위오른쪽|변을 포물선 모양으로 만들어 연결 규칙을 만족시키도록 한 펜로즈 마름모]]
+[[파일:PenroseFlowers.png|왼쪽|섬네일|포물선 변을 가진 펜로즈 마름모로 만든 펜로즈 타일링]]
+세 번째 테셀레이션은 변의 길이는 같지만 내각의 크기는 다른 한 쌍의 [[마름모]]를 사용한다.<ref name="AMSa"/> 일반적인 마름모 모양의 타일은 평면을 주기적으로 채울 수 있으므로, 타일이 연결되는 방법에 제한이 있어야 한다. 주기적인 테셀레이션을 허락하지 않기 위해, 어느 두 타일도 평행사변형을 이루면 안 된다. 하지만 이 조건은 [[펜로즈 타일링#주기적, 비주기적 테셀레이션|도형 1]]이 보여주듯이 비주기적이기 위해 충분하지 않다.
+
+두 종류의 타일이 있는데, 각각은 로빈슨 삼각형으로 나누어질 수 있다.<ref name="GS-R"/>
+* 얇은 마름모 '''t'''는 내각의 크기가 36°, 144°, 36°, 144°이다. '''t''' 마름모는 짧은 대각선으로 잘랐을 때 로빈슨 예각 삼각형 한 쌍이 생긴다.
+* 굵은 마름모 '''T'''는 내각의 크기가 72°, 108°, 72°, 108°이다. '''T''' 마름모는 긴 대각선으로 잘랐을 때 둔각 로빈슨 삼각형 한 쌍이 생기는데, P2 테셀레이션과는 다르게 예각 삼각형보다 더 크다.
+
+연결 규칙은 타일의 변을 구별하므로, 타일이 정해진 방법으로만 놓일 수 있다. 연결 규칙을 설명하는 두 가지 방법이 오른쪽 그림에 있다. 첫째, 타일 면에 표시한 곡선이 변을 가로질러 색과 위치가 일치하도록 한다. 둘째, 변에 있는 올록볼록한 부분이 서로 맞도록 조합한다.<ref name="AMSa"/>
+
+한 꼭짓점에서 만나는 각의 합이 360°가 되는 54가지 덮기 방법 조합이 있지만, 연결 규칙은 그 중 7가지만 허용한다. (7가지 각각은 2가지로 나타난다)<ref name="S:178">{{Harvnb|Senechal|1996|p=178}}</ref>
+
+내각과 굽은 모양을 통해 임의의 복잡한 타일을 만들 수 있는데, 예로 '펜로즈 닭'(penrose chicken)이 있다.<ref>{{웹 인용|url=http://www.murderousmaths.co.uk/books/BKMM7xpc.htm |title=The Penrose Tiles |website=[[Murderous Maths]] |access-date=2020-01-20}}</ref>
+
+== 특징 및 구성 방법 ==
+=== 황금비와 국소적(local) 정오각형 대칭 ===
+펜로즈 타일링에서 [[황금비]] <math>\varphi=\frac{1+\sqrt{5}}{2}</math> (대략 1.618)가 포함되어 있는 몇몇 특성이 있다.<ref name="GS-R" /><ref name="S:173"/> 이는 [[정오각형]]에서 변 길이에 대한 대각선 길이의 비율인데, ''φ''라 했을 때 ''φ'' = 1 + 1/''φ''을 만족시킨다.
+
+[[파일:Rhomb pentagon.svg|왼쪽|섬네일|굵은 마름모(밝은 회색), 예각 로빈슨 삼각형 2개(중간 회색), 작은 둔각 로빈슨 삼각형(어두운 회색)이 내접한 정오각형이다. 점선은 카이트와 다트의 모서리를 나타낸다.|alt=]]
+
+따라서 [[이등변삼각형|이등변]]인 로빈슨 삼각형의 긴 변 대 짧은 변의 길이비는 ''φ'':1이다. 즉 카이트와 다트 타일 모두 긴 변 대 짧은 변의 길이비는 ''φ'':1인데, 얇은 마름모 '''t'''에서 변 대 짧은 대각선의 길이비, 굵은 마름모 '''T'''에서 긴 대각선 대 변의 길이비도 같다. P2와 P3 테셀레이션 모두 큰 로빈슨 삼각형 대 작은 로빈슨 삼각형의 넓이비가 ''φ'':1이여서, 카이트 대 다트, 굵은 마름모 대 얇은 마름모의 넓이비도 그렇다. (크기가 다른 둔각 로빈슨 삼각형을 왼쪽 그림의 오각형에서 찾을 수 있는데, 맨 위의 마름모 절반이 큰 삼각형이며 아래의 어두운 작은 삼각형과 선형 차원에서 닮음비가 ''φ'':1이며 넓이비는 ''φ''<sup>2</sup>:1이 된다.)
+
+임의의 펜로즈 타일링은 타일의 대칭적인 배치로 둘러싸인 점이 있기 때문에 국소적으로 정오각형 대칭성이 있다. 이러한 배치는 중심점에서 5차 [[회전 대칭]]뿐만 아니라 그 점을 지나는 5개의 직선은 [[반사 대칭]]의 거울축이 되어, [[이면군]]을 이룬다. 이 대칭을 시킨 후에 보통 중심점을 둘러싼 타일들의 한 부분만 그대로 유지되는데, 보존되는 부분이 매우 클 수 있다. 콘웨이와 펜로즈는 P2 또는 P3 테셀레이션에 있는 색이 있는 곡선이 이어져서 하나의 닫힌 도형을 만들 때마다 도형 내부가 정오각형 대칭이라는 것을 증명했다. 또한 어느 타일링에서든지 서로 이어져 닫히지 않는 곡선의 종류가 많아야 2가지라는 걸 증명했다.<ref name="G:9">{{Harvnb|Gardner|1997|p=9}}</ref>
+
+전역적인(global) 5차 대칭점은 최대 1개인데, 1개보다 많다면 한 점에 대해 다른 점을 회전시켰을 때 더 가까운 5차 대칭 중심점이 생기기 때문에 수학적으로 모순이다.<ref name="G:27">{{Harvnb|Gardner|1997|p=27}}</ref> 전체적으로 정오각형 대칭을 가지는 펜로즈 타일링은 유형마다 2개만 있는데, 카이트와 다트로 만든 P2 테셀레이션은 중심점이 "해" 또는 "별"이 꼭짓점이다.<ref name="GS:543">{{Harvnb|Grünbaum|Shephard|1987|p=543}}</ref>
+
+=== 늘리기와 줄이기 ===
+[[파일:Pentagon with half dodecahedral net.svg|오른쪽|섬네일|위오른쪽|작은 6개의 정오각형(정십이면체 전개도의 절반)과 빈틈으로 분해된 정오각형|alt=]]
+펜로즈 타일링의 많은 공통점은 [[타일 대체하기|대체하기 규칙]]의 계층적인 정오각형 구조에 따라 생긴다. 이 대체하기 규칙을 테셀레이션이나 타일의 '늘리기'(inflation)와 '줄이기'(deflation) 또는 '결합하기'(composition)와 '분해하기'(decomposition)라고 한다.<ref name="AMSa"/><ref name="G1"/><ref name="GS-Terms"> {{Harvnb|Grünbaum|Shephard|1987}}에서, "inflation" is used where other authors would use "deflation" (followed by rescaling). The terms "composition" and "decomposition", which many authors also use, are less ambiguous.</ref> 대체하기 규칙은 각 타일을 테셀레이션의 쓰인 모양을 가진 더 작은 타일로 분해한다. (그래서 더 큰 타일이 작은 타일들이 '결합'되게 한다.) 이로부터 펜로즈 타일링이 비례 축소로 자기유사성을 띤다는 사실을 알 수 있고, [[펜타플레이크]]와 같은 과정을 거치면 [[프랙탈]]로 생각할 수 있다.<ref>{{저널 인용 | last1 = Ramachandrarao | first1 = P | year = 2000 | title = On the fractal nature of Penrose tiling | url = http://www.iisc.ernet.in/currsci/aug102000/rc80.pdf | journal = Current Science | volume = 79 | page = 364 | access-date = 2022-07-16 | archive-date = 2018-12-21 | archive-url = https://web.archive.org/web/20181221190122/http://www.iisc.ernet.in/currsci/aug102000/rc80.pdf | url-status =  }}</ref>
+
+==== 로빈슨 삼각형으로의 분해 ====
+[[파일:Robinson triangle decompositions.svg|왼쪽|섬네일|위오른쪽|로빈슨 삼각형을 분해한 모습 (왼쪽은 예각삼각형, 오른쪽은 둔각삼각형) |alt=]]
+P2와 P3 테셀레이션에 모두 쓰이는 대체하기 방법은 여러 크기의 로빈슨 삼각형을 써서 나타낼 수 있다. P2 테셀레이션에서 (카이트와 다트를 나눠서) 나타나는 로빈슨 삼각형은 A-타일이라 하고, P3 테셀레이션에서 (마름모를 나눠서) 나타나는 것은 B-타일이라고 한다.<ref name="GS-R"/> 작은 A-타일은 A<sub>S</sub>라고 표현하는데 [[둔각삼각형|둔각]] 로빈슨 삼각형이며, 큰 로빈슨 타일 A<sub>L</sub>은 [[예각삼각형|예각]]삼각형이다. 반면에 작은 B-타일은 B<sub>S</sub>라고 하며 예각 로빈슨 삼각형이고, 큰 B-타일 B<sub>L</sub>은 둔각삼각형이다.
+
+구체적으로 A<sub>S</sub>의 변의 길이가 (1, 1, {{φ}})라면, A<sub>L</sub>은 ({{φ}}, {{φ}}, 1)이다. B-타일은 이러한 A-타일에 관련이 있는데, 2가지 경우이다.
+* B<sub>S</sub>가 A<sub>L</sub>과 같은 크기일 때 B<sub>L</sub>은 A<sub>S</sub>를 확대한 {{φ}}A<sub>S</sub>이며, 변의 길이는 ({{φ}}, {{φ}}, {{φ}}<sup>2</sup>&nbsp;=&nbsp;1&nbsp;+&nbsp;{{φ}})이다. – B<sub>L</sub>은 A<sub>L</sub> 타일과 A<sub>S</sub> 타일이 길이가 1인 공통변을 가지도록 분해할 수 있다.
+* B<sub>L</sub>이 대신 A<sub>S</sub>와 구별된다면, B<sub>S</sub>는 A<sub>L</sub>을 축소한 (1/{{φ}})A<sub>L</sub>이며, 변의 길이는 (1/{{φ}},1/{{φ}},1)이다. – B<sub>S</sub> 타일과 B<sub>L</sub> 타일을 길이가 1인 공통변을 가지도록 결합해 붙이면 A<sub>L</sub> 타일을 얻는다.
+
+이렇게 분해했을 때 애매한 점이 있다. 로빈슨 삼각형은 이등변이기 때문에 대칭축을 기준으로 거울상인 2가지 방법으로 분해할 수 있기 때문이다. 펜로즈 타일링에서 연결 규칙에 따라 분해하는 방법이 이들 중 정해져 있다. 게다가 연결 규칙은 작은 삼각형들이 결합해서 큰 삼각형이 되는 방법까지 결정한다.<ref name="GS-R"/>
+
+{{여러그림|align=right|direction=vertical|image1=Penrose tilings P2 and P3.svg|image2=Penrose tilings P3 and P2.svg|width=300|footer='늘리기'를 통해 별이 마름모, 마름모가 에이스가 되었다.}}
+
+따라서 P2와 P3 테셀레이션은 '국소적으로 서로를 만들 수 있다'는 결론에 이르게 된다. 타일들의 한 집합으로 만든 테셀레이션은 다른 테셀레이션을 만드는 데 쓰일 수 있는 것이다. 예를 들어 카이트와 다트로 만든 테셀레이션은 A-타일들로 쪼갤 수 있는데, 정해진 방법으로 결합해서 B-타일이 되어 마름모가 될 수 있다.<ref name="S:173-174" /> P2와 P3 테셀레이션은 P1에서 국소적으로 만들 수도 있다. ([[#도형 2|위의 도형 2]]).<ref name="GS:546">{{Harvnb|Grünbaum|Shephard|1987|p=546}}</ref>
+
+B-타일을 A-타일로 분해하는 과정은 다음과 같다.
+
+: B<sub>S</sub> = A<sub>L</sub>, B<sub>L</sub> = A<sub>L</sub> + A<sub>S</sub>
+
+(B-타일이 더 크다는 가정 하에), 대체 [[행렬]] 방정식으로 아래와 같이 쓸 수도 있다.<ref name="S:157-158">{{Harvnb|Senechal|1996|pp=157–158}}</ref>
+
+: <math>\begin{pmatrix} B_L \\ B_S\end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} A_L \\ A_S \end{pmatrix}\, .</math>
+
+이 분해를 {{φ}}A-타일에서 B-타일로의 분해 과정과 합치면 다음을 얻는다.
+
+: <math>\begin{pmatrix} \varphi A_L \\ \varphi A_S\end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} B_L \\ B_S\end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} A_L \\ A_S \end{pmatrix}\, ,</math>
+
+따라서 확대한 타일 {{φ}}A<sub>L</sub>이 A<sub>L</sub> 타일 2개와 A<sub>S</sub> 타일 1개로 분해된다. 연결 규칙은 정해진 대체 방법만 허용한다. {{φ}}A<sub>L</sub>에 있는 A<sub>L</sub> 타일 2개는 카이트 1개를 만들어야 하고, 카이트 1개는 카이트 2개와 절반짜리 다트 2개로, 다트 1개는 카이트 1개와 절반짜리 다트 2개로 분해되어야 한다.<ref name="AMSb">{{Harvnb|Austin|2005b}}</ref><ref name="S:183">{{Harvnb|Senechal|1996|p=183}}</ref> 확대된 {{φ}}B-타일은 비슷한 방법으로 ({{φ}}A-타일을 거쳐서) B-타일로 분해된다.
+
+결합과 분해를 반복할 수 있으므로, 예를 들어
+
+: <math>\varphi^n\begin{pmatrix} A_L \\ A_S\end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}^n\begin{pmatrix} A_L \\ A_S \end{pmatrix}\, .</math>
+
+과정을 ''n''번째로 반복했을 때 카이트와 다트의 개수는 대체하기 행렬의 ''n''제곱으로 결정할 수 있다.
+
+: <math>\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}^n = \begin{pmatrix} F_{2n+1} & F_{2n} \\ F_{2n} & F_{2n-1} \end{pmatrix}\, ,</math>
+
+여기서 ''F<sub>n</sub>'' 은 ''n''번째 [[피보나치 수]]다. 그래서 임의의 충분히 큰 P2 펜로즈 타일링 무늬에서 카이트 대 다트 수의 비율이 황금비 {{φ}}로 수렴한다.<ref name="G:7">{{Harvnb|Gardner|1997|p=7}}</ref> P3 펜로즈 타일링에서 굵은 마름모 대 얇은 마름모 수의 비율도 비슷한 결과가 나온다.<ref name="AMSb" />
+
+==== P2와 P3 타일링을 줄이기 ====
+
+[[파일:AnimSun2k.gif|섬네일|P2 펜로즈 [[테셀레이션]]에서 '해' 꼭짓점을 연속적으로 분해한 모습]]
+[[파일:Penrose P3 Deflations.gif|섬네일|P3 펜로즈 [[테셀레이션]]에서 타일 집합을 연속적으로 분해한 모습]]
+[[파일:AnimSun 13.png|섬네일|P2 펜로즈 [[테셀레이션]]에서 '해' 꼭짓점을 8번 분해한 모습]]
+
+주어진 테셀레이션의 타일로 시작해서 (단 하나의 타일, 평면의 타일링, 또는 다른 어느 것도 괜찮다), '줄이기'로 '세대'(generation)라고 하는 과정을 겪는다. 줄이기의 한 세대에서, 각 타일은 원래 타일링에서 쓰인 작은 타일들 2개 이상으로 대체된다. 새롭게 생기는 타일들은 [[타일 대체하기|대체하기 규칙]]에 따르면 연결 규칙을 만족한다.<ref name="AMSb"/> 줄이기에서 반복되는 패턴은 처음 모양(axiom)을 점점 더 작은 모양으로 바꾼다. <!--충분히 많은 세대를 거치면, 타일링은 경계와 닿지 앟은 채 처음보다 작은 스케일을 가질 것이다. 그러면 처음 모양은 작은 스케일에서 나타나는 최대 크기 타일로 둘러싸일 수 있다. 이렇게 확장된 타일링은 처음 모양으로 새롭게 쓰여서, 점점 더 크게 타일링을 확장시키고 결국 평면 전체를 채울 수 있다.-->
+<!--이것들은 다양한 처음 모양에서 시작해 성공적으로 세대를 거친 예시이다. '해'와 '별'에서, 작은 스케일로 된 처음 모양이 세대 2에서 나타난다. '해'는 세대 3에서 내부에 나타나기도 한다.-->
+
+타일을 나누는 이 규칙은 [[타일 대체하기|대체하기 규칙]]이다.
+
+{| class="wikitable"
+|-
+! 이름
+! 처음 타일
+! 1세대
+! 2세대
+! 3세대
+|-
+| 카이트
+절반
+| [[파일:Penrose kite 0.svg|120px]]
+| [[파일:penrose kile 1.svg|120px]]
+| [[파일:penrose kile 2.svg|120px]]
+| [[파일:penrose kile 3.svg|120px]]
+|-
+| 다트
+절반
+| [[파일:penrose dart 0.svg|120px]]
+| [[파일:penrose dart 1.svg|120px]]
+| [[파일:penrose dart 2.svg|120px]]
+| [[파일:penrose dart 3.svg|120px]]
+|-
+| 해
+| [[파일:penrose sun 0bis.svg|120px]]
+| [[파일:penrose sun 1.svg|120px]]
+| [[파일:penrose sun 2.svg|120px]]
+| [[파일:penrose sun 3.svg|120px]]
+|-
+| 별
+| [[파일:penrose star 0.svg|120px]]
+| [[파일:penrose star 1.svg|120px]]
+| [[파일:penrose star 2.svg|120px]]
+| [[파일:penrose star 3.svg|120px]]
+|}
+위 표를 볼 때 주의해야 한다. 카이트 절반과 다트 절반은 해 또는 별처럼 더 큰 패턴을 분해할 때 의미가 있다. 단지 카이트나 다트에 적용되면 결과가 다르다.
+
+또 대체하기 규칙만 적용하면 오른쪽 그림에서 볼 수 있듯이 빈틈을 만들기 때문에, 다른 규칙이 추가되면 좋다.
+
+==== 순서 및 적용 ====
+늘리기와 줄이기로 카이트와 다트 (P2) 테셀레이션이나 마름모 (P3) 테셀레이션을 구성하는 방법이 있는데, '위아래 세대'(up-down generation)라고 한다.<ref name="G:8"/><ref name="AMSb">{{Harvnb|Austin|2005b}}</ref><ref name="S:183"/>
+
+펜로즈 타일링은 비주기적이어서 평행 이동 대칭성이 없다 – 패턴을 맞추려고 밀어 옮겨서 평면 전체를 덮을 수 없는 것이다. 하지만 크기에 상관없이 경계를 지은 부분은 테셀레이션에서 무수히 많이 반복된다. 따라서 크기가 유한한 어떤 부분도 펜로즈 타일링 전체를 특정할 수 없고, 테셀레이션에 어떤 부분에서 나타나는지 결정할 수도 없다.<ref>"... any finite patch that we choose in a tiling will lie inside a single inflated tile if we continue moving far enough up in the inflation hierarchy. This means that anywhere that tile occurs at that level in the hierarchy, our original patch must also occur in the original tiling. Therefore, the patch will occur infinitely often in the original tiling and, in fact, in every other tiling as well." {{Harvnb|Austin|2005a}}</ref>
+
+이를 통해 일반적으로 특정한 (아무 종류의) 펜로즈 타일링의 수가 [[비가산집합]]임을 알 수 있다. '위아래 세대'는 테셀레이션을 매개변수화할 수 있는 한 방법이지만, 애먼 도형, 펜타그리드, 잘라 사영하기 방법도 쓸 수 있다.<ref name="AMSb"/>
+
+== 관련 타일링과 주제 ==
+
+=== 정십각형 덮기와 준결정 ===
+[[파일:Gummelt decagon.svg|섬네일|upright=1.3|굼멜트의 정십각형(왼쪽)을 밝은 색의 점선으로 카이트와 다트로 분해할 수 있으며, 어두운 색의 두꺼운 점선으로는 에이스와 굵은 마름모를 넣을 수 있다. 한두 개의 붉은 에이스를 포함해서 겹칠 수 있다.(오른쪽)<ref name="LR">{{Harvnb|Lord|Ranganathan|2001}}</ref>|alt=]]
+
+1996년, 독일 수학자 페트라 굼멜트는 두 종류의 겹치는 부분을 허용할 때, 단일 정십각형 타일로 펜로즈 타일링과 동등한 '덮기'(타일들이 겹치지 않는 '테셀레이션'과 구분하기 위한 이름)을 제시했다.<ref>{{Harvnb|Gummelt|1996}}</ref> 정십각형 타일에는 색칠된 부분이 있는데, 연결 규칙에 따라 색칠이 동일한 부분을 겹칠 수 있다. 이런 덮기를 적절히 카이트와 다트로 분해하면 펜로즈 (P2) 테셀레이션이 된다. 비슷하게 P3 테셀레이션은 각 정십각형에 굵은 마름모를 안에 넣고, 남은 부분을 얇은 마름모로 채울 때 얻을 수 있다.
+
+이런 덮기는 [[준결정]]의 성장을 보여주는 현실적인 모델로 여겨진다. 겹치는 정십각형은 결정이 만들어질 때의 [[단위 격자]]와 비슷한 '준단위 격자'라고 하며, 연결 규칙은 특정 원자 집단의 밀도를 본뜬 것이다.<ref>{{Harvnb|Steinhardt|Jeong|1996}}; see also {{웹 인용|url=http://www.physics.princeton.edu/~steinh/quasi/|title=A New Paradigm for the Structure of Quasicrystals|last=Steinhardt|first=Paul J.|확인날짜=2022-09-03|archive-date=2016-10-18|archive-url=https://web.archive.org/web/20161018121732/http://www.physics.princeton.edu/~steinh/quasi/|url-status=}}</ref> 덮기의 본질로 전자 구조 같은 이론을 연구할 수 있는데, [[블로흐의 정리]]가 없어서 어렵다. 하지만 준결정의 영역은 오류 제어를 통해 계산할 수 있다.<ref>{{저널 인용|title=How to Compute Spectra with Error Control|journal=Physical Review Letters|last1=Colbrook|last2=Roman|url=https://www.repository.cam.ac.uk/handle/1810/295873|year=2019|volume=122|issue=25|page=250201|bibcode=2019PhRvL.122y0201C|doi=10.1103/PhysRevLett.122.250201|pmid=31347861|last3=Hansen}}</ref>
+
+=== 관련 테셀레이션 ===
+[[파일:Tie and Navette Tiling.png|왼쪽|섬네일|upright=1.3|나비넥타이와 나베트 테셀레이션 (펜로즈 배경 위 빨간색)]]
+펜로즈 타일링의 세 가지 변형은 국소적으로 서로를 만들어낼 수 있다. P1 테셀레이션의 꼭짓점 중 몇 개를 택하면 또 다른 비주기적 테셀레이션을 구성할 수 있다. P1 테셀레이션의 한 정오각형의 꼭짓점에 ''1,3,5,2,4'' 순서로 숫자를 붙이면 모든 정오각형의 꼭짓점도 명확하게 숫자를 붙일 수 있는데, 순서는 [[시계 방향|시계 방향 또는 반시계 방향]]이 된다.
+같은 숫자로 표시된 점들은 로빈슨 삼각형으로 평면을 타일링하는 반면, 3과 4가 써 있는 점들은 나비넥타이와 나베트 타일링을 이룬다.<ref>{{저널 인용| last1 = Luck | first1 = R | year = 1990| title = Penrose Sublattices | journal = Journal of Non-Crystalline Solids | volume = 117–8 | issue = 90| pages = 832–5 | doi = 10.1016/0022-3093(90)90657-8 | bibcode = 1990JNCS..117..832L }}</ref>
+
+[[파일:Variable penrose tiling.svg|섬네일|준결정이 아닌 변형 타일링. 타일 연결 규칙을 만족하지 않아서 펜로즈 타일링이 아니다.]]
+동일하지 않지만 관련 있는 테셀레이션이 더 있는데, '육각형-배-별'과 '미쿨라-로스' 테셀레이션이다. 예를 들어 마름모 테셀레이션의 연결 규칙을 약하게 해서 각 꼭짓점에서 허용되는 각에 특정한 제한을 두면, 두 타일로 만들어진 테셀레이션이 생긴다.<ref>{{Harvnb|Lançon|Billard|1988}}</ref> 역시 5차 대칭성을 기반으로 하고 있으나, 준결정이 아니다. 원래 마름모 타일링의 마름모를 더 작은 마름모로 채우거나 대체하기 규칙을 적용해서 얻어낼 수 있는데, 데 브라윈의 잘라서 사용하기 방법으로는 불가능하다.<ref>{{Harvnb|Godrèche|Lançon|1992}}; see also {{백과사전 인용|url=http://tilings.math.uni-bielefeld.de/substitution/binary|title=Binary|author= Dirk Frettlöh|author2= F. Gähler|author3= [[Edmund Harriss]]|encyclopedia=Tilings Encyclopedia |publisher= Department of Mathematics, University of Bielefeld}}</ref>
+
+== 예술 및 건축 ==
+<gallery mode="packed">
+파일:Darb-i Imam shrine spandrel.JPG|정오각형과 정십각형을 사용한 [[기리 테셀레이션|기리 타일]] 패턴이 [[이란]] [[이스파한]]에 있는 {{임시링크|다르브 이맘|en|Darb-e_Imam}} 묘의 [[아치 공복]]에서 나타난다. (1453 C.E.)
+파일:Salesforce Transit Center main entrance.jpg|[[샌프란시스코]]의 [[트랜스베이 운송 센터]]이다. 바깥이 흰색 알루미늄으로 되어 있는데, 펜로즈 타일링의 패턴으로 구멍이 나 있다.
+파일:Penrose tiling in CC-3, IIIT Allahabad.jpg|alt=|{{임시링크|인도 정보 기술 연구소|en|Indian Institute of Information Technology, Allahabad}}의 컴퓨터 센터 3 (CC-3) 바닥에 있는 펜로즈 타일링
+</gallery>
+테셀레이션의 미적 가치는 오랫동안 인정받았고, 테셀레이션에 관심을 갖게 하는 계기가 된다. 그래서 펜로즈 타일링의 겉보기 모습은 이것을 정의하는 형식적인 특성보다 관심을 끈다. 북아프리카와 중동에서 쓰인 [[기리 테셀레이션|특정한 장식 무늬]]와의 유사성은 알려져 있으며,<ref>{{Harvnb|Zaslavskiĭ|Sagdeev|Usikov|Chernikov|1988}}; {{Harvnb|Makovicky|1992}}</ref><ref>{{뉴스 인용 |first=Sebastian R. |last=Prange |author2=Peter J. Lu |title=The Tiles of Infinity |date=2009-09-01 |publisher=Aramco Services Company |url=http://www.saudiaramcoworld.com/issue/200905/the.tiles.of.infinity.htm |work=Saudi Aramco World |pages=24–31 |access-date=2010-02-22 |archive-date=2010-01-13 |archive-url=https://web.archive.org/web/20100113133013/http://saudiaramcoworld.com/issue/200905/the.tiles.of.infinity.htm |url-status= }}</ref> 물리학자 [[피터 제임스 루]]와 [[파울 슈타인하트]]는 펜로즈 타일링이 [[이스파한]] [[다르브 이맘]] 묘의 [[기리 (장식)|기리]] 테셀레이션 같은 중세 [[이슬람의 기하학적 무늬]]에 기초를 두었다는 증거를 제시했다.<ref>{{Harvnb|Lu|Steinhardt|2007}}</ref>
+
+[[드롭 시티]] 예술가인 클라크 리처트는 [[마름모삼십면체]]를 평면에 사영시켰을 때 굵은 마름모와 얇은 마름모 타일이 연결되어 비주기적 테셀레이션을 이루는 것을 관찰해서, 펜로즈 마름모를 예술작품에 1970년 활용했다. 예술역사학자 [[마틴 켐프]]는 [[알브레히트 뒤러]]가 마름모 테셀레이션과 비슷한 모티프를 스케치한 것을 발견했다.<ref>{{Harvnb|Kemp|2005}}</ref>
+
+샌프란시스코의 22억 달러 [[트랜스베이 운송 센터]]의 굴곡 있는 흰 금속 외부 표면에는 펜로즈 무늬로 구멍이 나 있다.<ref>{{저널 인용 |url=http://sf.curbed.com/archives/2013/07/11/check_out_the_proposed_skin_for_the_transbay_transit_center.php |title=Check Out the Proposed Skin for the Transbay Transit Center |date=11 July 2013 |first=Sally |last=Kuchar |journal=[[Curbed]] |access-date=2022-09-10 |archive-date=2018-06-12 |archive-url=https://web.archive.org/web/20180612185016/https://sf.curbed.com/2013/7/11/10221138/check-out-the-proposed-skin-for-the-transbay-transit-center |url-status= }}</ref>
+
+[[웨스턴오스트레일리아 대학교]]에 있는 [[노엘 베일리스|베일리스]] 건물 안뜰은 펜로즈 타일로 장식되어 있다.<ref>{{웹 인용|url=http://www.treasures.uwa.edu.au/treasures/66/|title=Centenary: The University of Western Australia|website=www.treasures.uwa.edu.au|확인날짜=2022-09-10|archive-date=2021-06-17|archive-url=https://web.archive.org/web/20210617031438/https://www.treasures.uwa.edu.au/treasures/66/|url-status=}}</ref>
+
+1979년, [[마이애미 대학교]]는 수학과가 있는 배철러 홀의 뜰을 꾸미려고 펜로즈 타일링이 있는 [[인공 대리석]]을 만들었다.<ref>{{웹 인용|url=https://miamioh.edu/cas/departments/mathematics/about/penrose-tiles/|title=(The Penrose Tiling in the Bachelor Hall Courtyard of Miami University)|website=Miami University Department of Mathematics|access-date=2026-10-29}}</ref>
+
+[[인도 정보 기술 연구소]]는 건축의 첫 단계였던 2001년부터 연구 건물을 "펜로즈 기하학"을 토대로 디자인했는데, [[로저 펜로즈]]가 만든 [[테셀레이션]]을 모방했다. 그 건물 중 대부분은 바닥에 펜로즈 타일링으로 된 기하학적 무늬가 있다.<ref>{{웹 인용 |title=Indian Institute of Information Technology, Allahabad |url=https://www.archnet.org/sites/6240 |website=[[ArchNet]] |확인날짜=2022-09-10 |보존url=https://web.archive.org/web/20250914015328/https://www.archnet.org/sites/6240 |보존날짜=2025-09-14 |url-status=dead}}</ref>
+
+[[옥스퍼드 대학교]] 수학과에 위치한 [[앤드루 와일스]] 건물은 2013년 10월,<ref>{{웹 인용|url=http://www.maths.ox.ac.uk/new-building |title=New Building Project |access-date=30 November 2013 |archive-url=https://web.archive.org/web/20121122033241/http://www.maths.ox.ac.uk/new-building |archive-date=22 November 2012 |url-status=dead }}</ref> 입구 포장재에 펜로즈 타일링 부분이 포함되어 있다.<ref>{{웹 인용|title=Roger Penrose explains the mathematics of the Penrose Paving|url=https://www.maths.ox.ac.uk/node/865|publisher=[[옥스퍼드 대학교]] Mathematical Institute}}</ref>
+
+[[헬싱키]] 중부 케스쿠스카투 거리의 인도는 펜로즈 타일링 모양으로 포장되어 있다. 공사는 2014년에 완료되었다.<ref>{{웹 인용|url=https://www.hs.fi/tiede/art-2000002751157.html?share=a77bc9103d565c475aa5484e15932ea3|title=Keskuskadun kävelykadusta voi tulla matemaattisen hämmästelyn kohde|date=6 August 2014|website=Helsingin Sanomat}}</ref>
+
+== 같이 보기 ==
+* [[기리 타일링]]
+* [[바람개비 타일링]]
+* [[오각형 타일링]]
+* [[로저 펜로즈]]
+
+== 주해 ==
+{{각주}}
+
+== 각주 ==
+
+=== 1차 출처 ===
+* {{서적 인용|first=R.|last=Berger|title=The undecidability of the domino problem|series=Memoirs of the American Mathematical Society|volume=66| year=1966|isbn=9780821812662|url=https://books.google.com/books?id=mLfTCQAAQBAJ}}.
+* {{저널 인용|first=N. G.|last=de Bruijn|author-link=Nicolaas Govert de Bruijn|journal=Indagationes Mathematicae|volume=43|pages=39–66|year=1981|title=Algebraic theory of Penrose's non-periodic tilings of the plane, I, II|url=http://alexandria.tue.nl/repository/freearticles/597566.pdf|issue=1|doi=10.1016/1385-7258(81)90017-2|doi-access=free|보존url=https://web.archive.org/web/20210507002645/https://alexandria.tue.nl/repository/freearticles/597566.pdf|보존날짜=2021-05-07|access-date=2025-09-19|url-status=dead}}.
+* {{저널 인용|first=Petra|last= Gummelt|s2cid= 120127686|title=Penrose tilings as coverings of congruent decagons|doi= 10.1007/BF00239998|journal= Geometriae Dedicata|volume= 62|issue=1|year=1996}}.
+* {{저널 인용|last=Penrose|first=Roger|author-link=Roger Penrose|title=The role of aesthetics in pure and applied mathematical research|journal= Bulletin of the Institute of Mathematics and Its Applications|volume= 10|year=1974|page=266ff}}.
+* {{특허 인용| inventor-last = Penrose| inventor-first = Roger| inventorlink = Roger Penrose |fdate = 1976-06-24 |pubdate =1979-01-09 |title = Set of tiles for covering a surface |country = US |number = 4133152}}.
+* {{저널 인용|first=R.M.|last=Robinson|s2cid=14259496|author-link=Raphael M. Robinson|title=Undecidability and non-periodicity for tilings of the plane|url=https://archive.org/details/sim_inventiones-mathematicae_1971-05-26_12_3/page/n1|journal=Inventiones Mathematicae|volume=12|year=1971|pages=177–190|doi=10.1007/BF01418780|bibcode = 1971InMat..12..177R|issue=3 }}.
+* {{저널 인용| last1 = Schechtman|first1 = D.|last2 = Blech|first2 = I.|last3 = Gratias|first3 = D.|last4 = Cahn|first4 = J.W.|title = Metallic Phase with long-range orientational order and no translational symmetry| journal = Physical Review Letters| volume = 53|year = 1984| pages = 1951–1953|doi = 10.1103/PhysRevLett.53.1951| bibcode=1984PhRvL..53.1951S| issue = 20|doi-access = free}}
+* {{저널 인용|first=H.|last=Wang|author-link=Hao Wang (academic)|title=Proving theorems by pattern recognition II|url=https://archive.org/details/sim_att-technical-journal_the-bell-system-technical-journal_1961-11_40_6/page/n2|journal= Bell System Technical Journal|volume=40|year=1961|pages=1–42|doi=10.1002/j.1538-7305.1961.tb03975.x}}.
+
+=== 2차 출처 ===
+* {{웹 인용|first=David|last=Austin|title=Penrose Tiles Talk Across Miles|location=Providence|publisher=American Mathematical Society|year=2005a|url=https://www.ams.org/featurecolumn/archive/penrose.html}}.
+* {{웹 인용|first=David|last=Austin|title=Penrose Tilings Tied up in Ribbons|location=Providence|publisher=American Mathematical Society|year=2005b|url=https://www.ams.org/featurecolumn/archive/ribbons.html}}.
+* {{저널 인용|first1=Matthew|last1= Colbrook|first2=Bogdan|last2= Roman|first3=Anders|last3= Hansen|title= How to Compute Spectra with Error Control|journal= Physical Review Letters|volume=122|issue=25|pages=250201|year= 2019|doi=10.1103/PhysRevLett.122.250201|pmid= 31347861|bibcode= 2019PhRvL.122y0201C|s2cid= 198463498|url= https://www.repository.cam.ac.uk/handle/1810/295873}}
+* {{서적 인용|first1=Karel|last1= Culik|first2=Jarkko|last2= Kari|author2-link=Jarkko Kari|title= Foundations of Computer Science|series= Lecture Notes in Computer Science|volume=1337|pages=153–162|year= 1997|doi=10.1007/BFb0052084|chapter=On aperiodic sets of Wang tiles|isbn=978-3-540-63746-2}}
+* {{서적 인용|author-link=Martin Gardner|last=Gardner|first= Martin|title=Penrose Tiles to Trapdoor Ciphers|year=1997|publisher=Cambridge University Press|isbn=978-0-88385-521-8}}. (First published by W. H. Freeman, New York (1989), {{isbn|978-0-7167-1986-1}}.)
+** Chapter 1 (pp.&nbsp;1–18) is a reprint of {{잡지 인용|last=Gardner|first= Martin|title=Extraordinary non-periodic tiling that enriches the theory of tiles|url=https://archive.org/details/sim_scientific-american_1977-01_236_1/page/110|magazine=Scientific American|date=January 1977|volume=236|issue= 1|pages=110–121|doi= 10.1038/scientificamerican0177-110|bibcode=1977SciAm.236a.110G}}.
+* {{저널 인용|first1 = C|last1 = Godrèche|first2 = F.|last2 = Lançon|year = 1992|title = A simple example of a non-Pisot tiling with five-fold symmetry|journal = Journal de Physique I|volume = 2|pages = 207–220|url = http://inac.cea.fr/sp2m/L_Sim/Publications/1992/Godreche_Lancon-1992-5_fold_non_Pisot_tiling.pdf|doi = 10.1051/jp1:1992134|bibcode = 1992JPhy1...2..207G|issue = 2|s2cid = 120168483}}{{깨진 링크|url=http://inac.cea.fr/sp2m/L_Sim/Publications/1992/Godreche_Lancon-1992-5_fold_non_Pisot_tiling.pdf }}.
+* {{서적 인용|author1-link=Branko Grünbaum|last1=Grünbaum|first1=Branko|last2=Shephard|first2=G. C.|title=Tilings and Patterns|location=New York|publisher=W. H. Freeman|year=1987|isbn=978-0-7167-1193-3|url-access=registration|url=https://archive.org/details/isbn_0716711931}}.
+* {{저널 인용|last = Kemp|first= Martin|title = Science in culture: A trick of the tiles|url = https://archive.org/details/sim_nature-uk_2005-07-21_436_7049/page/332|journal = Nature|volume = 436|page = 332|year = 2005|doi = 10.1038/436332a|issue=7049|bibcode = 2005Natur.436..332K |doi-access = free}}.
+* {{저널 인용|first1 = Frédéric|last1 = Lançon|first2 = Luc|last2 = Billard|year = 1988|title = Two-dimensional system with a quasi-crystalline ground state|journal = Journal de Physique|volume = 49|pages = 249–256|doi = 10.1051/jphys:01988004902024900|url = http://inac.cea.fr/sp2m/L_Sim/Publications/1988/Lancon-Billard-1988-binary_tilings.pdf|issue = 2|citeseerx = 10.1.1.700.3611|access-date = 2022-09-10|archive-date = 2011-07-20|archive-url = https://web.archive.org/web/20110720210501/http://inac.cea.fr/sp2m/L_Sim/Publications/1988/Lancon-Billard-1988-binary_tilings.pdf|url-status = }}.
+* {{저널 인용|journal=Acta Crystallographica|volume=A57|year=2001|pages=531–539|title=The Gummelt decagon as a 'quasi unit cell'|first1=E.A.|last1=Lord|first2=S.|last2=Ranganathan|url=http://materials.iisc.ernet.in/~lord/webfiles/actagum.pdf|doi=10.1107/S0108767301007504|issue=5|pmid=11526302|citeseerx=10.1.1.614.3786|access-date=2022-09-10|archive-date=2011-07-21|archive-url=https://web.archive.org/web/20110721155346/http://materials.iisc.ernet.in/~lord/webfiles/actagum.pdf|url-status=}}
+* {{저널 인용|first1 = Peter J.|last1 = Lu|first2 = Paul J.|last2 = Steinhardt|year = 2007|title = Decagonal and Quasi-crystalline Tilings in Medieval Islamic Architecture|journal = [[사이언스|Science]]|volume = 315|pages = 1106–1110|url = http://www.peterlu.org/sites/peterlu.org/files/Science_315_1106_2007.pdf|doi = 10.1126/science.1135491|pmid = 17322056|issue = 5815|bibcode = 2007Sci...315.1106L|s2cid = 10374218}}{{깨진 링크|url=http://www.peterlu.org/sites/peterlu.org/files/Science_315_1106_2007.pdf }}.
+* {{저널 인용|last=Luck|first= R.|title=Dürer-Kepler-Penrose: the development of pentagonal tilings|journal=Materials Science and Engineering|volume=294|issue=6|year=2000|pages=263–267|doi= 10.1016/S0921-5093(00)01302-2}}.
+* {{서적 인용|first=E.|last=Makovicky|year=1992|chapter=800-year-old pentagonal tiling from Maragha, Iran, and the new varieties of aperiodic tiling it inspired|editor=I. Hargittai|title=Fivefold Symmetry|pages=67–86|publisher=World Scientific|location=Singapore–London|isbn=9789810206000|chapter-url=https://books.google.com/books?id=-Tt37ajV5ZgC&pg=PA67}}.
+* {{잡지 인용|first=Roger|last=Penrose|author-link=Roger Penrose|title=Pentaplexity|magazine=[[Eureka (University of Cambridge magazine)|Eureka]]|volume=39|year=1978|pages=16–22|url=https://www.archim.org.uk/eureka/archive/Eureka-39.pdf|access-date=2022-09-10|archive-date=2022-08-09|archive-url=https://web.archive.org/web/20220809122930/https://www.archim.org.uk/eureka/archive/Eureka-39.pdf|url-status=}}. (Page numbers cited here are from the reproduction as {{저널 인용|title=Pentaplexity: A class of non-periodic tilings of the plane|journal=[[The Mathematical Intelligencer]]|volume=2|year=1979–80|pages=32–37|doi=10.1007/BF03024384|last1=Penrose|first1=R.|s2cid=120305260}}.)
+* {{저널 인용
+ | last = Radin | first = Charles | author-link = Charles Radin
+ | date = April 1996
+ | issue = 4
+ | journal = [[Notices of the American Mathematical Society]]
+ | pages = 416–421
+ | title = Book Review: Quasicrystals and geometry
+ | url = https://www.ams.org/publications/journals/notices/199604/radin.pdf
+ | volume = 43}}
+* {{서적 인용| title=Quasicrystals and geometry| title-link= Quasicrystals and Geometry |first=Marjorie|last=Senechal|author-link=Marjorie Senechal|publisher= Cambridge University Press|year=1996|isbn=978-0-521-57541-6}}.
+* {{저널 인용|first1=Paul J.|last1=Steinhardt|first2=Hyeong-Chai|last2=Jeong|s2cid=4354819|journal=Nature|issue = 1 August|volume=382|pages=431–433|year=1996|doi=10.1038/382431a0|title=A simpler approach to Penrose tiling with implications for quasicrystal formation|bibcode = 1996Natur.382..431S}}.
+* {{저널 인용|first1= G.M.|last1=Zaslavskiĭ|first2= Roal'd Z.|last2=Sagdeev|first3= D.A.|last3=Usikov|first4= A.A.|last4=Chernikov|year = 1988|title = Minimal chaos, stochastic web and structures of quasicrystal symmetry|journal =Soviet Physics Uspekhi|volume=31|pages=887–915|doi=10.1070/PU1988v031n10ABEH005632|bibcode = 1988SvPhU..31..887Z|issue= 10}}.
+
+== 외부 링크 ==
+{{위키공용분류|Penrose tilings}}
+* {{매스월드|urlname = PenroseTiles |title = 펜로즈 타일}}
+* {{웹 인용|url=http://www.quadibloc.com/math/pen01.htm |title=펜로즈 타일링 |author=John Savard|publisher=quadibloc.com |access-date=2009-11-28}}
+* {{웹 인용|url=http://intendo.net/penrose/info.html|title=펜로즈 타일링 |author=Eric Hwang|publisher=intendo.net |access-date=2009-11-28}}
+* {{백과사전 인용|url=http://tilings.math.uni-bielefeld.de/substitution/penrose-rhomb |title=펜로즈 마름모 |author= F. Gähler |author2= E. Harriss |author3= D. Frettlöh |name-list-style= amp |encyclopedia=Tilings Encyclopedia |publisher= Department of Mathematics, University of Bielefeld |access-date=2009-11-28}}
+* {{웹 인용|url=http://www.mathpages.com/home/kmath621/kmath621.htm|title=데 브라윈 격자와 테셀레이션 |author=Kevin Brown|publisher=mathpages.com |access-date=2009-11-28}}
+* {{웹 인용|url=http://www.ics.uci.edu/~eppstein/junkyard/penrose.html|title=펜로즈 타일 |author=David Eppstein |publisher=ics.uci.edu/~eppstein| work=The Geometry Junkyard |access-date=2009-11-28}} This has a list of additional resources.
+* {{웹 인용|url=http://www.eschertile.com/penrose.htm |title=건축에서의 펜로즈 타일 |author=William Chow |access-date=2009-12-28}}
+* {{웹 인용| url = http://www.spacegoo.com/penrose| title = 펜로즈 타일 보기}}
+
+{{테셀레이션}}
+{{위키데이터 속성 추적}}
+
+[[분류:테셀레이션]]
+[[분류:비주기적 테셀레이션]]
+[[분류:수학과 예술]]

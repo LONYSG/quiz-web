@@ -1,0 +1,87 @@
+{{short description|Computer user interface method}}
+{{Redirect|Cut and Paste|the 2006 Arabic film|Cut and Paste (film)}}
+{{More citations needed|date=November 2023}}
+[[File:A cutcopy.png|frame|Cut, copy, and paste icons in [[ERP5]].]]
+'''Cut, copy, and paste''' are essential [[Command (computing)|commands]] of modern [[human–computer interaction]] and [[user interface design]]. They offer an [[interprocess communication]] technique for transferring [[data (computer science)|data]] through a computer's [[user interface]]. The ''cut'' command removes the [[Selection (user interface)|selected data]] from its original position, and the ''copy'' command creates a duplicate; in both cases the selected data is kept in temporary storage called the [[Clipboard (computing)|clipboard]]. Clipboard data is later inserted wherever a ''paste'' command is issued. The data remains available to any application supporting the feature, thus allowing easy data transfer between applications.
+
+The command names are a ([[skeuomorph]]ic) [[interface metaphor]] based on the physical procedure used in [[manuscript]] print editing to create a [[page layout]], like with paper.<ref>{{cite news |author=<!--not stated--> |title=What is skeuomorphism? |url=https://www.bbc.com/news/magazine-22840833 |access-date=2025-07-25 |work=[[BBC]] |date=2013-06-13 |quote=You cut and paste on Microsoft programs like Word and Outlook using scissors and a clipboard.}}</ref>
+The commands were pioneered into computing by [[Xerox]] [[PARC (company)|PARC]] in 1974, popularized by [[Apple Inc.|Apple Computer]] in the 1983 [[Apple Lisa|Lisa]] workstation and the 1984 [[Macintosh 128K|Macintosh]] computer, and in a few home computer applications such as the 1984 word processor [[Cut & Paste]].
+
+This [[interaction technique]] has close associations with related techniques in [[graphical user interface]]s (GUIs) that use [[pointing device]]s such as a [[computer mouse]] (by [[drag and drop]], for example). Typically, clipboard support is provided by an [[operating system]] as part of its GUI and [[widget toolkit]].
+
+The capability to replicate information with ease, changing it between contexts and applications, involves [[privacy]] concerns because of the risks of disclosure when handling [[Information sensitivity|sensitive information]]. Terms like ''cloning'', ''copy forward'', ''carry forward'', or ''re-use'' refer to the dissemination of such information through documents, and may be subject to regulation by [[administrative body|administrative bodies]].<ref name="Laubach">{{cite web|url=http://hcca-info.org/portals/0/pdfs/resources/conference_handouts/regional_conference/2012/seattle/laubachwakefieldprint2.pdf|title=Cloning and Other Compliance Risks in Electronic Medical Records|last1=Laubach|first1=Lori|last2=Wakefield|first2=Catherine|date=June 8, 2012|publisher=[[Moss Adams LLP]], [[MultiCare]]|access-date=April 23, 2014|url-status=live|archive-url=https://web.archive.org/web/20140820034941/http://hcca-info.org/portals/0/pdfs/resources/conference_handouts/regional_conference/2012/seattle/laubachwakefieldprint2.pdf|archive-date=August 20, 2014}}</ref>
+
+==History==
+===Origins===
+The term "cut and paste" comes from the traditional practice in manuscript editing, whereby people cut paragraphs from a page with [[scissors]] and [[Adhesive|paste]] them onto another page. This practice remained standard into the 1980s. Stationery stores sold "editing scissors" with blades long enough to cut an {{convert|8+1/2|in||adj=mid|-wide}} page. The advent of [[photocopier]]s made the practice easier and more flexible.{{Citation needed|date=July 2026}}
+
+The act of copying or transferring text from one part of a computer-based document ("[[Data buffer|buffer]]") to a different location within the same or different computer-based document was a part of the earliest on-line computer editors. As soon as computer data entry moved from punch-cards to online files (in the mid/late 1960s) there were "commands" for accomplishing this operation. This mechanism was often used to transfer frequently-used commands or text snippets from additional buffers into the document, as was the case with the [[QED (text editor)|QED]] text editor.<ref name="communications1967">{{citation|doi=10.1145/363848.363863|last1=Deutsch|first1=L. Peter|author-link1=L. Peter Deutsch|last2=Lampson|first2=Butler W.|author-link2=Butler Lampson|title=An online editor|journal=Communications of the ACM|volume=10|issue=12|year=1967|pages=793–799, 803|s2cid=18441825|url=http://research.microsoft.com/en-us/um/people/blampson/04-OnlineEditor/04-OnlineEditor.htm<!-- http://portal.acm.org/citation.cfm?id=363848.363863&coll=ACM&dl=ACM&CFID=15669714&CFTOKEN=68334085 -->|url-status=live|archive-url=https://web.archive.org/web/20130526060402/http://research.microsoft.com/en-us/um/people/blampson/04-OnlineEditor/04-OnlineEditor.htm|archive-date=2013-05-26|doi-access=free}}, p. 793.</ref>
+
+===Early methods===
+The earliest [[text editor|editors]] (designed for [[teleprinter]] terminals) provided [[computer keyboard|keyboard]] commands to delineate a contiguous region of text, then delete or move it. Since moving a region of text requires first removing it from its initial location and then inserting it into its new location, various schemes had to be invented to allow for this multi-step process to be specified by the user. Often this was done with a "move" command, but some text editors required that the text be first put into some temporary location for later retrieval/placement. In 1983, the [[Apple Lisa]] became the first text editing system to call that temporary location "the clipboard".
+
+Earlier control schemes such as [[NLS (computer system)|NLS]] used a [[word order|verb—object]] command structure, where the command name was provided first and the object to be copied or moved was second. The inversion from verb—object to object—verb on which copy and paste are based, where the user selects the object to be operated before initiating the operation, was an innovation crucial for the success of the desktop metaphor as it allowed copy and move operations based on [[direct manipulation]].<ref>{{cite book|chapter=Metaphors create theories for users|author=Kuhn, Werner|title=Spatial Information Theory a Theoretical Basis for GIS|series=Lecture Notes in Computer Science|pages=366–376|year=1993|volume=716|publisher=Springer|doi=10.1007/3-540-57207-4_24|isbn=978-3-540-57207-7}}</ref>
+
+===Popularization===
+Inspired by early line and character editors, such as [[Pentti Kanerva]]'s TV-Edit,<ref>{{Cite book |last=Moggridge |first=Bill |url=https://www.worldcat.org/title/ocm70167858 |title=Designing interactions |date=2007 |publisher=MIT Press |isbn=978-0-262-13474-3 |location=Cambridge, Mass |oclc=ocm70167858}}</ref> that broke a move or copy operation into two steps—between which the user could invoke a preparatory action such as navigation—[[Larry Tesler|Lawrence G. "Larry" Tesler]] proposed the names "cut" and "copy" for the first step and "paste" for the second step. Beginning in 1974, he and colleagues at [[Xerox]] [[PARC (company)|PARC]] implemented several text editors that used cut/copy-and-paste commands to move and copy text.<ref>{{cite web |url=http://www.designinginteractions.com/ |title=Bill Moggridge, Designing Interactions, MIT Press 2007, pp. 63–68 |publisher=Designinginteractions.com |access-date=2011-11-25 |url-status=live |archive-url=https://web.archive.org/web/20111117051822/http://www.designinginteractions.com/ |archive-date=2011-11-17 }}</ref>
+
+[[Apple Inc.|Apple Computer]] popularized this paradigm with its [[Apple Lisa|Lisa]] (1983) and [[Mac (computer)|Macintosh]] (1984) operating systems and applications. The functions were mapped to key combinations using the {{Key press|[[Command key|Command]]}} key as a special [[modifier key|modifier]], which is held down while also pressing {{keypress|X}} for cut, {{keypress|C}} for copy, or {{keypress|V}} for paste. These few [[keyboard shortcut]]s allow the user to perform all the basic editing operations, and the keys are clustered at the left end of the bottom row of the standard [[QWERTY]] keyboard.
+
+These are the standard shortcuts:
+* [[Substitute character#Other uses|Control-Z]] (or {{keypress|Command|Z}}) to [[undo]]
+* [[Control-X]] (or {{keypress|Command|X}}) to cut
+* [[Control-C]] (or {{keypress|Command|C}}) to copy
+* [[Control-V]] (or {{keypress|Command|V}}) to paste
+
+The [[IBM Common User Access]] (CUA) standard also uses combinations of the [[Insert key|Insert]], [[Delete key|Del]], [[Shift key|Shift]] and [[Control key]]s. Early versions of [[Microsoft Windows|Windows]] used the IBM standard. [[Microsoft]] later also adopted the Apple key combinations with the introduction of [[Windows]], using the [[control key]] as [[modifier key]].
+
+Similar patterns of key combinations, later borrowed by others, are widely available in most GUI applications.
+
+The original cut, copy, and paste workflow, as implemented at PARC, utilizes a unique workflow: With two windows on the same screen, the user could use the mouse to pick a point at which to make an insertion in one window (or a segment of text to replace). Then, by holding shift and selecting the copy source elsewhere on the same screen, the copy would be made as soon as the shift was released. Similarly, holding shift and control would copy and cut (delete) the source. This workflow requires many fewer keystrokes/mouse clicks than the current multi-step workflows, and did not require an explicit copy buffer. It was dropped, one presumes, because the original Apple and IBM GUIs were not high enough density to permit multiple windows, as were the PARC machines, and so multiple simultaneous windows were rarely used.
+
+==Cut and paste==
+[[File:Sequence diagram of cut paste-en.svg|thumb|class=skin-invert-image|The sequence diagram of cut and paste operation]]
+Computer-based editing can involve very frequent use of cut-and-paste operations. Most software-suppliers provide several methods for performing such tasks, and this can involve (for example) key combinations, pulldown menus, pop-up menus, or [[toolbar]] buttons.
+# The user selects or "highlights" the text or file for moving by some method, typically by [[Drag and drop|dragging]] over the text or file name with the pointing-device or holding down the [[Shift key]] while using the [[arrow keys]] to move the [[Cursor (computers)|text cursor]].
+# The user performs a "cut" operation via key combination {{keypress|[[Control key|Ctrl]]|x}} ({{keypress|[[Command key|⌘]]|x}} for [[Mac (computer)|Macintosh]] users), menu, or other means.
+# Visibly, "cut" text immediately disappears from its location. "Cut" files typically change color to indicate that they will be moved.
+# Conceptually, the text has now moved to a location often called the [[Clipboard (computing)|clipboard]]. The clipboard typically remains invisible. On most systems only one clipboard location exists, hence another cut or copy operation overwrites the previously stored information. Many [[Unix|UNIX]] text-editors provide multiple clipboard entries, as do some Macintosh programs such as Clipboard Master,<ref>{{cite web |title=Clipboard Master |work=Clipboard Master 2.0 by In Phase Consulting, July 1994|url=http://forums.info-mac.org/viewtopic.php?f=243&t=14244&sid=739ce1119f88340c52dc2aed3c788fff |access-date=14 September 2009}}</ref> and Windows [[clipboard manager|clipboard-manager]] programs such as the one in [[Microsoft Office]].
+# The user selects a location for insertion by some method, typically by clicking at the desired insertion point.
+# A ''paste'' operation takes place which visibly inserts the clipboard text at the insertion point. (The paste operation does not typically destroy the clipboard text: it remains available in the clipboard and the user can insert additional copies at other points).
+Whereas cut-and-paste often takes place with a mouse-equivalent in Windows-like GUI environments, it may also occur entirely from the keyboard, especially in UNIX [[text editor]]s, such as [[Pico (text editor)|Pico]] or [[Vi (text editor)|vi]]. Cutting and pasting without a mouse can involve a selection (for which {{keypress|Ctrl|x}} is pressed in most graphical systems) or the entire current line, but it may also involve text after the [[cursor (computers)|cursor]] until the end of the line and other more sophisticated operations.
+
+The clipboard usually stays invisible, because the operations of cutting and pasting, while actually independent, usually take place in quick succession, and the user (usually) needs no assistance in understanding the operation or maintaining mental context. Some application programs provide a means of viewing, or sometimes even editing, the data on the clipboard.
+
+==Copy and paste==
+{{Redirect-multi|2|Copy and paste|Copy & Paste|the album|Hurricane Venus||copy and paste (disambiguation)}}
+[[File:Sequence diagram of copy paste-en.svg|thumb|300px|class=skin-invert-image|Sequence diagram of the copy-paste operation]]
+The term "copy-and-paste" refers to the popular, simple method of reproducing [[Character (computing)|text]] or other [[data]] from a source to a destination. It differs from cut and paste in that the original source text or data does not get deleted or removed. The popularity of this method stems from its simplicity and the ease with which users can move data between various applications visually – without resorting to [[Disk storage|permanent storage]].
+
+Use in healthcare documentation and [[electronic health record]]s are sensitive, with potential for the introduction of [[medical error]]s, [[information overload]], and [[fraud]].<ref name="Laubach" /><ref>{{cite web|url=http://library.ahima.org/xpedio/groups/public/documents/ahima/bok1_050621.pdf|title=Appropriate Use of the Copy and Paste Functionality in Electronic Health Records|date=March 17, 2014|publisher=[[American Health Information Management Association]]|access-date=April 23, 2014|archive-url=https://web.archive.org/web/20160312091551/http://library.ahima.org/xpedio/groups/public/documents/ahima/bok1_050621.pdf|archive-date=March 12, 2016|url-status=dead}}</ref>
+
+==See also==
+* [[Clipboard (computing)|Clipboard]]
+* [[Control key]]
+* [[Copypasta]]
+* [[Creepypasta]]
+* [[Copy-and-paste programming]]
+* [[Copy Cursor (FreeKEYB)|Copy Cursor]]
+* [[Drag and drop]]
+* [[Photomontage]]
+* [[Publishing Interchange Language]]
+* [[Simultaneous editing]]
+* [[X Window selection]]
+* [[Transposable element]] — Cut, copy, and paste in the [[genome]].
+
+==References==
+{{Reflist}}
+
+==External links==
+{{commons category}}
+* [http://tronche.com/gui/x/icccm/sec-2.html 2. Peer-to-Peer Communication by Means of Selections] in the [[ICCCM]]
+* [https://dl.acm.org/doi/10.1145/2212877.2212896 A personal history of modeless text editing and cut/copy-paste] by Larry Tesler ([http://worrydream.com/refs/Tesler%20-%20A%20Personal%20History%20of%20Modeless%20Text%20Editing%20and%20Cut-Copy-Paste.pdf pdf])
+
+[[Category:User interface techniques]]
+[[Category:Data management]]
+[[Category:Clipboard (computing)]]
+[[Category:Copying]]

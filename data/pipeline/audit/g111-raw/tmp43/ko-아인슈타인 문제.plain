@@ -1,0 +1,52 @@
+
+
+
+Wikimedia Error
+
+* { margin: 0; padding: 0; }
+body { display: flex; flex-direction: column; min-height: 100vh; background: #fff; font: 14px/22px system-ui, -apple-system, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif; color: #202122; }
+.content { box-sizing: border-box; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; margin: 0 auto; padding: 32px; max-width: 640px; text-align: center; }
+.footer { border-top: 1px solid #eaecf0; background: #f8f9fa; padding: 2em 1em; font-size: 12px; text-align: center; }
+#logo { display: block; }
+a img { border: 0; }
+.content-text { display: flex; flex-direction: column; gap: 8px; }
+h1 { font-size: 18px; line-height: 28px; font-weight: bold; }
+a { color: #36c; text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: inherit; }
+summary { font-weight: bold; cursor: pointer; }
+details[open] { background: #970302; color: #dfdedd; }
+.text-muted { color: #777; }
+.external { display: inline-flex; align-items: center; gap: 4px; }
+.external svg { width: 14px; height: 14px; fill: currentColor; }
+@media (prefers-color-scheme: dark) {
+  body { background: #101418; color: #eaecf0; }
+  a { color: #88a3e8; }
+  .footer { border-top: 1px solid #54595d; background: #202122; }
+    #logo[src$="-logo.svg"], #wmfLogo { filter: invert(1) hue-rotate(180deg); }
+  .text-muted { color: #888; }
+}
+
+
+
+
+
+
+if ( /(^|\.)wikipedia\.org$/.test( location.hostname ) ) {
+	document.getElementById( 'logo' ).outerHTML = '' +
+		'' +
+		'' +
+		'';
+}
+
+
+Error
+
+Not Found
+
+Wikimedia Status 
+
+
+If you report this error to the Wikimedia System Administrators, please include the details below.Request served via cp5019 cp5019, Varnish XID 583600336Upstream caches: cp5019 intError: 404, Not Found at Tue, 24 Nov 2026 17:26:35 GMTSensitive client informationIP address: 49.167.125.130
+
+

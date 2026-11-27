@@ -1,0 +1,123 @@
+{{다른 뜻|벤저민 그레이엄 수||또 다른 그레이엄 수}}
+'''그레이엄 수'''(Graham's number)는 [[미국]]의 [[수학자]] [[로널드 그레이엄]]이 이름을 붙인 특정한 [[자연수]]의 명칭으로, <math>G</math>로 표시한다. [[램지 이론]]에 대한 수학 문제의 해결 과정에서 [[유계|상계]](upper bound)로 제시된 [[큰 수]]이다. 그레이엄 수는 [[구골플렉스]]보다도 훨씬 큰 [[스큐스 수]]나 [[스테인하우스-모서 표기법|모서 수]]보다도 훨씬 크다. 마찬가지로 각 자릿수마다 측정 가능한 가장 작은 길이인 [[플랑크 길이]]만큼의 부피를 차지한다고 가정해도 그레이엄 수의 모든 [[숫자]]를 담기에는 [[관측 가능한 우주]]를 모두 동원해도 부족하다. 그레이엄 수를 디지털로 표현한다고 해도 자릿수가 너무 커서 관측 가능한 우주를 모두 사용해도 이를 디지털로 표현할 수 없다. 또한 그레이엄 수의 자릿수는 관측 가능한 우주를 동원해 플랑크 크기의 [[부피]] 단위로 사용을 하더라도 자릿수의 숫자도 커 표현할 수 없다. 따라서 그레이엄 수는 실제로 3의 [[거듭제곱]] 형식으로 표현할 수 있으나 이를 <math>a ^{ b ^{ c ^{ \cdot ^{ \cdot ^{ \cdot}}}}}</math> 형식의 물리적 우주 규모의 [[테트레이션]]으로는 표현할 수 없다.
+
+그레이엄 수는 이 수의 이름을 붙인 [[로널드 그레이엄]]이 사용한 것처럼 [[커누스 윗화살표 표기법]] 혹은 이와 유사한 표기법을 사용해 [[계산 가능 함수|계산 가능한]] [[재귀]] 공식 형태로 표현할 수 있다. 이를 정의하는 재귀 공식이 존재하므로 계산 가능한 어떠한 수열보다도 빠른 속도로 증가하는 보통의 [[바쁜 비버]] 수보다 그레이엄 수가 훨씬 작다. 그레이엄 수는 너무 커서 전부를 계산할 순 없지만, 간단한 알고리즘을 통해 그레이엄 수의 앞자리는 무엇인지 계산할 수 있으며 마지막 13자리는 ...7262464195387이다. [[커누스 윗화살표 표기법]]을 사용하면 그레이엄 수는 <math>g_{64}</math>라고 표현할 수 있으며,<ref>{{웹 인용| url=https://mathworld.wolfram.com/GrahamsNumber.html | title=Graham's Number }}</ref> 여기서 g 함수는 다음과 같이 정의할 수 있다.
+
+<math display="block">
+  g_n =
+   \begin{cases}
+    3\uparrow\uparrow\uparrow\uparrow3, & \text{if } n=1 \text{ and} \\
+    3\uparrow^{g_{n-1}}3, & \text{if } n \ge 2.
+   \end{cases}
+ </math>
+
+그레이엄 수는 그레이엄이 [[통속과학]] 작가인 [[마틴 가드너]]과의 대화에서 자신이 연구하던 문제의 상한값을 단순화해 설명하면서 처음 정의되었다. 1977년 가드너는 《[[사이언티픽 아메리칸]]》지에 이 수를 설명하며 일반 대중에게 처음으로 소개했다. 소개 당시 그레이엄 수는 지금까지 발표된 수학적 증명에 사용된 수 중 가장 큰 양의 정수였다. 이 수는 1980년 《[[기네스 세계 기록]]》에 등재되며 대중의 관심을 끌어모았다. 그레이엄 수의 등장 이후 그레이엄 수보다 훨씬 더 큰 수로 알려진 [[크러스컬 나무 정리|TREE(3)]]와 같은 수가 [[하비 프리드먼]]의 [[크러스컬 나무 정리]]의 다양한 유한한 형태와 관련되어 사용되는 등 이후 많은 진지한 수학 증명에서 매우 큰 수로 등장했다. 또한 그레이엄 수가 도출된 램지 이론에서 더 작은 상한의 수도 맞다고 증명되었다.
+
+== 문제 ==
+[[파일:GrahamCube.svg|right|280px|섬네일|하나의 색만 가진 4개 꼭지점의 동일 평면 완전 하위 그래프를 포함한 2색 3차원 정육면체의 예시이다. 하위 그래프는 정육면체 아래에 표시했다. 만약 현재 하위 그래프의 아래쪽 가장자리 선분을 파란색으로 바꾸면 이 정육면체에는 하나의 색만 가진 4개 꼭지점의 동일 평면 완전 하위 그래프가 존재하지 않으므로 이런 반례를 통해 ''N''* > 3임을 증명할 수 있다.]]
+
+그레이엄 수는 램지 이론의 다음 문제와 연결된다.
+{{인용문|N차원 [[초입방체]]의 각 [[꼭짓점]]을 서로서로 이어 2<sup>''n''</sup>개의 [[꼭짓점 (그래프 이론)|꼭짓점]]에 대한 [[완전 그래프]]를 구한다. 이 그래프의 각 모서리를 빨강 혹은 파랑 두 가지 색으로 칠한다. 모든 모서리를 색칠했을 때 어떻게 색칠하든 한 평면에 있는 4개의 꼭지점을 이은 완전 그래프가 모두 한 가지 색으로만 이루어져 있으러면 그 최소값 ''n''이 얼마 이상이 되어야 하는가?}}
+
+1971년 그레이엄과 로스차일드는 [[매개변수 단어]]의 [[램지 이론]]에 대한 [[그레이엄-로스차일드 정리]]를 증명했는데 이 정리는 위 문제의 특수한 경우에서 문제의 해가 ''N*''임을 보여주었다. 그레이엄은 ''N*'' 값을 {{nowrap|6 ≤ ''N*'' ≤ ''N''}} 사이로 제한시켰는데 여기서 ''N''값은 매우 큰 아래의 수이다.
+
+:<math>N=F^7(12) = F(F(F(F(F(F(F(12))))))),</math>
+
+여기서 [[커누스 윗화살표 표기법]] 식으로는 <math>F(n) = 2\uparrow^n 3</math>이며 [[콘웨이 연쇄 화살표 표기법]]으로는 {{nowrap|4 → 2 → 8 → 2}}와 {{nowrap|2 → 3 → 9 → 2}} 사이의 값이다.<ref>{{웹 인용|url=http://iteror.org/big/Source/Graham-Gardner/GrahamsNumber.html |title=Graham's number records |publisher=Iteror.org |access-date=2014-04-09 |archive-url=https://web.archive.org/web/20131019135451/http://iteror.org/big/Source/Graham-Gardner/GrahamsNumber.html |archive-date=2013-10-19 |url-status=dead }}</ref> 이 상계는 2014년 [[헤일스-주에트 정리]]에서 나온 수의 상한값에 따라 다음과 같이 줄어들었다.
+
+:<math>N' = 2 \uparrow\uparrow 2 \uparrow\uparrow (3 + 2 \uparrow\uparrow 8),</math>
+
+위 수에는 세 [[테트레이션]]이 존재한다.<ref>{{저널 인용|last1=Lavrov|first1=Mikhail |last2=Lee|first2=Mitchell |last3=Mackey|first3=John |date=2014 |title=Improved upper and lower bounds on a geometric Ramsey problem |journal=[[European Journal of Combinatorics]] |volume=42 |pages=135–144 |doi=10.1016/j.ejc.2014.06.003|doi-access=free }}</ref> 2019년에는 N을 아래와 같이 좀 더 정확하게 정의했다.<ref>{{ArXiv 인용|eprint=1905.05617 |last1=Lipka |first1=Eryk |title=Further improving of upper bound on a geometric Ramsey problem |class=math.CO |year=2019 }}</ref>
+
+:<math>N'' = (2 \uparrow\uparrow 5138) \cdot ((2 \uparrow\uparrow 5140) \uparrow\uparrow (2 \cdot 2 \uparrow\uparrow 5137)) \ll 2 \uparrow\uparrow (2 \uparrow\uparrow 5138)</math>
+
+6이라는 하한은 이후 2003년 제프리 엑소가 11로,<ref>{{저널 인용|last=Exoo |first=Geoffrey |date=2003 |title=A Euclidean Ramsey Problem |url=https://archive.org/details/discrete-computational-geometry_2003-03_29_2/page/223 |journal=[[Discrete & Computational Geometry]] |volume=29 |issue=2 |pages=223–227 |doi=10.1007/s00454-002-0780-5|doi-access=free }} Exoo refers to the Graham & Rothschild upper bound ''N'' by the term "Graham's number". This is not the "Graham's number" ''G'' published by Martin Gardner.</ref> 2008년 제롬 버클리가 13으로 올라감을 증명했다.<ref>{{ArXiv 인용|eprint=0811.1055 |last1=Barkley |first1=Jerome |title=Improved lower bound on an Euclidean Ramsey problem |class=math.CO |year=2008 }}</ref> 따라서 ''N*''의 가장 확실한 유계는 {{nowrap|13 ≤ ''N*'' ≤ ''N<nowiki>''</nowiki>''}}이다.
+
+그레이엄 수 ''G''는 ''N''보다 훨씬 큰데 <math>f(n) = 3 \uparrow^n 3</math>라고 정의된 함수에서 <math>f^{64}(4)</math>이다. 이 문제에 대한 약한 상한은 그레이엄의 미발표된 연구에서 나온 값으로 결국 1977년 11월에 마틴 가드너가 《사이언티픽 아메리칸》지에 이를 발표하고 이름을 붙였다.<ref>{{저널 인용|author=Martin Gardner|author-link=Martin Gardner|date= 1977 |title= In which joining sets of points leads into diverse (and diverting) paths|journal=Scientific American|issue = November| url=http://iteror.org/big/Source/Graham-Gardner/GrahamsNumber.html|archive-url=https://web.archive.org/web/20131019135451/http://iteror.org/big/Source/Graham-Gardner/GrahamsNumber.html |archive-date=2013-10-19|url-status=dead }}</ref>
+
+== 유도 방법 ==
+그레이엄 수의 기본은 3이다. 3을 밑으로 하여 3의 연산을 무수히 반복하는 과정이 되풀이된다. 물론 실제로 무수히 반복하지는 않고 유한하지만, 그 수의 크기가 극도로 크다는 말로는 모자라기 때문에 이 수를 감당해내는 것조차도 불가능하다. 이 연산을 나타내기 위해서 커누스 윗화살표 표기법의 이해가 필요하다. 커누스 윗화살표 표기법은 하이퍼연산자라고도 하며, 덧셈-곱셈-거듭제곱-테트레이션-펜테이션-....등으로 그 직전 연산의 반복으로 상위 연산을 정의하는 기호이다. 이 커누스 윗화살표 표기법을 재귀하면 G(n)에 도달한다.
+
+[[커누스 윗화살표 표기법]]을 이용하여 f(n)를 다음과 같이 정의하자.
+
+<math>f(1) = 3\uparrow 3 = 3^3 = 27</math>
+
+<math>f(2) = 3\uparrow \uparrow 3 = 3\uparrow (3\uparrow 3) = 3\uparrow f(1) = 3^{3^3} = 3^{27} = 7,625,597,484,987</math>
+
+<math>f(3) = 3\uparrow \uparrow \uparrow 3 = 3\uparrow \uparrow (3\uparrow \uparrow 3) = 3\uparrow \uparrow f(2) = 3\uparrow (3\uparrow (3\uparrow ... \uparrow 3)) </math> &nbsp; (G(2)번 반복) <math>= 3^{3^{3^{.^{.^{.^{.^3}}}}}}</math> (7,625,597,484,987번 반복)
+
+<math>f(4) = 3\uparrow \uparrow \uparrow \uparrow 3 = 3\uparrow \uparrow \uparrow (3\uparrow \uparrow \uparrow 3) = 3\uparrow \uparrow \uparrow G(3) = 3\uparrow \uparrow (3\uparrow \uparrow (3\uparrow \uparrow ... (3\uparrow \uparrow (3\uparrow \uparrow 3))...))</math> &nbsp; (G(3)번 반복) <br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <math> = 
+\left.\begin{matrix}3^{3^{\cdot^{\cdot^{\cdot^{\cdot^{3}}}}}}\end{matrix}\right \}
+\left.\begin{matrix}3^{3^{\cdot^{\cdot^{\cdot^{3}}}}}\end{matrix}\right \}\dots
+\left.\begin{matrix}3^{3^{\cdot^{\cdot^{3}}}}\end{matrix}\right \}
+\left.\begin{matrix}3^{3^3}\end{matrix}\right \}3</math> &nbsp; (f(3)번 반복)
+
+이렇게 급격히 증가하며, f(3)부터 이미 계산하거나 표기하기가 곤란해진다. 여기서 <math>g_1 = f(4) = 3\uparrow \uparrow \uparrow \uparrow 3</math>라 정의된다. 그러면
+
+<math>g_2 = f^2(4) = f(f(4)) = 3\uparrow ...\uparrow 3</math> (화살표가 f(4)개, 여기서 지수는 합성 횟수를 뜻한다.)
+
+<math>g_3 = f^3(4) = f(f^2(4)) = 3\uparrow ...\uparrow 3</math> (화살표가 f<sup>2</sup>(4)개)
+
+<math>g_4 = f^4(4) = f(f^3(4)) = 3\uparrow ...\uparrow 3</math> (화살표가 f<sup>3</sup>(4)개)
+
+...
+
+<math>g_{63} = f^{63}(4) = f(f^{62}(4)) = 3\uparrow ...\uparrow 3</math> (화살표가 f<sup>62</sup>(4)개)
+
+<math>g_{64} = f^{64}(4) = f(f^{63}(4)) = 3\uparrow ...\uparrow 3</math> (화살표가 f<sup>63</sup>(4)개)
+
+이와 같이 증가하여 <math>G = g_{64} = f^{64}(4)</math>로 정의되는 '''G'''가 그레이엄 수이다. g3만 되도 기골(10^^100)보다 훨씬 더 커진다. 그럼 g64는 상상도 할 수 없을 만큼 커질 것이다. 하지만 라요 수(rayo(10^100))는 이보다 훨씬 크다.
+
+== 결과 ==
+그레이엄 수는 너무 크기 때문에 [[10진수]]로 표기하는 것이 불가능하지만, 마지막 500자리의 수는 다음과 같이 알려져 있다.
+
+  …02425950695064738395657479136519351798334535362521
+   43003540126026771622672160419810652263169355188780
+   38814483140652526168785095552646051071172000997092
+   91249544378887496062882911725063001303622934916080
+   25459461494578871427832350829242102091825896753560
+   43086993801689249889268099510169055919951195027887
+   17830837018340236474548882222161573228010132974509
+   27344594504343300901096928025352751833289884461508
+   94042482650181938515625357963996189939679054966380
+   03222348723967018485186439059104575627262464195387
+
+== 같이 보기 ==
+* [[큰 수]]
+* [[커누스 윗화살표 표기법]]
+* [[하이퍼 연산]]
+* [[아커만 함수]]
+* [[램지의 정리]]
+
+== 각주 ==
+{{각주}}
+
+== 참고 문헌 ==
+{{참고 자료 시작}}
+* {{저널 인용|author=Gardner, Martin|title=Mathematical Games|journal= Scientific American|volume=237|issue=5|pages=18–28|date=November 1977|url-access=subscription|url=http://www.nature.com/scientificamerican/journal/v237/n5/pdf/scientificamerican1177-18.pdf|doi=10.1038/scientificamerican1177-18|bibcode=1977SciAm.237e..18G}}; reprinted (revised) in Gardner (2001), cited below.
+* {{서적 인용|year=1989|title=Penrose Tiles to Trapdoor Ciphers|isbn=978-0-88385-521-8|first=Martin|last=Gardner |author-link= Martin Gardner|publisher=Mathematical Association of America|location=Washington, D.C.}}
+* {{서적 인용|year=2001|title=The Colossal Book of Mathematics: Classic Puzzles, Paradoxes, and Problems|url=https://archive.org/details/colossalbookofma0000gard|isbn=978-0-393-02023-6|first=Martin|last=Gardner |author-link= Martin Gardner|publisher=Norton|location=New York, NY}}
+* {{저널 인용|author=Graham, R. L. |author2=Rothschild, B. L. |title=Ramsey's Theorem for ''n''-Parameter Sets |journal= Transactions of the American Mathematical Society |volume=159 |pages=257–292 |year=1971 |doi=10.2307/1996010 |url=https://www.ams.org/journals/tran/1971-159-00/S0002-9947-1971-0284352-8/S0002-9947-1971-0284352-8.pdf|jstor=1996010}} The explicit formula for ''N'' appears on p.&nbsp;290. This is not the "Graham's number" ''G'' published by Martin Gardner.
+*{{서적 인용|last1=Graham |first1=R. L. |last2=Rothschild |first2=B. L. |editor-first=G-C |editor-last=Rota |title=Studies in Combinatorics (MAA Studies in Mathematics) |publisher=Mathematical Association of America |volume=17 |date=1978 |pages=80–99 |chapter=Ramsey Theory |isbn=978-0-88385-117-3}} On p.&nbsp;90, in stating "the best available estimate" for the solution, the explicit formula for ''N'' is repeated from the 1971 paper.
+{{참고 자료 끝}}
+
+== 외부 링크 ==
+* {{OEIS el|A133613|Graham's number}}
+* [https://sites.google.com/site/largenumbers/home/3-2/3-2-9-graham Sbiis Saibian's article on Graham's number] {{웹아카이브|url=https://web.archive.org/web/20230117135724/https://sites.google.com/site/largenumbers/home/3-2/3-2-9-graham}}
+* "[http://isu.indstate.edu/ge/GEOMETRY/cubes.html A Ramsey Problem on Hypercubes]" by Geoff Exoo
+* {{매스월드|urlname=GrahamsNumber|title=Graham's Number}}
+* [http://www-users.cs.york.ac.uk/susan/cyc/g/graham.htm How to calculate Graham's number]
+* [http://waitbutwhy.com/2014/11/1000000-grahams-number.html Conceptualizing Graham's number]
+* [http://www.math.ucsd.edu/~fan/ron/papers/pre_cube.pdf Some Ramsey results for the n-cube] prepublication mentions Graham's number
+* {{웹 인용|last=Padilla|first=Tony|title=Graham's Number|url=http://www.numberphile.com/videos/grahamsnumber.html|work=Numberphile|publisher=[[Brady Haran]]|author2=Parker, Matt|access-date=2013-04-08|archive-url=https://web.archive.org/web/20140527212509/http://www.numberphile.com/videos/grahamsnumber.html|archive-date=2014-05-27|url-status=dead}}
+* Archived at [https://ghostarchive.org/varchive/youtube/20211211/HX8bihEe3nA Ghostarchive]{{cbignore}} and the [https://web.archive.org/web/20140828084008/https://www.youtube.com/watch?v=HX8bihEe3nA&feature=autoshare Wayback Machine]{{cbignore}}: {{웹 인용|author1=Ron Graham|author-link1=Ronald Graham|title=What is Graham's Number? (feat Ron Graham)|url=https://www.youtube.com/watch?v=HX8bihEe3nA|work=Numberphile|date=21 July 2014 |publisher=[[Brady Haran]]|format=video}}{{cbignore}}
+* Archived at [https://ghostarchive.org/varchive/youtube/20211211/GuigptwlVHo Ghostarchive]{{cbignore}} and the [https://web.archive.org/web/20140722171301/http://www.youtube.com/watch?v=GuigptwlVHo Wayback Machine]{{cbignore}}: {{웹 인용|author1=Ron Graham|author-link1=Ronald Graham|title=How Big is Graham's Number? (feat Ron Graham)|url=https://www.youtube.com/watch?v=GuigptwlVHo|work=Numberphile|date=22 July 2014 |publisher=[[Brady Haran]]|format=video}}{{cbignore}}
+* [http://ankokudan.org/d/dl/others/Graham-16M.pdf The last 16 million digits of Graham's number] by the [[Darkside communication group]]
+
+{{큰 수}}
+{{위키데이터 속성 추적}}
+
+[[분류:큰 수]]
+[[분류:정수]]
+[[분류:램지 이론]]

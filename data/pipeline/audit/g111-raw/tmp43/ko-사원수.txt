@@ -1,0 +1,150 @@
+{{다른 뜻 넘어옴|해밀턴 수|대수 방정식 이론|해밀턴 수 (대수 방정식 이론)}}
+[[파일:William Rowan Hamilton Plaque - geograph.org.uk - 347941.jpg|섬네일|브로엄 다리에 새겨진 기념비. 이 곳에서 해밀턴이 사원수를 발견하였다고 한다.]]
+[[수학]]에서 '''사원수'''(四元數, {{llang|en|quaternion|쿼터니언}}) 또는 '''해밀턴 수'''({{llang|en|Hamilton number}})는 [[복소수]]를 확장해 만든 수 체계이다. 네 개의 실수 성분을 가지며, 덧셈과 곱셈의 [[결합법칙]] 및 덧셈의 [[교환법칙]]을 만족시키지만 곱셈의 [[교환법칙]]은 성립하지 않는다.
+
+== 정의 ==
+사원수의 집합 <math>\mathbb H</math>는 집합으로서 <math>\mathbb R^4=\{a_0+a_1i+a_2j+a_3k\colon a_0,a_1,a_2,a_3\in\mathbb R\}</math>이다. 이 위에 다음과 같은 덧셈과 곱셈 연산을 정의하여, [[환 (수학)|환]]으로 만들 수 있다.
+
+덧셈은 각 성분의 합이다.
+:<math>(a_0+a_1i+a_2j+a_3k)+(b_0+b_1i+b_2j+b_3k)=(a_0+b_0)+(a_1+b_1)i+(a_2+b_2)j+(a_3+b_3)k</math>
+곱셈은 겹선형 연산이며, [[기저 (선형대수학)|기저]] <math>\{1,i,j,k\}</math>에 대하여 다음과 같이 작용한다.
+{| class="wikitable" style="text-align:center"
+|+사원수의 곱
+|-
+!width=15|×
+!width=15|1
+!width=15|''i''
+!width=15|''j''
+!width=15|''k''
+|-
+!1
+|1
+|''i''
+|''j''
+|''k''
+|-
+!''i''
+|''i''
+| −1
+|''k''
+| −''j''
+|-
+!''j''
+|''j''
+| −''k''
+| −1
+|''i''
+|-
+!''k''
+|''k''
+|''j''
+| −''i''
+| −1
+|}
+사원수의 기저 <math>\{1,i,j,k\}</math>는 이 곱셈에 대하여 [[유한군]]을 이루며, 이를 '''[[사원수군]]''' <math>Q</math>라고 한다. 즉, 사원수환은 [[군환]] <math>\mathbb R[Q]</math>의 몫
+:<math>\mathbb R[Q]/(1+(-1))</math>
+과 같다. (군환 <math>\mathbb R[Q]</math>는 8차원 실수 [[단위 결합 대수]]이며, 위 [[아이디얼]]로 몫을 취하면 4차원 실수 대수를 얻는다.)
+
+이렇게 덧셈과 곱셈을 정의하면, 사원수의 [[환 (수학)|환]] <math>\mathbb H</math>는 [[나눗셈환]]을 이룬다. 그러나 곱셈의 [[교환법칙]]이 성립하지 않으므로, 이는 [[체 (수학)|체]]를 이루지 않는다.
+
+=== 실수부와 허수부 ===
+사원수 <math>q=w+xi+yj+zk</math>에 대하여, ''w''를 '''q'''의 '''실수부''' 또는 '''스칼라부''' <math>\operatorname{Re}(q)</math>, <math>xi+yj+zk</math>를 '''q'''의 '''허수부''' 또는 '''벡터부''' <math>\operatorname{Im}(q)</math>라고 한다. 사원수 <math>q=w+xi+yj+zk</math>의 '''켤레 사원수'''({{lang|en|conjugate quaternion}}) <math>\bar q</math>는 그 허수부의 부호를 뒤집은 사원수이다. 즉
+:<math>\bar q=\operatorname{Re}(q)-\operatorname{Im}(q)=w-xi-yj-zk</math>.
+사원수 ''q''의 [[노름 (수학)|노름]] 또는 절댓값 |''q''| 는
+:<math>|q| = \sqrt{ q \bar{q}} = \sqrt{x^2+y^2+z^2+w^2}</math>
+이다.
+
+== 성질 ==
+사원수환 <math>\mathbb H</math>는 [[노름]]을 갖춘 [[나눗셈환]]이자 <math>\mathbb R</math>-[[대수 (환론)|대수]]이다. 즉, 다음이 성립한다. 임의의 사원수 <math>q_1,q_2,q_3\in\mathbb H</math>에 대하여,
+* (덧셈의 [[교환법칙]]) <math>q_1+q_2=q_2+q_1</math>
+* (덧셈의 [[결합법칙]]) <math>(q_1+q_2)+q_3=q_1+(q_2+q_3)</math>
+* (곱셈의 [[결합법칙]]) <math>(q_1q_2)q_3=q_1(q_2q_3)</math>
+* ([[분배법칙]]) <math>q_1(q_2+q_3)=q_1q_2+q_1q_3, (q_1+q_2)q_3=q_1q_3+q_2q_3</math>
+* (노름과 곱셈의 호환) <math>|q_1q_2|=|q_1|\cdot|q_2|</math>
+* ([[삼각 부등식]]) <math>|q_1+q_2|\le|q_1|+|q_2|</math>
+
+=== 벡터와의 관계 ===
+사원수의 실수부는 스칼라로, 허수부는 3차원 벡터로 간주할 수 있다. 즉, 사원수는 스칼라와 3차원 벡터의 [[순서쌍]] <math>q=(w,\mathbf v)</math>으로 간주할 수 있다. 이 경우, 사원수의 합과 곱은 다음과 같다.
+:<math>(a,\mathbf u)+(b,\mathbf v)=(a+b,\mathbf u+\mathbf v)</math>
+:<math>(a,\mathbf u)(b,\mathbf v)=(ab-\mathbf u\cdot\mathbf v,a\mathbf v+b\mathbf u+\mathbf u\times\mathbf v)</math>
+
+=== 행렬 표현 ===
+사원수는 2×2 복소 [[행렬]]로 다음과 같이 나타낼 수 있다.
+:<math>\rho\colon a+bi+cj+dk\mapsto\begin{pmatrix}a+bi&c+di\\-c+di&a-bi\end{pmatrix}=a\sigma_0+ib\sigma_3+ic\sigma_2+id\sigma_1</math>
+여기서 <math>\sigma_i</math>는 [[파울리 행렬]]이다.
+그렇다면 다음이 성립한다. 임의의 사원수 <math>p,q\in\mathbb H</math>에 대하여,
+:<math>\rho(p+q)=\rho(p)+\rho(q)</math>
+:<math>\rho(pq)=\rho(p)\rho(q)</math>
+:<math>\rho(\bar q)=\rho(q)^\dagger</math>
+:<math>\Vert q\Vert=\sqrt{q\bar q}=\sqrt{\det\rho(q)}</math>
+:<math>\operatorname{Re}q=\frac12\operatorname{tr}\rho(q)</math>
+:<math>\rho(\exp(q))=\exp(\rho(q))</math>
+마지막 식에서, 우변은 [[행렬 지수 함수]]이다.
+
+== 역사 ==
+=== 해밀턴 이전 ===
+[[레온하르트 오일러]]는 1748년 5월 4일 [[크리스티안 골드바흐]]에게 보낸 편지<ref>{{서적 인용|장=Lettre CXV. Euler à Goldbach. Berlin d. 4, Mai 1748|쪽=450–455|장url=https://math.dartmouth.edu/~euler/correspondence/letters/OO0841.pdf|제목=Opera Omnia, Series IV, Volume 1|이름=L.|성=Euler|저자링크=레온하르트 오일러|언어=de}}</ref>에서, [[오일러의 네 제곱수 항등식]]을 발표하였다. 이는 두 사원수 <math>a</math>, <math>b</math>에 대하여 <math>|ab|=|a||b|</math>인 것과 같다.
+
+올랭드 로드리그({{llang|fr|Olinde Rodrigues}})는 1840년에 오일러의 네 제곱수 항등식을 [[강체]]의 회전에 응용하였다.<ref>{{저널 인용|이름=Olinde|성=Rodrigues|제목=Des lois géométriques qui régissent les déplacements d’un système solide dans l’espace, et de la variation des coordonnées provenant de ces déplacements considérés indépendamment des causes qui peuvent les produire|저널=Journal de Mathématiques Pures et Appliquées (série 1)|url=http://sites.mathdoc.fr/JMPA/afficher_notice.php?id=JMPA_1840_1_5_A39_0|권=5|쪽=380–440|날짜=1840|언어=fr}}</ref>
+
+=== 사원수의 발견 ===
+해밀턴은 [[복소수]]가 2차원 평면상의 점으로 표현될 수 있다는 사실로부터, 3차원 공간에서 점을 표현하는 같은 방법을 찾으려 하였다. 3차원 공간에서의 정점은 3개의 수로 이루어지며, 해밀턴은 그 3개의 수들을 어떻게 더하고 곱할 수 있는지에 관해 생각해왔다. 그러나 그는 두개의 정점간의 나누기를 어떻게 정의할지 알지 못했고, 난관에 부딪히고 말았다.
+
+1843년 10월 16일, 해밀턴은 그의 아내와 [[더블린]]의 로열 운하({{llang|en|Royal Canal}}, {{llang|ga|An Chanáil Ríoga}})를 걷고 있었다. 브로엄 다리({{lang|en|Brougham Bridge}}, 현재는 브룸 다리 {{lang|en|Broom Bridge}})를 걷고 있을 때, 나누기에 관한 해답이 그의 뇌리를 스쳤다. 그는 3개의 성분을 가진 값은 나눗셈을 정의할 수 없지만, 4개의 성분을 가진 값은 나눗셈이 성립할 수 있다는 것을 알아차렸다. 4개의 성분 가운데 세 개를 사용하여 3차원 공간의 [[직교좌표]]를 표현할 수 있다. 해밀턴은 이 수체계의 기본 규칙을 다리에 새겨놓았다.
+:<math>i^2 = j^2 = k^2 = ijk = -1 \;</math>
+해밀턴은 위의 기본적인 규칙을 적용한 4개의 요소를 "사원수"({{llang|en|quaternion|쿼터니언}})라고 명명하였다. 이는 {{llang|la|[[:wiktionary:quaternio|quaterniō]]|콰테르니오}}(넷, 넷으로 구성된 것)에서 유래한다.
+
+다음날 해밀턴은 이 발견에 대하여 친구 수학자인 존 그레이브스({{llang|en|John T. Graves}})에게 편지로 적어 보냈다. 이 편지는 저널에 출판되었으며, 편지에서 해밀턴은 다음과 같이 적었다.
+{{인용문2|이로부터 나는 3차원 값을 다루기 위해서는 일종의 "4차원 공간"이 필요하다는 사실을 알아차렸다네. 대수학적으로 생각하자면, <math>i</math> 또는 <math>j</math>와 다른 제3의 허수 기호 <math>k</math>가 필요하며, 이는 <math>i</math>와 <math>j</math>의 곱과 같다네. 그래서 나는 <math>a+ib+jc+kd</math> 또는 <math>(a,b,c,d)</math>와 같은 꼴의 "사원수"를 도입하게 되었소. […] 사원수의 허수 성분은 방향을 가진 세기와 비슷하며, 실수 성분은 방향을 갖지 않은 에너지와 비슷하다고 생각되는군. 이는 일종의 방향의 산법(算法)을 구성하게 될 것이라네. 이것은 아직 매우 모호하지만, 그 앞에 서술한 것들은 모두 명확하고 수학적이기를 바라오.<br>
+{{lang|en|And here there dawned on me the notion that we must admit, in some sense, ''a fourth dimension'' of space for the purpose of calculating with triplets; or transferring the paradox to algebra, must admit a third distinct imaginary symbol <math>k</math>, not to be confounded with either <math>i</math> or <math>j</math>, but equal to the product of the first as multiplier, and the second as multiplicand; and therefore was led to introduce ''quaternions'', such as <math>a + ib + jc + kd</math>, or <math>(a,b,c,d)</math>. […] There seems to me to be something analogous to polarized intensity in the pure imaginary part; and to unpolarized energy (indifferent to direction) in the real part of a quaternion: and thus we have some slight glimpse of a future Calculus of Polarities. This is certainly very vague, but I hope that most of what I have said above is clear and mathematical.
+}}|<ref>{{저널 인용|doi=10.1080/14786444408645047|제목=On Quaternions; or on a new System of Imaginaries in Algebra. To the editors of the Philosophical Magazine and Journal|이름=William Rowan|성=Hamilton|저자링크=윌리엄 로언 해밀턴|저널=Philosophical Magazine (series 3)|권=25|호=169|쪽=489–495|날짜=1844|url=http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/QLetter/QLetter.html|언어=en}}</ref>}}
+
+해밀턴은 이 발견을 1844년에 〈사원수에 대하여: 또는 대수학에서의 새로운 허수 체계에 대하여〉({{llang|en|On Quaternions; or on a new System of Imaginaries in Algebra}})라는 제목의 논문으로 출판하였다.<ref>{{저널 인용|제목=On Quaternions; or on a new System of Imaginaries in Algebra|doi=10.1080/14786444408644923|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|저널=Philosophical Magazine (series 3)|권=25|호=163|쪽=10–13|날짜=1844|issn=1941-5966|언어=en}}</ref> 이후 해밀턴은 이 논문의 속편을 17편 더 같은 저널에 수록하였다.<ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1844|제목=On Quaternions; or on a new System of Imaginaries in Algebra (2)|doi=10.1080/14786444408644984|권=25|호=166|쪽=241–246|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1845|제목=On Quaternions; or on a new System of Imaginaries in Algebra (3)|doi=10.1080/14786444508645110|권=26|호=172|쪽=220–224|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1846|제목=On Quaternions; or on a new System of Imaginaries in Algebra (4)|doi=10.1080/14786444608562593|권=29|호=191|쪽=26–31|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1846|제목=On Quaternions; or on a new System of Imaginaries in Algebra (5)|doi=10.1080/14786444608645590|권=29|호=192|쪽=113–122|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1846|제목=On Quaternions; or on a new System of Imaginaries in Algebra (6)|doi=10.1080/14786444608645509|권=29|호=194|쪽=326–328|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (7)|doi=10.1080/14786444708645426|권=30|호=203|쪽=458–461|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (8)|doi=10.1080/14786444708645826|권=31|호=207|쪽=214–219|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (9)|doi=10.1080/14786444708562643|권=31|호=208|쪽=278–293|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (10)|doi=10.1080/14786444708645898|권=31|호=211|쪽=511–519|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (11)|doi=10.1080/14786444808645999|권=32|호=216|쪽=367–374|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (12)|doi=10.1080/14786444808646046|권=33|호=219|쪽=58–60|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (13)|doi=10.1080/14786444908646233|권=34|호=229|쪽=294–297|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (14)|doi=10.1080/14786444908562659|권=35|호=230|쪽=340–343|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (15)|doi=10.1080/14786444908646261|권=35|호=231|쪽=425–439|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (16)|doi=10.1080/14786444908646321|권=35|호=234|쪽=133–137|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1849|제목=On Quaternions; or on a new System of Imaginaries in Algebra (17)|doi=10.1080/14786444908647189|권=35|호=235|쪽=200–204|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref><ref>{{저널 인용|이름=William Rowan|성=Hamilton |저자링크=윌리엄 로언 해밀턴|날짜=1850|제목=On Quaternions; or on a new System of Imaginaries in Algebra (18)|doi=10.1080/14786445008646479|권=36|호=243|쪽=305–306|저널=Philosophical Magazine (series 3)|issn=1941-5966|언어=en}}</ref>
+
+그 후 그는 사원수를 연구하고 알리는데 그의 여생을 바쳤다. 그는 "사원수론자"({{lang|en|Quaternionists}})라는 학파를 창시하고, 1853년에는 《사원수 강해》({{llang|en|Lectures on Quaternions}})<ref>{{서적 인용|제목=Lectures on quaternions; containing a systematic statement of a new mathematical method; of which the principles were communicated in 1843 to the Royal Irish academy; and which has since formed the subject of successive courses of lectures, delivered in 1848 and subsequent years, in the halls of Trinity college, Dublin: with numerous illustrative diagrams, and with some geometrical and physical applications|이름=William Rowan|성=Hamilton|저자링크=윌리엄 로언 해밀턴|url=http://ebooks.library.cornell.edu/cgi/t/text/text-idx?c=math;idno=05230001|위치=[[더블린]]|출판사=Hodges and Smith|날짜=1853|언어=en}}</ref>를 출판하였다. 해밀턴 사후, 해밀턴의 아들 윌리엄 에드윈 해밀턴({{llang|en|William Edwin Hamilton}})은 아버지의 마지막 책인 800여 쪽의 《사원수 원론》({{llang|en|Elements of Quaternions}})을 편집하여 1866년에 출판하였다.<ref>{{서적 인용|이름=William Rowan|성=Hamilton|저자링크=윌리엄 로언 해밀턴|제목=Elements of quaternions|url=https://archive.org/details/elementsquaterni00hamirich|편집자=William Edwin Hamilton|위치=[[런던]]|출판사=Longmans, Green, & Co.|날짜=1866|언어=en}}</ref>
+
+=== 해밀턴 사후 ===
+해밀턴의 죽음 이후, 그의 제자인 [[피터 거스리 테이트]]는 사원수의 연구를 계속하였다. 당시 [[트리니티 칼리지 (더블린)|더블린 트리니티 칼리지]]에서는 사원수가 의무 수강 과목의 하나였다. 현재는 공간 운동학, [[맥스웰 방정식]] 등의 벡터를 이용하여 설명하는 물리와 기하학의 논제들은 그 당시에는 모두 사원수를 이용하여 설명되었다. 1899년에 국제 사원수 학회({{llang|en|International Association for Promoting the Study of Quaternions and Allied Systems of Mathematics}})가 설립되었고, 1900년~1913년 동안 《사원수 학회 저널》({{llang|en|Bulletin of the Association Promoting the Study of Quaternions and Allied Systems of Mathematics}})을 출판하였다.<ref>{{웹 인용|url=http://catalog.hathitrust.org/Record/000548057|제목=Bulletin of the International association for promoting the study of quaternions and allied systems of mathematics|언어=en}}</ref> 전성기 동안 60여 명의 회원을 가졌으나, [[제1차 세계 대전]] 이후 사라졌다.
+
+1880년대 중반부터 [[조사이어 윌러드 기브스]]와 [[올리버 헤비사이드]]가 제안한 [[벡터]] 해석학이 사원수 표현을 대신하기 시작했다. 벡터는 사원수와 같은 현상을 설명하였기 때문에, 고전 사원수 연구에서 많은 아이디어와 용어 등을 빌려왔다. 그러나 벡터 해석이 보다 간결한 개념과 표기법을 가지고 있었기에 사원수는 수학과 물리에서 비주류가 되었다. 이는 해밀턴의 사원수가 이해하기 난해하고, 표기가 친숙하지 않았으며, 그의 저작물에 길고 불분명한 표현이 많았기 때문이다.
+
+그러나 사원수는 20세기 말에 공간상에서의 회전에 관한 사원수의 유용성에 의해서 다시 주목받기 시작했다. 사원수를 이용한 회전의 표현은 행렬을 사용하는 표현에 비해 더욱 간결했고 계산이 빨랐다. 이런 이유로, 사원수는 컴퓨터 그래픽, [[제어이론]], [[신호처리]], [[자세제어]](attitude control), [[물리학]], [[생물정보학]], [[분자동역학]], [[컴퓨터 시뮬레이션]], [[궤도역학]](orbital mechanics) 등에 사용되고 있다.
+
+== 각주 ==
+{{각주}}
+* {{저널 인용|제목=Hamilton, Rodrigues, and the quaternion scandal|url=https://archive.org/details/sim_mathematics-magazine_1989-12_62_5/page/n3|이름=Simon L.|성=Altman|저널=Mathematics Magazine|권=62|호=5|날짜=1989-12|쪽=291–308|doi=10.2307/2689481|출판사=Mathematical Association of America|언어=en}}
+* {{저널 인용|제목=Doubling: real, complex, quaternion, and beyond… well, maybe|url=https://archive.org/details/sim_college-mathematics-journal_1986-09_17_4/page/n53|이름=Robert C.|성=Moore|저널=The College Mathematics Journal|doi=10.2307/2686287|권=17|호=4|날짜=1986-09|쪽=342–343|언어=en}}
+* {{저널 인용|제목=Vector identities from quaternions|이름=William C.|성=Schulz|저널=The Two-Year College Mathematics Journal|권=12|호=4|날짜=1981-09|쪽=271–273|doi=10.2307/3027077|언어=en}}
+* {{저널 인용|제목=Equivalence of an identity in vector analysis to quaternion associativity, and ramifications|url=https://archive.org/details/sim_american-mathematical-monthly_june-july-1981_88_6/page/441|이름=Andrew|성=Sobczyk|저널=The American Mathematical Monthly|권=88|호=6|날짜=1981-06|쪽=441–443|doi=10.2307/2321831|언어=en}}
+* {{저널 인용|제목=Hamilton’s discovery of quaternions|url=https://archive.org/details/sim_mathematics-magazine_1976-11_49_5/page/n3|이름=B. L.|성=van der Waerden|저자링크=바르털 레인더르트 판데르바르던|저널=Mathematics Magazine|권=49|호=5|날짜=1976-11|쪽=227–234|doi=10.2307/2689449|언어=en}}
+* {{서적 인용|제목=Visualizing Quaternions|출판사=Morgan Kaufmann|이름=Andrew J.|성=Hanson|날짜=2005-12-29|isbn=978-012088400-1|url=http://www.cs.indiana.edu/~hansona/quatvis/|언어=en}}
+* {{서적 인용|arxiv=1504.04885|제목=Quaternions: a history of complex noncommutative rotation groups in theoretical physics|이름=Johannes C.|성=Familton|기타=박사 학위 논문|날짜=2015|출판사=[[컬럼비아 대학교]]|언어=en}}
+
+== 외부 링크 ==
+* {{위키공용분류-줄}}
+* {{eom|title=Quaternion}}
+* {{매스월드|id=Quaternion|title=Quaternion}}
+* {{매스월드|id=QuaternionNorm|title=Quaternion norm}}
+* {{매스월드|id=QuaternionConjugate|title=Quaternion conjugate}}
+* {{nlab|id=quaternion|title=Quaternion}}
+* {{수학노트|title=해밀턴의 사원수(quarternions)}}
+* {{웹 인용|url=http://ghebook.blogspot.com/2010/07/quarternion.html|웹사이트=조금은 느리게 살자|제목=사원수(四元數, quaternion)|날짜=2010-07-15|언어=ko}}
+* {{네이버캐스트|4132|사원수의 발견|저자=박부성}}
+* {{네이버캐스트|4788|사원수의 계산|저자=박부성}}
+* {{네이버캐스트|5036|사원수의 활용|저자=박부성}}
+
+== 같이 보기 ==
+* [[사원수군]]
+* [[팔원수]]
+* [[케일리-딕슨 구성]]
+* [[사원수 켈러 다양체]]
+* [[초켈러 다양체]]
+
+{{수 체계}}
+{{전거 통제}}
+{{위키데이터 속성 추적}}
+
+[[분류:사원수| ]]
+[[분류:다원수]]
+[[분류:합성 대수]]
+[[분류:윌리엄 로언 해밀턴]]

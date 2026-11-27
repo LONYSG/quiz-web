@@ -1,0 +1,257 @@
+
+
+
+
+In music theory, a tritone is a musical interval spanning three whole tones. For instance, the interval from F to the B above it (in short, F–B) is a tritone as it can be decomposed into the three adjacent whole tones F–G, G–A, and A–B.
+:<score sound>
+{
+\override Score.TimeSignature
+#'stencil = ##f
+    \relative c' {
+        \time 4/4
+        \set Score.tempoHideNote = ##t \tempo 1 = 20
+        <f b>1 |
+        f4 g a b
+    }
+}
+</score>
+In 12-tone-equal temperament, the tritone divides the octave (which is 12 semitones or 1200 cents) exactly in half, making it six semitones, or 600 cents.
+
+In traditional functional harmony, the tritone is a harmonic and melodic dissonance and tritones in chords push toward resolution. For instance, the tritone(s) found in diminished triads as well as the dominant, half-diminished, and fully diminished seventh chords push toward resolution to the tonic. On the other hand, the tritone can also be used to avoid tonality altogether, as composer Reginald Smith Brindle explains: "Any tendency for a tonality to emerge may be avoided by introducing a note three whole tones distant from the key note of that tonality."
+
+== Definition ==
+A tritone is composed of three whole tones. There are two possible interpretations of this, a narrow definition and a broad definition. Under the narrow definition, only augmented fourths (often abbreviated as A4) are considered tritones, while under the broad definition, augmented fourths and diminished fifths (d5)—as well as rarer intervals like doubly augmented thirds and a doubly diminished sixths—are all considered tritones. The augmented fourth is the interval produced by widening the perfect fourth by one semitone (without changing either letter name), while the diminished fifth is produced by narrowing the perfect fifth by one semitone (without changing either letter name).
+
+Under the narrow definition, each of the three whole tones that compose a tritone must be a diatonic step, so only the interval of an augmented fourth is considered a tritone. By this definition, within a diatonic scale (such as a major scale) there is only one tritone per octave. For instance, in the C major scale, the augmented fourth F–B is the only tritone because it is composed of three major seconds (F–G, G–A, and A–B), while its inversion, the diminished fifth B–F, is not considered a tritone because three major seconds above B is E, not F.
+:<score sound="">
+{
+\override Score.TimeSignature
+#'stencil = ##f
+    \relative c' {
+       \override Score.SpacingSpanner.strict-note-spacing = ##t
+        \set Score.proportionalNotationDuration = #(ly:make-moment 1/4)
+        \time 4/4
+        \set Score.tempoHideNote = ##t \tempo 1 = 20
+        <f b>1^\markup { \abs-fontsize #9 { \column { "Augmented" "fourth" } } } <b f'>^\markup { \abs-fontsize #9 { \column { "Diminished" "fifth" } } }
+    }
+}
+</score>
+Under the broad definition, however, a tritone may include any interval spanning six semitones, regardless of scale degree. According to this definition, a diatonic scale contains two tritones for each octave. For instance, the C major scale contains the tritones, F–B and B–F. With this broad definition, a tritone can typically be classified as either an augmented fourth or a diminished fifth, though far rarer spellings of the notes in a tritone may be classified as a doubly augmented third, a doubly diminished sixth, etc.
+
+== Dissonance and expressiveness ==
+{{Image frame|content=<div style="zoom: 80%;"><score sound="1"> {
+\relative c' {
+  \clef treble \time 9/8 \key e \major
+  \set Score.tempoHideNote = ##t \tempo "Très modéré" 4. = 36
+   \override Score.SpacingSpanner #'common-shortest-duration = #(ly:make-moment 1 8)
+  \set Staff.midiInstrument = "flute"
+  \stemDown cis'4.~(^"Flute"\p cis8~_\markup \italic "doux et expressif" cis16 \set stemRightBeamCount = #1 b \times 2/3 { \set stemLeftBeamCount = #1 ais16 a gis } g8. a16 b bis)
+  cis4.~( cis8~ cis16 \set stemRightBeamCount = #1 b \times 2/3 { \set stemLeftBeamCount = #1 ais16 a gis } g8. a16 b bis) \override DynamicLineSpanner.staff-padding = #3
+}
+}
+</score></div>|width=430|caption=The theme that opens Claude Debussy's  outlines the tritone between C and G.}}Ján Haluska wrote:
+
+
+
+Harry Partch has written:
+
+
+
+== In tonal music ==
+
+=== In major and minor scales ===
+In major scales, there is an augmented fourth between the fourth and seventh scale degrees (e.g., F–B in C major).
+
+{{block indent|<score sound="1"> {
+\override Score.TimeSignature #'stencil = ##f
+\relative c' { 
+  \clef treble \time 7/4
+  c4 d e \once \override NoteHead.color = #red f g a \once \override NoteHead.color = #red b c
+} }
+</score>}}
+In natural minor scales, there is a diminished fifth between the second and sixth scale degrees (e.g., D–A in C minor).
+
+{{block indent|<score sound="1"> {
+\override Score.TimeSignature #'stencil = ##f
+\relative c' { 
+  \clef treble \time 7/4
+  c4 \once \override NoteHead.color = #red d es f g \once \override NoteHead.color = #red aes bes c
+} }
+</score>}}
+
+In harmonic minor scales, there is a diminished fifth between the second and sixth scale degrees and an augmented fourth between the fourth and seventh scale degrees (e.g., D–A and F–B, respectively, in C minor).
+
+{{block indent|<score sound="1"> {
+\override Score.TimeSignature #'stencil = ##f
+\relative c' { 
+  \clef treble \time 7/4
+  c4 \once \override NoteHead.color = #red d es \once \override NoteHead.color = #blue f g \once \override NoteHead.color = #red aes \once \override NoteHead.color = #blue b? c
+} }
+</score>}}
+
+Melodic minor scales, having two forms, contain tritones in different places when ascending and descending. When ascending, there are augmented fourths between the third and sixth scale degrees and between the fourth and seventh scale degrees (e.g., E–A and F–B, respectively, in C minor). When descending, there is a diminished fifth between the second and sixth scale degrees (e.g., D–A in C minor).
+
+{{block indent|<score sound="1"> {
+\override Score.TimeSignature #'stencil = ##f
+\relative c' { 
+  \clef treble \time 7/4
+  c4 d \once \override NoteHead.color = #red es \once \override NoteHead.color = #blue f g \once \override NoteHead.color = #red a!? \once \override NoteHead.color = #blue b!?
+  c bes \once \override NoteHead.color = #magenta aes g f es \once \override NoteHead.color = #magenta d
+  c
+
+} }
+
+</score>}}
+Supertonic chords using the notes from the natural minor mode thus contain a tritone, regardless of inversion.
+
+Containing tritones, these scales are referred to as tritonic. A scale without tritones is called atritonic.
+
+=== In tonal harmony ===
+
+Dominant seventh chords contain a diminished fifth (tritone) between their third and seventh chord factors. Diminished triads also contains a tritone in their construction between their root and fifth. Half-diminished seventh chords contain the same tritone, while fully diminished seventh chords are composed of two superposed tritones a minor third apart. Other chords built on these, such as ninth chords, often include tritones as diminished fifths.
+
+In addition, augmented sixth chords contain tritones spelled as augmented fourths. The Italian and German sixth chords each contain one augmented fourth, while the French sixth chord is composed of two superposed augmented fourths a major second apart.
+
+In traditional functional harmony, the tritone(s) in all of the chords described above push towards resolution, generally resolving by step in contrary motion. This determines the resolution of chords containing tritones; that is, augmented fourths resolve outward to a minor or major sixth (the first measure below), while diminished fifths resolve inward to a major or minor third (the second measure below).
+
+:<score sound="1">
+      \new Staff <<
+         \new Voice \relative c' {
+             \clef treble \key c \major \time 4/4
+             \stemUp b'2 c f e
+             }
+         \new Voice \relative c' {
+             \clef treble \key c \major \time 4/4
+             \stemDown f2 e \bar "||" b' c \bar "||"
+             }
+            >>
+</score>
+
+== Historical uses ==
+
+=== Classical music ===
+
+==== Medieval and Rennaissance periods ====
+The tritone is a restless interval, classed as a dissonance in Western music from the early Middle Ages through to the end of the common practice period. This interval was frequently avoided in medieval ecclesiastical singing because of its dissonant quality. The first explicit prohibition of it seems to occur with the development of Guido of Arezzo's hexachordal system, who suggested that rather than make B a diatonic note, the hexachord be moved and based on C to avoid the F–B tritone altogether. Later theorists such as Ugolino d'Orvieto and Tinctoris advocated the inclusion of B.
+
+From then until the end of the Renaissance, the tritone was regarded as an unstable interval and rejected as a consonance by most theorists. The name  has been applied to the interval from at least the early 18th century or the late Middle Ages, though its use is not restricted to the tritone, being that the original found example of the term  is  ("Mi against Fa is the devil in music"), referring to the minor second. Andreas Werckmeister cites this term in 1702 as being used by "the old authorities" for both the tritone and for the clash between chromatically related tones such as F and F, and five years later likewise calls  the opposition of "square" and "round" B (B and B, respectively) because these notes represent the juxtaposition of .
+
+Johann Joseph Fux cites the phrase in his seminal 1725 work , Georg Philipp Telemann in 1733 describes, "mi against fa", which the ancients called "Satan in music"—and Johann Mattheson, in 1739, writes that the "older singers with solmization called this pleasant interval  or 'the devil in music'." Although the latter two of these authors cite the association with the devil as from the past, there are no known citations of this term from the Middle Ages, as is commonly asserted. However Denis Arnold, in the New Oxford Companion to Music, suggests that the nickname was already applied early in the medieval music itself:
+
+
+
+That original symbolic association with the devil and its avoidance led to Western cultural convention seeing the tritone as suggesting evil in music. However, stories that singers were excommunicated or otherwise punished by the Church for invoking this interval are likely fanciful. At any rate, avoidance of the interval for musical reasons has a long history, stretching back to the parallel organum of the . In all these expressions, including the commonly cited , mi and fa refer to notes from two adjacent hexachords. For instance, in the tritone B–F, B would be mi—the third scale degree in the hard hexachord beginning on G—while F would be fa—the fourth scale degree in the natural hexachord beginning on C.
+
+==== Common practice period ====
+Later, during the Baroque and Classical periods, composers accepted the tritone, but used it in a specific, controlled way—notably through the principle of the tension-release mechanism of the tonal system. In that system, the tritone is one of the defining intervals of the dominant seventh chord and two tritones separated by a minor third give the fully diminished seventh chord its characteristic sound. In minor, the diminished triad appears on the second scale degree—and thus features prominently in the progression ii<sup>o</sup>–V–i. Often, the inversion ii<sup>o6</sup> is used to move the tritone to the inner voices as this allows for stepwise motion in the bass to the dominant root. In three-part counterpoint, free use of the diminished triad in first inversion is permitted, as this eliminates the tritone relation to the bass.
+
+It is only with the Romantic music and modern classical music that composers started to use it totally freely, without functional limitations notably in an expressive way to exploit the "evil" connotations culturally associated with it, such as Franz Liszt's use of the tritone to suggest Hell in his Dante Sonata:
+
+{{Image frame|width=620|align=center|caption=Liszt,  from .|content=
+<div style="zoom: 90%;"><score override_ogg="Liszt, apres une lecture de Dante from Annees de Pelerinage.wav"> {
+\relative c' { \new PianoStaff << \set PianoStaff.connectArpeggios = ##t
+\new Staff { \key f \major \tempo "Andante maestoso"
+  R1 R r2 \clef F << { <a, c fis>2\(
+  \stemDown <bes des g> <ces ees aes> \stemUp <ees ees'>2..\) q16 s1 } \\
+  { \stemNeutral s2*3 <aes bes>2\<_\markup\italic{poco rit.} <g bes>\>
+  <ees aes ces ees>1\arpeggio\!^\fermata } >>
+}
+\new Staff { \clef F \key f \major
+  \slashedGrace { <a a'>8 } <a a'>2^^ \slashedGrace { <ees ees'>8 } <ees ees'>2^^
+  \slashedGrace { <a, a'>8 } <a a'>4^^ \slashedGrace { <ees ees'>8 } <ees ees'>4^^
+  \slashedGrace { <a, a'>8 } <a a'>4^^ \slashedGrace { <ees ees'>8 } <ees ees'>4^^~q1~q~
+  q4 <fes fes'>8. ( <ges ges'>16 <fes fes'>4 <ees ees'> )
+  <aes ees' aes>1\arpeggio_\fermata %
+}
+>> } }</score></div>}}
+
+Wagner uses timpani tuned to C and F to convey a brooding atmosphere at the start of the second act of the opera Siegfried.
+
+The tritone was also exploited heavily in that period as an interval of modulation for its ability to evoke a strong reaction by moving quickly to distantly related keys. For example, the climax of Hector Berlioz's  consists of a transition between "huge B and F chords" as Faust arrives in Pandaemonium, the capital of Hell. Musicologist Julian Rushton calls this "a tonal wrench by a tritone".
+
+==== 20th century music ====
+In his early cantata , Debussy uses a tritone to convey the words of the poem by Dante Gabriel Rossetti:
+
+
+
+Roger Nichols (1972, p. 19) says that "the bare fourths, the wide spacing, the tremolos, all depict the words—'the light thrilled towards her'—with sudden, overwhelming power." Debussy's String Quartet also features passages that emphasize the tritone:
+
+
+
+Later, in twelve-tone music, serialism, and other 20th century compositional idioms, composers considered it a neutral interval. In some analyses of the works of 20th century composers, the tritone plays an important structural role; perhaps the most cited is the axis system, proposed by Ernő Lendvai, in his analysis of the use of tonality in the music of Béla Bartók.
+
+Benjamin Britten's War Requiem features a tritone between C and F♯ as a recurring motif. John Bridcut (2010, p. 271) describes the power of the interval in creating the sombre and ambiguous opening of the War Requiem:
+
+
+
+=== Popular music ===
+Leonard Bernstein uses the tritone as a basis for much of his musical West Side Story. As Timothy Judd writes, "It's the first interval we hear in the opening Prologue. It returns prominently in 'Maria' and 'Cool.' It even opens each verse of the comically sardonic 'Gee, Officer Krupke.'  If there is a motivic counterweight, it is the yearning sunlight of the expansive minor seventh, heard in 'Somewhere' and 'I Have a Love.'"
+
+George Harrison uses tritones on the downbeats of the opening phrases of the Beatles songs "The Inner Light", "Blue Jay Way", and "Within You Without You", creating a prolonged sense of suspended resolution. Perhaps the most striking use of the interval in rock music of the late 1960s can be found in Jimi Hendrix's song "Purple Haze". According to Dave Moskowitz (2010, p. 12), Hendrix "ripped into 'Purple Haze' by beginning the song with the sinister sounding tritone interval creating an opening dissonance, long described as 'The Devil in Music'." The opening riff of "Black Sabbath", the first song on Black Sabbath's eponymous debut album, is an inversion of a tritone; the album, and this song in particular, are considered to mark the birth of heavy metal music.
+
+: F<sup>7</sup> may substitute for C<sup>7</sup>, and vice versa, because they both share E and B/A and due to voice leading considerations.|175x175px]]
+
+Tritones also became important in the development of jazz harmony, where triads and seventh chords are often expanded to become extended chords (like ninth and eleventh chords), and the tritone often occurs as a substitute for the naturally occurring interval of the perfect eleventh. Since the perfect eleventh is typically perceived as a dissonance requiring a resolution to a major or minor tenth, chords that expand to the eleventh or beyond typically raise the eleventh a semitone (resulting in an augmented or sharp eleventh, or an octave plus a tritone from the root of the chord) and present it in conjunction with the perfect fifth of the chord.
+
+Also, in jazz harmony, the tritone is both part of the dominant chord and its substitute dominant (also known as the sub V chord). Because they share the same tritone, they are possible substitutes for one another, which is known as a tritone substitution. The tritone substitution is one of the most common chord and improvisation devices in jazz.
+
+
+
+== Different tuning systems ==
+
+In 12-tone equal temperament, the tritone is exactly half of an octave (i.e., a ratio of :1, or 600 cents. This means that the augmented fourth and diminished fifth are the unique intervals that are each others' inverses.
+
+In other meantone tuning systems, the augmented fourth and diminished fifth are distinct intervals because neither is exactly half of an octave. In any meantone tuning near to -comma meantone the augmented fourth is approximately the ratio 7:5 (582.51), while the diminished fifth is approximately 10:7 (617.49), which is what these intervals are in septimal meantone temperament.
+
+In 31-tone equal temperament, for example, the augmented fourth is 580.65 cents, while the diminished fifth is 619.35 cents. This is perceptually indistinguishable from septimal meantone temperament.
+
+Since they are the inverse of each other, by definition, the augmented fourth and diminished fifth add up to exactly one octave (i.e., 600 cents + 600 cents = 1200 cents):
+: Aug 4 + dim 5 = Perf 8.
+On the other hand, two augmented fourth add up to six whole tones. In equal temperament, this is equal to exactly one octave:
+: Aug 4 + Aug 4 = Perf 8.
+In quarter-comma meantone temperament, however, this is a diesis (128:125) less than an octave:
+: Aug 4 + Aug 4 = Perf 8 − diesis.
+
+
+
+In just intonation, several different sizes can be chosen both for the augmented fourth and the diminished fifth. For instance, in 5-limit tuning, the augmented fourth is either 45:32 or 25:18, and the diminished fifth is either 64:45 or 36:25. The 64:45 just diminished fifth arises in the C major scale between B and F, resulting in the 45:32 augmented fourth arising between F and B.
+
+These ratios are not in all contexts regarded as strictly just but they are the justest possible in 5-limit tuning. Seven-limit tuning allows for the justest possible ratios (ratios with the smallest numerator and denominator), namely 7:5 for the augmented fourth (about 582.5 cents, also known as septimal tritone) and 10:7 for the diminished fifth (about 617.5 cents, also known as Euler's tritone). These ratios are more consonant than 17:12 (about 603.0 cents) and 24:17 (about 597.0 cents), which can be obtained in 17-limit tuning, yet the latter are also fairly common, as they are closer to the equal-tempered value of 600 cents.
+
+
+
+== Eleventh harmonic ==
+]]
+The ratio of the eleventh harmonic, 11:8 (551.318 cents; approximated as F<sub>4</sub> above C<sub>1</sub> in scientific pitch notation), known as the lesser undecimal tritone or undecimal semi-augmented fourth, is found in some just tunings and on many instruments.
+
+For example, very long alphorns may reach the twelfth harmonic and transcriptions of their music usually show the eleventh harmonic sharp (F above C, for example), as in Brahms's First Symphony. This note is often corrected to 4:3 on the natural horn in just intonation or Pythagorean tunings, but the pure eleventh harmonic was used in pieces such as Britten's Serenade for Tenor, Horn and Strings. Ivan Wyschnegradsky considered the major fourth a good approximation of the eleventh harmonic.
+.]]
+
+== See also ==
+* List of meantone intervals
+* List of musical intervals
+* List of pitch intervals
+* Ditone
+* Tone
+* 
+* 
+* Petrushka chord
+* Tritonic scale
+* Tritone paradox
+
+== References ==
+
+
+==Further reading==
+*R., Ken (2012). DOG EAR Tritone Substitution for Jazz Guitar, Amazon Digital Services, Inc., ASIN: B008FRWNIW
+
+== External links ==
+* 
+* [http://news.bbc.co.uk/2/hi/uk_news/magazine/4952646.stm BBC News Magazine article about the tritone]
+* [https://www.theguardian.com/music/2007/oct/12/popandrock.classicalmusicandopera Satan's all-time greatest hit: Will Hodgkinson on the devil's interval]
+
+
+
+Category:Augmented fourths
+Category:Diminished fifths
+Category:The Devil in classical music

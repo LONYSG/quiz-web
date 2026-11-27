@@ -1,0 +1,117 @@
+import fs from 'fs';
+const W = 'https://en.wikipedia.org/wiki/', K = 'https://ko.wikipedia.org/wiki/';
+const S = {
+  enSpoon: ['tmp28/en-Spoonerism.txt', W + 'Spoonerism'], koSpoon: ['tmp28/ko-두음전환.txt', K + '두음전환'],
+  enPan: ['tmp28/en-Pangram.txt', W + 'Pangram'], koPan: ['tmp28/ko-팬그램.txt', K + '팬그램'],
+  enEpo: ['tmp28/en-Eponym.txt', W + 'Eponym'], koEpo: ['tmp28/ko-에포님.txt', K + '에포님'],
+  enObe: ['tmp28/en-Obelus.txt', W + 'Obelus'],
+  enPil: ['tmp28/en-Pilcrow.txt', W + 'Pilcrow'], koPil: ['tmp28/ko-단락_기호.txt', K + '단락_기호'],
+  enAna: ['tmp28/en-Anagram.txt', W + 'Anagram'], koAna: ['tmp28/ko-어구전철.txt', K + '어구전철'],
+  enNob: ['tmp28/en-Noble_rot.txt', W + 'Noble_rot'], koNob: ['tmp28/ko-귀부병.txt', K + '귀부병'],
+  enMal: ['tmp28/en-Malapropism.txt', W + 'Malapropism'], koMal: ['tmp28/ko-말라프로피즘.txt', K + '말라프로피즘'],
+  enLip: ['tmp28/en-Lipogram.txt', W + 'Lipogram'], koLip: ['tmp28/ko-리포그램.txt', K + '리포그램'],
+  enPor: ['tmp28/en-Portmanteau.txt', W + 'Portmanteau'], koPor: ['tmp28/ko-혼성어.txt', K + '혼성어'],
+};
+const norm = t => t.replace(/<ref[^>]*\/>/g, '').replace(/<ref[^>]*>[\s\S]*?<\/ref>/g, '')
+  .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1').replace(/'''|''/g, '').replace(/\s+/g, ' ');
+const cache = {}; let bad = 0;
+const L = (s, text, quote) => {
+  const [f, u] = S[s]; cache[f] ??= norm(fs.readFileSync(f, 'utf8'));
+  if (!cache[f].includes(quote.replace(/\s+/g, ' '))) { bad++; console.log('MISS', s, quote.slice(0, 70)); }
+  return { text, url: u, quote };
+};
+const items = [
+  { answer: '두음전환', also: ['스푸너리즘', 'Spoonerism'], major: '생활·상식', mid: '세계 언어·어원', gradeGuess: 4,
+    core: L('koSpoon', '구에서 두 낱말 사이의 자음 · 모음이 서로 바뀌는 말실수 — 영국 옥스퍼드 학장 스푸너의 이름을 딴 낱말', '두음전환(頭音轉換) 또는 스푸너리즘(Spoonerism)은 구에서 두 개의 단어 사이에 해당하는 자음, 모음, 형태소가 전환되는 언어 오류이다.'),
+    story: [
+      L('enSpoon', '이 말실수는 1903~1924년 옥스퍼드 뉴칼리지 학장이던 윌리엄 스푸너 목사의 이름을 땄다 — 그가 이 실수를 자주 했다고 전해진다', 'Spoonerisms are named for the Reverend William Archibald Spooner (1844–1930), Warden from 1903 to 1924 of New College, Oxford, who was allegedly susceptible to this mistake.'),
+      L('enSpoon', '"Three cheers for our queer old dean!"(원래는 dear old queen) 같은 말이 스푸너의 것으로 전해진다', '"Three cheers for our queer old dean!" (while giving a toast at a dinner, which Queen Victoria was also attending)'),
+      L('enSpoon', '그의 옛 제자는 스푸너가 평생 이런 말실수를 내 아는 한 한 번만 했다고 했다 — 나머지는 전설', 'made, to my knowledge, only one "Spoonerism" in his life, in 1879'),
+    ],
+    hintIdea: L('enSpoon', '이런 말실수를 책에 처음 낸 사람은 16세기 프랑스 작가 라블레', 'The first known spoonerisms were published by the 16th-century author François Rabelais'),
+    legend: true, care: '스푸너의 말실수 일화 대부분은 지어낸 것(제자 증언) — "~라고 전해집니다"', why: '이름이 붙은 학장이 정작 평생 한 번만 했다는 반전', hintRisk: false },
+  { answer: '팬그램', also: ['pangram', '홀로알파벳 문장'], major: '생활·상식', mid: '세계 언어·어원', gradeGuess: 4,
+    core: L('enPan', '한 언어의 모든 글자를 적어도 한 번씩 쓴 문장', 'A pangram, or holoalphabetic sentence, phrase, or word, uses every letter of a given alphabet at least once.'),
+    story: [
+      L('koPan', '영어 팬그램 "The quick brown fox jumps over the lazy dog" 는 웨스턴 유니언이 텔렉스 장비의 정확도를 시험하는 데 썼다', '웨스턴 유니언사가 텔렉스/TWX 데이터 통신 장비의 정확도와 신뢰도를 시험하기 위해 사용되었으며'),
+      L('enPan', '글자를 딱 한 번씩만 쓴 완벽한 팬그램은 영어로는 약어나 낯선 낱말을 써야 한다 — 예: "Blowzy night-frumps vex\'d Jack Q."', 'The only known perfect pangrams of the English alphabet use abbreviations or other non-dictionary words, such as "Blowzy night-frumps vex\'d Jack Q."'),
+      L('enPan', '일본어의 이로하는 가나 전체를 한 번씩 쓴 완벽한 팬그램으로 유명하다', 'The Iroha is a well-known perfect pangram of the Japanese syllabary'),
+    ],
+    hintIdea: L('enPan', '글꼴 미리보기 · 장비 시험 · 타자 연습에 쓰인다', 'Pangrams can be utilised to display typefaces, test equipment, or develop skills in handwriting, calligraphy, and typing, amongst other uses.'),
+    why: '글꼴 미리보기 문장 뒤에 이름이 있다', hintRisk: false },
+  { answer: '에포님', also: ['eponym'], major: '생활·상식', mid: '세계 언어·어원', gradeGuess: 4,
+    core: L('koEpo', '어떤 사람이나 사물의 이름이 유래하거나 이름을 따서 명명된 명사', '에포님(eponym)은 어떤 사람이나 사물의 이름이 유래하거나 이름을 따서 명명된 명사이다.'),
+    story: [
+      L('enEpo', '샌드위치는 샌드위치 백작 존 몬터규의 이름을 딴 대표적인 에포님', 'For example, John Montagu, 4th Earl of Sandwich, is the eponym of the sandwich.'),
+      L('enEpo', '월트 디즈니 컴퍼니 · 월트 디즈니 월드도 창업자 이름을 단 경우', 'Walt Disney created the eponymous Walt Disney Company, with his name similarly extended to theme parks such as Walt Disney World.'),
+      L('enEpo', '고대 아테네는 한 해를 그해의 최고 행정관 이름으로 불렀다(기원전 594년 = 솔론)', 'Eponymous archons served a term of one year which took the name of that particular archon (e.g., 594 BC was named after Solon).'),
+    ],
+    hintIdea: L('enEpo', '밴드 더 도어스의 앨범 〈The Doors〉 같은 자기 이름 앨범도 같은 말로 부른다', 'as well as to self-titled works named after their creators (such as the album The Doors by the band the Doors)'),
+    why: '샌드위치 · 디즈니 · 연도 이름이 한 낱말로 묶인다', hintRisk: false },
+  { answer: '오벨루스', also: ['obelus', '나눗셈 기호'], major: '생활·상식', mid: '기호·상징·표지', gradeGuess: 5,
+    core: L('enObe', '나눗셈 기호(÷) · 단검표(†) · 상업용 빼기 기호로 쓰이는 기호를 가리키는 이름', 'An obelus (plural: obeluses or obeli) is a historical annotation mark in codicology that has come to have three distinct modern forms, meanings and typographical uses:'),
+    story: [
+      L('enObe', '원래는 고대 필사본에서 믿기 어려운 구절 옆에 긋던 표식 — 호메로스 학자 제노도토스가 만든 것으로 여겨진다', 'The obelus is believed to have been invented by the Homeric scholar Zenodotus, as one of a system of editorial symbols.'),
+      L('enObe', '선 위아래에 점을 찍은 꼴을 나눗셈에 처음 쓴 사람은 1659년 스위스 수학자 요한 란', 'was first used as a symbol for division by the Swiss mathematician Johann Rahn in his book Teutsche Algebra in 1659'),
+    ],
+    hintIdea: L('enObe', '이름은 고대 그리스어로 뾰족한 막대기 · 꼬치를 뜻하는 낱말에서 왔다', 'the Ancient Greek word for a sharpened stick, spit, or pointed pillar'),
+    why: '나눗셈 기호의 조상이 "의심스러운 문장" 표시였다', hintRisk: false, spellNote: '한국어 위키백과 나눗셈기호 문서가 "영어명은 오벨루스"라고 적음(오벨루스는 그쪽으로 넘겨주기) · also 에 나눗셈 기호' },
+  { answer: '단락 기호', also: ['필크로', 'pilcrow', '¶'], major: '생활·상식', mid: '기호·상징·표지', gradeGuess: 4,
+    core: L('koPil', '문단을 나타내는 기호 ¶ (영어명 pilcrow)', '는 「¶」으로 나타나는 단락을 나타내는 기호이다.'),
+    story: [
+      L('enPil', '옛 그리스에서는 문장 묶음을 가르려고 줄 왼쪽 여백에 가로줄을 그었다', 'The first way to divide sentences into groups in Ancient Greek was the original'),
+      L('enPil', '중세 필사자는 문단 앞을 비워 두고 다른 색 잉크로 기호를 그려 넣을 사람(루브리케이터)에게 맡겼다', 'Scribes would often leave space before paragraphs to allow rubricators to add a hand-drawn pilcrow in contrasting ink.'),
+      L('enPil', '그림을 못 채운 채 책을 팔다 보니 문단 첫 줄을 들여 쓰는 관습이 생겼다', 'If it was not practical to complete the rubrication, books might be sold with the spaces before the paragraphs left blank, thus creating the typographical practice of indentation.'),
+    ],
+    hintIdea: L('enPil', '법률 문서에서 특정 문단을 가리킬 때 쓴다', 'In legal writing, it is often used whenever one cites a specific paragraph within pleadings, law review articles, statutes, or other legal documents and materials.'),
+    why: '문단 들여쓰기가 이 기호를 못 그린 빈칸에서 나왔다', hintRisk: true, spellNote: '한국어 위키백과 표제어 단락 기호 · 영어명 pilcrow 는 also', care: '두 낱말 — 힌트에 "단락" "기호" 조각 금지' },
+  { answer: '어구전철', also: ['애너그램', '아나그램', 'anagram'], major: '생활·상식', mid: '세계 언어·어원', gradeGuess: 4,
+    core: L('enAna', '낱말이나 구의 글자를 모두 한 번씩 써서 순서만 바꿔 다른 낱말이나 구를 만드는 말놀이', 'An anagram is a word or phrase formed by rearranging the letters of a different word or phrase using all the original letters exactly once.'),
+    story: [
+      L('enAna', '1610년 갈릴레오는 토성 고리를 발견하고 먼저 글자를 뒤섞은 암호문으로 발표했다(원문 Altissimum planetam tergeminum observavi)', '(Latin: I have observed the most distant planet to have a triple form) for discovering the rings of Saturn in 1610.'),
+      L('enAna', '케플러는 갈릴레오의 암호문 둘을 잘못 풀어 화성의 위성 · 목성의 붉은 점 얘기로 알았다', 'In both cases, Johannes Kepler had solved the anagrams incorrectly'),
+      L('enAna', '1660년 로버트 훅도 훅의 법칙을 먼저 글자 뒤섞기로 발표했다', 'When Robert Hooke discovered Hooke\'s law in 1660, he first published it in anagram form'),
+    ],
+    hintIdea: L('koAna', '한국어에서도 국왕 → 왕국, 주군 → 군주처럼 글자를 맞바꿔 만든다', '특히, 국왕 → 왕국, 주군→군주, 남해군 → 해남군 등은 한글 표기와 한자 표기가 모두 어구전철'),
+    why: '과학자들이 발견 선점용 비밀 도장으로 썼다', hintRisk: false, spellNote: '한국어 위키백과 표제어 어구전철 · 요즘은 애너그램/아나그램도 흔해 also', care: '힌트에 "전철" 조각 금지' },
+  { answer: '귀부 와인', also: ['귀부와인', '귀부', 'noble rot'], major: '생활·상식', mid: '술·음료', gradeGuess: 4,
+    core: L('enNob', '귀부균(Botrytis cinerea)이 포도에 퍼져 만든 달콤한 디저트 와인', 'is the beneficial form of a grey fungus, Botrytis cinerea, affecting wine grapes.'),
+    story: [
+      L('enNob', '곰팡이가 껍질에 상처를 내 물기가 날아가면 당분이 농축되어 포도 무게가 최대 60% 줄어든다', 'The mass of the grapes can decrease by up to 60%, leaving behind a shrivelled, sugar-rich berry.'),
+      L('enNob', '헝가리 전설은 1630년 토카이에서 처음 아수(귀부 포도 와인)를 만들었다고 한다', 'According to Hungarian legend, the first aszú (a wine using botrytised grapes) was made by Laczkó Máté Szepsi in 1630.'),
+      L('enNob', '독일 요하니스베르크에서는 1775년 수확 허가를 가져올 전령이 강도를 만나 3주 늦어 곰팡이 핀 포도로 뜻밖에 달콤한 와인을 얻었다는 이야기가 전해진다', 'In 1775, the story claims the abbey messenger was robbed en route to delivering the order, delaying cutting by three weeks, time enough for the Botrytis to take hold.'),
+    ],
+    hintIdea: L('koNob', '날씨가 건조하면 포도가 건포도처럼 되며 달아진다', '날씨가 충분히 건조하면 약간 건포도와 같은 형태가 되어 달아진다.'),
+    legend: true, why: '곰팡이 핀 포도가 오히려 최고급 와인이 된다', hintRisk: true, spellNote: '한국어 위키백과 귀부병 문서가 "귀부 와인"으로 안내', care: '힌트에 "와인" "귀부" 금지 · 1775 일화는 전해지는 이야기' },
+  { answer: '말라프로피즘', also: ['malapropism'], major: '생활·상식', mid: '세계 언어·어원', gradeGuess: 4,
+    core: L('enMal', '비슷하게 들리는 다른 낱말을 잘못 써서 엉뚱하고 우스운 말이 되는 현상', 'is the incorrect use of a word in place of a word with a similar sound, either unintentionally or for comedic effect, resulting in a nonsensical, often humorous utterance.'),
+    story: [
+      L('enMal', '이름은 1775년 셰리던의 희극 《연적》의 말 틀리는 인물 말라프롭 부인에서 왔다', 'The word "malapropism" (and its earlier form, "malaprop") comes from a character named "Mrs. Malaprop" in Richard Brinsley Sheridan\'s 1775 play The Rivals.'),
+      L('koMal', '말라프롭이라는 이름은 프랑스어 mal à propos(취지에 어울리지 않는)에서 따온 장난으로 짐작된다', '셰리던은 등장인물 Mrs. Malaprop가 종종 말을 잘못하여 결과적으로 커다란 희극적 효과를 가져왔기 때문에 장난기로 “malapropos”란 단어에 착안하여 Mrs. Malaprop라고 이름을 붙인 게 아닌가 추측된다.'),
+      L('enMal', '양손 타자를 두고 "He\'s amphibious"(양서류다)라고 했다는 요기 베라 말이 예로 든다(원래는 양손잡이 ambidextrous)', 'He hits from both sides of the plate. He\'s amphibious'),
+    ],
+    hintIdea: L('enMal', '셰익스피어 《헛소동》의 경관 도그베리 이름을 딴 도그베리즘이라고도 한다', 'The synonymous term Dogberryism comes from the 1598 Shakespeare play Much Ado About Nothing'),
+    why: '말 틀리는 인물의 이름이 낱말이 됐다', hintRisk: false, care: '요기 베라 말은 "~로 알려져 있다" 투', spellNote: '한국어 위키백과 표제어 말라프로피즘' },
+  { answer: '리포그램', also: ['lipogram'], major: '생활·상식', mid: '세계 언어·어원', gradeGuess: 5,
+    core: L('koLip', '특정 글자를 쓰지 않고 글을 짓는 말놀이', '특정 문자나 문자 집단을 사용하지 않고 문단이나 더 긴 문학 작품을 만드는 것을 의미한다.'),
+    story: [
+      L('enLip', '1969년 조르주 페렉은 프랑스어에서 가장 흔한 글자 e 를 한 번도 쓰지 않은 소설 《라 디스파리시옹》을 냈다', 'Both works are missing the letter E, which is the most common letter in French as well as in English.'),
+      L('enLip', '스페인어 번역은 가장 흔한 e 대신 두 번째로 흔한 a 를 뺐다', 'while the Spanish translation instead omits the letter A, the second most common letter in that language'),
+      L('enLip', '가장 오래된 리포그램 작가는 기원전 6세기 후반 시그마(s)를 싫어해 시에서 뺀 라소스', 'Lasus of Hermione, who lived during the second half of the sixth century BCE, is the most ancient author of a lipogram.'),
+    ],
+    hintIdea: L('koLip', '영어에서 가장 빈도가 높은 홀소리는 e 다', '영어의 경우에는 e 가 가장 빈도수가 많은 홀소리이다.'),
+    why: 'e 없이 소설 한 권을 썼다', hintRisk: false, spellNote: '한국어 위키백과 표제어 리포그램', care: '힌트에 정답 조각 없음' },
+  { answer: '혼성어', also: ['portmanteau', '혼성 낱말'], major: '생활·상식', mid: '세계 언어·어원', gradeGuess: 4,
+    core: L('koPor', '두 개 이상의 낱말이 합쳐져 혼합된 뜻을 가진 낱말', '는 두 개 이상의 낱말이 합쳐져 혼합된 뜻을 가지게 된 낱말을 말한다.'),
+    story: [
+      L('enPor', 'portmanteau 는 원래 두 칸으로 열리는 여행 가방이다', 'literally is a two-part piece of luggage'),
+      L('enPor', '그 이름을 낱말 합치기에 비유해 붙인 것은 루이스 캐럴의 《거울 나라의 앨리스》(1871)', 'that was first applied metaphorically in Lewis Carroll\'s Through the Looking-Glass (1871) to describe the combination of words'),
+      L('enPor', '험프티 덤프티는 slithy 가 "끈적하고 날렵한", mimsy 가 "비참하고 허약한"이라고 설명한다', 'Slithy means "slimy and lithe" and mimsy means "miserable and flimsy".'),
+    ],
+    hintIdea: L('koPor', '스모그는 연기와 안개, 위키백과는 위키와 백과사전을 합친 말이다', '스모그(smog; smoke+fog), 위키백과(위키+백과사전)'),
+    why: '낱말 합치기를 여행 가방에 빗댄 앨리스 속 대사', hintRisk: false, spellNote: '한국어 위키백과 표제어 혼성어' },
+];
+let n = 2801;
+const out = items.map(i => ({ key: 'n' + (n++), spelling: '?', legend: false, care: '', hintRisk: false, spellNote: '', ...i }));
+fs.writeFileSync('chunk-28.json', JSON.stringify({ done: true, chunk: '새재료-28', lane: 'hard', items: out, dropped: { dupActive: 55, weakStory: 6, noSource: 12, other: 8 }, opened: 60 }, null, 1));
+console.log('bad', bad, out.length);

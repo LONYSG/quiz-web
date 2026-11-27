@@ -1,0 +1,319 @@
+[[파일:Blackjack board.JPG|섬네일|300px|진행 중인 블랙잭 게임]]
+'''카드 카운팅'''(Card counting)은 [[블랙잭]]에서 플레이어나 딜러 중 다음 판에 누가 유리한지를 판단하기 위해 사용하는 [[베팅 전략]]이다. 카드 카운터는 이미 나눠준 높고 낮은 가치의 카드들을 계속 합산하여 추적함으로써 [[카지노]]의 [[하우스 에지]]를 극복하고자 한다. 이들은 일반적으로 자신에게 유리할 때 더 많이 베팅하고, 딜러에게 유리할 때 더 적게 베팅한다. 또한 덱에 남은 카드의 구성에 따라 플레이 결정을 바꾸기도 하며, 때로는 팀을 이루어 플레이한다.
+
+== 기초 ==
+카드 카운팅은 높은 카드([[에이스]], 10, 9)는 플레이어에게 유리하고, 낮은 카드(2, 3, 4, 5, 6, 7)는 딜러에게 유리하다는 통계적 근거에 기반한다. 높은 카드는 다음과 같은 방식으로 플레이어에게 이득을 준다.
+
+# 플레이어가 블랙잭을 잡을 확률을 높여주며, 이는 보통 3:2 배당률로 지급된다 (일부 카지노는 6:5를 지급하기도 함).
+# [[더블 다운]]의 기대 가치를 높인다. 10과 에이스의 비율이 높아지면 더블 다운이 성공할 확률이 개선된다. 플레이어가 더블 다운을 하는 가장 흔한 손패 가치는 11, 10, 9이며, 여기서 높은 카드를 뽑으면 강력한 손패가 된다.<ref name="beat-19662">Thorp (1966), pp. 24–27, pp. 41–47, pp. 98–99, pp. 102–103, p. 110, p. 115.</ref>
+# 플레이어에게 추가적인 [[스플릿]] 기회를 제공한다.
+# 딜러가 블랙잭을 가질 확률을 높여 [[블랙잭#보험|인슈어런스 베팅]]을 수익성 있게 만들 수 있다.
+# 딜러의 업카드가 낮을 때(예: 2~6), 딜러가 버스트(Bust)될 확률을 높인다. 이는 플레이어의 버스트 확률도 높이지만, 플레이어는 카운트 수치에 따라 낮은 점수에서 스테이(Stand)를 선택할 수 있다.
+
+반대로 낮은 카드는 딜러에게 유리하다. 규칙상 딜러는 딱딱한 손패(합계 12~16)에서 반드시 카드를 더 받아야 하며, 낮은 카드는 이러한 합계에서 버스트될 확률을 낮춰준다. 딱딱한 손패를 가진 딜러는 다음 카드가 10일 경우 버스트된다.<ref name="wiz-bjk2">{{웹 인용|author=Wizard of Odds |date=July 2011 |title=How to Play Blackjack |url=https://wizardofodds.com/games/blackjack/ |access-date=3 November 2011 |publisher=wizardofodds.com |archive-date=15 November 2011 |archive-url=https://web.archive.org/web/20111115231930/http://wizardofodds.com/games/blackjack/ |url-status=live }}</ref>
+
+카드 카운터에게 특별한 지적 능력이 필요한 것은 아니다. 이들은 특정 카드를 일일이 기억하거나 추적하지 않는다. 대신 각 카드에 점수를 부여하여 그 가치를 추정하고, 이 값들의 합계를 통해 '러닝 카운트'(Running count)를 추적한다.<ref name="tob-19794">{{서적 인용|last1=Griffin |first1=Peter A. |title=The theory of blackjack: the compleat card counter's guide to the casino game of 21 |date=1999 |publisher=Huntington Press |isbn=978-0929712130 |edition=6th |location=Las Vegas, Nev.}}</ref> 카운터가 모든 카드를 기억한다는 미신은 1988년 영화 [[레인 맨]]에서 묘사되었는데, 작중 [[사반트 증후군]] 캐릭터인 레이먼드 배빗이 6덱을 쉽게 카운팅하자 카지노 직원이 이는 불가능한 일이라고 언급하는 장면이 나온다.<ref>{{서적 인용|author1=Sklar, Jessica K. |url=https://books.google.com/books?id=Q-Q_2G8CiyYC&pg=PA151 |title=Mathematics in Popular Culture: Essays on Appearances in Film, Fiction, Games, Television and Other Media |author2=Sklar, Elizabeth S. |date=29 February 2012 |publisher=[[맥파랜드 앤 컴퍼니]] |isbn=978-0-7864-8994-7 |page=151 |access-date=26 August 2014 |archive-date=4 February 2021 |archive-url=https://web.archive.org/web/20210204001218/https://books.google.com/books?id=Q-Q_2G8CiyYC&pg=PA151 |url-status=live }}</ref><ref>{{웹 인용|title=Rain Man (1988) Plot Summary |website=[[인터넷 영화 데이터베이스]] |url=https://www.imdb.com/title/tt0095953/plotsummary |access-date=10 July 2014 |archive-date=17 July 2014 |archive-url=https://web.archive.org/web/20140717020855/http://www.imdb.com/title/tt0095953/plotsummary |url-status=live }}</ref>
+
+=== 시스템 ===
+기본적인 카드 카운팅 시스템은 각 카드에 양수, 음수 또는 0의 값을 부여한다. 카드가 한 장 나올 때마다 그 카드의 카운팅 값에 따라 합계가 조정된다. 낮은 카드는 카운트를 높이며, 이는 덱에 남은 높은 카드의 비율이 높아짐을 의미한다. 높은 카드는 반대로 카운트를 낮춘다. 예를 들어, 하이-로(Hi-Lo) 시스템에서는 10, J, Q, K, 에이스가 나올 때마다 1을 빼고, 2에서 6 사이의 카드가 나올 때마다 1을 더한다. 7, 8, 9는 0으로 계산하여 카운트에 영향을 주지 않는다.<ref>Axelrad (2010), p. 256.</ref>
+
+카드 카운팅 시스템의 목표는 카드가 제거되었을 때의 효과(Effect of Removal, EOR)와 대략적으로 일치하는 점수 값을 할당하는 것이다. EOR은 특정 카드가 게임에서 빠졌을 때 하우스 에지에 미치는 추정 효과다. 카운터는 모든 카드의 EOR을 가늠하여 현재의 하우스 에지 변화를 파악한다. 점수 값 사이의 비율이 클수록 실제 EOR과 더 높은 상관관계를 가지며 시스템의 효율성이 높아진다. 이러한 시스템은 레벨 1, 레벨 2, 레벨 3 등으로 분류되며, 레벨은 값들 사이의 비율에 해당한다.
+
+하이-로 시스템은 레벨 1 카운트이다. 러닝 카운트가 한 번에 1보다 크게 변하지 않는다. 젠 카운트(Zen Count), 웡 하브스(Wong Halves), Hi-Opt II와 같은 멀티레벨 카운트는 정확도를 높이기 위해 카드 가치를 더 세분화한다. 고급 카운트에는 +2와 -2, 또는 +0.5와 -0.5와 같은 값이 포함된다. 숙련된 플레이어는 에이스와 같은 특정 카드를 별도로 카운팅(Side count)하기도 한다. 이는 베팅의 정확도와 플레이 전략의 정확도가 다를 때 수행된다.
+
+특수한 목적의 사이드 카운트 기술도 많이 존재하며, 여기에는 오버/언더 사이드 베팅과 같이 표준적이지 않은 수익성 있는 플레이 옵션이 있는 게임을 위한 카운트도 포함된다.<ref>{{웹 인용|title=Blackjack Side Counts |url=https://www.qfit.com/blackjack-side-counts.htm |access-date=20 March 2009 |publisher=Qfit.com |archive-date=11 March 2009 |archive-url=https://web.archive.org/web/20090311045259/http://qfit.com/blackjack-side-counts.htm |url-status=live }}</ref>
+
+높은 레벨의 카운트로 더 많은 데이터를 추적하면 속도와 정확도가 떨어질 수 있다. 일부 카운터는 복잡한 카운트를 천천히 하는 것보다 단순한 카운트를 빠르게 플레이하여 더 많은 수익을 올리기도 한다.
+
+다음 표는 몇 가지 카운팅 시스템의 예시이다.<ref name="qfitcc2">{{웹 인용|title=Card Counting Strategies |url=https://www.qfit.com/card-counting.htm |access-date=10 March 2013 |publisher=Qfit.com |archive-date=10 March 2013 |archive-url=https://web.archive.org/web/20130310034023/http://qfit.com/card-counting.htm |url-status=live }}</ref><ref>{{서적 인용|last1=Archer|first1=John|title=The Archer Method of Winning at 21|date=1973|publisher= Henry Regnery Company |isbn=0-87980-328-2}}</ref>
+{| class="wikitable"
+|-
+!카드 전략
+!2
+!3
+!4
+!5
+!6
+!7
+!8
+!9
+!10, J, Q, K
+!A
+!카운트 레벨
+|-
+| Hi-Lo
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| 0
+|align=center| 0
+|align=center| 0
+|align=center| −1
+|align=center| −1
+|align=center| 1
+|-
+| Hi-Opt I
+|align=center| 0
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| 0
+|align=center| 0
+|align=center| 0
+|align=center| −1
+|align=center| 0
+|align=center| 1
+|-
+| Hi-Opt II
+|align=center| +1
+|align=center| +1
+|align=center| +2
+|align=center| +2
+|align=center| +1
+|align=center| +1
+|align=center| 0
+|align=center| 0
+|align=center| −2
+|align=center| 0
+|align=center| 2
+|-
+| KO
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| 0
+|align=center| 0
+|align=center| −1
+|align=center| −1
+|align=center| 1
+|-
+| Omega II
+|align=center| +1
+|align=center| +1
+|align=center| +2
+|align=center| +2
+|align=center| +2
+|align=center| +1
+|align=center| 0
+|align=center| −1
+|align=center| −2
+|align=center| 0
+|align=center| 2
+|-
+| Red 7
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| 0 또는 +1
+|align=center| 0
+|align=center| 0
+|align=center| −1
+|align=center| −1
+|align=center| 1
+|-
+| Halves
+|align=center| +0.5
+|align=center| +1
+|align=center| +1
+|align=center| +1.5
+|align=center| +1
+|align=center| +0.5
+|align=center| 0
+|align=center| -0.5
+|align=center| −1
+|align=center| −1
+|align=center| 3
+|-
+| Zen Count
+|align=center| +1
+|align=center| +1
+|align=center| +2
+|align=center| +2
+|align=center| +2
+|align=center| +1
+|align=center| 0
+|align=center| 0
+|align=center| −2
+|align=center| −1
+|align=center| 2
+|-
+| 10 Count
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| +1
+|align=center| −2
+|align=center| +1
+|align=center| 2
+|}
+
+=== 시스템의 설계 및 선택 ===
+카드 카운팅 시스템의 주된 목적은 각 카드에 EOR(카드가 게임에서 제거되었을 때 하우스 이점에 미치는 영향)과 상관관계가 있는 점수 값을 할당하여, 플레이어가 아직 나눠주지 않은 카드의 구성을 바탕으로 하우스 이점을 가늠할 수 있게 하는 것이다. 점수 값의 비율이 클수록 실제 EOR과 더 잘 일치하지만 시스템은 복잡해진다. 카운팅 시스템은 서로 다른 점수 값의 수에 따라 "레벨 1", "레벨 2" 등으로 불린다.
+
+이상적인 시스템은 플레이어가 사용 가능하면서도, 고정된 속도로 진행되는 게임에서 단위 시간당 가장 높은 평균 수익을 제공하는 시스템이다. 이를 위해 시스템은 다음 세 가지 범주의 효율성 균형을 맞추는 것을 목표로 한다.<ref name="tob-19794"/>
+
+; 베팅 상관관계 (Betting correlation, BC)
+: 아직 배분되지 않은 카드의 모든 순열 합계가 최적의 전략을 사용하는 플레이어에게 양의 기댓값을 제공할 때, 베팅하는 플레이어에게도 양의 기댓값이 발생한다. BC는 시스템이 사용자에게 이러한 상황을 얼마나 효과적으로 알려주는지 측정한다.
+; 플레이 효율성 (Playing efficiency, PE)
+: 예상 이익의 일부는 변화된 카드의 구성에 따라 플레이 전략을 수정함으로써 발생한다. 따라서 PE는 실제 남은 카드의 구성에 맞춰 플레이어가 전략을 얼마나 효과적으로 수정하도록 안내하는지 측정한다. 싱글 덱이나 더블 덱 게임처럼 PE의 효과가 전체 수익에 큰 영향을 미치는 경우 PE가 중요하다.
+; 인슈어런스 상관관계 (Insurance correlation, IC)
+: 카드 카운팅을 통한 예상 이득의 일부는 카운트가 높을 때 수익성이 생기는 인슈어런스 베팅에서 나온다. IC의 증가는 카드 카운팅 시스템에 추가적인 가치를 제공한다.
+
+어떤 전략은 에이스를 카운트(Ace-reckoned)하고, 어떤 전략은 카운트하지 않는다(Ace-neutral). 에이스는 베팅 목적에서 가장 가치 있는 카드이므로, 카운트에 에이스를 포함하면 베팅 상관관계가 개선된다. 하지만 에이스는 1 또는 11로 모두 사용될 수 있기 때문에, 카운트에 포함하면 플레이 효율성의 정확도는 떨어진다. PE는 싱글 및 더블 덱 게임에서 더 중요하고, BC는 [[슈 (카드)|슈]](Shoe) 게임에서 더 중요하므로, 에이스를 카운트하는 것은 슈 게임에서 더 중요하다.
+
+이러한 상충 관계를 해결하는 한 가지 방법은 더 높은 PE를 얻기 위해 에이스를 무시하되, 별도의 사이드 카운트를 유지하여 기댓값(EV)의 추가적인 변화를 감지함으로써 일반적인 시스템으로는 포착되지 않는 추가 베팅 기회를 찾는 것이다.
+
+가장 흔하게 사이드 카운트되는 카드는 에이스인데, 이는 BC와 PE의 균형을 맞추는 데 가장 중요한 카드이기 때문이다. 이론적으로 플레이어는 모든 카드를 사이드 카운트하여 100%에 가까운 PE를 달성할 수 있지만, 사이드 카운트가 늘어날수록 계산의 복잡도가 기하급수적으로 증가하여 인간의 정신적 능력을 금방 초과하게 된다. 사이드 카운트가 없을 경우 PE는 약 70%에 도달할 수 있다.<ref name="tob-19794" />
+
+카드 카운팅 시스템을 사용할 때 인간의 뇌에 과도한 부담을 줄 수 있으므로 사용 편의성 또한 중요한 설계 고려 사항이다. 높은 레벨의 시스템과 사이드 카운트가 있는 시스템은 당연히 더 어려우며, 이를 쉽게 만들기 위해 고안된 '언밸런스'(Unbalanced) 시스템은 이미 사용된 카드나 덱의 수를 계속 파악해야 하는 번거로움을 없애는 대신 대개 PE가 낮아지는 대가를 치른다.<ref name="qfitcc2"/>
+
+== 밸런스 카운팅 시스템에서의 러닝 카운트 대 트루 카운트 ==
+러닝 카운트(Running count)는 각 카드의 지정된 가치를 계속 합산한 총합이다. 밸런스 카운트(하이-로 시스템 등)를 사용할 때는 러닝 카운트를 사용된 덱의 수를 고려한 '트루 카운트'(True count, 진수)로 변환해야 한다. 하이-로 시스템에서 트루 카운트는 러닝 카운트를 아직 나눠주지 않은 남은 덱의 수로 나눈 값이다. 이는 나눗셈으로 계산하거나 라운드당 평균 카드 사용량에 진행된 라운드 수를 곱해 추정할 수 있다. 다만 트루 카운트를 계산하는 방식에는 여러 변형이 존재한다.<ref>{{웹 인용|title=True Count Calculation&nbsp;– The Whole Story |url=https://www.qfit.com/CalculatingTrueCounts.htm |access-date=10 March 2013 |publisher=Qfit.com |archive-date=20 January 2013 |archive-url=https://web.archive.org/web/20130120053809/http://qfit.com/CalculatingTrueCounts.htm |url-status=live }}</ref>
+
+== 백 카운팅 (Back-counting) ==
+
+백 카운팅 또는 "웡잉"(Wonging)은 블랙잭 테이블 뒤에 서서 카드가 분배되는 것을 보며 카운팅하는 방식이다. [[스탠퍼드 웡]]이 처음 이 아이디어를 제안했기에 그의 이름을 따서 불린다.<ref>Schlesinger (2005)</ref>
+
+플레이어는 카운트가 자신에게 유리한 지점에 도달했을 때 게임에 참여("웡 인")한다. 그 후 유리함이 커지면 베팅액을 높이고, 유리함이 줄어들면 베팅액을 낮춘다. 일부 백 카운터는 게임에 들어간 후 동일한 금액만 베팅하는 플랫 베팅(Flat-bet)을 선호하기도 한다. 일부 플레이어는 카드가 셔플될 때까지 테이블에 머물거나, 카운트가 더 이상 유리하지 않은 수준으로 떨어지면 게임을 떠나는 "웡 아웃"을 한다.
+
+백 카운팅은 주로 4, 6, 8덱을 사용하는 슈 게임에서 이루어지지만, 1~2덱의 피치(Pitch) 게임에서도 가능하다. 슈 게임에서 카운트가 더 안정적이기 때문에 플레이어가 한두 판만 하고 바로 일어나야 하는 상황이 적기 때문이다. 게다가 많은 카지노가 싱글 또는 더블 덱 게임에서는 "슈 중간 참여"를 허용하지 않아 웡잉이 불가능한 경우도 많다. 또한 카운터가 피치 게임에서 갖는 이점이 슈 게임보다 크기 때문에 카지노 측에서 피치 게임의 카운팅을 막기 위해 더 많은 노력을 기울인다는 점도 이유 중 하나다.<ref>{{웹 인용|title=How to Use Frequency Distributions to Determine Your Card Counting Win Rate and Fluctuations |url=http://www.blackjackforumonline.com/content/6DeckText.htm |access-date=20 March 2009 |publisher=Blackjackforumonline.com |archive-date=28 March 2009 |archive-url=https://web.archive.org/web/20090328172315/http://www.blackjackforumonline.com/content/6DeckText.htm |url-status=live }}</ref>
+
+=== 장점 ===
+백 카운팅은 모든 판을 플레이하지 않는다는 점에서 전통적인 카드 카운팅과 다르다. 이는 몇 가지 장점을 제공한다. 우선 통계적으로 유리하지 않은 판에는 참여하지 않으므로 플레이어의 전체적인 우위가 높아진다. 또 다른 장점은 베팅 크기를 크게(혹은 아예) 바꿀 필요가 없다는 점이다. 베팅 크기의 큰 변화는 카지노가 카드 카운터를 감지하는 주요 방법 중 하나다.
+
+=== 그룹 카운팅 ===
+한 명의 플레이어가 백 카운팅으로 이득을 얻을 수도 있지만, 카드 카운팅은 팀 단위로 움직일 때 그 이점이 극대화된다. 이러한 팀에서는 "스포터"(Spotter)라 불리는 플레이어들이 여러 테이블에 앉아 최소 금액으로 베팅하며 카운트를 추적(백 카운팅)한다. 카운트가 상당히 높아지면 스포터는 "빅 플레이어"(Big player)라고 불리는 다른 팀원에게 테이블이 "뜨겁다"는 신호를 보낸다. 빅 플레이어는 그때 "웡 인"하여 카운트가 높은 동안 (테이블 최대 한도까지) 훨씬 큰 금액을 베팅한다. 카운트가 "식거나" 셔플이 되어 초기화되면 빅 플레이어는 "웡 아웃"하고 다른 스포터가 신호를 보내는 테이블을 찾아 이동한다. 이것이 바로 [[MIT 블랙잭 팀]]이 사용한 시스템이며, 이들의 이야기는 캐나다 영화 [[더 라스트 카지노]]와 이를 [[미국 영화|할리우드]]에서 리메이크한 [[21 (2008년 영화)|21]]의 모티브가 되었다.<ref>Axelrad (2010), pp. 19, 259.</ref>
+
+그룹 플레이의 가장 큰 장점은 한 명의 백 카운터가 보통 한 개 테이블만 추적할 수 있는 것과 달리, 팀이 여러 테이블을 동시에 카운팅할 수 있다는 점이다. 이를 통해 빅 플레이어는 높은 카운트의 이점을 유지하며 테이블 사이를 끊임없이 이동할 수 있다. 또한 빅 플레이어가 자리에 앉았을 때 스포터와 빅 플레이어 모두 카운트를 유지할 수 있어 상호 확인이 가능하다. 단점으로는 정확한 카운트를 유지할 수 있는 여러 명의 스포터가 필요하고, 수익을 팀원 전체가 나눠야 하며, 카운트와 상관없이 자리를 지켜야 하는 스포터들이 (기본 전략만 사용하므로) 장기적으로 돈을 잃게 된다는 점, 그리고 [[핏 보스]]의 눈에 띌 수 있는 신호를 사용해야 한다는 점 등이 있다.
+
+단순한 변형으로는 스포터가 직접 게임을 하지 않고 테이블을 지켜보기만 하다가 빅 플레이어에게 신호를 보내는 방식이 있다. 이 경우 스포터가 게임을 하며 잃는 돈은 없지만, 빅 플레이어와의 소통이 어려워지고, 자리에 앉지 않으므로 카지노의 서비스(Comps)를 받지 못하며, 블랙잭은 보통 관전 스포츠가 아니기에(판이 크고 구경꾼이 많은 [[크랩스]], [[룰렛]], [[빅 식스 휠]]과 달리) 카지노 측의 의심을 크게 살 수 있다는 단점이 있다.
+
+== 베팅 크기의 조절과 켈리 공식 ==
+[[켈리 공식]]이라는 수학적 원리에 따르면 베팅액의 증가는 플레이어의 우위에 비례해야 한다. 실제 상황에서 이는 카운트가 높을수록 플레이어의 우위를 활용하기 위해 더 많이 베팅해야 함을 의미한다. 이 원리를 사용하여 카운터는 카운트가 지시하는 우위에 맞춰 베팅 크기를 조절할 수 있다. 이는 켈리 공식의 원리에 따른 "베팅 램프"(Bet ramp)를 형성한다. 베팅 램프는 자본금의 성장을 극대화하기 위해 각 트루 카운트 값에 특정 베팅 크기를 연결한 베팅 계획이다. 결론적으로 켈리 공식은 덱이 양의 기댓값을 제공하지 않을 때는 아예 베팅하지 않을 것을 요구하며, "웡잉"이 이를 실제로 구현한 형태다.<ref>Axelrad (2010), pp. 258-259.</ref>
+
+== 예상 이익 ==
+역사적으로 완벽한 기본 전략을 구사하는 블랙잭의 하우스 에지는 0.5% 미만이었다. 그러나 많은 카지노가 딜러가 소프트 17에서 카드를 더 받고(S17 → H17), 블랙잭 배당을 6:5로 하향 조정함에 따라 네바다주의 평균 하우스 에지는 1%로 상승했다. 6덱 게임에서 적절하게 베팅 범위를 조절하는 일반적인 카드 카운터는 카지노를 상대로 약 1%의 우위를 점한다. 6덱 [[스페인 21]] 카운팅이나 리더블(Redoubling)이 가능한 게임에서는 일반적인 카드 침투율(Penetration)에서 최대 2.5%의 우위도 가능하다.<ref>Walker (2008), p. 89</ref> 이 수치는 카운터의 숙련도, 침투율(덱을 얼마나 깊게 사용하는지), 베팅 스프레드(최소 베팅 대비 최대 베팅의 비율)에 따라 달라진다. 블랙잭은 변동성이 크기 때문에 상당한 이익을 내기 위해서는 수백 시간의 플레이가 필요할 수 있다. 규칙과 전략에 따라 다르지만, 플레이어가 베팅을 높일 만큼 충분히 카운트가 올라가는 경우는 전체 시간의 약 10%~35%에 불과하다.<ref>{{웹 인용|title=True Count Frequencies |url=https://www.blackjackincolor.com/truecount1.htm |access-date=20 March 2009 |publisher=Blackjackincolor.com |archive-date=5 March 2009 |archive-url=https://web.archive.org/web/20090305134029/http://www.blackjackincolor.com/truecount1.htm |url-status=live }}</ref>
+
+평균 100달러를 베팅하는 테이블에서 1%의 우위는 한 판당 평균 1달러를 딴다는 것을 의미한다. 시간당 50판을 플레이한다면 평균 시간당 수익은 50달러가 된다.
+
+한 가지 짚고 넘어갈 점은 카운트가 높을 때도 플레이어가 한 판을 이길 확률은 아주 미세하게 변할 뿐이며 여전히 50% 미만이라는 점이다.<ref>{{웹 인용|title=Win/Loss/Push Data |url=https://www.blackjackincolor.com/truecount5.htm |access-date=20 March 2009 |publisher=Blackjackincolor.com |archive-date=2 March 2009 |archive-url=https://web.archive.org/web/20090302030832/http://blackjackincolor.com/truecount5.htm |url-status=live }}</ref> 플레이어의 우위는 단순히 승률에서 오는 것이 아니라, 블랙잭 확률의 증가, 더블 다운, 스플릿, 서렌더를 통한 추가 수익, 그리고 높은 카운트에서 수익성이 생기는 인슈어런스 사이드 베팅에서 발생한다.
+
+예상 수익에 영향을 미치는 요인은 다음과 같다.
+* 플레이어의 우위를 감지하는 카드 카운팅 시스템의 전반적인 효율성.
+* 플레이어 우위를 생성하는 전체적인 효율성. (시스템이 실제보다 낮은 우위를 지시할 경우 전체 ROI가 낮아짐)
+* 게임의 규칙.
+* 침투율은 활용 가능한 우위의 크기와 유리한 판이 나오는 빈도에 직접적인 영향을 준다.
+* 테이블에 앉은 플레이어 수는 게임 속도를 늦춰 시간당 플레이 가능한 판 수를 줄인다.
+* 사이드 베팅이 있는 테이블은 진행 속도가 느려져 판 수가 줄어든다.
+* 자동 셔플 기계를 사용하거나 드물게 전담 딜러가 셔플을 미리 해두는 경우, 셔플 대기 시간이 사라져 게임 속도가 빨라진다.
+
+== 법적 지위 ==
+영국법상 카드 카운팅은 불법이 아니며, 외부 기기나 타인의 조력을 받지 않는 한 미국의 연방법, 주법, 지방법에서도 불법이 아니다. 그럼에도 카지노 측은 이를 반기지 않으며, 카운터로 의심되는 플레이어를 금지(Ban)하는 등 예방 조치를 취한다.<ref name="bjlaw">{{서적 인용|last1=Rose1=I. Nelson |last2=Loeb |first2=Robert A. |title=Blackjack and the law |url=https://archive.org/details/blackjacklaw0000rose |date=1998 |publisher=RGE Pub. |location=Oakland, CA |isbn=978-0910575089 |edition=1st}}</ref><ref name="chencourt">{{웹 인용|title=Chen v. STATE, GAMING CONTROL BOARD, 994 P. 2d 1151 - Nev: Supreme Court 2000 |url=https://scholar.google.com/scholar_case?case=13019089328489346495 |website=Google Scholar |access-date=27 October 2019 |quote=On the other hand, neither card counting nor ... is illegal under Nevada law. |archive-date=29 June 2020 |archive-url=https://web.archive.org/web/20200629182053/https://scholar.google.com/scholar_case?case=13019089328489346495 |url-status=live }}</ref> 카드 카운터를 가려내려는 과정에서 카지노가 카운팅을 하지 않는 플레이어를 오해하여 입장을 금지하는 경우도 발생한다.<ref>Zender (2006)</ref>
+
+[[뉴저지주]] [[애틀랜틱시티]]의 카지노들은 [[뉴저지주 대법원]]의 판결에 따라 카드 카운터를 추방하는 것이 금지되어 있다. 1979년 [[블랙잭 명예의 전당]] 헌액자인 [[켄 유스턴]]은 카지노가 숙련된 플레이어를 금지할 권리가 없다며 애틀랜틱시티 카지노를 상대로 소송을 제기했다. 대법원은 이에 동의하며 "뉴저지주의 카지노 통제권은 매우 강력하여 뉴저지 카지노 통제 위원회만이 숙련된 플레이어를 배제하는 규칙을 만들 권한이 있다"고 판결했다.<ref>See summary brief of [https://www.casebriefs.com/blog/law/property/property-law-keyed-to-singer/trespass-and-public-rights-of-access-to-property/uston-v-resorts-international-hotel-inc/ Uston v. Resorts International Hotel, Inc.; 445 A.2d 370 N.J. 1982] {{웹아카이브|url=https://web.archive.org/web/20210826230341/https://www.casebriefs.com/blog/law/property/property-law-keyed-to-singer/trespass-and-public-rights-of-access-to-property/uston-v-resorts-international-hotel-inc/ |date=2021-08-26 }}</ref> 위원회는 관련 규정을 만들지 않았고, 따라서 애틀랜틱시티 카지노는 카드 카운터를 금지할 수 없다. 카운터를 내쫓을 수 없게 되자 이곳 카지노들은 [[#대응책|대응책]] 사용을 늘렸다.<ref name=bigplayer>Olsen (1981)</ref>
+
+중국 내 유일한 합법 도박지인 [[마카오]]에서는 기술적으로 카드 카운팅을 금지하지 않지만, 미국이나 영국과 마찬가지로 카지노 측에서 고객을 추방하거나 금지할 권리를 유보하고 있다.<ref>{{뉴스 인용|work=[[뉴욕 타임스]] |url=https://www.nytimes.com/2016/07/03/magazine/how-advantage-players-game-the-casinos.html |first=Michael |last=Kaplan |date=29 July 2016 |title=How Advantage Players Game the Casinos |access-date=20 May 2020 |archive-date=13 May 2020 |archive-url=https://web.archive.org/web/20200513095406/https://www.nytimes.com/2016/07/03/magazine/how-advantage-players-game-the-casinos.html |url-status=live }}</ref> 그러나 이러한 전략을 돕기 위해 전자 기기를 사용하는 것은 엄격히 금지되며 체포될 수 있다.<ref>{{뉴스 인용|url=https://www.bbc.com/travel/article/20120816-travelwise-casino-design-and-why-the-house-always-wins |work=[[영국방송공사|BBC]] |access-date=20 May 2020 |date=17 August 2012 |first=Suemedha |last=Sood |title=Casino design and why the house always wins |archive-date=26 August 2021 |archive-url=https://web.archive.org/web/20210826231841/https://www.bbc.com/travel/article/20120816-travelwise-casino-design-and-why-the-house-always-wins |url-status=live }}</ref>
+
+== 카지노의 반응 ==
+=== 감지 ===
+
+플레이어의 행동을 관찰하여 카드 카운터를 찾아내는 업무는 현장의 [[핏 보스]]와 보안 요원들의 몫이다. 이들은 비디오 감시 장치(일명 '[[천장의 눈]]')와 컴퓨터 분석을 활용해 카운팅 징후가 보이는 플레이를 포착한다. 초기에는 딜러가 직접 카운팅을 배워 플레이어의 패턴을 읽기도 했다. 많은 카지노 체인이 '부적격 플레이어' 데이터베이스를 운영하며, 그리핀 인베스티게이션(Griffin Investigations), 바이오메트리카(Biometrica), OSN 등 외부 기관이 제공하는 전문가 목록을 구독하기도 한다.<ref name="blue2">{{서적 인용|last1=Blaine |first1=Rick |title=Blackjack Blueprint: How to Play Like a Pro ... Part-Time |url=https://archive.org/details/blackjackbluepri0000blai |date=May 2014 |publisher=Huntington Press |isbn=978-1935396536}}</ref> 그리핀 인베스티게이션은 전문 도박사들이 제기한 명예훼손 소송에서 패소한 후 2005년 [[연방 파산법 제11장]]에 따른 파산 보호 신청을 하기도 했다.<ref>{{웹 인용|author=Liz Benston |title=Griffin book producer files for Chapter 11, citing suit |date=13 September 2005 |url=https://lasvegassun.com/news/2005/sep/13/griffin-book-producer-files-for-chapter-11-citing-/ |access-date=15 June 2010 |publisher=LasVegasSun |archive-date=8 June 2010 |archive-url=https://web.archive.org/web/20100608063853/http://www.lasvegassun.com/news/2005/sep/13/griffin-book-producer-files-for-chapter-11-citing-/ |url-status=live }}</ref> 성공적인 카드 카운터가 되기 위해서는 플레이 실력만큼이나 카지노 직원들의 의심을 피하기 위한 위장(Cover) 행동 기술이 중요할 수 있다.
+
+카운팅 의심 사례가 발생하면 카지노 직원은 카운터 특유의 행동 패턴을 살핀다. 여기에는 다음이 포함된다.<ref>{{서적 인용|last1=Zender |first1=Bill |title=Casino-ology 2: New Strategies for Managing Casino Games |date=April 2011 |publisher=Huntington Press |isbn=9781935396284}}</ref><ref name="James2">{{서적 인용|last1=Grosjean |first1=James |title=Exhibit CAA: beyond counting |date=2007 |publisher=South Side Advantage Press, LLC |isbn=978-0-9790061-4-2 |edition=1st |location=Las Vegas, NV}}</ref><ref>{{서적 인용|last1=Cellini |first1=D.V. |title=The card counter's guide to casino surveillance |date=2003 |publisher=Huntington Press}}</ref>
+* 거액의 칩 구매(Buy-ins).
+* 극심한 베팅액 변화, 특히 슈의 마지막 단계에서만 큰 금액을 베팅하는 행위.
+* 한 슈가 진행되는 동안 극히 일부의 판에만 참여하는 행위.
+* 멤버십 카드 사용 거부.
+* 빈번한 테이블 이동.
+* 여러 핸드를 동시에 플레이.
+* 누적 수익이 높은 경우.
+
+또한 카드 카운터는 기본 전략과 다른 독특한 결정을 내리기도 한다. 카운트가 유리할 때 10 한 쌍을 스플릿하거나 소프트 18/19/20에서 더블 다운을 하고, 15/16에서 스테이를 하거나 14에서 서렌더를 하는 등의 행위는 카운팅의 신호일 수 있다. 특히 10 스플릿이나 소프트 19, 20 더블 다운 같은 매우 공격적인 플레이는 카드 카운팅뿐만 아니라 [[엣지 소팅]]이나 홀 카드 노출을 이용한 플레이의 강력한 증거가 되므로 핏 보스에게 즉시 보고된다.
+
+=== 카드 카운터 감지 기술 ===
+카드 카운터를 가려내기 위한 반자동 시스템들도 개발되었다. (현재는 단종된) 마인드플레이(MindPlay) 시스템은 카드가 분배될 때 그 가치를 스캔했다. 셔플 마스터(Shuffle Master)의 인텔리전트 슈(Intelligent Shoe) 시스템 또한 슈에서 나오는 카드의 가치를 스캔한다. 블러드하운드(Bloodhound)나 프로텍 21(Protec 21)<ref>{{웹 인용|title=Digitace Website |url=http://www.digitace.com |access-date=20 March 2009 |publisher=digitace.com |archive-date=15 January 2009 |archive-url=https://web.archive.org/web/20090115004810/http://www.digitace.com/ |url-status=live }}</ref>과 같은 소프트웨어는 카드와 베팅액을 음성으로 입력하면 플레이어의 우위를 계산해준다. 최근의 혁신은 카지노 칩에 [[RFID]]를 내장하여 테이블에서 자동으로 베팅액을 추적하는 방식이다.<ref>{{웹 인용|last=Gilbert |first=Alorie |title=CNET News story, "Vegas Casino Bets on RFID" |url=https://www.cnet.com/tech/services-and-software/vegas-casino-bets-on-rfid/ |access-date=20 March 2009 |publisher=News.com.com |archive-date=26 August 2021 |archive-url=https://web.archive.org/web/20210826230340/https://www.cnet.com/tech/services-and-software/vegas-casino-bets-on-rfid/ |url-status=live }}</ref>
+
+자동 카드 판독 기술은 오용될 소지도 있는데, 플레이어에게 유리한 카드가 남았을 때 딜러가 카드를 미리 섞어버리는 '편파적 셔플'(Preferential shuffling)에 사용될 수 있기 때문이다. 이에 따라 일부 시스템은 실시간 데이터 접근을 지연시키도록 설계되기도 한다.<ref>{{웹 인용|title=High-Tech Casino Advantage Play: Legislative Approaches to the Threat of Predictive Devices |url=https://core.ac.uk/download/pdf/10678382.pdf |access-date=19 November 2017 |website=Core |archive-date=8 November 2017 |archive-url=https://web.archive.org/web/20171108080515/https://core.ac.uk/download/pdf/10678382.pdf |url-status=live }}</ref>
+
+카지노는 수집된 데이터를 바탕으로 다음과 같은 분석을 수행한다.
+
+베팅 변동 분석. 카운터는 우위가 있을 때 더 많이 베팅한다. 소프트웨어는 플레이 영상에서 베팅액과 당시의 카운트를 비교해 산점도를 그리고 추세선을 찾는다. 카운팅을 하지 않는다면 베팅액과 카운트 사이에는 상관관계가 없겠지만, 카운터라면 카운트에 따라 베팅액이 변하는 추세가 나타난다.
+
+플레이 변동 분석. 카운터는 추가적인 우위를 얻기 위해 카운트에 따라 기본 전략을 수정한다. 소프트웨어는 플레이어가 카운트가 높을 때만 인슈어런스를 하거나 16에서 스테이를 하는 등의 패턴이 있는지 확인한다.
+
+=== 대응책 ===
+카지노는 카드 카운터를 막기 위해 많은 노력과 비용을 들인다. 주요 대응책은 다음과 같다.<ref>{{서적 인용|last1=Nersesian |first1=Bob |title=The Law for Gamblers: A Legal Guide to the Casino Environment |date=May 2016 |publisher=Huntington Press |isbn=978-1935396628}}</ref><ref>{{서적 인용|last1=Zender |first1=Bill |title=Casino-ology: The Art of Managing Casino Games |date=October 2013 |publisher=Huntington Press |isbn=978-0-929712-56-7}}</ref><ref name="blue2" /><ref name="bjlaw2">{{서적 인용|last1=Rose |first1=I. Nelson |title=Blackjack and the law |url=https://archive.org/details/blackjacklaw0000rose |last2=Loeb |first2=Robert A. |date=1998 |publisher=RGE Pub. |isbn=978-0910575089 |edition=1st |location=Oakland, CA}}</ref>
+* 침투율 축소: 셔플 전까지 나눠주는 카드의 수를 줄여 카운팅의 우위를 낮춘다.
+* 금지 조치: 알려진 카운터의 블랙잭 플레이 또는 카지노 출입 자체를 금지한다.
+* 편파적 셔플: 플레이어가 베팅을 높이거나 남은 카드가 유리하다고 판단될 때 카드를 섞어버린다.
+* 규칙 변경: 스플릿, 더블 다운, 멀티 핸드 플레이 규칙을 바꾸거나 테이블의 최소/최대 베팅 한도를 조정한다.
+* 중간 참여 금지: 셔플 후에만 게임에 들어올 수 있게 한다.
+* 베팅 고정(Flat betting): 플레이어가 한 슈가 끝날 때까지 베팅액을 바꾸지 못하게 강제한다.
+* 혜택 취소 및 칩 압수.
+* [[불법 감금|강제 구금]] (백 룸에 가두는 행위).
+
+[[네바다주]]와 같이 이러한 대응책에 법적 제한이 거의 없는 지역이 있는 반면, [[뉴저지주]]처럼 숙련된 플레이어에 대한 카지노의 대응을 제한하는 지역도 있다.<ref>{{웹 인용|last1=Rose |first1=I. Nelson |title=Dealing With Card-Counters – Gambling and the Law® |url=https://www.gamblingandthelaw.com/column/dealing-with-card-counters/ |access-date=17 November 2017 |website=www.gamblingandthelaw.com |date=27 June 2017 |archive-date=10 July 2018 |archive-url=https://web.archive.org/web/20180710010333/http://www.gamblingandthelaw.com/column/dealing-with-card-counters/ |url-status=live }}</ref>
+
+일부 대응책은 카지노에도 손해를 입힌다. 예를 들어 너무 자주 셔플을 하면 플레이 시간이 줄어들어 하우스 수익이 감소한다.<ref>{{웹 인용 |last1=Zender |first1=Bill |title=TABLE GAME MANAGEMENT FOR THE SMALL CASINO, PART 2 |url=http://www.billzender.com/os/resources/media/table_game_mgmt_for_small_casinos_part_2.pdf |access-date=18 November 2017 |website=billzender.com |archive-date=22 April 2014 |archive-url=https://web.archive.org/web/20140422195308/http://www.billzender.com/os/resources/media/table_game_mgmt_for_small_casinos_part_2.pdf |url-status= }}</ref> 이를 보완하기 위해 자동 셔플 기계나 플레이 중에도 카드를 계속 섞는 연속 셔플 기계(CSM)를 사용한다. CSM은 사실상 침투율을 0으로 만들기 때문에 전통적인 카드 카운팅을 무력화한다.<ref>{{웹 인용|last1=Barker |first1=Jeff |title=Horseshoe adds continuous shuffle machines, stirring industry debate |url=https://www.baltimoresun.com/business/bs-bz-casino-card-shufflers-20160711-story.html |access-date=18 November 2017 |website=baltimoresun.com |date=11 July 2016 |archive-date=19 November 2017 |archive-url=https://web.archive.org/web/20171119124049/http://www.baltimoresun.com/business/bs-bz-casino-card-shufflers-20160711-story.html |url-status=live }}</ref> 대부분의 [[온라인 카지노]]는 매 라운드마다 덱을 새로 섞어 하우스의 우위를 보장한다.
+
+== 역사 ==
+미국의 [[수학자]] [[에드워드 O. 소프]]는 카드 카운팅의 아버지로 불린다.<ref>{{웹 인용|author=Loudon Ofton |title=The History of Blackjack |url=https://www.blackjackapprenticeship.com/the-history-of-blackjack-and-card-counting/ |access-date=9 March 2013 |publisher=BlackjackApprenticeship.com |archive-date=25 October 2018 |archive-url=https://web.archive.org/web/20181025023835/https://www.blackjackapprenticeship.com/the-history-of-blackjack-and-card-counting/ |url-status=live }}</ref> 그의 1962년 저서 《딜러를 이겨라》(Beat the Dealer)는 최적의 플레이를 위한 베팅 및 전략을 제시했다. 수학적으로는 완벽했지만, 카지노들이 마지막 카드까지 나눠주지 않는 등의 대응책을 세우면서 현재는 적용되지 않는 기술도 있다. 이 책에 소개된 10-카운트 방식은 이후의 시스템들보다 사용하기 어렵고 수익성도 낮다. 카운팅의 발전사는 데이비드 레이턴의 다큐멘터리 영화 《더 핫 슈》(The Hot Shoe)에서 확인할 수 있다.
+
+《딜러를 이겨라》 이전에도 소수의 전문 카운터들이 라스베이거스 등에서 활동했다. 그중 한 명인 제스 마컴은 최초의 완전한 포인트 카운트 시스템을 개발했다. 조 번스타인은 1961년 리노의 카지노 소유주 해럴드 스미스가 쓴 책에서 네바다주 전역이 두려워한 에이스 카운터로 묘사되었다. 1957년작 《승리를 위한 블랙잭 플레이》(Playing Blackjack to Win)에서 로저 볼드윈, 윌버트 캔티, 허버트 마이절, 제임스 맥더멋('4인의 기사'로 불림)은 당시 "가산기"라 불리던 조잡한 [[기계식 계산기]]를 사용하여 최초의 정확한 기본 전략과 기초적인 카운팅 시스템을 발표했다.<ref>{{웹 인용|title=History of Blackjack and Card Counting |url=https://www.blackjackreview.com/wp/historical-events/ |access-date=16 June 2017 |publisher=Blackjack Review Network |archive-date=14 November 2017 |archive-url=https://web.archive.org/web/20171114154632/http://www.blackjackreview.com/wp/historical-events/ |url-status=live }}</ref>
+
+=== 팀 ===
+
+1970년대 켄 유스턴은 '빅 플레이어 팀'이라는 전술에 대해 처음으로 저술했다. 이 책은 그가 [[알 프란체스코]]의 팀에서 '빅 플레이어'(BP)로 활동한 경험을 바탕으로 했다. 팀 플레이에서는 '스포터'들이 여러 테이블에 흩어져 카운트를 하다가 플레이어에게 유리해지면 빅 플레이어에게 신호를 보낸다. 빅 플레이어는 그 테이블에 합류해 최대 금액을 베팅하고, 카운트가 떨어지면 다시 신호를 받고 테이블을 떠난다. 이 방식은 빅 플레이어의 베팅이 무작위적이고 비이성적으로 보이게 만들어 카지노의 감시를 피하며, 정작 카운팅을 하는 스포터들은 베팅액을 바꾸지 않아 눈에 띄지 않는다.
+
+이러한 방식으로 여러 블랙잭 팀이 수백만 달러를 벌어들였다. 알 프란체스코, 켄 유스턴, 토미 하일랜드의 팀과 MIT 학생들이 주축이 된 여러 그룹, 그리고 최근의 '그리크스'(The Greeks) 팀이 유명하다. 벤 메즈릭의 저서 《[[21 (책)|21]]》(원제: Bringing Down the House)은 MIT 팀의 성공을 다루었으며, 이는 영화 《더 라스트 카지노》와 《21》의 기반이 되었다.
+
+켄 유스턴의 책 출간과 소송은 블랙잭 팀의 성장을 자극하는 동시에 카지노의 경계심도 높여 운영을 어렵게 만들었다. 하일랜드와 프란체스코는 이후 '에이스 시퀀싱'(Ace sequencing)이라 불리는 셔플 추적 기술로 전환했다. 이는 셔플 과정에서 바닥에 깔린 에이스의 위치를 파악하고 컷을 통해 자신에게 에이스가 오도록 유도하는 기술이다. 1994년 하일랜드 팀원들이 캐나다 [[윈저 (온타리오주)|윈저]]의 [[카지노 윈저]]에서 이 기술을 쓰다 체포되었으나, [[법관|판사]]는 이것이 사기(Cheating)가 아닌 지능적인 전략의 사용이라고 판결했다.<ref name="blackjack20062">Snyder (2006)</ref>
+
+=== 셔플 기계 ===
+{{본문|셔플 기계}}
+
+카드를 무작위로 섞는 자동 셔플 기계(ASM)는 셔플 과정을 숨겨 셔플 추적을 방해한다. 플레이 도중 사용한 카드를 즉시 슈에 다시 넣는 연속 셔플 기계(CSM)는 침투율을 극도로 낮추어 전통적인 카드 카운팅을 사실상 불가능하게 만든다.
+
+== 같이 보기 ==
+* [[이점 도박]]
+* [[블랙잭 명예의 전당]]
+
+== 각주 ==
+
+=== 인용 ===
+{{각주}}
+
+=== 참고 문헌 ===
+{{참고 자료 시작|30em}}
+* {{서적 인용|last=Axelrad |first=Josh |title=Repeat until Rich: A Professional Card Counter's Chronicle of the Blackjack Wars |publisher=Penguin Press |location=New York |year=2010 |isbn=978-1-59420-247-6 |url=https://archive.org/details/repeatuntilrichp00axel}}
+* {{서적 인용|title=The Theory of Blackjack: The Complete Card Counter's Guide |author=Griffin, Peter |author-link=Peter A. Griffin |isbn=0-915141-02-7 |year=1988 |publisher=Huntington Press |location=Las Vegas |edition=4th}}
+* {{뉴스 인용|author=Eddie Olsen |date=18 April 1981 |newspaper=[[필라델피아 인콰이어러]] |title=Ken Uston: Big Player Without a Game}}
+* {{서적 인용|last1=Rose |first1=I. Nelson |last2=Loeb |first2=Robert A. |title=Blackjack and the Law |url=https://archive.org/details/blackjacklaw0000rose |isbn=978-0-910575-08-9 |year=1998 |publisher=RGE Publishers |location=Oakland, CA |edition=1st}}
+* {{서적 인용|last=Schlesinger |first=Donald |title=Blackjack Attack: playing the pros' way |edition=3rd |publisher=RGE Publishing |location=Las Vegas |year=2005 |isbn=978-0-910575-20-1}}
+* {{서적 인용|last=Snyder |first=Arnold |title=The Big Book of Blackjack |url=https://archive.org/details/bigbookofblackja0000snyd |edition=1st |publisher=Cardoza Publishing |location=New York |year=2006 |isbn=1-58042-155-5}}
+* {{서적 인용|title=Beat the Dealer: A Winning Strategy for the Game of Twenty-One |url=https://archive.org/details/beatdealerwinnin00thor |last=Thorp |first=Edward O. |author-link=Edward O. Thorp |isbn=0-394-70310-3 |year=1966 |publisher=Vintage Books |location=New York}}
+* {{서적 인용|last=Walker |first=Katarina |title=The Pro's Guide to Spanish 21 and Australian Pontoon |publisher=Maven Press |location=New York |year=2008 |isbn=978-1-4357-1065-8}}
+* {{서적 인용|last=Zender |first=Bill |title=Advantage Play for the Casino Executive |year=2006 |oclc=156916229}}
+{{참고 자료 끝}}
+
+== 추가 읽기 ==
+* {{서적 인용|last=Snyder |first=Arnold |title=Blackbelt in Blackjack: Playing 21 as a Martial Art |url=https://archive.org/details/blackbeltinblack0000snyd |edition=Revised |publisher=Cardoza Publishing |location=New York |year=2005 |isbn=1-58042-143-1}}
+
+{{블랙잭}}
+{{도박}}
+{{위키데이터 속성 추적}}
+
+[[분류:블랙잭]]
+[[분류:도박 용어]]
