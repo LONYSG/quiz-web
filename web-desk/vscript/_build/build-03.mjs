@@ -23,10 +23,10 @@ const SRC = {
   로제타석: ['· Wikipedia, 「Rosetta Stone」', '· Wikipedia, 「Jean-François Champollion」', '· E. A. Wallis Budge, 「The Rosetta Stone」 (1893)'],
   '와우! 신호': ['· Big Ear Radio Observatory, 「Wow! Signal - 30th Anniversary Report」 (2007)', '· Wikipedia, 「Wow! signal」'],
   플로지스톤: ['· Wikipedia, 「Phlogiston theory」', '· Wikipedia, 「Antoine Lavoisier」'],
-  '셜록 홈스': ['· Wikipedia, 「A Study in Scarlet」', '· Wikipedia, 「221B Baker Street」', '· Mental Floss, 「Who Answers Sherlock Holmes's Fan Mail?」'],
+  '셜록 홈스': ['· Wikipedia, 「A Study in Scarlet」', '· Wikipedia, 「221B Baker Street」', "· Mental Floss, 「Who Answers Sherlock Holmes's Fan Mail?」"],
   로봇: ['· Wikipedia, 「Robot」', '· Wikipedia, 「R.U.R.」'],
-  모노폴리: ['· Wikipedia, 「The Landlord's Game」'],
-  '노시보 효과': ['· CIDRAP, 「Most side effects noted in COVID vaccine trials may be due to 'nocebo effect'」 (2022-01-19)', '· EurekAlert!, 「Placebo effect accounts for more than two-thirds of COVID-19 vaccine adverse events」 (2022-01-18)', '· BMJ, 「When I use a word . . . Nocebo」 (2026-04-24)'],
+  모노폴리: ["· Wikipedia, 「The Landlord's Game」"],
+  '노시보 효과': ["· CIDRAP, 「Most side effects noted in COVID vaccine trials may be due to 'nocebo effect'」 (2022-01-19)", '· EurekAlert!, 「Placebo effect accounts for more than two-thirds of COVID-19 vaccine adverse events」 (2022-01-18)', '· BMJ, 「When I use a word . . . Nocebo」 (2026-04-24)'],
   '계획적 진부화': ['· Wikipedia, 「Phoebus cartel」'],
 };
 // 읽는 글: [바꿀 글, 읽을 글] — 질문 · 힌트 · 해설 모두에 차례로
