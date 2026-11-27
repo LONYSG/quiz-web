@@ -346,8 +346,9 @@ export async function gongbangFlow(ctx) {
   await waitSel(H, '[data-gb-mode-pop]');
   await realClick(H, '[data-gb-mode-pop] [data-kind="liar"]');
   await sleep(200);
-  const note = await ev(H, "document.querySelector('[data-gb-mode-note]')?.innerText ?? ''");
-  record('★ R117 모드 바꾸기 창 — 라이어 고름 → "지금 2명이라 3명부터" 미리 알림', note.includes('3명부터'), note);
+  // ★ R123 — 인원 안내는 모드 바꾸기 창에서 뺐다(시작 버튼 아래에만) · 창은 목록 + "변경하기"
+  const note = await ev(H, "JSON.stringify({ note: document.querySelector('[data-gb-mode-note]') !== null, go: document.querySelector('[data-gb-mode-go]')?.innerText ?? '' })");
+  record('★ R117 → R123 모드 바꾸기 창 — 라이어 고름 → 인원 안내 없음 · "변경하기"', note.includes('"note":false') && note.includes('변경하기'), note);
   await shootAll(H, 'r117-15-mode', async (p) => {
     if (!(await has(p, '[data-gb-mode-pop]'))) {
       await realClick(p, '[data-gb-mode-btn]');

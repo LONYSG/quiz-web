@@ -80,7 +80,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
   const stageSay = ph === 'describe' || ph === 'assign' ? (roundSays[roundSays.length - 1] ?? null) : ph === 'defense' || ph === 'final' ? lastDefense : null;
   const step = liarStep(ph);
   const boutTag = view.bouts > 1 && step >= 1 && step <= 3 && view.bout > 1 ? `${view.bout}/${view.bouts}바퀴` : null;
-  const stepSub = [STEP_SUB[ph], boutTag].filter(Boolean).join(' · ');
+  const stepSub = [STEP_SUB[ph], boutTag].filter(Boolean).join(', ');
   // ★ R101 — "지금 할 일" 한 마디
   const todo = (() => {
     switch (ph) {
@@ -101,11 +101,11 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
       case 'guess':
         return view.amLiar ? '키워드를 맞혀 보세요' : '라이어가 키워드를 맞히는 중';
       case 'appeal':
-        return view.amLiar ? '오타 · 같은 뜻이면 이의제기할 수 있어요' : '라이어가 이의제기할지 정하는 중';
+        return view.amLiar ? '오타거나 같은 뜻이면 이의제기할 수 있어요' : '라이어가 이의제기할지 정하는 중';
       case 'appealVote':
         return me && me !== view.liar ? '라이어의 답을 정답으로 인정할까요?' : '다른 사람들이 정하는 중';
       default:
-        return view.round >= view.rounds ? '마지막 라운드 결과' : '라운드 결과 — 곧 다음 라운드';
+        return view.round >= view.rounds ? '마지막 판 결과' : '판 결과 — 곧 다음 판';
     }
   })();
   // ★ R101 — 투표 결과 줄(옛 tally 화면 대신 · 재투표 · 변론 · 죽일까 위쪽에 남는다)
@@ -115,7 +115,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
   const lastBoutLine =
     view.bout > 1 && (ph === 'discuss' || ph === 'vote')
       ? savedId
-        ? `지난 바퀴: ${nameOf(savedId)} 님 살림(죽인다 ${view.lastFinal!.yes} · 살린다 ${view.lastFinal!.no}) — 모두를 대상으로 다시`
+        ? `지난 바퀴: ${nameOf(savedId)} 님 살림(죽인다 ${view.lastFinal!.yes}, 살린다 ${view.lastFinal!.no}) — 모두를 대상으로 다시`
         : '지난 바퀴는 못 정했어요 — 모두를 대상으로 다시'
       : null;
   const showStageLine = ph === 'describe' || ph === 'assign' || ph === 'defense' || ph === 'final';
@@ -131,7 +131,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
           </span>
         )}
         <span className="mono liar-round">
-          {view.round} / {view.rounds}라운드
+          {view.round} / {view.rounds}판
         </span>
         <span className="mg-spacer" />
         <span className="mono liar-left" data-liar-left>
@@ -160,7 +160,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
           주제 <strong data-liar-topic>{view.nameKo}</strong>
         </span>
         {view.spectating ? (
-          <span className="liar-mine spect">구경 중{view.keyword ? ` · 키워드 ${view.keyword}` : ''}{siteInfo().gongbang ? ' · 다음 판부터 같이 해요' : ''}</span>
+          <span className="liar-mine spect">구경 중{view.keyword ? `, 키워드 ${view.keyword}` : ''}{siteInfo().gongbang ? '. 다음 판부터 같이 해요' : ''}</span>
         ) : view.amLiar ? (
           <span className="liar-mine liar" data-liar-me="liar">
             당신이 <strong>라이어</strong> — 들키지 마세요
@@ -187,7 +187,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
                 ● <strong>{nameOf(view.accused)}</strong> 지목({tallyLine.counts[view.accused] ?? 0}표)
               </>
             ) : view.candidates ? (
-              `동률 — ${view.candidates.map((c) => nameOf(c)).join(' · ')} 중에서 다시`
+              `동률 — ${view.candidates.map((c) => nameOf(c)).join(', ')} 중에서 다시`
             ) : null}
           </p>
         </div>
@@ -204,8 +204,8 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
           {stageSay ? (
             <>
               <span className="liar-stage-who" style={{ color: colorOf(stageSay.accountId) }}>
-                {stageSay.kind === 'defense' ? '변론 · ' : ''}
                 {nameOf(stageSay.accountId)}
+                {stageSay.kind === 'defense' ? ' 변론' : ''}
               </span>
               <span className={stageSay.auto ? 'liar-stage-text dim' : 'liar-stage-text'} data-liar-stage-text>
                 {stageSay.text}
@@ -288,7 +288,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
       {revealish && (
         <div className="liar-reveal" data-liar-reveal={ph === 'reveal' ? (view.outcome ?? '') : 'appeal'}>
           <p className="liar-reveal-main">
-            라이어는 <strong style={{ color: view.liar ? colorOf(view.liar) : undefined }}>{nameOf(view.liar)}</strong> · 키워드 <strong>{view.keyword}</strong>
+            라이어는 <strong style={{ color: view.liar ? colorOf(view.liar) : undefined }}>{nameOf(view.liar)}</strong>, 키워드는 <strong>{view.keyword}</strong>
           </p>
           {view.foolWord && (
             <p className="liar-fool-word" data-liar-fool-word>
@@ -305,7 +305,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
                   <button type="button" className="primary" data-liar-appeal-btn onClick={() => socket.emit('liar.appeal', {})}>
                     이의제기
                   </button>
-                  <span className="dim">오타 · 같은 뜻이면 — 나머지가 투표해요</span>
+                  <span className="dim">오타거나 같은 뜻이면 — 나머지가 투표해요</span>
                 </div>
               ) : (
                 <p className="dim">라이어가 이의제기할지 정하는 중…</p>
@@ -315,7 +315,7 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
             <p className="liar-result-line">
               {view.outcome === 'caught'
                 ? `찾았다! ${view.guessOk ? `라이어가 키워드도 맞힘(“${view.guess}”) +${view.mode === 'fool' ? LIAR.SCORE_LIAR_GUESS_FOOL : LIAR.SCORE_LIAR_GUESS}` : view.guess ? `라이어 답 “${view.guess}” — 틀림` : '라이어가 답을 못 냈어요'}`
-                : `${view.outcome === 'escaped' ? `시민 ${nameOf(view.accusedTried[view.accusedTried.length - 1] ?? null)} 님을 죽였어요` : `${view.bouts}바퀴 동안 라이어를 못 찾았어요`} — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}${view.guessOk ? ` · 키워드도 맞힘(“${view.guess}”) +${LIAR.SCORE_LIAR_SURVIVE_GUESS}` : view.guess ? ` · 라이어 답 “${view.guess}” — 틀림` : ''}`}
+                : `${view.outcome === 'escaped' ? `시민 ${nameOf(view.accusedTried[view.accusedTried.length - 1] ?? null)} 님을 죽였어요` : `${view.bouts}바퀴 동안 라이어를 못 찾았어요`} — 라이어 승리 +${LIAR.SCORE_LIAR_ESCAPE}${view.guessOk ? `, 키워드도 맞힘(“${view.guess}”) +${LIAR.SCORE_LIAR_SURVIVE_GUESS}` : view.guess ? `, 라이어 답 “${view.guess}” — 틀림` : ''}`}
             </p>
           )}
           {view.appeal && (
@@ -353,8 +353,8 @@ export default function LiarStage({ socket, view, players, myAccountId, serverNo
               {view.says.map((s, i) => (
                 <li key={i} className={s.kind === 'defense' ? 'defense' : ''}>
                   <span className="liar-nick" style={{ color: colorOf(s.accountId) }}>
-                    {s.kind === 'defense' ? `변론(${s.bout}바퀴) · ` : ''}
                     {nameOf(s.accountId)}
+                    {s.kind === 'defense' ? ` 변론(${s.bout}바퀴)` : ''}
                   </span>
                   <span className={s.auto ? 'liar-say dim' : 'liar-say'}>{s.text}</span>
                 </li>
@@ -387,7 +387,7 @@ function SayInput({ socket, defense }: { socket: Socket; defense: boolean }) {
         send();
       }}
     >
-      <p className="liar-help mine">{defense ? `내 최후의 변론 — 한 줄(${LIAR.SAY_MAX}자 · 키워드 금지)` : `내 차례 — 키워드 설명 한 줄(${LIAR.SAY_MAX}자 · 키워드는 말할 수 없어요)`}</p>
+      <p className="liar-help mine">{defense ? `내 최후의 변론 — 한 줄(${LIAR.SAY_MAX}자, 키워드 금지)` : `내 차례 — 키워드 설명 한 줄(${LIAR.SAY_MAX}자, 키워드는 말할 수 없어요)`}</p>
       <div className="quiz-num-row">
         <input
           ref={ref}
@@ -421,7 +421,7 @@ function VoteCards({ view, me, nameOf, colorOf, socket }: { view: LiarView; me: 
   return (
     <div className="liar-vote" data-liar-vote>
       <p className="liar-help dim">
-        {me ? '바꿔도 돼요 — 마지막 선택 · 모두 고르면 바로 집계' : '구경 중'} · {view.votedCount}/{view.participants.length}명
+        {me ? '바꿔도 돼요(마지막 선택). 모두 고르면 바로 집계해요' : '구경 중'} ({view.votedCount}/{view.participants.length}명)
       </p>
       <div className="liar-people">
         {pool.map((a) => (
@@ -440,7 +440,7 @@ function FinalVote({ view, me, socket }: { view: LiarView; me: string | null; so
   return (
     <div className="liar-final" data-liar-final>
       <p>
-        <span className="dim">{view.votedCount}명 냄 · 살린다가 같거나 많으면 살아요</span>
+        <span className="dim">{view.votedCount}명 냄. 살린다가 같거나 많으면 살아요</span>
       </p>
       {can ? (
         <div className="liar-final-btns">
@@ -465,7 +465,7 @@ function AppealVote({ view, me, socket }: { view: LiarView; me: string | null; s
       <p>
         라이어의 답 <strong>“{view.guess}”</strong> / 키워드 <strong>{view.keyword}</strong> — 정답으로 인정할까요?{' '}
         <span className="dim">
-          {view.appealVoted} / {view.appealEligible}명 냄 · 인정이 기각보다 많아야 인정
+          {view.appealVoted} / {view.appealEligible}명 냄. 인정이 기각보다 많아야 인정돼요
         </span>
       </p>
       {can ? (

@@ -12,10 +12,12 @@
 
 import { RULES } from './protocol.js';
 import { isMinigameKey, selectableMinigameKeys, type MinigameKey } from './minigame.js';
-import { LIAR, LIAR_TEAM_BLOCK, isLiarMode, isRoomMode, type LiarMode, type RoomMode } from './liar.js';
-import { DRAW, DRAW_TEAM_BLOCK } from './draw.js';
+import { LIAR, LIAR_START_BLOCK, LIAR_TEAM_BLOCK, isLiarMode, isRoomMode, type LiarMode, type RoomMode } from './liar.js';
+import { DRAW, DRAW_START_BLOCK, DRAW_TEAM_BLOCK } from './draw.js';
+import { TEAM_EVEN_BLOCK } from './team.js';
 import { validateSongSettings, type SongSettings } from './songMode.js';
 import { SITE_TEXT, type SiteHidden } from './site.js';
+import { TRIM, type TrimFlags } from './trim.js';
 
 export type StartMode = 'instant' | 'countdown';
 
@@ -47,9 +49,9 @@ export interface DifficultyLevelInfo {
 
 /** ★ 순서가 표기 순서다 (초급 → 고급) */
 export const DIFFICULTY_LEVELS: readonly DifficultyLevelInfo[] = [
-  { level: 'beginner', label: '초급', desc: '누구나 아는 상식 · 맞히는 재미', ratio: [30, 50, 20, 0, 0], scores: [1, 2, 3], hardest: 3 },
-  { level: 'intermediate', label: '중급', desc: '학교에서 배운 것과 일반 상식 · 가끔 "오~"', ratio: [10, 30, 40, 20, 0], scores: [1, 2, 3, 4], hardest: 4 },
-  { level: 'advanced', label: '고급', desc: '몰라도 알아 둘 만한 문제 · 다섯 중 하나는 어렵다', ratio: [5, 15, 30, 30, 20], scores: [1, 2, 3, 4, 5], hardest: 5 },
+  { level: 'beginner', label: '초급', desc: '누구나 아는 상식, 맞히는 재미', ratio: [30, 50, 20, 0, 0], scores: [1, 2, 3], hardest: 3 },
+  { level: 'intermediate', label: '중급', desc: '학교에서 배운 것과 일반 상식', ratio: [10, 30, 40, 20, 0], scores: [1, 2, 3, 4], hardest: 4 },
+  { level: 'advanced', label: '고급', desc: '몰라도 알아 둘 만한 문제, 다섯 중 하나는 어려워요', ratio: [5, 15, 30, 30, 20], scores: [1, 2, 3, 4, 5], hardest: 5 },
 ];
 
 /** ★ 기본값 = 중급 (찬종 2026-10-26) */
@@ -138,12 +140,12 @@ export interface GameTopicInfo {
 /** ★ 순서가 표기 순서다 */
 export const GAME_TOPICS: readonly GameTopicInfo[] = [
   { topic: 'korea', label: '한국' },
-  { topic: 'history', label: '역사·사회' },
-  { topic: 'science', label: '과학·기술' },
-  { topic: 'arts', label: '문화·예술' },
+  { topic: 'history', label: '역사와 사회' },
+  { topic: 'science', label: '과학과 기술' },
+  { topic: 'arts', label: '문화와 예술' },
   { topic: 'sports', label: '스포츠' },
   { topic: 'life', label: '생활' },
-  { topic: 'media', label: '미디어·콘텐츠' },
+  { topic: 'media', label: '미디어와 콘텐츠' },
 ];
 
 /** ★ 기본값 = 전체 (R034 · D-115 근거 — 지금까지의 동작과 같고 출제 풀이 가장 크다) */
@@ -153,7 +155,7 @@ export const DEFAULT_TOPICS: readonly GameTopic[] = GAME_TOPICS.map((t) => t.top
 export function formatTopics(topics: readonly GameTopic[]): string {
   const labels = GAME_TOPICS.filter((i) => topics.includes(i.topic)).map((i) => i.label);
   if (labels.length === GAME_TOPICS.length) return '전체';
-  return labels.join(' · ');
+  return labels.join(', ');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -237,7 +239,8 @@ function isInt(value: unknown): value is number {
  * ★★★ R109 — opts.hidden: 이 방의 자리에서 숨기는 방식 · 미니게임(공개 방 — 서버가 센 값). 숨긴 미니게임은 고를 수 있는 목록에서 빠지고
  *   (저장된 설정에 있어도 거른다 — hidden 과 같은 꼴) · 숨긴 방식은 거절한다. 없으면 오늘과 같다.
  */
-export function validateRoomSettings(input: unknown, opts?: { hidden?: SiteHidden }): SettingsValidation {
+export function validateRoomSettings(input: unknown, opts?: { hidden?: SiteHidden; trim?: TrimFlags }): SettingsValidation {
+  const trim = opts?.trim ?? TRIM;
   if (input === null || typeof input !== 'object') {
     return { ok: false, field: 'questionCount', message: '설정 형식이 올바르지 않습니다.' };
   }
@@ -329,7 +332,13 @@ export function validateRoomSettings(input: unknown, opts?: { hidden?: SiteHidde
     return {
       ok: false,
       field: 'minigameRounds',
-      message: `미니게임 수는 ${MINIGAME_ONLY_ROUNDS.MIN}~${MINIGAME_ONLY_ROUNDS.MAX} 사이여야 합니다.`,
+      // ★ R123 — 같은 칸(minigameRounds)을 캐치 "문제 수" · 라이어 "판 수"도 쓴다 → 그 모드의 말로
+      message:
+        raw.mode === 'draw'
+          ? `캐치마인드 문제 수는 ${DRAW.ROUNDS.MIN}~${DRAW.ROUNDS.MAX} 사이여야 합니다.`
+          : raw.mode === 'liar'
+            ? `라이어 게임 판 수는 ${LIAR.ROUNDS.MIN}~${LIAR.ROUNDS.MAX} 사이여야 합니다.`
+            : `미니게임 수는 ${MINIGAME_ONLY_ROUNDS.MIN}~${MINIGAME_ONLY_ROUNDS.MAX} 사이여야 합니다.`,
     };
   }
 
@@ -342,12 +351,14 @@ export function validateRoomSettings(input: unknown, opts?: { hidden?: SiteHidde
   if (raw.mode !== undefined && !isRoomMode(raw.mode)) {
     return { ok: false, field: 'mode', message: '방식 설정 형식이 올바르지 않습니다.' };
   }
-  const mode: RoomMode = isRoomMode(raw.mode) ? raw.mode : raw.minigameOnly === true ? 'minigame' : 'quiz';
+  const mode0: RoomMode = isRoomMode(raw.mode) ? raw.mode : raw.minigameOnly === true ? 'minigame' : 'quiz';
+  // ★ R123 (TRIM.minigameOnly) — 미니게임만은 퀴즈로 읽는다(저장된 방 설정 · 옛 화면 · 다시 하기 이어받기)
+  const mode: RoomMode = trim.minigameOnly && mode0 === 'minigame' ? 'quiz' : mode0;
   if (opts?.hidden?.modes.includes(mode)) {
     return { ok: false, field: 'mode', message: SITE_TEXT.modeNotHere };
   }
   if (mode === 'liar' && (minigameRounds < LIAR.ROUNDS.MIN || minigameRounds > LIAR.ROUNDS.MAX)) {
-    return { ok: false, field: 'minigameRounds', message: `라이어 게임 라운드 수는 ${LIAR.ROUNDS.MIN}~${LIAR.ROUNDS.MAX} 사이여야 합니다.` };
+    return { ok: false, field: 'minigameRounds', message: `라이어 게임 판 수는 ${LIAR.ROUNDS.MIN}~${LIAR.ROUNDS.MAX} 사이여야 합니다.` };
   }
   // ★ R088 — 라이어 모드(없으면 기본형)
   if (raw.liarMode !== undefined && !isLiarMode(raw.liarMode)) {
@@ -359,22 +370,23 @@ export function validateRoomSettings(input: unknown, opts?: { hidden?: SiteHidde
     if (!Array.isArray(v) || v.length > TOPIC_PICK_MAX || !v.every((x) => typeof x === 'string' && /^[a-z0-9][a-z0-9-]{0,63}$/.test(x))) return false;
     return [...new Set(v as string[])];
   };
-  const liarTopics = topicList(raw.liarTopics);
+  // ★ R123 (TRIM.topicPick) — 주제 고르기 없음 = 전체 주제(null)
+  const liarTopics = trim.topicPick ? null : topicList(raw.liarTopics);
   if (liarTopics === false) return { ok: false, field: 'liarTopics', message: '라이어 주제 형식이 올바르지 않습니다.' };
-  const drawTopics = topicList(raw.drawTopics);
+  const drawTopics = trim.topicPick ? null : topicList(raw.drawTopics);
   if (drawTopics === false) return { ok: false, field: 'drawTopics', message: '캐치마인드 주제 형식이 올바르지 않습니다.' };
   if (mode === 'liar' && raw.teamMode === true) {
     return { ok: false, field: 'teamMode', message: LIAR_TEAM_BLOCK };
   }
   // ── ★★★ R083 — 캐치마인드: 라운드(그림 수) 2~10 · 팀전과 같이 안 됨
   if (mode === 'draw' && (minigameRounds < DRAW.ROUNDS.MIN || minigameRounds > DRAW.ROUNDS.MAX)) {
-    return { ok: false, field: 'minigameRounds', message: `캐치마인드 라운드 수는 ${DRAW.ROUNDS.MIN}~${DRAW.ROUNDS.MAX} 사이여야 합니다.` };
+    return { ok: false, field: 'minigameRounds', message: `캐치마인드 문제 수는 ${DRAW.ROUNDS.MIN}~${DRAW.ROUNDS.MAX} 사이여야 합니다.` };
   }
   if (mode === 'draw' && raw.teamMode === true) {
     return { ok: false, field: 'teamMode', message: DRAW_TEAM_BLOCK };
   }
   // ── ★★★ R096 (D-353) — 노래 맞히기: 곡 수 5~20 · 분류 · 연대 · 20세기 명곡 · 한국 장르(없으면 기본 — 다른 방식에서도 값은 남는다)
-  const song = validateSongSettings(raw);
+  const song = validateSongSettings(raw, trim);
   if (!song.ok) return { ok: false, field: 'song', message: song.message };
 
   return {
@@ -414,4 +426,15 @@ export function formatExperienceRate(experienced: number, total: number): string
   const pct = (experienced / total) * 100;
   // ★ R043 (건우) — 출제 가능 수와 다른 것을 센다는 게 보이게: "전체 … 중 … 풀어봄" (경험률은 전체 활성 문제 기준 그대로 — 건우 확정)
   return `전체 ${fmt(total)} 중 ${fmt(experienced)} 풀어봄 (${pct.toFixed(1)}%)`;
+}
+
+/**
+ * ★★ R123 — 인원 때문에 시작할 수 없는 이유(없으면 null) · 화면이 미리 알고 시작 버튼을 끄고 버튼 아래 한 줄로 쓴다.
+ *   서버도 같은 조건으로 막는다(game/start.ts — 팀 배치까지는 서버만 본다).
+ */
+export function startBlockOf(s: { mode?: RoomMode; teamMode?: boolean }, playerCount: number): string | null {
+  if (s.mode === 'draw' && playerCount < DRAW.MIN_PLAYERS) return DRAW_START_BLOCK;
+  if (s.mode === 'liar' && playerCount < LIAR.MIN_PLAYERS) return LIAR_START_BLOCK;
+  if (s.teamMode === true && s.mode !== 'draw' && s.mode !== 'liar' && (playerCount < 2 || playerCount % 2 !== 0)) return TEAM_EVEN_BLOCK;
+  return null;
 }

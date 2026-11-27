@@ -67,9 +67,9 @@ export function TeamResultLine({ teams, mine }: { teams: TeamResult; mine: Team 
         )}
       </span>
       {w && teams.bonus > 0 ? (
-        <span className={mine === w ? 'team-result-bonus mine' : 'team-result-bonus'}> · 보너스 +{teams.bonus}P</span>
+        <span className={mine === w ? 'team-result-bonus mine' : 'team-result-bonus'}>, 보너스 +{teams.bonus}P</span>
       ) : (
-        <span className="dim"> · 보너스 없음</span>
+        <span className="dim">, 보너스 없음</span>
       )}
     </p>
   );

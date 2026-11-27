@@ -84,7 +84,7 @@ export function OrderPick({ socket, view, serverNow, mobile }: Props) {
         })}
       </div>
       <p className={`quiz-num-help${done ? ' ok' : ' dim'}`} data-order-done={done ? '1' : ''}>
-        {view.spectating ? '구경 중이에요' : done ? '다 골랐어요 — 시간 안에 바꿔도 돼요' : `${picked.length} / ${cards.length} — 다 눌러야 점수 · 두 장씩 앞뒤 순서가 맞은 쌍마다 1점(10쌍)`}
+        {view.spectating ? '구경 중이에요' : done ? '다 골랐어요 — 시간 안에 바꿔도 돼요' : `${picked.length} / ${cards.length} — 다 눌러야 점수가 나와요. 두 장씩 앞뒤 순서가 맞은 쌍마다 1점(10쌍)`}
       </p>
     </div>
   );
@@ -98,7 +98,7 @@ export function OrderReveal({ view, mine }: { view: MinigameView; mine: Minigame
   return (
     <div className="topic-reveal order-reveal" data-order-reveal>
       <p className="topic-reveal-title">
-        <strong>{String(p.nameKo ?? '')}</strong> <span className="dim">· {String(p.basis ?? '연도')} 순</span>
+        <strong>{String(p.nameKo ?? '')}</strong> <span className="dim">({String(p.basis ?? '연도')} 순)</span>
       </p>
       <ol className="order-answer">
         {ans.map((a, i) => (
@@ -121,7 +121,7 @@ export function OrderReveal({ view, mine }: { view: MinigameView; mine: Minigame
               <p className="order-pairs-big">
                 맞은 쌍 <strong className="mono">{Number(mine.extra?.pairs ?? 0)} / 10</strong> → <strong className="mono">{Number(mine.extra?.pairs ?? 0)}점</strong>
               </p>
-              <p className="dim order-pairs-why">카드 두 장씩 10쌍 중 앞뒤 순서가 맞은 쌍 수 — 하나만 자리를 바꾸면 9 · 전부 거꾸로면 0</p>
+              <p className="dim order-pairs-why">카드 두 장씩 10쌍 중 앞뒤 순서가 맞은 쌍 수 — 하나만 자리를 바꾸면 9, 전부 거꾸로면 0</p>
             </>
           ) : (
             <p className="order-pairs-big">다 못 골랐어요 — 0점</p>
@@ -182,7 +182,7 @@ function CallBand({ calls, nameOf }: { calls: { accountId: string; label: string
             <strong>{c.label}</strong>
             <span className="dim">
               {' '}
-              · {c.onBoards}판{c.auto ? ' · 자동' : ''}
+              ({c.onBoards}판{c.auto ? ', 자동' : ''})
             </span>
           </li>
         );
@@ -235,7 +235,7 @@ export function BingoPlay({ socket, view, serverNow, mobile }: Props) {
       </div>
       <p className="topic-title" data-topic={String(p.topic ?? '')}>
         <strong>{String(p.nameKo ?? '')}</strong>
-        <span className="dim">{fill ? ' — 내 판을 채우세요! ' : ` — 호명 ${String(p.call)}/${String(p.calls)} · ${priv?.lines ?? 0}줄 `}</span>
+        <span className="dim">{fill ? ' — 내 판을 채우세요! ' : ` — 호명 ${String(p.call)}/${String(p.calls)}, ${priv?.lines ?? 0}줄 `}</span>
         <span className="mono topic-left">{t.leftSec}초</span>
       </p>
       {/* ★ R088 (D-345 · 18 §9 scope) — 정답 범위 한 줄(없으면 안 보임) */}
@@ -254,7 +254,7 @@ export function BingoPlay({ socket, view, serverNow, mobile }: Props) {
                     ? '판이 다 찼어요'
                     : view.spectating
                       ? '구경 중이에요'
-                      : '남이 많이 고를 것 같은 답일수록 잘 불려요 · 빈 칸은 끝에 자동으로'}
+                      : '남이 많이 고를 것 같은 답일수록 잘 불려요. 빈 칸은 끝에 자동으로 채워져요'}
           </p>
         </>
       ) : (
@@ -286,19 +286,19 @@ export function BingoReveal({ view, rows, myAccountId, nameOf }: { view: Minigam
     <div className="topic-reveal bingo-reveal" data-bingo-reveal={String(rv.phase ?? '')}>
       <p className="topic-reveal-title">
         <strong>{String(p.nameKo ?? '')}</strong>{' '}
-        <span className="dim">{rv.phase === 'fill' ? '· 판 완성 — 이제 호명!' : `· 호명 ${String(rv.round ?? '')}`}</span>
+        <span className="dim">{rv.phase === 'fill' ? '판 완성 — 이제 호명!' : `호명 ${String(rv.round ?? '')}`}</span>
       </p>
       {rv.phase === 'call' && <CallBand calls={(rv.calls as { accountId: string; label: string; auto: boolean; onBoards: number }[] | undefined) ?? []} nameOf={nameOf} />}
       {newBingo.length > 0 && (
         <p className="bingo-new" data-bingo-new={newBingo.length}>
-          빙고! {newBingo.map((a) => nameOf(a)?.nickname ?? '?').join(' · ')}
+          빙고! {newBingo.map((a) => nameOf(a)?.nickname ?? '?').join(', ')}
         </p>
       )}
       {priv && !view.spectating && (
         <>
           <BingoBoard board={priv.board} size={size} />
           <p className="quiz-num-help dim" data-bingo-mine={priv.lines}>
-            {rv.phase === 'fill' ? `직접 채운 ${priv.manual}칸 · 나머지 ${size * size - priv.manual}칸은 자동` : `${priv.lines}줄${priv.bingoAt ? ' · 빙고!' : ''}`}
+            {rv.phase === 'fill' ? `직접 채운 ${priv.manual}칸, 나머지 ${size * size - priv.manual}칸은 자동` : `${priv.lines}줄${priv.bingoAt ? ' 빙고!' : ''}`}
           </p>
         </>
       )}
@@ -317,5 +317,5 @@ export function orderBingoValueText(view: MinigameView, r: MinigameRoundRow): st
   const ex = r.extra ?? {};
   if (ex.bingoAt) return `빙고(${String(ex.bingoAt)}번째)`;
   if (ex.manual !== undefined && ex.lines === undefined) return `직접 ${String(ex.manual)}칸`;
-  return `${Number(ex.lines ?? 0)}줄 · ${Number(ex.marked ?? 0)}칸`;
+  return `${Number(ex.lines ?? 0)}줄, ${Number(ex.marked ?? 0)}칸`;
 }

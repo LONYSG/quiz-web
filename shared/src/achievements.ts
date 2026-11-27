@@ -27,7 +27,7 @@ export const ACHIEVEMENTS: readonly AchievementDef[] = [
     { key: `topic-${t.topic}-10`, name: `${t.label} 10`, desc: `${t.label} 분야 문제를 10개 맞혔다`, group: 'topic' as const },
     { key: `topic-${t.topic}-50`, name: `${t.label} 50`, desc: `${t.label} 분야 문제를 50개 맞혔다`, group: 'topic' as const },
   ]),
-  { key: 'mg-win-1', name: '미니게임 첫 1위', desc: '미니게임 최종 1위(2명 이상 · 연습 제외)', group: 'minigame' },
+  { key: 'mg-win-1', name: '미니게임 첫 1위', desc: '미니게임 최종 1위(2명 이상, 연습 제외)', group: 'minigame' },
   { key: 'mg-win-10', name: '미니게임 1위 10번', desc: '미니게임 최종 1위 10번', group: 'minigame' },
   { key: 'cake-50ms', name: '굽기 장인', desc: '고기 굽기에서 오차 0.05초(50ms) 이내', group: 'minigame' },
   { key: 'circle-95', name: '컴퍼스 손', desc: '완벽한 원에서 95% 이상', group: 'minigame' },

@@ -171,7 +171,7 @@ export function topicAmbiguous(items: readonly Pick<TopicItem, 'name'>[], matche
   }
   const out = new Map<string, string>();
   // ★ R090 (D-347 · 찬종 "그건 정답 스포 아니야?") — 실제 지명 예시를 뺀다(어느 것이 정답인지 · 몇 곳인지 알려 주지 않음)
-  for (const [k, c] of count) if (c.n >= 2 && !matcher.has(k)) out.set(k, `'${c.shown}' — 같은 이름이 여러 곳이에요. 앞에 시·도 이름을 붙여 주세요`);
+  for (const [k, c] of count) if (c.n >= 2 && !matcher.has(k)) out.set(k, `'${c.shown}' — 같은 이름이 여러 곳이에요. 앞에 시나 도 이름을 붙여 주세요`);
   return out;
 }
 

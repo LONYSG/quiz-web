@@ -7,7 +7,7 @@
 //   쓰기(spend)는 R049 뽑기가 쓴다. 잔액이 모자라면 실패(한 트랜잭션 안에서 다시 세어 확인).
 // =============================================================================
 
-import { query } from './pool.js';
+import { getPool, query } from './pool.js';
 
 export interface PointBalance {
   /** 번 것 = 맞힌 문제 + 미니게임 보상 */
@@ -42,4 +42,52 @@ export function pointsFromRow(row: { correct?: string; rewards?: string; grants?
 export async function getPoints(accountId: string): Promise<PointBalance> {
   const r = await query<{ correct: string; rewards: string; grants: string; spent: string }>(POINTS_SQL, [accountId]);
   return pointsFromRow(r.rows[0]);
+}
+
+/**
+ * ★★ R123 — 포인트 쓰기 한 곳(캐치마인드 다른 제시어 · 혼자 하기 아이템) — 뽑기(shopRoutes)와 같은 꼴:
+ *   계정 행 잠금 → 잔액 다시 세기 → 모자라면 거절 → point_spends 한 줄 → COMMIT. stillOk 가 false 면(기다리는 사이 판이 바뀜) 되돌린다.
+ */
+export async function spendPoints(
+  accountId: string,
+  amount: number,
+  reason: string,
+  ref: string | null,
+  stillOk: () => boolean = () => true,
+): Promise<{ ok: true; balance: number; spendId: string } | { ok: false; reason: 'insufficient' | 'stale' | 'error'; balance: number }> {
+  const client = await getPool().connect();
+  try {
+    await client.query('BEGIN');
+    await client.query(`SELECT id FROM accounts WHERE id = $1 FOR UPDATE`, [accountId]);
+    const bal = await client.query<{ correct: string; rewards: string; grants: string; spent: string }>(POINTS_SQL, [accountId]);
+    const balance = pointsFromRow(bal.rows[0]).balance;
+    if (balance < amount) {
+      await client.query('ROLLBACK');
+      return { ok: false, reason: 'insufficient', balance };
+    }
+    const row = await client.query<{ id: string }>(`INSERT INTO point_spends (account_id, amount, reason, ref) VALUES ($1, $2, $3, $4) RETURNING id::text`, [accountId, amount, reason, ref]);
+    if (!stillOk()) {
+      await client.query('ROLLBACK');
+      return { ok: false, reason: 'stale', balance };
+    }
+    await client.query('COMMIT');
+    return { ok: true, balance: balance - amount, spendId: row.rows[0]!.id };
+  } catch (err) {
+    await client.query('ROLLBACK').catch(() => undefined);
+    console.error('[points] 쓰기 실패:', (err as Error).message);
+    return { ok: false, reason: 'error', balance: 0 };
+  } finally {
+    client.release();
+  }
+}
+
+/** ★ R123 — 쓴 줄 고치기(혼자 하기 안 쓴 아이템 돌려주기 · 실패한 다른 제시어) — 0 이면 줄을 지운다 */
+export async function setSpendAmount(spendId: string, amount: number): Promise<void> {
+  if (amount <= 0) await query(`DELETE FROM point_spends WHERE id = $1`, [spendId]);
+  else await query(`UPDATE point_spends SET amount = $2 WHERE id = $1`, [spendId, amount]);
+}
+
+/** ★ R123 — 쓴 줄에 무엇에 썼는지 붙이기(혼자 하기 판 id — 판 줄을 만든 뒤에야 안다) */
+export async function setSpendRef(spendId: string, ref: string): Promise<void> {
+  await query(`UPDATE point_spends SET ref = $2 WHERE id = $1`, [spendId, ref]);
 }

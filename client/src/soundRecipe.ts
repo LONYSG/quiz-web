@@ -128,7 +128,7 @@ export const BGM_SONGS: Record<BgmId, BgmSong> = {
 /** 설정 화면의 곡 고르기 — 순서 = 영상 bgm.json suite · 이름 = 영상 주석의 우리말 이름 */
 export const BGMS: readonly { id: BgmId; label: string }[] = [
   { id: 'bounce', label: '통통 경쾌' },
-  { id: 'bell-up', label: '포근한 종 · 빠르게' },
+  { id: 'bell-up', label: '포근한 종, 빠르게' },
   { id: 'gym', label: '아침 체조' },
   { id: 'sparkle', label: '반짝 산책' },
   { id: 'hop', label: '깡총' },

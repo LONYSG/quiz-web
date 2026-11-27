@@ -24,14 +24,14 @@ export interface CreditLine {
 }
 
 export const CREDIT_LINES: readonly CreditLine[] = [
-  { what: '이모티콘 그림', text: 'Twemoji © Twitter, Inc 및 기여자 · CC BY 4.0' },
-  { what: '이모티콘 한국어 이름', text: 'emojibase · MIT' },
-  { what: '글꼴', text: 'Pretendard · SIL OFL 1.1' },
+  { what: '이모티콘 그림', text: 'Twemoji © Twitter, Inc 및 기여자 (CC BY 4.0)' },
+  { what: '이모티콘 한국어 이름', text: 'emojibase (MIT)' },
+  { what: '글꼴', text: 'Pretendard (SIL OFL 1.1)' },
   {
     what: '사진',
     text: '사진 게임의 사진은 위키미디어 공용의 자유 이용 사진이며, 사진마다 정답 화면에 찍은 사람과 라이선스를 적습니다.',
   },
-  { what: '노래 미리듣기 · 앨범 표지', text: 'provided courtesy of iTunes (Apple)', friendOnly: true },
+  { what: '노래 미리듣기와 앨범 표지', text: 'provided courtesy of iTunes (Apple)', friendOnly: true },
   { what: '치이카와 이모티콘', text: '© nagano / chiikawa committee', friendOnly: true },
 ];
 

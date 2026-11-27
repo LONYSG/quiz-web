@@ -12,7 +12,7 @@
 
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { NEAR_MISS_SKIP_LOGIN, RULES } from '@quiz/shared';
+import { NEAR_MISS_SKIP_LOGIN, NO_TRIM, RULES, TRIM } from '@quiz/shared';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(HERE, '..', '..');
@@ -104,6 +104,8 @@ export const config = {
    *   BELT 는 SOLO 와 같이 켤 때만 뜻이 있다(띠 = 솔로 최고 기록) — SOLO 없이 BELT 만 켜면 띠 칸만 보인다(전부 띠 없음 · 오를 일이 없다).
    */
   solo: (process.env.SOLO ?? '').trim() === '1',
+  /** ★★ R123 — 콘텐츠 줄이기(shared TRIM) · 검사 서버만 TRIM_OFF=1 로 끈다(미니게임만 방식으로 미니게임을 시험하는 검사) */
+  trim: process.env.QUIZ_TEST_SERVER === '1' && (process.env.TRIM_OFF ?? '').trim() === '1' ? NO_TRIM : TRIM,
   belt: (process.env.BELT ?? '').trim() === '1',
   /**
    * ★ R118 — 솔로 시간 식(docs/24 4-4 · 베타에서 "시간 끝으로 틀린 비율"을 보고 맞춘다) · 검사용 값.

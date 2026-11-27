@@ -11,6 +11,7 @@
 // =============================================================================
 
 import { generateHint } from './hint.js';
+import { TRIM, type TrimFlags } from './trim.js';
 
 export const SONG_MODE = {
   /** 곡 수(= 라운드 수) */
@@ -150,7 +151,9 @@ export function songChips(m: SongMeta): string[] {
 }
 
 /** 설정 검증(validateRoomSettings 가 부른다) — 없으면 기본 · 틀리면 문구 */
-export function validateSongSettings(raw: Partial<Record<keyof SongSettings, unknown>>): { ok: true; value: SongSettings } | { ok: false; message: string } {
+export function validateSongSettings(raw: Partial<Record<keyof SongSettings, unknown>>, trim: TrimFlags = TRIM): { ok: true; value: SongSettings } | { ok: false; message: string } {
+  // ★ R123 (TRIM.songFilters) — 연대 · 장르 · 20세기 명곡 칸이 없다: 보낸 값을 버린다 = 고른 분류의 전체 연대 · 전체 장르 · 명곡 포함
+  if (trim.songFilters) raw = { ...raw, songDecades: undefined, songLegend: undefined, songGenres: undefined };
   const out: SongSettings = { ...DEFAULT_SONG_SETTINGS, songCategories: [...DEFAULT_SONG_SETTINGS.songCategories], songDecades: [...DEFAULT_SONG_SETTINGS.songDecades], songGenres: [...DEFAULT_SONG_SETTINGS.songGenres] };
   if (raw.songCount !== undefined) {
     const n = raw.songCount;

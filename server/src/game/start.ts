@@ -115,7 +115,7 @@ export async function requestStart(room: Room): Promise<StartResult> {
   try {
     // ── 1. 설정값 재검증 (guide 44절: 클라이언트 검증만 믿지 않는다)
     // ★ R109 — 공개 방은 지인 전용 방식 · 미니게임을 다시 막는다(숨김 목록은 서버가 센 값)
-    const valid = validateRoomSettings(room.settings, { hidden: hiddenFor(room.site) });
+    const valid = validateRoomSettings(room.settings, { hidden: hiddenFor(room.site), trim: config.trim });
     if (!valid.ok) return { ok: false, reason: 'settings', message: valid.message };
     // ★ R033 — 검증 결과로 덮는다. 옛 설정(즉시 시작 등)이 남아 있어도 항상 5초 카운트다운이 된다
     room.settings = { ...valid.settings };

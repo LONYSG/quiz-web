@@ -6,7 +6,7 @@ export default function DeviceIcon({ device }: { device?: 'pc' | 'mobile' | null
   if (!device) return null;
   const pc = device === 'pc';
   return (
-    <span className={pc ? 'device-icon pc' : 'device-icon mobile'} title={pc ? 'PC (키보드)' : '모바일 · 태블릿'} aria-label={pc ? 'PC' : '모바일'} data-device={device}>
+    <span className={pc ? 'device-icon pc' : 'device-icon mobile'} title={pc ? 'PC (키보드)' : '모바일, 태블릿'} aria-label={pc ? 'PC' : '모바일'} data-device={device}>
       <Icon icon={pc ? Monitor : Smartphone} />
     </span>
   );

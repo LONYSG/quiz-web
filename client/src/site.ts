@@ -3,7 +3,7 @@
 //   한 페이지 = 한 자리(방은 만든 주소의 자리를 물려받고 다른 자리 방에는 못 들어간다). 서버가 다시 막는다(정본은 서버).
 //   site 는 나중에 광고 코드를 공개 쪽에만 넣을 자리다.
 // =============================================================================
-import { setSiteHiddenMinigames, type Site, type SiteHidden } from '@quiz/shared';
+import { setSiteHiddenMinigames, TRIM, type Site, type SiteHidden, type TrimFlags } from '@quiz/shared';
 
 export interface SiteInfo {
   site: Site;
@@ -19,9 +19,18 @@ export interface SiteInfo {
   /** ★★★ R118 — 혼자 하기 · 띠 스위치(SOLO=1 · BELT=1 · 서버가 solo:true · belt:true 를 실을 때만) */
   solo: boolean;
   belt: boolean;
+  /** ★ R123 — 콘텐츠 줄이기(서버 config.trim · shared TRIM) */
+  trim: TrimFlags;
 }
 
-let info: SiteInfo = { site: 'friend', split: false, open: true, hidden: { modes: [], minigames: [] }, publicUrl: null, gongbang: false, solo: false, belt: false };
+let info: SiteInfo = { site: 'friend', split: false, open: true, hidden: { modes: [], minigames: [] }, publicUrl: null, gongbang: false, solo: false, belt: false, trim: TRIM };
+
+/** ★ R123 — 서버의 콘텐츠 줄이기(없거나 이상하면 shared 기본값) */
+function readTrim(v: unknown): TrimFlags {
+  if (!v || typeof v !== 'object') return TRIM;
+  const o = v as Record<string, unknown>;
+  return { minigameOnly: o.minigameOnly !== false, minigamePick: o.minigamePick !== false, topicPick: o.topicPick !== false, songFilters: o.songFilters !== false };
+}
 
 export function siteInfo(): SiteInfo {
   return info;
@@ -43,6 +52,7 @@ export async function loadSiteInfo(): Promise<void> {
       gongbang: (j as { gongbang?: unknown }).gongbang === true,
       solo: (j as { solo?: unknown }).solo === true,
       belt: (j as { belt?: unknown }).belt === true,
+      trim: readTrim((j as { trim?: unknown }).trim),
     };
     setSiteHiddenMinigames(info.hidden.minigames);
     document.documentElement.dataset.site = info.site;

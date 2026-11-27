@@ -150,7 +150,7 @@ export function BalloonBlow({ socket, view, serverNow, mobile }: Props) {
             ? '펑! 100 을 넘었어요'
             : done
               ? `${total} 에서 멈췄어요`
-              : `한 번에 ${pumpMin}~${pumpMax} · 딱 ${target} 이면 만점 · 넘으면 펑(0점)`}
+              : `한 번에 ${pumpMin}~${pumpMax}, 딱 ${target} 이면 만점, 넘으면 펑(0점)`}
       </p>
     </div>
   );

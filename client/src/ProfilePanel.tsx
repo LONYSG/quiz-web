@@ -119,7 +119,7 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
             {/* ★ R054 — 전적 · 업적 (읽기만 · 표시만) */}
             <span className="profile-btns">
               <button type="button" className="ghost tiny stats-open" onClick={() => setStatsOpen(true)}>
-                <Icon icon={BarChart3} /> 전적 · 업적
+                <Icon icon={BarChart3} /> 전적과 업적
               </button>
               {/* ★ R056 — 전체 업적 창(다른 사람 프로필 카드와 같은 창) */}
               <button type="button" className="ghost tiny ach-all-open" onClick={() => openPersonCard({ accountId, nickname, colorIndex, avatarV }, 'all')}>
@@ -133,11 +133,11 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
               {points && (points.spent > 0 || (points.rewards ?? 0) > 0 || (points.grants ?? 0) > 0) && (
                 <span className="dim profile-points-sub">
                   {' '}
-                  · 맞힌 문제 {(points.correct ?? points.earned).toLocaleString('ko-KR')}
+                  (맞힌 문제 {(points.correct ?? points.earned).toLocaleString('ko-KR')}
                   {(points.rewards ?? 0) > 0 && <> + 미니게임 {(points.rewards ?? 0).toLocaleString('ko-KR')}</>}
                   {/* ★ R059 — 제보 채택 · 지급 */}
                   {(points.grants ?? 0) > 0 && <> + 보너스 {(points.grants ?? 0).toLocaleString('ko-KR')}</>}
-                  {points.spent > 0 && <> − 쓴 포인트 {points.spent.toLocaleString('ko-KR')}</>}
+                  {points.spent > 0 && <> − 쓴 포인트 {points.spent.toLocaleString('ko-KR')}</>})
                 </span>
               )}
             </p>

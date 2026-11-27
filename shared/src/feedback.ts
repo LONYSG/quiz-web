@@ -20,7 +20,7 @@ export const FEEDBACK_REASONS = [
   { code: 'unclear', label: '질문이 무슨 말인지 모르겠음' },
   { code: 'answer', label: '답이 틀렸거나 다른 답도 맞을 듯' },
   { code: 'hint', label: '힌트가 이상함(너무 쉽거나 도움 안 됨)' },
-  { code: 'boring', label: '알 가치 없음 · 재미없음' },
+  { code: 'boring', label: '알 가치 없음, 재미없음' },
   { code: 'other', label: '기타(적기)' },
 ] as const;
 
@@ -33,8 +33,8 @@ export type FeedbackReason = (typeof FEEDBACK_REASONS)[number]['code'];
 export const SONG_FEEDBACK_REASONS = [
   { code: 'unknown', label: '모르는 노래' },
   { code: 'too_easy', label: '너무 쉬움' },
-  { code: 'label', label: '제목·가수 표기가 이상함' },
-  { code: 'preview', label: '미리듣기가 이상함(다른 판·끊김)' },
+  { code: 'label', label: '제목이나 가수 표기가 이상함' },
+  { code: 'preview', label: '미리듣기가 이상함(다른 판, 끊김)' },
 ] as const;
 export type SongFeedbackReason = (typeof SONG_FEEDBACK_REASONS)[number]['code'];
 

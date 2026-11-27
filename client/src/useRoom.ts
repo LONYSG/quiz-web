@@ -121,6 +121,8 @@ export interface DrawView {
   solved: { accountId: string; ms: number }[];
   mySolved: boolean;
   canReroll: boolean;
+  /** ★ R123 — 지금 바꾸면 드는 포인트(0 = 무료 · 옛 서버면 없음) */
+  rerollCost?: number;
   strokes: DrawStrokeView[];
   /** ★ R090 — 되돌리기 · 다시 실행 할 것 수 */
   hist?: { undo: number; redo: number };

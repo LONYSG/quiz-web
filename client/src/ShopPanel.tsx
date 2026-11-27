@@ -266,7 +266,7 @@ export default function ShopPanel({ onClosed }: Props) {
                 <strong>{stage.result.emoji.name}</strong>
                 <span className="dim mono">
                   {' '}
-                  · {stage.result.owned.length}/{stage.result.total}
+                  ({stage.result.owned.length}/{stage.result.total})
                 </span>
               </p>
               <div className="gacha-result-actions" data-arrow-nav>

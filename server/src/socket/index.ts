@@ -41,6 +41,7 @@ import {
   isDrawHintKind,
   minigameSelectable,
   type DrawHintKind,
+  TEAM_SOLO_END,
 } from '@quiz/shared';
 import { closeRoom, findRoom, insertRoom, openRoomsHostedBy, updateRoomHost } from '../db/rooms.js';
 import { insertMidgamePlayer, recordExperiences } from '../db/gameQuestions.js';
@@ -113,13 +114,14 @@ import { currentSeq, nextSeq } from '../seq.js';
 import { liarAppeal, liarAppealVote, liarChatGate, liarDiscussEnd, liarFinal, liarGuess, liarSay, liarVote } from '../liar/engine.js';
 import { noteSongFail } from '../song/mode.js';
 import { friendGate, hiddenFor, publicClosed, siteOf } from '../site.js';
-import { drawChatGate, drawClear, drawFill, drawGiveUp, drawHint, drawRedo, drawReroll, drawStroke, drawUndo } from '../draw/engine.js';
+import { drawChatGate, drawClear, drawFill, drawGiveUp, drawHint, drawRedo, drawReroll, drawStroke, drawUndo, rerollCostNow, rerollTicket } from '../draw/engine.js';
+import { setSpendAmount, spendPoints } from '../db/points.js';
 import {
   on,
   onRoom,
   parseObject,
   parseString,
-  sendError,
+  sendError, sayError,
   type SocketData,
 } from './guard.js';
 
@@ -365,7 +367,7 @@ function registerRoomHandlers(socket: Socket): void {
       if (creatingRooms.has(session.accountId)) return;
       // 이미 어느 방에 있으면 거절한다. 한 사람이 두 방에 동시에 있을 수 없다.
       if (getRoomOfAccount(session.accountId)) {
-        sendError(s, 'ALREADY_HAS_ROOM', '이미 방에 참가한 상태입니다.');
+        sayError(s, 'ALREADY_HAS_ROOM', '이미 방에 참가한 상태입니다.');
         return;
       }
       // ★★★ R118 (docs/24 4-1) — 솔로 중에는 방에 들어갈 수 없다(끝내고 가기)
@@ -376,14 +378,14 @@ function registerRoomHandlers(socket: Socket): void {
       // ★★ R107 (D-365) — 방 만들기 계정마다 5개/10분(이 PC 자신은 뺀다 — 봇 · ui-check)
       const waitMs = roomCreateLimited(s, session.accountId);
       if (waitMs > 0) {
-        sendError(s, 'RATE_LIMITED', `방을 너무 자주 만들었어요. ${Math.max(1, Math.ceil(waitMs / 60_000))}분 뒤 다시 만들어 주세요.`);
+        sayError(s, 'RATE_LIMITED', `방을 너무 자주 만들었어요. ${Math.max(1, Math.ceil(waitMs / 60_000))}분 뒤 다시 만들어 주세요.`);
         return;
       }
 
       // ★★★ R116 — 방 제목 금칙어(목록에 그대로 드러난다 · 스위치를 켰을 때만)
       const banned = bannedTextMessage(payload.title, '방 제목');
       if (banned) {
-        sendError(s, 'BAD_REQUEST', banned, banned);
+        sayError(s, 'BAD_REQUEST', banned);
         return;
       }
 
@@ -416,7 +418,7 @@ function registerRoomHandlers(socket: Socket): void {
       const room = createRoomObject(roomId, payload.title, session.accountId, site);
       // ★ R109 — 공개 방은 기본 설정에서 지인 전용 미니게임을 뺀다(방식 · 미니게임 목록)
       if (site === 'public') {
-        const v = validateRoomSettings(room.settings, { hidden: hiddenFor('public') });
+        const v = validateRoomSettings(room.settings, { hidden: hiddenFor('public'), trim: config.trim });
         if (v.ok) room.settings = v.settings;
       }
       if (payload.extras) applyCreateExtras(room, payload.extras);
@@ -444,7 +446,7 @@ function registerRoomHandlers(socket: Socket): void {
     async ({ socket: s, session, payload }) => {
       const already = getRoomOfAccount(session.accountId);
       if (already && already.id !== payload.roomId && already.code !== payload.roomId) {
-        sendError(s, 'ALREADY_HAS_ROOM', '다른 방에 참가한 상태입니다.');
+        sayError(s, 'ALREADY_HAS_ROOM', '다른 방에 참가한 상태입니다.');
         return;
       }
       if (!already && soloRunning(session.accountId)) {
@@ -456,7 +458,7 @@ function registerRoomHandlers(socket: Socket): void {
       const room = findRoomByCodeOrId(payload.roomId);
       // ★★ R041 — 차단된 계정은 이 방에 다시 들어올 수 없다 (방이 살아 있는 동안)
       if (room?.bannedAccountIds.has(session.accountId)) {
-        sendError(s, 'BANNED', '이 방에서 차단되어 들어갈 수 없습니다.');
+        sayError(s, 'BANNED', '이 방에서 차단되어 들어갈 수 없습니다.');
         return;
       }
       // ★★★ R109 (D-369) — 다른 자리의 방은 없는 방과 같다(공개 ↔ 지인 — 보이지도 들어가지도 않는다)
@@ -483,7 +485,7 @@ function registerRoomHandlers(socket: Socket): void {
         }
       }
       if (!already && room.state !== 'LOBBY' && !nicknameFits(session.nickname)) {
-        sendError(s, 'NICKNAME_CHANGE_REQUIRED', `게임 중인 방에는 닉네임을 바꾼 뒤 들어갈 수 있어요. (${NICKNAME_LIMIT_HINT})`);
+        sayError(s, 'NICKNAME_CHANGE_REQUIRED', `게임 중인 방에는 닉네임을 바꾼 뒤 들어갈 수 있어요. (${NICKNAME_LIMIT_HINT})`);
         return;
       }
       attachToRoom(s, room.id, already ? 'reconnect' : 'join');
@@ -732,11 +734,11 @@ function registerRoomHandlers(socket: Socket): void {
       const special = isSpecialEmoji(payload.emojiId);
       // ★★★ R109 (D-369) — 공개 방에서는 지인 전용 테마(치이카와)를 못 보낸다(가진 것은 그대로 — 베타 방에서는 된다)
       if (!emojiAllowedOn(room.site, payload.emojiId)) {
-        sendError(s, 'BAD_REQUEST', '이 방에서는 쓸 수 없는 이모티콘입니다.');
+        sayError(s, 'BAD_REQUEST', '이 방에서는 쓸 수 없는 이모티콘입니다.');
         return;
       }
       if (special && !(ownedEmojiIdsCached(player.accountId) ?? (await ownedEmojiIds(player.accountId))).has(payload.emojiId)) {
-        sendError(s, 'BAD_REQUEST', '가지고 있지 않은 이모티콘입니다.');
+        sayError(s, 'BAD_REQUEST', '가지고 있지 않은 이모티콘입니다.');
         return;
       }
       // ★★★ R071 (D-314) — 도배 제한은 **스위치가 켜졌을 때만**(기본 꺼짐 · 복원 = EMOJI_RATE_LIMIT=1).
@@ -808,7 +810,7 @@ function registerRoomHandlers(socket: Socket): void {
       // ★ settingsLocked 는 상태와 별개 축이다. 둘 다 본다.
       //   (COUNTDOWN 에서 취소 없이 LOBBY 로 돌아가는 경로가 Phase 4에 생긴다)
       if (room.settingsLocked) {
-        sendError(s, 'INVALID_STATE', '게임이 시작되어 설정을 바꿀 수 없습니다.');
+        sayError(s, 'INVALID_STATE', '게임이 시작되어 설정을 바꿀 수 없습니다.');
         return;
       }
 
@@ -841,18 +843,15 @@ function registerRoomHandlers(socket: Socket): void {
         songLegend: room.settings.songLegend,
         songGenres: room.settings.songGenres,
         ...payload,
-      }, { hidden: hiddenFor(room.site) }); // ★ R109 — 공개 방은 지인 전용 방식 · 미니게임을 막는다
+      }, { hidden: hiddenFor(room.site), trim: config.trim }); // ★ R109 — 공개 방은 지인 전용 방식 · 미니게임을 막는다
       if (!valid.ok) {
-        sendError(s, 'BAD_REQUEST', valid.message);
+        sayError(s, 'BAD_REQUEST', valid.message);
         return;
       }
-      // ★★★ R079 (D-335) — 팀전은 2명 이상일 때만 켠다 · 켜는 순간 joinOrder 번갈아 자동 배정(블루부터)
+      // ★★★ R079 (D-335) — 켜는 순간 joinOrder 번갈아 자동 배정(블루부터)
       const teamTurnedOn = valid.settings.teamMode && !room.settings.teamMode;
       const teamTurnedOff = !valid.settings.teamMode && room.settings.teamMode;
-      if (teamTurnedOn && room.players.size < 2) {
-        sendError(s, 'BAD_REQUEST', '팀전은 2명 이상일 때 켤 수 있어요.');
-        return;
-      }
+      // ★ R123 (찬종) — 팀전은 인원과 상관없이 늘 고를 수 있다 · 시작만 짝수 인원(game/start.ts teamStartBlock)
 
       const diffChanged =
         valid.settings.level !== room.settings.level ||
@@ -895,16 +894,16 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room, session, payload }) => {
       const block = teamChangeBlock(room);
       if (block) {
-        sendError(s, 'BAD_REQUEST', block);
+        sayError(s, 'BAD_REQUEST', block);
         return;
       }
       if (payload.accountId !== session.accountId && room.hostAccountId !== session.accountId) {
-        sendError(s, 'BAD_REQUEST', '다른 사람의 팀은 방장만 바꿀 수 있어요.');
+        sayError(s, 'BAD_REQUEST', '다른 사람의 팀은 방장만 바꿀 수 있어요.');
         return;
       }
       const target = room.players.get(payload.accountId);
       if (!target) {
-        sendError(s, 'BAD_REQUEST', '대상을 찾을 수 없습니다.');
+        sayError(s, 'BAD_REQUEST', '대상을 찾을 수 없습니다.');
         return;
       }
       if (target.team === payload.team) return;
@@ -917,7 +916,7 @@ function registerRoomHandlers(socket: Socket): void {
   onRoom(socket, 'lobby.autoTeams', { requireHost: true }, ({ socket: s, room }) => {
     const block = teamChangeBlock(room);
     if (block) {
-      sendError(s, 'BAD_REQUEST', block);
+      sayError(s, 'BAD_REQUEST', block);
       return;
     }
     applyAutoTeams(room);
@@ -941,20 +940,20 @@ function registerRoomHandlers(socket: Socket): void {
           );
           return;
         case 'settings':
-          sendError(s, 'BAD_REQUEST', result.message);
+          sayError(s, 'BAD_REQUEST', result.message);
           return;
         case 'no_active':
-          sendError(s, 'INVALID_STATE', '접속 중인 참가자가 없습니다.');
+          sayError(s, 'INVALID_STATE', '접속 중인 참가자가 없습니다.');
           return;
         case 'nickname':
           // ★ R040 — 방 전체에 알린다 (바꿔야 하는 사람도 이유를 본다)
           emitRoom(room, 'error', { code: 'NICKNAME_CHANGE_REQUIRED', message: nicknameBlockMessage(result.nicknames), detail: result.nicknames.join(',') });
           return;
         case 'busy':
-          sendError(s, 'INVALID_STATE', '이미 시작 처리 중입니다.');
+          sayError(s, 'INVALID_STATE', '이미 시작 처리 중입니다.');
           return;
         default:
-          sendError(s, 'INVALID_STATE', `현재 상태: ${room.state}`);
+          sendError(s, 'INVALID_STATE');
       }
     },
   );
@@ -975,7 +974,7 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room }) => {
       if (room.state === 'PAUSED') {
         if (room.paused?.pausedFrom !== 'COUNTDOWN') {
-          sendError(s, 'INVALID_STATE', '카운트다운 중에 멈춘 것이 아닙니다.');
+          sayError(s, 'INVALID_STATE', '카운트다운 중에 멈춘 것이 아닙니다.');
           return;
         }
         // ★ 일시정지를 풀고 카운트다운 상태로 되돌린 뒤 취소한다.
@@ -983,7 +982,7 @@ function registerRoomHandlers(socket: Socket): void {
         room.paused = null;
         room.state = 'COUNTDOWN';
       }
-      if (!cancelCountdown(room)) sendError(s, 'INVALID_STATE', `현재 상태: ${room.state}`);
+      if (!cancelCountdown(room)) sendError(s, 'INVALID_STATE');
     },
   );
 
@@ -1011,12 +1010,12 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room, player, payload }) => {
       const q = room.currentQuestion;
       if (!q || q.resolved) {
-        sendError(s, 'INVALID_STATE', '이미 끝난 문제입니다.');
+        sayError(s, 'INVALID_STATE', '이미 끝난 문제입니다.');
         return;
       }
       // ★ epoch 가 다르면 무시한다. 낡은 화면에서 누른 투표다
       if (payload.epoch !== q.epoch) {
-        sendError(s, 'INVALID_STATE', '문제가 이미 바뀌었습니다.');
+        sayError(s, 'INVALID_STATE', '문제가 이미 바뀌었습니다.');
         return;
       }
       // ★ 접속 중인 사람만 투표할 수 있다. 분모가 활성 인원이므로 분자도 같아야 한다
@@ -1052,12 +1051,12 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room, payload }) => {
       const q = room.currentQuestion;
       if (!q || q.resolved) {
-        sendError(s, 'INVALID_STATE', '이미 끝난 문제입니다.');
+        sayError(s, 'INVALID_STATE', '이미 끝난 문제입니다.');
         return;
       }
       if (payload.epoch !== q.epoch) {
         // ★★ 이것이 "다음 문제를 스킵해 버리는 사고" 를 막는 자리다
-        sendError(s, 'INVALID_STATE', '문제가 이미 바뀌었습니다. 다시 눌러 주세요.');
+        sayError(s, 'INVALID_STATE', '문제가 이미 바뀌었습니다. 다시 눌러 주세요.');
         return;
       }
       resolveQuestionSync(room, 'host_skip', null);
@@ -1098,32 +1097,11 @@ function registerRoomHandlers(socket: Socket): void {
       allowedStates: ['QUESTION_ACTIVE', 'QUESTION_RESOLVED', 'PAUSED', 'MINIGAME', 'LIAR', 'DRAW'],
     },
     ({ socket: s, room }) => {
-      // ★★ R050 — 미니게임 중: 연습이면 로비로 · 퀴즈 판이면 미니게임을 닫고(보상 없음 — final 전이면) 게임을 끝낸다
-      if (room.state === 'MINIGAME') {
-        const kind = stopMinigame(room);
-        if (kind === 'practice' || !room.game) return;
-        finishGame(room, 'force_ended', '방장이 게임을 강제 종료했습니다.');
+      if (!room.game && room.state !== 'MINIGAME') {
+        sayError(s, 'INVALID_STATE', '진행 중인 게임이 없습니다.');
         return;
       }
-      if (!room.game) {
-        sendError(s, 'INVALID_STATE', '진행 중인 게임이 없습니다.');
-        return;
-      }
-      // ★★ 정답을 공개하지 않은 상태에서 끝내면 중단 기록을 남긴다 (T11 / T13).
-      //   ★ 경험 기록을 남기지 않는다. 정답을 보지 않았기 때문이다 (Q-25 / Q-47).
-      //   ★ QUESTION_RESOLVED 에서는 이미 공개되고 기록도 남았다. 그대로 유지한다 (T12).
-      const pausedFrom = room.paused?.pausedFrom;
-      if (room.state === 'QUESTION_ACTIVE' || pausedFrom === 'QUESTION_ACTIVE') {
-        abortQuestionSync(room);
-      }
-      // ★★ R035 (R034 결정 ② · 건우 이견 없음) — **마지막 문제의 정답 공개 중**이면 모든 문제가 이미 끝났다.
-      //   ★ 그때의 강제 종료는 "결과로 바로 가기" 일 뿐이므로 종료 사유를 **completed** 로 남긴다 (D-163).
-      const resolvedPhase = room.state === 'QUESTION_RESOLVED' || pausedFrom === 'QUESTION_RESOLVED';
-      const cur = room.currentQuestion;
-      const lastDone = resolvedPhase && cur !== null && cur.resolved && cur.index >= room.game.totalQuestions;
-      room.paused = null;
-      if (lastDone) finishGame(room, 'completed', null);
-      else finishGame(room, 'force_ended', '방장이 게임을 강제 종료했습니다.');
+      endGameNow(room, '방장이 게임을 강제 종료했습니다.');
     },
   );
 
@@ -1261,7 +1239,23 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room, session, payload }) => drawReply(s, drawStroke(room, session.accountId, payload)),
   );
   onRoom<Record<string, never>>(socket, 'draw.clear', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawClear(room, session.accountId)));
-  onRoom<Record<string, never>>(socket, 'draw.reroll', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawReroll(room, session.accountId)));
+  // ★★ R123 (찬종) — 무료 1회 뒤 유료(5P · 그린 사람 포인트 · 한 차례 최대 3번) · 값은 뽑기처럼 한 트랜잭션(db/points spendPoints)
+  onRoom<Record<string, never>>(socket, 'draw.reroll', { allowedStates: ['DRAW'], parse: () => ({}) }, async ({ socket: s, room, session }) => {
+    const cost = rerollCostNow(room, session.accountId);
+    if (cost === null) return drawReply(s, drawReroll(room, session.accountId));
+    if (cost === 0) return drawReply(s, drawReroll(room, session.accountId));
+    const ticket = rerollTicket(room);
+    const paid = await spendPoints(session.accountId, cost, 'draw-reroll', ticket, () => rerollTicket(room) === ticket && rerollCostNow(room, session.accountId) === cost);
+    if (!paid.ok) {
+      if (paid.reason === 'insufficient') return sayError(s, 'BAD_REQUEST', `포인트가 모자라요 (지금 ${paid.balance}P)`);
+      return drawReply(s, 'bad');
+    }
+    const r = rerollTicket(room) === ticket ? drawReroll(room, session.accountId) : 'bad';
+    // 값을 낸 사이 차례가 바뀌었으면 돌려준다
+    if (r !== 'ok') await setSpendAmount(paid.spendId, 0);
+    else s.emit('points.changed', { balance: paid.balance });
+    drawReply(s, r);
+  });
   // ★ R101 — 출제자 포기(그리는 중 · 횟수 제한 없음)
   onRoom<Record<string, never>>(socket, 'draw.giveUp', { allowedStates: ['DRAW'], parse: () => ({}) }, ({ socket: s, room, session }) => drawReply(s, drawGiveUp(room, session.accountId)));
   // ★ R089 (D-346) — 페인트통 · 되돌리기(출제자만)
@@ -1311,15 +1305,15 @@ function registerRoomHandlers(socket: Socket): void {
     },
     ({ socket: s, room, payload }) => {
       if (room.settingsLocked || room.game) {
-        sendError(s, 'INVALID_STATE', '지금은 미니게임을 시작할 수 없습니다.');
+        sayError(s, 'INVALID_STATE', '지금은 미니게임을 시작할 수 없습니다.');
         return;
       }
       // ★ R109 — 공개 방은 지인 전용 미니게임을 연습으로도 못 연다
       if (hiddenFor(room.site).minigames.includes(payload.key as MinigameKey)) {
-        sendError(s, 'BAD_REQUEST', SITE_TEXT.modeNotHere);
+        sayError(s, 'BAD_REQUEST', SITE_TEXT.modeNotHere);
         return;
       }
-      if (!startPractice(room, payload.key as MinigameKey)) sendError(s, 'INVALID_STATE', '미니게임을 시작하지 못했습니다.');
+      if (!startPractice(room, payload.key as MinigameKey)) sayError(s, 'INVALID_STATE', '미니게임을 시작하지 못했습니다.');
     },
   );
 
@@ -1333,13 +1327,13 @@ function registerRoomHandlers(socket: Socket): void {
       if (r.ok) return;
       switch (r.reason) {
         case 'no_active':
-          sendError(s, 'INVALID_STATE', '접속 중인 참가자가 없습니다.');
+          sayError(s, 'INVALID_STATE', '접속 중인 참가자가 없습니다.');
           return;
         case 'not_paused':
-          sendError(s, 'INVALID_STATE', '일시정지 상태가 아닙니다.');
+          sayError(s, 'INVALID_STATE', '일시정지 상태가 아닙니다.');
           return;
         default:
-          sendError(s, 'INTERNAL', '재개할 게임 상태를 찾지 못했습니다.');
+          sayError(s, 'INTERNAL', '재개할 게임 상태를 찾지 못했습니다.');
       }
     },
   );
@@ -1398,11 +1392,11 @@ function registerRoomHandlers(socket: Socket): void {
   const kick = (s: Socket, room: Room, accountId: string, ban: boolean, me: string) => {
     const target = room.players.get(accountId);
     if (!target) {
-      sendError(s, 'BAD_REQUEST', '대상을 찾을 수 없습니다.');
+      sayError(s, 'BAD_REQUEST', '대상을 찾을 수 없습니다.');
       return;
     }
     if (accountId === me) {
-      sendError(s, 'BAD_REQUEST', '자기 자신은 내보낼 수 없습니다.');
+      sayError(s, 'BAD_REQUEST', '자기 자신은 내보낼 수 없습니다.');
       return;
     }
     // ★★ R046 — 강퇴 · 차단도 나가기와 같은 한 경로 (즉시 빠짐 · 0점부터)
@@ -1437,11 +1431,11 @@ function registerRoomHandlers(socket: Socket): void {
     ({ socket: s, room, session, payload }) => {
       const target = room.players.get(payload.accountId);
       if (!target || payload.accountId === session.accountId) {
-        sendError(s, 'BAD_REQUEST', '넘겨받을 사람을 찾을 수 없습니다.');
+        sayError(s, 'BAD_REQUEST', '넘겨받을 사람을 찾을 수 없습니다.');
         return;
       }
       if (!target.connected) {
-        sendError(s, 'INVALID_STATE', '접속 중인 사람에게만 방장을 넘길 수 있습니다.');
+        sayError(s, 'INVALID_STATE', '접속 중인 사람에게만 방장을 넘길 수 있습니다.');
         return;
       }
       transferHost(room, target, 'handover');
@@ -1773,6 +1767,14 @@ export function ejectPlayer(room: Room, accountId: string, reason: EjectReason):
     reason === 'kick' ? `${target.nickname} 님을 내보냈습니다.` : reason === 'ban' ? `${target.nickname} 님을 차단했습니다.` : `${target.nickname} 님이 나갔습니다.`,
   );
   if (nextHost) transferHost(room, nextHost, reason === 'timeout' ? 'grace' : 'left');
+  // ★★ R123 (찬종) — 팀전 판 중 한 명만 남으면 끝낸다(2명 이상이면 계속 · 결과 화면은 판 끝 처리와 같다)
+  if (inGame && room.game && room.settings.teamMode && room.players.size === 1) {
+    emitRoom(room, 'room.playerLeft', { accountId, players: playerViews(room), activeCount: activeCount(room) });
+    broadcastSystem(room, TEAM_SOLO_END);
+    endGameNow(room, TEAM_SOLO_END);
+    console.log(`[room] ${room.id} 팀전 혼자 남음 — 게임 끝`);
+    return;
+  }
   emitRoom(room, 'room.playerLeft', {
     accountId,
     players: playerViews(room),
@@ -1789,6 +1791,31 @@ export function ejectPlayer(room: Room, accountId: string, reason: EjectReason):
   // 참가자가 줄면 출제 가능 수가 바뀔 수 있다 (전원 경험 문제)
   void refreshLobbyInfo(room);
   console.log(`[room] ${room.id} ${reason === 'timeout' ? '끊김 60초 — ' : ''}빠짐 (${reason}) ${accountId}`);
+}
+
+/**
+ * ★★ R123 — 판을 지금 끝낸다(방장 강제 종료 · 팀전 혼자 남음이 같이 쓴다 — 옛 host.forceEnd 몸통 그대로).
+ *   미니게임 중: 연습이면 로비로 · 퀴즈 판이면 미니게임을 닫고(보상 없음 — final 전이면) 게임을 끝낸다.
+ *   정답을 공개하지 않은 문제는 중단 기록(T11 / T13) · 마지막 문제 공개 중이면 completed(D-163).
+ */
+export function endGameNow(room: Room, note: string): void {
+  if (room.state === 'MINIGAME') {
+    const kind = stopMinigame(room);
+    if (kind === 'practice' || !room.game) return;
+    finishGame(room, 'force_ended', note);
+    return;
+  }
+  if (!room.game) return;
+  const pausedFrom = room.paused?.pausedFrom;
+  if (room.state === 'QUESTION_ACTIVE' || pausedFrom === 'QUESTION_ACTIVE') {
+    abortQuestionSync(room);
+  }
+  const resolvedPhase = room.state === 'QUESTION_RESOLVED' || pausedFrom === 'QUESTION_RESOLVED';
+  const cur = room.currentQuestion;
+  const lastDone = resolvedPhase && cur !== null && cur.resolved && cur.index >= room.game.totalQuestions;
+  room.paused = null;
+  if (lastDone) finishGame(room, 'completed', null);
+  else finishGame(room, 'force_ended', note);
 }
 
 /**

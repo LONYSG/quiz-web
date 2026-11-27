@@ -36,7 +36,7 @@ export default function InviteToast({ social, show, onAccept }: Props) {
         <Avatar nickname={cur.fromNickname} colorIndex={colorOf(cur.fromAccountId)} accountId={cur.fromAccountId} avatarV={cur.fromAvatarV} />
         <p className="invite-toast-text">
           <strong className="nick">{cur.fromNickname}</strong> 님이 초대했어요
-          {list.length > 1 && <span className="dim"> · 외 {list.length - 1}개</span>}
+          {list.length > 1 && <span className="dim"> 외 {list.length - 1}개</span>}
         </p>
         <span className="invite-toast-actions">
           <button

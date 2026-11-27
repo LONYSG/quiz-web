@@ -125,7 +125,7 @@ export function ResultFeedback({ gameId }: { gameId: string }) {
   );
 }
 
-/** 로비 — "지난 판 문제" 링크 + 팝업(D-217 — ✕ · 바깥 · Esc) */
+/** 로비 — "지난 판 문제" 버튼 + 팝업(D-217 — ✕ · 바깥 · Esc) · ★ R123 방 설정 카드에서 빼서 위 막대 제보 버튼 옆(같은 크기 아이콘 버튼) */
 export function LastGameFeedback({ gameId }: { gameId: string }) {
   const [open, setOpen] = usePopup('feedback-last');
   const close = useCallback(() => setOpen(false), [setOpen]);
@@ -142,8 +142,9 @@ export function LastGameFeedback({ gameId }: { gameId: string }) {
   }, [open, close]);
   return (
     <>
-      <button type="button" id="feedback-last-btn" className="link-btn fb-last-btn" onClick={() => setOpen(true)}>
-        <Icon icon={ClipboardList} /> 지난 판 문제
+      <button type="button" id="feedback-last-btn" className="ghost tiny fb-last-btn" title="지난 판 문제" aria-label="지난 판 문제" onClick={() => setOpen(true)}>
+        <Icon icon={ClipboardList} />
+        <span className="lbl">지난 판</span>
       </button>
       {open &&
         createPortal(

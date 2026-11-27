@@ -28,7 +28,7 @@ export default function AccessControls({ socket, isHost, kind, maxPlayers, locke
   if (!isHost) {
     return (
       <p className="dim gb-access-line" data-gb-access="guest">
-        정원 {maxPlayers}명{locked ? ' · 잠긴 방' : ''}
+        정원 {maxPlayers}명{locked ? ', 잠긴 방' : ''}
       </p>
     );
   }

@@ -35,8 +35,8 @@ export function unreadableMessage(kind: 'heic' | 'tiff' | 'avif' | 'other', name
   const ext = /\.[a-z0-9]+$/i.exec(name)?.[0]?.toLowerCase() ?? '';
   if (kind === 'heic')
     return `휴대폰 사진 형식(HEIC)이라 브라우저가 열 수 없어요${ext && ext !== '.heic' && ext !== '.heif' ? ` — 이름만 ${ext} 로 바꿔서는 안 돼요` : ''}. 사진 앱에서 "JPG 로 저장(내보내기)" 하거나, 화면을 캡처한 사진을 올려 주세요.`;
-  if (kind === 'tiff') return 'TIFF 사진은 브라우저가 열 수 없어요. JPG · PNG 로 저장해서 올려 주세요.';
-  return '이 사진은 열 수 없습니다 (jpg · png · webp 를 써 주세요). 이름만 바꾼 파일이면 사진 앱에서 JPG 로 다시 저장해 주세요.';
+  if (kind === 'tiff') return 'TIFF 사진은 브라우저가 열 수 없어요. JPG나 PNG로 저장해서 올려 주세요.';
+  return '이 사진은 열 수 없습니다 (jpg, png, webp 를 써 주세요). 이름만 바꾼 파일이면 사진 앱에서 JPG 로 다시 저장해 주세요.';
 }
 
 interface Props {
@@ -210,7 +210,7 @@ export default function ProfileEditor({ file, onCancel, onDone }: Props) {
             <div className="crop-preview" aria-label="미리보기">
               <canvas ref={prev64} className="pv64" />
               <canvas ref={prev32} className="pv32" />
-              <span className="dim">끌어서 위치 · 휠/두 손가락으로 크기</span>
+              <span className="dim">끌어서 위치를, 휠이나 두 손가락으로 크기를 바꿔요</span>
             </div>
           </>
         )}

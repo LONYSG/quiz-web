@@ -1,24 +1,27 @@
 // =============================================================================
-// ★★★ R117 (docs/24 3-5 · 8절 "모드 바꾸기") — 종류 셋(지금 것 표시) · 바뀌는 것 한 줄 · 인원이 모자라면 미리 알림
-//   ★ 방장 · 대기실에서만(서버도 로비에서만 받는다). 사람 · 링크 · 코드 · 채팅은 그대로 — 서버가 시스템 채팅 한 줄을 남긴다.
+// ★★★ R117 (docs/24 3-5 · 8절 "모드 바꾸기") — 방장 · 대기실에서만(서버도 로비에서만 받는다).
+//   사람 · 링크 · 코드 · 채팅은 그대로 — 서버가 시스템 채팅 한 줄을 남긴다.
+// ★★ R123 (찬종) — 고르는 목록(이름 + 무슨 게임인지 한 줄) + 아래 "변경하기" 버튼 하나(글 · 크기 고정).
+//   지금 모드는 끄지 않고 체크 · 색으로 표시("(지금)" 글 뺌) — 지금 모드를 고르면 변경하기만 꺼진다.
+//   인원 안내는 여기서 하지 않는다(시작 버튼 아래에만).
 // =============================================================================
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ROOM_KINDS, minPlayersOf, type RoomKind } from '@quiz/shared';
+import { Check } from 'lucide-react';
+import { ROOM_KINDS, type RoomKind } from '@quiz/shared';
 import Icon from '../Icon.js';
 import PopupClose from '../PopupClose.js';
 import { KIND_ICON, KIND_LABEL, KIND_NOTE } from './kinds.js';
 
 interface Props {
   current: RoomKind;
-  playerCount: number;
   onPick: (k: RoomKind) => void;
   onClose: () => void;
 }
 
-export default function ModeChange({ current, playerCount, onPick, onClose }: Props) {
-  const [pick, setPick] = useState<RoomKind>(() => ROOM_KINDS.find((k) => k !== current) ?? current);
+export default function ModeChange({ current, onPick, onClose }: Props) {
+  const [pick, setPick] = useState<RoomKind>(current);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -29,7 +32,6 @@ export default function ModeChange({ current, playerCount, onPick, onClose }: Pr
     window.addEventListener('keydown', onKey, true);
     return () => window.removeEventListener('keydown', onKey, true);
   }, [onClose]);
-  const min = minPlayersOf(pick);
   return createPortal(
     <div
       className="modal-back popup-back"
@@ -42,32 +44,29 @@ export default function ModeChange({ current, playerCount, onPick, onClose }: Pr
           <PopupClose onClose={onClose} />
         </div>
         <p className="confirm-title">모드 바꾸기</p>
-        <p className="confirm-note">같은 사람 · 같은 방 그대로, 종류만 바뀌어요</p>
-        <div className="preset-row gb-mode-kinds">
+        <div className="gb-mode-list" role="radiogroup" aria-label="모드">
           {ROOM_KINDS.map((k) => (
             <button
               key={k}
               type="button"
+              role="radio"
               data-kind={k}
-              disabled={k === current}
-              aria-pressed={pick === k}
-              className={`preset gb-kind-chip k-${k}${pick === k && k !== current ? ' active' : ''}`}
+              data-now={k === current ? '' : undefined}
+              aria-checked={pick === k}
+              className={`gb-mode-item k-${k}${pick === k ? ' picked' : ''}${k === current ? ' now' : ''}`}
               onClick={() => setPick(k)}
             >
-              <Icon icon={KIND_ICON[k]} /> {KIND_LABEL[k]}
-              {k === current ? ' (지금)' : ''}
+              <span className="gb-mode-name">
+                <Icon icon={KIND_ICON[k]} /> {KIND_LABEL[k]}
+                {k === current && <Icon icon={Check} className="gb-mode-now" />}
+              </span>
+              <span className="gb-mode-line dim">{KIND_NOTE[k]}</span>
             </button>
           ))}
         </div>
-        {pick !== current && (
-          <p className="dim gb-mode-note" data-gb-mode-note>
-            {KIND_NOTE[pick]}
-            {playerCount < min ? ` · 지금 ${playerCount}명이라 ${min}명부터 시작할 수 있어요` : ''}
-          </p>
-        )}
         <div className="confirm-actions">
-          <button type="button" className="primary tone-calm" data-gb-mode-go disabled={pick === current} autoFocus onClick={() => onPick(pick)}>
-            {KIND_LABEL[pick]}로 바꾸기
+          <button type="button" className="primary tone-calm gb-mode-go" data-gb-mode-go disabled={pick === current} onClick={() => onPick(pick)}>
+            변경하기
           </button>
         </div>
       </div>

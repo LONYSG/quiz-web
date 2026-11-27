@@ -35,7 +35,7 @@ import { emitRoom, ioServer } from '../rooms/emit.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { WindowCounter } from '../security/limits.js';
-import { on, onRoom, parseObject, sendError, type SocketData } from '../socket/guard.js';
+import { on, onRoom, parseObject, sendError, sayError, type SocketData } from '../socket/guard.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 방 만들 때 · 방 종류
@@ -258,7 +258,7 @@ export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): 
     'directory.watch',
     { parse: (raw) => (isRoomKind(parseObject(raw)?.kind) ? { kind: parseObject(raw)!.kind as RoomKind } : null) },
     ({ socket: s, session, payload }) => {
-      if (!config.gongbang) return sendError(s, 'INVALID_STATE', OFF);
+      if (!config.gongbang) return sayError(s, 'INVALID_STATE', OFF);
       const site = siteOfSocket(s);
       for (const k of ROOM_KINDS) void s.leave(dirRoom(site, k));
       void s.join(dirRoom(site, payload.kind));
@@ -268,7 +268,7 @@ export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): 
 
   // ── ★ R117 — 로비 [같이 하기] 의 방 수(구독 없이 한 번) → directory.counts { counts }
   on(socket, 'directory.counts', {}, ({ socket: s }) => {
-    if (!config.gongbang) return sendError(s, 'INVALID_STATE', OFF);
+    if (!config.gongbang) return sayError(s, 'INVALID_STATE', OFF);
     s.emit('directory.counts', { counts: countRooms(siteOfSocket(s)) });
   });
 
@@ -290,8 +290,8 @@ export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): 
       },
     },
     ({ socket: s, session, payload }) => {
-      if (!config.gongbang) return sendError(s, 'INVALID_STATE', OFF);
-      if (getRoomOfAccount(session.accountId)) return sendError(s, 'ALREADY_HAS_ROOM', '다른 방에 참가한 상태입니다.');
+      if (!config.gongbang) return sayError(s, 'INVALID_STATE', OFF);
+      if (getRoomOfAccount(session.accountId)) return sayError(s, 'ALREADY_HAS_ROOM', '다른 방에 참가한 상태입니다.');
       const site = siteOfSocket(s);
       const rooms = roomsFor(site, payload.kind, session.accountId);
       const byCode = new Map(rooms.map((r) => [r.code, r]));
@@ -349,18 +349,18 @@ export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): 
       },
     },
     ({ socket: s, room, payload }) => {
-      if (!config.gongbang || room.maxPlayers === undefined) return sendError(s, 'INVALID_STATE', OFF);
+      if (!config.gongbang || room.maxPlayers === undefined) return sayError(s, 'INVALID_STATE', OFF);
       const kind = roomKindOf(room.settings.mode);
       if (payload.maxPlayers !== undefined) {
         const n = clampMaxPlayers(kind, payload.maxPlayers);
         if (n === null) {
           const m = `정원은 ${minPlayersOf(kind)}~${GONGBANG.MAX_PLAYERS}명이에요.`;
-          return sendError(s, 'BAD_REQUEST', m, m);
+          return sayError(s, 'BAD_REQUEST', m);
         }
         // ★ 지금 인원보다 작게는 거절(사람을 내보내는 일은 강퇴로만) — 끊겨서 자리만 남은 사람도 센다
         if (n < room.players.size) {
           const m = `지금 ${room.players.size}명이에요 — ${room.players.size}명부터 고를 수 있어요.`;
-          return sendError(s, 'BAD_REQUEST', m, m);
+          return sayError(s, 'BAD_REQUEST', m);
         }
         room.maxPlayers = n;
       }
@@ -392,7 +392,8 @@ export function onModeChanged(room: Room, before: RoomKind): void {
   const min = minPlayersOf(after);
   if (room.maxPlayers < min) room.maxPlayers = min;
   const name = after === 'quiz' ? '퀴즈' : after === 'draw' ? '캐치마인드' : '라이어';
-  broadcastSystem(room, `${name} 방으로 바뀌었어요.${room.players.size < min ? ` ${min}명부터 시작할 수 있어요.` : ''}`);
+  // ★ R123 — 인원 안내는 시작 버튼 아래에만(채팅 꼬리 뺌)
+  broadcastSystem(room, `${name} 방으로 바뀌었어요.`);
   emitAccess(room);
 }
 

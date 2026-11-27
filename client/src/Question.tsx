@@ -316,7 +316,7 @@ export default function Question({
               <span className="hint-label">초성</span>{' '}
               {question.hint ? <span className="mono hint-value">{question.hint}</span> : <span className="dim">없음</span>}
               {/* ★ R094 (D-351 · #124) — "____" 뿐이면 숫자라고 알려 준다(초성 규칙은 그대로 · 표시만) */}
-              {hintKind(question.hint) && <span className="hint-kind">· {hintKind(question.hint)!.label}</span>}
+              {hintKind(question.hint) && <span className="hint-kind">({hintKind(question.hint)!.label})</span>}
             </p>
           ) : (
             <p className="q-hint locked">
@@ -365,7 +365,7 @@ export default function Question({
               {/* ★ R105 — 모바일은 줄을 늘릴 자리가 없다(360 · 390 에서 15px 넘침 — 보고 R105) → 같은 줄 오른쪽에 작게 · 넘치면 "…" */}
               {altAnswer && winner && (
                 <span className="reveal-alt-inline">
-                  · "<b style={{ color: `var(--p${winner.colorIndex})` }}>{altAnswer}</b>" 인정
+                  ("<b style={{ color: `var(--p${winner.colorIndex})` }}>{altAnswer}</b>" 인정)
                 </span>
               )}
             </p>
@@ -456,7 +456,7 @@ export default function Question({
                 <span
                   className="skip-icons"
                   role="img"
-                  aria-label={`넘기기 ${skip.votes}표 · ${skip.threshold}표면 넘어감`}
+                  aria-label={`넘기기 ${skip.votes}표, ${skip.threshold}표면 넘어가요`}
                   data-votes={skip.votes}
                   data-threshold={skip.threshold}
                 >

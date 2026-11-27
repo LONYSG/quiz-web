@@ -74,7 +74,7 @@ export default function CreateRoom({ prefill, busy, onCreate, onClose }: Props) 
   };
 
   const extra = kind === 'quiz' && (prefill.level || prefill.minigames !== null)
-    ? [prefill.level ? LEVEL_LABEL[prefill.level] : null, prefill.minigames === true ? '미니게임 켬' : prefill.minigames === false ? '미니게임 끔' : null].filter(Boolean).join(' · ')
+    ? [prefill.level ? LEVEL_LABEL[prefill.level] : null, prefill.minigames === true ? '미니게임 켬' : prefill.minigames === false ? '미니게임 끔' : null].filter(Boolean).join(', ')
     : '';
 
   return createPortal(

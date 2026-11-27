@@ -209,7 +209,7 @@ async function main(): Promise<void> {
     res.setHeader('Cache-Control', 'no-store');
     // ★ R111 — open: 닫힌 공개 자리만 false(베타 · 열린 공개 · 자리 안 가름 = true)
     // ★★★ R116 — gongbang: 공방 스위치(화면이 메뉴를 그린다 · 꺼져 있으면 지금 화면 그대로)
-    res.json({ ok: true, site, split: siteSplit(), open: !publicClosed(site), hidden: hiddenFor(site), publicUrl: site === 'friend' ? publicUrl() : null, ...(config.gongbang ? { gongbang: true } : {}), ...(config.solo ? { solo: true } : {}), ...(config.belt ? { belt: true } : {}) });
+    res.json({ ok: true, site, split: siteSplit(), open: !publicClosed(site), hidden: hiddenFor(site), publicUrl: site === 'friend' ? publicUrl() : null, ...(config.gongbang ? { gongbang: true } : {}), ...(config.solo ? { solo: true } : {}), ...(config.belt ? { belt: true } : {}), trim: config.trim });
   });
 
   app.use('/api/auth', authRouter);

@@ -51,7 +51,7 @@ function mismatchLine(room: RoomListItem, mm: QuickJoinField[], o: QuickJoinOpts
     if (f === 'waiting') return '게임이 진행 중인 방이에요';
     return o.size === 'small' ? '사람이 많은 방이에요' : '사람이 적은 방이에요';
   });
-  return parts.join(' · ');
+  return parts.join(', ');
 }
 
 function RoomRow({ item, onJoin }: { item: RoomListItem; onJoin: (it: RoomListItem) => void }) {
@@ -64,7 +64,7 @@ function RoomRow({ item, onJoin }: { item: RoomListItem; onJoin: (it: RoomListIt
       className={open ? 'dir-row' : 'dir-row dim'}
       data-room-code={item.code}
       data-locked={item.locked ? '1' : undefined}
-      aria-label={`${item.title} — ${item.players}/${item.max}명${item.locked ? ' · 잠김' : ''}${full ? ' · 가득 참' : ''}`}
+      aria-label={`${item.title} — ${item.players}/${item.max}명${item.locked ? ', 잠김' : ''}${full ? ', 가득 참' : ''}`}
       onClick={() => onJoin(item)}
     >
       <span className="dir-state">
@@ -277,7 +277,7 @@ export default function Directory({ socket, kind, onKind, counts, onCounts, onJo
         ) : (
           rooms.map((it) => <RoomRow key={it.code} item={it} onJoin={onJoin} />)
         )}
-        {list?.more && <p className="dim dir-more">방이 많아 100개까지 보여요 · 빠른 입장을 써 보세요</p>}
+        {list?.more && <p className="dim dir-more">방이 많아 100개까지만 보여요. 빠른 입장을 써 보세요</p>}
       </section>
       <div className="dir-bottom">
         <div className="qj-split">
@@ -300,7 +300,7 @@ export default function Directory({ socket, kind, onKind, counts, onCounts, onJo
         <ConfirmModal
           kind="quick-near"
           title="옵션에 딱 맞는 방이 없어서, 가장 비슷한 방으로 들어가요"
-          note={`「${result.room.title}」 · ${result.room.level ? `${LEVEL_LABEL[result.room.level]} · ` : ''}${result.room.players}/${result.room.max} — ${mismatchLine(result.room, result.mismatch, sentOpts)}`}
+          note={`「${result.room.title}」 ${result.room.level ? `${LEVEL_LABEL[result.room.level]} ` : ''}${result.room.players}/${result.room.max} — ${mismatchLine(result.room, result.mismatch, sentOpts)}`}
           actions={[
             {
               label: '확인',

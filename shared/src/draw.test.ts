@@ -28,8 +28,8 @@ describe('캐치마인드', () => {
 
 describe('★ R087 · R088 — 힌트 · 난이도 섞기', () => {
   it('글자 수 꼴 — ○ · 띄어쓰기 표시', () => {
-    expect(drawLengthPattern('고래')).toBe('○○ · 2글자');
-    expect(drawLengthPattern('라이온 킹')).toBe('○○○ ○ · 4글자(띄어쓰기 있음)');
+    expect(drawLengthPattern('고래')).toBe('○○ (2글자)');
+    expect(drawLengthPattern('라이온 킹')).toBe('○○○ ○ (4글자, 띄어쓰기 있음)');
   });
   it('diff 4 : 4 : 2 — 라운드 수만큼 · 10 이면 4 · 4 · 2 · 5 면 2 · 2 · 1', () => {
     const cnt = (a: number[]) => [1, 2, 3].map((d) => a.filter((x) => x === d).length);

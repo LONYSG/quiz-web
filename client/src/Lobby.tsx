@@ -16,7 +16,7 @@ import { openPersonCard, setPersonActions, type PersonActions } from './PersonCa
 import { ReportButton } from './AppReport.js';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { countEmojiTokens, formatExperienceRate, INLINE_EMOJI_MAX, nicknameFits, RULES, type Team } from '@quiz/shared';
+import { countEmojiTokens, formatExperienceRate, INLINE_EMOJI_MAX, nicknameFits, RULES, startBlockOf, type Team } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import ConfirmModal from './ConfirmModal.js';
 import KickFlow, { type KickTarget } from './KickFlow.js';
@@ -57,6 +57,8 @@ import LiarStage from './LiarStage.js';
 import DrawStage from './DrawStage.js';
 import MinigamePicker from './minigame/MinigamePicker.js';
 import { LastGameFeedback } from './QuestionFeedback.js';
+import Notice from './Notice.js';
+import { siteInfo } from './site.js';
 import { fetchLastFeedbackGame } from './api.js';
 import type { Social } from './useSocial.js';
 import { isMobileUi, useUiMode } from './uiMode.js';
@@ -365,6 +367,8 @@ export default function Lobby({
     }
   }, [state]);
   const inLobby = state === 'LOBBY' || state === 'COUNTDOWN';
+  // ★ R123 — 인원 때문에 시작할 수 없는 이유(시작 버튼을 끄고 아래 한 줄)
+  const startBlock = startBlockOf(snapshot.room.settings, snapshot.players.length);
   // ★★ R056 — 로비 "지난 판 문제 평가" 링크: 로비에 들어올 때마다 내가 참가한 마지막 판을 다시 묻는다
   const [lastFeedbackGame, setLastFeedbackGame] = useState<string | null>(null);
   useEffect(() => {
@@ -882,7 +886,7 @@ export default function Lobby({
         team={teamOn ? (p?.team ?? null) : null}
         onDragStart={p && p.team && teamEditable && snapshot.me.isHost ? (e) => seatDrag.start(e, { accountId: p.accountId, nickname: p.nickname, team: p.team! }) : undefined}
         dragging={Boolean(p && seatDrag.drag?.id === p.accountId)}
-        pickTitle={p && pickTeam ? `${p.nickname} — 팀 바꾸기${snapshot.me.isHost && p.accountId !== snapshot.me.accountId ? ' · 강퇴 · 차단' : ''}` : undefined}
+        pickTitle={p && pickTeam ? `${p.nickname} — 팀 바꾸기${snapshot.me.isHost && p.accountId !== snapshot.me.accountId ? ', 강퇴, 차단' : ''}` : undefined}
         player={p}
         me={p?.accountId === snapshot.me.accountId}
         experienced={p ? experiencedIds.has(p.accountId) : false}
@@ -934,7 +938,7 @@ export default function Lobby({
           <h1>{snapshot.room.title}</h1>
           <span className="state-pill">{stateLabel(state)}</span>
           <span className="dim room-count">
-            {snapshot.players.length} / {snapshot.room.maxPlayers}명 · 접속 {snapshot.room.activeCount}명
+            {snapshot.players.length} / {snapshot.room.maxPlayers}명 (접속 {snapshot.room.activeCount}명)
           </span>
         </div>
         <div className="room-tools">
@@ -983,6 +987,8 @@ export default function Lobby({
           </button>
           {/* ★ R063 — 제보(PC 위 막대 · 모바일은 ☰ 메뉴 안)
               ★★ R067 (D-300 · A91) — PC 는 ⚙ 창의 "제보" 탭으로 모았다(이 버튼 · ⓘ 는 PC 에서 숨김 — 모바일 ☰ 가 여는 창이라 남겨 둔다) */}
+          {/* ★ R123 — "지난 판 문제"는 방 설정 카드에서 빼서 제보 버튼 옆(로비에서 · 내가 참가한 지난 판이 있을 때만) */}
+          {state === 'LOBBY' && lastFeedbackGame && <LastGameFeedback gameId={lastFeedbackGame} />}
           <ReportButton />
           <Prefs variant="gear" onLogout={onLogout} tabs />
           {/* ★★ ⓘ — R041 (건우: "안내가 너무 많다. 필요한 설명만") — 처음 하는 사람이 꼭 알아야 할 것만. 뺀 것은 R041 보고서 4장 표 */}
@@ -1006,7 +1012,7 @@ export default function Lobby({
             <Icon icon={Menu} />
             {/* ★ R043 C — 새 알림 · 받은 신청이 있으면 빨간 점 */}
             {/* ★ R044 A-4 — 받은 신청 + 받은 초대 (옛: 안 읽은 알림 포함) */}
-            {(social.pending > 0 || shopDot) && <span className="red-dot" aria-label={social.pending > 0 ? '새 친구 신청 · 초대' : '새 포인트샵'} />}
+            {(social.pending > 0 || shopDot) && <span className="red-dot" aria-label={social.pending > 0 ? '새 친구 신청과 초대' : '새 포인트샵'} />}
           </button>
         </div>
       </header>
@@ -1143,18 +1149,22 @@ export default function Lobby({
                     />
                   ) : snapshot.me.isHost ? (
                     <>
-                      {/* ★ R090 — 라이어 · 캐치마인드 제시어 주제 0 이면 막음(서버도 막는다) */}
-                      <button type="button" className="primary big-btn" data-start-btn disabled={topicPickEmpty(snapshot.room.settings)} title={topicPickEmpty(snapshot.room.settings) ? '제시어 주제를 하나 이상 골라 주세요' : undefined} onClick={() => socket.emit('game.start', {})}>
+                      {/* ★ R090 — 라이어 · 캐치마인드 제시어 주제 0 이면 막음 · ★ R123 인원(캐치 2 · 라이어 3 · 팀전 짝수)도 미리 알고 끈다(서버도 막는다) */}
+                      <button type="button" className="primary big-btn" data-start-btn disabled={topicPickEmpty(snapshot.room.settings) || startBlock !== null} onClick={() => socket.emit('game.start', {})}>
                         게임 시작
                       </button>
-                      {/* ★★ R050 — 로비 "미니게임 골라 하기" (연습 판) */}
-                      {state === 'LOBBY' && <MinigamePicker socket={socket} />}
+                      {/* ★★ R050 — 로비 "미니게임 골라 하기" (연습 판) · ★ R123 TRIM.minigamePick 이면 없음 */}
+                      {state === 'LOBBY' && !siteInfo().trim.minigamePick && <MinigamePicker socket={socket} />}
                     </>
                   ) : (
                     <p className="note dim start-wait">방장이 게임을 시작할 때까지 기다려 주세요.</p>
                   )}
-                  {/* ★★ R056 — 결과 화면을 놓친 사람용 "지난 판 문제 평가" (내가 참가한 마지막 판이 있을 때만) */}
-                  {state === 'LOBBY' && lastFeedbackGame && <LastGameFeedback gameId={lastFeedbackGame} />}
+                  {/* ★ R123 — 시작할 수 없는 이유 한 줄(버튼 바로 아래 · 자리는 늘 비워 둬서 떠도 밀리지 않는다) */}
+                  {snapshot.me.isHost && !snapshot.countdown && (
+                    <Notice reserve name="start-block" className="start-block">
+                      {startBlock ?? (topicPickEmpty(snapshot.room.settings) ? '제시어 주제를 하나 이상 골라 주세요' : null)}
+                    </Notice>
+                  )}
                 </div>
               </section>
             )}
@@ -1319,7 +1329,7 @@ export default function Lobby({
             {/* ★★ 도배 억제 안내 (Q-18) — 입력창 바로 위 문서 흐름 (iOS 키보드) */}
             {throttled && (
               <p className="warn throttle-note" role="status" aria-live="polite">
-                {throttledKind === 'special' ? '특별 이모티콘 도배 방지' : throttledKind === 'emoji' ? '이모티콘 도배 방지' : '도배 방지'} · <strong className="mono">{lockLeft}초</strong> 후 다시 보낼 수 있어요
+                {throttledKind === 'special' ? '특별 이모티콘 도배 방지' : throttledKind === 'emoji' ? '이모티콘 도배 방지' : '도배 방지'}, <strong className="mono">{lockLeft}초</strong> 후 다시 보낼 수 있어요
               </p>
             )}
             {/* ★ R057 — 특별 이모티콘 토큰(:sp:번호:)이 든 글은 보낼 모습을 입력창 바로 위에 작게 보인다(입력창은 글자만 그린다) */}

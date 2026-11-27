@@ -59,7 +59,7 @@ export default function PasswordChange({ nickname, onDone, onLogout }: Props) {
         <form onSubmit={(e) => void submit(e)}>
           <label>
             새 비밀번호
-            <input type="password" value={pw} onChange={(e) => setPw(e.target.value)} autoComplete="new-password" placeholder="4자 이상 · 0000 은 안 돼요" required />
+            <input type="password" value={pw} onChange={(e) => setPw(e.target.value)} autoComplete="new-password" placeholder="4자 이상, 0000 은 안 돼요" required />
           </label>
           <label>
             한 번 더

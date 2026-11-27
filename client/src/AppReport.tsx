@@ -292,8 +292,8 @@ export function TopicReportButton({ topic, wrong, minigameKey = 'many' }: { topi
             questionIndex: null,
             minigameKey,
             at: Date.now(),
-            name: `${minigameInfo(minigameKey as MinigameKey)?.name ?? '미니게임'} · ${topic}`,
-            initialText: wrong.length ? `주제 ${topic} · 내 답 ${list} — 정답 아님 처리됨. 이건 왜 정답 아니에요?` : `주제 ${topic} · `,
+            name: `${minigameInfo(minigameKey as MinigameKey)?.name ?? '미니게임'} (${topic})`,
+            initialText: wrong.length ? `주제 ${topic}, 내 답 ${list} — 정답 아님 처리됨. 이건 왜 정답 아니에요?` : `주제 ${topic}: `,
             initialReasons: ['answer'],
             frozen: freeze(mobile),
           },
@@ -347,7 +347,7 @@ function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => vo
           {target.name ? (
             <>
               {target.name}
-              {label && <span className="mono"> · {label}</span>}
+              {label && <span className="mono"> {label}</span>}
             </>
           ) : (
             <>
@@ -555,7 +555,7 @@ function ReportFlow({ onClose }: { onClose: () => void }) {
     const shown = items.slice(0, LIST_MAX);
     const fz = frozen.current;
     return (
-      <div className="modal report-modal report-menu" role="dialog" aria-label="문제 · 미니게임 제보" data-report-list>
+      <div className="modal report-modal report-menu" role="dialog" aria-label="문제와 미니게임 제보" data-report-list>
         {head}
         <p className="report-menu-sub dim">어느 것을 제보할까요? (최근 것이 위)</p>
         {shown.length === 0 ? (
@@ -600,13 +600,13 @@ function ReportFlow({ onClose }: { onClose: () => void }) {
       <div className="report-menu-pick">
         <button type="button" className="report-menu-item" data-report-pick="recent" autoFocus onClick={() => setStep('list')}>
           <Icon icon={ListChecks} />
-          <span className="rm-title">문제 · 미니게임 제보</span>
+          <span className="rm-title">문제와 미니게임 제보</span>
           <span className="rm-sub dim">최근에 본 것에서 골라요</span>
         </button>
         <button type="button" className="report-menu-item" data-report-pick="general" onClick={() => setStep('general')}>
           <Icon icon={MessageSquareWarning} />
           <span className="rm-title">일반 제보</span>
-          <span className="rm-sub dim">버그 · 어색함 · 제안 · 기타</span>
+          <span className="rm-sub dim">버그, 어색함, 제안, 기타</span>
         </button>
       </div>
     </div>
@@ -637,13 +637,13 @@ export function ReportPick() {
     <div className="report-menu-pick gear-report" data-gear-report>
       <button type="button" className="report-menu-item" data-report-pick="recent" onClick={() => go('list')}>
         <Icon icon={ListChecks} />
-        <span className="rm-title">문제 · 미니게임 제보</span>
+        <span className="rm-title">문제와 미니게임 제보</span>
         <span className="rm-sub dim">최근에 본 것에서 골라요</span>
       </button>
       <button type="button" className="report-menu-item" data-report-pick="general" onClick={() => go('general')}>
         <Icon icon={MessageSquareWarning} />
         <span className="rm-title">일반 제보</span>
-        <span className="rm-sub dim">버그 · 어색함 · 제안 · 기타</span>
+        <span className="rm-sub dim">버그, 어색함, 제안, 기타</span>
       </button>
       <p className="dim gear-report-key">단축키 Alt+B</p>
     </div>

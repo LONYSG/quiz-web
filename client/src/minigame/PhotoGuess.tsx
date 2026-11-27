@@ -164,7 +164,7 @@ export default function PhotoGuess({ socket, view, serverNow, mobile }: Props) {
               분류 <strong>{p.generalHint}</strong>
             </span>
           )}
-          {typeof p.generalHint === 'string' && typeof p.chosung === 'string' && ' · '}
+          {typeof p.generalHint === 'string' && typeof p.chosung === 'string' && ', '}
           {typeof p.chosung === 'string' && (
             <span data-photo-chosung>
               초성 <strong className="mono">{p.chosung}</strong>

@@ -159,7 +159,7 @@ export function OddOneGrid({ socket, view, serverNow, mobile }: Props) {
           : mine?.done !== undefined
             ? `찾았어요! ${(mine.done / 1000).toFixed(2)}초${mine.wrong ? ` (벌점 +${mine.wrong * 2}초 포함)` : ''}`
             : mine?.wrong
-              ? `아니에요 — +${mine.wrong * 2}초 벌점 · 계속 찾으세요`
+              ? `아니에요 — +${mine.wrong * 2}초 벌점, 계속 찾으세요`
               : '하나만 다른 그림을 누르세요'}
       </p>
     </div>

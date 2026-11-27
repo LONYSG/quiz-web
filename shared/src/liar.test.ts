@@ -2,6 +2,7 @@
 import { describe, expect, it } from 'vitest';
 import { LIAR, LIAR_STEPS, appealPasses, canAppeal, discussNeed, finalPasses, liarRoundScores, liarStep, tallyVotes } from './liar.js';
 import { validateRoomSettings } from './settings.js';
+import { NO_TRIM } from './trim.js';
 
 const base = { questionCount: 10 };
 
@@ -64,8 +65,13 @@ describe('설정 — 방식(mode)', () => {
   it('없으면 퀴즈 · 옛 minigameOnly 면 미니게임', () => {
     const a = validateRoomSettings(base);
     expect(a.ok && a.settings.mode).toBe('quiz');
-    const b = validateRoomSettings({ ...base, minigameOnly: true });
+    const b = validateRoomSettings({ ...base, minigameOnly: true }, { trim: NO_TRIM });
     expect(b.ok && [b.settings.mode, b.settings.minigameOnly]).toEqual(['minigame', true]);
+    // ★ R123 — 줄이기 스위치(기본 TRIM)면 미니게임만은 퀴즈로 읽는다
+    const t = validateRoomSettings({ ...base, minigameOnly: true });
+    expect(t.ok && [t.settings.mode, t.settings.minigameOnly]).toEqual(['quiz', false]);
+    const t2 = validateRoomSettings({ ...base, mode: 'minigame' });
+    expect(t2.ok && t2.settings.mode).toBe('quiz');
   });
   it('라이어 — minigameOnly 는 false 로 맞춤 · 라운드 2~10 · 팀전과 같이 안 됨 · 모르는 값 거부', () => {
     const c = validateRoomSettings({ ...base, mode: 'liar', minigameOnly: true, minigameRounds: 5 });

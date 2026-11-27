@@ -95,7 +95,7 @@ export function discussNeed(live: number): number {
 }
 export type LiarOutcome = 'caught' | 'escaped' | 'notfound';
 
-export const LIAR_START_BLOCK = `라이어 게임은 ${LIAR.MIN_PLAYERS}명부터 할 수 있어요.`;
+export const LIAR_START_BLOCK = `라이어 게임은 ${LIAR.MIN_PLAYERS}명부터 할 수 있어요`;
 export const LIAR_TEAM_BLOCK = '팀전과 라이어 게임은 같이 켤 수 없어요.';
 
 /** 투표 집계 — 득표 수 · 최다(동률이면 여럿) */

@@ -36,6 +36,7 @@ export {
   MINIGAME_ONLY_ROUNDS,
   pickedTopicSlugs,
   TOPIC_PICK_MAX,
+  startBlockOf,
 } from './settings.js';
 export type {
   RoomSettingsInput,
@@ -86,3 +87,5 @@ export * from './draw.js';
 export * from './gongbang.js';
 // ★★★ R118 — 혼자 하기(솔로) · 띠
 export * from './solo.js';
+// ★★★ R123 — 콘텐츠 줄이기 스위치(한 곳)
+export { TRIM, NO_TRIM, type TrimFlags } from './trim.js';

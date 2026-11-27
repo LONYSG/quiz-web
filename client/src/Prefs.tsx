@@ -125,14 +125,14 @@ export default function Prefs({ variant = 'footer', onLogout, tabs = false }: Pr
         type="button"
         className="ghost tiny prefs-toggle"
         aria-expanded={open}
-        aria-label={tabbed ? '설정 · 안내 · 제보' : '테마 · 소리 · 로그아웃'}
+        aria-label={tabbed ? '설정, 안내, 제보' : '테마, 소리, 로그아웃'}
         data-gear-btn={tabbed ? '1' : undefined}
         onClick={() => {
           // ★ R067 — 위 막대 ⚙ 는 늘 설정 탭부터(Alt+B 는 제보 탭)
           if (tabbed && !open) setGearTab('settings');
           setOpen((v) => !v);
         }}
-        title={tabbed ? '설정 · 안내 · 제보 (Alt+B 제보)' : '테마 · 소리 (Alt+T 테마 · Alt+M 소리)'}
+        title={tabbed ? '설정, 안내, 제보 (Alt+B 제보)' : '테마와 소리 (Alt+T 테마, Alt+M 소리)'}
       >
         {/* ★ R041 (건우) — 웹은 글자까지 ("초대·안내·나가기는 글자가 있는데 톱니만 아이콘"), 모바일은 아이콘만 (.lbl) */}
         {variant === 'gear' ? (
@@ -142,13 +142,13 @@ export default function Prefs({ variant = 'footer', onLogout, tabs = false }: Pr
           </>
         ) : (
           <>
-            <Icon icon={Palette} /> 테마 · <Icon icon={muted ? VolumeX : Volume2} /> 소리
+            <Icon icon={Palette} /> 테마 <Icon icon={muted ? VolumeX : Volume2} /> 소리
           </>
         )}
       </button>
 
       {open && (
-        <div className={`prefs-pop${tabbed ? ` gear-tabs tab-${tab}` : ''}`} role="dialog" aria-label={tabbed ? '설정 · 안내 · 제보' : '테마와 소리'} data-gear-pop={tabbed ? tab : undefined}>
+        <div className={`prefs-pop${tabbed ? ` gear-tabs tab-${tab}` : ''}`} role="dialog" aria-label={tabbed ? '설정, 안내, 제보' : '테마와 소리'} data-gear-pop={tabbed ? tab : undefined}>
           {/* ★ R043 A-8 — 모든 팝업에 같은 ✕ */}
           <div className="pop-head">
             {tabbed ? (

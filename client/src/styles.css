@@ -11922,3 +11922,150 @@ button.solo-quit { margin: 0 0 0 6px; }
 /* 휴대폰 — 키보드가 올라온 채로 다 보이게(카드 바로 아래 입력칸 · 화면 아래에 붙이지 않는다) */
 :where(.ui-mobile) .solo-play { gap: 10px; }
 :where(.ui-mobile) .solo-play .question-card { padding: 16px 14px 14px; }
+
+/* ── ★★ R123 — 경고 · 주의 한 꼴(Notice.tsx) — 기본 문구(--text-dim)와 다른 색 · 자기 줄 · 앞에 표시 하나 */
+.notice-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35em;
+  margin: 0;
+  min-height: 1.4em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+.notice-line.tone-warn {
+  color: color-mix(in srgb, var(--warn) 62%, var(--text));
+}
+.notice-line.tone-bad {
+  color: var(--bad);
+}
+.notice-line .ico {
+  flex: 0 0 auto;
+  margin-top: 0.12em;
+}
+.notice-line.empty {
+  visibility: hidden;
+}
+
+/* ── ★★ R123 — 모드 바꾸기 목록(이름 + 한 줄) · 지금 모드 = 체크 + 종류 색 · 고른 줄 = 테두리 · 변경하기 버튼 크기 고정 */
+.gb-mode-list { display: grid; gap: 8px; margin-top: 10px; }
+button.gb-mode-item { margin: 0; display: grid; gap: 2px; justify-items: start; text-align: left; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface); color: var(--text); }
+button.gb-mode-item .gb-mode-name { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; }
+button.gb-mode-item .gb-mode-name > .ico:first-child { color: var(--kc); }
+button.gb-mode-item .gb-mode-line { font-size: 0.8rem; font-weight: 600; line-height: 1.35; }
+button.gb-mode-item.now { background: var(--surface-2); }
+button.gb-mode-item .gb-mode-now { color: var(--kc); }
+button.gb-mode-item.picked { border-color: var(--kc); box-shadow: 0 0 0 1px var(--kc) inset; }
+.gb-mode .gb-mode-go { min-width: 9em; }
+
+/* ── ★★ R123 — 혼자 하기: 아이템 고르기 · 판 중 아이템 줄 · 정답 + 해설 · "다음 문제" 점 셋(영상 예고 알약 꼴) · 단계표 · 결과 한 화면 */
+.solo-belt-btn { margin: 0; width: 100%; border: var(--bw) solid transparent; color: var(--text); font: inherit; cursor: pointer; }
+.solo-belt-btn:hover { border-color: var(--accent); }
+.solo-items-pick { display: flex; flex-direction: column; gap: 8px; }
+.solo-item-row { display: flex; align-items: center; gap: 10px; }
+.solo-item-name { flex: 1; min-width: 0; font-size: 0.95rem; }
+.solo-stepper { display: inline-flex; align-items: center; gap: 6px; }
+.solo-stepper button { margin: 0; }
+.solo-stepper b { min-width: 1.4em; text-align: center; font-size: 1.05rem; }
+.solo-item-sum { margin: 2px 0 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.85rem; font-weight: 700; }
+.solo-item-note { margin: 0; font-size: 0.78rem; font-weight: 600; }
+.solo-items { display: flex; gap: 8px; }
+button.solo-item { flex: 1; margin: 0; display: inline-flex; align-items: center; justify-content: center; gap: 0.35em; }
+button.solo-item kbd { font-size: 0.7rem; }
+.solo-hints { margin-top: 10px; }
+.question-card.solo-q { display: flex; flex-direction: column; }
+.question-card.solo-q.revealed { cursor: pointer; }
+.solo-reveal-big { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.solo-verdict { font-size: 1.9rem; font-weight: 900; line-height: 1.1; animation: pop-in 260ms var(--ease-pop); }
+.solo-reveal-big.ok .solo-verdict { color: var(--ok); }
+.solo-reveal-big.bad .solo-verdict { color: var(--bad); }
+.solo-reveal-big.skip .solo-verdict { color: var(--text-dim); }
+.solo-answer { margin: 0; font-size: 1.05rem; }
+.solo-answer b { font-size: 1.3rem; margin-left: 4px; }
+.solo-expl { margin: 0; font-size: 0.95rem; line-height: 1.55; font-weight: 600; }
+.solo-next { align-self: flex-end; margin-top: 12px; display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 16px; border-radius: 999px; background: var(--surface-2); color: var(--accent); font-weight: 800; font-size: 0.9rem; opacity: 0; transform: scale(0.8); transform-origin: right bottom; transition: opacity 160ms ease, transform 260ms var(--ease-pop); }
+.solo-next.on { opacity: 1; transform: none; }
+.solo-next-dots { display: inline-flex; gap: 6px; }
+.solo-next-dots span { width: 10px; height: 10px; border-radius: 99px; background: var(--border); transition: background 120ms ease, transform 200ms var(--ease-pop); }
+.solo-next-dots span.lit { background: var(--accent); transform: scale(1.25); }
+.solo-skip-hint { align-self: flex-end; margin-top: 4px; font-size: 0.75rem; font-weight: 700; }
+.belt-table-pop { width: min(420px, calc(100vw - 24px)); box-sizing: border-box; }
+.belt-table { display: grid; gap: 6px; margin-top: 8px; }
+.belt-row { display: grid; grid-template-columns: 3.6em repeat(5, minmax(0, 1fr)); gap: 4px; align-items: center; }
+.belt-row-name { font-size: 0.78rem; font-weight: 800; color: var(--text-dim); }
+.belt-cell { display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 4px 0; border-radius: var(--radius-sm); border: var(--bw) solid transparent; opacity: 0.55; }
+.belt-cell.got { opacity: 1; }
+.belt-cell.mine { border-color: var(--accent); background: var(--accent-soft); opacity: 1; }
+.belt-cell small { font-size: 0.72rem; font-weight: 700; }
+.belt-table-foot { margin: 10px 0 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 10px; font-size: 0.88rem; font-weight: 700; }
+.belt-table-note { margin: 4px 0 0; font-size: 0.75rem; font-weight: 600; }
+.solo-end-meta { margin: 6px 0 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; font-size: 0.85rem; font-weight: 700; }
+.solo-wq-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.solo-wq { display: flex; align-items: baseline; gap: 10px; padding: 6px 0; }
+.solo-wq .solo-wq-text { flex: 1; min-width: 0; margin: 0; }
+.solo-wq b { flex: 0 0 auto; }
+.solo-wrongs { padding-block: 6px; }
+.solo-screen.solo-end .solo-actions { position: static; margin: 0; box-shadow: none; background: none; padding: 0; backdrop-filter: none; }
+.solo-screen.solo-end, .solo-screen.solo-start { overflow: hidden; }
+
+/* ── ★★ R123 A5 — 게임 시작 버튼의 자리 · 크기를 모드와 상관없이 고정(찬종 "요소들은 정해진 위치에 고정")
+ *   PC: 카드 오른쪽 위 고정 폭 칸(설정 칸 수와 상관없이 같은 곳) · 경고 한 줄은 그 아래(자리는 늘 비워 둔다)
+ *   휴대폰: 카드 맨 위(설정 줄 수가 달라도 버튼이 밀리지 않는다) · 설정 줄은 라벨을 왼쪽에(R042 의 라벨 위 꼴 → 세로가 길어 스크롤이 생겼다) */
+.lobby-card {
+  grid-template-columns: minmax(0, 1fr) 15rem;
+  align-items: start;
+}
+.lobby-card .start-area {
+  align-self: start;
+  width: 100%;
+  min-width: 0;
+}
+.lobby-card .start-area .start-block {
+  justify-content: center;
+  text-align: center;
+}
+.lobby-card .start-area.guest {
+  align-self: end;
+}
+  :where(.ui-mobile) .lobby-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  :where(.ui-mobile) .lobby-card .start-area {
+    order: -1;
+    align-self: stretch;
+  }
+  :where(.ui-mobile) .lobby-card .start-area.guest {
+    justify-items: center;
+  }
+  :where(.ui-mobile) .settings .set-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  :where(.ui-mobile) .settings .set-label {
+    flex: 0 0 3.6em;
+    padding-top: 5px;
+  }
+  :where(.ui-mobile) .settings .set-row > .preset-row,
+  :where(.ui-mobile) .settings .set-row > .level-box {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+  :where(.ui-mobile) .settings .game-line {
+    margin: -4px 0 0;
+  }
+/* ★ R123 — 공용 .ok(초록 글)가 해설까지 물들이지 않게: 판정 글만 색 · 정답 · 해설은 기본 글색 */
+.solo-reveal-big.ok, .solo-reveal-big.bad, .solo-reveal-big.skip { color: var(--text); }
+.solo-answer b { color: var(--text); }
+/* ★ R123 A5 — 넘칠 때 여백 줄이기(fit-tight)가 방 설정 카드에는 걸리지 않게(시작 버튼이 4px 움직였다 — 넘치면 채팅 줄이 먼저 준다) */
+:where(.ui-pc) .room.fit-tight .card.lobby-card {
+  padding: 12px 16px;
+}
+/* ★ R123 — 모드 바꾸기 줄: 버튼 기본 꼴(한 줄 · 가운데)이 긴 한 줄 설명을 옆으로 밀어 잘랐다 → 칸 폭에 맞춰 줄바꿈 */
+.gb-mode-list { grid-template-columns: minmax(0, 1fr); }
+button.gb-mode-item { width: 100%; min-width: 0; box-sizing: border-box; white-space: normal; text-align: left; }
+button.gb-mode-item .gb-mode-line { overflow-wrap: anywhere; }

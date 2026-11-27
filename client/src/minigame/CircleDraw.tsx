@@ -147,7 +147,7 @@ export default function CircleDraw({ socket, view, serverNow, mobile }: Props) {
         ) : mine ? (
           <>
             <strong className="mono circle-score">{mine.fit.score.toFixed(1)}%</strong>
-            {mine.fit.flaw === 'open' ? ' · 덜 닫혔어요' : mine.fit.flaw === 'small' ? ' · 너무 작아요' : mine.fit.flaw === 'line' ? ' · 원이 아니에요' : ''}
+            {mine.fit.flaw === 'open' ? ', 덜 닫혔어요' : mine.fit.flaw === 'small' ? ', 너무 작아요' : mine.fit.flaw === 'line' ? ', 원이 아니에요' : ''}
           </>
         ) : over ? (
           '시간이 끝났어요'

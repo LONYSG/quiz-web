@@ -88,8 +88,9 @@ export default function Toast({ content, onDismiss }: Props) {
           <p className="toast-message">{content.message}</p>
           {/* ★ detail 에 실제 숫자와 해야 할 일이 있다. 이것을 빼면
               "왜 안 되는지 모른다" 는 원래 결함으로 되돌아간다. */}
-          {content.detail && <p className="toast-detail">{content.detail}</p>}
-          {content.code && <p className="toast-code mono">{content.code}</p>}
+          {/* ★ R123 — 제목과 같은 detail(sayError)은 다시 그리지 않는다 · 오류 코드는 개발 모드에서만(찬종 "개발자 말") */}
+          {content.detail && content.detail !== content.message && <p className="toast-detail">{content.detail}</p>}
+          {content.code && <p className="toast-code mono" hidden={!import.meta.env.DEV}>{content.code}</p>}
         </div>
         {content.action && (
           <button

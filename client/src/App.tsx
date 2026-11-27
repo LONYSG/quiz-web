@@ -311,7 +311,7 @@ export default function App() {
     afterCreate.current = null;
     if (!snap.me.isHost || snap.room.state !== 'LOBBY') return;
     const next = { ...snap.room.settings, ...(want.level ? { level: want.level } : {}), ...(want.minigames !== null ? { minigames: want.minigames } : {}) };
-    const check = validateRoomSettings(next);
+    const check = validateRoomSettings(next, { trim: siteInfo().trim });
     if (check.ok) socket.emit('lobby.updateSettings', check.settings);
   }, [room.snapshot, socket]);
 
@@ -403,7 +403,7 @@ export default function App() {
         : st === 'QUESTION_RESOLVED' && q
           ? `정답 공개${qid}`
           : st === 'PAUSED' && q
-            ? `일시정지 · 문제 ${q.index}${qid}`
+            ? `문제 ${q.index} 일시정지${qid}`
             : st === 'GAME_RESULT' && gameId
               ? `결과 (판 #${gameId})`
               : '';

@@ -9,11 +9,15 @@ import { generateHint } from './hint.js';
 
 export const DRAW = {
   MIN_PLAYERS: 2,
-  ROUNDS: { MIN: 2, MAX: 10, DEFAULT: 5 },
+  // ★ R123 (찬종 "라운드 수" → "문제 수" · 고르기 10 · 20 · 30 · 50 · 기본 10) — MIN 2 는 옛 저장값을 거절하지 않으려고 남김
+  ROUNDS: { MIN: 2, MAX: 50, DEFAULT: 10 },
   /** 그리기 시간 · 공개 · "다른 제시어" 가능 시간(처음부터) — ★ R101 (찬종 "그리기 시간 더 길어도 될듯" · 폼 120초) 90 → 120 */
   ROUND_MS: 120_000,
   REVEAL_MS: 5_000,
   REROLL_MS: 10_000,
+  /** ★ R123 (찬종) — 무료 1회 뒤 한 번 더 바꿀 때마다 그린 사람의 포인트 · 한 차례 유료 최대 횟수(바꿀 때마다 10초 창이 새로) */
+  REROLL_PAID_COST: 5,
+  REROLL_PAID_MAX: 3,
   /** 논리 좌표(0~SIZE · 정사각 · 기기 크기 무관) */
   SIZE: 1000,
   /** 선 하나 점 수 · 한 라운드 선 수 · 한 조각 점 수 상한(서버 보호) */
@@ -63,7 +67,7 @@ export const DRAW_COLORS = ['#111111', '#e5383b', '#2563eb', '#16a34a'] as const
 export type DrawColor = (typeof DRAW_COLORS)[number] | 'erase';
 export const DRAW_WIDTHS = [6, 18] as const;
 
-export const DRAW_START_BLOCK = `캐치마인드는 ${DRAW.MIN_PLAYERS}명부터 할 수 있어요.`;
+export const DRAW_START_BLOCK = `캐치마인드는 ${DRAW.MIN_PLAYERS}명부터 할 수 있어요`;
 export const DRAW_TEAM_BLOCK = '팀전과 캐치마인드는 같이 켤 수 없어요.';
 
 /** ★ R089 (D-346) — 색은 팔레트 밖도(세부 색 · 스포이드) → '#rrggbb' 아무거나 · 'erase' = 흰색 선 */
@@ -208,5 +212,5 @@ export function drawLengthPattern(keyword: string): string {
   const chars = [...keyword.trim()];
   const pattern = chars.map((c) => (/\s/.test(c) ? ' ' : '○')).join('').replace(/ +/g, ' ');
   const n = chars.filter((c) => !/\s/.test(c)).length;
-  return `${pattern} · ${n}글자${chars.some((c) => /\s/.test(c)) ? '(띄어쓰기 있음)' : ''}`;
+  return `${pattern} (${n}글자${chars.some((c) => /\s/.test(c)) ? ', 띄어쓰기 있음' : ''})`;
 }

@@ -91,7 +91,7 @@ export function OxPick({ socket, view, serverNow, mobile }: Props) {
         ))}
       </div>
       <p className="quiz-num-help dim" data-ox-mine={mine === null ? '' : OX(mine)}>
-        {mine !== null ? `${OX(mine)} 골랐어요 — 바꿔도 돼요` : view.spectating ? '구경 중이에요' : mobile ? `${t.leftSec}초` : `O · X 키 또는 ← → — ${t.leftSec}초`}
+        {mine !== null ? `${OX(mine)} 골랐어요 — 바꿔도 돼요` : view.spectating ? '구경 중이에요' : mobile ? `${t.leftSec}초` : `O, X 키 또는 ← → — ${t.leftSec}초`}
       </p>
     </div>
   );

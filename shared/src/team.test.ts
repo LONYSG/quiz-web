@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { autoAssignTeams, buildTeamResult, smallerTeam, teamStartBlock, teamWinBonus, teamWinner } from './team.js';
+import { TEAM_EVEN_BLOCK, autoAssignTeams, buildTeamResult, smallerTeam, teamStartBlock, teamWinBonus, teamWinner } from './team.js';
 
 describe('팀전 (R079 · D-335)', () => {
   it('자동 배정 = joinOrder 순 블루부터 번갈아 (결정적)', () => {
@@ -22,6 +22,14 @@ describe('팀전 (R079 · D-335)', () => {
     expect(teamStartBlock([{ team: 'blue' }, { team: 'red' }])).toBeNull();
     expect(teamStartBlock([{ team: 'blue' }, { team: 'blue' }])).not.toBeNull();
     expect(teamStartBlock([{ team: 'blue' }, { team: null }])).not.toBeNull();
+  });
+  it('★ R123 — 짝수 인원만 시작 · 같은 인원이면 점수 낮은 팀으로 중간 입장', () => {
+    expect(teamStartBlock([{ team: 'blue' }])).toBe(TEAM_EVEN_BLOCK);
+    expect(teamStartBlock([{ team: 'blue' }, { team: 'red' }, { team: 'red' }])).toBe(TEAM_EVEN_BLOCK);
+    expect(teamStartBlock([{ team: 'blue' }, { team: 'red' }, { team: 'red' }, { team: 'blue' }])).toBeNull();
+    expect(smallerTeam([{ team: 'blue', score: 5 }, { team: 'red', score: 2 }])).toBe('red');
+    expect(smallerTeam([{ team: 'blue', score: 1 }, { team: 'red', score: 2 }])).toBe('blue');
+    expect(smallerTeam([{ team: 'blue', score: 9 }, { team: 'blue', score: 0 }, { team: 'red', score: 1 }])).toBe('red');
   });
   it('보너스 = clamp(ceil(점수/4), 1, 5)', () => {
     expect([1, 4, 5, 6, 12, 13, 20, 99].map(teamWinBonus)).toEqual([1, 1, 2, 2, 3, 4, 5, 5]);

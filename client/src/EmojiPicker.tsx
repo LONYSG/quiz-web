@@ -432,7 +432,7 @@ export default function EmojiPicker({ slots, onSend, onInsert, flash }: Props) {
           </div>
           {/* ★ R074 (D-321 나) — 자리 줄 위 연한 글자 · 끄는 중(시연 포함)은 "여기에 놓으세요" */}
           <p className={dragging || demo === 'playing' ? 'emoji-slots-cap on' : 'emoji-slots-cap'} data-emoji-slots-cap aria-hidden="true">
-            {dragging || demo === 'playing' ? '↓ 여기에 놓으세요' : mobile ? '↓ 길게 눌러 끌기 · 떼면 메뉴' : '↓ 끌어다 놓기 · 우클릭 = 메뉴'}
+            {dragging || demo === 'playing' ? '↓ 여기에 놓으세요' : mobile ? '↓ 길게 눌러 끌고, 떼면 메뉴' : '↓ 끌어다 놓기, 우클릭은 메뉴'}
           </p>
           <div key={`slots-${shake}`} className={[dragging ? 'emoji-slots drop-ok' : 'emoji-slots', shake > 0 ? 'shake' : ''].filter(Boolean).join(' ')} data-emoji-slots>
             {slots.map((id, i) => (

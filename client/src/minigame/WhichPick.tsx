@@ -82,7 +82,7 @@ export default function WhichPick({ socket, view, serverNow, mobile }: Props) {
         <span className="which-vs">VS</span>
         {card('b', b)}
       </div>
-      <p className="quiz-num-help dim">{mine ? '골랐어요!' : view.spectating ? '구경 중이에요' : mobile ? '더 맞는 쪽을 톡' : '← A · → B (또는 클릭)'}</p>
+      <p className="quiz-num-help dim">{mine ? '골랐어요!' : view.spectating ? '구경 중이에요' : mobile ? '더 맞는 쪽을 톡' : '← A, → B (또는 클릭)'}</p>
     </div>
   );
 }

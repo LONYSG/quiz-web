@@ -41,7 +41,7 @@ export function grantToastText(grants: readonly Grant[]): { title: string; detai
     grants.some((g) => g.reason === 'signup') ? '가입 선물' : null,
     grants.some((g) => g.reason === 'team_win') ? '팀전 승리' : null,
   ].filter(Boolean);
-  return { title: `보너스 포인트 +${total}P`, detail: parts.join(' · ') };
+  return { title: `보너스 포인트 +${total}P`, detail: parts.join(', ') };
 }
 
 export default function GrantToast({ accountId }: { accountId: string }) {

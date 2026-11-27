@@ -97,7 +97,7 @@ export default function MinigameCatalog({ mode, editable, selected = [], onConfi
           <p className="pop-title">
             {title}
             {mode === 'select' && <span className="dim mg-cat-count mono"> {chosen.length}/{MINIGAMES.length}</span>}
-            {mode === 'practice' && <span className="dim mg-cat-count"> · 연습</span>}
+            {mode === 'practice' && <span className="dim mg-cat-count"> (연습)</span>}
           </p>
           <PopupClose onClose={onClose} />
         </div>
@@ -126,7 +126,7 @@ export default function MinigameCatalog({ mode, editable, selected = [], onConfi
                     </span>
                   )}
                   <span className="mg-cat-meta dim">
-                    {m.rounds}판 · {minutes(m.estSec)}
+                    {m.rounds}판, {minutes(m.estSec)}
                   </span>
                 </span>
                 {editable && <span className="mg-cat-check" aria-hidden="true">{on && <Icon icon={Check} />}</span>}

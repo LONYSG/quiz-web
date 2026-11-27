@@ -72,11 +72,11 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
           </p>
           <p className="quiz-answer mono">{formatInt(Number(rv.targetKrw ?? 0))}원</p>
           <p className="dim">
-            현지 {String(rv.targetLocal ?? '')} {String(rv.currency ?? '')} · 환율 기준 {String(rv.fxAsOf ?? '')}
+            현지 {String(rv.targetLocal ?? '')} {String(rv.currency ?? '')}, 환율 기준 {String(rv.fxAsOf ?? '')}
           </p>
           {min && max && (
             <p className="wp-minmax">
-              <span>가장 싼 곳 {min.countryKo} {formatInt(min.krw)}원</span> · <span>가장 비싼 곳 {max.countryKo} {formatInt(max.krw)}원</span>
+              <span>가장 싼 곳 {min.countryKo} {formatInt(min.krw)}원</span>, <span>가장 비싼 곳 {max.countryKo} {formatInt(max.krw)}원</span>
             </p>
           )}
           {mine?.extra?.guess !== undefined && <p className="dim">나: {quizValueText(view, mine)}</p>}
@@ -180,7 +180,7 @@ export default function QuizReveal({ view, mine }: { view: MinigameView; mine: M
       </div>
       <p className="dim">
         {mine ? (mine.extra?.correct ? '맞혔어요!' : mine.submitted ? '아쉬워요' : '고르지 못했어요') : ''}
-        {rv.margin ? ` · 차이 ${String(rv.margin)}${p.kind === 'earlier' ? '년' : '배'}` : ''}
+        {rv.margin ? `${mine ? ', ' : ''}차이 ${String(rv.margin)}${p.kind === 'earlier' ? '년' : '배'}` : ''}
       </p>
       {/* ★ R109 — 어느 쪽? 에는 출처 줄이 없었다(그림 둘 — CC BY · BY-SA 는 표기 의무) */}
       {attribution}

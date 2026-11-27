@@ -64,9 +64,9 @@ export default function StatsModal({ onClose }: { onClose: () => void }) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="modal stats-modal" role="dialog" aria-label="전적 · 업적">
+      <div className="modal stats-modal" role="dialog" aria-label="전적과 업적">
         <div className="pop-head">
-          <p className="pop-title">전적 · 업적</p>
+          <p className="pop-title">전적과 업적</p>
           <PopupClose onClose={onClose} />
         </div>
         <div className="stats-tabs" role="tablist">
@@ -107,7 +107,7 @@ export default function StatsModal({ onClose }: { onClose: () => void }) {
               </ul>
               <p className="stats-line dim">
                 {/* ★ R069 — 등급(1~5)별 맞힌 수(옛 하·중·상) */}
-                등급별 {s.quiz.byTier.map((t) => `${t.label}등급 ${t.n}`).join(' · ')}
+                등급별 {s.quiz.byTier.map((t) => `${t.label}등급 ${t.n}`).join(', ')}
               </p>
             </section>
             <section className="stats-sec">
@@ -145,7 +145,7 @@ export default function StatsModal({ onClose }: { onClose: () => void }) {
                 <ul className="stats-recent">
                   {s.points.recent.map((r, i) => (
                     <li key={i} className="dim">
-                      {r.at.slice(0, 10)} · {r.reason} · −{r.amount}
+                      {r.at.slice(0, 10)} {r.reason} −{r.amount}
                     </li>
                   ))}
                 </ul>

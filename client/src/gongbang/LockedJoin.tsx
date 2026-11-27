@@ -83,7 +83,7 @@ export default function LockedJoin({ lock, onSubmit, onClose }: Props) {
         <p className="confirm-title gb-lock-title">
           <Icon icon={Lock} /> {lock.title}
         </p>
-        <p className="confirm-note">잠긴 방이에요 · 비밀번호 4자리</p>
+        <p className="confirm-note">잠긴 방이에요. 비밀번호 4자리를 넣어 주세요</p>
         <div className="pin" aria-label={`${pin.length}자리 넣음`}>
           {[0, 1, 2, 3].map((i) => (
             <span key={i} className={i === pin.length && !blocked ? 'cur' : undefined}>

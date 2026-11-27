@@ -6,6 +6,7 @@
 // =============================================================================
 
 import { describe, expect, it } from 'vitest';
+import { NO_TRIM } from './trim.js';
 import {
   DIFFICULTY_LEVELS,
   formatLevel,
@@ -228,7 +229,7 @@ describe('★ 분야 선택 (R034)', () => {
   });
   it('표기 — 전부면 "전체"', () => {
     expect(formatTopics(GAME_TOPICS.map((t) => t.topic))).toBe('전체');
-    expect(formatTopics(['media', 'korea'])).toBe('한국 · 미디어·콘텐츠');
+    expect(formatTopics(['media', 'korea'])).toBe('한국, 미디어와 콘텐츠');
   });
 });
 
@@ -276,10 +277,13 @@ describe('★ R090 제시어 주제 고르기(liarTopics · drawTopics)', () => 
   it('없으면 null(기본) · 목록은 겹침 없이 · 빈 목록 허용(시작은 서버가 막음) · 형식 틀리면 거부', () => {
     const a = validateRoomSettings(base);
     expect(a.ok && [a.settings.liarTopics, a.settings.drawTopics]).toEqual([null, null]);
-    const b = validateRoomSettings({ ...base, liarTopics: ['liar-food', 'liar-food', 'liar-food-2'], drawTopics: [] });
+    const b = validateRoomSettings({ ...base, liarTopics: ['liar-food', 'liar-food', 'liar-food-2'], drawTopics: [] }, { trim: NO_TRIM });
     expect(b.ok && [b.settings.liarTopics, b.settings.drawTopics]).toEqual([['liar-food', 'liar-food-2'], []]);
+    // ★ R123 — 줄이기 스위치(기본 TRIM)면 고른 주제는 버리고 전체(null)
+    const t = validateRoomSettings({ ...base, liarTopics: ['liar-food'], drawTopics: [] });
+    expect(t.ok && [t.settings.liarTopics, t.settings.drawTopics]).toEqual([null, null]);
     for (const bad of ['liar-food', [1], ['Liar Food'], Array.from({ length: 301 }, (_, i) => `t${i}`)]) {
-      const c = validateRoomSettings({ ...base, liarTopics: bad });
+      const c = validateRoomSettings({ ...base, liarTopics: bad }, { trim: NO_TRIM });
       expect(c.ok).toBe(false);
       if (!c.ok) expect(c.field).toBe('liarTopics');
     }

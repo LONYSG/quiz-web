@@ -242,7 +242,7 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
         {view.spectating ? (
           '구경 중이에요'
         ) : practice ? (
-          '연습 — 점수 없음 · 시작하면 비워져요'
+          '연습 — 점수는 없고, 시작하면 비워져요'
         ) : mine ? (
           <>
             <strong className="mono">{(mine.ms / 1000).toFixed(2)}초</strong> — 다 쳤어요! 다른 사람을 기다리는 중…
@@ -256,7 +256,7 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
         ) : blocked > 0 ? (
           <span className="typing-warn">붙여넣기는 안 돼요 — 직접 치세요</span>
         ) : (
-          `${pct}% · 띄어쓰기 · 마침표까지 똑같이`
+          `${pct}%, 띄어쓰기와 마침표까지 똑같이`
         )}
       </p>
     </div>

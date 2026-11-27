@@ -748,7 +748,8 @@ async function ensureServer() {
   console.log(`[ui-check] 서버를 직접 띄운다 (server/dist/index.js, PORT=${PORT})`);
   bootedServer = spawn(process.execPath, [SERVER_ENTRY], {
     cwd: ROOT,
-    env: { ...process.env, PORT: String(PORT) },
+    // ★★ R123 — 검사 서버는 기본으로 콘텐츠 줄이기를 끈다(미니게임만 버튼 · 주제 고르기 같은 옛 화면을 시험하는 묶음) · --r123 만 실제 규칙(TRIM)
+    env: { ...process.env, ...(R123_ONLY ? {} : { TRIM_OFF: '1' }), PORT: String(PORT) },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
   let out = '';
@@ -1079,6 +1080,8 @@ const R111_ONLY = args.includes('--r111');
 const GONGBANG_ONLY = args.includes('--gongbang');
 /** ★★★ R118 — 혼자 하기 · 띠 화면(`--solo` · SHOT_DIR=r118 · 서버 GONGBANG=1 SOLO=1 BELT=1 이면 켠 화면 · SOLO 없으면 끈 화면) — scripts/ui-check-solo.mjs */
 const SOLO_ONLY = args.includes('--solo');
+/** ★★★ R123 — 찬종 첫 플레이 피드백(`--r123` · SHOT_DIR=r123 · 서버 GONGBANG=1 SOLO=1 BELT=1) — scripts/ui-check-r123.mjs */
+const R123_ONLY = args.includes('--r123');
 /** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
 const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
@@ -1763,7 +1766,7 @@ async function r104BgmFlow(browser) {
   const v3 = await ls();
   const sp3 = await serverPrefs(P);
   record('★★ R112 ③ 계정의 옛 bell(판 2) → 화면 bell-up · 계정도 bell-up · 3 으로 다시 저장', v3?.bgm === 'bell-up' && sp3?.bgmTrack === 'bell-up' && sp3?.bgmVer === 3, JSON.stringify({ v3, sp3 }));
-  const NAMES = ['통통 경쾌', '포근한 종 · 빠르게', '아침 체조', '반짝 산책', '깡총'];
+  const NAMES = ['통통 경쾌', '포근한 종, 빠르게', '아침 체조', '반짝 산책', '깡총'];
   const dir = path.join(ROOT, 'docs', 'design', 'r112');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
   for (const [w, h, tag] of [[1280, 720, 'pc'], [360, 740, 'm360']]) {
@@ -4283,8 +4286,8 @@ async function r067AsofFlow(browser) {
       }
     }
     const v = ['ready', 'play', 'roundResult'].map((k) => rows[k]);
-    const want = key === 'price' ? /^기준 \d{4}-\d{2}-\d{2}$/ : /^가격 기준 \d{2}-\d{2} · 환율 \d{2}-\d{2}$/;
-    record(`★★★ R067 D 기준 날짜 ${key} — 준비 · 판 · 정답 공개 내내 머리줄 끝("${key === 'price' ? '기준 YYYY-MM-DD' : '가격 기준 MM-DD · 환율 MM-DD'}") · 같은 글 · 한 줄`,
+    const want = key === 'price' ? /^기준 \d{4}-\d{2}-\d{2}$/ : /^가격 기준 \d{2}-\d{2}, 환율 \d{2}-\d{2}$/;
+    record(`★★★ R067 D 기준 날짜 ${key} — 준비 · 판 · 정답 공개 내내 머리줄 끝("${key === 'price' ? '기준 YYYY-MM-DD' : '가격 기준 MM-DD, 환율 MM-DD'}") · 같은 글 · 한 줄`,
       v.every((r) => r && want.test(r.text) && r.lines === 1 && r.right !== null && r.right <= 24) && new Set(v.map((r) => r.text)).size === 1 && rows.m390?.lines === 1,
       JSON.stringify(rows));
     for (const so of socks) so.close();
@@ -12353,7 +12356,7 @@ async function socialFlow(browser) {
   await sleep(1600);
   await guest.setViewport(390, 844);
   await snapSizes(guest, '36-home-friend-in-room', [SHOT_MOB[1], SHOT_PC[0]]);
-  record('★★★ 실시간 상태 — 친구가 방을 만들면 "대기실 · 1명" + [들어가기]', await guest.evaluate("(() => { const t = document.querySelector('.home-friends')?.innerText ?? ''; return t.includes('대기실 · 1명') && t.includes('들어가기'); })()"));
+  record('★★★ 실시간 상태 — 친구가 방을 만들면 "대기실 1명" + [들어가기]', await guest.evaluate("(() => { const t = document.querySelector('.home-friends')?.innerText ?? ''; return t.includes('대기실 1명') && t.includes('들어가기'); })()"));
   await guest.setViewport(390, 844);
   await realClick(guest, '.home-friends button', '들어가기');
   record('★★★ 방 목록 화면 친구 [들어가기] → 그 방', await guest.waitFor("document.querySelector('.stage') !== null", 8000));
@@ -13034,6 +13037,11 @@ try {
   }
   if (R111_ONLY) {
     await r111Flow(browser);
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (R123_ONLY) {
+    const { r123Flow } = await import('./ui-check-r123.mjs');
+    await r123Flow({ browser, BASE, ROOT, sleep, snap, record, realClick, realType, signUp, setTheme, newPage, touchDevice, withPg, ACCOUNT_PREFIX, SHOT_ROOT: path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r040') });
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (SOLO_ONLY) {

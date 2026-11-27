@@ -19,6 +19,8 @@ import {
   type SongMeta,
   type SongSettings as SongSettingsValue,
 } from '@quiz/shared';
+import Notice from './Notice.js';
+import { siteInfo } from './site.js';
 
 let cache: Promise<SongMeta[]> | null = null;
 function loadMetas(): Promise<SongMeta[]> {
@@ -97,7 +99,8 @@ export default function SongSettings({ value, editable, onChange }: { value: Son
           )}
         </div>
       </div>
-      <div className="set-row">
+      {/* ★ R123 (TRIM.songFilters) — 연대 · 20세기 명곡 · 한국 장르 칸을 끔(곡 풀 = 고른 분류의 전체) */}
+      {!siteInfo().trim.songFilters && <div className="set-row">
         <span className="set-label">연대</span>
         <div className="preset-row">
           {SONG_DECADES.map((d) =>
@@ -108,8 +111,8 @@ export default function SongSettings({ value, editable, onChange }: { value: Son
           )}
           {chip(value.songLegend, '20세기 명곡', counts?.legend, () => (value.songLegend && value.songDecades.length === 0 ? undefined : onChange({ ...value, songLegend: !value.songLegend })), { 'data-song-legend': '' })}
         </div>
-      </div>
-      {kr && (
+      </div>}
+      {kr && !siteInfo().trim.songFilters && (
         <div className="set-row">
           <span className="set-label">한국 장르</span>
           <div className="preset-row topic-row">
@@ -119,13 +122,14 @@ export default function SongSettings({ value, editable, onChange }: { value: Son
           </div>
         </div>
       )}
-      <p className={short ? 'form-error avail-line' : 'note avail-line'} data-song-avail data-wrap-ok>
-        {counts === null
-          ? '노래 수를 확인하는 중입니다.'
-          : short
-            ? `★ 고른 범위의 노래가 ${counts.total}곡뿐이에요. 곡 수를 줄이거나 범위를 넓혀 주세요.`
-            : `고른 범위의 노래 ${counts.total}곡 · 들은 적 없는 곡부터 나와요`}
-      </p>
+      {/* ★ R123 — 평소 문구("고른 범위의 노래 N곡 · 들은 적 없는 곡부터")는 뺐다 · 모자랄 때만 경고(서버도 시작을 막는다) */}
+      {short && (
+        <Notice tone="bad" name="song-avail" className="avail-line">
+          고른 분류의 노래가 {counts?.total ?? 0}곡뿐이에요
+          <br />
+          곡 수를 줄이거나 분류를 더 골라 주세요
+        </Notice>
+      )}
     </>
   );
 }

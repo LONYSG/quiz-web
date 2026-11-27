@@ -37,7 +37,7 @@ export const colorOf = (accountId: string) => Number(accountId) % 10;
 export function statusText(s?: FriendStatus): string {
   if (!s || s.kind === 'offline') return '오프라인';
   if (s.kind === 'online') return '접속 중';
-  return `${s.kind === 'game' ? '게임 중' : '대기실'} · ${s.count ?? 0}명`;
+  return `${s.kind === 'game' ? '게임 중' : '대기실'} ${s.count ?? 0}명`;
 }
 const rank = (s?: FriendStatus) => (s?.kind === 'game' || s?.kind === 'lobby' ? 0 : s?.kind === 'online' ? 1 : 2);
 

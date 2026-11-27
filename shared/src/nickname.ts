@@ -45,6 +45,6 @@ export function nicknameFits(nickname: string): boolean {
 }
 
 /** 한도를 넘을 때 안내 — 서버 오류 · 화면 안내가 같은 문구 */
-export const NICKNAME_TOO_LONG_MESSAGE = '글자 수를 넘었어요 — 한글 10자 · 영어·숫자 12자까지';
+export const NICKNAME_TOO_LONG_MESSAGE = '글자 수를 넘었어요 — 한글은 10자, 영어와 숫자는 12자까지예요';
 /** 한도 안내 한 줄 (입력칸 자리표시 · 안내) */
-export const NICKNAME_LIMIT_HINT = '한글 10자 · 영어·숫자 12자까지';
+export const NICKNAME_LIMIT_HINT = '한글 10자, 영어와 숫자 12자까지';

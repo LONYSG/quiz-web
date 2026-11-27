@@ -108,7 +108,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
             return (
               <li key={p.accountId} data-account={p.accountId} className={p.connected ? undefined : 'offline'}>
                 {pickable ? (
-                  <button type="button" className="people-row pickable" onClick={() => onPick(p)} aria-label={isHost ? `${p.nickname} — 친구 신청·강퇴·차단` : `${p.nickname} — 친구 신청`}>
+                  <button type="button" className="people-row pickable" onClick={() => onPick(p)} aria-label={isHost ? `${p.nickname} — 친구 신청, 강퇴, 차단` : `${p.nickname} — 친구 신청`}>
                     {body}
                   </button>
                 ) : (
@@ -118,7 +118,7 @@ export default function PeoplePanel({ players, myAccountId, isHost, showScore, r
             );
           })}
         </ul>
-        {players.some((p) => p.accountId !== myAccountId && canPick(p.accountId)) && <p className="people-tip dim">{isHost ? '사람을 누르면 친구 신청 · 강퇴 · 차단' : '사람을 누르면 친구 신청'}</p>}
+        {players.some((p) => p.accountId !== myAccountId && canPick(p.accountId)) && <p className="people-tip dim">{isHost ? '사람을 누르면 친구 신청, 강퇴, 차단' : '사람을 누르면 친구 신청'}</p>}
         {children}
       </div>
     </div>,

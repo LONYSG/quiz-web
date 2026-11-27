@@ -79,7 +79,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
             <p className="champion-name">
               {champs.map((c, i) => (
                 <span key={c.accountId} style={{ color: `var(--p${c.colorIndex})` }}>
-                  {i > 0 && ' · '}
+                  {i > 0 && ', '}
                   {c.nickname}
                 </span>
               ))}
@@ -93,7 +93,7 @@ export default function GameResult({ socket, players, result, isHost, myAccountI
       {mgOnly && (
         <p className="dim mg-result-sub">
           {/* ★ R063 (D-259) — 계산식은 적지 않는다(찬종 #17) */}
-          미니게임만 · {result.minigameSeries?.done ?? 0}개
+          미니게임만 {result.minigameSeries?.done ?? 0}개
         </p>
       )}
 

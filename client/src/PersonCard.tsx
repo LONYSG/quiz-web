@@ -138,7 +138,7 @@ function PersonBelt({ accountId }: { accountId: string }) {
       <BeltOf step={card.belt} width={64} />
       <div>
         <b>{beltLabel(card.belt)}</b>
-        <small className="dim">{card.belt === null ? '혼자 하기 한 판이면 화이트벨트' : `혼자 하기 최고 ${card.best}${card.at ? ` · ${day(card.at)}` : ''}`}</small>
+        <small className="dim">{card.belt === null ? '혼자 하기 한 판이면 화이트벨트' : `혼자 하기 최고 ${card.best}${card.at ? ` (${day(card.at)})` : ''}`}</small>
       </div>
     </div>
   );
@@ -269,7 +269,7 @@ export function AllAchievements({ p, onClose }: { p: PersonRef; onClose: () => v
                 </span>
                 <span className="ach-text">
                   <strong>{d.name}</strong>
-                  <span className="dim ach-desc" title={d.desc} data-wrap-ok>{at ? `${day(at)} 달성 · ${d.desc}` : d.desc}</span>
+                  <span className="dim ach-desc" title={d.desc} data-wrap-ok>{at ? `${d.desc} (${day(at)} 달성)` : d.desc}</span>
                 </span>
               </li>
             );

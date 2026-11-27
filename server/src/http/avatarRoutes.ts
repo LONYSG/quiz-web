@@ -66,7 +66,7 @@ avatarRouter.put('/', raw, async (req, res) => {
   const buf = Buffer.isBuffer(req.body) ? req.body : Buffer.alloc(0);
   const mime = sniffImage(buf);
   if (!mime || buf.length === 0) {
-    res.status(400).json({ ok: false, message: 'webp · jpeg · png 사진만 올릴 수 있습니다.' });
+    res.status(400).json({ ok: false, message: 'webp, jpeg, png 사진만 올릴 수 있습니다.' });
     return;
   }
   if (buf.length > AVATAR_MAX_BYTES) {

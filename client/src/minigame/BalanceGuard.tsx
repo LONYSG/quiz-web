@@ -200,7 +200,7 @@ export default function BalanceGuard({ socket, view, serverNow, mobile }: Props)
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
         role="application"
-        aria-label={`${item.label}를 반으로 — ${mobile ? '두 점을 끌어 옮기세요' : '← → 옮기기 · ↑ ↓ 점 바꾸기'}`}
+        aria-label={`${item.label}를 반으로 — ${mobile ? '두 점을 끌어 옮기세요' : '← → 로 옮기고 ↑ ↓ 로 점 바꾸기'}`}
       >
         <BalanceArt item={item} />
         {/* 위 · 아래 선 */}
@@ -217,7 +217,7 @@ export default function BalanceGuard({ socket, view, serverNow, mobile }: Props)
         ))}
       </svg>
       <p className="balance-help">
-        {view.spectating ? '구경 중이에요' : mobile ? '두 점을 손가락으로 끌어 옮기세요' : '← → 옮기기 · ↑ ↓ 위/아래 점 바꾸기'}
+        {view.spectating ? '구경 중이에요' : mobile ? '두 점을 손가락으로 끌어 옮기세요' : '← → 로 옮기고 ↑ ↓ 로 위아래 점 바꾸기'}
       </p>
     </div>
   );

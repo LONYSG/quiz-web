@@ -22,6 +22,7 @@ import { DRAW, DRAW_ERASE_HEX, DRAW_HINT_KINDS, DRAW_HINT_LABEL, DRAW_PALETTE, D
 import type { DrawStrokeView, DrawView, PlayerView } from './useRoom.js';
 import Icon from './Icon.js';
 import ConfirmModal from './ConfirmModal.js';
+import { fetchPoints } from './api.js';
 import { useDismiss } from './useDismiss.js';
 
 interface Props {
@@ -401,6 +402,18 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
   const solvedIds = new Set(view.solved.map((s) => s.accountId));
   // ★ R101 — 출제자 포기(확인 한 번)
   const [giveUpOpen, setGiveUpOpen] = useState(false);
+  // ★★ R123 — 유료 다른 제시어(5P): 버튼이 유료로 바뀔 때 내 포인트를 한 번 읽는다(모자라면 버튼을 끈다 · 서버가 다시 센다)
+  const rerollCost = view.rerollCost ?? 0;
+  const [myPoints, setMyPoints] = useState<number | null>(null);
+  useEffect(() => {
+    if (!view.canReroll || rerollCost === 0) return undefined;
+    let alive = true;
+    void fetchPoints().then((p) => alive && setMyPoints(p?.balance ?? null));
+    return () => {
+      alive = false;
+    };
+  }, [view.canReroll, rerollCost, view.round]);
+  const rerollShort = rerollCost > 0 && myPoints !== null && myPoints < rerollCost;
   useEffect(() => {
     if (view.phase !== 'draw') setGiveUpOpen(false);
   }, [view.phase, view.round]);
@@ -430,31 +443,39 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
           )}
           {view.keyword ? (
             <span>
-              · {view.phase === 'reveal' ? '정답' : '그릴 것'}{' '}
-              <strong className="draw-keyword" data-draw-keyword title={view.amDrawer && view.phase === 'draw' ? '채팅은 돼요 — 제시어 · 글자 수는 말할 수 없어요(힌트는 버튼으로)' : undefined}>
+              {view.phase === 'reveal' ? '정답' : '그릴 것'}{' '}
+              <strong className="draw-keyword" data-draw-keyword title={view.amDrawer && view.phase === 'draw' ? '채팅은 돼요 — 제시어와 글자 수는 말할 수 없어요(힌트는 버튼으로)' : undefined}>
                 {view.keyword}
               </strong>
             </span>
           ) : view.mySolved ? (
-            <span className="draw-mine-ok">· ✓ 맞혔어요!</span>
+            <span className="draw-mine-ok">✓ 맞혔어요!</span>
           ) : view.spectating ? (
-            <span className="dim">· 구경 중</span>
+            <span className="dim">구경 중</span>
           ) : (
-            <span className="dim">· 채팅으로 정답!</span>
+            <span className="dim">채팅으로 정답!</span>
           )}
           {view.phase === 'reveal' && view.gaveUp && (
             <span className="draw-gaveup" data-draw-gaveup>
-              · 출제자가 포기했어요
+              출제자가 포기했어요
             </span>
           )}
           {view.phase === 'reveal' && view.diff ? (
             <span className="dim draw-diff" data-draw-diff={view.diff}>
-              · {['', '쉬움', '보통', '어려움'][view.diff]}
+              {['', '쉬움', '보통', '어려움'][view.diff]}
             </span>
           ) : null}
           {view.canReroll && (
-            <button type="button" className="ghost tiny" data-draw-reroll onClick={() => socket.emit('draw.reroll', {})}>
-              다른 제시어
+            <button
+              type="button"
+              className="ghost tiny"
+              data-draw-reroll
+              data-cost={rerollCost}
+              disabled={rerollShort}
+              title={rerollShort ? `포인트가 모자라요 (지금 ${myPoints}P)` : undefined}
+              onClick={() => socket.emit('draw.reroll', {})}
+            >
+              {rerollCost > 0 ? `다른 제시어 ${rerollCost}P` : '다른 제시어'}
             </button>
           )}
         </span>
@@ -469,7 +490,7 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
           {hintChips.map((k) => (
             <span key={k} className="draw-hint-chip" data-draw-hint={k}>
               {DRAW_HINT_LABEL[k]} <strong>{view.hints[k]}</strong>
-              {k === 'initial' && hintKind(view.hints.initial) && <span className="hint-kind"> · {hintKind(view.hints.initial)!.label}</span>}
+              {k === 'initial' && hintKind(view.hints.initial) && <span className="hint-kind"> ({hintKind(view.hints.initial)!.label})</span>}
             </span>
           ))}
         </p>
@@ -505,7 +526,7 @@ export default function DrawStage({ socket, view, players, serverNow }: Props) {
                   data-draw-tool="pick"
                   data-eyedropper={ED ? 'system' : 'canvas'}
                   aria-label="스포이드"
-                  title={ED ? '스포이드 — 화면 어디든(다른 창 · 모니터도) (I)' : '스포이드 — 그림 안에서 색 집기 (I)'}
+                  title={ED ? '스포이드 — 화면 어디든(다른 창, 모니터도) (I)' : '스포이드 — 그림 안에서 색 집기 (I)'}
                   onClick={() => void pick()}
                 >
                   <Icon icon={TOOL_ICON.pick} />

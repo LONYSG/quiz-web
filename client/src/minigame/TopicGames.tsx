@@ -193,7 +193,7 @@ export function ManyReveal({ view, rows, myAccountId, nameOf }: { view: Minigame
   return (
     <div className="topic-reveal many-reveal" data-many-reveal>
       <p className="topic-reveal-title">
-        <strong>{topic}</strong> <span className="dim">· 전체 {total}개</span>
+        <strong>{topic}</strong> <span className="dim">(전체 {total}개)</span>
       </p>
       <ul className="many-people">
         {rows.map((r) => {
@@ -233,7 +233,7 @@ export function ManyReveal({ view, rows, myAccountId, nameOf }: { view: Minigame
       )}
       {!view.spectating && !view.practice && (
         <p className="topic-report-line">
-          {wrong.length > 0 && <span className="dim">정답 아님 처리: {wrong.slice(-6).map((w) => `"${w}"`).join(' · ')}</span>}
+          {wrong.length > 0 && <span className="dim">정답 아님 처리: {wrong.slice(-6).map((w) => `"${w}"`).join(', ')}</span>}
           <TopicReportButton topic={topic} wrong={wrong} />
         </p>
       )}
@@ -345,7 +345,7 @@ export function UniqueReveal({ view, rows, myAccountId, nameOf }: { view: Miniga
   return (
     <div className="topic-reveal unique-reveal" data-unique-reveal>
       <p className="topic-reveal-title">
-        <strong>{topic}</strong> <span className="dim">· 남과 겹친 답은 0</span>
+        <strong>{topic}</strong> <span className="dim">(남과 겹친 답은 0점)</span>
       </p>
       <ul className="many-people">
         {rows.map((r) => {
@@ -363,12 +363,12 @@ export function UniqueReveal({ view, rows, myAccountId, nameOf }: { view: Miniga
               <span className="mono topic-count">{only.size}개</span>
               <span className="topic-chips">
                 {found.map((id) => (
-                  <span key={id} className={only.has(id) ? 'topic-chip only' : 'topic-chip dup'} title={only.has(id) ? '안 겹친 답' : '겹침 · 0'} data-unique-chip={only.has(id) ? 'only' : 'dup'}>
+                  <span key={id} className={only.has(id) ? 'topic-chip only' : 'topic-chip dup'} title={only.has(id) ? '안 겹친 답' : '겹침, 0점'} data-unique-chip={only.has(id) ? 'only' : 'dup'}>
                     {lb[id] ?? id}
                   </span>
                 ))}
                 {wrong.map((w, i) => (
-                  <span key={`w-${i}`} className="topic-chip out" title="주제의 답이 아님 · 0" data-unique-chip="out">
+                  <span key={`w-${i}`} className="topic-chip out" title="주제의 답이 아님, 0점" data-unique-chip="out">
                     {w}
                   </span>
                 ))}
@@ -486,7 +486,7 @@ export function topicValueText(view: MinigameView, r: MinigameRoundRow): string 
     const ex = r.extra ?? {};
     const only = ((ex.only as unknown[]) ?? []).length;
     const dup = ((ex.dup as unknown[]) ?? []).length;
-    return !r.submitted && only === 0 && dup === 0 ? '안 냄' : `${only}개${dup ? ` · 겹침 ${dup}` : ''}`;
+    return !r.submitted && only === 0 && dup === 0 ? '안 냄' : `${only}개${dup ? `, 겹침 ${dup}` : ''}`;
   }
   if (!r.submitted) return '안 고름';
   return r.extra?.correct ? `정답 ${((r.value ?? 0) / 1000).toFixed(2)}초` : '오답';

@@ -1,7 +1,7 @@
 // R096 — 노래 맞히기 방식(서버 순수 부분): 범위 거르기 · inactive 제외(적재본만 읽음) · 다음 곡(경험 없는 곡 먼저 · 중복 0) ·
 //   판정 재료(제목만 · 가수는 matcher 'artist') · 초성 · 실패 넘김 과반 · 설정 검증 · 칩 수
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SONG_SETTINGS, matchSong, songInitials, songRangeCounts, validateRoomSettings, validateSongSettings, normalizeAnswer, flexMatch } from '@quiz/shared';
+import { DEFAULT_SONG_SETTINGS, NO_TRIM, matchSong, songInitials, songRangeCounts, validateRoomSettings, validateSongSettings, normalizeAnswer, flexMatch } from '@quiz/shared';
 import { noteSongFail, pickNextSong, songAnswerSets, songEntryOf, songPoolFrom, songRevealOf, type SongRun } from './mode.js';
 
 const item = (id: string, over: Record<string, unknown> = {}) => ({
@@ -112,10 +112,12 @@ describe('R096 노래 방식 — 설정', () => {
     expect(validateSongSettings({ songCount: 4 }).ok).toBe(false);
     expect(validateSongSettings({ songCount: 21 }).ok).toBe(false);
     expect(validateSongSettings({ songCategories: [] }).ok).toBe(false);
-    expect(validateSongSettings({ songDecades: [], songLegend: false }).ok).toBe(false);
-    expect(validateSongSettings({ songDecades: [], songLegend: true }).ok).toBe(true);
-    expect(validateSongSettings({ songCategories: ['pop'], songGenres: [] }).ok).toBe(true);
-    expect(validateSongSettings({ songGenres: [] }).ok).toBe(false);
+    expect(validateSongSettings({ songDecades: [], songLegend: false }, NO_TRIM).ok).toBe(false);
+    // ★ R123 — 줄이기 스위치(기본)면 연대 · 장르 · 명곡 칸이 없어 보낸 값을 버린다(전체)
+    expect(validateSongSettings({ songDecades: [], songLegend: false, songGenres: [] })).toMatchObject({ ok: true, value: { songLegend: true, songDecades: DEFAULT_SONG_SETTINGS.songDecades, songGenres: DEFAULT_SONG_SETTINGS.songGenres } });
+    expect(validateSongSettings({ songDecades: [], songLegend: true }, NO_TRIM).ok).toBe(true);
+    expect(validateSongSettings({ songCategories: ['pop'], songGenres: [] }, NO_TRIM).ok).toBe(true);
+    expect(validateSongSettings({ songGenres: [] }, NO_TRIM).ok).toBe(false);
   });
   it('방 설정 — mode song 통과 · 노래 칸이 실린다', () => {
     const r = validateRoomSettings({ questionCount: 20, mode: 'song', songCount: 7, songCategories: ['kr', 'kr', 'pop'] });

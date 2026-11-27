@@ -81,7 +81,7 @@ function NoticeRow({ n, fresh, social, onJoin }: { n: NotificationView; fresh: b
         <span className="people-name">
           <FitText text={n.fromNickname} className="nick" minPx={12} />
           <span className="people-sub">
-            {text} · {ago(n.createdAt)}
+            {text} ({ago(n.createdAt)})
           </span>
         </span>
         <span className="row-actions">

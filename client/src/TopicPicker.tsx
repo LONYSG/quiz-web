@@ -71,7 +71,7 @@ export default function TopicPicker({ kind, picked, editable, onChange }: { kind
       <summary>
         <span className="set-label">주제</span>
         <span className={nOn === 0 ? 'topic-pick-sum warn' : 'topic-pick-sum'}>
-          {nOn === 0 ? '하나 이상 골라 주세요' : `${nOn} / ${groups.length} · 단어 ${words.toLocaleString()}`}
+          {nOn === 0 ? '하나 이상 골라 주세요' : `${nOn} / ${groups.length}, 단어 ${words.toLocaleString()}개`}
         </span>
       </summary>
       <div className="topic-pick-list">

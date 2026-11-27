@@ -28,15 +28,23 @@ export function autoAssignTeams(members: readonly { accountId: string; joinOrder
   return out;
 }
 
-/** ★ 새로 들어온 사람의 팀 — 적은 팀(같으면 블루) */
-export function smallerTeam(members: readonly { team: Team | null }[]): Team {
+/** ★ 새로 들어온 사람의 팀 — 적은 팀 · ★ R123 (찬종) 인원이 같으면 점수 낮은 팀 · 그것도 같으면 블루 */
+export function smallerTeam(members: readonly { team: Team | null; score?: number }[]): Team {
   let blue = 0;
   let red = 0;
+  let blueScore = 0;
+  let redScore = 0;
   for (const m of members) {
-    if (m.team === 'blue') blue += 1;
-    else if (m.team === 'red') red += 1;
+    if (m.team === 'blue') {
+      blue += 1;
+      blueScore += m.score ?? 0;
+    } else if (m.team === 'red') {
+      red += 1;
+      redScore += m.score ?? 0;
+    }
   }
-  return red < blue ? 'red' : 'blue';
+  if (red !== blue) return red < blue ? 'red' : 'blue';
+  return redScore < blueScore ? 'red' : 'blue';
 }
 
 /** 팀 인원 */
@@ -51,9 +59,14 @@ export function teamCounts(members: readonly { team: Team | null }[]): { blue: n
 }
 
 export const TEAM_START_BLOCK_MESSAGE = '팀전은 두 팀에 한 명 이상 있어야 해요.';
+/** ★ R123 (찬종) — 팀전은 짝수 인원일 때만 시작 */
+export const TEAM_EVEN_BLOCK = '팀전은 짝수 인원일 때 시작할 수 있어요';
+/** ★ R123 — 판 중 한 명만 남았다 */
+export const TEAM_SOLO_END = '혼자서는 팀전을 할 수 없어 게임을 끝냈어요';
 
-/** ★ 시작 조건 — 두 팀 모두 1명 이상 (막는 이유 · 없으면 null) */
+/** ★ 시작 조건 — ★ R123 짝수 인원 · 두 팀 모두 1명 이상 (막는 이유 · 없으면 null) */
 export function teamStartBlock(members: readonly { team: Team | null }[]): string | null {
+  if (members.length < 2 || members.length % 2 !== 0) return TEAM_EVEN_BLOCK;
   const c = teamCounts(members);
   return c.blue >= 1 && c.red >= 1 ? null : TEAM_START_BLOCK_MESSAGE;
 }

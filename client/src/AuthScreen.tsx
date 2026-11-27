@@ -118,7 +118,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
               autoComplete="username"
               autoCapitalize="none"
               spellCheck={false}
-              placeholder="영문 소문자·숫자 3~20자"
+              placeholder="영문 소문자와 숫자 3~20자"
               required
             />
           </label>

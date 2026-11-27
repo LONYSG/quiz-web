@@ -204,7 +204,7 @@ export function SongResultList({
   return (
     <details className="song-result" open data-song-result>
       <summary>
-        곡 {rows.length} · 맞힌 곡 {solved}
+        {rows.length}곡 중 {solved}곡 맞힘
       </summary>
       <ol className="song-result-list">
         {rows.map((q) => {

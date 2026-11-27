@@ -70,7 +70,7 @@ export async function loadQuizData(force = false): Promise<QuizData> {
   );
   const creditOf = (ids: string[], fallback: string | null): string | null => {
     const parts = ids.map((x) => imageCredit.get(x) ?? '').filter(Boolean);
-    return parts.length ? [...new Set(parts)].join(' · ') : fallback;
+    return parts.length ? [...new Set(parts)].join(', ') : fallback;
   };
   // ★ R109 — 지인 전용 그림 · 항목
   const friendOnlyImageIds = new Set(im.rows.filter((r) => r.license === FRIEND_ONLY_IMAGE_LICENSE).map((r) => r.image_id));

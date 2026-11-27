@@ -230,7 +230,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
           <p className="mg-intro-name">{info.name}</p>
           <p className="dim">
             {view.practice
-              ? '연습 판 — 점수 · 포인트 없음'
+              ? '연습 판 — 점수와 포인트는 없어요'
               : view.series
                 ? `미니게임만 — ${view.series.total}개 이어서!`
                 : `${view.afterQuestionIndex ?? ''}번째 문제를 지나 잠깐 미니게임!`}
@@ -252,11 +252,11 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
               {mobile ? info.controlsMobile : view.key === 'minority' ? minorityControlsPc(minorityChoices(view.participants.length).length) : info.controlsPc}
             </p>
             {view.key === 'cake' && <p className="dim mg-rules-note">블루투스 이어폰은 소리가 늦게 들려요 — 화면 숫자를 믿으세요</p>}
-            {view.key === 'reaction' && <p className="dim mg-rules-note">진짜 신호는 초록 화면 — 소리를 꺼도 초록만 보면 돼요 · 노란 화면 · 글자 · 소리만은 가짜</p>}
-            {view.key === 'typing' && <p className="dim mg-rules-note">한글 짧은 문장 · 영어 · 한글 긴 문장 — {TYPING_PLAY_MS / 1000}초 안에 못 치면 친 만큼(%)으로</p>}
+            {view.key === 'reaction' && <p className="dim mg-rules-note">진짜 신호는 초록 화면이에요. 노란 화면, 글자, 소리만 나오면 가짜예요</p>}
+            {view.key === 'typing' && <p className="dim mg-rules-note">한글 짧은 문장, 영어, 한글 긴 문장 — {TYPING_PLAY_MS / 1000}초 안에 못 치면 친 만큼(%)으로</p>}
             {/* ★ R063 (D-259) — 내부 규칙 · 계산 설명은 적지 않는다(찬종 #17) — 판 수와 보상만 */}
             <p className="dim mg-rules-note">
-              {view.roundCount}판 · {view.practice ? '연습' : `${bonusRanks(view.participants.length)}는 포인트도!`}
+              {view.roundCount}판, {view.practice ? '연습' : `${bonusRanks(view.participants.length)}는 포인트도!`}
             </p>
           </div>
         </div>
@@ -349,7 +349,7 @@ export default function MinigameStage({ socket, view, players, myAccountId, isHo
 
 /** ★ R060 — 보너스를 받는 순위(minigameReward — 둘 1위 · 3~4명 1 · 2위 · 5명 이상 1~3위). 둘이서 "1~3위" 로 적던 것 */
 function bonusRanks(n: number): string {
-  return n <= 2 ? '1위' : n <= 4 ? '1 · 2위' : '1~3위';
+  return n <= 2 ? '1위' : n <= 4 ? '1, 2위' : '1~3위';
 }
 
 function PlayView(props: { socket: Socket; view: MinigameView; serverNow: () => number; mobile: boolean }) {
@@ -362,8 +362,8 @@ function AsOfNote({ view }: { view: MinigameView }) {
   const r = view.round;
   if (!r?.asOf && !r?.fxAsOf) return null;
   const md = (d: string) => d.slice(5);
-  const text = !r.fxAsOf ? `기준 ${r.asOf}` : r.asOf ? `가격 기준 ${md(r.asOf)} · 환율 ${md(r.fxAsOf)}` : `환율 기준 ${r.fxAsOf}`;
-  const title = r.fxAsOf ? `가격 ${r.asOf ?? '-'} · 환율 ${r.fxAsOf} 기준` : `${r.asOf} 기준으로 모은 값`;
+  const text = !r.fxAsOf ? `기준 ${r.asOf}` : r.asOf ? `가격 기준 ${md(r.asOf)}, 환율 ${md(r.fxAsOf)}` : `환율 기준 ${r.fxAsOf}`;
+  const title = r.fxAsOf ? `가격 ${r.asOf ?? '-'}, 환율 ${r.fxAsOf} 기준` : `${r.asOf} 기준으로 모은 값`;
   return (
     <span className="mg-asof dim mono" title={title} data-asof={r.asOf ?? ''} data-fx-asof={r.fxAsOf ?? ''}>
       {text}
@@ -392,7 +392,7 @@ function readyDesc(view: MinigameView): string {
       return '';
     case 'cake': {
       const sp = Number(p.speed ?? 1);
-      return `${p.durationSec}초${sp !== 1 ? ` · ${sp}배속` : ''} · ${p.hideAfterSec}초 뒤 가려져요`;
+      return `${p.durationSec}초${sp !== 1 ? `, ${sp}배속` : ''}, ${p.hideAfterSec}초 뒤 가려져요`;
     }
     case 'balance':
       return `${String(p.label ?? '')} — 정확히 반으로!`;
@@ -401,7 +401,7 @@ function readyDesc(view: MinigameView): string {
     case 'typing':
       return p.lang === 'en' ? '영어 문장' : p.size === 'long' ? '한글 긴 문장' : '한글 짧은 문장';
     case 'circle':
-      return '한 번에 · 동그랗게 · 크게';
+      return '한 번에, 동그랗게, 크게';
     case 'angle':
       return '눈금 없이 — 감으로!';
     case 'price':
@@ -563,7 +563,7 @@ function RoundResult({
     if (view.key === 'ox') return oxValueText(r);
     if (ORDER_BINGO.has(view.key)) return orderBingoValueText(view, r);
     // ★ R053
-    if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)} ${r.extra.win ? '· 소수파!' : ''}` : '안 고름';
+    if (view.key === 'minority') return r.extra?.pick ? `${String(r.extra.pick)}${r.extra.win ? ' 소수파!' : ''}` : '안 고름';
     if (view.key === 'oddone') return r.value !== null && r.submitted ? `${(r.value / 1000).toFixed(2)}초${r.extra?.wrong ? ` (+${Number(r.extra.wrong) * 2})` : ''}` : r.extra?.wrong ? `못 찾음 (${String(r.extra.wrong)}번 틀림)` : '못 찾음';
     if (view.key === 'gauge') return r.value !== null ? `${formatMinigameValue(r.value, d)}%` : '안 누름';
     if (view.key === 'balloon') return r.extra?.popped ? `펑! (${Number(r.extra.size ?? 0)})` : r.value !== null && r.submitted ? `${r.value}${r.value === 100 ? ' 만점' : ''}` : '안 붊';
@@ -657,7 +657,7 @@ function RoundResult({
               </span>
               <span className="mg-value mono">
                 {valueText(r)}
-                {r.extra?.experienced ? <span className="quiz-seen-tag"> · 이미 본 문항</span> : null}
+                {r.extra?.experienced ? <span className="quiz-seen-tag"> (이미 본 문항)</span> : null}
               </span>
               <span className="mg-points mono">+{r.points}</span>
             </li>
@@ -775,7 +775,7 @@ function R051Result({ view, mine, first, decimals }: { view: MinigameView; mine:
         </p>
         {/* ★ R094 (D-351 · #123) — "나 · 퀵드로우 — 가짜 신호 1번" 이 2560 에서 220px 칸 밖으로 → 이름 / 사유 두 덩이(칸이 좁으면 두 줄) */}
         <p className="dim rx-who">
-          <span>{who} ·</span> <span>{p.quickdraw ? `퀵드로우 — 가짜 신호 ${(p.fakes as unknown[] | undefined)?.length ?? 0}번` : '순수 반응'}</span>
+          <span>{who}</span> <span>{p.quickdraw ? `퀵드로우 — 가짜 신호 ${(p.fakes as unknown[] | undefined)?.length ?? 0}번` : '순수 반응'}</span>
         </p>
       </div>
     );
@@ -810,7 +810,7 @@ function R051Result({ view, mine, first, decimals }: { view: MinigameView; mine:
           <p className="mg-r051-big mono">{row?.value !== null && row?.value !== undefined ? `${formatMinigameValue(row.value, decimals)}%` : '안 그림'}</p>
           <p className="dim">
             {who}
-            {flaw === 'open' ? ' · 덜 닫힘' : flaw === 'small' ? ' · 너무 작음' : flaw === 'line' ? ' · 원이 아님' : ''}
+            {flaw === 'open' ? ', 덜 닫힘' : flaw === 'small' ? ', 너무 작음' : flaw === 'line' ? ', 원이 아님' : ''}
           </p>
         </div>
       </div>
@@ -833,7 +833,7 @@ function R051Result({ view, mine, first, decimals }: { view: MinigameView; mine:
       <div>
         <p className="mg-r051-big mono">{m ? `${formatMinigameValue(deg, Math.max(1, decimals))}°` : '—'}</p>
         <p className="dim">
-          {who} · 목표 {target}° {row?.value !== null && row?.value !== undefined ? `· ${formatMinigameValue(row.value, decimals)}° 차이` : ''}
+          {who}, 목표 {target}°{row?.value !== null && row?.value !== undefined ? `, ${formatMinigameValue(row.value, decimals)}° 차이` : ''}
         </p>
       </div>
     </div>
@@ -905,7 +905,7 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
             </div>
           ))}
         </div>
-        <p className="dim">{minority.length ? `소수파: ${minority.join(' · ')}` : '모두 같은 숫자 — 이번 판은 모두 0점'}</p>
+        <p className="dim">{minority.length ? `소수파: ${minority.join(', ')}` : '모두 같은 숫자 — 이번 판은 모두 0점'}</p>
       </div>
     );
   }
@@ -935,7 +935,7 @@ function R053Result({ view, mine, decimals }: { view: MinigameView; mine: Miniga
         <p className="mg-r051-big mono">{mine && mine.submitted ? (popped ? `펑! (${Number(mine.extra?.size ?? 0)})` : `${mine.value ?? 0}${mine.value === 100 ? ' 만점!' : ''}`) : '—'}</p>
         {/* ★ R068 (찬종 #54) — 점수 규칙 한 줄 */}
         <p className="dim balloon-rule" data-balloon-rule data-wrap-ok>
-          펌프 한 번에 {Number(view.round?.params?.pumpMin ?? BALLOON_PUMP_MIN)}~{Number(view.round?.params?.pumpMax ?? BALLOON_PUMP_MAX)} · 100 에 가까울수록 높은 순위 · 넘으면 0점
+          펌프 한 번에 {Number(view.round?.params?.pumpMin ?? BALLOON_PUMP_MIN)}~{Number(view.round?.params?.pumpMax ?? BALLOON_PUMP_MAX)}, 100 에 가까울수록 높은 순위예요. 넘으면 0점
         </p>
       </div>
     );

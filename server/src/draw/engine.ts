@@ -71,6 +71,9 @@ export interface DrawRound {
   phaseStartedAt: number;
   phaseEndsAt: number;
   rerolled: boolean;
+  /** ★ R123 — 바꾼 횟수(0 = 아직 · 1 = 무료 씀 · 그 뒤 유료) · 마지막으로 바꾼 때(10초 창이 여기서 새로) */
+  rerolls: number;
+  rerollFrom: number;
   /** ★ R089 — 되돌린 op id(늦게 온 조각이 같은 id 로 다시 생기지 않게 · 다시 실행돼도 남김 — 조각은 더 안 받는다) */
   undone: Set<string>;
   /** ★ R090 (D-347) — 되돌리기 스택(op 하나 · 전체 지우기 = 그때 목록 통째) · 다시 실행 스택 — 서버에만(늦게 온 사람은 보이는 op 만) */
@@ -206,6 +209,8 @@ export interface DrawView {
   solved: { accountId: string; ms: number }[];
   mySolved: boolean;
   canReroll: boolean;
+  /** ★ R123 — 지금 바꾸면 드는 포인트(0 = 무료) */
+  rerollCost: number;
   strokes: DrawStroke[];
   hist: { undo: number; redo: number };
   scores: Record<string, number> | null;
@@ -238,7 +243,8 @@ export function drawView(room: Room, viewer: string): DrawView | null {
     participants: r.participants,
     solved: r.solved,
     mySolved: r.solved.some((s) => s.accountId === viewer),
-    canReroll: amDrawer && r.phase === 'draw' && !r.rerolled && r.strokes.length === 0 && now - r.phaseStartedAt < DRAW.REROLL_MS,
+    canReroll: amDrawer && rerollCostNow(room, viewer, now) !== null,
+    rerollCost: rerollCostNow(room, viewer, now) ?? 0,
     // ★ R090 — 되돌리기 · 다시 실행 할 것 수(출제자 버튼 흐리게)
     hist: { undo: r.hist.length, redo: r.redo.length },
     strokes: r.strokes,
@@ -304,6 +310,8 @@ function startRound(room: Room, now: number): boolean {
     phaseStartedAt: now,
     phaseEndsAt: now + ROUND_MS,
     rerolled: false,
+    rerolls: 0,
+    rerollFrom: now,
     undone: new Set(),
     hist: [],
     redo: [],
@@ -428,17 +436,37 @@ export function drawClear(room: Room, accountId: string): DrawResult {
   return 'ok';
 }
 
+/**
+ * ★★ R123 — 지금 "다른 제시어"를 누르면 드는 포인트(0 = 무료 · null = 못 바꿈).
+ *   출제자 · 그리는 중 · 선이 없을 때 · 마지막으로 바꾼 때(처음엔 차례 시작)부터 10초 안 · 무료 1회 + 유료 최대 REROLL_PAID_MAX.
+ */
+export function rerollCostNow(room: Room, accountId: string, now = Date.now()): number | null {
+  const r = room.game?.draw?.cur;
+  if (!r || room.state !== 'DRAW' || r.phase !== 'draw' || accountId !== r.drawer) return null;
+  if (r.strokes.length > 0 || now - r.rerollFrom >= DRAW.REROLL_MS) return null;
+  if (r.rerolls >= 1 + DRAW.REROLL_PAID_MAX) return null;
+  return r.rerolls === 0 ? 0 : DRAW.REROLL_PAID_COST;
+}
+
+/** 바꿀 차례 표시(값을 낸 뒤 같은 차례 · 같은 횟수인지 확인할 때) */
+export function rerollTicket(room: Room): string | null {
+  const r = room.game?.draw?.cur;
+  return r ? `${room.game?.gameId}:${r.no}:${r.rerolls}` : null;
+}
+
 export function drawReroll(room: Room, accountId: string): DrawResult {
   const run = room.game?.draw;
   const r = run?.cur;
   if (!run || !r || room.state !== 'DRAW' || r.phase !== 'draw') return 'not_now';
-  if (accountId !== r.drawer || r.rerolled || r.strokes.length > 0 || Date.now() - r.phaseStartedAt >= DRAW.REROLL_MS) return 'bad';
+  if (rerollCostNow(room, accountId) === null) return 'bad';
   const word = pickDrawWord(run.store, r.participants, run.experienced, r.topic, run.usedItems, run.diffPlan[run.done] ?? null);
   if (!word) return 'bad';
   run.usedItems.add(word.item.id);
   run.lastTopic = word.set.topic;
   setWord(r, word);
   r.rerolled = true;
+  r.rerolls += 1;
+  r.rerollFrom = Date.now();
   r.hints = {};
   // ★ R090 — 다른 제시어면 옛 그림의 되돌리기 · 다시 실행도 버린다(지운 옛 그림이 새 제시어에 되살아나지 않게)
   r.hist = [];

@@ -97,7 +97,7 @@ export default function Seat({
         ? {
             role: 'button',
             tabIndex: 0,
-            title: pickTitle ?? `${player.nickname} — 강퇴 · 차단`,
+            title: pickTitle ?? `${player.nickname} — 강퇴, 차단`,
             onClick: onPick,
             onKeyDown: (e: React.KeyboardEvent) => {
               if (e.key === 'Enter' || e.key === ' ') {

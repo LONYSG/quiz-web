@@ -96,6 +96,15 @@ export function sendError(socket: Socket, code: ErrorCode, detail?: string | nul
   socket.emit('error', { code, message: message ?? ERROR_MESSAGES[code], detail: detail ?? null });
 }
 
+/**
+ * ★★ R123 (찬종 "오류가 개발자 말로 나온다") — 사람 말 한 줄이 곧 제목인 오류.
+ *   옛 꼴 sendError(s, 'BAD_REQUEST', 사람 말) 은 사람 말이 detail 로 가고 제목은 기본 "요청 형식이 올바르지 않습니다" 였다(원인).
+ *   detail 에도 같은 글을 싣는다(옛 봇이 detail 을 읽는다) — 화면(Toast)은 제목과 같은 detail 을 다시 그리지 않는다.
+ */
+export function sayError(socket: Socket, code: ErrorCode, text: string): void {
+  sendError(socket, code, text, text);
+}
+
 /** 검증을 통과한 핸들러가 받는 컨텍스트 */
 export interface Ctx<P = unknown> {
   seq: number;
@@ -206,7 +215,7 @@ export function onRoom<P = unknown>(
 
     // 4. 상태
     if (options.allowedStates && !options.allowedStates.includes(room.state)) {
-      sendError(socket, 'INVALID_STATE', `현재 상태: ${room.state}`);
+      sendError(socket, 'INVALID_STATE');
       return;
     }
 
