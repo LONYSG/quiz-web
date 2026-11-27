@@ -32,7 +32,15 @@ const SAY = {
     ['6에서 출발해 E, Q를 거쳐 U에서 가장 강해졌다가 J와 5로', '육에서 출발해 이, 큐를 거쳐 유에서 가장 강해졌다가 제이와 오로'], ['72초', '칠십이 초']],
   플로지스톤: [['17~18세기', '십칠, 십팔 세기']],
 };
-const sayOf = (ans, s) => { for (const [a, b] of SAY[ans]) s = s.split(a).join(b); return s; };
+// ★ 찬종 2026-11-27: 읽는 글에는 기호를 넣지 않는다 — "와우! 신호"를 "와우! (쉼) 신호"로 끊어 읽었다.
+//   이름(정답 · SAY 로 바꾼 낱말) 안의 기호 · 따옴표 · 괄호 · 가운뎃점을 뺀다. 문장 끝 . ! ? 와 쉼표는 둔다(억양). 화면 글(text)은 그대로.
+const bare = (name) => name.replace(/[!?‘’“”"'「」『』()（）·]/g, '').replace(/\s{2,}/g, ' ').trim();
+const plain = (ans, s) => s.split(ans).join(bare(ans))
+  .replace(/[‘’“”"'「」『』]/g, '')
+  .replace(/[()（）]/g, ' ')
+  .replace(/\s*·\s*/g, ', ')
+  .replace(/[ \t]{2,}/g, ' ');
+const sayOf = (ans, s) => { for (const [a, b] of SAY[ans]) s = s.split(a).join(b); return plain(ans, s); };
 const WD = ['일', '월', '화', '수', '목', '금', '토'];
 const NUM = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
 const kNum = (n) => { const t = Math.floor(n / 10), o = n % 10; return (t ? (t > 1 ? NUM[t] : '') + '십' : '') + NUM[o]; };
@@ -65,7 +73,7 @@ for (const n of process.argv.slice(2)) {
       no: q.no, id: null, difficulty: q.no, category: q.topic, topic: q.topic,
       question: q.question, answer: q.answer, also: ALSO[q.answer] || [], hint: q.hint,
       explanation: paras.join('\n\n'),
-      say: { question: sayOf(q.answer, q.question), hint: sayOf(q.answer, q.hint), answer: `정답은 ${q.answer}!`, explanation: sayParas.join('\n\n') },
+      say: { question: sayOf(q.answer, q.question), hint: sayOf(q.answer, q.hint), answer: `정답은 ${bare(q.answer)}!`, explanation: sayParas.join('\n\n') },
       paragraphs: paras.map((text, i) => ({ no: i + 1, text, say: sayParas[i] })),
       draw: { moment: gq.moment, care: gq.care, scenes: gq.scenes.map((s, i) => ({ para: i + 1, starts: paras[i].slice(0, 18) + '…', show: s.show, ...(s.text ? { text: s.text } : {}), ...(s.icon ? { icon: s.icon } : {}), ...(s.care ? { care: s.care } : {}) })) },
       sources: [],
