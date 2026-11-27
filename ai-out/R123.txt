@@ -1,7 +1,7 @@
 R123 (2026-11-27 13:30~15:40 · MAIN) — 찬종 첫 플레이 피드백: 같이 하기 방 설정 정리 + 혼자 하기 개편 · STATUS: 기능 끝 · 끝 점검 일부(찬종 요청으로 재부팅 전 멈춤 — 6 의 "남은 것")
 실 반영 필요: 있음 — 마이그레이션 0042_solo_items.sql(더하기만 · 메뉴 1 이 자동 적용) + 빌드. 새 env 없음(콘텐츠 줄이기 TRIM 은 코드 기본값 켬 · TRIM_OFF 는 검사 서버에서만 듣는다)
 모델: Opus 5.5 · 하위 에이전트 1(Opus — A1 '·' 걷기 · 안내 게임 규칙) · dev 3001(quizweb_dev) · 검사 서버(quizweb_test) · 실 DB 는 읽기만(솔로 풀 수 세기)
-커밋: A 9f4fe400(push) · B 55be61dc(push 는 GitHub 503 — VPN 으로 보임 · 끝에 다시) · 이 보고 커밋
+커밋: A 9f4fe400(push) · B 55be61dc(push) · 이 보고 커밋
 ★ 순서: 지시는 "A 끝나면 커밋 · push 하고 B"였는데 A 의 '·' 걷기를 하위 에이전트에 맡긴 동안 B 서버를 같이 진행했다 — 커밋은 파일로 A · B 를 나눴다(A 커밋만으로도 typecheck 가 되는 꼴).
 0. 시작할 때 실 서버(3000)가 꺼져 있었다 → play.mjs --no-build --code=keep(코드 그대로 911f8a30)로 켬 · quizdojang.com 터널 시작.
 
@@ -93,4 +93,4 @@ B8 아래 6.
   봇 solooff gongbang gongbangoff liar liarfool mgonly topicsets song lobby game difficulty generalhint topics again late result countdown full report emojiinline signup attack →
   그 밖 봇(R121 목록) 여유 있으면. ★ 봇 · ui-check 는 검사 서버를 TRIM_OFF=1 로 띄운다(r123 · trim · --r123 만 실제 규칙).
 - dev 3001 은 재부팅 전에 껐다(옛 빌드였음) — 다시 켤 때 새 빌드로.
-- push: B 커밋 55be61dc 와 이 보고 커밋은 GitHub 503 으로 아직 로컬 — VPN 끈 뒤 git push.
+- push: 전부 올라감(B 55be61dc · 이 보고 — 처음 503 이었다가 다시 됨)
