@@ -13,6 +13,7 @@ const eps = ledger.episodes || ledger;
 const outNo = { '04': 6, '05': 7 };
 const intro = {
   '04': '72초 동안 잡혔다가 다시는 들리지 않은 우주의 전파 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
+  '05': '소설 속에만 있던 주소로 진짜 편지가 쏟아진 탐정 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
 };
 const ALSO = { 에펠탑: ['에펠 탑'], 로제타석: ['로제타 스톤', '로제타 석'], '와우! 신호': ['와우 신호', '와우! 시그널', '와우 시그널'] };
 // 설명글 출처 — 2026-11-27 설계가 연 문서(각 새3.json 의 "설계 대조" 칸)
@@ -22,6 +23,11 @@ const SRC = {
   로제타석: ['· Wikipedia, 「Rosetta Stone」', '· Wikipedia, 「Jean-François Champollion」', '· E. A. Wallis Budge, 「The Rosetta Stone」 (1893)'],
   '와우! 신호': ['· Big Ear Radio Observatory, 「Wow! Signal - 30th Anniversary Report」 (2007)', '· Wikipedia, 「Wow! signal」'],
   플로지스톤: ['· Wikipedia, 「Phlogiston theory」', '· Wikipedia, 「Antoine Lavoisier」'],
+  '셜록 홈스': ['· Wikipedia, 「A Study in Scarlet」', '· Wikipedia, 「221B Baker Street」', '· Mental Floss, 「Who Answers Sherlock Holmes's Fan Mail?」'],
+  로봇: ['· Wikipedia, 「Robot」', '· Wikipedia, 「R.U.R.」'],
+  모노폴리: ['· Wikipedia, 「The Landlord's Game」'],
+  '노시보 효과': ['· CIDRAP, 「Most side effects noted in COVID vaccine trials may be due to 'nocebo effect'」 (2022-01-19)', '· EurekAlert!, 「Placebo effect accounts for more than two-thirds of COVID-19 vaccine adverse events」 (2022-01-18)', '· BMJ, 「When I use a word . . . Nocebo」 (2026-04-24)'],
+  '계획적 진부화': ['· Wikipedia, 「Phoebus cartel」'],
 };
 // 읽는 글: [바꿀 글, 읽을 글] — 질문 · 힌트 · 해설 모두에 차례로
 const SAY = {
@@ -31,12 +37,17 @@ const SAY = {
   '와우! 신호': [['1977년', '천구백칠십칠 년'], ['‘6EQUJ5’', '‘육 이 큐 유 제이 오’'], ['‘Wow!’', '‘와우’'], ['12초', '십이 초'], ['9를', '구를'],
     ['6에서 출발해 E, Q를 거쳐 U에서 가장 강해졌다가 J와 5로', '육에서 출발해 이, 큐를 거쳐 유에서 가장 강해졌다가 제이와 오로'], ['72초', '칠십이 초']],
   플로지스톤: [['17~18세기', '십칠, 십팔 세기']],
+  '셜록 홈스': [['221B', '이백이십일 비'], ['221번지', '이백이십일 번지']],
+  로봇: [['1920년', '천구백이십 년'], ['R.U.R.', '알 유 알']],
+  모노폴리: [],
+  '노시보 효과': [['코로나19', '코로나 일구'], ['1961년', '천구백육십일 년']],
+  '계획적 진부화': [['1920년대', '천구백이십 년대']],
 };
 // ★ 찬종 2026-11-27: 읽는 글에는 기호를 넣지 않는다 — "와우! 신호"를 "와우! (쉼) 신호"로 끊어 읽었다.
 //   이름(정답 · SAY 로 바꾼 낱말) 안의 기호 · 따옴표 · 괄호 · 가운뎃점을 뺀다. 문장 끝 . ! ? 와 쉼표는 둔다(억양). 화면 글(text)은 그대로.
-const bare = (name) => name.replace(/[!?‘’“”"'「」『』()（）·]/g, '').replace(/\s{2,}/g, ' ').trim();
+const bare = (name) => name.replace(/[!?‘’“”"'「」『』《》〈〉()（）·]/g, '').replace(/\s{2,}/g, ' ').trim();
 const plain = (ans, s) => s.split(ans).join(bare(ans))
-  .replace(/[‘’“”"'「」『』]/g, '')
+  .replace(/[‘’“”"'「」『』《》〈〉]/g, '')
   .replace(/[()（）]/g, ' ')
   .replace(/\s*·\s*/g, ', ')
   .replace(/[ \t]{2,}/g, ' ');
