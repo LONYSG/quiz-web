@@ -1,0 +1,24 @@
+R122 (2026-11-27 · MAIN) — 어느 창에서나 gpt 를 부르는 러너 scripts/gpt-run.mjs · STATUS: 끝
+실 반영 필요: 없음(서버 코드 아님)
+모델: Opus 5.5 · 하위 에이전트 없음
+
+만든 것
+- scripts/gpt-run.mjs(쓰는 법 = 머리 주석) · gpt-run.bat(일꾼 창) · docs/16 §8 "gpt 부르기(모든 창)". AGENTS.md 3-3(gpt 쪽 규칙)은 이미 있어 그대로.
+- 부르면 tmp/gpt-run/queue/<id>.json 에 적고 일꾼이 없으면 떨어진 창(Start-Process · 최소화)을 띄움 → 일꾼이 줄을 하나씩 · 비면 끝. 잠금 tmp/gpt-run.lock(죽은 pid 무시 · 만들기는 wx 로 하나만).
+- 상태 tmp/gpt-run/<id>.json(queued · running · done · failed · limit · 분 · tokens · 마지막 한 줄) · 기록 tmp/gpt-run.log · --wait(5초마다 · 60분) · --status 표.
+- 끝 판정: --out 마다 JSON 이면 "done": true · 아니면 비어 있지 않음 · 쓰기 모드는 이번 실행 중에 새로 쓴 파일이어야 함(전에 있던 done 파일로 잘못 통과하지 않게). 안 되면 한 번 더 → failed.
+- 한도: stderr · 마지막 메시지에 "hit your usage limit · usage limit · rate limit · try again at · quota · 429"(실제 문구는 ~/.codex/sessions 기록 "You’ve hit your usage limit … try again at …") → limit · 줄 멈춤 · 그 일과 남은 일은 줄에 남아 다시 부르면 이어서.
+- 일 하나 60분 넘으면 끊음. gpt-cards.mjs 는 그대로.
+
+astra 실제 이름: gpt-6.2-astra(~/.codex/models_cache.json "Our most capable model…" · 시험 ① 을 --model astra 로 불러 됨) · 표 MODELS 에 sol = gpt-6.2-sol 도.
+
+시험(돈 적게 · 다 지움)
+① --read --model astra "AGENTS.md 3 번 목록 몇 종류" → done 0.5분 · 24,868 tokens · "17종"
+② 쓰기 tmp/gpt-run-test.json {"done":true,"n":3} → done 0.3분 · 22,894 tokens
+③ 둘을 연달아 → 차례로 돎(읽기 끝 06:11:41 → 쓰기 06:12:00) · 두 번째 판에서 --wait = "done — 0.3분 · tokens 11726 · …" rc 0
+④ --status 표 OK · 시험 뒤 git status 에 gpt 가 쓴 다른 파일 없음
+
+걸린 것
+- 처음엔 일꾼 창이 안 떴다: node 가 powershell 을 detached 로 띄우고 바로 끝나면 아직 Start-Process 전인 powershell 이 같이 정리됨 → Start-Process 를 끝까지 기다리게(spawnSync) 고친 뒤 ③ 에서 저절로 뜸.
+- 기록 시각이 UTC 였다 → 이 PC 시각(KST)으로(앞 시험 두 줄은 UTC 06:1x 로 남음).
+- 한도 길은 실제로 걸어 보지 못함(일부러 한도를 낼 수 없음) — 문구 맞춤만.
