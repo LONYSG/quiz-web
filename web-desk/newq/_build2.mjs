@@ -36,20 +36,24 @@ if (process.argv.includes('--sparse')) {
 }
 
 const plan = JSON.parse(readFileSync(arg('--plan'), 'utf8'));
-const GRADE = { 1: '쉬움(등급 1) — 친구들 대부분이 들어 봤거나, 들으면 "아 그거!" 하는 것', 4: '어려움(등급 4)', 5: '어려움(등급 5)' };
+const GRADE = { 1: '쉬움(등급 1) — 친구들 대부분이 들어 봤거나, 들으면 "아 그거!" 하는 것', 4: '어려움(등급 4)', 5: '어려움(등급 5)',
+  2: '쉬움(등급 2) — 퀴즈에 익숙하지 않은 20~30대도 10초 안에 대부분 맞힌다(이름이 한 번 생각나야 하는 정도 · docs/19)',
+  3: '보통(등급 3) — 퀴즈 좋아하는 대졸 넷이 힌트를 보고 맞히는 일이 많다(방 정답률 45~70% · 교과 · 뉴스에서 본 낱말 · docs/19)' };
+const LANE = { 1: 'easy', 2: 'easy', 3: 'mid', 4: 'hard', 5: 'hard' };
 for (const p of plan) {
-  const key = 6001 + (+p.nn - 1) * 20;
+  const key = 6001 + (+p.nn - 1) * 20; const per = p.per || 10;
+  if (per > 20) throw new Error('한 조각 20 까지(key 칸이 20)');
   const parts = p.subs.map((k) => { const o = subs.get(k); if (!o) throw new Error(`없는 소분류: ${k}`); return [k, o]; });
   const majs = new Set(parts.map(([k]) => k.split(' > ')[0]));
-  const t = `조각 ${p.nn} — 새 문항 재료 10개(지시서대로 · chunk = "${p.nn}") · ★ 새 방식: 소분류 두 칸만 판다
-- 길: ${GRADE[p.grade]} · "lane": "${p.lane}" · "grade": ${p.grade}
+  const t = `조각 ${p.nn} — 새 문항 재료 ${per}개(지시서대로 · chunk = "${p.nn}") · ★ 새 방식: 소분류 두 칸만 판다
+- 길: ${GRADE[p.grade]} · "lane": "${p.lane || LANE[p.grade]}" · "grade": ${p.grade}
 - 칸(이 두 소분류에서만 · 반씩 비슷하게):
 ${parts.map(([k, o]) => `  · ${k}  (지금 게임에 ${o.act}개)`).join('\n')}
 - "major" = 칸의 첫 이름 · "mid" = 둘째 이름 · ★ "sub" = 셋째 이름(소분류)을 재료마다 더 적는다.
 - key: n${key} 부터 차례로(n${key}, n${key + 1}, …)
 - ★ 이 칸에 이미 있는 정답 — 이것과 같은 대상(다른 표기 · 영어 이름 포함)은 만들지 않는다. 프로젝트의 "_있는정답.txt"(전체 목록)도 그대로 피한다.
 ${parts.map(([k, o]) => `  · ${k.split(' > ')[2]}: ${o.answers.length ? o.answers.join(' · ') : '(없음)'}`).join('\n')}
-- 칸이 좁아도 기준은 그대로다: 어려운 것은 이름을 몰라도 "오~ 이런 개념이" 하는 배울 가치가 있는 것 — 자잘한 사람 이름 · 작은 지명 · 마니아만 아는 것은 내지 않는다. 쉬운 것은 정말 널리 아는 것만. 모자라면 10개를 못 채워도 된다.
+- 칸이 좁아도 기준은 그대로다: 어려운 것은 이름을 몰라도 "오~ 이런 개념이" 하는 배울 가치가 있는 것 — 자잘한 사람 이름 · 작은 지명 · 마니아만 아는 것은 내지 않는다. 쉬운 것은 정말 널리 아는 것만. 모자라면 ${per}개를 못 채워도 된다.${per > 10 ? ' 길어서 끊기면 "남은 개수: N" 으로 멈춘다(지시서 8절) — "계속" 하면 이어 쓴다.' : ''}
 `;
   writeFileSync(H + `보낼것/조각-${p.nn}.txt`, t);
   if (!existsSync(H + `받은것/결과-${p.nn}.json`)) writeFileSync(H + `받은것/결과-${p.nn}.json`, '');

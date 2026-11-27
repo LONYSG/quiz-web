@@ -4,6 +4,7 @@
 //     --out    gpt 가 쓸 수 있는 파일 전부(이것 말고는 쓰지 않는다 — 프롬프트에 박는다)
 //     --read   의견 묻기: 샌드박스 read-only · 답(마지막 메시지 전체)을 --out 첫 경로에 받는다
 //     --model  없으면 Codex 기본(~/.codex/config.toml) · astra = 상위 모델(아래 MODELS 표) · 그 밖의 값은 그대로 -m 으로
+//     --search 웹 검색 켜기(codex --search exec — --search 는 exec 앞 · 2026-11-27 재료 조사 시범)
 //     --label  기록 · 상태에 보일 짧은 이름(없으면 brief 파일 이름)
 //     --wait   상태 파일이 끝날 때까지 기다렸다가(5초마다 · 최대 60분) 결과 한 줄을 찍는다. 없으면 id 만 찍고 끝
 //   node scripts/gpt-run.mjs --status   줄 · 도는 것 · 최근 10개
@@ -57,10 +58,11 @@ function enqueue() {
   const out = outRaw.split(',').map((s) => s.trim()).filter(Boolean).map(rel);
   const read = flag('--read');
   const model = opt('--model') || '';
+  const search = flag('--search');
   const label = (opt('--label') || path.basename(brief, path.extname(brief))).replace(/[^\p{L}\p{N}_-]+/gu, '-').slice(0, 40);
   const t = new Date();
   const id = `${local(t).replace(/[-:]/g, '').replace('T', '-').slice(0, 15)}${String(t.getMilliseconds()).padStart(3, '0')}-${label}`;
-  const job = { id, label, brief: rel(brief), out, read, model, queuedAt: stamp() };
+  const job = { id, label, brief: rel(brief), out, read, model, search, queuedAt: stamp() };
   writeJson(statusPath(id), { ...job, state: 'queued' });
   writeJson(`${QDIR}/${id}.json`, job);
   log(job, 'queued');
@@ -108,7 +110,7 @@ function check(job, before) {
 const runCodex = (job) => new Promise((resolve) => {
   const lastFile = job.read ? job.out[0] : `${DIR}/${job.id}.last.txt`;
   if (job.read) fs.mkdirSync(path.dirname(lastFile), { recursive: true });
-  const a = ['exec', '-s', job.read ? 'read-only' : 'workspace-write', '--skip-git-repo-check', '-o', lastFile];
+  const a = [...(job.search ? ['--search'] : []), 'exec', '-s', job.read ? 'read-only' : 'workspace-write', '--skip-git-repo-check', '-o', lastFile];
   if (job.model) a.push('-m', MODELS[job.model] || job.model);
   a.push('-');
   const p = spawn('codex', a, { shell: true, stdio: ['pipe', 'ignore', 'pipe'] });
