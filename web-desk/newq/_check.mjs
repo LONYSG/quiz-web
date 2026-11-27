@@ -12,7 +12,7 @@ import { normalizeAnswer } from '../../shared/dist/normalize.js';
 import { dictCheck } from '../../scripts/dict-check.mjs';
 process.chdir('C:/work/quiz-web');
 const H = 'web-desk/newq/';
-const OUT = 'web-desk/tone/보낼것/';
+const OUT = process.env.NEWQ_OUT || 'web-desk/tone/보낼것/'; // NEWQ_OUT = 다른 곳에 써 보기(되살린 것만 뽑을 때)
 const CACHE = H + '_cache/'; mkdirSync(CACHE, { recursive: true });
 const DRY = process.argv.includes('--dry'), NOFETCH = process.argv.includes('--no-fetch');
 const args = process.argv.slice(2).filter((x) => !x.startsWith('--'));
@@ -37,13 +37,14 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const page = new Map();
 async function getText(url) {
   if (page.has(url)) return page.get(url);
-  const key = CACHE + Buffer.from(url).toString('base64url').slice(0, 150) + '.txt';
+  // ★ 2026-11-27: 위키는 보이는 그대로의 HTML(rest_v1) — 전에는 wikitext 의 {{…}} 틀을 통째로 지워 '9 metres (30 ft)' 같은 글자가 사라져 맞는 인용이 떨어졌다. 캐시 이름도 h- 로 새로.
+  const key = CACHE + (/wikipedia\.(org|com)\/wiki\//i.test(url) ? 'h-' : '') + Buffer.from(url).toString('base64url').slice(0, 150) + '.txt';
   if (existsSync(key)) { const t = readFileSync(key, 'utf8'); page.set(url, t); return t; }
   let u = url, t = null;
   // 언어 없는 위키 주소(www.wikipedia.org · wikipedia.com — web 이 가끔 이렇게 적는다)는 영어판으로 본다
   const url2 = url.replace(/^https?:\/\/(?:(www|[a-z-]{2,12})\.)?(?:m\.)?wikipedia\.(?:org|com)\/wiki\//i, (m, l) => `https://${!l || /^www$/i.test(l) ? 'en' : l.toLowerCase()}.wikipedia.org/wiki/`);
   const w = url2.match(/^https?:\/\/([a-z-]+)\.(?:m\.)?wikipedia\.org\/wiki\/([^#?]+)/);
-  if (w) u = `https://${w[1]}.wikipedia.org/w/index.php?title=${w[2]}&action=raw`;
+  if (w) u = `https://${w[1]}.wikipedia.org/api/rest_v1/page/html/${w[2]}`;
   for (let i = 0; i < 3 && t === null; i++) {
     try {
       const r = await fetch(u, { headers: { 'User-Agent': 'quiz-research/1.0' }, redirect: 'follow', signal: AbortSignal.timeout(20000) });
@@ -53,13 +54,13 @@ async function getText(url) {
     } catch { await sleep(2000); }
   }
   t ??= '';
-  if (!w) t = t.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&#039;/g, "'");
-  else t = t.replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1').replace(/'{2,}/g, '').replace(/<ref[\s\S]*?(<\/ref>|\/>)/g, ' ').replace(/\{\{[^{}]*\}\}/g, ' ');
+  if (w) t = t.replace(/<sup[^>]*class="[^"]*reference[^"]*"[\s\S]*?<\/sup>/gi, '');
+  t = t.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;|&#039;/g, "'").replace(/&#(\d+);/g, (m, d) => String.fromCodePoint(+d)).replace(/&#x([0-9a-f]+);/gi, (m, h) => String.fromCodePoint(parseInt(h, 16)));
   if (t) writeFileSync(key, t);
   page.set(url, t); await sleep(400);
   return t;
 }
-const sq = (s) => String(s ?? '').normalize('NFC').replace(/[\s"'“”‘’「」『』《》〈〉()\[\]·.,:;!?…—–\-]/g, '').toLowerCase();
+const sq = (s) => String(s ?? '').normalize('NFC').replace(/&lt;|&gt;|&#\d+;/g, '').replace(/[\s"'“”‘’「」『』《》〈〉<>()\[\]·.,:;!?…—–\-]/g, '').toLowerCase();
 async function quoteOk(o) {
   if (!o?.url || !o?.quote || bad.test(o.url)) return false;
   if (NOFETCH) return true;
