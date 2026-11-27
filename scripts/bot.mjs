@@ -9123,7 +9123,8 @@ async function scenarioLiar() {
   await host.waitFor(() => host.since(m, 'lobby.settingsUpdated').some((e) => Array.isArray(e.settings?.liarTopics) && e.settings.liarTopics.length === 0), 4000, '주제 0');
   m = host.mark();
   host.socket.emit('game.start', {});
-  await sleep(500);
+  // ★ R123 — 고정 0.5초 대신 막힘 알림을 기다린다(PC 가 바쁘면 주제 읽기가 0.5초를 넘겨 우연 실패했다)
+  await host.waitFor(() => host.since(m, 'error').length > 0, 5000, '주제 0 막힘').catch(() => {});
   expectTrue('★★★ R090 주제 0 개 → 시작 막힘 "하나 이상 골라"', host.since(m, 'error').some((e) => /하나 이상 골라/.test(`${e.message} ${e.detail ?? ''}`)), JSON.stringify(host.since(m, 'error')));
   m = host.mark();
   host.socket.emit('lobby.updateSettings', { questionCount: 5, liarTopics: picked });
@@ -9157,7 +9158,9 @@ async function scenarioLiar() {
           await sleep(250);
         }
         say(`한마디 ${b.name}`);
-      } else if (r === 1 && v.says.length === 0 && v.order[1] === me) {
+      } else if (r === 1 && v.says.length === 0 && v.order[v.order.length - 1] === me) {
+        // ★ R123 — 끼어드는 사람 = 마지막 차례(전엔 둘째 차례 — 첫 사람이 이미 말한 뒤 도착하면 자기 차례 설명으로 받아들여져
+        //   키워드 시험 차례가 사라지는 우연 실패가 있었다)
         say('끼어들기 설명'); // ★ 차례 아닌 설명 → 거부
         b.chat('끼어들기 채팅'); // ★ 차례 아닌 채팅 → 통과(R087)
       }
