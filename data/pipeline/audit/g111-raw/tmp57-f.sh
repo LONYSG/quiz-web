@@ -1,1 +1,0 @@
-f(){ n="$1"; t="$2"; l="${3:-ko}"; for i in 1 2 3 4; do curl -s -A "quiz-research/1.0" "https://$l.wikipedia.org/w/index.php?title=$(node -e "console.log(encodeURIComponent(process.argv[1]))" "$t")&action=raw" -o "$n.txt"; if head -c 300 "$n.txt" | grep -q "Wikimedia Error"; then sleep 20; else break; fi; done; echo "$n $(wc -c < $n.txt) $(head -c 80 $n.txt | tr '\n' ' ')"; }
