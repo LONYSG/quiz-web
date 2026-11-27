@@ -2,7 +2,7 @@
 // ★★★ R118 (docs/24 4절) — 혼자 하기 소켓 이벤트. 스위치 SOLO 가 꺼져 있으면 전부 거절(INVALID_STATE) — 오늘과 같다.
 //
 //   화면 → 서버: solo.start { items? } · solo.answer { n, text } · solo.away { n } · solo.quit {} · solo.sync {} · ★ R123 solo.item { n, kind } · solo.next { n }
-//   서버 → 화면: solo.started { lives } · solo.question · solo.result · solo.end · solo.state(다시 붙음) · solo.none(도는 판 없음) ·
+//   서버 → 화면: solo.started { lives, firstAt }(★ R124 카운트다운 끝 · 첫 문제가 나가는 때) · solo.question · solo.result · solo.end · solo.state(다시 붙음) · solo.none(도는 판 없음) ·
 //               ★ R123 solo.wrong { n }(틀린 답 즉시) · solo.item { n, kind, text, items } · solo.count { n, countAt, nextAt }(해설 중 Enter)
 //   ★ 방에 있는 사람은 솔로를 시작할 수 없고, 솔로 중에는 방에 들어갈 수 없다(방 쪽은 socket/index.ts 가 soloRunning 을 본다).
 // =============================================================================
@@ -20,12 +20,14 @@ const nOf = (obj: Record<string, unknown> | null): number | null => (obj && type
 export function registerSoloHandlers(socket: Socket): void {
   // ★ R123 — 시작 전에 고른 아이템(0~3개씩 · 모르는 값은 0)
   on<{ items: SoloItemCounts }>(socket, 'solo.start', { parse: (raw) => ({ items: soloItemCounts(parseObject(raw)?.items) }) }, async ({ socket: s, session, payload }) => {
+    // ★★ R124 — 도착 시각 = 카운트다운의 기준(화면은 누른 순간부터 3 · 2 · 1)
+    const arrivedAt = Date.now();
     if (!config.solo) return sayError(s, 'INVALID_STATE', OFF);
     if (getRoomOfAccount(session.accountId)) {
       const m = '방에서 나온 뒤 혼자 하기를 할 수 있어요.';
       return sayError(s, 'ALREADY_HAS_ROOM', m);
     }
-    const fail = await startSolo(s, session.accountId, (s.data as SocketData).site ?? null, payload.items);
+    const fail = await startSolo(s, session.accountId, (s.data as SocketData).site ?? null, payload.items, arrivedAt);
     // ★ R123 — 사람 말이 제목(오류 코드는 화면에 안 보인다)
     if (fail) sayError(s, fail.code === 'RATE' ? 'RATE_LIMITED' : fail.code === 'NO_QUESTIONS' ? 'NOT_ENOUGH_QUESTIONS' : 'INVALID_STATE', fail.message);
   });

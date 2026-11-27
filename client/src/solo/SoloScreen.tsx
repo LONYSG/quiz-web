@@ -10,6 +10,9 @@
 //   ★ 앱 CSS · 지금 부품만 — 새 값은 R118 · R123 블록의 배치뿐.
 //   ★ 화면을 벗어나면(visibilitychange · blur) 그 문제는 실패(4-5) — 시작 화면에 미리 알린다.
 //   ★★ R123 B1 — 로비가 이미 들고 있는 내 기록(initialMe)으로 첫 그림부터 다 그린다 · 새로 받기는 판이 끝난 뒤 조용히.
+//   ★★ R124 (찬종 "답 처리가 너무 느려" · "카운트다운 후에 시작" · "끝난 뒤 문제가 ... 로 생략") —
+//     [시작] = 곧바로 3 · 2 · 1(같이 하기의 Countdown 부품 · tick 소리) → 첫 문제 · 분명히 틀린 답은 서버를 기다리지 않고 곧바로 흔든다 ·
+//     끝 화면 틀린 문제 = 질문 · 정답 · 해설 전부(말줄임 없음 · 줄바꿈)
 // =============================================================================
 
 import { useEffect, useRef, useState } from 'react';
@@ -35,6 +38,7 @@ import {
 } from '@quiz/shared';
 import type { LucideIcon } from 'lucide-react';
 import ConfirmModal from '../ConfirmModal.js';
+import Countdown from '../Countdown.js';
 import Icon from '../Icon.js';
 import Notice from '../Notice.js';
 import PopupClose from '../PopupClose.js';
@@ -162,7 +166,7 @@ function BeltTable({ me, onClose }: { me: SoloMeView; onClose: () => void }) {
 }
 
 export default function SoloScreen({ socket, serverNow, resume, onClose, initialMe = null, onMe }: Props) {
-  const { s, start, answer, away, quit, item, next, reset } = useSolo(socket, resume);
+  const { s, start, answer, away, quit, item, next, reset } = useSolo(socket, resume, serverNow);
   const belt = siteInfo().belt;
   const [me, setMe] = useState<SoloMeView | null>(initialMe);
   const [draft, setDraft] = useState('');
@@ -208,7 +212,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
 
   // 남은 시간 · 해설 · 카운트 — 100ms 마다(보여 주기만 · 마감은 서버)
   useEffect(() => {
-    if (s.phase !== 'play' && s.phase !== 'end') return;
+    if (s.phase !== 'play' && s.phase !== 'end' && s.phase !== 'starting') return;
     const id = window.setInterval(() => setNow(serverNow()), 100);
     return () => window.clearInterval(id);
   }, [s.phase, serverNow]);
@@ -249,6 +253,12 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
     if (dots > dotsRef.current && dots >= 1) sfx('nextCount');
     dotsRef.current = dots;
   }, [dots]);
+  // ★★ R124 — 시작 카운트다운 소리(같이 하기와 같은 tick · 1초에 하나)
+  const countEndsAt = s.q === null && s.phase !== 'end' ? s.countEndsAt : null;
+  const startSec = countEndsAt !== null ? Math.max(0, Math.ceil((countEndsAt - now) / 1000)) : 0;
+  useEffect(() => {
+    if (startSec > 0) sfx('tick');
+  }, [startSec]);
   // 마지막 문제(목숨 0): 해설 시간이 끝나면 끝 화면
   const explainUntil = s.last?.explainUntil ?? 0;
   const finalExplain = s.phase === 'end' && s.last !== null && s.last.nextAt === null && !endSeen;
@@ -307,7 +317,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
   const send = () => {
     const t = draft.trim();
     if (!t || !active || !s.q) return;
-    answer(s.q.n, t);
+    answer(s.q, t);
     setDraft('');
   };
 
@@ -346,7 +356,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
   );
 
   // ── 시작
-  if (s.phase === 'start' || (s.phase === 'starting' && !resume)) {
+  if (s.phase === 'start') {
     const cost = soloItemsCost(pick);
     const bal = points;
     const after = bal === null ? null : bal - cost;
@@ -426,7 +436,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
             setBought(cost > 0);
             start(cost > 0 ? pick : undefined);
           }}
-          disabled={s.phase === 'starting' || (after !== null && after < 0)}
+          disabled={after !== null && after < 0}
         >
           시작
         </button>
@@ -444,7 +454,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
     return (
       <div className="solo-screen solo-end" data-solo="end">
         {head('혼자 하기 끝', null)}
-        <section className="card solo-result" data-solo-score={e.correct}>
+        <section className={`card solo-result${e.wrongs.length > 0 ? ' compact' : ''}`} data-solo-score={e.correct}>
           <small className="dim">이번 기록</small>
           <b className="solo-huge mono">{e.correct}</b>
           <small>
@@ -460,13 +470,16 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
             </p>
           )}
         </section>
-        {/* ★ R123 B7 — 해설은 판 중에 봤으니 질문 짧게 + 정답만(한 화면 · 스크롤 없음) */}
+        {/* ★ R123 B7 → ★★ R124 3-2(찬종 "... 로 생략되어 있고 눌러 봐도 안 나와") — 질문 · 정답 · 해설 전부(말줄임 없음 · 접지 않음) */}
         {e.wrongs.length > 0 && (
           <section className="card solo-wrongs" aria-label="틀린 문제" data-solo-wrongs>
             {e.wrongs.map((w) => (
               <div key={w.n} className="solo-wq" data-wq={w.n}>
                 <p className="solo-wq-text">{w.text}</p>
-                <b>{w.answer}</b>
+                <p className="solo-wq-ans">
+                  <small className="dim">정답</small> <b>{w.answer}</b>
+                </p>
+                {w.explanation && <p className="solo-wq-expl dim">{w.explanation}</p>}
               </div>
             ))}
           </section>
@@ -520,7 +533,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
           <small>맞힌 개수</small>
           <b className="mono" data-solo-correct>{s.correct}</b>
         </span>
-        <button type="button" className="ghost tiny solo-quit" onClick={() => setQuitOpen(true)} disabled={s.phase === 'end'}>
+        <button type="button" className="ghost tiny solo-quit" onClick={() => setQuitOpen(true)} disabled={s.phase === 'end' || s.phase === 'starting'}>
           그만하기
         </button>
       </div>
@@ -581,6 +594,10 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
             )}
             {last && explaining && !mobile && <small className="dim solo-skip-hint">Enter 로 넘어가기</small>}
           </>
+        ) : countEndsAt !== null ? (
+          <div className="solo-countdown" data-solo-countdown={startSec}>
+            <Countdown socket={socket} endsAt={countEndsAt} serverNow={serverNow} isHost={false} />
+          </div>
         ) : (
           <p className="dim solo-wait">문제를 고르는 중…</p>
         )}

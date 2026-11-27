@@ -316,8 +316,9 @@ export async function r123Flow(ctx) {
   await S.waitFor("document.querySelector('[data-solo=\"end\"]') !== null", 20000);
   await S.waitFor("document.querySelector('[data-solo-promo]') === null", 6000).catch(() => false);
   await sleep(400);
-  const end = await J(S, "({ meta: document.querySelector('[data-solo-end-meta]')?.innerText ?? '', wq: document.querySelectorAll('[data-wq]').length, expl: document.querySelectorAll('.solo-wrongs small').length })");
-  record('★★ R123 B6 · B7 끝 — 쓴 아이템 · 돌려받음 · 틀린 문제는 질문 + 정답만(해설 없음)', end.meta.includes('쓴 아이템') && end.meta.includes('돌려받음') && end.expl === 0, JSON.stringify(end));
+  const end = await J(S, "({ meta: document.querySelector('[data-solo-end-meta]')?.innerText ?? '', wq: document.querySelectorAll('[data-wq]').length, ans: document.querySelectorAll('.solo-wrongs .solo-wq-ans').length, ell: [...document.querySelectorAll('.solo-wq-text')].some((p) => getComputedStyle(p).textOverflow === 'ellipsis') })");
+  // ★ R124 3-2 — R123 B7 의 "질문 한 줄 + 정답(해설 뺌)"을 바꿨다: 질문 · 정답 · 해설 전부(말줄임 없음)
+  record('★★ R123 B6 끝 — 쓴 아이템 · 돌려받음 · ★ R124 3-2 틀린 문제마다 정답 줄 · 말줄임 없음', end.meta.includes('쓴 아이템') && end.meta.includes('돌려받음') && end.ans === end.wq && !end.ell, JSON.stringify(end));
   const bal = await withPg(async (c) => {
     const a = (await c.query(`SELECT id FROM accounts WHERE login_id = $1`, [loginId])).rows[0];
     return (await c.query(`SELECT coalesce(sum(amount), 0)::int AS spent FROM point_spends WHERE account_id = $1 AND reason = 'solo-item'`, [a.id])).rows[0].spent;

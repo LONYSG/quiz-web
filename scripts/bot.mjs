@@ -165,6 +165,8 @@ const SCENARIO_ENV = {
   solo: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '1500', SOLO_TEST_NEXT_MS: '150', SOLO_TEST_RECONNECT_MS: '2000' },
   // ★★ R123 — 줄이기(기본 TRIM) · 유료 다른 제시어 · 혼자 하기 아이템 · 해설 Enter(해설 · 카운트는 진짜 시간 — NEXT_MS 없음)
   r123: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '4000', DRAW_ROUND_MS: '20000' },
+  // ★★ R124 — 실제 카운트다운 3초 · 해설은 solo.next 로 넘김(문제 시간만 줄임)
+  r124: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '6000' },
   attack: {
     RESOLVED_WAIT_MS: '200',
     HOST: '0.0.0.0',
@@ -182,7 +184,7 @@ const SCENARIO_ENV = {
 };
 // ★★ R123 — 검사 서버는 기본으로 콘텐츠 줄이기를 끈다(TRIM_OFF=1 — 미니게임만 · 주제 고르기 · 노래 연대/장르 같은 옛 경로를 그대로 시험한다).
 //   줄인 실제 규칙(기본값)은 시나리오 r123 · trim 이 본다(그 둘은 TRIM_OFF 없이).
-const SERVER_ENV = ['r123', 'trim'].includes(scenario) ? (SCENARIO_ENV[scenario] ?? {}) : { TRIM_OFF: '1', ...(SCENARIO_ENV[scenario] ?? {}) };
+const SERVER_ENV = ['r123', 'r124', 'trim'].includes(scenario) ? (SCENARIO_ENV[scenario] ?? {}) : { TRIM_OFF: '1', ...(SCENARIO_ENV[scenario] ?? {}) };
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SERVER_ENTRY = path.join(ROOT, 'server', 'dist', 'index.js');
 let bootedServer = null;
@@ -11399,6 +11401,7 @@ const SCENARIOS = {
   solooff: scenarioSoloOff,
   // ★★★ R123 — 줄이기(기본 TRIM) · 유료 다른 제시어 · 혼자 하기 아이템 · 해설 Enter (scripts/bot-r123.mjs)
   r123: () => r123Scenarios().r123(),
+  r124: () => r123Scenarios().r124(),
   trim: () => r123Scenarios().trim(),
 };
 function r123Scenarios() {

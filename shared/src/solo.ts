@@ -20,6 +20,13 @@ export const SOLO = {
   EXPLAIN_MAX_MS: 12_000,
   /** ★ R123 (찬종 고름) — 정답이 띄어쓰기 빼고 이 글자 수를 넘는 문제는 솔로 풀에서 뺀다 */
   ANSWER_MAX_CHARS: 6,
+  /**
+   * ★★ R124 (찬종 "처음 게임 시작할 때 카운트다운 후에 시작되도록") — [시작]을 누르면 곧바로 3 · 2 · 1 → 첫 문제.
+   *   판 준비(아이템 값 · 판 기록 · 문제 고르기)는 이 사이에 돈다 · 첫 문제 시간은 문제가 나간 때부터 센다(카운트다운에 안 깎인다).
+   */
+  START_COUNT_MS: 3_000,
+  /** ★★ R124 (찬종 "솔로하기에서 이모지 문제는 나오지 않게") — 질문에 이모지 그림이 이만큼 이상이면 이모지 문제(솔로 풀에서 뺀다) */
+  EMOJI_QUESTION_MIN: 2,
   /** 마감 뒤 통신 여유 — 도착이 마감 + 이만큼을 넘으면 무효(4-5) */
   GRACE_MS: 300,
   /** 끊긴 채 이만큼 지나면 그때까지 기록으로 끝(4-5 · 4-7) — 문제 시계는 그동안에도 간다 */
@@ -204,6 +211,24 @@ export function soloAnswerFits(displayAnswer: string): boolean {
   return [...displayAnswer.replace(/\s+/g, '')].length <= SOLO.ANSWER_MAX_CHARS;
 }
 
+/**
+ * ★★ R124 — 이모지 문제인가(질문이 이모지 그림으로 된 문제 · 솔로 풀에서 뺀다).
+ *   가르는 기준 = 질문 속 **그림으로 그려지는 이모지 글자 묶음** 수(Emoji_Presentation · 이모지 꼴 표시 U+FE0F · 국기 조각) ≥ EMOJI_QUESTION_MIN.
+ *   ♯ · ♂ · ♀ 같은 글자 꼴 기호(Extended_Pictographic 이지만 그림 표시가 아님)는 세지 않는다 —
+ *   실 DB 2026-11-28: 이 기준 1,207문항 = 질문에 "이모지"가 든 문항 1,207 과 같다(그 밖 0 · 기호 든 일반 문항 2개는 0개로 셈).
+ */
+const EMOJI_PRESENT_RE = /\p{Emoji_Presentation}|\uFE0F|\p{Regional_Indicator}/u;
+let emojiSeg: Intl.Segmenter | null = null;
+export function isEmojiQuestion(text: string): boolean {
+  if (!EMOJI_PRESENT_RE.test(text)) return false;
+  emojiSeg ??= new Intl.Segmenter('und', { granularity: 'grapheme' });
+  let n = 0;
+  for (const { segment } of emojiSeg.segment(text)) {
+    if (EMOJI_PRESENT_RE.test(segment) && ++n >= SOLO.EMOJI_QUESTION_MIN) return true;
+  }
+  return false;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // ★★ R123 — 아이템(찬종 2026-11-27): 힌트 5P · 초성 10P · 넘기기 30P · 판마다 시작 전에 0~3개씩
 //   시작할 때 고른 만큼 차감(point_spends 'solo-item' 한 줄) · 안 쓰고 남은 것은 판이 끝나면 돌려준다.
@@ -251,6 +276,12 @@ export interface SoloQuestionView {
   /** 이 문제에서 연 힌트 · 초성(다시 붙을 때 다시 보이게) */
   hint?: string | null;
   initial?: string | null;
+  /**
+   * ★★ R124 — "분명히 틀린 답" 미리 보기(찬종 "틀리면 바로바로 새 답"): 정답 열쇠(정규화 ∪ 표준형)의 10비트 통 번호 · 문제마다 다른 소금.
+   *   화면은 친 답의 열쇠(answerProbeKeys)가 어느 통에도 안 들면 곧바로 흔든다(서버 왕복을 기다리지 않음) · 통에 들면 지금처럼 서버 판정을 기다린다.
+   *   판정의 정본은 그대로 서버다(답은 늘 보낸다 · 기록 · 목숨 · 맞힘은 서버만).
+   */
+  probe?: { salt: number; buckets: number[] };
 }
 
 export interface SoloResultView {

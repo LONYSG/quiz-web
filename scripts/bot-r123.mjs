@@ -250,7 +250,71 @@ export function makeR123({ makeBots, Bot, withDb, sleep, expect, expectTrue, che
     a.disconnect();
   }
 
+  // ★★ R124 — 시작 카운트다운(누른 때 + 3초에 첫 문제 · 첫 문제 시간 안 깎임) · 카운트다운 중 다시 붙기 · 틀린 답 미리 보기(probe) ·
+  //   첫 다섯 문제(맞힌 수 5 전) 등급 1 · 이모지 문제 안 나옴 · 판정은 그대로 서버(미리 보기가 틀렸다 해도 서버 solo.wrong 은 온다)
+  async function soloR124Part() {
+    const sh = await import(new URL('../shared/dist/index.js', import.meta.url).href);
+    const [a] = await makeBots(1);
+    await a.connect();
+    const aId = await idOf(a);
+    await withDb((c) => c.query(`DELETE FROM solo_runs WHERE account_id = $1`, [aId]));
+    let from = a.mark();
+    const sentAt = Date.now();
+    a.socket.emit('solo.start', {});
+    await a.waitFor(() => a.since(from, 'solo.started').length > 0, 6000, '시작');
+    const st = a.since(from, 'solo.started')[0];
+    const startedLag = Date.now() - sentAt;
+    expectTrue('★★ R124 2 — solo.started 는 곧바로(준비 끝) · firstAt = 누른 때 + 3초(±300ms)', typeof st.firstAt === 'number' && Math.abs(st.firstAt - sentAt - 3000) < 300 && startedLag < 1500, JSON.stringify({ firstAtMinusSent: st.firstAt - sentAt, startedLag }));
+    // 카운트다운 중 다시 붙기(solo.sync) → state 에 같은 firstAt · 문제 없음
+    a.socket.emit('solo.sync', {});
+    await a.waitFor(() => a.since(from, 'solo.state').length > 0, 2000, '카운트다운 중 sync');
+    const ss = a.since(from, 'solo.state')[0];
+    expectTrue('★★ R124 2 — 카운트다운 중 다시 붙으면 firstAt 그대로 · 문제 없음', ss.firstAt === st.firstAt && ss.question === null, JSON.stringify(ss));
+    expect('★★ R124 2 — 카운트다운 동안 문제가 나가지 않는다', a.since(from, 'solo.question').length, 0);
+    await a.waitFor(() => a.since(from, 'solo.question').length > 0, 6000, '첫 문제');
+    const q1 = a.since(from, 'solo.question')[0];
+    const q1At = Date.now();
+    expectTrue('★★ R124 2 — 첫 문제는 firstAt 뒤에 · 시간은 문제가 나간 때부터(endsAt − 지금 ≈ limitMs · 카운트다운에 안 깎임)', q1At >= st.firstAt - 50 && q1.endsAt - q1At > q1.limitMs - 400 && q1.endsAt - st.firstAt >= q1.limitMs - 100, JSON.stringify({ late: q1At - st.firstAt, left: q1.endsAt - q1At, limit: q1.limitMs }));
+    // 미리 보기 — 통이 있고 · 정답 · 정답이다 = 맞을 수 있음 · 엉뚱한 답 = 분명히 틀림
+    const ans = (await answersForText(q1.text))[0];
+    const maybe = (t) => sh.answerProbeKeys(t).some((k) => q1.probe.buckets.includes(sh.probeBucket(q1.probe.salt, k)));
+    expectTrue('★★ R124 1 — 문제에 probe(소금 · 통 번호 0~1023) · 정답 · "정답이다" = 통에 듦 · 엉뚱한 답 = 안 듦', q1.probe && Number.isInteger(q1.probe.salt) && q1.probe.buckets.length > 0 && q1.probe.buckets.every((b) => b >= 0 && b < 1024) && maybe(ans) && maybe(`${ans}이다`) && !maybe('봇의아주엉뚱한답qqq'), JSON.stringify({ probe: q1.probe, ans }));
+    expectTrue('★★ R124 1 — 문제 글에 정답 글자가 그대로 실리지 않는다(통 번호만)', !JSON.stringify(q1).includes(`"${ans}"`), ans);
+    // 판정은 그대로 서버: 엉뚱한 답에도 solo.wrong 이 온다
+    a.socket.emit('solo.answer', { n: q1.n, text: '봇의아주엉뚱한답qqq' });
+    await a.waitFor(() => a.since(from, 'solo.wrong').length > 0, 2000, '서버 오답');
+    // 첫 다섯 문제 = 등급 1(맞힌 수 5 전 · SOLO_RAMP) · 이모지 문제 없음 — 여섯 문제 맞힌다(해설은 solo.next 로)
+    const grades = [];
+    const emoji = [];
+    let q = q1;
+    for (let k = 0; k < 6; k++) {
+      grades.push({ n: q.n, correctBefore: q.correct, grade: q.grade });
+      if (sh.isEmojiQuestion(q.text)) emoji.push(q.text);
+      const t = (await answersForText(q.text))[0];
+      const m = a.mark();
+      a.socket.emit('solo.answer', { n: q.n, text: t });
+      await a.waitFor(() => a.since(m, 'solo.result').length > 0, 3000, `맞힘 ${q.n}`);
+      a.socket.emit('solo.next', { n: q.n });
+      await a.waitFor(() => a.since(m, 'solo.question').length > 0, 6000, `다음 ${q.n}`);
+      q = a.since(m, 'solo.question')[0];
+    }
+    expectTrue('★★ R124 3-3 — 맞힌 수 5 전의 문제(첫 다섯)는 전부 등급 1', grades.filter((g) => g.correctBefore < 5).length === 5 && grades.filter((g) => g.correctBefore < 5).every((g) => g.grade === 1), JSON.stringify(grades));
+    expect('★★ R124 3 — 이 판에 이모지 문제 0', emoji.length, 0);
+    a.socket.emit('solo.quit', {});
+    await a.waitFor(() => a.since(from, 'solo.end').length > 0, 5000, '그만');
+    // 풀 전체: 혼자 하기 풀(서버와 같은 함수)에 이모지 문제 0 · 활성 문항에는 있다
+    const counts = await withDb(async (c) => (await c.query(`SELECT question_text AS t FROM questions WHERE is_active`)).rows.map((r) => r.t));
+    const emo = counts.filter((t) => sh.isEmojiQuestion(t)).length;
+    log(`  [R124] 검사 DB 활성 ${counts.length} 중 이모지 문제 ${emo}`);
+    a.disconnect();
+  }
+
   return {
+    async r124() {
+      log('시나리오 r124 — ★★ R124 혼자 하기 카운트다운 · 틀린 답 미리 보기 · 첫 다섯 등급 · 이모지 빼기');
+      await soloR124Part();
+      return checkSummary();
+    },
     async trim() {
       log('시나리오 trim — ★★ R123 콘텐츠 줄이기(기본 TRIM)');
       await trimPart();
@@ -261,6 +325,7 @@ export function makeR123({ makeBots, Bot, withDb, sleep, expect, expectTrue, che
       await trimPart();
       await drawPart();
       await soloPart();
+      await soloR124Part();
       return checkSummary();
     },
   };

@@ -25,6 +25,7 @@ import {
   beltNextNeed,
   flexAnswerSet,
   flexMatch,
+  probeBucket,
   normalizeAnswer,
   soloGradeFor,
   soloTimeMs,
@@ -64,6 +65,8 @@ interface SoloQ {
   usedHere: SoloItemKind[];
   hint: string | null;
   initial: string | null;
+  /** ★★ R124 — 화면의 "분명히 틀린 답" 미리 보기(소금 · 정답 열쇠의 통 번호) */
+  probe: { salt: number; buckets: number[] };
 }
 
 interface SoloRun {
@@ -91,6 +94,8 @@ interface SoloRun {
   countAt: number | null;
   /** ★ R123 — 아이템: 산 것 · 남은 것 · 쓴 것 · 값 한 줄(point_spends id) */
   items: { bought: SoloItemCounts; left: SoloItemCounts; used: SoloItemCounts; spendId: string | null; spent: number };
+  /** ★★ R124 — 시작 카운트다운이 끝나는 때(서버 시계 · 첫 문제가 나가면 null) */
+  firstAt: number | null;
 }
 
 const runs = new Map<string, SoloRun>();
@@ -113,6 +118,8 @@ function timeParams() {
 const explainMsOf = (c: SoloQ) => (config.soloTest.nextMs ? 0 : soloExplainMs(c.q.displayAnswer, c.q.explanation));
 const countMs = () => config.soloTest.nextMs || SOLO.COUNT_MS;
 const PRICE = Object.fromEntries(SOLO_ITEMS.map((i) => [i.kind, i.price])) as Record<SoloItemKind, number>;
+/** ★★ R124 — 시작 카운트다운(검사 서버 SOLO_TEST_NEXT_MS 면 그 값 — 봇이 빨리 돈다) */
+const startCountMs = () => config.soloTest.nextMs || SOLO.START_COUNT_MS;
 const reconnectMs = () => config.soloTest.reconnectMs || SOLO.RECONNECT_MS;
 
 function emit(run: SoloRun, event: string, payload: unknown): void {
@@ -138,6 +145,7 @@ function questionView(run: SoloRun, c: SoloQ): SoloQuestionView {
     usedHere: [...c.usedHere],
     hint: c.hint,
     initial: c.initial,
+    probe: c.probe,
   };
 }
 
@@ -148,7 +156,7 @@ function questionView(run: SoloRun, c: SoloQ): SoloQuestionView {
 export type StartFail = { code: 'BUSY' | 'RATE' | 'NO_QUESTIONS' | 'DB' | 'POINTS'; message: string };
 
 /** 판을 시작한다(방에 있지 않음은 부르는 쪽이 본다) — 이미 도는 판이 있으면 그 판을 이 소켓에 다시 붙인다 */
-export async function startSolo(socket: Socket, accountId: string, site: string | null, items: SoloItemCounts = NO_SOLO_ITEMS): Promise<StartFail | null> {
+export async function startSolo(socket: Socket, accountId: string, site: string | null, items: SoloItemCounts = NO_SOLO_ITEMS, arrivedAt = Date.now()): Promise<StartFail | null> {
   const old = runs.get(accountId);
   if (old) {
     attachSolo(socket, accountId);
@@ -157,6 +165,8 @@ export async function startSolo(socket: Socket, accountId: string, site: string 
   if (busy.has(accountId)) return { code: 'BUSY', message: '잠시 뒤 다시 해 주세요.' };
   if (!startsPerAccount.hit(accountId)) return { code: 'RATE', message: '한 시간에 30판까지예요. 잠시 뒤 다시 해 주세요.' };
   busy.add(accountId);
+  // ★★ R124 — 화면은 [시작]을 누른 순간 3 · 2 · 1 을 띄운다 · 준비(아래 DB 일)는 그 사이에 돌고 첫 문제는 카운트다운이 끝난 때 나간다
+  const firstAt = arrivedAt + startCountMs();
   try {
     const [byGrade, recent] = await Promise.all([loadSoloPool(buildSoloPool), recentSoloQuestionIds(accountId)]);
     let total = 0;
@@ -204,10 +214,15 @@ export async function startSolo(socket: Socket, accountId: string, site: string 
       nextAt: null,
       countAt: null,
       items: { bought: { ...items }, left: { ...items }, used: { ...NO_SOLO_ITEMS }, spendId, spent: cost },
+      firstAt,
     };
     runs.set(accountId, run);
-    emit(run, 'solo.started', { lives: run.lives });
-    nextQuestion(run);
+    emit(run, 'solo.started', { lives: run.lives, firstAt });
+    // 첫 문제 = 카운트다운이 끝난 때(준비가 더 걸렸으면 곧바로) · 문제 시간은 문제가 나간 때부터(shownAt)
+    run.timer = setTimeout(() => {
+      run.timer = null;
+      if (runs.get(accountId) === run) nextQuestion(run);
+    }, Math.max(0, firstAt - Date.now()));
     return null;
   } catch (err) {
     console.error('[solo] ★ 판 시작 실패:', (err as Error).message);
@@ -232,6 +247,7 @@ export function attachSolo(socket: Socket, accountId: string): boolean {
     correct: run.correct,
     question: c && !c.resolved ? questionView(run, c) : null,
     last: c && c.resolved ? run.last : null,
+    firstAt: c ? null : run.firstAt,
   });
   if (run.waitingNext) {
     run.waitingNext = false;
@@ -257,6 +273,7 @@ export function soloDisconnected(accountId: string, socketId: string): void {
 
 function nextQuestion(run: SoloRun): void {
   run.nextAt = null;
+  run.firstAt = null;
   if (run.disconnectedAt !== null) {
     run.waitingNext = true;
     return;
@@ -277,6 +294,8 @@ function nextQuestion(run: SoloRun): void {
   const now = Date.now();
   const limitMs = config.soloTest.timeMs || soloTimeMs(q.text, q.displayAnswer, timeParams());
   const norms = new Set(q.answersNorm);
+  const flex = flexAnswerSet(q.answersRaw, norms);
+  const salt = (Math.random() * 0x1_0000_0000) >>> 0;
   const c: SoloQ = {
     n: run.n,
     q,
@@ -285,7 +304,7 @@ function nextQuestion(run: SoloRun): void {
     endsAt: now + limitMs,
     limitMs,
     norms,
-    flex: flexAnswerSet(q.answersRaw, norms),
+    flex,
     textHash: createHash('md5')
       .update([q.text, q.displayAnswer, q.generalHint ?? '', q.explanation ?? ''].join('|'))
       .digest('hex')
@@ -297,6 +316,7 @@ function nextQuestion(run: SoloRun): void {
     usedHere: [],
     hint: null,
     initial: null,
+    probe: { salt, buckets: [...new Set([...norms, ...flex].map((k) => probeBucket(salt, k)))] },
   };
   run.cur = c;
   run.last = null;

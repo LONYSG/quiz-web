@@ -2235,3 +2235,9 @@ npm run bot -- result    ★★ 결과 화면 데이터 / 공동 순위 / 다시
 - 그 위(load.mjs 가 스스로 5,000명으로 올림)는 이 PC 의 봇 쪽 메모리가 먼저 모자라 멈췄다 — 서버 한계는 아직 못 봤다. 더 재려면 봇을 다른 PC 에서.
 - 대조 검사: `node scripts/pool-equiv.mjs`(옛 SQL 길 = 새 길 · 381 조합) · 크기: `node --expose-gc scripts/pool-sizes.mjs`.
 
+
+## 82. ★★ R124 — 혼자 하기 반응 속도 재기 (D-378)
+
+- 왜 못 잡았나: 봇 · ui-check 는 모두 로컬(왕복 1ms)에서 돈다 — 찬종이 느끼는 늦음은 바깥 주소(터널 · Cloudflare 지점)에서만 생긴다. 그리고 CDP Network.emulateNetworkConditions 의 지연은 **웹소켓 프레임에 걸리지 않는다**(지연 300 에서도 26ms — 2026-11-28 실측) — 브라우저 흉내로는 이 길을 못 본다.
+- 메운 것: ① ui-check --r124 = 화면 반영까지의 ms(누름 → 카운트다운 · Enter → 흔들림 · Enter → 정답!) 단정 100ms 안 · 옛 길(서버 기다림)도 같이 잼(localStorage qw.solo.noProbe=1) ② 봇 r124 = 카운트다운 firstAt · 첫 문제 시간 안 깎임 · probe 통 · 첫 다섯 등급 1 ③ 바깥 길은 소켓 재기로 따로: `node scripts/r124-rtt.mjs https://quizdojang.com 25 300`(로그인 없이 time.ping 왕복 · 로그인 안 된 소켓은 10초 뒤 끊기므로 25번 × 0.3초) · 지점 = `curl https://quizdojang.com/cdn-cgi/trace` 의 colo.
+- 미리 보기의 안전: `server/src/solo/probe.test.ts`(서버가 맞다는 제출은 화면도 통에 든다) + 실 DB 전수(`scripts/r124-probe-check.mjs` — 맞는 제출 122,445가지 · 잘못 흔듦 0).

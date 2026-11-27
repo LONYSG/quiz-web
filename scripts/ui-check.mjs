@@ -749,7 +749,7 @@ async function ensureServer() {
   bootedServer = spawn(process.execPath, [SERVER_ENTRY], {
     cwd: ROOT,
     // ★★ R123 — 검사 서버는 기본으로 콘텐츠 줄이기를 끈다(미니게임만 버튼 · 주제 고르기 같은 옛 화면을 시험하는 묶음) · --r123 만 실제 규칙(TRIM)
-    env: { ...process.env, ...(R123_ONLY ? {} : { TRIM_OFF: '1' }), PORT: String(PORT) },
+    env: { ...process.env, ...(R123_ONLY || R124_ONLY ? {} : { TRIM_OFF: '1' }), PORT: String(PORT) },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
   let out = '';
@@ -1082,6 +1082,8 @@ const GONGBANG_ONLY = args.includes('--gongbang');
 const SOLO_ONLY = args.includes('--solo');
 /** ★★★ R123 — 찬종 첫 플레이 피드백(`--r123` · SHOT_DIR=r123 · 서버 GONGBANG=1 SOLO=1 BELT=1) — scripts/ui-check-r123.mjs */
 const R123_ONLY = args.includes('--r123');
+/** ★★★ R124 — 혼자 하기 반응 속도 · 시작 카운트다운 · 끝 화면 틀린 문제 전부(`--r124` · SHOT_DIR=r124 · 서버 GONGBANG=1 SOLO=1 BELT=1 SOLO_TEST_TIME_MS=60000) — scripts/ui-check-r124.mjs */
+const R124_ONLY = args.includes('--r124');
 /** ★ R042 D — 소리 전수 점검 (`--sound`): 클릭(PC)·터치 흉내(모바일)로 한 판 — 소리마다 호출·재생 경로를 본다 */
 const SOUND_ONLY = args.includes('--sound');
 // ★ R041 — 1536×864 = 15인치 FHD 125% (건우 노트북). lap2 = 같은 노트북 브라우저 안쪽 높이(주소창·탭을 뺀 추정치)
@@ -13043,6 +13045,11 @@ try {
   if (R123_ONLY) {
     const { r123Flow } = await import('./ui-check-r123.mjs');
     await r123Flow({ browser, BASE, ROOT, sleep, snap, record, realClick, realType, signUp, setTheme, newPage, touchDevice, withPg, ACCOUNT_PREFIX, SHOT_ROOT: path.join(ROOT, 'docs', 'design', process.env.SHOT_DIR ?? 'r040') });
+    throw Object.assign(new Error('shots done'), { shotsDone: true });
+  }
+  if (R124_ONLY) {
+    const { r124Flow } = await import('./ui-check-r124.mjs');
+    await r124Flow({ browser, BASE, ROOT, sleep, snap, record, realClick, realType, signUp, setTheme, newPage, touchDevice, withPg, ACCOUNT_PREFIX });
     throw Object.assign(new Error('shots done'), { shotsDone: true });
   }
   if (SOLO_ONLY) {

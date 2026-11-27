@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-11-28 — 혼자 하기 반응 속도 · 시작 카운트다운 · 이모지 빼기 · 끝 화면 틀린 문제 전부 (R124, MAIN · D-378)
+- 무엇: 원인 재기(소켓 · 브라우저 · 바깥 주소) → 틀린 답 미리 보기(shared answerProbeKeys · probeBucket · SoloQuestionView.probe) · 시작 카운트다운(SOLO.START_COUNT_MS · solo.started.firstAt · solo.state.firstAt · 화면 Countdown 부품) · 이모지 문제 뺌(isEmojiQuestion · buildSoloPool) · 끝 화면 틀린 문제 질문 · 정답 · 해설 전부
+- 왜: 찬종 2026-11-28 실 사이트에서 직접 해 봄 — "틀리면 바로 새 답 · 답 처리가 너무 느려 · 카운트다운 후에 시작 · 이모지 문제 빼 · 끝난 뒤 문제가 ... 로 생략"
+- 검사: 봇 r124(새) · ui-check --r124(새 · 잰 값 docs/design/r124/r124-timing.json) · probe.test.ts · select.test.ts
+- 확인: ai-out/R124.txt
+
 ## 2026-11-27 — 찬종 첫 플레이 피드백: 방 설정 정리 · 혼자 하기 개편 (R123, MAIN · D-377)
 - 무엇(A 같이 하기): shared/src/trim.ts(새 — 콘텐츠 줄이기 스위치 한 곳 · 서버 config.trim · /api/site trim · 검사 서버만 TRIM_OFF=1) · 방 설정(GameSettings — 게임 한 줄 · 대결 줄 · 문제 수 · 판 수 · 규칙 문구 뺌) · Notice(경고 한 꼴) · 시작 막힘(startBlockOf · 버튼 아래 한 줄) · sayError(사람 말 제목 · 오류 코드는 개발 모드만) · 모드 바꾸기(목록 + 변경하기) · 팀전(늘 고름 · 짝수 시작 · 혼자 남으면 끝 · 중간 입장 동점이면 점수 낮은 팀) · 캐치 다른 제시어 유료(5P · 최대 3) · 지난 판 문제 = 위 막대 · '·' 걷기 195곳 · 안내 "게임 규칙 보기"
 - 무엇(B 혼자 하기): 0042(solo_answers "end" skip · items · solo_runs.items) · 해설 → 점 셋 카운트(영상 nextCount) · Enter 로 넘김 · 오답 즉시(solo.wrong) · 아이템(힌트 5 · 초성 10 · 넘기기 30 · 남은 것 돌려줌) · 벨트 I~V · 단계표 · 정답 6글자 넘는 문제 뺌 · 결과 한 화면 · 로비 값으로 첫 그림

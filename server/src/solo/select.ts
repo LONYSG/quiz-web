@@ -8,7 +8,7 @@
 //   ★ 정답 흘림(앞 문제의 질문 · 해설에 이 문제의 정답이 들어 있음)은 같은 칸 안에서 뒤로 미룬다(방과 같은 answerLeaked).
 // =============================================================================
 
-import { soloAnswerFits, soloGradeOrder } from '@quiz/shared';
+import { isEmojiQuestion, soloAnswerFits, soloGradeOrder } from '@quiz/shared';
 import type { PoolQuestion } from '../db/questionPool.js';
 import { answerLeaked } from '../game/select.js';
 
@@ -49,12 +49,12 @@ export function pickSoloQuestion(input: SoloPickInput): SoloPick | null {
   return null;
 }
 
-/** 풀(한 벌)에서 솔로 풀 만들기 — 분야가 있는 문항 전부 · 알가치 1 뺌 · ★ R123 정답이 띄어쓰기 빼고 6글자 넘는 것 뺌(SOLO.ANSWER_MAX_CHARS) · 등급별로 */
+/** 풀(한 벌)에서 솔로 풀 만들기 — 분야가 있는 문항 전부 · 알가치 1 뺌 · ★ R123 정답이 띄어쓰기 빼고 6글자 넘는 것 뺌(SOLO.ANSWER_MAX_CHARS) · ★ R124 이모지 문제 뺌(isEmojiQuestion) · 등급별로 */
 export function buildSoloPool(all: readonly PoolQuestion[], topicOf: readonly (string | null)[]): Map<number, PoolQuestion[]> {
   const out = new Map<number, PoolQuestion[]>();
   for (let i = 0; i < all.length; i++) {
     const q = all[i]!;
-    if (topicOf[i] == null || q.worth === 1 || !soloAnswerFits(q.displayAnswer)) continue;
+    if (topicOf[i] == null || q.worth === 1 || !soloAnswerFits(q.displayAnswer) || isEmojiQuestion(q.text)) continue;
     const g = Math.max(1, Math.min(5, q.grade));
     let arr = out.get(g);
     if (!arr) out.set(g, (arr = []));

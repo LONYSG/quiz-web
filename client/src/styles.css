@@ -12002,11 +12002,34 @@ button.solo-item kbd { font-size: 0.7rem; }
 .belt-table-foot { margin: 10px 0 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 10px; font-size: 0.88rem; font-weight: 700; }
 .belt-table-note { margin: 4px 0 0; font-size: 0.75rem; font-weight: 600; }
 .solo-end-meta { margin: 6px 0 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; font-size: 0.85rem; font-weight: 700; }
-.solo-wq-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.solo-wq { display: flex; align-items: baseline; gap: 10px; padding: 6px 0; }
-.solo-wq .solo-wq-text { flex: 1; min-width: 0; margin: 0; }
-.solo-wq b { flex: 0 0 auto; }
-.solo-wrongs { padding-block: 6px; }
+/* ★★ R124 3-2 (찬종 "문제가 길어서 ... 로 생략 · 문제랑 답이 다 나오게 · 어차피 3문제") — 질문 · 정답 · 해설 전부(줄바꿈) ·
+ *   글자 크기는 너비 따라(clamp) · 세 문제가 화면보다 길면 이 칸 안에서만 내려 본다(문서 전체 스크롤 없음 · 버튼은 늘 보임) */
+.solo-wq { display: flex; flex-direction: column; gap: 2px; padding: 6px 0; }
+.solo-wq p { margin: 0; overflow-wrap: anywhere; }
+.solo-wq .solo-wq-text { font-size: clamp(0.8rem, 0.72rem + 0.35vw, 0.92rem); font-weight: 700; line-height: 1.4; }
+.solo-wq .solo-wq-ans { font-size: clamp(0.82rem, 0.74rem + 0.35vw, 0.95rem); font-weight: 700; }
+.solo-wq .solo-wq-ans small { display: inline; font-size: 0.78em; margin-right: 2px; }
+.solo-wq .solo-wq-expl { font-size: clamp(0.72rem, 0.66rem + 0.3vw, 0.82rem); font-weight: 600; line-height: 1.4; }
+.solo-wrongs { padding-block: 6px; flex: 0 1 auto; min-height: 0; overflow-y: auto; }
+/*   끝 화면은 화면 높이에 묶는다(옛: min-height 만 → 긴 틀린 문제가 문서 전체를 늘려 [로비] · [다시]가 화면 밖으로) ·
+ *   틀린 문제가 있으면 기록 칸을 조금 줄여 그 자리를 문제에 준다 */
+.wrap.narrow.gb-main:has(.solo-end) { height: 100vh; height: 100dvh; }
+/*   틀린 문제가 있으면 기록 칸 = 한 줄(왼쪽 기록 숫자 · 오른쪽 띠 · 아래 +P) — 그 자리를 문제에 준다 · PC 는 끝 화면 폭을 넓힌다(긴 질문의 줄 수가 준다) */
+.solo-result.compact { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 14px; row-gap: 0; padding-block: 10px; }
+.solo-result.compact > :nth-child(-n + 3) { grid-column: 1; justify-self: center; }
+.solo-result.compact > .solo-belt { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding-block: 6px; text-align: left; }
+.solo-result.compact > .solo-end-meta { grid-column: 2; grid-row: 3; margin: 4px 0 0; justify-content: flex-start; }
+.solo-result.compact:not(:has(.solo-belt)) > .solo-end-meta { grid-row: 1 / span 3; }
+.solo-result.compact .solo-pts { padding-block: 0; font-size: 1rem; }
+.solo-end .solo-wrongs .solo-wq { padding-block: 5px; }
+.solo-end .solo-wrongs .solo-wq:first-child { border-top: 0; padding-top: 0; }
+.solo-screen.solo-end:has(.solo-wrongs) { gap: 8px; }
+.solo-end .solo-wrongs { padding-block: 4px; }
+.solo-result.compact .solo-huge { font-size: 2.4rem; }
+:where(.ui-pc) .wrap.narrow.home-wide.gb-main:has(.solo-end .solo-wrongs) { max-width: 760px; }
+/* ★★ R124 — 시작 카운트다운(같이 하기 Countdown 부품 그대로 · 문제 카드 가운데) */
+.solo-countdown { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 8rem; }
+.solo-countdown .countdown-box .countdown-big { font-size: 2.6rem; }
 .solo-screen.solo-end .solo-actions { position: static; margin: 0; box-shadow: none; background: none; padding: 0; backdrop-filter: none; }
 .solo-screen.solo-end, .solo-screen.solo-start { overflow: hidden; }
 
