@@ -12068,4 +12068,4 @@ button.solo-item kbd { font-size: 0.7rem; }
 /* ★ R123 — 모드 바꾸기 줄: 버튼 기본 꼴(한 줄 · 가운데)이 긴 한 줄 설명을 옆으로 밀어 잘랐다 → 칸 폭에 맞춰 줄바꿈 */
 .gb-mode-list { grid-template-columns: minmax(0, 1fr); }
 button.gb-mode-item { width: 100%; min-width: 0; box-sizing: border-box; white-space: normal; text-align: left; }
-button.gb-mode-item .gb-mode-line { overflow-wrap: anywhere; }
+button.gb-mode-item .gb-mode-line { word-break: keep-all; overflow-wrap: break-word; }

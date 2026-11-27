@@ -12524,7 +12524,8 @@ async function socialFlow(browser) {
   await sleep(300);
   const gap = await host.evaluate("(() => { const a = document.querySelector('.settings .set-row:not(.mode-row)'); const b = document.querySelector('.avail-line'); return a && b ? Math.round(b.getBoundingClientRect().top - a.getBoundingClientRect().bottom) : null; })()");
   await snap(host, '51-avail-gap-pc');
-  record('★ C-3 — 문제 수 ↔ 낼 수 있는 문제 간격 4px 이하', gap !== null && gap <= 4, `${gap}px`);
+  // ★ R123 — "이번 설정으로 낼 수 있는 문제 N개" 줄을 뺐다(찬종 "설명은 간결하게") — 모자랄 때만 경고가 뜬다. 평소에는 줄이 없어야 한다
+  record('★ C-3 → R123 — 평소에는 "낼 수 있는 문제" 줄이 없다', gap === null && (await host.evaluate("document.querySelector('.avail-line') === null")), `${gap}px`);
   // ── ★★ C-4 — 안내 창: 한 항목 한 줄 (PC 5 · 모바일 3)
   const INFO_LINES = "(() => [...document.querySelectorAll('.infotip-pop .info-list li, [data-gear-pop] .info-list li')].filter((li) => li.getClientRects().length > 0).map((li) => { const tops = []; const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); for (let n = w.nextNode(); n; n = w.nextNode()) { if (!n.textContent.trim()) continue; const rg = document.createRange(); rg.selectNodeContents(n); for (const rc of rg.getClientRects()) { if (rc.width < 1) continue; if (!tops.some((t) => Math.abs(t - rc.top) < rc.height * 0.5)) tops.push(rc.top); } } return tops.length; }))()";
   for (const s of SHOT_PC) {
@@ -13129,7 +13130,8 @@ try {
     );
 
     await setQuestionCount(host, 200);
-    const warned = await host.waitForText('이대로 시작할 수 없습니다', 4000);
+    // ★ R123 — 모자랄 때만 경고 한 줄(Notice) "지금 낼 수 있는 문제는 N개예요 / 문제 수를 줄여야 시작할 수 있어요"
+    const warned = await host.waitForText('문제 수를 줄여야 시작할 수 있어요', 4000);
     record('입력 단계 경고가 보인다', warned);
 
     // ★ 로비 화면도 재어 둔다.
