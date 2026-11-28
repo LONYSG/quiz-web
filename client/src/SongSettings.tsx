@@ -23,10 +23,12 @@ import Notice from './Notice.js';
 import { siteInfo } from './site.js';
 
 let cache: Promise<SongMeta[]> | null = null;
-function loadMetas(): Promise<SongMeta[]> {
+/** ★★★ R125 B1 — 받아 둔 값(있으면 연 순간 곡 수까지 다 그린다) */
+let got: SongMeta[] | null = null;
+export function loadMetas(): Promise<SongMeta[]> {
   cache ??= fetch('/api/minigame/song-meta', { credentials: 'same-origin' })
     .then((r) => (r.ok ? r.json() : { items: [] }))
-    .then((j: { items?: SongMeta[] }) => j.items ?? [])
+    .then((j: { items?: SongMeta[] }) => (got = j.items ?? []))
     .catch(() => {
       cache = null;
       return [];
@@ -37,7 +39,7 @@ function loadMetas(): Promise<SongMeta[]> {
 const PRESETS = [5, 10, 15, 20];
 
 export default function SongSettings({ value, editable, onChange }: { value: SongSettingsValue; editable: boolean; onChange: (next: SongSettingsValue) => void }) {
-  const [metas, setMetas] = useState<SongMeta[] | null>(null);
+  const [metas, setMetas] = useState<SongMeta[] | null>(got);
   useEffect(() => {
     let alive = true;
     void loadMetas().then((m) => alive && setMetas(m));

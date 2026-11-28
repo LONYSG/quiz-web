@@ -35,6 +35,7 @@ import { emitRoom, ioServer } from '../rooms/emit.js';
 import { broadcastSystem } from '../rooms/systemChat.js';
 import type { Room } from '../rooms/types.js';
 import { WindowCounter } from '../security/limits.js';
+import { hidesOf, loadHides } from './hides.js';
 import { on, onRoom, parseObject, sendError, sayError, type SocketData } from '../socket/guard.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -153,33 +154,47 @@ export function listItemOf(room: Room): RoomListItem {
 }
 
 /** 목록에 올리는 방 — 공방 칸이 있는 방(스위치를 켜고 만든 방) · 같은 자리 · 그 종류 · 차단당한 방은 뺀다 */
-function roomsFor(site: Site, kind: RoomKind, accountId: string | null): Room[] {
+function roomsFor(site: Site, kind: RoomKind, accountId: string | null, hide: ReadonlySet<string> = NO_HIDE): Room[] {
   const out: Room[] = [];
   for (const r of allRooms()) {
     if (r.maxPlayers === undefined) continue;
     if (r.site !== site) continue;
     if (roomKindOf(r.settings.mode) !== kind) continue;
     if (accountId && r.bannedAccountIds.has(accountId)) continue;
+    // ★★★ R125 C2 — 내가 가린 사람 · 나를 가린 사람이 방장인 방은 안 보인다
+    if (hide.size > 0 && hide.has(r.hostAccountId)) continue;
     out.push(r);
   }
   return out;
 }
+const NO_HIDE: ReadonlySet<string> = new Set();
 
-export function buildList(site: Site, kind: RoomKind, accountId: string | null): { rooms: RoomListItem[]; more: boolean; counts: Record<RoomKind, number> } {
-  const rooms = roomsFor(site, kind, accountId);
+/**
+ * ★★★ R125 C2 — limit = 몇 개까지 보낼까(기본 LIST_MAX · "더 보기"마다 LIST_MAX 씩 · 최대 LIST_LIMIT_MAX).
+ *   total = 그 종류에서 이 사람에게 보이는 방 수(more = total > 보낸 수).
+ */
+export function buildList(
+  site: Site,
+  kind: RoomKind,
+  accountId: string | null,
+  hide: ReadonlySet<string> = NO_HIDE,
+  limit: number = GONGBANG.LIST_MAX,
+): { rooms: RoomListItem[]; more: boolean; total: number; counts: Record<RoomKind, number> } {
+  const rooms = roomsFor(site, kind, accountId, hide);
   const created = new Map(rooms.map((r) => [r.code, r.createdAt]));
   const sorted = sortRoomList(rooms.map(listItemOf), (it) => created.get(it.code) ?? 0);
-  return { rooms: sorted.slice(0, GONGBANG.LIST_MAX), more: sorted.length > GONGBANG.LIST_MAX, counts: countRooms(site) };
+  return { rooms: sorted.slice(0, limit), more: sorted.length > limit, total: sorted.length, counts: countRooms(site, hide) };
 }
 
 /**
  * ★ R117 — 종류별 방 수(목록 탭 "방 14") · 로비 [같이 하기] 의 "열린 방 N"(= 세 종류 합). 공방 칸이 있는 방 · 같은 자리만.
  *   차단당한 방도 센다(묶음 방송이라 사람마다 다르게 세지 않는다 — 드물다).
  */
-export function countRooms(site: Site): Record<RoomKind, number> {
+export function countRooms(site: Site, hide: ReadonlySet<string> = NO_HIDE): Record<RoomKind, number> {
   const out: Record<RoomKind, number> = { quiz: 0, draw: 0, liar: 0 };
   for (const r of allRooms()) {
     if (r.maxPlayers === undefined || r.site !== site) continue;
+    if (hide.size > 0 && hide.has(r.hostAccountId)) continue;
     out[roomKindOf(r.settings.mode)] += 1;
   }
   return out;
@@ -203,18 +218,41 @@ export function directoryTick(): void {
   for (const site of ['public', 'friend'] as const) {
     for (const kind of ROOM_KINDS) {
       const name = dirRoom(site, kind);
-      const watchers = io.sockets.adapter.rooms.get(name)?.size ?? 0;
-      if (watchers === 0) {
+      const ids = io.sockets.adapter.rooms.get(name);
+      if (!ids || ids.size === 0) {
         lastSent.delete(name);
         continue;
+      }
+      // ★★★ R125 C2 — 안 볼 방장이 있는 사람 · "더 보기"로 100개 넘게 보는 사람은 따로 만들어 보낸다(바뀌었을 때만) · 나머지는 묶음 하나
+      const own: string[] = [];
+      for (const id of ids) {
+        const sk = io.sockets.sockets.get(id);
+        if (!sk) continue;
+        const d = sk.data as SocketData & DirData;
+        const accountId = d.session?.accountId ?? null;
+        const hide = accountId ? hidesOf(accountId) : NO_HIDE;
+        const limit = d.dirLimit ?? GONGBANG.LIST_MAX;
+        if (hide.size === 0 && limit === GONGBANG.LIST_MAX) continue;
+        own.push(id);
+        const list = buildList(site, kind, accountId, hide, limit);
+        const body = JSON.stringify(list);
+        if (d.dirLast === body) continue;
+        d.dirLast = body;
+        sk.emit('directory.list', { kind, ...list });
       }
       const list = buildList(site, kind, null);
       const body = JSON.stringify(list);
       if (lastSent.get(name) === body) continue;
       lastSent.set(name, body);
-      io.to(name).emit('directory.list', { kind, ...list });
+      (own.length > 0 ? io.to(name).except(own) : io.to(name)).emit('directory.list', { kind, ...list });
     }
   }
+}
+
+/** ★★★ R125 C2 — 목록을 보는 소켓의 칸(몇 개까지 · 따로 보낸 마지막 글) */
+interface DirData {
+  dirLimit?: number;
+  dirLast?: string;
 }
 
 export function startDirectory(): void {
@@ -253,23 +291,45 @@ function createWith(kind: RoomKind, o: QuickJoinOpts): { kind: RoomKind; level: 
 
 export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): void {
   // ── 목록 구독 { kind } → 바로 한 번 통째로 · 그 뒤 바뀔 때마다(1초 묶음)
-  on<{ kind: RoomKind }>(
+  on<{ kind: RoomKind; limit?: number }>(
     socket,
     'directory.watch',
-    { parse: (raw) => (isRoomKind(parseObject(raw)?.kind) ? { kind: parseObject(raw)!.kind as RoomKind } : null) },
-    ({ socket: s, session, payload }) => {
+    {
+      parse: (raw) => {
+        const o = parseObject(raw);
+        if (!isRoomKind(o?.kind)) return null;
+        const lim = Number(o!.limit);
+        // ★★★ R125 C2 — "더 보기": LIST_MAX 씩 · 최대 LIST_LIMIT_MAX
+        const limit = Number.isInteger(lim) && lim > GONGBANG.LIST_MAX ? Math.min(GONGBANG.LIST_LIMIT_MAX, Math.ceil(lim / GONGBANG.LIST_MAX) * GONGBANG.LIST_MAX) : GONGBANG.LIST_MAX;
+        return { kind: o!.kind as RoomKind, limit };
+      },
+    },
+    async ({ socket: s, session, payload }) => {
       if (!config.gongbang) return sayError(s, 'INVALID_STATE', OFF);
       const site = siteOfSocket(s);
+      const hide = await loadHides(session.accountId);
       for (const k of ROOM_KINDS) void s.leave(dirRoom(site, k));
       void s.join(dirRoom(site, payload.kind));
-      s.emit('directory.list', { kind: payload.kind, ...buildList(site, payload.kind, session.accountId) });
+      const d = s.data as SocketData & DirData;
+      d.dirLimit = payload.limit ?? GONGBANG.LIST_MAX;
+      const list = buildList(site, payload.kind, session.accountId, hide, d.dirLimit);
+      d.dirLast = JSON.stringify(list);
+      s.emit('directory.list', { kind: payload.kind, ...list });
     },
   );
 
+  // ── ★★★ R125 B1 — 목록 미리 읽기(구독 없이 세 종류 한 번 · 로비가 부른다 → 목록 화면 · 탭을 열 때 이미 다 그려져 있다)
+  on(socket, 'directory.peek', {}, async ({ socket: s, session }) => {
+    if (!config.gongbang) return;
+    const site = siteOfSocket(s);
+    const hide = await loadHides(session.accountId);
+    for (const k of ROOM_KINDS) s.emit('directory.list', { kind: k, ...buildList(site, k, session.accountId, hide) });
+  });
+
   // ── ★ R117 — 로비 [같이 하기] 의 방 수(구독 없이 한 번) → directory.counts { counts }
-  on(socket, 'directory.counts', {}, ({ socket: s }) => {
+  on(socket, 'directory.counts', {}, ({ socket: s, session }) => {
     if (!config.gongbang) return sayError(s, 'INVALID_STATE', OFF);
-    s.emit('directory.counts', { counts: countRooms(siteOfSocket(s)) });
+    s.emit('directory.counts', { counts: countRooms(siteOfSocket(s), hidesOf(session.accountId)) });
   });
 
   on(socket, 'directory.unwatch', {}, ({ socket: s }) => {
@@ -293,7 +353,7 @@ export function registerGongbangHandlers(socket: Socket, hooks: GongbangHooks): 
       if (!config.gongbang) return sayError(s, 'INVALID_STATE', OFF);
       if (getRoomOfAccount(session.accountId)) return sayError(s, 'ALREADY_HAS_ROOM', '다른 방에 참가한 상태입니다.');
       const site = siteOfSocket(s);
-      const rooms = roomsFor(site, payload.kind, session.accountId);
+      const rooms = roomsFor(site, payload.kind, session.accountId, hidesOf(session.accountId));
       const byCode = new Map(rooms.map((r) => [r.code, r]));
       const items = rooms.map(listItemOf);
       const ranked = rankQuickJoin(items, payload.opts);

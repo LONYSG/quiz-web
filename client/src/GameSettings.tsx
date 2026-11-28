@@ -38,8 +38,8 @@ import { Gamepad2 } from 'lucide-react';
 import Icon from './Icon.js';
 import { usePopup } from './popup.js';
 import MinigameCatalog from './minigame/MinigameCatalog.js';
-import TopicPicker from './TopicPicker.js';
-import SongSettings from './SongSettings.js';
+import TopicPicker, { loadLists } from './TopicPicker.js';
+import SongSettings, { loadMetas } from './SongSettings.js';
 import Notice from './Notice.js';
 import { siteInfo } from './site.js';
 import { ArrowLeftRight } from 'lucide-react';
@@ -83,6 +83,14 @@ export default function GameSettings({
   useEffect(() => {
     setDraft(settings);
   }, [settings]);
+  // ★★★ R125 B1 — 노래 곡 수 · 주제 목록을 방에 들어올 때 미리(모드를 바꿔 연 순간 숫자까지 다 그려져 있다)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      void loadMetas();
+      if (!siteInfo().trim.topicPick) void loadLists();
+    }, 500);
+    return () => clearTimeout(t);
+  }, []);
 
   const editable = isHost && !settingsLocked;
   const [catOpen, setCatOpen] = usePopup('minigame-catalog');

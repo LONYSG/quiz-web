@@ -21,7 +21,9 @@ import { BeltOf } from './gongbang/Belt.js';
 import { siteInfo } from './site.js';
 import { fetchBeltCard } from './solo/useSolo.js';
 import { fetchAchievementsOf } from './api.js';
+import { failed as warmFailed, useWarm, warm } from './warm.js';
 import { closePopup, openPopup, useCurrentPopup } from './popup.js';
+import Notice from './Notice.js';
 
 export interface PersonRef {
   accountId: string;
@@ -72,22 +74,25 @@ export function openPersonCard(p: PersonRef, as: 'card' | 'all' = 'card'): void 
 /** 날짜 — 2026-10-21 */
 const day = (iso: string) => iso.slice(0, 10);
 
+/**
+ * ★★★ R125 B1 — 업적 · 띠는 "마지막에 안 값"(warm)으로 연 순간 다 그린다. 사람이 화면에 보이면(Avatar · 자리) 미리 읽어 두므로
+ *   누를 때는 이미 들어 있다 · 연 뒤 한 번 새로 받아 조용히 바꾼다. 아직 한 번도 못 받은 사람(방금 들어온 사람을 곧바로 누름)은
+ *   글 없이 자리만 잡는다(person-ach-wait — 높이 고정 · 밀림 없음).
+ */
+const achKey = (id: string) => `ach:${id}`;
+const beltKey = (id: string) => `belt:${id}`;
+const loadAch = (id: string) => async () => new Map((await fetchAchievementsOf(id)).map((a) => [a.key, a.earnedAt] as const));
+const loadBelt = (id: string) => () => fetchBeltCard(id);
+/** 사람이 화면에 보일 때 — 업적 · 띠를 미리(1분 안에 받은 값이면 다시 안 받음) */
+export function warmPerson(accountId: string): void {
+  void warm(achKey(accountId), loadAch(accountId), 60_000);
+  if (siteInfo().belt) void warm(beltKey(accountId), loadBelt(accountId), 60_000);
+}
+
 function useEarned(accountId: string | null) {
-  const [earned, setEarned] = useState<Map<string, string> | null>(null);
-  const [err, setErr] = useState(false);
-  useEffect(() => {
-    if (!accountId) return undefined;
-    let alive = true;
-    setEarned(null);
-    setErr(false);
-    fetchAchievementsOf(accountId)
-      .then((list) => alive && setEarned(new Map(list.map((a) => [a.key, a.earnedAt]))))
-      .catch(() => alive && setErr(true));
-    return () => {
-      alive = false;
-    };
-  }, [accountId]);
-  return { earned, err };
+  const earned = useWarm<Map<string, string>>(accountId ? achKey(accountId) : null, accountId ? loadAch(accountId) : async () => null);
+  const err = Boolean(accountId) && !earned && warmFailed(achKey(accountId!));
+  return { earned: earned ?? null, err };
 }
 
 function useEsc(open: boolean, onClose: () => void) {
@@ -122,17 +127,8 @@ function Shell({ label, className, onClose, children }: { label: string; classNa
 
 /** ★ R118 — 사람 카드의 띠 한 줄(64px · 누르면 이름은 이미 글로 보인다 — 색약 대비) */
 function PersonBelt({ accountId }: { accountId: string }) {
-  const [card, setCard] = useState<{ belt: number | null; best: number; at: string | null } | null | 'err'>(null);
-  useEffect(() => {
-    let live = true;
-    void fetchBeltCard(accountId).then((c) => {
-      if (live) setCard(c ?? 'err');
-    });
-    return () => {
-      live = false;
-    };
-  }, [accountId]);
-  if (card === null || card === 'err') return null;
+  const card = useWarm<{ belt: number | null; best: number; at: string | null }>(beltKey(accountId), loadBelt(accountId)) ?? null;
+  if (card === null) return <div className="person-belt person-belt-wait" aria-hidden="true" />;
   return (
     <div className="person-belt" data-person-belt={card.belt ?? 'none'}>
       <BeltOf step={card.belt} width={64} />
@@ -178,8 +174,8 @@ function Card({ p, onClose }: { p: PersonRef; onClose: () => void }) {
         <h3>
           <Icon icon={Award} /> 업적 <span className="mono dim">{earned ? `${earned.size}/${ACHIEVEMENTS.length}` : ''}</span>
         </h3>
-        {err && <p className="form-error">업적을 불러오지 못했어요</p>}
-        {!earned && !err && <p className="dim">불러오는 중…</p>}
+        {err && <Notice tone="bad">업적을 불러오지 못했어요</Notice>}
+        {!earned && !err && <div className="person-ach-wait" aria-hidden="true" />}
         {earned && list.length === 0 && <p className="dim person-none">아직 깬 업적이 없어요</p>}
         {list.length > 0 && (
           <ul className="person-ach-list">
@@ -255,8 +251,8 @@ export function AllAchievements({ p, onClose }: { p: PersonRef; onClose: () => v
         </p>
         <PopupClose onClose={onClose} />
       </div>
-      {err && <p className="form-error">업적을 불러오지 못했어요</p>}
-      {!earned && !err && <p className="dim">불러오는 중…</p>}
+      {err && <Notice tone="bad">업적을 불러오지 못했어요</Notice>}
+      {!earned && !err && <div className="ach-all-wait" aria-hidden="true" />}
       {earned && (
         <ul className="ach-list ach-all" data-loaded="1">
           {[...ACHIEVEMENTS.map((a) => a.key), ...extra].map((k) => {

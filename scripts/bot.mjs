@@ -167,6 +167,8 @@ const SCENARIO_ENV = {
   r123: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '4000', DRAW_ROUND_MS: '20000' },
   // ★★ R124 — 실제 카운트다운 3초 · 해설은 solo.next 로 넘김(문제 시간만 줄임)
   r124: { SOLO: '1', BELT: '1', SOLO_TEST_TIME_MS: '6000' },
+  // ★★★ R125 C2 — 공방 목록: 가린 사람 방 빼기 · 방 100개 넘음(더 보기) · HTTP 세 종류
+  r125: { GONGBANG: '1' },
   attack: {
     RESOLVED_WAIT_MS: '200',
     HOST: '0.0.0.0',
@@ -10465,6 +10467,8 @@ async function scenarioSong() {
   await sleep(600);
   const chats1 = host.since(c1, 'chat').map((e) => e.text);
   expectTrue('★★★ 제목 = 정답 · 맞힌 글은 채팅에 안 나감(시스템 줄 "○○ 님 정답!") · 공개에 제목 · 가수 · 칩 · 표지 600 · 맞힌 시간', r1.reason === 'correct' && r1.winnerAccountId === idOf(b3) && r1.song?.title === p1.title && r1.song?.artist === p1.artist && r1.song?.chips?.length >= 1 && /600x600bb/.test(r1.song?.cover ?? '') && r1.song?.winnerMs > 0 && sysLines.some((t) => /정답!/.test(t)) && chats1.filter((t) => t === p1.title).length <= 1, JSON.stringify({ reason: r1.reason, song: r1.song, sys: sysLines, chats1 }));
+  // ★★★ R125 C3 — 노래 공개에도 "○○로 정답 인정"(대표 제목으로 맞히면 줄 없음 = null · 인정어로 맞히면 그 표기 — 판정 뒤 winnerAnswerOf 그대로)
+  expect('★★★ R125 C3 — 대표 제목으로 맞힘 → winnerAnswer null(줄 없음)', r1.winnerAnswer ?? null, null);
   const lateEv = host.since(c1, 'question.lateAnswers').pop();
   expectTrue('★★ 뒷북 — 정답자 뒤 3초 안 제목(b2)', lateEv?.late?.some((l) => l.accountId === idOf(b2)), JSON.stringify(lateEv));
   expectTrue('★★ 점수 = 첫 사람 +1(퀴즈와 같다)', host.snapshot.players.find((p) => p.accountId === idOf(b3))?.score === 1, JSON.stringify(host.snapshot.players.map((p) => p.score)));
@@ -11285,6 +11289,122 @@ async function scenarioSoloOff() {
   return checkSummary();
 }
 
+// -----------------------------------------------------------------------------
+// ★★★ R125 C2 — 공방 목록(R116 · R117 이 남긴 둘)
+//   ① 내가 가린 사람 · 나를 가린 사람이 방장인 방은 내 목록(처음 · 1초 방송 · 방 수 · 빠른 입장 후보)에서 빠진다 · 풀면 돌아온다
+//   ② 방이 100개를 넘으면: 처음 100 + more · total → "더 보기"(limit 200)면 전부 · 깨지지 않는다
+//   ③ HTTP /api/gongbang/lists = 세 종류 한 번(앱이 켜질 때 — 첫 그림)
+// -----------------------------------------------------------------------------
+async function scenarioR125() {
+  log('시나리오 r125 — ★★★ 공방 목록: 가린 사람 방 빼기 · 100개 넘음 · HTTP 세 종류 (R125 C2)');
+  // ★ makeBots 는 이름을 01 부터 다시 쓴다(같은 계정) — 한 번에 다 만든다: 앞 넷 = h1 · v · h3 · extra, 나머지 105 = 방장들
+  const N = 105;
+  const all = await makeBots(4 + N);
+  const [h1, v, h3, extra] = all;
+  const many = all.slice(4);
+  for (const x of [h1, v, h3]) {
+    await x.connect();
+    trackGongbang(x);
+    x.leave();
+  }
+  await sleep(400);
+  const ids = await withDb(async (c) => new Map((await c.query(`SELECT id::text, login_id FROM accounts WHERE login_id = ANY($1)`, [[h1, v, h3].map((b) => b.loginId)])).rows.map((r) => [r.login_id, r.id])));
+  const idOf = (b) => ids.get(b.loginId);
+  await withDb((c) => c.query(`DELETE FROM account_blocks WHERE account_id = ANY($1) OR blocked_id = ANY($1)`, [[...ids.values()]]));
+  h1.socket.emit('room.create', { title: '가릴 방장 방', kind: 'quiz', maxPlayers: 8 });
+  h3.socket.emit('room.create', { title: '보통 방', kind: 'quiz', maxPlayers: 8 });
+  await h1.waitFor(() => h1.snapshot !== null, 6000, '방 h1');
+  await h3.waitFor(() => h3.snapshot !== null, 6000, '방 h3');
+  const codeOf = (b) => b.snapshot.room.code;
+  const titles = (l) => (l?.rooms ?? []).map((r) => r.code);
+  const watchList = async (bot, kind, limit) => {
+    const m = bot.mark();
+    bot.socket.emit('directory.watch', limit ? { kind, limit } : { kind });
+    await bot.waitFor(() => bot.since(m, 'directory.list').some((e) => e.kind === kind), 4000, `목록 ${kind}`);
+    return bot.since(m, 'directory.list').filter((e) => e.kind === kind).pop();
+  };
+  let l = await watchList(v, 'quiz');
+  expectTrue('★ 가리기 전 — 두 방 다 보인다', titles(l).includes(codeOf(h1)) && titles(l).includes(codeOf(h3)), JSON.stringify(titles(l)));
+  // ① 내가 가림
+  const put = await postJson(`/api/people/blocks/${idOf(h1)}`, {}, v.cookie, 'PUT');
+  expect('가리기 PUT', put.status, 200);
+  await sleep(300);
+  l = await watchList(v, 'quiz');
+  expectTrue('★★★ R125 C2 ① 내가 가린 사람이 방장인 방 → 내 목록에서 빠짐 · 다른 방은 그대로 · 방 수도 뺌', !titles(l).includes(codeOf(h1)) && titles(l).includes(codeOf(h3)) && l.counts.quiz === titles(l).length, JSON.stringify({ rooms: titles(l), counts: l.counts }));
+  // 1초 방송 — 방 제목이 바뀌어도(h1 방 인원 변화) 나에게는 안 온다 · 다른 사람(h3)에게는 온다
+  const mv = v.mark();
+  const m3 = h3.mark();
+  h3.socket.emit('directory.watch', { kind: 'quiz' });
+  await extra.connect();
+  extra.leave();
+  await sleep(300);
+  extra.socket.emit('room.join', { roomId: h1.snapshot.room.id });
+  await sleep(2500);
+  const vLists = v.since(mv, 'directory.list').filter((e) => e.kind === 'quiz');
+  const hLists = h3.since(m3, 'directory.list').filter((e) => e.kind === 'quiz');
+  expectTrue('★★★ R125 C2 ① 1초 방송 — 가린 사람 방은 방송으로도 안 온다 · 남에게는 그 방이 온다', vLists.every((e) => !titles(e).includes(codeOf(h1))) && hLists.some((e) => titles(e).includes(codeOf(h1))), JSON.stringify({ v: vLists.map(titles), h3: hLists.map(titles) }));
+  // 빠른 입장도 그 방으로 보내지 않는다
+  const mq = v.mark();
+  v.socket.emit('directory.quickJoin', { kind: 'quiz', opts: { levels: [], minigame: 'any', size: 'any', progress: 'any' } });
+  await v.waitFor(() => v.since(mq, 'quickJoin').length > 0 || (v.snapshot && v.snapshot.room.code), 4000, '빠른 입장').catch(() => {});
+  const qj = v.since(mq, 'quickJoin').pop();
+  const joinedCode = v.snapshot?.room?.code ?? qj?.room?.code ?? null;
+  expectTrue('★★★ R125 C2 ① 빠른 입장 — 가린 사람 방으로 안 보낸다', joinedCode !== codeOf(h1), JSON.stringify({ joinedCode, qj }));
+  v.leave();
+  await sleep(400);
+  v.snapshot = null;
+  // 풀면 돌아온다
+  const del = await postJson(`/api/people/blocks/${idOf(h1)}`, {}, v.cookie, 'DELETE');
+  expect('가리기 풀기 DELETE', del.status, 200);
+  await sleep(1500);
+  l = await watchList(v, 'quiz');
+  expectTrue('★★★ R125 C2 ① 풀면 그 방이 돌아온다', titles(l).includes(codeOf(h1)), JSON.stringify(titles(l)));
+  // ② 나를 가린 사람 — h1 이 v 를 가림 → v 목록에서 h1 방 빠짐(이미 목록을 보는 중 → 1초 방송으로 반영)
+  const mv2 = v.mark();
+  const put2 = await postJson(`/api/people/blocks/${idOf(v)}`, {}, h1.cookie, 'PUT');
+  expect('h1 이 v 를 가림 PUT', put2.status, 200);
+  await sleep(2600);
+  const after = v.since(mv2, 'directory.list').filter((e) => e.kind === 'quiz').pop() ?? (await watchList(v, 'quiz'));
+  expectTrue('★★★ R125 C2 ① 나를 가린 사람의 방 → 보던 목록에서도 빠진다(1초 방송)', !titles(after).includes(codeOf(h1)) && titles(after).includes(codeOf(h3)), JSON.stringify(titles(after)));
+  // ③ HTTP 세 종류
+  const r = await fetch(`${BASE}/api/gongbang/lists`, { headers: { cookie: v.cookie } });
+  const j = await r.json().catch(() => ({}));
+  expectTrue('★★★ R125 B1 HTTP /api/gongbang/lists — 세 종류 · 가린 방 빼기 같음', r.status === 200 && ['quiz', 'draw', 'liar'].every((k) => Array.isArray(j.lists?.[k]?.rooms)) && !titles(j.lists.quiz).includes(codeOf(h1)), JSON.stringify({ status: r.status, quiz: titles(j.lists?.quiz) }));
+  const pm = v.mark();
+  v.socket.emit('directory.peek', {});
+  await v.waitFor(() => new Set(v.since(pm, 'directory.list').map((e) => e.kind)).size === 3, 3000, 'peek 세 종류');
+  expect('★★★ R125 B1 directory.peek — 세 종류 한 번씩', [...new Set(v.since(pm, 'directory.list').map((e) => e.kind))].sort().join(','), 'draw,liar,quiz');
+  await withDb((c) => c.query(`DELETE FROM account_blocks WHERE account_id = ANY($1) OR blocked_id = ANY($1)`, [[...ids.values()]]));
+  for (const x of [h1, h3, extra]) x.leave();
+  await sleep(600);
+
+  // ② 방 105개(퀴즈) — 처음 100 + more · total 105 · "더 보기" limit 200 → 105 · more 없음
+  const t0 = Date.now();
+  for (let i = 0; i < many.length; i += 15) {
+    await Promise.all(many.slice(i, i + 15).map((b) => b.connect()));
+  }
+  for (const b of many) b.leave();
+  await sleep(500);
+  for (const [i, b] of many.entries()) b.socket.emit('room.create', { title: `많은 방 ${i + 1}`, kind: 'quiz', maxPlayers: 8 });
+  await sleep(2500);
+  const made = many.filter((b) => b.snapshot?.room?.code).length;
+  l = await watchList(v, 'quiz');
+  expectTrue(`★★★ R125 C2 ② 방 ${made}개 — 처음 100개 + more · total ${made} · 방 수 ${made}`, made >= 101 && l.rooms.length === 100 && l.more === true && l.total === made && l.counts.quiz === made, JSON.stringify({ made, n: l.rooms.length, more: l.more, total: l.total, counts: l.counts }));
+  l = await watchList(v, 'quiz', 200);
+  expectTrue('★★★ R125 C2 ② "더 보기"(limit 200) → 전부 · more 없음', l.rooms.length === made && l.more === false, JSON.stringify({ n: l.rooms.length, more: l.more, total: l.total }));
+  // 1초 방송도 그 사람 limit 그대로(방 하나 더 → 전부 + 1)
+  const m2 = v.mark();
+  many[0].leave();
+  await sleep(2500);
+  const last = v.since(m2, 'directory.list').filter((e) => e.kind === 'quiz').pop();
+  expectTrue('★★★ R125 C2 ② 더 보기 뒤 1초 방송도 전부(한 방 없어짐 → 하나 줄어든 수)', last && last.rooms.length === made - 1 && last.more === false, JSON.stringify(last ? { n: last.rooms.length, more: last.more } : null));
+  const body = JSON.stringify(l).length;
+  log(`  [R125] 방 ${made}개 목록 글 크기 ${body}바이트 · 만들기 ${Date.now() - t0}ms`);
+  for (const b of many) b.disconnect?.();
+  v.disconnect?.();
+  return checkSummary();
+}
+
 const SCENARIOS = {
   join: scenarioJoin,
   // ★★★ R109 — 두 자리(공개 · 베타)
@@ -11402,6 +11522,7 @@ const SCENARIOS = {
   // ★★★ R123 — 줄이기(기본 TRIM) · 유료 다른 제시어 · 혼자 하기 아이템 · 해설 Enter (scripts/bot-r123.mjs)
   r123: () => r123Scenarios().r123(),
   r124: () => r123Scenarios().r124(),
+  r125: scenarioR125,
   trim: () => r123Scenarios().trim(),
 };
 function r123Scenarios() {

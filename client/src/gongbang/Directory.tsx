@@ -8,6 +8,7 @@
 import { useEffect, useState } from 'react';
 import type { Socket } from 'socket.io-client';
 import {
+  GONGBANG,
   ROOM_KINDS,
   canEnter,
   quickJoinOptCount,
@@ -25,6 +26,31 @@ import { usePopup } from '../popup.js';
 import { KIND_ICON, KIND_LABEL, LEVEL_LABEL } from './kinds.js';
 import { setQuickJoin, useQuickJoin } from './store.js';
 import type { CreatePrefill } from './CreateRoom.js';
+import { put, useWarm } from '../warm.js';
+
+/** ★★★ R125 B1 — 종류마다 마지막에 받은 목록(warm) */
+interface DirList {
+  rooms: RoomListItem[];
+  more: boolean;
+  total?: number;
+}
+const dirKey = (k: RoomKind) => `dir:${k}`;
+const noLoad = async () => null;
+/** 공방 화면(로비 · 목록)이 붙어 있는 동안 — 받은 목록을 종류마다 넣는다 · 처음 한 번 세 종류를 미리(directory.peek) */
+export function useDirStore(socket: Socket, on: boolean): void {
+  useEffect(() => {
+    if (!on) return undefined;
+    const onList = (p: { kind: RoomKind; rooms: RoomListItem[]; more: boolean; total?: number }) => put<DirList>(dirKey(p.kind), { rooms: p.rooms, more: p.more, total: p.total });
+    const peek = () => socket.emit('directory.peek', {});
+    socket.on('directory.list', onList);
+    socket.on('connect', peek);
+    if (socket.connected) peek();
+    return () => {
+      socket.off('directory.list', onList);
+      socket.off('connect', peek);
+    };
+  }, [socket, on]);
+}
 
 type QuickResult =
   | { status: 'joined'; kind: RoomKind; code: string }
@@ -204,7 +230,10 @@ function QuickOptions({ kind, onClose }: { kind: RoomKind; onClose: () => void }
 }
 
 export default function Directory({ socket, kind, onKind, counts, onCounts, onJoin, onCreate }: Props) {
-  const [list, setList] = useState<{ kind: RoomKind; rooms: RoomListItem[]; more: boolean } | null>(null);
+  // ★★★ R125 B1 — 종류마다 마지막에 받은 목록(로비가 directory.peek 로 미리 받음) → 목록 화면 · 탭을 연 순간 다 그려져 있다
+  const cached = useWarm<DirList>(dirKey(kind), noLoad, false);
+  const [limit, setLimit] = useState<number>(GONGBANG.LIST_MAX);
+  const list = cached ? { kind, ...cached } : null;
   const [optOpen, setOptOpen] = usePopup('quick-join-opts');
   const [result, setResult] = useState<QuickResult | null>(null);
   const [nearOpen, setNearOpen] = usePopup('quick-join-near');
@@ -214,14 +243,12 @@ export default function Directory({ socket, kind, onKind, counts, onCounts, onJo
   const sentOpts: QuickJoinOpts = kind === 'quiz' ? opts : { ...opts, levels: [], minigame: 'any' };
   const optCount = quickJoinOptCount(sentOpts);
 
-  // ── 구독(탭을 바꾸면 다시 · 떠나면 끊는다)
+  // ── 구독(탭을 바꾸면 다시 · 떠나면 끊는다) — 받은 목록은 dirStore 가 종류마다 넣는다(GongbangHome 의 useDirStore)
   useEffect(() => {
-    const onList = (p: { kind: RoomKind; rooms: RoomListItem[]; more: boolean; counts?: Record<RoomKind, number> }) => {
+    const onList = (p: { kind: RoomKind; counts?: Record<RoomKind, number> }) => {
       if (p.counts) onCounts(p.counts);
-      if (p.kind !== kind) return;
-      setList({ kind: p.kind, rooms: p.rooms, more: p.more });
     };
-    const watch = () => socket.emit('directory.watch', { kind });
+    const watch = () => socket.emit('directory.watch', { kind, limit });
     socket.on('directory.list', onList);
     socket.on('connect', watch);
     if (socket.connected) watch();
@@ -229,7 +256,8 @@ export default function Directory({ socket, kind, onKind, counts, onCounts, onJo
       socket.off('directory.list', onList);
       socket.off('connect', watch);
     };
-  }, [socket, kind, onCounts]);
+  }, [socket, kind, onCounts, limit]);
+  useEffect(() => setLimit(GONGBANG.LIST_MAX), [kind]);
   useEffect(() => () => void socket.emit('directory.unwatch', {}), [socket]);
 
   // ── 빠른 입장 결과
@@ -269,7 +297,7 @@ export default function Directory({ socket, kind, onKind, counts, onCounts, onJo
       </div>
       <section className="card dir-list" data-dir-list={kind} aria-busy={rooms === null}>
         {rooms === null ? (
-          <p className="dim dir-empty">불러오는 중…</p>
+          <div className="dir-wait" aria-hidden="true" />
         ) : rooms.length === 0 ? (
           <p className="dim dir-empty" data-dir-empty>
             아직 열린 {KIND_LABEL[kind]} 방이 없어요
@@ -277,7 +305,12 @@ export default function Directory({ socket, kind, onKind, counts, onCounts, onJo
         ) : (
           rooms.map((it) => <RoomRow key={it.code} item={it} onJoin={onJoin} />)
         )}
-        {list?.more && <p className="dim dir-more">방이 많아 100개까지만 보여요. 빠른 입장을 써 보세요</p>}
+        {/* ★★★ R125 C2 — 100개 넘으면 "더 보기"(100개씩 · 목록 칸 안에서만 내려 본다) */}
+        {list?.more && (
+          <button type="button" className="ghost dir-more" data-dir-more onClick={() => setLimit((n) => n + GONGBANG.LIST_MAX)}>
+            더 보기 <span className="mono dim">{list.rooms.length}/{list.total ?? list.rooms.length}</span>
+          </button>
+        )}
       </section>
       <div className="dir-bottom">
         <div className="qj-split">

@@ -6,12 +6,15 @@
 // ★ 창: 팝업 하나 · ✕ / Esc / 바깥 누르면 닫힘 · PC 는 한 화면 · 모바일은 세로 스크롤.
 // =============================================================================
 
+import { MINE, loadStats } from './mine.js';
+import { failed as warmFailed, useWarm } from './warm.js';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ACHIEVEMENTS, achievementDef } from '@quiz/shared';
 import { Award, BarChart3 } from 'lucide-react';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
+import Notice from './Notice.js';
 
 interface Stats {
   quiz: { games: number; correct: number; byTopic: { topic: string; label: string; n: number }[]; byTier: { tier: string; label: string; n: number }[]; avgResponseMs: number | null };
@@ -36,14 +39,9 @@ function bestText(m: Stats['minigames'][number]): string {
 
 export default function StatsModal({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState<'stats' | 'ach'>('stats');
-  const [s, setS] = useState<Stats | null>(null);
-  const [err, setErr] = useState(false);
-  useEffect(() => {
-    fetch('/api/me/stats', { credentials: 'same-origin' })
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((j) => setS(j))
-      .catch(() => setErr(true));
-  }, []);
+  // ★★★ R125 B1 — 로비에서 미리 읽은 값(mine)으로 연 순간 다 그리고 · 연 뒤 한 번 새로 받아 조용히 바꾼다
+  const s = useWarm<Stats>(MINE.stats, loadStats<Stats>) ?? null;
+  const err = !s && warmFailed(MINE.stats);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -77,8 +75,8 @@ export default function StatsModal({ onClose }: { onClose: () => void }) {
             <Icon icon={Award} /> 업적 {s ? `${earned.size}/${ACHIEVEMENTS.length}` : ''}
           </button>
         </div>
-        {err && <p className="form-error">전적을 불러오지 못했어요</p>}
-        {!s && !err && <p className="dim">불러오는 중…</p>}
+        {err && <Notice tone="bad">전적을 불러오지 못했어요</Notice>}
+        {!s && !err && <div className="stats-wait" aria-hidden="true" />}
         {s && tab === 'stats' && (
           <div className="stats-body" data-loaded="1">
             <section className="stats-sec">

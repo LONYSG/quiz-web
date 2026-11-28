@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom';
 import { Delete, Lock } from 'lucide-react';
 import Icon from '../Icon.js';
 import PopupClose from '../PopupClose.js';
+import Notice from '../Notice.js';
 
 export interface LockState {
   code: string;
@@ -91,9 +92,10 @@ export default function LockedJoin({ lock, onSubmit, onClose }: Props) {
             </span>
           ))}
         </div>
-        <p className={msg ? 'gb-lock-msg' : 'gb-lock-msg empty'} role="alert" data-gb-lock-msg>
-          {msg ?? ' '}
-        </p>
+        {/* ★★★ R125 B2 — 틀림 · 막힘 = Notice(경고 꼴) · 자리는 늘 잡아 둔다 */}
+        <div className="gb-lock-msg" data-gb-lock-msg>
+          <Notice tone="bad" reserve alert>{msg}</Notice>
+        </div>
         <div className="numpad" data-arrow-nav>
           {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((d) => (
             <button key={d} type="button" className="ghost" disabled={blocked} onClick={() => press(d)}>

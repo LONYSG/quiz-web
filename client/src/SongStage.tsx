@@ -17,6 +17,8 @@ import Icon from './Icon.js';
 import Avatar from './Avatar.js';
 import { sfx, setMusicMode } from './sound.js';
 import { installSongUnlock, playSong, retrySong, setSongVolume, stopSong, useSongAudio } from './minigame/songAudio.js';
+import Notice from './Notice.js';
+import { euroParticle } from './josa.js';
 
 export interface SongPlayView {
   previewUrl: string;
@@ -118,9 +120,7 @@ export function SongPlay({
       )}
       <div className={`song-sound${blocked ? ' blocked' : ''}`} data-song-sound={st.status} data-song-unlocked={st.unlocked ? '1' : '0'}>
         {failed && (
-          <span className="song-state" data-song-state>
-            <Icon icon={Headphones} /> 미리듣기를 못 불러왔어요
-          </span>
+          <Notice as="span" className="song-state" name="song-state">미리듣기를 못 불러왔어요</Notice>
         )}
         {needTap ? (
           <button
@@ -157,11 +157,14 @@ export function SongReveal({
   winner,
   winnerMs,
   reasonTitle,
+  altAnswer = null,
 }: {
   song: SongRevealView;
   winner: { accountId: string; nickname: string; colorIndex: number; avatarV?: number | null } | null;
   winnerMs: number | null;
   reasonTitle: string;
+  /** ★★★ R125 C3 — 대표 제목이 아닌 인정어로 맞혔으면 그 표기(퀴즈 공개 R105 와 같은 꼴 · 없으면 자리도 없다) */
+  altAnswer?: string | null;
 }) {
   return (
     <div className="song-reveal-text">
@@ -185,6 +188,11 @@ export function SongReveal({
         </p>
       ) : (
         <p className="song-winner dim">{song.failSkipped ? '미리듣기를 못 불러와 넘겼어요' : reasonTitle}</p>
+      )}
+      {winner && altAnswer && (
+        <p className="reveal-alt song-alt" data-song-alt>
+          "<b style={{ color: `var(--p${winner.colorIndex})` }}>{altAnswer}</b>"{euroParticle(altAnswer)} 정답 인정
+        </p>
       )}
     </div>
   );

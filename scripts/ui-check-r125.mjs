@@ -128,6 +128,10 @@ export async function r125SoloFlow(ctx) {
 
 /** 묶음 고르기 — --r125(전부) · --r125=solo · … */
 export async function r125Flow(ctx, part) {
-  const parts = part === 'all' ? ['solo'] : part.split(',');
+  const parts = part === 'all' ? ['solo', 'sweep'] : part.split(',');
   if (parts.includes('solo')) await r125SoloFlow(ctx);
+  if (parts.includes('sweep')) {
+    const { r125SweepFlow } = await import('./ui-check-r125-sweep.mjs');
+    await r125SweepFlow(ctx);
+  }
 }

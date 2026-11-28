@@ -17,6 +17,7 @@ import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
 import { isReportOpen } from '../reportGuard.js';
+import Notice from '../Notice.js';
 
 interface Props {
   socket: Socket;
@@ -198,9 +199,9 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
         </>
       )}
       {wrongLang && (
-        <p className="typing-lang-warn" data-typing-lang-warn role="alert">
-          한/영 키를 누르세요
-        </p>
+        <div className="typing-lang-warn" data-typing-lang-warn>
+          <Notice alert>한/영 키를 누르세요</Notice>
+        </div>
       )}
       <input
         ref={inputRef}
@@ -250,11 +251,11 @@ export default function TypingRace({ socket, view, serverNow, mobile }: Props) {
         ) : over ? (
           `시간이 끝났어요 — ${pct}%`
         ) : needTap && mobile ? (
-          <span className="typing-warn">입력칸을 누르세요</span>
+          <Notice as="span" className="typing-warn">입력칸을 누르세요</Notice>
         ) : hasBad ? (
-          <span className="typing-warn">빨간 글자를 지우고 다시 치세요</span>
+          <Notice as="span" className="typing-warn">빨간 글자를 지우고 다시 치세요</Notice>
         ) : blocked > 0 ? (
-          <span className="typing-warn">붙여넣기는 안 돼요 — 직접 치세요</span>
+          <Notice as="span" className="typing-warn">붙여넣기는 안 돼요, 직접 치세요</Notice>
         ) : (
           `${pct}%, 띄어쓰기와 마침표까지 똑같이`
         )}

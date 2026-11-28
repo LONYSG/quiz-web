@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 import BusyButton from './BusyButton.js';
 import PopupClose from './PopupClose.js';
 import { useDismiss } from './useDismiss.js';
+import Notice from './Notice.js';
 
 const STAGE = 260;
 const OUT = 256;
@@ -174,7 +175,7 @@ export default function ProfileEditor({ file, onCancel, onDone }: Props) {
           <PopupClose onClose={onCancel} />
         </div>
         {error ? (
-          <p className="form-error">{error}</p>
+          <Notice tone="bad" alert name="profile-photo">{error}</Notice>
         ) : (
           <>
             <div

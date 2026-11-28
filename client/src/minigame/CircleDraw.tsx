@@ -14,6 +14,7 @@ import { CIRCLE_MAX_POINTS, CIRCLE_MIN_POINTS, circleScore, type CircleFit } fro
 import { sfx } from '../sound.js';
 import type { MinigameView } from '../useRoom.js';
 import { useFrameNow, usePlayT0 } from './playClock.js';
+import Notice from '../Notice.js';
 
 interface Props {
   socket: Socket;
@@ -152,7 +153,7 @@ export default function CircleDraw({ socket, view, serverNow, mobile }: Props) {
         ) : over ? (
           '시간이 끝났어요'
         ) : tooShort ? (
-          <span className="typing-warn">너무 짧아요 — 다시 그리세요</span>
+          <Notice as="span" className="typing-warn">너무 짧아요, 다시 그리세요</Notice>
         ) : mobile ? (
           '손가락으로 한 번에 원을 그리고 떼세요'
         ) : (

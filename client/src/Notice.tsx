@@ -18,21 +18,26 @@ interface Props {
   className?: string;
   /** 검사용 이름(data-notice-for) */
   name?: string;
+  /** ★★★ R125 — 글 줄 안(label 등)에는 span 으로(모양은 같다 — 자기 줄) */
+  as?: 'p' | 'span';
+  /** 오류는 role=alert 로 읽게(입력 오류 · 실패) */
+  alert?: boolean;
 }
 
-export default function Notice({ tone = 'warn', children, reserve = false, className, name }: Props) {
+export default function Notice({ tone = 'warn', children, reserve = false, className, name, as = 'p', alert = false }: Props) {
   const empty = children === null || children === undefined || children === false || children === '';
   if (empty && !reserve) return null;
+  const Tag = as;
   return (
-    <p
+    <Tag
       className={`notice-line tone-${tone}${empty ? ' empty' : ''}${className ? ` ${className}` : ''}`}
-      role={empty ? undefined : 'status'}
+      role={empty ? undefined : alert ? 'alert' : 'status'}
       data-notice={empty ? undefined : tone}
       data-notice-for={name}
       data-wrap-ok
     >
       {!empty && <Icon icon={TriangleAlert} />}
       {!empty && <span>{children}</span>}
-    </p>
+    </Tag>
   );
 }

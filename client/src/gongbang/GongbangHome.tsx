@@ -31,17 +31,18 @@ import ProfilePanel from '../ProfilePanel.js';
 import ShopPanel, { useShopDot } from '../ShopPanel.js';
 import { FriendsButton } from '../SocialPopups.js';
 import { useOpenBugReport } from '../AppReport.js';
-import { openPersonCard } from '../PersonCard.js';
+import { openPersonCard, warmPerson } from '../PersonCard.js';
 import { openPopup, usePopup } from '../popup.js';
 import { useUiMode } from '../uiMode.js';
-import Directory from './Directory.js';
+import Directory, { useDirStore } from './Directory.js';
 import CreateRoom, { type CreatePayload, type CreatePrefill } from './CreateRoom.js';
 import LockedJoin, { type LockState } from './LockedJoin.js';
 import { BeltOf } from './Belt.js';
 import { beltLabel } from '@quiz/shared';
 import { siteInfo } from '../site.js';
 import SoloScreen from '../solo/SoloScreen.js';
-import { fetchSoloMe } from '../solo/useSolo.js';
+import { MINE, loadSoloMe, putSoloMe, warmSoloMe } from '../mine.js';
+import { useWarm } from '../warm.js';
 import type { SoloMeView } from '@quiz/shared';
 
 interface Props {
@@ -192,15 +193,17 @@ export default function GongbangHome({ socket, account, social, onJoinOther, onN
   const beltOn = siteInfo().belt;
   // ★ R118 — 혼자 하기 화면(null = 로비) · 'resume' = 도는 판을 이어받는다(새로 고침 · 새 탭)
   const [solo, setSolo] = useState<null | 'new' | 'resume'>(null);
-  const [soloMe, setSoloMe] = useState<SoloMeView | null>(null);
+  // ★★★ R125 B1 — 내 기록은 앱이 켜질 때 받아 둔 값(mine)으로 첫 그림부터 · 로비로 돌아올 때마다 뒤에서 새로
+  const soloMe = useWarm<SoloMeView>(soloOn || beltOn ? MINE.soloMe : null, loadSoloMe, false) ?? null;
+  const setSoloMe = useCallback((m: SoloMeView | null) => {
+    if (m) putSoloMe(m);
+  }, []);
   useEffect(() => {
     if (!soloOn && !beltOn) return;
     if (solo !== null) return;
     let live = true;
-    void fetchSoloMe().then((m) => {
-      if (!live) return;
-      setSoloMe(m);
-      if (m?.running && soloOn) setSolo('resume');
+    void warmSoloMe().then((m) => {
+      if (live && m?.running && soloOn) setSolo('resume');
     });
     return () => {
       live = false;
@@ -227,6 +230,13 @@ export default function GongbangHome({ socket, account, social, onJoinOther, onN
   const [lockOpen, setLockOpen] = usePopup('gb-lock');
   const [lock, setLock] = useState<LockState | null>(null);
   const shopDot = useShopDot();
+  // ★★★ R125 B1 — 공방 목록을 미리(세 종류) · 받은 목록은 종류마다 들고 있다 → 목록 화면 · 탭을 연 순간 다 그려져 있다
+  useDirStore(socket, solo === null);
+  // 내 사람 카드 · 전체 업적(프로필 · 내 칸을 누름)도 미리
+  useEffect(() => {
+    const t = setTimeout(() => warmPerson(account.accountId), 300);
+    return () => clearTimeout(t);
+  }, [account.accountId]);
 
   const setKind = useCallback((k: RoomKind) => {
     setKindState(k);

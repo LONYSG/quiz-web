@@ -218,7 +218,7 @@ export function WhichSummary({ view, nameOf }: { view: MinigameView; nameOf: (id
                   const row = r.rows.find((x) => x.accountId === id);
                   const ok = row?.extra?.correct === true;
                   if (ok && row?.points) c += 1;
-                  return <td key={r.roundIndex}>{ok ? <Icon icon={Check} className="ok" /> : row?.submitted ? <Icon icon={X} className="bad" /> : '·'}</td>;
+                  return <td key={r.roundIndex}>{ok ? <Icon icon={Check} className="ok" /> : row?.submitted ? <Icon icon={X} className="bad" /> : ''}</td>;
                 })}
                 <td className="mono">{c}</td>
               </tr>

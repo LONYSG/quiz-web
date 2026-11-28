@@ -4707,12 +4707,12 @@ async function r068AvatarFlow(browser) {
     const doc = await H.send('DOM.getDocument', { depth: -1, pierce: true });
     const { nodeId } = await H.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
     await H.send('DOM.setFileInputFiles', { nodeId, files: [f] });
-    await H.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null || document.querySelector('.profile-editor .form-error') !== null", 8000).catch(() => false);
+    await H.waitFor("document.querySelector('.profile-editor .crop-stage img') !== null || document.querySelector('.profile-editor .notice-line') !== null", 8000).catch(() => false);
     await sleep(300);
-    const err0 = await H.evaluate("document.querySelector('.profile-editor .form-error')?.innerText ?? ''");
+    const err0 = await H.evaluate("document.querySelector('.profile-editor .notice-line')?.innerText ?? ''");
     if (!err0) await realClick(H, '.profile-editor button', '등록');
-    await H.waitFor("document.querySelector('.rename-pop .rename-msg')?.innerText.includes('사진') || document.querySelector('.profile-editor .form-error') !== null", 8000).catch(() => false);
-    out[k] = JSON.parse(await H.evaluate("JSON.stringify({ msg: document.querySelector('.rename-pop .rename-msg')?.innerText ?? '', err: document.querySelector('.profile-editor .form-error')?.innerText ?? '', net: window.__av })"));
+    await H.waitFor("document.querySelector('.rename-pop .rename-msg')?.innerText.includes('사진') || document.querySelector('.profile-editor .notice-line') !== null", 8000).catch(() => false);
+    out[k] = JSON.parse(await H.evaluate("JSON.stringify({ msg: document.querySelector('.rename-pop .rename-msg')?.innerText ?? '', err: document.querySelector('.profile-editor .notice-line')?.innerText ?? '', net: window.__av })"));
     if (k === 'jpg-56k') await snap(H, '360-avatar-ok-2560');
     if (out[k].err) await snap(H, `360-avatar-err-${k}`);
     await H.evaluate("document.querySelector('.profile-editor .popup-close')?.click()");
@@ -4727,9 +4727,9 @@ async function r068AvatarFlow(browser) {
     const { nodeId } = await H.send('DOM.querySelector', { nodeId: doc.root.nodeId, selector: '#avatar-file' });
     await H.send('DOM.setFileInputFiles', { nodeId, files: [heic] });
   }
-  await H.waitFor("document.querySelector('.profile-editor .form-error') !== null", 8000).catch(() => false);
+  await H.waitFor("document.querySelector('.profile-editor .notice-line') !== null", 8000).catch(() => false);
   await sleep(300);
-  const he = await H.evaluate("document.querySelector('.profile-editor .form-error')?.innerText ?? ''");
+  const he = await H.evaluate("document.querySelector('.profile-editor .notice-line')?.innerText ?? ''");
   await snap(H, '361-avatar-heic-as-jpg');
   record('★★ R068 #71 휴대폰 HEIC 를 이름만 .jpg 로 — "HEIC · 이름만 .jpg 로 바꿔서는 안 돼요 · JPG 로 저장" 안내', /HEIC/.test(he) && /\.jpg 로 바꿔서는/.test(he) && /JPG/.test(he), he);
   H.close();
@@ -5215,7 +5215,7 @@ async function r084Flow(browser) {
         // 재생 실패 — 손님 화면의 audio 에서 error(실제 경로) + 소켓 손님 보고 → 2/3 과반 건너뜀
         await G.evaluate("document.querySelector('[data-song-audio]')?.dispatchEvent(new Event('error'))");
         await sleep(400);
-        const gState = await G.evaluate("document.querySelector('[data-song-state]')?.innerText ?? ''");
+        const gState = await G.evaluate("document.querySelector('[data-notice-for=song-state]')?.innerText ?? ''");
         await snap(G, 'songyear-fail-m360');
         subS({ fail: true });
         res.skipped = { gState };
@@ -10291,7 +10291,8 @@ async function r069GameFlow(browser) {
       await H.waitFor(`document.querySelector('.question-card .q-progress')?.innerText.trim().startsWith('${i + 1} ')`, 60000).catch(() => false);
       await sleep(400);
       if (i === 0) {
-        badge = await H.evaluate("document.querySelector('.q-head .badge.diff')?.innerText ?? ''");
+        // ★★★ R125 C1 — 방 난이도는 문제 카드에서 방 머리로 옮겼다(카드는 문제 등급 점 다섯)
+        badge = await H.evaluate("(document.querySelector('.room-head .room-level')?.innerText ?? '') + '|' + (document.querySelector('.q-head .grade-pill') ? 'pill' : '')");
         await snap(H, '405-badge-1536');
       }
       const len = await H.evaluate("[...(document.querySelector('.q-text')?.dataset.text ?? '')].length");
@@ -10320,7 +10321,7 @@ async function r069GameFlow(browser) {
     const r240 = rows.find((r) => r.tag === '240');
     const r197 = rows.find((r) => r.tag === '197');
     const r140 = rows.find((r) => r.tag === '140');
-    record('★★★ R069 뱃지 — "난이도 고급"', /난이도 고급/.test(badge), badge);
+    record('★★★ R069 뱃지 — 방 머리 "고급" · ★ R125 C1 문제 카드는 등급 점 다섯', /고급\|pill$/.test(badge), badge);
     record('★★★ R069 좁은 칸 글자 규칙 — 360: 240 · 197 = 15px · 140 = 17px · 두 번 재도 같음 · 240 은 입력칸 보임', r240?.m360?.fs === '15px' && r197?.m360?.fs === '15px' && r140?.m360?.fs === '17px' && rows.every((r) => r.m360?.fs === r.m360b?.fs && r.m360?.lines === r.m360b?.lines) && r240?.m360?.input === true && r197?.m360?.input === true, JSON.stringify(rows.map((r) => [r.tag, r.m360?.fs, r.m360?.lines, r.m360?.input, r.m360b?.fs])));
     record('★★ R069 PC 는 옛 자동 맞춤 그대로(240 1536 = 4줄 · 입력칸 보임)', r240?.pc?.input === true && r240?.pc?.lines <= 5, JSON.stringify(rows.map((r) => [r.tag, r.pc?.fs, r.pc?.lines])));
     for (const s of socks) s.close();
@@ -12652,7 +12653,7 @@ async function socialFlow(browser) {
   await clickIn(pw, '.password-change button', '저장하고 시작');
   await sleep(500);
   await snap(pw, '49-password-0000-pc');
-  record('★★★ 새 비밀번호로 0000 은 안 된다', await pw.evaluate("(document.querySelector('.password-change .form-error')?.innerText ?? '').includes('0000')"));
+  record('★★★ 새 비밀번호로 0000 은 안 된다', await pw.evaluate("(document.querySelector('.password-change .notice-line')?.innerText ?? '').includes('0000')"));
   await pw.evaluate(`(() => {
     const set = (el, v) => { const d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); d.set.call(el, v); el.dispatchEvent(new Event('input', { bubbles: true })); };
     const i = [...document.querySelectorAll('.password-change input')];
@@ -13613,8 +13614,8 @@ try {
     })()`);
     record('★★ R035 — 문제 지문: 문장마다 한 줄 (넘치면 글자를 줄인다)', lineFit.ok, JSON.stringify(lineFit));
     record(
-      '★ 게임 화면에 이 판의 난이도가 보인다 (R025)',
-      (await host.evaluate("document.querySelector('.question-card .badge.diff')?.innerText ?? ''")).includes('난이도'),
+      '★ 게임 화면에 이 문제의 등급(말 + 점 다섯)이 보인다 (R125 C1 — R025 방 난이도 글을 갈음)',
+      await host.evaluate("(() => { const p = document.querySelector('.question-card .grade-pill'); return Boolean(p) && p.querySelectorAll('.grade-dots i').length === 5 && p.querySelectorAll('.grade-dots i.on').length === Number(p.dataset.grade); })()"),
     );
     // ★ 핵심 정보가 실제로 화면 안에 있는지도 좌표로 확인한다.
     //   ★★ "문서가 짧다" 와 "중요한 것이 보인다" 는 다른 말이다 (R009 교훈)

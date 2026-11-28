@@ -15,12 +15,13 @@ import { config } from '../config.js';
 import { readSessionToken, resolveSession } from '../auth/session.js';
 import { query } from '../db/pool.js';
 import { getRoomOfAccount } from '../rooms/registry.js';
+import { refreshHides } from '../gongbang/hides.js';
 
 export const peopleRouter = Router();
 
 export const PERSON_REPORT_REASONS = ['abuse', 'spam', 'nickname', 'picture', 'drawing', 'other'] as const;
 const REASON_LABEL: Record<(typeof PERSON_REPORT_REASONS)[number], string> = {
-  abuse: '욕설 · 괴롭힘',
+  abuse: '욕설이나 괴롭힘',
   spam: '도배',
   nickname: '부적절한 닉네임',
   picture: '부적절한 사진',
@@ -94,6 +95,7 @@ peopleRouter.put('/blocks/:id', async (req, res) => {
   const n = await query<{ n: number }>(`SELECT count(*)::int AS n FROM account_blocks WHERE account_id = $1`, [session.accountId]);
   if ((n.rows[0]?.n ?? 0) >= 500) return void res.status(400).json({ ok: false, message: '더 가릴 수 없어요(500명).' });
   await query(`INSERT INTO account_blocks (account_id, blocked_id) SELECT $1, id FROM accounts WHERE id = $2 ON CONFLICT DO NOTHING`, [session.accountId, id]);
+  refreshHides(session.accountId, id);
   res.json({ ok: true });
 });
 
@@ -103,5 +105,6 @@ peopleRouter.delete('/blocks/:id', async (req, res) => {
   const id = req.params.id;
   if (!idOk(id)) return void res.status(400).json({ ok: false });
   await query(`DELETE FROM account_blocks WHERE account_id = $1 AND blocked_id = $2`, [session.accountId, id]);
+  refreshHides(session.accountId, id);
   res.json({ ok: true });
 });

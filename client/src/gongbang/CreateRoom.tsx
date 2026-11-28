@@ -12,6 +12,7 @@ import Icon from '../Icon.js';
 import PopupClose from '../PopupClose.js';
 import BusyButton from '../BusyButton.js';
 import { KIND_ICON, KIND_LABEL, LEVEL_LABEL } from './kinds.js';
+import Notice from '../Notice.js';
 
 export interface CreatePrefill {
   kind: RoomKind;
@@ -157,7 +158,7 @@ export default function CreateRoom({ prefill, busy, onCreate, onClose }: Props) 
             )}
           </div>
         </div>
-        {err && <p className="form-error" role="alert">{err}</p>}
+        {err && <Notice tone="bad" alert name="create">{err}</Notice>}
         <BusyButton className="primary big-btn gb-wide" onClick={submit} busy={busy}>
           만들기
         </BusyButton>

@@ -15,6 +15,7 @@ import { ChevronDown, ChevronRight, ClipboardList } from 'lucide-react';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
 import { fetchGameFeedback, type FeedbackItem } from './api.js';
+import { failed as warmFailed, useWarm, warm } from './warm.js';
 import { usePopup } from './popup.js';
 import { QNo, QReportButton } from './AppReport.js';
 import { useUiMode } from './uiMode.js';
@@ -50,28 +51,21 @@ function FeedbackRow({ item, open, onToggle }: { item: FeedbackItem; open: boole
   );
 }
 
-/** 이번 판 문제 목록 불러오기 */
-function useGameFeedbackItems(gameId: string) {
-  const [items, setItems] = useState<FeedbackItem[] | null>(null);
-  const [err, setErr] = useState(false);
-  useEffect(() => {
-    let alive = true;
-    setItems(null);
-    setErr(false);
-    fetchGameFeedback(gameId)
-      .then((x) => alive && setItems(x))
-      .catch(() => alive && setErr(true));
-    return () => {
-      alive = false;
-    };
-  }, [gameId]);
-  return { items, err };
+/**
+ * 이번 판 문제 목록 — ★★★ R125 B1: 판 번호마다 마지막에 안 값(warm). 결과 화면이 받은 목록을 로비의 "지난 판 문제"가 그대로 쓰고
+ *   (버튼이 보일 때 미리 읽음) · 열 때 한 번 새로 받아 조용히 바꾼다(평가 점이 바뀌었을 수 있다).
+ */
+const fbKey = (gameId: string) => `fb:${gameId}`;
+const loadFb = (gameId: string) => () => fetchGameFeedback(gameId);
+function useGameFeedbackItems(gameId: string, refresh = true) {
+  const items = useWarm<FeedbackItem[]>(fbKey(gameId), loadFb(gameId), refresh) ?? null;
+  return { items, err: !items && warmFailed(fbKey(gameId)) };
 }
 
 function FeedbackListView({ items, err }: { items: FeedbackItem[] | null; err: boolean }) {
   const [openId, setOpenId] = useState<string | null>(null);
   if (err) return <p className="dim fb-empty">문제 목록을 불러오지 못했어요.</p>;
-  if (!items) return <p className="dim fb-empty">불러오는 중…</p>;
+  if (!items) return <div className="fb-wait" aria-hidden="true" />;
   if (items.length === 0) return <p className="dim fb-empty">문제가 없어요.</p>;
   return (
     <ol className="fb-list" data-loaded="1">
@@ -129,6 +123,10 @@ export function ResultFeedback({ gameId }: { gameId: string }) {
 export function LastGameFeedback({ gameId }: { gameId: string }) {
   const [open, setOpen] = usePopup('feedback-last');
   const close = useCallback(() => setOpen(false), [setOpen]);
+  // ★★★ R125 B1 — 버튼이 보이면 목록을 미리(결과 화면이 이미 받았으면 그 값 그대로)
+  useEffect(() => {
+    void warm(fbKey(gameId), loadFb(gameId), 60_000);
+  }, [gameId]);
   useEffect(() => {
     if (!open) return undefined;
     const onKey = (e: KeyboardEvent) => {

@@ -20,6 +20,7 @@ import ConfirmModal from './ConfirmModal.js';
 import FitText from './FitText.js';
 import Icon from './Icon.js';
 import type { FriendStatus, FriendView, Social } from './useSocial.js';
+import Notice from './Notice.js';
 
 interface Props {
   social: Social;
@@ -87,9 +88,14 @@ export default function FriendList({ social, mode, inRoom, onJoin, pageSize }: P
         </BusyButton>
       </form>
       {/* ★ R044 A-6 — 안내 자리는 늘 비워 둔다: 나타났다 사라질 때 아래 목록이 출렁이지 않고, 입력칸 · 목록 사이 가운데에 선다 */}
-      <p className={recent ? (recent.ok ? 'friend-msg ok' : 'friend-msg form-error') : 'friend-msg'} aria-live="polite">
-        {recent?.message ?? ''}
-      </p>
+      {/* ★★★ R125 B2 — 안 된 것은 Notice(경고 꼴) · 된 것은 보통 글 · 자리는 늘 비워 둔다 */}
+      {recent && !recent.ok ? (
+        <Notice tone="bad" className="friend-msg" name="friend">{recent.message}</Notice>
+      ) : (
+        <p className={recent ? 'friend-msg ok' : 'friend-msg'} aria-live="polite">
+          {recent?.message ?? ''}
+        </p>
+      )}
 
       {social.incoming.length > 0 && (
         <>

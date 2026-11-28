@@ -7,8 +7,8 @@
 //   입력창(답안) 포커스를 빼앗지 않는다.
 // =============================================================================
 
-import { useState } from 'react';
-import { openPersonCard } from './PersonCard.js';
+import { useEffect, useState } from 'react';
+import { openPersonCard, warmPerson } from './PersonCard.js';
 import { useIsOffice } from './office.js';
 
 interface Props {
@@ -30,6 +30,12 @@ export default function Avatar({ nickname, colorIndex, large, xs, accountId, ava
   const office = useIsOffice();
   const initial = [...nickname.trim()][0]?.toUpperCase() ?? '?';
   const canZoom = Boolean(zoom && accountId);
+  // ★★★ R125 B1 — 누를 수 있는 사람이 화면에 보이면 업적 · 띠를 미리 읽어 둔다(누를 때 다 그려진 카드)
+  useEffect(() => {
+    if (!canZoom || !accountId) return undefined;
+    const t = setTimeout(() => warmPerson(accountId), 300);
+    return () => clearTimeout(t);
+  }, [canZoom, accountId]);
   const cls = ['avatar', large ? 'lg' : '', xs ? 'xs' : '', canZoom ? 'zoomable' : ''].filter(Boolean).join(' ');
   const click = canZoom
     ? {

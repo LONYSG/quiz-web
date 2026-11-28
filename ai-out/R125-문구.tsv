@@ -1,0 +1,15 @@
+파일:줄	고치기 전	고친 뒤	까닭
+client/src/styles.css:653	.chat-system::before/::after content ' · ' (시스템 채팅 줄 앞뒤 장식)	장식 뺌(가운데 · 흐린 글색만)	R123 A1 남김 · 찬종 '·' 웬만하면 쓰지마
+client/src/styles.css(.emoji-help-lines li::before)	content '·' (글자 점)	content '' + 4px 동그라미(같은 색 · 같은 자리)	글자 '·' 대신 그림 점
+client/src/minigame/OrderBingo.tsx:163	빈칸 <span class=dim>·</span>	빈칸 그대로(아무것도 안 그림)	R123 A1 남김(빙고 빈칸 장식)
+client/src/minigame/QuizReveal.tsx:221	표 빈칸 '·'	빈칸 ''	R123 A1 남김(표 빈칸 장식)
+shared/src/minigame/topics.ts:227	nameKo '요일 · 계절'	'요일과 계절'	주제 이름(화면 글)
+server/src/http/peopleRoutes.ts:24	'욕설 · 괴롭힘'	'욕설이나 괴롭힘'	R123 A1 미확인 → 확인: 화면에는 안 쓰임(신고 글 기본값 · app_reports 에만) · 그래도 고침
+client/src/minigame/CircleDraw.tsx:156	너무 짧아요 — 다시 그리세요	너무 짧아요, 다시 그리세요	Notice 로 옮기며 군더더기 줄표 뺌
+client/src/minigame/TypingRace.tsx:258	붙여넣기는 안 돼요 — 직접 치세요	붙여넣기는 안 돼요, 직접 치세요	같음
+client/src/AppReport.tsx:443	{오류} — 글은 보관했어요(…)	{오류}, 글은 보관했어요(…)	같음
+(그대로) DB 분류 이름 인문·사회 · 스포츠·게임 등	—	고치지 않음	문제 데이터(categories) — MAIN 은 문제 데이터를 쓰지 않는다 · 설계 판단 거리
+(그대로) 3·1 운동 · 6·25 전쟁 · 4·19 혁명(topics dummy-event)	—	고치지 않음	고유 이름(브리핑)
+(그대로) client/src/lab/*	개발용 실험 화면(사람 화면에서 안 열림)	고치지 않음	게임 화면 아님
+(훑음) R124 · R125 새 글	카운트다운 · 끝 화면 · 더 보기 N/M · 등급 말(쉬움 …) · ○○로 정답 인정 · Notice 문구	'·' · 군말 · 규칙 설명 줄 없음	ui-check --r125=sweep B3 단정(화면 글 훑기 0)
+(그대로) DB 캐치 주제 묶음 이름(topic_sets.name_ko) 캐릭터·인물 등	—	고치지 않음	콘텐츠 데이터(GEN) · 설계 판단 거리

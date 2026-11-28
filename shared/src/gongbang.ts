@@ -41,6 +41,8 @@ export const GONGBANG = {
   PASSWORD_TRY_PER_MIN: 10,
   /** 탭 하나에 보내는 줄 수 */
   LIST_MAX: 100,
+  /** ★★★ R125 C2 — "더 보기"로 늘릴 수 있는 끝(100 씩) */
+  LIST_LIMIT_MAX: 1000,
   /** 목록을 다시 만들어 보내는 간격(바뀐 것이 있을 때만) */
   LIST_INTERVAL_MS: 1_000,
   /** 빠른 입장 — 진행 중인 방은 남은 진행이 이 비율을 넘어야 앞쪽 후보 */

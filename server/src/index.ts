@@ -21,6 +21,7 @@ import { meRouter, profileRouter } from './http/meRoutes.js';
 import { feedbackRouter } from './http/feedbackRoutes.js';
 import { soloRouter } from './http/soloRoutes.js';
 import { peopleRouter } from './http/peopleRoutes.js';
+import { gongbangRouter } from './gongbang/http.js';
 import { reportRouter } from './http/reportRoutes.js';
 import { minigameRouter } from './http/minigameRoutes.js';
 import { shopRouter } from './http/shopRoutes.js';
@@ -224,6 +225,8 @@ async function main(): Promise<void> {
   app.use('/api/reports', reportRouter);
   // ★★★ R116 — 사람 신고 · 개인 차단(공방 스위치를 켰을 때만 — 꺼져 있으면 404)
   app.use('/api/people', peopleRouter);
+  // ★★★ R125 B1 — 공방 목록 세 종류 한 번(앱이 켜질 때)
+  app.use('/api/gongbang', gongbangRouter);
   // ★★★ R118 — 혼자 하기 · 띠(스위치 SOLO · BELT 를 켰을 때만 — 꺼져 있으면 404)
   app.use('/api/solo', soloRouter);
   // ★ R049 — 포인트샵 · 뽑기 (D-231)

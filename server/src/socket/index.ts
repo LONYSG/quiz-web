@@ -372,7 +372,7 @@ function registerRoomHandlers(socket: Socket): void {
       }
       // ★★★ R118 (docs/24 4-1) — 솔로 중에는 방에 들어갈 수 없다(끝내고 가기)
       if (soloRunning(session.accountId)) {
-        sendError(s, 'ALREADY_HAS_ROOM', 'solo', SOLO_BUSY);
+        sayError(s, 'ALREADY_HAS_ROOM', SOLO_BUSY); // ★★★ R125 B2 — 옛 detail 'solo'(개발 말)가 알림 둘째 줄에 보였다
         return;
       }
       // ★★ R107 (D-365) — 방 만들기 계정마다 5개/10분(이 PC 자신은 뺀다 — 봇 · ui-check)
@@ -450,7 +450,7 @@ function registerRoomHandlers(socket: Socket): void {
         return;
       }
       if (!already && soloRunning(session.accountId)) {
-        sendError(s, 'ALREADY_HAS_ROOM', 'solo', SOLO_BUSY);
+        sayError(s, 'ALREADY_HAS_ROOM', SOLO_BUSY); // ★★★ R125 B2 — 옛 detail 'solo'(개발 말)가 알림 둘째 줄에 보였다
         return;
       }
 
@@ -1624,7 +1624,7 @@ function attachToRoom(
   }
   // ★★★ R118 — 솔로 중에는 새로 들어가지 않는다(빠른 입장 · 친구 초대 등 모든 길 · 이미 그 방 사람의 다시 붙음은 통과)
   if (reason === 'join' && soloRunning(session.accountId) && !getRoom(roomId)?.players.has(session.accountId)) {
-    sendError(socket, 'ALREADY_HAS_ROOM', 'solo', SOLO_BUSY);
+    sayError(socket, 'ALREADY_HAS_ROOM', SOLO_BUSY); // ★★★ R125 B2
     return false;
   }
   const room = getRoom(roomId);

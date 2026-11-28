@@ -650,11 +650,7 @@ form button[type='submit'] {
   color: var(--text-dim);
   font-size: 0.78rem;
 }
-.chat-system::before,
-.chat-system::after {
-  content: ' · ';
-  opacity: 0.6;
-}
+/* ★★★ R125 B3 — 시스템 줄 앞뒤 장식 '·' 뺌(찬종 "'·' 웬만하면 쓰지마") — 가운데 · 흐린 글색만으로 구분 */
 @keyframes chat-in {
   from {
     opacity: 0;
@@ -8576,8 +8572,15 @@ button.preset.shake {
   white-space: nowrap;
 }
 .emoji-help-lines li::before {
-  content: '·';
-  margin-right: 5px;
+  /* ★★★ R125 B3 — 글자 '·' 대신 작은 점 그림(같은 자리 · 같은 색) */
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-right: 7px;
   color: var(--accent);
   font-weight: 900;
 }
@@ -12092,3 +12095,30 @@ button.solo-item kbd { font-size: 0.7rem; }
 .gb-mode-list { grid-template-columns: minmax(0, 1fr); }
 button.gb-mode-item { width: 100%; min-width: 0; box-sizing: border-box; white-space: normal; text-align: left; }
 button.gb-mode-item .gb-mode-line { word-break: keep-all; overflow-wrap: break-word; }
+
+/* ★★★ R125 B1 — 아직 한 번도 못 받은 값(드물다 — 미리 읽기가 먼저 받는다)은 글 없이 자리만 잡는다(받으면 그 자리에 채움 · 밀림 없음) */
+.person-belt-wait { min-height: 64px; background: var(--surface-2); border-radius: var(--radius-sm); margin: 10px 0 4px; }
+.person-ach-wait { min-height: 1.6em; }
+.ach-all-wait { min-height: 50vh; }
+.stats-wait { min-height: 40vh; }
+.shop-wait { min-height: 160px; }
+.fb-wait { min-height: 120px; }
+.dir-wait { min-height: 120px; }
+/* ★★★ R125 C2 — 방 100개 넘으면 "더 보기"(목록 칸 안) */
+button.dir-more { display: block; margin: 8px auto; font-size: 0.82rem; }
+/* ★★★ R125 C1 — 문제 등급 알약(영상 QuestionFrame chipSpecs 꼴): 테두리 알약 · 등급 말 + 점 다섯 · 켜진 점 분홍(--accent-2) · 꺼진 점 막대 바탕(--bar-bg) */
+.badge.grade-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.grade-dots { display: inline-flex; gap: 3px; }
+.grade-dots i { display: block; width: 7px; height: 7px; border-radius: 99px; background: var(--bar-bg); }
+.grade-dots i.on { background: var(--accent-2); }
+/* ★★★ R125 B2 — 잠긴 방 숫자판의 경고 줄은 가운데(핀 · 숫자판과 같은 줄기) */
+.gb-lock-msg .notice-line { justify-content: center; }
+.gb-lock-msg { color: inherit; font-weight: inherit; }

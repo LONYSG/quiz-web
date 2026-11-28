@@ -12,18 +12,21 @@
 // ★ 팝업 규칙(popup.ts — 한 번에 하나 · ✕ · 바깥 · Esc) 그대로. 닫으면 채팅 입력으로 포커스를 돌린다 (onClosed).
 // =============================================================================
 
+import { MINE, loadShop } from './mine.js';
+import { put, useWarm, warm } from './warm.js';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Gift, Sparkles } from 'lucide-react';
 import Emoji from './Emoji.js';
 import Icon from './Icon.js';
 import PopupClose from './PopupClose.js';
-import { DrawError, drawEmoji, fetchShop, type DrawResult, type ShopView } from './api.js';
+import { DrawError, drawEmoji, errorMessage, fetchShop, type DrawResult, type ShopView } from './api.js';
 import { reloadEmojiCatalog, setStoredSlots, useEmojiCatalog, useEmojiSlots } from './emojiCatalog.js';
 import { openEmojiHelp } from './EmojiHelp.js';
 import { usePopup } from './popup.js';
 import { sfx } from './sound.js';
 import { useDismiss } from './useDismiss.js';
 import { setFlag, useFlag } from './accountFlags.js';
+import Notice from './Notice.js';
 
 /**
  * ★★ R066 (D-288 · 찬종 #39 "최초 가입 후에 '포인트샵'에 빨간불 알림 표시해서 … 이모티콘 구매 유도") —
@@ -88,7 +91,9 @@ export default function ShopPanel({ onClosed }: Props) {
   useDismiss(open, close, '.shop');
   const cat = useEmojiCatalog();
 
-  const [shop, setShop] = useState<ShopView | null>(null);
+  // ★★★ R125 B1 — 로비에서 미리 읽은 값(mine)으로 연 순간 다 그리고 · 열 때마다 뒤에서 새로(게임 중에 맞혀 포인트가 늘었을 수 있다)
+  const shop = useWarm<ShopView>(MINE.shop, loadShop, false) ?? null;
+  const setShop = (v: ShopView) => put(MINE.shop, v);
   const [stage, setStage] = useState<Stage>({ kind: 'list' });
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -109,14 +114,9 @@ export default function ShopPanel({ onClosed }: Props) {
       setErr(null);
       return undefined;
     }
-    let alive = true;
     setFlag('shopOpened');
-    void fetchShop().then((v) => {
-      if (alive && v) setShop(v);
-    });
-    return () => {
-      alive = false;
-    };
+    void warm(MINE.shop, loadShop);
+    return undefined;
   }, [open]);
   const dot = useShopDot();
   useEffect(
@@ -154,7 +154,7 @@ export default function ShopPanel({ onClosed }: Props) {
       void refresh();
     } catch (e) {
       if (e instanceof DrawError) {
-        setErr(e.message);
+        setErr(errorMessage(e, '뽑기에 실패했어요. 다시 해 주세요.'));
         void refresh();
       } else setErr('뽑기에 실패했어요. 다시 해 주세요.');
       setStage({ kind: 'list' });
@@ -188,7 +188,7 @@ export default function ShopPanel({ onClosed }: Props) {
 
           {stage.kind === 'list' && (
             <div className="shop-list">
-              {shop === null && <p className="dim">불러오는 중…</p>}
+              {shop === null && <div className="shop-wait" aria-hidden="true" />}
               {shop?.themes.length === 0 && <p className="dim">아직 테마가 없어요</p>}
               {shop?.themes.map((t) => {
                 const done = t.owned.length >= t.total;
@@ -238,7 +238,7 @@ export default function ShopPanel({ onClosed }: Props) {
                   </section>
                 );
               })}
-              {err && <p className="form-error shop-msg">{err}</p>}
+              {err && <Notice tone="bad" alert className="shop-msg" name="shop">{err}</Notice>}
             </div>
           )}
 

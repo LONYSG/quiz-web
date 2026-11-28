@@ -142,6 +142,7 @@ ${normalizeAnswer(q.explanation ?? '')}`;
     questionId: q.id,
     text: q.text,
     categoryName: q.categoryName,
+    grade: Number.isInteger(q.grade) && q.grade >= 1 && q.grade <= 5 ? q.grade : null,
     // ── 2. 판정용 정답 집합
     answersNorm: new Set(q.answersNorm),
     // ★★★ R057 — 복수정답 유연화(안전한 변환) 표준형
@@ -289,6 +290,7 @@ function broadcastQuestionStarted(room: Room, current: CurrentQuestion): void {
     total: room.game?.totalQuestions ?? 0,
     text: current.text,
     categoryName: current.categoryName,
+    grade: current.grade ?? null,
     startedAt: current.startedAt,
     endsAt: current.endsAt,
     experiencedPlayers: experiencedPlayers(room, current),
@@ -440,9 +442,9 @@ export function resolveQuestionSync(
   // ★ R050 — 검사용으로 줄일 수 있다(config.tuning.resolvedWaitMs — 기본은 RULES 8초)
   const nextAt = now + config.tuning.resolvedWaitMs;
   // ★★★ R099 — 평가 요청 문항(R071 rateAsk) 없앰(찬종 "평가는 나만 · 제보로")
-  // ★★ R105 — 정답 인정어로 맞혔으면 그 표기(공개 정보에만 실린다 · 노래는 이번 범위 밖)
+  // ★★ R105 — 정답 인정어로 맞혔으면 그 표기(공개 정보에만 실린다) · ★★★ R125 C3 — 노래 공개에도(찬종 말은 정답 공개 화면 전체 · 대표 제목이 아닌 인정어로 맞혔을 때만)
   const winnerAnswer =
-    reason === 'correct' && winnerAccountId && winnerInput !== undefined && !current.song
+    reason === 'correct' && winnerAccountId && winnerInput !== undefined
       ? winnerAnswerOf(current, winnerInput)
       : null;
   game.resolution = {

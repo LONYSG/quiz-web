@@ -224,7 +224,7 @@ export const TOPIC_DUMMY: readonly { topic: string; nameKo: string; items: Topic
   },
   {
     topic: 'dummy-week',
-    nameKo: '요일 · 계절',
+    nameKo: '요일과 계절',
     items: dummy('dummy-week', [
       ['월요일'], ['화요일'], ['수요일'], ['목요일'], ['금요일'], ['토요일'], ['일요일'], ['봄'], ['여름'], ['가을'], ['겨울'],
     ]),

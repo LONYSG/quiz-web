@@ -139,6 +139,8 @@ export interface QuestionView {
   text: string;
   /** ★ 대분류다. 소분류 이름은 힌트가 되므로 보내지 않는다 (R012 3-3) */
   categoryName: string;
+  /** ★★★ R125 C1 — 문제 등급(1~5 · 노래 = null) */
+  grade: number | null;
   startedAt: number;
   endsAt: number;
   /** ★ 경험자 닉네임. 전원 공개다 (D-011: guide 28절 폐기) */
@@ -421,6 +423,7 @@ function buildQuestionView(
     total: room.game?.totalQuestions ?? 0,
     text: q.text,
     categoryName: q.categoryName,
+    grade: q.grade ?? null,
     startedAt: q.startedAt,
     endsAt: q.endsAt,
     experiencedPlayers: experienced,

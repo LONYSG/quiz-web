@@ -160,7 +160,7 @@ export function BingoBoard({ board, size, onPick, picked, disabled }: { board: C
           disabled={disabled || !onPick || !c || c.marked}
           onClick={() => onPick?.(i)}
         >
-          {c ? <span className="bingo-label">{c.label}</span> : <span className="dim">·</span>}
+          {c ? <span className="bingo-label">{c.label}</span> : null}
           {c?.marked && <span className="bingo-check" aria-label="칠함">✓</span>}
         </button>
       ))}

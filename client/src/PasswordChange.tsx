@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { errorMessage, setNewPassword } from './api.js';
 import BusyButton from './BusyButton.js';
 import BrandLogo from './BrandLogo.js';
+import Notice from './Notice.js';
 
 interface Props {
   nickname: string;
@@ -65,7 +66,7 @@ export default function PasswordChange({ nickname, onDone, onLogout }: Props) {
             한 번 더
             <input type="password" value={pw2} onChange={(e) => setPw2(e.target.value)} autoComplete="new-password" required />
           </label>
-          {error && <p className="form-error">{error}</p>}
+          {error && <Notice tone="bad" alert name="password">{error}</Notice>}
           <BusyButton type="submit" className="primary wide" busy={busy}>
             저장하고 시작
           </BusyButton>

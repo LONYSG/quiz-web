@@ -237,6 +237,8 @@ export interface CurrentQuestion {
   text: string;
   /** ★ 화면에 보여줄 카테고리. **대분류**다 (소분류 이름은 힌트가 된다) */
   categoryName: string;
+  /** ★★★ R125 C1 — 이 문제의 등급(1~5) · 문제 카드 머리의 점 다섯(영상과 같은 꼴) · 노래는 없음 */
+  grade?: number | null;
 
   /** ★★ 판정에 쓰는 정규화 정답 집합. 이것만으로 판정한다 */
   answersNorm: Set<string>;

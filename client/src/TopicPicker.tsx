@@ -17,9 +17,11 @@ export interface TopicRow {
 type Lists = { liar: TopicRow[]; draw: TopicRow[] };
 
 let cache: Promise<Lists | null> | null = null;
-function loadLists(): Promise<Lists | null> {
+/** ★★★ R125 B1 — 받아 둔 값(있으면 연 순간 다 그린다) */
+let got: Lists | null = null;
+export function loadLists(): Promise<Lists | null> {
   cache ??= fetch('/api/minigame/topics', { credentials: 'same-origin' })
-    .then(async (r) => (r.ok ? ((await r.json()) as Lists) : null))
+    .then(async (r) => (got = r.ok ? ((await r.json()) as Lists) : null))
     .catch(() => null)
     .then((x) => {
       if (!x) cache = null; // 실패면 다음에 다시
@@ -44,7 +46,7 @@ function groupsOf(rows: readonly TopicRow[]): Group[] {
 }
 
 export default function TopicPicker({ kind, picked, editable, onChange }: { kind: 'liar' | 'draw'; picked: string[] | null | undefined; editable: boolean; onChange: (next: string[] | null) => void }) {
-  const [rows, setRows] = useState<TopicRow[] | null>(null);
+  const [rows, setRows] = useState<TopicRow[] | null>(got ? got[kind] : null);
   useEffect(() => {
     let live = true;
     void loadLists().then((x) => live && setRows(x ? x[kind] : []));

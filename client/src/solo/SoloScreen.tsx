@@ -43,13 +43,16 @@ import Icon from '../Icon.js';
 import Notice from '../Notice.js';
 import PopupClose from '../PopupClose.js';
 import QuestionText from '../QuestionText.js';
-import { fetchPoints } from '../api.js';
+import type { PointBalance } from '../api.js';
+import { MINE, loadPoints, warmPoints } from '../mine.js';
+import { useWarm } from '../warm.js';
 import { sfx } from '../sound.js';
 import { siteInfo } from '../site.js';
 import { useShortcuts } from '../shortcuts.js';
 import { isMobileUi } from '../uiMode.js';
 import { BeltOf } from '../gongbang/Belt.js';
 import { fetchSoloMe, useSolo } from './useSolo.js';
+import GradeDots from '../GradeDots.js';
 
 interface Props {
   socket: Socket;
@@ -176,7 +179,8 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
   const [now, setNow] = useState(() => serverNow());
   const [shake, setShake] = useState(false);
   const [pick, setPick] = useState<SoloItemCounts>(() => ({ ...lastPick }));
-  const [points, setPoints] = useState<number | null>(null);
+  // ★★★ R125 B1 — 잔액은 마지막에 안 값(mine)으로 바로 그리고 · 시작 화면 · 끝난 뒤 새로 받는다(쓰는 순간은 서버가 다시 센다)
+  const points = useWarm<PointBalance>(MINE.points, loadPoints, false)?.balance ?? null;
   /** 마지막 문제의 해설을 다 봤다(Enter · 시간) — 그 뒤 끝 화면 */
   const [endSeen, setEndSeen] = useState(false);
   /** 이번 판에 아이템을 샀나 */
@@ -201,13 +205,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
   // 내 포인트(아이템 고르기) — 시작 화면에서 · 끝난 뒤(값이 바뀌었다)
   useEffect(() => {
     if (s.phase !== 'start' && s.phase !== 'end') return;
-    let live = true;
-    void fetchPoints().then((p) => {
-      if (live) setPoints(p?.balance ?? null);
-    });
-    return () => {
-      live = false;
-    };
+    void warmPoints();
   }, [s.phase]);
 
   // 남은 시간 · 해설 · 카운트 — 100ms 마다(보여 주기만 · 마감은 서버)
@@ -548,7 +546,7 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
             <div className="q-head">
               <span className="q-progress mono">{q.n}번째</span>
               <span className="badge cat">{q.category}</span>
-              <span className="badge diff">등급 {q.grade}</span>
+              <GradeDots grade={q.grade} />
               {active && <span className={`q-timer mono${urgent ? ' urgent' : ''}`}>{sec}초</span>}
             </div>
             {last ? (
@@ -658,20 +656,4 @@ export default function SoloScreen({ socket, serverNow, resume, onClose, initial
       )}
     </div>
   );
-}
-
-/** 로비 [혼자 하기] 아래 글 · 프로필 띠 줄에 쓰는 내 기록(한 번 읽음) */
-export function useSoloMe(on: boolean): SoloMeView | null {
-  const [me, setMe] = useState<SoloMeView | null>(null);
-  useEffect(() => {
-    if (!on) return;
-    let live = true;
-    void fetchSoloMe().then((m) => {
-      if (live) setMe(m);
-    });
-    return () => {
-      live = false;
-    };
-  }, [on]);
-  return me;
 }

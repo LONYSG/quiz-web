@@ -146,7 +146,8 @@ export async function drawEmoji(themeKey: string): Promise<DrawResult> {
 export function errorMessage(err: unknown, fallback = '요청을 처리할 수 없습니다.'): string {
   if (err && typeof err === 'object' && 'message' in err) {
     const message = (err as { message?: unknown }).message;
-    if (typeof message === 'string' && message) return message;
+    // ★★★ R125 B2 — 사람 말(한글)만 그대로 · 브라우저 · 네트워크 오류("Failed to fetch" 같은 개발 말)는 기본 문구로
+    if (typeof message === 'string' && message && /[가-힣]/.test(message)) return message;
   }
   return fallback;
 }

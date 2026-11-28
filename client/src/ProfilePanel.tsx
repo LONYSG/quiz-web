@@ -19,9 +19,12 @@ import PopupClose from './PopupClose.js';
 import ProfileEditor from './ProfileEditor.js';
 import StatsModal from './StatsModal.js';
 import { openPersonCard } from './PersonCard.js';
-import { changeNickname, deleteAvatar, errorMessage, fetchPoints, uploadAvatar, type PointBalance } from './api.js';
+import { changeNickname, deleteAvatar, errorMessage, uploadAvatar, type PointBalance } from './api.js';
+import { MINE, loadPoints, loadStats } from './mine.js';
+import { useWarm, warm } from './warm.js';
 import { usePopup } from './popup.js';
 import { useDismiss } from './useDismiss.js';
+import Notice from './Notice.js';
 
 interface Props {
   accountId: string;
@@ -56,19 +59,14 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
   }, [open, wasOpen]);
 
   // ★ R048 C — 포인트 (맞힌 문제 수 − 쓴 포인트). 창을 열 때마다 새로 읽는다 (게임 중에도 열린다 — D-217)
-  const [points, setPoints] = useState<PointBalance | null>(null);
+  // ★★★ R125 B1 — 마지막에 안 값(mine)으로 연 순간 그리고 · 열 때마다 뒤에서 새로 받아 조용히 바꾼다
+  const points = useWarm<PointBalance>(open ? MINE.points : null, loadPoints) ?? null;
+  // 전적 창은 이 창에서 연다 — 열기 전에 미리(30초 안에 받은 값이면 그대로)
+  useEffect(() => {
+    if (open) void warm(MINE.stats, loadStats, 30_000);
+  }, [open]);
   // ★ R054 — 전적 · 업적 창
   const [statsOpen, setStatsOpen] = useState(false);
-  useEffect(() => {
-    if (!open) return undefined;
-    let alive = true;
-    void fetchPoints().then((p) => {
-      if (alive) setPoints(p);
-    });
-    return () => {
-      alive = false;
-    };
-  }, [open]);
 
   const text = draft ?? nickname;
   const fits = nicknameFits(text.trim());
@@ -214,8 +212,8 @@ export default function ProfilePanel({ accountId, nickname, colorIndex, avatarV,
               </BusyButton>
             </div>
             {/* ★ R041 — 칸 수 대신: 넘으면 빨갛게 + 떨림 + 안내 */}
-            {!fits && <p className="form-error rename-msg nick-over">{NICKNAME_TOO_LONG_MESSAGE}</p>}
-            {msg && <p className={msg.ok ? 'note rename-msg' : 'form-error rename-msg'}>{msg.text}</p>}
+            {!fits && <Notice tone="bad" className="rename-msg nick-over">{NICKNAME_TOO_LONG_MESSAGE}</Notice>}
+            {msg && (msg.ok ? <p className="note rename-msg">{msg.text}</p> : <Notice tone="bad" alert className="rename-msg" name="rename">{msg.text}</Notice>)}
           </div>
         )}
       </span>

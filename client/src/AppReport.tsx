@@ -29,6 +29,8 @@ import { getTheme } from './theme.js';
 import { closePopup, useCurrentPopup, usePopup } from './popup.js';
 import { useUiMode } from './uiMode.js';
 import { gearHasTabs, getGearTab, openGear } from './gearTab.js';
+import Notice from './Notice.js';
+import { errorMessage } from './api.js';
 
 declare const __BUILD__: string;
 
@@ -335,7 +337,7 @@ function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => vo
         onClose();
       })
       .catch((e: Error) => {
-        setErr(e.message);
+        setErr(errorMessage(e, '보내지 못했어요'));
         setBusy(false);
       });
   };
@@ -388,7 +390,7 @@ function QReportWindow({ target, onClose }: { target: QTarget; onClose: () => vo
           }
         }}
       />
-      {err && <p className="fb-err">{err}</p>}
+      {err && <Notice tone="bad" alert className="fb-err">{err}</Notice>}
       <div className="report-actions">
         <button type="button" className="ghost" onClick={onClose}>
           닫기
@@ -438,7 +440,7 @@ function ReportWindow({ frozen, onClose }: { frozen: Frozen; onClose: () => void
       })
       .catch((e: Error) => {
         writeDraft({ kind, text });
-        setErr(`${e.message} — 글은 보관했어요(다음에 열면 되살아나요)`);
+        setErr(`${errorMessage(e, '보내지 못했어요')}, 글은 보관했어요(다음에 열면 되살아나요)`);
         setBusy(false);
       });
   };
@@ -479,7 +481,7 @@ function ReportWindow({ frozen, onClose }: { frozen: Frozen; onClose: () => void
           {ctx.label}
         </p>
       )}
-      {err && <p className="fb-err">{err}</p>}
+      {err && <Notice tone="bad" alert className="fb-err">{err}</Notice>}
       <div className="report-actions">
         <button type="button" className="ghost" onClick={onClose}>
           닫기

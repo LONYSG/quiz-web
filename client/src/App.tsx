@@ -43,6 +43,7 @@ import Lobby from './Lobby.js';
 import Prefs from './Prefs.js';
 import Toast, { type ToastContent } from './Toast.js';
 import { errorMessage, fetchMe, logout, type Account } from './api.js';
+import { forgetMine, warmMine } from './mine.js';
 import { useRoom } from './useRoom.js';
 import { useSocial } from './useSocial.js';
 import FriendList from './FriendList.js';
@@ -145,6 +146,9 @@ export default function App() {
       const me = await fetchMe();
       if (!alive) return;
       if (me) {
+        // ★★★ R125 B1 — 로비 첫 그림에 들어가는 내 값(띠 · 포인트)을 계정과 같이 받는다(최대 1.5초 · 창 값은 뒤로)
+        await warmMine();
+        if (!alive) return;
         setAccount(me.account);
         // 서버가 이미 방에 소속되어 있다고 알려주면 그 방을 우선한다
         if (me.currentRoomId) setPendingRoomId(me.currentRoomId);
@@ -364,6 +368,7 @@ export default function App() {
       setNotice({ message: errorMessage(err) });
     }
     setAccount(null);
+    forgetMine();
     // ★ R065 — 제보 메뉴 최근 목록은 로그아웃 때 비운다
     clearRecentTargets();
     window.history.replaceState(null, '', '/');
@@ -413,7 +418,8 @@ export default function App() {
   // ── 화면 선택. ★ return 은 이 함수 하나에서만 한다.
   const view = (() => {
     if (loading) {
-      return { narrow: true, body: <p className="note">불러오는 중…</p>, foot: null };
+      // ★★★ R125 B1 — 켜지는 동안(계정 · 첫 화면 값을 받는 0.1~1.5초)은 글 없이 바탕만(덜 그려진 글자를 보이지 않는다)
+      return { narrow: true, body: <div className="boot-wait" aria-busy="true" />, foot: null };
     }
 
     if (room.terminated) {
@@ -441,7 +447,10 @@ export default function App() {
         narrow: true,
         body: (
           <AuthScreen
-            onAuthed={(a) => {
+            onAuthed={async (a) => {
+              // ★★★ R125 B1 — 로비 첫 그림의 내 값(띠 · 포인트)을 받은 뒤 넘어간다(최대 1.5초)
+              forgetMine();
+              await warmMine();
               setAccount(a);
               // ★ R043 A-1 — 로그인 응답에는 사진 버전이 없다 → 한 번 더 물어 내 사진을 채운다
               void fetchMe().then((me) => me && setAccount((prev) => (prev ? { ...prev, ...me.account } : prev)));

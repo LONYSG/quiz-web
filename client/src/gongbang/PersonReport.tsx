@@ -8,6 +8,8 @@ import { createPortal } from 'react-dom';
 import PopupClose from '../PopupClose.js';
 import BusyButton from '../BusyButton.js';
 import { REPORT_REASONS, reportPerson, type ReportReason } from './store.js';
+import Notice from '../Notice.js';
+import { errorMessage } from '../api.js';
 
 interface Props {
   accountId: string;
@@ -39,7 +41,7 @@ export default function PersonReport({ accountId, nickname, onDone, onClose }: P
       await reportPerson(accountId, reason, text);
       onDone('신고했어요. 운영자가 살펴볼게요.');
     } catch (e) {
-      setErr((e as Error).message);
+      setErr(errorMessage(e, '보내지 못했어요'));
     } finally {
       setBusy(false);
     }
@@ -64,7 +66,7 @@ export default function PersonReport({ accountId, nickname, onDone, onClose }: P
           ))}
         </div>
         <input className="gb-report-text" value={text} maxLength={200} placeholder="한 줄 (선택)" onChange={(e) => setText(e.target.value)} />
-        {err && <p className="form-error" role="alert">{err}</p>}
+        {err && <Notice tone="bad" alert name="person-report">{err}</Notice>}
         <BusyButton className="primary gb-wide" data-gb-report-send disabled={!reason} busy={busy} onClick={() => void send()}>
           신고
         </BusyButton>

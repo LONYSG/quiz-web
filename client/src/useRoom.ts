@@ -239,6 +239,8 @@ export interface QuestionView {
   text: string;
   /** ★ 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 */
   categoryName: string;
+  /** ★★★ R125 C1 — 문제 등급(1~5 · 노래 = null · 옛 서버 = 없음) */
+  grade?: number | null;
   startedAt: number;
   endsAt: number;
   /** ★ 경험자 목록. 닉네임과 색을 함께 받는다 (전원 공개. D-011) */
@@ -623,6 +625,8 @@ export function useRoom(socket: Socket | null): RoomHook {
                 total: p.total,
                 text: p.text,
                 categoryName: p.categoryName,
+                // ★★★ R125 C1 — 문제 등급(카드 머리 점 다섯)
+                grade: p.grade ?? null,
                 startedAt: p.startedAt,
                 endsAt: p.endsAt,
                 experiencedPlayers: p.experiencedPlayers,

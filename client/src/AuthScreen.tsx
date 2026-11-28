@@ -14,6 +14,7 @@ import { siteInfo } from './site.js';
 import BusyButton from './BusyButton.js';
 import { NICKNAME_LIMIT_HINT, nicknameFits, NICKNAME_TOO_LONG_MESSAGE, RULES } from '@quiz/shared';
 import BrandLogo from './BrandLogo.js';
+import Notice from './Notice.js';
 
 interface Props {
   onAuthed: (account: Account) => void;
@@ -136,7 +137,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
                 required
               />
               {/* ★ R041 — 칸 수 표시 없이: 넘으면 빨갛게 + 살짝 떨림 + 안내 (건우). 서버도 같은 함수로 다시 본다 */}
-              {!nicknameFits(nickname.trim()) && <span className="form-error nick-over">{NICKNAME_TOO_LONG_MESSAGE}</span>}
+              {!nicknameFits(nickname.trim()) && <Notice as="span" tone="bad" className="nick-over">{NICKNAME_TOO_LONG_MESSAGE}</Notice>}
             </label>
           )}
 
@@ -153,7 +154,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
           </label>
 
           {error && (
-            <p className="form-error">
+            <Notice tone="bad" alert name="auth">
               {error}
               {publicLink && (
                 <>
@@ -161,7 +162,7 @@ export default function AuthScreen({ onAuthed, pendingRoomId }: Props) {
                   <a className="link-btn" href={publicLink}>공개 주소로</a>
                 </>
               )}
-            </p>
+            </Notice>
           )}
 
           {/* ★ R043 A-2 — 공통 로딩 버튼 (잠기고 돌아가는 표시 · 폭 그대로) */}

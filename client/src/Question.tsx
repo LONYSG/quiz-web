@@ -19,7 +19,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { formatGapNsString, formatLevel, formatTopics, hintKind, RULES, type DifficultyLevel, type GameTopic } from '@quiz/shared';
+import { formatGapNsString, formatTopics, hintKind, RULES, type DifficultyLevel, type GameTopic } from '@quiz/shared';
 import QuestionText from './QuestionText.js';
 import Avatar from './Avatar.js';
 import ChatText from './ChatText.js';
@@ -36,6 +36,7 @@ import Icon from './Icon.js';
 import { Lock, PartyPopper, SkipForward, Square, Undo2 } from 'lucide-react';
 import { SongPlay, SongReveal, useSongMusicQuiet } from './SongStage.js';
 import { euroParticle } from './josa.js';
+import GradeDots from './GradeDots.js';
 
 interface Props {
   socket: Socket;
@@ -245,7 +246,8 @@ export default function Question({
         )}
         {/* ★ 카테고리는 대분류다. 소분류 이름은 힌트가 되므로 서버가 보내지 않는다 · ★ R096 노래는 "노래 맞히기" 하나(분류 칩은 공개 때) */}
         <span className="badge cat">{song ? '노래 맞히기' : question.categoryName}</span>
-        {!song && <span className="badge diff">난이도 {formatLevel(level)}</span>}
+        {/* ★★★ R125 C1 — 방 난이도(초급 · 중급 · 고급) 글 대신 이 문제의 등급 점 다섯(영상과 같은 꼴) · 방 난이도는 방 설정 · 방 머리에만 */}
+        {!song && <GradeDots grade={question.grade} />}
         {!song && formatTopics(topics) !== '전체' && <span className="badge diff">분야 {formatTopics(topics)}</span>}
         {question.selfExperienced && (
           /* ★ 본인에게만 보이는 배지 (01-GAME-RULES 12장) — 진행에 필요한 알림이다 */
@@ -336,7 +338,7 @@ export default function Question({
             /* ★★★ R096 — 노래 공개: 제목 크게 · 가수 한 단계 작게 · 칩 · "○○ 님이 n초 만에 맞혔어요 +1"(표지는 위 판 칸에서 전부 밝아진 것) · 정답자면 꽃가루 */
             <div className="reveal-main song-reveal-main">
               {winner && <Confetti />}
-              <SongReveal song={resSong} winner={winner} winnerMs={resSong.winnerMs} reasonTitle={resolveTitle(resolution, players)} />
+              <SongReveal song={resSong} winner={winner} winnerMs={resSong.winnerMs} reasonTitle={resolveTitle(resolution, players)} altAnswer={altAnswer} />
             </div>
           ) : (
           <div className="reveal-main">

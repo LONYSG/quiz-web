@@ -12,11 +12,11 @@
 // ★ 새로 만드는 버튼과 배지는 styles.css 의 라벨 규칙을 그대로 받는다 (D-022).
 // =============================================================================
 
-import { openPersonCard, setPersonActions, type PersonActions } from './PersonCard.js';
+import { openPersonCard, setPersonActions, warmPerson, type PersonActions } from './PersonCard.js';
 import { ReportButton } from './AppReport.js';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Socket } from 'socket.io-client';
-import { countEmojiTokens, formatExperienceRate, INLINE_EMOJI_MAX, nicknameFits, RULES, startBlockOf, type Team } from '@quiz/shared';
+import { countEmojiTokens, formatExperienceRate, formatLevel, INLINE_EMOJI_MAX, nicknameFits, RULES, startBlockOf, type Team } from '@quiz/shared';
 import Avatar from './Avatar.js';
 import ConfirmModal from './ConfirmModal.js';
 import KickFlow, { type KickTarget } from './KickFlow.js';
@@ -59,7 +59,7 @@ import MinigamePicker from './minigame/MinigamePicker.js';
 import { LastGameFeedback } from './QuestionFeedback.js';
 import Notice from './Notice.js';
 import { siteInfo } from './site.js';
-import { fetchLastFeedbackGame } from './api.js';
+import { errorMessage, fetchLastFeedbackGame } from './api.js';
 import type { Social } from './useSocial.js';
 import { isMobileUi, useUiMode } from './uiMode.js';
 // ★★★ R117 — 공방 방(스냅샷 room.gongbang 이 있을 때만)
@@ -838,6 +838,14 @@ export default function Lobby({
     if (seatDrag.suppressed()) return;
     openPersonCard({ accountId: p.accountId, nickname: p.nickname, colorIndex: p.colorIndex, avatarV: p.avatarV ?? null });
   };
+  // ★★★ R125 B1 — 자리에 앉은 사람의 업적 · 띠를 미리 읽어 둔다(눌렀을 때 다 그려진 사람 카드)
+  const seatIds = snapshot.players.map((p) => p.accountId).join(',');
+  useEffect(() => {
+    const t = setTimeout(() => {
+      for (const id of seatIds.split(',')) if (id) warmPerson(id);
+    }, 400);
+    return () => clearTimeout(t);
+  }, [seatIds]);
   const friendIds = new Set(social.friends.map((f) => f.accountId));
   const actRef = useRef<(id: string) => PersonActions | null>(() => null);
   actRef.current = (id: string) => {
@@ -866,7 +874,7 @@ export default function Lobby({
               on: isBlocked(id),
               toggle: () => {
                 closePopup();
-                void (isBlocked(id) ? unblockPerson(id) : blockPerson({ accountId: id, nickname: p.nickname })).catch((err: Error) => setGbNote(err.message));
+                void (isBlocked(id) ? unblockPerson(id) : blockPerson({ accountId: id, nickname: p.nickname })).catch((err: Error) => setGbNote(errorMessage(err, '지금은 할 수 없어요')));
               },
             },
           }
@@ -937,6 +945,12 @@ export default function Lobby({
           )}
           <h1>{snapshot.room.title}</h1>
           <span className="state-pill">{stateLabel(state)}</span>
+          {/* ★★★ R125 C1 — 방 난이도(초급 · 중급 · 고급)는 문제 카드에서 빼고 방 머리에(퀴즈 방만 · 노래 · 미니게임만은 없음) */}
+          {snapshot.room.settings.mode !== 'song' && snapshot.room.settings.mode !== 'minigame' && (!gb || gb.kind === 'quiz') && (
+            <span className="badge diff room-level" data-room-level={snapshot.room.settings.level}>
+              {formatLevel(snapshot.room.settings.level)}
+            </span>
+          )}
           <span className="dim room-count">
             {snapshot.players.length} / {snapshot.room.maxPlayers}명 (접속 {snapshot.room.activeCount}명)
           </span>
@@ -1221,7 +1235,7 @@ export default function Lobby({
                 name="result"
                 fallback={() => (
                   <section className="card result-card" data-result-fallback>
-                    <p className="info">결과를 그리지 못했어요.</p>
+                    <Notice tone="bad">결과를 그리지 못했어요.</Notice>
                     <div className="next-row">
                       {snapshot.me.isHost ? (
                         <button type="button" className="primary big-btn" onClick={() => socket.emit('game.toLobby', {})}>
@@ -1328,9 +1342,9 @@ export default function Lobby({
             )}
             {/* ★★ 도배 억제 안내 (Q-18) — 입력창 바로 위 문서 흐름 (iOS 키보드) */}
             {throttled && (
-              <p className="warn throttle-note" role="status" aria-live="polite">
+              <Notice className="throttle-note" name="throttle">
                 {throttledKind === 'special' ? '특별 이모티콘 도배 방지' : throttledKind === 'emoji' ? '이모티콘 도배 방지' : '도배 방지'}, <strong className="mono">{lockLeft}초</strong> 후 다시 보낼 수 있어요
-              </p>
+              </Notice>
             )}
             {/* ★ R057 — 특별 이모티콘 토큰(:sp:번호:)이 든 글은 보낼 모습을 입력창 바로 위에 작게 보인다(입력창은 글자만 그린다) */}
             {draft.includes(':sp:') && (
