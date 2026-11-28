@@ -1,0 +1,408 @@
+[
+ {
+  "id": "4444",
+  "verdict": "ok",
+  "why": "이름 유래·반죽·꼬는 법·꿀/조청·잣가루 모두 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/매작과",
+    "quote": "과자의 모양이 매화나무에 참새가 앉은 모습과 유사하다는데서",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4453",
+  "verdict": "ok",
+  "why": "계절 이름 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/금강산",
+    "quote": "온 산이 새싹과 꽃에 뒤덮일 때인 봄의 이름이며",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4580",
+  "verdict": "ok",
+  "why": "제우스 아들·벌·tantalize 유래 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/탄탈로스",
+    "quote": "제우스와 요정 플루토의 아들",
+    "result": "맞음"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Tantalus",
+    "quote": "tantalize comes from Tantalus's name and punishment",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4602",
+  "verdict": "ok",
+  "why": "14세기 프랑스 철학자·아리스토텔레스 사례·그의 글에 없음 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Buridan%27s_ass",
+    "quote": "nowhere discusses this specific problem",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4682",
+  "verdict": "ok",
+  "why": "반다 원산·1621 VOC 무력·메이스·에그노그 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Nutmeg",
+    "quote": "waged a bloody battle with the Bandanese in 1621",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4788",
+  "verdict": "ok",
+  "why": "7조각·15x15·버츠의 빈도 집계 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Scrabble",
+    "quote": "Alfred Butts tallied letter frequencies from newspapers",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4835",
+  "verdict": "ok",
+  "why": "4-3·브룩스·커트 러셀·이틀 뒤 핀란드전 금 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Miracle_on_Ice",
+    "quote": "Two days later, the U.S. clinched gold by beating Finland 4-2",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4876",
+  "verdict": "ok",
+  "why": "1955 에세이·해군성/식민성·사소함의 법칙 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Parkinson%27s_law",
+    "quote": "Work expands so as to fill the time available for its completion",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "4991",
+  "verdict": "fix",
+  "why": "hint 는 전국책(풍훤·종묘) 고사인데 exp 의 식객 다시 부름은 사기(풍환) 대목이라 '이 고사'로 묶으면 틀림",
+  "fix": [
+   {
+    "field": "exp",
+    "span": "이 고사의 풍환은 맹상군이 재상에서 물러났을 때 떠나간 식객들을 다시 불러들이라고 권하기도 했습니다.",
+    "why": "식객을 다시 대하라는 권유는 《사기》 맹상군열전의 풍환 이야기이고, 종묘·세 굴 고사는 《전국책》(풍훤)에 있어 출처가 다름. 또 '불러들이라'가 아니라 떠났던 식객들을 예전처럼 대하라는 권유",
+    "right": "《사기》에는 풍환이 복직한 맹상군에게, 떠났던 식객들을 예전처럼 대하라고 권했다는 이야기도 전합니다. (또는 해당 문장 삭제)",
+    "url": "https://www.itwiki.kr/w/%EA%B5%90%ED%86%A0%EC%82%BC%EA%B5%B4",
+    "quote": "《사기》에서는 복직 후 맹상군이 떠났던 식객들을 욕하려 하자, 풍환이 ... 식객들을 예전처럼 대하라고 권합니다."
+   }
+  ],
+  "web": [
+   {
+    "url": "https://www.itwiki.kr/w/%EA%B5%90%ED%86%A0%EC%82%BC%EA%B5%B4",
+    "quote": "풍훤은 선왕의 제기로 설 땅에 종묘를 세우게 합니다 ... 세 굴이 완성되었으니 이제 편히 지내시라",
+    "result": "맞음"
+   },
+   {
+    "url": "https://www.itwiki.kr/w/%EA%B5%90%ED%86%A0%EC%82%BC%EA%B5%B4",
+    "quote": "《사기》 ... 이름도 풍환(馮驩)",
+    "result": "틀림"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5001",
+  "verdict": "ok",
+  "why": "10수·해주 수양산·관암 화암·무이구곡 본뜸·석담구곡가 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://ko.wikipedia.org/wiki/고산구곡가",
+    "quote": "주자의 무이구곡을 본떠 ... 석담구곡가라고도 부릅니다",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5012",
+  "verdict": "fix",
+  "why": "재결합 햇수: 구창모 탈퇴(1984)부터 38년 만이라고 보도됨, 37년 아님",
+  "fix": [
+   {
+    "field": "exp",
+    "span": "약 37년 만에",
+    "why": "뉴시스가 1984년 4집 직후 탈퇴 이후 38년 만이라고 보도(위키 문서는 1985 탈퇴로 적어 37이 나옴 — 출처 불일치)",
+    "right": "약 38년 만에 (또는 '수십 년 만에')",
+    "url": "https://www.newsis.com/view/NISX20220911_0002009483",
+    "quote": "1984년 정규 4집 발매 직후 구창모가 팀을 탈퇴한 이후 38년 만에"
+   }
+  ],
+  "web": [
+   {
+    "url": "https://www.newsis.com/view/NISX20220911_0002009483",
+    "quote": "구창모가 팀을 탈퇴한 이후 38년 만에",
+    "result": "틀림"
+   },
+   {
+    "url": "https://ko.wikipedia.org/wiki/송골매_(밴드)",
+    "quote": "1979년 결성 ... 2022년 배철수와 구창모가 다시 만나 재결합",
+    "result": "맞음"
+   }
+  ],
+  "unopened": [
+   "'활주로' 항공대 밴드 출신 (검색 요약으로만 확인, 원문 미열람)"
+  ]
+ },
+ {
+  "id": "5095",
+  "verdict": "ok",
+  "why": "원산·공기뿌리·열매 맛·종소명 일치 (원산은 멕시코 남부~파나마)",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Monstera_deliciosa",
+    "quote": "fruity taste similar to jackfruit and pineapple; deliciosa means delicious",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5139",
+  "verdict": "ok",
+  "why": "정의·은행 취약 예·로젠탈 실험 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Self-fulfilling_prophecy",
+    "quote": "Teachers were led to believe that a group of randomly chosen students had strong potential; gains in test scores",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5173",
+  "verdict": "ok",
+  "why": "카렘의 manier 설명·1756 리슐리외 설과 여러 설 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Mayonnaise",
+    "quote": "Carême ... magnonaise ... from the verb magner or manier",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5182",
+  "verdict": "ok",
+  "why": "흰 망토 붉은 십자·성전산·필리프 4세 체포·몰레 화형·1312 클레멘스 5세 해산 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Knights_Templar",
+    "quote": "Pope Clement V disbanded the order at the Council of Vienne in 1312",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5184",
+  "verdict": "ok",
+  "why": "산악파가 붙인 이름·지롱드 출신·롤랑·1793 몰락 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Girondins",
+    "quote": "The Montagnards coined it ... the Gironde department",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5215",
+  "verdict": "ok",
+  "why": "콕서터 평가·1922/1936 알람브라 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/M._C._Escher",
+    "quote": "Escher got it absolutely right to the millimeter; Alhambra 1922 and 1936",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5291",
+  "verdict": "ok",
+  "why": "경마 첨탑 유래·2008 올림픽 여자 첫 종목·사미토바갈키나 첫 올림픽 챔피언 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Steeplechase_(athletics)",
+    "quote": "the inaugural Olympic champion in the event",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5361",
+  "verdict": "ok",
+  "why": "뻐꾸기 어원·부리 닮음·큰볼기근 부착 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Coccyx",
+    "quote": "the last three or four bones of the coccyx resemble the beak of this bird",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5463",
+  "verdict": "unopened",
+  "why": "작사·작곡 신동우 크레딧을 열린 페이지에서 확인 못 함(thewiki 403, 위키 404)",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://sports.khan.co.kr/article/202012141024023",
+    "quote": "(검색 요약) 2005년 쾌걸춘향 OST·이지 오진성 보컬·1집 수록",
+    "result": "못 찾음"
+   }
+  ],
+  "unopened": [
+   "작사·작곡 신동우"
+  ]
+ },
+ {
+  "id": "5620",
+  "verdict": "ok",
+  "why": "렌가테이 긴자·날양배추·시마다 신지로 1929 폰치켄(우에노 오카치마치) 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Tonkatsu",
+    "quote": "Okachimachi 1929 modern thick-cut style; shredded cabbage",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "5768",
+  "verdict": "ok",
+  "why": "1980년대 경첩 기문·팔/정강이로 쓰러뜨림·슬랄롬 어원 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Slalom_skiing",
+    "quote": "rigid poles were replaced by hard plastic poles, hinged at the base; sla ... låm",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "6002",
+  "verdict": "ok",
+  "why": "독일 탄생·교회 오르간 대용·하인리히 반트 명명·피아졸라 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Bandoneon",
+    "quote": "The German instrument dealer Heinrich Band named it",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "6080",
+  "verdict": "ok",
+  "why": "1919년 6월 4일 창업·폴란드 V자 톱니바퀴 로고 유래 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Citro%C3%ABn",
+    "quote": "founded on 4 June 1919 by André Citroën; logo may be traced back to ... chevron-shaped gear in Łódź, Poland",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "6112",
+  "verdict": "ok",
+  "why": "코끼리 선물·아바스 기록에 없음 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Abul-Abbas",
+    "quote": "no references to the gift or to interactions with Charlemagne have been found in Abbasid records",
+    "result": "맞음"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Harun_al-Rashid",
+    "quote": "in 802 Harun sent Charlemagne a gift that included an elephant",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ },
+ {
+  "id": "6518",
+  "verdict": "ok",
+  "why": "2장+공용 5장·1963 캘리포니아 클럽·골든 너겟 일치",
+  "fix": [],
+  "web": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Texas_hold_%27em",
+    "quote": "introduced to Las Vegas in 1963 at the California Club; Golden Nugget",
+    "result": "맞음"
+   }
+  ],
+  "unopened": []
+ }
+]
