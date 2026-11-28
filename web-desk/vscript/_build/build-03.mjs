@@ -10,12 +10,14 @@ const rd = (p) => JSON.parse(readFileSync(p, 'utf8'));
 const base = rd(VID + 'questions-3.json'); // 1회(양식 확정판)
 const ledger = rd(WEB + '회차.json');
 const eps = ledger.episodes || ledger;
-const outNo = { '04': 6, '05': 7 };
+const outNo = { '04': 6, '05': 7, '06': 8 };
 const intro = {
   '04': '72초 동안 잡혔다가 다시는 들리지 않은 우주의 전파 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
   '05': '소설 속에만 있던 주소로 진짜 편지가 쏟아진 탐정 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
+  '06': '망치로 내리쳐도 멀쩡한데 꼬리 끝만 꺾으면 통째로 부서지는 유리 방울 이야기를 비롯해, 오늘도 다섯 문제를 준비했습니다.',
 };
-const ALSO = { 에펠탑: ['에펠 탑'], 로제타석: ['로제타 스톤', '로제타 석'], '와우! 신호': ['와우 신호', '와우! 시그널', '와우 시그널'] };
+const ALSO = { 에펠탑: ['에펠 탑'], 로제타석: ['로제타 스톤', '로제타 석'], '와우! 신호': ['와우 신호', '와우! 시그널', '와우 시그널'],
+  청바지: ['블루진'], 병마용: ['병마용갱'], '창백한 푸른 점': ['페일 블루 닷'], '고별 교향곡': ['고별', '하이든 교향곡 45번'], '루퍼트 왕자의 눈물': ['루퍼트의 눈물', '루퍼트 왕자의 물방울'] };
 // 설명글 출처 — 2026-11-27 설계가 연 문서(각 새3.json 의 "설계 대조" 칸)
 const SRC = {
   청진기: ['· Wikipedia, 「René Laennec」(라에네크 『간접 청진법』 인용 포함)'],
@@ -28,6 +30,12 @@ const SRC = {
   모노폴리: ["· Wikipedia, 「The Landlord's Game」"],
   '노시보 효과': ["· CIDRAP, 「Most side effects noted in COVID vaccine trials may be due to 'nocebo effect'」 (2022-01-19)", '· EurekAlert!, 「Placebo effect accounts for more than two-thirds of COVID-19 vaccine adverse events」 (2022-01-18)', '· BMJ, 「When I use a word . . . Nocebo」 (2026-04-24)'],
   '계획적 진부화': ['· Wikipedia, 「Phoebus cartel」'],
+  // 6회 — 2026-11-28 밤 설계가 다시 연 문서(위키 본문 내려받아 구절 대조)
+  청바지: ['· Wikipedia, 「Jacob W. Davis」'],
+  병마용: ['· Wikipedia, 「Terracotta Army」', '· Wikipedia, 「Yang Zhifa」'],
+  '창백한 푸른 점': ['· Wikipedia, 「Pale Blue Dot」', "· NASA Science, 「Voyager 1's Pale Blue Dot」"],
+  '고별 교향곡': ['· Wikipedia, 「Symphony No. 45 (Haydn)」'],
+  '루퍼트 왕자의 눈물': ["· Wikipedia, 「Prince Rupert's drop」"],
 };
 // 읽는 글: [바꿀 글, 읽을 글] — 질문 · 힌트 · 해설 모두에 차례로
 const SAY = {
@@ -42,6 +50,11 @@ const SAY = {
   모노폴리: [],
   '노시보 효과': [['코로나19', '코로나 일구'], ['1961년', '천구백육십일 년']],
   '계획적 진부화': [['1920년대', '천구백이십 년대']],
+  청바지: [],
+  병마용: [['1970년대', '천구백칠십 년대']],
+  '창백한 푸른 점': [['보이저 1호', '보이저 일 호']],
+  '고별 교향곡': [],
+  '루퍼트 왕자의 눈물': [['1660년께', '천육백육십 년께'], ['찰스 2세', '찰스 이세']],
 };
 // ★ 찬종 2026-11-27: 읽는 글에는 기호를 넣지 않는다 — "와우! 신호"를 "와우! (쉼) 신호"로 끊어 읽었다.
 //   이름(정답 · SAY 로 바꾼 낱말) 안의 기호 · 따옴표 · 괄호 · 가운뎃점을 뺀다. 문장 끝 . ! ? 와 쉼표는 둔다(억양). 화면 글(text)은 그대로.
