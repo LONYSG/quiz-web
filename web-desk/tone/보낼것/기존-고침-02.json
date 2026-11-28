@@ -1,0 +1,2359 @@
+{
+ "done": true,
+ "note": "G121 · 기존 카드 고침 2차 — V120 fix 15(새 카드 n6887 포함) + V119 fix 8 + G121 싣기 게이트에 막힌 2 · 키 = 실 DB id(새 카드 n 번호) · card = 지금 DB 글 · tried = 1차에 gpt 가 고쳤다 걸린 문장(참고만 — 그대로 다시 내지 않는다) · 재료에 없는 사실은 쓰지 않는다 · needsRegrade = 질문이 바뀌면 실을 때 등급 · 알가치 다시 매김",
+ "summary": {
+  "cards": 25,
+  "old": 24,
+  "new": 1,
+  "needsRegrade": 4,
+  "byKind": {
+   "V120 fix": 15,
+   "V119 fix": 8,
+   "G121 싣기 막힘": 2
+  },
+  "sourceCounts": {
+   "v120fix": 15,
+   "v119fix": 8,
+   "gate": 2
+  },
+  "skippedInactive": [],
+  "v119SpanGone": [
+   "4462"
+  ],
+  "materialState": {
+   "재료 있음": 15,
+   "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽": 9,
+   "새 카드 재료": 1
+  }
+ },
+ "items": [
+  {
+   "key": "951",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설의 주인공이 청바지가 아니라 공동 특허자 데이비스",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "1873년에 받은 특허는 바지에서 변형이 집중되는 곳을 구리 대갈못으로 보강하는 방법에 관한 것이었습니다.",
+     "why": "질문이 이미 말한 1873년 특허 · 구리 대갈못 보강을 해설이 그대로 되풀이하고 새로 더한 것은 '변형이 집중되는 곳' 뿐이라 같은 사실이 두 칸에 두 번 나옴",
+     "material": "f1 · f2: 1873년 특허, points of strain 을 구리 대갈못으로 보강 — 질문에 이미 있는 사실",
+     "sort": "new"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "청바지에 대갈못을 붙인 위치에는 이유가 있었습니다. 1873년에 받은 특허는 바지에서 변형이 집중되는 곳을 구리 대갈못으로 보강하는 방법에 관한 것이었습니다.",
+    "gptWhy": "특허를 받은 사람의 이력 대신 청바지에서 대갈못을 붙인 위치에 초점을 맞췄습니다."
+   },
+   "card": {
+    "id": 951,
+    "field": "생활·상식 > 의복·패션 > 의류 명칭",
+    "question": "데님으로 만든 바지로, 1873년 스트라우스와 데이비스가 구리 대갈못으로 보강하는 특허를 받은 것은 무엇일까요?",
+    "answer": "청바지",
+    "also": [
+     "블루진"
+    ],
+    "hint": "인디고 염료로 물들인 질긴 면직물로 만듭니다.",
+    "explanation": "청바지 특허를 함께 받은 데이비스는 리바이 스트라우스의 도매상에서 데님 천을 사던 사람이었습니다.",
+    "grade": 2,
+    "worth": 3,
+    "worthWhy": "유래 — 청바지의 시작",
+    "cardFile": "카드-048"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-048.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "951-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "리바이 스트라우스와 제이컵 데이비스(두 사람)는 1873년 5월 20일 미국 특허 139,121 을 받았다",
+      "url": "https://en.wikipedia.org/wiki/Levi_Strauss_%26_Co.",
+      "quote": "received U.S. patent 139,121 from the United States Patent and Trademark Office on May 20, 1873"
+     },
+     {
+      "id": "951-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "특허는 변형이 몰리는 곳(points of strain)을 구리 대갈못으로 보강하는 것이었다",
+      "url": "https://en.wikipedia.org/wiki/Levi_Strauss_%26_Co.",
+      "quote": "points of strain"
+     },
+     {
+      "id": "951-f3",
+      "where": "질문",
+      "check": "못 엶",
+      "text": "청바지가 19세기 미국 서부 광부들의 작업복으로 나왔다(출처는 리바이스가 광부에서 배우 · 노벨상 수상자까지 입는다고만 적음)"
+     },
+     {
+      "id": "951-f4",
+      "where": "해설",
+      "check": "맞음",
+      "text": "데이비스는 리바이 스트라우스 도매상에서 데님 천을 샀다",
+      "url": "https://en.wikipedia.org/wiki/Levi_Strauss_%26_Co.",
+      "quote": "bolts of denim cloth"
+     },
+     {
+      "id": "951-f5",
+      "where": "힌트",
+      "check": "상식",
+      "text": "청바지는 인디고 염료로 물들인 질긴 면직물로 짓는다"
+     }
+    ],
+    "extra": [],
+    "note": "\"잘 찢어지지 않도록 주머니 모서리에 대갈못\" 의 정확한 위치는 열어 본 요약에서 \"주머니 모서리 · 단추 앞트임 밑\" 으로만 확인 — 문장 quote 못 옮김.",
+    "hold": false
+   }
+  },
+  {
+   "key": "984",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설의 주인공이 미생물이 아니라 레이우엔훅 개인",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "미생물의 모습을 밝혀 준 레이우엔훅의 현미경은 지금도 남아 있습니다.",
+     "why": "해설의 주인공이 여전히 정답 미생물이 아니라 레이우엔훅과 그의 현미경 이야기(숨긴 현미경)라 고칠 까닭이 풀리지 않음",
+     "material": "f8 · e2: 현미경 배율 · 숨긴 현미경 — 미생물 자체를 다룬 사실이 아님",
+     "sort": "unsolved",
+     "unsolved": true
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "미생물의 모습을 밝혀 준 레이우엔훅의 현미경은 지금도 남아 있습니다. 남아 있는 현미경은 최대 275배까지 확대합니다. 정작 그가 발견에 의지했던 가장 정교한 현미경은 방문객에게도 보여 주지 않았습니다.",
+    "gptWhy": "미생물 관찰에 쓰인 현미경의 배율과 공개하지 않은 관찰 도구 이야기를 이었습니다."
+   },
+   "card": {
+    "id": 984,
+    "field": "기술·의학 > 발명·발견 > 의학·생명 분야 발견",
+    "question": "눈에 보이지 않을 만큼 작은 생물로, 레이우엔훅이 손수 만든 단렌즈 현미경으로 처음 관찰한 생물들을 무엇이라 부를까요?",
+    "answer": "미생물",
+    "also": [],
+    "hint": "세균도 여기에 속하며, 음식을 발효시키는 데 쓰이기도 합니다.",
+    "explanation": "미생물을 연구한 레이우엔훅은 젊을 때 포목상으로 일했습니다. 특별한 교육을 받지 않았지만, 남아 있는 그의 현미경은 최대 275배까지 확대합니다.",
+    "grade": 2,
+    "worth": 2,
+    "worthWhy": "개념 — 교과 개념",
+    "cardFile": "카드-054"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-054.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "984-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "레이우엔훅은 직접 설계 · 제작한 단렌즈 현미경으로 미생물을 처음 관찰하고 실험했다",
+      "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+      "quote": "Van Leeuwenhoek was the first to observe and to experiment with microbes"
+     },
+     {
+      "id": "984-f2",
+      "where": "질문",
+      "check": "엇갈림",
+      "text": "렌즈를 손수 갈아 만들었다",
+      "fixed": "출처 A(한국어 위키)는 '스스로 렌즈를 갈아 만든 현미경', 출처 B(영어 위키)는 '낮은 배율용으로도 간 렌즈를 만들었다'고 쓴다",
+      "url": "https://ko.wikipedia.org/wiki/안토니_판_레이우엔훅",
+      "quote": "그는 스스로 렌즈를 갈아 만든 현미경으로 단세포 생물을 관찰하였다.",
+      "judge": {
+       "verdict": "ok",
+       "why": "엇갈림 — 출처 A(한국어 위키)는 손수 갈아 만든, B(영어 위키)는 낮은 배율용으로만 갈았다고 쓰고 e1 은 갈았다고 믿게 부추겼다고 쓴다. fixed 대로 gpt 는 \"갈아 만든\"을 쓰지 않는다. 두 quote 모두 이번에 확인.",
+       "round": "V080"
+      }
+     },
+     {
+      "id": "984-f3",
+      "where": "질문",
+      "check": "못 엶",
+      "text": "물방울 속을 들여다보았다"
+     },
+     {
+      "id": "984-f4",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "세균(박테리아)은 미생물로만 이루어진 생물 영역 가운데 하나다",
+      "url": "https://en.wikipedia.org/wiki/Microorganism",
+      "quote": "two of the three domains, Archaea and Bacteria, only contain microorganisms."
+     },
+     {
+      "id": "984-f5",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "미생물은 음식을 발효시키는 데 쓰인다",
+      "url": "https://en.wikipedia.org/wiki/Microorganism",
+      "quote": "serving to ferment foods and treat sewage",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 이번에 연 페이지에 있고 text 가 quote 범위 안(긍정 · 부정 · 한정어 방향도 대조).",
+       "round": "V080"
+      }
+     },
+     {
+      "id": "984-f6",
+      "where": "해설",
+      "check": "맞음",
+      "text": "레이우엔훅은 젊을 때 포목상으로 일했다",
+      "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+      "quote": "Van Leeuwenhoek worked as a draper in his youth"
+     },
+     {
+      "id": "984-f7",
+      "where": "해설",
+      "check": "맞음",
+      "text": "특별한 교육을 받은 적이 없다",
+      "url": "https://ko.wikipedia.org/wiki/안토니_판_레이우엔훅",
+      "quote": "네덜란드의 델프트 출신으로 특별한 교육을 받은 적은 없으나"
+     },
+     {
+      "id": "984-f8",
+      "where": "해설",
+      "check": "맞음",
+      "text": "남아 있는 그의 현미경은 최대 275배까지 확대한다",
+      "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+      "quote": "Those that have survived are capable of magnification up to 275 times."
+     }
+    ],
+    "extra": [
+     {
+      "id": "984-e1",
+      "text": "그는 남들이 '렌즈를 갈아 만든다'를 자기 주된 제작법으로 믿게 일부러 부추긴 것으로 보인다",
+      "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+      "quote": "he apparently intentionally encouraged others to think grinding was his primary",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 이번에 연 페이지에 있고 text 가 quote 범위 안(긍정 · 부정 · 한정어 방향도 대조).",
+       "round": "V080"
+      }
+     },
+     {
+      "id": "984-e2",
+      "text": "방문객에게는 발견에 쓴 최고급 현미경을 끝내 보여 주지 않았다",
+      "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+      "quote": "refused to reveal the cutting-edge microscopes he relied on for his discoveries",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 이번에 연 페이지에 있고 text 가 quote 범위 안(긍정 · 부정 · 한정어 방향도 대조).",
+       "round": "V080"
+      }
+     }
+    ],
+    "note": "f2 는 질문의 곁가지라 hold 하지 않는다 — gpt 는 '갈아 만든'을 쓰지 말고 '손수 만든 렌즈'로. e1 앞부분: 'To help keep his methods confidential'(방법을 숨기려고). e2 앞뒤: 손님들에게는 평범한 렌즈 모음을 보여 줬다. f3: 영어 위키는 연못물(pond water)에서 다세포 생물도 봤다고만 쓴다. 출처 B 의 같은 문서: 높은 배율 렌즈는 유리 막대를 불꽃에 녹여 늘인 가닥 끝으로 만든 것으로 본다(2021년 중성자 단층 촬영).",
+    "hold": false
+   }
+  },
+  {
+   "key": "1074",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설의 주인공이 노래가 아니라 입체 교차로",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "그곳에는 이 노래를 기리는 노래비가 남아 있습니다.",
+     "why": "노래비가 교차로가 있던 '그곳'에 있다고 단정함 — 연 문서에는 용산구에 노래비가 있다고만 나옴",
+     "material": "f4 · 재료 메모: 현재 노래비 · 배호로 · 동상이 남아 있음, 노래비가 '그 자리에' 있다는 것은 연 문서에 없음",
+     "sort": "material"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "〈돌아가는 삼각지〉가 인기를 얻은 1967년에는 노래 속 지명인 삼각지에 입체 교차로가 들어섰습니다. 교차로는 1994년에 철거됐지만, 그곳에는 이 노래를 기리는 노래비가 남아 있습니다.",
+    "gptWhy": "노래의 인기를 출발점으로 삼아 교차로 철거 뒤에도 노래비가 남은 이야기로 이었습니다."
+   },
+   "card": {
+    "id": 1074,
+    "field": "한국 > 한국 대중음악 > 트로트·포크",
+    "question": "배호가 1967년 발표해 히트시킨 노래로, 용산의 입체 교차로가 있던 지명을 제목에 담은 곡은 무엇일까요?",
+    "answer": "돌아가는 삼각지",
+    "also": [],
+    "hint": "지금도 용산에는 이 가수의 노래비와 동상, 그의 이름을 딴 길이 남아 있습니다.",
+    "explanation": "노래가 히트한 1967년에 건설된 입체 교차로는 1994년에 철거됐습니다.",
+    "grade": 4,
+    "worth": 1,
+    "worthWhy": "고유명사 — 곡 이름 암기",
+    "cardFile": "카드-063"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-063.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "1074-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "배호가 1967년 발표한 노래다(배상태 작곡)",
+      "url": "https://ko.wikipedia.org/wiki/배호",
+      "quote": "1967년 배상태가 작곡한〈돌아가는 삼각지〉를 발표하였다.",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 을 열어 quote 가 있음을 확인했고 text 가 quote 안에 든다.",
+       "round": "V088"
+      }
+     },
+     {
+      "id": "1074-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "노래의 삼각지에 건설됐던 용산의 입체 교차로는 노래가 히트한 해인 1967년에 건설됐다",
+      "url": "https://ko.wikipedia.org/wiki/배호",
+      "quote": "배호가 노래한 돌아가는 삼각지에 건설됐던 용산의 입체 교차로는 노래가 히트한 해인 1967년에 건설됐다가"
+     },
+     {
+      "id": "1074-f3",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "1960년대 후반 배호의 히트곡이다",
+      "url": "https://ko.wikipedia.org/wiki/배호",
+      "quote": "1960년대 후반에 〈누가 울어〉, 〈돌아가는 삼각지〉, 〈안개 낀 장충단 공원〉등의 히트곡을 남겼다."
+     },
+     {
+      "id": "1074-f4",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "지금은 '돌아가는 삼각지' 노래비 · 배호로 · 배호 동상 등이 남아 있다",
+      "url": "https://ko.wikipedia.org/wiki/배호",
+      "quote": "현재는 〈돌아가는 삼각지〉 노래비, 배호로, 배호 동상 등이 남아있다."
+     },
+     {
+      "id": "1074-f5",
+      "where": "해설",
+      "check": "맞음",
+      "text": "그 입체 교차로는 1994년에 철거됐다",
+      "url": "https://ko.wikipedia.org/wiki/배호",
+      "quote": "1967년에 건설됐다가 1994년에 철거됐다."
+     }
+    ],
+    "extra": [
+     {
+      "id": "1074-e1",
+      "text": "배호는 1966년 신장염에 걸린 뒤 이듬해 이 노래를 발표했다",
+      "url": "https://ko.wikipedia.org/wiki/배호",
+      "quote": "1966년 신장염에 걸렸으며 1967년 배상태가 작곡한〈돌아가는 삼각지〉를 발표하였다.",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 을 열어 quote 가 있음을 확인했고 text 가 quote 안에 든다.",
+       "round": "V088"
+      }
+     }
+    ],
+    "note": "질문의 '회전' 교차로라는 말은 연 문서에 없다(입체 교차로만). 노래비가 '그 자리에' 있다는 것은 연 문서에 없다(용산구에 노래비).",
+    "hold": false
+   }
+  },
+  {
+   "key": "1639",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "fix",
+     "field": "q",
+     "span": "울트라마린 안료로 성모 마리아의 옷을 칠하곤 했던 색은",
+     "why": "질문이 안료 이름 울트라마린을 주고 '색'을 묻는데 울트라마린도 색 이름이라 블라인드가 그대로 답함 — 범주가 열려 있음",
+     "material": "f1: 울트라마린은 짙은 파랑 안료 — 정답 파랑을 하나로 좁히려면 '어떤 계열의 색인가' 같은 조건이 필요",
+     "round": "V118"
+    },
+    {
+     "kind": "wide",
+     "lack": "질문이 안료(울트라마린)를 이미 말하고 '색'만 물어 울트라마린·군청 같은 색 이름도 맞는 답이 됨",
+     "blindAnswer": "울트라마린",
+     "round": "V118"
+    },
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설이 울트라마린 안료의 이름 유래이고 정답 파랑이 아님",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "울트라마린 안료는 한때 금만큼 값이 나갔습니다. 그 안료는 1826년에 합성품이 나오기 전까지 값이 비쌌습니다.",
+     "why": "두 문장이 같은 사실(값이 비쌌다)을 되풀이하고, 해설 주인공이 정답 파랑이 아니라 울트라마린 안료의 값이어서 까닭이 덜 풀림",
+     "material": "f6 한때 금만큼 값 · f4 1826년 합성 전까지 비쌌음 — 둘 다 값 이야기 하나",
+     "sort": "new",
+     "unsolved": true
+    }
+   ],
+   "needsRegrade": true,
+   "tried": {
+    "question": "르네상스 화가들이 성모 마리아의 옷을 칠할 때 쓴 청금석 안료는 크게 어느 계열의 색을 냈을까요?",
+    "explanation": "르네상스 유럽에서 그림에 짙은 파랑을 내는 데 쓴 울트라마린 안료는 한때 금만큼 값이 나갔습니다. 그 안료는 1826년에 합성품이 나오기 전까지 값이 비쌌습니다.",
+    "gptWhy": "질문은 기본 색 계열로 범위를 좁히고 해설은 그림 속 짙은 파랑을 내는 데 들었던 비용을 다뤘습니다."
+   },
+   "card": {
+    "id": 1639,
+    "field": "생활·상식 > 의복·패션 > 복식사",
+    "question": "청금석에서 얻은 울트라마린 안료로 성모 마리아의 옷을 칠하곤 했던 색은 무엇일까요?",
+    "answer": "파랑",
+    "also": [
+     "파란색",
+     "청색"
+    ],
+    "hint": "빛의 삼원색 가운데 하나입니다.",
+    "explanation": "울트라마린은 '바다 건너'라는 뜻입니다. 이탈리아 상인이 아프가니스탄 광산에서 안료를 들여온 데서 이름이 붙었습니다.",
+    "grade": 2,
+    "worth": 2,
+    "worthWhy": "일화 — 미술 안료 색 일화",
+    "cardFile": "카드-032"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-032.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "1639-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "울트라마린은 청금석(라피스 라줄리)의 라주라이트에서 얻은 짙은 파랑 안료",
+      "url": "https://en.wikipedia.org/wiki/Ultramarine",
+      "quote": "Ultramarine is a deep blue pigment historically derived from lazurite, the principal component of the metamorphic rock lapis lazuli."
+     },
+     {
+      "id": "1639-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "르네상스 화가들이 쓴 가장 비싼 파랑 안료의 하나였음",
+      "url": "https://en.wikipedia.org/wiki/Ultramarine",
+      "quote": "Ultramarine was among the finest and most expensive blue pigments used by Renaissance painters, at times valued as highly as gold in Europe.",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 페이지에 있고 text 가 quote 범위 안(열어 대조)",
+       "round": "V062"
+      }
+     },
+     {
+      "id": "1639-f3",
+      "where": "질문",
+      "check": "맞음",
+      "text": "특히 성모 마리아의 옷에 쓰임",
+      "url": "https://en.wikipedia.org/wiki/Ultramarine",
+      "quote": "It was especially used for the robes of the Virgin Mary, symbolizing purity, holiness, and status."
+     },
+     {
+      "id": "1639-f4",
+      "where": "질문",
+      "check": "맞음",
+      "text": "1826년 합성 울트라마린이 나오기 전까지 비쌌음",
+      "url": "https://en.wikipedia.org/wiki/Ultramarine",
+      "quote": "The pigment remained costly until the development of synthetic ultramarine in 1826."
+     },
+     {
+      "id": "1639-f5",
+      "where": "힌트",
+      "check": "상식",
+      "text": "빛의 삼원색 가운데 하나"
+     },
+     {
+      "id": "1639-f6",
+      "where": "해설",
+      "check": "맞음",
+      "text": "울트라마린은 한때 금만큼 값이 나감",
+      "url": "https://en.wikipedia.org/wiki/Ultramarine",
+      "quote": "at times valued as highly as gold in Europe."
+     }
+    ],
+    "extra": [
+     {
+      "id": "1639-e1",
+      "text": "울트라마린이라는 이름은 라틴어 ultramarinus('바다 건너')에서 왔고, 이탈리아 상인이 아프가니스탄 광산에서 들여온 데서 붙음",
+      "url": "https://en.wikipedia.org/wiki/Ultramarine",
+      "quote": "The name ultramarine comes from the Latin ultramarinus, meaning “beyond the sea,” referring to its import into Europe by Italian traders from mines in Afghanistan during the 14th and 15th centuries.",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 페이지에 있고 text 가 quote 범위 안(열어 대조)",
+       "round": "V062"
+      }
+     }
+    ],
+    "note": "질문의 '광물을 갈아 만드는 안료를 얻기 어려워'는 출처에서 '수입 원료값과 오래 걸리는 추출 과정' 때문(\"The high cost of the imported raw material and the long laborious process of extraction\").",
+    "hold": false
+   }
+  },
+  {
+   "key": "2521",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설이 정답(아잔)이 아니라 부르는 사람(무에진 · 빌랄) 이야기",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "아잔은 전통적으로 무에진이 모스크 첨탑에서 목소리로 전했습니다.",
+     "why": "힌트의 '전통적으로 모스크 첨탑에서 외칩니다'와 같은 사실을 해설이 되풀이함",
+     "material": "f4: 무에진이 전통적으로 모스크 첨탑에서 외친다 — 이미 [힌트] 칸의 사실",
+     "sort": "new"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "아잔은 전통적으로 무에진이 모스크 첨탑에서 목소리로 전했습니다. 스피커를 쓸 때도 보통 첨탑 위쪽에 설치해 예배 시간을 알리는 이 부름을 전합니다.",
+    "gptWhy": "아잔을 전하는 전통과 첨탑 위쪽에 스피커를 다는 방식을 연결했습니다."
+   },
+   "card": {
+    "id": 2521,
+    "field": "인문·사회 > 종교·경전 상식 > 이슬람",
+    "question": "이슬람교에서 하루 다섯 번의 의무 예배 직전에 기도 시간을 목소리로 알리는 부름은 무엇일까요?",
+    "answer": "아잔",
+    "also": [],
+    "hint": "‘알라후 아크바르’로 시작하며, 전통적으로 모스크 첨탑에서 외칩니다.",
+    "explanation": "이 부름을 맡은 사람을 무에진이라고 합니다. 이슬람 최초의 무에진은 빌랄 이븐 라바흐였습니다.",
+    "grade": 4,
+    "worth": 2,
+    "worthWhy": "개념 — 종교 용어",
+    "cardFile": "카드-063"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-063.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "2521-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "하루 다섯 번의 의무 예배 직전마다 외친다",
+      "url": "https://en.wikipedia.org/wiki/Adhan",
+      "quote": "shortly before each of the five obligatory daily prayers."
+     },
+     {
+      "id": "2521-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "이슬람교에서 기도 시간을 알리는 신호다",
+      "url": "https://ko.wikipedia.org/wiki/아잔",
+      "quote": "아잔 또는 아단(أذان)은 이슬람교에서 기도 시간을 알리는 신호다."
+     },
+     {
+      "id": "2521-f3",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "'알라후 아크바르'로 시작한다",
+      "url": "https://ko.wikipedia.org/wiki/아잔",
+      "quote": "الله أكبر"
+     },
+     {
+      "id": "2521-f4",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "보통 무에진이 전통적으로 모스크의 첨탑에서 외친다",
+      "url": "https://en.wikipedia.org/wiki/Adhan",
+      "quote": "usually recited by a muezzin, traditionally from the minaret of a mosque"
+     },
+     {
+      "id": "2521-f5",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "스피커는 보통 모스크 첨탑의 위쪽에 단다",
+      "url": "https://en.wikipedia.org/wiki/Adhan",
+      "quote": "usually mounted on the upper part of the mosque's minarets"
+     },
+     {
+      "id": "2521-f6",
+      "where": "해설",
+      "check": "맞음",
+      "text": "무에진은 모스크에서 아잔을 외치도록 신도들이 정한 사람이다",
+      "url": "https://en.wikipedia.org/wiki/Adhan",
+      "quote": "a person designated by a congregation to recite the  from its mosque.",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 을 열어 quote 가 있음을 확인했고 text 가 quote 안에 든다.",
+       "round": "V088"
+      }
+     }
+    ],
+    "extra": [
+     {
+      "id": "2521-e1",
+      "text": "이슬람 최초의 무에진은 빌랄 이븐 라바흐였다",
+      "url": "https://en.wikipedia.org/wiki/Adhan",
+      "quote": "The first muezzin in Islam was Bilal ibn Rabah",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 을 열어 quote 가 있음을 확인했고 text 가 quote 안에 든다.",
+       "round": "V088"
+      }
+     }
+    ],
+    "note": "f3 은 ko 출처의 아랍어 본문 첫 줄(الله أكبر = 알라후 아크바르 · en 본문 'allāhu akbar'). ko 출처는 외치는 사람을 '무아딘'으로 적는다.",
+    "hold": false
+   }
+  },
+  {
+   "key": "2592",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "exp",
+     "span": "소금이 단백질 구조를 바꿔 수분을 잡아 둡니다.",
+     "why": "브라인 원리는 삼투 설과 단백질 변성 설이 맞서 아직 결론 안 남",
+     "right": "소금물이 고기 속에 스며들어 수분을 잡아 두는 것으로 설명합니다.",
+     "url": "https://en.wikipedia.org/wiki/Brining",
+     "quote": "two competing explanations, and food scientists still debate which is correct",
+     "note": "소금이 단백질 구조를 바꿔 수분을 잡는다는 설은 삼투설과 갈리는 논쟁 중인 설명인데 단정함"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 2592,
+    "field": "생활·상식 > 세계 음식·요리 > 조리법·조리 도구",
+    "question": "닭가슴살처럼 퍽퍽해지기 쉬운 고기를 소금물에 담가 두어 촉촉하게 만드는 손질을 무엇이라고 할까요?",
+    "answer": "염지",
+    "also": [
+     "브라이닝",
+     "염지법"
+    ],
+    "hint": "서양 요리에서 고기를 하루 안쪽으로 담가 두는 손질로, 식초가 든 마리네이드와는 다릅니다.",
+    "explanation": "소금이 단백질 구조를 바꿔 수분을 잡아 둡니다.",
+    "grade": 3,
+    "worth": 2,
+    "worthWhy": "쓸모 — 요리 요령",
+    "cardFile": "카드-029"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-029.json",
+    "note": "초안 claims 그대로",
+    "facts": [],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "소금물이 고기 속에 스며들어 수분을 잡아 두는 것으로 설명합니다.",
+      "url": "https://en.wikipedia.org/wiki/Brining",
+      "quote": "two competing explanations, and food scientists still debate which is correct",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "브라인 원리는 삼투 설과 단백질 변성 설이 맞서 아직 결론 안 남"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "key": "2608",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "exp",
+     "span": "우리나라로 오는 원유도 대부분 이 해협을 지납니다.",
+     "why": "한국 단독 비율 근거 없음",
+     "right": "우리나라로 오는 원유도 상당 부분 이 해협을 지납니다.",
+     "url": "https://ko.wikipedia.org/wiki/믈라카_해협",
+     "quote": "동아시아 국가들이 석유 공급의 90%를 이 해협에 의존 (한국 단독 비율은 없음)",
+     "note": "해협 · 해적은 맞으나 우리 원유 '대부분' 통과는 한국 단독 수치를 못 찾음 (한중일 합계 80~90% 보도만)"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 2608,
+    "field": "인문·사회 > 세계 지리·국가·수도 > 대륙·바다",
+    "question": "인도양과 남중국해를 잇는 좁은 길목으로, 세계 물동량이 몰려 해적 문제가 있었던 해협은 어디일까요?",
+    "answer": "믈라카 해협",
+    "also": [
+     "말라카 해협"
+    ],
+    "hint": "인도네시아 수마트라섬과 맞은편 반도 사이에 있는 바닷길입니다.",
+    "explanation": "우리나라로 오는 원유도 대부분 이 해협을 지납니다.",
+    "grade": 3,
+    "worth": 2,
+    "worthWhy": "상식 — 해협 지명 확인",
+    "cardFile": "카드-029"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-029.json",
+    "note": "초안 claims 그대로",
+    "facts": [],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "우리나라로 오는 원유도 상당 부분 이 해협을 지납니다.",
+      "url": "https://ko.wikipedia.org/wiki/믈라카_해협",
+      "quote": "동아시아 국가들이 석유 공급의 90%를 이 해협에 의존 (한국 단독 비율은 없음)",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "한국 단독 비율 근거 없음"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "key": "2820",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "exp",
+     "span": "CSS가 같은 이름의 2차원 배치 기능을 표준으로 정해",
+     "why": "위키: 아직 공식 표준(권고안)이 아닌 후보 권고",
+     "right": "CSS가 같은 이름의 2차원 배치 기능을 규격으로 마련해",
+     "url": "https://en.wikipedia.org/wiki/CSS_grid_layout",
+     "quote": "CSS grid is currently not an official standard (it is a W3C Candidate Recommendation)",
+     "note": "CSS Grid 는 W3C 후보 권고(Candidate Recommendation) 단계로 위키에 적혀 있어 '표준으로 정했다'는 단정이 지나침"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 2820,
+    "field": "문화·예술 > 사진·디자인 > 그래픽 디자인",
+    "question": "지면을 보이지 않는 가로세로 격자로 나누어 글과 사진을 정렬하고, 단과 간격을 맞추는 디자인의 틀은 무엇일까요?",
+    "answer": "그리드",
+    "also": [
+     "그리드 시스템"
+    ],
+    "hint": "뮐러브로크만 같은 스위스 디자이너들이 체계화한 편집 디자인의 뼈대입니다.",
+    "explanation": "웹에서도 CSS가 같은 이름의 2차원 배치 기능을 표준으로 정해, 화면 배치에 널리 씁니다.",
+    "grade": 3,
+    "worth": 2,
+    "worthWhy": "개념 — 디자인 개념",
+    "cardFile": "카드-001"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-001.json",
+    "note": null,
+    "facts": [],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "CSS가 같은 이름의 2차원 배치 기능을 규격으로 마련해",
+      "url": "https://en.wikipedia.org/wiki/CSS_grid_layout",
+      "quote": "CSS grid is currently not an official standard (it is a W3C Candidate Recommendation)",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "위키: 아직 공식 표준(권고안)이 아닌 후보 권고"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "key": "2947",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설이 씨앗호떡이 아니라 호떡 일반 정의",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "씨앗호떡은 부산국제영화제 초기에 개막식이 열렸던 남포동 BIFF광장에서 만날 수 있습니다. 그곳 좌판에서는 씨앗호떡과 함께 부산어묵이나 어묵 국물에 익힌 가래떡 꼬치 같은 부산 간식도 팝니다.",
+     "why": "해설 주인공이 여전히 정답이 아니라 BIFF광장이고, 힌트의 'BIFF광장 좌판에서 파는 음식'과 같은 사실을 되풀이함",
+     "material": "f4 · f5: BIFF광장 좌판 · 영화제 개막식 장소 — 이미 질문/힌트 칸의 사실이고 씨앗호떡 자체의 새 이야기는 없음",
+     "sort": "unsolved",
+     "unsolved": true
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "씨앗호떡은 부산국제영화제 초기에 개막식이 열렸던 남포동 BIFF광장에서 만날 수 있습니다. 그곳 좌판에서는 씨앗호떡과 함께 부산어묵이나 어묵 국물에 익힌 가래떡 꼬치 같은 부산 간식도 팝니다.",
+    "gptWhy": "씨앗호떡을 파는 광장이 영화제와 맺은 인연과 그곳의 다른 간식을 덧붙였습니다."
+   },
+   "card": {
+    "id": 2947,
+    "field": "한국 > 한국 음식 > 향토 음식",
+    "question": "해바라기씨 등 여러 씨와 견과류를 속에 넣는 부산의 길거리 간식은 무엇일까요?",
+    "answer": "씨앗호떡",
+    "also": [],
+    "hint": "남포동 BIFF광장의 좌판에서 파는 음식입니다.",
+    "explanation": "이 간식의 바탕인 호떡은 찹쌀이나 밀가루 반죽에 설탕을 넣어 따뜻하게 먹는 떡입니다.",
+    "grade": 2,
+    "worth": 2,
+    "worthWhy": "상식 — 향토 간식 이름",
+    "cardFile": "카드-059"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-059.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "2947-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "해바라기씨 등 견과류를 넣은 호떡이다",
+      "url": "https://www.huffingtonpost.kr/article/14185",
+      "quote": "씨앗호떡 해바라기 씨 등 견과류를 넣은 호떡.",
+      "judge": {
+       "verdict": "ok",
+       "why": "huffingtonpost.kr 기사 확인.",
+       "round": "V083"
+      }
+     },
+     {
+      "id": "2947-f2",
+      "where": "질문",
+      "check": "못 엶",
+      "text": "구운 호떡을 갈라 속을 채운다"
+     },
+     {
+      "id": "2947-f3",
+      "where": "질문",
+      "check": "맞음",
+      "text": "여러 가지 씨앗으로 속을 채운다",
+      "url": "https://www.trazy.com/spot/714/ssiat-hotteok",
+      "quote": "Ssiat Hotteok is filled with a variety of seeds",
+      "judge": {
+       "verdict": "ok",
+       "why": "trazy 확인 — 'filled with a variety of seeds'.",
+       "round": "V083"
+      }
+     },
+     {
+      "id": "2947-f4",
+      "where": "질문",
+      "check": "맞음",
+      "text": "부산 남포동 BIFF광장 좌판에서 파는 부산 특유의 간식이다",
+      "url": "https://ncms.nculture.org/food/tag/byid/87185",
+      "quote": "남포동 BIFF광장에는 부산어묵과 어묵국물에 익힌 가래떡고치, 씨앗호떡 등 예전에는 부산 특유의 간식을 파는 좌판",
+      "judge": {
+       "verdict": "fix",
+       "why": "quote 는 '예전에는 부산 특유의 간식을 파는 좌판' — '예전에는' 이 빠지고 현재형 '부산 특유의 간식이다' 로 단정했다.",
+       "fixed": "남포동 BIFF광장에는 씨앗호떡 등을 파는 좌판이 있다(출처는 '예전에는 부산 특유의 간식' 이라 적는다)",
+       "round": "V083"
+      }
+     },
+     {
+      "id": "2947-f5",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "BIFF광장은 부산국제영화제 초기에 개막식이 열린 곳이다",
+      "url": "https://ncms.nculture.org/food/tag/byid/87185",
+      "quote": "영화제 초기에 개막식이 진행되었던 부산광역시 중구 남포동 BIFF광장",
+      "judge": {
+       "verdict": "ok",
+       "why": "ncms.nculture.org 확인 — '영화제 초기에 개막식이 진행되었던 … BIFF광장'.",
+       "round": "V083"
+      }
+     },
+     {
+      "id": "2947-f6",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "호떡은 찹쌀이나 밀가루 반죽에 설탕을 넣은 따뜻한 떡이다",
+      "url": "https://ko.wikipedia.org/wiki/호떡",
+      "quote": "찹쌀이나 밀가루를 반죽하여 만든 설탕이 들어있는 따뜻한 떡이다."
+     },
+     {
+      "id": "2947-f7",
+      "where": "힌트",
+      "check": "못 엶",
+      "text": "땅콩 같은 견과가 두둑하다"
+     },
+     {
+      "id": "2947-f8",
+      "where": "해설",
+      "check": "못 엶",
+      "text": "기름에 튀기듯 구운 뒤 속을 채운다"
+     }
+    ],
+    "extra": [],
+    "note": "위키백과에 씨앗호떡 문서가 없어 허프포스트코리아 · 트래지 · 한국문화정보원(컬처링) 글로 확인했다. 굽는 법 · 땅콩은 연 출처에 없다 — f1 · f3~f5 만큼만. f6 은 호떡 일반.",
+    "hold": false
+   }
+  },
+  {
+   "key": "2961",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "힌트가질문보다좋음",
+     "note": "힌트(국내 첫 컬링 전용 경기장 · 팀 킴)가 질문(마늘)보다 의성을 곧바로 가리킴",
+     "round": "V118"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "hint",
+     "span": "이곳에는 국내 첫 컬링 전용 경기장이 있습니다.",
+     "why": "까닭이던 '힌트가 질문(마늘)보다 의성을 곧바로 가리킴'이 그대로 남음 — 문장만 짧아졌을 뿐 같은 사실(컬링 전용 경기장)이 여전히 질문보다 더 직접적인 단서",
+     "material": "재료 없음 · 고치기 전 글의 컬링 경기장 사실을 그대로 둠",
+     "sort": "unsolved",
+     "unsolved": true
+    }
+   ],
+   "needsRegrade": true,
+   "tried": {
+    "hint": "이곳에는 국내 첫 컬링 전용 경기장이 있습니다.",
+    "gptWhy": "답을 곧바로 가리키는 ‘팀 킴’을 덜고 경기장 단서만 남겼습니다."
+   },
+   "card": {
+    "id": 2961,
+    "field": "한국 > 한국 지리 > 지역 특산·별칭",
+    "question": "특산물인 마늘의 알이 단단하고 매운맛이 강하기로 이름난 경상북도의 군은 어디일까요?",
+    "answer": "의성",
+    "also": [
+     "의성군"
+    ],
+    "hint": "국내 첫 컬링 전용 경기장이 있어 평창 올림픽 여자 컬링 ‘팀 킴’을 길러 낸 경북의 군입니다.",
+    "explanation": "의성에서 기르는 마늘은 추운 지역에 맞는 한지형입니다. 따뜻한 남쪽의 난지형 마늘과 구별되는 특산물입니다.",
+    "grade": 3,
+    "worth": 2,
+    "worthWhy": "상식 — 지역 특산 확인",
+    "cardFile": "카드-18"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-018.json",
+    "note": null,
+    "facts": []
+   }
+  },
+  {
+   "key": "2969",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "exp",
+     "span": "작사와 작곡을 박진영이 맡았습니다.",
+     "why": "공동 작가 표기 및 샘플 사용이 있어 단독 단정은 지나침",
+     "right": "박진영이 만들고 제작했습니다.",
+     "url": "https://en.wikipedia.org/wiki/Tell_Me_(Wonder_Girls_song)",
+     "quote": "Park Jin-young wrote and produced the song ... infobox also lists John Mitchell and Kim Yu-bin as songwriters",
+     "note": "작사·작곡을 박진영 단독으로 단정 — 위키에 John Mitchell·Kim Yu-bin 공동 작가와 샘플 원곡이 올라 있음"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 2969,
+    "field": "한국 > 한국 대중음악 > 2000년대 이후 가요",
+    "question": "2007년 원더걸스가 불러 따라 추는 영상과 공연이 퍼지며 춤 열풍을 일으킨 노래는 무엇일까요?",
+    "answer": "텔 미",
+    "also": [
+     "Tell Me"
+    ],
+    "hint": "원더걸스 첫 정규 음반의 타이틀곡입니다.",
+    "explanation": "작사와 작곡을 박진영이 맡았습니다.",
+    "grade": 2,
+    "worth": 2,
+    "worthWhy": "취미세부 — K팝 세대 기억 확인",
+    "cardFile": "카드-002"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-002.json",
+    "note": null,
+    "facts": [],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "박진영이 만들고 제작했습니다.",
+      "url": "https://en.wikipedia.org/wiki/Tell_Me_(Wonder_Girls_song)",
+      "quote": "Park Jin-young wrote and produced the song ... infobox also lists John Mitchell and Kim Yu-bin as songwriters",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "공동 작가 표기 및 샘플 사용이 있어 단독 단정은 지나침"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "key": "3778",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "fix",
+     "field": "exp",
+     "span": "삽살개를 지키려 1960년대 말 경북대 교수들이 약 30마리를 모았습니다. 1980년대 중반에는 여덟 마리만 남기도 했습니다.",
+     "why": "해설의 연도 · 마릿수 · 경북대 교수 이야기가 재료 어디에도 없음",
+     "material": "f4(경산 삽살개 천연기념물 지정) · e1 · e2 에만 근거가 있음 — 재료에 있는 사실(천연기념물 보호 · 독도 경비견 · 이름 뜻)로 다시 써야 함",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "2024년에는 10대째인 ‘우리’와 ‘나라’가 독도에서 지냈다고 합니다",
+     "why": "재료에 없는 연도 · 세대 수 · 개체 이름을 새로 더했다",
+     "material": "e1: 독도 경비견은 두 번 세대가 바뀌어 2007년부터 '지킴이'와 '독도', 2012년 뒤로 '서도'와 '천사'가 남았다 — 2024년 · 10대째 · '우리' · '나라'는 재료 없음",
+     "sort": "material"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "삽살개 가운데 경산 삽살개는 천연기념물로 지정돼 보호받고 있습니다. 독도를 지키는 삽살개는 교대해 왔으며, 2024년에는 10대째인 ‘우리’와 ‘나라’가 독도에서 지냈다고 합니다.",
+    "gptWhy": "근거가 없는 복원 연도와 마릿수를 빼고 천연기념물 지정과 독도 경비견 교대를 설명했습니다."
+   },
+   "card": {
+    "id": 3778,
+    "field": "생활·상식 > 반려동물·원예 > 개 품종",
+    "question": "눈이 털에 가려 보이지 않는 한국 토종개로, 1990년대 말부터 독도경비대와 함께 지냈다고 전하는 토종개는 무엇일까요?",
+    "answer": "삽살개",
+    "also": [
+     "삽사리"
+    ],
+    "hint": "이름에는 귀신과 액운을 쫓는 개라는 뜻이 담겨 있습니다.",
+    "explanation": "삽살개를 지키려 1960년대 말 경북대 교수들이 약 30마리를 모았습니다. 1980년대 중반에는 여덟 마리만 남기도 했습니다.",
+    "grade": 2,
+    "worth": 3,
+    "worthWhy": "상식 — 한국 토종 상식",
+    "cardFile": "카드-035"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-035.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "3778-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "독도에서 상징적 의미로 1998년부터 독도경비대와 함께 경비를 서기 시작했다",
+      "url": "https://namu.wiki/w/삽살개",
+      "quote": "독도에서 상징적 의미로 1998년부터 독도경비대와 같이 경비를 서기 시작했다",
+      "judge": {
+       "verdict": "fix",
+       "why": "출처는 나무위키 한 곳(1998년부터 독도경비대와 같이 경비). 웹 검색에서 segye.com 이 '1998년부터 독도지킴이' 라 했지만 다른 기사는 삽살개 첫 입도를 1999년이라 적어 엇갈린다 — 연도를 단정하지 않는다",
+       "fixed": "독도에서 삽살개가 1990년대 말(나무위키는 1998년부터)부터 독도경비대와 함께 경비를 서기 시작했다고 한다",
+       "round": "V063"
+      }
+     },
+     {
+      "id": "3778-f2",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "눈은 털에 가려 보이지 않는다",
+      "url": "https://ko.wikipedia.org/wiki/삽살개",
+      "quote": "눈은 털에 가려서 보이지 않는다.",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 페이지에 있고 text 가 quote 범위 안(열어 대조)",
+       "round": "V063"
+      }
+     },
+     {
+      "id": "3778-f3",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "한국의 토종 개다",
+      "url": "https://ko.wikipedia.org/wiki/삽살개",
+      "quote": "한반도의 동남부 지역에 널리 서식하던 한국의 토종 개이며, 장모종과 단모종이 있다.",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 페이지에 있고 text 가 quote 범위 안(열어 대조)",
+       "round": "V063"
+      }
+     },
+     {
+      "id": "3778-f4",
+      "where": "해설",
+      "check": "맞음",
+      "text": "경산 삽살개는 천연기념물로 지정돼 보호받는다",
+      "url": "https://ko.wikipedia.org/wiki/삽살개",
+      "quote": "특히 경산 삽살개는 고유 혈통 보존을 위해 천연기념물로 지정되어 보호받고 있다",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 페이지에 있고 text 가 quote 범위 안(열어 대조)",
+       "round": "V063"
+      }
+     }
+    ],
+    "extra": [
+     {
+      "id": "3778-e1",
+      "text": "독도 경비견은 두 번 세대가 바뀌어, 2007년부터는 '지킴이(수컷)'와 '독도(암컷)', 2012년 뒤로는 '서도'와 '천사'가 남았다",
+      "url": "https://namu.wiki/w/삽살개",
+      "quote": "그 뒤 두 번의 세대교체가 이뤄졌으며 2007년부터는 '지킴이(수컷)'와 '독도(암컷)', 2012년 이후에는 '서도(수컷)'와 '천사(암컷)'가 경비견으로 남았다",
+      "judge": {
+       "verdict": "fix",
+       "why": "나무위키 같은 문서가 같은 문단에서 '약 2년마다 교대 · 2024년 기준 10대째 우리 · 나라' 라고도 적는다 — '두 번 세대가 바뀌어 … 서도 · 천사가 남았다' 만 쓰면 지금 상태로 읽힌다. 나무위키 한 곳뿐(열어 대조)",
+       "fixed": "나무위키에 따르면 독도 경비견은 2007년부터 '지킴이(수컷)'와 '독도(암컷)', 2012년 이후 '서도(수컷)'와 '천사(암컷)'가 남았고, 약 2년마다 교대해 2024년 기준 10대째 '우리' · '나라'가 지낸다",
+       "round": "V063"
+      }
+     },
+     {
+      "id": "3778-e2",
+      "text": "이름은 '귀신과 액운을 쫓는 개'라는 뜻의 순우리말이다",
+      "url": "https://ko.wikipedia.org/wiki/삽살개",
+      "quote": "‘귀신과 액운을 쫓는 개’라는 뜻을 지닌 삽살개는 이름 자체도 순수한 한국어로서 가사(歌詞), 민담, 그림 속에 자주 등장한다.",
+      "judge": {
+       "verdict": "ok",
+       "why": "quote 가 페이지에 있고 text 가 quote 범위 안(열어 대조)",
+       "round": "V063"
+      }
+     }
+    ],
+    "note": "f1 · e1 은 나무위키(페이지 글을 HTML 을 벗겨 읽음)에서만 확인했다 — 위키백과 한국어 · 영어 문서에는 독도 이야기가 없다. 질문의 '1990년대 말부터'는 f1 의 1998년과 맞다. 일제의 도살 이야기는 #1820 의 질문이라 쓰지 않는다.",
+    "hold": false
+   }
+  },
+  {
+   "key": "4076",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설이 주인공이 아니라 웹툰의 애니메이션 방영을 말함",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "진모리에게 리뉴얼 태권도를 가르친 사람은 양할아버지 진태진입니다. ... 진모리의 정체인 제천대성 손오공은 중국 소설 《서유기》의 주인공입니다.",
+     "why": "리뉴얼 태권도 · 양할아버지(힌트)와 정체 제천대성 손오공(질문)을 해설이 그대로 되풀이해 새 이야기가 거의 없음",
+     "material": "f2: 양할아버지 진태진에게 배움([질문·힌트] 칸) · f3: 정체 손오공([질문] 칸) — 둘 다 이미 다른 칸에 있는 사실",
+     "sort": "new"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "진모리에게 리뉴얼 태권도를 가르친 사람은 양할아버지 진태진입니다. 작품은 진모리의 강한 힘을 설명하며 그보다 오래된 이야기를 끌어옵니다. 진모리의 정체인 제천대성 손오공은 중국 소설 《서유기》의 주인공입니다.",
+    "gptWhy": "진모리의 스승을 밝히고 강한 힘의 배경이 된 《서유기》의 인물을 연결했습니다."
+   },
+   "card": {
+    "id": 4076,
+    "field": "문화·예술 > 만화·웹툰 > 한국 만화·웹툰",
+    "question": "웹툰 「갓 오브 하이스쿨」에서 리뉴얼 태권도를 구사하며, 정체가 제천대성 손오공으로 밝혀지는 주인공은 누구일까요?",
+    "answer": "진모리",
+    "also": [
+     "모리 진"
+    ],
+    "hint": "서울 출신의 17세 무술가로, 양할아버지에게 무술을 배웠습니다.",
+    "explanation": "이 웹툰은 MAPPA가 제작한 TV 애니메이션으로도 만들어져 2020년 7~9월 방영됐습니다.",
+    "grade": 5,
+    "worth": 1,
+    "worthWhy": "고유명사 — 작품 속 이름 암기",
+    "cardFile": "카드-006"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-006.json",
+    "core": "원문 질문 그대로('갓 오브 하이스쿨' 주인공)",
+    "facts": [
+     {
+      "id": "4076-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "박용제가 네이버 웹툰에 연재한 '갓 오브 하이스쿨'",
+      "url": "https://ko.wikipedia.org/wiki/갓_오브_하이스쿨",
+      "quote": "갓 오브 하이스쿨은 대한민국의 만화가 박용제가 네이버 웹툰에 매주 금요일 연재하는 웹툰이자, 이를 원작으로 한 애니메이션이다."
+     },
+     {
+      "id": "4076-f2",
+      "where": "질문·힌트",
+      "check": "맞음",
+      "text": "양할아버지 진태진에게 리뉴얼 태권도를 배움",
+      "url": "https://ko.wikipedia.org/wiki/갓_오브_하이스쿨",
+      "quote": "양할아버지 진태진에게 리뉴얼 태권도를 배웠다."
+     },
+     {
+      "id": "4076-f3",
+      "where": "질문",
+      "check": "맞음",
+      "text": "정체는 서유기의 주인공 제천대성 손오공",
+      "url": "https://en.wikipedia.org/wiki/The_God_of_High_School",
+      "quote": "However, the reason Mori is so powerful is due to his true identity of the mythical Jaechondaesong, or Sun Wukong, the hero of the Chinese Novel Journey to the West."
+     },
+     {
+      "id": "4076-f4",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "서울 출신의 태평한 17세 무술가",
+      "url": "https://en.wikipedia.org/wiki/The_God_of_High_School",
+      "quote": "A happy-go-lucky 17-year-old martial artist from Seoul, South Korea who practices a fictional version of the Korean martial art Taekwondo called Renewal Taekwondo"
+     },
+     {
+      "id": "4076-f5",
+      "where": "힌트",
+      "check": "못 엶",
+      "text": "스스로 '쎈 놈'이라 큰소리침"
+     },
+     {
+      "id": "4076-f6",
+      "where": "해설",
+      "check": "맞음",
+      "text": "MAPPA가 만든 TV 애니메이션이 2020년 7~9월 방영",
+      "url": "https://en.wikipedia.org/wiki/The_God_of_High_School",
+      "quote": "An anime television series adaptation produced by MAPPA aired from July to September 2020."
+     }
+    ],
+    "extra": [
+     {
+      "id": "4076-e1",
+      "text": "애니메이션 한국어판에서 진모리 목소리는 '원피스' 루피로 이름난 성우 강수진이 맡았다",
+      "url": "https://en.wikipedia.org/wiki/The_God_of_High_School",
+      "quote": "Jin Mo-ri was voiced by Kang Soo-jin, who is well known as the Korean voice actor of Luffy from One Piece.",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 열어 quote 가 페이지에 있고 text 가 quote 보다 나가지 않음",
+       "round": "V059"
+      }
+     }
+    ],
+    "note": "힌트가 '웹툰 갓 오브 하이스쿨의 주인공'으로 질문을 되풀이한다 — 힌트는 리뉴얼 태권도 · 서울 17세 쪽만. e1 은 한국어 위키(성우: 남도형)와 다르다 — 어느 판인지 출처가 갈리므로 쓰려면 '영어 위키는 강수진'으로만, 아니면 빼는 편이 안전.",
+    "hold": false
+   }
+  },
+  {
+   "key": "4192",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설이 정답인 '짐꾼' 역할이 아니라 프로그램의 제작 배경을 말함",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "뒤에 최지우가 두 번째 여행 안내 겸 보조로 합류하면서 이서진과 함께 그 역할을 맡았습니다.",
+     "why": "힌트의 '최지우 보조로 합류'를 되풀이하고, '그 역할'(짐꾼)을 최지우도 맡았다는 말은 재료보다 넓힘",
+     "material": "f6: 최지우는 '두 번째 여행 안내 겸 보조'로 합류(짐꾼이라 불렸다는 재료 없음) · 이미 [힌트] 칸의 사실",
+     "sort": "material"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "2013년 시작한 《꽃보다 할배》에서 70대 선배 배우 네 명과 배낭여행을 떠난 이서진을 언론은 ‘짐꾼’이라 불렀습니다. 뒤에 최지우가 두 번째 여행 안내 겸 보조로 합류하면서 이서진과 함께 그 역할을 맡았습니다.",
+    "gptWhy": "언론이 이서진에게 붙인 역할 이름에서 출발해 이 역할에 최지우가 합류하기까지 이어 썼습니다."
+   },
+   "card": {
+    "id": 4192,
+    "field": "한국 > 한국 방송·예능 > 예능 프로그램",
+    "question": "'꽃보다 할배'에서 이순재·신구·박근형·백일섭의 해외 배낭여행을 따라간 이서진에게 붙은 역할 이름은 무엇일까요?",
+    "answer": "짐꾼",
+    "also": [],
+    "hint": "원로 배우 넷의 여행을 곁에서 돕는 역할로, 뒤에는 최지우도 보조로 합류했습니다.",
+    "explanation": "2013년 시작한 이 프로그램은 나영석 PD가 KBS를 떠난 뒤 처음 만든 예능이자 tvN 배낭여행 프로젝트의 첫 편이었습니다.",
+    "grade": 2,
+    "worth": 1,
+    "worthWhy": "일화 — 예능 일화 확인",
+    "cardFile": "카드-057"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-057.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "4192-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "70대 원로 배우 넷이 나온다",
+      "url": "https://en.wikipedia.org/wiki/Grandpas_Over_Flowers",
+      "quote": "The series stars four veteran actors in their seventies"
+     },
+     {
+      "id": "4192-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "그 넷은 이순재 · 신구 · 박근형 · 백일섭이다",
+      "url": "https://en.wikipedia.org/wiki/Grandpas_Over_Flowers",
+      "quote": "Lee Soon-jae, Shin Goo, Park Geun-hyung and Baek Il-seob"
+     },
+     {
+      "id": "4192-f3",
+      "where": "질문",
+      "check": "맞음",
+      "text": "네 배우가 이서진과 해외 배낭여행을 떠난다",
+      "url": "https://en.wikipedia.org/wiki/Grandpas_Over_Flowers",
+      "quote": "go on a backpacking tour to overseas travel destinations alongside Lee Seo-jin"
+     },
+     {
+      "id": "4192-f4",
+      "where": "질문",
+      "check": "맞음",
+      "text": "첫 시즌은 2013년 7월 5일 ~ 8월 16일 일곱 회 방송되었다",
+      "url": "https://en.wikipedia.org/wiki/Grandpas_Over_Flowers",
+      "quote": "The first season aired from July 5 to August 16, 2013 with seven episodes."
+     },
+     {
+      "id": "4192-f5",
+      "where": "질문",
+      "check": "맞음",
+      "text": "언론은 이서진을 '짐꾼'이라 불렀다",
+      "url": "https://ko.wikipedia.org/wiki/꽃보다_할배",
+      "quote": "[제목] '꽃보다 할배' 최지우 합류, 할배들+짐꾼 이서진까지 ‘최강조합’"
+     },
+     {
+      "id": "4192-f6",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "최지우가 '두 번째 여행 안내 겸 보조'로 합류했다",
+      "url": "https://en.wikipedia.org/wiki/Grandpas_Over_Flowers",
+      "quote": "with Choi Ji-woo joining as a second travel guide and assistant"
+     },
+     {
+      "id": "4192-f7",
+      "where": "힌트",
+      "check": "못 엶",
+      "text": "이서진이 '참 좋은 짐꾼'이라 불렸다"
+     },
+     {
+      "id": "4192-f8",
+      "where": "해설",
+      "check": "맞음",
+      "text": "나영석 PD 와 이우정 작가의 tvN 배낭여행 프로젝트 1탄이다",
+      "url": "https://ko.wikipedia.org/wiki/꽃보다_할배",
+      "quote": "나영석 PD와 이우정 작가의 배낭여행 프로젝트 1탄으로 제작되면서"
+     }
+    ],
+    "extra": [
+     {
+      "id": "4192-e1",
+      "text": "요리 솜씨가 서툰 이서진에게 제작진이 붙인 농담 '요리왕'이 뒤에 '삼시세끼'로 이어졌다",
+      "url": "https://en.wikipedia.org/wiki/Three_Meals_a_Day",
+      "quote": "which eventually materialised into Three Meals a Day",
+      "judge": {
+       "verdict": "ok",
+       "why": "이번에 연 페이지에서 quote 를 확인, text 가 quote 의 한정어 · 주어 · 범위 · 서수를 넘지 않음.",
+       "round": "V082"
+      }
+     },
+     {
+      "id": "4192-e2",
+      "text": "나영석 PD 가 KBS 를 떠난 뒤 처음 만든 예능이다",
+      "url": "https://en.wikipedia.org/wiki/Grandpas_Over_Flowers",
+      "quote": "The show marked producer Na Young-seok's first variety show since leaving KBS",
+      "judge": {
+       "verdict": "ok",
+       "why": "이번에 연 페이지에서 quote 를 확인, text 가 quote 의 한정어 · 주어 · 범위 · 서수를 넘지 않음.",
+       "round": "V082"
+      }
+     }
+    ],
+    "note": "f3 은 위키백과 각주의 동아일보 기사 제목. e1 의 '요리왕'(Cooking King) 이야기는 같은 묶음 #4193(삼시세끼)과 이어진다 — 같은 판이면 쓰지 않는다. e3 · f4 의 그리스 편은 시즌 1 이야기.",
+    "hold": false
+   }
+  },
+  {
+   "key": "4259",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설의 주인공이 뒤러가 아니라 코뿔소",
+     "round": "V118"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "뒤러가 글과 스케치로만 접한 코뿔소는 … 뒤러는 실물을 본 적 없이 그 코뿔소를 갑옷을 두른 듯한 모습의 목판화로 남겼습니다.",
+     "why": "첫 문장은 힌트(글과 스케치로만 접함), 둘째 문장은 질문(직접 보지 않고 갑옷 두른 목판화)을 그대로 되풀이해 해설에 새 이야기가 코뿔소 난파뿐이다",
+     "material": "재료 없음 · 고치기 전 글에서 새로 남은 사실은 레오 10세 선물 · 난파뿐",
+     "sort": "new"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "뒤러가 글과 스케치로만 접한 코뿔소는 교황 레오 10세에게 보내지던 중 배가 난파해 죽었습니다. 뒤러는 실물을 본 적 없이 그 코뿔소를 갑옷을 두른 듯한 모습의 목판화로 남겼습니다.",
+    "gptWhy": "기존 카드에 있던 사실을 이어 뒤러가 실물을 보지 않고 남긴 목판화로 이야기를 마무리했습니다."
+   },
+   "card": {
+    "id": 4259,
+    "field": "문화·예술 > 미술·화가 > 판화·공예",
+    "question": "'기도하는 손'으로 알려진 독일 화가로, 코뿔소를 직접 보지 않고도 갑옷을 두른 듯한 모습의 목판화를 남긴 인물은 누구일까요?",
+    "answer": "뒤러",
+    "also": [
+     "알브레히트 뒤러"
+    ],
+    "hint": "자화상을 여러 점 남겼으며, 1515년 리스본에 온 코뿔소는 글과 스케치로만 접했습니다.",
+    "explanation": "그 코뿔소는 교황 레오 10세에게 선물로 보내지던 중 배가 폭풍에 난파해 사슬에 묶인 채 물에 빠져 죽었습니다.",
+    "grade": 4,
+    "worth": 1,
+    "worthWhy": "고유명사 — 화가 이름 암기",
+    "cardFile": "카드-004"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-004.json",
+    "note": null,
+    "facts": []
+   }
+  },
+  {
+   "key": "4462",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "hint",
+     "span": "장항읍에 국립생태원과 국립해양생물자원관이 있습니다.",
+     "why": "국립생태원 주소는 서천군 마서면 금강로 1210",
+     "right": "장항읍에 국립해양생물자원관이, 마서면에 국립생태원이 있습니다.",
+     "url": "https://mom-mom.net/travel/places/64618b3655753627b1eebaed",
+     "quote": "충청남도 서천군 마서면 금강로 1210",
+     "note": "국립생태원은 서천군 마서면(장항읍 아님). 카드 힌트는 둘 다 장항읍이라 함. 재료 값은 틀림.",
+     "spanNow": "이 구절은 지금 글에 없다(01 고침으로 바뀜) — 지금 글에 같은 사실이 남았는지 보고 맞는 값으로"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 4462,
+    "field": "한국 > 한국 지리 > 지역 특산·별칭",
+    "question": "유네스코 인류무형문화유산에 오른 한산모시짜기가 전해 오는 충청남도의 군은 어디일까요?",
+    "answer": "서천",
+    "also": [
+     "서천군"
+    ],
+    "hint": "장항역 옆에 국립생태원이 있고, 장항읍 송림리에는 국립해양생물자원관이 있습니다.",
+    "explanation": "충청남도 서남단에 자리하며, 남쪽으로 금강을 사이에 두고 군산·익산과 마주합니다.",
+    "grade": 4,
+    "worth": 1,
+    "worthWhy": "고유명사 — 지역 이름 암기",
+    "cardFile": "카드-044"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-044.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "4462-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "한산모시짜기는 충청남도 서천군에서 전해 오는 기술",
+      "url": "https://ko.wikipedia.org/wiki/한산모시짜기",
+      "quote": "한산모시짜기는 대한민국 충청남도 서천군에서 전해오는 잠업 기술이다."
+     },
+     {
+      "id": "4462-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "한산모시는 유네스코 인류무형문화유산으로 등재됐다",
+      "url": "https://ko.wikipedia.org/wiki/서천군",
+      "quote": "서천의 특산물로는 유네스코 인류무형문화유산으로 등재된 한산모시가 유명하다"
+     },
+     {
+      "id": "4462-f3",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "충청남도 서남단에 있고 남쪽은 금강을 경계로 군산 · 익산과 마주한다",
+      "url": "https://ko.wikipedia.org/wiki/서천군",
+      "quote": "서천군은 충청남도 서남단에 위치하고 있으며, 동쪽은 부여군, 북은 보령시, 남은 금강을 경계로 전북특별자치도 군산시, 익산시를 대안하고, 서는 황해와 접하여 위치하고 있다."
+     },
+     {
+      "id": "4462-f4",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "장항읍에 국립생태원과 국립해양생물자원관이 있다",
+      "url": "https://ko.wikipedia.org/wiki/서천군",
+      "quote": "장항역 옆에는 국립생태원이 있고, 장항읍 송림리에는 국립해양생물자원관이 있다."
+     },
+     {
+      "id": "4462-f5",
+      "where": "해설",
+      "check": "맞음",
+      "text": "모시를 훑고 겉껍질을 벗겨 태모시를 만든 뒤 물에 담갔다 말려 실을 쪼갠다",
+      "url": "https://ko.wikipedia.org/wiki/한산모시짜기",
+      "quote": "우선 재배하여 수확한 모시를 훑고 겉껍질을 벗겨 태모시를 만든 다음 하루쯤 물에 담가 말린 후 이를 다시 물에 적셔 실의 올을 하나하나 쪼갠다."
+     },
+     {
+      "id": "4462-f6",
+      "where": "질문",
+      "check": "못 엶",
+      "text": "등재 연도 2011년"
+     }
+    ],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "장항읍에 국립해양생물자원관이, 마서면에 국립생태원이 있습니다.",
+      "url": "https://mom-mom.net/travel/places/64618b3655753627b1eebaed",
+      "quote": "충청남도 서천군 마서면 금강로 1210",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "국립생태원 주소는 서천군 마서면 금강로 1210"
+      }
+     }
+    ],
+    "note": "등재 연도(2011년)는 이번에 연 문서에서 확인하지 못했다(f6). 해설의 '햇볕에 말린'은 출처에 없다('물에 담가 말린 후'). 해설이 서천이 아니라 모시 만드는 법 이야기다(주인공 = 정답 원칙).",
+    "hold": false
+   }
+  },
+  {
+   "key": "4991",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "exp",
+     "span": "이 고사의 풍환은 맹상군이 재상에서 물러났을 때 떠나간 식객들을 다시 불러들이라고 권하기도 했습니다.",
+     "why": "식객을 다시 대하라는 권유는 《사기》 맹상군열전의 풍환 이야기이고, 종묘·세 굴 고사는 《전국책》(풍훤)에 있어 출처가 다름. 또 '불러들이라'가 아니라 떠났던 식객들을 예전처럼 대하라는 권유",
+     "right": "《사기》에는 풍환이 복직한 맹상군에게, 떠났던 식객들을 예전처럼 대하라고 권했다는 이야기도 전합니다. (또는 해당 문장 삭제)",
+     "url": "https://www.itwiki.kr/w/%EA%B5%90%ED%86%A0%EC%82%BC%EA%B5%B4",
+     "quote": "《사기》에서는 복직 후 맹상군이 떠났던 식객들을 욕하려 하자, 풍환이 ... 식객들을 예전처럼 대하라고 권합니다.",
+     "note": "hint 는 전국책(풍훤·종묘) 고사인데 exp 의 식객 다시 부름은 사기(풍환) 대목이라 '이 고사'로 묶으면 틀림"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 4991,
+    "field": "한국 > 한국어·한글 > 사자성어",
+    "question": "슬기로운 토끼가 몸을 피할 곳을 여럿 마련하듯, 위기에 대비해 여러 안전책을 갖춘다는 뜻의 사자성어는 무엇일까요?",
+    "answer": "교토삼굴",
+    "also": [],
+    "hint": "맹상군의 식객 풍환이 종묘를 세우게 한 뒤 이제 안심해도 된다고 한 고사에서 나왔습니다.",
+    "explanation": "이 고사의 풍환은 맹상군이 재상에서 물러났을 때 떠나간 식객들을 다시 불러들이라고 권하기도 했습니다.",
+    "grade": 4,
+    "worth": 2,
+    "worthWhy": "유래 — 사자성어의 뜻",
+    "cardFile": "카드-001"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-001.json",
+    "note": null,
+    "facts": [],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "《사기》에는 풍환이 복직한 맹상군에게, 떠났던 식객들을 예전처럼 대하라고 권했다는 이야기도 전합니다. (또는 해당 문장 삭제)",
+      "url": "https://www.itwiki.kr/w/%EA%B5%90%ED%86%A0%EC%82%BC%EA%B5%B4",
+      "quote": "《사기》에서는 복직 후 맹상군이 떠났던 식객들을 욕하려 하자, 풍환이 ... 식객들을 예전처럼 대하라고 권합니다.",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "식객을 다시 대하라는 권유는 《사기》 맹상군열전의 풍환 이야기이고, 종묘·세 굴 고사는 《전국책》(풍훤)에 있어 출처가 다름. 또 '불러들이라'가 아니라 떠났던 식객들을 예전처럼 대하라는 권유"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "key": "5012",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "exp",
+     "span": "약 37년 만에",
+     "why": "뉴시스가 1984년 4집 직후 탈퇴 이후 38년 만이라고 보도(위키 문서는 1985 탈퇴로 적어 37이 나옴 — 출처 불일치)",
+     "right": "약 38년 만에 (또는 '수십 년 만에')",
+     "url": "https://www.newsis.com/view/NISX20220911_0002009483",
+     "quote": "1984년 정규 4집 발매 직후 구창모가 팀을 탈퇴한 이후 38년 만에",
+     "note": "재결합 햇수: 구창모 탈퇴(1984)부터 38년 만이라고 보도됨, 37년 아님"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 5012,
+    "field": "한국 > 한국 대중음악 > 1980년대 이전 가요",
+    "question": "배철수와 구창모가 함께하며 '어쩌다 마주친 그대', '세상만사', '모두 다 사랑하리'를 히트시킨 록 밴드는 무엇일까요?",
+    "answer": "송골매",
+    "also": [],
+    "hint": "항공대 밴드 '활주로' 출신이 1979년에 결성했습니다.",
+    "explanation": "2022년 배철수와 구창모가 약 37년 만에 한 무대에 서며 재결합을 알렸습니다.",
+    "grade": 4,
+    "worth": 2,
+    "worthWhy": "취미세부 — 가요 역사 세부",
+    "cardFile": "카드-001"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-001.json",
+    "note": null,
+    "facts": [],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "약 38년 만에 (또는 '수십 년 만에')",
+      "url": "https://www.newsis.com/view/NISX20220911_0002009483",
+      "quote": "1984년 정규 4집 발매 직후 구창모가 팀을 탈퇴한 이후 38년 만에",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "뉴시스가 1984년 4집 직후 탈퇴 이후 38년 만이라고 보도(위키 문서는 1985 탈퇴로 적어 37이 나옴 — 출처 불일치)"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "key": "5031",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "해설주인공아님",
+     "note": "해설이 합죽선이 아니라 선자청 이야기다",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "조선의 부채 하면 전주를 떠올린다는 제목을 단 기사",
+     "why": "기사에 '제목'이 있었다는 말은 재료에 없음 — 재료는 기사가 그렇게 썼다고만 함",
+     "material": "5031-e2: 1940년 신문 기사가 '조선의 부채라고 하면 전주를 생각한다', '전주의 합죽선을 제일로 친다'고 썼다 (제목 언급 없음)",
+     "sort": "material"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "전주의 합죽선이 얼마나 이름났는지는 당시 신문에서도 엿볼 수 있습니다. 조선의 부채 하면 전주를 떠올린다는 제목을 단 기사에는 전주의 합죽선을 제일로 친다는 말이 실렸습니다.",
+    "gptWhy": "선자청의 폐쇄 대신 신문에 남은 전주 합죽선의 명성을 담았습니다."
+   },
+   "card": {
+    "id": 5031,
+    "field": "한국 > 한국 전통문화·풍습 > 전통 의식주",
+    "question": "접었다 펼 수 있는 전통 부채로, 대나무 껍질을 얇게 깎아 맞붙인 살로 만드는 부채는 무엇일까요?",
+    "answer": "합죽선",
+    "also": [],
+    "hint": "전주에서 만든 것이 이름났으며 조선시대에는 전라감영의 선자청에서 만들고 관리했습니다.",
+    "explanation": "선자청은 일제강점기인 1920년 문을 닫기 전까지 부채를 만들었습니다.",
+    "grade": 4,
+    "worth": 2,
+    "worthWhy": "개념 — 전통 공예 이름",
+    "cardFile": "카드-061"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-061.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "5031-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "대의 껍질을 얇게 깎아 맞붙여 부챗살을 만드는 부채다",
+      "url": "https://www.jjan.kr/article/20210623734920",
+      "quote": "대의 껍질을 얇게 깎아 맞붙여 부챗살을 만드는 합죽선을 선호했으며",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 을 열어 quote 가 그 페이지에 있고 text 가 quote 보다 나가지 않음.",
+       "round": "V086"
+      }
+     },
+     {
+      "id": "5031-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "대나무 껍질을 합쳐 만든 부채다",
+      "url": "https://ko.wikipedia.org/wiki/부채",
+      "quote": "대나무의 껍질을 함쳐서 만든 합죽선(合竹扇)"
+     },
+     {
+      "id": "5031-f3",
+      "where": "질문",
+      "check": "상식",
+      "text": "접었다 폈다 하는 접부채다"
+     },
+     {
+      "id": "5031-f4",
+      "where": "힌트",
+      "check": "못 엶",
+      "text": "고려 때부터 나라를 대표한 공예품으로 꼽혔다"
+     },
+     {
+      "id": "5031-f5",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "조선 때 전라감영 안 선자청에서 부채를 만들고 관리했다",
+      "url": "https://www.jjan.kr/article/20210623734920",
+      "quote": "전라감영 내에 부채를 제작하고 관리하는 ‘선자청(扇子廳)’과 ‘지소’를 두었는데",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 을 열어 quote 가 그 페이지에 있고 text 가 quote 보다 나가지 않음.",
+       "round": "V086"
+      }
+     },
+     {
+      "id": "5031-f6",
+      "where": "힌트",
+      "check": "못 엶",
+      "text": "외교 선물로 썼다"
+     },
+     {
+      "id": "5031-f7",
+      "where": "해설",
+      "check": "맞음",
+      "text": "송나라 사신 서긍은 '선화봉사고려도경'에 고려인이 한겨울에도 접었다 폈다 하는 신기한 부채를 들고 다닌다고 적었다",
+      "url": "https://ko.wikipedia.org/wiki/부채",
+      "quote": "'고려인은 한겨울에도 부채를 들고 다니는데, 접었다 폈다 하는 신기한 부채를 들고 다닌다.'"
+     }
+    ],
+    "extra": [
+     {
+      "id": "5031-e1",
+      "text": "선자청은 일제강점기인 1920년 문을 닫기 전까지 부채를 만들었다",
+      "url": "https://www.jjan.kr/article/20210623734920",
+      "quote": "일제강점기인 1920년 폐쇄되기 전까지 선자청은 부채를 제작했다",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 을 열어 quote 가 그 페이지에 있고 text 가 quote(와 같은 문단) 안에 머무름(주어 · 범위 · 한정어 · \"처음 · 가장\" 더함 없음). 같은 정답 문항의 질문 그 자체가 아니다.",
+       "round": "V086"
+      }
+     },
+     {
+      "id": "5031-e2",
+      "text": "1940년 신문 기사가 '조선의 부채라고 하면 전주를 생각한다', '전주의 합죽선을 제일로 친다'고 썼다",
+      "url": "https://www.jjan.kr/article/20210623734920",
+      "quote": "“전주의 합죽선을 제일로 친다”는 기사로 엿 볼 수 있다",
+      "judge": {
+       "verdict": "fix",
+       "why": "\"1940년\"은 quote 문장에 없다. 같은 페이지의 사진 설명(\"1940년 6월 매일신보 등에 실린 전주부채\")에 있을 뿐, 이 두 문구가 그 기사인지 페이지가 말하지 않는다 — 연도를 붙이지 않는다. 또 ko 는 앞 문구를 기사 \"제목\"으로, 뒤 문구를 기사 내용으로 구분한다.",
+       "fixed": "전주 부채의 명성은 신문 기사로 엿볼 수 있다 — 기사 제목에 '조선의 부채라고 하면 전주를 생각한다', 기사에 '전주의 합죽선을 제일로 친다'는 말이 있다",
+       "round": "V086"
+      }
+     }
+    ],
+    "note": "해설의 서긍 기록은 고려의 접부채 일반에 대한 것이다(ko 부채) — 합죽선을 가리켰다고 쓰지 말 것('고려의 접부채는 …'로). 접부채의 기원은 고려 기원설 · 일본 기원설이 있다(ko 부채). f2 quote 의 '함쳐서'는 원문 오타 그대로.",
+    "hold": false
+   }
+  },
+  {
+   "key": "5436",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "중복사실",
+     "note": "힌트의 관우 · 장비가 못마땅해하자 달랜 일과 해설의 관우 · 장비가 불만을 거둔 일이 같은 일화를 두 번 다룸",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "exp",
+     "span": "정사 『삼국지』에서 유비는 새 책사를 두고 더는 불평하지 말라고 합니다.",
+     "why": "힌트의 '관우·장비가 못마땅해하자 군주가 달래며 한 말'과 같은 일화(유비가 불평을 달램)를 해설이 다시 말해 중복 사실이 남음",
+     "material": "f1·f2·f4: 같은 일화(관우·장비 언짢음 → 유비의 달램 → 불만 거둠). 힌트가 이미 앞부분을 말하므로 해설은 이 일화를 되풀이하지 않는 다른 사실(예: 출처가 정사 『삼국지』라는 f5와 '君臣魚水' 유래)로 써야 함",
+     "sort": "unsolved",
+     "unsolved": true
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "explanation": "정사 『삼국지』에서 유비는 새 책사를 두고 더는 불평하지 말라고 합니다. 관우와 장비는 유비의 말을 듣고 불만을 거두었습니다.",
+    "gptWhy": "관우와 장비가 처음 불만을 보인 대목은 힌트에 두고, 해설은 정사에서 그 갈등이 어떻게 끝났는지 전합니다."
+   },
+   "card": {
+    "id": 5436,
+    "field": "한국 > 한국어·한글 > 사자성어",
+    "question": "유비가 자신에게 제갈량이 있는 것을 물고기가 물을 얻은 데 빗댄 이야기에서 나왔으며 친밀한 관계를 뜻하는 사자성어는 무엇일까요?",
+    "answer": "수어지교",
+    "also": [],
+    "hint": "관우와 장비가 새 책사를 못마땅해하자 군주가 두 사람을 달래며 한 말입니다.",
+    "explanation": "정사 『삼국지』에 실린 이야기입니다. 유비의 말을 들은 관우와 장비는 불만을 거두었습니다.",
+    "grade": 3,
+    "worth": 3,
+    "worthWhy": "유래 — 삼국지 유래 사자성어",
+    "cardFile": "카드-009"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-009.json",
+    "core": "유비가 제갈량과의 사이를 '물고기와 물'에 빗댄 말(힌트)",
+    "facts": [
+     {
+      "id": "5436-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "유비가 제갈량과 가까워지자 관우·장비가 언짢아함",
+      "url": "https://en.wikipedia.org/wiki/Zhuge_Liang",
+      "quote": "After the meeting, Liu Bei became very close to Zhuge Liang and spent much time with him – much to Guan Yu and Zhang Fei's chagrin."
+     },
+     {
+      "id": "5436-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "유비가 '공명이 있는 것은 물고기가 물을 얻은 것과 같다'며 더 말하지 말라고 함",
+      "url": "https://en.wikipedia.org/wiki/Zhuge_Liang",
+      "quote": "Liu Bei explained to them, \"Now that I have Kongming, I am like a fish that has found water. I hope you'll stop making unpleasant remarks.\""
+     },
+     {
+      "id": "5436-f3",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "떼려야 뗄 수 없는 친밀한 관계 · 물고기와 물의 관계에 빗댐",
+      "url": "https://ko.wiktionary.org/wiki/수어지교",
+      "quote": "뗄레야 뗄 수 없는 친밀한 관계. 물이 없으면 살 수 없는 물고기와 물의 관계를 비유한 것이다."
+     },
+     {
+      "id": "5436-f4",
+      "where": "해설",
+      "check": "맞음",
+      "text": "관우와 장비는 불만을 거둠",
+      "url": "https://en.wikipedia.org/wiki/Zhuge_Liang",
+      "quote": "Guan Yu and Zhang Fei then stopped complaining."
+     },
+     {
+      "id": "5436-f5",
+      "where": "해설",
+      "check": "맞음",
+      "text": "『삼국지』(정사)에 실린 이야기",
+      "url": "https://en.wikipedia.org/wiki/Zhuge_Liang",
+      "quote": "refers to the term \"君臣魚水\" from Records of the Three Kingdoms, where Liu Bei refers to gaining Zhuge Liang's service as if \"a fish gaining water\"."
+     }
+    ],
+    "extra": [],
+    "note": "원문 질문은 인물 이름(유비·제갈량)을 숨겨 에두른다 — §0 ②. 힌트가 정답 풀이(물고기·물)를 거의 그대로 준다.",
+    "hold": false
+   }
+  },
+  {
+   "key": "5540",
+   "from": "V120 fix",
+   "why": [
+    {
+     "kind": "read",
+     "what": "힌트가질문보다좋음",
+     "note": "힌트가 심장의 정의(혈액을 내보내는 펌프)라 정답을 바로 가리킴",
+     "round": "V118"
+    },
+    {
+     "kind": "v120",
+     "field": "q",
+     "span": "규칙적으로 수축하며 피를 온몸으로 내보내는 기관은 무엇일까요?",
+     "why": "질문이 심장의 일반 정의가 되어 카드의 대표 사실(쿠베르탱의 심장이 올림피아 기념비에 있다)이 힌트로 밀려났고, 해설의 \"이 기관을 안치한 기념비\"는 힌트 없이는 앞뒤가 안 맞는다 — 질문과 힌트의 자리만 바뀐 꼴이라 읽는 순서가 뒤집혔다",
+     "material": "f2: 그의 뜻에 따라 심장은 올림피아로 옮겨져 기념비 안에 놓임(질문 칸 사실) · f3: 심장은 혈액을 펌프질함(힌트 칸 사실)",
+     "sort": "new"
+    }
+   ],
+   "needsRegrade": true,
+   "tried": {
+    "question": "규칙적으로 수축하며 피를 온몸으로 내보내는 기관은 무엇일까요?",
+    "hint": "쿠베르탱은 로잔에 묻혔고, 이 기관은 유언에 따라 올림피아의 기념비 안에 안치됐습니다.",
+    "gptWhy": "기관의 대표 기능을 질문으로 옮기고 안치 일화를 힌트로 살렸습니다."
+   },
+   "card": {
+    "id": 5540,
+    "field": "스포츠·게임 > 올림픽·국제대회 > 올림픽 상징·의례",
+    "question": "쿠베르탱은 로잔에 묻혔지만, 유언에 따라 몸의 한 기관은 올림피아로 옮겨 기념비 안에 두었습니다. 이 기관은 무엇일까요?",
+    "answer": "심장",
+    "also": [],
+    "hint": "혈액을 온몸으로 내보내는 펌프 역할을 합니다.",
+    "explanation": "이 기관을 안치한 기념비는 쿠베르탱 숲에 있습니다. 성화 채화 뒤 첫 주자는 이곳 제단에 불을 옮깁니다.",
+    "grade": 2,
+    "worth": 1,
+    "worthWhy": "일화 — 쿠베르탱 일화",
+    "cardFile": "카드-015"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-015.json",
+    "core": "원문 질문 그대로",
+    "facts": [
+     {
+      "id": "5540-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "쿠베르탱은 1937년 9월 2일 제네바에서 심장마비로 숨져 로잔의 부아드보 묘지에 묻힘",
+      "url": "https://en.wikipedia.org/wiki/Pierre_de_Coubertin",
+      "quote": "Coubertin died of a heart attack in Geneva, Switzerland, on 2 September 1937 and was buried in Bois-de-Vaux Cemetery in Lausanne."
+     },
+     {
+      "id": "5540-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "그의 뜻에 따라 심장은 올림피아로 옮겨져 1937년 그리스 정부가 세운 기념비 안에 놓임",
+      "url": "https://en.wikipedia.org/wiki/Pierre_de_Coubertin",
+      "quote": "After his death, and according to his wish, his heart was taken to Olympia to rest in the memorial stele erected in his honor by the Greek government in 1937."
+     },
+     {
+      "id": "5540-f3",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "심장은 혈액을 펌프질함",
+      "url": "https://ko.wikipedia.org/wiki/심장",
+      "quote": "심장은 굴심방결절의 심박조율기 세포에 의해 형성되는 리듬에 맞춰 혈액을 펌프질한다."
+     },
+     {
+      "id": "5540-f4",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "휴식 중 심박수는 분당 72회 정도",
+      "url": "https://ko.wikipedia.org/wiki/심장",
+      "quote": "휴식 중 심박수는 분당 72회 정도이다."
+     },
+     {
+      "id": "5540-f5",
+      "where": "해설",
+      "check": "맞음",
+      "text": "그 기념비는 국제 올림픽 아카데미의 쿠베르탱 숲에 있음",
+      "url": "https://en.wikipedia.org/wiki/Pierre_de_Coubertin",
+      "quote": "The stele is located in the Coubertin Grove of the International Olympic Academy."
+     },
+     {
+      "id": "5540-f6",
+      "where": "해설",
+      "check": "맞음",
+      "text": "올림피아에서 성화를 붙이면 첫 주자가 쿠베르탱 숲의 대리석 제단에 불을 옮김",
+      "url": "https://en.wikipedia.org/wiki/Pierre_de_Coubertin",
+      "quote": "When the Olympic flame is lit in Olympia, the first torchbearer brings it to light the marble altar in the Coubertin Grove."
+     }
+    ],
+    "extra": [],
+    "note": "힌트는 심장의 정의라 답을 바로 준다(풀이가 아니라 정답 공개에 가까움). 쿠베르탱이 '심장마비'로 숨졌다는 사실은 정답 글자를 담는다.",
+    "hold": false
+   }
+  },
+  {
+   "key": "6185",
+   "from": "G121 싣기 막힘",
+   "why": [
+    {
+     "kind": "fix",
+     "field": "hint",
+     "span": "장미와 읽을거리를 주고받습니다",
+     "why": "출처는 카탈루냐에서 \"책과 장미의 날\"이라고도 부른다는 데까지만 말하고, 장미와 읽을거리를 주고받는다는 내용은 없다",
+     "material": "f5: 산조르디 축일과 겹쳐 책과 장미의 날이라 부른다까지만 확인 · 재료대로면 이름까지만 쓴다"
+    },
+    {
+     "kind": "gate",
+     "why": "gpt 가 고친 글이 싣기 게이트에 막힘 — ③ 힌트 막힘 책과 · 고친 칸을 정답 글(조각) 없이 다시"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "hint": "카탈루냐에서는 수호성인 산조르디의 축일과 겹쳐 ‘책과 장미의 날’이라고도 부릅니다.",
+    "gptWhy": "선물을 주고받는다는 설명을 빼고 재료에서 확인된 기념일 명칭을 남겼습니다."
+   },
+   "card": {
+    "id": 6185,
+    "field": "생활·상식 > 절기·기념일·축제 > 국제 기념일",
+    "question": "유네스코가 독서·출판·저작권 보호를 위해 1995년 제정한 4월 23일의 국제 기념일은 무엇일까요?",
+    "answer": "세계 책의 날",
+    "also": [
+     "세계 책과 저작권의 날"
+    ],
+    "hint": "카탈루냐에서는 수호성인 산조르디 축일과 겹쳐 장미와 읽을거리를 주고받습니다.",
+    "explanation": "영국과 아일랜드의 같은 이름 행사는 3월 첫째 목요일에 열리는 자선 행사입니다.",
+    "grade": 3,
+    "worth": 2,
+    "worthWhy": "상식 — 기념일 상식",
+    "cardFile": "카드-010"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-010.json",
+    "core": "유네스코가 정한 4월 23일 독서 · 출판 기념일",
+    "facts": [
+     {
+      "id": "6185-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "1922년 바르셀로나 세르반테스 출판사 대표 비센테 클라벨이 세르반테스를 기리고 책 판매를 늘리려고 처음 생각함",
+      "url": "https://en.wikipedia.org/wiki/World_Book_Day",
+      "quote": "The original idea was conceived in 1922 by Vicente Clavel, director of Cervantes publishing house in Barcelona, as a way to honour the author Miguel de Cervantes and boost the sales of books."
+     },
+     {
+      "id": "6185-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "1926년 10월 7일(세르반테스 생일) 스페인에서 처음 열렸고, 1930년 그의 기일 4월 23일로 옮김",
+      "url": "https://en.wikipedia.org/wiki/World_Book_Day",
+      "quote": "It was first celebrated in Spain on 7 October 1926, Cervantes' birthday, before being moved to his death date, 23 April, in 1930."
+     },
+     {
+      "id": "6185-f3",
+      "where": "질문",
+      "check": "맞음",
+      "text": "야외에서 거닐며 책을 둘러보기엔 가을보다 봄이 낫다고 여겨 1930년 알폰소 13세가 날짜 변경을 승인함",
+      "url": "https://en.wikipedia.org/wiki/World_Book_Day",
+      "quote": "But it was considered more appropriate to celebrate this day in a more pleasant season for walking and browsing the books in the open-air, spring was much better than autumn."
+     },
+     {
+      "id": "6185-f4",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "유네스코가 1995년 제정한 독서 · 출판 · 저작권 보호의 국제 기념일, 매년 4월 23일",
+      "url": "https://ko.wikipedia.org/wiki/세계_책의_날",
+      "quote": "독서, 출판, 저작권 보호의 촉진을 목적으로, 유엔 교육 과학 문화 기구 (유네스코)에 의해 1995년에 제정되어 1996년부터 실시된 국제 기념일로 매년 4월 23일이다."
+     },
+     {
+      "id": "6185-f5",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "카탈루냐에서는 수호성인 산조르디 축일과 겹쳐 '책과 장미의 날'이라고도 부름",
+      "url": "https://en.wikipedia.org/wiki/World_Book_Day",
+      "quote": "In Catalonia, the celebration coincided with Saint George's Day (Catalan: Diada de Sant Jordi) in honour to its patron saint and, as a result, the Book Day merged with the original festivity and continues with great popularity in Catalonia, where it is also referred to as The Day of Books and Roses."
+     },
+     {
+      "id": "6185-f6",
+      "where": "해설",
+      "check": "맞음",
+      "text": "영국 · 아일랜드의 같은 이름 행사는 3월 첫째 목요일의 자선 행사",
+      "url": "https://en.wikipedia.org/wiki/World_Book_Day",
+      "quote": "In the United Kingdom and Ireland, World Book Day is a charity event in March, held annually on the first Thursday and coinciding with the release of special editions."
+     },
+     {
+      "id": "6185-f7",
+      "where": "새로",
+      "check": "맞음",
+      "text": "4월 23일은 셰익스피어 · 잉카 가르실라소 데 라 베가의 기일이기도 해서 유네스코가 이날로 정함",
+      "url": "https://en.wikipedia.org/wiki/World_Book_Day",
+      "quote": "In 1995, UNESCO decided that the World Book and Copyright Day would be celebrated on 23 April, as the date is also the anniversary of the death of William Shakespeare and Inca Garcilaso de la Vega, as well as that of the birth or death of several other prominent authors."
+     }
+    ],
+    "extra": [
+     {
+      "id": "6185-e1",
+      "text": "셰익스피어와 세르반테스는 같은 날짜(1616년 4월 23일)에 죽었지만 두 나라 달력이 달라 실제로는 같은 날이 아님 — 셰익스피어가 11일 뒤",
+      "url": "https://en.wikipedia.org/wiki/World_Book_Day",
+      "quote": "(In a historical coincidence, Shakespeare and Cervantes died on the same date—23 April 1616—but not on the same day, as at the time, Spain used the Gregorian calendar and England used the Julian calendar; Shakespeare actually died 11 days after Cervantes died, on 3 May of the Gregorian calendar, and Cervantes died on 22 April but was buried a day after, on 23 April.)",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 열어 quote 가 페이지에 있고 text 가 quote 보다 나가지 않음",
+       "round": "V059"
+      }
+     }
+    ],
+    "note": "힌트의 카탈루냐 꽃 · 책 주고받기가 #2773 힌트(카탈루냐 산조르디)와 겹친다. 힌트의 '꽃과 읽을거리를 주고받는다'는 출처상 '책과 장미의 날'이라는 이름까지만 확인.",
+    "hold": false
+   }
+  },
+  {
+   "key": "6522",
+   "from": "G121 싣기 막힘",
+   "why": [
+    {
+     "kind": "read",
+     "what": "중복사실",
+     "note": "질문의 무르고 기름기 있는 막대형이라는 말이 힌트에서 되풀이됨"
+    },
+    {
+     "kind": "gate",
+     "why": "gpt 가 고친 글이 싣기 게이트에 막힘 — ③ 힌트 막힘 크레·파스 · 고친 칸을 정답 글(조각) 없이 다시"
+    }
+   ],
+   "needsRegrade": false,
+   "tried": {
+    "hint": "크레용과 파스텔의 특색을 함께 살린 그림 도구입니다.",
+    "gptWhy": "질문의 질감 묘사는 덜고 두 그림 도구의 특색을 살렸다는 사실을 넣었습니다."
+   },
+   "card": {
+    "id": 6522,
+    "field": "생활·상식 > 브랜드·기업 > 상표가 된 상품명",
+    "question": "원래 일본 회사의 등록 상표였으며, 어린이들이 쓰는 무르고 기름기 있는 막대형 그림 도구를 가리키게 된 말은 무엇일까요?",
+    "answer": "크레파스",
+    "also": [],
+    "hint": "색연필보다 무르고 기름기가 있어 진하게 칠해집니다.",
+    "explanation": "이 도구를 만든 회사는 1921년 '일본 크레용 상회'로 출발했습니다. 이후 '사쿠라 크레용 상회'로 이름을 바꾸었습니다.",
+    "grade": 2,
+    "worth": 3,
+    "worthWhy": "유래 — 상표가 말이 된 유래",
+    "cardFile": "카드-021"
+   },
+   "material": {
+    "state": "재료 있음",
+    "file": "보낼것/재료-021.json",
+    "core": "원문 질문 그대로(크레파스라는 이름이 한 회사 상표였다는 데 있음) + 힌트의 어린이 미술 도구",
+    "facts": [
+     {
+      "id": "6522-f1",
+      "where": "질문",
+      "check": "맞음",
+      "text": "1925년 세계 첫 오일 파스텔 '크레파스'를 발명했다고 함(사쿠라크레파스)",
+      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+      "quote": "1925年に世界初のオイルパステル『クレパス（CRAY-PAS）』を発明。"
+     },
+     {
+      "id": "6522-f2",
+      "where": "질문",
+      "check": "맞음",
+      "text": "'크레파스'는 그 회사 고유 화구이자 등록 상표",
+      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+      "quote": "『クレパス』は同社独自の画材であり、登録商標でもある。"
+     },
+     {
+      "id": "6522-f3",
+      "where": "질문",
+      "check": "맞음",
+      "text": "세계적으로는 '오일 파스텔'이라 부름",
+      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+      "quote": "世界的には「オイルパステル」と呼ばれている"
+     },
+     {
+      "id": "6522-f4",
+      "where": "질문",
+      "check": "맞음",
+      "text": "한국에서는 크레파스라 부르고 표준국어대사전에 올라 있음",
+      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+      "quote": "ただし韓国ではクレパス（크레파스）と呼ばれており、標準国語大辞典に登録されている。",
+      "judge": {
+       "verdict": "ok",
+       "why": "url 열어 quote 가 페이지에 있고 text 가 quote 보다 나가지 않음 [표본]",
+       "round": "V060"
+      }
+     },
+     {
+      "id": "6522-f5",
+      "where": "힌트",
+      "check": "맞음",
+      "text": "표준국어대사전 뜻: 안료를 연질유로 굳힌 막대 모양 칠감 · 크레용과 파스텔의 특색을 땀",
+      "url": "https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=크레파스",
+      "quote": "안료(顔料)를 연질유로 굳힌 막대기 모양의 칠감. 크레용과 파스텔의 특색을 따서 만든 것으로"
+     },
+     {
+      "id": "6522-f6",
+      "where": "해설",
+      "check": "맞음",
+      "text": "회사는 1921년 '일본 크레용 상회'로 시작해 '사쿠라 크레용 상회'로 이름을 바꿈",
+      "url": "https://ja.wikipedia.org/wiki/サクラクレパス",
+      "quote": "「桜クレイヨン商会」に改称後"
+     }
+    ],
+    "extra": [],
+    "note": "영문 위키(Oil pastel)는 개발 결정 1924년 · 회사 1921년으로 적어 1925년을 직접 말하지 않음 — 1925년은 일본 위키 기준(회사 주장 꼴로).",
+    "hold": false
+   }
+  },
+  {
+   "key": "7455",
+   "from": "V119 fix",
+   "why": [
+    {
+     "kind": "v119",
+     "field": "exp",
+     "span": "청교도는 35명이었다고 전합니다",
+     "why": "위키는 102명 중 레이던 경유 약 절반, 교회 회중 성인 약 30명이라 적고 35명은 근거 없음",
+     "right": "교회 신도(분리주의자)는 성인 약 30명이었고 나머지는 상인·일꾼 등이었다고 전합니다",
+     "url": "https://en.wikipedia.org/wiki/Pilgrims_(Plymouth_Colony)",
+     "quote": "about half had come by way of Leiden, and about 30 of the adults were members of the congregation",
+     "note": "청교도 35명 수치가 열린 페이지와 안 맞고 분리주의/청교도 구분도 흐림"
+    },
+    {
+     "kind": "note",
+     "note": "재료로는 빼는 쪽 — 새 사실을 더하는 고침은 못 한다 · 지금 글 안에서 빼거나 고쳐 되면 고치고, 안 되면 drop"
+    }
+   ],
+   "needsRegrade": false,
+   "card": {
+    "id": 7455,
+    "field": "인문·사회 > 서양사 > 미국사",
+    "question": "1620년 순례자 이민자 102명을 태우고 대서양을 건너, 승객들이 상륙 전 자치 서약을 맺은 배는 무엇일까요?",
+    "answer": "메이플라워호",
+    "also": [
+     "메이플라워"
+    ],
+    "hint": "함께 떠날 스피드웰호는 물이 새 영국에 남았습니다.",
+    "explanation": "이 배의 이민자 전부가 종교 박해를 피해 온 것은 아니며, 청교도는 35명이었다고 전합니다.",
+    "grade": 3,
+    "worth": 2,
+    "worthWhy": "고유명사 — 역사 배 이름 확인",
+    "cardFile": "카드-003"
+   },
+   "material": {
+    "state": "재료 없음(옛 묶음 · 카드 파일에 claims 도 없음) — 재료로는 빼는 쪽",
+    "file": "받은것/카드-003.json",
+    "note": "종교 박해를 피한 이민자가 모두 102명이었다는 뜻으로 읽히지 않도록 전체 승객과 일부를 구별. 35명은 입력의 전승 표현 유지.",
+    "facts": [],
+    "extra": [
+     {
+      "id": "v119-1",
+      "text": "교회 신도(분리주의자)는 성인 약 30명이었고 나머지는 상인·일꾼 등이었다고 전합니다",
+      "url": "https://en.wikipedia.org/wiki/Pilgrims_(Plymouth_Colony)",
+      "quote": "about half had come by way of Leiden, and about 30 of the adults were members of the congregation",
+      "judge": {
+       "round": "V119",
+       "verdict": "맞는 값(웹으로 연 것)",
+       "why": "위키는 102명 중 레이던 경유 약 절반, 교회 회중 성인 약 30명이라 적고 35명은 근거 없음"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "key": "n6887",
+   "from": "V120 fix · V116 fix · web-desk/tone/받은것/새카드-104.json",
+   "why": [
+    {
+     "kind": "v116",
+     "why": "힌트 \"여섯 달\" (en 위키 한 줄; 다른 자료는 3월/4월~7월/9월로 갈림) · 총독 인용문은 위키만이고 다른 글은 표현이 다름: 위키만 — 숫자 · 인용은 빼거나 낮춰 쓰기",
+     "claims": [
+      {
+       "where": "question",
+       "text": "1900년 영국과 아샨티 제국 사이에 벌어진 전쟁",
+       "by": "core",
+       "quoteOnPage": true
+      },
+      {
+       "where": "explanation",
+       "text": "영국 총독은 황금 의자를 가져와 자기가 앉게 하지 않았느냐고 물었다",
+       "by": "story1",
+       "quoteOnPage": true
+      },
+      {
+       "where": "explanation",
+       "text": "야 아산테와는 사람들을 모아 영국을 공격하고 유배된 왕을 되찾으려 했다",
+       "by": "story2",
+       "quoteOnPage": true
+      },
+      {
+       "where": "explanation",
+       "text": "전쟁은 여섯 달 동안 이어졌다",
+       "by": "story3",
+       "quoteOnPage": true
+      },
+      {
+       "where": "hint",
+       "text": "영국이 이기자 야 아산테와는 붙잡혀 세이셸로 추방됐다",
+       "by": "hintIdea",
+       "quoteOnPage": true
+      }
+     ],
+     "quotesNotConfirmed": [],
+     "round": "V116"
+    },
+    {
+     "kind": "v120",
+     "field": "hint",
+     "span": "아샨티의 한 지도자는 유배된 왕을 되찾으려고 사람들을 모았습니다.",
+     "why": "힌트의 사실이 해설 첫 문장('유배된 왕을 되찾으려고 사람들을 모아 영국에 맞섰습니다')과 그대로 겹쳐 같은 사실이 두 칸에 나옴",
+     "material": "story2: 야 아산테와가 사람들을 모아 영국을 공격하고 유배된 왕을 되찾으려 했다 — 힌트와 해설이 모두 이 한 사실만 씀",
+     "sort": "new"
+    }
+   ],
+   "needsRegrade": true,
+   "tried": {
+    "hint": "아샨티의 한 지도자는 유배된 왕을 되찾으려고 사람들을 모았습니다.",
+    "explanation": "황금 의자 전쟁에서 야 아산테와는 유배된 왕을 되찾으려고 사람들을 모아 영국에 맞섰습니다. 전쟁은 영국의 승리로 끝났고, 야 아산테와도 붙잡혀 세이셸로 추방됐습니다.",
+    "gptWhy": "힌트의 전쟁 기간은 유배된 왕을 되찾으려 한 일로 바꾸고, 해설에서 총독의 발언을 뺐습니다."
+   },
+   "blind": "황금 의자 전쟁(아샨티 전쟁) / 제2차 앵글로-아샨티 전쟁",
+   "alsoAdd": [],
+   "second": null,
+   "card": {
+    "key": "n6887",
+    "answer": "황금 의자 전쟁",
+    "also": [
+     "야 아산테와 전쟁",
+     "아샨티 봉기",
+     "War of the Golden Stool",
+     "Yaa Asantewaa War"
+    ],
+    "sub": "근대 전쟁",
+    "grade": 4,
+    "plan": {
+     "open": "의자에 앉겠다는 영국 총독의 말이 나온 싸움에서 아샨티 쪽을 모은 사람은 어떤 결과를 맞았을까",
+     "close": "야 아산테와는 유배된 왕을 되찾으려고 싸웠지만 영국이 이긴 뒤 자신도 추방됐다"
+    },
+    "question": "1900년에 영국과 아샨티 제국이 맞붙은 전쟁은 무엇일까요?",
+    "hint": "싸움은 여섯 달 동안 이어졌습니다.",
+    "explanation": "영국 총독은 아샨티의 황금 의자를 가져다 자신이 앉게 하지 않았느냐고 따졌습니다. 야 아산테와는 유배된 왕을 되찾으려고 사람들을 모아 영국에 맞섰습니다. 하지만 영국이 이겼고 야 아산테와도 붙잡혀 세이셸로 추방됐습니다.",
+    "used": [
+     "core",
+     "story1",
+     "story2",
+     "story3",
+     "hintIdea"
+    ],
+    "status": "ready"
+   },
+   "material": {
+    "key": "n6887",
+    "answer": "황금 의자 전쟁",
+    "also": [
+     "야 아산테와 전쟁",
+     "아샨티 봉기",
+     "War of the Golden Stool",
+     "Yaa Asantewaa War"
+    ],
+    "major": "인문·사회",
+    "mid": "전쟁·군사사",
+    "sub": "근대 전쟁",
+    "gradeGuess": 4,
+    "core": {
+     "text": "1900년 영국과 아샨티 제국 사이에 벌어진 전쟁",
+     "url": "https://en.wikipedia.org/wiki/War_of_the_Golden_Stool",
+     "quote": "was a campaign in 1900 during the series of conflicts between the United Kingdom and the Ashanti Empire"
+    },
+    "story": [
+     {
+      "text": "영국 총독은 황금 의자를 가져와 자기가 앉게 하지 않았느냐고 물었다",
+      "url": "https://en.wikipedia.org/wiki/War_of_the_Golden_Stool",
+      "quote": "Why did you not take the opportunity of my coming to Kumasi to bring the Golden Stool for me to sit upon?"
+     },
+     {
+      "text": "야 아산테와는 사람들을 모아 영국을 공격하고 유배된 왕을 되찾으려 했다",
+      "url": "https://en.wikipedia.org/wiki/War_of_the_Golden_Stool",
+      "quote": "She collected men to form a force with which to attack the British and retrieve the exiled king."
+     },
+     {
+      "text": "전쟁은 여섯 달 동안 이어졌다",
+      "url": "https://en.wikipedia.org/wiki/War_of_the_Golden_Stool",
+      "quote": "The war lasted for six months."
+     }
+    ],
+    "hintIdea": {
+     "text": "영국이 이기자 야 아산테와는 붙잡혀 세이셸로 추방됐다",
+     "url": "https://en.wikipedia.org/wiki/War_of_the_Golden_Stool",
+     "quote": "The British eventually defeated the Asante, and Yaa Asantewaa was captured and banished to the Seychelles"
+    },
+    "legend": false,
+    "care": "황금 의자를 둘러싼 총독의 말은 영문판에 인용된 문장이다. 한국어 위키백과 표제어는 확인하지 못했다.",
+    "why": "총독이 '의자에 앉겠다'고 한 말이 전쟁을 불렀고, 싸움을 이끈 것은 한 여성 지도자였다",
+    "hintRisk": true,
+    "spellNote": "'야 아산테와'는 Yaa Asantewaa의 한국어 표기를 임의로 골랐다. 표기가 갈릴 수 있어 also 에 영어명을 함께 둔다.",
+    "storyDropped": 0,
+    "spelling": "wiki"
+   }
+  }
+ ]
+}
