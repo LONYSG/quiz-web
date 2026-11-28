@@ -10055,7 +10055,7 @@ async function scenarioNickname() {
   expect('★ 영어·숫자 12자 → 된다', (await signupNick(3, `Nk${stamp}abcdef`.slice(0, 12))).status, 200);
   const r13 = await signupNick(4, `Nk${stamp}abcdefg`.slice(0, 13));
   expect('★★ 영어·숫자 13자 (10.4칸) → 400', r13.status, 400);
-  expectTrue('★ 안내 문구 (한글 10자 · 영어·숫자 12자)', /한글 10자/.test(r13.json.message ?? ''), r13.json.message);
+  expectTrue('★ 안내 문구 (한글 10자 · 영어·숫자 12자)', /한글은? 10자/.test(r13.json.message ?? ''), r13.json.message);
   expect('★ 섞어서 7.8칸 (한글 7 + a) → 된다', (await signupNick(5, hg(2) + '라마바' + 'a')).status, 200);
 
   log('\n[2] ★★ 닉네임 변경 · 긴 옛 닉네임');

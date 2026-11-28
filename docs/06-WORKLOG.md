@@ -10,8 +10,8 @@
 
 ## 2026-11-28 — R125 찬종 피드백 남은 것 전부: 맞힌 답 바로 "정답!" · 화면 전환 · 경고 꼴 · '·' · 스크롤 · 단축키 · 난이도 점 · 공방 목록 · 노래 공개 (R125, MAIN · D-379)
 - [x] A 맞힌 답 바로 "정답!" — shared/src/soloSure.ts(동기 SHA-256 · 판정 꼬리표 n:/f: · 잠근 정답 상자) · engine sure(probe 갈음 · 어긋남 서버 로그) · useSolo(soloLocalJudge — 지문에 걸리면 곧바로 "정답!" · 안 걸리면 곧바로 흔듦 · solo.result 가 정본으로 조용히 갈아 끼움 · 어긋나면 되돌림) · 검사 서버 SOLO_TEST_LAG_MS · sure.test.ts · scripts/r125-sure-check.mjs(실 DB 맞는 제출 184,792 → 걸림 100% · 틀린 170,628 → 0) · ui-check --r125=solo 6/6 · 봇 r124 · r123 · solo
-- [ ] B 화면 전환 · Notice · '·' · 스크롤 · 크기 · 단축키 · 영상 소리
-- [ ] C 난이도 점 · 공방 목록 둘 · 노래 공개 한 줄
+- [x] B 화면 전환(warm · mine · 앱 켤 때 미리 · /api/gongbang/lists · directory.peek) · Notice(16곳) · 개발 말 · '·'(ai-out/R125-문구.tsv) · 큰 틀 스크롤 표(화면 16 × 크기 9) · 모바일 단축키 · 영상 소리 같음 확인 · ui-check --r125=sweep
+- [x] C 문제 등급 점 다섯(GradeDots · 방 머리 방 난이도) · 공방 목록 가리기 · 더 보기(봇 r125) · 노래 공개 인정어 한 줄
 - 확인: ai-out/R125.txt
 
 ## 2026-11-28 — 혼자 하기 반응 속도 · 시작 카운트다운 · 이모지 빼기 · 끝 화면 틀린 문제 전부 (R124, MAIN · D-378)

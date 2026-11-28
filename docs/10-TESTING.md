@@ -2240,4 +2240,15 @@ npm run bot -- result    ★★ 결과 화면 데이터 / 공동 순위 / 다시
 
 - 왜 못 잡았나: 봇 · ui-check 는 모두 로컬(왕복 1ms)에서 돈다 — 찬종이 느끼는 늦음은 바깥 주소(터널 · Cloudflare 지점)에서만 생긴다. 그리고 CDP Network.emulateNetworkConditions 의 지연은 **웹소켓 프레임에 걸리지 않는다**(지연 300 에서도 26ms — 2026-11-28 실측) — 브라우저 흉내로는 이 길을 못 본다.
 - 메운 것: ① ui-check --r124 = 화면 반영까지의 ms(누름 → 카운트다운 · Enter → 흔들림 · Enter → 정답!) 단정 100ms 안 · 옛 길(서버 기다림)도 같이 잼(localStorage qw.solo.noProbe=1) ② 봇 r124 = 카운트다운 firstAt · 첫 문제 시간 안 깎임 · probe 통 · 첫 다섯 등급 1 ③ 바깥 길은 소켓 재기로 따로: `node scripts/r124-rtt.mjs https://quizdojang.com 25 300`(로그인 없이 time.ping 왕복 · 로그인 안 된 소켓은 10초 뒤 끊기므로 25번 × 0.3초) · 지점 = `curl https://quizdojang.com/cdn-cgi/trace` 의 colo.
-- 미리 보기의 안전: `server/src/solo/probe.test.ts`(서버가 맞다는 제출은 화면도 통에 든다) + 실 DB 전수(`scripts/r124-probe-check.mjs` — 맞는 제출 122,445가지 · 잘못 흔듦 0).
+- 미리 보기의 안전: (R125 에서 정답 지문으로 갈음 — 83절) `server/src/solo/sure.test.ts` · `scripts/r125-sure-check.mjs`.
+
+## 83. ★★★ R125 — 정답 지문 · 열 때 덜 그려진 모습 · 큰 틀 스크롤 · 모바일 단축키 (D-379)
+
+- 왜 못 잡았나: ① 로딩 흔적은 몇십 ms 만 보여 사진 · 끝 상태 단정으로는 안 잡힌다 ② 끝 점검이 PC 꼴에서만 단축키를 눌렀다 ③ 바깥 길(왕복 0.3~0.8초)은 CDP 지연이 웹소켓에 안 걸려 흉내 못 냈다.
+- 메운 것:
+  · `ui-check --r125=solo`(서버 SOLO_TEST_LAG_MS=600 — 검사 서버만 판정 답을 늦춤): 맞힌 답 Enter → "정답!" · 해설 100ms 안(옛 길 qw.solo.noSure=1 은 ≥ 550ms 로 대조) · 정답 소리 한 번 · 틀린 답 흔들림 100ms 안.
+  · `ui-check --r125=sweep`: 문서가 뜰 때부터 지켜보는 눈(Page.addScriptToEvaluateOnNewDocument)이 "불러오는 중" · "?P" · 자리만 잡은 칸(*-wait)을 **한 프레임이라도** 적는다(누르기 전에 비우고 누른 뒤 읽음) · 화면 글의 개발 말 · '·'(문제 · 해설 · 이름 · 분류 · 캐치 주제 = 데이터 제외) · 화면 × 9 크기(1536 · 1920 · 1366 · 1280 · 2560 · 1000 · 990 · 390 · 360) 문서 스크롤 0 표(docs/design/r125/r125-sweep.json) · 모바일 꼴(390 · 좁힌 PC 990)에서 Alt+S · Alt+1 · Esc · Enter · Alt+B · 잠긴 방 숫자 키 · 캐치 P/E/B · 라이어 Tab.
+  · 봇 r125: 공방 목록 가리기(내가 · 나를 · 1초 방송 · 빠른 입장 · 풀면 돌아옴) · 방 105개(100 + more · total · limit 200) · HTTP /api/gongbang/lists · directory.peek.
+  · 지문 = 판정 전수: `node scripts/r125-sure-check.mjs <DB_URL>`(읽기만 — 맞는 제출이 안 걸린 수 · 틀린 제출이 걸린 수 둘 다 0 이어야 한다) · `server/src/solo/sure.test.ts`(SHA-256 = node crypto · 판정과 같음).
+- ★ bot.mjs makeBots(n) 은 이름을 01 부터 다시 쓴다 — 한 시나리오에서 두 번 부르면 같은 계정이 되어 앞 소켓이 끊긴다(R125 봇을 처음 짤 때 걸림). 한 번에 다 만든다.
+

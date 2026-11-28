@@ -117,8 +117,8 @@ export async function soloFlow(ctx) {
   await realClick(H, '[data-solo-start]');
   await H.waitFor("Number(document.querySelector('[data-solo-q]')?.dataset.soloQ ?? 0) === 1", 10000);
   await sleep(300);
-  const play = await J(H, "({ lives: document.querySelector('[data-lives]')?.dataset.lives, count: document.querySelector('[data-solo-correct]')?.innerText, timer: document.querySelector('.solo-q .q-timer')?.innerText ?? '', bar: document.querySelector('.solo-q .q-timebar') !== null, grade: [...document.querySelectorAll('.solo-q .badge')].map((b) => b.innerText).join('|'), input: document.activeElement?.matches('[data-solo-input]') ?? false, noCopy: document.querySelector('.solo-q .no-copy, .solo-q .q-text') !== null })");
-  record('★★ R118 진행(안 A) — 목숨 3 · 맞힌 0 · 남은 초 · 시간 막대 · 등급 1 · 입력칸 포커스', play.lives === '3' && play.count === '0' && /초$/.test(play.timer) && play.bar && play.grade.includes('등급 1') && play.input, JSON.stringify(play));
+  const play = await J(H, "({ lives: document.querySelector('[data-lives]')?.dataset.lives, count: document.querySelector('[data-solo-correct]')?.innerText, timer: document.querySelector('.solo-q .q-timer')?.innerText ?? '', bar: document.querySelector('.solo-q .q-timebar') !== null, grade: [...document.querySelectorAll('.solo-q .badge')].map((b) => b.innerText).join('|'), pill: document.querySelector('.solo-q .grade-pill')?.dataset.grade ?? null, input: document.activeElement?.matches('[data-solo-input]') ?? false, noCopy: document.querySelector('.solo-q .no-copy, .solo-q .q-text') !== null })");
+  record('★★ R118 진행(안 A) — 목숨 3 · 맞힌 0 · 남은 초 · 시간 막대 · 등급 1(★ R125 C1 점 다섯 알약) · 입력칸 포커스', play.lives === '3' && play.count === '0' && /초$/.test(play.timer) && play.bar && play.pill === '1' && play.input, JSON.stringify(play));
   const copyBlocked = await ev(H, "getComputedStyle(document.querySelector('.solo-q .q-text')).userSelect");
   record('★ R118 진행 — 문제 글 복사 막기(user-select none)', copyBlocked === 'none', copyBlocked);
   await shoot(H, 'r118-03-play-m360');
