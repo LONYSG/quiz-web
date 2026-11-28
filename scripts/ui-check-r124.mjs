@@ -3,7 +3,7 @@
 //   서버 스위치: GONGBANG=1 SOLO=1 BELT=1 SOLO_TEST_TIME_MS=60000(문제 시간을 길게 — 한 문제에서 여러 번 잰다)
 //   잰 것(브라우저 안 performance.now — 화면 반영까지):
 //     · [시작] 누름(pointerdown) → 카운트다운이 화면에 생김 · 3 · 2 · 1 → 첫 문제
-//     · 틀린 답 Enter(keydown) → 입력칸 흔들림(class input-shake) — 새 길(화면 미리 보기) · 옛 길(서버 solo.wrong 을 기다림 · localStorage qw.solo.noProbe=1)
+//     · 틀린 답 Enter(keydown) → 입력칸 흔들림(class input-shake) — 새 길(화면 미리 보기) · 옛 길(서버 solo.wrong 을 기다림 · localStorage qw.solo.noSure=1)
 //       ★ CDP Network.emulateNetworkConditions 의 지연은 웹소켓 프레임에 걸리지 않는다(2026-11-28 실측: 지연 300 에서도 옛 길 26ms) —
 //         바깥 주소의 왕복은 소켓 재기(tmp/r124/rtt2.mjs · 보고 1-3 표)로 따로 잰다
 //     · 맞힌 답 Enter → "정답!" 이 화면에 생김
@@ -126,9 +126,9 @@ export async function r124Flow(ctx) {
   const table = {};
   table['틀림 · 새 길(미리 보기) · 지연 0'] = stat(await wrongRun('a', 20));
   await snap(S, 'r124-wrong-shake-m360-pastel');
-  await S.evaluate("localStorage.setItem('qw.solo.noProbe', '1')");
+  await S.evaluate("localStorage.setItem('qw.solo.noSure', '1')");
   table['틀림 · 옛 길(서버 기다림) · 지연 0'] = stat(await wrongRun('bb', 20));
-  await S.evaluate("localStorage.removeItem('qw.solo.noProbe')");
+  await S.evaluate("localStorage.removeItem('qw.solo.noSure')");
   const nw = table['틀림 · 새 길(미리 보기) · 지연 0'];
   record('★★ R124 1 — 틀린 답 Enter → 흔들림 100ms 안(20번 모두)', nw.n === 20 && nw.max < 100, JSON.stringify(nw));
 

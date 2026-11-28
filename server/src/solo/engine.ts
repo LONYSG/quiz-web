@@ -11,7 +11,7 @@
 //     30초 안에 돌아오면 이어서 · 넘으면 그때까지 기록으로 끝. 새 탭은 옛 탭을 끊고(지금 그대로) 같은 판을 이어받는다.
 // =============================================================================
 
-import { createHash } from 'node:crypto';
+import { createHash, randomBytes } from 'node:crypto';
 import type { Socket } from 'socket.io';
 import {
   SOLO,
@@ -25,7 +25,10 @@ import {
   beltNextNeed,
   flexAnswerSet,
   flexMatch,
-  probeBucket,
+  answerTags,
+  makeSoloSure,
+  sureHit,
+  type SoloSure,
   normalizeAnswer,
   soloGradeFor,
   soloTimeMs,
@@ -65,8 +68,8 @@ interface SoloQ {
   usedHere: SoloItemKind[];
   hint: string | null;
   initial: string | null;
-  /** ★★ R124 — 화면의 "분명히 틀린 답" 미리 보기(소금 · 정답 열쇠의 통 번호) */
-  probe: { salt: number; buckets: number[] };
+  /** ★★★ R125 — 정답 지문 · 잠근 정답 상자(화면이 맞음 · 틀림을 곧바로 안다 · R124 probe 를 갈음) */
+  sure: SoloSure;
 }
 
 interface SoloRun {
@@ -123,6 +126,13 @@ const startCountMs = () => config.soloTest.nextMs || SOLO.START_COUNT_MS;
 const reconnectMs = () => config.soloTest.reconnectMs || SOLO.RECONNECT_MS;
 
 function emit(run: SoloRun, event: string, payload: unknown): void {
+  // ★★★ R125 — 검사 서버의 바깥 길 흉내(SOLO_TEST_LAG_MS · 실 서버에는 없다): 판정 답만 늦게
+  const lag = config.soloTest.lagMs;
+  if (lag && (event === 'solo.result' || event === 'solo.wrong')) {
+    const to = run.socketId;
+    setTimeout(() => ioServer().to(to).emit(event, payload), lag);
+    return;
+  }
   ioServer().to(run.socketId).emit(event, payload);
 }
 
@@ -145,7 +155,7 @@ function questionView(run: SoloRun, c: SoloQ): SoloQuestionView {
     usedHere: [...c.usedHere],
     hint: c.hint,
     initial: c.initial,
-    probe: c.probe,
+    sure: c.sure,
   };
 }
 
@@ -295,7 +305,6 @@ function nextQuestion(run: SoloRun): void {
   const limitMs = config.soloTest.timeMs || soloTimeMs(q.text, q.displayAnswer, timeParams());
   const norms = new Set(q.answersNorm);
   const flex = flexAnswerSet(q.answersRaw, norms);
-  const salt = (Math.random() * 0x1_0000_0000) >>> 0;
   const c: SoloQ = {
     n: run.n,
     q,
@@ -316,7 +325,7 @@ function nextQuestion(run: SoloRun): void {
     usedHere: [],
     hint: null,
     initial: null,
-    probe: { salt, buckets: [...new Set([...norms, ...flex].map((k) => probeBucket(salt, k)))] },
+    sure: makeSoloSure(answerTags(norms, flex), { answer: q.displayAnswer, explanation: q.explanation }, (k) => randomBytes(k)),
   };
   run.cur = c;
   run.last = null;
@@ -340,6 +349,8 @@ export function soloAnswer(accountId: string, n: number, text: string, now = Dat
     return;
   }
   c.wrongCount += 1;
+  // ★★★ R125 1-3 — 화면은 지문으로 맞다고 했는데 서버는 틀렸다(있으면 안 된다 · 화면은 서버를 따라 되돌린다) — 한 줄 남긴다
+  if (sureHit(c.sure, text)) console.warn(`[solo] ★ 지문 어긋남 q=${c.q.id} n=${c.n} — 화면은 맞음 · 서버는 틀림`);
   if (norm && c.wrongTexts.length < SOLO.WRONG_KEEP) c.wrongTexts.push([...norm].slice(0, SOLO.WRONG_TEXT_MAX).join(''));
   // ★ R123 — 그 답이 틀렸다고 바로 돌려준다(화면이 입력칸을 흔든다 · 시간 안이면 다시 친다)
   emit(run, 'solo.wrong', { n: c.n });

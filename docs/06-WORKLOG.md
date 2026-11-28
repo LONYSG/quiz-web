@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-11-28 — R125 찬종 피드백 남은 것 전부: 맞힌 답 바로 "정답!" · 화면 전환 · 경고 꼴 · '·' · 스크롤 · 단축키 · 난이도 점 · 공방 목록 · 노래 공개 (R125, MAIN · D-379)
+- [x] A 맞힌 답 바로 "정답!" — shared/src/soloSure.ts(동기 SHA-256 · 판정 꼬리표 n:/f: · 잠근 정답 상자) · engine sure(probe 갈음 · 어긋남 서버 로그) · useSolo(soloLocalJudge — 지문에 걸리면 곧바로 "정답!" · 안 걸리면 곧바로 흔듦 · solo.result 가 정본으로 조용히 갈아 끼움 · 어긋나면 되돌림) · 검사 서버 SOLO_TEST_LAG_MS · sure.test.ts · scripts/r125-sure-check.mjs(실 DB 맞는 제출 184,792 → 걸림 100% · 틀린 170,628 → 0) · ui-check --r125=solo 6/6 · 봇 r124 · r123 · solo
+- [ ] B 화면 전환 · Notice · '·' · 스크롤 · 크기 · 단축키 · 영상 소리
+- [ ] C 난이도 점 · 공방 목록 둘 · 노래 공개 한 줄
+- 확인: ai-out/R125.txt
+
 ## 2026-11-28 — 혼자 하기 반응 속도 · 시작 카운트다운 · 이모지 빼기 · 끝 화면 틀린 문제 전부 (R124, MAIN · D-378)
 - 무엇: 원인 재기(소켓 · 브라우저 · 바깥 주소) → 틀린 답 미리 보기(shared answerProbeKeys · probeBucket · SoloQuestionView.probe) · 시작 카운트다운(SOLO.START_COUNT_MS · solo.started.firstAt · solo.state.firstAt · 화면 Countdown 부품) · 이모지 문제 뺌(isEmojiQuestion · buildSoloPool) · 끝 화면 틀린 문제 질문 · 정답 · 해설 전부
 - 왜: 찬종 2026-11-28 실 사이트에서 직접 해 봄 — "틀리면 바로 새 답 · 답 처리가 너무 느려 · 카운트다운 후에 시작 · 이모지 문제 빼 · 끝난 뒤 문제가 ... 로 생략"

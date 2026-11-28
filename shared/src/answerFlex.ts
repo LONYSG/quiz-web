@@ -108,34 +108,3 @@ export function flexMatch(rawSub: string, answersNorm: ReadonlySet<string>, answ
   if (e === rawSub) return false;
   return hit(normalizeAnswer(e), 2) || hit(flexCanon(e, enabled), 2);
 }
-
-/**
- * ★★ R124 — 이 제출이 맞을 수 있는 열쇠 전부(정규화 · 표준형 · 끝맺음 뗀 꼴). 판정(정규화 그대로 + flexMatch)이 보는 열쇠의 **상위 집합**이다:
- *   판정이 맞다고 하는 제출이면 이 열쇠 중 하나가 반드시 정답 집합(정규화 ∪ 표준형)에 든다 — 혼자 하기 화면의 "분명히 틀린 답" 미리 보기가 이것을 쓴다.
- *   정규화가 빈 글이면 판정은 늘 틀림 → 빈 배열.
- */
-export function answerProbeKeys(rawSub: string, enabled: readonly FlexTransform[] = FLEX_ENABLED): string[] {
-  const norm = normalizeAnswer(rawSub);
-  if (!norm) return [];
-  const out = new Set<string>([norm]);
-  const c = flexCanon(rawSub, enabled);
-  if (c) out.add(c);
-  const e = stripEnding(rawSub);
-  if (e !== rawSub) {
-    for (const k of [normalizeAnswer(e), flexCanon(e, enabled)]) if (k.length >= 2) out.add(k);
-  }
-  return [...out];
-}
-
-/** ★★ R124 — 열쇠의 짧은 통(10비트 · 문제마다 다른 소금) — 화면에는 정답 대신 이 통 번호만 간다(1,024 통 · 통 하나에 여러 낱말이 섞인다) */
-export const PROBE_BUCKET_BITS = 10;
-export function probeBucket(salt: number, key: string): number {
-  // FNV-1a 32비트(소금 + 열쇠) — 서버 · 화면이 같은 함수
-  let h = 0x811c9dc5 ^ (salt >>> 0);
-  h = Math.imul(h, 0x01000193) >>> 0;
-  for (let i = 0; i < key.length; i += 1) {
-    h ^= key.charCodeAt(i);
-    h = Math.imul(h, 0x01000193) >>> 0;
-  }
-  return h & ((1 << PROBE_BUCKET_BITS) - 1);
-}

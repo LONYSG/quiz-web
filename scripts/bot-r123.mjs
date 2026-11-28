@@ -250,7 +250,7 @@ export function makeR123({ makeBots, Bot, withDb, sleep, expect, expectTrue, che
     a.disconnect();
   }
 
-  // ★★ R124 — 시작 카운트다운(누른 때 + 3초에 첫 문제 · 첫 문제 시간 안 깎임) · 카운트다운 중 다시 붙기 · 틀린 답 미리 보기(probe) ·
+  // ★★ R124 — 시작 카운트다운(누른 때 + 3초에 첫 문제 · 첫 문제 시간 안 깎임) · 카운트다운 중 다시 붙기 · 틀린 답 미리 보기(R125 부터 정답 지문 sure) ·
   //   첫 다섯 문제(맞힌 수 5 전) 등급 1 · 이모지 문제 안 나옴 · 판정은 그대로 서버(미리 보기가 틀렸다 해도 서버 solo.wrong 은 온다)
   async function soloR124Part() {
     const sh = await import(new URL('../shared/dist/index.js', import.meta.url).href);
@@ -275,11 +275,11 @@ export function makeR123({ makeBots, Bot, withDb, sleep, expect, expectTrue, che
     const q1 = a.since(from, 'solo.question')[0];
     const q1At = Date.now();
     expectTrue('★★ R124 2 — 첫 문제는 firstAt 뒤에 · 시간은 문제가 나간 때부터(endsAt − 지금 ≈ limitMs · 카운트다운에 안 깎임)', q1At >= st.firstAt - 50 && q1.endsAt - q1At > q1.limitMs - 400 && q1.endsAt - st.firstAt >= q1.limitMs - 100, JSON.stringify({ late: q1At - st.firstAt, left: q1.endsAt - q1At, limit: q1.limitMs }));
-    // 미리 보기 — 통이 있고 · 정답 · 정답이다 = 맞을 수 있음 · 엉뚱한 답 = 분명히 틀림
+    // ★★★ R125 — 정답 지문(R124 probe 를 갈음): 정답 · "정답이다" = 지문에 걸리고 상자가 열림(정답 · 해설) · 엉뚱한 답 = 안 걸림
     const ans = (await answersForText(q1.text))[0];
-    const maybe = (t) => sh.answerProbeKeys(t).some((k) => q1.probe.buckets.includes(sh.probeBucket(q1.probe.salt, k)));
-    expectTrue('★★ R124 1 — 문제에 probe(소금 · 통 번호 0~1023) · 정답 · "정답이다" = 통에 듦 · 엉뚱한 답 = 안 듦', q1.probe && Number.isInteger(q1.probe.salt) && q1.probe.buckets.length > 0 && q1.probe.buckets.every((b) => b >= 0 && b < 1024) && maybe(ans) && maybe(`${ans}이다`) && !maybe('봇의아주엉뚱한답qqq'), JSON.stringify({ probe: q1.probe, ans }));
-    expectTrue('★★ R124 1 — 문제 글에 정답 글자가 그대로 실리지 않는다(통 번호만)', !JSON.stringify(q1).includes(`"${ans}"`), ans);
+    const opened = sh.openSoloSure(q1.sure, ans);
+    expectTrue('★★★ R125 A — 문제에 sure(소금 · 지문 · 덮개 · 상자) · 정답 · "정답이다" = 걸림(상자의 정답 = 대표 표기) · 엉뚱한 답 = 안 걸림 · probe 없음', q1.sure && q1.probe === undefined && q1.sure.keys.length > 0 && q1.sure.keys.length === q1.sure.wraps.length && q1.sure.keys.every((k) => /^[0-9a-f]{32}$/.test(k)) && opened !== null && sh.openSoloSure(q1.sure, `${ans}이다`) !== null && sh.openSoloSure(q1.sure, '봇의아주엉뚱한답qqq') === null, JSON.stringify({ sure: q1.sure && { ...q1.sure, box: q1.sure.box.length }, ans, opened }));
+    expectTrue('★★★ R125 A — 문제 글에 정답 글자가 그대로 실리지 않는다(지문 · 잠근 상자만)', !JSON.stringify(q1).includes(`"${ans}"`), ans);
     // 판정은 그대로 서버: 엉뚱한 답에도 solo.wrong 이 온다
     a.socket.emit('solo.answer', { n: q1.n, text: '봇의아주엉뚱한답qqq' });
     await a.waitFor(() => a.since(from, 'solo.wrong').length > 0, 2000, '서버 오답');

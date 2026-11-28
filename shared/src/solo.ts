@@ -6,6 +6,8 @@
 //   ★ 표를 바꾸면 버전 번호를 올린다 — 기록(solo_runs.ramp_version · belt_version)에 같이 남아 옛 기록을 가른다.
 // =============================================================================
 
+import type { SoloSure } from './soloSure.js';
+
 export const SOLO = {
   /** 목숨(찬종 · 4절) */
   LIVES: 3,
@@ -277,11 +279,11 @@ export interface SoloQuestionView {
   hint?: string | null;
   initial?: string | null;
   /**
-   * ★★ R124 — "분명히 틀린 답" 미리 보기(찬종 "틀리면 바로바로 새 답"): 정답 열쇠(정규화 ∪ 표준형)의 10비트 통 번호 · 문제마다 다른 소금.
-   *   화면은 친 답의 열쇠(answerProbeKeys)가 어느 통에도 안 들면 곧바로 흔든다(서버 왕복을 기다리지 않음) · 통에 들면 지금처럼 서버 판정을 기다린다.
-   *   판정의 정본은 그대로 서버다(답은 늘 보낸다 · 기록 · 목숨 · 맞힘은 서버만).
+   * ★★★ R125 — 정답 지문(찬종 "미리 답을 준비해놓으면 서버 안거치고 바로바로") — R124 의 미리 보기 통(probe)을 갈음한다.
+   *   화면은 친 답의 꼬리표(submitTags) 지문이 keys 에 있으면 곧바로 "정답!"(잠근 상자를 열어 정답 · 해설) · 없으면 곧바로 흔든다.
+   *   지문은 서버 판정과 똑같다(soloSure 머리) · 정답 글자는 가지 않는다 · 판정 · 점수 · 목숨의 정본은 그대로 서버(solo.result).
    */
-  probe?: { salt: number; buckets: number[] };
+  sure?: SoloSure;
 }
 
 export interface SoloResultView {

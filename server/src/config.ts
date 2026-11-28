@@ -127,6 +127,8 @@ export const config = {
     rampShift: Number(process.env.SOLO_TEST_RAMP_SHIFT ?? 0) > 0 ? Math.floor(Number(process.env.SOLO_TEST_RAMP_SHIFT)) : 0,
     nextMs: Number(process.env.SOLO_TEST_NEXT_MS ?? 0) > 0 ? Math.floor(Number(process.env.SOLO_TEST_NEXT_MS)) : 0,
     reconnectMs: Number(process.env.SOLO_TEST_RECONNECT_MS ?? 0) > 0 ? Math.floor(Number(process.env.SOLO_TEST_RECONNECT_MS)) : 0,
+    /** ★★★ R125 — 검사 서버만: 판정 답(solo.result · solo.wrong)을 이만큼 늦게 보낸다(바깥 주소 왕복 흉내 — CDP 지연은 웹소켓에 안 걸린다 · R124) */
+    lagMs: Number(process.env.SOLO_TEST_LAG_MS ?? 0) > 0 ? Math.min(3000, Math.floor(Number(process.env.SOLO_TEST_LAG_MS))) : 0,
   },
   /**
    * ★★ R116 (docs/24 6-2 나 · 찬종 ⑥ 30일) — 본 문제 유효 기간(일). 0 · 없음 = 지금처럼 영원히. 켜면 마지막으로 본 지 N일 지난 문제는 "안 본 것".
