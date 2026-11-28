@@ -161,6 +161,7 @@ DB 쓰기: 허용(백업 뒤) / 불허          ← GEN · MAIN
 - ★ 문서 열기(G025 · DG-063): WebFetch · WebSearch · **키 없는 공개 API 원문 받기(위키백과 action/REST API · curl)** 도 문서 열기로 친다(G024 — 글자 대조가 오히려 정확). **키가 필요한 외부 API 금지는 그대로**(G021).
 - ★ 정답 표기 도구(G101 · 2026-11-18 · 찬종 허락 — 키 있는 API 의 예외 하나): `node scripts/dict-check.mjs 낱말… | --file 목록.txt | --db [quizweb|quizweb_dev] [--out x.json]` — 표준국어대사전 오픈 API(`.env` STDICT_API_KEY)에 표제어가 있는지 묻는다(`-` · `^` · 띄어쓰기 빼고 견줌 · 캐시 `data/pipeline/audit/g101-raw/dict/cache.jsonl` · 0.3초 간격). 새 카드를 실을 때 정답 표기를 한 번 볼 때 쓴다 — 적재 게이트에는 아직 안 붙였다.
 - ★ 끝 점검(G025 · DG-063): **변형(question_answers)을 넣는 라운드는 `node scripts/hint-check-active.mjs` 막힘 0 을 끝 점검에 넣는다**(G024 — G023 H 변형 SD · 엠티브이가 옛 힌트와 겹쳐 H2 막힘 2).
+- ★ 끝 점검(G119): **카드를 싣거나 질문 글을 바꾸는 라운드는 `node scripts/grade-fresh-check.mjs` 0 도 함께**(hint-check-active 옆 — 질문이 바뀌었는데 등급 · 알가치를 다시 안 본 카드 · 장부에 없는 카드를 막는다 · 15 §6 끝).
 - **자기 블라인드 테스트 · 자기 검토를 판정으로 쓰지 않는다** (R036 실측 — 떠먹여 주기를 구분 못 한다).
 - 혼자 정한 것은 보고서에 **"GEN 판단 (되돌리기 쉽다)"** 로 따로.
 - 사용자 검토는 `docs/*-review.md` 체크박스 문서로. 그 파일의 커밋은 GEN 라운드에서.

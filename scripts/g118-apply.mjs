@@ -37,6 +37,7 @@ import { checkHint } from './hint-check.mjs';
 import { blankCheck, lengthCheck, assertiveWords, answerFragments } from '../pipeline/lib/question-checks.mjs';
 import { formHit } from './form-scan.mjs';
 import { loadCards } from '../data/pipeline/audit/g118-raw/cards.mjs';
+import { ledgerPut } from './grade-ledger.mjs'; // G119 — 새 카드는 등급 장부에 줄을 더한다(실 DB 만)
 
 try { process.loadEnvFile?.(path.join(ROOT, '.env')); } catch { /* 기본값 */ }
 const a = process.argv.slice(2);
@@ -243,4 +244,6 @@ for (const p of W) {
 }
 writeFileSync(SRC, JSON.stringify(src, null, 1) + '\n');
 console.log(`[${TAG}] 출처 → audit/g118-sources.json`);
+// G119 — 등급 장부(grade-judged.json): 문장과 등급을 함께 쓴 새 카드 · at = 이 싣기 판 이름
+console.log(`[${TAG}] 등급 장부 ${ledgerPut(W.map((p) => ({ id: ids[p.key], question: p.question, grade: p.grade, worth: null, at: TAG })), db)}줄`);
 await c.end();
